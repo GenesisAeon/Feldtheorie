@@ -1,0 +1,284 @@
+{
+  "theta_estimate": {
+    "value": 0.31267920387045345,
+    "ci95": [
+      0.3087776803303822,
+      0.3165807274105247
+    ]
+  },
+  "beta_estimate": {
+    "value": 15.274864885179445,
+    "ci95": [
+      14.840374828710752,
+      15.709354941648138
+    ]
+  },
+  "logistic_model": {
+    "r2": 0.9986553018766973,
+    "aic": -136.31925278542303,
+    "ss_res": 0.002485293353135941,
+    "residual_mean": 0.0042974753756297585,
+    "residual_std": 0.011698826435452924
+  },
+  "null_models": {
+    "linear": {
+      "r2": 0.966266964296634,
+      "aic": -84.76232317098867,
+      "ss_res": 0.06234595554336276,
+      "slope": 2.4893313959792676,
+      "intercept": -0.2658286157316042
+    },
+    "power_law": {
+      "model": "sigma = A * R^k",
+      "amplitude": 5.279701268187224,
+      "exponent": 2.1553626653482096,
+      "r2": 0.97304909363836,
+      "aic": -88.35369464465927,
+      "ss_res": 0.04981111171410149
+    }
+  },
+  "falsification": {
+    "logistic_beats_all_nulls": true,
+    "comparisons": {
+      "linear": {
+        "delta_aic": 51.55692961443437,
+        "delta_r2": 0.03238833758006332
+      },
+      "power_law": {
+        "delta_aic": 47.96555814076376,
+        "delta_r2": 0.025606208238337258
+      }
+    }
+  },
+  "membrane": {
+    "theta": 0.31267920387045345,
+    "beta": 15.274864885179445,
+    "zeta_mean": 1.2311112376878148,
+    "flux_mean": 0.0042974753756297585,
+    "flux_std": 0.011698826435452924
+  },
+  "logistic_fit": {
+    "sigma_hat": [
+      0.027810329568659715,
+      0.03737556821146456,
+      0.05006131885029703,
+      0.07692334610965751,
+      0.11643240446719914,
+      0.17244303914893916,
+      0.24784012518233156,
+      0.34255720911752374,
+      0.4517324975427592,
+      0.5279269476145481,
+      0.6387793544200113,
+      0.7365892996602282,
+      0.8155616884626435,
+      0.8748793980129034,
+      0.9279623694880235,
+      0.9595654981327343
+    ],
+    "residuals": [
+      -0.002410329568659716,
+      -0.0027755682114645602,
+      -0.001761318850297025,
+      0.010876653890342494,
+      -0.0007324044671991464,
+      -0.019843039148939146,
+      0.009659874817668446,
+      0.003242790882476254,
+      0.006367502457240826,
+      0.012473052385451933,
+      0.014920645579988623,
+      0.028310700339771788,
+      0.019238311537356445,
+      0.009120601987096633,
+      -0.005962369488023422,
+      -0.011965498132734287
+    ]
+  },
+  "dataset": {
+    "path": "data/socio_ecology/urban_heat_canopy.csv",
+    "control_parameter": "fractional tree canopy coverage in heat-vulnerable districts",
+    "order_parameter": "share of summer nights below heat-stress threshold",
+    "measurements": [
+      {
+        "R": 0.08,
+        "sigma": 0.0254,
+        "logistic_fit": 0.027810329568659715
+      },
+      {
+        "R": 0.1,
+        "sigma": 0.0346,
+        "logistic_fit": 0.03737556821146456
+      },
+      {
+        "R": 0.12,
+        "sigma": 0.0483,
+        "logistic_fit": 0.05006131885029703
+      },
+      {
+        "R": 0.15,
+        "sigma": 0.0878,
+        "logistic_fit": 0.07692334610965751
+      },
+      {
+        "R": 0.18,
+        "sigma": 0.1157,
+        "logistic_fit": 0.11643240446719914
+      },
+      {
+        "R": 0.21,
+        "sigma": 0.1526,
+        "logistic_fit": 0.17244303914893916
+      },
+      {
+        "R": 0.24,
+        "sigma": 0.2575,
+        "logistic_fit": 0.24784012518233156
+      },
+      {
+        "R": 0.27,
+        "sigma": 0.3458,
+        "logistic_fit": 0.34255720911752374
+      },
+      {
+        "R": 0.3,
+        "sigma": 0.4581,
+        "logistic_fit": 0.4517324975427592
+      },
+      {
+        "R": 0.32,
+        "sigma": 0.5404,
+        "logistic_fit": 0.5279269476145481
+      },
+      {
+        "R": 0.35,
+        "sigma": 0.6537,
+        "logistic_fit": 0.6387793544200113
+      },
+      {
+        "R": 0.38,
+        "sigma": 0.7649,
+        "logistic_fit": 0.7365892996602282
+      },
+      {
+        "R": 0.41,
+        "sigma": 0.8348,
+        "logistic_fit": 0.8155616884626435
+      },
+      {
+        "R": 0.44,
+        "sigma": 0.884,
+        "logistic_fit": 0.8748793980129034
+      },
+      {
+        "R": 0.48,
+        "sigma": 0.922,
+        "logistic_fit": 0.9279623694880235
+      },
+      {
+        "R": 0.52,
+        "sigma": 0.9476,
+        "logistic_fit": 0.9595654981327343
+      }
+    ]
+  },
+  "impedance": {
+    "definition": "zeta(R) = 1.45 - 0.5 * sigma(beta(R-Theta))",
+    "mean": 1.2311112376878148,
+    "std": 0.16826677514489807,
+    "samples": [
+      {
+        "R": 0.08,
+        "sigma": 0.027810329568659715,
+        "zeta": 1.4360948352156702
+      },
+      {
+        "R": 0.1,
+        "sigma": 0.03737556821146456,
+        "zeta": 1.4313122158942677
+      },
+      {
+        "R": 0.12,
+        "sigma": 0.05006131885029703,
+        "zeta": 1.4249693405748514
+      },
+      {
+        "R": 0.15,
+        "sigma": 0.07692334610965751,
+        "zeta": 1.4115383269451711
+      },
+      {
+        "R": 0.18,
+        "sigma": 0.11643240446719914,
+        "zeta": 1.3917837977664005
+      },
+      {
+        "R": 0.21,
+        "sigma": 0.17244303914893916,
+        "zeta": 1.3637784804255304
+      },
+      {
+        "R": 0.24,
+        "sigma": 0.24784012518233156,
+        "zeta": 1.3260799374088341
+      },
+      {
+        "R": 0.27,
+        "sigma": 0.34255720911752374,
+        "zeta": 1.278721395441238
+      },
+      {
+        "R": 0.3,
+        "sigma": 0.4517324975427592,
+        "zeta": 1.2241337512286203
+      },
+      {
+        "R": 0.32,
+        "sigma": 0.5279269476145481,
+        "zeta": 1.186036526192726
+      },
+      {
+        "R": 0.35,
+        "sigma": 0.6387793544200113,
+        "zeta": 1.1306103227899942
+      },
+      {
+        "R": 0.38,
+        "sigma": 0.7365892996602282,
+        "zeta": 1.081705350169886
+      },
+      {
+        "R": 0.41,
+        "sigma": 0.8155616884626435,
+        "zeta": 1.0422191557686782
+      },
+      {
+        "R": 0.44,
+        "sigma": 0.8748793980129034,
+        "zeta": 1.0125603009935482
+      },
+      {
+        "R": 0.48,
+        "sigma": 0.9279623694880235,
+        "zeta": 0.9860188152559882
+      },
+      {
+        "R": 0.52,
+        "sigma": 0.9595654981327343,
+        "zeta": 0.9702172509336329
+      }
+    ]
+  },
+  "tri_layer": {
+    "formal": "Logit-domain regression with dual smooth null comparisons (linear, power-law).",
+    "empirical": "Synthetic blend of canopy audits and night-time heat index surveys; JSON export tethers RepoPlan cross-links.",
+    "metaphorical": "Tracks how urban membranes slacken when tree canopies bloom, letting neighbourhoods breathe before dawn."
+  },
+  "ethics": {
+    "notes": "Highlights environmental justice commitments: prioritising cooling investments for frontline communities and co-designing data collection with local stewardship groups.",
+    "references": [
+      "RepoPlan 2.0 socio-ecological membrane brief",
+      "Urban heat resilience task force memoranda"
+    ]
+  }
+}
