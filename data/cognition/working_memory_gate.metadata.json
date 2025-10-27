@@ -1,0 +1,64 @@
+{
+  "dataset": "Working-memory accuracy vs. phasic dopamine gate amplitude",
+  "control_parameter": {
+    "symbol": "R",
+    "description": "normalised phasic dopamine burst amplitude in DLPFC",
+    "units": "dimensionless (0-1)",
+    "range": [
+      0.32,
+      0.78
+    ]
+  },
+  "order_parameter": {
+    "symbol": "sigma",
+    "description": "probability of correct adaptive N-back recall",
+    "range": [
+      0.0401,
+      0.9365
+    ]
+  },
+  "logistic_threshold": {
+    "theta": {
+      "estimate": 0.5789411327654987,
+      "ci95": [
+        0.5758230076846768,
+        0.5820592578463207
+      ]
+    },
+    "beta": {
+      "estimate": 12.284000852027816,
+      "ci95": [
+        11.982930703510126,
+        12.585071000545506
+      ]
+    },
+    "fit_quality": {
+      "r2": 0.9986365714199111,
+      "aic": -160.4001933829221,
+      "ss_res": 0.0019440685350055368
+    },
+    "analysis_script": "analysis/working_memory_gate_fit.py",
+    "analysis_results": "analysis/results/working_memory_gate.json",
+    "null_diagnostics": {
+      "linear": {
+        "delta_aic": 51.61132557517578,
+        "delta_r2": 0.02261844811491498
+      },
+      "power_law": {
+        "delta_aic": 59.540475480018955,
+        "delta_r2": 0.035892337816077036
+      }
+    }
+  },
+  "impedance_context": {
+    "zeta_function": "zeta(R) = 1.35 - 0.38 * sigma(beta(R-Theta))",
+    "mean": 1.1704638997697276,
+    "std": 0.10753921401647842
+  },
+  "provenance": {
+    "source": "synthetic reconstruction inspired by working-memory gating literature",
+    "generated_by": "RepoPlan UTF cognitive build (seeded noise, see analysis script)",
+    "license": "CC-BY-4.0"
+  },
+  "falsifiability": "Logistic resonance outruns both linear and power-law nulls (positive delta AIC and delta R^2)."
+}
