@@ -1,0 +1,58 @@
+{
+  "id": "amazon_canopy",
+  "label": "Amazonas-Resilienz",
+  "domain": "socio_ecology",
+  "featured": false,
+  "color": "#34d399",
+  "icon": "leaf",
+  "control_parameter": "Bestäubungsnetzwerk-Konnektivität",
+  "order_parameter": "Regenerationswahrscheinlichkeit des Ökosystems",
+  "analysis": {
+    "result_path": "analysis/results/amazon_resilience_fit.json",
+    "theta": 0.6214703985864286,
+    "theta_ci": [0.617767971171555, 0.6251728260013022],
+    "beta": 14.019150893618612,
+    "beta_ci": [13.685269700463397, 14.353032086773826],
+    "logistic_r2": 0.9991130264188406,
+    "delta_aic_best_null": 70.69582320908519,
+    "delta_r2_best_null": 0.055862010481671165,
+    "best_null_model": "power_law"
+  },
+  "impedance": {
+    "definition": "zeta(R) ≈ 1.80 - 0.58 * sigma(beta(R-Theta))",
+    "closed": 1.80,
+    "open": 1.22,
+    "mean": 1.5343220981632029
+  },
+  "simulation": {
+    "theta": 4.8,
+    "beta": 4.4,
+    "initial_R": 1.6,
+    "initial_psi": 0.02,
+    "initial_phi": 0.07,
+    "stimulus": {
+      "base": 0.14,
+      "amplitude": 0.20,
+      "frequency": 0.37,
+      "noise": 0.06,
+      "modulation": {
+        "type": "tanh",
+        "amplitude": 0.26,
+        "frequency": 0.11
+      }
+    }
+  },
+  "narrative": {
+    "formal": "Sigmoidaler Kipppunkt schlägt lineare und Potenz-Nullmodelle mit ΔAIC≈70.7, R^2≈0.999.",
+    "empirical": "Synthese aus sozio-ökologischen Szenarien (`data/socio_ecology/amazon_resilience.csv`) zur Verbindung von Analyse und Simulator.",
+    "poetic": "Wenn die Vernetzung fällt, zieht die Membran sich zu – Regen wird zu Staub. Über Θ singt der Wald erneut." 
+  },
+  "poetic_messages": [
+    "Der Wald hält den Atem an – bis R die Schwelle findet und neues Grün hervorbricht.",
+    "Bestäuber flackern wie Laternen – unter Θ verlöschen sie, darüber strahlt das Blättermeer.",
+    "Zeta sinkt, wenn der Regen fällt: Die Membran lässt Resilienz zurückkehren." 
+  ],
+  "references": {
+    "dataset": "data/socio_ecology/amazon_resilience.csv"
+  }
+}

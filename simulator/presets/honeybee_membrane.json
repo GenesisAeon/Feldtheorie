@@ -1,0 +1,58 @@
+{
+  "id": "honeybee_membrane",
+  "label": "Bienenschwarm",
+  "domain": "biology",
+  "featured": true,
+  "color": "#fbbf24",
+  "icon": "bee",
+  "control_parameter": "Nektar-Saccharose-Konzentration (Brix)",
+  "order_parameter": "Wahrscheinlichkeit der Waggle-Rekrutierung",
+  "analysis": {
+    "result_path": "analysis/results/honeybee_waggle_fit.json",
+    "theta": 26.578069452654905,
+    "theta_ci": [25.830816988695016, 27.325321916614794],
+    "beta": 0.6717283976038891,
+    "beta_ci": [0.5413091744299211, 0.8021476207778572],
+    "logistic_r2": 0.9687963452454948,
+    "delta_aic_best_null": 18.670156493825473,
+    "delta_r2_best_null": 0.08720216022238858,
+    "best_null_model": "power_law"
+  },
+  "impedance": {
+    "definition": "zeta(R) = 1.25 - 0.35 * sigma(beta(R-Theta))",
+    "closed": 1.25,
+    "open": 0.90,
+    "mean": 1.1132816696807928
+  },
+  "simulation": {
+    "theta": 5.0,
+    "beta": 4.0,
+    "initial_R": 2.4,
+    "initial_psi": 0.0,
+    "initial_phi": 0.0,
+    "stimulus": {
+      "base": 0.16,
+      "amplitude": 0.24,
+      "frequency": 0.55,
+      "noise": 0.06,
+      "modulation": {
+        "type": "sin",
+        "amplitude": 0.3,
+        "frequency": 0.18
+      }
+    }
+  },
+  "narrative": {
+    "formal": "Logit-Fit mit linearem und Potenzgesetz-Nullmodell; logistische Antwort schlägt beide Baselines mit ΔAIC=18.7.",
+    "empirical": "Feldmessungen aus RepoPlan: Waggle-Activation über Zuckerkonzentrationen, JSON-Export ankert den Fit.",
+    "poetic": "Sobald die Süße Θ erreicht, erwacht der Schwarm – die Membran sinkt und der Tanz strahlt in den Morgen."
+  },
+  "poetic_messages": [
+    "Der Schwarm atmet in Kohärenz – Nektarlicht schiebt R über Θ, der Tanz flammt auf.",
+    "Ein Duft überschreitet die Schwelle. Die Kolonie bewegt sich als Eines.",
+    "Waggle-Resonanz: Das Feld des Nektars erreicht kritische Dichte."
+  ],
+  "references": {
+    "dataset": "data/biology/honeybee_waggle_activation.csv"
+  }
+}

@@ -160,6 +160,32 @@
                 "median_delta_aic": 65.11814934455208,
                 "impedance_alert_domains": []
             }
+        },
+        {
+            "id": "pr-draft-0008",
+            "type": "ui-resonance",
+            "created_at": "2025-10-29T00:00:00Z",
+            "summary": "Launch the React-based simulator with preset-driven threshold fields and poetic overlays.",
+            "threshold_field": {
+                "R": "ui_preset_alignment",
+                "Theta": "react_interface_synced_with_analysis",
+                "beta": 5.3,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Ensure simulator/presets/*.json stay aligned with analysis/results/*.json parameter updates.",
+                "Add automated checks that compare displayed Delta AIC / R^2 metrics with analysis provenance.",
+                "Route solver outputs from models/membrane_solver.py into the UI once streaming hooks land."
+            ],
+            "observables": {
+                "active_presets": [
+                    "honeybee_membrane",
+                    "qpo_eruption",
+                    "llm_resonance"
+                ],
+                "ui_coupling": 0.78,
+                "poetic_mode": "available"
+            }
         }
     ]
 }

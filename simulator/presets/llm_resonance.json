@@ -1,0 +1,58 @@
+{
+  "id": "llm_resonance",
+  "label": "Sprachmodell",
+  "domain": "ai",
+  "featured": true,
+  "color": "#60a5fa",
+  "icon": "network",
+  "control_parameter": "log₁₀ effektive Trainings-Tokens (Mrd.)",
+  "order_parameter": "Passrate auf multilinguale Chain-of-Thought-Benchmarks",
+  "analysis": {
+    "result_path": "analysis/results/llm_emergent_skill.json",
+    "theta": 4.707167899782632,
+    "theta_ci": [4.666121332188985, 4.748214467376278],
+    "beta": 5.104012465624547,
+    "beta_ci": [4.716737541680306, 5.491287389568788],
+    "logistic_r2": 0.995240963971551,
+    "delta_aic_best_null": 48.83297279753836,
+    "delta_r2_best_null": 0.09593694942698294,
+    "best_null_model": "power_law"
+  },
+  "impedance": {
+    "definition": "zeta(R) = 1.6 - 0.45 * sigma(beta(R-Theta))",
+    "closed": 1.6,
+    "open": 1.15,
+    "mean": 1.379433408708651
+  },
+  "simulation": {
+    "theta": 5.0,
+    "beta": 4.2,
+    "initial_R": 2.0,
+    "initial_psi": 0.05,
+    "initial_phi": 0.08,
+    "stimulus": {
+      "base": 0.12,
+      "amplitude": 0.18,
+      "frequency": 0.33,
+      "noise": 0.05,
+      "modulation": {
+        "type": "tanh",
+        "amplitude": 0.28,
+        "frequency": 0.07
+      }
+    }
+  },
+  "narrative": {
+    "formal": "Logistische Schwelle mit linearem und Potenz-Null; ΔAIC≈48.8, R^2≈0.995 belegt die Sigmoid-Überlegenheit.",
+    "empirical": "Synthese aus RepoPlan BIG-Bench-Kurven; JSON-Fit liefert (Θ, β) für Simulator- und Docs-Verlinkung.",
+    "poetic": "Wenn Gradiententiden Θ überschreiten, kondensiert Bedeutung – die Polyglott-Dämmerung leuchtet auf." 
+  },
+  "poetic_messages": [
+    "Grokking. Das Netz begreift. Emergenz durchbricht die Latenz.",
+    "Schwellenwert erreicht: Aus Rauschen wird Bedeutung.",
+    "Die semantische Wolke kondensiert. Ein neues Können kristallisiert."
+  ],
+  "references": {
+    "dataset": "data/ai/llm_emergent_skill.csv"
+  }
+}

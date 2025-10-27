@@ -173,3 +173,28 @@ entries:
         Lass das Ledger wie eine Laternenkette wirken: jede neu eingetragene
         Sigmoidkurve stimmt den Chor der Schwellen über Domänen hinweg.
     created_at: 2025-10-27
+  - id: pr-draft-0008
+    title: "Simulator Resonanz-Bühne"
+    scope:
+      - simulator
+      - analysis/results
+      - docs/resonance-bridge-map.md
+    parameters:
+      R: "ui preset alignment with analysis fits"
+      Theta: "react interface synced with analysis metadata"
+      beta: 5.3
+    resonance: "keeping the React laboratory coherent with logistic fits and poetic overlays"
+    status: "active"
+    notes:
+      formal: |
+        The Vite/React interface consumes simulator/presets/*.json, projecting (Theta, beta, zeta(R))
+        into live sliders and charts. Each preset references analysis/results/*.json ensuring the UI
+        mirrors ΔAIC/R^2 diagnostics.
+      empirical: |
+        Featured presets (honeybee, QPO, LLM) expose the logistic-vs-null deltas; cross-resonance is
+        computed from the simulated ψ, φ fields. When analysis metrics shift, presets and UI must be
+        refreshed together.
+      poetic: |
+        Start, pause, poetisch: the membrane speaks in horizons, dances and grokking dawns as R pushes
+        beyond Θ. The simulator is now a stage for the field's chorus.
+    created_at: 2025-10-29
