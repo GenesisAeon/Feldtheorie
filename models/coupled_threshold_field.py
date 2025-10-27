@@ -36,6 +36,7 @@ ignites; the Robin impedance decides whether the chorus whispers or roars.  The
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass, field
 from typing import Callable, Dict, Iterable, Mapping, MutableMapping
 
@@ -45,6 +46,7 @@ from .membrane_solver import logistic_response, smooth_impedance_profile
 
 ArrayLike = Iterable[float]
 DriverSequence = Iterable[float]
+CouplingKernel = Callable[[float, float, float, float, float], float]
 
 
 @dataclass
@@ -80,6 +82,7 @@ class CoupledThresholdField:
     zeta_ceiling: float = 1.35
     beta_robin: float = 4.5
     phi_relaxation: float = 1.2
+    coupling_kernel: CouplingKernel | None = None
     impedance_profile: Callable[[float], float] = field(init=False)
 
     def __post_init__(self) -> None:
@@ -89,11 +92,60 @@ class CoupledThresholdField:
             damped_gain=self.zeta_ceiling,
             switch_width=max(1.0 / self.beta_robin, 1e-3),
         )
+        if self.coupling_kernel is None:
+            self.coupling_kernel = self.default_coupling_kernel
 
     def robin_impedance(self, R: float) -> float:
         r"""Evaluate the Robin impedance :math:`\zeta(R)` for a control value."""
 
         return float(self.impedance_profile(R))
+
+    @staticmethod
+    def default_coupling_kernel(
+        R: float,
+        psi: float,
+        phi: float,
+        driver: float,
+        sigma: float,
+    ) -> float:
+        r"""Return the baseline semantic tether :math:`\phi-\psi`.
+
+        Formal:
+            Provides the canonical difference term so analytical work can recover
+            the textbook coupling $\kappa(\phi-\psi)$ when no modulation is set.
+        Empirical:
+            Keeps regression baselines comparable with earlier runs and supports
+            sanity checks in `analysis/coupled_field_threshold_fit.py`.
+        Metaphorical:
+            Holds the semantic and physical breaths together—the simplest braid
+            where meaning echoes the membrane without additional ornamentation.
+        """
+
+        return phi - psi
+
+    def compute_coupling(
+        self,
+        R: float,
+        psi: float,
+        phi: float,
+        driver: float,
+        sigma: float,
+    ) -> float:
+        r"""Evaluate the semantic coupling term :math:`\mathcal{M}[\psi, \phi]`.
+
+        Formal:
+            Applies the configured kernel and scales it by the coupling constant
+            $\kappa$ so solver steps inherit the desired inter-field tension.
+        Empirical:
+            Centralises the computation for logging and downstream diagnostics,
+            enabling JSON exports to track the precise coupling magnitude.
+        Metaphorical:
+            Weighs how tightly the semantic wind clasps the luminous membrane on
+            each beat of the dawn chorus.
+        """
+
+        kernel = self.coupling_kernel or self.default_coupling_kernel
+        return self.coupling * float(kernel(R, psi, phi, driver, sigma))
 
     def step(
         self,
@@ -131,11 +183,12 @@ class CoupledThresholdField:
 
         # Semantic field relaxes toward the driver while coupling to psi keeps
         # the braid taut.
-        phi_drift = -self.phi_relaxation * (phi - driver) - self.coupling * (phi - psi)
+        interaction = self.compute_coupling(R, psi, phi, driver, sigma)
+        phi_drift = -self.phi_relaxation * (phi - driver) - interaction
         phi_next = phi + self.dt * phi_drift
 
         # Physical field is pulled toward the logistic bloom and the semantic hum.
-        psi_drift = -zeta * (psi - sigma) + self.coupling * (phi - psi)
+        psi_drift = -zeta * (psi - sigma) + interaction
         psi_next = psi + self.dt * psi_drift
 
         # Order parameter integrates the driver and the membrane's feedback.
@@ -149,6 +202,7 @@ class CoupledThresholdField:
             "sigma": sigma,
             "zeta": zeta,
             "flux": flux,
+            "coupling_term": interaction,
         }
 
     def simulate(
@@ -176,6 +230,7 @@ class CoupledThresholdField:
         sigma_values = [0.0 for _ in range(steps + 1)]
         zeta_values = [0.0 for _ in range(steps + 1)]
         flux_values = [0.0 for _ in range(steps)]
+        coupling_values = [0.0 for _ in range(steps)]
 
         state = {"R": R0, "psi": psi0, "phi": phi0}
         R_values[0] = R0
@@ -193,6 +248,7 @@ class CoupledThresholdField:
             sigma_values[idx + 1] = update["sigma"]
             zeta_values[idx + 1] = update["zeta"]
             flux_values[idx] = update["flux"]
+            coupling_values[idx] = update["coupling_term"]
 
         return {
             "t": times,
@@ -203,6 +259,7 @@ class CoupledThresholdField:
             "sigma": sigma_values,
             "zeta": zeta_values,
             "flux": flux_values,
+            "coupling_term": coupling_values,
             "theta": [self.theta for _ in times],
             "beta": [self.beta for _ in times],
         }
@@ -217,6 +274,7 @@ class CoupledThresholdField:
         sigma_series = np.asarray(results["sigma"], dtype=float)
         zeta_series = np.asarray(results["zeta"], dtype=float)
         flux_series = np.asarray(results["flux"], dtype=float)
+        coupling_series = np.asarray(results.get("coupling_term", []), dtype=float)
         psi_series = np.asarray(results["psi"], dtype=float)
         phi_series = np.asarray(results["phi"], dtype=float)
 
@@ -236,6 +294,9 @@ class CoupledThresholdField:
                 "flux_std": float(flux_series.std(ddof=0)),
                 "phi_proxy_mean": float(phi_proxy.mean()),
                 "phi_proxy_peak": float(phi_proxy.max()),
+                "coupling_mean": float(coupling_series.mean()) if coupling_series.size else 0.0,
+                "coupling_std": float(coupling_series.std(ddof=0)) if coupling_series.size else 0.0,
+                "coupling_peak": float(coupling_series.max()) if coupling_series.size else 0.0,
             }
         )
         return target
@@ -247,6 +308,41 @@ class CoupledThresholdField:
         psi_grad = np.gradient(psi)
         phi_grad = np.gradient(phi)
         return np.abs(np.multiply(psi_grad, phi_grad))
+
+
+def logistic_semantic_kernel(
+    theta: float,
+    beta: float,
+    *,
+    resonance_bias: float = 0.6,
+    driver_weight: float = 0.25,
+) -> CouplingKernel:
+    r"""Blend semantic and logistic cues into :math:`\mathcal{M}[\psi, \phi]`.
+
+    Formal:
+        Uses the logistic gate $\sigma(\beta(R-\Theta))$ to weight the baseline
+        semantic tether against a resonance pull $(\sigma-\psi)$ and driver bias,
+        yielding a smooth Robin-compatible coupling term.
+    Empirical:
+        Offers a reproducible kernel for `analysis/coupled_field_threshold_fit.py`
+        and simulator presets so JSON exports track how meaning modulates the
+        membrane as $R$ sweeps through $\Theta$.
+    Metaphorical:
+        Lets the semantic wind lean in as the aurora brightens—below the dawn gate
+        the braid is gentle, above it the coupling listens for the driver’s hush.
+    """
+
+    def kernel(R: float, psi: float, phi: float, driver: float, sigma: float) -> float:
+        gate = float(logistic_response(R, theta, beta))
+        semantic_gap = phi - psi
+        resonance_pull = sigma - psi
+        driver_push = math.tanh(driver - R)
+        blended = (1.0 - gate) * semantic_gap + gate * (
+            resonance_bias * resonance_pull + (1.0 - resonance_bias) * semantic_gap
+        )
+        return blended + driver_weight * gate * driver_push
+
+    return kernel
 
 
 def ramp_driver(
@@ -263,4 +359,4 @@ def ramp_driver(
     return start + (stop - start) * eased
 
 
-__all__ = ["CoupledThresholdField", "ramp_driver"]
+__all__ = ["CoupledThresholdField", "logistic_semantic_kernel", "ramp_driver"]

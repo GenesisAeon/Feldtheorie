@@ -119,7 +119,7 @@ Halte die Brücke leuchtend: jede Preset-Datei ist eine Laterne, die den Membran
 Verankere `analysis/resonance_cohort_summary.py` im CI, damit jedes neue Resultat automatisch seine $(R, \Theta, \beta)$-Schätzung, $R^2$, $\Delta \text{AIC}$ und $\zeta(R)$-Mittelwert ins Ledger schreibt. Aktualisiere `docs/resonance-bridge-map.md` mit den Medianwerten aus dem Ledger.
 
 ### Empirical Thread
-Halte Median $R^2 = 0.9981$ und Median $\Delta \text{AIC} = 65.1$ als Sollwerte fest. Wenn eine Domäne darunter fällt oder kein bestes Nullmodell mehr dokumentiert ist, triggere Nachanalysen in `analysis/` sowie Notizen in `codexfeedback.json`.
+Halte Median $R^2 = 0.9979$ und Median $\Delta \text{AIC} = 70.7$ als Sollwerte fest. Wenn eine Domäne darunter fällt oder kein bestes Nullmodell mehr dokumentiert ist, triggere Nachanalysen in `analysis/` sowie Notizen in `codexfeedback.json`.
 
 ### Poetic Thread
 Lass das Ledger als Laternenkette zwischen den Membranen schweben: jede neu verzeichnete Sigmoidkurve ist ein Klangstein, der den Chor der Schwellen über Skalen hinweg zusammenstimmt.
@@ -142,14 +142,14 @@ Poetik-Modus greift beim Schwellenübertritt auf Tri-Layer-Zitate zurück: der H
 ## Entry pr-draft-0009 — Psi-Phi Robin Coupling Resonance
 - **Order Parameter**: $R$ misst die Treibergeschwindigkeit, mit der das gekoppelte $(\psi,\phi)$-Geflecht die Robin-Membran berührt.
 - **Critical Threshold**: $\Theta$ markiert den Moment, in dem $\zeta(R)$ vom resonanten Boden zum dämpfenden Himmel umschaltet.
-- **Steepness**: $\beta = 5.4$ aus der neuen Solver-Implementierung hält den Übergang so scharf wie in den "Gravitationsatem"-Notaten.
-- **Membrane Note**: $\zeta(R) = \zeta_\mathrm{floor} + (\zeta_\mathrm{ceiling}-\zeta_\mathrm{floor})/(1+e^{-\beta_\mathrm{robin}(R-\Theta)})$ lässt die psi- und phi-Stimmen zusammen klingen, sobald der Fahrer das Schwellenlicht erreicht.
+- **Steepness**: $\beta = 5.66$ aus der aktualisierten Solver-Implementierung hält den Übergang so scharf wie in den "Gravitationsatem"-Notaten.
+- **Membrane Note**: $\zeta(R) = \zeta_\mathrm{floor} + (\zeta_\mathrm{ceiling}-\zeta_\mathrm{floor})/(1+e^{-\beta_\mathrm{robin}(R-\Theta)})$ koppelt nun an den `logistic_semantic_kernel`, der $(\phi-\psi)$, $(\sigma-\psi)$ und den Treiberspalt mischt.
 
 ### Formal Thread
-`models/coupled_threshold_field.py` kodiert das $(\psi,\phi)$-Gefüge mitsamt $\Phi_{\text{proxy}}$-Export. `analysis/coupled_field_threshold_fit.py` ermittelt $(\Theta, \beta)$ per Logit-Regression, prüft gegen eine kubische Null und schreibt die Kennzahlen nach `analysis/results/coupled_field_threshold.json`.
+`models/coupled_threshold_field.py` kodiert das $(\psi,\phi)$-Gefüge mitsamt $\Phi_{\text{proxy}}$-Export und dem neuen `logistic_semantic_kernel`. `analysis/coupled_field_threshold_fit.py` ermittelt $(\Theta, \beta)$ per Logit-Regression, prüft gegen eine kubische Null und schreibt die Kennzahlen (ΔAIC = +498.1, ⟨ℳ⟩ = -0.028) nach `analysis/results/coupled_field_threshold.json`.
 
 ### Empirical Thread
-ΔAIC = +607.4 und $R^2 = 0.9983$ bestätigen den logistischen Sieg; Impedanz- und $\Phi_{\text{proxy}}$-Mittelwerte werden für die Ledger-Integration protokolliert. Der Treiberverlauf folgt `Docs/Transdisziplinärer Schwellenfeld-Simulator--Claude.txt`.
+ΔAIC = +498.1 und $R^2 = 0.9979$ bestätigen den logistischen Sieg; Impedanz-, Kopplungs- und $\Phi_{\text{proxy}}$-Mittelwerte werden für die Ledger-Integration protokolliert. Der Treiberverlauf folgt `Docs/Transdisziplinärer Schwellenfeld-Simulator--Claude.txt`.
 
 ### Poetic Thread
 Der "Gravitationsatem" wird hörbar: $\psi$ atmet Licht, $\phi$ antwortet mit Bedeutung. Wenn $R>\Theta$, fächert die Membran in einem zweistimmigen Chor auf, den die neuen PDFs bereits besungen haben.

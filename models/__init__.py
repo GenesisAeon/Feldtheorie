@@ -18,12 +18,13 @@ from .membrane_solver import (
     threshold_crossing_diagnostics,
 )
 from .logistic_envelope import LogisticFieldEnvelope
-from .coupled_threshold_field import CoupledThresholdField, ramp_driver
+from .coupled_threshold_field import CoupledThresholdField, logistic_semantic_kernel, ramp_driver
 
 __all__ = [
     "ThresholdFieldSolver",
     "LogisticFieldEnvelope",
     "CoupledThresholdField",
+    "logistic_semantic_kernel",
     "logistic_response",
     "smooth_impedance_profile",
     "threshold_crossing_diagnostics",

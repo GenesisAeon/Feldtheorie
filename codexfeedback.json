@@ -156,8 +156,8 @@
                 "Trigger follow-up fits when any domain falls below the median Delta AIC or lacks a recorded best null model."
             ],
             "observables": {
-                "median_r2": 0.9981,
-                "median_delta_aic": 65.11814934455208,
+                "median_r2": 0.9979289120972659,
+                "median_delta_aic": 70.69582320908519,
                 "impedance_alert_domains": []
             }
         },
@@ -199,15 +199,16 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Keep models/coupled_threshold_field.py in sync with Docs/Gravitationsatem_ Master-Dokument Erstellung.pdf definitions.",
-                "Recompute analysis/results/coupled_field_threshold.json whenever coupling or impedance parameters change.",
-                "Expose phi_proxy and impedance medians to simulator presets when the UI streams coupled runs."
+                "Keep models/coupled_threshold_field.py in sync with Docs/Gravitationsatem_ Master-Dokument Erstellung.pdf definitions and the new logistic_semantic_kernel.",
+                "Recompute analysis/results/coupled_field_threshold.json and the cohort summary whenever coupling or impedance parameters change.",
+                "Expose phi_proxy, coupling_mean, and impedance medians to simulator presets when the UI streams coupled runs."
             ],
             "observables": {
-                "delta_aic": 607.4295843992868,
-                "r2": 0.9982718406728389,
-                "phi_proxy_peak": 7.701586873421095e-05,
-                "impedance_mean": 1.105927725018616
+                "delta_aic": 498.1482382097897,
+                "r2": 0.9979289120972659,
+                "phi_proxy_peak": 7.713300598834863e-05,
+                "impedance_mean": 1.1076414033639093,
+                "coupling_mean": -0.02802406960216081
             }
         }
     ]

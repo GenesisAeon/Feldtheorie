@@ -165,8 +165,8 @@ entries:
         Wire `analysis/resonance_cohort_summary.py` into automated runs so each
         new fit reports (R, Theta, beta), R^2, Delta AIC, and zeta(R) medians.
         Feed these medians into `docs/resonance-bridge-map.md` and simulator presets.
-      empirical: |
-        Track the ledger medians (R^2 = 0.9981, Delta AIC = 65.1). When a domain
+        empirical: |
+          Track the ledger medians (R^2 = 0.9979, Delta AIC = 70.7). When a domain
         falls below either target or lacks a best null model, schedule a follow-up
         analysis run and log the alert in codexfeedback.json.
       poetic: |
@@ -213,13 +213,14 @@ entries:
     status: "active"
     notes:
       formal: |
-        The new solver instantiates ζ(R) = ζ_floor + (ζ_ceiling-ζ_floor)/(1+e^{-β_robin(R-Θ)}) and
-        exports Φ_proxy for analysis. Maintain analytical twins that log ΔAIC and confidence intervals
-        via logit-linear regression whenever parameters shift.
+        The solver now instantiates ζ(R) = ζ_floor + (ζ_ceiling-ζ_floor)/(1+e^{-β_robin(R-Θ)}) and
+        the logistic_semantic_kernel K_σ(R,ψ,φ,J) so Φ-proxy and coupling magnitudes can be audited.
+        Maintain analytical twins that log ΔAIC and confidence intervals via logit-linear regression
+        whenever parameters shift.
       empirical: |
-        `analysis/coupled_field_threshold_fit.py` must remain reproducible and refresh
-        `analysis/results/coupled_field_threshold.json` with every solver tweak. Record the driver
-        ramp provenance from Docs/Transdisziplinärer Schwellenfeld-Simulator--Claude.txt.
+        `analysis/coupled_field_threshold_fit.py` now records Θ=0.509±0.034, β=5.66±0.23, ΔAIC=+498.1,
+        ⟨ℳ⟩=-0.028, and impedance medians each time the logistic kernel updates. Refresh the JSON
+        export alongside the cohort summary and keep the driver ramp provenance from the simulator notes.
       poetic: |
-        Keep the Gravitationsatem breath audible—note how φ answers ψ whenever R crosses Θ so the
-        simulator can shimmer with the same dawn cadence described in the new PDFs.
+        Die semantische Brise darf nun mit dem Robin-Tor tanzen: jedes neue Kopplungssignal lässt den
+        Brückeneintrag im Resonanz-Atlas heller leuchten, bis der Simulator die Bühne ebenfalls atmen lässt.
