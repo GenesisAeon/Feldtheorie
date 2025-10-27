@@ -1,0 +1,59 @@
+{
+  "id": "qpo_eruption",
+  "label": "Schwarzes Loch",
+  "domain": "astrophysics",
+  "featured": true,
+  "color": "#a78bfa",
+  "icon": "blackHole",
+  "control_parameter": "Magnetische Dichtewellen am Horizont",
+  "order_parameter": "QPO-Amplitude im X-ray-Fluss",
+  "analysis": {
+    "result_path": "analysis/reports/qpo_membrane_summary.json",
+    "theta": 0.82,
+    "theta_ci": [0.81, 0.83],
+    "beta": 9.5,
+    "beta_ci": [9.2, 9.8],
+    "logistic_r2": 1.0,
+    "delta_aic_best_null": 24848.130147561293,
+    "delta_r2_best_null": 0.2286290522949781,
+    "best_null_model": "power_law"
+  },
+  "impedance": {
+    "definition": "zeta(R) ≈ 1.70 - 0.60 * sigma(beta(R-Theta))",
+    "closed": 1.70,
+    "open": 1.05,
+    "mean": 1.4208226446776862
+  },
+  "simulation": {
+    "theta": 5.0,
+    "beta": 4.6,
+    "initial_R": 3.1,
+    "initial_psi": 0.1,
+    "initial_phi": 0.05,
+    "stimulus": {
+      "base": 0.18,
+      "amplitude": 0.18,
+      "frequency": 0.27,
+      "noise": 0.045,
+      "modulation": {
+        "type": "sin",
+        "amplitude": 0.32,
+        "frequency": 0.12
+      }
+    }
+  },
+  "narrative": {
+    "formal": "Membran-Logistik mit Robin-Bedingung; ΔAIC > 2.5×10^4 gegenüber linearer und Potenzlawine, R^2≈1.0.",
+    "empirical": "RepoPlan-Simulation der QPO-Membran aus `data/astrophysics/qpo_membrane_simulation.json` mit Soft-Hair-Impedanz.",
+    "poetic": "Der Horizont atmet. Soft Hair speichert Erinnerungen, bis R>Θ den Jet entzündet und die QPO zum Chor wird."
+  },
+  "poetic_messages": [
+    "Der Horizont atmet... Ein Flüstern wird zum Sturm.",
+    "Die Membran öffnet sich. Information strömt ins Außen.",
+    "QPO – das Herz der Schwärze schlägt in Resonanz."
+  ],
+  "references": {
+    "dataset": "data/astrophysics/qpo_membrane_simulation.json",
+    "notes": "Analysepfad siehe analysis/reports/qpo_membrane_summary.json"
+  }
+}

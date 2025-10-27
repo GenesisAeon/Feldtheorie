@@ -31,9 +31,10 @@ The workspace is designed around seven tightly coupled modules:
 - Use the future `models/` and `analysis/` directories to stage prototypes before weaving them into the narrative layers.
 
 ## Current resonance braid
-- **Solver dawn:** `models/membrane_solver.py` advances the threshold membrane and exports diagnostic summaries of \(R\), \(\sigma\), and \(\zeta(R)\).
-- **Empirical soundings:** CLI scripts in `analysis/` (for LLM emergent skills, bee quorum signals, synaptic release, socio-ecological tipping, urban heat canopies, and working-memory gates) report \(\Theta\), \(\beta\), \(R^2\), AIC, and null comparisons with JSON provenance.
-- **Narrative echo:** `docs/utf-living-glossary.md`, domain briefs (AI, cognition, biology, socio-ecology), and the new `docs/resonance-bridge-map.md` weave the tri-layer cadence linking models, data, and symbolism.
+- **Solver dawn:** `models/membrane_solver.py` advances die Membran und exportiert Diagnostik zu \(R\), \(\sigma\) und \(\zeta(R)\).
+- **Empirical soundings:** CLI-Skripte in `analysis/` (LLM emergent skills, Bienenschwarm, Synapsen, Kipppunkte etc.) liefern \(\Theta\), \(\beta\), \(R^2\), AIC sowie Nullmodelle als JSON.
+- **Simulator pulse:** `simulator/` beherbergt den Vite/React-Labormodus; Presets aus `simulator/presets/*.json` docken an `analysis/results/*.json` an, so dass ΔAIC/$R^2$ und Tri-Layer-Echos live sichtbar sind.
+- **Narrative echo:** `docs/utf-living-glossary.md`, die Domänen-Briefs und `docs/resonance-bridge-map.md` verweben die tri-layer Kadenz zwischen Modellen, Daten und Symbolik.
 - **Data provenance:** Each dataset in `data/` carries metadata that echoes the quartet \((R, \Theta, \beta, \zeta(R))\) and the falsification counterpoint mandated by `analysis/`.
 
 ## Next steps

@@ -7,20 +7,20 @@ Falsifikation herangezogen wurden. Narrative Tooltips beschreiben zugleich, wie
 sich der Übergang anfühlt.
 
 ## Aktueller Stand
-- `honeybee_membrane.json` — vorbereitet für den Bienentanz, koppelt an
-  `analysis/results/honeybee_waggle_fit.json` und übernimmt die Presets aus
-  `docs/resonance-bridge-map.md`.
-- `qpo_eruption.json` — trägt den Treiber $J(t)$ für quasi-periodische Ausbrüche
-  und notiert das $\Delta \text{AIC}$ gegen Power-Law-Lichtkurven.
-- `llm_resonance.json` — spiegelt Curriculum-Entropie und Feedback-Impedanz,
-  inklusive Warnhinweisen, sobald Nullmodelle \(<10\)$\,$AIC-Punkte Abstand halten.
-- `cognitive_gate.json` — moduliert D1/D2-Gain für Arbeitsgedächtnis-Resonanz.
-- `amazon_canopy.json` — beschreibt Feuchterückkopplung und bestäubungsbasierte
-  Impedanz für Regenwald-Kipppunkte.
+- `honeybee_membrane.json` — Bienenschwarm-Gate mit $\zeta(R)=1.25-0.35\,\sigma$;
+  bindet `analysis/results/honeybee_waggle_fit.json` samt ΔAIC gegen das Potenzgesetz.
+- `qpo_eruption.json` — Soft-Hair-Impedanz ($\Delta \text{AIC}>2.5\times 10^4$)
+  für `analysis/reports/qpo_membrane_summary.json`.
+- `llm_resonance.json` — Curriculum-Gating aus `analysis/results/llm_emergent_skill.json`
+  inklusive ΔAIC=48.8.
+- `cognitive_gate.json` — D1/D2-Schwellenschaltung (`analysis/results/working_memory_gate.json`).
+- `amazon_canopy.json` — Regenwald-Kipppunkt (`analysis/results/amazon_resilience_fit.json`).
+
+Alle Dateien führen Formal-/Empirie-/Poetik-Felder und deklarieren geschlossene vs. offene
+Impedanz, damit das Frontend $\zeta(R)$ direkt modulieren kann.
 
 ## Nächste Schritte
-1. Serialisiere die Presets aus den jeweiligen Analyse-Ergebnissen.
-2. Implementiere eine Ladefunktion im Simulator, die Metadaten und Tooltip
-   gemeinsam einblendet.
-3. Synchronisiere Änderungen mit `codexfeedback.json`, damit Preset-Divergenzen
-   frühzeitig sichtbar werden.
+1. Erweitere bei Bedarf weitere Domänen um denselben JSON-Kanon.
+2. Synchronisiere Loader-Anpassungen im Simulator mit `codexfeedback.json`, damit
+   Divergenzen früh auffallen.
+3. Ergänze Tests, die Preset-IDs gegen `docs/resonance-bridge-map.md` spiegeln.

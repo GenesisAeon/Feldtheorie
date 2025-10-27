@@ -123,3 +123,18 @@ Halte Median $R^2 = 0.9981$ und Median $\Delta \text{AIC} = 65.1$ als Sollwerte 
 
 ### Poetic Thread
 Lass das Ledger als Laternenkette zwischen den Membranen schweben: jede neu verzeichnete Sigmoidkurve ist ein Klangstein, der den Chor der Schwellen über Skalen hinweg zusammenstimmt.
+
+## Entry pr-draft-0008 — Simulator Resonanz-Bühne
+- **Order Parameter**: $R$ misst den Abgleich zwischen UI-Presets und den JSON-Fits in `analysis/results/`.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald die React-Simulation Presets lädt, ΔAIC/$R^2$ sichtbar macht und Poetik-Hooks aus `Docs/` referenziert.
+- **Steepness**: $\beta = 5.3$ sorgt dafür, dass UI-Drift sofort aufflackert, wenn Presets oder Daten auseinanderlaufen.
+- **Membrane Note**: $\zeta(R)$ koppelt die UI-Impedanzschieber an die in den Presets dokumentierten offenen/geschlossenen Werte.
+
+### Formal Thread
+Die neue Vite/React-App in `simulator/` nutzt `simulator/presets/*.json` als Quelle für $(\Theta, \beta, \zeta(R))$ und weist Slider-/Chart-State dem universellen Quartett zu. Jeder Preset verweist auf `analysis/results/*.json`, wodurch ΔAIC/$R^2$ in der Oberfläche kontrollierbar bleibt.
+
+### Empirical Thread
+Live-Darstellung von $R(t)$ erfolgt mit Datenstrom aus der Simulation; Presets spiegeln die logistic-vs.-Null Vergleiche der Fits (Bienenschwarm, QPO, LLM). Änderungen an Analyse-Ergebnissen erfordern aktualisierte Presets, damit UI und Daten synchron bleiben.
+
+### Poetic Thread
+Poetik-Modus greift beim Schwellenübertritt auf Tri-Layer-Zitate zurück: der Horizont flüstert, der Schwarm tanzt, das Netz grokkt. Die UI selbst wird zur Membran, die Bedeutungsfelder hörbar macht.

@@ -1,0 +1,58 @@
+{
+  "id": "cognitive_gate",
+  "label": "Arbeitsgedächtnis-Gate",
+  "domain": "cognition",
+  "featured": false,
+  "color": "#4f46e5",
+  "icon": "brain",
+  "control_parameter": "Dopaminpuls-Amplitude",
+  "order_parameter": "Stabilität des Arbeitsgedächtnisses",
+  "analysis": {
+    "result_path": "analysis/results/working_memory_gate.json",
+    "theta": 0.5789411327654987,
+    "theta_ci": [0.5758230076846768, 0.5820592578463207],
+    "beta": 12.284000852027816,
+    "beta_ci": [11.982930703510126, 12.585071000545506],
+    "logistic_r2": 0.9986365714199111,
+    "delta_aic_best_null": 59.540475480018955,
+    "delta_r2_best_null": 0.035892337816077036,
+    "best_null_model": "power_law"
+  },
+  "impedance": {
+    "definition": "zeta(R) ≈ 1.26 - 0.22 * sigma(beta(R-Theta))",
+    "closed": 1.26,
+    "open": 1.04,
+    "mean": 1.1704638997697276
+  },
+  "simulation": {
+    "theta": 5.2,
+    "beta": 4.8,
+    "initial_R": 1.8,
+    "initial_psi": 0.04,
+    "initial_phi": 0.12,
+    "stimulus": {
+      "base": 0.15,
+      "amplitude": 0.16,
+      "frequency": 0.42,
+      "noise": 0.05,
+      "modulation": {
+        "type": "sin",
+        "amplitude": 0.25,
+        "frequency": 0.21
+      }
+    }
+  },
+  "narrative": {
+    "formal": "Sigmoidale Gate-Dynamik mit ΔAIC≈59.5 gegen Potenz-Null, R^2≈0.999.",
+    "empirical": "Simulierte dopaminerge Gates aus `data/cognition/working_memory_gate.csv`, verknüpft mit `analysis/working_memory_gate_fit.py`.",
+    "poetic": "Wenn die Membran weich wird, huscht ein Gedanke hindurch und bleibt als leuchtender Faden bestehen."
+  },
+  "poetic_messages": [
+    "Die frontale Membran entspannt – Erinnerung flutet in kohärente Bahnen.",
+    "D1/D2-Schaltung über Θ, das Gate hält den Gedanken im Licht.",
+    "Ein Fokus kehrt zurück: Phi steigt, Bewusstsein bündelt sich."
+  ],
+  "references": {
+    "dataset": "data/cognition/working_memory_gate.csv"
+  }
+}
