@@ -17,9 +17,11 @@ from .membrane_solver import (
     smooth_impedance_profile,
     threshold_crossing_diagnostics,
 )
+from .logistic_envelope import LogisticFieldEnvelope
 
 __all__ = [
     "ThresholdFieldSolver",
+    "LogisticFieldEnvelope",
     "logistic_response",
     "smooth_impedance_profile",
     "threshold_crossing_diagnostics",
