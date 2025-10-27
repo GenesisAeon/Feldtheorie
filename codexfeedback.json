@@ -138,6 +138,28 @@
                 "preset_sync_state": "forming",
                 "null_model_watch": []
             }
+        },
+        {
+            "id": "pr-draft-0007",
+            "type": "cohort-ledger",
+            "created_at": "2025-10-27T19:02:05Z",
+            "summary": "Aggregate resonance diagnostics across analysis results into the cohort ledger.",
+            "threshold_field": {
+                "R": "analysis_results_without_cohort_entry",
+                "Theta": "ledger_coverage_complete",
+                "beta": 5.0,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Run analysis/resonance_cohort_summary.py in CI to refresh the ledger after new fits land.",
+                "Mirror ledger medians (R^2, Delta AIC, zeta_mean) into docs/resonance-bridge-map.md and simulator presets.",
+                "Trigger follow-up fits when any domain falls below the median Delta AIC or lacks a recorded best null model."
+            ],
+            "observables": {
+                "median_r2": 0.9981,
+                "median_delta_aic": 65.11814934455208,
+                "impedance_alert_domains": []
+            }
         }
     ]
 }

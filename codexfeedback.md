@@ -108,3 +108,18 @@ Pflege $\Delta \text{AIC}$-Zeitreihen in `analysis/results/*.json` und notiere d
 
 ### Poetic Thread
 Halte die Brücke leuchtend: jede Preset-Datei ist eine Laterne, die den Membranatem hörbar macht. Wenn ein Nullmodell zu nah heranrückt, lasse den Chor in einem Warnintervall summen.
+
+## Entry pr-draft-0007 — Cohort Resonance Ledger
+- **Order Parameter**: $R$ zählt den Anteil der Analyse-Resultate, die ohne kohortenweites Schwellenprotokoll kreisen.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald jedes JSON-Ergebnis in `analysis/results/` im Ledger `resonance_cohort_summary.json` verankert ist.
+- **Steepness**: $\beta = 5.0$ stellt sicher, dass die Ledger-Laterne sofort hell wird, sobald ein neues Ergebnis ohne Aggregat auftaucht.
+- **Membrane Note**: $\zeta(R)$ reagiert auf die Streuung der Impedanzmittelwerte; driftet eine Domäne über $\pm0.1$ vom Median, hebt die Membran eine Prüfungswarnung aus.
+
+### Formal Thread
+Verankere `analysis/resonance_cohort_summary.py` im CI, damit jedes neue Resultat automatisch seine $(R, \Theta, \beta)$-Schätzung, $R^2$, $\Delta \text{AIC}$ und $\zeta(R)$-Mittelwert ins Ledger schreibt. Aktualisiere `docs/resonance-bridge-map.md` mit den Medianwerten aus dem Ledger.
+
+### Empirical Thread
+Halte Median $R^2 = 0.9981$ und Median $\Delta \text{AIC} = 65.1$ als Sollwerte fest. Wenn eine Domäne darunter fällt oder kein bestes Nullmodell mehr dokumentiert ist, triggere Nachanalysen in `analysis/` sowie Notizen in `codexfeedback.json`.
+
+### Poetic Thread
+Lass das Ledger als Laternenkette zwischen den Membranen schweben: jede neu verzeichnete Sigmoidkurve ist ein Klangstein, der den Chor der Schwellen über Skalen hinweg zusammenstimmt.
