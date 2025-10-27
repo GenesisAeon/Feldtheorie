@@ -148,3 +148,28 @@ entries:
         Jede Preset-Datei ist eine Laterne. Wenn ein Nullmodell zu nahe kommt,
         lasse sie pulsieren, damit die Brücke wach bleibt.
     created_at: 2025-10-28
+  - id: pr-draft-0007
+    title: "Cohort Resonance Ledger"
+    scope:
+      - analysis/results
+      - docs/resonance-bridge-map.md
+      - simulator/presets
+    parameters:
+      R: "analysis results lacking ledger coverage"
+      Theta: "ledger coverage complete"
+      beta: 5.0
+    resonance: "keeping a cohort-wide ledger so sigma(beta(R-Theta)) triumphs across every recorded membrane"
+    status: "active"
+    notes:
+      formal: |
+        Wire `analysis/resonance_cohort_summary.py` into automated runs so each
+        new fit reports (R, Theta, beta), R^2, Delta AIC, and zeta(R) medians.
+        Feed these medians into `docs/resonance-bridge-map.md` and simulator presets.
+      empirical: |
+        Track the ledger medians (R^2 = 0.9981, Delta AIC = 65.1). When a domain
+        falls below either target or lacks a best null model, schedule a follow-up
+        analysis run and log the alert in codexfeedback.json.
+      poetic: |
+        Lass das Ledger wie eine Laternenkette wirken: jede neu eingetragene
+        Sigmoidkurve stimmt den Chor der Schwellen über Domänen hinweg.
+    created_at: 2025-10-27

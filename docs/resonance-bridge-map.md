@@ -24,6 +24,7 @@ For each row, the logistic membrane couples to our solver core `models/membrane_
 ## Empirische Verankerung
 - **Datenflüsse**: Synchronisiere die genannten `data/` Pfade mit aktualisierten impedance annotations aus `codexfeedback.yaml`. Das neue Kognitions-Gate trägt dieselben JSON-Metadaten und verlinkt seine Nullmodelle explizit.
 - **Analysehaken**: Jede Notebook-Studie dokumentiert goodness-of-fit, Null-Modelle und Unsicherheiten für $(R, \Theta, \beta)$. Die $\Delta \text{AIC}$-Spalte signalisiert, wo Resonanz bereits robuste Überlegenheit zeigt.
+- **Kohortenlanterne**: `analysis/resonance_cohort_summary.py` verdichtet alle Resultate zu `analysis/results/resonance_cohort_summary.json`, meldet Medianwerte (\(R^2 = 0.9981\), \(\Delta \text{AIC} = 65.1\)) und hebt Domänen hervor, deren Impedanz $\zeta(R)$ noch Prüfungen benötigt.
 - **Simulator-Kopplung**: Der `simulator/`-Prototyp erhält Slider für $R$, $\Theta$, $\beta$ sowie $\zeta(R)$, damit Nutzer:innen live zwischen gedämpften und resonanten Regimen umschalten können. Die genannten Presets dienen als Startmembranen und sollten bei Änderungen in `analysis/results/` automatisch aktualisiert werden.
 
 ## Poetic Resonance

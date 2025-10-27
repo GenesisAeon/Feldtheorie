@@ -1,0 +1,359 @@
+{
+  "meta": {
+    "generated_at": "2025-10-27T19:03:58.983880+00:00",
+    "cohort_size": 8,
+    "logistic_response": "sigma(beta * (R - Theta))"
+  },
+  "aggregate": {
+    "theta": {
+      "mean": 5.779775029205961,
+      "median": 0.6810555216484613,
+      "min": 0.02150266269691967,
+      "max": 26.578069452654905
+    },
+    "beta": {
+      "mean": 9.443343864577727,
+      "median": 11.688528346983832,
+      "min": 0.6717283976038891,
+      "max": 16.289963354409085
+    },
+    "logistic_r2": {
+      "mean": 0.9933736273707513,
+      "median": 0.9980599778908479,
+      "min": 0.9687963452454948,
+      "max": 0.9999661710064784
+    },
+    "delta_aic": {
+      "mean": 80.59852929129305,
+      "median": 65.11814934455208,
+      "min": 25.196229770856547,
+      "max": 168.01118273101198
+    },
+    "delta_r2": {
+      "mean": 0.09974597068626788,
+      "median": 0.0789560217002116,
+      "min": 0.03238833758006332,
+      "max": 0.22733769849175556
+    },
+    "zeta_mean": {
+      "mean": 1.2475641852382084,
+      "median": 1.2088409180515494,
+      "min": 1.0,
+      "max": 1.5343220981632029
+    }
+  },
+  "domains": {
+    "socio_ecology": {
+      "count": 2,
+      "delta_aic": {
+        "mean": 61.12637641175978,
+        "median": 61.12637641175978,
+        "min": 51.55692961443437,
+        "max": 70.69582320908519
+      },
+      "delta_r2": {
+        "mean": 0.04412517403086724,
+        "median": 0.04412517403086724,
+        "min": 0.03238833758006332,
+        "max": 0.055862010481671165
+      },
+      "logistic_r2": {
+        "mean": 0.9988841641477689,
+        "median": 0.9988841641477689,
+        "min": 0.9986553018766973,
+        "max": 0.9991130264188406
+      }
+    },
+    "biology": {
+      "count": 2,
+      "delta_aic": {
+        "mean": 48.71436043120674,
+        "median": 48.71436043120674,
+        "min": 25.196229770856547,
+        "max": 72.23249109155694
+      },
+      "delta_r2": {
+        "mean": 0.19242716249735475,
+        "median": 0.19242716249735475,
+        "min": 0.15751662650295395,
+        "max": 0.22733769849175556
+      },
+      "logistic_r2": {
+        "mean": 0.9831398648036397,
+        "median": 0.9831398648036397,
+        "min": 0.9687963452454948,
+        "max": 0.9974833843617845
+      }
+    },
+    "ai": {
+      "count": 1,
+      "delta_aic": {
+        "mean": 48.83297279753836,
+        "median": 48.83297279753836,
+        "min": 48.83297279753836,
+        "max": 48.83297279753836
+      },
+      "delta_r2": {
+        "mean": 0.09593694942698294,
+        "median": 0.09593694942698294,
+        "min": 0.09593694942698294,
+        "max": 0.09593694942698294
+      },
+      "logistic_r2": {
+        "mean": 0.995240963971551,
+        "median": 0.995240963971551,
+        "min": 0.995240963971551,
+        "max": 0.995240963971551
+      }
+    },
+    "geophysics": {
+      "count": 1,
+      "delta_aic": {
+        "mean": 148.72212963584204,
+        "median": 148.72212963584204,
+        "min": 148.72212963584204,
+        "max": 148.72212963584204
+      },
+      "delta_r2": {
+        "mean": 0.1310587112171988,
+        "median": 0.1310587112171988,
+        "min": 0.1310587112171988,
+        "max": 0.1310587112171988
+      },
+      "logistic_r2": {
+        "mean": 0.9999661710064784,
+        "median": 0.9999661710064784,
+        "min": 0.9999661710064784,
+        "max": 0.9999661710064784
+      }
+    },
+    "synthetic": {
+      "count": 1,
+      "delta_aic": {
+        "mean": 168.01118273101198,
+        "median": 168.01118273101198,
+        "min": 168.01118273101198,
+        "max": 168.01118273101198
+      },
+      "delta_r2": {
+        "mean": 0.061975093973440254,
+        "median": 0.061975093973440254,
+        "min": 0.061975093973440254,
+        "max": 0.061975093973440254
+      },
+      "logistic_r2": {
+        "mean": 0.9890972546652523,
+        "median": 0.9890972546652523,
+        "min": 0.9890972546652523,
+        "max": 0.9890972546652523
+      }
+    },
+    "cognition": {
+      "count": 1,
+      "delta_aic": {
+        "mean": 59.540475480018955,
+        "median": 59.540475480018955,
+        "min": 59.540475480018955,
+        "max": 59.540475480018955
+      },
+      "delta_r2": {
+        "mean": 0.035892337816077036,
+        "median": 0.035892337816077036,
+        "min": 0.035892337816077036,
+        "max": 0.035892337816077036
+      },
+      "logistic_r2": {
+        "mean": 0.9986365714199111,
+        "median": 0.9986365714199111,
+        "min": 0.9986365714199111,
+        "max": 0.9986365714199111
+      }
+    }
+  },
+  "records": [
+    {
+      "result_path": "analysis/results/amazon_resilience_fit.json",
+      "domain": "socio_ecology",
+      "dataset_path": "data/socio_ecology/amazon_resilience.csv",
+      "theta": 0.6214703985864286,
+      "theta_ci": [
+        0.617767971171555,
+        0.6251728260013022
+      ],
+      "beta": 14.019150893618612,
+      "beta_ci": [
+        13.685269700463397,
+        14.353032086773826
+      ],
+      "logistic_r2": 0.9991130264188406,
+      "logistic_aic": -152.29649539122587,
+      "best_null_model": "power_law",
+      "best_null_aic": -81.60067218214068,
+      "delta_aic": 70.69582320908519,
+      "delta_r2": 0.055862010481671165,
+      "logistic_minus_best_r2": 0.055862010481671165,
+      "zeta_mean": 1.5343220981632029
+    },
+    {
+      "result_path": "analysis/results/honeybee_waggle_fit.json",
+      "domain": "biology",
+      "dataset_path": "data/biology/honeybee_waggle_activation.csv",
+      "theta": 26.578069452654905,
+      "theta_ci": [
+        25.830816988695016,
+        27.325321916614794
+      ],
+      "beta": 0.6717283976038891,
+      "beta_ci": [
+        0.5413091744299211,
+        0.8021476207778572
+      ],
+      "logistic_r2": 0.9687963452454948,
+      "logistic_aic": -73.55328443149556,
+      "best_null_model": "linear",
+      "best_null_aic": -48.35705466063901,
+      "delta_aic": 25.196229770856547,
+      "delta_r2": 0.15751662650295395,
+      "logistic_minus_best_r2": 0.15751662650295395,
+      "zeta_mean": 1.1132816696807928
+    },
+    {
+      "result_path": "analysis/results/llm_emergent_skill.json",
+      "domain": "ai",
+      "dataset_path": "data/ai/llm_emergent_skill.csv",
+      "theta": 4.707167899782632,
+      "theta_ci": [
+        4.666121332188985,
+        4.748214467376278
+      ],
+      "beta": 5.104012465624547,
+      "beta_ci": [
+        4.716737541680306,
+        5.491287389568788
+      ],
+      "logistic_r2": 0.995240963971551,
+      "logistic_aic": -112.1631578921753,
+      "best_null_model": "power_law",
+      "best_null_aic": -63.330185094636946,
+      "delta_aic": 48.83297279753836,
+      "delta_r2": 0.09593694942698294,
+      "logistic_minus_best_r2": 0.09593694942698294,
+      "zeta_mean": 1.379433408708651
+    },
+    {
+      "result_path": "analysis/results/subduction_rupture_threshold.json",
+      "domain": "geophysics",
+      "dataset_path": "data/geophysics/subduction_rupture_threshold.csv",
+      "theta": 0.7406406447104941,
+      "theta_ci": [
+        0.7398700068389016,
+        0.7414112825820866
+      ],
+      "beta": 16.289963354409085,
+      "beta_ci": [
+        16.20442997866459,
+        16.375496730153582
+      ],
+      "logistic_r2": 0.9999661710064784,
+      "logistic_aic": -221.4544970723466,
+      "best_null_model": "power_law",
+      "best_null_aic": -72.73236743650457,
+      "delta_aic": 148.72212963584204,
+      "delta_r2": 0.1310587112171988,
+      "logistic_minus_best_r2": 0.1310587112171988,
+      "zeta_mean": 1.3653305694801947
+    },
+    {
+      "result_path": "analysis/results/synaptic_release_fit.json",
+      "domain": "biology",
+      "dataset_path": "data/biology/synaptic_release_threshold.csv",
+      "theta": 12.677728838580355,
+      "theta_ci": [
+        12.192177773346295,
+        13.163279903814416
+      ],
+      "beta": 0.8099742262185788,
+      "beta_ci": [
+        0.7263977789302415,
+        0.8935506735069162
+      ],
+      "logistic_r2": 0.9974833843617845,
+      "logistic_aic": -121.98087991786045,
+      "best_null_model": "power_law",
+      "best_null_aic": -49.74838882630352,
+      "delta_aic": 72.23249109155694,
+      "delta_r2": 0.22733769849175556,
+      "logistic_minus_best_r2": 0.22733769849175556,
+      "zeta_mean": 1.186570598415284
+    },
+    {
+      "result_path": "analysis/results/synthetic_threshold_sweep.json",
+      "domain": "synthetic",
+      "dataset_path": null,
+      "theta": 0.02150266269691967,
+      "theta_ci": [
+        -0.056468920404552744,
+        0.09947424579839208
+      ],
+      "beta": 11.093055841939847,
+      "beta_ci": [
+        9.62068186110805,
+        12.565429822771645
+      ],
+      "logistic_r2": 0.9890972546652523,
+      "logistic_aic": -367.72051631665977,
+      "best_null_model": "power_law",
+      "best_null_aic": -199.70933358564778,
+      "delta_aic": 168.01118273101198,
+      "delta_r2": 0.061975093973440254,
+      "logistic_minus_best_r2": 0.061975093973440254,
+      "zeta_mean": 1.0
+    },
+    {
+      "result_path": "analysis/results/urban_heat_canopy.json",
+      "domain": "socio_ecology",
+      "dataset_path": "data/socio_ecology/urban_heat_canopy.csv",
+      "theta": 0.31267920387045345,
+      "theta_ci": [
+        0.3087776803303822,
+        0.3165807274105247
+      ],
+      "beta": 15.274864885179445,
+      "beta_ci": [
+        14.840374828710752,
+        15.709354941648138
+      ],
+      "logistic_r2": 0.9986553018766973,
+      "logistic_aic": -136.31925278542303,
+      "best_null_model": "linear",
+      "best_null_aic": -84.76232317098867,
+      "delta_aic": 51.55692961443437,
+      "delta_r2": 0.03238833758006332,
+      "logistic_minus_best_r2": 0.03238833758006332,
+      "zeta_mean": 1.2311112376878148
+    },
+    {
+      "result_path": "analysis/results/working_memory_gate.json",
+      "domain": "cognition",
+      "dataset_path": "data/cognition/working_memory_gate.csv",
+      "theta": 0.5789411327654987,
+      "theta_ci": [
+        0.5758230076846768,
+        0.5820592578463207
+      ],
+      "beta": 12.284000852027816,
+      "beta_ci": [
+        11.982930703510126,
+        12.585071000545506
+      ],
+      "logistic_r2": 0.9986365714199111,
+      "logistic_aic": -160.4001933829221,
+      "best_null_model": "power_law",
+      "best_null_aic": -100.85971790290316,
+      "delta_aic": 59.540475480018955,
+      "delta_r2": 0.035892337816077036,
+      "logistic_minus_best_r2": 0.035892337816077036,
+      "zeta_mean": 1.1704638997697276
+    }
+  ]
+}
