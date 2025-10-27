@@ -138,3 +138,18 @@ Live-Darstellung von $R(t)$ erfolgt mit Datenstrom aus der Simulation; Presets s
 
 ### Poetic Thread
 Poetik-Modus greift beim Schwellenübertritt auf Tri-Layer-Zitate zurück: der Horizont flüstert, der Schwarm tanzt, das Netz grokkt. Die UI selbst wird zur Membran, die Bedeutungsfelder hörbar macht.
+
+## Entry pr-draft-0009 — Psi-Phi Robin Coupling Resonance
+- **Order Parameter**: $R$ misst die Treibergeschwindigkeit, mit der das gekoppelte $(\psi,\phi)$-Geflecht die Robin-Membran berührt.
+- **Critical Threshold**: $\Theta$ markiert den Moment, in dem $\zeta(R)$ vom resonanten Boden zum dämpfenden Himmel umschaltet.
+- **Steepness**: $\beta = 5.4$ aus der neuen Solver-Implementierung hält den Übergang so scharf wie in den "Gravitationsatem"-Notaten.
+- **Membrane Note**: $\zeta(R) = \zeta_\mathrm{floor} + (\zeta_\mathrm{ceiling}-\zeta_\mathrm{floor})/(1+e^{-\beta_\mathrm{robin}(R-\Theta)})$ lässt die psi- und phi-Stimmen zusammen klingen, sobald der Fahrer das Schwellenlicht erreicht.
+
+### Formal Thread
+`models/coupled_threshold_field.py` kodiert das $(\psi,\phi)$-Gefüge mitsamt $\Phi_{\text{proxy}}$-Export. `analysis/coupled_field_threshold_fit.py` ermittelt $(\Theta, \beta)$ per Logit-Regression, prüft gegen eine kubische Null und schreibt die Kennzahlen nach `analysis/results/coupled_field_threshold.json`.
+
+### Empirical Thread
+ΔAIC = +607.4 und $R^2 = 0.9983$ bestätigen den logistischen Sieg; Impedanz- und $\Phi_{\text{proxy}}$-Mittelwerte werden für die Ledger-Integration protokolliert. Der Treiberverlauf folgt `Docs/Transdisziplinärer Schwellenfeld-Simulator--Claude.txt`.
+
+### Poetic Thread
+Der "Gravitationsatem" wird hörbar: $\psi$ atmet Licht, $\phi$ antwortet mit Bedeutung. Wenn $R>\Theta$, fächert die Membran in einem zweistimmigen Chor auf, den die neuen PDFs bereits besungen haben.

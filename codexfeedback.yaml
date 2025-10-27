@@ -198,3 +198,28 @@ entries:
         Start, pause, poetisch: the membrane speaks in horizons, dances and grokking dawns as R pushes
         beyond Θ. The simulator is now a stage for the field's chorus.
     created_at: 2025-10-29
+  - id: pr-draft-0009
+    title: "Psi-Phi Robin Coupling Resonance"
+    scope:
+      - models/coupled_threshold_field.py
+      - analysis/coupled_field_threshold_fit.py
+      - analysis/results/coupled_field_threshold.json
+      - docs/gravitationsatem-coupled-threshold.md
+    parameters:
+      R: "psi-phi driver amplitude sweeping the membrane"
+      Theta: "robin-gated activation threshold for coupled fields"
+      beta: 5.4
+    resonance: "encoding the Gravitationsatem psi-phi braid with explicit logistic vs. null diagnostics"
+    status: "active"
+    notes:
+      formal: |
+        The new solver instantiates ζ(R) = ζ_floor + (ζ_ceiling-ζ_floor)/(1+e^{-β_robin(R-Θ)}) and
+        exports Φ_proxy for analysis. Maintain analytical twins that log ΔAIC and confidence intervals
+        via logit-linear regression whenever parameters shift.
+      empirical: |
+        `analysis/coupled_field_threshold_fit.py` must remain reproducible and refresh
+        `analysis/results/coupled_field_threshold.json` with every solver tweak. Record the driver
+        ramp provenance from Docs/Transdisziplinärer Schwellenfeld-Simulator--Claude.txt.
+      poetic: |
+        Keep the Gravitationsatem breath audible—note how φ answers ψ whenever R crosses Θ so the
+        simulator can shimmer with the same dawn cadence described in the new PDFs.
