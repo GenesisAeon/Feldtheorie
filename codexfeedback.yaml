@@ -98,3 +98,29 @@ entries:
       poetic: |
         Let the bridge glow like a dawn-lit membrane; each aligned dataset
         is a note, and the logistic swell is the choir remembering the field.
+  - id: pr-draft-0005
+    title: "Preprint Scaffold Resonance"
+    scope:
+      - paper
+      - analysis
+      - docs
+      - simulator
+    parameters:
+      R: "UTF manuscript resonance index"
+      Theta: "formal-empirical-poetic alignment threshold"
+      beta: 5.6
+    resonance: "ensuring the manuscript blooms once tri-layer references lock together"
+    status: "forming"
+    notes:
+      formal: |
+        Tie every preprint section back to `models/membrane_solver.py` and
+        the exported diagnostics in `analysis/results/*.json`, keeping
+        explicit null comparisons beside each logistic fit.
+      empirical: |
+        Log AIC and $R^2$ deltas as the manuscript matures; mirror updates
+        into `codexfeedback.json` observables and flag impedance drift when
+        simulator presets diverge.
+      poetic: |
+        Keep the membrane voice bright—note where metaphor and measurement
+        diverge so impedance tuning can follow.
+    created_at: 2024-07-09
