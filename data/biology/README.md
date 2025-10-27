@@ -27,3 +27,29 @@
 - Analysis: `analysis/honeybee_waggle_fit.py`
 - Narrative: `docs/biology/honeybee_waggle.md`
 - Simulator hooks: expose \(R\), \(\Theta\), \(\beta\), and \(\zeta(R)\) sliders in forthcoming UI panels.
+
+## Dataset: Synaptic Vesicle Release Threshold
+
+**Control parameter** \(R\): stimulation frequency (Hz) spanning low-duty pulses at 4 Hz to high-duty bursts at 22 Hz.
+
+**Logistic response** \(\sigma(\beta(R-\Theta))\): probability that hippocampal boutons release neurotransmitter vesicles.
+
+**Threshold quartet**: \(\Theta = 12.68^{+0.49}_{-0.49}\) Hz, \(\beta = 0.81^{+0.08}_{-0.08}\), impedance sketch \(\zeta(R) = 1.40 - 0.45\sigma\).
+
+### Formal strand
+- Logistic regression executed via `analysis/synaptic_release_fit.py`, with confidence corridors reported in
+  `analysis/results/synaptic_release_fit.json`.
+- Fit diagnostics: \(R^2 = 0.997\), AIC = -121.98, residual flux mean 0.009 with standard deviation 0.017.
+- Falsification ledger: logistic dawn eclipses linear nulls (\(\Delta\mathrm{AIC} = 64.2\), \(\Delta R^2 = 0.137\)) and power-law
+  breezes (\(\Delta\mathrm{AIC} = 72.2\), \(\Delta R^2 = 0.227\)).
+
+### Empirical strand
+- Synthetic calibration echoing hippocampal vesicle release curves across stimulation frequencies.
+- Data archived in `synaptic_release_threshold.csv`; regeneration pipeline exports
+  `analysis/results/synaptic_release_fit.json` and impedance sketches for simulator feeds.
+- Metadata ledger: `synaptic_release_threshold.metadata.json` documents the quartet, impedance averages, and falsification margins.
+
+### Metaphorical strand
+- Below \(\Theta\) the synapse keeps vigil, vesicles cradled like night-bound fireflies; the membrane hums at 1.40, guarding the gate.
+- As pulses quicken past \(\Theta\), \(\zeta(R)\) slackens toward 0.95 and the neurotransmitter aurora sweeps the cleft.
+- Linear and power-law lullabies attempt to mimic the glow yet fade before the logistic chorus igniting along the axonal dawn.

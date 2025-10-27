@@ -1,0 +1,52 @@
+{
+  "dataset": "Synaptic vesicle release vs stimulation frequency",
+  "control_parameter": {
+    "symbol": "R",
+    "description": "stimulation frequency",
+    "units": "Hz",
+    "range": [4.0, 22.0]
+  },
+  "order_parameter": {
+    "description": "probability of vesicle release",
+    "symbol": "sigma",
+    "range": [0.001, 0.999]
+  },
+  "logistic_threshold": {
+    "theta": {
+      "estimate": 12.677728838580355,
+      "ci95": [12.192177773346295, 13.163279903814416]
+    },
+    "beta": {
+      "estimate": 0.8099742262185788,
+      "ci95": [0.7263977789302415, 0.8935506735069162]
+    },
+    "fit_quality": {
+      "r2": 0.9974833843617845,
+      "aic": -121.98087991786045,
+      "ss_res": 0.006089335767246429
+    },
+    "analysis_script": "analysis/synaptic_release_fit.py",
+    "analysis_results": "analysis/results/synaptic_release_fit.json",
+    "null_diagnostics": {
+      "linear": {
+        "delta_aic": 64.22307666679208,
+        "delta_r2": 0.13681506604748228
+      },
+      "power_law": {
+        "delta_aic": 72.23249109155694,
+        "delta_r2": 0.22733769849175556
+      }
+    }
+  },
+  "impedance_context": {
+    "zeta_function": "zeta(R) = 1.40 - 0.45 * sigma(beta(R-Theta))",
+    "mean": 1.186570598415284,
+    "std": 0.1725998323987829
+  },
+  "provenance": {
+    "source": "synthetic calibration inspired by hippocampal vesicle release curves",
+    "generated_by": "RepoPlan UTF emergent build (logistic synthesis with seeded noise)",
+    "license": "CC-BY-4.0"
+  },
+  "falsifiability": "Logistic resonance eclipses both linear and power-law nulls with positive delta AIC and R^2 margins."
+}
