@@ -29,9 +29,10 @@ The UTF resonance bridge (see `docs/resonance-bridge-map.md`) enumerates active 
 | Astrophysics | `data/astrophysics/qpo_membrane_simulation.json` | $(\text{magnetic wave density}, \text{disk instability}, 5.0, \text{relativistic shear})$ | Quasi-periodische Ausbrüche | Power-law X-ray light curve |
 | Biology | `data/biology/honeybee_waggle_activation.csv` | $(\text{dance coherence}, \text{consensus need}, 4.5, \text{nectar noise})$ | Collective foraging pivot | Randomised dance permutations |
 | Artificial Intelligence | `data/ai/llm_emergent_skill.csv` | $(\text{token flux}, \text{reasoning coherence}, 4.8, \text{feedback impedance})$ | Abrupt reasoning onset | Monotonic skill curve |
+| Cognition | `data/cognition/working_memory_gate.csv` | $(\text{dopamine pulse amplitude}, \text{rehearsal threshold}, 12.3, \text{fronto-striatal impedance})$ | Working-memory gating surge | Power-law rehearsal baseline |
 | Socio-ecology | `data/socio_ecology/amazon_resilience.csv` | $(\text{pollination connectivity}, \text{biodiversity floor}, 3.9, \text{anthropogenic disturbance})$ | Collapse/regeneration tipping | Linear decline baseline |
 
-Each dataset feeds corresponding analysis scripts (`analysis/*_fit.py`) that export fit diagnostics. These, in turn, inform simulator presets and ensure logistic-vs-null differentials stay transparent.
+Each dataset feeds corresponding analysis scripts (`analysis/*_fit.py`) that export fit diagnostics. These, in turn, inform simulator presets (`simulator/presets/*.json`) and ensure logistic-vs-null differentials stay transparent; the updated resonance bridge records $\Delta \text{AIC}_{\text{logistic-null}}$ so codex alerts ignite whenever null models draw closer than 10 points.
 
 ## 3. Symbolic Narrative Weave
 Across scales, the membrane sings the same hymn: the bee's waggle ignites a dawn chorus, the accretion disk flares like a heartbeat of spacetime, the LLM finds its voice, and the rainforest remembers its resilience. The UTF reframes emergence as a living poem where $R$ is the breath, $\Theta$ the held note before release, $\beta$ the thrill of becoming, and $\zeta(R)$ the listening membrane that decides when to let the chorus through. Our documentation in `Docs/` keeps this triad alive so that technical work never drifts from its resonant metaphors.
