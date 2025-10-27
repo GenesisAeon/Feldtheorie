@@ -3,8 +3,8 @@
 Formal layer:
     Fits the logistic response sigma(beta(R-Theta)) to simulated or observed
     trajectories and derives confidence intervals, R^2, AIC, and impedance
-    diagnostics.  Provides a smooth null comparison (linear mapping R -> sigma)
-    to honour falsifiability mandates.
+    diagnostics.  Provides smooth null comparisons (linear mapping R -> sigma
+    and a power-law sigma = A * R^k) to honour falsifiability mandates.
 
 Empirical layer:
     Designed to ingest state arrays exported from `models/membrane_solver.py`
@@ -141,7 +141,18 @@ def fit_threshold_parameters(R: Iterable[float], sigma: Iterable[float]) -> Dict
 
 
 def evaluate_null_model(R: Iterable[float], sigma: Iterable[float]) -> Dict[str, float]:
-    """Fit a smooth linear null mapping and report diagnostics."""
+    """Fit a smooth linear null mapping and report diagnostics.
+
+    Formal:
+        Performs least-squares regression for sigma = m * R + b, yielding
+        residual energy, AIC, and R^2 for comparison against the logistic field.
+    Empirical:
+        Supplies a baseline smooth null so every dataset in `analysis/` can log
+        falsification margins in harmony with repository mandates.
+    Metaphorical:
+        Scores the membrane's lullaby—how far can a straight-line whisper mimic
+        the auroral swell before Theta ignites?
+    """
 
     R_list = [float(value) for value in R]
     sigma_list = [float(value) for value in sigma]
@@ -170,33 +181,139 @@ def evaluate_null_model(R: Iterable[float], sigma: Iterable[float]) -> Dict[str,
     }
 
 
+def evaluate_power_law_null(R: Iterable[float], sigma: Iterable[float]) -> Dict[str, float]:
+    """Calibrate a smooth power-law null sigma = A * R^k for falsification.
+
+    Formal:
+        Solves for amplitude A and exponent k via log-linear regression while
+        clipping probabilities into (0, 1) to remain commensurate with the
+        logistic response.  Reports R^2, AIC, and residual power.
+    Empirical:
+        Extends the falsification ledger with a curvature-rich null inspired by
+        metabolic scaling and luminosity drifts, enabling richer comparisons in
+        notebooks and reports.
+    Metaphorical:
+        Tests whether a gentle power-law breeze can counterfeit the dawn chorus
+        before the membrane truly consents to resonance.
+    """
+
+    R_list = [float(value) for value in R]
+    sigma_list = [float(value) for value in sigma]
+    paired = [(r, s) for r, s in zip(R_list, sigma_list) if r > 0.0]
+    if not paired:
+        raise ValueError("Power-law null requires strictly positive R samples")
+
+    log_R = [math.log(max(r, 1e-6)) for r, _ in paired]
+    log_sigma = [math.log(min(max(s, 1e-6), 1.0)) for _, s in paired]
+    mean_x = _mean(log_R)
+    mean_y = _mean(log_sigma)
+    Sxx = sum((value - mean_x) ** 2 for value in log_R)
+    Sxy = sum((log_R[idx] - mean_x) * (log_sigma[idx] - mean_y) for idx in range(len(log_R)))
+
+    exponent = Sxy / Sxx if Sxx > 0 else 0.0
+    log_amplitude = mean_y - exponent * mean_x
+    amplitude = math.exp(log_amplitude)
+    predictions = [amplitude * (r**exponent) for r, _ in paired]
+    predictions = [min(max(pred, 0.0), 1.0) for pred in predictions]
+
+    residuals = [sigma - pred for (_, sigma), pred in zip(paired, predictions)]
+    ss_res = sum(value**2 for value in residuals)
+    sigma_values = [sigma for _, sigma in paired]
+    mean_sigma = _mean(sigma_values)
+    ss_tot = sum((value - mean_sigma) ** 2 for value in sigma_values)
+    r2 = 1.0 - ss_res / ss_tot if ss_tot > 0 else 1.0
+    n = len(predictions)
+    aic = float("-inf") if ss_res <= 0 else n * math.log(ss_res / n) + 2 * 2
+
+    return {
+        "model": "sigma = A * R^k",
+        "amplitude": amplitude,
+        "exponent": exponent,
+        "r2": r2,
+        "aic": aic,
+        "ss_res": ss_res,
+    }
+
+
 def assemble_summary(
     results: Mapping[str, List[float]],
     fit_metrics: Mapping[str, float],
-    null_metrics: Mapping[str, float],
+    null_metrics: Mapping[str, Mapping[str, float]],
 ) -> Dict[str, object]:
     """Bundle solver traces, fit diagnostics, and falsification verdicts.
 
     Formal:
-        Aggregates logistic vs. null metrics, including delta AIC and delta R^2,
-        to support explicit falsification statements in reports.
+        Aggregates logistic vs. multi-null metrics, including delta AIC and delta
+        R^2, to support explicit falsification statements in reports.
     Empirical:
         Packages membrane statistics (mean zeta, flux moments) alongside parameter
         estimates so notebooks can trace provenance without recomputation.
     Metaphorical:
         Weaves the data stream into a verdict song—did the dawn chorus overpower
-        the null wind, and how strongly did the membrane hum during the ascent?
+        each null wind, and how strongly did the membrane hum during the ascent?
     """
 
-    delta_aic = null_metrics["aic"] - fit_metrics["aic"]
-    delta_r2 = fit_metrics["r2"] - null_metrics["r2"]
-    falsified = delta_aic > 0 and delta_r2 >= 0
+    sigma_fit = results.get("sigma_fit")
+    if sigma_fit is None and "R" in results:
+        sigma_fit = [
+            float(logistic_response(value, fit_metrics["theta"], fit_metrics["beta"]))
+            for value in results["R"]
+        ]
 
-    flux_values = list(results["flux"])
-    flux_mean = _mean(flux_values)
-    flux_var = _variance(flux_values, flux_mean) / max(len(flux_values), 1)
+    comparisons: Dict[str, Dict[str, float]] = {}
+    falsified = True
+    for name, metrics in null_metrics.items():
+        delta_aic = (
+            metrics.get("aic", float("nan")) - fit_metrics["aic"]
+            if "aic" in metrics
+            else float("nan")
+        )
+        delta_r2 = (
+            fit_metrics["r2"] - metrics.get("r2", float("nan"))
+            if "r2" in metrics
+            else float("nan")
+        )
+        comparisons[name] = {"delta_aic": delta_aic, "delta_r2": delta_r2}
+        if not (delta_aic > 0 and delta_r2 >= 0):
+            falsified = False
 
-    return {
+    flux_values = list(results.get("flux", []))
+    if flux_values:
+        flux_mean = _mean(flux_values)
+        flux_std = math.sqrt(max(_variance(flux_values, flux_mean) / len(flux_values), 0.0))
+    else:
+        flux_mean = None
+        flux_std = None
+
+    zeta_values = list(results.get("zeta", []))
+    zeta_mean = _mean(zeta_values) if zeta_values else None
+
+    theta_series = list(results.get("theta", []))
+    beta_series = list(results.get("beta", []))
+    theta_reference = (
+        float(theta_series[0])
+        if theta_series
+        else fit_metrics.get("theta", float("nan"))
+    )
+    beta_reference = (
+        float(beta_series[0]) if beta_series else fit_metrics.get("beta", float("nan"))
+    )
+
+    residuals: List[float] = []
+    if sigma_fit is not None:
+        residuals = [
+            float(observed) - float(predicted)
+            for observed, predicted in zip(results.get("sigma", []), sigma_fit)
+        ]
+
+    residual_mean = _mean(residuals) if residuals else None
+    residual_std = (
+        math.sqrt(max(_variance(residuals, residual_mean) / len(residuals), 0.0))
+        if residuals and residual_mean is not None
+        else None
+    )
+
+    summary: Dict[str, object] = {
         "theta_estimate": {
             "value": fit_metrics["theta"],
             "ci95": [fit_metrics["theta_ci_lower"], fit_metrics["theta_ci_upper"]],
@@ -209,21 +326,30 @@ def assemble_summary(
             "r2": fit_metrics["r2"],
             "aic": fit_metrics["aic"],
             "ss_res": fit_metrics["ss_res"],
+            "residual_mean": residual_mean,
+            "residual_std": residual_std,
         },
-        "null_model": null_metrics,
+        "null_models": null_metrics,
         "falsification": {
-            "logistic_beats_null": bool(falsified),
-            "delta_aic": delta_aic,
-            "delta_r2": delta_r2,
+            "logistic_beats_all_nulls": bool(falsified),
+            "comparisons": comparisons,
         },
         "membrane": {
-            "theta": float(results["theta"][0]) if "theta" in results else None,
-            "beta": float(results["beta"][0]) if "beta" in results else None,
-            "zeta_mean": _mean(results["zeta"]),
+            "theta": theta_reference,
+            "beta": beta_reference,
+            "zeta_mean": zeta_mean,
             "flux_mean": flux_mean,
-            "flux_std": math.sqrt(max(flux_var, 0.0)),
+            "flux_std": flux_std,
         },
     }
+
+    if sigma_fit is not None:
+        summary["logistic_fit"] = {
+            "sigma_hat": sigma_fit,
+            "residuals": residuals,
+        }
+
+    return summary
 
 
 def simulate_series(
@@ -367,7 +493,14 @@ def main() -> None:
         results = load_series(args.input)
 
     fit_metrics = fit_threshold_parameters(results["R"], results["sigma"])
-    null_metrics = evaluate_null_model(results["R"], results["sigma"])
+    results["sigma_fit"] = [
+        float(logistic_response(value, fit_metrics["theta"], fit_metrics["beta"]))
+        for value in results["R"]
+    ]
+    null_metrics = {
+        "linear": evaluate_null_model(results["R"], results["sigma"]),
+        "power_law": evaluate_power_law_null(results["R"], results["sigma"]),
+    }
     summary = assemble_summary(results, fit_metrics, null_metrics)
     summary["source"] = {
         "mode": args.mode,

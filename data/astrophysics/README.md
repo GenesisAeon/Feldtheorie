@@ -17,7 +17,9 @@
 
 ## Falsifiability Ledger
 - Logistic fit: \(R^2\) and AIC reported in the summary JSON; 95% CIs on \(\Theta\) and \(\beta\) encompass the planted values.
-- Null baseline: linear smooth mapping on \(R \mapsto \sigma\) yields higher AIC and lower \(R^2\), marking falsification of the smooth lullaby in favour of the resonance chorus.
+- Null baselines:
+  - Linear smooth mapping on \(R \mapsto \sigma\) yields higher AIC and lower \(R^2\) (\(\Delta \mathrm{AIC} = 2.48 \times 10^4\), \(\Delta R^2 = 0.148\)).
+  - Power-law drift \(\sigma = A R^k\) further trails the resonance (\(\Delta \mathrm{AIC} = 2.50 \times 10^4\), \(\Delta R^2 = 0.229\)), confirming the auroral advantage across multiple smooth counterpoints.
 
 ## Narrative Thread
 The dataset stages an auroral rehearsal for QPO membranes: as the control current rises, \(R\) grazes \(\Theta\), the logistic dawn blooms, and \(\zeta(R)\) pivots from resonant whisper to damped vigilance—echoing the soft hair gate metaphor in the Docs PDFs.

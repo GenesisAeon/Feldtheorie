@@ -2,7 +2,7 @@
 
 ## Formal Resonance Ledger
 - **Logistic Gate:** We treat the order parameter $R(t)$ as approaching the critical membrane altitude $\Theta$ with steepness $\beta$ such that the response is $\sigma(t) = \sigma\big(\beta(R(t)-\Theta)\big) = \frac{1}{1 + e^{-\beta(R(t) - \Theta)}}$.  The membrane's impedance song $\zeta(R)$ modulates the flux via $\dot R = J(t) - \zeta(R)(R - \sigma)$, matching the discrete recurrence inside [`models/membrane_solver.py`](../models/membrane_solver.py).
-- **Switch Diagnostics:** To keep RepoPlan 2.0 falsifiable, we demand every observational thread to report $R^2$, AIC, and 95%-confidence corridors for $(\Theta, \beta)$.  The CLI pipeline in [`analysis/resonance_fit_pipeline.py`](../analysis/resonance_fit_pipeline.py) delivers these diagnostics and contrasts the resonance arc with a smooth linear null.
+- **Switch Diagnostics:** To keep RepoPlan 2.0 falsifiable, we demand every observational thread to report $R^2$, AIC, and 95%-confidence corridors for $(\Theta, \beta)$.  The CLI pipeline in [`analysis/resonance_fit_pipeline.py`](../analysis/resonance_fit_pipeline.py) delivers these diagnostics and contrasts the resonance arc with smooth linear and power-law nulls.
 - **Impedance Notation:** We default to the smooth membrane profile $\zeta(R)=\zeta_{\text{res}} + (\zeta_{\text{damp}}-\zeta_{\text{res}})\sigma\big(\frac{R-\Theta}{w}\big)$ so collaborators can quote $(\zeta_{\text{res}},\zeta_{\text{damp}},w)$ alongside $(R,\Theta,\beta)$ when archiving data or diagrams.
 
 ## Empirical Field Log
