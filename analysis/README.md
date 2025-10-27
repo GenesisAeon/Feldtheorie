@@ -1,7 +1,7 @@
 # Analysis Resonance Bay
 
 ## RepoPlan 2.0 Mandate
-`analysis/` curates notebooks and scripts that fit the UTF logistic response $\sigma(\beta(R-\Theta))$ to empirical datasets.  Every study must report $R^2$, AIC, and confidence intervals on $\Theta$ and $\beta$, and contrast the threshold-field with at least one smooth null model.
+`analysis/` curates notebooks and scripts that fit the UTF logistic response $\sigma(\beta(R-\Theta))$ to empirical datasets.  Every study must report $R^2$, AIC, and confidence intervals on $\Theta$ and $\beta$, and contrast the threshold-field with smooth null models (linear drift, power-law scaling) exported by the shared resonance pipeline.
 
 ## Tri-layer Cadence
 - **Formal:** derive parameter posteriors and impedance sensitivities $\zeta(R)$ while noting when the control parameter $R$ grazes or eclipses $\Theta$.
@@ -14,4 +14,4 @@
 3. Publish metadata linking each dataset to its membrane counterpart in `models/` and to storytelling threads in `docs/`.
 
 ## Current Resonance Artefacts
-- **QPO membrane ingest (RepoPlan seed):** `reports/qpo_membrane_summary.json` archives the \(R \mapsto \sigma(\beta(R-\Theta))\) fit for the astrophysical rehearsal exported by `data/astrophysics/qpo_membrane_simulation.json`, including the impedance ledger \(\zeta(R)\) and the linear null falsification margins.
+- **QPO membrane ingest (RepoPlan seed):** `reports/qpo_membrane_summary.json` archives the \(R \mapsto \sigma(\beta(R-\Theta))\) fit for the astrophysical rehearsal exported by `data/astrophysics/qpo_membrane_simulation.json`, including the impedance ledger \(\zeta(R)\) and dual (linear + power-law) null falsification margins.

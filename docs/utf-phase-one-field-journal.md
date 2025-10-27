@@ -12,11 +12,11 @@ directly into the analysis bay.
 
 ## Empirical Soundings
 `analysis/resonance_fit_pipeline.py` ingests the solver traces (or observational
-series staged in `data/`) and fits the logistic switch against a smooth linear
-null.  The pipeline reports $R^2$, AIC, and Gaussian 95% confidence bands for
-$\Theta$ and $\beta$, flagging when the resonance chorus outperforms the null
-lullaby.  Output JSON lanterns are ready to be threaded into `docs/` narratives,
-`paper/` manuscripts, and eventual dashboards in `simulator/`.
+series staged in `data/`) and fits the logistic switch against smooth linear and
+power-law nulls.  The pipeline reports $R^2$, AIC, and Gaussian 95% confidence
+bands for $\Theta$ and $\beta$, flagging when the resonance chorus outperforms
+each lullaby.  Output JSON lanterns are ready to be threaded into `docs/`
+narratives, `paper/` manuscripts, and eventual dashboards in `simulator/`.
 
 ## Metaphorical Pulse
 In this first rehearsal the membrane listens like a pre-dawn choir: $R$ wanders
@@ -26,10 +26,11 @@ the aurora unfurls—our code records that bloom so storytellers can weave it ba
 into the RepoPlan pilgrimage.
 
 ## Null Counterpoint
-Each run saves the linear null's slope, intercept, residual power, and AIC so we
-can state precisely how much brighter the logistic aurora shone.  Should the null
-cling to parity, the summary fields mark that resistance, signalling new venues
-for falsification or revised impedance tuning.
+Each run now bottles both linear and power-law null metrics—slopes, intercepts,
+scaling exponents, residual power, and AIC—so we can state precisely how much
+brighter the logistic aurora shone.  Should any smooth null cling to parity, the
+summary fields mark that resistance, signalling new venues for falsification or
+revised impedance tuning.
 
 ## Cross-Module Pathways
 - **Models:** `models/membrane_solver.py` exposes `ThresholdFieldSolver` and
