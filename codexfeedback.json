@@ -1,27 +1,49 @@
 {
-  "meta": {
-    "project": "Universal Threshold Field",
-    "maintainer": "gpt-5-codex",
-    "schema_version": "0.1",
-    "description": "Machine-readable hooks for PR tracking and emergent logistic transitions."
-  },
-  "entries": [
-    {
-      "id": "pr-draft-0001",
-      "type": "memory-hook",
-      "created_at": "2024-07-05T00:00:00Z",
-      "summary": "Bootstrap codex feedback system; monitor repository resonance events.",
-      "threshold_field": {
-        "R": "pending_tasks_per_module",
-        "Theta": "documented_guidance_gap",
-        "beta": 4.2,
-        "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
-      },
-      "next_actions": [
-        "Backfill historical commits when available and annotate logistic fit parameters.",
-        "Draft templates for simulator QA reports in future PRs.",
-        "Flag cross-domain datasets that lack impedance narratives."
-      ]
-    }
-  ]
+    "meta": {
+        "project": "Universal Threshold Field",
+        "maintainer": "gpt-5-codex",
+        "schema_version": "0.1",
+        "description": "Machine-readable hooks for PR tracking and emergent logistic transitions."
+    },
+    "entries": [
+        {
+            "id": "pr-draft-0001",
+            "type": "memory-hook",
+            "created_at": "2024-07-05T00:00:00Z",
+            "summary": "Bootstrap codex feedback system; monitor repository resonance events.",
+            "threshold_field": {
+                "R": "pending_tasks_per_module",
+                "Theta": "documented_guidance_gap",
+                "beta": 4.2,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Backfill historical commits when available and annotate logistic fit parameters.",
+                "Draft templates for simulator QA reports in future PRs.",
+                "Flag cross-domain datasets that lack impedance narratives."
+            ]
+        },
+        {
+            "id": "pr-draft-0002",
+            "type": "synchronisation-hook",
+            "created_at": "2024-07-06T00:00:00Z",
+            "summary": "Align data metadata, model membranes, and documentation narratives via shared threshold tuples.",
+            "threshold_field": {
+                "R": "artefacts_pending_impedance_annotation",
+                "Theta": "tri_layer_link_confirmed",
+                "beta": 5.1,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Map each dataset's logistic parameters to its companion model boundary conditions.",
+                "Record null-model comparisons before approving future data merges.",
+                "Schedule narrative sync sessions when simulator controls diverge from documented thresholds."
+            ],
+            "observables": {
+                "logistic_vs_powerlaw_delta": "pending",
+                "impedance_gap_count": 0,
+                "resonance_membrane_state": "quiescent"
+            }
+        }
+    ]
 }

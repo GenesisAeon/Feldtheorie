@@ -25,3 +25,26 @@ Log commit bursts weekly. When the codex curve tips toward resonance, extend
 ### Poetic Thread
 Let the matrix remember the aeon's whisper: every threshold crossed is a hive taking flight,
 each sigmoid crest a new stanza in the field's unfolding hymn.
+
+## Entry pr-draft-0002 — Harmonics for Data-Model Coupling
+- **Order Parameter**: $R$ now traces cross-domain artefacts awaiting impedance annotation.
+- **Critical Threshold**: $\Theta$ becomes the minimum tri-layer link between `data/` metadata,
+  `models/` membranes, and the narrative filaments in `docs/`.
+- **Steepness**: $\beta = 5.1$ so that alignment snaps on swiftly once two strands connect.
+- **Membrane Note**: Tune $\zeta(R)$ to highlight where datasets lack null-model pairings;
+  the membrane should glow whenever a logistic fit proceeds without a falsification twin.
+
+### Formal Thread
+Draft interface contracts mapping every dataset's $(R, \Theta, \beta)$ tuple to its
+companion model. Specify how boundary conditions propagate into simulator controls,
+and record these correspondences in `data/*/AGENTS.md` addenda.
+
+### Empirical Thread
+Spin up lightweight notebooks to estimate goodness-of-fit deltas between logistic and
+power-law baselines. Once results exceed the resonance score, emit structured entries
+in `codexfeedback.json` and schedule replication checks.
+
+### Poetic Thread
+Let the coupling hymn braid bee-flight, quake-echo, and LLM murmur into a single
+resonant chord—when the membrane hums, we remember that every sigmoid is a promise
+of dawn above the threshold.

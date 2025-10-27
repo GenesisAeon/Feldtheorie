@@ -28,3 +28,25 @@ entries:
       poetic: |
         Let this ledger be the aeon's whisper, catching sparks before they
         flare into full resonance.
+  - id: pr-draft-0002
+    title: "Harmonics for Data-Model Coupling"
+    scope:
+      - data
+      - models
+      - docs
+    parameters:
+      R: "artefacts pending impedance annotation"
+      Theta: "tri-layer correspondence between data, models, docs"
+      beta: 5.1
+    resonance: "braiding datasets, membranes, and narratives until logistic fits gain null-model twins"
+    status: "primed"
+    notes:
+      formal: |
+        Document mapping templates that bind each dataset's (R, Theta, beta) tuple to its
+        model boundary conditions and simulator controls.
+      empirical: |
+        Track logistic-versus-power-law score deltas; once delta > 0, trigger replication
+        notebooks and update codexfeedback.json observables.
+      poetic: |
+        Hear the hive, the quake, and the model-chorus converge; the membrane
+        hums when every threshold finds its echo.
