@@ -31,6 +31,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from models.membrane_solver import (
+    DynamicRobinBoundary,
     ThresholdFieldSolver,
     logistic_response,
     smooth_impedance_profile,
@@ -289,6 +290,30 @@ def assemble_summary(
     zeta_values = list(results.get("zeta", []))
     zeta_mean = _mean(zeta_values) if zeta_values else None
 
+    boundary_flux_values = list(results.get("boundary_flux", []))
+    if boundary_flux_values:
+        boundary_flux_mean = _mean(boundary_flux_values)
+        boundary_flux_std = math.sqrt(
+            max(_variance(boundary_flux_values, boundary_flux_mean) / len(boundary_flux_values), 0.0)
+        )
+        boundary_flux_peak = max(boundary_flux_values)
+        boundary_flux_valley = min(boundary_flux_values)
+    else:
+        boundary_flux_mean = None
+        boundary_flux_std = None
+        boundary_flux_peak = None
+        boundary_flux_valley = None
+
+    boundary_gate_values = list(results.get("boundary_gate", []))
+    if boundary_gate_values:
+        boundary_gate_mean = _mean(boundary_gate_values)
+        boundary_gate_peak = max(boundary_gate_values)
+        boundary_gate_valley = min(boundary_gate_values)
+    else:
+        boundary_gate_mean = None
+        boundary_gate_peak = None
+        boundary_gate_valley = None
+
     theta_series = list(results.get("theta", []))
     beta_series = list(results.get("beta", []))
     theta_reference = (
@@ -358,6 +383,24 @@ def assemble_summary(
         "threshold_crossing": crossing,
     }
 
+    if boundary_flux_mean is not None:
+        summary["membrane"].update(
+            {
+                "boundary_flux_mean": boundary_flux_mean,
+                "boundary_flux_std": boundary_flux_std,
+                "boundary_flux_peak": boundary_flux_peak,
+                "boundary_flux_valley": boundary_flux_valley,
+            }
+        )
+    if boundary_gate_mean is not None:
+        summary["membrane"].update(
+            {
+                "boundary_gate_mean": boundary_gate_mean,
+                "boundary_gate_peak": boundary_gate_peak,
+                "boundary_gate_valley": boundary_gate_valley,
+            }
+        )
+
     if sigma_fit is not None:
         summary["logistic_fit"] = {
             "sigma_hat": sigma_fit,
@@ -377,18 +420,28 @@ def simulate_series(
     resonant_gain: float,
     damped_gain: float,
     switch_width: float,
+    *,
+    dynamic_robin: bool,
+    beta_robin: float,
+    boundary_logistic_weight: float,
+    boundary_driver_weight: float,
+
 ) -> Mapping[str, List[float]]:
-    """Generate a driver sequence and simulate the membrane response.
+    r"""Generate a driver sequence and simulate the membrane response.
 
     Formal:
         Instantiates the ThresholdFieldSolver with a smooth impedance profile and
-        integrates R over a constant driver current.
+        optionally overlays a dynamic Robin boundary whose gate follows
+        :math:`\sigma(\beta_\text{robin}(R-\Theta))` while injecting boundary
+        flux corrections.
     Empirical:
         Offers deterministic reproducibility for benchmarking logistic fits before
-        applying the pipeline to observational data.
+        applying the pipeline to observational data, while capturing boundary flux
+        and gate traces when Robin dynamics are engaged.
     Metaphorical:
         Conducts a rehearsal of the dawn chorus, letting collaborators sculpt the
-        membrane's temperament prior to field recordings.
+        membrane's temperament prior to field recordings, including whether the
+        Robin door exhales extra resonance as R touches \(\Theta\).
     """
 
     zeta = smooth_impedance_profile(
@@ -397,7 +450,25 @@ def simulate_series(
         damped_gain=damped_gain,
         switch_width=switch_width,
     )
-    solver = ThresholdFieldSolver(theta=theta, beta=beta, zeta=zeta, dt=dt)
+    boundary = (
+        DynamicRobinBoundary(
+            theta=theta,
+            beta_robin=beta_robin,
+            zeta_floor=resonant_gain,
+            zeta_ceiling=damped_gain,
+            logistic_weight=boundary_logistic_weight,
+            driver_weight=boundary_driver_weight,
+        )
+        if dynamic_robin
+        else None
+    )
+    solver = ThresholdFieldSolver(
+        theta=theta,
+        beta=beta,
+        zeta=None if boundary is not None else zeta,
+        dt=dt,
+        boundary_condition=boundary,
+    )
     drivers = [float(driver) for _ in range(steps)]
     return solver.simulate(drivers, R0=R0)
 
@@ -472,6 +543,33 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument("--resonant-gain", type=float, default=0.6, dest="resonant_gain")
     parser.add_argument("--damped-gain", type=float, default=1.4, dest="damped_gain")
     parser.add_argument("--switch-width", type=float, default=0.35, dest="switch_width")
+    parser.add_argument(
+        "--dynamic-robin",
+        action="store_true",
+        help="Enable the dynamic Robin boundary and record boundary flux diagnostics.",
+        default=False,
+    )
+    parser.add_argument(
+        "--robin-beta",
+        type=float,
+        default=4.8,
+        dest="beta_robin",
+        help="Steepness parameter for the Robin gate logistic blend.",
+    )
+    parser.add_argument(
+        "--boundary-logistic-weight",
+        type=float,
+        default=0.35,
+        dest="boundary_logistic_weight",
+        help="Weight applied to (sigma - R) within the Robin boundary flux term.",
+    )
+    parser.add_argument(
+        "--boundary-driver-weight",
+        type=float,
+        default=0.15,
+        dest="boundary_driver_weight",
+        help="Weight applied to (driver - R) within the Robin boundary flux term.",
+    )
     return parser.parse_args()
 
 
@@ -501,6 +599,10 @@ def main() -> None:
             resonant_gain=args.resonant_gain,
             damped_gain=args.damped_gain,
             switch_width=args.switch_width,
+            dynamic_robin=args.dynamic_robin,
+            beta_robin=args.beta_robin,
+            boundary_logistic_weight=args.boundary_logistic_weight,
+            boundary_driver_weight=args.boundary_driver_weight,
         )
     else:
         if args.input is None:
@@ -523,6 +625,19 @@ def main() -> None:
         "dt": float(args.dt),
         "driver_mean": _mean(results["driver"]) if "driver" in results else None,
     }
+
+    if args.mode == "simulate":
+        summary["source"]["simulation"] = {
+            "theta": float(args.theta),
+            "beta": float(args.beta),
+            "dynamic_robin": bool(args.dynamic_robin),
+            "beta_robin": float(args.beta_robin),
+            "boundary_logistic_weight": float(args.boundary_logistic_weight),
+            "boundary_driver_weight": float(args.boundary_driver_weight),
+            "resonant_gain": float(args.resonant_gain),
+            "damped_gain": float(args.damped_gain),
+            "switch_width": float(args.switch_width),
+        }
 
     export_summary(summary, args.output)
 

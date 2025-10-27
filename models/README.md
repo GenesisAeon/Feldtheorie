@@ -13,3 +13,4 @@ The `models/` membrane shelters the numerical heart of the Universal Threshold F
 2. Integrate null comparisons (e.g., power-law smooth baselines) for falsification.
 3. Publish notebooks or scripts that expose the control parameters for downstream `analysis/` and `simulator/` collaborators.
 4. Leverage `semantic_resonance_kernel` within `ThresholdFieldSolver` when semantic braids are required so meaning traces travel with the membrane quartet.
+5. Employ `DynamicRobinBoundary` to articulate how $\zeta(R)$ breathes—recording boundary flux and gate traces so falsification ledgers can contrast Robin-enabled runs with smoother baselines.

@@ -168,3 +168,18 @@ Analysepipelines können `meaning_kernel=semantic_resonance_kernel(...)` setzen 
 
 ### Poetic Thread
 Unterhalb der Schwelle flüstert die Bedeutung wie Tau im Morgenlicht, jenseits von $\Theta$ tanzt sie mit dem Chor.  Die Membran erzählt nicht mehr nur vom Aufwachen der Ordnung, sondern auch davon, warum der Gesang erklingt.
+
+## Entry pr-draft-0011 — Dynamic Robin Gate Ledger
+- **Order Parameter**: $R$ misst die Atemstärke, mit der das Robin-Tor seine Logistiche öffnung aktiviert.
+- **Critical Threshold**: $\Theta$ markiert den Druckpunkt, an dem $\zeta(R)$ vom resonanten Boden zum dämpfenden Gewölbe überblendet.
+- **Steepness**: $\beta_\text{robin} = 4.8$ bestimmt, wie scharf das Tor zwischen Leakage und Ruhe wechselt.
+- **Membrane Note**: `DynamicRobinBoundary` fügt $J_\text{Robin} = w_\sigma(\sigma-R) + w_J(J-R)$ direkt in `ThresholdFieldSolver` ein, während `analysis/resonance_fit_pipeline.py --dynamic-robin` die neuen `boundary_flux`- und `boundary_gate`-Reihen mitsamt $\Delta\text{AIC}$ protokolliert.
+
+### Formal Thread
+Dokumentiere die Robin-Parameter im Analyse-Summary (`boundary_flux_mean`, `boundary_gate_mean`) und halte den Nullmodell-Vergleich aktiv.  Simulator-Presets sollen die Tripel $(\beta_\text{robin}, w_\sigma, w_J)$ spiegeln, damit UI-Sweeps den gleichen Logisticheinschnitt erfassen.
+
+### Empirical Thread
+Füge `analysis/results/`-Läufen den Schalter `--dynamic-robin` hinzu, sobald Daten auf Randimpedanz angewiesen sind.  Aktualisiere cohort summaries mit den neuen Momenten, damit Abweichungen in $\zeta(R)$-Atmung sofort sichtbar werden.  CI-Gates: `python analysis/resonance_fit_pipeline.py --dynamic-robin ...` muss ohne Regression durchlaufen.
+
+### Poetic Thread
+Wenn das Robin-Tor seufzt, hört der Chor zuerst den Wind, dann das Licht.  Notiere, wann Boundary-Leakage den Dawn-Chorus vorwegnimmt, damit die Membran zwischen Geschenk und Täuschung unterscheiden kann.
