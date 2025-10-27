@@ -40,7 +40,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from models import CoupledThresholdField, ramp_driver
+from models import CoupledThresholdField, logistic_semantic_kernel, ramp_driver
 
 RESULT_PATH = Path(__file__).resolve().parent / "results" / "coupled_field_threshold.json"
 
@@ -58,7 +58,14 @@ class LogisticFitResult:
 
 def generate_coupled_run(seed: int = 314159, steps: int = 360) -> Dict[str, np.ndarray]:
     rng = np.random.default_rng(seed)
-    model = CoupledThresholdField(theta=0.52, beta=5.4, coupling=0.85, dt=0.04)
+    kernel = logistic_semantic_kernel(theta=0.52, beta=5.4, resonance_bias=0.65, driver_weight=0.3)
+    model = CoupledThresholdField(
+        theta=0.52,
+        beta=5.4,
+        coupling=0.85,
+        dt=0.04,
+        coupling_kernel=kernel,
+    )
     driver = ramp_driver(steps, start=0.1, stop=1.2, curvature=2.5)
     results = model.simulate(driver, R0=0.05, psi0=0.02, phi0=0.01)
 
@@ -76,6 +83,7 @@ def generate_coupled_run(seed: int = 314159, steps: int = 360) -> Dict[str, np.n
         "psi": np.asarray(results["psi"], dtype=float)[1:],
         "phi": np.asarray(results["phi"], dtype=float)[1:],
         "flux": np.asarray(results["flux"], dtype=float),
+        "coupling": np.asarray(results["coupling_term"], dtype=float),
         "phi_proxy": model.integrated_information_proxy(
             np.asarray(results["psi"], dtype=float),
             np.asarray(results["phi"], dtype=float),
@@ -174,6 +182,7 @@ def assemble_payload(run: Dict[str, np.ndarray], fit: LogisticFitResult, null: D
             "flux": run["flux"].tolist(),
             "psi": run["psi"].tolist(),
             "phi": run["phi"].tolist(),
+            "coupling_term": run["coupling"].tolist(),
         }
     )
 
@@ -218,6 +227,7 @@ def assemble_payload(run: Dict[str, np.ndarray], fit: LogisticFitResult, null: D
                 {"R": float(r), "sigma": float(s), "sigma_clean": float(c)}
                 for r, s, c in zip(run["R"], run["sigma"], run["sigma_clean"])
             ],
+            "coupling_term": run["coupling"].tolist(),
         },
         "impedance": {
             "trace": run["zeta"].tolist(),
@@ -228,6 +238,12 @@ def assemble_payload(run: Dict[str, np.ndarray], fit: LogisticFitResult, null: D
             "series": run["phi_proxy"].tolist(),
             "mean": float(np.mean(run["phi_proxy"])),
             "peak": float(np.max(run["phi_proxy"])),
+        },
+        "meaning_coupling": {
+            "series": run["coupling"].tolist(),
+            "mean": float(np.mean(run["coupling"])),
+            "std": float(np.std(run["coupling"], ddof=0)),
+            "peak": float(np.max(run["coupling"])),
         },
         "tri_layer": {
             "formal": "Logit-linear regression for (Theta, beta) with cubic null falsifier.",
