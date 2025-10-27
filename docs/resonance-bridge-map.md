@@ -23,6 +23,7 @@ equational thread.
 | AI — multilingual ignition | log$_{10}$ effective training tokens | 4.71 ± 0.04 | 5.10 ± 0.39 | \(1.6 - 0.45\,\sigma\) slackening to 1.16 | `analysis/results/llm_emergent_skill.json`, `data/ai/llm_emergent_skill.metadata.json` |
 | Cognition — working-memory gate | dopamine-scaled rehearsal gain | 0.579 ± 0.003 | 12.28 ± 0.30 | \(1.35 - 0.38\,\sigma\) | `analysis/results/working_memory_gate.json`, `data/cognition/working_memory_gate.metadata.json` |
 | Biology — synaptic release | stimulation frequency (Hz) | 12.68 ± 0.49 | 0.81 ± 0.08 | \(1.40 - 0.45\,\sigma\) | `analysis/results/synaptic_release_fit.json`, `docs/biology/synaptic_release_threshold.md` |
+| Geophysics — seismic early warning | displacement-to-noise ratio (first 3 s P-wave) | 0.7406 ± 0.0008 | 16.29 ± 0.09 | \(1.70 - 0.55\,\sigma\) | `analysis/results/subduction_rupture_threshold.json`, `docs/geophysics/seismic_early_warning_thresholds.md` |
 | Socio-ecology — Amazon resilience | remaining canopy fraction | 0.621 ± 0.004 | 14.02 ± 0.33 | \(1.80 - 0.60\,\sigma\) | `analysis/results/amazon_resilience_fit.json`, `data/socio_ecology/amazon_resilience.metadata.json` |
 | Urban climate — canopy heat tipping | fractional tree coverage | 0.313 ± 0.004 | 15.27 ± 0.43 | \(1.45 - 0.50\,\sigma\) | `analysis/results/urban_heat_canopy.json`, `docs/socio_ecology/urban_heat_canopy_resonance.md` |
 
