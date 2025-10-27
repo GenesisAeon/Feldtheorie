@@ -14,6 +14,7 @@ Metaphorical layer:
 from .membrane_solver import (
     ThresholdFieldSolver,
     logistic_response,
+    semantic_resonance_kernel,
     smooth_impedance_profile,
     threshold_crossing_diagnostics,
 )
@@ -27,6 +28,7 @@ __all__ = [
     "logistic_semantic_kernel",
     "logistic_response",
     "smooth_impedance_profile",
+    "semantic_resonance_kernel",
     "threshold_crossing_diagnostics",
     "ramp_driver",
 ]

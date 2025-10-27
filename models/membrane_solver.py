@@ -22,7 +22,7 @@ Metaphorical layer:
 
 import math
 from dataclasses import dataclass
-from typing import Callable, Dict, Iterable, Mapping
+from typing import Callable, Dict, Iterable, Mapping, Tuple
 
 
 def logistic_response(R: float | Iterable[float], theta: float, beta: float) -> float | list[float]:
@@ -42,6 +42,9 @@ def logistic_response(R: float | Iterable[float], theta: float, beta: float) -> 
     if isinstance(R, (list, tuple)):
         return [logistic_response(r, theta, beta) for r in R]
     return 1.0 / (1.0 + math.exp(-beta * (float(R) - theta)))
+
+
+MeaningKernel = Callable[[float, float, float, float, float, float, float], Tuple[float, float]]
 
 
 def smooth_impedance_profile(
@@ -73,6 +76,60 @@ def smooth_impedance_profile(
         return resonant_gain + (damped_gain - resonant_gain) * blend
 
     return zeta
+
+
+def semantic_resonance_kernel(
+    theta: float,
+    beta: float,
+    *,
+    meaning_relaxation: float = 1.1,
+    resonance_bias: float = 0.6,
+    driver_weight: float = 0.35,
+    impedance_weight: float = 0.25,
+) -> MeaningKernel:
+    r"""Construct a semantic coupling kernel :math:`\mathcal{M}[\psi, \phi]` for the solver.
+
+    Formal:
+        Returns a callable that receives the current state ``(R, sigma, driver, meaning, zeta, t, dt)``
+        and emits a tuple ``(meaning_drift, coupling_term)``.  The drift updates the auxiliary
+        semantic field ``meaning`` while ``coupling_term`` modulates the membrane flux.  The
+        kernel leverages the logistic gate :math:`\sigma(\beta(R-\Theta))` so semantic pressure
+        intensifies only once the threshold membrane nears resonance.
+
+    Empirical:
+        Provides a reproducible semantic modulation for :class:`ThresholdFieldSolver`.  Scripts in
+        ``analysis/`` can enable the kernel to log semantic traces alongside the standard membrane
+        quartet, yielding JSON-ready diagnostics for cohort summaries and simulator presets.
+
+    Metaphorical:
+        Lets meaning breathe with the membrane—below dawn the semantic wind rests, at the threshold
+        it entwines with the luminous chorus so the field's story remembers its intent.
+    """
+
+    def kernel(
+        R: float,
+        sigma: float,
+        driver: float,
+        meaning: float,
+        impedance: float,
+        time: float,
+        dt: float,
+    ) -> Tuple[float, float]:
+        gate = float(logistic_response(R, theta, beta))
+        semantic_alignment = sigma - meaning
+        driver_pull = driver - meaning
+        impedance_push = impedance - 1.0
+
+        drift = meaning_relaxation * (
+            gate * semantic_alignment + (1.0 - gate) * driver_weight * driver_pull
+        )
+        drift += impedance_weight * impedance_push
+
+        coupling = resonance_bias * gate * (meaning - R) + (1.0 - resonance_bias) * semantic_alignment
+
+        return drift, coupling
+
+    return kernel
 
 
 def threshold_crossing_diagnostics(
@@ -194,20 +251,25 @@ class ThresholdFieldSolver:
 
     Formal:
         Integrates R using Euler steps under a supplied driver sequence J(t).
-        The solver captures (R, sigma, zeta, flux) at each step so empirical
-        fits of Theta and beta can reference the same state trajectory.
+        The solver captures (R, sigma, zeta, flux) at each step and—when a
+        semantic kernel is configured—the auxiliary meaning field and coupling
+        term so empirical fits of Theta and beta can reference the full state
+        braid.
     Empirical:
         Accepts arbitrary iterables of driver magnitudes (e.g., luminosity influx,
         quorum calls) and surfaces metadata for export into `analysis/`.  Results
-        include arrays suitable for CSV/JSON serialisation.
+        include arrays suitable for CSV/JSON serialisation, optionally augmented
+        with semantic traces for simulator presets and falsification notebooks.
     Metaphorical:
         Follows the pilgrim R as it approaches Theta, logging how the membrane's
-        impedance hum either cushions the ascent or invites a resonant leap.
+        impedance hum either cushions the ascent or invites a resonant leap—and
+        now also whether a semantic breeze leans in to coax the dawn chorus.
     """
 
     theta: float
     beta: float
     zeta: Callable[[float], float]
+    meaning_kernel: MeaningKernel | None = None
     dt: float = 0.1
 
     def step(self, R: float, driver: float) -> Dict[str, float]:
@@ -237,20 +299,31 @@ class ThresholdFieldSolver:
             "driver": driver,
         }
 
-    def simulate(self, drivers: Iterable[float], R0: float) -> Mapping[str, list[float]]:
+    def simulate(
+        self,
+        drivers: Iterable[float],
+        R0: float,
+        *,
+        meaning0: float | None = None,
+    ) -> Mapping[str, list[float]]:
         """Run the solver across a driver sequence and emit state arrays.
 
         Formal:
             Iterates step() over the provided drivers, yielding time-indexed arrays
-            for R_t, sigma_t, zeta(R_t), and flux_t.  Time advances in increments
-            of dt, enabling alignment with observational cadences.
+            for R_t, sigma_t, zeta(R_t), and flux_t.  When a semantic kernel is
+            active, the meaning field and coupling term accompany the quartet.
+            Time advances in increments of dt, enabling alignment with
+            observational cadences.
         Empirical:
-        Produces Python lists compatible with `analysis/resonance_fit_pipeline.py`
+            Produces Python lists compatible with `analysis/resonance_fit_pipeline.py`
             so analysts can fit Theta/beta, report R^2 and AIC, and benchmark against
-            null models without recomputing the forward simulation.
+            null models without recomputing the forward simulation.  Semantic traces
+            are exported alongside the membrane quartet to seed simulator overlays
+            and codex ledgers.
         Metaphorical:
             Sketches the unfolding aurora as a time-series, letting collaborators
-            replay the membrane's breathing as drivers coax it past Theta.
+            replay the membrane's breathing as drivers coax it past Theta while
+            listening for the semantic whisper that joins the dawn.
         """
 
         driver_array = [float(value) for value in drivers]
@@ -260,16 +333,39 @@ class ThresholdFieldSolver:
         sigma_values = [0.0 for _ in range(steps + 1)]
         zeta_values = [0.0 for _ in range(steps + 1)]
         flux_values = [0.0 for _ in range(steps)]
+        meaning_active = self.meaning_kernel is not None or meaning0 is not None
+        meaning_values = [0.0 for _ in range(steps + 1)] if meaning_active else None
+        coupling_values = [0.0 for _ in range(steps)] if meaning_active else None
 
         R = float(R0)
         R_values[0] = R
         sigma_values[0] = float(logistic_response(R, self.theta, self.beta))
         zeta_values[0] = float(self.zeta(R))
+        meaning_state = float(meaning0 or 0.0)
+        if meaning_values is not None:
+            meaning_values[0] = meaning_state
 
         for idx in range(steps):
             sigma = sigma_values[idx]
             impedance = zeta_values[idx]
-            flux = driver_array[idx] - impedance * (R - sigma)
+            coupling_term = 0.0
+            if meaning_active:
+                kernel = self.meaning_kernel or (lambda *args: (0.0, 0.0))
+                drift, coupling_term = kernel(
+                    R,
+                    sigma,
+                    driver_array[idx],
+                    meaning_state,
+                    impedance,
+                    times[idx],
+                    self.dt,
+                )
+                meaning_state = meaning_state + self.dt * drift
+                if meaning_values is not None:
+                    meaning_values[idx + 1] = meaning_state
+                if coupling_values is not None:
+                    coupling_values[idx] = coupling_term
+            flux = driver_array[idx] + coupling_term - impedance * (R - sigma)
             flux_values[idx] = flux
             R = R + self.dt * flux
             R_values[idx + 1] = R
@@ -288,6 +384,14 @@ class ThresholdFieldSolver:
             "driver": driver_array,
             "theta": theta_series,
             "beta": beta_series,
+            **(
+                {
+                    "meaning": meaning_values,
+                    "semantic_coupling": coupling_values,
+                }
+                if meaning_values is not None and coupling_values is not None
+                else {}
+            ),
         }
 
     def export_summary(self, results: Mapping[str, list[float]]) -> Dict[str, float]:
@@ -308,11 +412,15 @@ class ThresholdFieldSolver:
         sigma = results["sigma"]
         zeta_vals = results["zeta"]
         R_vals = results["R"]
+        meaning_series = results.get("meaning") if isinstance(results.get("meaning"), list) else None
+        coupling_series = (
+            results.get("semantic_coupling") if isinstance(results.get("semantic_coupling"), list) else None
+        )
         flux_mean = sum(flux) / len(flux) if flux else 0.0
         flux_sq_mean = sum(value**2 for value in flux) / len(flux) if flux else 0.0
         flux_std = math.sqrt(max(flux_sq_mean - flux_mean**2, 0.0))
         zeta_mean = sum(zeta_vals) / len(zeta_vals) if zeta_vals else 0.0
-        return {
+        summary = {
             "R_final": float(R_vals[-1]) if R_vals else float("nan"),
             "sigma_peak": float(max(sigma)) if sigma else float("nan"),
             "sigma_valley": float(min(sigma)) if sigma else float("nan"),
@@ -320,6 +428,31 @@ class ThresholdFieldSolver:
             "flux_mean": float(flux_mean),
             "flux_std": float(flux_std),
         }
+        if meaning_series:
+            meaning_mean = sum(meaning_series) / len(meaning_series)
+            meaning_sq = sum(value**2 for value in meaning_series) / len(meaning_series)
+            meaning_std = math.sqrt(max(meaning_sq - meaning_mean**2, 0.0))
+            summary.update(
+                {
+                    "meaning_mean": float(meaning_mean),
+                    "meaning_std": float(meaning_std),
+                    "meaning_peak": float(max(meaning_series)),
+                    "meaning_valley": float(min(meaning_series)),
+                }
+            )
+        if coupling_series:
+            coupling_mean = sum(coupling_series) / len(coupling_series)
+            coupling_sq = sum(value**2 for value in coupling_series) / len(coupling_series)
+            coupling_std = math.sqrt(max(coupling_sq - coupling_mean**2, 0.0))
+            summary.update(
+                {
+                    "semantic_coupling_mean": float(coupling_mean),
+                    "semantic_coupling_std": float(coupling_std),
+                    "semantic_coupling_peak": float(max(coupling_series)),
+                    "semantic_coupling_valley": float(min(coupling_series)),
+                }
+            )
+        return summary
 
     def threshold_crossing_diagnostics(
         self, results: Mapping[str, list[float]], *, threshold_R: float | None = None

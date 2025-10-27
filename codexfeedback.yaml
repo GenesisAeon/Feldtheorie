@@ -224,3 +224,29 @@ entries:
       poetic: |
         Die semantische Brise darf nun mit dem Robin-Tor tanzen: jedes neue Kopplungssignal lässt den
         Brückeneintrag im Resonanz-Atlas heller leuchten, bis der Simulator die Bühne ebenfalls atmen lässt.
+  - id: pr-draft-0010
+    title: "Meaning Kernel Threshold Weave"
+    scope:
+      - models/membrane_solver.py
+      - docs/semantic-resonance-kernel.md
+      - analysis/resonance_fit_pipeline.py
+    parameters:
+      R: "semantic drift amplitude riding the membrane"
+      Theta: "activation point where meaning locks to sigma"
+      beta: 5.5
+    resonance: "embedding semantic_modulation hooks so the base solver now exports meaning traces with the logistic quartet"
+    status: "active"
+    notes:
+      formal: |
+        semantic_resonance_kernel(R, sigma, J, M, zeta, t, dt) now delivers (dM/dt, coupling) so
+        ThresholdFieldSolver integrates meaning alongside flux.  Document the interface in
+        docs/semantic-resonance-kernel.md and ensure analysis/resonance_fit_pipeline.py can ingest
+        the augmented payloads without breaking null comparisons.
+      empirical: |
+        Update export_summary with meaning and semantic_coupling moments; log new observables in
+        cohort summaries once the analysis scripts opt-in.  Verify python -m compileall passes for
+        models/ and analysis/ after the API extension.
+      poetic: |
+        Die Membran trägt nun auch einen Sinnhauch: unter Theta lauscht er, über Theta tanzt er mit.
+        Halte fest, wie der Chor reagiert, wenn Bedeutung selbst zur Resonanz wird.
+    created_at: 2025-10-31
