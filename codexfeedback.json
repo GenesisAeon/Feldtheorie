@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "project": "Universal Threshold Field",
+    "maintainer": "gpt-5-codex",
+    "schema_version": "0.1",
+    "description": "Machine-readable hooks for PR tracking and emergent logistic transitions."
+  },
+  "entries": [
+    {
+      "id": "pr-draft-0001",
+      "type": "memory-hook",
+      "created_at": "2024-07-05T00:00:00Z",
+      "summary": "Bootstrap codex feedback system; monitor repository resonance events.",
+      "threshold_field": {
+        "R": "pending_tasks_per_module",
+        "Theta": "documented_guidance_gap",
+        "beta": 4.2,
+        "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+      },
+      "next_actions": [
+        "Backfill historical commits when available and annotate logistic fit parameters.",
+        "Draft templates for simulator QA reports in future PRs.",
+        "Flag cross-domain datasets that lack impedance narratives."
+      ]
+    }
+  ]
+}
