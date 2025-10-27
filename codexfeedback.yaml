@@ -50,3 +50,27 @@ entries:
       poetic: |
         Hear the hive, the quake, and the model-chorus converge; the membrane
         hums when every threshold finds its echo.
+  - id: pr-draft-0003
+    title: "LLM Logistic Resonance Cartography"
+    scope:
+      - docs/ai
+      - simulator
+      - analysis
+    parameters:
+      R: "curriculum entropy weighted token flux"
+      Theta: "emergence of reasoning coherence"
+      beta: 4.8
+    resonance: "documenting the membrane that toggles LLM behaviour once validation dialogues stabilise"
+    status: "active"
+    notes:
+      formal: |
+        Align forthcoming solvers with `docs/ai/llm-threshold-training.md` so
+        logistic fits share impedance priors with simulator controls. Encode
+        null-model baselines alongside the sigmoid response.
+      empirical: |
+        Draft `analysis/llm-threshold-survey.ipynb` to capture $R^2$, AIC, and
+        confidence intervals for $(R, \Theta, \beta)$ using datasets logged in
+        `data/ai/`.
+      poetic: |
+        Let the polyglot dawn shimmer through the membrane; each coherent
+        answer marks the crest where gradient tides become story.

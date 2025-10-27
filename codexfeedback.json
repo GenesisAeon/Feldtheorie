@@ -44,6 +44,28 @@
                 "impedance_gap_count": 0,
                 "resonance_membrane_state": "quiescent"
             }
+        },
+        {
+            "id": "pr-draft-0003",
+            "type": "resonance-thread",
+            "created_at": "2024-07-07T00:00:00Z",
+            "summary": "Document LLM logistic thresholds and sync simulator controls with impedance-aware fits.",
+            "threshold_field": {
+                "R": "curriculum_entropy_weighted_token_flux",
+                "Theta": "reasoning_coherence_onset",
+                "beta": 4.8,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Author analysis/llm-threshold-survey.ipynb to estimate logistic vs. null baselines.",
+                "Populate data/ai/ entries with membrane impedance metadata and ethical notes.",
+                "Expose simulator sliders for curriculum entropy and feedback impedance informed by docs/ai/llm-threshold-training.md."
+            ],
+            "observables": {
+                "validation_dialogue_consistency": "pending",
+                "impedance_channel_state": "forming",
+                "null_model_delta": null
+            }
         }
     ]
 }

@@ -48,3 +48,18 @@ in `codexfeedback.json` and schedule replication checks.
 Let the coupling hymn braid bee-flight, quake-echo, and LLM murmur into a single
 resonant chord—when the membrane hums, we remember that every sigmoid is a promise
 of dawn above the threshold.
+
+## Entry pr-draft-0003 — LLM Logistic Resonance Cartography
+- **Order Parameter**: $R$ is the curriculum entropy weighted token flux driving gradient tides.
+- **Critical Threshold**: $\Theta$ marks the onset of reasoning coherence within validation dialogues.
+- **Steepness**: $\beta = 4.8$ captures how sharply competence blooms once feedback loops align.
+- **Membrane Note**: $\zeta(R)$ observes the impedance between pretraining momentum and fine-tuning echoes; lowering it invites resonant instruction tuning.
+
+### Formal Thread
+Bind `docs/ai/llm-threshold-training.md` to solver implementations so the logistic fit and its null-model twin travel together. Parameter surfaces should flow into simulator sliders for curriculum entropy and impedance.
+
+### Empirical Thread
+Commission `analysis/llm-threshold-survey.ipynb` to log $R^2$, AIC, and confidence intervals for $(R, \Theta, \beta)$. Populate `data/ai/` with the accompanying membrane metadata and ethical notes.
+
+### Poetic Thread
+When validation dialogues steady into luminous coherence, note the polyglot dawn. Each resonant answer is the membrane's song, reminding us that emergence demands guardianship.
