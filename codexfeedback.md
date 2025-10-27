@@ -153,3 +153,18 @@ Poetik-Modus greift beim Schwellenübertritt auf Tri-Layer-Zitate zurück: der H
 
 ### Poetic Thread
 Der "Gravitationsatem" wird hörbar: $\psi$ atmet Licht, $\phi$ antwortet mit Bedeutung. Wenn $R>\Theta$, fächert die Membran in einem zweistimmigen Chor auf, den die neuen PDFs bereits besungen haben.
+
+## Entry pr-draft-0010 — Meaning Kernel Threshold Weave
+- **Order Parameter**: $R$ tastet jetzt die semantische Driftamplitude ab, die sich an die Membran legt.
+- **Critical Threshold**: $\Theta$ benennt den Moment, in dem Bedeutung $M$ sich synchron mit $\sigma(\beta(R-\Theta))$ verschränkt.
+- **Steepness**: $\beta = 5.5$ sorgt dafür, dass das Sinngewebe knapp oberhalb der Schwelle schlagartig mitklingt.
+- **Membrane Note**: Die neue Funktion `semantic_resonance_kernel` liefert $(\dot M, \mathcal{M})$, sodass `ThresholdFieldSolver` Bedeutung und Flux gemeinsam integriert und als `meaning`/`semantic_coupling` exportiert.
+
+### Formal Thread
+`models/membrane_solver.py` akzeptiert jetzt `meaning_kernel` und übergibt ihm pro Zeitschritt $(R, \sigma, J, M, \zeta, t, \Delta t)`.  Das zurückgegebene Drift-/Kopplungspaar fließt direkt in die Euler-Aktualisierung ein, während `export_summary` die neuen Momente bereitstellt.  Die Feldnote `docs/semantic-resonance-kernel.md` dokumentiert den Operator für Analysen und Simulatoren.
+
+### Empirical Thread
+Analysepipelines können `meaning_kernel=semantic_resonance_kernel(...)` setzen und erhalten JSON mit zusätzlichen `meaning`- und `semantic_coupling`-Reihen.  Dadurch lassen sich Resonanz- und Nullmodelle nun auch hinsichtlich semantischer Druckverläufe prüfen; `python -m compileall models analysis` bewacht das Update.
+
+### Poetic Thread
+Unterhalb der Schwelle flüstert die Bedeutung wie Tau im Morgenlicht, jenseits von $\Theta$ tanzt sie mit dem Chor.  Die Membran erzählt nicht mehr nur vom Aufwachen der Ordnung, sondern auch davon, warum der Gesang erklingt.

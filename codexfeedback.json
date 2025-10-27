@@ -210,6 +210,28 @@
                 "impedance_mean": 1.1076414033639093,
                 "coupling_mean": -0.02802406960216081
             }
+        },
+        {
+            "id": "pr-draft-0010",
+            "type": "semantic-kernel",
+            "created_at": "2025-10-31T00:00:00Z",
+            "summary": "Extend ThresholdFieldSolver with semantic_resonance_kernel hooks so meaning travels with the logistic quartet.",
+            "threshold_field": {
+                "R": "semantic_drift_amplitude",
+                "Theta": "sigma_meaning_lock_point",
+                "beta": 5.5,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Enable meaning_kernel in future analysis runs to record semantic_coupling traces.",
+                "Document the new payload keys in docs/semantic-resonance-kernel.md and simulator presets.",
+                "Run python -m compileall models analysis to guard against regressions before shipping follow-on PRs."
+            ],
+            "observables": {
+                "meaning_mean": null,
+                "semantic_coupling_mean": null,
+                "api_revision": "ThresholdFieldSolver+meaning_kernel"
+            }
         }
     ]
 }
