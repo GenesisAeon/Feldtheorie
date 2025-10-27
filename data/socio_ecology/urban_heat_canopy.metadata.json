@@ -1,0 +1,54 @@
+{
+  "dataset": "urban_heat_canopy.csv",
+  "control_parameter": {
+    "symbol": "R",
+    "description": "fractional tree canopy coverage in heat-vulnerable districts",
+    "units": "fraction of land area"
+  },
+  "order_parameter": {
+    "symbol": "sigma",
+    "description": "share of summer nights below heat-stress threshold",
+    "units": "0-1"
+  },
+  "logistic_fit": {
+    "theta": 0.31267920387045345,
+    "theta_ci95": [0.3087776803303822, 0.3165807274105247],
+    "beta": 15.274864885179445,
+    "beta_ci95": [14.840374828710752, 15.709354941648138],
+    "r2": 0.9986553018766973,
+    "aic": -136.31925278542303,
+    "ss_res": 0.002485293353135941
+  },
+  "impedance": {
+    "definition": "zeta(R) = 1.45 - 0.5 * sigma(beta(R-Theta))",
+    "mean": 1.2311112376878148,
+    "std": 0.16826677514489807
+  },
+  "null_models": {
+    "linear": {
+      "r2": 0.966266964296634,
+      "aic": -84.76232317098867,
+      "delta_aic": 51.55692961443437,
+      "delta_r2": 0.03238833758006332
+    },
+    "power_law": {
+      "form": "sigma = A * R^k",
+      "r2": 0.97304909363836,
+      "aic": -88.35369464465927,
+      "delta_aic": 47.96555814076376,
+      "delta_r2": 0.025606208238337258
+    }
+  },
+  "ethics": {
+    "stewardship_notes": "Highlights environmental justice commitments: prioritising cooling investments for frontline communities and co-designing data collection with local stewardship groups.",
+    "references": [
+      "RepoPlan 2.0 socio-ecological membrane brief",
+      "Urban heat resilience task force memoranda"
+    ]
+  },
+  "analysis_provenance": {
+    "script": "analysis/urban_heat_canopy_fit.py",
+    "summary": "analysis/results/urban_heat_canopy.json",
+    "generated_at": "Repo simulation"
+  }
+}
