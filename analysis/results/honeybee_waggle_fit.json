@@ -1,0 +1,221 @@
+{
+  "theta_estimate": {
+    "value": 26.578069452654905,
+    "ci95": [
+      25.830816988695016,
+      27.325321916614794
+    ]
+  },
+  "beta_estimate": {
+    "value": 0.6717283976038891,
+    "ci95": [
+      0.5413091744299211,
+      0.8021476207778572
+    ]
+  },
+  "logistic_model": {
+    "r2": 0.9687963452454948,
+    "aic": -73.55328443149556,
+    "ss_res": 0.054997750921610356
+  },
+  "null_model": {
+    "r2": 0.8112797187425409,
+    "aic": -48.35705466063901,
+    "ss_res": 0.33262741509327426,
+    "slope": 0.08985844509428254,
+    "intercept": -1.8871673893314507
+  },
+  "falsification": {
+    "linear_null": {
+      "delta_aic": 25.196229770856547,
+      "delta_r2": 0.15751662650295395
+    },
+    "power_law_null": {
+      "delta_aic": 18.670156493825473,
+      "delta_r2": 0.08720216022238858
+    }
+  },
+  "membrane": {
+    "theta": 26.578069452654905,
+    "beta": 0.6717283976038891,
+    "zeta_mean": 1.1132816696807928,
+    "flux_mean": -0.02170237234059183,
+    "flux_std": 0.05879981135093327
+  },
+  "dataset": {
+    "path": "data/biology/honeybee_waggle_activation.csv",
+    "control_parameter": "nectar sucrose concentration (Brix)",
+    "order_parameter": "probability of waggle recruitment",
+    "measurements": [
+      {
+        "R": 18.0,
+        "sigma": 0.02,
+        "logistic_fit": 0.003134541672342466
+      },
+      {
+        "R": 20.0,
+        "sigma": 0.02,
+        "logistic_fit": 0.01190669772749097
+      },
+      {
+        "R": 21.5,
+        "sigma": 0.02,
+        "logistic_fit": 0.031950869173177764
+      },
+      {
+        "R": 22.5,
+        "sigma": 0.0306,
+        "logistic_fit": 0.06069065926175225
+      },
+      {
+        "R": 23.5,
+        "sigma": 0.0391,
+        "logistic_fit": 0.11228338547632107
+      },
+      {
+        "R": 24.5,
+        "sigma": 0.0712,
+        "logistic_fit": 0.1984678019136528
+      },
+      {
+        "R": 25.5,
+        "sigma": 0.232,
+        "logistic_fit": 0.32647541177372114
+      },
+      {
+        "R": 26.0,
+        "sigma": 0.3133,
+        "logistic_fit": 0.404125243298867
+      },
+      {
+        "R": 26.5,
+        "sigma": 0.4249,
+        "logistic_fit": 0.4868926366671967
+      },
+      {
+        "R": 27.0,
+        "sigma": 0.5497,
+        "logistic_fit": 0.5703851513980489
+      },
+      {
+        "R": 27.5,
+        "sigma": 0.665,
+        "logistic_fit": 0.6500563544022417
+      },
+      {
+        "R": 28.5,
+        "sigma": 0.8574,
+        "logistic_fit": 0.7843189942039208
+      },
+      {
+        "R": 29.5,
+        "sigma": 0.9417,
+        "logistic_fit": 0.8768295797200911
+      },
+      {
+        "R": 31.0,
+        "sigma": 0.98,
+        "logistic_fit": 0.951215886079461
+      }
+    ]
+  },
+  "null_models": {
+    "linear": {
+      "r2": 0.8112797187425409,
+      "aic": -48.35705466063901,
+      "ss_res": 0.33262741509327426,
+      "slope": 0.08985844509428254,
+      "intercept": -1.8871673893314507
+    },
+    "power_law": {
+      "model": "sigma = A * R^k",
+      "amplitude": 5.140794772856665e-15,
+      "exponent": 9.667409582708302,
+      "r2": 0.8815941850231063,
+      "aic": -54.88312793767008,
+      "ss_res": 0.20869521762764953
+    }
+  },
+  "impedance": {
+    "definition": "zeta(R) = 1.25 - 0.35 * sigma(beta(R-Theta))",
+    "mean": 1.1132816696807928,
+    "std": 0.11319340254549055,
+    "samples": [
+      {
+        "R": 18.0,
+        "sigma": 0.003134541672342466,
+        "zeta": 1.24890291041468
+      },
+      {
+        "R": 20.0,
+        "sigma": 0.01190669772749097,
+        "zeta": 1.245832655795378
+      },
+      {
+        "R": 21.5,
+        "sigma": 0.031950869173177764,
+        "zeta": 1.2388171957893879
+      },
+      {
+        "R": 22.5,
+        "sigma": 0.06069065926175225,
+        "zeta": 1.2287582692583867
+      },
+      {
+        "R": 23.5,
+        "sigma": 0.11228338547632107,
+        "zeta": 1.2107008150832876
+      },
+      {
+        "R": 24.5,
+        "sigma": 0.1984678019136528,
+        "zeta": 1.1805362693302215
+      },
+      {
+        "R": 25.5,
+        "sigma": 0.32647541177372114,
+        "zeta": 1.1357336058791976
+      },
+      {
+        "R": 26.0,
+        "sigma": 0.404125243298867,
+        "zeta": 1.1085561648453965
+      },
+      {
+        "R": 26.5,
+        "sigma": 0.4868926366671967,
+        "zeta": 1.0795875771664811
+      },
+      {
+        "R": 27.0,
+        "sigma": 0.5703851513980489,
+        "zeta": 1.0503651970106829
+      },
+      {
+        "R": 27.5,
+        "sigma": 0.6500563544022417,
+        "zeta": 1.0224802759592153
+      },
+      {
+        "R": 28.5,
+        "sigma": 0.7843189942039208,
+        "zeta": 0.9754883520286277
+      },
+      {
+        "R": 29.5,
+        "sigma": 0.8768295797200911,
+        "zeta": 0.9431096470979681
+      },
+      {
+        "R": 31.0,
+        "sigma": 0.951215886079461,
+        "zeta": 0.9170744398721886
+      }
+    ]
+  },
+  "tri_layer": {
+    "formal": "Logistic regression on logit domain with dual smooth null comparisons (linear, power-law).",
+    "empirical": "Honeybee waggle activation sampled across sucrose gradients; JSON export for RepoPlan cross-links.",
+    "metaphorical": "Notes how the hive's membrane relaxes as nectar sweetness breaches Theta, brightening the waggle dawn chorus."
+  }
+}

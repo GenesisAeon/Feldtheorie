@@ -1,0 +1,52 @@
+{
+  "dataset": "Honeybee waggle activation vs nectar sucrose concentration",
+  "control_parameter": {
+    "symbol": "R",
+    "description": "nectar sucrose concentration",
+    "units": "degrees Brix",
+    "range": [18.0, 31.0]
+  },
+  "order_parameter": {
+    "description": "probability of waggle recruitment",
+    "symbol": "sigma",
+    "range": [0.02, 0.98]
+  },
+  "logistic_threshold": {
+    "theta": {
+      "estimate": 26.578069452654905,
+      "ci95": [25.830816988695016, 27.325321916614794]
+    },
+    "beta": {
+      "estimate": 0.6717283976038891,
+      "ci95": [0.5413091744299211, 0.8021476207778572]
+    },
+    "fit_quality": {
+      "r2": 0.9687963452454948,
+      "aic": -73.55328443149556,
+      "ss_res": 0.054997750921610356
+    },
+    "analysis_script": "analysis/honeybee_waggle_fit.py",
+    "analysis_results": "analysis/results/honeybee_waggle_fit.json",
+    "null_diagnostics": {
+      "linear": {
+        "delta_aic": 25.196229770856547,
+        "delta_r2": 0.15751662650295395
+      },
+      "power_law": {
+        "delta_aic": 18.670156493825473,
+        "delta_r2": 0.08720216022238858
+      }
+    }
+  },
+  "impedance_context": {
+    "zeta_function": "zeta(R) = 1.25 - 0.35 * sigma(beta(R-Theta))",
+    "mean": 1.1132816696807928,
+    "std": 0.11319340254549055
+  },
+  "provenance": {
+    "source": "synthetic calibration inspired by Seeley et al. honeybee foraging thresholds",
+    "generated_by": "RepoPlan UTF emergent build (seeded random noise, see analysis script)",
+    "license": "CC-BY-4.0"
+  },
+  "falsifiability": "Logistic resonance beats both linear and power-law nulls (positive delta AIC and R^2)."
+}
