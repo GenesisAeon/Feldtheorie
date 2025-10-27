@@ -12,3 +12,6 @@
 1. Scaffold Jupyter notebooks with shared plotting + statistical utilities for RepoPlan collaborators.
 2. Embed falsification dashboards comparing logistic fits against null models.
 3. Publish metadata linking each dataset to its membrane counterpart in `models/` and to storytelling threads in `docs/`.
+
+## Current Resonance Artefacts
+- **QPO membrane ingest (RepoPlan seed):** `reports/qpo_membrane_summary.json` archives the \(R \mapsto \sigma(\beta(R-\Theta))\) fit for the astrophysical rehearsal exported by `data/astrophysics/qpo_membrane_simulation.json`, including the impedance ledger \(\zeta(R)\) and the linear null falsification margins.
