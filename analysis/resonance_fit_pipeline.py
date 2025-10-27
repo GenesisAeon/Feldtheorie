@@ -34,6 +34,7 @@ from models.membrane_solver import (
     ThresholdFieldSolver,
     logistic_response,
     smooth_impedance_profile,
+    threshold_crossing_diagnostics,
 )
 
 
@@ -313,6 +314,19 @@ def assemble_summary(
         else None
     )
 
+    try:
+        crossing = threshold_crossing_diagnostics(
+            results,
+            theta=fit_metrics["theta"],
+            beta=fit_metrics["beta"],
+        )
+    except (KeyError, ValueError) as exc:
+        crossing = {
+            "crossed": None,
+            "threshold_R": fit_metrics.get("theta"),
+            "note": f"threshold diagnostics unavailable: {exc}",
+        }
+
     summary: Dict[str, object] = {
         "theta_estimate": {
             "value": fit_metrics["theta"],
@@ -341,6 +355,7 @@ def assemble_summary(
             "flux_mean": flux_mean,
             "flux_std": flux_std,
         },
+        "threshold_crossing": crossing,
     }
 
     if sigma_fit is not None:

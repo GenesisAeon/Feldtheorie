@@ -75,6 +75,119 @@ def smooth_impedance_profile(
     return zeta
 
 
+def threshold_crossing_diagnostics(
+    results: Mapping[str, list[float]],
+    *,
+    theta: float,
+    beta: float,
+    threshold_R: float | None = None,
+) -> Dict[str, float | bool | int | None]:
+    r"""Extract when the order parameter first trespasses the threshold membrane.
+
+    Formal:
+        Scans the recorded trajectory for the earliest index where $R$ rises past
+        the threshold reference (defaulting to $\Theta$).  Performs linear
+        interpolation to approximate the crossing time and evaluates the logistic
+        response $\sigma(\beta(R-\Theta))$ at that moment.
+    Empirical:
+        Accepts solver outputs from :meth:`ThresholdFieldSolver.simulate`,
+        returning JSON-friendly diagnostics (time, overshoot, impedance snapshot)
+        so `analysis/` pipelines can report when resonance actually ignited.
+    Metaphorical:
+        Notes the instant the auroral membrane consents to song—the first breath
+        where the dawn chorus overtakes the smooth night wind.
+    """
+
+    if "R" not in results or "t" not in results:
+        raise KeyError("results must contain 'R' and 't' arrays for diagnostics")
+
+    R_series = list(results["R"])
+    t_series = list(results["t"])
+    if len(R_series) != len(t_series):
+        raise ValueError("R and t arrays must have equal length")
+    if not R_series:
+        raise ValueError("At least one sample is required for diagnostics")
+
+    threshold = float(theta if threshold_R is None else threshold_R)
+    crossing_index: int | None = None
+    for idx, value in enumerate(R_series):
+        if value >= threshold:
+            crossing_index = idx
+            break
+
+    if crossing_index is None:
+        return {
+            "crossed": False,
+            "threshold_R": threshold,
+            "crossing_index": None,
+            "crossing_time": None,
+            "crossing_R": None,
+            "crossing_sigma": None,
+            "overshoot": None,
+            "zeta_at_crossing": None,
+            "driver_at_crossing": None,
+            "interpolated": False,
+        }
+
+    prev_idx = max(crossing_index - 1, 0)
+    R_prev = R_series[prev_idx]
+    R_curr = R_series[crossing_index]
+    t_prev = t_series[prev_idx]
+    t_curr = t_series[crossing_index]
+
+    interpolated = False
+    fraction = 0.0
+    if crossing_index > 0 and R_curr != R_prev and R_prev < threshold < R_curr:
+        fraction = (threshold - R_prev) / (R_curr - R_prev)
+        fraction = min(max(fraction, 0.0), 1.0)
+        interpolated = True
+
+    if interpolated:
+        crossing_time = t_prev + fraction * (t_curr - t_prev)
+        crossing_R = R_prev + fraction * (R_curr - R_prev)
+    else:
+        crossing_time = t_curr
+        crossing_R = R_curr
+
+    sigma_cross = float(logistic_response(crossing_R, theta, beta))
+
+    zeta_series = results.get("zeta")
+    zeta_cross: float | None
+    if isinstance(zeta_series, list) and zeta_series:
+        if interpolated and crossing_index < len(zeta_series):
+            zeta_prev = zeta_series[prev_idx]
+            zeta_curr = zeta_series[crossing_index]
+            zeta_cross = zeta_prev + fraction * (zeta_curr - zeta_prev)
+        elif crossing_index < len(zeta_series):
+            zeta_cross = zeta_series[crossing_index]
+        else:
+            zeta_cross = None
+    else:
+        zeta_cross = None
+
+    driver_series = results.get("driver")
+    if isinstance(driver_series, list) and driver_series and crossing_index > 0:
+        driver_idx = min(crossing_index - 1, len(driver_series) - 1)
+        driver_cross = driver_series[driver_idx]
+    else:
+        driver_cross = None
+
+    overshoot = R_curr - threshold
+
+    return {
+        "crossed": True,
+        "threshold_R": threshold,
+        "crossing_index": crossing_index,
+        "crossing_time": crossing_time,
+        "crossing_R": crossing_R,
+        "crossing_sigma": sigma_cross,
+        "overshoot": overshoot,
+        "zeta_at_crossing": zeta_cross,
+        "driver_at_crossing": driver_cross,
+        "interpolated": interpolated,
+    }
+
+
 @dataclass
 class ThresholdFieldSolver:
     """Discrete UTF membrane integrator exposing resonance diagnostics.
@@ -207,3 +320,27 @@ class ThresholdFieldSolver:
             "flux_mean": float(flux_mean),
             "flux_std": float(flux_std),
         }
+
+    def threshold_crossing_diagnostics(
+        self, results: Mapping[str, list[float]], *, threshold_R: float | None = None
+    ) -> Dict[str, float | bool | int | None]:
+        r"""Annotate when the solver's trajectory breaches the threshold membrane.
+
+        Formal:
+            Calls :func:`threshold_crossing_diagnostics` using the solver's own
+            $\Theta$ and $\beta$ so the reported crossing honours the logistic
+            switch $\sigma(\beta(R-\Theta))$.
+        Empirical:
+            Provides notebooks and reports with a convenience summary of when
+            resonance ignited, complementing :meth:`export_summary` statistics.
+        Metaphorical:
+            Lets the membrane speak for itself—naming the beat where the chorus
+            first shimmered beyond the null hush.
+        """
+
+        return threshold_crossing_diagnostics(
+            results,
+            theta=self.theta,
+            beta=self.beta,
+            threshold_R=threshold_R,
+        )

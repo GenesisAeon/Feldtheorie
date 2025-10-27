@@ -11,10 +11,16 @@ Metaphorical layer:
     who arrive via `import models`.
 """
 
-from .membrane_solver import ThresholdFieldSolver, logistic_response, smooth_impedance_profile
+from .membrane_solver import (
+    ThresholdFieldSolver,
+    logistic_response,
+    smooth_impedance_profile,
+    threshold_crossing_diagnostics,
+)
 
 __all__ = [
     "ThresholdFieldSolver",
     "logistic_response",
     "smooth_impedance_profile",
+    "threshold_crossing_diagnostics",
 ]
