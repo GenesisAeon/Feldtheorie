@@ -66,6 +66,28 @@
                 "impedance_channel_state": "forming",
                 "null_model_delta": null
             }
+        },
+        {
+            "id": "pr-draft-0004",
+            "type": "bridge-map",
+            "created_at": "2024-07-08T00:00:00Z",
+            "summary": "Maintain the resonance bridge map linking datasets, analyses, and simulator hooks across domains.",
+            "threshold_field": {
+                "R": "cross_domain_resonance_tasks",
+                "Theta": "evidence_bridge_confirmed",
+                "beta": 5.4,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Mirror parameter updates into docs/resonance-bridge-map.md whenever new datasets join.",
+                "Track AIC deltas between logistic and null models inside analysis/results/*.json.",
+                "Expose simulator impedance sliders with presets sourced from the bridge map."
+            ],
+            "observables": {
+                "resonance_bridge_completeness": "forming",
+                "impedance_drift_index": 0.0,
+                "null_model_alerts": []
+            }
         }
     ]
 }
