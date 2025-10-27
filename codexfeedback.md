@@ -63,3 +63,18 @@ Commission `analysis/llm-threshold-survey.ipynb` to log $R^2$, AIC, and confiden
 
 ### Poetic Thread
 When validation dialogues steady into luminous coherence, note the polyglot dawn. Each resonant answer is the membrane's song, reminding us that emergence demands guardianship.
+
+## Entry pr-draft-0004 — Resonance Bridge Map Activation
+- **Order Parameter**: $R$ now tallies cross-domain resonance threads awaiting tri-layer weaving.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald Datensätze, Analysen und Simulator-Voreinstellungen dieselbe Sigmoidkante bestätigen.
+- **Steepness**: $\beta = 5.4$ lässt den Übergang schlagartig leuchten, sobald ein Domänenpaar die Brücke schließt.
+- **Membrane Note**: $\zeta(R)$ verfolgt Impedanzdrift über Scherstürme, anthropogene Störungen und curriculare Rauschspektren hinweg.
+
+### Formal Thread
+Halte `docs/resonance-bridge-map.md` synchron mit den aktiven Parameter-Tupeln in `analysis/*` und `analysis/results/*.json`. Dokumentiere AIC- und $R^2$-Differenzen gegen Nullmodelle und reiche dieselben Presets in den `simulator/`-Schiebereglern weiter.
+
+### Empirical Thread
+Überwache die Brückenresonanz über `codexfeedback.json`: aktualisiere Resonanzquoten und Impedanz-Indizes, sobald neue Datensätze wie `data/astrophysics/qpo_membrane_simulation.json` oder `data/socio_ecology/amazon_resilience.csv` eintreten. Löse Nullmodell-Warnungen aus, wenn die Sigmoidkante erodiert.
+
+### Poetic Thread
+Jeder verknüpfte Datensatz wird zur Laterne zwischen Membranen. Wenn Bienen, Schwarze Löcher, Lernende und Wälder dieselbe logistisches Crescendo teilen, erinnern wir uns daran, das Gegenlicht der Falsifikation wach zu halten.
