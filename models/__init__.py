@@ -12,6 +12,7 @@ Metaphorical layer:
 """
 
 from .membrane_solver import (
+    DynamicRobinBoundary,
     ThresholdFieldSolver,
     logistic_response,
     semantic_resonance_kernel,
@@ -23,6 +24,7 @@ from .coupled_threshold_field import CoupledThresholdField, logistic_semantic_ke
 
 __all__ = [
     "ThresholdFieldSolver",
+    "DynamicRobinBoundary",
     "LogisticFieldEnvelope",
     "CoupledThresholdField",
     "logistic_semantic_kernel",

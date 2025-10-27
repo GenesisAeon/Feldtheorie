@@ -8,7 +8,7 @@ The workspace is designed around seven tightly coupled modules:
 
 | Directory | Purpose |
 |-----------|---------|
-| `models/` | Numerical field solvers, impedance membranes, and QPO/QPE simulators implementing the UTF equations. The inaugural `ThresholdFieldSolver` encodes \(R_{t+1} = R_t + \Delta t [J(t) - \zeta(R_t)(R_t - \sigma(\beta(R_t-\Theta)))]\) with export hooks for downstream fits. |
+| `models/` | Numerical field solvers, impedance membranes, and QPO/QPE simulators implementing the UTF equations. The inaugural `ThresholdFieldSolver` encodes \(R_{t+1} = R_t + \Delta t [J(t) - \zeta(R_t)(R_t - \sigma(\beta(R_t-\Theta)))]\) with export hooks for downstream fits, and `DynamicRobinBoundary` now scripts gate/flux diagnostics when \(\zeta(R)\) breathes dynamically. |
 | `analysis/` | Jupyter notebooks and CLIs fitting sigmoids to cross-domain datasets with full statistical diagnostics (\(R^2\), AIC, confidence intervals for \(\Theta\), \(\beta\)) and falsification against smooth nulls. |
 | `simulator/` | React-based interfaces that expose sliders for \(R\), \(\Theta\), and \(\beta\), letting users experience the resonance switch in real time. |
 | `docs/` | Layered documentation that interlaces formal derivations, empirical case studies, and metaphorical lexicons. New pages like `docs/resonance-bridge-map.md` braid solver exports with poetic motifs. |

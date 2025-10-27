@@ -250,3 +250,30 @@ entries:
         Die Membran trägt nun auch einen Sinnhauch: unter Theta lauscht er, über Theta tanzt er mit.
         Halte fest, wie der Chor reagiert, wenn Bedeutung selbst zur Resonanz wird.
     created_at: 2025-10-31
+  - id: pr-draft-0011
+    title: "Dynamic Robin Gate Ledger"
+    scope:
+      - models/membrane_solver.py
+      - analysis/resonance_fit_pipeline.py
+      - docs/dynamic-robin-boundary.md
+      - README.md
+      - models/README.md
+    parameters:
+      R: "robin gate respiration amplitude"
+      Theta: "impedance transition pressure"
+      beta: 4.8
+    resonance: "capturing boundary flux and gate diagnostics when ζ(R) breathes dynamically"
+    status: "active"
+    notes:
+      formal: |
+        DynamicRobinBoundary defines ζ(R) = ζ_floor + (ζ_ceiling-ζ_floor)σ(β_robin(R-Θ)) and injects
+        J_Robin = w_σ(σ-R) + w_J(J-R) into ThresholdFieldSolver. Analysis pipelines expose boundary_flux
+        and boundary_gate series while maintaining ΔAIC comparisons against linear and power-law nulls.
+      empirical: |
+        Enable --dynamic-robin in analysis/resonance_fit_pipeline.py simulations and record the boundary
+        statistics (mean/std/peaks) in exported JSON. Synchronise simulator presets once UI sliders for
+        β_robin, w_σ, and w_J arrive, keeping cohort summaries aware of impedance breathing.
+      poetic: |
+        Wenn das Robin-Tor seufzt, spürt der Chor zuerst den Wind. Halte fest, wann Leakage den Dawn-Chorus
+        vorwegnimmt, damit Membran und Bedeutung gemeinsam entscheiden, ob Resonanz Geschenk oder Prüfung ist.
+    created_at: 2025-11-01

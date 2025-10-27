@@ -44,9 +44,6 @@ def logistic_response(R: float | Iterable[float], theta: float, beta: float) -> 
     return 1.0 / (1.0 + math.exp(-beta * (float(R) - theta)))
 
 
-MeaningKernel = Callable[[float, float, float, float, float, float, float], Tuple[float, float]]
-
-
 def smooth_impedance_profile(
     theta: float,
     resonant_gain: float = 0.6,
@@ -76,6 +73,67 @@ def smooth_impedance_profile(
         return resonant_gain + (damped_gain - resonant_gain) * blend
 
     return zeta
+
+
+@dataclass
+class DynamicRobinBoundary:
+    r"""Dynamic Robin boundary weaving logistic impedance and flux leakage.
+
+    Formal layer:
+        Encodes a Robin-style impedance :math:`\zeta(R)` as a logistic blend between
+        resonant and damped regimes.  The gate follows
+        :math:`\sigma(\beta_\text{robin}(R-\Theta))`, matching the repository's
+        threshold quartet.
+    Empirical layer:
+        Provides deterministic impedance and boundary flux terms that can be
+        attached to :class:`ThresholdFieldSolver`.  Analysis scripts can log the
+        returned gate values to contrast resonance timing with null baselines.
+    Metaphorical layer:
+        Lets the membrane breathe like a dawn-lit door: as R nears \(\Theta\), the
+        gate opens, softening impedance and letting a leakage gust carry meaning
+        across the threshold.
+    """
+
+    theta: float
+    beta_robin: float = 4.8
+    zeta_floor: float = 0.65
+    zeta_ceiling: float = 1.35
+    logistic_weight: float = 0.35
+    driver_weight: float = 0.15
+
+    def gate(self, R: float) -> float:
+        """Evaluate the logistic gate that modulates the Robin membrane."""
+
+        return float(logistic_response(R, self.theta, self.beta_robin))
+
+    def impedance(self, R: float) -> float:
+        r"""Return the instantaneous Robin impedance :math:`\zeta(R)`."""
+
+        gate = self.gate(R)
+        return self.zeta_floor + (self.zeta_ceiling - self.zeta_floor) * gate
+
+    def boundary_flux(self, R: float, sigma: float, driver: float) -> float:
+        """Compute the flux correction contributed by the Robin boundary."""
+
+        gate = self.gate(R)
+        logistic_gap = sigma - R
+        driver_gap = driver - R
+        return gate * (
+            self.logistic_weight * logistic_gap + self.driver_weight * driver_gap
+        )
+
+    def snapshot(self, R: float, sigma: float, driver: float) -> Dict[str, float]:
+        """Summarise gate, impedance, and flux terms for diagnostics."""
+
+        gate = self.gate(R)
+        return {
+            "gate": gate,
+            "impedance": self.impedance(R),
+            "boundary_flux": self.boundary_flux(R, sigma, driver),
+        }
+
+
+MeaningKernel = Callable[[float, float, float, float, float, float, float], Tuple[float, float]]
 
 
 def semantic_resonance_kernel(
@@ -229,6 +287,28 @@ def threshold_crossing_diagnostics(
     else:
         driver_cross = None
 
+    boundary_flux_series = results.get("boundary_flux")
+    if isinstance(boundary_flux_series, list) and boundary_flux_series:
+        flux_idx = min(max(crossing_index - 1, 0), len(boundary_flux_series) - 1)
+        boundary_flux_cross = boundary_flux_series[flux_idx]
+    else:
+        boundary_flux_cross = None
+
+    boundary_gate_series = results.get("boundary_gate")
+    boundary_gate_cross: float | None
+    if isinstance(boundary_gate_series, list) and boundary_gate_series:
+        gate_len = len(boundary_gate_series)
+        if interpolated and crossing_index < gate_len:
+            gate_prev = boundary_gate_series[prev_idx]
+            gate_curr = boundary_gate_series[min(crossing_index, gate_len - 1)]
+            boundary_gate_cross = gate_prev + fraction * (gate_curr - gate_prev)
+        elif crossing_index < gate_len:
+            boundary_gate_cross = boundary_gate_series[crossing_index]
+        else:
+            boundary_gate_cross = boundary_gate_series[-1]
+    else:
+        boundary_gate_cross = None
+
     overshoot = R_curr - threshold
 
     return {
@@ -241,6 +321,8 @@ def threshold_crossing_diagnostics(
         "overshoot": overshoot,
         "zeta_at_crossing": zeta_cross,
         "driver_at_crossing": driver_cross,
+        "boundary_flux_at_crossing": boundary_flux_cross,
+        "boundary_gate_at_crossing": boundary_gate_cross,
         "interpolated": interpolated,
     }
 
@@ -251,53 +333,74 @@ class ThresholdFieldSolver:
 
     Formal:
         Integrates R using Euler steps under a supplied driver sequence J(t).
-        The solver captures (R, sigma, zeta, flux) at each step and—when a
-        semantic kernel is configured—the auxiliary meaning field and coupling
-        term so empirical fits of Theta and beta can reference the full state
-        braid.
+        The solver captures (R, sigma, zeta, flux) at each step, augments the
+        flux with optional Robin leakage terms, and—when a semantic kernel is
+        configured—updates the auxiliary meaning field and coupling term so
+        empirical fits of Theta and beta can reference the full state braid.
     Empirical:
         Accepts arbitrary iterables of driver magnitudes (e.g., luminosity influx,
         quorum calls) and surfaces metadata for export into `analysis/`.  Results
         include arrays suitable for CSV/JSON serialisation, optionally augmented
-        with semantic traces for simulator presets and falsification notebooks.
+        with semantic traces, Robin gate diagnostics, and falsification notebooks.
     Metaphorical:
         Follows the pilgrim R as it approaches Theta, logging how the membrane's
         impedance hum either cushions the ascent or invites a resonant leap—and
-        now also whether a semantic breeze leans in to coax the dawn chorus.
+        now also whether a semantic breeze or Robin gust leans in to coax the dawn
+        chorus.
     """
 
     theta: float
     beta: float
-    zeta: Callable[[float], float]
+    zeta: Callable[[float], float] | None = None
     meaning_kernel: MeaningKernel | None = None
     dt: float = 0.1
+    boundary_condition: DynamicRobinBoundary | None = None
+
+    def __post_init__(self) -> None:
+        """Normalise impedance accessors after dataclass initialisation."""
+
+        if self.zeta is None:
+            if self.boundary_condition is not None:
+                self.zeta = self.boundary_condition.impedance
+            else:
+                self.zeta = lambda R: 1.0
+        self._zeta_callable: Callable[[float], float]
+        self._zeta_callable = self.zeta
 
     def step(self, R: float, driver: float) -> Dict[str, float]:
         """Advance the field one timestep and record resonance diagnostics.
 
         Formal:
             Computes sigma_t = sigma(beta(R-Theta)) and flux_t = driver -
-            zeta(R) * (R - sigma_t).  The new state is R + dt * flux_t.
+            zeta(R) * (R - sigma_t) plus any Robin leakage.  The new state is
+            R + dt * flux_t.
         Empirical:
             Returns a dictionary containing the updated R, the logistic response,
             the impedance value, and the applied driver so pipelines can stitch
-            results across modules.
+            results across modules.  When a Robin boundary is active, the
+            boundary flux contribution is recorded alongside the quartet.
         Metaphorical:
             Captures a single beat in the dawn chorus as R leans into Theta and
             the membrane decides whether to absorb or amplify the touch.
         """
 
         sigma = logistic_response(R, self.theta, self.beta)
-        impedance = float(self.zeta(R))
-        flux = driver - impedance * (R - sigma)
+        impedance = float(self._zeta_callable(R))
+        boundary_term = 0.0
+        if self.boundary_condition is not None:
+            boundary_term = self.boundary_condition.boundary_flux(R, sigma, driver)
+        flux = driver + boundary_term - impedance * (R - sigma)
         R_next = R + self.dt * flux
-        return {
+        payload = {
             "R": R_next,
             "sigma": sigma,
             "zeta": impedance,
             "flux": flux,
             "driver": driver,
         }
+        if self.boundary_condition is not None:
+            payload["boundary_flux"] = boundary_term
+        return payload
 
     def simulate(
         self,
@@ -336,18 +439,32 @@ class ThresholdFieldSolver:
         meaning_active = self.meaning_kernel is not None or meaning0 is not None
         meaning_values = [0.0 for _ in range(steps + 1)] if meaning_active else None
         coupling_values = [0.0 for _ in range(steps)] if meaning_active else None
+        boundary_active = self.boundary_condition is not None
+        boundary_flux_values = [0.0 for _ in range(steps)] if boundary_active else None
+        boundary_gate_values = [0.0 for _ in range(steps + 1)] if boundary_active else None
 
         R = float(R0)
         R_values[0] = R
         sigma_values[0] = float(logistic_response(R, self.theta, self.beta))
-        zeta_values[0] = float(self.zeta(R))
+        zeta_values[0] = float(self._zeta_callable(R))
         meaning_state = float(meaning0 or 0.0)
         if meaning_values is not None:
             meaning_values[0] = meaning_state
+        if boundary_gate_values is not None and self.boundary_condition is not None:
+            boundary_gate_values[0] = self.boundary_condition.gate(R)
 
         for idx in range(steps):
             sigma = sigma_values[idx]
             impedance = zeta_values[idx]
+            boundary_term = 0.0
+            if boundary_active and self.boundary_condition is not None:
+                boundary_term = self.boundary_condition.boundary_flux(
+                    R,
+                    sigma,
+                    driver_array[idx],
+                )
+                if boundary_flux_values is not None:
+                    boundary_flux_values[idx] = boundary_term
             coupling_term = 0.0
             if meaning_active:
                 kernel = self.meaning_kernel or (lambda *args: (0.0, 0.0))
@@ -365,12 +482,19 @@ class ThresholdFieldSolver:
                     meaning_values[idx + 1] = meaning_state
                 if coupling_values is not None:
                     coupling_values[idx] = coupling_term
-            flux = driver_array[idx] + coupling_term - impedance * (R - sigma)
+            flux = (
+                driver_array[idx]
+                + coupling_term
+                + boundary_term
+                - impedance * (R - sigma)
+            )
             flux_values[idx] = flux
             R = R + self.dt * flux
             R_values[idx + 1] = R
             sigma_values[idx + 1] = float(logistic_response(R, self.theta, self.beta))
-            zeta_values[idx + 1] = float(self.zeta(R))
+            zeta_values[idx + 1] = float(self._zeta_callable(R))
+            if boundary_gate_values is not None and self.boundary_condition is not None:
+                boundary_gate_values[idx + 1] = self.boundary_condition.gate(R)
 
         theta_series = [self.theta for _ in range(steps + 1)]
         beta_series = [self.beta for _ in range(steps + 1)]
@@ -390,6 +514,14 @@ class ThresholdFieldSolver:
                     "semantic_coupling": coupling_values,
                 }
                 if meaning_values is not None and coupling_values is not None
+                else {}
+            ),
+            **(
+                {
+                    "boundary_flux": boundary_flux_values,
+                    "boundary_gate": boundary_gate_values,
+                }
+                if boundary_flux_values is not None and boundary_gate_values is not None
                 else {}
             ),
         }
@@ -416,6 +548,12 @@ class ThresholdFieldSolver:
         coupling_series = (
             results.get("semantic_coupling") if isinstance(results.get("semantic_coupling"), list) else None
         )
+        boundary_flux_series = (
+            results.get("boundary_flux") if isinstance(results.get("boundary_flux"), list) else None
+        )
+        boundary_gate_series = (
+            results.get("boundary_gate") if isinstance(results.get("boundary_gate"), list) else None
+        )
         flux_mean = sum(flux) / len(flux) if flux else 0.0
         flux_sq_mean = sum(value**2 for value in flux) / len(flux) if flux else 0.0
         flux_std = math.sqrt(max(flux_sq_mean - flux_mean**2, 0.0))
@@ -428,6 +566,29 @@ class ThresholdFieldSolver:
             "flux_mean": float(flux_mean),
             "flux_std": float(flux_std),
         }
+        if boundary_flux_series:
+            boundary_flux_mean = sum(boundary_flux_series) / len(boundary_flux_series)
+            boundary_flux_sq = (
+                sum(value**2 for value in boundary_flux_series) / len(boundary_flux_series)
+            )
+            boundary_flux_std = math.sqrt(max(boundary_flux_sq - boundary_flux_mean**2, 0.0))
+            summary.update(
+                {
+                    "boundary_flux_mean": float(boundary_flux_mean),
+                    "boundary_flux_std": float(boundary_flux_std),
+                    "boundary_flux_peak": float(max(boundary_flux_series)),
+                    "boundary_flux_valley": float(min(boundary_flux_series)),
+                }
+            )
+        if boundary_gate_series:
+            boundary_gate_mean = sum(boundary_gate_series) / len(boundary_gate_series)
+            summary.update(
+                {
+                    "boundary_gate_mean": float(boundary_gate_mean),
+                    "boundary_gate_peak": float(max(boundary_gate_series)),
+                    "boundary_gate_valley": float(min(boundary_gate_series)),
+                }
+            )
         if meaning_series:
             meaning_mean = sum(meaning_series) / len(meaning_series)
             meaning_sq = sum(value**2 for value in meaning_series) / len(meaning_series)

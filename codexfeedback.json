@@ -232,6 +232,28 @@
                 "semantic_coupling_mean": null,
                 "api_revision": "ThresholdFieldSolver+meaning_kernel"
             }
+        },
+        {
+            "id": "pr-draft-0011",
+            "type": "robin-boundary",
+            "created_at": "2025-11-01T00:00:00Z",
+            "summary": "Instrument DynamicRobinBoundary to capture Robin gate flux and logistic diagnostics.",
+            "threshold_field": {
+                "R": "robin_gate_respiration",
+                "Theta": "impedance_transition_pressure",
+                "beta": 4.8,
+                "sigma": "1 / (1 + exp(-beta_robin * (R - Theta)))"
+            },
+            "next_actions": [
+                "Enable --dynamic-robin in analysis/resonance_fit_pipeline.py runs and archive boundary_flux/boundary_gate traces.",
+                "Propagate DynamicRobinBoundary parameters into simulator presets once UI sliders appear.",
+                "Add cohort summary metrics for boundary_flux_mean and boundary_gate_mean alongside ΔAIC entries."
+            ],
+            "observables": {
+                "boundary_flux_mean": null,
+                "boundary_gate_mean": null,
+                "analysis_flag": "pending_robin_ci"
+            }
         }
     ]
 }
