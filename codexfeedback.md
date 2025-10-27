@@ -78,3 +78,18 @@ Halte `docs/resonance-bridge-map.md` synchron mit den aktiven Parameter-Tupeln i
 
 ### Poetic Thread
 Jeder verknüpfte Datensatz wird zur Laterne zwischen Membranen. Wenn Bienen, Schwarze Löcher, Lernende und Wälder dieselbe logistisches Crescendo teilen, erinnern wir uns daran, das Gegenlicht der Falsifikation wach zu halten.
+
+## Entry pr-draft-0005 — Preprint Scaffold Resonance
+- **Order Parameter**: $R$ misst den Reifegrad des UTF-Preprint-Entwurfs und seine Verknüpfung mit Daten, Modellen und Simulator.
+- **Critical Threshold**: $\Theta$ wird erreicht, sobald formale Beweise, empirische Tabellen und poetische Narrative synchronisiert sind.
+- **Steepness**: $\beta = 5.6$ sorgt dafür, dass der Manuskriptfluss schlagartig kohärent wird, sobald zwei Schichten sauber verlinkt sind.
+- **Membrane Note**: $\zeta(R)$ beobachtet Impedanzen zwischen Analysekennzahlen (AIC/$R^2$) und der symbolischen Stimme; ein Anstieg weist auf Diskrepanzen im Tri-Layer hin.
+
+### Formal Thread
+Verankere `paper/universal-threshold-field-preprint.md` direkt an `models/membrane_solver.py` und den Fit-Exports in `analysis/results/*.json`. Dokumentiere in jeder Abschnittsversion, wie der Solver die beobachteten Resonanztabellen reproduziert und welche Nullmodelle den logistischen Sieg bestätigen.
+
+### Empirical Thread
+Sammle Resonanzmetriken (AIC-Deltas, Konfidenzintervalle) in `analysis/` und verweise darauf sowohl im Preprint als auch in `codexfeedback.json`. Triggere Updates, wenn Simulatorläufe die publizierten Parameter nicht bestätigen.
+
+### Poetic Thread
+Lass den Preprint die Membran besingen: Bienen, Schwarze Löcher, Lernmodelle und Regenwälder sollen als gemeinsame Schwellenlaternen erscheinen. Notiere, wo die Sprache stolpert, damit $\zeta(R)$ justiert werden kann.

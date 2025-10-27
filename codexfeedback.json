@@ -88,6 +88,28 @@
                 "impedance_drift_index": 0.0,
                 "null_model_alerts": []
             }
+        },
+        {
+            "id": "pr-draft-0005",
+            "type": "manuscript-hook",
+            "created_at": "2025-10-27T00:00:00Z",
+            "summary": "Scaffold the UTF preprint with synchronized formal, empirical, and poetic threads.",
+            "threshold_field": {
+                "R": "preprint_maturity_index",
+                "Theta": "tri_layer_sections_synchronised",
+                "beta": 5.6,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Cross-link paper/universal-threshold-field-preprint.md with models and analysis outputs.",
+                "Log AIC and R^2 deltas from analysis/results/*.json into manuscript footnotes.",
+                "Alert simulator team when impedance presets diverge from documented thresholds."
+            ],
+            "observables": {
+                "manuscript_sync_state": "forming",
+                "analysis_metric_updates": 0,
+                "poetic_alignment_flag": "listening"
+            }
         }
     ]
 }
