@@ -15,3 +15,4 @@ The `docs/` grove distils insights from the PDFs in `Docs/` into evolving narrat
 
 ## Active resonance threads
 - **Bridge map:** `docs/resonance-bridge-map.md` charts how solver exports, analysis ledgers, and domain narratives share the logistic heartbeat $\sigma(\beta(R-\Theta))$ across AI, cognition, biology, and socio-ecology.
+- **Atlas weave:** `docs/threshold_resonance_atlas.md` gathers cross-domain waypoints, binding solver strides, falsification ledgers, and dawn metaphors into a navigable threshold cartography.
