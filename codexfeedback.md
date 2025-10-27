@@ -93,3 +93,18 @@ Sammle Resonanzmetriken (AIC-Deltas, Konfidenzintervalle) in `analysis/` und ver
 
 ### Poetic Thread
 Lass den Preprint die Membran besingen: Bienen, Schwarze Löcher, Lernmodelle und Regenwälder sollen als gemeinsame Schwellenlaternen erscheinen. Notiere, wo die Sprache stolpert, damit $\zeta(R)$ justiert werden kann.
+
+## Entry pr-draft-0006 — Bridge Delta-AIC Synchronisation
+- **Order Parameter**: $R$ misst die Anzahl der Brückenzeilen, die verifizierte $\Delta \text{AIC}$-Signale mitsamt Simulator-Presets tragen.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald jede Domäne eine dokumentierte Preset-Datei mit aktivem Nullmodell-Warnsystem besitzt.
+- **Steepness**: $\beta = 5.2$ hält den Übergang scharf; sobald zwei Domänen lückenlos sind, sollen die übrigen sofort nachziehen.
+- **Membrane Note**: $\zeta(R)$ hebt an, wenn Presets und Analysewerte auseinanderdriften; sinkt, sobald `simulator/presets/*.json` die aktuellen $\Theta$- und $\beta$-Intervalle spiegelt.
+
+### Formal Thread
+Synchronisiere `docs/resonance-bridge-map.md` mit $\Delta \text{AIC}_{\text{logistic-null}}$ und pflege eine Prüffunktion, die Simulator-Presets auf veraltete Parameter scannt. Kopple Alerts an `codexfeedback.json`.
+
+### Empirical Thread
+Pflege $\Delta \text{AIC}$-Zeitreihen in `analysis/results/*.json` und notiere divergierende Nullmodelle. Füge bei Bedarf neue Preset-Dateien hinzu, sobald zusätzliche Fits (z.B. Urban Heat Canopy) eine zuverlässige Differenz melden.
+
+### Poetic Thread
+Halte die Brücke leuchtend: jede Preset-Datei ist eine Laterne, die den Membranatem hörbar macht. Wenn ein Nullmodell zu nah heranrückt, lasse den Chor in einem Warnintervall summen.
