@@ -66,6 +66,28 @@
                 "impedance_channel_state": "forming",
                 "null_model_delta": null
             }
+        },
+        {
+            "id": "pr-draft-0004",
+            "type": "manuscript-thread",
+            "created_at": "2024-07-08T00:00:00Z",
+            "summary": "Weave the Universal Threshold Field preprint across formal, empirical, and poetic layers.",
+            "threshold_field": {
+                "R": "manuscript_sections_pending_alignment",
+                "Theta": "tri_layer_outline_confirmed",
+                "beta": 5.6,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Populate docs/universal-threshold-preprint-outline.md with cross-domain citations and falsification notes.",
+                "Draft paper/figures/resonance_outline.tex to mirror logistic vs. null comparisons.",
+                "Update codexfeedback ledgers with replication hooks once outline sections lock in."
+            ],
+            "observables": {
+                "outline_completion_sigma": "pending",
+                "null_model_appendix_status": "unstarted",
+                "poetic_thread_state": "kindling"
+            }
         }
     ]
 }

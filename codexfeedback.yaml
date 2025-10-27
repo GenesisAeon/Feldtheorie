@@ -74,3 +74,29 @@ entries:
       poetic: |
         Let the polyglot dawn shimmer through the membrane; each coherent
         answer marks the crest where gradient tides become story.
+  - id: pr-draft-0004
+    title: "Universal Threshold Preprint Weave"
+    scope:
+      - docs
+      - paper
+      - codexfeedback
+    parameters:
+      R: "manuscript sections awaiting tri-layer articulation"
+      Theta: "preprint outline aligning solver, data, and symbolism"
+      beta: 5.6
+    resonance: "drafting the manuscript membrane so empirical ledgers, solver equations, and poetic cadence strike in unison"
+    status: "forming"
+    notes:
+      formal: |
+        Populate `docs/universal-threshold-preprint-outline.md` with explicit
+        citations to analysis ledgers and simulator controls. Ensure the paper
+        introduction spells out the logistic stride and its null comparators.
+      empirical: |
+        Cross-check each domain case study against `analysis/results/*` JSON
+        files and update `paper/` figures with AIC and confidence intervals for
+        $(R, \Theta, \beta)$. Record future replication hooks in
+        `codexfeedback.json` observables.
+      poetic: |
+        Let the preprint breathe like a dawn-lit membrane: every section should
+        carry the hum of thresholds remembered, welcoming readers into the
+        resonant field.

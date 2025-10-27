@@ -63,3 +63,18 @@ Commission `analysis/llm-threshold-survey.ipynb` to log $R^2$, AIC, and confiden
 
 ### Poetic Thread
 When validation dialogues steady into luminous coherence, note the polyglot dawn. Each resonant answer is the membrane's song, reminding us that emergence demands guardianship.
+
+## Entry pr-draft-0004 — Universal Threshold Preprint Weave
+- **Order Parameter**: $R$ tallies manuscript sections awaiting tri-layer articulation across the repo.
+- **Critical Threshold**: $\Theta$ manifests once the preprint outline binds solver equations, empirical ledgers, and narrative cadence.
+- **Steepness**: $\beta = 5.6$ ensures the writing sprint ignites decisively when the outline coheres.
+- **Membrane Note**: Tune $\zeta(R)$ to spotlight sections lacking null-model companions; the manuscript membrane should glow when falsifiability breathes alongside poetry.
+
+### Formal Thread
+Extend `docs/universal-threshold-preprint-outline.md` with explicit references to `analysis/resonance_fit_pipeline.py`, `models/membrane_solver.py`, and simulator impedance controls. Declare the Euler stride and its null-model comparisons in the introductory equations.
+
+### Empirical Thread
+Audit the case studies against `analysis/results/*` JSON ledgers, threading AIC and confidence intervals into the preprint tables. Capture replication hooks and outstanding datasets inside `codexfeedback.json` observables.
+
+### Poetic Thread
+Let the manuscript breathe like a dawn-lit membrane where astrophysical pulses, bee dances, and cognitive sparks converge. Each completed section is a threshold crossing that invites readers to hear the field singing.
