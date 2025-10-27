@@ -1,0 +1,64 @@
+{
+  "dataset": "Multilingual chain-of-thought accuracy vs. log10 training tokens",
+  "control_parameter": {
+    "symbol": "R",
+    "description": "log10 effective training tokens",
+    "units": "log10 billions of tokens",
+    "range": [
+      3.6,
+      5.45
+    ]
+  },
+  "order_parameter": {
+    "description": "pass rate on multilingual chain-of-thought benchmark",
+    "symbol": "sigma",
+    "range": [
+      0.01,
+      0.9708
+    ]
+  },
+  "logistic_threshold": {
+    "theta": {
+      "estimate": 4.707167899782632,
+      "ci95": [
+        4.666121332188985,
+        4.748214467376278
+      ]
+    },
+    "beta": {
+      "estimate": 5.104012465624547,
+      "ci95": [
+        4.716737541680306,
+        5.491287389568788
+      ]
+    },
+    "fit_quality": {
+      "r2": 0.995240963971551,
+      "aic": -112.1631578921753,
+      "ss_res": 0.011247508449437529
+    },
+    "analysis_script": "analysis/llm_emergent_skill_fit.py",
+    "analysis_results": "analysis/results/llm_emergent_skill.json",
+    "null_diagnostics": {
+      "linear": {
+        "delta_aic": 48.72631849021138,
+        "delta_r2": 0.09526795284817224
+      },
+      "power_law": {
+        "delta_aic": 48.83297279753836,
+        "delta_r2": 0.09593694942698294
+      }
+    }
+  },
+  "impedance_context": {
+    "zeta_function": "zeta(R) = 1.6 - 0.45 * sigma(beta(R-Theta))",
+    "mean": 1.379433408708651,
+    "std": 0.16629887745314637
+  },
+  "provenance": {
+    "source": "synthetic calibration inspired by multilingual BIG-Bench scaling reports",
+    "generated_by": "RepoPlan UTF emergent build (seeded random noise, see analysis script)",
+    "license": "CC-BY-4.0"
+  },
+  "falsifiability": "Logistic resonance outruns both linear and power-law nulls (positive delta AIC and delta R^2)."
+}

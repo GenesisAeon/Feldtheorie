@@ -15,3 +15,4 @@
 
 ## Current Resonance Artefacts
 - **QPO membrane ingest (RepoPlan seed):** `reports/qpo_membrane_summary.json` archives the \(R \mapsto \sigma(\beta(R-\Theta))\) fit for the astrophysical rehearsal exported by `data/astrophysics/qpo_membrane_simulation.json`, including the impedance ledger \(\zeta(R)\) and dual (linear + power-law) null falsification margins.
+- **LLM emergent skill ignition:** `results/llm_emergent_skill.json` captures the multilingual chain-of-thought threshold, referencing `data/ai/llm_emergent_skill.csv` and documenting how the logistic dawn outshines linear and power-law nulls with \(\Delta \mathrm{AIC} \approx 48.8\).
