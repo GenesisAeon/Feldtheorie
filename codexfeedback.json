@@ -186,6 +186,29 @@
                 "ui_coupling": 0.78,
                 "poetic_mode": "available"
             }
+        },
+        {
+            "id": "pr-draft-0009",
+            "type": "psi-phi-coupling",
+            "created_at": "2025-10-30T00:00:00Z",
+            "summary": "Embed the Gravitationsatem psi-phi membrane with Robin impedance and falsifiable diagnostics.",
+            "threshold_field": {
+                "R": "psi_phi_driver_amplitude",
+                "Theta": "robin_gate_activation",
+                "beta": 5.4,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Keep models/coupled_threshold_field.py in sync with Docs/Gravitationsatem_ Master-Dokument Erstellung.pdf definitions.",
+                "Recompute analysis/results/coupled_field_threshold.json whenever coupling or impedance parameters change.",
+                "Expose phi_proxy and impedance medians to simulator presets when the UI streams coupled runs."
+            ],
+            "observables": {
+                "delta_aic": 607.4295843992868,
+                "r2": 0.9982718406728389,
+                "phi_proxy_peak": 7.701586873421095e-05,
+                "impedance_mean": 1.105927725018616
+            }
         }
     ]
 }
