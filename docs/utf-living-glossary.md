@@ -35,6 +35,13 @@ This glossary translates the Universal Threshold Field vocabulary into a tri-lay
 - **Tri-layer Storycraft:** Alternate between equation, observation, and imagery so collaborators can enter from any doorway and still hear the shared rhythm.
 - **Cross-module Pollination:** Tag entries with references to notebooks, solvers, diagrams, and simulator scenes.  Example: see `analysis/` for the bee quorum logistic fit, `models/` for the membrane solver, `diagrams/` for the threshold phase portrait, and `simulator/` for the interactive resonance ramp.
 
+## Domain Resonances
+
+### Cognition — Working-Memory Gate
+- **Formal:** Logistic fit with $(\Theta, \beta) = (0.5789, 12.28)$ and impedance $\zeta(R) = 1.35 - 0.38\,\sigma$, derived from `analysis/working_memory_gate_fit.py`.
+- **Empirical:** Dataset [`data/cognition/working_memory_gate.csv`](../data/cognition/working_memory_gate.csv) delivers 18 checkpoints with positive $\Delta \mathrm{AIC}$ and $\Delta R^2$ versus linear and power-law nulls; see `analysis/results/working_memory_gate.json` for diagnostics.
+- **Metaphorical:** Dopamine pulses loosen the synaptic membrane until rehearsal dawns, echoing the auroral focus narrated in `docs/cognition/working_memory_gate.md`.
+
 ## Next Steps
 
 1. Extend this glossary with domain-specific resonances (astrophysics, biology, cognition, AI) as datasets arrive.
