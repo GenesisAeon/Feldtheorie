@@ -417,12 +417,14 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Draft analysis/dynamic_threshold_lab.ipynb with maximum-likelihood fits for Θ(t) = Θ0 + αS + βcC + γE + ΣδiΔi.",
+                "Maintain analysis/dynamic_threshold_lab.ipynb with future empirical feeds and null comparisons.",
                 "Create simulator/adaptive_theta_preset.json exposing ∂tΘ controls and ζ(R,t) feedback hooks.",
                 "Extend data/* metadata with adaptive_theta_shift fields once measurements arrive."
             ],
             "observables": {
-                "delta_aic_status": "pending",
+                "delta_aic_status": "logged",
+                "result_json": "analysis/results/dynamic_theta_tests.json",
+                "mean_delta_aic_dynamic_vs_static": 221.9926495335425,
                 "candidate_domains": ["biology", "cognition", "ai"],
                 "impedance_response_note": "awaiting ζ-time-series"
             }

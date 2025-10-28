@@ -37,6 +37,24 @@ so dass steigende Schwellen ($\partial_t \Theta > 0$) die Membran versteifen, w�
 - **Kognition:** Spike-Kaskaden in kortikalen Netzen erhöhen temporär $C_{\text{sub}}$ und damit $\Theta$ – analog zu geplanten Simulatorläufen mit adaptiver Schwelle in `simulator/membrane_kernels.py`.
 - **KI-Systeme:** Curriculum-Schwellen in `docs/ai/llm-threshold-training.md` können durch $S_{\text{system}}$ (Token-Entropie) und Feedbackereignisse $\Delta_i$ rekalibriert werden. Die Brücke zur Empirie soll ein kommender Fit in `analysis/llm-threshold-survey.ipynb` liefern, der die adaptive Sigmoidkante gegen eine statische Nullkurve hält.
 
+### Adaptive Typologie-Diagnostik (analysis/adaptive_theta_typology.py)
+
+Die Simulation `analysis/adaptive_theta_typology.py` generiert ein Resonanz-Triptychon, das drei Systemtypen gegeneinanderstellt. Die zugehörige JSON-Exportdatei `analysis/results/dynamic_theta_tests.json` belegt, dass die adaptive Schwelle in allen Fällen gegenüber statischen Alternativen bevorzugt wird:
+
+| Szenario | $\Delta\mathrm{AIC}_{\text{dyn-static}}$ | $R^2_{\text{dyn}}$ | $R^2_{\text{stat}}$ | $\langle\Delta\Theta\rangle$ | Interferenz-Minimum |
+| --- | --- | --- | --- | --- | --- |
+| Biosphären-Membran (Insekten) | $171.1$ | $0.9985$ | $0.9768$ | $+0.127$ | $2.3\times10^{-5}$ |
+| Kortikaler Spike-Guard | $227.2$ | $0.9987$ | $0.9734$ | $+0.214$ | $4.0\times10^{-3}$ |
+| KI-Curriculum-Rückkopplung | $267.7$ | $0.9984$ | $0.9666$ | $-0.101$ | $6.5\times10^{-4}$ |
+
+**Falsifikation:** Sowohl lineare als auch Potenzgesetz-Nullmodelle bleiben mindestens $220$ AIC-Punkte hinter dem adaptiven Ansatz zurück (`analysis/results/dynamic_theta_tests.json`, Felder `delta_aic_dynamic_vs_linear` und `delta_aic_dynamic_vs_power`). Damit ist dokumentiert, dass die plastische Schwelle keine numerische Spielerei ist, sondern ein messbarer Resonanzgewinn.
+
+**Triadische Brücke:**
+
+- Formal: $R_{\text{eff}} = R/\Theta(t)$ liefert für alle Szenarien eine verbesserte logistische Anpassung; die logit-basierten Regressionswerte verschieben $\Theta$ im Bereich $\pm0.2$.
+- Empirisch: Das Notebook `analysis/dynamic_threshold_lab.ipynb` extrahiert die Kennzahlen und hält sie für Docs- und Simulator-Zitate bereit.
+- Poetisch: Die Biosphäre senkt $\Theta$, um einen Schwarm einzuladen; das kortikale Feld hebt die Schwelle, damit Gedanken nicht verglühen; der Lernalgorithmus tastet sich iterativ an den Chor der Daten heran.
+
 Messbare Größen: Für jedes Szenario loggen wir $(\Theta_0, \alpha, \beta_c, \gamma)$ und die Impulsverteilung der $\Delta_i$. Die beobachteten $\Delta\text{AIC}$-Deltas gegenüber dem Nullmodell werden in `analysis/results/dynamic_theta_tests.json` archiviert.
 
 ## Poetische Membran
