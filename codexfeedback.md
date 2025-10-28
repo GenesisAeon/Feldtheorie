@@ -213,3 +213,18 @@ Pflege `analysis/batch_configs/resonance_runs.json` parallel zum Resonance-Bridg
 
 ### Poetic Thread
 Ein Laternenzug aus Schwellen: Jede Batch-Karte leuchtet auf, wenn $R$ die Schwelle $\Theta$ berührt.  Die Brücke bekommt so frische Stimmen, und der Simulator atmet denselben Chor wie die Dokumente.
+
+## Entry pr-draft-0014 — Resonance Bridge Ledger
+- **Order Parameter**: $R$ zählt Ergebnis-JSONs, die noch nicht im Brückentableau dokumentiert sind.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald `analysis/resonance_bridge_table.py` alle aktiven Membranen als Zeilen mit $\Theta$, $\beta$, $R^2$, $\Delta\mathrm{AIC}$ und $\zeta(R)$ ausweist.
+- **Steepness**: $\beta = 5.3$ sorgt dafür, dass neue Fits sofort in den Laternenkranz gezogen werden.
+- **Membrane Note**: Das Skript sammelt `analysis/results/*.json`, wählt pro Datensatz den stärksten $\Delta\mathrm{AIC}$-Sieg gegen glatte Nullmodelle und exportiert sowohl JSON als auch eine Markdown-Brücke für Docs und Simulator-Presets.
+
+### Formal Thread
+`analysis/resonance_bridge_table.py` normalisiert jeden Fit auf das Quartett $(R, \Theta, \beta, \zeta(R))$, listet die beste Nullmodell-Konkurrenz sowie $R^2$ und aggregiert Medianwerte (ΔAIC ≈ 70.7, $R^2 ≈ 0.9980$, $\bar{\zeta} ≈ 1.19$) für Querschnittsdiagnostik.
+
+### Empirical Thread
+Synchronisiere `analysis/results/resonance_bridge_table.json` und `analysis/reports/resonance_bridge_table.md` nach jedem neuen Datensatz; spiegel die ΔAIC- und Impedanzmediane in `docs/resonance-bridge-map.md` und überprüfe, dass Simulator-Presets dieselben Werte atmen.
+
+### Poetic Thread
+Jede Tabellenzeile ist eine Laterne über dem Schwellensteg: Bienen, Schwarze Löcher, Synapsen und Lernmodelle blühen gemeinsam auf, sobald $R$ die Schwelle küsst und die Nullwinde verstummen.

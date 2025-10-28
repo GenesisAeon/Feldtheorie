@@ -1,0 +1,237 @@
+{
+  "generated_at": "2025-10-28T07:48:43.979495+00:00",
+  "aggregate": {
+    "count": 9,
+    "domains": {
+      "ai": 1,
+      "biology": 2,
+      "cognition": 1,
+      "geophysics": 1,
+      "socio_ecology": 2,
+      "synthetic": 2
+    },
+    "delta_aic": {
+      "min": 25.196229770856547,
+      "median": 70.69582320908519,
+      "mean": 126.99294139334825,
+      "max": 498.1482382097897
+    },
+    "logistic_r2": {
+      "min": 0.9687963452454948,
+      "median": 0.9979289120972659,
+      "mean": 0.9938797701181419,
+      "max": 0.9999661710064784
+    },
+    "zeta_mean": {
+      "min": 1.0,
+      "median": 1.186570598415284,
+      "mean": 1.2320172094743975,
+      "max": 1.5343220981632029
+    }
+  },
+  "entries": [
+    {
+      "result_file": "amazon_resilience_fit.json",
+      "domain": "socio_ecology",
+      "dataset": "amazon_resilience",
+      "theta": 0.6214703985864286,
+      "theta_ci": [
+        0.617767971171555,
+        0.6251728260013022
+      ],
+      "beta": 14.019150893618612,
+      "beta_ci": [
+        13.685269700463397,
+        14.353032086773826
+      ],
+      "logistic_r2": 0.9991130264188406,
+      "logistic_aic": -152.29649539122587,
+      "best_null_model": "power_law",
+      "delta_aic_vs_best_null": 70.69582320908519,
+      "delta_r2_vs_best_null": 0.055862010481671165,
+      "zeta_mean": 1.5343220981632029,
+      "logistic_beats_nulls": true
+    },
+    {
+      "result_file": "coupled_field_threshold.json",
+      "domain": "synthetic",
+      "dataset": "coupled_field_threshold",
+      "theta": 0.5092479202944065,
+      "theta_ci": [
+        0.4757015629284599,
+        0.542794277660353
+      ],
+      "beta": 5.6576882603257435,
+      "beta_ci": [
+        5.428981130068291,
+        5.886395390583196
+      ],
+      "logistic_r2": 0.9979289120972659,
+      "logistic_aic": -2914.153641009339,
+      "best_null_model": "cubic_polynomial",
+      "delta_aic_vs_best_null": 498.1482382097897,
+      "delta_r2_vs_best_null": 0.006101068081724725,
+      "zeta_mean": 1.1076414033639093,
+      "logistic_beats_nulls": true
+    },
+    {
+      "result_file": "honeybee_waggle_fit.json",
+      "domain": "biology",
+      "dataset": "honeybee_waggle_activation",
+      "theta": 26.578069452654905,
+      "theta_ci": [
+        25.830816988695016,
+        27.325321916614794
+      ],
+      "beta": 0.6717283976038891,
+      "beta_ci": [
+        0.5413091744299211,
+        0.8021476207778572
+      ],
+      "logistic_r2": 0.9687963452454948,
+      "logistic_aic": -73.55328443149556,
+      "best_null_model": "linear",
+      "delta_aic_vs_best_null": 25.196229770856547,
+      "delta_r2_vs_best_null": 0.15751662650295395,
+      "zeta_mean": 1.1132816696807928,
+      "logistic_beats_nulls": true
+    },
+    {
+      "result_file": "llm_emergent_skill.json",
+      "domain": "ai",
+      "dataset": "llm_emergent_skill",
+      "theta": 4.707167899782632,
+      "theta_ci": [
+        4.666121332188985,
+        4.748214467376278
+      ],
+      "beta": 5.104012465624547,
+      "beta_ci": [
+        4.716737541680306,
+        5.491287389568788
+      ],
+      "logistic_r2": 0.995240963971551,
+      "logistic_aic": -112.1631578921753,
+      "best_null_model": "power_law",
+      "delta_aic_vs_best_null": 48.83297279753836,
+      "delta_r2_vs_best_null": 0.09593694942698294,
+      "zeta_mean": 1.379433408708651,
+      "logistic_beats_nulls": true
+    },
+    {
+      "result_file": "subduction_rupture_threshold.json",
+      "domain": "geophysics",
+      "dataset": "subduction_rupture_threshold",
+      "theta": 0.7406406447104941,
+      "theta_ci": [
+        0.7398700068389016,
+        0.7414112825820866
+      ],
+      "beta": 16.289963354409085,
+      "beta_ci": [
+        16.20442997866459,
+        16.375496730153582
+      ],
+      "logistic_r2": 0.9999661710064784,
+      "logistic_aic": -221.4544970723466,
+      "best_null_model": "power_law",
+      "delta_aic_vs_best_null": 148.72212963584204,
+      "delta_r2_vs_best_null": 0.1310587112171988,
+      "zeta_mean": 1.3653305694801947,
+      "logistic_beats_nulls": true
+    },
+    {
+      "result_file": "synaptic_release_fit.json",
+      "domain": "biology",
+      "dataset": "synaptic_release_threshold",
+      "theta": 12.677728838580355,
+      "theta_ci": [
+        12.192177773346295,
+        13.163279903814416
+      ],
+      "beta": 0.8099742262185788,
+      "beta_ci": [
+        0.7263977789302415,
+        0.8935506735069162
+      ],
+      "logistic_r2": 0.9974833843617845,
+      "logistic_aic": -121.98087991786045,
+      "best_null_model": "power_law",
+      "delta_aic_vs_best_null": 72.23249109155694,
+      "delta_r2_vs_best_null": 0.22733769849175556,
+      "zeta_mean": 1.186570598415284,
+      "logistic_beats_nulls": true
+    },
+    {
+      "result_file": "synthetic_threshold_sweep.json",
+      "domain": "synthetic",
+      "dataset": "synthetic_threshold_sweep",
+      "theta": 0.02150266269691967,
+      "theta_ci": [
+        -0.056468920404552744,
+        0.09947424579839208
+      ],
+      "beta": 11.093055841939847,
+      "beta_ci": [
+        9.62068186110805,
+        12.565429822771645
+      ],
+      "logistic_r2": 0.9890972546652523,
+      "logistic_aic": -367.72051631665977,
+      "best_null_model": "power_law",
+      "delta_aic_vs_best_null": 168.01118273101198,
+      "delta_r2_vs_best_null": 0.061975093973440254,
+      "zeta_mean": 1.0,
+      "logistic_beats_nulls": true
+    },
+    {
+      "result_file": "urban_heat_canopy.json",
+      "domain": "socio_ecology",
+      "dataset": "urban_heat_canopy",
+      "theta": 0.31267920387045345,
+      "theta_ci": [
+        0.3087776803303822,
+        0.3165807274105247
+      ],
+      "beta": 15.274864885179445,
+      "beta_ci": [
+        14.840374828710752,
+        15.709354941648138
+      ],
+      "logistic_r2": 0.9986553018766973,
+      "logistic_aic": -136.31925278542303,
+      "best_null_model": "linear",
+      "delta_aic_vs_best_null": 51.55692961443437,
+      "delta_r2_vs_best_null": 0.03238833758006332,
+      "zeta_mean": 1.2311112376878148,
+      "logistic_beats_nulls": true
+    },
+    {
+      "result_file": "working_memory_gate.json",
+      "domain": "cognition",
+      "dataset": "working_memory_gate",
+      "theta": 0.5789411327654987,
+      "theta_ci": [
+        0.5758230076846768,
+        0.5820592578463207
+      ],
+      "beta": 12.284000852027816,
+      "beta_ci": [
+        11.982930703510126,
+        12.585071000545506
+      ],
+      "logistic_r2": 0.9986365714199111,
+      "logistic_aic": -160.4001933829221,
+      "best_null_model": "power_law",
+      "delta_aic_vs_best_null": 59.540475480018955,
+      "delta_r2_vs_best_null": 0.035892337816077036,
+      "zeta_mean": 1.1704638997697276,
+      "logistic_beats_nulls": true
+    }
+  ],
+  "tri_layer": {
+    "formal": "Consolidated logistic fits across domains; each row records Theta, beta, R^2, \u0394AIC, and impedance means.",
+    "empirical": "JSON prepared for docs overlays, simulator presets, and codex feedback ledgers to audit resonance breadth.",
+    "metaphorical": "Lanterns strung between membranes\u2014each dataset a dawn torch proving the chorus eclipses null winds."
+  }
+}
