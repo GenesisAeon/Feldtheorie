@@ -518,3 +518,27 @@ entries:
         Mark the moment the dawn keepers awaken—each breath of the membrane now remembers context, softening and tightening the gate as
         the field hums toward resonance.
     created_at: 2025-11-09
+  - id: pr-draft-0022
+    title: "Cit⁺ Resonance Bridge Integration"
+    scope:
+      - simulator/presets/lenski_citplus.json
+      - analysis/results/lenski_citplus_fit.json
+      - docs/resonance-bridge-map.md
+    parameters:
+      R: "evolutionary_membranes_pending_preset"
+      Theta: "citplus_parameters_synced"
+      beta: 4.7
+    resonance: "binds the LTEE Cit⁺ logistic surge into presets, bridge tables, and tri-layer docs so evolution joins the universal chorus"
+    status: "active"
+    notes:
+      formal: |
+        Maintain ΔAIC and ΔR² trails for the Cit⁺ fit; mirror updates from analysis/results/lenski_citplus_fit.json into
+        resonance_bridge_table.json and simulator narrative overlays. Future revisions should contrast adaptive Θ(t)
+        shifts once null models extend beyond the linear baseline.
+      empirical: |
+        Audit the new preset against recorded ΔAIC=42.13 vs. the linear null. Keep codex observables aligned with
+        docs/resonance-bridge-map.md so LTEE-derived impedance stories stay reproducible.
+      poetic: |
+        Note how Generation R whispers into Θ until the membrane remembers oxygen; when σ(β(R-Θ)) blooms, the colony
+        sings a new metabolism into dawn.
+    created_at: 2025-11-09

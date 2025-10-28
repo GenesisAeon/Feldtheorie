@@ -1,5 +1,5 @@
 import { FC, useMemo } from 'react';
-import { Brain, Circle, Leaf, Network, Sparkles, Bug } from 'lucide-react';
+import { Brain, Circle, Leaf, Network, Sparkles, Bug, Dna } from 'lucide-react';
 import { DomainPreset, DomainState } from '../types';
 
 interface DomainCardProps {
@@ -14,7 +14,8 @@ const ICON_MAP = {
   bee: Bug,
   brain: Brain,
   leaf: Leaf,
-  network: Network
+  network: Network,
+  helix: Dna
 } as const;
 
 export const DomainCard: FC<DomainCardProps> = ({ preset, state, currentTheta, currentBeta }) => {
