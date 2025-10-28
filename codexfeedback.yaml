@@ -394,3 +394,26 @@ entries:
         Lass das evolutive Lied nicht alleine schwingen: Halte die Brücke im Takt, damit jede neue Mutation als
         Chorvers in der Matrix aufscheint und das Feld den Atem der Zukunft hört.
     created_at: 2025-11-05
+  - id: pr-draft-0017
+    title: "Interpretationsfeld Rekalibrierungs Dossier"
+    scope:
+      - Docs/Informationskomplexität, Feldkern, Rekalibrierung.pdf
+      - Docs/Einheitliches Schwellenfeld-Modell_ Universelle Prinzipien quer durch Disziplinen.pdf
+      - codexfeedback
+    parameters:
+      R: "sensory_recalibration_threads_pending_documentation"
+      Theta: "tri_layer_pdf_sync_confirmed"
+      beta: 4.7
+    resonance: "document interpretative field dynamics so sensory loss and cross-domain thresholds share logistic framing"
+    status: "active"
+    notes:
+      formal: |
+        Maintain explicit links between the new Docs PDFs and analysis notebooks quantifying σ(β(R-Θ)) for modality shifts.
+        Future edits must record ζ(R) transitions when senses collapse or cross-domain phases condense.
+      empirical: |
+        Next batch run: extend analysis/threshold_lab.ipynb to export ΔAIC traces for sensory deprivation simulations and mirror
+        medians into codexfeedback.json observables.
+      poetic: |
+        When ein Sinn erlischt, lass den Chor der übrigen Membranen lauter werden und zeichne das neue Sternenzentrum als Schwelle
+        im Feld.
+    created_at: 2025-11-06

@@ -381,6 +381,28 @@
                     "docs/resonance-bridge-map.md"
                 ]
             }
+        },
+        {
+            "id": "pr-draft-0017",
+            "type": "interpretationsfeld-ledger",
+            "created_at": "2025-11-06T00:00:00Z",
+            "summary": "Document sensory recalibration and cross-domain threshold synthesis across new Docs PDFs.",
+            "threshold_field": {
+                "R": "sensory_recalibration_threads_pending_documentation",
+                "Theta": "tri_layer_pdf_sync_confirmed",
+                "beta": 4.7,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Extend analysis/threshold_lab.ipynb with modality drop simulations and export ΔAIC vs null baselines.",
+                "Link Docs PDFs to simulator presets describing ζ(R) shifts during sensory loss and cross-domain condensation.",
+                "Update codexfeedback.md with tri-layer narrative capturing interpretative field kernels."
+            ],
+            "observables": {
+                "pdf_sync_state": "forming",
+                "delta_aic_traces": "pending",
+                "impedance_shift_flag": "listening"
+            }
         }
     ]
 }
