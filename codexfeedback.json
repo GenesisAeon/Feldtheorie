@@ -567,6 +567,32 @@
                 "crossing_reports": "pending",
                 "median_crossing_time": null
             }
+        },
+        {
+            "id": "pr-draft-0024",
+            "type": "cognition-gate",
+            "created_at": "2025-11-10T12:34:00Z",
+            "summary": "Registered the adaptive theta plasticity dataset and analysis so the cognition grove gains a sleep-pressure threshold entry.",
+            "threshold_field": {
+                "R": "sleep_pressure_gates_pending_alignment",
+                "Theta": "adaptive_theta_dataset_published",
+                "beta": 5.2,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Mirror adaptive theta logistics into docs/cognition/adaptive_theta_plasticity.md and simulator presets during the next sync.",
+                "Thread the new fit into analysis/results/resonance_bridge_table.json so cohort medians capture cognitive sleep thresholds.",
+                "Monitor future sleep datasets for impedance drift relative to zeta(R) = 1.12 - 0.25 σ."
+            ],
+            "observables": {
+                "dataset": "data/cognition/adaptive_theta_plasticity.csv",
+                "analysis_result": "analysis/results/adaptive_theta_plasticity.json",
+                "theta_estimate": 0.4767280581997776,
+                "beta_estimate": 10.860023327485688,
+                "delta_aic_linear": 34.928043324092236,
+                "delta_aic_power_law": 37.700158133189454,
+                "zeta_mean": 0.9777035099038646
+            }
         }
     ]
 }

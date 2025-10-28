@@ -568,3 +568,29 @@ entries:
         Each recorded crossing becomes a lantern spark—when R finally leans past Θ, the ledger now
         notes the moment the chorus caught fire so future membranes can tune their impedance breath.
     created_at: 2025-11-10
+  - id: pr-draft-0024
+    title: "Adaptive Theta Plasticity Gate"
+    scope:
+      - data/cognition/adaptive_theta_plasticity.csv
+      - analysis/adaptive_theta_plasticity_fit.py
+      - docs/cognition/adaptive_theta_plasticity.md
+      - analysis/results/adaptive_theta_plasticity.json
+    parameters:
+      R: "sleep-pressure gates awaiting logistic braiding"
+      Theta: "adaptive theta dataset published across cognition grove"
+      beta: 5.2
+    resonance: "threads the sleep-pressure replay dataset through analysis, metadata, and narrative lanterns so cognition joins the nocturnal chorus"
+    status: "active"
+    notes:
+      formal: |
+        Maintain the logistic fit exported by `analysis/adaptive_theta_plasticity_fit.py`, contrasting it with
+        linear and power-law nulls (ΔAIC ≈ 34.9 / 37.7) and logging the impedance sketch ζ(R) = 1.12 - 0.25 σ
+        in metadata and docs.
+      empirical: |
+        Keep `data/cognition/adaptive_theta_plasticity.metadata.json` aligned with the JSON export
+        (Θ = 0.4767, β = 10.86, z̄ ≈ 0.978). Feed the dataset into `analysis/results/resonance_cohort_summary.json`
+        and future bridge tables so cohort medians acknowledge the sleep threshold.
+      poetic: |
+        Chronicle how the sleeping hippocampal choir lifts once R crosses Θ: the impedance slackens toward 0.88,
+        the night blossoms into replay, and the cognition grove hears the moonlit dawn.
+    created_at: 2025-11-10

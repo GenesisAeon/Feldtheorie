@@ -1,0 +1,277 @@
+{
+  "theta_estimate": {
+    "value": 0.4767280581997776,
+    "ci95": [
+      0.4462361512301157,
+      0.5072199651694395
+    ]
+  },
+  "beta_estimate": {
+    "value": 10.860023327485688,
+    "ci95": [
+      9.619042232814689,
+      12.101004422156688
+    ]
+  },
+  "logistic_model": {
+    "r2": 0.9904734870522398,
+    "aic": -93.58098826065893,
+    "ss_res": 0.022430155085480682,
+    "residual_mean": 0.015400706282124515,
+    "residual_std": 0.03547057820753855
+  },
+  "null_models": {
+    "linear": {
+      "r2": 0.9022302749144311,
+      "aic": -58.65294493656669,
+      "ss_res": 0.23019861604761918,
+      "slope": 1.451702380952381,
+      "intercept": -0.1993326190476189
+    },
+    "power_law": {
+      "model": "sigma = A * R^k",
+      "amplitude": 1.8455978819021193,
+      "exponent": 2.257957324022496,
+      "r2": 0.8823842889853118,
+      "aic": -55.88083012746947,
+      "ss_res": 0.27692594898207673
+    }
+  },
+  "falsification": {
+    "logistic_beats_all_nulls": true,
+    "comparisons": {
+      "linear": {
+        "delta_aic": 34.928043324092236,
+        "delta_r2": 0.08824321213780872
+      },
+      "power_law": {
+        "delta_aic": 37.700158133189454,
+        "delta_r2": 0.10808919806692796
+      }
+    }
+  },
+  "membrane": {
+    "theta": 0.4767280581997776,
+    "beta": 10.860023327485688,
+    "zeta_mean": 0.9777035099038646,
+    "flux_mean": 0.015400706282124515,
+    "flux_std": 0.03547057820753855
+  },
+  "threshold_crossing": {
+    "crossed": null,
+    "threshold_R": 0.4767280581997776,
+    "note": "threshold diagnostics unavailable: \"results must contain 'R' and 't' arrays for diagnostics\""
+  },
+  "logistic_fit": {
+    "sigma_hat": [
+      0.0203507858773797,
+      0.038328704109589634,
+      0.07103672335848192,
+      0.12794289978862325,
+      0.21965646740154277,
+      0.3506762427528135,
+      0.5088824064968239,
+      0.6653292379137131,
+      0.7922820271728217,
+      0.8797788455063501,
+      0.933512411218408,
+      0.9642065411355487,
+      0.9810187842523134,
+      0.9900160580092595,
+      0.9947712707744631
+    ],
+    "residuals": [
+      -0.00035078587737969943,
+      -0.017728704109589634,
+      -0.02333672335848192,
+      -0.01754289978862325,
+      -0.015056467401542761,
+      0.002523757247186509,
+      0.06151759350317609,
+      0.0784707620862869,
+      0.07431797282717834,
+      0.05842115449364993,
+      0.039787588781592054,
+      0.01579345886445127,
+      -0.0010187842523133872,
+      -0.010016058009259532,
+      -0.014771270774463163
+    ]
+  },
+  "dataset": {
+    "path": "data/cognition/adaptive_theta_plasticity.csv",
+    "control_parameter": "normalised sleep-pressure index",
+    "order_parameter": "probability of hippocampal replay ignition",
+    "measurements": [
+      {
+        "R": 0.12,
+        "sigma": 0.02,
+        "logistic_fit": 0.0203507858773797
+      },
+      {
+        "R": 0.18,
+        "sigma": 0.0206,
+        "logistic_fit": 0.038328704109589634
+      },
+      {
+        "R": 0.24,
+        "sigma": 0.0477,
+        "logistic_fit": 0.07103672335848192
+      },
+      {
+        "R": 0.3,
+        "sigma": 0.1104,
+        "logistic_fit": 0.12794289978862325
+      },
+      {
+        "R": 0.36,
+        "sigma": 0.2046,
+        "logistic_fit": 0.21965646740154277
+      },
+      {
+        "R": 0.42,
+        "sigma": 0.3532,
+        "logistic_fit": 0.3506762427528135
+      },
+      {
+        "R": 0.48,
+        "sigma": 0.5704,
+        "logistic_fit": 0.5088824064968239
+      },
+      {
+        "R": 0.54,
+        "sigma": 0.7438,
+        "logistic_fit": 0.6653292379137131
+      },
+      {
+        "R": 0.6,
+        "sigma": 0.8666,
+        "logistic_fit": 0.7922820271728217
+      },
+      {
+        "R": 0.66,
+        "sigma": 0.9382,
+        "logistic_fit": 0.8797788455063501
+      },
+      {
+        "R": 0.72,
+        "sigma": 0.9733,
+        "logistic_fit": 0.933512411218408
+      },
+      {
+        "R": 0.78,
+        "sigma": 0.98,
+        "logistic_fit": 0.9642065411355487
+      },
+      {
+        "R": 0.84,
+        "sigma": 0.98,
+        "logistic_fit": 0.9810187842523134
+      },
+      {
+        "R": 0.9,
+        "sigma": 0.98,
+        "logistic_fit": 0.9900160580092595
+      },
+      {
+        "R": 0.96,
+        "sigma": 0.98,
+        "logistic_fit": 0.9947712707744631
+      }
+    ]
+  },
+  "impedance": {
+    "definition": "zeta(R) = 1.12 - 0.25 * sigma(beta(R-Theta))",
+    "mean": 0.9777035099038646,
+    "std": 0.09512090787036823,
+    "samples": [
+      {
+        "R": 0.12,
+        "sigma": 0.0203507858773797,
+        "zeta": 1.1149123035306552
+      },
+      {
+        "R": 0.18,
+        "sigma": 0.038328704109589634,
+        "zeta": 1.1104178239726028
+      },
+      {
+        "R": 0.24,
+        "sigma": 0.07103672335848192,
+        "zeta": 1.1022408191603796
+      },
+      {
+        "R": 0.3,
+        "sigma": 0.12794289978862325,
+        "zeta": 1.0880142750528443
+      },
+      {
+        "R": 0.36,
+        "sigma": 0.21965646740154277,
+        "zeta": 1.0650858831496144
+      },
+      {
+        "R": 0.42,
+        "sigma": 0.3506762427528135,
+        "zeta": 1.0323309393117968
+      },
+      {
+        "R": 0.48,
+        "sigma": 0.5088824064968239,
+        "zeta": 0.9927793983757941
+      },
+      {
+        "R": 0.54,
+        "sigma": 0.6653292379137131,
+        "zeta": 0.9536676905215719
+      },
+      {
+        "R": 0.6,
+        "sigma": 0.7922820271728217,
+        "zeta": 0.9219294932067947
+      },
+      {
+        "R": 0.66,
+        "sigma": 0.8797788455063501,
+        "zeta": 0.9000552886234126
+      },
+      {
+        "R": 0.72,
+        "sigma": 0.933512411218408,
+        "zeta": 0.8866218971953981
+      },
+      {
+        "R": 0.78,
+        "sigma": 0.9642065411355487,
+        "zeta": 0.8789483647161129
+      },
+      {
+        "R": 0.84,
+        "sigma": 0.9810187842523134,
+        "zeta": 0.8747453039369217
+      },
+      {
+        "R": 0.9,
+        "sigma": 0.9900160580092595,
+        "zeta": 0.8724959854976853
+      },
+      {
+        "R": 0.96,
+        "sigma": 0.9947712707744631,
+        "zeta": 0.8713071823063843
+      }
+    ]
+  },
+  "tri_layer": {
+    "formal": "Logit-domain regression with linear and power-law falsification twins.",
+    "empirical": "Synthetic replay checkpoints aligned with RepoPlan cognition membranes; JSON export for cross-links.",
+    "metaphorical": "Tracks how the sleeping hippocampal choir brightens once sleep pressure eases across Theta."
+  },
+  "ethics": {
+    "notes": "Synthetic reconstruction inspired by sleep-dependent memory consolidation literature; no subject-identifiable data.",
+    "references": [
+      "Diekelmann & Born (2010) memory consolidation review",
+      "RepoPlan 2.0 cognition membrane brief"
+    ]
+  }
+}
