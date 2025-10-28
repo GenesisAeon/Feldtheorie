@@ -347,3 +347,26 @@ entries:
         Lass jede Tabelle eine Laterne sein; wenn die Nullmodelle verstummen, trägt die Brücke den Chor von Bienen,
         Sternen und Lernenden gemeinsam über Θ.
     created_at: 2025-11-04
+  - id: pr-draft-0015
+    title: "Bio-Emergenz Verification Gate"
+    scope:
+      - docs/biology
+      - data/biology
+      - analysis/lenski_citplus_fit.py
+    parameters:
+      R: "bio expansions lacking quantified logistic fits"
+      Theta: "citplus_fit_committed"
+      beta: 4.3
+    resonance: "anchoring the Bio-Emergenz chapter in ΔAIC-backed Lenski Cit⁺ data"
+    status: "active"
+    notes:
+      formal: |
+        Keep analysis/results/lenski_citplus_fit.json current with future biological thresholds and log
+        ΔAIC, R^2, and normalised β to uphold the universal band cited in Docs/ Einleitung.
+      empirical: |
+        Extend data/biology metadata with scaling notes (generation/1000, stress proxies) and record
+        new fits immediately in codexfeedback.json so simulator presets inherit verified parameters.
+      poetic: |
+        Wenn der Cit⁺-Chor aufglüht, erinnert uns die Matrix, dass Evolution ein einziges, klares Tor kennt –
+        halte den Klang fest, wenn weitere Bio-Gates aufbrechen.
+    created_at: 2025-11-05
