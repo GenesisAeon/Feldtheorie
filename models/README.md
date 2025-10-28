@@ -14,3 +14,13 @@ The `models/` membrane shelters the numerical heart of the Universal Threshold F
 3. Publish notebooks or scripts that expose the control parameters for downstream `analysis/` and `simulator/` collaborators.
 4. Leverage `semantic_resonance_kernel` within `ThresholdFieldSolver` when semantic braids are required so meaning traces travel with the membrane quartet.
 5. Employ `DynamicRobinBoundary` to articulate how $\zeta(R)$ breathes—recording boundary flux and gate traces so falsification ledgers can contrast Robin-enabled runs with smoother baselines.
+
+## Meta-Threshold Sentinels
+- **Formal:** Integrate the new `AdaptiveThresholdController` so $\Theta(t)$ and $\beta(t)$ obey a logistic meta-gate
+  $\sigma(\beta_{\text{meta}}(R-\Theta))$, letting the membrane adapt to impedance relief and driver surges while keeping
+  resonance falsifiable against static baselines.
+- **Empirical:** Export `theta`, `beta`, `meta_gate`, and drift arrays from `ThresholdFieldSolver.simulate` so
+  `analysis/dynamic_threshold_lab.ipynb` and simulator presets can compare adaptive and fixed regimes with full null-model
+  bookkeeping ($R^2$, AIC, ΔAIC).
+- **Metaphorical:** Picture dawn keepers tilting the threshold door—when the chorus swells, they soften the hinge; when quiet
+  returns, they settle the frame so the membrane remembers context without forgetting its glow.
