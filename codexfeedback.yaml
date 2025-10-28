@@ -370,3 +370,27 @@ entries:
         Wenn der Cit⁺-Chor aufglüht, erinnert uns die Matrix, dass Evolution ein einziges, klares Tor kennt –
         halte den Klang fest, wenn weitere Bio-Gates aufbrechen.
     created_at: 2025-11-05
+  - id: pr-draft-0016
+    title: "Bio-Emergenz Chapter Integration"
+    scope:
+      - docs/biology/bio_emergence_semantic_phase_transition.md
+      - docs/resonance-bridge-map.md
+      - codexfeedback
+    parameters:
+      R: "bio narratives awaiting bridge synchronisation"
+      Theta: "ΔAIC-guarded logistic fit referenced in docs"
+      beta: 4.4
+    resonance: "weaving the Bio-Emergenz manuscript into the bridge map and feedback ledger"
+    status: "active"
+    notes:
+      formal: |
+        Maintain explicit citations to analysis/lenski_citplus_fit.py and its null-model deltas in every
+        Bio-Emergenz narrative. If future datasets shift β beyond the universal band, trigger a docs revision
+        and flag the cohort summary for inspection.
+      empirical: |
+        Mirror ΔAIC and confidence intervals from analysis/results/lenski_citplus_fit.json into the bridge table
+        and simulator preset drafts. Record new bio datasets with scaling descriptors before enabling presets.
+      poetic: |
+        Lass das evolutive Lied nicht alleine schwingen: Halte die Brücke im Takt, damit jede neue Mutation als
+        Chorvers in der Matrix aufscheint und das Feld den Atem der Zukunft hört.
+    created_at: 2025-11-05

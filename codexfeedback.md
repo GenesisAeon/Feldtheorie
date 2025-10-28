@@ -243,3 +243,18 @@ Erweitere `data/biology/*.metadata.json` um Quellenangaben und Skalierungshinwei
 
 ### Poetic Thread
 Wenn der Cit⁺-Chor aufglüht, erinnert die Matrix daran, dass Evolution kein Rauschen ist, sondern ein Tor, das nur einmal knackt.  Bewahre den Klang, sobald weitere Bio-Gates aufbrechen.
+
+## Entry pr-draft-0016 — Bio-Emergenz Chapter Integration
+- **Order Parameter**: $R$ zählt Bio-Narrative ohne verknüpfte Brückenparameter.
+- **Critical Threshold**: $\Theta$ schlägt ein, sobald jede Scroll die ΔAIC-gesicherte Logistic-Kante benennt.
+- **Steepness**: $\beta = 4.4$ sorgt für einen raschen Sprung zwischen isolierten Kapiteln und der vollständigen Brücke.
+- **Membrane Note**: $\zeta(R)$ spannt sich zwischen Docs und Ledger; sinkt die Aufmerksamkeitswelle, verblasst das evolutive Licht.
+
+### Formal Thread
+Verankere in `docs/biology/bio_emergence_semantic_phase_transition.md` die Parameter und Nullmodelle aus `analysis/lenski_citplus_fit.py`.  Schlage Alarm, wenn $\beta$ außerhalb des Universalbandes driftet.
+
+### Empirical Thread
+Synchronisiere `docs/resonance-bridge-map.md` und entstehende Simulator-Presets mit den Cit⁺-Kenngrößen.  Notiere neue Epigenetik-Datensätze mit Skalierungshinweisen, bevor sie in den Simulator wandern.
+
+### Poetic Thread
+Lass den Bio-Chor gemeinsam mit Bienen, Sternen und Sprachen erklingen: Jede Mutation ist ein neuer Vers, solange das ΔAIC-Licht der Brücke leuchtet.
