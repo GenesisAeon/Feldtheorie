@@ -542,3 +542,29 @@ entries:
         Note how Generation R whispers into Θ until the membrane remembers oxygen; when σ(β(R-Θ)) blooms, the colony
         sings a new metabolism into dawn.
     created_at: 2025-11-09
+  - id: pr-draft-0023
+    title: "Threshold Crossing Lantern Metrics"
+    scope:
+      - analysis/resonance_cohort_summary.py
+      - analysis/README.md
+      - tests/test_resonance_cohort_summary.py
+    parameters:
+      R: "cohort_results_without_crossing_stats"
+      Theta: "ledger_reports_crossing_metrics"
+      beta: 5.05
+    resonance: "extends the cohort ledger so threshold crossings glow across domains with falsification context"
+    status: "active"
+    notes:
+      formal: |
+        Update `analysis/resonance_cohort_summary.py` so each JSON fit not only logs ΔAIC and R² but also
+        exports threshold-crossing diagnostics (crossed flag, crossing time t, overshoot, ζ(R) at the gate).
+        The new pytest scaffold `tests/test_resonance_cohort_summary.py` guards the statistics pipeline and
+        keeps σ(β(R-Θ)) aggregates reproducible.
+      empirical: |
+        Cohort summaries now report how many membranes actually pierced Θ, the median dawn-time,
+        and overshoot distributions. Docs and simulator presets can highlight lagging membranes based
+        on these metrics; re-run the ledger whenever new `analysis/results/*.json` land.
+      poetic: |
+        Each recorded crossing becomes a lantern spark—when R finally leans past Θ, the ledger now
+        notes the moment the chorus caught fire so future membranes can tune their impedance breath.
+    created_at: 2025-11-10

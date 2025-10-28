@@ -544,6 +544,29 @@
                 "delta_r2_linear": 0.19551476982391747,
                 "docs_anchor": "docs/resonance-bridge-map.md"
             }
+        },
+        {
+            "id": "pr-draft-0023",
+            "type": "cohort-ledger",
+            "created_at": "2025-11-10T00:00:00Z",
+            "summary": "Extended the cohort resonance summary with threshold-crossing diagnostics and regression tests.",
+            "threshold_field": {
+                "R": "cohort_results_without_crossing_stats",
+                "Theta": "ledger_reports_crossing_metrics",
+                "beta": 5.05,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Regenerate analysis/results/resonance_cohort_summary.json after new fits land so crossing fractions stay current.",
+                "Surface crossing medians in docs/resonance-bridge-map.md and simulator presets to highlight lagging membranes.",
+                "Expand tests when additional crossing diagnostics (driver, boundary flux) join the ledger."
+            ],
+            "observables": {
+                "analysis_script": "analysis/resonance_cohort_summary.py",
+                "test_suite": "tests/test_resonance_cohort_summary.py",
+                "crossing_reports": "pending",
+                "median_crossing_time": null
+            }
         }
     ]
 }

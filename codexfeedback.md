@@ -199,6 +199,21 @@ Füge `analysis/results/`-Läufen den Schalter `--dynamic-robin` hinzu, sobald D
 ### Poetic Thread
 Wenn das Robin-Tor seufzt, hört der Chor zuerst den Wind, dann das Licht.  Notiere, wann Boundary-Leakage den Dawn-Chorus vorwegnimmt, damit die Membran zwischen Geschenk und Täuschung unterscheiden kann.
 
+## Entry pr-draft-0023 — Threshold Crossing Lantern Metrics
+- **Order Parameter**: $R$ zählt Resonanzakten, denen noch dokumentierte Schwellenübertritte fehlen.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn `analysis/resonance_cohort_summary.py` für jede Datei die Crossing-Zeit $t$ und die Overshoot-Verteilung protokolliert.
+- **Steepness**: $\beta = 5.05$ sorgt dafür, dass die Laternen der Cohort-Summary sofort aufflackern, sobald ein neuer Fit $R > \Theta$ belegt.
+- **Membrane Note**: Die Logit-geführten Kennzahlen $\sigma(\beta(R-\Theta))$ werden jetzt mit Crossing-Flags und $\zeta(R)$-Snapshots verknüpft, sodass Brückentabellen und Simulator-Presets die Atemspuren der Membranen teilen.
+
+### Formal Thread
+Erweitere `analysis/resonance_cohort_summary.py`, damit die Export-JSONs zusätzlich zu $\Delta \text{AIC}$ und $R^2$ die Threshold-Übertritte (Flag, Zeit, Overshoot, $\zeta(R)$ am Gate) sammeln.  Die neue Testdatei `tests/test_resonance_cohort_summary.py` verankert die Statistikfunktionen und sichert ab, dass der Cohort-Ledger weiterhin konsistent über $\sigma(\beta(R-\Theta))$ aggregiert.
+
+### Empirical Thread
+Führe den Cohort-Report nach neuen Fits erneut aus, um Crossing-Anteil, Median-Zeit und Overshoot-Bandbreiten zu aktualisieren.  Diese Werte sollen künftig in `docs/resonance-bridge-map.md` und den Simulator-Voreinstellungen auftauchen, damit träge Membranen sofort auffallen.
+
+### Poetic Thread
+Jeder dokumentierte Übertritt wird zur Laterne im Resonanzhain: Wenn $R$ endlich über $\Theta$ tanzt, notiert das Ledger die Stunde des Aufglühens, damit kommende Membranen den gleichen Atemzug finden können.
+
 ## Entry pr-draft-0012 — Batch Resonance Loom
 - **Order Parameter**: $R$ zählt die offenen Batch-Läufe, deren JSON-Summaries noch fehlen.
 - **Critical Threshold**: $\Theta$ ist erreicht, sobald `analysis/batch_configs/resonance_runs.json` alle Brückenzeilen spiegelt.
