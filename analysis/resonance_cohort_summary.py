@@ -57,6 +57,12 @@ class CohortRecord:
     delta_r2: Optional[float]
     logistic_minus_best_r2: Optional[float]
     zeta_mean: Optional[float]
+    threshold_crossed: Optional[bool]
+    crossing_time: Optional[float]
+    crossing_R: Optional[float]
+    crossing_sigma: Optional[float]
+    overshoot: Optional[float]
+    zeta_at_crossing: Optional[float]
 
     def to_dict(self) -> Dict[str, Any]:
         """Return a JSON-serialisable representation."""
@@ -122,6 +128,7 @@ def parse_result(result_path: Path) -> CohortRecord:
     falsification = payload.get("falsification") if isinstance(payload.get("falsification"), Mapping) else {}
     comparisons = falsification.get("comparisons") if isinstance(falsification.get("comparisons"), Mapping) else {}
     membrane_info = payload.get("membrane") if isinstance(payload.get("membrane"), Mapping) else {}
+    crossing_info = payload.get("threshold_crossing") if isinstance(payload.get("threshold_crossing"), Mapping) else {}
 
     best_null_model: Optional[str] = None
     best_delta_aic: Optional[float] = None
@@ -150,6 +157,14 @@ def parse_result(result_path: Path) -> CohortRecord:
     if logistic_r2 is not None and best_null_r2 is not None:
         logistic_minus_best_r2 = logistic_r2 - best_null_r2
 
+    threshold_crossed: Optional[bool] = None
+    if isinstance(crossing_info, Mapping):
+        crossed_value = crossing_info.get("crossed")
+        if isinstance(crossed_value, bool):
+            threshold_crossed = crossed_value
+        elif crossed_value in (0, 1):
+            threshold_crossed = bool(crossed_value)
+
     try:
         relative_path = result_path.relative_to(Path.cwd())
     except ValueError:
@@ -171,6 +186,12 @@ def parse_result(result_path: Path) -> CohortRecord:
         delta_r2=best_delta_r2,
         logistic_minus_best_r2=logistic_minus_best_r2,
         zeta_mean=_safe_float(membrane_info.get("zeta_mean")) if isinstance(membrane_info, Mapping) else None,
+        threshold_crossed=threshold_crossed,
+        crossing_time=_safe_float(crossing_info.get("crossing_time")) if isinstance(crossing_info, Mapping) else None,
+        crossing_R=_safe_float(crossing_info.get("crossing_R")) if isinstance(crossing_info, Mapping) else None,
+        crossing_sigma=_safe_float(crossing_info.get("crossing_sigma")) if isinstance(crossing_info, Mapping) else None,
+        overshoot=_safe_float(crossing_info.get("overshoot")) if isinstance(crossing_info, Mapping) else None,
+        zeta_at_crossing=_safe_float(crossing_info.get("zeta_at_crossing")) if isinstance(crossing_info, Mapping) else None,
     )
 
 
@@ -212,6 +233,30 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
     for record in records:
         domain_map.setdefault(record.domain, []).append(record)
 
+    def crossing_stats(domain_records: Sequence[CohortRecord]) -> Dict[str, Any]:
+        reporting = [
+            r
+            for r in domain_records
+            if (
+                r.threshold_crossed is not None
+                or r.crossing_time is not None
+                or r.overshoot is not None
+            )
+        ]
+        reports = len(reporting)
+        crossed_count = sum(1 for r in reporting if r.threshold_crossed)
+        fraction = (crossed_count / reports) if reports else None
+        return {
+            "reports": reports,
+            "crossed_count": crossed_count,
+            "crossed_fraction": fraction,
+            "time": stats(_flatten_sequences(r.crossing_time for r in reporting)),
+            "R": stats(_flatten_sequences(r.crossing_R for r in reporting)),
+            "sigma": stats(_flatten_sequences(r.crossing_sigma for r in reporting)),
+            "overshoot": stats(_flatten_sequences(r.overshoot for r in reporting)),
+            "zeta": stats(_flatten_sequences(r.zeta_at_crossing for r in reporting)),
+        }
+
     domain_stats: Dict[str, Any] = {}
     for domain, domain_records in domain_map.items():
         domain_stats[domain] = {
@@ -219,7 +264,10 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
             "delta_aic": stats(_flatten_sequences(r.delta_aic for r in domain_records)),
             "delta_r2": stats(_flatten_sequences(r.delta_r2 for r in domain_records)),
             "logistic_r2": stats(_flatten_sequences(r.logistic_r2 for r in domain_records)),
+            "threshold_crossing": crossing_stats(domain_records),
         }
+
+    crossing_summary = crossing_stats(records)
 
     return {
         "meta": {
@@ -234,6 +282,7 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
             "delta_aic": stats(delta_aic_values),
             "delta_r2": stats(delta_r2_values),
             "zeta_mean": stats(zeta_mean_values),
+            "threshold_crossing": crossing_summary,
         },
         "domains": domain_stats,
         "records": [record.to_dict() for record in records],
@@ -277,9 +326,20 @@ def render_console_report(records: Sequence[CohortRecord]) -> None:
         delta_r2 = "–" if record.delta_r2 is None else f"{record.delta_r2:.4f}"
         logistic_r2 = "–" if record.logistic_r2 is None else f"{record.logistic_r2:.4f}"
         best_null = record.best_null_model or "(none)"
+        if record.threshold_crossed is True:
+            crossing_note = (
+                "crossed at t≈"
+                f"{record.crossing_time:.2f}" if record.crossing_time is not None else "crossed"
+            )
+        elif record.threshold_crossed is False:
+            crossing_note = "no crossing"
+        elif record.crossing_time is not None:
+            crossing_note = f"t≈{record.crossing_time:.2f}"
+        else:
+            crossing_note = "crossing n/a"
         print(
             f"  • {Path(record.result_path).name} [{record.domain}] — ΔAIC {delta_aic}, ΔR² {delta_r2}, "
-            f"logistic R² {logistic_r2}, best null {best_null}"
+            f"logistic R² {logistic_r2}, best null {best_null}, {crossing_note}"
         )
     print()
 
