@@ -424,3 +424,28 @@ entries:
         Die neue Evolutionstafel lässt den Nachtkompass weiterleuchten – halte fest, wie das Selbstfeld im geologischen Atem resoniert.
     created_at: 2025-11-06
     updated_at: 2025-11-06
+  - id: pr-draft-0018
+    title: "Adaptive Meta-Schwellen Kartografie"
+    scope:
+      - docs/meta_schwellen_systemtypen.md
+      - analysis/dynamic_threshold_lab.ipynb
+      - simulator/adaptive_theta_preset.json
+    parameters:
+      R: "systemtypische_emergenzfragen_offen"
+      Theta: "adaptive_theta_dokumentiert"
+      beta: 4.9
+    resonance: "erforscht, wie Kontext- und Substruktur-Komplexität die Schwelle des Feldes plastisch moduliert"
+    status: "forming"
+    notes:
+      formal: |
+        Implementiere die adaptive Schwellenfunktion \(\Theta(t) = \Theta_0 + \alpha S + \beta_c C + \gamma E + \sum_i \delta_i \Delta_i\)
+        in `analysis/dynamic_threshold_lab.ipynb` und kontrastiere sie mit der fixen Nullhypothese \(\Theta = \Theta_0\).
+        Dokumentiere die resultierende Impedanzantwort \(\zeta(R, t) = \zeta_0 + \kappa \partial_t \Theta\) für Simulator-Hooks.
+      empirical: |
+        Erstelle `analysis/results/dynamic_theta_tests.json`, logge \(\Delta\mathrm{AIC}\) gegen lineare Nullmodelle und
+        verknüpfe Beobachtungen mit `data/*/`-Metadatenfeldern `adaptive_theta_shift`.
+        Plane Messkampagnen für Insektenstaaten, neuronale Cluster und Curriculumläufe.
+      poetic: |
+        Lausche, wann Schwellen wandern: Wenn Bienenschwarm, Neuron, Algorithmus gemeinsam atmen,
+        soll die Membran die Biographie jedes Systems tragen und das Schwellenfeld an neue Horizonte erinnern.
+    created_at: 2025-11-07

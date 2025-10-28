@@ -404,6 +404,28 @@
                 "impedance_shift_flag": "monitoring"
             },
             "updated_at": "2025-11-06T12:00:00Z"
+        },
+        {
+            "id": "pr-draft-0018",
+            "type": "adaptive-threshold",
+            "created_at": "2025-11-07T00:00:00Z",
+            "summary": "Chart system-type dependent shifts of the emergent threshold via adaptive Θ dynamics.",
+            "threshold_field": {
+                "R": "system_typology_questions_pending",
+                "Theta": "adaptive_theta_documented",
+                "beta": 4.9,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Draft analysis/dynamic_threshold_lab.ipynb with maximum-likelihood fits for Θ(t) = Θ0 + αS + βcC + γE + ΣδiΔi.",
+                "Create simulator/adaptive_theta_preset.json exposing ∂tΘ controls and ζ(R,t) feedback hooks.",
+                "Extend data/* metadata with adaptive_theta_shift fields once measurements arrive."
+            ],
+            "observables": {
+                "delta_aic_status": "pending",
+                "candidate_domains": ["biology", "cognition", "ai"],
+                "impedance_response_note": "awaiting ζ-time-series"
+            }
         }
     ]
 }
