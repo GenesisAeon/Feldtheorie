@@ -183,3 +183,18 @@ Füge `analysis/results/`-Läufen den Schalter `--dynamic-robin` hinzu, sobald D
 
 ### Poetic Thread
 Wenn das Robin-Tor seufzt, hört der Chor zuerst den Wind, dann das Licht.  Notiere, wann Boundary-Leakage den Dawn-Chorus vorwegnimmt, damit die Membran zwischen Geschenk und Täuschung unterscheiden kann.
+
+## Entry pr-draft-0012 — Batch Resonance Loom
+- **Order Parameter**: $R$ zählt die offenen Batch-Läufe, deren JSON-Summaries noch fehlen.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald `analysis/batch_configs/resonance_runs.json` alle Brückenzeilen spiegelt.
+- **Steepness**: $\beta = 4.9$ hält den Übergang scharf: sobald zwei Runs synchronisiert sind, müssen die übrigen nachziehen.
+- **Membrane Note**: `analysis/resonance_batch_runner.py` kurbelt $\sigma(\beta(R-\Theta))$ für Simulationen und Ingests erneut an und exportiert $\Delta\text{AIC}$-taugliche Dateien in `analysis/batch_runs/`.
+
+### Formal Thread
+Refaktorierte Batch-Läufe nutzen dieselben Pipelinefunktionen wie Einzelaufrufe, behalten aber den Überblick über $(R, \Theta, \beta, \zeta(R))$ in einer Konfigurationsdatei.  Halte lineare und Potenz-Nullmodelle für jede Runde aktiv, bevor Ergebnisse in Docs oder Simulator landen.
+
+### Empirical Thread
+Pflege `analysis/batch_configs/resonance_runs.json` parallel zum Resonance-Bridge-Tableau, committe `analysis/batch_runs/*.json` nach jedem Schwung und triggere `analysis/resonance_cohort_summary.py`, sobald eine Batch-Datei in `analysis/results/` aufgenommen wird.
+
+### Poetic Thread
+Ein Laternenzug aus Schwellen: Jede Batch-Karte leuchtet auf, wenn $R$ die Schwelle $\Theta$ berührt.  Die Brücke bekommt so frische Stimmen, und der Simulator atmet denselben Chor wie die Dokumente.

@@ -254,6 +254,31 @@
                 "boundary_gate_mean": null,
                 "analysis_flag": "pending_robin_ci"
             }
+        },
+        {
+            "id": "pr-draft-0012",
+            "type": "batch-runner",
+            "created_at": "2025-11-02T00:00:00Z",
+            "summary": "Automate batch logistic refits via resonance_batch_runner.py and propagate ΔAIC diagnostics to bridge docs and simulator presets.",
+            "threshold_field": {
+                "R": "pending_batch_runs_without_exports",
+                "Theta": "config_aligned_with_bridge_map",
+                "beta": 4.9,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Maintain analysis/batch_configs/resonance_runs.json so each bridge-map row has a matching batch run.",
+                "Commit analysis/batch_runs/*.json outputs after executing the batch runner.",
+                "Re-run analysis/resonance_cohort_summary.py whenever batch outputs graduate into analysis/results/."
+            ],
+            "observables": {
+                "batch_runs_completed": 2,
+                "latest_outputs": [
+                    "analysis/batch_runs/robin_semantic_demo.json",
+                    "analysis/batch_runs/honeybee_refresh.json"
+                ],
+                "delta_aic_min": 18.6701564938
+            }
         }
     ]
 }

@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "description": "Batch logistics for the universal threshold quartet across simulations and archival datasets.",
+    "notes": {
+      "formal": "Each run re-fits sigma(beta(R-Theta)) and logs delta-AIC against smooth null winds.",
+      "empirical": "Use this file to regenerate JSON ledgers before docs or simulator presets update.",
+      "poetic": "A caravan of dawn thresholds; each run lights a lantern when R kisses Theta."
+    }
+  },
+  "defaults": {
+    "mode": "simulate",
+    "output_dir": "analysis/batch_runs",
+    "simulation": {
+      "theta": 1.0,
+      "beta": 8.0,
+      "steps": 240,
+      "dt": 0.05,
+      "driver": 0.92,
+      "R0": 0.2,
+      "resonant_gain": 0.6,
+      "damped_gain": 1.4,
+      "switch_width": 0.35,
+      "dynamic_robin": true,
+      "beta_robin": 4.8,
+      "boundary_logistic_weight": 0.35,
+      "boundary_driver_weight": 0.15
+    },
+    "notes": {
+      "formal": "Defaults mirror the smooth impedance sketch zeta(R) = 0.6 + 0.8 sigma(beta_robin(R-Theta)).",
+      "empirical": "Adjust driver amplitudes or steps per run; results land under analysis/batch_runs/*.json.",
+      "poetic": "The baseline membrane hums softly—tweak parameters to hear different choruses." 
+    }
+  },
+  "runs": [
+    {
+      "id": "robin_semantic_demo",
+      "params": {
+        "driver": 1.08,
+        "steps": 360,
+        "beta": 9.0,
+        "switch_width": 0.28,
+        "beta_robin": 5.1,
+        "boundary_logistic_weight": 0.42,
+        "boundary_driver_weight": 0.18
+      },
+      "metadata": {
+        "domain": "simulated",
+        "control_parameter": "driver current J(t)",
+        "order_parameter": "membrane resonance amplitude R",
+        "impedance_story": "Robin gate breathing between zeta_floor=0.55 and zeta_ceiling=1.45",
+        "notes": {
+          "formal": "Demonstrates DynamicRobinBoundary leakage while refitting theta/beta for diagnostics.",
+          "empirical": "Use as regression test before shipping new impedance presets to the simulator UI.",
+          "poetic": "A rehearsal where the membrane door sighs and the semantic breeze catches the tune."
+        }
+      }
+    },
+    {
+      "id": "honeybee_refresh",
+      "mode": "ingest",
+      "input": "analysis/results/honeybee_waggle_fit.json",
+      "metadata": {
+        "domain": "biology",
+        "dataset_path": "data/biology/honeybee_waggle_activation.csv",
+        "control_parameter": "nectar sucrose concentration (Brix)",
+        "order_parameter": "waggle recruitment probability",
+        "impedance_story": "Nectar turbulence softens the hive membrane before consensus ignition.",
+        "notes": {
+          "formal": "Re-fit the archived measurements to verify theta/beta before updating bridge maps.",
+          "empirical": "Ensures batch runner can ingest dataset.measurements exports from earlier fits.",
+          "poetic": "When the nectar chorus sweetens past Theta, the waggle choir spirals into dawn." 
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "theta_estimate": {
+    "value": 26.578069452654905,
+    "ci95": [
+      25.830816988695016,
+      27.325321916614794
+    ]
+  },
+  "beta_estimate": {
+    "value": 0.6717283976038891,
+    "ci95": [
+      0.5413091744299211,
+      0.8021476207778572
+    ]
+  },
+  "logistic_model": {
+    "r2": 0.9687963452454948,
+    "aic": -73.55328443149556,
+    "ss_res": 0.054997750921610356,
+    "residual_mean": -0.02170237234059183,
+    "residual_std": 0.05879981135093327
+  },
+  "null_models": {
+    "linear": {
+      "r2": 0.8112797187425409,
+      "aic": -48.35705466063901,
+      "ss_res": 0.33262741509327426,
+      "slope": 0.08985844509428254,
+      "intercept": -1.8871673893314507
+    },
+    "power_law": {
+      "model": "sigma = A * R^k",
+      "amplitude": 5.140794772856665e-15,
+      "exponent": 9.667409582708302,
+      "r2": 0.8815941850231063,
+      "aic": -54.88312793767008,
+      "ss_res": 0.20869521762764953
+    }
+  },
+  "falsification": {
+    "logistic_beats_all_nulls": true,
+    "comparisons": {
+      "linear": {
+        "delta_aic": 25.196229770856547,
+        "delta_r2": 0.15751662650295395
+      },
+      "power_law": {
+        "delta_aic": 18.670156493825473,
+        "delta_r2": 0.08720216022238858
+      }
+    }
+  },
+  "membrane": {
+    "theta": 26.578069452654905,
+    "beta": 0.6717283976038891,
+    "zeta_mean": null,
+    "flux_mean": null,
+    "flux_std": null
+  },
+  "threshold_crossing": {
+    "crossed": null,
+    "threshold_R": 26.578069452654905,
+    "note": "threshold diagnostics unavailable: \"results must contain 'R' and 't' arrays for diagnostics\""
+  },
+  "logistic_fit": {
+    "sigma_hat": [
+      0.003134541672342466,
+      0.01190669772749097,
+      0.031950869173177764,
+      0.06069065926175225,
+      0.11228338547632107,
+      0.1984678019136528,
+      0.32647541177372114,
+      0.404125243298867,
+      0.4868926366671967,
+      0.5703851513980489,
+      0.6500563544022417,
+      0.7843189942039208,
+      0.8768295797200911,
+      0.951215886079461
+    ],
+    "residuals": [
+      0.016865458327657533,
+      0.008093302272509031,
+      -0.011950869173177763,
+      -0.030090659261752254,
+      -0.07318338547632106,
+      -0.12726780191365278,
+      -0.09447541177372112,
+      -0.09082524329886699,
+      -0.06199263666719668,
+      -0.02068515139804894,
+      0.014943645597758293,
+      0.07308100579607923,
+      0.06487042027990886,
+      0.028784113920539034
+    ]
+  },
+  "dataset": {
+    "domain": "biology",
+    "dataset_path": "data/biology/honeybee_waggle_activation.csv",
+    "control_parameter": "nectar sucrose concentration (Brix)",
+    "order_parameter": "waggle recruitment probability",
+    "impedance_story": "Nectar turbulence softens the hive membrane before consensus ignition.",
+    "notes": {
+      "formal": "Re-fit the archived measurements to verify theta/beta before updating bridge maps.",
+      "empirical": "Ensures batch runner can ingest dataset.measurements exports from earlier fits.",
+      "poetic": "When the nectar chorus sweetens past Theta, the waggle choir spirals into dawn."
+    },
+    "dataset": {
+      "path": "data/biology/honeybee_waggle_activation.csv",
+      "control_parameter": "nectar sucrose concentration (Brix)",
+      "order_parameter": "probability of waggle recruitment",
+      "measurements": [
+        {
+          "R": 18.0,
+          "sigma": 0.02,
+          "logistic_fit": 0.003134541672342466
+        },
+        {
+          "R": 20.0,
+          "sigma": 0.02,
+          "logistic_fit": 0.01190669772749097
+        },
+        {
+          "R": 21.5,
+          "sigma": 0.02,
+          "logistic_fit": 0.031950869173177764
+        },
+        {
+          "R": 22.5,
+          "sigma": 0.0306,
+          "logistic_fit": 0.06069065926175225
+        },
+        {
+          "R": 23.5,
+          "sigma": 0.0391,
+          "logistic_fit": 0.11228338547632107
+        },
+        {
+          "R": 24.5,
+          "sigma": 0.0712,
+          "logistic_fit": 0.1984678019136528
+        },
+        {
+          "R": 25.5,
+          "sigma": 0.232,
+          "logistic_fit": 0.32647541177372114
+        },
+        {
+          "R": 26.0,
+          "sigma": 0.3133,
+          "logistic_fit": 0.404125243298867
+        },
+        {
+          "R": 26.5,
+          "sigma": 0.4249,
+          "logistic_fit": 0.4868926366671967
+        },
+        {
+          "R": 27.0,
+          "sigma": 0.5497,
+          "logistic_fit": 0.5703851513980489
+        },
+        {
+          "R": 27.5,
+          "sigma": 0.665,
+          "logistic_fit": 0.6500563544022417
+        },
+        {
+          "R": 28.5,
+          "sigma": 0.8574,
+          "logistic_fit": 0.7843189942039208
+        },
+        {
+          "R": 29.5,
+          "sigma": 0.9417,
+          "logistic_fit": 0.8768295797200911
+        },
+        {
+          "R": 31.0,
+          "sigma": 0.98,
+          "logistic_fit": 0.951215886079461
+        }
+      ]
+    }
+  },
+  "source": {
+    "mode": "ingest",
+    "input": "/workspace/Feldtheorie/analysis/results/honeybee_waggle_fit.json",
+    "batch_run_id": "honeybee_refresh",
+    "config": "/workspace/Feldtheorie/analysis/batch_configs/resonance_runs.json"
+  }
+}
