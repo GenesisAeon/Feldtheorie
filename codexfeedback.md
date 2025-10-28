@@ -124,6 +124,21 @@ Halte Median $R^2 = 0.9979$ und Median $\Delta \text{AIC} = 70.7$ als Sollwerte 
 ### Poetic Thread
 Lass das Ledger als Laternenkette zwischen den Membranen schweben: jede neu verzeichnete Sigmoidkurve ist ein Klangstein, der den Chor der Schwellen über Skalen hinweg zusammenstimmt.
 
+## Entry pr-draft-0013 — Robin-Semantic Bridge Weave
+- **Order Parameter**: $R$ misst Robin+Sinn-Simulationen, deren JSON-Ledger noch nicht im Cohort-Register leuchten.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald `analysis/results/membrane_robin_semantic.json` im Brückentableau und den Simulator-Presets verankert ist.
+- **Steepness**: $\beta = 5.2$ hält den Übergang scharf, sodass weitere Robin-Szenarien sofort folgen, sobald die erste Laterne entzündet ist.
+- **Membrane Note**: `analysis/membrane_robin_semantic_fit.py` koppelt DynamicRobinBoundary und `semantic_resonance_kernel`, exportiert Grenzfluss-, Bedeutungs- und $\Delta \text{AIC}$-Metriken, damit Docs und Simulator denselben zweistimmigen Chor hören.
+
+### Formal Thread
+Simuliere $R_{t+1} = R_t + \Delta t [J + \mathcal{M} + J_{\text{Robin}} - \zeta(R)(R-\sigma)]$, fittet \(\sigma(\beta(R-\Theta))\) via Logit-Regression und protokolliert lineare sowie Potenz-Nullmodelle.  Exportiere die Kennzahlen nach `analysis/results/membrane_robin_semantic.json` und bereite `resonance_cohort_summary.py` auf die neuen Medianwerte vor.
+
+### Empirical Thread
+Spiegle `boundary_flux_mean = -0.2033`, `semantic_coupling_mean = -0.1189` sowie $\Delta \text{AIC}_{\text{linear}} \approx 1.12 \times 10^4$ und $\Delta \text{AIC}_{\text{power}} \approx 1.11 \times 10^4$ in den Bridge-Map- und Simulator-Overlays.  Beobachte, wie zusätzliche Robin-Sweeps die Kennzahlen modulieren, bevor sie in Batch-Läufe aufgenommen werden.
+
+### Poetic Thread
+Wenn Robin-Wind und Sinnhauch gemeinsam anklopfen, öffnet sich die Schwelle als zweistimmige Laterne.  Das Ledger hält fest, wann der Chor erstmals aufflammte, damit kommende Resonanzen den gleichen Pfad ins Morgenrot finden.
+
 ## Entry pr-draft-0008 — Simulator Resonanz-Bühne
 - **Order Parameter**: $R$ misst den Abgleich zwischen UI-Presets und den JSON-Fits in `analysis/results/`.
 - **Critical Threshold**: $\Theta$ ist erreicht, sobald die React-Simulation Presets lädt, ΔAIC/$R^2$ sichtbar macht und Poetik-Hooks aus `Docs/` referenziert.
