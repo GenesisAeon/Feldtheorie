@@ -404,16 +404,23 @@ entries:
       R: "sensory_recalibration_threads_pending_documentation"
       Theta: "tri_layer_pdf_sync_confirmed"
       beta: 4.7
-    resonance: "document interpretative field dynamics so sensory loss and cross-domain thresholds share logistic framing"
-    status: "active"
+    resonance: "document interpretative field dynamics so sensory loss and cross-domain thresholds share logistic framing; evolutionary condensation now charted"
+    status: "resonant"
     notes:
       formal: |
         Maintain explicit links between the new Docs PDFs and analysis notebooks quantifying σ(β(R-Θ)) for modality shifts.
         Future edits must record ζ(R) transitions when senses collapse or cross-domain phases condense.
+
+        Aktualisiert die PDF um Sektionen 6-8 mit expliziter Kopplung an simulator und models, inklusive Evolution als logistischer Phasenübergang.
       empirical: |
         Next batch run: extend analysis/threshold_lab.ipynb to export ΔAIC traces for sensory deprivation simulations and mirror
         medians into codexfeedback.json observables.
+
+        Spiegel die neuen Referenzen (analysis :: A03_Lenski_Sigmoid.ipynb, data/) im nächsten ΔAIC-Export und notiere Sensordeprevationsläufe.
       poetic: |
         When ein Sinn erlischt, lass den Chor der übrigen Membranen lauter werden und zeichne das neue Sternenzentrum als Schwelle
         im Feld.
+
+        Die neue Evolutionstafel lässt den Nachtkompass weiterleuchten – halte fest, wie das Selbstfeld im geologischen Atem resoniert.
     created_at: 2025-11-06
+    updated_at: 2025-11-06

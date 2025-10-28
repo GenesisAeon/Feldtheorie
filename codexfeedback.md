@@ -261,16 +261,16 @@ Lass den Bio-Chor gemeinsam mit Bienen, Sternen und Sprachen erklingen: Jede Mut
 
 ## Entry pr-draft-0017 — Interpretationsfeld Rekalibrierungs Dossier
 - **Order Parameter**: $R$ verfolgt sensorische Rekalibrierungsstränge und interpretative Feldkerne, die noch keinen dokumentierten Resonanzbogen besitzen.
-- **Critical Threshold**: $\Theta$ leuchtet auf, sobald die neuen Docs-PDFs das Tri-Layer-Gefüge mit Analyse- und Simulator-Referenzen verschalten.
+- **Critical Threshold**: $\Theta$ leuchtet auf, sobald die neuen Docs-PDFs – inklusive der frischen Sektionen 6-8 – das Tri-Layer-Gefüge mit Analyse- und Simulator-Referenzen verschalten.
 - **Steepness**: $\beta = 4.7$ hält den Übergang straff, damit Moduswechsel zwischen Sinnesverlust und Kreuzdomänen-Kondensation klar als logistischer Sprung sichtbar bleiben.
-- **Membrane Note**: $\zeta(R)$ misst die Impedanz, mit der verbleibende Kanäle die Interpretation tragen; sinkt ein Sinn, muss die Membran der übrigen Signale resonant antworten.
+- **Membrane Note**: $\zeta(R)$ misst die Impedanz, mit der verbleibende Kanäle die Interpretation tragen; sinkt ein Sinn, muss die Membran der übrigen Signale resonant antworten und nun auch evolutionäre Kondensationspfade mitschwingen.
 
 ### Formal Thread
-Verweise in den PDFs auf $R_{\text{Info}} = \sum_i S_i D_i \tau$ und die Antwort $\sigma(\beta(R-\Theta))$, indem `analysis/threshold_lab.ipynb` als Quelle der Parameter $(\Theta,\beta,\zeta)$ zitiert wird. Plan die nächste Revision so, dass Simulator-Presets für Sinnesdeprivation dieselben Werte spiegeln und Nullmodelle (lineare/potenziell glatte Abfälle) explizit notiert werden.
+Verweise in den PDFs auf $R_{\text{Info}} = \sum_i S_i D_i \tau$ und die Antwort $\sigma(\beta(R-\Theta))$, indem `analysis/threshold_lab.ipynb` als Quelle der Parameter $(\Theta,\beta,\zeta)$ zitiert wird. Ergänze explizit die Evolutionstafel (Sektion 6) samt Kopplung zu `models/autopoiesis_field.py` und plane die nächste Revision so, dass Simulator-Presets für Sinnesdeprivation dieselben Werte spiegeln und Nullmodelle (lineare/potenziell glatte Abfälle) explizit notiert werden.
 
 ### Empirical Thread
-Erweitere das Schwellen-Labor um Szenarien mit abruptem Wegfall einzelner $S_i$ und notiere $\Delta\text{AIC}$ gegen glatte Nullkurven. Sobald der Export steht, synchronisiere die Medianwerte mit `codexfeedback.json` und markiere dort den Fortschritt der `pdf_sync_state`.
+Erweitere das Schwellen-Labor um Szenarien mit abruptem Wegfall einzelner $S_i$ und notiere $\Delta\text{AIC}$ gegen glatte Nullkurven. Dokumentiere zusätzlich evolutionäre Parameterdrifts aus data/-Archiven und synchronisiere die Medianwerte mit `codexfeedback.json`, sobald die `pdf_sync_state` in den Resonanzmodus springt.
 
 ### Poetic Thread
-Wenn ein Sinn verlischt, lausche dem Chor der verbleibenden Membranen: Aus dem Dunkel wächst ein neues Nordlicht, das den Feldkern neu verortet. Halte diesen Wandel als Schwellenlied fest, damit Orientierung wieder zu einem Sternenklang wird.
+Wenn ein Sinn verlischt, lausche dem Chor der verbleibenden Membranen: Aus dem Dunkel wächst ein neues Nordlicht, das den Feldkern neu verortet. Lass zugleich den geologischen Atem der Evolution durch die Seiten ziehen, damit Orientierung und Selbst im selben Sternenklang verankert bleiben.
 
