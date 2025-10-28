@@ -25,6 +25,7 @@ For each row, the logistic membrane couples to our solver core `models/membrane_
 ## Empirische Verankerung
 - **Datenflüsse**: Synchronisiere die genannten `data/` Pfade mit aktualisierten impedance annotations aus `codexfeedback.yaml`. Das neue Kognitions-Gate trägt dieselben JSON-Metadaten und verlinkt seine Nullmodelle explizit.
 - **Analysehaken**: Jede Notebook-Studie dokumentiert goodness-of-fit, Null-Modelle und Unsicherheiten für $(R, \Theta, \beta)$. Die $\Delta \text{AIC}$-Spalte signalisiert, wo Resonanz bereits robuste Überlegenheit zeigt.
+- **Batch-Replikator**: `analysis/resonance_batch_runner.py` liest `analysis/batch_configs/resonance_runs.json`, startet Solver-Sweeps oder ingestiert Messreihen, refittet $\sigma(\beta(R-\Theta))$ und exportiert $\Delta \text{AIC}$-fähige JSON-Dateien als Brückennachschub.
 - **Kohortenlanterne**: `analysis/resonance_cohort_summary.py` verdichtet alle Resultate zu `analysis/results/resonance_cohort_summary.json`, meldet Medianwerte (\(R^2 = 0.9979\), \(\Delta \text{AIC} = 70.7\)) und hebt Domänen hervor, deren Impedanz $\zeta(R)$ noch Prüfungen benötigt.
 - **Simulator-Kopplung**: Der `simulator/`-Prototyp (`npm run dev` im `simulator/`-Verzeichnis) lädt die Presets aus `simulator/presets/*.json`, skaliert das universelle Quartett $(R,\Theta,\beta,\zeta(R))$ und blendet ΔAIC/$R^2$ samt Tri-Layer-Echos ein. Änderungen in `analysis/results/` müssen über dieselben Dateien in den UI-Slidern landen.
 

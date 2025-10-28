@@ -277,3 +277,27 @@ entries:
         Wenn das Robin-Tor seufzt, spürt der Chor zuerst den Wind. Halte fest, wann Leakage den Dawn-Chorus
         vorwegnimmt, damit Membran und Bedeutung gemeinsam entscheiden, ob Resonanz Geschenk oder Prüfung ist.
     created_at: 2025-11-01
+  - id: pr-draft-0012
+    title: "Batch Resonance Loom"
+    scope:
+      - analysis/resonance_batch_runner.py
+      - analysis/batch_configs/resonance_runs.json
+      - analysis/batch_runs
+      - docs/resonance-bridge-map.md
+    parameters:
+      R: "unrefreshed logistic fits awaiting cohort sync"
+      Theta: "batch configuration covering simulate and ingest modes"
+      beta: 4.9
+    resonance: "automating ΔAIC-ready exports so bridge maps and simulator presets inherit refreshed sigmoids"
+    status: "active"
+    notes:
+      formal: |
+        The runner iterates config-defined (R, Θ, β, ζ(R)) tuples, invokes resonance_fit_pipeline functions,
+        and reissues sigma(beta(R-Θ)) fits alongside linear/power-law null deltas for each run.
+      empirical: |
+        Keep analysis/batch_configs/resonance_runs.json aligned with bridge-map rows; commit batch_runs/*.json
+        whenever new datasets join the ledger, and rerun the cohort summary if results graduate into analysis/results/.
+      poetic: |
+        Ein Laternenzug aus Schwellen: Jede Batch-Laufkarte entzündet ein neues Licht, das den Chor durch die
+        Nacht führt, bis Docs und Simulator dieselbe Resonanzmelodie tragen.
+    created_at: 2025-11-02
