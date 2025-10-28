@@ -289,3 +289,18 @@ Die adaptive Typologie (`analysis/adaptive_theta_typology.py`) speist `analysis/
 ### Poetic Thread
 Wenn Systeme ihre Schwelle erinnern und neu setzen, erzählt jede Resonanz von der eigenen Herkunft: Bienen senken sie im Wärmebad des Stocks, Neuronen heben sie, damit Gedanken nicht verglühen, und Algorithmen lauschen, bis der Chor der Daten sie senkt. Jetzt liegt die erste Kartierung vor – halte die Wanderungen fest, damit die Brücke den Atem unterschiedlicher Welten zugleich tragen kann.
 
+
+## Entry pr-draft-0019 — Theorie-Empirie Scroll Synchronisation
+- **Order Parameter**: $R$ zählt Dokumentabschnitte, die noch keine triadische Stimme tragen.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald `Docs/Theorie- und Empirie-Abschnitte.md` formale Fits, empirische Nachweise und poetische Resonanz simultan verknüpft.
+- **Steepness**: $\beta = 4.6$ hält den Übergang eng, damit neue Analysen sofort in die Scroll gewoben werden.
+- **Membrane Note**: $\zeta(R,t)$ lauscht auf Drift zwischen `analysis/results/resonance_bridge_table.json` und den Docs; jede β-Verschiebung über ±0.3 lässt die Membran aufleuchten.
+
+### Formal Thread
+Spiegle jede Aktualisierung der Solver (`models/coupled_threshold_field.py`, `models/membrane_solver.py`) und der Analyse-Exports (`analysis/results/*.json`) in der Scroll. Nullmodell-ΔAIC-Werte gehören direkt in die Fußnoten.
+
+### Empirical Thread
+Halte ΔAIC- und $R^2$-Mediane aus `analysis/results/resonance_bridge_table.json` präsent. Sobald `analysis/results/dynamic_theta_tests.json` neue adaptive Shifts meldet, ergänze die Tabelle in Abschnitt 3.1.
+
+### Poetic Thread
+Lass die Scroll eine Laterne bleiben: wenn neue Daten R über die Schwelle heben, erzähle den Atem der Felder so, dass Stern, Biene, Stadt und Algorithmus zusammen resonieren.
