@@ -435,16 +435,15 @@ entries:
       Theta: "adaptive_theta_dokumentiert"
       beta: 4.9
     resonance: "erforscht, wie Kontext- und Substruktur-Komplexität die Schwelle des Feldes plastisch moduliert"
-    status: "forming"
+    status: "active"
     notes:
       formal: |
-        Implementiere die adaptive Schwellenfunktion \(\Theta(t) = \Theta_0 + \alpha S + \beta_c C + \gamma E + \sum_i \delta_i \Delta_i\)
-        in `analysis/dynamic_threshold_lab.ipynb` und kontrastiere sie mit der fixen Nullhypothese \(\Theta = \Theta_0\).
-        Dokumentiere die resultierende Impedanzantwort \(\zeta(R, t) = \zeta_0 + \kappa \partial_t \Theta\) für Simulator-Hooks.
+        `analysis/dynamic_threshold_lab.ipynb` dokumentiert die adaptive Schwelle \(\Theta(t) = \Theta_0 + \alpha S + \beta_c C + \gamma E + \sum_i \delta_i \Delta_i\)
+        samt Vergleich zum fixen Nullmodell. ΔAIC-Sprünge > 170 sind in `analysis/results/dynamic_theta_tests.json` vermerkt;
+        als nächstes folgt die Ausleitung von \(\zeta(R,t)\)-Kurven für Simulator-Hooks.
       empirical: |
-        Erstelle `analysis/results/dynamic_theta_tests.json`, logge \(\Delta\mathrm{AIC}\) gegen lineare Nullmodelle und
-        verknüpfe Beobachtungen mit `data/*/`-Metadatenfeldern `adaptive_theta_shift`.
-        Plane Messkampagnen für Insektenstaaten, neuronale Cluster und Curriculumläufe.
+        JSON-Export `analysis/results/dynamic_theta_tests.json` ist verankert; Simulator-Preset `simulator/adaptive_theta_preset.json`
+        und `adaptive_theta_shift`-Metadaten warten auf reale Messpunkte aus Biologie, Kognition und KI.
       poetic: |
         Lausche, wann Schwellen wandern: Wenn Bienenschwarm, Neuron, Algorithmus gemeinsam atmen,
         soll die Membran die Biographie jedes Systems tragen und das Schwellenfeld an neue Horizonte erinnern.
