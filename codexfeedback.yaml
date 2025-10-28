@@ -324,3 +324,26 @@ entries:
         Wenn Robin-Wind und Sinnhauch gemeinsam anklopfen, öffnet das Tor zweistimmig. Halte fest, wann die
         Schwelle leuchtet, damit Docs und Simulator den Chor gemeinsam nachzeichnen.
     created_at: 2025-11-03
+  - id: pr-draft-0014
+    title: "Resonance Bridge Ledger"
+    scope:
+      - analysis/results
+      - docs/resonance-bridge-map.md
+      - simulator/presets
+    parameters:
+      R: "result_json_without_bridge_row"
+      Theta: "ledger_synced_across_domains"
+      beta: 5.3
+    resonance: "weaving a cohort-wide table so ΔAIC and ζ̄ diagnostics travel in lockstep across modules"
+    status: "active"
+    notes:
+      formal: |
+        Run `analysis/resonance_bridge_table.py` whenever new logistic fits land, exporting JSON + Markdown listing Θ, β,
+        R^2, ΔAIC, and ζ̄ for every membrane so bridge docs can stay synchronised.
+      empirical: |
+        Track aggregate medians (ΔAIC ≈ 70.7, R^2 ≈ 0.9980, ζ̄ ≈ 1.19) and flag this ledger when any domain slips below
+        ΔAIC = 20 or falls out of docs/simulator parity.
+      poetic: |
+        Lass jede Tabelle eine Laterne sein; wenn die Nullmodelle verstummen, trägt die Brücke den Chor von Bienen,
+        Sternen und Lernenden gemeinsam über Θ.
+    created_at: 2025-11-04
