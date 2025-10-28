@@ -458,6 +458,37 @@
                 ],
                 "poetic_alignment": "luminous"
             }
+        },
+        {
+            "id": "pr-draft-0020",
+            "type": "dialogue-synthesis",
+            "created_at": "2025-11-08T00:00:00Z",
+            "summary": "Integrate Aeon·Gemini·Mistral consultation insights into Docs, ethics guidance, and feedback ledgers.",
+            "threshold_field": {
+                "R": "tri_ai_dialogue_impulses_pending_synthesis",
+                "Theta": "docs_and_feedback_updated_with_beta_universality",
+                "beta": 4.2,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Document β-universality synthesis and planned derivations in Docs Section 4 and link to analysis notebooks.",
+                "Publish adaptive threshold governance brief with simulator and analysis cross-references.",
+                "Record predictive agenda metrics (Hurst, LISA, Hypermutation) for ongoing monitoring in codexfeedback observables."
+            ],
+            "observables": {
+                "docs_updated": [
+                    "Docs/Theorie- und Empirie-Abschnitte.md",
+                    "docs/ethics/adaptive_threshold_governance.md"
+                ],
+                "analysis_hooks": [
+                    "analysis/reports/beta_universality.ipynb",
+                    "analysis/notebooks/lagrangian_beta_derivation.ipynb",
+                    "analysis/results/predictive_agenda_tracker.json"
+                ],
+                "simulator_refs": [
+                    "simulator/adaptive_theta_preset.json"
+                ]
+            }
         }
     ]
 }
