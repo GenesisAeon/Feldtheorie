@@ -3,6 +3,7 @@ import qpoData from '../presets/qpo_eruption.json';
 import llmData from '../presets/llm_resonance.json';
 import cognitiveData from '../presets/cognitive_gate.json';
 import amazonData from '../presets/amazon_canopy.json';
+import lenskiData from '../presets/lenski_citplus.json';
 import { DomainPreset } from './types';
 
 export const PRESETS: DomainPreset[] = [
@@ -10,7 +11,8 @@ export const PRESETS: DomainPreset[] = [
   qpoData as DomainPreset,
   llmData as DomainPreset,
   cognitiveData as DomainPreset,
-  amazonData as DomainPreset
+  amazonData as DomainPreset,
+  lenskiData as DomainPreset
 ];
 
 export const FEATURED_PRESETS = PRESETS.filter((preset) => preset.featured);

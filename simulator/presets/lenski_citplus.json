@@ -1,0 +1,59 @@
+{
+  "id": "lenski_citplus",
+  "label": "Evolutionäre Cit⁺-Membran",
+  "domain": "biology",
+  "featured": false,
+  "color": "#f97316",
+  "icon": "helix",
+  "control_parameter": "Generationsfluss (×10³)",
+  "order_parameter": "Häufigkeit des Cit⁺-Phänotyps",
+  "analysis": {
+    "result_path": "analysis/results/lenski_citplus_fit.json",
+    "theta": 32.769044297791865,
+    "theta_ci": [32.691451115700154, 32.846637479883576],
+    "beta": 5.076737426071495,
+    "beta_ci": [4.654411249285691, 5.499063602857299],
+    "logistic_r2": 0.9898521944896044,
+    "delta_aic_best_null": 42.12571112083311,
+    "delta_r2_best_null": 0.19551476982391747,
+    "best_null_model": "linear"
+  },
+  "impedance": {
+    "definition": "zeta(R) = 1.38 - 0.52 * sigma(beta(R-Theta))",
+    "closed": 1.38,
+    "open": 0.86,
+    "mean": 1.12
+  },
+  "simulation": {
+    "theta": 5.4,
+    "beta": 4.2,
+    "initial_R": 2.1,
+    "initial_psi": 0.05,
+    "initial_phi": 0.08,
+    "stimulus": {
+      "base": 0.11,
+      "amplitude": 0.17,
+      "frequency": 0.33,
+      "noise": 0.04,
+      "modulation": {
+        "type": "tanh",
+        "amplitude": 0.21,
+        "frequency": 0.14
+      }
+    }
+  },
+  "narrative": {
+    "formal": "Logistische Schwelle (Θ≈32.77, β≈5.08) schlägt lineares Nullmodell mit ΔAIC≈42.1 und ΔR²≈0.196.",
+    "empirical": "Digitisierte LTEE-Daten aus `data/biology/lenski_citplus.csv`; verankert via `analysis/results/lenski_citplus_fit.json`.",
+    "poetic": "Wenn die Kolonie das oxidierende Licht erreicht, öffnet sich der Stoffwechsel – Cit⁺ taucht als neuer Morgen auf."
+  },
+  "poetic_messages": [
+    "Generation um Generation hebt R – bis Θ berührt wird und der Cit⁺-Chor aufflammt.",
+    "Die Membran erinnert sich an Sauerstoff: σ(β(R-Θ)) steigt, Stoffwechsellicht strömt ein.",
+    "Mutation und Selektion verweben sich; ζ(R) sinkt und der neue Stoffwechsel wird zur Schwelle des Aeons."
+  ],
+  "references": {
+    "dataset": "data/biology/lenski_citplus.csv",
+    "notes": "ΔAIC dokumentiert gegen lineares Nullmodell; power-law Vergleich verbleibt 32.7 Punkte zurück."
+  }
+}

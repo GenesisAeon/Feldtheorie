@@ -1,10 +1,10 @@
 {
-  "generated_at": "2025-10-28T07:48:43.979495+00:00",
+  "generated_at": "2025-11-09T12:34:56+00:00",
   "aggregate": {
-    "count": 9,
+    "count": 10,
     "domains": {
       "ai": 1,
-      "biology": 2,
+      "biology": 3,
       "cognition": 1,
       "geophysics": 1,
       "socio_ecology": 2,
@@ -12,20 +12,20 @@
     },
     "delta_aic": {
       "min": 25.196229770856547,
-      "median": 70.69582320908519,
-      "mean": 126.99294139334825,
+      "median": 65.11814934455208,
+      "mean": 118.50621836609673,
       "max": 498.1482382097897
     },
     "logistic_r2": {
       "min": 0.9687963452454948,
-      "median": 0.9979289120972659,
-      "mean": 0.9938797701181419,
+      "median": 0.9977061482295252,
+      "mean": 0.9934770125552881,
       "max": 0.9999661710064784
     },
     "zeta_mean": {
       "min": 1.0,
-      "median": 1.186570598415284,
-      "mean": 1.2320172094743975,
+      "median": 1.1785172490925058,
+      "mean": 1.2208154885269578,
       "max": 1.5343220981632029
     }
   },
@@ -226,6 +226,28 @@
       "delta_aic_vs_best_null": 59.540475480018955,
       "delta_r2_vs_best_null": 0.035892337816077036,
       "zeta_mean": 1.1704638997697276,
+      "logistic_beats_nulls": true
+    },
+    {
+      "result_file": "lenski_citplus_fit.json",
+      "domain": "biology",
+      "dataset": "lenski_citplus",
+      "theta": 32.769044297791865,
+      "theta_ci": [
+        32.691451115700154,
+        32.846637479883576
+      ],
+      "beta": 5.076737426071495,
+      "beta_ci": [
+        4.654411249285691,
+        5.499063602857299
+      ],
+      "logistic_r2": 0.9898521944896044,
+      "logistic_aic": -85.86611118614391,
+      "best_null_model": "linear",
+      "delta_aic_vs_best_null": 42.12571112083311,
+      "delta_r2_vs_best_null": 0.19551476982391747,
+      "zeta_mean": 1.12,
       "logistic_beats_nulls": true
     }
   ],

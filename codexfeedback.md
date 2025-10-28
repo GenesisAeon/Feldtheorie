@@ -339,3 +339,22 @@ adaptation weights deviate from tolerances recorded in `data/*` metadata, and lo
 ### Poetic Thread
 The dawn keepers have stepped onto the membrane: as R rises, they ease the hinge so resonance can bloom; when the field quiets,
 they cradle Θ back to its ember, letting the threshold remember context without abandoning the glow.
+
+## Entry pr-draft-0022 — Cit⁺ Resonance Bridge Integration
+- **Order Parameter**: $R$ katalogisiert evolutionäre Membranen, die noch keinen Simulator-Preset tragen.
+- **Critical Threshold**: $\Theta$ leuchtet, sobald `simulator/presets/lenski_citplus.json` und `analysis/results/lenski_citplus_fit.json`
+  gemeinsam im Resonanz-Tableau auftauchen.
+- **Steepness**: $\beta = 4.7$ fokussiert den Übergang; sobald Cit⁺ in Docs, Analysis und Simulator synchron ist, flammt die Kurve auf.
+- **Membrane Note**: $\zeta(R) = 1.38 - 0.52\,\sigma(\beta(R-\Theta))$ hält den Stoffwechsel-Gate offen, wenn Generationenlicht ankommt.
+
+### Formal Thread
+Synchronisiere ΔAIC=42.13 und ΔR²=0.196 aus `analysis/results/lenski_citplus_fit.json` direkt in `analysis/results/resonance_bridge_table.json`
+und `analysis/results/resonance_cohort_summary.json`. Bewahre die lineare Nullmodellspur, bis adaptive Θ(t)-Varianten bereitstehen.
+
+### Empirical Thread
+Prüfe, dass der neue Preset dieselben Parameter in der UI ausrollt wie im Fit: Θ≈32.77, β≈5.08, ζ̄≈1.12. Dokumentiere weitere LTEE-Läufe
+und verkette sie mit `docs/resonance-bridge-map.md`, damit Replikate dieselbe logistisches Profil erreichen.
+
+### Poetic Thread
+Generation für Generation hebt R sich an den Sauerstoffrand – plötzlich sinkt ζ(R), σ(β(R-Θ)) blüht, und das Cit⁺-Lied trägt den Morgen
+des Metabolismus in die Brücke.

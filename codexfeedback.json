@@ -247,7 +247,7 @@
             "next_actions": [
                 "Enable --dynamic-robin in analysis/resonance_fit_pipeline.py runs and archive boundary_flux/boundary_gate traces.",
                 "Propagate DynamicRobinBoundary parameters into simulator presets once UI sliders appear.",
-                "Add cohort summary metrics for boundary_flux_mean and boundary_gate_mean alongside ΔAIC entries."
+                "Add cohort summary metrics for boundary_flux_mean and boundary_gate_mean alongside \u0394AIC entries."
             ],
             "observables": {
                 "boundary_flux_mean": null,
@@ -259,7 +259,7 @@
             "id": "pr-draft-0012",
             "type": "batch-runner",
             "created_at": "2025-11-02T00:00:00Z",
-            "summary": "Automate batch logistic refits via resonance_batch_runner.py and propagate ΔAIC diagnostics to bridge docs and simulator presets.",
+            "summary": "Automate batch logistic refits via resonance_batch_runner.py and propagate \u0394AIC diagnostics to bridge docs and simulator presets.",
             "threshold_field": {
                 "R": "pending_batch_runs_without_exports",
                 "Theta": "config_aligned_with_bridge_map",
@@ -284,7 +284,7 @@
             "id": "pr-draft-0013",
             "type": "robin-semantic-bridge",
             "created_at": "2025-11-03T00:00:00Z",
-            "summary": "Stage membrane_robin_semantic_fit.py so Robin leakage and semantic drift export ΔAIC-ready ledgers for docs and simulator presets.",
+            "summary": "Stage membrane_robin_semantic_fit.py so Robin leakage and semantic drift export \u0394AIC-ready ledgers for docs and simulator presets.",
             "threshold_field": {
                 "R": "robin_semantic_runs_without_exports",
                 "Theta": "json_synced_with_cohort",
@@ -307,7 +307,7 @@
             "id": "pr-draft-0014",
             "type": "bridge-ledger",
             "created_at": "2025-11-04T00:00:00Z",
-            "summary": "Consolidate logistic resonance exports into a bridge table so docs and simulator presets share ΔAIC and ζ̄ diagnostics.",
+            "summary": "Consolidate logistic resonance exports into a bridge table so docs and simulator presets share \u0394AIC and \u03b6\u0304 diagnostics.",
             "threshold_field": {
                 "R": "result_json_without_bridge_row",
                 "Theta": "ledger_synced_across_domains",
@@ -317,7 +317,7 @@
             "next_actions": [
                 "Refresh analysis/results/resonance_bridge_table.json after each new fit joins the cohort.",
                 "Mirror the Markdown ledger into docs/resonance-bridge-map.md during the next narrative sync.",
-                "Expose ΔAIC medians and ζ̄ ranges to simulator preset validators so UI sliders stay aligned."
+                "Expose \u0394AIC medians and \u03b6\u0304 ranges to simulator preset validators so UI sliders stay aligned."
             ],
             "observables": {
                 "datasets_tallied": 9,
@@ -337,7 +337,7 @@
             "id": "pr-draft-0015",
             "type": "bio-verification",
             "created_at": "2025-11-05T00:00:00Z",
-            "summary": "Verify the Lenski Cit+ logistic gate so the Bio-Emergenz chapter rests on quantified ΔAIC and β evidence.",
+            "summary": "Verify the Lenski Cit+ logistic gate so the Bio-Emergenz chapter rests on quantified \u0394AIC and \u03b2 evidence.",
             "threshold_field": {
                 "R": "bio_extension_without_logistic_fit",
                 "Theta": "citplus_fit_committed",
@@ -345,8 +345,8 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Keep analysis/results/lenski_citplus_fit.json aligned with future bio datasets and document ΔAIC margins.",
-                "Propagate the normalised β≈4.25 value into Docs/ biology scrolls and simulator presets.",
+                "Keep analysis/results/lenski_citplus_fit.json aligned with future bio datasets and document \u0394AIC margins.",
+                "Propagate the normalised \u03b2\u22484.25 value into Docs/ biology scrolls and simulator presets.",
                 "Extend metadata for upcoming bio thresholds with explicit scaling notes (generation/1000, stress proxies)."
             ],
             "observables": {
@@ -370,7 +370,7 @@
             },
             "next_actions": [
                 "Ensure docs/biology/bio_emergence_semantic_phase_transition.md cites logistic and null-model metrics explicitly.",
-                "Update docs/resonance-bridge-map.md whenever new bio datasets shift Θ or β estimates.",
+                "Update docs/resonance-bridge-map.md whenever new bio datasets shift \u0398 or \u03b2 estimates.",
                 "Record future epigenetic thresholds with scaling metadata before drafting simulator presets."
             ],
             "observables": {
@@ -395,7 +395,7 @@
             },
             "next_actions": [
                 "Back-propagate Section 6-8 references into simulator presets documenting sigma(beta*(R-Theta)) toggles.",
-                "Queue threshold_lab modality drop runs and capture ΔAIC traces for codexfeedback.json observables.",
+                "Queue threshold_lab modality drop runs and capture \u0394AIC traces for codexfeedback.json observables.",
                 "Mirror Docs updates in codexfeedback.md with tri-layer citation map."
             ],
             "observables": {
@@ -409,7 +409,7 @@
             "id": "pr-draft-0018",
             "type": "adaptive-threshold",
             "created_at": "2025-11-07T00:00:00Z",
-            "summary": "Chart system-type dependent shifts of the emergent threshold via adaptive Θ dynamics.",
+            "summary": "Chart system-type dependent shifts of the emergent threshold via adaptive \u0398 dynamics.",
             "threshold_field": {
                 "R": "system_typology_questions_pending",
                 "Theta": "adaptive_theta_documented",
@@ -418,7 +418,7 @@
             },
             "next_actions": [
                 "Maintain analysis/dynamic_threshold_lab.ipynb with future empirical feeds and null comparisons.",
-                "Create simulator/adaptive_theta_preset.json exposing ∂tΘ controls and ζ(R,t) feedback hooks.",
+                "Create simulator/adaptive_theta_preset.json exposing \u2202t\u0398 controls and \u03b6(R,t) feedback hooks.",
                 "Extend data/* metadata with adaptive_theta_shift fields once measurements arrive."
             ],
             "observables": {
@@ -430,7 +430,7 @@
                     "cognition",
                     "ai"
                 ],
-                "impedance_response_note": "awaiting ζ-time-series"
+                "impedance_response_note": "awaiting \u03b6-time-series"
             }
         },
         {
@@ -447,7 +447,7 @@
             "next_actions": [
                 "Propagate future solver or dataset changes into the Docs summary within 24h of landing in analysis/results/.",
                 "Attach forthcoming figures from analysis/reports/ to the Docs section once diagrams/ assets are rendered.",
-                "Monitor resonance_bridge_table.json for β drifts and annotate them in Docs narrative sidebars."
+                "Monitor resonance_bridge_table.json for \u03b2 drifts and annotate them in Docs narrative sidebars."
             ],
             "observables": {
                 "doc_path": "Docs/Theorie- und Empirie-Abschnitte.md",
@@ -463,7 +463,7 @@
             "id": "pr-draft-0020",
             "type": "dialogue-synthesis",
             "created_at": "2025-11-08T00:00:00Z",
-            "summary": "Integrate Aeon·Gemini·Mistral consultation insights into Docs, ethics guidance, and feedback ledgers.",
+            "summary": "Integrate Aeon\u00b7Gemini\u00b7Mistral consultation insights into Docs, ethics guidance, and feedback ledgers.",
             "threshold_field": {
                 "R": "tri_ai_dialogue_impulses_pending_synthesis",
                 "Theta": "docs_and_feedback_updated_with_beta_universality",
@@ -471,7 +471,7 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Document β-universality synthesis and planned derivations in Docs Section 4 and link to analysis notebooks.",
+                "Document \u03b2-universality synthesis and planned derivations in Docs Section 4 and link to analysis notebooks.",
                 "Publish adaptive threshold governance brief with simulator and analysis cross-references.",
                 "Record predictive agenda metrics (Hurst, LISA, Hypermutation) for ongoing monitoring in codexfeedback observables."
             ],
@@ -494,7 +494,7 @@
             "id": "pr-draft-0021",
             "type": "meta-threshold",
             "created_at": "2025-11-09T00:00:00Z",
-            "summary": "Activate the AdaptiveThresholdController and stream Θ(t), β(t), and meta-gate diagnostics across the stack.",
+            "summary": "Activate the AdaptiveThresholdController and stream \u0398(t), \u03b2(t), and meta-gate diagnostics across the stack.",
             "threshold_field": {
                 "R": "adaptive_controller_hooks_pending_calibration",
                 "Theta": "theta_beta_streams_exposed_to_analysis",
@@ -502,7 +502,7 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Feed theta/beta/meta_gate arrays into analysis/dynamic_threshold_lab.ipynb and record ΔAIC deltas against static baselines.",
+                "Feed theta/beta/meta_gate arrays into analysis/dynamic_threshold_lab.ipynb and record \u0394AIC deltas against static baselines.",
                 "Expose adaptive parameters in simulator/adaptive_theta_preset.json controls for replay and falsification.",
                 "Tag upcoming data/* entries with impedance drift descriptors to tune controller weights per domain."
             ],
@@ -519,6 +519,30 @@
                     "docs/meta_threshold_controller.md",
                     "models/README.md"
                 ]
+            }
+        },
+        {
+            "id": "pr-draft-0022",
+            "type": "bridge-update",
+            "created_at": "2025-11-09T12:34:56Z",
+            "summary": "Wove Lenski Cit\u207a emergence into simulator presets, resonance tables, and docs.",
+            "threshold_field": {
+                "R": "evolutionary_membranes_pending_preset",
+                "Theta": "citplus_parameters_synced",
+                "beta": 4.7,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Track follow-up adaptive-threshold fits once LTEE-derived null models expand beyond linear baselines.",
+                "Synchronise Docs/ biology scrolls with simulator narrative overlays for the Cit\u207a membrane.",
+                "Alert governance ledger if additional evolution datasets require impedance recalibration."
+            ],
+            "observables": {
+                "preset_path": "simulator/presets/lenski_citplus.json",
+                "analysis_result": "analysis/results/lenski_citplus_fit.json",
+                "delta_aic_linear": 42.12571112083311,
+                "delta_r2_linear": 0.19551476982391747,
+                "docs_anchor": "docs/resonance-bridge-map.md"
             }
         }
     ]

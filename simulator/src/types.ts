@@ -52,7 +52,7 @@ export interface DomainPreset {
   domain: string;
   featured: boolean;
   color: string;
-  icon: 'blackHole' | 'bee' | 'brain' | 'leaf' | 'network';
+  icon: 'blackHole' | 'bee' | 'brain' | 'leaf' | 'network' | 'helix';
   control_parameter: string;
   order_parameter: string;
   analysis: AnalysisSummary;
