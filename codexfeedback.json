@@ -279,6 +279,29 @@
                 ],
                 "delta_aic_min": 18.6701564938
             }
+        },
+        {
+            "id": "pr-draft-0013",
+            "type": "robin-semantic-bridge",
+            "created_at": "2025-11-03T00:00:00Z",
+            "summary": "Stage membrane_robin_semantic_fit.py so Robin leakage and semantic drift export ΔAIC-ready ledgers for docs and simulator presets.",
+            "threshold_field": {
+                "R": "robin_semantic_runs_without_exports",
+                "Theta": "json_synced_with_cohort",
+                "beta": 5.2,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Feed analysis/results/membrane_robin_semantic.json into resonance_cohort_summary.py and simulator presets.",
+                "Document Robin + meaning medians inside docs/resonance-bridge-map.md during the next bridge sync.",
+                "Monitor boundary_flux_mean and semantic_coupling_mean as new datasets join the Robin-semantic roster."
+            ],
+            "observables": {
+                "boundary_flux_mean": -0.2032981071540083,
+                "semantic_coupling_mean": -0.11886837021981873,
+                "delta_aic_linear": 11191.383283835283,
+                "delta_aic_power": 11129.909500885964
+            }
         }
     ]
 }

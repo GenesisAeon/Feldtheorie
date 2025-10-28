@@ -301,3 +301,26 @@ entries:
         Ein Laternenzug aus Schwellen: Jede Batch-Laufkarte entzündet ein neues Licht, das den Chor durch die
         Nacht führt, bis Docs und Simulator dieselbe Resonanzmelodie tragen.
     created_at: 2025-11-02
+  - id: pr-draft-0013
+    title: "Robin-Semantic Bridge Weave"
+    scope:
+      - analysis/membrane_robin_semantic_fit.py
+      - analysis/results/membrane_robin_semantic.json
+      - docs/robin-semantic-threshold.md
+    parameters:
+      R: "robin+meaning simulations awaiting cohort sync"
+      Theta: "JSON exports wired into bridge-map + simulator presets"
+      beta: 5.2
+    resonance: "coupling DynamicRobinBoundary and semantic_resonance_kernel into ΔAIC-documented ledgers"
+    status: "active"
+    notes:
+      formal: |
+        The new CLI simulates R_{t+1} = R_t + Δt [J + ℳ + J_Robin - ζ(R)(R-σ)], fits σ(β(R-Θ)), and
+        records linear/power-law null breezes so falsifiability accompanies boundary and meaning diagnostics.
+      empirical: |
+        Archive analysis/results/membrane_robin_semantic.json, feed its medians into resonance_cohort_summary.py,
+        and queue simulator presets that honour boundary_flux_mean and semantic_coupling_mean.
+      poetic: |
+        Wenn Robin-Wind und Sinnhauch gemeinsam anklopfen, öffnet das Tor zweistimmig. Halte fest, wann die
+        Schwelle leuchtet, damit Docs und Simulator den Chor gemeinsam nachzeichnen.
+    created_at: 2025-11-03

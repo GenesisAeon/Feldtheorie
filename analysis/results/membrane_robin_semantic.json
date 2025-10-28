@@ -1,0 +1,207 @@
+{
+  "meta": {
+    "description": "Robin boundary + semantic kernel resonance rehearsal",
+    "dt": 0.35,
+    "steps": 160,
+    "driver_config": {
+      "base_level": 0.12,
+      "burst_amplitude": 0.95,
+      "burst_center": 45.0,
+      "burst_width": 16.0,
+      "harmonic_gain": 0.08,
+      "harmonic_period": 18.0,
+      "noise_scale": 0.015,
+      "seed": 11
+    },
+    "robin": {
+      "theta": 0.52,
+      "beta_robin": 5.0,
+      "zeta_floor": 0.62,
+      "zeta_ceiling": 1.48,
+      "logistic_weight": 0.42,
+      "driver_weight": 0.22
+    }
+  },
+  "logistic_fit": {
+    "theta_estimate": {
+      "value": 0.52,
+      "ci95": [
+        0.5199999999999991,
+        0.5200000000000009
+      ]
+    },
+    "beta_estimate": {
+      "value": 6.399999999999999,
+      "ci95": [
+        6.399999999999991,
+        6.400000000000007
+      ]
+    },
+    "r2": 1.0,
+    "aic": -11996.718219857392,
+    "ss_res": 6.840903162463462e-31,
+    "residual_mean": 1.7929067478418677e-17,
+    "residual_std": 6.267022191437856e-17
+  },
+  "null_models": {
+    "linear": {
+      "r2": 0.6269744459874944,
+      "aic": -805.3349360221082,
+      "ss_res": 1.055990613511257,
+      "slope": 0.4246773579567319,
+      "intercept": 0.4496363063039754
+    },
+    "power_law": {
+      "model": "sigma = A * R^k",
+      "amplitude": 0.8496663855429081,
+      "exponent": 0.7075168670131377,
+      "r2": 0.7453672813459021,
+      "aic": -866.8087189714281,
+      "ss_res": 0.720834693224705
+    }
+  },
+  "falsification": {
+    "logistic_beats_all_nulls": true,
+    "comparisons": {
+      "linear": {
+        "delta_aic": 11191.383283835283,
+        "delta_r2": 0.3730255540125056
+      },
+      "power_law": {
+        "delta_aic": 11129.909500885964,
+        "delta_r2": 0.25463271865409787
+      }
+    }
+  },
+  "membrane": {
+    "theta": 0.52,
+    "beta": 6.4,
+    "zeta_mean": 1.2505518447545403,
+    "flux_mean": 0.018283666190059687,
+    "flux_std": 0.042670824518960614
+  },
+  "boundary": {
+    "boundary_flux_mean": -0.2032981071540083,
+    "boundary_flux_std": 0.05717235516903512,
+    "boundary_flux_peak": -0.025003224556789983,
+    "boundary_flux_valley": -0.26764142573883504,
+    "boundary_gate_mean": 0.9282103257123253,
+    "boundary_gate_peak": 0.9909660988108884,
+    "boundary_gate_valley": 0.28905049737499605
+  },
+  "meaning": {
+    "meaning_mean": 0.9775354333814799,
+    "meaning_std": 0.21318006177580992,
+    "meaning_peak": 1.072027705202482,
+    "meaning_valley": 0.0,
+    "semantic_coupling_mean": -0.11886837021981873,
+    "semantic_coupling_std": 0.09473300277546437,
+    "semantic_coupling_peak": 0.05349961929263235,
+    "semantic_coupling_valley": -0.2555017694375414
+  },
+  "threshold_crossing": {
+    "crossed": true,
+    "threshold_R": 0.52,
+    "crossing_index": 6,
+    "crossing_time": 1.9246956093071323,
+    "crossing_R": 0.52,
+    "crossing_sigma": 0.5,
+    "overshoot": 0.025984651984779616,
+    "zeta_at_crossing": 1.069999994680338,
+    "driver_at_crossing": 0.19180360796624624,
+    "boundary_flux_at_crossing": -0.03806522799809249,
+    "boundary_gate_at_crossing": 0.4999998424140739,
+    "interpolated": true
+  },
+  "snapshots": {
+    "R": [
+      0.34,
+      0.36267429540132123,
+      0.3880393255359719,
+      0.4189546705527631,
+      0.4527473308851564,
+      0.494105585187151,
+      0.5459846519847796,
+      0.6084395922838433,
+      0.6861426418550391,
+      0.772727605150995,
+      0.8539188238995457,
+      0.9095789487700289
+    ],
+    "sigma": [
+      0.2401239645091218,
+      0.26758999973907865,
+      0.3005777215318281,
+      0.3437358009627879,
+      0.39402674055702835,
+      0.4586635003119249,
+      0.5414798889276885,
+      0.6378427778990754,
+      0.7433231371116571,
+      0.8344440751978176,
+      0.894455309740037,
+      0.9236711599859045
+    ],
+    "zeta": [
+      1.0132330507489233,
+      1.020280376142672,
+      1.0282127797694445,
+      1.0379393401962667,
+      1.0486280459402841,
+      1.0617623895800472,
+      1.0782663062871516,
+      1.0980793936558655,
+      1.1224652154109207,
+      1.1490276755306288,
+      1.1730993094461533,
+      1.1890217142509583
+    ],
+    "driver": [
+      0.13748500654791995,
+      0.14999566151262178,
+      0.16627950653451967,
+      0.1699954472392518,
+      0.18086368222821367,
+      0.19180360796624624,
+      0.19489972437743425,
+      0.20822471797177788,
+      0.21759092357856713,
+      0.2267287803204385,
+      0.22196160279149424,
+      0.2297858056101446
+    ],
+    "boundary_gate": [
+      0.28905049737499605,
+      0.31289304894858694,
+      0.34078378261248227,
+      0.37631317574868794,
+      0.4167174396797956,
+      0.46767712129049255,
+      0.5324352021496638,
+      0.6087826361522279,
+      0.6965057130522873,
+      0.779651737884255,
+      0.8415216992454194,
+      0.8752169035598646
+    ],
+    "meaning": [
+      0.0,
+      0.03578541955298668,
+      0.07111477543070377,
+      0.10749172419695555,
+      0.14593051815014102,
+      0.18883380922762094,
+      0.2399269823875623,
+      0.30412688148969974,
+      0.38646688436144283,
+      0.48909001014551895,
+      0.6024487013567544,
+      0.7084156891832888
+    ]
+  },
+  "tri_layer": {
+    "formal": "Logit regression recovered \u0398 \u2248 0.5200 and \u03b2 \u2248 6.400, with \u0394AIC \u2248 11191.4 versus the linear null and \u0394AIC \u2248 11129.9 versus the power-law breeze.",
+    "empirical": "Driver, membrane, Robin gate, and semantic traces are archived so analysis dashboards and simulator presets can replay the resonance without regenerating data.",
+    "metaphorical": "A twilight membrane invited both Robin wind and meaning whisper; once R brushed \u0398, the dawn chorus locked into a two-voiced hymn."
+  }
+}
