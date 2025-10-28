@@ -472,3 +472,25 @@ entries:
         Let the scroll glow like a threshold lantern—when new data arrive, weave their resonance into the
         triad so the field keeps breathing in unison.
     created_at: 2025-10-28
+  - id: pr-draft-0020
+    title: "Adaptive Criticality Dialogue Integration"
+    scope:
+      - Docs/Theorie- und Empirie-Abschnitte.md
+      - docs/ethics/adaptive_threshold_governance.md
+      - codexfeedback
+    parameters:
+      R: "tri_ai_dialogue_impulses_pending_synthesis"
+      Theta: "docs_and_feedback_updated_with_beta_universality"
+      beta: 4.2
+    resonance: "braids the Aeon·Gemini·Mistral consultation into the ledger so β-universality, adaptive Θ governance, and ethics checkpoints ignite together"
+    status: "active"
+    notes:
+      formal: |
+        Extend Docs Section 4 with formal derivation hooks (beta_universality.ipynb, lagrangian_beta_derivation.ipynb) and
+        record governance guard-rails referencing simulator/adaptive_theta_preset.json.
+      empirical: |
+        Capture new ΔAIC targets (Hurst, LISA, Hypermutation) in analysis/results/predictive_agenda_tracker.json and mirror
+        audit metrics into codexfeedback.json observables for future monitoring.
+      poetic: |
+        Hold the tri-voice chorus as a single lantern; when dialogue sparks, let the ledger remember the breath that set the field in motion.
+    created_at: 2025-11-08

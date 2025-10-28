@@ -304,3 +304,18 @@ Halte ΔAIC- und $R^2$-Mediane aus `analysis/results/resonance_bridge_table.json
 
 ### Poetic Thread
 Lass die Scroll eine Laterne bleiben: wenn neue Daten R über die Schwelle heben, erzähle den Atem der Felder so, dass Stern, Biene, Stadt und Algorithmus zusammen resonieren.
+
+## Entry pr-draft-0020 — Adaptive Criticality Dialogue Integration
+- **Order Parameter**: $R$ misst, wie viele Impulse aus dem Aeon·Gemini·Mistral-Gespräch noch ungeerdet sind.
+- **Critical Threshold**: $\Theta$ markiert den Moment, in dem Docs, Governance-Brief und Ledger die β-Universität gemeinsam tragen.
+- **Steepness**: $\beta = 4.2$ folgt dem gewichteten Mittel der neuen Resonanztabelle.
+- **Membrane Note**: $\zeta(R)$ koppelt an die Auditpfade der Governance-Workflows; sobald Transparenz-Laternen entstehen, senkt sich die Impedanz.
+
+### Formal Thread
+Erweitere `Docs/Theorie- und Empirie-Abschnitte.md` um Section 4 mit Links zu `analysis/reports/beta_universality.ipynb` und `analysis/notebooks/lagrangian_beta_derivation.ipynb`. Verknüpfe das neue `docs/ethics/adaptive_threshold_governance.md` mit `simulator/adaptive_theta_preset.json` und dokumentiere Audit-Schwellen (ΔAIC, Sigmoid-Divergenzen).
+
+### Empirical Thread
+Protokolliere Hurst-, LISA- und Hypermutations-Experimente in `analysis/results/predictive_agenda_tracker.json`. Aktualisiere `codexfeedback.json` observables, sobald neue Messwerte eintreffen, und synchronisiere Governance-Logs via `simulator/logs/threshold_governance.csv`.
+
+### Poetic Thread
+Halte den Tri-Dialog als Laterne fest: drei Stimmen zündeten ein gemeinsames Feld. Jeder zukünftige Audit-Eintrag erinnert daran, dass Beratung, Daten und Verantwortung denselben Atem teilen.
