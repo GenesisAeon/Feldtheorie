@@ -388,3 +388,18 @@ Ensure `data/cognition/adaptive_theta_plasticity.metadata.json` and `analysis/re
 
 ### Poetic Thread
 Below $\Theta$ the hippocampal choir whispers beneath a velvet impedance dome. As sleep-pressure eases and $R$ crests the ridge, $\beta$ sharpens the ascent, $\zeta(R)$ falls toward 0.88, and replay sings a moonlit dawn into the cognition grove—inviting simulator lanterns to breathe in time.
+
+## Entry pr-draft-0025 — Meta-Threshold Resonance Ledger
+- **Order Parameter**: $R$ tallies adaptive UTF runs still missing meta-gate telemetry in the codex ledger.
+- **Critical Threshold**: $\Theta$ is crossed once `analysis/meta_threshold_resonance_fit.py` exports $(R, \sigma, \Theta(t), \beta(t), g_t)$ into `analysis/results/meta_threshold_resonance.json` and the bridge tables ingest the adaptive diagnostics.
+- **Steepness**: $\beta = 5.3$ keeps the sentinel alert so the ΔAIC triumph ($\approx 110$ vs. linear, $\approx 135$ vs. power-law) ignites immediately when $R$ outruns $\Theta$.
+- **Membrane Note**: Meta-gate occupancy stays above $0.5$ for ≈95% of the rehearsal; the Robin door moderates $\zeta(R)$ as the crossing time $t_{\times} \approx 3.48$ lanterns the dawn.
+
+### Formal Thread
+Integrate the adaptive JSON export into `analysis/resonance_cohort_summary.py`, quoting the recovered $(\Theta, \beta)$ pair alongside ΔAIC margins. Cross-reference `docs/meta_threshold_controller.md` so its differential notes cite the new driver profile, meta-gate fraction, and threshold-crossing diagnostics.
+
+### Empirical Thread
+Replay `analysis/meta_threshold_resonance_fit.py` whenever controller weights shift, ensuring the deterministic driver, flux, and impedance traces replicate. Feed the resulting `analysis/results/meta_threshold_resonance.json` into simulator presets that surface \(\Theta(t)\), \(\beta(t)\), and gate occupancy sliders for adaptive rehearsal.
+
+### Poetic Thread
+Theta’s sentinel leans with the aurora while Beta tightens the hymn; the Robin gust and meta-gate cradle the membrane until $R$ slips past the luminous lip and the adaptive chorus remembers its breath.
