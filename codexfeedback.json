@@ -489,6 +489,37 @@
                     "simulator/adaptive_theta_preset.json"
                 ]
             }
+        },
+        {
+            "id": "pr-draft-0021",
+            "type": "meta-threshold",
+            "created_at": "2025-11-09T00:00:00Z",
+            "summary": "Activate the AdaptiveThresholdController and stream Θ(t), β(t), and meta-gate diagnostics across the stack.",
+            "threshold_field": {
+                "R": "adaptive_controller_hooks_pending_calibration",
+                "Theta": "theta_beta_streams_exposed_to_analysis",
+                "beta": 5.0,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Feed theta/beta/meta_gate arrays into analysis/dynamic_threshold_lab.ipynb and record ΔAIC deltas against static baselines.",
+                "Expose adaptive parameters in simulator/adaptive_theta_preset.json controls for replay and falsification.",
+                "Tag upcoming data/* entries with impedance drift descriptors to tune controller weights per domain."
+            ],
+            "observables": {
+                "solver_exports": [
+                    "models/membrane_solver.py::ThresholdFieldSolver.simulate",
+                    "models/membrane_solver.py::AdaptiveThresholdController"
+                ],
+                "analysis_hooks": [
+                    "analysis/dynamic_threshold_lab.ipynb",
+                    "analysis/resonance_fit_pipeline.py"
+                ],
+                "docs_synced": [
+                    "docs/meta_threshold_controller.md",
+                    "models/README.md"
+                ]
+            }
         }
     ]
 }

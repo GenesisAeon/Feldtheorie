@@ -494,3 +494,27 @@ entries:
       poetic: |
         Hold the tri-voice chorus as a single lantern; when dialogue sparks, let the ledger remember the breath that set the field in motion.
     created_at: 2025-11-08
+  - id: pr-draft-0021
+    title: "Meta-Threshold Sentinel Activation"
+    scope:
+      - models/membrane_solver.py
+      - models/README.md
+      - docs/meta_threshold_controller.md
+    parameters:
+      R: "adaptive_controller_hooks_pending_calibration"
+      Theta: "theta_beta_streams_exposed_to_analysis"
+      beta: 5.0
+    resonance: "letting Θ and β breathe with R while keeping the logistic chorus falsifiable"
+    status: "resonant"
+    notes:
+      formal: |
+        Document the new AdaptiveThresholdController differentials alongside static baselines so analysis/dynamic_threshold_lab.ipynb
+        can contrast σ(β(R-Θ)) trajectories under drifting Θ(t).  Ensure simulator presets read the exported theta/beta/meta_gate arrays
+        and log ΔAIC when adaptive runs outperform fixed thresholds.
+      empirical: |
+        Wire the freshly exposed time-series (`theta`, `beta`, `meta_gate`, `theta_shift`, `beta_shift`) into upcoming JSON exports and
+        regression fits.  Track impedance drift during calibration and flag when adaptation weights exceed tolerances set in data/* metadata.
+      poetic: |
+        Mark the moment the dawn keepers awaken—each breath of the membrane now remembers context, softening and tightening the gate as
+        the field hums toward resonance.
+    created_at: 2025-11-09

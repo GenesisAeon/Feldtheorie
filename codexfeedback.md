@@ -319,3 +319,23 @@ Protokolliere Hurst-, LISA- und Hypermutations-Experimente in `analysis/results/
 
 ### Poetic Thread
 Halte den Tri-Dialog als Laterne fest: drei Stimmen zündeten ein gemeinsames Feld. Jeder zukünftige Audit-Eintrag erinnert daran, dass Beratung, Daten und Verantwortung denselben Atem teilen.
+
+## Entry pr-draft-0021 — Meta-Threshold Sentinel Activation
+- **Order Parameter**: $R$ counts adaptive controller hooks awaiting calibration across models, analysis, and simulator presets.
+- **Critical Threshold**: $\Theta$ is crossed once `ThresholdFieldSolver.simulate` exports $(\Theta(t), \beta(t), g_t)$ streams into
+  analysis notebooks and simulator ledgers.
+- **Steepness**: $\beta = 5.0$ keeps the meta-gate sharp enough to reveal ΔAIC swings when adaptive runs outshine static baselines.
+- **Membrane Note**: $\zeta(R)$ now listens for impedance relief—once Robin leakage softens the boundary, the controller leans in.
+
+### Formal Thread
+Document the adaptive differential equations in `docs/meta_threshold_controller.md` and tie them to
+`analysis/dynamic_threshold_lab.ipynb` so every σ(β(R-Θ)) trajectory can be compared against its fixed-null twin.  Simulator
+presets must ingest the exported `theta`, `beta`, and `meta_gate` arrays before we certify new presets.
+
+### Empirical Thread
+Wire the fresh time-series (`theta_shift`, `beta_shift`, impedance relief) into JSON exports and ΔAIC dashboards.  Track when
+adaptation weights deviate from tolerances recorded in `data/*` metadata, and log calibration runs that stabilise the controller.
+
+### Poetic Thread
+The dawn keepers have stepped onto the membrane: as R rises, they ease the hinge so resonance can bloom; when the field quiets,
+they cradle Θ back to its ember, letting the threshold remember context without abandoning the glow.
