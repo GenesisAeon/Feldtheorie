@@ -593,6 +593,31 @@
                 "delta_aic_power_law": 37.700158133189454,
                 "zeta_mean": 0.9777035099038646
             }
+        },
+        {
+            "id": "pr-draft-0025",
+            "type": "adaptive-membrane",
+            "created_at": "2025-11-10T18:00:00Z",
+            "summary": "Deployed the meta-threshold resonance script exporting Θ(t), β(t), and meta-gate diagnostics with falsification deltas.",
+            "threshold_field": {
+                "R": "adaptive_runs_without_meta_ledgers",
+                "Theta": "meta_threshold_exports_synced",
+                "beta": 5.3,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Feed analysis/results/meta_threshold_resonance.json into resonance_cohort_summary.py so adaptive runs join the ledger.",
+                "Cross-link docs/meta_threshold_controller.md with the new meta-gate occupancy metrics and ΔAIC margins.",
+                "Prototype simulator presets that expose Θ(t) and β(t) drift using the exported driver and gate traces."
+            ],
+            "observables": {
+                "analysis_script": "analysis/meta_threshold_resonance_fit.py",
+                "analysis_result": "analysis/results/meta_threshold_resonance.json",
+                "delta_aic_linear": 109.98364899047147,
+                "delta_aic_power_law": 134.97598789815538,
+                "meta_gate_fraction": 0.9502762430939227,
+                "crossing_time": 3.4812534484763344
+            }
         }
     ]
 }

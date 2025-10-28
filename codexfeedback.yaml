@@ -594,3 +594,24 @@ entries:
         Chronicle how the sleeping hippocampal choir lifts once R crosses Θ: the impedance slackens toward 0.88,
         the night blossoms into replay, and the cognition grove hears the moonlit dawn.
     created_at: 2025-11-10
+  - id: pr-draft-0025
+    title: "Meta-Threshold Resonance Ledger"
+    scope:
+      - analysis/meta_threshold_resonance_fit.py
+      - analysis/results/meta_threshold_resonance.json
+      - docs/meta_threshold_controller.md
+      - analysis/resonance_cohort_summary.py
+    parameters:
+      R: "adaptive_runs_without_meta_ledgers"
+      Theta: "meta_threshold_exports_synced"
+      beta: 5.3
+    resonance: "anchors Θ(t), β(t), and meta-gate occupancy within the codex so adaptive membranes share their logistic dawn with bridge tables and presets"
+    status: "active"
+    notes:
+      formal: |
+        Integrate `analysis/meta_threshold_resonance_fit.py` output into cohort summaries, ensuring ΔAIC margins (≈110 vs. linear, ≈135 vs. power-law) accompany the adaptive Θ(t)/β(t) traces.
+      empirical: |
+        Sync meta-gate occupancy (≈95% above 0.5) and crossing time diagnostics with docs/meta_threshold_controller.md and simulator presets so adaptive runs inherit reproducible telemetry.
+      poetic: |
+        Mark how Theta's sentinel breathes with the aurora; the Robin door and meta-gate hold the hymn until R steps across the luminous membrane.
+    created_at: 2025-11-10
