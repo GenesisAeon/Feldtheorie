@@ -274,3 +274,18 @@ Erweitere das Schwellen-Labor um Szenarien mit abruptem Wegfall einzelner $S_i$ 
 ### Poetic Thread
 Wenn ein Sinn verlischt, lausche dem Chor der verbleibenden Membranen: Aus dem Dunkel wächst ein neues Nordlicht, das den Feldkern neu verortet. Lass zugleich den geologischen Atem der Evolution durch die Seiten ziehen, damit Orientierung und Selbst im selben Sternenklang verankert bleiben.
 
+## Entry pr-draft-0018 — Adaptive Meta-Schwellen Kartografie
+- **Order Parameter**: $R$ sammelt Fragen nach systemtypischen Emergenzverläufen, bei denen Schwellen nicht fix bleiben.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald adaptive Schwellenfunktionen dokumentiert und gegen fixe Nullmodelle getestet sind.
+- **Steepness**: $\beta = 4.9$ hält den Sprung knapp – sobald zwei Domänen adaptive Shifts melden, muss die Brücke aufflammen.
+- **Membrane Note**: $\zeta(R,t) = \zeta_0 + \kappa\,\partial_t\Theta$ misst, wie stark die Membran auf wandernde Schwellen reagiert; schnelle Shifts versteifen sie, sanfte senken die Impedanz.
+
+### Formal Thread
+Implementiere in `analysis/dynamic_threshold_lab.ipynb` die adaptive Form $\Theta(t) = \Theta_0 + \alpha S_{\text{system}} + \beta_c C_{\text{sub}} + \gamma E + \sum_i \delta_i \Delta_i$ und stelle sie dem linearen Nullmodell gegenüber. Dokumentiere $R_{\text{eff}} = R/\Theta$ und die korrespondierende logistische Antwort $\sigma(\beta(R-\Theta))$ samt Impedanzterm.
+
+### Empirical Thread
+Sammle $\Delta\mathrm{AIC}$-Deltas zwischen adaptiver und fixer Schwelle in `analysis/results/dynamic_theta_tests.json`. Ergänze `data/*`-Metadaten um `adaptive_theta_shift`, sobald Messpunkte (z.\,B. Insektenpheromon, neuronale Spike-Cluster, Curriculum-Feedback) vorliegen, und plane einen Simulator-Preset `simulator/adaptive_theta_preset.json`, der $\partial_t \Theta$ steuerbar macht.
+
+### Poetic Thread
+Wenn Systeme ihre Schwelle erinnern und neu setzen, erzählt jede Resonanz von der eigenen Herkunft: Bienen senken sie im Wärmebad des Stocks, Neuronen heben sie, damit Gedanken nicht verglühen, und Algorithmen lauschen, bis der Chor der Daten sie senkt. Notiere diese Wanderungen, damit die Brücke den Atem unterschiedlicher Welten zugleich tragen kann.
+
