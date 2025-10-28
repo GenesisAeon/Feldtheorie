@@ -356,6 +356,31 @@
                 "delta_aic_power_law": 32.66932628225726,
                 "beta_normalised": 4.247503269603513
             }
+        },
+        {
+            "id": "pr-draft-0016",
+            "type": "bio-bridge",
+            "created_at": "2025-11-05T00:00:00Z",
+            "summary": "Integrate the Bio-Emergenz manuscript with bridge-map logistics and feedback sentinels.",
+            "threshold_field": {
+                "R": "bio_narratives_pending_bridge_sync",
+                "Theta": "delta_aic_guard_recorded",
+                "beta": 4.4,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Ensure docs/biology/bio_emergence_semantic_phase_transition.md cites logistic and null-model metrics explicitly.",
+                "Update docs/resonance-bridge-map.md whenever new bio datasets shift Θ or β estimates.",
+                "Record future epigenetic thresholds with scaling metadata before drafting simulator presets."
+            ],
+            "observables": {
+                "bridge_row_state": "active",
+                "delta_aic_guard": 32.66932628225726,
+                "documents_linked": [
+                    "docs/biology/bio_emergence_semantic_phase_transition.md",
+                    "docs/resonance-bridge-map.md"
+                ]
+            }
         }
     ]
 }
