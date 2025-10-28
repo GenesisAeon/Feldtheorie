@@ -53,3 +53,26 @@
 - Below \(\Theta\) the synapse keeps vigil, vesicles cradled like night-bound fireflies; the membrane hums at 1.40, guarding the gate.
 - As pulses quicken past \(\Theta\), \(\zeta(R)\) slackens toward 0.95 and the neurotransmitter aurora sweeps the cleft.
 - Linear and power-law lullabies attempt to mimic the glow yet fade before the logistic chorus igniting along the axonal dawn.
+
+## Dataset: Lenski Cit⁺ Emergence Threshold
+
+**Control parameter** \(R\): generation count scaled to thousands for the Ara-3 population of the Lenski LTEE.
+
+**Logistic response** \(\sigma(\beta(R-\Theta))\): frequency of Cit⁺ individuals recorded along the evolutionary trajectory.
+
+**Threshold quartet**: \(\Theta = 32.77^{+0.08}_{-0.08}\) (thousand generations, equivalent to \(3.28\times10^4\) generations), \(\beta = 5.08^{+0.42}_{-0.42}\) in scaled units (\(5.08\times10^{-3}\) per generation), impedance sketch latent (flux mean \(-0.015\)).
+
+### Formal strand
+- Logistic logit regression executed via `analysis/lenski_citplus_fit.py` with scaled generations to stabilise null comparisons.
+- Diagnostics: \(R^2 = 0.990\), AIC = \(-85.87\); linear and power-law nulls trail by \(\Delta\mathrm{AIC} = 42.1\) and \(32.7\), \(\Delta R^2 = 0.196\) and \(0.095\).
+- Normalised steepness \(\beta = 4.25^{+0.35}_{-0.35}\) echoes the universal UTF band; \(\Theta\) sits \(0.56^{+0.09}_{-0.09}\) standard deviations above the generational mean.
+
+### Empirical strand
+- Data digitised from Blount et al. (2008) Figure 3 to provide a falsifiable bridge between LTEE observations and the UTF bio-emergence manuscript.
+- CSV archive: `lenski_citplus.csv`; regenerated metrics emitted to `analysis/results/lenski_citplus_fit.json` alongside metadata in `lenski_citplus.metadata.json`.
+- Metadata logs the scaling (generation/1000) so downstream simulators can map \(R\) directly onto the Docs/ biological scrolls.
+
+### Metaphorical strand
+- For 30,000 nights the Ara-3 membrane slumbered, citric breath held; then the oxidative hymn rose and \(\Theta\) sighed open.
+- Once \(R\) crossed the luminous gate, the Cit⁺ chorus cascaded, a microbial aurora spanning the flask.
+- Linear and power-law breezes tried to mimic the awakening, yet the logistic dawn alone captured the punctuated blaze.

@@ -228,3 +228,18 @@ Synchronisiere `analysis/results/resonance_bridge_table.json` und `analysis/repo
 
 ### Poetic Thread
 Jede Tabellenzeile ist eine Laterne über dem Schwellensteg: Bienen, Schwarze Löcher, Synapsen und Lernmodelle blühen gemeinsam auf, sobald $R$ die Schwelle küsst und die Nullwinde verstummen.
+
+## Entry pr-draft-0015 — Bio-Emergenz Verification Gate
+- **Order Parameter**: $R$ zählt Bio-Emergenz-Erweiterungen ohne logistisch verifizierte Datenbrücke.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn Cit⁺, Epigenetik oder andere Evolutionssprünge mit $(R,\Theta,\beta)$ samt Nullfalsifikation hinterlegt sind.
+- **Steepness**: $\beta = 4.3$ spiegelt den Ara-3-Fit, sodass der Übergang scharf leuchtet, sobald eine biologische Schwelle bestätigt wird.
+- **Membrane Note**: $\zeta(R)$ fällt von forschender Spannung (ungeprüfte These) zu resonanter Ruhe, sobald `analysis/lenski_citplus_fit.py` und seine JSON-Fackel den Docs/-Scrolls beigelegt sind.
+
+### Formal Thread
+Halte `analysis/results/lenski_citplus_fit.json` synchron mit künftigen Bio-Datensätzen; protokolliere \(\Delta\mathrm{AIC}\) und \(R^2\) sowie normalisierte \(\beta\)-Werte, damit das Universalitätsband aus der Einleitung fortlaufend empirisch getragen wird.
+
+### Empirical Thread
+Erweitere `data/biology/*.metadata.json` um Quellenangaben und Skalierungshinweise (generation/1000, Stressmaß etc.), damit Simulator und Docs dieselbe Schwellenfläche teilen.  Logge neue Fits unmittelbar in `codexfeedback.json`.
+
+### Poetic Thread
+Wenn der Cit⁺-Chor aufglüht, erinnert die Matrix daran, dass Evolution kein Rauschen ist, sondern ein Tor, das nur einmal knackt.  Bewahre den Klang, sobald weitere Bio-Gates aufbrechen.

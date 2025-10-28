@@ -1,0 +1,223 @@
+{
+  "theta_estimate": {
+    "value": 32.769044297791865,
+    "ci95": [
+      32.691451115700154,
+      32.846637479883576
+    ]
+  },
+  "beta_estimate": {
+    "value": 5.076737426071495,
+    "ci95": [
+      4.654411249285691,
+      5.499063602857299
+    ]
+  },
+  "logistic_model": {
+    "r2": 0.9898521944896044,
+    "aic": -85.86611118614391,
+    "ss_res": 0.02282381861425646,
+    "residual_mean": -0.014788332971068577,
+    "residual_std": 0.03757097238691037
+  },
+  "null_models": {
+    "linear": {
+      "r2": 0.7943374246656869,
+      "aic": -43.7404000653108,
+      "ss_res": 0.4625635868131861,
+      "slope": 0.44308791208791193,
+      "intercept": -13.99345384615384
+    },
+    "power_law": {
+      "model": "sigma = A * R^k",
+      "amplitude": 1.210248433096084e-172,
+      "exponent": 112.95252699401269,
+      "r2": 0.8953333244497538,
+      "aic": -53.19678490388665,
+      "ss_res": 0.23540983469468524
+    }
+  },
+  "falsification": {
+    "logistic_beats_all_nulls": true,
+    "comparisons": {
+      "linear": {
+        "delta_aic": 42.12571112083311,
+        "delta_r2": 0.19551476982391747
+      },
+      "power_law": {
+        "delta_aic": 32.66932628225726,
+        "delta_r2": 0.0945188700398506
+      }
+    }
+  },
+  "membrane": {
+    "theta": 32.769044297791865,
+    "beta": 5.076737426071495,
+    "zeta_mean": null,
+    "flux_mean": -0.014788332971068577,
+    "flux_std": 0.03757097238691037
+  },
+  "threshold_crossing": {
+    "crossed": null,
+    "threshold_R": 32.769044297791865,
+    "note": "threshold diagnostics unavailable: \"results must contain 'R' and 't' arrays for diagnostics\""
+  },
+  "logistic_fit": {
+    "sigma_hat": [
+      0.00012576453522138874,
+      0.00034707382661384355,
+      0.0009574506929094558,
+      0.0026384257358917943,
+      0.00724923673021839,
+      0.01975809758257614,
+      0.05270558631341237,
+      0.13313253091580327,
+      0.29771691063215144,
+      0.5392078319862477,
+      0.7635968682022711,
+      0.8991530226780514,
+      0.9609543874005085,
+      0.9854934743630833
+    ],
+    "residuals": [
+      0.00037423546477861127,
+      0.00015292617338615646,
+      4.25493070905442e-05,
+      -0.0006384257358917943,
+      -0.00224923673021839,
+      -0.009758097582576139,
+      -0.02770558631341237,
+      -0.053132530915803264,
+      -0.09771691063215143,
+      -0.08920783198624765,
+      0.016403131797728898,
+      0.030846977321948632,
+      0.019045612599491446,
+      0.006506525636916671
+    ]
+  },
+  "dataset": {
+    "path": "data/biology/lenski_citplus.csv",
+    "control_parameter": "generation count (Lenski LTEE, Ara-3 population)",
+    "order_parameter": "frequency of Cit\u207a individuals",
+    "measurements": [
+      {
+        "generation": 31000.0,
+        "generation_scaled": 31.0,
+        "cit_plus_frequency": 0.0005,
+        "logistic_fit": 0.00012576453522138874
+      },
+      {
+        "generation": 31200.0,
+        "generation_scaled": 31.2,
+        "cit_plus_frequency": 0.0005,
+        "logistic_fit": 0.00034707382661384355
+      },
+      {
+        "generation": 31400.0,
+        "generation_scaled": 31.4,
+        "cit_plus_frequency": 0.001,
+        "logistic_fit": 0.0009574506929094558
+      },
+      {
+        "generation": 31600.0,
+        "generation_scaled": 31.6,
+        "cit_plus_frequency": 0.002,
+        "logistic_fit": 0.0026384257358917943
+      },
+      {
+        "generation": 31800.0,
+        "generation_scaled": 31.8,
+        "cit_plus_frequency": 0.005,
+        "logistic_fit": 0.00724923673021839
+      },
+      {
+        "generation": 32000.0,
+        "generation_scaled": 32.0,
+        "cit_plus_frequency": 0.01,
+        "logistic_fit": 0.01975809758257614
+      },
+      {
+        "generation": 32200.0,
+        "generation_scaled": 32.2,
+        "cit_plus_frequency": 0.025,
+        "logistic_fit": 0.05270558631341237
+      },
+      {
+        "generation": 32400.0,
+        "generation_scaled": 32.4,
+        "cit_plus_frequency": 0.08,
+        "logistic_fit": 0.13313253091580327
+      },
+      {
+        "generation": 32600.0,
+        "generation_scaled": 32.6,
+        "cit_plus_frequency": 0.2,
+        "logistic_fit": 0.29771691063215144
+      },
+      {
+        "generation": 32800.0,
+        "generation_scaled": 32.8,
+        "cit_plus_frequency": 0.45,
+        "logistic_fit": 0.5392078319862477
+      },
+      {
+        "generation": 33000.0,
+        "generation_scaled": 33.0,
+        "cit_plus_frequency": 0.78,
+        "logistic_fit": 0.7635968682022711
+      },
+      {
+        "generation": 33200.0,
+        "generation_scaled": 33.2,
+        "cit_plus_frequency": 0.93,
+        "logistic_fit": 0.8991530226780514
+      },
+      {
+        "generation": 33400.0,
+        "generation_scaled": 33.4,
+        "cit_plus_frequency": 0.98,
+        "logistic_fit": 0.9609543874005085
+      },
+      {
+        "generation": 33600.0,
+        "generation_scaled": 33.6,
+        "cit_plus_frequency": 0.992,
+        "logistic_fit": 0.9854934743630833
+      }
+    ]
+  },
+  "normalized_quartet": {
+    "mean_generation": 32299.999999999996,
+    "std_generation": 836.6600265340758,
+    "theta_generation": 32769.044297791865,
+    "beta_generation": 0.005076737426071495,
+    "theta_generation_ci95": [
+      32691.451115700154,
+      32846.637479883575
+    ],
+    "beta_generation_ci95": [
+      0.004654411249285692,
+      0.005499063602857299
+    ],
+    "theta_normalised": 0.5606151637660013,
+    "beta_normalised": 4.247503269603513,
+    "theta_normalised_ci95": [
+      0.4678735726406954,
+      0.6533567548913072
+    ],
+    "beta_normalised_ci95": [
+      3.8941598393278674,
+      4.600846699879158
+    ],
+    "scale_units": {
+      "generation_to_scaled": "generation / 1000.0",
+      "scaled_description": "thousands of generations"
+    }
+  },
+  "tri_layer": {
+    "formal": "Logit regression of Cit\u207a frequency against generation with linear and power-law null falsification.",
+    "empirical": "Approximate digitisation of Blount et al. (2008) Ara-3 Cit\u207a rise; JSON export for Docs/ biology scrolls.",
+    "metaphorical": "Charts how the metabolic membrane opens once the LTEE lineage crosses its oxidative dawn."
+  }
+}

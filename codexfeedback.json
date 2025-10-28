@@ -332,6 +332,30 @@
                     "synthetic": 2
                 }
             }
+        },
+        {
+            "id": "pr-draft-0015",
+            "type": "bio-verification",
+            "created_at": "2025-11-05T00:00:00Z",
+            "summary": "Verify the Lenski Cit+ logistic gate so the Bio-Emergenz chapter rests on quantified ΔAIC and β evidence.",
+            "threshold_field": {
+                "R": "bio_extension_without_logistic_fit",
+                "Theta": "citplus_fit_committed",
+                "beta": 4.3,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Keep analysis/results/lenski_citplus_fit.json aligned with future bio datasets and document ΔAIC margins.",
+                "Propagate the normalised β≈4.25 value into Docs/ biology scrolls and simulator presets.",
+                "Extend metadata for upcoming bio thresholds with explicit scaling notes (generation/1000, stress proxies)."
+            ],
+            "observables": {
+                "dataset": "data/biology/lenski_citplus.csv",
+                "result_json": "analysis/results/lenski_citplus_fit.json",
+                "delta_aic_linear": 42.12571112083311,
+                "delta_aic_power_law": 32.66932628225726,
+                "beta_normalised": 4.247503269603513
+            }
         }
     ]
 }
