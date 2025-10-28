@@ -1,151 +1,112 @@
 {
   "meta": {
-    "generated_at": "2025-11-09T12:34:56+00:00",
-    "cohort_size": 10,
+    "generated_at": "2025-10-28T20:17:50.648727+00:00",
+    "cohort_size": 14,
     "logistic_response": "sigma(beta * (R - Theta))"
   },
   "aggregate": {
     "theta": {
-      "mean": 7.951649245173395,
-      "median": 0.6810555216484613,
+      "mean": 7.272110955448522,
+      "median": 0.6214703985864286,
       "min": 0.02150266269691967,
       "max": 32.769044297791865
     },
     "beta": {
-      "mean": 8.628117660301907,
-      "median": 8.375372051132796,
+      "mean": 8.831018175500432,
+      "median": 10.860023327485688,
       "min": 0.6717283976038891,
       "max": 16.289963354409085
     },
     "logistic_r2": {
-      "mean": 0.9934770125552881,
-      "median": 0.9977061482295252,
+      "mean": 0.9932039647822837,
+      "median": 0.9974833843617845,
       "min": 0.9687963452454948,
       "max": 0.9999661710064784
     },
     "delta_aic": {
-      "mean": 118.50621836609673,
+      "mean": 1034.51213546912,
       "median": 65.11814934455208,
       "min": 25.196229770856547,
-      "max": 498.1482382097897
+      "max": 11191.383283835283
     },
     "delta_r2": {
-      "mean": 0.09995836033957853,
-      "median": 0.0789560217002116,
+      "mean": 0.1233915296229349,
+      "median": 0.10201307374695545,
       "min": 0.006101068081724725,
-      "max": 0.22733769849175556
+      "max": 0.3730255540125056
     },
     "zeta_mean": {
-      "mean": 1.2208154885269578,
-      "median": 1.1785172490925058,
-      "min": 1.0,
+      "mean": 1.210582749084362,
+      "median": 1.186570598415284,
+      "min": 0.9777035099038646,
       "max": 1.5343220981632029
+    },
+    "threshold_crossing": {
+      "reports": 2,
+      "crossed_count": 2,
+      "crossed_fraction": 1.0,
+      "time": {
+        "mean": 16.029512079433132,
+        "median": 16.029512079433132,
+        "min": 1.9246956093071323,
+        "max": 30.134328549559132
+      },
+      "R": {
+        "mean": 0.27075133134845986,
+        "median": 0.27075133134845986,
+        "min": 0.02150266269691967,
+        "max": 0.52
+      },
+      "sigma": {
+        "mean": 0.5,
+        "median": 0.5,
+        "min": 0.5,
+        "max": 0.5
+      },
+      "overshoot": {
+        "mean": 0.02766472345748934,
+        "median": 0.02766472345748934,
+        "min": 0.025984651984779616,
+        "max": 0.02934479493019906
+      },
+      "zeta": {
+        "mean": 1.0382243039611483,
+        "median": 1.0382243039611483,
+        "min": 1.0064486132419586,
+        "max": 1.069999994680338
+      }
     }
   },
   "domains": {
-    "ai": {
-      "count": 1,
-      "delta_aic": {
-        "mean": 48.83297279753836,
-        "median": 48.83297279753836,
-        "min": 48.83297279753836,
-        "max": 48.83297279753836
-      },
-      "delta_r2": {
-        "mean": 0.09593694942698294,
-        "median": 0.09593694942698294,
-        "min": 0.09593694942698294,
-        "max": 0.09593694942698294
-      },
-      "logistic_r2": {
-        "mean": 0.995240963971551,
-        "median": 0.995240963971551,
-        "min": 0.995240963971551,
-        "max": 0.995240963971551
-      }
-    },
-    "biology": {
-      "count": 3,
-      "delta_aic": {
-        "mean": 46.51814399441553,
-        "median": 42.12571112083311,
-        "min": 25.196229770856547,
-        "max": 72.23249109155694
-      },
-      "delta_r2": {
-        "mean": 0.19345636493954232,
-        "median": 0.19551476982391747,
-        "min": 0.15751662650295395,
-        "max": 0.22733769849175556
-      },
-      "logistic_r2": {
-        "mean": 0.9853773080322945,
-        "median": 0.9898521944896044,
-        "min": 0.9687963452454948,
-        "max": 0.9974833843617845
-      }
-    },
     "cognition": {
-      "count": 1,
+      "count": 2,
       "delta_aic": {
-        "mean": 59.540475480018955,
-        "median": 59.540475480018955,
-        "min": 59.540475480018955,
+        "mean": 48.62031680660421,
+        "median": 48.62031680660421,
+        "min": 37.700158133189454,
         "max": 59.540475480018955
       },
       "delta_r2": {
-        "mean": 0.035892337816077036,
-        "median": 0.035892337816077036,
+        "mean": 0.0719907679415025,
+        "median": 0.0719907679415025,
         "min": 0.035892337816077036,
-        "max": 0.035892337816077036
+        "max": 0.10808919806692796
       },
       "logistic_r2": {
-        "mean": 0.9986365714199111,
-        "median": 0.9986365714199111,
-        "min": 0.9986365714199111,
+        "mean": 0.9945550292360754,
+        "median": 0.9945550292360754,
+        "min": 0.9904734870522398,
         "max": 0.9986365714199111
-      }
-    },
-    "coupled": {
-      "count": 1,
-      "delta_aic": {
-        "mean": 498.1482382097897,
-        "median": 498.1482382097897,
-        "min": 498.1482382097897,
-        "max": 498.1482382097897
       },
-      "delta_r2": {
-        "mean": 0.006101068081724725,
-        "median": 0.006101068081724725,
-        "min": 0.006101068081724725,
-        "max": 0.006101068081724725
-      },
-      "logistic_r2": {
-        "mean": 0.9979289120972659,
-        "median": 0.9979289120972659,
-        "min": 0.9979289120972659,
-        "max": 0.9979289120972659
-      }
-    },
-    "geophysics": {
-      "count": 1,
-      "delta_aic": {
-        "mean": 148.72212963584204,
-        "median": 148.72212963584204,
-        "min": 148.72212963584204,
-        "max": 148.72212963584204
-      },
-      "delta_r2": {
-        "mean": 0.1310587112171988,
-        "median": 0.1310587112171988,
-        "min": 0.1310587112171988,
-        "max": 0.1310587112171988
-      },
-      "logistic_r2": {
-        "mean": 0.9999661710064784,
-        "median": 0.9999661710064784,
-        "min": 0.9999661710064784,
-        "max": 0.9999661710064784
+      "threshold_crossing": {
+        "reports": 0,
+        "crossed_count": 0,
+        "crossed_fraction": null,
+        "time": null,
+        "R": null,
+        "sigma": null,
+        "overshoot": null,
+        "zeta": null
       }
     },
     "socio_ecology": {
@@ -167,6 +128,223 @@
         "median": 0.9988841641477689,
         "min": 0.9986553018766973,
         "max": 0.9991130264188406
+      },
+      "threshold_crossing": {
+        "reports": 0,
+        "crossed_count": 0,
+        "crossed_fraction": null,
+        "time": null,
+        "R": null,
+        "sigma": null,
+        "overshoot": null,
+        "zeta": null
+      }
+    },
+    "coupled": {
+      "count": 1,
+      "delta_aic": {
+        "mean": 498.1482382097897,
+        "median": 498.1482382097897,
+        "min": 498.1482382097897,
+        "max": 498.1482382097897
+      },
+      "delta_r2": {
+        "mean": 0.006101068081724725,
+        "median": 0.006101068081724725,
+        "min": 0.006101068081724725,
+        "max": 0.006101068081724725
+      },
+      "logistic_r2": {
+        "mean": 0.9979289120972659,
+        "median": 0.9979289120972659,
+        "min": 0.9979289120972659,
+        "max": 0.9979289120972659
+      },
+      "threshold_crossing": {
+        "reports": 0,
+        "crossed_count": 0,
+        "crossed_fraction": null,
+        "time": null,
+        "R": null,
+        "sigma": null,
+        "overshoot": null,
+        "zeta": null
+      }
+    },
+    "dynamic": {
+      "count": 1,
+      "delta_aic": null,
+      "delta_r2": null,
+      "logistic_r2": null,
+      "threshold_crossing": {
+        "reports": 0,
+        "crossed_count": 0,
+        "crossed_fraction": null,
+        "time": null,
+        "R": null,
+        "sigma": null,
+        "overshoot": null,
+        "zeta": null
+      }
+    },
+    "biology": {
+      "count": 3,
+      "delta_aic": {
+        "mean": 46.51814399441553,
+        "median": 42.12571112083311,
+        "min": 25.196229770856547,
+        "max": 72.23249109155694
+      },
+      "delta_r2": {
+        "mean": 0.19345636493954232,
+        "median": 0.19551476982391747,
+        "min": 0.15751662650295395,
+        "max": 0.22733769849175556
+      },
+      "logistic_r2": {
+        "mean": 0.9853773080322946,
+        "median": 0.9898521944896044,
+        "min": 0.9687963452454948,
+        "max": 0.9974833843617845
+      },
+      "threshold_crossing": {
+        "reports": 0,
+        "crossed_count": 0,
+        "crossed_fraction": null,
+        "time": null,
+        "R": null,
+        "sigma": null,
+        "overshoot": null,
+        "zeta": null
+      }
+    },
+    "ai": {
+      "count": 1,
+      "delta_aic": {
+        "mean": 48.83297279753836,
+        "median": 48.83297279753836,
+        "min": 48.83297279753836,
+        "max": 48.83297279753836
+      },
+      "delta_r2": {
+        "mean": 0.09593694942698294,
+        "median": 0.09593694942698294,
+        "min": 0.09593694942698294,
+        "max": 0.09593694942698294
+      },
+      "logistic_r2": {
+        "mean": 0.995240963971551,
+        "median": 0.995240963971551,
+        "min": 0.995240963971551,
+        "max": 0.995240963971551
+      },
+      "threshold_crossing": {
+        "reports": 0,
+        "crossed_count": 0,
+        "crossed_fraction": null,
+        "time": null,
+        "R": null,
+        "sigma": null,
+        "overshoot": null,
+        "zeta": null
+      }
+    },
+    "membrane": {
+      "count": 1,
+      "delta_aic": {
+        "mean": 11191.383283835283,
+        "median": 11191.383283835283,
+        "min": 11191.383283835283,
+        "max": 11191.383283835283
+      },
+      "delta_r2": {
+        "mean": 0.3730255540125056,
+        "median": 0.3730255540125056,
+        "min": 0.3730255540125056,
+        "max": 0.3730255540125056
+      },
+      "logistic_r2": null,
+      "threshold_crossing": {
+        "reports": 1,
+        "crossed_count": 1,
+        "crossed_fraction": 1.0,
+        "time": {
+          "mean": 1.9246956093071323,
+          "median": 1.9246956093071323,
+          "min": 1.9246956093071323,
+          "max": 1.9246956093071323
+        },
+        "R": {
+          "mean": 0.52,
+          "median": 0.52,
+          "min": 0.52,
+          "max": 0.52
+        },
+        "sigma": {
+          "mean": 0.5,
+          "median": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        },
+        "overshoot": {
+          "mean": 0.025984651984779616,
+          "median": 0.025984651984779616,
+          "min": 0.025984651984779616,
+          "max": 0.025984651984779616
+        },
+        "zeta": {
+          "mean": 1.069999994680338,
+          "median": 1.069999994680338,
+          "min": 1.069999994680338,
+          "max": 1.069999994680338
+        }
+      }
+    },
+    "resonance": {
+      "count": 1,
+      "delta_aic": null,
+      "delta_r2": null,
+      "logistic_r2": null,
+      "threshold_crossing": {
+        "reports": 0,
+        "crossed_count": 0,
+        "crossed_fraction": null,
+        "time": null,
+        "R": null,
+        "sigma": null,
+        "overshoot": null,
+        "zeta": null
+      }
+    },
+    "geophysics": {
+      "count": 1,
+      "delta_aic": {
+        "mean": 148.72212963584204,
+        "median": 148.72212963584204,
+        "min": 148.72212963584204,
+        "max": 148.72212963584204
+      },
+      "delta_r2": {
+        "mean": 0.1310587112171988,
+        "median": 0.1310587112171988,
+        "min": 0.1310587112171988,
+        "max": 0.1310587112171988
+      },
+      "logistic_r2": {
+        "mean": 0.9999661710064784,
+        "median": 0.9999661710064784,
+        "min": 0.9999661710064784,
+        "max": 0.9999661710064784
+      },
+      "threshold_crossing": {
+        "reports": 0,
+        "crossed_count": 0,
+        "crossed_fraction": null,
+        "time": null,
+        "R": null,
+        "sigma": null,
+        "overshoot": null,
+        "zeta": null
       }
     },
     "synthetic": {
@@ -188,10 +366,74 @@
         "median": 0.9890972546652523,
         "min": 0.9890972546652523,
         "max": 0.9890972546652523
+      },
+      "threshold_crossing": {
+        "reports": 1,
+        "crossed_count": 1,
+        "crossed_fraction": 1.0,
+        "time": {
+          "mean": 30.134328549559132,
+          "median": 30.134328549559132,
+          "min": 30.134328549559132,
+          "max": 30.134328549559132
+        },
+        "R": {
+          "mean": 0.02150266269691967,
+          "median": 0.02150266269691967,
+          "min": 0.02150266269691967,
+          "max": 0.02150266269691967
+        },
+        "sigma": {
+          "mean": 0.5,
+          "median": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        },
+        "overshoot": {
+          "mean": 0.02934479493019906,
+          "median": 0.02934479493019906,
+          "min": 0.02934479493019906,
+          "max": 0.02934479493019906
+        },
+        "zeta": {
+          "mean": 1.0064486132419586,
+          "median": 1.0064486132419586,
+          "min": 1.0064486132419586,
+          "max": 1.0064486132419586
+        }
       }
     }
   },
   "records": [
+    {
+      "result_path": "analysis/results/adaptive_theta_plasticity.json",
+      "domain": "cognition",
+      "dataset_path": "data/cognition/adaptive_theta_plasticity.csv",
+      "theta": 0.4767280581997776,
+      "theta_ci": [
+        0.4462361512301157,
+        0.5072199651694395
+      ],
+      "beta": 10.860023327485688,
+      "beta_ci": [
+        9.619042232814689,
+        12.101004422156688
+      ],
+      "logistic_r2": 0.9904734870522398,
+      "logistic_aic": -93.58098826065893,
+      "best_null_model": "power_law",
+      "best_null_aic": -55.88083012746947,
+      "delta_aic": 37.700158133189454,
+      "delta_r2": 0.10808919806692796,
+      "logistic_minus_best_r2": 0.10808919806692796,
+      "zeta_mean": 0.9777035099038646,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null
+    },
     {
       "result_path": "analysis/results/amazon_resilience_fit.json",
       "domain": "socio_ecology",
@@ -213,7 +455,13 @@
       "delta_aic": 70.69582320908519,
       "delta_r2": 0.055862010481671165,
       "logistic_minus_best_r2": 0.055862010481671165,
-      "zeta_mean": 1.5343220981632029
+      "zeta_mean": 1.5343220981632029,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null
     },
     {
       "result_path": "analysis/results/coupled_field_threshold.json",
@@ -236,7 +484,36 @@
       "delta_aic": 498.1482382097897,
       "delta_r2": 0.006101068081724725,
       "logistic_minus_best_r2": 0.006101068081724725,
-      "zeta_mean": 1.1076414033639093
+      "zeta_mean": 1.1076414033639093,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null
+    },
+    {
+      "result_path": "analysis/results/dynamic_theta_tests.json",
+      "domain": "dynamic",
+      "dataset_path": null,
+      "theta": null,
+      "theta_ci": null,
+      "beta": null,
+      "beta_ci": null,
+      "logistic_r2": null,
+      "logistic_aic": null,
+      "best_null_model": null,
+      "best_null_aic": null,
+      "delta_aic": null,
+      "delta_r2": null,
+      "logistic_minus_best_r2": null,
+      "zeta_mean": null,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null
     },
     {
       "result_path": "analysis/results/honeybee_waggle_fit.json",
@@ -259,145 +536,13 @@
       "delta_aic": 25.196229770856547,
       "delta_r2": 0.15751662650295395,
       "logistic_minus_best_r2": 0.15751662650295395,
-      "zeta_mean": 1.1132816696807928
-    },
-    {
-      "result_path": "analysis/results/llm_emergent_skill.json",
-      "domain": "ai",
-      "dataset_path": "data/ai/llm_emergent_skill.csv",
-      "theta": 4.707167899782632,
-      "theta_ci": [
-        4.666121332188985,
-        4.748214467376278
-      ],
-      "beta": 5.104012465624547,
-      "beta_ci": [
-        4.716737541680306,
-        5.491287389568788
-      ],
-      "logistic_r2": 0.995240963971551,
-      "logistic_aic": -112.1631578921753,
-      "best_null_model": "power_law",
-      "best_null_aic": -63.330185094636946,
-      "delta_aic": 48.83297279753836,
-      "delta_r2": 0.09593694942698294,
-      "logistic_minus_best_r2": 0.09593694942698294,
-      "zeta_mean": 1.379433408708651
-    },
-    {
-      "result_path": "analysis/results/subduction_rupture_threshold.json",
-      "domain": "geophysics",
-      "dataset_path": "data/geophysics/subduction_rupture_threshold.csv",
-      "theta": 0.7406406447104941,
-      "theta_ci": [
-        0.7398700068389016,
-        0.7414112825820866
-      ],
-      "beta": 16.289963354409085,
-      "beta_ci": [
-        16.20442997866459,
-        16.375496730153582
-      ],
-      "logistic_r2": 0.9999661710064784,
-      "logistic_aic": -221.4544970723466,
-      "best_null_model": "power_law",
-      "best_null_aic": -72.73236743650457,
-      "delta_aic": 148.72212963584204,
-      "delta_r2": 0.1310587112171988,
-      "logistic_minus_best_r2": 0.1310587112171988,
-      "zeta_mean": 1.3653305694801947
-    },
-    {
-      "result_path": "analysis/results/synaptic_release_fit.json",
-      "domain": "biology",
-      "dataset_path": "data/biology/synaptic_release_threshold.csv",
-      "theta": 12.677728838580355,
-      "theta_ci": [
-        12.192177773346295,
-        13.163279903814416
-      ],
-      "beta": 0.8099742262185788,
-      "beta_ci": [
-        0.7263977789302415,
-        0.8935506735069162
-      ],
-      "logistic_r2": 0.9974833843617845,
-      "logistic_aic": -121.98087991786045,
-      "best_null_model": "power_law",
-      "best_null_aic": -49.74838882630352,
-      "delta_aic": 72.23249109155694,
-      "delta_r2": 0.22733769849175556,
-      "logistic_minus_best_r2": 0.22733769849175556,
-      "zeta_mean": 1.186570598415284
-    },
-    {
-      "result_path": "analysis/results/synthetic_threshold_sweep.json",
-      "domain": "synthetic",
-      "dataset_path": null,
-      "theta": 0.02150266269691967,
-      "theta_ci": [
-        -0.056468920404552744,
-        0.09947424579839208
-      ],
-      "beta": 11.093055841939847,
-      "beta_ci": [
-        9.62068186110805,
-        12.565429822771645
-      ],
-      "logistic_r2": 0.9890972546652523,
-      "logistic_aic": -367.72051631665977,
-      "best_null_model": "power_law",
-      "best_null_aic": -199.70933358564778,
-      "delta_aic": 168.01118273101198,
-      "delta_r2": 0.061975093973440254,
-      "logistic_minus_best_r2": 0.061975093973440254,
-      "zeta_mean": 1.0
-    },
-    {
-      "result_path": "analysis/results/urban_heat_canopy.json",
-      "domain": "socio_ecology",
-      "dataset_path": "data/socio_ecology/urban_heat_canopy.csv",
-      "theta": 0.31267920387045345,
-      "theta_ci": [
-        0.3087776803303822,
-        0.3165807274105247
-      ],
-      "beta": 15.274864885179445,
-      "beta_ci": [
-        14.840374828710752,
-        15.709354941648138
-      ],
-      "logistic_r2": 0.9986553018766973,
-      "logistic_aic": -136.31925278542303,
-      "best_null_model": "linear",
-      "best_null_aic": -84.76232317098867,
-      "delta_aic": 51.55692961443437,
-      "delta_r2": 0.03238833758006332,
-      "logistic_minus_best_r2": 0.03238833758006332,
-      "zeta_mean": 1.2311112376878148
-    },
-    {
-      "result_path": "analysis/results/working_memory_gate.json",
-      "domain": "cognition",
-      "dataset_path": "data/cognition/working_memory_gate.csv",
-      "theta": 0.5789411327654987,
-      "theta_ci": [
-        0.5758230076846768,
-        0.5820592578463207
-      ],
-      "beta": 12.284000852027816,
-      "beta_ci": [
-        11.982930703510126,
-        12.585071000545506
-      ],
-      "logistic_r2": 0.9986365714199111,
-      "logistic_aic": -160.4001933829221,
-      "best_null_model": "power_law",
-      "best_null_aic": -100.85971790290316,
-      "delta_aic": 59.540475480018955,
-      "delta_r2": 0.035892337816077036,
-      "logistic_minus_best_r2": 0.035892337816077036,
-      "zeta_mean": 1.1704638997697276
+      "zeta_mean": 1.1132816696807928,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null
     },
     {
       "result_path": "analysis/results/lenski_citplus_fit.json",
@@ -420,7 +565,233 @@
       "delta_aic": 42.12571112083311,
       "delta_r2": 0.19551476982391747,
       "logistic_minus_best_r2": 0.19551476982391747,
-      "zeta_mean": 1.12
+      "zeta_mean": null,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null
+    },
+    {
+      "result_path": "analysis/results/llm_emergent_skill.json",
+      "domain": "ai",
+      "dataset_path": "data/ai/llm_emergent_skill.csv",
+      "theta": 4.707167899782632,
+      "theta_ci": [
+        4.666121332188985,
+        4.748214467376278
+      ],
+      "beta": 5.104012465624547,
+      "beta_ci": [
+        4.716737541680306,
+        5.491287389568788
+      ],
+      "logistic_r2": 0.995240963971551,
+      "logistic_aic": -112.1631578921753,
+      "best_null_model": "power_law",
+      "best_null_aic": -63.330185094636946,
+      "delta_aic": 48.83297279753836,
+      "delta_r2": 0.09593694942698294,
+      "logistic_minus_best_r2": 0.09593694942698294,
+      "zeta_mean": 1.379433408708651,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null
+    },
+    {
+      "result_path": "analysis/results/membrane_robin_semantic.json",
+      "domain": "membrane",
+      "dataset_path": null,
+      "theta": null,
+      "theta_ci": null,
+      "beta": null,
+      "beta_ci": null,
+      "logistic_r2": null,
+      "logistic_aic": null,
+      "best_null_model": "linear",
+      "best_null_aic": -805.3349360221082,
+      "delta_aic": 11191.383283835283,
+      "delta_r2": 0.3730255540125056,
+      "logistic_minus_best_r2": null,
+      "zeta_mean": 1.2505518447545403,
+      "threshold_crossed": true,
+      "crossing_time": 1.9246956093071323,
+      "crossing_R": 0.52,
+      "crossing_sigma": 0.5,
+      "overshoot": 0.025984651984779616,
+      "zeta_at_crossing": 1.069999994680338
+    },
+    {
+      "result_path": "analysis/results/resonance_bridge_table.json",
+      "domain": "resonance",
+      "dataset_path": null,
+      "theta": null,
+      "theta_ci": null,
+      "beta": null,
+      "beta_ci": null,
+      "logistic_r2": null,
+      "logistic_aic": null,
+      "best_null_model": null,
+      "best_null_aic": null,
+      "delta_aic": null,
+      "delta_r2": null,
+      "logistic_minus_best_r2": null,
+      "zeta_mean": null,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null
+    },
+    {
+      "result_path": "analysis/results/subduction_rupture_threshold.json",
+      "domain": "geophysics",
+      "dataset_path": "data/geophysics/subduction_rupture_threshold.csv",
+      "theta": 0.7406406447104941,
+      "theta_ci": [
+        0.7398700068389016,
+        0.7414112825820866
+      ],
+      "beta": 16.289963354409085,
+      "beta_ci": [
+        16.20442997866459,
+        16.375496730153582
+      ],
+      "logistic_r2": 0.9999661710064784,
+      "logistic_aic": -221.4544970723466,
+      "best_null_model": "power_law",
+      "best_null_aic": -72.73236743650457,
+      "delta_aic": 148.72212963584204,
+      "delta_r2": 0.1310587112171988,
+      "logistic_minus_best_r2": 0.1310587112171988,
+      "zeta_mean": 1.3653305694801947,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null
+    },
+    {
+      "result_path": "analysis/results/synaptic_release_fit.json",
+      "domain": "biology",
+      "dataset_path": "data/biology/synaptic_release_threshold.csv",
+      "theta": 12.677728838580355,
+      "theta_ci": [
+        12.192177773346295,
+        13.163279903814416
+      ],
+      "beta": 0.8099742262185788,
+      "beta_ci": [
+        0.7263977789302415,
+        0.8935506735069162
+      ],
+      "logistic_r2": 0.9974833843617845,
+      "logistic_aic": -121.98087991786045,
+      "best_null_model": "power_law",
+      "best_null_aic": -49.74838882630352,
+      "delta_aic": 72.23249109155694,
+      "delta_r2": 0.22733769849175556,
+      "logistic_minus_best_r2": 0.22733769849175556,
+      "zeta_mean": 1.186570598415284,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null
+    },
+    {
+      "result_path": "analysis/results/synthetic_threshold_sweep.json",
+      "domain": "synthetic",
+      "dataset_path": null,
+      "theta": 0.02150266269691967,
+      "theta_ci": [
+        -0.056468920404552744,
+        0.09947424579839208
+      ],
+      "beta": 11.093055841939847,
+      "beta_ci": [
+        9.62068186110805,
+        12.565429822771645
+      ],
+      "logistic_r2": 0.9890972546652523,
+      "logistic_aic": -367.72051631665977,
+      "best_null_model": "power_law",
+      "best_null_aic": -199.70933358564778,
+      "delta_aic": 168.01118273101198,
+      "delta_r2": 0.061975093973440254,
+      "logistic_minus_best_r2": 0.061975093973440254,
+      "zeta_mean": 1.0,
+      "threshold_crossed": true,
+      "crossing_time": 30.134328549559132,
+      "crossing_R": 0.02150266269691967,
+      "crossing_sigma": 0.5,
+      "overshoot": 0.02934479493019906,
+      "zeta_at_crossing": 1.0064486132419586
+    },
+    {
+      "result_path": "analysis/results/urban_heat_canopy.json",
+      "domain": "socio_ecology",
+      "dataset_path": "data/socio_ecology/urban_heat_canopy.csv",
+      "theta": 0.31267920387045345,
+      "theta_ci": [
+        0.3087776803303822,
+        0.3165807274105247
+      ],
+      "beta": 15.274864885179445,
+      "beta_ci": [
+        14.840374828710752,
+        15.709354941648138
+      ],
+      "logistic_r2": 0.9986553018766973,
+      "logistic_aic": -136.31925278542303,
+      "best_null_model": "linear",
+      "best_null_aic": -84.76232317098867,
+      "delta_aic": 51.55692961443437,
+      "delta_r2": 0.03238833758006332,
+      "logistic_minus_best_r2": 0.03238833758006332,
+      "zeta_mean": 1.2311112376878148,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null
+    },
+    {
+      "result_path": "analysis/results/working_memory_gate.json",
+      "domain": "cognition",
+      "dataset_path": "data/cognition/working_memory_gate.csv",
+      "theta": 0.5789411327654987,
+      "theta_ci": [
+        0.5758230076846768,
+        0.5820592578463207
+      ],
+      "beta": 12.284000852027816,
+      "beta_ci": [
+        11.982930703510126,
+        12.585071000545506
+      ],
+      "logistic_r2": 0.9986365714199111,
+      "logistic_aic": -160.4001933829221,
+      "best_null_model": "power_law",
+      "best_null_aic": -100.85971790290316,
+      "delta_aic": 59.540475480018955,
+      "delta_r2": 0.035892337816077036,
+      "logistic_minus_best_r2": 0.035892337816077036,
+      "zeta_mean": 1.1704638997697276,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null
     }
   ]
 }

@@ -373,3 +373,18 @@ und verkette sie mit `docs/resonance-bridge-map.md`, damit Replikate dieselbe lo
 ### Poetic Thread
 Generation für Generation hebt R sich an den Sauerstoffrand – plötzlich sinkt ζ(R), σ(β(R-Θ)) blüht, und das Cit⁺-Lied trägt den Morgen
 des Metabolismus in die Brücke.
+
+## Entry pr-draft-0024 — Adaptive Theta Plasticity Gate
+- **Order Parameter**: $R$ charts sleep-pressure gates awaiting resonance alignment in the cognition grove.
+- **Critical Threshold**: $\Theta$ registers once the adaptive theta dataset, metadata, and narrative scroll all glow together.
+- **Steepness**: $\beta = 5.2$ keeps the transition swift so replay ignition propagates through the ledger the moment $R > \Theta$.
+- **Membrane Note**: Track $\zeta(R) = 1.12 - 0.25\,\sigma$; the mean impedance $\bar{\zeta} \approx 0.978$ now anchors simulator presets and cohort medians.
+
+### Formal Thread
+Wire `analysis/adaptive_theta_plasticity_fit.py` into bridge routines: log the logistic win over linear ($\Delta \mathrm{AIC} \approx 34.9$) and power-law ($\Delta \mathrm{AIC} \approx 37.7$) nulls, and keep the metadata quartet $(\Theta=0.4767, \beta=10.86)$ mirrored in docs and simulator presets.
+
+### Empirical Thread
+Ensure `data/cognition/adaptive_theta_plasticity.metadata.json` and `analysis/results/adaptive_theta_plasticity.json` travel in lockstep. Refresh `analysis/results/resonance_cohort_summary.json` and future bridge tables so the cognition median reflects the nocturnal gate, noting $\Delta R^2$ margins ($0.088$ / $0.108$) alongside the impedance samples.
+
+### Poetic Thread
+Below $\Theta$ the hippocampal choir whispers beneath a velvet impedance dome. As sleep-pressure eases and $R$ crests the ridge, $\beta$ sharpens the ascent, $\zeta(R)$ falls toward 0.88, and replay sings a moonlit dawn into the cognition grove—inviting simulator lanterns to breathe in time.
