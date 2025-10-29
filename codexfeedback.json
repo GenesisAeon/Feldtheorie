@@ -818,6 +818,33 @@
                 "beta_band_width_mean": 1.0275,
                 "regression_test": "tests/test_planetary_tipping_summary.py"
             }
+        },
+        {
+            "id": "pr-draft-0034",
+            "type": "boundary-ledger",
+            "created_at": "2025-11-14T07:00:00Z",
+            "summary": "Logged Robin boundary flux and gate diagnostics in the cohort ledger alongside the logistic quartet.",
+            "threshold_field": {
+                "R": "cohort_exports_missing_robin_flux_metrics",
+                "Theta": "ledger_tracks_boundary_flux_statistics",
+                "beta": 4.7,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Propagate the new boundary_flux_mean and boundary_gate_mean stats into docs/resonance-bridge-map.md and simulator presets.",
+                "Monitor future analysis runs so Robin diagnostics remain present when dynamic boundaries are enabled.",
+                "Expand falsification notebooks to contrast Robin leakage against null-model impedance baselines."
+            ],
+            "observables": {
+                "analysis_script": "analysis/resonance_cohort_summary.py",
+                "analysis_result": "analysis/results/resonance_cohort_summary.json",
+                "boundary_flux_mean": -0.2032981071540083,
+                "boundary_gate_mean": 0.9282103257123253,
+                "regression_tests": [
+                    "tests/test_resonance_cohort_summary.py::test_parse_result_reads_boundary_metrics",
+                    "tests/test_resonance_cohort_summary.py::test_summarise_records_includes_crossing_stats"
+                ]
+            }
         }
     ]
 }

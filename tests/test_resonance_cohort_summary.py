@@ -89,6 +89,15 @@ def test_summarise_records_includes_crossing_stats(tmp_path: Path) -> None:
         "final_impedance": 0.66,
         "baseline_impedance": 0.84,
     }
+    first["boundary"] = {
+        "boundary_flux_mean": -0.18,
+        "boundary_flux_std": 0.05,
+        "boundary_flux_peak": -0.03,
+        "boundary_flux_valley": -0.26,
+        "boundary_gate_mean": 0.71,
+        "boundary_gate_peak": 0.94,
+        "boundary_gate_valley": 0.35,
+    }
     second = _base_payload()
     second["threshold_crossing"] = {
         "crossed": False,
@@ -120,6 +129,15 @@ def test_summarise_records_includes_crossing_stats(tmp_path: Path) -> None:
         "hysteresis_min": -0.03,
         "final_impedance": 0.71,
         "baseline_impedance": 0.88,
+    }
+    second["boundary"] = {
+        "boundary_flux_mean": -0.22,
+        "boundary_flux_std": 0.08,
+        "boundary_flux_peak": -0.02,
+        "boundary_flux_valley": -0.3,
+        "boundary_gate_mean": 0.78,
+        "boundary_gate_peak": 0.97,
+        "boundary_gate_valley": 0.42,
     }
 
     first_path = tmp_path / "first.json"
@@ -175,6 +193,12 @@ def test_summarise_records_includes_crossing_stats(tmp_path: Path) -> None:
     gate_area = aggregate["gate_area"]
     assert gate_area is not None
     assert gate_area["mean"] == pytest.approx((0.61 + 0.72) / 2, rel=1e-9)
+    boundary_flux_mean = aggregate["boundary_flux_mean"]
+    assert boundary_flux_mean is not None
+    assert pytest.approx(boundary_flux_mean["mean"], rel=1e-9) == (-0.18 - 0.22) / 2
+    boundary_gate_mean = aggregate["boundary_gate_mean"]
+    assert boundary_gate_mean is not None
+    assert pytest.approx(boundary_gate_mean["max"], rel=1e-9) == 0.78
 
 
 def test_parse_result_computes_fraction_and_meta_gate(tmp_path: Path) -> None:
@@ -228,3 +252,25 @@ def test_parse_result_reads_impedance_metrics(tmp_path: Path) -> None:
     assert pytest.approx(record.recovery_peak, rel=1e-9) == 0.33
     assert pytest.approx(record.hysteresis_mean, rel=1e-9) == 0.08
     assert pytest.approx(record.final_impedance, rel=1e-9) == 0.69
+
+
+def test_parse_result_reads_boundary_metrics(tmp_path: Path) -> None:
+    payload = _base_payload()
+    payload["boundary"] = {
+        "boundary_flux_mean": -0.21,
+        "boundary_flux_std": 0.06,
+        "boundary_flux_peak": -0.04,
+        "boundary_flux_valley": -0.28,
+        "boundary_gate_mean": 0.76,
+        "boundary_gate_peak": 0.98,
+        "boundary_gate_valley": 0.33,
+    }
+    target = tmp_path / "boundary.json"
+    _write_payload(target, payload)
+
+    record = parse_result(target)
+
+    assert pytest.approx(record.boundary_flux_mean, rel=1e-9) == -0.21
+    assert pytest.approx(record.boundary_flux_std, rel=1e-9) == 0.06
+    assert pytest.approx(record.boundary_flux_valley, rel=1e-9) == -0.28
+    assert pytest.approx(record.boundary_gate_mean, rel=1e-9) == 0.76
