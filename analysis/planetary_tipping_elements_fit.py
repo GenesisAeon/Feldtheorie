@@ -23,9 +23,10 @@ import argparse
 import json
 from copy import deepcopy
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 DATA_PATH = Path("data/socio_ecology/planetary_tipping_elements.json")
 META_PATH = Path("data/socio_ecology/planetary_tipping_elements.metadata.json")
@@ -43,7 +44,7 @@ HYPOTHESIS_NOTES: List[Dict[str, Any]] = [
             "Alternativen."
         ),
         "evidence": {
-            "beta_band_mean": None,  # gefüllt in compile_summary (μ_β)
+            "beta_mean": None,  # gefüllt in compile_summary (μ_β)
             "beta_band_width_mean": None,  # mittlere CI-Breite für β
             "delta_aic_linear": None,
             "delta_aic_power_law": None,
@@ -189,17 +190,32 @@ def build_logistic_curve(theta: float, beta: float) -> List[Dict[str, float]]:
     return curve
 
 
-def compile_summary(elements: List[LogisticElement], aggregate: AggregateLogistic) -> Dict[str, Any]:
+def _utc_now_isoformat() -> str:
+    """Return the current UTC timestamp in ISO-8601 with ``Z`` suffix."""
+
+    timestamp = datetime.now(timezone.utc).replace(microsecond=0)
+    return timestamp.isoformat().replace("+00:00", "Z")
+
+
+def compile_summary(
+    elements: List[LogisticElement],
+    aggregate: AggregateLogistic,
+    *,
+    generated_at: Optional[str] = None,
+) -> Dict[str, Any]:
     beta_band_width_mean = mean(e.steepness_band for e in elements)
     beta_values = [e.beta for e in elements]
     beta_mean = mean(beta_values)
     theta_values = [e.theta for e in elements]
 
+    if generated_at is None:
+        generated_at = _utc_now_isoformat()
+
     hypotheses: List[Dict[str, Any]] = []
     for base in HYPOTHESIS_NOTES:
         note = deepcopy(base)
         if note["id"] == "beta_universality":
-            note["evidence"]["beta_band_mean"] = beta_mean
+            note["evidence"]["beta_mean"] = beta_mean
             note["evidence"]["beta_band_width_mean"] = beta_band_width_mean
             note["evidence"]["delta_aic_linear"] = aggregate.null_models["linear"]["delta_aic"]
             note["evidence"]["delta_aic_power_law"] = aggregate.null_models["power_law"]["delta_aic"]
@@ -215,7 +231,7 @@ def compile_summary(elements: List[LogisticElement], aggregate: AggregateLogisti
         hypotheses.append(note)
 
     payload: Dict[str, Any] = {
-        "generated_at": "2025-10-28T15:45:00Z",
+        "generated_at": generated_at,
         "dataset": str(DATA_PATH),
         "metadata": str(META_PATH),
         "aggregate": {
@@ -229,7 +245,7 @@ def compile_summary(elements: List[LogisticElement], aggregate: AggregateLogisti
             "impedance_mean": aggregate.impedance_mean,
             "impedance_std": aggregate.impedance_std,
             "null_models": aggregate.null_models,
-            "beta_band_mean": beta_mean,
+            "beta_mean": beta_mean,
             "beta_band_width_mean": beta_band_width_mean,
             "beta_min": min(beta_values),
             "beta_max": max(beta_values),
