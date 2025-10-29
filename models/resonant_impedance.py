@@ -181,9 +181,28 @@ class ResonantImpedance:
         if r_arr.size >= 2:
             gate_area = float(np.trapezoid(gate, r_arr))
             impedance_area = float(np.trapezoid(zeta, r_arr))
+            relief_area = float(np.trapezoid(relief, r_arr))
+            recovery_area = float(np.trapezoid(recovery, r_arr))
+            hysteresis_area = float(np.trapezoid(np.abs(hysteresis), r_arr))
+            hysteresis_bias = float(np.trapezoid(hysteresis, r_arr))
         else:
             gate_area = float(np.sum(gate))
             impedance_area = float(np.sum(zeta))
+            relief_area = float(np.sum(relief))
+            recovery_area = float(np.sum(recovery))
+            hysteresis_area = float(np.sum(np.abs(hysteresis)))
+            hysteresis_bias = float(np.sum(hysteresis))
+
+        relief_recovery_balance = relief_area - recovery_area
+        if abs(recovery_area) > 1e-12:
+            relief_recovery_ratio = float(relief_area / recovery_area)
+        else:
+            relief_recovery_ratio = None
+        total_relief_recovery = relief_area + recovery_area
+        if abs(total_relief_recovery) > 1e-12:
+            relief_recovery_symmetry = float(relief_recovery_balance / total_relief_recovery)
+        else:
+            relief_recovery_symmetry = None
 
         target.update(
             {
@@ -195,6 +214,13 @@ class ResonantImpedance:
                 "gate_mean": float(np.mean(gate)) if gate.size else 0.0,
                 "gate_area": gate_area,
                 "impedance_area": impedance_area,
+                "relief_area": relief_area,
+                "recovery_area": recovery_area,
+                "hysteresis_area": hysteresis_area,
+                "relief_recovery_balance": relief_recovery_balance,
+                "relief_recovery_ratio": relief_recovery_ratio,
+                "relief_recovery_symmetry": relief_recovery_symmetry,
+                "hysteresis_bias": hysteresis_bias,
                 "relief_peak": float(np.max(relief)) if relief.size else 0.0,
                 "recovery_peak": float(np.max(recovery)) if recovery.size else 0.0,
                 "hysteresis_peak": float(np.max(np.abs(hysteresis))) if hysteresis.size else 0.0,

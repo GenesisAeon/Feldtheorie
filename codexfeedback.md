@@ -503,13 +503,13 @@ Die aurorale Welle, der Pulschor und die dämmernde Rückkehr tragen nun Laterne
 - **Order Parameter**: $R$ misst Impedanzläufe, denen noch Relief-, Recovery- und Hysterese-Logbücher fehlten.
 - **Critical Threshold**: $\Theta$ leuchtet auf, sobald `analysis/resonant_impedance_diagnostics.py` die Gate-Sweep zusammen mit Nullmodell-Falsifikation exportiert.
 - **Steepness**: $\beta = 4.95$ sorgt dafür, dass die Impedanzlaterne sofort aufflammt, sobald Relief-Telemetrie fehlt.
-- **Membrane Note**: Die Wächterin hält $\zeta(R)$ bei $0.41$ im Mittel und notiert, wie Relief-Spitzen ($0.074$) den Vorhang öffnen, während Hysterese-Flüstern ($0.043$) Erinnerung in den Übergang webt.
+- **Membrane Note**: Die Wächterin hält $\zeta(R)$ bei $0.41$ im Mittel, kartiert ein Relief-zu-Recovery-Verhältnis von $\approx 1.99$ mit Symmetrieindex $\approx 0.33$, und notiert, wie Relief-Spitzen ($0.074$) den Vorhang öffnen, während Hysterese-Flüstern ($0.043$) Erinnerung in den Übergang webt.
 
 ### Formal Thread
-`analysis/resonant_impedance_diagnostics.py` sweepte eine synthetische Steuerkurve durch die Gate-Funktion $\sigma(\beta(R-\Theta))$, refittete die Logistik gegen lineare und Power-Law-Nullen ($\Delta \mathrm{AIC} \approx 3.47\times 10^4$) und schreibt die Relief/Recovery/Hysterese-Pfade nach `analysis/results/resonant_impedance_diagnostics.json`. `analysis/resonance_cohort_summary.py` liest die neuen Kennzahlen (gate_area, impedance_area, peaks) ein und stellt sie Cohort-Analysen bereit.
+`analysis/resonant_impedance_diagnostics.py` sweepte eine synthetische Steuerkurve durch die Gate-Funktion $\sigma(\beta(R-\Theta))$, refittete die Logistik gegen lineare und Power-Law-Nullen ($\Delta \mathrm{AIC} \approx 3.47\times 10^4$) und schreibt Relief/Recovery/Hysterese-Pfade samt Flächenintegralen und Symmetriequotienten nach `analysis/results/resonant_impedance_diagnostics.json`. `analysis/resonance_cohort_summary.py` liest die neuen Kennzahlen (gate_area, impedance_area, relief/recovery area balance, hysteresis bias) ein und stellt sie Cohort-Analysen bereit.
 
 ### Empirical Thread
-Das neue JSON meldet $\zeta_{\text{mean}} \approx 0.41$, Relief-Peak $0.074$, Recovery-Peak $0.061$ und Hysterese-Peak $0.043$. Diese Werte synchronisieren `docs/resonance-bridge-map.md` und dienen als Hook für ein kommendes Simulator-Preset, das Relief-Schieber und Hysterese-Dämpfer sichtbar macht.
+Das neue JSON meldet $\zeta_{\text{mean}} \approx 0.41$, Relief-Peak $0.074$, Recovery-Peak $0.061$, Hysterese-Peak $0.043$, Relief-Area $0.033$, Recovery-Area $0.017$ sowie einen Hysterese-Bias von $\approx 0.019$. Diese Werte synchronisieren `docs/resonance-bridge-map.md` und dienen als Hook für ein kommendes Simulator-Preset, das Relief-Schieber, Symmetrie-Anzeigen und Hysterese-Dämpfer sichtbar macht.
 
 ### Poetic Thread
 Die Impedanzwächterin atmet hörbar: sie öffnet sich, wenn der Sweep das Licht berührt, zieht sich zurück, wenn Stille einkehrt, und lässt eine leise Hysterese zurück – ein Nachglimmen, das die Brücke mahnt, auf den Atem der Membran zu achten.
