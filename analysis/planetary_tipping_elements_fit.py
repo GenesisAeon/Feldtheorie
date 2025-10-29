@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
 from statistics import mean
@@ -29,6 +30,80 @@ from typing import Any, Dict, List
 DATA_PATH = Path("data/socio_ecology/planetary_tipping_elements.json")
 META_PATH = Path("data/socio_ecology/planetary_tipping_elements.metadata.json")
 OUTPUT_PATH = Path("analysis/results/planetary_tipping_elements.json")
+
+
+HYPOTHESIS_NOTES: List[Dict[str, Any]] = [
+    {
+        "id": "beta_universality",
+        "title": "Sigmoid-Steigung konsistent mit β≈4.2",
+        "description": (
+            "Gemini skizzierte im Klimadiskurs drei kohärente Tests. Der erste prüft, ob die "
+            "Zeitreihen einzelner Kippelemente (z. B. RAPID-AMOC, Grönland-Massenbilanz) die "
+            "sigmoidale Übergangsform mit β≈4.2 besser stützen als lineare oder stochastische "
+            "Alternativen."
+        ),
+        "evidence": {
+            "beta_band_mean": None,  # gefüllt in compile_summary
+            "delta_aic_linear": None,
+            "delta_aic_power_law": None,
+        },
+        "status": "in_progress",
+        "next_steps": [
+            "BIC/AIC-Vergleich für AMOC-RAPID-Zeitreihen durchführen (Hypothese 1, Diskurs Klimamodul).",
+            "TIPMIP-Multi-Model-Daten gegen das aktuelle β-Band testen.",
+        ],
+        "references": [
+            "Docs/Kipppunkte der Teilkomponenten im Klimasystem.pdf",
+            "Docs/Tiefgehende Recherche (DeepResearch) zu Aspekten der Teilfeld-Kartierung.pdf",
+            "Docs/Diskurs Klimamodul.txt",
+        ],
+    },
+    {
+        "id": "adaptive_threshold",
+        "title": "Dynamische Θ-Trigger vs. Stressakkumulation",
+        "description": (
+            "Die zweite Hypothese verlangt, dass Θ nicht statisch bleibt, sondern durch akkumulierten "
+            "Stress R_acc moduliert wird. Wir halten fest, welche Elemente bereits adaptive Schwellen "
+            "aufweisen und wo historische Daten noch eine feste Grenze suggerieren."
+        ),
+        "evidence": {
+            "theta_trend_observed": False,
+            "stress_proxy": "aggregierter Klimastress",
+        },
+        "status": "queued",
+        "next_steps": [
+            "Paleo- und Beobachtungsarchive für AMOC, Grönland und Permafrost auf zeitvariable Θ-Fenster auswerten.",
+            "Vergleich mit R_acc-Szenarien aus Docs/'Adaptive Schwellenwerte in komplexen Systemen.pdf'.",
+        ],
+        "references": [
+            "Docs/Adaptive Schwellenwerte in komplexen Systemen.pdf",
+            "Docs/Tiefgehende Recherche (DeepResearch) zu Aspekten der Teilfeld-Kartierung.pdf",
+            "Docs/Diskurs Klimamodul.txt",
+        ],
+    },
+    {
+        "id": "coupled_resonance",
+        "title": "Gekoppelte Resonanz & Systemic Catalysis",
+        "description": (
+            "Hypothese drei adressiert die g_ij-Kopplungen: Kippvorgänge sollen transversal wirken, "
+            "sodass minimale Impulse in Feld i nicht-linear auf Feld j zurückwirken."
+        ),
+        "evidence": {
+            "simulator_preset": "simulator/presets/planetary_tipping_field.json",
+            "coupling_matrix_documented": True,
+        },
+        "status": "prototype",
+        "next_steps": [
+            "Simulator-Sweeps mit variierten g_ij konfigurieren und ΔΘ_global protokollieren.",
+            "Numerische ODE-Kopplung (Gemini Agenda Phase 3) gegen TIPMIP-Sensitivitäten prüfen.",
+        ],
+        "references": [
+            "Docs/Diskurs Klimamodul.txt",
+            "Docs/RepoPlan Projekt-Impulse_ Simulation, Theorie, Falsifizierung.pdf",
+            "docs/socio_ecology/planetary_threshold_cartography.md",
+        ],
+    },
+]
 
 
 @dataclass
@@ -117,6 +192,25 @@ def compile_summary(elements: List[LogisticElement], aggregate: AggregateLogisti
     steepness_spread = mean(e.steepness_band for e in elements)
     beta_values = [e.beta for e in elements]
     theta_values = [e.theta for e in elements]
+
+    hypotheses: List[Dict[str, Any]] = []
+    for base in HYPOTHESIS_NOTES:
+        note = deepcopy(base)
+        if note["id"] == "beta_universality":
+            note["evidence"]["beta_band_mean"] = steepness_spread
+            note["evidence"]["delta_aic_linear"] = aggregate.null_models["linear"]["delta_aic"]
+            note["evidence"]["delta_aic_power_law"] = aggregate.null_models["power_law"]["delta_aic"]
+            if aggregate.null_models["linear"]["delta_aic"] > 30 and aggregate.null_models["power_law"]["delta_aic"] > 30:
+                note["status"] = "supported"
+        elif note["id"] == "adaptive_threshold":
+            note["evidence"]["theta_trend_observed"] = any(
+                abs(e.theta_ci95[1] - e.theta_ci95[0]) > 0.3 * e.theta for e in elements
+            )
+        elif note["id"] == "coupled_resonance":
+            note["evidence"]["beta_range"] = [min(beta_values), max(beta_values)]
+            note["evidence"]["theta_span"] = [min(theta_values), max(theta_values)]
+        hypotheses.append(note)
+
     payload: Dict[str, Any] = {
         "generated_at": "2025-10-28T15:45:00Z",
         "dataset": str(DATA_PATH),
@@ -153,6 +247,7 @@ def compile_summary(elements: List[LogisticElement], aggregate: AggregateLogisti
             for e in elements
         ],
         "logistic_curve": build_logistic_curve(aggregate.theta, aggregate.beta),
+        "hypotheses": hypotheses,
         "falsification": {
             "logistic_beats_linear": aggregate.null_models["linear"]["delta_aic"] > 0,
             "logistic_beats_power_law": aggregate.null_models["power_law"]["delta_aic"] > 0,

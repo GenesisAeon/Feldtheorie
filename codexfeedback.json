@@ -678,8 +678,8 @@
             },
             "next_actions": [
                 "Ingest TIPMIP ensemble runs to update theta/beta bands and null comparisons.",
-                "Surface climate entry inside simulator regression tests once presets expand.",
-                "Coordinate with manuscript section 5 to keep citations aligned with Docs PDFs."
+                "Run simulator batch sweeps over g_ij to log ΔTheta_global and publish regression baselines.",
+                "Track the exported hypotheses array and refresh Section 5 citations when new data arrives."
             ],
             "observables": {
                 "analysis_result": "analysis/results/planetary_tipping_elements.json",
@@ -687,7 +687,8 @@
                 "simulator_preset": "simulator/presets/planetary_tipping_field.json",
                 "delta_aic_linear": 33.58,
                 "beta_estimate": 4.21,
-                "theta_estimate": 1.67
+                "theta_estimate": 1.67,
+                "hypotheses_exported": true
             }
         }
     ]

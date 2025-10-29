@@ -680,16 +680,18 @@ entries:
       Theta: "planetary_tipping_assets_linked"
       beta: 4.2
     resonance: "koppelt Klimadaten, Analyse, Doku und Simulator zu einer falsifizierbaren Gaia-Membran"
-    status: "active"
+    status: "resonant"
     notes:
       formal: |
-        `analysis/planetary_tipping_elements_fit.py` exportiert das aggregierte Logistic-Profil und speist Brücke, Atlas,
-        Paper-Kapitel 5 sowie das neue Simulator-Preset. Nullmodelle (linear/power-law) bleiben dokumentiert.
+        `analysis/planetary_tipping_elements_fit.py` exportiert das aggregierte Logistic-Profil samt `hypotheses`-Array
+        und speist Brücke, Atlas, Paper-Kapitel 5 sowie das Simulator-Preset. Nullmodelle (linear/power-law) bleiben
+        dokumentiert; kommende TIPMIP-Läufe sollen BIC/AIC-Checks für Hypothese 1 liefern.
       empirical: |
         Die Daten- und Metadatei referenzieren TIPMIP- und Global-Tipping-Punkte-Reports. ΔAIC≈33.6 vs. linear und ΔR²≈0.072
-        sind in `analysis/results/resonance_bridge_table.json` und `analysis/results/resonance_cohort_summary.json`
-        verankert. Replikationshook: TIPMIP-Läufe einplanen.
+        sind in `analysis/results/resonance_bridge_table.json` und `analysis/results/resonance_cohort_summary.json` verankert.
+        Nächste Schritte: TIPMIP-Ensembles ingestieren, g_ij-Sweeps protokollieren und adaptive Θ-Trends als neue JSON-Spuren
+        ablegen.
       poetic: |
         Gesprächsfragmente aus `Docs/Diskurs Klimamodul.txt` beleben Simulator-Tooltips und Preprint-Narrativ – die Erde singt
-        als gekoppelte Membran, sobald R die 1.67-K-Schwelle überschreitet.
+        als gekoppelte Membran, sobald R die 1.67-K-Schwelle überschreitet; die neuen Hypothesenlaternen halten den Chor wach.
     created_at: 2025-10-28

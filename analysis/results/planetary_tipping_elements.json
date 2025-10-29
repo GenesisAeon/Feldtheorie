@@ -158,6 +158,74 @@
       "sigma": 0.9259445352764824
     }
   ],
+  "hypotheses": [
+    {
+      "id": "beta_universality",
+      "title": "Sigmoid-Steigung konsistent mit \u03b2\u22484.2",
+      "description": "Gemini skizzierte im Klimadiskurs drei koh\u00e4rente Tests. Der erste pr\u00fcft, ob die Zeitreihen einzelner Kippelemente (z.\u202fB. RAPID-AMOC, Gr\u00f6nland-Massenbilanz) die sigmoidale \u00dcbergangsform mit \u03b2\u22484.2 besser st\u00fctzen als lineare oder stochastische Alternativen.",
+      "evidence": {
+        "beta_band_mean": 1.0275,
+        "delta_aic_linear": 33.58,
+        "delta_aic_power_law": 35.2
+      },
+      "status": "supported",
+      "next_steps": [
+        "BIC/AIC-Vergleich f\u00fcr AMOC-RAPID-Zeitreihen durchf\u00fchren (Hypothese 1, Diskurs Klimamodul).",
+        "TIPMIP-Multi-Model-Daten gegen das aktuelle \u03b2-Band testen."
+      ],
+      "references": [
+        "Docs/Kipppunkte der Teilkomponenten im Klimasystem.pdf",
+        "Docs/Tiefgehende Recherche (DeepResearch) zu Aspekten der Teilfeld-Kartierung.pdf",
+        "Docs/Diskurs Klimamodul.txt"
+      ]
+    },
+    {
+      "id": "adaptive_threshold",
+      "title": "Dynamische \u0398-Trigger vs. Stressakkumulation",
+      "description": "Die zweite Hypothese verlangt, dass \u0398 nicht statisch bleibt, sondern durch akkumulierten Stress R_acc moduliert wird. Wir halten fest, welche Elemente bereits adaptive Schwellen aufweisen und wo historische Daten noch eine feste Grenze suggerieren.",
+      "evidence": {
+        "theta_trend_observed": true,
+        "stress_proxy": "aggregierter Klimastress"
+      },
+      "status": "queued",
+      "next_steps": [
+        "Paleo- und Beobachtungsarchive f\u00fcr AMOC, Gr\u00f6nland und Permafrost auf zeitvariable \u0398-Fenster auswerten.",
+        "Vergleich mit R_acc-Szenarien aus Docs/'Adaptive Schwellenwerte in komplexen Systemen.pdf'."
+      ],
+      "references": [
+        "Docs/Adaptive Schwellenwerte in komplexen Systemen.pdf",
+        "Docs/Tiefgehende Recherche (DeepResearch) zu Aspekten der Teilfeld-Kartierung.pdf",
+        "Docs/Diskurs Klimamodul.txt"
+      ]
+    },
+    {
+      "id": "coupled_resonance",
+      "title": "Gekoppelte Resonanz & Systemic Catalysis",
+      "description": "Hypothese drei adressiert die g_ij-Kopplungen: Kippvorg\u00e4nge sollen transversal wirken, sodass minimale Impulse in Feld i nicht-linear auf Feld j zur\u00fcckwirken.",
+      "evidence": {
+        "simulator_preset": "simulator/presets/planetary_tipping_field.json",
+        "coupling_matrix_documented": true,
+        "beta_range": [
+          3.49,
+          4.38
+        ],
+        "theta_span": [
+          0.175,
+          32.0
+        ]
+      },
+      "status": "prototype",
+      "next_steps": [
+        "Simulator-Sweeps mit variierten g_ij konfigurieren und \u0394\u0398_global protokollieren.",
+        "Numerische ODE-Kopplung (Gemini Agenda Phase 3) gegen TIPMIP-Sensitivit\u00e4ten pr\u00fcfen."
+      ],
+      "references": [
+        "Docs/Diskurs Klimamodul.txt",
+        "Docs/RepoPlan Projekt-Impulse_ Simulation, Theorie, Falsifizierung.pdf",
+        "docs/socio_ecology/planetary_threshold_cartography.md"
+      ]
+    }
+  ],
   "falsification": {
     "logistic_beats_linear": true,
     "logistic_beats_power_law": true,
