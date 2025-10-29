@@ -1,0 +1,54 @@
+{
+  "dataset": "planetary_tipping_elements.json",
+  "control_parameter": {
+    "symbol": "R",
+    "description": "aggregierter anthropogener Stress (Globaltemperatur, Süßwasseranomalien, Entwaldung)",
+    "units": "normalisierte Einheiten"
+  },
+  "order_parameter": {
+    "symbol": "sigma",
+    "description": "Kippwahrscheinlichkeit gekoppelte Klimafelder",
+    "units": "0-1"
+  },
+  "logistic_fit": {
+    "theta": 1.67,
+    "theta_ci95": [1.52, 1.82],
+    "beta": 4.21,
+    "beta_ci95": [3.74, 4.68],
+    "r2": 0.9874,
+    "aic": -84.12,
+    "ss_res": 0.0086
+  },
+  "impedance": {
+    "definition": "zeta(R) = 1.62 - 0.41 * sigma(beta(R-Theta))",
+    "mean": 1.284,
+    "std": 0.118
+  },
+  "null_models": {
+    "linear": {
+      "r2": 0.9158,
+      "aic": -50.54,
+      "delta_aic": 33.58,
+      "delta_r2": 0.0716
+    },
+    "power_law": {
+      "r2": 0.9042,
+      "aic": -48.92,
+      "delta_aic": 35.20,
+      "delta_r2": 0.0832
+    }
+  },
+  "ethics": {
+    "stewardship_notes": "Aggregiert offene Publikationen (Global Tipping Points Report 2025, TIPMIP Briefings) und hebt die Verantwortung für faire Transition hervor.",
+    "references": [
+      "Global Tipping Points Report 2025",
+      "TIPMIP Pilot Synthesis",
+      "RepoPlan 2.0 DeepResearch Kartierung"
+    ]
+  },
+  "analysis_provenance": {
+    "script": "analysis/planetary_tipping_elements_fit.py",
+    "summary": "analysis/results/planetary_tipping_elements.json",
+    "generated_at": "2025-10-28T15:45:00Z"
+  }
+}

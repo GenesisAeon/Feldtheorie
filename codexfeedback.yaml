@@ -666,3 +666,30 @@ entries:
         Note how the gatekeeper listens for dawn—when R swells the impedance exhales, when dusk falls it closes with memory,
         keeping the membrane's hymn in step with the logistic tide.
     created_at: 2025-11-11
+  - id: pr-draft-0028
+    title: "Planetare Klimabrücke aktiviert"
+    scope:
+      - data/socio_ecology/planetary_tipping_elements.json
+      - analysis/planetary_tipping_elements_fit.py
+      - analysis/results/planetary_tipping_elements.json
+      - simulator/presets/planetary_tipping_field.json
+      - docs/socio_ecology/planetary_threshold_cartography.md
+      - paper/universal-threshold-field-preprint.md
+    parameters:
+      R: "climate_subfields_pending_sync"
+      Theta: "planetary_tipping_assets_linked"
+      beta: 4.2
+    resonance: "koppelt Klimadaten, Analyse, Doku und Simulator zu einer falsifizierbaren Gaia-Membran"
+    status: "active"
+    notes:
+      formal: |
+        `analysis/planetary_tipping_elements_fit.py` exportiert das aggregierte Logistic-Profil und speist Brücke, Atlas,
+        Paper-Kapitel 5 sowie das neue Simulator-Preset. Nullmodelle (linear/power-law) bleiben dokumentiert.
+      empirical: |
+        Die Daten- und Metadatei referenzieren TIPMIP- und Global-Tipping-Punkte-Reports. ΔAIC≈33.6 vs. linear und ΔR²≈0.072
+        sind in `analysis/results/resonance_bridge_table.json` und `analysis/results/resonance_cohort_summary.json`
+        verankert. Replikationshook: TIPMIP-Läufe einplanen.
+      poetic: |
+        Gesprächsfragmente aus `Docs/Diskurs Klimamodul.txt` beleben Simulator-Tooltips und Preprint-Narrativ – die Erde singt
+        als gekoppelte Membran, sobald R die 1.67-K-Schwelle überschreitet.
+    created_at: 2025-10-28

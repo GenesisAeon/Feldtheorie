@@ -1,43 +1,43 @@
 {
   "meta": {
     "generated_at": "2025-10-28T20:17:50.648727+00:00",
-    "cohort_size": 14,
+    "cohort_size": 15,
     "logistic_response": "sigma(beta * (R - Theta))"
   },
   "aggregate": {
     "theta": {
-      "mean": 7.272110955448522,
-      "median": 0.6214703985864286,
+      "mean": 6.805268375827811,
+      "median": 0.6810555216484613,
       "min": 0.02150266269691967,
       "max": 32.769044297791865
     },
     "beta": {
-      "mean": 8.831018175500432,
-      "median": 10.860023327485688,
+      "mean": 8.445933327542063,
+      "median": 8.258855793905717,
       "min": 0.6717283976038891,
       "max": 16.289963354409085
     },
     "logistic_r2": {
-      "mean": 0.9932039647822837,
-      "median": 0.9974833843617845,
+      "mean": 0.9927203010504266,
+      "median": 0.9963621741666677,
       "min": 0.9687963452454948,
       "max": 0.9999661710064784
     },
     "delta_aic": {
-      "mean": 1034.51213546912,
-      "median": 65.11814934455208,
+      "mean": 957.5173558176492,
+      "median": 59.540475480018955,
       "min": 25.196229770856547,
       "max": 11191.383283835283
     },
     "delta_r2": {
-      "mean": 0.1233915296229349,
-      "median": 0.10201307374695545,
+      "mean": 0.11940756580578606,
+      "median": 0.09593694942698294,
       "min": 0.006101068081724725,
       "max": 0.3730255540125056
     },
     "zeta_mean": {
-      "mean": 1.210582749084362,
-      "median": 1.186570598415284,
+      "mean": 1.2167008533273318,
+      "median": 1.2088409180515494,
       "min": 0.9777035099038646,
       "max": 1.5343220981632029
     },
@@ -401,6 +401,37 @@
           "min": 1.0064486132419586,
           "max": 1.0064486132419586
         }
+      }
+    },
+    "climate": {
+      "count": 1,
+      "delta_aic": {
+        "mean": 33.58,
+        "median": 33.58,
+        "min": 33.58,
+        "max": 33.58
+      },
+      "delta_r2": {
+        "mean": 0.0716,
+        "median": 0.0716,
+        "min": 0.0716,
+        "max": 0.0716
+      },
+      "logistic_r2": {
+        "mean": 0.9874,
+        "median": 0.9874,
+        "min": 0.9874,
+        "max": 0.9874
+      },
+      "threshold_crossing": {
+        "reports": 0,
+        "crossed_count": 0,
+        "crossed_fraction": null,
+        "time": null,
+        "R": null,
+        "sigma": null,
+        "overshoot": null,
+        "zeta": null
       }
     }
   },
@@ -786,6 +817,35 @@
       "delta_r2": 0.035892337816077036,
       "logistic_minus_best_r2": 0.035892337816077036,
       "zeta_mean": 1.1704638997697276,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null
+    },
+    {
+      "result_path": "analysis/results/planetary_tipping_elements.json",
+      "domain": "climate",
+      "dataset_path": "data/socio_ecology/planetary_tipping_elements.json",
+      "theta": 1.67,
+      "theta_ci": [
+        1.52,
+        1.82
+      ],
+      "beta": 4.21,
+      "beta_ci": [
+        3.74,
+        4.68
+      ],
+      "logistic_r2": 0.9874,
+      "logistic_aic": -84.12,
+      "best_null_model": "linear",
+      "best_null_aic": -50.54,
+      "delta_aic": 33.58,
+      "delta_r2": 0.0716,
+      "logistic_minus_best_r2": 0.0716,
+      "zeta_mean": 1.284,
       "threshold_crossed": null,
       "crossing_time": null,
       "crossing_R": null,

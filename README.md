@@ -32,9 +32,9 @@ The workspace is designed around seven tightly coupled modules:
 
 ## Current resonance braid
 - **Solver dawn:** `models/membrane_solver.py` advances die Membran und exportiert Diagnostik zu \(R\), \(\sigma\) und \(\zeta(R)\).
-- **Empirical soundings:** CLI-Skripte in `analysis/` (LLM emergent skills, Bienenschwarm, Synapsen, Kipppunkte etc.) liefern \(\Theta\), \(\beta\), \(R^2\), AIC sowie Nullmodelle als JSON.
+- **Empirical soundings:** CLI-Skripte in `analysis/` (LLM emergent skills, Bienenschwarm, Synapsen, planetare Kipppunkte etc.) liefern \(\Theta\), \(\beta\), \(R^2\), AIC sowie Nullmodelle als JSON.
 - **Robin + Sinn-Brise:** `analysis/membrane_robin_semantic_fit.py` choreografiert DynamicRobinBoundary mit dem `semantic_resonance_kernel`, exportiert `analysis/results/membrane_robin_semantic.json` und notiert Grenzfluss, Bedeutungsdrift sowie \(\Delta\mathrm{AIC}\)-Siege über lineare und Potenz-Nullen.
-- **Simulator pulse:** `simulator/` beherbergt den Vite/React-Labormodus; Presets aus `simulator/presets/*.json` docken an `analysis/results/*.json` an, so dass ΔAIC/$R^2$ und Tri-Layer-Echos live sichtbar sind.
+- **Simulator pulse:** `simulator/` beherbergt den Vite/React-Labormodus; Presets aus `simulator/presets/*.json` docken an `analysis/results/*.json` an, so dass ΔAIC/$R^2$ und Tri-Layer-Echos live sichtbar sind. Neu hinzugekommen ist `planetary_tipping_field`, das AMOC-, Eis-, Wald- und Permafrostschwellen koppelt.
 - **Narrative echo:** `docs/utf-living-glossary.md`, die Domänen-Briefs und `docs/resonance-bridge-map.md` verweben die tri-layer Kadenz zwischen Modellen, Daten und Symbolik.
 - **Data provenance:** Each dataset in `data/` carries metadata that echoes the quartet \((R, \Theta, \beta, \zeta(R))\) and the falsification counterpoint mandated by `analysis/`.
 

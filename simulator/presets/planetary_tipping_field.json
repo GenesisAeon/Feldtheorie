@@ -1,0 +1,59 @@
+{
+  "id": "planetary_tipping_field",
+  "label": "Planetare Kipppunkte",
+  "domain": "climate",
+  "featured": true,
+  "color": "#60a5fa",
+  "icon": "network",
+  "control_parameter": "Aggregierter Klimastress (ΔT, Süßwasser, Entwaldung)",
+  "order_parameter": "Kippwahrscheinlichkeit gekoppelte Felder",
+  "analysis": {
+    "result_path": "analysis/results/planetary_tipping_elements.json",
+    "theta": 1.67,
+    "theta_ci": [1.52, 1.82],
+    "beta": 4.21,
+    "beta_ci": [3.74, 4.68],
+    "logistic_r2": 0.9874,
+    "delta_aic_best_null": 33.58,
+    "delta_r2_best_null": 0.0716,
+    "best_null_model": "linear"
+  },
+  "impedance": {
+    "definition": "zeta(R) ≈ 1.62 - 0.41 · σ(beta(R-Theta))",
+    "closed": 1.62,
+    "open": 1.05,
+    "mean": 1.284
+  },
+  "simulation": {
+    "theta": 5.0,
+    "beta": 4.2,
+    "initial_R": 1.8,
+    "initial_psi": 0.05,
+    "initial_phi": 0.12,
+    "stimulus": {
+      "base": 0.22,
+      "amplitude": 0.31,
+      "frequency": 0.28,
+      "noise": 0.07,
+      "modulation": {
+        "type": "sin",
+        "amplitude": 0.18,
+        "frequency": 0.19
+      }
+    }
+  },
+  "narrative": {
+    "formal": "Aggregierter logistischer Fit: Θ=1.67 K, β=4.21, ΔAIC≈33.6 gegen linear; Impedanzskizze ζ(R)=1.62-0.41·σ dokumentiert Governance-Entspannung.",
+    "empirical": "Synthese aus TIPMIP-Notizen, Global Tipping Points 2025 und DeepResearch-Kartierung (`data/socio_ecology/planetary_tipping_elements.json`).",
+    "poetic": "Wenn AMOC, Eis und Wald zugleich atmen, senkt ζ(R) den Vorhang – ein Gaia-Chor, der kippt, sobald R die 1.67-K-Schwelle küsst."
+  },
+  "poetic_messages": [
+    "Der Nordatlantik flüstert ins Eis: sinkt ζ(R), antwortet der Wald mit Regen.",
+    "Permafrost knackt wie Laternen, wenn R die Schwelle berührt.",
+    "Ein minimaler Impuls, richtig platziert, lässt die Membran zurückfedern."
+  ],
+  "references": {
+    "dataset": "data/socio_ecology/planetary_tipping_elements.json",
+    "notes": "Siehe Docs/Kipppunkte der Teilkomponenten im Klimasystem.pdf & Docs/Diskurs Klimamodul.txt"
+  }
+}

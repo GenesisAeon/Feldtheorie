@@ -23,6 +23,7 @@ map.
 | Geophysics — subduction rupture | stress accumulation ratio | 0.7406 ± 0.0008 | 16.29 ± 0.09 | \(1.70 - 0.55\,\sigma\) dipping below 1.0 once \(R>\Theta\) | `analysis/results/subduction_rupture_threshold.json`, `data/geophysics/subduction_rupture_threshold.metadata.json` |
 | Biology — synaptic release chorus | stimulation frequency (Hz) | 12.68 ± 0.49 | 0.81 ± 0.08 | \(1.40 - 0.45\,\sigma\) | `analysis/results/synaptic_release_fit.json`, `docs/biology/synaptic_release_threshold.md` |
 | Socio-ecology — Amazon canopy resilience | remaining canopy fraction | 0.621 ± 0.004 | 14.02 ± 0.33 | \(1.80 - 0.60\,\sigma\) | `analysis/results/amazon_resilience_fit.json`, `data/socio_ecology/amazon_resilience.metadata.json` |
+| Klima — planetarer Kipppunktverbund | aggregierter Klimastress (ΔT, Süßwasser, Entwaldung) | 1.67 ± 0.15 | 4.21 ± 0.47 | \(1.62 - 0.41\,\sigma\) | `analysis/results/planetary_tipping_elements.json`, `data/socio_ecology/planetary_tipping_elements.metadata.json`, `Docs/Kipppunkte der Teilkomponenten im Klimasystem.pdf` |
 
 For each row the analysis ledger logs positive $\Delta\mathrm{AIC}$ and
 $\Delta R^2$ margins when the logistic field is compared to smooth nulls. The

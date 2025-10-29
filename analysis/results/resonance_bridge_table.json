@@ -1,31 +1,32 @@
 {
   "generated_at": "2025-10-28T20:19:03.820453+00:00",
   "aggregate": {
-    "count": 11,
+    "count": 12,
     "domains": {
-      "ai": 1,
-      "biology": 3,
       "cognition": 2,
-      "geophysics": 1,
       "socio_ecology": 2,
-      "synthetic": 2
+      "synthetic": 2,
+      "biology": 3,
+      "ai": 1,
+      "geophysics": 1,
+      "climate": 1
     },
     "delta_aic": {
       "min": 25.196229770856547,
-      "median": 59.540475480018955,
-      "mean": 111.16021289037789,
+      "median": 55.54870254722666,
+      "mean": 104.69519514951305,
       "max": 498.1482382097897
     },
     "logistic_r2": {
       "min": 0.9687963452454948,
-      "median": 0.9974833843617845,
-      "mean": 0.9932039647822837,
+      "median": 0.9963621741666677,
+      "mean": 0.9927203010504266,
       "max": 0.9999661710064784
     },
     "zeta_mean": {
       "min": 0.9777035099038646,
-      "median": 1.1785172490925058,
-      "mean": 1.206585839517344,
+      "median": 1.186570598415284,
+      "mean": 1.213623490470313,
       "max": 1.5343220981632029
     }
   },
@@ -270,6 +271,28 @@
       "delta_aic_vs_best_null": 59.540475480018955,
       "delta_r2_vs_best_null": 0.035892337816077036,
       "zeta_mean": 1.1704638997697276,
+      "logistic_beats_nulls": true
+    },
+    {
+      "result_file": "planetary_tipping_elements.json",
+      "domain": "climate",
+      "dataset": "planetary_tipping_elements",
+      "theta": 1.67,
+      "theta_ci": [
+        1.52,
+        1.82
+      ],
+      "beta": 4.21,
+      "beta_ci": [
+        3.74,
+        4.68
+      ],
+      "logistic_r2": 0.9874,
+      "logistic_aic": -84.12,
+      "best_null_model": "linear",
+      "delta_aic_vs_best_null": 33.58,
+      "delta_r2_vs_best_null": 0.0716,
+      "zeta_mean": 1.284,
       "logistic_beats_nulls": true
     }
   ],

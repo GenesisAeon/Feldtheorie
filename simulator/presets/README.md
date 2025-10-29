@@ -16,6 +16,7 @@ sich der Übergang anfühlt.
 - `cognitive_gate.json` — D1/D2-Schwellenschaltung (`analysis/results/working_memory_gate.json`).
 - `amazon_canopy.json` — Regenwald-Kipppunkt (`analysis/results/amazon_resilience_fit.json`).
 - `lenski_citplus.json` — Evolutionsmembran der LTEE (`analysis/results/lenski_citplus_fit.json`, ΔAIC≈42 gegen linear).
+- `planetary_tipping_field.json` — Klima-Metafeld (`analysis/results/planetary_tipping_elements.json`, ΔAIC≈33.6 gegen linear) koppelt AMOC-, Eisschild-, Wald- und Permafrost-Schwellen.
 
 Alle Dateien führen Formal-/Empirie-/Poetik-Felder und deklarieren geschlossene vs. offene
 Impedanz, damit das Frontend $\zeta(R)$ direkt modulieren kann.

@@ -664,6 +664,31 @@
                 "gate_mean": null,
                 "pytest_state": "pending"
             }
+        },
+        {
+            "id": "pr-draft-0028",
+            "type": "climate-bridge",
+            "created_at": "2025-10-28T15:50:00Z",
+            "summary": "Integrated planetary tipping dataset, analysis summary, doc chapter, and simulator preset into the UTF bridge.",
+            "threshold_field": {
+                "R": "climate_subfields_pending_sync",
+                "Theta": "planetary_tipping_assets_linked",
+                "beta": 4.2,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Ingest TIPMIP ensemble runs to update theta/beta bands and null comparisons.",
+                "Surface climate entry inside simulator regression tests once presets expand.",
+                "Coordinate with manuscript section 5 to keep citations aligned with Docs PDFs."
+            ],
+            "observables": {
+                "analysis_result": "analysis/results/planetary_tipping_elements.json",
+                "dataset": "data/socio_ecology/planetary_tipping_elements.json",
+                "simulator_preset": "simulator/presets/planetary_tipping_field.json",
+                "delta_aic_linear": 33.58,
+                "beta_estimate": 4.21,
+                "theta_estimate": 1.67
+            }
         }
     ]
 }
