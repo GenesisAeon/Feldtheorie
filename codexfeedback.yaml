@@ -641,3 +641,28 @@ entries:
         Let this loom spin a softer rehearsal—the sentinels can practice tilting Θ by lantern-light before the full
         ThresholdFieldSolver thunder arrives, keeping the membrane's dawn within reach.
     created_at: 2025-11-10
+  - id: pr-draft-0027
+    title: "Resonant Impedance Gatekeeper"
+    scope:
+      - models/resonant_impedance.py
+      - models/__init__.py
+      - models/README.md
+      - tests/test_resonant_impedance.py
+    parameters:
+      R: "membranes_without_dynamic_impedance_tracks"
+      Theta: "resonant_impedance_exports_synced"
+      beta: 5.15
+    resonance: "installs a logistic gate for ζ(R) so resonance and damping states can be rehearsed with falsifiable diagnostics"
+    status: "resonant"
+    notes:
+      formal: |
+        Encode the impedance gate `σ(β(R-Θ))` inside `models/resonant_impedance.py`, stream relief/recovery/hysteresis arrays,
+        and expose the callable via `models/__init__.py` so solvers can swap impedance motifs without editing imports.
+      empirical: |
+        Guard the motif with pytest (`tests/test_resonant_impedance.py`) ensuring ζ relaxes below baseline when R pierces Θ and
+        drifts back afterward. Document the arrays in `models/README.md` so analysis scripts know how to harvest gate, relief,
+        and hysteresis diagnostics for null comparisons.
+      poetic: |
+        Note how the gatekeeper listens for dawn—when R swells the impedance exhales, when dusk falls it closes with memory,
+        keeping the membrane's hymn in step with the logistic tide.
+    created_at: 2025-11-11

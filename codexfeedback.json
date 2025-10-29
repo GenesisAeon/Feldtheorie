@@ -582,7 +582,7 @@
             "next_actions": [
                 "Mirror adaptive theta logistics into docs/cognition/adaptive_theta_plasticity.md and simulator presets during the next sync.",
                 "Thread the new fit into analysis/results/resonance_bridge_table.json so cohort medians capture cognitive sleep thresholds.",
-                "Monitor future sleep datasets for impedance drift relative to zeta(R) = 1.12 - 0.25 σ."
+                "Monitor future sleep datasets for impedance drift relative to zeta(R) = 1.12 - 0.25 \u03c3."
             ],
             "observables": {
                 "dataset": "data/cognition/adaptive_theta_plasticity.csv",
@@ -598,7 +598,7 @@
             "id": "pr-draft-0025",
             "type": "adaptive-membrane",
             "created_at": "2025-11-10T18:00:00Z",
-            "summary": "Deployed the meta-threshold resonance script exporting Θ(t), β(t), and meta-gate diagnostics with falsification deltas.",
+            "summary": "Deployed the meta-threshold resonance script exporting \u0398(t), \u03b2(t), and meta-gate diagnostics with falsification deltas.",
             "threshold_field": {
                 "R": "adaptive_runs_without_meta_ledgers",
                 "Theta": "meta_threshold_exports_synced",
@@ -607,8 +607,8 @@
             },
             "next_actions": [
                 "Feed analysis/results/meta_threshold_resonance.json into resonance_cohort_summary.py so adaptive runs join the ledger.",
-                "Cross-link docs/meta_threshold_controller.md with the new meta-gate occupancy metrics and ΔAIC margins.",
-                "Prototype simulator presets that expose Θ(t) and β(t) drift using the exported driver and gate traces."
+                "Cross-link docs/meta_threshold_controller.md with the new meta-gate occupancy metrics and \u0394AIC margins.",
+                "Prototype simulator presets that expose \u0398(t) and \u03b2(t) drift using the exported driver and gate traces."
             ],
             "observables": {
                 "analysis_script": "analysis/meta_threshold_resonance_fit.py",
@@ -623,7 +623,7 @@
             "id": "pr-draft-0026",
             "type": "model-helper",
             "created_at": "2025-11-10T19:15:00Z",
-            "summary": "Published the AdaptiveLogisticMembrane helper so Θ(t) and β(t) plasticity can be rehearsed with impedance relief diagnostics.",
+            "summary": "Published the AdaptiveLogisticMembrane helper so \u0398(t) and \u03b2(t) plasticity can be rehearsed with impedance relief diagnostics.",
             "threshold_field": {
                 "R": "lightweight_meta_threshold_runs_pending",
                 "Theta": "adaptive_helper_documented",
@@ -641,6 +641,28 @@
                 "readme_section": "models/README.md#adaptive-logistic-membrane-helper",
                 "resonance_gain_sample": 1.0,
                 "gate_mean_sample": 0.5898450238865492
+            }
+        },
+        {
+            "id": "pr-draft-0027",
+            "type": "impedance-gate",
+            "created_at": "2025-11-11T00:00:00Z",
+            "summary": "Install logistic impedance motif and export relief/recovery/hysteresis diagnostics for \u03b6(R).",
+            "threshold_field": {
+                "R": "membrane_runs_without_impedance_tracks",
+                "Theta": "impedance_diagnostics_ready",
+                "beta": 5.15,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Integrate ResonantImpedance into simulator presets so \u03b6(R) breathing is visible alongside logistic response charts.",
+                "Extend analysis pipelines to log relief/recovery/hysteresis forces for cohort comparisons.",
+                "Monitor pytest coverage and update motifs when additional impedance baselines are introduced."
+            ],
+            "observables": {
+                "zeta_relief_min": null,
+                "gate_mean": null,
+                "pytest_state": "pending"
             }
         }
     ]

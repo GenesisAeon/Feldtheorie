@@ -23,6 +23,7 @@ from .membrane_solver import (
 from .adaptive_logistic_membrane import AdaptiveLogisticMembrane
 from .logistic_envelope import LogisticFieldEnvelope
 from .coupled_threshold_field import CoupledThresholdField, logistic_semantic_kernel, ramp_driver
+from .resonant_impedance import ResonantImpedance
 
 __all__ = [
     "ThresholdFieldSolver",
@@ -31,6 +32,7 @@ __all__ = [
     "AdaptiveLogisticMembrane",
     "LogisticFieldEnvelope",
     "CoupledThresholdField",
+    "ResonantImpedance",
     "logistic_semantic_kernel",
     "logistic_response",
     "smooth_impedance_profile",
