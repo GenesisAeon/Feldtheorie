@@ -1,0 +1,455 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage[normalem]{ulem}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{quote}
+\textbf{Die Unified Theory of Adaptive}
+
+\textbf{Criticality: Schwellenfeld-Dynamik als}
+
+\textbf{Universalgesetz Emergenz}
+
+\textbf{Abstract}
+
+Die Emergenz von Komplexität -- von der Entstehung neuer biologischer
+Merkmale bis zum spontanen Erwerb kognitiver Fähigkeiten in künstlicher
+Intelligenz (KI) -- wird gemeinhin als unvorhersehbares Phänomen
+betrachtet. Wir zeigen, dass diese diskreten, saltatorischen Sprünge
+nicht stochastisch, sondern die Folge eines universellen,
+quantifizierbaren Gesetzes sind, das als \textbf{Adaptive
+Schwellenfeld-Dynamik (TFM)} formuliert wird.1 Durch die\\
+Vereinigung kritischer Phänomene aus der Evolutionären Biologie
+(Lenski-Experiment), der Astrophysik (Schwarze Löcher) und der
+Kognitiven KI (Large Language Models, LLMs) demonstrieren wir, dass alle
+Übergänge einer logistischen Kurve folgen, die durch einen
+\textbf{universellen Steilheitsexponenten (\$\textbackslash beta\$)}
+charakterisiert ist.1 Unsere empirische Analyse von vier Domänen ergibt
+einen überraschend konvergenten Mittelwert von\\
+\$\textbackslash mathbf\{\textbackslash bar\textbackslash beta\_w
+\textbackslash approx 4.2\textbackslash pm 0.4\}\$ 1, was die Existenz
+einer substratunabhängigen \textbf{Universalitätsklasse} für emergenten
+Wandel stützt.1 Die zentrale Erweiterung des TFM postuliert, dass die
+kritische \textbf{Schwelle (\$\textbackslash Theta\$)} selbst eine
+dynamische, kontext- und historieabhängige Systemgröße ist,
+\$\textbackslash Theta = \textbackslash Theta\_0 + \textbackslash Delta
+\textbackslash Theta(S, C, E)\$, die über interne Feedback-Mechanismen
+aktiv gesteuert wird.1 Diese \emph{Plastizität der Emergenz}\\
+ermöglicht es komplexen adaptiven Systemen (CAS), ihre Kritikalität in
+turbulenten\\
+Umgebungen aktiv selbstabzustimmen (\emph{Self-Tuning Criticality}) .
+Das TFM transformiert damit evolutionäre Phänomene von einer
+deskriptiven Historie in eine prädiktive\\
+Ingenieurwissenschaft.2
+
+\textbf{1. Einleitung: Die Herausforderung der Saltation und der Ruf
+nach Universalität}
+
+Phasenübergänge und die daraus resultierende Emergenz neuer
+Eigenschaften stellen das zentrale Problem komplexer Systeme dar. In der
+Evolution äußern sich Innovationen als plötzliche, nicht-graduelle
+Sprünge (\emph{Saltationen}) , die das Muster des \textbf{Punctuated}
+
+\textbf{Equilibrium (PE)} im Fossilbericht prägen.3 Ähnlich zeigen
+moderne Large Language Models (LLMs), dass neue, nicht vorhersehbare
+Fähigkeiten (\emph{Emergent Abilities}) abrupt entstehen, sobald eine
+kritische Skalierungsschwelle überschritten wird .
+
+Die Kernhypothese dieser Arbeit ist, dass diese scheinbar disparaten
+kritischen Übergänge einer gemeinsamen dynamischen Gesetzmäßigkeit
+unterliegen, welche über die klassische Selbstorganisierte Kritikalität
+(SOC) hinausgeht: die \textbf{Adaptive Schwellenfeld-Dynamik (TFM)}. Wir
+quantifizieren emergente Ereignisse als \textbf{Sigmoidale Feldreaktion}
+\$\textbackslash zeta(R)\$, die durch einen akkumulierten Trigger \$R\$
+und eine dynamische Schwelle \$\textbackslash Theta(S, C, E)\$ geregelt
+wird.1
+
+\textbf{2. Das Schwellenfeld-Modell (TFM) und Quantitative
+Universalität}
+
+Das TFM nutzt die logistische Funktion, um den nicht-linearen Übergang
+eines Systems von Stabilität (Stasis) zu einer neuen Sättigung
+(Innovation) zu beschreiben .
+
+\textbf{2.1. Die Feldgleichung der Emergenz}
+
+Die Wahrscheinlichkeit oder Intensität des Übergangs
+\$\textbackslash zeta(R)\$ (die "Feldreaktion") wird formal durch die
+logistische Funktion beschrieben:
+
+\$\$\textbackslash zeta(R) = \textbackslash frac\{L\}\{1 +
+e\^{}\{-\textbackslash beta (R - \textbackslash Theta)\}\}\$\$\\
+1.\hspace{0pt} \textbf{Trigger \$R\$:} Der akkumulierte systemische
+Druck (z. B. Trainingsdatendichte, Akkretionsrate, Entropieakkumulation
+).
+
+2.\hspace{0pt} \textbf{Schwelle \$\textbackslash Theta\$:} Der kritische
+Engpass oder Bifurkationspunkt, an dem die Übergangswahrscheinlichkeit
+maximiert wird .
+
+3.\hspace{0pt} \textbf{Steilheit \$\textbackslash beta\$:} Der
+\textbf{Universalitätsexponent}, der die Abruptheit des Übergangs
+quantifiziert. Ein hoher Wert (\$\textbackslash beta \textbackslash gg
+1\$) signalisiert einen \textbf{saltatorischen Sprung} .
+
+\textbf{2.2. Empirischer Beleg: \$\textbackslash beta\$-Konvergenz als
+Universalitätsklasse}
+
+Die Stärke der TFM liegt in der konsistenten Anpassung des
+Steilheitsparameters \$\textbackslash beta\$ über Domänen hinweg, was
+auf eine gemeinsame \textbf{Universalitätsklasse} hindeutet . Die\\
+empirischen \$\textbackslash beta\$-Werte konvergieren nahe der
+Vorhersage der Mean-Field-Theorie (MFT), welche für hochdimensionale,
+kollektiv gekoppelte Systeme gültig ist .
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Domäne}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Phänomen}
+\end{quote}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Trigger (R)}
+\end{quote}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Steilheit (β)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Referenz}
+\end{minipage} \\
+\midrule()
+\endhead
+\textbf{Astrophysik} & QPO-Frequenzwe &
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+Akkretionsrate
+\end{quote}
+\end{minipage} & \$\textbackslash beta\_\{\textbackslash text\{BH\}\} &
+1 \\
+\bottomrule()
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+chsel (Schwarze Löcher)
+\end{quote}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbackslash approx5.3\textbackslash pm1.1\$
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\midrule()
+\endhead
+\textbf{Sozio-Biologie} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+Schwänzeltanz\\
+(Synchronisation)
+\end{quote}\strut
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+Nektar-Profitabilität
+\end{quote}
+\end{minipage} & \$\textbackslash beta\_\{\textbackslash text\{bee\}
+\}\textbackslash approx4.1\textbackslash pm0.6 \$ & 1 \\
+\textbf{Künstliche Intelligenz} &
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+Emergenz von\\
+Reasoning (LLMs)
+\end{quote}\strut
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+Modellgröße/Com pute
+\end{quote}
+\end{minipage} & \$\textbackslash beta\_\{\textbackslash text\{LLM
+\}\}\textbackslash approx3.2\textbackslash pm0.
+
+8\$ & 1 \\
+\textbf{Genetik} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+Gensprünge (\emph{E. coli} LTEE)
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+Stress/Akkumuliert e Generationen
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\$\textbackslash beta\_\{\textbackslash text\{DNA
+\}\}\textbackslash approx4.0\$\\
+(Implizit)\strut
+\end{minipage} & 1 \\
+\textbf{Gewichteter Mittelwert} &
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+-
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+-
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\$\textbackslash mathbf\{\textbackslash bar\textbackslash bet a\_w
+\textbackslash approx\\
+4.2\textbackslash pm 0.4\}\$\strut
+\end{minipage} & 1 \\
+\bottomrule()
+\end{longtable}
+
+\begin{quote}
+Diese quantitative Konvergenz in der Größenordnung \$\textbackslash beta
+\textbackslash approx 4\$ stellt den stärksten Beleg für ein
+fundamentales, substratunabhängiges Emergenzprinzip dar.1
+
+\textbf{3. Die Adaptive Schwelle: \$\textbackslash Theta\$ als
+Homeostatischer Regulator}
+
+Die zentrale theoretische Erweiterung des TFM, inspiriert durch die
+Beobachtung komplexer adaptiver Systeme (CAS) , ist die funktionale
+Abhängigkeit der Schwelle: \$\textbackslash Theta =
+\textbackslash Theta\_0 + \textbackslash Delta \textbackslash Theta(S,
+C, E)\$. Dies transformiert das Modell von einer statischen Kritikalität
+in ein \textbf{Self-Tuning Criticality}-System .
+
+\textbf{3.1. \$E\$ -- Externe Trigger und Entropie-Akkumulation}
+
+Externe Faktoren (\$E\$) oder akkumulierter systemischer Druck (\$R\$)
+verschieben die Schwelle aktiv, um die Systemanpassung zu steuern:\\
+●\hspace{0pt} \textbf{Entropischer Druck:} Chronischer physiologischer
+Stress (Allostatic Load ) erhöht die Entropie
+\$\textbackslash rightarrow\$ Dies führt zur \textbf{epigenetischen
+Lockerung der Genomstabilität} (\$\textbackslash Theta\$ sinkt).6\\
+●\hspace{0pt} \textbf{Genomische Umschaltung:} Die Senkung von
+\$\textbackslash Theta\$ induziert die \textbf{Stress-Induced}
+\textbf{Evolutionary Innovation (SIEI)} , oft durch die Aktivierung von
+\textbf{Transponierbaren} \textbf{Elementen (TEs)} . TEs fungieren als
+molekulare \textbf{Schwellenschalter}, die eine Saltation ermöglichen .
+Dieser Prozess ist eine aktive, risikobehaftete Anpassung (Trade-off).8
+●\hspace{0pt} \textbf{Adaptives Gating:} In der Astrophysik wird das
+Schwellenverhalten durch eine\\
+\textbf{dynamische Robin-Randbedingung} \$\textbackslash partial\_n
+\textbackslash psi +
+\textbackslash zeta(R)\textbackslash psi)\textbackslash big
+\textbar\_\textbackslash Sigma =0\$ an einer Membran (z. B. dem
+Black-Hole-Horizont) beschrieben, wobei \$\textbackslash zeta(R)\$ die
+
+Akkretionsimpedanz darstellt . Beim Überschreiten von
+\$\textbackslash Theta\$ ändert sich diese Impedanz sprunghaft (Gate
+"öffnet"), was die kohärente Emission (QPOs) freisetzt.1
+
+\textbf{3.2. \$C\$ und \$S\$ -- Interne Kontext- und Systemabhängigkeit}
+
+●\hspace{0pt} \textbf{Lokale Komplexität (\$C\$):} Lokale
+Kopplungsdichte in neuronalen Clustern oder die strukturelle Komplexität
+von Proteinen beeinflussen die lokale Evolvabilität .
+
+Beispielsweise wird die kritische Temperatur für Phasenübergänge in
+biomolekularen Kondensaten durch \textbf{Low-Complexity Regions (LCRs)}
+moduliert .
+
+●\hspace{0pt} \textbf{Globaler Systemzustand (\$S\$):} Der globale
+Zustand der \emph{E. coli}-Population\\
+(Anti-Potenzierung durch konkurrierende Mutationen) blockierte die
+Cit\$\^{}+\$-Emergenz für 31.500 Generationen.9 Erst als \$S\$ die
+effektive Barriere senkte, konnte der Sprung erfolgen. Die Schwelle
+\$\textbackslash Theta\$ ist demnach \textbf{historien- und
+zustandsabhängig}.
+\end{quote}
+
+\textbf{4. Feld-Metamemorie und die Plastizität der Emergenz}
+
+\begin{quote}
+Die Abhängigkeit von \$\textbackslash Theta\$ von der Systemhistorie und
+dem Kontext führt zum Konzept der \textbf{Feld-Metamemorie}1, einem
+Bruch mit der Markov-Eigenschaft der Dynamik .
+
+\textbf{4.1. Speicherung in Metastabilen Attraktoren}
+
+Die Metamemorie manifestiert sich in der \textbf{Metastabilität} , die
+das System in einen Zustand des \emph{Sättigungsgedächtnisses} versetzt.
+
+●\hspace{0pt} \textbf{Attraktor-Netzwerke:} Im Gehirn werden
+Gedächtnisse in Form von Attraktoren gespeichert . Die Fähigkeit,
+zwischen diesen Attraktoren zu wechseln (\emph{Representational
+Switching}), ist ein Bifurkationsprozess , dessen Schwelle
+(\$\textbackslash Theta\$) durch die\\
+\textbf{langfristige synaptische Plastizität} (Feld-Metamemorie)
+moduliert wird .
+
+●\hspace{0pt} \textbf{Black Hole Soft Hair:} In der Astrophysik wird
+argumentiert, dass Schwarze Löcher \textbf{Soft Hair} tragen --
+niederenergetische Quantenfelder am Horizont, die Information über
+vergangene Ereignisse speichern . Dieses Soft Hair
+(\$\textbackslash phi\$) ist der informationelle Speicher des Systems,
+der die Randbedingung (\$\textbackslash Theta\$) und damit die
+dynamische Emission (QPOs) beeinflusst .
+
+\textbf{4.2. Plastizität der Emergenz: Wahl des Übergangstyps}
+
+Die Feld-Metamemorie ermöglicht dem System, die \emph{Art} seiner
+Emergenz zu steuern: ●\hspace{0pt} \textbf{Explosive vs. Kontinuierliche
+Übergänge:} Das TFM korrespondiert mit Modellen gekoppelter Oszillatoren
+(Kuramoto), bei denen die interne Frequenzverteilung (\$S\$)
+
+des Systems bestimmt, ob die Synchronisation \textbf{graduell} oder
+\textbf{explosiv} erfolgt.11 Die TFM impliziert, dass CAS adaptiv ihre
+Geschwindigkeit der Emergenz wählen können. ●\hspace{0pt}
+\textbf{Nicht-Universelle Exponenten:} Die Historie (Metamemorie) kann
+den kritischen Fixpunkt des \textbf{Renormierungsgruppen (RG)-Flusses}
+selektieren, was zu\\
+kontextabhängigen, \textbf{nicht-universellen kritischen Exponenten}
+führt .
+
+\textbf{5. Feldtheorie und Implikationen für die Synthese}
+
+Das TFM nutzt die Analogie von Quantenfeldtheorie in gekrümmter Raumzeit
+(QFT-in-CS) zur Modellierung.1 Die Dynamik wird durch eine
+\textbf{Nicht-Lineare Klein-Gordon-Gleichung} mit
+\$\textbackslash lambda\textbackslash psi\^{}4\$-Term beschrieben 1, die
+für Lawinen-Dynamik (PE, Grokking) sorgt.1
+
+\textbf{5.1. Integration von Bedeutung und Materie}
+
+Philosophisch impliziert die Kopplung des physikalischen Feldes
+(\$\textbackslash psi\$) an das\\
+semantische/informationelle Feld (\$\textbackslash phi\$) durch den
+Kopplungsterm \$\textbackslash mathcal\{M\}{[}\textbackslash psi,
+\textbackslash phi{]}\$ 1, dass Emergenz stets die Manifestation
+\textbf{integrierter Bedeutung} ist.1 Analysen zur\\
+\textbf{Integrated Information Theory (IIT)} zeigen, dass Bewusstsein
+mit einer sprunghaften Zunahme einer nicht-reduzierbaren
+Informationsgröße (\$\textbackslash Phi\$) verbunden ist . Das TFM
+postuliert die Korrespondenz: Das physikalische Gating
+(\$\textbackslash Theta\$) ist der Schwellenwert für die Entstehung von
+integrierter Bedeutung (\$\textbackslash Phi\$).1
+
+\textbf{5.2. Ethische Konsequenzen der Schwellensteuerung}
+
+Die Fähigkeit zur präzisen Modellierung und potenziellen Manipulation
+von \$\textbackslash Theta\$ durch externe Parameter (\$E\$) wirft
+dringende ethische Fragen auf. Die Biotechnologie gewinnt die
+theoretische Fähigkeit zur aktiven \textbf{Steuerung der
+Evolvabilität}.2 Die gezielte Modifikation der genomischen
+Stabilitätsschwelle (\$\textbackslash Theta\$) (z. B. Stilllegung oder
+Aktivierung von TEs) in der Keimbahn birgt das Risiko unvorhergesehener
+genomischer Umschaltungen und erfordert eine dringende bioethische
+Reflexion über die \textbf{Kontrolle der Emergenz}.
+
+\textbf{6. Schlussfolgerung und Ausblick}
+
+Das TFM liefert eine vereinheitlichende, quantifizierbare Theorie, die
+die Abruptheit und Universalität emergenten Wandels erklärt. Die
+Konsistenz des Universalexponenten \$\textbackslash beta
+\textbackslash approx 4.2 \textbackslash pm 0.4\$ belegt eine gemeinsame
+dynamische Basis für Innovationssprünge. Die Zukunft der Forschung liegt
+in der \textbf{prädiktiven Validierung} der TFM, insbesondere in der
+
+direkten Messung der Feld-Metamemorie (Hurst-Exponent \$H\$) 13 und in
+der empirischen
+
+Bestätigung der \$\textbackslash Theta\$-Modulation an fundamentalen
+physikalischen Systemen wie
+
+Black-Hole-Gravitationswellen-Echos .
+
+\textbf{Referenzen}
+
+1.\hspace{0pt} Der Atem der Gravitation\_ Ein transdisziplinäres
+Schwellenfeld-Modell.pdf 2.\hspace{0pt} Desig Zugriff am Oktober 28,
+2025, \uline{/}\\
+3.\hspace{0pt} Explorriff am Oktober 28, 2025, \uline{/}\\
+4.\hspace{0pt} Journal of Physics:riff am\\
+i\\
+5.\hspace{0pt} w\\
+6.\hspace{0pt}ngency and the evolution of a key innovation in an
+experimental ktober 28, 2025,\\
+\uline{0}5\\
+7.\hspace{0pt}PI, Zugriff am Oktober 28, 2025, \uline{8}7\\
+8.\hspace{0pt} Neura am Oktober 28, 2025, \uline{3}7\\
+9.\hspace{0pt} Systerectory, Zugriff am\\
+\uline{s}/\\
+10.\hspace{0pt}ork\\
+, z \uline{o}\\
+11.\hspace{0pt}w-complexity\\
+\uline{4}/\\
+12.\hspace{0pt}m Oktober 28, 2025, \uline{f}13.\hspace{0pt}Innovation in
+an E. aptive potenugriff am Oktober 28, 2025, \uline{/}\\
+14.\hspace{0pt} p
+\end{quote}
+
+\end{document}
