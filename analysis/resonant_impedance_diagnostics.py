@@ -175,6 +175,24 @@ except Exception:  # pragma: no cover - executed only in minimal environments wi
                     total += 0.5 * (values[idx] + values[idx - 1]) * width
                 return total
 
+            gate_area = trapezoid(gate, R)
+            impedance_area = trapezoid(zeta, R)
+            relief_area = trapezoid(relief, R)
+            recovery_area = trapezoid(recovery, R)
+            hysteresis_area = trapezoid([abs(value) for value in hysteresis], R)
+            hysteresis_bias = trapezoid(hysteresis, R)
+
+            relief_recovery_balance = relief_area - recovery_area
+            relief_recovery_ratio = (
+                relief_area / recovery_area if abs(recovery_area) > 1e-12 else None
+            )
+            total_relief_recovery = relief_area + recovery_area
+            relief_recovery_symmetry = (
+                relief_recovery_balance / total_relief_recovery
+                if abs(total_relief_recovery) > 1e-12
+                else None
+            )
+
             target.update(
                 {
                     "theta": float(self.theta),
@@ -183,8 +201,15 @@ except Exception:  # pragma: no cover - executed only in minimal environments wi
                     "zeta_min": min(zeta) if zeta else self.baseline,
                     "zeta_max": max(zeta) if zeta else self.baseline,
                     "gate_mean": sum(gate) / len(gate) if gate else 0.0,
-                    "gate_area": trapezoid(gate, R),
-                    "impedance_area": trapezoid(zeta, R),
+                    "gate_area": gate_area,
+                    "impedance_area": impedance_area,
+                    "relief_area": relief_area,
+                    "recovery_area": recovery_area,
+                    "hysteresis_area": hysteresis_area,
+                    "relief_recovery_balance": relief_recovery_balance,
+                    "relief_recovery_ratio": relief_recovery_ratio,
+                    "relief_recovery_symmetry": relief_recovery_symmetry,
+                    "hysteresis_bias": hysteresis_bias,
                     "relief_peak": max(relief) if relief else 0.0,
                     "recovery_peak": max(recovery) if recovery else 0.0,
                     "hysteresis_peak": max(abs(value) for value in hysteresis) if hysteresis else 0.0,
@@ -315,15 +340,24 @@ def build_payload(
         "generated_at": datetime.now(timezone.utc).isoformat(),
     }
 
-    logistic_summary["impedance_diagnostics"] = {
-        **{key: float(value) for key, value in impedance_summary.items()},
-        "relief_mean": float(impedance_summary.get("relief_mean", 0.0)),
-        "recovery_mean": float(impedance_summary.get("recovery_mean", 0.0)),
-        "hysteresis_mean": float(impedance_summary.get("hysteresis_mean", 0.0)),
-        "relief_min": float(impedance_summary.get("relief_min", 0.0)),
-        "recovery_min": float(impedance_summary.get("recovery_min", 0.0)),
-        "hysteresis_min": float(impedance_summary.get("hysteresis_min", 0.0)),
-    }
+    def _to_float(value: object) -> object:
+        if isinstance(value, (int, float)):
+            return float(value)
+        return value
+
+    impedance_block = {key: _to_float(value) for key, value in impedance_summary.items()}
+    impedance_block.update(
+        {
+            "relief_mean": float(impedance_summary.get("relief_mean", 0.0)),
+            "recovery_mean": float(impedance_summary.get("recovery_mean", 0.0)),
+            "hysteresis_mean": float(impedance_summary.get("hysteresis_mean", 0.0)),
+            "relief_min": float(impedance_summary.get("relief_min", 0.0)),
+            "recovery_min": float(impedance_summary.get("recovery_min", 0.0)),
+            "hysteresis_min": float(impedance_summary.get("hysteresis_min", 0.0)),
+        }
+    )
+
+    logistic_summary["impedance_diagnostics"] = impedance_block
 
     logistic_summary["tri_layer"] = {
         "formal": "Logit regression of impedance gate vs. smooth nulls with relief/recovery diagnostics.",

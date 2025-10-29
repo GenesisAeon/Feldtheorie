@@ -1097,7 +1097,7 @@
     "path": null,
     "control_parameter": "synthetic logistic sweep of R",
     "order_parameter": "impedance gate occupancy \u03c3(\u03b2(R-\u0398))",
-    "generated_at": "2025-10-29T18:02:47.197430+00:00"
+    "generated_at": "2025-10-29T18:17:55.528966+00:00"
   },
   "impedance_diagnostics": {
     "theta": 0.62,
@@ -1108,6 +1108,13 @@
     "gate_mean": 0.5871961793602157,
     "gate_area": 0.8234252355786559,
     "impedance_area": 0.6136440585521097,
+    "relief_area": 0.032809818797875374,
+    "recovery_area": 0.01650985575725244,
+    "hysteresis_area": 0.00506513743445836,
+    "relief_recovery_balance": 0.016299963040622933,
+    "relief_recovery_ratio": 1.9872868231124727,
+    "relief_recovery_symmetry": 0.33049615975067725,
+    "hysteresis_bias": 0.019050737922148356,
     "relief_peak": 0.07413402479547349,
     "recovery_peak": 0.06106092581382097,
     "hysteresis_peak": 0.04340685863415584,

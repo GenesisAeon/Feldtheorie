@@ -70,6 +70,13 @@ class CohortRecord:
     beta_drift_total: Optional[float]
     gate_area: Optional[float]
     impedance_area: Optional[float]
+    relief_area: Optional[float]
+    recovery_area: Optional[float]
+    hysteresis_area: Optional[float]
+    relief_recovery_balance: Optional[float]
+    relief_recovery_ratio: Optional[float]
+    relief_recovery_symmetry: Optional[float]
+    hysteresis_bias: Optional[float]
     relief_peak: Optional[float]
     recovery_peak: Optional[float]
     hysteresis_peak: Optional[float]
@@ -275,6 +282,19 @@ def parse_result(result_path: Path) -> CohortRecord:
         beta_drift_total=beta_drift_total,
         gate_area=_safe_float(impedance_info.get("gate_area")) if isinstance(impedance_info, Mapping) else None,
         impedance_area=_safe_float(impedance_info.get("impedance_area")) if isinstance(impedance_info, Mapping) else None,
+        relief_area=_safe_float(impedance_info.get("relief_area")) if isinstance(impedance_info, Mapping) else None,
+        recovery_area=_safe_float(impedance_info.get("recovery_area")) if isinstance(impedance_info, Mapping) else None,
+        hysteresis_area=_safe_float(impedance_info.get("hysteresis_area")) if isinstance(impedance_info, Mapping) else None,
+        relief_recovery_balance=_safe_float(impedance_info.get("relief_recovery_balance"))
+        if isinstance(impedance_info, Mapping)
+        else None,
+        relief_recovery_ratio=_safe_float(impedance_info.get("relief_recovery_ratio"))
+        if isinstance(impedance_info, Mapping)
+        else None,
+        relief_recovery_symmetry=_safe_float(impedance_info.get("relief_recovery_symmetry"))
+        if isinstance(impedance_info, Mapping)
+        else None,
+        hysteresis_bias=_safe_float(impedance_info.get("hysteresis_bias")) if isinstance(impedance_info, Mapping) else None,
         relief_peak=_safe_float(impedance_info.get("relief_peak")) if isinstance(impedance_info, Mapping) else None,
         recovery_peak=_safe_float(impedance_info.get("recovery_peak")) if isinstance(impedance_info, Mapping) else None,
         hysteresis_peak=_safe_float(impedance_info.get("hysteresis_peak")) if isinstance(impedance_info, Mapping) else None,
@@ -319,6 +339,19 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
     beta_drift_totals = _flatten_sequences(record.beta_drift_total for record in records)
     gate_area_values = _flatten_sequences(record.gate_area for record in records)
     impedance_area_values = _flatten_sequences(record.impedance_area for record in records)
+    relief_area_values = _flatten_sequences(record.relief_area for record in records)
+    recovery_area_values = _flatten_sequences(record.recovery_area for record in records)
+    hysteresis_area_values = _flatten_sequences(record.hysteresis_area for record in records)
+    relief_recovery_balance_values = _flatten_sequences(
+        record.relief_recovery_balance for record in records
+    )
+    relief_recovery_ratio_values = _flatten_sequences(
+        record.relief_recovery_ratio for record in records
+    )
+    relief_recovery_symmetry_values = _flatten_sequences(
+        record.relief_recovery_symmetry for record in records
+    )
+    hysteresis_bias_values = _flatten_sequences(record.hysteresis_bias for record in records)
     relief_peak_values = _flatten_sequences(record.relief_peak for record in records)
     recovery_peak_values = _flatten_sequences(record.recovery_peak for record in records)
     hysteresis_peak_values = _flatten_sequences(record.hysteresis_peak for record in records)
@@ -395,6 +428,25 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
             "impedance_area": stats(
                 _flatten_sequences(r.impedance_area for r in domain_records)
             ),
+            "relief_area": stats(_flatten_sequences(r.relief_area for r in domain_records)),
+            "recovery_area": stats(
+                _flatten_sequences(r.recovery_area for r in domain_records)
+            ),
+            "hysteresis_area": stats(
+                _flatten_sequences(r.hysteresis_area for r in domain_records)
+            ),
+            "relief_recovery_balance": stats(
+                _flatten_sequences(r.relief_recovery_balance for r in domain_records)
+            ),
+            "relief_recovery_ratio": stats(
+                _flatten_sequences(r.relief_recovery_ratio for r in domain_records)
+            ),
+            "relief_recovery_symmetry": stats(
+                _flatten_sequences(r.relief_recovery_symmetry for r in domain_records)
+            ),
+            "hysteresis_bias": stats(
+                _flatten_sequences(r.hysteresis_bias for r in domain_records)
+            ),
             "relief_peak": stats(_flatten_sequences(r.relief_peak for r in domain_records)),
             "recovery_peak": stats(
                 _flatten_sequences(r.recovery_peak for r in domain_records)
@@ -447,6 +499,13 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
             "beta_drift_total": stats(beta_drift_totals),
             "gate_area": stats(gate_area_values),
             "impedance_area": stats(impedance_area_values),
+            "relief_area": stats(relief_area_values),
+            "recovery_area": stats(recovery_area_values),
+            "hysteresis_area": stats(hysteresis_area_values),
+            "relief_recovery_balance": stats(relief_recovery_balance_values),
+            "relief_recovery_ratio": stats(relief_recovery_ratio_values),
+            "relief_recovery_symmetry": stats(relief_recovery_symmetry_values),
+            "hysteresis_bias": stats(hysteresis_bias_values),
             "relief_peak": stats(relief_peak_values),
             "recovery_peak": stats(recovery_peak_values),
             "hysteresis_peak": stats(hysteresis_peak_values),
@@ -535,6 +594,12 @@ def render_console_report(records: Sequence[CohortRecord]) -> None:
             extras.append(f"recovery↑ {record.recovery_peak:.2f}")
         if record.hysteresis_peak is not None:
             extras.append(f"hys↑ {record.hysteresis_peak:.2f}")
+        if record.relief_recovery_ratio is not None:
+            extras.append(f"rel/rec {record.relief_recovery_ratio:.2f}")
+        if record.relief_recovery_symmetry is not None:
+            extras.append(f"sym {record.relief_recovery_symmetry:+.2f}")
+        if record.hysteresis_bias is not None:
+            extras.append(f"hysΔ {record.hysteresis_bias:+.2f}")
         extras_note = f", {'; '.join(extras)}" if extras else ""
         print(
             f"  • {Path(record.result_path).name} [{record.domain}] — ΔAIC {delta_aic}, ΔR² {delta_r2}, "
