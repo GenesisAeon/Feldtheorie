@@ -709,7 +709,7 @@
             ],
             "observables": {
                 "analysis_script": "analysis/planetary_tipping_elements_fit.py",
-                "export_field": "hypotheses[0].evidence.beta_band_mean",
+                "export_field": "hypotheses[0].evidence.beta_mean",
                 "beta_mean_reported": 3.915,
                 "beta_band_width_mean": 1.0275,
                 "delta_aic_linear": 33.58
@@ -780,7 +780,7 @@
             "next_actions": [
                 "Prototype simulator/presets/resonant_impedance_gate.json so relief and recovery sliders animate alongside σ(β(R-Θ)).",
                 "Compare the new relief_peak/recovery_peak statistics against existing membrane results inside analysis/results/resonance_cohort_summary.json to flag outliers.",
-                "Extend docs and governance notes with guidance on how impedance hysteresis should inform falsification campaigns." 
+                "Extend docs and governance notes with guidance on how impedance hysteresis should inform falsification campaigns."
             ],
             "observables": {
                 "analysis_script": "analysis/resonant_impedance_diagnostics.py",
@@ -792,6 +792,31 @@
                 "relief_recovery_ratio": 1.9872868231124727,
                 "relief_recovery_symmetry": 0.33049615975067725,
                 "hysteresis_bias": 0.019050737922148356
+            }
+        },
+        {
+            "id": "pr-draft-0033",
+            "type": "analysis-telemetry",
+            "created_at": "2025-11-13T08:30:00Z",
+            "summary": "Stamped the planetary tipping export with an explicit β_mean field and UTC timestamp while adding a regression test sentinel.",
+            "threshold_field": {
+                "R": "logistic_exports_without_temporal_resonance_guards",
+                "Theta": "beta_signal_and_timestamp_labels_synchronised",
+                "beta": 4.3,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Echo the timestamp-aware export in Docs/bridge updates so narrative tables cite rerun dates.",
+                "Update simulator ingest scripts to read aggregate.beta_mean for steepness comparisons.",
+                "Monitor future reruns to ensure generated_at drifts whenever datasets refresh."
+            ],
+            "observables": {
+                "analysis_script": "analysis/planetary_tipping_elements_fit.py",
+                "analysis_result": "analysis/results/planetary_tipping_elements.json",
+                "generated_at": "2025-10-29T18:39:22Z",
+                "beta_mean": 3.915,
+                "beta_band_width_mean": 1.0275,
+                "regression_test": "tests/test_planetary_tipping_summary.py"
             }
         }
     ]

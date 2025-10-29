@@ -461,7 +461,7 @@ Die Gaia-Membran erhält eine Stimme: Gesprächsfragmente aus `Docs/Diskurs Klim
 - **Membrane Note**: $\zeta(R)$ sinkt, wenn semantische Drift erkannt wird, und entspannt sich erst, wenn Reports wieder präzise zwischen Signal und Unsicherheit unterscheiden.
 
 ### Formal Thread
-Der Fix weist `hypotheses[0].evidence.beta_band_mean` jetzt den Mittelwert der β-Schätzer (μ≈3.92) zu und ergänzt `beta_band_width_mean` für die gemittelte Konfidenzbandbreite. Downstream-Systeme können so universelle Steilheit testen, ohne Präzisionsmaß und Signal zu verwechseln.
+Der Fix weist `hypotheses[0].evidence.beta_mean` jetzt den Mittelwert der β-Schätzer (μ≈3.92) zu und ergänzt `beta_band_width_mean` für die gemittelte Konfidenzbandbreite. Downstream-Systeme können so universelle Steilheit testen, ohne Präzisionsmaß und Signal zu verwechseln.
 
 ### Empirical Thread
 `python analysis/planetary_tipping_elements_fit.py` regeneriert `analysis/results/planetary_tipping_elements.json` mit den korrigierten Kennzahlen. ΔAIC bleibt bei ≈33.6 gegen linear; die neue Bandbreite (≈1.03) dokumentiert weiterhin Unsicherheit, jetzt jedoch klar bezeichnet.
@@ -513,3 +513,18 @@ Das neue JSON meldet $\zeta_{\text{mean}} \approx 0.41$, Relief-Peak $0.074$, Re
 
 ### Poetic Thread
 Die Impedanzwächterin atmet hörbar: sie öffnet sich, wenn der Sweep das Licht berührt, zieht sich zurück, wenn Stille einkehrt, und lässt eine leise Hysterese zurück – ein Nachglimmen, das die Brücke mahnt, auf den Atem der Membran zu achten.
+
+## Entry pr-draft-0033 — Timestamped β-Chorus Sentinel
+- **Order Parameter**: $R$ zählt Exportläufe, denen noch eine eindeutige Steilheitslaterne und Zeitmarke fehlten.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald `analysis/planetary_tipping_elements_fit.py` den Mittelwert $μ_β$ explizit benennt und den UTC-Atem protokolliert.
+- **Steepness**: $\beta = 4.3$ hält die Korrektur scharf genug, damit jede neue Ausspielung sofort auffällt.
+- **Membrane Note**: Die Laterne koppelt $μ_β$ und den Zeitstempel – sobald beides singt, entspannt sich $\zeta(R)$ und die Brücke weiß, wann der Chor erklang.
+
+### Formal Thread
+`compile_summary` akzeptiert jetzt einen optionalen `generated_at`-Wert, setzt ihn standardmäßig auf die aktuelle UTC-Zeit und benennt das Exportfeld in `beta_mean` um. `tests/test_planetary_tipping_summary.py` prüft, dass Hypothesen und Aggregat denselben Wert tragen.
+
+### Empirical Thread
+Das regenerierte JSON (`analysis/results/planetary_tipping_elements.json`) notiert `beta_mean ≈ 3.915`, `beta_band_width_mean ≈ 1.03` und den Zeitstempel `2025-10-29T18:39:22Z`. Downstream-Pipelines können dadurch Run-to-Run-Differenzen sauber verfolgen.
+
+### Poetic Thread
+Die Gaia-Membran führt jetzt Tagebuch: Steilheit und Zeit wandern Hand in Hand, ein doppelter Herzschlag, der erzählt, wann der Schwellenchor wirklich erwachte.
