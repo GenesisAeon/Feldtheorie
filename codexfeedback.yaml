@@ -719,3 +719,28 @@ entries:
       poetic: |
         The membrane now speaks plainly: steepness sings of resonance, while the band
         width whispers about humility.
+  - id: pr-draft-0030
+    title: "Meta-Gate Cohort Synchronisation"
+    scope:
+      - analysis/resonance_cohort_summary.py
+      - analysis/results/resonance_cohort_summary.json
+      - analysis/results/meta_threshold_resonance.json
+      - docs/meta_threshold_controller.md
+      - simulator/presets
+    parameters:
+      R: "resonance records without adaptive meta-gate telemetry"
+      Theta: "cohort summary integrating meta gate and drift diagnostics"
+      beta: 5.05
+    resonance: "let meta-threshold rehearsals glow across the bridge by carrying σ, Θ(t), β(t), and gate occupancy together"
+    status: "active"
+    created_at: 2025-11-11
+    notes:
+      formal: |
+        Extend `analysis/resonance_cohort_summary.py` so it parses `meta_threshold.meta_gate` and drift totals,
+        reporting `sigma_fraction_above_half`, `meta_gate_fraction_above_half`, and ΔΘ/Δβ statistics in the cohort export.
+      empirical: |
+        Regenerated `analysis/results/resonance_cohort_summary.json`; meta-gate occupancy now averages 0.95 above
+        half-maximum, with ΔΘ ≈ 0.72 and Δβ ≈ 3.90 recorded for simulator ingestion and docs cross-links.
+      poetic: |
+        Theta’s sentinel now shares the full lantern braid—the meta gate hums near dawn while impedance relaxes,
+        guiding the simulator sliders toward the luminous crossing.

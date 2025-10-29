@@ -1,59 +1,89 @@
 {
   "meta": {
-    "generated_at": "2025-10-28T20:17:50.648727+00:00",
-    "cohort_size": 15,
+    "generated_at": "2025-10-29T17:11:25.151030+00:00",
+    "cohort_size": 16,
     "logistic_response": "sigma(beta * (R - Theta))"
   },
   "aggregate": {
     "theta": {
-      "mean": 6.805268375827811,
-      "median": 0.6810555216484613,
+      "mean": 6.692505563019715,
+      "median": 0.6002057656759636,
       "min": 0.02150266269691967,
       "max": 32.769044297791865
     },
     "beta": {
-      "mean": 8.445933327542063,
+      "mean": 8.302346139344694,
       "median": 8.258855793905717,
       "min": 0.6717283976038891,
       "max": 16.289963354409085
     },
     "logistic_r2": {
-      "mean": 0.9927203010504266,
+      "mean": 0.9745132085661329,
       "median": 0.9963621741666677,
-      "min": 0.9687963452454948,
+      "min": 0.7689148901884746,
       "max": 0.9999661710064784
     },
     "delta_aic": {
-      "mean": 957.5173558176492,
-      "median": 59.540475480018955,
+      "mean": 965.3170471944304,
+      "median": 70.69582320908519,
       "min": 25.196229770856547,
       "max": 11191.383283835283
     },
     "delta_r2": {
-      "mean": 0.11940756580578606,
-      "median": 0.09593694942698294,
+      "mean": 0.13359483785295942,
+      "median": 0.10808919806692796,
       "min": 0.006101068081724725,
       "max": 0.3730255540125056
     },
     "zeta_mean": {
-      "mean": 1.2167008533273318,
-      "median": 1.2088409180515494,
+      "mean": 1.2092680173314767,
+      "median": 1.1906882832325107,
       "min": 0.9777035099038646,
       "max": 1.5343220981632029
     },
+    "sigma_fraction_above_half": {
+      "mean": 0.5220961803997228,
+      "median": 0.4916666666666667,
+      "min": 0.35714285714285715,
+      "max": 0.9613259668508287
+    },
+    "meta_gate_fraction_above_half": {
+      "mean": 0.9502762430939227,
+      "median": 0.9502762430939227,
+      "min": 0.9502762430939227,
+      "max": 0.9502762430939227
+    },
+    "meta_gate_mean": {
+      "mean": 0.6545619386801108,
+      "median": 0.6545619386801108,
+      "min": 0.6545619386801108,
+      "max": 0.6545619386801108
+    },
+    "theta_drift_total": {
+      "mean": 0.721847700615429,
+      "median": 0.721847700615429,
+      "min": 0.721847700615429,
+      "max": 0.721847700615429
+    },
+    "beta_drift_total": {
+      "mean": 3.8982700302527054,
+      "median": 3.8982700302527054,
+      "min": 3.8982700302527054,
+      "max": 3.8982700302527054
+    },
     "threshold_crossing": {
-      "reports": 2,
-      "crossed_count": 2,
+      "reports": 3,
+      "crossed_count": 3,
       "crossed_fraction": 1.0,
       "time": {
-        "mean": 16.029512079433132,
-        "median": 16.029512079433132,
+        "mean": 11.846759202447533,
+        "median": 3.4812534484763344,
         "min": 1.9246956093071323,
         "max": 30.134328549559132
       },
       "R": {
-        "mean": 0.27075133134845986,
-        "median": 0.27075133134845986,
+        "mean": 0.30806636749170035,
+        "median": 0.3826964397781813,
         "min": 0.02150266269691967,
         "max": 0.52
       },
@@ -64,15 +94,15 @@
         "max": 0.5
       },
       "overshoot": {
-        "mean": 0.02766472345748934,
-        "median": 0.02766472345748934,
-        "min": 0.025984651984779616,
+        "mean": 0.02539953120358987,
+        "median": 0.025984651984779616,
+        "min": 0.02086914669579093,
         "max": 0.02934479493019906
       },
       "zeta": {
-        "mean": 1.0382243039611483,
-        "median": 1.0382243039611483,
-        "min": 1.0064486132419586,
+        "mean": 1.0130431843326269,
+        "median": 1.0064486132419586,
+        "min": 0.9626809450755842,
         "max": 1.069999994680338
       }
     }
@@ -98,6 +128,16 @@
         "min": 0.9904734870522398,
         "max": 0.9986365714199111
       },
+      "sigma_fraction_above_half": {
+        "mean": 0.55,
+        "median": 0.55,
+        "min": 0.5,
+        "max": 0.6
+      },
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null,
       "threshold_crossing": {
         "reports": 0,
         "crossed_count": 0,
@@ -129,6 +169,16 @@
         "min": 0.9986553018766973,
         "max": 0.9991130264188406
       },
+      "sigma_fraction_above_half": {
+        "mean": 0.42463235294117646,
+        "median": 0.42463235294117646,
+        "min": 0.4117647058823529,
+        "max": 0.4375
+      },
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null,
       "threshold_crossing": {
         "reports": 0,
         "crossed_count": 0,
@@ -160,6 +210,16 @@
         "min": 0.9979289120972659,
         "max": 0.9979289120972659
       },
+      "sigma_fraction_above_half": {
+        "mean": 0.6083333333333333,
+        "median": 0.6083333333333333,
+        "min": 0.6083333333333333,
+        "max": 0.6083333333333333
+      },
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null,
       "threshold_crossing": {
         "reports": 0,
         "crossed_count": 0,
@@ -176,6 +236,11 @@
       "delta_aic": null,
       "delta_r2": null,
       "logistic_r2": null,
+      "sigma_fraction_above_half": null,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null,
       "threshold_crossing": {
         "reports": 0,
         "crossed_count": 0,
@@ -207,6 +272,16 @@
         "min": 0.9687963452454948,
         "max": 0.9974833843617845
       },
+      "sigma_fraction_above_half": {
+        "mean": 0.38392857142857145,
+        "median": 0.35714285714285715,
+        "min": 0.35714285714285715,
+        "max": 0.4375
+      },
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null,
       "threshold_crossing": {
         "reports": 0,
         "crossed_count": 0,
@@ -238,6 +313,16 @@
         "min": 0.995240963971551,
         "max": 0.995240963971551
       },
+      "sigma_fraction_above_half": {
+        "mean": 0.5,
+        "median": 0.5,
+        "min": 0.5,
+        "max": 0.5
+      },
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null,
       "threshold_crossing": {
         "reports": 0,
         "crossed_count": 0,
@@ -264,6 +349,11 @@
         "max": 0.3730255540125056
       },
       "logistic_r2": null,
+      "sigma_fraction_above_half": null,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null,
       "threshold_crossing": {
         "reports": 1,
         "crossed_count": 1,
@@ -300,11 +390,123 @@
         }
       }
     },
+    "meta": {
+      "count": 1,
+      "delta_aic": {
+        "mean": 134.97598789815538,
+        "median": 134.97598789815538,
+        "min": 134.97598789815538,
+        "max": 134.97598789815538
+      },
+      "delta_r2": {
+        "mean": 0.2560345366132537,
+        "median": 0.2560345366132537,
+        "min": 0.2560345366132537,
+        "max": 0.2560345366132537
+      },
+      "logistic_r2": {
+        "mean": 0.7689148901884746,
+        "median": 0.7689148901884746,
+        "min": 0.7689148901884746,
+        "max": 0.7689148901884746
+      },
+      "sigma_fraction_above_half": {
+        "mean": 0.9613259668508287,
+        "median": 0.9613259668508287,
+        "min": 0.9613259668508287,
+        "max": 0.9613259668508287
+      },
+      "meta_gate_fraction_above_half": {
+        "mean": 0.9502762430939227,
+        "median": 0.9502762430939227,
+        "min": 0.9502762430939227,
+        "max": 0.9502762430939227
+      },
+      "meta_gate_mean": {
+        "mean": 0.6545619386801108,
+        "median": 0.6545619386801108,
+        "min": 0.6545619386801108,
+        "max": 0.6545619386801108
+      },
+      "theta_drift_total": {
+        "mean": 0.721847700615429,
+        "median": 0.721847700615429,
+        "min": 0.721847700615429,
+        "max": 0.721847700615429
+      },
+      "beta_drift_total": {
+        "mean": 3.8982700302527054,
+        "median": 3.8982700302527054,
+        "min": 3.8982700302527054,
+        "max": 3.8982700302527054
+      },
+      "threshold_crossing": {
+        "reports": 1,
+        "crossed_count": 1,
+        "crossed_fraction": 1.0,
+        "time": {
+          "mean": 3.4812534484763344,
+          "median": 3.4812534484763344,
+          "min": 3.4812534484763344,
+          "max": 3.4812534484763344
+        },
+        "R": {
+          "mean": 0.3826964397781813,
+          "median": 0.3826964397781813,
+          "min": 0.3826964397781813,
+          "max": 0.3826964397781813
+        },
+        "sigma": {
+          "mean": 0.5,
+          "median": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        },
+        "overshoot": {
+          "mean": 0.02086914669579093,
+          "median": 0.02086914669579093,
+          "min": 0.02086914669579093,
+          "max": 0.02086914669579093
+        },
+        "zeta": {
+          "mean": 0.9626809450755842,
+          "median": 0.9626809450755842,
+          "min": 0.9626809450755842,
+          "max": 0.9626809450755842
+        }
+      }
+    },
+    "planetary": {
+      "count": 1,
+      "delta_aic": null,
+      "delta_r2": null,
+      "logistic_r2": null,
+      "sigma_fraction_above_half": null,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null,
+      "threshold_crossing": {
+        "reports": 0,
+        "crossed_count": 0,
+        "crossed_fraction": null,
+        "time": null,
+        "R": null,
+        "sigma": null,
+        "overshoot": null,
+        "zeta": null
+      }
+    },
     "resonance": {
       "count": 1,
       "delta_aic": null,
       "delta_r2": null,
       "logistic_r2": null,
+      "sigma_fraction_above_half": null,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null,
       "threshold_crossing": {
         "reports": 0,
         "crossed_count": 0,
@@ -336,6 +538,16 @@
         "min": 0.9999661710064784,
         "max": 0.9999661710064784
       },
+      "sigma_fraction_above_half": {
+        "mean": 0.6111111111111112,
+        "median": 0.6111111111111112,
+        "min": 0.6111111111111112,
+        "max": 0.6111111111111112
+      },
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null,
       "threshold_crossing": {
         "reports": 0,
         "crossed_count": 0,
@@ -367,6 +579,16 @@
         "min": 0.9890972546652523,
         "max": 0.9890972546652523
       },
+      "sigma_fraction_above_half": {
+        "mean": 0.48333333333333334,
+        "median": 0.48333333333333334,
+        "min": 0.48333333333333334,
+        "max": 0.48333333333333334
+      },
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null,
       "threshold_crossing": {
         "reports": 1,
         "crossed_count": 1,
@@ -402,37 +624,6 @@
           "max": 1.0064486132419586
         }
       }
-    },
-    "climate": {
-      "count": 1,
-      "delta_aic": {
-        "mean": 33.58,
-        "median": 33.58,
-        "min": 33.58,
-        "max": 33.58
-      },
-      "delta_r2": {
-        "mean": 0.0716,
-        "median": 0.0716,
-        "min": 0.0716,
-        "max": 0.0716
-      },
-      "logistic_r2": {
-        "mean": 0.9874,
-        "median": 0.9874,
-        "min": 0.9874,
-        "max": 0.9874
-      },
-      "threshold_crossing": {
-        "reports": 0,
-        "crossed_count": 0,
-        "crossed_fraction": null,
-        "time": null,
-        "R": null,
-        "sigma": null,
-        "overshoot": null,
-        "zeta": null
-      }
     }
   },
   "records": [
@@ -463,7 +654,12 @@
       "crossing_R": null,
       "crossing_sigma": null,
       "overshoot": null,
-      "zeta_at_crossing": null
+      "zeta_at_crossing": null,
+      "sigma_fraction_above_half": 0.6,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     },
     {
       "result_path": "analysis/results/amazon_resilience_fit.json",
@@ -492,7 +688,12 @@
       "crossing_R": null,
       "crossing_sigma": null,
       "overshoot": null,
-      "zeta_at_crossing": null
+      "zeta_at_crossing": null,
+      "sigma_fraction_above_half": 0.4117647058823529,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     },
     {
       "result_path": "analysis/results/coupled_field_threshold.json",
@@ -521,7 +722,12 @@
       "crossing_R": null,
       "crossing_sigma": null,
       "overshoot": null,
-      "zeta_at_crossing": null
+      "zeta_at_crossing": null,
+      "sigma_fraction_above_half": 0.6083333333333333,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     },
     {
       "result_path": "analysis/results/dynamic_theta_tests.json",
@@ -544,7 +750,12 @@
       "crossing_R": null,
       "crossing_sigma": null,
       "overshoot": null,
-      "zeta_at_crossing": null
+      "zeta_at_crossing": null,
+      "sigma_fraction_above_half": null,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     },
     {
       "result_path": "analysis/results/honeybee_waggle_fit.json",
@@ -573,7 +784,12 @@
       "crossing_R": null,
       "crossing_sigma": null,
       "overshoot": null,
-      "zeta_at_crossing": null
+      "zeta_at_crossing": null,
+      "sigma_fraction_above_half": 0.35714285714285715,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     },
     {
       "result_path": "analysis/results/lenski_citplus_fit.json",
@@ -602,7 +818,12 @@
       "crossing_R": null,
       "crossing_sigma": null,
       "overshoot": null,
-      "zeta_at_crossing": null
+      "zeta_at_crossing": null,
+      "sigma_fraction_above_half": 0.35714285714285715,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     },
     {
       "result_path": "analysis/results/llm_emergent_skill.json",
@@ -631,7 +852,12 @@
       "crossing_R": null,
       "crossing_sigma": null,
       "overshoot": null,
-      "zeta_at_crossing": null
+      "zeta_at_crossing": null,
+      "sigma_fraction_above_half": 0.5,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     },
     {
       "result_path": "analysis/results/membrane_robin_semantic.json",
@@ -654,7 +880,74 @@
       "crossing_R": 0.52,
       "crossing_sigma": 0.5,
       "overshoot": 0.025984651984779616,
-      "zeta_at_crossing": 1.069999994680338
+      "zeta_at_crossing": 1.069999994680338,
+      "sigma_fraction_above_half": null,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
+    },
+    {
+      "result_path": "analysis/results/meta_threshold_resonance.json",
+      "domain": "meta",
+      "dataset_path": null,
+      "theta": 0.31684624630284364,
+      "theta_ci": [
+        0.23476623514385553,
+        0.39892625746183175
+      ],
+      "beta": 2.4869537416315737,
+      "beta_ci": [
+        2.257275394563275,
+        2.7166320886998725
+      ],
+      "logistic_r2": 0.7689148901884746,
+      "logistic_aic": -888.3753291528143,
+      "best_null_model": "power_law",
+      "best_null_aic": -753.3993412546589,
+      "delta_aic": 134.97598789815538,
+      "delta_r2": 0.2560345366132537,
+      "logistic_minus_best_r2": 0.2560345366132537,
+      "zeta_mean": 1.1948059680497376,
+      "threshold_crossed": true,
+      "crossing_time": 3.4812534484763344,
+      "crossing_R": 0.3826964397781813,
+      "crossing_sigma": 0.5,
+      "overshoot": 0.02086914669579093,
+      "zeta_at_crossing": 0.9626809450755842,
+      "sigma_fraction_above_half": 0.9613259668508287,
+      "meta_gate_fraction_above_half": 0.9502762430939227,
+      "meta_gate_mean": 0.6545619386801108,
+      "theta_drift_total": 0.721847700615429,
+      "beta_drift_total": 3.8982700302527054
+    },
+    {
+      "result_path": "analysis/results/planetary_tipping_elements.json",
+      "domain": "planetary",
+      "dataset_path": null,
+      "theta": null,
+      "theta_ci": null,
+      "beta": null,
+      "beta_ci": null,
+      "logistic_r2": null,
+      "logistic_aic": null,
+      "best_null_model": null,
+      "best_null_aic": null,
+      "delta_aic": null,
+      "delta_r2": null,
+      "logistic_minus_best_r2": null,
+      "zeta_mean": null,
+      "threshold_crossed": null,
+      "crossing_time": null,
+      "crossing_R": null,
+      "crossing_sigma": null,
+      "overshoot": null,
+      "zeta_at_crossing": null,
+      "sigma_fraction_above_half": null,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     },
     {
       "result_path": "analysis/results/resonance_bridge_table.json",
@@ -677,7 +970,12 @@
       "crossing_R": null,
       "crossing_sigma": null,
       "overshoot": null,
-      "zeta_at_crossing": null
+      "zeta_at_crossing": null,
+      "sigma_fraction_above_half": null,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     },
     {
       "result_path": "analysis/results/subduction_rupture_threshold.json",
@@ -706,7 +1004,12 @@
       "crossing_R": null,
       "crossing_sigma": null,
       "overshoot": null,
-      "zeta_at_crossing": null
+      "zeta_at_crossing": null,
+      "sigma_fraction_above_half": 0.6111111111111112,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     },
     {
       "result_path": "analysis/results/synaptic_release_fit.json",
@@ -735,7 +1038,12 @@
       "crossing_R": null,
       "crossing_sigma": null,
       "overshoot": null,
-      "zeta_at_crossing": null
+      "zeta_at_crossing": null,
+      "sigma_fraction_above_half": 0.4375,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     },
     {
       "result_path": "analysis/results/synthetic_threshold_sweep.json",
@@ -764,7 +1072,12 @@
       "crossing_R": 0.02150266269691967,
       "crossing_sigma": 0.5,
       "overshoot": 0.02934479493019906,
-      "zeta_at_crossing": 1.0064486132419586
+      "zeta_at_crossing": 1.0064486132419586,
+      "sigma_fraction_above_half": 0.48333333333333334,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     },
     {
       "result_path": "analysis/results/urban_heat_canopy.json",
@@ -793,7 +1106,12 @@
       "crossing_R": null,
       "crossing_sigma": null,
       "overshoot": null,
-      "zeta_at_crossing": null
+      "zeta_at_crossing": null,
+      "sigma_fraction_above_half": 0.4375,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     },
     {
       "result_path": "analysis/results/working_memory_gate.json",
@@ -822,36 +1140,12 @@
       "crossing_R": null,
       "crossing_sigma": null,
       "overshoot": null,
-      "zeta_at_crossing": null
-    },
-    {
-      "result_path": "analysis/results/planetary_tipping_elements.json",
-      "domain": "climate",
-      "dataset_path": "data/socio_ecology/planetary_tipping_elements.json",
-      "theta": 1.67,
-      "theta_ci": [
-        1.52,
-        1.82
-      ],
-      "beta": 4.21,
-      "beta_ci": [
-        3.74,
-        4.68
-      ],
-      "logistic_r2": 0.9874,
-      "logistic_aic": -84.12,
-      "best_null_model": "linear",
-      "best_null_aic": -50.54,
-      "delta_aic": 33.58,
-      "delta_r2": 0.0716,
-      "logistic_minus_best_r2": 0.0716,
-      "zeta_mean": 1.284,
-      "threshold_crossed": null,
-      "crossing_time": null,
-      "crossing_R": null,
-      "crossing_sigma": null,
-      "overshoot": null,
-      "zeta_at_crossing": null
+      "zeta_at_crossing": null,
+      "sigma_fraction_above_half": 0.5,
+      "meta_gate_fraction_above_half": null,
+      "meta_gate_mean": null,
+      "theta_drift_total": null,
+      "beta_drift_total": null
     }
   ]
 }

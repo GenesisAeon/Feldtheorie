@@ -63,6 +63,11 @@ class CohortRecord:
     crossing_sigma: Optional[float]
     overshoot: Optional[float]
     zeta_at_crossing: Optional[float]
+    sigma_fraction_above_half: Optional[float]
+    meta_gate_fraction_above_half: Optional[float]
+    meta_gate_mean: Optional[float]
+    theta_drift_total: Optional[float]
+    beta_drift_total: Optional[float]
 
     def to_dict(self) -> Dict[str, Any]:
         """Return a JSON-serialisable representation."""
@@ -124,11 +129,22 @@ def parse_result(result_path: Path) -> CohortRecord:
     theta_info = payload.get("theta_estimate") if isinstance(payload.get("theta_estimate"), Mapping) else {}
     beta_info = payload.get("beta_estimate") if isinstance(payload.get("beta_estimate"), Mapping) else {}
     logistic_info = payload.get("logistic_model") if isinstance(payload.get("logistic_model"), Mapping) else {}
+    logistic_fit = payload.get("logistic_fit") if isinstance(payload.get("logistic_fit"), Mapping) else {}
+    meta_threshold = payload.get("meta_threshold") if isinstance(payload.get("meta_threshold"), Mapping) else {}
     null_models = payload.get("null_models") if isinstance(payload.get("null_models"), Mapping) else {}
     falsification = payload.get("falsification") if isinstance(payload.get("falsification"), Mapping) else {}
     comparisons = falsification.get("comparisons") if isinstance(falsification.get("comparisons"), Mapping) else {}
     membrane_info = payload.get("membrane") if isinstance(payload.get("membrane"), Mapping) else {}
     crossing_info = payload.get("threshold_crossing") if isinstance(payload.get("threshold_crossing"), Mapping) else {}
+    meta_gate_payload = payload.get("meta_gate")
+    if isinstance(meta_gate_payload, Mapping):
+        meta_gate_info: Mapping[str, Any] = meta_gate_payload
+    elif isinstance(logistic_fit, Mapping) and isinstance(logistic_fit.get("meta_gate"), Mapping):
+        meta_gate_info = logistic_fit["meta_gate"]  # type: ignore[assignment]
+    elif isinstance(meta_threshold, Mapping) and isinstance(meta_threshold.get("meta_gate"), Mapping):
+        meta_gate_info = meta_threshold["meta_gate"]  # type: ignore[assignment]
+    else:
+        meta_gate_info = {}
 
     best_null_model: Optional[str] = None
     best_delta_aic: Optional[float] = None
@@ -165,6 +181,41 @@ def parse_result(result_path: Path) -> CohortRecord:
         elif crossed_value in (0, 1):
             threshold_crossed = bool(crossed_value)
 
+    def _fraction_above_half(series: Any) -> Optional[float]:
+        if not isinstance(series, Sequence) or isinstance(series, (str, bytes)):
+            return None
+        values = []
+        for item in series:
+            numeric = _safe_float(item)
+            if numeric is None or not math.isfinite(numeric):
+                continue
+            values.append(numeric)
+        if not values:
+            return None
+        count = sum(1 for value in values if value >= 0.5)
+        return count / len(values)
+
+    sigma_fraction_above_half = _safe_float(logistic_fit.get("fraction_above_half")) if isinstance(logistic_fit, Mapping) else None
+    if sigma_fraction_above_half is None:
+        sigma_fraction_above_half = _fraction_above_half(logistic_fit.get("sigma_hat")) if isinstance(logistic_fit, Mapping) else None
+
+    theta_drift_total = _safe_float(logistic_fit.get("theta_drift_total")) if isinstance(logistic_fit, Mapping) else None
+    beta_drift_total = _safe_float(logistic_fit.get("beta_drift_total")) if isinstance(logistic_fit, Mapping) else None
+    if theta_drift_total is None and isinstance(meta_threshold, Mapping):
+        theta_drift_total = _safe_float(meta_threshold.get("theta_drift_total"))
+    if beta_drift_total is None and isinstance(meta_threshold, Mapping):
+        beta_drift_total = _safe_float(meta_threshold.get("beta_drift_total"))
+
+    meta_gate_fraction_above_half = _safe_float(meta_gate_info.get("fraction_above_half")) if isinstance(meta_gate_info, Mapping) else None
+    if meta_gate_fraction_above_half is None:
+        meta_gate_fraction_above_half = _fraction_above_half(meta_gate_info.get("series")) if isinstance(meta_gate_info, Mapping) else None
+
+    meta_gate_mean = None
+    if isinstance(meta_gate_info, Mapping):
+        stats_block = meta_gate_info.get("stats")
+        if isinstance(stats_block, Mapping):
+            meta_gate_mean = _safe_float(stats_block.get("mean"))
+
     try:
         relative_path = result_path.relative_to(Path.cwd())
     except ValueError:
@@ -192,6 +243,11 @@ def parse_result(result_path: Path) -> CohortRecord:
         crossing_sigma=_safe_float(crossing_info.get("crossing_sigma")) if isinstance(crossing_info, Mapping) else None,
         overshoot=_safe_float(crossing_info.get("overshoot")) if isinstance(crossing_info, Mapping) else None,
         zeta_at_crossing=_safe_float(crossing_info.get("zeta_at_crossing")) if isinstance(crossing_info, Mapping) else None,
+        sigma_fraction_above_half=sigma_fraction_above_half,
+        meta_gate_fraction_above_half=meta_gate_fraction_above_half,
+        meta_gate_mean=meta_gate_mean,
+        theta_drift_total=theta_drift_total,
+        beta_drift_total=beta_drift_total,
     )
 
 
@@ -218,6 +274,11 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
     delta_aic_values = _flatten_sequences(record.delta_aic for record in records)
     delta_r2_values = _flatten_sequences(record.delta_r2 for record in records)
     zeta_mean_values = _flatten_sequences(record.zeta_mean for record in records)
+    sigma_fraction_values = _flatten_sequences(record.sigma_fraction_above_half for record in records)
+    meta_gate_fraction_values = _flatten_sequences(record.meta_gate_fraction_above_half for record in records)
+    meta_gate_mean_values = _flatten_sequences(record.meta_gate_mean for record in records)
+    theta_drift_totals = _flatten_sequences(record.theta_drift_total for record in records)
+    beta_drift_totals = _flatten_sequences(record.beta_drift_total for record in records)
 
     def stats(series: List[float]) -> Optional[Dict[str, float]]:
         if not series:
@@ -264,6 +325,21 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
             "delta_aic": stats(_flatten_sequences(r.delta_aic for r in domain_records)),
             "delta_r2": stats(_flatten_sequences(r.delta_r2 for r in domain_records)),
             "logistic_r2": stats(_flatten_sequences(r.logistic_r2 for r in domain_records)),
+            "sigma_fraction_above_half": stats(
+                _flatten_sequences(r.sigma_fraction_above_half for r in domain_records)
+            ),
+            "meta_gate_fraction_above_half": stats(
+                _flatten_sequences(r.meta_gate_fraction_above_half for r in domain_records)
+            ),
+            "meta_gate_mean": stats(
+                _flatten_sequences(r.meta_gate_mean for r in domain_records)
+            ),
+            "theta_drift_total": stats(
+                _flatten_sequences(r.theta_drift_total for r in domain_records)
+            ),
+            "beta_drift_total": stats(
+                _flatten_sequences(r.beta_drift_total for r in domain_records)
+            ),
             "threshold_crossing": crossing_stats(domain_records),
         }
 
@@ -282,6 +358,11 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
             "delta_aic": stats(delta_aic_values),
             "delta_r2": stats(delta_r2_values),
             "zeta_mean": stats(zeta_mean_values),
+            "sigma_fraction_above_half": stats(sigma_fraction_values),
+            "meta_gate_fraction_above_half": stats(meta_gate_fraction_values),
+            "meta_gate_mean": stats(meta_gate_mean_values),
+            "theta_drift_total": stats(theta_drift_totals),
+            "beta_drift_total": stats(beta_drift_totals),
             "threshold_crossing": crossing_summary,
         },
         "domains": domain_stats,
@@ -337,9 +418,24 @@ def render_console_report(records: Sequence[CohortRecord]) -> None:
             crossing_note = f"t≈{record.crossing_time:.2f}"
         else:
             crossing_note = "crossing n/a"
+        extras = []
+        if record.sigma_fraction_above_half is not None:
+            extras.append(f"σ>½ {record.sigma_fraction_above_half:.2f}")
+        if record.meta_gate_fraction_above_half is not None:
+            extras.append(f"meta>½ {record.meta_gate_fraction_above_half:.2f}")
+        drift_tokens = []
+        if record.theta_drift_total is not None:
+            drift_tokens.append(f"ΔΘ {record.theta_drift_total:.2f}")
+        if record.beta_drift_total is not None:
+            drift_tokens.append(f"Δβ {record.beta_drift_total:.2f}")
+        if drift_tokens:
+            extras.append(" ".join(drift_tokens))
+        if record.meta_gate_mean is not None:
+            extras.append(f"meta μ {record.meta_gate_mean:.2f}")
+        extras_note = f", {'; '.join(extras)}" if extras else ""
         print(
             f"  • {Path(record.result_path).name} [{record.domain}] — ΔAIC {delta_aic}, ΔR² {delta_r2}, "
-            f"logistic R² {logistic_r2}, best null {best_null}, {crossing_note}"
+            f"logistic R² {logistic_r2}, best null {best_null}, {crossing_note}{extras_note}"
         )
     print()
 
