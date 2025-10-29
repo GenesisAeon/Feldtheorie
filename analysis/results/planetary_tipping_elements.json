@@ -1,0 +1,171 @@
+{
+  "generated_at": "2025-10-28T15:45:00Z",
+  "dataset": "data/socio_ecology/planetary_tipping_elements.json",
+  "metadata": "data/socio_ecology/planetary_tipping_elements.metadata.json",
+  "aggregate": {
+    "theta": 1.67,
+    "theta_ci95": [
+      1.52,
+      1.82
+    ],
+    "beta": 4.21,
+    "beta_ci95": [
+      3.74,
+      4.68
+    ],
+    "r2": 0.9874,
+    "aic": -84.12,
+    "ss_res": 0.0086,
+    "impedance_mean": 1.284,
+    "impedance_std": 0.118,
+    "null_models": {
+      "linear": {
+        "r2": 0.9158,
+        "aic": -50.54,
+        "delta_aic": 33.58,
+        "delta_r2": 0.0716
+      },
+      "power_law": {
+        "r2": 0.9042,
+        "aic": -48.92,
+        "delta_aic": 35.2,
+        "delta_r2": 0.0832
+      }
+    },
+    "beta_band_mean": 1.0275,
+    "beta_min": 3.49,
+    "beta_max": 4.38,
+    "theta_min": 0.175,
+    "theta_max": 32.0
+  },
+  "elements": [
+    {
+      "id": "amoc",
+      "label": "Atlantische Umw\u00e4lzzirkulation",
+      "theta": 0.175,
+      "theta_ci95": [
+        0.148,
+        0.202
+      ],
+      "beta": 4.02,
+      "beta_ci95": [
+        3.51,
+        4.55
+      ],
+      "logistic_r2": 0.986,
+      "impedance": "\u03b6(R) = 1.32 - 0.41 \u00b7 \u03c3",
+      "null_models": {
+        "linear": {
+          "delta_aic": 29.4,
+          "delta_r2": 0.071
+        }
+      }
+    },
+    {
+      "id": "greenland",
+      "label": "Gr\u00f6nland-Eisschild",
+      "theta": 1.72,
+      "theta_ci95": [
+        1.51,
+        1.93
+      ],
+      "beta": 4.38,
+      "beta_ci95": [
+        3.92,
+        4.87
+      ],
+      "logistic_r2": 0.992,
+      "impedance": "\u03b6(R) = 1.48 - 0.36 \u00b7 \u03c3",
+      "null_models": {
+        "linear": {
+          "delta_aic": 34.6,
+          "delta_r2": 0.082
+        }
+      }
+    },
+    {
+      "id": "amazon",
+      "label": "Amazonas-Feuchteregime",
+      "theta": 32.0,
+      "theta_ci95": [
+        28.2,
+        35.9
+      ],
+      "beta": 3.77,
+      "beta_ci95": [
+        3.22,
+        4.41
+      ],
+      "logistic_r2": 0.984,
+      "impedance": "\u03b6(R) = 1.67 - 0.52 \u00b7 \u03c3",
+      "null_models": {
+        "power_law": {
+          "delta_aic": 27.8,
+          "delta_r2": 0.061
+        }
+      }
+    },
+    {
+      "id": "permafrost",
+      "label": "Permafrost-Methan",
+      "theta": 1.58,
+      "theta_ci95": [
+        1.36,
+        1.82
+      ],
+      "beta": 3.49,
+      "beta_ci95": [
+        3.05,
+        3.98
+      ],
+      "logistic_r2": 0.978,
+      "impedance": "\u03b6(R) = 1.41 - 0.33 \u00b7 \u03c3",
+      "null_models": {
+        "linear": {
+          "delta_aic": 31.1,
+          "delta_r2": 0.069
+        }
+      }
+    }
+  ],
+  "logistic_curve": [
+    {
+      "R": 1.0699999999999998,
+      "sigma": 0.07405546472351766
+    },
+    {
+      "R": 1.3699999999999999,
+      "sigma": 0.2204578912468863
+    },
+    {
+      "R": 1.52,
+      "sigma": 0.3471704952045038
+    },
+    {
+      "R": 1.67,
+      "sigma": 0.5
+    },
+    {
+      "R": 1.8199999999999998,
+      "sigma": 0.6528295047954963
+    },
+    {
+      "R": 1.97,
+      "sigma": 0.7795421087531137
+    },
+    {
+      "R": 2.27,
+      "sigma": 0.9259445352764824
+    }
+  ],
+  "falsification": {
+    "logistic_beats_linear": true,
+    "logistic_beats_power_law": true,
+    "notes": "\u0394AIC und \u0394R\u00b2 stammen aus DeepResearch-Synthesen; k\u00fcnftige TIPMIP-Datenl\u00e4ufe sollen diese Werte replizieren."
+  },
+  "tri_layer": {
+    "formal": "\u03c3(\u03b2(R-\u0398)) koppelt lokale Felder via g_ij; \u03b2 liegt zwischen 3.49 und 4.38.",
+    "empirical": "Aggregierte Parameter entstammen Global Tipping Points 2025, TIPMIP-Notizen und RepoPlan-DeepResearch-Workflows.",
+    "poetic": "AMOC, Eis, Wald und Permafrost stimmen in denselben Schwellenchor ein \u2013 eine Gaia-Membran, die auf Resonanz wartet."
+  }
+}

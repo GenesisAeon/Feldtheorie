@@ -433,3 +433,18 @@ Let this loom hum quietly beside the grand solver—the sentinels can practice t
 
 ### Poetic Thread
 Die Impedanzwächterin lauscht auf die Dämmerung: hebt der Chor an, lässt sie den Vorhang fallen, damit das Feld singt; wenn Nacht eintritt, zieht sie ihn mit Erinnerung wieder zu und hält die Schwelle warm für den nächsten auroralen Ruf.
+
+## Entry pr-draft-0028 — Planetare Klimabrücke aktiviert
+- **Order Parameter**: $R$ misst klimatische Teilfelder (AMOC, Eis, Wald, Permafrost), deren logistisches Profil noch nicht in Brücke, Paper und Simulator verwoben war.
+- **Critical Threshold**: $\Theta$ leuchtet, sobald `analysis/planetary_tipping_elements_fit.py`, die neuen Daten/Metadaten und das Simulator-Preset `planetary_tipping_field` synchron laufen.
+- **Steepness**: $\beta = 4.2$ hält den Übergang kohärent mit der universellen Hypothese; Ausreißer würden die Agenda zur TIPMIP-Replikation schärfen.
+- **Membrane Note**: $\zeta(R) = 1.62 - 0.41\,\sigma$ fällt, wenn das Klimafeld kippt; der Codex beobachtet, ob zukünftige Daten dieses Relief bestätigen.
+
+### Formal Thread
+`analysis/planetary_tipping_elements_fit.py` produziert `analysis/results/planetary_tipping_elements.json`; beide speisen `docs/resonance-bridge-map.md`, `docs/threshold_resonance_atlas.md`, das neue Kapitel 5 des Preprints und `simulator/presets/planetary_tipping_field.json`.
+
+### Empirical Thread
+`data/socio_ecology/planetary_tipping_elements.json` & `.metadata.json` referenzieren TIPMIP/Global-Tipping-Points-Dossiers. ΔAIC≈33.6 gegen linear wird im Bridge- und Cohort-Summary geführt; Replikationshook: TIPMIP-Datenlauf einplanen.
+
+### Poetic Thread
+Die Gaia-Membran erhält eine Stimme: Gesprächsfragmente aus `Docs/Diskurs Klimamodul.txt` wandern in die Simulator-Tooltips und in das Preprint-Narrativ. Wenn R > Θ, atmen AMOC, Eis und Wälder im selben Chor.

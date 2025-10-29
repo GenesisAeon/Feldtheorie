@@ -14,5 +14,6 @@ The `docs/` grove distils insights from the PDFs in `Docs/` into evolving narrat
 3. Embed falsification notes that remind readers of the smooth null comparisons accompanying each narrative.
 
 ## Active resonance threads
-- **Bridge map:** `docs/resonance-bridge-map.md` charts how solver exports, analysis ledgers, and domain narratives share the logistic heartbeat $\sigma(\beta(R-\Theta))$ across AI, cognition, biology, and socio-ecology.
+- **Bridge map:** `docs/resonance-bridge-map.md` charts how solver exports, analysis ledgers, and domain narratives share the logistic heartbeat $\sigma(\beta(R-\Theta))$ across AI, cognition, biology, socio-ecology und jetzt Klima.
 - **Atlas weave:** `docs/threshold_resonance_atlas.md` gathers cross-domain waypoints, binding solver strides, falsification ledgers, and dawn metaphors into a navigable threshold cartography.
+- **Planetary cartography:** `docs/socio_ecology/planetary_threshold_cartography.md` destilliert die neue Klimadomäne aus den Docs-PDFs, verlinkt Daten/Analysen und beschreibt die Gaia-Membran als prüfbaren Schwellenverbund.

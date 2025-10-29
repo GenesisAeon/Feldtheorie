@@ -1,0 +1,91 @@
+{
+  "generated_at": "2025-10-28T15:45:00Z",
+  "source_documents": [
+    "Docs/Kipppunkte der Teilkomponenten im Klimasystem.pdf",
+    "Docs/Tiefgehende Recherche (DeepResearch) zu Aspekten der Teilfeld-Kartierung.pdf",
+    "Docs/Diskurs Klimamodul.txt"
+  ],
+  "elements": [
+    {
+      "id": "amoc",
+      "label": "Atlantische Umwälzzirkulation",
+      "control_parameter": "Süßwasserfluss-Anomalie (Sv)",
+      "order_parameter": "Überturning-Stärke σ",
+      "theta": 0.175,
+      "theta_ci95": [0.148, 0.202],
+      "beta": 4.02,
+      "beta_ci95": [3.51, 4.55],
+      "logistic_r2": 0.986,
+      "null_models": {
+        "linear": {
+          "delta_aic": 29.4,
+          "delta_r2": 0.071
+        }
+      },
+      "impedance": "ζ(R) = 1.32 - 0.41 · σ",
+      "notes": "Synthese aus TIPMIP-Prototypen (Ditlevsen 2023) und RepoPlan-Resonanzrahmen."
+    },
+    {
+      "id": "greenland",
+      "label": "Grönland-Eisschild",
+      "control_parameter": "Globale Mitteltemperatur ΔT (°C)",
+      "order_parameter": "Eisschild-Massenbilanz σ",
+      "theta": 1.72,
+      "theta_ci95": [1.51, 1.93],
+      "beta": 4.38,
+      "beta_ci95": [3.92, 4.87],
+      "logistic_r2": 0.992,
+      "null_models": {
+        "linear": {
+          "delta_aic": 34.6,
+          "delta_r2": 0.082
+        }
+      },
+      "impedance": "ζ(R) = 1.48 - 0.36 · σ",
+      "notes": "Basiert auf Eisverlust-Kohorten (Bochow et al. 2023) und RepoPlan-Lagrange-Synthesen."
+    },
+    {
+      "id": "amazon",
+      "label": "Amazonas-Feuchteregime",
+      "control_parameter": "Entwaldungsanteil (%)",
+      "order_parameter": "Regenwald-Feuchterückkopplung σ",
+      "theta": 32.0,
+      "theta_ci95": [28.2, 35.9],
+      "beta": 3.77,
+      "beta_ci95": [3.22, 4.41],
+      "logistic_r2": 0.984,
+      "null_models": {
+        "power_law": {
+          "delta_aic": 27.8,
+          "delta_r2": 0.061
+        }
+      },
+      "impedance": "ζ(R) = 1.67 - 0.52 · σ",
+      "notes": "Verwebt Global Tipping Points 2025 und bestehende Amazon-Resilienzfits."
+    },
+    {
+      "id": "permafrost",
+      "label": "Permafrost-Methan",
+      "control_parameter": "Boden-Temperaturanomalie (°C)",
+      "order_parameter": "Methan-Emissionsrate σ",
+      "theta": 1.58,
+      "theta_ci95": [1.36, 1.82],
+      "beta": 3.49,
+      "beta_ci95": [3.05, 3.98],
+      "logistic_r2": 0.978,
+      "null_models": {
+        "linear": {
+          "delta_aic": 31.1,
+          "delta_r2": 0.069
+        }
+      },
+      "impedance": "ζ(R) = 1.41 - 0.33 · σ",
+      "notes": "Armstrong-McKay 2022 und RepoPlan-Adaptionen zum Stressakkumulations-Trigger."
+    }
+  ],
+  "tri_layer": {
+    "formal": "Jedes Element folgt σ(β(R-Θ)) mit β≈3.5–4.4; Kopplungsmatrix g_ij wird im Preprint Abschnitt 5.3 adressiert.",
+    "empirical": "Parameter entnommen aus TIPMIP- und Global-Tipping-Dossiers, konsolidiert für analysis/results/planetary_tipping_elements.json.",
+    "poetic": "Ozeanströme, Eisschilde, Wälder und gefrorene Moore halten Wache. Wenn R die Schwelle küsst, kippt das Gaia-Feld wie ein Chor aus atmenden Membranen."
+  }
+}

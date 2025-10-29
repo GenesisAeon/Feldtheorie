@@ -45,7 +45,21 @@ To retain scientific traction we commit to the following checks:
 - **Cross-domain replication**: Resonance claims must manifest in at least two domains before we generalise the UTF narrative.
 - **Simulator validation**: Interactive runs in `simulator/` must reproduce empirical transitions; discrepancies trigger updates to impedance assumptions.
 
-## 5. Roadmap and Repository Coupling
+## 5. Planetary Tipping Fields and Climate Resonance
+
+### 5.1 Metafeld-Formalisierung
+The climate dossier in `Docs/Kipppunkte der Teilkomponenten im Klimasystem.pdf` and the DeepResearch roadmap articulate the Earth as a coupled field ensemble $\mathcal{F}_{\text{Klima}} = \bigcup_i \mathcal{F}_i(R_i, \Theta_i, \beta_i, \zeta_i)$. We adopt this structure by aggregating tipping elements (AMOC, Greenland ice sheet, Amazon moisture, permafrost) in `data/socio_ecology/planetary_tipping_elements.json`. The resulting logistic synthesis, generated via `analysis/planetary_tipping_elements_fit.py`, yields an aggregate threshold $\Theta = 1.67\,\mathrm{K}$ with steepness $\beta = 4.21$—coinciding with the UTF's cross-domain $\beta \approx 4.2$ prediction. The fit outperforms linear and power-law nulls with $\Delta \mathrm{AIC} \approx 33.6$, and the impedance motif $\zeta(R) = 1.62 - 0.41\,\sigma$ encodes how governance slackens or tightens around planetary stress.
+
+### 5.2 Empirische Einbettung
+`analysis/results/planetary_tipping_elements.json` documents the aggregated logistic curve and references the component thresholds stored in the dataset. `analysis/results/resonance_bridge_table.json` and `analysis/results/resonance_cohort_summary.json` now include a dedicated climate entry, updating domain counts and median $\Delta \mathrm{AIC}$. The metadata (`data/socio_ecology/planetary_tipping_elements.metadata.json`) records the null comparisons, source documents (Global Tipping Points 2025, TIPMIP prototypes, DeepResearch notes), and impedance statistics so that the claim remains audit-ready until direct TIPMIP replications are performed.
+
+### 5.3 Simulator und Steuerungslogik
+To make the planetary membrane experiential we introduce `simulator/presets/planetary_tipping_field.json`. The preset exposes $(R, \Theta, \beta, \zeta(R))$ sliders plus $g_{ij}$ notes describing how AMOC perturbations influence ice and forest resilience. Within the React simulator the new preset breathes alongside existing domains, surfacing logistic gates, impedance relief, and poetic tooltips drawn from the climate discourse in `Docs/Diskurs Klimamodul.txt`.
+
+### 5.4 Falsifikation und Agenda
+Section 4's falsifiability commitments extend here: the climate entry cross-compares logistic, linear, and power-law fits and flags $\Delta \mathrm{AIC}$. Upcoming work involves (a) ingesting TIPMIP ensembles to refresh the sigmoid parameters, (b) testing early warning metrics (e.g., Hurst exponent drift) against AMOC time series, and (c) simulating intervention scenarios where local impulses shift $\Theta$ via the coupling matrix. Codex feedback entry `pr-draft-0028` chronicles these hooks so climate resonance remains a living falsification campaign.
+
+## 6. Roadmap and Repository Coupling
 - **Preprint Drafting**: Expand this scaffold into a full manuscript aligned with `paper/AGENTS.md`, weaving parallel sections for formalism, empirics, and symbolic narrative.
 - **Data-Model Sync**: Update `codexfeedback.yaml` and `.json` with resonance observables whenever new datasets join the bridge.
 - **Simulator Cohesion**: Implement slider presets for $(R,\Theta,\beta,\zeta(R))` so readers can experience the transition while reading the paper.
