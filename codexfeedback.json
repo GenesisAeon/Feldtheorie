@@ -765,6 +765,31 @@
                 "theta_shift_mean": 0.1871288178056056,
                 "beta_shift_mean": 0.07037856189952052
             }
+        },
+        {
+            "id": "pr-draft-0032",
+            "type": "impedance-lantern",
+            "created_at": "2025-11-12T12:00:00Z",
+            "summary": "Generated resonant impedance diagnostics with relief, recovery, and hysteresis telemetry so cohort summaries and bridge maps can quantify the gatekeeper's breath.",
+            "threshold_field": {
+                "R": "impedance_runs_missing_relief_metrics",
+                "Theta": "resonant_impedance_summary_exported",
+                "beta": 4.95,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Prototype simulator/presets/resonant_impedance_gate.json so relief and recovery sliders animate alongside σ(β(R-Θ)).",
+                "Compare the new relief_peak/recovery_peak statistics against existing membrane results inside analysis/results/resonance_cohort_summary.json to flag outliers.",
+                "Extend docs and governance notes with guidance on how impedance hysteresis should inform falsification campaigns." 
+            ],
+            "observables": {
+                "analysis_script": "analysis/resonant_impedance_diagnostics.py",
+                "analysis_result": "analysis/results/resonant_impedance_diagnostics.json",
+                "delta_aic_power_law": 34702.603123519236,
+                "relief_peak": 0.07413402479547349,
+                "recovery_peak": 0.06106092581382097,
+                "hysteresis_peak": 0.04340685863415584
+            }
         }
     ]
 }

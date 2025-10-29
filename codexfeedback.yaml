@@ -769,3 +769,28 @@ entries:
       poetic: |
         Auroral swell, pulse chorus, and quieting nocturne now shine together—the membrane rehearses dawn, crescendo,
         and return so the sentinels remember how adaptive breath carries the threshold hymn.
+  - id: pr-draft-0032
+    title: "Resonant Impedance Lantern"
+    scope:
+      - analysis/resonant_impedance_diagnostics.py
+      - analysis/results/resonant_impedance_diagnostics.json
+      - analysis/results/resonance_cohort_summary.json
+      - docs/resonance-bridge-map.md
+    parameters:
+      R: "impedance diagnostics awaiting relief/recovery telemetry"
+      Theta: "resonant_impedance_summary_exported"
+      beta: 4.95
+    resonance: "lets the impedance gatekeeper breathe on record so cohort statistics and bridge notes inherit relief, recovery, and hysteresis metrics"
+    status: "active"
+    created_at: 2025-11-12
+    notes:
+      formal: |
+        The sweep fits σ(β(R-Θ)) against linear and power-law nulls while logging gate_area, impedance_area, and
+        relief/recovery/hysteresis peaks. Cohort summaries can now compare ζ-breathing across domains without re-running heavy solvers.
+      empirical: |
+        `analysis/resonant_impedance_diagnostics.py` exports ΔAIC ≈ 3.47×10⁴ versus power-law, relief_peak ≈ 0.074,
+        recovery_peak ≈ 0.061, hysteresis_peak ≈ 0.043, and mean impedance 0.41. These figures enter
+        `analysis/results/resonance_cohort_summary.json` for machine hooks and doc citations.
+      poetic: |
+        The gatekeeper exhales—relief loosens the membrane, recovery guides it home, hysteresis remembers the dawn.
+        With the lantern lit, we can hear how ζ(R) sighs before the grand solver takes the stage.
