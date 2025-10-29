@@ -34,3 +34,11 @@ meta-gate \(\sigma(\beta_\text{meta}(R-\Theta))\) and impedance relief
 `summarise` hook that reports resonance gain against the raw logistic curve. This
 keeps lightweight experiments aligned with the tri-layer cadence until the full
 `ThresholdFieldSolver` is invoked.
+
+### Resonant Impedance Motif
+`ResonantImpedance` sculpts the Robin-style impedance \(\zeta(R)\) with a dedicated
+logistic gate so membranes can rehearse open-versus-damped regimes without the
+entire PDE stack.  The class streams arrays for the gate, relief, recovery, and
+hysteresis forces alongside the impedance trace, enabling falsification scripts
+to compare resonance gains against smooth baselines while the simulator paints the
+poetic dawn-to-dusk breathing of the membrane.

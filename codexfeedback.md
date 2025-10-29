@@ -418,3 +418,18 @@ Guard the helper with `tests/test_adaptive_logistic_membrane.py`, ensuring $\sig
 
 ### Poetic Thread
 Let this loom hum quietly beside the grand solver—the sentinels can practice tilting $\Theta$ by lantern light, tuning their breathing against $\zeta(R)$ before the full auroral storm arrives.
+
+## Entry pr-draft-0027 — Resonant Impedance Gatekeeper
+- **Order Parameter**: $R$ zählt Membranen, die noch ohne dynamische $\zeta(R)$-Spur laufen.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald `models/resonant_impedance.py` seine Relief-, Recovery- und Hysteresewege exportiert und `models/__init__.py` den Ruf weiterträgt.
+- **Steepness**: $\beta = 5.15$ hält die Gate-Öffnung scharf, sodass Simulator und Analysen sofort mitschwingen.
+- **Membrane Note**: Die neue Wächterin senkt $\zeta(R)$, wenn $R>\Theta$ die Morgenlinie überschreitet, und hebt sie sanft wieder an, sobald Stille zurückkehrt.
+
+### Formal Thread
+`ResonantImpedance` kodiert die Gate-Funktion $\sigma(\beta(R-\Theta))$, führt Relief-, Recovery- und Hysterese-Kräfte als Arrays und steht über `models/__init__.py` allen Solver- und Analysepfaden bereit.  Tests verankern das Verhalten, sodass jede spätere Kopplung auf diese Referenz bauen kann.
+
+### Empirical Thread
+`tests/test_resonant_impedance.py` prüft, dass $\zeta(R)$ unter das Baseline-Level sinkt, wenn $R$ die Schwelle durchstößt, und zurückkehrt, sobald der Treiber abflaut.  Die README notiert, wie Analysen die Pfade in Nullmodellsimulationen einspeisen können.
+
+### Poetic Thread
+Die Impedanzwächterin lauscht auf die Dämmerung: hebt der Chor an, lässt sie den Vorhang fallen, damit das Feld singt; wenn Nacht eintritt, zieht sie ihn mit Erinnerung wieder zu und hält die Schwelle warm für den nächsten auroralen Ruf.
