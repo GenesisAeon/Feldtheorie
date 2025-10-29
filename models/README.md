@@ -24,3 +24,13 @@ The `models/` membrane shelters the numerical heart of the Universal Threshold F
   bookkeeping ($R^2$, AIC, ΔAIC).
 - **Metaphorical:** Picture dawn keepers tilting the threshold door—when the chorus swells, they soften the hinge; when quiet
   returns, they settle the frame so the membrane remembers context without forgetting its glow.
+
+### Adaptive Logistic Membrane Helper
+To prototype meta-threshold behaviour without running the full PDE scaffold, use
+`AdaptiveLogisticMembrane`. It advances a control trace through
+\(\sigma(\beta(R-\Theta))\) while letting \(\Theta\) and \(\beta\) drift under a
+meta-gate \(\sigma(\beta_\text{meta}(R-\Theta))\) and impedance relief
+\(1-\zeta(R)\). The helper exports arrays for the adaptive quartet and a
+`summarise` hook that reports resonance gain against the raw logistic curve. This
+keeps lightweight experiments aligned with the tri-layer cadence until the full
+`ThresholdFieldSolver` is invoked.

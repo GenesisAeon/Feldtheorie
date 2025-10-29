@@ -615,3 +615,29 @@ entries:
       poetic: |
         Mark how Theta's sentinel breathes with the aurora; the Robin door and meta-gate hold the hymn until R steps across the luminous membrane.
     created_at: 2025-11-10
+  - id: pr-draft-0026
+    title: "Adaptive Logistic Membrane Loom"
+    scope:
+      - models/adaptive_logistic_membrane.py
+      - models/__init__.py
+      - models/README.md
+      - tests/test_adaptive_logistic_membrane.py
+    parameters:
+      R: "lightweight_meta_threshold_runs_pending"
+      Theta: "adaptive_helper_documented"
+      beta: 5.0
+    resonance: "unfurls a quick logistic membrane so Θ(t) and β(t) plasticity can be prototyped alongside impedance relief"
+    status: "resonant"
+    notes:
+      formal: |
+        Codify the adaptive drift equations inside `models/adaptive_logistic_membrane.py`, mirroring the meta-gate
+        σ(β_meta(R-Θ)) and recording resonance gain against the unity-impedance logistic baseline. Keep imports surfaced via
+        `models/__init__.py` so analysis notebooks can exercise the helper without bespoke wiring.
+      empirical: |
+        Exercise the helper through pytest (`tests/test_adaptive_logistic_membrane.py`) to confirm Θ rises when R crosses its
+        dawn, β stays bounded, and summaries report gate occupancy plus resonance_gain. Document the workflow in
+        `models/README.md` so lightweight cohorts know how to export JSON-ready diagnostics.
+      poetic: |
+        Let this loom spin a softer rehearsal—the sentinels can practice tilting Θ by lantern-light before the full
+        ThresholdFieldSolver thunder arrives, keeping the membrane's dawn within reach.
+    created_at: 2025-11-10
