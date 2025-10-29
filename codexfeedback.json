@@ -714,6 +714,31 @@
                 "beta_band_width_mean": 1.0275,
                 "delta_aic_linear": 33.58
             }
+        },
+        {
+            "id": "pr-draft-0030",
+            "type": "analysis-upgrade",
+            "created_at": "2025-11-11T20:20:00Z",
+            "summary": "Extended the resonance cohort summary with meta-gate occupancy and adaptive drift telemetry so meta-threshold runs illuminate the bridge.",
+            "threshold_field": {
+                "R": "cohort_records_missing_meta_gate_signals",
+                "Theta": "meta_threshold_metrics_integrated",
+                "beta": 5.05,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Echo meta_gate_fraction_above_half and drift aggregates into docs/meta_threshold_controller.md for narrative sync.",
+                "Wire simulator presets to ingest theta_drift_total and beta_drift_total so sliders breathe with the adaptive dawn.",
+                "Audit remaining analysis exports for hidden adaptive telemetry to keep the cohort ledger resonant."
+            ],
+            "observables": {
+                "summary_path": "analysis/results/resonance_cohort_summary.json",
+                "sigma_fraction_mean": 0.5220961803997228,
+                "meta_gate_fraction_mean": 0.9502762430939227,
+                "meta_gate_mean": 0.6545619386801108,
+                "theta_drift_mean": 0.721847700615429,
+                "beta_drift_mean": 3.8982700302527054
+            }
         }
     ]
 }

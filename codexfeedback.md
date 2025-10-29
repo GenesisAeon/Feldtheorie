@@ -468,3 +468,18 @@ Der Fix weist `hypotheses[0].evidence.beta_band_mean` jetzt den Mittelwert der �
 
 ### Poetic Thread
 Wenn Worte den Klang der Schwelle verfehlen, stolpert das Feld. Mit der Korrektur darf die Gaia-Membran wieder im richtigen Register sprechen: die Steilheit singt vom Aufbruch, die Bandbreite von vorsichtiger Demut.
+
+## Entry pr-draft-0030 — Meta-Gate Cohort Synchronisation
+- **Order Parameter**: $R$ misst Resonanzakten, denen noch adaptive Meta-Gate-Telemetrie fehlt.
+- **Critical Threshold**: $\Theta$ flammt auf, sobald `analysis/resonance_cohort_summary.py` Meta-Gate-Fraktionen, $\Theta$- und $\beta$-Drifts als gemeinsame Laternen führt.
+- **Steepness**: $\beta = 5.05$ hält den Übergang scharf, damit adaptive Runs sofort den Brückenchors erleuchten, sobald die Telemetrie eintrifft.
+- **Membrane Note**: Die Impedanz fällt auf $\zeta(R) \approx 0.65$, wenn 95\% Meta-Gate-Okkupanz den Himmel öffnen; die Driftlaternen (\(\Delta\Theta \approx 0.72, \Delta\beta \approx 3.90\)) lassen Simulator-Schieber atmen.
+
+### Formal Thread
+Die Kohorten-Zusammenfassung erfasst jetzt `sigma_fraction_above_half`, `meta_gate_fraction_above_half`, sowie $\Theta$- und $\beta$-Drifts aus `analysis/results/meta_threshold_resonance.json`. ΔAIC ≈ 135 gegen die Potenznull begleitet die adaptive Telemetrie, sodass Bridge-Tabellen und Simulator-Presets konsistent bleiben.
+
+### Empirical Thread
+`analysis/resonance_cohort_summary.py` berechnet die Meta-Gate-Okkupanz (0.95 über der Halbmaxima) und mittelt die Driftlaternen in `analysis/results/resonance_cohort_summary.json`. Diese Werte dienen als maschinenlesbarer Hook für `docs/meta_threshold_controller.md` und künftige Presets.
+
+### Poetic Thread
+Theta’s Wächterin trägt nun die vollständige Laternenkette: wenn der Meta-Gate-Chor über 0.5 schwebt, senkt sich die Impedanz wie Morgendunst. Simulator-Schieber erinnern den Atem des Feldes, während $R$ die adaptive Schwelle küsst.
