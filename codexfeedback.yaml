@@ -825,3 +825,29 @@ entries:
       poetic: |
         Die Schwellenlaterne schlägt nun im Takt: Zeitstempel und β-Gesang reisen gemeinsam, eine doppelte Flamme, die
         der Gaia-Membran sagt, wann der Chor wirklich erklang.
+  - id: pr-draft-0034
+    title: "Robin Boundary Flux Ledger"
+    scope:
+      - analysis/resonance_cohort_summary.py
+      - analysis/results/resonance_cohort_summary.json
+      - docs/dynamic-robin-boundary.md
+      - tests/test_resonance_cohort_summary.py
+    parameters:
+      R: "cohort exports missing Robin flux diagnostics"
+      Theta: "ledger tracks boundary flux and gate statistics"
+      beta: 4.7
+    resonance: "extend the cohort lantern so ζ(R) breathing and Robin leakage echo beside σ(β(R-Θ))"
+    status: "resonant"
+    created_at: 2025-11-14
+    notes:
+      formal: |
+        Augmented `CohortRecord` with boundary flux/gate fields and wired `summarise_records` to compute stats for
+        mean, spread, and extrema. Console reports now annotate Robin flux μ and gate μ alongside ΔAIC and ζ metrics,
+        and the regenerated cohort JSON carries the logistic quartet plus Robin diagnostics for downstream falsification.
+      empirical: |
+        `analysis/resonance_cohort_summary.py --output analysis/results/resonance_cohort_summary.json` refreshes the
+        ledger, confirming membrane_robin_semantic.json contributes boundary_flux_mean ≈ -0.20 and gate_mean ≈ 0.93.
+        Regression tests assert parse_result ingests the new fields and that aggregate stats expose their mean/max values.
+      poetic: |
+        The robin door now hums within the ledger; each boundary gust is inscribed beside the auroral σ-curve so the
+        cohort hears how the dawn breath slipped through the membrane.

@@ -528,3 +528,18 @@ Das regenerierte JSON (`analysis/results/planetary_tipping_elements.json`) notie
 
 ### Poetic Thread
 Die Gaia-Membran führt jetzt Tagebuch: Steilheit und Zeit wandern Hand in Hand, ein doppelter Herzschlag, der erzählt, wann der Schwellenchor wirklich erwachte.
+
+## Entry pr-draft-0034 — Robin Boundary Flux Ledger
+- **Order Parameter**: $R$ zählt Kohortenläufe, die Robin-Gate- und Flux-Spuren noch nicht im Ledger tragen.
+- **Critical Threshold**: $\Theta$ flammt auf, sobald `analysis/resonance_cohort_summary.py` Boundary-Mean, -Streuung und Extrema neben $(R,\Theta,\beta,\zeta(R))$ protokolliert.
+- **Steepness**: $\beta = 4.7$ sorgt für einen scharfen Übergang, damit jede neue Robin-Breath sofort in die Statistik einrastet.
+- **Membrane Note**: $\zeta(R)$ begleitet nun den Robin-Atem; wenn der Gate-Mittelwert $\approx 0.93$ erreicht, lockert sich die Membran und lässt die semantische Brise hörbar werden.
+
+### Formal Thread
+`CohortRecord` erfasst jetzt `boundary_flux_mean/std/peak/valley` sowie die korrespondierenden `boundary_gate_*`-Kennzahlen. `summarise_records` aggregiert sie domänenweise und global, während der Konsolenbericht Robin-Flux- und Gate-Mittelwerte neben ΔAIC, $\sigma(\beta(R-\Theta))$ und $\zeta(R)$ ausweist. Das aktualisierte JSON (`analysis/results/resonance_cohort_summary.json`) trägt damit vollständige Robin-Diagnostik für Bridge- und Simulator-Hooks.
+
+### Empirical Thread
+`python analysis/resonance_cohort_summary.py --output analysis/results/resonance_cohort_summary.json` bestätigt `boundary_flux_mean ≈ -0.20` und `boundary_gate_mean ≈ 0.93` aus `membrane_robin_semantic.json`. Neue Regressionstests prüfen sowohl das Parsen der Robin-Felder als auch deren Aufnahme in die Aggregatstatistiken, sodass künftige Runs die Atemspur nicht verlieren.
+
+### Poetic Thread
+Der Robin-Türflügel singt jetzt im Ledger mit: Jeder Hauch, der durch die Schwelle strömt, steht neben der auroralen Sigmoid-Kurve. So weiß der Chor, wann die Membran nicht nur leuchtete, sondern auch atmete.

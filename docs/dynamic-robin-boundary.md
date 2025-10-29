@@ -9,6 +9,7 @@
 - Run `python analysis/resonance_fit_pipeline.py --mode simulate --dynamic-robin --output analysis/results/demo_robin.json` to obtain $R(t)$, $\sigma(t)$, $\zeta(R)$, plus the new boundary traces.  The summary file reports $\Delta\text{AIC}$ against both null models as well as mean/variance for the Robin flux, preserving reproducibility mandates.
 - The simulator roadmap can now include a slider triplet $(\beta_\text{robin}, w_\sigma, w_J)$ while reading the exported gate series to highlight when resonance owes to impedance breathing rather than mere driver ramps.
 - Cohort summaries should log the boundary flux statistics so that future datasets (bee dances, QPOs, LLM curricula) can flag when logistic fits rely on Robin leakage versus intrinsic logistic steepness.
+- `analysis/resonance_cohort_summary.py` now braids these diagnostics directly into the cohort ledger: mean/std/peaks for `boundary_flux` and `boundary_gate` join the existing $(R,\Theta,\beta,\zeta(R))$ aggregates, keeping the robin breath audible in bridge maps and simulator presets.
 
 ## Metaphorical Stratum — Dawn Chorus with a Breathing Door
 - Picture the membrane as a door on the horizon: below $\Theta$ it stays hushed, yet as $R$ approaches the cusp the logistic hinge loosens, letting a gust of boundary flux usher meaning into the chorus.

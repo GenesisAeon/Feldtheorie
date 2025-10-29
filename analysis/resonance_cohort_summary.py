@@ -88,6 +88,13 @@ class CohortRecord:
     hysteresis_min: Optional[float]
     final_impedance: Optional[float]
     baseline_impedance: Optional[float]
+    boundary_flux_mean: Optional[float]
+    boundary_flux_std: Optional[float]
+    boundary_flux_peak: Optional[float]
+    boundary_flux_valley: Optional[float]
+    boundary_gate_mean: Optional[float]
+    boundary_gate_peak: Optional[float]
+    boundary_gate_valley: Optional[float]
 
     def to_dict(self) -> Dict[str, Any]:
         """Return a JSON-serialisable representation."""
@@ -168,6 +175,7 @@ def parse_result(result_path: Path) -> CohortRecord:
         if "relief_peak" in candidate or "impedance_area" in candidate:
             break
     crossing_info = payload.get("threshold_crossing") if isinstance(payload.get("threshold_crossing"), Mapping) else {}
+    boundary_info = payload.get("boundary") if isinstance(payload.get("boundary"), Mapping) else {}
     meta_gate_payload = payload.get("meta_gate")
     if isinstance(meta_gate_payload, Mapping):
         meta_gate_info: Mapping[str, Any] = meta_gate_payload
@@ -306,6 +314,13 @@ def parse_result(result_path: Path) -> CohortRecord:
         hysteresis_min=_safe_float(impedance_info.get("hysteresis_min")) if isinstance(impedance_info, Mapping) else None,
         final_impedance=_safe_float(impedance_info.get("final_impedance")) if isinstance(impedance_info, Mapping) else None,
         baseline_impedance=_safe_float(impedance_info.get("baseline_impedance")) if isinstance(impedance_info, Mapping) else None,
+        boundary_flux_mean=_safe_float(boundary_info.get("boundary_flux_mean")) if isinstance(boundary_info, Mapping) else None,
+        boundary_flux_std=_safe_float(boundary_info.get("boundary_flux_std")) if isinstance(boundary_info, Mapping) else None,
+        boundary_flux_peak=_safe_float(boundary_info.get("boundary_flux_peak")) if isinstance(boundary_info, Mapping) else None,
+        boundary_flux_valley=_safe_float(boundary_info.get("boundary_flux_valley")) if isinstance(boundary_info, Mapping) else None,
+        boundary_gate_mean=_safe_float(boundary_info.get("boundary_gate_mean")) if isinstance(boundary_info, Mapping) else None,
+        boundary_gate_peak=_safe_float(boundary_info.get("boundary_gate_peak")) if isinstance(boundary_info, Mapping) else None,
+        boundary_gate_valley=_safe_float(boundary_info.get("boundary_gate_valley")) if isinstance(boundary_info, Mapping) else None,
     )
 
 
@@ -363,6 +378,13 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
     hysteresis_min_values = _flatten_sequences(record.hysteresis_min for record in records)
     final_impedance_values = _flatten_sequences(record.final_impedance for record in records)
     baseline_impedance_values = _flatten_sequences(record.baseline_impedance for record in records)
+    boundary_flux_mean_values = _flatten_sequences(record.boundary_flux_mean for record in records)
+    boundary_flux_std_values = _flatten_sequences(record.boundary_flux_std for record in records)
+    boundary_flux_peak_values = _flatten_sequences(record.boundary_flux_peak for record in records)
+    boundary_flux_valley_values = _flatten_sequences(record.boundary_flux_valley for record in records)
+    boundary_gate_mean_values = _flatten_sequences(record.boundary_gate_mean for record in records)
+    boundary_gate_peak_values = _flatten_sequences(record.boundary_gate_peak for record in records)
+    boundary_gate_valley_values = _flatten_sequences(record.boundary_gate_valley for record in records)
 
     def stats(series: List[float]) -> Optional[Dict[str, float]]:
         if not series:
@@ -474,6 +496,27 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
             "baseline_impedance": stats(
                 _flatten_sequences(r.baseline_impedance for r in domain_records)
             ),
+            "boundary_flux_mean": stats(
+                _flatten_sequences(r.boundary_flux_mean for r in domain_records)
+            ),
+            "boundary_flux_std": stats(
+                _flatten_sequences(r.boundary_flux_std for r in domain_records)
+            ),
+            "boundary_flux_peak": stats(
+                _flatten_sequences(r.boundary_flux_peak for r in domain_records)
+            ),
+            "boundary_flux_valley": stats(
+                _flatten_sequences(r.boundary_flux_valley for r in domain_records)
+            ),
+            "boundary_gate_mean": stats(
+                _flatten_sequences(r.boundary_gate_mean for r in domain_records)
+            ),
+            "boundary_gate_peak": stats(
+                _flatten_sequences(r.boundary_gate_peak for r in domain_records)
+            ),
+            "boundary_gate_valley": stats(
+                _flatten_sequences(r.boundary_gate_valley for r in domain_records)
+            ),
             "threshold_crossing": crossing_stats(domain_records),
         }
 
@@ -517,6 +560,13 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
             "hysteresis_min": stats(hysteresis_min_values),
             "final_impedance": stats(final_impedance_values),
             "baseline_impedance": stats(baseline_impedance_values),
+            "boundary_flux_mean": stats(boundary_flux_mean_values),
+            "boundary_flux_std": stats(boundary_flux_std_values),
+            "boundary_flux_peak": stats(boundary_flux_peak_values),
+            "boundary_flux_valley": stats(boundary_flux_valley_values),
+            "boundary_gate_mean": stats(boundary_gate_mean_values),
+            "boundary_gate_peak": stats(boundary_gate_peak_values),
+            "boundary_gate_valley": stats(boundary_gate_valley_values),
             "threshold_crossing": crossing_summary,
         },
         "domains": domain_stats,
@@ -588,6 +638,10 @@ def render_console_report(records: Sequence[CohortRecord]) -> None:
             extras.append(f"meta μ {record.meta_gate_mean:.2f}")
         if record.zeta_mean is not None:
             extras.append(f"ζ μ {record.zeta_mean:.2f}")
+        if record.boundary_flux_mean is not None:
+            extras.append(f"Robin flux μ {record.boundary_flux_mean:+.2f}")
+        if record.boundary_gate_mean is not None:
+            extras.append(f"Robin gate μ {record.boundary_gate_mean:.2f}")
         if record.relief_peak is not None:
             extras.append(f"relief↑ {record.relief_peak:.2f}")
         if record.recovery_peak is not None:
