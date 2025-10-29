@@ -483,3 +483,18 @@ Die Kohorten-Zusammenfassung erfasst jetzt `sigma_fraction_above_half`, `meta_ga
 
 ### Poetic Thread
 Theta’s Wächterin trägt nun die vollständige Laternenkette: wenn der Meta-Gate-Chor über 0.5 schwebt, senkt sich die Impedanz wie Morgendunst. Simulator-Schieber erinnern den Atem des Feldes, während $R$ die adaptive Schwelle küsst.
+
+## Entry pr-draft-0031 — Adaptive Membrane Phase Scan Lanterns
+- **Order Parameter**: $R$ zählt adaptive Membranläufe, denen noch phasenspezifische Laternen fehlten.
+- **Critical Threshold**: $\Theta$ flammt auf, sobald aurorale, pulsierende und relaxierende Treiber gemeinsam protokolliert sind.
+- **Steepness**: $\beta = 4.9$ hält den Übergang scharf, wenn die drei Archetypen synchron aufleuchten.
+- **Membrane Note**: $\zeta(R)$ verweilt bei $1 - 0.28\,\sigma$, sobald die Phase-Scan-Laternen die adaptive Atmung offenbaren.
+
+### Formal Thread
+`analysis/adaptive_membrane_phase_scan.py` propagiert den Helfer über drei Treibermodelle, vergleicht die adaptive Resonanz mit der statischen Sigmoid-Basis und exportiert `analysis/results/adaptive_membrane_phase_scan.json` mit $\Theta/\beta$-Drifts, Gate-Anwesenheit und Resonanz-Gewinnen.
+
+### Empirical Thread
+Der aktuelle Lauf meldet einen mittleren Resonanzgewinn von $0.890$, einen Zuwachs von $0.067$ über das statische Pendant sowie eine Gate-Anwesenheit von $0.462$. $\Theta$ steigt im Mittel um $0.19$, $\beta$ um $0.07$, dokumentiert für Simulator-Presets und Cohort-Updates.
+
+### Poetic Thread
+Die aurorale Welle, der Pulschor und die dämmernde Rückkehr tragen nun Laternen – die Membran atmet in drei Bewegungen und erinnert uns daran, wie adaptive Wächter die Schwelle hüten, bevor der große Solver wieder donnert.

@@ -45,3 +45,22 @@ than a frozen doorway.
    that compare adaptive controllers against static fits, recording meta-gate medians.
 3. **Data calibration** — annotate upcoming entries in `data/*/` with impedance drift fields so
    the controller's weights can be tuned per domain before the next Docs bridge-map revision.
+
+## Adaptive Membrane Phase Scan
+
+**Formal cadence.** `analysis/adaptive_membrane_phase_scan.py` now sweeps the helper across three
+driver archetypes (auroral ramp, pulsed gate, memory relaxation) while tracking the quartet
+$(R, \Theta, \beta, \zeta(R))$.  The export `analysis/results/adaptive_membrane_phase_scan.json`
+reports gate occupancy, $\Theta$/$\beta$ shifts, and resonance-gain deltas against the static
+logistic baseline, keeping the adaptive membrane falsifiable.
+
+**Empirical cadence.** The aggregated lanterns log a mean resonance gain of $0.890$, a mean gain
+delta of $0.067$, and a gate occupancy of $0.462$ across the trio, with $\Theta$ drifting by
+$0.19$ and $\beta$ by $0.07$ on average.  Each scenario retains decimated traces of $R$,
+$\sigma(\beta(R-\Theta))$, $\zeta(R)$, and the meta-gate so simulator presets can inherit the
+same breathing diagnostics.
+
+**Metaphorical cadence.** The auroral swell, the pulse chorus, and the quieting nocturne now have
+documented lanterns: the membrane leans into dawn, sings through the pulses, then remembers home.
+These traces let the controller chapter narrate how adaptive sentinels rehearse before the full
+solver storm arrives.

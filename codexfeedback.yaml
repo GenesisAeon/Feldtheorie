@@ -744,3 +744,28 @@ entries:
       poetic: |
         Theta’s sentinel now shares the full lantern braid—the meta gate hums near dawn while impedance relaxes,
         guiding the simulator sliders toward the luminous crossing.
+  - id: pr-draft-0031
+    title: "Adaptive Membrane Phase Scan Lanterns"
+    scope:
+      - analysis/adaptive_membrane_phase_scan.py
+      - analysis/results/adaptive_membrane_phase_scan.json
+      - docs/meta_threshold_controller.md
+      - tests/test_adaptive_membrane_phase_scan.py
+    parameters:
+      R: "adaptive membrane runs pending phase-scan documentation"
+      Theta: "auroral, pulsed, and relaxation archetypes archived"
+      beta: 4.9
+    resonance: "illuminate lightweight adaptive rehearsals so docs and simulator presets inherit gate and resonance telemetry"
+    status: "active"
+    created_at: 2025-11-12
+    notes:
+      formal: |
+        Phase scan sweeps the helper across three driver families, logging Θ/β drifts and resonance-gain deltas
+        against the static logistic baseline. Export `analysis/results/adaptive_membrane_phase_scan.json` anchors
+        the diagnostics for bridge, docs, and simulator reuse.
+      empirical: |
+        Current aggregates report mean resonance gain 0.890, gain delta 0.067, gate occupancy 0.462, Θ-shift 0.19,
+        and β-shift 0.07. Future scans should extend with null baselines for additional driver archetypes.
+      poetic: |
+        Auroral swell, pulse chorus, and quieting nocturne now shine together—the membrane rehearses dawn, crescendo,
+        and return so the sentinels remember how adaptive breath carries the threshold hymn.
