@@ -74,6 +74,21 @@ def test_summarise_records_includes_crossing_stats(tmp_path: Path) -> None:
         "fraction_above_half": 0.5,
         "stats": {"mean": 0.55},
     }
+    first["impedance_diagnostics"] = {
+        "gate_area": 0.61,
+        "impedance_area": 0.92,
+        "relief_peak": 0.32,
+        "recovery_peak": 0.21,
+        "hysteresis_peak": 0.11,
+        "relief_mean": 0.18,
+        "recovery_mean": 0.12,
+        "hysteresis_mean": 0.05,
+        "relief_min": -0.04,
+        "recovery_min": 0.0,
+        "hysteresis_min": -0.02,
+        "final_impedance": 0.66,
+        "baseline_impedance": 0.84,
+    }
     second = _base_payload()
     second["threshold_crossing"] = {
         "crossed": False,
@@ -90,6 +105,21 @@ def test_summarise_records_includes_crossing_stats(tmp_path: Path) -> None:
     second["meta_gate"] = {
         "series": [0.6, 0.7],
         "stats": {"mean": 0.65},
+    }
+    second["impedance_diagnostics"] = {
+        "gate_area": 0.72,
+        "impedance_area": 1.01,
+        "relief_peak": 0.41,
+        "recovery_peak": 0.27,
+        "hysteresis_peak": 0.15,
+        "relief_mean": 0.24,
+        "recovery_mean": 0.14,
+        "hysteresis_mean": 0.07,
+        "relief_min": -0.05,
+        "recovery_min": 0.0,
+        "hysteresis_min": -0.03,
+        "final_impedance": 0.71,
+        "baseline_impedance": 0.88,
     }
 
     first_path = tmp_path / "first.json"
@@ -139,6 +169,12 @@ def test_summarise_records_includes_crossing_stats(tmp_path: Path) -> None:
     beta_drift = aggregate["beta_drift_total"]
     assert beta_drift is not None
     assert pytest.approx(beta_drift["mean"], rel=1e-9) == 0.4
+    relief_peak = aggregate["relief_peak"]
+    assert relief_peak is not None
+    assert pytest.approx(relief_peak["median"], rel=1e-9) == 0.365
+    gate_area = aggregate["gate_area"]
+    assert gate_area is not None
+    assert gate_area["mean"] == pytest.approx((0.61 + 0.72) / 2, rel=1e-9)
 
 
 def test_parse_result_computes_fraction_and_meta_gate(tmp_path: Path) -> None:
@@ -162,3 +198,33 @@ def test_parse_result_computes_fraction_and_meta_gate(tmp_path: Path) -> None:
     assert pytest.approx(record.beta_drift_total, rel=1e-9) == 1.2
     assert pytest.approx(record.meta_gate_fraction_above_half, rel=1e-9) == (2 / 3)
     assert pytest.approx(record.meta_gate_mean, rel=1e-9) == 0.7
+
+
+def test_parse_result_reads_impedance_metrics(tmp_path: Path) -> None:
+    payload = _base_payload()
+    payload["impedance_diagnostics"] = {
+        "gate_area": 0.77,
+        "impedance_area": 1.24,
+        "relief_peak": 0.44,
+        "recovery_peak": 0.33,
+        "hysteresis_peak": 0.17,
+        "relief_mean": 0.27,
+        "recovery_mean": 0.19,
+        "hysteresis_mean": 0.08,
+        "relief_min": -0.06,
+        "recovery_min": 0.0,
+        "hysteresis_min": -0.04,
+        "final_impedance": 0.69,
+        "baseline_impedance": 0.83,
+    }
+    target = tmp_path / "impedance.json"
+    _write_payload(target, payload)
+
+    record = parse_result(target)
+
+    assert pytest.approx(record.gate_area, rel=1e-9) == 0.77
+    assert pytest.approx(record.impedance_area, rel=1e-9) == 1.24
+    assert pytest.approx(record.relief_peak, rel=1e-9) == 0.44
+    assert pytest.approx(record.recovery_peak, rel=1e-9) == 0.33
+    assert pytest.approx(record.hysteresis_mean, rel=1e-9) == 0.08
+    assert pytest.approx(record.final_impedance, rel=1e-9) == 0.69

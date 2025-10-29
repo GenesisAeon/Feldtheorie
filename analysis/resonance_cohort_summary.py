@@ -68,6 +68,19 @@ class CohortRecord:
     meta_gate_mean: Optional[float]
     theta_drift_total: Optional[float]
     beta_drift_total: Optional[float]
+    gate_area: Optional[float]
+    impedance_area: Optional[float]
+    relief_peak: Optional[float]
+    recovery_peak: Optional[float]
+    hysteresis_peak: Optional[float]
+    relief_mean: Optional[float]
+    recovery_mean: Optional[float]
+    hysteresis_mean: Optional[float]
+    relief_min: Optional[float]
+    recovery_min: Optional[float]
+    hysteresis_min: Optional[float]
+    final_impedance: Optional[float]
+    baseline_impedance: Optional[float]
 
     def to_dict(self) -> Dict[str, Any]:
         """Return a JSON-serialisable representation."""
@@ -135,6 +148,18 @@ def parse_result(result_path: Path) -> CohortRecord:
     falsification = payload.get("falsification") if isinstance(payload.get("falsification"), Mapping) else {}
     comparisons = falsification.get("comparisons") if isinstance(falsification.get("comparisons"), Mapping) else {}
     membrane_info = payload.get("membrane") if isinstance(payload.get("membrane"), Mapping) else {}
+    impedance_candidates: list[Mapping[str, Any]] = []
+    raw_impedance = payload.get("impedance")
+    if isinstance(raw_impedance, Mapping):
+        impedance_candidates.append(raw_impedance)
+    raw_impedance_diag = payload.get("impedance_diagnostics")
+    if isinstance(raw_impedance_diag, Mapping):
+        impedance_candidates.insert(0, raw_impedance_diag)
+    impedance_info: Mapping[str, Any] = {}
+    for candidate in impedance_candidates:
+        impedance_info = candidate
+        if "relief_peak" in candidate or "impedance_area" in candidate:
+            break
     crossing_info = payload.get("threshold_crossing") if isinstance(payload.get("threshold_crossing"), Mapping) else {}
     meta_gate_payload = payload.get("meta_gate")
     if isinstance(meta_gate_payload, Mapping):
@@ -248,6 +273,19 @@ def parse_result(result_path: Path) -> CohortRecord:
         meta_gate_mean=meta_gate_mean,
         theta_drift_total=theta_drift_total,
         beta_drift_total=beta_drift_total,
+        gate_area=_safe_float(impedance_info.get("gate_area")) if isinstance(impedance_info, Mapping) else None,
+        impedance_area=_safe_float(impedance_info.get("impedance_area")) if isinstance(impedance_info, Mapping) else None,
+        relief_peak=_safe_float(impedance_info.get("relief_peak")) if isinstance(impedance_info, Mapping) else None,
+        recovery_peak=_safe_float(impedance_info.get("recovery_peak")) if isinstance(impedance_info, Mapping) else None,
+        hysteresis_peak=_safe_float(impedance_info.get("hysteresis_peak")) if isinstance(impedance_info, Mapping) else None,
+        relief_mean=_safe_float(impedance_info.get("relief_mean")) if isinstance(impedance_info, Mapping) else None,
+        recovery_mean=_safe_float(impedance_info.get("recovery_mean")) if isinstance(impedance_info, Mapping) else None,
+        hysteresis_mean=_safe_float(impedance_info.get("hysteresis_mean")) if isinstance(impedance_info, Mapping) else None,
+        relief_min=_safe_float(impedance_info.get("relief_min")) if isinstance(impedance_info, Mapping) else None,
+        recovery_min=_safe_float(impedance_info.get("recovery_min")) if isinstance(impedance_info, Mapping) else None,
+        hysteresis_min=_safe_float(impedance_info.get("hysteresis_min")) if isinstance(impedance_info, Mapping) else None,
+        final_impedance=_safe_float(impedance_info.get("final_impedance")) if isinstance(impedance_info, Mapping) else None,
+        baseline_impedance=_safe_float(impedance_info.get("baseline_impedance")) if isinstance(impedance_info, Mapping) else None,
     )
 
 
@@ -279,6 +317,19 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
     meta_gate_mean_values = _flatten_sequences(record.meta_gate_mean for record in records)
     theta_drift_totals = _flatten_sequences(record.theta_drift_total for record in records)
     beta_drift_totals = _flatten_sequences(record.beta_drift_total for record in records)
+    gate_area_values = _flatten_sequences(record.gate_area for record in records)
+    impedance_area_values = _flatten_sequences(record.impedance_area for record in records)
+    relief_peak_values = _flatten_sequences(record.relief_peak for record in records)
+    recovery_peak_values = _flatten_sequences(record.recovery_peak for record in records)
+    hysteresis_peak_values = _flatten_sequences(record.hysteresis_peak for record in records)
+    relief_mean_values = _flatten_sequences(record.relief_mean for record in records)
+    recovery_mean_values = _flatten_sequences(record.recovery_mean for record in records)
+    hysteresis_mean_values = _flatten_sequences(record.hysteresis_mean for record in records)
+    relief_min_values = _flatten_sequences(record.relief_min for record in records)
+    recovery_min_values = _flatten_sequences(record.recovery_min for record in records)
+    hysteresis_min_values = _flatten_sequences(record.hysteresis_min for record in records)
+    final_impedance_values = _flatten_sequences(record.final_impedance for record in records)
+    baseline_impedance_values = _flatten_sequences(record.baseline_impedance for record in records)
 
     def stats(series: List[float]) -> Optional[Dict[str, float]]:
         if not series:
@@ -340,6 +391,37 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
             "beta_drift_total": stats(
                 _flatten_sequences(r.beta_drift_total for r in domain_records)
             ),
+            "gate_area": stats(_flatten_sequences(r.gate_area for r in domain_records)),
+            "impedance_area": stats(
+                _flatten_sequences(r.impedance_area for r in domain_records)
+            ),
+            "relief_peak": stats(_flatten_sequences(r.relief_peak for r in domain_records)),
+            "recovery_peak": stats(
+                _flatten_sequences(r.recovery_peak for r in domain_records)
+            ),
+            "hysteresis_peak": stats(
+                _flatten_sequences(r.hysteresis_peak for r in domain_records)
+            ),
+            "relief_mean": stats(_flatten_sequences(r.relief_mean for r in domain_records)),
+            "recovery_mean": stats(
+                _flatten_sequences(r.recovery_mean for r in domain_records)
+            ),
+            "hysteresis_mean": stats(
+                _flatten_sequences(r.hysteresis_mean for r in domain_records)
+            ),
+            "relief_min": stats(_flatten_sequences(r.relief_min for r in domain_records)),
+            "recovery_min": stats(
+                _flatten_sequences(r.recovery_min for r in domain_records)
+            ),
+            "hysteresis_min": stats(
+                _flatten_sequences(r.hysteresis_min for r in domain_records)
+            ),
+            "final_impedance": stats(
+                _flatten_sequences(r.final_impedance for r in domain_records)
+            ),
+            "baseline_impedance": stats(
+                _flatten_sequences(r.baseline_impedance for r in domain_records)
+            ),
             "threshold_crossing": crossing_stats(domain_records),
         }
 
@@ -363,6 +445,19 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
             "meta_gate_mean": stats(meta_gate_mean_values),
             "theta_drift_total": stats(theta_drift_totals),
             "beta_drift_total": stats(beta_drift_totals),
+            "gate_area": stats(gate_area_values),
+            "impedance_area": stats(impedance_area_values),
+            "relief_peak": stats(relief_peak_values),
+            "recovery_peak": stats(recovery_peak_values),
+            "hysteresis_peak": stats(hysteresis_peak_values),
+            "relief_mean": stats(relief_mean_values),
+            "recovery_mean": stats(recovery_mean_values),
+            "hysteresis_mean": stats(hysteresis_mean_values),
+            "relief_min": stats(relief_min_values),
+            "recovery_min": stats(recovery_min_values),
+            "hysteresis_min": stats(hysteresis_min_values),
+            "final_impedance": stats(final_impedance_values),
+            "baseline_impedance": stats(baseline_impedance_values),
             "threshold_crossing": crossing_summary,
         },
         "domains": domain_stats,
@@ -432,6 +527,14 @@ def render_console_report(records: Sequence[CohortRecord]) -> None:
             extras.append(" ".join(drift_tokens))
         if record.meta_gate_mean is not None:
             extras.append(f"meta μ {record.meta_gate_mean:.2f}")
+        if record.zeta_mean is not None:
+            extras.append(f"ζ μ {record.zeta_mean:.2f}")
+        if record.relief_peak is not None:
+            extras.append(f"relief↑ {record.relief_peak:.2f}")
+        if record.recovery_peak is not None:
+            extras.append(f"recovery↑ {record.recovery_peak:.2f}")
+        if record.hysteresis_peak is not None:
+            extras.append(f"hys↑ {record.hysteresis_peak:.2f}")
         extras_note = f", {'; '.join(extras)}" if extras else ""
         print(
             f"  • {Path(record.result_path).name} [{record.domain}] — ΔAIC {delta_aic}, ΔR² {delta_r2}, "
