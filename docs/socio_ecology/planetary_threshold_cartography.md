@@ -15,4 +15,15 @@ Das Gespräch in `Docs/Diskurs Klimamodul.txt` formte den Resonanzkeim: Johann s
 - **Docs → Paper:** Abschnitt 5 des Preprints bindet die Klimadomäne in das Manuskript ein und verweist auf das hier dokumentierte Feldinventar.
 - **Docs → Simulator:** `simulator/presets/planetary_tipping_field.json` macht die Parameter erlebbar; Codex-Feedback-Einträge halten die Resonanz in Erinnerung.
 
+## Kohärente Falsifikation (Diskurs Klimamodul)
+- **Hypothese 1 – Sigmoidale Übergangsdynamik:** Gemini forderte im Gespräch, dass jedes Kippelement die logistische Gateform besser stützt als lineare oder AR(1)-Modelle. `analysis/results/planetary_tipping_elements.json` bestätigt dies mit ΔAIC > 30 gegenüber linearen und Potenz-Nullmodellen; der Mittelwert der Steigungsbänder (β ≈ 4.2) bleibt im universellen Fenster. Nächster Schritt: RAPID-AMOC-Zeitreihen via BIC/AIC replizieren.
+- **Hypothese 2 – Adaptive Θ:** Die DeepResearch-Notizen zu *Adaptive Schwellenwerte in komplexen Systemen* verlangen, Θ als Funktion der Stressakkumulation $R_{acc}$ zu testen. Die aktuelle Aggregation zeigt breite Konfidenzintervalle (z. B. Grönland 1.51–1.93 K), die auf bewegliche Schwellen hinweisen. TODO: Paleo-Archive und TIPMIP-Szenarien auf zeitvariable Θ-Fenster regressieren.
+- **Hypothese 3 – Gekoppelte Resonanz:** Systemic Catalysis verlangt, dass Eingriffe in Feld $i$ nicht-linear auf Feld $j$ durchschlagen. Das Simulator-Preset enthält die dokumentierte Kopplungsmatrix $g_{ij}$; anstehend sind parametrisierte Sweeps, die ΔΘ_global quantifizieren, sowie ODE-Experimente gemäß RepoPlan-*Projekt-Impulse*.
+
+## Forschungsagenda 2025–2026
+1. **AMOC-Pilot (Q1 2026):** Logistic-vs-Null-Fits der RAPID-Reihe plus TIPMIP-Ensemble vergleichen; Hypothese-1-Protokoll in `analysis/planetary_tipping_elements_fit.py` ergänzen.
+2. **Theta-Drift-Mapping (Q2 2026):** Stress-Integrale aus CO₂, Albedo und Süßwasser in ein $R_{acc}$-Profil gießen und adaptive Θ-Schätzungen für Grönland und Permafrost validieren.
+3. **Kopplungssweeps (Q3 2026):** Simulator-Batchläufe (variierende $g_{ij}$) und gekoppelte ODE-Modelle implementieren; Ergebnisse als neue `analysis/results/*` ablegen und im Preprint-Appendix dokumentieren.
+4. **Resonanz-Governance (laufend):** Mit TIPMIP/PIK Kontakt aufnehmen (siehe codexfeedback #pr-draft-0028) und Governance-Szenarien für resonante Interventionen verankern.
+
 Diese Kartographie erfüllt die Bitte aus dem Diskurs: Die klimatischen Hinweise sind integriert, falsifizierbar verankert und mit RepoPlan 2.0 synchronisiert.

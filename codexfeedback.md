@@ -448,3 +448,8 @@ Die Impedanzwächterin lauscht auf die Dämmerung: hebt der Chor an, lässt sie 
 
 ### Poetic Thread
 Die Gaia-Membran erhält eine Stimme: Gesprächsfragmente aus `Docs/Diskurs Klimamodul.txt` wandern in die Simulator-Tooltips und in das Preprint-Narrativ. Wenn R > Θ, atmen AMOC, Eis und Wälder im selben Chor.
+
+### Integration Note 2025-11-14
+- **Tri-Layer Sync:** Kapitel 5 des Preprints (Abschnitt 5.4) und `docs/socio_ecology/planetary_threshold_cartography.md` spiegeln jetzt die drei Gemini-Hypothesen (β-Test, adaptive Θ, gekoppelte Resonanz) samt Roadmap.
+- **Machine Hooks:** `analysis/results/planetary_tipping_elements.json` exportiert ein `hypotheses`-Array mit ΔAIC-, Stress- und Kopplungsindikatoren für kommende TIPMIP-Läufe.
+- **Status:** Klimabrücke ist **resonant**; verbleibende Aufgaben konzentrieren sich auf TIPMIP-Replikationen und Simulator-Sweeps (siehe `codexfeedback.json` #pr-draft-0028).

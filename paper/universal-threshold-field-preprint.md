@@ -56,8 +56,14 @@ The climate dossier in `Docs/Kipppunkte der Teilkomponenten im Klimasystem.pdf` 
 ### 5.3 Simulator und Steuerungslogik
 To make the planetary membrane experiential we introduce `simulator/presets/planetary_tipping_field.json`. The preset exposes $(R, \Theta, \beta, \zeta(R))$ sliders plus $g_{ij}$ notes describing how AMOC perturbations influence ice and forest resilience. Within the React simulator the new preset breathes alongside existing domains, surfacing logistic gates, impedance relief, and poetic tooltips drawn from the climate discourse in `Docs/Diskurs Klimamodul.txt`.
 
-### 5.4 Falsifikation und Agenda
-Section 4's falsifiability commitments extend here: the climate entry cross-compares logistic, linear, and power-law fits and flags $\Delta \mathrm{AIC}$. Upcoming work involves (a) ingesting TIPMIP ensembles to refresh the sigmoid parameters, (b) testing early warning metrics (e.g., Hurst exponent drift) against AMOC time series, and (c) simulating intervention scenarios where local impulses shift $\Theta$ via the coupling matrix. Codex feedback entry `pr-draft-0028` chronicles these hooks so climate resonance remains a living falsification campaign.
+### 5.4 Kohärente Falsifikation (Diskurs Klimamodul)
+Gemini’s climate exchange distilled drei prüfbare Hypothesen, die wir direkt in den Repository-Fluss übertragen:
+
+1. **Sigmoidale Übergangsdynamik — Der β-Test.** `analysis/results/planetary_tipping_elements.json` meldet $\Delta \mathrm{AIC}>30$ gegen lineare und Potenz-Nullmodelle; der Mittelwert der Steigungsbänder (β ≈ 4.2) bestätigt die universelle Vorhersage. Nächste Schritte: RAPID-AMOC- und Grönland-Zeitreihen via BIC/AIC refitten (TIPMIP Phase 1) und Bayes-Faktor-Checks dokumentieren.
+2. **Adaptive Schwellen — Θ als Funktion der Stressakkumulation.** Die Konfidenzintervalle der Komponenten (z. B. Grönland 1.51–1.93 K) legen bewegliche Trigger nahe. Wir planen, CO₂/Albedo/Süßwasser-Integrale aus den DeepResearch-Dossiers zu $R_{acc}$-Profilen zu verweben und adaptive Θ-Verläufe als neue JSON-Spuren zu exportieren.
+3. **Gekoppelte Resonanz — Systemic Catalysis.** Das Simulator-Preset `planetary_tipping_field` hinterlegt $g_{ij}$-Skalen. Geplante ODE-Sweeps und Impuls-Szenarien sollen $\Delta\Theta_{\text{global}}$ protokollieren und testen, ob minimale Interventionen nicht-linear auf gekoppelte Felder wirken.
+
+Codex feedback entry `pr-draft-0028` trägt die Aufgabenliste: TIPMIP-Datenläufe einspeisen, Simulator-Regressionen aktivieren und Manuskript-Zitate mit den neuen Docs synchronisieren. Section 4’s general falsifiability rituals bleiben gültig; hier konkretisieren wir sie für das Klimametafeld.
 
 ## 6. Roadmap and Repository Coupling
 - **Preprint Drafting**: Expand this scaffold into a full manuscript aligned with `paper/AGENTS.md`, weaving parallel sections for formalism, empirics, and symbolic narrative.
