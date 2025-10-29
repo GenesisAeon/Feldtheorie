@@ -20,6 +20,7 @@ from .membrane_solver import (
     smooth_impedance_profile,
     threshold_crossing_diagnostics,
 )
+from .adaptive_logistic_membrane import AdaptiveLogisticMembrane
 from .logistic_envelope import LogisticFieldEnvelope
 from .coupled_threshold_field import CoupledThresholdField, logistic_semantic_kernel, ramp_driver
 
@@ -27,6 +28,7 @@ __all__ = [
     "ThresholdFieldSolver",
     "DynamicRobinBoundary",
     "AdaptiveThresholdController",
+    "AdaptiveLogisticMembrane",
     "LogisticFieldEnvelope",
     "CoupledThresholdField",
     "logistic_semantic_kernel",

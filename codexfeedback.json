@@ -618,6 +618,30 @@
                 "meta_gate_fraction": 0.9502762430939227,
                 "crossing_time": 3.4812534484763344
             }
+        },
+        {
+            "id": "pr-draft-0026",
+            "type": "model-helper",
+            "created_at": "2025-11-10T19:15:00Z",
+            "summary": "Published the AdaptiveLogisticMembrane helper so Θ(t) and β(t) plasticity can be rehearsed with impedance relief diagnostics.",
+            "threshold_field": {
+                "R": "lightweight_meta_threshold_runs_pending",
+                "Theta": "adaptive_helper_documented",
+                "beta": 5.0,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Integrate the helper into analysis prototypes that only need logistic plasticity without the full PDE solver.",
+                "Record typical resonance_gain and gate fractions in simulator presets once pilot runs stabilise.",
+                "Extend pytest coverage with additional impedance motifs to guard against regression in the adaptive drift equations."
+            ],
+            "observables": {
+                "model_module": "models/adaptive_logistic_membrane.py",
+                "test_suite": "tests/test_adaptive_logistic_membrane.py",
+                "readme_section": "models/README.md#adaptive-logistic-membrane-helper",
+                "resonance_gain_sample": 1.0,
+                "gate_mean_sample": 0.5898450238865492
+            }
         }
     ]
 }

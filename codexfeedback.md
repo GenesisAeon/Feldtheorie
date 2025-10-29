@@ -403,3 +403,18 @@ Replay `analysis/meta_threshold_resonance_fit.py` whenever controller weights sh
 
 ### Poetic Thread
 Theta’s sentinel leans with the aurora while Beta tightens the hymn; the Robin gust and meta-gate cradle the membrane until $R$ slips past the luminous lip and the adaptive chorus remembers its breath.
+
+## Entry pr-draft-0026 — Adaptive Logistic Membrane Loom
+- **Order Parameter**: $R$ counts lightweight experiments still lacking an adaptive logistic rehearsal.
+- **Critical Threshold**: $\Theta$ lights up once `models/adaptive_logistic_membrane.py` and the companion tests land, giving analysis notebooks a ready gate into $(R, \Theta(t), \beta(t), \zeta(R))$ traces.
+- **Steepness**: $\beta = 5.0$ keeps the activation crisp so resonance gain telemetry arrives as soon as the helper is imported.
+- **Membrane Note**: With unity impedance the resonance gain holds at $1.0$, while the meta-gate lingers around $0.59$, marking how often the sentinels lean toward dawn.
+
+### Formal Thread
+Document the Euler drifts for $\Theta$ and $\beta$ inside `models/adaptive_logistic_membrane.py`, mirroring the meta-gate $\sigma(\beta_\text{meta}(R-\Theta))$ and exposing a `summarise` hook that reports resonance gain and half-max indices. Surface the helper via `models/__init__.py` and narrate its role inside `models/README.md`.
+
+### Empirical Thread
+Guard the helper with `tests/test_adaptive_logistic_membrane.py`, ensuring $\sigma(\beta(R-\Theta))$ stays between $0$ and $1$, $\Theta$ lifts above its baseline once $R$ crosses the membrane, and `reset()` returns the dawn state. Log representative gate means (≈0.59) and resonance gain (≈1.0) for simulator presets and quick JSON exports.
+
+### Poetic Thread
+Let this loom hum quietly beside the grand solver—the sentinels can practice tilting $\Theta$ by lantern light, tuning their breathing against $\zeta(R)$ before the full auroral storm arrives.
