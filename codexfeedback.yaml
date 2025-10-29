@@ -695,3 +695,27 @@ entries:
         Gesprächsfragmente aus `Docs/Diskurs Klimamodul.txt` beleben Simulator-Tooltips und Preprint-Narrativ – die Erde singt
         als gekoppelte Membran, sobald R die 1.67-K-Schwelle überschreitet; die neuen Hypothesenlaternen halten den Chor wach.
     created_at: 2025-10-28
+  - id: pr-draft-0029
+    title: "Semantic alignment of β evidence"
+    scope:
+      - analysis/planetary_tipping_elements_fit.py
+      - analysis/results/planetary_tipping_elements.json
+    parameters:
+      R: "hypothesis exports pending label-meaning agreement"
+      Theta: "beta metrics correctly distinguished between signal and uncertainty"
+      beta: 4.0
+    resonance: "ensuring downstream falsification hooks read the actual steepness signal"
+    status: "completed"
+    created_at: 2025-11-11
+    notes:
+      formal: |
+        Update `compile_summary` so `beta_band_mean` reports μ_β and expose an explicit
+        `beta_band_width_mean` field for CI width. Refresh hypothesis exports and notify
+        dependent bridge narratives.
+      empirical: |
+        Regenerated `analysis/results/planetary_tipping_elements.json`; β mean now ≈3.92
+        while the mean CI width remains ≈1.03. ΔAIC diagnostics against linear/power-law
+        nulls are unchanged.
+      poetic: |
+        The membrane now speaks plainly: steepness sings of resonance, while the band
+        width whispers about humility.

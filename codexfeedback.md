@@ -453,3 +453,18 @@ Die Gaia-Membran erhält eine Stimme: Gesprächsfragmente aus `Docs/Diskurs Klim
 - **Tri-Layer Sync:** Kapitel 5 des Preprints (Abschnitt 5.4) und `docs/socio_ecology/planetary_threshold_cartography.md` spiegeln jetzt die drei Gemini-Hypothesen (β-Test, adaptive Θ, gekoppelte Resonanz) samt Roadmap.
 - **Machine Hooks:** `analysis/results/planetary_tipping_elements.json` exportiert ein `hypotheses`-Array mit ΔAIC-, Stress- und Kopplungsindikatoren für kommende TIPMIP-Läufe.
 - **Status:** Klimabrücke ist **resonant**; verbleibende Aufgaben konzentrieren sich auf TIPMIP-Replikationen und Simulator-Sweeps (siehe `codexfeedback.json` #pr-draft-0028).
+
+## Entry pr-draft-0029 — Semantische Klärung der β-Evidenz
+- **Order Parameter**: $R$ zählt Exportfelder, deren Benennung nicht mit dem inhaltlichen Signal übereinstimmt.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald `analysis/planetary_tipping_elements_fit.py` den Mittelwert der Steilheit klar von der CI-Breite trennt.
+- **Steepness**: $\beta = 4.0$ spiegelt die erwartete universelle Steilheit und hält den Übergang zwischen Fehlinterpretation und Klarheit scharf.
+- **Membrane Note**: $\zeta(R)$ sinkt, wenn semantische Drift erkannt wird, und entspannt sich erst, wenn Reports wieder präzise zwischen Signal und Unsicherheit unterscheiden.
+
+### Formal Thread
+Der Fix weist `hypotheses[0].evidence.beta_band_mean` jetzt den Mittelwert der β-Schätzer (μ≈3.92) zu und ergänzt `beta_band_width_mean` für die gemittelte Konfidenzbandbreite. Downstream-Systeme können so universelle Steilheit testen, ohne Präzisionsmaß und Signal zu verwechseln.
+
+### Empirical Thread
+`python analysis/planetary_tipping_elements_fit.py` regeneriert `analysis/results/planetary_tipping_elements.json` mit den korrigierten Kennzahlen. ΔAIC bleibt bei ≈33.6 gegen linear; die neue Bandbreite (≈1.03) dokumentiert weiterhin Unsicherheit, jetzt jedoch klar bezeichnet.
+
+### Poetic Thread
+Wenn Worte den Klang der Schwelle verfehlen, stolpert das Feld. Mit der Korrektur darf die Gaia-Membran wieder im richtigen Register sprechen: die Steilheit singt vom Aufbruch, die Bandbreite von vorsichtiger Demut.

@@ -43,7 +43,8 @@ HYPOTHESIS_NOTES: List[Dict[str, Any]] = [
             "Alternativen."
         ),
         "evidence": {
-            "beta_band_mean": None,  # gefüllt in compile_summary
+            "beta_band_mean": None,  # gefüllt in compile_summary (μ_β)
+            "beta_band_width_mean": None,  # mittlere CI-Breite für β
             "delta_aic_linear": None,
             "delta_aic_power_law": None,
         },
@@ -189,15 +190,17 @@ def build_logistic_curve(theta: float, beta: float) -> List[Dict[str, float]]:
 
 
 def compile_summary(elements: List[LogisticElement], aggregate: AggregateLogistic) -> Dict[str, Any]:
-    steepness_spread = mean(e.steepness_band for e in elements)
+    beta_band_width_mean = mean(e.steepness_band for e in elements)
     beta_values = [e.beta for e in elements]
+    beta_mean = mean(beta_values)
     theta_values = [e.theta for e in elements]
 
     hypotheses: List[Dict[str, Any]] = []
     for base in HYPOTHESIS_NOTES:
         note = deepcopy(base)
         if note["id"] == "beta_universality":
-            note["evidence"]["beta_band_mean"] = steepness_spread
+            note["evidence"]["beta_band_mean"] = beta_mean
+            note["evidence"]["beta_band_width_mean"] = beta_band_width_mean
             note["evidence"]["delta_aic_linear"] = aggregate.null_models["linear"]["delta_aic"]
             note["evidence"]["delta_aic_power_law"] = aggregate.null_models["power_law"]["delta_aic"]
             if aggregate.null_models["linear"]["delta_aic"] > 30 and aggregate.null_models["power_law"]["delta_aic"] > 30:
@@ -226,7 +229,8 @@ def compile_summary(elements: List[LogisticElement], aggregate: AggregateLogisti
             "impedance_mean": aggregate.impedance_mean,
             "impedance_std": aggregate.impedance_std,
             "null_models": aggregate.null_models,
-            "beta_band_mean": steepness_spread,
+            "beta_band_mean": beta_mean,
+            "beta_band_width_mean": beta_band_width_mean,
             "beta_min": min(beta_values),
             "beta_max": max(beta_values),
             "theta_min": min(theta_values),
@@ -254,7 +258,11 @@ def compile_summary(elements: List[LogisticElement], aggregate: AggregateLogisti
             "notes": "ΔAIC und ΔR² stammen aus DeepResearch-Synthesen; künftige TIPMIP-Datenläufe sollen diese Werte replizieren."
         },
         "tri_layer": {
-            "formal": "σ(β(R-Θ)) koppelt lokale Felder via g_ij; β liegt zwischen {:.2f} und {:.2f}.".format(min(beta_values), max(beta_values)),
+            "formal": "σ(β(R-Θ)) koppelt lokale Felder via g_ij; β liegt zwischen {:.2f} und {:.2f} (μ≈{:.2f}).".format(
+                min(beta_values),
+                max(beta_values),
+                beta_mean,
+            ),
             "empirical": "Aggregierte Parameter entstammen Global Tipping Points 2025, TIPMIP-Notizen und RepoPlan-DeepResearch-Workflows.",
             "poetic": "AMOC, Eis, Wald und Permafrost stimmen in denselben Schwellenchor ein – eine Gaia-Membran, die auf Resonanz wartet."
         }

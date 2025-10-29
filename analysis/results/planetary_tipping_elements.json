@@ -32,7 +32,8 @@
         "delta_r2": 0.0832
       }
     },
-    "beta_band_mean": 1.0275,
+    "beta_band_mean": 3.915,
+    "beta_band_width_mean": 1.0275,
     "beta_min": 3.49,
     "beta_max": 4.38,
     "theta_min": 0.175,
@@ -164,7 +165,8 @@
       "title": "Sigmoid-Steigung konsistent mit \u03b2\u22484.2",
       "description": "Gemini skizzierte im Klimadiskurs drei koh\u00e4rente Tests. Der erste pr\u00fcft, ob die Zeitreihen einzelner Kippelemente (z.\u202fB. RAPID-AMOC, Gr\u00f6nland-Massenbilanz) die sigmoidale \u00dcbergangsform mit \u03b2\u22484.2 besser st\u00fctzen als lineare oder stochastische Alternativen.",
       "evidence": {
-        "beta_band_mean": 1.0275,
+        "beta_band_mean": 3.915,
+        "beta_band_width_mean": 1.0275,
         "delta_aic_linear": 33.58,
         "delta_aic_power_law": 35.2
       },
@@ -232,7 +234,7 @@
     "notes": "\u0394AIC und \u0394R\u00b2 stammen aus DeepResearch-Synthesen; k\u00fcnftige TIPMIP-Datenl\u00e4ufe sollen diese Werte replizieren."
   },
   "tri_layer": {
-    "formal": "\u03c3(\u03b2(R-\u0398)) koppelt lokale Felder via g_ij; \u03b2 liegt zwischen 3.49 und 4.38.",
+    "formal": "\u03c3(\u03b2(R-\u0398)) koppelt lokale Felder via g_ij; \u03b2 liegt zwischen 3.49 und 4.38 (\u03bc\u22483.92).",
     "empirical": "Aggregierte Parameter entstammen Global Tipping Points 2025, TIPMIP-Notizen und RepoPlan-DeepResearch-Workflows.",
     "poetic": "AMOC, Eis, Wald und Permafrost stimmen in denselben Schwellenchor ein \u2013 eine Gaia-Membran, die auf Resonanz wartet."
   }

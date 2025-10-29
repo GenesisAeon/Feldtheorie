@@ -690,6 +690,30 @@
                 "theta_estimate": 1.67,
                 "hypotheses_exported": true
             }
+        },
+        {
+            "id": "pr-draft-0029",
+            "type": "bugfix-thread",
+            "created_at": "2025-11-11T10:30:00Z",
+            "summary": "Corrected the planetary tipping export so β evidence reports the mean steepness instead of CI width, preserving the falsification narrative.",
+            "threshold_field": {
+                "R": "hypothesis_exports_needing_semantic_alignment",
+                "Theta": "beta_metrics_consistent_with_labels",
+                "beta": 4.0,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Backfill downstream consumers with the clarified β mean and band width fields.",
+                "Audit other analysis exports for mismatched semantic labels before the next bridge sync.",
+                "Document the correction within Docs/ threshold narratives so readers do not confuse precision with steepness."
+            ],
+            "observables": {
+                "analysis_script": "analysis/planetary_tipping_elements_fit.py",
+                "export_field": "hypotheses[0].evidence.beta_band_mean",
+                "beta_mean_reported": 3.915,
+                "beta_band_width_mean": 1.0275,
+                "delta_aic_linear": 33.58
+            }
         }
     ]
 }
