@@ -593,7 +593,9 @@ class ThresholdFieldSolver:
         sigma = logistic_response(R, theta_now, beta_now)
         impedance = float(self._zeta_callable(R))
         boundary_term = 0.0
+        boundary_gate = None
         if self.boundary_condition is not None:
+            boundary_gate = self.boundary_condition.gate(R)
             boundary_term = self.boundary_condition.boundary_flux(R, sigma, driver)
         flux = driver + coupling + boundary_term - impedance * (R - sigma)
         R_next = R + self.dt * flux
@@ -610,7 +612,13 @@ class ThresholdFieldSolver:
             "sigma_next": float(sigma_next),
         }
         if self.boundary_condition is not None:
-            payload["boundary_flux"] = boundary_term
+            payload.update(
+                {
+                    "boundary_flux": boundary_term,
+                    "boundary_gate": float(boundary_gate) if boundary_gate is not None else None,
+                    "boundary_gate_next": float(self.boundary_condition.gate(R_next)),
+                }
+            )
         if self.threshold_controller is not None:
             report = self.threshold_controller.update(
                 R=R_next,
@@ -755,7 +763,12 @@ class ThresholdFieldSolver:
                     beta_shift_values[idx] = float(payload.get("beta_shift", 0.0))
 
             if boundary_gate_values is not None and self.boundary_condition is not None:
-                boundary_gate_values[idx + 1] = self.boundary_condition.gate(R)
+                if "boundary_gate" in payload and payload["boundary_gate"] is not None:
+                    boundary_gate_values[idx] = float(payload["boundary_gate"])
+                if "boundary_gate_next" in payload and payload["boundary_gate_next"] is not None:
+                    boundary_gate_values[idx + 1] = float(payload["boundary_gate_next"])
+                else:
+                    boundary_gate_values[idx + 1] = self.boundary_condition.gate(R)
 
         return {
             "t": times,

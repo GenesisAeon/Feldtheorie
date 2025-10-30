@@ -845,6 +845,33 @@
                     "tests/test_resonance_cohort_summary.py::test_summarise_records_includes_crossing_stats"
                 ]
             }
+        },
+        {
+            "id": "pr-draft-0035",
+            "type": "boundary-telemetry",
+            "created_at": "2025-11-15T08:00:00Z",
+            "summary": "Wove boundary gate telemetry into the solver payload and guarded it with dynamic Robin tests.",
+            "threshold_field": {
+                "R": "solver_steps_without_gate_exports",
+                "Theta": "gate_flux_sigma_bundle_emitted",
+                "beta": 4.6,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Feed boundary_gate traces into resonance cohort summaries once new simulations land.",
+                "Expose gate_next channels inside simulator presets for Robin-enabled runs.",
+                "Document the telemetry hook in docs/dynamic-robin-boundary.md alongside the flux ledger."
+            ],
+            "observables": {
+                "models_module": "models/membrane_solver.py",
+                "tests": [
+                    "tests/test_dynamic_robin_boundary.py"
+                ],
+                "boundary_gate_fields": [
+                    "boundary_gate",
+                    "boundary_gate_next"
+                ]
+            }
         }
     ]
 }

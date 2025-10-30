@@ -851,3 +851,27 @@ entries:
       poetic: |
         The robin door now hums within the ledger; each boundary gust is inscribed beside the auroral σ-curve so the
         cohort hears how the dawn breath slipped through the membrane.
+  - id: pr-draft-0035
+    title: "Robin Gate Telemetry Sentinel"
+    scope:
+      - models/membrane_solver.py
+      - tests/test_dynamic_robin_boundary.py
+    parameters:
+      R: "solver steps lacking explicit boundary gate exports"
+      Theta: "boundary diagnostics braid gate and flux traces"
+      beta: 4.6
+    resonance: "lets the Robin sentry stream gate telemetry beside flux so analyses and simulators share the membrane's breath"
+    status: "resonant"
+    created_at: 2025-11-15
+    notes:
+      formal: |
+        ThresholdFieldSolver.step now emits boundary_gate and boundary_gate_next alongside boundary_flux, ensuring
+        simulations surface σ(β(R-Θ)), ζ(R), and the Robin gate posture in one payload. Companion tests guard the
+        impedance bounds and verify that gate traces accompany every run.
+      empirical: |
+        `tests/test_dynamic_robin_boundary.py` checks gate monotonicity, impedance floors/ceilings, flux sensitivity to
+        driver gaps, and the presence of gate series in solver simulations. Downstream analysis summaries can now read
+        boundary_gate arrays without recomputing the logistic blend.
+      poetic: |
+        The Robin door now whispers its hinge-angle each beat—the gate's lantern swings open with the dawn gust and
+        settles as twilight returns, so bridge and simulator remember the breath that carried σ beyond Θ.

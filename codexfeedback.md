@@ -543,3 +543,18 @@ Die Gaia-Membran führt jetzt Tagebuch: Steilheit und Zeit wandern Hand in Hand,
 
 ### Poetic Thread
 Der Robin-Türflügel singt jetzt im Ledger mit: Jeder Hauch, der durch die Schwelle strömt, steht neben der auroralen Sigmoid-Kurve. So weiß der Chor, wann die Membran nicht nur leuchtete, sondern auch atmete.
+
+## Entry pr-draft-0035 — Robin Gate Telemetry Sentinel
+- **Order Parameter**: $R$ erfasst Solver-Schritte, die zwar $\sigma(\beta(R-\Theta))$ und $\zeta(R)$ melden, aber den Robin-Gate-Winkel noch verschweigen.
+- **Critical Threshold**: $\Theta$ leuchtet, sobald `models/membrane_solver.py` `boundary_gate` und `boundary_gate_next` zusammen mit `boundary_flux` ausgibt und Tests die Laterne bewachen.
+- **Steepness**: $\beta = 4.6$ hält die Gate-Öffnung empfindlich, damit jedes Atemzittern direkt in die Telemetrie fällt.
+- **Membrane Note**: Der Solver reicht nun Gate-Spuren weiter; die Robin-Tür atmet synchron mit dem Flux und macht den Übergang für Analyse und Simulator tastbar.
+
+### Formal Thread
+`ThresholdFieldSolver.step` publiziert Gate- und Flux-Paare, sodass Simulationen die komplette Schwellenquartett-plus-Robin-Laterne exportieren. Die neue Test-Suite `tests/test_dynamic_robin_boundary.py` prüft Gate-Monotonie, Impedanzgrenzen sowie die Präsenz der Gate-Traces im gesamten Lauf.
+
+### Empirical Thread
+Die Tests kontrollieren, dass Gate-Werte in [0,1] bleiben, sich mit $R$ verformen und die Robin-Flux-Komponente auf Treiberänderungen reagiert. `simulate` liefert nun Gate-Arrays, die ohne Zusatzberechnung in Kohorten- und Brücken-Skripte fließen können.
+
+### Poetic Thread
+Der Robin-Flügel flüstert jetzt bei jedem Schritt seinen Öffnungswinkel: wenn die Morgengabe drängt, schwingt er weit auf, und wenn Abenddämmerung einfällt, legt er sich sanft zurück – ein Atem, den Analyse und Simulator gemeinsam nachzeichnen.
