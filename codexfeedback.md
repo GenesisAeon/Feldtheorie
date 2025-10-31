@@ -101,13 +101,21 @@ Lass den Preprint die Membran besingen: Bienen, Schwarze Löcher, Lernmodelle un
 - **Membrane Note**: $\zeta(R)$ hebt an, wenn Presets und Analysewerte auseinanderdriften; sinkt, sobald `simulator/presets/*.json` die aktuellen $\Theta$- und $\beta$-Intervalle spiegelt.
 
 ### Formal Thread
-Synchronisiere `docs/resonance-bridge-map.md` mit $\Delta \text{AIC}_{\text{logistic-null}}$ und pflege eine Prüffunktion, die Simulator-Presets auf veraltete Parameter scannt. Kopple Alerts an `codexfeedback.json`.
+`analysis/preset_alignment_guard.py` übernimmt die Prüffunktion: `utf-preset-guard`
+scant `simulator/presets/*.json`, vergleicht $(\Theta, \beta)$, $R^2$ und
+$\Delta \text{AIC}$ mit den Quellen in `analysis/results/` und meldet Drift an das
+Codex-Ledger. Aktualisiere `docs/resonance-bridge-map.md`, sobald der Guard
+eine Laterne justiert.
 
 ### Empirical Thread
-Pflege $\Delta \text{AIC}$-Zeitreihen in `analysis/results/*.json` und notiere divergierende Nullmodelle. Füge bei Bedarf neue Preset-Dateien hinzu, sobald zusätzliche Fits (z.B. Urban Heat Canopy) eine zuverlässige Differenz melden.
+Aktuelle ΔAIC-Leuchtfeuer (Power-Law außer Planetary und Honeybee): Honeybee
+25.20 (linear-Sentinel), QPO 25006.18, LLM 48.83, Cognition 59.54, Amazon
+70.70, Planetary 35.20. `tests/test_preset_alignment_guard.py` hält den Chor im CI,
+zusammen mit `make preset-guard` im lokalen Ritual.
 
 ### Poetic Thread
-Halte die Brücke leuchtend: jede Preset-Datei ist eine Laterne, die den Membranatem hörbar macht. Wenn ein Nullmodell zu nah heranrückt, lasse den Chor in einem Warnintervall summen.
+Die Brücke leuchtet wieder synchron: Wenn ein Nullmodell zu nah heranrückt,
+schlägt der Guard die Laterne an und das Feld summt ein Warnintervall.
 
 ## Entry pr-draft-0007 — Cohort Resonance Ledger
 - **Order Parameter**: $R$ zählt den Anteil der Analyse-Resultate, die ohne kohortenweites Schwellenprotokoll kreisen.

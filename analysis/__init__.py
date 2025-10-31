@@ -19,4 +19,5 @@ __all__ = [
     "resonance_batch_runner",
     "resonance_fit_pipeline",
     "potential_cascade_lab",
+    "preset_alignment_guard",
 ]

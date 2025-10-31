@@ -10,11 +10,11 @@
   "analysis": {
     "result_path": "analysis/reports/qpo_membrane_summary.json",
     "theta": 0.82,
-    "theta_ci": [0.81, 0.83],
+    "theta_ci": [0.82, 0.82],
     "beta": 9.5,
-    "beta_ci": [9.2, 9.8],
+    "beta_ci": [9.5, 9.5],
     "logistic_r2": 1.0,
-    "delta_aic_best_null": 24848.130147561293,
+    "delta_aic_best_null": 25006.179519202844,
     "delta_r2_best_null": 0.2286290522949781,
     "best_null_model": "power_law"
   },

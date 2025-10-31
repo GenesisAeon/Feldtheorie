@@ -14,9 +14,9 @@
     "beta": 0.6717283976038891,
     "beta_ci": [0.5413091744299211, 0.8021476207778572],
     "logistic_r2": 0.9687963452454948,
-    "delta_aic_best_null": 18.670156493825473,
-    "delta_r2_best_null": 0.08720216022238858,
-    "best_null_model": "power_law"
+    "delta_aic_best_null": 25.196229770856547,
+    "delta_r2_best_null": 0.15751662650295395,
+    "best_null_model": "linear"
   },
   "impedance": {
     "definition": "zeta(R) = 1.25 - 0.35 * sigma(beta(R-Theta))",
@@ -43,7 +43,7 @@
     }
   },
   "narrative": {
-    "formal": "Logit-Fit mit linearem und Potenzgesetz-Nullmodell; logistische Antwort schlägt beide Baselines mit ΔAIC=18.7.",
+    "formal": "Logit-Fit mit linearem und Potenzgesetz-Nullmodell; logistische Antwort schlägt linear mit ΔAIC≈25.2 (ΔAIC≈18.7 gegen die Potenzspur).",
     "empirical": "Feldmessungen aus RepoPlan: Waggle-Activation über Zuckerkonzentrationen, JSON-Export ankert den Fit.",
     "poetic": "Sobald die Süße Θ erreicht, erwacht der Schwarm – die Membran sinkt und der Tanz strahlt in den Morgen."
   },

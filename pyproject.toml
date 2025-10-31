@@ -41,6 +41,7 @@ utf-batch = "analysis.resonance_batch_runner:main"
 utf-planetary-summary = "analysis.planetary_tipping_elements_fit:main"
 utf-resonance-cohort = "analysis.resonance_cohort_summary:main"
 utf-potential-cascade = "analysis.potential_cascade_lab:main"
+utf-preset-guard = "analysis.preset_alignment_guard:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["analysis", "models"]
