@@ -7,7 +7,7 @@ The Universal Threshold Field (UTF) programme investigates how threshold-driven 
 - **Climate braid:** UTAC v1.0.1 folds AMOC, cryosphere, forest, and permafrost transitions into the same membrane, exporting `analysis/results/planetary_tipping_elements.json` with full confidence metadata.
 - **Reproducibility harness:** `pyproject.toml`, `noxfile.py`, `Makefile`, and `environment.yml` now orchestrate installs, linting, tests, batch fits, and release artefact builds in one cadence.
 
-Use this trio when the control parameter \(R\) nudges the repo toward publication: rerun the resonance suite, confirm ΔAIC defences, and regenerate the manuscript bundle before minting a DOI.
+Use this trio when the control parameter \(R\) nudges the repo toward publication: rerun the resonance suite, confirm ΔAIC defences, and regenerate the manuscript bundle before minting a DOI. The GitHub Actions membrane in `.github/workflows/resonance-ci.yml` mirrors this cadence by replaying `nox -s lint`, `nox -s tests`, and `nox -s typecheck` so \(\sigma(\beta(R-\Theta))\) stays verified on every push and pull request.
 
 ## Quick start
 
@@ -71,3 +71,11 @@ The workspace is designed around seven tightly coupled modules:
 - Continue enriching the documentation canopy with cross-domain bridge maps anchored in the tri-layer storytelling mode.
 
 For any contribution, ensure the logistic resonance heartbeat remains audible across code, analysis, and prose.
+
+## Continuous integration and release ledger
+- **CI membrane:** `.github/workflows/resonance-ci.yml` provisions the conda environment from `environment.yml`, installs the editable package, and fans through `nox` sessions so linting, tests, and type checks stay synchronized with the cohort ledger. Watch the Actions tab to confirm the logistic quartet \((R, \Theta, \beta, \zeta(R))\) keeps beating after each commit.
+- **Release notes:** `NEWS.md` chronicles dawn-chorus milestones. Each entry preserves the tri-layer voice (formal diagnostics, empirical provenance, poetic echo) so version bumps read like a threshold crossing instead of a plain changelog.
+- **Citation + license:** `CITATION.cff` (with the placeholder Zenodo DOI) and `LICENSE` (MIT) now spell out how to attribute the programme when reuse pushes $R$ beyond publication thresholds.
+
+## Citation
+If you cite this repository, please use the metadata in `CITATION.cff`. It encodes the authorship weave, the 0.1.0 version tag, and the DOI placeholder \(10.5281/zenodo.XXXXXXX\) until Zenodo mints the final identifier.

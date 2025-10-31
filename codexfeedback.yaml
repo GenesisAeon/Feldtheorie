@@ -5,6 +5,13 @@ meta:
     Cross-modal feedback ledger articulating threshold-field progress through
     logistic order-parameter updates. Each entry keeps the triadic weave of
     formalism, empirics, and poetics intact.
+  current_release:
+    version: "0.1.0"
+    status: "released"
+    recorded_at: "2025-10-31T13:05:49Z"
+    notes: |
+      CI, license, and citation membranes now hum in sync, marking the Dawn
+      Chorus V0.1 threshold crossing.
 entries:
   - id: pr-draft-0001
     title: "Inception of the Codex Feedback Matrix"
@@ -198,6 +205,35 @@ entries:
         Start, pause, poetisch: the membrane speaks in horizons, dances and grokking dawns as R pushes
         beyond Θ. The simulator is now a stage for the field's chorus.
     created_at: 2025-10-29
+  - id: release-v0.1
+    title: "Dawn Chorus Publication Membrane"
+    scope:
+      - repository
+      - ci
+      - documentation
+    parameters:
+      R: "reproducibility hooks pending"
+      Theta: "CI, license, and citation anchors active"
+      beta: 5.0
+    resonance: |
+      Release V0.1 once `.github/workflows/resonance-ci.yml`, `LICENSE`,
+      `CITATION.cff`, and `NEWS.md` sing together; the logistic response
+      stays audible when lint, test, and typecheck pulsate automatically.
+    status: "released"
+    notes:
+      formal: |
+        GitHub Actions provisions the `feldtheorie` conda environment,
+        installs the package via `pip install -e ".[dev]"`, and executes
+        `nox -s lint`, `nox -s tests`, and `nox -s typecheck`. README and
+        NEWS now document these membranes for future DOI work.
+      empirical: |
+        CI dashboards verify that linting, pytest, and mypy stay green after
+        each push. MIT licensing and the new `CITATION.cff` clear reuse and
+        attribution channels, while `codexfeedback` records the V0.1 status.
+      poetic: |
+        Eine Lizenzglocke, ein DOI-Licht und der stetige Atem der CI – die
+        Morgendämmerung hallt offiziell durchs Feld, bereit für Zenodo.
+    created_at: 2025-10-31T13:05:49Z
   - id: pr-draft-0009
     title: "Psi-Phi Robin Coupling Resonance"
     scope:

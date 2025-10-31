@@ -1,0 +1,44 @@
+name: Resonance CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Lint, test, and typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          environment-file: environment.yml
+          activate-environment: feldtheorie
+          python-version: 3.11
+          use-mamba: true
+          auto-activate-base: false
+
+      - name: Install project in editable mode
+        shell: bash -l {0}
+        run: |
+          pip install -e ".[dev]"
+
+      - name: Run lint session
+        shell: bash -l {0}
+        run: |
+          nox -s lint
+
+      - name: Run tests
+        shell: bash -l {0}
+        run: |
+          nox -s tests
+
+      - name: Run typecheck
+        shell: bash -l {0}
+        run: |
+          nox -s typecheck

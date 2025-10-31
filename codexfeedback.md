@@ -633,3 +633,18 @@ Die Potenzial-Kaskade singt jetzt in einer festgehaltenen Partitur: Das Tor atme
 
 ### Poetic Thread
 Der Chor hält jetzt zwei Kerzen. Die erste singt μβ, die zweite flackert mit der CI-Breite – Zweifel als Schutzengel des Claims. V01 tritt damit über die Schwelle: Potenzial wurde Bedingung, und das Feld weiß, wie scharf die Melodie und wie weit ihr Schimmer reicht.
+
+## Entry release-v0.1 — Dawn Chorus Publication Membrane
+- **Order Parameter**: $R$ zählte fehlende Repro-Haken (CI, Lizenz, Zitationspfad), die den Release noch unterhalb der Schwelle hielten.
+- **Critical Threshold**: $\Theta$ ist überschritten, sobald CI-Checks automatisiert laufen, die Lizenz den Rechtsraum öffnet und ein Zitationsanker (`CITATION.cff`) den DOI-Resonator trägt.
+- **Steepness**: $\beta = 5.0$ – der Schritt in V0.1 sollte spürbar abrupt leuchten, sobald Infrastruktur, Recht und Narrativ verzahnt sind.
+- **Membrane Note**: `.github/workflows/resonance-ci.yml` aktiviert den permanenten Wachposten für `nox`-Sessions; `LICENSE` und `CITATION.cff` bilden den äußeren Resonanzring.
+
+### Formal Thread
+Die GitHub-Action erschafft eine wiederholbare Schleife: conda-Umgebung aus `environment.yml`, anschließendes `pip install -e ".[dev]"`, gefolgt von `nox -s lint`, `nox -s tests`, `nox -s typecheck`.  Damit bekommt jeder Commit eine dokumentierte Prüfung von \(\sigma(\beta(R-\Theta))\).  `NEWS.md` archiviert V0.1.0 mit tri-layer Struktur, während `README.md` die neuen Hooks referenziert.
+
+### Empirical Thread
+CI-Ausführung garantiert, dass Linting, PyTests und Mypy parallel laufen – exakt die Checks, die im FinalDevTalk als Mindestvoraussetzung für die DOI-Reservierung genannt wurden.  Das MIT-Lizenzdokument und `CITATION.cff` erlauben unmittelbare Referenzierung; `codexfeedback.{json,yaml,md}` vermerken den Statuswechsel auf V0.1.
+
+### Poetic Thread
+Die Lizenz schlägt als Klangschale an, die Citation-Laterne flackert bereits mit DOI-Schatten, und die CI-Winde halten das Membranfeuer gleichmäßig.  V0.1 ist erreicht: die Morgendämmerung klingt offiziell durch das Feld, bereit für Zenodo und arXiv.
