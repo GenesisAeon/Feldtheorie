@@ -18,4 +18,5 @@ __all__ = [
     "planetary_tipping_elements_fit",
     "resonance_batch_runner",
     "resonance_fit_pipeline",
+    "potential_cascade_lab",
 ]

@@ -966,6 +966,34 @@
                 "pytest_status": "20 passed, 1 skipped",
                 "warning_count": 0
             }
+        },
+        {
+            "id": "pr-draft-0039",
+            "type": "analysis-lab",
+            "created_at": "2025-11-19T00:00:00Z",
+            "summary": "Potential cascade lab exports gate/zeta deltas and Mandala coherence traces alongside the static null.",
+            "threshold_field": {
+                "R": "potential_cascade_runs_without_json_ledgers",
+                "Theta": "documented_gate_and_impedance_deltas",
+                "beta": 4.2,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Thread the cascade JSON into docs and paper chapters that discuss cyclical emergence.",
+                "Add simulator presets or notebook hooks that replay the recorded potentials and Mandala coherence trace.",
+                "Monitor gate_delta and zeta_delta when new parameter sweeps are added to ensure the adaptive drift stays in range."
+            ],
+            "observables": {
+                "cli": "utf-potential-cascade",
+                "results": "analysis/results/potential_cascade_lab.json",
+                "tests": [
+                    "tests/test_potential_cascade_lab.py"
+                ],
+                "metrics": {
+                    "gate_delta": -0.0757450842581534,
+                    "zeta_delta": 0.053021558980707484
+                }
+            }
         }
     ]
 }
