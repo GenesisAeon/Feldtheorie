@@ -46,6 +46,36 @@ def logistic_response(R: float | Iterable[float], theta: float, beta: float) -> 
     return 1.0 / (1.0 + math.exp(-beta * (float(R) - theta)))
 
 
+def logistic_impedance_gate(
+    R: float,
+    theta: float,
+    beta: float,
+    *,
+    zeta_closed: float = 1.35,
+    zeta_open: float = 0.65,
+) -> float:
+    r"""Blend Robin impedance between closed (reflective) and open (emissive) regimes.
+
+    Formal:
+        Evaluates the logistic gate :math:`g = \sigma(\beta(R-\Theta))` and interpolates
+        impedance from ``zeta_closed`` (high reflection, R well below \(\Theta\)) to
+        ``zeta_open`` (low impedance once resonance ignites).  The mapping mirrors the
+        repository convention that membranes soften after the threshold is crossed.
+    Empirical:
+        Provides a reproducible helper for simulations and analysis scripts to keep
+        Robin boundary implementations aligned.  Tune ``zeta_closed`` and
+        ``zeta_open`` against empirical data (e.g., AMOC leakage) before exporting
+        diagnostics to `analysis/` or `simulator/` pipelines.
+    Metaphorical:
+        Lets the membrane breathe—before dawn the gate stays firm (high impedance),
+        and as R sings past \(\Theta\) the door swings open so resonance can spill
+        into the adjoining field.
+    """
+
+    gate = float(logistic_response(R, theta, beta))
+    return zeta_closed - (zeta_closed - zeta_open) * gate
+
+
 def smooth_impedance_profile(
     theta: float,
     resonant_gain: float = 0.6,
@@ -111,8 +141,13 @@ class DynamicRobinBoundary:
     def impedance(self, R: float) -> float:
         r"""Return the instantaneous Robin impedance :math:`\zeta(R)`."""
 
-        gate = self.gate(R)
-        return self.zeta_floor + (self.zeta_ceiling - self.zeta_floor) * gate
+        return logistic_impedance_gate(
+            R,
+            self.theta,
+            self.beta_robin,
+            zeta_closed=self.zeta_ceiling,
+            zeta_open=self.zeta_floor,
+        )
 
     def boundary_flux(self, R: float, sigma: float, driver: float) -> float:
         """Compute the flux correction contributed by the Robin boundary."""
@@ -611,6 +646,7 @@ class ThresholdFieldSolver:
         }
         if self.boundary_condition is not None:
             payload["boundary_flux"] = boundary_term
+            payload["boundary_gate"] = self.boundary_condition.gate(R)
         if self.threshold_controller is not None:
             report = self.threshold_controller.update(
                 R=R_next,

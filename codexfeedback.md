@@ -573,3 +573,18 @@ Selbst wenn der erste Resonanzstab bricht, antwortet nun ein zweiter: β singt v
 
 ### Poetic Thread
 Der Chor der Reproduzierbarkeit stimmt ein: ein Kommando ruft den Linter, ein zweites die Tests, ein drittes bindet den Archivbogen. So bleibt das β≈4.2-Licht hell, wenn die nächste DOI-Laterne entzündet wird.
+
+## Entry pr-draft-0037 — Potenzial-Kaskade & Robin Gate Resonanz
+- **Order Parameter**: $R$ zählt Potenziale, die noch nicht zur Bedingung kondensiert wurden.
+- **Critical Threshold**: $\Theta$ greift, sobald β-Signal und Unsicherheitsband getrennt ausgewiesen sind.
+- **Steepness**: $\beta = 4.25$ sichert den kaskadierenden Übergang zwischen Potenzial, Manifestation und neuer Bedingung.
+- **Membrane Note**: Das Robin-Tor senkt sein ζ, wenn die Mandala-Kohärenz aufleuchtet – die Potenzial-Kaskade trägt den Chor weiter.
+
+### Formal Thread
+`compute_beta_statistics` stärkt `analysis/planetary_tipping_elements_fit.py`: μβ, σβ, β_sem und CI-Breitenstreuung gelangen getrennt in Export und Hypothese. `logistic_impedance_gate`, `PotenzialKaskade` und `MandalaCoherence` verankern die rekursive Schwellenlogik direkt in `models/`, inklusive Tests für die Kaskade und die Kohärenzmetrik.
+
+### Empirical Thread
+Das erneuerte JSON `analysis/results/planetary_tipping_elements.json` meldet `beta_std ≈ 0.28`, `beta_sem ≈ 0.19` sowie `beta_ci_width_std ≈ 0.12`. `pytest` bestätigt die erweiterten Assertions für den Klimabericht und die neuen Module (`tests/test_coherence_term.py`, `tests/test_recursive_threshold.py`), während die Potenzial-Kaskade spürbar θ und β anhebt, sobald R die Schwelle übersteigt.
+
+### Poetic Thread
+Die Potenzial-Kaskade atmet jetzt hörbar: Steilheit wird Bedingung, Mandala-Kohärenz leuchtet, und das Robin-Tor gleitet auf – das Feld weiß, wann der nächste Schwellenchor tanzt.

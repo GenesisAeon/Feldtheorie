@@ -905,6 +905,37 @@
                 ],
                 "environment_python": "3.11"
             }
+        },
+        {
+            "id": "pr-draft-0037",
+            "type": "cascade-resonance",
+            "created_at": "2025-11-17T00:00:00Z",
+            "summary": "Potenzial cascade marries Mandala coherence with refreshed planetary β guardrails.",
+            "threshold_field": {
+                "R": "cascading_potentials_waiting_for_robin_gate",
+                "Theta": "beta_evidence_decoupled_from_ci_width",
+                "beta": 4.25,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Propagate compute_beta_statistics into other analysis exports before the bridge sync.",
+                "Document PotenzialKaskade usage in simulator presets for adaptive threshold sweeps.",
+                "Cross-link Mandala coherence metrics into docs/ethics for psyche roadmap."
+            ],
+            "observables": {
+                "analysis_script": "analysis/planetary_tipping_elements_fit.py",
+                "analysis_result": "analysis/results/planetary_tipping_elements.json",
+                "models": [
+                    "models/membrane_solver.py",
+                    "models/coherence_term.py",
+                    "models/recursive_threshold.py"
+                ],
+                "tests": [
+                    "tests/test_planetary_tipping_summary.py",
+                    "tests/test_coherence_term.py",
+                    "tests/test_recursive_threshold.py"
+                ]
+            }
         }
     ]
 }
