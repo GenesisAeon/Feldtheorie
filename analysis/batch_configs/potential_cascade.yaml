@@ -1,0 +1,25 @@
+meta:
+  scenario: "semantic_resonance_demo"
+  description: |
+    Potenzial-Kaskade mit erhöhter semantischer Kopplung. Nutzt eine längere
+    Kohärenzfensterung, um β-Drift und Θ-Relaxation für V02-Planungen zu
+    illustrieren.
+steps: 72
+cascade:
+  theta: 0.95
+  beta: 3.9
+  cascade_gain: 0.7
+  condition_relaxation: 0.18
+  fatigue_rate: 0.42
+  logistic_beta: 4.2
+potential:
+  baseline: 0.55
+  surge: 1.25
+  modulation: 0.09
+  drift: 7.8
+coherence:
+  window: 7
+impedance:
+  closed: 1.32
+  open: 0.58
+dt: 0.9

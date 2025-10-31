@@ -1,6 +1,10 @@
+import math
+import textwrap
+
 from analysis.potential_cascade_lab import (
     compile_payload,
     generate_potential_series,
+    load_configuration,
     simulate_cascade,
 )
 
@@ -33,3 +37,38 @@ def test_compile_payload_includes_tri_layer() -> None:
         >= payload["aggregate"]["coherence_normalised_mean"]
     )
     assert payload["aggregate"]["gate_mean"] < payload["null_reference"]["gate_mean"]
+
+
+def test_load_configuration_merges_defaults(tmp_path) -> None:
+    config_text = textwrap.dedent(
+        """
+        meta:
+          scenario: semantic-demo
+        steps: 12
+        cascade:
+          theta: 0.85
+          beta: 3.9
+          cascade_gain: 0.7
+        potential:
+          surge: 1.05
+        coherence:
+          window: 7
+        impedance:
+          closed: 1.28
+          open: 0.55
+        """
+    ).strip()
+    config_path = tmp_path / "cascade.yaml"
+    config_path.write_text(config_text, encoding="utf-8")
+
+    overrides, meta = load_configuration(config_path)
+
+    assert overrides["steps"] == 12
+    assert math.isclose(float(overrides["theta"]), 0.85, rel_tol=1e-9)
+    assert math.isclose(float(overrides["beta"]), 3.9, rel_tol=1e-9)
+    assert math.isclose(float(overrides["cascade_gain"]), 0.7, rel_tol=1e-9)
+    assert overrides["coherence_window"] == 7
+    assert math.isclose(float(overrides["potential_surge"]), 1.05, rel_tol=1e-9)
+    assert math.isclose(float(overrides["zeta_closed"]), 1.28, rel_tol=1e-9)
+    assert math.isclose(float(overrides["zeta_open"]), 0.55, rel_tol=1e-9)
+    assert meta["scenario"] == "semantic-demo"

@@ -1141,3 +1141,28 @@ entries:
         Die Bedeutungsbrise küsst nun die Membran: M[ψ,φ] öffnet das Tor, das β≈4.2-Licht bleibt
         hell, und das Manuskript notiert den ersten Schritt in Richtung kontrollierter Emergenz.
     created_at: 2025-11-21
+  - id: pr-draft-0042
+    title: "Potenzial-Kaskade Konfigurationsbrücke"
+    scope:
+      - analysis/potential_cascade_lab.py
+      - analysis/batch_configs/potential_cascade.yaml
+      - tests/test_potential_cascade_lab.py
+    parameters:
+      R: "potential_cascade_runs_without_declared_parameters"
+      Theta: "config_driven_potential_cascade"
+      beta: 4.3
+    resonance: "binding cascade simulations to declared YAML scenarios so σ(β(R-Θ)) stories stay reproducible"
+    status: "active"
+    notes:
+      formal: |
+        `load_configuration` und `build_parser` lesen YAML/JSON-Dateien, mappen Sektionen wie `potential`
+        und `impedance` auf die Kaskadenparameter (σ(β(R-Θ)), ζ(R)) und tragen den `config_path` im Export ein.
+        Die CLI `utf-potential-cascade --config …` reproduziert damit V02-Szenarien ohne manuelle Parameterlisten.
+      empirical: |
+        `tests/test_potential_cascade_lab.py` verifiziert das Mapping von steps, Θ, β, Kopplung und ζ sowie die
+        Speicherung von `config_meta`. `analysis/batch_configs/potential_cascade.yaml` dient als Referenzpreset,
+        während `pyproject.toml` und `environment.yml` PyYAML in den Repro-Harness aufnehmen.
+      poetic: |
+        Jede YAML-Laterne legt fest, wie die semantische Brise φ den Morgenchor formt. Die Potenzial-Kaskade erhält
+        damit ein Drehbuch, das V02-Läufe im Ledger verankert und Simulator-Laternen im selben Licht aufgehen lässt.
+    created_at: 2025-11-22
