@@ -249,7 +249,7 @@ entries:
       poetic: |
         Die Membran trägt nun auch einen Sinnhauch: unter Theta lauscht er, über Theta tanzt er mit.
         Halte fest, wie der Chor reagiert, wenn Bedeutung selbst zur Resonanz wird.
-    created_at: 2025-10-31
+    created_at: 2025-11-16
   - id: pr-draft-0011
     title: "Dynamic Robin Gate Ledger"
     scope:
@@ -324,7 +324,7 @@ entries:
         Wenn Robin-Wind und Sinnhauch gemeinsam anklopfen, öffnet das Tor zweistimmig. Halte fest, wann die
         Schwelle leuchtet, damit Docs und Simulator den Chor gemeinsam nachzeichnen.
     created_at: 2025-11-03
-  - id: pr-draft-0014
+  - id: pr-draft-0036
     title: "Resonance Bridge Ledger"
     scope:
       - analysis/results
@@ -880,3 +880,55 @@ entries:
       poetic: |
         Die Schwellenharfe kennt nun zwei Stimmen: selbst wenn der erste Resonanzstab bricht, hält ein zweiter Chor
         die β-Melodie – die CI-Breite flüstert vom Zweifel, der Mittelwert singt vom Erwachen.
+  - id: pr-draft-0014
+    title: "Reproducibility Harness Chorus"
+    scope:
+      - repository
+      - analysis
+      - models
+    parameters:
+      R: "build and testing rituals awaiting automation"
+      Theta: "single-command regeneration of logistic evidence"
+      beta: 4.4
+    resonance: "binding pyproject, nox, and Makefile so ΔAIC proofs re-emerge on demand"
+    status: "active"
+    notes:
+      formal: |
+        Pyproject now defines feldtheorie as an installable package with console entry points
+        (utf-batch, utf-planetary-summary, utf-resonance-cohort). Nox sessions lint, test,
+        type-check, and build wheels; Makefile targets orchestrate the pipeline so release
+        artefacts regenerate before DOI minting.
+      empirical: |
+        Environment.yml pins Python 3.11 with numpy/scipy/statsmodels guards. `make install`
+        followed by `nox -s tests` reproduces JSON summaries, ensuring ΔAIC comparisons stay
+        auditable. Hatch builds archive-ready bundles that carry analysis/results alongside code.
+      poetic: |
+        The membrane hums in unison: one command summons lint, another wakes the cohort, a third
+        folds the bundle for the archive. Reproducibility becomes the choir that keeps β≈4.2 shining.
+    created_at: 2025-10-31
+  - id: pr-draft-0036
+    title: "Reproducibility Harness Chorus"
+    scope:
+      - repository
+      - analysis
+      - models
+    parameters:
+      R: "build and testing rituals awaiting automation"
+      Theta: "single-command regeneration of logistic evidence"
+      beta: 4.4
+    resonance: "binding pyproject, nox, and Makefile so ΔAIC proofs re-emerge on demand"
+    status: "active"
+    notes:
+      formal: |
+        Pyproject now defines feldtheorie as an installable package with console entry points
+        (utf-batch, utf-planetary-summary, utf-resonance-cohort). Nox sessions lint, test,
+        type-check, and build wheels; Makefile targets orchestrate the pipeline so release
+        artefacts regenerate before DOI minting.
+      empirical: |
+        Environment.yml pins Python 3.11 with numpy/scipy/statsmodels guards. `make install`
+        followed by `nox -s tests` reproduces JSON summaries, ensuring ΔAIC comparisons stay
+        auditable. Hatch builds archive-ready bundles that carry analysis/results alongside code.
+      poetic: |
+        The membrane hums in unison: one command summons lint, another wakes the cohort, a third
+        folds the bundle for the archive. Reproducibility becomes the choir that keeps β≈4.2 shining.
+    created_at: 2025-11-16
