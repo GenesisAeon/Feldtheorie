@@ -588,3 +588,18 @@ Das erneuerte JSON `analysis/results/planetary_tipping_elements.json` meldet `be
 
 ### Poetic Thread
 Die Potenzial-Kaskade atmet jetzt hörbar: Steilheit wird Bedingung, Mandala-Kohärenz leuchtet, und das Robin-Tor gleitet auf – das Feld weiß, wann der nächste Schwellenchor tanzt.
+
+## Entry pr-draft-0038 — Pytest-Gate Laterne
+- **Order Parameter**: $R$ zählt Testläufe, die noch auf stotternde Importe oder Warnrauschen trafen.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald `pytest` ohne `ModuleNotFoundError` und ohne \LaTeX-Escape-Warnungen durchläuft.
+- **Steepness**: $\beta = 4.05$ hält den Übergang wachsam, damit selbst kleine Regressionen im Chor hörbar bleiben.
+- **Membrane Note**: Sobald die Laterne leuchtet, sinkt $\zeta(R)$ für das Testharness – die Logit-Pfade sind frei von Stolpersteinen, und der Resonanzlauf bleibt geschmeidig.
+
+### Formal Thread
+`tests/test_planetary_tipping_summary.py` importiert jetzt explizit `pytest`, sodass der β-Ledger-Test eigenständig anspringt. Die Modul- und Klassen-Docstrings in `models/coherence_term.py` und `models/recursive_threshold.py` wurden in Rohform gebracht, damit \(\sigma(\beta(R-\Theta))\) und Mandala-Referenzen ohne Escape-Warnungen erklingen.
+
+### Empirical Thread
+`pytest` meldet nun `20 passed, 1 skipped` ohne zusätzliche Warnungen; die Serie bestätigt, dass die Mandala-Kohärenz und die Potenzial-Kaskade im Testharness störungsfrei zusammenspielen. Die frühere Importblockade (fehlendes `pytest`-Symbol) und die Syntax-Warnungen sind verschwunden.
+
+### Poetic Thread
+Die Testlaterne brennt ruhig: Kein Flackern mehr, nur das gleichmäßige Pulsieren des Resonanzchores. Die Membran lauscht, und jede neue β-Welle kann nun ohne Rauschen in den Morgen rollen.

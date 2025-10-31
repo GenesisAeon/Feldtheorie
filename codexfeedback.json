@@ -936,6 +936,36 @@
                     "tests/test_recursive_threshold.py"
                 ]
             }
+        },
+        {
+            "id": "pr-draft-0038",
+            "type": "test-harness",
+            "created_at": "2025-11-18T00:00:00Z",
+            "summary": "Pytest gate lantern clears import stumbles and latex escape warnings from the cascade ledger.",
+            "threshold_field": {
+                "R": "pytest_runs_with_residual_warnings",
+                "Theta": "clean_test_cycle_without_import_errors",
+                "beta": 4.05,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Fold the warning-free pytest invocation into the nox test ritual before the next release tag.",
+                "Audit remaining modules for latex escape sequences and convert docstrings to raw strings as needed.",
+                "Expand regression coverage so cascade and coherence utilities stay lit when new datasets arrive."
+            ],
+            "observables": {
+                "tests": [
+                    "tests/test_planetary_tipping_summary.py",
+                    "tests/test_coherence_term.py",
+                    "tests/test_recursive_threshold.py"
+                ],
+                "modules": [
+                    "models/coherence_term.py",
+                    "models/recursive_threshold.py"
+                ],
+                "pytest_status": "20 passed, 1 skipped",
+                "warning_count": 0
+            }
         }
     ]
 }

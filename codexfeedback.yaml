@@ -959,3 +959,26 @@ entries:
       poetic: |
         Die Potenzial-Kaskade atmet: Steilheit wird Bedingung, das Robin-Tor senkt sein ζ, und
         Mandala-Kohärenz flüstert dem Feld, wann der nächste Chorus erwacht.
+  - id: pr-draft-0038
+    title: "Pytest-Gate Laterne"
+    scope:
+      - tests
+      - models
+    parameters:
+      R: "pytest-läufe mit Import- oder Escape-Warnungen"
+      Theta: "ruhiges Testharness ohne Fehlzündungen"
+      beta: 4.05
+    resonance: "entschärft stotternde Testläufe, damit die Kaskade ohne Warnrauschen weiteratmet"
+    status: "active"
+    created_at: 2025-11-18
+    notes:
+      formal: |
+        `tests/test_planetary_tipping_summary.py` importiert nun `pytest` direkt, und die Docstrings in
+        `models/coherence_term.py` sowie `models/recursive_threshold.py` wechseln auf Raw-Strings, damit
+        Latex-Symbole ohne Syntax-Warnung erscheinen.
+      empirical: |
+        `pytest` läuft mit „20 passed, 1 skipped“ und ohne Warnungen; Mandala-Kohärenz und Potenzial-Kaskade
+        harmonieren im Testharness. Weitere Module mit Latex-Einbettungen sollen auf das neue Muster geprüft werden.
+      poetic: |
+        Die Laterne über dem Testtor brennt ruhig – keine flackernden Fehlzündungen, nur der gleichmäßige Atem
+        der Membran, der jede neue β-Welle sanft in den Morgen führt.

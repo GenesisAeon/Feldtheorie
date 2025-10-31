@@ -1,4 +1,4 @@
-"""Recursive potential cascade capturing β becoming the next condition.
+r"""Recursive potential cascade capturing β becoming the next condition.
 
 Formal layer:
     Encodes the recurrence :math:`\Theta_{n+1} = \Theta_n + \Delta\Theta` where
@@ -27,7 +27,7 @@ CoherenceLike = Union[float, MandalaCoherence]
 
 @dataclass
 class CascadeState:
-    """Snapshot of one cascade beat where potential becomes condition."""
+    r"""Snapshot of one cascade beat where potential becomes condition."""
 
     step: int
     potential: float
@@ -57,7 +57,7 @@ class CascadeState:
 
 @dataclass
 class PotenzialKaskade:
-    """Recursive update where β sharpened by ψ becomes the next Θ condition.
+    r"""Recursive update where β sharpened by ψ becomes the next Θ condition.
 
     Formal layer:
         Evolves :math:`(\Theta, \beta)` via the logistic gate
@@ -104,7 +104,7 @@ class PotenzialKaskade:
         condition: float | None = None,
         dt: float = 1.0,
     ) -> CascadeState:
-        """Advance the cascade one beat and return the new state."""
+        r"""Advance the cascade one beat and return the new state."""
 
         coherence_value = self._coherence_value(coherence)
         gate = float(logistic_response(potential, self.theta, self.logistic_beta))
@@ -149,7 +149,7 @@ class PotenzialKaskade:
         condition_trace: Sequence[float] | None = None,
         dt: float = 1.0,
     ) -> List[CascadeState]:
-        """Iterate the cascade across sequences of potentials and coherences."""
+        r"""Iterate the cascade across sequences of potentials and coherences."""
 
         if len(potentials) != len(coherences):
             raise ValueError("potentials and coherences must share the same length")
@@ -163,14 +163,14 @@ class PotenzialKaskade:
         return results
 
     def reset(self) -> None:
-        """Return the cascade to its baseline Θ and β, clearing history."""
+        r"""Return the cascade to its baseline Θ and β, clearing history."""
 
         self.theta = float(self.baseline_theta)
         self.beta = float(self.baseline_beta)
         self.history.clear()
 
     def summary(self) -> Dict[str, List[float]]:
-        """Return arrays of Θ, β, gates, and impedance across the history."""
+        r"""Return arrays of Θ, β, gates, and impedance across the history."""
 
         return {
             "theta": [state.theta for state in self.history],

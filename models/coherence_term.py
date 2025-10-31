@@ -1,4 +1,4 @@
-"""Mandala coherence utilities coupling semantic fields via the threshold quartet.
+r"""Mandala coherence utilities coupling semantic fields via the threshold quartet.
 
 Formal layer:
     Provides :func:`mandala_coherence` to compute covariance and correlation between
@@ -29,7 +29,7 @@ from .membrane_solver import logistic_impedance_gate, logistic_response
 
 @dataclass
 class MandalaCoherence:
-    """Structured coherence diagnostics tying σ(β(R-Θ)) to ζ(R)."""
+    r"""Structured coherence diagnostics tying σ(β(R-Θ)) to ζ(R)."""
 
     covariance: float
     normalised: float
@@ -56,7 +56,7 @@ def mandala_coherence(
     zeta_closed: float = 1.3,
     zeta_open: float = 0.6,
 ) -> MandalaCoherence:
-    """Compute Mandala coherence M[ψ, φ] with logistic gating and impedance."""
+    r"""Compute Mandala coherence M[ψ, φ] with logistic gating and impedance."""
 
     if len(psi) != len(phi):
         raise ValueError("psi and phi must share the same length for coherence")
