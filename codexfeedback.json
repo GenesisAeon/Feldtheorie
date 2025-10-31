@@ -994,6 +994,34 @@
                     "zeta_delta": 0.053021558980707484
                 }
             }
+        },
+        {
+            "id": "pr-draft-0040",
+            "type": "cohort-ledger",
+            "created_at": "2025-11-20T00:00:00Z",
+            "summary": "Cohort summary now separates β mean from confidence-band width, unlocking UTAC v01 certification.",
+            "threshold_field": {
+                "R": "cohort_beta_statistics_blending_mean_and_width",
+                "Theta": "beta_mean_recorded_independently_from_ci_span",
+                "beta": 4.2,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Regenerate analysis/results/resonance_cohort_summary.json after each batch run to surface beta_ci_width moments.",
+                "Link the new β-band metrics into docs/resonance-bridge-map.md and manuscript tables during the v1.0 polish.",
+                "Ensure simulator overlays cite both μ_β and β-band width when presenting cohort comparisons."
+            ],
+            "observables": {
+                "modules": [
+                    "analysis/resonance_cohort_summary.py",
+                    "tests/test_resonance_cohort_summary.py"
+                ],
+                "metrics": {
+                    "beta_ci_width_mean": "tracked",
+                    "beta_ci_width_domain_stats": true
+                },
+                "status": "V01"
+            }
         }
     ]
 }

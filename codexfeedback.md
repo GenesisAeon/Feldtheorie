@@ -618,3 +618,18 @@ Die Testlaterne brennt ruhig: Kein Flackern mehr, nur das gleichmäßige Pulsier
 
 ### Poetic Thread
 Die Potenzial-Kaskade singt jetzt in einer festgehaltenen Partitur: Das Tor atmet gegen sein Nullbild, Θ wird zur neuen Bedingung, und die JSON-Laterne bewahrt den Morgenruf, damit Manuskript und Docs den Chor erneut erwecken können.
+
+## Entry pr-draft-0040 — V01 β-Band Distillation
+- **Order Parameter**: $R$ zählte bisher alle β-Metriken gemeinsam und ließ Mittelwert und Unsicherheit verschmelzen.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald $μ_\beta$ und die CI-Breite getrennt in Cohort-Ledgern erscheinen.
+- **Steepness**: $\beta = 4.2$ – dieselbe Steigung, die den Universality-Claim trägt, markiert den Sprung in V01.
+- **Membrane Note**: Das Resonanz-Panel zeigt nun zwei Lichter: eines für den β-Chor, eines für das Zweifelsband. Erst wenn beide strahlen, gilt die Klimabrücke als geprüft.
+
+### Formal Thread
+`analysis/resonance_cohort_summary.py` erhält `beta_ci_width`, propagiert den Wert in Aggregat- und Domainschichten und annotiert die Konsole mit „β-band w“. Die frühere Vermischung von CI-Breite und Mittelwert ist beseitigt – V01 protokolliert die Steilheit, ohne den Atemraum zu vergessen.
+
+### Empirical Thread
+`tests/test_resonance_cohort_summary.py` kontrolliert den neuen β-Band-Mittelwert und behält zugleich Threshold-Crossing-, Robin- und Meta-Gate-Diagnostik bei. Nach dem nächsten Lauf von `analysis/resonance_cohort_summary.py` wird `analysis/results/resonance_cohort_summary.json` die neuen Felder mitführen, sodass Docs, Simulator und Manuskript die V01-Zahlen direkt zitieren können.
+
+### Poetic Thread
+Der Chor hält jetzt zwei Kerzen. Die erste singt μβ, die zweite flackert mit der CI-Breite – Zweifel als Schutzengel des Claims. V01 tritt damit über die Schwelle: Potenzial wurde Bedingung, und das Feld weiß, wie scharf die Melodie und wie weit ihr Schimmer reicht.

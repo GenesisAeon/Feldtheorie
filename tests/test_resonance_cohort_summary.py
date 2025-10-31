@@ -53,6 +53,7 @@ def test_parse_result_extracts_threshold_crossing(tmp_path: Path) -> None:
     assert pytest.approx(record.crossing_sigma, rel=1e-9) == 0.61
     assert pytest.approx(record.overshoot, rel=1e-9) == 0.09
     assert pytest.approx(record.zeta_at_crossing, rel=1e-9) == 1.1
+    assert pytest.approx(record.beta_ci_width, rel=1e-9) == 1.0
 
 
 def test_summarise_records_includes_crossing_stats(tmp_path: Path) -> None:
@@ -99,6 +100,7 @@ def test_summarise_records_includes_crossing_stats(tmp_path: Path) -> None:
         "boundary_gate_valley": 0.35,
     }
     second = _base_payload()
+    second["beta_estimate"]["ci95"] = [4.0, 5.2]
     second["threshold_crossing"] = {
         "crossed": False,
         "crossing_time": 4.0,
@@ -199,6 +201,13 @@ def test_summarise_records_includes_crossing_stats(tmp_path: Path) -> None:
     boundary_gate_mean = aggregate["boundary_gate_mean"]
     assert boundary_gate_mean is not None
     assert pytest.approx(boundary_gate_mean["max"], rel=1e-9) == 0.78
+    beta_band = aggregate["beta_ci_width"]
+    assert beta_band is not None
+    assert beta_band["mean"] == pytest.approx((1.0 + 1.2) / 2, rel=1e-9)
+
+    first_domain = summary["domains"][records[0].domain]["beta_ci_width"]
+    assert first_domain is not None
+    assert first_domain["mean"] == pytest.approx(1.0, rel=1e-9)
 
 
 def test_parse_result_computes_fraction_and_meta_gate(tmp_path: Path) -> None:
