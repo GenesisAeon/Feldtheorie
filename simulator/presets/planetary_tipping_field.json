@@ -14,9 +14,9 @@
     "beta": 4.21,
     "beta_ci": [3.74, 4.68],
     "logistic_r2": 0.9874,
-    "delta_aic_best_null": 33.58,
-    "delta_r2_best_null": 0.0716,
-    "best_null_model": "linear"
+    "delta_aic_best_null": 35.2,
+    "delta_r2_best_null": 0.0832,
+    "best_null_model": "power_law"
   },
   "impedance": {
     "definition": "zeta(R) ≈ 1.62 - 0.41 · σ(beta(R-Theta))",
@@ -43,7 +43,7 @@
     }
   },
   "narrative": {
-    "formal": "Aggregierter logistischer Fit: Θ=1.67 K, β=4.21, ΔAIC≈33.6 gegen linear; Impedanzskizze ζ(R)=1.62-0.41·σ dokumentiert Governance-Entspannung.",
+    "formal": "Aggregierter logistischer Fit: Θ=1.67 K, β=4.21, ΔAIC≈35.2 gegen das Potenzgesetz (linear folgt mit ΔAIC≈33.6); Impedanzskizze ζ(R)=1.62-0.41·σ dokumentiert Governance-Entspannung.",
     "empirical": "Synthese aus TIPMIP-Notizen, Global Tipping Points 2025 und DeepResearch-Kartierung (`data/socio_ecology/planetary_tipping_elements.json`).",
     "poetic": "Wenn AMOC, Eis und Wald zugleich atmen, senkt ζ(R) den Vorhang – ein Gaia-Chor, der kippt, sobald R die 1.67-K-Schwelle küsst."
   },

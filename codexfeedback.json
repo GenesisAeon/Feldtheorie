@@ -121,6 +121,7 @@
             "id": "pr-draft-0006",
             "type": "bridge-alert",
             "created_at": "2025-10-28T00:00:00Z",
+            "status": "resonant",
             "summary": "Keep resonance bridge rows aligned with Delta-AIC diagnostics and simulator presets.",
             "threshold_field": {
                 "R": "resonance_rows_with_verified_delta_aic",
@@ -135,13 +136,18 @@
             ],
             "observables": {
                 "delta_aic_guardrails": {
-                    "honeybee": 18.7,
-                    "qpo": 25000.0,
-                    "llm": 48.8,
-                    "cognition": 59.5,
-                    "amazon": 70.7
+                    "honeybee": 25.20,
+                    "qpo": 25006.18,
+                    "llm": 48.83,
+                    "cognition": 59.54,
+                    "amazon": 70.70,
+                    "planetary": 35.20
                 },
-                "preset_sync_state": "forming",
+                "preset_sync_state": "resonant",
+                "guard_cli": "utf-preset-guard",
+                "tests": [
+                    "tests/test_preset_alignment_guard.py"
+                ],
                 "null_model_watch": []
             }
         },

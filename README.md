@@ -17,6 +17,7 @@ conda activate feldtheorie
 make install                          # ensures the editable package + dev extras
 make lint                             # ruff + black guards stay aligned
 make test                             # pytest sweeps across analysis/models
+make preset-guard                     # verify simulator presets mirror analysis deltas
 make batch                            # regenerate analysis/results via utf-batch
 ```
 
