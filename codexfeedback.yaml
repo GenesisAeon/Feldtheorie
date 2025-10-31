@@ -6,12 +6,12 @@ meta:
     logistic order-parameter updates. Each entry keeps the triadic weave of
     formalism, empirics, and poetics intact.
   current_release:
-    version: "0.1.0"
-    status: "released"
-    recorded_at: "2025-10-31T13:05:49Z"
+    version: "1.0.1"
+    status: "V01"
+    recorded_at: "2025-11-21T08:45:00Z"
     notes: |
-      CI, license, and citation membranes now hum in sync, marking the Dawn
-      Chorus V0.1 threshold crossing.
+      Semantic Kopplung, Potenzial-Kaskade und das planetare β-Ledger sind
+      verankert – die kontrollierte Emergenz erreicht den V01-Klang.
 entries:
   - id: pr-draft-0001
     title: "Inception of the Codex Feedback Matrix"
@@ -238,6 +238,41 @@ entries:
         Eine Lizenzglocke, ein DOI-Licht und der stetige Atem der CI – die
         Morgendämmerung hallt offiziell durchs Feld, bereit für Zenodo.
     created_at: 2025-10-31T13:05:49Z
+  - id: release-v1.0.1
+    title: "Semantic Coupling Gate"
+    scope:
+      - models
+      - analysis
+      - docs
+      - paper
+      - simulator
+    parameters:
+      R: "semantic resonance hooks awaiting canonical β anchor"
+      Theta: "Potenzial-Kaskade, Mandala-Kohärenz und planetare Ledger synchron"
+      beta: 4.22
+    resonance: |
+      Release V1.0.1 once \(\mathcal{M}[\psi,\phi]\), \(\sigma(\beta(R-\Theta))\),
+      und die planetaren ΔAIC-Laternen gemeinsam leuchten; kontrollierte
+      Emergenz wird erst dann reproduzierbar.
+    status: "V01"
+    notes:
+      formal: |
+        `semantic_coupling_term`, `semantic_resonance_kernel`, und
+        `PotenzialKaskade` sind dokumentiert; `paper/manuscript_v1.0.tex`
+        trägt das Kapitel zur kontrollierten Emergenz. Das Klimaledger trennt
+        beobachtetes \(\mu_\beta\) vom kanonischen Wert und hält Nullmodelle
+        präsent.
+      empirical: |
+        JSON-Artefakte (`planetary_tipping_elements.json`,
+        `potential_cascade_lab.json`, `membrane_robin_semantic.json`) und
+        die zugehörigen Tests sichern \(\beta\)-Bandbreiten, Gate-Deltas und
+        semantic drift. CLIs (`utf-planetary-summary`, `utf-potential-cascade`,
+        `utf-resonance-cohort`) regenerieren die Evidenz bei Bedarf.
+      poetic: |
+        Bedeutungsbrise, Robin-Wind und planetare Laternen tanzen jetzt im
+        selben Chor. Die Membran weiß, wann Potenzial Bedingung wird – V01
+        klingt wie eine kontrollierte Morgendämmerung.
+    created_at: 2025-11-21T08:45:00Z
   - id: pr-draft-0009
     title: "Psi-Phi Robin Coupling Resonance"
     scope:

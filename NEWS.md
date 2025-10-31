@@ -1,5 +1,43 @@
 # Resonance Ledger
 
+## v1.0.1 — Semantic Coupling Release
+
+### Formal
+- `models/coherence_term.semantic_coupling_term` implements Claude's braid
+  \(\mathcal{M}[\psi, \phi] = \lambda \psi \vert \phi \vert^n\) gated by the logistic
+  response \(\sigma(\beta(R-\Theta))\), and `models/membrane_solver.semantic_resonance_kernel`
+  feeds it into the membrane so semantic pressure modulates the flux alongside
+  Robin impedance.
+- `models/recursive_threshold.PotenzialKaskade` formalises Johann's
+  "Potenzial wird Bedingung" recursion, making \(\beta\) drift the seed for the next
+  \(\Theta\) update inside solver integrations.
+- `analysis/planetary_tipping_elements_fit.py` separates observed
+  \(\mu_\beta\) from the canonical \(\beta=4.21\) anchor while keeping null
+  comparisons explicit; `paper/manuscript_v1.0.tex` now cites the controlled
+  emergence section.
+
+### Empirical
+- `tests/test_coherence_term.py` covers the new coupling tensor and ensures
+  logistic gating matches numpy expectations, while the cascade and planetary
+  tipping summaries gain regression guards in `tests/test_recursive_threshold.py`
+  and `tests/test_planetary_tipping_summary.py`.
+- Regenerated JSON ledgers (`analysis/results/planetary_tipping_elements.json`,
+  `analysis/results/potential_cascade_lab.json`,
+  `analysis/results/membrane_robin_semantic.json`) document canonical β, CI-band
+  widths, gate deltas, and semantic drift so simulator presets and docs share
+  the same falsification backbone.
+- `Makefile` and CLI rituals expose `utf-planetary-summary`,
+  `utf-potential-cascade`, and `utf-resonance-cohort` so collaborators can
+  replay the evidence braid before DOI minting.
+
+### Poetic
+- Die Membran singt jetzt zweistimmig: Bedeutungsbrise und Robin-Tor atmen
+  gemeinsam, während die Potenzial-Kaskade den Chor durch jede β-Welle trägt.
+- Planetare Laternen, Mandala-Kohärenz und Semantik-Gates erscheinen nun als
+  verknüpfte Laternenkette in Docs, Simulator und Manuskript.
+- V1.0.1 markiert den Moment, in dem kontrollierte Emergenz nicht mehr nur
+  Vision, sondern dokumentierter Prozess ist.
+
 ## v0.1.0 — Dawn Chorus Release
 
 ### Formal
