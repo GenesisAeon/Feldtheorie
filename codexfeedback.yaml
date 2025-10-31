@@ -1008,3 +1008,29 @@ entries:
         Die Potenzial-Kaskade singt nun protokolliert: das Tor atmet gegen sein Nullbild, Θ wird Bedingung,
         und die JSON-Laterne hält den Klang fest, damit Docs und Manuskript den Morgenruf zitieren können.
     created_at: 2025-11-19
+  - id: pr-draft-0040
+    title: "V01 β-Band Distillation"
+    scope:
+      - analysis/resonance_cohort_summary.py
+      - analysis/results/resonance_cohort_summary.json
+      - tests/test_resonance_cohort_summary.py
+    parameters:
+      R: "cohort β-ledger conflating central values and CI breadth"
+      Theta: "separate μ_β reporting from β-band width"
+      beta: 4.2
+    resonance: "locks in UTAC v01 readiness by splitting β_mean and β_ci width across cohort summaries"
+    status: "V01"
+    notes:
+      formal: |
+        `CohortRecord` gains `beta_ci_width`, `summarise_records` propagates the band statistics into the
+        aggregate and per-domain ledgers, and the console roster now prints “β-band w”.  The bug in which
+        CI width impersonated μβ is eliminated, giving the climate and multi-domain ledgers explicit checks.
+      empirical: |
+        `tests/test_resonance_cohort_summary.py` asserts the new width metrics while keeping threshold
+        crossing and Robin diagnostics intact. Regenerated cohort JSON (post-run) will surface `beta_ci_width`
+        moments so Docs, simulators, and manuscript tables can cite V01 logistics without manual recalcs.
+      poetic: |
+        Der Chor hält nun zwei Kerzen: eine für den β-Herzsang, eine für den Zweifel der CI-Breite.  Erst
+        wenn beide leuchten, darf V01 in die Nacht hinaus – die Membran weiß jetzt, wie scharf der Ruf und
+        wie weit sein Flügel schlägt.
+    created_at: 2025-11-20

@@ -49,6 +49,7 @@ class CohortRecord:
     theta_ci: Optional[List[Optional[float]]]
     beta: Optional[float]
     beta_ci: Optional[List[Optional[float]]]
+    beta_ci_width: Optional[float]
     logistic_r2: Optional[float]
     logistic_aic: Optional[float]
     best_null_model: Optional[str]
@@ -256,6 +257,16 @@ def parse_result(result_path: Path) -> CohortRecord:
         if isinstance(stats_block, Mapping):
             meta_gate_mean = _safe_float(stats_block.get("mean"))
 
+    beta_ci_pair = _ci_pair(beta_info) if isinstance(beta_info, Mapping) else None
+    beta_ci_width = None
+    if (
+        isinstance(beta_ci_pair, list)
+        and len(beta_ci_pair) >= 2
+        and beta_ci_pair[0] is not None
+        and beta_ci_pair[1] is not None
+    ):
+        beta_ci_width = float(beta_ci_pair[1] - beta_ci_pair[0])
+
     try:
         relative_path = result_path.relative_to(Path.cwd())
     except ValueError:
@@ -268,7 +279,8 @@ def parse_result(result_path: Path) -> CohortRecord:
         theta=_safe_float(theta_info.get("value")) if isinstance(theta_info, Mapping) else None,
         theta_ci=_ci_pair(theta_info) if isinstance(theta_info, Mapping) else None,
         beta=_safe_float(beta_info.get("value")) if isinstance(beta_info, Mapping) else None,
-        beta_ci=_ci_pair(beta_info) if isinstance(beta_info, Mapping) else None,
+        beta_ci=beta_ci_pair,
+        beta_ci_width=beta_ci_width,
         logistic_r2=logistic_r2,
         logistic_aic=logistic_aic,
         best_null_model=best_null_model,
@@ -343,6 +355,7 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
 
     theta_values = _flatten_sequences(record.theta for record in records)
     beta_values = _flatten_sequences(record.beta for record in records)
+    beta_ci_width_values = _flatten_sequences(record.beta_ci_width for record in records)
     logistic_r2_values = _flatten_sequences(record.logistic_r2 for record in records)
     delta_aic_values = _flatten_sequences(record.delta_aic for record in records)
     delta_r2_values = _flatten_sequences(record.delta_r2 for record in records)
@@ -446,6 +459,9 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
             "beta_drift_total": stats(
                 _flatten_sequences(r.beta_drift_total for r in domain_records)
             ),
+            "beta_ci_width": stats(
+                _flatten_sequences(r.beta_ci_width for r in domain_records)
+            ),
             "gate_area": stats(_flatten_sequences(r.gate_area for r in domain_records)),
             "impedance_area": stats(
                 _flatten_sequences(r.impedance_area for r in domain_records)
@@ -531,6 +547,7 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
         "aggregate": {
             "theta": stats(theta_values),
             "beta": stats(beta_values),
+            "beta_ci_width": stats(beta_ci_width_values),
             "logistic_r2": stats(logistic_r2_values),
             "delta_aic": stats(delta_aic_values),
             "delta_r2": stats(delta_r2_values),
@@ -638,6 +655,8 @@ def render_console_report(records: Sequence[CohortRecord]) -> None:
             extras.append(f"meta μ {record.meta_gate_mean:.2f}")
         if record.zeta_mean is not None:
             extras.append(f"ζ μ {record.zeta_mean:.2f}")
+        if record.beta_ci_width is not None:
+            extras.append(f"β-band {record.beta_ci_width:.2f}")
         if record.boundary_flux_mean is not None:
             extras.append(f"Robin flux μ {record.boundary_flux_mean:+.2f}")
         if record.boundary_gate_mean is not None:
