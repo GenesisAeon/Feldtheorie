@@ -45,9 +45,10 @@ HYPOTHESIS_NOTES: List[Dict[str, Any]] = [
         ),
         "evidence": {
             "beta_mean": None,  # gefüllt in compile_summary (μ_β)
-            "beta_band_width_mean": None,  # mittlere CI-Breite für β
+            "beta_ci_width_mean": None,  # mittlere CI-Breite für β
             "delta_aic_linear": None,
             "delta_aic_power_law": None,
+            "n_elements": None,
         },
         "status": "in_progress",
         "next_steps": [
@@ -190,6 +191,21 @@ def build_logistic_curve(theta: float, beta: float) -> List[Dict[str, float]]:
     return curve
 
 
+def _format_formal_beta_statement(beta_values: List[float], beta_mean: Optional[float]) -> str:
+    """Generate the formal-layer beta summary with graceful fallbacks."""
+
+    if not beta_values or beta_mean is None:
+        return "σ(β(R-Θ)) koppelt lokale Felder via g_ij; neue Messungen müssen das β-Band noch füllen."
+
+    beta_min = min(beta_values)
+    beta_max = max(beta_values)
+    return "σ(β(R-Θ)) koppelt lokale Felder via g_ij; β liegt zwischen {:.2f} und {:.2f} (μ≈{:.2f}).".format(
+        beta_min,
+        beta_max,
+        beta_mean,
+    )
+
+
 def _utc_now_isoformat() -> str:
     """Return the current UTC timestamp in ISO-8601 with ``Z`` suffix."""
 
@@ -203,10 +219,23 @@ def compile_summary(
     *,
     generated_at: Optional[str] = None,
 ) -> Dict[str, Any]:
-    beta_band_width_mean = mean(e.steepness_band for e in elements)
-    beta_values = [e.beta for e in elements]
-    beta_mean = mean(beta_values)
-    theta_values = [e.theta for e in elements]
+    beta_values = [e.beta for e in elements if getattr(e, "beta", None) is not None]
+    band_widths = [
+        e.steepness_band for e in elements if getattr(e, "beta_ci95", None) is not None
+    ]
+    theta_values = [e.theta for e in elements if getattr(e, "theta", None) is not None]
+
+    beta_mean: Optional[float]
+    if beta_values:
+        beta_mean = float(mean(beta_values))
+    else:
+        beta_mean = None
+
+    beta_ci_width_mean: Optional[float]
+    if band_widths:
+        beta_ci_width_mean = float(mean(band_widths))
+    else:
+        beta_ci_width_mean = None
 
     if generated_at is None:
         generated_at = _utc_now_isoformat()
@@ -216,11 +245,23 @@ def compile_summary(
         note = deepcopy(base)
         if note["id"] == "beta_universality":
             note["evidence"]["beta_mean"] = beta_mean
-            note["evidence"]["beta_band_width_mean"] = beta_band_width_mean
+            note["evidence"]["beta_ci_width_mean"] = beta_ci_width_mean
+            note["evidence"]["n_elements"] = len(beta_values)
             note["evidence"]["delta_aic_linear"] = aggregate.null_models["linear"]["delta_aic"]
             note["evidence"]["delta_aic_power_law"] = aggregate.null_models["power_law"]["delta_aic"]
-            if aggregate.null_models["linear"]["delta_aic"] > 30 and aggregate.null_models["power_law"]["delta_aic"] > 30:
+
+            delta_linear = aggregate.null_models["linear"]["delta_aic"]
+            delta_power = aggregate.null_models["power_law"]["delta_aic"]
+            aic_strong = delta_linear is not None and delta_power is not None and delta_linear > 30 and delta_power > 30
+            beta_in_band = beta_mean is not None and 3.6 <= beta_mean <= 4.6
+            enough_elements = len(beta_values) >= 3
+
+            if aic_strong and beta_in_band and enough_elements:
                 note["status"] = "supported"
+            elif aic_strong and enough_elements and beta_mean is not None:
+                note["status"] = "contradicted"
+            else:
+                note["status"] = "inconclusive"
         elif note["id"] == "adaptive_threshold":
             note["evidence"]["theta_trend_observed"] = any(
                 abs(e.theta_ci95[1] - e.theta_ci95[0]) > 0.3 * e.theta for e in elements
@@ -246,11 +287,11 @@ def compile_summary(
             "impedance_std": aggregate.impedance_std,
             "null_models": aggregate.null_models,
             "beta_mean": beta_mean,
-            "beta_band_width_mean": beta_band_width_mean,
-            "beta_min": min(beta_values),
-            "beta_max": max(beta_values),
-            "theta_min": min(theta_values),
-            "theta_max": max(theta_values)
+            "beta_ci_width_mean": beta_ci_width_mean,
+            "beta_min": min(beta_values) if beta_values else None,
+            "beta_max": max(beta_values) if beta_values else None,
+            "theta_min": min(theta_values) if theta_values else None,
+            "theta_max": max(theta_values) if theta_values else None
         },
         "elements": [
             {
@@ -274,11 +315,7 @@ def compile_summary(
             "notes": "ΔAIC und ΔR² stammen aus DeepResearch-Synthesen; künftige TIPMIP-Datenläufe sollen diese Werte replizieren."
         },
         "tri_layer": {
-            "formal": "σ(β(R-Θ)) koppelt lokale Felder via g_ij; β liegt zwischen {:.2f} und {:.2f} (μ≈{:.2f}).".format(
-                min(beta_values),
-                max(beta_values),
-                beta_mean,
-            ),
+            "formal": _format_formal_beta_statement(beta_values, beta_mean),
             "empirical": "Aggregierte Parameter entstammen Global Tipping Points 2025, TIPMIP-Notizen und RepoPlan-DeepResearch-Workflows.",
             "poetic": "AMOC, Eis, Wald und Permafrost stimmen in denselben Schwellenchor ein – eine Gaia-Membran, die auf Resonanz wartet."
         }

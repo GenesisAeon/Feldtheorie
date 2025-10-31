@@ -703,7 +703,7 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Backfill downstream consumers with the clarified β mean and band width fields.",
+                "Backfill downstream consumers with the clarified β mean and CI width fields.",
                 "Audit other analysis exports for mismatched semantic labels before the next bridge sync.",
                 "Document the correction within Docs/ threshold narratives so readers do not confuse precision with steepness."
             ],
@@ -711,7 +711,7 @@
                 "analysis_script": "analysis/planetary_tipping_elements_fit.py",
                 "export_field": "hypotheses[0].evidence.beta_mean",
                 "beta_mean_reported": 3.915,
-                "beta_band_width_mean": 1.0275,
+                "beta_ci_width_mean": 1.0275,
                 "delta_aic_linear": 33.58
             }
         },
@@ -815,7 +815,7 @@
                 "analysis_result": "analysis/results/planetary_tipping_elements.json",
                 "generated_at": "2025-10-29T18:39:22Z",
                 "beta_mean": 3.915,
-                "beta_band_width_mean": 1.0275,
+                "beta_ci_width_mean": 1.0275,
                 "regression_test": "tests/test_planetary_tipping_summary.py"
             }
         },
@@ -843,6 +843,35 @@
                 "regression_tests": [
                     "tests/test_resonance_cohort_summary.py::test_parse_result_reads_boundary_metrics",
                     "tests/test_resonance_cohort_summary.py::test_summarise_records_includes_crossing_stats"
+                ]
+            }
+        },
+        {
+            "id": "pr-draft-0035",
+            "type": "beta-guard",
+            "created_at": "2025-11-15T09:00:00Z",
+            "summary": "Hardened planetary tipping β evidence with explicit CI width semantics and sigmoid fit fallbacks for reproducibility.",
+            "threshold_field": {
+                "R": "beta_exports_merging_signal_and_precision",
+                "Theta": "universality_guardrails_in_place",
+                "beta": 4.15,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Mirror the beta_ci_width_mean and n_elements schema into other domain exports before the next bridge sync.",
+                "Adopt sigmoid_fit.fallbacks inside cohort and adaptive analyses so missing SciPy wheels never break reruns.",
+                "Document the revised supported/contradicted logic in Docs/threshold narratives for reviewer clarity."
+            ],
+            "observables": {
+                "analysis_script": "analysis/planetary_tipping_elements_fit.py",
+                "analysis_result": "analysis/results/planetary_tipping_elements.json",
+                "beta_ci_width_mean": 1.0275,
+                "n_elements": 4,
+                "status_beta_universality": "supported",
+                "fallback_module": "models/sigmoid_fit.py",
+                "tests": [
+                    "tests/test_planetary_tipping_summary.py",
+                    "tests/test_sigmoid_fit.py"
                 ]
             }
         }
