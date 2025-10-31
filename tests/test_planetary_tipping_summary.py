@@ -57,11 +57,21 @@ def test_compile_summary_tracks_beta_mean_and_timestamp() -> None:
 
     aggregate_summary = summary["aggregate"]
     assert aggregate_summary["beta_mean"] == 4.2
+    assert aggregate_summary["beta_std"] == pytest.approx(0.282842712474619)
+    assert aggregate_summary["beta_sem"] == pytest.approx(0.2)
+    assert aggregate_summary["beta_sem_ci95"] == pytest.approx([3.808, 4.592])
     assert aggregate_summary["beta_ci_width_mean"] == pytest.approx(0.9)
+    assert aggregate_summary["beta_ci_width_std"] == pytest.approx(0.1414213562373095)
+    assert aggregate_summary["n_elements"] == 2
 
     beta_note = next(note for note in summary["hypotheses"] if note["id"] == "beta_universality")
     assert beta_note["evidence"]["beta_mean"] == 4.2
+    assert beta_note["evidence"]["beta_std"] == pytest.approx(0.282842712474619)
+    assert beta_note["evidence"]["beta_sem"] == pytest.approx(0.2)
+    assert beta_note["evidence"]["beta_sem_ci95"] == pytest.approx([3.808, 4.592])
     assert beta_note["evidence"]["beta_ci_width_mean"] == pytest.approx(0.9)
+    assert beta_note["evidence"]["beta_ci_width_std"] == pytest.approx(0.1414213562373095)
+    assert beta_note["evidence"]["n_elements"] == 2
     assert beta_note["status"] == "inconclusive"
 
 

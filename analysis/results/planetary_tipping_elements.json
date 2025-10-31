@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-31T06:38:18Z",
+  "generated_at": "2025-10-31T07:47:38Z",
   "dataset": "data/socio_ecology/planetary_tipping_elements.json",
   "metadata": "data/socio_ecology/planetary_tipping_elements.metadata.json",
   "aggregate": {
@@ -33,7 +33,15 @@
       }
     },
     "beta_mean": 3.915,
+    "beta_std": 0.37810933163129756,
+    "beta_sem": 0.18905466581564878,
+    "beta_sem_ci95": [
+      3.5444528550013286,
+      4.285547144998672
+    ],
     "beta_ci_width_mean": 1.0275,
+    "beta_ci_width_std": 0.11842719282327001,
+    "n_elements": 4,
     "beta_min": 3.49,
     "beta_max": 4.38,
     "theta_min": 0.175,
@@ -169,7 +177,14 @@
         "beta_ci_width_mean": 1.0275,
         "delta_aic_linear": 33.58,
         "delta_aic_power_law": 35.2,
-        "n_elements": 4
+        "n_elements": 4,
+        "beta_std": 0.37810933163129756,
+        "beta_sem": 0.18905466581564878,
+        "beta_sem_ci95": [
+          3.5444528550013286,
+          4.285547144998672
+        ],
+        "beta_ci_width_std": 0.11842719282327001
       },
       "status": "supported",
       "next_steps": [

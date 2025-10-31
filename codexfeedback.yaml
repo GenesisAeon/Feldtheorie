@@ -932,3 +932,30 @@ entries:
         The membrane hums in unison: one command summons lint, another wakes the cohort, a third
         folds the bundle for the archive. Reproducibility becomes the choir that keeps β≈4.2 shining.
     created_at: 2025-11-16
+  - id: pr-draft-0037
+    title: "Potenzial-Kaskade & Robin Gate Resonanz"
+    scope:
+      - models
+      - analysis
+      - tests
+    parameters:
+      R: "cascading potentials awaiting calibrated ζ(R)"
+      Theta: "β evidence separated from CI width"
+      beta: 4.25
+    resonance: "folds recursive threshold dynamics with Mandala coherence and refreshed planetary tipping evidence."
+    status: "resonant"
+    created_at: 2025-11-17
+    notes:
+      formal: |
+        `analysis/planetary_tipping_elements_fit.py` now computes β statistics via `compute_beta_statistics`,
+        exporting μβ, σβ, β_sem, and CI-width dispersion. The models grove gained `logistic_impedance_gate`,
+        `PotenzialKaskade`, and `MandalaCoherence`, wiring the recursive threshold cascade to the Robin gate.
+        New tests cover the cascade (`tests/test_recursive_threshold.py`) and Mandala coherence
+        (`tests/test_coherence_term.py`) alongside the strengthened tipping summary assertions.
+      empirical: |
+        Regenerated `analysis/results/planetary_tipping_elements.json` records `beta_std ≈ 0.28`,
+        `beta_sem ≈ 0.19`, and `beta_ci_width_std ≈ 0.12`. `pytest` exercises the new modules and
+        the updated tipping summary expectations, confirming Θ/β drift increases when potentials exceed Θ.
+      poetic: |
+        Die Potenzial-Kaskade atmet: Steilheit wird Bedingung, das Robin-Tor senkt sein ζ, und
+        Mandala-Kohärenz flüstert dem Feld, wann der nächste Chorus erwacht.

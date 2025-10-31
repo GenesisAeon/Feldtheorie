@@ -22,11 +22,12 @@ from __future__ import annotations
 import argparse
 import json
 from copy import deepcopy
+import math
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 DATA_PATH = Path("data/socio_ecology/planetary_tipping_elements.json")
 META_PATH = Path("data/socio_ecology/planetary_tipping_elements.metadata.json")
@@ -144,6 +145,68 @@ class AggregateLogistic:
     null_models: Dict[str, Dict[str, float]]
 
 
+@dataclass
+class BetaStatistics:
+    """Bundle β statistics so the mean and CI width never blur."""
+
+    count: int
+    mean: Optional[float]
+    std: Optional[float]
+    sem: Optional[float]
+    sem_ci95: Optional[Tuple[float, float]]
+    ci_width_mean: Optional[float]
+    ci_width_std: Optional[float]
+
+
+def _mean(values: Sequence[float]) -> Optional[float]:
+    return float(mean(values)) if values else None
+
+
+def _sample_std(values: Sequence[float], centre: float) -> Optional[float]:
+    if len(values) < 2:
+        return None
+    variance = sum((value - centre) ** 2 for value in values) / (len(values) - 1)
+    return math.sqrt(max(variance, 0.0))
+
+
+def compute_beta_statistics(elements: Sequence[LogisticElement]) -> BetaStatistics:
+    """Return μβ, dispersion, and CI width diagnostics."""
+
+    beta_values = [float(e.beta) for e in elements if getattr(e, "beta", None) is not None]
+    width_values = [
+        float(e.steepness_band)
+        for e in elements
+        if getattr(e, "beta_ci95", None) is not None
+    ]
+
+    beta_mean = _mean(beta_values)
+    beta_std = _sample_std(beta_values, beta_mean) if beta_mean is not None else None
+    if beta_std is not None and beta_mean is not None and beta_values:
+        beta_sem = beta_std / math.sqrt(len(beta_values))
+        beta_sem_ci95 = (
+            beta_mean - 1.96 * beta_sem,
+            beta_mean + 1.96 * beta_sem,
+        )
+    else:
+        beta_sem = None
+        beta_sem_ci95 = None
+
+    ci_width_mean = _mean(width_values)
+    ci_width_std = (
+        _sample_std(width_values, ci_width_mean) if ci_width_mean is not None else None
+    )
+
+    return BetaStatistics(
+        count=len(beta_values),
+        mean=beta_mean,
+        std=beta_std,
+        sem=beta_sem,
+        sem_ci95=beta_sem_ci95,
+        ci_width_mean=ci_width_mean,
+        ci_width_std=ci_width_std,
+    )
+
+
 def load_elements() -> List[LogisticElement]:
     payload = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     elements = []
@@ -220,22 +283,8 @@ def compile_summary(
     generated_at: Optional[str] = None,
 ) -> Dict[str, Any]:
     beta_values = [e.beta for e in elements if getattr(e, "beta", None) is not None]
-    band_widths = [
-        e.steepness_band for e in elements if getattr(e, "beta_ci95", None) is not None
-    ]
+    stats = compute_beta_statistics(elements)
     theta_values = [e.theta for e in elements if getattr(e, "theta", None) is not None]
-
-    beta_mean: Optional[float]
-    if beta_values:
-        beta_mean = float(mean(beta_values))
-    else:
-        beta_mean = None
-
-    beta_ci_width_mean: Optional[float]
-    if band_widths:
-        beta_ci_width_mean = float(mean(band_widths))
-    else:
-        beta_ci_width_mean = None
 
     if generated_at is None:
         generated_at = _utc_now_isoformat()
@@ -244,21 +293,32 @@ def compile_summary(
     for base in HYPOTHESIS_NOTES:
         note = deepcopy(base)
         if note["id"] == "beta_universality":
-            note["evidence"]["beta_mean"] = beta_mean
-            note["evidence"]["beta_ci_width_mean"] = beta_ci_width_mean
-            note["evidence"]["n_elements"] = len(beta_values)
+            note["evidence"]["beta_mean"] = stats.mean
+            note["evidence"]["beta_std"] = stats.std
+            note["evidence"]["beta_sem"] = stats.sem
+            note["evidence"]["beta_sem_ci95"] = (
+                list(stats.sem_ci95) if stats.sem_ci95 is not None else None
+            )
+            note["evidence"]["beta_ci_width_mean"] = stats.ci_width_mean
+            note["evidence"]["beta_ci_width_std"] = stats.ci_width_std
+            note["evidence"]["n_elements"] = stats.count
             note["evidence"]["delta_aic_linear"] = aggregate.null_models["linear"]["delta_aic"]
             note["evidence"]["delta_aic_power_law"] = aggregate.null_models["power_law"]["delta_aic"]
 
             delta_linear = aggregate.null_models["linear"]["delta_aic"]
             delta_power = aggregate.null_models["power_law"]["delta_aic"]
-            aic_strong = delta_linear is not None and delta_power is not None and delta_linear > 30 and delta_power > 30
-            beta_in_band = beta_mean is not None and 3.6 <= beta_mean <= 4.6
-            enough_elements = len(beta_values) >= 3
+            aic_strong = (
+                delta_linear is not None
+                and delta_power is not None
+                and delta_linear > 30
+                and delta_power > 30
+            )
+            beta_in_band = stats.mean is not None and 3.6 <= stats.mean <= 4.6
+            enough_elements = stats.count >= 3
 
             if aic_strong and beta_in_band and enough_elements:
                 note["status"] = "supported"
-            elif aic_strong and enough_elements and beta_mean is not None:
+            elif aic_strong and enough_elements and stats.mean is not None:
                 note["status"] = "contradicted"
             else:
                 note["status"] = "inconclusive"
@@ -286,8 +346,13 @@ def compile_summary(
             "impedance_mean": aggregate.impedance_mean,
             "impedance_std": aggregate.impedance_std,
             "null_models": aggregate.null_models,
-            "beta_mean": beta_mean,
-            "beta_ci_width_mean": beta_ci_width_mean,
+            "beta_mean": stats.mean,
+            "beta_std": stats.std,
+            "beta_sem": stats.sem,
+            "beta_sem_ci95": list(stats.sem_ci95) if stats.sem_ci95 is not None else None,
+            "beta_ci_width_mean": stats.ci_width_mean,
+            "beta_ci_width_std": stats.ci_width_std,
+            "n_elements": stats.count,
             "beta_min": min(beta_values) if beta_values else None,
             "beta_max": max(beta_values) if beta_values else None,
             "theta_min": min(theta_values) if theta_values else None,
@@ -315,7 +380,7 @@ def compile_summary(
             "notes": "ΔAIC und ΔR² stammen aus DeepResearch-Synthesen; künftige TIPMIP-Datenläufe sollen diese Werte replizieren."
         },
         "tri_layer": {
-            "formal": _format_formal_beta_statement(beta_values, beta_mean),
+            "formal": _format_formal_beta_statement(beta_values, stats.mean),
             "empirical": "Aggregierte Parameter entstammen Global Tipping Points 2025, TIPMIP-Notizen und RepoPlan-DeepResearch-Workflows.",
             "poetic": "AMOC, Eis, Wald und Permafrost stimmen in denselben Schwellenchor ein – eine Gaia-Membran, die auf Resonanz wartet."
         }

@@ -16,6 +16,7 @@ from .membrane_solver import (
     DynamicRobinBoundary,
     ThresholdFieldSolver,
     logistic_response,
+    logistic_impedance_gate,
     semantic_resonance_kernel,
     smooth_impedance_profile,
     threshold_crossing_diagnostics,
@@ -25,6 +26,8 @@ from .logistic_envelope import LogisticFieldEnvelope
 from .coupled_threshold_field import CoupledThresholdField, logistic_semantic_kernel, ramp_driver
 from .resonant_impedance import ResonantImpedance
 from .sigmoid_fit import SigmoidFitResult, fit_sigmoid_with_fallbacks, linear_fit_aic, power_law_fit_aic
+from .coherence_term import MandalaCoherence, mandala_coherence
+from .recursive_threshold import CascadeState, PotenzialKaskade
 
 __all__ = [
     "ThresholdFieldSolver",
@@ -38,10 +41,15 @@ __all__ = [
     "logistic_semantic_kernel",
     "logistic_response",
     "smooth_impedance_profile",
+    "logistic_impedance_gate",
     "semantic_resonance_kernel",
     "threshold_crossing_diagnostics",
     "fit_sigmoid_with_fallbacks",
     "linear_fit_aic",
     "power_law_fit_aic",
     "ramp_driver",
+    "MandalaCoherence",
+    "mandala_coherence",
+    "CascadeState",
+    "PotenzialKaskade",
 ]
