@@ -5,10 +5,10 @@
         "schema_version": "0.1",
         "description": "Machine-readable hooks for PR tracking and emergent logistic transitions.",
         "current_release": {
-            "version": "1.0.1",
-            "status": "V01",
-            "recorded_at": "2025-11-21T08:45:00Z",
-            "notes": "Semantic coupling, PotenzialKaskade, and planetary β ledger documented; controlled emergence reaches the V01 cadence."
+            "version": "2.0.0",
+            "status": "V02",
+            "recorded_at": "2025-10-31T17:41:04Z",
+            "notes": "YAML-driven Potenzial-Kaskade scenarios (demo, LLM, climate) plus refreshed cohort ledger mark the V02 controlled-emergence milestone."
         }
     },
     "entries": [
@@ -1079,9 +1079,9 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Document the new config workflow in docs/ai/controlled_emergence.md and resonance bridge notes.",
-                "Expose config_path metadata in simulator presets once Potenzial-Kaskade panels land.",
-                "Bundle additional YAML scenarios for LLM and climate cascades to prepare the V02 cohort sweep."
+                "Surface scenario selectors in simulator presets once Potenzial-Kaskade panels ship.",
+                "Link scenario summaries into docs/resonance-bridge-map.md when new cascades join the ledger.",
+                "Track additional YAML lanterns (e.g., ethics or cognition sweeps) to extend the V02 family."
             ],
             "observables": {
                 "modules": [
@@ -1089,12 +1089,17 @@
                     "tests/test_potential_cascade_lab.py"
                 ],
                 "artifacts": {
-                    "config_preset": "analysis/batch_configs/potential_cascade.yaml"
+                    "config_preset": "analysis/batch_configs/potential_cascade.yaml",
+                    "config_llm": "analysis/batch_configs/potential_cascade_llm.yaml",
+                    "config_climate": "analysis/batch_configs/potential_cascade_climate.yaml",
+                    "result_demo": "analysis/results/potential_cascade_lab.json",
+                    "result_llm": "analysis/results/potential_cascade_llm.json",
+                    "result_climate": "analysis/results/potential_cascade_climate.json"
                 },
                 "dependencies": {
                     "pyyaml": ">=6.0"
                 },
-                "status": "active"
+                "status": "resonant"
             }
         },
         {
@@ -1132,11 +1137,10 @@
                 "beta": 4.22,
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
-            "status": "V01",
+            "status": "archived",
             "next_actions": [
-                "Publish simulator presets that reference semantic drift metrics and canonical β values.",
-                "Extend docs/ethics with governance notes for controlled emergence pilots.",
-                "Plan V02 scope once additional semantic labs enter resonance-cohort summaries."
+                "Reference this release as the semantic foundation when drafting V02 retrospectives.",
+                "Preserve canonical β narratives in docs/ai/controlled_emergence.md for historical context."
             ],
             "observables": {
                 "coherence_term": "models/coherence_term.py",
@@ -1144,6 +1148,35 @@
                 "planetary_summary": "analysis/results/planetary_tipping_elements.json",
                 "docs_dossier": "docs/ai/controlled_emergence.md",
                 "news_entry": "NEWS.md#v101--semantic-coupling-release"
+            }
+        },
+        {
+            "id": "release-v2.0.0",
+            "type": "release",
+            "created_at": "2025-10-31T17:41:04Z",
+            "summary": "YAML constellation release: demo, LLM, and climate Potenzial-Kaskade scenarios plus refreshed cohort ledger elevate controlled emergence to V02.",
+            "threshold_field": {
+                "R": "semantic_cascade_scenarios_pending_ledgers",
+                "Theta": "yaml_driven_potential_cascade",
+                "beta": 4.4,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "status": "V02",
+            "next_actions": [
+                "Wire scenario selectors into simulator presets once the Potenzial-Kaskade UI lands.",
+                "Propagate scenario metadata into docs/resonance-bridge-map.md during future cascade additions.",
+                "Extend YAML lanterns to ethics/cognition sweeps for prospective V02 expansions."
+            ],
+            "observables": {
+                "config_demo": "analysis/batch_configs/potential_cascade.yaml",
+                "config_llm": "analysis/batch_configs/potential_cascade_llm.yaml",
+                "config_climate": "analysis/batch_configs/potential_cascade_climate.yaml",
+                "result_demo": "analysis/results/potential_cascade_lab.json",
+                "result_llm": "analysis/results/potential_cascade_llm.json",
+                "result_climate": "analysis/results/potential_cascade_climate.json",
+                "cohort": "analysis/results/resonance_cohort_summary.json",
+                "docs_entry": "docs/ai/controlled_emergence.md#konfigurationsszenarien-v02",
+                "news_entry": "NEWS.md#v200--yaml-constellation-release"
             }
         }
     ]

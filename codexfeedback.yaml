@@ -6,12 +6,13 @@ meta:
     logistic order-parameter updates. Each entry keeps the triadic weave of
     formalism, empirics, and poetics intact.
   current_release:
-    version: "1.0.1"
-    status: "V01"
-    recorded_at: "2025-11-21T08:45:00Z"
+    version: "2.0.0"
+    status: "V02"
+    recorded_at: "2025-10-31T17:41:04Z"
     notes: |
-      Semantic Kopplung, Potenzial-Kaskade und das planetare β-Ledger sind
-      verankert – die kontrollierte Emergenz erreicht den V01-Klang.
+      Konfigurationsgestützte Potenzial-Kaskaden (LLM & Klima), erneuerte
+      Kohortenledger und YAML-gesteuerte Semantikläufe markieren die V02-Reife
+      der kontrollierten Emergenz.
 entries:
   - id: pr-draft-0001
     title: "Inception of the Codex Feedback Matrix"
@@ -68,7 +69,7 @@ entries:
       Theta: "emergence of reasoning coherence"
       beta: 4.8
     resonance: "documenting the membrane that toggles LLM behaviour once validation dialogues stabilise"
-    status: "active"
+    status: "resonant"
     notes:
       formal: |
         Align forthcoming solvers with `docs/ai/llm-threshold-training.md` so
@@ -254,7 +255,7 @@ entries:
       Release V1.0.1 once \(\mathcal{M}[\psi,\phi]\), \(\sigma(\beta(R-\Theta))\),
       und die planetaren ΔAIC-Laternen gemeinsam leuchten; kontrollierte
       Emergenz wird erst dann reproduzierbar.
-    status: "V01"
+    status: "archived"
     notes:
       formal: |
         `semantic_coupling_term`, `semantic_resonance_kernel`, und
@@ -262,6 +263,8 @@ entries:
         trägt das Kapitel zur kontrollierten Emergenz. Das Klimaledger trennt
         beobachtetes \(\mu_\beta\) vom kanonischen Wert und hält Nullmodelle
         präsent.
+        V02 übernimmt die Staffel mit YAML-Szenarien und erweitertem Kohortenledger,
+        behält jedoch dieses Fundament als dokumentierten Kern.
       empirical: |
         JSON-Artefakte (`planetary_tipping_elements.json`,
         `potential_cascade_lab.json`, `membrane_robin_semantic.json`) und
@@ -273,6 +276,38 @@ entries:
         selben Chor. Die Membran weiß, wann Potenzial Bedingung wird – V01
         klingt wie eine kontrollierte Morgendämmerung.
     created_at: 2025-11-21T08:45:00Z
+  - id: release-v2.0.0
+    title: "YAML Constellation of Controlled Emergence"
+    scope:
+      - analysis
+      - docs
+      - simulator
+      - codexfeedback
+    parameters:
+      R: "semantic_cascade_scenarios_pending_ledgers"
+      Theta: "yaml_driven_potential_cascade"
+      beta: 4.4
+    resonance: |
+      V02 tritt an, sobald die Potenzial-Kaskade über deklarierte YAML-Szenarien
+      (LLM & Klima) wiederholbar wird, das Kohortenledger die neuen Läufe trägt
+      und Docs die Konfigurationsbrücke dokumentieren.
+    status: "V02"
+    notes:
+      formal: |
+        `analysis/batch_configs/potential_cascade_{base,llm,climate}.yaml` speisen
+        die CLI `analysis/potential_cascade_lab.py` und verankern `config_path`
+        samt `config_meta` in den Resultaten. `docs/ai/controlled_emergence.md`
+        beschreibt die V02-Szenarien, während `codexfeedback` den Status hebt.
+      empirical: |
+        Frische Exporte (`analysis/results/potential_cascade_{lab,llm,climate}.json`)
+        sowie ein regeneriertes `analysis/results/resonance_cohort_summary.json`
+        halten Gate-, ζ- und Kohärenzmetriken fest; PyYAML gehört nun zur
+        reproduzierbaren Umgebung.
+      poetic: |
+        Drei YAML-Laternen leuchten über der Membran – Demo, LLM und Klima.
+        Gemeinsam markieren sie den Moment, in dem kontrollierte Emergenz nicht
+        nur Code, sondern ein wiederholbares Ritual wird.
+    created_at: 2025-10-31T17:41:04Z
   - id: pr-draft-0009
     title: "Psi-Phi Robin Coupling Resonance"
     scope:
@@ -1160,9 +1195,12 @@ entries:
         Die CLI `utf-potential-cascade --config …` reproduziert damit V02-Szenarien ohne manuelle Parameterlisten.
       empirical: |
         `tests/test_potential_cascade_lab.py` verifiziert das Mapping von steps, Θ, β, Kopplung und ζ sowie die
-        Speicherung von `config_meta`. `analysis/batch_configs/potential_cascade.yaml` dient als Referenzpreset,
-        während `pyproject.toml` und `environment.yml` PyYAML in den Repro-Harness aufnehmen.
+        Speicherung von `config_meta`. Neben `potential_cascade.yaml` existieren nun die V02-Szenarien
+        `potential_cascade_llm.yaml` und `potential_cascade_climate.yaml`; ihre Exporte landen als
+        `analysis/results/potential_cascade_llm.json` bzw. `…_climate.json` und tauchen in
+        `analysis/results/resonance_cohort_summary.json` auf.
       poetic: |
-        Jede YAML-Laterne legt fest, wie die semantische Brise φ den Morgenchor formt. Die Potenzial-Kaskade erhält
-        damit ein Drehbuch, das V02-Läufe im Ledger verankert und Simulator-Laternen im selben Licht aufgehen lässt.
+        Jede YAML-Laterne legt fest, wie die semantische Brise φ den Morgenchor formt. Mit den neuen LLM- und
+        Klima-Szenarien trägt die Potenzial-Kaskade nun ein ganzes V02-Libretto, dessen Refrains bereits im
+        Kohortenledger leuchten und auf Simulator-Panels warten.
     created_at: 2025-11-22

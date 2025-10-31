@@ -667,10 +667,10 @@ Die Bedeutungsbrise küsst die Membran: Sobald R an Θ streift, öffnet das neue
 `load_configuration` und `build_parser` in `analysis/potential_cascade_lab.py` verschmelzen Konfigurationsdateien mit den Standardparametern der Potenzial-Kaskade. Die YAML-Sektion `potential:` wird automatisch auf `σ(β(R-Θ))`-Kontrollgrößen (`potential_surge`, `potential_modulation`, `dt`) gemappt, während Impedanzangaben (`impedance.closed/open`) das Robin-Gate $\zeta(R)$ regulieren. CLI-Aufrufe wie `utf-potential-cascade --config analysis/batch_configs/potential_cascade.yaml` dokumentieren den Pfad im JSON-Export.
 
 ### Empirical Thread
-`tests/test_potential_cascade_lab.py` prüft, dass Konfigurationswerte korrekt übernommen werden (`steps`, $\Theta$, $\beta$, Kopplungsgewinn, Impedanz) und Metadaten (`scenario`) im Payload landen. Das neue Preset `analysis/batch_configs/potential_cascade.yaml` skizziert eine V02-Referenzspur mit längerem Kohärenzfenster; `pyproject.toml` und `environment.yml` führen `pyyaml>=6.0`, damit CI und Nox denselben Pfad lesen.
+`tests/test_potential_cascade_lab.py` prüft, dass Konfigurationswerte korrekt übernommen werden (`steps`, $\Theta$, $\beta$, Kopplungsgewinn, Impedanz) und Metadaten (`scenario`) im Payload landen. Neben dem Referenzpreset `analysis/batch_configs/potential_cascade.yaml` existieren jetzt die Laternen `potential_cascade_llm.yaml` und `potential_cascade_climate.yaml`; ihre Läufe landen als eigene JSONs und sind im Kohortenledger sichtbar. `pyproject.toml` und `environment.yml` führen `pyyaml>=6.0`, damit CI und Nox denselben Pfad lesen.
 
 ### Poetic Thread
-Die Kaskade bekommt nun ein Drehbuch: Jede YAML-Laterne beschreibt, wie der Morgenwind `φ` die Membran küsst. Wenn Konfigurationszeilen zu Klang werden, weiß die Potenzial-Kaskade, welche Strophe V02 singen soll – und das Ledger bewahrt die Geschichte samt Szenario-Namen.
+Die Kaskade bekommt nun ein Drehbuch: Jede YAML-Laterne beschreibt, wie der Morgenwind `φ` die Membran küsst. Mit LLM- und Klima-Szenarien weiß die Potenzial-Kaskade, welche Strophe V02 singt – und das Ledger bewahrt die Geschichte samt Szenario-Namen.
 
 ## Entry release-v0.1 — Dawn Chorus Publication Membrane
 - **Order Parameter**: $R$ zählte fehlende Repro-Haken (CI, Lizenz, Zitationspfad), die den Release noch unterhalb der Schwelle hielten.
@@ -703,3 +703,20 @@ Die Lizenz schlägt als Klangschale an, die Citation-Laterne flackert bereits mi
 
 ### Poetic Thread
 Die Bedeutungsbrise tanzt jetzt kontrolliert durch die Membran.  Wenn $R$ die Schwelle küsst, öffnen Robin-Tor und Mandala-Kohärenz denselben Chor, und jede Potenzial-Kaskade hinterlässt eine Laterne für V02.  V1.0.1 fühlt sich an wie ein bewusst orchestrierter Morgengesang.
+
+_Status_: **Archiviert** — V02 führt die YAML-Szenarien und das erneuerte Kohortenledger als nächste Laterne fort.
+
+## Entry release-v2.0.0 — YAML Constellation of Controlled Emergence
+- **Order Parameter**: $R$ misst deklarierte Potenzial-Kaskaden, die noch keinen reproduzierbaren YAML-Pfad besitzen.
+- **Critical Threshold**: $\Theta$ leuchtet auf, sobald die Konfigurationen `potential_cascade.yaml`, `potential_cascade_llm.yaml` und `potential_cascade_climate.yaml` Exporte mit `config_meta` liefern und im Kohortenledger auftauchen.
+- **Steepness**: $\beta = 4.4$ hält den Wechsel scharf – sobald zwei Szenarien stabil laufen, kippt die dritte Laterne automatisch.
+- **Membrane Note**: PyYAML wandert in die Umgebung, die CLI verweist auf ihre YAML-Wurzeln, und `docs/ai/controlled_emergence.md` beschreibt die Brücke.
+
+### Formal Thread
+`analysis/potential_cascade_lab.py` liest die YAML-Laternen, schreibt `config_path`/`config_meta` in jedes JSON und stellt sicher, dass `analysis/results/potential_cascade_{lab,llm,climate}.json` denselben Formalismus tragen.  `docs/ai/controlled_emergence.md` ergänzt den Abschnitt „Konfigurationsszenarien (V02)“, und `codexfeedback.yaml` hebt den Release-Status auf V02.
+
+### Empirical Thread
+Neue Resultate für Demo-, LLM- und Klima-Kaskaden zeigen Gate-, ζ- und Kohärenzmetriken, regenerieren `analysis/results/resonance_cohort_summary.json` und sichern die Reproduzierbarkeit über die CLI.  PyYAML und aktualisierte Batch-Konfigurationen halten die Läufe im Repro-Harness.
+
+### Poetic Thread
+Drei YAML-Laternen schweben jetzt über der Membran: Demo als Grundrhythmus, LLM als semantischer Wirbel, Klima als geophysikalischer Atem.  Gemeinsam formen sie das V02-Gestirn kontrollierter Emergenz.
