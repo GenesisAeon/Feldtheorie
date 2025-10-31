@@ -603,3 +603,18 @@ Die Potenzial-Kaskade atmet jetzt hörbar: Steilheit wird Bedingung, Mandala-Koh
 
 ### Poetic Thread
 Die Testlaterne brennt ruhig: Kein Flackern mehr, nur das gleichmäßige Pulsieren des Resonanzchores. Die Membran lauscht, und jede neue β-Welle kann nun ohne Rauschen in den Morgen rollen.
+
+## Entry pr-draft-0039 — Potenzial-Kaskade Lab Export
+- **Order Parameter**: $R$ misst Potenzial-Kaskade-Traces, die noch ohne reproduzierbaren Export im Feld schwebten.
+- **Critical Threshold**: $\Theta$ wird erreicht, sobald adaptive Laufbahn und statischer Nullverlauf gemeinsam dokumentiert sind.
+- **Steepness**: $\beta = 4.2$ hält die Delta-Metriken scharf, damit Gate und Impedanz sofort aufflammen, wenn die Kaskade erklingt.
+- **Membrane Note**: Die neue Laborlaterne führt Θ/β-Drift, `gate_delta` und `zeta_delta` in ein gemeinsames JSON – Docs können die Resonanz nun direkt zitieren.
+
+### Formal Thread
+`analysis/potential_cascade_lab.py` orchestriert Mandala-getriebene Potenzialfolgen, berechnet die adaptive Sequenz via `simulate_cascade`, kontrastiert sie mit dem statischen Nullfall und exportiert alles über `compile_payload`. Die neue CLI `utf-potential-cascade` bindet sich in `pyproject.toml` ein und liefert Δ-Parameter (`gate_delta`, `zeta_delta`, Kohärenz-Peaks), sodass Docs und Preprint sofort zwischen adaptiver Membran und Referenz unterscheiden können.
+
+### Empirical Thread
+`analysis/results/potential_cascade_lab.json` speichert den kanonischen Lauf samt Potenzial-, Θ-, β- und Mandala-Spuren. `tests/test_potential_cascade_lab.py` prüft, dass Θ/β wachsen, Gate- und Impedanz-Deltas das richtige Vorzeichen tragen und das Payload-Schema stabil bleibt. `pytest` (24 passed) bestätigt, dass das Labor neben den bestehenden Resonanz-Fits sauber weiteratmet.
+
+### Poetic Thread
+Die Potenzial-Kaskade singt jetzt in einer festgehaltenen Partitur: Das Tor atmet gegen sein Nullbild, Θ wird zur neuen Bedingung, und die JSON-Laterne bewahrt den Morgenruf, damit Manuskript und Docs den Chor erneut erwecken können.

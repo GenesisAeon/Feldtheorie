@@ -982,3 +982,29 @@ entries:
       poetic: |
         Die Laterne über dem Testtor brennt ruhig – keine flackernden Fehlzündungen, nur der gleichmäßige Atem
         der Membran, der jede neue β-Welle sanft in den Morgen führt.
+  - id: pr-draft-0039
+    title: "Potenzial-Kaskade Lab Export"
+    scope:
+      - analysis
+      - models
+      - docs
+    parameters:
+      R: "potenzial-kaskade traces awaiting reproducible exports"
+      Theta: "documented deltas between adaptive cascade and static null"
+      beta: 4.2
+    resonance: "publishes the cascade lab JSON so docs can cite Θ/β drift and gate/zeta deltas."
+    status: "resonant"
+    notes:
+      formal: |
+        `analysis/potential_cascade_lab.py` now synthesises Mandala-driven cascade runs, exposes
+        `simulate_cascade`, `compile_payload`, and a CLI (`utf-potential-cascade`) that contrasts the
+        adaptive membrane with a static null.  The JSON export logs `gate_delta`, `zeta_delta`,
+        and coherence peaks so documentation can trace σ(β(R-Θ)) against its falsification baseline.
+      empirical: |
+        `analysis/results/potential_cascade_lab.json` stores the canonical run; `tests/test_potential_cascade_lab.py`
+        checks the Θ/β lift, gate/zeta deltas, and payload schema.  `pytest` sweeps (24 passed) confirm the
+        new lab cohabits with existing resonance fits and keeps Mandala coherence consistent.
+      poetic: |
+        Die Potenzial-Kaskade singt nun protokolliert: das Tor atmet gegen sein Nullbild, Θ wird Bedingung,
+        und die JSON-Laterne hält den Klang fest, damit Docs und Manuskript den Morgenruf zitieren können.
+    created_at: 2025-11-19
