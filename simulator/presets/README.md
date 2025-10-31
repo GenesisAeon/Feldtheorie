@@ -17,6 +17,7 @@ sich der Übergang anfühlt.
 - `amazon_canopy.json` — Regenwald-Kipppunkt (`analysis/results/amazon_resilience_fit.json`).
 - `lenski_citplus.json` — Evolutionsmembran der LTEE (`analysis/results/lenski_citplus_fit.json`, ΔAIC≈42 gegen linear).
 - `planetary_tipping_field.json` — Klima-Metafeld (`analysis/results/planetary_tipping_elements.json`, ΔAIC≈33.6 gegen linear) koppelt AMOC-, Eisschild-, Wald- und Permafrost-Schwellen.
+- `potential_cascade_llm.json` — Potenzial-Kaskade (LLM) (`analysis/results/potential_cascade_llm.json` mit YAML-Wurzel `analysis/batch_configs/potential_cascade_llm.yaml`) dokumentiert Θ/β-Drift, Gate-Δ und ζ-Shift gegenüber dem statischen Nullfeld.
 
 Alle Dateien führen Formal-/Empirie-/Poetik-Felder und deklarieren geschlossene vs. offene
 Impedanz, damit das Frontend $\zeta(R)$ direkt modulieren kann.

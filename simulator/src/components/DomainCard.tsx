@@ -18,6 +18,22 @@ const ICON_MAP = {
   helix: Dna
 } as const;
 
+const formatNumber = (value: number | null | undefined, digits = 3): string =>
+  typeof value === 'number' ? value.toFixed(digits) : '—';
+
+const formatInterval = (interval: [number, number] | null | undefined, digits = 3): string =>
+  interval ? `${interval[0].toFixed(digits)}–${interval[1].toFixed(digits)}` : '—';
+
+const formatDelta = (value: number | null | undefined, digits = 1): string => {
+  if (typeof value === 'number') {
+    const sign = value >= 0 ? '+' : '';
+    return `${sign}${value.toFixed(digits)}`;
+  }
+  return '—';
+};
+
+const formatLabel = (value: string | null | undefined): string => value ?? '—';
+
 export const DomainCard: FC<DomainCardProps> = ({ preset, state, currentTheta, currentBeta }) => {
   const Icon = ICON_MAP[preset.icon] ?? Sparkles;
   const phiValue = useMemo(() => Math.abs(state.psi * state.phi) * 0.5, [state.psi, state.phi]);
@@ -62,19 +78,20 @@ export const DomainCard: FC<DomainCardProps> = ({ preset, state, currentTheta, c
       </details>
       <div className="domain-meta">
         <span>
-          <strong>Analyse Θ</strong>: {preset.analysis.theta.toFixed(3)} (CI {preset.analysis.theta_ci[0].toFixed(3)}–
-          {preset.analysis.theta_ci[1].toFixed(3)})
+          <strong>Analyse Θ</strong>: {formatNumber(preset.analysis.theta)} (CI
+          {` ${formatInterval(preset.analysis.theta_ci)}`})
         </span>
         <span>
-          <strong>Analyse β</strong>: {preset.analysis.beta.toFixed(3)} (CI {preset.analysis.beta_ci[0].toFixed(3)}–
-          {preset.analysis.beta_ci[1].toFixed(3)})
+          <strong>Analyse β</strong>: {formatNumber(preset.analysis.beta)} (CI
+          {` ${formatInterval(preset.analysis.beta_ci)}`})
         </span>
         <span>
           <strong>Simulation Θ</strong>: {currentTheta.toFixed(2)} · <strong>Simulation β</strong>: {currentBeta.toFixed(2)}
         </span>
         <span>
-          <strong>ΔAIC</strong>: +{preset.analysis.delta_aic_best_null.toFixed(1)} gegen {preset.analysis.best_null_model},
-          R²={preset.analysis.logistic_r2.toFixed(3)}
+          <strong>ΔAIC</strong>: {formatDelta(preset.analysis.delta_aic_best_null)} gegen
+          {` ${formatLabel(preset.analysis.best_null_model)}, `}
+          R²={formatNumber(preset.analysis.logistic_r2)}
         </span>
         <span>
           <strong>Impedanz</strong>: {preset.impedance.definition} (⟨ζ⟩={preset.impedance.mean.toFixed(3)})
