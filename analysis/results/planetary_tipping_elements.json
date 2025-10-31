@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-29T18:39:22Z",
+  "generated_at": "2025-10-31T06:38:18Z",
   "dataset": "data/socio_ecology/planetary_tipping_elements.json",
   "metadata": "data/socio_ecology/planetary_tipping_elements.metadata.json",
   "aggregate": {
@@ -33,7 +33,7 @@
       }
     },
     "beta_mean": 3.915,
-    "beta_band_width_mean": 1.0275,
+    "beta_ci_width_mean": 1.0275,
     "beta_min": 3.49,
     "beta_max": 4.38,
     "theta_min": 0.175,
@@ -166,9 +166,10 @@
       "description": "Gemini skizzierte im Klimadiskurs drei koh\u00e4rente Tests. Der erste pr\u00fcft, ob die Zeitreihen einzelner Kippelemente (z.\u202fB. RAPID-AMOC, Gr\u00f6nland-Massenbilanz) die sigmoidale \u00dcbergangsform mit \u03b2\u22484.2 besser st\u00fctzen als lineare oder stochastische Alternativen.",
       "evidence": {
         "beta_mean": 3.915,
-        "beta_band_width_mean": 1.0275,
+        "beta_ci_width_mean": 1.0275,
         "delta_aic_linear": 33.58,
-        "delta_aic_power_law": 35.2
+        "delta_aic_power_law": 35.2,
+        "n_elements": 4
       },
       "status": "supported",
       "next_steps": [

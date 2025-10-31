@@ -710,15 +710,15 @@ entries:
     notes:
       formal: |
         Update `compile_summary` so `beta_mean` reports μ_β and expose an explicit
-        `beta_band_width_mean` field for CI width. Refresh hypothesis exports and notify
+        `beta_ci_width_mean` field for CI width. Refresh hypothesis exports and notify
         dependent bridge narratives.
       empirical: |
         Regenerated `analysis/results/planetary_tipping_elements.json`; β mean now ≈3.92
         while the mean CI width remains ≈1.03. ΔAIC diagnostics against linear/power-law
         nulls are unchanged.
       poetic: |
-        The membrane now speaks plainly: steepness sings of resonance, while the band
-        width whispers about humility.
+        The membrane now speaks plainly: steepness sings of resonance, while the CI band
+        whispers about humility.
   - id: pr-draft-0030
     title: "Meta-Gate Cohort Synchronisation"
     scope:
@@ -819,7 +819,7 @@ entries:
         `beta_band_mean` to `beta_mean`. A regression test (`tests/test_planetary_tipping_summary.py`) asserts that the
         hypotheses array carries the corrected fields.
       empirical: |
-        Regenerated `analysis/results/planetary_tipping_elements.json` captures `beta_mean ≈ 3.915`, `beta_band_width_mean ≈ 1.03`,
+        Regenerated `analysis/results/planetary_tipping_elements.json` captures `beta_mean ≈ 3.915`, `beta_ci_width_mean ≈ 1.03`,
         and a fresh timestamp (`2025-10-29T18:39:22Z`). Downstream hooks can now track reruns by diffing timestamps while
         machine readers target the renamed field.
       poetic: |
@@ -851,3 +851,32 @@ entries:
       poetic: |
         The robin door now hums within the ledger; each boundary gust is inscribed beside the auroral σ-curve so the
         cohort hears how the dawn breath slipped through the membrane.
+  - id: pr-draft-0035
+    title: "β Universality Guardrails"
+    scope:
+      - analysis/planetary_tipping_elements_fit.py
+      - analysis/results/planetary_tipping_elements.json
+      - models/sigmoid_fit.py
+      - tests/test_planetary_tipping_summary.py
+      - tests/test_sigmoid_fit.py
+      - Docs/Diskurs_V1_Psyche_AI_koheränzen.txt
+    parameters:
+      R: "beta evidence conflating mean signal and precision width"
+      Theta: "universality export carries mean, CI width, and robustness status"
+      beta: 4.15
+    resonance: "secure σ(β(R-Θ)) falsifiability even when optimisers fail by clarifying evidence semantics"
+    status: "resonant"
+    created_at: 2025-11-15
+    notes:
+      formal: |
+        `compile_summary` now records `beta_ci_width_mean`, `n_elements`, and a status ladder that only marks the
+        β universality hypothesis as supported when ΔAIC > 30 for both nulls and μ_β stays within [3.6, 4.6].
+        A new `models/sigmoid_fit.py` module provides SciPy and logit-linear fallbacks so logistic fits remain stable
+        even without heavy dependencies.
+      empirical: |
+        Regenerated `analysis/results/planetary_tipping_elements.json` documents the clarified fields, while
+        `tests/test_planetary_tipping_summary.py` checks supported/contradicted branches. `tests/test_sigmoid_fit.py`
+        verifies both optimiser and fallback paths, ensuring linear/power-law AIC helpers handle degenerate inputs.
+      poetic: |
+        Die Schwellenharfe kennt nun zwei Stimmen: selbst wenn der erste Resonanzstab bricht, hält ein zweiter Chor
+        die β-Melodie – die CI-Breite flüstert vom Zweifel, der Mittelwert singt vom Erwachen.

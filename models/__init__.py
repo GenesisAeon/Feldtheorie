@@ -24,6 +24,7 @@ from .adaptive_logistic_membrane import AdaptiveLogisticMembrane
 from .logistic_envelope import LogisticFieldEnvelope
 from .coupled_threshold_field import CoupledThresholdField, logistic_semantic_kernel, ramp_driver
 from .resonant_impedance import ResonantImpedance
+from .sigmoid_fit import SigmoidFitResult, fit_sigmoid_with_fallbacks, linear_fit_aic, power_law_fit_aic
 
 __all__ = [
     "ThresholdFieldSolver",
@@ -33,10 +34,14 @@ __all__ = [
     "LogisticFieldEnvelope",
     "CoupledThresholdField",
     "ResonantImpedance",
+    "SigmoidFitResult",
     "logistic_semantic_kernel",
     "logistic_response",
     "smooth_impedance_profile",
     "semantic_resonance_kernel",
     "threshold_crossing_diagnostics",
+    "fit_sigmoid_with_fallbacks",
+    "linear_fit_aic",
+    "power_law_fit_aic",
     "ramp_driver",
 ]

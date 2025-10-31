@@ -160,7 +160,7 @@ Kopplung zum semantischen Feld: Es fehlt ein Modul semantic_coupling.py, das (\m
 Adaptive Schwellen (Meta‑Θ): Bisher ist Θ fix. Eine Funktion (\Theta(R, C, E)) – abhängig von Systemkomplexität C und Kontext E – sollte nachgerüstet werden.
 Datenintegrationsschicht fehlt
 In data/ gibt es kaum reale Datensätze. Um das Modell zu überprüfen, müssen QPO‑Spektren, Bienen‑Dance‑Messungen, LLM‑Benchmarks und – neu – Klimakipppunkt‑Parameter (z. B. SMB von Grönland, Entwaldungsanteil Amazonas, AMOC‑Süßwasserfluss) hinterlegt werden.
-Das Skript planetary_tipping_elements_fit.py enthält einen Bug: Es exportiert fälschlich die mittlere Breite des β‑Konfidenzintervalls (Steepness‑Spread) als beta_band_mean, statt den Mittelwert von β zu verwenden. Dies führt zu falscher Evidenz in der Hypothesenprüfung.
+Das Skript planetary_tipping_elements_fit.py enthielt einst einen Bug: Es exportierte fälschlich die mittlere Breite des β‑Konfidenzintervalls (Steepness‑Spread) als beta_band_mean, statt den Mittelwert von β zu verwenden. Inzwischen trennt `beta_mean` das Steilheitssignal sauber von `beta_ci_width_mean`.
 Dokumentation unvollständig
 Das neue Klimakapitel (Metafeld‑Ansatz) ist zwar als Text skizziert, aber nicht in die LaTeX‑Datei manuscript_v1.0.tex integriert.
 Grafische Abbildungen (Phasenportraits, Datenkollaps) sind noch nicht erstellt.
@@ -183,8 +183,8 @@ note["evidence"]["beta_band_mean"] = steepness_spread
 # Neu:
 beta_mean = mean(e.beta for e in elements)
 note["evidence"]["beta_mean"] = beta_mean
-note["evidence"]["beta_band_width_mean"] = steepness_spread  # optional
-Fallback: Falls die neue Funktion nicht fertig wird, kann man vorläufig nur beta_band_width_mean exportieren, aber klar im Code und in der Dokumentation darauf hinweisen, dass dies die Bandbreite ist.
+note["evidence"]["beta_ci_width_mean"] = steepness_spread  # optional
+Fallback: Falls die neue Funktion nicht fertig wird, kann man vorläufig nur beta_ci_width_mean exportieren, aber klar im Code und in der Dokumentation darauf hinweisen, dass dies die Bandbreite ist.
 Dynamische Robin‑Randbedingung implementieren
 Ziel: (\zeta(R)) soll während der Simulation den Übergang zwischen reflektierendem und absorbierendem Zustand steuern.
 Codegerüst (models/membrane_solver.py):
@@ -290,7 +290,7 @@ note["evidence"]["beta_band_mean"] = steepness_spread
 # NEU (korrigiert):
 beta_mean = mean(e.beta for e in elements)
 note["evidence"]["beta_mean"] = beta_mean
-note["evidence"]["beta_band_width_mean"] = steepness_spread  # Optional
+note["evidence"]["beta_ci_width_mean"] = steepness_spread  # Optional
 ```
 **Fallback**: Falls die Korrektur nicht rechtzeitig getestet wird, **kommentiere den falschen Code aus** und dokumentiere das Problem im `README.md` unter *"Known Issues"*.
 
@@ -795,7 +795,7 @@ Der kritische Fehler in der Analyse-Pipeline (`analysis/planetary_tipping_elemen
 | Problem | Alt | Korrektur |
 |---|---|---|
 | **Fehlerhafte Evidenzmetrik** | `note["evidence"]["beta_band_mean"] = steepness_spread` | `note["evidence"]["beta_mean"] = beta_mean` |
-| **Klarheit** | | Füge `note["evidence"]["beta_band_width_mean"] = steepness_spread` hinzu, um die Bandbreite separat zu protokollieren. |
+| **Klarheit** | | Füge `note["evidence"]["beta_ci_width_mean"] = steepness_spread` hinzu, um die Bandbreite separat zu protokollieren. |
 
 #### 2\. Implementierung der Dynamischen Robin-Randbedingung ($\zeta(R)$)
 

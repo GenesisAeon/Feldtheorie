@@ -461,10 +461,10 @@ Die Gaia-Membran erhält eine Stimme: Gesprächsfragmente aus `Docs/Diskurs Klim
 - **Membrane Note**: $\zeta(R)$ sinkt, wenn semantische Drift erkannt wird, und entspannt sich erst, wenn Reports wieder präzise zwischen Signal und Unsicherheit unterscheiden.
 
 ### Formal Thread
-Der Fix weist `hypotheses[0].evidence.beta_mean` jetzt den Mittelwert der β-Schätzer (μ≈3.92) zu und ergänzt `beta_band_width_mean` für die gemittelte Konfidenzbandbreite. Downstream-Systeme können so universelle Steilheit testen, ohne Präzisionsmaß und Signal zu verwechseln.
+Der Fix weist `hypotheses[0].evidence.beta_mean` jetzt den Mittelwert der β-Schätzer (μ≈3.92) zu und ergänzt `beta_ci_width_mean` für die gemittelte Konfidenzbandbreite. Downstream-Systeme können so universelle Steilheit testen, ohne Präzisionsmaß und Signal zu verwechseln.
 
 ### Empirical Thread
-`python analysis/planetary_tipping_elements_fit.py` regeneriert `analysis/results/planetary_tipping_elements.json` mit den korrigierten Kennzahlen. ΔAIC bleibt bei ≈33.6 gegen linear; die neue Bandbreite (≈1.03) dokumentiert weiterhin Unsicherheit, jetzt jedoch klar bezeichnet.
+`python analysis/planetary_tipping_elements_fit.py` regeneriert `analysis/results/planetary_tipping_elements.json` mit den korrigierten Kennzahlen. ΔAIC bleibt bei ≈33.6 gegen linear; die neue CI-Bandbreite (≈1.03) dokumentiert weiterhin Unsicherheit, jetzt jedoch klar bezeichnet.
 
 ### Poetic Thread
 Wenn Worte den Klang der Schwelle verfehlen, stolpert das Feld. Mit der Korrektur darf die Gaia-Membran wieder im richtigen Register sprechen: die Steilheit singt vom Aufbruch, die Bandbreite von vorsichtiger Demut.
@@ -524,7 +524,7 @@ Die Impedanzwächterin atmet hörbar: sie öffnet sich, wenn der Sweep das Licht
 `compile_summary` akzeptiert jetzt einen optionalen `generated_at`-Wert, setzt ihn standardmäßig auf die aktuelle UTC-Zeit und benennt das Exportfeld in `beta_mean` um. `tests/test_planetary_tipping_summary.py` prüft, dass Hypothesen und Aggregat denselben Wert tragen.
 
 ### Empirical Thread
-Das regenerierte JSON (`analysis/results/planetary_tipping_elements.json`) notiert `beta_mean ≈ 3.915`, `beta_band_width_mean ≈ 1.03` und den Zeitstempel `2025-10-29T18:39:22Z`. Downstream-Pipelines können dadurch Run-to-Run-Differenzen sauber verfolgen.
+Das regenerierte JSON (`analysis/results/planetary_tipping_elements.json`) notiert `beta_mean ≈ 3.915`, `beta_ci_width_mean ≈ 1.03` und den Zeitstempel `2025-10-29T18:39:22Z`. Downstream-Pipelines können dadurch Run-to-Run-Differenzen sauber verfolgen.
 
 ### Poetic Thread
 Die Gaia-Membran führt jetzt Tagebuch: Steilheit und Zeit wandern Hand in Hand, ein doppelter Herzschlag, der erzählt, wann der Schwellenchor wirklich erwachte.
@@ -543,3 +543,18 @@ Die Gaia-Membran führt jetzt Tagebuch: Steilheit und Zeit wandern Hand in Hand,
 
 ### Poetic Thread
 Der Robin-Türflügel singt jetzt im Ledger mit: Jeder Hauch, der durch die Schwelle strömt, steht neben der auroralen Sigmoid-Kurve. So weiß der Chor, wann die Membran nicht nur leuchtete, sondern auch atmete.
+
+## Entry pr-draft-0035 — β Universality Guardrails
+- **Order Parameter**: $R$ zählt β-Exports, die Signalamplitude und Unsicherheitsbreite noch vermengen.
+- **Critical Threshold**: $\Theta$ flammt auf, sobald `analysis/planetary_tipping_elements_fit.py` μ_β, CI-Breite und Hypothesenstatus sauber trennt und robuste Fallbacks dokumentiert.
+- **Steepness**: $\beta = 4.15$ hält die Universaldoktrin scharf, verlangt jedoch ΔAIC > 30 gegenüber linearen und Potenz-Nullen.
+- **Membrane Note**: $\zeta(R)$ bleibt wach, wenn SciPy ausfällt – das neue Fallback ruft die Logit-Stimme, damit der Chor dennoch erklingt.
+
+### Formal Thread
+`compile_summary` markiert `beta_ci_width_mean`, `n_elements` und eine Statusleiter (supported/contradicted/inconclusive), während `models/sigmoid_fit.py` SciPy-basierte und logit-lineare Fits inklusive AIC-Helfern bereitstellt. `models/__init__.py` exportiert die neuen Hooks.
+
+### Empirical Thread
+`python analysis/planetary_tipping_elements_fit.py` aktualisiert `analysis/results/planetary_tipping_elements.json` mit dem erweiterten Evidenzpaket. `tests/test_planetary_tipping_summary.py` prüft die neuen Statuspfade, `tests/test_sigmoid_fit.py` validiert Optimierer- und Fallbackwege sowie die Nullmodell-AICs. Docs aktualisieren den Diskurs zur Feldtrennung.
+
+### Poetic Thread
+Selbst wenn der erste Resonanzstab bricht, antwortet nun ein zweiter: β singt vom Erwachen, die CI-Breite haucht vom Zweifel, und die Membran kennt den Unterschied zwischen Gewissheit und Vorsicht.
