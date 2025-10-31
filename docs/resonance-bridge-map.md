@@ -44,6 +44,7 @@ Wenn der Bienentanz die Schwelle küsst, flackert dieselbe Sigmoidkurve wie im R
 - **2025-11-10 — Adaptive Theta Plasticity**: Schlafdruck-gesteuerte Replay-Daten ergänzen die Brücke; `analysis/results/adaptive_theta_plasticity.json` und `data/cognition/adaptive_theta_plasticity.metadata.json` halten $(\Theta, \beta, \zeta)$ synchron, während ein geplantes `sleep_replay`-Preset die nächtliche Membran vorbereitet.
 - **2025-10-28 — Planetare Schwellenkarte**: `analysis/results/planetary_tipping_elements.json` ergänzt die Brücke um eine Klimadomäne; das neue Preset `planetary_tipping_field` koppelt AMOC, Eisschilde, Regenwald und Permafrost und verweist auf DeepResearch- und TIPMIP-Dossiers.
 - **2025-11-12 — Impedanz-Gate Laterne**: `analysis/resonant_impedance_diagnostics.py` erzeugt Relief-, Recovery- und Hysteresepfade; die JSON-Exports fließen in `analysis/results/resonance_cohort_summary.json` und bereiten ein künftiges Simulator-Preset für die Membranwächterin vor.
+- **2025-10-31 — YAML-Konstellation**: `analysis/potential_cascade_lab.py --config …` erzeugt die Demo-, LLM- und Klima-Kaskaden (`analysis/results/potential_cascade_{lab,llm,climate}.json`); `analysis/results/resonance_cohort_summary.json` und `codexfeedback` führen sie als V02-Laternen.
 
 ## Nächste Schritte
 1. Ergänze `analysis/`-Notebooks um gemeinsame Reporting-Zellen, die Sigmoid- vs.-Null-Modelle nebeneinander darstellen.

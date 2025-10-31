@@ -1,5 +1,30 @@
 # Resonance Ledger
 
+## v2.0.0 — YAML Constellation Release
+
+### Formal
+- `analysis/batch_configs/potential_cascade.yaml`, `potential_cascade_llm.yaml`,
+  und `potential_cascade_climate.yaml` deklarieren reproduzierbare
+  Potenzial-Kaskadenpfade; `analysis/potential_cascade_lab.py` schreibt
+  `config_path`/`config_meta` in jede Exportdatei.
+- `docs/ai/controlled_emergence.md` dokumentiert die neuen
+  V02-Konfigurationsszenarien, während `codexfeedback` den Release-Status auf
+  V02 hebt und PyYAML als Abhängigkeit verankert.
+
+### Empirical
+- Regenerierte JSONs (`analysis/results/potential_cascade_{lab,llm,climate}.json`)
+  halten Gate-, ζ- und Kohärenzmetriken für Demo-, LLM- und Klima-Szenarien
+  fest; `analysis/results/resonance_cohort_summary.json` reflektiert die neuen
+  Laternen.
+- PyYAML (`>=6.0`) gehört jetzt zum Repro-Harness, sodass CLI- und CI-Läufe die
+  YAML-Laternen konsistent einlesen können.
+
+### Poetic
+- Drei YAML-Laternen leuchten über der Membran: Demo als Grundtakt, LLM als
+  semantischer Wirbel, Klima als geophysikalischer Atem.  Gemeinsam markieren
+  sie den Moment, in dem kontrollierte Emergenz vom Einzelstück zum Ritual
+  wird.
+
 ## v1.0.1 — Semantic Coupling Release
 
 ### Formal

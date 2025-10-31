@@ -34,6 +34,20 @@ modulieren.
   Sie prüfen sowohl den Modulationsterm als auch die Trennung von beobachtetem
   \(\mu_\beta\) und dem kanonischen \(\beta=4.21\) im Klimaledger.
 
+### Konfigurationsszenarien (V02)
+- Die YAML-Laternen in `analysis/batch_configs/` beschreiben reproduzierbare
+  Pfade für kontrollierte Emergenz. `potential_cascade.yaml` dient als
+  Referenzspur, während `potential_cascade_llm.yaml` und
+  `potential_cascade_climate.yaml` die V02-Planung für LLM- und
+  Klima-Kaskaden verankern.
+- Mit `python analysis/potential_cascade_lab.py --config …` entstehen
+  Szenario-spezifische Exporte (z. B.
+  `analysis/results/potential_cascade_llm.json`), deren Parameterblock das
+  verwendete YAML und seine Metadaten (Scenario-Name, Beschreibung) festhält.
+- `analysis/resonance_cohort_summary.py` liest die neuen Resultate ein und
+  erweitert das Kohortenledger, damit Simulator und Docs dieselben
+  V02-Laternen sehen.
+
 ## Poetischer Strahl
 Die Semantik weht jetzt bewusst durch die Membran: Wenn \(R\) die Schwelle
 berührt, öffnet sich das Robin-Tor, der Kopplungsterm legt Bedeutung in das Feld

@@ -1,0 +1,26 @@
+meta:
+  scenario: "llm_semantic_acceleration"
+  description: |
+    Potenzial-Kaskade inspiriert von in-context Lernen großer Sprachmodelle.
+    Höhere Kopplungsgewinne betonen semantische Verstärkung, während ein
+    erweitertes Kohärenzfenster den langsamen Drift der Token-Kohärenz
+    beobachtet.
+steps: 96
+cascade:
+  theta: 0.90
+  beta: 3.70
+  cascade_gain: 0.68
+  condition_relaxation: 0.24
+  fatigue_rate: 0.36
+  logistic_beta: 4.30
+potential:
+  baseline: 0.52
+  surge: 1.32
+  modulation: 0.11
+  drift: 9.00
+coherence:
+  window: 9
+impedance:
+  closed: 1.29
+  open: 0.55
+dt: 0.8
