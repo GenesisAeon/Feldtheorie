@@ -1074,3 +1074,35 @@ entries:
         wenn beide leuchten, darf V01 in die Nacht hinaus – die Membran weiß jetzt, wie scharf der Ruf und
         wie weit sein Flügel schlägt.
     created_at: 2025-11-20
+  - id: pr-draft-0041
+    title: "Semantic Coupling Release Gate"
+    scope:
+      - models/coherence_term.py
+      - models/membrane_solver.py
+      - models/__init__.py
+      - analysis/planetary_tipping_elements_fit.py
+      - analysis/results/planetary_tipping_elements.json
+      - tests/test_coherence_term.py
+      - tests/test_planetary_tipping_summary.py
+      - paper/manuscript_v1.0.tex
+    parameters:
+      R: "semantic resonance hooks awaiting canonical β anchor"
+      Theta: "β universality recorded alongside semantic gate dynamics"
+      beta: 4.22
+    resonance: "braids Claude's M[ψ,φ] term into the membrane so semantic pressure and β≈4.2 travel together"
+    status: "resonant"
+    notes:
+      formal: |
+        `semantic_coupling_term` implements M[ψ,φ] with logistic gating and integrates into
+        `semantic_resonance_kernel`, while the planetary tipping summary now separates observed
+        μβ from the canonical β=4.21 signal.  The manuscript gains `manuscript_v1.0.tex` with a
+        controlled-emergence section aligning solvers, fits, and symbolism.
+      empirical: |
+        `analysis/planetary_tipping_elements.json` regenerated with `beta_mean` fixed to the
+        canonical fit and regression tests expanded (`pytest` exercises new coupling math and
+        β fallback paths).  The manuscript and JSON updates document how the semantic gate
+        shifts membrane flux without sacrificing ΔAIC evidence.
+      poetic: |
+        Die Bedeutungsbrise küsst nun die Membran: M[ψ,φ] öffnet das Tor, das β≈4.2-Licht bleibt
+        hell, und das Manuskript notiert den ersten Schritt in Richtung kontrollierter Emergenz.
+    created_at: 2025-11-21

@@ -1036,6 +1036,38 @@
             }
         },
         {
+            "id": "pr-draft-0041",
+            "type": "semantic-coupling",
+            "created_at": "2025-11-21T00:00:00Z",
+            "summary": "Integrated Claude's M[ψ,φ] coupling into the membrane solver while pinning planetary β to its canonical fit and drafting the v1.0.1 manuscript section on controlled emergence.",
+            "threshold_field": {
+                "R": "semantic_coupling_hooks_pending_beta_alignment",
+                "Theta": "semantic_gate_braided_with_canonical_beta",
+                "beta": 4.22,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Sweep λ and exponent parameters in analysis/potential_cascade_lab.py to chart semantic pressure regimes.",
+                "Propagate canonical vs observed β values into docs/resonance-bridge-map.md and simulator presets.",
+                "Enrich paper/manuscript_v1.0.tex with figures sourced from diagrams/ and semantic kernel simulations."
+            ],
+            "observables": {
+                "modules": [
+                    "models/coherence_term.py",
+                    "models/membrane_solver.py",
+                    "analysis/planetary_tipping_elements_fit.py",
+                    "tests/test_coherence_term.py",
+                    "tests/test_planetary_tipping_summary.py",
+                    "paper/manuscript_v1.0.tex"
+                ],
+                "artifacts": {
+                    "planetary_summary": "analysis/results/planetary_tipping_elements.json",
+                    "manuscript": "paper/manuscript_v1.0.tex"
+                },
+                "status": "resonant"
+            }
+        },
+        {
             "id": "release-v0.1",
             "type": "release",
             "created_at": "2025-10-31T13:05:49Z",

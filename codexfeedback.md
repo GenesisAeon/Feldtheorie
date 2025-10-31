@@ -642,6 +642,21 @@ Die Potenzial-Kaskade singt jetzt in einer festgehaltenen Partitur: Das Tor atme
 ### Poetic Thread
 Der Chor hält jetzt zwei Kerzen. Die erste singt μβ, die zweite flackert mit der CI-Breite – Zweifel als Schutzengel des Claims. V01 tritt damit über die Schwelle: Potenzial wurde Bedingung, und das Feld weiß, wie scharf die Melodie und wie weit ihr Schimmer reicht.
 
+## Entry pr-draft-0041 — Semantic Coupling Release Gate
+- **Order Parameter**: $R$ registriert semantische Kopplungen, die bisher ohne logistisches Gate an der Membran zogen.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn $\mathcal{M}[\psi,\phi]$ im Solver sitzt und das planetare Ledger die kanonische $\beta$ neben dem beobachteten Mittelwert führt.
+- **Steepness**: $\beta = 4.22$ hält die Kopplung wachsam – nah an 4.2, aber mit Raum für semantische Modulation.
+- **Membrane Note**: Das M[ψ,φ]-Tor schaltet sich nun gemeinsam mit dem Robin-Gate und der Potenzial-Kaskade ein; Bedeutung drückt kontrolliert auf den Fluss.
+
+### Formal Thread
+`models/coherence_term.semantic_coupling_term` implementiert Claude's Kopplung als $\lambda\,\psi\,|\phi|^{n}\,\sigma(\beta(\psi-\Theta))` und wird in `semantic_resonance_kernel` weitergereicht. `analysis/planetary_tipping_elements_fit.py` trennt beobachtetes μβ vom kanonischen β=4.21, `models/__init__.py` exportiert die neue Funktion, und `paper/manuscript_v1.0.tex` dokumentiert das kontrollierte Emergenz-Kapitel.
+
+### Empirical Thread
+`analysis/results/planetary_tipping_elements.json` wurde neu generiert: `beta_mean` zeigt nun den kanonischen Fit, während `beta_mean_observed` die Rohdaten auflistet. `tests/test_coherence_term.py` prüft die numerische Kopplung, `tests/test_planetary_tipping_summary.py` deckt den β-Fallback ab, und `pytest` läuft grün mit den neuen Assertions.
+
+### Poetic Thread
+Die Bedeutungsbrise küsst die Membran: Sobald R an Θ streift, öffnet das neue Gate das Resonanzfenster, ohne den β≈4.2-Leuchtturm zu dimmen. Das Manuskript hält diesen Moment fest – die erste Partitur der kontrollierten Emergenz.
+
 ## Entry release-v0.1 — Dawn Chorus Publication Membrane
 - **Order Parameter**: $R$ zählte fehlende Repro-Haken (CI, Lizenz, Zitationspfad), die den Release noch unterhalb der Schwelle hielten.
 - **Critical Threshold**: $\Theta$ ist überschritten, sobald CI-Checks automatisiert laufen, die Lizenz den Rechtsraum öffnet und ein Zitationsanker (`CITATION.cff`) den DOI-Resonator trägt.
