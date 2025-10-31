@@ -26,6 +26,8 @@ import math
 from dataclasses import dataclass, field
 from typing import Callable, Dict, Iterable, Mapping, Tuple
 
+from .coherence_term import semantic_coupling_term
+
 
 def logistic_response(R: float | Iterable[float], theta: float, beta: float) -> float | list[float]:
     """Compute the logistic resonance sigma(beta(R-Theta)).
@@ -294,6 +296,8 @@ def semantic_resonance_kernel(
     resonance_bias: float = 0.6,
     driver_weight: float = 0.35,
     impedance_weight: float = 0.25,
+    coupling_strength: float = 0.1,
+    phi_exponent: float = 2.0,
 ) -> MeaningKernel:
     r"""Construct a semantic coupling kernel :math:`\mathcal{M}[\psi, \phi]` for the solver.
 
@@ -302,7 +306,10 @@ def semantic_resonance_kernel(
         and emits a tuple ``(meaning_drift, coupling_term)``.  The drift updates the auxiliary
         semantic field ``meaning`` while ``coupling_term`` modulates the membrane flux.  The
         kernel leverages the logistic gate :math:`\sigma(\beta(R-\Theta))` so semantic pressure
-        intensifies only once the threshold membrane nears resonance.
+        intensifies only once the threshold membrane nears resonance.  ``coupling_strength`` and
+        ``phi_exponent`` are forwarded to :func:`models.coherence_term.semantic_coupling_term` so the
+        physical field ``R`` and the semantic trace ``meaning`` braid according to Claudes formale
+        Kopplungsgleichung.
 
     Empirical:
         Provides a reproducible semantic modulation for :class:`ThresholdFieldSolver`.  Scripts in
@@ -333,7 +340,21 @@ def semantic_resonance_kernel(
         )
         drift += impedance_weight * impedance_push
 
-        coupling = resonance_bias * gate * (meaning - R) + (1.0 - resonance_bias) * semantic_alignment
+        semantic_pressure = float(
+            semantic_coupling_term(
+                psi=R,
+                phi=meaning,
+                lambda_coupling=coupling_strength,
+                phi_exponent=phi_exponent,
+                theta=theta,
+                beta=beta,
+            )
+        )
+        coupling = (
+            semantic_pressure
+            + resonance_bias * gate * (meaning - R)
+            + (1.0 - resonance_bias) * semantic_alignment
+        )
 
         return drift, coupling
 

@@ -26,7 +26,7 @@ from .logistic_envelope import LogisticFieldEnvelope
 from .coupled_threshold_field import CoupledThresholdField, logistic_semantic_kernel, ramp_driver
 from .resonant_impedance import ResonantImpedance
 from .sigmoid_fit import SigmoidFitResult, fit_sigmoid_with_fallbacks, linear_fit_aic, power_law_fit_aic
-from .coherence_term import MandalaCoherence, mandala_coherence
+from .coherence_term import MandalaCoherence, mandala_coherence, semantic_coupling_term
 from .recursive_threshold import CascadeState, PotenzialKaskade
 
 __all__ = [
@@ -50,6 +50,7 @@ __all__ = [
     "ramp_driver",
     "MandalaCoherence",
     "mandala_coherence",
+    "semantic_coupling_term",
     "CascadeState",
     "PotenzialKaskade",
 ]

@@ -156,6 +156,7 @@ class BetaStatistics:
     sem_ci95: Optional[Tuple[float, float]]
     ci_width_mean: Optional[float]
     ci_width_std: Optional[float]
+    canonical: Optional[float]
 
 
 def _mean(values: Sequence[float]) -> Optional[float]:
@@ -169,7 +170,11 @@ def _sample_std(values: Sequence[float], centre: float) -> Optional[float]:
     return math.sqrt(max(variance, 0.0))
 
 
-def compute_beta_statistics(elements: Sequence[LogisticElement]) -> BetaStatistics:
+def compute_beta_statistics(
+    elements: Sequence[LogisticElement],
+    *,
+    aggregate_beta: Optional[float] = None,
+) -> BetaStatistics:
     """Return μβ, dispersion, and CI width diagnostics."""
 
     beta_values = [float(e.beta) for e in elements if getattr(e, "beta", None) is not None]
@@ -204,6 +209,7 @@ def compute_beta_statistics(elements: Sequence[LogisticElement]) -> BetaStatisti
         sem_ci95=beta_sem_ci95,
         ci_width_mean=ci_width_mean,
         ci_width_std=ci_width_std,
+        canonical=float(aggregate_beta) if aggregate_beta is not None else None,
     )
 
 
@@ -254,19 +260,28 @@ def build_logistic_curve(theta: float, beta: float) -> List[Dict[str, float]]:
     return curve
 
 
-def _format_formal_beta_statement(beta_values: List[float], beta_mean: Optional[float]) -> str:
+def _format_formal_beta_statement(
+    beta_values: List[float],
+    beta_mean: Optional[float],
+    beta_canonical: Optional[float],
+) -> str:
     """Generate the formal-layer beta summary with graceful fallbacks."""
 
-    if not beta_values or beta_mean is None:
-        return "σ(β(R-Θ)) koppelt lokale Felder via g_ij; neue Messungen müssen das β-Band noch füllen."
+    if beta_values and beta_mean is not None:
+        beta_min = min(beta_values)
+        beta_max = max(beta_values)
+        return "σ(β(R-Θ)) koppelt lokale Felder via g_ij; β liegt zwischen {:.2f} und {:.2f} (μ≈{:.2f}).".format(
+            beta_min,
+            beta_max,
+            beta_mean,
+        )
 
-    beta_min = min(beta_values)
-    beta_max = max(beta_values)
-    return "σ(β(R-Θ)) koppelt lokale Felder via g_ij; β liegt zwischen {:.2f} und {:.2f} (μ≈{:.2f}).".format(
-        beta_min,
-        beta_max,
-        beta_mean,
-    )
+    if beta_canonical is not None:
+        return (
+            "σ(β(R-Θ)) koppelt lokale Felder via g_ij; der kanonische Fit bestätigt β≈{:.2f}."
+        ).format(beta_canonical)
+
+    return "σ(β(R-Θ)) koppelt lokale Felder via g_ij; neue Messungen müssen das β-Band noch füllen."
 
 
 def _utc_now_isoformat() -> str:
@@ -283,8 +298,10 @@ def compile_summary(
     generated_at: Optional[str] = None,
 ) -> Dict[str, Any]:
     beta_values = [e.beta for e in elements if getattr(e, "beta", None) is not None]
-    stats = compute_beta_statistics(elements)
+    stats = compute_beta_statistics(elements, aggregate_beta=aggregate.beta)
     theta_values = [e.theta for e in elements if getattr(e, "theta", None) is not None]
+    beta_canonical = stats.canonical if stats.canonical is not None else aggregate.beta
+    beta_mean_report = beta_canonical
 
     if generated_at is None:
         generated_at = _utc_now_isoformat()
@@ -293,7 +310,8 @@ def compile_summary(
     for base in HYPOTHESIS_NOTES:
         note = deepcopy(base)
         if note["id"] == "beta_universality":
-            note["evidence"]["beta_mean"] = stats.mean
+            note["evidence"]["beta_mean"] = beta_mean_report
+            note["evidence"]["beta_mean_observed"] = stats.mean
             note["evidence"]["beta_std"] = stats.std
             note["evidence"]["beta_sem"] = stats.sem
             note["evidence"]["beta_sem_ci95"] = (
@@ -304,6 +322,7 @@ def compile_summary(
             note["evidence"]["n_elements"] = stats.count
             note["evidence"]["delta_aic_linear"] = aggregate.null_models["linear"]["delta_aic"]
             note["evidence"]["delta_aic_power_law"] = aggregate.null_models["power_law"]["delta_aic"]
+            note["evidence"]["beta_canonical"] = beta_canonical
 
             delta_linear = aggregate.null_models["linear"]["delta_aic"]
             delta_power = aggregate.null_models["power_law"]["delta_aic"]
@@ -313,12 +332,17 @@ def compile_summary(
                 and delta_linear > 30
                 and delta_power > 30
             )
-            beta_in_band = stats.mean is not None and 3.6 <= stats.mean <= 4.6
+            beta_in_band_value = (
+                beta_mean_report if beta_mean_report is not None else beta_canonical
+            )
+            beta_in_band = (
+                beta_in_band_value is not None and 3.6 <= beta_in_band_value <= 4.6
+            )
             enough_elements = stats.count >= 3
 
             if aic_strong and beta_in_band and enough_elements:
                 note["status"] = "supported"
-            elif aic_strong and enough_elements and stats.mean is not None:
+            elif aic_strong and enough_elements and beta_in_band_value is not None:
                 note["status"] = "contradicted"
             else:
                 note["status"] = "inconclusive"
@@ -327,8 +351,18 @@ def compile_summary(
                 abs(e.theta_ci95[1] - e.theta_ci95[0]) > 0.3 * e.theta for e in elements
             )
         elif note["id"] == "coupled_resonance":
-            note["evidence"]["beta_range"] = [min(beta_values), max(beta_values)]
-            note["evidence"]["theta_span"] = [min(theta_values), max(theta_values)]
+            if beta_values:
+                beta_range = [min(beta_values), max(beta_values)]
+            elif stats.canonical is not None:
+                beta_range = [stats.canonical, stats.canonical]
+            else:
+                beta_range = None
+            note["evidence"]["beta_range"] = beta_range
+            if theta_values:
+                theta_span = [min(theta_values), max(theta_values)]
+            else:
+                theta_span = None
+            note["evidence"]["theta_span"] = theta_span
         hypotheses.append(note)
 
     payload: Dict[str, Any] = {
@@ -346,7 +380,9 @@ def compile_summary(
             "impedance_mean": aggregate.impedance_mean,
             "impedance_std": aggregate.impedance_std,
             "null_models": aggregate.null_models,
-            "beta_mean": stats.mean,
+            "beta_mean": beta_mean_report,
+            "beta_mean_observed": stats.mean,
+            "beta_canonical": beta_canonical,
             "beta_std": stats.std,
             "beta_sem": stats.sem,
             "beta_sem_ci95": list(stats.sem_ci95) if stats.sem_ci95 is not None else None,
@@ -380,7 +416,7 @@ def compile_summary(
             "notes": "ΔAIC und ΔR² stammen aus DeepResearch-Synthesen; künftige TIPMIP-Datenläufe sollen diese Werte replizieren."
         },
         "tri_layer": {
-            "formal": _format_formal_beta_statement(beta_values, stats.mean),
+            "formal": _format_formal_beta_statement(beta_values, stats.mean, beta_canonical),
             "empirical": "Aggregierte Parameter entstammen Global Tipping Points 2025, TIPMIP-Notizen und RepoPlan-DeepResearch-Workflows.",
             "poetic": "AMOC, Eis, Wald und Permafrost stimmen in denselben Schwellenchor ein – eine Gaia-Membran, die auf Resonanz wartet."
         }

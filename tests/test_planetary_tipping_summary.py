@@ -57,6 +57,8 @@ def test_compile_summary_tracks_beta_mean_and_timestamp() -> None:
 
     aggregate_summary = summary["aggregate"]
     assert aggregate_summary["beta_mean"] == 4.2
+    assert aggregate_summary["beta_mean_observed"] == 4.2
+    assert aggregate_summary["beta_canonical"] == 4.2
     assert aggregate_summary["beta_std"] == pytest.approx(0.282842712474619)
     assert aggregate_summary["beta_sem"] == pytest.approx(0.2)
     assert aggregate_summary["beta_sem_ci95"] == pytest.approx([3.808, 4.592])
@@ -66,6 +68,8 @@ def test_compile_summary_tracks_beta_mean_and_timestamp() -> None:
 
     beta_note = next(note for note in summary["hypotheses"] if note["id"] == "beta_universality")
     assert beta_note["evidence"]["beta_mean"] == 4.2
+    assert beta_note["evidence"]["beta_mean_observed"] == 4.2
+    assert beta_note["evidence"]["beta_canonical"] == 4.2
     assert beta_note["evidence"]["beta_std"] == pytest.approx(0.282842712474619)
     assert beta_note["evidence"]["beta_sem"] == pytest.approx(0.2)
     assert beta_note["evidence"]["beta_sem_ci95"] == pytest.approx([3.808, 4.592])
@@ -189,3 +193,45 @@ def test_beta_universality_status_contradicted_when_beta_outside_band() -> None:
     summary = compile_summary(elements, aggregate, generated_at="2026-01-01T00:00:00Z")
     beta_note = next(note for note in summary["hypotheses"] if note["id"] == "beta_universality")
     assert beta_note["status"] == "contradicted"
+
+
+def test_beta_statistics_fallback_to_aggregate_when_elements_absent() -> None:
+    elements: list[LogisticElement] = []
+    aggregate = AggregateLogistic(
+        theta=1.3,
+        beta=4.21,
+        theta_ci95=[1.1, 1.5],
+        beta_ci95=[3.9, 4.5],
+        r2=0.987,
+        aic=-42.0,
+        ss_res=0.01,
+        impedance_mean=1.25,
+        impedance_std=0.08,
+        null_models={
+            "linear": {"delta_aic": 20.0},
+            "power_law": {"delta_aic": 22.0},
+        },
+    )
+
+    summary = compile_summary(elements, aggregate, generated_at="2026-01-01T00:00:00Z")
+
+    aggregate_summary = summary["aggregate"]
+    assert aggregate_summary["beta_mean"] == pytest.approx(4.21)
+    assert aggregate_summary["beta_mean_observed"] is None
+    assert aggregate_summary["beta_canonical"] == pytest.approx(4.21)
+    assert aggregate_summary["beta_std"] is None
+    assert aggregate_summary["beta_sem"] is None
+    assert aggregate_summary["beta_ci_width_mean"] is None
+
+    beta_note = next(note for note in summary["hypotheses"] if note["id"] == "beta_universality")
+    assert beta_note["status"] == "inconclusive"
+    assert beta_note["evidence"]["beta_mean"] == pytest.approx(4.21)
+    assert beta_note["evidence"]["beta_mean_observed"] is None
+    assert beta_note["evidence"]["beta_canonical"] == pytest.approx(4.21)
+    assert beta_note["evidence"]["beta_ci_width_mean"] is None
+
+    coupled_note = next(note for note in summary["hypotheses"] if note["id"] == "coupled_resonance")
+    assert coupled_note["evidence"]["beta_range"] == pytest.approx([4.21, 4.21])
+    assert coupled_note["evidence"]["theta_span"] is None
+
+    assert "4.21" in summary["tri_layer"]["formal"]
