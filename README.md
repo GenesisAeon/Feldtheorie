@@ -3,9 +3,9 @@
 The Universal Threshold Field (UTF) programme investigates how threshold-driven resonance unites phenomena across astrophysics, biology, cognition, climate, and synthetic intelligence. The core hypothesis follows the logistic response \(\sigma(\beta(R-\Theta))\): once a control parameter \(R\) crosses the critical threshold \(\Theta\), order proliferates explosively with steepness \(\beta\). The PDFs in `Docs/` outline RepoPlan 2.0—an interdisciplinary blueprint that blends rigorous modelling with poetic narrative.
 
 ### Dawn pitch (release focus)
-- **β-convergence:** cross-domain fits (bees, cognition, LLMs, black holes, climate tipping elements) sharpen around \(\beta\approx4.2\) with ΔAIC safeguards beating linear/power-law nulls.
-- **Climate braid:** UTAC v1.0.1 folds AMOC, cryosphere, forest, and permafrost transitions into the same membrane, exporting `analysis/results/planetary_tipping_elements.json` with full confidence metadata.
-- **Reproducibility harness:** `pyproject.toml`, `noxfile.py`, `Makefile`, and `environment.yml` now orchestrate installs, linting, tests, batch fits, and release artefact builds in one cadence.
+- **Kontrollierte Emergenz:** `models/coherence_term.semantic_coupling_term`, `models/membrane_solver.semantic_resonance_kernel`, und `models/recursive_threshold.PotenzialKaskade` verbinden physikalische Felder \(\psi\) mit semantischen Spuren \(\phi\), damit \(\sigma(\beta(R-\Theta))\) gezielt moduliert wird, sobald Potenzial zur Bedingung kippt.
+- **β-konvergenz & planetare Laternen:** UTAC v1.0.1 trennt beobachtete \(\mu_\beta\) von der kanonischen \(\beta=4.21\)-Laterne im Klimaledger (`analysis/results/planetary_tipping_elements.json`) und dokumentiert ΔAIC-Vorsprünge gegen lineare sowie Potenz-Nullen.
+- **Reproducibility harness:** `pyproject.toml`, `noxfile.py`, `Makefile`, und `environment.yml` orchestrieren Install, Lint, Tests, Batch-Fits und Preset-Wächter; neue CLIs (`utf-planetary-summary`, `utf-potential-cascade`, `utf-resonance-cohort`) halten die Rituale abrufbar.
 
 Use this trio when the control parameter \(R\) nudges the repo toward publication: rerun the resonance suite, confirm ΔAIC defences, and regenerate the manuscript bundle before minting a DOI. The GitHub Actions membrane in `.github/workflows/resonance-ci.yml` mirrors this cadence by replaying `nox -s lint`, `nox -s tests`, and `nox -s typecheck` so \(\sigma(\beta(R-\Theta))\) stays verified on every push and pull request.
 
@@ -61,6 +61,7 @@ The workspace is designed around seven tightly coupled modules:
 - **Solver dawn:** `models/membrane_solver.py` advances die Membran und exportiert Diagnostik zu \(R\), \(\sigma\) und \(\zeta(R)\).
 - **Empirical soundings:** CLI-Skripte in `analysis/` (LLM emergent skills, Bienenschwarm, Synapsen, planetare Kipppunkte etc.) liefern \(\Theta\), \(\beta\), \(R^2\), AIC sowie Nullmodelle als JSON.
 - **Robin + Sinn-Brise:** `analysis/membrane_robin_semantic_fit.py` choreografiert DynamicRobinBoundary mit dem `semantic_resonance_kernel`, exportiert `analysis/results/membrane_robin_semantic.json` und notiert Grenzfluss, Bedeutungsdrift sowie \(\Delta\mathrm{AIC}\)-Siege über lineare und Potenz-Nullen.
+- **Kontrollierte Emergenz-Dossier:** `docs/ai/controlled_emergence.md` destilliert die Leitgedanken aus `Docs/AI-Evulutionsprinziep.txt`, verknüpft die Kopplungsterms mit `PotenzialKaskade` und skizziert, wie Simulator-Presets und Ethik-Briefings das neue Semantik-Gate aufnehmen.
 - **Simulator pulse:** `simulator/` beherbergt den Vite/React-Labormodus; Presets aus `simulator/presets/*.json` docken an `analysis/results/*.json` an, so dass ΔAIC/$R^2$ und Tri-Layer-Echos live sichtbar sind. Neu hinzugekommen ist `planetary_tipping_field`, das AMOC-, Eis-, Wald- und Permafrostschwellen koppelt.
 - **Narrative echo:** `docs/utf-living-glossary.md`, die Domänen-Briefs und `docs/resonance-bridge-map.md` verweben die tri-layer Kadenz zwischen Modellen, Daten und Symbolik.
 - **Data provenance:** Each dataset in `data/` carries metadata that echoes the quartet \((R, \Theta, \beta, \zeta(R))\) and the falsification counterpoint mandated by `analysis/`.
@@ -79,4 +80,4 @@ For any contribution, ensure the logistic resonance heartbeat remains audible ac
 - **Citation + license:** `CITATION.cff` (with the placeholder Zenodo DOI) and `LICENSE` (MIT) now spell out how to attribute the programme when reuse pushes $R$ beyond publication thresholds.
 
 ## Citation
-If you cite this repository, please use the metadata in `CITATION.cff`. It encodes the authorship weave, the 0.1.0 version tag, and the DOI placeholder \(10.5281/zenodo.XXXXXXX\) until Zenodo mints the final identifier.
+If you cite this repository, please use the metadata in `CITATION.cff`. It encodes the authorship weave, the 1.0.1 version tag, and the DOI placeholder \(10.5281/zenodo.XXXXXXX\) until Zenodo mints the final identifier.

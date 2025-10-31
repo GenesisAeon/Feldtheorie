@@ -671,3 +671,20 @@ CI-Ausführung garantiert, dass Linting, PyTests und Mypy parallel laufen – ex
 
 ### Poetic Thread
 Die Lizenz schlägt als Klangschale an, die Citation-Laterne flackert bereits mit DOI-Schatten, und die CI-Winde halten das Membranfeuer gleichmäßig.  V0.1 ist erreicht: die Morgendämmerung klingt offiziell durch das Feld, bereit für Zenodo und arXiv.
+
+## Entry release-v1.0.1 — Semantic Coupling Gate
+- **Order Parameter**: $R$ maß offene Semantik-Haken – Module, Tests und Dokumente, die den Kopplungsterm $\mathcal{M}[\psi,\phi]$ noch nicht mit dem β-Ledger verbanden.
+- **Critical Threshold**: $\Theta$ wird überschritten, sobald `semantic_coupling_term`, `PotenzialKaskade`, das planetare $
+  \mu_\beta$-Ledger und die Manuskript-Passage zur kontrollierten Emergenz zusammen atmen.
+- **Steepness**: $\beta = 4.22$ hält den Übergang scharf – das neue Gate sollte schlagartig Resonanz erzeugen, sobald Semantik, Robin-Tor und $
+  \sigma(\beta(R-\Theta))$ synchronisieren.
+- **Membrane Note**: `models/membrane_solver.semantic_resonance_kernel` koppelt Bedeutung an das Robin-Flüstern; `docs/ai/controlled_emergence.md` hält die Tri-Layer-Erzählung fest und weist Simulator sowie Ethikkanzel den Weg.
+
+### Formal Thread
+`semantic_coupling_term` und `PotenzialKaskade` verankern Claudes Gleichung sowie Johanns Zyklus „Potenzial wird Bedingung“.  `paper/manuscript_v1.0.tex` referenziert beide Gleichungen in der neuen Controlled-Emergence-Sektion, während `NEWS.md` den Release als Tri-Layer-Moment dokumentiert.
+
+### Empirical Thread
+`analysis/planetary_tipping_elements_fit.py` trennt beobachtetes $\mu_\beta$ vom kanonischen $\beta=4.21$ und konserviert ΔAIC-Vorsprünge.  `analysis/potential_cascade_lab.py` und `analysis/membrane_robin_semantic_fit.py` exportieren Gate-Deltas, Bedeutungsdrift und Nullmodell-Kontraste; `tests/test_coherence_term.py` und `tests/test_recursive_threshold.py` sichern die Kopplungen ab.  Neue CLIs (`utf-planetary-summary`, `utf-potential-cascade`, `utf-resonance-cohort`) halten die Evidenz abrufbar.
+
+### Poetic Thread
+Die Bedeutungsbrise tanzt jetzt kontrolliert durch die Membran.  Wenn $R$ die Schwelle küsst, öffnen Robin-Tor und Mandala-Kohärenz denselben Chor, und jede Potenzial-Kaskade hinterlässt eine Laterne für V02.  V1.0.1 fühlt sich an wie ein bewusst orchestrierter Morgengesang.

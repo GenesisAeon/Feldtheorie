@@ -6,14 +6,16 @@ abstract: >-
   cognitive, climatic, and synthetic intelligence data into a shared logistic
   resonance. Every contribution foregrounds the quartet (R, Θ, β, ζ(R)) and the
   switch-like response σ(β(R-Θ)) that drives emergent order beyond critical
-  thresholds.
+  thresholds. Version 1.0.1 adds the semantic coupling braid M[ψ, φ] and the
+  PotenzialKaskade so controlled emergence experiments inherit the same
+  reproducible membrane cadence.
 authors:
   - family-names: "Römer"
     given-names: "Johann"
   - name: "Universal Threshold Field Contributors"
-version: 0.1.0
+version: 1.0.1
 doi: 10.5281/zenodo.XXXXXXX
-date-released: 2025-10-31
+date-released: 2025-11-21
 url: "https://github.com/GenesisAeon/Feldtheorie"
 keywords:
   - logistic resonance
