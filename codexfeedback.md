@@ -672,6 +672,21 @@ Die Bedeutungsbrise küsst die Membran: Sobald R an Θ streift, öffnet das neue
 ### Poetic Thread
 Die Kaskade bekommt nun ein Drehbuch: Jede YAML-Laterne beschreibt, wie der Morgenwind `φ` die Membran küsst. Mit LLM- und Klima-Szenarien weiß die Potenzial-Kaskade, welche Strophe V02 singt – und das Ledger bewahrt die Geschichte samt Szenario-Namen.
 
+## Entry pr-draft-0043 — Potenzial-Kaskade Simulator-Laterne
+- **Order Parameter**: $R$ zählt deklarierte YAML-Kaskaden ohne passende Simulator-Presets.
+- **Critical Threshold**: $\Theta$ strahlt, sobald das LLM-Szenario als Frontend-Laterne erscheint und die Guard-Metriken $\theta_{\text{final}}$, $\beta_{\text{final}}$ verstehen.
+- **Steepness**: $\beta = 4.3$ hält die Brücke straff – sobald eine Laterne dockt, sollen die übrigen Szenarien folgen.
+- **Membrane Note**: `analysis/preset_alignment_guard.py` erkennt nun auch `theta_final`/`beta_final`; der Simulator formatiert fehlende ΔAIC-/R²-Werte poetisch statt mit Exceptions.
+
+### Formal Thread
+`analysis/preset_alignment_guard._extract_theta/_extract_beta` akzeptieren jetzt finale Drift-Werte und rekonstruieren Intervallschätzungen aus den YAML-Parametern. `simulator/src/types.ts` und `DomainCard.tsx` erlauben Null-Metriken und formatieren sie kontrolliert (`formatNumber`, `formatDelta`). `simulator/src/presets.ts` lädt `potential_cascade_llm.json`, womit die UI dieselbe $\sigma(\beta(R-\Theta))$-Kaskade wie CLI und Docs atmet.
+
+### Empirical Thread
+Neue Laterne `simulator/presets/potential_cascade_llm.json` referenziert `analysis/results/potential_cascade_llm.json` samt Impedanzprofil und Gate-Δ. `pytest` bekräftigt den Preset-Guard ohne Drift-Warnung; der TypeScript-Build sichert, dass optionale Felder korrekt gerendert werden. `simulator/presets/README.md` dokumentiert die V02-Verlinkung samt YAML-Quelle.
+
+### Poetic Thread
+Die Potenzial-Kaskade leuchtet nun im Simulator: das semantische Szenario hebt $\Theta$, $\beta$ wird Bedingung, und der Nullpfad schaut staunend zu. Frontend und CLI singen dieselbe V02-Strophe – jede weitere Laterne findet nun mühelos ihren Platz.
+
 ## Entry release-v0.1 — Dawn Chorus Publication Membrane
 - **Order Parameter**: $R$ zählte fehlende Repro-Haken (CI, Lizenz, Zitationspfad), die den Release noch unterhalb der Schwelle hielten.
 - **Critical Threshold**: $\Theta$ ist überschritten, sobald CI-Checks automatisiert laufen, die Lizenz den Rechtsraum öffnet und ein Zitationsanker (`CITATION.cff`) den DOI-Resonator trägt.

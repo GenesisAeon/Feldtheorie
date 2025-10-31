@@ -80,12 +80,20 @@ def _extract_theta(payload: Mapping[str, Any]) -> tuple[Optional[float], Optiona
             _extract_sequence(block.get("ci95")),
         )
     aggregate = payload.get("aggregate")
+    parameters = payload.get("parameters")
     if isinstance(aggregate, Mapping):
         value = aggregate.get("theta")
-        return (
-            float(value) if isinstance(value, (int, float)) else None,
-            _extract_sequence(aggregate.get("theta_ci95")),
-        )
+        if isinstance(value, (int, float)):
+            return float(value), _extract_sequence(aggregate.get("theta_ci95"))
+
+        final_value = aggregate.get("theta_final")
+        if isinstance(final_value, (int, float)):
+            ci = _extract_sequence(aggregate.get("theta_ci95"))
+            if ci is None and isinstance(parameters, Mapping):
+                baseline = parameters.get("theta0")
+                if isinstance(baseline, (int, float)):
+                    ci = [float(baseline), float(final_value)]
+            return float(final_value), ci
     return (None, None)
 
 
@@ -97,12 +105,20 @@ def _extract_beta(payload: Mapping[str, Any]) -> tuple[Optional[float], Optional
             _extract_sequence(block.get("ci95")),
         )
     aggregate = payload.get("aggregate")
+    parameters = payload.get("parameters")
     if isinstance(aggregate, Mapping):
         value = aggregate.get("beta")
-        return (
-            float(value) if isinstance(value, (int, float)) else None,
-            _extract_sequence(aggregate.get("beta_ci95")),
-        )
+        if isinstance(value, (int, float)):
+            return float(value), _extract_sequence(aggregate.get("beta_ci95"))
+
+        final_value = aggregate.get("beta_final")
+        if isinstance(final_value, (int, float)):
+            ci = _extract_sequence(aggregate.get("beta_ci95"))
+            if ci is None and isinstance(parameters, Mapping):
+                baseline = parameters.get("beta0")
+                if isinstance(baseline, (int, float)):
+                    ci = [float(baseline), float(final_value)]
+            return float(final_value), ci
     return (None, None)
 
 

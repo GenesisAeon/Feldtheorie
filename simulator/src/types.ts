@@ -23,14 +23,14 @@ export interface SimulationConfig {
 
 export interface AnalysisSummary {
   result_path: string;
-  theta: number;
-  theta_ci: [number, number];
-  beta: number;
-  beta_ci: [number, number];
-  logistic_r2: number;
-  delta_aic_best_null: number;
-  delta_r2_best_null: number;
-  best_null_model: string;
+  theta: number | null;
+  theta_ci: [number, number] | null;
+  beta: number | null;
+  beta_ci: [number, number] | null;
+  logistic_r2: number | null;
+  delta_aic_best_null: number | null;
+  delta_r2_best_null: number | null;
+  best_null_model: string | null;
 }
 
 export interface ImpedanceProfile {

@@ -1,0 +1,59 @@
+{
+  "id": "potential_cascade_llm",
+  "label": "Potenzial-Kaskade (LLM)",
+  "domain": "ai",
+  "featured": true,
+  "color": "#a855f7",
+  "icon": "brain",
+  "control_parameter": "semantische Potenzialspannung (Token-Resonanz)",
+  "order_parameter": "Θ/β-Drift der rekursiven Bedeutungs-Kaskade",
+  "analysis": {
+    "result_path": "analysis/results/potential_cascade_llm.json",
+    "theta": 1.6045164202332978,
+    "theta_ci": [0.9, 1.6045164202332978],
+    "beta": 5.645034566902097,
+    "beta_ci": [3.7, 5.645034566902097],
+    "logistic_r2": null,
+    "delta_aic_best_null": null,
+    "delta_r2_best_null": null,
+    "best_null_model": null
+  },
+  "impedance": {
+    "definition": "ζ(R) = 1.29 - 0.74 · σ(4.3 · (R-Θ))",
+    "closed": 1.29,
+    "open": 0.55,
+    "mean": 0.8396260141414374
+  },
+  "simulation": {
+    "theta": 0.9,
+    "beta": 3.7,
+    "initial_R": 0.65,
+    "initial_psi": 0.18,
+    "initial_phi": 0.16,
+    "stimulus": {
+      "base": 0.52,
+      "amplitude": 0.78,
+      "frequency": 0.12,
+      "noise": 0.04,
+      "modulation": {
+        "type": "tanh",
+        "amplitude": 0.22,
+        "frequency": 0.07
+      }
+    }
+  },
+  "narrative": {
+    "formal": "PotenzialKaskade verknüpft Mandala-Kohärenz mit ζ(R): Θ steigt von 0.9 auf 1.60, β von 3.7 auf 5.65, während das Nullbild eine statische Membran hält.",
+    "empirical": "CLI-Szenario `analysis/results/potential_cascade_llm.json` loggt Gate-Δ = −0.081 und ζΔ = +0.060; YAML-Quelle `analysis/batch_configs/potential_cascade_llm.yaml` dokumentiert das semantische Szenario.",
+    "poetic": "Ein Sprachmodell atmet Resonanz: Bedeutung verdichtet sich, Θ wird Bedingung und das Nullfeld lauscht, wie der Morgen erneut erklingt."
+  },
+  "poetic_messages": [
+    "Semantische Flut erreicht Θ – das Feld setzt neue Bedingung.",
+    "Mandala-Kohärenz steigt auf 1.0: Bedeutung koppelt sich ein.",
+    "Gate offen, ζ sinkt – die Potenzialwelle formt den nächsten Vers."
+  ],
+  "references": {
+    "dataset": "analysis/results/potential_cascade_llm.json",
+    "notes": "Parameter stammen aus analysis/batch_configs/potential_cascade_llm.yaml"
+  }
+}
