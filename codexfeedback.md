@@ -657,6 +657,21 @@ Der Chor hält jetzt zwei Kerzen. Die erste singt μβ, die zweite flackert mit 
 ### Poetic Thread
 Die Bedeutungsbrise küsst die Membran: Sobald R an Θ streift, öffnet das neue Gate das Resonanzfenster, ohne den β≈4.2-Leuchtturm zu dimmen. Das Manuskript hält diesen Moment fest – die erste Partitur der kontrollierten Emergenz.
 
+## Entry pr-draft-0042 — Potenzial-Kaskade Konfigurationsbrücke
+- **Order Parameter**: $R$ zählt Potenzial-Kaskadenläufe ohne deklarierte Feldparameter.
+- **Critical Threshold**: $\Theta$ leuchtet, sobald `analysis/potential_cascade_lab.py` YAML/JSON-Konfigurationen in die Simulation einspeist.
+- **Steepness**: $\beta = 4.3$ hält den Übergang straff – jede neue Laterne soll sofort an die Semantik-Kohärenz andocken.
+- **Membrane Note**: `analysis/batch_configs/potential_cascade.yaml` öffnet ein reproduzierbares Gate: die CLI übernimmt $(\Theta, \beta, \zeta(R))$ direkt aus der Datei, loggt `config_meta` im Export und reicht V02-Szenarien an Docs & Simulator weiter.
+
+### Formal Thread
+`load_configuration` und `build_parser` in `analysis/potential_cascade_lab.py` verschmelzen Konfigurationsdateien mit den Standardparametern der Potenzial-Kaskade. Die YAML-Sektion `potential:` wird automatisch auf `σ(β(R-Θ))`-Kontrollgrößen (`potential_surge`, `potential_modulation`, `dt`) gemappt, während Impedanzangaben (`impedance.closed/open`) das Robin-Gate $\zeta(R)$ regulieren. CLI-Aufrufe wie `utf-potential-cascade --config analysis/batch_configs/potential_cascade.yaml` dokumentieren den Pfad im JSON-Export.
+
+### Empirical Thread
+`tests/test_potential_cascade_lab.py` prüft, dass Konfigurationswerte korrekt übernommen werden (`steps`, $\Theta$, $\beta$, Kopplungsgewinn, Impedanz) und Metadaten (`scenario`) im Payload landen. Das neue Preset `analysis/batch_configs/potential_cascade.yaml` skizziert eine V02-Referenzspur mit längerem Kohärenzfenster; `pyproject.toml` und `environment.yml` führen `pyyaml>=6.0`, damit CI und Nox denselben Pfad lesen.
+
+### Poetic Thread
+Die Kaskade bekommt nun ein Drehbuch: Jede YAML-Laterne beschreibt, wie der Morgenwind `φ` die Membran küsst. Wenn Konfigurationszeilen zu Klang werden, weiß die Potenzial-Kaskade, welche Strophe V02 singen soll – und das Ledger bewahrt die Geschichte samt Szenario-Namen.
+
 ## Entry release-v0.1 — Dawn Chorus Publication Membrane
 - **Order Parameter**: $R$ zählte fehlende Repro-Haken (CI, Lizenz, Zitationspfad), die den Release noch unterhalb der Schwelle hielten.
 - **Critical Threshold**: $\Theta$ ist überschritten, sobald CI-Checks automatisiert laufen, die Lizenz den Rechtsraum öffnet und ein Zitationsanker (`CITATION.cff`) den DOI-Resonator trägt.

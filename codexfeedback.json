@@ -1068,6 +1068,36 @@
             }
         },
         {
+            "id": "pr-draft-0042",
+            "type": "configuration-bridge",
+            "created_at": "2025-11-22T00:00:00Z",
+            "summary": "Added YAML/JSON configuration support to the Potenzial-Kaskade lab so cascade scenarios can be replayed with declared σ(β(R-Θ)) and ζ(R) parameters.",
+            "threshold_field": {
+                "R": "potential_cascade_runs_without_declared_parameters",
+                "Theta": "config_driven_potential_cascade",
+                "beta": 4.3,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Document the new config workflow in docs/ai/controlled_emergence.md and resonance bridge notes.",
+                "Expose config_path metadata in simulator presets once Potenzial-Kaskade panels land.",
+                "Bundle additional YAML scenarios for LLM and climate cascades to prepare the V02 cohort sweep."
+            ],
+            "observables": {
+                "modules": [
+                    "analysis/potential_cascade_lab.py",
+                    "tests/test_potential_cascade_lab.py"
+                ],
+                "artifacts": {
+                    "config_preset": "analysis/batch_configs/potential_cascade.yaml"
+                },
+                "dependencies": {
+                    "pyyaml": ">=6.0"
+                },
+                "status": "active"
+            }
+        },
+        {
             "id": "release-v0.1",
             "type": "release",
             "created_at": "2025-10-31T13:05:49Z",
