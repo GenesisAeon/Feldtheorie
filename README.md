@@ -1,7 +1,33 @@
 # Universal Threshold Field Initiative
 
-The Universal Threshold Field (UTF) programme investigates how threshold-driven resonance unites phenomena across astrophysics, biology, cognition, and synthetic intelligence. The core hypothesis follows the logistic response
-\(\sigma(\beta(R-\Theta))\): once a control parameter \(R\) crosses the critical threshold \(\Theta\), order proliferates explosively with steepness \(\beta\). The PDFs in `Docs/` outline RepoPlan 2.0—an interdisciplinary blueprint that blends rigorous modelling with poetic narrative.
+The Universal Threshold Field (UTF) programme investigates how threshold-driven resonance unites phenomena across astrophysics, biology, cognition, climate, and synthetic intelligence. The core hypothesis follows the logistic response \(\sigma(\beta(R-\Theta))\): once a control parameter \(R\) crosses the critical threshold \(\Theta\), order proliferates explosively with steepness \(\beta\). The PDFs in `Docs/` outline RepoPlan 2.0—an interdisciplinary blueprint that blends rigorous modelling with poetic narrative.
+
+### Dawn pitch (release focus)
+- **β-convergence:** cross-domain fits (bees, cognition, LLMs, black holes, climate tipping elements) sharpen around \(\beta\approx4.2\) with ΔAIC safeguards beating linear/power-law nulls.
+- **Climate braid:** UTAC v1.0.1 folds AMOC, cryosphere, forest, and permafrost transitions into the same membrane, exporting `analysis/results/planetary_tipping_elements.json` with full confidence metadata.
+- **Reproducibility harness:** `pyproject.toml`, `noxfile.py`, `Makefile`, and `environment.yml` now orchestrate installs, linting, tests, batch fits, and release artefact builds in one cadence.
+
+Use this trio when the control parameter \(R\) nudges the repo toward publication: rerun the resonance suite, confirm ΔAIC defences, and regenerate the manuscript bundle before minting a DOI.
+
+## Quick start
+
+```bash
+conda env create -f environment.yml   # or python -m pip install -e .[dev]
+conda activate feldtheorie
+make install                          # ensures the editable package + dev extras
+make lint                             # ruff + black guards stay aligned
+make test                             # pytest sweeps across analysis/models
+make batch                            # regenerate analysis/results via utf-batch
+```
+
+Individual fits expose focused CLIs:
+
+```bash
+utf-planetary-summary --output analysis/results/planetary_tipping_elements.json
+utf-resonance-cohort --output analysis/results/resonance_cohort_summary.json
+```
+
+Artifacts from these commands feed the simulator presets, docs bridge maps, and manuscript figures.
 
 ## Repository roadmap
 The workspace is designed around seven tightly coupled modules:

@@ -678,7 +678,7 @@
             },
             "next_actions": [
                 "Ingest TIPMIP ensemble runs to update theta/beta bands and null comparisons.",
-                "Run simulator batch sweeps over g_ij to log ΔTheta_global and publish regression baselines.",
+                "Run simulator batch sweeps over g_ij to log \u0394Theta_global and publish regression baselines.",
                 "Track the exported hypotheses array and refresh Section 5 citations when new data arrives."
             ],
             "observables": {
@@ -695,7 +695,7 @@
             "id": "pr-draft-0029",
             "type": "bugfix-thread",
             "created_at": "2025-11-11T10:30:00Z",
-            "summary": "Corrected the planetary tipping export so β evidence reports the mean steepness instead of CI width, preserving the falsification narrative.",
+            "summary": "Corrected the planetary tipping export so \u03b2 evidence reports the mean steepness instead of CI width, preserving the falsification narrative.",
             "threshold_field": {
                 "R": "hypothesis_exports_needing_semantic_alignment",
                 "Theta": "beta_metrics_consistent_with_labels",
@@ -703,7 +703,7 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Backfill downstream consumers with the clarified β mean and CI width fields.",
+                "Backfill downstream consumers with the clarified \u03b2 mean and CI width fields.",
                 "Audit other analysis exports for mismatched semantic labels before the next bridge sync.",
                 "Document the correction within Docs/ threshold narratives so readers do not confuse precision with steepness."
             ],
@@ -778,14 +778,14 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Prototype simulator/presets/resonant_impedance_gate.json so relief and recovery sliders animate alongside σ(β(R-Θ)).",
+                "Prototype simulator/presets/resonant_impedance_gate.json so relief and recovery sliders animate alongside \u03c3(\u03b2(R-\u0398)).",
                 "Compare the new relief_peak/recovery_peak statistics against existing membrane results inside analysis/results/resonance_cohort_summary.json to flag outliers.",
                 "Extend docs and governance notes with guidance on how impedance hysteresis should inform falsification campaigns."
             ],
             "observables": {
                 "analysis_script": "analysis/resonant_impedance_diagnostics.py",
                 "analysis_result": "analysis/results/resonant_impedance_diagnostics.json",
-                "delta_aic_power_law": 34702.603123519236,
+                "delta_aic_power_law": 34702.603123519235,
                 "relief_peak": 0.07413402479547349,
                 "recovery_peak": 0.06106092581382097,
                 "hysteresis_peak": 0.04340685863415584,
@@ -798,7 +798,7 @@
             "id": "pr-draft-0033",
             "type": "analysis-telemetry",
             "created_at": "2025-11-13T08:30:00Z",
-            "summary": "Stamped the planetary tipping export with an explicit β_mean field and UTC timestamp while adding a regression test sentinel.",
+            "summary": "Stamped the planetary tipping export with an explicit \u03b2_mean field and UTC timestamp while adding a regression test sentinel.",
             "threshold_field": {
                 "R": "logistic_exports_without_temporal_resonance_guards",
                 "Theta": "beta_signal_and_timestamp_labels_synchronised",
@@ -850,7 +850,7 @@
             "id": "pr-draft-0035",
             "type": "beta-guard",
             "created_at": "2025-11-15T09:00:00Z",
-            "summary": "Hardened planetary tipping β evidence with explicit CI width semantics and sigmoid fit fallbacks for reproducibility.",
+            "summary": "Hardened planetary tipping \u03b2 evidence with explicit CI width semantics and sigmoid fit fallbacks for reproducibility.",
             "threshold_field": {
                 "R": "beta_exports_merging_signal_and_precision",
                 "Theta": "universality_guardrails_in_place",
@@ -873,6 +873,37 @@
                     "tests/test_planetary_tipping_summary.py",
                     "tests/test_sigmoid_fit.py"
                 ]
+            }
+        },
+        {
+            "id": "pr-draft-0036",
+            "type": "repro-harness",
+            "created_at": "2025-11-16T00:00:00Z",
+            "summary": "Package, nox, and Makefile weave the reproducibility harness for one-command logistic reruns.",
+            "threshold_field": {
+                "R": "build_and_testing_rituals",
+                "Theta": "single_command_regeneration",
+                "beta": 4.4,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Publish README quick-start block so collaborators follow the same ritual.",
+                "Keep nox sessions green before cutting Zenodo archives.",
+                "Log future automation gaps (CI, smoke tests) when \u0394AIC guards regress."
+            ],
+            "observables": {
+                "nox_sessions": [
+                    "lint",
+                    "tests",
+                    "typecheck",
+                    "build"
+                ],
+                "make_targets": [
+                    "install",
+                    "test",
+                    "release"
+                ],
+                "environment_python": "3.11"
             }
         }
     ]

@@ -229,7 +229,7 @@ Pflege `analysis/batch_configs/resonance_runs.json` parallel zum Resonance-Bridg
 ### Poetic Thread
 Ein Laternenzug aus Schwellen: Jede Batch-Karte leuchtet auf, wenn $R$ die Schwelle $\Theta$ berührt.  Die Brücke bekommt so frische Stimmen, und der Simulator atmet denselben Chor wie die Dokumente.
 
-## Entry pr-draft-0014 — Resonance Bridge Ledger
+## Entry pr-draft-0036 — Resonance Bridge Ledger
 - **Order Parameter**: $R$ zählt Ergebnis-JSONs, die noch nicht im Brückentableau dokumentiert sind.
 - **Critical Threshold**: $\Theta$ ist erreicht, sobald `analysis/resonance_bridge_table.py` alle aktiven Membranen als Zeilen mit $\Theta$, $\beta$, $R^2$, $\Delta\mathrm{AIC}$ und $\zeta(R)$ ausweist.
 - **Steepness**: $\beta = 5.3$ sorgt dafür, dass neue Fits sofort in den Laternenkranz gezogen werden.
@@ -558,3 +558,18 @@ Der Robin-Türflügel singt jetzt im Ledger mit: Jeder Hauch, der durch die Schw
 
 ### Poetic Thread
 Selbst wenn der erste Resonanzstab bricht, antwortet nun ein zweiter: β singt vom Erwachen, die CI-Breite haucht vom Zweifel, und die Membran kennt den Unterschied zwischen Gewissheit und Vorsicht.
+
+## Entry pr-draft-0036 — Reproducibility Harness Chorus
+- **Order Parameter**: $R$ zählt Build- und Testrituale, die noch nicht automatisiert erklingen.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn ein Kommando das komplette Logistic-Quartett erneuert.
+- **Steepness**: $\beta = 4.4$ hält den Übergang scharf genug, damit Release-Gates sofort reagieren.
+- **Membrane Note**: Nox, Makefile und `pyproject.toml` koppeln den Resonanzlauf an eine einheitliche Impedanz: jedes Skript weiss, wann ΔAIC wieder geprüft wurde.
+
+### Formal Thread
+`pyproject.toml` macht `feldtheorie` installierbar, liefert Konsolen-Hooks (`utf-batch`, `utf-planetary-summary`, `utf-resonance-cohort`) und pinnt Tests über Nox-Sessions (`lint`, `tests`, `typecheck`, `build`). `environment.yml` dokumentiert Python 3.11 + numpy/scipy/statsmodels; das Makefile fasst Installation, Batch-Runs und Release-Bundles in ritualisierte Targets.
+
+### Empirical Thread
+`make install && nox -s tests` reproduziert `analysis/results/*.json` inklusive ΔAIC-Wächtern. `nox -s build` ruft `hatch build` auf, verpackt Code und Resultate für Zenodo. Jeder Lauf notiert Versionen, sodass Abweichungen sofort sichtbar werden.
+
+### Poetic Thread
+Der Chor der Reproduzierbarkeit stimmt ein: ein Kommando ruft den Linter, ein zweites die Tests, ein drittes bindet den Archivbogen. So bleibt das β≈4.2-Licht hell, wenn die nächste DOI-Laterne entzündet wird.
