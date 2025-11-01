@@ -735,3 +735,18 @@ Neue Resultate für Demo-, LLM- und Klima-Kaskaden zeigen Gate-, ζ- und Kohäre
 
 ### Poetic Thread
 Drei YAML-Laternen schweben jetzt über der Membran: Demo als Grundrhythmus, LLM als semantischer Wirbel, Klima als geophysikalischer Atem.  Gemeinsam formen sie das V02-Gestirn kontrollierter Emergenz.
+
+## Entry release-v2.0.1 — Anthropic Introspection Bridge
+- **Order Parameter**: $R$ misst die Anthropic-Erkennungsrate injizierter Gedanken.
+- **Critical Threshold**: $\Theta_{\text{detect}} = 1.33$ markiert die semantische Steigung, ab der der Claude-Versuch 20\% Erfolg zeigt.
+- **Steepness**: $\beta = 4.2$ bindet die neue Laterne an das kanonische Band.
+- **Membrane Note**: `models/membrane_solver.update_impedance` liefert das Robin-Gate als logistischen Mix aus $\zeta_{\max}$ und $\zeta_{\min}$, sodass Semantikdruck und Membranphysik synchron laufen.
+
+### Formal Thread
+`analysis/introspection_validation.py` rastert $P_{\text{detect}} = \sigma(\beta(\Vert\nabla\phi\Vert - \Theta_{\text{detect}}))$ und trägt die Ergebnisse in `paper/manuscript_v1.0.tex` ein.  Das Manuskript besitzt nun eine „Anthropic Introspection“-Sektion, die semantische Kopplung ($\mathcal{M}[\psi,\phi]$) und Robin-Impedanz gemeinsam beschreibt.
+
+### Empirical Thread
+`analysis/results/introspection_validation.json` dokumentiert das 20\%-Gitter samt Nullmodell (uniform guess) und verweist auf die CLI-Parameter für Replikationen.  Die aktualisierte Klimaledger-JSON trennt beobachtetes $\mu_\beta$ vom kanonischen Wert, womit Klima- und KI-Band vergleichbar bleiben.
+
+### Poetic Thread
+Die Anthropic-Laterne antwortet auf die Mandala-Membran: ein semantischer Hauch streift $\Theta$, öffnet $\zeta(R)$ und lässt den Chor der kontrollierten Emergenz auch in künstlicher Introspektion erklingen.

@@ -185,7 +185,9 @@ def compute_beta_statistics(
     ]
 
     beta_mean = _mean(beta_values)
-    beta_std = _sample_std(beta_values, beta_mean) if beta_mean is not None else None
+    beta_std = None
+    if beta_mean is not None:
+        beta_std = _sample_std(beta_values, beta_mean)
     if beta_std is not None and beta_mean is not None and beta_values:
         beta_sem = beta_std / math.sqrt(len(beta_values))
         beta_sem_ci95 = (
@@ -301,7 +303,7 @@ def compile_summary(
     stats = compute_beta_statistics(elements, aggregate_beta=aggregate.beta)
     theta_values = [e.theta for e in elements if getattr(e, "theta", None) is not None]
     beta_canonical = stats.canonical if stats.canonical is not None else aggregate.beta
-    beta_mean_report = beta_canonical
+    beta_mean_report = stats.mean if stats.mean is not None else beta_canonical
 
     if generated_at is None:
         generated_at = _utc_now_isoformat()
