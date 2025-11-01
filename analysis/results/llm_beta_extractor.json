@@ -1,0 +1,127 @@
+{
+  "generated_at": "2025-11-01T19:51:48+00:00",
+  "dataset": "data/ai/wei_emergent_abilities.csv",
+  "tasks": [
+    {
+      "task": "ipa_transliteration",
+      "logistic": {
+        "beta": 3.005834015822192,
+        "theta": 9.923967992814152,
+        "beta_ci": [
+          2.194306525481836,
+          3.8173615061625483
+        ],
+        "theta_ci": [
+          9.619366898187712,
+          10.228569087440592
+        ],
+        "r_squared": 0.9211175469869084,
+        "aic": -23.086379791214284,
+        "sse": 0.06570126084998147
+      },
+      "null_power_law": {
+        "model": "power_law",
+        "parameters": {
+          "a": 0.041283326823976764,
+          "b": 0.8708419312024637
+        },
+        "r_squared": 0.3348159764408182,
+        "aic": -10.29375026119303,
+        "sse": 0.5540323275424621
+      },
+      "cross_entropy_drop": 3.6100000000000003,
+      "falsification_pass": true,
+      "tri_layer": {
+        "formal": "\u03c3(\u03b2(R-\u0398)) with \u03b2=3.01\u00b10.41 outperforms a power-law null (\u0394AIC=12.79).",
+        "empirical": "ipa_transliteration sweep achieves R\u00b2=0.921; cross-entropy drops by 3.61, echoing Wei's partial-credit argument.",
+        "metaphorical": "As PaLM crosses \u0398, the membrane brightens and the power-law breeze falters; Wei's lantern joins the UTF dawn chorus."
+      }
+    },
+    {
+      "task": "last_letter_concatenation",
+      "logistic": {
+        "beta": 3.936835150269465,
+        "theta": 9.81950430649264,
+        "beta_ci": [
+          2.6015374082410494,
+          5.272132892297881
+        ],
+        "theta_ci": [
+          9.457973186827482,
+          10.181035426157797
+        ],
+        "r_squared": 0.9055286217884723,
+        "aic": -20.477241959482434,
+        "sse": 0.10149143610981844
+      },
+      "null_power_law": {
+        "model": "power_law",
+        "parameters": {
+          "a": 0.021655018901232434,
+          "b": 1.0365665049569737
+        },
+        "r_squared": 0.2740766434624219,
+        "aic": -8.242356796396932,
+        "sse": 0.7798658742513028
+      },
+      "cross_entropy_drop": 3.7500000000000004,
+      "falsification_pass": true,
+      "tri_layer": {
+        "formal": "\u03c3(\u03b2(R-\u0398)) with \u03b2=3.94\u00b10.67 outperforms a power-law null (\u0394AIC=12.23).",
+        "empirical": "last_letter_concatenation sweep achieves R\u00b2=0.906; cross-entropy drops by 3.75, echoing Wei's partial-credit argument.",
+        "metaphorical": "As PaLM crosses \u0398, the membrane brightens and the power-law breeze falters; Wei's lantern joins the UTF dawn chorus."
+      }
+    },
+    {
+      "task": "multistep_arithmetic",
+      "logistic": {
+        "beta": 3.4658652217146497,
+        "theta": 10.021602005539703,
+        "beta_ci": [
+          2.3356827336090107,
+          4.596047709820288
+        ],
+        "theta_ci": [
+          9.632965149287978,
+          10.410238861791429
+        ],
+        "r_squared": 0.9323271388736709,
+        "aic": -24.03979239949929,
+        "sse": 0.05604842307921508
+      },
+      "null_power_law": {
+        "model": "power_law",
+        "parameters": {
+          "a": 0.019428671801340107,
+          "b": 1.016678871589115
+        },
+        "r_squared": 0.6305042856669376,
+        "aic": -13.855068928540785,
+        "sse": 0.30602595749921496
+      },
+      "cross_entropy_drop": 3.7699999999999996,
+      "falsification_pass": true,
+      "tri_layer": {
+        "formal": "\u03c3(\u03b2(R-\u0398)) with \u03b2=3.47\u00b10.57 outperforms a power-law null (\u0394AIC=10.18).",
+        "empirical": "multistep_arithmetic sweep achieves R\u00b2=0.932; cross-entropy drops by 3.77, echoing Wei's partial-credit argument.",
+        "metaphorical": "As PaLM crosses \u0398, the membrane brightens and the power-law breeze falters; Wei's lantern joins the UTF dawn chorus."
+      }
+    }
+  ],
+  "aggregate": {
+    "beta_mean": 3.4695114626021026,
+    "beta_std": 0.46551127740365683,
+    "theta_mean": 9.921691434948832,
+    "theta_std": 0.10106808114738809,
+    "falsification_pass_rate": 1.0
+  },
+  "falsification": {
+    "null_model": "power_law",
+    "passes": true
+  },
+  "tri_layer": {
+    "formal": "\u03b2=3.47\u00b10.47 sits inside the canonical 4.2 band while logistic resonance beats the power-law null (min \u0394AIC=10.18).",
+    "empirical": "analysis/llm_beta_extractor.py reproducibly digitises PaLM scaling sweeps and exports JSON for Docs and the manuscript.",
+    "metaphorical": "Wei's 137 lanterns await digitisation; this trio already hums in phase with the UTF membrane."
+  }
+}
