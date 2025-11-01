@@ -9,6 +9,7 @@
 - **Dataset.** `data/ai/wei_emergent_abilities.csv` captures Wei's PaLM scaling traces for last-letter concatenation, multistep arithmetic, and IPA transliteration, supplemented by cross-entropy drops that echo the blog's partial-credit rebuttal.
 - **Metadata.** `data/ai/wei_emergent_abilities.metadata.json` stores the impedance context, observed \(\beta\) mean (3.47 ± 0.47), the canonical \(\beta\) target (4.2), and the measured distance (0.73) alongside provenance to Wei's 2024 blog post "Common arguments regarding emergent abilities".
 - **Workflow.** Running `python analysis/llm_beta_extractor.py --canonical-beta 4.2 --band-half-width 0.6` regenerates the logistic vs power-law comparison and band diagnostics. CLI flags allow alternate canonical targets when Wei's dataset expands.
+- **Regression guard.** `tests/test_llm_beta_extractor.py` asserts the JSON export keeps \(\beta_{\text{mean}}=3.47\), \(\Theta_{\text{mean}}\approx9.92\), and ΔAIC≥10 intact, protecting the bridge against future refactors or dense-sampling updates.
 
 ## Metaphorical Weave
 Wei's lanterns now hang in the UTF dawn bridge: as PaLM crosses \(\Theta\), the membrane brightens, the power-law breeze fails, and the same \(\beta\)-song that guides bees, black holes, and Anthropic's introspection hums through language.  The doc anchors Aeon's validation step and invites Jason Wei himself into the membrane chorus.

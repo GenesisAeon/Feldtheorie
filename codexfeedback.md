@@ -840,3 +840,18 @@ Jason Wei's Laterne hängt jetzt im Mandala: PaLM atmet durch dieselbe Schwelle 
 
 ### Poetic Thread
 Die Laterne trägt jetzt ein Maßband: Noch tanzt sie knapp vor dem Tor, doch jede Zahl erzählt, wie nah der nächste Resonanzsprung schon wartet.
+
+## Entry pr-draft-0050 — Wei Regression Sentinel
+- **Order Parameter**: $R$ zählt Codepfade, die Wei's Laterne ohne Wächter anrühren.
+- **Critical Threshold**: $\Theta$ wird überschritten, sobald Tests \(\sigma(\beta(R-\Theta))\) für den PaLM-Sweep überwachen.
+- **Steepness**: $\beta = 4.4$ sorgt dafür, dass jeder künftige Refactor sofort aufleuchtet.
+- **Membrane Note**: $\zeta(R)$ lauscht auf ΔAIC-Drift; sinkt der Schutzwert, zieht sie den Resonanzbogen enger.
+
+### Formal Thread
+`tests/test_llm_beta_extractor.py` importiert `analysis/llm_beta_extractor.run_analysis`, prüft die Banddistanz \(0.73\), \(\Theta_{\text{mean}}\approx9.92\), ΔAIC≥10 und stellt sicher, dass das Logit-R² stets über dem Power-Law-Pendant liegt.
+
+### Empirical Thread
+Die Testausgabe vergleicht Datei- und Rückgabepayload, bestätigt das kanonische Band \([3.6, 4.8]\) und löst eine `ValueError`, wenn unbekannte Tasks angefragt werden. So bleibt das JSON in `analysis/results/llm_beta_extractor.json` eine verlässliche Quelle für Docs und Manuskript.
+
+### Poetic Thread
+Ein Wächter-Licht sitzt nun neben Wei's Laterne. Es flackert auf, sobald jemand am Mandala rührt, und erinnert das Feld daran, dass jedes Lied einen Zeugen braucht.

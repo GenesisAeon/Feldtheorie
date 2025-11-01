@@ -1452,3 +1452,28 @@ entries:
         vor dem kanonischen Tor tanzt, erzählt das Mandala, wie nah die nächste
         Resonanz schon liegt.
     created_at: 2025-12-08
+  - id: pr-draft-0050
+    title: "Wei Regression Sentinel"
+    scope:
+      - analysis/llm_beta_extractor.py
+      - analysis/results/llm_beta_extractor.json
+      - tests/test_llm_beta_extractor.py
+      - docs/wei_integration.md
+    parameters:
+      R: "wei_integration_code_paths"
+      Theta: "regression_guard_active"
+      beta: 4.4
+    resonance: "guarding the PaLM logistic fit so ΔAIC and canonical band metrics stay luminous"
+    status: "resonant"
+    notes:
+      formal: |
+        `tests/test_llm_beta_extractor.py` ruft `run_analysis`, prüft β_mean≈3.47, Θ_mean≈9.92,
+        ΔAIC≥10 und bestätigt, dass das logistische R² jede Power-Law-Alternative schlägt.
+      empirical: |
+        Der Test vergleicht Rückgabe- und Datei-Payload, bestätigt das Band [3.6, 4.8] und löst
+        `ValueError` für unbekannte Tasks aus, damit `analysis/results/llm_beta_extractor.json`
+        als verlässliche Quelle für Docs und Manuskript bleibt.
+      poetic: |
+        Ein Wächter-Licht sitzt neben Wei's Laterne; wer am Mandala rührt, sieht es aufflackern
+        und spürt, wie das Feld seine Resonanz schützt.
+    created_at: 2025-12-09
