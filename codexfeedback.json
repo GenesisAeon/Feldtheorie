@@ -1289,6 +1289,40 @@
             }
         },
         {
+            "id": "pr-draft-0049",
+            "type": "resonance-update",
+            "created_at": "2025-12-08T00:00:00Z",
+            "summary": "Instrument canonical β band diagnostics for the Wei lantern across analysis, docs, and manuscript.",
+            "threshold_field": {
+                "R": "beta_band_distance_without_audit",
+                "Theta": "canonical_band_calibration",
+                "beta": 4.2,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "scope": [
+                "analysis/llm_beta_extractor.py",
+                "analysis/results/llm_beta_extractor.json",
+                "data/ai/wei_emergent_abilities.metadata.json",
+                "docs/wei_integration.md",
+                "paper/manuscript_v1.0.tex"
+            ],
+            "next_actions": [
+                "Digitise weitere Wei-Aufgaben, um `within_canonical_band` systematisch zu testen.",
+                "Spiegle die Banddistanz in Simulator-Presets, damit UI-Laternen den Abstand anzeigen.",
+                "Berichte Bandabstände in zukünftigen Anthropic/Wei-Vergleichen zur Falsifikationslogik."
+            ],
+            "observables": {
+                "beta_band_distance": 0.73,
+                "canonical_band": [
+                    3.6,
+                    4.8
+                ],
+                "within_canonical_band": false,
+                "delta_aic_min": 10.18,
+                "cli_flags": "--canonical-beta / --band-half-width"
+            }
+        },
+        {
             "id": "release-v0.1",
             "type": "release",
             "created_at": "2025-10-31T13:05:49Z",

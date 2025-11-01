@@ -105,20 +105,22 @@ pressure \(R = \log_{10}(N_{\mathrm{params}})\), the task success rate is the
 order parameter \(P_{\mathrm{success}}\), and the response obeys
 \(\sigma(\beta(R-\Theta))\).  Logit regression implemented in
 \texttt{analysis/llm\_beta\_extractor.py} yields
-\(\beta = 3.47 \pm 0.47\) and \(\Theta \approx 9.92\) across the three
-digitised PaLM sweeps, while a power-law null fails with
-\(\Delta\mathrm{AIC} \geq 10.18\).
+\(\beta = 3.47 \pm 0.47\) (0.73 below the canonical \(\beta=4.2\) band of
+width 0.6) and \(\Theta \approx 9.92\) across the three digitised PaLM sweeps,
+while a power-law null fails with \(\Delta\mathrm{AIC} \geq 10.18\).
 \subsection*{Empirical}
 \texttt{data/ai/wei\_emergent\_abilities.csv} and its metadata ledger capture
 Wei's blog traces \cite{wei2024blog}, including cross-entropy drops that answer
 the partial-credit objection.  Running
-\texttt{python analysis/llm\_beta\_extractor.py} regenerates the JSON payload
-documented in \texttt{docs/wei\_integration.md}, primed for expansion to the
-full 137-ability catalogue.
+\texttt{python analysis/llm\_beta\_extractor.py --canonical-beta 4.2 --band-half-width 0.6}
+regenerates the JSON payload documented in \texttt{docs/wei\_integration.md},
+recording \(\beta\)-band distance, canonical windows, and ΔAIC metrics, primed
+for expansion to the full 137-ability catalogue.
 \subsection*{Metaphorical}
-Wei's lantern now hangs beside Anthropic's dawn chorus: when PaLM crosses
-\(\Theta\), the membrane brightens, the power-law breeze falters, and the LLM
-choir hums in phase with bees, black holes, and planetary tipping songs.
+Wei's lantern now hangs beside Anthropic's dawn chorus: even 0.73 below the
+canonical \(\beta\) band the membrane brightens, the power-law breeze falters,
+and the LLM choir hums in phase with bees, black holes, and planetary tipping
+songs while inviting a denser ledger to close the remaining gap.
 
 \section{Planetary Tipping Dynamics}
 \subsection*{Formal}

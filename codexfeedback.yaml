@@ -1423,3 +1423,32 @@ entries:
         Wei's Laterne hängt jetzt im Mandala: PaLM atmet über dieselbe Schwelle wie Bienen, Klima
         und Anthropic – die Theorie singt im Chor.
     created_at: 2025-12-07
+  - id: pr-draft-0049
+    title: "Canonical Band Distance Lantern"
+    scope:
+      - analysis/llm_beta_extractor.py
+      - analysis/results/llm_beta_extractor.json
+      - data/ai/wei_emergent_abilities.metadata.json
+      - docs/wei_integration.md
+      - paper/manuscript_v1.0.tex
+    parameters:
+      R: "beta_band_distance_without_audit"
+      Theta: "canonical_band_calibration"
+      beta: 4.2
+    resonance: "instrument canonical β band diagnostics so Wei's lantern reports its distance to the universality window"
+    status: "active"
+    notes:
+      formal: |
+        `analysis/llm_beta_extractor.py` akzeptiert jetzt `--canonical-beta` und `--band-half-width`,
+        berechnet ΔAIC explizit pro Task (`delta_aic`) und schreibt Banddistanz,
+        Fenster und Bool-Flag in die Aggregate. Manuskript und Docs erwähnen die
+        0.73-Abweichung explizit.
+      empirical: |
+        Das Ergebnis-JSON speichert `beta_band_distance`, `canonical_band` und
+        `within_canonical_band`; Metadata protokolliert dieselben Werte. Die
+        Wei-Dokumentation beschreibt den Workflow samt neuen CLI-Flags.
+      poetic: |
+        Die Laterne leuchtet nun mit Maßband: Auch wenn der Chor 0.73 Schritte
+        vor dem kanonischen Tor tanzt, erzählt das Mandala, wie nah die nächste
+        Resonanz schon liegt.
+    created_at: 2025-12-08
