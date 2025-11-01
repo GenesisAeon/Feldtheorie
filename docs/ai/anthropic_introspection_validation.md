@@ -29,8 +29,10 @@ und verbindet sie mit dem semantischen Kopplungsterm \(\mathcal{M}[\psi,\phi]\).
   universelle Band geprüft.
 - `analysis/planetary_tipping_elements_fit.calculate_universal_beta_evidence`
   liefert die strukturierte Evidenz für die Beta-Laterne als JSON-fähiges
-  Paket. So wird \(\sigma(\beta(R-\Theta))\) auch in anderen Domänen ohne
-  zusätzliche Nacharbeit auf Konsistenz geprüft.
+  Paket. Neben Mittelwert und Standardabweichung exportiert der Helfer nun
+  auch Median und Interquartilsbreite der beobachteten \(\beta\)-Werte, sodass
+  \(\sigma(\beta(R-\Theta))\) auch in anderen Domänen ohne zusätzliche
+  Nacharbeit auf Konsistenz geprüft werden kann.
 - Für Simulator-Läufe kann das Gitter als Preset dienen, indem die relevanten
   \(\Theta_{\text{detect}}\)- und \(\beta\)-Punkte in `simulator/presets/`
   eingetragen werden.

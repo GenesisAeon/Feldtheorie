@@ -59,23 +59,27 @@ def test_compile_summary_tracks_beta_mean_and_timestamp() -> None:
     aggregate_summary = summary["aggregate"]
     assert aggregate_summary["beta_mean"] == pytest.approx(4.2)
     assert aggregate_summary["beta_mean_observed"] == pytest.approx(4.2)
+    assert aggregate_summary["beta_median"] == pytest.approx(4.2)
     assert aggregate_summary["beta_canonical"] == pytest.approx(4.2)
     assert aggregate_summary["beta_std"] == pytest.approx(0.282842712474619)
     assert aggregate_summary["beta_sem"] == pytest.approx(0.2)
     assert aggregate_summary["beta_sem_ci95"] == pytest.approx([3.808, 4.592])
     assert aggregate_summary["beta_ci_width_mean"] == pytest.approx(0.9)
     assert aggregate_summary["beta_ci_width_std"] == pytest.approx(0.1414213562373095)
+    assert aggregate_summary["beta_iqr"] == pytest.approx(0.2)
     assert aggregate_summary["n_elements"] == 2
 
     beta_note = next(note for note in summary["hypotheses"] if note["id"] == "beta_universality")
     assert beta_note["evidence"]["beta_mean"] == pytest.approx(4.2)
     assert beta_note["evidence"]["beta_mean_observed"] == pytest.approx(4.2)
+    assert beta_note["evidence"]["beta_median"] == pytest.approx(4.2)
     assert beta_note["evidence"]["beta_canonical"] == pytest.approx(4.2)
     assert beta_note["evidence"]["beta_std"] == pytest.approx(0.282842712474619)
     assert beta_note["evidence"]["beta_sem"] == pytest.approx(0.2)
     assert beta_note["evidence"]["beta_sem_ci95"] == pytest.approx([3.808, 4.592])
     assert beta_note["evidence"]["beta_ci_width_mean"] == pytest.approx(0.9)
     assert beta_note["evidence"]["beta_ci_width_std"] == pytest.approx(0.1414213562373095)
+    assert beta_note["evidence"]["beta_iqr"] == pytest.approx(0.2)
     assert beta_note["evidence"]["n_elements"] == 2
     assert beta_note["status"] == "inconclusive"
 
@@ -219,17 +223,21 @@ def test_beta_statistics_fallback_to_aggregate_when_elements_absent() -> None:
     aggregate_summary = summary["aggregate"]
     assert aggregate_summary["beta_mean"] == pytest.approx(4.21)
     assert aggregate_summary["beta_mean_observed"] is None
+    assert aggregate_summary["beta_median"] is None
     assert aggregate_summary["beta_canonical"] == pytest.approx(4.21)
     assert aggregate_summary["beta_std"] is None
     assert aggregate_summary["beta_sem"] is None
     assert aggregate_summary["beta_ci_width_mean"] is None
+    assert aggregate_summary["beta_iqr"] is None
 
     beta_note = next(note for note in summary["hypotheses"] if note["id"] == "beta_universality")
     assert beta_note["status"] == "inconclusive"
     assert beta_note["evidence"]["beta_mean"] == pytest.approx(4.21)
     assert beta_note["evidence"]["beta_mean_observed"] is None
+    assert beta_note["evidence"]["beta_median"] is None
     assert beta_note["evidence"]["beta_canonical"] == pytest.approx(4.21)
     assert beta_note["evidence"]["beta_ci_width_mean"] is None
+    assert beta_note["evidence"]["beta_iqr"] is None
 
     coupled_note = next(note for note in summary["hypotheses"] if note["id"] == "coupled_resonance")
     assert coupled_note["evidence"]["beta_range"] == pytest.approx([4.21, 4.21])
@@ -268,7 +276,9 @@ def test_calculate_universal_beta_evidence_reports_sample_metrics() -> None:
     assert evidence["sample_size"] == 2
     assert evidence["beta_mean"] == pytest.approx(4.2)
     assert evidence["beta_mean_observed"] == pytest.approx(4.2)
+    assert evidence["beta_median"] == pytest.approx(4.2)
     assert evidence["beta_ci_width_mean"] == pytest.approx(0.9)
+    assert evidence["beta_iqr"] == pytest.approx(0.2)
 
 
 def test_calculate_universal_beta_evidence_handles_empty_sequence() -> None:
@@ -276,3 +286,5 @@ def test_calculate_universal_beta_evidence_handles_empty_sequence() -> None:
     assert evidence["sample_size"] == 0
     assert evidence["beta_mean"] == pytest.approx(4.21)
     assert evidence["beta_mean_observed"] is None
+    assert evidence["beta_median"] is None
+    assert evidence["beta_iqr"] is None

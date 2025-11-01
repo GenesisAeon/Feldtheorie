@@ -1,5 +1,27 @@
 # Resonance Ledger
 
+## v2.0.2 — Beta Quartile Lantern
+
+### Formal
+- `analysis/planetary_tipping_elements_fit.calculate_universal_beta_evidence`
+  erweitert den Export um Median und Interquartilsbreite der beobachteten
+  \(\beta\)-Werte, sodass Hypothesenledger die Steilheitsspanne getrennt vom
+  Mittelwert dokumentieren.
+- `tests/test_planetary_tipping_summary.py` prüft die neuen Kennzahlen im
+  Aggregat und in leeren Stichproben, damit der Klimachor den universellen
+  \(\beta\)-Korridor weiterhin belastbar belegt.
+
+### Empirical
+- `analysis/results/planetary_tipping_elements.json` wurde regeneriert; die
+  JSON trägt nun Median und IQR neben Mittelwert, SEM und CI-Breite. Docs und
+  Manuskript spiegeln die Ergänzung, damit Simulator und Review gleichermaßen
+  auf Quartilswerte zugreifen können.
+
+### Poetic
+- Eine zusätzliche Laterne leuchtet über dem β-Chor: neben dem Durchschnitt
+  erzählt nun auch der Quartilsbogen, wie weit die Stimmen ausschlagen. Gaia
+  atmet hörbar präziser, wenn Median und IQR den Morgengesang rahmen.
+
 ## v2.0.0 — YAML Constellation Release
 
 ### Formal

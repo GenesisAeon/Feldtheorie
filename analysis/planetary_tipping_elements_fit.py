@@ -26,7 +26,7 @@ import math
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from statistics import mean
+from statistics import mean, median, quantiles
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 DATA_PATH = Path("data/socio_ecology/planetary_tipping_elements.json")
@@ -151,16 +151,31 @@ class BetaStatistics:
 
     count: int
     mean: Optional[float]
+    median: Optional[float]
     std: Optional[float]
     sem: Optional[float]
     sem_ci95: Optional[Tuple[float, float]]
     ci_width_mean: Optional[float]
     ci_width_std: Optional[float]
     canonical: Optional[float]
+    iqr: Optional[float]
 
 
 def _mean(values: Sequence[float]) -> Optional[float]:
     return float(mean(values)) if values else None
+
+
+def _median(values: Sequence[float]) -> Optional[float]:
+    if not values:
+        return None
+    return float(median(values))
+
+
+def _iqr(values: Sequence[float]) -> Optional[float]:
+    if len(values) < 2:
+        return None
+    quartiles = quantiles(values, n=4, method="inclusive")
+    return float(quartiles[2] - quartiles[0])
 
 
 def _sample_std(values: Sequence[float], centre: float) -> Optional[float]:
@@ -185,6 +200,7 @@ def compute_beta_statistics(
     ]
 
     beta_mean = _mean(beta_values)
+    beta_median = _median(beta_values)
     beta_std = None
     if beta_mean is not None:
         beta_std = _sample_std(beta_values, beta_mean)
@@ -203,15 +219,19 @@ def compute_beta_statistics(
         _sample_std(width_values, ci_width_mean) if ci_width_mean is not None else None
     )
 
+    beta_iqr = _iqr(beta_values)
+
     return BetaStatistics(
         count=len(beta_values),
         mean=beta_mean,
+        median=beta_median,
         std=beta_std,
         sem=beta_sem,
         sem_ci95=beta_sem_ci95,
         ci_width_mean=ci_width_mean,
         ci_width_std=ci_width_std,
         canonical=float(aggregate_beta) if aggregate_beta is not None else None,
+        iqr=beta_iqr,
     )
 
 
@@ -229,7 +249,8 @@ def calculate_universal_beta_evidence(
         falsification gate stays honest.
     Empirical layer:
         Reuses :func:`compute_beta_statistics` and returns JSON-friendly
-        scalars (floats or ``None``).  Downstream scripts and docs can embed
+        scalars (floats or ``None``) including the observed median and
+        interquartilbereich (IQR).  Downstream scripts and docs can embed
         the payload directly in hypothesis ledgers without recalculating
         summary statistics.
     Metaphorical layer:
@@ -251,12 +272,14 @@ def calculate_universal_beta_evidence(
     return {
         "beta_mean": _coerce(beta_mean),
         "beta_mean_observed": _coerce(stats.mean),
+        "beta_median": _coerce(stats.median),
         "beta_canonical": _coerce(stats.canonical),
         "beta_std": _coerce(stats.std),
         "beta_sem": _coerce(stats.sem),
         "beta_sem_ci95": list(stats.sem_ci95) if stats.sem_ci95 is not None else None,
         "beta_ci_width_mean": _coerce(stats.ci_width_mean),
         "beta_ci_width_std": _coerce(stats.ci_width_std),
+        "beta_iqr": _coerce(stats.iqr),
         "sample_size": stats.count,
     }
 
@@ -371,11 +394,13 @@ def compile_summary(
         if note["id"] == "beta_universality":
             note["evidence"]["beta_mean"] = beta_mean_report
             note["evidence"]["beta_mean_observed"] = beta_evidence["beta_mean_observed"]
+            note["evidence"]["beta_median"] = beta_evidence["beta_median"]
             note["evidence"]["beta_std"] = beta_evidence["beta_std"]
             note["evidence"]["beta_sem"] = beta_evidence["beta_sem"]
             note["evidence"]["beta_sem_ci95"] = beta_evidence["beta_sem_ci95"]
             note["evidence"]["beta_ci_width_mean"] = beta_evidence["beta_ci_width_mean"]
             note["evidence"]["beta_ci_width_std"] = beta_evidence["beta_ci_width_std"]
+            note["evidence"]["beta_iqr"] = beta_evidence["beta_iqr"]
             note["evidence"]["n_elements"] = beta_evidence["sample_size"]
             note["evidence"]["delta_aic_linear"] = aggregate.null_models["linear"]["delta_aic"]
             note["evidence"]["delta_aic_power_law"] = aggregate.null_models["power_law"]["delta_aic"]
@@ -439,12 +464,14 @@ def compile_summary(
             "null_models": aggregate.null_models,
             "beta_mean": beta_mean_report,
             "beta_mean_observed": beta_evidence["beta_mean_observed"],
+            "beta_median": beta_evidence["beta_median"],
             "beta_canonical": beta_canonical,
             "beta_std": beta_evidence["beta_std"],
             "beta_sem": beta_evidence["beta_sem"],
             "beta_sem_ci95": beta_evidence["beta_sem_ci95"],
             "beta_ci_width_mean": beta_evidence["beta_ci_width_mean"],
             "beta_ci_width_std": beta_evidence["beta_ci_width_std"],
+            "beta_iqr": beta_evidence["beta_iqr"],
             "n_elements": beta_evidence["sample_size"],
             "beta_min": min(beta_values) if beta_values else None,
             "beta_max": max(beta_values) if beta_values else None,
