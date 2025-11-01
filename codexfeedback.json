@@ -1456,6 +1456,29 @@
                 "manuscript_section": "paper/manuscript_v1.0.tex#anthropic-introspection-validation",
                 "docs_entry": "docs/ai/anthropic_introspection_validation.md"
             }
+        },
+        {
+            "id": "pr-draft-0051",
+            "type": "release-hook",
+            "created_at": "2025-12-09T00:00:00Z",
+            "summary": "Prepare the Wei emergence bridge for DOI minting with synchronised manuscript, docs, and metadata updates.",
+            "threshold_field": {
+                "R": "release_metadata_without_wei_alignment",
+                "Theta": "doi_ready_state",
+                "beta": 4.3,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "next_actions": [
+                "Digitise Jason Wei's 137 emergent abilities and rerun analysis/llm_beta_extractor.py to audit the canonical band.",
+                "Include the Wei bridge summary in the Zenodo upload description and README once DOI is minted.",
+                "Notify endorsers that ΔAIC≥10.18 guards the Wei dataset before release."
+            ],
+            "observables": {
+                "docs_entry": "docs/wei_integration.md",
+                "manuscript_section": "paper/manuscript_v1.0.tex#discussion",
+                "citation_file": "CITATION.cff",
+                "zenodo_metadata": ".zenodo.json"
+            }
         }
     ]
 }
