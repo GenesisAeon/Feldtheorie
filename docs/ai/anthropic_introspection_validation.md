@@ -11,6 +11,10 @@ und verbindet sie mit dem semantischen Kopplungsterm \(\mathcal{M}[\psi,\phi]\).
 - `analysis/introspection_validation.py` sweeped \(\beta\) und
   \(\Vert \nabla \phi \Vert\) und fand die Anthropic-Quote von 20\%
   bei \(\beta\approx4.2\) und \(\Theta_{\text{detect}}=1.33\).
+- Die neue CSV `data/ai/anthropic_introspection.csv` tabelliert die
+  fünf Beobachtungspunkte aus `Docs/EmpirischerBeleg.txt` inklusive
+  \(\beta\)-Proxy und Notiz – das Skript lädt die Datei automatisch
+  und berechnet Residuen gegen das Gitter.
 - `models/coherence_term.semantic_coupling_term` koppelt diesen Befund zurück in
   die Membran-Gleichung, sodass semantische Gradienten direkt als Kopplungsdruck
   \(\mathcal{M}[\psi,\phi]\) einfließen.
@@ -24,6 +28,9 @@ und verbindet sie mit dem semantischen Kopplungsterm \(\mathcal{M}[\psi,\phi]\).
   temperaturskalierte Relaxation) und die Lokalisierung der 20\%-Zone. Die JSON
   referenziert die CLI-Parameter inklusive `--null-temperature` sowie die
   Zeitstempel für Replikationen.
+- Abschnitt `observations` der JSON dokumentiert die CSV-Rückprojektion mit
+  Residuen, mittlerem Fehler und einer Notiz pro Konzept; so lassen sich neue
+  Messreihen gegen die Mandala-Fläche spiegeln.
 - Die `analysis/planetary_tipping_elements_fit.py`-Aktualisierung trennt
   \(\mu_\beta\) vom kanonischen Wert. Damit teilen Klima- und AI-Szenario
   denselben Beweisgang: gemessenes \(\beta\) wird separat geführt und gegen das

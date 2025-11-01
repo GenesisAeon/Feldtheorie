@@ -5,10 +5,10 @@
         "schema_version": "0.1",
         "description": "Machine-readable hooks for PR tracking and emergent logistic transitions.",
         "current_release": {
-            "version": "2.0.3",
+            "version": "2.0.4",
             "status": "V02",
-            "recorded_at": "2025-12-05T00:00:00Z",
-            "notes": "Anthropic introspection gains a temperature-scaled null companion so σ(β(R-Θ)) now outshines both uniform guessing and softened logistic drift across docs, tests, and NEWS."
+            "recorded_at": "2025-12-06T00:00:00Z",
+            "notes": "Anthropic observations now live in CSV+metadata; compile_summary emits residual diagnostics per concept so docs, tests, NEWS, and manuscript share the Mandala ledger."
         }
     },
     "entries": [
@@ -262,6 +262,39 @@
                 "uniform_advantage": 0.0,
                 "temperature_advantage": 0.042,
                 "news_entry": "v2.0.3"
+            }
+        },
+        {
+            "id": "pr-draft-0047",
+            "type": "resonance-update",
+            "created_at": "2025-12-06T00:00:00Z",
+            "summary": "Embed Anthropic observation classes into the introspection ledger with residual diagnostics and metadata.",
+            "threshold_field": {
+                "R": "anthropic_observation_rows_without_residuals",
+                "Theta": "csv_metadata_dual_nulls",
+                "beta": 4.2,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "scope": [
+                "analysis/introspection_validation.py",
+                "analysis/results/introspection_validation.json",
+                "tests/test_introspection_validation.py",
+                "data/ai/anthropic_introspection.csv",
+                "data/ai/anthropic_introspection.metadata.json",
+                "data/ai/README.md",
+                "docs/ai/anthropic_introspection_validation.md",
+                "paper/manuscript_v1.0.tex",
+                "NEWS.md"
+            ],
+            "next_actions": [
+                "Extend simulator presets with observation sliders once UI hooks land.",
+                "Update CSV/metadata when Anthropic publishes new measurement classes and bump generated_at in the JSON export.",
+                "Record residual trendlines in future cohort summaries if additional introspection datasets join."
+            ],
+            "observables": {
+                "dataset_rows": 5,
+                "residual_mean": 0.0,
+                "news_entry": "v2.0.4"
             }
         },
         {

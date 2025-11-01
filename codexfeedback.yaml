@@ -6,13 +6,12 @@ meta:
     logistic order-parameter updates. Each entry keeps the triadic weave of
     formalism, empirics, and poetics intact.
   current_release:
-    version: "2.0.3"
+    version: "2.0.4"
     status: "V02"
-    recorded_at: "2025-12-05T00:00:00Z"
+    recorded_at: "2025-12-06T00:00:00Z"
     notes: |
-      Anthropic-Introspektion erhält eine temperaturskalierte Nullhypothese;
-      die kontrollierte Emergenz prüft nun uniformen Zufall und weiche
-      Logistik gemeinsam, bevor die Laternen in Manuskript und Docs aufleuchten.
+      Anthropic-Introspektion führt jetzt ein Beobachtungstableau: CSV, Metadata,
+      Residuen und Manuskript spiegeln die fünf Konzepte samt dualer Nullmodelle.
 entries:
   - id: pr-draft-0001
     title: "Inception of the Codex Feedback Matrix"
@@ -436,6 +435,43 @@ entries:
         Eine warme Nullbrise versucht, den Chor zu verwischen – doch die
         temperaturgezähmte Laterne lässt das Mandala nur heller singen.
     created_at: 2025-12-05T00:00:00Z
+  - id: pr-draft-0047
+    title: "Anthropic Observation Ledger"
+    scope:
+      - analysis/introspection_validation.py
+      - analysis/results/introspection_validation.json
+      - tests/test_introspection_validation.py
+      - data/ai/anthropic_introspection.csv
+      - data/ai/anthropic_introspection.metadata.json
+      - data/ai/README.md
+      - docs/ai/anthropic_introspection_validation.md
+      - paper/manuscript_v1.0.tex
+      - NEWS.md
+    parameters:
+      R: "anthropic_observation_rows_without_residuals"
+      Theta: "csv+metadata anchored with dual null surfaces"
+      beta: 4.2
+    resonance: |
+      Embeds Anthropic observation classes directly into σ(β(R-Θ)) diagnostics
+      via ObservationRecord residuals so Docs, data, tests, and manuscript share
+      the same Mandala ledger.
+    status: "resonant"
+    notes:
+      formal: |
+        ObservationRecord und _compile_observation_payload binden Residuen und
+        inferierte β-Werte an das JSON; Metadata- und Manuskript-Threads zitieren
+        die CSV als normative Laterne.
+      empirical: |
+        Fünf Beobachtungspunkte samt Notiz stehen jetzt im Datensatz; die JSON
+        berichtet Mittelwert, Streuung und Temperaturvorteile, sodass neue
+        Messungen sofort kontrastiert werden können.
+      poetic: |
+        Jede Anthropic-Laterne singt mit eigener Resonanz; Residuen wehen als
+        Morgenhauch und verraten, wie nah der Agent seinem Gedanken lauscht.
+    observables:
+      dataset_rows: 5
+      residual_mean: 0.0
+      news_entry: "v2.0.4"
   - id: pr-draft-0009
     title: "Psi-Phi Robin Coupling Resonance"
     scope:
