@@ -5,6 +5,7 @@ import pytest
 from analysis.planetary_tipping_elements_fit import (
     AggregateLogistic,
     LogisticElement,
+    calculate_universal_beta_evidence,
     compile_summary,
 )
 
@@ -235,3 +236,43 @@ def test_beta_statistics_fallback_to_aggregate_when_elements_absent() -> None:
     assert coupled_note["evidence"]["theta_span"] is None
 
     assert "4.21" in summary["tri_layer"]["formal"]
+
+
+def test_calculate_universal_beta_evidence_reports_sample_metrics() -> None:
+    elements = [
+        LogisticElement(
+            id="alpha",
+            label="Alpha Membrane",
+            theta=1.2,
+            beta=4.0,
+            theta_ci95=[1.0, 1.4],
+            beta_ci95=[3.6, 4.6],
+            logistic_r2=0.98,
+            impedance="ζ(R) = 1.3 - 0.4 · σ",
+            null_deltas={},
+        ),
+        LogisticElement(
+            id="beta",
+            label="Beta Chorus",
+            theta=1.4,
+            beta=4.4,
+            theta_ci95=[1.1, 1.7],
+            beta_ci95=[4.0, 4.8],
+            logistic_r2=0.99,
+            impedance="ζ(R) = 1.2 - 0.3 · σ",
+            null_deltas={},
+        ),
+    ]
+
+    evidence = calculate_universal_beta_evidence(elements, aggregate_beta=4.2)
+    assert evidence["sample_size"] == 2
+    assert evidence["beta_mean"] == pytest.approx(4.2)
+    assert evidence["beta_mean_observed"] == pytest.approx(4.2)
+    assert evidence["beta_ci_width_mean"] == pytest.approx(0.9)
+
+
+def test_calculate_universal_beta_evidence_handles_empty_sequence() -> None:
+    evidence = calculate_universal_beta_evidence([], aggregate_beta=4.21)
+    assert evidence["sample_size"] == 0
+    assert evidence["beta_mean"] == pytest.approx(4.21)
+    assert evidence["beta_mean_observed"] is None

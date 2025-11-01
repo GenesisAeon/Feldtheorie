@@ -215,6 +215,52 @@ def compute_beta_statistics(
     )
 
 
+def calculate_universal_beta_evidence(
+    elements: Sequence[LogisticElement],
+    *,
+    aggregate_beta: Optional[float] = None,
+) -> Dict[str, Any]:
+    r"""Return β evidence diagnostics for the universality ledger.
+
+    Formal layer:
+        Packages the steepness diagnostics that certify whether
+        :math:`\sigma(\beta(R-\Theta))` sits within the canonical band.
+        Observed means remain distinct from the aggregate prior so the
+        falsification gate stays honest.
+    Empirical layer:
+        Reuses :func:`compute_beta_statistics` and returns JSON-friendly
+        scalars (floats or ``None``).  Downstream scripts and docs can embed
+        the payload directly in hypothesis ledgers without recalculating
+        summary statistics.
+    Metaphorical layer:
+        Keeps the planetary lanterns tuned—the helper reports how bright the
+        β choir already sings and whether the canonical beacon still guides
+        the field through dawn.
+    """
+
+    stats = compute_beta_statistics(elements, aggregate_beta=aggregate_beta)
+
+    def _coerce(value: Optional[float]) -> Optional[float]:
+        return float(value) if value is not None else None
+
+    if stats.mean is not None:
+        beta_mean = stats.mean
+    else:
+        beta_mean = stats.canonical
+
+    return {
+        "beta_mean": _coerce(beta_mean),
+        "beta_mean_observed": _coerce(stats.mean),
+        "beta_canonical": _coerce(stats.canonical),
+        "beta_std": _coerce(stats.std),
+        "beta_sem": _coerce(stats.sem),
+        "beta_sem_ci95": list(stats.sem_ci95) if stats.sem_ci95 is not None else None,
+        "beta_ci_width_mean": _coerce(stats.ci_width_mean),
+        "beta_ci_width_std": _coerce(stats.ci_width_std),
+        "sample_size": stats.count,
+    }
+
+
 def load_elements() -> List[LogisticElement]:
     payload = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     elements = []
@@ -301,9 +347,20 @@ def compile_summary(
 ) -> Dict[str, Any]:
     beta_values = [e.beta for e in elements if getattr(e, "beta", None) is not None]
     stats = compute_beta_statistics(elements, aggregate_beta=aggregate.beta)
+    beta_evidence = calculate_universal_beta_evidence(
+        elements, aggregate_beta=aggregate.beta
+    )
     theta_values = [e.theta for e in elements if getattr(e, "theta", None) is not None]
-    beta_canonical = stats.canonical if stats.canonical is not None else aggregate.beta
-    beta_mean_report = stats.mean if stats.mean is not None else beta_canonical
+    beta_canonical = (
+        beta_evidence["beta_canonical"]
+        if beta_evidence["beta_canonical"] is not None
+        else aggregate.beta
+    )
+    beta_mean_report = (
+        beta_evidence["beta_mean"]
+        if beta_evidence["beta_mean"] is not None
+        else beta_canonical
+    )
 
     if generated_at is None:
         generated_at = _utc_now_isoformat()
@@ -313,15 +370,13 @@ def compile_summary(
         note = deepcopy(base)
         if note["id"] == "beta_universality":
             note["evidence"]["beta_mean"] = beta_mean_report
-            note["evidence"]["beta_mean_observed"] = stats.mean
-            note["evidence"]["beta_std"] = stats.std
-            note["evidence"]["beta_sem"] = stats.sem
-            note["evidence"]["beta_sem_ci95"] = (
-                list(stats.sem_ci95) if stats.sem_ci95 is not None else None
-            )
-            note["evidence"]["beta_ci_width_mean"] = stats.ci_width_mean
-            note["evidence"]["beta_ci_width_std"] = stats.ci_width_std
-            note["evidence"]["n_elements"] = stats.count
+            note["evidence"]["beta_mean_observed"] = beta_evidence["beta_mean_observed"]
+            note["evidence"]["beta_std"] = beta_evidence["beta_std"]
+            note["evidence"]["beta_sem"] = beta_evidence["beta_sem"]
+            note["evidence"]["beta_sem_ci95"] = beta_evidence["beta_sem_ci95"]
+            note["evidence"]["beta_ci_width_mean"] = beta_evidence["beta_ci_width_mean"]
+            note["evidence"]["beta_ci_width_std"] = beta_evidence["beta_ci_width_std"]
+            note["evidence"]["n_elements"] = beta_evidence["sample_size"]
             note["evidence"]["delta_aic_linear"] = aggregate.null_models["linear"]["delta_aic"]
             note["evidence"]["delta_aic_power_law"] = aggregate.null_models["power_law"]["delta_aic"]
             note["evidence"]["beta_canonical"] = beta_canonical
@@ -340,7 +395,7 @@ def compile_summary(
             beta_in_band = (
                 beta_in_band_value is not None and 3.6 <= beta_in_band_value <= 4.6
             )
-            enough_elements = stats.count >= 3
+            enough_elements = beta_evidence["sample_size"] >= 3
 
             if aic_strong and beta_in_band and enough_elements:
                 note["status"] = "supported"
@@ -383,14 +438,14 @@ def compile_summary(
             "impedance_std": aggregate.impedance_std,
             "null_models": aggregate.null_models,
             "beta_mean": beta_mean_report,
-            "beta_mean_observed": stats.mean,
+            "beta_mean_observed": beta_evidence["beta_mean_observed"],
             "beta_canonical": beta_canonical,
-            "beta_std": stats.std,
-            "beta_sem": stats.sem,
-            "beta_sem_ci95": list(stats.sem_ci95) if stats.sem_ci95 is not None else None,
-            "beta_ci_width_mean": stats.ci_width_mean,
-            "beta_ci_width_std": stats.ci_width_std,
-            "n_elements": stats.count,
+            "beta_std": beta_evidence["beta_std"],
+            "beta_sem": beta_evidence["beta_sem"],
+            "beta_sem_ci95": beta_evidence["beta_sem_ci95"],
+            "beta_ci_width_mean": beta_evidence["beta_ci_width_mean"],
+            "beta_ci_width_std": beta_evidence["beta_ci_width_std"],
+            "n_elements": beta_evidence["sample_size"],
             "beta_min": min(beta_values) if beta_values else None,
             "beta_max": max(beta_values) if beta_values else None,
             "theta_min": min(theta_values) if theta_values else None,
