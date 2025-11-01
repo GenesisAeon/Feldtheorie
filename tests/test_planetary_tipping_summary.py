@@ -56,9 +56,9 @@ def test_compile_summary_tracks_beta_mean_and_timestamp() -> None:
     assert summary["generated_at"] == "2026-01-01T00:00:00Z"
 
     aggregate_summary = summary["aggregate"]
-    assert aggregate_summary["beta_mean"] == 4.2
-    assert aggregate_summary["beta_mean_observed"] == 4.2
-    assert aggregate_summary["beta_canonical"] == 4.2
+    assert aggregate_summary["beta_mean"] == pytest.approx(4.2)
+    assert aggregate_summary["beta_mean_observed"] == pytest.approx(4.2)
+    assert aggregate_summary["beta_canonical"] == pytest.approx(4.2)
     assert aggregate_summary["beta_std"] == pytest.approx(0.282842712474619)
     assert aggregate_summary["beta_sem"] == pytest.approx(0.2)
     assert aggregate_summary["beta_sem_ci95"] == pytest.approx([3.808, 4.592])
@@ -67,9 +67,9 @@ def test_compile_summary_tracks_beta_mean_and_timestamp() -> None:
     assert aggregate_summary["n_elements"] == 2
 
     beta_note = next(note for note in summary["hypotheses"] if note["id"] == "beta_universality")
-    assert beta_note["evidence"]["beta_mean"] == 4.2
-    assert beta_note["evidence"]["beta_mean_observed"] == 4.2
-    assert beta_note["evidence"]["beta_canonical"] == 4.2
+    assert beta_note["evidence"]["beta_mean"] == pytest.approx(4.2)
+    assert beta_note["evidence"]["beta_mean_observed"] == pytest.approx(4.2)
+    assert beta_note["evidence"]["beta_canonical"] == pytest.approx(4.2)
     assert beta_note["evidence"]["beta_std"] == pytest.approx(0.282842712474619)
     assert beta_note["evidence"]["beta_sem"] == pytest.approx(0.2)
     assert beta_note["evidence"]["beta_sem_ci95"] == pytest.approx([3.808, 4.592])

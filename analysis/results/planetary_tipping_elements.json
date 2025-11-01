@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-31T16:35:59Z",
+  "generated_at": "2025-11-01T11:28:35Z",
   "dataset": "data/socio_ecology/planetary_tipping_elements.json",
   "metadata": "data/socio_ecology/planetary_tipping_elements.metadata.json",
   "aggregate": {
@@ -32,7 +32,7 @@
         "delta_r2": 0.0832
       }
     },
-    "beta_mean": 4.21,
+    "beta_mean": 3.915,
     "beta_mean_observed": 3.915,
     "beta_canonical": 4.21,
     "beta_std": 0.37810933163129756,
@@ -175,7 +175,7 @@
       "title": "Sigmoid-Steigung konsistent mit \u03b2\u22484.2",
       "description": "Gemini skizzierte im Klimadiskurs drei koh\u00e4rente Tests. Der erste pr\u00fcft, ob die Zeitreihen einzelner Kippelemente (z.\u202fB. RAPID-AMOC, Gr\u00f6nland-Massenbilanz) die sigmoidale \u00dcbergangsform mit \u03b2\u22484.2 besser st\u00fctzen als lineare oder stochastische Alternativen.",
       "evidence": {
-        "beta_mean": 4.21,
+        "beta_mean": 3.915,
         "beta_ci_width_mean": 1.0275,
         "delta_aic_linear": 33.58,
         "delta_aic_power_law": 35.2,

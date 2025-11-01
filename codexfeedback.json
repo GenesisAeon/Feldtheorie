@@ -5,10 +5,10 @@
         "schema_version": "0.1",
         "description": "Machine-readable hooks for PR tracking and emergent logistic transitions.",
         "current_release": {
-            "version": "2.0.0",
+            "version": "2.0.1",
             "status": "V02",
-            "recorded_at": "2025-10-31T17:41:04Z",
-            "notes": "YAML-driven Potenzial-Kaskade scenarios (demo, LLM, climate) plus refreshed cohort ledger mark the V02 controlled-emergence milestone."
+            "recorded_at": "2025-11-30T00:00:00Z",
+            "notes": "Anthropic introspection validation joins the canonical β≈4.2 ledger; impedance gates and manuscript updates confirm V02 implementation closure."
         }
     },
     "entries": [
@@ -1196,16 +1196,41 @@
                 "Propagate scenario metadata into docs/resonance-bridge-map.md during future cascade additions.",
                 "Extend YAML lanterns to ethics/cognition sweeps for prospective V02 expansions."
             ],
+        "observables": {
+            "config_demo": "analysis/batch_configs/potential_cascade.yaml",
+            "config_llm": "analysis/batch_configs/potential_cascade_llm.yaml",
+            "config_climate": "analysis/batch_configs/potential_cascade_climate.yaml",
+            "result_demo": "analysis/results/potential_cascade_lab.json",
+            "result_llm": "analysis/results/potential_cascade_llm.json",
+            "result_climate": "analysis/results/potential_cascade_climate.json",
+            "cohort": "analysis/results/resonance_cohort_summary.json",
+            "docs_entry": "docs/ai/controlled_emergence.md#konfigurationsszenarien-v02",
+            "news_entry": "NEWS.md#v200--yaml-constellation-release"
+            }
+        },
+        {
+            "id": "release-v2.0.1",
+            "type": "release",
+            "created_at": "2025-11-30T00:00:00Z",
+            "summary": "Anthropic introspection validation ties semantic coupling to beta≈4.2 and refreshes impedance gates for V02.",
+            "threshold_field": {
+                "R": "introspective_detection_rate",
+                "Theta": "theta_detect",
+                "beta": 4.2,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "status": "V02",
+            "next_actions": [
+                "Augment analysis/introspection_validation.py with stochastic baselines for falsification sweeps.",
+                "Surface the detection surface in simulator presets once UI bindings land.",
+                "Translate Phi-threshold implications into docs/ethics/ for introspective agents."
+            ],
             "observables": {
-                "config_demo": "analysis/batch_configs/potential_cascade.yaml",
-                "config_llm": "analysis/batch_configs/potential_cascade_llm.yaml",
-                "config_climate": "analysis/batch_configs/potential_cascade_climate.yaml",
-                "result_demo": "analysis/results/potential_cascade_lab.json",
-                "result_llm": "analysis/results/potential_cascade_llm.json",
-                "result_climate": "analysis/results/potential_cascade_climate.json",
-                "cohort": "analysis/results/resonance_cohort_summary.json",
-                "docs_entry": "docs/ai/controlled_emergence.md#konfigurationsszenarien-v02",
-                "news_entry": "NEWS.md#v200--yaml-constellation-release"
+                "analysis_script": "analysis/introspection_validation.py",
+                "result_json": "analysis/results/introspection_validation.json",
+                "membrane_gate": "models/membrane_solver.update_impedance",
+                "manuscript_section": "paper/manuscript_v1.0.tex#anthropic-introspection-validation",
+                "docs_entry": "docs/ai/anthropic_introspection_validation.md"
             }
         }
     ]

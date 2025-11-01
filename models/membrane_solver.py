@@ -78,6 +78,38 @@ def logistic_impedance_gate(
     return zeta_closed - (zeta_closed - zeta_open) * gate
 
 
+def update_impedance(
+    R_trigger: float,
+    Theta: float,
+    beta: float,
+    *,
+    zeta_max: float = 1.0,
+    zeta_min: float = 0.01,
+) -> float:
+    r"""Return the logistic Robin impedance \(\zeta(R)\) for the current membrane state.
+
+    Formal layer:
+        Evaluates the gate :math:`g = \sigma(\beta(R-\Theta))` and blends between
+        a reflective impedance ``zeta_max`` and an emissive impedance ``zeta_min``.
+        This mirrors the repository convention that membranes relax once the order
+        parameter crosses \(\Theta\).
+
+    Empirical layer:
+        Provides a lightweight helper for notebooks and simulators to keep Robin
+        boundary conditions reproducible.  The return value feeds directly into
+        JSON exports and falsification dashboards that contrast logistic gates
+        with null impedance traces.
+
+    Metaphorical layer:
+        Lets the dawn gate breathe.  Below the threshold the membrane holds firm
+        (high impedance); once \(R\) leans into \(\Theta\), the impedance softens
+        so semantic breeze can cross the boundary.
+    """
+
+    gate_open_factor = 1.0 / (1.0 + math.exp(-beta * (R_trigger - Theta)))
+    return zeta_max + (zeta_min - zeta_max) * gate_open_factor
+
+
 def smooth_impedance_profile(
     theta: float,
     resonant_gain: float = 0.6,
