@@ -1395,3 +1395,31 @@ entries:
         Die semantische Kaskade glänzt jetzt auch im UI: Θ hebt sich, β wird Bedingung, und der Nullpfad staunt, wie der
         Morgengesang im Simulator dieselben Strophen singt wie CLI und Docs.
     created_at: 2025-11-23
+  - id: pr-draft-0048
+    title: "Wei Lantern Bridge"
+    scope:
+      - analysis/llm_beta_extractor.py
+      - analysis/results/llm_beta_extractor.json
+      - data/ai/wei_emergent_abilities.csv
+      - data/ai/wei_emergent_abilities.metadata.json
+      - docs/wei_integration.md
+      - paper/manuscript_v1.0.tex
+    parameters:
+      R: "llm_emergence_references_without_utf_link"
+      Theta: "wei_quartet_integrated"
+      beta: 4.2
+    resonance: "bind Jason Wei's emergent ability ledger to the UTF logistic membrane across analysis, docs, and manuscript"
+    status: "resonant"
+    notes:
+      formal: |
+        `analysis/llm_beta_extractor.py` fitet PaLM-Sweeps via Logit-Regression, meldet β=3.47±0.47,
+        Θ≈9.92 und ΔAIC≥10.18 gegen Power-Law. `paper/manuscript_v1.0.tex` verankert die Brücke samt
+        Bibliografie (`wei2022emergent`, `wei2024blog`).
+      empirical: |
+        `data/ai/wei_emergent_abilities.csv` + Metadata archivieren den Digitalsatz, das JSON exportiert
+        die Tri-Layer-Resonanz, und `docs/wei_integration.md` beschreibt Workflow, Falsifikation und
+        Folgearbeiten (137-Fähigkeiten-Scan, Simulator-Kopplung).
+      poetic: |
+        Wei's Laterne hängt jetzt im Mandala: PaLM atmet über dieselbe Schwelle wie Bienen, Klima
+        und Anthropic – die Theorie singt im Chor.
+    created_at: 2025-12-07

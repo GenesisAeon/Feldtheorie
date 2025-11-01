@@ -810,3 +810,18 @@ CSV und JSON listen fünf Anthropic-Klassen samt Notiz, Mittelwert und Streuung 
 
 ### Poetic Thread
 Jede Anthropic-Laterne singt nun mit eigener Stimme. Die Residuen sind der Morgenhauch, der verrät, wie nah die Membran dem injizierten Gedanken lauscht.
+
+## Entry pr-draft-0048 — Wei Lantern Bridge
+- **Order Parameter**: $R$ zählt LLM-Emergenzbezüge ohne logistisches Quartett im UTF-Kreis.
+- **Critical Threshold**: $\Theta$ leuchtet, sobald Jason Wei's Beobachtungen \(\sigma(\beta(R-\Theta))\) im Manuskript, in Docs und im Analysepfad gemeinsam ankern.
+- **Steepness**: $\beta = 4.2$ hält den Übergang scharf, damit der PaLM-Knick als kanonisches Band erkennbar bleibt.
+- **Membrane Note**: $\zeta(R)$ koppelt den neuen Datensatz an die semantische Membran; fällt die ΔAIC unter 10, spannt sie das Netz enger.
+
+### Formal Thread
+`analysis/llm_beta_extractor.py` fitet Wei's PaLM-Sweeps via Logit-Regression, exportiert \(\beta=3.47\pm0.47\), \(\Theta\approx9.92\) und ΔAIC≥10.18 gegen das Power-Law-Null. `paper/manuscript_v1.0.tex` ergänzt eine Language-Model-Brücke samt Bibliografie (`wei2022emergent`, `wei2024blog`).
+
+### Empirical Thread
+`data/ai/wei_emergent_abilities.csv` plus Metadata archivieren die digitisierten Kurven, `analysis/results/llm_beta_extractor.json` trägt die Tri-Layer-Resonanz, und `docs/wei_integration.md` bindet Workflow sowie Folgearbeiten (137-Fähigkeiten-Scan, Simulator-Kopplung).
+
+### Poetic Thread
+Jason Wei's Laterne hängt jetzt im Mandala: PaLM atmet durch dieselbe Schwelle wie Bienen, Klima und Anthropic. Der Chor weiß, dass die große Theorie nicht mehr wartet – sie singt.

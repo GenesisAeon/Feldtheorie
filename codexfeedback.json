@@ -136,12 +136,12 @@
             ],
             "observables": {
                 "delta_aic_guardrails": {
-                    "honeybee": 25.20,
+                    "honeybee": 25.2,
                     "qpo": 25006.18,
                     "llm": 48.83,
                     "cognition": 59.54,
-                    "amazon": 70.70,
-                    "planetary": 35.20
+                    "amazon": 70.7,
+                    "planetary": 35.2
                 },
                 "preset_sync_state": "resonant",
                 "guard_cli": "utf-preset-guard",
@@ -177,7 +177,7 @@
             "id": "pr-draft-0044",
             "type": "resonance-update",
             "created_at": "2025-12-02T00:00:00Z",
-            "summary": "Package universal β evidence and Mandala coherence gauges for the logistic ledger.",
+            "summary": "Package universal \u03b2 evidence and Mandala coherence gauges for the logistic ledger.",
             "threshold_field": {
                 "R": "beta_evidence_requests_pending",
                 "Theta": "observed_beta_separated_from_canonical",
@@ -195,7 +195,7 @@
             "next_actions": [
                 "Regenerate analysis/results/planetary_tipping_elements.json with the new evidence payload when datasets update.",
                 "Thread coherence_measure into cascade notebooks to avoid duplicate covariance code.",
-                "Surface the β evidence helper in docs/resonance-bridge-map.md during the next documentation sweep."
+                "Surface the \u03b2 evidence helper in docs/resonance-bridge-map.md during the next documentation sweep."
             ],
             "observables": {
                 "beta_mean_reported": 4.2,
@@ -207,7 +207,7 @@
             "id": "pr-draft-0045",
             "type": "resonance-update",
             "created_at": "2025-12-03T00:00:00Z",
-            "summary": "Report planetary β quartiles alongside the canonical steepness evidence.",
+            "summary": "Report planetary \u03b2 quartiles alongside the canonical steepness evidence.",
             "threshold_field": {
                 "R": "beta_distribution_metrics_pending",
                 "Theta": "quartile_reporting_in_codex",
@@ -238,7 +238,7 @@
             "id": "pr-draft-0046",
             "type": "resonance-update",
             "created_at": "2025-12-05T00:00:00Z",
-            "summary": "Temperatur-skaliertes Nullmodell ergänzt die Anthropic-Introspektion um eine zweite Falsifikationskante.",
+            "summary": "Temperatur-skaliertes Nullmodell erg\u00e4nzt die Anthropic-Introspektion um eine zweite Falsifikationskante.",
             "threshold_field": {
                 "R": "introspection_baselines_pending",
                 "Theta": "dual_null_models_documented",
@@ -383,7 +383,7 @@
             "next_actions": [
                 "Enable --dynamic-robin in analysis/resonance_fit_pipeline.py runs and archive boundary_flux/boundary_gate traces.",
                 "Propagate DynamicRobinBoundary parameters into simulator presets once UI sliders appear.",
-                "Add cohort summary metrics for boundary_flux_mean and boundary_gate_mean alongside ΔAIC entries."
+                "Add cohort summary metrics for boundary_flux_mean and boundary_gate_mean alongside \u0394AIC entries."
             ],
             "observables": {
                 "boundary_flux_mean": null,
@@ -395,7 +395,7 @@
             "id": "pr-draft-0012",
             "type": "batch-runner",
             "created_at": "2025-11-02T00:00:00Z",
-            "summary": "Automate batch logistic refits via resonance_batch_runner.py and propagate ΔAIC diagnostics to bridge docs and simulator presets.",
+            "summary": "Automate batch logistic refits via resonance_batch_runner.py and propagate \u0394AIC diagnostics to bridge docs and simulator presets.",
             "threshold_field": {
                 "R": "pending_batch_runs_without_exports",
                 "Theta": "config_aligned_with_bridge_map",
@@ -420,7 +420,7 @@
             "id": "pr-draft-0013",
             "type": "robin-semantic-bridge",
             "created_at": "2025-11-03T00:00:00Z",
-            "summary": "Stage membrane_robin_semantic_fit.py so Robin leakage and semantic drift export ΔAIC-ready ledgers for docs and simulator presets.",
+            "summary": "Stage membrane_robin_semantic_fit.py so Robin leakage and semantic drift export \u0394AIC-ready ledgers for docs and simulator presets.",
             "threshold_field": {
                 "R": "robin_semantic_runs_without_exports",
                 "Theta": "json_synced_with_cohort",
@@ -443,7 +443,7 @@
             "id": "pr-draft-0014",
             "type": "bridge-ledger",
             "created_at": "2025-11-04T00:00:00Z",
-            "summary": "Consolidate logistic resonance exports into a bridge table so docs and simulator presets share ΔAIC and ζ̄ diagnostics.",
+            "summary": "Consolidate logistic resonance exports into a bridge table so docs and simulator presets share \u0394AIC and \u03b6\u0304 diagnostics.",
             "threshold_field": {
                 "R": "result_json_without_bridge_row",
                 "Theta": "ledger_synced_across_domains",
@@ -453,7 +453,7 @@
             "next_actions": [
                 "Refresh analysis/results/resonance_bridge_table.json after each new fit joins the cohort.",
                 "Mirror the Markdown ledger into docs/resonance-bridge-map.md during the next narrative sync.",
-                "Expose ΔAIC medians and ζ̄ ranges to simulator preset validators so UI sliders stay aligned."
+                "Expose \u0394AIC medians and \u03b6\u0304 ranges to simulator preset validators so UI sliders stay aligned."
             ],
             "observables": {
                 "datasets_tallied": 9,
@@ -473,7 +473,7 @@
             "id": "pr-draft-0015",
             "type": "bio-verification",
             "created_at": "2025-11-05T00:00:00Z",
-            "summary": "Verify the Lenski Cit+ logistic gate so the Bio-Emergenz chapter rests on quantified ΔAIC and β evidence.",
+            "summary": "Verify the Lenski Cit+ logistic gate so the Bio-Emergenz chapter rests on quantified \u0394AIC and \u03b2 evidence.",
             "threshold_field": {
                 "R": "bio_extension_without_logistic_fit",
                 "Theta": "citplus_fit_committed",
@@ -481,8 +481,8 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Keep analysis/results/lenski_citplus_fit.json aligned with future bio datasets and document ΔAIC margins.",
-                "Propagate the normalised β≈4.25 value into Docs/ biology scrolls and simulator presets.",
+                "Keep analysis/results/lenski_citplus_fit.json aligned with future bio datasets and document \u0394AIC margins.",
+                "Propagate the normalised \u03b2\u22484.25 value into Docs/ biology scrolls and simulator presets.",
                 "Extend metadata for upcoming bio thresholds with explicit scaling notes (generation/1000, stress proxies)."
             ],
             "observables": {
@@ -506,7 +506,7 @@
             },
             "next_actions": [
                 "Ensure docs/biology/bio_emergence_semantic_phase_transition.md cites logistic and null-model metrics explicitly.",
-                "Update docs/resonance-bridge-map.md whenever new bio datasets shift Θ or β estimates.",
+                "Update docs/resonance-bridge-map.md whenever new bio datasets shift \u0398 or \u03b2 estimates.",
                 "Record future epigenetic thresholds with scaling metadata before drafting simulator presets."
             ],
             "observables": {
@@ -531,7 +531,7 @@
             },
             "next_actions": [
                 "Back-propagate Section 6-8 references into simulator presets documenting sigma(beta*(R-Theta)) toggles.",
-                "Queue threshold_lab modality drop runs and capture ΔAIC traces for codexfeedback.json observables.",
+                "Queue threshold_lab modality drop runs and capture \u0394AIC traces for codexfeedback.json observables.",
                 "Mirror Docs updates in codexfeedback.md with tri-layer citation map."
             ],
             "observables": {
@@ -545,7 +545,7 @@
             "id": "pr-draft-0018",
             "type": "adaptive-threshold",
             "created_at": "2025-11-07T00:00:00Z",
-            "summary": "Chart system-type dependent shifts of the emergent threshold via adaptive Θ dynamics.",
+            "summary": "Chart system-type dependent shifts of the emergent threshold via adaptive \u0398 dynamics.",
             "threshold_field": {
                 "R": "system_typology_questions_pending",
                 "Theta": "adaptive_theta_documented",
@@ -554,7 +554,7 @@
             },
             "next_actions": [
                 "Maintain analysis/dynamic_threshold_lab.ipynb with future empirical feeds and null comparisons.",
-                "Create simulator/adaptive_theta_preset.json exposing ∂tΘ controls and ζ(R,t) feedback hooks.",
+                "Create simulator/adaptive_theta_preset.json exposing \u2202t\u0398 controls and \u03b6(R,t) feedback hooks.",
                 "Extend data/* metadata with adaptive_theta_shift fields once measurements arrive."
             ],
             "observables": {
@@ -566,7 +566,7 @@
                     "cognition",
                     "ai"
                 ],
-                "impedance_response_note": "awaiting ζ-time-series"
+                "impedance_response_note": "awaiting \u03b6-time-series"
             }
         },
         {
@@ -583,7 +583,7 @@
             "next_actions": [
                 "Propagate future solver or dataset changes into the Docs summary within 24h of landing in analysis/results/.",
                 "Attach forthcoming figures from analysis/reports/ to the Docs section once diagrams/ assets are rendered.",
-                "Monitor resonance_bridge_table.json for β drifts and annotate them in Docs narrative sidebars."
+                "Monitor resonance_bridge_table.json for \u03b2 drifts and annotate them in Docs narrative sidebars."
             ],
             "observables": {
                 "doc_path": "Docs/Theorie- und Empirie-Abschnitte.md",
@@ -599,7 +599,7 @@
             "id": "pr-draft-0020",
             "type": "dialogue-synthesis",
             "created_at": "2025-11-08T00:00:00Z",
-            "summary": "Integrate Aeon·Gemini·Mistral consultation insights into Docs, ethics guidance, and feedback ledgers.",
+            "summary": "Integrate Aeon\u00b7Gemini\u00b7Mistral consultation insights into Docs, ethics guidance, and feedback ledgers.",
             "threshold_field": {
                 "R": "tri_ai_dialogue_impulses_pending_synthesis",
                 "Theta": "docs_and_feedback_updated_with_beta_universality",
@@ -607,7 +607,7 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Document β-universality synthesis and planned derivations in Docs Section 4 and link to analysis notebooks.",
+                "Document \u03b2-universality synthesis and planned derivations in Docs Section 4 and link to analysis notebooks.",
                 "Publish adaptive threshold governance brief with simulator and analysis cross-references.",
                 "Record predictive agenda metrics (Hurst, LISA, Hypermutation) for ongoing monitoring in codexfeedback observables."
             ],
@@ -630,7 +630,7 @@
             "id": "pr-draft-0021",
             "type": "meta-threshold",
             "created_at": "2025-11-09T00:00:00Z",
-            "summary": "Activate the AdaptiveThresholdController and stream Θ(t), β(t), and meta-gate diagnostics across the stack.",
+            "summary": "Activate the AdaptiveThresholdController and stream \u0398(t), \u03b2(t), and meta-gate diagnostics across the stack.",
             "threshold_field": {
                 "R": "adaptive_controller_hooks_pending_calibration",
                 "Theta": "theta_beta_streams_exposed_to_analysis",
@@ -638,7 +638,7 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Feed theta/beta/meta_gate arrays into analysis/dynamic_threshold_lab.ipynb and record ΔAIC deltas against static baselines.",
+                "Feed theta/beta/meta_gate arrays into analysis/dynamic_threshold_lab.ipynb and record \u0394AIC deltas against static baselines.",
                 "Expose adaptive parameters in simulator/adaptive_theta_preset.json controls for replay and falsification.",
                 "Tag upcoming data/* entries with impedance drift descriptors to tune controller weights per domain."
             ],
@@ -661,7 +661,7 @@
             "id": "pr-draft-0022",
             "type": "bridge-update",
             "created_at": "2025-11-09T12:34:56Z",
-            "summary": "Wove Lenski Cit⁺ emergence into simulator presets, resonance tables, and docs.",
+            "summary": "Wove Lenski Cit\u207a emergence into simulator presets, resonance tables, and docs.",
             "threshold_field": {
                 "R": "evolutionary_membranes_pending_preset",
                 "Theta": "citplus_parameters_synced",
@@ -670,7 +670,7 @@
             },
             "next_actions": [
                 "Track follow-up adaptive-threshold fits once LTEE-derived null models expand beyond linear baselines.",
-                "Synchronise Docs/ biology scrolls with simulator narrative overlays for the Cit⁺ membrane.",
+                "Synchronise Docs/ biology scrolls with simulator narrative overlays for the Cit\u207a membrane.",
                 "Alert governance ledger if additional evolution datasets require impedance recalibration."
             ],
             "observables": {
@@ -718,7 +718,7 @@
             "next_actions": [
                 "Mirror adaptive theta logistics into docs/cognition/adaptive_theta_plasticity.md and simulator presets during the next sync.",
                 "Thread the new fit into analysis/results/resonance_bridge_table.json so cohort medians capture cognitive sleep thresholds.",
-                "Monitor future sleep datasets for impedance drift relative to zeta(R) = 1.12 - 0.25 σ."
+                "Monitor future sleep datasets for impedance drift relative to zeta(R) = 1.12 - 0.25 \u03c3."
             ],
             "observables": {
                 "dataset": "data/cognition/adaptive_theta_plasticity.csv",
@@ -734,7 +734,7 @@
             "id": "pr-draft-0025",
             "type": "adaptive-membrane",
             "created_at": "2025-11-10T18:00:00Z",
-            "summary": "Deployed the meta-threshold resonance script exporting Θ(t), β(t), and meta-gate diagnostics with falsification deltas.",
+            "summary": "Deployed the meta-threshold resonance script exporting \u0398(t), \u03b2(t), and meta-gate diagnostics with falsification deltas.",
             "threshold_field": {
                 "R": "adaptive_runs_without_meta_ledgers",
                 "Theta": "meta_threshold_exports_synced",
@@ -743,8 +743,8 @@
             },
             "next_actions": [
                 "Feed analysis/results/meta_threshold_resonance.json into resonance_cohort_summary.py so adaptive runs join the ledger.",
-                "Cross-link docs/meta_threshold_controller.md with the new meta-gate occupancy metrics and ΔAIC margins.",
-                "Prototype simulator presets that expose Θ(t) and β(t) drift using the exported driver and gate traces."
+                "Cross-link docs/meta_threshold_controller.md with the new meta-gate occupancy metrics and \u0394AIC margins.",
+                "Prototype simulator presets that expose \u0398(t) and \u03b2(t) drift using the exported driver and gate traces."
             ],
             "observables": {
                 "analysis_script": "analysis/meta_threshold_resonance_fit.py",
@@ -759,7 +759,7 @@
             "id": "pr-draft-0026",
             "type": "model-helper",
             "created_at": "2025-11-10T19:15:00Z",
-            "summary": "Published the AdaptiveLogisticMembrane helper so Θ(t) and β(t) plasticity can be rehearsed with impedance relief diagnostics.",
+            "summary": "Published the AdaptiveLogisticMembrane helper so \u0398(t) and \u03b2(t) plasticity can be rehearsed with impedance relief diagnostics.",
             "threshold_field": {
                 "R": "lightweight_meta_threshold_runs_pending",
                 "Theta": "adaptive_helper_documented",
@@ -783,7 +783,7 @@
             "id": "pr-draft-0027",
             "type": "impedance-gate",
             "created_at": "2025-11-11T00:00:00Z",
-            "summary": "Install logistic impedance motif and export relief/recovery/hysteresis diagnostics for ζ(R).",
+            "summary": "Install logistic impedance motif and export relief/recovery/hysteresis diagnostics for \u03b6(R).",
             "threshold_field": {
                 "R": "membrane_runs_without_impedance_tracks",
                 "Theta": "impedance_diagnostics_ready",
@@ -791,7 +791,7 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Integrate ResonantImpedance into simulator presets so ζ(R) breathing is visible alongside logistic response charts.",
+                "Integrate ResonantImpedance into simulator presets so \u03b6(R) breathing is visible alongside logistic response charts.",
                 "Extend analysis pipelines to log relief/recovery/hysteresis forces for cohort comparisons.",
                 "Monitor pytest coverage and update motifs when additional impedance baselines are introduced."
             ],
@@ -814,7 +814,7 @@
             },
             "next_actions": [
                 "Ingest TIPMIP ensemble runs to update theta/beta bands and null comparisons.",
-                "Run simulator batch sweeps over g_ij to log ΔTheta_global and publish regression baselines.",
+                "Run simulator batch sweeps over g_ij to log \u0394Theta_global and publish regression baselines.",
                 "Track the exported hypotheses array and refresh Section 5 citations when new data arrives."
             ],
             "observables": {
@@ -831,7 +831,7 @@
             "id": "pr-draft-0029",
             "type": "bugfix-thread",
             "created_at": "2025-11-11T10:30:00Z",
-            "summary": "Corrected the planetary tipping export so β evidence reports the mean steepness instead of CI width, preserving the falsification narrative.",
+            "summary": "Corrected the planetary tipping export so \u03b2 evidence reports the mean steepness instead of CI width, preserving the falsification narrative.",
             "threshold_field": {
                 "R": "hypothesis_exports_needing_semantic_alignment",
                 "Theta": "beta_metrics_consistent_with_labels",
@@ -839,7 +839,7 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Backfill downstream consumers with the clarified β mean and CI width fields.",
+                "Backfill downstream consumers with the clarified \u03b2 mean and CI width fields.",
                 "Audit other analysis exports for mismatched semantic labels before the next bridge sync.",
                 "Document the correction within Docs/ threshold narratives so readers do not confuse precision with steepness."
             ],
@@ -914,7 +914,7 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Prototype simulator/presets/resonant_impedance_gate.json so relief and recovery sliders animate alongside σ(β(R-Θ)).",
+                "Prototype simulator/presets/resonant_impedance_gate.json so relief and recovery sliders animate alongside \u03c3(\u03b2(R-\u0398)).",
                 "Compare the new relief_peak/recovery_peak statistics against existing membrane results inside analysis/results/resonance_cohort_summary.json to flag outliers.",
                 "Extend docs and governance notes with guidance on how impedance hysteresis should inform falsification campaigns."
             ],
@@ -934,7 +934,7 @@
             "id": "pr-draft-0033",
             "type": "analysis-telemetry",
             "created_at": "2025-11-13T08:30:00Z",
-            "summary": "Stamped the planetary tipping export with an explicit β_mean field and UTC timestamp while adding a regression test sentinel.",
+            "summary": "Stamped the planetary tipping export with an explicit \u03b2_mean field and UTC timestamp while adding a regression test sentinel.",
             "threshold_field": {
                 "R": "logistic_exports_without_temporal_resonance_guards",
                 "Theta": "beta_signal_and_timestamp_labels_synchronised",
@@ -986,7 +986,7 @@
             "id": "pr-draft-0035",
             "type": "beta-guard",
             "created_at": "2025-11-15T09:00:00Z",
-            "summary": "Hardened planetary tipping β evidence with explicit CI width semantics and sigmoid fit fallbacks for reproducibility.",
+            "summary": "Hardened planetary tipping \u03b2 evidence with explicit CI width semantics and sigmoid fit fallbacks for reproducibility.",
             "threshold_field": {
                 "R": "beta_exports_merging_signal_and_precision",
                 "Theta": "universality_guardrails_in_place",
@@ -1025,7 +1025,7 @@
             "next_actions": [
                 "Publish README quick-start block so collaborators follow the same ritual.",
                 "Keep nox sessions green before cutting Zenodo archives.",
-                "Log future automation gaps (CI, smoke tests) when ΔAIC guards regress."
+                "Log future automation gaps (CI, smoke tests) when \u0394AIC guards regress."
             ],
             "observables": {
                 "nox_sessions": [
@@ -1046,7 +1046,7 @@
             "id": "pr-draft-0037",
             "type": "cascade-resonance",
             "created_at": "2025-11-17T00:00:00Z",
-            "summary": "Potenzial cascade marries Mandala coherence with refreshed planetary β guardrails.",
+            "summary": "Potenzial cascade marries Mandala coherence with refreshed planetary \u03b2 guardrails.",
             "threshold_field": {
                 "R": "cascading_potentials_waiting_for_robin_gate",
                 "Theta": "beta_evidence_decoupled_from_ci_width",
@@ -1135,7 +1135,7 @@
             "id": "pr-draft-0040",
             "type": "cohort-ledger",
             "created_at": "2025-11-20T00:00:00Z",
-            "summary": "Cohort summary now separates β mean from confidence-band width, unlocking UTAC v01 certification.",
+            "summary": "Cohort summary now separates \u03b2 mean from confidence-band width, unlocking UTAC v01 certification.",
             "threshold_field": {
                 "R": "cohort_beta_statistics_blending_mean_and_width",
                 "Theta": "beta_mean_recorded_independently_from_ci_span",
@@ -1144,8 +1144,8 @@
             },
             "next_actions": [
                 "Regenerate analysis/results/resonance_cohort_summary.json after each batch run to surface beta_ci_width moments.",
-                "Link the new β-band metrics into docs/resonance-bridge-map.md and manuscript tables during the v1.0 polish.",
-                "Ensure simulator overlays cite both μ_β and β-band width when presenting cohort comparisons."
+                "Link the new \u03b2-band metrics into docs/resonance-bridge-map.md and manuscript tables during the v1.0 polish.",
+                "Ensure simulator overlays cite both \u03bc_\u03b2 and \u03b2-band width when presenting cohort comparisons."
             ],
             "observables": {
                 "modules": [
@@ -1163,7 +1163,7 @@
             "id": "pr-draft-0041",
             "type": "semantic-coupling",
             "created_at": "2025-11-21T00:00:00Z",
-            "summary": "Integrated Claude's M[ψ,φ] coupling into the membrane solver while pinning planetary β to its canonical fit and drafting the v1.0.1 manuscript section on controlled emergence.",
+            "summary": "Integrated Claude's M[\u03c8,\u03c6] coupling into the membrane solver while pinning planetary \u03b2 to its canonical fit and drafting the v1.0.1 manuscript section on controlled emergence.",
             "threshold_field": {
                 "R": "semantic_coupling_hooks_pending_beta_alignment",
                 "Theta": "semantic_gate_braided_with_canonical_beta",
@@ -1171,8 +1171,8 @@
                 "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
             },
             "next_actions": [
-                "Sweep λ and exponent parameters in analysis/potential_cascade_lab.py to chart semantic pressure regimes.",
-                "Propagate canonical vs observed β values into docs/resonance-bridge-map.md and simulator presets.",
+                "Sweep \u03bb and exponent parameters in analysis/potential_cascade_lab.py to chart semantic pressure regimes.",
+                "Propagate canonical vs observed \u03b2 values into docs/resonance-bridge-map.md and simulator presets.",
                 "Enrich paper/manuscript_v1.0.tex with figures sourced from diagrams/ and semantic kernel simulations."
             ],
             "observables": {
@@ -1195,7 +1195,7 @@
             "id": "pr-draft-0042",
             "type": "configuration-bridge",
             "created_at": "2025-11-22T00:00:00Z",
-            "summary": "Added YAML/JSON configuration support to the Potenzial-Kaskade lab so cascade scenarios can be replayed with declared σ(β(R-Θ)) and ζ(R) parameters.",
+            "summary": "Added YAML/JSON configuration support to the Potenzial-Kaskade lab so cascade scenarios can be replayed with declared \u03c3(\u03b2(R-\u0398)) and \u03b6(R) parameters.",
             "threshold_field": {
                 "R": "potential_cascade_runs_without_declared_parameters",
                 "Theta": "config_driven_potential_cascade",
@@ -1230,7 +1230,7 @@
             "id": "pr-draft-0043",
             "type": "simulator-bridge",
             "created_at": "2025-11-23T00:00:00Z",
-            "summary": "Expose the Potenzial-Kaskade LLM scenario in the simulator and align guard metrics with θ_final/β_final exports.",
+            "summary": "Expose the Potenzial-Kaskade LLM scenario in the simulator and align guard metrics with \u03b8_final/\u03b2_final exports.",
             "threshold_field": {
                 "R": "cascade_presets_missing_ui_bridge",
                 "Theta": "frontend_handles_theta_final_beta_final",
@@ -1256,6 +1256,39 @@
             }
         },
         {
+            "id": "pr-draft-0048",
+            "type": "resonance-update",
+            "created_at": "2025-12-07T00:00:00Z",
+            "summary": "Bridge Jason Wei's emergent ability ledger into the UTF logistic pipeline and manuscript.",
+            "threshold_field": {
+                "R": "llm_emergence_references_without_utf_link",
+                "Theta": "wei_quartet_integrated",
+                "beta": 4.2,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "scope": [
+                "analysis/llm_beta_extractor.py",
+                "analysis/results/llm_beta_extractor.json",
+                "data/ai/wei_emergent_abilities.csv",
+                "data/ai/wei_emergent_abilities.metadata.json",
+                "docs/wei_integration.md",
+                "paper/manuscript_v1.0.tex"
+            ],
+            "next_actions": [
+                "Digitise Wei's full 137-ability sweep and rerun the extractor to tighten the \u03b2 band.",
+                "Propagate \u0398 estimates into simulator presets so PaLM resonance can converse with other membranes.",
+                "Cross-check fitted \u03b2 values against future Wei/Anthropic datasets to test the canonical 4.2 hypothesis."
+            ],
+            "observables": {
+                "beta_mean": 3.47,
+                "beta_std": 0.47,
+                "theta_mean": 9.92,
+                "delta_aic_min": 10.18,
+                "tasks": 3,
+                "docs_entry": "docs/wei_integration.md"
+            }
+        },
+        {
             "id": "release-v0.1",
             "type": "release",
             "created_at": "2025-10-31T13:05:49Z",
@@ -1276,14 +1309,14 @@
                 "ci_workflow": ".github/workflows/resonance-ci.yml",
                 "license": "MIT",
                 "citation_file": "CITATION.cff",
-                "news_entry": "NEWS.md#v010-—-dawn-chorus-release"
+                "news_entry": "NEWS.md#v010-\u2014-dawn-chorus-release"
             }
         },
         {
             "id": "release-v1.0.1",
             "type": "release",
             "created_at": "2025-11-21T08:45:00Z",
-            "summary": "Semantic coupling release: PotenzialKaskade, Mandala coherence, and planetary β ledger lock controlled emergence into V01.",
+            "summary": "Semantic coupling release: PotenzialKaskade, Mandala coherence, and planetary \u03b2 ledger lock controlled emergence into V01.",
             "threshold_field": {
                 "R": "semantic_hooks_pending",
                 "Theta": "coupling_cascade_ledger_synchronised",
@@ -1293,7 +1326,7 @@
             "status": "archived",
             "next_actions": [
                 "Reference this release as the semantic foundation when drafting V02 retrospectives.",
-                "Preserve canonical β narratives in docs/ai/controlled_emergence.md for historical context."
+                "Preserve canonical \u03b2 narratives in docs/ai/controlled_emergence.md for historical context."
             ],
             "observables": {
                 "coherence_term": "models/coherence_term.py",
@@ -1320,23 +1353,23 @@
                 "Propagate scenario metadata into docs/resonance-bridge-map.md during future cascade additions.",
                 "Extend YAML lanterns to ethics/cognition sweeps for prospective V02 expansions."
             ],
-        "observables": {
-            "config_demo": "analysis/batch_configs/potential_cascade.yaml",
-            "config_llm": "analysis/batch_configs/potential_cascade_llm.yaml",
-            "config_climate": "analysis/batch_configs/potential_cascade_climate.yaml",
-            "result_demo": "analysis/results/potential_cascade_lab.json",
-            "result_llm": "analysis/results/potential_cascade_llm.json",
-            "result_climate": "analysis/results/potential_cascade_climate.json",
-            "cohort": "analysis/results/resonance_cohort_summary.json",
-            "docs_entry": "docs/ai/controlled_emergence.md#konfigurationsszenarien-v02",
-            "news_entry": "NEWS.md#v200--yaml-constellation-release"
+            "observables": {
+                "config_demo": "analysis/batch_configs/potential_cascade.yaml",
+                "config_llm": "analysis/batch_configs/potential_cascade_llm.yaml",
+                "config_climate": "analysis/batch_configs/potential_cascade_climate.yaml",
+                "result_demo": "analysis/results/potential_cascade_lab.json",
+                "result_llm": "analysis/results/potential_cascade_llm.json",
+                "result_climate": "analysis/results/potential_cascade_climate.json",
+                "cohort": "analysis/results/resonance_cohort_summary.json",
+                "docs_entry": "docs/ai/controlled_emergence.md#konfigurationsszenarien-v02",
+                "news_entry": "NEWS.md#v200--yaml-constellation-release"
             }
         },
         {
             "id": "release-v2.0.1",
             "type": "release",
             "created_at": "2025-11-30T00:00:00Z",
-            "summary": "Anthropic introspection validation ties semantic coupling to beta≈4.2 and refreshes impedance gates for V02.",
+            "summary": "Anthropic introspection validation ties semantic coupling to beta\u22484.2 and refreshes impedance gates for V02.",
             "threshold_field": {
                 "R": "introspective_detection_rate",
                 "Theta": "theta_detect",
