@@ -1323,6 +1323,39 @@
             }
         },
         {
+            "id": "pr-draft-0050",
+            "type": "resonance-guard",
+            "created_at": "2025-12-09T00:00:00Z",
+            "summary": "Install a regression sentinel for the Wei PaLM logistic fit and canonical band diagnostics.",
+            "threshold_field": {
+                "R": "wei_integration_code_paths",
+                "Theta": "regression_guard_active",
+                "beta": 4.4,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "scope": [
+                "analysis/llm_beta_extractor.py",
+                "analysis/results/llm_beta_extractor.json",
+                "tests/test_llm_beta_extractor.py",
+                "docs/wei_integration.md"
+            ],
+            "next_actions": [
+                "Keep the regression test updated when new Wei datasets expand the task set.",
+                "Propagate sentinel assertions to simulator presets once UI surfaces the PaLM lantern.",
+                "Flag codexfeedback when ΔAIC falls below 10 in future runs."
+            ],
+            "observables": {
+                "beta_mean": 3.4695,
+                "theta_mean": 9.9217,
+                "delta_aic_min": 10.18,
+                "canonical_band": [
+                    3.6,
+                    4.8
+                ],
+                "within_canonical_band": false
+            }
+        },
+        {
             "id": "release-v0.1",
             "type": "release",
             "created_at": "2025-10-31T13:05:49Z",
