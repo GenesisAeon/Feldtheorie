@@ -5,10 +5,10 @@
         "schema_version": "0.1",
         "description": "Machine-readable hooks for PR tracking and emergent logistic transitions.",
         "current_release": {
-            "version": "2.0.1",
+            "version": "2.0.3",
             "status": "V02",
-            "recorded_at": "2025-11-30T00:00:00Z",
-            "notes": "Anthropic introspection validation joins the canonical β≈4.2 ledger; impedance gates and manuscript updates confirm V02 implementation closure."
+            "recorded_at": "2025-12-05T00:00:00Z",
+            "notes": "Anthropic introspection gains a temperature-scaled null companion so σ(β(R-Θ)) now outshines both uniform guessing and softened logistic drift across docs, tests, and NEWS."
         }
     },
     "entries": [
@@ -232,6 +232,36 @@
                 "beta_median_reported": 3.895,
                 "beta_iqr_reported": 0.41,
                 "news_entry": "v2.0.2"
+            }
+        },
+        {
+            "id": "pr-draft-0046",
+            "type": "resonance-update",
+            "created_at": "2025-12-05T00:00:00Z",
+            "summary": "Temperatur-skaliertes Nullmodell ergänzt die Anthropic-Introspektion um eine zweite Falsifikationskante.",
+            "threshold_field": {
+                "R": "introspection_baselines_pending",
+                "Theta": "dual_null_models_documented",
+                "beta": 4.2,
+                "sigma": "1 / (1 + exp(-beta * (R - Theta)))"
+            },
+            "scope": [
+                "analysis/introspection_validation.py",
+                "analysis/results/introspection_validation.json",
+                "tests/test_introspection_validation.py",
+                "docs/ai/anthropic_introspection_validation.md",
+                "NEWS.md"
+            ],
+            "next_actions": [
+                "Propagate the temperature baseline into simulator presets when introspection scenarios go live.",
+                "Track future Anthropic datasets by updating generated_at and noting null_temperature in release notes.",
+                "Consider extending falsification with empirical noise models once additional measurements arrive."
+            ],
+            "observables": {
+                "null_temperature": 2.5,
+                "uniform_advantage": 0.0,
+                "temperature_advantage": 0.042,
+                "news_entry": "v2.0.3"
             }
         },
         {

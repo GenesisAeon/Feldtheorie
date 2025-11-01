@@ -1,5 +1,4 @@
 import math
-
 import numpy as np
 
 from models.coherence_term import (

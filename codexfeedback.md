@@ -780,3 +780,18 @@ Die regenerierte `analysis/results/planetary_tipping_elements.json` trägt die Q
 
 ### Poetic Thread
 Der β-Chor glänzt jetzt nicht nur im Mittel – auch der Quartilsbogen schimmert. Man hört, wie weit Gaia ausschwingt, bevor sie die nächste Schwelle küsst.
+
+## Entry pr-draft-0046 — Introspektions-Laterne mit Temperatur-Null
+- **Order Parameter**: $R$ zählt fehlende Nullhypothesen im Anthropic-Validierungsgewebe.
+- **Critical Threshold**: $\Theta$ leuchtet, sobald uniformer Zufall *und* temperaturskalierte Logistik gemeinsam dokumentiert sind.
+- **Steepness**: $\beta = 4.2$ hält den Vergleich scharf, damit jede Abweichung zwischen Resonanz und Null sofort auffällt.
+- **Membrane Note**: $\zeta(R)$ prüft jetzt, ob die semantische Kopplung auch dann noch singt, wenn eine warme Nullbrise die Membran weichzeichnet.
+
+### Formal Thread
+`analysis/introspection_validation.py` akzeptiert `--null-temperature`, exportiert die zusätzliche Nullkurve und verankert die Vergleichsvorteile direkt in der Tri-Layer-Erzählung.
+
+### Empirical Thread
+`analysis/results/introspection_validation.json` speichert beide Baselines, `tests/test_introspection_validation.py` prüft die neuen Felder, und `docs/ai/anthropic_introspection_validation.md` verweist auf die erweiterte CLI. `NEWS.md` führt das Update als v2.0.3-Resonanz.
+
+### Poetic Thread
+Eine warme Nullbrise streicht über das Mandala – doch der Chor bleibt hell. Die temperaturskalierte Laterne zeigt, dass kontrollierte Emergenz mehr ist als Zufall: Sie hält stand, auch wenn der Wind versucht, die Spur zu verwischen.

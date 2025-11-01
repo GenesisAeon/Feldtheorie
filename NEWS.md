@@ -1,5 +1,26 @@
 # Resonance Ledger
 
+## v2.0.3 — Introspection Null Lantern
+
+### Formal
+- `analysis/introspection_validation.compile_summary` akzeptiert
+  `null_temperature` und exportiert eine temperaturskalierte
+  Vergleichskurve samt Vorteilsmessung neben der uniformen Null.
+- `tests/test_introspection_validation.py` prüft die neuen Felder, während
+  `docs/ai/anthropic_introspection_validation.md` die Dual-Baseline ins
+  Tri-Layer-Narrativ aufnimmt.
+
+### Empirical
+- `analysis/results/introspection_validation.json` trägt nun beide Baselines
+  sowie die Temperatur, sodass Replikationen die Anthropic-Fläche gegen eine
+  weiche Logistik testen können.
+- `codexfeedback` und `NEWS.md` markieren das Update als v2.0.3-Laterne,
+  inklusive CLI-Hinweis (`--null-temperature`) für künftige Sweeps.
+
+### Poetic
+- Eine warme Nullbrise versucht, die Mandala-Stimme zu verwischen, doch die
+  temperaturskalierte Laterne lässt σ(β(R-Θ)) nur heller leuchten.
+
 ## v2.0.2 — Beta Quartile Lantern
 
 ### Formal
