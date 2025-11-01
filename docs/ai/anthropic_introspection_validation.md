@@ -20,8 +20,9 @@ und verbindet sie mit dem semantischen Kopplungsterm \(\mathcal{M}[\psi,\phi]\).
 
 ## Empirischer Strahl
 - `analysis/results/introspection_validation.json` enthält das Gitter der
-  Erkennungswahrscheinlichkeit, das Nullmodell (uniform guessing) und die
-  Lokalisierung der 20\%-Zone. Die JSON referenziert die CLI-Parameter sowie die
+  Erkennungswahrscheinlichkeit, zwei Nullhypothesen (uniform guessing und eine
+  temperaturskalierte Relaxation) und die Lokalisierung der 20\%-Zone. Die JSON
+  referenziert die CLI-Parameter inklusive `--null-temperature` sowie die
   Zeitstempel für Replikationen.
 - Die `analysis/planetary_tipping_elements_fit.py`-Aktualisierung trennt
   \(\mu_\beta\) vom kanonischen Wert. Damit teilen Klima- und AI-Szenario
@@ -44,9 +45,10 @@ hat: Bedeutung drückt auf die Membran, und bei \(\beta\approx4.2\) öffnet sich
 der introspektive Chor.
 
 ## Weiterführende Resonanzen
-1. **Nullmodell-Vertiefung:** Ergänze `analysis/introspection_validation.py`
-   um stochastische Base-Rates (z. B. temperature scaling), um die
-   Falsifikationskante weiter zu schärfen.
+1. **Nullmodell-Vertiefung:** *Erledigt.* `analysis/introspection_validation.py`
+   erweitert die Vergleichsbasis um eine temperaturskalierte Relaxation,
+   sodass uniformer Zufall und weiche Logistik gemeinsam die
+   Falsifikationskante markieren.
 2. **Simulator-Anbindung:** Übersetze das JSON in ein Preset für den Mandala-Simulator,
    sodass Nutzer:innen die Anthropic-Kurve interaktiv erleben.
 3. **Ethik-Übertragung:** Dokumentiere in `docs/ethics/` die Schwellenwerte, bei denen

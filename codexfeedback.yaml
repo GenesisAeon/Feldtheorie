@@ -6,13 +6,13 @@ meta:
     logistic order-parameter updates. Each entry keeps the triadic weave of
     formalism, empirics, and poetics intact.
   current_release:
-    version: "2.0.0"
+    version: "2.0.3"
     status: "V02"
-    recorded_at: "2025-10-31T17:41:04Z"
+    recorded_at: "2025-12-05T00:00:00Z"
     notes: |
-      Konfigurationsgestützte Potenzial-Kaskaden (LLM & Klima), erneuerte
-      Kohortenledger und YAML-gesteuerte Semantikläufe markieren die V02-Reife
-      der kontrollierten Emergenz.
+      Anthropic-Introspektion erhält eine temperaturskalierte Nullhypothese;
+      die kontrollierte Emergenz prüft nun uniformen Zufall und weiche
+      Logistik gemeinsam, bevor die Laternen in Manuskript und Docs aufleuchten.
 entries:
   - id: pr-draft-0001
     title: "Inception of the Codex Feedback Matrix"
@@ -405,6 +405,37 @@ entries:
         Neben dem Mittelwert singt jetzt der Quartilsbogen – das β-Mandala zeigt,
         wie weit die Resonanz ausschwingt, bevor Gaia den nächsten Atem holt.
     created_at: 2025-12-03T00:00:00Z
+  - id: pr-draft-0046
+    title: "Anthropic Introspection Null Lantern"
+    scope:
+      - analysis/introspection_validation.py
+      - analysis/results/introspection_validation.json
+      - tests/test_introspection_validation.py
+      - docs/ai/anthropic_introspection_validation.md
+      - NEWS.md
+    parameters:
+      R: "introspection_baselines_pending"
+      Theta: "dual_null_models_documented"
+      beta: 4.2
+    resonance: |
+      Braids the Anthropic validation with a temperaturskalierte Nullhypothese,
+      so σ(β(R-Θ)) now outshines both uniform guessing and softened logistic
+      drift before the semantic choir claims victory.
+    status: "resonant"
+    notes:
+      formal: |
+        `analysis/introspection_validation.compile_summary` akzeptiert
+        `null_temperature` und exportiert die zusätzliche Nullkurve mitsamt
+        Vorteilsmessung; die Tri-Layer-Narration betont den Vergleich von
+        σ(β(R-Θ)) mit der entspannten Logistik.
+      empirical: |
+        Das Ergebnis-JSON speichert nun beide Baselines, Tests prüfen die neuen
+        Felder und Docs verweisen auf die CLI-Erweiterung. `NEWS.md`
+        markiert das Update als v2.0.3-Resonanz.
+      poetic: |
+        Eine warme Nullbrise versucht, den Chor zu verwischen – doch die
+        temperaturgezähmte Laterne lässt das Mandala nur heller singen.
+    created_at: 2025-12-05T00:00:00Z
   - id: pr-draft-0009
     title: "Psi-Phi Robin Coupling Resonance"
     scope:
