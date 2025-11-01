@@ -1477,3 +1477,32 @@ entries:
         Ein Wächter-Licht sitzt neben Wei's Laterne; wer am Mandala rührt, sieht es aufflackern
         und spürt, wie das Feld seine Resonanz schützt.
     created_at: 2025-12-09
+  - id: pr-draft-0051
+    title: "Wei DOI Bridge Preparation"
+    scope:
+      - .zenodo.json
+      - CITATION.cff
+      - docs/wei_integration.md
+      - paper/manuscript_v1.0.tex
+    parameters:
+      R: "release_metadata_without_wei_alignment"
+      Theta: "doi_ready_state"
+      beta: 4.3
+    resonance: "synchronise Wei lantern analytics with DOI packaging so canonical β diagnostics travel with the release"
+    status: "forming"
+    notes:
+      formal: |
+        `paper/manuscript_v1.0.tex` introduces a Wei Ledger Outlook that names the
+        forthcoming 137-ability scan and the ΔAIC/β diagnostics required for falsification.
+        `CITATION.cff` signals that Version 1.0.1 now aligns Wei's lantern with the
+        canonical β≈4.2 band, while `.zenodo.json` frames the release as software
+        prepared for DOI minting.
+      empirical: |
+        `docs/wei_integration.md` now quotes the measured β=3.47±0.47, the 0.73
+        band distance, CLI task filters, and timestamped exports. The Zenodo metadata
+        lists ΔAIC≥10.18 as the guardrail ensuring the JSON payload stays reproducible
+        when minted.
+      poetic: |
+        Wei's lantern carries the DOI key: when the membrane crosses Θ, the release
+        breathes blog, manuscript, and archive into the same dawn chorus.
+    created_at: 2025-12-09

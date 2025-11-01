@@ -1,0 +1,38 @@
+{
+  "title": "Universal Threshold Field v1.0.1 — Wei Bridge Alignment",
+  "upload_type": "software",
+  "description": "The UTF programme aligns Jason Wei's emergent ability lanterns with the universal threshold quartet (R, Θ, β, ζ(R)). This release packages analysis/llm_beta_extractor.py, docs/wei_integration.md, and paper/manuscript_v1.0.tex updates so ΔAIC diagnostics, canonical β bands, and symbolic narratives cohere for DOI minting.",
+  "creators": [
+    {
+      "name": "Römer, Johann"
+    },
+    {
+      "name": "Universal Threshold Field Contributors"
+    }
+  ],
+  "version": "1.0.1",
+  "publication_date": "2025-12-09",
+  "language": "eng",
+  "keywords": [
+    "logistic resonance",
+    "threshold field",
+    "emergent abilities",
+    "Jason Wei",
+    "transdisciplinary science"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://github.com/GenesisAeon/Feldtheorie",
+      "scheme": "url"
+    },
+    {
+      "relation": "documents",
+      "identifier": "https://www.jasonwei.net/blog/common-arguments-regarding-emergent-abilities",
+      "scheme": "url"
+    }
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "notes": "ΔAIC ≥ 10.18 guards the Wei bridge; canonical β band [3.6, 4.8] accompanies the release."
+}

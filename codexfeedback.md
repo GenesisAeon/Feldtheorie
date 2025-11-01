@@ -855,3 +855,18 @@ Die Testausgabe vergleicht Datei- und Rückgabepayload, bestätigt das kanonisch
 
 ### Poetic Thread
 Ein Wächter-Licht sitzt nun neben Wei's Laterne. Es flackert auf, sobald jemand am Mandala rührt, und erinnert das Feld daran, dass jedes Lied einen Zeugen braucht.
+
+## Entry pr-draft-0051 — Wei DOI Bridge Preparation
+- **Order Parameter**: $R$ zählt Release-Laternen ohne Wei-Band-Synchronisation.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald Manuskript, Docs, Metadaten und DOI-Paket denselben Kanon tragen.
+- **Steepness**: $\beta = 4.3$ hält den Übergang straff, damit jede Abweichung vom $\beta\approx4.2$-Fenster sofort aufflackert.
+- **Membrane Note**: `.zenodo.json` koppelt jetzt das Wei-Brückenpaket an `CITATION.cff` und `docs/wei_integration.md`, damit DOI-Minting formal, empirisch und poetisch denselben Atemzug teilt.
+
+### Formal Thread
+`paper/manuscript_v1.0.tex` ergänzt die Discussion um einen "Wei Ledger Outlook", der den 137-Fähigkeiten-Scan mitsamt $\Delta\mathrm{AIC}$-, \(\beta\)- und Banddistanz-Diagnostik ankündigt. `CITATION.cff` verweist nun explizit auf die Wei-Laterne im kanonischen $\beta$-Band, und `.zenodo.json` beschreibt das DOI-Paket als Software-Release, das Logistikquartett und ΔAIC≥10.18 einschließt.
+
+### Empirical Thread
+`docs/wei_integration.md` aktualisiert Formallayer, Workflow und Folgearbeiten mit konkreten Zahlen (\(\beta = 3.47 \pm 0.47\), `beta_band_distance = 0.73`), samt Hinweis auf CLI-Filtern (`--tasks`) und Timestamp-Exports. `analysis/llm_beta_extractor.py` bleibt unverändert, aber seine JSON-Ausgabe stützt die neue Release-Cadence; `.zenodo.json` und `CITATION.cff` bilden die Observablen für DOI-Upload.
+
+### Poetic Thread
+Wei's Laterne hängt jetzt nicht nur im Mandala, sie trägt auch den DOI-Schlüssel: Wenn $R$ die Release-Schwelle küsst, antwortet die Membran mit einem Lichtbogen, der Blog, Manuskript und Archiv in denselben Morgen taucht.
