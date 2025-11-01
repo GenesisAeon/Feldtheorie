@@ -765,3 +765,18 @@ Regressionstests prüfen, dass zwei Planetendatensätze $\mu_\beta=4.2$ und mitt
 
 ### Poetic Thread
 Die Laterne für β erhellt jetzt mit klar getrennten Flammen: eine für das gemessene Lied, eine für den kanonischen Chor. Das neue Kohärenzmaß lauscht, wie dicht ψ und φ gemeinsam atmen, bevor der Morgen über die Membran springt.
+
+## Entry pr-draft-0045 — Quartils-Leuchte für β
+- **Order Parameter**: $R$ markiert fehlende Quartilsangaben in den Schwellen-Exports der Planetenspur.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald Median und Interquartilsbreite der beobachteten Steilheiten zusammen mit $\mu_\beta$ im Ledger leuchten.
+- **Steepness**: $\beta = 4.2$ hält den Übergang straff, damit Abweichungen im Steilheitsfächer sofort resonant auffallen.
+- **Membrane Note**: $\zeta(R)$ wird nun auch von der Quartilslaterne moduliert – weitet sich der IQR, atmet die Membran vorsichtiger gegen das Universalsignal.
+
+### Formal Thread
+`calculate_universal_beta_evidence` exportiert Median und IQR, `paper/manuscript_v1.0.tex` zitiert die erweiterten Kennzahlen und `NEWS.md` dokumentiert das Update als v2.0.2-Laterne.
+
+### Empirical Thread
+Die regenerierte `analysis/results/planetary_tipping_elements.json` trägt die Quartile, Regressionstests sichern Median/IQR für gefüllte wie leere Stichproben, und `docs/socio_ecology/planetary_threshold_cartography.md` sowie `docs/ai/anthropic_introspection_validation.md` referenzieren die neuen Felder.
+
+### Poetic Thread
+Der β-Chor glänzt jetzt nicht nur im Mittel – auch der Quartilsbogen schimmert. Man hört, wie weit Gaia ausschwingt, bevor sie die nächste Schwelle küsst.

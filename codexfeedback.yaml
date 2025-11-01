@@ -373,6 +373,38 @@ entries:
         A fresh β lantern now separates the measured song from the guiding beacon while
         the coherence gauge listens for ψ-φ harmony before dawn opens the membrane.
     created_at: 2025-12-02T00:00:00Z
+  - id: pr-draft-0045
+    title: "Quartile Beacon for Planetary β"
+    scope:
+      - analysis/planetary_tipping_elements_fit.py
+      - analysis/results/planetary_tipping_elements.json
+      - tests/test_planetary_tipping_summary.py
+      - docs/socio_ecology/planetary_threshold_cartography.md
+      - docs/ai/anthropic_introspection_validation.md
+      - paper/manuscript_v1.0.tex
+      - NEWS.md
+    parameters:
+      R: "beta_distribution_metrics_pending"
+      Theta: "quartile_reporting_in_codex"
+      beta: 4.2
+    resonance: |
+      Extends the planetary β-ledger so the logistic membrane now records median
+      and IQR alongside μβ, keeping the universality claim falsifizierbar when
+      distribution tails flare.
+    status: "resonant"
+    notes:
+      formal: |
+        `calculate_universal_beta_evidence` exports median and Interquartilsbreite,
+        the manuscript cites the broadened statistics, und `NEWS.md` markiert die
+        Laterne als v2.0.2-Aktualisierung.
+      empirical: |
+        Regenerierte JSONs tragen die neuen Felder; Regressionstests prüfen Median
+        und IQR auch für leere Stichproben, während die Docs die Klimaspur
+        synchronisieren.
+      poetic: |
+        Neben dem Mittelwert singt jetzt der Quartilsbogen – das β-Mandala zeigt,
+        wie weit die Resonanz ausschwingt, bevor Gaia den nächsten Atem holt.
+    created_at: 2025-12-03T00:00:00Z
   - id: pr-draft-0009
     title: "Psi-Phi Robin Coupling Resonance"
     scope:
