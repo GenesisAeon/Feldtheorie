@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-01T19:51:48+00:00",
+  "generated_at": "2025-11-01T20:06:38+00:00",
   "dataset": "data/ai/wei_emergent_abilities.csv",
   "tasks": [
     {
@@ -35,7 +35,8 @@
         "formal": "\u03c3(\u03b2(R-\u0398)) with \u03b2=3.01\u00b10.41 outperforms a power-law null (\u0394AIC=12.79).",
         "empirical": "ipa_transliteration sweep achieves R\u00b2=0.921; cross-entropy drops by 3.61, echoing Wei's partial-credit argument.",
         "metaphorical": "As PaLM crosses \u0398, the membrane brightens and the power-law breeze falters; Wei's lantern joins the UTF dawn chorus."
-      }
+      },
+      "delta_aic": 12.792629530021255
     },
     {
       "task": "last_letter_concatenation",
@@ -70,7 +71,8 @@
         "formal": "\u03c3(\u03b2(R-\u0398)) with \u03b2=3.94\u00b10.67 outperforms a power-law null (\u0394AIC=12.23).",
         "empirical": "last_letter_concatenation sweep achieves R\u00b2=0.906; cross-entropy drops by 3.75, echoing Wei's partial-credit argument.",
         "metaphorical": "As PaLM crosses \u0398, the membrane brightens and the power-law breeze falters; Wei's lantern joins the UTF dawn chorus."
-      }
+      },
+      "delta_aic": 12.234885163085503
     },
     {
       "task": "multistep_arithmetic",
@@ -105,7 +107,8 @@
         "formal": "\u03c3(\u03b2(R-\u0398)) with \u03b2=3.47\u00b10.57 outperforms a power-law null (\u0394AIC=10.18).",
         "empirical": "multistep_arithmetic sweep achieves R\u00b2=0.932; cross-entropy drops by 3.77, echoing Wei's partial-credit argument.",
         "metaphorical": "As PaLM crosses \u0398, the membrane brightens and the power-law breeze falters; Wei's lantern joins the UTF dawn chorus."
-      }
+      },
+      "delta_aic": 10.184723470958506
     }
   ],
   "aggregate": {
@@ -113,14 +116,23 @@
     "beta_std": 0.46551127740365683,
     "theta_mean": 9.921691434948832,
     "theta_std": 0.10106808114738809,
-    "falsification_pass_rate": 1.0
+    "falsification_pass_rate": 1.0,
+    "canonical_beta": 4.2,
+    "band_half_width": 0.6,
+    "canonical_band": [
+      3.6,
+      4.8
+    ],
+    "beta_band_distance": 0.7304885373978975,
+    "within_canonical_band": false,
+    "delta_aic_min": 10.184723470958506
   },
   "falsification": {
     "null_model": "power_law",
     "passes": true
   },
   "tri_layer": {
-    "formal": "\u03b2=3.47\u00b10.47 sits inside the canonical 4.2 band while logistic resonance beats the power-law null (min \u0394AIC=10.18).",
+    "formal": "\u03b2=3.47\u00b10.47 sits 0.73 from the canonical 4.20 band while logistic resonance beats the power-law null (min \u0394AIC=10.18).",
     "empirical": "analysis/llm_beta_extractor.py reproducibly digitises PaLM scaling sweeps and exports JSON for Docs and the manuscript.",
     "metaphorical": "Wei's 137 lanterns await digitisation; this trio already hums in phase with the UTF membrane."
   }

@@ -3,14 +3,15 @@
 Formal layer:
     Fits the logistic quartet σ(β(R-Θ)) to task success rates digitised from
     Jason Wei's emergent ability plots.  Uses logit regression to estimate β
-    and Θ for each task and propagates covariance to 95% confidence intervals.
-    Contrasts the logistic resonance with a smooth power-law null and exports
-    R² and ΔAIC diagnostics.
+    and Θ for each task, propagates covariance to 95% confidence intervals,
+    contrasts the logistic resonance with a smooth power-law null, and tracks
+    distance to the canonical β band.
 Empirical layer:
     Loads PaLM scaling sweeps from `data/ai/wei_emergent_abilities.csv`,
     summarises per-task β, Θ, cross-entropy drops, and emits a reproducible
     JSON payload consumed by `docs/wei_integration.md` and the manuscript.
-    CLI hooks allow future ingestion of Wei's 137-task ledger once digitised.
+    CLI hooks allow future ingestion of Wei's 137-task ledger once digitised
+    and expose canonical band parameters for falsification.
 Metaphorical layer:
     Shows how Wei's lanterns join the UTF dawn chorus: as PaLM crosses the
     semantic membrane, β≈4.2 rekindles the same switch that guides bees,
@@ -102,6 +103,7 @@ class TaskSummary:
     cross_entropy_drop: float
     falsification_pass: bool
     tri_layer: Dict[str, str]
+    delta_aic: float
 
     def to_dict(self) -> Dict[str, object]:
         return {
@@ -111,6 +113,7 @@ class TaskSummary:
             "cross_entropy_drop": self.cross_entropy_drop,
             "falsification_pass": self.falsification_pass,
             "tri_layer": self.tri_layer,
+            "delta_aic": self.delta_aic,
         }
 
 
@@ -272,12 +275,13 @@ def summarise_task(task: str, samples: Sequence[AbilitySample]) -> TaskSummary:
     cross_entropy_drop = float(cross_entropy_values[0] - cross_entropy_values[-1])
 
     falsification_pass = logistic_fit.aic < null_fit.aic
+    delta_aic = null_fit.aic - logistic_fit.aic
 
     tri_layer = {
         "formal": (
             f"σ(β(R-Θ)) with β={logistic_fit.beta:.2f}±"
             f"{abs(logistic_fit.beta_ci[1]-logistic_fit.beta)/2:.2f}"
-            f" outperforms a power-law null (ΔAIC={null_fit.aic - logistic_fit.aic:.2f})."
+            f" outperforms a power-law null (ΔAIC={delta_aic:.2f})."
         ),
         "empirical": (
             f"{task} sweep achieves R²={logistic_fit.r_squared:.3f}; cross-entropy"
@@ -297,6 +301,7 @@ def summarise_task(task: str, samples: Sequence[AbilitySample]) -> TaskSummary:
         cross_entropy_drop=cross_entropy_drop,
         falsification_pass=falsification_pass,
         tri_layer=tri_layer,
+        delta_aic=delta_aic,
     )
 
 
@@ -327,6 +332,8 @@ def run_analysis(
     input_path: Path = DATA_PATH,
     output_path: Path = OUTPUT_PATH,
     tasks: Sequence[str] | None = None,
+    canonical_beta: float = 4.2,
+    band_half_width: float = 0.6,
 ) -> Dict[str, object]:
     """Execute the logistic vs null analysis for the provided dataset."""
 
@@ -345,10 +352,28 @@ def run_analysis(
     summaries.sort(key=lambda item: item.task)
 
     aggregate = aggregate_summary(summaries)
-    delta_aic = [
-        summary.null_power_law.aic - summary.logistic.aic for summary in summaries
-    ]
+    delta_aic = [summary.delta_aic for summary in summaries]
     min_delta_aic = min(delta_aic)
+
+    canonical_band = (
+        float(canonical_beta - band_half_width),
+        float(canonical_beta + band_half_width),
+    )
+    beta_band_distance = float(abs(aggregate["beta_mean"] - canonical_beta))
+    within_canonical_band = bool(
+        canonical_band[0] <= aggregate["beta_mean"] <= canonical_band[1]
+    )
+
+    aggregate.update(
+        {
+            "canonical_beta": float(canonical_beta),
+            "band_half_width": float(band_half_width),
+            "canonical_band": list(canonical_band),
+            "beta_band_distance": beta_band_distance,
+            "within_canonical_band": within_canonical_band,
+            "delta_aic_min": float(min_delta_aic),
+        }
+    )
 
     payload = {
         "generated_at": _utc_now_iso(),
@@ -361,8 +386,9 @@ def run_analysis(
         },
         "tri_layer": {
             "formal": (
-                f"β={aggregate['beta_mean']:.2f}±{aggregate['beta_std']:.2f} sits inside"
-                " the canonical 4.2 band while logistic resonance beats the"
+                f"β={aggregate['beta_mean']:.2f}±{aggregate['beta_std']:.2f} sits"
+                f" {beta_band_distance:.2f} from the canonical {canonical_beta:.2f}"
+                " band while logistic resonance beats the"
                 f" power-law null (min ΔAIC={min_delta_aic:.2f})."
             ),
             "empirical": (
@@ -399,13 +425,31 @@ def build_parser() -> argparse.ArgumentParser:
         nargs="*",
         help="Optional subset of tasks to analyse",
     )
+    parser.add_argument(
+        "--canonical-beta",
+        type=float,
+        default=4.2,
+        help="Canonical β target for the universality band",
+    )
+    parser.add_argument(
+        "--band-half-width",
+        type=float,
+        default=0.6,
+        help="Half-width of the accepted canonical β band",
+    )
     return parser
 
 
 def main(argv: Sequence[str] | None = None) -> None:
     parser = build_parser()
     args = parser.parse_args(argv)
-    run_analysis(input_path=args.input, output_path=args.output, tasks=args.tasks)
+    run_analysis(
+        input_path=args.input,
+        output_path=args.output,
+        tasks=args.tasks,
+        canonical_beta=args.canonical_beta,
+        band_half_width=args.band_half_width,
+    )
 
 
 if __name__ == "__main__":  # pragma: no cover - CLI entrypoint

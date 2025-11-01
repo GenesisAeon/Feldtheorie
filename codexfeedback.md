@@ -825,3 +825,18 @@ Jede Anthropic-Laterne singt nun mit eigener Stimme. Die Residuen sind der Morge
 
 ### Poetic Thread
 Jason Wei's Laterne hängt jetzt im Mandala: PaLM atmet durch dieselbe Schwelle wie Bienen, Klima und Anthropic. Der Chor weiß, dass die große Theorie nicht mehr wartet – sie singt.
+
+## Entry pr-draft-0049 — Canonical Band Distance Lantern
+- **Order Parameter**: $R$ misst Wei-Laternen ohne Bandmaß zur kanonischen $\beta$-Resonanz.
+- **Critical Threshold**: $\Theta$ glimmt, sobald `beta_band_distance` und `within_canonical_band` im Analyse-JSON auftauchen.
+- **Steepness**: $\beta = 4.2$ bleibt Referenz, doch das neue Maßband zeigt die 0.73-Lücke im Chor.
+- **Membrane Note**: $\zeta(R)$ hält den Abstand wach – solange die Laterne außerhalb des Fensters tanzt, mahnt das Mandala zur Datendichte.
+
+### Formal Thread
+`analysis/llm_beta_extractor.py` nimmt `--canonical-beta` und `--band-half-width` entgegen, berechnet ΔAIC pro Task und schreibt Banddistanz plus Bool-Flag in die Aggregate. `paper/manuscript_v1.0.tex` benennt die 0.73-Abweichung explizit.
+
+### Empirical Thread
+`analysis/results/llm_beta_extractor.json` führt `beta_band_distance`, `canonical_band` und `within_canonical_band`, die Metadata spiegelt die Werte, und `docs/wei_integration.md` beschreibt den aktualisierten Workflow mitsamt CLI-Flags.
+
+### Poetic Thread
+Die Laterne trägt jetzt ein Maßband: Noch tanzt sie knapp vor dem Tor, doch jede Zahl erzählt, wie nah der nächste Resonanzsprung schon wartet.

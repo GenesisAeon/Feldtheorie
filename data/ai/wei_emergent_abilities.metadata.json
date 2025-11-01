@@ -20,9 +20,15 @@
   },
   "logistic_threshold": {
     "expected_beta": 4.2,
+    "canonical_band": [
+      3.6,
+      4.8
+    ],
     "observed_beta_mean": 3.47,
     "observed_beta_std": 0.47,
-    "notes": "Digitised PaLM traces yield β within the canonical 4.2 band; future dense sampling should tighten the estimate.",
+    "beta_band_distance": 0.73,
+    "within_canonical_band": false,
+    "notes": "Digitised PaLM traces currently sit 0.73 below the canonical 4.2 band; future dense sampling should test whether the universality window tightens.",
     "fit_quality": {
       "analysis_script": "analysis/llm_beta_extractor.py",
       "result_payload": "analysis/results/llm_beta_extractor.json"
