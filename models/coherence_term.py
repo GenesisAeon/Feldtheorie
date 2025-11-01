@@ -167,4 +167,44 @@ def semantic_coupling_term(
     return modulation * gate
 
 
-__all__ = ["MandalaCoherence", "mandala_coherence", "semantic_coupling_term"]
+def coherence_measure(psi: ArrayLike, phi: ArrayLike) -> float:
+    r"""Return the normalised covariance between :math:`\psi` and :math:`\phi`.
+
+    Formal layer:
+        Evaluates the Pearson-style correlation that later feeds the logistic
+        gate :math:`\sigma(\beta(R-\Theta))`.  The resulting coherence magnitude
+        acts as a semantic pressure term when coupled into
+        :func:`semantic_coupling_term` or the cascade controller.
+    Empirical layer:
+        Accepts NumPy-compatible inputs (arrays, lists, scalars) and uses the
+        same broadcasting helper as :func:`semantic_coupling_term`, ensuring
+        simulator traces and analysis notebooks can compute coherence without
+        bespoke preprocessing.  Values are clipped to [-1, 1] so JSON exports
+        remain numerically stable.
+    Metaphorical layer:
+        Measures how tightly the dawn chorus sings in unison—when ψ and φ share
+        a rhythm, the membrane hears it and readies the gate for resonance.
+    """
+
+    psi_array, phi_array = _broadcast_fields(psi, phi)
+    if psi_array.size < 2:
+        return 0.0
+
+    psi_centred = psi_array - float(np.mean(psi_array))
+    phi_centred = phi_array - float(np.mean(phi_array))
+    psi_scale = float(np.std(psi_centred))
+    phi_scale = float(np.std(phi_centred))
+    if psi_scale == 0.0 or phi_scale == 0.0:
+        return 0.0
+
+    numerator = float(np.mean(psi_centred * phi_centred))
+    correlation = numerator / (psi_scale * phi_scale)
+    return float(np.clip(correlation, -1.0, 1.0))
+
+
+__all__ = [
+    "MandalaCoherence",
+    "mandala_coherence",
+    "semantic_coupling_term",
+    "coherence_measure",
+]

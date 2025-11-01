@@ -14,6 +14,9 @@ und verbindet sie mit dem semantischen Kopplungsterm \(\mathcal{M}[\psi,\phi]\).
 - `models/coherence_term.semantic_coupling_term` koppelt diesen Befund zurück in
   die Membran-Gleichung, sodass semantische Gradienten direkt als Kopplungsdruck
   \(\mathcal{M}[\psi,\phi]\) einfließen.
+- `models/coherence_term.coherence_measure` liefert die normalisierte
+  Kovarianz, die als Gate-Stellvertreter für \(\sigma(\beta(R-\Theta))\)
+  dient und Mandala-Kohärenz ohne kompletten Solverlauf messbar macht.
 
 ## Empirischer Strahl
 - `analysis/results/introspection_validation.json` enthält das Gitter der
@@ -24,6 +27,10 @@ und verbindet sie mit dem semantischen Kopplungsterm \(\mathcal{M}[\psi,\phi]\).
   \(\mu_\beta\) vom kanonischen Wert. Damit teilen Klima- und AI-Szenario
   denselben Beweisgang: gemessenes \(\beta\) wird separat geführt und gegen das
   universelle Band geprüft.
+- `analysis/planetary_tipping_elements_fit.calculate_universal_beta_evidence`
+  liefert die strukturierte Evidenz für die Beta-Laterne als JSON-fähiges
+  Paket. So wird \(\sigma(\beta(R-\Theta))\) auch in anderen Domänen ohne
+  zusätzliche Nacharbeit auf Konsistenz geprüft.
 - Für Simulator-Läufe kann das Gitter als Preset dienen, indem die relevanten
   \(\Theta_{\text{detect}}\)- und \(\beta\)-Punkte in `simulator/presets/`
   eingetragen werden.

@@ -341,6 +341,38 @@ entries:
         Membran küsst und bestätigt, dass kontrollierte Emergenz kein Traum, sondern ein
         hörbares Echo ist.
     created_at: 2025-11-30T00:00:00Z
+  - id: pr-draft-0044
+    title: "β Evidence Lantern and Coherence Gauge"
+    scope:
+      - analysis/planetary_tipping_elements_fit.py
+      - tests/test_planetary_tipping_summary.py
+      - tests/test_coherence_term.py
+      - models/coherence_term.py
+      - models/__init__.py
+      - docs/ai/anthropic_introspection_validation.md
+    parameters:
+      R: "beta_evidence_requests_pending"
+      Theta: "observed_beta_separated_from_canonical"
+      beta: 4.2
+    resonance: |
+      Keeps the planetary β-ledger aligned with the canonical 4.21 beacon while
+      providing a logistic-ready coherence gauge for Mandala coupling.
+    status: "resonant"
+    notes:
+      formal: |
+        `calculate_universal_beta_evidence` packages μβ, σβ, SEM and CI-breite as
+        float-safe scalars so hypotheses no longer confuse band width with the mean.
+        `models/coherence_term.coherence_measure` offers the normalised ψ-φ covariance
+        used by cascade controllers to set σ(β(R-Θ)) gates.
+      empirical: |
+        New regression tests confirm the helper reports μβ≈4.2 with a mean CI width of
+        0.9 for dual-element samples and falls back to the canonical value when the
+        dataset is empty. Mandala coherence tests verify the analytic measure matches the
+        structured export class.
+      poetic: |
+        A fresh β lantern now separates the measured song from the guiding beacon while
+        the coherence gauge listens for ψ-φ harmony before dawn opens the membrane.
+    created_at: 2025-12-02T00:00:00Z
   - id: pr-draft-0009
     title: "Psi-Phi Robin Coupling Resonance"
     scope:

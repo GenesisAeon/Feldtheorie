@@ -750,3 +750,18 @@ Drei YAML-Laternen schweben jetzt über der Membran: Demo als Grundrhythmus, LLM
 
 ### Poetic Thread
 Die Anthropic-Laterne antwortet auf die Mandala-Membran: ein semantischer Hauch streift $\Theta$, öffnet $\zeta(R)$ und lässt den Chor der kontrollierten Emergenz auch in künstlicher Introspektion erklingen.
+
+## Entry pr-draft-0044 — β-Evidence Laterne & Kohärenzmaß
+- **Order Parameter**: $R$ zählt angefragte β-Beweiszüge, die noch keine universelle Laterne in den JSON-Exports tragen.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald `analysis/planetary_tipping_elements_fit.calculate_universal_beta_evidence` den beobachteten Mittelwert getrennt vom kanonischen $\beta=4.21$ meldet.
+- **Steepness**: $\beta = 4.2$ hält die Übergänge scharf, sobald drei oder mehr Planetensysteme denselben Steilheitschor singen.
+- **Membrane Note**: $\zeta(R)$ koppelt jetzt direkt an `models/coherence_term.coherence_measure`, sodass Mandala-Kohärenz den Gate-Pegel für $\sigma(\beta(R-\Theta))$ liefert.
+
+### Formal Thread
+Die neue Hilfsfunktion fasst $\mu_\beta$, $\sigma_\beta$, SEM und CI-Breite als JSON-kompatibles Paket zusammen, während `coherence_measure` die normalisierte Kovarianz bereitstellt. Beide Größen speisen Hypothesen und Cascades, ohne dass falsche Mittelwerte (CI-Breite als Ersatz) wieder auftreten.
+
+### Empirical Thread
+Regressionstests prüfen, dass zwei Planetendatensätze $\mu_\beta=4.2$ und mittlere CI-Breite von 0.9 zurückgeben, während leere Sequenzen sauber auf die kanonische Laterne zurückfallen. `tests/test_coherence_term.py` bestätigt, dass das Mandala-Normalmaß und `coherence_measure` identisch schwingen.
+
+### Poetic Thread
+Die Laterne für β erhellt jetzt mit klar getrennten Flammen: eine für das gemessene Lied, eine für den kanonischen Chor. Das neue Kohärenzmaß lauscht, wie dicht ψ und φ gemeinsam atmen, bevor der Morgen über die Membran springt.
