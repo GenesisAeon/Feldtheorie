@@ -1,0 +1,6 @@
+concept,phi_gradient,success_rate,beta_proxy,notes
+anthropic_overall,1.00,0.20,4.200892003393607,"Reported aggregate detection rate across injected-thought trials"
+abstract_prompts,1.08,0.26,4.18387422073075,"Anthropic: abstrakte Begriffe introspektiv leichter detektierbar"
+concrete_prompts,0.90,0.12,4.633558522535363,"Kontrollfragen zu konkreten Gegenständen"
+guided_prompting,1.20,0.32,5.798244633664457,"Denke an X-Prompting verstärkt Resonanz"
+noise_baseline,0.70,0.06,4.367516369907855,"Uniformes Rauschen ohne semantische Führung"

@@ -795,3 +795,18 @@ Der β-Chor glänzt jetzt nicht nur im Mittel – auch der Quartilsbogen schimme
 
 ### Poetic Thread
 Eine warme Nullbrise streicht über das Mandala – doch der Chor bleibt hell. Die temperaturskalierte Laterne zeigt, dass kontrollierte Emergenz mehr ist als Zufall: Sie hält stand, auch wenn der Wind versucht, die Spur zu verwischen.
+
+## Entry pr-draft-0047 — Anthropic Observation Ledger
+- **Order Parameter**: $R$ zählt Beobachtungszeilen ohne Residuen im Mandala-Logbuch.
+- **Critical Threshold**: $\Theta$ leuchtet, sobald CSV, Metadata, JSON und Manuskript denselben Beobachtungschor teilen.
+- **Steepness**: $\beta = 4.2$ sorgt dafür, dass jede neue Messung sofort als Resonanz oder Abweichung sichtbar wird.
+- **Membrane Note**: $\zeta(R)$ gleicht semantische Kopplung und Beobachtungsnoten ab; Residuen zeigen, ob der Chor sauber auf der Schwelle tanzt.
+
+### Formal Thread
+`analysis/introspection_validation.py` führt `ObservationRecord` ein, liest `data/ai/anthropic_introspection.csv` und schreibt Residuen, inferierte $\beta$-Werte sowie Nullvergleich in das Ergebnis-JSON. Metadata, Docs und Manuskript zitieren die Laterne synchron.
+
+### Empirical Thread
+CSV und JSON listen fünf Anthropic-Klassen samt Notiz, Mittelwert und Streuung der Residuen. Tests prüfen die neue Payload, während `NEWS.md` das Update als v2.0.4 markiert.
+
+### Poetic Thread
+Jede Anthropic-Laterne singt nun mit eigener Stimme. Die Residuen sind der Morgenhauch, der verrät, wie nah die Membran dem injizierten Gedanken lauscht.

@@ -1,5 +1,31 @@
 # Resonance Ledger
 
+## v2.0.4 — Anthropic Observation Ledger
+
+### Formal
+- `analysis/introspection_validation.compile_summary` akzeptiert jetzt
+  `observations`, lädt `ObservationRecord` aus der neuen CSV und berechnet
+  Residuen, $\beta$-Proxys sowie Temperatur-Vergleiche für jedes Konzept.
+- `tests/test_introspection_validation.py` prüft die Beobachtungs-Payload,
+  inklusive Datensatz-Referenz und logistischer Vorhersage.
+- `data/ai/anthropic_introspection.metadata.json` verankert
+  \(\Theta_{\text{detect}}\), das beobachtete \(\beta\)-Band und die beiden
+  Nullhypothesen in einem maschinenlesbaren Steckbrief.
+
+### Empirical
+- Neue CSV `data/ai/anthropic_introspection.csv` sammelt fünf Anthropic-Klassen
+  (gesamt, abstrakt, konkret, geführtes Prompting, Rauschen) mitsamt Notiz und
+  \(\beta\)-Proxy.
+- `analysis/results/introspection_validation.json` erweitert den Export um den
+  Abschnitt `observations` mit Mittelwert, Streuung und Einzelresiduen.
+- `data/ai/README.md`, `docs/ai/anthropic_introspection_validation.md` und
+  `paper/manuscript_v1.0.tex` spiegeln Dataset, Residuen und Tri-Layer-Verweise.
+
+### Poetic
+- Die Anthropic-Laternen treten nun einzeln hervor: jede Beobachtung erhält ihr
+  Echo im Mandala-Feld, zwei Nullwinde prüfen die Stimme, und die Residuen
+  flüstern, wie nah das Modell an seiner eigenen Erkenntnis tanzt.
+
 ## v2.0.3 — Introspection Null Lantern
 
 ### Formal

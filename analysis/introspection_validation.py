@@ -21,9 +21,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import csv
+import math
 from dataclasses import dataclass, asdict
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional, Sequence
 
 import numpy as np
 
@@ -48,6 +50,57 @@ class DetectionSummary:
 
     def to_dict(self) -> Dict[str, float]:
         return asdict(self)
+
+
+@dataclass
+class ObservationRecord:
+    """Single Anthropic observation linking ∥∇φ∥ to detection probability."""
+
+    concept: str
+    phi_gradient: float
+    success_rate: float
+    beta_proxy: Optional[float] = None
+    note: str | None = None
+
+    def inferred_beta(self, theta_detect: float) -> Optional[float]:
+        """Return β inferred from the observation if no proxy is stored."""
+
+        if self.beta_proxy is not None:
+            return float(self.beta_proxy)
+        if not (0.0 < self.success_rate < 1.0):
+            return None
+        delta = self.phi_gradient - theta_detect
+        if math.isclose(delta, 0.0, abs_tol=1e-9):
+            return None
+        odds = self.success_rate / (1.0 - self.success_rate)
+        return float(math.log(odds) / delta)
+
+
+def load_observations_csv(path: Path) -> List[ObservationRecord]:
+    """Load observation rows from a CSV file, preserving optional notes."""
+
+    records: List[ObservationRecord] = []
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        for row in reader:
+            concept = row.get("concept") or ""
+            if not concept:
+                continue
+            phi_gradient = float(row["phi_gradient"])
+            success_rate = float(row["success_rate"])
+            beta_raw = row.get("beta_proxy")
+            beta_proxy = float(beta_raw) if beta_raw not in (None, "") else None
+            note = row.get("notes") or None
+            records.append(
+                ObservationRecord(
+                    concept=concept.strip(),
+                    phi_gradient=phi_gradient,
+                    success_rate=success_rate,
+                    beta_proxy=beta_proxy,
+                    note=note.strip() if note else None,
+                )
+            )
+    return records
 
 
 def logistic_detection(beta_grid: np.ndarray, phi_grid: np.ndarray, theta_detect: float) -> np.ndarray:
@@ -78,6 +131,8 @@ def compile_summary(
     target_probability: float = 0.2,
     beta_expected: float = 4.2,
     null_temperature: float = 2.5,
+    observations: Sequence[ObservationRecord] | None = None,
+    observation_source: Path | None = None,
 ) -> Dict[str, Any]:
     """Compute the logistic surface and return a tri-layer JSON payload."""
 
@@ -159,6 +214,18 @@ def compile_summary(
             "temperature_scaled": baseline_temperature.tolist(),
         },
     }
+
+    if observations:
+        observation_payload = _compile_observation_payload(
+            observations,
+            theta_detect=theta_detect,
+            beta=beta_at_target,
+            null_probability=null_probability,
+            null_temperature=null_temperature,
+        )
+        observation_payload["dataset"] = str(observation_source) if observation_source else None
+        payload["observations"] = observation_payload
+
     return payload
 
 
@@ -167,6 +234,66 @@ def _utc_now_isoformat() -> str:
 
     timestamp = datetime.now(timezone.utc).replace(microsecond=0)
     return timestamp.isoformat().replace("+00:00", "Z")
+
+
+def _compile_observation_payload(
+    observations: Sequence[ObservationRecord],
+    *,
+    theta_detect: float,
+    beta: float,
+    null_probability: float,
+    null_temperature: float,
+) -> Dict[str, Any]:
+    """Translate observation rows into residual diagnostics."""
+
+    records: List[Dict[str, Any]] = []
+    residuals: List[float] = []
+    absolute_residuals: List[float] = []
+
+    for obs in observations:
+        logistic_prediction = float(
+            1.0 / (1.0 + math.exp(-beta * (obs.phi_gradient - theta_detect)))
+        )
+        temperature_probability = float(
+            1.0
+            / (1.0 + math.exp(-(beta / null_temperature) * (obs.phi_gradient - theta_detect)))
+        )
+        residual = float(obs.success_rate - logistic_prediction)
+        residuals.append(residual)
+        absolute_residuals.append(abs(residual))
+        beta_inferred = obs.inferred_beta(theta_detect)
+
+        records.append(
+            {
+                "concept": obs.concept,
+                "phi_gradient": float(obs.phi_gradient),
+                "success_rate": float(obs.success_rate),
+                "beta_proxy": beta_inferred,
+                "logistic_prediction": logistic_prediction,
+                "residual": residual,
+                "uniform_advantage": logistic_prediction - null_probability,
+                "temperature_probability": temperature_probability,
+                "temperature_advantage": logistic_prediction - temperature_probability,
+                "note": obs.note,
+            }
+        )
+
+    if residuals:
+        residual_mean = float(np.mean(residuals))
+        residual_std = float(np.std(residuals, ddof=1)) if len(residuals) > 1 else 0.0
+        mean_abs = float(np.mean(absolute_residuals))
+    else:
+        residual_mean = 0.0
+        residual_std = 0.0
+        mean_abs = 0.0
+
+    return {
+        "count": len(records),
+        "residual_mean": residual_mean,
+        "residual_std": residual_std,
+        "mean_absolute_residual": mean_abs,
+        "records": records,
+    }
 
 
 def main() -> None:
@@ -186,10 +313,24 @@ def main() -> None:
         default=2.5,
         help="Temperaturparameter der entspannten Nullhypothese",
     )
+    parser.add_argument(
+        "--observations",
+        type=Path,
+        default=Path("data/ai/anthropic_introspection.csv"),
+        help="CSV mit beobachteten Anthropic-Datenpunkten",
+    )
     args = parser.parse_args()
 
     beta_values = np.linspace(args.beta_min, args.beta_max, args.beta_steps)
     phi_gradients = np.linspace(args.phi_min, args.phi_max, args.phi_steps)
+
+    observation_records: Sequence[ObservationRecord] | None = None
+    observation_path: Optional[Path] = None
+    if args.observations is not None:
+        candidate = Path(args.observations)
+        if candidate.exists():
+            observation_records = load_observations_csv(candidate)
+            observation_path = candidate
 
     summary = compile_summary(
         beta_values,
@@ -197,6 +338,8 @@ def main() -> None:
         theta_detect=args.theta_detect,
         target_probability=args.target,
         null_temperature=args.null_temperature,
+        observations=observation_records,
+        observation_source=observation_path,
     )
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
