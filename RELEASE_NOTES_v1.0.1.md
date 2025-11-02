@@ -1,7 +1,8 @@
 # Universal Threshold Field v1.0.1 — Wei Bridge Alignment
 
 **Release Date**: 2025-11-02
-**DOI**: 10.5281/zenodo.XXXXXXX (to be assigned upon Zenodo minting)
+**DOI**: Version v1 10.5281/zenodo.17472834
+ 
 
 ---
 
