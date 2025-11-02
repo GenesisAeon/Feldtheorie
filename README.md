@@ -4,6 +4,7 @@ The Universal Threshold Field (UTF) programme investigates how threshold-driven 
 
 ### Dawn pitch (release focus)
 - **Kontrollierte Emergenz:** `models/coherence_term.semantic_coupling_term`, `models/membrane_solver.semantic_resonance_kernel`, und `models/recursive_threshold.PotenzialKaskade` verbinden physikalische Felder \(\psi\) mit semantischen Spuren \(\phi\), damit \(\sigma(\beta(R-\Theta))\) gezielt moduliert wird, sobald Potenzial zur Bedingung kippt.
+- **Wei-Laterne:** `analysis/llm_beta_extractor.py` digitisiert Jason Wei's PaLM-Sweeps, bestätigt \(\beta = 3.47 \pm 0.47\) bei \(\Theta \approx 9.92\), misst den Abstand zur kanonischen \(\beta=4.2\)-Laterne (`beta_band_distance = 0.73`) und exportiert ΔAIC ≥ 10.18 gegen das Power-Law-Null (`analysis/results/llm_beta_extractor.json`, `docs/wei_integration.md`, `paper/manuscript_v1.0.tex`).
 - **β-konvergenz & planetare Laternen:** UTAC v1.0.1 trennt beobachtete \(\mu_\beta\) von der kanonischen \(\beta=4.21\)-Laterne im Klimaledger (`analysis/results/planetary_tipping_elements.json`) und dokumentiert ΔAIC-Vorsprünge gegen lineare sowie Potenz-Nullen.
 - **Reproducibility harness:** `pyproject.toml`, `noxfile.py`, `Makefile`, und `environment.yml` orchestrieren Install, Lint, Tests, Batch-Fits und Preset-Wächter; neue CLIs (`utf-planetary-summary`, `utf-potential-cascade`, `utf-resonance-cohort`) halten die Rituale abrufbar.
 
@@ -26,6 +27,7 @@ Individual fits expose focused CLIs:
 ```bash
 utf-planetary-summary --output analysis/results/planetary_tipping_elements.json
 utf-resonance-cohort --output analysis/results/resonance_cohort_summary.json
+python analysis/llm_beta_extractor.py --canonical-beta 4.2 --band-half-width 0.6
 ```
 
 Artifacts from these commands feed the simulator presets, docs bridge maps, and manuscript figures.

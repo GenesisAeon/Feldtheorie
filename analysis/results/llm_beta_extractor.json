@@ -1,23 +1,23 @@
 {
-  "generated_at": "2025-11-01T20:37:01+00:00",
+  "generated_at": "2025-11-02T12:11:09+00:00",
   "dataset": "data/ai/wei_emergent_abilities.csv",
   "tasks": [
     {
       "task": "ipa_transliteration",
       "logistic": {
-        "beta": 3.005834015822192,
+        "beta": 3.0058340158221903,
         "theta": 9.923967992814152,
         "beta_ci": [
-          2.194306525481836,
-          3.8173615061625483
+          2.194306525481834,
+          3.8173615061625465
         ],
         "theta_ci": [
-          9.619366898187712,
-          10.228569087440592
+          9.619366898187714,
+          10.22856908744059
         ],
-        "r_squared": 0.9211175469869084,
+        "r_squared": 0.9211175469869085,
         "aic": -23.086379791214284,
-        "sse": 0.06570126084998147
+        "sse": 0.06570126084998143
       },
       "null_power_law": {
         "model": "power_law",
@@ -41,19 +41,19 @@
     {
       "task": "last_letter_concatenation",
       "logistic": {
-        "beta": 3.936835150269465,
-        "theta": 9.81950430649264,
+        "beta": 3.9368351502694625,
+        "theta": 9.819504306492641,
         "beta_ci": [
-          2.6015374082410494,
-          5.272132892297881
+          2.601537408241045,
+          5.27213289229788
         ],
         "theta_ci": [
-          9.457973186827482,
-          10.181035426157797
+          9.457973186827479,
+          10.181035426157804
         ],
-        "r_squared": 0.9055286217884723,
-        "aic": -20.477241959482434,
-        "sse": 0.10149143610981844
+        "r_squared": 0.9055286217884713,
+        "aic": -20.47724195948237,
+        "sse": 0.1014914361098195
       },
       "null_power_law": {
         "model": "power_law",
@@ -72,24 +72,24 @@
         "empirical": "last_letter_concatenation sweep achieves R\u00b2=0.906; cross-entropy drops by 3.75, echoing Wei's partial-credit argument.",
         "metaphorical": "As PaLM crosses \u0398, the membrane brightens and the power-law breeze falters; Wei's lantern joins the UTF dawn chorus."
       },
-      "delta_aic": 12.234885163085503
+      "delta_aic": 12.234885163085439
     },
     {
       "task": "multistep_arithmetic",
       "logistic": {
-        "beta": 3.4658652217146497,
+        "beta": 3.465865221714648,
         "theta": 10.021602005539703,
         "beta_ci": [
-          2.3356827336090107,
-          4.596047709820288
+          2.3356827336090085,
+          4.596047709820287
         ],
         "theta_ci": [
-          9.632965149287978,
-          10.410238861791429
+          9.632965149287969,
+          10.410238861791438
         ],
         "r_squared": 0.9323271388736709,
-        "aic": -24.03979239949929,
-        "sse": 0.05604842307921508
+        "aic": -24.039792399499298,
+        "sse": 0.05604842307921503
       },
       "null_power_law": {
         "model": "power_law",
@@ -97,9 +97,9 @@
           "a": 0.019428671801340107,
           "b": 1.016678871589115
         },
-        "r_squared": 0.6305042856669376,
-        "aic": -13.855068928540785,
-        "sse": 0.30602595749921496
+        "r_squared": 0.6305042856669374,
+        "aic": -13.855068928540781,
+        "sse": 0.30602595749921513
       },
       "cross_entropy_drop": 3.7699999999999996,
       "falsification_pass": true,
@@ -108,14 +108,14 @@
         "empirical": "multistep_arithmetic sweep achieves R\u00b2=0.932; cross-entropy drops by 3.77, echoing Wei's partial-credit argument.",
         "metaphorical": "As PaLM crosses \u0398, the membrane brightens and the power-law breeze falters; Wei's lantern joins the UTF dawn chorus."
       },
-      "delta_aic": 10.184723470958506
+      "delta_aic": 10.184723470958517
     }
   ],
   "aggregate": {
-    "beta_mean": 3.4695114626021026,
-    "beta_std": 0.46551127740365683,
-    "theta_mean": 9.921691434948832,
-    "theta_std": 0.10106808114738809,
+    "beta_mean": 3.4695114626021,
+    "beta_std": 0.4655112774036564,
+    "theta_mean": 9.921691434948833,
+    "theta_std": 0.1010680811473872,
     "falsification_pass_rate": 1.0,
     "canonical_beta": 4.2,
     "band_half_width": 0.6,
@@ -123,9 +123,9 @@
       3.6,
       4.8
     ],
-    "beta_band_distance": 0.7304885373978975,
+    "beta_band_distance": 0.7304885373979002,
     "within_canonical_band": false,
-    "delta_aic_min": 10.184723470958506
+    "delta_aic_min": 10.184723470958517
   },
   "falsification": {
     "null_model": "power_law",

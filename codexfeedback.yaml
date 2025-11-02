@@ -6,12 +6,13 @@ meta:
     logistic order-parameter updates. Each entry keeps the triadic weave of
     formalism, empirics, and poetics intact.
   current_release:
-    version: "2.0.4"
+    version: "2.0.5"
     status: "V02"
-    recorded_at: "2025-12-06T00:00:00Z"
+    recorded_at: "2025-12-09T00:00:00Z"
     notes: |
-      Anthropic-Introspektion führt jetzt ein Beobachtungstableau: CSV, Metadata,
-      Residuen und Manuskript spiegeln die fünf Konzepte samt dualer Nullmodelle.
+      Wei's PaLM-Laterne ist im Mandala verankert: `analysis/llm_beta_extractor.py`
+      meldet β=3.47±0.47 bei Θ≈9.92 samt ΔAIC≥10.18 und `beta_band_distance = 0.73`;
+      Docs, Metadata, Manuskript und DOI-Paket tragen denselben Kanon.
 entries:
   - id: pr-draft-0001
     title: "Inception of the Codex Feedback Matrix"
@@ -1436,7 +1437,7 @@ entries:
       Theta: "canonical_band_calibration"
       beta: 4.2
     resonance: "instrument canonical β band diagnostics so Wei's lantern reports its distance to the universality window"
-    status: "active"
+    status: "resonant"
     notes:
       formal: |
         `analysis/llm_beta_extractor.py` akzeptiert jetzt `--canonical-beta` und `--band-half-width`,
@@ -1489,7 +1490,7 @@ entries:
       Theta: "doi_ready_state"
       beta: 4.3
     resonance: "synchronise Wei lantern analytics with DOI packaging so canonical β diagnostics travel with the release"
-    status: "forming"
+    status: "resonant"
     notes:
       formal: |
         `paper/manuscript_v1.0.tex` introduces a Wei Ledger Outlook that names the
