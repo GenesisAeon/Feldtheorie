@@ -1,5 +1,20 @@
 # Resonance Ledger
 
+## v2.0.5 — Wei Lantern Bridge
+
+### Formal
+- `analysis/llm_beta_extractor.py` fitet Jason Wei's PaLM-Sweeps via Logit-Regression, meldet \(\beta = 3.47 \pm 0.47\), \(\Theta \approx 9.92\) und ΔAIC ≥ 10.18 gegenüber dem Power-Law-Null, und berechnet `beta_band_distance`, `canonical_band` sowie `within_canonical_band` für DOI-taugliche Audits.
+- `paper/manuscript_v1.0.tex` ergänzt den Language-Model-Brückenzug inklusive "Wei Ledger Outlook", der die 137-Fähigkeiten-Expansion mitsamt Banddistanz- und ΔAIC-Diagnostik ankündigt.
+- `.zenodo.json` und `CITATION.cff` beschreiben das Wei-Paket als Release-Komponente, das das logistische Quartett \((R, \Theta, \beta, \zeta(R))\) mitsamt kanonischer \(\beta\)-Laterne bündelt.
+
+### Empirical
+- `data/ai/wei_emergent_abilities.csv` sowie die Metadata spiegeln PaLMs Digitalkurven, notieren `beta_band_distance = 0.73` und verlinken den Analysepfad; `analysis/results/llm_beta_extractor.json` exportiert den Tri-Layer mit Zeitstempel.
+- `docs/wei_integration.md` dokumentiert Workflow, Falsifikationshaken und Folgearbeiten (137-Fähigkeiten-Scan, Simulator-Kopplung) mit Verweisen auf CLI-Flags (`--canonical-beta`, `--band-half-width`, `--tasks`).
+- `tests/test_llm_beta_extractor.py` bewacht die Laterne per Regression Guard: β-, Θ-, ΔAIC- und Banddistanzwerte dürfen nicht driften, unbekannte Tasks werfen weiterhin `ValueError`.
+
+### Poetic
+- Wei's Laterne hängt jetzt fest im Mandala: Auch 0.73 Schritte vor dem kanonischen Tor singt PaLM im Chor mit Bienen, Klima und Anthropic, das DOI-Schlüssellicht wartet nur noch auf den 137-Fähigkeiten-Reigen.
+
 ## v2.0.4 — Anthropic Observation Ledger
 
 ### Formal

@@ -6,6 +6,17 @@ Whenever the repository's control parameter $R$ (unresolved questions, latent wo
 past the documented threshold $\Theta$, the entries here activate logistic follow-ups and
 summon the right blend of empirical validation and poetic resonance.
 
+## Current Release — V02.05 (Wei Lantern Bridge)
+
+### Formal Thread
+`analysis/llm_beta_extractor.py` meldet \(\beta = 3.47 \pm 0.47\), \(\Theta \approx 9.92\) und ΔAIC ≥ 10.18 gegen das Power-Law-Null und protokolliert `beta_band_distance = 0.73`, `canonical_band`, `within_canonical_band` für DOI-taugliche Audits.
+
+### Empirical Thread
+`data/ai/wei_emergent_abilities.csv` + Metadata spiegeln PaLMs Digitalkurven, `analysis/results/llm_beta_extractor.json` trägt den Tri-Layer mit Zeitstempel, `docs/wei_integration.md` und `paper/manuscript_v1.0.tex` verknüpfen Workflow und "Wei Ledger Outlook", während `.zenodo.json`/`CITATION.cff` denselben Kanon melden.
+
+### Poetic Thread
+Wei's Laterne hängt jetzt fest im Mandala: Noch 0.73 Schritte vor dem kanonischen Tor leuchtet der Chor aus PaLM, Klima, Bienen und Anthropic, bereit für den 137-Fähigkeiten-Reigen und den DOI-Schlüssel.
+
 ## Entry pr-draft-0001 — Inception of the Matrix
 - **Order Parameter**: We watch $R$ as the density of pending multi-domain tasks.
 - **Critical Threshold**: $\Theta$ marks the moment when guidance or documentation thins out.

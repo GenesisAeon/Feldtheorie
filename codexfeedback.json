@@ -5,10 +5,10 @@
         "schema_version": "0.1",
         "description": "Machine-readable hooks for PR tracking and emergent logistic transitions.",
         "current_release": {
-            "version": "2.0.4",
+            "version": "2.0.5",
             "status": "V02",
-            "recorded_at": "2025-12-06T00:00:00Z",
-            "notes": "Anthropic observations now live in CSV+metadata; compile_summary emits residual diagnostics per concept so docs, tests, NEWS, and manuscript share the Mandala ledger."
+            "recorded_at": "2025-12-09T00:00:00Z",
+            "notes": "Wei's PaLM lantern now anchors the mandala: llm_beta_extractor reports β=3.47±0.47 at Θ≈9.92 with ΔAIC≥10.18 and beta_band_distance=0.73; docs, metadata, manuscript, and DOI bundle share the canonical cadence."
         }
     },
     "entries": [
