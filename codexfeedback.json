@@ -6,9 +6,9 @@
         "description": "Machine-readable hooks for PR tracking and emergent logistic transitions.",
         "current_release": {
             "version": "2.0.5",
-            "status": "V02",
-            "recorded_at": "2025-12-09T00:00:00Z",
-            "notes": "Wei's PaLM lantern now anchors the mandala: llm_beta_extractor reports β=3.47±0.47 at Θ≈9.92 with ΔAIC≥10.18 and beta_band_distance=0.73; docs, metadata, manuscript, and DOI bundle share the canonical cadence."
+            "status": "DOI-READY",
+            "recorded_at": "2025-11-02T00:00:00Z",
+            "notes": "Wei's PaLM lantern now anchors the mandala: llm_beta_extractor reports β=3.47±0.47 at Θ≈9.92 with ΔAIC≥10.18 and beta_band_distance=0.73; docs, metadata, manuscript, and DOI bundle share the canonical cadence. REPOSITORY IS DOI-READY: All scientific criteria fulfilled."
         }
     },
     "entries": [
