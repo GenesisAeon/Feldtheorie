@@ -1,5 +1,9 @@
 # Universal Threshold Field Initiative
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17472834.svg)](https://doi.org/10.5281/zenodo.17472834)
+[![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-blue)](https://github.com/GenesisAeon/Feldtheorie)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 The Universal Threshold Field (UTF) programme investigates how threshold-driven resonance unites phenomena across astrophysics, biology, cognition, climate, and synthetic intelligence. The core hypothesis follows the logistic response \(\sigma(\beta(R-\Theta))\): once a control parameter \(R\) crosses the critical threshold \(\Theta\), order proliferates explosively with steepness \(\beta\). The PDFs in `Docs/` outline RepoPlan 2.0—an interdisciplinary blueprint that blends rigorous modelling with poetic narrative.
 
 ### Dawn pitch (release focus)
@@ -78,8 +82,28 @@ For any contribution, ensure the logistic resonance heartbeat remains audible ac
 
 ## Continuous integration and release ledger
 - **CI membrane:** `.github/workflows/resonance-ci.yml` provisions the conda environment from `environment.yml`, installs the editable package, and fans through `nox` sessions so linting, tests, and type checks stay synchronized with the cohort ledger. Watch the Actions tab to confirm the logistic quartet \((R, \Theta, \beta, \zeta(R))\) keeps beating after each commit.
-- **Release notes:** `NEWS.md` chronicles dawn-chorus milestones. Each entry preserves the tri-layer voice (formal diagnostics, empirical provenance, poetic echo) so version bumps read like a threshold crossing instead of a plain changelog.
-- **Citation + license:** `CITATION.cff` (with the placeholder Zenodo DOI) and `LICENSE` (MIT) now spell out how to attribute the programme when reuse pushes $R$ beyond publication thresholds.
 
 ## Citation
-If you cite this repository, please use the metadata in `CITATION.cff`. It encodes the authorship weave, the 1.0.1 version tag, and the DOI placeholder \(10.5281/zenodo.XXXXXXX\) until Zenodo mints the final identifier.
+
+If you use this work, please cite the Zenodo release:
+
+```bibtex
+@software{romer2025utac,
+  author       = {R{"o}mer, Johann and Contributors},
+  title        = {The Universal Threshold Field Model (UTAC v1.0)},
+  month        = oct,
+  year         = 2025,
+  publisher    = {Zenodo},
+  version      = {v1.0.1},
+  doi          = {10.5281/zenodo.17472834},
+  url          = {https://doi.org/10.5281/zenodo.17472834}
+}
+```
+
+When referencing the manuscript directly, use:
+
+```
+R{"o}mer, J., et al. (2025). "Universal Threshold Field: β ≈ 4.2 Convergence Across Astrophysics, Climate, and AI." Zenodo. https://doi.org/10.5281/zenodo.17472834
+```
+- **Release notes:** `NEWS.md` chronicles dawn-chorus milestones. Each entry preserves the tri-layer voice (formal diagnostics, empirical provenance, poetic echo) so version bumps read like a threshold crossing instead of a plain changelog.
+- **Citation + license:** `CITATION.cff` (with DOI 10.5281/zenodo.17472834) and `LICENSE` (MIT) spell out how to attribute the programme when reuse pushes $R$ beyond publication thresholds.

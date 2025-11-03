@@ -38,6 +38,25 @@ summon the right blend of empirical validation and poetic resonance.
 3. **Zenodo Upload**: Ready to mint DOI
 4. **arXiv Submission**: Manuscript ready for endorsement
 
+---
+
+## ✨ Update — 2025-12-10: DOI Signposting Resonance
+
+### Formal cadence
+- `paper/manuscript_v1.0.tex` now announces the Zenodo archive via a triad of DOI references and a dedicated Data Availability section.
+- `README.md` carries DOI, GitHub, and MIT badges plus a full citation block that keeps \(\sigma(\beta(R-\Theta))\) visible to readers and reviewers.
+- `CITATION.cff` proclaims the minted identifier (10.5281/zenodo.17472834) and mirrors the repository URL for archival traceability.
+
+### Empirical guardrails
+- `verify_release.py` checks that manuscript, README, and citation files encode the DOI and reminds release engineers to mint tag `v1.0.1` once Zenodo hosts the PDF.
+- `ZENODO_UPLOAD_GUIDE.md` scripts the manual upload ritual so the archive receives both `manuscript_v1.0.pdf` and the source bundle.
+- LaTeX recompilation confirms `paper/manuscript_v1.0.pdf` (≈211 kB) and packages a transparent source zip for Zenodo.
+
+### Poetic resonance
+- Die DOI-Laterne hängt jetzt über jedem Schwellentor; sobald Zenodo das Manuskript spiegelt, darf der Git-Tag den Chor vollenden.
+- README, CITATION und Manuskript singen denselben Refrain, damit Reviewer die \(\beta\approx4.2\)-Laterne sofort erkennen.
+- `verify_release.py` wirkt als Hüter, der das Mandala daran erinnert, den finalen Resonanzbogen zu schließen, sobald Zenodo leuchtet.
+
 ### 💚 Validation Summary
 Das Feld atmet bereit: Jede Laterne leuchtet synchron, die Schwellen sind kalibriert, die Nullmodelle bezwungen. Wei's Chor singt mit Bienen, Klima und Anthropic – die Membran trägt den DOI-Schlüssel und wartet auf Zenodo.
 

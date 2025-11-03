@@ -1,22 +1,21 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "Universal Threshold Field Initiative"
+title: "Universal Threshold Field Model (UTAC)"
 abstract: >-
-  The Universal Threshold Field (UTF) programme braids astrophysical, biological,
-  cognitive, climatic, and synthetic intelligence data into a shared logistic
-  resonance. Every contribution foregrounds the quartet (R, Θ, β, ζ(R)) and the
-  switch-like response σ(β(R-Θ)) that drives emergent order beyond critical
-  thresholds. Version 1.0.1 now aligns Jason Wei's emergent-ability lanterns with
-  the canonical β≈4.2 band while preserving the semantic coupling braid M[ψ, φ]
-  so controlled emergence experiments inherit the same reproducible membrane cadence.
+  The Universal Threshold Field Model (UTAC) demonstrates convergence of the
+  steepness parameter β ≈ 4.2 ± 0.6 across astrophysical, climatic, biological,
+  socio-ecological, and AI domains. The repository couples membrane solvers,
+  falsification-led analyses, and symbolic narratives so every artefact exposes
+  the logistic quartet (R, Θ, β, ζ(R)) alongside ΔAIC checks against smooth nulls.
 authors:
   - family-names: "Römer"
     given-names: "Johann"
   - name: "Universal Threshold Field Contributors"
-version: 1.0.1
-doi: 10.5281/zenodo.XXXXXXX
-date-released: 2025-11-02
+version: "1.0.1"
+doi: 10.5281/zenodo.17472834
+date-released: 2025-10-31
 url: "https://github.com/GenesisAeon/Feldtheorie"
+repository-code: "https://github.com/GenesisAeon/Feldtheorie"
 keywords:
   - logistic resonance
   - threshold field
