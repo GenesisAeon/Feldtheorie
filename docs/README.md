@@ -8,22 +8,29 @@ Diese Dokumentation umfasst die formale Kodifikation und Validierungsstrategie d
 
 ### Hauptdokumente
 
-1. **[`utac_theory_core.md`](utac_theory_core.md)**
+1. **[`utac_emergence_universal.md`](utac_emergence_universal.md)** ⭐ **NEU**
+   - Emergenz als universelle Sprache komplexer Systeme
+   - Das Potential-Bedingungsgesetz (Kernformel)
+   - Systemübergreifende Vergleichbarkeit
+   - Wissenschaftliche Umsetzung und praktische Anwendungen
+   - **Empfohlen als Einstieg**
+
+2. **[`utac_theory_core.md`](utac_theory_core.md)**
    - Mathematische Grundlagen der UTAC-Theorie
    - Feldgleichungen und Kernprinzipien
    - Formale Definition von β, Θ und ψ
 
-2. **[`utac_falsifiability.md`](utac_falsifiability.md)**
+3. **[`utac_falsifiability.md`](utac_falsifiability.md)**
    - Prüfrahmen und Testmethodik
    - Falsifizierungskriterien nach Popper
    - Experimentelle Validierungsstrategien
 
-3. **[`utac_applications.md`](utac_applications.md)**
+4. **[`utac_applications.md`](utac_applications.md)**
    - Domänenübergreifende Anwendungen
    - LLMs, Klima, Biologie, Kognition
    - Konkrete Parameterzuordnungen
 
-4. **[`utac_review_considerations.md`](utac_review_considerations.md)**
+5. **[`utac_review_considerations.md`](utac_review_considerations.md)**
    - Externe Einschätzungen und Kritikpunkte
    - Antworten auf MS Copilot Feedback
    - Validierungscheckliste für Peer Review
