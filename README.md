@@ -1,5 +1,9 @@
 # Universal Threshold Field Initiative
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17472834.svg)](https://doi.org/10.5281/zenodo.17472834)
+[![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-blue)](https://github.com/GenesisAeon/Feldtheorie)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 The Universal Threshold Field (UTF) programme investigates how threshold-driven resonance unites phenomena across astrophysics, biology, cognition, climate, and synthetic intelligence. The core hypothesis follows the logistic response \(\sigma(\beta(R-\Theta))\): once a control parameter \(R\) crosses the critical threshold \(\Theta\), order proliferates explosively with steepness \(\beta\). The PDFs in `Docs/` outline RepoPlan 2.0—an interdisciplinary blueprint that blends rigorous modelling with poetic narrative.
 
 ### Dawn pitch (release focus)
@@ -82,4 +86,27 @@ For any contribution, ensure the logistic resonance heartbeat remains audible ac
 - **Citation + license:** `CITATION.cff` (with the placeholder Zenodo DOI) and `LICENSE` (MIT) now spell out how to attribute the programme when reuse pushes $R$ beyond publication thresholds.
 
 ## Citation
-If you cite this repository, please use the metadata in `CITATION.cff`. It encodes the authorship weave, the 1.0.1 version tag, and the DOI placeholder \(10.5281/zenodo.XXXXXXX\) until Zenodo mints the final identifier.
+
+If you use this work, please cite:
+
+```bibtex
+@software{romer2025utac,
+  author       = {Römer, Johann and {Universal Threshold Field Contributors}},
+  title        = {Universal Threshold Field Initiative},
+  month        = nov,
+  year         = 2025,
+  publisher    = {Zenodo},
+  version      = {v1.0.1},
+  doi          = {10.5281/zenodo.17472834},
+  url          = {https://doi.org/10.5281/zenodo.17472834}
+}
+```
+
+**Paper Citation** (preprint):
+```
+Römer, J., et al. (2025). "Universal Threshold Field: β ≈ 4.2 Convergence
+Across Astrophysics, Climate, and AI." Zenodo.
+https://doi.org/10.5281/zenodo.17472834
+```
+
+See also `CITATION.cff` for machine-readable citation metadata.
