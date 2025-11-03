@@ -1,5 +1,9 @@
 # Universal Threshold Field Initiative
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17472834.svg)](https://doi.org/10.5281/zenodo.17472834)
+[![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-blue)](https://github.com/GenesisAeon/Feldtheorie)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 The Universal Threshold Field (UTF) programme investigates how threshold-driven resonance unites phenomena across astrophysics, biology, cognition, climate, and synthetic intelligence. The core hypothesis follows the logistic response \(\sigma(\beta(R-\Theta))\): once a control parameter \(R\) crosses the critical threshold \(\Theta\), order proliferates explosively with steepness \(\beta\). The PDFs in `Docs/` outline RepoPlan 2.0—an interdisciplinary blueprint that blends rigorous modelling with poetic narrative.
 
 ### Dawn pitch (release focus)
