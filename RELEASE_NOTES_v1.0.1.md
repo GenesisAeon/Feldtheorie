@@ -110,7 +110,7 @@ If you use this work, please cite:
   title = {Universal Threshold Field Initiative},
   version = {1.0.1},
   date = {2025-11-02},
-  doi = {10.5281/zenodo.XXXXXXX},
+  doi = {10.5281/zenodo.17508230},
   url = {https://github.com/GenesisAeon/Feldtheorie}
 }
 ```
