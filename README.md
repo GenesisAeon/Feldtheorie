@@ -82,4 +82,4 @@ For any contribution, ensure the logistic resonance heartbeat remains audible ac
 - **Citation + license:** `CITATION.cff` (with the placeholder Zenodo DOI) and `LICENSE` (MIT) now spell out how to attribute the programme when reuse pushes $R$ beyond publication thresholds.
 
 ## Citation
-If you cite this repository, please use the metadata in `CITATION.cff`. It encodes the authorship weave, the 1.0.1 version tag, and the DOI 10.5281/zenodo.17472834 until Zenodo mints the final identifier.
+If you cite this repository, please use the metadata in `CITATION.cff`. It encodes the authorship weave, the 1.0.1 version tag, and the DOI 10.5281/zenodo.17508230 until Zenodo mints the final identifier.
