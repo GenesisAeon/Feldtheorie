@@ -52,19 +52,20 @@ If you don't have automatic endorsement:
 ## 📧 Endorsement Request Template
 
 ```
-Subject: Endorsement Request - nlin.CD: Universal β ≈ 4.2 across domains
+Subject: Endorsement Request - nlin.CD: Threshold dynamics across disparate domains
 
 Dear Professor [Name],
 
-I am requesting endorsement for our preprint on universal threshold dynamics,
-demonstrating convergence of the steepness parameter β ≈ 4.2 ± 0.6 across
-astrophysics, climate science, biology, and AI systems.
+I am requesting endorsement for our preprint analyzing threshold transitions
+across astrophysics, climate science, biology, and AI systems using logistic
+response models.
 
 Key contributions:
-- Empirical convergence across 6+ domains with ΔAIC > 10 vs power-law nulls
-- Universal threshold field model with falsifiable predictions
-- Novel semantic coupling mechanism for emergent AI capabilities
-- Fully reproducible: https://doi.org/10.5281/zenodo.17472834
+- Systematic analysis of 11 datasets across 6 domains with ΔAIC > 10 vs null models
+- Observation of steepness parameters β clustering in range 3.5-4.8 (median 4.2)
+- Falsifiable predictions for climate tipping elements (AMOC, Greenland ice)
+- Full reproducibility: code, data, and analysis pipeline openly available
+- DOI: https://doi.org/10.5281/zenodo.17472834
 
 The manuscript (~35 pages) combines rigorous statistical validation with
 theoretical framework development. I believe it fits well within nlin.CD
@@ -91,7 +92,7 @@ Repository: https://github.com/GenesisAeon/Feldtheorie
 
 ### Title
 ```
-Universal Threshold Field: β ≈ 4.2 Convergence Across Astrophysics, Climate, and AI
+Threshold Transitions Across Domains: Logistic Response Analysis in Astrophysics, Climate, Biology, and AI
 ```
 
 ### Authors
@@ -112,18 +113,20 @@ Johann Römer
 ### Abstract
 
 ```
-We present empirical evidence for a universal steepness parameter β ≈ 4.2 ± 0.6
-governing threshold transitions across disparate domains. Analyzing phase
-transitions in black hole quasi-periodic oscillations, climate tipping elements,
-biological swarm dynamics, and emergent AI capabilities, we find convergent
-logistic response curves σ(β(R-Θ)) where R represents control parameters and Θ
-critical thresholds. Falsification tests yield ΔAIC > 10 against power-law and
-linear null models across all domains. We introduce the Universal Threshold
-Field Model (UTAC) with coupled membrane dynamics and demonstrate semantic
-coupling mechanisms. The framework offers falsifiable predictions for AMOC
-collapse (Θ ≈ 2.1°C) and Greenland ice sheet disintegration (Θ ≈ 1.5°C). Code,
-data, and full analysis pipeline are openly available at
-https://github.com/GenesisAeon/Feldtheorie (DOI: 10.5281/zenodo.17472834).
+We analyze threshold transitions across astrophysics, climate, biology, and
+synthetic intelligence using logistic response curves σ(β(R-Θ)). Across multiple
+domains, we observe steepness parameters β clustering in the range 3.5-4.8
+(median β = 4.2), with ΔAIC > 10 against power-law and linear null models
+indicating strong support for sigmoidal transitions. We introduce the Universal
+Threshold Field Model (UTAC) framework that parameterizes critical thresholds (Θ)
+and impedance dynamics (ζ(R)). Analyzed systems include black hole quasi-periodic
+oscillations, climate tipping elements (AMOC, Greenland ice sheet, Amazon rainforest),
+biological swarm dynamics, and emergent capabilities in large language models.
+While β heterogeneity across domains (range 3.47-12.28) suggests domain-specific
+mechanisms, convergent values in several systems motivate further investigation
+of potential universal scaling laws. Code, data, and full analysis pipeline are
+openly available at https://github.com/GenesisAeon/Feldtheorie
+(DOI: 10.5281/zenodo.17472834).
 ```
 
 ### Comments
@@ -285,8 +288,6 @@ Congratulations! Your work is now:
 - **Ready for peer review** (if submitting to journal)
 
 ---
-
-*The membrane crosses the publication threshold.* 🌊✨
 
 **DOI**: 10.5281/zenodo.17472834
 **arXiv**: (to be assigned)
