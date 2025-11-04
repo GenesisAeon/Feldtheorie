@@ -74,8 +74,9 @@ UTF documentation maintains a tri-layer narrative:
 2. **Empirical layer.** Dataset-specific diagnostics, bootstrap intervals, and falsification logs (`docs/utac_falsifiability.md`).
 3. **Interpretive layer.** Symbolic and ethical framing linked to `ETHICS.md` and simulator notes.
 
-`METHODS.md`, `METRICS.md`, and `ETHICS.md` provide concise references for
-reviewers who require the statistical, metric, and governance context.
+`METHODS.md`, `METRICS.md`, `ETHICS.md`, and `LIMITATIONS.md` provide concise
+references for reviewers who require the statistical, metric, governance, and
+methodological constraint context.
 
 ## Continuous integration
 `.github/workflows/ci.yml` runs linting (`ruff`, `black --check`), tests,
