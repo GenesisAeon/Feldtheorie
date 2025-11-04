@@ -1,64 +1,47 @@
 {
-  "dataset": "Hippocampal replay ignition vs. sleep-pressure control", 
-  "control_parameter": {
-    "symbol": "R",
-    "description": "normalised sleep-pressure index derived from slow-wave dynamics",
-    "units": "dimensionless (0-1)",
-    "range": [
-      0.12,
-      0.96
-    ]
-  },
-  "order_parameter": {
-    "symbol": "sigma",
-    "description": "probability of hippocampal replay ignition during consolidation",
-    "range": [
-      0.02,
-      0.98
-    ]
-  },
-  "logistic_threshold": {
-    "theta": {
-      "estimate": 0.4767280581997776,
-      "ci95": [
-        0.4462361512301157,
-        0.5072199651694395
-      ]
+  "name": "Hippocampal replay ignition vs. sleep pressure",
+  "domain": "Cognition",
+  "source": "Sleep-dependent memory consolidation literature synthesis",
+  "license": "CC-BY-4.0",
+  "created": "2024-03-10",
+  "provenance": "Synthetic reconstruction based on reported replay ignition probabilities; seeded logistic samples documented in analysis/adaptive_theta_plasticity_fit.py.",
+  "variables": [
+    {
+      "name": "R",
+      "type": "control_parameter",
+      "unit": "dimensionless",
+      "description": "Normalised sleep-pressure index derived from slow-wave dynamics"
     },
-    "beta": {
-      "estimate": 10.860023327485688,
-      "ci95": [
-        9.619042232814689,
-        12.101004422156688
-      ]
-    },
-    "fit_quality": {
-      "r2": 0.9904734870522398,
-      "aic": -93.58098826065893,
-      "ss_res": 0.022430155085480682
-    },
+    {
+      "name": "response",
+      "type": "order_parameter",
+      "unit": "probability",
+      "description": "Probability of hippocampal replay ignition during consolidation"
+    }
+  ],
+  "logistic_summary": {
+    "theta_estimate": 0.4767280581997776,
+    "theta_ci95": [0.4462361512301157, 0.5072199651694395],
+    "beta_estimate": 10.860023327485688,
+    "beta_ci95": [9.619042232814689, 12.101004422156688],
+    "r_squared": 0.9904734870522398,
+    "aic": -93.58098826065893,
     "analysis_script": "analysis/adaptive_theta_plasticity_fit.py",
-    "analysis_results": "analysis/results/adaptive_theta_plasticity.json",
-    "null_diagnostics": {
-      "linear": {
-        "delta_aic": 34.928043324092236,
-        "delta_r2": 0.08824321213780872
-      },
-      "power_law": {
-        "delta_aic": 37.700158133189454,
-        "delta_r2": 0.10808919806692796
-      }
+    "result_payload": "analysis/results/adaptive_theta_plasticity.json"
+  },
+  "null_models": {
+    "linear": {
+      "delta_aic": 34.928043324092236,
+      "delta_r2": 0.08824321213780872
+    },
+    "power_law": {
+      "delta_aic": 37.700158133189454,
+      "delta_r2": 0.10808919806692796
     }
   },
   "impedance_context": {
     "zeta_function": "zeta(R) = 1.12 - 0.25 * sigma(beta(R-Theta))",
     "mean": 0.9777035099038646,
     "std": 0.09512090787036823
-  },
-  "provenance": {
-    "source": "synthetic reconstruction inspired by sleep-dependent memory consolidation literature",
-    "generated_by": "RepoPlan UTF cognition weave (seeded logistic samples; see analysis script)",
-    "license": "CC-BY-4.0"
-  },
-  "falsifiability": "Logistic resonance outpaces both linear and power-law null breezes with positive delta AIC and delta R^2 margins."
+  }
 }

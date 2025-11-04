@@ -1,67 +1,44 @@
 {
-  "dataset": "Anthropic introspection detection sweeps",
-  "description": "Empirical validation of injected-thought detection probabilities vs. semantic gradient strength",
-  "control_parameter": {
-    "symbol": "\\nabla\\phi",
-    "description": "semantic gradient magnitude reconstructed from prompt embeddings",
-    "units": "a.u.",
-    "range": [
-      0.7,
-      1.2
-    ]
-  },
-  "order_parameter": {
-    "symbol": "P_{detect}",
-    "description": "probability that Claude 4.1 flags an injected thought",
-    "range": [
-      0.06,
-      0.32
-    ]
-  },
-  "logistic_threshold": {
-    "theta_detect": {
-      "estimate": 1.33,
-      "description": "Anthropic's reported optimal introspection depth"
+  "name": "Anthropic injected-thought detection sweep",
+  "domain": "AI",
+  "source": "Lindsey et al. (Anthropic, 2025) — Injected thought detection study",
+  "license": "CC-BY-4.0",
+  "created": "2025-02-15",
+  "provenance": "Digitised success probabilities from Anthropic's public report; semantic gradients reconstructed from prompt embeddings as described in Docs/EmpirischerBeleg.txt.",
+  "variables": [
+    {
+      "name": "R",
+      "type": "control_parameter",
+      "unit": "a.u.",
+      "description": "Semantic gradient magnitude (|∇φ|)"
     },
-    "beta": {
-      "canonical": 4.2,
-      "observed_range": [
-        4.18387422073075,
-        5.798244633664457
-      ]
-    },
-    "fit_quality": {
-      "target_probability": 0.2,
-      "surface_generation": "analysis/introspection_validation.py",
-      "result_payload": "analysis/results/introspection_validation.json"
-    },
-    "null_diagnostics": {
-      "uniform_guess": {
-        "probability": 0.2,
-        "description": "Anthropic baseline assuming random detection"
-      },
-      "temperature_relaxed": {
-        "temperature": 2.5,
-        "description": "Soft logistic null for stochastic introspection"
-      }
+    {
+      "name": "response",
+      "type": "order_parameter",
+      "unit": "probability",
+      "description": "Detection probability"
     }
+  ],
+  "logistic_summary": {
+    "theta_detect": 1.33,
+    "beta_band": [4.18, 5.80],
+    "target_probability": 0.2,
+    "analysis_script": "analysis/introspection_validation.py",
+    "result_payload": "analysis/results/introspection_validation.json"
   },
-  "observations": {
-    "file": "data/ai/anthropic_introspection.csv",
-    "count": 5,
-    "source": "Anthropic 2025 introspection study; tabulated by Docs/EmpirischerBeleg.txt",
-    "notes": "beta_proxy column derived via sigma^{-1}(p) / (\\nabla\\phi - \\Theta_{detect})"
+  "null_models": {
+    "uniform_guess": {
+      "probability": 0.2,
+      "description": "Assumes random detection"
+    },
+    "temperature_relaxed": {
+      "temperature": 2.5,
+      "description": "Soft logistic null with relaxed temperature"
+    }
   },
   "impedance_context": {
     "zeta_closed": 1.3,
     "zeta_open": 0.6,
-    "description": "Membrane impedance values applied in semantic_coupling_term integrations"
-  },
-  "provenance": {
-    "article": "Lindsey et al. (Anthropic, 2025) — Injected thought detection",
-    "url": "https://the-decoder.de/sprachmodelle-koennen-laut-anthropic-ihre-eigenen-internen-zustaende-wahrnehmen/",
-    "license": "CC-BY-4.0",
-    "compiled_by": "UTF Repository"
-  },
-  "falsifiability": "Detection sweep JSON records both uniform and temperature-scaled null surfaces; residuals per observation exported via compile_summary."
+    "description": "Membrane impedance used in semantic_coupling_term integrations"
+  }
 }

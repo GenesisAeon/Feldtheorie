@@ -1,19 +1,25 @@
 {
-  "dataset": "Lenski LTEE Cit+ frequency (Ara-3)",
-  "source": {
-    "citation": "Blount et al. 2008, Nature 455, 119-122",
-    "note": "Digitised qualitatively from published frequency trajectory (Figure 3) to test UTF logistic claims.",
-    "license": "Fair use for analytical reproduction"
-  },
-  "control_parameter": {
-    "symbol": "R",
-    "description": "generation count scaled in thousands",
-    "scaling": "generation / 1000"
-  },
-  "order_parameter": {
-    "description": "frequency of Cit+ individuals in Ara-3 population"
-  },
-  "threshold_quartet": {
+  "name": "Lenski LTEE Cit+ frequency (Ara-3)",
+  "domain": "Ecology",
+  "source": "Blount et al. (2008) Nature 455:119-122",
+  "license": "Fair use for analytical reproduction",
+  "created": "2008-09-25",
+  "provenance": "Frequency trajectory digitised from Blount et al. Figure 3; generations scaled to thousands for numerical stability.",
+  "variables": [
+    {
+      "name": "R",
+      "type": "control_parameter",
+      "unit": "thousand generations",
+      "description": "Generation count / 1000"
+    },
+    {
+      "name": "response",
+      "type": "order_parameter",
+      "unit": "frequency",
+      "description": "Frequency of Cit+ individuals in Ara-3 population"
+    }
+  ],
+  "logistic_summary": {
     "theta_generations": 32769.044297791865,
     "theta_generations_ci95": [32691.451115700154, 32846.637479883575],
     "beta_generations": 0.005076737426071495,
@@ -21,33 +27,25 @@
     "theta_normalised": 0.5606151637660013,
     "theta_normalised_ci95": [0.4678735726406954, 0.6533567548913072],
     "beta_normalised": 4.247503269603513,
-    "beta_normalised_ci95": [3.8941598393278674, 4.600846699879158]
+    "beta_normalised_ci95": [3.8941598393278674, 4.600846699879158],
+    "r_squared": 0.9898521944896044,
+    "aic": -85.86611118614391,
+    "analysis_script": "analysis/lenski_citplus_fit.py",
+    "result_payload": "analysis/results/lenski_citplus_fit.json"
   },
-  "model_diagnostics": {
-    "logistic": {
-      "r2": 0.9898521944896044,
-      "aic": -85.86611118614391
+  "null_models": {
+    "linear": {
+      "r_squared": 0.7943374246656869,
+      "aic": -43.7404000653108,
+      "delta_aic": 42.12571112083311
     },
-    "null_linear": {
-      "r2": 0.7943374246656869,
-      "aic": -43.7404000653108
-    },
-    "null_power_law": {
-      "r2": 0.8953333244497538,
-      "aic": -53.19678490388665
+    "power_law": {
+      "r_squared": 0.8953333244497538,
+      "aic": -53.19678490388665,
+      "delta_aic": 32.66932628225726
     }
   },
   "impedance_context": {
-    "zeta_sketch": "logistic membrane without explicit impedance term; flux mean -0.0148",
-    "falsification_margin": {
-      "delta_aic_linear": 42.12571112083311,
-      "delta_aic_power_law": 32.66932628225726
-    }
-  },
-  "analysis": {
-    "script": "analysis/lenski_citplus_fit.py",
-    "result_json": "analysis/results/lenski_citplus_fit.json",
-    "generated": true,
-    "notes": "Scaled generations by 1000 to stabilise null comparisons; logistic beats smooth nulls per UTF protocol."
+    "description": "Logistic membrane without explicit impedance term; flux mean -0.0148"
   }
 }
