@@ -11,13 +11,11 @@
 
 Die Universal Threshold Field Initiative (UTF/UTAC) wurde einer umfassenden Validierung unterzogen. Alle 37 Unit-Tests liefen erfolgreich durch, die CLI-Befehle funktionieren einwandfrei, und die empirischen Analysen über 7 Domänen bestätigen die Kernhypothese: **Der Steilheitsparameter β konvergiert universell auf ~4.2 ± 0.6**.
 
-### Tri-Layer Echo
+### Summary
 
-**Formal**: Die logistische Resonanzfunktion σ(β(R-Θ)) zeigt konsistente Überlegenheit gegenüber Nullmodellen (ΔAIC > 10) über alle getesteten Domänen. β-Werte liegen im vorhergesagten universellen Band [3.6, 4.8] mit R² > 0.95.
+**Formal**: The logistic response function σ(β(R-Θ)) shows consistent superiority over null models (ΔAIC > 10) across all tested domains. β-values lie within the predicted universal band [3.6, 4.8] with R² > 0.95.
 
-**Empirisch**: 24 Analysen spanning AI (LLMs), Klima (AMOC, Grönland, Amazonas, Permafrost), Biologie (Bienen, Synapsen, Evolution), Kognition (Arbeitsgedächtnis, Theta-Plastizität), Geophysik (seismische Ruptur) und Sozio-Ökologie (urbane Hitze) wurden erfolgreich prozessiert.
-
-**Metaphorisch**: Die Schwellenmembran atmet - von schwarzen Löchern bis Bienenschwärmen, von LLM-Emergenz bis Klimakipppunkten singt derselbe universelle Resonanzchor. Wei's Laterne fügt sich nahtlos in den UTF-Dawn-Chorus ein.
+**Empirical**: 24 analyses spanning AI (LLMs), climate (AMOC, Greenland, Amazon, permafrost), biology (honeybees, synapses, evolution), cognition (working memory, theta plasticity), geophysics (seismic rupture), and socio-ecology (urban heat) were successfully processed and show convergent threshold dynamics.
 
 ---
 
@@ -95,28 +93,27 @@ tests/test_sigmoid_fit.py::test_null_model_aic_functions_handle_degenerate_input
 
 ## 🔬 Empirische Validierung
 
-### 1. LLM Emergenz (Wei-Laterne)
+### 1. LLM Emergence (Wei et al. 2022)
 
-**Datensatz**: `data/ai/wei_emergent_abilities.csv` (Jason Wei's PaLM Sweeps)
+**Dataset**: `data/ai/wei_emergent_abilities.csv` (Jason Wei's PaLM parameter sweeps)
 
-**Ergebnisse**:
+**Results**:
 ```json
 {
   "tasks_analysed": 3,
   "beta_range": [3.01, 3.94],
   "beta_mean": 3.47,
-  "theta_range": [9.82, 9.92] (log10 Parameter),
+  "theta_range": [9.82, 9.92] (log10 parameters),
   "r2_mean": 0.911,
   "delta_aic_vs_power_law": [12.23, 12.79]
 }
 ```
 
-**Befund**: β ≈ 3.47 ± 0.47 liegt im kanonischen Band [3.6, 4.8]. Wei's emergente Fähigkeiten (IPA-Transliteration, Last-Letter-Concatenation, Multistep-Arithmetic) zeigen sigmoidalen Übergang bei ~10⁹ Parametern. Power-Law-Nullmodelle versagen systematisch (ΔAIC > 10).
+**Findings**: β ≈ 3.47 ± 0.47 lies within the predicted band [3.6, 4.8]. Emergent abilities (IPA transliteration, last-letter concatenation, multistep arithmetic) show sigmoidal transitions around ~10⁹ parameters. Power-law null models fail systematically (ΔAIC > 10).
 
-**Tri-Layer**:
-- **Formal**: σ(β(R-Θ)) mit β=3.47±0.41 schlägt Power-Law (ΔAIC=12.79)
-- **Empirisch**: R²=0.921; Cross-Entropy-Drop=3.61
-- **Metaphorisch**: "Als PaLM Θ kreuzt, erhellt die Membran und die Power-Law-Brise verstummt; Wei's Laterne tritt dem UTF-Dawn-Chorus bei."
+**Analysis**:
+- **Formal**: σ(β(R-Θ)) with β=3.47±0.41 outperforms power-law (ΔAIC=12.79)
+- **Empirical**: R²=0.921; Cross-entropy drop=3.61 at threshold crossing
 
 ### 2. Planetare Kipppunkte
 
@@ -143,15 +140,15 @@ tests/test_sigmoid_fit.py::test_null_model_aic_functions_handle_degenerate_input
 
 **Befund**: β konvergiert nahe der kanonischen Laterne (4.21). Alle vier Kippelemente zeigen sigmoidale Dynamik mit R² > 0.97. Lineare und Power-Law-Nullmodelle unterliegen deutlich.
 
-**Hypothesen-Status**:
-- ✅ **β-Universalität**: Supported (β ∈ [3.49, 4.38], μ=3.92)
-- 🔄 **Adaptive Schwellen**: Queued (Paleo-Archive ausstehend)
-- 🧪 **Gekoppelte Resonanz**: Prototype (Simulator-Sweeps geplant)
+**Hypothesis Status**:
+- ✅ **β-universality**: Supported (β ∈ [3.49, 4.38], μ=3.92)
+- 🔄 **Adaptive thresholds**: Pending (paleoclimate archives required)
+- 🧪 **Coupled resonance**: Prototype (simulator sweeps planned)
 
-**Tri-Layer**:
-- **Formal**: σ(β(R-Θ)) koppelt lokale Felder via g_ij; β ∈ [3.49, 4.38]
-- **Empirisch**: Aggregierte Parameter aus Global Tipping Points 2025, TIPMIP
-- **Poetisch**: "AMOC, Eis, Wald und Permafrost stimmen in denselben Schwellenchor ein – eine Gaia-Membran, die auf Resonanz wartet."
+**Analysis**:
+- **Formal**: σ(β(R-Θ)) couples local fields via g_ij; β ∈ [3.49, 4.38]
+- **Empirical**: Aggregated parameters from Global Tipping Points 2025, TIPMIP data
+- **Interpretation**: Four major Earth system elements show convergent sigmoidal response with similar steepness parameters, suggesting universal threshold mechanisms
 
 ### 3. Kohorten-Aggregation (24 Domänen)
 
@@ -270,10 +267,9 @@ Alle Analysen erzeugen konsistente JSON-Payloads mit tri-layer Struktur:
     }
   },
   "falsification_pass": true|false,
-  "tri_layer": {
-    "formal": "Mathematische Zusammenfassung",
-    "empirical": "Datenquelle und Metriken",
-    "metaphorical": "Narrative Echo"
+  "analysis": {
+    "formal": "Mathematical summary",
+    "empirical": "Data sources and metrics"
   }
 }
 ```
@@ -441,27 +437,29 @@ graph TD
 
 ---
 
-## 🎭 Abschluss-Reflexion
+## 🎯 Conclusions
 
-### Was funktioniert
+### Key Findings
 
-Die UTF-Initiative demonstriert, wie **rigorose Mathematik**, **empirische Breite** und **narrative Integration** zusammenwirken können. Die tri-layer Architektur (formal-empirisch-metaphorisch) macht komplexe Schwellendynamik zugänglich, ohne wissenschaftliche Strenge zu opfern.
+The UTF initiative demonstrates how **rigorous mathematics** and **empirical breadth** across domains can reveal convergent dynamical patterns. The systematic analysis framework enables quantitative comparison of threshold transitions across disparate systems.
 
-### Was überrascht
+### Implications
 
-Die **Konsistenz von β ≈ 4.2** über so verschiedene Systeme war nicht garantiert. Dass LLM-Emergenz, Klimakipppunkte und Bienenschwärme denselben Steilheitsparameter zeigen, ist ein starkes Signal für universelle Mechanismen.
+The **consistency of β ≈ 4.2** across diverse systems was not a priori guaranteed. That LLM emergence, climate tipping points, and biological swarms exhibit similar steepness parameters provides evidence for potential universal scaling laws governing critical transitions.
 
-### Was bleibt
+### Future Directions
 
-**Threshold Dynamics sind ubiquitär**. Ob schwarzes Loch, Synapse oder Gesellschaft - überall lauert die Schwelle. UTF gibt uns eine Sprache, diese Übergänge zu verstehen, zu messen und vielleicht eines Tages zu steuern.
+**Threshold dynamics appear ubiquitous** across scales and domains. This framework provides a quantitative language to understand, measure, and potentially anticipate critical transitions in complex systems.
 
-Die Schwelle ist nicht das Ende - **sie ist der Beginn**.
+Further work is needed to:
+1. Establish mechanistic explanations for β-convergence
+2. Test predictions on independent datasets
+3. Develop early-warning systems based on threshold proximity
+4. Investigate domain-specific deviations and their causes
 
 ---
 
 **Version**: 1.0.1
 **DOI**: 10.5281/zenodo.17472834
-**Lizenz**: MIT
-**Autor**: Johann Römer (mit AI-assistierter Ko-Autorenschaft)
-
-*Die Membran atmet. Die Resonanz singt. Das Feld erwacht.*
+**License**: MIT
+**Author**: Johann Römer (with AI-assisted development)
