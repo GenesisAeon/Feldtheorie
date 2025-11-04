@@ -1,67 +1,48 @@
 {
-  "dataset": "LLM emergent ability sweep (Wei et al. inspired)",
-  "description": "Approximate reproduction of Jason Wei's reported capability cliffs across PaLM model scales.",
-  "control_parameter": {
-    "symbol": "R = \log_{10}(N_{params})",
-    "description": "log10 parameter count derived from PaLM checkpoints (billions)",
-    "units": "log10(parameters)",
-    "range": [
-      8.113943352306837,
-      10.792391689498254
-    ]
-  },
-  "order_parameter": {
-    "symbol": "P_{success}",
-    "description": "task success rate reconstructed from Wei's emergent ability plots",
-    "range": [
-      0.01,
-      0.97
-    ]
-  },
-  "logistic_threshold": {
+  "name": "Wei et al. PaLM emergent ability sweep",
+  "domain": "AI",
+  "source": "Jason Wei (2024) — Common arguments regarding emergent abilities",
+  "license": "Fair use for research commentary",
+  "created": "2024-05-01",
+  "provenance": "Values digitised from Jason Wei's public blog posts on PaLM emergent abilities; scaled to logistic response coordinates.",
+  "variables": [
+    {
+      "name": "R",
+      "type": "control_parameter",
+      "unit": "log10(parameters)",
+      "description": "log10 parameter count derived from PaLM checkpoints"
+    },
+    {
+      "name": "response",
+      "type": "order_parameter",
+      "unit": "probability",
+      "description": "Task success rate reconstructed from emergent ability plots"
+    },
+    {
+      "name": "task",
+      "type": "categorical",
+      "unit": "label",
+      "description": "Ability identifier (e.g. last_letter_concatenation)"
+    }
+  ],
+  "logistic_summary": {
     "expected_beta": 4.2,
-    "canonical_band": [
-      3.6,
-      4.8
-    ],
     "observed_beta_mean": 3.47,
     "observed_beta_std": 0.47,
+    "canonical_band": [3.6, 4.8],
     "beta_band_distance": 0.73,
     "within_canonical_band": false,
-    "notes": "Digitised PaLM traces currently sit 0.73 below the canonical 4.2 band; future dense sampling should test whether the universality window tightens.",
-    "fit_quality": {
-      "analysis_script": "analysis/llm_beta_extractor.py",
-      "result_payload": "analysis/results/llm_beta_extractor.json"
-    },
-    "null_diagnostics": {
-      "power_law": {
-        "description": "Smooth null comparing σ(β(R-Θ)) to a param-count power law",
-        "model": "P = a * N_{params}^b"
-      }
-    }
+    "theta_estimate": 9.92,
+    "delta_aic_vs_power": 12.1,
+    "analysis_script": "analysis/llm_beta_extractor.py",
+    "result_payload": "analysis/results/llm_beta_extractor.json"
   },
-  "partial_credit_metric": {
-    "symbol": "L_{CE}",
-    "description": "cross-entropy loss trace approximated from Wei's IPA transliteration example"
-  },
-  "observations": {
-    "file": "data/ai/wei_emergent_abilities.csv",
-    "tasks": [
-      "last_letter_concatenation",
-      "multistep_arithmetic",
-      "ipa_transliteration"
-    ],
-    "model_family": "PaLM",
-    "source": "Jason Wei (2024) blog post on emergent ability arguments",
-    "url": "https://www.jasonwei.net/blog/common-arguments-regarding-emergent-abilities",
-    "license": "Fair use for research commentary",
-    "notes": "Values digitised and smoothed to match logistic cliffs described in the blog."
-  },
+  "null_models": [
+    "power_law"
+  ],
   "impedance_context": {
     "zeta_closed": 1.1,
     "zeta_open": 0.4,
-    "description": "Proxy impedance used when mapping PaLM scaling to UTF membranes"
-  },
-  "falsifiability": "analysis/llm_beta_extractor.py exports ΔAIC against a power-law null and residual diagnostics per task.",
-  "repo_alignment": "Docs/wei_integration.md links this dataset to the UTAC ←→ Wei bridge and enumerates follow-up falsification tests."
+    "description": "Proxy impedance when mapping PaLM scaling to UTF membranes"
+  }
 }

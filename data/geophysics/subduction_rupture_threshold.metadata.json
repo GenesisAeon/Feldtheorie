@@ -1,65 +1,52 @@
 {
-  "title": "Subduction rupture threshold (synthetic Cascadia slow-slip checkpoints)",
-  "description": "Synthetic sequence translating slow-slip stress accumulation ratios into rupture probability logistics for UTF tectonic rehearsals.",
-  "control_parameter": {
-    "symbol": "R",
-    "definition": "stress accumulation ratio (current effective shear stress divided by critical failure stress)",
-    "units": "dimensionless"
-  },
-  "order_parameter": {
-    "symbol": "sigma",
-    "definition": "probability that a slow-slip episode cascades into seismic rupture",
-    "units": "dimensionless"
-  },
-  "logistic_fit": {
-    "theta": 0.7406406447104941,
+  "name": "Synthetic Cascadia subduction rupture thresholds",
+  "domain": "Geophysics",
+  "source": "RepoPlan tectonic membrane vignette informed by Scholz (2019)",
+  "license": "CC-BY-4.0",
+  "created": "2025-02-01",
+  "provenance": "Synthetic sequence translating slow-slip stress accumulation ratios into rupture probabilities for UTF tectonic rehearsals.",
+  "variables": [
+    {
+      "name": "R",
+      "type": "control_parameter",
+      "unit": "dimensionless",
+      "description": "Stress accumulation ratio (current shear stress / critical failure stress)"
+    },
+    {
+      "name": "response",
+      "type": "order_parameter",
+      "unit": "probability",
+      "description": "Probability that a slow-slip episode cascades into seismic rupture"
+    }
+  ],
+  "logistic_summary": {
+    "theta_estimate": 0.7406406447104941,
     "theta_ci95": [0.7398700068389016, 0.7414112825820866],
-    "beta": 16.289963354409085,
+    "beta_estimate": 16.289963354409085,
     "beta_ci95": [16.20442997866459, 16.375496730153582],
-    "r2": 0.9999661710064784,
-    "aic": -221.4544970723466
-  },
-  "impedance": {
-    "definition": "zeta(R) = 1.70 - 0.55 * sigma(beta(R-Theta))",
-    "mean": 1.3653305694801947,
-    "std": 0.10612775319795547,
-    "interpretation": "Hydration-eased membranes reduce impedance as rupture probability rises beyond Theta, echoing pore-fluid lubrication."
+    "r_squared": 0.9999661710064784,
+    "aic": -221.4544970723466,
+    "analysis_script": "analysis/seismic_rupture_threshold_fit.py",
+    "result_payload": "analysis/results/subduction_rupture_threshold.json"
   },
   "null_models": {
     "linear": {
-      "model": "sigma = m * R + b",
       "aic": -82.82707187751735,
-      "r2": 0.9251798993430118
-    },
-    "power_law": {
-      "model": "sigma = A * R^k",
-      "aic": -72.73236743650457,
-      "r2": 0.8689074597892796
-    }
-  },
-  "falsification_margins": {
-    "linear": {
+      "r_squared": 0.9251798993430118,
       "delta_aic": 138.62742519482924,
       "delta_r2": 0.07478627166346663
     },
     "power_law": {
+      "aic": -72.73236743650457,
+      "r_squared": 0.8689074597892796,
       "delta_aic": 148.72212963584204,
       "delta_r2": 0.1310587112171988
     }
   },
-  "analysis": {
-    "script": "analysis/seismic_rupture_threshold_fit.py",
-    "result": "analysis/results/subduction_rupture_threshold.json",
-    "last_ran": "synthetic",
-    "cli": "python analysis/seismic_rupture_threshold_fit.py --data data/geophysics/subduction_rupture_threshold.csv"
-  },
-  "ethics": {
-    "considerations": "Synthetic data for resilience research; not suitable for real-time warning decisions.",
-    "community_notes": "Emphasise transparent communication with coastal and Indigenous communities when adapting the scenario."
-  },
-  "provenance": {
-    "source": "RepoPlan tectonic membrane vignette",
-    "literature": ["Scholz (2019) Mechanics of Earthquakes and Faulting"],
-    "version": "1.0"
+  "impedance_context": {
+    "definition": "zeta(R) = 1.70 - 0.55 * sigma(beta(R-Theta))",
+    "mean": 1.3653305694801947,
+    "std": 0.10612775319795547,
+    "interpretation": "Hydration-eased membranes reduce impedance as rupture probability rises beyond Theta."
   }
 }

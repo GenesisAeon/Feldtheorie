@@ -1,54 +1,52 @@
 {
-  "dataset": "amazon_resilience.csv",
-  "control_parameter": {
-    "symbol": "R",
-    "description": "remaining rainforest canopy fraction",
-    "units": "fraction of pre-industrial cover"
-  },
-  "order_parameter": {
-    "symbol": "sigma",
-    "description": "probability of convective moisture retention",
-    "units": "0-1"
-  },
-  "logistic_fit": {
-    "theta": 0.6214703985864286,
+  "name": "Amazon rainforest resilience sweep",
+  "domain": "Climate",
+  "source": "Lovejoy & Nobre tipping point communiqués and allied climate assessments",
+  "license": "CC-BY-4.0",
+  "created": "2025-03-30",
+  "provenance": "Synthesised from public climate assessments; canopy fractions tuned to match logistic transitions in analysis/amazon_resilience_fit.py.",
+  "variables": [
+    {
+      "name": "R",
+      "type": "control_parameter",
+      "unit": "fraction",
+      "description": "Remaining rainforest canopy fraction"
+    },
+    {
+      "name": "response",
+      "type": "order_parameter",
+      "unit": "probability",
+      "description": "Probability of convective moisture retention"
+    }
+  ],
+  "logistic_summary": {
+    "theta_estimate": 0.6214703985864286,
     "theta_ci95": [0.617767971171555, 0.6251728260013022],
-    "beta": 14.019150893618612,
+    "beta_estimate": 14.019150893618612,
     "beta_ci95": [13.685269700463397, 14.353032086773826],
-    "r2": 0.9991130264188406,
+    "r_squared": 0.9991130264188406,
     "aic": -152.29649539122587,
-    "ss_res": 0.0017281597766332659
-  },
-  "impedance": {
-    "definition": "zeta(R) = 1.8 - 0.6 * sigma(beta(R-Theta))",
-    "mean": 1.5343220981632029,
-    "std": 0.20275397681056073
+    "analysis_script": "analysis/amazon_resilience_fit.py",
+    "result_payload": "analysis/results/amazon_resilience_fit.json"
   },
   "null_models": {
     "linear": {
-      "r2": 0.9677014652730843,
+      "r_squared": 0.9677014652730843,
       "aic": -91.18214230392765,
       "delta_aic": 61.11435308729823,
       "delta_r2": 0.03141156114575627
     },
     "power_law": {
       "form": "sigma = A * R^k",
-      "r2": 0.9432510159371694,
+      "r_squared": 0.9432510159371694,
       "aic": -81.60067218214068,
       "delta_aic": 70.69582320908519,
       "delta_r2": 0.055862010481671165
     }
   },
-  "ethics": {
-    "stewardship_notes": "Synthesised from public climate assessments; emphasises Indigenous guardianship and equitable restoration policies.",
-    "references": [
-      "Lovejoy & Nobre tipping point communiqués",
-      "RepoPlan 2.0 socio-ecological membrane brief"
-    ]
-  },
-  "analysis_provenance": {
-    "script": "analysis/amazon_resilience_fit.py",
-    "summary": "analysis/results/amazon_resilience_fit.json",
-    "generated_at": "Repo simulation"
+  "impedance_context": {
+    "definition": "zeta(R) = 1.8 - 0.6 * sigma(beta(R-Theta))",
+    "mean": 1.5343220981632029,
+    "std": 0.20275397681056073
   }
 }

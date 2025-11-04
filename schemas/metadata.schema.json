@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dataset metadata",
+  "type": "object",
+  "required": [
+    "name",
+    "domain",
+    "source",
+    "license",
+    "created",
+    "variables"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Human-readable dataset name"
+    },
+    "domain": {
+      "type": "string",
+      "description": "High-level research domain",
+      "enum": ["AI", "Climate", "Ecology", "Cognition", "Geophysics", "Other"]
+    },
+    "source": {
+      "type": "string",
+      "description": "Canonical citation or URL"
+    },
+    "license": {
+      "type": "string",
+      "description": "Usage rights"
+    },
+    "created": {
+      "type": "string",
+      "format": "date"
+    },
+    "provenance": {
+      "type": "string",
+      "description": "Prose summary of how the data were curated"
+    },
+    "variables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "unit"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "description": "Measurement type or category"
+          },
+          "unit": {
+            "type": "string",
+            "description": "Measurement unit"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
