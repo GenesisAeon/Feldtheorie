@@ -1,0 +1,12 @@
+{
+  "model": "Weighted Least Squares Meta-Regression",
+  "n_observations": 12,
+  "n_covariates": 5,
+  "r_squared": 0.7364057693714569,
+  "adj_r_squared": 0.5167439105143377,
+  "f_statistic": 3.3524516873475867,
+  "f_pvalue": 0.0865045464838747,
+  "aic": 20.82172685893953,
+  "bic": 23.731166757667534,
+  "significant_predictors": []
+}

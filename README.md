@@ -3,6 +3,17 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17472834.svg)](https://doi.org/10.5281/zenodo.17472834)
 [![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-blue)](https://github.com/GenesisAeon/Feldtheorie)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/Version-1.1.0-green.svg)](RELEASE_NOTES_v1.1.0.md)
+
+## What's New in v1.1.0 🎉
+
+**Enhanced System Typology**: β-heterogeneity (2.50-5.30) is now explained through a mechanistic framework based on coupling strength, dimensionality, and coherence. Five field types identified with predicted β-ranges. Meta-regression explains 74% of β-variance.
+
+**Key Achievement**: Transformed apparent limitation (β-heterogeneity) into diagnostic framework that predicts system behavior from architecture.
+
+**Documentation**: See [`RELEASE_NOTES_v1.1.0.md`](RELEASE_NOTES_v1.1.0.md) and [`docs/field_type_classification_v1.1.md`](docs/field_type_classification_v1.1.md)
+
+---
 
 The Universal Threshold Field (UTF) programme studies how the logistic quartet
 \((R, \Theta, \beta, \zeta(R))\) captures switch-like transitions across
@@ -30,15 +41,37 @@ cat dist/wei_beta.json
 - Interpretation: ΔAIC ≥ 10 relative to each null model constitutes strong
 evidence for the UTF logistic response.
 
+## Field Type Classification (v1.1)
+
+β is not a universal constant, but a **diagnostic parameter** revealing system architecture:
+
+| Field Type | β Range | Examples | Key Properties |
+|------------|---------|----------|----------------|
+| **Strongly Coupled** | 3.5-5.0 | Neural networks, AMOC, honeybees | High coupling, fast collective response |
+| **High-Dimensional** | 3.0-4.5 | LLMs, evolutionary systems | Many degrees of freedom, depth-dependent |
+| **Weakly Coupled** | 2.0-3.5 | Neural plasticity, ecosystems | Local interactions, gradual transitions |
+| **Physically Constrained** | 4.5-6.0+ | Black holes, earthquakes, ice sheets | Hard physical limits, abrupt transitions |
+| **Meta-Adaptive** | Variable | Climate cascades, markets, consciousness | Adaptive thresholds, dynamic feedback |
+
+**Meta-Regression Result**: System covariates (coupling, dimensionality, coherence) explain **74% of β-variance** (R²=0.74, n=12 domains)
+
+**Try it**:
+```bash
+python analysis/beta_drivers_meta_regression.py  # Run meta-regression
+python simulation/threshold_sandbox.py            # Explore parameter space
+```
+
+---
+
 ## Repository layout
 | Directory | Description |
 |-----------|-------------|
-| `analysis/` | CLI scripts and notebooks that fit the logistic model, compute ΔAIC, bootstrap \(\beta\), and export JSON ledgers. |
-| `data/` | Domain datasets with harmonised metadata satisfying `schemas/metadata.schema.json`. |
-| `docs/` | Tri-layer documentation linking formal derivations, empirical evidence, and interpretive notes. |
+| `analysis/` | CLI scripts for logistic fitting, ΔAIC computation, β-bootstrapping, **meta-regression** (v1.1), and JSON ledgers. |
+| `data/` | Domain datasets with harmonised metadata + **derived/** for β-estimates and system covariates (v1.1). |
+| `docs/` | Tri-layer documentation + **field type classification v1.1** linking β to system architecture. |
 | `models/` | Numerical solvers that expose impedance terms \(\zeta(R)\) and membrane dynamics. |
 | `paper/` | Manuscript sources incorporating the statistical diagnostics required for publication. |
-| `simulator/` | Interactive experiments that replay fitted quartets for outreach and exploratory work. |
+| `simulation/` | Interactive experiments + **threshold sandbox** (v1.1) for parameter space exploration. |
 | `tests/` | Pytest suites ensuring regressions on fits, JSON payloads, and simulator presets. |
 
 ## Reproduction workflow
@@ -86,4 +119,8 @@ recipe.
 
 ## Citation
 If you cite this repository, please use `CITATION.cff`.  It encodes the authorship
-structure, the DOI `10.5281/zenodo.17472834`, and the current release tag.
+structure, the DOI `10.5281/zenodo.17472834`, and the current release tag (v1.1.0).
+
+For v1.1 field type classification, cite:
+> Römer, J. et al. (2025). *Universal Threshold Field Model v1.1.0: Enhanced System Typology*.
+> DOI: 10.5281/zenodo.17472834
