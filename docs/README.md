@@ -35,6 +35,17 @@ Diese Dokumentation umfasst die formale Kodifikation und Validierungsstrategie d
    - Antworten auf MS Copilot Feedback
    - Validierungscheckliste für Peer Review
 
+6. **[`appendix_field_types.md`](appendix_field_types.md)** ⭐ **NEU**
+   - Typologie der Feldsysteme und Kopplungsmodi
+   - Erklärung der β-Heterogenität als kontextabhängiger Ordnungsparameter
+   - Formalisierung von C_eff, D_eff, SNR, Memory, Θ̇
+   - Vorhersagen und testbare Hypothesen
+
+7. **[`validation_report_v1.0.1.md`](validation_report_v1.0.1.md)**
+   - Umfassender Validierungsbericht
+   - Test-Suite Ergebnisse (37/37 Tests bestanden)
+   - Empirische Befunde über 7 Domänen
+
 ---
 
 ## 🔬 Kernkonzepte
@@ -132,10 +143,25 @@ Diese `docs/` Struktur enthält **ausschließlich wissenschaftlich-tragfähige, 
 
 ## 🚀 Status und Roadmap
 
-- **v1.0.1** (aktuell): Initiale Veröffentlichung mit Zenodo DOI
-- **v1.1** (geplant): Klimamodule, erweiterte Statistiken
-- **v1.2** (geplant): KI-Bewusstseinsmodelle, Buchprojekt
-- **v2.0** (Vision): UTAC als anerkanntes Framework in der Emergenzforschung
+- **v1.0.1** (current): Initial publication with Zenodo DOI
+- **v1.1** (current): Field typology, meta-regression tools, simulation framework
+- **v1.2** (planned): Climate modules, AI consciousness models
+- **v2.0** (vision): UTAC as recognized framework in emergence research
+
+---
+
+## 🆕 New in v1.1
+
+### Analysis Tools
+- **`analysis/beta_drivers_meta_regression.py`**: Meta-regression to explain β-heterogeneity
+- **`simulation/threshold_sandbox.py`**: Systematic exploration of β(C_eff, D_eff, SNR)
+
+### Data Resources
+- **`data/derived/`**: Templates for meta-analysis (beta_estimates.csv, domain_covariates.csv)
+
+### Documentation
+- **`docs/appendix_field_types.md`**: Theoretical framework for system typology
+- **Scientific rigor improvements**: Removal of metaphorical language from technical documents
 
 ---
 
@@ -144,13 +170,9 @@ Diese `docs/` Struktur enthält **ausschließlich wissenschaftlich-tragfähige, 
 Bei Fragen, Feedback oder Kollaborationsanfragen:
 
 - **GitHub Issues**: [Feldtheorie Issues](https://github.com/GenesisAeon/Feldtheorie/issues)
-- **Pull Requests**: Willkommen für Verbesserungen und Erweiterungen
+- **Pull Requests**: Welcome for improvements and extensions
 
 ---
 
-*"Die Schwelle ist nicht das Ende – sie ist der Beginn der Ordnung."*
-
----
-
-*Letzte Aktualisierung: November 2025*
+*Last updated: November 2025*
 *Version: 1.1*

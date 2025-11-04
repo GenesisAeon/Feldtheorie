@@ -1,5 +1,26 @@
 # Resonance Ledger
 
+## v1.1.0 — Scientific Rigor Enhancement & β-Driver Analysis
+
+### Formal
+- **Field Typology Framework**: Added `docs/appendix_field_types.md` with formal typology of five system types (directly coupled, semi-coupled, order-sensitive, dispersedly coupled, meta-coupled) explaining β-heterogeneity as context-dependent rather than contradictory.
+- **Meta-Regression Module**: Implemented `analysis/beta_drivers_meta_regression.py` for weighted least squares regression explaining β-variance through system properties (C_eff, D_eff, SNR, Memory, Θ̇) with Holm-Bonferroni multiple testing correction.
+- **Simulation Framework**: Created `simulation/threshold_sandbox.py` for systematic exploration of β as function of coupling strength, dimensionality, and coherence with automatic parameter sweep and visualization.
+- **Scientific Language Cleanup**: Removed metaphorical/poetic language from `docs/validation_report_v1.0.1.md` to meet peer-review standards; maintained tri-layer structure changed to formal/empirical analysis only.
+
+### Empirical
+- **Derived Data Templates**: Created `data/derived/` directory with template CSVs (`beta_estimates_template.csv`, `domain_covariates_template.csv`) and comprehensive README for meta-analysis data preparation.
+- **Covariate Estimation Guide**: Added domain-specific proxy definitions for estimating C_eff, D_eff, SNR, Memory, Θ̇ across LLMs, biological swarms, climate systems, and evolutionary dynamics in appendix.
+- **Testable Hypotheses**: Formulated four falsifiable hypotheses (H1-H4) linking β to coupling, dimensionality, coherence, and memory effects with explicit test procedures.
+- **Documentation Updates**: Enhanced `docs/README.md` with new module descriptions, removed final poetic quote, added "New in v1.1" section highlighting analysis tools and scientific improvements.
+
+### Implementation Notes
+- All new modules follow MIT license and include DOI reference (10.5281/zenodo.17472834)
+- Meta-regression and simulation tools include CLI interfaces with argparse
+- Comprehensive docstrings and type hints for maintainability
+- Output formats aligned with existing JSON schema patterns
+- Ready for CI/CD integration
+
 ## v2.0.6 — Comprehensive Validation Attestation
 
 ### Formal
