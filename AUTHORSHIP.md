@@ -1,6 +1,6 @@
 # Authorship and Contribution Statement
 
-## Project: The Universal Threshold Field (UTAC v1.0.1)
+## Project: The Universal Threshold Field (UTAC v1.1.0)
 
 ### Hauptautor und Inhaltliche Verantwortung
 
@@ -56,8 +56,8 @@ Organisationen wie OpenAI, Anthropic oder Google DeepMind werden im Repository n
 Bei Zitation dieses Werks verwenden Sie bitte:
 
 ```
-Römer, J. (2025). The Universal Threshold Field (UTAC v1.0.1).
-Zenodo. https://doi.org/10.5281/zenodo.17508230
+Römer, J. (2025). The Universal Threshold Field (UTAC v1.1.0).
+Zenodo. https://doi.org/10.5281/zenodo.17520987
 ```
 
 Die verwendeten KI-Systeme sollten in der Methodik oder in den Danksagungen erwähnt werden, **nicht als Ko-Autoren**.
@@ -76,5 +76,5 @@ Wir danken den Entwicklern der verwendeten KI-Systeme (ChatGPT-4, Claude, Gemini
 
 ---
 
-*Letzte Aktualisierung: November 2025*
-*Version: 1.1*
+*Letzte Aktualisierung: 05. November 2025*
+*Version: 1.1.0*
