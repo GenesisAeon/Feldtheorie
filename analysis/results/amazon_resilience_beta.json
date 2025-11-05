@@ -1,0 +1,60 @@
+{
+  "dataset": "amazon_resilience_formatted.csv",
+  "records": 17,
+  "control_parameter": "R",
+  "order_parameter": "response",
+  "logistic_parameters": {
+    "beta": 14.560428856124563,
+    "theta": 0.6169618835826125,
+    "upper_asymptote": 0.9858068771504214,
+    "r_squared": 0.9994152438291395,
+    "rmse": 0.008186524204190852,
+    "aic": -157.37903945389183,
+    "bic": -154.87939942172318,
+    "delta_aic_linear": 66.19689714996419,
+    "delta_aic_exponential": 124.07024708929814,
+    "delta_aic_power": 109.67195497812715,
+    "beta_ci_95": [
+      13.899131701162439,
+      15.289579143600982
+    ]
+  },
+  "null_models": {
+    "linear": {
+      "parameters": [
+        2.182446429102148,
+        -0.8465947692216242
+      ],
+      "aic": -91.18214230392765,
+      "bic": -89.51571561581521,
+      "delta_aic": 66.19689714996419,
+      "delta_bic": 65.36368380590797
+    },
+    "power": {
+      "parameters": [
+        4.590352918493328,
+        1.2121183788074081
+      ],
+      "aic": -47.70708447576469,
+      "bic": -46.04065778765226,
+      "delta_aic": 109.67195497812715,
+      "delta_bic": 108.83874163407091
+    },
+    "exponential": {
+      "parameters": [
+        7.826696579364308,
+        -5.988539506427568
+      ],
+      "aic": -33.30879236459369,
+      "bic": -31.642365676481262,
+      "delta_aic": 124.07024708929814,
+      "delta_bic": 123.23703374524192
+    }
+  },
+  "logistic_quartet": {
+    "R": "control parameter drawn from dataset column R",
+    "Theta": 0.6169618835826125,
+    "beta": 14.560428856124563,
+    "zeta(R)": "implicit impedance encoded via dataset preprocessing"
+  }
+}

@@ -3,7 +3,7 @@ ARXIV METADATA FOR COPY-PASTE
 
 TITLE:
 ------
-Universal Threshold Field: β ≈ 4.2 Convergence Across Astrophysics, Climate, and AI
+Universal Threshold Field Theory v1.1: Field Type Classification and β-Heterogeneity as Diagnostic Parameter
 
 
 AUTHORS:
@@ -14,11 +14,12 @@ Johann Römer
 
 PRIMARY CATEGORY:
 -----------------
-nlin.CD (Nonlinear Sciences - Chaotic Dynamics)
+physics.data-an (Data Analysis, Statistics and Probability)
 
 
 CROSS-LIST CATEGORIES:
 ----------------------
+nlin.AO (Adaptation and Self-Organizing Systems)
 physics.ao-ph (Atmospheric and Oceanic Physics)
 cs.AI (Artificial Intelligence)
 q-bio.PE (Quantitative Biology - Populations and Evolution)
@@ -26,12 +27,12 @@ q-bio.PE (Quantitative Biology - Populations and Evolution)
 
 ABSTRACT:
 ---------
-We analyze threshold transitions across astrophysics, climate, biology, and synthetic intelligence using logistic response curves σ(β(R-Θ)). Across multiple domains, we observe steepness parameters β clustering in the range 3.5-4.8 (median β = 4.2), with ΔAIC > 10 against power-law and linear null models indicating strong support for sigmoidal transitions. We introduce the Universal Threshold Field Model (UTAC) framework that parameterizes critical thresholds (Θ) and impedance dynamics (ζ(R)). Analyzed systems include black hole quasi-periodic oscillations, climate tipping elements (AMOC, Greenland ice sheet, Amazon rainforest), biological swarm dynamics, and emergent capabilities in large language models. While β heterogeneity across domains (range 3.47-12.28) suggests domain-specific mechanisms, convergent values in several systems motivate further investigation of potential universal scaling laws. Code, data, and full analysis pipeline are openly available at https://github.com/GenesisAeon/Feldtheorie (DOI: 10.5281/zenodo.17472834).
+The Universal Threshold Field (UTAC) framework models emergent transitions across complex systems using a logistic quartet (R, Θ, β, ζ(R)), where β represents transition steepness. We present an extended empirical analysis (n=15 domains spanning astrophysics, climate, biology, and AI) revealing systematic β-heterogeneity (range: 2.50-16.28). Rather than representing methodological artifacts, this heterogeneity reflects fundamental differences in system architecture. We introduce a field type classification framework based on coupling strength, dimensionality, coherence, memory, and threshold dynamics. One-way ANOVA demonstrates that field type explains 68% of β-variance (F=10.9, p=0.0025, η²=0.680), identifying four distinct regimes: (I) Strongly Coupled (β=4.44±0.73), (II) High-Dimensional (β=3.63±0.25), (III) Weakly Coupled (β=2.50), and (IV) Physically Constrained (β=12.05±5.90). Type IV systems (black holes, urban heat islands, Amazon moisture retention) exhibit near-discontinuous transitions (β>10) resulting from low dimensionality combined with extreme coupling. Simulation validation (80 parameter sweeps) confirms coupling × dimensionality interactions generate β-heterogeneity. These results transform β from a purported universal constant into a diagnostic parameter revealing system architecture. Code, data, and full reproducible analysis: https://github.com/GenesisAeon/Feldtheorie (DOI: 10.5281/zenodo.17472834).
 
 
 COMMENTS:
 ---------
-35 pages, 4 tables. Code and data available at GitHub/Zenodo (DOI: 10.5281/zenodo.17472834)
+40 pages, 4 figures, 5 tables. Field type ANOVA explains 68% of β-variance (p=0.0025). Full reproducible code and data at GitHub/Zenodo (DOI: 10.5281/zenodo.17472834)
 
 
 LICENSE:
@@ -52,7 +53,7 @@ MSC CLASSES (optional):
 
 KEYWORDS (optional):
 --------------------
-critical phenomena, phase transitions, climate tipping points, emergent abilities, universal scaling, logistic resonance, threshold dynamics, falsifiability
+threshold dynamics, field type classification, system architecture, tipping points, β-heterogeneity, logistic response, climate transitions, AI emergence, ANOVA, diagnostic parameter
 
 
 ACM CLASSES (for cs.AI):

@@ -1,0 +1,60 @@
+{
+  "dataset": "urban_heat_canopy_formatted.csv",
+  "records": 16,
+  "control_parameter": "R",
+  "order_parameter": "response",
+  "logistic_parameters": {
+    "beta": 16.276030904088,
+    "theta": 0.30665064835512296,
+    "upper_asymptote": 0.9820999916042102,
+    "r_squared": 0.9994759126805306,
+    "rmse": 0.0077806927228968575,
+    "aic": -149.3955169863299,
+    "bic": -147.07775081961057,
+    "delta_aic_linear": 64.63319381534124,
+    "delta_aic_exponential": 115.1355940772348,
+    "delta_aic_power": 82.0102487696595,
+    "beta_ci_95": [
+      15.435615025362926,
+      16.991354470178052
+    ]
+  },
+  "null_models": {
+    "linear": {
+      "parameters": [
+        2.489331395979268,
+        -0.2658286157316044
+      ],
+      "aic": -84.76232317098867,
+      "bic": -83.2171457265091,
+      "delta_aic": 64.63319381534124,
+      "delta_bic": 63.86060509310147
+    },
+    "power": {
+      "parameters": [
+        2.15536266534821,
+        1.6638695181227308
+      ],
+      "aic": -67.38526821667041,
+      "bic": -65.84009077219085,
+      "delta_aic": 82.0102487696595,
+      "delta_bic": 81.23766004741972
+    },
+    "exponential": {
+      "parameters": [
+        8.59909161006484,
+        -3.7880772905069575
+      ],
+      "aic": -34.25992290909512,
+      "bic": -32.714745464615554,
+      "delta_aic": 115.1355940772348,
+      "delta_bic": 114.36300535499501
+    }
+  },
+  "logistic_quartet": {
+    "R": "control parameter drawn from dataset column R",
+    "Theta": 0.30665064835512296,
+    "beta": 16.276030904088,
+    "zeta(R)": "implicit impedance encoded via dataset preprocessing"
+  }
+}

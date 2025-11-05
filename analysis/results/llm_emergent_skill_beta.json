@@ -1,0 +1,60 @@
+{
+  "dataset": "llm_emergent_skill_formatted.csv",
+  "records": 16,
+  "control_parameter": "R",
+  "order_parameter": "response",
+  "logistic_parameters": {
+    "beta": 6.0811821343356005,
+    "theta": 4.716510467736563,
+    "upper_asymptote": 0.9918519526466753,
+    "r_squared": 0.9994883376556732,
+    "rmse": 0.008693615023567417,
+    "aic": -145.84532569916917,
+    "bic": -143.52755953244983,
+    "delta_aic_linear": 82.40848629720524,
+    "delta_aic_exponential": 122.12003673762115,
+    "delta_aic_power": 115.02703387165815,
+    "beta_ci_95": [
+      5.772726713122262,
+      6.389669311632212
+    ]
+  },
+  "null_models": {
+    "linear": {
+      "parameters": [
+        0.6777865010799128,
+        -2.6674347300215935
+      ],
+      "aic": -63.43683940196392,
+      "bic": -61.89166195748436,
+      "delta_aic": 82.40848629720524,
+      "delta_bic": 81.63589757496547
+    },
+    "power": {
+      "parameters": [
+        13.455153488623543,
+        -22.10600707624042
+      ],
+      "aic": -30.818291827511025,
+      "bic": -29.273114383031462,
+      "delta_aic": 115.02703387165815,
+      "delta_bic": 114.25444514941836
+    },
+    "exponential": {
+      "parameters": [
+        2.9571423261187912,
+        -15.271827328072245
+      ],
+      "aic": -23.725288961548014,
+      "bic": -22.18011151706845,
+      "delta_aic": 122.12003673762115,
+      "delta_bic": 121.34744801538137
+    }
+  },
+  "logistic_quartet": {
+    "R": "control parameter drawn from dataset column R",
+    "Theta": 4.716510467736563,
+    "beta": 6.0811821343356005,
+    "zeta(R)": "implicit impedance encoded via dataset preprocessing"
+  }
+}
