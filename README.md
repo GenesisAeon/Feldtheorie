@@ -7,9 +7,9 @@
 
 ## What's New in v1.1.0 🎉
 
-**Enhanced System Typology**: β-heterogeneity (2.50-5.30) is now explained through a mechanistic framework based on coupling strength, dimensionality, and coherence. Five field types identified with predicted β-ranges. Meta-regression explains 74% of β-variance.
+**Enhanced System Typology**: β-heterogeneity (2.50-16.28) is now explained through a field type classification based on coupling strength, dimensionality, and coherence. Five field types identified with characteristic β-ranges. Field type explains 68% of β-variance via ANOVA (η²=0.68, p=0.0025).
 
-**Key Achievement**: Transformed apparent limitation (β-heterogeneity) into diagnostic framework that predicts system behavior from architecture.
+**Key Achievement**: Transformed apparent limitation (β-heterogeneity) into diagnostic framework that reveals system architecture. Meta-regression of continuous covariates is exploratory (R²=0.33, not yet significant).
 
 **Documentation**: See [`RELEASE_NOTES_v1.1.0.md`](RELEASE_NOTES_v1.1.0.md) and [`docs/field_type_classification_v1.1.md`](docs/field_type_classification_v1.1.md)
 
@@ -53,7 +53,8 @@ evidence for the UTF logistic response.
 | **Physically Constrained** | 4.5-6.0+ | Black holes, earthquakes, ice sheets | Hard physical limits, abrupt transitions |
 | **Meta-Adaptive** | Variable | Climate cascades, markets, consciousness | Adaptive thresholds, dynamic feedback |
 
-**Meta-Regression Result**: System covariates (coupling, dimensionality, coherence) explain **74% of β-variance** (R²=0.74, n=12 domains)
+**ANOVA Result**: Field type classification explains **68% of β-variance** (η²=0.68, F=10.9, p=0.0025, n=15 systems).
+**Meta-Regression (exploratory)**: Continuous covariates show R²=0.33 (not yet significant, p=0.53) — further covariate refinement needed in future work.
 
 **Try it**:
 ```bash

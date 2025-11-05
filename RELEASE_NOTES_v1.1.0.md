@@ -63,12 +63,15 @@ Version 1.1.0 represents a major scientific advancement in the Universal Thresho
 
 **Implementation**: `analysis/beta_drivers_meta_regression.py`
 
-**Results** (n=12 domains):
-- **R² = 0.74**: System covariates explain 74% of β-variance
-- **F-statistic = 3.35** (p = 0.087)
-- **Adjusted R² = 0.52**: Good explanatory power accounting for model complexity
+**Results** (n=15 domains):
+- **R² = 0.33**: Continuous covariates explain 33% of β-variance (exploratory)
+- **F-statistic = 0.87** (p = 0.53, not significant)
+- **Adjusted R² = -0.05**: Model complexity not yet justified by explanatory power
+- **ANOVA η² = 0.68**: Field type categories explain 68% of β-variance (p = 0.0025) ✓
 
-**Key Coefficients** (not individually significant after correction due to small sample, but theoretically informative):
+**Note**: Categorical classification (field types) outperforms continuous covariate model. Future work will refine continuous covariates and explore non-linear interactions.
+
+**Key Coefficients** (exploratory, not individually significant):
 
 | Covariate | Coefficient | Std Error | Interpretation |
 |-----------|-------------|-----------|----------------|
