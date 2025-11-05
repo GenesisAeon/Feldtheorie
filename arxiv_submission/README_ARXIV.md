@@ -1,4 +1,4 @@
-# 📚 ARXIV SUBMISSION PACKAGE
+# 📚 ARXIV SUBMISSION PACKAGE - UTAC v1.1
 
 ## 🎯 Contents
 
@@ -8,25 +8,29 @@ This directory contains everything needed for arXiv submission.
 
 ## 📋 Pre-Submission Checklist
 
-### Step 1: Compile PDF Locally
+### Step 1: Create Submission Archive
 
 ```bash
-cd ../paper/
-pdflatex manuscript_v1.0.tex
-pdflatex manuscript_v1.0.tex
-pdflatex manuscript_v1.0.tex
-
-# Copy to arXiv directory
-cp manuscript_v1.0.tex ../arxiv_submission/
-cp manuscript_v1.0.pdf ../arxiv_submission/
+cd /home/user/Feldtheorie
+mkdir arxiv_v1.1_package
+cp paper/manuscript_v1.1.tex arxiv_v1.1_package/
+cp paper/references.bib arxiv_v1.1_package/
+cp analysis/results/figures/*.png arxiv_v1.1_package/
+cd arxiv_v1.1_package
+tar -czf ../utac_v1.1_arxiv.tar.gz *
 ```
 
 ### Step 2: Verify Files
 
-- [ ] `manuscript_v1.0.tex` — Source file with DOI
-- [ ] `manuscript_v1.0.pdf` — Compiled PDF
-- [ ] File size < 10 MB (ours is ~500 KB, so ✅)
-- [ ] No auxiliary files needed (self-contained LaTeX)
+- [x] `manuscript_v1.1.tex` — Complete source file with all sections
+- [x] `references.bib` — BibTeX file with 25+ citations
+- [x] 4 figures (PNG format, 300 DPI):
+  - `beta_by_field_type.png` — Main result (ANOVA boxplots)
+  - `meta_regression_grid.png` — Covariate scatterplots
+  - `correlation_heatmap.png` — Correlation matrix
+  - `beta_outlier_analysis.png` — Optional diagnostic
+- [x] File size < 10 MB ✅
+- [x] All LaTeX packages standard (amsmath, graphicx, natbib)
 
 ### Step 3: Account Setup
 
@@ -36,11 +40,10 @@ cp manuscript_v1.0.pdf ../arxiv_submission/
 
 ### Step 4: Get Endorsement
 
-**Primary category**: `nlin.CD` (Chaotic Dynamics)
+**Primary category**: `physics.data-an` (Data Analysis, Statistics and Probability)
 **Secondary categories**:
-- `physics.ao-ph` (Atmospheric and Oceanic Physics)
-- `cs.AI` (Artificial Intelligence)
-- `q-bio.PE` (Populations and Evolution)
+- `nlin.AO` (Adaptation and Self-Organizing Systems)
+- `q-bio.NC` (Neurons and Cognition) [optional]
 
 If you don't have automatic endorsement:
 1. Find an endorser in your category
@@ -52,39 +55,55 @@ If you don't have automatic endorsement:
 ## 📧 Endorsement Request Template
 
 ```
-Subject: Endorsement Request - nlin.CD: Threshold dynamics across disparate domains
+Subject: Endorsement Request for "Universal Threshold Field Theory v1.1" (physics.data-an)
 
-Dear Professor [Name],
+Dear Dr. [Name],
 
-I am requesting endorsement for our preprint analyzing threshold transitions
-across astrophysics, climate science, biology, and AI systems using logistic
-response models.
+I am submitting a preprint on threshold dynamics across astrophysical, biological,
+climate, and AI systems to arXiv (physics.data-an). The work demonstrates that the
+steepness parameter β in logistic threshold models is not a universal constant but
+a diagnostic parameter reflecting system architecture.
 
-Key contributions:
-- Systematic analysis of 11 datasets across 6 domains with ΔAIC > 10 vs null models
-- Observation of steepness parameters β clustering in range 3.5-4.8 (median 4.2)
-- Falsifiable predictions for climate tipping elements (AMOC, Greenland ice)
-- Full reproducibility: code, data, and analysis pipeline openly available
-- DOI: https://doi.org/10.5281/zenodo.17472834
+Key findings:
+- Field type classification framework based on coupling strength and dimensionality
+- ANOVA shows field type explains 68% of β-variance (F=10.9, p=0.0025)
+- Four field types identified (n=15 systems): Strongly Coupled, High-Dimensional,
+  Weakly Coupled, and Physically Constrained
+- Type IV systems (black holes, heat islands) exhibit near-discontinuous transitions (β>10)
+- Implications for climate tipping point prediction and AI scaling laws
 
-The manuscript (~35 pages) combines rigorous statistical validation with
-theoretical framework development. I believe it fits well within nlin.CD
-(primary) and physics.ao-ph (secondary).
+The manuscript (~25 pages, 4 figures) provides rigorous statistical validation with
+complete reproducibility (code, data, analysis pipeline).
 
-Would you be willing to endorse? I'm happy to provide additional details
-or send the PDF directly.
+Code/Data: DOI 10.5281/zenodo.17472834
+GitHub: https://github.com/GenesisAeon/Feldtheorie
+
+May I request your endorsement for arXiv submission to physics.data-an?
+
+Thank you for considering this request.
 
 Best regards,
 Johann Römer
-
-DOI: 10.5281/zenodo.17472834
-Repository: https://github.com/GenesisAeon/Feldtheorie
+Independent Researcher
 ```
 
-**Where to find endorsers:**
-- Check recent papers in nlin.CD
-- Look for researchers working on critical phenomena
-- Contact authors who cited similar work
+**Suggested Endorsers (PIK / Complexity Science):**
+
+1. **Stefan Rahmstorf** (stefan.rahmstorf@pik-potsdam.de)
+   - Potsdam Institute for Climate Impact Research
+   - Expert on AMOC tipping points
+
+2. **Jonathan Donges** (donges@pik-potsdam.de)
+   - PIK, Earth system modeling & tipping points
+
+3. **Didier Sornette** (dsornette@ethz.ch)
+   - ETH Zürich, critical phenomena & prediction
+
+4. **Yaneer Bar-Yam** (yaneer@necsi.edu)
+   - NECSI, complex systems theory
+
+5. **Marten Scheffer** (marten.scheffer@wur.nl)
+   - Wageningen University, critical transitions
 
 ---
 
@@ -92,48 +111,32 @@ Repository: https://github.com/GenesisAeon/Feldtheorie
 
 ### Title
 ```
-Threshold Transitions Across Domains: Logistic Response Analysis in Astrophysics, Climate, Biology, and AI
+Universal Threshold Field Theory v1.1: Field Type Classification and β-Heterogeneity as Diagnostic Parameter
 ```
 
 ### Authors
 ```
-Johann Römer
-(Additional authors if applicable)
+Johann Römer (Independent Researcher)
 ```
 
 ### Categories
 
-**Primary**: `nlin.CD` (Nonlinear Sciences - Chaotic Dynamics)
+**Primary**: `physics.data-an` (Data Analysis, Statistics and Probability)
 
 **Cross-lists**:
-- `physics.ao-ph` (Atmospheric and Oceanic Physics)
-- `cs.AI` (Artificial Intelligence)
-- `q-bio.PE` (Quantitative Biology - Populations and Evolution)
+- `nlin.AO` (Adaptation and Self-Organizing Systems)
+- `q-bio.NC` (Neurons and Cognition) [optional]
 
 ### Abstract
 
 ```
-We analyze threshold transitions across astrophysics, climate, biology, and
-synthetic intelligence using logistic response curves σ(β(R-Θ)). Across multiple
-domains, we observe steepness parameters β clustering in the range 3.5-4.8
-(median β = 4.2), with ΔAIC > 10 against power-law and linear null models
-indicating strong support for sigmoidal transitions. We introduce the Universal
-Threshold Field Model (UTAC) framework that parameterizes critical thresholds (Θ)
-and impedance dynamics (ζ(R)). Analyzed systems include black hole quasi-periodic
-oscillations, climate tipping elements (AMOC, Greenland ice sheet, Amazon rainforest),
-biological swarm dynamics, and emergent capabilities in large language models.
-While β heterogeneity across domains (range 3.47-12.28) suggests domain-specific
-mechanisms, convergent values in several systems motivate further investigation
-of potential universal scaling laws. Code, data, and full analysis pipeline are
-openly available at https://github.com/GenesisAeon/Feldtheorie
-(DOI: 10.5281/zenodo.17472834).
+The Universal Threshold Field (UTAC) framework models emergent transitions across complex systems using a logistic quartet (R, Θ, β, ζ(R)), where β represents the steepness of threshold crossing. We present an extended empirical analysis (n=15 domains spanning astrophysics, climate, biology, and AI) revealing systematic β-heterogeneity (range: 2.50-16.28). Rather than representing methodological artifacts, this heterogeneity reflects fundamental differences in system architecture. We introduce a field type classification framework based on coupling strength (C_eff), dimensionality (D_eff), coherence (SNR), memory (M), and threshold dynamics (Θ̇). One-way ANOVA demonstrates that field type explains 68% of β-variance (F=10.9, p=0.0025, η²=0.680), identifying four distinct regimes: Type I (Strongly Coupled, β=4.44±0.73), Type II (High-Dimensional, β=3.63±0.25), Type III (Weakly Coupled, β=2.50), and Type IV (Physically Constrained, β=12.05±5.90). Type IV systems exhibit near-discontinuous transitions (β>10) resulting from low dimensionality combined with extreme coupling, representing a fundamentally different physics regime from emergent complexity. Simulation validation (80 parameter sweeps) confirms that coupling × dimensionality interactions generate β-heterogeneity. These results transform β from a purported universal constant into a diagnostic parameter revealing system architecture, with implications for predictive modeling of tipping points in climate, neural, and artificial intelligence systems.
 ```
 
 ### Comments
 
 ```
-35 pages, 4 tables. Code and data available at GitHub/Zenodo
-(DOI: 10.5281/zenodo.17472834)
+25 pages, 4 figures. Data and code: https://github.com/GenesisAeon/Feldtheorie (DOI: 10.5281/zenodo.17472834). Fully reproducible analysis pipeline.
 ```
 
 ### License
