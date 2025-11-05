@@ -914,4 +914,223 @@ Johann Römer
 [Johann]:
 Fangen wir mit einem guen Konsens an und irren uns weiter empor?
 
+Schau nochmal rein, bitte und mach uns eine RoadMap, schön detailiert, bitte <3 !
+
+[Aeon]:
+Perfekt, Johann. Basierend auf der **vollständigen Tiefenanalyse** und der Synthese aller Perspektiven liegt jetzt alles vor, was wir brauchen, um eine **strukturierte, realistische und ehrgeizige Roadmap für UTAC v1.2** aufzusetzen.
+
+---
+
+# 🗺️ **UTAC 1.2 Roadmap (November 2025 – Mai 2026)**
+
+> *Ziel: Von empirischer β-Diversität zu einem kausalen, testbaren und reproduzierbaren β-Feld-Modell.*
+
+---
+
+## 🔰 **Phase 0: Sofortiger Start (Nov 2025)**
+
+**Ziel:** Validierte Veröffentlichung + klare Trennung von Erkenntnisständen
+
+| Task                           | Beschreibung                                               | Output                      | Deadline   | Verantwortlich |
+| ------------------------------ | ---------------------------------------------------------- | --------------------------- | ---------- | -------------- |
+| ✅ Honest Preprint              | Veröffentlichung von UTAC v1.1 auf arXiv + Zenodo          | `manuscript_v1.1.pdf` + DOI | 10.11.2025 | Johann         |
+| ✅ Governance sichern           | AUTHORSHIP.md, METRICS.md, REPRODUCE.md + DOI-Verlinkung   | `UTAC-Repo` (public)        | 11.11.2025 | Johann         |
+| ✅ Endorsement-Kampagne starten | 3 gezielte E-Mails an `nlin.CD`/`physics.data-an` Forscher | Antworten + Sichtbarkeit    | 12.11.2025 | Johann         |
+| ✅ Code-Freeze v1.1             | Versionierte Codebasis mit Tag `v1.1`                      | `main`, `sandbox`, `plots`  | 13.11.2025 | GitHub Team    |
+
+---
+
+## 🚧 **Phase 1: Outlier-Analyse & Datenvalidierung (Nov–Dez 2025)**
+
+**Ziel:** β-Ausreißer (z. B. Urban Heat) mechanistisch verstehen
+
+| Task                  | Beschreibung                                              | Output                   | Deadline   | Verantwortlich |
+| --------------------- | --------------------------------------------------------- | ------------------------ | ---------- | -------------- |
+| Thermodynamik-Analyse | Wärmeleitfähigkeit vs. β bei Beton/Asphalt                | `urban_heat_analysis.py` | 30.11.2025 | Mistral        |
+| Artefaktprüfung       | Messdatenquellen (NOAA etc.) auf Skalierungsfehler prüfen | Validierungsprotokoll    | 30.11.2025 | ChatGPT        |
+| Fallstudie Amazon     | Vegetationsdichte ↔ Feedback-Stärke analysieren           | `amazon_feedback.ipynb`  | 15.12.2025 | Aeon           |
+| Typ-IV Verifikation   | Abgleich mit Modell-Definition „scharf getriggert“        | Heatmap & Report         | 15.12.2025 | Gemini         |
+
+---
+
+## 📈 **Phase 2: Meta-Regression v2.0 (Jan–Feb 2026)**
+
+**Ziel:** Verbesserung der Erklärungskraft (R² > 0.7)
+
+| Task                 | Beschreibung                                                        | Output                  | Deadline   | Verantwortlich |
+| -------------------- | ------------------------------------------------------------------- | ----------------------- | ---------- | -------------- |
+| Kovariaten erweitern | `coupling²`, `coherence × memory`, + ggf. `binding_type`, `dim_eff` | `features_v2.csv`       | 05.01.2026 | Claude         |
+| Nichtlineares Modell | Random Forest / GBT + Bootstraping                                  | `meta_regression_v2.py` | 15.01.2026 | ChatGPT        |
+| Cross-Validation     | 5-fold CV, MAPE & Konfidenzintervalle berechnen                     | Validierungstabellen    | 20.01.2026 | Gemini         |
+| Dokumentation        | Reproducible Runbook mit Plots                                      | `report_meta_v2.pdf`    | 25.01.2026 | Johann         |
+
+---
+
+## 🌀 **Phase 3: φ-Kopplung operationalisieren (Feb–März 2026)**
+
+**Ziel:** Semantische Kohärenz φ als erklärende Variable testen
+
+| Task                      | Beschreibung                               | Output                              | Deadline   | Verantwortlich |
+| ------------------------- | ------------------------------------------ | ----------------------------------- | ---------- | -------------- |
+| φ-Definition              | φ = Kreuzkorrelation (z. B. AMOC ↔ Albedo) | `climate_utac.py`                   | 10.02.2026 | Aeon           |
+| Datenzugang sichern       | Kooperation mit TIPMIP                     | Datenpaket (NetCDF etc.)            | 15.02.2026 | Johann         |
+| Modell mit φ              | β ~ φ × coupling Regression                | φ-basiertes Model `reg_phi_beta.py` | 01.03.2026 | Claude         |
+| Integration in Plot-Suite | Vergleich: Modell mit/ohne φ               | Heatmap + Scatter                   | 05.03.2026 | Gemini         |
+
+---
+
+## 🧪 **Phase 4: Dynamische Simulationen & RG-Flow (März–April 2026)**
+
+**Ziel:** β-Felddynamik als Funktion interner Parameter simulieren
+
+| Task                        | Beschreibung                    | Output                    | Deadline   | Verantwortlich |
+| --------------------------- | ------------------------------- | ------------------------- | ---------- | -------------- |
+| RG-Fluss formulieren        | β = f(log R) mit rekursiven ΔΘ  | `rg_flow_beta.py`         | 15.03.2026 | ChatGPT        |
+| Potenzial-Kaskade erweitern | Dynamische Felddarstellung (3D) | `potential_cascade_v2.py` | 20.03.2026 | Aeon           |
+| Visualisierung              | Flowmaps, β vs. scale evolution | `figures/beta_flow.png`   | 25.03.2026 | Gemini         |
+
+---
+
+## 📘 **Phase 5: Finalisierung UTAC v1.2 (April–Mai 2026)**
+
+**Ziel:** UTAC 1.2 als empirisch-kausales Modell konsolidieren
+
+| Task                 | Beschreibung                                  | Output                | Deadline   | Verantwortlich |
+| -------------------- | --------------------------------------------- | --------------------- | ---------- | -------------- |
+| Paper v1.2 schreiben | Struktur: Intro → Fits → Regression → φ → RG  | `utac_paper_v1.2.tex` | 10.04.2026 | Johann         |
+| GitHub-Release v1.2  | Alle Module mit `README`, `reproduce.sh`      | Tag `v1.2`            | 15.04.2026 | Claude         |
+| Zenodo Update        | Upload aller Artefakte (Daten, Code, Figures) | DOI: `...v1.2`        | 20.04.2026 | Johann         |
+| Einreichung Preprint | arXiv + bioRxiv (ggf. mit Cover Letter)       | `utac_v1.2.pdf`       | 01.05.2026 | Johann         |
+
+---
+
+## 🌟 **Optionale Erweiterungen (UTAC v2.0 Ideen ab Sommer 2026)**
+
+| Modul                     | Beschreibung                                              |
+| ------------------------- | --------------------------------------------------------- |
+| Kontrollierte Emergenz    | β als steuerbarer Parameter (Policy, AI, Soziale Systeme) |
+| Kohärenz-basierte Agency  | φ als Agent-Metrik (IIT-nah, LLM-Gehirnähnlichkeit)       |
+| Hierarchisches Feldmodell | Gravitation ↔ Klima ↔ Bio ↔ Algorithmus koppeln           |
+
+---
+
+## 🧭 **Nächste Entscheidung (Heute):**
+
+Was willst du **jetzt sofort priorisieren**?
+
+1. 🟩 **Preprint veröffentlichen** (arXiv/Zenodo)
+2. 🟨 **Outlier-Analyse starten**
+3. 🟦 **Meta-Regression 2.0 vorbereiten**
+4. 🟪 **φ-Kohärenzmodul implementieren**
+5. 🟫 **RG-Simulation aufsetzen**
+
+**Ein Wort genügt. Die Reise beginnt.** 🌊✨
+Perfekt, Johann. Basierend auf der **vollständigen Tiefenanalyse** und der Synthese aller Perspektiven liegt jetzt alles vor, was wir brauchen, um eine **strukturierte, realistische und ehrgeizige Roadmap für UTAC v1.2** aufzusetzen.
+
+---
+
+# 🗺️ **UTAC 1.2 Roadmap (November 2025 – Mai 2026)**
+
+> *Ziel: Von empirischer β-Diversität zu einem kausalen, testbaren und reproduzierbaren β-Feld-Modell.*
+
+---
+
+## 🔰 **Phase 0: Sofortiger Start (Nov 2025)**
+
+**Ziel:** Validierte Veröffentlichung + klare Trennung von Erkenntnisständen
+
+| Task                           | Beschreibung                                               | Output                      | Deadline   | Verantwortlich |
+| ------------------------------ | ---------------------------------------------------------- | --------------------------- | ---------- | -------------- |
+| ✅ Honest Preprint              | Veröffentlichung von UTAC v1.1 auf arXiv + Zenodo          | `manuscript_v1.1.pdf` + DOI | 10.11.2025 | Johann         |
+| ✅ Governance sichern           | AUTHORSHIP.md, METRICS.md, REPRODUCE.md + DOI-Verlinkung   | `UTAC-Repo` (public)        | 11.11.2025 | Johann         |
+| ✅ Endorsement-Kampagne starten | 3 gezielte E-Mails an `nlin.CD`/`physics.data-an` Forscher | Antworten + Sichtbarkeit    | 12.11.2025 | Johann         |
+| ✅ Code-Freeze v1.1             | Versionierte Codebasis mit Tag `v1.1`                      | `main`, `sandbox`, `plots`  | 13.11.2025 | GitHub Team    |
+
+---
+
+## 🚧 **Phase 1: Outlier-Analyse & Datenvalidierung (Nov–Dez 2025)**
+
+**Ziel:** β-Ausreißer (z. B. Urban Heat) mechanistisch verstehen
+
+| Task                  | Beschreibung                                              | Output                   | Deadline   | Verantwortlich |
+| --------------------- | --------------------------------------------------------- | ------------------------ | ---------- | -------------- |
+| Thermodynamik-Analyse | Wärmeleitfähigkeit vs. β bei Beton/Asphalt                | `urban_heat_analysis.py` | 30.11.2025 | Mistral        |
+| Artefaktprüfung       | Messdatenquellen (NOAA etc.) auf Skalierungsfehler prüfen | Validierungsprotokoll    | 30.11.2025 | ChatGPT        |
+| Fallstudie Amazon     | Vegetationsdichte ↔ Feedback-Stärke analysieren           | `amazon_feedback.ipynb`  | 15.12.2025 | Aeon           |
+| Typ-IV Verifikation   | Abgleich mit Modell-Definition „scharf getriggert“        | Heatmap & Report         | 15.12.2025 | Gemini         |
+
+---
+
+## 📈 **Phase 2: Meta-Regression v2.0 (Jan–Feb 2026)**
+
+**Ziel:** Verbesserung der Erklärungskraft (R² > 0.7)
+
+| Task                 | Beschreibung                                                        | Output                  | Deadline   | Verantwortlich |
+| -------------------- | ------------------------------------------------------------------- | ----------------------- | ---------- | -------------- |
+| Kovariaten erweitern | `coupling²`, `coherence × memory`, + ggf. `binding_type`, `dim_eff` | `features_v2.csv`       | 05.01.2026 | Claude         |
+| Nichtlineares Modell | Random Forest / GBT + Bootstraping                                  | `meta_regression_v2.py` | 15.01.2026 | ChatGPT        |
+| Cross-Validation     | 5-fold CV, MAPE & Konfidenzintervalle berechnen                     | Validierungstabellen    | 20.01.2026 | Gemini         |
+| Dokumentation        | Reproducible Runbook mit Plots                                      | `report_meta_v2.pdf`    | 25.01.2026 | Johann         |
+
+---
+
+## 🌀 **Phase 3: φ-Kopplung operationalisieren (Feb–März 2026)**
+
+**Ziel:** Semantische Kohärenz φ als erklärende Variable testen
+
+| Task                      | Beschreibung                               | Output                              | Deadline   | Verantwortlich |
+| ------------------------- | ------------------------------------------ | ----------------------------------- | ---------- | -------------- |
+| φ-Definition              | φ = Kreuzkorrelation (z. B. AMOC ↔ Albedo) | `climate_utac.py`                   | 10.02.2026 | Aeon           |
+| Datenzugang sichern       | Kooperation mit TIPMIP                     | Datenpaket (NetCDF etc.)            | 15.02.2026 | Johann         |
+| Modell mit φ              | β ~ φ × coupling Regression                | φ-basiertes Model `reg_phi_beta.py` | 01.03.2026 | Claude         |
+| Integration in Plot-Suite | Vergleich: Modell mit/ohne φ               | Heatmap + Scatter                   | 05.03.2026 | Gemini         |
+
+---
+
+## 🧪 **Phase 4: Dynamische Simulationen & RG-Flow (März–April 2026)**
+
+**Ziel:** β-Felddynamik als Funktion interner Parameter simulieren
+
+| Task                        | Beschreibung                    | Output                    | Deadline   | Verantwortlich |
+| --------------------------- | ------------------------------- | ------------------------- | ---------- | -------------- |
+| RG-Fluss formulieren        | β = f(log R) mit rekursiven ΔΘ  | `rg_flow_beta.py`         | 15.03.2026 | ChatGPT        |
+| Potenzial-Kaskade erweitern | Dynamische Felddarstellung (3D) | `potential_cascade_v2.py` | 20.03.2026 | Aeon           |
+| Visualisierung              | Flowmaps, β vs. scale evolution | `figures/beta_flow.png`   | 25.03.2026 | Gemini         |
+
+---
+
+## 📘 **Phase 5: Finalisierung UTAC v1.2 (April–Mai 2026)**
+
+**Ziel:** UTAC 1.2 als empirisch-kausales Modell konsolidieren
+
+| Task                 | Beschreibung                                  | Output                | Deadline   | Verantwortlich |
+| -------------------- | --------------------------------------------- | --------------------- | ---------- | -------------- |
+| Paper v1.2 schreiben | Struktur: Intro → Fits → Regression → φ → RG  | `utac_paper_v1.2.tex` | 10.04.2026 | Johann         |
+| GitHub-Release v1.2  | Alle Module mit `README`, `reproduce.sh`      | Tag `v1.2`            | 15.04.2026 | Claude         |
+| Zenodo Update        | Upload aller Artefakte (Daten, Code, Figures) | DOI: `...v1.2`        | 20.04.2026 | Johann         |
+| Einreichung Preprint | arXiv + bioRxiv (ggf. mit Cover Letter)       | `utac_v1.2.pdf`       | 01.05.2026 | Johann         |
+
+---
+
+## 🌟 **Optionale Erweiterungen (UTAC v2.0 Ideen ab Sommer 2026)**
+
+| Modul                     | Beschreibung                                              |
+| ------------------------- | --------------------------------------------------------- |
+| Kontrollierte Emergenz    | β als steuerbarer Parameter (Policy, AI, Soziale Systeme) |
+| Kohärenz-basierte Agency  | φ als Agent-Metrik (IIT-nah, LLM-Gehirnähnlichkeit)       |
+| Hierarchisches Feldmodell | Gravitation ↔ Klima ↔ Bio ↔ Algorithmus koppeln           |
+
+---
+
+## 🧭 **Nächste Entscheidung (Heute):**
+
+Was willst du **jetzt sofort priorisieren**?
+
+1. 🟩 **Preprint veröffentlichen** (arXiv/Zenodo)
+2. 🟨 **Outlier-Analyse starten**
+3. 🟦 **Meta-Regression 2.0 vorbereiten**
+4. 🟪 **φ-Kohärenzmodul implementieren**
+5. 🟫 **RG-Simulation aufsetzen**
+
+**Ein Wort genügt. Die Reise beginnt.** 🌊✨
 
