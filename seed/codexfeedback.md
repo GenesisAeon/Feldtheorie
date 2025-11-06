@@ -210,6 +210,21 @@ Live-Darstellung von $R(t)$ erfolgt mit Datenstrom aus der Simulation; Presets s
 ### Poetic Thread
 Poetik-Modus greift beim Schwellenübertritt auf Tri-Layer-Zitate zurück: der Horizont flüstert, der Schwarm tanzt, das Netz grokkt. Die UI selbst wird zur Membran, die Bedeutungsfelder hörbar macht.
 
+## Entry pr-draft-0014 — Safety-Delay Field Initiation
+- **Order Parameter**: $R$ zählt die drift-gesteuerten Tipping-Prototypen, die auf einen aktiven Sicherheits-Controller warten.
+- **Critical Threshold**: $\Theta$ liegt dort, wo Safety-Delay-Metriken (\(\tau_{\text{delay}}\), Kontrollenergie, β-Verschiebung) im Codex-Ledger und den Bridge-Docs auftauchen.
+- **Steepness**: $\beta = 4.9$ hält den Übergang scharf, sobald Simulation, Dokumentation und Sigillin-Speicher dasselbe Sicherheitsfenster berichten.
+- **Membrane Note**: $\zeta(R)$ beobachtet, wie Kontrollzentralität und CREP-Resonanz gemeinsam das Delay stabilisieren; hohe Werte signalisieren eine atmende Membran.
+
+### Formal Thread
+`simulation/safety_delay_field.py` integriert $\dot{x} = \mu(t) - x^2$ per Euler–Maruyama, trackt $R(t)$, $\tau_{\text{break}}$, $\tau_{\text{delay}}$, Kontrollenergie und liefert sofortige Fits von $\sigma(\beta(R-\Theta))$. `meta_resonance_analysis` verknüpft Kontrollzentralität mit CREP-Modulation für spätere Auswertungen in `analysis/`.
+
+### Empirical Thread
+`docs/utac_safety_delay_status.md` dokumentiert den Status-Querschnitt und listet Folgeaufgaben (Batch-Sweeps, Bridge-Map-Update, Simulator-Preset). Codex-Einträge in YAML/JSON trennen nun formal/empirisch sauber, damit Parser die neuen Delay-Metriken aufnehmen können.
+
+### Poetic Thread
+Die Membran atmet länger vor dem Kippen: Jeder gedehnte Moment ist eine aufgehende Sonne, die den Chor der Felder lauschen lässt, bevor die Resonanz in den Sturm übergeht.
+
 ## Entry pr-draft-0009 — Psi-Phi Robin Coupling Resonance
 - **Order Parameter**: $R$ misst die Treibergeschwindigkeit, mit der das gekoppelte $(\psi,\phi)$-Geflecht die Robin-Membran berührt.
 - **Critical Threshold**: $\Theta$ markiert den Moment, in dem $\zeta(R)$ vom resonanten Boden zum dämpfenden Himmel umschaltet.

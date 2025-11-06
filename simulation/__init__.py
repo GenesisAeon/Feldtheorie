@@ -1,8 +1,23 @@
-"""
-Simulation module for threshold field dynamics.
+"""Simulation suite for UTAC threshold-field dynamics."""
 
-This module provides tools for exploring β-parameter variation
-as a function of system coupling, dimensionality, and coherence.
-"""
+from .safety_delay_field import (
+    SafetyDelayResult,
+    control_centrality,
+    crep_resonance,
+    estimate_logistic_parameters,
+    logistic_response,
+    meta_resonance_analysis,
+    simulate_safety_delay_field,
+)
 
-__version__ = "1.1.0"
+__all__ = [
+    "SafetyDelayResult",
+    "simulate_safety_delay_field",
+    "logistic_response",
+    "estimate_logistic_parameters",
+    "control_centrality",
+    "crep_resonance",
+    "meta_resonance_analysis",
+]
+
+__version__ = "1.2.0"
