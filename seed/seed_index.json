@@ -1,0 +1,639 @@
+{
+  "meta": {
+    "project": "Feldtheorie (UTAC + Sigillin)",
+    "maintainer": "Johann Römer",
+    "version": "1.0.0",
+    "created": "2025-11-06",
+    "status": "active",
+    "description": "JSON-Layer der Trilayer-Indexierung: Agentenschnittstelle für maschinenlesbaren Zugriff auf das seed/-Archiv"
+  },
+  "categories": {
+    "meta": {
+      "name": "Meta & Prozess",
+      "color": "#9B59B6"
+    },
+    "theory": {
+      "name": "Theoretische Grundlagen",
+      "color": "#3498DB"
+    },
+    "validation": {
+      "name": "Validierung & Empirik",
+      "color": "#27AE60"
+    },
+    "concepts": {
+      "name": "Konzeptuelle Artefakte",
+      "color": "#E67E22"
+    },
+    "synthesis": {
+      "name": "Synthese & Feedback",
+      "color": "#F39C12"
+    },
+    "domains": {
+      "name": "Domain-Spezifische Felder",
+      "color": "#E74C3C",
+      "subdomains": ["ai", "biology", "cognition", "ethics", "geophysics", "socio_ecology"]
+    }
+  },
+  "documents": [
+    {
+      "id": "meta-001",
+      "title": "Metareflexion",
+      "path": "Metareflexion.txt",
+      "category": "meta",
+      "type": "reflection",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["fixwerte", "variabilität", "bewusstsein", "erinnerung", "nullen", "sigillin"]
+    },
+    {
+      "id": "meta-002",
+      "title": "Rekalibrierung Abschluss",
+      "path": "Rekalibrierung_Abschlus.txt",
+      "category": "meta",
+      "type": "synthesis",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["co-hypothese", "unser-weg", "roadmap", "trilayer", "mor"]
+    },
+    {
+      "id": "meta-003",
+      "title": "NextStep",
+      "path": "NextStep.txt",
+      "category": "meta",
+      "type": "roadmap",
+      "status": "active",
+      "relevance": "high",
+      "keywords": ["governance", "falsifikation", "v1.2", "meta-regression"]
+    },
+    {
+      "id": "meta-004",
+      "title": "CLAUDE_CODE_SESSION",
+      "path": "CLAUDE_CODE_SESSION.md",
+      "category": "meta",
+      "type": "session",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": ["session", "claude", "development"]
+    },
+    {
+      "id": "meta-005",
+      "title": "EXECUTIVE_SUMMARY_SESSION",
+      "path": "EXECUTIVE_SUMMARY_SESSION.md",
+      "category": "meta",
+      "type": "session",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": ["session", "summary", "overview"]
+    },
+    {
+      "id": "meta-006",
+      "title": "FINALISIERUNG_SESSION",
+      "path": "FINALISIERUNG_SESSION.md",
+      "category": "meta",
+      "type": "session",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": ["session", "finalisierung", "completion"]
+    },
+    {
+      "id": "theory-001",
+      "title": "FinalerPlan",
+      "path": "FinalerPlan.txt",
+      "category": "theory",
+      "type": "plan",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["governance", "authorship", "metrics", "reproduce", "utac"]
+    },
+    {
+      "id": "theory-002",
+      "title": "AI-Evolutionsprinzip",
+      "path": "AI-Evulutionsprinziep.txt",
+      "category": "theory",
+      "type": "discourse",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["ai", "evolution", "emergence", "β-field"]
+    },
+    {
+      "id": "theory-003",
+      "title": "Diskurs Klimamodul",
+      "path": "Diskurs Klimamodul.txt",
+      "category": "theory",
+      "type": "discourse",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["klima", "amoc", "tipping-points", "climate"]
+    },
+    {
+      "id": "theory-004",
+      "title": "Diskurs Psyche-AI Kohärenzen",
+      "path": "Diskurs_V1_Psyche_AI_koheränzen.txt",
+      "category": "theory",
+      "type": "discourse",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["psyche", "ai", "kohärenz", "consciousness", "φ"]
+    },
+    {
+      "id": "theory-005",
+      "title": "Transdisziplinärer Schwellenfeld-Simulator",
+      "path": "Transdisziplinärer Schwellenfeld-Simulator--Claude.txt",
+      "category": "theory",
+      "type": "concept",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": ["simulator", "threshold", "transdisciplinary"]
+    },
+    {
+      "id": "theory-006",
+      "title": "FinalDevTalks",
+      "path": "FinalDevTalks.txt",
+      "category": "theory",
+      "type": "discussion",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": ["development", "discussion", "implementation"]
+    },
+    {
+      "id": "theory-007",
+      "title": "Brainstorm",
+      "path": "Brainstorm.txt",
+      "category": "theory",
+      "type": "brainstorm",
+      "status": "historical",
+      "relevance": "low",
+      "keywords": ["brainstorm", "ideas", "exploration"]
+    },
+    {
+      "id": "theory-008",
+      "title": "Brainstorm2",
+      "path": "Brainstorm2.txt",
+      "category": "theory",
+      "type": "brainstorm",
+      "status": "historical",
+      "relevance": "low",
+      "keywords": ["brainstorm", "ideas", "exploration"]
+    },
+    {
+      "id": "valid-001",
+      "title": "Validierung2",
+      "path": "Validierung2.txt",
+      "category": "validation",
+      "type": "validation",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["validierung", "empirik", "β-werte", "meta-regression"]
+    },
+    {
+      "id": "valid-002",
+      "title": "Validierung",
+      "path": "Validierung.txt",
+      "category": "validation",
+      "type": "validation",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": ["validierung", "testing", "verification"]
+    },
+    {
+      "id": "valid-003",
+      "title": "EmpirischerBeleg",
+      "path": "EmpirischerBeleg.txt",
+      "category": "validation",
+      "type": "evidence",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["empirik", "beleg", "data", "evidence"]
+    },
+    {
+      "id": "valid-004",
+      "title": "Feinschliff",
+      "path": "Feinschliff.txt",
+      "category": "validation",
+      "type": "refinement",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": ["refinement", "polishing", "finalization"]
+    },
+    {
+      "id": "valid-005",
+      "title": "Reaktivierung",
+      "path": "Reaktivierung.txt",
+      "category": "validation",
+      "type": "process",
+      "status": "historical",
+      "relevance": "low",
+      "keywords": ["reaktivierung", "restart", "reactivation"]
+    },
+    {
+      "id": "valid-006",
+      "title": "Rekalibrierung",
+      "path": "Rekalibrierung.txt",
+      "category": "validation",
+      "type": "calibration",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": ["rekalibrierung", "calibration", "adjustment"]
+    },
+    {
+      "id": "valid-007",
+      "title": "ReaktionAI-AeonundJoh",
+      "path": "ReaktionAI-AeonundJoh.txt",
+      "category": "validation",
+      "type": "dialogue",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": ["aeon", "johann", "dialogue", "reaction"]
+    },
+    {
+      "id": "concept-001",
+      "title": "Resonance Bridge Map",
+      "path": "resonance-bridge-map.md",
+      "category": "concepts",
+      "type": "map",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["resonance", "bridge", "mapping", "domains"]
+    },
+    {
+      "id": "concept-002",
+      "title": "Threshold Resonance Atlas",
+      "path": "threshold_resonance_atlas.md",
+      "category": "concepts",
+      "type": "atlas",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["threshold", "atlas", "waypoints", "cartography"]
+    },
+    {
+      "id": "concept-003",
+      "title": "UTF Living Glossary",
+      "path": "utf-living-glossary.md",
+      "category": "concepts",
+      "type": "glossary",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["glossary", "definitions", "R", "Θ", "β", "ζ"]
+    },
+    {
+      "id": "concept-004",
+      "title": "Meta Schwellen Systemtypen",
+      "path": "meta_schwellen_systemtypen.md",
+      "category": "concepts",
+      "type": "taxonomy",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["systemtypen", "taxonomy", "classification"]
+    },
+    {
+      "id": "concept-005",
+      "title": "Meta Threshold Controller",
+      "path": "meta_threshold_controller.md",
+      "category": "concepts",
+      "type": "controller",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["controller", "meta", "threshold", "regulation"]
+    },
+    {
+      "id": "concept-006",
+      "title": "Threshold Gate Brief",
+      "path": "threshold_gate_brief.md",
+      "category": "concepts",
+      "type": "brief",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": ["gate", "threshold", "brief"]
+    },
+    {
+      "id": "concept-007",
+      "title": "Robin Semantic Threshold",
+      "path": "robin-semantic-threshold.md",
+      "category": "concepts",
+      "type": "concept",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": ["robin", "semantic", "threshold"]
+    },
+    {
+      "id": "concept-008",
+      "title": "Dynamic ROBIN Boundary",
+      "path": "dynamic-robin-boundary.md",
+      "category": "concepts",
+      "type": "concept",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": ["robin", "boundary", "dynamic"]
+    },
+    {
+      "id": "concept-009",
+      "title": "Semantic Resonance Kernel",
+      "path": "semantic-resonance-kernel.md",
+      "category": "concepts",
+      "type": "kernel",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": ["semantic", "resonance", "kernel"]
+    },
+    {
+      "id": "concept-010",
+      "title": "Gravitationsatem Coupled Threshold",
+      "path": "gravitationsatem-coupled-threshold.md",
+      "category": "concepts",
+      "type": "concept",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": ["gravitation", "atem", "coupling", "astrophysik"]
+    },
+    {
+      "id": "concept-011",
+      "title": "QPO Membrane Resonance",
+      "path": "qpo_membrane_resonance.md",
+      "category": "concepts",
+      "type": "concept",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": ["qpo", "membrane", "resonance", "astrophysik"]
+    },
+    {
+      "id": "concept-012",
+      "title": "Synthetic Threshold Sweep",
+      "path": "synthetic-threshold-sweep.md",
+      "category": "concepts",
+      "type": "method",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": ["synthetic", "sweep", "simulation"]
+    },
+    {
+      "id": "concept-013",
+      "title": "Wei Integration",
+      "path": "wei_integration.md",
+      "category": "concepts",
+      "type": "integration",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["wei", "llm", "palm", "integration"]
+    },
+    {
+      "id": "concept-014",
+      "title": "UTF Phase One Field Journal",
+      "path": "utf-phase-one-field-journal.md",
+      "category": "concepts",
+      "type": "journal",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": ["utf", "phase", "journal", "field-notes"]
+    },
+    {
+      "id": "concept-015",
+      "title": "V01 Resonance Readiness",
+      "path": "V01-Resonance-Readiness.md",
+      "category": "concepts",
+      "type": "assessment",
+      "status": "historical",
+      "relevance": "low",
+      "keywords": ["resonance", "readiness", "v01"]
+    },
+    {
+      "id": "concept-016",
+      "title": "Theorie- und Empirie-Abschnitte",
+      "path": "Theorie- und Empirie-Abschnitte.md",
+      "category": "concepts",
+      "type": "structure",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": ["theorie", "empirie", "structure", "sections"]
+    },
+    {
+      "id": "synth-001",
+      "title": "Codex Feedback (YAML)",
+      "path": "codexfeedback.yaml",
+      "category": "synthesis",
+      "type": "feedback-yaml",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["codex", "feedback", "trilayer", "yaml"]
+    },
+    {
+      "id": "synth-002",
+      "title": "Codex Feedback (JSON)",
+      "path": "codexfeedback.json",
+      "category": "synthesis",
+      "type": "feedback-json",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["codex", "feedback", "trilayer", "json", "agents"]
+    },
+    {
+      "id": "synth-003",
+      "title": "Codex Feedback (MD)",
+      "path": "codexfeedback.md",
+      "category": "synthesis",
+      "type": "feedback-md",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["codex", "feedback", "trilayer", "markdown"]
+    },
+    {
+      "id": "synth-004",
+      "title": "README",
+      "path": "README.md",
+      "category": "synthesis",
+      "type": "readme",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": ["readme", "overview", "mandate", "trilayer"]
+    }
+  ],
+  "domains": {
+    "ai": {
+      "name": "Artificial Intelligence",
+      "path": "ai/",
+      "documents": [
+        {
+          "title": "AGENTS",
+          "path": "ai/AGENTS.md",
+          "type": "meta",
+          "keywords": ["agents", "ai", "meta"]
+        },
+        {
+          "title": "Anthropic Introspection Validation",
+          "path": "ai/anthropic_introspection_validation.md",
+          "type": "validation",
+          "keywords": ["anthropic", "introspection", "φ", "llm"]
+        },
+        {
+          "title": "Controlled Emergence",
+          "path": "ai/controlled_emergence.md",
+          "type": "concept",
+          "keywords": ["controlled", "emergence", "ai-safety"]
+        },
+        {
+          "title": "LLM Threshold Training",
+          "path": "ai/llm-threshold-training.md",
+          "type": "method",
+          "keywords": ["llm", "training", "threshold"]
+        },
+        {
+          "title": "LLM Emergent Skill",
+          "path": "ai/llm_emergent_skill.md",
+          "type": "analysis",
+          "keywords": ["llm", "emergent", "skill", "β"]
+        }
+      ]
+    },
+    "biology": {
+      "name": "Biology & Evolution",
+      "path": "biology/",
+      "documents": [
+        {
+          "title": "AGENTS",
+          "path": "biology/AGENTS.md",
+          "type": "meta",
+          "keywords": ["agents", "biology", "meta"]
+        },
+        {
+          "title": "Bio Emergence Semantic Phase Transition",
+          "path": "biology/bio_emergence_semantic_phase_transition.md",
+          "type": "concept",
+          "keywords": ["bio", "emergence", "phase-transition", "semantic"]
+        },
+        {
+          "title": "Honeybee Waggle",
+          "path": "biology/honeybee_waggle.md",
+          "type": "case-study",
+          "keywords": ["honeybee", "waggle", "communication", "threshold"]
+        },
+        {
+          "title": "Lenski Cit+ Verification",
+          "path": "biology/lenski_citplus_verification.md",
+          "type": "validation",
+          "keywords": ["lenski", "ltee", "citrate", "evolution", "β"]
+        },
+        {
+          "title": "Synaptic Release Threshold",
+          "path": "biology/synaptic_release_threshold.md",
+          "type": "concept",
+          "keywords": ["synaptic", "neuron", "threshold", "biology"]
+        }
+      ]
+    },
+    "cognition": {
+      "name": "Cognition & Psychology",
+      "path": "cognition/",
+      "documents": [
+        {
+          "title": "AGENTS",
+          "path": "cognition/AGENTS.md",
+          "type": "meta",
+          "keywords": ["agents", "cognition", "meta"]
+        },
+        {
+          "title": "Adaptive Theta Plasticity",
+          "path": "cognition/adaptive_theta_plasticity.md",
+          "type": "concept",
+          "keywords": ["adaptive", "theta", "plasticity", "trauma", "therapy"]
+        },
+        {
+          "title": "Working Memory Gate",
+          "path": "cognition/working_memory_gate.md",
+          "type": "concept",
+          "keywords": ["working-memory", "gate", "cognition"]
+        }
+      ]
+    },
+    "ethics": {
+      "name": "Ethics & Governance",
+      "path": "ethics/",
+      "documents": [
+        {
+          "title": "AGENTS",
+          "path": "ethics/AGENTS.md",
+          "type": "meta",
+          "keywords": ["agents", "ethics", "meta"]
+        },
+        {
+          "title": "Adaptive Threshold Governance",
+          "path": "ethics/adaptive_threshold_governance.md",
+          "type": "framework",
+          "keywords": ["governance", "ethics", "adaptive", "threshold", "φ"]
+        }
+      ]
+    },
+    "geophysics": {
+      "name": "Geophysics & Seismology",
+      "path": "geophysics/",
+      "documents": [
+        {
+          "title": "AGENTS",
+          "path": "geophysics/AGENTS.md",
+          "type": "meta",
+          "keywords": ["agents", "geophysics", "meta"]
+        },
+        {
+          "title": "Seismic Early Warning Thresholds",
+          "path": "geophysics/seismic_early_warning_thresholds.md",
+          "type": "application",
+          "keywords": ["seismic", "early-warning", "earthquake", "threshold"]
+        },
+        {
+          "title": "Subduction Rupture Resonance",
+          "path": "geophysics/subduction_rupture_resonance.md",
+          "type": "concept",
+          "keywords": ["subduction", "rupture", "resonance", "earthquake"]
+        }
+      ]
+    },
+    "socio_ecology": {
+      "name": "Socio-Ecology & Climate",
+      "path": "socio_ecology/",
+      "documents": [
+        {
+          "title": "AGENTS",
+          "path": "socio_ecology/AGENTS.md",
+          "type": "meta",
+          "keywords": ["agents", "socio-ecology", "meta"]
+        },
+        {
+          "title": "Amazon Moisture Resilience",
+          "path": "socio_ecology/amazon_moisture_resilience.md",
+          "type": "case-study",
+          "keywords": ["amazon", "moisture", "resilience", "β=14.6"]
+        },
+        {
+          "title": "Bio-Cultural Buffering",
+          "path": "socio_ecology/bio_cultural_buffering.md",
+          "type": "concept",
+          "keywords": ["bio-cultural", "buffering", "resilience"]
+        },
+        {
+          "title": "Planetary Threshold Cartography",
+          "path": "socio_ecology/planetary_threshold_cartography.md",
+          "type": "framework",
+          "keywords": ["planetary", "cartography", "climate", "tipping-points"]
+        },
+        {
+          "title": "Urban Heat Canopy Resonance",
+          "path": "socio_ecology/urban_heat_canopy_resonance.md",
+          "type": "case-study",
+          "keywords": ["urban-heat", "β=16.3", "outlier", "extreme"]
+        }
+      ]
+    }
+  },
+  "triggers": {
+    "core_concepts": ["UTAC", "Sigillin", "MOR", "Trilayer", "Co-Hypothese", "Unified-Mandala"],
+    "mathematical": ["β-field", "β-Spektrum", "Θ", "R", "φ", "ψ", "σ(β(R-Θ))", "ΔAIC", "Meta-Regression"],
+    "philosophical": ["Fixwerte", "Variabilität", "Bewusstsein", "Erinnerung", "Nullen", "Resonanz", "Emergenz"],
+    "methodological": ["Falsifizierbarkeit", "Reproduzierbarkeit", "Governance", "Validierung", "Running-Coupling"],
+    "domains_specific": ["LLM", "Lenski LTEE", "AMOC", "Tipping-Points", "Trauma", "QPO", "Urban-Heat"]
+  },
+  "quicklinks": {
+    "start_here": ["meta-002", "meta-001", "meta-003"],
+    "theory_core": ["theory-001", "theory-002", "theory-003"],
+    "validation": ["valid-001", "valid-003"],
+    "concepts": ["concept-001", "concept-002", "concept-003"],
+    "synthesis": ["synth-001", "synth-002", "synth-003"]
+  }
+}
