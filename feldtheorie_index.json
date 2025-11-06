@@ -132,6 +132,25 @@
         "field_type_classification_v1.1.md (5 Systemtypen)",
         "utac_falsifiability.md (Popper-konform!)"
       ]
+    },
+    "archive": {
+      "name": "archive/ - Sigillin Cold Storage",
+      "path": "archive/",
+      "index_files": {
+        "yaml": "archive/archive_index.yaml",
+        "json": "archive/archive_index.json",
+        "md": "archive/archive_index.md"
+      },
+      "total_items": 0,
+      "categories": 1,
+      "description": "Archiviertes Sigillin für Wartung:\nAlte Einträge aus überwachsenen Sigillin (ZIP-komprimiert).\nGegen Sigillin-Inflation und Archive-Hypnose!\nScript: scripts/archive_sigillin.py\n",
+      "color": "#95A5A6",
+      "relevance": "maintenance",
+      "highlights": [
+        "Sigillin-Hygiene System (Wartung gegen Inflation)",
+        "ZIP-Archive mit Trilayer-Index",
+        "docs/sigillin_maintenance.md (Pflegeanleitung)"
+      ]
     }
   },
   "project_overview": {
@@ -308,20 +327,21 @@
     ]
   },
   "statistics": {
-    "directories_indexed": 5,
+    "directories_indexed": 6,
     "total_files_cataloged": 163,
-    "trilayer_indices": 15,
+    "trilayer_indices": 18,
     "breakdown": {
       "seed": 69,
       "analysis": 32,
       "data": 43,
       "models": 10,
-      "docs": 9
+      "docs": 9,
+      "archive": 0
     },
     "index_files": {
-      "yaml_files": 5,
-      "json_files": 5,
-      "md_files": 5
+      "yaml_files": 6,
+      "json_files": 6,
+      "md_files": 6
     },
     "project_size": {
       "python_scripts": 42,
@@ -332,17 +352,20 @@
   "version_info": {
     "utac_version": "1.1.2",
     "sigillin_version": "1.0.0",
-    "trilayer_completion": "5/6 directories (seed, analysis, data, models, docs)",
-    "next_milestone": "Root Meta-Index (DIESER INDEX!)"
+    "trilayer_completion": "6 directories (seed, analysis, data, models, docs, archive)",
+    "maintenance_system": "Sigillin Archive System (archive_sigillin.py)",
+    "next_milestone": "UTAC v1.2 Meta-Regression (R² > 0.7)"
   },
   "status": {
     "current_phase": "UTAC v1.1.2 deployed, v1.2 in planning",
-    "trilayer_status": "Operational in 5 directories",
+    "trilayer_status": "Operational in 6 directories (including archive/ for maintenance)",
+    "maintenance_system": "Active - Sigillin Archive System deployed",
     "publication_readiness": "Preprint ready (with honest R²=0.33)",
     "next_steps": [
       "UTAC v1.2 Meta-Regression (R² > 0.7)",
       "Outlier-Analyse (β=16.3, β=16.29)",
-      "Sigillin Paper (Co-Hypothese)"
+      "Sigillin Paper (Co-Hypothese)",
+      "Sigillin Maintenance (gegen Inflation!)"
     ]
   }
 }

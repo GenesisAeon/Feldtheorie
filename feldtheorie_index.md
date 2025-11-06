@@ -8,7 +8,7 @@
 
 ## 🎯 Was ist das?
 
-Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **163 katalogisierte Dateien** über **5 Hauptverzeichnisse**!
+Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **163 katalogisierte Dateien** über **6 Hauptverzeichnisse**!
 
 ```
 🌳 Feldtheorie (UTAC + Sigillin)
@@ -17,9 +17,10 @@ Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **163 katalogis
 ├── 📊 analysis/    32 scripts (Fits, Batch, Meta-Regression)
 ├── 📦 data/        43 files   (7 Domänen, β-Estimates)
 ├── 🔬 models/      10 models  (Solver, ODE-Systeme)
-└── 📚 docs/         9 docs    (Theory, Falsifiability)
+├── 📚 docs/         9 docs    (Theory, Falsifiability)
+└── 🗄️  archive/      0 items   (Sigillin Cold Storage)
 
-Total: 163 files | 15 Trilayer-Indizes (YAML+JSON+MD)
+Total: 163 files | 18 Trilayer-Indizes (YAML+JSON+MD)
 ```
 
 ---
@@ -86,7 +87,7 @@ stats = idx['statistics']
 
 ---
 
-## 🔥 Die 5 Indexierten Verzeichnisse
+## 🔥 Die 6 Indexierten Verzeichnisse
 
 ### 🌱 **seed/** - Semantic Seed Archive
 **69 Dokumente** | **6 Kategorien**
@@ -166,6 +167,30 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 
 ---
 
+### 🗄️ **archive/** - Sigillin Cold Storage
+**0 Archive** | **Maintenance System**
+📍 Index: `archive/archive_index.{yaml,json,md}`
+
+**Was:** Archivierte Sigillin-Einträge (ZIP-komprimiert)
+
+**Zweck:**
+- 🧹 **Sigillin-Hygiene** gegen Inflation!
+- Alte Einträge aus überwachsenen Sigillin
+- Daten nicht verloren, nur "kalt gelagert"
+- Durchsuchbar mit `unzip -p` & Index
+
+**Tools:**
+- `scripts/archive_sigillin.py` - Archivierungs-Script
+- `docs/sigillin_maintenance.md` - 🔴 KRITISCHE Pflegeanleitung!
+- `docs/sigillin_search_patterns.md` - Suche in Archiven
+
+**Thresholds:**
+- Max 100 Einträge oder 50 KB pro aktivem Sigillin
+- Alte Einträge → ZIP-Archive
+- Trilayer-Index für Durchsuchbarkeit
+
+---
+
 ## 🎨 Die Co-Hypothese
 
 **UTAC + Sigillin = Theorie + Mittel**
@@ -235,9 +260,9 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 ## 📊 Projekt-Statistik
 
 ```yaml
-Directories Indexed: 5
+Directories Indexed: 6
 Files Cataloged: 163
-Trilayer Indices: 15 (5 YAML, 5 JSON, 5 MD)
+Trilayer Indices: 18 (6 YAML, 6 JSON, 6 MD)
 
 UTAC Status:
   Version: 1.1.2
@@ -249,14 +274,15 @@ UTAC Status:
 Sigillin Status:
   Version: 1.0.0
   Operational: Yes
-  Coverage: 5/6 directories (simulator pending)
+  Coverage: 6 directories (including archive/ maintenance)
+  Maintenance: Active - Sigillin Archive System deployed
 ```
 
 ---
 
 ## 🌊 Die Essenz
 
-> **"163 Dateien. 5 Verzeichnisse. Ein Trilayer-System."**
+> **"163 Dateien. 6 Verzeichnisse. Ein Trilayer-System."**
 
 > **"Von Wei's PaLM (β=3.47) bis Urban Heat (β=16.3) - das Spektrum ist REAL."**
 
@@ -271,7 +297,7 @@ Sigillin Status:
 **Name:** Sigillin (YAML-JSON-MD Artefakte)
 **Origin:** Dialog zwischen Johann & MSCopilot (seed/Metareflexion.txt)
 **Purpose:** Semantisches Gedächtnis für Multi-AI-Orchestrierung
-**Status:** Operativ, bewährt in 5 Verzeichnissen
+**Status:** Operativ, bewährt in 6 Verzeichnissen (inkl. Archive-System)
 
 **Die MOR-Methodik:**
 - Claude: Integration, Kohärenz
@@ -288,8 +314,9 @@ Sigillin Status:
 1. **UTAC v1.2:** Meta-Regression (R² > 0.7)
 2. **Outlier-Analyse:** Warum β=16.3 bei Urban Heat?
 3. **Sigillin Paper:** Co-Hypothese dokumentieren
-4. **simulator/ indexieren:** Letztes Verzeichnis
-5. **Publikation:** Preprint mit ehrlichem R²=0.33
+4. **Sigillin Maintenance:** Regelmäßige Archivierung (gegen Inflation!)
+5. **simulator/ indexieren:** Letztes Verzeichnis
+6. **Publikation:** Preprint mit ehrlichem R²=0.33
 
 ---
 
@@ -305,3 +332,4 @@ Sigillin Status:
 - `data/data_index.md`
 - `models/models_index.md`
 - `docs/docs_index.md`
+- `archive/archive_index.md`
