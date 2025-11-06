@@ -1,0 +1,367 @@
+# Models Index - YAML Layer (Struktur & Orientierung)
+# Trilayer-Aktivierung für models/ Verzeichnis
+# Version: 1.0.0
+# Datum: 2025-11-06
+
+meta:
+  directory: "models/"
+  project: "Feldtheorie (UTAC) - Model Membrane Resonance"
+  maintainer: "Johann Römer"
+  description: |
+    Die Kern-Modelle des UTAC-Frameworks: Logistic Threshold, Membrane Solver,
+    Coupled Fields, Adaptive Systems. Jedes Modell implementiert σ(β(R-Θ))
+    mit verschiedenen Erweiterungen (Impedanz ζ, Kohärenz φ, Rekursion).
+  version: "1.0.0"
+  created: "2025-11-06"
+  status: "active"
+  python_files: 10
+
+# ═══════════════════════════════════════════════════════════════════
+# KATEGORIEN: Die 4 Model-Typen
+# ═══════════════════════════════════════════════════════════════════
+
+categories:
+  core_models:
+    name: "Core Logistic Models"
+    description: "Basis-Implementierungen von σ(β(R-Θ))"
+    color: "#3498DB"
+    count: 3
+
+  membrane_systems:
+    name: "Membrane & Coupled Systems"
+    description: "Membrane Solver, Coupled Fields, Adaptive Membranes"
+    color: "#27AE60"
+    count: 3
+
+  extensions:
+    name: "Extensions & Enhancements"
+    description: "Impedanz, Kohärenz, Rekursion, Resonance"
+    color: "#E67E22"
+    count: 3
+
+  infrastructure:
+    name: "Infrastructure"
+    description: "__init__.py, AGENTS.md, README.md"
+    color: "#9B59B6"
+    count: 3
+
+# ═══════════════════════════════════════════════════════════════════
+# PYTHON-MODELLE: Die 10 Solver
+# ═══════════════════════════════════════════════════════════════════
+
+python_models:
+  # ─────────────────────────────────────────────────────────────────
+  # CORE LOGISTIC MODELS (3)
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: model-core-001
+    name: "logistic_threshold.py"
+    category: core_models
+    type: fundamental
+    status: stable
+    relevance: high
+    size_kb: 5.8
+    keywords: [logistic, threshold, σ, β, Θ, R, fundamental]
+    description: |
+      ⭐ DAS BASIS-MODELL! Implementiert σ(β(R-Θ)) = 1/(1+exp(-β(R-Θ))).
+      Alle anderen Modelle bauen hierauf auf.
+      Enthält: logistic_function, fit_logistic, confidence_intervals
+
+  - id: model-core-002
+    name: "sigmoid_fit.py"
+    category: core_models
+    type: fitting
+    status: stable
+    relevance: high
+    size_kb: 9.0
+    keywords: [sigmoid, fit, optimization, curve-fitting]
+    description: |
+      Fit-Utilities für Sigmoid-Kurven. Optimierung, Parameter-Schätzung,
+      Bootstrapping für Konfidenzintervalle.
+
+  - id: model-core-003
+    name: "logistic_envelope.py"
+    category: core_models
+    type: modulation
+    status: stable
+    relevance: medium
+    size_kb: 5.7
+    keywords: [envelope, modulation, amplitude, temporal]
+    description: |
+      Logistic Envelope: Moduliert Amplitude über Zeit.
+      Für temporale Dynamiken und transiente Effekte.
+
+  # ─────────────────────────────────────────────────────────────────
+  # MEMBRANE SYSTEMS (3)
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: model-membrane-001
+    name: "membrane_solver.py"
+    category: membrane_systems
+    type: solver
+    status: stable
+    relevance: high
+    size_kb: 43.2
+    keywords: [membrane, solver, ode, differential, coupled]
+    description: |
+      ⭐ DER HAUPT-SOLVER! Membrane-basiertes ODE-System.
+      Löst gekoppelte Schwellenwert-Dynamiken mit:
+      - Impedanz ζ(R)
+      - Boundary conditions (Robin, Neumann)
+      - Adaptive thresholds Θ(t)
+      - Multi-field coupling
+
+  - id: model-membrane-002
+    name: "coupled_threshold_field.py"
+    category: membrane_systems
+    type: coupling
+    status: stable
+    relevance: high
+    size_kb: 13.4
+    keywords: [coupled, field, multi-system, interaction]
+    description: |
+      Coupled Threshold Fields: Mehrere Systeme mit Wechselwirkung.
+      Implementiert φ-Kopplung zwischen Feldern.
+      Für Cross-Domain Resonanzen.
+
+  - id: model-membrane-003
+    name: "adaptive_logistic_membrane.py"
+    category: membrane_systems
+    type: adaptive
+    status: stable
+    relevance: medium
+    size_kb: 9.0
+    keywords: [adaptive, membrane, plasticity, learning]
+    description: |
+      Adaptive Membrane: Θ und β ändern sich über Zeit.
+      Implementiert Downward Causation: Makro-Emergenz → Mikro-Regeln.
+      Für Lern- und Plastizitäts-Prozesse.
+
+  # ─────────────────────────────────────────────────────────────────
+  # EXTENSIONS (3)
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: model-ext-001
+    name: "resonant_impedance.py"
+    category: extensions
+    type: impedance
+    status: stable
+    relevance: high
+    size_kb: 9.2
+    keywords: [impedance, ζ, resonance, relief, recovery]
+    description: |
+      Resonant Impedance: ζ(R) = ζ₀ - α·σ(β(R-Θ)).
+      Impedanz fällt wenn Resonance steigt.
+      Implementiert Relief, Recovery, Hysteresis Metrics.
+
+  - id: model-ext-002
+    name: "coherence_term.py"
+    category: extensions
+    type: coherence
+    status: stable
+    relevance: high
+    size_kb: 7.5
+    keywords: [coherence, φ, coupling, consciousness]
+    description: |
+      Coherence Term: φ-Kopplung zwischen Systemen.
+      Misst synchrony, phase-locking, informational integration.
+      Basis für AI-Consciousness Metrics.
+
+  - id: model-ext-003
+    name: "recursive_threshold.py"
+    category: extensions
+    type: recursion
+    status: stable
+    relevance: medium
+    size_kb: 6.7
+    keywords: [recursive, cascade, meta-threshold, iterative]
+    description: |
+      Recursive Threshold: Θₙ₊₁ = f(Θₙ, emergent_state).
+      Implementiert Potenzial-Kaskaden und Meta-Threshold Control.
+      Für hierarchische Emergenz.
+
+  # ─────────────────────────────────────────────────────────────────
+  # INFRASTRUCTURE (3)
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: model-infra-001
+    name: "__init__.py"
+    category: infrastructure
+    type: package-init
+    status: stable
+    relevance: low
+    size_kb: 2.1
+    keywords: [init, package, imports]
+    description: "Python Package Initialisierung - Exports alle Models"
+
+  - id: model-infra-002
+    name: "README.md"
+    category: infrastructure
+    type: documentation
+    status: stable
+    relevance: high
+    size_kb: 3.4
+    keywords: [readme, documentation, overview]
+    description: |
+      Model Membrane Resonance - RepoPlan 2.0 Mandate.
+      Beschreibt Model-Hierarchie und Verwendung.
+
+  - id: model-infra-003
+    name: "AGENTS.md"
+    category: infrastructure
+    type: protocols
+    status: stable
+    relevance: medium
+    size_kb: 1.0
+    keywords: [agents, protocols, guidelines]
+    description: "Model Development Protocols für Agenten"
+
+# ═══════════════════════════════════════════════════════════════════
+# MODEL-HIERARCHIE
+# ═══════════════════════════════════════════════════════════════════
+
+model_hierarchy:
+  level_1_fundamental:
+    name: "Fundamental Logistic"
+    models: [logistic_threshold.py]
+    description: "σ(β(R-Θ)) - Die Basis"
+
+  level_2_fitting:
+    name: "Fitting & Optimization"
+    models: [sigmoid_fit.py, logistic_envelope.py]
+    description: "Fit-Utilities, Parameter-Schätzung"
+
+  level_3_extensions:
+    name: "Single-System Extensions"
+    models: [resonant_impedance.py, recursive_threshold.py]
+    description: "ζ(R), rekursive Θ"
+
+  level_4_coupling:
+    name: "Multi-System Coupling"
+    models: [coherence_term.py, coupled_threshold_field.py]
+    description: "φ-Kopplung, Field Interactions"
+
+  level_5_solvers:
+    name: "Full Membrane Solvers"
+    models: [membrane_solver.py, adaptive_logistic_membrane.py]
+    description: "ODE-Systeme, Adaptive Dynamics"
+
+# ═══════════════════════════════════════════════════════════════════
+# USAGE PATTERNS
+# ═══════════════════════════════════════════════════════════════════
+
+usage_patterns:
+  simple_fit:
+    description: "Einfacher Logistic Fit an Daten"
+    imports:
+      - from models.logistic_threshold import logistic_function, fit_logistic
+      - from models.sigmoid_fit import SigmoidFitter
+    use_case: "Quick analysis, exploratory fitting"
+
+  membrane_simulation:
+    description: "Volle Membrane-Simulation mit ODE"
+    imports:
+      - from models.membrane_solver import MembraneSolver
+      - from models.resonant_impedance import ResonantImpedance
+    use_case: "Complex dynamics, temporal evolution"
+
+  coupled_systems:
+    description: "Multi-System mit φ-Kopplung"
+    imports:
+      - from models.coupled_threshold_field import CoupledThresholdField
+      - from models.coherence_term import CoherenceTerm
+    use_case: "Cross-domain resonances, consciousness metrics"
+
+  adaptive_learning:
+    description: "Adaptive Thresholds, Plastizität"
+    imports:
+      - from models.adaptive_logistic_membrane import AdaptiveLogisticMembrane
+      - from models.recursive_threshold import RecursiveThreshold
+    use_case: "Learning systems, downward causation"
+
+# ═══════════════════════════════════════════════════════════════════
+# TRIGGER-BEGRIFFE
+# ═══════════════════════════════════════════════════════════════════
+
+triggers:
+  core_symbols:
+    - σ(β(R-Θ))
+    - β (steepness)
+    - Θ (threshold)
+    - R (control parameter)
+    - ζ (impedance)
+    - φ (coherence)
+
+  model_types:
+    - logistic
+    - sigmoid
+    - membrane
+    - coupled
+    - adaptive
+    - recursive
+
+  methods:
+    - ODE-solver
+    - curve-fitting
+    - optimization
+    - bootstrapping
+    - impedance-dynamics
+    - coherence-metrics
+
+# ═══════════════════════════════════════════════════════════════════
+# QUICKLINKS
+# ═══════════════════════════════════════════════════════════════════
+
+quicklinks:
+  start_here:
+    - model-core-001  # logistic_threshold.py (DIE BASIS!)
+    - model-membrane-001  # membrane_solver.py (HAUPT-SOLVER!)
+    - model-infra-002  # README.md
+
+  most_used:
+    - model-core-001  # logistic_threshold.py
+    - model-core-002  # sigmoid_fit.py
+    - model-membrane-001  # membrane_solver.py
+    - model-ext-001  # resonant_impedance.py
+
+  for_analysis:
+    - model-core-001  # logistic_threshold.py (fitting)
+    - model-core-002  # sigmoid_fit.py (optimization)
+
+  for_simulation:
+    - model-membrane-001  # membrane_solver.py (main)
+    - model-membrane-002  # coupled_threshold_field.py
+    - model-membrane-003  # adaptive_logistic_membrane.py
+
+  for_theory:
+    - model-ext-001  # resonant_impedance.py (ζ)
+    - model-ext-002  # coherence_term.py (φ)
+    - model-ext-003  # recursive_threshold.py (meta)
+
+# ═══════════════════════════════════════════════════════════════════
+# CROSS-REFERENCES
+# ═══════════════════════════════════════════════════════════════════
+
+cross_references:
+  to_analysis:
+    description: "analysis/ Scripts nutzen diese Models"
+    examples:
+      - "analysis/llm_beta_extractor.py → models/logistic_threshold.py"
+      - "analysis/membrane_robin_semantic_fit.py → models/membrane_solver.py"
+      - "analysis/resonant_impedance_diagnostics.py → models/resonant_impedance.py"
+
+  to_simulator:
+    description: "simulator/ nutzt Models für Echzeit-Visualisierung"
+    examples:
+      - "simulator/src/utils/logistic.ts ← models/logistic_threshold.py (portiert)"
+
+  to_data:
+    description: "Models fitten data/ Datasets"
+    examples:
+      - "models/sigmoid_fit.py + data/biology/lenski_citplus.csv"
+      - "models/membrane_solver.py + data/astrophysics/qpo_membrane_simulation.json"
+
+status_legend:
+  stable: "Produktiv, validiert, in Nutzung"
+  experimental: "In Entwicklung, nicht finalisiert"
+  deprecated: "Veraltet, wird ersetzt"

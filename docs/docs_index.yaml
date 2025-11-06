@@ -1,0 +1,234 @@
+# Docs Index - YAML Layer (Struktur & Orientierung)
+# Trilayer-Aktivierung für docs/ Verzeichnis
+# Version: 1.0.0
+# Datum: 2025-11-06
+
+meta:
+  directory: "docs/"
+  project: "Feldtheorie (UTAC) - Living Documentation Tapestry"
+  maintainer: "Johann Römer"
+  description: |
+    UTAC Theory Documentation: Core Theory, Applications, Falsifiability,
+    Field Type Classification, Validation Reports.
+    Tri-layer Cadence: Formal, Empirical, Metaphorical.
+  version: "1.0.0"
+  created: "2025-11-06"
+  status: "active"
+  markdown_files: 9
+
+# ═══════════════════════════════════════════════════════════════════
+# KATEGORIEN: Die 4 Doc-Typen
+# ═══════════════════════════════════════════════════════════════════
+
+categories:
+  theory:
+    name: "Core Theory"
+    description: "UTAC Theory Core, Emergence, Universality"
+    color: "#3498DB"
+    count: 3
+
+  applications:
+    name: "Applications & Classification"
+    description: "Field Types, Use Cases, Review Considerations"
+    color: "#27AE60"
+    count: 3
+
+  validation:
+    name: "Validation & Falsifiability"
+    description: "Falsifiability Protocol, Validation Reports"
+    color: "#E67E22"
+    count: 2
+
+  infrastructure:
+    name: "Infrastructure"
+    description: "README, Overview"
+    color: "#9B59B6"
+    count: 1
+
+# ═══════════════════════════════════════════════════════════════════
+# MARKDOWN-DOKUMENTE: Die 9 Docs
+# ═══════════════════════════════════════════════════════════════════
+
+markdown_docs:
+  # ─────────────────────────────────────────────────────────────────
+  # CORE THEORY (3)
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: docs-theory-001
+    name: "utac_theory_core.md"
+    category: theory
+    type: theory
+    status: stable
+    relevance: high
+    size_kb: 3.2
+    keywords: [utac, theory, core, σ(β(R-Θ)), fundamental]
+    description: |
+      ⭐ DAS THEORIE-FUNDAMENT!
+      Definiert σ(β(R-Θ)), erklärt β-Spektrum, Θ-Dynamik, ζ-Impedanz.
+      Basis für alle anderen Docs.
+
+  - id: docs-theory-002
+    name: "utac_emergence_universal.md"
+    category: theory
+    type: emergence
+    status: stable
+    relevance: high
+    size_kb: 10.7
+    keywords: [emergence, universal, cross-domain, β-convergence]
+    description: |
+      UTAC Emergence Universal: Cross-Domain Patterns.
+      Zeigt wie σ(β(R-Θ)) über AI, Biology, Geophysics, Socio-Ecology gilt.
+      Argumentiert für β-Universalität (trotz Spektrum).
+
+  - id: docs-theory-003
+    name: "appendix_field_types.md"
+    category: theory
+    type: appendix
+    status: stable
+    relevance: medium
+    size_kb: 10.2
+    keywords: [appendix, field-types, taxonomy, classification]
+    description: |
+      Appendix: Field Types in Detail.
+      Detaillierte Beschreibung der 5 Schwellenwert-Systemtypen.
+
+  # ─────────────────────────────────────────────────────────────────
+  # APPLICATIONS (3)
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: docs-app-001
+    name: "field_type_classification_v1.1.md"
+    category: applications
+    type: classification
+    status: stable
+    relevance: high
+    size_kb: 21.1
+    keywords: [classification, field-types, taxonomy, v1.1]
+    description: |
+      ⭐ FIELD TYPE CLASSIFICATION v1.1!
+      Die 5 Systemtypen: Sharp Gates, Gradual Transitions, Coupled,
+      Adaptive, Recursive. Mit Beispielen aus allen Domänen.
+
+  - id: docs-app-002
+    name: "utac_applications.md"
+    category: applications
+    type: applications
+    status: stable
+    relevance: high
+    size_kb: 10.6
+    keywords: [applications, use-cases, domains, practical]
+    description: |
+      UTAC Applications: Praktische Anwendungen.
+      Von LLM-Training bis Climate Tipping Points.
+      Zeigt wie UTAC in der Praxis genutzt wird.
+
+  - id: docs-app-003
+    name: "utac_review_considerations.md"
+    category: applications
+    type: review-guide
+    status: stable
+    relevance: medium
+    size_kb: 10.9
+    keywords: [review, considerations, peer-review, guidelines]
+    description: |
+      UTAC Review Considerations: Guide für Reviewer.
+      Was sind die Stärken? Was sind die Limitationen?
+      Ehrliche Selbst-Evaluation.
+
+  # ─────────────────────────────────────────────────────────────────
+  # VALIDATION (2)
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: docs-val-001
+    name: "utac_falsifiability.md"
+    category: validation
+    type: falsifiability
+    status: stable
+    relevance: high
+    size_kb: 2.6
+    keywords: [falsifiability, null-models, ΔAIC, popper]
+    description: |
+      ⭐ FALSIFIABILITY PROTOCOL!
+      Wie UTAC falsifizierbar ist: Null-Models, ΔAIC>10, R²-Tests.
+      Kernargument: UTAC ist NICHT unfalsifizierbar!
+
+  - id: docs-val-002
+    name: "validation_report_v1.0.1.md"
+    category: validation
+    type: report
+    status: stable
+    relevance: high
+    size_kb: 18.5
+    keywords: [validation, report, v1.0.1, results, empirical]
+    description: |
+      Validation Report v1.0.1: Empirische Ergebnisse.
+      Zusammenfassung aller Fits, ΔAIC-Werte, R²-Statistiken.
+      Zeigt dass logistische Modelle konsistent besser sind.
+
+  # ─────────────────────────────────────────────────────────────────
+  # INFRASTRUCTURE (1)
+  # ─────────────────────────────────────────────────────────────────
+
+  - id: docs-infra-001
+    name: "README.md"
+    category: infrastructure
+    type: readme
+    status: stable
+    relevance: high
+    size_kb: 5.4
+    keywords: [readme, overview, mandate, tapestry]
+    description: |
+      Living Documentation Tapestry - RepoPlan 2.0 Mandate.
+      Beschreibt Tri-Layer Cadence und Documentation-Philosophie.
+
+# ═══════════════════════════════════════════════════════════════════
+# TRIGGER-BEGRIFFE
+# ═══════════════════════════════════════════════════════════════════
+
+triggers:
+  core_concepts:
+    - σ(β(R-Θ))
+    - β-Spektrum
+    - Θ-Dynamik
+    - ζ-Impedanz
+    - φ-Kohärenz
+
+  keywords:
+    - UTAC
+    - Falsifiability
+    - ΔAIC
+    - Null-Models
+    - Field-Types
+    - Cross-Domain
+    - Emergence
+    - Validation
+
+# ═══════════════════════════════════════════════════════════════════
+# QUICKLINKS
+# ═══════════════════════════════════════════════════════════════════
+
+quicklinks:
+  start_here:
+    - docs-theory-001  # utac_theory_core.md
+    - docs-val-001     # utac_falsifiability.md
+    - docs-infra-001   # README.md
+
+  for_theory:
+    - docs-theory-001  # Theory Core
+    - docs-theory-002  # Emergence Universal
+    - docs-app-001     # Field Classification v1.1
+
+  for_validation:
+    - docs-val-001     # Falsifiability Protocol
+    - docs-val-002     # Validation Report v1.0.1
+
+  for_applications:
+    - docs-app-001     # Field Classification
+    - docs-app-002     # Applications
+
+  for_review:
+    - docs-app-003     # Review Considerations (Selbst-Kritik!)
+
+status_legend:
+  stable: "Fertig, validiert, publikationsreif"
+  draft: "In Arbeit"
