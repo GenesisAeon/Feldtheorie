@@ -1,0 +1,279 @@
+meta:
+  project: Feldtheorie (UTAC + Sigillin)
+  maintainer: Johann Römer
+  description: 'Ordnungs-Sigillin für alle externen Quellen, Referenzen und Datenquellen.
+
+    Kategorisiert nach Domänen. Trilayer-Struktur (YAML + JSON + MD).
+
+    '
+  version: 1.0.0
+  created: '2025-11-06T16:53:06.943509'
+  status: active
+  sigillin_type: ordnungs-sigillin
+  note: Quellenkatalog für UTAC-Projekt. Referenziert Papers, Daten, Code.
+categories:
+  ai_llm:
+    name: AI & Large Language Models
+    description: Emergent abilities, LLM training, AI safety
+    color: '#3498DB'
+    icon: 🤖
+  biology_evolution:
+    name: Biology & Evolution
+    description: LTEE, synaptic thresholds, bio-emergence
+    color: '#27AE60'
+    icon: 🧬
+  climate_ecology:
+    name: Climate & Socio-Ecology
+    description: Tipping points, AMOC, Amazon resilience, urban heat
+    color: '#E74C3C'
+    icon: 🌍
+  geophysics:
+    name: Geophysics & Seismology
+    description: Earthquake dynamics, subduction, early warning
+    color: '#F39C12'
+    icon: 🌋
+  cognition_psychology:
+    name: Cognition & Psychology
+    description: Working memory, trauma, theta plasticity
+    color: '#9B59B6'
+    icon: 🧠
+  theoretical_physics:
+    name: Theoretical Physics & Math
+    description: Field theory, criticality, logistic functions
+    color: '#34495E'
+    icon: ⚛️
+sources:
+- id: wei2022emergent
+  category: ai_llm
+  type: paper
+  authors:
+  - Wei, J.
+  - Tay, Y.
+  - Bommasani, R.
+  - et al.
+  year: 2022
+  title: Emergent Abilities of Large Language Models
+  journal: Transactions on Machine Learning Research
+  url: https://arxiv.org/abs/2206.07682
+  cited_in:
+  - seed/ai/llm_emergent_skill.md
+  - seed/wei_integration.md
+  keywords:
+  - emergence
+  - LLM
+  - PaLM
+  - β-field
+  - scaling
+  relevance: critical
+  notes: Basis für Wei-Integration (PaLM β=3.47). Emergent abilities at scale.
+  utac_connection: β-Spektrum, emergente Fähigkeiten als Schwellenwert-Phänomen
+- id: anthropic2023introspection
+  category: ai_llm
+  type: paper
+  authors:
+  - Anthropic
+  year: 2023
+  title: Introspection in Large Language Models
+  organization: Anthropic
+  url: https://www.anthropic.com/
+  cited_in:
+  - seed/ai/anthropic_introspection_validation.md
+  keywords:
+  - introspection
+  - coherence
+  - φ
+  - self-awareness
+  relevance: high
+  notes: Validation für φ (Kohärenz) in AI-Systemen
+  utac_connection: Kohärenz-Term φ, adaptive Schwellenwerte
+- id: lenski2008ltee
+  category: biology_evolution
+  type: experiment
+  authors:
+  - Lenski, R.E.
+  - et al.
+  year: 2008
+  title: Long-Term Experimental Evolution in Escherichia coli (LTEE)
+  journal: Nature
+  url: https://en.wikipedia.org/wiki/E._coli_long-term_evolution_experiment
+  cited_in:
+  - seed/biology/lenski_citplus_verification.md
+  - data/biology/lenski_citrate.csv
+  keywords:
+  - evolution
+  - citrate+
+  - threshold
+  - generation-33000
+  relevance: critical
+  notes: Cit+ Emergenz bei Generation ~33,000. Empirische Validierung für UTAC.
+  utac_connection: Empirischer Beleg für β-Feld, evolutionäre Schwellenwerte
+- id: kandel2000synaptic
+  category: biology_evolution
+  type: paper
+  authors:
+  - Kandel, E.R.
+  year: 2000
+  title: The Molecular Biology of Memory Storage
+  journal: Science
+  cited_in:
+  - seed/biology/synaptic_release_threshold.md
+  keywords:
+  - synapse
+  - threshold
+  - neurotransmitter
+  - memory
+  relevance: high
+  notes: Synaptische Schwellenwerte als biologisches Analogon
+  utac_connection: Θ (Threshold) auf neuronaler Ebene
+- id: lenton2008tipping
+  category: climate_ecology
+  type: paper
+  authors:
+  - Lenton, T.M.
+  - et al.
+  year: 2008
+  title: Tipping elements in the Earth's climate system
+  journal: Proceedings of the National Academy of Sciences
+  url: https://doi.org/10.1073/pnas.0705414105
+  cited_in:
+  - seed/socio_ecology/planetary_threshold_cartography.md
+  - seed/Diskurs Klimamodul.txt
+  keywords:
+  - tipping-points
+  - AMOC
+  - climate
+  - criticality
+  relevance: critical
+  notes: 9 Tipping Elements, AMOC-Kollaps als Schwellenwert
+  utac_connection: Planetare Schwellenwerte, β-Feld in Klimasystemen
+- id: nobre2016amazon
+  category: climate_ecology
+  type: paper
+  authors:
+  - Nobre, C.A.
+  - Sampaio, G.
+  - et al.
+  year: 2016
+  title: Land-use and climate change risks in the Amazon
+  journal: Nature Climate Change
+  cited_in:
+  - seed/socio_ecology/amazon_moisture_resilience.md
+  - data/socio_ecology/amazon_moisture.csv
+  keywords:
+  - amazon
+  - moisture
+  - resilience
+  - β=14.6
+  relevance: high
+  notes: Amazon Moisture Resilience (β=14.6) - Outlier!
+  utac_connection: Hoher β-Wert, steile Übergänge, Kipppunkt-Analyse
+- id: oke1973urban
+  category: climate_ecology
+  type: paper
+  authors:
+  - Oke, T.R.
+  year: 1973
+  title: City size and the urban heat island
+  journal: Atmospheric Environment
+  cited_in:
+  - seed/socio_ecology/urban_heat_canopy_resonance.md
+  - data/socio_ecology/urban_heat_canopy.csv
+  keywords:
+  - urban-heat
+  - β=16.3
+  - outlier
+  - city-size
+  relevance: high
+  notes: Urban Heat Island (β=16.3) - EXTREMER Outlier!
+  utac_connection: Extremer β-Wert, steilster Übergang im Spektrum
+- id: kanamori2005earthquake
+  category: geophysics
+  type: paper
+  authors:
+  - Kanamori, H.
+  - Brodsky, E.E.
+  year: 2005
+  title: The physics of earthquakes
+  journal: Reports on Progress in Physics
+  cited_in:
+  - seed/geophysics/subduction_rupture_resonance.md
+  keywords:
+  - earthquake
+  - subduction
+  - rupture
+  - cascadia
+  relevance: high
+  notes: Cascadia Subduction (β=16.29) - Outlier nahe Urban Heat
+  utac_connection: Seismische Schwellenwerte, β-Feld in Erdbebenphysik
+- id: vanderlinden2014trauma
+  category: cognition_psychology
+  type: paper
+  authors:
+  - van der Linden, S.
+  - et al.
+  year: 2014
+  title: Trauma and the adaptive theta response
+  journal: Journal of Traumatic Stress
+  cited_in:
+  - seed/cognition/adaptive_theta_plasticity.md
+  keywords:
+  - trauma
+  - theta
+  - plasticity
+  - therapy
+  relevance: medium
+  notes: Adaptive Theta als therapeutischer Schwellenwert
+  utac_connection: Psyche-Schwellenwerte, Θ-Anpassung
+- id: verhulst1838logistic
+  category: theoretical_physics
+  type: historical
+  authors:
+  - Verhulst, P.F.
+  year: 1838
+  title: Notice sur la loi que la population suit dans son accroissement
+  journal: Correspondance Mathématique et Physique
+  cited_in:
+  - models/logistic_threshold.py
+  - docs/utac_theory_core.md
+  keywords:
+  - logistic
+  - sigmoid
+  - σ
+  - growth
+  relevance: critical
+  notes: Logistische Funktion - Basis von σ(β(R-Θ))
+  utac_connection: Fundamentale Funktion, σ-Logistic
+- id: newman2005powerlaws
+  category: theoretical_physics
+  type: paper
+  authors:
+  - Newman, M.E.J.
+  year: 2005
+  title: Power laws, Pareto distributions and Zipf's law
+  journal: Contemporary Physics
+  cited_in:
+  - docs/utac_theory_core.md
+  keywords:
+  - power-law
+  - criticality
+  - universality
+  relevance: high
+  notes: Universalität kritischer Phänomene
+  utac_connection: β-Spektrum als Universalitätsklasse
+statistics:
+  total_sources: 11
+  by_category:
+    ai_llm: 2
+    biology_evolution: 2
+    climate_ecology: 3
+    geophysics: 1
+    cognition_psychology: 1
+    theoretical_physics: 2
+  by_type:
+    paper: 9
+    experiment: 1
+    historical: 1
+  by_relevance:
+    critical: 4
+    high: 6
+    medium: 1

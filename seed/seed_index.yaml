@@ -693,6 +693,39 @@ documents:
   - ArchivSucheUTAC/archiv_suche_utac_index.yaml
   - ArchivSucheUTAC/archiv_suche_utac_index.json
   - ArchivSucheUTAC/archiv_suche_utac_index.md
+- id: synth-007
+  title: Sources Index (Trilayer)
+  path: sources_index.md
+  category: synthesis
+  type: index-ordnungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - sources
+  - references
+  - citations
+  - bibliography
+  - ordnungs-sigillin
+  - trilayer
+  description: 'Ordnungs-Sigillin für alle externen Quellen, Referenzen und Datenquellen.
+
+    11 Kernquellen aus 6 Domänen (AI, Biology, Climate, Geophysics, Cognition, Physics).
+
+    Referenziert sources_index.{yaml,json,md}. Zitations-Management für UTAC-Paper.'
+  temporal:
+    created: '2025-11-06T16:00:00+01:00'
+    modified: '2025-11-06T16:00:00+01:00'
+    version: '1.0'
+    change_count: 1
+  references:
+  - sources_index.yaml
+  - sources_index.json
+  - sources_index.md
+  highlights:
+  - Wei et al. (2022) - Emergent Abilities (β=3.47)
+  - Lenski LTEE (2008) - Cit+ Evolution
+  - Lenton (2008) - Climate Tipping Points
+  - Verhulst (1838) - Logistische Funktion
 - id: theory-001
   title: FinalerPlan
   path: FinalerPlan.txt

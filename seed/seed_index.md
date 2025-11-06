@@ -397,7 +397,7 @@ active_important = [
 15. V01-Resonance-Readiness.md (historical)
 16. Theorie- und Empirie-Abschnitte.md
 
-### Synthese & Feedback (6 Dokumente)
+### Synthese & Feedback (7 Dokumente)
 1. **codexfeedback.yaml** - Trilayer YAML (🔥 high)
 2. **codexfeedback.json** - Trilayer JSON (🔥 high)
 3. **codexfeedback.md** - Trilayer MD (🔥 high)
@@ -407,16 +407,21 @@ active_important = [
    - Kategorisiert: Theory (14), Validation (5), Meta (10), Concepts (9)
 6. **ArchivSucheUTAC/README.md** - Ordnungs-Sigillin für ArchivSucheUTAC (19 Dateien)
    - Referenziert archiv_suche_utac_index.{yaml,json,md}
+7. **sources_index.md** - 📚 Ordnungs-Sigillin für alle externen Quellen (🔥 high, ✨ active)
+   - Trilayer-Index (YAML + JSON + MD)
+   - 11 Kernquellen aus 6 Domänen (AI, Biology, Climate, Geophysics, Cognition, Physics)
+   - Highlights: Wei (2022), Lenski LTEE (2008), Lenton (2008), Verhulst (1838)
 
 ### Domain-Spezifisch (6 × ~4-5 Dokumente = ~28 Dokumente)
 Siehe oben unter "Domain-Spezifische Felder"
 
-**Gesamt:** ~51 Root-Level Dokumente + 38 PDFs (via papers_index) + 19 ArchivSucheUTAC = **108 Dokumente** 🎯
+**Gesamt:** ~52 Root-Level Dokumente + 38 PDFs (via papers_index) + 19 ArchivSucheUTAC + 11 Quellen (via sources_index) = **120 Dokumente** 🎯
 
 **Neu hinzugefügt (6. Nov 2025):**
 - ✅ 7 Root-Level Dokumente (TXT/MD)
 - ✅ papers_index Trilayer (38 PDFs)
 - ✅ ArchivSucheUTAC Referenz (19 Dateien)
+- ✅ sources_index Trilayer (11 Kernquellen)
 
 ---
 
