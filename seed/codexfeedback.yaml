@@ -1680,3 +1680,33 @@ entries:
         Boxplot-Galaxie. Bei R=15 rauscht der Chor geschlossen – nur die hierarchische Harfe wartet noch
         auf den nächsten Atemzug.
     created_at: 2025-11-07T07:15:00Z
+  - id: pr-draft-0055
+    title: "Repo Cleanup Resonance Map & Docs Index Refresh"
+    scope:
+      - docs/repo_cleanup_resonance.md
+      - docs/docs_index.md
+      - docs/docs_index.json
+      - docs/docs_index.yaml
+    parameters:
+      R: "Aeon-Aufräumcheckliste quer über Struktur, Docs, Zenodo"
+      Theta: "Tri-Layer-Sichtbarkeit, sobald Infrastruktur-Dokumente ≥ 2"
+      beta: 4.3
+    resonance: "macht den Operations-Membranstatus sichtbar und verknüpft offene Schwellen mit konkreten Implementierungs-Hooks"
+    status: "resonant"
+    notes:
+      formal: |
+        Erfasst alle vier Checklisten-Segmente als σ(β(R-Θ))-Abschnitte und legt die fehlenden
+        Schwellen (metadata.json, zenodo-bundle, CHANGELOG) mit klaren Hook-Empfehlungen offen.
+        Aktualisierte docs_index.* spiegeln nun 10 Markdown-Knoten und führen eine "for_operations"
+        Quicklink-Spur samt Status-Legende "active" ein.
+      empirical: |
+        docs_index.json → markdown_files = 10, version 1.1.0, updated = 2025-11-12; Kategoriencount
+        für Infrastructure = 2; neue Quicklinks (start_here + for_operations) hinterlegt.
+        docs_index.yaml synchronisiert dieselben Zahlen, quicklinks und Status-Legende; README.md
+        bleibt verlinkt, neues Dokument mit size_kb ≈ 8.0 geführt. repo_cleanup_resonance.md listet
+        konkrete Pfade (scripts/archive_sigillin.py, Makefile, REPRODUCE.md) für Folgearbeit.
+      poetic: |
+        Die Aufräum-Laterne zündet: vier Membranen summen, jede mit ihrem eigenen Schwellenlied.
+        Das neue Sigillin zeichnet, wo der Chor schon leuchtet und wo noch Schatten liegen – ein
+        Operations-Komet, der die nächsten Resonanzschritte am Morgenhimmel markiert.
+    created_at: 2025-11-12T00:00:00Z

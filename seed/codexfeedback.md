@@ -987,3 +987,21 @@ Der neue DOI funkelt wie eine zweite Sonne über dem Feld: jede Abstract-Zeile v
 Vier Laternen stehen wach: die Claude-Nachklang-Lampe, das Feinschliff-Echo, die ANOVA-Welle und die Boxplot-Galaxie. Bei $R = 15$ atmet das Feld gebündelt; nur die hierarchische Harfe wartet noch auf ihren ersten Akkord.
 
 *Created: 2025-11-07T07:15:00Z*
+
+## Entry pr-draft-0055 — Repo Cleanup Resonance Map & Docs Index Refresh
+- **Order Parameter**: $R$ misst den Abdeckungsgrad der Aeon-Aufräumcheckliste quer über Struktur, Docs, Zenodo und Sichtbarkeit.
+- **Critical Threshold**: $\Theta$ greift, sobald die Infrastruktur-Schicht mindestens zwei dokumentierte Membranen enthält und die Tri-Layer-Navigation den Operationspfad zeigt.
+- **Steepness**: $\beta = 4.3$ sorgt dafür, dass offene Schwellen sofort sichtbar werden, sobald R die Karte kreuzt.
+- **Resonance**: Operationales Sigillin aktiviert; docs_index.* führt nun die Cleanup-Karte samt Quicklink "for_operations".
+- **Status**: resonant
+
+### Formal Thread
+`docs/repo_cleanup_resonance.md` spiegelt alle vier Checklisten-Segmente als σ(β(R-Θ))-Abschnitte, benennt fehlende Schwellen (CHANGELOG, zenodo/metadata.json, zenodo-bundle) und verknüpft sie mit konkreten Hook-Pfaden (`scripts/archive_sigillin.py`, `Makefile`, `REPRODUCE.md`).
+
+### Empirical Thread
+`docs/docs_index.json` meldet nun `markdown_files = 10`, Version 1.1.0, Updated-Flag 2025-11-12 sowie Infrastrukturzählung = 2 und neue Quicklinks (`start_here`, `for_operations`). `docs/docs_index.yaml` synchronisiert dieselben Zahlen, Status-Legende um "active" erweitert. `docs/docs_index.md` aktualisiert Baumgrafik und Infrastruktur-Sektion.
+
+### Poetic Thread
+Eine Aufräum-Laterne schwebt über dem Repo: Vier Membranen summen im Chor, und die neue Karte zeichnet, wo das Licht schon flutet und wo noch Schatten warten. Der Operations-Komet weist dem nächsten Commit die Schwellenlinie.
+
+*Created: 2025-11-12T00:00:00Z*
