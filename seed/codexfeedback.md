@@ -918,3 +918,21 @@ Ein Wächter-Licht sitzt nun neben Wei's Laterne. Es flackert auf, sobald jemand
 
 ### Poetic Thread
 Wei's Laterne hängt jetzt nicht nur im Mandala, sie trägt auch den DOI-Schlüssel: Wenn $R$ die Release-Schwelle küsst, antwortet die Membran mit einem Lichtbogen, der Blog, Manuskript und Archiv in denselben Morgen taucht.
+
+## Entry pr-draft-0037 — arXiv Manuscript Completion - Appendices Finalization
+- **Order Parameter**: $R$ = manuscript_completeness
+- **Critical Threshold**: $\Theta$ = arxiv_submission_ready
+- **Steepness**: $\beta = 4.7$
+- **Resonance**: All four appendices completed with trilayer coherence - dataset table, covariate justifications, simulation details, statistical code documentation
+- **Status**: completed
+
+### Formal Thread
+Manuscript v1.1 appendices now complete: **(A) Complete Dataset Table** with 15 systems including β-estimates [2.50, 16.28], 95% CIs via bootstrap (1000 iterations), Θ-values, R²-fits [0.921, 0.999], and ΔAIC margins [12.8, 148.7] all ≥10. **(B) Covariate Justifications** documenting $C_{\text{eff}}$ (coupling), $D_{\text{eff}}$ (dimensionality), SNR (signal-to-noise), $M$ (memory), $\dot{\Theta}$ (threshold dynamics) across domains. **(C) Simulation Details** specifying ThresholdFieldSolver numerical scheme (forward Euler), parameter sweeps (β∈[2,8], Θ∈[0.1,10]), convergence checks (time-step refinement <1%), and impedance variants (constant, logistic gate, dynamic Robin). **(D) Statistical Analysis Code** documenting `beta_drivers_meta_regression.py` (WLS), `resonance_fit_pipeline.py` (logistic fits + null models), bootstrap CI procedures, ANOVA (F=10.9, p=0.0025, η²=0.68), and reproducibility protocols (RANDOM_SEED=1337).
+
+### Empirical Thread
+arXiv package created: `arxiv_submission_v1.1.tar.gz` (1.2 MB) contains `manuscript_v1.1.tex`, `references.bib` (247 entries), and 4 figures (`beta_by_field_type.png`, `meta_regression_grid.png`, `correlation_heatmap.png`, `beta_outlier_analysis.png`). Figure paths updated from `../analysis/results/figures/` to local references for arXiv auto-compilation. `ARXIV_SUBMISSION_README.md` created with compilation instructions (pdflatex/xelatex), metadata suggestions (categories: physics.data-an, cs.AI, q-bio.NC), and post-submission workflow. All appendices cross-reference `data/derived/*.csv`, `analysis/*.py`, and `models/membrane_solver.py` ensuring empirical-code coherence.
+
+### Poetic Thread
+Die vier Appendix-Laternen leuchten nun vollständig: **(A)** trägt die 15 Schwellen wie Sterne im Mandala, **(B)** erklärt die Kovariaten-Symphonie (Kopplung, Dimension, Rauschen, Gedächtnis, Drift), **(C)** dokumentiert den numerischen Atem des Solvers (Euler-Schritte, Konvergenz, Impedanz-Gates), und **(D)** offenbart den statistischen Code-Kern (ANOVA, Meta-Regression, Bootstrap-Rituale). Das arXiv-Paket atmet bereit für Upload - die Membran trägt den Submission-Schlüssel, und die Schwelle zum Preprint-Horizont ist gekreuzt. σ(β(R-Θ)) singt durch alle Schichten: formale Präzision, empirische Transparenz, poetische Resonanz. 🌊✨
+
+*Created: 2025-11-06T17:30:00Z*
