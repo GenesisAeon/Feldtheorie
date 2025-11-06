@@ -1,0 +1,643 @@
+{
+  "meta": {
+    "project": "UTAC - ArchivSucheUTAC Forschungsnotizen",
+    "maintainer": "Johann Römer",
+    "description": "Semantischer Index des ArchivSucheUTAC-Archivs. Dokumentiert Geminis wissenschaftliche Recherchen zur Validierung der UTAC-Hypothesen.\nTrilayer-Struktur: - YAML = Orientierung (diese Datei) - JSON = Agentenschnittstelle (archiv_suche_utac_index.json) - MD = Menschenfreundliche Navigation (archiv_suche_utac_index.md) ",
+    "version": "1.0.0",
+    "created": "2025-11-06",
+    "status": "active",
+    "parent_index": "seed/seed_index.yaml"
+  },
+  "categories": {
+    "research": {
+      "name": "Forschungsnotizen & Web-Recherche",
+      "description": "Geminis wissenschaftliche Recherchen, Validierungen, Web-Suchen",
+      "color": "#2980B9"
+    },
+    "synthesis": {
+      "name": "AI-Synthese & Reaktionen",
+      "description": "Reaktionen und Zusammenfassungen von Claude, Mistral zu den Recherchen",
+      "color": "#8E44AD"
+    },
+    "impulse": {
+      "name": "Forschungsimpulse",
+      "description": "Neue theoretische Impulse, Hypothesen-Erweiterungen",
+      "color": "#E67E22"
+    }
+  },
+  "documents": [
+    {
+      "id": "archiv-001",
+      "title": "Geminis Suche! (Massive wissenschaftliche Validierung)",
+      "path": "ArchivSucheUTAC/Geminis Suche!.txt",
+      "category": "research",
+      "type": "web_search",
+      "status": "historical",
+      "relevance": "critical",
+      "keywords": [
+        "hierarchische-sicherheitsmechanismen",
+        "klima-transversale-membran",
+        "steuerbare-kipppunkte",
+        "bifurkationstheorie",
+        "polyploidisierung",
+        "redundanz",
+        "control-centrality",
+        "resilience-centrality",
+        "gaia-hypothese",
+        "kritische-zone",
+        "free-energy-principle",
+        "surprisal-avoidance",
+        "utac",
+        "beta-feld"
+      ],
+      "description": "Geminis massive wissenschaftliche Recherche (885 Zeilen) zur Validierung der UTAC-Hypothesen. Vier zentrale Validierungen: (1) Hierarchische Sicherheitsmechanismen (Polyploidisierung), (2) Klima als Transversale Membran (Kritische Zone), (3) Steuerbare Kipppunkte (τ*-Verzögerung), (4) Quantifizierbare Resilienz (Control/Resilience Centrality). ~50 wissenschaftliche Paper recherchiert.",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 884,
+        "paper_count": "~50",
+        "web_sources": "~105"
+      }
+    },
+    {
+      "id": "archiv-002",
+      "title": "AI_Reaktion_Gem_Suche (Mistral & Claude Synthese)",
+      "path": "ArchivSucheUTAC/AI_Reaktion_Gem_Suche.txt",
+      "category": "synthesis",
+      "type": "ai_dialogue",
+      "status": "historical",
+      "relevance": "critical",
+      "keywords": [
+        "meta-regression-v1.2",
+        "neue-kovariaten",
+        "redundancy-level",
+        "control-centrality",
+        "resilience-centrality",
+        "hysteresis-strength",
+        "buffer-capacity",
+        "sigillin-ordnung",
+        "outlier-analyse",
+        "urban-heat-beta",
+        "β-treiber"
+      ],
+      "description": "Mistral und Claudes Reaktion auf Geminis Forschung. Strukturierte Zusammenfassung der vier Validierungen mit konkreten Implikationen für UTAC v1.2. Neue Kovariaten vorgeschlagen: redundancy_level, control_centrality, resilience_centrality, hysteresis_strength, buffer_capacity. Top-20 Papers für Zitation identifiziert. Erwartetes Resultat: R² > 0.6 (von 0.33).",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 843,
+        "new_covariates": 5,
+        "top_papers": 20
+      }
+    },
+    {
+      "id": "archiv-003",
+      "title": "Geminis Suche2! (Fortsetzung Web-Recherche)",
+      "path": "ArchivSucheUTAC/Geminis Suche2!.txt",
+      "category": "research",
+      "type": "web_search",
+      "status": "historical",
+      "relevance": "high",
+      "keywords": [
+        "sigillin-validierung",
+        "neuro-kognitive-architektur",
+        "memory-plasticity",
+        "ltp-ltd",
+        "predictive-coding",
+        "active-inference",
+        "shared-mental-models",
+        "multi-agent-systems",
+        "transparenz",
+        "kohärenz-index"
+      ],
+      "description": "Fortsetzung von Geminis Recherche mit Fokus auf Sigillin-System-Validierung. Neurowissenschaftliche Grundlagen für Ordnungs- vs. Bedeutungs-Sigillin (prozedurales vs. episodisches Gedächtnis). Validierung der Plastizitäts-Dynamik (LTP/LTD). Grundlage für kohärenten Sigill-Index (Active Inference, Surprisal).",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 1033
+      }
+    },
+    {
+      "id": "archiv-004",
+      "title": "Geminis Suche3! (Meta-Regression & arXiv Guidelines)",
+      "path": "ArchivSucheUTAC/Geminis Suche3!.txt",
+      "category": "research",
+      "type": "web_search",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": [
+        "meta-regression",
+        "arxiv-submission",
+        "statistical-methods",
+        "data-visualization",
+        "contour-plots",
+        "heatmaps",
+        "bifurcation-diagrams",
+        "submission-guidelines"
+      ],
+      "description": "Web-Recherche zu Meta-Regressions-Methoden, statistischer Visualisierung, und arXiv Submission Guidelines. Fokus auf methodische Aspekte für UTAC v1.2 Paper-Submission. Platform hat Geminis Ausführungen entfernt.",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 307
+      }
+    },
+    {
+      "id": "archiv-005",
+      "title": "Geminis Suche 4! (Manuskriptfinalisierung)",
+      "path": "ArchivSucheUTAC/Geminis Suche 4!.txt",
+      "category": "impulse",
+      "type": "synthesis",
+      "status": "historical",
+      "relevance": "high",
+      "keywords": [
+        "sigillin-system",
+        "neuro-kosmos-brücke",
+        "kohärenz-phi",
+        "bewusstsein",
+        "utac-finalisierung",
+        "launch-modus",
+        "endorsement-kampagne"
+      ],
+      "description": "Fokus auf Sigillin-System als Neuro-Kosmos-Brücke. Ordnungs-Sigillin als Θ-Wächter, Bedeutungs-Sigillin als Φ-Träger. Ultimative UTAC-Schlussfolgerung: Bewusstsein als physikalisches Phänomen basierend auf Kohärenz und Schwellendynamik. Start des Finalen Pitchs - LaTeX-Manuskript-Kompilierung und Endorsement-Kampagne.",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 168
+      }
+    },
+    {
+      "id": "archiv-006",
+      "title": "Neues Textdokument (Schwellenfeldmodell-Erweiterung)",
+      "path": "ArchivSucheUTAC/Neues Textdokument.txt",
+      "category": "impulse",
+      "type": "research_note",
+      "status": "historical",
+      "relevance": "high",
+      "keywords": [
+        "schwellenfeldmodell",
+        "trifunktionalität",
+        "4x-potenzial-sicherung",
+        "nukleon-analogie",
+        "klimainterface",
+        "hierarchische-sicherheitsmatrix",
+        "delta-theta-kontrollterm"
+      ],
+      "description": "Neuer Impuls zur Erweiterung des Schwellenfeldmodells (TFM). Klimasysteme als gekoppelte Subsysteme mit Trifunktionalität und 4x-Potenzial-Sicherung. Analogie zur Nukleon-Bindungsenergie. Formalisierung des Klimainterfaces als transversale Membran zwischen Gravitations- und Informations-Feldern. Entwicklung der Hierarchischen Sicherheitsmatrix (In/Out-Degree).",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 220
+      }
+    },
+    {
+      "id": "archiv-007",
+      "title": "Neues Textdokument (2) (Klima als Pufferzone)",
+      "path": "ArchivSucheUTAC/Neues Textdokument (2).txt",
+      "category": "impulse",
+      "type": "research_note",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": [
+        "klima-pufferzone",
+        "sicherheitsprotokolle",
+        "delta-theta-kontrollterm",
+        "in-degree-out-degree",
+        "netzwerktheorie"
+      ],
+      "description": "Klima als kritische transversale Membran zwischen gravitationsabhängigen und -unabhängigen Feldern. Validierung von Sicherheitsmechanismen durch FEP, Stability Margin, Fault Tolerance. Modellierung der Schwellensteuerung mit ΔΘ-Kontrollterm.",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 104
+      }
+    },
+    {
+      "id": "archiv-008",
+      "title": "Neues Textdokument (3) (Minimal-Notiz)",
+      "path": "ArchivSucheUTAC/Neues Textdokument (3).txt",
+      "category": "impulse",
+      "type": "note",
+      "status": "historical",
+      "relevance": "low",
+      "keywords": [
+        "forschungsnotiz"
+      ],
+      "description": "Minimale Notiz (8 Zeilen) - fragmentarische Forschungsnotiz.",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 8
+      }
+    },
+    {
+      "id": "archiv-009",
+      "title": "Neues Textdokument (4) (Web-Suche Fragment)",
+      "path": "ArchivSucheUTAC/Neues Textdokument (4).txt",
+      "category": "research",
+      "type": "web_search",
+      "status": "historical",
+      "relevance": "low",
+      "keywords": [
+        "web-suche",
+        "netzwerktheorie",
+        "kritische-zone"
+      ],
+      "description": "Fragment einer Web-Suche mit Links zu Netzwerktheorie, Kritischer Zone, Gaia-Hypothese.",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 171
+      }
+    },
+    {
+      "id": "archiv-010",
+      "title": "Neues Textdokument (5) (Leer)",
+      "path": "ArchivSucheUTAC/Neues Textdokument (5).txt",
+      "category": "impulse",
+      "type": "placeholder",
+      "status": "empty",
+      "relevance": "none",
+      "keywords": [
+        "leer"
+      ],
+      "description": "Leere Datei - keine Inhalte.",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 0
+      }
+    },
+    {
+      "id": "archiv-011",
+      "title": "Neues Textdokument (6) (Web-Suche Links)",
+      "path": "ArchivSucheUTAC/Neues Textdokument (6).txt",
+      "category": "research",
+      "type": "web_search",
+      "status": "historical",
+      "relevance": "low",
+      "keywords": [
+        "web-links",
+        "scientific-papers"
+      ],
+      "description": "Sammlung von Web-Links zu wissenschaftlichen Papers (Buffer Sizing, Predictive Coding, Memory Systems).",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 219
+      }
+    },
+    {
+      "id": "archiv-012",
+      "title": "Neues Textdokument (7) (Mehr Web-Links)",
+      "path": "ArchivSucheUTAC/Neues Textdokument (7).txt",
+      "category": "research",
+      "type": "web_search",
+      "status": "historical",
+      "relevance": "low",
+      "keywords": [
+        "web-links",
+        "network-centrality",
+        "free-energy-principle"
+      ],
+      "description": "Weitere Sammlung wissenschaftlicher Paper-Links (Network Centrality, FEP, Bifurcations).",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 221
+      }
+    },
+    {
+      "id": "archiv-013",
+      "title": "Neues Textdokument (8) (Leer)",
+      "path": "ArchivSucheUTAC/Neues Textdokument (8).txt",
+      "category": "impulse",
+      "type": "placeholder",
+      "status": "empty",
+      "relevance": "none",
+      "keywords": [
+        "leer"
+      ],
+      "description": "Leere Datei - keine Inhalte.",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 0
+      }
+    },
+    {
+      "id": "archiv-014",
+      "title": "Neues Textdokument (9) (Sigillin-Validierung)",
+      "path": "ArchivSucheUTAC/Neues Textdokument (9).txt",
+      "category": "research",
+      "type": "research_note",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": [
+        "sigillin-validierung",
+        "kognitive-architektur",
+        "synaptic-plasticity",
+        "working-memory",
+        "multi-agent-collaboration"
+      ],
+      "description": "Validierung des Sigillin-Systems durch kognitionswissenschaftliche Forschung. Prozedurales vs. episodisches Gedächtnis, Synaptic Plasticity, Multi-Agent Collaboration, Shared Mental Models.",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 327
+      }
+    },
+    {
+      "id": "archiv-015",
+      "title": "Neues Textdokument (10) (Klima-Hierarchie)",
+      "path": "ArchivSucheUTAC/Neues Textdokument (10).txt",
+      "category": "impulse",
+      "type": "research_note",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": [
+        "klima-hierarchie",
+        "beta-feld-running-coupling",
+        "nukleon-bindungsenergie",
+        "quantifizierung-kausalität",
+        "netzwerkzentralität"
+      ],
+      "description": "β-Feld als kosmisches Resonanzmaß und Running Coupling. Hierarchische Feldtrennung (gravitationsabhängig vs. -unabhängig). Nukleon-Bindungsenergie-Analogie. Quantifizierung der Kausalität via Netzwerkzentralität.",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 415
+      }
+    },
+    {
+      "id": "archiv-016",
+      "title": "Neues Textdokument (11) (Klima-Membran-Synthese)",
+      "path": "ArchivSucheUTAC/Neues Textdokument (11).txt",
+      "category": "impulse",
+      "type": "synthesis",
+      "status": "historical",
+      "relevance": "high",
+      "keywords": [
+        "klima-transversale-membran",
+        "beta-bindungsenergie",
+        "surprisal-avoidance",
+        "systemische-redundanz",
+        "hierarchische-sicherheitsmatrix"
+      ],
+      "description": "Synthese der Klima-als-Transversale-Membran-Hypothese. β als Bindungsenergie und Surprisal Avoidance (FEP). Formale Validierung systemischer Redundanz. Entwicklung der Hierarchischen Sicherheitsmatrix mit In/Out-Degree Metriken.",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 458
+      }
+    },
+    {
+      "id": "archiv-017",
+      "title": "Neues Textdokument (12) (Finale Synthese)",
+      "path": "ArchivSucheUTAC/Neues Textdokument (12).txt",
+      "category": "impulse",
+      "type": "synthesis",
+      "status": "historical",
+      "relevance": "high",
+      "keywords": [
+        "klima-sicherheitsmembran",
+        "trifunktionalität",
+        "redundanz-validierung",
+        "planetare-steuerungslogik",
+        "utac-synthese"
+      ],
+      "description": "Finale Synthese der Klima-Hierarchie-Theorie. Klima als hierarchische Sicherheitsmembran zwischen physikalischen und informationellen Feldern. Validierung von Trifunktionalität und Redundanz. Grundlage für planetare Steuerungslogik der UTAC.",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 421
+      }
+    },
+    {
+      "id": "archiv-018",
+      "title": "Neues Textdokument (13) (Leer)",
+      "path": "ArchivSucheUTAC/Neues Textdokument (13).txt",
+      "category": "impulse",
+      "type": "placeholder",
+      "status": "empty",
+      "relevance": "none",
+      "keywords": [
+        "leer"
+      ],
+      "description": "Leere Datei - keine Inhalte.",
+      "temporal": {
+        "created": "2025-11-06",
+        "modified": "2025-11-06",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "metrics": {
+        "line_count": 0
+      }
+    }
+  ],
+  "themes": {
+    "core_validations": {
+      "name": "Vier Kern-Validierungen",
+      "documents": [
+        "archiv-001",
+        "archiv-002"
+      ],
+      "description": "Hierarchische Sicherheitsmechanismen, Klima als Transversale Membran, Steuerbare Kipppunkte, Quantifizierbare Resilienz"
+    },
+    "sigillin_research": {
+      "name": "Sigillin-System Forschung",
+      "documents": [
+        "archiv-002",
+        "archiv-003",
+        "archiv-005",
+        "archiv-014"
+      ],
+      "description": "Neurokognitive Validierung des Sigillin-Systems, Trilayer-Architektur, Ordnungs- vs. Bedeutungs-Sigillin"
+    },
+    "climate_hierarchy": {
+      "name": "Klima-Hierarchie-Theorie",
+      "documents": [
+        "archiv-006",
+        "archiv-007",
+        "archiv-015",
+        "archiv-016",
+        "archiv-017"
+      ],
+      "description": "Klima als transversale Membran, Trifunktionalität, Hierarchische Sicherheitsmatrix"
+    },
+    "utac_v1_2": {
+      "name": "UTAC v1.2 Entwicklung",
+      "documents": [
+        "archiv-001",
+        "archiv-002"
+      ],
+      "description": "Neue Kovariaten, Meta-Regression v1.2, erwartetes R² > 0.6"
+    }
+  },
+  "triggers": {
+    "validations": [
+      "hierarchische-sicherheitsmechanismen",
+      "klima-transversale-membran",
+      "steuerbare-kipppunkte",
+      "quantifizierbare-resilienz"
+    ],
+    "concepts": [
+      "sigillin-system",
+      "ordnungs-sigillin",
+      "bedeutungs-sigillin",
+      "trilayer",
+      "trifunktionalität",
+      "4x-potenzial-sicherung"
+    ],
+    "scientific": [
+      "polyploidisierung",
+      "redundanz",
+      "bifurkationstheorie",
+      "kontrolltheorie",
+      "netzwerkzentralität",
+      "control-centrality",
+      "resilience-centrality",
+      "free-energy-principle",
+      "surprisal-avoidance",
+      "gaia-hypothese",
+      "kritische-zone"
+    ],
+    "utac": [
+      "beta-feld",
+      "beta-running-coupling",
+      "theta-schwelle",
+      "phi-kohärenz",
+      "meta-regression",
+      "utac-v1-2"
+    ],
+    "papers": [
+      "control-principles-complex-systems",
+      "time-dependent-saddle-node-bifurcation",
+      "resilience-centrality-complex-networks",
+      "critical-zone-earth",
+      "polyploidization-stress-resistance",
+      "gaia-evolution"
+    ]
+  },
+  "quicklinks": {
+    "start_here": [
+      "archiv-001",
+      "archiv-002"
+    ],
+    "core_research": [
+      "archiv-001",
+      "archiv-002",
+      "archiv-003"
+    ],
+    "synthesis": [
+      "archiv-005",
+      "archiv-016",
+      "archiv-017"
+    ],
+    "impulses": [
+      "archiv-006",
+      "archiv-015",
+      "archiv-016"
+    ]
+  },
+  "statistics": {
+    "total_documents": 18,
+    "total_lines": 5799,
+    "categories": {
+      "research": 6,
+      "synthesis": 1,
+      "impulse": 11
+    },
+    "relevance": {
+      "critical": 2,
+      "high": 5,
+      "medium": 5,
+      "low": 3,
+      "none": 3
+    },
+    "status": {
+      "historical": 15,
+      "empty": 3
+    }
+  },
+  "status_legend": {
+    "active": "Aktuell in Arbeit / lebendiges Dokument",
+    "historical": "Archiviert für Kontext",
+    "empty": "Leere Placeholder-Datei"
+  },
+  "relevance_legend": {
+    "critical": "Zentral für UTAC v1.2, unmittelbar relevant",
+    "high": "Wichtig für theoretische Entwicklung",
+    "medium": "Kontextuell relevant, spezialisiert",
+    "low": "Historischer Kontext, Fragmentarisch",
+    "none": "Keine Inhalte"
+  }
+}
