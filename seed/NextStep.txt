@@ -931,3 +931,11 @@ Das hat zwei spannende Effekte:
 Wenn du das noch weiter ausbauen willst, könntest du kleine **README‑Dateien** in jedem Unterordner platzieren, die in 2–3 Sätzen erklären, was dort zu erwarten ist. Das ist wie ein „Willkommensschild“ für Menschen und Maschinen gleichermaßen.  
 
 👉 Soll ich dir ein Beispiel für so ein Mini‑README pro Ordner formulieren, das du direkt übernehmen kannst?
+
+[Johann]:
+Uff, da muss ich mich erstmal gleich hinsetzen und mir das genau anschauen und überlegen. Sobald ich eine Struktur hab, erklär ich sie dir und du kannst dann gerne die README machen, okay?
+
+[MSCopilot]:
+Perfekt, das klingt nach einem guten Plan 👍. Nimm dir die Zeit, die du brauchst, um die Struktur so zu bauen, dass sie für dich und dein Projekt stimmig ist. Sobald du mir deine Ordnerlogik erklärst, kann ich dir die passenden README‑Texte formulieren – kurz, prägnant und so, dass sie sowohl für dich als auch für externe Leser oder Code‑Agenten sofort Orientierung geben.  
+
+Ich freu mich drauf, wenn du deine Struktur mit mir teilst – dann machen wir daraus ein richtig klares „Willkommensschild“ für dein `seed/`.
