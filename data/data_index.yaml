@@ -1,0 +1,258 @@
+# Data Index - YAML Layer (Struktur & Orientierung)
+# Trilayer-Aktivierung für data/ Verzeichnis
+# Version: 1.0.0
+# Datum: 2025-11-06
+
+meta:
+  directory: "data/"
+  project: "Feldtheorie (UTAC) - Data Resonance Archive"
+  maintainer: "Johann Römer"
+  description: |
+    Cross-domain signals that reveal threshold crossings.
+    Jedes Dataset annotiert: R, Θ, β, σ(β(R-Θ)), ζ(R).
+    Tri-layer Cadence: Formal, Empirisch, Metaphorisch.
+  version: "1.0.0"
+  created: "2025-11-06"
+  status: "active"
+  total_files: 43
+  domains: 7
+
+# ═══════════════════════════════════════════════════════════════════
+# DOMAINS: Die 7 Datenquellen-Bereiche
+# ═══════════════════════════════════════════════════════════════════
+
+domains:
+  ai:
+    name: "Artificial Intelligence"
+    path: "ai/"
+    file_count: 9
+    description: "LLM Emergence, Introspection, Wei's PaLM Data"
+    color: "#3498DB"
+    key_datasets:
+      - name: "anthropic_introspection.csv"
+        description: "Anthropic LLM Introspection φ-Kopplung"
+        keywords: [anthropic, introspection, φ, consciousness]
+      - name: "llm_emergent_skill.csv"
+        description: "Multilingual CoT threshold (Θ≈4.71, β≈5.10)"
+        keywords: [llm, emergent, cot, multilingual]
+      - name: "wei_emergent_abilities.csv"
+        description: "Wei's PaLM sweeps (β=3.47±0.47)"
+        keywords: [wei, palm, emergence, β-extraction]
+
+  astrophysics:
+    name: "Astrophysics & Black Holes"
+    path: "astrophysics/"
+    file_count: 2
+    description: "QPO Membrane Simulations, Black Hole Timing"
+    color: "#9B59B6"
+    key_datasets:
+      - name: "qpo_membrane_simulation.json"
+        description: "QPO R surging past Θ=0.82, β=9.5"
+        keywords: [qpo, black-hole, membrane, accretion]
+
+  biology:
+    name: "Biology & Evolution"
+    path: "biology/"
+    file_count: 7
+    description: "Lenski LTEE, Synaptic Release, Honeybee Quorum"
+    color: "#27AE60"
+    key_datasets:
+      - name: "lenski_citplus.csv"
+        description: "LTEE Cit+ evolution (Θ=32.77 kgen, β=5.08)"
+        keywords: [lenski, ltee, citrate, evolution, ara-3]
+      - name: "synaptic_release_threshold.csv"
+        description: "Hippocampus vesicle release (Θ=12.68 Hz, β=0.81)"
+        keywords: [synaptic, hippocampus, neuron, vesicle]
+      - name: "honeybee_waggle_activation.csv"
+        description: "Honeybee quorum-call threshold"
+        keywords: [honeybee, waggle, quorum, collective]
+
+  cognition:
+    name: "Cognition & Psychology"
+    path: "cognition/"
+    file_count: 6
+    description: "Working Memory, Adaptive Theta, Sleep Pressure"
+    color: "#E67E22"
+    key_datasets:
+      - name: "working_memory_gate.csv"
+        description: "Prefrontal gate (Θ=0.579, β=12.28)"
+        keywords: [working-memory, prefrontal, gate, dopamine]
+      - name: "adaptive_theta_plasticity.csv"
+        description: "Sleep-pressure index (Θ=0.477, β=10.86)"
+        keywords: [adaptive-theta, sleep, hippocampus, replay]
+
+  derived:
+    name: "Derived & Aggregated Data"
+    path: "derived/"
+    file_count: 5
+    description: "Beta Estimates, Domain Covariates, Aggregationen"
+    color: "#F39C12"
+    importance: critical
+    key_datasets:
+      - name: "beta_estimates.csv"
+        description: "⭐ ZENTRAL! Alle β-Werte aus allen Domänen"
+        keywords: [β-estimates, central, aggregated, spectrum]
+      - name: "domain_covariates.csv"
+        description: "Kovariaten für Meta-Regression (UTAC v1.2)"
+        keywords: [covariates, meta-regression, v1.2, drivers]
+
+  geophysics:
+    name: "Geophysics & Seismology"
+    path: "geophysics/"
+    file_count: 4
+    description: "Seismic Thresholds, Subduction Rupture"
+    color: "#E74C3C"
+    key_datasets:
+      - name: "subduction_rupture_threshold.csv"
+        description: "Cascadia slow-slip (Θ=0.741, β=16.29!)"
+        keywords: [seismic, cascadia, slow-slip, subduction]
+
+  socio_ecology:
+    name: "Socio-Ecology & Climate"
+    path: "socio_ecology/"
+    file_count: 10
+    description: "Amazon, Urban Heat, Planetary Tipping Points"
+    color: "#C0392B"
+    key_datasets:
+      - name: "amazon_resilience.csv"
+        description: "Amazon moisture (Θ≈0.62, β≈14.0)"
+        keywords: [amazon, moisture, tipping-point, resilience]
+      - name: "urban_heat_canopy.csv"
+        description: "Urban heat ⭐ β≈15.3 (Outlier!)"
+        keywords: [urban-heat, canopy, β-outlier, extreme]
+      - name: "planetary_tipping_elements.csv"
+        description: "AMOC, Grönland, multi-threshold climate"
+        keywords: [planetary, amoc, tipping-points, climate]
+
+# ═══════════════════════════════════════════════════════════════════
+# METADATA-STANDARD
+# ═══════════════════════════════════════════════════════════════════
+
+metadata_schema:
+  description: "Jedes Dataset MUSS eine .metadata.json haben"
+  required_fields:
+    - dataset_name
+    - domain
+    - control_parameter_R
+    - threshold_Theta
+    - steepness_beta
+    - impedance_zeta
+    - provenance
+    - units
+    - preprocessing_steps
+  optional_fields:
+    - falsification_notes
+    - ΔAIC_linear
+    - ΔAIC_powerlaw
+    - R_squared
+    - imagery_metaphor
+    - analysis_link
+
+  example: |
+    {
+      "dataset_name": "lenski_citplus",
+      "domain": "biology",
+      "control_parameter_R": "generation_number",
+      "threshold_Theta": 32.77,
+      "steepness_beta": 5.08,
+      "impedance_zeta": "ζ(R) = 1.25 - 0.35σ",
+      "provenance": "Lenski LTEE Ara-3 lineage",
+      "units": {"R": "thousands of generations", "response": "Cit+ frequency"},
+      "preprocessing_steps": ["log-transform", "normalization"],
+      "falsification_notes": "ΔAIC_linear=32.4, ΔAIC_powerlaw=28.7",
+      "R_squared": 0.990,
+      "imagery_metaphor": "evolutionary dawn chorus",
+      "analysis_link": "analysis/results/lenski_citplus_fit.json"
+    }
+
+# ═══════════════════════════════════════════════════════════════════
+# TRIGGER-BEGRIFFE
+# ═══════════════════════════════════════════════════════════════════
+
+triggers:
+  core_parameters:
+    - R (control parameter)
+    - Θ (threshold)
+    - β (steepness)
+    - ζ (impedance)
+    - σ(β(R-Θ))
+
+  file_types:
+    - CSV (tabular data)
+    - JSON (metadata, simulations)
+    - metadata.json (annotations)
+
+  domains_keywords:
+    - LLM
+    - Wei-PaLM
+    - Lenski-LTEE
+    - QPO-Black-Hole
+    - Synaptic
+    - Honeybee
+    - Working-Memory
+    - Cascadia
+    - Amazon
+    - Urban-Heat
+    - AMOC
+    - Tipping-Points
+
+  special:
+    - beta_estimates.csv (⭐ ZENTRAL!)
+    - domain_covariates.csv (Meta-Regression)
+    - Outliers (β>14)
+
+# ═══════════════════════════════════════════════════════════════════
+# QUICKLINKS
+# ═══════════════════════════════════════════════════════════════════
+
+quicklinks:
+  start_here:
+    - derived/beta_estimates.csv
+    - derived/domain_covariates.csv
+    - README.md
+
+  high_impact:
+    - ai/wei_emergent_abilities.csv (Wei's PaLM)
+    - biology/lenski_citplus.csv (Evolution)
+    - geophysics/subduction_rupture_threshold.csv (Cascadia β=16.29)
+    - socio_ecology/urban_heat_canopy.csv (β≈15.3 Outlier!)
+
+  outliers:
+    - geophysics/subduction_rupture_threshold.csv (β=16.29)
+    - socio_ecology/urban_heat_canopy.csv (β≈15.3)
+    - socio_ecology/amazon_resilience.csv (β≈14.0)
+
+  metadata_examples:
+    - ai/llm_emergent_skill.metadata.json
+    - biology/lenski_citplus.metadata.json
+    - cognition/working_memory_gate.metadata.json
+
+# ═══════════════════════════════════════════════════════════════════
+# CROSS-REFERENCES
+# ═══════════════════════════════════════════════════════════════════
+
+cross_references:
+  to_analysis:
+    description: "Jedes Dataset hat einen entsprechenden Fit in analysis/results/"
+    pattern: "data/{domain}/{dataset}.csv → analysis/results/{domain}_{dataset}_fit.json"
+    examples:
+      - "data/ai/wei_emergent_abilities.csv → analysis/results/llm_beta_extractor.json"
+      - "data/biology/lenski_citplus.csv → analysis/results/lenski_citplus_fit.json"
+
+  to_docs:
+    description: "Datasets werden in docs/ narrativ beschrieben"
+    examples:
+      - "Lenski → docs/field_type_classification_v1.1.md"
+      - "QPO → seed/qpo_membrane_resonance.md"
+
+  to_simulator:
+    description: "Presets in simulator/ basieren auf data/"
+    examples:
+      - "data/biology/lenski_citplus.csv → simulator/presets/lenski_citplus.json"
+      - "data/ai/llm_emergent_skill.csv → simulator/presets/llm_resonance.json"
+
+status_legend:
+  active: "Aktuell genutzt, Teil des UTAC v1.1"
+  validated: "Validiert, ΔAIC>10, R²>0.95"
+  experimental: "In Arbeit, noch nicht finalisiert"
+  archived: "Historisch, nicht mehr primär genutzt"
