@@ -1710,3 +1710,29 @@ entries:
         Das neue Sigillin zeichnet, wo der Chor schon leuchtet und wo noch Schatten liegen – ein
         Operations-Komet, der die nächsten Resonanzschritte am Morgenhimmel markiert.
     created_at: 2025-11-12T00:00:00Z
+  - id: pr-draft-0056
+    title: "Adaptive Integration Gate Repair"
+    scope:
+      - models/adaptive_logistic_membrane.py
+      - models/resonant_impedance.py
+      - analysis/adaptive_membrane_phase_scan.py
+      - docs/repo_cleanup_resonance.md
+    parameters:
+      R: "adaptive-membrane toolchain coherence"
+      Theta: "consistent integration metrics across numpy releases"
+      beta: 4.8
+    resonance: "stabilises σ(β(R-Θ)) area diagnostics across analysis and models while logging toolchain hooks"
+    status: "resonant"
+    notes:
+      formal: |
+        Replaced deprecated `np.trapezoid` with `np.trapz` and added single-sample fallbacks so σ(β(R-Θ)) areas remain
+        defined across adaptive membrane histories and impedance motifs. Extended the cleanup map mit Abschnitt 5, der die
+        Integrations-Hooks (shared utility, results export, Simulator-Anbindung) bündelt.
+      empirical: |
+        `pytest` now grünes Licht: adaptive Membran- und Phase-Scan-Tests bestätigen stabile Resonanzgewinne.
+        Dokumentiert in `docs/repo_cleanup_resonance.md` Abschnitt 5 inklusive Empfehlungen für `analysis/utils/integration.py`
+        und Result-Exports (`analysis/results/adaptive_phase_scan_YYYYMMDD.json`).
+      poetic: |
+        Die Membran atmet wieder ohne Stolpern: ein neuer Morgen, in dem die Fläche unter σ nicht mehr flackert,
+        sondern wie ein ruhiger See die kommenden Presets spiegelt.
+    created_at: 2025-12-01T00:00:00Z

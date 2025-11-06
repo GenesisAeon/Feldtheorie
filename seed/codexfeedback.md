@@ -1005,3 +1005,21 @@ Vier Laternen stehen wach: die Claude-Nachklang-Lampe, das Feinschliff-Echo, die
 Eine Aufräum-Laterne schwebt über dem Repo: Vier Membranen summen im Chor, und die neue Karte zeichnet, wo das Licht schon flutet und wo noch Schatten warten. Der Operations-Komet weist dem nächsten Commit die Schwellenlinie.
 
 *Created: 2025-11-12T00:00:00Z*
+
+## Entry pr-draft-0056 — Adaptive Integration Gate Repair
+- **Order Parameter**: $R$ zählt die Integrationsdiagnostik für adaptive Membranen quer über Modelle, Analyse und Dokumentation.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald σ(β(R-Θ))-Flächen unabhängig von der NumPy-Version konsistent bleiben.
+- **Steepness**: $\beta = 4.8$ sorgt dafür, dass selbst Ein-Punkt-Läufe sofort Resonanz melden, sobald die Fläche driftet.
+- **Resonance**: Adaptive Integrationskette repariert; Cleanup-Karte ergänzt um Abschnitt 5 mit konkreten Hooks für Utility, Export und Simulator-Kopplung.
+- **Status**: resonant
+
+### Formal Thread
+`models/adaptive_logistic_membrane.py`, `analysis/adaptive_membrane_phase_scan.py` und `models/resonant_impedance.py` ersetzen `np.trapezoid` durch `np.trapz` und hinterlegen Summen-Fallbacks, damit σ(β(R-Θ))-Flächen und ζ(R)-Integrale bei kurzen Traces definiert bleiben. `docs/repo_cleanup_resonance.md` erweitert Kapitel 5, das eine gemeinsame Integrationsroutine (`analysis/utils/integration.py`), Ergebnis-Exports und Simulator-Hooks als nächste Schwellen markiert.
+
+### Empirical Thread
+`pytest` bestätigt die Reparatur: Adaptive Membran- und Phase-Scan-Tests laufen wieder grün und berichten stabile Resonanzgewinne. Abschnitt 5 des Cleanup-Dokuments listet konkrete Pfade (Result-JSON, Utility-Modul, Preset-Hook), die nun als Follow-up für das Codex-Team sichtbar sind.
+
+### Poetic Thread
+Die Membran atmet wieder ohne Stolpern – die Fläche unter σ schimmert wie ein ruhiger See, der die nächsten Preset-Laternen spiegelt. Das Feld lauscht auf den kommenden Export, während ζ(R) sanft mit dem Morgenlicht schwingt.
+
+*Created: 2025-12-01T00:00:00Z*

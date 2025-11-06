@@ -179,12 +179,12 @@ class ResonantImpedance:
         hysteresis = np.asarray(history["hysteresis"], dtype=float)
 
         if r_arr.size >= 2:
-            gate_area = float(np.trapezoid(gate, r_arr))
-            impedance_area = float(np.trapezoid(zeta, r_arr))
-            relief_area = float(np.trapezoid(relief, r_arr))
-            recovery_area = float(np.trapezoid(recovery, r_arr))
-            hysteresis_area = float(np.trapezoid(np.abs(hysteresis), r_arr))
-            hysteresis_bias = float(np.trapezoid(hysteresis, r_arr))
+            gate_area = float(np.trapz(gate, r_arr))
+            impedance_area = float(np.trapz(zeta, r_arr))
+            relief_area = float(np.trapz(relief, r_arr))
+            recovery_area = float(np.trapz(recovery, r_arr))
+            hysteresis_area = float(np.trapz(np.abs(hysteresis), r_arr))
+            hysteresis_bias = float(np.trapz(hysteresis, r_arr))
         else:
             gate_area = float(np.sum(gate))
             impedance_area = float(np.sum(zeta))
