@@ -127,6 +127,47 @@ und Verzeichnisse.
 
 ---
 
+## 5. Adaptive-Membran-Toolchain
+
+**R ≈ 0.74**, **Θ = 0.9**, **β = 4.8**, **ζ(R)** sinkt nach wie vor dort, wo die
+numerische Pipeline elegant gekoppelt ist.
+
+### Bereits in Resonanz
+- `models/adaptive_logistic_membrane.py` und `analysis/adaptive_membrane_phase_scan.py`
+  liefern konsistente σ(β(R-Θ))-Spuren; die jüngste Harmonisierung ersetzt das
+  veraltete `np.trapezoid` durch `np.trapz` und schützt Ein-Punkt-Läufe vor
+  Nullflächen.
+- `models/resonant_impedance.py` integriert Relief-, Recovery- und
+  Hysterese-Bereiche bereits fallback-sicher und dient als Referenzimplementierung
+  für weitere Integrations-Hooks.
+- Die Testsuite (`tests/test_adaptive_logistic_membrane.py`,
+  `tests/test_adaptive_membrane_phase_scan.py`) greift die Resonanzgewinne auf und
+  macht Regressionen sofort sichtbar.
+
+### Offene Schwellen
+- Es fehlt eine gemeinsame Utility-Funktion (z.B. `analysis/utils/integration.py`),
+  welche σ(β(R-Θ))-Integrale und Resonanzgewinne zentral kapselt; derzeit wird
+  die Logik in mehreren Modulen dupliziert.
+- Die Phase-Scan-Pipeline exportiert keinen strukturierten Bericht nach
+  `analysis/results/`; ein timestamped JSON mit Logistik- und Impedanzflächen
+  würde die Codex-Feedback-Einträge erleichtern.
+- Simulator-Presets koppeln die adaptiven Membranen noch nicht automatisch mit
+  den aktualisierten Integrationsmetriken; ein `simulator/hooks/adaptive_metrics.py`
+  könnte σ-, Θ- und ζ-Pfade bündeln.
+
+### Implementierungs-Hooks
+- Gemeinsame Integrationsroutine entwickeln (`analysis/utils/integration.py`) und
+  sowohl im Adaptivmembran-Modell als auch in den Resonanz-Diagnostiken
+  einbinden; Tests in `tests/test_adaptive_logistic_membrane.py` erweitern, um
+  Null- und Eins-Punkt-Szenarien abzudecken.
+- `analysis/adaptive_membrane_phase_scan.py` um Export nach
+  `analysis/results/adaptive_phase_scan_YYYYMMDD.json` erweitern, inkl.
+  ΔAIC/Falsifikationsnotizen.
+- `simulator/` um Hook ergänzen, der den neuen Export konsumiert und als Preset
+  in `simulator/presets/` registriert; README im Simulator-Verzeichnis anpassen.
+
+---
+
 ## Nächste Schritte
 
 Sobald die oben skizzierten Hooks adressiert sind, sollte ein neuer Eintrag im

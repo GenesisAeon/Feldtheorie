@@ -195,12 +195,12 @@ def _summarise_history(
     sigma = np.asarray(history["sigma"], dtype=float)
     response = np.asarray(history["response"], dtype=float)
 
-    logistic_area = float(np.trapezoid(sigma, R)) if R.size >= 2 else float(np.sum(sigma))
-    response_area = float(np.trapezoid(response, R)) if R.size >= 2 else float(np.sum(response))
+    logistic_area = float(np.trapz(sigma, R)) if R.size >= 2 else float(np.sum(sigma))
+    response_area = float(np.trapz(response, R)) if R.size >= 2 else float(np.sum(response))
     baseline_response = baseline_sigma * baseline_zeta
-    baseline_area = float(np.trapezoid(baseline_sigma, R)) if R.size >= 2 else float(np.sum(baseline_sigma))
+    baseline_area = float(np.trapz(baseline_sigma, R)) if R.size >= 2 else float(np.sum(baseline_sigma))
     baseline_response_area = (
-        float(np.trapezoid(baseline_response, R)) if R.size >= 2 else float(np.sum(baseline_response))
+        float(np.trapz(baseline_response, R)) if R.size >= 2 else float(np.sum(baseline_response))
     )
     baseline_resonance_gain = (
         baseline_response_area / baseline_area if abs(baseline_area) > 1e-9 else float("nan")

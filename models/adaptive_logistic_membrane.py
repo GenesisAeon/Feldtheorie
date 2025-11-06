@@ -190,8 +190,12 @@ class AdaptiveLogisticMembrane:
         baseline_theta = float(np.asarray(history["theta_baseline"], dtype=float)[0])
         baseline_beta = float(np.asarray(history["beta_baseline"], dtype=float)[0])
 
-        logistic_area = float(np.trapezoid(sigma, R))
-        response_area = float(np.trapezoid(response, R))
+        if R.size >= 2:
+            logistic_area = float(np.trapz(sigma, R))
+            response_area = float(np.trapz(response, R))
+        else:
+            logistic_area = float(np.sum(sigma))
+            response_area = float(np.sum(response))
         resonance_gain = response_area / logistic_area if abs(logistic_area) > 1e-9 else float("nan")
 
         half_max = 0.5
