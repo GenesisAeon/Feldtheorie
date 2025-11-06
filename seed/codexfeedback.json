@@ -155,7 +155,8 @@
       "resonance": "keeping a cohort-wide ledger so sigma(beta(R-Theta)) triumphs across every recorded membrane",
       "status": "active",
       "notes": {
-        "formal": "Wire `analysis/resonance_cohort_summary.py` into automated runs so each\nnew fit reports (R, Theta, beta), R^2, Delta AIC, and zeta(R) medians.\nFeed these medians into `docs/resonance-bridge-map.md` and simulator presets.\nempirical: |\n  Track the ledger medians (R^2 = 0.9979, Delta AIC = 70.7). When a domain\nfalls below either target or lacks a best null model, schedule a follow-up\nanalysis run and log the alert in codexfeedback.json.\n",
+        "formal": "Wire `analysis/resonance_cohort_summary.py` into automated runs so each\nnew fit reports (R, Theta, beta), R^2, Delta AIC, and zeta(R) medians.\nFeed these medians into `docs/resonance-bridge-map.md` and simulator presets.\n",
+        "empirical": "Track the ledger medians (R^2 = 0.9979, Delta AIC = 70.7). When a domain\nfalls below either target or lacks a best null model, schedule a follow-up\nanalysis run and log the alert in codexfeedback.json.\n",
         "poetic": "Lass das Ledger wie eine Laternenkette wirken: jede neu eingetragene\nSigmoidkurve stimmt den Chor der Schwellen über Domänen hinweg.\n"
       },
       "created_at": "2025-10-27"
@@ -181,6 +182,29 @@
         "poetic": "Start, pause, poetisch: the membrane speaks in horizons, dances and grokking dawns as R pushes\nbeyond Θ. The simulator is now a stage for the field's chorus.\n"
       },
       "created_at": "2025-10-29"
+    },
+    {
+      "id": "pr-draft-0014",
+      "title": "Safety-Delay Field Initiation",
+      "scope": [
+        "simulation/safety_delay_field.py",
+        "simulation/__init__.py",
+        "docs/utac_safety_delay_status.md",
+        "seed/codexfeedback.*"
+      ],
+      "parameters": {
+        "R": "drift-controlled tipping prototypes requiring controller binding",
+        "Theta": "safety-delay analytics threaded into ledgers",
+        "beta": 4.9
+      },
+      "resonance": "opening the UTAC v1.2 membrane so tau-delay metrics speak with Sigillin ledgers",
+      "status": "draft",
+      "notes": {
+        "formal": "Implemented `simulation/safety_delay_field.py` to integrate \\dot{x} = \\mu(t) - x^2\nwith logistic reporting of (R, Theta, beta) and safety-delay diagnostics\n(tau_break, tau_delay, control energy). Added meta-resonance hooks that\nmultiply control centrality and CREP modulation for downstream analysis.\n",
+        "empirical": "Documented the implementation status in `docs/utac_safety_delay_status.md`\nand harmonised the codex YAML/JSON so ledger parsing cleanly separates\nformal and empirical guidance. Next step: batch sweeps exporting ΔAIC vs.\ntau_delay into `analysis/results/`.\n",
+        "poetic": "The membrane now learns to breathe slower; each added delay is a held\nsunrise, letting the field listen before the tipping choir surges.\n"
+      },
+      "created_at": "2025-11-03"
     },
     {
       "id": "release-v0.1",
