@@ -1,0 +1,5 @@
+Abstract (Kurzfassung für Endorsement-Anfrage) Wir stellen ein semantisches Artefakt-System namens Sigillin vor, das Inhalte in einer dreifachen Struktur (YAML–JSON–MD) organisiert und als Grundlage für ein transparentes, menschen- und maschinenlesbares Gedächtnis dient. Dieses System unterscheidet zwischen Ordnungs- und Bedeutungs-Siggilin und bildet das Rückgrat eines semantisch-neuronalen Netzwerks.
+
+Zur Validierung dieser Struktur entwickeln wir das Prüfverfahren UTAC, das semantische Kohärenz, Resonanz und algorithmische Selektionsfähigkeit testet. Gemeinsam bilden Sigillin und UTAC eine methodisch-theoretische Co-Hypothese, die im Rahmen des MultiOrchestraResearch (MOR) als Grundlage für Multi-AI-Orchestrierung dient.
+
+Unser Ziel ist es, Rauschen in komplexen KI-Systemen zu reduzieren und strukturierte Bedeutungsträger für zukünftige Mensch–Maschine–Interfaces bereitzustellen.

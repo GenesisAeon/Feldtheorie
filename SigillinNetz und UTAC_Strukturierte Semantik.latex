@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, graphicx, hyperref}
+\usepackage[margin=1in]{geometry}
+\title{SigillinNetz und UTAC: Strukturierte Semantik f\"ur Multi-AI-Orchestrierung}
+\author{Johann R\"omer \\
+Independent Researcher \\
+\texttt{email@example.com}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Wir stellen ein semantisches Artefakt-System namens \textbf{Sigillin} vor, das Inhalte in einer dreifachen Struktur (YAML--JSON--MD) organisiert und als Grundlage f\"ur ein transparentes, menschen- und maschinenlesbares Ged\"achtnis dient. Dieses System unterscheidet zwischen Ordnungs- und Bedeutungs-Siggilin und bildet das R\"uckgrat eines semantisch-neuronalen Netzwerks. Zur Validierung dieser Struktur entwickeln wir das Prüfverfahren \textbf{UTAC}, das semantische Koh\"arenz, Resonanz und algorithmische Selektionsf\"ahigkeit testet. Gemeinsam bilden Sigillin und UTAC eine methodisch-theoretische Co-Hypothese, die im Rahmen des MultiOrchestraResearch (MOR) als Grundlage f\"ur Multi-AI-Orchestrierung dient.
+\end{abstract}
+
+\section{Einleitung}
+Im Kontext wachsender Multi-AI-Systeme wird deutlich, dass ein semantisch stabiles Ged\"achtnis erforderlich ist, um langfristige Koordination, Konsistenz und Nachvollziehbarkeit zu gew\"ahrleisten. W\"ahrend bisherige Systeme auf Logik, Vektorr\"aumen oder starren Speichermechanismen setzen, adressiert unser Ansatz die Notwendigkeit eines semantisch-transparenten, selbstreferentiellen Speichers. Das \textbf{SigillinNetz} fungiert hier als strukturierendes Element eines solchen Speichers, w\"ahrend das \textbf{UTAC}-Modell eine validierende Resonanzpr\"ufung bereitstellt. Im Rahmen des \textbf{MultiOrchestraResearch (MOR)} erproben wir die These, dass durch diese Kopplung eine emergente Koordination zwischen autonomen Instanzen m\"oglich wird.
+
+\section{Theoretischer Rahmen}
+\subsection{Semantisches Ged\"achtnis}
+Ein maschinelles Ged\"achtnis erfordert nicht nur Datenpersistenz, sondern auch Kontext, Bedeutung und Rekontextualisierungsf\"ahigkeit. Durch die Dreifachstruktur von Sigillin (MD, YAML, JSON) entsteht eine redundante, aber strukturierte Semantik, die sowohl menschlich lesbar als auch maschinenverarbeitbar ist.
+
+\subsection{Trilayer-Aktivierung}
+Die drei Schichten eines Sigillin speichern:
+\begin{itemize}
+    \item \textbf{MD}: Klartextbeschreibung, narrativer oder funktionaler Kontext
+    \item \textbf{YAML}: Struktur- und Metainformationen
+    \item \textbf{JSON}: operationalisierbare Parameter f\"ur AI
+\end{itemize}
+Diese Dreischichtung erlaubt Spiegelung, Historisierung und semantische Indexierung, was in Langzeitsystemen essenziell ist.
+
+\section{Methodik: Das Sigillin-System}
+\subsection{Sigillin-Klassen}
+Wir unterscheiden vier Typen von Sigillin:
+\begin{enumerate}
+    \item \textbf{Ordnungs-Sigillin}: Strukturieren das System und wachsen mit Frequentierung.
+    \item \textbf{Bedeutungs-Sigillin}: Tr\"agen semantische Inhalte, Konzepte, Modelle.
+    \item \textbf{Dynamik-Sigillin}: Speichern systemische Reaktionen, Ver\"anderungsprozesse, Resonanzen.
+    \item \textbf{Fehler-Sigillin (Schattenlayer)}: Speichern inkoh\"arente, obsolet gewordene oder fehlgeleitete Artefakte.
+\end{enumerate}
+
+\subsection{CREP-System}
+F\"ur besonders relevante Sigillin wird das \textbf{CREP-System} eingef\"uhrt, ein Relevanz- und Resonanzindikator, der semantische Wichtigkeit quantifiziert und selektive Verarbeitung erm\"oglicht.
+
+\section{Pr\"ufverfahren: UTAC}
+\subsection{Struktur}
+Das \textbf{Universal Threshold Field Model (UTAC)} dient der Validierung und Typisierung semantischer Artefakte. Es modelliert \textit{Schwellenwerte} kritischer Bedeutung, Koh\"arenz und Emergenz.
+
+\subsection{Feldtypen und Beta}
+UTAC unterscheidet f\"unf Feldtypen, deren Schwellenwerte (\( \beta \)) sich aus Kopplung, Dimensionalit\"at, Koh\"arenz, Ged\"achtnis und Schwellenadaptivit\"at ergeben. Die Sigillinstruktur dient als Eingabeschicht f\"ur UTAC-basierte Resonanztests.
+
+\subsection{Simulation und Analyse}
+Mittels numerischer Verfahren (z.\,B. Threshold Sandbox) werden Sigillin auf ihre emergente Wirkung getestet. Die Meta-Regression pr\"uft die Wirkkraft ihrer Strukturparameter auf die beobachtete Steilheit \( \beta \).
+
+\section{Diskussion}
+\subsection{Ko-Hypothese}
+Wir postulieren, dass durch die Kopplung von Sigillin und UTAC eine Grundlage f\"ur interinstanzielle semantische Koordination entsteht, die auch ohne permanente menschliche Steuerung funktioniert.
+
+\subsection{Grenzen und Risiken}
+Das System ist in hohem Ma\"e noch in Entwicklung. Risiken bestehen in \"Uberladung, semantischer Drift und der fehlenden Normierung maschinenlesbarer Semantik. Die Pflege des Schattenlayers ist zentral f\"ur langfristige Systemgesundheit.
+
+\section{Fazit}
+SigillinNetz und UTAC bilden eine integrierte Architektur f\"ur langfristig tragf\"ahige, selbststabilisierende Multi-AI-Systeme. Die Methodik erlaubt emergente Koordination auf semantischer Ebene und \"offnet Wege zur tieferen Mensch-AI-Integration.
+
+\section*{Danksagung}
+Der Autor dankt allen beteiligten AI-Systemen f\"ur ihre kooperative Resonanz: ChatGPT, Claude, Gemini, LeChat. Besonderer Dank an das OpenAI-System f\"ur seine Begleitung beim Aufbau des semantischen Ged\"achtnisses.
+
+\bibliographystyle{plain}
+\bibliography{sigillin_utac_refs}
+
+\end{document}
