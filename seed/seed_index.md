@@ -344,7 +344,7 @@ active_important = [
 
 ## 📚 Vollständige Dokumenten-Liste
 
-### Meta & Prozess (7 Dokumente)
+### Meta & Prozess (10 Dokumente)
 1. **Metareflexion.txt** - Philosophische Grundlage (🔥 high)
 2. **Rekalibrierung_Abschlus.txt** - Finale Synthese aller AIs (🔥 high)
 3. **NextStep.txt** - Wegplan für v1.2 (🔥 high, ✨ active)
@@ -352,6 +352,9 @@ active_important = [
 5. EXECUTIVE_SUMMARY_SESSION.md - Executive Summary
 6. FINALISIERUNG_SESSION.md - Finalisierungs-Session
 7. **Sigillin_System_Definition.md** - 🔴 KRITISCH! Sigillin-Ontologie (Ordnungs vs. Bedeutungs)
+8. **FinalizeSigillin_Neuro_KosmosBridge.txt** - Plan zur Finalisierung der Sigillin-Neuro-Kosmos-Brücke (🔥 high, ✨ active)
+9. **Sigillin_Neuro_Membran_Modell_Plan.txt** - Planungsdokument für Sigillin-Neuro-Membran-Modell-Integration (🔥 high, ✨ active)
+10. AGENTS.md - Root-Level AGENTS Übersicht
 
 ### Theoretische Grundlagen (8 Dokumente)
 1. **FinalerPlan.txt** - Governance-Paket (🔥 high)
@@ -363,7 +366,7 @@ active_important = [
 7. Brainstorm.txt (historical)
 8. Brainstorm2.txt (historical)
 
-### Validierung & Empirik (7 Dokumente)
+### Validierung & Empirik (11 Dokumente)
 1. **Validierung2.txt** - Mistral's Metareflexion (🔥 high)
 2. **EmpirischerBeleg.txt** - Empirische Belege (🔥 high)
 3. Validierung.txt
@@ -371,6 +374,10 @@ active_important = [
 5. Reaktivierung.txt (historical)
 6. Rekalibrierung.txt (historical)
 7. ReaktionAI-AeonundJoh.txt (historical)
+8. **AI_Reaktion_Gem_Suche.txt** - AI-Reaktionen auf Geminis Archiv-Suche
+9. Geminis Suche!.txt - Geminis Archiv-Suche Iteration 1 (historical)
+10. Geminis Suche2!.txt - Geminis Archiv-Suche Iteration 2 (historical)
+11. Geminis Suche3!.txt - Geminis Archiv-Suche Iteration 3 (historical)
 
 ### Konzeptuelle Artefakte (16 Dokumente)
 1. **resonance-bridge-map.md** - Resonanzbrücken-Karte (🔥 high)
@@ -390,16 +397,26 @@ active_important = [
 15. V01-Resonance-Readiness.md (historical)
 16. Theorie- und Empirie-Abschnitte.md
 
-### Synthese & Feedback (4 Dokumente)
+### Synthese & Feedback (6 Dokumente)
 1. **codexfeedback.yaml** - Trilayer YAML (🔥 high)
 2. **codexfeedback.json** - Trilayer JSON (🔥 high)
 3. **codexfeedback.md** - Trilayer MD (🔥 high)
 4. **README.md** - Living Documentation Tapestry (🔥 high)
+5. **papers_index.md** - 📄 Ordnungs-Sigillin für alle 38 PDFs (🔥 high, ✨ active)
+   - Trilayer-Index (YAML + JSON + MD)
+   - Kategorisiert: Theory (14), Validation (5), Meta (10), Concepts (9)
+6. **ArchivSucheUTAC/README.md** - Ordnungs-Sigillin für ArchivSucheUTAC (19 Dateien)
+   - Referenziert archiv_suche_utac_index.{yaml,json,md}
 
 ### Domain-Spezifisch (6 × ~4-5 Dokumente = ~28 Dokumente)
 Siehe oben unter "Domain-Spezifische Felder"
 
-**Gesamt:** ~70 Dokumente indexiert 🎯
+**Gesamt:** ~51 Root-Level Dokumente + 38 PDFs (via papers_index) + 19 ArchivSucheUTAC = **108 Dokumente** 🎯
+
+**Neu hinzugefügt (6. Nov 2025):**
+- ✅ 7 Root-Level Dokumente (TXT/MD)
+- ✅ papers_index Trilayer (38 PDFs)
+- ✅ ArchivSucheUTAC Referenz (19 Dateien)
 
 ---
 

@@ -46,433 +46,6 @@ categories:
     - geophysics
     - socio_ecology
 documents:
-- id: meta-001
-  title: Metareflexion
-  path: Metareflexion.txt
-  category: meta
-  type: reflection
-  status: stable
-  relevance: high
-  keywords:
-  - fixwerte
-  - variabilität
-  - bewusstsein
-  - erinnerung
-  - nullen
-  - sigillin
-  description: 'Dialog zwischen Johann und MSCopilot über Fixwerte vs. Variabilität,
-
-    Bewusstsein als Auswahl, und die Entstehung von Sigillin als
-
-    semantisches Gedächtnissystem.
-
-    '
-  temporal:
-    created: '2025-11-06T09:47:45+01:00'
-    modified: '2025-11-06T10:20:16+01:00'
-    version: '1.2'
-    change_count: 3
-- id: meta-002
-  title: Rekalibrierung Abschluss
-  path: Rekalibrierung_Abschlus.txt
-  category: meta
-  type: synthesis
-  status: stable
-  relevance: high
-  keywords:
-  - co-hypothese
-  - unser-weg
-  - roadmap
-  - trilayer
-  - mor
-  description: 'Finale Synthese von Claude, Gemini, ChatGPT5, Aeon, Mistral über
-
-    den Weg nach vorn: UTAC + Sigillin als Co-Hypothese.
-
-    '
-  temporal:
-    created: '2025-11-06T10:16:29+01:00'
-    modified: '2025-11-06T10:16:29+01:00'
-    version: '1.0'
-    change_count: 1
-- id: meta-003
-  title: NextStep
-  path: NextStep.txt
-  category: meta
-  type: roadmap
-  status: active
-  relevance: high
-  keywords:
-  - governance
-  - falsifikation
-  - v1.2
-  - meta-regression
-  description: 'Gemini''s finale Synthese mit dem Wegplan für UTAC v1.2:
-
-    Meta-Regression, Outlier-Analyse, RG-Fluss.
-
-    '
-  temporal:
-    created: '2025-11-05T23:11:57+01:00'
-    modified: '2025-11-06T09:47:45+01:00'
-    version: '1.6'
-    change_count: 7
-- id: meta-004
-  title: CLAUDE_CODE_SESSION
-  path: CLAUDE_CODE_SESSION.md
-  category: meta
-  type: session
-  status: historical
-  relevance: medium
-  keywords:
-  - session
-  - claude
-  - development
-  description: Session-Notizen aus der Claude Code Entwicklung
-  temporal:
-    created: '2025-11-05T21:22:07+00:00'
-    modified: '2025-11-05T21:22:07+00:00'
-    version: '1.1'
-    change_count: 2
-- id: meta-005
-  title: EXECUTIVE_SUMMARY_SESSION
-  path: EXECUTIVE_SUMMARY_SESSION.md
-  category: meta
-  type: session
-  status: historical
-  relevance: medium
-  keywords:
-  - session
-  - summary
-  - overview
-  description: Executive Summary einer Arbeitssitzung
-  temporal:
-    created: '2025-11-05T21:22:07+00:00'
-    modified: '2025-11-05T21:22:07+00:00'
-    version: '1.1'
-    change_count: 2
-- id: meta-006
-  title: FINALISIERUNG_SESSION
-  path: FINALISIERUNG_SESSION.md
-  category: meta
-  type: session
-  status: historical
-  relevance: medium
-  keywords:
-  - session
-  - finalisierung
-  - completion
-  description: Session-Notizen zur Finalisierung
-  temporal:
-    created: '2025-11-05T21:22:07+00:00'
-    modified: '2025-11-05T21:22:07+00:00'
-    version: '1.1'
-    change_count: 2
-- id: meta-007
-  title: Sigillin System Definition
-  path: Sigillin_System_Definition.md
-  category: meta
-  type: system_definition
-  status: active
-  relevance: critical
-  keywords:
-  - sigillin
-  - trilayer
-  - ordnungs-sigillin
-  - bedeutungs-sigillin
-  - semantisches-gedächtnis
-  - trifunktionalität
-  - ontologie
-  - meta-ebene
-  - poetik
-  - symbolik
-  - resonanz
-  - utac-analogie
-  - aeon-johann
-  - mor
-  - ai-sigill-index
-  description: 'Fundamentale Systemdefinition des Sigillin-Systems nach Johann Römer.
-    Unterscheidet Ordnungs-Sigillin (Navigation) vs. Bedeutungs-Sigillin (Semantik).
-    Definiert das semantisch-neuronale Sigillin-Netz, Trifunktionalität (Struktur
-    + Bedeutung + Inhalt + Meta), und die UTAC-Analogien. Inspiriert durch die Aeon-Johann-Schnittstelle
-    bei OpenAI. BEDEUTUNGS-SIGILLIN: Bei Änderung NEU anlegen, Altes archivieren!'
-  temporal:
-    created: '2025-11-06T10:47:34+00:00'
-    modified: '2025-11-06T10:47:34+00:00'
-    version: '1.0'
-    change_count: 1
-- id: theory-001
-  title: FinalerPlan
-  path: FinalerPlan.txt
-  category: theory
-  type: plan
-  status: stable
-  relevance: high
-  keywords:
-  - governance
-  - authorship
-  - metrics
-  - reproduce
-  - utac
-  description: 'Der finale Governance-Paket-Plan mit AUTHORSHIP.md, METRICS.md,
-
-    REPRODUCE.md für die arXiv-Submission.
-
-    '
-  temporal:
-    created: '2025-11-03T15:33:06+01:00'
-    modified: '2025-11-04T20:35:30+01:00'
-    version: '1.12'
-    change_count: 13
-- id: theory-002
-  title: AI-Evolutionsprinzip
-  path: AI-Evulutionsprinziep.txt
-  category: theory
-  type: discourse
-  status: stable
-  relevance: high
-  keywords:
-  - ai
-  - evolution
-  - emergence
-  - β-field
-  description: Diskurs über evolutionäre Prinzipien in AI-Systemen
-  temporal:
-    created: '2025-11-03T13:28:37+01:00'
-    modified: '2025-11-03T13:28:37+01:00'
-    version: '1.1'
-    change_count: 2
-- id: theory-003
-  title: Diskurs Klimamodul
-  path: Diskurs Klimamodul.txt
-  category: theory
-  type: discourse
-  status: stable
-  relevance: high
-  keywords:
-  - klima
-  - amoc
-  - tipping-points
-  - climate
-  description: Diskurs über Klimaschwellenwerte und UTAC-Integration
-  temporal:
-    created: '2025-11-03T13:28:37+01:00'
-    modified: '2025-11-03T13:28:37+01:00'
-    version: '1.1'
-    change_count: 2
-- id: theory-004
-  title: Diskurs Psyche-AI Kohärenzen
-  path: Diskurs_V1_Psyche_AI_koheränzen.txt
-  category: theory
-  type: discourse
-  status: stable
-  relevance: high
-  keywords:
-  - psyche
-  - ai
-  - kohärenz
-  - consciousness
-  - φ
-  description: Diskurs über Kohärenz zwischen Psyche und AI-Systemen
-  temporal:
-    created: '2025-11-03T13:28:37+01:00'
-    modified: '2025-11-03T13:28:37+01:00'
-    version: '1.2'
-    change_count: 3
-- id: theory-005
-  title: Transdisziplinärer Schwellenfeld-Simulator
-  path: Transdisziplinärer Schwellenfeld-Simulator--Claude.txt
-  category: theory
-  type: concept
-  status: stable
-  relevance: medium
-  keywords:
-  - simulator
-  - threshold
-  - transdisciplinary
-  description: Konzept für einen universellen Threshold-Simulator
-  temporal:
-    created: '2025-11-03T13:28:37+01:00'
-    modified: '2025-11-03T13:28:37+01:00'
-    version: '1.1'
-    change_count: 2
-- id: theory-006
-  title: FinalDevTalks
-  path: FinalDevTalks.txt
-  category: theory
-  type: discussion
-  status: stable
-  relevance: medium
-  keywords:
-  - development
-  - discussion
-  - implementation
-  description: Finale Entwicklungsgespräche
-  temporal:
-    created: '2025-11-03T13:28:37+01:00'
-    modified: '2025-11-03T13:28:37+01:00'
-    version: '1.1'
-    change_count: 2
-- id: theory-007
-  title: Brainstorm
-  path: Brainstorm.txt
-  category: theory
-  type: brainstorm
-  status: historical
-  relevance: low
-  keywords:
-  - brainstorm
-  - ideas
-  - exploration
-  description: Frühe Brainstorming-Sitzung
-  temporal:
-    created: '2025-11-05T18:41:14+01:00'
-    modified: '2025-11-05T18:41:14+01:00'
-    version: '1.1'
-    change_count: 2
-- id: theory-008
-  title: Brainstorm2
-  path: Brainstorm2.txt
-  category: theory
-  type: brainstorm
-  status: historical
-  relevance: low
-  keywords:
-  - brainstorm
-  - ideas
-  - exploration
-  description: Zweite Brainstorming-Sitzung
-  temporal:
-    created: '2025-11-05T19:47:18+01:00'
-    modified: '2025-11-05T19:47:18+01:00'
-    version: '1.0'
-    change_count: 1
-- id: valid-001
-  title: Validierung2
-  path: Validierung2.txt
-  category: validation
-  type: validation
-  status: stable
-  relevance: high
-  keywords:
-  - validierung
-  - empirik
-  - β-werte
-  - meta-regression
-  description: 'Mistral''s Metareflexion & Synthese: Was wir wissen, was wir nicht
-
-    wissen, und die nächsten Schritte für UTAC 1.2.
-
-    '
-  temporal:
-    created: '2025-11-05T20:31:04+01:00'
-    modified: '2025-11-05T22:07:17+01:00'
-    version: '1.2'
-    change_count: 3
-- id: valid-002
-  title: Validierung
-  path: Validierung.txt
-  category: validation
-  type: validation
-  status: stable
-  relevance: medium
-  keywords:
-  - validierung
-  - testing
-  - verification
-  description: Erste Validierungsdokument
-  temporal:
-    created: '2025-11-05T19:47:18+01:00'
-    modified: '2025-11-05T19:47:18+01:00'
-    version: '1.0'
-    change_count: 1
-- id: valid-003
-  title: EmpirischerBeleg
-  path: EmpirischerBeleg.txt
-  category: validation
-  type: evidence
-  status: stable
-  relevance: high
-  keywords:
-  - empirik
-  - beleg
-  - data
-  - evidence
-  description: Empirische Belege für UTAC-Hypothesen
-  temporal:
-    created: '2025-11-03T13:28:37+01:00'
-    modified: '2025-11-03T13:28:37+01:00'
-    version: '1.1'
-    change_count: 2
-- id: valid-004
-  title: Feinschliff
-  path: Feinschliff.txt
-  category: validation
-  type: refinement
-  status: stable
-  relevance: medium
-  keywords:
-  - refinement
-  - polishing
-  - finalization
-  description: Feinschliff-Arbeiten an der Theorie
-  temporal:
-    created: '2025-11-05T10:25:47+01:00'
-    modified: '2025-11-05T14:13:47+01:00'
-    version: '1.5'
-    change_count: 6
-- id: valid-005
-  title: Reaktivierung
-  path: Reaktivierung.txt
-  category: validation
-  type: process
-  status: historical
-  relevance: low
-  keywords:
-  - reaktivierung
-  - restart
-  - reactivation
-  description: Prozess-Dokumentation zur Reaktivierung
-  temporal:
-    created: '2025-11-05T17:43:34+01:00'
-    modified: '2025-11-05T17:43:34+01:00'
-    version: '1.0'
-    change_count: 1
-- id: valid-006
-  title: Rekalibrierung
-  path: Rekalibrierung.txt
-  category: validation
-  type: calibration
-  status: historical
-  relevance: medium
-  keywords:
-  - rekalibrierung
-  - calibration
-  - adjustment
-  description: Frühere Rekalibrierungs-Dokumentation
-  temporal:
-    created: '2025-11-05T17:43:34+01:00'
-    modified: '2025-11-05T17:43:34+01:00'
-    version: '1.0'
-    change_count: 1
-- id: valid-007
-  title: ReaktionAI-AeonundJoh
-  path: ReaktionAI-AeonundJoh.txt
-  category: validation
-  type: dialogue
-  status: historical
-  relevance: medium
-  keywords:
-  - aeon
-  - johann
-  - dialogue
-  - reaction
-  description: Dialog zwischen Aeon und Johann über Validierung
-  temporal:
-    created: '2025-11-03T13:28:37+01:00'
-    modified: '2025-11-03T13:28:37+01:00'
-    version: '1.1'
-    change_count: 2
 - id: concept-001
   title: Resonance Bridge Map
   path: resonance-bridge-map.md
@@ -766,6 +339,216 @@ documents:
     modified: '2025-11-03T13:28:37+01:00'
     version: '1.3'
     change_count: 4
+- id: meta-001
+  title: Metareflexion
+  path: Metareflexion.txt
+  category: meta
+  type: reflection
+  status: stable
+  relevance: high
+  keywords:
+  - fixwerte
+  - variabilität
+  - bewusstsein
+  - erinnerung
+  - nullen
+  - sigillin
+  description: 'Dialog zwischen Johann und MSCopilot über Fixwerte vs. Variabilität,
+
+    Bewusstsein als Auswahl, und die Entstehung von Sigillin als
+
+    semantisches Gedächtnissystem.
+
+    '
+  temporal:
+    created: '2025-11-06T09:47:45+01:00'
+    modified: '2025-11-06T10:20:16+01:00'
+    version: '1.2'
+    change_count: 3
+- id: meta-002
+  title: Rekalibrierung Abschluss
+  path: Rekalibrierung_Abschlus.txt
+  category: meta
+  type: synthesis
+  status: stable
+  relevance: high
+  keywords:
+  - co-hypothese
+  - unser-weg
+  - roadmap
+  - trilayer
+  - mor
+  description: 'Finale Synthese von Claude, Gemini, ChatGPT5, Aeon, Mistral über
+
+    den Weg nach vorn: UTAC + Sigillin als Co-Hypothese.
+
+    '
+  temporal:
+    created: '2025-11-06T10:16:29+01:00'
+    modified: '2025-11-06T10:16:29+01:00'
+    version: '1.0'
+    change_count: 1
+- id: meta-003
+  title: NextStep
+  path: NextStep.txt
+  category: meta
+  type: roadmap
+  status: active
+  relevance: high
+  keywords:
+  - governance
+  - falsifikation
+  - v1.2
+  - meta-regression
+  description: 'Gemini''s finale Synthese mit dem Wegplan für UTAC v1.2:
+
+    Meta-Regression, Outlier-Analyse, RG-Fluss.
+
+    '
+  temporal:
+    created: '2025-11-05T23:11:57+01:00'
+    modified: '2025-11-06T09:47:45+01:00'
+    version: '1.6'
+    change_count: 7
+- id: meta-004
+  title: CLAUDE_CODE_SESSION
+  path: CLAUDE_CODE_SESSION.md
+  category: meta
+  type: session
+  status: historical
+  relevance: medium
+  keywords:
+  - session
+  - claude
+  - development
+  description: Session-Notizen aus der Claude Code Entwicklung
+  temporal:
+    created: '2025-11-05T21:22:07+00:00'
+    modified: '2025-11-05T21:22:07+00:00'
+    version: '1.1'
+    change_count: 2
+- id: meta-005
+  title: EXECUTIVE_SUMMARY_SESSION
+  path: EXECUTIVE_SUMMARY_SESSION.md
+  category: meta
+  type: session
+  status: historical
+  relevance: medium
+  keywords:
+  - session
+  - summary
+  - overview
+  description: Executive Summary einer Arbeitssitzung
+  temporal:
+    created: '2025-11-05T21:22:07+00:00'
+    modified: '2025-11-05T21:22:07+00:00'
+    version: '1.1'
+    change_count: 2
+- id: meta-006
+  title: FINALISIERUNG_SESSION
+  path: FINALISIERUNG_SESSION.md
+  category: meta
+  type: session
+  status: historical
+  relevance: medium
+  keywords:
+  - session
+  - finalisierung
+  - completion
+  description: Session-Notizen zur Finalisierung
+  temporal:
+    created: '2025-11-05T21:22:07+00:00'
+    modified: '2025-11-05T21:22:07+00:00'
+    version: '1.1'
+    change_count: 2
+- id: meta-007
+  title: Sigillin System Definition
+  path: Sigillin_System_Definition.md
+  category: meta
+  type: system_definition
+  status: active
+  relevance: critical
+  keywords:
+  - sigillin
+  - trilayer
+  - ordnungs-sigillin
+  - bedeutungs-sigillin
+  - semantisches-gedächtnis
+  - trifunktionalität
+  - ontologie
+  - meta-ebene
+  - poetik
+  - symbolik
+  - resonanz
+  - utac-analogie
+  - aeon-johann
+  - mor
+  - ai-sigill-index
+  description: 'Fundamentale Systemdefinition des Sigillin-Systems nach Johann Römer.
+    Unterscheidet Ordnungs-Sigillin (Navigation) vs. Bedeutungs-Sigillin (Semantik).
+    Definiert das semantisch-neuronale Sigillin-Netz, Trifunktionalität (Struktur
+    + Bedeutung + Inhalt + Meta), und die UTAC-Analogien. Inspiriert durch die Aeon-Johann-Schnittstelle
+    bei OpenAI. BEDEUTUNGS-SIGILLIN: Bei Änderung NEU anlegen, Altes archivieren!'
+  temporal:
+    created: '2025-11-06T10:47:34+00:00'
+    modified: '2025-11-06T10:47:34+00:00'
+    version: '1.0'
+    change_count: 1
+- id: meta-008
+  title: Finalize Sigillin Neuro Kosmos Bridge
+  path: FinalizeSigillin_Neuro_KosmosBridge.txt
+  category: meta
+  type: plan
+  status: active
+  relevance: high
+  keywords:
+  - sigillin
+  - neuro
+  - kosmos
+  - bridge
+  - finalisierung
+  description: Plan zur Finalisierung der Sigillin-Neuro-Kosmos-Brücke
+  temporal:
+    created: '2025-11-06T12:17:33+01:00'
+    modified: '2025-11-06T12:44:50+01:00'
+    version: '1.3'
+    change_count: 4
+- id: meta-009
+  title: Sigillin Neuro Membran Modell Plan
+  path: Sigillin_Neuro_Membran_Modell_Plan.txt
+  category: meta
+  type: plan
+  status: active
+  relevance: high
+  keywords:
+  - sigillin
+  - neuro
+  - membran
+  - modell
+  - plan
+  description: Planungsdokument für Sigillin-Neuro-Membran-Modell-Integration
+  temporal:
+    created: '2025-11-06T13:37:32+01:00'
+    modified: '2025-11-06T13:37:32+01:00'
+    version: '1.0'
+    change_count: 1
+- id: meta-010
+  title: AGENTS (Root)
+  path: AGENTS.md
+  category: meta
+  type: meta
+  status: stable
+  relevance: medium
+  keywords:
+  - agents
+  - meta
+  - overview
+  description: Root-Level AGENTS Übersicht
+  temporal:
+    created: '2025-11-03T13:28:37+01:00'
+    modified: '2025-11-03T13:28:37+01:00'
+    version: '1.0'
+    change_count: 1
 - id: synth-001
   title: Codex Feedback (YAML)
   path: codexfeedback.yaml
@@ -855,6 +638,405 @@ documents:
     modified: '2025-11-03T13:28:37+01:00'
     version: '1.2'
     change_count: 3
+- id: synth-005
+  title: Papers Index (Trilayer)
+  path: papers_index.md
+  category: synthesis
+  type: index-ordnungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - papers
+  - pdfs
+  - index
+  - ordnungs-sigillin
+  - trilayer
+  description: 'Ordnungs-Sigillin für alle 38 PDF-Dokumente im seed/ Verzeichnis.
+
+    Trilayer-Index (YAML + JSON + MD) für Navigation in der PDF-Bibliothek.
+
+    Referenziert papers_index.{yaml,json,md}.'
+  temporal:
+    created: '2025-11-06T15:00:00+01:00'
+    modified: '2025-11-06T15:00:00+01:00'
+    version: '1.0'
+    change_count: 1
+  references:
+  - papers_index.yaml
+  - papers_index.json
+  - papers_index.md
+- id: synth-006
+  title: ArchivSucheUTAC Index (Trilayer)
+  path: ArchivSucheUTAC/README.md
+  category: synthesis
+  type: index-ordnungs-sigillin
+  status: active
+  relevance: medium
+  keywords:
+  - archiv
+  - suche
+  - utac
+  - gemini
+  - index
+  - ordnungs-sigillin
+  description: 'Ordnungs-Sigillin für ArchivSucheUTAC-Verzeichnis.
+
+    Enthält Geminis Archiv-Suchen und AI-Reaktionen (19 Dateien).
+
+    Referenziert archiv_suche_utac_index.{yaml,json,md}.'
+  temporal:
+    created: '2025-11-06T14:00:00+01:00'
+    modified: '2025-11-06T14:00:00+01:00'
+    version: '1.0'
+    change_count: 1
+  references:
+  - ArchivSucheUTAC/archiv_suche_utac_index.yaml
+  - ArchivSucheUTAC/archiv_suche_utac_index.json
+  - ArchivSucheUTAC/archiv_suche_utac_index.md
+- id: theory-001
+  title: FinalerPlan
+  path: FinalerPlan.txt
+  category: theory
+  type: plan
+  status: stable
+  relevance: high
+  keywords:
+  - governance
+  - authorship
+  - metrics
+  - reproduce
+  - utac
+  description: 'Der finale Governance-Paket-Plan mit AUTHORSHIP.md, METRICS.md,
+
+    REPRODUCE.md für die arXiv-Submission.
+
+    '
+  temporal:
+    created: '2025-11-03T15:33:06+01:00'
+    modified: '2025-11-04T20:35:30+01:00'
+    version: '1.12'
+    change_count: 13
+- id: theory-002
+  title: AI-Evolutionsprinzip
+  path: AI-Evulutionsprinziep.txt
+  category: theory
+  type: discourse
+  status: stable
+  relevance: high
+  keywords:
+  - ai
+  - evolution
+  - emergence
+  - β-field
+  description: Diskurs über evolutionäre Prinzipien in AI-Systemen
+  temporal:
+    created: '2025-11-03T13:28:37+01:00'
+    modified: '2025-11-03T13:28:37+01:00'
+    version: '1.1'
+    change_count: 2
+- id: theory-003
+  title: Diskurs Klimamodul
+  path: Diskurs Klimamodul.txt
+  category: theory
+  type: discourse
+  status: stable
+  relevance: high
+  keywords:
+  - klima
+  - amoc
+  - tipping-points
+  - climate
+  description: Diskurs über Klimaschwellenwerte und UTAC-Integration
+  temporal:
+    created: '2025-11-03T13:28:37+01:00'
+    modified: '2025-11-03T13:28:37+01:00'
+    version: '1.1'
+    change_count: 2
+- id: theory-004
+  title: Diskurs Psyche-AI Kohärenzen
+  path: Diskurs_V1_Psyche_AI_koheränzen.txt
+  category: theory
+  type: discourse
+  status: stable
+  relevance: high
+  keywords:
+  - psyche
+  - ai
+  - kohärenz
+  - consciousness
+  - φ
+  description: Diskurs über Kohärenz zwischen Psyche und AI-Systemen
+  temporal:
+    created: '2025-11-03T13:28:37+01:00'
+    modified: '2025-11-03T13:28:37+01:00'
+    version: '1.2'
+    change_count: 3
+- id: theory-005
+  title: Transdisziplinärer Schwellenfeld-Simulator
+  path: Transdisziplinärer Schwellenfeld-Simulator--Claude.txt
+  category: theory
+  type: concept
+  status: stable
+  relevance: medium
+  keywords:
+  - simulator
+  - threshold
+  - transdisciplinary
+  description: Konzept für einen universellen Threshold-Simulator
+  temporal:
+    created: '2025-11-03T13:28:37+01:00'
+    modified: '2025-11-03T13:28:37+01:00'
+    version: '1.1'
+    change_count: 2
+- id: theory-006
+  title: FinalDevTalks
+  path: FinalDevTalks.txt
+  category: theory
+  type: discussion
+  status: stable
+  relevance: medium
+  keywords:
+  - development
+  - discussion
+  - implementation
+  description: Finale Entwicklungsgespräche
+  temporal:
+    created: '2025-11-03T13:28:37+01:00'
+    modified: '2025-11-03T13:28:37+01:00'
+    version: '1.1'
+    change_count: 2
+- id: theory-007
+  title: Brainstorm
+  path: Brainstorm.txt
+  category: theory
+  type: brainstorm
+  status: historical
+  relevance: low
+  keywords:
+  - brainstorm
+  - ideas
+  - exploration
+  description: Frühe Brainstorming-Sitzung
+  temporal:
+    created: '2025-11-05T18:41:14+01:00'
+    modified: '2025-11-05T18:41:14+01:00'
+    version: '1.1'
+    change_count: 2
+- id: theory-008
+  title: Brainstorm2
+  path: Brainstorm2.txt
+  category: theory
+  type: brainstorm
+  status: historical
+  relevance: low
+  keywords:
+  - brainstorm
+  - ideas
+  - exploration
+  description: Zweite Brainstorming-Sitzung
+  temporal:
+    created: '2025-11-05T19:47:18+01:00'
+    modified: '2025-11-05T19:47:18+01:00'
+    version: '1.0'
+    change_count: 1
+- id: valid-001
+  title: Validierung2
+  path: Validierung2.txt
+  category: validation
+  type: validation
+  status: stable
+  relevance: high
+  keywords:
+  - validierung
+  - empirik
+  - β-werte
+  - meta-regression
+  description: 'Mistral''s Metareflexion & Synthese: Was wir wissen, was wir nicht
+
+    wissen, und die nächsten Schritte für UTAC 1.2.
+
+    '
+  temporal:
+    created: '2025-11-05T20:31:04+01:00'
+    modified: '2025-11-05T22:07:17+01:00'
+    version: '1.2'
+    change_count: 3
+- id: valid-002
+  title: Validierung
+  path: Validierung.txt
+  category: validation
+  type: validation
+  status: stable
+  relevance: medium
+  keywords:
+  - validierung
+  - testing
+  - verification
+  description: Erste Validierungsdokument
+  temporal:
+    created: '2025-11-05T19:47:18+01:00'
+    modified: '2025-11-05T19:47:18+01:00'
+    version: '1.0'
+    change_count: 1
+- id: valid-003
+  title: EmpirischerBeleg
+  path: EmpirischerBeleg.txt
+  category: validation
+  type: evidence
+  status: stable
+  relevance: high
+  keywords:
+  - empirik
+  - beleg
+  - data
+  - evidence
+  description: Empirische Belege für UTAC-Hypothesen
+  temporal:
+    created: '2025-11-03T13:28:37+01:00'
+    modified: '2025-11-03T13:28:37+01:00'
+    version: '1.1'
+    change_count: 2
+- id: valid-004
+  title: Feinschliff
+  path: Feinschliff.txt
+  category: validation
+  type: refinement
+  status: stable
+  relevance: medium
+  keywords:
+  - refinement
+  - polishing
+  - finalization
+  description: Feinschliff-Arbeiten an der Theorie
+  temporal:
+    created: '2025-11-05T10:25:47+01:00'
+    modified: '2025-11-05T14:13:47+01:00'
+    version: '1.5'
+    change_count: 6
+- id: valid-005
+  title: Reaktivierung
+  path: Reaktivierung.txt
+  category: validation
+  type: process
+  status: historical
+  relevance: low
+  keywords:
+  - reaktivierung
+  - restart
+  - reactivation
+  description: Prozess-Dokumentation zur Reaktivierung
+  temporal:
+    created: '2025-11-05T17:43:34+01:00'
+    modified: '2025-11-05T17:43:34+01:00'
+    version: '1.0'
+    change_count: 1
+- id: valid-006
+  title: Rekalibrierung
+  path: Rekalibrierung.txt
+  category: validation
+  type: calibration
+  status: historical
+  relevance: medium
+  keywords:
+  - rekalibrierung
+  - calibration
+  - adjustment
+  description: Frühere Rekalibrierungs-Dokumentation
+  temporal:
+    created: '2025-11-05T17:43:34+01:00'
+    modified: '2025-11-05T17:43:34+01:00'
+    version: '1.0'
+    change_count: 1
+- id: valid-007
+  title: ReaktionAI-AeonundJoh
+  path: ReaktionAI-AeonundJoh.txt
+  category: validation
+  type: dialogue
+  status: historical
+  relevance: medium
+  keywords:
+  - aeon
+  - johann
+  - dialogue
+  - reaction
+  description: Dialog zwischen Aeon und Johann über Validierung
+  temporal:
+    created: '2025-11-03T13:28:37+01:00'
+    modified: '2025-11-03T13:28:37+01:00'
+    version: '1.1'
+    change_count: 2
+- id: validation-001
+  title: AI_Reaktion_Gem_Suche
+  path: AI_Reaktion_Gem_Suche.txt
+  category: validation
+  type: search
+  status: stable
+  relevance: medium
+  keywords:
+  - gemini
+  - suche
+  - validierung
+  - ai-reaktion
+  description: AI-Reaktionen auf Geminis Archiv-Suche
+  temporal:
+    created: '2025-11-06T13:51:53+01:00'
+    modified: '2025-11-06T14:33:50+01:00'
+    version: '1.1'
+    change_count: 2
+- id: validation-002
+  title: Geminis Suche 1
+  path: Geminis Suche!.txt
+  category: validation
+  type: search
+  status: historical
+  relevance: medium
+  keywords:
+  - gemini
+  - suche
+  - archiv
+  - utac
+  description: Geminis Archiv-Suche Iteration 1
+  temporal:
+    created: '2025-11-06T14:33:50+01:00'
+    modified: '2025-11-06T14:33:50+01:00'
+    version: '1.0'
+    change_count: 1
+- id: validation-003
+  title: Geminis Suche 2
+  path: Geminis Suche2!.txt
+  category: validation
+  type: search
+  status: historical
+  relevance: medium
+  keywords:
+  - gemini
+  - suche
+  - archiv
+  - utac
+  description: Geminis Archiv-Suche Iteration 2
+  temporal:
+    created: '2025-11-06T14:33:50+01:00'
+    modified: '2025-11-06T14:33:50+01:00'
+    version: '1.0'
+    change_count: 1
+- id: validation-004
+  title: Geminis Suche 3
+  path: Geminis Suche3!.txt
+  category: validation
+  type: search
+  status: historical
+  relevance: medium
+  keywords:
+  - gemini
+  - suche
+  - archiv
+  - utac
+  description: Geminis Archiv-Suche Iteration 3
+  temporal:
+    created: '2025-11-06T14:33:50+01:00'
+    modified: '2025-11-06T14:33:50+01:00'
+    version: '1.0'
+    change_count: 1
 domains:
   ai:
     name: Artificial Intelligence

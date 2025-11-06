@@ -1,0 +1,696 @@
+{
+  "meta": {
+    "project": "Feldtheorie (UTAC + Sigillin)",
+    "maintainer": "Johann Römer",
+    "description": "Ordnungs-Sigillin für alle PDF-Dokumente im seed/ Verzeichnis.\nTeil des Sigillin-Systems - Trilayer-Struktur (YAML + JSON + MD).\n",
+    "version": "1.0.0",
+    "created": "2025-11-06T14:38:12.072029",
+    "status": "active",
+    "sigillin_type": "ordnungs-sigillin",
+    "note": "Dies ist ein Ordnungs-Sigillin (Navigation/Indexierung). PDFs selbst sind Bedeutungs-Sigillin."
+  },
+  "categories": {
+    "theory": {
+      "name": "Theoretische Grundlagen",
+      "description": "UTAC-Theorie, Feldmodelle, Schwellenwert-Dynamik",
+      "color": "#3498DB",
+      "count": 14
+    },
+    "validation": {
+      "name": "Validierung & Empirik",
+      "description": "Empirische Studien, Datenanalysen, Verifikationen",
+      "color": "#27AE60",
+      "count": 5
+    },
+    "meta": {
+      "name": "Meta & Prozess",
+      "description": "Repo-Analysen, Publikations-Strategien, Projektdokumentation",
+      "color": "#9B59B6",
+      "count": 10
+    },
+    "concepts": {
+      "name": "Konzeptuelle Artefakte",
+      "description": "Konzepte, Module, Strukturierungen, Überblicke",
+      "color": "#E67E22",
+      "count": 9
+    }
+  },
+  "papers": [
+    {
+      "id": "paper-001",
+      "title": "1. Lenski-Datenanalyse (Sigmoid-Fit)",
+      "path": "1. Lenski-Datenanalyse (Sigmoid-Fit).pdf",
+      "category": "validation",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: 1. Lenski-Datenanalyse (Sigmoid-Fit)",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-002",
+      "title": "Adaptive Schwellenwerte in komplexen Systemen-1",
+      "path": "Adaptive Schwellenwerte in komplexen Systemen-1.pdf",
+      "category": "validation",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Adaptive Schwellenwerte in komplexen Systemen-1",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-003",
+      "title": "Adaptive Schwellenwerte in komplexen Systemen",
+      "path": "Adaptive Schwellenwerte in komplexen Systemen.pdf",
+      "category": "validation",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Adaptive Schwellenwerte in komplexen Systemen",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-004",
+      "title": "Analyse des Repositories  Feldtheorie ",
+      "path": "Analyse des Repositories _Feldtheorie_.pdf",
+      "category": "meta",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Analyse des Repositories  Feldtheorie ",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-005",
+      "title": "Analyse des „AI-Evolutionsprinzips“",
+      "path": "Analyse des „AI-Evolutionsprinzips“.pdf",
+      "category": "meta",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Analyse des „AI-Evolutionsprinzips“",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-006",
+      "title": "Appendix & Intro Draft – Mandala‑kohärenz (v0",
+      "path": "Appendix & Intro Draft – Mandala‑kohärenz (v0.pdf",
+      "category": "concepts",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Appendix & Intro Draft – Mandala‑kohärenz (v0",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-007",
+      "title": "Beta-Feld  Kosmisches Resonanzmaß und Emergenz",
+      "path": "Beta-Feld_ Kosmisches Resonanzmaß und Emergenz.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Beta-Feld  Kosmisches Resonanzmaß und Emergenz",
+      "temporal": {
+        "created": "2025-11-05T18:41:14+01:00",
+        "modified": "2025-11-05T18:41:14+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-008",
+      "title": "Der Atem der Gravitation  Ein transdisziplinäres Schwellenfeld-Modell",
+      "path": "Der Atem der Gravitation_ Ein transdisziplinäres Schwellenfeld-Modell.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Der Atem der Gravitation  Ein transdisziplinäres Schwellenfeld-Modell",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-009",
+      "title": "Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz Emergenz-1",
+      "path": "Die Unified Theory of Adaptive Criticality_ Schwellenfeld-Dynamik als Universalgesetz Emergenz-1.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz Emergenz-1",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-010",
+      "title": "Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz Emergenz-2",
+      "path": "Die Unified Theory of Adaptive Criticality_ Schwellenfeld-Dynamik als Universalgesetz Emergenz-2.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz Emergenz-2",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-011",
+      "title": "Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz Emergenz",
+      "path": "Die Unified Theory of Adaptive Criticality_ Schwellenfeld-Dynamik als Universalgesetz Emergenz.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz Emergenz",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-012",
+      "title": "Einheitliches Schwellenfeld-Modell  Universelle Prinzipien quer durch Disziplinen",
+      "path": "Einheitliches Schwellenfeld-Modell_ Universelle Prinzipien quer durch Disziplinen.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Einheitliches Schwellenfeld-Modell  Universelle Prinzipien quer durch Disziplinen",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-013",
+      "title": "Einheitliches Schwellenfeld-Modell  Universelle Prinzipien quer durch DisziplinenAbhandlung",
+      "path": "Einheitliches Schwellenfeld-Modell_ Universelle Prinzipien quer durch DisziplinenAbhandlung.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Einheitliches Schwellenfeld-Modell  Universelle Prinzipien quer durch DisziplinenAbhandlung",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-014",
+      "title": "Einleitung  Motivation und Universalitätsidee",
+      "path": "Einleitung_ Motivation und Universalitätsidee.pdf",
+      "category": "concepts",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Einleitung  Motivation und Universalitätsidee",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-015",
+      "title": "Emergence Across Domains  Verifying a Universal Threshold Hypothesis",
+      "path": "Emergence Across Domains_ Verifying a Universal Threshold Hypothesis.pdf",
+      "category": "validation",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Emergence Across Domains  Verifying a Universal Threshold Hypothesis",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-016",
+      "title": "Emergente Analyse des Erlebens-1",
+      "path": "Emergente Analyse des Erlebens-1.pdf",
+      "category": "meta",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Emergente Analyse des Erlebens-1",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-017",
+      "title": "Emergente Analyse des Erlebens-2",
+      "path": "Emergente Analyse des Erlebens-2.pdf",
+      "category": "meta",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Emergente Analyse des Erlebens-2",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-018",
+      "title": "Emergente Analyse des Erlebens",
+      "path": "Emergente Analyse des Erlebens.pdf",
+      "category": "meta",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Emergente Analyse des Erlebens",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-019",
+      "title": "Emergenz Feldmodell Paper",
+      "path": "Emergenz Feldmodell Paper.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Emergenz Feldmodell Paper",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-020",
+      "title": "Emergenz Strukturierung",
+      "path": "Emergenz Strukturierung.pdf",
+      "category": "concepts",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Emergenz Strukturierung",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-021",
+      "title": "Entwurf eines transdisziplinären Feldmodells",
+      "path": "Entwurf eines transdisziplinären Feldmodells.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Entwurf eines transdisziplinären Feldmodells",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-022",
+      "title": "Felderhierarchie und Einflussgradanalyse",
+      "path": "Felderhierarchie und Einflussgradanalyse.pdf",
+      "category": "meta",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Felderhierarchie und Einflussgradanalyse",
+      "temporal": {
+        "created": "2025-11-05T18:41:14+01:00",
+        "modified": "2025-11-05T18:41:14+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-023",
+      "title": "Gravitationsatem  Master-Dokument Erstellung",
+      "path": "Gravitationsatem_ Master-Dokument Erstellung.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Gravitationsatem  Master-Dokument Erstellung",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-024",
+      "title": "Informationskomplexität, Feldkern, Rekalibrierung",
+      "path": "Informationskomplexität, Feldkern, Rekalibrierung.pdf",
+      "category": "concepts",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Informationskomplexität, Feldkern, Rekalibrierung",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-025",
+      "title": "Informationskomplexität, Feldkern, RekalibrierungAbhandlung",
+      "path": "Informationskomplexität, Feldkern, RekalibrierungAbhandlung.pdf",
+      "category": "concepts",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Informationskomplexität, Feldkern, RekalibrierungAbhandlung",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-026",
+      "title": "Interdisziplinäre Analyse der Lagrange-basierten BHA-Membran-Kopplung im Kontext astrophysikalischer",
+      "path": "Interdisziplinäre Analyse der Lagrange-basierten BHA-Membran-Kopplung im Kontext astrophysikalischer.pdf",
+      "category": "meta",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Interdisziplinäre Analyse der Lagrange-basierten BHA-Membran-Kopplung im Kontext astrophysikalischer",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-027",
+      "title": "Kipppunkte der Teilkomponenten im Klimasystem",
+      "path": "Kipppunkte der Teilkomponenten im Klimasystem.pdf",
+      "category": "concepts",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Kipppunkte der Teilkomponenten im Klimasystem",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-028",
+      "title": "Kontrollierte Emergenz",
+      "path": "Kontrollierte Emergenz.pdf",
+      "category": "concepts",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Kontrollierte Emergenz",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-029",
+      "title": "Manuskriptfinalisierung und Kampagnenstart",
+      "path": "Manuskriptfinalisierung und Kampagnenstart.pdf",
+      "category": "meta",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Manuskriptfinalisierung und Kampagnenstart",
+      "temporal": {
+        "created": "2025-11-06T15:08:31+01:00",
+        "modified": "2025-11-06T15:08:31+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-030",
+      "title": "RepoPlan Projekt-Impulse  Simulation, Theorie, Falsifizierung",
+      "path": "RepoPlan Projekt-Impulse_ Simulation, Theorie, Falsifizierung.pdf",
+      "category": "meta",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: RepoPlan Projekt-Impulse  Simulation, Theorie, Falsifizierung",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-031",
+      "title": "Schwellenverhalten und emergente Ordnungsübergänge in komplexen Systemen",
+      "path": "Schwellenverhalten und emergente Ordnungsübergänge in komplexen Systemen.pdf",
+      "category": "validation",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Schwellenverhalten und emergente Ordnungsübergänge in komplexen Systemen",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-032",
+      "title": "Tiefgehende Recherche (DeepResearch) zu Aspekten der Teilfeld-Kartierung",
+      "path": "Tiefgehende Recherche (DeepResearch) zu Aspekten der Teilfeld-Kartierung.pdf",
+      "category": "concepts",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Tiefgehende Recherche (DeepResearch) zu Aspekten der Teilfeld-Kartierung",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-033",
+      "title": "UTAC v1.1  Validierung und Veröffentlichung",
+      "path": "UTAC v1.1_ Validierung und Veröffentlichung.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: UTAC v1.1  Validierung und Veröffentlichung",
+      "temporal": {
+        "created": "2025-11-05T10:25:47+01:00",
+        "modified": "2025-11-05T10:25:47+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-034",
+      "title": "Utac Emergence Universal",
+      "path": "Utac Emergence Universal.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Utac Emergence Universal",
+      "temporal": {
+        "created": "2025-11-03T19:45:33+01:00",
+        "modified": "2025-11-03T19:45:33+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-035",
+      "title": "Utac Module M-β — Zyklische Emergenz  Steilheitsgrad Als Potenzial → Bedingung-1",
+      "path": "Utac Module M-β — Zyklische Emergenz_ Steilheitsgrad Als Potenzial → Bedingung-1.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Utac Module M-β — Zyklische Emergenz  Steilheitsgrad Als Potenzial → Bedingung-1",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-036",
+      "title": "Utac Module M-β — Zyklische Emergenz  Steilheitsgrad Als Potenzial → Bedingung",
+      "path": "Utac Module M-β — Zyklische Emergenz_ Steilheitsgrad Als Potenzial → Bedingung.pdf",
+      "category": "theory",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Utac Module M-β — Zyklische Emergenz  Steilheitsgrad Als Potenzial → Bedingung",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-037",
+      "title": "Wissenschaftliche Publikation  Pitch-Strategie",
+      "path": "Wissenschaftliche Publikation_ Pitch-Strategie.pdf",
+      "category": "meta",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Wissenschaftliche Publikation  Pitch-Strategie",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-038",
+      "title": "Zusammenfassung",
+      "path": "Zusammenfassung.pdf",
+      "category": "concepts",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Zusammenfassung",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    }
+  ],
+  "statistics": {
+    "total_papers": 38,
+    "by_category": {
+      "theory": 14,
+      "validation": 5,
+      "meta": 10,
+      "concepts": 9
+    },
+    "indexed_date": "2025-11-06T14:38:12.072065"
+  }
+}
