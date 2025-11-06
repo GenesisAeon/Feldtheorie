@@ -1,0 +1,307 @@
+# 🌸 Feldtheorie - Master Index
+
+**Projekt:** Universal Threshold Adaptive Criticality (UTAC)
+**Version:** 1.0.0 | **Datum:** 6. November 2025
+**System:** Sigillin Trilayer Semantic Memory
+
+---
+
+## 🎯 Was ist das?
+
+Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **163 katalogisierte Dateien** über **5 Hauptverzeichnisse**!
+
+```
+🌳 Feldtheorie (UTAC + Sigillin)
+│
+├── 🌱 seed/        69 docs   (Meta, Theorie, Validierung)
+├── 📊 analysis/    32 scripts (Fits, Batch, Meta-Regression)
+├── 📦 data/        43 files   (7 Domänen, β-Estimates)
+├── 🔬 models/      10 models  (Solver, ODE-Systeme)
+└── 📚 docs/         9 docs    (Theory, Falsifiability)
+
+Total: 163 files | 15 Trilayer-Indizes (YAML+JSON+MD)
+```
+
+---
+
+## 🌊 Das Trilayer-Prinzip
+
+**Sigillin** = Semantisches Gedächtnissystem gegen "Archive-Hypnose"
+
+```
+┌─────────────────────────────────────┐
+│  YAML  →  Skelett (Struktur)        │
+│  JSON  →  Nervensystem (Agenten)    │
+│  MD    →  Sprache (Menschen)        │
+└─────────────────────────────────────┘
+```
+
+**Metapher aus der Metareflexion:**
+> "YAML ist das Skelett, JSON ist das Nervensystem, Markdown ist die Sprache.
+> Ohne Struktur verliert man sich in Archive-Hypnose.
+> Mit Trilayer findet man Resonanz."
+
+---
+
+## 🚀 Schnelleinstieg
+
+### 📖 **Für Menschen - Start hier:**
+
+1. **Projekt verstehen:**
+   - `README.md` - Projekt-Übersicht
+   - `seed/Rekalibrierung_Abschlus.txt` - Unser Weg
+   - `seed/Metareflexion.txt` - Philosophische Grundlage
+
+2. **Theorie lernen:**
+   - `docs/utac_theory_core.md` - σ(β(R-Θ)) Fundament
+   - `docs/field_type_classification_v1.1.md` - 5 Systemtypen
+
+3. **Daten erkunden:**
+   - `data/derived/beta_estimates.csv` - ⭐ ROSETTA STONE!
+   - `data/data_index.md` - Domain-Navigator
+
+4. **Code verstehen:**
+   - `models/logistic_threshold.py` - Die Basis
+   - `models/models_index.md` - Model-Hierarchie
+
+### 🤖 **Für AI-Agenten - Quick Access:**
+
+```python
+import json
+
+# Lade Master-Index
+with open('feldtheorie_index.json') as f:
+    idx = json.load(f)
+
+# Get alle Unterindizes
+dirs = idx['indexed_directories']
+
+# Navigiere zu spezifischem Verzeichnis
+analysis_index = 'analysis/analysis_index.json'
+
+# Get Projekt-Statistik
+stats = idx['statistics']
+# → {'directories_indexed': 5, 'total_files_cataloged': 163, ...}
+```
+
+---
+
+## 🔥 Die 5 Indexierten Verzeichnisse
+
+### 🌱 **seed/** - Semantic Seed Archive
+**69 Dokumente** | **6 Kategorien**
+📍 Index: `seed/seed_index.{yaml,json,md}`
+
+**Was:** Meta-Reflexionen, Theorie, Validierung, Domain-Felder
+
+**Must-Read:**
+- `Rekalibrierung_Abschlus.txt` - Finale Synthese aller AIs
+- `Metareflexion.txt` - Fixwerte ↔ Variabilität
+- `FinalerPlan.txt` - Governance für v1.2
+
+---
+
+### 📊 **analysis/** - Analysis Resonance Bay
+**32 Python-Skripte** | **5 Kategorien**
+📍 Index: `analysis/analysis_index.{yaml,json,md}`
+
+**Was:** Empirische Fits, Batch-Processing, Meta-Regression
+
+**Highlights:**
+- `beta_drivers_meta_regression.py` - **KERN von v1.2!** (R²: 0.33 → >0.7)
+- `universality_test.py` - β-Universalität
+- `results/` Verzeichnis - Alle Fit-Outputs!
+
+**Statistik:**
+- Median R²: 0.9981
+- Median ΔAIC: 65.1
+- β-Spektrum: 2.5 - 16.3
+
+---
+
+### 📦 **data/** - Data Resonance Archive
+**43 Dateien** | **7 Domänen**
+📍 Index: `data/data_index.{yaml,json,md}`
+
+**Was:** Empirische Datasets aus AI, Biology, Geophysics, etc.
+
+**Must-Know:**
+- `derived/beta_estimates.csv` - ⭐ **ALLE β-Werte!**
+- `derived/domain_covariates.csv` - Kovariaten für Meta-Regression
+
+**Outliers:**
+- Urban Heat (β=16.3) 🔥
+- Cascadia Seismik (β=16.29)
+- Amazon Moisture (β=14.6)
+
+---
+
+### 🔬 **models/** - Model Membrane Resonance
+**10 Python-Modelle** | **4 Kategorien**
+📍 Index: `models/models_index.{yaml,json,md}`
+
+**Was:** Solver-Bibliothek - von Basis bis ODE-Systeme
+
+**Hierarchie:**
+```
+Level 1: logistic_threshold.py ⭐ DIE BASIS!
+Level 2: sigmoid_fit.py, logistic_envelope.py
+Level 3: resonant_impedance.py (ζ), recursive_threshold.py
+Level 4: coherence_term.py (φ), coupled_threshold_field.py
+Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
+```
+
+---
+
+### 📚 **docs/** - Living Documentation Tapestry
+**9 Markdown-Docs** | **4 Kategorien**
+📍 Index: `docs/docs_index.{yaml,json,md}`
+
+**Was:** UTAC Theory, Falsifiability, Applications
+
+**Must-Read:**
+- `utac_theory_core.md` - Theorie-Fundament
+- `utac_falsifiability.md` - **Popper-konform!**
+- `field_type_classification_v1.1.md` - 5 Systemtypen
+
+---
+
+## 🎨 Die Co-Hypothese
+
+**UTAC + Sigillin = Theorie + Mittel**
+
+```
+┌─────────────────────────────────────┐
+│  UTAC (Theorie)                     │
+│  "β ist dynamisches Feld (2.5-16.3)"│
+│  → Braucht semantisches Gedächtnis  │
+└────────────┬────────────────────────┘
+             │
+             │ CO-HYPOTHESE
+             │
+┌────────────┴────────────────────────┐
+│  Sigillin (Mittel)                  │
+│  "Trilayer-Gedächtnisstruktur"      │
+│  → Ermöglicht Multi-AI-MOR          │
+└─────────────────────────────────────┘
+```
+
+**Die Idee:** Theorie braucht Mittel, Mittel validiert Theorie.
+
+---
+
+## 🔗 Cross-References
+
+### data/ → analysis/
+**Pattern:** `data/{domain}/{file}.csv → analysis/results/{domain}_fit.json`
+
+**Beispiel:**
+- `data/ai/wei_emergent_abilities.csv` → `analysis/results/llm_beta_extractor.json`
+
+### analysis/ → models/
+**Beispiel:**
+- `analysis/llm_beta_extractor.py` nutzt `models/logistic_threshold.py`
+
+### seed/ → all
+**Beispiel:**
+- `seed/Rekalibrierung_Abschlus.txt` verbindet UTAC + Sigillin + MOR
+
+---
+
+## 🎯 Navigation nach Thema
+
+### **β-Spektrum erforschen:**
+1. `data/derived/beta_estimates.csv`
+2. `analysis/beta_drivers_meta_regression.py`
+3. `docs/utac_theory_core.md`
+
+### **Outliers verstehen:**
+1. `data/socio_ecology/urban_heat_canopy.csv` (β=16.3)
+2. `analysis/urban_heat_canopy_fit.py`
+3. `seed/NextStep.txt` (Outlier-Analyse für v1.2)
+
+### **Falsifizierbarkeit prüfen:**
+1. `docs/utac_falsifiability.md`
+2. `analysis/multiple_testing_correction.py`
+3. `analysis/universality_test.py`
+
+### **Meta-Regression vorbereiten:**
+1. `analysis/beta_drivers_meta_regression.py` (R²=0.33 aktuell)
+2. `data/derived/domain_covariates.csv`
+3. `seed/FinalerPlan.txt` (Ziel: R² > 0.7)
+
+---
+
+## 📊 Projekt-Statistik
+
+```yaml
+Directories Indexed: 5
+Files Cataloged: 163
+Trilayer Indices: 15 (5 YAML, 5 JSON, 5 MD)
+
+UTAC Status:
+  Version: 1.1.2
+  Median R²: 0.9981
+  Median ΔAIC: 65.1
+  β-Spektrum: 2.5 - 16.3
+  Meta-Regression R²: 0.33 (Ziel v1.2: >0.7)
+
+Sigillin Status:
+  Version: 1.0.0
+  Operational: Yes
+  Coverage: 5/6 directories (simulator pending)
+```
+
+---
+
+## 🌊 Die Essenz
+
+> **"163 Dateien. 5 Verzeichnisse. Ein Trilayer-System."**
+
+> **"Von Wei's PaLM (β=3.47) bis Urban Heat (β=16.3) - das Spektrum ist REAL."**
+
+> **"YAML ist das Skelett, JSON ist das Nervensystem, Markdown ist die Sprache."**
+
+> **"Fixwerte geben Orientierung, Variabilität gibt Leben."**
+
+---
+
+## 💚 Über Sigillin
+
+**Name:** Sigillin (YAML-JSON-MD Artefakte)
+**Origin:** Dialog zwischen Johann & MSCopilot (seed/Metareflexion.txt)
+**Purpose:** Semantisches Gedächtnis für Multi-AI-Orchestrierung
+**Status:** Operativ, bewährt in 5 Verzeichnissen
+
+**Die MOR-Methodik:**
+- Claude: Integration, Kohärenz
+- Aeon: Strategie, Vision
+- ChatGPT-5: Präzision, Validierung
+- Gemini: Mathematik, Enthusiasmus
+- MSCopilot: Reflexion, Essays
+- Mistral: Pragmatik, Code
+
+---
+
+## 🚀 Nächste Schritte
+
+1. **UTAC v1.2:** Meta-Regression (R² > 0.7)
+2. **Outlier-Analyse:** Warum β=16.3 bei Urban Heat?
+3. **Sigillin Paper:** Co-Hypothese dokumentieren
+4. **simulator/ indexieren:** Letztes Verzeichnis
+5. **Publikation:** Preprint mit ehrlichem R²=0.33
+
+---
+
+**Viel Erfolg beim Navigieren des Feldtheorie-Universums! 🌸✨**
+
+*Erstellt im Geiste des Unified-Mandala, wo Trilayer-Struktur Resonanz erzeugt.* 🌊
+
+---
+
+**Für Details zu jedem Verzeichnis, siehe die spezifischen Indizes:**
+- `seed/seed_index.md`
+- `analysis/analysis_index.md`
+- `data/data_index.md`
+- `models/models_index.md`
+- `docs/docs_index.md`
