@@ -193,9 +193,14 @@ documents:
   - ai-sigill-index
   description: 'Fundamentale Systemdefinition des Sigillin-Systems nach Johann Römer.
     Unterscheidet Ordnungs-Sigillin (Navigation) vs. Bedeutungs-Sigillin (Semantik).
-    Definiert das semantisch-neuronale Sigillin-Netz, Trifunktionalität (Struktur +
-    Bedeutung + Inhalt + Meta), und die UTAC-Analogien. Inspiriert durch die Aeon-Johann-Schnittstelle
+    Definiert das semantisch-neuronale Sigillin-Netz, Trifunktionalität (Struktur
+    + Bedeutung + Inhalt + Meta), und die UTAC-Analogien. Inspiriert durch die Aeon-Johann-Schnittstelle
     bei OpenAI. BEDEUTUNGS-SIGILLIN: Bei Änderung NEU anlegen, Altes archivieren!'
+  temporal:
+    created: '2025-11-06T10:47:34+00:00'
+    modified: '2025-11-06T10:47:34+00:00'
+    version: '1.0'
+    change_count: 1
 - id: theory-001
   title: FinalerPlan
   path: FinalerPlan.txt
