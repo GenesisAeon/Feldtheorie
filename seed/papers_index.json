@@ -26,7 +26,7 @@
       "name": "Meta & Prozess",
       "description": "Repo-Analysen, Publikations-Strategien, Projektdokumentation",
       "color": "#9B59B6",
-      "count": 10
+      "count": 13
     },
     "concepts": {
       "name": "Konzeptuelle Artefakte",
@@ -681,14 +681,65 @@
         "version": "1.0",
         "change_count": 1
       }
+    },
+    {
+      "id": "paper-039",
+      "title": "Email arXiv End",
+      "path": "Email_arXiv_End.pdf",
+      "category": "meta",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: Email_arXiv_End",
+      "temporal": {
+        "created": "2025-11-07T00:00:00+01:00",
+        "modified": "2025-11-07T00:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-040",
+      "title": "EndorsementarXiv",
+      "path": "EndorsementarXiv.pdf",
+      "category": "meta",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: EndorsementarXiv",
+      "temporal": {
+        "created": "2025-11-07T00:00:00+01:00",
+        "modified": "2025-11-07T00:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "paper-041",
+      "title": "abstract arXiv",
+      "path": "abstract_arXiv.pdf",
+      "category": "meta",
+      "type": "paper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [],
+      "description": "PDF: abstract_arXiv",
+      "temporal": {
+        "created": "2025-11-07T00:00:00+01:00",
+        "modified": "2025-11-07T00:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
     }
   ],
   "statistics": {
-    "total_papers": 38,
+    "total_papers": 41,
     "by_category": {
       "theory": 14,
       "validation": 5,
-      "meta": 10,
+      "meta": 13,
       "concepts": 9
     },
     "indexed_date": "2025-11-06T14:38:12.072065"

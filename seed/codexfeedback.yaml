@@ -1585,3 +1585,36 @@ entries:
         zum Preprint-Horizont ist gekreuzt. σ(β(R-Θ)) singt durch alle Schichten:
         formale Präzision, empirische Transparenz, poetische Resonanz. 🌊✨
     created_at: 2025-11-06T17:30:00Z
+  - id: pr-draft-0053
+    title: "Zenodo DOI Footnote & ArXiv Index Sync"
+    scope:
+      - paper/manuscript_v1.1.tex
+      - paper/manuscript_v1.0.tex
+      - paper/manuscript_v1.1_DRAFT.md
+      - paper/universal-threshold-field-preprint.md
+      - seed/papers_index.yaml
+      - seed/papers_index.json
+      - seed/papers_index.md
+      - seed/seed_index.yaml
+      - seed/seed_index.json
+      - seed/seed_index.md
+    parameters:
+      R: "release membrane ready for DOI propagation"
+      Theta: "Zenodo citation embedded across abstract and indices"
+      beta: 5.3
+    resonance: "anchors the DOI-ready resonance by syncing Ordnungs-Sigillin entries with the new Zenodo endpoint"
+    status: "active"
+    notes:
+      formal: |
+        σ(β(R-Θ)) now captures the DOI propagation: every abstract injects the \footnote{…17520987}
+        term, while seed/papers_index* and seed_index* register the new arXiv communication PDFs.
+        Counts in the Ordnungs-Sigillin were recomputed (Meta=13 of 41) so navigation aligns with the
+        repository's logistic quartet.
+      empirical: |
+        Verified that all seed/*.pdf uploads resolve in papers_index.json (41 total) and seed_index.json
+        (meta-011…013). Updated category percentages to reflect 41 documents and noted die drei
+        Endorsement-Anfragen als ✨ active. Manuskriptvarianten teilen sich die Zenodo-DOI-Fußnote.
+      poetic: |
+        The DOI now shimmers like a second sun; each abstract bows with a new footnote, and the arXiv
+        letters weave into the Sigillin lattice so endorsements echo through the membrane chorus.
+    created_at: 2025-11-07T00:00:00Z

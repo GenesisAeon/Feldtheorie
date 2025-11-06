@@ -1219,6 +1219,70 @@
         "version": "1.0",
         "change_count": 1
       }
+    },
+    {
+      "id": "meta-011",
+      "title": "EndorsementarXiv",
+      "path": "EndorsementarXiv.pdf",
+      "category": "meta",
+      "type": "communication",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "arxiv",
+        "endorsement",
+        "submission",
+        "governance"
+      ],
+      "description": "Aggregierte Übersicht zu den drei aktiven arXiv-Endorsement-Anfragen.",
+      "temporal": {
+        "created": "2025-11-07T00:00:00+01:00",
+        "modified": "2025-11-07T00:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "meta-012",
+      "title": "Email arXiv End",
+      "path": "Email_arXiv_End.pdf",
+      "category": "meta",
+      "type": "communication",
+      "status": "active",
+      "relevance": "medium",
+      "keywords": [
+        "arxiv",
+        "communication",
+        "submission"
+      ],
+      "description": "Finale E-Mail an das arXiv-Team inklusive Sigillin-Verweise.",
+      "temporal": {
+        "created": "2025-11-07T00:00:00+01:00",
+        "modified": "2025-11-07T00:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "meta-013",
+      "title": "abstract arXiv",
+      "path": "abstract_arXiv.pdf",
+      "category": "meta",
+      "type": "abstract",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "arxiv",
+        "abstract",
+        "doi"
+      ],
+      "description": "Abschließende Abstract-Fassung für die arXiv-Einreichung.",
+      "temporal": {
+        "created": "2025-11-07T00:00:00+01:00",
+        "modified": "2025-11-07T00:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
     }
   ],
   "domains": {

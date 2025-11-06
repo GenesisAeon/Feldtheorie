@@ -1,7 +1,7 @@
 # Universal Threshold Field Hypothesis — Preprint Scaffold
 
 ## Abstract
-The Universal Threshold Field (UTF) framework proposes that emergent order across astrophysics, biology, cognition, and artificial intelligence can be modelled through a shared logistic membrane. We frame the order parameter $R$ as the system's resonance intensity, the critical threshold $\Theta$ as the activation pivot, the steepness $\beta$ as the transition sharpness, and the impedance kernel $\zeta(R)$ as the membrane that modulates damping. The canonical response,
+The Universal Threshold Field (UTF) framework\footnote{Die Zenodo-Version dieses Beitrags ist unter DOI: \href{https://doi.org/10.5281/zenodo.17520987}{10.5281/zenodo.17520987} verfügbar.} proposes that emergent order across astrophysics, biology, cognition, and artificial intelligence can be modelled through a shared logistic membrane. We frame the order parameter $R$ as the system's resonance intensity, the critical threshold $\Theta$ as the activation pivot, the steepness $\beta$ as the transition sharpness, and the impedance kernel $\zeta(R)$ as the membrane that modulates damping. The canonical response,
 \[
 \sigma(\beta(R-\Theta)) = \frac{1}{1 + e^{-\beta(R-\Theta)}},
 \]
