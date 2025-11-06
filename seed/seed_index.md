@@ -61,6 +61,9 @@ Willkommen im **semantischen Gedächtnis** des Feldtheorie-Projekts! Dieser Inde
 - `Rekalibrierung_Abschlus.txt` - Finale Synthese aller AIs
 - `NextStep.txt` - Konkreter Wegplan für v1.2
 - Session-Dokumente (CLAUDE_CODE_SESSION.md, etc.)
+- `EndorsementarXiv.pdf` - Drei aktive Endorsement-Anfragen im Überblick
+- `Email_arXiv_End.pdf` - Finales Anschreiben an arXiv (Endorsement-Signale)
+- `abstract_arXiv.pdf` - DOI-synchronisierte Abstract-Fassung für die Submission
 
 **Wann nutzen?** Wenn du den Kontext verstehen oder die Roadmap sehen willst
 
@@ -344,7 +347,7 @@ active_important = [
 
 ## 📚 Vollständige Dokumenten-Liste
 
-### Meta & Prozess (10 Dokumente)
+### Meta & Prozess (13 Dokumente)
 1. **Metareflexion.txt** - Philosophische Grundlage (🔥 high)
 2. **Rekalibrierung_Abschlus.txt** - Finale Synthese aller AIs (🔥 high)
 3. **NextStep.txt** - Wegplan für v1.2 (🔥 high, ✨ active)
@@ -355,6 +358,9 @@ active_important = [
 8. **FinalizeSigillin_Neuro_KosmosBridge.txt** - Plan zur Finalisierung der Sigillin-Neuro-Kosmos-Brücke (🔥 high, ✨ active)
 9. **Sigillin_Neuro_Membran_Modell_Plan.txt** - Planungsdokument für Sigillin-Neuro-Membran-Modell-Integration (🔥 high, ✨ active)
 10. AGENTS.md - Root-Level AGENTS Übersicht
+11. **EndorsementarXiv.pdf** - Drei Endorsement-Anfragen (🔥 high, ✨ active)
+12. **Email_arXiv_End.pdf** - Finales Anschreiben an arXiv (✨ active)
+13. **abstract_arXiv.pdf** - DOI-synchronisierte Abstract-Version (stable)
 
 ### Theoretische Grundlagen (8 Dokumente)
 1. **FinalerPlan.txt** - Governance-Paket (🔥 high)

@@ -9,7 +9,7 @@
 
 ## 🎯 Was ist das?
 
-Willkommen im **Papers Index** - einem **Ordnungs-Sigillin** für alle **38 PDF-Dokumente** im seed/ Verzeichnis!
+Willkommen im **Papers Index** - einem **Ordnungs-Sigillin** für alle **41 PDF-Dokumente** im seed/ Verzeichnis!
 
 ```
 ┌─────────────────────────────────────────┐
@@ -33,12 +33,12 @@ Nach der **Sigillin_System_Definition.md** gibt es zwei Klassen:
 
 ## 📊 Übersicht
 
-**38 PDF-Dokumente** | **4 Kategorien**
+**41 PDF-Dokumente** | **4 Kategorien**
 
 ```
 📘 Theoretische Grundlagen:  14 PDFs
 📗 Validierung & Empirik:     5 PDFs
-📙 Meta & Prozess:           10 PDFs
+📙 Meta & Prozess:           13 PDFs
 📕 Konzeptuelle Artefakte:    9 PDFs
 ```
 
@@ -101,7 +101,7 @@ Nach der **Sigillin_System_Definition.md** gibt es zwei Klassen:
 
 ---
 
-## 📙 Meta & Prozess (10 PDFs)
+## 📙 Meta & Prozess (13 PDFs)
 
 **Was:** Repo-Analysen, Publikations-Strategien, Projektdokumentation
 
@@ -121,6 +121,16 @@ Nach der **Sigillin_System_Definition.md** gibt es zwei Klassen:
 
 - **Manuskriptfinalisierung und Kampagnenstart.pdf**
   - Finalisierungs-Strategie
+
+### arXiv-Kommunikation:
+- **EndorsementarXiv.pdf**
+  - Übersicht zu drei laufenden Endorsement-Anfragen
+
+- **Email_arXiv_End.pdf**
+  - Finale E-Mail an arXiv mit Einbettung der Endorsement-Signale
+
+- **abstract_arXiv.pdf**
+  - Abgeschlossene Abstract-Fassung für die Submission
 
 ### Projekt-Planung:
 - **RepoPlan Projekt-Impulse: Simulation, Theorie, Falsifizierung.pdf**
@@ -259,7 +269,7 @@ sorted_papers = sorted(
 **Als Ordnungs-Sigillin gilt:**
 - ✅ Wächst mit neuen PDFs (Frequentierung!)
 - ✅ Braucht gelegentliche Archivierung
-- ✅ Max 50 KB oder 100 Einträge (aktuell: 38 PDFs)
+- ✅ Max 50 KB oder 100 Einträge (aktuell: 41 PDFs)
 - ✅ Script: `scripts/archive_sigillin.py`
 
 **Wartung:**
@@ -294,13 +304,13 @@ python scripts/archive_sigillin.py --sigillin seed/papers_index.yaml
 ## 📈 Statistik
 
 ```yaml
-Total PDFs: 38
+Total PDFs: 41
 Kategorien: 4
 
-Theory:     14 PDFs (36.8%)
-Validation:  5 PDFs (13.2%)
-Meta:       10 PDFs (26.3%)
-Concepts:    9 PDFs (23.7%)
+Theory:     14 PDFs (34.1%)
+Validation:  5 PDFs (12.2%)
+Meta:       13 PDFs (31.7%)
+Concepts:    9 PDFs (22.0%)
 
 Indexed: 2025-11-06
 Status: Active
