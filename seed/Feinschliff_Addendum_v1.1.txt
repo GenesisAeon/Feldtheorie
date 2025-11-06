@@ -1,0 +1,38 @@
+[Sigillin-Addendum 07.11.2025]
+
+Rückblick auf `Feinschliff.txt` mit aktualisierter Datenlage für UTAC v1.1.
+
+---
+
+1. **Quartett-Saldo**  
+   $R = 15$ validierte Schwellenfelder.  
+   $\Theta$ gesichert durch ΔAIC ≥ 10 und $R^2 \ge 0.94$ pro Datensatz.  
+   $\beta$ streut von 2.50 (Theta-Plastizität) bis 16.28 (Urban Heat Canopy).  
+   $\zeta(R)$ sinkt, sobald Feldtypen getrennt modelliert werden — die ANOVA löst die vorherige Meta-Regression-Spannung.
+
+2. **Feldtypologie bestätigt**  
+   ANOVA: $F(3,11) = 10.895$, $p = 0.0025$, $\eta^2 = 0.68$.  
+   - Typ I (stark gekoppelt): $\beta = 4.44 \pm 0.73$  
+   - Typ II (latent hochdimensional): $\beta = 3.63 \pm 0.25$  
+   - Typ III (schwach gekoppelt): $\beta = 2.50$  
+   - Typ IV (physisch gezügelt): $\beta = 12.05 \pm 5.90$  
+   Quelle: `analysis/results/KEY_FINDINGS_v1.1.md`
+
+3. **Meta-Regression korrigiert**  
+   WLS mit $(C_{\text{eff}}, D_{\text{eff}}, \text{SNR}, M, \dot{\Theta})$ liefert $R^2 = 0.327$, keine Signifikanz nach Holm-Bonferroni (`analysis/results/beta_meta_regression_summary.json`).  
+   Interpretation: Die frühere Erwartung (R² ≈ 0.74) war überoptimistisch; Feldtypen fungieren als primäre Schwellensteuerung.
+
+4. **Simulation & Manuskript synchron**  
+   `simulation/threshold_sandbox.py`: 80 Sweeps, $\beta \in [3.17, 7.94]$, $\overline{R^2} = 0.975$.  
+   Manuskript v1.1 (Section 4.4, Appendix D) verankert diese Resultate.  
+   Δ: Figuren (`beta_by_field_type.png`, `beta_outlier_analysis.png`) sollen im Haupttext verlinkt werden.
+
+5. **Nächste Aktionen**  
+   - Hierarchische Modelle pro Feldtyp entwickeln (Bayesian Partial Pooling).  
+   - Zusätzliche Typ-III-Daten sammeln (z. B. neurokognitive Plastizität, Lernkurven niedriger Kopplung).  
+   - ArXiv-Upload prüfen: Haupttext muss die aktualisierten Zahlen (ANOVA, Meta-Regression) reflektieren.
+
+---
+
+> "Die Membran ist geglättet, doch ihr Atem will noch gestimmt werden: Vier Typen, ein Chor, und die Delta-AIC-Laternen als Sternkarten für den Weg zur Veröffentlichung."
+

@@ -486,6 +486,28 @@
       }
     },
     {
+      "id": "meta-014",
+      "title": "CLAUDE_CODE_SESSION_AFTER_ACTION",
+      "path": "CLAUDE_CODE_SESSION_AFTER_ACTION.md",
+      "category": "meta",
+      "type": "session-addendum",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "session",
+        "after-action",
+        "resonance",
+        "utac-v1.1"
+      ],
+      "description": "Addendum zur Claude-Code-Sitzung mit aktualisiertem Aufgabenstatus, Feldtyp-Resultaten und Restimpedanzen.",
+      "temporal": {
+        "created": "2025-11-07T08:00:00+01:00",
+        "modified": "2025-11-07T08:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
       "id": "meta-005",
       "title": "EXECUTIVE_SUMMARY_SESSION",
       "path": "EXECUTIVE_SUMMARY_SESSION.md",
@@ -1069,6 +1091,28 @@
       }
     },
     {
+      "id": "valid-008",
+      "title": "Feinschliff Addendum v1.1",
+      "path": "Feinschliff_Addendum_v1.1.txt",
+      "category": "validation",
+      "type": "update",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "feinschliff",
+        "update",
+        "field-types",
+        "meta-regression"
+      ],
+      "description": "Addendum mit ANOVA-Bestätigung der Feldtypologie, korrigierter Meta-Regression und verbleibenden Validierungsaufgaben für UTAC v1.1.",
+      "temporal": {
+        "created": "2025-11-07T08:05:00+01:00",
+        "modified": "2025-11-07T08:05:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
       "id": "valid-005",
       "title": "Reaktivierung",
       "path": "Reaktivierung.txt",
@@ -1634,7 +1678,8 @@
     ],
     "validation": [
       "valid-001",
-      "valid-003"
+      "valid-003",
+      "valid-008"
     ],
     "concepts": [
       "concept-001",

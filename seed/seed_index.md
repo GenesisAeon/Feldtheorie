@@ -61,6 +61,7 @@ Willkommen im **semantischen Gedächtnis** des Feldtheorie-Projekts! Dieser Inde
 - `Rekalibrierung_Abschlus.txt` - Finale Synthese aller AIs
 - `NextStep.txt` - Konkreter Wegplan für v1.2
 - Session-Dokumente (CLAUDE_CODE_SESSION.md, etc.)
+- `CLAUDE_CODE_SESSION_AFTER_ACTION.md` - After-Action-Ledger mit Statusmatrix & Feldtyp-Update
 - `EndorsementarXiv.pdf` - Drei aktive Endorsement-Anfragen im Überblick
 - `Email_arXiv_End.pdf` - Finales Anschreiben an arXiv (Endorsement-Signale)
 - `abstract_arXiv.pdf` - DOI-synchronisierte Abstract-Fassung für die Submission
@@ -89,6 +90,7 @@ Willkommen im **semantischen Gedächtnis** des Feldtheorie-Projekts! Dieser Inde
 - `Validierung2.txt` - Mistral's Metareflexion (Was wir wissen/nicht wissen)
 - `EmpirischerBeleg.txt` - Empirische Belege für UTAC-Hypothesen
 - `Feinschliff.txt` - Feinschliff-Arbeiten an der Theorie
+- `Feinschliff_Addendum_v1.1.txt` - ANOVA-Bestätigung & korrigierte Meta-Regression
 - `Validierung.txt` - Erste Validierungsdokument
 
 **Wann nutzen?** Wenn du die empirische Basis prüfen willst

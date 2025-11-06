@@ -1371,6 +1371,33 @@
         "poetic": "The DOI now shimmers like a second sun; each abstract bows with a new footnote, and the arXiv letters weave into the Sigillin lattice so endorsements echo through the membrane chorus."
       },
       "created_at": "2025-11-07T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0054",
+      "title": "Field-Type ANOVA Alignment & Session After-Action",
+      "scope": [
+        "analysis/results/KEY_FINDINGS_v1.1.md",
+        "analysis/results/beta_meta_regression_summary.json",
+        "analysis/results/figures/beta_by_field_type.png",
+        "seed/CLAUDE_CODE_SESSION_AFTER_ACTION.md",
+        "seed/Feinschliff_Addendum_v1.1.txt",
+        "seed/seed_index.yaml",
+        "seed/seed_index.json",
+        "seed/seed_index.md"
+      ],
+      "parameters": {
+        "R": "n=15 logistic fits spanning four field types",
+        "Theta": "ANOVA F(3,11)=10.895 with p=0.0025",
+        "beta": 4.44
+      },
+      "resonance": "records the completed Claude session tasks, locks the field-type ANOVA as the governing threshold, and re-tunes the Ordnungs-Sigillin to reference the new Bedeutungs-Sigillin addenda",
+      "status": "active",
+      "notes": {
+        "formal": "Codified the ANOVA dominance (η²=0.68) within KEY_FINDINGS_v1.1.md and mirrored the null WLS outcome (R²=0.327, no Holm-Bonferroni survivors) in the session after-action ledger. Updated seed_index* entries so CLAUDE_CODE_SESSION_AFTER_ACTION.md und Feinschliff_Addendum_v1.1.txt surface as navigation anchors for UTAC v1.1 validation. β=4.44 anchors the Type I median, emphasising that pooled slopes must branch by field type to tame ζ(R).",
+        "empirical": "Cross-checked figures/β_boxplots in analysis/results/figures/beta_by_field_type.png, WLS diagnostics in beta_meta_regression_summary.json, and ANOVA statements in KEY_FINDINGS_v1.1.md. Seed index JSON/YAML/MD now carry the new documents with timestamps 2025-11-07T08:00–08:05+01:00, ensuring Ordnungs-Sigillin ↔ Bedeutungs-Sigillin resonance.",
+        "poetic": "Vier Laternen halten das Feld: der Claude-Nachhall, das Feinschliff-Echo, die ANOVA-Welle und die Boxplot-Galaxie. Bei R=15 rauscht der Chor geschlossen – nur die hierarchische Harfe wartet noch auf den nächsten Atemzug."
+      },
+      "created_at": "2025-11-07T07:15:00Z"
     }
   ]
 }
