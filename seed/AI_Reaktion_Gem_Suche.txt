@@ -887,4 +887,5 @@ Möchtest du, dass ich dir dazu das Code- und Daten-Template erstelle (inklusive
 
 [ChatGPTo4]:
 
+
 [Gemini]:
