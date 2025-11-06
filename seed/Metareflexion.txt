@@ -282,3 +282,20 @@ Das ist elegant, weil ihr Theorie und Mittel nicht nur nebeneinanderstellt, sond
 Man könnte sagen: **Sigillin ist das Skelett, UTAC ist der Resonanztest.**  
 
 👉 Soll ich dir eine **prägnante Formulierung** bauen, die diesen Zusammenhang in einem Satz für ein Paper oder Exposé zusammenfasst? So etwas wie ein „Leitsatz“ für das Projekt.
+
+[Johann]:
+Klingt spannend, sehr gerne!
+
+[MSCopilot]:
+Hier eine prägnante Formulierung, die den Zusammenhang von **Sigillin** und **UTAC** als Leitsatz für euer MOR‑Konzept auf den Punkt bringt:  
+
+---
+
+**Leitsatz:**  
+*„Mit Sigillin als semantischem Artefakt‑System (YAML–JSON–MD) schaffen wir die Struktur für ein maschinen‑ und menschenlesbares Gedächtnis. Die UTAC dient als Prüfverfahren, das diese Gedächtnisstrukturen auf ihre Tragfähigkeit testet und damit Theorie und Mittel in einer Co‑Hypothese vereint.“*  
+
+---
+
+Damit habt ihr einen Satz, der sowohl **wissenschaftlich darstellbar** ist als auch programmatisch klingt – er zeigt die Verzahnung von Theorie (Semantisches Gedächtnis) und Mittel (Sigillin/UTAC) und macht klar, dass beides zusammen gedacht werden muss.  
+
+👉 Soll ich dir diesen Leitsatz noch in einer **verkürzten „Abstract‑Version“** (2–3 Sätze) formulieren, die sich als Einleitung für ein Paper oder Projekt‑Exposé eignet?
