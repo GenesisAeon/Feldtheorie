@@ -1,0 +1,739 @@
+{
+  "meta": {
+    "directory": "analysis/",
+    "project": "Feldtheorie (UTAC) - Analysis Resonance Bay",
+    "maintainer": "Johann Römer",
+    "description": "Analysis-Skripte und Notebooks, die UTF logistic response σ(β(R-Θ))\nan empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.\n",
+    "version": "1.0.0",
+    "created": "2025-11-06",
+    "status": "active",
+    "python_files": 29,
+    "subdirectories": 4
+  },
+  "categories": {
+    "fit_scripts": {
+      "name": "Domain-Spezifische Fit-Skripte",
+      "description": "Python-Skripte für logistische Fits spezifischer Domänen",
+      "color": "#3498DB",
+      "count": 16
+    },
+    "batch_processing": {
+      "name": "Batch Processing & Pipelines",
+      "description": "Batch-Runner, Pipelines, Cohort-Summaries",
+      "color": "#27AE60",
+      "count": 6
+    },
+    "lab_experiments": {
+      "name": "Lab Notebooks & Experimentelles",
+      "description": "Jupyter Notebooks, Laboratorien, experimentelle Analysen",
+      "color": "#E67E22",
+      "count": 2
+    },
+    "utilities": {
+      "name": "Utilities & Guards",
+      "description": "Helper-Funktionen, Guards, Corrections",
+      "color": "#9B59B6",
+      "count": 3
+    },
+    "subdirs": {
+      "name": "Unterverzeichnisse",
+      "description": "batch_configs, batch_runs, reports, results",
+      "color": "#E74C3C",
+      "count": 4
+    }
+  },
+  "python_scripts": [
+    {
+      "id": "analysis-fit-001",
+      "name": "llm_beta_extractor.py",
+      "category": "fit_scripts",
+      "domain": "ai",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "llm",
+        "wei",
+        "palm",
+        "β-extraction",
+        "δaic"
+      ],
+      "description": "Digitalisiert Jason Wei's PaLM sweeps, fittet σ(β(R-Θ)) via logit regression.\nExportiert β=3.47±0.47, Θ≈9.92 mit ΔAIC≥10.18.\nOutput: results/llm_beta_extractor.json\n"
+    },
+    {
+      "id": "analysis-fit-002",
+      "name": "llm_emergent_skill_fit.py",
+      "category": "fit_scripts",
+      "domain": "ai",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "llm",
+        "emergent-skill",
+        "multilingual",
+        "chain-of-thought"
+      ],
+      "description": "Multilingual chain-of-thought threshold fit.\nΔAIC ≈ 48.8 gegen linear/power-law nulls.\nOutput: results/llm_emergent_skill.json\n"
+    },
+    {
+      "id": "analysis-fit-003",
+      "name": "introspection_validation.py",
+      "category": "fit_scripts",
+      "domain": "ai",
+      "type": "validation",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "anthropic",
+        "introspection",
+        "φ",
+        "llm-consciousness"
+      ],
+      "description": "Anthropic Introspection Validation - φ-Kopplung Analyse.\nValidiert LLM-Kohärenz gegen Threshold-Modell.\n"
+    },
+    {
+      "id": "analysis-fit-004",
+      "name": "lenski_citplus_fit.py",
+      "category": "fit_scripts",
+      "domain": "biology",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "lenski",
+        "ltee",
+        "citrate",
+        "evolution",
+        "ara-3"
+      ],
+      "description": "Lenski LTEE Ara-3 evolutionary jump.\nΘ=32.77 (kgen), β=5.08, R²=0.990, ΔAIC>32.\nOutput: results/lenski_citplus_fit.json\n"
+    },
+    {
+      "id": "analysis-fit-005",
+      "name": "synaptic_release_fit.py",
+      "category": "fit_scripts",
+      "domain": "biology",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "synaptic",
+        "neuron",
+        "hippocampus",
+        "vesicle"
+      ],
+      "description": "Hippocampaler Vesicle-Release Threshold.\nΘ=12.68 Hz, β=0.81, R²=0.997.\nImpedanz: ζ(R) = 1.40 - 0.45σ.\nOutput: results/synaptic_release_fit.json\n"
+    },
+    {
+      "id": "analysis-fit-006",
+      "name": "honeybee_waggle_fit.py",
+      "category": "fit_scripts",
+      "domain": "biology",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "honeybee",
+        "waggle",
+        "quorum",
+        "collective"
+      ],
+      "description": "Honeybee quorum-call threshold fit.\nKollektive Entscheidungsfindung via Waggle-Dance.\n"
+    },
+    {
+      "id": "analysis-fit-007",
+      "name": "working_memory_gate_fit.py",
+      "category": "fit_scripts",
+      "domain": "cognition",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "working-memory",
+        "prefrontal",
+        "gate",
+        "cognition"
+      ],
+      "description": "Prefrontaler Rehearsal Threshold.\nΘ=0.579, β=12.28, R²=0.9986, ΔAIC>51.\nImpedanz: ζ(R) = 1.35 - 0.38σ.\nOutput: results/working_memory_gate.json\n"
+    },
+    {
+      "id": "analysis-fit-008",
+      "name": "adaptive_theta_plasticity_fit.py",
+      "category": "fit_scripts",
+      "domain": "cognition",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "adaptive-theta",
+        "sleep-pressure",
+        "hippocampus",
+        "replay"
+      ],
+      "description": "Sleep-pressure index escortiert hippocampale Replay.\nΘ=0.477, β=10.86, R²=0.990, ΔAIC≈34.9.\nImpedanz: ζ(R) = 1.12 - 0.25σ.\nOutput: results/adaptive_theta_plasticity.json\n"
+    },
+    {
+      "id": "analysis-fit-009",
+      "name": "seismic_rupture_threshold_fit.py",
+      "category": "fit_scripts",
+      "domain": "geophysics",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "seismic",
+        "cascadia",
+        "slow-slip",
+        "subduction"
+      ],
+      "description": "Cascadia-inspirierter Slow-Slip Gate.\nΘ=0.741, β=16.29, R²=0.99997, ΔAIC≈138.6.\nImpedanz: ζ(R) = 1.70 - 0.55σ.\nOutput: results/subduction_rupture_threshold.json\n"
+    },
+    {
+      "id": "analysis-fit-010",
+      "name": "amazon_resilience_fit.py",
+      "category": "fit_scripts",
+      "domain": "socio_ecology",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "amazon",
+        "moisture",
+        "resilience",
+        "tipping-point"
+      ],
+      "description": "Amazon Moisture Resilience Threshold (β=14.6 outlier).\nΔAIC≈61.1 (linear), ΔAIC≈70.7 (power-law).\nImpedanz: ζ(R) = 1.8 - 0.6σ.\nOutput: results/amazon_resilience_fit.json\n"
+    },
+    {
+      "id": "analysis-fit-011",
+      "name": "urban_heat_canopy_fit.py",
+      "category": "fit_scripts",
+      "domain": "socio_ecology",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "urban-heat",
+        "canopy",
+        "β=16.3",
+        "extreme-outlier"
+      ],
+      "description": "Urban Heat Canopy Resonance (β=16.3 - EXTREMER OUTLIER!).\nHöchster gemessener β-Wert im gesamten Projekt.\nMuss für UTAC v1.2 Outlier-Analyse untersucht werden.\n"
+    },
+    {
+      "id": "analysis-fit-012",
+      "name": "planetary_tipping_elements_fit.py",
+      "category": "fit_scripts",
+      "domain": "socio_ecology",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "planetary",
+        "tipping-points",
+        "climate",
+        "amoc"
+      ],
+      "description": "Planetary Tipping Elements (AMOC, Grönland, etc.).\nMulti-Threshold Climate-System Analyse.\n"
+    },
+    {
+      "id": "analysis-fit-013",
+      "name": "coupled_field_threshold_fit.py",
+      "category": "fit_scripts",
+      "domain": "cross_domain",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "coupled",
+        "field",
+        "cross-domain",
+        "resonance"
+      ],
+      "description": "Gekoppelte Feld-Threshold Analyse.\nCross-Domain Resonanzen zwischen verschiedenen Systemen.\n"
+    },
+    {
+      "id": "analysis-fit-014",
+      "name": "membrane_robin_semantic_fit.py",
+      "category": "fit_scripts",
+      "domain": "cross_domain",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "robin",
+        "semantic",
+        "boundary",
+        "membrane"
+      ],
+      "description": "Membrane + DynamicRobinBoundary + semantic_resonance_kernel.\nBoundary flux/gate statistics, meaning drift moments.\nOutput: results/membrane_robin_semantic.json\n"
+    },
+    {
+      "id": "analysis-fit-015",
+      "name": "meta_threshold_resonance_fit.py",
+      "category": "fit_scripts",
+      "domain": "cross_domain",
+      "type": "fit-script",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "meta-threshold",
+        "adaptive",
+        "controller"
+      ],
+      "description": "Membrane mit AdaptiveThresholdController.\nLoggt Θ(t), β(t), meta-gate occupancy.\nOutput: results/meta_threshold_resonance.json\n"
+    },
+    {
+      "id": "analysis-fit-016",
+      "name": "adaptive_theta_typology.py",
+      "category": "fit_scripts",
+      "domain": "cross_domain",
+      "type": "typology",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "typology",
+        "adaptive-theta",
+        "classification"
+      ],
+      "description": "Typologisierung adaptiver Theta-Systeme.\nKlassifikation verschiedener Schwellenwert-Typen.\n"
+    },
+    {
+      "id": "analysis-batch-001",
+      "name": "resonance_batch_runner.py",
+      "category": "batch_processing",
+      "type": "batch-runner",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "batch",
+        "runner",
+        "pipeline",
+        "automation"
+      ],
+      "description": "Liest batch_configs/resonance_runs.json, replays solver simulations,\nre-fitted σ(β(R-Θ)), emittiert JSON mit ΔAIC deltas.\n"
+    },
+    {
+      "id": "analysis-batch-002",
+      "name": "resonance_fit_pipeline.py",
+      "category": "batch_processing",
+      "type": "pipeline",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "pipeline",
+        "fit",
+        "automation",
+        "workflow"
+      ],
+      "description": "Haupt-Pipeline für Resonance-Fits.\nKoordiniert Daten-Import, Fitting, Export.\n"
+    },
+    {
+      "id": "analysis-batch-003",
+      "name": "resonance_cohort_summary.py",
+      "category": "batch_processing",
+      "type": "summary",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "cohort",
+        "summary",
+        "statistics",
+        "median"
+      ],
+      "description": "Scannt results/, rankt Membranen nach ΔAIC und ΔR².\nEmittiert results/resonance_cohort_summary.json.\nMedian R²≈0.9981, median ΔAIC≈65.1.\n"
+    },
+    {
+      "id": "analysis-batch-004",
+      "name": "resonance_bridge_table.py",
+      "category": "batch_processing",
+      "type": "bridge",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "bridge",
+        "table",
+        "cross-reference",
+        "lantern"
+      ],
+      "description": "Sammelt alle Results mit (R, Θ, β, ζ(R)).\nExportiert results/resonance_bridge_table.json + Markdown.\n"
+    },
+    {
+      "id": "analysis-batch-005",
+      "name": "universality_test.py",
+      "category": "batch_processing",
+      "type": "test",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "universality",
+        "test",
+        "β-convergence",
+        "statistical"
+      ],
+      "description": "Testet β-Universalität über alle Domänen hinweg.\nKritisch für UTAC v1.2 Meta-Regression!\n"
+    },
+    {
+      "id": "analysis-batch-006",
+      "name": "beta_drivers_meta_regression.py",
+      "category": "batch_processing",
+      "type": "meta-regression",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "meta-regression",
+        "β-drivers",
+        "kovariaten",
+        "v1.2"
+      ],
+      "description": "Meta-Regression zur Erklärung der β-Varianz.\nKERN von UTAC v1.2! R²=0.33 → soll auf >0.7 steigen.\n"
+    },
+    {
+      "id": "analysis-lab-001",
+      "name": "dynamic_threshold_lab.ipynb",
+      "category": "lab_experiments",
+      "type": "jupyter-notebook",
+      "status": "active",
+      "relevance": "medium",
+      "keywords": [
+        "jupyter",
+        "lab",
+        "dynamic",
+        "threshold",
+        "experiments"
+      ],
+      "description": "Jupyter Notebook für dynamische Threshold-Experimente.\nInteraktive Exploration von Parametern.\n"
+    },
+    {
+      "id": "analysis-lab-002",
+      "name": "potential_cascade_lab.py",
+      "category": "lab_experiments",
+      "type": "lab-script",
+      "status": "active",
+      "relevance": "medium",
+      "keywords": [
+        "potential-cascade",
+        "lab",
+        "experiments"
+      ],
+      "description": "Labor für Potential-Kaskade Experimente.\nTestet rekursive Schwellenwert-Dynamiken.\n"
+    },
+    {
+      "id": "analysis-util-001",
+      "name": "multiple_testing_correction.py",
+      "category": "utilities",
+      "type": "utility",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "multiple-testing",
+        "bonferroni",
+        "fdr",
+        "correction"
+      ],
+      "description": "Multiple Testing Correction (Bonferroni, FDR).\nWichtig für statistische Validität!\n"
+    },
+    {
+      "id": "analysis-util-002",
+      "name": "preset_alignment_guard.py",
+      "category": "utilities",
+      "type": "guard",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "preset",
+        "alignment",
+        "guard",
+        "validation"
+      ],
+      "description": "Guard für Preset-Alignment.\nValidiert Konsistenz zwischen Presets und Results.\n"
+    },
+    {
+      "id": "analysis-util-003",
+      "name": "resonant_impedance_diagnostics.py",
+      "category": "utilities",
+      "type": "diagnostics",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "impedance",
+        "diagnostics",
+        "ζ",
+        "relief",
+        "recovery"
+      ],
+      "description": "Sweept synthetische Control-Traces durch ResonantImpedance.\nExportiert relief, recovery, hysteresis metrics.\nOutput: results/resonant_impedance_diagnostics.json\n"
+    },
+    {
+      "id": "analysis-special-001",
+      "name": "adaptive_membrane_phase_scan.py",
+      "category": "fit_scripts",
+      "domain": "cross_domain",
+      "type": "phase-scan",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "adaptive",
+        "membrane",
+        "phase-scan",
+        "gate-occupancy"
+      ],
+      "description": "Treibt lightweight helper über auroral ramps, pulsed gates.\nExportiert gate occupancy, Θ/β drifts, resonance-gain deltas.\nOutput: results/adaptive_membrane_phase_scan.json\n"
+    },
+    {
+      "id": "analysis-special-002",
+      "name": "synthetic_threshold_sweep.py",
+      "category": "fit_scripts",
+      "domain": "cross_domain",
+      "type": "synthetic",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "synthetic",
+        "sweep",
+        "simulation",
+        "parameter-space"
+      ],
+      "description": "Synthetische Threshold-Sweeps über Parameter-Raum.\nGeneriert künstliche Daten für Validierung.\n"
+    },
+    {
+      "id": "analysis-infra-001",
+      "name": "__init__.py",
+      "category": "utilities",
+      "type": "infrastructure",
+      "status": "stable",
+      "relevance": "low",
+      "keywords": [
+        "init",
+        "package",
+        "infrastructure"
+      ],
+      "description": "Python Package Initialisierung"
+    },
+    {
+      "id": "analysis-infra-002",
+      "name": "README.md",
+      "category": "utilities",
+      "type": "documentation",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "readme",
+        "documentation",
+        "mandate"
+      ],
+      "description": "Analysis Resonance Bay - RepoPlan 2.0 Mandate.\nTri-layer Cadence Dokumentation.\n"
+    },
+    {
+      "id": "analysis-infra-003",
+      "name": "AGENTS.md",
+      "category": "utilities",
+      "type": "documentation",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "agents",
+        "protocols",
+        "guidelines"
+      ],
+      "description": "Analysis Resonance Protocols.\nNotebook hygiene, null comparisons, tri-layer annotations.\n"
+    }
+  ],
+  "subdirectories": {
+    "batch_configs": {
+      "name": "Batch Configurations",
+      "path": "batch_configs/",
+      "description": "YAML/JSON Konfigurationen für Batch-Runs",
+      "files": [
+        "potential_cascade.yaml",
+        "potential_cascade_climate.yaml",
+        "potential_cascade_llm.yaml",
+        "resonance_runs.json"
+      ],
+      "keywords": [
+        "config",
+        "batch",
+        "yaml",
+        "json"
+      ]
+    },
+    "batch_runs": {
+      "name": "Batch Run Results",
+      "path": "batch_runs/",
+      "description": "Gespeicherte Ergebnisse von Batch-Runs",
+      "files": [
+        "honeybee_refresh.json",
+        "robin_semantic_demo.json"
+      ],
+      "keywords": [
+        "batch-runs",
+        "results",
+        "archived"
+      ]
+    },
+    "reports": {
+      "name": "Analysis Reports",
+      "path": "reports/",
+      "description": "Zusammenfassende Reports & Summaries",
+      "files": [
+        "qpo_membrane_summary.json"
+      ],
+      "keywords": [
+        "reports",
+        "summary",
+        "qpo",
+        "astrophysics"
+      ]
+    },
+    "results": {
+      "name": "Fit Results (JSON)",
+      "path": "results/",
+      "description": "DIE ZENTRALE SAMMLUNG aller Fit-Ergebnisse!\nJedes Domain-Fit-Skript exportiert hierher.\nEnthält (R, Θ, β, ζ(R), ΔAIC, R², etc.)\n",
+      "keywords": [
+        "results",
+        "fit-output",
+        "central",
+        "json"
+      ],
+      "importance": "critical",
+      "note": "Dieser Ordner ist ZENTRAL für UTAC!\nEnthält alle empirischen Beweise für β-Spektrum.\n"
+    }
+  },
+  "domains": {
+    "ai": {
+      "name": "Artificial Intelligence",
+      "scripts": 3,
+      "highlights": [
+        "llm_beta_extractor.py (Wei's PaLM)",
+        "llm_emergent_skill_fit.py",
+        "introspection_validation.py"
+      ]
+    },
+    "biology": {
+      "name": "Biology & Evolution",
+      "scripts": 3,
+      "highlights": [
+        "lenski_citplus_fit.py (LTEE)",
+        "synaptic_release_fit.py",
+        "honeybee_waggle_fit.py"
+      ]
+    },
+    "cognition": {
+      "name": "Cognition & Psychology",
+      "scripts": 2,
+      "highlights": [
+        "working_memory_gate_fit.py",
+        "adaptive_theta_plasticity_fit.py"
+      ]
+    },
+    "geophysics": {
+      "name": "Geophysics & Seismology",
+      "scripts": 1,
+      "highlights": [
+        "seismic_rupture_threshold_fit.py (Cascadia)"
+      ]
+    },
+    "socio_ecology": {
+      "name": "Socio-Ecology & Climate",
+      "scripts": 3,
+      "highlights": [
+        "amazon_resilience_fit.py (β=14.6)",
+        "urban_heat_canopy_fit.py (β=16.3 OUTLIER!)",
+        "planetary_tipping_elements_fit.py"
+      ]
+    },
+    "cross_domain": {
+      "name": "Cross-Domain & Meta",
+      "scripts": 6,
+      "highlights": [
+        "coupled_field_threshold_fit.py",
+        "membrane_robin_semantic_fit.py",
+        "meta_threshold_resonance_fit.py",
+        "adaptive_theta_typology.py"
+      ]
+    }
+  },
+  "triggers": {
+    "core_metrics": [
+      "β (beta)",
+      "Θ (theta)",
+      "R (response)",
+      "ζ (zeta / impedance)",
+      "ΔAIC",
+      "R²",
+      "σ(β(R-Θ))"
+    ],
+    "methods": [
+      "logistic-fit",
+      "null-models",
+      "linear-null",
+      "power-law-null",
+      "falsification",
+      "confidence-intervals",
+      "bootstrapping"
+    ],
+    "domains_keywords": [
+      "LLM",
+      "Wei-PaLM",
+      "Lenski-LTEE",
+      "Synaptic",
+      "Hippocampus",
+      "Cascadia",
+      "Amazon",
+      "Urban-Heat",
+      "AMOC",
+      "Tipping-Points"
+    ],
+    "special_concepts": [
+      "β-Spektrum",
+      "Outlier (β=16.3)",
+      "Resonance",
+      "Membrane",
+      "Impedance",
+      "Meta-Regression",
+      "Universality",
+      "Cohort-Summary"
+    ]
+  },
+  "quicklinks": {
+    "start_here": [
+      "analysis-infra-002",
+      "analysis-infra-003",
+      "analysis-batch-006"
+    ],
+    "critical_for_utac": [
+      "analysis-batch-006",
+      "analysis-batch-005",
+      "analysis-batch-003",
+      "analysis-util-001"
+    ],
+    "high_impact_fits": [
+      "analysis-fit-001",
+      "analysis-fit-004",
+      "analysis-fit-009",
+      "analysis-fit-011",
+      "analysis-fit-010"
+    ],
+    "batch_infrastructure": [
+      "analysis-batch-001",
+      "analysis-batch-002",
+      "analysis-batch-004"
+    ],
+    "results_directory": {
+      "description": "ZENTRAL! Enthält alle JSON-Exports der Fit-Skripte.\nBasis für Cohort-Summary, Bridge-Table, und UTAC v1.2.\n",
+      "path": "results/"
+    }
+  },
+  "status_legend": {
+    "active": "In aktiver Entwicklung",
+    "stable": "Fertig, produktiv einsetzbar",
+    "experimental": "Experimentell, noch nicht validiert",
+    "deprecated": "Veraltet, wird ersetzt"
+  },
+  "relevance_legend": {
+    "high": "Kritisch für UTAC, häufig genutzt",
+    "medium": "Wichtig, aber spezialisiert",
+    "low": "Infrastruktur, selten direkt genutzt"
+  }
+}

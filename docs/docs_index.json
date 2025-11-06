@@ -1,0 +1,232 @@
+{
+  "meta": {
+    "directory": "docs/",
+    "project": "Feldtheorie (UTAC) - Living Documentation Tapestry",
+    "maintainer": "Johann Römer",
+    "description": "UTAC Theory Documentation: Core Theory, Applications, Falsifiability,\nField Type Classification, Validation Reports.\nTri-layer Cadence: Formal, Empirical, Metaphorical.\n",
+    "version": "1.0.0",
+    "created": "2025-11-06",
+    "status": "active",
+    "markdown_files": 9
+  },
+  "categories": {
+    "theory": {
+      "name": "Core Theory",
+      "description": "UTAC Theory Core, Emergence, Universality",
+      "color": "#3498DB",
+      "count": 3
+    },
+    "applications": {
+      "name": "Applications & Classification",
+      "description": "Field Types, Use Cases, Review Considerations",
+      "color": "#27AE60",
+      "count": 3
+    },
+    "validation": {
+      "name": "Validation & Falsifiability",
+      "description": "Falsifiability Protocol, Validation Reports",
+      "color": "#E67E22",
+      "count": 2
+    },
+    "infrastructure": {
+      "name": "Infrastructure",
+      "description": "README, Overview",
+      "color": "#9B59B6",
+      "count": 1
+    }
+  },
+  "markdown_docs": [
+    {
+      "id": "docs-theory-001",
+      "name": "utac_theory_core.md",
+      "category": "theory",
+      "type": "theory",
+      "status": "stable",
+      "relevance": "high",
+      "size_kb": 3.2,
+      "keywords": [
+        "utac",
+        "theory",
+        "core",
+        "σ(β(R-Θ))",
+        "fundamental"
+      ],
+      "description": "⭐ DAS THEORIE-FUNDAMENT!\nDefiniert σ(β(R-Θ)), erklärt β-Spektrum, Θ-Dynamik, ζ-Impedanz.\nBasis für alle anderen Docs.\n"
+    },
+    {
+      "id": "docs-theory-002",
+      "name": "utac_emergence_universal.md",
+      "category": "theory",
+      "type": "emergence",
+      "status": "stable",
+      "relevance": "high",
+      "size_kb": 10.7,
+      "keywords": [
+        "emergence",
+        "universal",
+        "cross-domain",
+        "β-convergence"
+      ],
+      "description": "UTAC Emergence Universal: Cross-Domain Patterns.\nZeigt wie σ(β(R-Θ)) über AI, Biology, Geophysics, Socio-Ecology gilt.\nArgumentiert für β-Universalität (trotz Spektrum).\n"
+    },
+    {
+      "id": "docs-theory-003",
+      "name": "appendix_field_types.md",
+      "category": "theory",
+      "type": "appendix",
+      "status": "stable",
+      "relevance": "medium",
+      "size_kb": 10.2,
+      "keywords": [
+        "appendix",
+        "field-types",
+        "taxonomy",
+        "classification"
+      ],
+      "description": "Appendix: Field Types in Detail.\nDetaillierte Beschreibung der 5 Schwellenwert-Systemtypen.\n"
+    },
+    {
+      "id": "docs-app-001",
+      "name": "field_type_classification_v1.1.md",
+      "category": "applications",
+      "type": "classification",
+      "status": "stable",
+      "relevance": "high",
+      "size_kb": 21.1,
+      "keywords": [
+        "classification",
+        "field-types",
+        "taxonomy",
+        "v1.1"
+      ],
+      "description": "⭐ FIELD TYPE CLASSIFICATION v1.1!\nDie 5 Systemtypen: Sharp Gates, Gradual Transitions, Coupled,\nAdaptive, Recursive. Mit Beispielen aus allen Domänen.\n"
+    },
+    {
+      "id": "docs-app-002",
+      "name": "utac_applications.md",
+      "category": "applications",
+      "type": "applications",
+      "status": "stable",
+      "relevance": "high",
+      "size_kb": 10.6,
+      "keywords": [
+        "applications",
+        "use-cases",
+        "domains",
+        "practical"
+      ],
+      "description": "UTAC Applications: Praktische Anwendungen.\nVon LLM-Training bis Climate Tipping Points.\nZeigt wie UTAC in der Praxis genutzt wird.\n"
+    },
+    {
+      "id": "docs-app-003",
+      "name": "utac_review_considerations.md",
+      "category": "applications",
+      "type": "review-guide",
+      "status": "stable",
+      "relevance": "medium",
+      "size_kb": 10.9,
+      "keywords": [
+        "review",
+        "considerations",
+        "peer-review",
+        "guidelines"
+      ],
+      "description": "UTAC Review Considerations: Guide für Reviewer.\nWas sind die Stärken? Was sind die Limitationen?\nEhrliche Selbst-Evaluation.\n"
+    },
+    {
+      "id": "docs-val-001",
+      "name": "utac_falsifiability.md",
+      "category": "validation",
+      "type": "falsifiability",
+      "status": "stable",
+      "relevance": "high",
+      "size_kb": 2.6,
+      "keywords": [
+        "falsifiability",
+        "null-models",
+        "ΔAIC",
+        "popper"
+      ],
+      "description": "⭐ FALSIFIABILITY PROTOCOL!\nWie UTAC falsifizierbar ist: Null-Models, ΔAIC>10, R²-Tests.\nKernargument: UTAC ist NICHT unfalsifizierbar!\n"
+    },
+    {
+      "id": "docs-val-002",
+      "name": "validation_report_v1.0.1.md",
+      "category": "validation",
+      "type": "report",
+      "status": "stable",
+      "relevance": "high",
+      "size_kb": 18.5,
+      "keywords": [
+        "validation",
+        "report",
+        "v1.0.1",
+        "results",
+        "empirical"
+      ],
+      "description": "Validation Report v1.0.1: Empirische Ergebnisse.\nZusammenfassung aller Fits, ΔAIC-Werte, R²-Statistiken.\nZeigt dass logistische Modelle konsistent besser sind.\n"
+    },
+    {
+      "id": "docs-infra-001",
+      "name": "README.md",
+      "category": "infrastructure",
+      "type": "readme",
+      "status": "stable",
+      "relevance": "high",
+      "size_kb": 5.4,
+      "keywords": [
+        "readme",
+        "overview",
+        "mandate",
+        "tapestry"
+      ],
+      "description": "Living Documentation Tapestry - RepoPlan 2.0 Mandate.\nBeschreibt Tri-Layer Cadence und Documentation-Philosophie.\n"
+    }
+  ],
+  "triggers": {
+    "core_concepts": [
+      "σ(β(R-Θ))",
+      "β-Spektrum",
+      "Θ-Dynamik",
+      "ζ-Impedanz",
+      "φ-Kohärenz"
+    ],
+    "keywords": [
+      "UTAC",
+      "Falsifiability",
+      "ΔAIC",
+      "Null-Models",
+      "Field-Types",
+      "Cross-Domain",
+      "Emergence",
+      "Validation"
+    ]
+  },
+  "quicklinks": {
+    "start_here": [
+      "docs-theory-001",
+      "docs-val-001",
+      "docs-infra-001"
+    ],
+    "for_theory": [
+      "docs-theory-001",
+      "docs-theory-002",
+      "docs-app-001"
+    ],
+    "for_validation": [
+      "docs-val-001",
+      "docs-val-002"
+    ],
+    "for_applications": [
+      "docs-app-001",
+      "docs-app-002"
+    ],
+    "for_review": [
+      "docs-app-003"
+    ]
+  },
+  "status_legend": {
+    "stable": "Fertig, validiert, publikationsreif",
+    "draft": "In Arbeit"
+  }
+}

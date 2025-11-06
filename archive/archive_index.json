@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "system": "Sigillin Archive System",
+    "purpose": "Cold storage for archived Sigillin entries",
+    "format": "ZIP archives with Trilayer Index",
+    "philosophy": "Sigillin-Hygiene gegen Archive-Hypnose durch Inflation",
+    "created": "2025-11-06T11:30:00+01:00",
+    "updated": "2025-11-06T11:30:00+01:00",
+    "total_archives": 0
+  },
+  "thresholds": {
+    "default_max_entries": 100,
+    "default_max_size_kb": 50,
+    "default_keep_recent": 50,
+    "description": "Sigillin exceeding these limits should be archived"
+  },
+  "archives": [],
+  "trilayer": {
+    "yaml": "archive_index.yaml",
+    "json": "archive_index.json",
+    "markdown": "archive_index.md",
+    "description": "Three interfaces to the same archive catalog"
+  },
+  "navigation": {
+    "maintenance_guide": "../docs/sigillin_maintenance.md",
+    "search_patterns": "../docs/sigillin_search_patterns.md",
+    "archiving_script": "../scripts/archive_sigillin.py"
+  },
+  "usage": {
+    "check_status": "python scripts/archive_sigillin.py --scan-all --dry-run",
+    "archive_all": "python scripts/archive_sigillin.py --scan-all",
+    "archive_specific": "python scripts/archive_sigillin.py --sigillin seed/file.yaml",
+    "search_archives": "unzip -p archive/file_archive.zip | grep 'keyword'",
+    "list_archives": "jq '.archives' archive/archive_index.json"
+  }
+}
