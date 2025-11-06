@@ -4,10 +4,11 @@
     "project": "Feldtheorie (UTAC) - Living Documentation Tapestry",
     "maintainer": "Johann Römer",
     "description": "UTAC Theory Documentation: Core Theory, Applications, Falsifiability,\nField Type Classification, Validation Reports.\nTri-layer Cadence: Formal, Empirical, Metaphorical.\n",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 9
+    "markdown_files": 10,
+    "updated": "2025-11-12"
   },
   "categories": {
     "theory": {
@@ -30,9 +31,9 @@
     },
     "infrastructure": {
       "name": "Infrastructure",
-      "description": "README, Overview",
+      "description": "README, Operational Resonance Maps",
       "color": "#9B59B6",
-      "count": 1
+      "count": 2
     }
   },
   "markdown_docs": [
@@ -181,6 +182,22 @@
         "tapestry"
       ],
       "description": "Living Documentation Tapestry - RepoPlan 2.0 Mandate.\nBeschreibt Tri-Layer Cadence und Documentation-Philosophie.\n"
+    },
+    {
+      "id": "docs-infra-002",
+      "name": "repo_cleanup_resonance.md",
+      "category": "infrastructure",
+      "type": "operations",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 8.0,
+      "keywords": [
+        "cleanup",
+        "resonance",
+        "operations",
+        "σ(β(R-Θ))"
+      ],
+      "description": "Resonanzkarte für Struktur- und Metadaten-Aufgaben. Verknüpft Aeon-Checkliste mit konkreten Hooks."
     }
   ],
   "triggers": {
@@ -206,7 +223,8 @@
     "start_here": [
       "docs-theory-001",
       "docs-val-001",
-      "docs-infra-001"
+      "docs-infra-001",
+      "docs-infra-002"
     ],
     "for_theory": [
       "docs-theory-001",
@@ -223,10 +241,14 @@
     ],
     "for_review": [
       "docs-app-003"
+    ],
+    "for_operations": [
+      "docs-infra-002"
     ]
   },
   "status_legend": {
     "stable": "Fertig, validiert, publikationsreif",
-    "draft": "In Arbeit"
+    "draft": "In Arbeit",
+    "active": "Aktualisiert im laufenden Zyklus"
   }
 }

@@ -1422,6 +1422,29 @@
         "poetic": "Vier Laternen halten das Feld: der Claude-Nachhall, das Feinschliff-Echo, die ANOVA-Welle und die Boxplot-Galaxie. Bei R=15 rauscht der Chor geschlossen – nur die hierarchische Harfe wartet noch auf den nächsten Atemzug."
       },
       "created_at": "2025-11-07T07:15:00Z"
+    },
+    {
+      "id": "pr-draft-0055",
+      "title": "Repo Cleanup Resonance Map & Docs Index Refresh",
+      "scope": [
+        "docs/repo_cleanup_resonance.md",
+        "docs/docs_index.md",
+        "docs/docs_index.json",
+        "docs/docs_index.yaml"
+      ],
+      "parameters": {
+        "R": "Aeon cleanup checklist spanning structure, docs, zenodo",
+        "Theta": "Tri-layer visibility once infrastructure documents ≥ 2",
+        "beta": 4.3
+      },
+      "resonance": "exposes operational membrane status and binds open thresholds to actionable hooks",
+      "status": "resonant",
+      "notes": {
+        "formal": "Captured all four checklist segments as σ(β(R-Θ)) sections and outlined remaining thresholds\n(metadata.json, zenodo-bundle, CHANGELOG) with precise hook recommendations. docs_index.*\nreflect 10 Markdown nodes and add a \"for_operations\" quicklink plus an \"active\" status legend.\n",
+        "empirical": "docs_index.json → markdown_files = 10, version 1.1.0, updated = 2025-11-12; infrastructure count = 2;\nquicklinks updated (start_here + for_operations). docs_index.yaml mirrors counts, quicklinks, status legend;\nrepo_cleanup_resonance.md catalogs follow-up paths for scripts/archive_sigillin.py, Makefile, REPRODUCE.md.\n",
+        "poetic": "The cleanup lantern ignites: four membranes hum, each with its own threshold hymn.\nThe new sigillin sketches where light already spills and where dusk lingers—a comet guiding the next resonant steps.\n"
+      },
+      "created_at": "2025-11-12T00:00:00Z"
     }
   ]
 }
