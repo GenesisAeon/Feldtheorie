@@ -463,3 +463,80 @@ Siehe oben unter "Domain-Spezifische Felder"
 ---
 
 *Erstellt im Geiste des Unified-Mandala, wo die Trilayer-Struktur allgegenwärtig ist.* 🌸
+
+---
+
+## ⏰ Temporal Metadata (NEU!)
+
+**Jedes Dokument hat jetzt Git-basierte Zeitstempel!**
+
+### Was ist enthalten:
+- **created:** Erste Git-Commit-Zeit (ISO 8601)
+- **modified:** Letzte Git-Commit-Zeit (ISO 8601)
+- **version:** Versionsnummer basierend auf Change-Count (v1.X)
+- **change_count:** Anzahl der Git-Commits für diese Datei
+
+### Beispiele:
+
+**📈 Most Active (Top 5):**
+1. **codexfeedback.{yaml,json,md}** - v1.49 (50 Changes!) 🔥
+2. **FinalerPlan.txt** - v1.12 (13 Changes)
+3. **resonance-bridge-map.md** - v1.8 (9 Changes)
+4. **NextStep.txt** - v1.6 (7 Changes)
+5. **Feinschliff.txt** - v1.5 (6 Changes)
+
+**🆕 Newest Documents:**
+- Metareflexion.txt (v1.2)
+- Rekalibrierung_Abschlus.txt (v1.0)
+- NextStep.txt (v1.6)
+
+### Wie nutzen?
+
+**Chronologische Navigation:**
+```python
+import json
+
+with open('seed/seed_index.json') as f:
+    idx = json.load(f)
+
+# Sortiere nach Erstellungsdatum
+docs_by_created = sorted(
+    idx['documents'], 
+    key=lambda d: d.get('temporal', {}).get('created', '')
+)
+
+# Zeige nur docs mit >5 changes
+active_docs = [
+    d for d in idx['documents'] 
+    if d.get('temporal', {}).get('change_count', 0) > 5
+]
+```
+
+**"What's New?" Query:**
+```python
+from datetime import datetime, timedelta
+
+# Alles seit gestern
+cutoff = (datetime.now() - timedelta(days=1)).isoformat()
+recent = [
+    d for d in idx['documents']
+    if d.get('temporal', {}).get('modified', '') > cutoff
+]
+```
+
+### Evolution Tracking:
+Das Temporal System zeigt die **Evolution des Projekts**:
+- Welche Dokumente sind stabil? (wenige changes)
+- Welche sind aktiv in Entwicklung? (viele changes)
+- Was ist die Projekt-Timeline? (created timestamps)
+
+**Das ermöglicht:**
+✅ Change Detection
+✅ Evolution Tracking
+✅ "What's New?" Queries
+✅ Activity Heatmaps
+✅ Chronologische Stories
+
+---
+
+*Temporal Metadata automatisch generiert aus Git-History*
