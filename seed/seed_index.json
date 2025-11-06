@@ -181,6 +181,33 @@
       }
     },
     {
+      "id": "meta-007",
+      "title": "Sigillin System Definition",
+      "path": "Sigillin_System_Definition.md",
+      "category": "meta",
+      "type": "system_definition",
+      "status": "active",
+      "relevance": "critical",
+      "keywords": [
+        "sigillin",
+        "trilayer",
+        "ordnungs-sigillin",
+        "bedeutungs-sigillin",
+        "semantisches-gedächtnis",
+        "trifunktionalität",
+        "ontologie",
+        "meta-ebene",
+        "poetik",
+        "symbolik",
+        "resonanz",
+        "utac-analogie",
+        "aeon-johann",
+        "mor",
+        "ai-sigill-index"
+      ],
+      "description": "Fundamentale Systemdefinition des Sigillin-Systems nach Johann Römer. Unterscheidet Ordnungs-Sigillin (Navigation) vs. Bedeutungs-Sigillin (Semantik). Definiert das semantisch-neuronale Sigillin-Netz, Trifunktionalität (Struktur + Bedeutung + Inhalt + Meta), und die UTAC-Analogien. Inspiriert durch die Aeon-Johann-Schnittstelle bei OpenAI. BEDEUTUNGS-SIGILLIN: Bei Änderung NEU anlegen, Altes archivieren!"
+    },
+    {
       "id": "theory-001",
       "title": "FinalerPlan",
       "path": "FinalerPlan.txt",

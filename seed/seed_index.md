@@ -344,13 +344,14 @@ active_important = [
 
 ## 📚 Vollständige Dokumenten-Liste
 
-### Meta & Prozess (6 Dokumente)
+### Meta & Prozess (7 Dokumente)
 1. **Metareflexion.txt** - Philosophische Grundlage (🔥 high)
 2. **Rekalibrierung_Abschlus.txt** - Finale Synthese aller AIs (🔥 high)
 3. **NextStep.txt** - Wegplan für v1.2 (🔥 high, ✨ active)
 4. CLAUDE_CODE_SESSION.md - Session-Notizen
 5. EXECUTIVE_SUMMARY_SESSION.md - Executive Summary
 6. FINALISIERUNG_SESSION.md - Finalisierungs-Session
+7. **Sigillin_System_Definition.md** - 🔴 KRITISCH! Sigillin-Ontologie (Ordnungs vs. Bedeutungs)
 
 ### Theoretische Grundlagen (8 Dokumente)
 1. **FinalerPlan.txt** - Governance-Paket (🔥 high)
@@ -398,7 +399,7 @@ active_important = [
 ### Domain-Spezifisch (6 × ~4-5 Dokumente = ~28 Dokumente)
 Siehe oben unter "Domain-Spezifische Felder"
 
-**Gesamt:** ~69 Dokumente indexiert 🎯
+**Gesamt:** ~70 Dokumente indexiert 🎯
 
 ---
 
