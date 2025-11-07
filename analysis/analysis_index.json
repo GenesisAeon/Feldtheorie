@@ -7,7 +7,7 @@
     "version": "1.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "python_files": 30,
+    "python_files": 31,
     "subdirectories": 4
   },
   "categories": {
@@ -33,7 +33,7 @@
       "name": "Utilities & Guards",
       "description": "Helper-Funktionen, Guards, Corrections",
       "color": "#9B59B6",
-      "count": 3
+      "count": 4
     },
     "subdirs": {
       "name": "Unterverzeichnisse",
@@ -481,6 +481,22 @@
       "description": "Sweept synthetische Control-Traces durch ResonantImpedance.\nExportiert relief, recovery, hysteresis metrics.\nOutput: results/resonant_impedance_diagnostics.json\n"
     },
     {
+      "id": "analysis-util-004",
+      "name": "outlier_beta_review.py",
+      "category": "utilities",
+      "type": "diagnostics",
+      "status": "primed",
+      "relevance": "high",
+      "keywords": [
+        "socio-ecology",
+        "beta",
+        "outlier",
+        "ΔAIC",
+        "falsification"
+      ],
+      "description": "Prüft hochsteile β-Profile (Amazon, Urban Heat) gegen glatte Nullmodelle.\nExportiert instrumentation_flag Ledger: results/outlier_beta_review.json\n"
+    },
+    {
       "id": "analysis-special-001",
       "name": "adaptive_membrane_phase_scan.py",
       "category": "fit_scripts",
@@ -651,11 +667,12 @@
     },
     "socio_ecology": {
       "name": "Socio-Ecology & Climate",
-      "scripts": 3,
+      "scripts": 4,
       "highlights": [
         "amazon_resilience_fit.py (β=14.6)",
         "urban_heat_canopy_fit.py (β=16.3 OUTLIER!)",
-        "planetary_tipping_elements_fit.py"
+        "planetary_tipping_elements_fit.py",
+        "outlier_beta_review.py (Instrumentation-Flag Ledger)"
       ]
     },
     "cross_domain": {
@@ -708,7 +725,8 @@
       "Impedance",
       "Meta-Regression",
       "Universality",
-      "Cohort-Summary"
+      "Cohort-Summary",
+      "Instrumentation-Flag"
     ]
   },
   "quicklinks": {
@@ -722,7 +740,8 @@
       "analysis-batch-007",
       "analysis-batch-005",
       "analysis-batch-003",
-      "analysis-util-001"
+      "analysis-util-001",
+      "analysis-util-004  # Outlier β Guard (Amazon & Urban Heat)"
     ],
     "high_impact_fits": [
       "analysis-fit-001",
