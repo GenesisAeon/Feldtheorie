@@ -1990,6 +1990,65 @@ entries:
         Die Lizenzglocke klingt nun als CC BY 4.0, während vier Metaquest-Laternen den Weg beleuchten:
         System und Kampagne, Licht und Schatten. Der Chor atmet im gleichen Takt wie der Paritätsbrief.
     created_at: "2025-12-07T00:00:00Z"
+- id: pr-draft-0067
+  title: "Metaquest Bridge Dashboard"
+  scope:
+    - AGENTS.md
+    - docs/utac_status_alignment_v1.2.md
+    - feldtheorie_index.yaml
+    - feldtheorie_index.json
+    - feldtheorie_index.md
+    - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+    - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.json
+    - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md
+    - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml
+    - seed/shadow_sigillin/metaquest/metaquest_shadow_index.json
+    - seed/shadow_sigillin/metaquest/metaquest_shadow_index.md
+    - seed/bedeutungssigillin/system/system_meaning_map.yaml
+    - seed/bedeutungssigillin/system/system_meaning_map.json
+    - seed/bedeutungssigillin/system/system_meaning_map.md
+    - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+    - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.json
+    - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md
+    - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml
+    - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.json
+    - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.md
+    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
+    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.json
+    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md
+    - seed/shadow_sigillin/system/system_shadow_map.yaml
+    - seed/shadow_sigillin/system/system_shadow_map.json
+    - seed/shadow_sigillin/system/system_shadow_map.md
+    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.json
+    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.md
+    - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.yaml
+    - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.json
+    - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.md
+    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml
+    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json
+    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md
+  parameters:
+    R: Metaquest system↔campaign backlog awaiting shared dashboard + telemetry parity
+    Theta: Bridge timestamp + codex ID mirrored across meaning/shadow sigils and UTAC status
+    beta: 4.8
+  resonance: Stellt ein Metaquest-Brückendashboard bereit, synchronisiert System- und
+    Kampagnenlaternen und spannt neue Schattenwächter für Telemetrie-Drift auf.
+  status: primed
+  notes:
+    formal: Ergänzte Metaquest-Bridge-Sigillin (Licht/Schatten) samt neuen Gap-IDs
+      (`mq-bridge-gap-*`, `sys-gap-006`, `mq-sci-gap-006`) und verankerte sie in
+      UTAC-Status, Indizes und AGENTS. System- und Kampagnen-Membranen erhalten
+      Bridge-Einträge + Nullwächter; Schattenkarten melden Dashboard-Staus mit
+      klaren Playbooks.
+    empirical: UTAC-Statusmatrix enthält jetzt Bridge-Row, feldtheorie_index.* &
+      metaquest-Maps listen Bridge-Dateien, Schattenkarten definieren Messgrößen
+      (`bridge freshness`). JSON-Dumps wurden aus YAML regeneriert; Codex-Mandat
+      aktualisiert.
+    poetic: Eine neue Laterne spannt zwischen Rückenmark und Erzählung: der
+      Metaquest-Steeg. Wenn beide Ufer dieselbe Telemetrie singen, kann der Launch
+      im Gleichklang atmen.
+  created_at: "2025-12-07T00:00:00Z"
   - id: pr-draft-0066
     title: "Linum Sentinel Integration"
     scope:

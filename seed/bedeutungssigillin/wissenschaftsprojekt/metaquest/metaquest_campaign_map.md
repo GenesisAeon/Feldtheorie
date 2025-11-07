@@ -27,6 +27,11 @@
    - *Empirical*: Ties BreakPoint outcomes to parity timestamps and endorsement ledgers.
    - *Poetic*: The chord sheet keeping manuscript and campaign choirs on tempo.
 
+5. **Metaquest Bridge Index** — `../metaquest_meaning_index.{yaml,json,md}`
+   - *Formal*: Harmonisiert Backbone- und Kampagnenlaternen über ein gemeinsames Dashboard.
+   - *Empirisch*: Bridge-/Shadow-Logs sichern Telemetrie- und Codex-Parität.
+   - *Poetisch*: Der Steg, auf dem Automation und Erzählung denselben Takt finden.
+
 ## What Still Needs to Arrive
 
 - **Metaquest parity brief completion** (`mq-sci-gap-001`)
@@ -43,6 +48,9 @@
   - Thread `seed/ArchivSucheUTAC/` insights and Zenodo readiness notes into outreach + manuscript appendices
     so the launch proves lineage.
   - Null guard: absence of archive reference in parity brief or press kit triggers governance review.
+- **Bridge-Dashboard Sync** (`mq-sci-gap-006`)
+  - Aktualisiere das Bridge-Dashboard bei Kampagnenmeilensteinen mit Telemetrie- und Codex-ID binnen 24h.
+  - Null guard: Stau meldet `mq-bridge-shadow-001` + `mq-sci-shadow-001`.
 
 ## Implementation Lattice
 
@@ -53,6 +61,7 @@
 | `mq-sci-gap-003` | `seed/EndorsementarXiv.pdf`, `ETHICS.md`, `docs/utac_status_alignment_v1.2.md` | Endorsement + ethics ledger refresh | `seed/Finalize_Publish.txt`, codex entry |
 | `mq-sci-gap-004` | `docs/metaquest_parity_brief.md`, `paper/`, `simulator/`, outreach assets | Parity citation audit | `docs/metaquest_parity_brief.md`, campaign shadow guard |
 | `mq-sci-gap-005` | `seed/ArchivSucheUTAC/`, `ZENODO_DESCRIPTION_v1.1.md`, manuscript appendices | Archive lineage broadcast | `docs/utac_status_alignment_v1.2.md#resonant-inventory`, codex echo |
+| `mq-sci-gap-006` | `metaquest/metaquest_meaning_index.yaml`, `docs/utac_status_alignment_v1.2.md`, `docs/outreach/` | Bridge dashboard sync | `seed/shadow_sigillin/metaquest/metaquest_shadow_index.{yaml,json,md}`, codex echo |
 
 ## Activation Hooks
 

@@ -263,6 +263,10 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 1. `docs/metaquest_parity_brief.md`
 2. `seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md`
 3. `seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml`
+4. `seed/bedeutungssigillin/metaquest/metaquest_meaning_index.{yaml,json,md}`
+5. `seed/shadow_sigillin/metaquest/metaquest_shadow_index.{yaml,json,md}`
+6. `seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.{yaml,json,md}`
+7. `seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.{yaml,json,md}`
 
 ---
 

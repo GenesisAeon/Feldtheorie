@@ -35,6 +35,11 @@
    - *Empirical*: Pulls readiness cues from `scripts/sigillin_sync.py` (planned) and endorsement ledgers.
    - *Poetic*: The score sheet keeping every launch instrument in tune.
 
+5. **Metaquest Bridge Index** — `../metaquest_meaning_index.{yaml,json,md}`
+   - *Formal*: Harmonises system automation checkpoints with campaign cadence via a shared dashboard.
+   - *Empirical*: Reads bridge/shadow timestamps to verify telemetry + codex parity.
+   - *Poetic*: The braided walkway where backbone and narrative share the same dawn.
+
 ## What Still Needs to Land
 
 - **Parity brief completion** (`mq-sys-gap-001`)
@@ -53,6 +58,9 @@
   - Bind `seed/BreakPointAnalyse/WayToGo.txt`, `seed/BreakPointAnalyse/ReaktionWayToGo.txt`, and `seed/Finalize_Publish.txt`
     into Metaquest automation notes so crisis drills stay paired with deployment scripts.
   - Null guard: Metaquest plan lacking BreakPoint references escalates `mq-sys-shadow-003`.
+- **Bridge timestamp parity** (`mq-sys-gap-006`)
+  - Mirror the bridge dashboard timestamp and codex id inside the system beacon + UTAC status matrix within 24h of changes.
+  - Null guard: drift triggers `mq-bridge-shadow-001` and `mq-sys-shadow-004`.
 
 ## Implementation Lattice
 

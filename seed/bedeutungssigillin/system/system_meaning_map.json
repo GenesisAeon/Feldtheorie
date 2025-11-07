@@ -10,8 +10,7 @@
       "beta": 4.3,
       "zeta": "impedance damped by archival scripts, preset guards, and telemetry reports"
     },
-    "resonance": "Keeps the UTAC platform skeleton disciplined so new modules inherit reproducible membranes while Metaquest beacons stay synchronised with governance and telemetry.",
-    "shadow_coupling": "../../shadow_sigillin/system/system_shadow_map.yaml"
+    "resonance": "Captures how the UTAC platform skeleton keeps σ(β(R-Θ)) disciplined so that\nnew modules inherit reproducible membranes without fragmenting meaning\nsigils. The Metaquest beacons now live inside this spine, linking light and\nshadow membranes back to governance cadences and telemetry rituals.\n"
   },
   "existing_assets": [
     {
@@ -25,7 +24,7 @@
           "REPRODUCE.md",
           "noxfile.py"
         ],
-        "logistic_coupling": "When R rises, make targets refresh indices and presets so Θ stays anchored."
+        "logistic_coupling": "When R (pending automation) rises, `make preset-guard` and `make docs-index`\nkeep Θ anchored by refreshing indices and simulator presets.\n"
       }
     },
     {
@@ -38,7 +37,7 @@
         "evidence": [
           "docs/utac_status_alignment_v1.2.md"
         ],
-        "logistic_coupling": "β=5.0 keeps activation sharp: structural changes without codex echo signal ζ(R) drift."
+        "logistic_coupling": "β=5.0 ensures sharp activation: any structural change without codex entry is\nflagged as ζ(R) drift.\n"
       }
     },
     {
@@ -51,21 +50,21 @@
         "evidence": [
           "scripts/crep_parser.py"
         ],
-        "logistic_coupling": "Schema parity keeps Θ observable whenever new sigils appear."
+        "logistic_coupling": "Schema parity ensures Θ stays observable when new sigils appear.\n"
       }
     },
     {
       "id": "sys-ops-004",
       "title": "UTAC Status Alignment Matrix",
       "location": "docs/utac_status_alignment_v1.2.md",
-      "resonance": "Aggregates readiness evidence so light/shadow sigils share the same activation ledger.",
+      "resonance": "Aggregates readiness evidence so Bedeutungs-/Shadow sigils reference the\nsame activation ledger during campaign planning.\n",
       "status": "active",
       "notes": {
         "evidence": [
           "seed/Finalisierung_Plattform.txt",
           "seed/BreakPointAnalyse/WayToGo.txt"
         ],
-        "logistic_coupling": "Provides Θ checkpoints for Metaquest folders and routes automation backlog to scripts before β steepens."
+        "logistic_coupling": "Provides Θ checkpoints for Metaquest folders; when R (automation backlog)\ngrows, the matrix routes actions to scripts and indices before β steepens.\n"
       }
     },
     {
@@ -79,7 +78,7 @@
           "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
           "seed/codexfeedback.*"
         ],
-        "logistic_coupling": "Routes Metaquest backlog into parity briefs and telemetry runs so the parent membrane responds before ζ(R) rises."
+        "logistic_coupling": "Routes Metaquest backlog into parity briefs and telemetry runs so the parent\nmembrane can respond before ζ(R) rises.\n"
       }
     },
     {
@@ -93,7 +92,21 @@
           "scripts/sigillin_sync.py (planned)",
           "seed/Finalize_Publish.txt"
         ],
-        "logistic_coupling": "Keeps Θ visible by logging telemetry timestamps, endorsement readiness, and codex cross-links whenever Metaquest assets change."
+        "logistic_coupling": "Keeps Θ visible by logging telemetry timestamps, endorsement readiness, and\ncodex cross-links whenever Metaquest assets change.\n"
+      }
+    },
+    {
+      "id": "sys-ops-007",
+      "title": "Metaquest Bridge Index",
+      "location": "../metaquest/metaquest_meaning_index.yaml",
+      "resonance": "Centralises Metaquest system↔campaign parity, ensuring both membranes share identical checkpoints.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "../metaquest/metaquest_meaning_index.md",
+          "../../shadow_sigillin/metaquest/metaquest_shadow_index.md"
+        ],
+        "logistic_coupling": "Keeps Θ observable by mirroring telemetry and BreakPoint references across\nautomation and campaign beacons; missing bridge updates trigger shadow\nguard escalation.\n"
       }
     }
   ],
@@ -189,6 +202,24 @@
         "beta": 4.6
       },
       "null_guard": "If Metaquest plan lacks BreakPoint linkage, escalate via mq-sys-shadow-003."
+    },
+    {
+      "id": "sys-gap-006",
+      "description": "Bridge dashboard parity to surface Metaquest checkpoints inside the system membrane.",
+      "target_location": [
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml",
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake"
+      ],
+      "hooks": [
+        "mq-bridge-gap-001",
+        "mq-bridge-gap-002"
+      ],
+      "threshold": {
+        "Theta": "System map references latest bridge timestamp and codex id",
+        "beta": 4.7
+      },
+      "null_guard": "If bridge timestamp absent, trigger mq-bridge-shadow-001 and sys-shadow-004."
     }
   ],
   "activation_hooks": [

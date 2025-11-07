@@ -69,6 +69,19 @@ alerts:
     guard:
       metric: 'sentinel_sync'
       threshold: 'true vor Metaquest-Kommunikation'
+  - id: sci-shadow-006
+    risk: 'Metaquest Bridge-Dashboard veraltet; Kampagnenzeitplan verliert Kopplung zum System.'
+    signal:
+      - 'seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md timestamp >24h älter als letzter Codex-Eintrag.'
+      - 'Kampagnen-Sigillin meldet andere Telemetrie-/Codex-ID als systemisches Pendant.'
+      - 'docs/utac_status_alignment_v1.2.md#metaquest-handshake ohne Bridge-Row.'
+    fallout: 'Öffentlichkeitsarbeit und Automation laufen auseinander; Θ verschwindet aus der Erzählung.'
+    mitigation:
+      - 'Bridge-Dashboard aktualisieren, Timestamp + Codex-ID in Kampagnen-Sigillin und UTAC-Matrix spiegeln.'
+      - 'Telemetrielauf nachholen, falls Zeitstempel divergieren.'
+    guard:
+      metric: 'bridge freshness'
+      threshold: '≤24h Differenz zu Codexeintrag'
 playbooks:
   - trigger: 'sci-shadow-001'
     response:
@@ -88,3 +101,7 @@ playbooks:
     response:
       - 'Pflege Linum-Sentinel-Sigille, committe Daten + Notebook, erweitere Paritätsbrief.'
       - 'Codexeintrag schreiben und Shadow-Signale auf Status completed setzen.'
+  - trigger: 'sci-shadow-006'
+    response:
+      - 'Bridge-Dashboard + Kampagnen-Sigillin aktualisieren, Telemetrie synchronisieren.'
+      - 'Codex + UTAC-Statusmatrix sofort ergänzen; ggf. Telemetrie wiederholen.'

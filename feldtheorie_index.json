@@ -257,8 +257,24 @@
       ],
       "metaquest_parity": [
         "docs/metaquest_parity_brief.md",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.json",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.json",
         "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md",
-        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml"
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.json",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.json",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.md",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.json",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.md",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md"
       ],
       "meta_regression": [
         "analysis/beta_drivers_meta_regression.py",

@@ -85,6 +85,19 @@ existing_assets:
       logistic_coupling: |
         Keeps Θ visible by logging telemetry timestamps, endorsement readiness, and
         codex cross-links whenever Metaquest assets change.
+  - id: sys-ops-007
+    title: Metaquest Bridge Index
+    location: '../metaquest/metaquest_meaning_index.yaml'
+    resonance: 'Centralises Metaquest system↔campaign parity, ensuring both membranes share identical checkpoints.'
+    status: active
+    notes:
+      evidence:
+        - ../metaquest/metaquest_meaning_index.md
+        - ../../shadow_sigillin/metaquest/metaquest_shadow_index.md
+      logistic_coupling: |
+        Keeps Θ observable by mirroring telemetry and BreakPoint references across
+        automation and campaign beacons; missing bridge updates trigger shadow
+        guard escalation.
 needed_resonances:
   - id: sys-gap-001
     description: 'Automated mirroring between Bedeutungs-/Shadow directories and Ordnungs indices.'
@@ -153,6 +166,19 @@ needed_resonances:
       Theta: 'Metaquest beacon references current BreakPoint ritual + publication plan'
       beta: 4.6
     null_guard: 'If Metaquest plan lacks BreakPoint linkage, escalate via mq-sys-shadow-003.'
+  - id: sys-gap-006
+    description: 'Bridge dashboard parity to surface Metaquest checkpoints inside the system membrane.'
+    target_location:
+      - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+    hooks:
+      - mq-bridge-gap-001
+      - mq-bridge-gap-002
+    threshold:
+      Theta: 'System map references latest bridge timestamp and codex id'
+      beta: 4.7
+    null_guard: 'If bridge timestamp absent, trigger mq-bridge-shadow-001 and sys-shadow-004.'
 activation_hooks:
   - trigger: 'New Bedeutungs-Sigillin directory added'
     response: 'Update seed_index.*, feldtheorie_index.*, run parser → codex entry.'
@@ -169,8 +195,8 @@ null_model_reference:
       condition: 'difference between directory listing and seed_index.* <= 0'
     - metric: 'codex sync'
       condition: 'latest commit referencing Bedeutungs-Sigillin also updates codexfeedback.*'
-  - metric: 'Metaquest telemetry'
-    condition: 'sigillin_sync report references Metaquest parity within 1 sprint'
+    - metric: 'Metaquest telemetry'
+      condition: 'sigillin_sync report references Metaquest parity within 1 sprint'
 implementation_lattice:
   - gap_id: sys-gap-001
     implementation_sites:

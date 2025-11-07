@@ -60,6 +60,18 @@ existing_assets:
         - seed/Finalize_Publish.txt
       logistic_coupling: |
         Provides Θ checkpoints for telemetry timestamp, endorsement ledger, and codex entry whenever Metaquest assets update.
+  - id: mq-sys-asset-005
+    title: Metaquest Bridge Index
+    location: '../metaquest_meaning_index.yaml'
+    resonance: 'Synchronises system automation checkpoints with campaign cadence via shared bridge dashboard.'
+    status: active
+    notes:
+      evidence:
+        - ../metaquest_meaning_index.md
+        - ../../shadow_sigillin/metaquest/metaquest_shadow_index.md
+      logistic_coupling: |
+        Ensures telemetry timestamps, codex ids, and BreakPoint notes land in both
+        beacons; stale bridge entries escalate via mq-bridge-shadow-001.
 needed_resonances:
   - id: mq-sys-gap-001
     description: 'Populate parity brief with telemetry timestamp, simulator playlist, endorsement ledger, and codex ID.'
@@ -112,6 +124,16 @@ needed_resonances:
       Theta: 'Metaquest parity notes cite latest BreakPoint ritual within codex entry'
       beta: 4.5
     null_guard: 'If BreakPoint references absent, escalate to mq-sys-shadow-003.'
+  - id: mq-sys-gap-006
+    description: 'Mirror bridge dashboard timestamp + codex id inside the system beacon.'
+    target_location:
+      - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+    threshold:
+      Theta: 'system map cites latest bridge telemetry timestamp within 24h'
+      beta: 4.7
+    null_guard: 'Bridge timestamp drift triggers mq-bridge-shadow-001 and mq-sys-shadow-004.'
 activation_hooks:
   - trigger: 'New Metaquest asset created'
     response: 'Update trilayer files, refresh indices, log codex entry, cite status matrix.'
@@ -126,8 +148,8 @@ null_model_reference:
       condition: 'Metaquest folders listed in seed_index.* and feldtheorie_index.*'
     - metric: 'codex echo'
       condition: 'Latest Metaquest change accompanied by codexfeedback entry referencing this map'
-  - metric: 'telemetry cadence'
-    condition: 'sigillin_sync report timestamp ≤ 1 sprint old'
+    - metric: 'telemetry cadence'
+      condition: 'sigillin_sync report timestamp ≤ 1 sprint old'
 implementation_lattice:
   - gap_id: mq-sys-gap-001
     implementation_sites:

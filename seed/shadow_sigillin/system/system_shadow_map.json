@@ -83,6 +83,24 @@
         "metric": "parity brief status",
         "threshold": "true before automation tasks close"
       }
+    },
+    {
+      "id": "sys-shadow-005",
+      "risk": "Metaquest bridge dashboard stale; system beacon lacks shared telemetry timestamp.",
+      "symptom": [
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md timestamp >24h older than latest codex entry.",
+        "System + campaign beacons cite different telemetry timestamps or codex ids.",
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake missing bridge dashboard row."
+      ],
+      "consequence": "Automation and outreach desynchronise; Θ becomes opaque ahead of launch.",
+      "mitigation": [
+        "Refresh bridge dashboard, propagate timestamp + codex id to system/campaign meaning maps.",
+        "Log remediation in codex and UTAC status matrix; rerun telemetry if drift persists."
+      ],
+      "monitoring": {
+        "metric": "bridge freshness",
+        "threshold": "≤24h delta between bridge + codex timestamps"
+      }
     }
   ],
   "playbooks": [
@@ -112,6 +130,13 @@
       "response": [
         "Freeze Metaquest automation tasks, publish parity brief, refresh indices.",
         "Update codex and status matrix with parity timestamp."
+      ]
+    },
+    {
+      "trigger": "sys-shadow-005 alert",
+      "response": [
+        "Update bridge dashboard + system beacon to restore shared telemetry timestamp.",
+        "Cross-link remediation in docs/utac_status_alignment_v1.2.md and codex entry."
       ]
     }
   ]

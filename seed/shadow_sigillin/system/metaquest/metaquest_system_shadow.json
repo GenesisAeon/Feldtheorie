@@ -66,6 +66,24 @@
         "metric": "Δindex parity",
         "threshold": "≤ 0 after remediation commit"
       }
+    },
+    {
+      "id": "mq-sys-shadow-004",
+      "risk": "Bridge dashboard stale; system beacon missing shared telemetry timestamp.",
+      "symptom": [
+        "metaquest_meaning_index.md timestamp >24h older than latest codex entry.",
+        "System/campaign beacons cite different telemetry timestamps or codex ids.",
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake lacks bridge dashboard update."
+      ],
+      "consequence": "Metaquest launch automation loses Θ alignment with outreach cadence.",
+      "mitigation": [
+        "Refresh bridge dashboard, propagate timestamp + codex id to meaning maps, log codex + matrix update.",
+        "Trigger telemetry export if timestamps drift."
+      ],
+      "monitoring": {
+        "metric": "bridge freshness",
+        "threshold": "≤24h delta between bridge + codex timestamps"
+      }
     }
   ],
   "playbooks": [
@@ -88,6 +106,13 @@
       "response": [
         "Perform index refresh + parser check.",
         "Record results in codex and parent meaning map null-guard notes."
+      ]
+    },
+    {
+      "trigger": "mq-sys-shadow-004 raised",
+      "response": [
+        "Update bridge dashboard, sync telemetry + codex references across meaning maps.",
+        "Document remediation in UTAC status matrix and codex entry."
       ]
     }
   ]
