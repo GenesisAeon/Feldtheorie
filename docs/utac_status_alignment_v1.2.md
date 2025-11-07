@@ -27,7 +27,7 @@
 2. **Meta-Regression Refresh:** `analysis/beta_meta_regression_v2.py` should re-open the regression with new covariates, bootstrap confidence, and cross-domain diagnostics referenced in `seed/NextStep.txt` and `seed/Manuskriptfinalisierung und Kampagnenstart.pdf`.
 3. **Sigillin Schema & Parser:** Schema v0.2.0 plus quartet exemplars now live under `seed/sigillin/`, and `scripts/crep_parser.py` ingests them with CREP validation. Next step: wire parser output into automation (index recount + codex hooks).
 4. **Index Automation Hooks:** Extend Ordnungs-Sigillin maintenance (`scripts/archive_sigillin.py`) to auto-increment counts when new docs/data appear, preventing drift like the previous `docs_index.*` lag.
-5. **Outlier Validation Loop:** Establish a focused analysis (e.g., `analysis/outlier_beta_review.py`) using the flagged Amazon & urban heat datasets noted in `seed/ArchivSucheUTAC/` to test whether β≫10 cases are instrumentation artefacts or genuine regime splits.
+5. **Outlier Validation Loop:** `analysis/outlier_beta_review.py` now sweeps the flagged Amazon & urban heat datasets (per `seed/ArchivSucheUTAC/`) and exports instrumentation flags; extend the loop with additional datasets + field notes to resolve the remaining `requires_follow_up` cases.
 6. **Manuscript v1.1.2 Finalisation:** Align the LaTeX pipeline under `paper/` with the governance addenda and ensure the arXiv-ready abstract reflects the new Sigillin net storyline; cross-check with `seed/Manuskriptfinalisierung und Kampagnenstart.pdf` and `seed/FinalerPlan.txt`.
 7. **Universal β ledger sealed:** `analysis/universal_beta_extractor.py --mode validate` now exports `analysis/results/universal_beta_summary.json`, keeping ΔAIC≥10 and canonical β band compliance on record for Zenodo v1.2.
 
@@ -40,7 +40,7 @@
 | β Meta-Regression v2 | `analysis/` | new notebook + script, update `docs/validation_report_*` | Document R², ΔAIC, bootstrap CI; cross-link to `seed/codexfeedback.*` |
 | Sigillin schema & parser | `seed/sigillin/`, `scripts/`, `seed/codexfeedback.*` | YAML schema + example quartet + CREP parser CLI | Feed parser summaries into codex updates and automate parity alerts |
 | Index automation | `scripts/archive_sigillin.py`, `docs/docs_index.*` | add CLI flag for recount + status ledger | Use `tests/` to enforce parity guard |
-| Outlier review | `analysis/`, `data/socio_ecology/` | import new datasets, align with `docs/field_type_classification_v1.2.md` (future) | Provide falsification notes + ΔAIC comparisons |
+| Outlier review | `analysis/`, `data/socio_ecology/` | `analysis/outlier_beta_review.py` ledger + future dataset imports | Provide falsification notes, instrumentation flags, ΔAIC comparisons |
 | Manuscript sync | `paper/`, `arxiv_submission/` | integrate governance + Sigillin appendices | Ensure `ZENODO_UPDATE_GUIDE.md` steps satisfied |
 
 ---
