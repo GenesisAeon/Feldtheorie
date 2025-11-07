@@ -30,17 +30,25 @@
      matrix.
   - *Poetic*: The night watch reminding us when the lanterns flicker.
 
+4. **Metaquest Parity Brief** — `docs/metaquest_parity_brief.md`
+   - *Formal*: Condenses `mq-parity-001`…`004` so parity telemetry, simulator playlists, and codex hooks stay aligned.
+   - *Empirical*: Pulls readiness cues from `scripts/sigillin_sync.py` (planned) and endorsement ledgers.
+   - *Poetic*: The score sheet keeping every launch instrument in tune.
+
 ## What Still Needs to Land
 
-- **Metaquest parity brief** (`mq-sys-gap-001`)
-  - Draft and reference the brief in `docs/utac_status_alignment_v1.2.md` and the
-    codex before launch freeze.
+- **Parity brief completion** (`mq-sys-gap-001`)
+  - Populate the brief with telemetry timestamp, simulator playlist, endorsement ledger, and codex ID (see `mq-parity-001`…`004`).
+  - Archive updates in codex + UTAC status matrix.
 - **Telemetry export** (`mq-sys-gap-002`)
   - Implement `scripts/sigillin_sync.py` parity metrics and surface them in
     simulator presets and docs.
 - **Index automation** (`mq-sys-gap-003`)
   - Extend `scripts/archive_sigillin.py` so Metaquest folders appear in
     `seed_index.*` and `feldtheorie_index.*` within 24h.
+- **Parity ledger sync** (`mq-sys-gap-004`)
+  - Ensure Bedeutungs-/Shadow sigils and indices cite the latest parity brief update.
+  - Null guard: no codex reference or timestamp → escalate to system shadow guard.
 
 ## Activation Hooks
 

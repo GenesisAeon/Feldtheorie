@@ -73,6 +73,18 @@ existing_assets:
       logistic_coupling: |
         Routes Metaquest backlog into parity briefs and telemetry runs so the parent
         membrane can respond before ζ(R) rises.
+  - id: sys-ops-006
+    title: Metaquest Parity Brief
+    location: docs/metaquest_parity_brief.md
+    resonance: 'Condenses mq-parity tasks so automation, indices, and codex hooks activate together.'
+    status: active
+    notes:
+      evidence:
+        - scripts/sigillin_sync.py (planned)
+        - seed/Finalize_Publish.txt
+      logistic_coupling: |
+        Keeps Θ visible by logging telemetry timestamps, endorsement readiness, and
+        codex cross-links whenever Metaquest assets change.
 needed_resonances:
   - id: sys-gap-001
     description: 'Automated mirroring between Bedeutungs-/Shadow directories and Ordnungs indices.'
@@ -111,6 +123,21 @@ needed_resonances:
       Theta: 'shadow parity report generated each release sprint'
       beta: 4.6
     null_guard: 'If handshake report absent for >1 sprint, escalate to sci-shadow-002 and mq-sys-shadow-002.'
+  - id: sys-gap-004
+    description: 'Maintain parity brief alignment with Bedeutungs-/Shadow sigils and index refresh logs.'
+    target_location:
+      - docs/metaquest_parity_brief.md
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+    hooks:
+      - mq-parity-001
+      - mq-parity-002
+      - mq-parity-003
+      - mq-parity-004
+    threshold:
+      Theta: 'parity brief lists telemetry timestamp + codex id for latest update'
+      beta: 4.7
+    null_guard: 'Missing timestamp or codex reference triggers sys-shadow-002 and mq-sys-shadow-004 review.'
 activation_hooks:
   - trigger: 'New Bedeutungs-Sigillin directory added'
     response: 'Update seed_index.*, feldtheorie_index.*, run parser → codex entry.'

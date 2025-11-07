@@ -8,7 +8,7 @@
 
 ## 🎯 Was ist das?
 
-Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **163 katalogisierte Dateien** über **6 Hauptverzeichnisse**!
+Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **164 katalogisierte Dateien** über **6 Hauptverzeichnisse**!
 
 ```
 🌳 Feldtheorie (UTAC + Sigillin)
@@ -17,10 +17,10 @@ Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **163 katalogis
 ├── 📊 analysis/    32 scripts (Fits, Batch, Meta-Regression)
 ├── 📦 data/        43 files   (7 Domänen, β-Estimates)
 ├── 🔬 models/      10 models  (Solver, ODE-Systeme)
-├── 📚 docs/         9 docs    (Theory, Falsifiability)
+├── 📚 docs/        12 docs    (Theory, Falsifiability, Parity)
 └── 🗄️  archive/      0 items   (Sigillin Cold Storage)
 
-Total: 163 files | 18 Trilayer-Indizes (YAML+JSON+MD)
+Total: 164 files | 18 Trilayer-Indizes (YAML+JSON+MD)
 ```
 
 ---
@@ -157,7 +157,7 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 ---
 
 ### 📚 **docs/** - Living Documentation Tapestry
-**9 Markdown-Docs** | **4 Kategorien**
+**12 Markdown-Docs** | **4 Kategorien**
 📍 Index: `docs/docs_index.{yaml,json,md}`
 
 **Was:** UTAC Theory, Falsifiability, Applications
@@ -166,6 +166,7 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 - `utac_theory_core.md` - Theorie-Fundament
 - `utac_falsifiability.md` - **Popper-konform!**
 - `field_type_classification_v1.1.md` - 5 Systemtypen
+- `metaquest_parity_brief.md` - Parität für System + Kampagne sichern
 
 ---
 
@@ -257,14 +258,19 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 2. `data/derived/domain_covariates.csv`
 3. `seed/FinalerPlan.txt` (Ziel: R² > 0.7)
 
+### **Metaquest-Parität sichern:**
+1. `docs/metaquest_parity_brief.md`
+2. `seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md`
+3. `seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml`
+
 ---
 
 ## 📊 Projekt-Statistik
 
-```yaml
-Directories Indexed: 6
-Files Cataloged: 163
-Trilayer Indices: 18 (6 YAML, 6 JSON, 6 MD)
+  ```yaml
+  Directories Indexed: 6
+  Files Cataloged: 164
+  Trilayer Indices: 18 (6 YAML, 6 JSON, 6 MD)
 
 UTAC Status:
   Version: 1.1.2
@@ -284,7 +290,7 @@ Sigillin Status:
 
 ## 🌊 Die Essenz
 
-> **"163 Dateien. 6 Verzeichnisse. Ein Trilayer-System."**
+> **"164 Dateien. 6 Verzeichnisse. Ein Trilayer-System."**
 
 > **"Von Wei's PaLM (β=3.47) bis Urban Heat (β=16.3) - das Spektrum ist REAL."**
 

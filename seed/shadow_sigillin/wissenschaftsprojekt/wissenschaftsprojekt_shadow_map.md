@@ -18,9 +18,9 @@
    - *Remedy*: Re-run BreakPoint rehearsal, log decision path, engage ethics check.
 
 3. **sci-shadow-003 — Parity brief absent**
-   - *Signal*: Docs or codex lack Metaquest handshake entry for a sprint.
+   - *Signal*: `docs/metaquest_parity_brief.md` missing telemetry timestamp or codex id; docs/codex silent for >1 sprint.
    - *Fallout*: Launch desynchronises; shadow warnings stay invisible.
-   - *Remedy*: Draft parity brief, cross-link meaning/shadow maps, notify stewards.
+   - *Remedy*: Fill parity brief fields, cross-link meaning/shadow maps, notify stewards.
 
 4. **sci-shadow-004 — Storyboard drift**
    - *Signal*: Metaquest beacon flags gap; manuscript vs simulator demos diverge.

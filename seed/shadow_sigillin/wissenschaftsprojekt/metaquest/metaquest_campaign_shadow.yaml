@@ -14,11 +14,12 @@ alerts:
   - id: mq-sci-shadow-001
     risk: 'Metaquest parity brief missing from docs/codex before launch communication.'
     signal:
-      - 'docs/utac_status_alignment_v1.2.md lacks Metaquest parity reference.'
+      - 'docs/metaquest_parity_brief.md missing telemetry timestamp or codex id.'
+      - 'docs/utac_status_alignment_v1.2.md lacks Metaquest parity reference for >1 sprint.'
       - 'seed/codexfeedback.* without Metaquest entry in last sprint.'
     fallout: 'Narrative loses parity; β overshoots and endorsements hesitate.'
     mitigation:
-      - 'Draft parity brief; cross-link to system + shadow sigils.'
+      - 'Fill parity brief fields; cross-link to system + shadow sigils.'
       - 'Delay announcements until codex + docs updated.'
     guard:
       metric: 'parity brief status'

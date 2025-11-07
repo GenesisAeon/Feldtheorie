@@ -34,11 +34,12 @@ alerts:
   - id: sci-shadow-003
     risk: 'Metaquest parity brief missing from docs + codex before launch freeze.'
     signal:
-      - 'docs/utac_status_alignment_v1.2.md lacks Metaquest handshake entry.'
+      - 'docs/metaquest_parity_brief.md missing telemetry timestamp or codex id.'
+      - 'docs/utac_status_alignment_v1.2.md lacks Metaquest handshake entry for >1 sprint.'
       - 'seed/codexfeedback.* missing reference to Bedeutungs-/Shadow parity report.'
     fallout: 'Launch narrative desynchronises; shadow warnings stay invisible and β overshoots.'
     mitigation:
-      - 'Draft parity brief immediately; cross-reference meaning + shadow maps.'
+      - 'Fill parity brief fields immediately; cross-reference meaning + shadow maps.'
       - 'Log remediation timeline in codex and notify campaign stewards.'
     guard:
       metric: 'parity brief status'

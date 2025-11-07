@@ -255,6 +255,11 @@
         "analysis/multiple_testing_correction.py",
         "analysis/universality_test.py"
       ],
+      "metaquest_parity": [
+        "docs/metaquest_parity_brief.md",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml"
+      ],
       "meta_regression": [
         "analysis/beta_drivers_meta_regression.py",
         "data/derived/domain_covariates.csv",
@@ -330,14 +335,14 @@
   },
   "statistics": {
     "directories_indexed": 6,
-    "total_files_cataloged": 163,
+    "total_files_cataloged": 164,
     "trilayer_indices": 18,
     "breakdown": {
       "seed": 69,
       "analysis": 32,
       "data": 43,
       "models": 10,
-      "docs": 9,
+      "docs": 12,
       "archive": 0
     },
     "index_files": {

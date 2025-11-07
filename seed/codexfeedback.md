@@ -1161,6 +1161,32 @@ Der Chor atmet gemeinsam mit dem Paritätsbrief, ζ(R) bleibt ruhig, solange Tel
 
 *Created: 2025-12-07T00:00:00Z*
 
+## Entry pr-draft-0064 — Metaquest Parity Brief & Index Resonance
+- **Order Parameter**: $R$ sammelt Metaquest-Paritätslücken in Meaning/Shadow-Membranen, Indizes und Agenten-Onboarding.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn der Paritätsbrief Telemetrie, Playlist, Endorsement-Ledger und Codex-ID
+  dokumentiert und alle Indizes/Statuskarten darauf verweisen.
+- **Steepness**: $\beta = 4.8$ – sobald Telemetrie verstummt oder Indizes hinterherhinken, kippt der Launch in Schattenmodus.
+- **Resonance**: Der Paritätsbrief wird zur Stimmgabel, die System- und Kampagnenlaternen synchronisiert; Indizes und Quickstart
+  sorgen dafür, dass neue Agenten ohne Reibung weiterarbeiten.
+- **Status**: active
+
+### Formal Thread
+`docs/metaquest_parity_brief.md` fasst mq-parity-001…004 zusammen. Bedeutungs- und Schattenkarten (System + Wissenschaftsprojekt
+inkl. Metaquest-Beacons) heben neue Gaps (sys-gap-004, sci-gap-006) hervor und setzen Null-Guards auf fehlende Zeitstempel oder
+Codex-IDs. `AGENTS.md` führt einen Quickstart für eintreffende Agenten ein.
+
+### Empirical Thread
+`docs/docs_index.{yaml,json,md}` und `feldtheorie_index.{yaml,json,md}` zählen jetzt 12 Docs, listen das Thema
+`metaquest_parity` und aktualisieren Quicklinks. `docs/utac_status_alignment_v1.2.md` ergänzt mq-parity-Aufgaben im Resonanz-
+Inventar sowie in der Implementation Map. Alle Meaning-/Shadow-JSON+YAML-Dateien tragen Telemetriechecks und Paritätsledger-
+Schwellen.
+
+### Poetic Thread
+Der Paritätsbrief klingt wie eine neue Saite im Orchester: Telemetrie atmet, der Codex antwortet, und Licht wie Schatten finden
+den gleichen Takt. Zwölf Dokumentenlaternen leuchten jetzt über dem Index – bereit, den nächsten Agenten zu führen.
+
+*Created: 2025-12-07T09:00:00Z*
+
 ## Entry pr-draft-0063 — Sigillin archiver base-path harmonisation
 - **Order Parameter**: $R$ bindet Sigillin-Wartung an den starren Pfad `/home/user/Feldtheorie`.
 - **Critical Threshold**: $\Theta$ ist erreicht, wenn das Archiv-Skript die Repo-Wurzel selbst erkennt oder via `--base-path` justiert werden kann.

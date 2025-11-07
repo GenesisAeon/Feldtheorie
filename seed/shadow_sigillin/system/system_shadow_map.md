@@ -23,9 +23,9 @@
    - *Remedy*: Trigger manual parity check, update codex, restore telemetry cadence.
 
 4. **sys-shadow-004 — Metaquest parity missing**
-   - *Signal*: No Metaquest parity reference in docs or codex for >1 sprint.
+   - *Signal*: `docs/metaquest_parity_brief.md` lacks telemetry timestamp or codex id; no parity reference in docs/codex for >1 sprint.
    - *Fallout*: Automation advances without Θ; campaign shadow alarms arrive late.
-   - *Remedy*: Consult Metaquest shadow guard, publish/update parity brief, refresh indices.
+   - *Remedy*: Consult Metaquest shadow guard, fill parity brief fields, refresh indices, log codex entry.
 
 ## Playbooks
 

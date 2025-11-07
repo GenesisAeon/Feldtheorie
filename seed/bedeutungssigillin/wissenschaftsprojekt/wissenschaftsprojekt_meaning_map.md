@@ -34,6 +34,11 @@
      and codex echoes.
    - *Poetic*: The launch lantern tying manuscript, demos, and outreach into one cadence.
 
+6. **Metaquest Parity Brief** — `docs/metaquest_parity_brief.md`
+   - *Formal*: Summarises `mq-parity-001`…`004`, binding telemetry, demos, endorsements, and codex lineage.
+   - *Empirical*: Pulls readiness cues from `scripts/sigillin_sync.py` (planned) and `seed/Finalize_Publish.txt` checklists.
+   - *Poetic*: The chord chart making sure campaign, manuscript, and demos strike the same note.
+
 ## What Still Needs to Arrive
 
 - **Safety-delay infusion** (`sci-gap-001`)
@@ -42,10 +47,14 @@
   - Extend `feldtheorie_index.*` and press kit to bridge Bedeutungs/Shadow narratives.
 - **Simulator storyboard handshake** (`sci-gap-003`)
   - Lock demo playlist + narrative script with ΔAIC beacons.
-- **Metaquest parity brief** (`sci-gap-004`)
-  - Publish tri-layer brief linking light/shadow sigils, cite it in docs/codex before launch.
+- **Metaquest parity brief completion** (`sci-gap-004`)
+  - Fill the brief with telemetry timestamp, simulator playlist, endorsement ledger, and codex id (`mq-parity-001`…`004`).
+  - Cross-link updates into Bedeutungs-/Shadow sigils and UTAC status ledger.
 - **β meta-regression infusion** (`sci-gap-005`)
   - Bring v2 results into manuscript tables alongside safety-delay context.
+- **Parity storytelling echo** (`sci-gap-006`)
+  - Ensure outreach, manuscript, and simulator scripts cite the latest parity brief revision and codex id.
+  - Null guard: outreach asset lacking parity reference triggers campaign shadow guard.
 
 ## Activation Sequence
 

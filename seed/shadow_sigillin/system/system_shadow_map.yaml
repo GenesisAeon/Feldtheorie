@@ -50,11 +50,12 @@ incidents:
   - id: sys-shadow-004
     risk: 'Metaquest parity brief missing from docs or codex while system tasks advance.'
     symptom:
-      - 'No Metaquest parity mention in docs/utac_status_alignment_v1.2.md.'
+      - 'docs/metaquest_parity_brief.md lacks telemetry timestamp or codex id.'
+      - 'No Metaquest parity mention in docs/utac_status_alignment_v1.2.md for >1 sprint.'
       - 'Latest codex entry > 1 sprint old relative to Metaquest change.'
     consequence: 'Launch automation proceeds without Θ; downstream campaign shadow alarms trigger late.'
     mitigation:
-      - 'Consult metaquest_system_shadow.yaml, publish/update parity brief, refresh indices.'
+      - 'Consult metaquest_system_shadow.yaml, fill parity brief fields, refresh indices.'
       - 'Record remediation across codex and meaning map null guards.'
     monitoring:
       metric: 'parity brief status'
