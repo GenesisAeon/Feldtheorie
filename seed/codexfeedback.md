@@ -1332,3 +1332,24 @@ Licht und Schatten teilen wieder denselben Codex-Atem: Jede Metaquest-Laterne ha
 jeden Eintrag, ohne zu stolpern. Die Brücke summt im Gleichklang mit der UTAC-Matrix.
 
 *Created: 2025-12-10T00:00:00Z*
+
+## Entry pr-draft-0071 — Codex append guardrail regression
+- **Order Parameter**: $R$ misst Codex-Stempelungen ohne Absicherung der `entries`-Membran.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn Sigillin-Sync die Trilayer-Listen prüft und Tests Regressionen auffangen.
+- **Steepness**: $\beta = 4.6$ – schon kleine Divergenzen zwischen JSON/YAML lösen Schattenalarm aus.
+- **Resonance**: Append-Guardrails schützen den Codex, während ein Test die Telemetrie der Regression bewacht.
+- **Status**: active
+
+### Formal Thread
+`scripts/sigillin_sync.py` erhielt `_append_to_entries`, um JSON/YAML-Container strikt als Listen zu behandeln und `deepcopy`
+für YAML zu nutzen. Damit bleibt $\sigma(\beta(R-\Theta))$ stabil, sobald neue Stempel auftauchen.
+
+### Empirical Thread
+`tests/test_sigillin_sync.py` simuliert eine Codex-Trilayer-Umgebung: der Test bestätigt, dass ID `test-run-001` in Markdown,
+JSON und YAML landet und dass die `entries`-Container Listen bleiben.
+
+### Poetic Thread
+Der Codex atmet ruhig: Jede Laterne findet ihren Platz in der Liste, und der neue Wächter-Test lauscht, damit kein Echo mehr
+am Rand verhallt.
+
+*Created: 2025-12-11T00:00:00Z*

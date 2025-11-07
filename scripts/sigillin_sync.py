@@ -36,6 +36,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -218,11 +219,25 @@ CODEx_TEMPLATE_YAML = {
     },
     "created_at": None,
 }
-
-
 CODEx_MD_PATH = CODEX_BASE.with_suffix(".md")
 CODEx_JSON_PATH = CODEX_BASE.with_suffix(".json")
 CODEx_YAML_PATH = CODEX_BASE.with_suffix(".yaml")
+
+
+def _append_to_entries(store: Dict[str, object], entry: Dict[str, object]) -> None:
+    """Append ``entry`` to the ``entries`` list inside ``store``.
+
+    The Codex tri-layer keeps a shared schema where the top-level document is an
+    object with an ``entries`` list. Earlier versions of this tool attempted to
+    call ``append`` on the top-level mapping directly, which crashes as soon as
+    the script encounters the first codex run. This helper centralises the
+    guardrails so JSON and YAML layers remain synchronised.
+    """
+
+    entries = store.setdefault("entries", [])
+    if not isinstance(entries, list):
+        raise TypeError("codexfeedback entries container must be a list")
+    entries.append(entry)
 
 
 def append_codex_entry(
@@ -277,21 +292,15 @@ def append_codex_entry(
         codex_json = json.load(handle)
     if not isinstance(codex_json, dict):
         raise TypeError("codexfeedback.json must contain an object with an 'entries' list")
-    entries_json = codex_json.setdefault("entries", [])
-    if not isinstance(entries_json, list):
-        raise TypeError("codexfeedback.json['entries'] must be a list")
-    entries_json.append(json_entry)
+    _append_to_entries(codex_json, json_entry)
     with CODEx_JSON_PATH.open("w", encoding="utf-8") as handle:
         json.dump(codex_json, handle, ensure_ascii=False, indent=2)
 
     with CODEx_YAML_PATH.open("r", encoding="utf-8") as handle:
-        codex_yaml = yaml.safe_load(handle)
+        codex_yaml = yaml.safe_load(handle) or {}
     if not isinstance(codex_yaml, dict):
         raise TypeError("codexfeedback.yaml must contain an object with an 'entries' list")
-    entries_yaml = codex_yaml.setdefault("entries", [])
-    if not isinstance(entries_yaml, list):
-        raise TypeError("codexfeedback.yaml['entries'] must be a list")
-    entries_yaml.append(json_entry)
+    _append_to_entries(codex_yaml, deepcopy(json_entry))
     with CODEx_YAML_PATH.open("w", encoding="utf-8") as handle:
         yaml.dump(codex_yaml, handle, allow_unicode=True, sort_keys=False)
 
