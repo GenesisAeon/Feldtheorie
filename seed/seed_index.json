@@ -886,14 +886,15 @@
         "bedeutungssigillin",
         "system",
         "automation",
-        "codex"
+        "codex",
+        "metaquest"
       ],
-      "description": "Bedeutungs-Sigillin für die Systemebene: kartiert Makefile-, Codex- und Schema-Resonanzen und benennt Lücken (Index-Automatisierung, Codex-Guards).",
+      "description": "Bedeutungs-Sigillin für die Systemebene: kartiert Makefile-, Codex-, Schema- und Metaquest-Resonanzen; benennt Lücken (Index-Automatisierung, Codex-Guards, Telemetrie).",
       "temporal": {
         "created": "2025-12-05T00:00:00Z",
-        "modified": "2025-12-05T00:00:00Z",
-        "version": "0.1.0",
-        "change_count": 1
+        "modified": "2025-12-07T00:00:00Z",
+        "version": "0.3.0",
+        "change_count": 2
       },
       "references": [
         "bedeutungssigillin/system/system_meaning_map.json",
@@ -912,14 +913,15 @@
         "shadow",
         "system",
         "codex-guard",
-        "index-drift"
+        "index-drift",
+        "metaquest"
       ],
-      "description": "Schatten-Sigillin zur Frühwarnung vor Index-Drift und fehlenden Codex-Updates; enthält Playbooks und Monitoring-Metriken.",
+      "description": "Schatten-Sigillin zur Frühwarnung vor Index-Drift, fehlenden Codex-Updates und Metaquest-Paritätslücken; enthält Playbooks und Monitoring-Metriken.",
       "temporal": {
         "created": "2025-12-05T00:00:00Z",
-        "modified": "2025-12-05T00:00:00Z",
-        "version": "0.1.0",
-        "change_count": 1
+        "modified": "2025-12-07T00:00:00Z",
+        "version": "0.3.0",
+        "change_count": 2
       },
       "references": [
         "shadow_sigillin/system/system_shadow_map.json",
@@ -938,14 +940,14 @@
         "bedeutungssigillin",
         "kampagne",
         "manuskript",
-        "τ*-integration"
+        "metaquest"
       ],
-      "description": "Bedeutungs-Sigillin für Manuskript- und Kampagnenarbeit; verknüpft BreakPoint-Rituale, Status-Matrix und offene Resonanzlücken.",
+      "description": "Bedeutungs-Sigillin für Manuskript- und Kampagnenarbeit; verknüpft BreakPoint-Rituale, Status-Matrix, Metaquest-Beacon und offene Resonanzlücken.",
       "temporal": {
         "created": "2025-12-05T00:00:00Z",
-        "modified": "2025-12-05T00:00:00Z",
-        "version": "0.1.0",
-        "change_count": 1
+        "modified": "2025-12-07T00:00:00Z",
+        "version": "0.3.0",
+        "change_count": 2
       },
       "references": [
         "bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.json",
@@ -959,19 +961,18 @@
       "category": "synthesis",
       "type": "shadow-sigillin",
       "status": "active",
-      "relevance": "medium",
+      "relevance": "high",
       "keywords": [
         "shadow",
         "kampagne",
-        "breakpoints",
-        "τ*-warnung"
+        "metaquest"
       ],
-      "description": "Schatten-Sigillin für Kampagnenrisiken: überwacht τ*-Stille und ausgelassene BreakPoint-Rituale und liefert Stop-Playbooks.",
+      "description": "Schatten-Sigillin zur Kampagnen-Triage (τ*-Gaps, BreakPoint-Verstöße, Metaquest-Parität, Storyboard-Drift).",
       "temporal": {
         "created": "2025-12-05T00:00:00Z",
-        "modified": "2025-12-05T00:00:00Z",
-        "version": "0.1.0",
-        "change_count": 1
+        "modified": "2025-12-07T00:00:00Z",
+        "version": "0.3.0",
+        "change_count": 2
       },
       "references": [
         "shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.json",
@@ -1475,6 +1476,109 @@
         "version": "1.0",
         "change_count": 1
       }
+    },
+    {
+      "id": "synth-012",
+      "title": "Metaquest System Beacon (Trilayer)",
+      "path": "bedeutungssigillin/system/metaquest/metaquest_system_map.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "system",
+        "telemetry"
+      ],
+      "description": "Bedeutungs-Sigillin für Metaquest-Systemintegration: Paritätsbrief, Telemetrie und Index-Synchronisation werden hier kartiert.",
+      "temporal": {
+        "created": "2025-12-07T00:00:00Z",
+        "modified": "2025-12-07T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/system/metaquest/metaquest_system_map.json",
+        "bedeutungssigillin/system/metaquest/metaquest_system_map.md"
+      ]
+    },
+    {
+      "id": "synth-013",
+      "title": "Metaquest System Shadow Guard (Trilayer)",
+      "path": "shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "system",
+        "parity"
+      ],
+      "description": "Schatten-Sigillin für Metaquest-Systemrisiken: Telemetrieausfälle, fehlende Paritätsbriefe und Index-Drift werden hier alarmiert.",
+      "temporal": {
+        "created": "2025-12-07T00:00:00Z",
+        "modified": "2025-12-07T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/system/metaquest/metaquest_system_shadow.json",
+        "shadow_sigillin/system/metaquest/metaquest_system_shadow.md"
+      ]
+    },
+    {
+      "id": "synth-014",
+      "title": "Metaquest Kampagnen-Beacon (Trilayer)",
+      "path": "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "kampagne",
+        "parity"
+      ],
+      "description": "Bedeutungs-Sigillin für Metaquest-Kampagne: Paritätsbrief, Storyboard, Endorsement-Freshness und BreakPoint-Rituale.",
+      "temporal": {
+        "created": "2025-12-07T00:00:00Z",
+        "modified": "2025-12-07T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.json",
+        "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md"
+      ]
+    },
+    {
+      "id": "synth-015",
+      "title": "Metaquest Kampagnen-Shadow (Trilayer)",
+      "path": "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "kampagne"
+      ],
+      "description": "Schatten-Sigillin für Metaquest-Kampagnenrisiken: Paritätslücken, Storyboard-Drift und Governance-Verzug.",
+      "temporal": {
+        "created": "2025-12-07T00:00:00Z",
+        "modified": "2025-12-07T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json",
+        "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md"
+      ]
     }
   ],
   "domains": {

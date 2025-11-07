@@ -1,42 +1,40 @@
 # System Shadow Membrane
 
-> When R (automation debt) outruns Θ (governance cadence), β≈5.0 slams the alarm and
-> ζ(R) spikes. This shadow map keeps the warning lantern lit and now watches the
-> Metaquest handshake telemetry alongside the canonical alarms.
-
-## Coupling
-- Light-side reference: `../../bedeutungssigillin/system/system_meaning_map.md`
+> R counts automation debt, stale indices, and silent Metaquest telemetry; Θ is the
+> tolerance band defined by the system meaning map plus the Metaquest beacon; β≈5.0
+> makes escalations sharp; ζ(R) surges when codex echoes lag or the parity brief fades.
 
 ## Incident Ledger
 
-1. **sys-shadow-001 — Index Drift**
-   - *Symptom*: `seed_index.*` fails to include new sigils within 24h; CREP parser reports
-     zero additions.
-   - *Consequence*: Navigational σ(β(R-Θ)) misfires and agents wander blind.
-   - *Mitigation*: Run `scripts/archive_sigillin.py --refresh`, update codex with the fix, and
-     re-run index parity checks.
+1. **sys-shadow-001 — Index drift**
+   - *Signal*: `seed_index.*` misses new sigils for 24h; parser diff stays at zero.
+   - *Fallout*: Agents lose navigation; σ(β(R-Θ)) misfires.
+   - *Remedy*: Run `scripts/archive_sigillin.py --refresh`, log codex remediation.
 
-2. **sys-shadow-002 — Codex Desynchronisation**
-   - *Symptom*: Commits adjust `seed/bedeutungssigillin/**` but `seed/codexfeedback.*` stays
-     untouched.
-   - *Consequence*: Temporal lineage snaps; auditors lose track of Θ.
-   - *Mitigation*: Block merges until codex updates land; append a note referencing this
-     shadow entry.
+2. **sys-shadow-002 — Codex silence**
+   - *Signal*: Git diff touches `seed/bedeutungssigillin/**` without codex delta.
+   - *Fallout*: Temporal lineage breaks; auditors lose Θ.
+   - *Remedy*: Block merge, update codex, reference this shadow map.
 
-3. **sys-shadow-003 — Handshake Silence**
-   - *Symptom*: `docs/utac_status_alignment_v1.2.md` lacks a fresh parity report; the
-     planned `scripts/sigillin_sync.py` leaves no trace in automation logs.
-   - *Consequence*: Light and shadow sigils drift apart, β overshoots, remediation arrives
-     late.
-   - *Mitigation*: Run a manual parity audit, update codex, and schedule the telemetry task
-     to resume cadence.
+3. **sys-shadow-003 — Telemetry gap**
+   - *Signal*: `docs/utac_status_alignment_v1.2.md` lacks parity report; `sigillin_sync`
+     missing; Metaquest beacon silent.
+   - *Fallout*: Light/shadow sigils decouple; β overshoots.
+   - *Remedy*: Trigger manual parity check, update codex, restore telemetry cadence.
+
+4. **sys-shadow-004 — Metaquest parity missing**
+   - *Signal*: No Metaquest parity reference in docs or codex for >1 sprint.
+   - *Fallout*: Automation advances without Θ; campaign shadow alarms arrive late.
+   - *Remedy*: Consult Metaquest shadow guard, publish/update parity brief, refresh indices.
 
 ## Playbooks
-- **If sys-shadow-001 triggers:** synchronise indices immediately, then notify docs
-  maintainers (codex entry + NEWS.md snippet if persistent).
-- **If sys-shadow-002 triggers:** amend the offending commit or follow up with a codex update
-  and mirror the cause in the system meaning map.
-- **If sys-shadow-003 triggers:** launch the parity check, weave the report into the UTAC
-  status matrix, and restore automation coverage.
 
-Stay attentive: the shadow membrane is the echo that keeps the light aligned.
+- **Index drift** → Synchronise indices and notify docs maintainers if persistent.
+- **Codex silence** → Amend commit or follow-up PR with codex update, document cause in
+  meaning map.
+- **Telemetry gap** → Run telemetry manually, align with Metaquest beacon + shadow guard,
+  schedule automation repair.
+- **Parity missing** → Freeze Metaquest automation tasks, publish parity brief, update codex
+  and status matrix with new timestamp.
+
+Shadow warnings keep the backbone honest; listen before the dawn overtakes Θ.

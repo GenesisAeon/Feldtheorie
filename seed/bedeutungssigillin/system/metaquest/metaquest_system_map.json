@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "sigil": "bedeutungs-system-metaquest",
+    "version": "0.1.0",
+    "created": "2025-12-07T00:00:00Z",
+    "updated": "2025-12-07T00:00:00Z",
+    "logistic": {
+      "R": "Metaquest integration backlog across automation, indices, and governance hooks",
+      "Theta": "Parity brief anchored in docs/utac_status_alignment_v1.2.md + codexfeedback entry",
+      "beta": 4.7,
+      "zeta": "Damped when indices refresh and telemetry reports land within one sprint"
+    },
+    "resonance": "Ensures the Metaquest launch is braided into the UTAC system spine so automation, indices, and codex echoes stay synchronised across light and shadow membranes.",
+    "shadow_coupling": "../../shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml"
+  },
+  "existing_assets": [
+    {
+      "id": "mq-sys-asset-001",
+      "title": "UTAC Status Matrix Handshake",
+      "location": "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+      "resonance": "Maps Metaquest checkpoints onto activation gaps and telemetry needs.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "seed/Finalisierung_Plattform.txt",
+          "seed/BreakPointAnalyse/WayToGo.txt"
+        ],
+        "logistic_coupling": "When R swells, the matrix routes actions to archive scripts and codex updates before β steepens."
+      }
+    },
+    {
+      "id": "mq-sys-asset-002",
+      "title": "System Meaning Membrane (parent)",
+      "location": "../system_meaning_map.yaml",
+      "resonance": "Holds automation + governance lanterns that Metaquest must plug into.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "Makefile",
+          "scripts/crep_parser.py"
+        ],
+        "logistic_coupling": "Metaquest inherits the Makefile and schema guards; Θ remains visible via codex mandates."
+      }
+    },
+    {
+      "id": "mq-sys-asset-003",
+      "title": "Shadow System Membrane",
+      "location": "../../shadow_sigillin/system/system_shadow_map.yaml",
+      "resonance": "Provides failure thresholds for codex drift, index lag, and telemetry gaps.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "docs/utac_status_alignment_v1.2.md#implementation-map"
+        ],
+        "logistic_coupling": "Defines when ζ(R) spikes so Metaquest alerts can trigger remediation."
+      }
+    }
+  ],
+  "needed_resonances": [
+    {
+      "id": "mq-sys-gap-001",
+      "description": "Publish Metaquest parity brief summarising system + campaign links.",
+      "target_location": [
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+        "seed/codexfeedback.*"
+      ],
+      "threshold": {
+        "Theta": "brief referenced in docs + codex before launch freeze",
+        "beta": 4.9
+      },
+      "null_guard": "If brief missing during readiness review, escalate to sci-shadow-003."
+    },
+    {
+      "id": "mq-sys-gap-002",
+      "description": "Implement scripts/sigillin_sync.py telemetry export with Metaquest parity metrics.",
+      "target_location": [
+        "scripts/sigillin_sync.py (planned)",
+        "simulator/presets/"
+      ],
+      "threshold": {
+        "Theta": "telemetry report generated each sprint",
+        "beta": 4.8
+      },
+      "null_guard": "If no report for >1 sprint, trigger sys-shadow-003 audit."
+    },
+    {
+      "id": "mq-sys-gap-003",
+      "description": "Index refresh automation extended to Metaquest folders.",
+      "target_location": [
+        "scripts/archive_sigillin.py",
+        "seed/seed_index.*",
+        "feldtheorie_index.*"
+      ],
+      "threshold": {
+        "Theta": "indices list Metaquest sigils within 24h of change",
+        "beta": 4.6
+      },
+      "null_guard": "Parser diff showing Δindex parity > 0 for one commit activates shadow guard."
+    }
+  ],
+  "activation_hooks": [
+    {
+      "trigger": "New Metaquest asset created",
+      "response": "Update trilayer files, refresh indices, log codex entry, cite status matrix."
+    },
+    {
+      "trigger": "Telemetry report missing or stale",
+      "response": "Consult shadow map, schedule sigillin_sync run, update docs + codex."
+    },
+    {
+      "trigger": "Parity brief updated",
+      "response": "Cross-link change in docs, codex, and simulator presets; archive previous version."
+    }
+  ],
+  "null_model_reference": {
+    "description": "Null = Metaquest launch without documented parity; automation + governance decouple.",
+    "monitoring": [
+      {
+        "metric": "index parity",
+        "condition": "Metaquest folders listed in seed_index.* and feldtheorie_index.*"
+      },
+      {
+        "metric": "codex echo",
+        "condition": "Latest Metaquest change accompanied by codexfeedback entry referencing this map"
+      },
+      {
+        "metric": "telemetry cadence",
+        "condition": "sigillin_sync report timestamp ≤ 1 sprint old"
+      }
+    ]
+  }
+}

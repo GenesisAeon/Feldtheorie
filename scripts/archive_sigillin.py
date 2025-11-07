@@ -8,6 +8,7 @@ SOLUTION: Alte Einträge archivieren (ZIP), aktive Sigillin klein halten
 Usage:
     python scripts/archive_sigillin.py --sigillin seed/codexfeedback.yaml --max-entries 50
     python scripts/archive_sigillin.py --scan-all --max-size 100  # 100KB limit
+    python scripts/archive_sigillin.py --scan-all --base-path /path/to/Feldtheorie
 """
 
 import argparse
@@ -20,11 +21,7 @@ import sys
 import shutil
 
 # Configuration
-BASE_PATH = Path('/home/user/Feldtheorie')
-ARCHIVE_DIR = BASE_PATH / 'archive'
-ARCHIVE_INDEX_YAML = ARCHIVE_DIR / 'archive_index.yaml'
-ARCHIVE_INDEX_JSON = ARCHIVE_DIR / 'archive_index.json'
-ARCHIVE_INDEX_MD = ARCHIVE_DIR / 'archive_index.md'
+DEFAULT_BASE_PATH = Path(__file__).resolve().parents[1]
 
 # Default thresholds
 DEFAULT_MAX_ENTRIES = 100  # Max entries in active Sigillin
@@ -35,22 +32,37 @@ DEFAULT_KEEP_RECENT = 50   # Keep most recent N entries
 class SigillinArchiver:
     """Archive oversized Sigillin files"""
 
-    def __init__(self, max_entries=DEFAULT_MAX_ENTRIES, max_size_kb=DEFAULT_MAX_SIZE_KB,
-                 keep_recent=DEFAULT_KEEP_RECENT, dry_run=False):
+    def __init__(
+        self,
+        max_entries: int = DEFAULT_MAX_ENTRIES,
+        max_size_kb: int = DEFAULT_MAX_SIZE_KB,
+        keep_recent: int = DEFAULT_KEEP_RECENT,
+        dry_run: bool = False,
+        base_path: Path = DEFAULT_BASE_PATH,
+    ):
         self.max_entries = max_entries
         self.max_size_kb = max_size_kb
         self.keep_recent = keep_recent
         self.dry_run = dry_run
-        self.archive_dir = ARCHIVE_DIR
-        self.archive_dir.mkdir(exist_ok=True)
+        self.base_path = base_path.resolve()
+
+        if not self.base_path.exists():
+            raise FileNotFoundError(f"Base path does not exist: {self.base_path}")
+
+        self.archive_dir = self.base_path / 'archive'
+        self.archive_dir.mkdir(parents=True, exist_ok=True)
+
+        self.archive_index_yaml = self.archive_dir / 'archive_index.yaml'
+        self.archive_index_json = self.archive_dir / 'archive_index.json'
+        self.archive_index_md = self.archive_dir / 'archive_index.md'
 
         # Load existing archive index
         self.archive_index = self._load_archive_index()
 
     def _load_archive_index(self):
         """Load existing archive index or create new"""
-        if ARCHIVE_INDEX_YAML.exists():
-            with open(ARCHIVE_INDEX_YAML, 'r', encoding='utf-8') as f:
+        if self.archive_index_yaml.exists():
+            with open(self.archive_index_yaml, 'r', encoding='utf-8') as f:
                 return yaml.safe_load(f)
         else:
             return {
@@ -70,11 +82,11 @@ class SigillinArchiver:
         self.archive_index['meta']['total_archives'] = len(self.archive_index['archives'])
 
         # Save YAML
-        with open(ARCHIVE_INDEX_YAML, 'w', encoding='utf-8') as f:
+        with open(self.archive_index_yaml, 'w', encoding='utf-8') as f:
             yaml.dump(self.archive_index, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
 
         # Save JSON
-        with open(ARCHIVE_INDEX_JSON, 'w', encoding='utf-8') as f:
+        with open(self.archive_index_json, 'w', encoding='utf-8') as f:
             json.dump(self.archive_index, f, ensure_ascii=False, indent=2)
 
         # Save MD (human-readable)
@@ -136,7 +148,7 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
 **Maintained by Sigillin Maintenance System** 🧹✨
 """
 
-        with open(ARCHIVE_INDEX_MD, 'w', encoding='utf-8') as f:
+        with open(self.archive_index_md, 'w', encoding='utf-8') as f:
             f.write(md_content)
 
     def check_sigillin_size(self, sigillin_path):
@@ -200,6 +212,11 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
     def archive_sigillin(self, sigillin_path):
         """Archive old entries from Sigillin, keep recent entries active"""
         path = Path(sigillin_path)
+
+        if not path.is_absolute():
+            path = (self.base_path / path).resolve()
+        else:
+            path = path.resolve()
 
         print(f"\n📦 Archiving: {path.name}")
 
@@ -298,8 +315,13 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
         print(f"✅ Updated active Sigillin: {path.name} (now {len(recent_entries)} entries)")
 
         # Update archive index
+        try:
+            original_file = str(path.relative_to(self.base_path))
+        except ValueError:
+            original_file = str(path)
+
         self.archive_index['archives'].append({
-            'original_file': str(path.relative_to(BASE_PATH)),
+            'original_file': original_file,
             'archive_file': archive_filename,
             'archived_date': datetime.now().isoformat(),
             'entry_range': f"Entry 1-{len(old_entries)}",
@@ -332,7 +354,7 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
 
         sigillin_files = []
         for pattern in patterns:
-            sigillin_files.extend(BASE_PATH.glob(pattern))
+            sigillin_files.extend(self.base_path.glob(pattern))
 
         # Filter out index files
         sigillin_files = [f for f in sigillin_files if '_index' not in f.name]
@@ -361,6 +383,8 @@ def main():
     parser.add_argument('--keep-recent', type=int, default=DEFAULT_KEEP_RECENT,
                        help=f'Number of recent entries to keep active (default: {DEFAULT_KEEP_RECENT})')
     parser.add_argument('--dry-run', action='store_true', help='Check only, do not archive')
+    parser.add_argument('--base-path', type=str, default=None,
+                        help='Repository root containing Sigillin assets (default: script directory parent)')
 
     args = parser.parse_args()
 
@@ -368,11 +392,14 @@ def main():
         parser.print_help()
         sys.exit(1)
 
+    base_path = Path(args.base_path).expanduser().resolve() if args.base_path else DEFAULT_BASE_PATH
+
     archiver = SigillinArchiver(
         max_entries=args.max_entries,
         max_size_kb=args.max_size,
         keep_recent=args.keep_recent,
-        dry_run=args.dry_run
+        dry_run=args.dry_run,
+        base_path=base_path,
     )
 
     if args.sigillin:

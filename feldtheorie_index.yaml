@@ -76,6 +76,8 @@ indexed_directories:
       - Metareflexion.txt (Philosophische Grundlage)
       - Rekalibrierung_Abschlus.txt (Unser Weg)
       - FinalerPlan.txt (Governance für v1.2)
+      - bedeutungssigillin/system/metaquest/metaquest_system_map.md (Metaquest System-Beacon)
+      - bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md (Metaquest Kampagnen-Beacon)
 
   analysis:
     name: "analysis/ - Analysis Resonance Bay"

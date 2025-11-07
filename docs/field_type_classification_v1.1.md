@@ -618,4 +618,4 @@ START
 ---
 
 *© 2025 Johann Römer et al. — Universal Threshold Field Initiative*
-*DOI: 10.5281/zenodo.17472834 • MIT License*
+*DOI: 10.5281/zenodo.17472834 • CC BY 4.0*

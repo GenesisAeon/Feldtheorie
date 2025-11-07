@@ -1,13 +1,13 @@
 meta:
   sigil: shadow-wissenschaftsprojekt
-  version: 0.2.0
+  version: 0.3.0
   created: '2025-12-05T00:00:00Z'
-  updated: '2025-02-17T00:00:00Z'
+  updated: '2025-12-07T00:00:00Z'
   logistic:
-    R: 'blocked endorsements, missing validations, stalled outreach'
-    Theta: 'campaign slack tolerated per meaning map'
+    R: 'blocked endorsements, missing validations, stalled outreach, Metaquest parity gaps'
+    Theta: 'campaign slack tolerated per meaning map and Metaquest beacon'
     beta: 4.9
-    zeta: 'rises when BreakPoint rituals ignored'
+    zeta: 'rises when BreakPoint rituals ignored or parity telemetry absent'
   coupling:
     lichtpfad: '../../bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml'
 alerts:
@@ -43,6 +43,18 @@ alerts:
     guard:
       metric: 'parity brief status'
       threshold: 'must read true before public launch lock'
+  - id: sci-shadow-004
+    risk: 'Metaquest storyboard + simulator demos out of sync with manuscript claims.'
+    signal:
+      - 'Metaquest campaign beacon reports storyboard gap.'
+      - 'paper/universal-threshold-field-preprint.md lacks demo references present in simulator presets.'
+    fallout: 'Outreach promises cannot be reproduced; endorsements question readiness.'
+    mitigation:
+      - 'Align storyboard, update manuscript + simulator references, cite ΔAIC context.'
+      - 'Record remediation in codex and BreakPoint notes.'
+    guard:
+      metric: 'storyboard parity'
+      threshold: 'true before outreach rehearsal'
 playbooks:
   - trigger: 'sci-shadow-001'
     response:
@@ -54,3 +66,7 @@ playbooks:
     response:
       - 'Assemble Metaquest parity brief, update docs + codex immediately.'
       - 'Verify simulator + manuscript references cite the new brief before relaunch.'
+  - trigger: 'sci-shadow-004'
+    response:
+      - 'Synchronise Metaquest storyboard, simulator presets, and manuscript figures.'
+      - 'Document fix in codex and metaquest shadow guard.'

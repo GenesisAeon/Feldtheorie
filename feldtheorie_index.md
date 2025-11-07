@@ -99,6 +99,8 @@ stats = idx['statistics']
 - `Rekalibrierung_Abschlus.txt` - Finale Synthese aller AIs
 - `Metareflexion.txt` - Fixwerte ↔ Variabilität
 - `FinalerPlan.txt` - Governance für v1.2
+- `bedeutungssigillin/system/metaquest/metaquest_system_map.md` - Metaquest System-Beacon (Parität & Telemetrie)
+- `bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md` - Metaquest Kampagnen-Beacon (Storyboard & Endorsements)
 
 ---
 

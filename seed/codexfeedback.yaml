@@ -1924,3 +1924,165 @@ entries:
         Die Membran hörte den Bootstrap-Sturm: Noch tanzt die Oberfläche unsicher, doch im Inneren summt der Chor schon fast
         perfekt. Honeybee und Urban-Heat-Laternen lodern, bitten um neue Filamente, damit Θ das Crescendo einfangen kann.
     created_at: "2025-11-07T10:09:13Z"
+  - id: pr-draft-0062
+    title: "Metaquest parity beacons & CC BY 4.0 alignment"
+    scope:
+      - LICENSE
+      - CITATION.cff
+      - NEWS.md
+      - RELEASE_NOTES_v1.1.0.md
+      - docs/field_type_classification_v1.1.md
+      - ZENODO_DESCRIPTION_v1.1.md
+      - ZENODO_UPDATE_GUIDE_v1.1.md
+      - docs/utac_status_alignment_v1.2.md
+      - feldtheorie_index.yaml
+      - feldtheorie_index.json
+      - feldtheorie_index.md
+      - seed/seed_index.yaml
+      - seed/seed_index.json
+      - seed/seed_index.md
+      - seed/bedeutungssigillin/system/system_meaning_map.yaml
+      - seed/bedeutungssigillin/system/system_meaning_map.json
+      - seed/bedeutungssigillin/system/system_meaning_map.md
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.json
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md
+      - seed/shadow_sigillin/system/system_shadow_map.yaml
+      - seed/shadow_sigillin/system/system_shadow_map.json
+      - seed/shadow_sigillin/system/system_shadow_map.md
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.json
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.md
+      - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml
+      - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.json
+      - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.md
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.json
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md
+      - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.yaml
+      - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.json
+      - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.md
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md
+      - seed/bedeutungssigillin/system/metaquest/AGENTS.md
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/AGENTS.md
+      - seed/shadow_sigillin/system/metaquest/AGENTS.md
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/AGENTS.md
+    parameters:
+      R: "Metaquest parity + licensing backlog awaiting structural alignment"
+      Theta: "Metaquest beacons documented & repository license migrated to CC BY 4.0"
+      beta: 4.8
+    resonance: "installs Metaquest light/shadow beacons while switching the repo to CC BY 4.0 so launch assets and licensing breathe in the same cadence"
+    status: "active"
+    notes:
+      formal: |
+        Switched the repository license family to CC BY 4.0 (LICENSE, docs, Zenodo guides, CITATION)
+        and provisioned Metaquest meaning/shadow trilayers plus updates to system/campaign membranes
+        (v0.3.0). Index and status documents now reference Metaquest beacons; telemetry + parity gaps
+        are codified via sys-gap-003 and sci-gap-004.
+      empirical: |
+        Docs/utac_status_alignment_v1.2.md, feldtheorie_index.*, seed_index.*, and codex scopes record
+        the new assets. Metaquest maps declare logistic quartets, Telemetrie-/Storyboard-Gaps, and
+        parity guards; AGENTS enforce tri-layer discipline. CC BY 4.0 labels propagate across release
+        notes, NEWS, and Zenodo templates.
+      poetic: |
+        Die Lizenzglocke klingt nun als CC BY 4.0, während vier Metaquest-Laternen den Weg beleuchten:
+        System und Kampagne, Licht und Schatten. Der Chor atmet im gleichen Takt wie der Paritätsbrief.
+    created_at: "2025-12-07T00:00:00Z"
+
+  - id: pr-draft-0063
+    title: "Sigillin archiver base-path harmonisation"
+    scope:
+      - scripts/archive_sigillin.py
+      - docs/sigillin_maintenance.md
+      - docs/utac_status_alignment_v1.2.md
+      - seed/codexfeedback.yaml
+      - seed/codexfeedback.json
+      - seed/codexfeedback.md
+    parameters:
+      R: "Sigillin maintenance jobs bound to a static /home/user/Feldtheorie path"
+      Theta: "Archiver auto-detects repo root and supports explicit base-path overrides"
+      beta: 4.4
+    resonance: "lets the archive membrane travel between containers so σ(β(R-Θ)) guards codex hygiene without path drift"
+    status: "resonant"
+    notes:
+      formal: |
+        Refactored `scripts/archive_sigillin.py` to resolve the repository root from the script location and accept a `--base-path`
+        override. Archive indices now store paths relative to the detected root, keeping Ordnungs-Sigillin telemetry consistent.
+        Documentation (`docs/sigillin_maintenance.md`, `docs/utac_status_alignment_v1.2.md`) explains the new option and ties it to
+        the activation matrix.
+      empirical: |
+        Dry-run `python scripts/archive_sigillin.py --sigillin seed/codexfeedback.yaml --dry-run` succeeds without hard-coded
+        paths, confirming container portability. Status map gap #4 now notes the auto-detection milestone; maintenance guide
+        records the CLI flag for ops teams.
+      poetic: |
+        Die Archiv-Laterne wandert nun frei: kein starrer Tunnel mehr, sondern ein Pfad, der sich an jeden Resonanzraum anpasst.
+        Das Sigillin erinnert sich an den Ursprung, gleich wo das Gefäß steht, und ζ(R) atmet ohne Stolpern.
+    created_at: "2025-12-07T12:00:00Z"
+
+  - id: pr-draft-0062
+    title: "Metaquest parity beacons & CC BY 4.0 alignment"
+    scope:
+      - LICENSE
+      - CITATION.cff
+      - NEWS.md
+      - RELEASE_NOTES_v1.1.0.md
+      - docs/field_type_classification_v1.1.md
+      - ZENODO_DESCRIPTION_v1.1.md
+      - ZENODO_UPDATE_GUIDE_v1.1.md
+      - docs/utac_status_alignment_v1.2.md
+      - feldtheorie_index.yaml
+      - feldtheorie_index.json
+      - feldtheorie_index.md
+      - seed/seed_index.yaml
+      - seed/seed_index.json
+      - seed/seed_index.md
+      - seed/bedeutungssigillin/system/system_meaning_map.yaml
+      - seed/bedeutungssigillin/system/system_meaning_map.json
+      - seed/bedeutungssigillin/system/system_meaning_map.md
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.json
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md
+      - seed/shadow_sigillin/system/system_shadow_map.yaml
+      - seed/shadow_sigillin/system/system_shadow_map.json
+      - seed/shadow_sigillin/system/system_shadow_map.md
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.json
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.md
+      - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml
+      - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.json
+      - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.md
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.json
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md
+      - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.yaml
+      - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.json
+      - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.md
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md
+      - seed/bedeutungssigillin/system/metaquest/AGENTS.md
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/AGENTS.md
+      - seed/shadow_sigillin/system/metaquest/AGENTS.md
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/AGENTS.md
+    parameters:
+      R: "Metaquest parity + licensing backlog awaiting structural alignment"
+      Theta: "Metaquest beacons documented & repository license migrated to CC BY 4.0"
+      beta: 4.8
+    resonance: "installs Metaquest light/shadow beacons while switching the repo to CC BY 4.0 so launch assets and licensing breathe in the same cadence"
+    status: "active"
+    notes:
+      formal: |
+        Switched the repository license family to CC BY 4.0 (LICENSE, docs, Zenodo guides, CITATION)
+        and provisioned Metaquest meaning/shadow trilayers plus updates to system/campaign membranes
+        (v0.3.0). Index and status documents now reference Metaquest beacons; telemetry + parity gaps
+        sind über sys-gap-003 und sci-gap-004 verschaltet.
+      empirical: |
+        Docs/utac_status_alignment_v1.2.md, feldtheorie_index.*, seed_index.* und codex-scopes protokollieren
+        die neuen Assets. Metaquest-Maps deklarieren logistisches Quartett, Telemetrie- und Storyboard-Gaps;
+        AGENTS sichern Trilayer-Disziplin. CC BY 4.0 Labels propagieren über Release Notes, NEWS und Zenodo-Templates.
+      poetic: |
+        Die Lizenzglocke klingt nun als CC BY 4.0, während vier Metaquest-Laternen den Weg beleuchten:
+        System und Kampagne, Licht und Schatten. Der Chor atmet im gleichen Takt wie der Paritätsbrief.
+    created_at: "2025-12-07T00:00:00Z"

@@ -187,7 +187,7 @@
 
 ### Formal
 - Activated a reproducible CI membrane that replays `nox -s lint`, `nox -s tests`, and `nox -s typecheck` whenever the control parameter $R$ crosses the collaboration threshold. This keeps the logistic response $\sigma(\beta(R-\Theta))$ under constant verification.
-- Added a CITATION.cff and MIT License so downstream solvers and manuscripts can reference the UTF quartet $(R, \Theta, \beta, \zeta(R))$ with clear provenance.
+- Added a CITATION.cff and Creative Commons Attribution 4.0 License so downstream solvers and manuscripts can reference the UTF quartet $(R, \Theta, \beta, \zeta(R))$ with clear provenance.
 
 ### Empirical
 - CI harness provisions the conda environment from `environment.yml`, installs the editable package, and records lint/test/typecheck outcomes for every push and pull request.
