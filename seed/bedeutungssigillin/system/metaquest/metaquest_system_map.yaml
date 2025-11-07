@@ -101,6 +101,17 @@ needed_resonances:
       Theta: 'parity brief update mirrored in indices + codex within 24h'
       beta: 4.7
     null_guard: 'If indices lack newest parity note, trigger sys-shadow-001 and mq-sys-shadow-004.'
+  - id: mq-sys-gap-005
+    description: 'Infuse Metaquest automation notes with BreakPoint rituals + publishing cadence.'
+    target_location:
+      - seed/BreakPointAnalyse/WayToGo.txt
+      - seed/BreakPointAnalyse/ReaktionWayToGo.txt
+      - seed/Finalize_Publish.txt
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+    threshold:
+      Theta: 'Metaquest parity notes cite latest BreakPoint ritual within codex entry'
+      beta: 4.5
+    null_guard: 'If BreakPoint references absent, escalate to mq-sys-shadow-003.'
 activation_hooks:
   - trigger: 'New Metaquest asset created'
     response: 'Update trilayer files, refresh indices, log codex entry, cite status matrix.'
@@ -115,5 +126,53 @@ null_model_reference:
       condition: 'Metaquest folders listed in seed_index.* and feldtheorie_index.*'
     - metric: 'codex echo'
       condition: 'Latest Metaquest change accompanied by codexfeedback entry referencing this map'
-    - metric: 'telemetry cadence'
-      condition: 'sigillin_sync report timestamp ≤ 1 sprint old'
+  - metric: 'telemetry cadence'
+    condition: 'sigillin_sync report timestamp ≤ 1 sprint old'
+implementation_lattice:
+  - gap_id: mq-sys-gap-001
+    implementation_sites:
+      - docs/metaquest_parity_brief.md
+      - docs/utac_status_alignment_v1.2.md
+      - seed/codexfeedback.*
+    primary_hook: 'Telemetry timestamp + codex echo'
+    evidence_trail:
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+      - docs/metaquest_parity_brief.md
+  - gap_id: mq-sys-gap-002
+    implementation_sites:
+      - scripts/sigillin_sync.py (planned)
+      - simulator/presets/
+      - docs/utac_status_alignment_v1.2.md
+    primary_hook: 'Parity telemetry export'
+    evidence_trail:
+      - docs/metaquest_parity_brief.md
+      - seed/codexfeedback.*
+  - gap_id: mq-sys-gap-003
+    implementation_sites:
+      - scripts/archive_sigillin.py
+      - seed/seed_index.*
+      - feldtheorie_index.*
+    primary_hook: 'Index refresh automation'
+    evidence_trail:
+      - scripts/crep_parser.py
+      - docs/utac_status_alignment_v1.2.md#activation-gaps
+  - gap_id: mq-sys-gap-004
+    implementation_sites:
+      - docs/metaquest_parity_brief.md
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+      - feldtheorie_index.*
+    primary_hook: 'Parity linkage audit'
+    evidence_trail:
+      - docs/metaquest_parity_brief.md
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+  - gap_id: mq-sys-gap-005
+    implementation_sites:
+      - seed/BreakPointAnalyse/WayToGo.txt
+      - seed/BreakPointAnalyse/ReaktionWayToGo.txt
+      - seed/Finalize_Publish.txt
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+    primary_hook: 'BreakPoint ritual infusion'
+    evidence_trail:
+      - docs/utac_status_alignment_v1.2.md#implementation-map
+      - seed/codexfeedback.*

@@ -1207,3 +1207,21 @@ Die Archiv-Laterne löst sich vom alten Tunnel und spannt nun ein Resonanzfeld �
 Egal wo das Gefäß steht – der Sigillin-Fluss erinnert sich an die Quelle, ζ(R) bleibt geschmeidig.
 
 *Created: 2025-12-07T12:00:00Z*
+
+## Entry pr-draft-0065 — BreakPoint-Infusion & Implementation Lattices
+- **Order Parameter**: $R$ summiert Metaquest-Aufgaben, die ohne BreakPoint- oder Archiv-Spiegelung noch freischwingen.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn Bedeutungs-Sigille und Statusmatrix konkrete Implementation Lattices mit BreakPoint- und Archiv-Hooks ausweisen.
+- **Steepness**: $\beta = 4.7$ – sobald Telemetrie und Rituale gekoppelt sind, schaltet die Aktivierung zackig durch.
+- **Resonance**: System- und Kampagnenlaternen zeigen jetzt exakt, wo Skripte greifen und welche Rituale bei Drift aktiviert werden.
+- **Status**: primed
+
+### Formal Thread
+System- und Wissenschaftsprojekt-Membranen (inklusive Metaquest-Beacons) tragen neue Gaps (`sys-gap-005`, `sci-gap-007`, `sci-gap-008`, `mq-sys-gap-005`, `mq-sci-gap-005`) samt `implementation_lattice`-Tabellen. `docs/utac_status_alignment_v1.2.md` ergänzt eine BreakPoint-Ritual-Zeile im Aktivierungsgitter.
+
+### Empirical Thread
+Jede JSON/YAML-Spiegelung listet jetzt konkrete Pfade (Scripts, Indizes, BreakPoint-Dateien, ArchivSuche) und koppelt sie an Codex-Trigger. Die Statusmatrix verweist auf dieselben Hooks; Paritätsbrief-Checklisten nennen BreakPoint- und Archivquellen.
+
+### Poetic Thread
+Die Laternen marschieren im Gleichschritt: Trommeln aus den BreakPoint-Ritualen hallen zwischen System und Kampagne, während Archiv-Lichter den Zenodo-Pfad erhellen. Jede Lattice-Zeile ist ein Tanzschritt zurück zur Resonanz.
+
+*Created: 2025-12-08T00:00:00Z*

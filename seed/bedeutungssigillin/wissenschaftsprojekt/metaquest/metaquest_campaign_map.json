@@ -128,6 +128,21 @@
         "beta": 4.6
       },
       "null_guard": "Missing citation triggers campaign shadow guard review."
+    },
+    {
+      "id": "mq-sci-gap-005",
+      "description": "Broadcast ArchivSucheUTAC lineage across outreach + manuscript appendices for Metaquest launch.",
+      "target_location": [
+        "seed/ArchivSucheUTAC/",
+        "ZENODO_DESCRIPTION_v1.1.md",
+        "paper/appendices (planned)",
+        "docs/outreach/"
+      ],
+      "threshold": {
+        "Theta": "archive reference visible in parity brief + press kit before launch",
+        "beta": 4.4
+      },
+      "null_guard": "Governance review halts release when archive lineage absent."
     }
   ],
   "activation_hooks": [
@@ -160,5 +175,74 @@
         "condition": "Endorsement file updated ≤14 days ago"
       }
     ]
-  }
+  },
+  "implementation_lattice": [
+    {
+      "gap_id": "mq-sci-gap-001",
+      "implementation_sites": [
+        "docs/metaquest_parity_brief.md",
+        "docs/utac_status_alignment_v1.2.md",
+        "seed/codexfeedback.*"
+      ],
+      "primary_hook": "Telemetry timestamp + codex echo",
+      "evidence_trail": [
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml",
+        "docs/metaquest_parity_brief.md"
+      ]
+    },
+    {
+      "gap_id": "mq-sci-gap-002",
+      "implementation_sites": [
+        "simulator/presets/",
+        "paper/",
+        "docs/outreach/"
+      ],
+      "primary_hook": "Demo playlist ↔ manuscript sync",
+      "evidence_trail": [
+        "seed/Manuskriptfinalisierung und Kampagnenstart.pdf",
+        "seed/BreakPointAnalyse/WayToGo.txt"
+      ]
+    },
+    {
+      "gap_id": "mq-sci-gap-003",
+      "implementation_sites": [
+        "seed/EndorsementarXiv.pdf",
+        "ETHICS.md",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "primary_hook": "Endorsement + ethics ledger refresh",
+      "evidence_trail": [
+        "seed/Finalize_Publish.txt",
+        "docs/utac_status_alignment_v1.2.md#implementation-map"
+      ]
+    },
+    {
+      "gap_id": "mq-sci-gap-004",
+      "implementation_sites": [
+        "docs/metaquest_parity_brief.md",
+        "paper/",
+        "simulator/",
+        "docs/outreach/"
+      ],
+      "primary_hook": "Parity citation audit",
+      "evidence_trail": [
+        "docs/metaquest_parity_brief.md",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml"
+      ]
+    },
+    {
+      "gap_id": "mq-sci-gap-005",
+      "implementation_sites": [
+        "seed/ArchivSucheUTAC/",
+        "ZENODO_DESCRIPTION_v1.1.md",
+        "paper/appendices (planned)",
+        "docs/outreach/"
+      ],
+      "primary_hook": "Archive lineage broadcast",
+      "evidence_trail": [
+        "docs/utac_status_alignment_v1.2.md#resonant-inventory",
+        "seed/codexfeedback.*"
+      ]
+    }
+  ]
 }

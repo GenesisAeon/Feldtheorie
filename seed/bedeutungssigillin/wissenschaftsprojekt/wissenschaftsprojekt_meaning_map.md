@@ -55,6 +55,26 @@
 - **Parity storytelling echo** (`sci-gap-006`)
   - Ensure outreach, manuscript, and simulator scripts cite the latest parity brief revision and codex id.
   - Null guard: outreach asset lacking parity reference triggers campaign shadow guard.
+- **BreakPoint ritual loop** (`sci-gap-007`)
+  - Thread `seed/BreakPointAnalyse/WayToGo.txt` and `seed/BreakPointAnalyse/ReaktionWayToGo.txt` into the Metaquest beacon and
+    manuscript checklist so crisis drills stay visible.
+  - Null guard: campaign roadmap missing BreakPoint linkage escalates `mq-sci-shadow-002`.
+- **Archive resonance infusion** (`sci-gap-008`)
+  - Surface the `seed/ArchivSucheUTAC` findings inside manuscript appendices and parity notes to prove archival continuity.
+  - Null guard: UTAC archive references absent in release brief triggers governance review.
+
+## Implementation Lattice (Where to Act)
+
+| Gap ID | Implementation Sites | Primary Hook | Evidence Trail |
+| ------ | -------------------- | ------------ | -------------- |
+| `sci-gap-001` | `simulation/safety_delay_field.py`, `analysis/`, `docs/utac_status_alignment_v1.2.md` | τ*-field prototype + ΔAIC log | `seed/Sigillin_Neuro_Membran_Modell_Plan.txt`, codex entry |
+| `sci-gap-002` | `feldtheorie_index.*`, press kit (planned), `docs/docs_index.*` | Public sigil index export | `docs/utac_status_alignment_v1.2.md#activation-gaps`, codex echo |
+| `sci-gap-003` | `simulation/`, `simulator/presets/`, outreach storyboard | Demo playlist ↔ manuscript sync | `seed/Manuskriptfinalisierung und Kampagnenstart.pdf`, BreakPoint ritual |
+| `sci-gap-004` | `docs/metaquest_parity_brief.md`, Bedeutungs-/Shadow Metaquest maps | Telemetry timestamp + codex ID | `seed/codexfeedback.*`, `docs/utac_status_alignment_v1.2.md#metaquest-handshake` |
+| `sci-gap-005` | `analysis/beta_meta_regression_v2.py`, `paper/`, `docs/validation_report_v1.0.1.md` | Updated β tables | `seed/NextStep.txt`, codex entry |
+| `sci-gap-006` | Outreach manuscripts, simulator scripts, parity brief | Parity citation cross-check | `docs/metaquest_parity_brief.md`, `seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.*` |
+| `sci-gap-007` | `seed/BreakPointAnalyse/WayToGo.txt`, `seed/BreakPointAnalyse/ReaktionWayToGo.txt`, Metaquest beacon | BreakPoint ritual infusion | `docs/utac_status_alignment_v1.2.md#implementation-map`, codex echo |
+| `sci-gap-008` | `seed/ArchivSucheUTAC/`, manuscript appendices, Zenodo package plan | Archive continuity narrative | `docs/utac_status_alignment_v1.2.md#resonant-inventory`, `seed/Finalize_Publish.txt` |
 
 ## Activation Sequence
 
