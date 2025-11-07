@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "sigil": "shadow-metaquest-campaign-sigil",
+    "version": "0.1.0",
+    "created": "2025-12-10T00:00:00Z",
+    "updated": "2025-12-10T00:00:00Z",
+    "logistic": {
+      "R": "Campaign-side risks: unsynchronised outreach, missing endorsements, manuscript drift.",
+      "Theta": "Parity brief + campaign ledger mirrored with codex entry within 24 h and BreakPoint ritual confirmation.",
+      "beta": 5.0,
+      "zeta": "Rises when outreach cadence ignores rituals or telemetry timestamps diverge from bridge."
+    },
+    "light_pair": "../../../bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml"
+  },
+  "alerts": [
+    {
+      "id": "mq-sci-shadow-sigil-001",
+      "title": "Parity silence",
+      "signals": [
+        "Campaign compass lacks latest parity brief reference or codex ID (>24h stale).",
+        "Bridge dashboard missing campaign timestamp."
+      ],
+      "fallout": [
+        "Outreach narrates readiness without Θ evidence; partners lose trust."
+      ],
+      "recovery": [
+        "Update parity brief + codex entry, refresh campaign compass + sigil, notify UTAC matrix."
+      ]
+    },
+    {
+      "id": "mq-sci-shadow-sigil-002",
+      "title": "Manuscript lag",
+      "signals": [
+        "Finalisierung_Plattform checklist not updated for >1 sprint.",
+        "Codex entries omit manuscript milestone references."
+      ],
+      "fallout": [
+        "Launch story lacks validated scientific backbone; endorsements stall."
+      ],
+      "recovery": [
+        "Re-run manuscript planning session, log BreakPoint ritual, update codex + sigil checkpoints."
+      ]
+    },
+    {
+      "id": "mq-sci-shadow-sigil-003",
+      "title": "Endorsement void",
+      "signals": [
+        "UTAC matrix lacks ΔAIC/impact notes for latest endorsements.",
+        "Campaign map missing partner resonance metrics."
+      ],
+      "fallout": [
+        "External support fades; launch narrative loses amplification."
+      ],
+      "recovery": [
+        "Collect metrics, append to UTAC + map, publish codex addendum, notify shadow contact."
+      ]
+    },
+    {
+      "id": "mq-sci-shadow-sigil-004",
+      "title": "Outreach drift",
+      "signals": [
+        "Outreach cadence log missing parity brief milestones.",
+        "No reference to BreakPoint rituals in last communication sprint."
+      ],
+      "fallout": [
+        "Community misalignment; risk of promises exceeding readiness."
+      ],
+      "recovery": [
+        "Pause outreach, run rituals, rebuild cadence log with parity + codex anchors."
+      ]
+    }
+  ],
+  "playbooks": [
+    {
+      "trigger": "Parity silence detected",
+      "response": "Freeze public messaging until parity brief + codex echo updated; inform system sigils."
+    },
+    {
+      "trigger": "Manuscript lag",
+      "response": "Escalate to editorial lead, schedule catch-up sprint, document ritual outcomes."
+    },
+    {
+      "trigger": "Endorsement void or outreach drift",
+      "response": "Activate campaign recovery kit, reissue cadence plan, capture ΔAIC metrics, notify BreakPoint circle."
+    }
+  ],
+  "escalation": {
+    "contact": "mq-sci-shadow-ops",
+    "rituals": [
+      "seed/BreakPointAnalyse/WayToGo.txt",
+      "seed/BreakPointAnalyse/ReaktionWayToGo.txt"
+    ],
+    "documentation": [
+      "seed/codexfeedback.md",
+      "docs/utac_status_alignment_v1.2.md#activation-gaps"
+    ]
+  },
+  "null_model": {
+    "description": "Campaign communicates progress without synchronising with parity brief or codex ledger.",
+    "risk": [
+      "Public commitments outpace readiness; trust erodes.",
+      "Shadow system cannot trigger recovery in time; ζ(R) grows unchecked."
+    ]
+  }
+}

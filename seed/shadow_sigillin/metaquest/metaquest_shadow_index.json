@@ -1,9 +1,9 @@
 {
   "meta": {
     "sigil": "shadow-metaquest-bridge",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "created": "2025-12-07T00:00:00Z",
-    "updated": "2025-12-09T00:00:00Z",
+    "updated": "2025-12-10T00:00:00Z",
     "logistic": {
       "R": "Unresolved Metaquest risks spanning automation + outreach (telemetry lapse, index drift, endorsement delay).",
       "Theta": "Parity brief published, codex echo logged, and bridge dashboard updated within 24h.",
@@ -13,7 +13,9 @@
     "coupling": {
       "lichtpfad": "../../bedeutungssigillin/metaquest/metaquest_meaning_index.yaml",
       "system_compass": "../../bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml",
-      "campaign_compass": "../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml"
+      "campaign_compass": "../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml",
+      "system_sigil": "../../bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml",
+      "campaign_sigil": "../../bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml"
     }
   },
   "alerts": [
@@ -70,6 +72,24 @@
         "metric": "Δindex parity",
         "threshold": "≤0 after remediation commit"
       }
+    },
+    {
+      "id": "mq-bridge-shadow-004",
+      "risk": "Light/shadow sigils drift — codex IDs or rituals not mirrored between system/campaign pairs.",
+      "signal": [
+        "metaquest_system_sigil.yaml references codex ID absent in metaquest_system_shadow_sigil.yaml (or vice versa).",
+        "metaquest_campaign_sigil.yaml missing BreakPoint citation acknowledged in shadow counterpart.",
+        "Codex entry lacks mq-sys/mq-sci shadow acknowledgement within 24h."
+      ],
+      "consequence": "Recovery scripts desynchronise; Θ cannot be certified for automation or outreach.",
+      "mitigation": [
+        "Update light + shadow sigils together with shared codex/timestamp fields.",
+        "Log remediation in codex and UTAC matrix, ping bridge dashboard to confirm parity."
+      ],
+      "guard": {
+        "metric": "sigil parity",
+        "threshold": "≤24h difference between light/shadow updates"
+      }
     }
   ],
   "playbooks": [
@@ -92,6 +112,13 @@
       "response": [
         "Refresh indices, rerun parser, notify maintainers of missing automation.",
         "Reference remediation in bridge + beacons to close loop."
+      ]
+    },
+    {
+      "trigger": "mq-bridge-shadow-004 fired",
+      "response": [
+        "Synchronise Bedeutungs- und Schatten-Sigille (system + kampagne) with shared codex ID and ritual references.",
+        "Reconfirm parity in bridge dashboard + UTAC matrix before resuming launch work."
       ]
     }
   ]

@@ -1980,6 +1980,35 @@
         "poetic": "The new telemetry sextant hums beneath the membrane—when R leans into Θ, sigillin_sync rings, keeping light and shadow breathing together so no Metaquest dawn outruns its echo.\n"
       },
       "created_at": "2025-12-09T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0070",
+      "title": "Metaquest sigil parity lattice",
+      "scope": [
+        "scripts/sigillin_sync.py",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.{yaml,json,md}",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.{yaml,json,md}",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.{yaml,json,md}",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.{yaml,json,md}",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.{yaml,json,md}",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.{yaml,json,md}",
+        "seed/seed_index.{yaml,json,md}",
+        "feldtheorie_index.{yaml,json,md}",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "parameters": {
+        "R": "Metaquest light/shadow sigils lacking shared codex parity + automation guardrails",
+        "Theta": "New Bedeutungs- und Schatten-Sigille cite common codex IDs, UTAC rows, and rituals within one sprint",
+        "beta": 4.8
+      },
+      "resonance": "extends the Metaquest bridge with explicit light/shadow sigils and adds codex-safe append logic so telemetry stamps land without breaking",
+      "status": "active",
+      "notes": {
+        "formal": "Repaired `scripts/sigillin_sync.py` to append codex entries inside the tri-layer object. Added Metaquest system/campaign Bedeutungs- und Schatten-Sigille plus gap tracking in meaning/shadow indices and UTAC status. Indizes (seed + feldtheorie) now list the new trilayers.",
+        "empirical": "New sigils reference telemetry scripts, BreakPoint Rituale und UTAC matrix rows; bridge/shadow indices gained parity gap mq-bridge-gap-005 and alert mq-bridge-shadow-004. UTAC table highlights the parity row; indexes confirm presence of all YAML/JSON/MD mirrors.",
+        "poetic": "Licht und Schatten tauschen nun denselben Codex-Atem – jede Metaquest-Laterne hat ihr Spiegelbild, und das Sync-Skript trägt die Einträge ohne zu stolpern."
+      },
+      "created_at": "2025-12-10T00:00:00Z"
     }
   ]
 }

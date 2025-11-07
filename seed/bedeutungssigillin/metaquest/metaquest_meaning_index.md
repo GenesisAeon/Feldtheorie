@@ -50,6 +50,16 @@
    - *Empirisch*: mq-sci-Vektoren koppeln Playlist, Governance und Archivsuche in codex + UTAC Matrix.
    - *Poetisch*: Die Kampagnen-Stimmgabel, die den Chor zwischen den großen Updates stimmt.
 
+8. **Metaquest System Bedeutungs-Sigillin** — `../system/metaquest/metaquest_system_sigil.{yaml,json,md}`
+   - *Formal*: Verdichtet Automationsanforderungen zu codex- und UTAC-kompatiblen Guardrails.
+   - *Empirisch*: Zitiert `metaquest_system_map.*`, `scripts/sigillin_sync.py` und UTAC-Matrix-Anker.
+   - *Poetisch*: Die Laterne, die den Systemsteig beleuchtet, sobald Codex und Schatten rufen.
+
+9. **Metaquest Kampagnen Bedeutungs-Sigillin** — `../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.{yaml,json,md}`
+   - *Formal*: Hält Manuskript-, Outreach- und Endorsement-Zyklen in einem codexfähigen Raster.
+   - *Empirisch*: Gebunden an `metaquest_campaign_map.*`, `Finalisierung_Plattform.txt` und Paritätsbrief.
+   - *Poetisch*: Die Erzähl-Fackel, die Kampagnenresonanz und Systemparität verschränkt.
+
 ## Needed Resonances
 
 - **mq-bridge-gap-001 — Bridge dashboard parity**
@@ -71,6 +81,10 @@
 - **mq-bridge-gap-004 — Kompass ↔ Bridge Synchronisation**
   - Spiegle Telemetrie-Zeitstempel und Codex-IDs aus den System- und Kampagnenkompassen unmittelbar in die Bridge.
   - Null guard: Drift aktiviert `mq-bridge-shadow-002` sowie die Kompass-spezifischen Schattenalarme.
+
+- **mq-bridge-gap-005 — Sigillin-Parität**
+  - Stelle sicher, dass die neuen Bedeutungs-/Schatten-Sigille (System & Kampagne) gemeinsame Codex-IDs, UTAC-Zeilen und Ritualreferenzen teilen.
+  - Null guard: fehlende Kreuzreferenz löst `mq-bridge-shadow-001` und `mq-bridge-shadow-004` aus.
 
 ## Activation Hooks
 

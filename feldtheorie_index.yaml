@@ -269,18 +269,30 @@ navigation:
     - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml
     - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.json
     - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md
+    - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml
+    - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.json
+    - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.md
+    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
+    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.json
+    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md
     - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml
     - seed/shadow_sigillin/metaquest/metaquest_shadow_index.json
     - seed/shadow_sigillin/metaquest/metaquest_shadow_index.md
     - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
     - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.json
     - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.md
+    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml
+    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.json
+    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.md
     - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml
     - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.json
     - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.md
     - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml
     - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json
     - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md
+    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml
+    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.json
+    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.md
     - seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.yaml
     - seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.json
     - seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.md

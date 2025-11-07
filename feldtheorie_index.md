@@ -103,6 +103,8 @@ stats = idx['statistics']
 - `bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md` - Metaquest Kampagnen-Beacon (Storyboard & Endorsements)
 - `bedeutungssigillin/metaquest/system/metaquest_system_compass.md` - System-Kompass (Automation, Telemetrie, Codex-Echo)
 - `bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md` - Kampagnen-Kompass (Playlist, Endorsements, Archivsuche)
+- `bedeutungssigillin/system/metaquest/metaquest_system_sigil.md` - System-Bedeutungs-Sigillin (Codex-Parität, UTAC-Kopplung)
+- `bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md` - Kampagnen-Bedeutungs-Sigillin (Storytelling, Endorsement-Logistik)
 - `bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md` - Sentinel-Fall Linum (ökologische Hoch-β-Integration)
 
 ---

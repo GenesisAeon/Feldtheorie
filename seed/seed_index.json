@@ -1735,6 +1735,110 @@
         "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.json",
         "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.md"
       ]
+    },
+    {
+      "id": "synth-021",
+      "title": "Metaquest System Sigillin (Trilayer)",
+      "path": "bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "system",
+        "codex"
+      ],
+      "description": "Bedeutungs-Sigillin, das Automationsaufgaben, Codex-Hooks und UTAC-Governance für die Metaquest-Systemspine bündelt.",
+      "temporal": {
+        "created": "2025-12-10T00:00:00Z",
+        "modified": "2025-12-10T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/system/metaquest/metaquest_system_sigil.json",
+        "bedeutungssigillin/system/metaquest/metaquest_system_sigil.md"
+      ]
+    },
+    {
+      "id": "synth-022",
+      "title": "Metaquest System Schatten-Sigillin (Trilayer)",
+      "path": "shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "system",
+        "recovery"
+      ],
+      "description": "Schatten-Sigillin mit Alarmfeldern für Telemetrie-Blackouts, Index-Drift und Codex-Stille im Metaquest-Systemstrang.",
+      "temporal": {
+        "created": "2025-12-10T00:00:00Z",
+        "modified": "2025-12-10T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.json",
+        "shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.md"
+      ]
+    },
+    {
+      "id": "synth-023",
+      "title": "Metaquest Kampagnen Sigillin (Trilayer)",
+      "path": "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "kampagne",
+        "outreach"
+      ],
+      "description": "Bedeutungs-Sigillin für Manuskript-, Outreach- und Endorsement-Kopplungen der Metaquest-Kampagne mit Codex + UTAC.",
+      "temporal": {
+        "created": "2025-12-10T00:00:00Z",
+        "modified": "2025-12-10T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.json",
+        "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md"
+      ]
+    },
+    {
+      "id": "synth-024",
+      "title": "Metaquest Kampagnen Schatten-Sigillin (Trilayer)",
+      "path": "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "kampagne",
+        "outreach"
+      ],
+      "description": "Schatten-Sigillin für Kampagnenrisiken: Paritätsstille, Manuskript-Lag, Endorsement-Lücken und Outreach-Drift.",
+      "temporal": {
+        "created": "2025-12-10T00:00:00Z",
+        "modified": "2025-12-10T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.json",
+        "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.md"
+      ]
     }
   ],
   "domains": {
