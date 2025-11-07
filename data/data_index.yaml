@@ -14,11 +14,11 @@ meta:
   version: "1.0.0"
   created: "2025-11-06"
   status: "active"
-  total_files: 43
-  domains: 7
+  total_files: 47
+  domains: 8
 
 # ═══════════════════════════════════════════════════════════════════
-# DOMAINS: Die 7 Datenquellen-Bereiche
+# DOMAINS: Die 8 Datenquellen-Bereiche
 # ═══════════════════════════════════════════════════════════════════
 
 domains:
@@ -124,6 +124,17 @@ domains:
         description: "AMOC, Grönland, multi-threshold climate"
         keywords: [planetary, amoc, tipping-points, climate]
 
+  safety_delay:
+    name: "Safety-Delay Resonance"
+    path: "safety_delay/"
+    file_count: 4
+    description: "τ*-controller ΔAIC ledger für Simulator-Kopplung"
+    color: "#1ABC9C"
+    key_datasets:
+      - name: "safety_delay_delta_aic_20251107T211928Z.csv"
+        description: "σ(β(R-Θ)) ledger mit ΔAIC vs linear/constant"
+        keywords: [safety-delay, delta-aic, simulator, resonance]
+
 # ═══════════════════════════════════════════════════════════════════
 # METADATA-STANDARD
 # ═══════════════════════════════════════════════════════════════════
@@ -195,6 +206,7 @@ triggers:
     - Urban-Heat
     - AMOC
     - Tipping-Points
+    - Safety-Delay
 
   special:
     - beta_estimates.csv (⭐ ZENTRAL!)
@@ -216,6 +228,7 @@ quicklinks:
     - biology/lenski_citplus.csv (Evolution)
     - geophysics/subduction_rupture_threshold.csv (Cascadia β=16.29)
     - socio_ecology/urban_heat_canopy.csv (β≈15.3 Outlier!)
+    - safety_delay/safety_delay_delta_aic_20251107T211928Z.csv (Safety-Delay ΔAIC)
 
   outliers:
     - geophysics/subduction_rupture_threshold.csv (β=16.29)

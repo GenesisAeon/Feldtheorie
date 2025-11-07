@@ -7,8 +7,8 @@
     "version": "1.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "total_files": 43,
-    "domains": 7
+    "total_files": 47,
+    "domains": 8
   },
   "domains": {
     "ai": {
@@ -225,6 +225,25 @@
           ]
         }
       ]
+    },
+    "safety_delay": {
+      "name": "Safety-Delay Resonance",
+      "path": "safety_delay/",
+      "file_count": 4,
+      "description": "τ*-controller ΔAIC ledger für Simulator-Kopplung",
+      "color": "#1ABC9C",
+      "key_datasets": [
+        {
+          "name": "safety_delay_delta_aic_20251107T211928Z.csv",
+          "description": "σ(β(R-Θ)) ledger mit ΔAIC vs linear/constant",
+          "keywords": [
+            "safety-delay",
+            "delta-aic",
+            "simulator",
+            "resonance"
+          ]
+        }
+      ]
     }
   },
   "metadata_schema": {
@@ -263,20 +282,21 @@
       "JSON (metadata, simulations)",
       "metadata.json (annotations)"
     ],
-    "domains_keywords": [
-      "LLM",
-      "Wei-PaLM",
-      "Lenski-LTEE",
-      "QPO-Black-Hole",
-      "Synaptic",
-      "Honeybee",
-      "Working-Memory",
-      "Cascadia",
-      "Amazon",
-      "Urban-Heat",
-      "AMOC",
-      "Tipping-Points"
-    ],
+      "domains_keywords": [
+        "LLM",
+        "Wei-PaLM",
+        "Lenski-LTEE",
+        "QPO-Black-Hole",
+        "Synaptic",
+        "Honeybee",
+        "Working-Memory",
+        "Cascadia",
+        "Amazon",
+        "Urban-Heat",
+        "AMOC",
+        "Tipping-Points",
+        "Safety-Delay"
+      ],
     "special": [
       "beta_estimates.csv (⭐ ZENTRAL!)",
       "domain_covariates.csv (Meta-Regression)",
@@ -293,7 +313,8 @@
       "ai/wei_emergent_abilities.csv (Wei's PaLM)",
       "biology/lenski_citplus.csv (Evolution)",
       "geophysics/subduction_rupture_threshold.csv (Cascadia β=16.29)",
-      "socio_ecology/urban_heat_canopy.csv (β≈15.3 Outlier!)"
+      "socio_ecology/urban_heat_canopy.csv (β≈15.3 Outlier!)",
+      "safety_delay/safety_delay_delta_aic_20251107T211928Z.csv (Safety-Delay ΔAIC)"
     ],
     "outliers": [
       "geophysics/subduction_rupture_threshold.csv (β=16.29)",

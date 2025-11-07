@@ -55,6 +55,7 @@ class SweepConfig:
     noise_std: float = 0.01
     initial_state: float | None = None
     base_seed: int = 1337
+    replicates: int = 1
     control_strengths: Sequence[float] = (0.25, 0.35, 0.45)
     drift_rates: Sequence[float] = (0.008, 0.010, 0.012)
     beta_gains: Sequence[float] = (0.8, 1.0, 1.2)
@@ -152,9 +153,10 @@ def _run_single(
     drift_rate: float,
     beta_gain: float,
     config: SweepConfig,
-    seed_offset: int,
+    seed: int,
+    replicate_index: int,
 ) -> Dict[str, Any]:
-    rng = np.random.default_rng(config.base_seed + seed_offset)
+    rng = np.random.default_rng(seed)
     result: SafetyDelayResult = simulate_safety_delay_field(
         t_max=config.t_max,
         dt=config.dt,
@@ -206,7 +208,8 @@ def _run_single(
         "meta_resonance_control_centrality": float(meta_diag["control_centrality"]),
         "meta_resonance_crep": float(meta_diag["crep_resonance"]),
         "meta_resonance_combined": float(meta_diag["combined_signal"]),
-        "seed": int(config.base_seed + seed_offset),
+        "seed": int(seed),
+        "replicate": int(replicate_index),
         "sigma_notation": "sigma(beta*(R-Theta))",
     }
 
@@ -217,9 +220,18 @@ def run_sweep(config: SweepConfig) -> Dict[str, Any]:
     for c_strength in config.control_strengths:
         for drift in config.drift_rates:
             for beta_gain in config.beta_gains:
-                run = _run_single(c_strength, drift, beta_gain, config, seed_offset)
-                runs.append(run)
-                seed_offset += 1
+                for replicate_index in range(max(config.replicates, 1)):
+                    seed = int(config.base_seed + seed_offset)
+                    run = _run_single(
+                        c_strength,
+                        drift,
+                        beta_gain,
+                        config,
+                        seed,
+                        replicate_index,
+                    )
+                    runs.append(run)
+                    seed_offset += 1
 
     summary = _summarise_runs(runs)
     timestamp = datetime.now(timezone.utc).isoformat()
@@ -334,6 +346,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Base random seed; each run increments this offset.",
     )
     parser.add_argument(
+        "--replicates",
+        type=int,
+        default=1,
+        help="Number of stochastic replicates per parameter combination.",
+    )
+    parser.add_argument(
         "--output",
         type=Path,
         default=None,
@@ -353,6 +371,7 @@ def main(argv: Sequence[str] | None = None) -> Path:
         theta=args.theta,
         noise_std=args.noise_std,
         base_seed=args.base_seed,
+        replicates=max(1, int(args.replicates)),
         control_strengths=_parse_float_list(args.control_strengths, SweepConfig.control_strengths),
         drift_rates=_parse_float_list(args.drift_rates, SweepConfig.drift_rates),
         beta_gains=_parse_float_list(args.beta_gains, SweepConfig.beta_gains),

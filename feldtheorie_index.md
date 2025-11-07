@@ -15,12 +15,12 @@ Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **164 katalogis
 │
 ├── 🌱 seed/        71 docs   (Meta, Theorie, Validierung)
 ├── 📊 analysis/    32 scripts (Fits, Batch, Meta-Regression)
-├── 📦 data/        43 files   (7 Domänen, β-Estimates)
+├── 📦 data/        47 files   (8 Domänen, β-Estimates)
 ├── 🔬 models/      10 models  (Solver, ODE-Systeme)
 ├── 📚 docs/        12 docs    (Theory, Falsifiability, Parity)
 └── 🗄️  archive/      0 items   (Sigillin Cold Storage)
 
-Total: 164 files | 18 Trilayer-Indizes (YAML+JSON+MD)
+Total: 168 files | 18 Trilayer-Indizes (YAML+JSON+MD)
 ```
 
 ---
@@ -131,7 +131,7 @@ stats = idx['statistics']
 ---
 
 ### 📦 **data/** - Data Resonance Archive
-**43 Dateien** | **7 Domänen**
+**47 Dateien** | **8 Domänen**
 📍 Index: `data/data_index.{yaml,json,md}`
 
 **Was:** Empirische Datasets aus AI, Biology, Geophysics, etc.
@@ -139,6 +139,7 @@ stats = idx['statistics']
 **Must-Know:**
 - `derived/beta_estimates.csv` - ⭐ **ALLE β-Werte!**
 - `derived/domain_covariates.csv` - Kovariaten für Meta-Regression
+- `safety_delay/safety_delay_delta_aic_20251107T211928Z.csv` - Safety-Delay ΔAIC Ledger
 
 **Outliers:**
 - Urban Heat (β=16.3) 🔥

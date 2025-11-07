@@ -85,14 +85,15 @@
         "json": "data/data_index.json",
         "md": "data/data_index.md"
       },
-      "total_items": 43,
-      "categories": 7,
-      "description": "Empirische Datasets aus 7 Domänen:\nAI (9), Astrophysics (2), Biology (7), Cognition (6),\nDerived (5), Geophysics (4), Socio-Ecology (10).\nZentral: derived/beta_estimates.csv (alle β-Werte!)\n",
+      "total_items": 47,
+      "categories": 8,
+      "description": "Empirische Datasets aus 8 Domänen:\nAI (9), Astrophysics (2), Biology (7), Cognition (6),\nDerived (5), Geophysics (4), Socio-Ecology (10), Safety-Delay (4).\nZentral: derived/beta_estimates.csv (alle β-Werte!)\n",
       "color": "#27AE60",
       "relevance": "high",
       "highlights": [
         "derived/beta_estimates.csv (⭐ ROSETTA STONE!)",
         "derived/domain_covariates.csv (Meta-Regression)",
+        "safety_delay/safety_delay_delta_aic_20251107T211928Z.csv (Safety-Delay ΔAIC)",
         {
           "Outliers": "Urban Heat (β=16.3), Cascadia (β=16.29)"
         }
@@ -376,12 +377,12 @@
   },
   "statistics": {
     "directories_indexed": 6,
-    "total_files_cataloged": 164,
+    "total_files_cataloged": 168,
     "trilayer_indices": 18,
     "breakdown": {
       "seed": 69,
       "analysis": 32,
-      "data": 43,
+      "data": 47,
       "models": 10,
       "docs": 12,
       "archive": 0
@@ -394,7 +395,7 @@
     "project_size": {
       "python_scripts": 43,
       "markdown_docs": "~80",
-      "data_files": 43
+      "data_files": 47
     }
   },
   "version_info": {

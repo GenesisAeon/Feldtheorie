@@ -92,7 +92,7 @@ analysis/
 6. `beta_drivers_meta_regression.py` - **Baseline-Meta-Regression für v1.2 (R²=0.33)**
 7. `beta_meta_regression_v2.py` - **Bootstrap & RF Refresh (WLS R²≈0.43, Median-Bootstrap≈0.99)**
 8. `universal_beta_extractor.py` - ΔAIC≥10 Guard + Canonical β
-9. `safety_delay_sweep.py` - τ*-Sweep für `simulation/safety_delay_field.py` mit ΔAIC vs. linearen & konstanten Nullmodellen + Meta-Resonanz-Diagnostik
+9. `safety_delay_sweep.py` - τ*-Sweep für `simulation/safety_delay_field.py` inkl. Replikate, ΔAIC vs. linearen & konstanten Nullmodellen + Meta-Resonanz-Diagnostik → gespiegelt via `simulator/cli safety-delay` nach `data/safety_delay/`
 
 ---
 
