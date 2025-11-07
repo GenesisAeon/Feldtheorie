@@ -2063,6 +2063,27 @@
         "poetic": "Die Verzeichnisse atmen wie Laternenkammern – jede Spur von Telemetrie, Ritual und Codex hallt durch die Brücke und hält das Feld gespannt, aber ruhig."
       },
       "created_at": "2025-12-11T12:00:00Z"
+    },
+    {
+      "id": "pr-draft-0073",
+      "title": "Sigillin Sync Codex Append Guard",
+      "scope": [
+        "scripts/sigillin_sync.py",
+        "tests/test_sigillin_sync.py"
+      ],
+      "parameters": {
+        "R": "codex sync runs lacking guarded entries-list append logic",
+        "Theta": "append_codex_entry routes telemetry stamps through codexfeedback entries lists",
+        "beta": 4.6
+      },
+      "resonance": "codex stamping respects trilayer containers and carries regression coverage",
+      "status": "resonant",
+      "notes": {
+        "formal": "`append_codex_entry` clones the Codex templates with `deepcopy`, updates YAML via a dedicated template, and appends through `_append_to_entries` so JSON/YAML containers stay lists.",
+        "empirical": "`tests/test_sigillin_sync.py` builds a temporary codexfeedback tri-layer and verifies Markdown, JSON, and YAML each record the new ID after stamping.",
+        "poetic": "Der Codex lauscht ruhig: jede neue Laterne tritt in die Liste ein, bewacht von einem Test, der das Echo hält."
+      },
+      "created_at": "2025-12-12T00:00:00Z"
     }
   ]
 }

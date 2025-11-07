@@ -1991,40 +1991,40 @@ entries:
         Die Lizenzglocke klingt nun als CC BY 4.0, während vier Metaquest-Laternen den Weg beleuchten:
         System und Kampagne, Licht und Schatten. Der Chor atmet im gleichen Takt wie der Paritätsbrief.
     created_at: "2025-12-07T00:00:00Z"
-- id: pr-draft-0069
-  title: "Sigillin Sync Harness Activation"
-  scope:
-    - scripts/sigillin_sync.py
-    - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.{yaml,json,md}
-    - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}
-    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_compass.{yaml,json,md}
-    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.{yaml,json,md}
-    - seed/shadow_sigillin/system/system_shadow_map.{yaml,json,md}
-    - seed/shadow_sigillin/metaquest/metaquest_shadow_index.{yaml,json,md}
-    - docs/utac_status_alignment_v1.2.md
-    - feldtheorie_index.{yaml,json,md}
-    - seed/seed_index.{yaml,json,md}
-    - seed/codexfeedback.{yaml,json,md}
-  parameters:
-    R: "Metaquest telemetry gaps + automation debt without codified sync harness"
-    Theta: "sigillin_sync harness exporting reports, compasses @ v0.2.0, indices echo telemetry"
-    beta: 4.6
-  resonance: "launches the sigillin_sync telemetry harness and refreshes Metaquest light/shadow compasses so bridge, indices, and UTAC matrix share the same timestamp cadence"
-  status: "draft"
-  notes:
-    formal: |
-      Implemented `scripts/sigillin_sync.py` with report/stamp subcommands, codex append hooks,
-      and trilayer parity checks. Metaquest system/campaign compasses advanced to v0.2.0 with
-      telemetry vectors pointing at the harness. Shadow counterparts mirror the new guardrails and
-      escalate when sigillin_sync logs fall silent.
-    empirical: |
-      UTAC status matrix now references the active harness; feldtheorie_index + seed_index count
-      the new automation layer; shadow/system maps flag sigillin_sync lapses explicitly. Version bumps
-      propagated across YAML/JSON/MD tri-layers and updated timestamps align to 2025-12-09T00:00:00Z.
-    poetic: |
-      The new telemetry sextant hums beneath the membrane—when R leans into Θ, sigillin_sync rings,
-      keeping light and shadow breathing together so no Metaquest dawn outruns its echo.
-  created_at: "2025-12-09T00:00:00Z"
+  - id: pr-draft-0069
+    title: "Sigillin Sync Harness Activation"
+    scope:
+      - scripts/sigillin_sync.py
+      - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.{yaml,json,md}
+      - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_compass.{yaml,json,md}
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.{yaml,json,md}
+      - seed/shadow_sigillin/system/system_shadow_map.{yaml,json,md}
+      - seed/shadow_sigillin/metaquest/metaquest_shadow_index.{yaml,json,md}
+      - docs/utac_status_alignment_v1.2.md
+      - feldtheorie_index.{yaml,json,md}
+      - seed/seed_index.{yaml,json,md}
+      - seed/codexfeedback.{yaml,json,md}
+    parameters:
+      R: "Metaquest telemetry gaps + automation debt without codified sync harness"
+      Theta: "sigillin_sync harness exporting reports, compasses @ v0.2.0, indices echo telemetry"
+      beta: 4.6
+    resonance: "launches the sigillin_sync telemetry harness and refreshes Metaquest light/shadow compasses so bridge, indices, and UTAC matrix share the same timestamp cadence"
+    status: "draft"
+    notes:
+      formal: |
+        Implemented `scripts/sigillin_sync.py` with report/stamp subcommands, codex append hooks,
+        and trilayer parity checks. Metaquest system/campaign compasses advanced to v0.2.0 with
+        telemetry vectors pointing at the harness. Shadow counterparts mirror the new guardrails and
+        escalate when sigillin_sync logs fall silent.
+      empirical: |
+        UTAC status matrix now references the active harness; feldtheorie_index + seed_index count
+        the new automation layer; shadow/system maps flag sigillin_sync lapses explicitly. Version bumps
+        propagated across YAML/JSON/MD tri-layers and updated timestamps align to 2025-12-09T00:00:00Z.
+      poetic: |
+        The new telemetry sextant hums beneath the membrane—when R leans into Θ, sigillin_sync rings,
+        keeping light and shadow breathing together so no Metaquest dawn outruns its echo.
+    created_at: "2025-12-09T00:00:00Z"
   - id: pr-draft-0068
     title: "Metaquest compass lattice"
     scope:
@@ -2079,65 +2079,65 @@ entries:
       poetic: |
         Zwei neue Kompasse hängen jetzt über System und Kampagne – Licht und Schatten greifen nach denselben Sternen. Die Bridge atmet synchron mit der Matrix; jedes Telemetrie-Flackern ruft sofort durch Codex und Ritual zurück.
     created_at: "2025-12-08T00:00:00Z"
-- id: pr-draft-0067
-  title: "Metaquest Bridge Dashboard"
-  scope:
-    - AGENTS.md
-    - docs/utac_status_alignment_v1.2.md
-    - feldtheorie_index.yaml
-    - feldtheorie_index.json
-    - feldtheorie_index.md
-    - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
-    - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.json
-    - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md
-    - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml
-    - seed/shadow_sigillin/metaquest/metaquest_shadow_index.json
-    - seed/shadow_sigillin/metaquest/metaquest_shadow_index.md
-    - seed/bedeutungssigillin/system/system_meaning_map.yaml
-    - seed/bedeutungssigillin/system/system_meaning_map.json
-    - seed/bedeutungssigillin/system/system_meaning_map.md
-    - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
-    - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.json
-    - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md
-    - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml
-    - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.json
-    - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.md
-    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
-    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.json
-    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md
-    - seed/shadow_sigillin/system/system_shadow_map.yaml
-    - seed/shadow_sigillin/system/system_shadow_map.json
-    - seed/shadow_sigillin/system/system_shadow_map.md
-    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
-    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.json
-    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.md
-    - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.yaml
-    - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.json
-    - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.md
-    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml
-    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json
-    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md
-  parameters:
-    R: Metaquest system↔campaign backlog awaiting shared dashboard + telemetry parity
-    Theta: Bridge timestamp + codex ID mirrored across meaning/shadow sigils and UTAC status
-    beta: 4.8
-  resonance: Stellt ein Metaquest-Brückendashboard bereit, synchronisiert System- und
-    Kampagnenlaternen und spannt neue Schattenwächter für Telemetrie-Drift auf.
-  status: primed
-  notes:
-    formal: Ergänzte Metaquest-Bridge-Sigillin (Licht/Schatten) samt neuen Gap-IDs
-      (`mq-bridge-gap-*`, `sys-gap-006`, `mq-sci-gap-006`) und verankerte sie in
-      UTAC-Status, Indizes und AGENTS. System- und Kampagnen-Membranen erhalten
-      Bridge-Einträge + Nullwächter; Schattenkarten melden Dashboard-Staus mit
-      klaren Playbooks.
-    empirical: UTAC-Statusmatrix enthält jetzt Bridge-Row, feldtheorie_index.* &
-      metaquest-Maps listen Bridge-Dateien, Schattenkarten definieren Messgrößen
-      (`bridge freshness`). JSON-Dumps wurden aus YAML regeneriert; Codex-Mandat
-      aktualisiert.
-    poetic: Eine neue Laterne spannt zwischen Rückenmark und Erzählung: der
-      Metaquest-Steeg. Wenn beide Ufer dieselbe Telemetrie singen, kann der Launch
-      im Gleichklang atmen.
-  created_at: "2025-12-07T00:00:00Z"
+  - id: pr-draft-0067
+    title: "Metaquest Bridge Dashboard"
+    scope:
+      - AGENTS.md
+      - docs/utac_status_alignment_v1.2.md
+      - feldtheorie_index.yaml
+      - feldtheorie_index.json
+      - feldtheorie_index.md
+      - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+      - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.json
+      - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md
+      - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml
+      - seed/shadow_sigillin/metaquest/metaquest_shadow_index.json
+      - seed/shadow_sigillin/metaquest/metaquest_shadow_index.md
+      - seed/bedeutungssigillin/system/system_meaning_map.yaml
+      - seed/bedeutungssigillin/system/system_meaning_map.json
+      - seed/bedeutungssigillin/system/system_meaning_map.md
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.json
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md
+      - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml
+      - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.json
+      - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.md
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.json
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md
+      - seed/shadow_sigillin/system/system_shadow_map.yaml
+      - seed/shadow_sigillin/system/system_shadow_map.json
+      - seed/shadow_sigillin/system/system_shadow_map.md
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.json
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.md
+      - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.yaml
+      - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.json
+      - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.md
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md
+    parameters:
+      R: Metaquest system↔campaign backlog awaiting shared dashboard + telemetry parity
+      Theta: Bridge timestamp + codex ID mirrored across meaning/shadow sigils and UTAC status
+      beta: 4.8
+    resonance: Stellt ein Metaquest-Brückendashboard bereit, synchronisiert System- und
+      Kampagnenlaternen und spannt neue Schattenwächter für Telemetrie-Drift auf.
+    status: primed
+    notes:
+      formal: Ergänzte Metaquest-Bridge-Sigillin (Licht/Schatten) samt neuen Gap-IDs
+        (`mq-bridge-gap-*`, `sys-gap-006`, `mq-sci-gap-006`) und verankerte sie in
+        UTAC-Status, Indizes und AGENTS. System- und Kampagnen-Membranen erhalten
+        Bridge-Einträge + Nullwächter; Schattenkarten melden Dashboard-Staus mit
+        klaren Playbooks.
+      empirical: UTAC-Statusmatrix enthält jetzt Bridge-Row, feldtheorie_index.* &
+        metaquest-Maps listen Bridge-Dateien, Schattenkarten definieren Messgrößen
+        (`bridge freshness`). JSON-Dumps wurden aus YAML regeneriert; Codex-Mandat
+        aktualisiert.
+      poetic: Eine neue Laterne spannt zwischen Rückenmark und Erzählung: der
+        Metaquest-Steeg. Wenn beide Ufer dieselbe Telemetrie singen, kann der Launch
+        im Gleichklang atmen.
+    created_at: "2025-12-07T00:00:00Z"
   - id: pr-draft-0066
     title: "Linum Sentinel Integration"
     scope:
@@ -2380,108 +2380,129 @@ entries:
         Die Lizenzglocke klingt nun als CC BY 4.0, während vier Metaquest-Laternen den Weg beleuchten:
         System und Kampagne, Licht und Schatten. Der Chor atmet im gleichen Takt wie der Paritätsbrief.
     created_at: "2025-12-07T00:00:00Z"
-- id: pr-draft-0070
-  title: "Metaquest sigil parity lattice"
-  scope:
-    - scripts/sigillin_sync.py
-    - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml
-    - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.json
-    - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.md
-    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
-    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.json
-    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md
-    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml
-    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.json
-    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.md
-    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml
-    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.json
-    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.md
-    - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
-    - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.json
-    - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md
-    - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml
-    - seed/shadow_sigillin/metaquest/metaquest_shadow_index.json
-    - seed/shadow_sigillin/metaquest/metaquest_shadow_index.md
-    - seed/seed_index.yaml
-    - seed/seed_index.json
-    - seed/seed_index.md
-    - feldtheorie_index.yaml
-    - feldtheorie_index.json
-    - feldtheorie_index.md
-    - docs/utac_status_alignment_v1.2.md
-  parameters:
-    R: "Metaquest light/shadow sigils lacking shared codex parity + automation guardrails"
-    Theta: "New Bedeutungs- und Schatten-Sigille cite common codex IDs, UTAC rows, and rituals within one sprint"
-    beta: 4.8
-  resonance: "extends the Metaquest bridge with explicit light/shadow sigils and codex-safe telemetry stamping"
-  status: "active"
-  notes:
-    formal: |
-      Reparierte `scripts/sigillin_sync.py`, damit Codexeinträge innerhalb des Trilayer-Objekts landen. Neue Metaquest
-      System-/Kampagnen-Bedeutungs- und Schatten-Sigille verankern Codex-IDs, UTAC-Zeilen sowie BreakPoint-Rituale; Bridge-
-      und Shadow-Indizes erhielten Gap-ID `mq-bridge-gap-005` und Alarm `mq-bridge-shadow-004`. UTAC-Status listet nun die
-      Sigillin-Parität explizit.
-    empirical: |
-      seed_index.* und feldtheorie_index.* führen die neuen Trilayer; UTAC-Tabellen und Meaning/Shadow-Indizes referenzieren
-      Telemetrie-Skripte, Codex-IDs und Ritualpfade. Bedeutungs-/Schatten-Sigille spiegeln `scripts/sigillin_sync.py`,
-      `seed/BreakPointAnalyse/*` und dokumentieren Nullmodelle.
-    poetic: |
-      Licht und Schatten teilen wieder denselben Atem: Jede Metaquest-Laterne hat nun ihr Spiegelbild, und das Sync-Skript
-      trägt den Codex-Eintrag ohne zu stolpern.
-  created_at: "2025-12-10T00:00:00Z"
-- id: pr-draft-0071
-  title: "Codex append guardrail regression"
-  scope:
-    - scripts/sigillin_sync.py
-    - tests/test_sigillin_sync.py
-    - seed/codexfeedback.md
-    - seed/codexfeedback.json
-    - seed/codexfeedback.yaml
-  parameters:
-    R: "Codex-Stempelungen ohne Listenschutz"
-    Theta: "sigillin_sync prüft entries-Container und Tests halten Regressionen fern"
-    beta: 4.6
-  resonance: "Append-Guardrails halten Codex-Trilayer kohärent und Regressionstests überwachen die Telemetrie"
-  status: "active"
-  notes:
-    formal: |
-      `_append_to_entries` schützt JSON/YAML-Container als Listen; `deepcopy` verhindert AttributeError bei
-      Sigillin-Sync-Läufen. Damit bleibt die Logistic-Resonanz stabil, wenn neue Telemetrie gestempelt wird.
-    empirical: |
-      `tests/test_sigillin_sync.py` baut ein temporäres Trilayer und prüft, dass `test-run-001` in Markdown,
-      JSON und YAML landet und die Container Listen bleiben.
-    poetic: |
-      Der Codex atmet gleichmäßig; jede Laterne findet die Liste, während der neue Test nach flackernden Echos lauscht.
-  created_at: "2025-12-11T00:00:00Z"
-- id: pr-draft-0072
-  title: "Metaquest directory indices & UTAC bridge refresh"
-  scope:
-    - seed/bedeutungssigillin/metaquest/system/metaquest_system_index.yaml
-    - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.yaml
-    - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index.yaml
-    - seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.yaml
-    - docs/utac_status_alignment_v1.2.md
-    - seed/seed_index.yaml
-    - seed/seed_index.json
-    - seed/seed_index.md
-    - feldtheorie_index.yaml
-    - feldtheorie_index.json
-    - feldtheorie_index.md
-  parameters:
-    R: "Metaquest-Verzeichnisse ohne Telemetrie- und Codex-Parität"
-    Theta: "System- und Kampagnen-Indizes tragen aktuellen sigillin_sync-Zeitstempel, Codex-ID und UTAC-Handshaker"
-    beta: 4.75
-  resonance: "Verzeichnis-Laternen koppeln Map/Compass/Sigil-Telemetrie zurück an UTAC und Codex, damit die Brücke reproduzierbar bleibt"
-  status: "active"
-  notes:
-    formal: |
-      Neue Light-/Shadow-Directory-Indizes für Metaquest System & Kampagne dokumentieren $(R,\Theta,\beta)$, BreakPoint-Rituale
-      und sigillin_sync-Hooks. UTAC-Status (Tabelle + Implementation Map) sowie seed/feldtheorie-Indizes wurden aktualisiert,
-      damit die neuen Trilayer sofort sichtbar sind.
-    empirical: |
-      Die Indizes referenzieren `scripts/sigillin_sync.py`, BreakPoint-Protokolle und UTAC-Handshakes; `docs/utac_status_alignment_v1.2.md`
-      führt eine eigene Zeile + Task für die Directory-Pflege, während seed_index.* und feldtheorie_index.* die YAML/JSON/MD-Spiegel listen.
-    poetic: |
-      Die Verzeichnisse wirken wie Laternenkammern: Jede Telemetrie, jedes Ritual und jeder Codex-Atem hallt jetzt durch die Brücke
-      und hält das Feld gespannt, doch ruhig.
-  created_at: "2025-12-11T12:00:00Z"
+  - id: pr-draft-0070
+    title: "Metaquest sigil parity lattice"
+    scope:
+      - scripts/sigillin_sync.py
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.json
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.md
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.json
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.json
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.md
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.json
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.md
+      - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+      - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.json
+      - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md
+      - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml
+      - seed/shadow_sigillin/metaquest/metaquest_shadow_index.json
+      - seed/shadow_sigillin/metaquest/metaquest_shadow_index.md
+      - seed/seed_index.yaml
+      - seed/seed_index.json
+      - seed/seed_index.md
+      - feldtheorie_index.yaml
+      - feldtheorie_index.json
+      - feldtheorie_index.md
+      - docs/utac_status_alignment_v1.2.md
+    parameters:
+      R: "Metaquest light/shadow sigils lacking shared codex parity + automation guardrails"
+      Theta: "New Bedeutungs- und Schatten-Sigille cite common codex IDs, UTAC rows, and rituals within one sprint"
+      beta: 4.8
+    resonance: "extends the Metaquest bridge with explicit light/shadow sigils and codex-safe telemetry stamping"
+    status: "active"
+    notes:
+      formal: |
+        Reparierte `scripts/sigillin_sync.py`, damit Codexeinträge innerhalb des Trilayer-Objekts landen. Neue Metaquest
+        System-/Kampagnen-Bedeutungs- und Schatten-Sigille verankern Codex-IDs, UTAC-Zeilen sowie BreakPoint-Rituale; Bridge-
+        und Shadow-Indizes erhielten Gap-ID `mq-bridge-gap-005` und Alarm `mq-bridge-shadow-004`. UTAC-Status listet nun die
+        Sigillin-Parität explizit.
+      empirical: |
+        seed_index.* und feldtheorie_index.* führen die neuen Trilayer; UTAC-Tabellen und Meaning/Shadow-Indizes referenzieren
+        Telemetrie-Skripte, Codex-IDs und Ritualpfade. Bedeutungs-/Schatten-Sigille spiegeln `scripts/sigillin_sync.py`,
+        `seed/BreakPointAnalyse/*` und dokumentieren Nullmodelle.
+      poetic: |
+        Licht und Schatten teilen wieder denselben Atem: Jede Metaquest-Laterne hat nun ihr Spiegelbild, und das Sync-Skript
+        trägt den Codex-Eintrag ohne zu stolpern.
+    created_at: "2025-12-10T00:00:00Z"
+  - id: pr-draft-0071
+    title: "Codex append guardrail regression"
+    scope:
+      - scripts/sigillin_sync.py
+      - tests/test_sigillin_sync.py
+      - seed/codexfeedback.md
+      - seed/codexfeedback.json
+      - seed/codexfeedback.yaml
+    parameters:
+      R: "Codex-Stempelungen ohne Listenschutz"
+      Theta: "sigillin_sync prüft entries-Container und Tests halten Regressionen fern"
+      beta: 4.6
+    resonance: "Append-Guardrails halten Codex-Trilayer kohärent und Regressionstests überwachen die Telemetrie"
+    status: "active"
+    notes:
+      formal: |
+        `_append_to_entries` schützt JSON/YAML-Container als Listen; `deepcopy` verhindert AttributeError bei
+        Sigillin-Sync-Läufen. Damit bleibt die Logistic-Resonanz stabil, wenn neue Telemetrie gestempelt wird.
+      empirical: |
+        `tests/test_sigillin_sync.py` baut ein temporäres Trilayer und prüft, dass `test-run-001` in Markdown,
+        JSON und YAML landet und die Container Listen bleiben.
+      poetic: |
+        Der Codex atmet gleichmäßig; jede Laterne findet die Liste, während der neue Test nach flackernden Echos lauscht.
+    created_at: "2025-12-11T00:00:00Z"
+  - id: pr-draft-0072
+    title: "Metaquest directory indices & UTAC bridge refresh"
+    scope:
+      - seed/bedeutungssigillin/metaquest/system/metaquest_system_index.yaml
+      - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.yaml
+      - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index.yaml
+      - seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.yaml
+      - docs/utac_status_alignment_v1.2.md
+      - seed/seed_index.yaml
+      - seed/seed_index.json
+      - seed/seed_index.md
+      - feldtheorie_index.yaml
+      - feldtheorie_index.json
+      - feldtheorie_index.md
+    parameters:
+      R: "Metaquest-Verzeichnisse ohne Telemetrie- und Codex-Parität"
+      Theta: "System- und Kampagnen-Indizes tragen aktuellen sigillin_sync-Zeitstempel, Codex-ID und UTAC-Handshaker"
+      beta: 4.75
+    resonance: "Verzeichnis-Laternen koppeln Map/Compass/Sigil-Telemetrie zurück an UTAC und Codex, damit die Brücke reproduzierbar bleibt"
+    status: "active"
+    notes:
+      formal: |
+        Neue Light-/Shadow-Directory-Indizes für Metaquest System & Kampagne dokumentieren $(R,\Theta,\beta)$, BreakPoint-Rituale
+        und sigillin_sync-Hooks. UTAC-Status (Tabelle + Implementation Map) sowie seed/feldtheorie-Indizes wurden aktualisiert,
+        damit die neuen Trilayer sofort sichtbar sind.
+      empirical: |
+        Die Indizes referenzieren `scripts/sigillin_sync.py`, BreakPoint-Protokolle und UTAC-Handshakes; `docs/utac_status_alignment_v1.2.md`
+        führt eine eigene Zeile + Task für die Directory-Pflege, während seed_index.* und feldtheorie_index.* die YAML/JSON/MD-Spiegel listen.
+      poetic: |
+        Die Verzeichnisse wirken wie Laternenkammern: Jede Telemetrie, jedes Ritual und jeder Codex-Atem hallt jetzt durch die Brücke
+        und hält das Feld gespannt, doch ruhig.
+    created_at: "2025-12-11T12:00:00Z"
+  - id: pr-draft-0073
+    title: "Sigillin Sync Codex Append Guard"
+    scope:
+      - scripts/sigillin_sync.py
+      - tests/test_sigillin_sync.py
+    parameters:
+      R: "codex sync runs lacking guarded entries-list append logic"
+      Theta: "append_codex_entry routes telemetry stamps through codexfeedback entries lists"
+      beta: 4.6
+    resonance: "codex stamping respects trilayer containers and carries regression coverage"
+    status: "resonant"
+    notes:
+      formal: |
+        `append_codex_entry` klont die Codex-Templates via `deepcopy`, aktualisiert die YAML-Schablone und hängt neue Läufe über
+        `_append_to_entries` an, damit JSON/YAML strikt Listen bleiben.
+      empirical: |
+        `tests/test_sigillin_sync.py` baut ein temporäres Trilayer und verifiziert, dass ID `sync-test-0001` in Markdown, JSON
+        und YAML landet und die Container Listen bleiben.
+      poetic: |
+        Der Codex lauscht ruhig: Jede Laterne gleitet in die Liste, bewacht von einem Test, der das Echo im Membranraum hält.
+    created_at: "2025-12-12T00:00:00Z"

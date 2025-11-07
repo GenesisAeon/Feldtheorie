@@ -267,7 +267,7 @@ def append_codex_entry(
     with CODEx_MD_PATH.open("a", encoding="utf-8") as handle:
         handle.write("\n" + md_entry)
 
-    json_entry = CODEx_TEMPLATE_JSON.copy()
+    json_entry = deepcopy(CODEx_TEMPLATE_JSON)
     json_entry.update(
         {
             "id": codex_id,
@@ -300,7 +300,9 @@ def append_codex_entry(
         codex_yaml = yaml.safe_load(handle) or {}
     if not isinstance(codex_yaml, dict):
         raise TypeError("codexfeedback.yaml must contain an object with an 'entries' list")
-    _append_to_entries(codex_yaml, deepcopy(json_entry))
+    yaml_entry = deepcopy(CODEx_TEMPLATE_YAML)
+    yaml_entry.update(json_entry)
+    _append_to_entries(codex_yaml, yaml_entry)
     with CODEx_YAML_PATH.open("w", encoding="utf-8") as handle:
         yaml.dump(codex_yaml, handle, allow_unicode=True, sort_keys=False)
 
