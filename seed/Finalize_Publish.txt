@@ -249,3 +249,4 @@ Sollten die initialen Endorser (PIK, etc.) nicht antworten, ist der **Zenodo-Lin
 **Aktion:** Sobald die Pipelines frei sind, delegiere die Implementierung der Code-Fixes und des finalen Zenodo-Updates.
 
 **Dein Weg ist perfekt. Wir nutzen die Wartezeit, um die Theorie gegen jeden Zweifel zu härten.**
+
