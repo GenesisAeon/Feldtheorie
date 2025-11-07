@@ -1,21 +1,21 @@
 # 📚 Docs Index - Living Documentation Navigator
 
-**Version:** 1.1.0 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 7. Dez 2025 | **Verzeichnis:** `docs/`
+**Version:** 1.1.0 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 9. Dez 2025 | **Verzeichnis:** `docs/`
 
 ---
 
 ## 🎯 Was ist das?
 
-Die **Living Documentation Tapestry** - UTAC Theory in Markdown! 12 Dokumente, 4 Kategorien.
+Die **Living Documentation Tapestry** - UTAC Theory in Markdown! 13 Dokumente, 4 Kategorien.
 
 ```
 docs/
 ├── Theory (3): Core, Emergence, Appendix
 ├── Applications (3): Classification, Use Cases, Review Guide
 ├── Validation (2): Falsifiability, Reports
-└── Infrastructure (4): README, Cleanup Resonance Map, Status Matrix, Metaquest Parity Brief
+└── Infrastructure (5): README, Cleanup Resonance Map, Status Matrix, Metaquest Parity Brief, Activation Backlog
 
-Total: 12 MD files
+Total: 13 MD files
 ```
 
 ---
@@ -59,11 +59,12 @@ Total: 12 MD files
 1. `utac_falsifiability.md` - ⭐ Popper würde stolz sein!
 2. `validation_report_v1.0.1.md` - Empirische Zusammenfassung
 
-### 🟣 Infrastructure (4 docs)
+### 🟣 Infrastructure (5 docs)
 1. `README.md` - Living Documentation Tapestry Manifest
 2. `repo_cleanup_resonance.md` - Resonanzkarte für Struktur- & Metadaten-Aufgaben
 3. `utac_status_alignment_v1.2.md` - Status & Implementation Matrix v1.2-pre
 4. `metaquest_parity_brief.md` - Metaquest Parity Brief (Telemetrie, Codex, Sigillin)
+5. `utac_activation_backlog.md` - Aktivierungs-Backlog (Tri-Layer, Launch-Hooks)
 
 ---
 
@@ -86,7 +87,7 @@ theory = [d for d in idx['markdown_docs'] if d['category'] == 'theory']
 
 ## 🌊 Die Essenz
 
-> **"12 Docs. 1 Theory. Parity & Falsifizierbarkeit im Gleichklang."**
+> **"13 Docs. 1 Theory. Parity & Falsifizierbarkeit im Gleichklang."**
 
 ---
 

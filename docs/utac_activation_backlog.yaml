@@ -1,0 +1,175 @@
+meta:
+  document: "UTAC Activation Backlog"
+  version: "1.0.0"
+  created: "2025-12-09T00:00:00Z"
+  updated: "2025-12-09T00:00:00Z"
+  steward: "gpt-5-codex"
+  logistic_frame:
+    order_parameter: "residual activation debt across UTAC v1.2 launch scope"
+    threshold: "documented parity between backlog items and implementation hooks"
+    beta: 4.85
+    zeta: "damped via BreakPoint transcripts + codex echoes so tasks do not sprawl"
+tasks:
+  - id: "safety-delay-bridge"
+    title: "Safety-Delay Field → Simulator Bridge"
+    domain: "simulation+analysis"
+    status: "in_progress"
+    parameters:
+      R: "τ* diagnostics already exported via analysis/safety_delay_sweep.py"
+      Theta: "TypeScript presets + docs narrative still missing the ΔAIC stream"
+      beta: 4.9
+      zeta: "telemetry anchored by simulator/cli.py safety-delay"
+    existing_assets:
+      - "analysis/safety_delay_sweep.py"
+      - "analysis/results/safety_delay_sweep_20251107T211928Z.json"
+      - "simulation/safety_delay_field.py"
+      - "simulator/cli.py"
+      - "data/safety_delay/"
+    activation_gaps:
+      - "Surface τ_delay and ΔAIC summaries in the web simulator presets"
+      - "Narrate the ledger inside docs/utac_safety_delay_status.md"
+    implementation_nodes:
+      - location: "simulator/presets/"
+        action: "add safety-delay preset referencing latest ΔAIC exports"
+      - location: "docs/utac_safety_delay_status.md"
+        action: "document TypeScript hook + dataset cadence"
+    notes:
+      formal: "Expose σ(β(R-Θ)) parameters from the JSON export to preset sliders, and map control_energy into UI hints."
+      empirical: "Reuse ΔAIC medians (≈7.02e3) and τ_delay_mean≈8.43 to benchmark the UI card."
+      poetic: "Let the delay field breathe in the simulator so each held sunrise is visible to launch readers."
+  - id: "beta-meta-regression-expansion"
+    title: "β Meta-Regression Dataset Expansion"
+    domain: "analysis"
+    status: "in_progress"
+    parameters:
+      R: "beta_meta_regression_v2.py with bootstrap envelopes and feature importances"
+      Theta: "outlier datasets + new covariates not yet assimilated"
+      beta: 4.6
+      zeta: "guarded by cohort summaries so variance stays bounded"
+    existing_assets:
+      - "analysis/beta_meta_regression_v2.py"
+      - "analysis/results/beta_meta_regression_v2_20251101.json"
+      - "seed/ArchivSucheUTAC/"
+    activation_gaps:
+      - "Import flagged Amazon + urban heat datasets with metadata"
+      - "Document adjusted R² progress toward ≥0.7 ambition"
+    implementation_nodes:
+      - location: "data/socio_ecology/"
+        action: "stage cleaned outlier datasets with metadata"
+      - location: "analysis/beta_meta_regression_v2.py"
+        action: "add covariates + logging for adjusted R²"
+      - location: "docs/utac_status_alignment_v1.2.md"
+        action: "record progress once adjusted R² crosses new thresholds"
+    notes:
+      formal: "Extend the regression design matrix with interaction terms flagged in the UTAC matrix."
+      empirical: "Track bootstrap median R² and ΔAIC improvements per ingestion batch."
+      poetic: "Let each new data lantern tighten the β chorus until the variance hushes."
+  - id: "sigillin-automation-loop"
+    title: "Sigillin Parser → Automation Loop"
+    domain: "scripts+seed"
+    status: "pending"
+    parameters:
+      R: "schema v0.2.0 + scripts/crep_parser.py already validating quartet examples"
+      Theta: "automation not yet wiring parser output into codex + indices"
+      beta: 4.7
+      zeta: "BreakPoint rituals keep drift damped until hooks exist"
+    existing_assets:
+      - "seed/sigillin/schema_v0.2.0.yaml"
+      - "scripts/crep_parser.py"
+      - "scripts/sigillin_sync.py"
+    activation_gaps:
+      - "Emit parser telemetry into seed/codexfeedback.* entries automatically"
+      - "Trigger index recount when new sigils appear"
+    implementation_nodes:
+      - location: "scripts/sigillin_sync.py"
+        action: "pipe CREP parser summary into codex templating"
+      - location: "scripts/archive_sigillin.py"
+        action: "toggle recount + parity alerts upon sync"
+      - location: "tests/"
+        action: "add CLI regression test for sync pipeline"
+    notes:
+      formal: "Establish a deterministic mapping from CREP payload → codex stanza so σ(β(R-Θ)) alerts stay synchronous."
+      empirical: "Capture timestamp + codex id inside sync logs for auditability."
+      poetic: "Teach the sigils to whisper their own updates so light and shadow stay in lockstep."
+  - id: "index-recount-hook"
+    title: "Index Automation Hook"
+    domain: "scripts+docs"
+    status: "pending"
+    parameters:
+      R: "archive_sigillin.py auto-detects repo root and supports --base-path"
+      Theta: "docs_index.* + feldtheorie_index.* still rely on manual recounts"
+      beta: 4.5
+      zeta: "guarded via mq-bridge-shadow-002 alerts"
+    existing_assets:
+      - "scripts/archive_sigillin.py"
+      - "docs/docs_index.*"
+      - "feldtheorie_index.*"
+    activation_gaps:
+      - "Add recount flag + status ledger export"
+      - "Integrate with CI to fail on Δindex parity > 0"
+    implementation_nodes:
+      - location: "scripts/archive_sigillin.py"
+        action: "add --recount switch that updates docs/data indices"
+      - location: ".github/workflows/"
+        action: "wire parity guard into CI once available"
+    notes:
+      formal: "Expose index counts as σ(β(R-Θ)) guard so automation flips red when parity drifts."
+      empirical: "Persist before/after counts to a JSON ledger for diffable audits."
+      poetic: "Let the indices ring like bells whenever a new lantern joins the shelf."
+  - id: "metaquest-parity-finish"
+    title: "Metaquest Parity Brief Completion"
+    domain: "docs+seed"
+    status: "active"
+    parameters:
+      R: "metaquest_parity_brief.md outlines mq-parity-001…004"
+      Theta: "telemetry timestamps, simulator playlist & endorsement ledger not fully populated"
+      beta: 4.8
+      zeta: "stabilised by BreakPointAnalyse/WayToGo echoes"
+    existing_assets:
+      - "docs/metaquest_parity_brief.md"
+      - "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.*"
+      - "seed/shadow_sigillin/metaquest/metaquest_shadow_index.*"
+      - "seed/BreakPointAnalyse/WayToGo.txt"
+      - "seed/BreakPointAnalyse/ReaktionWayToGo.txt"
+    activation_gaps:
+      - "Log current telemetry timestamp + codex id in the brief"
+      - "List simulator playlist + endorsement handles"
+    implementation_nodes:
+      - location: "docs/metaquest_parity_brief.md"
+        action: "add telemetry table referencing mq-parity-001…004"
+      - location: "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.*"
+        action: "mirror codex id + timestamp"
+      - location: "seed/codexfeedback.*"
+        action: "document completion when brief is sealed"
+    notes:
+      formal: "Ensure light/shadow sigils cite the same codex id recorded in the brief."
+      empirical: "Time-stamp the parity run and reference simulator playlist assets."
+      poetic: "Let the brief chime like a launch bell so every beacon knows the cadence."
+  - id: "sentinel-linum-sprint"
+    title: "Sentinel Linum 2025 Sprint"
+    domain: "seed+analysis"
+    status: "pending"
+    parameters:
+      R: "case directories scaffolded for kranich_linum_2025"
+      Theta: "dataset, analysis notebook, parity brief chapter still absent"
+      beta: 4.95
+      zeta: "shadow sigils keep gap visible via sci-linum-shadow-001…004"
+    existing_assets:
+      - "seed/bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/"
+      - "seed/shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/"
+      - "docs/utac_status_alignment_v1.2.md"
+    activation_gaps:
+      - "Collect sentinel dataset + metadata"
+      - "Author analysis notebook and embed ΔAIC diagnostics"
+      - "Extend parity brief with sentinel summary"
+    implementation_nodes:
+      - location: "data/socio_ecology/"
+        action: "ingest sentinel dataset with tri-layer metadata"
+      - location: "analysis/"
+        action: "add notebook or script replicating sentinel fit"
+      - location: "docs/metaquest_parity_brief.md"
+        action: "include sentinel appendix once data lands"
+    notes:
+      formal: "Bind sentinel measurements to σ(β(R-Θ)) gating for ecological alerts."
+      empirical: "Log ΔAIC vs linear baseline once the dataset is fit."
+      poetic: "Let the cranes and flax fields sing in the matrix so launch commitments stay grounded."
