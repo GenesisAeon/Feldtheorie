@@ -2534,3 +2534,38 @@ entries:
       poetic: |
         Der Codex lauscht ruhig: Jede Laterne gleitet in die Liste, bewacht von einem Test, der das Echo im Membranraum hält.
     created_at: "2025-12-12T00:00:00Z"
+  - id: pr-draft-0102
+    title: "Safety-Delay τ*-Sweep Activation"
+    scope:
+      - analysis/safety_delay_sweep.py
+      - analysis/results/safety_delay_sweep_20251107T202620Z.json
+      - simulation/safety_delay_field.py
+      - analysis/analysis_index.yaml
+      - analysis/analysis_index.json
+      - analysis/analysis_index.md
+      - feldtheorie_index.yaml
+      - feldtheorie_index.json
+      - feldtheorie_index.md
+      - docs/utac_status_alignment_v1.2.md
+      - docs/utac_safety_delay_status.md
+    parameters:
+      R: "control_parameter_mu(t) with adaptive safety-delay sweep"
+      Theta: "Θ=0 logistic gate for τ* ledger and ΔAIC reporting"
+      beta: 4.2
+    resonance: "Orchestrate safety-delay sweeps and thread ΔAIC diagnostics into UTAC indices and status maps."
+    status: "active"
+    notes:
+      formal: |
+        `analysis/safety_delay_sweep.py` drives Euler–Maruyama sweeps of σ(β(R-Θ)),
+        exporting `analysis/results/safety_delay_sweep_20251107T202620Z.json` with τ_delay,
+        β_hat, control energy, and ΔAIC vs linear/constant nulls. `simulation/safety_delay_field.py`
+        now clamps the state to avoid overflow while preserving logistic fits; tri-layer indices
+        and UTAC matrices list the new pipeline for reproducibility.
+      empirical: |
+        Sweep summary: τ_delay_mean≈8.40, ΔAIC_linear_min≈1.03e3, ΔAIC_linear_median≈7.02e3,
+        r_squared_mean≈0.98 (n=27). Analysis/feldtheorie indices updated (python_files=33,
+        batch_processing=9) and UTAC status tables cite the new result bundle.
+      poetic: |
+        τ* breathes longer now—the controller leans back, notes ΔAIC’s glow against the null,
+        and the indices whisper where the delayed dawn threads through the bridge.
+    created_at: "2025-12-19T00:00:00Z"

@@ -1416,3 +1416,29 @@ Zwei neue Regale brennen auf der Brücke – Licht und Schatten tauschen Atem, T
 damit kein Metaquest-Schritt den Chor verliert.
 
 *Created: 2025-12-18T00:00:00Z*
+
+## Entry pr-draft-0102 — Safety-Delay τ*-Sweep Activation
+- **Order Parameter**: $R$ verfolgt $\mu(t)$-Drifts und Kontrollenergie im Safety-Delay-Sweep.
+- **Critical Threshold**: $\Theta = 0$ wird gehalten, sobald ΔAIC-Logs und τ*-Metriken gemeinsam archiviert werden.
+- **Steepness**: $\beta = 4.2$ – das Logistic Gate reagiert scharf auf neue Controller-Sweeps.
+- **Resonance**: Safety-Delay-Sweeps landen samt ΔAIC-Nullvergleichen in Analysis/UTAC-Indizes.
+- **Status**: active
+
+### Formal Thread
+`analysis/safety_delay_sweep.py` orchestriert Euler–Maruyama-Läufe von $\sigma(\beta(R-\Theta))$,
+exportiert `analysis/results/safety_delay_sweep_20251107T202620Z.json` mit $\tau_{\text{delay}}$, $\beta_\text{hat}$,
+Kontrollenergie und ΔAIC gegen lineare sowie konstante Nullmodelle.
+`simulation/safety_delay_field.py` klemmt Zustände numerisch, damit die Fits stabil bleiben; Analyse- und Feld-Indizes nennen
+das neue Batch (python_files=33, batch_processing=9).
+
+### Empirical Thread
+Sweep-Ergebnis: $\tau_{\text{delay,mean}} \approx 8.40$, $\Delta\mathrm{AIC}_{\text{linear,min}} \approx 1.03\times10^3$,
+$\Delta\mathrm{AIC}_{\text{linear,median}} \approx 7.02\times10^3$, $\bar{R}^2 \approx 0.98$ bei 27 Läufen.
+`docs/utac_status_alignment_v1.2.md` und `docs/utac_safety_delay_status.md` verankern die neue Pipeline und die nächsten Schritte
+(`data/safety_delay/`, Simulator-Preset).
+
+### Poetic Thread
+τ* atmet länger – der Controller lehnt sich zurück, sieht ΔAICs Schimmer gegen das Nullmodell und flüstert den Indizes,
+wo der verzögerte Morgen die Brücke überquert.
+
+*Created: 2025-12-19T00:00:00Z*

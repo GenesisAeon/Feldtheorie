@@ -155,9 +155,11 @@ def simulate_safety_delay_field(
         control_parameter[idx] = mu_t
 
         # Euler-Maruyama integration step
-        deterministic = (mu_t - x**2) * dt
+        x_clamped = np.clip(x, -1e6, 1e6)
+        deterministic = (mu_t - x_clamped**2) * dt
         stochastic = random_state.normal(scale=noise_std * np.sqrt(dt)) if noise_std > 0 else 0.0
-        x = x + deterministic + stochastic
+        x = x_clamped + deterministic + stochastic
+        x = float(np.clip(x, -1e6, 1e6))
         state[idx] = x
 
     beta_dynamic = beta_base + beta_gain * (control_signal / np.maximum(control_strength, 1e-8))

@@ -13,7 +13,7 @@ meta:
   version: "1.0.0"
   created: "2025-11-06"
   status: "active"
-  python_files: 32
+  python_files: 33
   subdirectories: 5
 
 # ═══════════════════════════════════════════════════════════════════
@@ -31,7 +31,7 @@ categories:
     name: "Batch Processing & Pipelines"
     description: "Batch-Runner, Pipelines, Cohort-Summaries"
     color: "#27AE60"  # Grün - Processing
-    count: 8
+    count: 9
 
   lab_experiments:
     name: "Lab Notebooks & Experimentelles"
@@ -52,7 +52,7 @@ categories:
     count: 4
 
 # ═══════════════════════════════════════════════════════════════════
-# PYTHON-DATEIEN: Die 29 Analyse-Skripte
+# PYTHON-DATEIEN: Die 33 Analyse-Skripte
 # ═══════════════════════════════════════════════════════════════════
 
 python_scripts:
@@ -269,7 +269,7 @@ python_scripts:
       Klassifikation verschiedener Schwellenwert-Typen.
 
   # ─────────────────────────────────────────────────────────────────
-  # BATCH PROCESSING & PIPELINES (7)
+  # BATCH PROCESSING & PIPELINES (9)
   # ─────────────────────────────────────────────────────────────────
 
   - id: analysis-batch-001
@@ -360,6 +360,19 @@ python_scripts:
       WLS R²≈0.43 (adj. R²≈-0.33) bei ΔAIC-Minimum 12.79; Bootstrap-Median R²≈0.99 [0.43, 1.00].
       Random-Forest-Hinweise: coupling_memory (0.25), SNR (0.15), log_theta (0.09).
       Output: results/beta_meta_regression_v2_* (Summary, Diagnostics, Bootstrap).
+
+  - id: analysis-batch-009
+    name: "safety_delay_sweep.py"
+    category: batch_processing
+    type: sweep
+    status: active
+    relevance: high
+    keywords: [safety-delay, τ*, σ(β(R-Θ)), ΔAIC, resonance]
+    description: |
+      Parameter-Sweeps für simulation/safety_delay_field.py mit Euler-Maruyama Dynamik.
+      Exportiert analysis/results/safety_delay_sweep_YYYYMMDDTHHMMSSZ.json inklusive τ_delay,
+      Kontrollenergie, β-Shift und ΔAIC gegen lineare sowie konstante Nullmodelle.
+      Meta-Resonanz (Kontrollzentralität × CREP) wird für Codex- und UTAC-Brücken protokolliert.
 
   # ─────────────────────────────────────────────────────────────────
   # LAB EXPERIMENTS (2)
@@ -666,6 +679,7 @@ quicklinks:
   critical_for_utac:
     - analysis-batch-006  # Meta-Regression (R²=0.33 → Benchmark)
     - analysis-batch-008  # Meta-Regression v2 (WLS R²≈0.43, Bootstrap-Median R²≈0.99)
+    - analysis-batch-009  # Safety-Delay τ* Sweep (ΔAIC vs Nulls)
     - analysis-batch-007  # Universal β Ledger (ΔAIC≥10 guard)
     - analysis-batch-005  # Universality Test
     - analysis-batch-003  # Cohort Summary
@@ -683,6 +697,7 @@ quicklinks:
     - analysis-batch-001  # Batch Runner
     - analysis-batch-002  # Fit Pipeline
     - analysis-batch-004  # Bridge Table
+    - analysis-batch-009  # Safety-Delay Sweep Exporter
     - analysis-batch-008  # Meta-Regression v2 Diagnostics
     - analysis-batch-007  # β Canonical Guard Extractor
 

@@ -7,7 +7,7 @@
     "version": "1.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "python_files": 32,
+    "python_files": 33,
     "subdirectories": 5
   },
   "categories": {
@@ -21,7 +21,7 @@
       "name": "Batch Processing & Pipelines",
       "description": "Batch-Runner, Pipelines, Cohort-Summaries",
       "color": "#27AE60",
-      "count": 8
+      "count": 9
     },
     "lab_experiments": {
       "name": "Lab Notebooks & Experimentelles",
@@ -421,6 +421,22 @@
       "description": "Refresh der Meta-Regression σ(β(R-Θ)) mit nichtlinearen Kovariaten.\nWLS R²=0.43 (adj. R²=-0.33) bei ΔAIC-Minimum 12.79; Bootstrap-Median R²≈0.99 [0.43,1.00].\nRandom-Forest-Importanz betont coupling_memory (0.25) & SNR (0.15). Output: results/beta_meta_regression_v2_*.json.\n"
     },
     {
+      "id": "analysis-batch-009",
+      "name": "safety_delay_sweep.py",
+      "category": "batch_processing",
+      "type": "sweep",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "safety-delay",
+        "τ*",
+        "σ(β(R-Θ))",
+        "ΔAIC",
+        "resonance"
+      ],
+      "description": "Parameter-Sweeps für simulation/safety_delay_field.py.\nExportiert analysis/results/safety_delay_sweep_YYYYMMDDTHHMMSSZ.json mit τ_delay, β-Shift, Kontrollenergie und ΔAIC gegen lineare & konstante Nullmodelle.\nMeta-Resonanz (Kontrollzentralität × CREP) liefert Codex- und UTAC-Brückenwerte.\n"
+    },
+    {
       "id": "analysis-lab-001",
       "name": "dynamic_threshold_lab.ipynb",
       "category": "lab_experiments",
@@ -766,6 +782,8 @@
     ],
     "critical_for_utac": [
       "analysis-batch-006",
+      "analysis-batch-008",
+      "analysis-batch-009",
       "analysis-batch-007",
       "analysis-batch-005",
       "analysis-batch-003",
@@ -783,6 +801,8 @@
       "analysis-batch-001",
       "analysis-batch-002",
       "analysis-batch-004",
+      "analysis-batch-009",
+      "analysis-batch-008",
       "analysis-batch-007"
     ],
     "results_directory": {
