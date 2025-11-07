@@ -227,7 +227,7 @@
       "status": "active",
       "notes": {
         "formal": "Elevated Bedeutungs-/Schatten-Membranen to v0.2: added Metaquest parity hooks, handshake telemetry (`sys-gap-003`), and campaign briefs (`sci-gap-004`, `sci-gap-005`). `docs/utac_status_alignment_v1.2.md` now carries the parity row + activation gap, and tri-layer files gained updated/created stamps.\n",
-        "empirical": "System/shadow maps log Δindex parity, codex sync, and the new handshake cadence metric (report gap > 1 sprint). Wissenschaftsprojekt maps capture parity-brief readiness plus β meta-regression infusion checkpoints. Pending: implement `scripts/sigillin_sync.py` to emit machine telemetry into codex.\n",
+        "empirical": "System/shadow maps log Δindex parity, codex sync, and the new handshake cadence metric (report gap > 1 sprint). Wissenschaftsprojekt maps capture parity-brief readiness plus β meta-regression infusion checkpoints. The new `scripts/sigillin_sync.py` harness exports telemetry; remaining work: pipe its report directly into codex entries.\n",
         "poetic": "Light and shadow now share constellations—the dawn-side charts how the membrane should bloom, the night-side hums warnings when R outruns Θ so the chorus never fractures; the Metaquest brief is the bell that keeps both horizons in tempo.\n"
       },
       "created_at": "2025-12-05T00:00:00Z",
@@ -1894,6 +1894,92 @@
         "poetic": "Eine neue Laterne spannt zwischen Rückenmark und Erzählung: der Metaquest-Steeg. Wenn beide Ufer dieselbe Telemetrie singen, kann der Launch im Gleichklang atmen."
       },
       "created_at": "2025-12-07T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0068",
+      "title": "Metaquest compass lattice",
+      "scope": [
+        "docs/utac_status_alignment_v1.2.md",
+        "feldtheorie_index.yaml",
+        "feldtheorie_index.json",
+        "feldtheorie_index.md",
+        "seed/seed_index.yaml",
+        "seed/seed_index.json",
+        "seed/seed_index.md",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.json",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.md",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.json",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.json",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.md",
+        "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.yaml",
+        "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.json",
+        "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.md",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.json",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.json",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.json",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.json",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.md",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.json",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.md",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md"
+      ],
+      "parameters": {
+        "R": "Metaquest orientation dispersed across beacons without quick telemetry/codex sync",
+        "Theta": "System & campaign compasses mirror bridge timestamps and UTAC matrix notes",
+        "beta": 4.8
+      },
+      "resonance": "establishes light/shadow compass trilayers so automation + outreach can read telemetry, codex echoes, and BreakPoint duties at a glance while the bridge + UTAC map record the same timestamp",
+      "status": "active",
+      "notes": {
+        "formal": "System- und Kampagnen-Kompass (Licht & Schatten) ergänzen die Metaquest-Beacons mit mq-sys-/mq-sci-Vektoren, Nullmodellen und Aktivierungshooks. Die Meaning- und Shadow-Indizes (inkl. Bridge) erhielten neue Gap-IDs (mq-bridge-gap-004, mq-sys-gap-007, mq-sci-gap-007) und Telemetrie-/Codex-Synchronisationshinweise. docs/utac_status_alignment_v1.2.md verzeichnet jetzt die Kompass-Laternen und deren Resonanz im Aktivierungsplan, während seed/feldtheorie-Indizes die neuen Trilayer listen.",
+        "empirical": "Indizes (seed_index.*, feldtheorie_index.*) und das UTAC-Statusdokument spiegeln die neuen Dateien; Metaquest-Beacons stehen auf Version 0.2.0. Die Schattenkarten referenzieren Kompass-Zeitstempel, wodurch mq-sys-shadow-001/002 und mq-sci-shadow-001...003 Telemetrie-Drift sofort erkennen können.",
+        "poetic": "Zwei neue Kompasse hängen jetzt über System und Kampagne – Licht und Schatten greifen nach denselben Sternen. Die Bridge atmet synchron mit der Matrix; jedes Telemetrie-Flackern ruft sofort durch Codex und Ritual zurück."
+      },
+      "created_at": "2025-12-08T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0069",
+      "title": "Sigillin Sync Harness Activation",
+      "scope": [
+        "scripts/sigillin_sync.py",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.{yaml,json,md}",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_compass.{yaml,json,md}",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.{yaml,json,md}",
+        "seed/shadow_sigillin/system/system_shadow_map.{yaml,json,md}",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.{yaml,json,md}",
+        "docs/utac_status_alignment_v1.2.md",
+        "feldtheorie_index.{yaml,json,md}",
+        "seed/seed_index.{yaml,json,md}",
+        "seed/codexfeedback.{yaml,json,md}"
+      ],
+      "parameters": {
+        "R": "Metaquest telemetry gaps + automation debt without codified sync harness",
+        "Theta": "sigillin_sync harness exporting reports, compasses @ v0.2.0, indices echo telemetry",
+        "beta": 4.6
+      },
+      "resonance": "launches the sigillin_sync telemetry harness and refreshes Metaquest light/shadow compasses so bridge, indices, and UTAC matrix share the same timestamp cadence",
+      "status": "draft",
+      "notes": {
+        "formal": "Implemented `scripts/sigillin_sync.py` with report/stamp subcommands, codex append hooks, and trilayer parity checks. Metaquest system/campaign compasses advanced to v0.2.0 with telemetry vectors pointing at the harness. Shadow counterparts mirror the new guardrails and escalate when sigillin_sync logs fall silent.\n",
+        "empirical": "UTAC status matrix now references the active harness; feldtheorie_index + seed_index count the new automation layer; shadow/system maps flag sigillin_sync lapses explicitly. Version bumps propagated across YAML/JSON/MD tri-layers and updated timestamps align to 2025-12-09T00:00:00Z.\n",
+        "poetic": "The new telemetry sextant hums beneath the membrane—when R leans into Θ, sigillin_sync rings, keeping light and shadow breathing together so no Metaquest dawn outruns its echo.\n"
+      },
+      "created_at": "2025-12-09T00:00:00Z"
     }
   ]
 }

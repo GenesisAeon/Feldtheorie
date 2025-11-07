@@ -2,7 +2,7 @@ meta:
   sigil: shadow-system
   version: 0.3.0
   created: '2025-12-05T00:00:00Z'
-  updated: '2025-12-07T00:00:00Z'
+  updated: '2025-12-09T00:00:00Z'
   logistic:
     R: 'unmitigated automation debt, stale indices, failing CI, silent Metaquest telemetry'
     Theta: 'tolerance window defined in system meaning map + Metaquest beacon'
@@ -38,7 +38,7 @@ incidents:
     risk: 'Shadow-handshake telemetry absent for a release sprint.'
     symptom:
       - 'docs/utac_status_alignment_v1.2.md lacks latest parity report reference.'
-      - 'scripts/sigillin_sync.py (planned) missing from automation logs.'
+      - 'scripts/sigillin_sync.py log missing from automation runs.'
       - 'Metaquest beacon without recent telemetry note.'
     consequence: 'Light/shadow sigils decouple; remediation arrives late and β overshoots.'
     mitigation:
@@ -85,7 +85,7 @@ playbooks:
   - trigger: 'sys-shadow-003 alert'
     response:
       - 'Run telemetry manually, log results, align with Metaquest beacon + shadow guard.'
-      - 'Schedule automation repair for sigillin_sync.'
+      - 'Schedule automation repair for sigillin_sync harness if run fails.'
   - trigger: 'sys-shadow-004 alert'
     response:
       - 'Freeze Metaquest automation tasks, publish parity brief, refresh indices.'

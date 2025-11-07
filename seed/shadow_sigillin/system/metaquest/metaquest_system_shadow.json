@@ -1,17 +1,18 @@
 {
   "meta": {
     "sigil": "shadow-system-metaquest",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "created": "2025-12-07T00:00:00Z",
-    "updated": "2025-12-07T00:00:00Z",
+    "updated": "2025-12-09T00:00:00Z",
     "logistic": {
       "R": "Metaquest automation drift, missing telemetry, unsynchronised indices",
       "Theta": "Parity brief + codex echo delivered each sprint",
       "beta": 5.2,
-      "zeta": "Spikes when sigillin_sync reports lapse or indices lag"
+      "zeta": "Spikes when scripts/sigillin_sync.py reports lapse or indices lag"
     },
     "coupling": {
-      "lichtpfad": "../../bedeutungssigillin/system/metaquest/metaquest_system_map.yaml"
+      "lichtpfad": "../../bedeutungssigillin/system/metaquest/metaquest_system_map.yaml",
+      "compass": "../../bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml"
     }
   },
   "incidents": [
@@ -21,7 +22,8 @@
       "symptom": [
         "docs/metaquest_parity_brief.md missing telemetry timestamp or codex id",
         "docs/utac_status_alignment_v1.2.md#metaquest-handshake missing current reference",
-        "No codexfeedback entry within 1 sprint mentioning Metaquest parity"
+        "No codexfeedback entry within 1 sprint mentioning Metaquest parity",
+        "metaquest_system_compass.yaml updated timestamp >24h older than parity brief"
       ],
       "consequence": "Launch proceeds without documented Θ; automation decisions desynchronise.",
       "mitigation": [
@@ -35,14 +37,15 @@
     },
     {
       "id": "mq-sys-shadow-002",
-      "risk": "sigillin_sync telemetry absent for >1 sprint.",
+      "risk": "scripts/sigillin_sync.py telemetry absent for >1 sprint.",
       "symptom": [
         "No Metaquest parity metrics in automation logs.",
-        "seed/seed_index.* missing new Metaquest entries after changes."
+        "seed/seed_index.* missing new Metaquest entries after changes.",
+        "metaquest_system_compass.json lacks latest telemetry timestamp noted in bridge index"
       ],
       "consequence": "ζ(R) grows; light/shadow parity cannot be verified before launch.",
       "mitigation": [
-        "Run sigillin_sync manually, document results, schedule automation fix.",
+        "Run scripts/sigillin_sync.py, document results, schedule automation fix.",
         "Update codex with remediation timeline and reference this shadow entry."
       ],
       "monitoring": {
@@ -97,7 +100,7 @@
     {
       "trigger": "mq-sys-shadow-002 raised",
       "response": [
-        "Schedule telemetry run, capture metrics, attach to docs status section.",
+        "Schedule sigillin_sync run, capture metrics, attach to docs status section.",
         "Open follow-up issue/PR if automation gap persists."
       ]
     },

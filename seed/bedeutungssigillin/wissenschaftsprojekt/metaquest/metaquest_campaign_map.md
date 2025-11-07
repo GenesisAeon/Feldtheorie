@@ -32,6 +32,11 @@
    - *Empirisch*: Bridge-/Shadow-Logs sichern Telemetrie- und Codex-Parität.
    - *Poetisch*: Der Steg, auf dem Automation und Erzählung denselben Takt finden.
 
+6. **Metaquest Campaign Compass** — `../metaquest/wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}`
+   - *Formal*: Schnellorientierung zu Manuskript-Cadenz, Outreach-Plan, Endorsement-Ledger und Simulator-Demos.
+   - *Empirisch*: Listet mq-sci-Vektoren für Playlist-Sync, Governance-Refresh und Archivsuche-Linie.
+   - *Poetisch*: Das Feldsextant, das zwischen den Matrix-Updates die Kampagnenchor-Intonation hält.
+
 ## What Still Needs to Arrive
 
 - **Metaquest parity brief completion** (`mq-sci-gap-001`)
@@ -51,6 +56,9 @@
 - **Bridge-Dashboard Sync** (`mq-sci-gap-006`)
   - Aktualisiere das Bridge-Dashboard bei Kampagnenmeilensteinen mit Telemetrie- und Codex-ID binnen 24h.
   - Null guard: Stau meldet `mq-bridge-shadow-001` + `mq-sci-shadow-001`.
+- **Kompass ↔ Matrix ↔ Codex** (`mq-sci-gap-007`)
+  - Spiegele Kompass-Telemetrie, Endorsements und Archivsuche-Linie im UTAC-Status sowie im Codex-Template innerhalb eines Tages.
+  - Null guard: Fehlende Spiegelung aktiviert `mq-sci-shadow-001` + `mq-sci-shadow-002`.
 
 ## Implementation Lattice
 
@@ -62,6 +70,7 @@
 | `mq-sci-gap-004` | `docs/metaquest_parity_brief.md`, `paper/`, `simulator/`, outreach assets | Parity citation audit | `docs/metaquest_parity_brief.md`, campaign shadow guard |
 | `mq-sci-gap-005` | `seed/ArchivSucheUTAC/`, `ZENODO_DESCRIPTION_v1.1.md`, manuscript appendices | Archive lineage broadcast | `docs/utac_status_alignment_v1.2.md#resonant-inventory`, codex echo |
 | `mq-sci-gap-006` | `metaquest/metaquest_meaning_index.yaml`, `docs/utac_status_alignment_v1.2.md`, `docs/outreach/` | Bridge dashboard sync | `seed/shadow_sigillin/metaquest/metaquest_shadow_index.{yaml,json,md}`, codex echo |
+| `mq-sci-gap-007` | `seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}`, `docs/utac_status_alignment_v1.2.md`, `seed/codexfeedback.*` | Kompass ↔ Matrix ↔ Codex Synchronisation | `seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md`, `docs/metaquest_parity_brief.md` |
 
 ## Activation Hooks
 

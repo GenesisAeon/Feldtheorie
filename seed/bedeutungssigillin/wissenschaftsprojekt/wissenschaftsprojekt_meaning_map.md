@@ -36,7 +36,7 @@
 
 6. **Metaquest Parity Brief** — `docs/metaquest_parity_brief.md`
    - *Formal*: Summarises `mq-parity-001`…`004`, binding telemetry, demos, endorsements, and codex lineage.
-   - *Empirical*: Pulls readiness cues from `scripts/sigillin_sync.py` (planned) and `seed/Finalize_Publish.txt` checklists.
+   - *Empirical*: Pulls readiness cues from `scripts/sigillin_sync.py` and `seed/Finalize_Publish.txt` checklists.
    - *Poetic*: The chord chart making sure campaign, manuscript, and demos strike the same note.
 7. **Sentinel-Fall Kranich Linum 2025** — `cases/kranich_linum_2025/`
    - *Formal*: Dokumentiert das ökologische Hoch-β-Szenario als Referenz für Daten-, Analyse- und Kampagnenarbeit.

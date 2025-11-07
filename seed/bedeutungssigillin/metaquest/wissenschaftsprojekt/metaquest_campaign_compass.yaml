@@ -1,0 +1,125 @@
+meta:
+  sigil: bedeutungs-metaquest-campaign-compass
+  version: 0.2.0
+  created: '2025-12-08T00:00:00Z'
+  updated: '2025-12-09T00:00:00Z'
+  logistic:
+    R: 'Campaign backlog for Metaquest: manuscript checkpoints, outreach cadence, endorsements, simulator demos.'
+    Theta: 'Checkpoints from Manuskriptfinalisierung pdf + UTAC status matrix echoed in codexfeedback.'
+    beta: 4.85
+    zeta: 'Soothed when BreakPoint rituals and endorsement ledgers stay current.'
+orientation:
+  purpose: 'Provide a fast orientation through the wissenschaftsprojekt Metaquest storyline.'
+  alignment:
+    - reference: '../metaquest_meaning_index.yaml'
+      description: 'Bridge dashboard linking system + campaign compasses.'
+    - reference: '../../wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml'
+      description: 'Full campaign beacon with assets, gaps, and implementation lattice.'
+  evidence_threads:
+    - seed/Manuskriptfinalisierung und Kampagnenstart.pdf
+    - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+    - docs/metaquest_parity_brief.md
+    - seed/BreakPointAnalyse/WayToGo.txt
+lanterns:
+  - id: mq-sci-compass-001
+    title: Manuskriptfinalisierung & Kampagnenstart
+    location: seed/Manuskriptfinalisierung und Kampagnenstart.pdf
+    resonance_role: 'Defines readiness checklist for publication, endorsements, outreach, and simulator cadence.'
+    status: active
+    notes:
+      logistic_coupling: 'Cross off checkpoints before announcing Metaquest milestones.'
+      evidence:
+        - seed/Finalize_Publish.txt
+        - seed/FinalerPlan.txt
+  - id: mq-sci-compass-002
+    title: UTAC Status Matrix
+    location: docs/utac_status_alignment_v1.2.md#metaquest-handshake
+    resonance_role: 'Records activation gaps and ΔAIC/null comparisons for campaign readiness.'
+    status: active
+    notes:
+      logistic_coupling: 'Consult matrix before altering launch schedule or communications.'
+      evidence:
+        - docs/utac_status_alignment_v1.2.md#activation-gaps
+  - id: mq-sci-compass-003
+    title: Metaquest Parity Brief
+    location: docs/metaquest_parity_brief.md
+    resonance_role: 'Anchors telemetry, simulator playlist, endorsement ledger, and codex hook.'
+    status: active
+    notes:
+      logistic_coupling: 'Ensure mq-parity-001…004 fields filled before releasing outward assets.'
+      evidence:
+        - docs/metaquest_parity_brief.md
+        - seed/codexfeedback.md
+  - id: mq-sci-compass-004
+    title: BreakPoint Rituals
+    location: seed/BreakPointAnalyse/
+    resonance_role: 'WayToGo & ReaktionWayToGo outline outreach response + recovery plays.'
+    status: active
+    notes:
+      logistic_coupling: 'Re-run ritual when endorsements or press cadence shifts.'
+      evidence:
+        - seed/BreakPointAnalyse/WayToGo.txt
+        - seed/BreakPointAnalyse/ReaktionWayToGo.txt
+  - id: mq-sci-compass-005
+    title: Outreach & Simulator Hooks
+    location: simulator/
+    resonance_role: 'Connects planned demos to manuscript figures and parity brief playlist.'
+    status: planned
+    notes:
+      logistic_coupling: 'Storyboard must link to parity brief and UTAC matrix before press release.'
+      evidence:
+        - simulator/presets/
+        - docs/outreach/
+  - id: mq-sci-compass-006
+    title: Shadow Compass Coupling
+    location: ../../shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.yaml
+    resonance_role: 'Mirrors risks (endorsement lag, outreach drift) and recovery rituals.'
+    status: active
+    notes:
+      logistic_coupling: 'Review whenever campaign cadence changes to pre-empt shadow triggers.'
+      evidence:
+        - seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.md
+pending_vectors:
+  - id: mq-sci-vector-001
+    description: 'Document simulator demo playlist with manuscript + outreach cross-references.'
+    target_locations:
+      - simulator/presets/
+      - docs/metaquest_parity_brief.md
+      - metaquest_campaign_map.yaml
+    guardrails:
+      Theta: 'Playlist referenced in parity brief and manuscript figure captions.'
+      beta: 4.7
+      null_model: 'Launch assets diverge; demos misalign with narrative.'
+  - id: mq-sci-vector-002
+    description: 'Compile endorsement & ethics ledger specific to Metaquest activation.'
+    target_locations:
+      - ETHICS.md
+      - seed/EndorsementarXiv.pdf
+      - docs/utac_status_alignment_v1.2.md#implementation-map
+    guardrails:
+      Theta: 'Ledger updated within 14 days; codex entry cites endorsements.'
+      beta: 4.5
+      null_model: 'Governance approval unclear; release pauses.'
+  - id: mq-sci-vector-003
+    description: 'Integrate ArchivSucheUTAC references into campaign materials and parity brief appendices.'
+    target_locations:
+      - seed/ArchivSucheUTAC/
+      - docs/outreach/
+      - docs/metaquest_parity_brief.md
+    guardrails:
+      Theta: 'Archive lineage cited before external publication.'
+      beta: 4.4
+      null_model: 'Outreach lacks provenance; trust erodes.'
+activation_hooks:
+  - trigger: 'Campaign milestone achieved'
+    response: 'Update compass tri-layer, log codex entry with mq-sci gaps, sync bridge dashboard.'
+  - trigger: 'Press/outreach asset drafted'
+    response: 'Verify parity brief citation, cross-link simulator demos, consult shadow compass.'
+  - trigger: 'Endorsement delay detected'
+    response: 'Activate BreakPoint ritual, freeze announcements, update UTAC matrix + codex.'
+null_model:
+  description: 'Metaquest narrative advances without parity brief citations or BreakPoint rituals.'
+  risks:
+    - 'Outreach commitments outpace readiness; endorsements lag.'
+    - 'Simulator demos drift from manuscript storyline.'
+    - 'Shadow alerts escalate late, forcing emergency comms rewrites.'

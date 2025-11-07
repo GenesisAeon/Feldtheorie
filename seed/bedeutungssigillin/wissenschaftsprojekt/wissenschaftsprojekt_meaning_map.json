@@ -91,7 +91,7 @@
       "notes": {
         "logistic_role": "Summarises mq-parity-001…004 so telemetry, demos, endorsements, and codex lineage stay synchronised.",
         "evidence": [
-          "scripts/sigillin_sync.py (planned)",
+          "scripts/sigillin_sync.py",
           "seed/Finalize_Publish.txt"
         ],
         "resonance": "Ensures campaign storytelling echoes the same Θ checkpoints as the system membrane."
