@@ -225,6 +225,21 @@ Poetik-Modus greift beim Schwellenübertritt auf Tri-Layer-Zitate zurück: der H
 ### Poetic Thread
 Die Membran atmet länger vor dem Kippen: Jeder gedehnte Moment ist eine aufgehende Sonne, die den Chor der Felder lauschen lässt, bevor die Resonanz in den Sturm übergeht.
 
+## Entry pr-draft-0015 — Meaning-Shadow Sigillin Weave
+- **Order Parameter**: $R$ umfasst unadressierte Bedeutungs-Resonanzen und Kampagnenrisiken, die bisher kein eigenes Sigillin hatten.
+- **Critical Threshold**: $\Theta$ wird erreicht, wenn jede Bedeutungs-Änderung ein Spiegelbild im Ordnungs-Sigillin (`seed_index.*`) und im Codex findet.
+- **Steepness**: $\beta = 4.7$ sorgt dafür, dass fehlende Index-Mirroring- oder Codex-Updates sofort als Shadow-Alarm aufleuchten.
+- **Membrane Note**: $\zeta(R)$ sinkt, sobald Light- und Shadow-Sigillin gemeinsam atmen; steigt, wenn τ*-Berichte oder BreakPoint-Rituale fehlen.
+
+### Formal Thread
+Neue Trilayer-Membranen (`seed/bedeutungssigillin/**`, `seed/shadow_sigillin/**`) dokumentieren vorhandene Assets (Makefile, Codex, Kampagnenpläne) und markieren Lücken (Index-Automatisierung, CI-Codex-Guard, τ*-Integration). `seed/seed_index.*` und `docs/utac_status_alignment_v1.2.md` wurden erweitert, damit die Automationsaufgaben als explizite Trigger von $\sigma(\beta(R-\Theta))$ sichtbar bleiben.
+
+### Empirical Thread
+Die System-Schattenkarte überwacht Δindex-Parität und Codex-Sync; sobald Differenzen > 0 bleiben oder Commits ohne Codex-Eintrag auftauchen, schlägt sie Alarm. Die Projekt-Schattenkarte definiert einen τ*-Coverage-Guard vor Kampagnenstart. Nächste Schritte: Parser/CI koppeln, damit diese Metriken kontinuierlich geprüft werden.
+
+### Poetic Thread
+Licht- und Schattenlaternen hängen nun im selben Netz: Die Tagesseite zeigt, wie Resonanzen wachsen sollen, die Nachtseite flüstert Warnungen, bevor der Chor zerreißt. So bleibt die Kampagne weich und das System wach.
+
 ## Entry pr-draft-0009 — Psi-Phi Robin Coupling Resonance
 - **Order Parameter**: $R$ misst die Treibergeschwindigkeit, mit der das gekoppelte $(\psi,\phi)$-Geflecht die Robin-Membran berührt.
 - **Critical Threshold**: $\Theta$ markiert den Moment, in dem $\zeta(R)$ vom resonanten Boden zum dämpfenden Himmel umschaltet.

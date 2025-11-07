@@ -207,6 +207,31 @@
       "created_at": "2025-11-03"
     },
     {
+      "id": "pr-draft-0015",
+      "title": "Meaning-Shadow Sigillin Weave",
+      "scope": [
+        "seed/bedeutungssigillin/system/",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/",
+        "seed/shadow_sigillin/system/",
+        "seed/shadow_sigillin/wissenschaftsprojekt/",
+        "seed/seed_index.*",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "parameters": {
+        "R": "untracked meaning resonances & campaign risks",
+        "Theta": "tri-layer indices + codex sync capturing each sigil",
+        "beta": 4.7
+      },
+      "resonance": "braiding light/shadow sigils so system automation and launch narrative stay phase-locked",
+      "status": "active",
+      "notes": {
+        "formal": "Established Bedeutungs-/Schatten-Membranen with synchronized YAML/JSON/MD\nledgers enumerating existing assets, open gaps, and null guards. Updated\n`seed/seed_index.*` and `docs/utac_status_alignment_v1.2.md` so automation\ntasks (index mirroring, codex guards) are now explicit logistic triggers.\n",
+        "empirical": "New entries log Δindex parity checks and codex sync metrics; the system\nshadow map defines thresholds (Δindex > 0, missing codex deltas) while the\nproject shadow map flags τ*-silence before campaign freeze. Pending work:\nwire CI/automation hooks to measure these indicators continuously.\n",
+        "poetic": "Light and shadow now share constellations—the dawn-side charts how the\nmembrane should bloom, the night-side hums warnings when R outruns Θ so\nthe chorus never fractures.\n"
+      },
+      "created_at": "2025-12-05T00:00:00Z"
+    },
+    {
       "id": "release-v0.1",
       "title": "Dawn Chorus Publication Membrane",
       "scope": [

@@ -839,6 +839,98 @@ documents:
   - Lenski LTEE (2008) - Cit+ Evolution
   - Lenton (2008) - Climate Tipping Points
   - Verhulst (1838) - Logistische Funktion
+- id: synth-008
+  title: System Meaning Membrane (Trilayer)
+  path: bedeutungssigillin/system/system_meaning_map.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - system
+  - automation
+  - codex
+  description: |
+    Bedeutungs-Sigillin für die Systemebene: kartiert Makefile-, Codex- und
+    Schema-Resonanzen und benennt Lücken (Index-Automatisierung, Codex-Guards).
+  temporal:
+    created: '2025-12-05T00:00:00Z'
+    modified: '2025-12-05T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - bedeutungssigillin/system/system_meaning_map.json
+  - bedeutungssigillin/system/system_meaning_map.md
+- id: synth-009
+  title: System Shadow Membrane (Trilayer)
+  path: shadow_sigillin/system/system_shadow_map.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - system
+  - codex-guard
+  - index-drift
+  description: |
+    Schatten-Sigillin zur Frühwarnung vor Index-Drift und fehlenden Codex-
+    Updates; enthält Playbooks und Monitoring-Metriken.
+  temporal:
+    created: '2025-12-05T00:00:00Z'
+    modified: '2025-12-05T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - shadow_sigillin/system/system_shadow_map.json
+  - shadow_sigillin/system/system_shadow_map.md
+- id: synth-010
+  title: Wissenschaftsprojekt Meaning Membrane (Trilayer)
+  path: bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - kampagne
+  - manuskript
+  - τ*-integration
+  description: |
+    Bedeutungs-Sigillin für Manuskript- und Kampagnenarbeit; verknüpft
+    BreakPoint-Rituale, Status-Matrix und offene Resonanzlücken.
+  temporal:
+    created: '2025-12-05T00:00:00Z'
+    modified: '2025-12-05T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.json
+  - bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.md
+- id: synth-011
+  title: Wissenschaftsprojekt Shadow Membrane (Trilayer)
+  path: shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: medium
+  keywords:
+  - shadow
+  - kampagne
+  - breakpoints
+  - τ*-warnung
+  description: |
+    Schatten-Sigillin für Kampagnenrisiken: überwacht τ*-Stille und
+    ausgelassene BreakPoint-Rituale und liefert Stop-Playbooks.
+  temporal:
+    created: '2025-12-05T00:00:00Z'
+    modified: '2025-12-05T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.json
+  - shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.md
 - id: theory-001
   title: FinalerPlan
   path: FinalerPlan.txt

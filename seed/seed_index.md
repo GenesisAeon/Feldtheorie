@@ -409,7 +409,7 @@ active_important = [
 17. sigillin/sigillin_schema.yaml (active)
 18. sigillin/examples/ (active)
 
-### Synthese & Feedback (7 Dokumente)
+### Synthese & Feedback (11 Dokumente)
 1. **codexfeedback.yaml** - Trilayer YAML (🔥 high)
 2. **codexfeedback.json** - Trilayer JSON (🔥 high)
 3. **codexfeedback.md** - Trilayer MD (🔥 high)
@@ -423,17 +423,34 @@ active_important = [
    - Trilayer-Index (YAML + JSON + MD)
    - 11 Kernquellen aus 6 Domänen (AI, Biology, Climate, Geophysics, Cognition, Physics)
    - Highlights: Wei (2022), Lenski LTEE (2008), Lenton (2008), Verhulst (1838)
+8. **bedeutungssigillin/system/system_meaning_map.{yaml,json,md}**
+   - Bedeutungs-Sigillin der Systemebene (Automation, Codex, Schema)
+   - Markiert offene Resonanzen: Index-Automatisierung, Codex-Guard
+9. **shadow_sigillin/system/system_shadow_map.{yaml,json,md}**
+   - Schatten-Sigillin: Frühwarnung vor Index-Drift & Codex-Desync
+   - Playbooks für `scripts/archive_sigillin.py` & Codex-Pflege
+10. **bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.{yaml,json,md}**
+    - Bedeutungs-Sigillin für Manuskript & Kampagnenstart
+    - Verknüpft τ*-Integration, BreakPoint-Rituale, Demo-Planung
+11. **shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.{yaml,json,md}**
+    - Schatten-Sigillin: τ*-Stille & Ritual-Drift als Warnsignale
+    - Enthält Stop-Playbooks für Outreach & Governance
 
 ### Domain-Spezifisch (6 × ~4-5 Dokumente = ~28 Dokumente)
 Siehe oben unter "Domain-Spezifische Felder"
 
-**Gesamt:** ~52 Root-Level Dokumente + 38 PDFs (via papers_index) + 19 ArchivSucheUTAC + 11 Quellen (via sources_index) = **120 Dokumente** 🎯
+**Gesamt:** ~56 Root-Level Dokumente + 38 PDFs (via papers_index) + 19 ArchivSucheUTAC + 11 Quellen (via sources_index) = **124 Dokumente** 🎯
 
 **Neu hinzugefügt (6. Nov 2025):**
 - ✅ 7 Root-Level Dokumente (TXT/MD)
 - ✅ papers_index Trilayer (38 PDFs)
 - ✅ ArchivSucheUTAC Referenz (19 Dateien)
 - ✅ sources_index Trilayer (11 Kernquellen)
+
+**Aktualisierung (5. Dez 2025):**
+- 🌱 Bedeutungs-/Schatten-Sigillin Ordner für System & Wissenschaftsprojekt
+- 🌉 Neue Trilayer-Membranen + Shadow-Playbooks in den Index integriert
+- 🛡️ Fokus: Codex-Sync-Guards, Index-Automatisierung, τ*-Kampagnenaufsicht
 
 ---
 

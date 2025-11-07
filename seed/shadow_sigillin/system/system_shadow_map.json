@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "sigil": "shadow-system",
+    "version": "0.1.0",
+    "created": "2025-12-05T00:00:00Z",
+    "logistic": {
+      "R": "unmitigated automation debt, stale indices, failing CI",
+      "Theta": "tolerance window defined in system meaning map",
+      "beta": 5.0,
+      "zeta": "amplified when codex updates lag > 1 commit"
+    },
+    "coupling": {
+      "lichtpfad": "../../bedeutungssigillin/system/system_meaning_map.yaml"
+    }
+  },
+  "incidents": [
+    {
+      "id": "sys-shadow-001",
+      "risk": "Seed indices drifting from actual directory contents.",
+      "symptom": [
+        "seed_index.* missing new sigils after 24h",
+        "parser diff reports 0 entries"
+      ],
+      "consequence": "Agents lose navigation; σ(β(R-Θ)) misfires.",
+      "mitigation": [
+        "Run scripts/archive_sigillin.py --refresh",
+        "Update codex entry with remediation notes."
+      ],
+      "monitoring": {
+        "metric": "Δindex parity",
+        "threshold": "> 0 for more than one commit"
+      }
+    },
+    {
+      "id": "sys-shadow-002",
+      "risk": "Commits adjust Bedeutungs-Sigillin without codex feedback updates.",
+      "symptom": [
+        "git diff touches seed/bedeutungssigillin/** without codex delta"
+      ],
+      "consequence": "Temporal lineage broken; auditors lose trace of Θ.",
+      "mitigation": [
+        "Block merge until codexfeedback.* updated.",
+        "Add entry referencing this shadow map."
+      ],
+      "monitoring": {
+        "metric": "codex sync",
+        "threshold": "CI guard (planned) fails open"
+      }
+    }
+  ],
+  "playbooks": [
+    {
+      "trigger": "CI or manual audit flags sys-shadow-001",
+      "response": [
+        "Synchronise indices.",
+        "Notify docs maintainers via codex entry and NEWS.md snippet if persistent."
+      ]
+    },
+    {
+      "trigger": "sys-shadow-002 alert",
+      "response": [
+        "Amend commit or follow-up PR with codex update.",
+        "Document cause in system meaning map."
+      ]
+    }
+  ]
+}

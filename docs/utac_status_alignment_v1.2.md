@@ -30,6 +30,7 @@
 5. **Outlier Validation Loop:** `analysis/outlier_beta_review.py` now sweeps the flagged Amazon & urban heat datasets (per `seed/ArchivSucheUTAC/`) and exports instrumentation flags; extend the loop with additional datasets + field notes to resolve the remaining `requires_follow_up` cases.
 6. **Manuscript v1.1.2 Finalisation:** Align the LaTeX pipeline under `paper/` with the governance addenda and ensure the arXiv-ready abstract reflects the new Sigillin net storyline; cross-check with `seed/Manuskriptfinalisierung und Kampagnenstart.pdf` and `seed/FinalerPlan.txt`.
 7. **Universal β ledger sealed:** `analysis/universal_beta_extractor.py --mode validate` now exports `analysis/results/universal_beta_summary.json`, keeping ΔAIC≥10 and canonical β band compliance on record for Zenodo v1.2.
+8. **Meaning/Shadow Sigillin integration:** Bedeutungs- & Schatten-Sigillin Verzeichnisse für System und Wissenschaftsprojekt stehen nun bereit (`seed/bedeutungssigillin/**`, `seed/shadow_sigillin/**`). Nächste Schritte: Automatisches Index-Mirroring (`scripts/archive_sigillin.py`), Codex-Sync-Guards und τ*-Kampagnenaufsicht aktivieren.
 
 ---
 
@@ -39,6 +40,7 @@
 | Safety-Delay τ* modelling | `simulation/`, `analysis/` | couple with `simulator/cli.py`, log ΔAIC(t) in `data/safety_delay/` | Compare against baseline logistic sweep, cite Θ(t) envelopes |
 | β Meta-Regression v2 | `analysis/` | ✅ `analysis/beta_meta_regression_v2.py` + `analysis/results/beta_meta_regression_v2_*` | WLS R²≈0.43 (ΔAIC_min=12.79), bootstrap median R²≈0.99; document next-step covariates + codex entry |
 | Sigillin schema & parser | `seed/sigillin/`, `scripts/`, `seed/codexfeedback.*` | YAML schema + example quartet + CREP parser CLI | Feed parser summaries into codex updates and automate parity alerts |
+| Meaning/Shadow membranes | `seed/bedeutungssigillin/`, `seed/shadow_sigillin/`, `seed/seed_index.*` | New trilayer maps + shadow playbooks; update indices + codex guards | Ensure index automation + CI hooks catch desynchronisation and campaign blockers |
 | Index automation | `scripts/archive_sigillin.py`, `docs/docs_index.*` | add CLI flag for recount + status ledger | Use `tests/` to enforce parity guard |
 | Outlier review | `analysis/`, `data/socio_ecology/` | `analysis/outlier_beta_review.py` ledger + future dataset imports | Provide falsification notes, instrumentation flags, ΔAIC comparisons |
 | Manuscript sync | `paper/`, `arxiv_submission/` | integrate governance + Sigillin appendices | Ensure `ZENODO_UPDATE_GUIDE.md` steps satisfied |
