@@ -356,7 +356,7 @@ python simulation/threshold_sandbox.py \
 
 ## License
 
-MIT License — See LICENSE file for details.
+Creative Commons Attribution 4.0 International (CC BY 4.0) — See LICENSE file for details.
 
 **Open Science Commitment**:
 - All code: Open source (GitHub)
@@ -389,4 +389,4 @@ The project has earned the scientific credibility to engage the broader research
 ---
 
 *© 2025 Johann Römer et al. — Universal Threshold Field Initiative*
-*DOI: 10.5281/zenodo.17472834 • MIT License*
+*DOI: 10.5281/zenodo.17472834 • CC BY 4.0*

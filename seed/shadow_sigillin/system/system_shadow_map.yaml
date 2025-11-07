@@ -1,13 +1,13 @@
 meta:
   sigil: shadow-system
-  version: 0.2.0
+  version: 0.3.0
   created: '2025-12-05T00:00:00Z'
-  updated: '2025-02-17T00:00:00Z'
+  updated: '2025-12-07T00:00:00Z'
   logistic:
-    R: 'unmitigated automation debt, stale indices, failing CI'
-    Theta: 'tolerance window defined in system meaning map'
+    R: 'unmitigated automation debt, stale indices, failing CI, silent Metaquest telemetry'
+    Theta: 'tolerance window defined in system meaning map + Metaquest beacon'
     beta: 5.0
-    zeta: 'amplified when codex updates lag > 1 commit'
+    zeta: 'amplified when codex updates lag > 1 commit or parity brief absent'
   coupling:
     lichtpfad: '../../bedeutungssigillin/system/system_meaning_map.yaml'
 incidents:
@@ -39,6 +39,7 @@ incidents:
     symptom:
       - 'docs/utac_status_alignment_v1.2.md lacks latest parity report reference.'
       - 'scripts/sigillin_sync.py (planned) missing from automation logs.'
+      - 'Metaquest beacon without recent telemetry note.'
     consequence: 'Light/shadow sigils decouple; remediation arrives late and β overshoots.'
     mitigation:
       - 'Trigger manual parity check, update codex entry, cross-link both sigils.'
@@ -46,6 +47,18 @@ incidents:
     monitoring:
       metric: 'handshake cadence'
       threshold: 'report gap > 1 sprint'
+  - id: sys-shadow-004
+    risk: 'Metaquest parity brief missing from docs or codex while system tasks advance.'
+    symptom:
+      - 'No Metaquest parity mention in docs/utac_status_alignment_v1.2.md.'
+      - 'Latest codex entry > 1 sprint old relative to Metaquest change.'
+    consequence: 'Launch automation proceeds without Θ; downstream campaign shadow alarms trigger late.'
+    mitigation:
+      - 'Consult metaquest_system_shadow.yaml, publish/update parity brief, refresh indices.'
+      - 'Record remediation across codex and meaning map null guards.'
+    monitoring:
+      metric: 'parity brief status'
+      threshold: 'true before automation tasks close'
 playbooks:
   - trigger: 'CI or manual audit flags sys-shadow-001'
     response:
@@ -55,3 +68,11 @@ playbooks:
     response:
       - 'Amend commit or follow-up PR with codex update.'
       - 'Document cause in system meaning map.'
+  - trigger: 'sys-shadow-003 alert'
+    response:
+      - 'Run telemetry manually, log results, align with Metaquest beacon + shadow guard.'
+      - 'Schedule automation repair for sigillin_sync.'
+  - trigger: 'sys-shadow-004 alert'
+    response:
+      - 'Freeze Metaquest automation tasks, publish parity brief, refresh indices.'
+      - 'Update codex and status matrix with parity timestamp.'

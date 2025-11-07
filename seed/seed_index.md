@@ -409,7 +409,7 @@ active_important = [
 17. sigillin/sigillin_schema.yaml (active)
 18. sigillin/examples/ (active)
 
-### Synthese & Feedback (11 Dokumente)
+### Synthese & Feedback (15 Dokumente)
 1. **codexfeedback.yaml** - Trilayer YAML (🔥 high)
 2. **codexfeedback.json** - Trilayer JSON (🔥 high)
 3. **codexfeedback.md** - Trilayer MD (🔥 high)
@@ -424,17 +424,25 @@ active_important = [
    - 11 Kernquellen aus 6 Domänen (AI, Biology, Climate, Geophysics, Cognition, Physics)
    - Highlights: Wei (2022), Lenski LTEE (2008), Lenton (2008), Verhulst (1838)
 8. **bedeutungssigillin/system/system_meaning_map.{yaml,json,md}**
-   - Bedeutungs-Sigillin der Systemebene (Automation, Codex, Schema)
-   - Markiert offene Resonanzen: Index-Automatisierung, Codex-Guard
+   - Bedeutungs-Sigillin der Systemebene (Automation, Codex, Schema, Metaquest)
+   - Markiert Resonanzen: Index-Automatisierung, Codex-Guard, Telemetrie
 9. **shadow_sigillin/system/system_shadow_map.{yaml,json,md}**
-   - Schatten-Sigillin: Frühwarnung vor Index-Drift & Codex-Desync
-   - Playbooks für `scripts/archive_sigillin.py` & Codex-Pflege
+   - Schatten-Sigillin: Frühwarnung vor Index-Drift, Codex-Desync & Metaquest-Parität
+   - Playbooks für `scripts/archive_sigillin.py`, Codex-Pflege & Telemetrie-Lücken
 10. **bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.{yaml,json,md}**
-    - Bedeutungs-Sigillin für Manuskript & Kampagnenstart
-    - Verknüpft τ*-Integration, BreakPoint-Rituale, Demo-Planung
+    - Bedeutungs-Sigillin für Manuskript, Kampagne & Metaquest Launch
+    - Verknüpft τ*-Integration, BreakPoint-Rituale, Demo- & Paritätsplanung
 11. **shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.{yaml,json,md}**
-    - Schatten-Sigillin: τ*-Stille & Ritual-Drift als Warnsignale
+    - Schatten-Sigillin: τ*-Stille, Ritual-Drift, Metaquest-Parität & Storyboard-Warnungen
     - Enthält Stop-Playbooks für Outreach & Governance
+12. **bedeutungssigillin/system/metaquest/metaquest_system_map.{yaml,json,md}**
+    - Metaquest System-Beacon: Paritätsbrief, Telemetrie, Index-Sync
+13. **shadow_sigillin/system/metaquest/metaquest_system_shadow.{yaml,json,md}**
+    - Metaquest System-Shadow: Telemetrie-Ausfall, Paritätsalarm, Index-Drift
+14. **bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.{yaml,json,md}**
+    - Metaquest Kampagnen-Beacon: Storyboard, Endorsements, Paritätsbrief
+15. **shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.{yaml,json,md}**
+    - Metaquest Kampagnen-Shadow: Storyboard-Drift, Paritätslücken, Governance-Verzug
 
 ### Domain-Spezifisch (6 × ~4-5 Dokumente = ~28 Dokumente)
 Siehe oben unter "Domain-Spezifische Felder"
@@ -451,6 +459,11 @@ Siehe oben unter "Domain-Spezifische Felder"
 - 🌱 Bedeutungs-/Schatten-Sigillin Ordner für System & Wissenschaftsprojekt
 - 🌉 Neue Trilayer-Membranen + Shadow-Playbooks in den Index integriert
 - 🛡️ Fokus: Codex-Sync-Guards, Index-Automatisierung, τ*-Kampagnenaufsicht
+
+**Aktualisierung (7. Dez 2025):**
+- 🌐 Metaquest System- & Kampagnen-Beacons + Shadow-Guards (Trilayer) aufgenommen
+- 🧭 System/Wissenschaftsprojekt Membranen auf Version 0.3.0 mit Metaquest-Verweisen aktualisiert
+- 🛡️ Fokus: Paritätsbrief, Telemetrie-Handshakes, Storyboard-Parität
 
 ---
 

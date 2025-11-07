@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "sigil": "shadow-system-metaquest",
+    "version": "0.1.0",
+    "created": "2025-12-07T00:00:00Z",
+    "updated": "2025-12-07T00:00:00Z",
+    "logistic": {
+      "R": "Metaquest automation drift, missing telemetry, unsynchronised indices",
+      "Theta": "Parity brief + codex echo delivered each sprint",
+      "beta": 5.2,
+      "zeta": "Spikes when sigillin_sync reports lapse or indices lag"
+    },
+    "coupling": {
+      "lichtpfad": "../../bedeutungssigillin/system/metaquest/metaquest_system_map.yaml"
+    }
+  },
+  "incidents": [
+    {
+      "id": "mq-sys-shadow-001",
+      "risk": "Metaquest parity brief absent from docs or codex during readiness review.",
+      "symptom": [
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake missing current reference",
+        "No codexfeedback entry within 1 sprint mentioning Metaquest parity"
+      ],
+      "consequence": "Launch proceeds without documented Θ; automation decisions desynchronise.",
+      "mitigation": [
+        "Draft parity brief immediately and link across docs + codex.",
+        "Notify campaign leads; freeze Metaquest launch until brief published."
+      ],
+      "monitoring": {
+        "metric": "parity brief status",
+        "threshold": "must be true before any public announcement"
+      }
+    },
+    {
+      "id": "mq-sys-shadow-002",
+      "risk": "sigillin_sync telemetry absent for >1 sprint.",
+      "symptom": [
+        "No Metaquest parity metrics in automation logs.",
+        "seed/seed_index.* missing new Metaquest entries after changes."
+      ],
+      "consequence": "ζ(R) grows; light/shadow parity cannot be verified before launch.",
+      "mitigation": [
+        "Run sigillin_sync manually, document results, schedule automation fix.",
+        "Update codex with remediation timeline and reference this shadow entry."
+      ],
+      "monitoring": {
+        "metric": "telemetry cadence",
+        "threshold": "report age ≤ sprint length"
+      }
+    },
+    {
+      "id": "mq-sys-shadow-003",
+      "risk": "Indices out of sync with Metaquest directories.",
+      "symptom": [
+        "Parser diff shows Δindex parity > 0 for Metaquest paths.",
+        "feldtheorie_index.* lacks new Metaquest entries within 24h."
+      ],
+      "consequence": "Agents lose navigation; ΔAIC guard cannot confirm readiness.",
+      "mitigation": [
+        "Refresh indices via scripts/archive_sigillin.py and rerun parser.",
+        "Log codex note referencing remediation and parent meaning map."
+      ],
+      "monitoring": {
+        "metric": "Δindex parity",
+        "threshold": "≤ 0 after remediation commit"
+      }
+    }
+  ],
+  "playbooks": [
+    {
+      "trigger": "mq-sys-shadow-001 raised",
+      "response": [
+        "Freeze Metaquest launch tasks.",
+        "Publish parity brief, cross-link to system/campaign beacons, update codex."
+      ]
+    },
+    {
+      "trigger": "mq-sys-shadow-002 raised",
+      "response": [
+        "Schedule telemetry run, capture metrics, attach to docs status section.",
+        "Open follow-up issue/PR if automation gap persists."
+      ]
+    },
+    {
+      "trigger": "mq-sys-shadow-003 raised",
+      "response": [
+        "Perform index refresh + parser check.",
+        "Record results in codex and parent meaning map null-guard notes."
+      ]
+    }
+  ]
+}

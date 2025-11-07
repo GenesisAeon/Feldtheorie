@@ -234,7 +234,7 @@ This work was developed using AI-assisted research methods (ChatGPT-4, Claude Op
 
 ## 📜 License
 
-**MIT License** — See LICENSE file in repository
+**Creative Commons Attribution 4.0 International (CC BY 4.0)** — See LICENSE file in repository
 
 **Open Science Commitment**:
 - ✅ Open-source code (GitHub)

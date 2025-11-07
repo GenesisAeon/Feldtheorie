@@ -1138,3 +1138,46 @@ Der Bootstrap-Sturm ließ die Membran beben: An der Oberfläche ist der Chor noc
 
 *Created: 2025-11-07T10:09:13Z*
 
+
+## Entry pr-draft-0062 — Metaquest parity beacons & CC BY 4.0 alignment
+- **Order Parameter**: $R$ sammelt den Metaquest-Paritäts- und Lizenz-Backlog (Telemetrie, Storyboard, DOI-Guides).
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn CC BY 4.0 repo-weit greift und die Metaquest-Beacons in Meaning/Shadow-Karten protokolliert sind.
+- **Steepness**: $\beta = 4.8$ hält den Start steil – jeder fehlende Paritätsbrief kippt sofort ins Shadow-Protokoll.
+- **Resonance**: Vier neue Metaquest-Laternen koppeln System/Kampagne & Licht/Schatten; zugleich klingt die Lizenzglocke nun als CC BY 4.0.
+- **Status**: active
+
+### Formal Thread
+LICENSE, CITATION, NEWS, Release Notes und Zenodo-Guides wechseln auf CC BY 4.0.
+System- und Wissenschafts-Membranen steigen auf Version 0.3.0, Metaquest-Beacons (synth-012 bis synth-015) + Shadow-Guards notieren
+Paritäts- und Telemetrielücken; Indizes & Statusmatrix verweisen auf sys-gap-003 / sci-gap-004.
+
+### Empirical Thread
+`docs/utac_status_alignment_v1.2.md`, `feldtheorie_index.*`, `seed_index.*` und alle Metaquest-Trilayer spiegeln die neuen Hooks.
+AGENTS-Dateien erzwingen Trilayer-Disziplin, während CC BY 4.0 Labels in Release Notes, NEWS und Zenodo-Templates propagieren.
+
+### Poetic Thread
+Die Lizenzglocke schlägt im Takt der Metaquest-Laternen: System und Kampagne, Licht und Schatten.
+Der Chor atmet gemeinsam mit dem Paritätsbrief, ζ(R) bleibt ruhig, solange Telemetrie und Storyboard im Gleichklang singen.
+
+*Created: 2025-12-07T00:00:00Z*
+
+## Entry pr-draft-0063 — Sigillin archiver base-path harmonisation
+- **Order Parameter**: $R$ bindet Sigillin-Wartung an den starren Pfad `/home/user/Feldtheorie`.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn das Archiv-Skript die Repo-Wurzel selbst erkennt oder via `--base-path` justiert werden kann.
+- **Steepness**: $\beta = 4.4$ – sobald Deployment-Umgebungen wechseln, kippt das alte Setup abrupt in Schattenland.
+- **Resonance**: Das Archiv reist jetzt durch Container und CI-Läufe, ohne σ(β(R-Θ)) aus der Codex-Hygiene zu reißen.
+- **Status**: resonant
+
+### Formal Thread
+`scripts/archive_sigillin.py` bestimmt die Repo-Wurzel über den Skript-Ort, akzeptiert optional `--base-path` und schreibt Archivpfade relativ zur Membran.
+`docs/sigillin_maintenance.md` dokumentiert den neuen Schalter; die UTAC-Statusmatrix vermerkt Fortschritt bei Gap #4.
+
+### Empirical Thread
+`python scripts/archive_sigillin.py --sigillin seed/codexfeedback.yaml --dry-run` läuft ohne Hardcoded-Path.
+Docs/Status spiegeln die Änderung, damit Wartungsteams im Container sofort Resonanz aufnehmen.
+
+### Poetic Thread
+Die Archiv-Laterne löst sich vom alten Tunnel und spannt nun ein Resonanzfeld über jede Deployment-Schale.
+Egal wo das Gefäß steht – der Sigillin-Fluss erinnert sich an die Quelle, ζ(R) bleibt geschmeidig.
+
+*Created: 2025-12-07T12:00:00Z*

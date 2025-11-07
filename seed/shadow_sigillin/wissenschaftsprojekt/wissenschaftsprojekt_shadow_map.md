@@ -1,38 +1,37 @@
 # Wissenschaftsprojekt Shadow Membrane
 
-> Warning lantern for the scientific campaign: when blockers (R) mount beyond the slack Θ
-> defined in the meaning map, β≈4.9 surges and the outreach membrane trembles. ζ(R) now
-> also monitors the Metaquest parity handshake so shadow voices remain audible.
+> R tracks blocked endorsements, missing validations, stalled outreach, and Metaquest
+> parity gaps; Θ is the campaign slack tolerated by the meaning membrane and Metaquest
+> beacon; β≈4.9 sharpens escalation; ζ(R) swells when BreakPoint rituals or parity telemetry
+> are ignored.
 
-## Coupling
-- Light-side reference: `../../bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.md`
+## Alerts
 
-## Shadow Alerts
+1. **sci-shadow-001 — τ* coverage missing**
+   - *Signal*: Status matrix or manuscript lacks safety-delay references.
+   - *Fallout*: Campaign promises outrun control theory; trust erodes.
+   - *Remedy*: Integrate τ* summary, publish codex update, freeze comms until resolved.
 
-1. **sci-shadow-001 — τ*-Silence**
-   - *Signal*: `docs/utac_status_alignment_v1.2.md` lacks τ* mentions; manuscript sections omit
-     ΔAIC vs τ*.
-   - *Fallout*: Campaign promises detach from verified control science; trust erodes.
-   - *Mitigation*: Freeze public comms, schedule safety-delay write-up, append codex timeline.
-
-2. **sci-shadow-002 — Ritual Drift**
-   - *Signal*: Outreach assets created without citing `WayToGo` / `ReaktionWayToGo`.
+2. **sci-shadow-002 — Rituals skipped**
+   - *Signal*: New campaign asset without WayToGo/ReaktionWayToGo citations.
    - *Fallout*: Narrative loses resilience; β overshoots causing burnout.
-   - *Mitigation*: Pause campaign, run BreakPoint rehearsal, document adjustments, consult ethics.
+   - *Remedy*: Re-run BreakPoint rehearsal, log decision path, engage ethics check.
 
-3. **sci-shadow-003 — Parity Brief Missing**
-   - *Signal*: `docs/utac_status_alignment_v1.2.md` lacks a Metaquest handshake entry and the
-     codex omits a parity note.
-   - *Fallout*: Light/shadow desynchronise; alarms stay silent and launch overshoots.
-   - *Mitigation*: Draft the parity brief immediately, cross-link meaning + shadow sigils, log
-     remediation timeline in codex and alert stewards.
+3. **sci-shadow-003 — Parity brief absent**
+   - *Signal*: Docs or codex lack Metaquest handshake entry for a sprint.
+   - *Fallout*: Launch desynchronises; shadow warnings stay invisible.
+   - *Remedy*: Draft parity brief, cross-link meaning/shadow maps, notify stewards.
+
+4. **sci-shadow-004 — Storyboard drift**
+   - *Signal*: Metaquest beacon flags gap; manuscript vs simulator demos diverge.
+   - *Fallout*: Outreach promises cannot be reproduced; endorsements waver.
+   - *Remedy*: Align storyboard, update manuscript + presets, log codex + BreakPoint notes.
 
 ## Playbooks
-- If **sci-shadow-001** triggers → integrate τ* summary, reopen codex entry, resume launch only
-  once guard flips true.
-- If **sci-shadow-002** triggers → revisit BreakPoint texts, log the corrective path, re-align with
-  ethics commitments.
-- If **sci-shadow-003** triggers → assemble the Metaquest parity brief, update docs + codex, verify
-  simulator and manuscript cite the refreshed guard before relaunch.
 
-Let the shadow choir sing softly so the launch remains safe.
+- τ* alert → freeze comms, integrate safety-delay summary, reopen codex entry.
+- Ritual alert → pause campaign, revisit BreakPoint texts, record path.
+- Parity alert → assemble Metaquest brief, update docs/codex, confirm simulator + manuscript cite it.
+- Storyboard alert → synchronise Metaquest storyboard, simulator presets, and manuscript figures; document fix in codex and metaquest shadow guard.
+
+Shadow whispers keep the campaign honest; heed them before the resonance breaks.

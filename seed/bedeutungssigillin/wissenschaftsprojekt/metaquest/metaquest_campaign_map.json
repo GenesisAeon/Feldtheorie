@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "sigil": "bedeutungs-wissenschafts-metaquest",
+    "version": "0.1.0",
+    "created": "2025-12-07T00:00:00Z",
+    "updated": "2025-12-07T00:00:00Z",
+    "logistic": {
+      "R": "Outstanding Metaquest launch tasks (manuscript, outreach, endorsements)",
+      "Theta": "Checkpoints in Manuskriptfinalisierung pdf + UTAC status matrix",
+      "beta": 4.8,
+      "zeta": "Soothes when BreakPoint rituals and parity brief keep cadence"
+    },
+    "resonance": "Keeps Metaquest campaign artefacts aligned with the system spine so manuscripts, demos, and endorsements move in resonance rather than overshoot.",
+    "shadow_coupling": "../../shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml"
+  },
+  "existing_assets": [
+    {
+      "id": "mq-sci-asset-001",
+      "title": "Manuskriptfinalisierung & Kampagnenstart",
+      "location": "../../Manuskriptfinalisierung und Kampagnenstart.pdf",
+      "resonance": "Defines readiness checklist for publication, endorsements, and campaign pacing.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "seed/Finalize_Publish.txt",
+          "seed/Finalisierung_Plattform.txt"
+        ],
+        "logistic_coupling": "Θ checkpoints align Metaquest launch gating with manuscript + automation tasks."
+      }
+    },
+    {
+      "id": "mq-sci-asset-002",
+      "title": "UTAC Status Alignment v1.2",
+      "location": "../../../docs/utac_status_alignment_v1.2.md",
+      "resonance": "Tracks activation gaps, including Metaquest parity and telemetry requirements.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+          "docs/utac_status_alignment_v1.2.md#activation-gaps"
+        ],
+        "logistic_coupling": "Provides ΔAIC guards and activation sequencing so β remains disciplined during launch."
+      }
+    },
+    {
+      "id": "mq-sci-asset-003",
+      "title": "BreakPoint Analyse Rituals",
+      "location": "../../BreakPointAnalyse/",
+      "resonance": "WayToGo + ReaktionWayToGo capture pivot responses and resilience scripts.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "seed/BreakPointAnalyse/WayToGo.txt",
+          "seed/BreakPointAnalyse/ReaktionWayToGo.txt"
+        ],
+        "logistic_coupling": "ζ(R) is damped when these rituals precede Metaquest outreach decisions."
+      }
+    }
+  ],
+  "needed_resonances": [
+    {
+      "id": "mq-sci-gap-001",
+      "description": "Draft Metaquest parity brief with narrative + risk posture and publish tri-layer.",
+      "target_location": [
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+        "seed/codexfeedback.*",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/"
+      ],
+      "threshold": {
+        "Theta": "brief cited in docs + codex prior to external announcements",
+        "beta": 4.9
+      },
+      "null_guard": "Shadow alert sci-shadow-003 fires if absent at launch lock."
+    },
+    {
+      "id": "mq-sci-gap-002",
+      "description": "Storyboard Metaquest simulator demos linked to manuscript figures and outreach schedule.",
+      "target_location": [
+        "simulator/presets/",
+        "paper/universal-threshold-field-preprint.md",
+        "docs/outreach/"
+      ],
+      "threshold": {
+        "Theta": "demo list mirrored between manuscript + simulator before press briefing",
+        "beta": 4.7
+      },
+      "null_guard": "If storyboard missing, BreakPoint ritual mandates review before release."
+    },
+    {
+      "id": "mq-sci-gap-003",
+      "description": "Endorsement + ethics alignment ledger specific to Metaquest activation.",
+      "target_location": [
+        "seed/EndorsementarXiv.pdf",
+        "ETHICS.md",
+        "docs/utac_status_alignment_v1.2.md#implementation-map"
+      ],
+      "threshold": {
+        "Theta": "ledger updated with Metaquest commitments and approvals",
+        "beta": 4.5
+      },
+      "null_guard": "If ledger stale, escalate via sci-shadow-001 for governance hold."
+    }
+  ],
+  "activation_hooks": [
+    {
+      "trigger": "Campaign milestone reached (e.g. endorsement returned)",
+      "response": "Update tri-layer, cross-link to codex + docs, notify simulator briefing list."
+    },
+    {
+      "trigger": "New outreach asset created",
+      "response": "Verify BreakPoint references, attach ΔAIC context, cite parity brief."
+    },
+    {
+      "trigger": "Launch date adjusted",
+      "response": "Re-run BreakPoint ritual, refresh status matrix, document ΔΘ in codex."
+    }
+  ],
+  "null_model_reference": {
+    "description": "Null = Metaquest narrative runs without parity brief or BreakPoint guard; endorsements stall and outreach drifts.",
+    "monitoring": [
+      {
+        "metric": "parity brief status",
+        "condition": "Metaquest brief referenced in docs + codex"
+      },
+      {
+        "metric": "BreakPoint acknowledgement",
+        "condition": "Every outreach artifact cites WayToGo/ReaktionWayToGo"
+      },
+      {
+        "metric": "endorsement ledger",
+        "condition": "Endorsement file updated ≤14 days ago"
+      }
+    ]
+  }
+}
