@@ -13,7 +13,7 @@ meta:
   version: "1.0.0"
   created: "2025-11-06"
   status: "active"
-  python_files: 30
+  python_files: 31
   subdirectories: 4
 
 # ═══════════════════════════════════════════════════════════════════
@@ -43,7 +43,7 @@ categories:
     name: "Utilities & Guards"
     description: "Helper-Funktionen, Guards, Corrections"
     color: "#9B59B6"  # Lila - Utils
-    count: 3
+    count: 4
 
   subdirs:
     name: "Unterverzeichnisse"
@@ -376,7 +376,7 @@ python_scripts:
       Testet rekursive Schwellenwert-Dynamiken.
 
   # ─────────────────────────────────────────────────────────────────
-  # UTILITIES & GUARDS (3)
+  # UTILITIES & GUARDS (4)
   # ─────────────────────────────────────────────────────────────────
 
   - id: analysis-util-001
@@ -412,6 +412,17 @@ python_scripts:
       Sweept synthetische Control-Traces durch ResonantImpedance.
       Exportiert relief, recovery, hysteresis metrics.
       Output: results/resonant_impedance_diagnostics.json
+
+  - id: analysis-util-004
+    name: "outlier_beta_review.py"
+    category: utilities
+    type: diagnostics
+    status: primed
+    relevance: high
+    keywords: [socio-ecology, beta, outlier, ΔAIC, falsification]
+    description: |
+      Prüft hochsteile β-Profile (Amazon, Urban Heat) gegen glatte Nullmodelle.
+      Exportiert instrumentation_flag Ledger: results/outlier_beta_review.json.
 
   # ─────────────────────────────────────────────────────────────────
   # SPEZIELLE ANALYSEN (4)
@@ -559,11 +570,12 @@ domains:
 
   socio_ecology:
     name: "Socio-Ecology & Climate"
-    scripts: 3
+    scripts: 4
     highlights:
       - amazon_resilience_fit.py (β=14.6)
       - urban_heat_canopy_fit.py (β=16.3 OUTLIER!)
       - planetary_tipping_elements_fit.py
+      - outlier_beta_review.py (Instrumentation-Flag Ledger)
 
   cross_domain:
     name: "Cross-Domain & Meta"
@@ -618,6 +630,7 @@ triggers:
     - Meta-Regression
     - Universality
     - Cohort-Summary
+    - Instrumentation-Flag
 
 # ═══════════════════════════════════════════════════════════════════
 # QUICKLINKS: Wichtigste Einstiegspunkte
@@ -635,6 +648,7 @@ quicklinks:
     - analysis-batch-005  # Universality Test
     - analysis-batch-003  # Cohort Summary
     - analysis-util-001   # Multiple Testing Correction
+    - analysis-util-004   # Outlier β Guard (Amazon & Urban Heat)
 
   high_impact_fits:
     - analysis-fit-001  # Wei PaLM (β=3.47)

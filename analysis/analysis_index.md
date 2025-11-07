@@ -13,7 +13,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 **Trilayer-Navigation:**
 ```
 ┌─────────────────────────────────────────┐
-│  YAML  →  Struktur (30 Python-Skripte)  │  analysis_index.yaml
+│  YAML  →  Struktur (31 Python-Skripte)  │  analysis_index.yaml
 │  JSON  →  Agentenschnittstelle          │  analysis_index.json
 │  MD    →  Menschenfreundlich (du!)      │  analysis_index.md
 └─────────────────────────────────────────┘
@@ -27,7 +27,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 
 ```
 analysis/
-├── 30 Python-Skripte (Domain-Fits, Batch-Processing, Labs)
+├── 31 Python-Skripte (Domain-Fits, Batch-Processing, Labs)
 ├── batch_configs/   (4 YAML/JSON Konfigurationen)
 ├── batch_runs/      (2 gespeicherte Batch-Runs)
 ├── reports/         (1 QPO-Summary)
@@ -42,6 +42,7 @@ analysis/
 - `universality_test.py` - Testet β-Universalität
 - `resonance_cohort_summary.py` - Median R²≈0.9981, ΔAIC≈65.1
 - `multiple_testing_correction.py` - Statistische Validität
+- `outlier_beta_review.py` - Instrumentation-Flag Ledger für Amazon & Urban Heat
 
 #### **High-Impact Fits:**
 - `llm_beta_extractor.py` - Wei's PaLM (β=3.47±0.47)
@@ -68,7 +69,7 @@ analysis/
 - **Biology (3):** lenski_citplus, synaptic_release, honeybee_waggle
 - **Cognition (2):** working_memory_gate, adaptive_theta_plasticity
 - **Geophysics (1):** seismic_rupture_threshold (Cascadia)
-- **Socio-Ecology (3):** amazon_resilience, urban_heat_canopy, planetary_tipping
+- **Socio-Ecology (4):** amazon_resilience, urban_heat_canopy, planetary_tipping, outlier_beta_review
 - **Cross-Domain (6):** coupled_field, membrane_robin_semantic, meta_threshold, etc.
 
 **Output:** Alle exportieren nach `results/*.json`
@@ -99,13 +100,14 @@ analysis/
 
 ---
 
-### 🟣 Utilities & Guards (3)
+### 🟣 Utilities & Guards (4)
 
 **Was?** Helper-Funktionen, Validierung, Diagnostics
 
 1. `multiple_testing_correction.py` - **Wichtig!** Bonferroni, FDR
 2. `preset_alignment_guard.py` - Validiert Preset-Konsistenz
 3. `resonant_impedance_diagnostics.py` - ζ(R) Diagnostics
+4. `outlier_beta_review.py` - ΔAIC Outlier-Wacht (instrumentation_flag)
 
 ---
 
@@ -172,13 +174,14 @@ analysis/
 
 ---
 
-### 🌿 Socio-Ecology (3 Skripte)
+### 🌿 Socio-Ecology (4 Skripte)
 **Highlights:**
 - `amazon_resilience_fit.py` - Amazon Moisture, **β=14.6**
 - `urban_heat_canopy_fit.py` - **β=16.3 - HÖCHSTER WERT!** 🔥
 - `planetary_tipping_elements_fit.py` - AMOC, Grönland, etc.
+- `outlier_beta_review.py` - Instrumentation-Flag Ledger (ΔAIC-Gegencheck)
 
-**Ergebnisse:** Klima-Tipping-Points haben EXTREME β-Werte (Outliers!)
+**Ergebnisse:** Klima-Tipping-Points haben EXTREME β-Werte (Outliers!) + Ledger prüft Instrumentations-Bias.
 
 ---
 
@@ -342,6 +345,10 @@ universal_beta_extractor.main(["--mode", "validate", "--output", "out/master_bet
 - Nichtlineare Materialeigenschaften? (Urban Heat)
 - Extreme Kopplung? (Seismik)
 - Unentdeckte Rückkopplungen? (Amazon)
+
+**Neuer Guard:** `outlier_beta_review.py` → `analysis/results/outlier_beta_review.json`
+- Amazon: `genuine_regime_split`
+- Urban Heat: `requires_follow_up` (Instrumentationsprüfung weiterführen!)
 
 **→ Muss in UTAC v1.2 Outlier-Analyse untersucht werden!**
 

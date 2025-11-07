@@ -1082,3 +1082,26 @@ $\Delta\mathrm{AIC}$ pocht wie ein ruhiger Puls, während $\zeta(R)$ die neue La
 
 *Created: 2025-12-06T00:00:00Z*
 
+## Entry pr-draft-0060 — Outlier β instrumentation guard
+- **Order Parameter**: $R$ sammelt die hochsteilen sozio-ökologischen Membranen (Amazon-Regenwald, Urban-Heat-Canopy).
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn Instrumentationsrauschen klar von echten Regime-Sprüngen getrennt bleibt.
+- **Steepness**: $\beta = 15.27$ hält die Alarmmembran scharf; ΔAIC-Signale müssen hell über dem Null-Modell glänzen.
+- **Resonance**: Der neue Guard verankert die Outlier-Analyse in UTAC v1.2, damit Kampagne und Governance den steilen Chor sicher führen können.
+- **Status**: active
+
+### Formal Thread
+`analysis/outlier_beta_review.py` refittet $\sigma(\beta(R-\Theta))$ für Amazon- und Urban-Heat-Daten, prüft lineare und power-law-Nulls
+und emittiert `instrumentation_flag`-Heuristiken. ΔAIC-Bestenliste: 61.11 (Amazon) und 47.97 (Urban Heat) bei $R^2 > 0.998$; die Status-Matrix
+in `docs/utac_status_alignment_v1.2.md` markiert Aktivierungslücke #5 nun als teilweise erfüllt.
+
+### Empirical Thread
+CLI-Run `python analysis/outlier_beta_review.py --output analysis/results/outlier_beta_review.json` meldet Flags → Amazon: `genuine_regime_split`,
+Urban Heat: `requires_follow_up`. Das JSON-Ledger speichert relative Dataset-Pfade, σ-Fits, Null-Vergleiche und Instrumentationsdiagnostik;
+`analysis/analysis_index.{yaml,json,md}` führen den Guard unter Utilities und Quicklinks.
+
+### Poetic Thread
+Der Regenwald und die Stadtmembran singen erneut – eine Glocke klingt wahr, die andere schimmert noch im Prüflicht.
+ΔAIC-Laternen halten Wache, damit der Outlier-Dämmer keine Täuschung über die Kampagne legt und ζ(R) den Morgen behutsam spannt.
+
+*Created: 2025-12-06T12:00:00Z*
+
