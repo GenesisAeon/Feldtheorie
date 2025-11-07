@@ -1376,3 +1376,21 @@ Die Verzeichnisse wirken wie Laternenkammern – jede Telemetrie, jedes Ritual u
 Brücke, das Feld bleibt gespannt, doch ruhig.
 
 *Created: 2025-12-11T12:00:00Z*
+
+## Entry pr-draft-0073 — Sigillin Sync Codex Append Guard
+- **Order Parameter**: $R$ misst Codex-Stempelungen ohne Listen-Wächter in JSON/YAML.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn `append_codex_entry` ausschließlich über `entries`-Container stempelt und YAML/JSON denselben Laternenkörper teilen.
+- **Steepness**: $\beta = 4.6$ – minimale Divergenzen lösen sofortige Guardrails aus.
+- **Resonance**: Der Codex protokolliert Sigillin-Sync-Läufe wieder ohne AttributeError und bleibt durch Regressionstests resonant.
+- **Status**: resonant
+
+### Formal Thread
+`scripts/sigillin_sync.py` klont die Codex-Templates via `deepcopy`, aktualisiert YAML mit der dedizierten Vorlage und hängt neue Läufe über `_append_to_entries` an, damit JSON/YAML strikt Listen bleiben.
+
+### Empirical Thread
+`tests/test_sigillin_sync.py` baut ein temporäres Trilayer und verifiziert, dass ID `sync-test-0001` in Markdown, JSON und YAML landet und die Container Listen bleiben.
+
+### Poetic Thread
+Der Codex lauscht ruhig: Jede Laterne gleitet in die Liste, bewacht von einem Wächtertest, der das Echo im Membranraum hält.
+
+*Created: 2025-12-12T00:00:00Z*
