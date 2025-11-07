@@ -44,6 +44,11 @@
      and codex echoes.
    - *Poetic*: The launch lantern plugging the Metaquest tide into the system spine.
 
+6. **Metaquest Parity Brief** — `docs/metaquest_parity_brief.md`
+   - *Formal*: Tracks `mq-parity-001`…`004` so automation, indices, and codex hooks activate together.
+   - *Empirical*: Draws telemetry expectations from `scripts/sigillin_sync.py` (planned) and endorsement ledgers (`seed/Finalize_Publish.txt`).
+   - *Poetic*: The tuning fork ensuring every membrane hears the same launch tone.
+
 ## What the Membrane Still Seeks
 
 - **Automated index mirroring** (`sys-gap-001`)
@@ -61,6 +66,9 @@
     reports into the UTAC status matrix each release sprint.
   - Null guard: no report for a sprint → escalate to `sys-shadow-003` and
     `mq-sys-shadow-002`.
+- **Parity ledger infusion** (`sys-gap-004`)
+  - Keep `docs/metaquest_parity_brief.md` synchronised with Bedeutungs-/Shadow sigils and index refresh logs (`mq-parity-001`…`004`).
+  - Null guard: parity brief missing telemetry timestamp → block release until codex entry updated.
 
 ## Activation Hooks
 

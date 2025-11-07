@@ -55,22 +55,36 @@
         ],
         "logistic_coupling": "ζ(R) is damped when these rituals precede Metaquest outreach decisions."
       }
+    },
+    {
+      "id": "mq-sci-asset-004",
+      "title": "Metaquest Parity Brief",
+      "location": "../../../docs/metaquest_parity_brief.md",
+      "resonance": "Condenses mq-parity-001…004 so telemetry, demos, endorsements, and codex hooks align.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+          "seed/Finalize_Publish.txt"
+        ],
+        "logistic_coupling": "Provides Θ checkpoints for parity timestamp, simulator playlist, and endorsement ledger references in outreach assets."
+      }
     }
   ],
   "needed_resonances": [
     {
       "id": "mq-sci-gap-001",
-      "description": "Draft Metaquest parity brief with narrative + risk posture and publish tri-layer.",
+      "description": "Complete parity brief with telemetry timestamp, simulator playlist, endorsement ledger, and codex id.",
       "target_location": [
+        "docs/metaquest_parity_brief.md",
         "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
-        "seed/codexfeedback.*",
-        "seed/bedeutungssigillin/wissenschaftsprojekt/"
+        "seed/codexfeedback.*"
       ],
       "threshold": {
-        "Theta": "brief cited in docs + codex prior to external announcements",
+        "Theta": "brief lists latest telemetry + codex id before external announcements",
         "beta": 4.9
       },
-      "null_guard": "Shadow alert sci-shadow-003 fires if absent at launch lock."
+      "null_guard": "Shadow alert sci-shadow-003 fires if timestamp or codex link missing."
     },
     {
       "id": "mq-sci-gap-002",
@@ -99,6 +113,21 @@
         "beta": 4.5
       },
       "null_guard": "If ledger stale, escalate via sci-shadow-001 for governance hold."
+    },
+    {
+      "id": "mq-sci-gap-004",
+      "description": "Ensure outreach/manuscript/simulator assets cite latest parity brief revision.",
+      "target_location": [
+        "docs/metaquest_parity_brief.md",
+        "paper/",
+        "simulator/",
+        "docs/outreach/"
+      ],
+      "threshold": {
+        "Theta": "all outward-facing assets note parity revision + codex id within 24h",
+        "beta": 4.6
+      },
+      "null_guard": "Missing citation triggers campaign shadow guard review."
     }
   ],
   "activation_hooks": [

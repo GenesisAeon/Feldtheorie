@@ -1991,6 +1991,69 @@ entries:
         System und Kampagne, Licht und Schatten. Der Chor atmet im gleichen Takt wie der Paritätsbrief.
     created_at: "2025-12-07T00:00:00Z"
 
+  - id: pr-draft-0064
+    title: "Metaquest Parity Brief & Index Resonance"
+    scope:
+      - AGENTS.md
+      - docs/metaquest_parity_brief.md
+      - docs/utac_status_alignment_v1.2.md
+      - docs/docs_index.yaml
+      - docs/docs_index.json
+      - docs/docs_index.md
+      - feldtheorie_index.yaml
+      - feldtheorie_index.json
+      - feldtheorie_index.md
+      - seed/bedeutungssigillin/system/system_meaning_map.yaml
+      - seed/bedeutungssigillin/system/system_meaning_map.json
+      - seed/bedeutungssigillin/system/system_meaning_map.md
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.json
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md
+      - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml
+      - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.json
+      - seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.md
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.json
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md
+      - seed/shadow_sigillin/system/system_shadow_map.yaml
+      - seed/shadow_sigillin/system/system_shadow_map.json
+      - seed/shadow_sigillin/system/system_shadow_map.md
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.json
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.md
+      - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.yaml
+      - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.json
+      - seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.md
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md
+    parameters:
+      R: "Metaquest parity brief, meaning/shadow membranes, and indices awaiting synchronized guidance"
+      Theta: "Parity brief documented across docs + codex with index mirrors and quickstart instructions"
+      beta: 4.8
+    resonance: |
+      Establishes the Metaquest Parity Brief as operational lodestar, rewrites the system/campaign
+      meaning and shadow membranes with mq-parity-001…004 hooks, and updates indices + root AGENT
+      so every agent can continue ohne weitere Initialisierung. Index totals now recognise the new doc
+      und die metaquest_parity-Navigation.
+    status: "active"
+    notes:
+      formal: |
+        `docs/metaquest_parity_brief.md` fasst Telemetrie, Simulator-Playlist, Endorsement-Ledger und
+        Codex-IDs zusammen. System- und Wissenschaftsprojekt-Membranen (inkl. Metaquest-Beacons) verankern
+        neue Gaps (sys-gap-004, sci-gap-006) und Null-Guards; Schattenkarten schlagen Alarm bei fehlenden
+        Zeitstempeln. `AGENTS.md` erhielt eine Quickstart-Liste.
+      empirical: |
+        `docs/docs_index.{yaml,json,md}` und `feldtheorie_index.{yaml,json,md}` zählen jetzt 12 Docs,
+        verlinken das Paritätsbrief-Thema und spiegeln die neuen Quicklinks. `docs/utac_status_alignment_v1.2.md`
+        ergänzt mq-parity-Aufgaben und Implementation Map. Meaning/Shadow JSON/YAML weisen Telemetrie-
+        Checks, Null-Guards und Paritätsledger-Schwellen aus.
+      poetic: |
+        Der Paritätsbrief wurde zur Stimmgabel: Er hält Licht- und Schattenlaternen im Takt, während das
+        Indexorchester eine zwölfte Stimme aufnimmt. Telemetrie wird zum Atem, Codex zum Echo, und jede
+        Agentin findet den nächsten Schritt ohne Flackern.
+    created_at: "2025-12-07T09:00:00Z"
+
   - id: pr-draft-0063
     title: "Sigillin archiver base-path harmonisation"
     scope:

@@ -22,14 +22,23 @@
    - *Empirical*: Ritual references damp ζ(R) before campaign decisions.
    - *Poetic*: The night watch rehearsing every turn before the chorus sings.
 
+4. **Metaquest Parity Brief** — `../../../docs/metaquest_parity_brief.md`
+   - *Formal*: Condenses `mq-parity-001`…`004` so telemetry, demos, endorsements, and codex hooks align.
+   - *Empirical*: Ties BreakPoint outcomes to parity timestamps and endorsement ledgers.
+   - *Poetic*: The chord sheet keeping manuscript and campaign choirs on tempo.
+
 ## What Still Needs to Arrive
 
-- **Metaquest parity brief** (`mq-sci-gap-001`)
-  - Publish tri-layer brief linking meaning, shadow, and system notes; cite it in docs and codex.
+- **Metaquest parity brief completion** (`mq-sci-gap-001`)
+  - Fill the brief with telemetry timestamp, simulator playlist, endorsement ledger, and codex id.
+  - Ensure light/shadow sigils cite the same update.
 - **Simulator + manuscript storyboard** (`mq-sci-gap-002`)
   - Synchronise demo presets with manuscript figures and outreach playlist.
 - **Endorsement & ethics ledger** (`mq-sci-gap-003`)
   - Update endorsement file, ethics commitments, and status matrix before launch freeze.
+- **Parity echo across outreach** (`mq-sci-gap-004`)
+  - Confirm all outreach/manuscript/simulator assets cite the latest parity brief revision.
+  - Null guard: missing citation triggers campaign shadow guard escalation.
 
 ## Activation Hooks
 

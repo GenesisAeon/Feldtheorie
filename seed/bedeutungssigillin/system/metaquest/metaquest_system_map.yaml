@@ -49,16 +49,28 @@ existing_assets:
         - docs/utac_status_alignment_v1.2.md#implementation-map
       logistic_coupling: |
         Defines when ζ(R) spikes so Metaquest alerts can trigger remediation.
+  - id: mq-sys-asset-004
+    title: Metaquest Parity Brief
+    location: docs/metaquest_parity_brief.md
+    resonance: 'Condenses mq-parity actions so parity telemetry, simulator playlists, and codex hooks stay aligned.'
+    status: active
+    notes:
+      evidence:
+        - scripts/sigillin_sync.py (planned)
+        - seed/Finalize_Publish.txt
+      logistic_coupling: |
+        Provides Θ checkpoints for telemetry timestamp, endorsement ledger, and codex entry whenever Metaquest assets update.
 needed_resonances:
   - id: mq-sys-gap-001
-    description: 'Publish Metaquest parity brief summarising system + campaign links.'
+    description: 'Populate parity brief with telemetry timestamp, simulator playlist, endorsement ledger, and codex ID.'
     target_location:
+      - docs/metaquest_parity_brief.md
       - docs/utac_status_alignment_v1.2.md#metaquest-handshake
       - seed/codexfeedback.*
     threshold:
-      Theta: 'brief referenced in docs + codex before launch freeze'
+      Theta: 'brief lists latest telemetry date + codex reference before launch freeze'
       beta: 4.9
-    null_guard: 'If brief missing during readiness review, escalate to sci-shadow-003.'
+    null_guard: 'Missing timestamp or codex reference escalates to sci-shadow-003 and sys-shadow-004.'
   - id: mq-sys-gap-002
     description: 'Implement scripts/sigillin_sync.py telemetry export with Metaquest parity metrics.'
     target_location:
@@ -78,6 +90,17 @@ needed_resonances:
       Theta: 'indices list Metaquest sigils within 24h of change'
       beta: 4.6
     null_guard: 'Parser diff showing Δindex parity > 0 for one commit activates shadow guard.'
+  - id: mq-sys-gap-004
+    description: 'Ensure Bedeutungs-/Shadow sigils and indices cite latest parity brief update.'
+    target_location:
+      - docs/metaquest_parity_brief.md
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+      - feldtheorie_index.*
+    threshold:
+      Theta: 'parity brief update mirrored in indices + codex within 24h'
+      beta: 4.7
+    null_guard: 'If indices lack newest parity note, trigger sys-shadow-001 and mq-sys-shadow-004.'
 activation_hooks:
   - trigger: 'New Metaquest asset created'
     response: 'Update trilayer files, refresh indices, log codex entry, cite status matrix.'

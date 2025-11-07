@@ -82,6 +82,20 @@
         ],
         "resonance": "Links manuscript, simulator demos, and outreach cadence to Metaquest parity rituals."
       }
+    },
+    {
+      "id": "sci-core-006",
+      "title": "Metaquest Parity Brief",
+      "location": "docs/metaquest_parity_brief.md",
+      "status": "active",
+      "notes": {
+        "logistic_role": "Summarises mq-parity-001…004 so telemetry, demos, endorsements, and codex lineage stay synchronised.",
+        "evidence": [
+          "scripts/sigillin_sync.py (planned)",
+          "seed/Finalize_Publish.txt"
+        ],
+        "resonance": "Ensures campaign storytelling echoes the same Θ checkpoints as the system membrane."
+      }
     }
   ],
   "needed_resonances": [
@@ -126,18 +140,17 @@
     },
     {
       "id": "sci-gap-004",
-      "description": "Parity brief weaving Bedeutungs-/Shadow sigils into manuscript + outreach status calls.",
+      "description": "Complete parity brief with telemetry timestamp, simulator playlist, endorsement ledger, and codex reference.",
       "anchors": [
-        "seed/bedeutungssigillin/**",
-        "seed/shadow_sigillin/**",
+        "docs/metaquest_parity_brief.md",
         "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml",
         "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml"
       ],
       "threshold": {
-        "Theta": "handshake brief appended to codex + docs before launch lock",
+        "Theta": "brief lists latest telemetry + codex id before campaign lock",
         "beta": 4.6
       },
-      "zeta_cue": "Use BreakPoint rituals to keep cadence calm when shadow alerts rise."
+      "zeta_cue": "BreakPoint rituals absorb schedule shifts while parity fills in."
     },
     {
       "id": "sci-gap-005",
@@ -152,6 +165,20 @@
         "beta": 4.8
       },
       "zeta_cue": "Coordinate with safety-delay write-up so ΔAIC context remains balanced."
+    },
+    {
+      "id": "sci-gap-006",
+      "description": "Parity storytelling echo across outreach, manuscript, and simulator scripts.",
+      "anchors": [
+        "docs/metaquest_parity_brief.md",
+        "paper/",
+        "simulator/"
+      ],
+      "threshold": {
+        "Theta": "each outward-facing script cites latest parity brief revision + codex id",
+        "beta": 4.5
+      },
+      "zeta_cue": "Campaign shadow guard triggers review when references fall behind."
     }
   ],
   "activation_sequence": [

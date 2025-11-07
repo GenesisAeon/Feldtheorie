@@ -11,6 +11,19 @@ This repository curates the "Universal Threshold Field" programme that unifies e
 
 ---
 
+## 🚀 Quickstart for Incoming Agents
+
+1. **Sync orientation.** Read `docs/utac_status_alignment_v1.2.md` (platform status), `seed/Manuskriptfinalisierung und Kampagnenstart.pdf` (campaign cadence), and the paired Bedeutungs-/Shadow sigils under `seed/bedeutungssigillin/**` and `seed/shadow_sigillin/**`. These anchors reveal the live value of $(R, \Theta, \beta, \zeta(R))$ across automation, narrative, and risk.
+2. **Plan with tri-layer mirrors.** Every Sigillin artefact must land as structure (YAML), machine nerve (JSON), and human resonance (Markdown). Update indices (`*_index.*`) and codex feedback within the same commit so Ordnungs- and Bedeutungs-Sigillin stay synchronised.
+3. **Logistic rhythm.** Before coding, articulate how your change shifts the order parameter $R$ and what keeps $\Theta$ guarded. During implementation, note the steepness $\beta$ (activation speed) and the damping $\zeta(R)$ (telemetry, rituals, tests). After completion, encode those notes in the codex feedback entry.
+4. **Codex echo.** The Fraktaltagebuch lives in `seed/codexfeedback.{yaml,json,md}`. Failing to update it when touching Bedeutungs-/Shadow sigils is a shadow incident (`sys-shadow-002`).
+5. **Shadow handshake.** For every Bedeutungs-Sigillin update, reference the matching shadow sigil to document failure guards and recovery rituals. Keep coupling paths current so downstream agents can triage instantly.
+6. **Release cadence.** Automation hooks (Makefile, `scripts/*`, CI plans) must remain in parity with documentation. When uncertain, consult the system meaning membrane: `seed/bedeutungssigillin/system/system_meaning_map.*`.
+
+Agents who follow this checklist can continue work without additional bootstrapping.
+
+---
+
 ## 🌊 Sigillin-System Integration
 
 This repository implements the **Sigillin-System** — a semantic memory network for multi-actor research (Human, AI, future collaborators):

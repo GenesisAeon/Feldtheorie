@@ -7,10 +7,9 @@
 ## Incident Ledger
 
 1. **mq-sys-shadow-001 — Parity brief missing**
-   - *Signal*: `docs/utac_status_alignment_v1.2.md#metaquest-handshake` lacks current
-     citation; codex quiet for one sprint.
+   - *Signal*: `docs/metaquest_parity_brief.md` lacks telemetry timestamp or codex id; status matrix missing reference for >1 sprint.
    - *Fallout*: Launch continues without documented Θ; automation desynchronises.
-   - *Remedy*: Publish parity brief, link across docs + codex, freeze launch until done.
+   - *Remedy*: Fill parity brief fields, mirror update in docs + codex, freeze launch until done.
 
 2. **mq-sys-shadow-002 — Telemetry silent**
    - *Signal*: `sigillin_sync` absent; Metaquest entries missing from index diffs.

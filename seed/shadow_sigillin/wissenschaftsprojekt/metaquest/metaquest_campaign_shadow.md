@@ -7,9 +7,9 @@
 ## Alerts
 
 1. **mq-sci-shadow-001 — Parity brief absent**
-   - *Signal*: Status matrix or codex lacks Metaquest parity reference for a sprint.
+   - *Signal*: `docs/metaquest_parity_brief.md` missing telemetry timestamp or codex id; status matrix silent for >1 sprint.
    - *Fallout*: Narrative loses parity; endorsements hesitate.
-   - *Remedy*: Draft the parity brief, link across system + shadow sigils, hold public
+   - *Remedy*: Fill parity brief fields, link across system + shadow sigils, hold public
      messaging until Θ is restored.
 
 2. **mq-sci-shadow-002 — Storyboard drift**
