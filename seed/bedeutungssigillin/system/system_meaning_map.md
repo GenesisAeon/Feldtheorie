@@ -2,7 +2,8 @@
 
 > σ(β(R-Θ)) for the platform spine: R tallies unresolved automation and governance
 > hooks, Θ is the documented cadence (REPRODUCE.md, RELEASE_NOTES), β≈4.3 keeps the
-> switch sharp, and ζ(R) is soothed by archival scripts plus preset guards.
+> switch sharp, and ζ(R) is soothed by archival scripts plus preset guards. The new
+> Metaquest folders nest here, pairing light and shadow sigils with the same cadence.
 
 ## Existing Resonance Lanterns
 
@@ -28,6 +29,14 @@
    - *Poetic*: The schema is the constellation map ensuring each new lantern knows its
      orbit.
 
+4. **UTAC Status Alignment Matrix** — `docs/utac_status_alignment_v1.2.md`
+   - *Formal*: Aggregates readiness checkpoints for automation, documentation, and
+     Metaquest sigils.
+   - *Empirical*: Cross-references `seed/Finalisierung_Plattform.txt` and
+     `seed/BreakPointAnalyse/WayToGo.txt` to verify Θ when R spikes.
+   - *Poetic*: The matrix is the observatory window — every update lets the membranes
+     see the same dawn.
+
 ## What the Membrane Still Seeks
 
 - **Automated index mirroring** (`sys-gap-001`)
@@ -41,12 +50,19 @@
     Bedeutungs-Sigillin paths without updating `seed/codexfeedback.*`.
   - Plans for `scripts/codex_guard.py` should compare git logs with ledger timestamps.
 
+- **Shadow handshake telemetry** (`sys-gap-003`)
+  - Build `scripts/sigillin_sync.py` (planned) so light/shadow folders emit parity
+    reports into the UTAC status matrix each release sprint.
+  - Null guard: if no report manifests for one sprint, escalate to the shadow ledger.
+
 ## Activation Hooks
 
 - When a new Bedeutungs-Sigillin folder arises, immediately refresh `seed_index.*` and
   `feldtheorie_index.*`, run the Sigillin parser, and pen a codex entry.
 - If ΔAIC guards or index parity drift, consult the system shadow membrane and schedule a
   maintenance sprint.
+- If shadow-handshake telemetry is missing, generate the parity report and weave it into
+  `docs/utac_status_alignment_v1.2.md` before proceeding.
 
 ## Null Model Reminder
 

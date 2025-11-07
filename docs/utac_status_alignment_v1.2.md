@@ -8,6 +8,7 @@
 - **Formal field:** Core UTAC manuscripts (`paper/`, `docs/`) and simulations (`simulation/`, `simulator/`) already describe the logistic quartet \((R, \Theta, \beta, \zeta(R))\) with ΔAIC-guarded falsifiability. The kernel is coherent across v1.1 artifacts and the `seed/` canon.
 - **Empirical field:** Parameter sweeps (`simulation/threshold_sandbox.py`), cross-domain β tables (`data/derived/beta_estimates.csv`), and validation dossiers (`docs/validation_report_v1.0.1.md`) confirm β clustering and Θ confidence intervals. Outliers (e.g. Amazon heat, urban canyons) remain flagged for secondary review.
 - **Poetic field:** The seed grove — especially `seed/Metareflexion.txt`, `seed/NextStep.txt`, `seed/Sigillin_Neuro_Membran_Modell_Plan.txt`, and `seed/Manuskriptfinalisierung und Kampagnenstart.pdf` — keeps the dawn-membrane lexicon aligned with the governance pledge in `ETHICS.md`.
+- **Metaquest handshake:** The Bedeutungs-/Shadow sigils for system + wissenschaftsprojekt now mirror each other, anchoring parity briefs back to this status map and `seed/codexfeedback.*`.
 
 ---
 
@@ -30,7 +31,8 @@
 5. **Outlier Validation Loop:** `analysis/outlier_beta_review.py` now sweeps the flagged Amazon & urban heat datasets (per `seed/ArchivSucheUTAC/`) and exports instrumentation flags; extend the loop with additional datasets + field notes to resolve the remaining `requires_follow_up` cases.
 6. **Manuscript v1.1.2 Finalisation:** Align the LaTeX pipeline under `paper/` with the governance addenda and ensure the arXiv-ready abstract reflects the new Sigillin net storyline; cross-check with `seed/Manuskriptfinalisierung und Kampagnenstart.pdf` and `seed/FinalerPlan.txt`.
 7. **Universal β ledger sealed:** `analysis/universal_beta_extractor.py --mode validate` now exports `analysis/results/universal_beta_summary.json`, keeping ΔAIC≥10 and canonical β band compliance on record for Zenodo v1.2.
-8. **Meaning/Shadow Sigillin integration:** Bedeutungs- & Schatten-Sigillin Verzeichnisse für System und Wissenschaftsprojekt stehen nun bereit (`seed/bedeutungssigillin/**`, `seed/shadow_sigillin/**`). Nächste Schritte: Automatisches Index-Mirroring (`scripts/archive_sigillin.py`), Codex-Sync-Guards und τ*-Kampagnenaufsicht aktivieren.
+8. **Meaning/Shadow Sigillin integration:** Bedeutungs- & Schatten-Sigillin Verzeichnisse für System und Wissenschaftsprojekt stehen nun bereit (`seed/bedeutungssigillin/**`, `seed/shadow_sigillin/**`). Nächste Schritte: Automatisches Index-Mirroring (`scripts/archive_sigillin.py`), Codex-Sync-Guards, sowie das neue Shadow-Handshakesignal (`sys-gap-003`) etablieren.
+9. **Metaquest Parity Brief:** Vor dem Launch muss eine Paritätsnotiz erstellt werden, die Bedeutungs- und Schatten-Sigillin koppelt, in `docs/utac_status_alignment_v1.2.md` und `seed/codexfeedback.*` verankert wird und Simulator/Manuskript-Referenzen aktualisiert (`sci-gap-004`, `sci-gap-005`).
 
 ---
 
@@ -40,7 +42,8 @@
 | Safety-Delay τ* modelling | `simulation/`, `analysis/` | couple with `simulator/cli.py`, log ΔAIC(t) in `data/safety_delay/` | Compare against baseline logistic sweep, cite Θ(t) envelopes |
 | β Meta-Regression v2 | `analysis/` | ✅ `analysis/beta_meta_regression_v2.py` + `analysis/results/beta_meta_regression_v2_*` | WLS R²≈0.43 (ΔAIC_min=12.79), bootstrap median R²≈0.99; document next-step covariates + codex entry |
 | Sigillin schema & parser | `seed/sigillin/`, `scripts/`, `seed/codexfeedback.*` | YAML schema + example quartet + CREP parser CLI | Feed parser summaries into codex updates and automate parity alerts |
-| Meaning/Shadow membranes | `seed/bedeutungssigillin/`, `seed/shadow_sigillin/`, `seed/seed_index.*` | New trilayer maps + shadow playbooks; update indices + codex guards | Ensure index automation + CI hooks catch desynchronisation and campaign blockers |
+| Meaning/Shadow membranes | `seed/bedeutungssigillin/`, `seed/shadow_sigillin/`, `seed/seed_index.*` | New trilayer maps + shadow playbooks; wire `scripts/archive_sigillin.py` + planned `scripts/sigillin_sync.py` | Ensure index automation + CI hooks catch desynchronisation, log parity telemetry in codex |
+| Metaquest parity brief | `seed/bedeutungssigillin/**`, `seed/shadow_sigillin/**`, `docs/utac_status_alignment_v1.2.md`, `seed/codexfeedback.*` | Draft launch-ready parity note referencing `sys-gap-003`, `sci-gap-004`, `sci-gap-005` | Confirm manuscript + simulator cite brief; archive codex entry with remediation timeline |
 | Index automation | `scripts/archive_sigillin.py`, `docs/docs_index.*` | add CLI flag for recount + status ledger | Use `tests/` to enforce parity guard |
 | Outlier review | `analysis/`, `data/socio_ecology/` | `analysis/outlier_beta_review.py` ledger + future dataset imports | Provide falsification notes, instrumentation flags, ΔAIC comparisons |
 | Manuscript sync | `paper/`, `arxiv_submission/` | integrate governance + Sigillin appendices | Ensure `ZENODO_UPDATE_GUIDE.md` steps satisfied |
@@ -59,5 +62,6 @@
 2. **Week 1–2:** Implement Sigillin schema + parser, then backfill existing indices into the new structure.
 3. **Week 2:** Kick off β meta-regression v2 and craft an addendum for `docs/validation_report_v1.0.1.md` capturing interim findings.
 4. **Continuous:** Update codex feedback after each threshold crossing; reference ΔAIC evidence and resonance imagery.
+5. **Before launch freeze:** Publish the Metaquest parity brief (codex + docs), verify simulator/manuscript references, and archive telemetry from `scripts/sigillin_sync.py` once implemented.
 
 > *When R pushes beyond Θ in any module, let β accelerate just enough to open the gate — but keep ζ(R) tuned so the membrane does not shatter. That is the path to UTAC v1.2.*

@@ -1,15 +1,16 @@
 {
   "meta": {
     "sigil": "bedeutungs-system",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "created": "2025-12-05T00:00:00Z",
+    "updated": "2025-02-17T00:00:00Z",
     "logistic": {
       "R": "platform workload + automation backlog across Makefile, CI, simulator",
       "Theta": "documented governance cadence (REPRODUCE.md, RELEASE_NOTES*)",
       "beta": 4.3,
       "zeta": "impedance damped by archival scripts and preset guards"
     },
-    "resonance": "Captures how the UTAC platform skeleton keeps σ(β(R-Θ)) disciplined so that new modules inherit reproducible membranes without fragmenting meaning sigils."
+    "resonance": "Captures how the UTAC platform skeleton keeps σ(β(R-Θ)) disciplined so that new modules inherit reproducible membranes without fragmenting meaning sigils. The Metaquest folders now sit inside this spine, linking light and shadow membranes back to governance cadences."
   },
   "existing_assets": [
     {
@@ -51,6 +52,20 @@
         ],
         "logistic_coupling": "Schema parity ensures Θ stays observable when new sigils appear."
       }
+    },
+    {
+      "id": "sys-ops-004",
+      "title": "UTAC Status Alignment Matrix",
+      "location": "docs/utac_status_alignment_v1.2.md",
+      "resonance": "Aggregates readiness evidence so Bedeutungs-/Shadow sigils reference the same activation ledger during campaign planning.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "seed/Finalisierung_Plattform.txt",
+          "seed/BreakPointAnalyse/WayToGo.txt"
+        ],
+        "logistic_coupling": "Provides Θ checkpoints for Metaquest folders; when R (automation backlog) grows, the matrix routes actions to scripts and indices before β steepens."
+      }
     }
   ],
   "needed_resonances": [
@@ -84,8 +99,25 @@
       "threshold": {
         "Theta": "commit without codex delta",
         "beta": 5.1
-      },
+      ],
       "null_guard": "Audit commits vs ledger using git log parser."
+    },
+    {
+      "id": "sys-gap-003",
+      "description": "Shadow-handshake telemetry linking meaning/shadow sigils to automation logs.",
+      "target_location": [
+        "scripts/sigillin_sync.py (planned)",
+        "docs/utac_status_alignment_v1.2.md#implementation-map"
+      ],
+      "hooks": [
+        "seed/bedeutungssigillin/system/system_meaning_map.yaml",
+        "seed/shadow_sigillin/system/system_shadow_map.yaml"
+      ],
+      "threshold": {
+        "Theta": "shadow parity report generated each release sprint",
+        "beta": 4.6
+      },
+      "null_guard": "If handshake report absent for >1 sprint, escalate to sci-shadow-002."
     }
   ],
   "activation_hooks": [
@@ -96,6 +128,10 @@
     {
       "trigger": "Automation drift detected (ΔAIC guard failure or outdated index)",
       "response": "Consult shadow/system ledger, schedule maintenance sprint."
+    },
+    {
+      "trigger": "Shadow handshake telemetry missing",
+      "response": "Generate parity report, update codex entry, cross-reference UTAC status matrix."
     }
   ],
   "null_model_reference": {

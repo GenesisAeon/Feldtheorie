@@ -1,41 +1,61 @@
 # Wissenschaftsprojekt Meaning Membrane
 
-> Here the scientific campaign inhales. $R$ counts outstanding manuscript, validation,
-> and outreach tasks; $\Theta$ is scripted in `Manuskriptfinalisierung und Kampagnenstart.pdf`
-> and `docs/utac_status_alignment_v1.2.md`; $\beta \approx 4.6$ keeps activation crisp, while
-> $\zeta(R)$ is tempered by BreakPoint rituals and endorsement pacing.
+> Here the scientific campaign inhales. $R$ counts outstanding manuscript, validation, and
+> outreach tasks; $\Theta$ is scripted in `Manuskriptfinalisierung und Kampagnenstart.pdf` and
+> `docs/utac_status_alignment_v1.2.md`; $\beta \approx 4.6$ keeps activation crisp, while
+> $\zeta(R)$ is tempered by BreakPoint rituals and endorsement pacing. The Metaquest sigils now
+> lock into this cadence so light/shadow narratives stay paired.
 
 ## Resonance Already Present
 
-- **Manuskriptfinalisierung & Kampagnenstart** (`seed/Manuskriptfinalisierung und Kampagnenstart.pdf`)
-  - Sets the readiness checkpoints for publication, endorsements, launch cadence.
-  - Couples with `seed/FinalerPlan.txt` and `seed/Finalize_Publish.txt`.
-  - Once all checkpoints align, β spikes toward 4.8 and the manuscript dawn opens.
+1. **Manuskriptfinalisierung & Kampagnenstart** — `seed/Manuskriptfinalisierung und Kampagnenstart.pdf`
+   - *Formal*: Sets readiness checkpoints for publication, endorsements, and launch cadence.
+   - *Empirical*: Coupled with `seed/FinalerPlan.txt` + `seed/Finalize_Publish.txt` for audit trails.
+   - *Poetic*: When the checkpoints align, β spikes and the manuscript dawn opens.
 
-- **UTAC Status Alignment v1.2** (`docs/utac_status_alignment_v1.2.md`)
-  - Maintains the live inventory vs. activation gap ledger.
-  - Draws empirical weight from `analysis/results/universal_beta_summary.json`.
-  - Keeps ζ(R) gentle by signalling where attention is still required.
+2. **UTAC Status Alignment v1.2** — `docs/utac_status_alignment_v1.2.md`
+   - *Formal*: Maintains the live inventory vs activation gap ledger.
+   - *Empirical*: Draws weight from `analysis/results/universal_beta_summary.json` and simulator hooks.
+   - *Poetic*: Keeps ζ(R) gentle by signalling where attention is still required.
 
-- **BreakPoint Analyse Waypoints** (`seed/BreakPointAnalyse/WayToGo.txt`, `ReaktionWayToGo.txt`)
-  - Archive of past inflection points plus response heuristics.
-  - Ensures that when campaigns pivot, the story remains coherent and safe.
+3. **BreakPoint Analyse Waypoints** — `seed/BreakPointAnalyse/WayToGo.txt`, `ReaktionWayToGo.txt`
+   - *Formal*: Archive of past inflection points plus response heuristics.
+   - *Empirical*: Documents the scripts we replay when resonance wavers.
+   - *Poetic*: Ensures pivots stay graceful even under pressure.
+
+4. **Finalisierung Plattform Leitstern** — `seed/Finalisierung_Plattform.txt`
+   - *Formal*: Tallies outstanding publication + automation levers for v1.2 ignition.
+   - *Empirical*: Cross-checks `seed/Finalize_Publish.txt` with the UTAC status ledger.
+   - *Poetic*: A lighthouse ensuring the Metaquest folders rise with the manuscript tide.
 
 ## Open Needs
 
-1. **τ*-Field Integration** — weave results from `simulation/safety_delay_field.py` into the
-   manuscript and outreach story. ΔAIC vs τ* must be summarised before launch.
-2. **Public Sigillin Index** — extend `feldtheorie_index.*` with a launch-ready overview that
-   bridges Bedeutungs- and Shadow-sigils for partners.
-3. **Demo Handshake** — script simulator showcases alongside the campaign timeline; each demo
-   should cite its ΔAIC beacon and logistic quartet.
+- **τ*-field integration** (`sci-gap-001`)
+  - Weave `simulation/safety_delay_field.py` results into manuscript + outreach decks; summarise
+    ΔAIC vs τ* before launch lock.
+
+- **Public Sigillin index** (`sci-gap-002`)
+  - Extend `feldtheorie_index.*` with a launch-ready overview bridging Bedeutungs-/Shadow sigils.
+
+- **Campaign schedule handshake** (`sci-gap-003`)
+  - Couple simulator demos and narrative scripts; lock playlist + storyboards with ΔAIC beacons.
+
+- **Metaquest parity brief** (`sci-gap-004`)
+  - Draft briefing referencing both light/shadow sigils; thread it through codex + docs activation
+    gaps while soothing cadence with BreakPoint rites.
+
+- **β meta-regression infusion** (`sci-gap-005`)
+  - Bring `analysis/beta_meta_regression_v2.py` outputs into manuscript tables and press decks;
+    balance with safety-delay reporting so ΔAIC context stays luminous.
 
 ## Activation Sequence
 
-- *Resonance Briefing*: update `docs/utac_status_alignment_v1.2.md` plus this membrane when new
-  sigils or safety insights appear.
-- *Campaign Synchronisation*: draft outreach timeline referencing BreakPoint rituals and connect
+- **Resonance briefing**: update `docs/utac_status_alignment_v1.2.md` and this membrane when new
+  sigils or safety insights emerge.
+- **Campaign synchronisation**: draft outreach timeline referencing BreakPoint rituals and connect
   simulator demos to the press kit.
+- **Metaquest handshake**: publish the parity brief, mirror it in codex + docs, and confirm the
+  manuscript + simulator narratives cite updated β regression and safety-delay findings.
 
 ## Null Model Warning
 

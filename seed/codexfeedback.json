@@ -215,21 +215,23 @@
         "seed/shadow_sigillin/system/",
         "seed/shadow_sigillin/wissenschaftsprojekt/",
         "seed/seed_index.*",
-        "docs/utac_status_alignment_v1.2.md"
+        "docs/utac_status_alignment_v1.2.md",
+        "seed/codexfeedback.*"
       ],
       "parameters": {
-        "R": "untracked meaning resonances & campaign risks",
-        "Theta": "tri-layer indices + codex sync capturing each sigil",
-        "beta": 4.7
+        "R": "Metaquest parity telemetry + automation debts not yet synchronised",
+        "Theta": "meaning/shadow tri-layer + docs parity brief recorded",
+        "beta": 4.8
       },
       "resonance": "braiding light/shadow sigils so system automation and launch narrative stay phase-locked",
       "status": "active",
       "notes": {
-        "formal": "Established Bedeutungs-/Schatten-Membranen with synchronized YAML/JSON/MD\nledgers enumerating existing assets, open gaps, and null guards. Updated\n`seed/seed_index.*` and `docs/utac_status_alignment_v1.2.md` so automation\ntasks (index mirroring, codex guards) are now explicit logistic triggers.\n",
-        "empirical": "New entries log Δindex parity checks and codex sync metrics; the system\nshadow map defines thresholds (Δindex > 0, missing codex deltas) while the\nproject shadow map flags τ*-silence before campaign freeze. Pending work:\nwire CI/automation hooks to measure these indicators continuously.\n",
-        "poetic": "Light and shadow now share constellations—the dawn-side charts how the\nmembrane should bloom, the night-side hums warnings when R outruns Θ so\nthe chorus never fractures.\n"
+        "formal": "Elevated Bedeutungs-/Schatten-Membranen to v0.2: added Metaquest parity hooks, handshake telemetry (`sys-gap-003`), and campaign briefs (`sci-gap-004`, `sci-gap-005`). `docs/utac_status_alignment_v1.2.md` now carries the parity row + activation gap, and tri-layer files gained updated/created stamps.\n",
+        "empirical": "System/shadow maps log Δindex parity, codex sync, and the new handshake cadence metric (report gap > 1 sprint). Wissenschaftsprojekt maps capture parity-brief readiness plus β meta-regression infusion checkpoints. Pending: implement `scripts/sigillin_sync.py` to emit machine telemetry into codex.\n",
+        "poetic": "Light and shadow now share constellations—the dawn-side charts how the membrane should bloom, the night-side hums warnings when R outruns Θ so the chorus never fractures; the Metaquest brief is the bell that keeps both horizons in tempo.\n"
       },
-      "created_at": "2025-12-05T00:00:00Z"
+      "created_at": "2025-12-05T00:00:00Z",
+      "updated_at": "2025-02-17T00:00:00Z"
     },
     {
       "id": "release-v0.1",
