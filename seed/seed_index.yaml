@@ -381,6 +381,92 @@ documents:
     modified: '2025-12-05T11:15:00+00:00'
     version: '0.1.0'
     change_count: 1
+- id: concept-019
+  title: Bedeutungs-Sigillin Manifest – Systemmembran v1.0
+  path: sigillin/bedeutung/system/bedeutungs_system_manifest_v1.0.md
+  category: concepts
+  type: manifest
+  status: active
+  relevance: high
+  keywords:
+  - sigillin
+  - bedeutung
+  - system
+  - logistics
+  description: |
+    Maps existing resonance lanterns (UTAC status matrix, β-ledger,
+    Sigillin schema) and lists the pending gates (Safety-Delay Field,
+    Meta-Regression v2, automation hook, Zenodo sync) with explicit
+    implementation paths.
+  temporal:
+    created: '2025-12-07T00:00:00+00:00'
+    modified: '2025-12-07T00:00:00+00:00'
+    version: '1.0.0'
+    change_count: 1
+- id: concept-020
+  title: Bedeutungs-Sigillin Manifest – Wissenschaftliches Projekt v1.0
+  path: sigillin/bedeutung/wissenschaftliches_projekt/projekt_membran_manifest_v1.0.md
+  category: concepts
+  type: manifest
+  status: active
+  relevance: high
+  keywords:
+  - sigillin
+  - bedeutung
+  - kampagne
+  - manifest
+  description: |
+    Summarises campaign-ready assets (Manuskriptfinalisierung,
+    Finalisierung_Plattform, BreakPoint Analysen) and itemises the
+    remaining actions (Zenodo abstract, Safety-Delay integration,
+    outlier storytelling, automation, metrics) for UTAC v1.2 launch.
+  temporal:
+    created: '2025-12-07T00:00:00+00:00'
+    modified: '2025-12-07T00:00:00+00:00'
+    version: '1.0.0'
+    change_count: 1
+- id: concept-021
+  title: Schatten-Sigillin – Systemrisiken v1.0
+  path: sigillin/schatten/system/schatten_system_risks_v1.0.md
+  category: concepts
+  type: risk-ledger
+  status: active
+  relevance: high
+  keywords:
+  - sigillin
+  - schatten
+  - risiko
+  - system
+  description: |
+    Documents the four acute drift zones (missing Safety-Delay Field,
+    incomplete meta-regression, index drift, Zenodo mismatch) and the
+    recovery hooks needed to restore σ(β(R-Θ)).
+  temporal:
+    created: '2025-12-07T00:00:00+00:00'
+    modified: '2025-12-07T00:00:00+00:00'
+    version: '1.0.0'
+    change_count: 1
+- id: concept-022
+  title: Schatten-Sigillin – Projektlog v1.0
+  path: sigillin/schatten/wissenschaftliches_projekt/projekt_schatten_log_v1.0.md
+  category: concepts
+  type: risk-ledger
+  status: active
+  relevance: medium
+  keywords:
+  - sigillin
+  - schatten
+  - kampagne
+  - log
+  description: |
+    Captures project-specific shadows (story drift, outdated Zenodo badge,
+    missing automation, absent resonance metrics) with direct counter
+    rituals and communication hooks.
+  temporal:
+    created: '2025-12-07T00:00:00+00:00'
+    modified: '2025-12-07T00:00:00+00:00'
+    version: '1.0.0'
+    change_count: 1
 - id: meta-001
   title: Metareflexion
   path: Metareflexion.txt
@@ -839,6 +925,112 @@ documents:
   - Lenski LTEE (2008) - Cit+ Evolution
   - Lenton (2008) - Climate Tipping Points
   - Verhulst (1838) - Logistische Funktion
+- id: synth-008
+  title: Bedeutungs-System Index (Trilayer)
+  path: sigillin/bedeutung/system/system_index.md
+  category: synthesis
+  type: index-ordnungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - sigillin
+  - bedeutung
+  - system
+  - index
+  - trilayer
+  description: 'Ordnungs-Sigillin für die Bedeutungs-Systemmembran. Referenziert
+
+    system_index.{yaml,json,md} und verknüpft Resonanz-Laternen mit den
+
+    offenen Gates Richtung UTAC v1.2.'
+  temporal:
+    created: '2025-12-07T00:00:00+00:00'
+    modified: '2025-12-07T00:00:00+00:00'
+    version: '1.0.0'
+    change_count: 1
+  references:
+  - sigillin/bedeutung/system/system_index.yaml
+  - sigillin/bedeutung/system/system_index.json
+  - sigillin/bedeutung/system/system_index.md
+- id: synth-009
+  title: Bedeutungs-Projekt Index (Trilayer)
+  path: sigillin/bedeutung/wissenschaftliches_projekt/projekt_index.md
+  category: synthesis
+  type: index-ordnungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - sigillin
+  - bedeutung
+  - kampagne
+  - index
+  - trilayer
+  description: 'Ordnungs-Sigillin für den wissenschaftlichen Projektflug. Koppelt
+
+    projekt_index.{yaml,json,md} mit Kampagnen-Laternen und offenen Tasks.'
+  temporal:
+    created: '2025-12-07T00:00:00+00:00'
+    modified: '2025-12-07T00:00:00+00:00'
+    version: '1.0.0'
+    change_count: 1
+  references:
+  - sigillin/bedeutung/wissenschaftliches_projekt/projekt_index.yaml
+  - sigillin/bedeutung/wissenschaftliches_projekt/projekt_index.json
+  - sigillin/bedeutung/wissenschaftliches_projekt/projekt_index.md
+- id: synth-010
+  title: Schatten-System Index (Trilayer)
+  path: sigillin/schatten/system/system_shadow_index.md
+  category: synthesis
+  type: index-ordnungs-sigillin
+  status: active
+  relevance: medium
+  keywords:
+  - sigillin
+  - schatten
+  - system
+  - index
+  - trilayer
+  description: 'Ordnungs-Sigillin für systemische Schattenberichte. Spiegel zum
+
+    Bedeutungs-System Index; verweist auf recovery hooks in
+
+    system_shadow_index.{yaml,json,md}.'
+  temporal:
+    created: '2025-12-07T00:00:00+00:00'
+    modified: '2025-12-07T00:00:00+00:00'
+    version: '1.0.0'
+    change_count: 1
+  references:
+  - sigillin/schatten/system/system_shadow_index.yaml
+  - sigillin/schatten/system/system_shadow_index.json
+  - sigillin/schatten/system/system_shadow_index.md
+- id: synth-011
+  title: Schatten-Projekt Index (Trilayer)
+  path: sigillin/schatten/wissenschaftliches_projekt/projekt_shadow_index.md
+  category: synthesis
+  type: index-ordnungs-sigillin
+  status: active
+  relevance: medium
+  keywords:
+  - sigillin
+  - schatten
+  - kampagne
+  - index
+  - trilayer
+  description: 'Ordnungs-Sigillin für projektbezogene Schatten. Führt die
+
+    projekt_shadow_index.{yaml,json,md} Laternen als Gegenpart zum
+
+    Bedeutungs-Projekt Index.'
+  temporal:
+    created: '2025-12-07T00:00:00+00:00'
+    modified: '2025-12-07T00:00:00+00:00'
+    version: '1.0.0'
+    change_count: 1
+  references:
+  - sigillin/schatten/wissenschaftliches_projekt/projekt_shadow_index.yaml
+  - sigillin/schatten/wissenschaftliches_projekt/projekt_shadow_index.json
+  - sigillin/schatten/wissenschaftliches_projekt/projekt_shadow_index.md
 - id: theory-001
   title: FinalerPlan
   path: FinalerPlan.txt

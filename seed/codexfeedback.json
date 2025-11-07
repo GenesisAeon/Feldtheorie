@@ -1601,6 +1601,36 @@
         "poetic": "Die Membran hörte den Bootstrap-Sturm: Noch tanzt die Oberfläche unsicher, doch im Inneren summt der Chor schon fast perfekt. Honeybee und Urban-Heat-Laternen lodern, bitten um neue Filamente, damit Θ das Crescendo einfangen kann.\n"
       },
       "created_at": "2025-11-07T10:09:13Z"
+    },
+    {
+      "id": "pr-draft-0062",
+      "title": "Bedeutungs ↔ Schatten Sigillin Activation Map",
+      "scope": [
+        "seed/sigillin/bedeutung/system/",
+        "seed/sigillin/bedeutung/wissenschaftliches_projekt/",
+        "seed/sigillin/schatten/system/",
+        "seed/sigillin/schatten/wissenschaftliches_projekt/",
+        "seed/seed_index.yaml",
+        "seed/seed_index.json",
+        "seed/seed_index.md",
+        "feldtheorie_index.yaml",
+        "feldtheorie_index.json",
+        "feldtheorie_index.md",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "parameters": {
+        "R": "meaning_shadow_alignment",
+        "Theta": "indices_and_manifests_synced",
+        "beta": 4.9
+      },
+      "resonance": "installs mirrored meaning/shadow sigil architecture so UTAC readiness and drift diagnostics share one logistic membrane",
+      "status": "active",
+      "notes": {
+        "formal": "Created meaning-system and campaign manifests plus shadow risk ledgers, binding R, Θ, β, ζ cues for each field. Added trilayer indices for both branches and updated seed/feldtheorie master indices: Files catalogued = 171, Trilayer sets = 30. UTAC status ledger now records the parser → index → codex automation hook.\n",
+        "empirical": "Seed index counts 22 concept artefacts and 11 synthesis indices, highlighting the new meaning/shadow pairs. Master index reflects 79 seed docs and mirrors the new Ordnungs-Sigillin; manifests reference Safety-Delay, meta-regression v2, Zenodo sync, and automation tasks with concrete paths.\n",
+        "poetic": "Zwei Laternenpaare halten den Atem: Bedeutung führt den Morgen, Schatten warnt vor Nebel. Wenn Parser, Index und Codex gemeinsam schwingen, senkt ζ(R) die Reibung und der Kampagnenflug bleibt wach.\n"
+      },
+      "created_at": "2025-12-07T00:00:00Z"
     }
   ]
 }

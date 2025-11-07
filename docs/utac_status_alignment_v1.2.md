@@ -33,6 +33,14 @@
 
 ---
 
+## 3b. Bedeutungs ↔ Schatten Sigillin Activation Map
+
+- **Neue Ordnungs-Sigillin (Bedeutung):** `seed/sigillin/bedeutung/system/system_index.{yaml,json,md}` & `seed/sigillin/bedeutung/wissenschaftliches_projekt/projekt_index.{yaml,json,md}` bündeln System- und Kampagnenlaternen (R=Resonance Readiness, Θ=Synchronisierung aller Module, β≈4.7–5.1). Die Manifeste `bedeutungs_system_manifest_v1.0.md` und `projekt_membran_manifest_v1.0.md` listen bestehende Resonanzen sowie offene Gates (Safety-Delay, Meta-Regression v2, Zenodo Sync, Automation).
+- **Neue Schatten-Sigillin:** `seed/sigillin/schatten/system/system_shadow_index.{yaml,json,md}` & `seed/sigillin/schatten/wissenschaftliches_projekt/projekt_shadow_index.{yaml,json,md}` halten die Gegenlaternen (R=Drift/Delay, Θ=Synchronität/Launch Window, β≈6.4–7.2). Die Logs `schatten_system_risks_v1.0.md` und `projekt_schatten_log_v1.0.md` katalogisieren Risiken und Recovery-Rituale (Codex-Updates, Tests, Manuskript-Sync).
+- **Automation Hooks:** Beide Seiten fordern Parser→Index→Codex Automatisierung (`scripts/archive_sigillin.py`, `scripts/crep_parser.py`) und verankern die neue Struktur in `seed/seed_index.*` sowie `feldtheorie_index.*`. σ(β(R-Θ)) bleibt sichtbar, solange die Bedeutungs- und Schatten-Sigillin gemeinsam gepflegt werden.
+
+---
+
 ## 4. Implementation Map (Where to Act)
 | Task | Primary Location | Required Hooks | Evidence Trail |
 | ---- | ---------------- | -------------- | -------------- |

@@ -8,19 +8,19 @@
 
 ## 🎯 Was ist das?
 
-Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **163 katalogisierte Dateien** über **6 Hauptverzeichnisse**!
+Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **171 katalogisierte Dateien** über **6 Hauptverzeichnisse**!
 
 ```
 🌳 Feldtheorie (UTAC + Sigillin)
 │
-├── 🌱 seed/        71 docs   (Meta, Theorie, Validierung)
+├── 🌱 seed/        79 docs   (Meta, Theorie, Validierung)
 ├── 📊 analysis/    32 scripts (Fits, Batch, Meta-Regression)
 ├── 📦 data/        43 files   (7 Domänen, β-Estimates)
 ├── 🔬 models/      10 models  (Solver, ODE-Systeme)
 ├── 📚 docs/         9 docs    (Theory, Falsifiability)
 └── 🗄️  archive/      0 items   (Sigillin Cold Storage)
 
-Total: 163 files | 18 Trilayer-Indizes (YAML+JSON+MD)
+Total: 171 files | 22 Trilayer-Indizes (YAML+JSON+MD)
 ```
 
 ---
@@ -90,7 +90,7 @@ stats = idx['statistics']
 ## 🔥 Die 6 Indexierten Verzeichnisse
 
 ### 🌱 **seed/** - Semantic Seed Archive
-**71 Dokumente** | **6 Kategorien**
+**79 Dokumente** | **6 Kategorien**
 📍 Index: `seed/seed_index.{yaml,json,md}`
 
 **Was:** Meta-Reflexionen, Theorie, Validierung, Domain-Felder
@@ -99,6 +99,8 @@ stats = idx['statistics']
 - `Rekalibrierung_Abschlus.txt` - Finale Synthese aller AIs
 - `Metareflexion.txt` - Fixwerte ↔ Variabilität
 - `FinalerPlan.txt` - Governance für v1.2
+- `sigillin/bedeutung/system/system_index.md` - Bedeutungs-Ordnungs-Sigillin (System)
+- `sigillin/schatten/system/system_shadow_index.md` - Schatten-Ordnungs-Sigillin (System)
 
 ---
 
@@ -261,8 +263,8 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 
 ```yaml
 Directories Indexed: 6
-Files Cataloged: 163
-Trilayer Indices: 18 (6 YAML, 6 JSON, 6 MD)
+Files Cataloged: 171
+Trilayer Indices: 30 (10 YAML, 10 JSON, 10 MD)
 
 UTAC Status:
   Version: 1.1.2
@@ -282,7 +284,7 @@ Sigillin Status:
 
 ## 🌊 Die Essenz
 
-> **"163 Dateien. 6 Verzeichnisse. Ein Trilayer-System."**
+> **"171 Dateien. 6 Verzeichnisse. Ein Trilayer-System."**
 
 > **"Von Wei's PaLM (β=3.47) bis Urban Heat (β=16.3) - das Spektrum ist REAL."**
 

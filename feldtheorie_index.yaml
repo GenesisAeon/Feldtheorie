@@ -64,7 +64,7 @@ indexed_directories:
       yaml: "seed/seed_index.yaml"
       json: "seed/seed_index.json"
       md: "seed/seed_index.md"
-    total_items: 71
+    total_items: 79
     categories: 6
     description: |
       Das semantische Gedächtnis des Projekts:
@@ -76,6 +76,8 @@ indexed_directories:
       - Metareflexion.txt (Philosophische Grundlage)
       - Rekalibrierung_Abschlus.txt (Unser Weg)
       - FinalerPlan.txt (Governance für v1.2)
+      - sigillin/bedeutung/system/system_index.md (Bedeutungs-Ordnungs-Sigillin)
+      - sigillin/schatten/system/system_shadow_index.md (Schatten-Ordnungs-Sigillin)
 
   analysis:
     name: "analysis/ - Analysis Resonance Bay"
@@ -343,11 +345,11 @@ triggers:
 
 statistics:
   directories_indexed: 6
-  total_files_cataloged: 163
-  trilayer_indices: 18
+  total_files_cataloged: 171
+  trilayer_indices: 30
 
   breakdown:
-    seed: 69
+    seed: 77
     analysis: 32
     data: 43
     models: 10
@@ -355,9 +357,9 @@ statistics:
     archive: 0
 
   index_files:
-    yaml_files: 6
-    json_files: 6
-    md_files: 6
+    yaml_files: 10
+    json_files: 10
+    md_files: 10
 
   project_size:
     python_scripts: 42

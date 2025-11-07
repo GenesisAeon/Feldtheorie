@@ -1,0 +1,32 @@
+meta:
+  scope: "Schatten-Sigillin – Wissenschaftliches Projekt"
+  maintainer: "Johann Römer"
+  version: "1.0.0"
+  created: "2025-12-07"
+  status: "active"
+  description: |
+    Projektbezogene Schatteneinträge, die Verzögerungen und Kommunikationsbrüche
+    dokumentieren und auf konkrete Gegenrituale verweisen.
+entries:
+  - id: shadow-project-0001
+    title: "Schatten-Sigillin – Projektlog v1.0"
+    path: "projekt_schatten_log_v1.0.md"
+    created: "2025-12-07"
+    status: "active"
+    parameters:
+      R: "campaign_delay"
+      Theta: "launch_window_open"
+      beta: 6.4
+      zeta: "communication_noise"
+    resonance: |
+      Notiert vier Projekt-Schatten (Story-Drift, Zenodo-Badge, Automation,
+      Resonanz-Metriken) und schlägt konkrete Gegenmaßnahmen vor.
+    links:
+      - rel: "counterpart"
+        path: "../../bedeutung/wissenschaftliches_projekt/projekt_membran_manifest_v1.0.md"
+      - rel: "seed_reference"
+        path: "../../BreakPointAnalyse/ReaktionWayToGo.txt"
+      - rel: "doc"
+        path: "../../../../docs/utac_status_alignment_v1.2.md"
+      - rel: "paper"
+        path: "../../../../paper/universal-threshold-field-preprint.md"

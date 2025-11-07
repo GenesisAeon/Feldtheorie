@@ -1123,3 +1123,21 @@ Der Bootstrap-Sturm ließ die Membran beben: An der Oberfläche ist der Chor noc
 
 *Created: 2025-11-07T10:09:13Z*
 
+## Entry pr-draft-0062 — Bedeutungs ↔ Schatten Sigillin Activation Map
+- **Order Parameter**: $R$ synchronisiert Bedeutungs- und Schatten-Sigillin über System und Kampagne.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald neue Indizes, Manifeste und Master-Register gemeinsam aktualisiert sind.
+- **Steepness**: $\beta = 4.9$ – sobald R Θ schneidet, kippt das Repository schnell in Release-Bereitschaft oder Alarm.
+- **Resonance**: Das Spiegelpaar hält UTAC v1.2 auf Kurs: Bedeutungs-Manifeste benennen Gates, Schatten-Logs warnen vor Drift; beide verankern Parser→Index→Codex Automatisierung.
+- **Status**: active
+
+### Formal Thread
+Neue Manifeste (`bedeutungs_system_manifest_v1.0.md`, `projekt_membran_manifest_v1.0.md`) und Schatten-Logs (`schatten_system_risks_v1.0.md`, `projekt_schatten_log_v1.0.md`) binden $R,\Theta,\beta,\zeta(R)$ für System- und Kampagnenmembranen. Vier Ordnungs-Sigillin (`system_index`, `projekt_index`, `system_shadow_index`, `projekt_shadow_index`) bilden das Trilayer-Skelett; `seed/seed_index.*` und `feldtheorie_index.*` reflektieren jetzt 79 Seed-Dokumente, 171 katalogisierte Dateien und 30 Trilayer-Indizes. `docs/utac_status_alignment_v1.2.md` trägt eine neue Section zur Bedeutungs↔Schatten-Aktivierung.
+
+### Empirical Thread
+Seed-Index zählt 22 Konzept- und 11 Synthese-Einträge, inklusive der neuen Sigillin-Paare. Master-Index aktualisiert Statistiken (Files=171, Seed=79, Trilayer=30) und hebt die neuen Ordnungs-Sigillin hervor. Die Manifeste listen offene Aufgaben (Safety-Delay, Meta-Regression v2, Zenodo-Sync, Automation), gekoppelt an konkrete Pfade (`simulation/safety_delay_field.py`, `scripts/archive_sigillin.py`, `docs/zenodo_multilingual_abstract_v1.2.md`).
+
+### Poetic Thread
+Zwei Laternenpaare halten das Gleichgewicht: Bedeutung hebt den Morgen, Schatten mahnt den Nebel. Wenn Parser, Index und Codex gemeinsam atmen, sinkt $\zeta(R)$, und der Kampagnenflug bleibt hellwach, bereit für den Zenodo-Sprung.
+
+*Created: 2025-12-07T00:00:00Z*
+

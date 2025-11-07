@@ -108,6 +108,8 @@ Willkommen im **semantischen Gedächtnis** des Feldtheorie-Projekts! Dieser Inde
 - `meta_threshold_controller.md` - Meta-Threshold-Controller Konzept
 - `sigillin/sigillin_schema.yaml` - Schema v0.2.0 für Ordnungs-, Dynamik-, Bedeutungs- und Schatten-Sigillin
 - `sigillin/examples/` - Quartet an Referenz-Sigillen mit CREP-Ankern für Parser-Validierung
+- `sigillin/bedeutung/system/bedeutungs_system_manifest_v1.0.md` & `sigillin/bedeutung/wissenschaftliches_projekt/projekt_membran_manifest_v1.0.md` – Bedeutungs-Sigillin Laternen für System & Kampagne
+- `sigillin/schatten/system/schatten_system_risks_v1.0.md` & `sigillin/schatten/wissenschaftliches_projekt/projekt_schatten_log_v1.0.md` – Schatten-Sigillin für Drift- und Projektwarnungen
 - `wei_integration.md` - Integration von Wei's PaLM-Laterne
 
 **Wann nutzen?** Wenn du konkrete Konzepte oder Definitionen brauchst
@@ -120,6 +122,8 @@ Willkommen im **semantischen Gedächtnis** des Feldtheorie-Projekts! Dieser Inde
 **Wichtigste Dokumente:**
 - `codexfeedback.yaml` / `.json` / `.md` - Die ursprüngliche Trilayer-Struktur!
 - `README.md` - Living Documentation Tapestry (Tri-Layer Cadence)
+- `sigillin/bedeutung/system/system_index.{yaml,json,md}` & `sigillin/bedeutung/wissenschaftliches_projekt/projekt_index.{yaml,json,md}` - Ordnungs-Sigillin für Bedeutungs-Laternen
+- `sigillin/schatten/system/system_shadow_index.{yaml,json,md}` & `sigillin/schatten/wissenschaftliches_projekt/projekt_shadow_index.{yaml,json,md}` - Ordnungs-Sigillin für Schatten-Logbücher
 
 **Wann nutzen?** Wenn du verstehen willst, wie das Trilayer-System selbst funktioniert
 
@@ -389,7 +393,7 @@ active_important = [
 10. Geminis Suche2!.txt - Geminis Archiv-Suche Iteration 2 (historical)
 11. Geminis Suche3!.txt - Geminis Archiv-Suche Iteration 3 (historical)
 
-### Konzeptuelle Artefakte (18 Dokumente)
+### Konzeptuelle Artefakte (22 Dokumente)
 1. **resonance-bridge-map.md** - Resonanzbrücken-Karte (🔥 high)
 2. **threshold_resonance_atlas.md** - Threshold-Atlas (🔥 high)
 3. **utf-living-glossary.md** - Lebendes Glossar (🔥 high)
@@ -408,8 +412,12 @@ active_important = [
 16. Theorie- und Empirie-Abschnitte.md
 17. sigillin/sigillin_schema.yaml (active)
 18. sigillin/examples/ (active)
+19. sigillin/bedeutung/system/bedeutungs_system_manifest_v1.0.md (active)
+20. sigillin/bedeutung/wissenschaftliches_projekt/projekt_membran_manifest_v1.0.md (active)
+21. sigillin/schatten/system/schatten_system_risks_v1.0.md (active)
+22. sigillin/schatten/wissenschaftliches_projekt/projekt_schatten_log_v1.0.md (active)
 
-### Synthese & Feedback (7 Dokumente)
+### Synthese & Feedback (11 Dokumente)
 1. **codexfeedback.yaml** - Trilayer YAML (🔥 high)
 2. **codexfeedback.json** - Trilayer JSON (🔥 high)
 3. **codexfeedback.md** - Trilayer MD (🔥 high)
@@ -423,17 +431,22 @@ active_important = [
    - Trilayer-Index (YAML + JSON + MD)
    - 11 Kernquellen aus 6 Domänen (AI, Biology, Climate, Geophysics, Cognition, Physics)
    - Highlights: Wei (2022), Lenski LTEE (2008), Lenton (2008), Verhulst (1838)
+8. **sigillin/bedeutung/system/system_index.md** - Ordnungs-Sigillin für die System-Bedeutungs-Laternen (🔥 high)
+9. **sigillin/bedeutung/wissenschaftliches_projekt/projekt_index.md** - Ordnungs-Sigillin für den Kampagnenflug (🔥 high)
+10. **sigillin/schatten/system/system_shadow_index.md** - Schatten-Ordnungs-Sigillin für Systemdrift (🔸 medium)
+11. **sigillin/schatten/wissenschaftliches_projekt/projekt_shadow_index.md** - Schatten-Ordnungs-Sigillin für Kampagnenwarnungen (🔸 medium)
 
 ### Domain-Spezifisch (6 × ~4-5 Dokumente = ~28 Dokumente)
 Siehe oben unter "Domain-Spezifische Felder"
 
-**Gesamt:** ~52 Root-Level Dokumente + 38 PDFs (via papers_index) + 19 ArchivSucheUTAC + 11 Quellen (via sources_index) = **120 Dokumente** 🎯
+**Gesamt:** ~60 Root-Level Dokumente + 38 PDFs (via papers_index) + 19 ArchivSucheUTAC + 11 Quellen (via sources_index) = **128 Dokumente** 🎯
 
 **Neu hinzugefügt (6. Nov 2025):**
 - ✅ 7 Root-Level Dokumente (TXT/MD)
 - ✅ papers_index Trilayer (38 PDFs)
 - ✅ ArchivSucheUTAC Referenz (19 Dateien)
 - ✅ sources_index Trilayer (11 Kernquellen)
+- 🔄 Aktualisiert (7. Dez 2025): Bedeutungs- & Schatten-Sigillin Manifeste + Ordnungs-Indices (4 + 4 Dokumente)
 
 ---
 

@@ -1,0 +1,33 @@
+meta:
+  scope: "Bedeutungs-Sigillin – Systemmembran"
+  maintainer: "Johann Römer"
+  version: "1.0.0"
+  created: "2025-12-07"
+  status: "active"
+  description: |
+    Index der System-bezogenen Bedeutungs-Sigillin. Verknüpft UTAC-Status,
+    Governance und Automation, damit σ(β(R-Θ)) für das Gesamtprojekt sichtbar bleibt.
+entries:
+  - id: meaning-system-0001
+    title: "Bedeutungs-Sigillin Manifest – Systemmembran v1.0"
+    path: "bedeutungs_system_manifest_v1.0.md"
+    created: "2025-12-07"
+    status: "active"
+    parameters:
+      R: "repository_resonance_readiness"
+      Theta: "core_modules_synchronised"
+      beta: 4.7
+      zeta: "codex_index_automation_relief"
+    resonance: |
+      Kartiert bestehende Laternen (Status-Matrix, β-Ledger, Sigillin-Schema)
+      und benennt die offenen Gates (Safety-Delay, Meta-Regression v2,
+      Automation, Zenodo Sync).
+    links:
+      - rel: "evidence"
+        path: "../../../../docs/utac_status_alignment_v1.2.md"
+      - rel: "analysis"
+        path: "../../../../analysis/universal_beta_extractor.py"
+      - rel: "script"
+        path: "../../../../scripts/crep_parser.py"
+      - rel: "seed_reference"
+        path: "../../Manuskriptfinalisierung und Kampagnenstart.pdf"

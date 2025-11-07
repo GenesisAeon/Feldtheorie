@@ -1,0 +1,32 @@
+meta:
+  scope: "Schatten-Sigillin – System"
+  maintainer: "Johann Römer"
+  version: "1.0.0"
+  created: "2025-12-07"
+  status: "active"
+  description: |
+    Schattenindex für systemweite Abweichungen. Dokumentiert, wo R unter Θ fällt
+    und welche Rituale das UTAC-System zurück in Resonanz führen.
+entries:
+  - id: shadow-system-0001
+    title: "Schatten-Sigillin – Systemrisiken v1.0"
+    path: "schatten_system_risks_v1.0.md"
+    created: "2025-12-07"
+    status: "active"
+    parameters:
+      R: "system_drift"
+      Theta: "synchronised_membranes"
+      beta: 7.2
+      zeta: "impedance_collapse_warning"
+    resonance: |
+      Beschreibt vier aktuelle Risikozonen (Safety-Delay, Meta-Regression,
+      Index-Drift, Zenodo Sync) und verweist auf die notwendigen Recovery Hooks.
+    links:
+      - rel: "counterpart"
+        path: "../../bedeutung/system/bedeutungs_system_manifest_v1.0.md"
+      - rel: "status_doc"
+        path: "../../../../docs/utac_status_alignment_v1.2.md"
+      - rel: "script"
+        path: "../../../../scripts/archive_sigillin.py"
+      - rel: "analysis"
+        path: "../../../../analysis/beta_meta_regression_v2.py"

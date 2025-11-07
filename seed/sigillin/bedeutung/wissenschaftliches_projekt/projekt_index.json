@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "scope": "Bedeutungs-Sigillin – Wissenschaftliches Projekt",
+    "maintainer": "Johann Römer",
+    "version": "1.0.0",
+    "created": "2025-12-07",
+    "status": "active",
+    "description": "Übersicht über Bedeutungs-Sigillin, die den Kampagnenfortschritt und die Veröffentlichungsrituale des UTAC v1.2 Projekts tragen."
+  },
+  "entries": [
+    {
+      "id": "meaning-project-0001",
+      "title": "Bedeutungs-Sigillin Manifest – Wissenschaftliches Projekt v1.0",
+      "path": "projekt_membran_manifest_v1.0.md",
+      "created": "2025-12-07",
+      "status": "active",
+      "parameters": {
+        "R": "campaign_progress",
+        "Theta": "manuscript_dataset_governance_synced",
+        "beta": 5.1,
+        "zeta": "manuscript_zenodo_simulator_alignment"
+      },
+      "resonance": "Fasst vorhandene Kampagnenlaternen zusammen und benennt offene Felder (Abstract-Sync, Safety-Delay, Outlier-Story, Automation, Metrics) samt Implementationspfaden.",
+      "links": [
+        {"rel": "seed_reference", "path": "../../Manuskriptfinalisierung und Kampagnenstart.pdf"},
+        {"rel": "seed_reference", "path": "../../Finalisierung_Plattform.txt"},
+        {"rel": "status_doc", "path": "../../../../docs/utac_status_alignment_v1.2.md"},
+        {"rel": "analysis", "path": "../../../../analysis/outlier_beta_review.py"}
+      ]
+    }
+  ]
+}
