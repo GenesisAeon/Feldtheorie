@@ -15,7 +15,7 @@
 | Domain Membrane | Order Parameter R (existing artefact) | Θ (guard condition) | β (steepness achieved) | ζ(R) cue |
 | --------------- | ------------------------------------- | -------------------- | ----------------------- | --------- |
 | **Theory & Narrative** | `docs/utac_theory_core.md`, manuscripts under `paper/` | Maintain σ(β(R-Θ)) derivations consistent with v1.1 | β≈4.2 narrative preserved across seed manuscripts | Reference weave between `Metareflexion.txt` and `Sigillin_System_Definition.md` |
-| **Analysis & Data** | `analysis/` notebooks, `analysis/beta_meta_regression_v1.py`, curated datasets in `data/*` | Null-model ΔAIC ≥ 10 documented in validation report | β variance mapped to field types (Type I–V) | Pipeline to `simulation/threshold_sandbox.py` ensures impedance sweeps |
+| **Analysis & Data** | `analysis/` notebooks, `analysis/beta_meta_regression_v1.py`, `analysis/universal_beta_extractor.py`, curated datasets in `data/*` | Null-model ΔAIC ≥ 10 documented in validation report + canonical guard ledger `analysis/results/universal_beta_summary.json` | β variance mapped to field types (Type I–V) | Pipeline to `simulation/threshold_sandbox.py` ensures impedance sweeps |
 | **Simulation & Models** | `simulation/` scripts, `models/` membranes, `simulator/` CLI | Keep parameter surfaces reproducible via `REPRODUCE.md` protocols | β-shifts triggered by control terms already logged | ζ(R) toggles described in `models/resonant_impedance.py` |
 | **Sigillin Navigation** | `feldtheorie_index.*`, `seed/seed_index.*`, `docs/docs_index.*` | Ordnungs-Sigillin hygiene (synchronised trilayer) | β metaphor: structural steepness for orientation | ζ(R) anchors via quicklinks & triggers |
 | **Governance & Ethics** | `ETHICS.md`, `AUTHORSHIP.md`, `METRICS.md`, `REPRODUCE.md` | Ensure MOR principles and reproducibility remain linked | β slope encoded in metrics thresholds | ζ(R) dampers by documenting responsibilities |
@@ -29,6 +29,7 @@
 4. **Index Automation Hooks:** Extend Ordnungs-Sigillin maintenance (`scripts/archive_sigillin.py`) to auto-increment counts when new docs/data appear, preventing drift like the previous `docs_index.*` lag.
 5. **Outlier Validation Loop:** Establish a focused analysis (e.g., `analysis/outlier_beta_review.py`) using the flagged Amazon & urban heat datasets noted in `seed/ArchivSucheUTAC/` to test whether β≫10 cases are instrumentation artefacts or genuine regime splits.
 6. **Manuscript v1.1.2 Finalisation:** Align the LaTeX pipeline under `paper/` with the governance addenda and ensure the arXiv-ready abstract reflects the new Sigillin net storyline; cross-check with `seed/Manuskriptfinalisierung und Kampagnenstart.pdf` and `seed/FinalerPlan.txt`.
+7. **Universal β ledger sealed:** `analysis/universal_beta_extractor.py --mode validate` now exports `analysis/results/universal_beta_summary.json`, keeping ΔAIC≥10 and canonical β band compliance on record for Zenodo v1.2.
 
 ---
 

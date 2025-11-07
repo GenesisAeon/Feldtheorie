@@ -20,4 +20,5 @@ __all__ = [
     "resonance_fit_pipeline",
     "potential_cascade_lab",
     "preset_alignment_guard",
+    "universal_beta_extractor",
 ]
