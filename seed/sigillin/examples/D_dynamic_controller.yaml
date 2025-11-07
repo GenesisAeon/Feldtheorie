@@ -1,0 +1,52 @@
+meta:
+  schema: "../sigillin_schema.yaml"
+  created: "2025-12-05T10:45:00Z"
+  updated: "2025-12-05T10:45:00Z"
+  steward: "gpt-5-codex"
+sigil:
+  core:
+    id: "D-014"
+    type: dynamics
+    title: "Threshold Sandbox Sweep"
+    version: "0.1.0"
+    status: active
+  logistic_frame:
+    R: "parameter sweep across C_eff × D_eff × SNR"
+    Theta: "transition where logistic fit outperforms null ΔAIC ≥ 10"
+    beta: 4.9
+    zeta: "damping toggle via ζ(R) surfaces documented in simulation/threshold_sandbox.py"
+  anchors:
+    - kind: simulation
+      path: "simulation/threshold_sandbox.py"
+      summary: "Generates sweep grid and logistic ΔAIC ledger"
+    - kind: analysis
+      path: "analysis/results/threshold_sandbox_overview.json"
+      summary: "Aggregated sweep statistics with β distribution"
+    - kind: documentation
+      path: "docs/simulator_threshold_brief.md"
+      summary: "Narrative summary of sandbox outputs and safety guards"
+  crep:
+    coherence: 0.87
+    resilience: 0.82
+    empathy: 0.69
+    propagation: 0.75
+  tri_layer:
+    formal: |
+      Logistic envelopes fitted per sweep confirm β within [3.8, 5.6], null comparison
+      against exponential surfaces yields ΔAIC median 18. Safety delay ζ(R) toggles for
+      overdamped regimes ensure σ(β(R-Θ)) stays smooth.
+    empirical: |
+      Sweep logs stored under `simulation/results/2025-10-31/` with 256 runs.
+      Confidence intervals exported in `analysis/results/threshold_sandbox_overview.json`.
+    poetic: |
+      The sandbox is a tidepool: each parameter moon pulls the membrane tighter until
+      a crest of resonance breaks across the field.
+  related:
+    - id: "pr-draft-0006"
+      relation: "codex"
+      note: "Bridge ΔAIC synchronisation guard"
+    - id: "Safety-Delay Field"
+      relation: "planned"
+      note: "Future τ* module will reuse sweep backbone."
+  notes:
+    stewardship: "Extend once safety_delay_field.py lands to capture τ* metrics."

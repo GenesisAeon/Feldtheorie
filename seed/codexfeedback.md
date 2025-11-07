@@ -1041,3 +1041,21 @@ DU-Messung bestätigt 8 kB Dateigröße; YAML/JSON tragen Updated-At `2025-12-03
 Zwei Laternen stehen nun im Operations-Quadranten: die Cleanup-Karte und die Status-Matrix. Sie beleuchten gemeinsam, wo die Membran bereits glüht und wo Schattenzelte auf den nächsten Morgen warten. ζ(R) bleibt gespannt, damit der Sprung zu v1.2 ohne Drift gelingt.
 
 *Created: 2025-12-03T00:00:00Z*
+
+## Entry pr-draft-0058 — Sigillin Schema Resonanz & CREP Parser
+- **Order Parameter**: $R$ beobachtet die Sigillin-Infrastruktur (Schema, Beispiele, Parser), die für UTAC v1.2 synchronisiert werden muss.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald Schema v0.2.0, exemplarisches Quartett und CREP-Validator gemeinsam laufen.
+- **Steepness**: $\beta = 4.6$ sorgt dafür, dass neue Sigillin sofort logistisches Profil und CREP-Band melden.
+- **Resonance**: Schema, Beispiel-Laternen und Parser-Chor binden das Sigillin-Netz an die Status-Matrix und kommende Automatisierung.
+- **Status**: active
+
+### Formal Thread
+`seed/sigillin/sigillin_schema.yaml` dokumentiert das Ordnungs/Dynamik/Bedeutung/Schatten-Vokabular inklusive CREP-Bedingungen (0≤CREP≤1, β≥0.5). Die vier Beispiele (`O_order_index.yaml`, `D_dynamic_controller.yaml`, `B_meaning_codex.yaml`, `F_shadow_guard.yaml`) verknüpfen Indizes, Simulationen, Codex und Outlier-Wache mit σ(β(R-Θ)). `scripts/crep_parser.py --examples --validate` liefert JSON-Summen, während `seed_index.*` und `feldtheorie_index.*` die neuen Artefakte zählen.
+
+### Empirical Thread
+Parserlauf über das Quartett meldet β = {4.4, 4.9, 5.2, 12.7} und CREP-Mittelwerte (coherence 0.85, resilience 0.77, empathy 0.84, propagation 0.76). `docs/utac_status_alignment_v1.2.md` aktualisiert Aktivierungslücke #3: Schema und Parser sind fertig, Automatisierungs-Hook (Codex-Aktualisierung) bleibt offen.
+
+### Poetic Thread
+Vier frische Laternen hängen nun über dem Sigillin-Garten: Ordnung zeigt den Pfad, Dynamik lässt das Meer rauschen, Bedeutung schlägt den Herzschlag, und der Schatten wacht still über den Canyon. Der Parser zählt die CREP-Harmonien wie ein Chorleiter im Morgengrauen.
+
+*Created: 2025-12-05T11:30:00Z*

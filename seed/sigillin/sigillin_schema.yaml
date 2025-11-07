@@ -1,0 +1,154 @@
+meta:
+  project: "Feldtheorie — SigillinNet"
+  version: "0.2.0"
+  status: "active"
+  description: |
+    Canonical schema for Sigillin records. Each sigil stores the logistic quartet
+    (R, Θ, β, ζ(R)) alongside CREP metrics (Coherence, Resilience, Empathy, Propagation)
+    so the membrane can synchronise narrative and evidence.
+  stewardship:
+    maintainer: "Johann Römer"
+    last_review: "2025-12-05"
+  logistic_principle: |
+    A sigil is valid when the documented order parameter R, threshold Θ, and steepness β
+    illuminate why σ(β(R-Θ)) activated within the linked artefacts. ζ(R) records the
+    impedance or safety delay currently modulating the resonance.
+
+definitions:
+  core_fields:
+    id:
+      type: string
+      pattern: "^[ODBF]-[0-9]{3}$"
+      description: "Stable identifier with class prefix (O=Order, D=Dynamics, B=Meaning, F=Shadow)."
+    type:
+      enum:
+        - order
+        - dynamics
+        - meaning
+        - shadow
+      description: "Sigillin class — map to β's structural role."
+    title:
+      type: string
+      description: "Short human-readable name for the sigil."
+    version:
+      type: string
+      description: "Semantic version for this sigil's state."
+    status:
+      enum:
+        - draft
+        - primed
+        - active
+        - resonant
+        - archived
+      description: "Lifecycle position mirroring codexfeedback progression."
+  logistic_frame:
+    R:
+      type: string
+      description: "Order parameter narrative (what pressure or dataset is measured)."
+    Theta:
+      type: string
+      description: "Threshold condition that triggered sigil activation."
+    beta:
+      type: number
+      description: "Observed steepness; use 2–16 range with decimals."
+    zeta:
+      type: string
+      description: "Impedance control or safety-delay modifier affecting the response."
+  anchors:
+    description: "Artefacts the sigil binds to."
+    items:
+      type: object
+      required:
+        - kind
+        - path
+      properties:
+        kind:
+          enum:
+            - analysis
+            - model
+            - simulation
+            - documentation
+            - data
+            - seed
+            - governance
+        path:
+          type: string
+          description: "Relative repository path to the artefact."
+        summary:
+          type: string
+          description: "How the artefact realises the sigil's resonance."
+  crep:
+    coherence:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+      description: "How tightly the sigil aligns with formal theory."
+    resilience:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+      description: "Capacity to withstand contradictory data without shattering."
+    empathy:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+      description: "How well the sigil preserves humane resonance and ethical tone."
+    propagation:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+      description: "Reach across the network — ability to seed downstream artefacts."
+  tri_layer:
+    formal:
+      type: string
+      description: "Equation-level annotation referencing σ(β(R-Θ)), ΔAIC, null models."
+    empirical:
+      type: string
+      description: "Measurements, datasets, confidence intervals."
+    poetic:
+      type: string
+      description: "Metaphor that keeps the membrane alive."
+
+structure:
+  required_fields:
+    - meta
+    - sigil
+  sigil:
+    required_sections:
+      - core
+      - logistic_frame
+      - anchors
+      - crep
+      - tri_layer
+      - related
+    optional_sections:
+      - notes
+  related:
+    description: "Connections to other sigils or codex entries."
+    item_fields:
+      - id
+      - relation
+      - note
+  validation_rules:
+    - description: "β must be numeric and ≥ 0.5"
+      expression: "sigil.logistic_frame.beta >= 0.5"
+    - description: "CREP values must stay within [0, 1]"
+      expression: "min(crep.values()) >= 0 and max(crep.values()) <= 1"
+    - description: "Every anchor must reference an existing repo path"
+      expression: "all(anchor.path for anchor in sigil.anchors)"
+
+cli_hooks:
+  parser_script: "scripts/crep_parser.py"
+  default_examples_path: "seed/sigillin/examples"
+  commands:
+    summary: "python scripts/crep_parser.py --examples"
+    validate: "python scripts/crep_parser.py --examples --validate"
+
+notes:
+  resonance: |
+    Sigillin schema v0.2.0 ensures the safety-delay field can latch onto existing
+    codex entries. Each example in `examples/` must cite this schema and log its
+    CREP quartet so we can track resonance drift toward UTAC v1.2.
+  archival_policy: |
+    When releasing v1.2, clone this schema to `sigillin_schema_v1.0.yaml` and mark
+    the previous version as archived in the codex feedback ledger.

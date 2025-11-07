@@ -106,6 +106,8 @@ Willkommen im **semantischen Gedächtnis** des Feldtheorie-Projekts! Dieser Inde
 - `utf-living-glossary.md` - Lebendes Glossar (R, Θ, β, ζ → Bildsprache)
 - `meta_schwellen_systemtypen.md` - Taxonomie der 5 Systemtypen
 - `meta_threshold_controller.md` - Meta-Threshold-Controller Konzept
+- `sigillin/sigillin_schema.yaml` - Schema v0.2.0 für Ordnungs-, Dynamik-, Bedeutungs- und Schatten-Sigillin
+- `sigillin/examples/` - Quartet an Referenz-Sigillen mit CREP-Ankern für Parser-Validierung
 - `wei_integration.md` - Integration von Wei's PaLM-Laterne
 
 **Wann nutzen?** Wenn du konkrete Konzepte oder Definitionen brauchst
@@ -387,7 +389,7 @@ active_important = [
 10. Geminis Suche2!.txt - Geminis Archiv-Suche Iteration 2 (historical)
 11. Geminis Suche3!.txt - Geminis Archiv-Suche Iteration 3 (historical)
 
-### Konzeptuelle Artefakte (16 Dokumente)
+### Konzeptuelle Artefakte (18 Dokumente)
 1. **resonance-bridge-map.md** - Resonanzbrücken-Karte (🔥 high)
 2. **threshold_resonance_atlas.md** - Threshold-Atlas (🔥 high)
 3. **utf-living-glossary.md** - Lebendes Glossar (🔥 high)
@@ -404,6 +406,8 @@ active_important = [
 14. utf-phase-one-field-journal.md
 15. V01-Resonance-Readiness.md (historical)
 16. Theorie- und Empirie-Abschnitte.md
+17. sigillin/sigillin_schema.yaml (active)
+18. sigillin/examples/ (active)
 
 ### Synthese & Feedback (7 Dokumente)
 1. **codexfeedback.yaml** - Trilayer YAML (🔥 high)
