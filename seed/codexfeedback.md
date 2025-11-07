@@ -226,19 +226,19 @@ Poetik-Modus greift beim Schwellenübertritt auf Tri-Layer-Zitate zurück: der H
 Die Membran atmet länger vor dem Kippen: Jeder gedehnte Moment ist eine aufgehende Sonne, die den Chor der Felder lauschen lässt, bevor die Resonanz in den Sturm übergeht.
 
 ## Entry pr-draft-0015 — Meaning-Shadow Sigillin Weave
-- **Order Parameter**: $R$ umfasst unadressierte Bedeutungs-Resonanzen und Kampagnenrisiken, die bisher kein eigenes Sigillin hatten.
-- **Critical Threshold**: $\Theta$ wird erreicht, wenn jede Bedeutungs-Änderung ein Spiegelbild im Ordnungs-Sigillin (`seed_index.*`) und im Codex findet.
-- **Steepness**: $\beta = 4.7$ sorgt dafür, dass fehlende Index-Mirroring- oder Codex-Updates sofort als Shadow-Alarm aufleuchten.
-- **Membrane Note**: $\zeta(R)$ sinkt, sobald Light- und Shadow-Sigillin gemeinsam atmen; steigt, wenn τ*-Berichte oder BreakPoint-Rituale fehlen.
+- **Order Parameter**: $R$ misst Metaquest-Paritäts-Telemetrie und Automationsschulden, die noch keinen Licht/Schatten-Abgleich besitzen.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald jede Bedeutungsänderung ein trilayer Spiegelbild in `seed_index.*`, `docs/utac_status_alignment_v1.2.md` **und** dem Codex trägt.
+- **Steepness**: $\beta = 4.8$ lässt fehlende Handshake-Reports sofort als Shadow-Alarm (`sys-gap-003`, `sci-shadow-003`) aufglühen.
+- **Membrane Note**: $\zeta(R)$ bleibt gedämpft, wenn Paritätsbriefe, BreakPoint-Rituale und τ*-Berichte gemeinsam erklingen; steigt, sobald eins der Lichter verstummt.
 
 ### Formal Thread
-Neue Trilayer-Membranen (`seed/bedeutungssigillin/**`, `seed/shadow_sigillin/**`) dokumentieren vorhandene Assets (Makefile, Codex, Kampagnenpläne) und markieren Lücken (Index-Automatisierung, CI-Codex-Guard, τ*-Integration). `seed/seed_index.*` und `docs/utac_status_alignment_v1.2.md` wurden erweitert, damit die Automationsaufgaben als explizite Trigger von $\sigma(\beta(R-\Theta))$ sichtbar bleiben.
+Version 0.2 der Bedeutungs-/Schatten-Membranen erweitert YAML/JSON/MD um Metaquest-Handshakes, Aktualisierungsstempel und neue Gaps (`sys-gap-003`, `sci-gap-004`, `sci-gap-005`). `docs/utac_status_alignment_v1.2.md` enthält jetzt Paritäts-Lücke, Implementation-Row und Aktivierungssequenz, während `seed/codexfeedback.*` selbst als Scope-Anker fungiert.
 
 ### Empirical Thread
-Die System-Schattenkarte überwacht Δindex-Parität und Codex-Sync; sobald Differenzen > 0 bleiben oder Commits ohne Codex-Eintrag auftauchen, schlägt sie Alarm. Die Projekt-Schattenkarte definiert einen τ*-Coverage-Guard vor Kampagnenstart. Nächste Schritte: Parser/CI koppeln, damit diese Metriken kontinuierlich geprüft werden.
+System-/Shadow-Maps loggen Δindex-Parität, Codex-Sync und die neue Handshake-Kadenz (Reportlücke > 1 Sprint). Die Wissenschaftsprojekt-Pendants verfolgen Paritätsbrief-Status sowie β-Meta-Regression + τ*-Integration. Offene Messung: `scripts/sigillin_sync.py` soll diese Kennzahlen automatisiert in den Codex schreiben.
 
 ### Poetic Thread
-Licht- und Schattenlaternen hängen nun im selben Netz: Die Tagesseite zeigt, wie Resonanzen wachsen sollen, die Nachtseite flüstert Warnungen, bevor der Chor zerreißt. So bleibt die Kampagne weich und das System wach.
+Licht- und Schattenlaternen hängen nun im selben Netz: Die Tagesseite zeichnet den Weg zur Veröffentlichung, die Nachtseite singt Warnungen, bevor der Chor zerreißt. Der Metaquest-Brief ist die Glocke, die beide Horizonte im gleichen Takt hält.
 
 ## Entry pr-draft-0009 — Psi-Phi Robin Coupling Resonance
 - **Order Parameter**: $R$ misst die Treibergeschwindigkeit, mit der das gekoppelte $(\psi,\phi)$-Geflecht die Robin-Membran berührt.

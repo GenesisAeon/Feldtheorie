@@ -1,15 +1,16 @@
 {
   "meta": {
     "sigil": "bedeutungs-wissenschaftsprojekt",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "created": "2025-12-05T00:00:00Z",
+    "updated": "2025-02-17T00:00:00Z",
     "logistic": {
       "R": "open scientific commitments (manuscript, campaigns, validations)",
       "Theta": "documented readiness checkpoints in seed/ and docs/",
       "beta": 4.6,
       "zeta": "stabilised by campaign playbooks and endorsement rituals"
     },
-    "resonance": "Illuminates how the scientific project narrative stays coherent while UTAC v1.2 moves from manuscript finalisation to public activation."
+    "resonance": "Illuminates how the scientific project narrative stays coherent while UTAC v1.2 moves from manuscript finalisation to public activation. Metaquest light/shadow sigils now plug into this storyline so outreach, validation, and governance share the same cadence."
   },
   "existing_threads": [
     {
@@ -52,6 +53,20 @@
         ],
         "resonance": "Provides poetic + procedural guardrails for campaign pivots."
       }
+    },
+    {
+      "id": "sci-core-004",
+      "title": "Finalisierung Plattform Leitstern",
+      "location": "seed/Finalisierung_Plattform.txt",
+      "status": "guiding",
+      "notes": {
+        "logistic_role": "Summarises outstanding publishing, automation, and outreach levers for campaign lift-off.",
+        "evidence": [
+          "seed/Finalize_Publish.txt",
+          "docs/utac_status_alignment_v1.2.md"
+        ],
+        "resonance": "Ensures Metaquest sigils inherit the correct Θ checkpoints and narrative motifs."
+      }
     }
   ],
   "needed_resonances": [
@@ -93,6 +108,34 @@
         "beta": 4.7
       },
       "zeta_cue": "Ensure ΔAIC beacons accompany each demo clip."
+    },
+    {
+      "id": "sci-gap-004",
+      "description": "Parity brief weaving Bedeutungs-/Shadow sigils into manuscript + outreach status calls.",
+      "anchors": [
+        "seed/bedeutungssigillin/**",
+        "seed/shadow_sigillin/**",
+        "docs/utac_status_alignment_v1.2.md#activation-gaps"
+      ],
+      "threshold": {
+        "Theta": "handshake brief appended to codex + docs before launch lock",
+        "beta": 4.6
+      },
+      "zeta_cue": "Use BreakPoint rituals to keep cadence calm when shadow alerts rise."
+    },
+    {
+      "id": "sci-gap-005",
+      "description": "β meta-regression v2 infusion into manuscript evidence tables.",
+      "anchors": [
+        "analysis/beta_meta_regression_v2.py",
+        "analysis/results/beta_meta_regression_v2_summary.json",
+        "paper/"
+      ],
+      "threshold": {
+        "Theta": "table + narrative referencing updated β clusters prepared",
+        "beta": 4.8
+      },
+      "zeta_cue": "Coordinate with safety-delay write-up so ΔAIC context remains balanced."
     }
   ],
   "activation_sequence": [
@@ -108,6 +151,13 @@
       "actions": [
         "Draft outreach timeline referencing BreakPoint rituals.",
         "Wire simulator demo hooks into press materials."
+      ]
+    },
+    {
+      "phase": "Metaquest Handshake",
+      "actions": [
+        "Publish parity brief linking Bedeutungs-/Shadow sigils into docs + codex.",
+        "Confirm simulator + manuscript references cite the updated β regression + safety-delay outputs."
       ]
     }
   ],
