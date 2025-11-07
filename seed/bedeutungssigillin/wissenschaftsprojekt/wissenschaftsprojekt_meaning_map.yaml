@@ -83,6 +83,16 @@ existing_threads:
         - cases/kranich_linum_2025/kranich_linum_2025.json
         - ../../shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml
       resonance: 'Stellt Sentinel-Muster bereit, um Metaquest, Manuskript und Governance mit Feldereignissen zu koppeln.'
+  - id: sci-core-008
+    title: Metaquest Bridge Index
+    location: metaquest/metaquest_meaning_index.yaml
+    status: active
+    notes:
+      logistic_role: 'Verknüpft System- und Kampagnensigille so Paritäts- und Telemetriezeiten gemeinsam geführt werden.'
+      evidence:
+        - metaquest/metaquest_meaning_index.md
+        - ../../shadow_sigillin/metaquest/metaquest_shadow_index.md
+      resonance: 'Hält Manuskript-, Outreach- und Automationspfade in einem gemeinsamen σ(β(R-Θ))-Takt.'
 needed_resonances:
   - id: sci-gap-001
     description: 'Integrate safety-delay field results into manuscript narrative and campaign briefing.'
@@ -172,6 +182,16 @@ needed_resonances:
       Theta: 'Datensatz, Notebook und Kommunikationsbrief enthalten Linum-Abschnitt + Codex-ID'
       beta: 4.7
     zeta_cue: 'BreakPoint-Reaktionspfad hält Kampagnenstress gedämpft.'
+  - id: sci-gap-010
+    description: 'Dashboard im Metaquest-Bridge-Hub mit Kampagnenmeilensteinen verknüpfen.'
+    anchors:
+      - metaquest/metaquest_meaning_index.yaml
+      - metaquest/metaquest_campaign_map.yaml
+      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+    threshold:
+      Theta: 'Bridge-Dashboard nennt aktuelle Kampagnenmeilensteine + Codex-ID innerhalb 24h'
+      beta: 4.6
+    zeta_cue: 'BreakPoint-Rituale puffern Verzögerungen; fehlende Synchronisation löst mq-sci-shadow-001 aus.'
 activation_sequence:
   - phase: 'Resonance Briefing'
     actions:

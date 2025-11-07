@@ -10,7 +10,7 @@
       "beta": 4.8,
       "zeta": "Soothes when BreakPoint rituals and parity brief keep cadence"
     },
-    "resonance": "Keeps Metaquest campaign artefacts aligned with the system spine so manuscripts, demos, and endorsements move in resonance rather than overshoot.",
+    "resonance": "Holds the campaign-facing meaning for Metaquest: manuscripts, simulator\ndemos, endorsements, and outreach scripts remain synchronised with the\nsystem spine so the launch enters resonance instead of overshooting.\n",
     "shadow_coupling": "../../shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml"
   },
   "existing_assets": [
@@ -25,7 +25,7 @@
           "seed/Finalize_Publish.txt",
           "seed/Finalisierung_Plattform.txt"
         ],
-        "logistic_coupling": "Θ checkpoints align Metaquest launch gating with manuscript + automation tasks."
+        "logistic_coupling": "Θ checkpoints align Metaquest launch gating with manuscript + automation tasks.\n"
       }
     },
     {
@@ -39,7 +39,7 @@
           "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
           "docs/utac_status_alignment_v1.2.md#activation-gaps"
         ],
-        "logistic_coupling": "Provides ΔAIC guards and activation sequencing so β remains disciplined during launch."
+        "logistic_coupling": "Provides ΔAIC guards and activation sequencing so β remains disciplined during launch.\n"
       }
     },
     {
@@ -53,7 +53,7 @@
           "seed/BreakPointAnalyse/WayToGo.txt",
           "seed/BreakPointAnalyse/ReaktionWayToGo.txt"
         ],
-        "logistic_coupling": "ζ(R) is damped when these rituals precede Metaquest outreach decisions."
+        "logistic_coupling": "ζ(R) is damped when these rituals precede Metaquest outreach decisions.\n"
       }
     },
     {
@@ -67,7 +67,21 @@
           "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
           "seed/Finalize_Publish.txt"
         ],
-        "logistic_coupling": "Provides Θ checkpoints for parity timestamp, simulator playlist, and endorsement ledger references in outreach assets."
+        "logistic_coupling": "Provides Θ checkpoints for parity timestamp, simulator playlist, and endorsement ledger references in outreach assets.\n"
+      }
+    },
+    {
+      "id": "mq-sci-asset-005",
+      "title": "Metaquest Bridge Index",
+      "location": "../metaquest_meaning_index.yaml",
+      "resonance": "Connects system backbone and campaign storyline through a shared dashboard with telemetry + codex parity.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "../metaquest_meaning_index.md",
+          "../../../shadow_sigillin/metaquest/metaquest_shadow_index.md"
+        ],
+        "logistic_coupling": "Ensures campaign milestones cite the same telemetry timestamp and codex id as the system beacon; drift triggers mq-bridge-shadow-001.\n"
       }
     }
   ],
@@ -143,6 +157,20 @@
         "beta": 4.4
       },
       "null_guard": "Governance review halts release when archive lineage absent."
+    },
+    {
+      "id": "mq-sci-gap-006",
+      "description": "Update bridge dashboard with campaign milestones and codex ids whenever outreach cadence shifts.",
+      "target_location": [
+        "metaquest/metaquest_meaning_index.yaml",
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+        "docs/outreach/"
+      ],
+      "threshold": {
+        "Theta": "Bridge dashboard reflects latest campaign milestone within 24h",
+        "beta": 4.6
+      },
+      "null_guard": "If dashboard stale, escalate to mq-bridge-shadow-001 and mq-sci-shadow-001."
     }
   ],
   "activation_hooks": [

@@ -10,7 +10,7 @@
       "beta": 4.7,
       "zeta": "Damped when indices refresh and telemetry reports land within one sprint"
     },
-    "resonance": "Ensures the Metaquest launch is braided into the UTAC system spine so automation, indices, and codex echoes stay synchronised across light and shadow membranes.",
+    "resonance": "Ensures the Metaquest launch is braided into the UTAC system spine: each\nautomation hook, index refresh, and codex echo stays synchronised so the\ncampaign can inherit reproducible logistics without fragmenting the\nBedeutungs-/Shadow pairing.\n",
     "shadow_coupling": "../../shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml"
   },
   "existing_assets": [
@@ -25,7 +25,7 @@
           "seed/Finalisierung_Plattform.txt",
           "seed/BreakPointAnalyse/WayToGo.txt"
         ],
-        "logistic_coupling": "When R swells, the matrix routes actions to archive scripts and codex updates before β steepens."
+        "logistic_coupling": "When R swells, the matrix routes actions to archive scripts and\ncodex updates before β steepens.\n"
       }
     },
     {
@@ -39,7 +39,7 @@
           "Makefile",
           "scripts/crep_parser.py"
         ],
-        "logistic_coupling": "Metaquest inherits the Makefile and schema guards; Θ remains visible via codex mandates."
+        "logistic_coupling": "Metaquest inherits the Makefile and schema guards; Θ remains visible via\ncodex mandates.\n"
       }
     },
     {
@@ -52,7 +52,7 @@
         "evidence": [
           "docs/utac_status_alignment_v1.2.md#implementation-map"
         ],
-        "logistic_coupling": "Defines when ζ(R) spikes so Metaquest alerts can trigger remediation."
+        "logistic_coupling": "Defines when ζ(R) spikes so Metaquest alerts can trigger remediation.\n"
       }
     },
     {
@@ -66,7 +66,21 @@
           "scripts/sigillin_sync.py (planned)",
           "seed/Finalize_Publish.txt"
         ],
-        "logistic_coupling": "Provides Θ checkpoints for telemetry timestamp, endorsement ledger, and codex entry whenever Metaquest assets update."
+        "logistic_coupling": "Provides Θ checkpoints for telemetry timestamp, endorsement ledger, and codex entry whenever Metaquest assets update.\n"
+      }
+    },
+    {
+      "id": "mq-sys-asset-005",
+      "title": "Metaquest Bridge Index",
+      "location": "../metaquest_meaning_index.yaml",
+      "resonance": "Synchronises system automation checkpoints with campaign cadence via shared bridge dashboard.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "../metaquest_meaning_index.md",
+          "../../shadow_sigillin/metaquest/metaquest_shadow_index.md"
+        ],
+        "logistic_coupling": "Ensures telemetry timestamps, codex ids, and BreakPoint notes land in both\nbeacons; stale bridge entries escalate via mq-bridge-shadow-001.\n"
       }
     }
   ],
@@ -141,6 +155,20 @@
         "beta": 4.5
       },
       "null_guard": "If BreakPoint references absent, escalate to mq-sys-shadow-003."
+    },
+    {
+      "id": "mq-sys-gap-006",
+      "description": "Mirror bridge dashboard timestamp + codex id inside the system beacon.",
+      "target_location": [
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml",
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake"
+      ],
+      "threshold": {
+        "Theta": "system map cites latest bridge telemetry timestamp within 24h",
+        "beta": 4.7
+      },
+      "null_guard": "Bridge timestamp drift triggers mq-bridge-shadow-001 and mq-sys-shadow-004."
     }
   ],
   "activation_hooks": [

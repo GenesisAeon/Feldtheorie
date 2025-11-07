@@ -58,6 +58,17 @@ existing_assets:
         - seed/Finalize_Publish.txt
       logistic_coupling: |
         Provides Θ checkpoints for parity timestamp, simulator playlist, and endorsement ledger references in outreach assets.
+  - id: mq-sci-asset-005
+    title: Metaquest Bridge Index
+    location: '../metaquest_meaning_index.yaml'
+    resonance: 'Connects system backbone and campaign storyline through a shared dashboard with telemetry + codex parity.'
+    status: active
+    notes:
+      evidence:
+        - ../metaquest_meaning_index.md
+        - ../../../shadow_sigillin/metaquest/metaquest_shadow_index.md
+      logistic_coupling: |
+        Ensures campaign milestones cite the same telemetry timestamp and codex id as the system beacon; drift triggers mq-bridge-shadow-001.
 needed_resonances:
   - id: mq-sci-gap-001
     description: 'Complete parity brief with telemetry timestamp, simulator playlist, endorsement ledger, and codex id.'
@@ -111,6 +122,16 @@ needed_resonances:
       Theta: 'archive reference visible in parity brief + press kit before launch'
       beta: 4.4
     null_guard: 'Governance review halts release when archive lineage absent.'
+  - id: mq-sci-gap-006
+    description: 'Update bridge dashboard with campaign milestones and codex ids whenever outreach cadence shifts.'
+    target_location:
+      - metaquest/metaquest_meaning_index.yaml
+      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+      - docs/outreach/
+    threshold:
+      Theta: 'Bridge dashboard reflects latest campaign milestone within 24h'
+      beta: 4.6
+    null_guard: 'If dashboard stale, escalate to mq-bridge-shadow-001 and mq-sci-shadow-001.'
 activation_hooks:
   - trigger: 'Campaign milestone reached (e.g. endorsement returned)'
     response: 'Update tri-layer, cross-link to codex + docs, notify simulator briefing list.'
@@ -125,8 +146,8 @@ null_model_reference:
       condition: 'Metaquest brief referenced in docs + codex'
     - metric: 'BreakPoint acknowledgement'
       condition: 'Every outreach artifact cites WayToGo/ReaktionWayToGo'
-  - metric: 'endorsement ledger'
-    condition: 'Endorsement file updated ≤14 days ago'
+    - metric: 'endorsement ledger'
+      condition: 'Endorsement file updated ≤14 days ago'
 implementation_lattice:
   - gap_id: mq-sci-gap-001
     implementation_sites:

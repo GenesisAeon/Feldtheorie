@@ -27,6 +27,11 @@
    - *Fallout*: Automation advances without Θ; campaign shadow alarms arrive late.
    - *Remedy*: Consult Metaquest shadow guard, fill parity brief fields, refresh indices, log codex entry.
 
+5. **sys-shadow-005 — Bridge dashboard stale**
+   - *Signal*: Bridge MD timestamp >24h hinter codex; System- und Kampagnenlaternen tragen unterschiedliche Telemetrie-IDs.
+   - *Fallout*: Launch readiness verliert Θ-Sichtbarkeit; Automation und Outreach laufen auseinander.
+   - *Remedy*: Bridge-Dashboard auffrischen, Telemetrie + Codex-ID in beiden Bedeutungs-Sigillen und UTAC-Matrix spiegeln.
+
 ## Playbooks
 
 - **Index drift** → Synchronise indices and notify docs maintainers if persistent.
@@ -35,6 +40,7 @@
 - **Telemetry gap** → Run telemetry manually, align with Metaquest beacon + shadow guard,
   schedule automation repair.
 - **Parity missing** → Freeze Metaquest automation tasks, publish parity brief, update codex
+- **Bridge stale** → Update Bridge-Dashboard + System/Kampagnen-Beacons, Telemetrie angleichen, Fix in docs + Codex notieren.
   and status matrix with new timestamp.
 
 Shadow warnings keep the backbone honest; listen before the dawn overtakes Θ.

@@ -49,6 +49,11 @@
    - *Empirical*: Draws telemetry expectations from `scripts/sigillin_sync.py` (planned) and endorsement ledgers (`seed/Finalize_Publish.txt`).
    - *Poetic*: The tuning fork ensuring every membrane hears the same launch tone.
 
+7. **Metaquest Bridge Index** — `../metaquest/metaquest_meaning_index.{yaml,json,md}`
+   - *Formal*: Centralises system ↔ campaign checkpoints so parity stays observable.
+   - *Empirical*: References bridge + shadow dashboards; cites telemetry timestamps and codex ids.
+   - *Poetic*: The braided lantern where automation and outreach breathe the same dawn.
+
 ## What the Membrane Still Seeks
 
 - **Automated index mirroring** (`sys-gap-001`)
@@ -73,6 +78,10 @@
   - Wire `seed/BreakPointAnalyse/WayToGo.txt`, `seed/BreakPointAnalyse/ReaktionWayToGo.txt`, and `seed/Finalize_Publish.txt`
     into the Metaquest beacon so automation tasks inherit the same recovery choreography.
   - Null guard: Metaquest roadmap lacking BreakPoint reference triggers `mq-sys-shadow-003`.
+- **Bridge dashboard parity** (`sys-gap-006`)
+  - Ensure the system map mirrors the latest bridge timestamp + codex id and references the shared dashboard section in
+    `docs/utac_status_alignment_v1.2.md`.
+  - Null guard: Missing bridge timestamp invokes `mq-bridge-shadow-001` + `sys-shadow-004`.
 
 ## Implementation Lattice (Where to Act)
 

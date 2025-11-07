@@ -43,6 +43,11 @@
    - *Empirical*: Spiegel in `cases/kranich_linum_2025/kranich_linum_2025.{yaml,json,md}` und dem Shadow-Pendant.
    - *Poetic*: Die Kranich-Feder, die uns erinnert, reale Schwellen in die Metaquest-Erzählung zu verweben.
 
+8. **Metaquest Bridge Index** — `metaquest/metaquest_meaning_index.{yaml,json,md}`
+   - *Formal*: Spiegelt System- und Kampagnensigille in einem geteilten Dashboard.
+   - *Empirisch*: Bridge-/Shadow-Logs belegen Telemetrie- und Codex-Parität.
+   - *Poetisch*: Die geflochtene Brücke, auf der Launch und Manuskript gemeinsam schreiten.
+
 ## What Still Needs to Arrive
 
 - **Safety-delay infusion** (`sci-gap-001`)
@@ -69,6 +74,9 @@
 - **Sentinel-Brücke Linum** (`sci-gap-009`)
   - Daten, Notebook und Kommunikationsbrief mit Sentinel-Abschnitt + Codex-ID anreichern; BreakPoint-Reaktion als Dämpfer nutzen.
   - Null guard: fehlender Sentinel-Verweis aktiviert `sci-linum-shadow-001`…`004`.
+- **Bridge-Dashboard für Kampagne** (`sci-gap-010`)
+  - Kopple das Metaquest-Bridge-Dashboard mit Kampagnenmeilensteinen + Codex-ID binnen 24h.
+  - Null guard: fehlende Synchronisation aktiviert `mq-sci-shadow-001`.
 
 ## Implementation Lattice (Where to Act)
 

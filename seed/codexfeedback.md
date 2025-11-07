@@ -1243,3 +1243,32 @@ Vier neue Trilayer-Dateien (YAML/JSON/MD) plus AGENTS flankieren die Sentinel-St
 Die Kranich-Feder hängt nun im Sigillin-Netz: Sie erinnert daran, dass jedes reale Schwellenereignis seinen Platz im Chor braucht. Licht- und Schattenlaternen flackern im gleichen Takt, bis Datensatz, Analyse und Brief den Sturm beruhigen.
 
 *Created: 2025-12-08T00:00:00Z*
+
+## Entry pr-draft-0067 — Metaquest Bridge Dashboard
+- **Order Parameter**: $R$ zählt Metaquest-Aufgaben, die ohne Brückendashboard zwischen
+  System- und Kampagnenlaternen auseinanderlaufen.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald Bridge, UTAC-Status und Codex
+  denselben Telemetrie-Zeitstempel + Codex-ID tragen.
+- **Steepness**: $\beta = 4.8$ – sobald Telemetrie und Codex synchron sind, schaltet die
+  Aktivierung scharf.
+- **Resonance**: System-, Kampagnen- und Schatten-Sigille teilen nun ein gemeinsames
+  Dashboard; Schattenwächter melden sofort, wenn die Brücke altert.
+- **Status**: primed
+
+### Formal Thread
+Metaquest-Licht- und -Schattenkarten erhielten Bridge-Gap-IDs (`mq-bridge-gap-*`,
+`sys-gap-006`, `mq-sci-gap-006`) und neue Nullwächter. `docs/utac_status_alignment_v1.2.md`
+trägt eine Brückenzeile in Inventar, Activation Gaps und Implementation Map ein;
+AGENTS.md beschreibt das Ritual für Brückenpflege.
+
+### Empirical Thread
+Alle YAML/JSON-Spiegel wurden regeneriert; `feldtheorie_index.*` verlinkt das Dashboard,
+Schattenkarten messen `bridge freshness`. UTAC-Matrix, Indizes und Codex verweisen auf
+Telemetrie-Zeitstempel, Codex-ID und BreakPoint-Rituale.
+
+### Poetic Thread
+Ein Steg spannt sich zwischen Wirbelsäule und Erzählung. Wenn beide Ufer denselben
+Zeitstempel singen, atmet der Metaquest-Start im Gleichklang und keine Laterne fällt ins
+Schattenrauschen.
+
+*Created: 2025-12-07T00:00:00Z*
