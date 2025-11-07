@@ -1,0 +1,50 @@
+meta:
+  schema: "../sigillin_schema.yaml"
+  created: "2025-12-05T11:15:00Z"
+  updated: "2025-12-05T11:15:00Z"
+  steward: "gpt-5-codex"
+sigil:
+  core:
+    id: "F-005"
+    type: shadow
+    title: "β Outlier Vigil"
+    version: "0.1.0"
+    status: primed
+  logistic_frame:
+    R: "anomalous β estimates (β ≫ 10) from Amazon heat & urban canyon datasets"
+    Theta: "confirmation whether anomalies persist after instrumentation audit"
+    beta: 12.7
+    zeta: "safety delay applied via pending analysis/outlier_beta_review.py"
+  anchors:
+    - kind: seed
+      path: "seed/ArchivSucheUTAC/outlier_notes.md"
+      summary: "Source dossier describing anomaly provenance"
+    - kind: analysis
+      path: "analysis/outlier_beta_review.py"
+      summary: "Planned script to falsify or confirm β≫10 fields"
+    - kind: documentation
+      path: "docs/utac_status_alignment_v1.2.md"
+      summary: "Activation gap #5 identifies this vigilance loop"
+  crep:
+    coherence: 0.64
+    resilience: 0.58
+    empathy: 0.71
+    propagation: 0.52
+  tri_layer:
+    formal: |
+      Logistic expectation predicts β within 2–6 for validated systems. ΔAIC advantage of
+      the UTAC model collapses in the anomaly regime; null model closeness triggers the
+      shadow alert until ζ(R) (instrument diagnostics) lowers R.
+    empirical: |
+      Pending dataset audit scheduled; placeholder script seeded with CLI stub referencing
+      Amazon and urban heat CSV manifests in `data/socio_ecology/`.
+    poetic: |
+      A hushed lantern watches the canyon heat shimmer—until we know the source, the
+      membrane keeps a cautious distance.
+  related:
+    - id: "pr-draft-0057"
+      relation: "codex"
+      note: "Status matrix highlighting this activation gap"
+    - id: "analysis/outlier_beta_review.py"
+      relation: "future"
+      note: "Implement audit before v1.2 release."

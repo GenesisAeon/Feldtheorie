@@ -25,7 +25,7 @@
 ## 3. Activation Gaps — What We Still Need
 1. **Safety-Delay Field Prototype:** `simulation/safety_delay_field.py` needs to materialise the τ*-controlled logistic shift described in `seed/Sigillin_Neuro_Membran_Modell_Plan.txt` and `seed/meta_threshold_controller.md`. Couple with ΔAIC(t) logging for falsifiability.
 2. **Meta-Regression Refresh:** `analysis/beta_meta_regression_v2.py` should re-open the regression with new covariates, bootstrap confidence, and cross-domain diagnostics referenced in `seed/NextStep.txt` and `seed/Manuskriptfinalisierung und Kampagnenstart.pdf`.
-3. **Sigillin Schema & Parser:** Define `seed/sigillin/sigillin_schema.yaml` plus exemplars, and implement a CREP-aware parser in `scripts/crep_parser.py` as foreshadowed in `seed/Sigillin_System_Definition.md` and the `seed/ArchivSucheUTAC` notes.
+3. **Sigillin Schema & Parser:** Schema v0.2.0 plus quartet exemplars now live under `seed/sigillin/`, and `scripts/crep_parser.py` ingests them with CREP validation. Next step: wire parser output into automation (index recount + codex hooks).
 4. **Index Automation Hooks:** Extend Ordnungs-Sigillin maintenance (`scripts/archive_sigillin.py`) to auto-increment counts when new docs/data appear, preventing drift like the previous `docs_index.*` lag.
 5. **Outlier Validation Loop:** Establish a focused analysis (e.g., `analysis/outlier_beta_review.py`) using the flagged Amazon & urban heat datasets noted in `seed/ArchivSucheUTAC/` to test whether β≫10 cases are instrumentation artefacts or genuine regime splits.
 6. **Manuscript v1.1.2 Finalisation:** Align the LaTeX pipeline under `paper/` with the governance addenda and ensure the arXiv-ready abstract reflects the new Sigillin net storyline; cross-check with `seed/Manuskriptfinalisierung und Kampagnenstart.pdf` and `seed/FinalerPlan.txt`.
@@ -37,7 +37,7 @@
 | ---- | ---------------- | -------------- | -------------- |
 | Safety-Delay τ* modelling | `simulation/`, `analysis/` | couple with `simulator/cli.py`, log ΔAIC(t) in `data/safety_delay/` | Compare against baseline logistic sweep, cite Θ(t) envelopes |
 | β Meta-Regression v2 | `analysis/` | new notebook + script, update `docs/validation_report_*` | Document R², ΔAIC, bootstrap CI; cross-link to `seed/codexfeedback.*` |
-| Sigillin schema & parser | `seed/sigillin/`, `scripts/` | YAML schema, JSON loader, Markdown narrative | Keep trilayer parity, update `feldtheorie_index.*` |
+| Sigillin schema & parser | `seed/sigillin/`, `scripts/`, `seed/codexfeedback.*` | YAML schema + example quartet + CREP parser CLI | Feed parser summaries into codex updates and automate parity alerts |
 | Index automation | `scripts/archive_sigillin.py`, `docs/docs_index.*` | add CLI flag for recount + status ledger | Use `tests/` to enforce parity guard |
 | Outlier review | `analysis/`, `data/socio_ecology/` | import new datasets, align with `docs/field_type_classification_v1.2.md` (future) | Provide falsification notes + ΔAIC comparisons |
 | Manuscript sync | `paper/`, `arxiv_submission/` | integrate governance + Sigillin appendices | Ensure `ZENODO_UPDATE_GUIDE.md` steps satisfied |

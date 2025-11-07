@@ -13,7 +13,7 @@ Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **163 katalogis
 ```
 🌳 Feldtheorie (UTAC + Sigillin)
 │
-├── 🌱 seed/        69 docs   (Meta, Theorie, Validierung)
+├── 🌱 seed/        71 docs   (Meta, Theorie, Validierung)
 ├── 📊 analysis/    32 scripts (Fits, Batch, Meta-Regression)
 ├── 📦 data/        43 files   (7 Domänen, β-Estimates)
 ├── 🔬 models/      10 models  (Solver, ODE-Systeme)
@@ -90,7 +90,7 @@ stats = idx['statistics']
 ## 🔥 Die 6 Indexierten Verzeichnisse
 
 ### 🌱 **seed/** - Semantic Seed Archive
-**69 Dokumente** | **6 Kategorien**
+**71 Dokumente** | **6 Kategorien**
 📍 Index: `seed/seed_index.{yaml,json,md}`
 
 **Was:** Meta-Reflexionen, Theorie, Validierung, Domain-Felder

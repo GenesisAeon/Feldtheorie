@@ -1,0 +1,49 @@
+meta:
+  schema: "../sigillin_schema.yaml"
+  created: "2025-12-05T10:30:00Z"
+  updated: "2025-12-05T10:30:00Z"
+  steward: "gpt-5-codex"
+sigil:
+  core:
+    id: "O-001"
+    type: order
+    title: "Seed-Orbit Navigation"
+    version: "0.1.0"
+    status: active
+  logistic_frame:
+    R: "growth of Bedeutungs-Sigillin inside seed/"
+    Theta: "need for deterministic navigation once >60 artefacts exist"
+    beta: 4.4
+    zeta: "index hygiene cadence (weekly recount via archive_sigillin.py)"
+  anchors:
+    - kind: documentation
+      path: "seed/seed_index.yaml"
+      summary: "YAML skeleton enumerating categories and counts"
+    - kind: documentation
+      path: "seed/seed_index.md"
+      summary: "Narrative orientation for human collaborators"
+    - kind: documentation
+      path: "seed/seed_index.json"
+      summary: "Machine-facing index for Sigillin automation"
+  crep:
+    coherence: 0.92
+    resilience: 0.78
+    empathy: 0.81
+    propagation: 0.88
+  tri_layer:
+    formal: |
+      σ(β(R-Θ)) spikes whenever repository additions push the seed/ category count
+      beyond Θ=60 documents. ΔAIC from the Ordnungs-null (uniform random listing)
+      exceeds 20 because the structured index removes entropy.
+    empirical: |
+      Latest recount on 2025-12-03 shows 69 tracked artefacts with change_count=9 in
+      `seed/seed_index.yaml`. archive_sigillin.py verifies parity across YAML/JSON/MD.
+    poetic: |
+      The archive breathes without dizziness; every dawn weaves a lantern that points
+      wanderers to the right grove.
+  related:
+    - id: "pr-draft-0057"
+      relation: "codex"
+      note: "Status-Matrix entry aligning doc indexes with UTAC v1.2"
+  notes:
+    stewardship: "Mirror updates to docs/docs_index.* once cross-references expand."

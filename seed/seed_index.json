@@ -396,6 +396,50 @@
       }
     },
     {
+      "id": "concept-017",
+      "title": "Sigillin Schema v0.2.0",
+      "path": "sigillin/sigillin_schema.yaml",
+      "category": "concepts",
+      "type": "schema",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "sigillin",
+        "schema",
+        "crep",
+        "logistic"
+      ],
+      "description": "Canonical specification of the four Sigillin classes (Order, Dynamics, Meaning, Shadow). Captures the logistic quartet (R, Θ, β, ζ(R)) and CREP metrics for every sigil so σ(β(R-Θ)) activations can be validated.",
+      "temporal": {
+        "created": "2025-12-05T10:30:00+00:00",
+        "modified": "2025-12-05T10:30:00+00:00",
+        "version": "0.2.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "concept-018",
+      "title": "Sigillin Example Set α",
+      "path": "sigillin/examples",
+      "category": "concepts",
+      "type": "exemplar",
+      "status": "active",
+      "relevance": "medium",
+      "keywords": [
+        "sigillin",
+        "examples",
+        "crep",
+        "tri-layer"
+      ],
+      "description": "Quartet of reference sigils (Order, Dynamics, Meaning, Shadow) illustrating how indices, simulations, codex entries, and outlier audits map their thresholds. Provides CREP calibration anchors for the parser.",
+      "temporal": {
+        "created": "2025-12-05T10:45:00+00:00",
+        "modified": "2025-12-05T11:15:00+00:00",
+        "version": "0.1.0",
+        "change_count": 1
+      }
+    },
+    {
       "id": "meta-001",
       "title": "Metareflexion",
       "path": "Metareflexion.txt",
