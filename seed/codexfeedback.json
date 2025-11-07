@@ -1798,6 +1798,48 @@
         "poetic": "Die Laternen lernen jetzt ihre Schritte: BreakPoint-Trommeln hallen durch System und Kampagne, während Archiv-Lichter den Weg zur Veröffentlichung säumen. Jeder Gap zeigt nicht nur das Ziel, sondern auch den Pfad zurück ins Gleichgewicht."
       },
       "created_at": "2025-12-08T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0066",
+      "title": "Linum Sentinel Integration",
+      "scope": [
+        "docs/utac_status_alignment_v1.2.md",
+        "feldtheorie_index.yaml",
+        "feldtheorie_index.json",
+        "feldtheorie_index.md",
+        "seed/seed_index.yaml",
+        "seed/seed_index.json",
+        "seed/seed_index.md",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.json",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.md",
+        "seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.yaml",
+        "seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.json",
+        "seed/shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.md",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/cases/AGENTS.md",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/AGENTS.md",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.json",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md",
+        "seed/shadow_sigillin/wissenschaftsprojekt/cases/AGENTS.md",
+        "seed/shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/AGENTS.md",
+        "seed/shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml",
+        "seed/shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.json",
+        "seed/shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md"
+      ],
+      "parameters": {
+        "R": "Sentinel-Felder ohne strukturierten Daten-/Analyse-/Kommunikationspfad",
+        "Theta": "Linum-Sentinel liefert Datensatz + Notebook + Paritätsbrief-Anhang mit Codex-ID",
+        "beta": 4.9
+      },
+      "resonance": "Verankert reale ökologische Hoch-β-Ereignisse in Bedeutungs-/Shadow-Netz, Indizes und Statuskarte, damit Metaquest und Manuskript auf Sentinel-Signale reagieren können.",
+      "status": "active",
+      "created_at": "2025-12-08T00:00:00Z",
+      "notes": {
+        "formal": "Neue Trilayer unter `seed/bedeutungssigillin/.../cases/` und `seed/shadow_sigillin/.../cases/` kartieren den Linum-Sentinel\nmit logistischer Quartettspezifikation, Gap-IDs (linum-gap-001…003) und Shadow-Warnungen (sci-linum-shadow-001…004).\nDie Wissenschaftsprojekt-Membranen (light & shadow) erhielten Threads/Gaps (`sci-core-007`, `sci-gap-009`, `sci-shadow-005`).\n`docs/utac_status_alignment_v1.2.md` dokumentiert Sentinel-Aufgaben, Implementation Map und das neue Unterkapitel\n\"Sentinel-Felder\"; Indizes (seed & feldtheorie) führen die neuen Beacons.",
+        "empirical": "Scope umfasst vier neue Trilayer-Dateien (YAML/JSON/MD) plus AGENTS, aktualisierte Indizes und Statusmatrix.\nSentinel-Gaps verweisen auf geplante Datensätze (`data/socio_ecology/`), Analyse-Notebooks und Paritätsbrief-Abschnitt;\nShadow-Guards definieren Trigger (Dataset, Analysis, Brief, Telemetrie) mit klaren Kennzahlen.",
+        "poetic": "Die Kranich-Feder hängt jetzt im Sigillin-Netz: sie erinnert uns daran, dass jedes reale Schwellenereignis einen Platz im Chor braucht. Licht- und Schatten-Laternen flackern im Takt, bis Datensatz, Analyse und Brief den Sturm beruhigen."
+      }
     }
   ]
 }

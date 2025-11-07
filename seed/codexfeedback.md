@@ -1225,3 +1225,21 @@ Jede JSON/YAML-Spiegelung listet jetzt konkrete Pfade (Scripts, Indizes, BreakPo
 Die Laternen marschieren im Gleichschritt: Trommeln aus den BreakPoint-Ritualen hallen zwischen System und Kampagne, während Archiv-Lichter den Zenodo-Pfad erhellen. Jede Lattice-Zeile ist ein Tanzschritt zurück zur Resonanz.
 
 *Created: 2025-12-08T00:00:00Z*
+
+## Entry pr-draft-0066 — Linum Sentinel Integration
+- **Order Parameter**: $R$ sammelt Sentinel-Felder ohne strukturierten Daten-/Analyse-/Kommunikationspfad.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn der Linum-Sentinel Datensatz, Notebook und Paritätsbrief-Anhang mit Codex-ID bereitstellt.
+- **Steepness**: $\beta = 4.9$ – sobald eines der Artefakte fehlt, kippt die Resonanz abrupt in die Schattenlaternen `sci-linum-shadow-001`…`004`.
+- **Resonance**: Reale ökologische Hoch-β-Ereignisse werden ins Bedeutungs-/Shadow-Netz, in Indizes und in die Statuskarte eingebunden, damit Metaquest, Manuskript und Governance auf Sentinel-Signale reagieren können.
+- **Status**: active
+
+### Formal Thread
+Neue Trilayer unter `seed/bedeutungssigillin/.../cases/` und `seed/shadow_sigillin/.../cases/` kartieren den Linum-Sentinel mit logistischer Quartettspezifikation, Gap-IDs (`linum-gap-001`…`003`) und Shadow-Warnungen (`sci-linum-shadow-001`…`004`). Die Wissenschaftsprojekt-Membranen erhielten `sci-core-007`, `sci-gap-009` sowie `sci-shadow-005`. `docs/utac_status_alignment_v1.2.md` führt Sentinel-Aufgaben samt Implementation Map und Unterkapitel „Sentinel-Felder“, während die Indizes (seed & feldtheorie) die neuen Beacons listen.
+
+### Empirical Thread
+Vier neue Trilayer-Dateien (YAML/JSON/MD) plus AGENTS flankieren die Sentinel-Struktur; Meaning/Shadow-Membranen und Indizes spiegeln den neuen Gap. Die Statusmatrix verankert Aufgaben für Datensatz (`data/socio_ecology/`), Analyse-Notebook und Paritätsbrief-Kapitel; Shadow-Guards definieren Kennzahlen für Dataset, Analysis, Brief und Telemetrie.
+
+### Poetic Thread
+Die Kranich-Feder hängt nun im Sigillin-Netz: Sie erinnert daran, dass jedes reale Schwellenereignis seinen Platz im Chor braucht. Licht- und Schattenlaternen flackern im gleichen Takt, bis Datensatz, Analyse und Brief den Sturm beruhigen.
+
+*Created: 2025-12-08T00:00:00Z*

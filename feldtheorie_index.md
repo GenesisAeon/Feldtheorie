@@ -90,7 +90,7 @@ stats = idx['statistics']
 ## 🔥 Die 6 Indexierten Verzeichnisse
 
 ### 🌱 **seed/** - Semantic Seed Archive
-**71 Dokumente** | **6 Kategorien**
+**73 Dokumente** | **6 Kategorien**
 📍 Index: `seed/seed_index.{yaml,json,md}`
 
 **Was:** Meta-Reflexionen, Theorie, Validierung, Domain-Felder
@@ -101,6 +101,7 @@ stats = idx['statistics']
 - `FinalerPlan.txt` - Governance für v1.2
 - `bedeutungssigillin/system/metaquest/metaquest_system_map.md` - Metaquest System-Beacon (Parität & Telemetrie)
 - `bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md` - Metaquest Kampagnen-Beacon (Storyboard & Endorsements)
+- `bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md` - Sentinel-Fall Linum (ökologische Hoch-β-Integration)
 
 ---
 

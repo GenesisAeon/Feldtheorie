@@ -64,7 +64,7 @@ indexed_directories:
       yaml: "seed/seed_index.yaml"
       json: "seed/seed_index.json"
       md: "seed/seed_index.md"
-    total_items: 71
+    total_items: 73
     categories: 6
     description: |
       Das semantische Gedächtnis des Projekts:
@@ -78,6 +78,7 @@ indexed_directories:
       - FinalerPlan.txt (Governance für v1.2)
       - bedeutungssigillin/system/metaquest/metaquest_system_map.md (Metaquest System-Beacon)
       - bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md (Metaquest Kampagnen-Beacon)
+      - bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md (Sentinel-Fall Linum)
 
   analysis:
     name: "analysis/ - Analysis Resonance Bay"

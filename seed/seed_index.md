@@ -150,7 +150,7 @@ Willkommen im **semantischen Gedächtnis** des Feldtheorie-Projekts! Dieser Inde
 
 #### **🌿 Socio-Ecology** (`socio_ecology/`)
 - Amazon Moisture, Urban Heat, Planetary Thresholds, Tipping Points
-- **Highlights:** `amazon_moisture_resilience.md` (β=14.6), `urban_heat_canopy_resonance.md` (β=16.3 - Outlier!)
+- **Highlights:** `amazon_moisture_resilience.md` (β=14.6), `urban_heat_canopy_resonance.md` (β=16.3 - Outlier!), `cases/kranich_linum_2025/kranich_linum_2025.md` (Sentinel-Fall)
 
 **Wann nutzen?** Wenn du domain-spezifische Anwendungen suchst
 

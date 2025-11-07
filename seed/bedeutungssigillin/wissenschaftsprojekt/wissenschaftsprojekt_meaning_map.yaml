@@ -73,6 +73,16 @@ existing_threads:
         - scripts/sigillin_sync.py (planned)
         - seed/Finalize_Publish.txt
       resonance: 'Ensures campaign storytelling echoes the same Θ checkpoints as the system membrane.'
+  - id: sci-core-007
+    title: Sentinel-Fall Kranich Linum 2025
+    location: cases/kranich_linum_2025/kranich_linum_2025.yaml
+    status: active
+    notes:
+      logistic_role: 'Überführt reales Hoch-β-Ökofeld in das Kampagnen- und Forschungsnetz.'
+      evidence:
+        - cases/kranich_linum_2025/kranich_linum_2025.json
+        - ../../shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml
+      resonance: 'Stellt Sentinel-Muster bereit, um Metaquest, Manuskript und Governance mit Feldereignissen zu koppeln.'
 needed_resonances:
   - id: sci-gap-001
     description: 'Integrate safety-delay field results into manuscript narrative and campaign briefing.'
@@ -151,6 +161,17 @@ needed_resonances:
       Theta: 'Archive references embedded in manuscript + parity brief before Zenodo upload'
       beta: 4.4
     zeta_cue: 'Governance review halts release when archive lineage absent.'
+  - id: sci-gap-009
+    description: 'Sentinel-Fall Linum in Daten, Analyse und Kampagnenbrief verankern.'
+    anchors:
+      - cases/kranich_linum_2025/
+      - ../../shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/
+      - docs/metaquest_parity_brief.md
+      - docs/utac_status_alignment_v1.2.md#sentinel-felder (planned)
+    threshold:
+      Theta: 'Datensatz, Notebook und Kommunikationsbrief enthalten Linum-Abschnitt + Codex-ID'
+      beta: 4.7
+    zeta_cue: 'BreakPoint-Reaktionspfad hält Kampagnenstress gedämpft.'
 activation_sequence:
   - phase: 'Resonance Briefing'
     actions:
@@ -242,3 +263,14 @@ implementation_lattice:
     evidence_trail:
       - seed/Finalize_Publish.txt
       - docs/utac_status_alignment_v1.2.md#resonant-inventory
+  - gap_id: sci-gap-009
+    implementation_sites:
+      - cases/kranich_linum_2025/
+      - data/socio_ecology/
+      - analysis/
+      - docs/metaquest_parity_brief.md
+      - docs/utac_status_alignment_v1.2.md
+    primary_hook: 'Sentinel-Kopplung von Feldereignis zu Kampagnenbrief'
+    evidence_trail:
+      - seed/shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml
+      - seed/codexfeedback.*

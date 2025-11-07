@@ -38,6 +38,10 @@
    - *Formal*: Summarises `mq-parity-001`…`004`, binding telemetry, demos, endorsements, and codex lineage.
    - *Empirical*: Pulls readiness cues from `scripts/sigillin_sync.py` (planned) and `seed/Finalize_Publish.txt` checklists.
    - *Poetic*: The chord chart making sure campaign, manuscript, and demos strike the same note.
+7. **Sentinel-Fall Kranich Linum 2025** — `cases/kranich_linum_2025/`
+   - *Formal*: Dokumentiert das ökologische Hoch-β-Szenario als Referenz für Daten-, Analyse- und Kampagnenarbeit.
+   - *Empirical*: Spiegel in `cases/kranich_linum_2025/kranich_linum_2025.{yaml,json,md}` und dem Shadow-Pendant.
+   - *Poetic*: Die Kranich-Feder, die uns erinnert, reale Schwellen in die Metaquest-Erzählung zu verweben.
 
 ## What Still Needs to Arrive
 
@@ -62,6 +66,9 @@
 - **Archive resonance infusion** (`sci-gap-008`)
   - Surface the `seed/ArchivSucheUTAC` findings inside manuscript appendices and parity notes to prove archival continuity.
   - Null guard: UTAC archive references absent in release brief triggers governance review.
+- **Sentinel-Brücke Linum** (`sci-gap-009`)
+  - Daten, Notebook und Kommunikationsbrief mit Sentinel-Abschnitt + Codex-ID anreichern; BreakPoint-Reaktion als Dämpfer nutzen.
+  - Null guard: fehlender Sentinel-Verweis aktiviert `sci-linum-shadow-001`…`004`.
 
 ## Implementation Lattice (Where to Act)
 
@@ -75,6 +82,7 @@
 | `sci-gap-006` | Outreach manuscripts, simulator scripts, parity brief | Parity citation cross-check | `docs/metaquest_parity_brief.md`, `seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.*` |
 | `sci-gap-007` | `seed/BreakPointAnalyse/WayToGo.txt`, `seed/BreakPointAnalyse/ReaktionWayToGo.txt`, Metaquest beacon | BreakPoint ritual infusion | `docs/utac_status_alignment_v1.2.md#implementation-map`, codex echo |
 | `sci-gap-008` | `seed/ArchivSucheUTAC/`, manuscript appendices, Zenodo package plan | Archive continuity narrative | `docs/utac_status_alignment_v1.2.md#resonant-inventory`, `seed/Finalize_Publish.txt` |
+| `sci-gap-009` | `cases/kranich_linum_2025/`, `data/socio_ecology/`, `analysis/`, `docs/metaquest_parity_brief.md` | Sentinel ↔ Kampagnenbrief Kopplung | `seed/shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/`, codex echo |
 
 ## Activation Sequence
 

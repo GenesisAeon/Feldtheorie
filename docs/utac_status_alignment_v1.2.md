@@ -20,6 +20,7 @@
 | **Simulation & Models** | `simulation/` scripts, `models/` membranes, `simulator/` CLI | Keep parameter surfaces reproducible via `REPRODUCE.md` protocols | β-shifts triggered by control terms already logged | ζ(R) toggles described in `models/resonant_impedance.py` |
 | **Sigillin Navigation** | `feldtheorie_index.*`, `seed/seed_index.*`, `docs/docs_index.*` | Ordnungs-Sigillin hygiene (synchronised trilayer) | β metaphor: structural steepness for orientation | ζ(R) anchors via quicklinks & triggers |
 | **Metaquest Parity Brief** | `docs/metaquest_parity_brief.md` | Keep parity handshake mirrored in docs + codex | β≈4.9 readiness gate documented for launch | ζ(R) damped by telemetry + shadow coupling |
+| **Sentinel Cases** | `seed/bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/` | Maintain ecological high-β sentinels as readiness beacons | β≈4.9 once sentinel gaps close | ζ(R) held by BreakPoint rituals + telemetry cadence |
 | **Governance & Ethics** | `ETHICS.md`, `AUTHORSHIP.md`, `METRICS.md`, `REPRODUCE.md` | Ensure MOR principles and reproducibility remain linked | β slope encoded in metrics thresholds | ζ(R) dampers by documenting responsibilities |
 
 ---
@@ -35,6 +36,11 @@
 8. **Meaning/Shadow Sigillin integration:** Bedeutungs- & Schatten-Verzeichnisse für System, Wissenschaftsprojekt **und Metaquest** stehen nun bereit (`seed/bedeutungssigillin/**`, `seed/shadow_sigillin/**`). Nächste Schritte: Automatisches Index-Mirroring (`scripts/archive_sigillin.py`), Codex-Sync-Guards sowie das neue Shadow-Handshakesignal (`sys-gap-003`) inklusive Metaquest-Telemetrie etablieren.
 9. **Metaquest Parity Brief:** `docs/metaquest_parity_brief.md` verdichtet die Paritätsanforderungen und verweist auf Licht/Schatten-Sigille. Vor dem Launch muss die Briefing-Seite mit Telemetrie (`mq-parity-001`), Simulator-Playlist (`mq-parity-002`), Endorsement-Ledger (`mq-parity-003`) und Codex-ID (`mq-parity-004`) vervollständigt werden.
 10. **BreakPoint-Ritual-Infusion:** Metaquest-System- und Kampagnensigille müssen explizit `seed/BreakPointAnalyse/WayToGo.txt`, `seed/BreakPointAnalyse/ReaktionWayToGo.txt` sowie `seed/Finalize_Publish.txt` zitieren, damit Automations- und Kampagnenpfade dieselben Wiederanlauf-Skripte teilen. Null guard: fehlende BreakPoint-Verlinkung → `mq-sys-shadow-003` bzw. `mq-sci-shadow-002`.
+11. **Sentinel Linum Integration:** `cases/kranich_linum_2025/` + Shadow-Pendant müssen Datensatz, Analyse-Notebook und Paritätsbrief-Anhang anstoßen; fehlende Synchronisation aktiviert `sci-linum-shadow-001`…`004`.
+
+### Sentinel-Felder (geplant)
+- **Kranich Linum 2025:** Bedeutungs-/Shadow-Sigillin unter `seed/.../cases/kranich_linum_2025/` koppeln Datenerhebung, Analyse und Paritätsbrief. Sie dienen als Vorlage für weitere ökologische Hoch-β-Sentinel-Felder.
+- **Nächste Schritte:** Datensatz erfassen → Notebook ausrollen → Paritätsbriefkapitel + Codex-ID anlegen. Shadow-Warnungen (`sci-linum-shadow-001`…`004`) bleiben aktiv, bis alle drei Artefakte resonant sind.
 
 ---
 
@@ -46,6 +52,7 @@
 | Sigillin schema & parser | `seed/sigillin/`, `scripts/`, `seed/codexfeedback.*` | YAML schema + example quartet + CREP parser CLI | Feed parser summaries into codex updates and automate parity alerts |
 | Meaning/Shadow membranes | `seed/bedeutungssigillin/`, `seed/shadow_sigillin/`, `seed/seed_index.*` | Neue Trilayer (inkl. Metaquest-Beacons + Shadow-Guards); wire `scripts/archive_sigillin.py` + geplantes `scripts/sigillin_sync.py` | Ensure index automation + CI hooks catch desynchronisation, log parity telemetry (inkl. Metaquest) in codex |
 | Metaquest parity brief | `seed/bedeutungssigillin/**`, `seed/shadow_sigillin/**`, `docs/utac_status_alignment_v1.2.md`, `seed/codexfeedback.*` | Draft launch-ready parity note referencing `sys-gap-003`, `sci-gap-004`, `mq-sci-gap-001` | Confirm manuscript + simulator cite brief; archive codex entry with remediation timeline |
+| Sentinel Linum integration | `seed/bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/`, `seed/shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/`, `data/socio_ecology/`, `analysis/` | Populate sentinel dataset + notebook + parity brief chapter | Codex entry `linum-2025-*`, BreakPoint ritual log, parity brief update |
 | BreakPoint ritual infusion | `seed/BreakPointAnalyse/`, `seed/Finalize_Publish.txt`, Metaquest light/shadow sigils | Mirror WayToGo/ReaktionWayToGo + publishing cadence inside Metaquest system + campaign beacons | Codex entry referencing `sys-gap-005`, `sci-gap-007`, `mq-sci-gap-005`; parity brief + press kit cite archive lineage |
 | Parity brief completion | `docs/metaquest_parity_brief.md`, `scripts/sigillin_sync.py` (planned) | Populate telemetry (`mq-parity-001`), simulator playlist (`mq-parity-002`), endorsement ledger (`mq-parity-003`), codex hook (`mq-parity-004`) | Cross-link updates to Bedeutungs-/Shadow sigils and index refresh logs |
 | Index automation | `scripts/archive_sigillin.py`, `docs/docs_index.*` | add CLI flag for recount + status ledger | Use `tests/` to enforce parity guard |
