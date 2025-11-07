@@ -1308,3 +1308,27 @@ Die neuen Kompass-Trilayer dokumentieren mq-sys-/mq-sci-Vektoren, Nullmodelle un
 Zwei Kompasse schweben über System und Kampagne – Licht und Schatten greifen nach denselben Sternen. Die Bridge atmet im Takt der Matrix; jedes Telemetrie-Flackern ruft sofort durch Codex und Ritual zurück.
 
 *Created: "2025-12-08T00:00:00Z"*
+
+## Entry pr-draft-0070 — Metaquest sigil parity lattice
+- **Order Parameter**: $R$ bündelt Metaquest-Licht/Schatten-Sigille ohne gemeinsamen Codex- oder UTAC-Haken.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn neue Bedeutungs- und Schatten-Sigille dieselbe Codex-ID, UTAC-Zeile und
+  BreakPoint-Rituale innerhalb eines Sprints teilen.
+- **Steepness**: $\beta = 4.8$ – jede Drift zwischen Licht/Schatten triggert sofort mq-bridge-shadow-004.
+- **Resonance**: Sigillin-Sync bekommt ein sicheres Codex-Appendix, während System/Kampagnen-Sigille (Licht & Schatten) die
+  Bridge- und UTAC-Parität verankern.
+- **Status**: active
+
+### Formal Thread
+Reparatur von `scripts/sigillin_sync.py`: Codexeinträge landen nun korrekt in `entries`. Neue Metaquest-System- und
+Kampagnen-Bedeutungs-/Schatten-Sigille dokumentieren Codex-IDs, UTAC-Zeilen, BreakPoint-Rituale und Nullmodelle.
+Meaning-/Shadow-Indizes erhielten `mq-bridge-gap-005` und `mq-bridge-shadow-004`; UTAC-Status listet Sigillin-Parität.
+
+### Empirical Thread
+`seed_index.*` & `feldtheorie_index.*` führen die neuen Trilayer, UTAC-Tabellen referenzieren Telemetrie-Skripte und Rituale.
+Bridge- & Shadow-Indizes spiegeln gemeinsame Timestamps; Tests über manuelle Inspektion bestätigen YAML/JSON/MD Parität.
+
+### Poetic Thread
+Licht und Schatten teilen wieder denselben Codex-Atem: Jede Metaquest-Laterne hat ihr Spiegelbild, und das Sync-Skript trägt
+jeden Eintrag, ohne zu stolpern. Die Brücke summt im Gleichklang mit der UTAC-Matrix.
+
+*Created: 2025-12-10T00:00:00Z*

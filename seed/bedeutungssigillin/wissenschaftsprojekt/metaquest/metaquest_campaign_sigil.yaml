@@ -1,0 +1,80 @@
+meta:
+  sigil: bedeutungs-metaquest-campaign-sigil
+  version: 0.1.0
+  created: '2025-12-10T00:00:00Z'
+  updated: '2025-12-10T00:00:00Z'
+  logistic:
+    R: 'Outstanding manuscript, outreach, and endorsement tasks required to ignite the Metaquest campaign.'
+    Theta: 'Parity brief + campaign ledger entries mirrored with codexfeedback and BreakPoint rituals within 24 h.'
+    beta: 4.85
+    zeta: 'Damped when campaign beacons cite telemetry + codex IDs and outreach cadences follow BreakPoint scripts.'
+  resonance: >-
+    Distills the wissenschaftsprojekt narrative for Metaquest: how manuscripts, endorsements,
+    and community loops tie into σ(β(R-Θ)) so launch storytelling remains in lockstep with the
+    system spine.
+  shadow_pair: '../../../shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml'
+anchors:
+  - id: mq-sci-anchor-001
+    title: Manuscript cadence
+    location: seed/Manuskriptfinalisierung und Kampagnenstart.pdf
+    mandate: 'Keep publication timeline and resonance checkpoints visible.'
+  - id: mq-sci-anchor-002
+    title: Campaign bridge coupling
+    location: metaquest_campaign_map.yaml
+    mandate: 'Document activation gaps, endorsements, and public touchpoints.'
+  - id: mq-sci-anchor-003
+    title: BreakPoint rituals
+    location: seed/BreakPointAnalyse/
+    mandate: 'Use WayToGo + ReaktionWayToGo to cool ζ(R) when outreach pressure spikes.'
+  - id: mq-sci-anchor-004
+    title: Codex storytelling
+    location: seed/codexfeedback.md
+    mandate: 'Record metaquest campaign moves with mq-sci-gap references and ΔAIC/null reflections.'
+threads:
+  storyline:
+    summary: 'Narrative arc of Metaquest launch communications and scientific framing.'
+    references:
+      - metaquest_campaign_compass.md
+      - metaquest_campaign_map.md
+      - ../../metaquest/metaquest_meaning_index.md
+  evidence:
+    - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+    - docs/utac_status_alignment_v1.2.md#activation-gaps
+    - seed/Finalisierung_Plattform.txt
+    - seed/Finalize_Publish.txt
+  checkpoints:
+    telemetry: 'Campaign compass shares timestamp + codex ID with bridge and system sigil.'
+    endorsements: 'Endorsement ledger cites latest ΔAIC/impact evidence.'
+    outreach: 'Public narrative references parity brief and BreakPoint rituals.'
+campaign_vectors:
+  - id: mq-sci-sigil-001
+    description: 'Synchronise manuscript release checklist with campaign map + codex entry template.'
+    readiness:
+      Theta: 'Finalisation playbook enumerates codex IDs, telemetry, and BreakPoint cues.'
+      beta: 4.7
+      null_guard: 'Missing cues trigger mq-sci-shadow-002.'
+  - id: mq-sci-sigil-002
+    description: 'Integrate endorsement resonance metrics (ΔAIC, citations) into UTAC matrix + campaign map.'
+    readiness:
+      Theta: 'UTAC + map list latest endorsement evidence and null baseline.'
+      beta: 4.6
+      null_guard: 'Absence escalates to mq-sci-shadow-003.'
+  - id: mq-sci-sigil-003
+    description: 'Publish outreach cadence log referencing Metaquest parity brief milestones.'
+    readiness:
+      Theta: 'Log includes parity milestone, codex ID, and pointer to BreakPoint response plan.'
+      beta: 4.5
+      null_guard: 'If missing, activate mq-sci-shadow-004.'
+activation_hooks:
+  - trigger: 'Manuscript milestone achieved'
+    response: 'Update sigil + campaign compass, cite codex entry, notify shadow pair.'
+  - trigger: 'Endorsement secured'
+    response: 'Record ΔAIC/impact note in UTAC matrix, update campaign map, refresh sigil checkpoint.'
+  - trigger: 'Outreach sprint scheduled'
+    response: 'Ensure cadence log references BreakPoint rituals; brief shadow sigil for recovery readiness.'
+null_model:
+  description: 'Campaign storytelling advances without synchronized telemetry, codex echoes, or ritual references.'
+  fallout:
+    - 'Launch narrative loses credibility because Θ checkpoints are opaque.'
+    - 'Community partners cannot track readiness; endorsements stall.'
+    - 'Shadow incidents escalate because ζ(R) spikes unchecked by rituals.'

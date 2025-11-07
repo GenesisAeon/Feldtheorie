@@ -451,6 +451,14 @@ active_important = [
     - Kampagnen-Kompass v0.2.0: Manuskript-Cadenz, Outreach-Playlist, Endorsement-Ledger
 19. **shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.{yaml,json,md}**
     - Kampagnen-Shadow-Kompass: Paritätszitate, Storyboard-Sync, Governance-Freshness
+20. **bedeutungssigillin/system/metaquest/metaquest_system_sigil.{yaml,json,md}**
+    - System-Bedeutungs-Sigillin v0.1.0: Automationsaufgaben, Codex-IDs, UTAC-Kopplung
+21. **shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.{yaml,json,md}**
+    - System-Schatten-Sigillin v0.1.0: Telemetrie-Blackout, Index-Drift, Codex-Stille
+22. **bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.{yaml,json,md}**
+    - Kampagnen-Bedeutungs-Sigillin v0.1.0: Manuskript-, Outreach-, Endorsement-Kopplung
+23. **shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.{yaml,json,md}**
+    - Kampagnen-Schatten-Sigillin v0.1.0: Paritätsstille, Manuskript-Lag, Outreach-Drift
 
 ### Domain-Spezifisch (6 × ~4-5 Dokumente = ~28 Dokumente)
 Siehe oben unter "Domain-Spezifische Felder"

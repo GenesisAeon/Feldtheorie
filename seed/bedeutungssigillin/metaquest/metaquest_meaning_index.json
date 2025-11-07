@@ -1,9 +1,9 @@
 {
   "meta": {
     "sigil": "bedeutungs-metaquest-bridge",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "created": "2025-12-07T00:00:00Z",
-    "updated": "2025-12-09T00:00:00Z",
+    "updated": "2025-12-10T00:00:00Z",
     "logistic": {
       "R": "Cross-membrane Metaquest workload: automation hooks, outreach cadence, endorsements.",
       "Theta": "Parity handshake logged in docs/utac_status_alignment_v1.2.md and codexfeedback entries.",
@@ -109,6 +109,34 @@
         ],
         "logistic_coupling": "Surfaces mq-sci vectors so bridge telemetry and codex echoes stay synchronized."
       }
+    },
+    {
+      "id": "mq-bridge-008",
+      "title": "Metaquest System Bedeutungs-Sigillin",
+      "location": "../system/metaquest/metaquest_system_sigil.yaml",
+      "resonance": "Semantic anchor translating automation beacons into codex + UTAC parity instructions.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "../system/metaquest/metaquest_system_sigil.md",
+          "../system/metaquest/metaquest_system_map.yaml"
+        ],
+        "logistic_coupling": "Keeps Θ explicit for automation stewards; every codex update propagates through bridge + shadow pair."
+      }
+    },
+    {
+      "id": "mq-bridge-009",
+      "title": "Metaquest Kampagnen Bedeutungs-Sigillin",
+      "location": "../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml",
+      "resonance": "Captures manuscript/outreach resonance so campaign cadence stays phase-locked with system spine.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md",
+          "../wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml"
+        ],
+        "logistic_coupling": "Routes ΔAIC + endorsement metrics back into bridge dashboards and codex stories within one sprint."
+      }
     }
   ],
   "needed_resonances": [
@@ -167,6 +195,21 @@
         "beta": 4.7
       },
       "null_guard": "Drift triggers mq-bridge-shadow-002 and compass-specific shadow alerts."
+    },
+    {
+      "id": "mq-bridge-gap-005",
+      "description": "Ensure new Bedeutungs-Sigillin (system + kampagne) cite shared codex IDs, UTAC rows, and shadow counterparts.",
+      "target_location": [
+        "system/metaquest/metaquest_system_sigil.yaml",
+        "wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml",
+        "../../shadow_sigillin/metaquest/system/metaquest_system_shadow_sigil.yaml",
+        "../../shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml"
+      ],
+      "threshold": {
+        "Theta": "Each sigil updated within 24h of codex change, including shadow pair acknowledgement.",
+        "beta": 4.8
+      },
+      "null_guard": "Missing cross-citation triggers mq-bridge-shadow-001 and mq-bridge-shadow-004."
     }
   ],
   "activation_hooks": [
@@ -240,6 +283,20 @@
       "evidence_trail": [
         "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
         "seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml"
+      ]
+    },
+    {
+      "gap_id": "mq-bridge-gap-005",
+      "implementation_sites": [
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml"
+      ],
+      "primary_hook": "Codex ↔ sigil parity handshake",
+      "evidence_trail": [
+        "seed/codexfeedback.md",
+        "docs/utac_status_alignment_v1.2.md#activation-gaps"
       ]
     }
   ]

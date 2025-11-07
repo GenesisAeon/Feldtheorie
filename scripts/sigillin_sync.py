@@ -275,13 +275,23 @@ def append_codex_entry(
 
     with CODEx_JSON_PATH.open("r", encoding="utf-8") as handle:
         codex_json = json.load(handle)
-    codex_json.append(json_entry)
+    if not isinstance(codex_json, dict):
+        raise TypeError("codexfeedback.json must contain an object with an 'entries' list")
+    entries_json = codex_json.setdefault("entries", [])
+    if not isinstance(entries_json, list):
+        raise TypeError("codexfeedback.json['entries'] must be a list")
+    entries_json.append(json_entry)
     with CODEx_JSON_PATH.open("w", encoding="utf-8") as handle:
         json.dump(codex_json, handle, ensure_ascii=False, indent=2)
 
     with CODEx_YAML_PATH.open("r", encoding="utf-8") as handle:
         codex_yaml = yaml.safe_load(handle)
-    codex_yaml.append(json_entry)
+    if not isinstance(codex_yaml, dict):
+        raise TypeError("codexfeedback.yaml must contain an object with an 'entries' list")
+    entries_yaml = codex_yaml.setdefault("entries", [])
+    if not isinstance(entries_yaml, list):
+        raise TypeError("codexfeedback.yaml['entries'] must be a list")
+    entries_yaml.append(json_entry)
     with CODEx_YAML_PATH.open("w", encoding="utf-8") as handle:
         yaml.dump(codex_yaml, handle, allow_unicode=True, sort_keys=False)
 

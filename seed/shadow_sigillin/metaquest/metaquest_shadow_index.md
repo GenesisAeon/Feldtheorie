@@ -29,6 +29,15 @@
    - *Mitigation*: Run `scripts/archive_sigillin.py --refresh`, verify parser, and
      record results in bridge + codex notes.
 
+4. **mq-bridge-shadow-004 — Sigillin-Drift**
+   - *Signal*: Light-/Schattensigille (System/Kampagne) nennen unterschiedliche
+     Codex-IDs, Telemetrie- oder Ritualreferenzen; Codexeintrag ohne Shadow-Ack
+     innerhalb von 24 h.
+   - *Consequence*: Recovery-Skripte verlieren Parität, Θ bleibt unsichtbar für
+     Automation & Outreach.
+   - *Mitigation*: Light + Shadow gleichzeitig aktualisieren, gemeinsame Codex-
+     ID & Rituale setzen, Bridge + UTAC bestätigen.
+
 ## Playbooks
 
 - **mq-bridge-shadow-001 fired** → halt Metaquest tasks, update bridge + UTAC matrix,
@@ -37,11 +46,16 @@
   stewards if delay > sprint.
 - **mq-bridge-shadow-003 fired** → refresh indices, rerun parser, notify maintainers,
   document closure across bridge/beacons.
+- **mq-bridge-shadow-004 fired** → Bedeutungs-/Schatten-Sigille synchronisieren,
+  Codex-ID + Rituale abgleichen, Parität in Bridge + UTAC bestätigen bevor
+  Launcharbeit weiterläuft.
 
 ## Coupling
 
 - Lichtseite: `../../bedeutungssigillin/metaquest/metaquest_meaning_index.{yaml,json,md}`
 - System-Kompass: `../../bedeutungssigillin/metaquest/system/metaquest_system_compass.{yaml,json,md}`
 - Kampagnen-Kompass: `../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}`
+- System-Sigil: `../../bedeutungssigillin/system/metaquest/metaquest_system_sigil.{yaml,json,md}`
+- Kampagnen-Sigil: `../../bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.{yaml,json,md}`
 
 Halte alle drei Laternen synchron, damit die Schattenwache jede Drift sofort sieht.

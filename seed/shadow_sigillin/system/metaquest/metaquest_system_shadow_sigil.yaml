@@ -1,0 +1,62 @@
+meta:
+  sigil: shadow-metaquest-system-sigil
+  version: 0.1.0
+  created: '2025-12-10T00:00:00Z'
+  updated: '2025-12-10T00:00:00Z'
+  logistic:
+    R: 'Accumulating Metaquest automation risks (stale telemetry, unsynchronised indices, missing codex echoes).'
+    Theta: 'Parity brief + UTAC matrix rows refreshed with codex ID within one sprint.'
+    beta: 5.1
+    zeta: 'Spikes when BreakPoint rituals or sigillin_sync stamps are skipped.'
+  light_pair: '../../../bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml'
+alerts:
+  - id: mq-sys-shadow-sigil-001
+    title: Telemetry blackout
+    signals:
+      - 'sigillin_sync.py not run within 72h or lacks codex ID.'
+      - 'Bridge + compass reference older timestamp than UTAC matrix.'
+    fallout:
+      - 'Automation readiness unverifiable; launch decisions lack Θ evidence.'
+    recovery:
+      - 'Run scripts/sigillin_sync.py stamp, attach codex entry, refresh bridge + compass.'
+      - 'Log remediation in codex with mq-sys-gap references.'
+  - id: mq-sys-shadow-sigil-002
+    title: Index drift cascade
+    signals:
+      - 'seed_index.* or feldtheorie_index.* missing Metaquest entries after commits.'
+      - 'archive_sigillin dry-run reports Δindex parity > 0.'
+    fallout:
+      - 'Agents lose navigation; ΔAIC guards cannot confirm readiness.'
+    recovery:
+      - 'Run scripts/archive_sigillin.py --refresh, regenerate indices, update UTAC matrix.'
+      - 'Document fix in codex + compass backlog.'
+  - id: mq-sys-shadow-sigil-003
+    title: Codex silence
+    signals:
+      - 'Metaquest automation commits merged without codex entry or mq-sys-gap reference.'
+      - 'UTAC row references stale codex ID (>24h difference).'
+    fallout:
+      - 'Shadow/light parity breaks; recovery steps untraceable.'
+    recovery:
+      - 'Create retroactive codex entry, cite telemetry + parity brief, notify BreakPoint rituals.'
+      - 'Update light-side sigil anchors with new ID.'
+playbooks:
+  - trigger: 'Telemetry blackout detected'
+    response: 'Freeze automation, run sigillin_sync, escalate to BreakPoint ritual, notify campaign sigils.'
+  - trigger: 'Index drift cascade'
+    response: 'Execute archive_sigillin refresh, verify indices vs. UTAC, append codex note, restore light sigil links.'
+  - trigger: 'Codex silence'
+    response: 'Open incident log, craft codex entry, update UTAC matrix + bridge, confirm rituals executed.'
+escalation:
+  contact: 'mq-sys-shadow-ops'
+  rituals:
+    - seed/BreakPointAnalyse/WayToGo.txt
+    - seed/BreakPointAnalyse/ReaktionWayToGo.txt
+  documentation:
+    - seed/codexfeedback.md
+    - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+null_model:
+  description: 'Automation continues without telemetry, indices, or codex resonance; launch decisions become opaque.'
+  risk:
+    - 'Shadow alerts ignored; Metaquest readiness overstated.'
+    - 'Failure to halt automation causes β amplification and system debt.'

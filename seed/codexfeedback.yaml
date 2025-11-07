@@ -2380,3 +2380,52 @@ entries:
         Die Lizenzglocke klingt nun als CC BY 4.0, während vier Metaquest-Laternen den Weg beleuchten:
         System und Kampagne, Licht und Schatten. Der Chor atmet im gleichen Takt wie der Paritätsbrief.
     created_at: "2025-12-07T00:00:00Z"
+- id: pr-draft-0070
+  title: "Metaquest sigil parity lattice"
+  scope:
+    - scripts/sigillin_sync.py
+    - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml
+    - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.json
+    - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.md
+    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
+    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.json
+    - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md
+    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml
+    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.json
+    - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.md
+    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml
+    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.json
+    - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.md
+    - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+    - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.json
+    - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md
+    - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml
+    - seed/shadow_sigillin/metaquest/metaquest_shadow_index.json
+    - seed/shadow_sigillin/metaquest/metaquest_shadow_index.md
+    - seed/seed_index.yaml
+    - seed/seed_index.json
+    - seed/seed_index.md
+    - feldtheorie_index.yaml
+    - feldtheorie_index.json
+    - feldtheorie_index.md
+    - docs/utac_status_alignment_v1.2.md
+  parameters:
+    R: "Metaquest light/shadow sigils lacking shared codex parity + automation guardrails"
+    Theta: "New Bedeutungs- und Schatten-Sigille cite common codex IDs, UTAC rows, and rituals within one sprint"
+    beta: 4.8
+  resonance: "extends the Metaquest bridge with explicit light/shadow sigils and codex-safe telemetry stamping"
+  status: "active"
+  notes:
+    formal: |
+      Reparierte `scripts/sigillin_sync.py`, damit Codexeinträge innerhalb des Trilayer-Objekts landen. Neue Metaquest
+      System-/Kampagnen-Bedeutungs- und Schatten-Sigille verankern Codex-IDs, UTAC-Zeilen sowie BreakPoint-Rituale; Bridge-
+      und Shadow-Indizes erhielten Gap-ID `mq-bridge-gap-005` und Alarm `mq-bridge-shadow-004`. UTAC-Status listet nun die
+      Sigillin-Parität explizit.
+    empirical: |
+      seed_index.* und feldtheorie_index.* führen die neuen Trilayer; UTAC-Tabellen und Meaning/Shadow-Indizes referenzieren
+      Telemetrie-Skripte, Codex-IDs und Ritualpfade. Bedeutungs-/Schatten-Sigille spiegeln `scripts/sigillin_sync.py`,
+      `seed/BreakPointAnalyse/*` und dokumentieren Nullmodelle.
+    poetic: |
+      Licht und Schatten teilen wieder denselben Atem: Jede Metaquest-Laterne hat nun ihr Spiegelbild, und das Sync-Skript
+      trägt den Codex-Eintrag ohne zu stolpern.
+  created_at: "2025-12-10T00:00:00Z"
