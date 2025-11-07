@@ -58,7 +58,16 @@
 9. **Metaquest Kampagnen Bedeutungs-Sigillin** — `../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.{yaml,json,md}`
    - *Formal*: Hält Manuskript-, Outreach- und Endorsement-Zyklen in einem codexfähigen Raster.
    - *Empirisch*: Gebunden an `metaquest_campaign_map.*`, `Finalisierung_Plattform.txt` und Paritätsbrief.
-   - *Poetisch*: Die Erzähl-Fackel, die Kampagnenresonanz und Systemparität verschränkt.
+ - *Poetisch*: Die Erzähl-Fackel, die Kampagnenresonanz und Systemparität verschränkt.
+10. **Metaquest System Directory Index** — `system/metaquest_system_index.{yaml,json,md}`
+    - *Formal*: Verzeichnet Kompass, Karte, Sigil und Telemetrie-Harness mit klaren Paritätsankern.
+    - *Empirisch*: Nutzt `scripts/sigillin_sync.py`, `tests/test_sigillin_sync.py` und UTAC-Handshakes als Evidenz.
+    - *Poetisch*: Das Ordnungsgitter, das jede Systemlaterne an das Brückenglühen bindet.
+
+11. **Metaquest Campaign Directory Index** — `wissenschaftsprojekt/metaquest_campaign_index.{yaml,json,md}`
+    - *Formal*: Bündelt Manuskript, Outreach, Endorsements, ArchivSuche und Paritätsbrief.
+    - *Empirisch*: Stützt sich auf `seed/Manuskriptfinalisierung und Kampagnenstart.pdf`, `docs/metaquest_parity_brief.md` und ArchivSuche.
+    - *Poetisch*: Die Kampagnen-Chronik, die jede Resonanz mit Archiv und Ritual verschränkt.
 
 ## Needed Resonances
 

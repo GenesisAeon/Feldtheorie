@@ -1839,6 +1839,110 @@
         "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.json",
         "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.md"
       ]
+    },
+    {
+      "id": "synth-025",
+      "title": "Metaquest System Directory Index (Trilayer)",
+      "path": "bedeutungssigillin/metaquest/system/metaquest_system_index.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "system",
+        "index"
+      ],
+      "description": "Verzeichnis für die Metaquest-Systemlaternen: Karte, Kompass, Sigil und Telemetrie-Harness werden mit Paritäts- und Ritualreferenzen gebündelt.",
+      "temporal": {
+        "created": "2025-12-11T00:00:00Z",
+        "modified": "2025-12-11T12:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/metaquest/system/metaquest_system_index.json",
+        "bedeutungssigillin/metaquest/system/metaquest_system_index.md"
+      ]
+    },
+    {
+      "id": "synth-026",
+      "title": "Metaquest System Shadow Directory Index (Trilayer)",
+      "path": "shadow_sigillin/metaquest/system/metaquest_system_shadow_index.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "system",
+        "index"
+      ],
+      "description": "Schattenverzeichnis für Automationsrisiken: überwacht Index-Frische, Telemetrie-Exports und BreakPoint-Rituale.",
+      "temporal": {
+        "created": "2025-12-11T00:00:00Z",
+        "modified": "2025-12-11T12:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/metaquest/system/metaquest_system_shadow_index.json",
+        "shadow_sigillin/metaquest/system/metaquest_system_shadow_index.md"
+      ]
+    },
+    {
+      "id": "synth-027",
+      "title": "Metaquest Kampagnen Directory Index (Trilayer)",
+      "path": "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "kampagne",
+        "index"
+      ],
+      "description": "Kampagnen-Verzeichnis, das Manuskript-, Outreach-, Endorsement- und Archiv-Linien mit Paritätsbrief und Codex synchronisiert.",
+      "temporal": {
+        "created": "2025-12-11T00:00:00Z",
+        "modified": "2025-12-11T12:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.json",
+        "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.md"
+      ]
+    },
+    {
+      "id": "synth-028",
+      "title": "Metaquest Kampagnen Shadow Directory Index (Trilayer)",
+      "path": "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "kampagne",
+        "index"
+      ],
+      "description": "Schattenverzeichnis für Kampagnenrisiken: prüft ArchivSuche-Parität, Endorsement-Timestamps und Paritätsbrief-Sync.",
+      "temporal": {
+        "created": "2025-12-11T00:00:00Z",
+        "modified": "2025-12-11T12:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.json",
+        "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.md"
+      ]
     }
   ],
   "domains": {

@@ -1,0 +1,85 @@
+meta:
+  sigil: bedeutungs-metaquest-campaign-index
+  version: 0.1.0
+  created: '2025-12-11T00:00:00Z'
+  updated: '2025-12-11T12:00:00Z'
+  logistic:
+    R: 'Metaquest campaign orientation backlog: manuscript cadence, outreach assets, endorsement ledger.'
+    Theta: 'seed/Manuskriptfinalisierung und Kampagnenstart.pdf + docs/utac_status_alignment_v1.2.md share parity entries in codex within 24h.'
+    beta: 4.8
+    zeta: 'Damped when BreakPoint rituals, parity brief updates, and archive lineage stay mirrored in codex + bridge.'
+  resonance: |
+    Orientation hub for the wissenschaftsprojekt Metaquest lane. It braids manuscript
+    checkpoints, outreach milestones, simulator demos, and endorsements so campaign
+    work enters resonance with the system backbone.
+  parent_links:
+    bridge_index: 'seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml'
+    campaign_map: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml'
+    campaign_sigil: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml'
+  shadow_coupling: 'seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.yaml'
+lanterns:
+  - id: mq-sci-lantern-001
+    title: Metaquest Campaign Map
+    path: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml'
+    logistic_focus: 'Manuskript-, Outreach- und Endorsement-Cadenz.'
+    parity_links:
+      - seed/Manuskriptfinalisierung und Kampagnenstart.pdf
+      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+    evidence:
+      - seed/Finalize_Publish.txt
+      - seed/BreakPointAnalyse/WayToGo.txt
+    status: active
+  - id: mq-sci-lantern-002
+    title: Metaquest Campaign Compass
+    path: 'seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml'
+    logistic_focus: 'Sprint-orientierte Übersicht über Playlist, Governance und Codex-Hooks.'
+    parity_links:
+      - docs/metaquest_parity_brief.md
+      - seed/codexfeedback.md
+    evidence:
+      - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md
+    status: active
+  - id: mq-sci-lantern-003
+    title: Metaquest Campaign Sigil
+    path: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml'
+    logistic_focus: 'Meaning membrane translating campaign duties into parity + governance guardrails.'
+    parity_links:
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
+    evidence:
+      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml
+    status: active
+  - id: mq-sci-lantern-004
+    title: Metaquest Parity Brief
+    path: 'docs/metaquest_parity_brief.md'
+    logistic_focus: 'mq-parity-001…004 Telemetrie, Playlist, Endorsements, Codex.'
+    parity_links:
+      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+      - seed/codexfeedback.yaml
+    evidence:
+      - seed/Finalize_Publish.txt
+    status: active
+  - id: mq-sci-lantern-005
+    title: ArchivSucheUTAC Resonance Ledger
+    path: 'seed/ArchivSucheUTAC/'
+    logistic_focus: 'Archives + resonance lineage cited before campaign announcements.'
+    parity_links:
+      - docs/utac_status_alignment_v1.2.md#activation-gaps
+      - ZENODO_DESCRIPTION_v1.1.md
+    evidence:
+      - seed/BreakPointAnalyse/ReaktionWayToGo.txt
+    status: active
+activation_hooks:
+  - trigger: 'Manuscript checkpoint reached'
+    action: 'Update campaign map + sigil, cite codex entry, refresh bridge dashboard.'
+    guard: 'If codex lacks mq-sci reference within 24h → mq-sci-shadow-001.'
+  - trigger: 'Outreach asset or endorsement logged'
+    action: 'Record in campaign compass, parity brief, and ArchivSuche lineage; announce in codex.'
+    guard: 'Missing archive link triggers mq-sci-shadow-002.'
+null_model:
+  description: 'Null = Campaign launches without mirrored parity brief or archive lineage; outreach + endorsements desynchronise.'
+  detection:
+    - signal: 'Parity brief timestamp newer than campaign compass metadata.'
+      mitigation: 'Refresh compass + index, log codex follow-up referencing mq-sci vectors.'
+    - signal: 'Press asset lacks ArchivSucheUTAC citation.'
+      mitigation: 'Update asset + codex with archive lineage before publication.'

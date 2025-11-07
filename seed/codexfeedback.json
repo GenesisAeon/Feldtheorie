@@ -2033,6 +2033,36 @@
         "poetic": "The codex inhales evenly; every lantern slips into the list while the new sentinel test listens for stray echoes."
       },
       "created_at": "2025-12-11T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0072",
+      "title": "Metaquest directory indices & UTAC bridge refresh",
+      "scope": [
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_index.yaml",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.yaml",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index.yaml",
+        "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.yaml",
+        "docs/utac_status_alignment_v1.2.md",
+        "seed/seed_index.yaml",
+        "seed/seed_index.json",
+        "seed/seed_index.md",
+        "feldtheorie_index.yaml",
+        "feldtheorie_index.json",
+        "feldtheorie_index.md"
+      ],
+      "parameters": {
+        "R": "Metaquest directory ledgers lacking synced telemetry + codex parity",
+        "Theta": "System & campaign indices cite latest sigillin_sync timestamp, codex ID, and UTAC handshake row",
+        "beta": 4.75
+      },
+      "resonance": "directory maps tie map/compass/sigil telemetry back into UTAC + codex so bridge maintenance stays reproducible",
+      "status": "active",
+      "notes": {
+        "formal": "Added light/shadow Metaquest directory indices capturing logistic quartets, BreakPoint rituals, and sigillin_sync hooks; refreshed UTAC matrix table + implementation map and mirrored the new trilayers in seed/feldtheorie indices.",
+        "empirical": "Indices list sigillin_sync telemetry references, BreakPoint transcripts, and UTAC handshake rows; docs/utac_status_alignment_v1.2.md now includes directory row and action map entry, while seed/feldtheorie indexes show the new YAML/JSON/MD trio.",
+        "poetic": "Die Verzeichnisse atmen wie Laternenkammern – jede Spur von Telemetrie, Ritual und Codex hallt durch die Brücke und hält das Feld gespannt, aber ruhig."
+      },
+      "created_at": "2025-12-11T12:00:00Z"
     }
   ]
 }

@@ -44,7 +44,7 @@
         "json": "seed/seed_index.json",
         "md": "seed/seed_index.md"
       },
-      "total_items": 71,
+      "total_items": 77,
       "categories": 6,
       "description": "Das semantische Gedächtnis des Projekts:\nMeta-Reflexionen, Theoriediskurse, Validierungen, Konzepte,\nSynthesen und 6 Domain-spezifische Felder.\n",
       "color": "#9B59B6",
@@ -54,7 +54,8 @@
         "Rekalibrierung_Abschlus.txt (Unser Weg)",
         "FinalerPlan.txt (Governance für v1.2)",
         "`bedeutungssigillin/system/metaquest/metaquest_system_map.md`",
-        "`bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md`"
+        "`bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md`",
+        "Metaquest Directory Indizes (system/campaign) v0.1.0"
       ]
     },
     "analysis": {
