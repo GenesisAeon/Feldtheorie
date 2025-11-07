@@ -1,0 +1,60 @@
+{
+  "title": "Safety-Delay ΔAIC ledger",
+  "path": "data/safety_delay/safety_delay_delta_aic_20251107T211928Z.csv",
+  "category": "simulation-derived",
+  "source": "simulation.safety_delay_field / simulator.cli",
+  "description": "ΔAIC sweep for the UTAC safety-delay controller. Each row captures σ(β(R-Θ)) fits, logistic vs null falsification, and resonance diagnostics.",
+  "threshold_parameters": {
+    "R": "μ(t) control parameter",
+    "Theta": -0.027774399119258327,
+    "beta": 4.781013529670691,
+    "zeta_R": "Safety-delay impedance via control schedule"
+  },
+  "preprocessing": [
+    "Parameter sweep via simulator.cli safety-delay",
+    "ΔAIC computed against linear and constant null models"
+  ],
+  "null_models_tested": [
+    "linear",
+    "constant"
+  ],
+  "temporal": {
+    "created": "20251107T211928Z",
+    "modified": "20251107T211928Z",
+    "version": "1.0.0",
+    "change_count": 0
+  },
+  "summary_reference": "data/safety_delay/safety_delay_delta_aic_20251107T211928Z_summary.json",
+  "config": {
+    "theta": 0.0,
+    "noise_std": 0.01,
+    "mu0": 0.9,
+    "replicates": 3,
+    "control_strengths": [
+      0.25,
+      0.35,
+      0.45
+    ],
+    "drift_rates": [
+      0.008,
+      0.01,
+      0.012
+    ],
+    "beta_gains": [
+      0.8,
+      1.0,
+      1.2
+    ]
+  },
+  "resonance_summary": {
+    "count": 81,
+    "tau_delay_mean": 8.433333333333334,
+    "tau_delay_median": 8.349999999999994,
+    "delta_aic_linear_min": 1028.1142823385017,
+    "delta_aic_linear_median": 7017.8839010498705,
+    "r_squared_mean": 0.9804393571320645,
+    "control_energy_mean": 10.462499994124508,
+    "resonance_signal_mean": 0.07915571502977499,
+    "delta_aic_linear_gt10_ratio": 1.0
+  }
+}

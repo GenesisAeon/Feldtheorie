@@ -434,7 +434,7 @@
         "ΔAIC",
         "resonance"
       ],
-      "description": "Parameter-Sweeps für simulation/safety_delay_field.py.\nExportiert analysis/results/safety_delay_sweep_YYYYMMDDTHHMMSSZ.json mit τ_delay, β-Shift, Kontrollenergie und ΔAIC gegen lineare & konstante Nullmodelle.\nMeta-Resonanz (Kontrollzentralität × CREP) liefert Codex- und UTAC-Brückenwerte.\n"
+      "description": "Parameter-Sweeps für simulation/safety_delay_field.py.\nExportiert analysis/results/safety_delay_sweep_YYYYMMDDTHHMMSSZ.json (inkl. Replikate) mit τ_delay, β-Shift, Kontrollenergie und ΔAIC gegen lineare & konstante Nullmodelle.\nMeta-Resonanz (Kontrollzentralität × CREP) liefert Codex- und UTAC-Brückenwerte; simulator/cli safety-delay spiegelt die Runs nach data/safety_delay/.\n"
     },
     {
       "id": "analysis-lab-001",

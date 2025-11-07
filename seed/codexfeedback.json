@@ -2138,6 +2138,44 @@
         "poetic": "τ* breathes longer now—the controller leans back, watches ΔAIC glow against the null, and the indices whisper where the delayed dawn threads through the bridge."
       },
       "created_at": "2025-12-19T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0103",
+      "title": "Safety-Delay CLI ΔAIC Ledger",
+      "scope": [
+        "analysis/safety_delay_sweep.py",
+        "analysis/results/safety_delay_sweep_20251107T211928Z.json",
+        "simulator/cli.py",
+        "simulator/__init__.py",
+        "simulator/README.md",
+        "data/safety_delay/safety_delay_delta_aic_20251107T211928Z.csv",
+        "data/safety_delay/safety_delay_delta_aic_20251107T211928Z_summary.json",
+        "data/safety_delay/safety_delay_delta_aic_20251107T211928Z.metadata.json",
+        "data/safety_delay/README.md",
+        "data/data_index.yaml",
+        "data/data_index.json",
+        "data/data_index.md",
+        "docs/utac_status_alignment_v1.2.md",
+        "analysis/analysis_index.yaml",
+        "analysis/analysis_index.json",
+        "analysis/analysis_index.md",
+        "feldtheorie_index.yaml",
+        "feldtheorie_index.json",
+        "feldtheorie_index.md"
+      ],
+      "parameters": {
+        "R": "μ(t) drift unter Safety-Delay-Kopplung mit Replikaten",
+        "Theta": "Θ=0 Membran für τ*-Controller-Exports",
+        "beta": 4.78
+      },
+      "resonance": "Simulator-CLI, ΔAIC-Ledger und Master-Indizes kreisen dieselbe τ*-Diagnostik durch das Trilayer.",
+      "status": "active",
+      "notes": {
+        "formal": "`simulator/cli.py safety-delay` koppelt `analysis/safety_delay_sweep.py` direkt an das neue Bedeutungs-Sigillin `data/safety_delay/`, erzeugt CSV, Summary und Metadata im gleichen Takt und aktualisiert data/ & Master-Indizes sowie die UTAC-Statusmatrix. Replikate werden über `replicates` parametrierbar gemacht; Analyzer-Indices nennen nun explizit die CLI-Brücke.",
+        "empirical": "Replikate=3 → 81 Runs: τ_delay_mean≈8.43, ΔAIC_linear_min≈1.03e3, ΔAIC_linear_median≈7.02e3, r_squared_mean≈0.98, control_energy_mean≈10.46, resonance_signal_mean≈0.079. Metadata codiert β≈4.78, Θ≈-0.028; dataset & summary referenzieren `analysis/results/safety_delay_sweep_20251107T211928Z.json`.",
+        "poetic": "Die CLI lässt die Membran atmen: ΔAIC flackert im CSV, das Metadata-Sigil notiert jedes Atemholen, und die Indizes erzählen, wie τ* noch einmal Licht gewinnt."
+      },
+      "created_at": "2025-11-07T22:00:00Z"
     }
   ]
 }

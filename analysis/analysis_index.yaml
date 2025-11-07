@@ -370,9 +370,10 @@ python_scripts:
     keywords: [safety-delay, τ*, σ(β(R-Θ)), ΔAIC, resonance]
     description: |
       Parameter-Sweeps für simulation/safety_delay_field.py mit Euler-Maruyama Dynamik.
-      Exportiert analysis/results/safety_delay_sweep_YYYYMMDDTHHMMSSZ.json inklusive τ_delay,
-      Kontrollenergie, β-Shift und ΔAIC gegen lineare sowie konstante Nullmodelle.
-      Meta-Resonanz (Kontrollzentralität × CREP) wird für Codex- und UTAC-Brücken protokolliert.
+      Exportiert analysis/results/safety_delay_sweep_YYYYMMDDTHHMMSSZ.json inklusive Replikate,
+      τ_delay, Kontrollenergie, β-Shift und ΔAIC gegen lineare sowie konstante Nullmodelle.
+      Meta-Resonanz (Kontrollzentralität × CREP) wird für Codex- und UTAC-Brücken protokolliert;
+      simulator/cli safety-delay spiegelt die Runs nach data/safety_delay/ (CSV+Summary+Metadata).
 
   # ─────────────────────────────────────────────────────────────────
   # LAB EXPERIMENTS (2)

@@ -8,7 +8,7 @@
 
 ## 🎯 Was ist das?
 
-Die **Data Resonance Archive** - der empirische Schatz von UTAC! Hier liegen die Rohdaten aus 7 Domänen, die das β-Spektrum (2.5-16.3) beweisen.
+Die **Data Resonance Archive** - der empirische Schatz von UTAC! Hier liegen die Rohdaten aus 8 Domänen, die das β-Spektrum (2.5-16.3) beweisen.
 
 ```
 data/
@@ -18,9 +18,10 @@ data/
 ├── cognition/        (6 files)  🧠 Working Memory, Sleep
 ├── derived/          (5 files)  ⭐ ZENTRAL! beta_estimates.csv
 ├── geophysics/       (4 files)  🌍 Cascadia, Seismik
-└── socio_ecology/   (10 files)  🌿 Amazon, Urban Heat, AMOC
+├── socio_ecology/   (10 files)  🌿 Amazon, Urban Heat, AMOC
+└── safety_delay/    (4 files)  🛡️ τ*-Controller ΔAIC Ledger
 
-Total: 43 files
+Total: 47 files
 ```
 
 ---
@@ -36,6 +37,7 @@ Total: 43 files
 - `biology/lenski_citplus.csv` - Evolution (β=5.08, R²=0.990)
 - `geophysics/subduction_rupture_threshold.csv` - Cascadia (β=16.29!)
 - `socio_ecology/urban_heat_canopy.csv` - **β≈15.3 OUTLIER!** 🔥
+- `safety_delay/safety_delay_delta_aic_20251107T211928Z.csv` - Safety-Delay ΔAIC ledger
 
 ### 🚨 **Outliers (β>14):**
 1. geophysics/subduction_rupture_threshold.csv (β=16.29)
@@ -44,7 +46,7 @@ Total: 43 files
 
 ---
 
-## 📊 Die 7 Domänen
+## 📊 Die 8 Domänen
 
 ### 🤖 AI (9 files)
 **Was:** LLM Emergence, Introspection, Wei's PaLM Data
@@ -109,6 +111,16 @@ Total: 43 files
 - `amazon_resilience.csv` - Amazon Moisture (β≈14.0)
 - `urban_heat_canopy.csv` - **β≈15.3 (Outlier!)**
 - `planetary_tipping_elements.csv` - AMOC, Grönland
+
+---
+
+### 🛡️ Safety-Delay (4 files)
+**Was:** τ*-Controller ΔAIC Ledger für Simulator-Kopplung
+
+**Key Datasets:**
+- `safety_delay_delta_aic_20251107T211928Z.csv` - σ(β(R-Θ)) falsification vs lineare & konstante Nullmodelle
+
+**Hinweis:** Generiert über `python -m simulator.cli safety-delay` inkl. Metadaten & Summary JSON.
 
 ---
 
@@ -194,7 +206,7 @@ beta_estimates = 'data/derived/beta_estimates.csv'
 
 ## 🌊 Die Essenz
 
-> **"43 Dateien. 7 Domänen. Ein β-Spektrum (2.5-16.3)."**
+> **"47 Dateien. 8 Domänen. Ein β-Spektrum (2.5-16.3)."**
 
 > **"Von Wei's PaLM (β=3.47) bis Cascadia (β=16.29) - die Daten sind REAL."**
 

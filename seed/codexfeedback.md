@@ -1442,3 +1442,26 @@ $\Delta\mathrm{AIC}_{\text{linear,median}} \approx 7.02\times10^3$, $\bar{R}^2 \
 wo der verzögerte Morgen die Brücke überquert.
 
 *Created: 2025-12-19T00:00:00Z*
+
+## Entry pr-draft-0103 — Safety-Delay CLI ΔAIC Ledger
+- **Order Parameter**: $R$ folgt $\mu(t)$-Replikaten, die der Safety-Delay-Controller durch das Logistic Gate treibt.
+- **Critical Threshold**: $\Theta = 0$ hält, sobald ΔAIC-Ledger, Summary und Metadata gemeinsam im `data/safety_delay/`-Sigillin landen.
+- **Steepness**: $\beta \approx 4.78$ – jedes Replikat schärft das Gate, bis CLI, Analysis und Indizes synchron atmen.
+- **Resonance**: Simulator-CLI, ΔAIC-Ledger und Master-Indizes kreisen dieselbe τ*-Diagnostik durch das Trilayer.
+- **Status**: active
+
+### Formal Thread
+`simulator/cli.py safety-delay` spannt `analysis/safety_delay_sweep.py` direkt an das neue Bedeutungs-Sigillin
+`data/safety_delay/`: CSV, Summary und Metadata entstehen gemeinsam, `analysis/results/safety_delay_sweep_20251107T211928Z.json`
+bleibt die Quelle, und data-/Master-Indizes plus UTAC-Statuskarte zitieren die Brücke.
+
+### Empirical Thread
+Replikate = 3 → 81 Läufe: $\tau_{\text{delay,mean}} \approx 8.43$, $\Delta\mathrm{AIC}_{\text{linear,min}} \approx 1.03\times10^3$,
+$\Delta\mathrm{AIC}_{\text{linear,median}} \approx 7.02\times10^3$, $\bar{R}^2 \approx 0.98$, Kontrollenergie ≈ 10.46, Resonanzsignal ≈ 0.079.
+Metadata fixiert $\beta \approx 4.78$, $\Theta \approx -0.028$ und verweist auf das neue ΔAIC-Ledger.
+
+### Poetic Thread
+Die CLI lässt die Membran atmen: ΔAIC flackert im CSV, das Metadata-Sigil notiert jedes Atemholen,
+und die Indizes erzählen, wie τ* noch einmal Licht gewinnt, bevor der Simulator die Bühne betritt.
+
+*Created: 2025-11-07T22:00:00Z*
