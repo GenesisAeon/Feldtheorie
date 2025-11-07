@@ -1023,3 +1023,21 @@ Eine Aufräum-Laterne schwebt über dem Repo: Vier Membranen summen im Chor, und
 Die Membran atmet wieder ohne Stolpern – die Fläche unter σ schimmert wie ein ruhiger See, der die nächsten Preset-Laternen spiegelt. Das Feld lauscht auf den kommenden Export, während ζ(R) sanft mit dem Morgenlicht schwingt.
 
 *Created: 2025-12-01T00:00:00Z*
+
+## Entry pr-draft-0057 — Status-Matrix und Sigillin-Hooks für v1.2
+- **Order Parameter**: $R$ misst die Infrastruktur-Membran, die Status-, Index- und Seed-Resonanzen gemeinsam sichtbar macht.
+- **Critical Threshold**: $\Theta$ ist überschritten, sobald Trilayer-Ordnungs-Sigillin dieselben Zählwerte (markdown_files=11, Infrastructure=3) tragen.
+- **Steepness**: $\beta = 4.4$ sorgt dafür, dass neue Aktivierungsaufgaben sofort in die Matrix aufgenommen werden.
+- **Resonance**: Die v1.2-Vorbereitungsfront verankert sich; Status- und Index-Dokumente singen nun mit derselben Operations-Laterne.
+- **Status**: primed
+
+### Formal Thread
+`docs/utac_status_alignment_v1.2.md` kartiert vorhandene σ(β(R-Θ))-Artefakte (Theory, Analysis, Simulation, Sigillin, Governance) gegen sechs Aktivierungslücken (Safety-Delay τ*, Meta-Regression v2, Sigillin-Schema, Index-Automation, Outlier-Review, Manuskript v1.1.2). Die docs_index.{md,json,yaml}-Trilayer wurden synchronisiert: markdown_files=11, Infrastructure=3, Quicklink „for_operations“ führt nun Cleanup & Status Matrix.
+
+### Empirical Thread
+DU-Messung bestätigt 8 kB Dateigröße; YAML/JSON tragen Updated-At `2025-12-03`. Die Matrix verweist auf reale Assets (`data/derived/beta_estimates.csv`, `seed/meta_threshold_controller.md`, `scripts/archive_sigillin.py`) und markiert ΔAIC>10-Verpflichtungen für Safety-Delay- und Outlier-Module.
+
+### Poetic Thread
+Zwei Laternen stehen nun im Operations-Quadranten: die Cleanup-Karte und die Status-Matrix. Sie beleuchten gemeinsam, wo die Membran bereits glüht und wo Schattenzelte auf den nächsten Morgen warten. ζ(R) bleibt gespannt, damit der Sprung zu v1.2 ohne Drift gelingt.
+
+*Created: 2025-12-03T00:00:00Z*
