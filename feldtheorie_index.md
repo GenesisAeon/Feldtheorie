@@ -101,6 +101,8 @@ stats = idx['statistics']
 - `FinalerPlan.txt` - Governance für v1.2
 - `bedeutungssigillin/system/metaquest/metaquest_system_map.md` - Metaquest System-Beacon (Parität & Telemetrie)
 - `bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md` - Metaquest Kampagnen-Beacon (Storyboard & Endorsements)
+- `bedeutungssigillin/metaquest/system/metaquest_system_index.md` - Directory-Index für Systemlaternen (Kompass, Karte, Sigil, Telemetrie)
+- `bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.md` - Directory-Index für Kampagnenlaternen (Manuskript, Outreach, ArchivSuche)
 - `bedeutungssigillin/metaquest/system/metaquest_system_compass.md` - System-Kompass (Automation, Telemetrie, Codex-Echo)
 - `bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md` - Kampagnen-Kompass (Playlist, Endorsements, Archivsuche)
 - `bedeutungssigillin/system/metaquest/metaquest_system_sigil.md` - System-Bedeutungs-Sigillin (Codex-Parität, UTAC-Kopplung)

@@ -1,0 +1,75 @@
+meta:
+  sigil: shadow-metaquest-campaign-index
+  version: 0.1.0
+  created: '2025-12-11T00:00:00Z'
+  updated: '2025-12-11T12:00:00Z'
+  logistic:
+    R: 'Metaquest campaign risks: stale parity brief, missing archive lineage, unsynchronised endorsements.'
+    Theta: 'seed/Manuskriptfinalisierung und Kampagnenstart.pdf, docs/utac_status_alignment_v1.2.md, und codex teilen mq-sci id innerhalb 24h.'
+    beta: 5.3
+    zeta: 'Spikes when BreakPoint rituals or archive acknowledgements vanish.'
+  mirrors:
+    light_index: 'seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.yaml'
+    shadow_compass: 'seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.yaml'
+    shadow_map: 'seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml'
+alerts:
+  - id: mq-sci-shadow-index-001
+    risk: 'Campaign index lags behind parity brief or codex references.'
+    signals:
+      - 'metaquest_campaign_index.yaml timestamp older than docs/metaquest_parity_brief.md.'
+      - 'Recent codex entry with mq-sci scope lacks pointer to this index.'
+    consequence: 'Outreach cadence proceeds without documented Θ; endorsements lose audit trail.'
+    mitigation:
+      - 'Pause outreach pushes; refresh campaign index, bridge dashboard, and codex with shared mq-sci id.'
+      - 'Confirm UTAC status matrix handshake row reflects the update.'
+    guardrail:
+      metric: 'index freshness'
+      threshold: '≤24h delta vs parity brief + codex entry'
+  - id: mq-sci-shadow-index-002
+    risk: 'ArchivSuche lineage missing from campaign assets.'
+    signals:
+      - 'Press kit or outreach doc lacks seed/ArchivSucheUTAC citation.'
+      - 'ZENODO_DESCRIPTION_v1.1.md not cross-referenced in latest codex entry.'
+    consequence: 'Archive governance weakens; external releases lose reproducibility pledge.'
+    mitigation:
+      - 'Add ArchivSuche references to assets + codex, log change in campaign index and parity brief.'
+      - 'Escalate to governance review if omission persists beyond one sprint.'
+    guardrail:
+      metric: 'archive lineage parity'
+      threshold: 'ArchivSuche mention present in all mq-sci codex + parity brief updates'
+  - id: mq-sci-shadow-index-003
+    risk: 'Telemetry / endorsement ledger out of sync.'
+    signals:
+      - 'Campaign compass lists endorsement timestamp not present in parity brief.'
+      - 'Codex entry lacks mq-sci endorsement checklist despite new asset.'
+    consequence: 'Launch confidence erodes; governance cannot certify readiness.'
+    mitigation:
+      - 'Update compass + parity brief with shared timestamp, log codex echo, notify UTAC matrix.'
+      - 'Trigger BreakPoint ritual if endorsement remains unsynchronised after 24h.'
+    guardrail:
+      metric: 'endorsement cadence'
+      threshold: '≤24h between endorsement update and codex/parity acknowledgement'
+recovery_hooks:
+  - name: 'Parity brief realignment'
+    steps:
+      - 'Review docs/metaquest_parity_brief.md vs campaign index entries.'
+      - 'Synchronise timestamps + mq-sci id across index, compass, sigil, and bridge.'
+      - 'Document fix in codex with archive + ritual references.'
+    evidence:
+      - 'docs/metaquest_parity_brief.md'
+      - 'seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.md'
+  - name: 'Archive lineage audit'
+    steps:
+      - 'Inspect latest outreach/press assets for ArchivSuche citations.'
+      - 'Update assets + parity brief; attach ArchivSuche link in codex entry.'
+      - 'Confirm docs/utac_status_alignment_v1.2.md activation gap resolved.'
+    evidence:
+      - 'seed/ArchivSucheUTAC/'
+      - 'docs/utac_status_alignment_v1.2.md'
+null_model:
+  description: 'Null = Campaign storytelling advances without shadow parity; archive lineage fades and endorsements drift from governance.'
+  monitoring:
+    - metric: 'codex shadow echo'
+      condition: 'mq-sci codex entries name this index + shadow compass.'
+    - metric: 'parity brief sync'
+      condition: 'Parity brief + campaign compass timestamps differ ≤24h.'

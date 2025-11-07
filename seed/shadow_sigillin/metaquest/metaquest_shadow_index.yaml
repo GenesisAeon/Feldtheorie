@@ -10,6 +10,8 @@ meta:
     zeta: 'Spikes when BreakPoint rituals are skipped or telemetry reports fall silent.'
   coupling:
     lichtpfad: '../../bedeutungssigillin/metaquest/metaquest_meaning_index.yaml'
+    system_index: '../../bedeutungssigillin/metaquest/system/metaquest_system_index.yaml'
+    campaign_index: '../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.yaml'
     system_compass: '../../bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml'
     campaign_compass: '../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml'
     system_sigil: '../../bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml'
@@ -21,6 +23,7 @@ alerts:
       - 'docs/utac_status_alignment_v1.2.md#metaquest-handshake lacks latest bridge entry.'
       - 'metaquest_meaning_index.md timestamp older than 24h vs latest codex entry.'
       - 'Parity brief updated without bridge reference.'
+      - 'Directory indices (system/campaign) missing new mq-sys/mq-sci codex id.'
     consequence: 'Automation/outreach drift; Θ becomes invisible and β overshoots during launch prep.'
     mitigation:
       - 'Freeze Metaquest changes, refresh bridge dashboard, cite update in codex.'
@@ -35,6 +38,7 @@ alerts:
       - 'Metaquest campaign beacon references different codex id than bridge.'
       - '`scripts/sigillin_sync.py` report missing for >1 sprint.'
       - 'Compasses (`metaquest_system_compass.json`, `metaquest_campaign_compass.json`) out of sync with bridge timestamp.'
+      - 'Directory indices show older telemetry stamp than bridge dashboard.'
     consequence: 'Shadow handshake fails; readiness cannot be proven before outreach commitments.'
     mitigation:
       - 'Run `scripts/sigillin_sync.py` manually, update all trilayers with common timestamp + codex id.'

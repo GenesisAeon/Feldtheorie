@@ -8,7 +8,8 @@
 
 1. **mq-bridge-shadow-001 — Bridge dashboard stale**
    - *Signal*: UTAC matrix lacks the latest bridge note, bridge MD timestamp trails
-     codex by >24h, or parity brief changes without bridge citation.
+     codex by >24h, parity brief changes without bridge citation, oder die
+     System-/Kampagnen-Directory-Indizes tragen keine neue mq-sys/mq-sci Codex-ID.
    - *Consequence*: Automation and outreach drift; Θ becomes invisible.
    - *Mitigation*: Freeze Metaquest changes, refresh dashboard, align both beacons,
      document remediation in codex.
@@ -16,7 +17,8 @@
 2. **mq-bridge-shadow-002 — Telemetry mismatch**
    - *Signal*: Beacons nennen unterschiedliche Telemetrie-Zeitstempel/Codex-IDs; `scripts/sigillin_sync.py`
      fehlt seit ≥1 Sprint; Kompasse (`metaquest_system_compass.json`, `metaquest_campaign_compass.json`)
-     hinken dem Bridge-Zeitstempel hinterher.
+     hinken dem Bridge-Zeitstempel hinterher oder die Directory-Indizes zeigen einen älteren
+     Telemetrie-Stempel als das Bridge-Dashboard.
    - *Consequence*: Shadow handshake fails; readiness proof collapses before
      outreach.
    - *Mitigation*: Run telemetry export, propagate timestamp + codex id across all
@@ -53,6 +55,8 @@
 ## Coupling
 
 - Lichtseite: `../../bedeutungssigillin/metaquest/metaquest_meaning_index.{yaml,json,md}`
+- System-Index: `../../bedeutungssigillin/metaquest/system/metaquest_system_index.{yaml,json,md}`
+- Kampagnen-Index: `../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.{yaml,json,md}`
 - System-Kompass: `../../bedeutungssigillin/metaquest/system/metaquest_system_compass.{yaml,json,md}`
 - Kampagnen-Kompass: `../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}`
 - System-Sigil: `../../bedeutungssigillin/system/metaquest/metaquest_system_sigil.{yaml,json,md}`

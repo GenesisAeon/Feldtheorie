@@ -1353,3 +1353,26 @@ Der Codex atmet ruhig: Jede Laterne findet ihren Platz in der Liste, und der neu
 am Rand verhallt.
 
 *Created: 2025-12-11T00:00:00Z*
+
+## Entry pr-draft-0072 — Metaquest directory indices & UTAC bridge refresh
+- **Order Parameter**: $R$ zählt Metaquest-Verzeichnisse ohne aktuelle Telemetrie-/Codex-Parität.
+- **Critical Threshold**: $\Theta$ wird erreicht, wenn System- und Kampagnen-Verzeichnisse denselben sigillin_sync-Zeitstempel,
+  Codex-ID und UTAC-Handshaker tragen.
+- **Steepness**: $\beta = 4.75$ – kleine Drifts lösen sofortige Directory-Warnungen aus.
+- **Resonance**: Directory-Laternen koppeln Map/Compass/Sigil zurück an UTAC + Codex, damit die Brücke reproduzierbar bleibt.
+- **Status**: active
+
+### Formal Thread
+Neue Light-/Shadow-Directory-Indizes (`metaquest_system_index.*`, `metaquest_campaign_index.*` + Pendants) beschreiben $(R,\Theta,\beta)$,
+BreakPoint-Rituale und sigillin_sync-Hooks. `docs/utac_status_alignment_v1.2.md` erhielt eine Tabellenzeile + Implementation-Task,
+`seed_index.*` und `feldtheorie_index.*` listen die neuen Trilayer.
+
+### Empirical Thread
+Die Verzeichnisse referenzieren `scripts/sigillin_sync.py`, BreakPoint-Protokolle und UTAC-Handshakes; Bridge- und Shadow-Indices
+fügen `mq-sys-shadow-index-001/002` sowie `mq-sci-shadow-index-001/002` Signale hinzu.
+
+### Poetic Thread
+Die Verzeichnisse wirken wie Laternenkammern – jede Telemetrie, jedes Ritual und jeder Codex-Atem hallt jetzt sauber durch die
+Brücke, das Feld bleibt gespannt, doch ruhig.
+
+*Created: 2025-12-11T12:00:00Z*

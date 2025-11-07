@@ -459,6 +459,14 @@ active_important = [
     - Kampagnen-Bedeutungs-Sigillin v0.1.0: Manuskript-, Outreach-, Endorsement-Kopplung
 23. **shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.{yaml,json,md}**
     - Kampagnen-Schatten-Sigillin v0.1.0: Paritätsstille, Manuskript-Lag, Outreach-Drift
+24. **bedeutungssigillin/metaquest/system/metaquest_system_index.{yaml,json,md}**
+    - System-Directory-Index v0.1.0: Karte, Kompass, Sigil & Telemetrie-Harness inkl. Ritualreferenzen
+25. **shadow_sigillin/metaquest/system/metaquest_system_shadow_index.{yaml,json,md}**
+    - System-Shadow-Directory-Index v0.1.0: Überwacht Index-Frische, Telemetrie-Exports & BreakPoint-Echos
+26. **bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.{yaml,json,md}**
+    - Kampagnen-Directory-Index v0.1.0: Manuskript-Cadenz, Outreach-Assets, ArchivSuche & Paritätsbrief
+27. **shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.{yaml,json,md}**
+    - Kampagnen-Shadow-Directory-Index v0.1.0: ArchivSuche-Parität, Endorsement-Zeitstempel & Paritätsbrief-Sync
 
 ### Domain-Spezifisch (6 × ~4-5 Dokumente = ~28 Dokumente)
 Siehe oben unter "Domain-Spezifische Felder"

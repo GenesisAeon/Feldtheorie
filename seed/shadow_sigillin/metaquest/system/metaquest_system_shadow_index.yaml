@@ -1,0 +1,77 @@
+meta:
+  sigil: shadow-metaquest-system-index
+  version: 0.1.0
+  created: '2025-12-11T00:00:00Z'
+  updated: '2025-12-11T12:00:00Z'
+  logistic:
+    R: 'Untracked Metaquest system risks: stale compass, unsynchronised map, missing telemetry exports.'
+    Theta: 'docs/metaquest_parity_brief.md + seed/codexfeedback.* carry matching mq-sys references within 24h.'
+    beta: 5.2
+    zeta: 'Spikes when BreakPoint rituals lapse or sigillin_sync reports age beyond one sprint.'
+  mirrors:
+    light_index: 'seed/bedeutungssigillin/metaquest/system/metaquest_system_index.yaml'
+    shadow_compass: 'seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml'
+    shadow_map: 'seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml'
+alerts:
+  - id: mq-sys-shadow-index-001
+    risk: 'System directory index stale relative to parity brief or codex.'
+    signals:
+      - 'metaquest_system_index.yaml updated timestamp older than docs/metaquest_parity_brief.md.'
+      - 'Latest codex entry with mq-sys scope missing reference to this index.'
+    consequence: 'Automation teams lose Θ visibility; launch tasks proceed without documented parity.'
+    mitigation:
+      - 'Freeze automation changes until index refreshed.'
+      - 'Update index + bridge, cite remediation in codex with shared timestamp.'
+      - 'Confirm UTAC status matrix (Metaquest handshake) mirrors the update.'
+    guardrail:
+      metric: 'index freshness'
+      threshold: '≤24h delta vs parity brief + codex entry'
+  - id: mq-sys-shadow-index-002
+    risk: 'Telemetry exports missing from system lanterns.'
+    signals:
+      - 'scripts/sigillin_sync.py has no logged run within one sprint.'
+      - 'Compass/map list different telemetry timestamps than bridge dashboard.'
+      - 'tests/test_sigillin_sync.py flagged by CI or skipped.'
+    consequence: 'Codex cannot prove readiness; automation gating stalls or proceeds without evidence.'
+    mitigation:
+      - 'Execute scripts/sigillin_sync.py report/stamp, propagate timestamp across lanterns and codex.'
+      - 'Document run id in this index and UTAC matrix.'
+    guardrail:
+      metric: 'telemetry cadence'
+      threshold: '≤1 sprint between exports'
+  - id: mq-sys-shadow-index-003
+    risk: 'BreakPoint rituals absent from automation notes.'
+    signals:
+      - 'Index or lantern MD lacks WayToGo/ReaktionWayToGo citations for newest automation tasks.'
+      - 'codex entry referencing mq-sys omits BreakPoint acknowledgement.'
+    consequence: 'ζ(R) spikes during automation sprint; recovery scripts unclear.'
+    mitigation:
+      - 'Trigger BreakPoint ritual, attach transcript to codex, update index + compass with references.'
+      - 'Notify bridge dashboard to re-synchronise rituals across campaign lane.'
+    guardrail:
+      metric: 'ritual acknowledgement'
+      threshold: 'Every new mq-sys codex entry references WayToGo + ReaktionWayToGo'
+recovery_hooks:
+  - name: 'Shadow parity refresh'
+    steps:
+      - 'Review latest mq-sys codex entry and parity brief timestamps.'
+      - 'Update metaquest_system_index.* + compass/map with shared timestamp + codex id.'
+      - 'Log remediation in docs/utac_status_alignment_v1.2.md#metaquest-handshake.'
+    evidence:
+      - 'seed/bedeutungssigillin/metaquest/system/metaquest_system_index.md'
+      - 'docs/utac_status_alignment_v1.2.md'
+  - name: 'Telemetry audit'
+    steps:
+      - 'Run scripts/sigillin_sync.py stamp with mq-sync id.'
+      - 'Verify tests/test_sigillin_sync.py executed in CI or locally.'
+      - 'Archive report path in codex entry + this index.'
+    evidence:
+      - 'scripts/sigillin_sync.py'
+      - 'tests/test_sigillin_sync.py'
+null_model:
+  description: 'Null = Metaquest system lanterns evolve without shadow oversight; parity brief diverges, telemetry fades, and automation overshoots.'
+  monitoring:
+    - metric: 'codex echo parity'
+      condition: 'Every mq-sys codex entry lists this index and shadow compass.'
+    - metric: 'bridge timestamp match'
+      condition: 'Bridge dashboard + system lanterns share timestamp/codex id within one sprint.'

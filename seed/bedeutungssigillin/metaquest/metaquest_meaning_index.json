@@ -137,6 +137,34 @@
         ],
         "logistic_coupling": "Routes ΔAIC + endorsement metrics back into bridge dashboards and codex stories within one sprint."
       }
+    },
+    {
+      "id": "mq-bridge-010",
+      "title": "Metaquest System Directory Index",
+      "location": "system/metaquest_system_index.yaml",
+      "resonance": "Directory-level compass that exposes map/compass/sigil/telemetry couplings for automation stewards.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "system/metaquest_system_index.md",
+          "system/metaquest_system_index.json"
+        ],
+        "logistic_coupling": "Keeps mq-sys lanterns aligned with parity brief + codex; stale timestamps trigger shadow index audits."
+      }
+    },
+    {
+      "id": "mq-bridge-011",
+      "title": "Metaquest Campaign Directory Index",
+      "location": "wissenschaftsprojekt/metaquest_campaign_index.yaml",
+      "resonance": "Campaign orientation hub linking map, compass, sigil, parity brief, and ArchivSuche lineage.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "wissenschaftsprojekt/metaquest_campaign_index.md",
+          "wissenschaftsprojekt/metaquest_campaign_index.json"
+        ],
+        "logistic_coupling": "Synchronises manuscript checkpoints, outreach cadence, and archive echoes so bridge telemetry stays coherent."
+      }
     }
   ],
   "needed_resonances": [

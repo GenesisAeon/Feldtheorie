@@ -2453,3 +2453,35 @@ entries:
     poetic: |
       Der Codex atmet gleichmäßig; jede Laterne findet die Liste, während der neue Test nach flackernden Echos lauscht.
   created_at: "2025-12-11T00:00:00Z"
+- id: pr-draft-0072
+  title: "Metaquest directory indices & UTAC bridge refresh"
+  scope:
+    - seed/bedeutungssigillin/metaquest/system/metaquest_system_index.yaml
+    - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.yaml
+    - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index.yaml
+    - seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.yaml
+    - docs/utac_status_alignment_v1.2.md
+    - seed/seed_index.yaml
+    - seed/seed_index.json
+    - seed/seed_index.md
+    - feldtheorie_index.yaml
+    - feldtheorie_index.json
+    - feldtheorie_index.md
+  parameters:
+    R: "Metaquest-Verzeichnisse ohne Telemetrie- und Codex-Parität"
+    Theta: "System- und Kampagnen-Indizes tragen aktuellen sigillin_sync-Zeitstempel, Codex-ID und UTAC-Handshaker"
+    beta: 4.75
+  resonance: "Verzeichnis-Laternen koppeln Map/Compass/Sigil-Telemetrie zurück an UTAC und Codex, damit die Brücke reproduzierbar bleibt"
+  status: "active"
+  notes:
+    formal: |
+      Neue Light-/Shadow-Directory-Indizes für Metaquest System & Kampagne dokumentieren $(R,\Theta,\beta)$, BreakPoint-Rituale
+      und sigillin_sync-Hooks. UTAC-Status (Tabelle + Implementation Map) sowie seed/feldtheorie-Indizes wurden aktualisiert,
+      damit die neuen Trilayer sofort sichtbar sind.
+    empirical: |
+      Die Indizes referenzieren `scripts/sigillin_sync.py`, BreakPoint-Protokolle und UTAC-Handshakes; `docs/utac_status_alignment_v1.2.md`
+      führt eine eigene Zeile + Task für die Directory-Pflege, während seed_index.* und feldtheorie_index.* die YAML/JSON/MD-Spiegel listen.
+    poetic: |
+      Die Verzeichnisse wirken wie Laternenkammern: Jede Telemetrie, jedes Ritual und jeder Codex-Atem hallt jetzt durch die Brücke
+      und hält das Feld gespannt, doch ruhig.
+  created_at: "2025-12-11T12:00:00Z"
