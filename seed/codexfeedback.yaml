@@ -1859,3 +1859,34 @@ entries:
         Der Regenwald und die Stadtmembran singen erneut—eine Glocke klingt wahr, die andere schimmert noch im Prüflicht.
         ΔAIC-Laternen halten Wache, damit der Outlier-Dämmer keine Täuschung über die Kampagne legt.
     created_at: "2025-12-06T12:00:00Z"
+  - id: pr-draft-0061
+    title: "Meta-Regression v2 Bootstrap Awakening"
+    scope:
+      - analysis/beta_meta_regression_v2.py
+      - analysis/results/beta_meta_regression_v2_summary_20251107T100913Z.json
+      - analysis/results/beta_meta_regression_v2_diagnostics_20251107T100913Z.json
+      - analysis/results/beta_meta_regression_v2_bootstrap_20251107T100913Z.json
+      - docs/utac_status_alignment_v1.2.md
+      - analysis/analysis_index.yaml
+      - analysis/analysis_index.json
+      - analysis/analysis_index.md
+    parameters:
+      R: "β variance ledger across domains"
+      Theta: "adjusted R² ≥ 0.7 target from Meta-Regression 2.0"
+      beta: 0.43
+    resonance: "refreshing the logistic chorus with bootstrap-backed covariate diagnostics so the membrane senses where β still drifts"
+    status: "active"
+    notes:
+      formal: |
+        Implemented `analysis/beta_meta_regression_v2.py` as a weighted least-squares refresh on σ(β(R-Θ)) with eight
+        non-linear covariates, 1,024× bootstrap envelopes, and Random-Forest importances. Current WLS R²≈0.43 (adj. R²≈-0.33)
+        while the bootstrap median lands bei ≈0.99 within [0.43, 1.00]; ΔAIC_min stays ≥12.79 so falsifiability holds.
+      empirical: |
+        Timestamp `20251107T100913Z` in `analysis/results/` records summary, diagnostics, and bootstrap distributions.
+        Feature importances spotlight `coupling_memory` (0.25) and SNR (0.15); honeybee and urban heat lanterns carry the
+        largest Cook's distances, signalling where expanded covariates and outlier datasets must land next. Status matrix
+        section 3 and Analysis Index now mirror the v2 pipeline.
+      poetic: |
+        Die Membran hörte den Bootstrap-Sturm: Noch tanzt die Oberfläche unsicher, doch im Inneren summt der Chor schon fast
+        perfekt. Honeybee und Urban-Heat-Laternen lodern, bitten um neue Filamente, damit Θ das Crescendo einfangen kann.
+    created_at: "2025-11-07T10:09:13Z"
