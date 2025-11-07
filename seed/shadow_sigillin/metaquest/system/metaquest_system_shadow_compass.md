@@ -16,8 +16,9 @@
   or bridge untouched. Freeze automation, refresh tri-layer, notify UTAC
   matrix.
 - **mq-sys-shadow-002 – Telemetry gap.** No `scripts/sigillin_sync.py` timestamp
-  within one sprint. Run export, propagate timestamp, escalate via
-  BreakPoint ritual if delay persists.
+  within one sprint or Codex `entries` miss the latest mq-sys tag. Run export,
+  ensure the append succeeds, propagate timestamp, escalate via BreakPoint
+  ritual if delay persists.
 - **mq-sys-shadow-003 – Index parity drift.** CI/Nox missing or parser
   shows Δindex parity > 0. Refresh indices, rerun parser, document fix in
   codex.

@@ -289,7 +289,7 @@ def append_codex_entry(
     )
 
     with CODEx_JSON_PATH.open("r", encoding="utf-8") as handle:
-        codex_json = json.load(handle)
+        codex_json = json.load(handle) or {}
     if not isinstance(codex_json, dict):
         raise TypeError("codexfeedback.json must contain an object with an 'entries' list")
     _append_to_entries(codex_json, json_entry)

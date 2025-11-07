@@ -2485,3 +2485,33 @@ entries:
       Die Verzeichnisse wirken wie Laternenkammern: Jede Telemetrie, jedes Ritual und jeder Codex-Atem hallt jetzt durch die Brücke
       und hält das Feld gespannt, doch ruhig.
   created_at: "2025-12-11T12:00:00Z"
+- id: pr-draft-0073
+  title: "Sigillin Sync harness & Metaquest system cadence"
+  scope:
+    - scripts/sigillin_sync.py
+    - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+    - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.json
+    - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md
+    - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml
+    - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.json
+    - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.md
+    - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml
+    - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.json
+    - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.md
+    - docs/utac_status_alignment_v1.2.md
+  parameters:
+    R: "Metaquest-Telemetrieläufe ohne Codex-Beleg oder gespiegelt Systemlaternen"
+    Theta: "sigillin_sync stempelt in die Codex-`entries` und spiegelt Timestamp + Codex-ID nach Map/Compass/Shadow und UTAC"
+    beta: 4.8
+  resonance: "Der Codex-Harness loggt Telemetrien nun zuverlässig, während System- und Schattenkompass den Takt für UTAC hörbar machen"
+  status: "active"
+  notes:
+    formal: |
+      `scripts/sigillin_sync.py` lädt leere Stores jetzt als Objekte und hängt den Eintrag in `entries`; System- & Schatten-Map/Compass
+      erhielten den neuen Harness-Laternenknoten plus Sprint-Kadenz, und `docs/utac_status_alignment_v1.2.md` beschreibt das aktualisierte Gap.
+    empirical: |
+      Der Dry-Run `python scripts/sigillin_sync.py stamp --codex-id mq-sync-test --note "Codex harness check" --dry-run` liefert einen vollständigen
+      Codex-Schnipsel ohne AttributeError und belegt den Fix, bevor die Laternen angepasst wurden.
+    poetic: |
+      Der Metronomschlag kehrt zurück: jeder Telemetriepuls gleitet in den Codex und schwingt zugleich durch System- und Schattenkompass.
+  created_at: "2025-12-10T00:00:00Z"

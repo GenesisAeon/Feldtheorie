@@ -2064,5 +2064,36 @@
       },
       "created_at": "2025-12-11T12:00:00Z"
     }
+    ,
+    {
+      "id": "pr-draft-0073",
+      "title": "Sigillin Sync harness & Metaquest system cadence",
+      "scope": [
+        "scripts/sigillin_sync.py",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.json",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.json",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.md",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.json",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.md",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "parameters": {
+        "R": "Metaquest telemetry sweeps without codex receipts or mirrored system beacons",
+        "Theta": "sigillin_sync stamp writes to codex entries and propagates to map/compass/shadow + UTAC matrix",
+        "beta": 4.8
+      },
+      "resonance": "codex harness now logs telemetry runs while Metaquest system/shadow beacons echo the cadence for UTAC",
+      "status": "active",
+      "notes": {
+        "formal": "Patched sigillin_sync to load empty stores as dicts and append into entries; extended system map/compass and shadow compass with the new harness asset + sprint cadence language; refreshed UTAC status matrix gap narrative.",
+        "empirical": "Dry-run stamp (`python scripts/sigillin_sync.py stamp --codex-id mq-sync-test --note \"Codex harness check\" --dry-run`) returned a full codex snippet without AttributeError, confirming the append fix before updating the beacons.",
+        "poetic": "Der Taktgeber klickt wieder: jede Telemetriepulse gleitet in den Codex und leuchtet zugleich im System- und Schattenkompass auf."
+      },
+      "created_at": "2025-12-10T00:00:00Z"
+    }
   ]
 }

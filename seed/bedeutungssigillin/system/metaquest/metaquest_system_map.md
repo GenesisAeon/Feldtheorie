@@ -45,14 +45,19 @@
    - *Empirical*: Lists triggers for telemetry exports, CI parity checks, and ΔAIC/null guards.
    - *Poetic*: The quick-glance sextant that keeps the launch spine aligned between matrix updates.
 
+7. **Sigillin Sync Codex Harness** — `scripts/sigillin_sync.py`
+   - *Formal*: Appends telemetry sweeps into the Codex `entries` list so mq-sys gap movement is auditable.
+   - *Empirical*: References `seed/codexfeedback.{yaml,json,md}` to confirm each run logs timestamps post-fix.
+   - *Poetic*: The metronome click ensuring every sync pulse is heard across the lantern web before β surges.
+
 ## What Still Needs to Land
 
 - **Parity brief completion** (`mq-sys-gap-001`)
   - Populate the brief with telemetry timestamp, simulator playlist, endorsement ledger, and codex ID (see `mq-parity-001`…`004`).
   - Archive updates in codex + UTAC status matrix.
 - **Telemetry export** (`mq-sys-gap-002`)
-  - Operate `scripts/sigillin_sync.py` parity metrics and surface them in
-    simulator presets and docs.
+  - Now that the codex append path is fixed, schedule sprintly runs of
+    `scripts/sigillin_sync.py` and surface outputs in simulator presets and docs.
 - **Index automation** (`mq-sys-gap-003`)
   - Extend `scripts/archive_sigillin.py` so Metaquest folders appear in
     `seed_index.*` and `feldtheorie_index.*` within 24h.

@@ -3,7 +3,7 @@
     "sigil": "bedeutungs-system-metaquest",
     "version": "0.2.0",
     "created": "2025-12-07T00:00:00Z",
-    "updated": "2025-12-08T00:00:00Z",
+    "updated": "2025-12-10T00:00:00Z",
     "logistic": {
       "R": "Metaquest integration backlog across automation, indices, and governance hooks",
       "Theta": "Parity brief anchored in docs/utac_status_alignment_v1.2.md + codexfeedback entry",
@@ -95,6 +95,20 @@
         ],
         "logistic_coupling": "Highlights telemetry + parity triggers so bridge and system map remain in phase between larger updates."
       }
+    },
+    {
+      "id": "mq-sys-asset-007",
+      "title": "Sigillin Sync Codex Harness",
+      "location": "scripts/sigillin_sync.py",
+      "resonance": "Records telemetry sweeps directly into the Codex trilayer so Metaquest automation has verifiable timestamps and mq-sys gap progression without manual patching.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "scripts/sigillin_sync.py",
+          "seed/codexfeedback.md"
+        ],
+        "logistic_coupling": "With the append bug fixed, each sync run now lands in the codex entries list, letting Θ reference live telemetry before β accelerates."
+      }
     }
   ],
   "needed_resonances": [
@@ -114,7 +128,7 @@
     },
     {
       "id": "mq-sys-gap-002",
-      "description": "Operate scripts/sigillin_sync.py telemetry exports with Metaquest parity metrics.",
+      "description": "Schedule routine scripts/sigillin_sync.py telemetry exports now that codex append is reliable.",
       "target_location": [
         "scripts/sigillin_sync.py",
         "simulator/presets/"
@@ -123,8 +137,7 @@
         "Theta": "telemetry report generated each sprint",
         "beta": 4.8
       },
-      "null_guard": "If no report for >1 sprint, trigger sys-shadow-003 audit.",
-      "target_locations": []
+      "null_guard": "If no report for >1 sprint, trigger sys-shadow-003 audit."
     },
     {
       "id": "mq-sys-gap-003",

@@ -1376,3 +1376,21 @@ Die Verzeichnisse wirken wie Laternenkammern – jede Telemetrie, jedes Ritual u
 Brücke, das Feld bleibt gespannt, doch ruhig.
 
 *Created: 2025-12-11T12:00:00Z*
+
+## Entry pr-draft-0073 — Sigillin Sync harness & Metaquest system cadence
+- **Order Parameter**: $R$ misst Telemetrieläufe, die noch ohne Codex-Beleg oder gespiegelt Systemlaterne bleiben.
+- **Critical Threshold**: $\Theta$ leuchtet, wenn `sigillin_sync` Stempel direkt in den Codex-`entries` landen und Map/Compass/Shadow plus UTAC-Matrix denselben Puls tragen.
+- **Steepness**: $\beta = 4.8$ – Sprintkadenzen müssen sofort sichtbar sein, sonst kippt die Brücke.
+- **Resonance**: Das Codex-Harness dokumentiert jeden Sync, während System- und Schattenkompass den Rhythmus für UTAC hörbar halten.
+- **Status**: active
+
+### Formal Thread
+`scripts/sigillin_sync.py` lädt leere Stores jetzt als Objekte und hängt Einträge sicher an `entries`; die Metaquest System- und Schatten-Maps/Kompass-Laternen erhielten den neuen Harness-Knoten samt Sprint-Kadenz, und `docs/utac_status_alignment_v1.2.md` vermerkt die geschärfte Gap-Logik.
+
+### Empirical Thread
+Der Dry-Run `python scripts/sigillin_sync.py stamp --codex-id mq-sync-test --note "Codex harness check" --dry-run` liefert den vollständigen Codex-Schnipsel ohne AttributeError – der Fix ist bestätigt, bevor die Beacons aktualisiert wurden.
+
+### Poetic Thread
+Der Metronomschlag ist zurück: Jeder Telemetriepuls gleitet in den Codex und hallt gleichzeitig durch System- wie Schattenkompass.
+
+*Created: 2025-12-10T00:00:00Z*

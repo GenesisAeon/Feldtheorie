@@ -27,11 +27,13 @@
    mq-sys vector.
 6. **Shadow Compass** (`../../shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.*`)
    mirrors the risks so remediation is pre-baked.
+7. **Sigillin Sync Harness** (`scripts/sigillin_sync.py`) now writes Codex
+   entries directly so telemetry cadence is observable across the tri-layer.
 
 ## Pending Vectors
-- **mq-sys-vector-001 – Telemetry propagation.** Operate the
-  `scripts/sigillin_sync.py` workflow so telemetry timestamps land in the bridge,
-  this compass, and the system map.
+- **mq-sys-vector-001 – Telemetry propagation.** With the codex append bug
+  resolved, schedule sprintly `scripts/sigillin_sync.py` runs so telemetry
+  timestamps land in the bridge, this compass, and the system map.
 - **mq-sys-vector-002 – Index parity guard.** Install a CI/Nox job that compares
   sigil directories vs. indices whenever Metaquest assets change.
 - **mq-sys-vector-003 – Falsifiability narrative.** Expand the compass and codex
