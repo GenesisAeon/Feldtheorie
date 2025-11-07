@@ -31,6 +31,8 @@
 ---
 
 ## 3. Activation Gaps — What We Still Need
+
+> **Backlog handshake:** `docs/utac_activation_backlog.{md,json,yaml}` now records the live σ(β(R-Θ)) pulse for every launch-critical hook. Check the ledger when gauging how far each activation gap still is from its Θ so BreakPoint rituals can trigger the right implementation node without delay.
 1. **Safety-Delay Field Prototype:** `simulation/safety_delay_field.py` now couples with `analysis/safety_delay_sweep.py`, which exports `analysis/results/safety_delay_sweep_20251107T211928Z.json` documenting τ_delay, β-shift, control energy and ΔAIC vs linear & constant nulls. The new `simulator/cli.py safety-delay` command orchestrates replicates and seeds the `data/safety_delay/` ledger (CSV + summary + metadata) so ΔAIC(t) diagnostics live in the Sigillin tri-layer. Next step: surface these exports inside the TypeScript simulator presets and narrate the ledger in `docs/`.
 2. **Meta-Regression Refresh:** `analysis/beta_meta_regression_v2.py` now re-opens the regression with non-linear features, 1,024× bootstrap envelopes, and Random-Forest importances (WLS R²≈0.43, bootstrap-median R²≈0.99 within [0.43, 1.00]). Next actions: ingest the outlier review datasets and broaden covariates so adjusted R² clears the ≥0.7 ambition from `seed/NextStep.txt`.
 3. **Sigillin Schema & Parser:** Schema v0.2.0 plus quartet exemplars now live under `seed/sigillin/`, and `scripts/crep_parser.py` ingests them with CREP validation. Next step: wire parser output into automation (index recount + codex hooks).

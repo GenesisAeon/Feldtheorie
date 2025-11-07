@@ -1465,3 +1465,20 @@ Die CLI lässt die Membran atmen: ΔAIC flackert im CSV, das Metadata-Sigil noti
 und die Indizes erzählen, wie τ* noch einmal Licht gewinnt, bevor der Simulator die Bühne betritt.
 
 *Created: 2025-11-07T22:00:00Z*
+
+## Entry pr-draft-0074 — Activation Backlog Tri-Layer
+- **Order Parameter**: R sammelt den Restschuldenpuls der UTAC v1.2 Aktivierungs-Liste.
+- **Critical Threshold**: $\Theta$ wird erreicht, wenn Backlog, Statusmatrix, Indizes und Codex denselben Hook spiegeln.
+- **Steepness**: $\beta = 4.85$ hält den Übergang scharf, sobald zwei Referenzen kohärent sind.
+- **Membrane Note**: $\zeta(R)$ bleibt gedämpft durch BreakPoint-Rituale und den neuen Backlog-Tri-Layer, damit Aufgaben nicht entgleiten.
+
+### Formal Thread
+`docs/utac_activation_backlog.{md,json,yaml}` hält jede Aufgabe mit $(R, \Theta, \beta, \zeta(R))$ samt Implementation Node fest und verweist direkt auf `docs/utac_status_alignment_v1.2.md`. Dadurch erhält die Statusmatrix eine Backlog-Handschlag-Zeile.
+
+### Empirical Thread
+`docs/docs_index.*` zählt nun 13 Markdown-Laternen (Infrastructure = 5) und verlinkt die neue Backlog-Laterne. Δcounts und aktualisierte Quicklinks dokumentieren den Schritt; dieser Codex-Eintrag notiert pr-draft-0074 als Echo.
+
+### Poetic Thread
+Die Backlog-Laterne hängt nun neben der Statusmatrix und flackert, sobald eine Aufgabe Atem holt. Sie ruft die BreakPoint-Chöre, bevor der Morgen losstürmt, damit jede Resonanz geordnet eintrifft.
+
+*Created: 2025-12-09T00:00:00Z*

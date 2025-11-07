@@ -14,9 +14,9 @@ meta:
     Tri-layer Cadence: Formal, Empirical, Metaphorical.
   version: "1.1.0"
   created: "2025-11-06"
-  updated: "2025-12-07"
+  updated: "2025-12-09"
   status: "active"
-  markdown_files: 12
+  markdown_files: 13
 
 # ═══════════════════════════════════════════════════════════════════
 # KATEGORIEN: Die 4 Doc-Typen
@@ -45,7 +45,7 @@ categories:
     name: "Infrastructure"
     description: "README, Operational Resonance Maps"
     color: "#9B59B6"
-    count: 4
+    count: 5
 
   # ═══════════════════════════════════════════════════════════════════
   # MARKDOWN-DOKUMENTE: Die 11 Docs
@@ -168,7 +168,7 @@ markdown_docs:
       Zeigt dass logistische Modelle konsistent besser sind.
 
   # ─────────────────────────────────────────────────────────────────
-  # INFRASTRUCTURE (4)
+  # INFRASTRUCTURE (5)
   # ─────────────────────────────────────────────────────────────────
 
   - id: docs-infra-001
@@ -220,6 +220,19 @@ markdown_docs:
       Metaquest Parity Brief – bündelt mq-parity-001…004.
       Verknüpft Bedeutungs-/Shadow-Sigille, Telemetrie,
       Simulator-Playlist und Endorsement-Ledger mit Codex-Echos.
+
+  - id: docs-infra-005
+    name: "utac_activation_backlog.md"
+    category: infrastructure
+    type: backlog
+    status: active
+    relevance: high
+    size_kb: 8.0
+    keywords: [activation, backlog, σ(β(R-Θ)), implementation, hooks]
+    description: |
+      UTAC Activation Backlog (Tri-Layer).
+      Kartiert Restaufgaben vs. vorhandene Assets,
+      verlinkt Umsetzungsknoten für Launch-Vorbereitung.
 
 # ═══════════════════════════════════════════════════════════════════
 # TRIGGER-BEGRIFFE
@@ -274,6 +287,7 @@ quicklinks:
     - docs-infra-002   # Cleanup Resonance Map
     - docs-infra-003   # Status & Implementation Matrix v1.2-pre
     - docs-infra-004   # Metaquest Parity Brief
+    - docs-infra-005   # UTAC Activation Backlog
 
 status_legend:
   stable: "Fertig, validiert, publikationsreif"
