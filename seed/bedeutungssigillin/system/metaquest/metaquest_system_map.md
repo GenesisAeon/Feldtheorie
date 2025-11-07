@@ -49,6 +49,20 @@
 - **Parity ledger sync** (`mq-sys-gap-004`)
   - Ensure Bedeutungs-/Shadow sigils and indices cite the latest parity brief update.
   - Null guard: no codex reference or timestamp → escalate to system shadow guard.
+- **BreakPoint ritual mirror** (`mq-sys-gap-005`)
+  - Bind `seed/BreakPointAnalyse/WayToGo.txt`, `seed/BreakPointAnalyse/ReaktionWayToGo.txt`, and `seed/Finalize_Publish.txt`
+    into Metaquest automation notes so crisis drills stay paired with deployment scripts.
+  - Null guard: Metaquest plan lacking BreakPoint references escalates `mq-sys-shadow-003`.
+
+## Implementation Lattice
+
+| Gap ID | Implementation Sites | Primary Hook | Evidence Trail |
+| ------ | -------------------- | ------------ | -------------- |
+| `mq-sys-gap-001` | `docs/metaquest_parity_brief.md`, `docs/utac_status_alignment_v1.2.md`, `seed/codexfeedback.*` | Telemetry timestamp + codex echo | `seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.{yaml,json,md}` |
+| `mq-sys-gap-002` | `scripts/sigillin_sync.py`, `simulator/presets/`, `docs/utac_status_alignment_v1.2.md` | Parity telemetry export | `docs/metaquest_parity_brief.md`, codex entry |
+| `mq-sys-gap-003` | `scripts/archive_sigillin.py`, `seed/seed_index.*`, `feldtheorie_index.*` | Index refresh automation | `scripts/crep_parser.py`, codex echo |
+| `mq-sys-gap-004` | `docs/metaquest_parity_brief.md`, Metaquest light/shadow sigils, indices | Parity linkage audit | `docs/metaquest_parity_brief.md`, `seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.{yaml,json,md}` |
+| `mq-sys-gap-005` | `seed/BreakPointAnalyse/WayToGo.txt`, `seed/BreakPointAnalyse/ReaktionWayToGo.txt`, `seed/Finalize_Publish.txt`, Metaquest beacon | BreakPoint ritual infusion | `docs/utac_status_alignment_v1.2.md#implementation-map`, codex entry |
 
 ## Activation Hooks
 

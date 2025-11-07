@@ -69,6 +69,20 @@
 - **Parity ledger infusion** (`sys-gap-004`)
   - Keep `docs/metaquest_parity_brief.md` synchronised with Bedeutungs-/Shadow sigils and index refresh logs (`mq-parity-001`…`004`).
   - Null guard: parity brief missing telemetry timestamp → block release until codex entry updated.
+- **Metaquest ritual mirror** (`sys-gap-005`)
+  - Wire `seed/BreakPointAnalyse/WayToGo.txt`, `seed/BreakPointAnalyse/ReaktionWayToGo.txt`, and `seed/Finalize_Publish.txt`
+    into the Metaquest beacon so automation tasks inherit the same recovery choreography.
+  - Null guard: Metaquest roadmap lacking BreakPoint reference triggers `mq-sys-shadow-003`.
+
+## Implementation Lattice (Where to Act)
+
+| Gap ID | Implementation Sites | Primary Hook | Evidence Trail |
+| ------ | -------------------- | ------------ | -------------- |
+| `sys-gap-001` | `scripts/archive_sigillin.py`, `seed/seed_index.*`, `feldtheorie_index.*` | Parser diff monitor (`scripts/crep_parser.py`) | `docs/utac_status_alignment_v1.2.md#activation-gaps`, codex echo |
+| `sys-gap-002` | `.github/workflows/resonance-ci.yml` (planned), `scripts/codex_guard.py` | Git log ↔ codex delta check | `seed/codexfeedback.*`, `docs/utac_status_alignment_v1.2.md#implementation-map` |
+| `sys-gap-003` | `scripts/sigillin_sync.py`, `docs/utac_status_alignment_v1.2.md`, `docs/metaquest_parity_brief.md` | Telemetry parity export | `seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.{yaml,json,md}` |
+| `sys-gap-004` | `docs/metaquest_parity_brief.md`, `seed/bedeutungssigillin/system/metaquest/metaquest_system_map.*`, indices | Parity timestamp + codex linkage | `docs/metaquest_parity_brief.md`, codex entry |
+| `sys-gap-005` | `seed/BreakPointAnalyse/WayToGo.txt`, `seed/BreakPointAnalyse/ReaktionWayToGo.txt`, `seed/Finalize_Publish.txt`, Metaquest beacon | BreakPoint ritual infusion | `docs/utac_status_alignment_v1.2.md#implementation-map`, codex echo |
 
 ## Activation Hooks
 

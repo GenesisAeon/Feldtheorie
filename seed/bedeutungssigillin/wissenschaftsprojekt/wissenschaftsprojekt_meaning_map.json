@@ -179,6 +179,34 @@
         "beta": 4.5
       },
       "zeta_cue": "Campaign shadow guard triggers review when references fall behind."
+    },
+    {
+      "id": "sci-gap-007",
+      "description": "Embed BreakPoint response rituals into Metaquest beacon and manuscript readiness checklists.",
+      "anchors": [
+        "seed/BreakPointAnalyse/WayToGo.txt",
+        "seed/BreakPointAnalyse/ReaktionWayToGo.txt",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml"
+      ],
+      "threshold": {
+        "Theta": "Metaquest plan cites WayToGo + ReaktionWayToGo within latest codex entry",
+        "beta": 4.6
+      },
+      "zeta_cue": "If BreakPoint linkage missing, trigger mq-sci-shadow-002 escalation."
+    },
+    {
+      "id": "sci-gap-008",
+      "description": "Surface ArchivSucheUTAC insights in manuscript appendices and launch collateral to prove archival continuity.",
+      "anchors": [
+        "seed/ArchivSucheUTAC/",
+        "paper/appendices (planned)",
+        "ZENODO_DESCRIPTION_v1.1.md"
+      ],
+      "threshold": {
+        "Theta": "Archive references embedded in manuscript + parity brief before Zenodo upload",
+        "beta": 4.4
+      },
+      "zeta_cue": "Governance review halts release when archive lineage absent."
     }
   ],
   "activation_sequence": [
@@ -210,5 +238,111 @@
       "Publication narrative drifts from operational reality (ΔAIC guards missing).",
       "Campaign pacing ignores shadow signals leading to resonance overshoot."
     ]
-  }
+  },
+  "implementation_lattice": [
+    {
+      "gap_id": "sci-gap-001",
+      "implementation_sites": [
+        "simulation/safety_delay_field.py (planned)",
+        "analysis/",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "primary_hook": "τ*-field prototype with ΔAIC logging",
+      "evidence_trail": [
+        "seed/Sigillin_Neuro_Membran_Modell_Plan.txt",
+        "seed/codexfeedback.*"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-002",
+      "implementation_sites": [
+        "feldtheorie_index.*",
+        "docs/docs_index.*",
+        "docs/press_kit (planned)"
+      ],
+      "primary_hook": "Public-facing sigil index export",
+      "evidence_trail": [
+        "docs/utac_status_alignment_v1.2.md#activation-gaps",
+        "ZENODO_DESCRIPTION_v1.1.md"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-003",
+      "implementation_sites": [
+        "simulator/presets/",
+        "simulation/",
+        "outreach storyboard (planned)"
+      ],
+      "primary_hook": "Demo playlist and narrative sync",
+      "evidence_trail": [
+        "seed/Manuskriptfinalisierung und Kampagnenstart.pdf",
+        "seed/BreakPointAnalyse/WayToGo.txt"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-004",
+      "implementation_sites": [
+        "docs/metaquest_parity_brief.md",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml"
+      ],
+      "primary_hook": "Parity timestamp + codex cross-link",
+      "evidence_trail": [
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+        "seed/codexfeedback.*"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-005",
+      "implementation_sites": [
+        "analysis/beta_meta_regression_v2.py",
+        "paper/",
+        "docs/validation_report_v1.0.1.md"
+      ],
+      "primary_hook": "β table + narrative refresh",
+      "evidence_trail": [
+        "analysis/results/beta_meta_regression_v2_summary.json",
+        "seed/NextStep.txt"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-006",
+      "implementation_sites": [
+        "docs/metaquest_parity_brief.md",
+        "simulator/",
+        "outreach manuscripts (planned)"
+      ],
+      "primary_hook": "Parity citation audit",
+      "evidence_trail": [
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml",
+        "seed/codexfeedback.*"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-007",
+      "implementation_sites": [
+        "seed/BreakPointAnalyse/WayToGo.txt",
+        "seed/BreakPointAnalyse/ReaktionWayToGo.txt",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml"
+      ],
+      "primary_hook": "BreakPoint ritual infusion for Metaquest narrative",
+      "evidence_trail": [
+        "docs/utac_status_alignment_v1.2.md#implementation-map",
+        "docs/metaquest_parity_brief.md"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-008",
+      "implementation_sites": [
+        "seed/ArchivSucheUTAC/",
+        "paper/appendices (planned)",
+        "ZENODO_DESCRIPTION_v1.1.md"
+      ],
+      "primary_hook": "Archive continuity narrative in public release",
+      "evidence_trail": [
+        "seed/Finalize_Publish.txt",
+        "docs/utac_status_alignment_v1.2.md#resonant-inventory"
+      ]
+    }
+  ]
 }

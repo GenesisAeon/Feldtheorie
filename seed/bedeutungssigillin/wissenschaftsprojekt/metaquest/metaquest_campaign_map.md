@@ -39,6 +39,20 @@
 - **Parity echo across outreach** (`mq-sci-gap-004`)
   - Confirm all outreach/manuscript/simulator assets cite the latest parity brief revision.
   - Null guard: missing citation triggers campaign shadow guard escalation.
+- **Archive resonance broadcast** (`mq-sci-gap-005`)
+  - Thread `seed/ArchivSucheUTAC/` insights and Zenodo readiness notes into outreach + manuscript appendices
+    so the launch proves lineage.
+  - Null guard: absence of archive reference in parity brief or press kit triggers governance review.
+
+## Implementation Lattice
+
+| Gap ID | Implementation Sites | Primary Hook | Evidence Trail |
+| ------ | -------------------- | ------------ | -------------- |
+| `mq-sci-gap-001` | `docs/metaquest_parity_brief.md`, `docs/utac_status_alignment_v1.2.md`, `seed/codexfeedback.*` | Telemetry timestamp + codex echo | `seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.{yaml,json,md}` |
+| `mq-sci-gap-002` | `simulator/presets/`, `paper/`, outreach storyboard | Demo playlist ↔ manuscript sync | `seed/Manuskriptfinalisierung und Kampagnenstart.pdf`, BreakPoint rituals |
+| `mq-sci-gap-003` | `seed/EndorsementarXiv.pdf`, `ETHICS.md`, `docs/utac_status_alignment_v1.2.md` | Endorsement + ethics ledger refresh | `seed/Finalize_Publish.txt`, codex entry |
+| `mq-sci-gap-004` | `docs/metaquest_parity_brief.md`, `paper/`, `simulator/`, outreach assets | Parity citation audit | `docs/metaquest_parity_brief.md`, campaign shadow guard |
+| `mq-sci-gap-005` | `seed/ArchivSucheUTAC/`, `ZENODO_DESCRIPTION_v1.1.md`, manuscript appendices | Archive lineage broadcast | `docs/utac_status_alignment_v1.2.md#resonant-inventory`, codex echo |
 
 ## Activation Hooks
 
