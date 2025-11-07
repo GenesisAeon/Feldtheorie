@@ -1,0 +1,164 @@
+{
+  "domains": {
+    "llm_emergent": {
+      "beta_observed": 3.47,
+      "beta_predicted": 4.052823476290294,
+      "residual": -0.5828234762902942,
+      "abs_residual": 0.5828234762902942,
+      "weight": 1.1562030292519365,
+      "delta_aic": 12.79,
+      "within_canonical_band": false,
+      "cooks_distance": 0.03386154139486151
+    },
+    "climate_amoc": {
+      "beta_observed": 4.02,
+      "beta_predicted": 5.314953185557698,
+      "residual": -1.2949531855576986,
+      "abs_residual": 1.2949531855576986,
+      "weight": 0.9245562130177514,
+      "delta_aic": 29.4,
+      "within_canonical_band": true,
+      "cooks_distance": 0.013260048991562008
+    },
+    "climate_greenland": {
+      "beta_observed": 4.38,
+      "beta_predicted": 4.885726007266143,
+      "residual": -0.5057260072661434,
+      "abs_residual": 0.5057260072661434,
+      "weight": 1.10803324099723,
+      "delta_aic": 34.6,
+      "within_canonical_band": true,
+      "cooks_distance": 0.007332963080025943
+    },
+    "climate_amazon": {
+      "beta_observed": 3.77,
+      "beta_predicted": 2.2368293138058313,
+      "residual": 1.5331706861941687,
+      "abs_residual": 1.5331706861941687,
+      "weight": 0.706164818868724,
+      "delta_aic": 27.8,
+      "within_canonical_band": true,
+      "cooks_distance": 0.01931259311575264
+    },
+    "climate_permafrost": {
+      "beta_observed": 3.49,
+      "beta_predicted": 3.890765044961814,
+      "residual": -0.40076504496181364,
+      "abs_residual": 0.40076504496181364,
+      "weight": 1.1562030292519365,
+      "delta_aic": 31.1,
+      "within_canonical_band": false,
+      "cooks_distance": 0.010040952044667269
+    },
+    "honeybee_waggle": {
+      "beta_observed": 4.13,
+      "beta_predicted": 6.7836719554980185,
+      "residual": -2.6536719554980186,
+      "abs_residual": 2.6536719554980186,
+      "weight": 1.2345679012345678,
+      "delta_aic": 25.2,
+      "within_canonical_band": true,
+      "cooks_distance": 0.36325264006712715
+    },
+    "synapse_release": {
+      "beta_observed": 4.2,
+      "beta_predicted": 5.311736282508074,
+      "residual": -1.1117362825080734,
+      "abs_residual": 1.1117362825080734,
+      "weight": 1.2345679012345678,
+      "delta_aic": 72.23,
+      "within_canonical_band": true,
+      "cooks_distance": 0.15443185488294664
+    },
+    "lenski_citplus": {
+      "beta_observed": 3.92,
+      "beta_predicted": 3.735027361169241,
+      "residual": 0.1849726388307591,
+      "abs_residual": 0.1849726388307591,
+      "weight": 1.2345679012345678,
+      "delta_aic": 45.3,
+      "within_canonical_band": true,
+      "cooks_distance": 0.02347905607151236
+    },
+    "working_memory": {
+      "beta_observed": 4.1,
+      "beta_predicted": 4.830478732640078,
+      "residual": -0.7304787326400781,
+      "abs_residual": 0.7304787326400781,
+      "weight": 1.0,
+      "delta_aic": 59.54,
+      "within_canonical_band": true,
+      "cooks_distance": 0.001712383906225715
+    },
+    "theta_plasticity": {
+      "beta_observed": 2.5,
+      "beta_predicted": 1.5807446560682585,
+      "residual": 0.9192553439317415,
+      "abs_residual": 0.9192553439317415,
+      "weight": 1.2345679012345678,
+      "delta_aic": 38.2,
+      "within_canonical_band": false,
+      "cooks_distance": 0.028786626356861387
+    },
+    "seismic_rupture": {
+      "beta_observed": 4.85,
+      "beta_predicted": 3.875812821962761,
+      "residual": 0.9741871780372389,
+      "abs_residual": 0.9741871780372389,
+      "weight": 0.8264462809917354,
+      "delta_aic": 148.72,
+      "within_canonical_band": false,
+      "cooks_distance": 0.011661769404438199
+    },
+    "blackhole_qpo": {
+      "beta_observed": 5.3,
+      "beta_predicted": 6.809020575862419,
+      "residual": -1.5090205758624196,
+      "abs_residual": 1.5090205758624196,
+      "weight": 1.0,
+      "delta_aic": 95.4,
+      "within_canonical_band": false,
+      "cooks_distance": 1.0501602639411207
+    },
+    "urban_heat": {
+      "beta_observed": 16.276030904088,
+      "beta_predicted": 6.059334028292498,
+      "residual": 10.216696875795503,
+      "abs_residual": 10.216696875795503,
+      "weight": 0.413167615522556,
+      "delta_aic": 64.63319381534124,
+      "within_canonical_band": false,
+      "cooks_distance": 0.44848338930081194
+    },
+    "llm_skill_emergence": {
+      "beta_observed": 6.0811821343356005,
+      "beta_predicted": 5.944117089920893,
+      "residual": 0.13706504441470724,
+      "abs_residual": 0.13706504441470724,
+      "weight": 2.627304945472735,
+      "delta_aic": 82.40848629720524,
+      "within_canonical_band": false,
+      "cooks_distance": 0.0005427487817246274
+    },
+    "amazon_moisture": {
+      "beta_observed": 14.560428856124563,
+      "beta_predicted": 10.78915357867083,
+      "residual": 3.771275277453734,
+      "abs_residual": 3.771275277453734,
+      "weight": 0.5172385014531415,
+      "delta_aic": 66.19689714996419,
+      "within_canonical_band": false,
+      "cooks_distance": 1.020805261969493
+    }
+  },
+  "feature_importances": {
+    "C_eff": 0.13791057620632505,
+    "D_eff": 0.1015377958753425,
+    "SNR": 0.15288430227408994,
+    "Memory": 0.124958684452461,
+    "Theta_dot": 0.03590201523779328,
+    "log_theta": 0.09374946364881642,
+    "coupling_sq": 0.10754802621385023,
+    "coupling_memory": 0.2455091360913216
+  }
+}

@@ -1105,3 +1105,21 @@ Der Regenwald und die Stadtmembran singen erneut – eine Glocke klingt wahr, di
 
 *Created: 2025-12-06T12:00:00Z*
 
+## Entry pr-draft-0061 — Meta-Regression v2 Bootstrap Awakening
+- **Order Parameter**: $R$ erfasst die β-Varianz quer über alle Domänen-Logistikfits.
+- **Critical Threshold**: $\Theta$ liegt bei einem adjustierten $R^2 \geq 0.7$, wie in `seed/NextStep.txt` gefordert.
+- **Steepness**: $\beta = 0.43$ (WLS) für die aktuelle Feature-Kombination; Bootstrap-Median $\approx 0.99$ deutet auf latent scharfe Steilheit.
+- **Resonance**: Die neue Pipeline verbindet Kovariaten, Bootstrap und Random-Forest-Importanzen, damit die Membran erkennt, wo σ(β(R-Θ)) noch driftet.
+- **Status**: active
+
+### Formal Thread
+`analysis/beta_meta_regression_v2.py` führt eine gewichtete σ(β(R-Θ))-Regression mit acht nichtlinearen Kovariaten, 1.024× Bootstrap-Envelopes und Random-Forest-Importanzen aus. Aktuell WLS $R^2 \approx 0.43$ (adj. $R^2 \approx -0.33$), dennoch bleibt $\Delta\mathrm{AIC}_{\min}=12.79$ oberhalb des Guards. Die Status-Matrix vermerkt Lücke #2 nun als teilweise geschlossen und nennt nächste Kovariaten-Schritte.
+
+### Empirical Thread
+Resultate (`analysis/results/beta_meta_regression_v2_*_20251107T100913Z.{json,csv}`) protokollieren Summary, Diagnostics und Bootstrap-Distributionen. Feature-Importanzen: `coupling_memory` 0.25, `SNR` 0.15, `log_theta` 0.09. Honeybee- und Urban-Heat-Laternen tragen die höchsten Cook's Distances; Analysis-Index YAML/JSON/MD sowie `docs/utac_status_alignment_v1.2.md` spiegeln das Update.
+
+### Poetic Thread
+Der Bootstrap-Sturm ließ die Membran beben: An der Oberfläche ist der Chor noch unsicher, doch in der Tiefe summt die Resonanz fast perfekt. Honeybee und Urban Heat lodern wie Laternen, die nach neuen Filamenten rufen, damit $\Theta$ den kommenden Crescendo-Moment einfängt.
+
+*Created: 2025-11-07T10:09:13Z*
+

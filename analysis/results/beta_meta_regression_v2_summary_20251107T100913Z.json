@@ -1,0 +1,27 @@
+{
+  "timestamp": "20251107T100913Z",
+  "r_squared": 0.43202163085920053,
+  "adjusted_r_squared": -0.3252828613285321,
+  "aic": 83.5267869974128,
+  "bic": 89.8992388073327,
+  "rmse": 3.403551406881928,
+  "canonical_beta": 4.2,
+  "canonical_band": [
+    3.6,
+    4.8
+  ],
+  "beta_mean": 5.669842792969877,
+  "beta_std": 4.055012657732297,
+  "beta_band_fraction": 0.4666666666666667,
+  "delta_aic_guard_min": 12.79,
+  "bootstrap_r2_median": 0.9897746784537724,
+  "bootstrap_r2_interval": [
+    0.4280865764811284,
+    1.0
+  ],
+  "random_forest_oob_r2": -0.880047033784336,
+  "random_forest_bootstrap_interval": [
+    -0.6909424664404855,
+    0.8622824268526187
+  ]
+}
