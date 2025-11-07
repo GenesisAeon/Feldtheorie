@@ -78,11 +78,11 @@ indexed_directories:
       yaml: analysis/analysis_index.yaml
       json: analysis/analysis_index.json
       md: analysis/analysis_index.md
-    total_items: 32
+    total_items: 33
     categories: 5
     description: 'Python-Skripte für empirische Fits:
 
-      Domain-Fits (16), Batch-Processing (6), Labs (2), Utilities (3).
+      Domain-Fits (16), Batch-Processing (9), Labs (2), Utilities (3).
 
       Zentral: beta_drivers_meta_regression.py (UTAC v1.2!)
 

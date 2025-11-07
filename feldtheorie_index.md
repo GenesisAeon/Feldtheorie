@@ -112,15 +112,16 @@ stats = idx['statistics']
 ---
 
 ### 📊 **analysis/** - Analysis Resonance Bay
-**32 Python-Skripte** | **5 Kategorien**
+**33 Python-Skripte** | **5 Kategorien**
 📍 Index: `analysis/analysis_index.{yaml,json,md}`
 
-**Was:** Empirische Fits, Batch-Processing, Meta-Regression
+**Was:** Empirische Fits, Batch-Processing (jetzt 9 Pipelines), Meta-Regression
 
 **Highlights:**
 - `beta_drivers_meta_regression.py` - **KERN von v1.2!** (R²: 0.33 → >0.7)
 - `universality_test.py` - β-Universalität
 - `results/` Verzeichnis - Alle Fit-Outputs!
+- `safety_delay_sweep.py` - τ*-Sweep → ΔAIC vs. lineare/konstante Nullmodelle + Meta-Resonanz
 
 **Statistik:**
 - Median R²: 0.9981
