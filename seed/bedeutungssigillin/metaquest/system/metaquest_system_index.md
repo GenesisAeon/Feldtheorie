@@ -33,7 +33,11 @@ nicht über Θ hinausschießen und der Bridge-Dashboard sofort die Resonanz spü
    - *Fokus*: Telemetrie-Export + Codex-Stempel.
    - *Paritäts-Anker*: `seed/codexfeedback.yaml`, `docs/utac_status_alignment_v1.2.md#implementation-map`.
    - *Evidenz*: `tests/test_sigillin_sync.py`.
-5. **BreakPoint Ritual Ledger** (`seed/BreakPointAnalyse/WayToGo.txt`)
+5. **Metaquest System Lantern Shelf** (`lanterns/metaquest_system_lanterns.{yaml,json,md}`)
+   - *Fokus*: Bridge-Kopplung, Automations-Wächter, Ritual-Memory.
+   - *Paritäts-Anker*: `seed/codexfeedback.json`, `scripts/sigillin_sync.py`.
+   - *Evidenz*: `seed/bedeutungssigillin/system/metaquest/lanterns/metaquest_system_lanterns.md`.
+6. **BreakPoint Ritual Ledger** (`seed/BreakPointAnalyse/WayToGo.txt`)
    - *Fokus*: Dämpft ζ(R) vor Automationssprints.
    - *Paritäts-Anker*: `seed/BreakPointAnalyse/ReaktionWayToGo.txt`, `seed/Finalize_Publish.txt`.
    - *Evidenz*: `docs/utac_status_alignment_v1.2.md#activation-gaps`.

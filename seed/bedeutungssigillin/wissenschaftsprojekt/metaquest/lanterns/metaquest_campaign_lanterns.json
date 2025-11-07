@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "sigil": "bedeutungs-metaquest-campaign-lanterns",
+    "version": "0.1.0",
+    "created": "2025-12-18T00:00:00Z",
+    "updated": "2025-12-18T00:00:00Z",
+    "logistic": {
+      "R": "Outstanding launch + outreach cadence required for the wissenschaftsprojekt lane.",
+      "Theta": "Parity brief, BreakPoint echo, and codex entry stitched across bridge + UTAC matrix inside 24h.",
+      "beta": 4.85,
+      "zeta": "Stabilised when endorsement ledger + ritual transcripts keep cadence synced."
+    },
+    "resonance": "Lantern series narrating the campaign storyline so outreach, manuscript, and endorsements stay in phase."
+  },
+  "lanterns": [
+    {
+      "id": "mq-sci-lantern-a",
+      "title": "Manuscript Cadence Gate",
+      "description": "Track manuscript milestones and arXiv handoff so Metaquest remains parity aligned.",
+      "artefact": {
+        "path": "paper/",
+        "sibling": "docs/metaquest_parity_brief.md"
+      },
+      "logistics": {
+        "R": "Pending manuscript tasks referenced in Metaquest campaign map.",
+        "Theta": "Parity brief + UTAC matrix share timestamp + codex entry.",
+        "beta": 4.9,
+        "zeta": "BreakPoint rituals + press-kit rehearsals smooth cadence."
+      },
+      "evidence": [
+        "seed/Manuskriptfinalisierung und Kampagnenstart.pdf",
+        "docs/utac_status_alignment_v1.2.md#activation-gaps"
+      ],
+      "null_model": {
+        "description": "Manuscript changes decouple from Metaquest brief.",
+        "detection": [
+          "Parity brief lacks latest manuscript reference.",
+          "Codex entry missing mq-sci id."
+        ],
+        "recovery": [
+          "Update parity brief + codex with manuscript delta.",
+          "Notify shadow lantern mq-sci-shadow-lantern-a."
+        ]
+      }
+    },
+    {
+      "id": "mq-sci-lantern-b",
+      "title": "Outreach Resonance Loop",
+      "description": "Keep endorsements, press kit, and simulator playlist in sync with the Metaquest launch story.",
+      "artefact": {
+        "path": "docs/utac_status_alignment_v1.2.md#implementation-map",
+        "sibling": "docs/metaquest_parity_brief.md#mqp-arena"
+      },
+      "logistics": {
+        "R": "Endorsement + outreach backlog still open.",
+        "Theta": "Bridge dashboard + codex entry capture outreach timestamp.",
+        "beta": 4.7,
+        "zeta": "Telemetered rehearsals + BreakPoint echoes keep ζ(R) low."
+      },
+      "evidence": [
+        "docs/metaquest_parity_brief.md",
+        "seed/Finalize_Publish.txt"
+      ],
+      "null_model": {
+        "description": "Outreach assets drift from Metaquest storyline.",
+        "detection": [
+          "Bridge index missing outreach timestamp.",
+          "Press kit lacks codex reference."
+        ],
+        "recovery": [
+          "Rehearse press kit, log codex id, update bridge.",
+          "Escalate to mq-sci-shadow-index-002 if mismatch persists."
+        ]
+      }
+    },
+    {
+      "id": "mq-sci-lantern-c",
+      "title": "Telemetry + Codex Echo",
+      "description": "Capture sigillin_sync exports and codex feedback cadence for the campaign lane.",
+      "artefact": {
+        "path": "seed/codexfeedback.yaml",
+        "sibling": "scripts/sigillin_sync.py"
+      },
+      "logistics": {
+        "R": "Outstanding telemetry exports for campaign narratives.",
+        "Theta": "Codex entry with mq-sci status logged inside 24h.",
+        "beta": 4.8,
+        "zeta": "BreakPoint rituals damp when telemetry is current."
+      },
+      "evidence": [
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md",
+        "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.md"
+      ],
+      "null_model": {
+        "description": "Telemetry silent; campaign codex notes stale.",
+        "detection": [
+          "Latest codex entry lacking mq-sci scope older than one sprint.",
+          "Bridge dashboard missing campaign timestamp."
+        ],
+        "recovery": [
+          "Run sigillin_sync, record run id, refresh codex + bridge.",
+          "Inform shadow lantern to confirm parity."
+        ]
+      }
+    }
+  ]
+}

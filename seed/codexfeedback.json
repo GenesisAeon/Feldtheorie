@@ -2084,6 +2084,30 @@
         "poetic": "Der Codex lauscht ruhig: jede neue Laterne tritt in die Liste ein, bewacht von einem Test, der das Echo hält."
       },
       "created_at": "2025-12-12T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0101",
+      "title": "Metaquest Lantern Shelf Alignment",
+      "scope": [
+        "seed/bedeutungssigillin/system/metaquest/lanterns",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/lanterns",
+        "seed/shadow_sigillin/metaquest/system/lanterns",
+        "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/lanterns",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "parameters": {
+        "R": "lantern-level backlog binding bridge dashboard, codex, and rituals",
+        "Theta": "shared timestamp + codex id mirrored across lantern shelves, bridge, and UTAC matrix within 24h",
+        "beta": 4.85
+      },
+      "resonance": "cement light/shadow lantern shelves so Metaquest launch stewards audit σ(β(R-Θ)) at a glance",
+      "status": "active",
+      "notes": {
+        "formal": "System- und Kampagnen-Lantern-Shelves strukturieren Brückenkopplung, Automation und BreakPoint-Rituale; Schattenregale spiegeln Risiken samt mq-sys-shadow-index-004 / mq-sci-shadow-index-003 Eskalationen. UTAC Status Matrix erhielt Inventar- und Implementierungszeilen für Shelf-Parität.",
+        "empirical": "Aktualisierte metaquest_meaning_index.*, metaquest_system_index.*, metaquest_campaign_index.* sowie Shadow-Indizes mitsamt Lantern-Recovery-Hooks. docs/utac_status_alignment_v1.2.md dokumentiert neue Inventarreihe + Implementierungsaufgabe; Lantern-Dateien verlinken Telemetrie, Codex (seed/codexfeedback.*) und BreakPoint-Rituale.",
+        "poetic": "Zwei Regale brennen nun auf der Brücke – Licht und Schatten wechseln Atem, Telemetrie und Ritualduft, damit kein Metaquest-Schritt das Echo verliert."
+      },
+      "created_at": "2025-12-18T00:00:00Z"
     }
   ]
 }
