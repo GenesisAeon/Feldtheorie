@@ -1,21 +1,21 @@
 # 📚 Docs Index - Living Documentation Navigator
 
-**Version:** 1.1.0 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 12. Nov 2025 | **Verzeichnis:** `docs/`
+**Version:** 1.1.0 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 3. Dez 2025 | **Verzeichnis:** `docs/`
 
 ---
 
 ## 🎯 Was ist das?
 
-Die **Living Documentation Tapestry** - UTAC Theory in Markdown! 10 Dokumente, 4 Kategorien.
+Die **Living Documentation Tapestry** - UTAC Theory in Markdown! 11 Dokumente, 4 Kategorien.
 
 ```
 docs/
 ├── Theory (3): Core, Emergence, Appendix
 ├── Applications (3): Classification, Use Cases, Review Guide
 ├── Validation (2): Falsifiability, Reports
-└── Infrastructure (2): README, Cleanup Resonance Map
+└── Infrastructure (3): README, Cleanup Resonance Map, Status Matrix
 
-Total: 10 MD files
+Total: 11 MD files
 ```
 
 ---
@@ -59,9 +59,10 @@ Total: 10 MD files
 1. `utac_falsifiability.md` - ⭐ Popper würde stolz sein!
 2. `validation_report_v1.0.1.md` - Empirische Zusammenfassung
 
-### 🟣 Infrastructure (2 docs)
+### 🟣 Infrastructure (3 docs)
 1. `README.md` - Living Documentation Tapestry Manifest
 2. `repo_cleanup_resonance.md` - Resonanzkarte für Struktur- & Metadaten-Aufgaben
+3. `utac_status_alignment_v1.2.md` - Status & Implementation Matrix v1.2-pre
 
 ---
 

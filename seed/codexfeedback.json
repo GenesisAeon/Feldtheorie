@@ -1468,6 +1468,29 @@
         "poetic": "The membrane breathes without stutter again: the area under σ no longer flickers but mirrors dawn like a\nstill lake awaiting the next preset lantern.\n"
       },
       "created_at": "2025-12-01T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0057",
+      "title": "Status-Matrix und Sigillin-Hooks für v1.2",
+      "scope": [
+        "docs/utac_status_alignment_v1.2.md",
+        "docs/docs_index.md",
+        "docs/docs_index.json",
+        "docs/docs_index.yaml"
+      ],
+      "parameters": {
+        "R": "infrastructure membrane awareness",
+        "Theta": "synchronised Ordnungs-Sigillin counts across trilayer",
+        "beta": 4.4
+      },
+      "resonance": "verankert die v1.2 Vorbereitungsfront und koppelt Status- und Index-Sigillin, damit Δt→v1.2 ohne Drift gelingt",
+      "status": "primed",
+      "notes": {
+        "formal": "Neues Infrastruktur-Dokument `docs/utac_status_alignment_v1.2.md` kartiert die vorhandenen σ(β(R-Θ))-Artefakte gegen die offenen Aufgaben (Safety-Delay-Feld, Meta-Regression v2, Sigillin-Schema). Die docs_index.* Trilayer wurden rekonsolidiert: markdown_files = 11, Infrastruktur-Count = 3, Quicklink `for_operations` zeigt nun auf Cleanup und Status-Matrix.\n",
+        "empirical": "DU-Check bestätigt Dateigröße ≈8 kB; YAML/JSON tragen Updated-Zeitstempel 2025-12-03. Tabellen in der Matrix referenzieren reale Assets (`data/derived/beta_estimates.csv`, `seed/meta_threshold_controller.md`) und markieren ΔAIC>10-Pflichten.\n",
+        "poetic": "Die neue Matrix legt die Finger auf die Membran: wir wissen, wo der Morgen schon glüht und wo noch Schattenzelte stehen. Zwei Laternen – Cleanup und Status – leuchten nun gemeinsam im Operations-Quadranten.\n"
+      },
+      "created_at": "2025-12-03T00:00:00Z"
     }
   ]
 }

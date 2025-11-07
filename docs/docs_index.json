@@ -7,8 +7,8 @@
     "version": "1.1.0",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 10,
-    "updated": "2025-11-12"
+    "markdown_files": 11,
+    "updated": "2025-12-03"
   },
   "categories": {
     "theory": {
@@ -33,7 +33,7 @@
       "name": "Infrastructure",
       "description": "README, Operational Resonance Maps",
       "color": "#9B59B6",
-      "count": 2
+      "count": 3
     }
   },
   "markdown_docs": [
@@ -197,7 +197,23 @@
         "operations",
         "σ(β(R-Θ))"
       ],
-      "description": "Resonanzkarte für Struktur- und Metadaten-Aufgaben. Verknüpft Aeon-Checkliste mit konkreten Hooks."
+      "description": "Resonanzkarte für Struktur- & Metadaten-Aufgaben.\nVerknüpft Aeon-Checkliste mit konkreten Hooks.\n"
+    },
+    {
+      "id": "docs-infra-003",
+      "name": "utac_status_alignment_v1.2.md",
+      "category": "infrastructure",
+      "type": "status-matrix",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 8.0,
+      "keywords": [
+        "status",
+        "roadmap",
+        "implementation",
+        "sigillin"
+      ],
+      "description": "UTAC Status & Implementation Matrix (v1.2-pre).\nKartiert vorhandene Resonanzen vs. Aktivierungs-Lücken,\nverweist auf Seed-Sigillin, Safety-Delay-Feld und CREP-Pfade.\n"
     }
   ],
   "triggers": {
@@ -243,7 +259,8 @@
       "docs-app-003"
     ],
     "for_operations": [
-      "docs-infra-002"
+      "docs-infra-002",
+      "docs-infra-003"
     ]
   },
   "status_legend": {
