@@ -27,11 +27,17 @@
    - *Fallout*: Outreach promises cannot be reproduced; endorsements waver.
    - *Remedy*: Align storyboard, update manuscript + presets, log codex + BreakPoint notes.
 
+5. **sci-shadow-005 — Sentinel-Lücke Linum**
+   - *Signal*: `cases/kranich_linum_2025/` ohne aktuelle Assets, Paritätsbrief ohne Sentinel-Kapitel, kein `linum`-Datensatz in `data/socio_ecology/`.
+   - *Fallout*: Reale ökologische Schwellen bleiben unsichtbar; Kampagne verliert Glaubwürdigkeit und Reaktionsfähigkeit.
+   - *Remedy*: Daten + Notebook committen, Paritätsbrief ergänzen, Codexeintrag `linum-2025-*` anlegen, BreakPoint-Team informieren.
+
 ## Playbooks
 
 - τ* alert → freeze comms, integrate safety-delay summary, reopen codex entry.
 - Ritual alert → pause campaign, revisit BreakPoint texts, record path.
 - Parity alert → assemble Metaquest brief, update docs/codex, confirm simulator + manuscript cite it.
 - Storyboard alert → synchronise Metaquest storyboard, simulator presets, and manuscript figures; document fix in codex and metaquest shadow guard.
+- Sentinel alert → pflege Linum-Sigille, führe Daten/Analyse nach, erweitere Paritätsbrief, dokumentiere Codex- und Shadow-Status.
 
 Shadow whispers keep the campaign honest; heed them before the resonance breaks.

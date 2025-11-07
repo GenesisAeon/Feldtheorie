@@ -1683,3 +1683,50 @@ relevance_legend:
   references:
   - shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json
   - shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md
+- id: synth-016
+  title: Sentinel-Fall Kranich Linum 2025 (Trilayer)
+  path: bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - sentinel
+  - linum
+  - socio-ecology
+  description: |
+    Bedeutungs-Sigillin für das ökologische Hoch-β-Ereignis im Linumer Teichland.
+    Verknüpft Datenaufnahme, Analyseaufträge und Kampagnenkommunikation mit dem
+    UTAC-Netz.
+  temporal:
+    created: '2025-12-08T00:00:00Z'
+    modified: '2025-12-08T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.json
+  - bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md
+- id: synth-017
+  title: Sentinel-Shadow Kranich Linum 2025 (Trilayer)
+  path: shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - sentinel
+  - linum
+  - socio-ecology
+  description: |
+    Schatten-Sigillin für den Linum-Sentinel: überwacht Datenlücken, fehlende
+    Analysen und Kommunikationsdrift und löst BreakPoint-Reaktionen aus.
+  temporal:
+    created: '2025-12-08T00:00:00Z'
+    modified: '2025-12-08T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.json
+  - shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md

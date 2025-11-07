@@ -56,6 +56,19 @@ alerts:
     guard:
       metric: 'storyboard parity'
       threshold: 'true before outreach rehearsal'
+  - id: sci-shadow-005
+    risk: 'Sentinel-Fall Linum nicht in Daten/Analyse/Kommunikation gespiegelt.'
+    signal:
+      - 'cases/kranich_linum_2025/ ohne aktuelle Assets oder offene Gaps.'
+      - 'docs/metaquest_parity_brief.md ohne Sentinel-Abschnitt + Codex-ID.'
+      - 'data/socio_ecology/ enthält keinen linum-Datensatz.'
+    fallout: 'Reale Schwellen bleiben unsichtbar; Kampagne verliert Glaubwürdigkeit und Reaktionsfähigkeit.'
+    mitigation:
+      - 'Aktualisiere Bedeutungs- und Shadow-Sigillin, committe Datensatz + Notebook, verweise im Paritätsbrief.'
+      - 'Log codex entry (linum-2025-*) und informiere BreakPoint-Team.'
+    guard:
+      metric: 'sentinel_sync'
+      threshold: 'true vor Metaquest-Kommunikation'
 playbooks:
   - trigger: 'sci-shadow-001'
     response:
@@ -71,3 +84,7 @@ playbooks:
     response:
       - 'Synchronise Metaquest storyboard, simulator presets, and manuscript figures.'
       - 'Document fix in codex and metaquest shadow guard.'
+  - trigger: 'sci-shadow-005'
+    response:
+      - 'Pflege Linum-Sentinel-Sigille, committe Daten + Notebook, erweitere Paritätsbrief.'
+      - 'Codexeintrag schreiben und Shadow-Signale auf Status completed setzen.'
