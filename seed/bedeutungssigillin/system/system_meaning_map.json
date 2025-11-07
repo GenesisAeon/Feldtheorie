@@ -89,7 +89,7 @@
       "status": "active",
       "notes": {
         "evidence": [
-          "scripts/sigillin_sync.py (planned)",
+          "scripts/sigillin_sync.py",
           "seed/Finalize_Publish.txt"
         ],
         "logistic_coupling": "Keeps Θ visible by logging telemetry timestamps, endorsement readiness, and\ncodex cross-links whenever Metaquest assets change.\n"
@@ -148,7 +148,7 @@
       "id": "sys-gap-003",
       "description": "Shadow-handshake telemetry linking meaning/shadow sigils and Metaquest parity to automation logs.",
       "target_location": [
-        "scripts/sigillin_sync.py (planned)",
+        "scripts/sigillin_sync.py",
         "docs/utac_status_alignment_v1.2.md#implementation-map"
       ],
       "hooks": [
@@ -286,7 +286,7 @@
     {
       "gap_id": "sys-gap-003",
       "implementation_sites": [
-        "scripts/sigillin_sync.py (planned)",
+        "scripts/sigillin_sync.py",
         "docs/utac_status_alignment_v1.2.md",
         "docs/metaquest_parity_brief.md"
       ],

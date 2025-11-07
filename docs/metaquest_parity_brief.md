@@ -18,9 +18,10 @@
 
 ## 2. Outstanding Parity Gaps
 
-1. **Telemetry Summary Injection (`mq-parity-001`)**  
-   Export Metaquest parity metrics via the planned `scripts/sigillin_sync.py` and embed the
-   latest report date inside this brief + the status matrix.
+1. **Telemetry Summary Injection (`mq-parity-001`)**
+   Export Metaquest parity metrics via `scripts/sigillin_sync.py` and embed the latest
+   report date inside this brief + the status matrix. Store the JSON output under
+   `analysis/sigillin_sync/` for reproducibility.
 
 2. **Simulator Demonstration Alignment (`mq-parity-002`)**  
    Record the canonical simulator preset playlist and link to the parity brief so outreach
@@ -37,8 +38,9 @@
 
 ## 3. Activation Sequence
 
-1. **Before Launch Sprint:** Update Bedeutungs- and Shadow-sigils with telemetry timestamp,
-   then refresh indices via `scripts/archive_sigillin.py --refresh`.
+1. **Before Launch Sprint:** Run `scripts/sigillin_sync.py report` to capture telemetry,
+   update Bedeutungs- and Shadow-sigils with the timestamp, then refresh indices via
+   `scripts/archive_sigillin.py --refresh`.
 2. **Parity Review Ritual:** Reference this brief, the UTAC status matrix, and codex entry.
    Confirm simulator/storyboard handshake before green-lighting outreach tasks.
 3. **Post-Launch Echo:** Archive telemetry + parity notes in codex, attach ΔAIC or readiness

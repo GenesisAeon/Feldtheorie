@@ -274,7 +274,19 @@
         "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.md",
         "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml",
         "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json",
-        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md"
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.json",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.md",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.json",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.json",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.md",
+        "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.yaml",
+        "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.json",
+        "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.md"
       ],
       "meta_regression": [
         "analysis/beta_drivers_meta_regression.py",
@@ -367,7 +379,7 @@
       "md_files": 6
     },
     "project_size": {
-      "python_scripts": 42,
+      "python_scripts": 43,
       "markdown_docs": "~80",
       "data_files": 43
     }
@@ -376,8 +388,9 @@
     "utac_version": "1.1.2",
     "sigillin_version": "1.0.0",
     "trilayer_completion": "6 directories (seed, analysis, data, models, docs, archive)",
-    "maintenance_system": "Sigillin Archive System (archive_sigillin.py)",
-    "next_milestone": "UTAC v1.2 Meta-Regression (R² > 0.7)"
+    "maintenance_system": "Sigillin Archive System (archive_sigillin.py) + Telemetry Harness (sigillin_sync.py)",
+    "next_milestone": "UTAC v1.2 Meta-Regression (R² > 0.7)",
+    "telemetry_system": "Sigillin Sync Harness (scripts/sigillin_sync.py)"
   },
   "status": {
     "current_phase": "UTAC v1.1.2 deployed, v1.2 in planning",

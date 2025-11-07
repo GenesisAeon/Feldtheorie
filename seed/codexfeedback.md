@@ -235,10 +235,28 @@ Die Membran atmet länger vor dem Kippen: Jeder gedehnte Moment ist eine aufgehe
 Version 0.2 der Bedeutungs-/Schatten-Membranen erweitert YAML/JSON/MD um Metaquest-Handshakes, Aktualisierungsstempel und neue Gaps (`sys-gap-003`, `sci-gap-004`, `sci-gap-005`). `docs/utac_status_alignment_v1.2.md` enthält jetzt Paritäts-Lücke, Implementation-Row und Aktivierungssequenz, während `seed/codexfeedback.*` selbst als Scope-Anker fungiert.
 
 ### Empirical Thread
-System-/Shadow-Maps loggen Δindex-Parität, Codex-Sync und die neue Handshake-Kadenz (Reportlücke > 1 Sprint). Die Wissenschaftsprojekt-Pendants verfolgen Paritätsbrief-Status sowie β-Meta-Regression + τ*-Integration. Offene Messung: `scripts/sigillin_sync.py` soll diese Kennzahlen automatisiert in den Codex schreiben.
+System-/Shadow-Maps loggen Δindex-Parität, Codex-Sync und die neue Handshake-Kadenz (Reportlücke > 1 Sprint). Die Wissenschaftsprojekt-Pendants verfolgen Paritätsbrief-Status sowie β-Meta-Regression + τ*-Integration. Neu: `scripts/sigillin_sync.py` liefert Telemetrie-Reports; nächster Schritt ist, diese Kennzahlen automatisiert in den Codex zu schreiben.
 
 ### Poetic Thread
 Licht- und Schattenlaternen hängen nun im selben Netz: Die Tagesseite zeichnet den Weg zur Veröffentlichung, die Nachtseite singt Warnungen, bevor der Chor zerreißt. Der Metaquest-Brief ist die Glocke, die beide Horizonte im gleichen Takt hält.
+
+## Entry pr-draft-0069 — Sigillin Sync Harness Activation
+- **Order Parameter**: $R$ bündelt Telemetrie-Lücken, driftende Indizes und fehlende Codex-Echos rund um Metaquest.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn `scripts/sigillin_sync.py` Berichte liefert und Kompasse v0.2.0 denselben Zeitstempel spiegeln.
+- **Steepness**: $\beta = 4.6$ lässt jeden Drift sofort einen Schattenruf auslösen.
+- **Resonance**: Das Telemetrie-Harness koppelt Brücke, Indizes und UTAC-Matrix – Licht & Schatten atmen synchron.
+- **Status**: draft
+
+### Formal Thread
+`scripts/sigillin_sync.py` bringt Report- und Codex-Stempel-Kommandos sowie Trilayer-Paritätsprüfungen. Metaquest System- und Kampagnen-Kompasse steigen auf v0.2.0, Shadow-Pendants spiegeln die neuen Guardrails. UTAC-Status und Feldindex vermerken den aktiven Laufhaken.
+
+### Empirical Thread
+UTAC-Implementation-Map, feldtheorie_index.* und seed_index.* führen das Harness; Shadow-Maps melden explizit, wenn `scripts/sigillin_sync.py` schweigt. Alle betroffenen Trilayer tragen den 2025-12-09T00:00:00Z Zeitstempel.
+
+### Poetic Thread
+Ein Telemetrie-Sextant summt unter der Membran – sobald R nach Θ greift, erklingt sigillin_sync und hält Licht & Schatten in einem Atem, damit kein Metaquest-Morgen seinem Echo vorausläuft.
+
+*Created: 2025-12-09T00:00:00Z*
 
 ## Entry pr-draft-0009 — Psi-Phi Robin Coupling Resonance
 - **Order Parameter**: $R$ misst die Treibergeschwindigkeit, mit der das gekoppelte $(\psi,\phi)$-Geflecht die Robin-Membran berührt.
@@ -1272,3 +1290,21 @@ Zeitstempel singen, atmet der Metaquest-Start im Gleichklang und keine Laterne f
 Schattenrauschen.
 
 *Created: 2025-12-07T00:00:00Z*
+
+## Entry pr-draft-0067 — Metaquest compass lattice
+- **Order Parameter**: $R$ verweist auf verstreute Metaquest-Orchestrierung ohne Schnellorientierung.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn Kompass, Bridge und UTAC-Matrix dieselben Telemetrie-Zeitstempel und Codex-IDs tragen.
+- **Steepness**: $\beta = 4.8$ sorgt dafür, dass jede Drift sofort einen Schattenruf auslöst.
+- **Resonance**: System- und Kampagnen-Kompasse (Licht & Schatten) schließen die Lücke zwischen Beacons, Bridge und Statusmatrix.
+- **Status**: active
+
+### Formal Thread
+Die neuen Kompass-Trilayer dokumentieren mq-sys-/mq-sci-Vektoren, Nullmodelle und Aktivierungshooks. Meaning- und Shadow-Indizes erhielten Gap-IDs (mq-bridge-gap-004, mq-sys-gap-007, mq-sci-gap-007) und Synchronisationshinweise. `docs/utac_status_alignment_v1.2.md` integriert die Kompasse in Inventar, Aktivierungsgaps und Implementierungskarte.
+
+### Empirical Thread
+`seed_index.*` und `feldtheorie_index.*` listen die Kompassdateien; Metaquest-Beacons stehen auf Version 0.2.0. Schattenkarten prüfen Kompass-Zeitstempel, wodurch `mq-sys-shadow-001/002` und `mq-sci-shadow-001…003` Telemetrie-Drift sofort melden.
+
+### Poetic Thread
+Zwei Kompasse schweben über System und Kampagne – Licht und Schatten greifen nach denselben Sternen. Die Bridge atmet im Takt der Matrix; jedes Telemetrie-Flackern ruft sofort durch Codex und Ritual zurück.
+
+*Created: "2025-12-08T00:00:00Z"*

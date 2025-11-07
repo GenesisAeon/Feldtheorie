@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "generated_at": "2025-11-07T13:03:11.581265+00:00",
+    "roots": [
+      "/workspace/Feldtheorie/seed/bedeutungssigillin/metaquest",
+      "/workspace/Feldtheorie/seed/bedeutungssigillin/metaquest/system",
+      "/workspace/Feldtheorie/seed/bedeutungssigillin/metaquest/wissenschaftsprojekt",
+      "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest",
+      "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest/system",
+      "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest/wissenschaftsprojekt"
+    ],
+    "logistic": {
+      "R": "Count of trilayers inspected for parity.",
+      "Theta": "All tri-layer sigils share version + updated metadata.",
+      "beta": 4.6,
+      "zeta": "Damped when reports reach codexfeedback within one sprint."
+    },
+    "counts": {
+      "total": 6,
+      "with_gaps": 0
+    }
+  },
+  "trilayers": [
+    {
+      "path": "seed/bedeutungssigillin/metaquest/metaquest_meaning_index",
+      "sigil": "bedeutungs-metaquest-bridge",
+      "version": "0.2.0",
+      "updated": "2025-12-09T00:00:00Z",
+      "json_version": "0.2.0",
+      "json_updated": "2025-12-09T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass",
+      "sigil": "bedeutungs-metaquest-system-compass",
+      "version": "0.2.0",
+      "updated": "2025-12-09T00:00:00Z",
+      "json_version": "0.2.0",
+      "json_updated": "2025-12-09T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass",
+      "sigil": "bedeutungs-metaquest-campaign-compass",
+      "version": "0.2.0",
+      "updated": "2025-12-09T00:00:00Z",
+      "json_version": "0.2.0",
+      "json_updated": "2025-12-09T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/metaquest_shadow_index",
+      "sigil": "shadow-metaquest-bridge",
+      "version": "0.2.0",
+      "updated": "2025-12-09T00:00:00Z",
+      "json_version": "0.2.0",
+      "json_updated": "2025-12-09T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass",
+      "sigil": "shadow-metaquest-system-compass",
+      "version": "0.2.0",
+      "updated": "2025-12-09T00:00:00Z",
+      "json_version": "0.2.0",
+      "json_updated": "2025-12-09T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass",
+      "sigil": "shadow-metaquest-campaign-compass",
+      "version": "0.2.0",
+      "updated": "2025-12-09T00:00:00Z",
+      "json_version": "0.2.0",
+      "json_updated": "2025-12-09T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    }
+  ]
+}

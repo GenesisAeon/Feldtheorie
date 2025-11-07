@@ -1,8 +1,8 @@
 meta:
   sigil: bedeutungs-metaquest-bridge
-  version: 0.1.0
+  version: 0.2.0
   created: '2025-12-07T00:00:00Z'
-  updated: '2025-12-07T00:00:00Z'
+  updated: '2025-12-09T00:00:00Z'
   logistic:
     R: 'Cross-membrane Metaquest workload: automation hooks, outreach cadence, endorsements.'
     Theta: 'Parity handshake logged in docs/utac_status_alignment_v1.2.md and codexfeedback entries.'
@@ -74,6 +74,26 @@ existing_threads:
       logistic_coupling: |
         β≈5.0 ensures codex entries ignite as soon as Metaquest work touches Bedeutungs- or
         Shadow sigils.
+  - id: mq-bridge-006
+    title: Metaquest System Compass
+    location: '../system/metaquest_system_compass.yaml'
+    resonance: 'Quick system-side orientation that spotlights telemetry, index, and codex triggers between matrix refreshes.'
+    status: active
+    notes:
+      evidence:
+        - ../system/metaquest_system_compass.md
+      logistic_coupling: |
+        Provides mq-sys-vector hooks so the bridge sees automation drift early.
+  - id: mq-bridge-007
+    title: Metaquest Campaign Compass
+    location: '../wissenschaftsprojekt/metaquest/metaquest_campaign_compass.yaml'
+    resonance: 'Fast campaign-side orientation across manuscript cadence, outreach assets, and endorsement ledger.'
+    status: active
+    notes:
+      evidence:
+        - ../wissenschaftsprojekt/metaquest/metaquest_campaign_compass.md
+      logistic_coupling: |
+        Surfaces mq-sci vectors so bridge telemetry and codex echoes stay synchronized.
 needed_resonances:
   - id: mq-bridge-gap-001
     description: 'Sustain a single dashboard (table/section) aligning system + campaign checkpoints with parity status.'
@@ -87,7 +107,7 @@ needed_resonances:
   - id: mq-bridge-gap-002
     description: 'Automate telemetry export notes so both beacons record the same timestamp + codex id.'
     target_location:
-      - scripts/sigillin_sync.py (planned)
+      - scripts/sigillin_sync.py
       - metaquest_meaning_index.json
       - metaquest_system_map.yaml
       - metaquest_campaign_map.yaml
@@ -105,6 +125,16 @@ needed_resonances:
       Theta: 'indices refreshed with bridge paths within 24h'
       beta: 4.6
     null_guard: 'Parser diff showing missing bridge entry triggers sys-shadow-001.'
+  - id: mq-bridge-gap-004
+    description: 'Mirror system/campaign compass telemetry + codex ids into the bridge dashboard within the same day.'
+    target_location:
+      - system/metaquest_system_compass.yaml
+      - wissenschaftsprojekt/metaquest/metaquest_campaign_compass.yaml
+      - metaquest_meaning_index.yaml
+    threshold:
+      Theta: 'Compasses and bridge cite identical telemetry timestamp + codex id within 24h'
+      beta: 4.7
+    null_guard: 'Drift triggers mq-bridge-shadow-002 and compass-specific shadow alerts.'
 activation_hooks:
   - trigger: 'Metaquest parity brief updated'
     response: 'Update bridge trilayer, sync both beacons, refresh indices, log codex entry.'
@@ -128,7 +158,7 @@ implementation_lattice:
       - docs/metaquest_parity_brief.md
   - gap_id: mq-bridge-gap-002
     implementation_sites:
-      - scripts/sigillin_sync.py (planned)
+      - scripts/sigillin_sync.py
       - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
       - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
     primary_hook: 'Telemetry timestamp propagation'
@@ -144,3 +174,12 @@ implementation_lattice:
     evidence_trail:
       - docs/utac_status_alignment_v1.2.md#activation-gaps
       - seed/shadow_sigillin/system/system_shadow_map.yaml
+  - gap_id: mq-bridge-gap-004
+    implementation_sites:
+      - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml
+      - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml
+      - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+    primary_hook: 'Compass ↔ bridge telemetry sync'
+    evidence_trail:
+      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+      - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml

@@ -8,7 +8,7 @@
     "created": "2025-11-06",
     "status": "active",
     "python_files": 32,
-    "subdirectories": 4
+    "subdirectories": 5
   },
   "categories": {
     "fit_scripts": {
@@ -645,6 +645,19 @@
       ],
       "importance": "critical",
       "note": "Dieser Ordner ist ZENTRAL für UTAC!\nEnthält alle empirischen Beweise für β-Spektrum.\n"
+    },
+    "sigillin_sync": {
+      "name": "Sigillin Telemetry Reports",
+      "path": "sigillin_sync/",
+      "description": "JSON-Exports der Metaquest sigillin_sync Runs",
+      "files": [
+        "latest.json"
+      ],
+      "keywords": [
+        "telemetry",
+        "sigillin",
+        "metaquest"
+      ]
     }
   },
   "domains": {

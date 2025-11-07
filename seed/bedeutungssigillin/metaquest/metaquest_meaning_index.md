@@ -35,10 +35,20 @@
    - *Poetic*: The skylight where each lantern can confirm the shared dawn.
 
 5. **Codex Feedback Ledger** — `../codexfeedback.{yaml,json,md}`
-   - *Formal*: Tri-layer memory that encodes $(R, Θ, β)$ for every Metaquest
+   - *Formal*: Tri-layer memory, codifying $(R, Θ, β)$ for every Metaquest
      adjustment.
-   - *Empirical*: YAML/JSON capture timestamps and scope; MD narrates resonance.
-   - *Poetic*: The mycelial whisper reminding agents when the field moved.
+   - *Empirisch*: YAML/JSON halten Timestamps und Scope; MD erzählt die Resonanz.
+   - *Poetisch*: Das Myzel, das verrät, wann das Feld gezuckt hat.
+
+6. **Metaquest System Compass** — `../system/metaquest_system_compass.{yaml,json,md}`
+   - *Formal*: Schnellorientierung für Automation, Telemetrie und Index-Parität zwischen Matrix-Updates.
+   - *Empirisch*: mq-sys-Vektoren verweisen auf `scripts/sigillin_sync.py`, CI-Paritätswachen und ΔAIC-Nullmodelle.
+   - *Poetisch*: Das Sextant der Systemlaterne, das jeden Drift früh meldet.
+
+7. **Metaquest Campaign Compass** — `../wissenschaftsprojekt/metaquest/metaquest_campaign_compass.{yaml,json,md}`
+   - *Formal*: Kartografiert Manuskript-Cadenz, Outreach-Assets und Endorsement-Ledger für schnelle Entscheidungen.
+   - *Empirisch*: mq-sci-Vektoren koppeln Playlist, Governance und Archivsuche in codex + UTAC Matrix.
+   - *Poetisch*: Die Kampagnen-Stimmgabel, die den Chor zwischen den großen Updates stimmt.
 
 ## Needed Resonances
 
@@ -49,7 +59,7 @@
     `mq-sci-shadow-001`.
 
 - **mq-bridge-gap-002 — Telemetry timestamp propagation**
-  - Automate sigillin_sync exports so bridge + beacons cite the same telemetry
+  - Automate `scripts/sigillin_sync.py` exports so bridge + beacons cite the same telemetry
     timestamp and codex id every sprint.
   - Null guard: absence escalates to `sys-gap-003` and `mq-sys-shadow-002`.
 
@@ -57,6 +67,10 @@
   - Ensure `seed_index.*` and `feldtheorie_index.*` expose bridge assets alongside
     light/shadow sigils within 24h.
   - Null guard: parser diff missing bridge entries invokes `sys-shadow-001`.
+
+- **mq-bridge-gap-004 — Kompass ↔ Bridge Synchronisation**
+  - Spiegle Telemetrie-Zeitstempel und Codex-IDs aus den System- und Kampagnenkompassen unmittelbar in die Bridge.
+  - Null guard: Drift aktiviert `mq-bridge-shadow-002` sowie die Kompass-spezifischen Schattenalarme.
 
 ## Activation Hooks
 

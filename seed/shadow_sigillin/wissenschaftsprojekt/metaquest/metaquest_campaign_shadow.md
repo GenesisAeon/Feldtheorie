@@ -7,19 +7,18 @@
 ## Alerts
 
 1. **mq-sci-shadow-001 — Parity brief absent**
-   - *Signal*: `docs/metaquest_parity_brief.md` missing telemetry timestamp or codex id; status matrix silent for >1 sprint.
+   - *Signal*: `docs/metaquest_parity_brief.md` missing telemetry timestamp or codex id; Status-Matrix ohne aktuellen Eintrag; `metaquest_campaign_compass.yaml` älter als 24 h.
    - *Fallout*: Narrative loses parity; endorsements hesitate.
    - *Remedy*: Fill parity brief fields, link across system + shadow sigils, hold public
      messaging until Θ is restored.
 
 2. **mq-sci-shadow-002 — Storyboard drift**
-   - *Signal*: Simulator presets and manuscript figures diverge; outreach files missing
-     demo references.
+   - *Signal*: Simulator presets und Manuskriptfiguren divergieren; Outreach-Dateien ohne Demo-Referenzen; `metaquest_campaign_compass.json` ohne frischen mq-sci-vector-001 Eintrag.
    - *Fallout*: Promises cannot be reproduced; credibility drops.
    - *Remedy*: Synchronise storyboard, cite ΔAIC context, update codex and ritual notes.
 
 3. **mq-sci-shadow-003 — Governance stale**
-   - *Signal*: Endorsement ledger older than 14 days; ethics commitments unsynced.
+   - *Signal*: Endorsement ledger älter als 14 Tage; Ethics-Verweise fehlen; `metaquest_campaign_compass.md` ohne mq-sci-vector-002 Notiz.
    - *Fallout*: Governance out of tune; release blocked.
    - *Remedy*: Refresh endorsement file, confirm ethics cross-links, notify governance team.
 

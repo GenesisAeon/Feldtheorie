@@ -1,8 +1,8 @@
 meta:
   sigil: shadow-metaquest-bridge
-  version: 0.1.0
+  version: 0.2.0
   created: '2025-12-07T00:00:00Z'
-  updated: '2025-12-07T00:00:00Z'
+  updated: '2025-12-09T00:00:00Z'
   logistic:
     R: 'Unresolved Metaquest risks spanning automation + outreach (telemetry lapse, index drift, endorsement delay).'
     Theta: 'Parity brief published, codex echo logged, and bridge dashboard updated within 24h.'
@@ -10,6 +10,8 @@ meta:
     zeta: 'Spikes when BreakPoint rituals are skipped or telemetry reports fall silent.'
   coupling:
     lichtpfad: '../../bedeutungssigillin/metaquest/metaquest_meaning_index.yaml'
+    system_compass: '../../bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml'
+    campaign_compass: '../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml'
 alerts:
   - id: mq-bridge-shadow-001
     risk: 'Bridge dashboard stale; system and campaign checkpoints diverge.'
@@ -29,10 +31,11 @@ alerts:
     signal:
       - 'metaquest_system_map.yaml lacks latest telemetry timestamp noted in bridge JSON.'
       - 'Metaquest campaign beacon references different codex id than bridge.'
-      - 'sigillin_sync report missing for >1 sprint.'
+      - '`scripts/sigillin_sync.py` report missing for >1 sprint.'
+      - 'Compasses (`metaquest_system_compass.json`, `metaquest_campaign_compass.json`) out of sync with bridge timestamp.'
     consequence: 'Shadow handshake fails; readiness cannot be proven before outreach commitments.'
     mitigation:
-      - 'Run sigillin_sync manually, update all trilayers with common timestamp + codex id.'
+      - 'Run `scripts/sigillin_sync.py` manually, update all trilayers with common timestamp + codex id.'
       - 'Log remediation in codex and UTAC status matrix.'
     guard:
       metric: 'telemetry parity'

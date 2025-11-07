@@ -1,0 +1,83 @@
+meta:
+  sigil: shadow-metaquest-system-compass
+  version: 0.2.0
+  created: '2025-12-08T00:00:00Z'
+  updated: '2025-12-09T00:00:00Z'
+  logistic:
+    R: 'Automation drift, stale indices, telemetry silence in Metaquest system integration.'
+    Theta: 'Parity brief + codex echo + UTAC status matrix refreshed within 24h.'
+    beta: 5.2
+    zeta: 'Spikes when BreakPoint rituals lapse or CI guards fail.'
+mirrors:
+  lichtpfad: '../../../bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml'
+  bridge_index: '../../../bedeutungssigillin/metaquest/metaquest_meaning_index.yaml'
+alerts:
+  - id: mq-sys-shadow-001
+    risk: 'Parity brief updated without compass/bridge refresh.'
+    signals:
+      - 'docs/metaquest_parity_brief.md timestamp newer than compass updated field.'
+      - 'Latest codex entry references mq-parity but compass JSON lacks same timestamp.'
+    consequence: 'Automation proceeds without visible Θ; launch readiness unverifiable.'
+    remediation:
+      - 'Freeze Metaquest automation changes.'
+      - 'Update compass tri-layer + bridge index; log codex follow-up with timestamp.'
+      - 'Notify UTAC matrix (Metaquest handshake section).'
+    guardrail:
+      metric: 'compass parity timestamp'
+      threshold: '≤24h delta vs. parity brief and codex entry'
+  - id: mq-sys-shadow-002
+    risk: 'Telemetry export missing or stale.'
+    signals:
+      - 'No sigillin_sync timestamp recorded within one sprint.'
+      - 'Bridge JSON and compass YAML reference different telemetry ids.'
+      - 'scripts/archive_sigillin.py dry-run reveals outdated index counts.'
+    consequence: 'Cannot prove readiness; automation decisions lack evidence.'
+    remediation:
+      - 'Run telemetry export via scripts/sigillin_sync.py.'
+      - 'Record timestamp across compass, bridge, system map, and codex.'
+      - 'Escalate to BreakPoint ritual if delay >1 sprint.'
+    guardrail:
+      metric: 'telemetry cadence'
+      threshold: '≤1 sprint between exports'
+  - id: mq-sys-shadow-003
+    risk: 'Index parity drift after Metaquest changes.'
+    signals:
+      - 'CI/nox job fails or missing; indices omit Metaquest paths.'
+      - 'scripts/crep_parser.py diff highlights Δindex parity >0.'
+    consequence: 'Agents lose navigation; automation/backlog hidden.'
+    remediation:
+      - 'Run scripts/archive_sigillin.py --refresh and rerun parser.'
+      - 'Document fix in codex, cite UTAC matrix activation gap.'
+      - 'Add CI guard if absent.'
+    guardrail:
+      metric: 'Δindex parity'
+      threshold: '0 after remediation'
+  - id: mq-sys-shadow-004
+    risk: 'BreakPoint rituals skipped before automation sprint.'
+    signals:
+      - 'No reference to WayToGo/ReaktionWayToGo in latest codex entry.'
+      - 'Compass MD lacks ritual citation for new automation tasks.'
+    consequence: 'ζ(R) spikes; recovery plan unclear when automation fails.'
+    remediation:
+      - 'Pause automation tasks; execute BreakPoint ritual and record notes.'
+      - 'Update compass + codex with ritual timestamp and outcomes.'
+    guardrail:
+      metric: 'ritual acknowledgement'
+      threshold: 'Each automation entry cites WayToGo/ReaktionWayToGo'
+playbooks:
+  - trigger: 'mq-sys-shadow-001 fired'
+    response:
+      - 'Freeze automation tasks and refresh compass/bridge/codex.'
+      - 'Confirm UTAC matrix reflects new timestamp.'
+  - trigger: 'mq-sys-shadow-002 fired'
+    response:
+      - 'Run telemetry export, propagate timestamp, schedule follow-up review.'
+      - 'Escalate to campaign counterpart if outreach assets depend on telemetry.'
+  - trigger: 'mq-sys-shadow-003 fired'
+    response:
+      - 'Execute index refresh + parser; ensure CI guard active.'
+      - 'Document remediation in codex with Δindex parity evidence.'
+  - trigger: 'mq-sys-shadow-004 fired'
+    response:
+      - 'Perform BreakPoint ritual immediately; include transcripts in codex.'
+      - 'Reassess automation backlog before resuming work.'

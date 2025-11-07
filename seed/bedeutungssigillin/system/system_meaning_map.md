@@ -46,7 +46,7 @@
 
 6. **Metaquest Parity Brief** — `docs/metaquest_parity_brief.md`
    - *Formal*: Tracks `mq-parity-001`…`004` so automation, indices, and codex hooks activate together.
-   - *Empirical*: Draws telemetry expectations from `scripts/sigillin_sync.py` (planned) and endorsement ledgers (`seed/Finalize_Publish.txt`).
+   - *Empirical*: Draws telemetry expectations from `scripts/sigillin_sync.py` and endorsement ledgers (`seed/Finalize_Publish.txt`).
    - *Poetic*: The tuning fork ensuring every membrane hears the same launch tone.
 
 7. **Metaquest Bridge Index** — `../metaquest/metaquest_meaning_index.{yaml,json,md}`
@@ -67,7 +67,7 @@
   - `scripts/codex_guard.py` should compare git logs with ledger timestamps.
 
 - **Shadow handshake telemetry** (`sys-gap-003`)
-  - Build `scripts/sigillin_sync.py` so light/shadow + Metaquest folders emit parity
+  - Run `scripts/sigillin_sync.py` so light/shadow + Metaquest folders emit parity
     reports into the UTAC status matrix each release sprint.
   - Null guard: no report for a sprint → escalate to `sys-shadow-003` and
     `mq-sys-shadow-002`.

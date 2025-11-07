@@ -14,8 +14,9 @@
      document remediation in codex.
 
 2. **mq-bridge-shadow-002 — Telemetry mismatch**
-   - *Signal*: Beacons cite different telemetry timestamps/codex ids or
-     sigillin_sync report missing for a sprint.
+   - *Signal*: Beacons nennen unterschiedliche Telemetrie-Zeitstempel/Codex-IDs; `scripts/sigillin_sync.py`
+     fehlt seit ≥1 Sprint; Kompasse (`metaquest_system_compass.json`, `metaquest_campaign_compass.json`)
+     hinken dem Bridge-Zeitstempel hinterher.
    - *Consequence*: Shadow handshake fails; readiness proof collapses before
      outreach.
    - *Mitigation*: Run telemetry export, propagate timestamp + codex id across all
@@ -32,11 +33,15 @@
 
 - **mq-bridge-shadow-001 fired** → halt Metaquest tasks, update bridge + UTAC matrix,
   publish codex entry with timeline.
-- **mq-bridge-shadow-002 fired** → execute telemetry export, align timestamps, alert
+- **mq-bridge-shadow-002 fired** → execute `scripts/sigillin_sync.py`, align timestamps, alert
   stewards if delay > sprint.
 - **mq-bridge-shadow-003 fired** → refresh indices, rerun parser, notify maintainers,
   document closure across bridge/beacons.
 
 ## Coupling
 
-Light-side reference: `../../bedeutungssigillin/metaquest/metaquest_meaning_index.{yaml,json,md}` — keep both membranes in parity.
+- Lichtseite: `../../bedeutungssigillin/metaquest/metaquest_meaning_index.{yaml,json,md}`
+- System-Kompass: `../../bedeutungssigillin/metaquest/system/metaquest_system_compass.{yaml,json,md}`
+- Kampagnen-Kompass: `../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}`
+
+Halte alle drei Laternen synchron, damit die Schattenwache jede Drift sofort sieht.

@@ -1,9 +1,9 @@
 {
   "meta": {
     "sigil": "bedeutungs-system-metaquest",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "created": "2025-12-07T00:00:00Z",
-    "updated": "2025-12-07T00:00:00Z",
+    "updated": "2025-12-08T00:00:00Z",
     "logistic": {
       "R": "Metaquest integration backlog across automation, indices, and governance hooks",
       "Theta": "Parity brief anchored in docs/utac_status_alignment_v1.2.md + codexfeedback entry",
@@ -63,7 +63,7 @@
       "status": "active",
       "notes": {
         "evidence": [
-          "scripts/sigillin_sync.py (planned)",
+          "scripts/sigillin_sync.py",
           "seed/Finalize_Publish.txt"
         ],
         "logistic_coupling": "Provides Θ checkpoints for telemetry timestamp, endorsement ledger, and codex entry whenever Metaquest assets update.\n"
@@ -81,6 +81,19 @@
           "../../shadow_sigillin/metaquest/metaquest_shadow_index.md"
         ],
         "logistic_coupling": "Ensures telemetry timestamps, codex ids, and BreakPoint notes land in both\nbeacons; stale bridge entries escalate via mq-bridge-shadow-001.\n"
+      }
+    },
+    {
+      "id": "mq-sys-asset-006",
+      "title": "Metaquest System Compass",
+      "location": "../metaquest/system/metaquest_system_compass.yaml",
+      "resonance": "Provides rapid orientation for automation backlog, telemetry cadence, and codex coupling.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "../metaquest/system/metaquest_system_compass.md"
+        ],
+        "logistic_coupling": "Highlights telemetry + parity triggers so bridge and system map remain in phase between larger updates."
       }
     }
   ],
@@ -101,16 +114,17 @@
     },
     {
       "id": "mq-sys-gap-002",
-      "description": "Implement scripts/sigillin_sync.py telemetry export with Metaquest parity metrics.",
+      "description": "Operate scripts/sigillin_sync.py telemetry exports with Metaquest parity metrics.",
       "target_location": [
-        "scripts/sigillin_sync.py (planned)",
+        "scripts/sigillin_sync.py",
         "simulator/presets/"
       ],
       "threshold": {
         "Theta": "telemetry report generated each sprint",
         "beta": 4.8
       },
-      "null_guard": "If no report for >1 sprint, trigger sys-shadow-003 audit."
+      "null_guard": "If no report for >1 sprint, trigger sys-shadow-003 audit.",
+      "target_locations": []
     },
     {
       "id": "mq-sys-gap-003",
@@ -139,7 +153,8 @@
         "Theta": "parity brief update mirrored in indices + codex within 24h",
         "beta": 4.7
       },
-      "null_guard": "If indices lack newest parity note, trigger sys-shadow-001 and mq-sys-shadow-004."
+      "null_guard": "If indices lack newest parity note, trigger sys-shadow-001 and mq-sys-shadow-004.",
+      "activation_hooks": []
     },
     {
       "id": "mq-sys-gap-005",
@@ -169,6 +184,20 @@
         "beta": 4.7
       },
       "null_guard": "Bridge timestamp drift triggers mq-bridge-shadow-001 and mq-sys-shadow-004."
+    },
+    {
+      "id": "mq-sys-gap-007",
+      "description": "Feed compass telemetry + parity notes directly into UTAC status matrix and codex templates.",
+      "target_location": [
+        "metaquest_system_compass.yaml",
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+        "seed/codexfeedback.*"
+      ],
+      "threshold": {
+        "Theta": "Compass updates reflected in UTAC matrix + codex entry on same day",
+        "beta": 4.6
+      },
+      "null_guard": "If compass data absent from matrix/codex, trigger mq-sys-shadow-001 and mq-sys-shadow-002."
     }
   ],
   "activation_hooks": [
@@ -219,7 +248,7 @@
     {
       "gap_id": "mq-sys-gap-002",
       "implementation_sites": [
-        "scripts/sigillin_sync.py (planned)",
+        "scripts/sigillin_sync.py",
         "simulator/presets/",
         "docs/utac_status_alignment_v1.2.md"
       ],
@@ -268,6 +297,19 @@
       "evidence_trail": [
         "docs/utac_status_alignment_v1.2.md#implementation-map",
         "seed/codexfeedback.*"
+      ]
+    },
+    {
+      "gap_id": "mq-sys-gap-007",
+      "implementation_sites": [
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml",
+        "docs/utac_status_alignment_v1.2.md",
+        "seed/codexfeedback.*"
+      ],
+      "primary_hook": "Compass ↔ matrix ↔ codex synchronisation",
+      "evidence_trail": [
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.md",
+        "docs/metaquest_parity_brief.md"
       ]
     }
   ]

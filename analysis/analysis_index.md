@@ -31,6 +31,7 @@ analysis/
 ├── batch_configs/   (4 YAML/JSON Konfigurationen)
 ├── batch_runs/      (2 gespeicherte Batch-Runs)
 ├── reports/         (1 QPO-Summary)
+├── sigillin_sync/   (Telemetry-Exports aus `scripts/sigillin_sync.py`)
 └── results/         ⭐ ZENTRAL! Alle Fit-Ergebnisse (JSON)
 ```
 
@@ -128,6 +129,9 @@ analysis/
 
 #### **reports/** - Summaries
 - `qpo_membrane_summary.json` (Astrophysik)
+
+#### **sigillin_sync/** - Telemetry Harness Reports
+- `latest.json` – Metaquest sigillin_sync Statusbericht (JSON)
 
 #### **results/** ⭐ **ZENTRAL!**
 **DER wichtigste Ordner!**

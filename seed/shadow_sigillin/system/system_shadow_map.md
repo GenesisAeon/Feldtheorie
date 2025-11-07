@@ -17,10 +17,10 @@
    - *Remedy*: Block merge, update codex, reference this shadow map.
 
 3. **sys-shadow-003 — Telemetry gap**
-   - *Signal*: `docs/utac_status_alignment_v1.2.md` lacks parity report; `sigillin_sync`
-     missing; Metaquest beacon silent.
+   - *Signal*: `docs/utac_status_alignment_v1.2.md` lacks parity report; `scripts/sigillin_sync.py`
+     produced no recent log; Metaquest beacon silent.
    - *Fallout*: Light/shadow sigils decouple; β overshoots.
-   - *Remedy*: Trigger manual parity check, update codex, restore telemetry cadence.
+   - *Remedy*: Run the sigillin_sync harness, trigger manual parity check, update codex, restore telemetry cadence.
 
 4. **sys-shadow-004 — Metaquest parity missing**
    - *Signal*: `docs/metaquest_parity_brief.md` lacks telemetry timestamp or codex id; no parity reference in docs/codex for >1 sprint.
@@ -37,7 +37,7 @@
 - **Index drift** → Synchronise indices and notify docs maintainers if persistent.
 - **Codex silence** → Amend commit or follow-up PR with codex update, document cause in
   meaning map.
-- **Telemetry gap** → Run telemetry manually, align with Metaquest beacon + shadow guard,
+- **Telemetry gap** → Run `scripts/sigillin_sync.py`, align with Metaquest beacon + shadow guard,
   schedule automation repair.
 - **Parity missing** → Freeze Metaquest automation tasks, publish parity brief, update codex
 - **Bridge stale** → Update Bridge-Dashboard + System/Kampagnen-Beacons, Telemetrie angleichen, Fix in docs + Codex notieren.

@@ -101,6 +101,8 @@ stats = idx['statistics']
 - `FinalerPlan.txt` - Governance für v1.2
 - `bedeutungssigillin/system/metaquest/metaquest_system_map.md` - Metaquest System-Beacon (Parität & Telemetrie)
 - `bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md` - Metaquest Kampagnen-Beacon (Storyboard & Endorsements)
+- `bedeutungssigillin/metaquest/system/metaquest_system_compass.md` - System-Kompass (Automation, Telemetrie, Codex-Echo)
+- `bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md` - Kampagnen-Kompass (Playlist, Endorsements, Archivsuche)
 - `bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md` - Sentinel-Fall Linum (ökologische Hoch-β-Integration)
 
 ---
@@ -261,12 +263,17 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 
 ### **Metaquest-Parität sichern:**
 1. `docs/metaquest_parity_brief.md`
-2. `seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md`
-3. `seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml`
-4. `seed/bedeutungssigillin/metaquest/metaquest_meaning_index.{yaml,json,md}`
-5. `seed/shadow_sigillin/metaquest/metaquest_shadow_index.{yaml,json,md}`
-6. `seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.{yaml,json,md}`
-7. `seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.{yaml,json,md}`
+2. `seed/bedeutungssigillin/system/metaquest/metaquest_system_map.{yaml,json,md}`
+3. `seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.{yaml,json,md}`
+4. `seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.{yaml,json,md}`
+5. `seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.{yaml,json,md}`
+6. `seed/bedeutungssigillin/metaquest/metaquest_meaning_index.{yaml,json,md}`
+7. `seed/shadow_sigillin/metaquest/metaquest_shadow_index.{yaml,json,md}`
+8. `seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.{yaml,json,md}`
+9. `seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.{yaml,json,md}`
+10. `seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}`
+11. `seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.{yaml,json,md}`
+12. `scripts/sigillin_sync.py`
 
 ---
 
@@ -288,7 +295,8 @@ Sigillin Status:
   Version: 1.0.0
   Operational: Yes
   Coverage: 6 directories (including archive/ maintenance)
-  Maintenance: Active - Sigillin Archive System deployed
+  Maintenance: Active - Sigillin Archive System + Sigillin Sync Harness deployed
+  Telemetry: Sigillin Sync Harness (scripts/sigillin_sync.py)
 ```
 
 ---

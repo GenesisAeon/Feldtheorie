@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "sigil": "shadow-metaquest-campaign-compass",
+    "version": "0.2.0",
+    "created": "2025-12-08T00:00:00Z",
+    "updated": "2025-12-09T00:00:00Z",
+    "logistic": {
+      "R": "Outreach or manuscript blockers, endorsement delays, simulator demo drift.",
+      "Theta": "Parity brief + BreakPoint ritual echo + codex entry aligned within 24h.",
+      "beta": 5.0,
+      "zeta": "Grows when endorsements stall or rituals lapse."
+    }
+  },
+  "mirrors": {
+    "lichtpfad": "../../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml",
+    "bridge_index": "../../../bedeutungssigillin/metaquest/metaquest_meaning_index.yaml"
+  },
+  "alerts": [
+    {
+      "id": "mq-sci-shadow-001",
+      "risk": "Campaign milestone announced without parity brief citation.",
+      "signals": [
+        "Press/outreach doc missing mq-parity reference.",
+        "Codex entry lacks mq-sci gap linkage."
+      ],
+      "consequence": "External narrative outruns readiness; trust erodes.",
+      "remediation": [
+        "Pause announcements, amend assets with parity citation.",
+        "Update compass + bridge + codex with correction."
+      ],
+      "guardrail": {
+        "metric": "parity citation cadence",
+        "threshold": "All outward assets cite parity brief within 24h of publication"
+      }
+    },
+    {
+      "id": "mq-sci-shadow-002",
+      "risk": "Endorsement ledger stale.",
+      "signals": [
+        "ETHICS.md or EndorsementarXiv.pdf older than 14 days.",
+        "UTAC matrix missing latest endorsement timestamp."
+      ],
+      "consequence": "Governance approval unclear; launch must halt.",
+      "remediation": [
+        "Collect endorsement updates, log in ledger + codex.",
+        "Notify BreakPoint ritual for governance alignment."
+      ],
+      "guardrail": {
+        "metric": "endorsement latency",
+        "threshold": "≤14 days since last update"
+      }
+    },
+    {
+      "id": "mq-sci-shadow-003",
+      "risk": "Simulator/outreach storyboard drift.",
+      "signals": [
+        "Simulator playlist differs from parity brief entries.",
+        "Manuscript figure references missing from outreach deck."
+      ],
+      "consequence": "Narrative fractures; demo promises break.",
+      "remediation": [
+        "Synchronise playlist, manuscript references, and outreach assets.",
+        "Log codex entry with mq-sci-vector-001 status."
+      ],
+      "guardrail": {
+        "metric": "playlist parity",
+        "threshold": "Simulator + parity playlist identical after update"
+      }
+    },
+    {
+      "id": "mq-sci-shadow-004",
+      "risk": "ArchivSuche lineage omitted from press material.",
+      "signals": [
+        "Outreach doc lacks UTAC archive citation.",
+        "Parity brief appendix missing ArchivSuche reference."
+      ],
+      "consequence": "Provenance unclear; adoption hesitates.",
+      "remediation": [
+        "Amend assets with archive citation, update codex + bridge.",
+        "Record ΔAIC/null guard in UTAC matrix."
+      ],
+      "guardrail": {
+        "metric": "archive citation",
+        "threshold": "Every campaign asset cites ArchivSuche before launch"
+      }
+    }
+  ],
+  "playbooks": [
+    {
+      "trigger": "mq-sci-shadow-001 fired",
+      "response": [
+        "Freeze announcements, add parity citation, log codex correction.",
+        "Re-run BreakPoint ritual to reconfirm cadence."
+      ]
+    },
+    {
+      "trigger": "mq-sci-shadow-002 fired",
+      "response": [
+        "Collect endorsements, refresh ledger, update UTAC matrix.",
+        "Notify governance leads before resuming comms."
+      ]
+    },
+    {
+      "trigger": "mq-sci-shadow-003 fired",
+      "response": [
+        "Synchronise simulator playlist + outreach assets; cite update in codex.",
+        "Confirm manuscript figure references align."
+      ]
+    },
+    {
+      "trigger": "mq-sci-shadow-004 fired",
+      "response": [
+        "Append ArchivSuche citations, update parity brief appendix, inform bridge.",
+        "Archive remediation notes in codex with timestamps."
+      ]
+    }
+  ]
+}
