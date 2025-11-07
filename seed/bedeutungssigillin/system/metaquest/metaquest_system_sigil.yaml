@@ -1,0 +1,80 @@
+meta:
+  sigil: bedeutungs-metaquest-system-sigil
+  version: 0.1.0
+  created: '2025-12-10T00:00:00Z'
+  updated: '2025-12-10T00:00:00Z'
+  logistic:
+    R: 'Outstanding system automation + governance hooks required for the Metaquest launch lattice.'
+    Theta: 'Parity brief checkpoints mirrored in docs/utac_status_alignment_v1.2.md and codexfeedback within 24 h.'
+    beta: 4.8
+    zeta: 'Damped when BreakPoint rituals precede automation pushes and sigillin_sync telemetry is logged.'
+  resonance: >-
+    Captures the core Metaquest system meaning so agents can orient automation, indices, and
+    UTAC observatories without rereading every compass entry. Acts as the semantic lantern that
+    keeps σ(β(R-Θ)) visible for infrastructure stewards.
+  shadow_pair: '../../../shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml'
+anchors:
+  - id: mq-sys-anchor-001
+    title: UTAC Status Matrix alignment
+    location: docs/utac_status_alignment_v1.2.md#metaquest-handshake
+    mandate: 'Ensure Metaquest rows stay version-locked with system sigils and codex IDs.'
+  - id: mq-sys-anchor-002
+    title: Parity brief handshake
+    location: docs/metaquest_parity_brief.md
+    mandate: 'Θ declaration for telemetry, CI, demos, and endorsements.'
+  - id: mq-sys-anchor-003
+    title: Codex resonance thread
+    location: seed/codexfeedback.md
+    mandate: 'Log every Metaquest system intervention with mq-sys-gap references.'
+  - id: mq-sys-anchor-004
+    title: Compass coupling
+    location: metaquest_system_compass.yaml
+    mandate: 'Surface current vectors + activation hooks for automation guardians.'
+threads:
+  orientation:
+    summary: 'System-facing storyline for Metaquest automation readiness.'
+    references:
+      - metaquest_system_compass.md
+      - metaquest_system_map.md
+      - ../../metaquest/metaquest_meaning_index.md
+  evidence:
+    - docs/utac_status_alignment_v1.2.md#activation-gaps
+    - scripts/sigillin_sync.py
+    - scripts/archive_sigillin.py
+    - Makefile
+  checkpoints:
+    telemetry: 'Latest sigillin_sync timestamp logged across compass + bridge.'
+    parity: 'mq-parity-001…004 mirrored in codex + UTAC matrix.'
+    indices: 'seed_index.* and feldtheorie_index.* refreshed after Metaquest edits.'
+backlog_vectors:
+  - id: mq-sys-sigil-001
+    description: 'Embed sigillin_sync stamp workflow into CI so telemetry drift triggers alerts automatically.'
+    readiness:
+      Theta: 'CI job writes codex ID + timestamp to bridge within 1 sprint.'
+      beta: 4.7
+      null_guard: 'If telemetry absent → escalate via mq-sys-shadow-002.'
+  - id: mq-sys-sigil-002
+    description: 'Document ΔAIC/null comparisons for automation vs. baseline in UTAC matrix and compass.'
+    readiness:
+      Theta: 'Matrix row cites null model and ΔAIC for Metaquest automation.'
+      beta: 4.6
+      null_guard: 'Absence triggers mq-sys-shadow-003 (index drift risk).'
+  - id: mq-sys-sigil-003
+    description: 'Publish recovery protocol referencing BreakPoint rituals in compass + codex templates.'
+    readiness:
+      Theta: 'Every Metaquest system codex entry references WayToGo & ReaktionWayToGo scripts.'
+      beta: 4.5
+      null_guard: 'If missing, invoke mq-sys-shadow-004.'
+activation_hooks:
+  - trigger: 'Codex entry for Metaquest system work created'
+    response: 'Update sigil timestamps, confirm anchors still reference same codex ID, notify shadow pair.'
+  - trigger: 'UTAC matrix row updated'
+    response: 'Mirror fields in sigil + compass, append new backlog vector if guard missing.'
+  - trigger: 'CI/telemetry failure detected'
+    response: 'Consult shadow sigil, perform BreakPoint ritual, document remediation before resuming.'
+null_model:
+  description: 'Metaquest automation progresses without codex/UTAC parity; telemetry + indices drift quietly.'
+  fallout:
+    - 'Launch readiness cannot be certified because Θ is undocumented.'
+    - 'Shadow alerts fire late, forcing manual reconstruction of automation history.'
+    - 'σ(β(R-Θ)) saturates unpredictably, risking premature launch commitments.'

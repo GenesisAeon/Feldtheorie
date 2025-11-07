@@ -839,6 +839,100 @@ documents:
   - Lenski LTEE (2008) - Cit+ Evolution
   - Lenton (2008) - Climate Tipping Points
   - Verhulst (1838) - Logistische Funktion
+- id: synth-008
+  title: System Meaning Membrane (Trilayer)
+  path: bedeutungssigillin/system/system_meaning_map.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - system
+  - automation
+  - codex
+  - metaquest
+  description: |
+    Bedeutungs-Sigillin für die Systemebene: kartiert Makefile-, Codex-, Schema-
+    und Metaquest-Resonanzen; benennt Lücken (Index-Automatisierung, Codex-Guards,
+    Telemetrie).
+  temporal:
+    created: '2025-12-05T00:00:00Z'
+    modified: '2025-12-07T00:00:00Z'
+    version: '0.3.0'
+    change_count: 2
+  references:
+  - bedeutungssigillin/system/system_meaning_map.json
+  - bedeutungssigillin/system/system_meaning_map.md
+- id: synth-009
+  title: System Shadow Membrane (Trilayer)
+  path: shadow_sigillin/system/system_shadow_map.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - system
+  - codex-guard
+  - index-drift
+  - metaquest
+  description: |
+    Schatten-Sigillin zur Frühwarnung vor Index-Drift, fehlenden Codex-Updates
+    und Metaquest-Paritätslücken; enthält Playbooks und Monitoring-Metriken.
+  temporal:
+    created: '2025-12-05T00:00:00Z'
+    modified: '2025-12-07T00:00:00Z'
+    version: '0.3.0'
+    change_count: 2
+  references:
+  - shadow_sigillin/system/system_shadow_map.json
+  - shadow_sigillin/system/system_shadow_map.md
+- id: synth-010
+  title: Wissenschaftsprojekt Meaning Membrane (Trilayer)
+  path: bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - kampagne
+  - manuskript
+  - metaquest
+  description: |
+    Bedeutungs-Sigillin für Manuskript- und Kampagnenarbeit; verknüpft
+    BreakPoint-Rituale, Status-Matrix, Metaquest-Beacon und offene Resonanzlücken.
+  temporal:
+    created: '2025-12-05T00:00:00Z'
+    modified: '2025-12-07T00:00:00Z'
+    version: '0.3.0'
+    change_count: 2
+  references:
+  - bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.json
+  - bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.md
+- id: synth-011
+  title: Wissenschaftsprojekt Shadow Membrane (Trilayer)
+  path: shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - kampagne
+  - metaquest
+  description: |
+    Schatten-Sigillin für Kampagnenrisiken: τ*-Stille, BreakPoint-Verstöße,
+    Metaquest-Paritätslücken und Storyboard-Drift. Liefert Stop-Playbooks.
+  temporal:
+    created: '2025-12-05T00:00:00Z'
+    modified: '2025-12-07T00:00:00Z'
+    version: '0.3.0'
+    change_count: 2
+  references:
+  - shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.json
+  - shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.md
 - id: theory-001
   title: FinalerPlan
   path: FinalerPlan.txt
@@ -1497,3 +1591,418 @@ relevance_legend:
   high: Zentral für das Projekt, häufig referenziert
   medium: Wichtig, aber spezialisierter
   low: Historischer Kontext, selten benötigt
+
+- id: synth-012
+  title: Metaquest System Beacon (Trilayer)
+  path: bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - metaquest
+  - system
+  - telemetry
+  description: |
+    Bedeutungs-Sigillin für Metaquest-Systemintegration: Paritätsbrief, Telemetrie
+    und Index-Synchronisation werden hier kartiert.
+  temporal:
+    created: '2025-12-07T00:00:00Z'
+    modified: '2025-12-08T00:00:00Z'
+    version: '0.2.0'
+    change_count: 2
+  references:
+  - bedeutungssigillin/system/metaquest/metaquest_system_map.json
+  - bedeutungssigillin/system/metaquest/metaquest_system_map.md
+- id: synth-013
+  title: Metaquest System Shadow Guard (Trilayer)
+  path: shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - metaquest
+  - system
+  - parity
+  description: |
+    Schatten-Sigillin für Metaquest-Systemrisiken: Telemetrieausfälle, fehlende
+    Paritätsbriefe und Index-Drift werden hier alarmiert.
+  temporal:
+    created: '2025-12-07T00:00:00Z'
+    modified: '2025-12-08T00:00:00Z'
+    version: '0.2.0'
+    change_count: 2
+  references:
+  - shadow_sigillin/system/metaquest/metaquest_system_shadow.json
+  - shadow_sigillin/system/metaquest/metaquest_system_shadow.md
+- id: synth-014
+  title: Metaquest Kampagnen-Beacon (Trilayer)
+  path: bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - metaquest
+  - kampagne
+  - parity
+  description: |
+    Bedeutungs-Sigillin für Metaquest-Kampagne: Paritätsbrief, Storyboard,
+    Endorsement-Freshness und BreakPoint-Rituale.
+  temporal:
+    created: '2025-12-07T00:00:00Z'
+    modified: '2025-12-08T00:00:00Z'
+    version: '0.2.0'
+    change_count: 2
+  references:
+  - bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.json
+  - bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md
+- id: synth-015
+  title: Metaquest Kampagnen-Shadow (Trilayer)
+  path: shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - metaquest
+  - kampagne
+  description: |
+    Schatten-Sigillin für Metaquest-Kampagnenrisiken: Paritätslücken, Storyboard-
+    Drift und Governance-Verzug.
+  temporal:
+    created: '2025-12-07T00:00:00Z'
+    modified: '2025-12-08T00:00:00Z'
+    version: '0.2.0'
+    change_count: 2
+  references:
+  - shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json
+  - shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md
+- id: synth-017
+  title: Metaquest System Compass (Trilayer)
+  path: bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - metaquest
+  - system
+  - compass
+  description: |
+    Schnellorientierung für Metaquest-Automation: Telemetrie, Index-Parität und
+    Codex-Hooks werden kompakt geführt.
+  temporal:
+    created: '2025-12-08T00:00:00Z'
+    modified: '2025-12-09T00:00:00Z'
+    version: '0.2.0'
+    change_count: 2
+  references:
+  - bedeutungssigillin/metaquest/system/metaquest_system_compass.json
+  - bedeutungssigillin/metaquest/system/metaquest_system_compass.md
+- id: synth-018
+  title: Metaquest System Shadow Compass (Trilayer)
+  path: shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - metaquest
+  - system
+  - compass
+  description: |
+    Schatten-Kompass für Automationsrisiken: Paritätsbrief-Drift, Telemetrie-Stille
+    und Indexabweichungen werden hier überwacht.
+  temporal:
+    created: '2025-12-08T00:00:00Z'
+    modified: '2025-12-09T00:00:00Z'
+    version: '0.2.0'
+    change_count: 2
+  references:
+  - shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.json
+  - shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.md
+- id: synth-019
+  title: Metaquest Kampagnen-Kompass (Trilayer)
+  path: bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - metaquest
+  - kampagne
+  - compass
+  description: |
+    Kampagnen-Kompass mit Manuskript-Cadenz, Outreach-Playlist und Endorsement-
+    Ledger zur schnellen Navigation.
+  temporal:
+    created: '2025-12-08T00:00:00Z'
+    modified: '2025-12-08T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.json
+  - bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md
+- id: synth-020
+  title: Metaquest Kampagnen-Shadow-Kompass (Trilayer)
+  path: shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - metaquest
+  - kampagne
+  - compass
+  description: |
+    Schatten-Kompass für Outreach-Risiken: Paritätszitate, Storyboard-Sync und
+    Governance-Freshness werden mit klaren Eskalationen verknüpft.
+  temporal:
+    created: '2025-12-08T00:00:00Z'
+    modified: '2025-12-08T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.json
+  - shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.md
+- id: synth-021
+  title: Metaquest System Sigillin (Trilayer)
+  path: bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - metaquest
+  - system
+  - codex
+  description: |
+    Bedeutungs-Sigillin, das Automationsaufgaben, Codex-Hooks und UTAC-Governance
+    für die Metaquest-Systemspine bündelt.
+  temporal:
+    created: '2025-12-10T00:00:00Z'
+    modified: '2025-12-10T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - bedeutungssigillin/system/metaquest/metaquest_system_sigil.json
+  - bedeutungssigillin/system/metaquest/metaquest_system_sigil.md
+- id: synth-022
+  title: Metaquest System Schatten-Sigillin (Trilayer)
+  path: shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - metaquest
+  - system
+  - recovery
+  description: |
+    Schatten-Sigillin mit Alarmfeldern für Telemetrie-Blackouts, Index-Drift und
+    Codex-Stille im Metaquest-Systemstrang.
+  temporal:
+    created: '2025-12-10T00:00:00Z'
+    modified: '2025-12-10T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.json
+  - shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.md
+- id: synth-023
+  title: Metaquest Kampagnen Sigillin (Trilayer)
+  path: bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - metaquest
+  - kampagne
+  - outreach
+  description: |
+    Bedeutungs-Sigillin für Manuskript-, Outreach- und Endorsement-Kopplungen der
+    Metaquest-Kampagne mit Codex + UTAC.
+  temporal:
+    created: '2025-12-10T00:00:00Z'
+    modified: '2025-12-10T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.json
+  - bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md
+- id: synth-024
+  title: Metaquest Kampagnen Schatten-Sigillin (Trilayer)
+  path: shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - metaquest
+  - kampagne
+  - outreach
+  description: |
+    Schatten-Sigillin für Kampagnenrisiken: Paritätsstille, Manuskript-Lag,
+    Endorsement-Lücken und Outreach-Drift.
+  temporal:
+    created: '2025-12-10T00:00:00Z'
+    modified: '2025-12-10T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.json
+  - shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.md
+- id: synth-025
+  title: Metaquest System Directory Index (Trilayer)
+  path: bedeutungssigillin/metaquest/system/metaquest_system_index.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - metaquest
+  - system
+  - index
+  description: |
+    Verzeichnis für die Metaquest-Systemlaternen: Karte, Kompass, Sigil und
+    Telemetrie-Harness werden mit Paritäts- und Ritualreferenzen gebündelt.
+  temporal:
+    created: '2025-12-11T00:00:00Z'
+    modified: '2025-12-11T12:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - bedeutungssigillin/metaquest/system/metaquest_system_index.json
+  - bedeutungssigillin/metaquest/system/metaquest_system_index.md
+- id: synth-026
+  title: Metaquest System Shadow Directory Index (Trilayer)
+  path: shadow_sigillin/metaquest/system/metaquest_system_shadow_index.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - metaquest
+  - system
+  - index
+  description: |
+    Schattenverzeichnis für Automationsrisiken: überwacht Index-Frische,
+    Telemetrie-Exports und BreakPoint-Rituale.
+  temporal:
+    created: '2025-12-11T00:00:00Z'
+    modified: '2025-12-11T12:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - shadow_sigillin/metaquest/system/metaquest_system_shadow_index.json
+  - shadow_sigillin/metaquest/system/metaquest_system_shadow_index.md
+- id: synth-027
+  title: Metaquest Kampagnen Directory Index (Trilayer)
+  path: bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - metaquest
+  - kampagne
+  - index
+  description: |
+    Kampagnen-Verzeichnis, das Manuskript-, Outreach-, Endorsement- und Archiv-
+    Linien mit Paritätsbrief und Codex synchronisiert.
+  temporal:
+    created: '2025-12-11T00:00:00Z'
+    modified: '2025-12-11T12:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.json
+  - bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.md
+- id: synth-028
+  title: Metaquest Kampagnen Shadow Directory Index (Trilayer)
+  path: shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - metaquest
+  - kampagne
+  - index
+  description: |
+    Schattenverzeichnis für Kampagnenrisiken: prüft ArchivSuche-Parität,
+    Endorsement-Timestamps und Paritätsbrief-Sync.
+  temporal:
+    created: '2025-12-11T00:00:00Z'
+    modified: '2025-12-11T12:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.json
+  - shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.md
+- id: synth-016
+  title: Sentinel-Fall Kranich Linum 2025 (Trilayer)
+  path: bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - sentinel
+  - linum
+  - socio-ecology
+  description: |
+    Bedeutungs-Sigillin für das ökologische Hoch-β-Ereignis im Linumer Teichland.
+    Verknüpft Datenaufnahme, Analyseaufträge und Kampagnenkommunikation mit dem
+    UTAC-Netz.
+  temporal:
+    created: '2025-12-08T00:00:00Z'
+    modified: '2025-12-08T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.json
+  - bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md
+- id: synth-017
+  title: Sentinel-Shadow Kranich Linum 2025 (Trilayer)
+  path: shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - sentinel
+  - linum
+  - socio-ecology
+  description: |
+    Schatten-Sigillin für den Linum-Sentinel: überwacht Datenlücken, fehlende
+    Analysen und Kommunikationsdrift und löst BreakPoint-Reaktionen aus.
+  temporal:
+    created: '2025-12-08T00:00:00Z'
+    modified: '2025-12-08T00:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.json
+  - shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md

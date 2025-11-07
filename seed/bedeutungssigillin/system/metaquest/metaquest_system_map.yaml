@@ -1,0 +1,230 @@
+meta:
+  sigil: bedeutungs-system-metaquest
+  version: 0.2.0
+  created: '2025-12-07T00:00:00Z'
+  updated: '2025-12-08T00:00:00Z'
+  logistic:
+    R: 'Metaquest integration backlog across automation, indices, and governance hooks'
+    Theta: 'Parity brief anchored in docs/utac_status_alignment_v1.2.md + codexfeedback entry'
+    beta: 4.7
+    zeta: 'Damped when indices refresh and telemetry reports land within one sprint'
+  resonance: |
+    Ensures the Metaquest launch is braided into the UTAC system spine: each
+    automation hook, index refresh, and codex echo stays synchronised so the
+    campaign can inherit reproducible logistics without fragmenting the
+    Bedeutungs-/Shadow pairing.
+  shadow_coupling: '../../shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml'
+existing_assets:
+  - id: mq-sys-asset-001
+    title: UTAC Status Matrix Handshake
+    location: docs/utac_status_alignment_v1.2.md#metaquest-handshake
+    resonance: 'Maps Metaquest checkpoints onto activation gaps and telemetry needs.'
+    status: active
+    notes:
+      evidence:
+        - seed/Finalisierung_Plattform.txt
+        - seed/BreakPointAnalyse/WayToGo.txt
+      logistic_coupling: |
+        When R swells, the matrix routes actions to archive scripts and
+        codex updates before β steepens.
+  - id: mq-sys-asset-002
+    title: System Meaning Membrane (parent)
+    location: '../system_meaning_map.yaml'
+    resonance: 'Holds automation + governance lanterns that Metaquest must plug into.'
+    status: active
+    notes:
+      evidence:
+        - Makefile
+        - scripts/crep_parser.py
+      logistic_coupling: |
+        Metaquest inherits the Makefile and schema guards; Θ remains visible via
+        codex mandates.
+  - id: mq-sys-asset-003
+    title: Shadow System Membrane
+    location: '../../shadow_sigillin/system/system_shadow_map.yaml'
+    resonance: 'Provides failure thresholds for codex drift, index lag, and telemetry gaps.'
+    status: active
+    notes:
+      evidence:
+        - docs/utac_status_alignment_v1.2.md#implementation-map
+      logistic_coupling: |
+        Defines when ζ(R) spikes so Metaquest alerts can trigger remediation.
+  - id: mq-sys-asset-004
+    title: Metaquest Parity Brief
+    location: docs/metaquest_parity_brief.md
+    resonance: 'Condenses mq-parity actions so parity telemetry, simulator playlists, and codex hooks stay aligned.'
+    status: active
+    notes:
+      evidence:
+        - scripts/sigillin_sync.py
+        - seed/Finalize_Publish.txt
+      logistic_coupling: |
+        Provides Θ checkpoints for telemetry timestamp, endorsement ledger, and codex entry whenever Metaquest assets update.
+  - id: mq-sys-asset-005
+    title: Metaquest Bridge Index
+    location: '../metaquest_meaning_index.yaml'
+    resonance: 'Synchronises system automation checkpoints with campaign cadence via shared bridge dashboard.'
+    status: active
+    notes:
+      evidence:
+        - ../metaquest_meaning_index.md
+        - ../../shadow_sigillin/metaquest/metaquest_shadow_index.md
+      logistic_coupling: |
+        Ensures telemetry timestamps, codex ids, and BreakPoint notes land in both
+        beacons; stale bridge entries escalate via mq-bridge-shadow-001.
+  - id: mq-sys-asset-006
+    title: Metaquest System Compass
+    location: '../metaquest/system/metaquest_system_compass.yaml'
+    resonance: 'Provides rapid orientation for automation backlog, telemetry cadence, and codex coupling.'
+    status: active
+    notes:
+      evidence:
+        - ../metaquest/system/metaquest_system_compass.md
+      logistic_coupling: |
+        Highlights telemetry + parity triggers so bridge and system map remain in
+        phase between larger updates.
+needed_resonances:
+  - id: mq-sys-gap-001
+    description: 'Populate parity brief with telemetry timestamp, simulator playlist, endorsement ledger, and codex ID.'
+    target_location:
+      - docs/metaquest_parity_brief.md
+      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+      - seed/codexfeedback.*
+    threshold:
+      Theta: 'brief lists latest telemetry date + codex reference before launch freeze'
+      beta: 4.9
+    null_guard: 'Missing timestamp or codex reference escalates to sci-shadow-003 and sys-shadow-004.'
+  - id: mq-sys-gap-002
+    description: 'Operate scripts/sigillin_sync.py telemetry exports with Metaquest parity metrics.'
+    target_location:
+      - scripts/sigillin_sync.py
+      - simulator/presets/
+    threshold:
+      Theta: 'telemetry report generated each sprint'
+      beta: 4.8
+    null_guard: 'If no report for >1 sprint, trigger sys-shadow-003 audit.'
+  - id: mq-sys-gap-003
+    description: 'Index refresh automation extended to Metaquest folders.'
+    target_location:
+      - scripts/archive_sigillin.py
+      - seed/seed_index.*
+      - feldtheorie_index.*
+    threshold:
+      Theta: 'indices list Metaquest sigils within 24h of change'
+      beta: 4.6
+    null_guard: 'Parser diff showing Δindex parity > 0 for one commit activates shadow guard.'
+  - id: mq-sys-gap-004
+    description: 'Ensure Bedeutungs-/Shadow sigils and indices cite latest parity brief update.'
+    target_location:
+      - docs/metaquest_parity_brief.md
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+      - feldtheorie_index.*
+    threshold:
+      Theta: 'parity brief update mirrored in indices + codex within 24h'
+      beta: 4.7
+    null_guard: 'If indices lack newest parity note, trigger sys-shadow-001 and mq-sys-shadow-004.'
+  - id: mq-sys-gap-005
+    description: 'Infuse Metaquest automation notes with BreakPoint rituals + publishing cadence.'
+    target_location:
+      - seed/BreakPointAnalyse/WayToGo.txt
+      - seed/BreakPointAnalyse/ReaktionWayToGo.txt
+      - seed/Finalize_Publish.txt
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+    threshold:
+      Theta: 'Metaquest parity notes cite latest BreakPoint ritual within codex entry'
+      beta: 4.5
+    null_guard: 'If BreakPoint references absent, escalate to mq-sys-shadow-003.'
+  - id: mq-sys-gap-006
+    description: 'Mirror bridge dashboard timestamp + codex id inside the system beacon.'
+    target_location:
+      - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+    threshold:
+      Theta: 'system map cites latest bridge telemetry timestamp within 24h'
+      beta: 4.7
+    null_guard: 'Bridge timestamp drift triggers mq-bridge-shadow-001 and mq-sys-shadow-004.'
+  - id: mq-sys-gap-007
+    description: 'Feed compass telemetry + parity notes directly into UTAC status matrix and codex templates.'
+    target_location:
+      - metaquest_system_compass.yaml
+      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+      - seed/codexfeedback.*
+    threshold:
+      Theta: 'Compass updates reflected in UTAC matrix + codex entry on same day'
+      beta: 4.6
+    null_guard: 'If compass data absent from matrix/codex, trigger mq-sys-shadow-001 and mq-sys-shadow-002.'
+activation_hooks:
+  - trigger: 'New Metaquest asset created'
+    response: 'Update trilayer files, refresh indices, log codex entry, cite status matrix.'
+  - trigger: 'Telemetry report missing or stale'
+    response: 'Consult shadow map, schedule sigillin_sync run, update docs + codex.'
+  - trigger: 'Parity brief updated'
+    response: 'Cross-link change in docs, codex, and simulator presets; archive previous version.'
+null_model_reference:
+  description: 'Null = Metaquest launch without documented parity; automation + governance decouple.'
+  monitoring:
+    - metric: 'index parity'
+      condition: 'Metaquest folders listed in seed_index.* and feldtheorie_index.*'
+    - metric: 'codex echo'
+      condition: 'Latest Metaquest change accompanied by codexfeedback entry referencing this map'
+    - metric: 'telemetry cadence'
+      condition: 'sigillin_sync report timestamp ≤ 1 sprint old'
+implementation_lattice:
+  - gap_id: mq-sys-gap-001
+    implementation_sites:
+      - docs/metaquest_parity_brief.md
+      - docs/utac_status_alignment_v1.2.md
+      - seed/codexfeedback.*
+    primary_hook: 'Telemetry timestamp + codex echo'
+    evidence_trail:
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+      - docs/metaquest_parity_brief.md
+  - gap_id: mq-sys-gap-002
+    implementation_sites:
+      - scripts/sigillin_sync.py
+      - simulator/presets/
+      - docs/utac_status_alignment_v1.2.md
+    primary_hook: 'Parity telemetry export'
+    evidence_trail:
+      - docs/metaquest_parity_brief.md
+      - seed/codexfeedback.*
+  - gap_id: mq-sys-gap-003
+    implementation_sites:
+      - scripts/archive_sigillin.py
+      - seed/seed_index.*
+      - feldtheorie_index.*
+    primary_hook: 'Index refresh automation'
+    evidence_trail:
+      - scripts/crep_parser.py
+      - docs/utac_status_alignment_v1.2.md#activation-gaps
+  - gap_id: mq-sys-gap-004
+    implementation_sites:
+      - docs/metaquest_parity_brief.md
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+      - feldtheorie_index.*
+    primary_hook: 'Parity linkage audit'
+    evidence_trail:
+      - docs/metaquest_parity_brief.md
+      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml
+  - gap_id: mq-sys-gap-005
+    implementation_sites:
+      - seed/BreakPointAnalyse/WayToGo.txt
+      - seed/BreakPointAnalyse/ReaktionWayToGo.txt
+      - seed/Finalize_Publish.txt
+      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+    primary_hook: 'BreakPoint ritual infusion'
+    evidence_trail:
+      - docs/utac_status_alignment_v1.2.md#implementation-map
+      - seed/codexfeedback.*
+  - gap_id: mq-sys-gap-007
+    implementation_sites:
+      - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml
+      - docs/utac_status_alignment_v1.2.md
+      - seed/codexfeedback.*
+    primary_hook: 'Compass ↔ matrix ↔ codex synchronisation'
+    evidence_trail:
+      - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.md
+      - docs/metaquest_parity_brief.md

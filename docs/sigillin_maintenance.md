@@ -79,8 +79,11 @@ Found 15 Sigillin candidates
 ### 2️⃣ **Archivierung durchführen**
 
 ```bash
-# Archiviere ALLE überschrittenen Sigillin
+# Archiviere ALLE überschrittenen Sigillin (Auto-Repo-Erkennung)
 python scripts/archive_sigillin.py --scan-all
+
+# Abweichender Pfad (z.B. wenn Skript ausserhalb des Repos läuft)
+python scripts/archive_sigillin.py --scan-all --base-path /pfad/zu/Feldtheorie
 
 # Archiviere SPEZIFISCHES Sigillin
 python scripts/archive_sigillin.py --sigillin seed/codexfeedback.yaml
@@ -130,6 +133,14 @@ git push -u origin <your-branch>
 | `--max-entries` | **100** | Max Einträge in aktivem Sigillin |
 | `--max-size` | **50** KB | Max Dateigröße |
 | `--keep-recent` | **50** | Anzahl recent entries die aktiv bleiben |
+
+### Repository-Wurzel konfigurieren
+
+- Standard: Das Skript erkennt das Repo automatisch über den Speicherort (`scripts/` → Elternordner).
+- Optional: Mit `--base-path` lässt sich eine alternative Feldtheorie-Installation ansteuern (z.B. beim Betrieb in Container-
+  Workspaces oder automatisierten Wartungsjobs).
+- Alle erzeugten Pfade im Archiv-Index werden relativ zur übergebenen Repo-Wurzel gespeichert, damit σ(β(R-Θ)) für die Sigillin-
+  Hygiene konsistent bleibt.
 
 ### Custom Thresholds
 

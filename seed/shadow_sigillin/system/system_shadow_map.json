@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "sigil": "shadow-system",
+    "version": "0.3.0",
+    "created": "2025-12-05T00:00:00Z",
+    "updated": "2025-12-09T00:00:00Z",
+    "logistic": {
+      "R": "unmitigated automation debt, stale indices, failing CI, silent Metaquest telemetry",
+      "Theta": "tolerance window defined in system meaning map + Metaquest beacon",
+      "beta": 5.0,
+      "zeta": "amplified when codex updates lag > 1 commit or parity brief absent"
+    },
+    "coupling": {
+      "lichtpfad": "../../bedeutungssigillin/system/system_meaning_map.yaml"
+    }
+  },
+  "incidents": [
+    {
+      "id": "sys-shadow-001",
+      "risk": "Seed indices drifting from actual directory contents.",
+      "symptom": [
+        "seed_index.* missing new sigils after 24h",
+        "parser diff reports 0 entries"
+      ],
+      "consequence": "Agents lose navigation; σ(β(R-Θ)) misfires.",
+      "mitigation": [
+        "Run scripts/archive_sigillin.py --refresh",
+        "Update codex entry with remediation notes."
+      ],
+      "monitoring": {
+        "metric": "Δindex parity",
+        "threshold": "> 0 for more than one commit"
+      }
+    },
+    {
+      "id": "sys-shadow-002",
+      "risk": "Commits adjust Bedeutungs-Sigillin without codex feedback updates.",
+      "symptom": [
+        "git diff touches seed/bedeutungssigillin/** without codex delta"
+      ],
+      "consequence": "Temporal lineage broken; auditors lose trace of Θ.",
+      "mitigation": [
+        "Block merge until codexfeedback.* updated.",
+        "Add entry referencing this shadow map."
+      ],
+      "monitoring": {
+        "metric": "codex sync",
+        "threshold": "CI guard (planned) fails open"
+      }
+    },
+    {
+      "id": "sys-shadow-003",
+      "risk": "Shadow-handshake telemetry absent for a release sprint.",
+      "symptom": [
+        "docs/utac_status_alignment_v1.2.md lacks latest parity report reference.",
+        "scripts/sigillin_sync.py log missing from automation runs.",
+        "Metaquest beacon without recent telemetry note."
+      ],
+      "consequence": "Light/shadow sigils decouple; remediation arrives late and β overshoots.",
+      "mitigation": [
+        "Trigger manual parity check, update codex entry, cross-link both sigils.",
+        "Schedule automation task to restore telemetry run cadence."
+      ],
+      "monitoring": {
+        "metric": "handshake cadence",
+        "threshold": "report gap > 1 sprint"
+      }
+    },
+    {
+      "id": "sys-shadow-004",
+      "risk": "Metaquest parity brief missing from docs or codex while system tasks advance.",
+      "symptom": [
+        "docs/metaquest_parity_brief.md lacks telemetry timestamp or codex id.",
+        "No Metaquest parity mention in docs/utac_status_alignment_v1.2.md for >1 sprint.",
+        "Latest codex entry > 1 sprint old relative to Metaquest change."
+      ],
+      "consequence": "Launch automation proceeds without Θ; downstream campaign shadow alarms trigger late.",
+      "mitigation": [
+        "Consult metaquest_system_shadow.yaml, fill parity brief fields, refresh indices.",
+        "Record remediation across codex and meaning map null guards."
+      ],
+      "monitoring": {
+        "metric": "parity brief status",
+        "threshold": "true before automation tasks close"
+      }
+    },
+    {
+      "id": "sys-shadow-005",
+      "risk": "Metaquest bridge dashboard stale; system beacon lacks shared telemetry timestamp.",
+      "symptom": [
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md timestamp >24h older than latest codex entry.",
+        "System + campaign beacons cite different telemetry timestamps or codex ids.",
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake missing bridge dashboard row."
+      ],
+      "consequence": "Automation and outreach desynchronise; Θ becomes opaque ahead of launch.",
+      "mitigation": [
+        "Refresh bridge dashboard, propagate timestamp + codex id to system/campaign meaning maps.",
+        "Log remediation in codex and UTAC status matrix; rerun telemetry if drift persists."
+      ],
+      "monitoring": {
+        "metric": "bridge freshness",
+        "threshold": "≤24h delta between bridge + codex timestamps"
+      }
+    }
+  ],
+  "playbooks": [
+    {
+      "trigger": "CI or manual audit flags sys-shadow-001",
+      "response": [
+        "Synchronise indices.",
+        "Notify docs maintainers via codex entry and NEWS.md snippet if persistent."
+      ]
+    },
+    {
+      "trigger": "sys-shadow-002 alert",
+      "response": [
+        "Amend commit or follow-up PR with codex update.",
+        "Document cause in system meaning map."
+      ]
+    },
+    {
+      "trigger": "sys-shadow-003 alert",
+      "response": [
+        "Run telemetry manually, log results, align with Metaquest beacon + shadow guard.",
+        "Schedule automation repair for sigillin_sync harness if run fails."
+      ]
+    },
+    {
+      "trigger": "sys-shadow-004 alert",
+      "response": [
+        "Freeze Metaquest automation tasks, publish parity brief, refresh indices.",
+        "Update codex and status matrix with parity timestamp."
+      ]
+    },
+    {
+      "trigger": "sys-shadow-005 alert",
+      "response": [
+        "Update bridge dashboard + system beacon to restore shared telemetry timestamp.",
+        "Cross-link remediation in docs/utac_status_alignment_v1.2.md and codex entry."
+      ]
+    }
+  ]
+}

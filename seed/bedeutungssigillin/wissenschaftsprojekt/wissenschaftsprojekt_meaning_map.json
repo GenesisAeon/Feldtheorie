@@ -1,0 +1,420 @@
+{
+  "meta": {
+    "sigil": "bedeutungs-wissenschaftsprojekt",
+    "version": "0.3.0",
+    "created": "2025-12-05T00:00:00Z",
+    "updated": "2025-12-07T00:00:00Z",
+    "logistic": {
+      "R": "open scientific commitments (manuscript, campaigns, validations, Metaquest launch)",
+      "Theta": "documented readiness checkpoints in seed/ and docs/ plus Metaquest parity brief",
+      "beta": 4.6,
+      "zeta": "stabilised by BreakPoint rituals, endorsement cadence, and telemetry reports"
+    },
+    "resonance": "Illuminates how the scientific project narrative stays coherent while UTAC v1.2 moves\nfrom manuscript finalisation to public activation. Metaquest meaning/shadow beacons\nplug into this storyline so outreach, validation, and governance share the same cadence.\n"
+  },
+  "existing_threads": [
+    {
+      "id": "sci-core-001",
+      "title": "Manuskriptfinalisierung & Kampagnenstart",
+      "location": "seed/Manuskriptfinalisierung und Kampagnenstart.pdf",
+      "status": "canonical",
+      "notes": {
+        "logistic_role": "Defines Θ checkpoints for publication, endorsement, and outreach.",
+        "evidence": [
+          "seed/FinalerPlan.txt",
+          "seed/Finalize_Publish.txt"
+        ],
+        "resonance": "Establishes β≈4.8 ramp once preprint, endorsements, and campaign collateral align."
+      }
+    },
+    {
+      "id": "sci-core-002",
+      "title": "UTAC Status Alignment v1.2",
+      "location": "docs/utac_status_alignment_v1.2.md",
+      "status": "active",
+      "notes": {
+        "logistic_role": "Maps existing vs needed assets across theory, analysis, simulation, sigillin.",
+        "evidence": [
+          "analysis/results/universal_beta_summary.json",
+          "docs/utac_status_alignment_v1.2.md#metaquest-handshake"
+        ],
+        "resonance": "Keeps ζ(R) damped by providing immediate activation map updates."
+      }
+    },
+    {
+      "id": "sci-core-003",
+      "title": "BreakPoint Analyse Waypoints",
+      "location": "seed/BreakPointAnalyse/",
+      "status": "active",
+      "notes": {
+        "logistic_role": "Records historical inflection points and response rituals.",
+        "evidence": [
+          "seed/BreakPointAnalyse/WayToGo.txt",
+          "seed/BreakPointAnalyse/ReaktionWayToGo.txt"
+        ],
+        "resonance": "Provides poetic + procedural guardrails for campaign pivots."
+      }
+    },
+    {
+      "id": "sci-core-004",
+      "title": "Finalisierung Plattform Leitstern",
+      "location": "seed/Finalisierung_Plattform.txt",
+      "status": "guiding",
+      "notes": {
+        "logistic_role": "Summarises outstanding publishing, automation, and outreach levers for campaign lift-off.",
+        "evidence": [
+          "seed/Finalize_Publish.txt",
+          "docs/utac_status_alignment_v1.2.md"
+        ],
+        "resonance": "Ensures Metaquest sigils inherit the correct Θ checkpoints and narrative motifs."
+      }
+    },
+    {
+      "id": "sci-core-005",
+      "title": "Metaquest Campaign Beacon",
+      "location": "metaquest/metaquest_campaign_map.yaml",
+      "status": "active",
+      "notes": {
+        "logistic_role": "Tracks parity brief, storyboard sync, and endorsement freshness for Metaquest launch.",
+        "evidence": [
+          "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+          "seed/codexfeedback.*"
+        ],
+        "resonance": "Links manuscript, simulator demos, and outreach cadence to Metaquest parity rituals."
+      }
+    },
+    {
+      "id": "sci-core-006",
+      "title": "Metaquest Parity Brief",
+      "location": "docs/metaquest_parity_brief.md",
+      "status": "active",
+      "notes": {
+        "logistic_role": "Summarises mq-parity-001…004 so telemetry, demos, endorsements, and codex lineage stay synchronised.",
+        "evidence": [
+          "scripts/sigillin_sync.py",
+          "seed/Finalize_Publish.txt"
+        ],
+        "resonance": "Ensures campaign storytelling echoes the same Θ checkpoints as the system membrane."
+      }
+    },
+    {
+      "id": "sci-core-007",
+      "title": "Sentinel-Fall Kranich Linum 2025",
+      "location": "cases/kranich_linum_2025/kranich_linum_2025.yaml",
+      "status": "active",
+      "notes": {
+        "logistic_role": "Überführt reales Hoch-β-Ökofeld in das Kampagnen- und Forschungsnetz.",
+        "evidence": [
+          "cases/kranich_linum_2025/kranich_linum_2025.json",
+          "../../shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml"
+        ],
+        "resonance": "Stellt Sentinel-Muster bereit, um Metaquest, Manuskript und Governance mit Feldereignissen zu koppeln."
+      }
+    },
+    {
+      "id": "sci-core-008",
+      "title": "Metaquest Bridge Index",
+      "location": "metaquest/metaquest_meaning_index.yaml",
+      "status": "active",
+      "notes": {
+        "logistic_role": "Verknüpft System- und Kampagnensigille so Paritäts- und Telemetriezeiten gemeinsam geführt werden.",
+        "evidence": [
+          "metaquest/metaquest_meaning_index.md",
+          "../../shadow_sigillin/metaquest/metaquest_shadow_index.md"
+        ],
+        "resonance": "Hält Manuskript-, Outreach- und Automationspfade in einem gemeinsamen σ(β(R-Θ))-Takt."
+      }
+    }
+  ],
+  "needed_resonances": [
+    {
+      "id": "sci-gap-001",
+      "description": "Integrate safety-delay field results into manuscript narrative and campaign briefing.",
+      "anchors": [
+        "simulation/safety_delay_field.py",
+        "docs/utac_status_alignment_v1.2.md#activation-gaps"
+      ],
+      "threshold": {
+        "Theta": "τ*-sweep summary drafted",
+        "beta": 4.9
+      },
+      "zeta_cue": "Use BreakPoint response rituals to keep outreach pacing stable."
+    },
+    {
+      "id": "sci-gap-002",
+      "description": "Public-facing Sigillin index bridging Bedeutungs + Shadow narratives for launch.",
+      "anchors": [
+        "feldtheorie_index.*",
+        "docs/press_kit (planned)"
+      ],
+      "threshold": {
+        "Theta": "press kit and sigil summary ready for partners",
+        "beta": 4.5
+      },
+      "zeta_cue": "Coordinate with ethics commitments to avoid resonance overshoot."
+    },
+    {
+      "id": "sci-gap-003",
+      "description": "Campaign schedule handshake with UTAC simulator demos.",
+      "anchors": [
+        "simulator/",
+        "docs/utac_status_alignment_v1.2.md#implementation-map"
+      ],
+      "threshold": {
+        "Theta": "demo playlist + narrative script locked",
+        "beta": 4.7
+      },
+      "zeta_cue": "Ensure ΔAIC beacons accompany each demo clip."
+    },
+    {
+      "id": "sci-gap-004",
+      "description": "Complete parity brief with telemetry timestamp, simulator playlist, endorsement ledger, and codex reference.",
+      "anchors": [
+        "docs/metaquest_parity_brief.md",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml"
+      ],
+      "threshold": {
+        "Theta": "brief lists latest telemetry + codex id before campaign lock",
+        "beta": 4.6
+      },
+      "zeta_cue": "BreakPoint rituals absorb schedule shifts while parity fills in."
+    },
+    {
+      "id": "sci-gap-005",
+      "description": "β meta-regression v2 infusion into manuscript evidence tables.",
+      "anchors": [
+        "analysis/beta_meta_regression_v2.py",
+        "analysis/results/beta_meta_regression_v2_summary.json",
+        "paper/"
+      ],
+      "threshold": {
+        "Theta": "table + narrative referencing updated β clusters prepared",
+        "beta": 4.8
+      },
+      "zeta_cue": "Coordinate with safety-delay write-up so ΔAIC context remains balanced."
+    },
+    {
+      "id": "sci-gap-006",
+      "description": "Parity storytelling echo across outreach, manuscript, and simulator scripts.",
+      "anchors": [
+        "docs/metaquest_parity_brief.md",
+        "paper/",
+        "simulator/"
+      ],
+      "threshold": {
+        "Theta": "each outward-facing script cites latest parity brief revision + codex id",
+        "beta": 4.5
+      },
+      "zeta_cue": "Campaign shadow guard triggers review when references fall behind."
+    },
+    {
+      "id": "sci-gap-007",
+      "description": "Embed BreakPoint response rituals into Metaquest beacon and manuscript readiness checklists.",
+      "anchors": [
+        "seed/BreakPointAnalyse/WayToGo.txt",
+        "seed/BreakPointAnalyse/ReaktionWayToGo.txt",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml"
+      ],
+      "threshold": {
+        "Theta": "Metaquest plan cites WayToGo + ReaktionWayToGo within latest codex entry",
+        "beta": 4.6
+      },
+      "zeta_cue": "If BreakPoint linkage missing, trigger mq-sci-shadow-002 escalation."
+    },
+    {
+      "id": "sci-gap-008",
+      "description": "Surface ArchivSucheUTAC insights in manuscript appendices and launch collateral to prove archival continuity.",
+      "anchors": [
+        "seed/ArchivSucheUTAC/",
+        "paper/appendices (planned)",
+        "ZENODO_DESCRIPTION_v1.1.md"
+      ],
+      "threshold": {
+        "Theta": "Archive references embedded in manuscript + parity brief before Zenodo upload",
+        "beta": 4.4
+      },
+      "zeta_cue": "Governance review halts release when archive lineage absent."
+    },
+    {
+      "id": "sci-gap-009",
+      "description": "Sentinel-Fall Linum in Daten, Analyse und Kampagnenbrief verankern.",
+      "anchors": [
+        "cases/kranich_linum_2025/",
+        "../../shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/",
+        "docs/metaquest_parity_brief.md",
+        "docs/utac_status_alignment_v1.2.md#sentinel-felder (planned)"
+      ],
+      "threshold": {
+        "Theta": "Datensatz, Notebook und Kommunikationsbrief enthalten Linum-Abschnitt + Codex-ID",
+        "beta": 4.7
+      },
+      "zeta_cue": "BreakPoint-Reaktionspfad hält Kampagnenstress gedämpft."
+    },
+    {
+      "id": "sci-gap-010",
+      "description": "Dashboard im Metaquest-Bridge-Hub mit Kampagnenmeilensteinen verknüpfen.",
+      "anchors": [
+        "metaquest/metaquest_meaning_index.yaml",
+        "metaquest/metaquest_campaign_map.yaml",
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake"
+      ],
+      "threshold": {
+        "Theta": "Bridge-Dashboard nennt aktuelle Kampagnenmeilensteine + Codex-ID innerhalb 24h",
+        "beta": 4.6
+      },
+      "zeta_cue": "BreakPoint-Rituale puffern Verzögerungen; fehlende Synchronisation löst mq-sci-shadow-001 aus."
+    }
+  ],
+  "activation_sequence": [
+    {
+      "phase": "Resonance Briefing",
+      "actions": [
+        "Update docs/utac_status_alignment_v1.2.md with new Bedeutungs-/Shadow directories and Metaquest parity status.",
+        "Summarise readiness deltas in system & project meaning maps."
+      ]
+    },
+    {
+      "phase": "Campaign Synchronisation",
+      "actions": [
+        "Draft outreach timeline referencing BreakPoint rituals.",
+        "Wire simulator demo hooks into press materials and Metaquest storyboard."
+      ]
+    },
+    {
+      "phase": "Metaquest Handshake",
+      "actions": [
+        "Publish parity brief linking Bedeutungs-/Shadow sigils into docs + codex.",
+        "Confirm simulator + manuscript references cite the updated β regression, safety-delay outputs, and Metaquest storyboard."
+      ]
+    }
+  ],
+  "null_model_reference": {
+    "description": "Project proceeds without integrating safety-delay, meta-regression, or Metaquest parity insights.",
+    "risk": [
+      "Publication narrative drifts from operational reality (ΔAIC guards missing).",
+      "Campaign pacing ignores shadow signals leading to resonance overshoot."
+    ]
+  },
+  "implementation_lattice": [
+    {
+      "gap_id": "sci-gap-001",
+      "implementation_sites": [
+        "simulation/safety_delay_field.py (planned)",
+        "analysis/",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "primary_hook": "τ*-field prototype with ΔAIC logging",
+      "evidence_trail": [
+        "seed/Sigillin_Neuro_Membran_Modell_Plan.txt",
+        "seed/codexfeedback.*"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-002",
+      "implementation_sites": [
+        "feldtheorie_index.*",
+        "docs/docs_index.*",
+        "docs/press_kit (planned)"
+      ],
+      "primary_hook": "Public-facing sigil index export",
+      "evidence_trail": [
+        "docs/utac_status_alignment_v1.2.md#activation-gaps",
+        "ZENODO_DESCRIPTION_v1.1.md"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-003",
+      "implementation_sites": [
+        "simulator/presets/",
+        "simulation/",
+        "outreach storyboard (planned)"
+      ],
+      "primary_hook": "Demo playlist and narrative sync",
+      "evidence_trail": [
+        "seed/Manuskriptfinalisierung und Kampagnenstart.pdf",
+        "seed/BreakPointAnalyse/WayToGo.txt"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-004",
+      "implementation_sites": [
+        "docs/metaquest_parity_brief.md",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml"
+      ],
+      "primary_hook": "Parity timestamp + codex cross-link",
+      "evidence_trail": [
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+        "seed/codexfeedback.*"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-005",
+      "implementation_sites": [
+        "analysis/beta_meta_regression_v2.py",
+        "paper/",
+        "docs/validation_report_v1.0.1.md"
+      ],
+      "primary_hook": "β table + narrative refresh",
+      "evidence_trail": [
+        "analysis/results/beta_meta_regression_v2_summary.json",
+        "seed/NextStep.txt"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-006",
+      "implementation_sites": [
+        "docs/metaquest_parity_brief.md",
+        "simulator/",
+        "outreach manuscripts (planned)"
+      ],
+      "primary_hook": "Parity citation audit",
+      "evidence_trail": [
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml",
+        "seed/codexfeedback.*"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-007",
+      "implementation_sites": [
+        "seed/BreakPointAnalyse/WayToGo.txt",
+        "seed/BreakPointAnalyse/ReaktionWayToGo.txt",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml"
+      ],
+      "primary_hook": "BreakPoint ritual infusion for Metaquest narrative",
+      "evidence_trail": [
+        "docs/utac_status_alignment_v1.2.md#implementation-map",
+        "docs/metaquest_parity_brief.md"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-008",
+      "implementation_sites": [
+        "seed/ArchivSucheUTAC/",
+        "paper/appendices (planned)",
+        "ZENODO_DESCRIPTION_v1.1.md"
+      ],
+      "primary_hook": "Archive continuity narrative in public release",
+      "evidence_trail": [
+        "seed/Finalize_Publish.txt",
+        "docs/utac_status_alignment_v1.2.md#resonant-inventory"
+      ]
+    },
+    {
+      "gap_id": "sci-gap-009",
+      "implementation_sites": [
+        "cases/kranich_linum_2025/",
+        "data/socio_ecology/",
+        "analysis/",
+        "docs/metaquest_parity_brief.md",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "primary_hook": "Sentinel-Kopplung von Feldereignis zu Kampagnenbrief",
+      "evidence_trail": [
+        "seed/shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml",
+        "seed/codexfeedback.*"
+      ]
+    }
+  ]
+}

@@ -44,7 +44,7 @@
         "json": "seed/seed_index.json",
         "md": "seed/seed_index.md"
       },
-      "total_items": 71,
+      "total_items": 77,
       "categories": 6,
       "description": "Das semantische Gedächtnis des Projekts:\nMeta-Reflexionen, Theoriediskurse, Validierungen, Konzepte,\nSynthesen und 6 Domain-spezifische Felder.\n",
       "color": "#9B59B6",
@@ -52,7 +52,10 @@
       "highlights": [
         "Metareflexion.txt (Philosophische Grundlage)",
         "Rekalibrierung_Abschlus.txt (Unser Weg)",
-        "FinalerPlan.txt (Governance für v1.2)"
+        "FinalerPlan.txt (Governance für v1.2)",
+        "`bedeutungssigillin/system/metaquest/metaquest_system_map.md`",
+        "`bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md`",
+        "Metaquest Directory Indizes (system/campaign) v0.1.0"
       ]
     },
     "analysis": {
@@ -253,6 +256,51 @@
         "analysis/multiple_testing_correction.py",
         "analysis/universality_test.py"
       ],
+      "metaquest_parity": [
+        "docs/metaquest_parity_brief.md",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.json",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.json",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.json",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.md",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.json",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.json",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.json",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.md",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.json",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.md",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.json",
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.md",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.json",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.md",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.json",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.md",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.json",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.json",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.md",
+        "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.yaml",
+        "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.json",
+        "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.md"
+      ],
       "meta_regression": [
         "analysis/beta_drivers_meta_regression.py",
         "data/derived/domain_covariates.csv",
@@ -328,14 +376,14 @@
   },
   "statistics": {
     "directories_indexed": 6,
-    "total_files_cataloged": 163,
+    "total_files_cataloged": 164,
     "trilayer_indices": 18,
     "breakdown": {
       "seed": 69,
       "analysis": 32,
       "data": 43,
       "models": 10,
-      "docs": 9,
+      "docs": 12,
       "archive": 0
     },
     "index_files": {
@@ -344,7 +392,7 @@
       "md_files": 6
     },
     "project_size": {
-      "python_scripts": 42,
+      "python_scripts": 43,
       "markdown_docs": "~80",
       "data_files": 43
     }
@@ -353,8 +401,9 @@
     "utac_version": "1.1.2",
     "sigillin_version": "1.0.0",
     "trilayer_completion": "6 directories (seed, analysis, data, models, docs, archive)",
-    "maintenance_system": "Sigillin Archive System (archive_sigillin.py)",
-    "next_milestone": "UTAC v1.2 Meta-Regression (R² > 0.7)"
+    "maintenance_system": "Sigillin Archive System (archive_sigillin.py) + Telemetry Harness (sigillin_sync.py)",
+    "next_milestone": "UTAC v1.2 Meta-Regression (R² > 0.7)",
+    "telemetry_system": "Sigillin Sync Harness (scripts/sigillin_sync.py)"
   },
   "status": {
     "current_phase": "UTAC v1.1.2 deployed, v1.2 in planning",

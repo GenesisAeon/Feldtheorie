@@ -169,11 +169,10 @@ Falls Zenodo ein Feld **"Related identifiers"** hat:
 
 ### Schritt 11: Lizenz bestätigen
 
-**License**: Sollte **MIT License** oder **Creative Commons Attribution 4.0 (CC-BY-4.0)** sein
+**License**: Stelle auf **Creative Commons Attribution 4.0 (CC BY 4.0)** um (entspricht dem Repository-Standard).
 
 Falls nicht gesetzt:
-- Wähle **"MIT License"** (für Code) oder
-- Wähle **"Creative Commons Attribution 4.0"** (für Daten/Dokumentation)
+- Wähle **"Creative Commons Attribution 4.0"** für alle Artefakte (Code, Daten, Dokumentation).
 
 ---
 

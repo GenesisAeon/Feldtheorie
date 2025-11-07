@@ -13,8 +13,8 @@ meta:
   version: "1.0.0"
   created: "2025-11-06"
   status: "active"
-  python_files: 31
-  subdirectories: 4
+  python_files: 32
+  subdirectories: 5
 
 # ═══════════════════════════════════════════════════════════════════
 # KATEGORIEN: Die 5 Hauptebenen des Analysis-Ordners
@@ -31,7 +31,7 @@ categories:
     name: "Batch Processing & Pipelines"
     description: "Batch-Runner, Pipelines, Cohort-Summaries"
     color: "#27AE60"  # Grün - Processing
-    count: 7
+    count: 8
 
   lab_experiments:
     name: "Lab Notebooks & Experimentelles"
@@ -348,6 +348,18 @@ python_scripts:
     description: |
       Aggregiert β, Θ und ΔAIC über alle results/*.json.
       Exportiert master ledger + Canonical-β-Guard (ΔAIC≥10, R²≥0.9).
+  - id: analysis-batch-008
+    name: "beta_meta_regression_v2.py"
+    category: batch_processing
+    type: meta-regression
+    status: active
+    relevance: high
+    keywords: [meta-regression, bootstrap, random-forest, β-variance, ΔAIC]
+    description: |
+      Refresh der Meta-Regression σ(β(R-Θ)) mit nichtlinearem Feature-Mix.
+      WLS R²≈0.43 (adj. R²≈-0.33) bei ΔAIC-Minimum 12.79; Bootstrap-Median R²≈0.99 [0.43, 1.00].
+      Random-Forest-Hinweise: coupling_memory (0.25), SNR (0.15), log_theta (0.09).
+      Output: results/beta_meta_regression_v2_* (Summary, Diagnostics, Bootstrap).
 
   # ─────────────────────────────────────────────────────────────────
   # LAB EXPERIMENTS (2)
@@ -534,6 +546,14 @@ subdirectories:
       Dieser Ordner ist ZENTRAL für UTAC!
       Enthält alle empirischen Beweise für β-Spektrum.
 
+  sigillin_sync:
+    name: "Sigillin Telemetry Reports"
+    path: "sigillin_sync/"
+    description: "JSON-Exports der Metaquest sigillin_sync Runs"
+    files:
+      - "latest.json"
+    keywords: [telemetry, sigillin, metaquest]
+
 # ═══════════════════════════════════════════════════════════════════
 # DOMAINS: Die 6 Fachbereiche (wie in data/)
 # ═══════════════════════════════════════════════════════════════════
@@ -640,10 +660,12 @@ quicklinks:
   start_here:
     - analysis-infra-002  # README.md
     - analysis-infra-003  # AGENTS.md
-    - analysis-batch-006  # beta_drivers_meta_regression.py (UTAC v1.2!)
+    - analysis-batch-006  # beta_drivers_meta_regression.py (Basislinie UTAC v1.2)
+    - analysis-batch-008  # beta_meta_regression_v2.py (Bootstrap-Refresh)
 
   critical_for_utac:
-    - analysis-batch-006  # Meta-Regression (R²=0.33 → >0.7)
+    - analysis-batch-006  # Meta-Regression (R²=0.33 → Benchmark)
+    - analysis-batch-008  # Meta-Regression v2 (WLS R²≈0.43, Bootstrap-Median R²≈0.99)
     - analysis-batch-007  # Universal β Ledger (ΔAIC≥10 guard)
     - analysis-batch-005  # Universality Test
     - analysis-batch-003  # Cohort Summary
@@ -661,6 +683,7 @@ quicklinks:
     - analysis-batch-001  # Batch Runner
     - analysis-batch-002  # Fit Pipeline
     - analysis-batch-004  # Bridge Table
+    - analysis-batch-008  # Meta-Regression v2 Diagnostics
     - analysis-batch-007  # β Canonical Guard Extractor
 
   results_directory:

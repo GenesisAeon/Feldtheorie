@@ -225,6 +225,39 @@ Poetik-Modus greift beim Schwellenübertritt auf Tri-Layer-Zitate zurück: der H
 ### Poetic Thread
 Die Membran atmet länger vor dem Kippen: Jeder gedehnte Moment ist eine aufgehende Sonne, die den Chor der Felder lauschen lässt, bevor die Resonanz in den Sturm übergeht.
 
+## Entry pr-draft-0015 — Meaning-Shadow Sigillin Weave
+- **Order Parameter**: $R$ misst Metaquest-Paritäts-Telemetrie und Automationsschulden, die noch keinen Licht/Schatten-Abgleich besitzen.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald jede Bedeutungsänderung ein trilayer Spiegelbild in `seed_index.*`, `docs/utac_status_alignment_v1.2.md` **und** dem Codex trägt.
+- **Steepness**: $\beta = 4.8$ lässt fehlende Handshake-Reports sofort als Shadow-Alarm (`sys-gap-003`, `sci-shadow-003`) aufglühen.
+- **Membrane Note**: $\zeta(R)$ bleibt gedämpft, wenn Paritätsbriefe, BreakPoint-Rituale und τ*-Berichte gemeinsam erklingen; steigt, sobald eins der Lichter verstummt.
+
+### Formal Thread
+Version 0.2 der Bedeutungs-/Schatten-Membranen erweitert YAML/JSON/MD um Metaquest-Handshakes, Aktualisierungsstempel und neue Gaps (`sys-gap-003`, `sci-gap-004`, `sci-gap-005`). `docs/utac_status_alignment_v1.2.md` enthält jetzt Paritäts-Lücke, Implementation-Row und Aktivierungssequenz, während `seed/codexfeedback.*` selbst als Scope-Anker fungiert.
+
+### Empirical Thread
+System-/Shadow-Maps loggen Δindex-Parität, Codex-Sync und die neue Handshake-Kadenz (Reportlücke > 1 Sprint). Die Wissenschaftsprojekt-Pendants verfolgen Paritätsbrief-Status sowie β-Meta-Regression + τ*-Integration. Neu: `scripts/sigillin_sync.py` liefert Telemetrie-Reports; nächster Schritt ist, diese Kennzahlen automatisiert in den Codex zu schreiben.
+
+### Poetic Thread
+Licht- und Schattenlaternen hängen nun im selben Netz: Die Tagesseite zeichnet den Weg zur Veröffentlichung, die Nachtseite singt Warnungen, bevor der Chor zerreißt. Der Metaquest-Brief ist die Glocke, die beide Horizonte im gleichen Takt hält.
+
+## Entry pr-draft-0069 — Sigillin Sync Harness Activation
+- **Order Parameter**: $R$ bündelt Telemetrie-Lücken, driftende Indizes und fehlende Codex-Echos rund um Metaquest.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn `scripts/sigillin_sync.py` Berichte liefert und Kompasse v0.2.0 denselben Zeitstempel spiegeln.
+- **Steepness**: $\beta = 4.6$ lässt jeden Drift sofort einen Schattenruf auslösen.
+- **Resonance**: Das Telemetrie-Harness koppelt Brücke, Indizes und UTAC-Matrix – Licht & Schatten atmen synchron.
+- **Status**: draft
+
+### Formal Thread
+`scripts/sigillin_sync.py` bringt Report- und Codex-Stempel-Kommandos sowie Trilayer-Paritätsprüfungen. Metaquest System- und Kampagnen-Kompasse steigen auf v0.2.0, Shadow-Pendants spiegeln die neuen Guardrails. UTAC-Status und Feldindex vermerken den aktiven Laufhaken.
+
+### Empirical Thread
+UTAC-Implementation-Map, feldtheorie_index.* und seed_index.* führen das Harness; Shadow-Maps melden explizit, wenn `scripts/sigillin_sync.py` schweigt. Alle betroffenen Trilayer tragen den 2025-12-09T00:00:00Z Zeitstempel.
+
+### Poetic Thread
+Ein Telemetrie-Sextant summt unter der Membran – sobald R nach Θ greift, erklingt sigillin_sync und hält Licht & Schatten in einem Atem, damit kein Metaquest-Morgen seinem Echo vorausläuft.
+
+*Created: 2025-12-09T00:00:00Z*
+
 ## Entry pr-draft-0009 — Psi-Phi Robin Coupling Resonance
 - **Order Parameter**: $R$ misst die Treibergeschwindigkeit, mit der das gekoppelte $(\psi,\phi)$-Geflecht die Robin-Membran berührt.
 - **Critical Threshold**: $\Theta$ markiert den Moment, in dem $\zeta(R)$ vom resonanten Boden zum dämpfenden Himmel umschaltet.
@@ -1105,3 +1138,259 @@ Der Regenwald und die Stadtmembran singen erneut – eine Glocke klingt wahr, di
 
 *Created: 2025-12-06T12:00:00Z*
 
+## Entry pr-draft-0061 — Meta-Regression v2 Bootstrap Awakening
+- **Order Parameter**: $R$ erfasst die β-Varianz quer über alle Domänen-Logistikfits.
+- **Critical Threshold**: $\Theta$ liegt bei einem adjustierten $R^2 \geq 0.7$, wie in `seed/NextStep.txt` gefordert.
+- **Steepness**: $\beta = 0.43$ (WLS) für die aktuelle Feature-Kombination; Bootstrap-Median $\approx 0.99$ deutet auf latent scharfe Steilheit.
+- **Resonance**: Die neue Pipeline verbindet Kovariaten, Bootstrap und Random-Forest-Importanzen, damit die Membran erkennt, wo σ(β(R-Θ)) noch driftet.
+- **Status**: active
+
+### Formal Thread
+`analysis/beta_meta_regression_v2.py` führt eine gewichtete σ(β(R-Θ))-Regression mit acht nichtlinearen Kovariaten, 1.024× Bootstrap-Envelopes und Random-Forest-Importanzen aus. Aktuell WLS $R^2 \approx 0.43$ (adj. $R^2 \approx -0.33$), dennoch bleibt $\Delta\mathrm{AIC}_{\min}=12.79$ oberhalb des Guards. Die Status-Matrix vermerkt Lücke #2 nun als teilweise geschlossen und nennt nächste Kovariaten-Schritte.
+
+### Empirical Thread
+Resultate (`analysis/results/beta_meta_regression_v2_*_20251107T100913Z.{json,csv}`) protokollieren Summary, Diagnostics und Bootstrap-Distributionen. Feature-Importanzen: `coupling_memory` 0.25, `SNR` 0.15, `log_theta` 0.09. Honeybee- und Urban-Heat-Laternen tragen die höchsten Cook's Distances; Analysis-Index YAML/JSON/MD sowie `docs/utac_status_alignment_v1.2.md` spiegeln das Update.
+
+### Poetic Thread
+Der Bootstrap-Sturm ließ die Membran beben: An der Oberfläche ist der Chor noch unsicher, doch in der Tiefe summt die Resonanz fast perfekt. Honeybee und Urban Heat lodern wie Laternen, die nach neuen Filamenten rufen, damit $\Theta$ den kommenden Crescendo-Moment einfängt.
+
+*Created: 2025-11-07T10:09:13Z*
+
+
+## Entry pr-draft-0062 — Metaquest parity beacons & CC BY 4.0 alignment
+- **Order Parameter**: $R$ sammelt den Metaquest-Paritäts- und Lizenz-Backlog (Telemetrie, Storyboard, DOI-Guides).
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn CC BY 4.0 repo-weit greift und die Metaquest-Beacons in Meaning/Shadow-Karten protokolliert sind.
+- **Steepness**: $\beta = 4.8$ hält den Start steil – jeder fehlende Paritätsbrief kippt sofort ins Shadow-Protokoll.
+- **Resonance**: Vier neue Metaquest-Laternen koppeln System/Kampagne & Licht/Schatten; zugleich klingt die Lizenzglocke nun als CC BY 4.0.
+- **Status**: active
+
+### Formal Thread
+LICENSE, CITATION, NEWS, Release Notes und Zenodo-Guides wechseln auf CC BY 4.0.
+System- und Wissenschafts-Membranen steigen auf Version 0.3.0, Metaquest-Beacons (synth-012 bis synth-015) + Shadow-Guards notieren
+Paritäts- und Telemetrielücken; Indizes & Statusmatrix verweisen auf sys-gap-003 / sci-gap-004.
+
+### Empirical Thread
+`docs/utac_status_alignment_v1.2.md`, `feldtheorie_index.*`, `seed_index.*` und alle Metaquest-Trilayer spiegeln die neuen Hooks.
+AGENTS-Dateien erzwingen Trilayer-Disziplin, während CC BY 4.0 Labels in Release Notes, NEWS und Zenodo-Templates propagieren.
+
+### Poetic Thread
+Die Lizenzglocke schlägt im Takt der Metaquest-Laternen: System und Kampagne, Licht und Schatten.
+Der Chor atmet gemeinsam mit dem Paritätsbrief, ζ(R) bleibt ruhig, solange Telemetrie und Storyboard im Gleichklang singen.
+
+*Created: 2025-12-07T00:00:00Z*
+
+## Entry pr-draft-0064 — Metaquest Parity Brief & Index Resonance
+- **Order Parameter**: $R$ sammelt Metaquest-Paritätslücken in Meaning/Shadow-Membranen, Indizes und Agenten-Onboarding.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn der Paritätsbrief Telemetrie, Playlist, Endorsement-Ledger und Codex-ID
+  dokumentiert und alle Indizes/Statuskarten darauf verweisen.
+- **Steepness**: $\beta = 4.8$ – sobald Telemetrie verstummt oder Indizes hinterherhinken, kippt der Launch in Schattenmodus.
+- **Resonance**: Der Paritätsbrief wird zur Stimmgabel, die System- und Kampagnenlaternen synchronisiert; Indizes und Quickstart
+  sorgen dafür, dass neue Agenten ohne Reibung weiterarbeiten.
+- **Status**: active
+
+### Formal Thread
+`docs/metaquest_parity_brief.md` fasst mq-parity-001…004 zusammen. Bedeutungs- und Schattenkarten (System + Wissenschaftsprojekt
+inkl. Metaquest-Beacons) heben neue Gaps (sys-gap-004, sci-gap-006) hervor und setzen Null-Guards auf fehlende Zeitstempel oder
+Codex-IDs. `AGENTS.md` führt einen Quickstart für eintreffende Agenten ein.
+
+### Empirical Thread
+`docs/docs_index.{yaml,json,md}` und `feldtheorie_index.{yaml,json,md}` zählen jetzt 12 Docs, listen das Thema
+`metaquest_parity` und aktualisieren Quicklinks. `docs/utac_status_alignment_v1.2.md` ergänzt mq-parity-Aufgaben im Resonanz-
+Inventar sowie in der Implementation Map. Alle Meaning-/Shadow-JSON+YAML-Dateien tragen Telemetriechecks und Paritätsledger-
+Schwellen.
+
+### Poetic Thread
+Der Paritätsbrief klingt wie eine neue Saite im Orchester: Telemetrie atmet, der Codex antwortet, und Licht wie Schatten finden
+den gleichen Takt. Zwölf Dokumentenlaternen leuchten jetzt über dem Index – bereit, den nächsten Agenten zu führen.
+
+*Created: 2025-12-07T09:00:00Z*
+
+## Entry pr-draft-0063 — Sigillin archiver base-path harmonisation
+- **Order Parameter**: $R$ bindet Sigillin-Wartung an den starren Pfad `/home/user/Feldtheorie`.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn das Archiv-Skript die Repo-Wurzel selbst erkennt oder via `--base-path` justiert werden kann.
+- **Steepness**: $\beta = 4.4$ – sobald Deployment-Umgebungen wechseln, kippt das alte Setup abrupt in Schattenland.
+- **Resonance**: Das Archiv reist jetzt durch Container und CI-Läufe, ohne σ(β(R-Θ)) aus der Codex-Hygiene zu reißen.
+- **Status**: resonant
+
+### Formal Thread
+`scripts/archive_sigillin.py` bestimmt die Repo-Wurzel über den Skript-Ort, akzeptiert optional `--base-path` und schreibt Archivpfade relativ zur Membran.
+`docs/sigillin_maintenance.md` dokumentiert den neuen Schalter; die UTAC-Statusmatrix vermerkt Fortschritt bei Gap #4.
+
+### Empirical Thread
+`python scripts/archive_sigillin.py --sigillin seed/codexfeedback.yaml --dry-run` läuft ohne Hardcoded-Path.
+Docs/Status spiegeln die Änderung, damit Wartungsteams im Container sofort Resonanz aufnehmen.
+
+### Poetic Thread
+Die Archiv-Laterne löst sich vom alten Tunnel und spannt nun ein Resonanzfeld über jede Deployment-Schale.
+Egal wo das Gefäß steht – der Sigillin-Fluss erinnert sich an die Quelle, ζ(R) bleibt geschmeidig.
+
+*Created: 2025-12-07T12:00:00Z*
+
+## Entry pr-draft-0065 — BreakPoint-Infusion & Implementation Lattices
+- **Order Parameter**: $R$ summiert Metaquest-Aufgaben, die ohne BreakPoint- oder Archiv-Spiegelung noch freischwingen.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn Bedeutungs-Sigille und Statusmatrix konkrete Implementation Lattices mit BreakPoint- und Archiv-Hooks ausweisen.
+- **Steepness**: $\beta = 4.7$ – sobald Telemetrie und Rituale gekoppelt sind, schaltet die Aktivierung zackig durch.
+- **Resonance**: System- und Kampagnenlaternen zeigen jetzt exakt, wo Skripte greifen und welche Rituale bei Drift aktiviert werden.
+- **Status**: primed
+
+### Formal Thread
+System- und Wissenschaftsprojekt-Membranen (inklusive Metaquest-Beacons) tragen neue Gaps (`sys-gap-005`, `sci-gap-007`, `sci-gap-008`, `mq-sys-gap-005`, `mq-sci-gap-005`) samt `implementation_lattice`-Tabellen. `docs/utac_status_alignment_v1.2.md` ergänzt eine BreakPoint-Ritual-Zeile im Aktivierungsgitter.
+
+### Empirical Thread
+Jede JSON/YAML-Spiegelung listet jetzt konkrete Pfade (Scripts, Indizes, BreakPoint-Dateien, ArchivSuche) und koppelt sie an Codex-Trigger. Die Statusmatrix verweist auf dieselben Hooks; Paritätsbrief-Checklisten nennen BreakPoint- und Archivquellen.
+
+### Poetic Thread
+Die Laternen marschieren im Gleichschritt: Trommeln aus den BreakPoint-Ritualen hallen zwischen System und Kampagne, während Archiv-Lichter den Zenodo-Pfad erhellen. Jede Lattice-Zeile ist ein Tanzschritt zurück zur Resonanz.
+
+*Created: 2025-12-08T00:00:00Z*
+
+## Entry pr-draft-0066 — Linum Sentinel Integration
+- **Order Parameter**: $R$ sammelt Sentinel-Felder ohne strukturierten Daten-/Analyse-/Kommunikationspfad.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn der Linum-Sentinel Datensatz, Notebook und Paritätsbrief-Anhang mit Codex-ID bereitstellt.
+- **Steepness**: $\beta = 4.9$ – sobald eines der Artefakte fehlt, kippt die Resonanz abrupt in die Schattenlaternen `sci-linum-shadow-001`…`004`.
+- **Resonance**: Reale ökologische Hoch-β-Ereignisse werden ins Bedeutungs-/Shadow-Netz, in Indizes und in die Statuskarte eingebunden, damit Metaquest, Manuskript und Governance auf Sentinel-Signale reagieren können.
+- **Status**: active
+
+### Formal Thread
+Neue Trilayer unter `seed/bedeutungssigillin/.../cases/` und `seed/shadow_sigillin/.../cases/` kartieren den Linum-Sentinel mit logistischer Quartettspezifikation, Gap-IDs (`linum-gap-001`…`003`) und Shadow-Warnungen (`sci-linum-shadow-001`…`004`). Die Wissenschaftsprojekt-Membranen erhielten `sci-core-007`, `sci-gap-009` sowie `sci-shadow-005`. `docs/utac_status_alignment_v1.2.md` führt Sentinel-Aufgaben samt Implementation Map und Unterkapitel „Sentinel-Felder“, während die Indizes (seed & feldtheorie) die neuen Beacons listen.
+
+### Empirical Thread
+Vier neue Trilayer-Dateien (YAML/JSON/MD) plus AGENTS flankieren die Sentinel-Struktur; Meaning/Shadow-Membranen und Indizes spiegeln den neuen Gap. Die Statusmatrix verankert Aufgaben für Datensatz (`data/socio_ecology/`), Analyse-Notebook und Paritätsbrief-Kapitel; Shadow-Guards definieren Kennzahlen für Dataset, Analysis, Brief und Telemetrie.
+
+### Poetic Thread
+Die Kranich-Feder hängt nun im Sigillin-Netz: Sie erinnert daran, dass jedes reale Schwellenereignis seinen Platz im Chor braucht. Licht- und Schattenlaternen flackern im gleichen Takt, bis Datensatz, Analyse und Brief den Sturm beruhigen.
+
+*Created: 2025-12-08T00:00:00Z*
+
+## Entry pr-draft-0067 — Metaquest Bridge Dashboard
+- **Order Parameter**: $R$ zählt Metaquest-Aufgaben, die ohne Brückendashboard zwischen
+  System- und Kampagnenlaternen auseinanderlaufen.
+- **Critical Threshold**: $\Theta$ ist erreicht, sobald Bridge, UTAC-Status und Codex
+  denselben Telemetrie-Zeitstempel + Codex-ID tragen.
+- **Steepness**: $\beta = 4.8$ – sobald Telemetrie und Codex synchron sind, schaltet die
+  Aktivierung scharf.
+- **Resonance**: System-, Kampagnen- und Schatten-Sigille teilen nun ein gemeinsames
+  Dashboard; Schattenwächter melden sofort, wenn die Brücke altert.
+- **Status**: primed
+
+### Formal Thread
+Metaquest-Licht- und -Schattenkarten erhielten Bridge-Gap-IDs (`mq-bridge-gap-*`,
+`sys-gap-006`, `mq-sci-gap-006`) und neue Nullwächter. `docs/utac_status_alignment_v1.2.md`
+trägt eine Brückenzeile in Inventar, Activation Gaps und Implementation Map ein;
+AGENTS.md beschreibt das Ritual für Brückenpflege.
+
+### Empirical Thread
+Alle YAML/JSON-Spiegel wurden regeneriert; `feldtheorie_index.*` verlinkt das Dashboard,
+Schattenkarten messen `bridge freshness`. UTAC-Matrix, Indizes und Codex verweisen auf
+Telemetrie-Zeitstempel, Codex-ID und BreakPoint-Rituale.
+
+### Poetic Thread
+Ein Steg spannt sich zwischen Wirbelsäule und Erzählung. Wenn beide Ufer denselben
+Zeitstempel singen, atmet der Metaquest-Start im Gleichklang und keine Laterne fällt ins
+Schattenrauschen.
+
+*Created: 2025-12-07T00:00:00Z*
+
+## Entry pr-draft-0067 — Metaquest compass lattice
+- **Order Parameter**: $R$ verweist auf verstreute Metaquest-Orchestrierung ohne Schnellorientierung.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn Kompass, Bridge und UTAC-Matrix dieselben Telemetrie-Zeitstempel und Codex-IDs tragen.
+- **Steepness**: $\beta = 4.8$ sorgt dafür, dass jede Drift sofort einen Schattenruf auslöst.
+- **Resonance**: System- und Kampagnen-Kompasse (Licht & Schatten) schließen die Lücke zwischen Beacons, Bridge und Statusmatrix.
+- **Status**: active
+
+### Formal Thread
+Die neuen Kompass-Trilayer dokumentieren mq-sys-/mq-sci-Vektoren, Nullmodelle und Aktivierungshooks. Meaning- und Shadow-Indizes erhielten Gap-IDs (mq-bridge-gap-004, mq-sys-gap-007, mq-sci-gap-007) und Synchronisationshinweise. `docs/utac_status_alignment_v1.2.md` integriert die Kompasse in Inventar, Aktivierungsgaps und Implementierungskarte.
+
+### Empirical Thread
+`seed_index.*` und `feldtheorie_index.*` listen die Kompassdateien; Metaquest-Beacons stehen auf Version 0.2.0. Schattenkarten prüfen Kompass-Zeitstempel, wodurch `mq-sys-shadow-001/002` und `mq-sci-shadow-001…003` Telemetrie-Drift sofort melden.
+
+### Poetic Thread
+Zwei Kompasse schweben über System und Kampagne – Licht und Schatten greifen nach denselben Sternen. Die Bridge atmet im Takt der Matrix; jedes Telemetrie-Flackern ruft sofort durch Codex und Ritual zurück.
+
+*Created: "2025-12-08T00:00:00Z"*
+
+## Entry pr-draft-0070 — Metaquest sigil parity lattice
+- **Order Parameter**: $R$ bündelt Metaquest-Licht/Schatten-Sigille ohne gemeinsamen Codex- oder UTAC-Haken.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn neue Bedeutungs- und Schatten-Sigille dieselbe Codex-ID, UTAC-Zeile und
+  BreakPoint-Rituale innerhalb eines Sprints teilen.
+- **Steepness**: $\beta = 4.8$ – jede Drift zwischen Licht/Schatten triggert sofort mq-bridge-shadow-004.
+- **Resonance**: Sigillin-Sync bekommt ein sicheres Codex-Appendix, während System/Kampagnen-Sigille (Licht & Schatten) die
+  Bridge- und UTAC-Parität verankern.
+- **Status**: active
+
+### Formal Thread
+Reparatur von `scripts/sigillin_sync.py`: Codexeinträge landen nun korrekt in `entries`. Neue Metaquest-System- und
+Kampagnen-Bedeutungs-/Schatten-Sigille dokumentieren Codex-IDs, UTAC-Zeilen, BreakPoint-Rituale und Nullmodelle.
+Meaning-/Shadow-Indizes erhielten `mq-bridge-gap-005` und `mq-bridge-shadow-004`; UTAC-Status listet Sigillin-Parität.
+
+### Empirical Thread
+`seed_index.*` & `feldtheorie_index.*` führen die neuen Trilayer, UTAC-Tabellen referenzieren Telemetrie-Skripte und Rituale.
+Bridge- & Shadow-Indizes spiegeln gemeinsame Timestamps; Tests über manuelle Inspektion bestätigen YAML/JSON/MD Parität.
+
+### Poetic Thread
+Licht und Schatten teilen wieder denselben Codex-Atem: Jede Metaquest-Laterne hat ihr Spiegelbild, und das Sync-Skript trägt
+jeden Eintrag, ohne zu stolpern. Die Brücke summt im Gleichklang mit der UTAC-Matrix.
+
+*Created: 2025-12-10T00:00:00Z*
+
+## Entry pr-draft-0071 — Codex append guardrail regression
+- **Order Parameter**: $R$ misst Codex-Stempelungen ohne Absicherung der `entries`-Membran.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn Sigillin-Sync die Trilayer-Listen prüft und Tests Regressionen auffangen.
+- **Steepness**: $\beta = 4.6$ – schon kleine Divergenzen zwischen JSON/YAML lösen Schattenalarm aus.
+- **Resonance**: Append-Guardrails schützen den Codex, während ein Test die Telemetrie der Regression bewacht.
+- **Status**: active
+
+### Formal Thread
+`scripts/sigillin_sync.py` erhielt `_append_to_entries`, um JSON/YAML-Container strikt als Listen zu behandeln und `deepcopy`
+für YAML zu nutzen. Damit bleibt $\sigma(\beta(R-\Theta))$ stabil, sobald neue Stempel auftauchen.
+
+### Empirical Thread
+`tests/test_sigillin_sync.py` simuliert eine Codex-Trilayer-Umgebung: der Test bestätigt, dass ID `test-run-001` in Markdown,
+JSON und YAML landet und dass die `entries`-Container Listen bleiben.
+
+### Poetic Thread
+Der Codex atmet ruhig: Jede Laterne findet ihren Platz in der Liste, und der neue Wächter-Test lauscht, damit kein Echo mehr
+am Rand verhallt.
+
+*Created: 2025-12-11T00:00:00Z*
+
+## Entry pr-draft-0072 — Metaquest directory indices & UTAC bridge refresh
+- **Order Parameter**: $R$ zählt Metaquest-Verzeichnisse ohne aktuelle Telemetrie-/Codex-Parität.
+- **Critical Threshold**: $\Theta$ wird erreicht, wenn System- und Kampagnen-Verzeichnisse denselben sigillin_sync-Zeitstempel,
+  Codex-ID und UTAC-Handshaker tragen.
+- **Steepness**: $\beta = 4.75$ – kleine Drifts lösen sofortige Directory-Warnungen aus.
+- **Resonance**: Directory-Laternen koppeln Map/Compass/Sigil zurück an UTAC + Codex, damit die Brücke reproduzierbar bleibt.
+- **Status**: active
+
+### Formal Thread
+Neue Light-/Shadow-Directory-Indizes (`metaquest_system_index.*`, `metaquest_campaign_index.*` + Pendants) beschreiben $(R,\Theta,\beta)$,
+BreakPoint-Rituale und sigillin_sync-Hooks. `docs/utac_status_alignment_v1.2.md` erhielt eine Tabellenzeile + Implementation-Task,
+`seed_index.*` und `feldtheorie_index.*` listen die neuen Trilayer.
+
+### Empirical Thread
+Die Verzeichnisse referenzieren `scripts/sigillin_sync.py`, BreakPoint-Protokolle und UTAC-Handshakes; Bridge- und Shadow-Indices
+fügen `mq-sys-shadow-index-001/002` sowie `mq-sci-shadow-index-001/002` Signale hinzu.
+
+### Poetic Thread
+Die Verzeichnisse wirken wie Laternenkammern – jede Telemetrie, jedes Ritual und jeder Codex-Atem hallt jetzt sauber durch die
+Brücke, das Feld bleibt gespannt, doch ruhig.
+
+*Created: 2025-12-11T12:00:00Z*
+
+## Entry pr-draft-0073 — Sigillin Sync Codex Append Guard
+- **Order Parameter**: $R$ misst Codex-Stempelungen ohne Listen-Wächter in JSON/YAML.
+- **Critical Threshold**: $\Theta$ ist erreicht, wenn `append_codex_entry` ausschließlich über `entries`-Container stempelt und YAML/JSON denselben Laternenkörper teilen.
+- **Steepness**: $\beta = 4.6$ – minimale Divergenzen lösen sofortige Guardrails aus.
+- **Resonance**: Der Codex protokolliert Sigillin-Sync-Läufe wieder ohne AttributeError und bleibt durch Regressionstests resonant.
+- **Status**: resonant
+
+### Formal Thread
+`scripts/sigillin_sync.py` klont die Codex-Templates via `deepcopy`, aktualisiert YAML mit der dedizierten Vorlage und hängt neue Läufe über `_append_to_entries` an, damit JSON/YAML strikt Listen bleiben.
+
+### Empirical Thread
+`tests/test_sigillin_sync.py` baut ein temporäres Trilayer und verifiziert, dass ID `sync-test-0001` in Markdown, JSON und YAML landet und die Container Listen bleiben.
+
+### Poetic Thread
+Der Codex lauscht ruhig: Jede Laterne gleitet in die Liste, bewacht von einem Wächtertest, der das Echo im Membranraum hält.
+
+*Created: 2025-12-12T00:00:00Z*

@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "sigil": "bedeutungs-metaquest-system-index",
+    "version": "0.1.0",
+    "created": "2025-12-11T00:00:00Z",
+    "updated": "2025-12-11T12:00:00Z",
+    "logistic": {
+      "R": "Metaquest system orientation backlog: compass upkeep, map parity, sigil telemetry.",
+      "Theta": "docs/utac_status_alignment_v1.2.md + seed/codexfeedback.* mirror the same parity handshake within 24h.",
+      "beta": 4.75,
+      "zeta": "Damped when BreakPoint rituals and sigillin_sync exports keep automation + bridge beacons in phase."
+    },
+    "resonance": "Directory-level compass for the Metaquest system lane; stitches map, compass, sigil, and telemetry harness so σ(β(R-Θ)) stays observable as automation duties surge.",
+    "parent_links": {
+      "bridge_index": "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml",
+      "system_map": "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml",
+      "system_sigil": "seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml"
+    },
+    "shadow_coupling": "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index.yaml"
+  },
+  "lanterns": [
+    {
+      "id": "mq-sys-lantern-001",
+      "title": "Metaquest System Map",
+      "path": "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml",
+      "logistic_focus": "Automation backlog ledger + parity checkpoints.",
+      "parity_links": [
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+        "docs/metaquest_parity_brief.md"
+      ],
+      "evidence": [
+        "scripts/sigillin_sync.py",
+        "seed/BreakPointAnalyse/WayToGo.txt"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "mq-sys-lantern-002",
+      "title": "Metaquest System Compass",
+      "path": "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml",
+      "logistic_focus": "Sprint-level telemetry cadence, index parity, and codex echo.",
+      "parity_links": [
+        "scripts/sigillin_sync.py",
+        "seed/codexfeedback.md"
+      ],
+      "evidence": [
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.md"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "mq-sys-lantern-003",
+      "title": "Metaquest System Sigil",
+      "path": "seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml",
+      "logistic_focus": "Meaning layer translating automation backlog into UTAC + codex guardrails.",
+      "parity_links": [
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.md",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml"
+      ],
+      "evidence": [
+        "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "mq-sys-lantern-004",
+      "title": "Sigillin Sync Telemetry Harness",
+      "path": "scripts/sigillin_sync.py",
+      "logistic_focus": "Exports telemetry reports + codex entries so bridge timestamps stay resonant.",
+      "parity_links": [
+        "seed/codexfeedback.yaml",
+        "docs/utac_status_alignment_v1.2.md#implementation-map"
+      ],
+      "evidence": [
+        "tests/test_sigillin_sync.py"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "mq-sys-lantern-005",
+      "title": "BreakPoint Ritual Ledger",
+      "path": "seed/BreakPointAnalyse/WayToGo.txt",
+      "logistic_focus": "Ritual dampers for ζ(R) before automation pushes.",
+      "parity_links": [
+        "seed/BreakPointAnalyse/ReaktionWayToGo.txt",
+        "seed/Finalize_Publish.txt"
+      ],
+      "evidence": [
+        "docs/utac_status_alignment_v1.2.md#activation-gaps"
+      ],
+      "status": "active"
+    }
+  ],
+  "activation_hooks": [
+    {
+      "trigger": "Telemetry export completed",
+      "action": "Update compass, map, and sigil metadata; record codex entry referencing this index.",
+      "guard": "If timestamp older than one sprint, escalate via mq-sys-shadow-002."
+    },
+    {
+      "trigger": "Parity brief revised",
+      "action": "Refresh bridge index + system lanterns, cite new codex id, notify UTAC matrix.",
+      "guard": "Missing update triggers mq-bridge-shadow-001."
+    }
+  ],
+  "null_model": {
+    "description": "Null = Metaquest system assets drift without a shared directory map; parity checkpoints vanish and automation overshoots Θ.",
+    "detection": [
+      {
+        "signal": "Bridge dashboard references outdated system compass timestamp.",
+        "mitigation": "Run scripts/sigillin_sync.py, propagate timestamp, update this index."
+      },
+      {
+        "signal": "Codex entry lacks mq-sys reference within 24h.",
+        "mitigation": "Append follow-up codex note and refresh lantern metadata to restore σ(β(R-Θ))."
+      }
+    ]
+  }
+}

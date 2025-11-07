@@ -1,0 +1,161 @@
+{
+  "meta": {
+    "sigil": "shadow-wissenschaftsprojekt",
+    "version": "0.3.0",
+    "created": "2025-12-05T00:00:00Z",
+    "updated": "2025-12-07T00:00:00Z",
+    "logistic": {
+      "R": "blocked endorsements, missing validations, stalled outreach, Metaquest parity gaps",
+      "Theta": "campaign slack tolerated per meaning map and Metaquest beacon",
+      "beta": 4.9,
+      "zeta": "rises when BreakPoint rituals ignored or parity telemetry absent"
+    },
+    "coupling": {
+      "lichtpfad": "../../bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml"
+    }
+  },
+  "alerts": [
+    {
+      "id": "sci-shadow-001",
+      "risk": "Safety-delay τ* results absent from manuscript + outreach decks.",
+      "signal": [
+        "docs/utac_status_alignment_v1.2.md missing update references",
+        "paper/ sections lack τ*-ΔAIC citation"
+      ],
+      "fallout": "Campaign promises outrun verified control theory; trust erodes.",
+      "mitigation": [
+        "Schedule dedicated analysis write-up and manuscript addendum.",
+        "Publish codex entry summarising remediation timeline."
+      ],
+      "guard": {
+        "metric": "τ*-coverage flag",
+        "threshold": "should equal true before launch freeze"
+      }
+    },
+    {
+      "id": "sci-shadow-002",
+      "risk": "BreakPoint rituals not consulted before outreach pivot.",
+      "signal": [
+        "New campaign asset without reference to WayToGo/ReaktionWayToGo"
+      ],
+      "fallout": "Narrative loses resilience; β overshoots causing burnout.",
+      "mitigation": [
+        "Run BreakPoint rehearsal; document adjustments in meaning map.",
+        "Engage ethics governance check."
+      ]
+    },
+    {
+      "id": "sci-shadow-003",
+      "risk": "Metaquest parity brief missing from docs + codex before launch freeze.",
+      "signal": [
+        "docs/metaquest_parity_brief.md missing telemetry timestamp or codex id.",
+        "docs/utac_status_alignment_v1.2.md lacks Metaquest handshake entry for >1 sprint.",
+        "seed/codexfeedback.* missing reference to Bedeutungs-/Shadow parity report."
+      ],
+      "fallout": "Launch narrative desynchronises; shadow warnings stay invisible and β overshoots.",
+      "mitigation": [
+        "Fill parity brief fields immediately; cross-reference meaning + shadow maps.",
+        "Log remediation timeline in codex and notify campaign stewards."
+      ],
+      "guard": {
+        "metric": "parity brief status",
+        "threshold": "must read true before public launch lock"
+      }
+    },
+    {
+      "id": "sci-shadow-004",
+      "risk": "Metaquest storyboard + simulator demos out of sync with manuscript claims.",
+      "signal": [
+        "Metaquest campaign beacon reports storyboard gap.",
+        "paper/universal-threshold-field-preprint.md lacks demo references present in simulator presets."
+      ],
+      "fallout": "Outreach promises cannot be reproduced; endorsements question readiness.",
+      "mitigation": [
+        "Align storyboard, update manuscript + simulator references, cite ΔAIC context.",
+        "Record remediation in codex and BreakPoint notes."
+      ],
+      "guard": {
+        "metric": "storyboard parity",
+        "threshold": "true before outreach rehearsal"
+      }
+    },
+    {
+      "id": "sci-shadow-005",
+      "risk": "Sentinel-Fall Linum nicht in Daten/Analyse/Kommunikation gespiegelt.",
+      "signal": [
+        "cases/kranich_linum_2025/ ohne aktuelle Assets oder offene Gaps.",
+        "docs/metaquest_parity_brief.md ohne Sentinel-Abschnitt + Codex-ID.",
+        "data/socio_ecology/ enthält keinen linum-Datensatz."
+      ],
+      "fallout": "Reale Schwellen bleiben unsichtbar; Kampagne verliert Glaubwürdigkeit und Reaktionsfähigkeit.",
+      "mitigation": [
+        "Aktualisiere Bedeutungs- und Shadow-Sigillin, committe Datensatz + Notebook, verweise im Paritätsbrief.",
+        "Log codex entry (linum-2025-*) und informiere BreakPoint-Team."
+      ],
+      "guard": {
+        "metric": "sentinel_sync",
+        "threshold": "true vor Metaquest-Kommunikation"
+      }
+    },
+    {
+      "id": "sci-shadow-006",
+      "risk": "Metaquest Bridge-Dashboard veraltet; Kampagnenzeitplan verliert Kopplung zum System.",
+      "signal": [
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md timestamp >24h älter als letzter Codex-Eintrag.",
+        "Kampagnen-Sigillin meldet andere Telemetrie-/Codex-ID als systemisches Pendant.",
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake ohne Bridge-Row."
+      ],
+      "fallout": "Öffentlichkeitsarbeit und Automation laufen auseinander; Θ verschwindet aus der Erzählung.",
+      "mitigation": [
+        "Bridge-Dashboard aktualisieren, Timestamp + Codex-ID in Kampagnen-Sigillin und UTAC-Matrix spiegeln.",
+        "Telemetrielauf nachholen, falls Zeitstempel divergieren."
+      ],
+      "guard": {
+        "metric": "bridge freshness",
+        "threshold": "≤24h Differenz zu Codexeintrag"
+      }
+    }
+  ],
+  "playbooks": [
+    {
+      "trigger": "sci-shadow-001",
+      "response": [
+        "Freeze public comms, integrate τ* summary, re-open codex entry."
+      ]
+    },
+    {
+      "trigger": "sci-shadow-002",
+      "response": [
+        "Pause campaign, revisit BreakPoint texts, log decision path."
+      ]
+    },
+    {
+      "trigger": "sci-shadow-003",
+      "response": [
+        "Assemble Metaquest parity brief, update docs + codex immediately.",
+        "Verify simulator + manuscript references cite the new brief before relaunch."
+      ]
+    },
+    {
+      "trigger": "sci-shadow-004",
+      "response": [
+        "Synchronise Metaquest storyboard, simulator presets, and manuscript figures.",
+        "Document fix in codex and metaquest shadow guard."
+      ]
+    },
+    {
+      "trigger": "sci-shadow-005",
+      "response": [
+        "Pflege Linum-Sentinel-Sigille, committe Daten + Notebook, erweitere Paritätsbrief.",
+        "Codexeintrag schreiben und Shadow-Signale auf Status completed setzen."
+      ]
+    },
+    {
+      "trigger": "sci-shadow-006",
+      "response": [
+        "Bridge-Dashboard + Kampagnen-Sigillin aktualisieren, Telemetrie synchronisieren.",
+        "Codex + UTAC-Statusmatrix sofort ergänzen; ggf. Telemetrie wiederholen."
+      ]
+    }
+  ]
+}

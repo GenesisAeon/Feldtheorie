@@ -7,8 +7,8 @@
     "version": "1.1.0",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 11,
-    "updated": "2025-12-03"
+    "markdown_files": 12,
+    "updated": "2025-12-07"
   },
   "categories": {
     "theory": {
@@ -33,7 +33,7 @@
       "name": "Infrastructure",
       "description": "README, Operational Resonance Maps",
       "color": "#9B59B6",
-      "count": 3
+      "count": 4
     }
   },
   "markdown_docs": [
@@ -214,6 +214,23 @@
         "sigillin"
       ],
       "description": "UTAC Status & Implementation Matrix (v1.2-pre).\nKartiert vorhandene Resonanzen vs. Aktivierungs-Lücken,\nverweist auf Seed-Sigillin, Safety-Delay-Feld und CREP-Pfade.\n"
+    },
+    {
+      "id": "docs-infra-004",
+      "name": "metaquest_parity_brief.md",
+      "category": "infrastructure",
+      "type": "parity-brief",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 6.1,
+      "keywords": [
+        "metaquest",
+        "parity",
+        "telemetry",
+        "codex",
+        "sigillin"
+      ],
+      "description": "Metaquest Parity Brief – bündelt mq-parity-001…004.\nVerknüpft Bedeutungs-/Shadow-Sigille, Telemetrie,\nSimulator-Playlist und Endorsement-Ledger mit Codex-Echos.\n"
     }
   ],
   "triggers": {
@@ -260,7 +277,8 @@
     ],
     "for_operations": [
       "docs-infra-002",
-      "docs-infra-003"
+      "docs-infra-003",
+      "docs-infra-004"
     ]
   },
   "status_legend": {

@@ -1,0 +1,182 @@
+{
+  "meta": {
+    "sigil": "bedeutungs-metaquest-system-compass",
+    "version": "0.2.0",
+    "created": "2025-12-08T00:00:00Z",
+    "updated": "2025-12-09T00:00:00Z",
+    "logistic": {
+      "R": "Automation + governance backlog required to embed Metaquest into the UTAC system spine.",
+      "Theta": "Parity brief + UTAC status matrix entries refreshed within 24h and echoed in codexfeedback.",
+      "beta": 4.75,
+      "zeta": "Damped when BreakPoint rituals precede automation work and indices refresh without drift."
+    }
+  },
+  "orientation": {
+    "purpose": "Provide a quick map of how Metaquest plugs into indices, automation scripts, and governance controls.",
+    "alignment": [
+      {
+        "reference": "../metaquest_meaning_index.yaml",
+        "description": "Bridge dashboard aligning system + campaign checkpoints."
+      },
+      {
+        "reference": "../../system/metaquest/metaquest_system_map.yaml",
+        "description": "Deep system beacon describing assets, gaps, and implementation lattice."
+      }
+    ],
+    "evidence_threads": [
+      "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+      "docs/metaquest_parity_brief.md",
+      "seed/BreakPointAnalyse/WayToGo.txt",
+      "seed/Finalize_Publish.txt"
+    ]
+  },
+  "lanterns": [
+    {
+      "id": "mq-sys-compass-001",
+      "title": "UTAC Status Matrix",
+      "location": "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+      "resonance_role": "Tracks readiness gaps, ΔAIC guards, and parity checkpoints for Metaquest.",
+      "status": "active",
+      "notes": {
+        "logistic_coupling": "When R grows, consult the matrix before executing automation to keep β disciplined.",
+        "evidence": [
+          "docs/utac_status_alignment_v1.2.md#activation-gaps"
+        ]
+      }
+    },
+    {
+      "id": "mq-sys-compass-002",
+      "title": "Metaquest Parity Brief",
+      "location": "docs/metaquest_parity_brief.md",
+      "resonance_role": "Provides Θ guardrails for telemetry, simulator demos, endorsements, and codex echoes.",
+      "status": "active",
+      "notes": {
+        "logistic_coupling": "Any automation change must log mq-parity-001…004 status before merge.",
+        "evidence": [
+          "seed/codexfeedback.md",
+          "docs/metaquest_parity_brief.md"
+        ]
+      }
+    },
+    {
+      "id": "mq-sys-compass-003",
+      "title": "BreakPoint Rituals",
+      "location": "seed/BreakPointAnalyse/",
+      "resonance_role": "WayToGo & ReaktionWayToGo damp ζ(R) by scripting restart paths and escalation cues.",
+      "status": "active",
+      "notes": {
+        "logistic_coupling": "Run rituals before modifying automation to anchor recovery options.",
+        "evidence": [
+          "seed/BreakPointAnalyse/WayToGo.txt",
+          "seed/BreakPointAnalyse/ReaktionWayToGo.txt"
+        ]
+      }
+    },
+    {
+      "id": "mq-sys-compass-004",
+      "title": "Automation Hooks",
+      "location": "scripts/archive_sigillin.py",
+      "resonance_role": "Index + sigillin hygiene ensuring Ordnungs-Sigillin stay in phase with Metaquest assets.",
+      "status": "active",
+      "notes": {
+        "logistic_coupling": "Invoke dry-run before parity updates; document results in codex.",
+        "evidence": [
+          "scripts/archive_sigillin.py",
+          "Makefile"
+        ]
+      }
+    },
+    {
+      "id": "mq-sys-compass-005",
+      "title": "Codex Feedback Ledger",
+      "location": "seed/codexfeedback.md",
+      "resonance_role": "Maintains tri-layer memory of Metaquest system actions and mq-sys gap progression.",
+      "status": "active",
+      "notes": {
+        "logistic_coupling": "Every compass update demands codex entry referencing mq-sys-gap ids.",
+        "evidence": [
+          "seed/codexfeedback.yaml",
+          "seed/codexfeedback.json"
+        ]
+      }
+    },
+    {
+      "id": "mq-sys-compass-006",
+      "title": "Shadow Compass Coupling",
+      "location": "../../shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml",
+      "resonance_role": "Provides mirrored risks and recovery scripts to guard against automation drift.",
+      "status": "active",
+      "notes": {
+        "logistic_coupling": "Review before introducing new automation to anticipate failure thresholds.",
+        "evidence": [
+          "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.md"
+        ]
+      }
+    }
+  ],
+  "pending_vectors": [
+    {
+      "id": "mq-sys-vector-001",
+      "description": "Run `scripts/sigillin_sync.py` telemetry exports and document the timestamp propagation plan.",
+      "target_locations": [
+        "scripts/sigillin_sync.py",
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+        "metaquest_system_map.yaml"
+      ],
+      "guardrails": {
+        "Theta": "Telemetry timestamp published with each sprint and mirrored in bridge + compass.",
+        "beta": 4.8,
+        "null_model": "Telemetry missing → automation freeze + mq-sys-shadow alert."
+      }
+    },
+    {
+      "id": "mq-sys-vector-002",
+      "description": "Establish CI/Nox guard (`make preset-guard` or similar) to verify index parity after Metaquest changes.",
+      "target_locations": [
+        "Makefile",
+        "noxfile.py",
+        "docs/utac_status_alignment_v1.2.md#implementation-map"
+      ],
+      "guardrails": {
+        "Theta": "CI job compares indices vs. sigil directories on every PR touching Metaquest assets.",
+        "beta": 4.6,
+        "null_model": "Index drift passes unnoticed and triggers mq-bridge-shadow-003."
+      }
+    },
+    {
+      "id": "mq-sys-vector-003",
+      "description": "Backfill system compass narrative with ΔAIC/null comparisons for Metaquest automation vs. baseline.",
+      "target_locations": [
+        "metaquest_system_compass.md",
+        "seed/codexfeedback.*"
+      ],
+      "guardrails": {
+        "Theta": "Compass lists null automation scenario and cites ΔAIC improvements.",
+        "beta": 4.5,
+        "null_model": "Automation changes proceed without falsifiability check."
+      }
+    }
+  ],
+  "activation_hooks": [
+    {
+      "trigger": "Parity brief updated",
+      "response": "Refresh compass tri-layer, propagate mq-sys-gap status, log codex entry, ping shadow compass."
+    },
+    {
+      "trigger": "Telemetry export generated",
+      "response": "Record timestamp in compass + bridge, confirm indices refreshed, cite UTAC matrix."
+    },
+    {
+      "trigger": "Automation CI failure",
+      "response": "Consult shadow compass, rerun BreakPoint ritual, document remediation before resuming."
+    }
+  ],
+  "null_model": {
+    "description": "Metaquest automation evolves without parity brief checkpoints or codex echoes.",
+    "risks": [
+      "Indices drift and navigation fails before launch freeze.",
+      "Telemetry timestamps diverge from campaign narrative, eroding trust.",
+      "Shadow alerts trigger late, forcing emergency remediation."
+    ]
+  }
+}

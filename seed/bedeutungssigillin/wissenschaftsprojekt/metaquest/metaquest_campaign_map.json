@@ -1,0 +1,316 @@
+{
+  "meta": {
+    "sigil": "bedeutungs-wissenschafts-metaquest",
+    "version": "0.2.0",
+    "created": "2025-12-07T00:00:00Z",
+    "updated": "2025-12-08T00:00:00Z",
+    "logistic": {
+      "R": "Outstanding Metaquest launch tasks (manuscript, outreach, endorsements)",
+      "Theta": "Checkpoints in Manuskriptfinalisierung pdf + UTAC status matrix",
+      "beta": 4.8,
+      "zeta": "Soothes when BreakPoint rituals and parity brief keep cadence"
+    },
+    "resonance": "Holds the campaign-facing meaning for Metaquest: manuscripts, simulator\ndemos, endorsements, and outreach scripts remain synchronised with the\nsystem spine so the launch enters resonance instead of overshooting.\n",
+    "shadow_coupling": "../../shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml"
+  },
+  "existing_assets": [
+    {
+      "id": "mq-sci-asset-001",
+      "title": "Manuskriptfinalisierung & Kampagnenstart",
+      "location": "../../Manuskriptfinalisierung und Kampagnenstart.pdf",
+      "resonance": "Defines readiness checklist for publication, endorsements, and campaign pacing.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "seed/Finalize_Publish.txt",
+          "seed/Finalisierung_Plattform.txt"
+        ],
+        "logistic_coupling": "Θ checkpoints align Metaquest launch gating with manuscript + automation tasks.\n"
+      }
+    },
+    {
+      "id": "mq-sci-asset-002",
+      "title": "UTAC Status Alignment v1.2",
+      "location": "../../../docs/utac_status_alignment_v1.2.md",
+      "resonance": "Tracks activation gaps, including Metaquest parity and telemetry requirements.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+          "docs/utac_status_alignment_v1.2.md#activation-gaps"
+        ],
+        "logistic_coupling": "Provides ΔAIC guards and activation sequencing so β remains disciplined during launch.\n"
+      }
+    },
+    {
+      "id": "mq-sci-asset-003",
+      "title": "BreakPoint Analyse Rituals",
+      "location": "../../BreakPointAnalyse/",
+      "resonance": "WayToGo + ReaktionWayToGo capture pivot responses and resilience scripts.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "seed/BreakPointAnalyse/WayToGo.txt",
+          "seed/BreakPointAnalyse/ReaktionWayToGo.txt"
+        ],
+        "logistic_coupling": "ζ(R) is damped when these rituals precede Metaquest outreach decisions.\n"
+      }
+    },
+    {
+      "id": "mq-sci-asset-004",
+      "title": "Metaquest Parity Brief",
+      "location": "../../../docs/metaquest_parity_brief.md",
+      "resonance": "Condenses mq-parity-001…004 so telemetry, demos, endorsements, and codex hooks align.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+          "seed/Finalize_Publish.txt"
+        ],
+        "logistic_coupling": "Provides Θ checkpoints for parity timestamp, simulator playlist, and endorsement ledger references in outreach assets.\n"
+      }
+    },
+    {
+      "id": "mq-sci-asset-005",
+      "title": "Metaquest Bridge Index",
+      "location": "../metaquest_meaning_index.yaml",
+      "resonance": "Connects system backbone and campaign storyline through a shared dashboard with telemetry + codex parity.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "../metaquest_meaning_index.md",
+          "../../../shadow_sigillin/metaquest/metaquest_shadow_index.md"
+        ],
+        "logistic_coupling": "Ensures campaign milestones cite the same telemetry timestamp and codex id as the system beacon; drift triggers mq-bridge-shadow-001.\n"
+      }
+    },
+    {
+      "id": "mq-sci-asset-006",
+      "title": "Metaquest Campaign Compass",
+      "location": "../metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml",
+      "resonance": "Quick orientation through manuscript, outreach, endorsement, and simulator hooks.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "../metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md"
+        ],
+        "logistic_coupling": "Lists mq-sci vectors so bridge + campaign map stay in phase between major updates."
+      }
+    }
+  ],
+  "needed_resonances": [
+    {
+      "id": "mq-sci-gap-001",
+      "description": "Complete parity brief with telemetry timestamp, simulator playlist, endorsement ledger, and codex id.",
+      "target_location": [
+        "docs/metaquest_parity_brief.md",
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+        "seed/codexfeedback.*"
+      ],
+      "threshold": {
+        "Theta": "brief lists latest telemetry + codex id before external announcements",
+        "beta": 4.9
+      },
+      "null_guard": "Shadow alert sci-shadow-003 fires if timestamp or codex link missing."
+    },
+    {
+      "id": "mq-sci-gap-002",
+      "description": "Storyboard Metaquest simulator demos linked to manuscript figures and outreach schedule.",
+      "target_location": [
+        "simulator/presets/",
+        "paper/universal-threshold-field-preprint.md",
+        "docs/outreach/"
+      ],
+      "threshold": {
+        "Theta": "demo list mirrored between manuscript + simulator before press briefing",
+        "beta": 4.7
+      },
+      "null_guard": "If storyboard missing, BreakPoint ritual mandates review before release."
+    },
+    {
+      "id": "mq-sci-gap-003",
+      "description": "Endorsement + ethics alignment ledger specific to Metaquest activation.",
+      "target_location": [
+        "seed/EndorsementarXiv.pdf",
+        "ETHICS.md",
+        "docs/utac_status_alignment_v1.2.md#implementation-map"
+      ],
+      "threshold": {
+        "Theta": "ledger updated with Metaquest commitments and approvals",
+        "beta": 4.5
+      },
+      "null_guard": "If ledger stale, escalate via sci-shadow-001 for governance hold."
+    },
+    {
+      "id": "mq-sci-gap-004",
+      "description": "Ensure outreach/manuscript/simulator assets cite latest parity brief revision.",
+      "target_location": [
+        "docs/metaquest_parity_brief.md",
+        "paper/",
+        "simulator/",
+        "docs/outreach/"
+      ],
+      "threshold": {
+        "Theta": "all outward-facing assets note parity revision + codex id within 24h",
+        "beta": 4.6
+      },
+      "null_guard": "Missing citation triggers campaign shadow guard review."
+    },
+    {
+      "id": "mq-sci-gap-005",
+      "description": "Broadcast ArchivSucheUTAC lineage across outreach + manuscript appendices for Metaquest launch.",
+      "target_location": [
+        "seed/ArchivSucheUTAC/",
+        "ZENODO_DESCRIPTION_v1.1.md",
+        "paper/appendices (planned)",
+        "docs/outreach/"
+      ],
+      "threshold": {
+        "Theta": "archive reference visible in parity brief + press kit before launch",
+        "beta": 4.4
+      },
+      "null_guard": "Governance review halts release when archive lineage absent."
+    },
+    {
+      "id": "mq-sci-gap-006",
+      "description": "Update bridge dashboard with campaign milestones and codex ids whenever outreach cadence shifts.",
+      "target_location": [
+        "metaquest/metaquest_meaning_index.yaml",
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+        "docs/outreach/"
+      ],
+      "threshold": {
+        "Theta": "Bridge dashboard reflects latest campaign milestone within 24h",
+        "beta": 4.6
+      },
+      "null_guard": "If dashboard stale, escalate to mq-bridge-shadow-001 and mq-sci-shadow-001."
+    },
+    {
+      "id": "mq-sci-gap-007",
+      "description": "Sync campaign compass telemetry, endorsements, and archive lineage into UTAC matrix + codex templates.",
+      "target_location": [
+        "metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml",
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+        "seed/codexfeedback.*"
+      ],
+      "threshold": {
+        "Theta": "Compass updates cited in UTAC matrix + codex within 24h",
+        "beta": 4.5
+      },
+      "null_guard": "Missing sync triggers mq-sci-shadow-001 and mq-sci-shadow-002."
+    }
+  ],
+  "activation_hooks": [
+    {
+      "trigger": "Campaign milestone reached (e.g. endorsement returned)",
+      "response": "Update tri-layer, cross-link to codex + docs, notify simulator briefing list."
+    },
+    {
+      "trigger": "New outreach asset created",
+      "response": "Verify BreakPoint references, attach ΔAIC context, cite parity brief."
+    },
+    {
+      "trigger": "Launch date adjusted",
+      "response": "Re-run BreakPoint ritual, refresh status matrix, document ΔΘ in codex."
+    }
+  ],
+  "null_model_reference": {
+    "description": "Null = Metaquest narrative runs without parity brief or BreakPoint guard; endorsements stall and outreach drifts.",
+    "monitoring": [
+      {
+        "metric": "parity brief status",
+        "condition": "Metaquest brief referenced in docs + codex"
+      },
+      {
+        "metric": "BreakPoint acknowledgement",
+        "condition": "Every outreach artifact cites WayToGo/ReaktionWayToGo"
+      },
+      {
+        "metric": "endorsement ledger",
+        "condition": "Endorsement file updated ≤14 days ago"
+      }
+    ]
+  },
+  "implementation_lattice": [
+    {
+      "gap_id": "mq-sci-gap-001",
+      "implementation_sites": [
+        "docs/metaquest_parity_brief.md",
+        "docs/utac_status_alignment_v1.2.md",
+        "seed/codexfeedback.*"
+      ],
+      "primary_hook": "Telemetry timestamp + codex echo",
+      "evidence_trail": [
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml",
+        "docs/metaquest_parity_brief.md"
+      ]
+    },
+    {
+      "gap_id": "mq-sci-gap-002",
+      "implementation_sites": [
+        "simulator/presets/",
+        "paper/",
+        "docs/outreach/"
+      ],
+      "primary_hook": "Demo playlist ↔ manuscript sync",
+      "evidence_trail": [
+        "seed/Manuskriptfinalisierung und Kampagnenstart.pdf",
+        "seed/BreakPointAnalyse/WayToGo.txt"
+      ]
+    },
+    {
+      "gap_id": "mq-sci-gap-003",
+      "implementation_sites": [
+        "seed/EndorsementarXiv.pdf",
+        "ETHICS.md",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "primary_hook": "Endorsement + ethics ledger refresh",
+      "evidence_trail": [
+        "seed/Finalize_Publish.txt",
+        "docs/utac_status_alignment_v1.2.md#implementation-map"
+      ]
+    },
+    {
+      "gap_id": "mq-sci-gap-004",
+      "implementation_sites": [
+        "docs/metaquest_parity_brief.md",
+        "paper/",
+        "simulator/",
+        "docs/outreach/"
+      ],
+      "primary_hook": "Parity citation audit",
+      "evidence_trail": [
+        "docs/metaquest_parity_brief.md",
+        "seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml"
+      ]
+    },
+    {
+      "gap_id": "mq-sci-gap-005",
+      "implementation_sites": [
+        "seed/ArchivSucheUTAC/",
+        "ZENODO_DESCRIPTION_v1.1.md",
+        "paper/appendices (planned)",
+        "docs/outreach/"
+      ],
+      "primary_hook": "Archive lineage broadcast",
+      "evidence_trail": [
+        "docs/utac_status_alignment_v1.2.md#resonant-inventory",
+        "seed/codexfeedback.*"
+      ]
+    },
+    {
+      "gap_id": "mq-sci-gap-007",
+      "implementation_sites": [
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml",
+        "docs/utac_status_alignment_v1.2.md",
+        "seed/codexfeedback.*"
+      ],
+      "primary_hook": "Compass ↔ matrix ↔ codex synchronisation",
+      "evidence_trail": [
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md",
+        "docs/metaquest_parity_brief.md"
+      ]
+    }
+  ]
+}

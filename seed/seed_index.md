@@ -150,7 +150,7 @@ Willkommen im **semantischen Gedächtnis** des Feldtheorie-Projekts! Dieser Inde
 
 #### **🌿 Socio-Ecology** (`socio_ecology/`)
 - Amazon Moisture, Urban Heat, Planetary Thresholds, Tipping Points
-- **Highlights:** `amazon_moisture_resilience.md` (β=14.6), `urban_heat_canopy_resonance.md` (β=16.3 - Outlier!)
+- **Highlights:** `amazon_moisture_resilience.md` (β=14.6), `urban_heat_canopy_resonance.md` (β=16.3 - Outlier!), `cases/kranich_linum_2025/kranich_linum_2025.md` (Sentinel-Fall)
 
 **Wann nutzen?** Wenn du domain-spezifische Anwendungen suchst
 
@@ -409,7 +409,7 @@ active_important = [
 17. sigillin/sigillin_schema.yaml (active)
 18. sigillin/examples/ (active)
 
-### Synthese & Feedback (7 Dokumente)
+### Synthese & Feedback (15 Dokumente)
 1. **codexfeedback.yaml** - Trilayer YAML (🔥 high)
 2. **codexfeedback.json** - Trilayer JSON (🔥 high)
 3. **codexfeedback.md** - Trilayer MD (🔥 high)
@@ -423,17 +423,81 @@ active_important = [
    - Trilayer-Index (YAML + JSON + MD)
    - 11 Kernquellen aus 6 Domänen (AI, Biology, Climate, Geophysics, Cognition, Physics)
    - Highlights: Wei (2022), Lenski LTEE (2008), Lenton (2008), Verhulst (1838)
+8. **bedeutungssigillin/system/system_meaning_map.{yaml,json,md}**
+   - Bedeutungs-Sigillin der Systemebene (Automation, Codex, Schema, Metaquest)
+   - Markiert Resonanzen: Index-Automatisierung, Codex-Guard, Telemetrie
+9. **shadow_sigillin/system/system_shadow_map.{yaml,json,md}**
+   - Schatten-Sigillin: Frühwarnung vor Index-Drift, Codex-Desync & Metaquest-Parität
+   - Playbooks für `scripts/archive_sigillin.py`, Codex-Pflege & Telemetrie-Lücken
+10. **bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.{yaml,json,md}**
+    - Bedeutungs-Sigillin für Manuskript, Kampagne & Metaquest Launch
+    - Verknüpft τ*-Integration, BreakPoint-Rituale, Demo- & Paritätsplanung
+11. **shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.{yaml,json,md}**
+    - Schatten-Sigillin: τ*-Stille, Ritual-Drift, Metaquest-Parität & Storyboard-Warnungen
+    - Enthält Stop-Playbooks für Outreach & Governance
+12. **bedeutungssigillin/system/metaquest/metaquest_system_map.{yaml,json,md}**
+    - Metaquest System-Beacon v0.2.0: Paritätsbrief, Telemetrie, Index-Sync
+13. **shadow_sigillin/system/metaquest/metaquest_system_shadow.{yaml,json,md}**
+    - Metaquest System-Shadow v0.2.0: Telemetrie-Ausfall, Paritätsalarm, Index-Drift
+14. **bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.{yaml,json,md}**
+    - Metaquest Kampagnen-Beacon v0.2.0: Storyboard, Endorsements, Paritätsbrief
+15. **shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.{yaml,json,md}**
+    - Metaquest Kampagnen-Shadow v0.2.0: Storyboard-Drift, Paritätslücken, Governance-Verzug
+16. **bedeutungssigillin/metaquest/system/metaquest_system_compass.{yaml,json,md}**
+    - System-Kompass v0.2.0: Schnellorientierung für Automation, Telemetrie & Codex-Hooks
+17. **shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.{yaml,json,md}**
+    - System-Shadow-Kompass: Alarme für Paritätsdrift, Telemetrie-Stille, Indexabweichung
+18. **bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}**
+    - Kampagnen-Kompass v0.2.0: Manuskript-Cadenz, Outreach-Playlist, Endorsement-Ledger
+19. **shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.{yaml,json,md}**
+    - Kampagnen-Shadow-Kompass: Paritätszitate, Storyboard-Sync, Governance-Freshness
+20. **bedeutungssigillin/system/metaquest/metaquest_system_sigil.{yaml,json,md}**
+    - System-Bedeutungs-Sigillin v0.1.0: Automationsaufgaben, Codex-IDs, UTAC-Kopplung
+21. **shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.{yaml,json,md}**
+    - System-Schatten-Sigillin v0.1.0: Telemetrie-Blackout, Index-Drift, Codex-Stille
+22. **bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.{yaml,json,md}**
+    - Kampagnen-Bedeutungs-Sigillin v0.1.0: Manuskript-, Outreach-, Endorsement-Kopplung
+23. **shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.{yaml,json,md}**
+    - Kampagnen-Schatten-Sigillin v0.1.0: Paritätsstille, Manuskript-Lag, Outreach-Drift
+24. **bedeutungssigillin/metaquest/system/metaquest_system_index.{yaml,json,md}**
+    - System-Directory-Index v0.1.0: Karte, Kompass, Sigil & Telemetrie-Harness inkl. Ritualreferenzen
+25. **shadow_sigillin/metaquest/system/metaquest_system_shadow_index.{yaml,json,md}**
+    - System-Shadow-Directory-Index v0.1.0: Überwacht Index-Frische, Telemetrie-Exports & BreakPoint-Echos
+26. **bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.{yaml,json,md}**
+    - Kampagnen-Directory-Index v0.1.0: Manuskript-Cadenz, Outreach-Assets, ArchivSuche & Paritätsbrief
+27. **shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.{yaml,json,md}**
+    - Kampagnen-Shadow-Directory-Index v0.1.0: ArchivSuche-Parität, Endorsement-Zeitstempel & Paritätsbrief-Sync
 
 ### Domain-Spezifisch (6 × ~4-5 Dokumente = ~28 Dokumente)
 Siehe oben unter "Domain-Spezifische Felder"
 
-**Gesamt:** ~52 Root-Level Dokumente + 38 PDFs (via papers_index) + 19 ArchivSucheUTAC + 11 Quellen (via sources_index) = **120 Dokumente** 🎯
+**Gesamt:** ~56 Root-Level Dokumente + 38 PDFs (via papers_index) + 19 ArchivSucheUTAC + 11 Quellen (via sources_index) = **124 Dokumente** 🎯
 
 **Neu hinzugefügt (6. Nov 2025):**
 - ✅ 7 Root-Level Dokumente (TXT/MD)
 - ✅ papers_index Trilayer (38 PDFs)
 - ✅ ArchivSucheUTAC Referenz (19 Dateien)
 - ✅ sources_index Trilayer (11 Kernquellen)
+
+**Aktualisierung (5. Dez 2025):**
+- 🌱 Bedeutungs-/Schatten-Sigillin Ordner für System & Wissenschaftsprojekt
+- 🌉 Neue Trilayer-Membranen + Shadow-Playbooks in den Index integriert
+- 🛡️ Fokus: Codex-Sync-Guards, Index-Automatisierung, τ*-Kampagnenaufsicht
+
+**Aktualisierung (7. Dez 2025):**
+- 🌐 Metaquest System- & Kampagnen-Beacons + Shadow-Guards (Trilayer) aufgenommen
+- 🧭 System/Wissenschaftsprojekt Membranen auf Version 0.3.0 mit Metaquest-Verweisen aktualisiert
+- 🛡️ Fokus: Paritätsbrief, Telemetrie-Handshakes, Storyboard-Parität
+
+**Aktualisierung (8. Dez 2025):**
+- 🧭 Neue Metaquest-Kompass-Trilayer (System & Kampagne, Licht & Schatten) aufgenommen
+- 🔁 Brücke, Kompass und UTAC-Matrix mit neuen Synchronisations-Gaps (mq-bridge-gap-004, mq-sys-gap-007, mq-sci-gap-007)
+- 🛡️ Fokus: Telemetrie-Zeitstempel, Codex-Echos, BreakPoint-Rituale als Schnellwarnsystem
+
+**Aktualisierung (9. Dez 2025):**
+- ⚙️ `scripts/sigillin_sync.py` Telemetrie-Harness liefert Paritätsberichte für R↦Θ Synchronisation (β≈4.6, ζ(R) via Codex-Log)
+- 🧭 Metaquest System- & Kampagnen-Kompass auf Version 0.2.0 gehoben; Brücke/Indices spiegeln neuen Timestampplan
+- 🛡️ Fokus: sigillin_sync-Report in UTAC-Matrix einbetten und Shadow-Kompass-Alerts aktiv halten
 
 ---
 

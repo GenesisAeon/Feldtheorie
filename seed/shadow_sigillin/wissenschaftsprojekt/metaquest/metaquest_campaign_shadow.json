@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "sigil": "shadow-wissenschafts-metaquest",
+    "version": "0.2.0",
+    "created": "2025-12-07T00:00:00Z",
+    "updated": "2025-12-08T00:00:00Z",
+    "logistic": {
+      "R": "Unresolved Metaquest blockers (endorsements, outreach gaps, validation delays)",
+      "Theta": "Parity brief published + BreakPoint ritual completed before announcements",
+      "beta": 5.0,
+      "zeta": "Rises when rituals ignored or endorsements stale"
+    },
+    "coupling": {
+      "lichtpfad": "../../bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml",
+      "compass": "../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml"
+    }
+  },
+  "alerts": [
+    {
+      "id": "mq-sci-shadow-001",
+      "risk": "Metaquest parity brief missing from docs/codex before launch communication.",
+      "signal": [
+        "docs/metaquest_parity_brief.md missing telemetry timestamp or codex id.",
+        "docs/utac_status_alignment_v1.2.md lacks Metaquest parity reference for >1 sprint.",
+        "seed/codexfeedback.* without Metaquest entry in last sprint."
+      ],
+      "fallout": "Narrative loses parity; β overshoots and endorsements hesitate.",
+      "mitigation": [
+        "Fill parity brief fields; cross-link to system + shadow sigils.",
+        "Delay announcements until codex + docs updated."
+      ],
+      "guard": {
+        "metric": "parity brief status",
+        "threshold": "true prior to public comms"
+      },
+      "signals": [
+        "metaquest_campaign_compass.yaml older than parity brief timestamp by >24h."
+      ]
+    },
+    {
+      "id": "mq-sci-shadow-002",
+      "risk": "Simulator demos and manuscript figures diverge.",
+      "signal": [
+        "Storyboard absent or outdated vs. simulator presets.",
+        "paper/universal-threshold-field-preprint.md lacks Metaquest demo references."
+      ],
+      "fallout": "Outreach promises cannot be reproduced; credibility drop.",
+      "mitigation": [
+        "Rebuild storyboard, align presets, cite ΔAIC context in manuscript + docs.",
+        "Log codex update with remediation path."
+      ],
+      "guard": {
+        "metric": "storyboard parity",
+        "threshold": "true before outreach rehearsal"
+      },
+      "signals": [
+        "metaquest_campaign_compass.json missing mq-sci-vector-001 playlist update."
+      ]
+    },
+    {
+      "id": "mq-sci-shadow-003",
+      "risk": "Endorsement + ethics ledger stale for Metaquest commitments.",
+      "signal": [
+        "seed/EndorsementarXiv.pdf missing Metaquest status update >14 days.",
+        "ETHICS.md not cross-referenced in latest codex entry."
+      ],
+      "fallout": "Governance out of sync; release blocked and trust erodes.",
+      "mitigation": [
+        "Update endorsement ledger, confirm ethics commitments, cite codex + docs.",
+        "Escalate to governance steward if approvals delayed."
+      ],
+      "guard": {
+        "metric": "endorsement freshness",
+        "threshold": "≤14 days since last update"
+      },
+      "signals": [
+        "metaquest_campaign_compass.md lacks mq-sci-vector-002 endorsement status line."
+      ]
+    }
+  ],
+  "playbooks": [
+    {
+      "trigger": "mq-sci-shadow-001",
+      "response": [
+        "Freeze public messaging.",
+        "Publish parity brief and note cross-links in codex."
+      ]
+    },
+    {
+      "trigger": "mq-sci-shadow-002",
+      "response": [
+        "Synchronise simulator + manuscript; run ΔAIC check on demo data.",
+        "Document fix in codex and BreakPoint ritual notes."
+      ]
+    },
+    {
+      "trigger": "mq-sci-shadow-003",
+      "response": [
+        "Update endorsement ledger + ethics cross-links.",
+        "Notify governance team and record timeline in codex."
+      ]
+    }
+  ]
+}
