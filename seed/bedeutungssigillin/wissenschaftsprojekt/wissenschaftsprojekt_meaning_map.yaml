@@ -1,0 +1,84 @@
+meta:
+  sigil: bedeutungs-wissenschaftsprojekt
+  version: 0.1.0
+  created: '2025-12-05T00:00:00Z'
+  logistic:
+    R: 'open scientific commitments (manuscript, campaigns, validations)'
+    Theta: 'documented readiness checkpoints in seed/ and docs/'
+    beta: 4.6
+    zeta: 'stabilised by campaign playbooks and endorsement rituals'
+  resonance: |
+    Illuminates how the scientific project narrative stays coherent while UTAC v1.2 moves
+    from manuscript finalisation to public activation.
+existing_threads:
+  - id: sci-core-001
+    title: Manuskriptfinalisierung & Kampagnenstart
+    location: "seed/Manuskriptfinalisierung und Kampagnenstart.pdf"
+    status: canonical
+    notes:
+      logistic_role: 'Defines Θ checkpoints for publication, endorsement, and outreach.'
+      evidence:
+        - seed/FinalerPlan.txt
+        - seed/Finalize_Publish.txt
+      resonance: 'Establishes β≈4.8 ramp once preprint, endorsements, and campaign collateral align.'
+  - id: sci-core-002
+    title: UTAC Status Alignment v1.2
+    location: docs/utac_status_alignment_v1.2.md
+    status: active
+    notes:
+      logistic_role: 'Maps existing vs needed assets across theory, analysis, simulation, sigillin.'
+      evidence:
+        - analysis/results/universal_beta_summary.json
+      resonance: 'Keeps ζ(R) damped by providing immediate activation map updates.'
+  - id: sci-core-003
+    title: BreakPoint Analyse Waypoints
+    location: seed/BreakPointAnalyse/
+    status: active
+    notes:
+      logistic_role: 'Records historical inflection points and response rituals.'
+      evidence:
+        - seed/BreakPointAnalyse/WayToGo.txt
+        - seed/BreakPointAnalyse/ReaktionWayToGo.txt
+      resonance: 'Provides poetic + procedural guardrails for campaign pivots.'
+needed_resonances:
+  - id: sci-gap-001
+    description: 'Integrate safety-delay field results into manuscript narrative and campaign briefing.'
+    anchors:
+      - simulation/safety_delay_field.py
+      - docs/utac_status_alignment_v1.2.md#activation-gaps
+    threshold:
+      Theta: 'τ*-sweep summary drafted'
+      beta: 4.9
+    zeta_cue: 'Use BreakPoint response rituals to keep outreach pacing stable.'
+  - id: sci-gap-002
+    description: 'Public-facing Sigillin index bridging Bedeutungs + Shadow narratives for launch.'
+    anchors:
+      - feldtheorie_index.*
+      - docs/press_kit (planned)
+    threshold:
+      Theta: 'press kit and sigil summary ready for partners'
+      beta: 4.5
+    zeta_cue: 'Coordinate with ethics commitments to avoid resonance overshoot.'
+  - id: sci-gap-003
+    description: 'Campaign schedule handshake with UTAC simulator demos.'
+    anchors:
+      - simulator/
+      - docs/utac_status_alignment_v1.2.md#implementation-map
+    threshold:
+      Theta: 'demo playlist + narrative script locked'
+      beta: 4.7
+    zeta_cue: 'Ensure ΔAIC beacons accompany each demo clip.'
+activation_sequence:
+  - phase: 'Resonance Briefing'
+    actions:
+      - 'Update docs/utac_status_alignment_v1.2.md with new Bedeutungs-/Shadow directories.'
+      - 'Summarise readiness deltas in system & project meaning maps.'
+  - phase: 'Campaign Synchronisation'
+    actions:
+      - 'Draft outreach timeline referencing BreakPoint rituals.'
+      - 'Wire simulator demo hooks into press materials.'
+null_model_reference:
+  description: 'Project proceeds without integrating new safety-delay + sigillin insights.'
+  risk:
+    - 'Publication narrative drifts from operational reality (ΔAIC guards missing).'
+    - 'Campaign pacing ignores shadow signals leading to resonance overshoot.'

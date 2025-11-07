@@ -1,0 +1,82 @@
+meta:
+  sigil: bedeutungs-system
+  version: 0.1.0
+  created: '2025-12-05T00:00:00Z'
+  logistic:
+    R: 'platform workload + automation backlog across Makefile, CI, simulator'
+    Theta: 'documented governance cadence (REPRODUCE.md, RELEASE_NOTES*)'
+    beta: 4.3
+    zeta: 'impedance damped by archival scripts and preset guards'
+  resonance: |
+    Captures how the UTAC platform skeleton keeps σ(β(R-Θ)) disciplined so that
+    new modules inherit reproducible membranes without fragmenting meaning sigils.
+existing_assets:
+  - id: sys-ops-001
+    title: Makefile Resonance Targets
+    location: Makefile
+    resonance: 'Encodes lint/test/typecheck logistics and Sigillin guards as command hooks.'
+    status: stable
+    notes:
+      evidence:
+        - REPRODUCE.md
+        - noxfile.py
+      logistic_coupling: |
+        When R (pending automation) rises, `make preset-guard` and `make docs-index`
+        keep Θ anchored by refreshing indices and simulator presets.
+  - id: sys-ops-002
+    title: Codex Feedback Mandate
+    location: seed/codexfeedback.*
+    resonance: 'Tri-layer ledger aligning Bedeutungs- + Ordnungs-Sigillin with release cadence.'
+    status: active
+    notes:
+      evidence:
+        - docs/utac_status_alignment_v1.2.md
+      logistic_coupling: |
+        β=5.0 ensures sharp activation: any structural change without codex entry is
+        flagged as ζ(R) drift.
+  - id: sys-ops-003
+    title: Sigillin Schema v0.2.0
+    location: seed/sigillin/sigillin_schema.yaml
+    resonance: 'Defines structural expectations for meaning and shadow sigils.'
+    status: active
+    notes:
+      evidence:
+        - scripts/crep_parser.py
+      logistic_coupling: |
+        Schema parity ensures Θ stays observable when new sigils appear.
+needed_resonances:
+  - id: sys-gap-001
+    description: 'Automated mirroring between Bedeutungs-/Shadow directories and Ordnungs indices.'
+    target_location:
+      - scripts/archive_sigillin.py
+      - seed/seed_index.*
+    hooks:
+      - docs/utac_status_alignment_v1.2.md#activation-gaps
+      - seed/bedeutungssigillin/system/system_meaning_map.md
+    threshold:
+      Theta: 'each new sigil registered in indices within 24h'
+      beta: 4.8
+    null_guard: 'If parser diff < 1 new entry after commit, trigger shadow alert.'
+  - id: sys-gap-002
+    description: 'CI signal to watch for missing codexfeedback updates when directories change.'
+    target_location:
+      - .github/workflows/resonance-ci.yml (future)
+      - scripts/codex_guard.py (planned)
+    hooks:
+      - seed/codexfeedback.*
+    threshold:
+      Theta: 'commit without codex delta'
+      beta: 5.1
+    null_guard: 'Audit commits vs ledger using git log parser.'
+activation_hooks:
+  - trigger: 'New Bedeutungs-Sigillin directory added'
+    response: 'Update seed_index.*, feldtheorie_index.*, run parser → codex entry.'
+  - trigger: 'Automation drift detected (ΔAIC guard failure or outdated index)'
+    response: 'Consult shadow/system ledger, schedule maintenance sprint.'
+null_model_reference:
+  description: 'Baseline = repository with only Ordnungs-Sigillin; lacks meaning resonance.'
+  monitoring:
+    - metric: 'Δindex parity'
+      condition: 'difference between directory listing and seed_index.* <= 0'
+    - metric: 'codex sync'
+      condition: 'latest commit referencing Bedeutungs-Sigillin also updates codexfeedback.*'

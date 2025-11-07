@@ -1,0 +1,39 @@
+meta:
+  sigil: shadow-wissenschaftsprojekt
+  version: 0.1.0
+  created: '2025-12-05T00:00:00Z'
+  logistic:
+    R: 'blocked endorsements, missing validations, stalled outreach'
+    Theta: 'campaign slack tolerated per meaning map'
+    beta: 4.9
+    zeta: 'rises when BreakPoint rituals ignored'
+  coupling:
+    lichtpfad: '../../bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml'
+alerts:
+  - id: sci-shadow-001
+    risk: 'Safety-delay τ* results absent from manuscript + outreach decks.'
+    signal:
+      - 'docs/utac_status_alignment_v1.2.md missing update references'
+      - 'paper/ sections lack τ*-ΔAIC citation'
+    fallout: 'Campaign promises outrun verified control theory; trust erodes.'
+    mitigation:
+      - 'Schedule dedicated analysis write-up and manuscript addendum.'
+      - 'Publish codex entry summarising remediation timeline.'
+    guard:
+      metric: 'τ*-coverage flag'
+      threshold: 'should equal true before launch freeze'
+  - id: sci-shadow-002
+    risk: 'BreakPoint rituals not consulted before outreach pivot.'
+    signal:
+      - 'New campaign asset without reference to WayToGo/ReaktionWayToGo'
+    fallout: 'Narrative loses resilience; β overshoots causing burnout.'
+    mitigation:
+      - 'Run BreakPoint rehearsal; document adjustments in meaning map.'
+      - 'Engage ethics governance check.'
+playbooks:
+  - trigger: 'sci-shadow-001'
+    response:
+      - 'Freeze public comms, integrate τ* summary, re-open codex entry.'
+  - trigger: 'sci-shadow-002'
+    response:
+      - 'Pause campaign, revisit BreakPoint texts, log decision path.'
