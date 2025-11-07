@@ -1,85 +1,84 @@
 meta:
   sigil: bedeutungs-metaquest-campaign-index
   version: 0.1.0
-  created: '2025-12-11T00:00:00Z'
-  updated: '2025-12-11T12:00:00Z'
+  created: '2025-12-18T00:00:00Z'
+  updated: '2025-12-18T00:00:00Z'
   logistic:
-    R: 'Metaquest campaign orientation backlog: manuscript cadence, outreach assets, endorsement ledger.'
-    Theta: 'seed/Manuskriptfinalisierung und Kampagnenstart.pdf + docs/utac_status_alignment_v1.2.md share parity entries in codex within 24h.'
-    beta: 4.8
-    zeta: 'Damped when BreakPoint rituals, parity brief updates, and archive lineage stay mirrored in codex + bridge.'
+    R: 'Metaquest campaign directory backlog: map, compass, sigil, lantern shelf, telemetry hooks.'
+    Theta: 'Bridge dashboard + parity brief + codex entry echo same timestamp within 24h.'
+    beta: 4.85
+    zeta: 'Damped when BreakPoint rituals and sigillin_sync exports cite campaign scope.'
   resonance: |
-    Orientation hub for the wissenschaftsprojekt Metaquest lane. It braids manuscript
-    checkpoints, outreach milestones, simulator demos, and endorsements so campaign
-    work enters resonance with the system backbone.
+    Directory index that lets new agents traverse the Metaquest campaign lane.
+    It braids map, compass, lanterns, and codex hooks so σ(β(R-Θ)) stays visible
+    during launch preparation.
   parent_links:
     bridge_index: 'seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml'
     campaign_map: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml'
     campaign_sigil: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml'
   shadow_coupling: 'seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.yaml'
 lanterns:
-  - id: mq-sci-lantern-001
+  - id: mq-sci-lantern-map
     title: Metaquest Campaign Map
     path: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml'
-    logistic_focus: 'Manuskript-, Outreach- und Endorsement-Cadenz.'
+    logistic_focus: 'High-level storyline with assets + activation gaps.'
     parity_links:
-      - seed/Manuskriptfinalisierung und Kampagnenstart.pdf
       - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+      - seed/Manuskriptfinalisierung und Kampagnenstart.pdf
     evidence:
-      - seed/Finalize_Publish.txt
-      - seed/BreakPointAnalyse/WayToGo.txt
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md
     status: active
-  - id: mq-sci-lantern-002
+  - id: mq-sci-lantern-compass
     title: Metaquest Campaign Compass
     path: 'seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml'
-    logistic_focus: 'Sprint-orientierte Übersicht über Playlist, Governance und Codex-Hooks.'
+    logistic_focus: 'Operational vectors for manuscript, outreach, telemetry.'
     parity_links:
       - docs/metaquest_parity_brief.md
-      - seed/codexfeedback.md
+      - seed/codexfeedback.yaml
     evidence:
       - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md
     status: active
-  - id: mq-sci-lantern-003
+  - id: mq-sci-lantern-sigil
     title: Metaquest Campaign Sigil
     path: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml'
-    logistic_focus: 'Meaning membrane translating campaign duties into parity + governance guardrails.'
+    logistic_focus: 'Meaning layer bridging campaign narrative with UTAC ethics.'
     parity_links:
+      - docs/metaquest_parity_brief.md
+      - ETHICS.md
+    evidence:
       - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md
-      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
-    evidence:
-      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml
     status: active
-  - id: mq-sci-lantern-004
-    title: Metaquest Parity Brief
-    path: 'docs/metaquest_parity_brief.md'
-    logistic_focus: 'mq-parity-001…004 Telemetrie, Playlist, Endorsements, Codex.'
+  - id: mq-sci-lantern-shelf
+    title: Campaign Lantern Shelf
+    path: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.yaml'
+    logistic_focus: 'Detailed orientation for manuscripts, outreach, telemetry.'
     parity_links:
-      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
       - seed/codexfeedback.yaml
+      - scripts/sigillin_sync.py
     evidence:
-      - seed/Finalize_Publish.txt
+      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.md
     status: active
-  - id: mq-sci-lantern-005
-    title: ArchivSucheUTAC Resonance Ledger
-    path: 'seed/ArchivSucheUTAC/'
-    logistic_focus: 'Archives + resonance lineage cited before campaign announcements.'
+  - id: mq-sci-lantern-telemetry
+    title: Codex & Telemetry Hooks
+    path: 'scripts/sigillin_sync.py'
+    logistic_focus: 'Ensures telemetry exports register campaign scope.'
     parity_links:
-      - docs/utac_status_alignment_v1.2.md#activation-gaps
-      - ZENODO_DESCRIPTION_v1.1.md
+      - docs/utac_status_alignment_v1.2.md#implementation-map
+      - seed/codexfeedback.json
     evidence:
-      - seed/BreakPointAnalyse/ReaktionWayToGo.txt
+      - tests/test_sigillin_sync.py
     status: active
 activation_hooks:
-  - trigger: 'Manuscript checkpoint reached'
-    action: 'Update campaign map + sigil, cite codex entry, refresh bridge dashboard.'
-    guard: 'If codex lacks mq-sci reference within 24h → mq-sci-shadow-001.'
-  - trigger: 'Outreach asset or endorsement logged'
-    action: 'Record in campaign compass, parity brief, and ArchivSuche lineage; announce in codex.'
-    guard: 'Missing archive link triggers mq-sci-shadow-002.'
+  - trigger: 'Campaign milestone logged'
+    action: 'Update map, compass, lantern shelf, and codex with shared timestamp.'
+    guard: 'If delta exceeds 24h, escalate via mq-sci-shadow-index-002.'
+  - trigger: 'Telemetry export completed'
+    action: 'Record run id in compass + lanterns, notify shadow index.'
+    guard: 'Missing export for one sprint → mq-sci-shadow-index-003.'
 null_model:
-  description: 'Null = Campaign launches without mirrored parity brief or archive lineage; outreach + endorsements desynchronise.'
+  description: 'Null = Campaign directory drifts; map, compass, and sigil fall out of sync with bridge + codex.'
   detection:
-    - signal: 'Parity brief timestamp newer than campaign compass metadata.'
-      mitigation: 'Refresh compass + index, log codex follow-up referencing mq-sci vectors.'
-    - signal: 'Press asset lacks ArchivSucheUTAC citation.'
-      mitigation: 'Update asset + codex with archive lineage before publication.'
+    - signal: 'Bridge dashboard timestamp older than campaign compass by >24h.'
+      mitigation: 'Run sigillin_sync, refresh compass + map, log codex note.'
+    - signal: 'Codex lacks mq-sci reference for latest milestone.'
+      mitigation: 'Append codex entry with mq-sci scope, update lantern shelf.'

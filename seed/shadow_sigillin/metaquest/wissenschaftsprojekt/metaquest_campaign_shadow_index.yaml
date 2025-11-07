@@ -2,7 +2,7 @@ meta:
   sigil: shadow-metaquest-campaign-index
   version: 0.1.0
   created: '2025-12-11T00:00:00Z'
-  updated: '2025-12-11T12:00:00Z'
+  updated: '2025-12-18T00:00:00Z'
   logistic:
     R: 'Metaquest campaign risks: stale parity brief, missing archive lineage, unsynchronised endorsements.'
     Theta: 'seed/Manuskriptfinalisierung und Kampagnenstart.pdf, docs/utac_status_alignment_v1.2.md, und codex teilen mq-sci id innerhalb 24h.'
@@ -66,6 +66,14 @@ recovery_hooks:
     evidence:
       - 'seed/ArchivSucheUTAC/'
       - 'docs/utac_status_alignment_v1.2.md'
+  - name: 'Lantern shelf inspection'
+    steps:
+      - 'Compare shadow lantern shelf entries with light-side campaign lanterns.'
+      - 'Align mq-sci codex IDs + timestamps with bridge dashboard updates.'
+      - 'Log inspection results in UTAC matrix and codex.'
+    evidence:
+      - 'seed/shadow_sigillin/metaquest/wissenschaftsprojekt/lanterns/metaquest_campaign_shadow_lanterns.yaml'
+      - 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.yaml'
 null_model:
   description: 'Null = Campaign storytelling advances without shadow parity; archive lineage fades and endorsements drift from governance.'
   monitoring:

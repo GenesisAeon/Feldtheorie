@@ -3,7 +3,7 @@
     "sigil": "bedeutungs-wissenschafts-metaquest",
     "version": "0.2.0",
     "created": "2025-12-07T00:00:00Z",
-    "updated": "2025-12-08T00:00:00Z",
+    "updated": "2025-12-18T00:00:00Z",
     "logistic": {
       "R": "Outstanding Metaquest launch tasks (manuscript, outreach, endorsements)",
       "Theta": "Checkpoints in Manuskriptfinalisierung pdf + UTAC status matrix",
@@ -87,7 +87,7 @@
     {
       "id": "mq-sci-asset-006",
       "title": "Metaquest Campaign Compass",
-      "location": "../metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml",
+      "location": "../../metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml",
       "resonance": "Quick orientation through manuscript, outreach, endorsement, and simulator hooks.",
       "status": "active",
       "notes": {

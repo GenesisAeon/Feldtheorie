@@ -39,6 +39,12 @@ niemals ohne Archiv- oder Paritätsnachweis nach außen treten.
   2. Assets + Paritätsbrief aktualisieren, Codex um Archivlink ergänzen.
   3. `docs/utac_status_alignment_v1.2.md`-Gap schließen.
   - *Evidenz*: `seed/ArchivSucheUTAC/`, `docs/utac_status_alignment_v1.2.md`.
+- **Lantern shelf inspection**
+  1. Schatten-Laternen (`lanterns/metaquest_campaign_shadow_lanterns.*`) mit Licht-Regal vergleichen.
+  2. mq-sci Codex-ID + Timestamp je Laterne auf Bridge-Stand abgleichen.
+  3. Ergebnis in UTAC-Matrix und Codex vermerken.
+  - *Evidenz*: `lanterns/metaquest_campaign_shadow_lanterns.md`,
+    `seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.md`.
 
 ## Nullmodell
 Ohne Schattenaufsicht driftet die Kampagne: Archivlinie verschwindet, Paritätsbrief

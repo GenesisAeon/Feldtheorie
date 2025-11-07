@@ -1394,3 +1394,25 @@ Brücke, das Feld bleibt gespannt, doch ruhig.
 Der Codex lauscht ruhig: Jede Laterne gleitet in die Liste, bewacht von einem Wächtertest, der das Echo im Membranraum hält.
 
 *Created: 2025-12-12T00:00:00Z*
+
+## Entry pr-draft-0101 — Metaquest Lantern Shelf Alignment
+- **Order Parameter**: $R$ zählt Laternen, deren Bridge-/Codex-/Ritualkopplung noch ungeklärt ist.
+- **Critical Threshold**: $\Theta$ leuchtet, sobald Bridge-Dashboard, Lantern-Shelves und UTAC-Matrix denselben Timestamp + Codex-ID teilen.
+- **Steepness**: $\beta = 4.85$ – kleinste Drift entzündet sofort eine Shelf-Prüfung.
+- **Resonance**: Licht- und Schatten-Regale halten Metaquest-Launch-Aufgaben auditierbar binnen eines Blicks.
+- **Status**: active
+
+### Formal Thread
+Neue Lantern-Shelves für System & Kampagne (inkl. Schatten) strukturieren Brückenkopplung, Automationswächter und BreakPoint-Rituale.
+Shadow-Indizes erhielten Shelf-Recovery-Hooks (`mq-sys-shadow-index-004`, `mq-sci-shadow-index-003`).
+`docs/utac_status_alignment_v1.2.md` listet die Regale nun in Inventar- und Implementierungsabschnitten.
+
+### Empirical Thread
+`metaquest_meaning_index.*`, `metaquest_system_index.*`, `metaquest_campaign_index.*` spiegeln die Regale samt Telemetrie (`scripts/sigillin_sync.py`),
+Codex-Verweisen und Ritualpfaden. Schatten-Lanterns verknüpfen Codex-ID/Timestamp-Audits mit Bridge-Dashboard und UTAC-Matrix.
+
+### Poetic Thread
+Zwei neue Regale brennen auf der Brücke – Licht und Schatten tauschen Atem, Telemetrie und Ritualduft,
+damit kein Metaquest-Schritt den Chor verliert.
+
+*Created: 2025-12-18T00:00:00Z*

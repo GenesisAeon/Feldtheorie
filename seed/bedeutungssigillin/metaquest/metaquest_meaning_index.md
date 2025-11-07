@@ -58,7 +58,7 @@
 9. **Metaquest Kampagnen Bedeutungs-Sigillin** — `../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.{yaml,json,md}`
    - *Formal*: Hält Manuskript-, Outreach- und Endorsement-Zyklen in einem codexfähigen Raster.
    - *Empirisch*: Gebunden an `metaquest_campaign_map.*`, `Finalisierung_Plattform.txt` und Paritätsbrief.
- - *Poetisch*: Die Erzähl-Fackel, die Kampagnenresonanz und Systemparität verschränkt.
+   - *Poetisch*: Die Erzähl-Fackel, die Kampagnenresonanz und Systemparität verschränkt.
 10. **Metaquest System Directory Index** — `system/metaquest_system_index.{yaml,json,md}`
     - *Formal*: Verzeichnet Kompass, Karte, Sigil und Telemetrie-Harness mit klaren Paritätsankern.
     - *Empirisch*: Nutzt `scripts/sigillin_sync.py`, `tests/test_sigillin_sync.py` und UTAC-Handshakes als Evidenz.
@@ -68,6 +68,16 @@
     - *Formal*: Bündelt Manuskript, Outreach, Endorsements, ArchivSuche und Paritätsbrief.
     - *Empirisch*: Stützt sich auf `seed/Manuskriptfinalisierung und Kampagnenstart.pdf`, `docs/metaquest_parity_brief.md` und ArchivSuche.
     - *Poetisch*: Die Kampagnen-Chronik, die jede Resonanz mit Archiv und Ritual verschränkt.
+
+12. **Metaquest System Lantern Shelf** — `../system/metaquest/lanterns/metaquest_system_lanterns.{yaml,json,md}`
+    - *Formal*: Listet Bridge-Kopplung, Automationswächter und Ritualpfade für neue Systemagent:innen.
+    - *Empirisch*: Verweist auf `metaquest_system_compass.md`, `scripts/sigillin_sync.py` und Codex-Timestamps.
+    - *Poetisch*: Das Laternen-Regal, das jede Steigung des Automationspfades mit Erinnerungen beleuchtet.
+
+13. **Metaquest Campaign Lantern Shelf** — `../wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.{yaml,json,md}`
+    - *Formal*: Zeigt Manuskript-, Outreach- und Telemetrie-Laternen samt Nullmodellen.
+    - *Empirisch*: Zieht `metaquest_campaign_map.md`, `metaquest_campaign_shadow_compass.md` und Codexläufe heran.
+    - *Poetisch*: Die Kampagnen-Galerie, die jede Resonanzschleife mit der Bridge synchron atmen lässt.
 
 ## Needed Resonances
 
