@@ -1,0 +1,369 @@
+{
+  "generated_at": "2025-11-07T07:25:39+00:00",
+  "summary": {
+    "count": 18,
+    "beta_mean": 7.288069211608267,
+    "beta_median": 5.104012465624547,
+    "beta_std": 4.971967280504448,
+    "beta_min": 0.6717283976038891,
+    "beta_max": 16.289963354409085,
+    "theta_mean": 6.718229975075617,
+    "theta_median": 0.6214703985864286,
+    "delta_aic_min": 10.184723470958506,
+    "delta_aic_median": 56.362839331237005,
+    "logistic_r2_median": 0.995240963971551,
+    "within_canonical_fraction": 0.11764705882352941,
+    "canonical_beta": 4.2,
+    "canonical_band": [
+      3.6,
+      4.8
+    ]
+  },
+  "records": [
+    {
+      "result_path": "analysis/results/adaptive_theta_plasticity.json",
+      "dataset": "data/cognition/adaptive_theta_plasticity.csv",
+      "domain": "cognition",
+      "beta": 10.860023327485688,
+      "beta_ci": [
+        9.619042232814689,
+        12.101004422156688
+      ],
+      "theta": 0.4767280581997776,
+      "theta_ci": [
+        0.4462361512301157,
+        0.5072199651694395
+      ],
+      "logistic_r2": 0.9904734870522398,
+      "logistic_aic": -93.58098826065893,
+      "delta_aic_min": 34.928043324092236,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/amazon_resilience_fit.json",
+      "dataset": "data/socio_ecology/amazon_resilience.csv",
+      "domain": "socio_ecology",
+      "beta": 14.019150893618612,
+      "beta_ci": [
+        13.685269700463397,
+        14.353032086773826
+      ],
+      "theta": 0.6214703985864286,
+      "theta_ci": [
+        0.617767971171555,
+        0.6251728260013022
+      ],
+      "logistic_r2": 0.9991130264188406,
+      "logistic_aic": -152.29649539122587,
+      "delta_aic_min": 61.11435308729823,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/coupled_field_threshold.json",
+      "dataset": null,
+      "domain": "results",
+      "beta": 5.6576882603257435,
+      "beta_ci": [
+        5.428981130068291,
+        5.886395390583196
+      ],
+      "theta": 0.5092479202944065,
+      "theta_ci": [
+        0.4757015629284599,
+        0.542794277660353
+      ],
+      "logistic_r2": 0.9979289120972659,
+      "logistic_aic": -2914.153641009339,
+      "delta_aic_min": 498.1482382097897,
+      "falsification_pass": null,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/honeybee_waggle_fit.json",
+      "dataset": "data/biology/honeybee_waggle_activation.csv",
+      "domain": "biology",
+      "beta": 0.6717283976038891,
+      "beta_ci": [
+        0.5413091744299211,
+        0.8021476207778572
+      ],
+      "theta": 26.578069452654905,
+      "theta_ci": [
+        25.830816988695016,
+        27.325321916614794
+      ],
+      "logistic_r2": 0.9687963452454948,
+      "logistic_aic": -73.55328443149556,
+      "delta_aic_min": 18.670156493825473,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/lenski_citplus_fit.json",
+      "dataset": "data/biology/lenski_citplus.csv",
+      "domain": "biology",
+      "beta": 5.076737426071495,
+      "beta_ci": [
+        4.654411249285691,
+        5.499063602857299
+      ],
+      "theta": 32.769044297791865,
+      "theta_ci": [
+        32.691451115700154,
+        32.846637479883576
+      ],
+      "logistic_r2": 0.9898521944896044,
+      "logistic_aic": -85.86611118614391,
+      "delta_aic_min": 32.66932628225726,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/llm_beta_extractor.json",
+      "dataset": "data/ai/wei_emergent_abilities.csv",
+      "domain": "ai",
+      "beta": 3.4695114626021,
+      "beta_ci": null,
+      "theta": 9.921691434948833,
+      "theta_ci": null,
+      "logistic_r2": 0.9211175469869085,
+      "logistic_aic": null,
+      "delta_aic_min": 10.184723470958517,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/llm_beta_extractor_validated.json",
+      "dataset": "data/ai/wei_emergent_abilities.csv",
+      "domain": "ai",
+      "beta": 3.4695114626021026,
+      "beta_ci": null,
+      "theta": 9.921691434948832,
+      "theta_ci": null,
+      "logistic_r2": 0.9211175469869084,
+      "logistic_aic": null,
+      "delta_aic_min": 10.184723470958506,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/llm_emergent_skill.json",
+      "dataset": "data/ai/llm_emergent_skill.csv",
+      "domain": "ai",
+      "beta": 5.104012465624547,
+      "beta_ci": [
+        4.716737541680306,
+        5.491287389568788
+      ],
+      "theta": 4.707167899782632,
+      "theta_ci": [
+        4.666121332188985,
+        4.748214467376278
+      ],
+      "logistic_r2": 0.995240963971551,
+      "logistic_aic": -112.1631578921753,
+      "delta_aic_min": 48.72631849021138,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/membrane_robin_semantic.json",
+      "dataset": null,
+      "domain": "results",
+      "beta": null,
+      "beta_ci": null,
+      "theta": null,
+      "theta_ci": null,
+      "logistic_r2": null,
+      "logistic_aic": null,
+      "delta_aic_min": 11129.909500885964,
+      "falsification_pass": true,
+      "within_canonical_band": null
+    },
+    {
+      "result_path": "analysis/results/meta_threshold_resonance.json",
+      "dataset": null,
+      "domain": "results",
+      "beta": 2.4869537416315737,
+      "beta_ci": [
+        2.257275394563275,
+        2.7166320886998725
+      ],
+      "theta": 0.31684624630284364,
+      "theta_ci": [
+        0.23476623514385553,
+        0.39892625746183175
+      ],
+      "logistic_r2": 0.7689148901884746,
+      "logistic_aic": -888.3753291528143,
+      "delta_aic_min": 109.98364899047147,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/planetary_tipping_elements.json",
+      "dataset": "data/socio_ecology/planetary_tipping_elements.json",
+      "domain": "socio_ecology",
+      "beta": 3.915,
+      "beta_ci": null,
+      "theta": null,
+      "theta_ci": null,
+      "logistic_r2": null,
+      "logistic_aic": null,
+      "delta_aic_min": null,
+      "falsification_pass": null,
+      "within_canonical_band": true
+    },
+    {
+      "result_path": "analysis/results/planetary_tipping_elements_validated.json",
+      "dataset": "data/socio_ecology/planetary_tipping_elements.json",
+      "domain": "socio_ecology",
+      "beta": 3.915,
+      "beta_ci": null,
+      "theta": null,
+      "theta_ci": null,
+      "logistic_r2": null,
+      "logistic_aic": null,
+      "delta_aic_min": null,
+      "falsification_pass": null,
+      "within_canonical_band": true
+    },
+    {
+      "result_path": "analysis/results/resonant_impedance_diagnostics.json",
+      "dataset": "resonant_impedance_gate_sweep",
+      "domain": "results",
+      "beta": 9.500000000000016,
+      "beta_ci": [
+        9.499999999999998,
+        9.500000000000034
+      ],
+      "theta": 0.6199999999999998,
+      "theta_ci": [
+        0.619999999999999,
+        0.6200000000000006
+      ],
+      "logistic_r2": 1.0,
+      "logistic_aic": -36549.290808196754,
+      "delta_aic_min": 34531.05482786215,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/subduction_rupture_threshold.json",
+      "dataset": "data/geophysics/subduction_rupture_threshold.csv",
+      "domain": "geophysics",
+      "beta": 16.289963354409085,
+      "beta_ci": [
+        16.20442997866459,
+        16.375496730153582
+      ],
+      "theta": 0.7406406447104941,
+      "theta_ci": [
+        0.7398700068389016,
+        0.7414112825820866
+      ],
+      "logistic_r2": 0.9999661710064784,
+      "logistic_aic": -221.4544970723466,
+      "delta_aic_min": 138.62742519482924,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/synaptic_release_fit.json",
+      "dataset": "data/biology/synaptic_release_threshold.csv",
+      "domain": "biology",
+      "beta": 0.8099742262185788,
+      "beta_ci": [
+        0.7263977789302415,
+        0.8935506735069162
+      ],
+      "theta": 12.677728838580355,
+      "theta_ci": [
+        12.192177773346295,
+        13.163279903814416
+      ],
+      "logistic_r2": 0.9974833843617845,
+      "logistic_aic": -121.98087991786045,
+      "delta_aic_min": 64.22307666679208,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/synthetic_threshold_sweep.json",
+      "dataset": null,
+      "domain": "results",
+      "beta": 11.093055841939847,
+      "beta_ci": [
+        9.62068186110805,
+        12.565429822771645
+      ],
+      "theta": 0.02150266269691967,
+      "theta_ci": [
+        -0.056468920404552744,
+        0.09947424579839208
+      ],
+      "logistic_r2": 0.9890972546652523,
+      "logistic_aic": -367.72051631665977,
+      "delta_aic_min": 135.45809220314413,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/urban_heat_canopy.json",
+      "dataset": "data/socio_ecology/urban_heat_canopy.csv",
+      "domain": "socio_ecology",
+      "beta": 15.274864885179445,
+      "beta_ci": [
+        14.840374828710752,
+        15.709354941648138
+      ],
+      "theta": 0.31267920387045345,
+      "theta_ci": [
+        0.3087776803303822,
+        0.3165807274105247
+      ],
+      "logistic_r2": 0.9986553018766973,
+      "logistic_aic": -136.31925278542303,
+      "delta_aic_min": 47.96555814076376,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    },
+    {
+      "result_path": "analysis/results/working_memory_gate.json",
+      "dataset": "data/cognition/working_memory_gate.csv",
+      "domain": "cognition",
+      "beta": 12.284000852027816,
+      "beta_ci": [
+        11.982930703510126,
+        12.585071000545506
+      ],
+      "theta": 0.5789411327654987,
+      "theta_ci": [
+        0.5758230076846768,
+        0.5820592578463207
+      ],
+      "logistic_r2": 0.9986365714199111,
+      "logistic_aic": -160.4001933829221,
+      "delta_aic_min": 51.61132557517578,
+      "falsification_pass": true,
+      "within_canonical_band": false
+    }
+  ],
+  "tri_layer": {
+    "formal": "Aggregated σ(β(R-Θ)) evidence across analysis/results; ΔAIC guard and canonical band validation recorded for governance.",
+    "empirical": "Records cover 18 files; β_mean=7.288, ΔAIC_min=10.18, R²_median=0.9952.",
+    "metaphorical": "Every membrane lantern now sings in one ledger; the canonical band hums to remind the field why β is a spectrum of empathy."
+  },
+  "validation": {
+    "delta_guard": 10.0,
+    "delta_aic_min": 10.184723470958506,
+    "delta_pass": true,
+    "r2_guard": 0.9,
+    "r2_median": 0.995240963971551,
+    "r2_pass": true,
+    "failing_records": [],
+    "passes": true
+  }
+}

@@ -7,7 +7,7 @@
     "version": "1.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "python_files": 29,
+    "python_files": 30,
     "subdirectories": 4
   },
   "categories": {
@@ -21,7 +21,7 @@
       "name": "Batch Processing & Pipelines",
       "description": "Batch-Runner, Pipelines, Cohort-Summaries",
       "color": "#27AE60",
-      "count": 6
+      "count": 7
     },
     "lab_experiments": {
       "name": "Lab Notebooks & Experimentelles",
@@ -390,6 +390,21 @@
       "description": "Meta-Regression zur Erklärung der β-Varianz.\nKERN von UTAC v1.2! R²=0.33 → soll auf >0.7 steigen.\n"
     },
     {
+      "id": "analysis-batch-007",
+      "name": "universal_beta_extractor.py",
+      "category": "batch_processing",
+      "type": "validator",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "beta",
+        "canonical-band",
+        "delta-aic",
+        "validation"
+      ],
+      "description": "Aggregiert β, Θ und ΔAIC über alle results/*.json.\nExportiert master ledger + Canonical-β-Guard (ΔAIC≥10, R²≥0.9).\n"
+    },
+    {
       "id": "analysis-lab-001",
       "name": "dynamic_threshold_lab.ipynb",
       "category": "lab_experiments",
@@ -704,6 +719,7 @@
     ],
     "critical_for_utac": [
       "analysis-batch-006",
+      "analysis-batch-007",
       "analysis-batch-005",
       "analysis-batch-003",
       "analysis-util-001"
@@ -718,7 +734,8 @@
     "batch_infrastructure": [
       "analysis-batch-001",
       "analysis-batch-002",
-      "analysis-batch-004"
+      "analysis-batch-004",
+      "analysis-batch-007"
     ],
     "results_directory": {
       "description": "ZENTRAL! Enthält alle JSON-Exports der Fit-Skripte.\nBasis für Cohort-Summary, Bridge-Table, und UTAC v1.2.\n",

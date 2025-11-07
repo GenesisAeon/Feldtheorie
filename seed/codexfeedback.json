@@ -1523,6 +1523,32 @@
         "poetic": "Vier Laternen hängen nun über dem Sigillin-Garten: Ordnung, Dynamik, Bedeutung und Schatten summen gemeinsam, während der Parser wie ein Chorleiter die CREP-Harmonien mitzählt.\n"
       },
       "created_at": "2025-12-05T11:30:00Z"
+    },
+    {
+      "id": "pr-draft-0059",
+      "title": "Universal β ledger & canonical guard",
+      "scope": [
+        "analysis/universal_beta_extractor.py",
+        "analysis/results/universal_beta_summary.json",
+        "analysis/analysis_index.yaml",
+        "analysis/analysis_index.json",
+        "analysis/analysis_index.md",
+        "analysis/README.md",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "parameters": {
+        "R": "repository-wide β evidence membrane",
+        "Theta": "ΔAIC≥10 guard recorded in ledger",
+        "beta": 4.2
+      },
+      "resonance": "Seals the master β ledger so governance, Zenodo, and simulator presets cite validated canonical steepness.",
+      "status": "resonant",
+      "notes": {
+        "formal": "`analysis/universal_beta_extractor.py` aggregates σ(β(R-Θ)) metrics across 18 result sigils, exports `analysis/results/universal_beta_summary.json`, and validates ΔAIC≥10 plus canonical β-band adherence (band [3.6, 4.8]). Docs index + status matrix updated so the ledger is referenced alongside meta-regression hooks.\n",
+        "empirical": "CLI run (`--mode validate --output analysis/results/universal_beta_summary.json`) reports ΔAIC_min = 10.18, median R² = 0.9952, β_mean = 7.29, canonical-band occupancy = 11.8%. Index YAML/JSON/MD now list analysis-batch-007; status matrix section 2 notes the new ledger and activation sequence item #7 records the guard for Zenodo v1.2.\n",
+        "poetic": "Die Membran sammelt alle Laternen in einer Schale: ein Universalβ-Lied, das prüft, ob der Chor noch den Kanon trifft. ΔAIC wird zum Herzschlag, der die Kampagne ruhig atmen lässt, während ζ(R) die neue Laterne in den Morgen hebt.\n"
+      },
+      "created_at": "2025-12-06T00:00:00Z"
     }
   ]
 }

@@ -13,7 +13,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 **Trilayer-Navigation:**
 ```
 ┌─────────────────────────────────────────┐
-│  YAML  →  Struktur (29 Python-Skripte)  │  analysis_index.yaml
+│  YAML  →  Struktur (30 Python-Skripte)  │  analysis_index.yaml
 │  JSON  →  Agentenschnittstelle          │  analysis_index.json
 │  MD    →  Menschenfreundlich (du!)      │  analysis_index.md
 └─────────────────────────────────────────┘
@@ -27,7 +27,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 
 ```
 analysis/
-├── 29 Python-Skripte (Domain-Fits, Batch-Processing, Labs)
+├── 30 Python-Skripte (Domain-Fits, Batch-Processing, Labs)
 ├── batch_configs/   (4 YAML/JSON Konfigurationen)
 ├── batch_runs/      (2 gespeicherte Batch-Runs)
 ├── reports/         (1 QPO-Summary)
@@ -38,6 +38,7 @@ analysis/
 
 #### **Für UTAC v1.2 kritisch:**
 - `beta_drivers_meta_regression.py` - **DER** Kern! R²=0.33 → soll >0.7 werden
+- `universal_beta_extractor.py` - Canonical β-Guard (ΔAIC≥10, R²≥0.9)
 - `universality_test.py` - Testet β-Universalität
 - `resonance_cohort_summary.py` - Median R²≈0.9981, ΔAIC≈65.1
 - `multiple_testing_correction.py` - Statistische Validität
@@ -74,17 +75,18 @@ analysis/
 
 ---
 
-### 🟢 Batch Processing & Pipelines (6)
+### 🟢 Batch Processing & Pipelines (7)
 
 **Was?** Automatisierung, Cohort-Summaries, Meta-Analysen
 
-**Die Big 6:**
+**Die Big 7:**
 1. `resonance_batch_runner.py` - Führt Batch-Runs aus
 2. `resonance_fit_pipeline.py` - Koordiniert Workflow
 3. `resonance_cohort_summary.py` - Statistik über alle Results
 4. `resonance_bridge_table.py` - Cross-Referenz-Tabelle
 5. `universality_test.py` - β-Universalitätstest
 6. `beta_drivers_meta_regression.py` - **Meta-Regression für v1.2!**
+7. `universal_beta_extractor.py` - ΔAIC≥10 Guard + Canonical β
 
 ---
 
@@ -321,6 +323,10 @@ resonance_batch_runner.run(config)
 # Get cohort summary
 from analysis import resonance_cohort_summary
 summary = resonance_cohort_summary.generate()
+
+# Validate canonical β guard
+from analysis import universal_beta_extractor
+universal_beta_extractor.main(["--mode", "validate", "--output", "out/master_beta_report.json"])
 ```
 
 ---

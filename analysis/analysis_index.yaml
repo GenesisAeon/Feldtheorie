@@ -13,7 +13,7 @@ meta:
   version: "1.0.0"
   created: "2025-11-06"
   status: "active"
-  python_files: 29
+  python_files: 30
   subdirectories: 4
 
 # ═══════════════════════════════════════════════════════════════════
@@ -31,7 +31,7 @@ categories:
     name: "Batch Processing & Pipelines"
     description: "Batch-Runner, Pipelines, Cohort-Summaries"
     color: "#27AE60"  # Grün - Processing
-    count: 6
+    count: 7
 
   lab_experiments:
     name: "Lab Notebooks & Experimentelles"
@@ -269,7 +269,7 @@ python_scripts:
       Klassifikation verschiedener Schwellenwert-Typen.
 
   # ─────────────────────────────────────────────────────────────────
-  # BATCH PROCESSING & PIPELINES (6)
+  # BATCH PROCESSING & PIPELINES (7)
   # ─────────────────────────────────────────────────────────────────
 
   - id: analysis-batch-001
@@ -338,6 +338,16 @@ python_scripts:
     description: |
       Meta-Regression zur Erklärung der β-Varianz.
       KERN von UTAC v1.2! R²=0.33 → soll auf >0.7 steigen.
+  - id: analysis-batch-007
+    name: "universal_beta_extractor.py"
+    category: batch_processing
+    type: validator
+    status: stable
+    relevance: high
+    keywords: [beta, canonical-band, delta-aic, validation]
+    description: |
+      Aggregiert β, Θ und ΔAIC über alle results/*.json.
+      Exportiert master ledger + Canonical-β-Guard (ΔAIC≥10, R²≥0.9).
 
   # ─────────────────────────────────────────────────────────────────
   # LAB EXPERIMENTS (2)
@@ -621,6 +631,7 @@ quicklinks:
 
   critical_for_utac:
     - analysis-batch-006  # Meta-Regression (R²=0.33 → >0.7)
+    - analysis-batch-007  # Universal β Ledger (ΔAIC≥10 guard)
     - analysis-batch-005  # Universality Test
     - analysis-batch-003  # Cohort Summary
     - analysis-util-001   # Multiple Testing Correction
@@ -636,6 +647,7 @@ quicklinks:
     - analysis-batch-001  # Batch Runner
     - analysis-batch-002  # Fit Pipeline
     - analysis-batch-004  # Bridge Table
+    - analysis-batch-007  # β Canonical Guard Extractor
 
   results_directory:
     description: |
