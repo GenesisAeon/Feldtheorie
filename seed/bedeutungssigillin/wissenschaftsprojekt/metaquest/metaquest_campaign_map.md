@@ -32,7 +32,7 @@
    - *Empirisch*: Bridge-/Shadow-Logs sichern Telemetrie- und Codex-Parität.
    - *Poetisch*: Der Steg, auf dem Automation und Erzählung denselben Takt finden.
 
-6. **Metaquest Campaign Compass** — `../metaquest/wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}`
+6. **Metaquest Campaign Compass** — `../../metaquest/wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}`
    - *Formal*: Schnellorientierung zu Manuskript-Cadenz, Outreach-Plan, Endorsement-Ledger und Simulator-Demos.
    - *Empirisch*: Listet mq-sci-Vektoren für Playlist-Sync, Governance-Refresh und Archivsuche-Linie.
    - *Poetisch*: Das Feldsextant, das zwischen den Matrix-Updates die Kampagnenchor-Intonation hält.

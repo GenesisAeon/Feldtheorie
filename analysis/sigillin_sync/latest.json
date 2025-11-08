@@ -1,13 +1,15 @@
 {
   "meta": {
-    "generated_at": "2025-11-07T13:03:11.581265+00:00",
+    "generated_at": "2025-11-07T21:52:52.796181+00:00",
     "roots": [
       "/workspace/Feldtheorie/seed/bedeutungssigillin/metaquest",
       "/workspace/Feldtheorie/seed/bedeutungssigillin/metaquest/system",
       "/workspace/Feldtheorie/seed/bedeutungssigillin/metaquest/wissenschaftsprojekt",
       "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest",
       "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest/system",
-      "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest/wissenschaftsprojekt"
+      "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest/system/lanterns",
+      "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest/wissenschaftsprojekt",
+      "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest/wissenschaftsprojekt/lanterns"
     ],
     "logistic": {
       "R": "Count of trilayers inspected for parity.",
@@ -16,7 +18,7 @@
       "zeta": "Damped when reports reach codexfeedback within one sprint."
     },
     "counts": {
-      "total": 6,
+      "total": 12,
       "with_gaps": 0
     }
   },
@@ -24,10 +26,10 @@
     {
       "path": "seed/bedeutungssigillin/metaquest/metaquest_meaning_index",
       "sigil": "bedeutungs-metaquest-bridge",
-      "version": "0.2.0",
-      "updated": "2025-12-09T00:00:00Z",
-      "json_version": "0.2.0",
-      "json_updated": "2025-12-09T00:00:00Z",
+      "version": "0.3.0",
+      "updated": "2025-12-18T00:00:00Z",
+      "json_version": "0.3.0",
+      "json_updated": "2025-12-18T00:00:00Z",
       "md_present": true,
       "gaps": []
     },
@@ -42,22 +44,52 @@
       "gaps": []
     },
     {
+      "path": "seed/bedeutungssigillin/metaquest/system/metaquest_system_index",
+      "sigil": "bedeutungs-metaquest-system-index",
+      "version": "0.1.0",
+      "updated": "2025-12-18T00:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2025-12-18T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
       "path": "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass",
       "sigil": "bedeutungs-metaquest-campaign-compass",
-      "version": "0.2.0",
-      "updated": "2025-12-09T00:00:00Z",
-      "json_version": "0.2.0",
-      "json_updated": "2025-12-09T00:00:00Z",
+      "version": "0.1.0",
+      "updated": "2025-12-18T00:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2025-12-18T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index",
+      "sigil": "bedeutungs-metaquest-campaign-index",
+      "version": "0.1.0",
+      "updated": "2025-12-18T00:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2025-12-18T00:00:00Z",
       "md_present": true,
       "gaps": []
     },
     {
       "path": "seed/shadow_sigillin/metaquest/metaquest_shadow_index",
       "sigil": "shadow-metaquest-bridge",
-      "version": "0.2.0",
-      "updated": "2025-12-09T00:00:00Z",
-      "json_version": "0.2.0",
-      "json_updated": "2025-12-09T00:00:00Z",
+      "version": "0.3.0",
+      "updated": "2025-12-10T00:00:00Z",
+      "json_version": "0.3.0",
+      "json_updated": "2025-12-10T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/system/lanterns/metaquest_system_shadow_lanterns",
+      "sigil": "shadow-metaquest-system-lanterns",
+      "version": "0.1.0",
+      "updated": "2025-12-18T00:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2025-12-18T00:00:00Z",
       "md_present": true,
       "gaps": []
     },
@@ -72,12 +104,42 @@
       "gaps": []
     },
     {
+      "path": "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index",
+      "sigil": "shadow-metaquest-system-index",
+      "version": "0.1.0",
+      "updated": "2025-12-18T00:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2025-12-18T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/lanterns/metaquest_campaign_shadow_lanterns",
+      "sigil": "shadow-metaquest-campaign-lanterns",
+      "version": "0.1.0",
+      "updated": "2025-12-18T00:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2025-12-18T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
       "path": "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass",
       "sigil": "shadow-metaquest-campaign-compass",
       "version": "0.2.0",
       "updated": "2025-12-09T00:00:00Z",
       "json_version": "0.2.0",
       "json_updated": "2025-12-09T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index",
+      "sigil": "shadow-metaquest-campaign-index",
+      "version": "0.1.0",
+      "updated": "2025-12-18T00:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2025-12-18T00:00:00Z",
       "md_present": true,
       "gaps": []
     }

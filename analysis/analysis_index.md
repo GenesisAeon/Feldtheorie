@@ -1,7 +1,7 @@
 # 📊 Analysis Index - Resonance Bay Navigator
 
 **Version:** 1.0.0
-**Datum:** 6. November 2025
+**Datum:** 7. November 2025
 **Verzeichnis:** `analysis/`
 
 ---
@@ -13,7 +13,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 **Trilayer-Navigation:**
 ```
 ┌─────────────────────────────────────────┐
-│  YAML  →  Struktur (32 Python-Skripte)  │  analysis_index.yaml
+│  YAML  →  Struktur (33 Python-Skripte)  │  analysis_index.yaml
 │  JSON  →  Agentenschnittstelle          │  analysis_index.json
 │  MD    →  Menschenfreundlich (du!)      │  analysis_index.md
 └─────────────────────────────────────────┘
@@ -27,7 +27,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 
 ```
 analysis/
-├── 32 Python-Skripte (Domain-Fits, Batch-Processing, Labs)
+├── 33 Python-Skripte (Domain-Fits, Batch-Processing, Labs)
 ├── batch_configs/   (4 YAML/JSON Konfigurationen)
 ├── batch_runs/      (2 gespeicherte Batch-Runs)
 ├── reports/         (1 QPO-Summary)
@@ -79,11 +79,11 @@ analysis/
 
 ---
 
-### 🟢 Batch Processing & Pipelines (8)
+### 🟢 Batch Processing & Pipelines (9)
 
 **Was?** Automatisierung, Cohort-Summaries, Meta-Analysen
 
-**Die Big 8:**
+**Die Big 9:**
 1. `resonance_batch_runner.py` - Führt Batch-Runs aus
 2. `resonance_fit_pipeline.py` - Koordiniert Workflow
 3. `resonance_cohort_summary.py` - Statistik über alle Results
@@ -92,6 +92,7 @@ analysis/
 6. `beta_drivers_meta_regression.py` - **Baseline-Meta-Regression für v1.2 (R²=0.33)**
 7. `beta_meta_regression_v2.py` - **Bootstrap & RF Refresh (WLS R²≈0.43, Median-Bootstrap≈0.99)**
 8. `universal_beta_extractor.py` - ΔAIC≥10 Guard + Canonical β
+9. `safety_delay_sweep.py` - τ*-Sweep für `simulation/safety_delay_field.py` inkl. Replikate, ΔAIC vs. linearen & konstanten Nullmodellen + Meta-Resonanz-Diagnostik → gespiegelt via `simulator/cli safety-delay` nach `data/safety_delay/`
 
 ---
 
@@ -132,6 +133,7 @@ analysis/
 
 #### **sigillin_sync/** - Telemetry Harness Reports
 - `latest.json` – Metaquest sigillin_sync Statusbericht (JSON)
+- `metaquest_report_20251107T215246Z.json` – 12 Metaquest-Tri-Layer, 0 Lücken; σ(β(R-Θ)) Telemetrie vom 2025-11-07T21:52:52Z
 
 #### **results/** ⭐ **ZENTRAL!**
 **DER wichtigste Ordner!**

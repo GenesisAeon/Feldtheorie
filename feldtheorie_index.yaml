@@ -78,11 +78,11 @@ indexed_directories:
       yaml: analysis/analysis_index.yaml
       json: analysis/analysis_index.json
       md: analysis/analysis_index.md
-    total_items: 32
+    total_items: 33
     categories: 5
     description: 'Python-Skripte für empirische Fits:
 
-      Domain-Fits (16), Batch-Processing (6), Labs (2), Utilities (3).
+      Domain-Fits (16), Batch-Processing (9), Labs (2), Utilities (3).
 
       Zentral: beta_drivers_meta_regression.py (UTAC v1.2!)
 
@@ -100,13 +100,13 @@ indexed_directories:
       yaml: data/data_index.yaml
       json: data/data_index.json
       md: data/data_index.md
-    total_items: 43
-    categories: 7
-    description: 'Empirische Datasets aus 7 Domänen:
+    total_items: 47
+    categories: 8
+    description: 'Empirische Datasets aus 8 Domänen:
 
       AI (9), Astrophysics (2), Biology (7), Cognition (6),
 
-      Derived (5), Geophysics (4), Socio-Ecology (10).
+      Derived (5), Geophysics (4), Socio-Ecology (10), Safety-Delay (4).
 
       Zentral: derived/beta_estimates.csv (alle β-Werte!)
 
@@ -116,6 +116,7 @@ indexed_directories:
     highlights:
     - derived/beta_estimates.csv (⭐ ROSETTA STONE!)
     - derived/domain_covariates.csv (Meta-Regression)
+    - Safety-Delay ΔAIC Ledger (safety_delay/safety_delay_delta_aic_20251107T211928Z.csv)
     - Outliers: Urban Heat (β=16.3), Cascadia (β=16.29)
   models:
     name: models/ - Model Membrane Resonance
@@ -146,21 +147,21 @@ indexed_directories:
       yaml: docs/docs_index.yaml
       json: docs/docs_index.json
       md: docs/docs_index.md
-    total_items: 9
+    total_items: 17
     categories: 4
     description: 'UTAC Theory Documentation:
 
-      Theory (3), Applications (3), Validation (2), Infra (1).
+      Theory (3), Applications (4), Validation (2), Infrastructure (8).
 
-      Zentral: utac_theory_core.md, utac_falsifiability.md
+      Zentral: utac_theory_core.md, utac_falsifiability.md, utac_safety_delay_status.md
 
       '
     color: '#F39C12'
     relevance: high
     highlights:
     - utac_theory_core.md (Theorie-Fundament)
-    - field_type_classification_v1.1.md (5 Systemtypen)
-    - utac_falsifiability.md (Popper-konform!)
+    - utac_safety_delay_status.md (Simulator-ΔAIC-Brücke)
+    - sigillin_maintenance.md (Sigillin-Hygiene Wächter)
   archive:
     name: archive/ - Sigillin Cold Storage
     path: archive/
@@ -354,12 +355,12 @@ triggers:
   - Trilayer-Aktivierung
 statistics:
   directories_indexed: 6
-  total_files_cataloged: 164
+  total_files_cataloged: 168
   trilayer_indices: 18
   breakdown:
     seed: 69
     analysis: 32
-    data: 43
+    data: 47
     models: 10
     docs: 12
     archive: 0
@@ -370,7 +371,7 @@ statistics:
   project_size:
     python_scripts: 43
     markdown_docs: ~80
-    data_files: 43
+    data_files: 47
 version_info:
   utac_version: 1.1.2
   sigillin_version: 1.0.0

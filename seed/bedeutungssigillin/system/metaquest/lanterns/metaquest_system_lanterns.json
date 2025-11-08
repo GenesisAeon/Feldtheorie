@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "sigil": "bedeutungs-metaquest-system-lanterns",
+    "version": "0.1.0",
+    "created": "2025-12-18T00:00:00Z",
+    "updated": "2025-12-18T00:00:00Z",
+    "logistic": {
+      "R": "Automation + governance vectors still pending for the Metaquest system lane.",
+      "Theta": "Parity brief + UTAC handshake mirrored in docs/utac_status_alignment_v1.2.md and seed/codexfeedback.* within 24h.",
+      "beta": 4.8,
+      "zeta": "Damped by BreakPoint rituals and sigillin_sync telemetry cadence."
+    },
+    "resonance": "Lantern shelf enumerating the system-facing Metaquest beacons so σ(β(R-Θ)) stays observable during launch preparation."
+  },
+  "lanterns": [
+    {
+      "id": "mq-sys-lantern-a",
+      "title": "Bridge Dashboard Coupling",
+      "description": "Align system lane with Metaquest bridge index so telemetry + codex IDs share timestamps.",
+      "artefact": {
+        "path": "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml",
+        "sibling": "seed/bedeutungssigillin/metaquest/system/metaquest_system_index.yaml"
+      },
+      "logistics": {
+        "R": "Outstanding coupling tasks across compass/map/sigil triad.",
+        "Theta": "Bridge + codex echo recorded within 24h of any system change.",
+        "beta": 4.8,
+        "zeta": "BreakPoint rituals + sigillin_sync report damp divergence."
+      },
+      "evidence": [
+        "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+        "scripts/sigillin_sync.py"
+      ],
+      "null_model": {
+        "description": "Bridge dashboard drifts; compass timestamps diverge.",
+        "detection": [
+          "Meaning index timestamp older than compass by >24h.",
+          "Codex entry lacks mq-sys reference."
+        ],
+        "recovery": [
+          "Run sigillin_sync telemetry export.",
+          "Update bridge + compass + codex entry with shared stamp."
+        ]
+      }
+    },
+    {
+      "id": "mq-sys-lantern-b",
+      "title": "Automation Spine Readiness",
+      "description": "Ensure automation hooks guard Metaquest release gates with ΔAIC/null comparisons before deployment.",
+      "artefact": {
+        "path": "scripts/archive_sigillin.py",
+        "sibling": "tests/test_sigillin_sync.py"
+      },
+      "logistics": {
+        "R": "Automation safeguards pending roll-out.",
+        "Theta": "Nox/CI guard stamping codex entry + UTAC matrix line.",
+        "beta": 4.7,
+        "zeta": "Telemetry cadence + BreakPoint echoes keep alerts calm."
+      },
+      "evidence": [
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.md",
+        "docs/utac_status_alignment_v1.2.md#activation-gaps"
+      ],
+      "null_model": {
+        "description": "Automation advances without parity guard.",
+        "detection": [
+          "CI logs missing sigillin index parity checks.",
+          "ΔAIC guard absent in codex notes."
+        ],
+        "recovery": [
+          "Pause automation, run parity audit, append codex remediation.",
+          "Notify shadow compass (mq-sys-shadow-index-001)."
+        ]
+      }
+    },
+    {
+      "id": "mq-sys-lantern-c",
+      "title": "Ritual Memory Path",
+      "description": "Document BreakPoint rituals that resynchronise the system lane when ζ(R) spikes.",
+      "artefact": {
+        "path": "seed/BreakPointAnalyse/WayToGo.txt",
+        "sibling": "seed/BreakPointAnalyse/ReaktionWayToGo.txt"
+      },
+      "logistics": {
+        "R": "Pending ritual infusion into system compass/map updates.",
+        "Theta": "Each mq-sys codex note cites WayToGo + Reaktion transcripts.",
+        "beta": 4.9,
+        "zeta": "Ritual repetition + codex echo keep ζ(R) tempered."
+      },
+      "evidence": [
+        "seed/Finalize_Publish.txt",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md"
+      ],
+      "null_model": {
+        "description": "Ritual references missing; recovery path opaque.",
+        "detection": [
+          "Codex entry missing BreakPoint citation.",
+          "System map lacks ritual cross-link."
+        ],
+        "recovery": [
+          "Re-run ritual, attach transcript to codex + map.",
+          "Signal shadow lantern for validation."
+        ]
+      }
+    }
+  ]
+}

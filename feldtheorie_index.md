@@ -15,12 +15,12 @@ Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **164 katalogis
 │
 ├── 🌱 seed/        71 docs   (Meta, Theorie, Validierung)
 ├── 📊 analysis/    32 scripts (Fits, Batch, Meta-Regression)
-├── 📦 data/        43 files   (7 Domänen, β-Estimates)
+├── 📦 data/        47 files   (8 Domänen, β-Estimates)
 ├── 🔬 models/      10 models  (Solver, ODE-Systeme)
 ├── 📚 docs/        12 docs    (Theory, Falsifiability, Parity)
 └── 🗄️  archive/      0 items   (Sigillin Cold Storage)
 
-Total: 164 files | 18 Trilayer-Indizes (YAML+JSON+MD)
+Total: 168 files | 18 Trilayer-Indizes (YAML+JSON+MD)
 ```
 
 ---
@@ -112,15 +112,16 @@ stats = idx['statistics']
 ---
 
 ### 📊 **analysis/** - Analysis Resonance Bay
-**32 Python-Skripte** | **5 Kategorien**
+**33 Python-Skripte** | **5 Kategorien**
 📍 Index: `analysis/analysis_index.{yaml,json,md}`
 
-**Was:** Empirische Fits, Batch-Processing, Meta-Regression
+**Was:** Empirische Fits, Batch-Processing (jetzt 9 Pipelines), Meta-Regression
 
 **Highlights:**
 - `beta_drivers_meta_regression.py` - **KERN von v1.2!** (R²: 0.33 → >0.7)
 - `universality_test.py` - β-Universalität
 - `results/` Verzeichnis - Alle Fit-Outputs!
+- `safety_delay_sweep.py` - τ*-Sweep → ΔAIC vs. lineare/konstante Nullmodelle + Meta-Resonanz
 
 **Statistik:**
 - Median R²: 0.9981
@@ -130,7 +131,7 @@ stats = idx['statistics']
 ---
 
 ### 📦 **data/** - Data Resonance Archive
-**43 Dateien** | **7 Domänen**
+**47 Dateien** | **8 Domänen**
 📍 Index: `data/data_index.{yaml,json,md}`
 
 **Was:** Empirische Datasets aus AI, Biology, Geophysics, etc.
@@ -138,6 +139,7 @@ stats = idx['statistics']
 **Must-Know:**
 - `derived/beta_estimates.csv` - ⭐ **ALLE β-Werte!**
 - `derived/domain_covariates.csv` - Kovariaten für Meta-Regression
+- `safety_delay/safety_delay_delta_aic_20251107T211928Z.csv` - Safety-Delay ΔAIC Ledger
 
 **Outliers:**
 - Urban Heat (β=16.3) 🔥
@@ -164,16 +166,18 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 ---
 
 ### 📚 **docs/** - Living Documentation Tapestry
-**12 Markdown-Docs** | **4 Kategorien**
+**17 Markdown-Docs** | **4 Kategorien**
 📍 Index: `docs/docs_index.{yaml,json,md}`
 
-**Was:** UTAC Theory, Falsifiability, Applications
+**Was:** UTAC Theory, Falsifiability, Applications, Sigillin-Hygiene
 
 **Must-Read:**
 - `utac_theory_core.md` - Theorie-Fundament
 - `utac_falsifiability.md` - **Popper-konform!**
 - `field_type_classification_v1.1.md` - 5 Systemtypen
 - `metaquest_parity_brief.md` - Parität für System + Kampagne sichern
+- `utac_safety_delay_status.md` - τ*-Brücke mit ΔAIC + Simulator-Hooks
+- `sigillin_maintenance.md` - Hygiene & Archivpfad der Sigillin-Netze
 
 ---
 

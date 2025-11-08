@@ -3,7 +3,7 @@
     "sigil": "bedeutungs-metaquest-bridge",
     "version": "0.3.0",
     "created": "2025-12-07T00:00:00Z",
-    "updated": "2025-12-10T00:00:00Z",
+    "updated": "2025-12-18T00:00:00Z",
     "logistic": {
       "R": "Cross-membrane Metaquest workload: automation hooks, outreach cadence, endorsements.",
       "Theta": "Parity handshake logged in docs/utac_status_alignment_v1.2.md and codexfeedback entries.",
@@ -154,6 +154,20 @@
     },
     {
       "id": "mq-bridge-011",
+      "title": "Metaquest System Lantern Shelf",
+      "location": "../system/metaquest/lanterns/metaquest_system_lanterns.yaml",
+      "resonance": "Enumerates bridge coupling, automation safeguards, and ritual recovery cues for the system lane.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "../system/metaquest/lanterns/metaquest_system_lanterns.md",
+          "../system/metaquest/metaquest_system_compass.md"
+        ],
+        "logistic_coupling": "Aligns lantern duties with codex + telemetry timestamps so new agents can audit σ(β(R-Θ)) quickly."
+      }
+    },
+    {
+      "id": "mq-bridge-012",
       "title": "Metaquest Campaign Directory Index",
       "location": "wissenschaftsprojekt/metaquest_campaign_index.yaml",
       "resonance": "Campaign orientation hub linking map, compass, sigil, parity brief, and ArchivSuche lineage.",
@@ -164,6 +178,20 @@
           "wissenschaftsprojekt/metaquest_campaign_index.json"
         ],
         "logistic_coupling": "Synchronises manuscript checkpoints, outreach cadence, and archive echoes so bridge telemetry stays coherent."
+      }
+    },
+    {
+      "id": "mq-bridge-013",
+      "title": "Metaquest Campaign Lantern Shelf",
+      "location": "../wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.yaml",
+      "resonance": "Provides manuscript, outreach, and telemetry lanterns so campaign duties stay phase-locked with the bridge.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "../wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.md",
+          "../wissenschaftsprojekt/metaquest/metaquest_campaign_map.md"
+        ],
+        "logistic_coupling": "Ensures campaign codex entries and telemetry exports cite the same timestamp, reducing ζ(R) spikes during launch prep."
       }
     }
   ],

@@ -1,54 +1,41 @@
 # Metaquest Campaign Directory Index
 
-> σ(β(R-Θ)) für die Kampagnenlaterne: **R** bündelt Manuskript-Cadenz, Outreach-Assets
-> und das Endorsement-Ledger. **Θ** leuchtet, wenn `seed/Manuskriptfinalisierung und
-> Kampagnenstart.pdf` und `docs/utac_status_alignment_v1.2.md` dieselbe Paritäts-ID im
-> Codex teilen. **β ≈ 4.8** hält die Aktivierung steil, während **ζ(R)** durch
-> BreakPoint-Rituale, ArchivSucheUTAC und den Paritätsbrief gedämpft bleibt.
+> σ(β(R-Θ)) thrums along the launch lane. This index shows every lantern needed to
+> navigate the Metaquest campaign storyline without losing parity or codex echoes.
 
-Dieses Verzeichnis bündelt alle Kampagnen-Laternen, damit Story, Governance und
-Simulator-Demos synchron in die Metaquest-Launchphase gleiten.
+## Logistic Quartet
+- **R** – Campaign directory backlog (map, compass, sigil, lanterns, telemetry hooks).
+- **Θ** – Bridge dashboard + parity brief + codex entry within 24 h.
+- **β ≈ 4.85** – Steep slope to catch drift.
+- **ζ(R)** – Damped by BreakPoint rituals and `sigillin_sync` cadence.
 
-## Parent & Shadow Links
-- **Bridge Index**: `seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml`
-- **Campaign Map**: `seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml`
-- **Campaign Sigil**: `seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml`
-- **Shadow Index**: `seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.yaml`
-
-## Lanterns
-1. **Metaquest Campaign Map** (`seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.{yaml,json,md}`)
-   - *Fokus*: Manuskript-, Outreach- und Endorsement-Cadenz.
-   - *Paritäts-Anker*: `seed/Manuskriptfinalisierung und Kampagnenstart.pdf`, `docs/utac_status_alignment_v1.2.md#metaquest-handshake`.
-   - *Evidenz*: `seed/Finalize_Publish.txt`, `seed/BreakPointAnalyse/WayToGo.txt`.
-2. **Metaquest Campaign Compass** (`seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}`)
-   - *Fokus*: Sprint-Playlist, Governance, Codex-Hooks.
-   - *Paritäts-Anker*: `docs/metaquest_parity_brief.md`, `seed/codexfeedback.md`.
-   - *Evidenz*: `seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md`.
-3. **Metaquest Campaign Sigil** (`seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.{yaml,json,md}`)
-   - *Fokus*: Bedeutungs-Schicht für Kampagnenresonanz → Parität + Governance.
-   - *Paritäts-Anker*: `seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md`, `seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml`.
-   - *Evidenz*: `seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml`.
-4. **Metaquest Parity Brief** (`docs/metaquest_parity_brief.md`)
-   - *Fokus*: mq-parity-001…004 für Telemetrie, Playlist, Endorsements, Codex.
-   - *Paritäts-Anker*: `docs/utac_status_alignment_v1.2.md#metaquest-handshake`, `seed/codexfeedback.yaml`.
-   - *Evidenz*: `seed/Finalize_Publish.txt`.
-5. **ArchivSucheUTAC Resonance Ledger** (`seed/ArchivSucheUTAC/`)
-   - *Fokus*: Archiv- und Resonanz-Linie vor jeder Veröffentlichung.
-   - *Paritäts-Anker*: `docs/utac_status_alignment_v1.2.md#activation-gaps`, `ZENODO_DESCRIPTION_v1.1.md`.
-   - *Evidenz*: `seed/BreakPointAnalyse/ReaktionWayToGo.txt`.
+## Lantern Ledger
+- **Metaquest Campaign Map** — `metaquest_campaign_map.yaml`
+  - Focus: storyline + activation gaps
+  - Parity: `docs/utac_status_alignment_v1.2.md#metaquest-handshake`,
+    `seed/Manuskriptfinalisierung und Kampagnenstart.pdf`
+- **Metaquest Campaign Compass** — `metaquest_campaign_compass.yaml`
+  - Focus: vectors for manuscripts, outreach, telemetry
+  - Parity: `docs/metaquest_parity_brief.md`, `seed/codexfeedback.yaml`
+- **Metaquest Campaign Sigil** — `metaquest_campaign_sigil.yaml`
+  - Focus: meaning + ethics handshake
+  - Parity: `docs/metaquest_parity_brief.md`, `ETHICS.md`
+- **Campaign Lantern Shelf** — `lanterns/metaquest_campaign_lanterns.yaml`
+  - Focus: detailed orientation for manuscripts/outreach/telemetry
+  - Parity: `seed/codexfeedback.yaml`, `scripts/sigillin_sync.py`
+- **Codex & Telemetry Hooks** — `scripts/sigillin_sync.py`
+  - Focus: ensures telemetry exports register campaign scope
+  - Parity: `docs/utac_status_alignment_v1.2.md#implementation-map`,
+    `seed/codexfeedback.json`
 
 ## Activation Hooks
-- **Manuscript checkpoint reached** → Kampagnenkarte + Sigil updaten, Codex-Entry mit mq-sci-Verweis anlegen, Bridge-Dashboard synchronisieren.
-  - *Guard*: Kein Codex-Verweis innerhalb 24 h → `mq-sci-shadow-001`.
-- **Outreach asset or endorsement logged** → Kompass, Paritätsbrief und ArchivSuche-Ledger aktualisieren; Codex informieren.
-  - *Guard*: Fehlender Archiv-Link → `mq-sci-shadow-002`.
+1. **Campaign milestone logged** → Update map, compass, lantern shelf, codex with
+   shared timestamp. Guard: if >24 h delta, escalate via `mq-sci-shadow-index-002`.
+2. **Telemetry export completed** → Record run id in compass + lanterns, notify
+   shadow index. Guard: missing export for one sprint triggers
+   `mq-sci-shadow-index-003`.
 
-## Nullmodell
-Ohne diesen Index löst sich die Kampagnenmembran: Paritätsbrief, Archivlinie und Codex verlieren
-die Kopplung, Endorsements und Outreach geraten asynchron.
-
-**Erkennung & Gegenmaßnahmen**
-- *Signal*: Paritätsbrief-Timestamp neuer als Kompass-Metadaten.
-  - *Aktion*: Kompass + Index aktualisieren, Codex-Nachtrag mit mq-sci-Vektoren.
-- *Signal*: Outreach/Press-Dokument ohne ArchivSuche-Referenz.
-  - *Aktion*: Asset + Codex nachrüsten, bevor Veröffentlichung erfolgt.
+## Null Model
+Campaign directory drifts; bridge timestamp older than compass by >24 h or codex
+lacks mq-sci reference. Mitigation: run `sigillin_sync`, refresh compass + map,
+append codex note, update lantern shelf. Keep σ(β(R-Θ)) observable.

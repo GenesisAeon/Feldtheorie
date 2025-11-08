@@ -66,9 +66,9 @@
         "json": "analysis/analysis_index.json",
         "md": "analysis/analysis_index.md"
       },
-      "total_items": 32,
+      "total_items": 33,
       "categories": 5,
-      "description": "Python-Skripte für empirische Fits:\nDomain-Fits (16), Batch-Processing (6), Labs (2), Utilities (3).\nZentral: beta_drivers_meta_regression.py (UTAC v1.2!)\n",
+      "description": "Python-Skripte für empirische Fits:\nDomain-Fits (16), Batch-Processing (9), Labs (2), Utilities (3).\nZentral: beta_drivers_meta_regression.py (UTAC v1.2!)\n",
       "color": "#3498DB",
       "relevance": "high",
       "highlights": [
@@ -85,14 +85,15 @@
         "json": "data/data_index.json",
         "md": "data/data_index.md"
       },
-      "total_items": 43,
-      "categories": 7,
-      "description": "Empirische Datasets aus 7 Domänen:\nAI (9), Astrophysics (2), Biology (7), Cognition (6),\nDerived (5), Geophysics (4), Socio-Ecology (10).\nZentral: derived/beta_estimates.csv (alle β-Werte!)\n",
+      "total_items": 47,
+      "categories": 8,
+      "description": "Empirische Datasets aus 8 Domänen:\nAI (9), Astrophysics (2), Biology (7), Cognition (6),\nDerived (5), Geophysics (4), Socio-Ecology (10), Safety-Delay (4).\nZentral: derived/beta_estimates.csv (alle β-Werte!)\n",
       "color": "#27AE60",
       "relevance": "high",
       "highlights": [
         "derived/beta_estimates.csv (⭐ ROSETTA STONE!)",
         "derived/domain_covariates.csv (Meta-Regression)",
+        "safety_delay/safety_delay_delta_aic_20251107T211928Z.csv (Safety-Delay ΔAIC)",
         {
           "Outliers": "Urban Heat (β=16.3), Cascadia (β=16.29)"
         }
@@ -125,15 +126,15 @@
         "json": "docs/docs_index.json",
         "md": "docs/docs_index.md"
       },
-      "total_items": 9,
+      "total_items": 17,
       "categories": 4,
-      "description": "UTAC Theory Documentation:\nTheory (3), Applications (3), Validation (2), Infra (1).\nZentral: utac_theory_core.md, utac_falsifiability.md\n",
+      "description": "UTAC Theory Documentation:\n\n      Theory (3), Applications (4), Validation (2), Infrastructure (8).\n\n      Zentral: utac_theory_core.md, utac_falsifiability.md, utac_safety_delay_status.md\n\n      ",
       "color": "#F39C12",
       "relevance": "high",
       "highlights": [
         "utac_theory_core.md (Theorie-Fundament)",
-        "field_type_classification_v1.1.md (5 Systemtypen)",
-        "utac_falsifiability.md (Popper-konform!)"
+        "utac_safety_delay_status.md (Simulator-ΔAIC-Brücke)",
+        "sigillin_maintenance.md (Sigillin-Hygiene Wächter)"
       ]
     },
     "archive": {
@@ -376,12 +377,12 @@
   },
   "statistics": {
     "directories_indexed": 6,
-    "total_files_cataloged": 164,
+    "total_files_cataloged": 168,
     "trilayer_indices": 18,
     "breakdown": {
       "seed": 69,
       "analysis": 32,
-      "data": 43,
+      "data": 47,
       "models": 10,
       "docs": 12,
       "archive": 0
@@ -394,7 +395,7 @@
     "project_size": {
       "python_scripts": 43,
       "markdown_docs": "~80",
-      "data_files": 43
+      "data_files": 47
     }
   },
   "version_info": {

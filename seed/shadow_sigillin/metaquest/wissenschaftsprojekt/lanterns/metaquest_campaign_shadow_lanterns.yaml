@@ -1,0 +1,60 @@
+meta:
+  sigil: shadow-metaquest-campaign-lanterns
+  version: 0.1.0
+  created: '2025-12-18T00:00:00Z'
+  updated: '2025-12-18T00:00:00Z'
+  logistic:
+    R: 'Campaign-side risks: stalled endorsements, manuscript drift, silent telemetry.'
+    Theta: 'Parity brief + codex echo + bridge timestamp refreshed within 24h.'
+    beta: 5.0
+    zeta: 'Flares when press-kit rehearsals or BreakPoint rituals lapse.'
+  resonance: |
+    Shadow lantern array that captures derailment signatures for the Metaquest
+    launch narrative. Each entry mirrors a campaign meaning lantern and prescribes
+    recovery rituals so σ(β(R-Θ)) stabilises again.
+lanterns:
+  - id: mq-sci-shadow-lantern-a
+    title: Manuscript Drift Alarm
+    mirrors: seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.yaml#a
+    risk: 'Manuscript revisions or approvals not reflected in parity brief or codex.'
+    signals:
+      - 'docs/metaquest_parity_brief.md lacks latest manuscript update.'
+      - 'Codex entry missing mq-sci tag after manuscript change.'
+    escalation:
+      - 'Activate mq-sci-shadow-index-001.'
+    remediation:
+      - 'Update parity brief, codex, and UTAC matrix row with manuscript delta.'
+      - 'Notify campaign map + shadow compass of recovery timestamp.'
+    evidence:
+      - seed/Manuskriptfinalisierung und Kampagnenstart.pdf
+      - seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.md
+  - id: mq-sci-shadow-lantern-b
+    title: Outreach Silence Alarm
+    mirrors: seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.yaml#b
+    risk: 'Endorsements or press kit drift away from Metaquest cadence.'
+    signals:
+      - 'Bridge dashboard missing outreach timestamp.'
+      - 'Codex feedback lacks mq-sci reference for outreach sprint.'
+    escalation:
+      - 'Escalate to mq-sci-shadow-index-002.'
+    remediation:
+      - 'Rehearse press kit, archive transcript in codex, refresh bridge + parity brief.'
+      - 'Schedule follow-up BreakPoint ritual if cadence still misaligned.'
+    evidence:
+      - docs/metaquest_parity_brief.md#mqp-arena
+      - seed/Finalize_Publish.txt
+  - id: mq-sci-shadow-lantern-c
+    title: Telemetry Echo Gap
+    mirrors: seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.yaml#c
+    risk: 'sigillin_sync export missing; codex lacks mq-sci telemetry note.'
+    signals:
+      - 'No mq-sci codex entry within one sprint.'
+      - 'Bridge dashboard missing campaign timestamp alignment.'
+    escalation:
+      - 'Trigger mq-sci-shadow-index-003.'
+    remediation:
+      - 'Execute scripts/sigillin_sync.py, log run id, propagate to bridge + codex.'
+      - 'Cross-check UTAC matrix for updated timestamp.'
+    evidence:
+      - scripts/sigillin_sync.py
+      - seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.md

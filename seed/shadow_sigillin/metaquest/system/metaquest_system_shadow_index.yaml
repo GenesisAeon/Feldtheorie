@@ -2,7 +2,7 @@ meta:
   sigil: shadow-metaquest-system-index
   version: 0.1.0
   created: '2025-12-11T00:00:00Z'
-  updated: '2025-12-11T12:00:00Z'
+  updated: '2025-12-18T00:00:00Z'
   logistic:
     R: 'Untracked Metaquest system risks: stale compass, unsynchronised map, missing telemetry exports.'
     Theta: 'docs/metaquest_parity_brief.md + seed/codexfeedback.* carry matching mq-sys references within 24h.'
@@ -68,6 +68,14 @@ recovery_hooks:
     evidence:
       - 'scripts/sigillin_sync.py'
       - 'tests/test_sigillin_sync.py'
+  - name: 'Lantern shelf alignment'
+    steps:
+      - 'Inspect shadow lantern shelf entries for matching light-side references.'
+      - 'Ensure each lantern cites codex id + timestamp from latest mq-sys update.'
+      - 'Propagate findings to bridge dashboard and UTAC matrix.'
+    evidence:
+      - 'seed/shadow_sigillin/metaquest/system/lanterns/metaquest_system_shadow_lanterns.yaml'
+      - 'seed/bedeutungssigillin/system/metaquest/lanterns/metaquest_system_lanterns.yaml'
 null_model:
   description: 'Null = Metaquest system lanterns evolve without shadow oversight; parity brief diverges, telemetry fades, and automation overshoots.'
   monitoring:

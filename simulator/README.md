@@ -24,3 +24,12 @@ The `simulator/` loom translates threshold-field equations into tactile experien
    sodass reale Membranläufe die UI treiben.
 3. Erweitere das Test-Setup: `npm run build` + visuelle Regression, sobald
    weitere Interaktionspfade landen.
+
+## CLI Hooks
+- `python -m simulator.cli safety-delay --replicates 3 --emit-analysis`
+  - startet σ(β(R-Θ))-Sweeps mit Replikaten über `analysis/safety_delay_sweep.py`
+  - exportiert ΔAIC-Ledger nach `data/safety_delay/` (CSV + Summary + Metadata)
+  - optional: legt das vollständige Payload erneut in `analysis/results/` ab
+- Outputs dienen als Bedeutungs-Sigillin für Simulator-Presets: Parameter, ΔAIC,
+  Meta-Resonanz (Kontrollzentralität × CREP) und Zeitverläufe können direkt in
+  UI-Module gespiegelt werden.

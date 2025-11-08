@@ -40,6 +40,12 @@ Automationsschritt ohne dokumentierte Parität durchrutscht.
   2. Sicherstellen, dass `tests/test_sigillin_sync.py` in CI/ lokal lief.
   3. Report-Pfad im Codex + diesem Index festhalten.
   - *Evidenz*: `scripts/sigillin_sync.py`, `tests/test_sigillin_sync.py`.
+- **Lantern shelf alignment**
+  1. Schatten-Laternen gegen Licht-Pendants prüfen (`lanterns/metaquest_system_shadow_lanterns.*` ↔ Lichtseite).
+  2. Codex-ID + Timestamp je Laterne angleichen und dokumentieren.
+  3. Ergebnis im Bridge-Dashboard und der UTAC-Matrix vermerken.
+  - *Evidenz*: `lanterns/metaquest_system_shadow_lanterns.md`,
+    `seed/bedeutungssigillin/system/metaquest/lanterns/metaquest_system_lanterns.md`.
 
 ## Nullmodell
 Ohne diesen Schattenindex laufen Metaquest-Systemlaternen entkoppelt: Paritätsbrief

@@ -16,27 +16,31 @@
 | `seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.{yaml,json,md}` | Captures derailment scenarios for campaign cadence, keeping ζ(R) alerts sharp. | Points to BreakPoint responses and codex escalation paths. |
 | `docs/utac_status_alignment_v1.2.md` | Aggregates readiness metrics and ΔAIC guards, ensuring Θ remains visible across teams. | Section “Metaquest handshake” plus activation gap ledger. |
 
-## 2. Outstanding Parity Gaps
+## 2. Telemetrie-Puls — `mq-parity-001`
 
-1. **Telemetry Summary Injection (`mq-parity-001`)**
-   Export Metaquest parity metrics via `scripts/sigillin_sync.py` and embed the latest
-   report date inside this brief + the status matrix. Store the JSON output under
-   `analysis/sigillin_sync/` for reproducibility.
+- `analysis/sigillin_sync/latest.json` now records **12 Metaquest-Tri-Layer** with **0 parity gaps**.
+- The run at **2025-11-07T21:52:52Z** exported the same envelope to
+  `analysis/sigillin_sync/metaquest_report_20251107T215246Z.json` so ΔR audits remain reproducible.
+- σ(β(R-Θ)) framing: $R=12$ trilayer beacons, $\Theta$ is matched metadata parity, $\beta=4.6$ from the
+  sigillin_sync harness, $\zeta(R)$ stays damped when the report echoes into codex + status matrix within one sprint.
+- Codex hook `pr-draft-0075` now records the sync stamp for the parity ledger; future pulses should reference it until mq-parity-004 closes.
 
-2. **Simulator Demonstration Alignment (`mq-parity-002`)**  
+## 3. Outstanding Parity Gaps
+
+1. **Simulator Demonstration Alignment (`mq-parity-002`)**
    Record the canonical simulator preset playlist and link to the parity brief so outreach
    teams know which demos confirm Θ.
 
-3. **Endorsement Echo Ledger (`mq-parity-003`)**  
+2. **Endorsement Echo Ledger (`mq-parity-003`)**
    Summarise the endorsement/press-kit checklist from `seed/Finalisierung_Plattform.txt`
    and `seed/Finalize_Publish.txt`, noting where confirmation is stored (Zenodo, press
    folder, etc.).
 
-4. **Codex Cross-Link (`mq-parity-004`)**  
+3. **Codex Cross-Link (`mq-parity-004`)**
    Ensure every parity update references the codex entry id (e.g. `pr-draft-XXXX`) so future
    agents can trace when R crossed Θ and how β was held under control.
 
-## 3. Activation Sequence
+## 4. Activation Sequence
 
 1. **Before Launch Sprint:** Run `scripts/sigillin_sync.py report` to capture telemetry,
    update Bedeutungs- and Shadow-sigils with the timestamp, then refresh indices via
@@ -46,7 +50,7 @@
 3. **Post-Launch Echo:** Archive telemetry + parity notes in codex, attach ΔAIC or readiness
    metrics, and append new shadow guard observations.
 
-## 4. Null Model Warning
+## 5. Null Model Warning
 
 If Metaquest proceeds without this parity ledger, $R$ grows blind; Θ disappears from docs
 and codex, β overshoots during automation, and ζ(R) spikes as telemetry falls silent. Keep

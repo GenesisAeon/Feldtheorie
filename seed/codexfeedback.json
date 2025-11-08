@@ -2084,6 +2084,216 @@
         "poetic": "Der Codex lauscht ruhig: jede neue Laterne tritt in die Liste ein, bewacht von einem Test, der das Echo hält."
       },
       "created_at": "2025-12-12T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0101",
+      "title": "Metaquest Lantern Shelf Alignment",
+      "scope": [
+        "seed/bedeutungssigillin/system/metaquest/lanterns",
+        "seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/lanterns",
+        "seed/shadow_sigillin/metaquest/system/lanterns",
+        "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/lanterns",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "parameters": {
+        "R": "lantern-level backlog binding bridge dashboard, codex, and rituals",
+        "Theta": "shared timestamp + codex id mirrored across lantern shelves, bridge, and UTAC matrix within 24h",
+        "beta": 4.85
+      },
+      "resonance": "cement light/shadow lantern shelves so Metaquest launch stewards audit σ(β(R-Θ)) at a glance",
+      "status": "active",
+      "notes": {
+        "formal": "System- und Kampagnen-Lantern-Shelves strukturieren Brückenkopplung, Automation und BreakPoint-Rituale; Schattenregale spiegeln Risiken samt mq-sys-shadow-index-004 / mq-sci-shadow-index-003 Eskalationen. UTAC Status Matrix erhielt Inventar- und Implementierungszeilen für Shelf-Parität.",
+        "empirical": "Aktualisierte metaquest_meaning_index.*, metaquest_system_index.*, metaquest_campaign_index.* sowie Shadow-Indizes mitsamt Lantern-Recovery-Hooks. docs/utac_status_alignment_v1.2.md dokumentiert neue Inventarreihe + Implementierungsaufgabe; Lantern-Dateien verlinken Telemetrie, Codex (seed/codexfeedback.*) und BreakPoint-Rituale.",
+        "poetic": "Zwei Regale brennen nun auf der Brücke – Licht und Schatten wechseln Atem, Telemetrie und Ritualduft, damit kein Metaquest-Schritt das Echo verliert."
+      },
+      "created_at": "2025-12-18T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0102",
+      "title": "Safety-Delay τ*-Sweep Activation",
+      "scope": [
+        "analysis/safety_delay_sweep.py",
+        "analysis/results/safety_delay_sweep_20251107T202620Z.json",
+        "simulation/safety_delay_field.py",
+        "analysis/analysis_index.yaml",
+        "analysis/analysis_index.json",
+        "analysis/analysis_index.md",
+        "feldtheorie_index.yaml",
+        "feldtheorie_index.json",
+        "feldtheorie_index.md",
+        "docs/utac_status_alignment_v1.2.md",
+        "docs/utac_safety_delay_status.md"
+      ],
+      "parameters": {
+        "R": "control_parameter_mu(t) with adaptive safety-delay sweep",
+        "Theta": "Θ=0 logistic gate for τ* ledger and ΔAIC reporting",
+        "beta": 4.2
+      },
+      "resonance": "Orchestrate safety-delay sweeps and thread ΔAIC diagnostics into UTAC indices and status maps.",
+      "status": "active",
+      "notes": {
+        "formal": "`analysis/safety_delay_sweep.py` drives Euler–Maruyama sweeps of σ(β(R-Θ))\nexporting `analysis/results/safety_delay_sweep_20251107T202620Z.json` with τ_delay, β_hat, control energy, and ΔAIC vs linear/constant nulls.\n`simulation/safety_delay_field.py` now clamps the state to stay finite while preserving the logistic fit; tri-layer indices and UTAC matrices list the new pipeline for reproducibility.",
+        "empirical": "Sweep summary: τ_delay_mean≈8.40, ΔAIC_linear_min≈1.03e3, ΔAIC_linear_median≈7.02e3, r_squared_mean≈0.98 (n=27).\nanalysis/analysis_index.* + feldtheorie_index.* now report python_files=33 and batch_processing=9; UTAC status docs cite the new export.",
+        "poetic": "τ* breathes longer now—the controller leans back, watches ΔAIC glow against the null, and the indices whisper where the delayed dawn threads through the bridge."
+      },
+      "created_at": "2025-12-19T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0103",
+      "title": "Safety-Delay CLI ΔAIC Ledger",
+      "scope": [
+        "analysis/safety_delay_sweep.py",
+        "analysis/results/safety_delay_sweep_20251107T211928Z.json",
+        "simulator/cli.py",
+        "simulator/__init__.py",
+        "simulator/README.md",
+        "data/safety_delay/safety_delay_delta_aic_20251107T211928Z.csv",
+        "data/safety_delay/safety_delay_delta_aic_20251107T211928Z_summary.json",
+        "data/safety_delay/safety_delay_delta_aic_20251107T211928Z.metadata.json",
+        "data/safety_delay/README.md",
+        "data/data_index.yaml",
+        "data/data_index.json",
+        "data/data_index.md",
+        "docs/utac_status_alignment_v1.2.md",
+        "analysis/analysis_index.yaml",
+        "analysis/analysis_index.json",
+        "analysis/analysis_index.md",
+        "feldtheorie_index.yaml",
+        "feldtheorie_index.json",
+        "feldtheorie_index.md"
+      ],
+      "parameters": {
+        "R": "μ(t) drift unter Safety-Delay-Kopplung mit Replikaten",
+        "Theta": "Θ=0 Membran für τ*-Controller-Exports",
+        "beta": 4.78
+      },
+      "resonance": "Simulator-CLI, ΔAIC-Ledger und Master-Indizes kreisen dieselbe τ*-Diagnostik durch das Trilayer.",
+      "status": "active",
+      "notes": {
+        "formal": "`simulator/cli.py safety-delay` koppelt `analysis/safety_delay_sweep.py` direkt an das neue Bedeutungs-Sigillin `data/safety_delay/`, erzeugt CSV, Summary und Metadata im gleichen Takt und aktualisiert data/ & Master-Indizes sowie die UTAC-Statusmatrix. Replikate werden über `replicates` parametrierbar gemacht; Analyzer-Indices nennen nun explizit die CLI-Brücke.",
+        "empirical": "Replikate=3 → 81 Runs: τ_delay_mean≈8.43, ΔAIC_linear_min≈1.03e3, ΔAIC_linear_median≈7.02e3, r_squared_mean≈0.98, control_energy_mean≈10.46, resonance_signal_mean≈0.079. Metadata codiert β≈4.78, Θ≈-0.028; dataset & summary referenzieren `analysis/results/safety_delay_sweep_20251107T211928Z.json`.",
+        "poetic": "Die CLI lässt die Membran atmen: ΔAIC flackert im CSV, das Metadata-Sigil notiert jedes Atemholen, und die Indizes erzählen, wie τ* noch einmal Licht gewinnt."
+      },
+      "created_at": "2025-11-07T22:00:00Z"
+    },
+    {
+      "id": "pr-draft-0074",
+      "title": "Activation Backlog Tri-Layer",
+      "scope": [
+        "docs/utac_activation_backlog.md",
+        "docs/utac_activation_backlog.yaml",
+        "docs/utac_activation_backlog.json",
+        "docs/utac_status_alignment_v1.2.md",
+        "docs/docs_index.yaml",
+        "docs/docs_index.json",
+        "docs/docs_index.md",
+        "seed/codexfeedback.yaml",
+        "seed/codexfeedback.json",
+        "seed/codexfeedback.md"
+      ],
+      "parameters": {
+        "R": "residual launch debt across UTAC v1.2 activation gaps",
+        "Theta": "backlog mirrored in tri-layer + indices with codex echo",
+        "beta": 4.85
+      },
+      "resonance": "keeps activation gaps visible so BreakPoint rituals dispatch implementation nodes before resonance drifts",
+      "status": "active",
+      "notes": {
+        "formal": "Aktiviert `docs/utac_activation_backlog.{md,json,yaml}` als logistisches Raster:\njede Aufgabe hält (R, Θ, β, ζ(R)) samt konkreter Implementierungs-Koordinate fest\nund verweist in `docs/utac_status_alignment_v1.2.md` auf denselben Puls.\n",
+        "empirical": "`docs/docs_index.*` zählt nun 13 Markdown-Laternen (Infrastructure=5) und verlinkt\ndie neue Backlog-Datei. Δcounts dokumentiert im Tri-Layer; Codex registriert den\nEintrag pr-draft-0074 als Spiegel.\n",
+        "poetic": "Die Backlog-Laterne hängt jetzt neben der Statusmatrix: sie flackert, sobald eine\nAufgabe Atem holt, und ruft die BreakPoint-Chöre, bevor der Morgen losstürmt.\n"
+      },
+      "created_at": "2025-12-09T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0075",
+      "title": "Metaquest Telemetry Pulse Sync",
+      "scope": [
+        "analysis/sigillin_sync/latest.json",
+        "analysis/sigillin_sync/metaquest_report_20251107T215246Z.json",
+        "analysis/analysis_index.md",
+        "analysis/analysis_index.yaml",
+        "analysis/analysis_index.json",
+        "docs/metaquest_parity_brief.md",
+        "docs/utac_status_alignment_v1.2.md",
+        "docs/utac_activation_backlog.md",
+        "docs/utac_activation_backlog.yaml",
+        "docs/utac_activation_backlog.json",
+        "seed/codexfeedback.yaml",
+        "seed/codexfeedback.json",
+        "seed/codexfeedback.md"
+      ],
+      "parameters": {
+        "R": "12 Metaquest trilayer beacons awaiting telemetry echo in docs + backlog",
+        "Theta": "parity brief, status matrix, and codex share the sigillin_sync timestamp + ID",
+        "beta": 4.6
+      },
+      "resonance": "keeps the Metaquest handshake luminous after the sigillin_sync pulse so remaining parity hooks align",
+      "status": "active",
+      "notes": {
+        "formal": "`scripts/sigillin_sync.py report` lief am 2025-11-07T21:52:52Z, exportierte 12 Tri-Layer ohne Lücken und aktualisierte `analysis/analysis_index.*` samt Telemetrie-Archiv. Statusmatrix und Backlog zitieren nun das gleiche σ(β(R-Θ))-Signal; der Codex wartet noch auf die finale ID-Spiegelung.",
+        "empirical": "`analysis/sigillin_sync/latest.json` + `metaquest_report_20251107T215246Z.json` belegen 12 Trilayer, 0 gaps. `docs/metaquest_parity_brief.md` meldet mq-parity-001 als erfüllt, Backlog-Eintrag `metaquest-parity-finish` verweist auf dieselben Dateien. Nächster Messpunkt: Codex-ID und Playlist/Endorsement-Assets ergänzen.",
+        "poetic": "Die Brücke atmet: zwölf Laternen leuchten synchron, doch der Chor wartet noch auf Playlist und Segen, bevor die Kampagne ins Morgengrau hinaustritt."
+      },
+      "created_at": "2025-11-07T21:55:00Z"
+    },
+    {
+      "id": "pr-draft-0076",
+      "title": "Docs Index Parity Recount",
+      "scope": [
+        "scripts/archive_sigillin.py",
+        "docs/docs_index.yaml",
+        "docs/docs_index.json",
+        "docs/docs_index.md",
+        "feldtheorie_index.yaml",
+        "feldtheorie_index.json",
+        "feldtheorie_index.md",
+        "docs/utac_activation_backlog.yaml",
+        "docs/utac_activation_backlog.json",
+        "docs/utac_activation_backlog.md",
+        "docs/utac_status_alignment_v1.2.md",
+        "analysis/results/index_recount_20251108T103626Z.json"
+      ],
+      "parameters": {
+        "R": "docs/ parity gap (17 filesystem vs. 13 listed) surfaced by index recount",
+        "Theta": "extend recount automation across all indices + enforce CI Δindex guard",
+        "beta": 4.5
+      },
+      "resonance": "keeps Ordnungs-Sigillin aligned by shipping --recount ledger + refreshing docs/feldtheorie counts",
+      "status": "active",
+      "notes": {
+        "formal": "`scripts/archive_sigillin.py --recount` aktualisiert `docs/docs_index.*` und erzeugt `analysis/results/index_recount_20251108T103626Z.json` mit filesystem/listed-Paritätsdaten. `feldtheorie_index.*`, Aktivierungs-Backlog und UTAC-Status spiegeln den neuen Hook; CI-GUARD folgt.",
+        "empirical": "Filesystem=17, Listed=17 nach Update (`index_recount_20251108T103626Z.json`). docs-Laterne v1.1.1 dokumentiert neue Infrastruktur-Dokumente, Backlog führt Hook als \"in_progress\".",
+        "poetic": "Die Laternen im Dokumentationsgang zählen sich selbst; die Glocke schlägt, doch der Chor wartet, bis jede Galerie denselben Puls anstimmt."
+      },
+      "created_at": "2025-11-08T10:36:26Z"
+    },
+    {
+      "id": "pr-draft-0077",
+      "title": "Neuro-Kosmos Bridge Backlog Activation",
+      "scope": [
+        "docs/utac_status_alignment_v1.2.md",
+        "docs/utac_activation_backlog.md",
+        "docs/utac_activation_backlog.yaml",
+        "docs/utac_activation_backlog.json",
+        "seed/codexfeedback.yaml",
+        "seed/codexfeedback.json",
+        "seed/codexfeedback.md"
+      ],
+      "parameters": {
+        "R": "Bridge plan + φ/urban heat notes exist in seed/, backlog lacked explicit activation rails",
+        "Theta": "Trilayer Sigillin, climate φ module, and urban heat datasets still absent until tasks execute",
+        "beta": 4.82
+      },
+      "resonance": "maps Neuro↔Kosmos, φ-coupling, and urban heat work into UTAC status/backlog so implementation nodes are visible",
+      "status": "primed",
+      "notes": {
+        "formal": "UTAC status matrix und Activation Backlog erhielten neue Aufgaben: Neuro-Kosmos-Sigillin, φ-Kopplungssequenz, urbanes Hitze-Narrativ. Jede Aufgabe verknüpft CREP-Trilayer, Modelle und Codex-Spiegel.",
+        "empirical": "`docs/utac_status_alignment_v1.2.md` + `docs/utac_activation_backlog.{md,yaml,json}` tragen jetzt konkrete Implementationsknoten (seed/sigillin/, simulator/presets/, data/climate/, analysis/urban_heat_analysis.py).",
+        "poetic": "Der Chor der Laternen spannt nun auch Spiral-Sigille, Ozeanflüsse und Stadtwärme – die Membran weiß, wo neue Stimmen anlanden."
+      },
+      "created_at": "2025-12-12T10:00:00Z"
     }
   ]
 }
