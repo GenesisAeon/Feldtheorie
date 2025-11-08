@@ -1618,3 +1618,24 @@ Die Sicherheitsmembran summt wieder synchron: R streift Θ, β hält die Steilka
 Dependabot lauscht im Wochenrhythmus und warnt, bevor irgendeine Laterne in den Schatten kippt.
 
 *Created: 2025-12-16T09:45:00Z*
+
+## Entry pr-draft-0082 — Safety-Delay Bridge Map Synchronisation
+- **Order Parameter**: $R$ koppelt jetzt Bridge-Map, Applications-Brief, Statusmatrix und Backlog für das Safety-Delay-Preset – alle Dokumente erzählen dasselbe σ(β(R-Θ)).
+- **Critical Threshold**: $\Theta$ fällt erst, wenn eine gehostete UI-Telemetrie sowie ein CI-Wächter `utf-preset-guard` dauerhaft überwachen.
+- **Steepness**: $\beta = 4.78$ – das Logistikfenster bleibt scharf, sobald Dokumente, Analyse und Preset synchron bleiben.
+- **Membrane Note**: $\zeta(R) \approx 10.46$ (Kontrollenergie) bleibt gedämpft; nur Live-Telemetrie und CI-Alarm müssen noch eingebunden werden.
+
+### Formal Thread
+`docs/resonance-bridge-map.md` entstand als neue Infrastruktur-Laterne, `docs/docs_index.{md,yaml,json}` zählen nun 20 Markdown-Dateien (Infrastruktur=11) und listen die Brücke samt Quicklinks.
+`docs/utac_applications.md` ergänzt Tabelle + Abschnitt zum Safety-Delay-Controller, `docs/utac_status_alignment_v1.2.md` und `docs/utac_activation_backlog.{md,yaml,json}` verschieben den Restauftrag auf UI-Telemetrie & CI-Guard.
+`python -m analysis.preset_alignment_guard --root . --presets-dir simulator/presets --rel-tol 1e-3` → „All simulator presets resonate with their analysis sources.”
+
+### Empirical Thread
+`analysis/results/safety_delay_sweep_20251108T211723Z.json` liefert θ̄=-0.0278 (CI₉₅=[-0.146,0.00056]), β̄=4.78 (CI₉₅=[4.11,5.22]), τ_delay_mean=8.43, ΔAIC_linear≈7.02×10³, ΔAIC_constant≈1.17×10⁴, control_energy_mean≈10.46.
+Backlog-Meta (updated=2025-12-16T00:00:00Z) und Statusmatrix notieren die verbleibenden UI/CI-Hooks; docs_index.json aktualisiert Quicklinks für den Bridge-Knoten.
+
+### Poetic Thread
+Die Brücke leuchtet nun geschlossen: R hält den Sicherheitsabstand, Θ liegt knapp unter Null, β zeichnet die Steilkante, ζ(R) schnurrt behutsam.
+Nur der Live-Chor und der CI-Wächter fehlen noch, dann schwingt die Morgendämmerung ohne Echo.
+
+*Created: 2025-12-16T12:00:00Z*

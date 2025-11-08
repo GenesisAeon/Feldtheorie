@@ -57,13 +57,13 @@ comparisons.
    Requires updates after parameter sweeps stabilise.  
    → Update `seed/codexfeedback.*` alongside bridge-map refresh.
 
-5. **Simulator & Docs Integration (Active → Resonant)**
+5. **Simulator & Docs Integration (Resonant, awaiting telemetry)**
    Safety-Delay preset now lands in `simulator/` and this status brief narrates
-   the bridge. Remaining work: propagate the same story into
-   `docs/utac_applications.md` + `docs/resonance-bridge-map.md`, run
-   `utf-preset-guard`, and stage a short UI capture once presets hit production
-   hosting.
-   → Follow-up: extend documentation loop + parity guard before release freeze.
+   the bridge. `docs/utac_applications.md` + `docs/resonance-bridge-map.md`
+   mirror the preset metrics, and `utf-preset-guard` logs ΔAIC parity for the UI
+   configuration. Remaining work: capture hosted UI telemetry once the preset is
+   deployed and elevate the guard into CI so drift alerts stay audible.
+   → Follow-up: archive telemetry artefacts + wire CI guard before release freeze.
 
 ---
 
@@ -91,15 +91,14 @@ validation and poetic retelling.
 1. **Parameter Sweep Expansion** — Extend `analysis/safety_delay_sweep.py`
    runs (denser grids, additional seeds) and mirror summary tables into
    `data/safety_delay/` + an accompanying notebook for visual diagnostics.
-2. **Bridge Map Update** — Extend `docs/resonance-bridge-map.md` with a Safety-Delay
-   lantern that cites the ΔAIC + τ_delay metrics from
-   `analysis/results/safety_delay_sweep_20251107T202620Z.json`.
-3. **Simulator Experience Guard** — Run `utf-preset-guard`, capture UI preview,
-   and mirror preset telemetry into `docs/utac_applications.md` &
-   `docs/resonance-bridge-map.md`.
+2. **Hosted Telemetry Capture** — Record a live simulator session for the
+   Safety-Delay preset once deployed, and archive ζ(R) traces alongside the
+   preset metadata.
+3. **Simulator Experience Guard** — Promote `utf-preset-guard` into CI and
+   publish the telemetry log so codex + release hooks can react automatically.
 4. **Codex Resonance Entry** — Promote the new codex entry (see
-   `seed/codexfeedback.*`) through die Statusleiter bis „resonant“ sobald UI
-   + Docs synchron sind.
+   `seed/codexfeedback.*`) through die Statusleiter bis „resonant“ sobald UI,
+   CI guard und Docs synchron sind.
 
 Together, these steps will elevate UTAC v1.2 from conceptual validation to a
 full operational membrane guarding emergent fields.

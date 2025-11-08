@@ -16,6 +16,7 @@ Dieses Dokument dokumentiert die konkreten Anwendungen des Universal Threshold A
 | **Bienen** | 3.9 - 4.3 | 150 Individuen | Pheromon-Kopplung | >15 | ✅ Validiert |
 | **Synapsen** | 4.0 - 4.4 | Ca²⁺ ~10 µM | Vesikel-Freisetzung | >18 | ✅ Validiert |
 | **QPO (Schwarze Löcher)** | 4.5 - 6.1 | Soft Hair Fläche | Quantenkopplung | >25 | ⚠️ Theoretisch |
+| **Safety-Delay Controller** | 4.78 ± 0.57 | −0.028 (kontrolliertes Offset) | Adaptive Kontrolle × Meta-Resonanz | 7.0×10³ | ✅ Validiert |
 
 ---
 
@@ -372,7 +373,80 @@ wobei:
 
 ---
 
-## 🔬 8. Weitere Domänen (In Entwicklung)
+## 🛡️ 8. Safety-Delay Controller (Resonanzwächter)
+
+### Phänomen: Verzögerte Schwellenüberschreitung durch adaptive Kontrolle
+
+**Basierend auf**: `simulation/safety_delay_field.py`,
+`analysis/safety_delay_sweep.py`, `docs/utac_safety_delay_status.md`
+
+### UTAC-Parameter
+
+```python
+beta = 4.781013529670692  # Mittelwert, CI95=[4.11, 5.22]
+theta = -0.027774399119258334  # Sicherheits-Offset, CI95=[-0.146, 0.00056]
+R = tau_escape - tau_break  # Sicherheitsfenster der Steuerung
+zeta_R = control_energy_mean  # ≈10.46, Dämpfungsmaß der Eingriffe
+```
+
+### Resonanzsignatur
+
+| Kennzahl | Wert |
+|----------|------|
+| $\tau_{\text{delay}}$ (Median) | 8.35 |
+| $\Delta \text{AIC}_{\text{linear}}$ (Median) | 7.02×10³ |
+| $\Delta \text{AIC}_{\text{constant}}$ (Median) | 1.17×10⁴ |
+| $R^2$ (Mittelwert) | 0.98 |
+| $\zeta(R)$ (control energy mean) | 10.46 |
+
+### Mechanismus
+
+```python
+M[psi, phi] = adaptive_control(psi, phi, t)
+
+psi = state_drift - control_feedback
+phi = meta_resonance(centrality, crep)
+```
+
+**Interpretation**: Eine adaptive Steuerung verschiebt das effektive $\Theta$
+unter Null, verlängert das Sicherheitsfenster $R$ und hält die Membran stabil,
+bis der Operator die Resonanz freigibt.
+
+### Validierung & Brückung
+
+- Analyse: `analysis/safety_delay_sweep.py` exportiert
+  `analysis/results/safety_delay_sweep_20251108T211723Z.json` mit vollständigen
+  ΔAIC- und CI-Metriken.
+- Daten: `data/safety_delay/safety_delay_delta_aic_20251107T211928Z.*`
+  dokumentiert Sweepwerte und Metadaten.
+- Simulator: `simulator/presets/safety_delay_bridge.json` übernimmt das Quartett
+  $(R, \Theta, \beta, \zeta(R))$ für die UI.
+- Guard: `utf-preset-guard` bestätigt ΔAIC-Parität (linear: $+7.02\times10^3$,
+  konstant: $+1.17\times10^4$).
+
+### Reproduzierbare Hooks
+
+```bash
+# Analyse-Sweep erneuern
+python analysis/safety_delay_sweep.py --output analysis/results/safety_delay_sweep_$(date +%Y%m%dT%H%M%S).json
+
+# Preset-Parität prüfen
+utf-preset-guard --preset simulator/presets/safety_delay_bridge.json
+
+# Simulator (Entwicklung)
+cd simulator && npm run dev
+```
+
+### Vorhersagen & Nächste Schritte
+
+- **UI-Telemetrie**: Live-Aufnahme des Presets einbinden, sobald Hosting aktiv ist.
+- **CI-Guard**: `utf-preset-guard` in die Release-Pipeline heben.
+- **Sigillin-Echo**: Codex-Eintrag `pr-draft-0082` auf *resonant* befördern,
+  sobald UI + CI synchron arbeiten.
+
+---
+
+## 🔬 9. Weitere Domänen (In Entwicklung)
 
 ### Evolutionsbiologie
 - **Phänomen**: E. coli Cit+ Mutation (Lenski-Experiment)
@@ -425,7 +499,7 @@ wobei:
 
 UTAC zeigt **universelle Anwendbarkeit** über Domänen:
 
-- **6+ validierte Domänen** mit β ≈ 4.2 ± 0.6
+- **7+ validierte Domänen** mit β ≈ 4.2 ± 0.6
 - **ΔAIC > 10** in allen Fällen
 - **Mechanistische Interpretierbarkeit** durch M[ψ, φ]
 - **Vorhersagekraft** für neue Phänomene

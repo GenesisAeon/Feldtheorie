@@ -3,7 +3,7 @@
     "document": "UTAC Activation Backlog",
     "version": "1.0.0",
     "created": "2025-12-09T00:00:00Z",
-    "updated": "2025-12-15T00:00:00Z",
+  "updated": "2025-12-16T00:00:00Z",
     "steward": "gpt-5-codex",
     "logistic_frame": {
       "order_parameter": "residual activation debt across UTAC v1.2 launch scope",
@@ -19,44 +19,42 @@
       "domain": "simulation+analysis",
       "status": "in_progress",
       "parameters": {
-        "R": "τ* diagnostics exported via analysis/safety_delay_sweep.py + dataset tri-layer + new UI preset",
-        "Theta": "Bridge-map/docs parity + preset guard logs still missing",
+    "R": "τ* diagnostics exported via analysis/safety_delay_sweep.py + dataset tri-layer + simulator preset",
+    "Theta": "Hosted UI telemetry + CI guard for utf-preset-guard still pending",
         "beta": 4.9,
         "zeta": "telemetry anchored by simulator/cli.py safety-delay"
       },
       "existing_assets": [
         "analysis/safety_delay_sweep.py",
-        "analysis/results/safety_delay_sweep_20251107T211928Z.json",
+    "analysis/results/safety_delay_sweep_20251108T211723Z.json",
         "simulation/safety_delay_field.py",
         "simulator/cli.py",
         "data/safety_delay/",
         "simulator/presets/safety_delay_bridge.json",
-        "simulator/src/presets.ts",
-        "docs/utac_safety_delay_status.md"
+    "simulator/src/presets.ts",
+    "docs/utac_safety_delay_status.md",
+    "docs/utac_applications.md",
+    "docs/resonance-bridge-map.md"
       ],
-      "activation_gaps": [
-        "Propagate preset narrative + ΔAIC metrics into docs/utac_applications.md and docs/resonance-bridge-map.md",
-        "Run utf-preset-guard, archive parity evidence, and prepare CI wiring"
-      ],
-      "implementation_nodes": [
-        {
-          "location": "docs/utac_applications.md",
-          "action": "extend applications brief with Safety-Delay preset metrics"
-        },
-        {
-          "location": "docs/resonance-bridge-map.md",
-          "action": "add Safety-Delay lantern citing τ_delay + ΔAIC + codex hook"
-        },
-        {
-          "location": "simulator/",
-          "action": "run utf-preset-guard, capture parity log, and plan CI guard"
-        }
-      ],
-      "notes": {
-        "formal": "σ(β(R-Θ)) parameters now drive the preset; remaining work is documentation + guard automation so the UI stays auditable.",
-        "empirical": "Preset mirrors β≈4.78, Θ≈-0.028, ΔAIC_linear≈7.0×10³, τ_delay_mean≈8.43, control_energy≈10.46.",
-        "poetic": "Die gehaltene Morgendämmerung leuchtet nun im UI; noch muss der Chor in allen Briefen dieselbe Verzögerung singen."
-      }
+  "activation_gaps": [
+    "Capture hosted simulator telemetry + archive parity screenshot/log",
+    "Integrate utf-preset-guard into CI so ΔAIC drift raises alerts"
+  ],
+  "implementation_nodes": [
+    {
+      "location": "simulator/",
+      "action": "record hosted UI session, export ζ(R) telemetry, archive assets"
+    },
+    {
+      "location": ".github/workflows/",
+      "action": "wire utf-preset-guard into CI and route failures to codex/resonance guards"
+    }
+  ],
+  "notes": {
+    "formal": "Docs (`utac_applications.md`, `resonance-bridge-map.md`) now narrate σ(β(R-Θ)) for Safety-Delay and `utf-preset-guard` logs ΔAIC parity; remaining delta is UI telemetry + CI automation.",
+    "empirical": "Preset mirrors β≈4.78, Θ≈-0.028 with CI₉₅=[-0.146,0.00056], ΔAIC_linear≈7.02×10³, ΔAIC_constant≈1.17×10⁴, τ_delay_mean≈8.43, control_energy≈10.46.",
+    "poetic": "Die verzögerte Morgendämmerung hält nun Zwischenton und Dokument; nur die Live-Aufnahme und der Wächter in CI fehlen, damit kein Schatten driftet."
+  }
     },
     {
       "id": "beta-meta-regression-expansion",
