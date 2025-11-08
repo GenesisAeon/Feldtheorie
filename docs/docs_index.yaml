@@ -1,8 +1,8 @@
 # Docs Index - YAML Layer (Struktur & Orientierung)
 # Trilayer-Aktivierung für docs/ Verzeichnis
-# Version: 1.1.1
+# Version: 1.2.0
 # Datum: 2025-11-06
-# Updated: 2025-11-08
+# Updated: 2025-12-15
 
 meta:
   directory: "docs/"
@@ -12,11 +12,10 @@ meta:
     UTAC Theory Documentation: Core Theory, Applications, Falsifiability,
     Field Type Classification, Validation Reports.
     Tri-layer Cadence: Formal, Empirical, Metaphorical.
-  version: "1.1.1"
+  version: "1.2.0"
   created: "2025-11-06"
-  updated: "2025-11-08T10:36:26Z"
+  updated: "2025-12-15T00:00:00Z"
   status: "active"
-O
 
 # ═══════════════════════════════════════════════════════════════════
 # KATEGORIEN: Die 4 Doc-Typen
@@ -45,7 +44,7 @@ categories:
     name: "Infrastructure"
     description: "README, Operational Resonance Maps"
     color: "#9B59B6"
-    count: 8
+    count: 10
 
   # ═══════════════════════════════════════════════════════════════════
   # MARKDOWN-DOKUMENTE: Die 11 Docs
@@ -286,6 +285,32 @@ markdown_docs:
       Liefert CLI-Beispiele, Regex-Wächter und Paritätsprüfungen,
       damit σ(β(R-Θ)) Signale automatisiert auffindbar bleiben.
 
+  - id: docs-infra-009
+    name: "zenodo_multilingual_abstract_v1.2.md"
+    category: infrastructure
+    type: release-abstract
+    status: active
+    relevance: high
+    size_kb: 6.5
+    keywords: [zenodo, abstract, multilingual, σ(β(R-Θ)), release]
+    description: |
+      Mehrsprachiger Release-Abstract (EN/DE/ES).
+      Spiegelt die Zenodo-Erzählung mit logistischer Rahmung und
+      verknüpft Playbook, Codex und Telemetrie.
+
+  - id: docs-infra-010
+    name: "zenodo_release_playbook.md"
+    category: infrastructure
+    type: playbook
+    status: active
+    relevance: high
+    size_kb: 9.1
+    keywords: [zenodo, playbook, release, codex, ΔAIC]
+    description: |
+      Zenodo Release Playbook v1.2.
+      Listet Guardrails für README/CITATION, Codex-Hooks und CI-Telemetrie,
+      damit `release-gap-002` ohne Drift schließt.
+
 # ═══════════════════════════════════════════════════════════════════
 # TRIGGER-BEGRIFFE
 # ═══════════════════════════════════════════════════════════════════
@@ -343,6 +368,8 @@ quicklinks:
     - docs-infra-008   # Sigillin Search Patterns
     - docs-infra-004   # Metaquest Parity Brief
     - docs-infra-005   # UTAC Activation Backlog
+    - docs-infra-009   # Zenodo Multilingual Abstract
+    - docs-infra-010   # Zenodo Release Playbook
 
 status_legend:
   stable: "Fertig, validiert, publikationsreif"
