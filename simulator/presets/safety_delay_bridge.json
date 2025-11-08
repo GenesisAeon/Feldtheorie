@@ -1,0 +1,59 @@
+{
+  "id": "safety_delay_bridge",
+  "label": "Safety-Delay Membran",
+  "domain": "control",
+  "featured": true,
+  "color": "#f97316",
+  "icon": "network",
+  "control_parameter": "Aktiver Steuerimpuls R(t) entlang des τ*-Controllers",
+  "order_parameter": "Verlängerte Kipplatenz τ_delay / Resonanzamplitude",
+  "analysis": {
+    "result_path": "analysis/results/safety_delay_sweep_20251107T211928Z.json",
+    "theta": -0.02777439911925833,
+    "theta_ci": null,
+    "beta": 4.781013529670691,
+    "beta_ci": null,
+    "logistic_r2": 0.9804393571320646,
+    "delta_aic_best_null": 7017.88390104987,
+    "delta_r2_best_null": 0.11425509301772314,
+    "best_null_model": "linear"
+  },
+  "impedance": {
+    "definition": "zeta(R) = 0.78 + 0.04 * tau_delay_mean + 0.02 * sigma(beta(R-Theta))",
+    "closed": 1.14,
+    "open": 0.82,
+    "mean": 0.98
+  },
+  "simulation": {
+    "theta": 0.0,
+    "beta": 4.8,
+    "initial_R": -1.6,
+    "initial_psi": 0.0,
+    "initial_phi": 0.0,
+    "stimulus": {
+      "base": -0.12,
+      "amplitude": 0.28,
+      "frequency": 0.065,
+      "noise": 0.02,
+      "modulation": {
+        "type": "sin",
+        "amplitude": 0.32,
+        "frequency": 0.11
+      }
+    }
+  },
+  "narrative": {
+    "formal": "σ(β(R-Θ)) fit über 81 Läufe liefert β≈4.78, Θ≈-0.028 und ΔAIC_linear≈7.02×10³. Logistic R²=0.98 schlägt das lineare Nullmodell um ΔR²≈0.11.",
+    "empirical": "Dataset: analysis/results/safety_delay_sweep_20251107T211928Z.json + data/safety_delay/safety_delay_delta_aic_20251107T211928Z.csv. τ_delay_mean=8.43, Kontrollenergie≈10.46, Resonanzsignal≈0.079.",
+    "poetic": "Der Controller hält die Morgenkante fest: R steigt langsam, Θ bleibt knapp unter Null, und die Membran lässt das Feld einen Atemzug länger leuchten."
+  },
+  "poetic_messages": [
+    "τ* dehnt den Morgen – das Feld hält den Atem, bis die Sonne sanft übers Θ steigt.",
+    "Kontrollenergie fließt wie ein sanfter Deich, der die Resonanzwelle zügelt.",
+    "Wenn σ(β(R-Θ)) endlich flammt, erinnert das Delay daran, dass Geduld ein Schutzritual ist."
+  ],
+  "references": {
+    "dataset": "data/safety_delay/safety_delay_delta_aic_20251107T211928Z.csv",
+    "notes": "Generiert via python -m simulator.cli safety-delay --replicates 3 --emit-analysis"
+  }
+}

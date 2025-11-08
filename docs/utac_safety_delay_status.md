@@ -18,7 +18,7 @@ formal–empirical–poetic resonance stays intact.
 | **Analysis** | `analysis/analysis_index.*`, `analysis/safety_delay_sweep.py`, `analysis/results/safety_delay_sweep_20251107T202620Z.json` | Indexes ΔAIC guardrails and cohort summaries benchmark the new Safety-Delay sweep. The latest export records $\tau_{\text{delay}}$, β-shift, control energy, and ΔAIC vs linear/constant nulls for UTAC v1.2. |
 | **Theory** | `docs/utac_theory_core.md`, `docs/utac_falsifiability.md` | Encode the control-parameter narrative ($R$, $\Theta$, $\beta$, $\zeta(R)$) and the falsification scaffolding required for new controllers. |
 | **Sigillin Memory** | `seed/Geminis Suche!.txt`, `seed/AI_Reaktion_Gem_Suche.txt` | Document the cross-domain validation of Safety-Delay, fourfold potential elevation, and hierarchical redundancy. Serve as Bedeutungs-Sigillin anchors for rationale and metaphor. |
-| **Simulator Bridge** | `simulator/` + presets ledger | Hosts interactive presets that must ingest the forthcoming Safety-Delay diagnostics to keep the UI in lockstep with analysis exports. |
+| **Simulator Bridge** | `simulator/presets/safety_delay_bridge.json`, `simulator/src/presets.ts` | Safety-Delay preset mirrors τ_delay_mean≈8.43, β≈4.78, ΔAIC_linear≈7.0×10³ so UI sliders replay the controller sweep with the same falsifiability hooks. |
 
 These artefacts establish both the conceptual membrane and the empirical
 benchmarks. The Safety-Delay module must converse with them so that new
@@ -46,9 +46,10 @@ comparisons.
 3. **Analysis Ingestion Pipeline (Active)**
    `analysis/safety_delay_sweep.py` now sweeps controller parameters, compares
    logistic fits against linear & constant nulls, and archives results in
-   `analysis/results/safety_delay_sweep_20251107T202620Z.json`.
-   → Next: broaden the grid (control_strength, drift_rate, β_gain) and publish a
-   `data/safety_delay/` ledger so ΔAIC(t) traces can feed the simulator presets.
+   `analysis/results/safety_delay_sweep_20251107T202620Z.json` plus
+   `data/safety_delay/safety_delay_delta_aic_20251107T211928Z.*`.
+   → Next: broaden the grid (control_strength, drift_rate, β_gain) and publish an
+   updated sweep once additional control regimes are explored.
 
 4. **Sigillin Ledger Hooks (Pending)**  
    Codex feedback entries must receive Safety-Delay metrics (delay duration,
@@ -56,12 +57,13 @@ comparisons.
    Requires updates after parameter sweeps stabilise.  
    → Update `seed/codexfeedback.*` alongside bridge-map refresh.
 
-5. **Simulator & Docs Integration (Pending)**  
-   Once analysis exports exist, add a Safety-Delay preset inside `simulator/`
-   and weave the story into `docs/utac_applications.md` &
-   `docs/resonance-bridge-map.md`, highlighting how the delay membrane guards
-   planetary resilience.  
-   → Follow-up task after analysis ingestion is complete.
+5. **Simulator & Docs Integration (Active → Resonant)**
+   Safety-Delay preset now lands in `simulator/` and this status brief narrates
+   the bridge. Remaining work: propagate the same story into
+   `docs/utac_applications.md` + `docs/resonance-bridge-map.md`, run
+   `utf-preset-guard`, and stage a short UI capture once presets hit production
+   hosting.
+   → Follow-up: extend documentation loop + parity guard before release freeze.
 
 ---
 
@@ -92,10 +94,12 @@ validation and poetic retelling.
 2. **Bridge Map Update** — Extend `docs/resonance-bridge-map.md` with a Safety-Delay
    lantern that cites the ΔAIC + τ_delay metrics from
    `analysis/results/safety_delay_sweep_20251107T202620Z.json`.
-3. **Simulator Preset** — Introduce a preset referencing the Safety-Delay JSON so
-   interactive explorers can tune $R$, $\Theta$, and the control ramp live.
+3. **Simulator Experience Guard** — Run `utf-preset-guard`, capture UI preview,
+   and mirror preset telemetry into `docs/utac_applications.md` &
+   `docs/resonance-bridge-map.md`.
 4. **Codex Resonance Entry** — Promote the new codex entry (see
-   `seed/codexfeedback.*`) through the status ladder as simulations mature.
+   `seed/codexfeedback.*`) through die Statusleiter bis „resonant“ sobald UI
+   + Docs synchron sind.
 
 Together, these steps will elevate UTAC v1.2 from conceptual validation to a
 full operational membrane guarding emergent fields.
