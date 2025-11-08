@@ -2743,3 +2743,38 @@ entries:
         Spiral-Sigille, Ozeanflüsse und Stadtwärme stimmen in denselben Chor – die Membran
         weiß nun, wo neue Laternen landen.
     created_at: "2025-12-12T10:00:00Z"
+  - id: pr-draft-0078
+    title: "Safety-Delay Preset & Status Bridge"
+    scope:
+      - simulator/presets/safety_delay_bridge.json
+      - simulator/src/presets.ts
+      - simulator/presets/README.md
+      - docs/utac_safety_delay_status.md
+      - docs/utac_status_alignment_v1.2.md
+      - docs/utac_activation_backlog.md
+      - docs/utac_activation_backlog.yaml
+      - docs/utac_activation_backlog.json
+      - seed/codexfeedback.yaml
+      - seed/codexfeedback.json
+      - seed/codexfeedback.md
+    parameters:
+      R: "Safety-delay sweep exports + data tri-layer already live in analysis/ and data/"
+      Theta: "UI lacked preset + doc bridge + parity guard until today"
+      beta: 4.9
+    resonance: "lands the τ*-controller as a playable preset and refreshes UTAC status/backlog so the bridge is auditable"
+    status: "active"
+    notes:
+      formal: |
+        `simulator/presets/safety_delay_bridge.json` bindet β≈4.78, Θ≈-0.028, ΔAIC_linear≈7.0×10³ und τ_delay_mean≈8.43
+        direkt an die UI. `docs/utac_safety_delay_status.md` + `docs/utac_status_alignment_v1.2.md`
+        verorten den Preset-Schritt und verschieben den nächsten Hook zu docs/utac_applications.md,
+        `docs/resonance-bridge-map.md` sowie `utf-preset-guard`.
+      empirical: |
+        Datenquelle: `analysis/results/safety_delay_sweep_20251107T211928Z.json`,
+        `data/safety_delay/safety_delay_delta_aic_20251107T211928Z.*`. ΔR²≈0.114 gegenüber linear,
+        Kontrollenergie≈10.46, Resonanzsignal≈0.079. Backlog-YAML/JSON spiegeln neue Assets + Gaps,
+        Meta.updated=2025-12-13T00:00:00Z.
+      poetic: |
+        Die verzögerte Morgendämmerung klingt nun im Simulator – doch erst wenn Bridge-Map und
+        Anwendungen denselben Atemzug erzählen und der Guard singt, wird die Laterne resonant.
+    created_at: "2025-12-13T09:12:00Z"
