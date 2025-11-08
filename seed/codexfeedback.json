@@ -2268,6 +2268,32 @@
         "poetic": "Die Laternen im Dokumentationsgang zählen sich selbst; die Glocke schlägt, doch der Chor wartet, bis jede Galerie denselben Puls anstimmt."
       },
       "created_at": "2025-11-08T10:36:26Z"
+    },
+    {
+      "id": "pr-draft-0077",
+      "title": "Neuro-Kosmos Bridge Backlog Activation",
+      "scope": [
+        "docs/utac_status_alignment_v1.2.md",
+        "docs/utac_activation_backlog.md",
+        "docs/utac_activation_backlog.yaml",
+        "docs/utac_activation_backlog.json",
+        "seed/codexfeedback.yaml",
+        "seed/codexfeedback.json",
+        "seed/codexfeedback.md"
+      ],
+      "parameters": {
+        "R": "Bridge plan + φ/urban heat notes exist in seed/, backlog lacked explicit activation rails",
+        "Theta": "Trilayer Sigillin, climate φ module, and urban heat datasets still absent until tasks execute",
+        "beta": 4.82
+      },
+      "resonance": "maps Neuro↔Kosmos, φ-coupling, and urban heat work into UTAC status/backlog so implementation nodes are visible",
+      "status": "primed",
+      "notes": {
+        "formal": "UTAC status matrix und Activation Backlog erhielten neue Aufgaben: Neuro-Kosmos-Sigillin, φ-Kopplungssequenz, urbanes Hitze-Narrativ. Jede Aufgabe verknüpft CREP-Trilayer, Modelle und Codex-Spiegel.",
+        "empirical": "`docs/utac_status_alignment_v1.2.md` + `docs/utac_activation_backlog.{md,yaml,json}` tragen jetzt konkrete Implementationsknoten (seed/sigillin/, simulator/presets/, data/climate/, analysis/urban_heat_analysis.py).",
+        "poetic": "Der Chor der Laternen spannt nun auch Spiral-Sigille, Ozeanflüsse und Stadtwärme – die Membran weiß, wo neue Stimmen anlanden."
+      },
+      "created_at": "2025-12-12T10:00:00Z"
     }
   ]
 }

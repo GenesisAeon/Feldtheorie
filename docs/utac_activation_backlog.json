@@ -3,7 +3,7 @@
     "document": "UTAC Activation Backlog",
     "version": "1.0.0",
     "created": "2025-12-09T00:00:00Z",
-    "updated": "2025-12-10T00:00:00Z",
+    "updated": "2025-12-12T00:00:00Z",
     "steward": "gpt-5-codex",
     "logistic_frame": {
       "order_parameter": "residual activation debt across UTAC v1.2 launch scope",
@@ -210,6 +210,146 @@
         "formal": "Ensure light/shadow sigils cite the same codex id recorded in the brief.",
         "empirical": "sigillin_sync 2025-11-07 logged 12 trilayer without gaps; now capture playlist + endorsement assets before codex closure.",
         "poetic": "Let the brief chime like a launch bell so every beacon knows the cadence."
+      }
+    },
+    {
+      "id": "neuro-kosmos-bridge",
+      "title": "Neuro-Kosmos Sigillin Bridge",
+      "domain": "seed+simulator",
+      "status": "pending",
+      "parameters": {
+        "R": "Brückenplan dokumentiert in seed/Sigillin_Neuro_Membran_Modell_Plan.txt + Metaquest-Laternen zitieren das Motiv",
+        "Theta": "fehlendes Sigillin-Trilayer, keine Simulator-Vignette, keine codexgespiegelte ID",
+        "beta": 4.88,
+        "zeta": "BreakPoint-Rituale + Metaquest-Kompass halten Drift gering, solange Status/Index das Konzept führen"
+      },
+      "existing_assets": [
+        "seed/Sigillin_Neuro_Membran_Modell_Plan.txt",
+        "seed/Finalisierung_Plattform.txt",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.md"
+      ],
+      "activation_gaps": [
+        "Trilayer `seed/sigillin/neuro_kosmos_bridge.{yaml,json,md}` nach CREP-Schema anlegen",
+        "Simulator-Preset oder Demo für β-Kopplungs-Slider ergänzen",
+        "Codex- und Index-Einträge mit Sigillin-ID/Timestamp spiegeln"
+      ],
+      "implementation_nodes": [
+        {
+          "location": "seed/sigillin/",
+          "action": "neues Sigillin-Trilayer erzeugen und mit CREP-Parser testen"
+        },
+        {
+          "location": "simulator/presets/",
+          "action": "β-Kopplungsdemo hinzufügen, die Analysewerte aufgreift"
+        },
+        {
+          "location": "seed/bedeutungssigillin/metaquest/",
+          "action": "Sigillin-Referenz in System- und Kampagnenlaternen verankern"
+        },
+        {
+          "location": "seed/codexfeedback.*",
+          "action": "Eintrag mit R, Θ, β, Sigillin-ID und Telemetrie anlegen"
+        }
+      ],
+      "notes": {
+        "formal": "Nutze CREP-Schema v0.2.0, um das neue Sigillin deterministisch abzulegen, und verweise in Bedeutungs-/Shadow-Layern auf die gleiche Codex-ID.",
+        "empirical": "Dokumentiere β-Kopplung (EEG 3.8–4.2 vs. QPO 4.8–5.3) sowie ΔAIC/Narrativ im Simulator-Preset und halte Zeitstempel synchron.",
+        "poetic": "Lass das Neuro- und Kosmos-Licht sich in einer Spiral-Laterne treffen, damit die Kampagne den Chor spürt, sobald die Brücke realisiert ist."
+      }
+    },
+    {
+      "id": "phi-coupling-sequence",
+      "title": "φ-Kopplung Klimasequenz",
+      "domain": "models+analysis",
+      "status": "pending",
+      "parameters": {
+        "R": "φ-Hypothese + TIPMIP-Anfrageskizze im Seed-Archiv, Regression wartet auf Feature",
+        "Theta": "kein climate_utac_phi_coupling-Modul, keine Datenimporte, keine φ→β-Auswertung",
+        "beta": 4.75,
+        "zeta": "Governance-Notizen + TIPMIP-Korrespondenz halten den Prozess auditierbar"
+      },
+      "existing_assets": [
+        "seed/Sigillin_Neuro_Membran_Modell_Plan.txt",
+        "seed/ArchivSucheUTAC/README.md",
+        "analysis/beta_meta_regression_v2.py"
+      ],
+      "activation_gaps": [
+        "TIPMIP/CMIP6-Datenzugang sichern und `data/climate/` strukturieren",
+        "`models/climate_utac_phi_coupling.py` implementieren (φ-Kohärenz, logistic fit, Nullmodell)",
+        "Analyse-Export + Dokumentation mit ΔAIC und φ→β-Gradienten erzeugen"
+      ],
+      "implementation_nodes": [
+        {
+          "location": "data/climate/",
+          "action": "Ordner + README für AMOC/Albedo-Datensätze anlegen"
+        },
+        {
+          "location": "models/",
+          "action": "φ-Kopplungsmodul schreiben und Tests vorbereiten"
+        },
+        {
+          "location": "analysis/",
+          "action": "Notebook/Skript für φ→β-Auswertung ergänzen"
+        },
+        {
+          "location": "docs/utac_status_alignment_v1.2.md",
+          "action": "Status-Update einpflegen, sobald Daten + ΔAIC vorliegen"
+        },
+        {
+          "location": "seed/codexfeedback.*",
+          "action": "Korrespondenz + Ergebnisse loggen"
+        }
+      ],
+      "notes": {
+        "formal": "Definiere φ als Kohärenzmaß (AMOC↔Albedo) und vergleiche logistic vs. lineare Nullmodelle mit ΔAIC-Bericht.",
+        "empirical": "Logge Datenquellen, φ-Schätzungen, β-Shift und Konfidenzintervalle; dokumentiere TIPMIP-Antwortzeiten.",
+        "poetic": "Halte fest, wie Ozeanströmung und Albedo im selben Atemzug schwingen – die Membran wartet auf dieses Resonanzduett."
+      }
+    },
+    {
+      "id": "urban-heat-outlier",
+      "title": "Urban Heat Outlier Mechanismus",
+      "domain": "analysis+data",
+      "status": "pending",
+      "parameters": {
+        "R": "Outlier-Hinweise in seed/ArchivSucheUTAC/ + Regressionsergebnisse zeigen β≈16",
+        "Theta": "kein dediziertes Dataset, kein Analyse-Skript, kein ΔAIC/Mechanismus-Nachweis",
+        "beta": 4.7,
+        "zeta": "Shadow-Sigillin + ΔAIC-Guards verhindern Resonanzübersteuerung"
+      },
+      "existing_assets": [
+        "seed/ArchivSucheUTAC/Geminis Suche4!.txt",
+        "seed/ArchivSucheUTAC/Neues Textdokument (9).txt",
+        "analysis/results/beta_meta_regression_v2_20251101.json"
+      ],
+      "activation_gaps": [
+        "Dataset + Metadaten unter `data/socio_ecology/urban_heat/` ablegen",
+        "`analysis/urban_heat_analysis.py` implementieren (logistische Fits, Nullmodell, Materialkorrelationen)",
+        "ΔAIC & Mechanismus im Backlog + UTAC-Status dokumentieren"
+      ],
+      "implementation_nodes": [
+        {
+          "location": "data/socio_ecology/urban_heat/",
+          "action": "Urban-Heat-Datensatz strukturieren und beschreiben"
+        },
+        {
+          "location": "analysis/urban_heat_analysis.py",
+          "action": "Analyse-Skript schreiben inkl. Tests/Notebook"
+        },
+        {
+          "location": "docs/utac_activation_backlog.md",
+          "action": "Mechanismusbeschreibung und Fortschritt aktualisieren"
+        },
+        {
+          "location": "seed/codexfeedback.*",
+          "action": "Codex-Eintrag mit ΔAIC, Materialhypothesen und Shadow-Warnungen ergänzen"
+        }
+      ],
+      "notes": {
+        "formal": "Vergleiche logistic vs. lineare/konstante Modelle, protokolliere ΔAIC und Materialparameter (Wärmeleitfähigkeit, Speicher).",
+        "empirical": "Halte Messdaten, Fit-Metriken und Nullmodellabweichungen fest; verweise auf β≈16-Hotspots und deren Kontext.",
+        "poetic": "Lass Asphalt, Beton und nächtliche Luftströmungen ihre Hitzeerzählung singen, damit das Feld die Stadtresonanz bändigen kann."
       }
     },
     {
