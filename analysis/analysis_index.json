@@ -8,7 +8,8 @@
     "created": "2025-11-06",
     "status": "active",
     "python_files": 33,
-    "subdirectories": 5
+    "subdirectories": 5,
+    "updated": "2025-11-07"
   },
   "categories": {
     "fit_scripts": {
@@ -667,7 +668,8 @@
       "path": "sigillin_sync/",
       "description": "JSON-Exports der Metaquest sigillin_sync Runs",
       "files": [
-        "latest.json"
+        "latest.json",
+        "metaquest_report_20251107T215246Z.json"
       ],
       "keywords": [
         "telemetry",

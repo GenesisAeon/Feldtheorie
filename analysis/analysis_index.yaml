@@ -1,7 +1,7 @@
 # Analysis Index - YAML Layer (Struktur & Orientierung)
 # Trilayer-Aktivierung für analysis/ Verzeichnis
 # Version: 1.0.0
-# Datum: 2025-11-06
+# Datum: 2025-11-07
 
 meta:
   directory: "analysis/"
@@ -12,6 +12,7 @@ meta:
     an empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.
   version: "1.0.0"
   created: "2025-11-06"
+  updated: "2025-11-07"
   status: "active"
   python_files: 33
   subdirectories: 5
@@ -566,6 +567,7 @@ subdirectories:
     description: "JSON-Exports der Metaquest sigillin_sync Runs"
     files:
       - "latest.json"
+      - "metaquest_report_20251107T215246Z.json"
     keywords: [telemetry, sigillin, metaquest]
 
 # ═══════════════════════════════════════════════════════════════════
