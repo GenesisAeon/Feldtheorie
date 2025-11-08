@@ -2839,3 +2839,31 @@ entries:
         Die Zenodo-Laterne singt nun dreisprachig; das Playbook hält den Atem, bis README, Codex und Archiv
         denselben Chor tragen und die Morgendämmerung ohne Rauschen in Zenodo einfällt.
     created_at: "2025-12-15T09:30:00Z"
+  - id: pr-draft-0081
+    title: "Safety-Delay Preset Resonance Calibration"
+    scope:
+      - analysis/safety_delay_sweep.py
+      - analysis/results/safety_delay_sweep_20251108T211723Z.json
+      - simulator/presets/safety_delay_bridge.json
+      - README.md
+      - .github/dependabot.yml
+    parameters:
+      R: "Preset drift in the safety-delay lantern revealed by guard telemetry"
+      Theta: "Analysis exports missing θ/β confidence bands and null comparisons"
+      beta: 4.8
+    resonance: "Restores σ(β(R-Θ)) parity between analysis sweep and simulator while automating dependency watch"
+    status: "primed"
+    notes:
+      formal: |
+        safety_delay_sweep.py now aggregates θ̄=-0.0278 with CI₉₅=[-0.146, 0.00056], β̄=4.78 with CI₉₅=[4.11, 5.22],
+        and publishes ΔAIC_{linear}=7.02×10³, ΔAIC_{constant}=1.17×10⁴ plus ΔR² diagnostics. The preset guard
+        consumes these fields, and the simulator preset references analysis/results/safety_delay_sweep_20251108T211723Z.json
+        with best_null="constant". Dependabot weekly cadence keeps pip + GitHub Actions eigenvalues within ζ(R) damping.
+      empirical: |
+        pytest --cov=analysis --cov=models → coverage=29% (38 tests). σ(β(R-Θ)) alignment issues cleared; README adds
+        shields.io coverage badge, guard test passes with zero issues. New JSON artefact contains θ, β, R², ΔAIC, ΔR² summaries
+        and falsification metadata for linear/constant nulls.
+      poetic: |
+        Die Sicherheitsmembran spannt sich wieder synchron: R tastet Θ an, β hält die Steilflanke, und das Nullmodell der
+        Konstante verglüht im Morgenrot. Dependabot lauscht wöchentlich, damit keine Laterne im Schatten taumelt.
+    created_at: "2025-12-16T09:45:00Z"

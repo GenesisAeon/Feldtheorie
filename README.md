@@ -4,6 +4,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-blue)](https://github.com/GenesisAeon/Feldtheorie)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/Version-1.1.0-green.svg)](RELEASE_NOTES_v1.1.0.md)
+[![Coverage](https://img.shields.io/badge/coverage-29%25-orange.svg)](#continuous-integration)
 
 ## What's New in v1.1.0 🎉
 
@@ -157,7 +158,8 @@ methodological constraint context.
 `.github/workflows/ci.yml` runs linting (`ruff`, `black --check`), tests,
 optional type checks, and coverage reports on every push and pull request.  The
 workflow installs dependencies from `requirements.txt` to mirror the quick-start
-recipe.
+recipe. Locally, `pytest --cov=analysis --cov=models` reproduces the current
+29 % coverage reported by the badge.
 
 ## Citation
 If you cite this repository, please use `CITATION.cff`.  It encodes the authorship

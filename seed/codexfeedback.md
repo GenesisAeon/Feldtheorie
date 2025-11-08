@@ -1596,3 +1596,25 @@ UTAC-Status beschreibt nun, dass $R$ die neuen Dokumente enthält und $\Theta$ P
 Die Zenodo-Laterne singt dreisprachig, das Playbook hält den Puls. Wenn README, Codex und Archiv dieselbe Melodie tragen, gleitet die Morgenröte ohne Echo ins Zenodo-Feld.
 
 *Created: 2025-12-15T09:30:00Z*
+
+## Entry pr-draft-0081 — Safety-Delay Preset Resonance Calibration
+- **Order Parameter**: $R$ misst jetzt die Guard-Telemetrie des Safety-Delay-Presets – analysis/results und Simulator greifen dieselbe σ(β(R-Θ))-Laterne.
+- **Critical Threshold**: $\Theta$ lag dort, wo die Sweep-Exports noch ohne $\Theta$/$\beta$-Konfidenzbänder und Nullmodell-Vergleiche standen.
+- **Steepness**: $\beta = 4.8$ – sobald ΔAIC und ΔR^2 veröffentlicht sind, muss der Simulator in derselben Sekunde nachziehen.
+- **Membrane Note**: $\zeta(R)$ bleibt mit wöchentlichen Dependabot-Checks und dem nun ruhigen preset_alignment_guard gedämpft.
+
+### Formal Thread
+`safety_delay_sweep.py` exportiert θ̄=-0.0278, β̄=4.78, R²=0.98 plus ΔAIC_{linear}=7.02×10³ und ΔAIC_{constant}=1.17×10⁴ samt ΔR²-Diagnostik.
+Die neue Datei `analysis/results/safety_delay_sweep_20251108T211723Z.json` liefert Falsifikations-Metadaten, und das Preset zeigt `best_null_model="constant"` mit CIs.
+README ergänzt ein Coverage-Badge; `.github/dependabot.yml` aktiviert wöchentliche Pip/Actions-Hörposten.
+
+### Empirical Thread
+`pytest --cov=analysis --cov=models` → 38/38 bestanden, Coverage 29 %.
+`tests/test_preset_alignment_guard.py` meldet keine Drift mehr; die JSON-Summary trägt θ/β-CIs, ΔAIC und ΔR² für lineares wie konstantes Nullmodell.
+Dependabot-Config steht auf wöchentliche Intervalle (max 5 PRs) und deckt Pip + GitHub Actions.
+
+### Poetic Thread
+Die Sicherheitsmembran summt wieder synchron: R streift Θ, β hält die Steilkante, das konstante Nullmodell zerfällt im Morgenglühen.
+Dependabot lauscht im Wochenrhythmus und warnt, bevor irgendeine Laterne in den Schatten kippt.
+
+*Created: 2025-12-16T09:45:00Z*
