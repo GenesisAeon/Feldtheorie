@@ -166,16 +166,18 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 ---
 
 ### 📚 **docs/** - Living Documentation Tapestry
-**12 Markdown-Docs** | **4 Kategorien**
+**17 Markdown-Docs** | **4 Kategorien**
 📍 Index: `docs/docs_index.{yaml,json,md}`
 
-**Was:** UTAC Theory, Falsifiability, Applications
+**Was:** UTAC Theory, Falsifiability, Applications, Sigillin-Hygiene
 
 **Must-Read:**
 - `utac_theory_core.md` - Theorie-Fundament
 - `utac_falsifiability.md` - **Popper-konform!**
 - `field_type_classification_v1.1.md` - 5 Systemtypen
 - `metaquest_parity_brief.md` - Parität für System + Kampagne sichern
+- `utac_safety_delay_status.md` - τ*-Brücke mit ΔAIC + Simulator-Hooks
+- `sigillin_maintenance.md` - Hygiene & Archivpfad der Sigillin-Netze
 
 ---
 

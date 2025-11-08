@@ -3,7 +3,7 @@
     "document": "UTAC Activation Backlog",
     "version": "1.0.0",
     "created": "2025-12-09T00:00:00Z",
-    "updated": "2025-11-07T21:55:00Z",
+    "updated": "2025-12-10T00:00:00Z",
     "steward": "gpt-5-codex",
     "logistic_frame": {
       "order_parameter": "residual activation debt across UTAC v1.2 launch scope",
@@ -135,26 +135,27 @@
       "id": "index-recount-hook",
       "title": "Index Automation Hook",
       "domain": "scripts+docs",
-      "status": "pending",
+      "status": "in_progress",
       "parameters": {
-        "R": "archive_sigillin.py auto-detects repo root and supports --base-path",
-        "Theta": "docs_index.* + feldtheorie_index.* still rely on manual recounts",
+        "R": "archive_sigillin.py now ships --recount with docs/ parity ledger and timestamped summary",
+        "Theta": "extend coverage to all indices and enforce CI guards for Δindex > 0",
         "beta": 4.5,
         "zeta": "guarded via mq-bridge-shadow-002 alerts"
       },
       "existing_assets": [
         "scripts/archive_sigillin.py",
         "docs/docs_index.*",
-        "feldtheorie_index.*"
+        "feldtheorie_index.*",
+        "analysis/results/index_recount_*.json"
       ],
       "activation_gaps": [
-        "Add recount flag + status ledger export",
+        "Broaden --recount to seed/, analysis/, data/, models/ before CI wiring",
         "Integrate with CI to fail on Δindex parity > 0"
       ],
       "implementation_nodes": [
         {
           "location": "scripts/archive_sigillin.py",
-          "action": "add --recount switch that updates docs/data indices"
+          "action": "extend recount coverage + surface multi-index summary hooks"
         },
         {
           "location": ".github/workflows/",
@@ -162,9 +163,9 @@
         }
       ],
       "notes": {
-        "formal": "Expose index counts as σ(β(R-Θ)) guard so automation flips red when parity drifts.",
-        "empirical": "Persist before/after counts to a JSON ledger for diffable audits.",
-        "poetic": "Let the indices ring like bells whenever a new lantern joins the shelf."
+        "formal": "σ(β(R-Θ)) guard now exports filesystem vs. listed counts into an audit ledger; next iterate coverage + CI.",
+        "empirical": "`analysis/results/index_recount_*.json` captures filesystem=17 vs. listed=13 for docs; YAML/JSON meta refreshed.",
+        "poetic": "Die Glocken schlagen – die docs-Laternen zählen sich selbst, doch das Orchester wartet, bis jede Galerie mitsingt."
       }
     },
     {

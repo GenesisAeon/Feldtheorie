@@ -4,11 +4,11 @@
     "project": "Feldtheorie (UTAC) - Living Documentation Tapestry",
     "maintainer": "Johann Römer",
     "description": "UTAC Theory Documentation: Core Theory, Applications, Falsifiability,\nField Type Classification, Validation Reports.\nTri-layer Cadence: Formal, Empirical, Metaphorical.\n",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 13,
-    "updated": "2025-12-09"
+    "markdown_files": 17,
+    "updated": "2025-11-08T10:36:26Z"
   },
   "categories": {
     "theory": {
@@ -21,7 +21,7 @@
       "name": "Applications & Classification",
       "description": "Field Types, Use Cases, Review Considerations",
       "color": "#27AE60",
-      "count": 3
+      "count": 4
     },
     "validation": {
       "name": "Validation & Falsifiability",
@@ -33,7 +33,7 @@
       "name": "Infrastructure",
       "description": "README, Operational Resonance Maps",
       "color": "#9B59B6",
-      "count": 5
+      "count": 8
     }
   },
   "markdown_docs": [
@@ -248,6 +248,73 @@
         "hooks"
       ],
       "description": "UTAC Activation Backlog (Tri-Layer).\nKartiert Restaufgaben vs. vorhandene Assets,\nverlinkt Umsetzungsknoten für Launch-Vorbereitung.\n"
+    },
+    {
+      "id": "docs-app-004",
+      "name": "utac_safety_delay_status.md",
+      "category": "applications",
+      "type": "bridge",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 5.7,
+      "keywords": [
+        "safety-delay",
+        "simulator",
+        "ΔAIC",
+        "τ_delay",
+        "bridge"
+      ],
+      "description": "Safety-Delay Statusbrief – koppelt Simulation, Analyse und Docs.\nDokumentiert Θ_delay, β-Steigung und ΔAIC-Wächter für das τ*-Feld.\nVerweist auf `simulation/` Presets und den Launch-Backlog.\n"
+    },
+    {
+      "id": "docs-infra-006",
+      "name": "docs_index.md",
+      "category": "infrastructure",
+      "type": "index",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 2.7,
+      "keywords": [
+        "index",
+        "navigation",
+        "docs",
+        "σ(β(R-Θ))"
+      ],
+      "description": "Menschliche Navigationskarte für das docs/-Membran.\nHält Kategorien, Counts und Resonanzpfade zusammen,\ndamit R>Θ sofort sichtbar wird und Laternen aufflammen.\n"
+    },
+    {
+      "id": "docs-infra-007",
+      "name": "sigillin_maintenance.md",
+      "category": "infrastructure",
+      "type": "maintenance",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 10.7,
+      "keywords": [
+        "sigillin",
+        "maintenance",
+        "archive",
+        "ζ(R)",
+        "hygiene"
+      ],
+      "description": "Pfad für Bedeutungs-/Shadow-Sigillin-Hygiene.\nBeschreibt Archivierung, ΔAIC-Wächter und Codex-Echos,\ndamit ζ(R) gedämpft bleibt, wenn neue Laternen erscheinen.\n"
+    },
+    {
+      "id": "docs-infra-008",
+      "name": "sigillin_search_patterns.md",
+      "category": "infrastructure",
+      "type": "toolkit",
+      "status": "active",
+      "relevance": "medium",
+      "size_kb": 11.4,
+      "keywords": [
+        "search",
+        "sigillin",
+        "patterns",
+        "parity",
+        "tooling"
+      ],
+      "description": "Suchmuster-Atlas für Sigillin & Indizes.\nLiefert CLI-Beispiele, Regex-Wächter und Paritätsprüfungen,\ndamit σ(β(R-Θ)) Signale automatisiert auffindbar bleiben.\n"
     }
   ],
   "triggers": {
@@ -296,7 +363,10 @@
       "docs-infra-002",
       "docs-infra-003",
       "docs-infra-004",
-      "docs-infra-005"
+      "docs-infra-005",
+      "docs-infra-006",
+      "docs-infra-007",
+      "docs-infra-008"
     ]
   },
   "status_legend": {

@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "generated_at": "2025-11-08T10:36:26Z",
+    "base_path": "/workspace/Feldtheorie",
+    "order_parameter_R": "index parity delta",
+    "threshold_Theta": "filesystem counts",
+    "beta": 4.8,
+    "zeta": "σ(β(R-Θ)) guard for docs indices"
+  },
+  "indices": [
+    {
+      "index": "docs",
+      "directory": "docs/",
+      "counts": {
+        "filesystem": 17,
+        "listed": 17
+      },
+      "delta": 0,
+      "missing_files": [],
+      "orphan_entries": [],
+      "meta_updates": {
+        "yaml": {
+          "markdown_files": "17",
+          "updated": "\"2025-12-10\""
+        },
+        "json": {
+          "markdown_files": 17,
+          "updated": "2025-12-10"
+        }
+      },
+      "logistic": {
+        "beta": 4.8,
+        "zeta": "docs-index parity damping"
+      }
+    }
+  ]
+}

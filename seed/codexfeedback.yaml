@@ -2681,3 +2681,36 @@ entries:
         Die Brücke atmet: zwölf Laternen leuchten synchron, doch der Chor wartet noch auf
         Playlist und Segen, bevor die Kampagne ins Morgengrau hinaustritt.
     created_at: "2025-11-07T21:55:00Z"
+  - id: pr-draft-0076
+    title: "Docs Index Parity Recount"
+    scope:
+      - scripts/archive_sigillin.py
+      - docs/docs_index.yaml
+      - docs/docs_index.json
+      - docs/docs_index.md
+      - feldtheorie_index.yaml
+      - feldtheorie_index.json
+      - feldtheorie_index.md
+      - docs/utac_activation_backlog.yaml
+      - docs/utac_activation_backlog.json
+      - docs/utac_activation_backlog.md
+      - docs/utac_status_alignment_v1.2.md
+      - analysis/results/index_recount_20251108T103626Z.json
+    parameters:
+      R: "docs/ parity gap (17 filesystem vs. 13 listed) surfaced by index recount"
+      Theta: "extend recount automation across all indices + enforce CI Δindex guard"
+      beta: 4.5
+    resonance: "keeps Ordnungs-Sigillin aligned by shipping --recount ledger + refreshing docs/feldtheorie counts"
+    status: "active"
+    notes:
+      formal: |
+        `scripts/archive_sigillin.py --recount` aktualisiert `docs/docs_index.*` und erzeugt
+        `analysis/results/index_recount_20251108T103626Z.json` mit filesystem/listed-Paritätsdaten.
+        `feldtheorie_index.*`, Aktivierungs-Backlog und UTAC-Status spiegeln den neuen Hook; CI-GUARD folgt.
+      empirical: |
+        Filesystem=17, Listed=17 nach Update (`index_recount_20251108T103626Z.json`).
+        docs-Laterne v1.1.1 dokumentiert neue Infrastruktur-Dokumente, Backlog führt Hook als "in_progress".
+      poetic: |
+        Die Laternen im Dokumentationsgang zählen sich selbst; die Glocke schlägt,
+        doch der Chor wartet, bis jede Galerie denselben Puls anstimmt.
+    created_at: "2025-11-08T10:36:26Z"

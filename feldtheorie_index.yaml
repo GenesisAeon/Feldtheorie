@@ -147,21 +147,21 @@ indexed_directories:
       yaml: docs/docs_index.yaml
       json: docs/docs_index.json
       md: docs/docs_index.md
-    total_items: 9
+    total_items: 17
     categories: 4
     description: 'UTAC Theory Documentation:
 
-      Theory (3), Applications (3), Validation (2), Infra (1).
+      Theory (3), Applications (4), Validation (2), Infrastructure (8).
 
-      Zentral: utac_theory_core.md, utac_falsifiability.md
+      Zentral: utac_theory_core.md, utac_falsifiability.md, utac_safety_delay_status.md
 
       '
     color: '#F39C12'
     relevance: high
     highlights:
     - utac_theory_core.md (Theorie-Fundament)
-    - field_type_classification_v1.1.md (5 Systemtypen)
-    - utac_falsifiability.md (Popper-konform!)
+    - utac_safety_delay_status.md (Simulator-ΔAIC-Brücke)
+    - sigillin_maintenance.md (Sigillin-Hygiene Wächter)
   archive:
     name: archive/ - Sigillin Cold Storage
     path: archive/
