@@ -129,6 +129,8 @@ Im Feld **"Keywords"** oder **"Tags"**:
 
 Im Abschnitt **"Files"**:
 
+> 💡 **Neu:** `make dist-zenodo VERSION=1.2.0` baut automatisch `dist/zenodo/UTAC-v1.2.0-zenodo.zip` plus `zenodo_record_v1.2.0.json`. Nutze dieses Paket als Ausgangspunkt und ergänze/ersetze Dateien nach Bedarf.
+
 1. Klicke auf **"Choose files"** oder **"Add more files"**
 2. Lade diese Dateien hoch:
    - ✅ `RELEASE_NOTES_v1.1.0.md` (von `/home/user/Feldtheorie/RELEASE_NOTES_v1.1.0.md`)
