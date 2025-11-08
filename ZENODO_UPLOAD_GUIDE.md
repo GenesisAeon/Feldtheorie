@@ -24,6 +24,8 @@ ls -lh manuscript_v1.0.pdf
 
 *(See `COMPILE_MANUSCRIPT.md` for detailed instructions)*
 
+> ℹ️ **Repository Bundle**: Für einen vollständigen Zenodo-Drop nutze zusätzlich `make dist-zenodo VERSION=1.2.0` (optional `SKIP_RELEASE_CHECKS=1`). Das erzeugt `dist/zenodo/UTAC-v1.2.0-zenodo.zip` + `zenodo_record_v1.2.0.json`, falls du mehr als nur das PDF einspielen willst.
+
 ---
 
 ### 2️⃣ Go to Zenodo

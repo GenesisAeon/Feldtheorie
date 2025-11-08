@@ -41,8 +41,9 @@
 - [ ] Publication committee ping logged in `AUTHORSHIP.md` or release notes.
 
 ### D. Packaging & Upload
-- [ ] Run `make dist-zenodo` (or equivalent) to generate archive + metadata JSON.
-- [ ] Verify ZIP includes: docs/, analysis/, data/, simulator/, paper/, schemas/.
+- [ ] Run `make dist-zenodo VERSION=1.2.0` to trigger the release checks and emit the Zenodo bundle. (Set `SKIP_RELEASE_CHECKS=1` if `make release` already passed in this sprint.)
+- [ ] Confirm `dist/zenodo/UTAC-v1.2.0-zenodo.zip` and `dist/zenodo/zenodo_record_v1.2.0.json` exist. The archive is generated via `git archive` so it mirrors tracked files at HEAD; spot-check with `unzip -l` that docs/, analysis/, data/, simulator/, paper/, and schemas/ are present. The JSON mirrors `.zenodo.json` with refreshed version + publication date.
+- [ ] If manual tweaks are required, unzip locally, adjust assets per `ZENODO_UPDATE_GUIDE_v1.1.md` Step 8 and `ZENODO_UPLOAD_GUIDE.md` Quick Steps, then refresh the JSON metadata before uploading.
 - [ ] Ensure `CITATION.cff` + README DOI badge point to v1.2 record.
 - [ ] Upload to Zenodo sandbox first if ΔR risk > Θ guard (use `release-gap-002`).
 
