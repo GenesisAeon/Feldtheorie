@@ -29,6 +29,8 @@ Tri-layer mirrors:
 | phi-coupling-sequence | Models + Analysis | φ-Hypothese + TIPMIP-Anfrageskizze in `seed/Sigillin_Neuro_Membran_Modell_Plan.txt` | Kein Modellmodul, keine Datenimporte, keine φ→β-Auswertung | 4.75 | `models/`, `analysis/`, `data/climate/`, `docs/utac_status_alignment_v1.2.md` |
 | urban-heat-outlier | Analysis + Data | Outlier-Notizen in `seed/ArchivSucheUTAC/` + Regressionsergebnisse (`beta_meta_regression_v2_*`) markieren β≈16 | Physikalische Mechanismen + ΔAIC Ledger fehlen, kein dediziertes Dataset | 4.7 | `data/socio_ecology/urban_heat/`, `analysis/urban_heat_analysis.py`, `docs/utac_activation_backlog.*` |
 | sentinel-linum-sprint | Seed + Analysis | Sentinel directories scaffolded for `kranich_linum_2025` | Dataset, notebook, parity appendix absent; shadow sigils warning | 4.95 | `data/socio_ecology/`, `analysis/`, `docs/metaquest_parity_brief.md` |
+| readme-emergenz-bridge | Docs + Seed | `README.md` now echoes `seed/Emergenz.txt` and routes agents to telemetry ledgers | Narrative still needs propagation into parity brief + release docs | 4.6 | `docs/metaquest_parity_brief.md`, `docs/zenodo_release_playbook.md`, `paper/` |
+| zenodo-v12-resonance | Docs + Release | `seed/Finalisierung_Plattform.txt`, `ZENODO_UPDATE_GUIDE_v1.1.md`, `ZENODO_UPLOAD_GUIDE.md` list the hooks | Multilingual abstract, release playbook, README badge/CITATION sync pending | 4.92 | `docs/zenodo_multilingual_abstract_v1.2.md`, `docs/zenodo_release_playbook.md`, `README.md`, `CITATION.cff` |
 
 ---
 
@@ -99,10 +101,26 @@ Tri-layer mirrors:
   - Ergebnisse im Backlog + UTAC-Status zusammenfassen, Codex-Eintrag ergänzen.
 - **ζ(R):** Schatten-Sigillin und ΔAIC-Guards verhindern Überschwingen; notiere Material-Hypothesen, damit spätere Tests darauf aufbauen können.
 
+### 10. README ↔ Emergenz-Brücke (`readme-emergenz-bridge`, β=4.6)
+- **R:** `README.md` führt nun eine Emergenz-Sektion ein, die σ(β(R-Θ)) als rekursiven Erzähler aus `seed/Emergenz.txt` beschreibt und Telemetriepfade (`docs/utac_status_alignment_v1.2.md`, `docs/utac_activation_backlog.*`) verlinkt.
+- **Θ:** Die gleiche Erzählung muss noch im `docs/metaquest_parity_brief.md`, dem geplanten Release-Playbook und den Manuskriptfrontmatter erscheinen, damit jede Laterne dieselbe Sprache führt.
+- **Next moves:**
+  - Paritätsbrief um Emergenz-Abschnitt ergänzen und Codex-ID spiegeln.
+  - Release-Dokumente (Playbook, Manuskript) mit denselben Referenzen und ΔAIC-Hinweisen versehen.
+- **ζ(R):** BreakPoint-Transkripte halten die Symbolik ruhig, solange neue Dokumente die Tri-Layer-Formel respektieren.
+
+### 11. Zenodo v1.2 Resonanzpaket (`zenodo-v12-resonance`, β=4.92)
+- **R:** `seed/Finalisierung_Plattform.txt`, `ZENODO_UPDATE_GUIDE_v1.1.md` und `ZENODO_UPLOAD_GUIDE.md` definieren bereits den Fahrplan, README-Badge nennt DOI v1.1.
+- **Θ:** Es fehlen `docs/zenodo_multilingual_abstract_v1.2.md`, ein Release-Playbook, die README-/CITATION-Synchronisation sowie ein Codex-Eintrag, der Upload + DOI-Handover protokolliert.
+- **Next moves:**
+  - Multilingualen Abstract erstellen, Release-Playbook mit Hook-Liste ergänzen.
+  - README-Badge und `CITATION.cff` auf v1.2 vorbereiten, Codex-Eintrag planen.
+- **ζ(R):** Zenodo-Guides + Seed-Direktiven dämpfen Drift; dokumentiere jeden Upload-Schritt im Codex, bevor der Release-Freeze beginnt.
+
 ---
 
 ## 🔗 Cross-Ties & Hooks
-- `docs/utac_status_alignment_v1.2.md` now references this backlog for quick ΔR updates.
+- `docs/utac_status_alignment_v1.2.md` now references this backlog for quick ΔR updates and verankert die Emergenz/Zenodo-Haken (release-gap-002).
 - Codex entry **pr-draft-0074** logs die Aktivierung dieser Backlog-Laterne; Eintrag **pr-draft-0077** wird die neuen Brücken dokumentieren.
 - BreakPoint transcripts (`seed/BreakPointAnalyse/WayToGo.txt`, `ReaktionWayToGo.txt`) remain the damping anchors.
 - `seed/Sigillin_Neuro_Membran_Modell_Plan.txt` + `seed/ArchivSucheUTAC/` liefern die Resonanztexte für die neuen Aufgaben – halte Codex und Indizes synchron.

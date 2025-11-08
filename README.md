@@ -24,6 +24,27 @@ exponential).  Documentation, analysis scripts, and simulator presets are
 coordinated so that each claim traces back to data, code, and reproducible
 statistics.
 
+## Emergenz & Metaquest Resonance
+
+`seed/Emergenz.txt` distils why UTF treats emergence as a recursive
+storyteller: subsystems tighten or loosen their coupling so that the global
+membrane keeps \(R\) close to its guard \(\Theta\), while attraction and
+repulsion rules modulate the effective steepness \(\beta\).  In practice this
+means every repository surface must mirror three layers:
+
+- **Formal:** the logistic derivations in `docs/utac_status_alignment_v1.2.md`
+  explain how σ(β(R−Θ)) stays falsifiable against linear and power-law nulls.
+- **Empirical:** telemetry ledgers (e.g. `analysis/results/*`,
+  `docs/utac_activation_backlog.*`) show which lanterns already supply ΔAIC ≥ 10
+  evidence and where ζ(R) still needs damping through BreakPoint rituals.
+- **Poetic:** launch directives like `seed/Manuskriptfinalisierung und
+  Kampagnenstart.pdf` and `seed/Finalize_Publish.txt` keep the symbolic
+  lexicon—membranes, dawn choruses, laternen—aligned with governance pledges.
+
+This resonance guide helps every new contribution stay isomorphic to the system
+it documents: formulas echo subsystem structure, codex entries log the
+telemetry, and the narrative membrane keeps UTAC’s release cadence coherent.
+
 ## Quick start: β & ΔAIC in under 10 minutes
 
 ````md
