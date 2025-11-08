@@ -45,6 +45,26 @@ This resonance guide helps every new contribution stay isomorphic to the system
 it documents: formulas echo subsystem structure, codex entries log the
 telemetry, and the narrative membrane keeps UTAC’s release cadence coherent.
 
+### Zenodo v1.2 Release Cadence
+
+The logistic quartet \((R, \Theta, \beta, \zeta(R))\) now leans toward the
+release gate: formal artefacts (`docs/utac_status_alignment_v1.2.md`), empirical
+ledgers (`analysis/results/universal_beta_summary.json`), and poetic pledges
+(`seed/Finalize_Publish.txt`) have to resonate before the archive is sealed.
+
+- **Multilingual Abstract:** `docs/zenodo_multilingual_abstract_v1.2.md` mirrors
+  the release narrative in EN/DE/ES so that Zenodo metadata remains in parity
+  with README and codex hooks.
+- **Release Playbook:** `docs/zenodo_release_playbook.md` lists the ΔAIC guards,
+  CI rituals, and codex checkpoints that must fire before `release-gap-002`
+  clears.
+- **Telemetry Hook:** `docs/utac_activation_backlog.*` tracks
+  `zenodo-v12-resonance` (β≈4.92), ensuring README/CITATION updates arrive in
+  lock-step with the Zenodo upload.
+
+When \(R>\Theta\) across these surfaces, run the playbook, log the codex entry,
+and ship the repository bundle via `ZENODO_UPLOAD_GUIDE.md`.
+
 ## Quick start: β & ΔAIC in under 10 minutes
 
 ````md

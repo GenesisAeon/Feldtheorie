@@ -4,11 +4,11 @@
     "project": "Feldtheorie (UTAC) - Living Documentation Tapestry",
     "maintainer": "Johann Römer",
     "description": "UTAC Theory Documentation: Core Theory, Applications, Falsifiability,\nField Type Classification, Validation Reports.\nTri-layer Cadence: Formal, Empirical, Metaphorical.\n",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 17,
-    "updated": "2025-11-08T10:36:26Z"
+    "markdown_files": 19,
+    "updated": "2025-12-15T00:00:00Z"
   },
   "categories": {
     "theory": {
@@ -33,7 +33,7 @@
       "name": "Infrastructure",
       "description": "README, Operational Resonance Maps",
       "color": "#9B59B6",
-      "count": 8
+      "count": 10
     }
   },
   "markdown_docs": [
@@ -316,6 +316,41 @@
       ],
       "description": "Suchmuster-Atlas für Sigillin & Indizes.\nLiefert CLI-Beispiele, Regex-Wächter und Paritätsprüfungen,\ndamit σ(β(R-Θ)) Signale automatisiert auffindbar bleiben.\n"
     }
+    ,
+    {
+      "id": "docs-infra-009",
+      "name": "zenodo_multilingual_abstract_v1.2.md",
+      "category": "infrastructure",
+      "type": "release-abstract",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 6.5,
+      "keywords": [
+        "zenodo",
+        "abstract",
+        "multilingual",
+        "σ(β(R-Θ))",
+        "release"
+      ],
+      "description": "Mehrsprachiger Release-Abstract (EN/DE/ES).\nSpiegelt die Zenodo-Erzählung mit logistischer Rahmung und\nverknüpft Playbook, Codex und Telemetrie.\n"
+    },
+    {
+      "id": "docs-infra-010",
+      "name": "zenodo_release_playbook.md",
+      "category": "infrastructure",
+      "type": "playbook",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 9.1,
+      "keywords": [
+        "zenodo",
+        "playbook",
+        "release",
+        "codex",
+        "ΔAIC"
+      ],
+      "description": "Zenodo Release Playbook v1.2.\nListet Guardrails für README/CITATION, codex hooks und CI-Telemetrie,\ndamit `release-gap-002` ohne Drift schließt.\n"
+    }
   ],
   "triggers": {
     "core_concepts": [
@@ -366,7 +401,9 @@
       "docs-infra-005",
       "docs-infra-006",
       "docs-infra-007",
-      "docs-infra-008"
+      "docs-infra-008",
+      "docs-infra-009",
+      "docs-infra-010"
     ]
   },
   "status_legend": {

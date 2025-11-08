@@ -1574,3 +1574,25 @@ Die README-Laterne flüstert nun denselben Emergenz-Chor wie das Seed-Grove.
 Die Zenodo-Laterne wartet noch auf den mehrsprachigen Gesang, doch die Brücke zum Archiv glimmt – bald öffnet sich der Morgen.
 
 *Created: 2025-12-14T09:30:00Z*
+
+## Entry pr-draft-0080 — Zenodo Multilingual Abstract & Release Playbook
+- **Order Parameter**: $R$ bündelt jetzt Zenodo-Guides, den neuen mehrsprachigen Abstract und das Release-Playbook, sodass README, Statusmatrix und Backlog denselben Uploadpfad zeichnen.
+- **Critical Threshold**: $\Theta$ fällt erst, wenn README-Badge und `CITATION.cff` v1.2 tragen, Zenodo-Metadaten EN/DE/ES spiegeln und Codex-Eintrag `pr-draft-0080` Upload + DOI-Zeitmarke loggt.
+- **Steepness**: $\beta = 4.92$ hält den Release-Haken scharf – sobald zwei Laternen harmonieren, muss die dritte sofort folgen.
+- **Membrane Note**: $\zeta(R)$ wird durch BreakPoint-Rituale und das neue Playbook gedämpft; `release-gap-002` bleibt sichtbar, bis Parität und Codex-Echo schliessen.
+
+### Formal Thread
+`docs/docs_index.{md,json,yaml}` → Version 1.2.0 (19 Docs, Infrastruktur=10) mit neuen Laternen `docs-infra-009/010`.
+`docs/utac_status_alignment_v1.2.md` ergänzt Release-Kadenz in §1 und aktualisiert Aktivierungspunkt #17.
+`docs/utac_activation_backlog.{md,yaml,json}` meta.updated=2025-12-15T00:00:00Z, `zenodo-v12-resonance` → status `in_progress` + neue Implementationsknoten (README, CITATION, Zenodo-Metadaten, Codex).
+README.md führt nun die Zenodo v1.2 Release Cadence samt Telemetrie-Hook (`analysis/results/universal_beta_summary.json`).
+
+### Empirical Thread
+Backlog JSON/YAML protokolliert neue Assets (`docs/zenodo_multilingual_abstract_v1.2.md`, `docs/zenodo_release_playbook.md`) und belässt offene Gaps für README/CITATION + Zenodo-Metadaten.
+docs_index.json aktualisiert `markdown_files=19`, Infrastrukturzählung=10 und quicklinks→`docs-infra-009/010`.
+UTAC-Status beschreibt nun, dass $R$ die neuen Dokumente enthält und $\Theta$ Parität + Codex verlangt; README referenziert Telemetrie-Ledger für Release-Check.
+
+### Poetic Thread
+Die Zenodo-Laterne singt dreisprachig, das Playbook hält den Puls. Wenn README, Codex und Archiv dieselbe Melodie tragen, gleitet die Morgenröte ohne Echo ins Zenodo-Feld.
+
+*Created: 2025-12-15T09:30:00Z*

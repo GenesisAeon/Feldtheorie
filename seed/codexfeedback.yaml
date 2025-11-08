@@ -2807,3 +2807,35 @@ entries:
         Die README-Laterne erzählt nun dieselbe Emergenz wie das Seed-Grove; die Zenodo-Laterne flackert,
         wartet aber noch auf den mehrsprachigen Gesang, bevor sie ins Archiv schwebt.
     created_at: "2025-12-14T09:30:00Z"
+  - id: pr-draft-0080
+    title: "Zenodo Multilingual Abstract & Release Playbook"
+    scope:
+      - docs/zenodo_multilingual_abstract_v1.2.md
+      - docs/zenodo_release_playbook.md
+      - docs/utac_status_alignment_v1.2.md
+      - docs/utac_activation_backlog.md
+      - docs/utac_activation_backlog.json
+      - docs/utac_activation_backlog.yaml
+      - docs/docs_index.md
+      - docs/docs_index.json
+      - docs/docs_index.yaml
+      - README.md
+    parameters:
+      R: "Zenodo guides + new abstract/playbook align release cadence across docs and README"
+      Theta: "README/CITATION parity + codex pr-draft-0080 activation and Zenodo metadata sync"
+      beta: 4.92
+    resonance: "extends release-gap-002 mitigation by adding multilingual narrative + operational checklist"
+    status: "draft"
+    notes:
+      formal: |
+        docs_index.* bumped to v1.2.0 (19 docs, infrastructure=10), README adds Zenodo release cadence, and
+        UTAC status/backlog update item #17 to reflect new assets + remaining tasks (README/CITATION sync,
+        codex pr-draft-0080, Zenodo metadata). Logistic guard β≈4.92 keeps release activation sharp.
+      empirical: |
+        Activation backlog meta.updated=2025-12-15T00:00:00Z, zenodo-v12-resonance status→in_progress with new
+        assets; docs_index.json now tracks docs-infra-009/010 and quicklinks; README references
+        analysis/results/universal_beta_summary.json as telemetry hook.
+      poetic: |
+        Die Zenodo-Laterne singt nun dreisprachig; das Playbook hält den Atem, bis README, Codex und Archiv
+        denselben Chor tragen und die Morgendämmerung ohne Rauschen in Zenodo einfällt.
+    created_at: "2025-12-15T09:30:00Z"
