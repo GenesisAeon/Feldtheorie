@@ -8,15 +8,15 @@
   "control_parameter": "Aktiver Steuerimpuls R(t) entlang des τ*-Controllers",
   "order_parameter": "Verlängerte Kipplatenz τ_delay / Resonanzamplitude",
   "analysis": {
-    "result_path": "analysis/results/safety_delay_sweep_20251107T211928Z.json",
-    "theta": -0.02777439911925833,
-    "theta_ci": null,
-    "beta": 4.781013529670691,
-    "beta_ci": null,
-    "logistic_r2": 0.9804393571320646,
-    "delta_aic_best_null": 7017.88390104987,
-    "delta_r2_best_null": 0.11425509301772314,
-    "best_null_model": "linear"
+    "result_path": "analysis/results/safety_delay_sweep_20251108T211723Z.json",
+    "theta": -0.027774399119258334,
+    "theta_ci": [-0.14616425364745317, 0.0005617366949123864],
+    "beta": 4.781013529670692,
+    "beta_ci": [4.10569703106943, 5.220757298023644],
+    "logistic_r2": 0.9804393571320645,
+    "delta_aic_best_null": 11730.427094826058,
+    "delta_r2_best_null": 0.9924520196751758,
+    "best_null_model": "constant"
   },
   "impedance": {
     "definition": "zeta(R) = 0.78 + 0.04 * tau_delay_mean + 0.02 * sigma(beta(R-Theta))",
@@ -43,7 +43,7 @@
     }
   },
   "narrative": {
-    "formal": "σ(β(R-Θ)) fit über 81 Läufe liefert β≈4.78, Θ≈-0.028 und ΔAIC_linear≈7.02×10³. Logistic R²=0.98 schlägt das lineare Nullmodell um ΔR²≈0.11.",
+    "formal": "σ(β(R-Θ)) über 81 Läufe: β≈4.78, Θ≈-0.028, ΔAIC_linear≈7.02×10³ (ΔAIC_constant≈1.17×10⁴). Logistic R²=0.98 schlägt lineare Nullmodelle um ΔR²≈0.12.",
     "empirical": "Dataset: analysis/results/safety_delay_sweep_20251107T211928Z.json + data/safety_delay/safety_delay_delta_aic_20251107T211928Z.csv. τ_delay_mean=8.43, Kontrollenergie≈10.46, Resonanzsignal≈0.079.",
     "poetic": "Der Controller hält die Morgenkante fest: R steigt langsam, Θ bleibt knapp unter Null, und die Membran lässt das Feld einen Atemzug länger leuchten."
   },

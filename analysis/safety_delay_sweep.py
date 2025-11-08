@@ -113,20 +113,75 @@ def _summarise_runs(runs: List[Dict[str, Any]]) -> Dict[str, Any]:
             "r_squared_mean": float("nan"),
             "control_energy_mean": float("nan"),
             "resonance_signal_mean": float("nan"),
+            "delta_aic_linear_gt10_ratio": float("nan"),
+            "theta_mean": float("nan"),
+            "theta_ci95": None,
+            "beta_mean": float("nan"),
+            "beta_ci95": None,
+            "r_squared_ci95": None,
+            "delta_aic_constant_median": float("nan"),
+            "delta_r2_linear_median": float("nan"),
+            "delta_r2_constant_median": float("nan"),
+            "logistic_aic_median": float("nan"),
+            "logistic_rss_median": float("nan"),
+            "null_comparisons": {},
+            "best_null_model": None,
+            "delta_aic_best_null": float("nan"),
+            "delta_r2_best_null": float("nan"),
         }
 
     def _collect(name: str) -> np.ndarray:
         values = [run[name] for run in runs if not np.isnan(run.get(name, np.nan))]
         return np.asarray(values, dtype=float)
 
+    def _nan_stat(arr: np.ndarray, fn) -> float:
+        return float(fn(arr)) if arr.size else float("nan")
+
+    def _ci95(arr: np.ndarray) -> List[float] | None:
+        if not arr.size:
+            return None
+        lower, upper = np.nanpercentile(arr, [2.5, 97.5])
+        return [float(lower), float(upper)]
+
     tau_delay = _collect("tau_delay")
     delta_linear = _collect("delta_aic_linear")
+    delta_constant = _collect("delta_aic_constant")
     r_squared = _collect("r_squared")
     control_energy = _collect("control_energy")
     resonance_signal = _collect("meta_resonance_combined")
+    theta_values = _collect("theta_hat")
+    beta_values = _collect("beta_hat")
+    delta_r2_linear = _collect("delta_r2_linear")
+    delta_r2_constant = _collect("delta_r2_constant")
+    logistic_aic = _collect("aic_logistic")
+    logistic_rss = _collect("rss_logistic")
 
-    def _nan_stat(arr: np.ndarray, fn) -> float:
-        return float(fn(arr)) if arr.size else float("nan")
+    null_comparisons = {
+        "linear": {
+            "delta_aic": _nan_stat(delta_linear, np.nanmedian),
+            "delta_r2": _nan_stat(delta_r2_linear, np.nanmedian),
+        },
+        "constant": {
+            "delta_aic": _nan_stat(delta_constant, np.nanmedian),
+            "delta_r2": _nan_stat(delta_r2_constant, np.nanmedian),
+        },
+    }
+
+    finite_comparisons = {
+        name: metrics
+        for name, metrics in null_comparisons.items()
+        if np.isfinite(metrics["delta_aic"])
+    }
+    if finite_comparisons:
+        best_null_name, best_metrics = max(
+            finite_comparisons.items(), key=lambda item: item[1]["delta_aic"]
+        )
+        best_delta_aic = best_metrics["delta_aic"]
+        best_delta_r2 = best_metrics["delta_r2"]
+    else:
+        best_null_name = None
+        best_delta_aic = float("nan")
+        best_delta_r2 = float("nan")
 
     return {
         "count": len(runs),
@@ -140,6 +195,20 @@ def _summarise_runs(runs: List[Dict[str, Any]]) -> Dict[str, Any]:
         "delta_aic_linear_gt10_ratio": (
             float(np.mean(delta_linear > 10.0)) if delta_linear.size else float("nan")
         ),
+        "theta_mean": _nan_stat(theta_values, np.nanmean),
+        "theta_ci95": _ci95(theta_values),
+        "beta_mean": _nan_stat(beta_values, np.nanmean),
+        "beta_ci95": _ci95(beta_values),
+        "r_squared_ci95": _ci95(r_squared),
+        "delta_aic_constant_median": _nan_stat(delta_constant, np.nanmedian),
+        "delta_r2_linear_median": _nan_stat(delta_r2_linear, np.nanmedian),
+        "delta_r2_constant_median": _nan_stat(delta_r2_constant, np.nanmedian),
+        "logistic_aic_median": _nan_stat(logistic_aic, np.nanmedian),
+        "logistic_rss_median": _nan_stat(logistic_rss, np.nanmedian),
+        "null_comparisons": null_comparisons,
+        "best_null_model": best_null_name,
+        "delta_aic_best_null": best_delta_aic,
+        "delta_r2_best_null": best_delta_r2,
     }
 
 
@@ -183,6 +252,21 @@ def _run_single(
     _, rss_constant = _constant_null_fit(result.field_response)
     aic_constant = _aic_from_rss(rss_constant, n=n, k=1)
 
+    mean_response = float(np.mean(result.field_response))
+    ss_tot = float(np.sum((result.field_response - mean_response) ** 2))
+    if ss_tot > 0:
+        r2_linear = 1.0 - (rss_linear / ss_tot)
+        r2_constant = 1.0 - (rss_constant / ss_tot)
+    else:
+        r2_linear = float("nan")
+        r2_constant = float("nan")
+    delta_r2_linear = (
+        float(result.r_squared - r2_linear) if np.isfinite(r2_linear) else float("nan")
+    )
+    delta_r2_constant = (
+        float(result.r_squared - r2_constant) if np.isfinite(r2_constant) else float("nan")
+    )
+
     adjacency = _build_adjacency(control_strength, beta_gain)
     meta_diag = meta_resonance_analysis(adjacency, result.field_response)
 
@@ -205,6 +289,11 @@ def _run_single(
         "rss_logistic": float(rss_logistic),
         "rss_linear": float(rss_linear),
         "rss_constant": float(rss_constant),
+        "ss_tot": float(ss_tot),
+        "r2_linear": float(r2_linear),
+        "r2_constant": float(r2_constant),
+        "delta_r2_linear": delta_r2_linear,
+        "delta_r2_constant": delta_r2_constant,
         "meta_resonance_control_centrality": float(meta_diag["control_centrality"]),
         "meta_resonance_crep": float(meta_diag["crep_resonance"]),
         "meta_resonance_combined": float(meta_diag["combined_signal"]),
@@ -236,6 +325,54 @@ def run_sweep(config: SweepConfig) -> Dict[str, Any]:
     summary = _summarise_runs(runs)
     timestamp = datetime.now(timezone.utc).isoformat()
 
+    def _clean_float(value: Any) -> Any:
+        if isinstance(value, float) and not np.isfinite(value):
+            return None
+        return value
+
+    comparisons_payload = {
+        name: {metric: _clean_float(val) for metric, val in metrics.items()}
+        for name, metrics in summary["null_comparisons"].items()
+    }
+
+    theta_estimate = {
+        "value": _clean_float(summary["theta_mean"]),
+        "ci95": summary["theta_ci95"],
+    }
+    beta_estimate = {
+        "value": _clean_float(summary["beta_mean"]),
+        "ci95": summary["beta_ci95"],
+    }
+
+    logistic_model_meta = {
+        "parameters": 2,
+        "description": "σ(β(R-Θ)) fit using non-linear least squares",
+        "r2": _clean_float(summary["r_squared_mean"]),
+        "r2_ci95": summary["r_squared_ci95"],
+        "aic_median": _clean_float(summary["logistic_aic_median"]),
+        "rss_median": _clean_float(summary["logistic_rss_median"]),
+    }
+
+    aggregate_block = {
+        "theta": _clean_float(summary["theta_mean"]),
+        "theta_ci95": summary["theta_ci95"],
+        "beta": _clean_float(summary["beta_mean"]),
+        "beta_ci95": summary["beta_ci95"],
+        "r2": _clean_float(summary["r_squared_mean"]),
+        "r2_ci95": summary["r_squared_ci95"],
+        "null_models": comparisons_payload,
+    }
+
+    falsification_block = {
+        "logistic_beats_all_nulls": all(
+            (val.get("delta_aic") or 0.0) > 0 for val in comparisons_payload.values()
+        ),
+        "comparisons": comparisons_payload,
+        "best_null_model": summary["best_null_model"],
+        "best_delta_aic": _clean_float(summary["delta_aic_best_null"]),
+        "best_delta_r2": _clean_float(summary["delta_r2_best_null"]),
+    }
+
     payload: Dict[str, Any] = {
         "metadata": {
             "generated_at": timestamp,
@@ -254,6 +391,8 @@ def run_sweep(config: SweepConfig) -> Dict[str, Any]:
             "beta_gains": [float(x) for x in config.beta_gains],
         },
         "summary": summary,
+        "theta_estimate": theta_estimate,
+        "beta_estimate": beta_estimate,
         "runs": runs,
         "null_models": {
             "linear": {
@@ -265,10 +404,9 @@ def run_sweep(config: SweepConfig) -> Dict[str, Any]:
                 "description": "Constant mean response",
             },
         },
-        "logistic_model": {
-            "parameters": 2,
-            "description": "σ(β(R-Θ)) fit using non-linear least squares",
-        },
+        "logistic_model": logistic_model_meta,
+        "aggregate": aggregate_block,
+        "falsification": falsification_block,
     }
     return payload
 

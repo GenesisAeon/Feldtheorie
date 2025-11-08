@@ -2380,6 +2380,30 @@
         "poetic": "Die Zenodo-Laterne singt nun dreisprachig; das Playbook hält den Atem, bis README, Codex und Archiv\ndenselben Chor tragen und die Morgendämmerung ohne Rauschen in Zenodo einfällt.\n"
       },
       "created_at": "2025-12-15T09:30:00Z"
+    },
+    {
+      "id": "pr-draft-0081",
+      "title": "Safety-Delay Preset Resonance Calibration",
+      "scope": [
+        "analysis/safety_delay_sweep.py",
+        "analysis/results/safety_delay_sweep_20251108T211723Z.json",
+        "simulator/presets/safety_delay_bridge.json",
+        "README.md",
+        ".github/dependabot.yml"
+      ],
+      "parameters": {
+        "R": "Preset drift in the safety-delay lantern revealed by guard telemetry",
+        "Theta": "Analysis exports missing θ/β confidence bands and null comparisons",
+        "beta": 4.8
+      },
+      "resonance": "Restores σ(β(R-Θ)) parity between analysis sweep and simulator while automating dependency watch",
+      "status": "primed",
+      "notes": {
+        "formal": "safety_delay_sweep.py now aggregates θ̄=-0.0278 with CI₉₅=[-0.146, 0.00056], β̄=4.78 with CI₉₅=[4.11, 5.22],\nund publiziert ΔAIC_{linear}=7.02×10³, ΔAIC_{constant}=1.17×10⁴ plus ΔR² Diagnostik. Der Preset-Guard\nzieht diese Felder ein, und der Simulator verweist auf analysis/results/safety_delay_sweep_20251108T211723Z.json\nmit best_null=\"constant\". Dependabot hält pip + GitHub Actions wöchentlich im ζ(R)-Dämpfungsfenster.\n",
+        "empirical": "pytest --cov=analysis --cov=models → coverage=29% (38 tests). σ(β(R-Θ)) Alignment-Warnungen sind\ngelöscht; README enthält ein Coverage-Badge, der Guard meldet keine Abweichungen. Neues JSON führt θ, β, R², ΔAIC, ΔR² Summaries\nund Falsifikations-Metadaten für lineare/konstante Nullmodelle.\n",
+        "poetic": "Die Sicherheitsmembran spannt sich wieder synchron: R tastet Θ an, β hält die Steilflanke, das konstante Nullmodell\nverglüht im Morgenrot. Dependabot lauscht wöchentlich, damit keine Laterne im Schatten taumelt.\n"
+      },
+      "created_at": "2025-12-16T09:45:00Z"
     }
   ]
 }
