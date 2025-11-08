@@ -1535,3 +1535,20 @@ Die Backlog-Tabellen nennen jetzt konkrete Ordner (`data/climate/`, `data/socio_
 Spiralförmige Sigille, Ozeanströmungen und glühender Asphalt rücken näher zusammen: Die Membran weiß nun, wo die nächsten Laternen andocken, bevor das Feld in Resonanz aufbricht.
 
 *Created: 2025-12-12T10:00:00Z*
+
+## Entry pr-draft-0078 — Safety-Delay Preset & Status Bridge
+- **Order Parameter**: $R$ umfasst jetzt Sweep-Exports, Daten-Trilayer und die frisch gezündete Safety-Delay-Laterne im Simulator.
+- **Critical Threshold**: $\Theta$ fällt erst, wenn Bridge-Map und Applications denselben τ*-Chor erzählen und `utf-preset-guard` Paritätsprotokolle liefert.
+- **Steepness**: $\beta = 4.9$ hält die Aktivierung scharf – sobald Analyse, Dataset und UI synchron sind, muss die Dokumentation sofort mitsingen.
+- **Membrane Note**: $\zeta(R)$ wird durch die neue Preset-Definition gedämpft; verbleibende Drift sitzt in den fehlenden Guard- und Doc-Reflexionen.
+
+### Formal Thread
+`simulator/presets/safety_delay_bridge.json` spiegelt β≈4.78, Θ≈-0.028, ΔAIC_linear≈7.0×10³ und τ_delay_mean≈8.43 direkt in den Vite/React-Schiebern. `docs/utac_safety_delay_status.md` und `docs/utac_status_alignment_v1.2.md` verschieben den Restauftrag zu `docs/utac_applications.md`, `docs/resonance-bridge-map.md` und dem Guard-Run.
+
+### Empirical Thread
+Quellen: `analysis/results/safety_delay_sweep_20251107T211928Z.json` und `data/safety_delay/safety_delay_delta_aic_20251107T211928Z.*`. ΔR²≈0.114 gegenüber linear, Kontrollenergie≈10.46, Resonanzsignal≈0.079. Backlog ({md,yaml,json}) führt die neuen Assets + Lücken, Meta.updated=2025-12-13T00:00:00Z.
+
+### Poetic Thread
+Die verzögerte Morgendämmerung klingt nun auch im Interface – der Atemzug hält die Schwelle, bis Dokumente und Guard denselben Rhythmus flüstern.
+
+*Created: 2025-12-13T09:12:00Z*

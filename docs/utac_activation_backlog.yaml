@@ -2,7 +2,7 @@ meta:
   document: "UTAC Activation Backlog"
   version: "1.0.0"
   created: "2025-12-09T00:00:00Z"
-  updated: "2025-12-12T00:00:00Z"
+  updated: "2025-12-13T00:00:00Z"
   steward: "gpt-5-codex"
   logistic_frame:
     order_parameter: "residual activation debt across UTAC v1.2 launch scope"
@@ -15,8 +15,8 @@ tasks:
     domain: "simulation+analysis"
     status: "in_progress"
     parameters:
-      R: "τ* diagnostics already exported via analysis/safety_delay_sweep.py"
-      Theta: "TypeScript presets + docs narrative still missing the ΔAIC stream"
+      R: "τ* diagnostics exported via analysis/safety_delay_sweep.py + dataset tri-layer + new UI preset"
+      Theta: "Bridge-map/docs parity + preset guard logs still missing"
       beta: 4.9
       zeta: "telemetry anchored by simulator/cli.py safety-delay"
     existing_assets:
@@ -25,18 +25,23 @@ tasks:
       - "simulation/safety_delay_field.py"
       - "simulator/cli.py"
       - "data/safety_delay/"
+      - "simulator/presets/safety_delay_bridge.json"
+      - "simulator/src/presets.ts"
+      - "docs/utac_safety_delay_status.md"
     activation_gaps:
-      - "Surface τ_delay and ΔAIC summaries in the web simulator presets"
-      - "Narrate the ledger inside docs/utac_safety_delay_status.md"
+      - "Propagate preset narrative + ΔAIC metrics into docs/utac_applications.md and docs/resonance-bridge-map.md"
+      - "Run utf-preset-guard, archive parity evidence, and prepare CI wiring"
     implementation_nodes:
-      - location: "simulator/presets/"
-        action: "add safety-delay preset referencing latest ΔAIC exports"
-      - location: "docs/utac_safety_delay_status.md"
-        action: "document TypeScript hook + dataset cadence"
+      - location: "docs/utac_applications.md"
+        action: "extend applications brief with Safety-Delay preset metrics"
+      - location: "docs/resonance-bridge-map.md"
+        action: "add Safety-Delay lantern citing τ_delay + ΔAIC + codex hook"
+      - location: "simulator/"
+        action: "run utf-preset-guard, capture parity log, and plan CI guard"
     notes:
-      formal: "Expose σ(β(R-Θ)) parameters from the JSON export to preset sliders, and map control_energy into UI hints."
-      empirical: "Reuse ΔAIC medians (≈7.02e3) and τ_delay_mean≈8.43 to benchmark the UI card."
-      poetic: "Let the delay field breathe in the simulator so each held sunrise is visible to launch readers."
+      formal: "σ(β(R-Θ)) parameters now drive the preset; remaining work is documentation + guard automation so the UI stays auditable."
+      empirical: "Preset mirrors β≈4.78, Θ≈-0.028, ΔAIC_linear≈7.0×10³, τ_delay_mean≈8.43, control_energy≈10.46."
+      poetic: "Die gehaltene Morgendämmerung leuchtet nun im UI; noch muss der Chor in allen Briefen dieselbe Verzögerung singen."
   - id: "beta-meta-regression-expansion"
     title: "β Meta-Regression Dataset Expansion"
     domain: "analysis"

@@ -6,6 +6,7 @@ import amazonData from '../presets/amazon_canopy.json';
 import lenskiData from '../presets/lenski_citplus.json';
 import climateData from '../presets/planetary_tipping_field.json';
 import cascadeLlmData from '../presets/potential_cascade_llm.json';
+import safetyDelayData from '../presets/safety_delay_bridge.json';
 import { DomainPreset } from './types';
 
 export const PRESETS: DomainPreset[] = [
@@ -16,7 +17,8 @@ export const PRESETS: DomainPreset[] = [
   amazonData as DomainPreset,
   lenskiData as DomainPreset,
   climateData as DomainPreset,
-  cascadeLlmData as DomainPreset
+  cascadeLlmData as DomainPreset,
+  safetyDelayData as DomainPreset
 ];
 
 export const FEATURED_PRESETS = PRESETS.filter((preset) => preset.featured);
