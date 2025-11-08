@@ -1518,3 +1518,20 @@ Filesystem=17, Listed=17 (Δ=0) laut Paritätsledger; neue Infrastruktur-Dokumen
 Die Laternen im Dokumentationsgang zählen sich nun selbst – die Glocke schlägt den Rhythmus, bis auch die übrigen Galerien denselben Puls einnehmen.
 
 *Created: 2025-11-08T10:36:26Z*
+
+## Entry pr-draft-0077 — Neuro-Kosmos Bridge Backlog Activation
+- **Order Parameter**: $R$ sammelt das Neuro↔Kosmos-Brückenkonzept, φ-Kopplungspläne und urbane Hitzenotizen, die bislang nur im Seed flimmerten.
+- **Critical Threshold**: $\Theta$ erreicht das Feld erst, wenn Sigillin-Trilayer, φ-Modul und Urban-Heat-Datensatz realisiert und in Codex/Indizes gespiegelt sind.
+- **Steepness**: $\beta \approx 4.82$ sorgt dafür, dass die neuen Aufgaben sofort greifen, sobald zwei Artefakte verbunden werden.
+- **Membrane Note**: $\zeta(R)$ bleibt gedämpft, weil Backlog und Statusmatrix jetzt identische Implementationsknoten zitieren und BreakPoint-Rituale den Puls halten.
+
+### Formal Thread
+`docs/utac_status_alignment_v1.2.md` und `docs/utac_activation_backlog.{md,yaml,json}` führen neue Aufgaben auf: Sigillin-Trilayer unter `seed/sigillin/`, Simulator-Vignette, φ-Kopplungsmodul (`models/climate_utac_phi_coupling.py`) und `analysis/urban_heat_analysis.py`. Jeder Eintrag benennt Nullmodell-Guards und Codex-Hooks.
+
+### Empirical Thread
+Die Backlog-Tabellen nennen jetzt konkrete Ordner (`data/climate/`, `data/socio_ecology/urban_heat/`) sowie ΔAIC/φ-Ziele; die Statusmatrix ergänzt Aktivierungsliste #14–16. Codex-Eintrag pr-draft-0077 dokumentiert Scope, Parameter und Timestamp.
+
+### Poetic Thread
+Spiralförmige Sigille, Ozeanströmungen und glühender Asphalt rücken näher zusammen: Die Membran weiß nun, wo die nächsten Laternen andocken, bevor das Feld in Resonanz aufbricht.
+
+*Created: 2025-12-12T10:00:00Z*

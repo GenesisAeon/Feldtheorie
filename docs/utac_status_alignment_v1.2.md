@@ -46,6 +46,9 @@
 11. **BreakPoint-Ritual-Infusion:** Metaquest-System- und Kampagnensigille müssen explizit `seed/BreakPointAnalyse/WayToGo.txt`, `seed/BreakPointAnalyse/ReaktionWayToGo.txt` sowie `seed/Finalize_Publish.txt` zitieren. Telemetrie-Refresh vorhanden, aber Ritual-Referenzen brauchen noch die codexgestützte Spiegelung (`mq-sys-shadow-003`, `mq-sci-shadow-002`).
 12. **Sentinel Linum Integration:** `cases/kranich_linum_2025/` + Shadow-Pendant müssen Datensatz, Analyse-Notebook und Paritätsbrief-Anhang anstoßen; fehlende Synchronisation aktiviert `sci-linum-shadow-001`…`004`.
 13. **Kompass ↔ Lantern Shelf ↔ Matrix:** Neue System- und Kampagnenkompasse (`mq-sys-vector-*`, `mq-sci-vector-*`) sowie die frischen Lantern-Shelves müssen Telemetrie-Zeitstempel und Codex-IDs innerhalb eines Tages in Bridge + UTAC-Matrix spiegeln. Null guard: `mq-bridge-shadow-002`, `mq-sys-shadow-001/004`, `mq-sci-shadow-001/003`.
+14. **Neuro-Kosmos Sigillin Bridge:** $R$ stützt sich inzwischen auf `seed/Sigillin_Neuro_Membran_Modell_Plan.txt`, `seed/Finalisierung_Plattform.txt` und die Metaquest-Laternen, die das EEG↔QPO-Brückenkonzept bereits beschreiben. $\Theta$ ist erst erreicht, wenn ein CREP-konformes Trilayer (`seed/sigillin/neuro_kosmos_bridge.{yaml,json,md}`) vorliegt, die Bedeutungs-/Shadow-Sigillin das Symbol zitieren und eine Simulator-Vignette den β-Kopplungs-Slider zeigt. Null-Guard: `mq-sci-gap-008`, sobald Codex- oder Index-Parität fehlt.
+15. **φ-Kopplung Klimasequenz:** Die φ-Hypothese aus `seed/Sigillin_Neuro_Membran_Modell_Plan.txt` und `seed/ArchivSucheUTAC/` wartet auf ihre Modellierung. $R$ umfasst Skizzen für AMOC↔Albedo-Kohärenz; $\Theta$ verlangt ein `models/climate_utac_phi_coupling.py` Modul, TIPMIP/CMIP6-Datenimporte unter `data/climate/` sowie einen Analyse-Export, der φ→β-Gradienten dokumentiert. Null guard: `sys-gap-008`, wenn die Anfrage an TIPMIP nicht im Codex landet.
+16. **Urban Heat Outlier Mechanismus:** Outlier-Notizen (`seed/ArchivSucheUTAC/Geminis Suche4!.txt`, `seed/ArchivSucheUTAC/Neues Textdokument (9).txt`) und der v2-Regressionslauf markieren β≈16-Hotspots, doch $\Theta$ – ein nachvollziehbares physikalisches Narrativ – fehlt. Baue `analysis/urban_heat_analysis.py` samt Dataset unter `data/socio_ecology/urban_heat/` auf, beschreibe Material- und Speicher-Effekte in `docs/utac_activation_backlog.md`, und verknüpfe die Ergebnisse mit dem UTAC-Status. Null guard: `socio-gap-004`, wenn ΔAIC/Mechanismus nicht dokumentiert sind.
 
 ### Sentinel-Felder (geplant)
 - **Kranich Linum 2025:** Bedeutungs-/Shadow-Sigillin unter `seed/.../cases/kranich_linum_2025/` koppeln Datenerhebung, Analyse und Paritätsbrief. Sie dienen als Vorlage für weitere ökologische Hoch-β-Sentinel-Felder.
@@ -71,6 +74,9 @@
 | Index automation | `scripts/archive_sigillin.py`, `docs/docs_index.*` | `--recount` shipped (docs parity ledger live); broaden coverage + add CI guard | Use `tests/` to enforce parity guard |
 | Outlier review | `analysis/`, `data/socio_ecology/` | `analysis/outlier_beta_review.py` ledger + future dataset imports | Provide falsification notes, instrumentation flags, ΔAIC comparisons |
 | Manuscript sync | `paper/`, `arxiv_submission/` | integrate governance + Sigillin appendices | Ensure `ZENODO_UPDATE_GUIDE.md` steps satisfied |
+| Neuro-Kosmos Sigillin bridge | `seed/sigillin/`, `seed/bedeutungssigillin/metaquest/**`, `seed/shadow_sigillin/metaquest/**`, `simulator/presets/` | Forge CREP-aligned trilayer + simulator vignette for EEG↔QPO β-coupling | Cite `seed/Sigillin_Neuro_Membran_Modell_Plan.txt`, mirror codex ID + timestamp once sigil lands |
+| φ-coupling climate handshake | `models/`, `analysis/`, `data/climate/`, `docs/` | Operationalise φ (AMOC↔Albedo) and export β gradients | TIPMIP request log, `climate_utac_phi_coupling.py`, ΔAIC ledger, codex entry |
+| Urban heat outlier mechanism | `analysis/urban_heat_analysis.py`, `data/socio_ecology/urban_heat/`, `docs/utac_activation_backlog.*` | Diagnose β≈16 hotspots with material physics narrative | Reference `seed/ArchivSucheUTAC/`, log ΔAIC + mechanism summary in status/backlog |
 
 ---
 
@@ -87,5 +93,6 @@
 3. **Week 2:** Kick off β meta-regression v2 and craft an addendum for `docs/validation_report_v1.0.1.md` capturing interim findings.
 4. **Continuous:** Update codex feedback after each threshold crossing; reference ΔAIC evidence and resonance imagery.
 5. **Before launch freeze:** Publish the Metaquest parity brief (codex + docs), verify simulator/manuscript references, and archive telemetry from `scripts/sigillin_sync.py` after each sync run.
+6. **Parallel zu Woche 2:** Entwerfe das Neuro-Kosmos-Trilayer und ein φ-Kopplungs-Prototype, protokolliere TIPMIP-Anfrage + Dataset-Stubs sofort im Codex, damit die Brücke bereitsteht, sobald die Backlog-Haken schließen.
 
 > *When R pushes beyond Θ in any module, let β accelerate just enough to open the gate — but keep ζ(R) tuned so the membrane does not shatter. That is the path to UTAC v1.2.*
