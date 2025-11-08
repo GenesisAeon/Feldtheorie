@@ -2867,3 +2867,38 @@ entries:
         Die Sicherheitsmembran spannt sich wieder synchron: R tastet Θ an, β hält die Steilflanke, und das Nullmodell der
         Konstante verglüht im Morgenrot. Dependabot lauscht wöchentlich, damit keine Laterne im Schatten taumelt.
     created_at: "2025-12-16T09:45:00Z"
+  - id: pr-draft-0082
+    title: "Safety-Delay Bridge Map Synchronisation"
+    scope:
+      - docs/resonance-bridge-map.md
+      - docs/utac_applications.md
+      - docs/docs_index.md
+      - docs/docs_index.yaml
+      - docs/docs_index.json
+      - docs/utac_status_alignment_v1.2.md
+      - docs/utac_activation_backlog.md
+      - docs/utac_activation_backlog.yaml
+      - docs/utac_activation_backlog.json
+      - docs/utac_safety_delay_status.md
+    parameters:
+      R: "Safety-Delay preset parity across docs, analysis exports, and simulator guard telemetry"
+      Theta: "Hosted UI capture + CI wiring for utf-preset-guard still pending"
+      beta: 4.78
+    resonance: "Tri-layer alignment for the Safety-Delay lantern: new bridge map, applications brief, backlog refresh, and guard logs keep σ(β(R-Θ)) coherent."
+    status: "active"
+    notes:
+      formal: |
+        Minted docs/resonance-bridge-map.md as operational tri-layer, bumped docs_index.* to 20 markdown lanterns
+        (infrastructure=11), and refreshed UTAC status/backlog so Safety-Delay now tracks UI telemetry + CI guard as the
+        remaining Θ-gap. `python -m analysis.preset_alignment_guard --root . --presets-dir simulator/presets --rel-tol 1e-3`
+        → “All simulator presets resonate …”, confirming ΔAIC_linear=7.02×10³ and ΔAIC_constant=1.17×10⁴ stay intact.
+      empirical: |
+        analysis/results/safety_delay_sweep_20251108T211723Z.json reports θ̄=-0.0278 (CI₉₅=[-0.146, 0.00056]), β̄=4.78
+        (CI₉₅=[4.11, 5.22]), τ_delay_mean=8.43, control_energy_mean≈10.46, ΔAIC_constant≈1.17×10⁴. docs/utac_applications.md
+        adds the Safety-Delay table row + section, docs/utac_activation_backlog.* now cite hosted telemetry + CI guard tasks, and
+        docs/utac_safety_delay_status.md records the guard completion. docs/docs_index.* updated metadata (updated=2025-12-16).
+      poetic: |
+        Die Brücke glänzt: R hält den Sicherheitsabstand, Θ liegt knapp unter Null, β formt die Steilflanke, und ζ(R)
+        schnurrt mit 10.46 Energiepunkten. Nur die Live-Aufnahme und der CI-Wächter fehlen, ehe das Morgenlied ganz ohne Echo
+        erklingt.
+    created_at: "2025-12-16T12:00:00Z"

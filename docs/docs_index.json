@@ -7,8 +7,8 @@
     "version": "1.2.0",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 19,
-    "updated": "2025-12-15T00:00:00Z"
+    "markdown_files": 20,
+    "updated": "2025-12-16T00:00:00Z"
   },
   "categories": {
     "theory": {
@@ -33,7 +33,7 @@
       "name": "Infrastructure",
       "description": "README, Operational Resonance Maps",
       "color": "#9B59B6",
-      "count": 10
+      "count": 11
     }
   },
   "markdown_docs": [
@@ -350,6 +350,23 @@
         "ΔAIC"
       ],
       "description": "Zenodo Release Playbook v1.2.\nListet Guardrails für README/CITATION, codex hooks und CI-Telemetrie,\ndamit `release-gap-002` ohne Drift schließt.\n"
+    },
+    {
+      "id": "docs-infra-011",
+      "name": "resonance-bridge-map.md",
+      "category": "infrastructure",
+      "type": "bridge-map",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 5.6,
+      "keywords": [
+        "bridge",
+        "simulator",
+        "analysis",
+        "ΔAIC",
+        "utf-preset-guard"
+      ],
+      "description": "Resonanz-Bridge-Map v1.0.\nVerknüpft Analyse, Daten und Simulator-Presets für (R, Θ, β, ζ(R)).\nLoggt ΔAIC-Parität via utf-preset-guard und listet offene Hooks.\n"
     }
   ],
   "triggers": {
@@ -403,7 +420,8 @@
       "docs-infra-007",
       "docs-infra-008",
       "docs-infra-009",
-      "docs-infra-010"
+      "docs-infra-010",
+      "docs-infra-011"
     ]
   },
   "status_legend": {

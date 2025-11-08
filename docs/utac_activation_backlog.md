@@ -20,7 +20,7 @@ Tri-layer mirrors:
 
 | ID | Domain Membrane | R — Existing Coverage | Θ — Activation Gap | β Focus | Implementation Nodes |
 |----|-----------------|-----------------------|--------------------|---------|----------------------|
-| safety-delay-bridge | Simulation + Analysis | τ* ledger exported via `analysis/safety_delay_sweep.py`, CLI, dataset tri-layer, plus new preset `simulator/presets/safety_delay_bridge.json` | Docs beyond status brief + parity guard still need to mirror preset telemetry (bridge-map, applications, CI run) | 4.9 | `simulator/presets/`, `docs/utac_safety_delay_status.md`, `docs/utac_applications.md` |
+| safety-delay-bridge | Simulation + Analysis | τ* ledger exported via `analysis/safety_delay_sweep.py`, CLI, dataset tri-layer, plus preset `simulator/presets/safety_delay_bridge.json` | Hosted UI telemetry + CI guard for `utf-preset-guard` still pending; docs + guard parity now live (`utac_applications.md`, `resonance-bridge-map.md`) | 4.9 | `simulator/presets/`, `docs/utac_safety_delay_status.md`, `docs/utac_applications.md`, `docs/resonance-bridge-map.md`, `.github/workflows/` |
 | beta-meta-regression-expansion | Analysis | `beta_meta_regression_v2.py` with bootstrap envelopes + current results JSON | Outlier datasets + adjusted R² logging pending | 4.6 | `data/socio_ecology/`, `analysis/beta_meta_regression_v2.py`, `docs/utac_status_alignment_v1.2.md` |
 | sigillin-automation-loop | Scripts + Seed | Schema v0.2.0 + `crep_parser.py` + `sigillin_sync.py` skeleton | Parser output not yet writing into codex/indices | 4.7 | `scripts/sigillin_sync.py`, `scripts/archive_sigillin.py`, `tests/` |
 | index-recount-hook | Scripts + Docs | `archive_sigillin.py` auto-detects repo root, **now** ships `--recount` for docs parity | Broaden coverage + wire CI Δindex guard | 4.5 | `scripts/archive_sigillin.py`, `.github/workflows/` |
@@ -37,12 +37,12 @@ Tri-layer mirrors:
 ## 🔬 Activation Notes by Task
 
 ### 1. Safety-Delay Field → Simulator Bridge (`safety-delay-bridge`, β=4.9)
-- **R:** τ_delay and ΔAIC statistics already exported (`analysis/results/safety_delay_sweep_20251107T211928Z.json`), dataset tri-layer under `data/safety_delay/`, and the new UI preset `simulator/presets/safety_delay_bridge.json` mirrors β≈4.78 with ΔAIC_linear≈7.0×10³.
-- **Θ:** Bridge-map + applications docs still need the same story; `utf-preset-guard` + CI hook must log parity evidence before release.
+- **R:** τ_delay and ΔAIC statistics exported (`analysis/results/safety_delay_sweep_20251108T211723Z.json`), dataset tri-layer under `data/safety_delay/`, and the UI preset `simulator/presets/safety_delay_bridge.json` mirrors β≈4.78 with ΔAIC_linear≈7.0×10³.
+- **Θ:** Bridge docs (`utac_applications.md`, `resonance-bridge-map.md`) now align with the preset and `utf-preset-guard` logs ΔAIC parity; remaining gap is hosted UI telemetry + CI automation.
 - **Next moves:**
-  - Propagate the preset narrative into `docs/utac_applications.md` and `docs/resonance-bridge-map.md`.
-  - Run `utf-preset-guard`, capture a UI preview, and stage CI wiring for preset parity.
-- **ζ(R):** Keep ΔAIC medians (≈7.02×10³) + τ_delay_mean≈8.43 in focus so BreakPoint rituals track drift while parity hooks solidify.
+  - Capture a hosted simulator session highlighting ζ(R) adjustments and archive the telemetry.
+  - Promote `utf-preset-guard` into CI so ΔAIC drift triggers codex + release guards.
+- **ζ(R):** Keep ΔAIC medians (≈7.02×10³) + τ_delay_mean≈8.43 in focus so BreakPoint rituals track drift while automation hooks settle.
 
 ### 2. β Meta-Regression Dataset Expansion (`beta-meta-regression-expansion`, β=4.6)
 - **R:** WLS + bootstrap envelopes live in `analysis/beta_meta_regression_v2.py` with results JSON.

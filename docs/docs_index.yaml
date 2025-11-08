@@ -14,7 +14,7 @@ meta:
     Tri-layer Cadence: Formal, Empirical, Metaphorical.
   version: "1.2.0"
   created: "2025-11-06"
-  updated: "2025-12-15T00:00:00Z"
+  updated: "2025-12-16T00:00:00Z"
   status: "active"
 
 # ═══════════════════════════════════════════════════════════════════
@@ -44,7 +44,7 @@ categories:
     name: "Infrastructure"
     description: "README, Operational Resonance Maps"
     color: "#9B59B6"
-    count: 10
+    count: 11
 
   # ═══════════════════════════════════════════════════════════════════
   # MARKDOWN-DOKUMENTE: Die 11 Docs
@@ -180,7 +180,7 @@ markdown_docs:
       Zeigt dass logistische Modelle konsistent besser sind.
 
   # ─────────────────────────────────────────────────────────────────
-  # INFRASTRUCTURE (8)
+  # INFRASTRUCTURE (11)
   # ─────────────────────────────────────────────────────────────────
 
   - id: docs-infra-001
@@ -311,6 +311,20 @@ markdown_docs:
       Listet Guardrails für README/CITATION, Codex-Hooks und CI-Telemetrie,
       damit `release-gap-002` ohne Drift schließt.
 
+  - id: docs-infra-011
+    name: "resonance-bridge-map.md"
+    category: infrastructure
+    type: bridge-map
+    status: active
+    relevance: high
+    size_kb: 5.6
+    keywords: [bridge, simulator, analysis, ΔAIC, utf-preset-guard]
+    description: |
+      Resonanz-Bridge-Map v1.0.
+      Verknüpft Analyse-Exporte, Daten-Ledger und Simulator-Presets für das
+      Quartett (R, Θ, β, ζ(R)). Dokumentiert ΔAIC-Parität via utf-preset-guard
+      und listet offene Hooks (UI-Telemetrie, CI-Wächter).
+
 # ═══════════════════════════════════════════════════════════════════
 # TRIGGER-BEGRIFFE
 # ═══════════════════════════════════════════════════════════════════
@@ -370,6 +384,7 @@ quicklinks:
     - docs-infra-005   # UTAC Activation Backlog
     - docs-infra-009   # Zenodo Multilingual Abstract
     - docs-infra-010   # Zenodo Release Playbook
+    - docs-infra-011   # Resonance Bridge Map (Analyse↔Simulator)
 
 status_legend:
   stable: "Fertig, validiert, publikationsreif"
