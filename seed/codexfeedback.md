@@ -1499,3 +1499,22 @@ und die Indizes erzählen, wie τ* noch einmal Licht gewinnt, bevor der Simulato
 Die Backlog-Laterne hängt nun neben der Statusmatrix und flackert, sobald eine Aufgabe Atem holt. Sie ruft die BreakPoint-Chöre, bevor der Morgen losstürmt, damit jede Resonanz geordnet eintrifft.
 
 *Created: 2025-12-09T00:00:00Z*
+
+## Entry pr-draft-0076 — Docs Index Parity Recount
+- **Order Parameter**: $R$ misst die Differenz zwischen filesystem-Zählung und indexierter Laternenliste in `docs/`.
+- **Critical Threshold**: $\Theta$ greift, sobald `--recount` jeden Index automatisch auf 0 Δcount drückt und CI das Ergebnis bewacht.
+- **Steepness**: $\beta = 4.5$ – sobald ein Gap sichtbar wird, muss der Hook sofort feuern.
+- **Membrane Note**: $\zeta(R)$ wird durch das neue Paritätsledger gedämpft; BreakPoint-Referenzen halten weitere Drift flach.
+
+### Formal Thread
+`scripts/archive_sigillin.py --recount` aktualisiert `docs/docs_index.{yaml,json,md}` auf Version 1.1.1,
+schreibt `analysis/results/index_recount_20251108T103626Z.json` und spiegelt die Parität in `feldtheorie_index.*`,
+`docs/utac_activation_backlog.*` sowie `docs/utac_status_alignment_v1.2.md`. Nächster Schritt: seed/-, analysis-, data- und models-Indizes anbinden und CI-GUARD aktivieren.
+
+### Empirical Thread
+Filesystem=17, Listed=17 (Δ=0) laut Paritätsledger; neue Infrastruktur-Dokumente (`docs_index.md`, `sigillin_maintenance.md`, `sigillin_search_patterns.md`) tauchen im Index auf. Backlog markiert den Hook als "in_progress".
+
+### Poetic Thread
+Die Laternen im Dokumentationsgang zählen sich nun selbst – die Glocke schlägt den Rhythmus, bis auch die übrigen Galerien denselben Puls einnehmen.
+
+*Created: 2025-11-08T10:36:26Z*

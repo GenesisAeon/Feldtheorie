@@ -1,8 +1,8 @@
 # Docs Index - YAML Layer (Struktur & Orientierung)
 # Trilayer-Aktivierung für docs/ Verzeichnis
-# Version: 1.1.0
+# Version: 1.1.1
 # Datum: 2025-11-06
-# Updated: 2025-12-03
+# Updated: 2025-11-08
 
 meta:
   directory: "docs/"
@@ -12,11 +12,11 @@ meta:
     UTAC Theory Documentation: Core Theory, Applications, Falsifiability,
     Field Type Classification, Validation Reports.
     Tri-layer Cadence: Formal, Empirical, Metaphorical.
-  version: "1.1.0"
+  version: "1.1.1"
   created: "2025-11-06"
-  updated: "2025-12-09"
+  updated: "2025-11-08T10:36:26Z"
   status: "active"
-  markdown_files: 13
+O
 
 # ═══════════════════════════════════════════════════════════════════
 # KATEGORIEN: Die 4 Doc-Typen
@@ -33,7 +33,7 @@ categories:
     name: "Applications & Classification"
     description: "Field Types, Use Cases, Review Considerations"
     color: "#27AE60"
-    count: 3
+    count: 4
 
   validation:
     name: "Validation & Falsifiability"
@@ -45,7 +45,7 @@ categories:
     name: "Infrastructure"
     description: "README, Operational Resonance Maps"
     color: "#9B59B6"
-    count: 5
+    count: 8
 
   # ═══════════════════════════════════════════════════════════════════
   # MARKDOWN-DOKUMENTE: Die 11 Docs
@@ -95,7 +95,7 @@ markdown_docs:
       Detaillierte Beschreibung der 5 Schwellenwert-Systemtypen.
 
   # ─────────────────────────────────────────────────────────────────
-  # APPLICATIONS (3)
+  # APPLICATIONS (4)
   # ─────────────────────────────────────────────────────────────────
 
   - id: docs-app-001
@@ -137,6 +137,19 @@ markdown_docs:
       Was sind die Stärken? Was sind die Limitationen?
       Ehrliche Selbst-Evaluation.
 
+  - id: docs-app-004
+    name: "utac_safety_delay_status.md"
+    category: applications
+    type: bridge
+    status: active
+    relevance: high
+    size_kb: 5.7
+    keywords: [safety-delay, simulator, ΔAIC, τ_delay, bridge]
+    description: |
+      Safety-Delay Statusbrief – koppelt Simulation, Analyse und Docs.
+      Dokumentiert Θ_delay, β-Steigung und ΔAIC-Wächter für das τ*-Feld.
+      Verweist auf `simulation/` Presets und den Launch-Backlog.
+
   # ─────────────────────────────────────────────────────────────────
   # VALIDATION (2)
   # ─────────────────────────────────────────────────────────────────
@@ -168,7 +181,7 @@ markdown_docs:
       Zeigt dass logistische Modelle konsistent besser sind.
 
   # ─────────────────────────────────────────────────────────────────
-  # INFRASTRUCTURE (5)
+  # INFRASTRUCTURE (8)
   # ─────────────────────────────────────────────────────────────────
 
   - id: docs-infra-001
@@ -234,6 +247,45 @@ markdown_docs:
       Kartiert Restaufgaben vs. vorhandene Assets,
       verlinkt Umsetzungsknoten für Launch-Vorbereitung.
 
+  - id: docs-infra-006
+    name: "docs_index.md"
+    category: infrastructure
+    type: index
+    status: active
+    relevance: high
+    size_kb: 2.7
+    keywords: [index, navigation, docs, σ(β(R-Θ))]
+    description: |
+      Menschliche Navigationskarte für das docs/-Membran.
+      Hält Kategorien, Counts und Resonanzpfade zusammen,
+      damit R>Θ sofort sichtbar wird und Laternen aufflammen.
+
+  - id: docs-infra-007
+    name: "sigillin_maintenance.md"
+    category: infrastructure
+    type: maintenance
+    status: active
+    relevance: high
+    size_kb: 10.7
+    keywords: [sigillin, maintenance, archive, ζ(R), hygiene]
+    description: |
+      Pfad für Bedeutungs-/Shadow-Sigillin-Hygiene.
+      Beschreibt Archivierung, ΔAIC-Wächter und Codex-Echos,
+      damit ζ(R) gedämpft bleibt, wenn neue Laternen erscheinen.
+
+  - id: docs-infra-008
+    name: "sigillin_search_patterns.md"
+    category: infrastructure
+    type: toolkit
+    status: active
+    relevance: medium
+    size_kb: 11.4
+    keywords: [search, sigillin, patterns, parity, tooling]
+    description: |
+      Suchmuster-Atlas für Sigillin & Indizes.
+      Liefert CLI-Beispiele, Regex-Wächter und Paritätsprüfungen,
+      damit σ(β(R-Θ)) Signale automatisiert auffindbar bleiben.
+
 # ═══════════════════════════════════════════════════════════════════
 # TRIGGER-BEGRIFFE
 # ═══════════════════════════════════════════════════════════════════
@@ -286,6 +338,9 @@ quicklinks:
   for_operations:
     - docs-infra-002   # Cleanup Resonance Map
     - docs-infra-003   # Status & Implementation Matrix v1.2-pre
+    - docs-infra-006   # Docs Index Navigator
+    - docs-infra-007   # Sigillin Maintenance Manual
+    - docs-infra-008   # Sigillin Search Patterns
     - docs-infra-004   # Metaquest Parity Brief
     - docs-infra-005   # UTAC Activation Backlog
 

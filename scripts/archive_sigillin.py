@@ -13,10 +13,11 @@ Usage:
 
 import argparse
 import json
+import re
 import yaml
 import zipfile
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 import sys
 import shutil
 
@@ -368,6 +369,175 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
 
         print(f"\n✅ Scan complete: {archived_count} files archived")
 
+    # ------------------------------------------------------------------
+    # Index recount helpers
+
+    def _update_yaml_fields(self, path: Path, replacements: dict) -> dict:
+        """Update specific key-value pairs in a YAML file via regex substitution.
+
+        Returns a dictionary with the previous values for reporting."""
+
+        content = path.read_text(encoding='utf-8')
+        previous = {}
+
+        for key, value in replacements.items():
+            pattern = re.compile(rf"^(\s*{re.escape(key)}:\s*)(.+)$", re.MULTILINE)
+            match = pattern.search(content)
+            if not match:
+                continue
+
+            old_value = match.group(2).strip()
+            previous[key] = old_value
+
+            if isinstance(value, str) and not value.startswith('"') and not value.endswith('"') and not value.startswith("'"):
+                replacement_value = f'"{value}"'
+            else:
+                replacement_value = str(value)
+
+            content = pattern.sub(rf"\1{replacement_value}", content, count=1)
+
+        path.write_text(content, encoding='utf-8')
+        return previous
+
+    def recount_indices(self, targets=None, output_dir=None):
+        """Refresh index metadata counts and emit a parity summary."""
+
+        timestamp = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
+
+        index_specs = {
+            'docs': {
+                'label': 'docs/',
+                'directory': self.base_path / 'docs',
+                'glob': '*.md',
+                'index_files': {
+                    'yaml': self.base_path / 'docs/docs_index.yaml',
+                    'json': self.base_path / 'docs/docs_index.json',
+                    'md': self.base_path / 'docs/docs_index.md',
+                },
+                'list_key': 'markdown_docs',
+                'name_field': 'name',
+                'meta_fields': ['markdown_files'],
+                'logistic': {
+                    'beta': 4.8,
+                    'zeta': 'docs-index parity damping',
+                },
+            },
+        }
+
+        available_targets = sorted(index_specs.keys())
+
+        if targets:
+            requested = []
+            for target in targets:
+                if not target:
+                    continue
+                for segment in target.split(','):
+                    segment = segment.strip().lower()
+                    if segment:
+                        requested.append(segment)
+        else:
+            requested = available_targets
+
+        unknown = [t for t in requested if t not in index_specs]
+        if unknown:
+            raise ValueError(f"Unknown indices for recount: {', '.join(unknown)}")
+
+        summary = {
+            'meta': {
+                'generated_at': timestamp,
+                'base_path': str(self.base_path),
+                'order_parameter_R': 'index parity delta',
+                'threshold_Theta': 'filesystem counts',
+                'beta': 4.8,
+                'zeta': 'σ(β(R-Θ)) guard for docs indices',
+            },
+            'indices': [],
+        }
+
+        results_dir = self.base_path / 'analysis' / 'results'
+        results_dir.mkdir(parents=True, exist_ok=True)
+
+        for target in requested:
+            spec = index_specs[target]
+            dir_path = spec['directory']
+            files = sorted({p.name for p in dir_path.glob(spec['glob']) if p.is_file()})
+
+            index_yaml = spec['index_files']['yaml']
+            index_json = spec['index_files']['json']
+
+            if not index_yaml.exists() or not index_json.exists():
+                print(f"⚠️  Skipping {target}: index files missing")
+                continue
+
+            with open(index_yaml, 'r', encoding='utf-8') as f:
+                yaml_data = yaml.safe_load(f)
+
+            with open(index_json, 'r', encoding='utf-8') as f:
+                json_data = json.load(f)
+
+            listed_entries = []
+            if spec['list_key'] and yaml_data:
+                listed_entries = [entry.get(spec['name_field']) for entry in yaml_data.get(spec['list_key'], [])]
+
+            listed_set = {name for name in listed_entries if name}
+            filesystem_set = set(files)
+
+            missing_files = sorted(filesystem_set - listed_set)
+            orphan_entries = sorted(listed_set - filesystem_set)
+
+            # Update YAML meta counts via regex replacement to preserve comments
+            new_count = len(filesystem_set)
+            yaml_replacements = {
+                field: new_count for field in spec['meta_fields']
+            }
+            yaml_replacements['updated'] = timestamp
+            previous_yaml = self._update_yaml_fields(index_yaml, yaml_replacements)
+
+            # Update JSON meta counts
+            previous_json = {}
+            for field in spec['meta_fields']:
+                previous_json[field] = json_data.get('meta', {}).get(field)
+                json_data.setdefault('meta', {})[field] = new_count
+            previous_json['updated'] = json_data.get('meta', {}).get('updated')
+            json_data['meta']['updated'] = timestamp
+
+            with open(index_json, 'w', encoding='utf-8') as f:
+                json.dump(json_data, f, ensure_ascii=False, indent=2)
+
+            index_summary = {
+                'index': target,
+                'directory': spec['label'],
+                'counts': {
+                    'filesystem': new_count,
+                    'listed': len(listed_set),
+                },
+                'delta': new_count - len(listed_set),
+                'missing_files': missing_files,
+                'orphan_entries': orphan_entries,
+                'meta_updates': {
+                    'yaml': previous_yaml,
+                    'json': previous_json,
+                },
+                'logistic': spec['logistic'],
+            }
+
+            summary['indices'].append(index_summary)
+
+            print("\n🔁 Index recount:")
+            print(f"   • Target: {target}")
+            print(f"   • Filesystem count: {new_count}")
+            print(f"   • Listed entries: {len(listed_set)}")
+            if missing_files:
+                print(f"   • Missing in index: {', '.join(missing_files)}")
+            if orphan_entries:
+                print(f"   • Orphan entries: {', '.join(orphan_entries)}")
+
+        summary_path = results_dir / f"index_recount_{timestamp.replace(':', '').replace('-', '')}.json"
+        with open(summary_path, 'w', encoding='utf-8') as f:
+            json.dump(summary, f, ensure_ascii=False, indent=2)
+
+        print(f"\n✅ Recount summary written to {summary_path.relative_to(self.base_path)}")
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -385,10 +555,13 @@ def main():
     parser.add_argument('--dry-run', action='store_true', help='Check only, do not archive')
     parser.add_argument('--base-path', type=str, default=None,
                         help='Repository root containing Sigillin assets (default: script directory parent)')
+    parser.add_argument('--recount', action='store_true', help='Refresh index metadata counts and emit summary')
+    parser.add_argument('--recount-targets', type=str, nargs='*',
+                        help='Specific indices to recount (default: all supported)')
 
     args = parser.parse_args()
 
-    if not args.sigillin and not args.scan_all:
+    if not args.sigillin and not args.scan_all and not args.recount:
         parser.print_help()
         sys.exit(1)
 
@@ -402,9 +575,13 @@ def main():
         base_path=base_path,
     )
 
+    if args.recount:
+        archiver.recount_indices(targets=args.recount_targets)
+
     if args.sigillin:
         archiver.archive_sigillin(args.sigillin)
-    elif args.scan_all:
+
+    if args.scan_all:
         archiver.scan_all_sigillin()
 
 
