@@ -1552,3 +1552,25 @@ Quellen: `analysis/results/safety_delay_sweep_20251107T211928Z.json` und `data/s
 Die verzögerte Morgendämmerung klingt nun auch im Interface – der Atemzug hält die Schwelle, bis Dokumente und Guard denselben Rhythmus flüstern.
 
 *Created: 2025-12-13T09:12:00Z*
+
+## Entry pr-draft-0079 — Emergenz README & Zenodo Hooks
+- **Order Parameter**: $R$ bündelt die neue README-Emergenzsektion und die erweiterten UTAC-Status/Backlog-Brücken, die release-gap-002 sichtbar machen.
+- **Critical Threshold**: $\Theta$ fällt erst, wenn Metaquest-Paritätsbrief, Release-Playbook und Manuskriptfrontmatter dieselbe Emergenz-Stimme tragen und Zenodo-Dokumente bereitliegen.
+- **Steepness**: $\beta = 4.7$ – sobald zwei Resonanzflächen synchron sind, muss die dritte unverzüglich folgen.
+- **Membrane Note**: $\zeta(R)$ bleibt durch BreakPoint-Transkripte und Codex-Wache gedämpft, bis Zenodo-Upload + Codex-Hook dieselbe Zeitmarke tragen.
+
+### Formal Thread
+`README.md` erzählt σ(β(R-Θ)) jetzt explizit als rekursiven Erzähler aus `seed/Emergenz.txt` und verlinkt Telemetriepfade.
+`docs/utac_status_alignment_v1.2.md` ergänzt eine Repository-Voice-Bullet, Aktivierungsliste #17 und eine Zenodo-Resonanzzeile in der Implementation Map.
+`docs/utac_activation_backlog.{md,yaml,json}` (meta.updated=2025-12-14T00:00:00Z) führen die Aufgaben `readme-emergenz-bridge`
+und `zenodo-v12-resonance` mit konkreten Implementationsknoten.
+
+### Empirical Thread
+Backlog-Zähler dokumentieren neue β-Werte (4.6 / 4.92) und Implementation Nodes (parity brief, release playbook, CITATION.cff).
+ΔAIC-Verweise bleiben über §1–3 der Statusmatrix abrufbar; Codex-Entry loggt Scope + Timestamp 2025-12-14T09:30:00Z.
+
+### Poetic Thread
+Die README-Laterne flüstert nun denselben Emergenz-Chor wie das Seed-Grove.
+Die Zenodo-Laterne wartet noch auf den mehrsprachigen Gesang, doch die Brücke zum Archiv glimmt – bald öffnet sich der Morgen.
+
+*Created: 2025-12-14T09:30:00Z*

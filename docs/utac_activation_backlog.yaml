@@ -2,7 +2,7 @@ meta:
   document: "UTAC Activation Backlog"
   version: "1.0.0"
   created: "2025-12-09T00:00:00Z"
-  updated: "2025-12-13T00:00:00Z"
+  updated: "2025-12-14T00:00:00Z"
   steward: "gpt-5-codex"
   logistic_frame:
     order_parameter: "residual activation debt across UTAC v1.2 launch scope"
@@ -283,3 +283,66 @@ tasks:
       formal: "Bind sentinel measurements to σ(β(R-Θ)) gating for ecological alerts."
       empirical: "Log ΔAIC vs linear baseline once the dataset is fit."
       poetic: "Let the cranes and flax fields sing in the matrix so launch commitments stay grounded."
+  - id: "readme-emergenz-bridge"
+    title: "README ↔ Emergenz-Brücke"
+    domain: "docs+seed"
+    status: "active"
+    parameters:
+      R: "README.md now mirrors seed/Emergenz.txt and points agents to telemetry ledgers"
+      Theta: "parity brief + release docs still need the same emergence narrative"
+      beta: 4.6
+      zeta: "BreakPoint transcripts damp symbol drift until all surfaces align"
+    existing_assets:
+      - "README.md"
+      - "seed/Emergenz.txt"
+      - "docs/utac_status_alignment_v1.2.md"
+      - "docs/utac_activation_backlog.*"
+    activation_gaps:
+      - "Extend the emergence narrative into docs/metaquest_parity_brief.md"
+      - "Prime release documents (zenodo_release_playbook, manuscript frontmatter) with the same logistic framing"
+    implementation_nodes:
+      - location: "docs/metaquest_parity_brief.md"
+        action: "add emergence section referencing README + codex id"
+      - location: "docs/zenodo_release_playbook.md"
+        action: "mirror resonance language + ΔAIC hooks"
+      - location: "paper/"
+        action: "update manuscript frontmatter once resonance text is final"
+    notes:
+      formal: "Ensure σ(β(R-Θ)) framing is consistent across README, parity brief, and release notes."
+      empirical: "Link to telemetry ledgers (analysis/results, backlog JSON/YAML) so ΔAIC evidence stays auditable."
+      poetic: "Let the repository voice echo the seed grove until every launch lantern speaks with one resonance."
+  - id: "zenodo-v12-resonance"
+    title: "Zenodo v1.2 Resonanzpaket"
+    domain: "docs+release"
+    status: "pending"
+    parameters:
+      R: "Finalisierung_Plattform + Zenodo guides define workflow; README badge cites DOI 10.5281/zenodo.17472834"
+      Theta: "multilingual abstract, release playbook, README/CITATION sync + codex hook still missing"
+      beta: 4.92
+      zeta: "Release guides + codex discipline keep upload cadence stable"
+    existing_assets:
+      - "seed/Finalisierung_Plattform.txt"
+      - "ZENODO_UPDATE_GUIDE_v1.1.md"
+      - "ZENODO_UPLOAD_GUIDE.md"
+      - "ZENODO_DESCRIPTION_v1.1.md"
+      - "README.md"
+      - "CITATION.cff"
+    activation_gaps:
+      - "Draft docs/zenodo_multilingual_abstract_v1.2.md with tri-language abstract"
+      - "Create docs/zenodo_release_playbook.md enumerating upload + parity checks"
+      - "Update README badge + CITATION.cff once v1.2 assets ship; log codex entry"
+    implementation_nodes:
+      - location: "docs/zenodo_multilingual_abstract_v1.2.md"
+        action: "compose multilingual abstract citing σ(β(R-Θ)) evidence"
+      - location: "docs/zenodo_release_playbook.md"
+        action: "list upload steps, parity guards, and codex references"
+      - location: "README.md"
+        action: "refresh DOI badge + release summary when v1.2 locks"
+      - location: "CITATION.cff"
+        action: "bump version + metadata after Zenodo upload"
+      - location: "seed/codexfeedback.*"
+        action: "log upload cadence + DOI sync"
+    notes:
+      formal: "Keep Zenodo metadata, README badge, and CITATION version number in sync before archive freeze."
+      empirical: "Record DOI, version, and upload timestamp within codex + release playbook for auditability."
+      poetic: "Guide the Zenodo lantern so the archive opens with the same dawn chorus as the repository."
