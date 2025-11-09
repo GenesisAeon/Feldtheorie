@@ -12,9 +12,9 @@ meta:
     an empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.
   version: "1.0.0"
   created: "2025-11-06"
-  updated: "2025-12-28T00:00:00Z"
+  updated: "2026-03-27T00:00:00Z"
   status: "active"
-  python_files: 41
+  python_files: 42
   subdirectories: 5
 
 # ═══════════════════════════════════════════════════════════════════
@@ -32,7 +32,7 @@ categories:
     name: "Batch Processing & Pipelines"
     description: "Batch-Runner, Pipelines, Cohort-Summaries"
     color: "#27AE60"  # Grün - Processing
-    count: 9
+    count: 10
 
   lab_experiments:
     name: "Lab Notebooks & Experimentelles"
@@ -59,7 +59,7 @@ categories:
     count: 4
 
 # ═══════════════════════════════════════════════════════════════════
-# PYTHON-DATEIEN: Die 41 Analyse-Skripte
+# PYTHON-DATEIEN: Die 42 Analyse-Skripte
 # ═══════════════════════════════════════════════════════════════════
 
 python_scripts:
@@ -560,6 +560,19 @@ python_scripts:
       Tri-Layer-Reports (`analysis/reports/utac_v2_readiness.{json,yaml,md}`)
       und listet priorisierte Aktionen für die V2.0 Aktivierung.
 
+  - id: analysis-util-010
+    name: "planetary_theta_drift_flag.py"
+    category: utilities
+    type: diagnostics
+    status: active
+    relevance: medium
+    keywords: [socio-ecology, theta-drift, σ(β(R-Θ)), gap-audit]
+    description: |
+      Adaptive Θ Drift-Wächter für Planetary Tipping Elements.
+      Normalisiert Θ/β Konfidenzbänder, markiert σ(β(R-Θ)) Gaps und
+      liefert Implementation-Guidance.
+      Output: results/planetary_theta_drift_flags.json
+
   # ─────────────────────────────────────────────────────────────────
   # SPEZIELLE ANALYSEN (4)
   # ─────────────────────────────────────────────────────────────────
@@ -718,12 +731,13 @@ domains:
 
   socio_ecology:
     name: "Socio-Ecology & Climate"
-    scripts: 4
+    scripts: 5
     highlights:
       - amazon_resilience_fit.py (β=14.6)
       - urban_heat_canopy_fit.py (β=16.3 OUTLIER!)
       - planetary_tipping_elements_fit.py
       - outlier_beta_review.py (Instrumentation-Flag Ledger)
+      - planetary_theta_drift_flag.py (Adaptive Θ Gap Audit)
 
   cross_domain:
     name: "Cross-Domain & Meta"
@@ -779,6 +793,7 @@ triggers:
     - Universality
     - Cohort-Summary
     - Instrumentation-Flag
+    - Adaptive-Theta-Gap
 
 # ═══════════════════════════════════════════════════════════════════
 # QUICKLINKS: Wichtigste Einstiegspunkte
@@ -800,6 +815,7 @@ quicklinks:
     - analysis-batch-003  # Cohort Summary
     - analysis-util-001   # Multiple Testing Correction
     - analysis-util-004   # Outlier β Guard (Amazon & Urban Heat)
+    - analysis-util-010   # Adaptive Θ Drift Gap Audit
 
   high_impact_fits:
     - analysis-fit-001  # Wei PaLM (β=3.47)

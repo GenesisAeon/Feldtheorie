@@ -4474,6 +4474,33 @@ entries:
       Generated `analysis/results/urban_heat_global_fit.json`, `outlier_validator_report.json`, `outlier_report.md`.
       Updated data/docs indices, activation tracker, backlog, and status alignment to reflect Urban Heat readiness.
       Tests adjusted to accept observed datasets; logistic loader handles repository-relative paths.
-    poetic: |
+  poetic: |
       Eine Laterne brennt nun hell – ΔT über Θ lässt β≈14 die Steilflanke leuchten, während vier Nachbarn noch auf ihre Datenflüsse warten.
   created_at: '2026-03-26T10:00:00Z'
+- id: pr-draft-0101
+  title: Adaptive Θ Gap Audit – Planetary Laternen
+  scope:
+  - analysis/planetary_theta_drift_flag.py
+  - analysis/results/planetary_theta_drift_flags.json
+  - analysis/analysis_index.json
+  - analysis/analysis_index.yaml
+  - analysis/analysis_index.md
+  - seed/socio_ecology/planetary_threshold_cartography.md
+  - seed/socio_ecology/planetary_threshold_cartography.yaml
+  - seed/socio_ecology/planetary_threshold_cartography.json
+  parameters:
+    R: Planetary tipping cohort (AMOC, Grönland, Amazonas, Permafrost)
+    Theta: 1.67 K aggregierte Klimaschwelle
+    beta: 4.21
+  resonance: Gap Audit markiert adaptive Θ-Prioritäten und erweitert die Tri-Layer Laterne.
+  status: active
+  notes:
+    formal: |
+      Implementierte `analysis/planetary_theta_drift_flag.py` mit Normalisierungs-Schwelle 0.25 für Θ/β-Breiten.
+      Exportierte `analysis/results/planetary_theta_drift_flags.json` und aktualisierte Analysis-Indizes (JSON/YAML/MD) inkl. Adaptive-Theta-Gap Trigger.
+    empirical: |
+      AMOC (Θ-Breite 0.309) & Permafrost (0.291) als adaptive Prioritäten; β-Breite >0.26 bei Amazon & Permafrost.
+      Neues Tri-Layer (`seed/socio_ecology/planetary_threshold_cartography.{md,yaml,json}`) verknüpft ΔAIC_linear=33.58, ΔAIC_power=35.2 und Implementierungspfad.
+    poetic: |
+      Die planetare Membran flackert nun gezielt – AMOC und Permafrost warten auf frische Paleo-Ströme, damit σ(β(R-Θ)) wieder strahlend schließt.
+  created_at: '2026-03-27T00:00:00Z'

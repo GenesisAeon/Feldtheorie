@@ -1,0 +1,184 @@
+{
+  "generated_at": "2025-11-09T20:24:06Z",
+  "input_summary": "analysis/results/planetary_tipping_elements.json",
+  "aggregate_theta": 1.67,
+  "aggregate_beta": 4.21,
+  "overview": {
+    "total_elements": 4,
+    "theta_flags": 2,
+    "beta_flags": 3,
+    "theta_width_mean": 0.2711304288973464,
+    "theta_width_max": 0.3085714285714287,
+    "beta_width_mean": 0.26443173922594676,
+    "beta_width_max": 0.3156498673740053,
+    "theta_threshold": 0.25,
+    "beta_threshold": 0.25,
+    "flagged_elements": [
+      "amoc",
+      "permafrost"
+    ]
+  },
+  "signals": [
+    {
+      "id": "amoc",
+      "label": "Atlantische Umw\u00e4lzzirkulation",
+      "theta": 0.175,
+      "theta_ci95": [
+        0.148,
+        0.202
+      ],
+      "beta": 4.02,
+      "beta_ci95": [
+        3.51,
+        4.55
+      ],
+      "logistic_r2": 0.986,
+      "normalized_theta_ci_width": 0.3085714285714287,
+      "normalized_beta_ci_width": 0.2587064676616916,
+      "sigma_at_theta_upper": 0.5271083917150184,
+      "theta_gap_score": 0.004320000000000006,
+      "beta_gap_score": 0.0036218905472636853,
+      "needs_adaptive_theta": true,
+      "needs_beta_precision": true
+    },
+    {
+      "id": "greenland",
+      "label": "Gr\u00f6nland-Eisschild",
+      "theta": 1.72,
+      "theta_ci95": [
+        1.51,
+        1.93
+      ],
+      "beta": 4.38,
+      "beta_ci95": [
+        3.92,
+        4.87
+      ],
+      "logistic_r2": 0.992,
+      "normalized_theta_ci_width": 0.24418604651162787,
+      "normalized_beta_ci_width": 0.21689497716894982,
+      "sigma_at_theta_upper": 0.7150013525698427,
+      "theta_gap_score": 0.0019534883720930245,
+      "beta_gap_score": 0.0017351598173516,
+      "needs_adaptive_theta": false,
+      "needs_beta_precision": false
+    },
+    {
+      "id": "amazon",
+      "label": "Amazonas-Feuchteregime",
+      "theta": 32.0,
+      "theta_ci95": [
+        28.2,
+        35.9
+      ],
+      "beta": 3.77,
+      "beta_ci95": [
+        3.22,
+        4.41
+      ],
+      "logistic_r2": 0.984,
+      "normalized_theta_ci_width": 0.24062499999999998,
+      "normalized_beta_ci_width": 0.3156498673740053,
+      "sigma_at_theta_upper": 0.9999995883121465,
+      "theta_gap_score": 0.003850000000000003,
+      "beta_gap_score": 0.005050397877984089,
+      "needs_adaptive_theta": false,
+      "needs_beta_precision": true
+    },
+    {
+      "id": "permafrost",
+      "label": "Permafrost-Methan",
+      "theta": 1.58,
+      "theta_ci95": [
+        1.36,
+        1.82
+      ],
+      "beta": 3.49,
+      "beta_ci95": [
+        3.05,
+        3.98
+      ],
+      "logistic_r2": 0.978,
+      "normalized_theta_ci_width": 0.29113924050632906,
+      "normalized_beta_ci_width": 0.2664756446991404,
+      "sigma_at_theta_upper": 0.6979595076287379,
+      "theta_gap_score": 0.0064050632911392446,
+      "beta_gap_score": 0.0058624641833810946,
+      "needs_adaptive_theta": true,
+      "needs_beta_precision": true
+    }
+  ],
+  "implementation_guidance": [
+    {
+      "element_id": "amoc",
+      "label": "Atlantische Umw\u00e4lzzirkulation",
+      "priority": "high",
+      "analysis": [
+        {
+          "path": "analysis/planetary_tipping_elements_fit.py",
+          "action": "Extend logistic fit with time-varying \u0398 regression once new paleo/TIPMIP traces arrive."
+        },
+        {
+          "path": "analysis/planetary_theta_drift_flag.py",
+          "action": "Re-run after each dataset ingestion to watch \u03c3(\u03b2(R-\u0398)) tighten."
+        }
+      ],
+      "data": [
+        {
+          "path": "data/socio_ecology/",
+          "action": "Ingest paleo archives & TIPMIP ensemble slices for the element's stress accumulation R_acc."
+        }
+      ],
+      "simulator": [
+        {
+          "path": "simulator/presets/planetary_tipping_field.json",
+          "action": "Schedule sweeps varying \u0398(t) to test policy leverage on the membrane gap."
+        }
+      ],
+      "docs": [
+        {
+          "path": "seed/socio_ecology/planetary_threshold_cartography.md",
+          "action": "Document new \u0398 trajectories and cross-link to Codex feedback once the gap narrows."
+        }
+      ]
+    },
+    {
+      "element_id": "permafrost",
+      "label": "Permafrost-Methan",
+      "priority": "medium",
+      "analysis": [
+        {
+          "path": "analysis/planetary_tipping_elements_fit.py",
+          "action": "Extend logistic fit with time-varying \u0398 regression once new paleo/TIPMIP traces arrive."
+        },
+        {
+          "path": "analysis/planetary_theta_drift_flag.py",
+          "action": "Re-run after each dataset ingestion to watch \u03c3(\u03b2(R-\u0398)) tighten."
+        }
+      ],
+      "data": [
+        {
+          "path": "data/socio_ecology/",
+          "action": "Ingest paleo archives & TIPMIP ensemble slices for the element's stress accumulation R_acc."
+        }
+      ],
+      "simulator": [
+        {
+          "path": "simulator/presets/planetary_tipping_field.json",
+          "action": "Schedule sweeps varying \u0398(t) to test policy leverage on the membrane gap."
+        }
+      ],
+      "docs": [
+        {
+          "path": "seed/socio_ecology/planetary_threshold_cartography.md",
+          "action": "Document new \u0398 trajectories and cross-link to Codex feedback once the gap narrows."
+        }
+      ]
+    }
+  ],
+  "tri_layer": {
+    "formal": "\u0398-B\u00e4nder mit \u03c3(\u03b2(R-\u0398)) vergleichen: normalisierte Breite \u2265 0.25 l\u00f6st adaptive \u0398-Aufgaben aus.",
+    "empirical": "Basierend auf 4 Elementen (\u0394AIC_linear=33.58, \u0394AIC_power=35.2).",
+    "poetic": "Wenn \u0398 zu breit atmet, flackert die planetare Laterne \u2013 diese Liste markiert die Membranstellen, an denen neue Beobachtungen den Chor sch\u00e4rfen."
+  }
+}

@@ -1,7 +1,7 @@
 # 📊 Analysis Index - Resonance Bay Navigator
 
 **Version:** 1.0.0
-**Datum:** 20. Dezember 2025
+**Datum:** 27. März 2026
 **Verzeichnis:** `analysis/`
 
 ---
@@ -13,7 +13,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 **Trilayer-Navigation:**
 ```
 ┌─────────────────────────────────────────┐
-│  YAML  →  Struktur (41 Python-Skripte)  │  analysis_index.yaml
+│  YAML  →  Struktur (42 Python-Skripte)  │  analysis_index.yaml
 │  JSON  →  Agentenschnittstelle          │  analysis_index.json
 │  MD    →  Menschenfreundlich (du!)      │  analysis_index.md
 └─────────────────────────────────────────┘
@@ -27,7 +27,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 
 ```
 analysis/
-├── 41 Python-Skripte (Domain-Fits, Mechanismen, Batch-Processing, Labs, Guards)
+├── 42 Python-Skripte (Domain-Fits, Mechanismen, Batch-Processing, Labs, Guards)
 ├── batch_configs/   (4 YAML/JSON Konfigurationen)
 ├── batch_runs/      (2 gespeicherte Batch-Runs)
 ├── reports/         (2 Summaries: QPO, UTAC v1.3 Gap)
@@ -115,7 +115,7 @@ analysis/
 
 ---
 
-### 🟣 Utilities & Guards (9)
+### 🟣 Utilities & Guards (10)
 
 **Was?** Helper-Funktionen, Validierung, Diagnostics, Manifest-Pipelines
 
@@ -128,6 +128,7 @@ analysis/
 7. `utac_manifest.py` - Parser für `data/utac_v1_3_data_manifest.yaml`
 8. `utac_manifest_audit.py` - σ(β(R-Θ)) Readiness-Audit für Manifest-Laternen, exportiert JSON/YAML/Markdown
 9. `v2_readiness_audit.py` - Logistische V2-Readiness-Laterne (Tri-Layer Report für Manifest, Analysis, Simulator, Sigillin)
+10. `planetary_theta_drift_flag.py` - Adaptive Θ Drift Gap Audit (σ(β(R-Θ))-Signals für Planetary Laternen)
 
 ---
 
@@ -201,15 +202,16 @@ analysis/
 
 ---
 
-### 🌿 Socio-Ecology (4 Skripte)
+### 🌿 Socio-Ecology (5 Skripte)
 **Highlights:**
 - `amazon_resilience_fit.py` - Amazon Moisture, **β=14.6**
 - `urban_heat_canopy_fit.py` - **β=16.3 - HÖCHSTER WERT!** 🔥
 - `planetary_tipping_elements_fit.py` - AMOC, Grönland, etc.
 - `outlier_beta_review.py` - Instrumentation-Flag Ledger (ΔAIC-Gegencheck)
 - `urban_heat_storage_mechanism.py` - Materialimpedanz erklärt β≈16 (ΔAIC-geprüfte Simulation)
+- `planetary_theta_drift_flag.py` - Adaptive Θ Gap Audit (normalisierte CI-Signale)
 
-**Ergebnisse:** Klima-Tipping-Points haben EXTREME β-Werte (Outliers!) + Ledger prüft Instrumentations-Bias.
+**Ergebnisse:** Klima-Tipping-Points haben EXTREME β-Werte (Outliers!) + Ledger prüft Instrumentations-Bias und markiert adaptive Θ-Lücken.
 
 ---
 
@@ -238,6 +240,7 @@ analysis/
 - **Median R²:** ~0.9981 🎯
 - **Median ΔAIC:** ~65.1 (gegen linear/power-law nulls)
 - **β-Spektrum:** 2.5 bis 16.3 (nicht fix!)
+- **Adaptive Θ Gaps:** `planetary_theta_drift_flag.py` markiert AMOC & Permafrost (Θ-Breite ≥ 0.25)
 - **Threshold-Crossings:** Dokumentiert für jede Membran
 
 **Das beweist:** Logistische Modelle schlagen Null-Modelle KONSISTENT!

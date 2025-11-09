@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "id": "planetary-threshold-cartography",
+    "title": "Planetare Schwellenfeld-Kartographie",
+    "version": "1.1.0",
+    "created": "2025-11-07",
+    "updated": "2026-03-27T00:00:00Z",
+    "domain": "socio_ecology",
+    "tri_layer": true,
+    "quartet": {
+      "R": "Globaler Stressparameter R = ΔT, Süßwasserzufluss, Biomasseverlust",
+      "Theta": 1.67,
+      "beta": 4.21,
+      "zeta": "ζ(R) = 1.284 ± 0.118 (planetare Membran)"
+    },
+    "references": {
+      "analysis": [
+        "analysis/planetary_tipping_elements_fit.py",
+        "analysis/planetary_theta_drift_flag.py"
+      ],
+      "data": [
+        "data/socio_ecology/planetary_tipping_elements.json",
+        "data/socio_ecology/planetary_tipping_elements.metadata.json"
+      ],
+      "results": [
+        "analysis/results/planetary_tipping_elements.json",
+        "analysis/results/planetary_theta_drift_flags.json"
+      ],
+      "simulator": [
+        "simulator/presets/planetary_tipping_field.json"
+      ],
+      "docs": [
+        "docs/resonance-bridge-map.md",
+        "docs/threshold_resonance_atlas.md"
+      ]
+    }
+  },
+  "tri_layer": {
+    "formal": "ΔAIC_linear = 33.58 und ΔAIC_power = 35.2 bestätigen σ(β(R-Θ)) als Klimakern. Adaptive Θ-Gaps (≥0.25) werden über analysis/planetary_theta_drift_flag.py sichtbar.",
+    "empirical": "Θ = 1.67 K, β = 4.21. Normalisierte Θ-Breiten: AMOC 0.309, Permafrost 0.291. β-Breiten: Amazon 0.316, Permafrost 0.266.",
+    "poetic": "Zwei Laternen flackern im planetaren Mandala – AMOC und Permafrost warten auf neue Paleo-Daten, damit die Membran ihre Steilflanke schärft."
+  },
+  "resonance_status": {
+    "logistic_band": {
+      "theta": 1.67,
+      "beta": 4.21,
+      "beta_canonical_window": [
+        3.6,
+        4.6
+      ]
+    },
+    "falsification": {
+      "delta_aic": {
+        "linear": 33.58,
+        "power_law": 35.2
+      },
+      "r2": 0.9874
+    },
+    "adaptive_theta_flags": {
+      "threshold": 0.25,
+      "elements": [
+        {
+          "id": "amoc",
+          "label": "Atlantische Umwälzzirkulation",
+          "normalized_theta_ci_width": 0.3086,
+          "normalized_beta_ci_width": 0.2587,
+          "priority": "high"
+        },
+        {
+          "id": "permafrost",
+          "label": "Permafrost-Methan",
+          "normalized_theta_ci_width": 0.2911,
+          "normalized_beta_ci_width": 0.2665,
+          "priority": "medium"
+        }
+      ]
+    },
+    "implementation_guidance": {
+      "analysis": [
+        {
+          "path": "analysis/planetary_theta_drift_flag.py",
+          "action": "σ(β(R-Θ)) Gap Audit nach jedem Dataset-Update ausführen."
+        },
+        {
+          "path": "analysis/planetary_tipping_elements_fit.py",
+          "action": "Θ(t)-Regression ergänzen, sobald TIPMIP/Paleo-Daten vorliegen."
+        }
+      ],
+      "data": [
+        {
+          "path": "data/socio_ecology/",
+          "action": "R_acc-Proxys (Frischwasser, Methanfluss, Eisbohrkerne) integrieren."
+        }
+      ],
+      "simulator": [
+        {
+          "path": "simulator/presets/planetary_tipping_field.json",
+          "action": "Θ(t)-Sweep-Szenarien fahren und Δσ dokumentieren."
+        }
+      ],
+      "docs": [
+        {
+          "path": "seed/socio_ecology/planetary_threshold_cartography.md",
+          "action": "Neue Messpunkte + Codex-IDs nach jedem Audit eintragen."
+        }
+      ]
+    }
+  },
+  "links": {
+    "codex_feedback": {
+      "last_entry": "pr-draft-0101",
+      "next_required": true
+    },
+    "utac_status": "docs/utac_status_alignment_v1.2.md"
+  }
+}
