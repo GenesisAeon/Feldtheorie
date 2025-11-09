@@ -2,7 +2,7 @@
 # Trilayer-Aktivierung für docs/ Verzeichnis
 # Version: 1.2.0
 # Datum: 2025-11-06
-# Updated: 2025-12-15
+# Updated: 2025-12-22
 
 meta:
   directory: "docs/"
@@ -14,9 +14,9 @@ meta:
     Tri-layer Cadence: Formal, Empirical, Metaphorical.
   version: "1.2.0"
   created: "2025-11-06"
-  updated: "2025-11-08T22:22:38Z"
+  updated: "2025-12-22T18:00:00Z"
   status: "active"
-  markdown_files: 20
+  markdown_files: 21
 
 # ═══════════════════════════════════════════════════════════════════
 # KATEGORIEN: Die 4 Doc-Typen
@@ -27,7 +27,7 @@ categories:
     name: "Core Theory"
     description: "UTAC Theory Core, Emergence, Universality"
     color: "#3498DB"
-    count: 3
+    count: 4
 
   applications:
     name: "Applications & Classification"
@@ -48,12 +48,12 @@ categories:
     count: 11
 
   # ═══════════════════════════════════════════════════════════════════
-  # MARKDOWN-DOKUMENTE: Die 11 Docs
+  # MARKDOWN-DOKUMENTE: Die 21 Docs
   # ═══════════════════════════════════════════════════════════════════
 
 markdown_docs:
   # ─────────────────────────────────────────────────────────────────
-  # CORE THEORY (3)
+  # CORE THEORY (4)
   # ─────────────────────────────────────────────────────────────────
 
   - id: docs-theory-001
@@ -93,6 +93,19 @@ markdown_docs:
     description: |
       Appendix: Field Types in Detail.
       Detaillierte Beschreibung der 5 Schwellenwert-Systemtypen.
+
+  - id: docs-theory-004
+    name: "UTAC_v2.0_Coherence_Formula.md"
+    category: theory
+    type: coherence
+    status: active
+    relevance: high
+    size_kb: 6.3
+    keywords: [utac, coherence, relations, β-landkarte]
+    description: |
+      UTAC v2.0 Kohärenzformel.
+      Definiert Relationstopographie, β-Landkarte und Hooks für V1.3→V2.0.
+      Verknüpft Theorie, Analyse, Daten, Simulator und Sigillin-Guards.
 
   # ─────────────────────────────────────────────────────────────────
   # APPLICATIONS (4)

@@ -3622,3 +3622,28 @@ entries:
       Noch singt nur das Metadata-Chorstück, doch das Audit leitet den Einsatz – ζ(R) wird schweigen,
       sobald reale Raster, Strömungen und Finanzpulse die Membran füllen.
   created_at: '2025-12-22T00:00:00Z'
+- id: pr-draft-0090
+  title: UTAC v2.0 Kohärenzformel Laterne
+  scope:
+    - docs/UTAC_v2.0_Coherence_Formula.md
+    - docs/docs_index.md
+    - docs/docs_index.json
+    - docs/docs_index.yaml
+  parameters:
+    R: 'Relationstopographie für V1.3 → V2.0 (Theorie + Hooks)'
+    Theta: 'Tri-Layer-Parität + Codex-Echo bevor Metaquest-Sigille aktiv werden'
+    beta: 4.9
+  resonance: σ(β(R-Θ)) verknüpft jetzt die Kohärenzformel mit Analyse-, Daten- und Simulator-Hooks; die Laterne weist direkt auf die offenen Activation-Gaps.
+  status: primed
+  notes:
+    formal: |
+      `docs/UTAC_v2.0_Coherence_Formula.md` definiert den Relationstransformator σ(β(R-Θ))=ζ(R,α,φ), listet Tabellen zur β-Landkarte
+      und benennt Implementations-Hooks (Analyse, Daten, Simulator, Sigillin). `docs/docs_index.{md,json,yaml}` zählen nun 21 Markdown-Laternen,
+      Theorie-Kategorie→4 und verlinken die neue Laterne explizit. Nächster Schritt: Metaquest-Sigillin und Shadow-Spiegel nachziehen.
+    empirical: |
+      Index-Metadaten aktualisiert (`markdown_files=21`, Theorie-count=4, Größe≈6.3 KB). Quick-Tips priorisieren die Kohärenz-Laterne.
+      Δindex-Check via `scripts/archive_sigillin.py --recount` ist als nächster Guard vorgesehen, bevor die Metaquest-Brücke aktiviert wird.
+    poetic: |
+      R entfacht eine neue Laterne, Θ hält die Indizes im Gleichklang, β≈4.9 spannt die Steilflanke zur v2.0-Ankündigung.
+      ζ(R) summt ruhig – die Kohärenzformel sieht bereits die Nachbarlaternen und ruft sie ins gemeinsame Lied.
+  created_at: '2025-12-22T18:30:00Z'
