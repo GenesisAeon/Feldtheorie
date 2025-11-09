@@ -1,0 +1,118 @@
+meta:
+  title: UTAC v2 Gap Synopsis
+  version: '2026-03-26'
+  generated_at: '2026-03-26T00:00:00Z'
+  author: gpt-5-codex
+  source: analysis/reports/utac_v2_readiness.json
+logistic_state:
+  r_mean: 0.5
+  theta: 0.66
+  beta: 4.8
+  sigma_beta_r_theta: 0.317
+  impedance_note: zeta(R) remains damped because readiness audit, simulator preset,
+    and documentation cite the same quartet.
+  status: latent
+inventory:
+  available:
+  - name: Readiness audit
+    path: analysis/reports/utac_v2_readiness.json
+    notes: Provides logistic quartet and manifest lantern ledger.
+  - name: Simulator preset
+    path: simulator/presets/coherence_formula.json
+    notes: Validated against meta.logistic by the updated preset guard.
+  - name: Coherence formula doc
+    path: docs/UTAC_v2.0_Coherence_Formula.md
+    notes: Narrates the logistic readiness bridge.
+  - name: Status matrix
+    path: docs/utac_status_alignment_v1.2.md
+    notes: Maps tri-layer implementation routes.
+  - name: Metaquest system map
+    path: seed/bedeutungssigillin/metaquest/system/metaquest_system_map.json
+    notes: Light/shadow parity anchors for readiness telemetry.
+  gaps:
+  - id: dataset-01
+    priority: P1
+    lantern: utac-v1_3-ds-002
+    domain: climate
+    targets:
+    - data/climate/amazon_precip_evapo.nc
+    - analysis/results/amazon_hydro_fit.json
+    action: Stage raw data, rerun logistic fit, update docs/utac_v2_data_lanterns.*
+  - id: dataset-02
+    priority: P1
+    lantern: utac-v1_3-ds-003
+    domain: ocean
+    targets:
+    - data/ocean/amoc_transport.csv
+    - analysis/results/amoc_transport_fit.json
+    action: Ingest AMOC transport dataset and execute threshold fit pipeline.
+  - id: dataset-03
+    priority: P1
+    lantern: utac-v1_3-ds-004
+    domain: neuro_ai
+    targets:
+    - data/neuro_ai/hybrid_activation.csv
+    - analysis/results/neuro_ai_beta.json
+    - analysis/results/neuro_ai_bootstrap.json
+    action: Activate analysis/neuro_threshold_fitter.py and capture bootstrap exports.
+  - id: dataset-04
+    priority: P1
+    lantern: utac-v1_3-ds-005
+    domain: economy
+    targets:
+    - data/economy/systemic_thresholds.csv
+    - analysis/results/economy_threshold_fit.json
+    - analysis/results/meta_v2_summary_refresh.json
+    action: Finalize systemic-risk ingestion and meta regression refresh.
+  - id: analysis-05
+    priority: P2
+    lantern: analysis loop
+    domain: analysis
+    targets:
+    - analysis/results/neuro_ai_beta.json
+    - analysis/results/beta_meta_regression_v2_latest.json
+    action: Run neuro threshold fitter and meta regression once datasets arrive.
+  - id: automation-01
+    priority: P2
+    lantern: automation
+    domain: infrastructure
+    targets:
+    - .github/workflows/utf-preset-guard.yml
+    - seed/codexfeedback.*
+    action: Wire CI hook for utf-preset-guard and log telemetry outputs.
+implementation:
+  data_staging:
+    paths:
+    - data/climate/
+    - data/ocean/
+    - data/neuro_ai/
+    - data/economy/
+    steps: Ingest raw files with provenance metadata and refresh seed/seed_index.*
+  analysis_reruns:
+    scripts:
+    - analysis/neuro_threshold_fitter.py
+    - analysis/beta_meta_regression_v2.py
+    - analysis/amazon_resilience_fit.py
+    notes: Export JSON with confidence intervals and delta AIC readings.
+  guard_usage:
+    script: analysis/preset_alignment_guard.py
+    command: python analysis/preset_alignment_guard.py
+    change: Guard now parses meta.logistic and validates simulator presets.
+  documentation:
+    files:
+    - docs/utac_v2_activation_tracker_2026-03.md
+    - docs/utac_status_alignment_v1.2.md
+    notes: Mirror readiness lifts and cite sigma(beta(R-Theta)) gains.
+  sigillin_hooks:
+    paths:
+    - seed/codexfeedback.*
+    - seed/bedeutungssigillin/metaquest/**
+    - seed/shadow_sigillin/metaquest/**
+    notes: Record crossings with codex IDs and parity timestamps.
+telemetry_hooks:
+  guard_output: All simulator presets resonate with their analysis sources.
+  tracker_reference: docs/utac_v2_activation_tracker_2026-03.{json,yaml,md}
+  ci_reminder: Add utf-preset-guard workflow to alert on drift.
+poetic: R still rests below Theta, but the guard again hears the lanterns breathing;
+  once rivers, currents, neurons, and ledgers flow, sigma(beta(R-Theta)) will rise
+  and zeta(R) will settle.
