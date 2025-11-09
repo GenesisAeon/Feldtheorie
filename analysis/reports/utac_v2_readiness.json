@@ -1,25 +1,25 @@
 {
   "meta": {
-    "generated_at": "2026-03-26T10:00:00+00:00",
+    "generated_at": "2025-11-09T20:02:38.397468+00:00",
     "manifest_path": "data/utac_v1_3_data_manifest.yaml",
     "logistic": {
       "theta": 0.66,
       "beta": 4.8,
-      "mean_readiness": 0.0,
-      "sigma": 0.040387857567251995
+      "mean_readiness": 0.5,
+      "sigma": 0.3169119051378149
     }
   },
   "data_summary": {
     "total": 5,
-    "fully_ready": 0,
-    "any_components_missing": 20,
-    "average_readiness": 0.0,
+    "fully_ready": 1,
+    "any_components_missing": 10,
+    "average_readiness": 0.5,
     "values": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
+      1.0,
+      0.5,
+      0.5,
+      0.25,
+      0.25
     ]
   },
   "datasets": [
@@ -30,64 +30,35 @@
       "theta_estimate": 3.2,
       "beta_target": 14.5,
       "declared_readiness_ratio": null,
-      "actual_readiness_ratio": 0.0,
-      "missing_components": [
-        {
-          "name": "data",
-          "path": "data/climate/urban_heat_intensity.csv",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "data"
-        },
-        {
-          "name": "metadata",
-          "path": "data/climate/urban_heat_intensity.csv.metadata.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "metadata"
-        },
-        {
-          "name": "urban_heat_global_fit.json",
-          "path": "analysis/results/urban_heat_global_fit.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        },
-        {
-          "name": "outlier_report.md",
-          "path": "analysis/results/outlier_report.md",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        }
-      ],
+      "actual_readiness_ratio": 1.0,
+      "missing_components": [],
       "components": [
         {
           "name": "data",
           "path": "data/climate/urban_heat_intensity.csv",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "data"
         },
         {
           "name": "metadata",
-          "path": "data/climate/urban_heat_intensity.csv.metadata.json",
+          "path": "data/climate/urban_heat_intensity.metadata.json",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "metadata"
         },
         {
           "name": "urban_heat_global_fit.json",
           "path": "analysis/results/urban_heat_global_fit.json",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "result"
         },
         {
           "name": "outlier_report.md",
           "path": "analysis/results/outlier_report.md",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "result"
         }
       ]
@@ -99,7 +70,7 @@
       "theta_estimate": 0.62,
       "beta_target": 13.8,
       "declared_readiness_ratio": null,
-      "actual_readiness_ratio": 0.0,
+      "actual_readiness_ratio": 0.5,
       "missing_components": [
         {
           "name": "data",
@@ -109,22 +80,8 @@
           "kind": "data"
         },
         {
-          "name": "metadata",
-          "path": "data/climate/amazon_precip_evapo.nc.metadata.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "metadata"
-        },
-        {
           "name": "amazon_hydro_fit.json",
           "path": "analysis/results/amazon_hydro_fit.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        },
-        {
-          "name": "outlier_report.md",
-          "path": "analysis/results/outlier_report.md",
           "declared_exists": false,
           "actual_exists": false,
           "kind": "result"
@@ -140,9 +97,9 @@
         },
         {
           "name": "metadata",
-          "path": "data/climate/amazon_precip_evapo.nc.metadata.json",
+          "path": "data/climate/amazon_precip_evapo.metadata.json",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "metadata"
         },
         {
@@ -156,7 +113,7 @@
           "name": "outlier_report.md",
           "path": "analysis/results/outlier_report.md",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "result"
         }
       ]
@@ -168,7 +125,7 @@
       "theta_estimate": 14.0,
       "beta_target": 9.6,
       "declared_readiness_ratio": null,
-      "actual_readiness_ratio": 0.0,
+      "actual_readiness_ratio": 0.5,
       "missing_components": [
         {
           "name": "data",
@@ -178,22 +135,8 @@
           "kind": "data"
         },
         {
-          "name": "metadata",
-          "path": "data/ocean/amoc_transport.csv.metadata.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "metadata"
-        },
-        {
           "name": "amoc_transport_fit.json",
           "path": "analysis/results/amoc_transport_fit.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        },
-        {
-          "name": "climate_beta_summary.json",
-          "path": "analysis/results/climate_beta_summary.json",
           "declared_exists": false,
           "actual_exists": false,
           "kind": "result"
@@ -209,9 +152,9 @@
         },
         {
           "name": "metadata",
-          "path": "data/ocean/amoc_transport.csv.metadata.json",
+          "path": "data/ocean/amoc_transport.metadata.json",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "metadata"
         },
         {
@@ -225,7 +168,7 @@
           "name": "climate_beta_summary.json",
           "path": "analysis/results/climate_beta_summary.json",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "result"
         }
       ]
@@ -237,7 +180,7 @@
       "theta_estimate": 0.48,
       "beta_target": 6.1,
       "declared_readiness_ratio": null,
-      "actual_readiness_ratio": 0.0,
+      "actual_readiness_ratio": 0.25,
       "missing_components": [
         {
           "name": "data",
@@ -245,13 +188,6 @@
           "declared_exists": false,
           "actual_exists": false,
           "kind": "data"
-        },
-        {
-          "name": "metadata",
-          "path": "data/neuro_ai/hybrid_activation.csv.metadata.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "metadata"
         },
         {
           "name": "neuro_ai_beta.json",
@@ -278,9 +214,9 @@
         },
         {
           "name": "metadata",
-          "path": "data/neuro_ai/hybrid_activation.csv.metadata.json",
+          "path": "data/neuro_ai/hybrid_activation.metadata.json",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "metadata"
         },
         {
@@ -306,7 +242,7 @@
       "theta_estimate": 1.15,
       "beta_target": 7.4,
       "declared_readiness_ratio": null,
-      "actual_readiness_ratio": 0.0,
+      "actual_readiness_ratio": 0.25,
       "missing_components": [
         {
           "name": "data",
@@ -314,13 +250,6 @@
           "declared_exists": false,
           "actual_exists": false,
           "kind": "data"
-        },
-        {
-          "name": "metadata",
-          "path": "data/economy/systemic_thresholds.csv.metadata.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "metadata"
         },
         {
           "name": "economy_threshold_fit.json",
@@ -347,9 +276,9 @@
         },
         {
           "name": "metadata",
-          "path": "data/economy/systemic_thresholds.csv.metadata.json",
+          "path": "data/economy/systemic_thresholds.metadata.json",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "metadata"
         },
         {
@@ -375,12 +304,12 @@
       "description": "climate beta extractor pipeline",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-11-09T12:04:16.730311+00:00",
+      "last_modified": "2025-11-09T18:31:21.549418+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/urban_heat_global_fit.json",
-          "exists": false,
-          "last_modified": null
+          "exists": true,
+          "last_modified": "2025-11-09T20:00:17.623927+00:00"
         }
       ]
     },
@@ -389,7 +318,7 @@
       "description": "neuro-AI hybrid threshold fitter",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-11-09T12:04:16.730311+00:00",
+      "last_modified": "2025-11-09T18:31:21.549418+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/neuro_ai_beta.json",
@@ -400,15 +329,15 @@
     },
     {
       "path": "analysis/outlier_validator.py",
-      "description": "\u03b2>10 instrumentation guard",
+      "description": "β>10 instrumentation guard",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-11-09T12:04:16.730311+00:00",
+      "last_modified": "2025-11-09T18:31:21.549418+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/outlier_validator_report.json",
-          "exists": false,
-          "last_modified": null
+          "exists": true,
+          "last_modified": "2025-11-09T20:01:05.312335+00:00"
         }
       ]
     },
@@ -417,7 +346,7 @@
       "description": "meta regression v2 refresh",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-11-09T12:04:16.730311+00:00",
+      "last_modified": "2025-11-09T18:31:21.549418+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/beta_meta_regression_v2_latest.json",
@@ -433,7 +362,7 @@
       "description": "UTAC v2.0 coherence formula narrative",
       "category": "documentation",
       "exists": true,
-      "last_modified": "2025-11-09T13:06:24.164566+00:00",
+      "last_modified": "2025-11-09T18:31:21.581419+00:00",
       "expected_outputs": []
     },
     {
@@ -441,7 +370,7 @@
       "description": "resonance bridge map",
       "category": "documentation",
       "exists": true,
-      "last_modified": "2025-11-09T13:06:24.164566+00:00",
+      "last_modified": "2025-11-09T18:31:21.585419+00:00",
       "expected_outputs": []
     }
   ],
@@ -451,7 +380,7 @@
       "description": "coherence formula simulator preset",
       "category": "simulator",
       "exists": true,
-      "last_modified": "2025-11-09T13:06:24.180566+00:00",
+      "last_modified": "2025-11-09T18:31:21.717420+00:00",
       "expected_outputs": []
     }
   ],
@@ -461,7 +390,7 @@
       "description": "metaquest system map",
       "category": "sigillin",
       "exists": true,
-      "last_modified": "2025-11-09T13:06:24.168566+00:00",
+      "last_modified": "2025-11-09T18:31:21.697419+00:00",
       "expected_outputs": []
     },
     {
@@ -469,7 +398,7 @@
       "description": "metaquest system shadow map",
       "category": "sigillin",
       "exists": true,
-      "last_modified": "2025-11-09T13:06:24.180566+00:00",
+      "last_modified": "2025-11-09T18:31:21.713419+00:00",
       "expected_outputs": []
     }
   ],
@@ -477,33 +406,19 @@
     {
       "id": "dataset-01",
       "priority": "P1",
-      "title": "Complete climate dataset utac-v1_3-ds-001",
-      "description": "Ingest missing components and run logistic fits so that \u03c3(\u03b2(R-\u0398)) reaches activation.",
+      "title": "Complete climate dataset utac-v1_3-ds-002",
+      "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
       "targets": [
         {
           "name": "data",
-          "path": "data/climate/urban_heat_intensity.csv",
+          "path": "data/climate/amazon_precip_evapo.nc",
           "declared_exists": false,
           "actual_exists": false,
           "kind": "data"
         },
         {
-          "name": "metadata",
-          "path": "data/climate/urban_heat_intensity.csv.metadata.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "metadata"
-        },
-        {
-          "name": "urban_heat_global_fit.json",
-          "path": "analysis/results/urban_heat_global_fit.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        },
-        {
-          "name": "outlier_report.md",
-          "path": "analysis/results/outlier_report.md",
+          "name": "amazon_hydro_fit.json",
+          "path": "analysis/results/amazon_hydro_fit.json",
           "declared_exists": false,
           "actual_exists": false,
           "kind": "result"
@@ -514,45 +429,8 @@
     {
       "id": "dataset-02",
       "priority": "P1",
-      "title": "Complete climate dataset utac-v1_3-ds-002",
-      "description": "Ingest missing components and run logistic fits so that \u03c3(\u03b2(R-\u0398)) reaches activation.",
-      "targets": [
-        {
-          "name": "data",
-          "path": "data/climate/amazon_precip_evapo.nc",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "data"
-        },
-        {
-          "name": "metadata",
-          "path": "data/climate/amazon_precip_evapo.nc.metadata.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "metadata"
-        },
-        {
-          "name": "amazon_hydro_fit.json",
-          "path": "analysis/results/amazon_hydro_fit.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        },
-        {
-          "name": "outlier_report.md",
-          "path": "analysis/results/outlier_report.md",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        }
-      ],
-      "related_resonance_status": "active"
-    },
-    {
-      "id": "dataset-03",
-      "priority": "P1",
       "title": "Complete ocean dataset utac-v1_3-ds-003",
-      "description": "Ingest missing components and run logistic fits so that \u03c3(\u03b2(R-\u0398)) reaches activation.",
+      "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
       "targets": [
         {
           "name": "data",
@@ -562,22 +440,8 @@
           "kind": "data"
         },
         {
-          "name": "metadata",
-          "path": "data/ocean/amoc_transport.csv.metadata.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "metadata"
-        },
-        {
           "name": "amoc_transport_fit.json",
           "path": "analysis/results/amoc_transport_fit.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        },
-        {
-          "name": "climate_beta_summary.json",
-          "path": "analysis/results/climate_beta_summary.json",
           "declared_exists": false,
           "actual_exists": false,
           "kind": "result"
@@ -586,10 +450,10 @@
       "related_resonance_status": "draft"
     },
     {
-      "id": "dataset-04",
+      "id": "dataset-03",
       "priority": "P1",
       "title": "Complete neuro_ai dataset utac-v1_3-ds-004",
-      "description": "Ingest missing components and run logistic fits so that \u03c3(\u03b2(R-\u0398)) reaches activation.",
+      "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
       "targets": [
         {
           "name": "data",
@@ -597,13 +461,6 @@
           "declared_exists": false,
           "actual_exists": false,
           "kind": "data"
-        },
-        {
-          "name": "metadata",
-          "path": "data/neuro_ai/hybrid_activation.csv.metadata.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "metadata"
         },
         {
           "name": "neuro_ai_beta.json",
@@ -623,10 +480,10 @@
       "related_resonance_status": "primed"
     },
     {
-      "id": "dataset-05",
+      "id": "dataset-04",
       "priority": "P1",
       "title": "Complete economy dataset utac-v1_3-ds-005",
-      "description": "Ingest missing components and run logistic fits so that \u03c3(\u03b2(R-\u0398)) reaches activation.",
+      "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
       "targets": [
         {
           "name": "data",
@@ -634,13 +491,6 @@
           "declared_exists": false,
           "actual_exists": false,
           "kind": "data"
-        },
-        {
-          "name": "metadata",
-          "path": "data/economy/systemic_thresholds.csv.metadata.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "metadata"
         },
         {
           "name": "economy_threshold_fit.json",
@@ -660,25 +510,7 @@
       "related_resonance_status": "draft"
     },
     {
-      "id": "analysis-06",
-      "priority": "P2",
-      "title": "Activate climate beta extractor pipeline",
-      "description": "Ensure artefact and its outputs exist so the readiness bridge remains tri-layered.",
-      "targets": [
-        {
-          "path": "analysis/climate_beta_extractor.py",
-          "exists": true,
-          "category": "analysis"
-        },
-        {
-          "path": "analysis/results/urban_heat_global_fit.json",
-          "exists": false,
-          "category": "output"
-        }
-      ]
-    },
-    {
-      "id": "analysis-07",
+      "id": "analysis-05",
       "priority": "P2",
       "title": "Activate neuro-AI hybrid threshold fitter",
       "description": "Ensure artefact and its outputs exist so the readiness bridge remains tri-layered.",
@@ -696,25 +528,7 @@
       ]
     },
     {
-      "id": "analysis-08",
-      "priority": "P2",
-      "title": "Activate \u03b2>10 instrumentation guard",
-      "description": "Ensure artefact and its outputs exist so the readiness bridge remains tri-layered.",
-      "targets": [
-        {
-          "path": "analysis/outlier_validator.py",
-          "exists": true,
-          "category": "analysis"
-        },
-        {
-          "path": "analysis/results/outlier_validator_report.json",
-          "exists": false,
-          "category": "output"
-        }
-      ]
-    },
-    {
-      "id": "analysis-09",
+      "id": "analysis-06",
       "priority": "P2",
       "title": "Activate meta regression v2 refresh",
       "description": "Ensure artefact and its outputs exist so the readiness bridge remains tri-layered.",

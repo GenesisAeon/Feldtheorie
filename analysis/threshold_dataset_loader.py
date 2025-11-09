@@ -154,12 +154,15 @@ def load_metadata(metadata_path: Path) -> DatasetMetadata:
     with metadata_path.open("r", encoding="utf-8") as handle:
         payload = json.load(handle)
 
-    root = metadata_path.parents[1]
     dataset_path = Path(payload["path"]) if "path" in payload else None
     if dataset_path is None:
         raise ValueError(f"metadata at {metadata_path} lacks a 'path' entry")
     if not dataset_path.is_absolute():
-        dataset_path = (root / dataset_path).resolve()
+        parts = dataset_path.parts
+        if parts and parts[0] in {"data", "analysis", "docs", "seed", "models"}:
+            dataset_path = (ROOT / dataset_path).resolve()
+        else:
+            dataset_path = (metadata_path.parent / dataset_path).resolve()
 
     simulation_hint = _coerce_simulation_hint(payload.get("simulation_hint"))
 

@@ -1,6 +1,6 @@
 # Climate Threshold Data Staging (UTAC v1.3)
 
-Diese Laterne reserviert den Raum für globale Urban-Heat- und Amazon-Hydro-Datensätze.
+Diese Laterne hält die globalen Urban-Heat- und Amazon-Hydro-Datensätze.
 
 - **R (Kontrollparameter):** Temperatur-Δ bzw. SPI/Feuchte-Indizes
 - **Θ (Schwelle):** Zielwerte laut `data/utac_v1_3_data_manifest.yaml`
@@ -14,5 +14,10 @@ Diese Laterne reserviert den Raum für globale Urban-Heat- und Amazon-Hydro-Date
 4. Nullmodelle (linear, power law, spline) dokumentieren
 5. Metadata-Dateien `.metadata.json` ablegen
 
-Bis zur Dateneinbindung bleiben Dateien leer; dieses README verankert den logistischen Rahmen.
+## Aktivierungen (Stand 2026-03-26)
+
+- **Urban Heat Intensity (`urban_heat_intensity.csv`)** ist integriert. Der Fit via `analysis/climate_beta_extractor.py` liefert Θ≈3.20 K, β≈14.27 mit ΔAIC≈1484 gegen lineare Nullmodelle.  Die Resultate liegen in `analysis/results/urban_heat_global_fit.json` sowie `analysis/results/outlier_validator_report.json`.
+- **Amazon Hydro (`amazon_precip_evapo.nc`)** steht weiterhin aus; Metadaten bleiben aktiv.
+
+Bis zur vollständigen Dateneinbindung der weiteren Laternen hält dieses README den logistischen Rahmen offen.
 

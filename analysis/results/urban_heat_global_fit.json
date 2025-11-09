@@ -1,0 +1,48 @@
+{
+  "aic": -2262.023539999255,
+  "beta": 14.265819461492788,
+  "beta_ci": [
+    14.195439593793669,
+    14.336199329191906
+  ],
+  "beta_manifest_target": 14.5,
+  "control_column": "land_surface_temperature_delta",
+  "data_origin": "observed",
+  "data_path": "/workspace/Feldtheorie/data/climate/urban_heat_intensity.csv",
+  "dataset_id": "utac-v1_3-ds-001",
+  "dataset_name": "Global Urban Heat Intensity",
+  "delta_aic_best": 1483.8159438834427,
+  "delta_aic_guard_passed": true,
+  "delta_aic_guard_threshold": 10.0,
+  "domain": "climate",
+  "metadata_path": "/workspace/Feldtheorie/data/climate/urban_heat_intensity.metadata.json",
+  "null_models": {
+    "linear": {
+      "aic": -778.207596115812,
+      "intercept": -2.414027821668512,
+      "r2": 0.8620540394868415,
+      "slope": 0.9106330770266801,
+      "ss_res": 6.284827988543749
+    },
+    "power_law": {
+      "aic": -543.3406075453569,
+      "amplitude": 8.861618939665676e-14,
+      "exponent": 23.49033247801975,
+      "model": "sigma = A * R^k",
+      "r2": 0.598808351826552,
+      "ss_res": 18.27832065419535
+    }
+  },
+  "r_squared": 0.9998376102402163,
+  "resonance_status": "active",
+  "response_column": "heat_activation_fraction",
+  "sample_size": 220,
+  "status": "staging",
+  "summary": "utac-v1_3-ds-001 | Global Urban Heat Intensity | \u03b2=14.27 \u0398=3.20 | \u0394AIC=1483.82 | origin=observed",
+  "theta": 3.2045713752740235,
+  "theta_ci": [
+    3.2022822082132265,
+    3.2068605423348204
+  ],
+  "theta_manifest_estimate": 3.2
+}

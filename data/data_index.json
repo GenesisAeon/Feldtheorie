@@ -7,9 +7,9 @@
     "version": "1.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "total_files": 64,
+    "total_files": 65,
     "domains": 12,
-    "updated": "2025-12-28T00:00:00Z"
+    "updated": "2026-03-26T10:00:00Z"
   },
   "domains": {
     "ai": {
@@ -172,10 +172,20 @@
     "climate": {
       "name": "Climate Expansion (UTAC v1.3)",
       "path": "climate/",
-      "file_count": 3,
-      "description": "Staging-Area für Urban Heat & Amazon Hydro Laternen; Metadata-Sigillin aktiv.",
+      "file_count": 4,
+      "description": "Urban-Heat Laterne aktiviert (Θ≈3.20 K, β≈14.27); Amazon Hydro wartet weiterhin auf Rohdaten.",
       "color": "#16A085",
       "key_datasets": [
+        {
+          "name": "urban_heat_intensity.csv",
+          "description": "Urban Heat Intensität – beobachtet, ΔAIC≈1484, genuine_regime_split.",
+          "keywords": [
+            "urban-heat",
+            "intensity",
+            "beta>14",
+            "readiness"
+          ]
+        },
         {
           "name": "README.md",
           "description": "Logistischer Guard & Aufgabenliste, Rohdaten pending.",

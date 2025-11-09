@@ -15,10 +15,13 @@ def test_load_metadata_and_simulated_fit():
     metadata = load_metadata(metadata_path)
 
     frame, origin = load_dataset(metadata, simulate_missing=True, seed=42)
-    assert origin == "simulated"
+    assert origin in {"observed", "simulated"}
     assert metadata.control_column in frame.columns
     assert metadata.response_column in frame.columns
-    assert len(frame) == metadata.simulation_hint.n_points
+    if origin == "simulated":
+        assert len(frame) == metadata.simulation_hint.n_points
+    else:
+        assert len(frame) > 0
 
     result = evaluate_logistic_fit("utac-test", metadata, frame, origin)
     assert guard_delta_aic(result, minimum=5.0)

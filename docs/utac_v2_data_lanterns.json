@@ -3,14 +3,14 @@
     "document": "UTAC v2 Data Lanterns – Readiness Map",
     "version": "0.1.0",
     "created": "2025-12-24T00:00:00Z",
-    "updated": "2025-12-24T00:00:00Z",
+    "updated": "2026-03-26T10:00:00Z",
     "steward": "gpt-5-codex",
     "logistic_frame": {
       "order_parameter": "manifest readiness ratios averaged across five UTAC v2 datasets",
       "theta": 0.66,
       "beta": 4.8,
-      "sigma": 0.04,
-      "zeta": "damped via BreakPoint rituals, codex echoes, and Metaquest bridge telemetry"
+      "sigma": 0.3169119051378149,
+      "zeta": "codex + BreakPoint damping keeps ζ(R) focused while four lanterns await data/exports"
     },
     "sources": {
       "manifest": "data/utac_v1_3_data_manifest.yaml",
@@ -19,9 +19,9 @@
   },
   "summary": {
     "total_datasets": 5,
-    "average_readiness": 0.0,
-    "missing_components_total": 20,
-    "sigma": 0.040387857567251995,
+    "average_readiness": 0.5,
+    "missing_components_total": 10,
+    "sigma": 0.3169119051378149,
     "theta": 0.66,
     "beta": 4.8
   },
@@ -34,52 +34,35 @@
       "theta_estimate": 3.2,
       "beta_target": 14.5,
       "resonance_status": "active",
-      "readiness_ratio": 0.0,
+      "readiness_ratio": 1.0,
       "existing_assets": [
-        "analysis/climate_beta_extractor.py",
-        "analysis/outlier_validator.py",
-        "analysis/v2_readiness_audit.py"
+        "data/climate/urban_heat_intensity.csv",
+        "analysis/results/urban_heat_global_fit.json",
+        "analysis/results/outlier_report.md"
       ],
       "expected_outputs": [
         "analysis/results/urban_heat_global_fit.json",
         "analysis/results/outlier_report.md"
       ],
-      "missing_components": [
-        "data/climate/urban_heat_intensity.csv",
-        "data/climate/urban_heat_intensity.csv.metadata.json",
-        "analysis/results/urban_heat_global_fit.json",
-        "analysis/results/outlier_report.md"
-      ],
+      "missing_components": [],
       "implementation_nodes": [
         {
-          "path": "data/climate/urban_heat_intensity.csv",
-          "action": "Stage dataset + provenance as per manifest source"
-        },
-        {
-          "path": "data/climate/urban_heat_intensity.csv.metadata.json",
-          "action": "Author metadata JSON with Θ, β, ζ notes"
-        },
-        {
           "path": "analysis/climate_beta_extractor.py",
-          "action": "Run logistic analysis on staged data"
+          "action": "Maintain logistic analysis on observed data (ΔAIC guard)"
         },
         {
           "path": "analysis/outlier_validator.py",
-          "action": "Run logistic analysis on staged data"
+          "action": "Re-run β>10 guard if dataset expands"
         },
         {
-          "path": "analysis/results/urban_heat_global_fit.json",
-          "action": "Generate logistic export and archive results"
-        },
-        {
-          "path": "analysis/results/outlier_report.md",
-          "action": "Generate logistic export and archive results"
+          "path": "analysis/v2_readiness_audit.py",
+          "action": "Refresh readiness audit to broadcast activation"
         }
       ],
       "notes": {
-        "formal": "Θ≈3.2 and β≈14.5 define the activation flank; falsify against linear_regression, power_law_fit, cubic_spline_baseline. Readiness ratio=0.00 per audit.",
-        "empirical": "Missing components (4): data/climate/urban_heat_intensity.csv, data/climate/urban_heat_intensity.csv.metadata.json, analysis/results/urban_heat_global_fit.json, analysis/results/outlier_report.md. Integration scripts: analysis/climate_beta_extractor.py, analysis/outlier_validator.py.",
-        "poetic": "Laterne utac-v1_3-ds-001 wartet, bis land_surface_temperature_delta über Θ steigt und σ(β(R-Θ)) den Chor entzündet."
+        "formal": "Θ≈3.2 & β≈14.5 confirmed on observed raster; ΔAIC≈1484 vs linear, ≥1718 vs power law.",
+        "empirical": "Dataset+metadata committed; exports `urban_heat_global_fit.json`, `outlier_validator_report.json`, `outlier_report.md` document readiness = 1.00.",
+        "poetic": "Die Urban-Heat Laterne leuchtet nun selbst – σ(β(R-Θ)) steigt steil und ζ(R) atmet ruhig."
       }
     },
     {

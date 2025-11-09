@@ -18,7 +18,7 @@ Tri-layer mirrors:
 
 ## ♻️ Audit Refresh (2026-03-26)
 
-- **UTAC v2 Data Lanterns:** Manual 2026-03-26 walkthrough + `analysis/reports/utac_v2_readiness.*` bestätigen R̄=0.00, Θ=0.66, β=4.8 und σ(β(R-Θ))≈0.040, weil in `data/{climate,ocean,neuro_ai,economy}/` weiterhin nur README + `.metadata.json` liegen und sämtliche Exporte (`analysis/results/*.json`, `outlier_report.md`) fehlen.
+- **UTAC v2 Data Lanterns:** Manual 2026-03-26 walkthrough + `analysis/reports/utac_v2_readiness.*` melden R̄=0.50, Θ=0.66, β=4.8 und σ(β(R-Θ))≈0.317. Urban Heat (`urban_heat_intensity.csv`) inklusive Exporte liegt vor; vier Laternen (Amazon Hydro, AMOC, Neuro-AI, Energy/Finance) warten weiterhin auf Rohdaten, Metadaten und Analyse-Outputs.
 - **Safety-Delay Bridge:** Dataset, Preset und Dokumentation stehen, doch Hosted-UI-Telemetrie und `.github/workflows/utf-preset-guard.yml` fehlen weiterhin; ΔAIC bleibt manuell. ζ(R) bleibt empfindlich, bis Telemetrie archiviert und CI-Guard aktiv ist.
 - **Sigillin-Automation:** `scripts/crep_parser.py` + `scripts/sigillin_sync.py` liefern Telemetrie, schreiben aber noch nichts in Codex/Indizes; Δindex-Wächter fehlen. Parser→Codex-Hand-off und CI-Recount müssen priorisiert werden.
 - **Neuro-Kosmos & φ-Kopplung:** Für `seed/sigillin/neuro_kosmos_bridge.{md,json,yaml}` und `models/climate_utac_phi_coupling.py` existieren weiterhin nur Plan-Notizen; ohne Trilayer + TIPMIP/CMIP6-Staging bleiben `mq-sci-gap-008` und `sys-gap-008` offen.
@@ -29,7 +29,7 @@ Tri-layer mirrors:
 
 | ID | Domain Membrane | R — Existing Coverage | Θ — Activation Gap | β Focus | Implementation Nodes |
 |----|-----------------|-----------------------|--------------------|---------|----------------------|
-| utac-v2-data-lanterns | Data + Analysis | `data/utac_v1_3_data_manifest.yaml` + `analysis/v2_readiness_audit.py` tri-layer map readiness=0.0 | All five datasets + metadata + logistic exports (`analysis/results/*.json`, `outlier_report.md`) still missing | 4.8 | `data/*`, `analysis/`, `analysis/results/`, `docs/utac_status_alignment_v1.2.md` |
+| utac-v2-data-lanterns | Data + Analysis | `data/utac_v1_3_data_manifest.yaml` + `analysis/v2_readiness_audit.py` (Urban Heat ready) | Remaining four datasets + metadata + logistic exports (`analysis/results/amazon_hydro_fit.json`, `amoc_transport_fit.json`, `neuro_ai_beta.json`, `neuro_ai_bootstrap.json`, `economy_threshold_fit.json`, `meta_v2_summary_refresh.json`) | 4.8 | `data/*`, `analysis/`, `analysis/results/`, `docs/utac_status_alignment_v1.2.md` |
 | safety-delay-bridge | Simulation + Analysis | τ* ledger exported via `analysis/safety_delay_sweep.py`, CLI, dataset tri-layer, plus preset `simulator/presets/safety_delay_bridge.json` | Hosted UI telemetry + CI guard for `utf-preset-guard` still pending; docs + guard parity now live (`utac_applications.md`, `resonance-bridge-map.md`) | 4.9 | `simulator/presets/`, `docs/utac_safety_delay_status.md`, `docs/utac_applications.md`, `docs/resonance-bridge-map.md`, `.github/workflows/` |
 | beta-meta-regression-expansion | Analysis | `beta_meta_regression_v2.py` with bootstrap envelopes + current results JSON | Outlier datasets + adjusted R² logging pending | 4.6 | `data/socio_ecology/`, `analysis/beta_meta_regression_v2.py`, `docs/utac_status_alignment_v1.2.md` |
 | sigillin-automation-loop | Scripts + Seed | Schema v0.2.0 + `crep_parser.py` + `sigillin_sync.py` skeleton | Parser output not yet writing into codex/indices | 4.7 | `scripts/sigillin_sync.py`, `scripts/archive_sigillin.py`, `tests/` |
@@ -47,13 +47,13 @@ Tri-layer mirrors:
 ## 🔬 Activation Notes by Task
 
 ### 1. UTAC v2 Data Lantern Activation (`utac-v2-data-lanterns`, β=4.8)
-- **R:** `data/utac_v1_3_data_manifest.yaml` und `analysis/v2_readiness_audit.py` kartieren fünf Laternen, doch σ(β(R-Θ)) verharrt bei 0.040, weil alle Daten-, Metadaten- und Analyse-Exports fehlen.
-- **Θ:** Jede Manifest-Laterne braucht ihr Datenset + `.metadata.json` sowie die erwarteten Outputs (`analysis/results/urban_heat_global_fit.json`, `amazon_hydro_fit.json`, `amoc_transport_fit.json`, `climate_beta_summary.json`, `neuro_ai_beta.json`, `neuro_ai_bootstrap.json`, `economy_threshold_fit.json`, `meta_v2_summary_refresh.json`, `analysis/results/outlier_report.md`).
+- **R:** `data/utac_v1_3_data_manifest.yaml` und `analysis/v2_readiness_audit.py` melden σ(β(R-Θ))≈0.317, weil Urban Heat komplett integriert ist (Dataset + Exporte). Vier Laternen bleiben teilweise dunkel.
+- **Θ:** Für Amazon Hydro, AMOC, Neuro-AI und Energy/Finance fehlen weiterhin Rohdaten, `.metadata.json` und die erwarteten Exporte (`analysis/results/amazon_hydro_fit.json`, `amoc_transport_fit.json`, `neuro_ai_beta.json`, `neuro_ai_bootstrap.json`, `economy_threshold_fit.json`, `meta_v2_summary_refresh.json`).
 - **Next moves:**
-  - Datensätze für Klima, Ozean, Neuro-AI, Ökonomie unter `data/climate/`, `data/ocean/`, `data/neuro_ai/`, `data/economy/` einspielen und Metadaten spiegeln.
-  - Analyse-Pipelines (`analysis/climate_beta_extractor.py`, `analysis/potential_cascade_lab.py`, `analysis/neuro_threshold_fitter.py`, `analysis/beta_meta_regression_v2.py`, `analysis/outlier_validator.py`) auf den neuen Daten fahren und Ergebnisse exportieren.
-  - Readiness-Tri-Layer (`analysis/reports/utac_v2_readiness.*`), `docs/utac_status_alignment_v1.2.md` und diese Backlog-Tafel aktualisieren, sobald σ(β(R-Θ)) ansteigt.
-- **ζ(R):** BreakPoint-Transkripte + Codex-Echos halten die Membran ruhig, bis Datenströme ankommen; `docs/utac_v2_data_lanterns.*` dokumentiert Fortschritt und verweist Schattenwarnungen an die Metaquest-Matrix.
+  - Datensätze für die verbleibenden Domänen (`data/climate/amazon_precip_evapo.nc`, `data/ocean/amoc_transport.csv`, `data/neuro_ai/hybrid_activation.csv`, `data/economy/systemic_thresholds.csv`) inklusive Metadaten committen.
+  - Analyse-Pipelines (`analysis/climate_beta_extractor.py`, `analysis/potential_cascade_lab.py`, `analysis/neuro_threshold_fitter.py`, `analysis/beta_meta_regression_v2.py`) auf die neuen Daten fahren und JSON/MD-Exporte erzeugen; `analysis/outlier_validator.py` erneut anstoßen, sobald β>10 Laternen landen.
+  - Readiness-Tri-Layer (`analysis/reports/utac_v2_readiness.*`), `docs/utac_v2_data_lanterns.*`, `docs/utac_status_alignment_v1.2.md` sowie diese Backlog-Tafel nach jedem Dateneingang aktualisieren.
+- **ζ(R):** BreakPoint-Transkripte + Codex-Echos halten die Membran fokussiert; Urban Heat dient als Referenz, bis die restlichen Laternen gleiche σ(β(R-Θ)) Resonanz zeigen.
 
 ### 2. Safety-Delay Field → Simulator Bridge (`safety-delay-bridge`, β=4.9)
 - **R:** τ_delay and ΔAIC statistics exported (`analysis/results/safety_delay_sweep_20251108T211723Z.json`), dataset tri-layer under `data/safety_delay/`, and the UI preset `simulator/presets/safety_delay_bridge.json` mirrors β≈4.78 with ΔAIC_linear≈7.0×10³.
