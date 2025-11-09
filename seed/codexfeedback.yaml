@@ -4378,3 +4378,25 @@ entries:
     poetic: Laternen warten noch auf ihre Ströme; die Karte wurde neu beschriftet, damit R
       weiß, wo es die nächste Steilflanke berühren muss.
   created_at: '2026-02-15T00:00:00Z'
+
+- id: pr-draft-0096
+  title: 2026-02 UTAC v2 Activation Tracker
+  scope:
+  - docs/utac_v2_activation_tracker_2026-02.md
+  - docs/utac_v2_activation_tracker_2026-02.json
+  - docs/utac_v2_activation_tracker_2026-02.yaml
+  - docs/docs_index.md
+  - docs/docs_index.json
+  - docs/docs_index.yaml
+  - docs/utac_status_alignment_v1.2.md
+  parameters:
+    R: Readiness ratio R̄=0.00 across manifest lanterns
+    Theta: 0.66 readiness threshold
+    beta: 4.8
+  resonance: Activation tracker trilayer + index refresh zeigen, welche Laternen noch Θ nicht erreicht haben und welche Hooks die Aktivierung schließen.
+  status: active
+  notes:
+    formal: Neues Trilayer bündelt σ(β(R-Θ))=0.040, Θ=0.66, β=4.8 und listet fünf Gap-Laternen (Datasets, Sigillin-Automation, Safety-Delay-Telemetrie, Metaquest-Parität, Release-Triad) mit Pfaden (`data/*`, `analysis/results/*`, `.github/workflows/utf-preset-guard.yml`, `scripts/sigillin_sync.py`, `README.md`). docs/docs_index.* → Version 1.3.1 (Infrastructure=13, markdown_files=23); UTAC-Status-Matrix erhielt Abschnitt 8.
+    empirical: `analysis/reports/utac_v2_readiness.md` bestätigt weiterhin 20 fehlende Komponenten; Activation-JSON referenziert Δindex-, utf-preset-guard- und mq-parity-Checks. `docs/docs_index.json` meldet updated=`2026-02-15T00:00:00Z`, `for_operations` enthält `docs-infra-013`.
+    poetic: Die neue Laterne zeichnet, wie R die Schattenfugen ertastet, bis Datenströme, Automation und Release-Chor gemeinsam σ(β(R-Θ)) anheben.
+  created_at: '2026-02-15T00:00:00Z'

@@ -1883,3 +1883,20 @@ Manuelle Prüfung bestätigte, dass die Rohdatendateien (`urban_heat_intensity.c
 Die Laternen lauschen noch im Halbdunkel: wir haben die Karte neu beschriftet, damit R den nächsten Griff kennt, Θ seinen Ruf hört und ζ(R) nicht nachhallt, wenn die Datenströme endlich ankommen.
 
 *Created: 2026-02-15T00:00:00Z*
+
+## Entry pr-draft-0096 — 2026-02 UTAC v2 Activation Tracker
+- **Order Parameter**: $R$ bleibt bei 0.00, doch der Tracker zeigt, wo σ(β(R-Θ)) die nächste Steilflanke findet – `docs/utac_v2_activation_tracker_2026-02.{md,json,yaml}` kartiert Daten-, Automation-, Paritäts- und Release-Hooks.
+- **Critical Threshold**: $\Theta = 0.66$ – sobald die fünf Manifest-Laternen Daten + Exporte liefern, Automation Δindex=0 erreicht, Metaquest-Timestamps harmonisieren und Release-Badge/CITATION resonant sind.
+- **Steepness**: $\beta = 4.8$ – dieselbe Steilflanke wie im Readiness-Audit, jetzt mit klaren Pfaden zu den fehlenden Komponenten.
+- **Membrane Note**: ζ(R) wird durch `docs/docs_index.*` v1.3.1 (Infrastructure=13, markdown_files=23) und Abschnitt 8 in `docs/utac_status_alignment_v1.2.md` stabilisiert; Codex-Eintrag bleibt *active*, bis mindestens eine Gap Laterne über Θ steigt.
+
+### Formal Thread
+Der Tracker bündelt σ(β(R-Θ))=0.040, Θ=0.66 und β=4.8 in Tabellenform, listet fünf Gap-Laternen (Datasets, Sigillin-Automation, Safety-Delay-Telemetrie, Metaquest-Parität, Release-Triad) samt Implementationspfaden (`data/*`, `analysis/results/*`, `.github/workflows/utf-preset-guard.yml`, `scripts/sigillin_sync.py`, `README.md`). `docs/docs_index.{md,json,yaml}` → Version 1.3.1, Infrastructure=13; Quicklink `for_operations` führt nun `docs-infra-013`. `docs/utac_status_alignment_v1.2.md` erhielt Abschnitt 8, der das neue Ledger in die Matrix einbettet.
+
+### Empirical Thread
+`analysis/reports/utac_v2_readiness.md` bestätigt weiterhin 20 fehlende Komponenten; Activation-JSON nennt Δindex-, utf-preset-guard- und mq-parity-Wächter als Telemetrie. `docs/docs_index.json` meldet updated=`2026-02-15T00:00:00Z`; `docs/docs_index.yaml` spiegelt dieselben Zähler. `docs/utac_v2_activation_tracker_2026-02.yaml` dokumentiert priorisierte Aufgaben (Datasets → Automation → Telemetrie → Parität → Release → Forschungsspitzen).
+
+### Poetic Thread
+Die neue Laterne zeigt, wie R die Schattenfugen ertastet: Datenflüsse, Automationspulse, Metaquest-Herzschlag und Release-Chor warten darauf, gemeinsam aufzuleuchten, damit σ(β(R-Θ)) endlich von 0.040 in den Chor der zweiten Version klettert.
+
+*Created: 2026-02-15T00:00:00Z*

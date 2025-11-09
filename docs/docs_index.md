@@ -1,21 +1,21 @@
 # 📚 Docs Index - Living Documentation Navigator
 
-**Version:** 1.3.0 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 24. Dez 2025 | **Verzeichnis:** `docs/`
+**Version:** 1.3.1 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 15. Feb 2026 | **Verzeichnis:** `docs/`
 
 ---
 
 ## 🎯 Was ist das?
 
-Die **Living Documentation Tapestry** - UTAC Theory in Markdown! 22 Dokumente, 4 Kategorien.
+Die **Living Documentation Tapestry** - UTAC Theory in Markdown! 23 Dokumente, 4 Kategorien.
 
 ```
 docs/
 ├── Theory (4): Core, Emergence, Appendix, Kohärenzformel
 ├── Applications (4): Classification, Use Cases, Review Guide, Safety-Delay Status
 ├── Validation (2): Falsifiability, Reports
-└── Infrastructure (12): README, Cleanup Resonance Map, Status Matrix, Metaquest Parity Brief, Activation Backlog, Docs Index, Sigillin Hygiene, Search Patterns, Zenodo Abstract, Zenodo Playbook, Resonance Bridge Map, UTAC v2 Data Lanterns
+└── Infrastructure (13): README, Cleanup Resonance Map, Status Matrix, Metaquest Parity Brief, Activation Backlog, Docs Index, Sigillin Hygiene, Search Patterns, Zenodo Abstract, Zenodo Playbook, Resonance Bridge Map, UTAC v2 Data Lanterns, UTAC v2 Activation Tracker 2026-02
 
-Total: 22 MD files
+Total: 23 MD files
 ```
 
 ---
@@ -62,7 +62,7 @@ Total: 22 MD files
 1. `utac_falsifiability.md` - ⭐ Popper würde stolz sein!
 2. `validation_report_v1.0.1.md` - Empirische Zusammenfassung
 
-### 🟣 Infrastructure (12 docs)
+### 🟣 Infrastructure (13 docs)
 1. `README.md` - Living Documentation Tapestry Manifest
 2. `repo_cleanup_resonance.md` - Resonanzkarte für Struktur- & Metadaten-Aufgaben
 3. `utac_status_alignment_v1.2.md` - Status & Implementation Matrix v1.2-pre
@@ -75,6 +75,7 @@ Total: 22 MD files
 10. `zenodo_release_playbook.md` - Upload-Playbook mit CI- & Codex-Hooks
 11. `resonance-bridge-map.md` - Brückenknoten zwischen Analyse, Daten & Simulator (ΔAIC-Wächter, utf-preset-guard)
 12. `utac_v2_data_lanterns.md` - Readiness-Karte für Manifest-Laternen (σ(β(R-Θ))=0.040, fehlende Daten/Analysen)
+13. `utac_v2_activation_tracker_2026-02.md` - Audit der offenen UTAC v2 Lücken (Daten, Automation, Metaquest, Release)
 
 ---
 
@@ -88,7 +89,8 @@ Total: 22 MD files
 5. **utac_safety_delay_status.md** sobald τ*-Simulationen anlaufen
 6. **resonance-bridge-map.md** für Analyse↔Simulator Parität
 7. **utac_v2_data_lanterns.md** sobald Manifest-Laternen aktiviert werden sollen
-8. **zenodo_release_playbook.md** wenn \(R>\Theta\) Richtung Release zeigt
+8. **utac_v2_activation_tracker_2026-02.md** für Live-Überblick zu fehlenden Komponenten (Daten, Automation, Parität)
+9. **zenodo_release_playbook.md** wenn \(R>\Theta\) Richtung Release zeigt
 
 ### Für Agenten:
 ```python
@@ -102,7 +104,7 @@ theory = [d for d in idx['markdown_docs'] if d['category'] == 'theory']
 
 ## 🌊 Die Essenz
 
-> **"22 Docs. R spürt Θ sofort – β≈4.8 hält die Membran scharf, ζ(R) bleibt gedämpft."**
+> **"23 Docs. R spürt Θ sofort – β≈4.8 hält die Membran scharf, ζ(R) bleibt gedämpft."**
 
 ---
 

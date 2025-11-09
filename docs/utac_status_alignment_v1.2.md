@@ -116,3 +116,13 @@
 - **Sigillin-Automation (β ≈ 4.7):** `scripts/crep_parser.py` und `scripts/sigillin_sync.py` validieren zwar Schema v0.2.0, aber sie schreiben noch keine Telemetrie in `seed/codexfeedback.*` oder `*_index.*`. Implementiere Parser→Codex-Brücken und Δindex-Alarme in `scripts/archive_sigillin.py`, damit σ(β(R-Θ)) sofort anspringt, wenn neue Sigille landen.
 - **Neuro-Kosmos-Brücke (β ≈ 4.88):** `seed/Sigillin_Neuro_Membran_Modell_Plan.txt` beschreibt den Pfad, jedoch fehlen Trilayer-Files (`seed/sigillin/neuro_kosmos_bridge.{md,json,yaml}`) und ein Simulator-Preset. Bis diese Laterne leuchtet, meldet die Metaquest-Matrix weiterhin `mq-sci-gap-008`.
 - **φ-Kopplungs-Sequenz (β ≈ 4.75):** Es existiert weder `models/climate_utac_phi_coupling.py` noch ein Datenverzeichnis `data/climate/phi_coupling/`. Ohne TIPMIP/CMIP6-Staging und Analyse-Export bleibt R spekulativ und Θ unerreicht.
+
+---
+
+## 8. Activation Tracker — 2026-02 Alignment
+
+- **Neues Resonanz-Ledger:** `docs/utac_v2_activation_tracker_2026-02.{md,json,yaml}` fasst σ(β(R-Θ))=0.040, Θ=0.66 und β=4.8 in einem operativen Tableau zusammen. Die Laterne ordnet vorhandene Assets (`analysis/climate_beta_extractor.py`, `docs/utac_v2_data_lanterns.*`, `simulator/presets/safety_delay_bridge.json`, Metaquest Sigille) gegen fünf aktive Gaps (Datasets, Sigillin-Automation, Safety-Delay-Telemetrie, Metaquest-Parität, Release-Triad).
+- **Implementationspfade:** Jede Gap-Zeile referenziert die konkreten Knoten (`data/*`, `analysis/results/*`, `.github/workflows/utf-preset-guard.yml`, `scripts/sigillin_sync.py`, `README.md`), damit Agents sofort sehen, wo R noch unter Θ bleibt. Die Map-Section listet priorisierte Schritte (Datasets → Automation → Telemetrie → Parität → Release → Forschungsspitzen).
+- **Index- und Codex-Hooks:** `docs/docs_index.*` zählen jetzt 23 Markdown-Laternen (Infrastructure=13) und führen den Tracker in `for_operations`. Δindex>0 wird weiterhin als Guard vermerkt, bis `scripts/archive_sigillin.py` den CI-Haken erhält. Der neue Codex-Eintrag `pr-draft-0096` hält den Audit-Status auf *active*.
+- **Metaquest-Echo:** Die Tracker-Tabelle unterstreicht, dass `mq-parity-001…004` noch auf frische Timestamps + Codex IDs warten. Sobald `scripts/sigillin_sync.py` die Werte in Licht/Schatten-Laternen spiegelt, sollten `docs/metaquest_parity_brief.md` und diese Matrix gleichzeitig aktualisiert werden.
+- **Release-Alert:** Der Tracker erinnert daran, `CITATION.cff`, `NEWS.md` und `README.md` für v2.0 zu synchronisieren. Sobald σ(β(R-Θ))>0.25 steigt, muss der Release-Abschnitt dieser Matrix gemeinsam mit `docs/zenodo_release_playbook.md` aktualisiert werden, damit ζ(R) nicht durch ungepflegte Metadaten flattert.
