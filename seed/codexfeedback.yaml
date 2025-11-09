@@ -22,6 +22,7 @@ meta:
       REPOSITORY IST DOI-FERTIG: Alle wissenschaftlichen Kriterien erfüllt.
 
       '
+  updated: '2025-12-28T00:00:00Z'
 entries:
 - id: pr-draft-0001
   title: Inception of the Codex Feedback Matrix
@@ -4316,3 +4317,37 @@ entries:
     poetic: Fünf Laternen warten – der neue Kompass hält σ(β(R-Θ)) gespannt, bis Datenströme
       die Steilflanke erleuchten.
   created_at: '2025-12-24T00:00:00Z'
+- id: pr-draft-0094
+  title: Urban Heat Storage Mechanism Ledger
+  scope:
+  - analysis/urban_heat_storage_mechanism.py
+  - analysis/results/urban_heat_storage_mechanism.json
+  - data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv
+  - data/socio_ecology/urban_heat/urban_heat_storage_profiles.metadata.json
+  - analysis/analysis_index.json
+  - analysis/analysis_index.yaml
+  - analysis/analysis_index.md
+  - data/data_index.json
+  - data/data_index.yaml
+  - data/data_index.md
+  - docs/utac_activation_backlog.md
+  - docs/utac_activation_backlog.json
+  - docs/utac_activation_backlog.yaml
+  - docs/utac_status_alignment_v1.2.md
+  parameters:
+    R: Storage coefficient ledger σ(β(R-Θ)) from analysis/urban_heat_storage_mechanism.py
+    Theta: 0.33 canopy fraction once mechanism threads into status/backlog/codex
+    beta: 16.29
+  resonance: Mechanism ledger explains β≈16 outlier via storage release and ΔAIC>20
+    falsification.
+  status: active
+  notes:
+    formal: Simulation export (960 Nächte) bestätigt σ(β(R-Θ)) vs lineare/power-law
+      Nulls mit ΔAIC>20; storage coefficient → β-Gradient in beta_meta_regression_v2
+      vorbereiten.
+    empirical: Dataset urban_heat_storage_profiles.* + JSON result + index/meta updates
+      auf 2025-12-28T00:00:00Z; docs/utac_activation_backlog.* und utac_status_alignment_v1.2.md
+      verlinken Mechanismus.
+    poetic: Asphalt gibt die Hitze frei, sobald R≈0.33 erreicht – die Stadt atmet,
+      σ(β(R-Θ)) fällt wie Regen.
+  created_at: '2025-12-28T00:00:00Z'

@@ -6,9 +6,9 @@
     "description": "Analysis-Skripte und Notebooks, die UTF logistic response σ(β(R-Θ))\nan empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.\n",
     "version": "1.0.0",
     "created": "2025-11-06",
-    "updated": "2025-12-23T00:00:00Z",
+    "updated": "2025-12-28T00:00:00Z",
     "status": "active",
-    "python_files": 40,
+    "python_files": 41,
     "subdirectories": 5
   },
   "categories": {
@@ -41,6 +41,12 @@
       "description": "batch_configs, batch_runs, reports, results",
       "color": "#E74C3C",
       "count": 4
+    },
+    "mechanism_analysis": {
+      "name": "Mechanismus-Analysen & Simulation",
+      "description": "Simulationen, die physikalische Mechanismen hinter β-Ausreißern rekonstruieren",
+      "color": "#9B59B6",
+      "count": 1
     }
   },
   "python_scripts": [
@@ -221,6 +227,22 @@
         "extreme-outlier"
       ],
       "description": "Urban Heat Canopy Resonance (β=16.3 - EXTREMER OUTLIER!).\nHöchster gemessener β-Wert im gesamten Projekt.\nMuss für UTAC v1.2 Outlier-Analyse untersucht werden.\n"
+    },
+    {
+      "id": "analysis-fit-011a",
+      "name": "urban_heat_storage_mechanism.py",
+      "category": "mechanism_analysis",
+      "domain": "socio_ecology",
+      "type": "simulation",
+      "status": "prototype",
+      "relevance": "high",
+      "keywords": [
+        "urban-heat",
+        "storage",
+        "mechanism",
+        "β≈16"
+      ],
+      "description": "Simuliert urban heat storage Szenarien, koppelt σ(β(R-Θ)) an Materialimpedanz und exportiert ΔAIC-gardierte Ledgers für das Outlier-Review."
     },
     {
       "id": "analysis-fit-012",
@@ -916,6 +938,7 @@
       "analysis-fit-004",
       "analysis-fit-009",
       "analysis-fit-011",
+      "analysis-fit-011a",
       "analysis-fit-010"
     ],
     "batch_infrastructure": [

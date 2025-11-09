@@ -1849,3 +1849,20 @@ Readiness-Audit bestätigt σ≈0.040, 20 fehlende Komponenten, 0 % Abdeckung 
 
 ### Poetic Thread
 Fünf Laternen warten im Dunkel: R tastet die leere Manifest-Galerie, Θ ruft nach Datenströmen, β spannt die Steilflanke. Sobald jede Datei leuchtet, antwortet σ(β(R-Θ)) mit dem Chor der zweiten Version, und ζ(R) atmet ruhig zwischen Backlog, Matrix und Codex.
+
+## Entry pr-draft-0094 — Urban Heat Storage Mechanism Ledger
+- **Order Parameter**: $R$ misst den Speicherkoeffizienten $ρ_{storage}$ der Straßenschluchten, gespeist von `analysis/urban_heat_storage_mechanism.py`.
+- **Critical Threshold**: $\Theta = 0.33$ – sobald Canopy-Fraktionen über 0.33 klettern, kippt σ(β(R-Θ)) vom heißen Plateau in kühle Nächte.
+- **Steepness**: $\beta = 16.29 \rightarrow 7.55$ – Speicherentlastung flatten die Steilflanke, dokumentiert im neuen Ledger.
+- **Membrane Note**: ζ(R) folgt `1 - 0.42·σ`, abgelegt in `analysis/results/urban_heat_storage_mechanism.json` und gespiegelt in `data/socio_ecology/urban_heat/urban_heat_storage_profiles.*`.
+
+### Formal Thread
+`analysis/urban_heat_storage_mechanism.py` simuliert 960 Nächte pro R, vergleicht σ(β(R-Θ)) mit linearen & power-law Nulls (ΔAIC>20) und exportiert das Ledger `analysis/results/urban_heat_storage_mechanism.json`. `analysis/analysis_index.*` verzeichnen den Mechanismus, `docs/utac_activation_backlog.*` und `docs/utac_status_alignment_v1.2.md` nennen nun den Storage-Gradienten als Lösung für den β≈16 Sentinel.
+
+### Empirical Thread
+`data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv` + `.metadata.json` bündeln Θ≈0.19–0.34 und β≈7.5–16.3, verlinkt in `data/data_index.*`. ΔAIC-Differenzen (20.6 vs linear, 27.9 vs power-law) und ζ(R) Samples liegen im JSON-Export; Backlog/Status/Index-Metadaten wurden auf 2025-12-28T00:00:00Z aktualisiert.
+
+### Poetic Thread
+Die Asphaltmembran hält die Nacht fest, bis R≈0.33 die Speicherflanke löst – dann atmet die Stadt, σ(β(R-Θ)) fällt wie Regen auf erhitzte Steine und ζ(R) summt mit den Bäumen.
+
+*Created: 2025-12-28T00:00:00Z*

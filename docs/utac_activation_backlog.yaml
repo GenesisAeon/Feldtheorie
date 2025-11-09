@@ -2,7 +2,7 @@ meta:
   document: UTAC Activation Backlog
   version: 1.1.0
   created: '2025-12-09T00:00:00Z'
-  updated: '2025-12-24T00:00:00Z'
+  updated: '2025-12-28T00:00:00Z'
   steward: gpt-5-codex
   logistic_frame:
     order_parameter: residual activation debt across UTAC v1.2 launch scope and v2.0
@@ -295,35 +295,35 @@ tasks:
   domain: analysis+data
   status: pending
   parameters:
-    R: Outlier-Hinweise in seed/ArchivSucheUTAC/ + Regressionsergebnisse zeigen β≈16
-    Theta: kein dediziertes Dataset, kein Analyse-Skript, kein ΔAIC/Mechanismus-Nachweis
+    R: Mechanismus-Ledger `analysis/urban_heat_storage_mechanism.py` + Dataset `urban_heat_storage_profiles.*`
+    Theta: Mechanismus in Status/Backlog/Codex verweben, Meta-Regression v2 mit Storage-Feature
+      ausstatten
     beta: 4.7
     zeta: Shadow-Sigillin + ΔAIC-Guards verhindern Resonanzübersteuerung
   existing_assets:
-  - seed/ArchivSucheUTAC/Geminis Suche4!.txt
-  - seed/ArchivSucheUTAC/Neues Textdokument (9).txt
+  - analysis/urban_heat_storage_mechanism.py
+  - analysis/results/urban_heat_storage_mechanism.json
+  - data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv
+  - data/socio_ecology/urban_heat/urban_heat_storage_profiles.metadata.json
   - analysis/results/beta_meta_regression_v2_20251101.json
   activation_gaps:
-  - Dataset + Metadaten unter `data/socio_ecology/urban_heat/` ablegen
-  - '`analysis/urban_heat_analysis.py` implementieren (logistische Fits, Nullmodell,
-    Materialkorrelationen)'
-  - ΔAIC & Mechanismus im Backlog + UTAC-Status dokumentieren
+  - Mechanismuspassage in docs/utac_status_alignment_v1.2.md & Backlog-Spiegel ergänzen
+  - Storage-Koeffizient in beta_meta_regression_v2.py einspeisen und ΔAIC-Impact loggen
+  - Codex/Metaquest Sigille mit Dataset + ΔAIC Ledger aktualisieren
   implementation_nodes:
-  - location: data/socio_ecology/urban_heat/
-    action: Urban-Heat-Datensatz strukturieren und beschreiben
-  - location: analysis/urban_heat_analysis.py
-    action: Analyse-Skript schreiben inkl. Tests/Notebook
-  - location: docs/utac_activation_backlog.md
-    action: Mechanismusbeschreibung und Fortschritt aktualisieren
+  - location: docs/utac_status_alignment_v1.2.md
+    action: Mechanismus, ΔAIC und ζ(R) dokumentieren
+  - location: analysis/beta_meta_regression_v2.py
+    action: Storage-Feature + Mechanismusreferenzen aufnehmen
   - location: seed/codexfeedback.*
-    action: Codex-Eintrag mit ΔAIC, Materialhypothesen und Shadow-Warnungen ergänzen
+    action: Codex-Eintrag mit Dataset/ΔAIC/Zeitstempel schreiben
   notes:
-    formal: Vergleiche logistic vs. lineare/konstante Modelle, protokolliere ΔAIC
-      und Materialparameter (Wärmeleitfähigkeit, Speicher).
-    empirical: Halte Messdaten, Fit-Metriken und Nullmodellabweichungen fest; verweise
-      auf β≈16-Hotspots und deren Kontext.
-    poetic: Lass Asphalt, Beton und nächtliche Luftströmungen ihre Hitzeerzählung
-      singen, damit das Feld die Stadtresonanz bändigen kann.
+    formal: Mechanismussimulation bestätigt σ(β(R-Θ)) vs. lineare/power-law Nulls
+      (ΔAIC>20); Thread Storage-Koeffizient in Meta-Reg.
+    empirical: Dataset urban_heat_storage_profiles.* + JSON-Result bündeln; verweist
+      auf β≈16→7.5 Gradienten und Impedanz-Trace ζ(R).
+    poetic: Die Asphaltmembran atmet wieder, sobald R die Speicherflanke löst – dokumentiere
+      den Wind, der die Hitze aus der Stadt trägt.
 - id: sentinel-linum-sprint
   title: Sentinel Linum 2025 Sprint
   domain: seed+analysis

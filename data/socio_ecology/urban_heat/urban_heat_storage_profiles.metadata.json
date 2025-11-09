@@ -1,0 +1,28 @@
+{
+  "title": "Urban heat storage mechanism scenarios",
+  "path": "data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv",
+  "category": "socio-ecology",
+  "source": "Synthetic energy-balance simulations calibrated to analysis/results/urban_heat_canopy.json",
+  "description": "Scenario ledger linking canopy fraction R, adaptive threshold Θ, and storage-driven β shifts across five urban canyon regimes.",
+  "threshold_parameters": {
+    "R": "canopy_fraction",
+    "Theta": "theta column (scenario-specific)",
+    "beta": "beta column (scenario-specific)",
+    "zeta_R": "Impedance proxy ζ(R)=1-0.42·σ stored in analysis/results/urban_heat_storage_mechanism.json"
+  },
+  "preprocessing": [
+    "Simulated 960 nights per R value using stochastic energy balance",
+    "Fitted σ(β(R-Θ)) vs linear/power-law nulls via resonance_fit_pipeline",
+    "Aggregated scenario-level diagnostics (θ, β, ΔAIC, safe-night fractions)"
+  ],
+  "null_models_tested": [
+    "linear",
+    "power-law"
+  ],
+  "temporal": {
+    "created": "2025-12-28T00:00:00Z",
+    "modified": "2025-12-28T00:00:00Z",
+    "version": "1.0.0",
+    "change_count": 0
+  }
+}

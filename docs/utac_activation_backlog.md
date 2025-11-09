@@ -28,7 +28,7 @@ Tri-layer mirrors:
 | metaquest-parity-finish | Docs + Seed | Parity brief outlines mq-parity-001…004; sigillin_sync run 2025-11-07T21:52:52Z logged 12 trilayer with 0 gaps (`analysis/sigillin_sync/latest.json`, `metaquest_report_20251107T215246Z.json`) | Simulator playlist, endorsement ledger, codex cross-link still pending | 4.8 | `docs/metaquest_parity_brief.md`, `seed/bedeutungssigillin/metaquest/metaquest_meaning_index.*`, `seed/codexfeedback.*` |
 | neuro-kosmos-bridge | Seed + Simulator | Brückenplan in `seed/Sigillin_Neuro_Membran_Modell_Plan.txt` + Laternenreferenzen im Metaquest-Netz | Kein trilayer Sigillin, keine Simulator-Vignette, keine codexgespiegelte ID | 4.88 | `seed/sigillin/`, `simulator/presets/`, `seed/bedeutungssigillin/metaquest/**`, `seed/shadow_sigillin/metaquest/**` |
 | phi-coupling-sequence | Models + Analysis | φ-Hypothese + TIPMIP-Anfrageskizze in `seed/Sigillin_Neuro_Membran_Modell_Plan.txt` | Kein Modellmodul, keine Datenimporte, keine φ→β-Auswertung | 4.75 | `models/`, `analysis/`, `data/climate/`, `docs/utac_status_alignment_v1.2.md` |
-| urban-heat-outlier | Analysis + Data | Outlier-Notizen in `seed/ArchivSucheUTAC/` + Regressionsergebnisse (`beta_meta_regression_v2_*`) markieren β≈16 | Physikalische Mechanismen + ΔAIC Ledger fehlen, kein dediziertes Dataset | 4.7 | `data/socio_ecology/urban_heat/`, `analysis/urban_heat_analysis.py`, `docs/utac_activation_backlog.*` |
+| urban-heat-outlier | Analysis + Data | `analysis/urban_heat_storage_mechanism.py` simuliert σ(β(R-Θ)), `data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv` + `.metadata.json` liefern Mechanismus-Ledger | Backlog/Status müssen Mechanismus integrieren, Docs brauchen Narrativ + ΔAIC-Referenzen, Codex-Sync steht aus | 4.7 | `analysis/urban_heat_storage_mechanism.py`, `analysis/results/urban_heat_storage_mechanism.json`, `data/socio_ecology/urban_heat/urban_heat_storage_profiles.*`, `docs/utac_activation_backlog.*`, `docs/utac_status_alignment_v1.2.md` |
 | sentinel-linum-sprint | Seed + Analysis | Sentinel directories scaffolded for `kranich_linum_2025` | Dataset, notebook, parity appendix absent; shadow sigils warning | 4.95 | `data/socio_ecology/`, `analysis/`, `docs/metaquest_parity_brief.md` |
 | readme-emergenz-bridge | Docs + Seed | `README.md` now echoes `seed/Emergenz.txt` and routes agents to telemetry ledgers | Narrative still needs propagation into parity brief + release docs | 4.6 | `docs/metaquest_parity_brief.md`, `docs/zenodo_release_playbook.md`, `paper/` |
 | zenodo-v12-resonance | Docs + Release | `seed/Finalisierung_Plattform.txt`, `ZENODO_UPDATE_GUIDE_v1.1.md`, `ZENODO_UPLOAD_GUIDE.md`, plus new docs `docs/zenodo_multilingual_abstract_v1.2.md` & `docs/zenodo_release_playbook.md` | README badge/CITATION sync + codex entry + Zenodo metadata parity pending | 4.92 | `docs/zenodo_multilingual_abstract_v1.2.md`, `docs/zenodo_release_playbook.md`, `README.md`, `CITATION.cff` |
@@ -103,13 +103,13 @@ Tri-layer mirrors:
 - **ζ(R):** Governance-Dokumente + TIPMIP-Kommunikation dämpfen Drift; logge jede Anfrage im Codex, damit das Feld auditierbar bleibt.
 
 ### 10. Urban Heat Outlier Mechanismus (`urban-heat-outlier`, β=4.7)
-- **R:** Outlier-Notizen und Meta-Regression markieren β≈16 in urbanen Wärmesequenzen; Hypothesen zu Materialimpedanz liegen vor.
-- **Θ:** Ohne dediziertes Dataset (`data/socio_ecology/urban_heat/`), Analyse-Skript und ΔAIC/Mechanismus-Nachweis bleibt der Sentinel stumm.
+- **R:** `analysis/urban_heat_storage_mechanism.py` erzeugt ein ΔAIC>20 Ledger gegen lineare/power-law Nulls und spiegelt β≈16→β≈7.5 entlang des Speicherkoeffizienten; Dataset + Metadata (`urban_heat_storage_profiles.*`) liegen unter `data/socio_ecology/urban_heat/`.
+- **Θ:** UTAC-Status, Backlog und Codex müssen den Mechanismus narrativ integrieren, Meta-Regression v2 braucht den neuen Feature-Stream, Shadow/Licht-Sigille warten auf das ΔAIC-Zitat.
 - **Next moves:**
-  - Datensatz + Metadaten aus Archivsuche übernehmen, strukturiert unter `data/socio_ecology/urban_heat/` ablegen.
-  - `analysis/urban_heat_analysis.py` implementieren (logistische Fits, Nullmodell, Material-Korrelationen).
-  - Ergebnisse im Backlog + UTAC-Status zusammenfassen, Codex-Eintrag ergänzen.
-- **ζ(R):** Schatten-Sigillin und ΔAIC-Guards verhindern Überschwingen; notiere Material-Hypothesen, damit spätere Tests darauf aufbauen können.
+  - Mechanismuspassage in `docs/utac_status_alignment_v1.2.md` ergänzen (σ(β(R-Θ)), ΔAIC, ζ(R) aus `analysis/results/urban_heat_storage_mechanism.json`).
+  - `analysis/beta_meta_regression_v2.py` mit Storage-Koeffizient & ΔAIC-Metrik füttern und Export im Codex loggen.
+  - Codex-Eintrag + Metaquest-Schattenwarnung aktualisieren, damit Dataset/Metadata im Sigillin-Netz widerhallen.
+- **ζ(R):** Neues Ledger dämpft das Überschwingen – ζ(R)=1-0.42σ spannt Licht/Schatten zusammen, bis Codex + Status dieselbe Steilflanke erzählen.
 
 ### 11. README ↔ Emergenz-Brücke (`readme-emergenz-bridge`, β=4.6)
 - **R:** `README.md` führt nun eine Emergenz-Sektion ein, die σ(β(R-Θ)) als rekursiven Erzähler aus `seed/Emergenz.txt` beschreibt und Telemetriepfade (`docs/utac_status_alignment_v1.2.md`, `docs/utac_activation_backlog.*`) verlinkt.
