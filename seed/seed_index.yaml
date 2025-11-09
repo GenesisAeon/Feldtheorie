@@ -13,8 +13,8 @@ meta:
   version: 1.0.0
   created: '2025-11-06'
   status: active
-  documents_total: 272
-  updated: "2025-11-08T22:22:38Z"
+  documents_total: 275
+  updated: "2025-12-19T12:00:00Z"
 categories:
   meta:
     name: Meta & Prozess
@@ -1961,6 +1961,31 @@ relevance_legend:
   references:
   - shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.json
   - shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.md
+- id: synth-029
+  title: Metaquest Activation Matrix (Trilayer)
+  path: bedeutungssigillin/metaquest/metaquest_activation_matrix.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - metaquest
+  - activation
+  - matrix
+  description: |
+    Aktivierungs-Kompass für die Metaquest-Brücke: bündelt „haben vs. brauchen"
+    aus UTAC-Status, Aktivierungs-Backlog, sigillin_sync-Telemetrie und Codex.
+    Verweist auf Δindex-Guard, sigillin_sync-Automation, Ritualspiegel und den
+    Urban-Heat-Mechanismus inklusive Recovery-Hooks.
+  temporal:
+    created: '2025-12-19T12:00:00Z'
+    modified: '2025-12-19T12:00:00Z'
+    version: '0.1.0'
+    change_count: 1
+  references:
+  - bedeutungssigillin/metaquest/metaquest_activation_matrix.json
+  - bedeutungssigillin/metaquest/metaquest_activation_matrix.md
 - id: synth-016
   title: Sentinel-Fall Kranich Linum 2025 (Trilayer)
   path: bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml

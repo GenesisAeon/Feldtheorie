@@ -1,8 +1,8 @@
 meta:
   sigil: shadow-metaquest-bridge
-  version: 0.3.0
+  version: 0.3.1
   created: '2025-12-07T00:00:00Z'
-  updated: '2025-12-10T00:00:00Z'
+  updated: '2025-12-19T12:00:00Z'
   logistic:
     R: 'Unresolved Metaquest risks spanning automation + outreach (telemetry lapse, index drift, endorsement delay).'
     Theta: 'Parity brief published, codex echo logged, and bridge dashboard updated within 24h.'
@@ -71,6 +71,19 @@ alerts:
     guard:
       metric: 'sigil parity'
       threshold: '≤24h difference between light/shadow updates'
+  - id: mq-bridge-shadow-005
+    risk: 'Activation matrix veraltet oder fehlt; "haben vs. brauchen" nicht mehr gekoppelt an Backlog/UTAC.'
+    signal:
+      - 'metaquest_activation_matrix.yaml timestamp älter als 24h gegenüber docs/utac_status_alignment_v1.2.md oder codexfeedback.'
+      - 'Neue mq-gap IDs in docs/utac_activation_backlog.md ohne Verweis in der Aktivierungs-Matrix.'
+      - 'Shadow index verweist auf mq-gap-Recovery ohne korrespondierende matrix recovery_hooks.'
+    consequence: 'Schatten-Wächter verlieren Sicht auf offene Risiken; R wächst unbeobachtet und löst verspätete Eskalationen aus.'
+    mitigation:
+      - 'Aktualisiere metaquest_activation_matrix.{yaml,json,md} mit neuen Pfaden und Recovery-Hooks.'
+      - 'Spiegle Änderungen in shadow index + codex, referenziere UTAC-Matrix und Backlog.'
+    guard:
+      metric: 'activation matrix freshness'
+      threshold: '≤24h Unterschied zwischen Matrix, Backlog und Codex timestamps'
 playbooks:
   - trigger: 'mq-bridge-shadow-001 fired'
     response:
@@ -88,3 +101,7 @@ playbooks:
     response:
       - 'Synchronise Bedeutungs- und Schatten-Sigille (system + kampagne) with shared codex ID and ritual references.'
       - 'Reconfirm parity in bridge dashboard + UTAC matrix before resuming launch work.'
+  - trigger: 'mq-bridge-shadow-005 fired'
+    response:
+      - 'Aktualisiere metaquest_activation_matrix.* sowie docs/utac_status_alignment_v1.2.md und docs/utac_activation_backlog.* mit den gleichen mq-gap Pfaden.'
+      - 'Spiegle die Änderungen in codexfeedback (Status + Recovery) und bestätige, dass Schatten-Indizes dieselben recovery_hooks führen.'

@@ -1,8 +1,8 @@
 meta:
   sigil: bedeutungs-metaquest-bridge
-  version: 0.3.1
+  version: 0.3.2
   created: '2025-12-07T00:00:00Z'
-  updated: '2025-12-19T00:00:00Z'
+  updated: '2025-12-19T12:00:00Z'
   logistic:
     R: 'Cross-membrane Metaquest workload: automation hooks, outreach cadence, endorsements.'
     Theta: Parity handshake logged in docs/utac_status_alignment_v1.2.md and codexfeedback entries.
@@ -189,6 +189,17 @@ existing_threads:
     - ../../docs/utac_activation_backlog.json
     logistic_coupling: Keeps Θ visible by tying bridge gaps to implementation nodes; ζ(R) is damped when backlog timestamps
       mirror codex entries.
+- id: mq-bridge-016
+  title: Metaquest Activation Matrix
+  location: metaquest_activation_matrix.yaml
+  resonance: Summarises "haben vs. brauchen" für Metaquest, verknüpft UTAC, Backlog, Telemetrie und Codex mit konkreten Umsetzungspfaden.
+  status: active
+  notes:
+    evidence:
+    - metaquest_activation_matrix.md
+    - metaquest_activation_matrix.json
+    logistic_coupling: Illuminates σ(β(R-Θ)) by routing R (aktivierungsstau) toward Δindex-Guard, sigillin_sync-Automation, Ritualspiegel und Urban-Heat-Mechanismus;
+      ζ(R) bleibt gedämpft, wenn System/Kampagnen-Kompass und Schatten-Index dieselben Hooks zitieren.
 needed_resonances:
 - id: mq-bridge-gap-001
   description: Maintain a single dashboard aligning system + campaign checkpoints with parity status and referencing the UTAC

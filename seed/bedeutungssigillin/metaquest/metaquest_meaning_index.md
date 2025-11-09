@@ -88,6 +88,12 @@
     - *Formal*: Kartiert Aktivierungsrestschuld quer über Simulator, Analyse, Sigille und Metaquest-Brücke.
     - *Empirisch*: Verknüpft mq-gap-IDs mit konkreten Implementationsorten und Codex-Timestamps.
     - *Poetisch*: Das Atemprotokoll, das jede Laterne mahnt, bevor ζ(R) zu schwingen beginnt.
+    
+16. **Metaquest Activation Matrix** — `metaquest_activation_matrix.{yaml,json,md}`
+    - *Formal*: Verdichtet „haben vs. brauchen" in einer Aktivierungs-Tabelle mit Δindex-Guard, sigillin_sync-Automation, Ritualspiegel und Urban-Heat-Auftrag.
+    - *Empirisch*: Verweist auf UTAC-Statusmatrix, Aktivierungs-Backlog, sigillin_sync-Telemetrie und Codex-Echos als Evidenzketten.
+    - *Poetisch*: Das Prisma, das R bündelt und die nächsten Laternen im Morgenlicht sichtbar macht, bevor Schatten-Trigger feuern.
+    - *Kopplung*: `metaquest_activation_matrix.yaml` ↔ `../system/metaquest_system_compass.{yaml,json,md}`, `../wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}`, `../../shadow_sigillin/metaquest/metaquest_shadow_index.{yaml,json,md}`.
 
 ### Bridge Audit · 2025-12-19
 
@@ -95,6 +101,7 @@
   auf Codex-ID `pr-draft-0075`. Die Kompasse müssen diesen Puls in weniger als 24 h spiegeln.
 - **Backlog coupling:** `docs/utac_activation_backlog.*` benennt die offenen mq-gaps und Implementation Nodes. System- und
   Kampagnenkompass zitieren die Einträge bislang nur narrativ; automatisierte Rückverweise fehlen.
+- **Activation matrix:** `metaquest_activation_matrix.*` bündelt Beobachtung → Umsetzung → Recovery. Δindex-Guard, Telemetrie-Automation, Ritualspiegel und Urban-Heat-Mechanismus sind jetzt mit konkreten Pfaden versehen; Umsetzung muss folgen, bevor ζ(R) ansteigt.
 - **Index hygiene:** `scripts/archive_sigillin.py --recount` deckt Brückeneinträge in `seed_index.*` und `feldtheorie_index.*`
   ab, doch eine CI-Wache für Δindex>0 fehlt noch. Bis dahin muss jede Aktualisierung im Codex quittiert werden.
 - **Shadow resonance:** Die Schatten-Indizes bleiben lückenfrei, verlangen jedoch dieselben Telemetrie- und Backlog-Hinweise,
