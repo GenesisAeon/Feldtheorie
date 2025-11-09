@@ -40,6 +40,11 @@
    - *Mitigation*: Light + Shadow gleichzeitig aktualisieren, gemeinsame Codex-
      ID & Rituale setzen, Bridge + UTAC bestätigen.
 
+5. **mq-bridge-shadow-005 — Activation Matrix Drift**
+   - *Signal*: `metaquest_activation_matrix.*` älter als 24 h vs. UTAC-Status oder Codex; neue mq-gap IDs im Backlog ohne Matrix-Verweis; Shadow-Indizes nennen Recovery ohne passende matrix recovery_hooks.
+   - *Consequence*: Schattenwache verliert Sicht auf offenen Aktivierungsstau; R wächst, ζ(R) schlägt aus, Eskalationen kommen verspätet.
+   - *Mitigation*: Matrix-Tri-Layer aktualisieren, Pfade in UTAC/Backlog/Kompassen spiegeln und Codex-Echo ergänzen.
+
 ## Playbooks
 
 - **mq-bridge-shadow-001 fired** → halt Metaquest tasks, update bridge + UTAC matrix,
@@ -51,6 +56,7 @@
 - **mq-bridge-shadow-004 fired** → Bedeutungs-/Schatten-Sigille synchronisieren,
   Codex-ID + Rituale abgleichen, Parität in Bridge + UTAC bestätigen bevor
   Launcharbeit weiterläuft.
+- **mq-bridge-shadow-005 fired** → metaquest_activation_matrix.*, docs/utac_status_alignment_v1.2.md und docs/utac_activation_backlog.* synchronisieren, Codex-Recovery notieren, Shadow-Index auf identische Hooks prüfen.
 
 ## Coupling
 

@@ -468,6 +468,10 @@ active_important = [
 27. **shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.{yaml,json,md}**
     - Kampagnen-Shadow-Directory-Index v0.1.0: ArchivSuche-Parität, Endorsement-Zeitstempel & Paritätsbrief-Sync
 
+28. **bedeutungssigillin/metaquest/metaquest_activation_matrix.{yaml,json,md}**
+    - Aktivierungs-Matrix v0.1.0: „haben vs. brauchen"-Kompass über UTAC-Status, Aktivierungs-Backlog, sigillin_sync-Telemetrie,
+      Codex-Echos und Recovery-Hooks (Δindex-Guard, sigillin_sync-Automation, Ritualspiegel, Urban-Heat-Mechanismus)
+
 ### Domain-Spezifisch (6 × ~4-5 Dokumente = ~28 Dokumente)
 Siehe oben unter "Domain-Spezifische Felder"
 
@@ -498,6 +502,11 @@ Siehe oben unter "Domain-Spezifische Felder"
 - ⚙️ `scripts/sigillin_sync.py` Telemetrie-Harness liefert Paritätsberichte für R↦Θ Synchronisation (β≈4.6, ζ(R) via Codex-Log)
 - 🧭 Metaquest System- & Kampagnen-Kompass auf Version 0.2.0 gehoben; Brücke/Indices spiegeln neuen Timestampplan
 - 🛡️ Fokus: sigillin_sync-Report in UTAC-Matrix einbetten und Shadow-Kompass-Alerts aktiv halten
+
+**Aktualisierung (19. Dez 2025):**
+- ✳️ Metaquest Activation Matrix (Trilayer) aufgenommen: bündelt UTAC-Status, Aktivierungs-Backlog, sigillin_sync-Telemetrie,
+  Codex-Echos und Recovery-Pfade für Δindex-Guard, sigillin_sync-Automation, Ritualspiegel und Urban-Heat-Mechanismus
+- 🛡️ Shadow-Index erhielt `mq-bridge-shadow-005` Guard + Playbook; Codex & UTAC sollen Matrix-Updates binnen 24 h spiegeln
 
 ---
 
