@@ -27,7 +27,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 
 ```
 analysis/
-├── 38 Python-Skripte (Domain-Fits, Batch-Processing, Labs, Guards)
+├── 39 Python-Skripte (Domain-Fits, Batch-Processing, Labs, Guards)
 ├── batch_configs/   (4 YAML/JSON Konfigurationen)
 ├── batch_runs/      (2 gespeicherte Batch-Runs)
 ├── reports/         (2 Summaries: QPO, UTAC v1.3 Gap)
@@ -113,7 +113,7 @@ analysis/
 
 ---
 
-### 🟣 Utilities & Guards (8)
+### 🟣 Utilities & Guards (9)
 
 **Was?** Helper-Funktionen, Validierung, Diagnostics, Manifest-Pipelines
 
@@ -125,6 +125,7 @@ analysis/
 6. `threshold_dataset_loader.py` - Metadata Loader + Logit-Jitter Simulation für σ(β(R-Θ))
 7. `utac_manifest.py` - Parser für `data/utac_v1_3_data_manifest.yaml`
 8. `utac_manifest_audit.py` - σ(β(R-Θ)) Readiness-Audit für Manifest-Laternen, exportiert JSON/YAML/Markdown
+9. `v2_readiness_audit.py` - Logistische V2-Readiness-Laterne (Tri-Layer Report für Manifest, Analysis, Simulator, Sigillin)
 
 ---
 
@@ -144,6 +145,7 @@ analysis/
 - `qpo_membrane_summary.json` (Astrophysik)
 - `utac_v1_3_gap_assessment.md` (UTAC v1.3 Gap Ledger)
 - `utac_v1_3_manifest_audit.md` (σ-Readiness Bericht für Manifest-Füllstand)
+- `utac_v2_readiness.md` (σ-Compass für V2.0 Aktivierung; JSON/YAML/MD Tri-Layer)
 
 #### **sigillin_sync/** - Telemetry Harness Reports
 - `latest.json` – Metaquest sigillin_sync Statusbericht (JSON)

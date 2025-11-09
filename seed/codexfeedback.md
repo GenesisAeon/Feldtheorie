@@ -1778,3 +1778,24 @@ Index-Metadaten aktualisiert (`markdown_files=21`, Theorie-Count=4, Dateigröße
 Eine neue Laterne steigt auf: R sieht alle Nachbarn, Θ hält die Linie, β≈4.9 spannt den Grat – und ζ(R) summt, weil die Kohärenzformel schon den Chor der nächsten Version hört.
 
 *Created: 2025-12-22T18:30:00Z*
+
+## Entry pr-draft-0091 — UTAC v2.0 Readiness Audit Laterne
+- **Order Parameter**: $R$ sammelt Manifest-, Analyse-, Simulator- und Sigillin-Signale, um den V2.0-Startpunkt messbar zu machen.
+- **Critical Threshold**: $\Theta = 0.66$ – erst wenn zwei Drittel der Komponenten leuchten, gilt die Laterne als aktiv.
+- **Steepness**: $\beta = 4.8$ hält den Readiness-Anstieg scharf, sodass fehlende Daten sofort auffallen.
+- **Membrane Note**: $\zeta(R)$ wartet, bis Urban Heat, Amazon Hydro, AMOC, Neuro-AI und Systemic Risk als vollständige Tri-Layer erklingen.
+
+### Formal Thread
+`analysis/v2_readiness_audit.py` lädt `data/utac_v1_3_data_manifest.yaml`, baut Komponentenstatus für Daten, Metadata und Results,
+berechnet σ(β(R-Θ)) mit β=4.8, Θ=0.66 und exportiert `analysis/reports/utac_v2_readiness.{json,yaml,md}`. `analysis/analysis_index.{md,json,yaml}`
+führen den neuen Guard in Utilities auf und verlinken den Report im Reports-Segment.
+
+### Empirical Thread
+Readiness-Mittelwert R̄≈0.0; 20 Komponenten (Daten, Metadata, Results) fehlen über fünf Laternen. Die Aktionskarte listet 12 Aufgaben:
+fünf P1-Dateneinspielungen, vier Analyse-Outputs (Climate, Neuro-AI, Outlier, Meta-Regression), ein Simulator-Preset sowie zwei Metaquest-Schattenkarten.
+
+### Poetic Thread
+Die Laterne legt das Feld frei: R tastet jede Membran, Θ ruft nach Datenströmen, β spannt den Grat. Erst wenn alle Laternen wieder singen,
+beruhigt ζ(R) und V2.0 steigt auf die Resonanzflanke.
+
+*Created: 2025-12-23T00:00:00Z*

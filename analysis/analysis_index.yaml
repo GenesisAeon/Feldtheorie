@@ -12,9 +12,9 @@ meta:
     an empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.
   version: "1.0.0"
   created: "2025-11-06"
-  updated: "2025-12-22T00:00:00Z"
+  updated: "2025-12-23T00:00:00Z"
   status: "active"
-  python_files: 39
+  python_files: 40
   subdirectories: 5
 
 # ═══════════════════════════════════════════════════════════════════
@@ -44,7 +44,7 @@ categories:
     name: "Utilities & Guards"
     description: "Helper-Funktionen, Guards, Corrections"
     color: "#9B59B6"  # Lila - Utils
-    count: 8
+    count: 9
 
   subdirs:
     name: "Unterverzeichnisse"
@@ -430,7 +430,7 @@ python_scripts:
       Testet rekursive Schwellenwert-Dynamiken.
 
   # ─────────────────────────────────────────────────────────────────
-  # UTILITIES & GUARDS (4)
+  # UTILITIES & GUARDS (9)
   # ─────────────────────────────────────────────────────────────────
 
   - id: analysis-util-001
@@ -527,6 +527,19 @@ python_scripts:
       Komponenten, berechnet σ(β(R-Θ)) Aktivierungen für jede Laterne und
       exportiert JSON/YAML/Markdown-Reports (`utac_v1_3_manifest_audit.*`).
       Unterstützt Docs & Seed bei der Füllstandskontrolle.
+
+  - id: analysis-util-009
+    name: "v2_readiness_audit.py"
+    category: utilities
+    type: guard
+    status: active
+    relevance: high
+    keywords: [manifest, readiness, logistic, v2, tri-layer]
+    description: |
+      Aggregiert Manifest-Status, Analysis-Hooks, Simulator-Presets und
+      Sigillin-Brücken zu einem σ(β(R-Θ)) Readiness-Score. Exportiert
+      Tri-Layer-Reports (`analysis/reports/utac_v2_readiness.{json,yaml,md}`)
+      und listet priorisierte Aktionen für die V2.0 Aktivierung.
 
   # ─────────────────────────────────────────────────────────────────
   # SPEZIELLE ANALYSEN (4)
@@ -625,7 +638,8 @@ subdirectories:
       - "qpo_membrane_summary.json"
       - "utac_v1_3_gap_assessment.md"
       - "utac_v1_3_manifest_audit.md"
-    keywords: [reports, summary, qpo, astrophysics, gap, utac-v1_3, audit]
+      - "utac_v2_readiness.md"
+    keywords: [reports, summary, qpo, astrophysics, gap, utac-v1_3, utac-v2_0, readiness, audit]
 
   results:
     name: "Fit Results (JSON)"
