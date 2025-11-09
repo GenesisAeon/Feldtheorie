@@ -1,6 +1,6 @@
 # 📚 Docs Index - Living Documentation Navigator
 
-**Version:** 1.3.2 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 26. Mär 2026 | **Verzeichnis:** `docs/`
+**Version:** 1.3.3 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 26. Mär 2026 | **Verzeichnis:** `docs/`
 
 ---
 
@@ -13,9 +13,9 @@ docs/
 ├── Theory (4): Core, Emergence, Appendix, Kohärenzformel
 ├── Applications (4): Classification, Use Cases, Review Guide, Safety-Delay Status
 ├── Validation (2): Falsifiability, Reports
-└── Infrastructure (14): README, Cleanup Resonance Map, Status Matrix, Metaquest Parity Brief, Activation Backlog, Docs Index, Sigillin Hygiene, Search Patterns, Zenodo Abstract, Zenodo Playbook, Resonance Bridge Map, UTAC v2 Data Lanterns, UTAC v2 Activation Tracker 2026-02, UTAC v2 Activation Tracker 2026-03
+└── Infrastructure (15): README, Cleanup Resonance Map, Status Matrix, Metaquest Parity Brief, Activation Backlog, Docs Index, Sigillin Hygiene, Search Patterns, Zenodo Abstract, Zenodo Playbook, Resonance Bridge Map, UTAC v2 Data Lanterns, UTAC v2 Activation Tracker 2026-02, UTAC v2 Activation Tracker 2026-03, UTAC v2 Gap Synopsis 2026-03
 
-Total: 24 MD files
+Total: 25 MD files
 ```
 
 ---
@@ -62,7 +62,7 @@ Total: 24 MD files
 1. `utac_falsifiability.md` - ⭐ Popper würde stolz sein!
 2. `validation_report_v1.0.1.md` - Empirische Zusammenfassung
 
-### 🟣 Infrastructure (14 docs)
+### 🟣 Infrastructure (15 docs)
 1. `README.md` - Living Documentation Tapestry Manifest
 2. `repo_cleanup_resonance.md` - Resonanzkarte für Struktur- & Metadaten-Aufgaben
 3. `utac_status_alignment_v1.2.md` - Status & Implementation Matrix v1.2-pre
@@ -77,6 +77,7 @@ Total: 24 MD files
 12. `utac_v2_data_lanterns.md` - Readiness-Karte für Manifest-Laternen (σ(β(R-Θ))=0.317, Urban-Heat aktiv, vier Laternen offen)
 13. `utac_v2_activation_tracker_2026-02.md` - Audit der offenen UTAC v2 Lücken (Daten, Automation, Metaquest, Release)
 14. `utac_v2_activation_tracker_2026-03.md` - Frische Audit-Laterne mit manuellem Verifikationslauf (26. Mär 2026)
+15. `utac_v2_gap_synopsis_2026-03.md` - Inventar "haben vs. brauchen" + Guard-Update (meta.logistic) für die UTAC v2 Laternen
 
 ---
 
@@ -91,7 +92,8 @@ Total: 24 MD files
 6. **resonance-bridge-map.md** für Analyse↔Simulator Parität
 7. **utac_v2_data_lanterns.md** sobald Manifest-Laternen aktiviert werden sollen
 8. **utac_v2_activation_tracker_2026-03.md** für den neuesten Überblick zu fehlenden Komponenten (Daten, Automation, Parität, Release)
-9. **zenodo_release_playbook.md** wenn \(R>\Theta\) Richtung Release zeigt
+9. **utac_v2_gap_synopsis_2026-03.md** wenn du eine kompakte Liste der bestehenden Assets vs. offenen Laternen plus Guard-Hinweise brauchst
+10. **zenodo_release_playbook.md** wenn \(R>\Theta\) Richtung Release zeigt
 
 ### Für Agenten:
 ```python

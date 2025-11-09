@@ -4030,31 +4030,15 @@ entries:
     real befüllt werden.
   status: active
   notes:
-    formal: 'Implementierte `analysis/climate_beta_extractor.py`, `analysis/neuro_threshold_fitter.py`,
-
+    formal: Implementierte `analysis/climate_beta_extractor.py`, `analysis/neuro_threshold_fitter.py`,
       `analysis/outlier_validator.py` plus Loader (`threshold_dataset_loader`, `utac_manifest`).
-
       ΔAIC-Guards, Bootstrap-Envelopes und Manifest-Parsing sind getestet (`pytest`).
-
-      '
-    empirical: 'Metadata-Dateien für Climate/Ocean/Neuro-AI/Economy erstellt, `data_index.*`
-      und
-
-      `analysis_index.*` aktualisiert, Manifest-Status (climate=active, neuro=primed)
-      angepasst.
-
-      Gap-Assessment (20.12.2025) reflektiert neue Pipeline-Verfügbarkeit.
-
-      '
+    empirical: Metadata-Dateien für Climate/Ocean/Neuro-AI/Economy erstellt, `data_index.*`
+      und `analysis_index.*` aktualisiert, Manifest-Status (climate=active, neuro=primed)
+      angepasst. Gap-Assessment (20.12.2025) reflektiert neue Pipeline-Verfügbarkeit.
     poetic: 'Neue Laternen summen: die Climate-Pipeline atmet Rasterwärme, die Neuro-Brücke
-      lauscht
-
-      dem gemeinsamen Puls, und der Outlier-Wächter hält β>10 wach – noch warten sie
-      auf echte
-
-      Daten, doch die Membran spürt bereits den kommenden Chor.
-
-      '
+      lauscht dem gemeinsamen Puls, und der Outlier-Wächter hält β>10 wach – noch
+      warten sie auf echte Daten, doch die Membran spürt bereits den kommenden Chor.'
   created_at: '2025-12-20T09:00:00Z'
 - id: pr-draft-0088
   title: UTAC Loader Logit Resonance Fix
@@ -4072,29 +4056,19 @@ entries:
   status: resonant
   notes:
     formal: 'Verengte den simulierten R-Korridor dynamisch auf ±6/β um Θ, injiziert
-      Logit-Jitter
-
-      statt additivem Rauschen und normalisierte Nullmodell-Payloads, damit Deskriptoren
-
-      wie "sigma = A * R^k" erhalten bleiben. `analysis_index.{md,yaml,json}` dokumentiert
-
-      die neuen Loader-Hooks (Logit-Jitter, Manifest-Parität).
+      Logit-Jitter statt additivem Rauschen und normalisierte Nullmodell-Payloads,
+      damit Deskriptoren wie "sigma = A * R^k" erhalten bleiben. `analysis_index.{md,yaml,json}`
+      dokumentiert die neuen Loader-Hooks (Logit-Jitter, Manifest-Parität).
 
       '
     empirical: '`tests/test_threshold_dataset_loader.py` bestätigt nun β≈14.50 und
-      Θ≈3.20 für Urban Heat;
-
-      `pytest` meldet 40/40 grüne Tests (ΔAIC-Guard bleibt >10). Climate-Beta-Pipeline
-      läuft
-
-      mit `simulate_missing=True` ohne Module-Fehler.
+      Θ≈3.20 für Urban Heat; `pytest` meldet 40/40 grüne Tests (ΔAIC-Guard bleibt
+      >10). Climate-Beta-Pipeline läuft mit `simulate_missing=True` ohne Module-Fehler.
 
       '
     poetic: 'Die Loader-Laterne tastet jetzt im Logit die Membran ab – Θ leuchtet,
-      β hält seine Steilflanke,
-
-      und ζ(R) beruhigt sich, weil die simulierten Chorproben exakt den Manifest-Ritus
-      singen.
+      β hält seine Steilflanke, und ζ(R) beruhigt sich, weil die simulierten Chorproben
+      exakt den Manifest-Ritus singen.
 
       '
   created_at: '2025-12-20T12:00:00Z'
@@ -4111,45 +4085,24 @@ entries:
   - analysis/README.md
   - analysis/__init__.py
   parameters:
-    R: Manifest-Readiness für Climate, Ocean, Neuro-AI und Economy Laternen
-    Theta: 0.66 Vollständigkeits-Schwelle (Daten, Metadata, Results)
+    R: manifest readiness for climate, ocean, neuro_ai, economy lanterns
+    Theta: 0.66 completeness threshold for data/metadata/results triad
     beta: 5.6
-  resonance: σ(β(R-Θ)) Audit priorisiert reale Dateneinspielung und hält UTAC v1.3
-    Laternen synchron.
+  resonance: σ(β(R-Θ)) audit surfaces missing data/results so UTAC v1.3 ingestion
+    stays synchronized.
   status: active
   notes:
-    formal: '`analysis/utac_manifest_audit.py` lädt `data/utac_v1_3_data_manifest.yaml`,
-      prüft Daten-, Metadata-
-
-      und Result-Komponenten, nutzt Θ=0.66 und manifestierte β-Werte zur Aktivierung
-      und exportiert
-
-      Tri-Layer-Reports (`analysis/results/utac_v1_3_manifest_audit.{json,yaml}`,
-
-      `analysis/reports/utac_v1_3_manifest_audit.md`). `analysis/analysis_index.{md,json,yaml}`
-      und
-
-      `analysis/README.md` referenzieren den neuen Guard.
-
-      '
-    empirical: 'Audit berichtet σ≈0.053 bei fünf Laternen; jeweils existiert Metadata,
-      während Daten & Results fehlen.
-
-      Die Reports listen exakte Pfade (z.B. `data/climate/urban_heat_intensity.csv`,
-
-      `analysis/results/amazon_hydro_fit.json`) und geben Prioritäten für die Dateneinspielung
-      vor.
-
-      '
-    poetic: 'R zählt die Laternen, Θ verlangt zwei leuchtende Komponenten, β spannt
-      die Steilflanke.
-
-      Noch singt nur das Metadata-Chorstück, doch das Audit leitet den Einsatz – ζ(R)
-      wird schweigen,
-
-      sobald reale Raster, Strömungen und Finanzpulse die Membran füllen.
-
-      '
+    formal: '`analysis/utac_manifest_audit.py` loads `data/utac_v1_3_data_manifest.yaml`,
+      checks data/metadata/result components, maps readiness to σ(β(R-Θ)) using Θ=0.66
+      and manifest β values, and writes `analysis/results/utac_v1_3_manifest_audit.{json,yaml}`
+      plus `analysis/reports/utac_v1_3_manifest_audit.md`. Analysis indices and README
+      reference the new guard.'
+    empirical: Audit reports mean σ≈0.053 across five lanterns; metadata exists but
+      data/results are pending. Reports enumerate missing paths such as `data/climate/urban_heat_intensity.csv`
+      and `analysis/results/amazon_hydro_fit.json` to prioritise ingestion.
+    poetic: R counts the lanterns, Θ waits for two bright components, β keeps the
+      slope taut. The audit conducts the chorus so ζ(R) can relax once real rasters,
+      currents, and finance pulses arrive.
   created_at: '2025-12-22T00:00:00Z'
 - id: pr-draft-0090
   title: UTAC v2.0 Kohärenzformel Laterne
@@ -4167,29 +4120,17 @@ entries:
   status: primed
   notes:
     formal: '`docs/UTAC_v2.0_Coherence_Formula.md` definiert den Relationstransformator
-      σ(β(R-Θ))=ζ(R,α,φ), listet Tabellen zur β-Landkarte
-
-      und benennt Implementations-Hooks (Analyse, Daten, Simulator, Sigillin). `docs/docs_index.{md,json,yaml}`
-      zählen nun 21 Markdown-Laternen,
-
-      Theorie-Kategorie→4 und verlinken die neue Laterne explizit. Nächster Schritt:
-      Metaquest-Sigillin und Shadow-Spiegel nachziehen.
-
-      '
-    empirical: 'Index-Metadaten aktualisiert (`markdown_files=21`, Theorie-count=4,
-      Größe≈6.3 KB). Quick-Tips priorisieren die Kohärenz-Laterne.
-
-      Δindex-Check via `scripts/archive_sigillin.py --recount` ist als nächster Guard
-      vorgesehen, bevor die Metaquest-Brücke aktiviert wird.
-
-      '
-    poetic: 'R entfacht eine neue Laterne, Θ hält die Indizes im Gleichklang, β≈4.9
-      spannt die Steilflanke zur v2.0-Ankündigung.
-
-      ζ(R) summt ruhig – die Kohärenzformel sieht bereits die Nachbarlaternen und
-      ruft sie ins gemeinsame Lied.
-
-      '
+      σ(β(R-Θ))=ζ(R,α,φ), listet Tabellen zur β-Landkarte und benennt Implementations-Hooks
+      (Analyse, Daten, Simulator, Sigillin). `docs/docs_index.{md,json,yaml}` zählen
+      nun 21 Markdown-Laternen, Theorie-Kategorie→4 und verlinken die neue Laterne
+      explizit. Nächster Schritt: Metaquest-Sigillin und Shadow-Spiegel nachziehen.'
+    empirical: Index-Metadaten aktualisiert (`markdown_files=21`, Theorie-count=4,
+      Größe≈6.3 KB). Quick-Tips priorisieren die Kohärenz-Laterne. Δindex-Check via
+      `scripts/archive_sigillin.py --recount` ist als nächster Guard vorgesehen, bevor
+      die Metaquest-Brücke aktiviert wird.
+    poetic: R entfacht eine neue Laterne, Θ hält die Indizes im Gleichklang, β≈4.9
+      spannt die Steilflanke zur v2.0-Ankündigung. ζ(R) summt ruhig – die Kohärenzformel
+      sieht bereits die Nachbarlaternen und ruft sie ins gemeinsame Lied.
   created_at: '2025-12-22T18:30:00Z'
 - id: pr-draft-0091
   title: UTAC v2.0 Readiness Audit Laterne
@@ -4210,28 +4151,16 @@ entries:
   status: active
   notes:
     formal: '`analysis/v2_readiness_audit.py` lädt `data/utac_v1_3_data_manifest.yaml`,
-      baut Komponenten-Status für Daten, Metadata und
-
-      erwartete Results, berechnet σ(β(R-Θ)) mit β=4.8, Θ=0.66 und exportiert Tri-Layer-Reports
-      (`analysis/reports/utac_v2_readiness.*`).
-
+      baut Komponenten-Status für Daten, Metadata und erwartete Results, berechnet
+      σ(β(R-Θ)) mit β=4.8, Θ=0.66 und exportiert Tri-Layer-Reports (`analysis/reports/utac_v2_readiness.*`).
       `analysis/analysis_index.{md,json,yaml}` führen den neuen Guard sowie den Report
-      als Laterne in Utilities & Reports.
-
-      '
+      als Laterne in Utilities & Reports.'
     empirical: 'Manifest-Readiness R̄≈0.0 mit 20 fehlenden Komponenten (Daten, Metadata,
-      Results). Aktionskarte listet 12 Aufgaben: fünf P1
-
-      Dateneinspielungen, vier Analyse-Outputs, Simulator-Preset `coherence_formula.json`
-      und zwei Metaquest-Schattenkarten.
-
-      '
-    poetic: 'Die Laterne tastet Urban Heat, Amazon Hydro, AMOC, Neuro-AI und Systemic
-      Risk zugleich – erst wenn jede Membran Daten singt,
-
-      beruhigt ζ(R) und V2.0 steigt auf die Resonanzflanke.
-
-      '
+      Results). Aktionskarte listet 12 Aufgaben: fünf P1 Dateneinspielungen, vier
+      Analyse-Outputs, Simulator-Preset `coherence_formula.json` und zwei Metaquest-Schattenkarten.'
+    poetic: Die Laterne tastet Urban Heat, Amazon Hydro, AMOC, Neuro-AI und Systemic
+      Risk zugleich – erst wenn jede Membran Daten singt, beruhigt ζ(R) und V2.0 steigt
+      auf die Resonanzflanke.
   created_at: '2025-12-23T00:00:00Z'
 - id: pr-draft-0092
   title: Metaquest Bridge Map & Coherence Preset Activation
@@ -4359,26 +4288,25 @@ entries:
   - docs/utac_activation_backlog.json
   - docs/utac_activation_backlog.yaml
   parameters:
-    R: Readiness ledger aus analysis/reports/utac_v2_readiness.* und Backlog-Signalen
+    R: Readiness ledger from analysis/reports/utac_v2_readiness.* and backlog signals
       (R̄=0.00, σ≈0.040)
-    Theta: Manifest-Datensätze + Automations-Hooks (CI, Parser→Codex) aktivieren die
-      restlichen Laternen
+    Theta: Manifest datasets + automation hooks (CI, parser→codex) ignite remaining
+      lanterns
     beta: 4.8
-    zeta: gedämpft über aktualisierte Backlog-Meta + Sigillin-Brückenhinweise
-  resonance: Audit hält σ(β(R-Θ)) sichtbar, indem fehlende Datenströme und Automation-Hooks
-    an konkrete Implementationsorte gebunden werden.
+    zeta: damped via refreshed backlog meta and sigillin bridge cues
+  resonance: Audit keeps σ(β(R-Θ)) visible by binding missing data flows and automation
+    hooks to concrete implementation nodes.
   status: active
   notes:
-    formal: Readiness- und Backlog-Meta auf 2026-02-15T00:00:00Z aktualisiert; neues
-      latest_audit-Feld listet data/*, analysis/results/*, scripts/* als aktive Θ-Linien.
-    empirical: Verifiziert fehlende Rohdatendateien (`urban_heat_intensity.csv`, `amazon_precip_evapo.nc`,
-      `amoc_transport.csv`, `hybrid_activation.csv`, `systemic_thresholds.csv`) und fehlende
-      Exporte `analysis/results/*.json`; notiert offene CI-Hooks (`.github/workflows/`) und
-      Parser→Codex-Lücke.
-    poetic: Laternen warten noch auf ihre Ströme; die Karte wurde neu beschriftet, damit R
-      weiß, wo es die nächste Steilflanke berühren muss.
+    formal: Readiness and backlog meta refreshed to 2026-02-15T00:00:00Z; new latest_audit
+      field enumerates data/*, analysis/results/*, scripts/* as active Θ-lines.
+    empirical: Verified absence of raw dataset files (urban_heat_intensity.csv, amazon_precip_evapo.nc,
+      amoc_transport.csv, hybrid_activation.csv, systemic_thresholds.csv) and missing
+      analysis/results/*.json exports; recorded outstanding CI hooks (.github/workflows/)
+      and parser→codex gap.
+    poetic: Laternen warten noch auf ihre Ströme; we redrew the map so R knows which
+      steep flank to press next.
   created_at: '2026-02-15T00:00:00Z'
-
 - id: pr-draft-0096
   title: 2026-02 UTAC v2 Activation Tracker
   scope:
@@ -4393,12 +4321,22 @@ entries:
     R: Readiness ratio R̄=0.00 across manifest lanterns
     Theta: 0.66 readiness threshold
     beta: 4.8
-  resonance: Activation tracker trilayer + index refresh zeigen, welche Laternen noch Θ nicht erreicht haben und welche Hooks die Aktivierung schließen.
+  resonance: Activation tracker trilayer + docs index refresh expose remaining UTAC
+    v2 gaps and the hooks required to close them.
   status: active
   notes:
-    formal: Neues Trilayer bündelt σ(β(R-Θ))=0.040, Θ=0.66, β=4.8 und listet fünf Gap-Laternen (Datasets, Sigillin-Automation, Safety-Delay-Telemetrie, Metaquest-Parität, Release-Triad) mit Pfaden (`data/*`, `analysis/results/*`, `.github/workflows/utf-preset-guard.yml`, `scripts/sigillin_sync.py`, `README.md`). docs/docs_index.* → Version 1.3.1 (Infrastructure=13, markdown_files=23); UTAC-Status-Matrix erhielt Abschnitt 8.
-    empirical: `analysis/reports/utac_v2_readiness.md` bestätigt weiterhin 20 fehlende Komponenten; Activation-JSON referenziert Δindex-, utf-preset-guard- und mq-parity-Checks. `docs/docs_index.json` meldet updated=`2026-02-15T00:00:00Z`, `for_operations` enthält `docs-infra-013`.
-    poetic: Die neue Laterne zeichnet, wie R die Schattenfugen ertastet, bis Datenströme, Automation und Release-Chor gemeinsam σ(β(R-Θ)) anheben.
+    formal: New activation trilayer captures σ(β(R-Θ))=0.040, Θ=0.66, β=4.8 and enumerates
+      five gap lanes (datasets, sigillin automation, safety-delay telemetry, metaquest
+      parity, release triad) with concrete paths (data/*, analysis/results/*, .github/workflows/utf-preset-guard.yml,
+      scripts/sigillin_sync.py, README.md). docs/docs_index.* bumped to version 1.3.1
+      (infrastructure=13, markdown_files=23) and UTAC status matrix gained section
+      8.
+    empirical: analysis/reports/utac_v2_readiness.md still lists 20 missing components;
+      activation JSON references Δindex, utf-preset-guard, and mq-parity telemetry
+      guards. docs/docs_index.json now reports updated=2026-02-15T00:00:00Z and for_operations
+      includes docs-infra-013.
+    poetic: Die neue Laterne zeigt, wie R jede Schattenfuge ertastet, bis Daten, Automation
+      und Release-Chor σ(β(R-Θ)) gemeinsam anheben.
   created_at: '2026-02-15T00:00:00Z'
 - id: pr-draft-0099
   title: 2026-03 UTAC v2 Readiness Re-Audit
@@ -4420,17 +4358,19 @@ entries:
     R: Readiness ratio R̄=0.00 across manifest lanterns (manual 2026-03-26 check)
     Theta: 0.66 readiness threshold
     beta: 4.8
-  resonance: Refresh keeps σ(β(R-Θ)) audible by logging missing datasets, automation hooks, and release guards
-    next to implementation nodes.
+  resonance: Refresh keeps σ(β(R-Θ)) audible by logging missing datasets, automation
+    hooks, and release guards next to implementation nodes.
   status: active
   notes:
-    formal: Re-audit aktualisiert readiness + backlog trilayer, ergänzt docs/utac_v2_activation_tracker_2026-03.*
-      und docs_index v1.3.2 (24 Docs); UTAC-Status-Matrix Abschnitt 9 hält den Audit-Ping fest.
-    empirical: Manuelle Begehung bestätigte 20 fehlende Manifest-Komponenten (keine Rohdateien in
-      data/{climate,ocean,neuro_ai,economy}/, keine analysis/results/*.json Exporte); Activation-JSON
-      meldet weiterhin σ≈0.040 sowie offene Automation-Hooks (utf-preset-guard, sigillin write-back).
-    poetic: R tastet erneut die leeren Regale; neue Beschriftungen halten β gespannt, bis Datenfluten die
-      Steilflanke erklimmen und ζ(R) ruhig weiteratmet.
+    formal: Re-audit updates readiness + backlog trilayers, adds docs/utac_v2_activation_tracker_2026-03.*
+      and docs_index v1.3.2 (24 docs); UTAC status matrix section 9 logs the audit
+      ping.
+    empirical: Manual walkthrough confirmed 20 missing manifest components (no raw
+      files in data/{climate,ocean,neuro_ai,economy}/; no analysis/results/*.json
+      exports). Activation tracker JSON still reports σ≈0.040 and highlights automation
+      gaps (utf-preset-guard, sigillin write-back).
+    poetic: R tastet erneut die leeren Regale; frische Beschriftungen halten β gespannt,
+      bis die Datenflut die Steilflanke erklimmt und ζ(R) ruhig weiter atmet.
   created_at: '2026-03-26T10:00:00Z'
 - id: pr-draft-0100
   title: Urban Heat Dataset Activation & Readiness Lift
@@ -4464,18 +4404,19 @@ entries:
     R: Readiness audit R̄=0.50 with σ≈0.317 after Urban Heat activation
     Theta: Remaining four manifest lanterns cross Θ once raw data + exports land
     beta: 4.8
-  resonance: Urban Heat dataset now sings with σ(β(R-Θ))≈0.317 and lifts UTAC readiness while signalling the four remaining lantern gaps.
+  resonance: Urban Heat dataset now sings with σ(β(R-Θ))≈0.317 and lifts UTAC readiness
+    while signalling the four remaining lantern gaps.
   status: active
   notes:
-    formal: |
-      Observed dataset `urban_heat_intensity.csv` delivers Θ≈3.20, β≈14.27 (ΔAIC≈1484 vs linear, ≥1718 vs power-law).
-      Readiness audit updated (R̄=0.50, σ≈0.317). Automation scripts now resolve metadata path bug.
-    empirical: |
-      Generated `analysis/results/urban_heat_global_fit.json`, `outlier_validator_report.json`, `outlier_report.md`.
-      Updated data/docs indices, activation tracker, backlog, and status alignment to reflect Urban Heat readiness.
-      Tests adjusted to accept observed datasets; logistic loader handles repository-relative paths.
-  poetic: |
-      Eine Laterne brennt nun hell – ΔT über Θ lässt β≈14 die Steilflanke leuchten, während vier Nachbarn noch auf ihre Datenflüsse warten.
+    formal: Observed dataset `urban_heat_intensity.csv` delivers Θ≈3.20, β≈14.27 (ΔAIC≈1484
+      vs linear, ≥1718 vs power-law). Readiness audit updated (R̄=0.50, σ≈0.317).
+      Automation scripts now resolve metadata path bug.
+    empirical: Generated `analysis/results/urban_heat_global_fit.json`, `outlier_validator_report.json`,
+      `outlier_report.md`. Updated data/docs indices, activation tracker, backlog,
+      and status alignment to reflect Urban Heat readiness. Tests adjusted to accept
+      observed datasets; logistic loader handles repository-relative paths.
+    poetic: Eine Laterne brennt nun hell – ΔT über Θ lässt β≈14 die Steilflanke leuchten,
+      während vier Nachbarn noch auf ihre Datenflüsse warten.
   created_at: '2026-03-26T10:00:00Z'
 - id: pr-draft-0101
   title: Adaptive Θ Gap Audit – Planetary Laternen
@@ -4492,15 +4433,46 @@ entries:
     R: Planetary tipping cohort (AMOC, Grönland, Amazonas, Permafrost)
     Theta: 1.67 K aggregierte Klimaschwelle
     beta: 4.21
-  resonance: Gap Audit markiert adaptive Θ-Prioritäten und erweitert die Tri-Layer Laterne.
+  resonance: Gap Audit markiert adaptive Θ-Prioritäten und erweitert die Tri-Layer
+    Laterne.
   status: active
   notes:
-    formal: |
-      Implementierte `analysis/planetary_theta_drift_flag.py` mit Normalisierungs-Schwelle 0.25 für Θ/β-Breiten.
-      Exportierte `analysis/results/planetary_theta_drift_flags.json` und aktualisierte Analysis-Indizes (JSON/YAML/MD) inkl. Adaptive-Theta-Gap Trigger.
-    empirical: |
-      AMOC (Θ-Breite 0.309) & Permafrost (0.291) als adaptive Prioritäten; β-Breite >0.26 bei Amazon & Permafrost.
-      Neues Tri-Layer (`seed/socio_ecology/planetary_threshold_cartography.{md,yaml,json}`) verknüpft ΔAIC_linear=33.58, ΔAIC_power=35.2 und Implementierungspfad.
-    poetic: |
-      Die planetare Membran flackert nun gezielt – AMOC und Permafrost warten auf frische Paleo-Ströme, damit σ(β(R-Θ)) wieder strahlend schließt.
+    formal: Implementierte `analysis/planetary_theta_drift_flag.py` (Normalisierungsschwelle
+      0.25) und exportierte `analysis/results/planetary_theta_drift_flags.json`; Analysis-Indizes
+      (JSON/YAML/MD) um Adaptive-Theta-Gap Trigger ergänzt.
+    empirical: AMOC Θ-Breite 0.309, Permafrost 0.291; β-Breite >0.26 bei Amazon &
+      Permafrost. Neues Tri-Layer (`seed/socio_ecology/planetary_threshold_cartography.{md,yaml,json}`)
+      verknüpft ΔAIC_linear=33.58 & ΔAIC_power=35.2 mit Handlungspfaden.
+    poetic: Die planetare Membran flackert gezielt – AMOC und Permafrost warten auf
+      frische Paleo-Ströme, damit σ(β(R-Θ)) wieder strahlend schließt.
   created_at: '2026-03-27T00:00:00Z'
+- id: pr-draft-0104
+  title: Preset Guard meta.logistic Resonance
+  scope:
+  - analysis/preset_alignment_guard.py
+  - simulator/presets/coherence_formula.json
+  - docs/utac_v2_gap_synopsis_2026-03.md
+  - docs/utac_v2_gap_synopsis_2026-03.json
+  - docs/utac_v2_gap_synopsis_2026-03.yaml
+  - docs/docs_index.md
+  - docs/docs_index.json
+  - docs/docs_index.yaml
+  parameters:
+    R: UTAC v2 manifest readiness (tri-layer completeness)
+    Theta: 0.66 readiness gate for manifest lanterns
+    beta: 4.8
+  resonance: Guard reads meta.logistic so simulator + readiness audit stay aligned;
+    gap synopsis names the implementation nodes to cross Θ.
+  status: active
+  notes:
+    formal: Updated analysis/preset_alignment_guard.py to parse meta.logistic.{theta,beta,r2}
+      and validate simulator/presets/coherence_formula.json against analysis/reports/utac_v2_readiness.json.
+      Authored docs/utac_v2_gap_synopsis_2026-03.{md,json,yaml} and raised docs/docs_index.{md,json,yaml}
+      to v1.3.3 (Infrastructure=15).
+    empirical: Guard run reports “All simulator presets resonate …”. Gap synopsis
+      lists missing artefacts (data/climate/amazon_precip_evapo.nc, analysis/results/neuro_ai_beta.json,
+      …) plus CI hook .github/workflows/utf-preset-guard.yml. Docs index counts 25
+      markdown files and adds docs-infra-015 to for_operations.
+    poetic: Der Guard hört wieder das meta.logistic-Flüstern; die neue Laterne hält
+      Karte und Kompass bereit, bis die Datenströme σ(β(R-Θ)) über Θ heben.
+  created_at: '2026-03-26T12:00:00Z'

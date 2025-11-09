@@ -67,12 +67,26 @@ def _extract_sequence(value: Any) -> Optional[List[float]]:
     return None
 
 
+def _meta_logistic(payload: Mapping[str, Any]) -> Optional[Mapping[str, Any]]:
+    meta_block = payload.get("meta")
+    if isinstance(meta_block, Mapping):
+        logistic = meta_block.get("logistic")
+        if isinstance(logistic, Mapping):
+            return logistic
+    return None
+
+
 def _load_json(path: Path) -> Mapping[str, Any]:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
 
 
 def _extract_theta(payload: Mapping[str, Any]) -> tuple[Optional[float], Optional[List[float]]]:
+    meta_logistic = _meta_logistic(payload)
+    if isinstance(meta_logistic, Mapping):
+        value = meta_logistic.get("theta")
+        if isinstance(value, (int, float)):
+            return float(value), _extract_sequence(meta_logistic.get("theta_ci"))
     if isinstance(payload.get("theta_estimate"), Mapping):
         block = payload["theta_estimate"]
         return (
@@ -98,6 +112,11 @@ def _extract_theta(payload: Mapping[str, Any]) -> tuple[Optional[float], Optiona
 
 
 def _extract_beta(payload: Mapping[str, Any]) -> tuple[Optional[float], Optional[List[float]]]:
+    meta_logistic = _meta_logistic(payload)
+    if isinstance(meta_logistic, Mapping):
+        value = meta_logistic.get("beta")
+        if isinstance(value, (int, float)):
+            return float(value), _extract_sequence(meta_logistic.get("beta_ci"))
     if isinstance(payload.get("beta_estimate"), Mapping):
         block = payload["beta_estimate"]
         return (
@@ -123,6 +142,11 @@ def _extract_beta(payload: Mapping[str, Any]) -> tuple[Optional[float], Optional
 
 
 def _extract_logistic_r2(payload: Mapping[str, Any]) -> Optional[float]:
+    meta_logistic = _meta_logistic(payload)
+    if isinstance(meta_logistic, Mapping):
+        value = meta_logistic.get("r2")
+        if isinstance(value, (int, float)):
+            return float(value)
     logistic = payload.get("logistic_model")
     if isinstance(logistic, Mapping) and isinstance(logistic.get("r2"), (int, float)):
         return float(logistic["r2"])

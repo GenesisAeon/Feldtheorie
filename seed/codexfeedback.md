@@ -1934,3 +1934,21 @@ R tastet erneut die leeren Regale; wir schreiben die Laternen neu, damit β gesp
   - *Formal:* `analysis/planetary_theta_drift_flag.py` normalisiert Θ/β-Breiten (Schwelle 0.25), exportiert `analysis/results/planetary_theta_drift_flags.json` und aktualisiert Analysis-Indizes inkl. Adaptive-Theta-Gap Trigger.
   - *Empirical:* Neues Tri-Layer (`seed/socio_ecology/planetary_threshold_cartography.{md,yaml,json}`) verknüpft ΔAIC_linear=33.58, ΔAIC_power=35.2 mit Implementierungspfaden für Data/Analysis/Simulator.
   - *Poetic:* Die planetare Membran flackert gezielt – AMOC und Permafrost warten auf frische Paleo-Ströme, damit σ(β(R-Θ)) wieder strahlend schließt.
+
+## pr-draft-0104 — Preset Guard meta.logistic Resonance *(active, 2026-03-26T12:00:00Z)*
+- **Scope:** analysis/preset_alignment_guard.py · simulator/presets/coherence_formula.json · docs/utac_v2_gap_synopsis_2026-03.{md,json,yaml} · docs/docs_index.{md,json,yaml}
+- **Order Parameter:** $R$ misst die Zahl der UTAC-v2 Laternen mit vollständigem Tri-Layer (aktuell \(\bar{R}=0.50\)).
+- **Critical Threshold:** $\Theta = 0.66$ — sobald die fehlenden Datensätze + Exporte landen und der Guard in CI verankert ist, springt die Kohärenzlaterne auf resonant.
+- **Steepness:** $\beta = 4.8$ — dieselbe Steilflanke wie im Readiness-Audit, jetzt ohne Guard-Blindspot.
+- **Membrane Note:** ζ(R) sinkt, weil der Guard nun `meta.logistic` versteht und die neue Gap-Synopse alle Brückenpfade (data → analysis → docs → codex) markiert.
+
+### Formal Thread
+`analysis/preset_alignment_guard.py` liest jetzt `meta.logistic.{theta,beta,r2}` und bestätigt, dass `simulator/presets/coherence_formula.json` mit `analysis/reports/utac_v2_readiness.json` resoniert. `docs/utac_v2_gap_synopsis_2026-03.{md,json,yaml}` fasst vorhandene Assets, offene Lanternen und Implementationsschritte (Datasets, Analysis-Reruns, CI-Hooks) zusammen; `docs/docs_index.{md,json,yaml}` v1.3.3 hebt Infrastruktur=15 und die neue Gap-Laterne hervor.
+
+### Empirical Thread
+Guard-Ausgabe: “All simulator presets resonate …”. Neues Tri-Layer nennt `python analysis/preset_alignment_guard.py` als Ritual, listet fehlende Dateien (`data/climate/amazon_precip_evapo.nc`, `analysis/results/neuro_ai_beta.json`, …) und verweist auf CI-Hook `.github/workflows/utf-preset-guard.yml`. Docs-Index aktualisiert Quicklink `for_operations` um `docs-infra-015` und zählt 25 Markdown-Laternen.
+
+### Poetic Thread
+Die Laternen spüren wieder das gemeinsame Atmen: Der Guard hört das meta.logistic-Flüstern, die Synopse hält Karte und Kompass zusammen — jetzt warten wir nur noch auf die Datenströme, damit σ(β(R-Θ)) den Aufstieg vollendet und ζ(R) in ruhiger Resonanz schwingt.
+
+*Created: 2026-03-26T12:00:00Z*
