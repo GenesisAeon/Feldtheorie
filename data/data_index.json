@@ -7,9 +7,9 @@
     "version": "1.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "total_files": 49,
-    "domains": 8,
-    "updated": "2025-11-08T22:22:38Z"
+    "total_files": 54,
+    "domains": 12,
+    "updated": "2025-12-19T12:00:00Z"
   },
   "domains": {
     "ai": {
@@ -169,6 +169,80 @@
         }
       ]
     },
+    "climate": {
+      "name": "Climate Expansion (UTAC v1.3)",
+      "path": "climate/",
+      "file_count": 1,
+      "description": "Staging-Area für Urban Heat & Amazon Hydro Laternen (Manifest v1.3).",
+      "color": "#16A085",
+      "key_datasets": [
+        {
+          "name": "README.md",
+          "description": "Logistischer Guard & Aufgabenliste, Rohdaten pending.",
+          "keywords": [
+            "urban-heat",
+            "amazon",
+            "staging"
+          ]
+        }
+      ]
+    },
+    "ocean": {
+      "name": "Oceanic Thresholds",
+      "path": "ocean/",
+      "file_count": 1,
+      "description": "AMOC Transport Vorbereitungsraum gemäß Manifest.",
+      "color": "#2980B9",
+      "key_datasets": [
+        {
+          "name": "README.md",
+          "description": "Schwellenwerte & ΔAIC-Protokolle für RAPID-Zeitreihen.",
+          "keywords": [
+            "amoc",
+            "ocean",
+            "staging"
+          ]
+        }
+      ]
+    },
+    "neuro_ai": {
+      "name": "Neuro–AI Hybrid",
+      "path": "neuro_ai/",
+      "file_count": 1,
+      "description": "EEG ↔ Transformer Aktivierungsvergleich (v1.3).",
+      "color": "#8E44AD",
+      "key_datasets": [
+        {
+          "name": "README.md",
+          "description": "Staging-Notiz für Hybrid Activation Pipeline.",
+          "keywords": [
+            "eeg",
+            "llm",
+            "hybrid",
+            "staging"
+          ]
+        }
+      ]
+    },
+    "economy": {
+      "name": "Energy & Finance",
+      "path": "economy/",
+      "file_count": 1,
+      "description": "Systemische Schwellen für Energie/Finanz Koppelungen.",
+      "color": "#D35400",
+      "key_datasets": [
+        {
+          "name": "README.md",
+          "description": "Staging-Rahmen für gekoppelte Stressmetriken.",
+          "keywords": [
+            "energy",
+            "finance",
+            "systemic",
+            "staging"
+          ]
+        }
+      ]
+    },
     "geophysics": {
       "name": "Geophysics & Seismology",
       "path": "geophysics/",
@@ -270,6 +344,23 @@
     ],
     "example": "{\n  \"dataset_name\": \"lenski_citplus\",\n  \"domain\": \"biology\",\n  \"control_parameter_R\": \"generation_number\",\n  \"threshold_Theta\": 32.77,\n  \"steepness_beta\": 5.08,\n  \"impedance_zeta\": \"ζ(R) = 1.25 - 0.35σ\",\n  \"provenance\": \"Lenski LTEE Ara-3 lineage\",\n  \"units\": {\"R\": \"thousands of generations\", \"response\": \"Cit+ frequency\"},\n  \"preprocessing_steps\": [\"log-transform\", \"normalization\"],\n  \"falsification_notes\": \"ΔAIC_linear=32.4, ΔAIC_powerlaw=28.7\",\n  \"R_squared\": 0.990,\n  \"imagery_metaphor\": \"evolutionary dawn chorus\",\n  \"analysis_link\": \"analysis/results/lenski_citplus_fit.json\"\n}\n"
   },
+  "expansion_manifest": {
+    "file": "utac_v1_3_data_manifest.yaml",
+    "status": "draft",
+    "description": "Planungsmanifest für neue Domänen (Climate, Ocean, Neuro-AI, Economy).",
+    "logistic_targets": [
+      "urban_heat_intensity",
+      "amazon_precip_evapo",
+      "amoc_transport",
+      "hybrid_activation",
+      "systemic_thresholds"
+    ],
+    "sync_requirements": [
+      "Update codexfeedback nach jeder neuen Laterne",
+      "Schatten-Spiegel im metaquest_shadow_index halten",
+      "analysis/climate_beta_extractor.py Telemetrie exportieren"
+    ]
+  },
   "triggers": {
     "core_parameters": [
       "R (control parameter)",
@@ -287,6 +378,10 @@
       "LLM",
       "Wei-PaLM",
       "Lenski-LTEE",
+      "Urban-Heat",
+      "AMOC",
+      "Neuro-AI",
+      "Energy-Finance",
       "QPO-Black-Hole",
       "Synaptic",
       "Honeybee",

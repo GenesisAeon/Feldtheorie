@@ -1,7 +1,7 @@
 # 📊 Analysis Index - Resonance Bay Navigator
 
 **Version:** 1.0.0
-**Datum:** 7. November 2025
+**Datum:** 19. Dezember 2025
 **Verzeichnis:** `analysis/`
 
 ---
@@ -30,7 +30,7 @@ analysis/
 ├── 33 Python-Skripte (Domain-Fits, Batch-Processing, Labs)
 ├── batch_configs/   (4 YAML/JSON Konfigurationen)
 ├── batch_runs/      (2 gespeicherte Batch-Runs)
-├── reports/         (1 QPO-Summary)
+├── reports/         (2 Summaries: QPO, UTAC v1.3 Gap)
 ├── sigillin_sync/   (Telemetry-Exports aus `scripts/sigillin_sync.py`)
 └── results/         ⭐ ZENTRAL! Alle Fit-Ergebnisse (JSON)
 ```
@@ -130,6 +130,7 @@ analysis/
 
 #### **reports/** - Summaries
 - `qpo_membrane_summary.json` (Astrophysik)
+- `utac_v1_3_gap_assessment.md` (UTAC v1.3 Gap Ledger)
 
 #### **sigillin_sync/** - Telemetry Harness Reports
 - `latest.json` – Metaquest sigillin_sync Statusbericht (JSON)

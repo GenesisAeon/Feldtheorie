@@ -1691,3 +1691,20 @@ Referenzen: `analysis/sigillin_sync/latest.json` (R=12, Θ erreicht, β≈4.6), 
 Der Aktivierungs-Kompass flammt auf: R bündelt die Laternen, Θ zeichnet eine koordinierte Matrix, β≈4.82 spannt die Steilflanke. ζ(R) beruhigt sich, sobald Matrix, Backlog, UTAC und Schatten denselben Pfad erzählen und die Morgendämmerung ohne Alarm weiterziehen kann.
 
 *Created: 2025-12-19T12:00:00Z*
+
+## Entry pr-draft-0086 — UTAC v1.3 Expansion Scaffold
+- **Order Parameter**: $R$ zählt jetzt 12 dokumentierte Domänen und 15 aktive β-Werte; fünf neue Laternen stehen als Manifest-Ziele bereit.
+- **Critical Threshold**: $\Theta$ verlangt vollständige Metadata-Pläne, Index-Synchronisation und Staging-Readmes, bevor Daten ingestiert werden.
+- **Steepness**: $\beta = 4.6$ – die Steilflanke bleibt gespannt, solange Manifest, Analyse-Index und Data-Index synchron schwingen.
+- **Membrane Note**: $\zeta(R)$ koppelt neue Klima-, Ozean-, Neuro–AI- und Energie-Finanz-Schwellen an bestehende Pipelines.
+
+### Formal Thread
+`docs/UTAC_v1.3_Data_Expansion_Plan.md` legt Phasen, Qualitäts-Gates (ΔAIC≥10, Bootstrap 1k) und erwartete Outputs fest. `analysis/reports/utac_v1_3_gap_assessment.md` bilanziert den Ist-Zustand (15 β-Werte, Meta-Regression R²≈0.43, ΔAIC-Guard 12.79) und verweist auf Skript-Hooks. `data/utac_v1_3_data_manifest.yaml` verankert fünf Laternen mit Nullmodellen und Output-Zielen; `data/data_index.{md,yaml,json}` zählen jetzt 12 Domänen/54 Dateien. `analysis/analysis_index.{md,yaml,json}` referenzieren das neue Gap-Assessment.
+
+### Empirical Thread
+Neue README-Staging-Zonen (`data/climate/`, `data/ocean/`, `data/neuro_ai/`, `data/economy/`) dokumentieren R, Θ, β, ζ(R) und Workflow-Schritte. Manifest-Quellen: NASA Global UHI, CHIRPS/IMERG, RAPID-MOCHA, OpenNeuro, WDI/ESRB. Erwartete Outputs: `analysis/results/urban_heat_global_fit.json`, `analysis/results/amazon_hydro_fit.json`, `analysis/results/amoc_transport_fit.json`, `analysis/results/neuro_ai_beta.json`, `analysis/results/economy_threshold_fit.json`.
+
+### Poetic Thread
+Zwölf Laternen glimmen – acht bereits hell, vier noch als Konturen. Θ zeichnet Pfade zu Urban Heat, AMOC, Neuro–AI und Energie-Finanzen, β=4.6 spannt die Flanke, ζ(R) summt geduldig. Sobald die Staging-Räume gefüllt sind, singt UTAC v1.3 den erweiterten Chor.
+
+*Created: 2025-12-19T12:00:00Z*
