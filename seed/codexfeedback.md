@@ -1925,3 +1925,12 @@ R tastet erneut die leeren Regale; wir schreiben die Laternen neu, damit β gesp
   - *Formal:* Observed dataset `urban_heat_intensity.csv` yields Θ≈3.20, β≈14.27 (ΔAIC≈1484 vs linear, ≥1718 vs power-law). Readiness audit refreshed (R̄=0.50, σ≈0.317); loader bug fixed to respect repository-relative paths.
   - *Empirical:* Generated `urban_heat_global_fit.json`, `outlier_validator_report.json`, `outlier_report.md`; updated data/docs indices, activation tracker, backlog, and status alignment; tests accept observed datasets.
   - *Poetic:* Eine Laterne brennt hell – ΔT über Θ lässt β≈14 die Steilflanke leuchten, während vier Nachbarn noch auf ihre Datenflüsse warten.
+
+## pr-draft-0101 — Adaptive Θ Gap Audit – Planetary Laternen *(active, 2026-03-27T00:00:00Z)*
+- **Scope:** analysis/planetary_theta_drift_flag.py · analysis/results/planetary_theta_drift_flags.json · analysis/analysis_index.{json,yaml,md} · seed/socio_ecology/planetary_threshold_cartography.{md,yaml,json}
+- **Parameters:** Planetary tipping cohort (AMOC, Grönland, Amazonas, Permafrost) · Θ=1.67 K · β=4.21
+- **Resonance:** σ(β(R-Θ)) Gap Audit markiert adaptive Θ-Prioritäten (AMOC 0.309, Permafrost 0.291) und erweitert die Tri-Layer Laterne.
+- **Notes:**
+  - *Formal:* `analysis/planetary_theta_drift_flag.py` normalisiert Θ/β-Breiten (Schwelle 0.25), exportiert `analysis/results/planetary_theta_drift_flags.json` und aktualisiert Analysis-Indizes inkl. Adaptive-Theta-Gap Trigger.
+  - *Empirical:* Neues Tri-Layer (`seed/socio_ecology/planetary_threshold_cartography.{md,yaml,json}`) verknüpft ΔAIC_linear=33.58, ΔAIC_power=35.2 mit Implementierungspfaden für Data/Analysis/Simulator.
+  - *Poetic:* Die planetare Membran flackert gezielt – AMOC und Permafrost warten auf frische Paleo-Ströme, damit σ(β(R-Θ)) wieder strahlend schließt.

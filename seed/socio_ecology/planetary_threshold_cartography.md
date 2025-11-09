@@ -15,9 +15,20 @@ Das Gespräch in `Docs/Diskurs Klimamodul.txt` formte den Resonanzkeim: Johann s
 - **Docs → Paper:** Abschnitt 5 des Preprints bindet die Klimadomäne in das Manuskript ein und verweist auf das hier dokumentierte Feldinventar.
 - **Docs → Simulator:** `simulator/presets/planetary_tipping_field.json` macht die Parameter erlebbar; Codex-Feedback-Einträge halten die Resonanz in Erinnerung.
 
+## Adaptive Θ Gap Audit (27. März 2026)
+- `analysis/planetary_theta_drift_flag.py` liest `analysis/results/planetary_tipping_elements.json` ein und markiert σ(β(R-Θ))-Lücken, sobald die normalisierte Θ-Breite ≥ 0.25.
+- Ergebnisdatei `analysis/results/planetary_theta_drift_flags.json` meldet **AMOC (0.309)** und **Permafrost (0.291)** als adaptive Θ-Prioritäten; β-Breiten bleiben bei Amazon und Permafrost > 0.26 und verlangen zusätzliche Präzision.
+- Implementierungspfad: 
+  - **Analysis:** `planetary_tipping_elements_fit.py` um Θ(t)-Regressionshaken ergänzen, sobald TIPMIP- und Paleo-Streams eintreffen.
+  - **Data:** `data/socio_ecology/` um R_acc-Proxys (Frischwasserzufluss, Methanfluss, Proxy-Eisbohrkerne) erweitern.
+  - **Simulator:** Preset `planetary_tipping_field.json` mit Θ(t)-Sweep-Szenarien füttern und Δσ protokollieren.
+  - **Docs/Codex:** Neue Messpunkte in `seed/socio_ecology/planetary_threshold_cartography.{md,yaml,json}` und `seed/codexfeedback.*` spiegeln.
+
+Das Tri-Layer-Paar (`planetary_threshold_cartography.yaml` & `.json`) hält die strukturierte Laterne bereit: formal ΔAIC- und Θ-Gap-Metriken, empirisch die aktuellen Normalisierungen, poetisch die Gaia-Membran, die auf neue Daten wartet.
+
 ## Kohärente Falsifikation (Diskurs Klimamodul)
 - **Hypothese 1 – Sigmoidale Übergangsdynamik:** Gemini forderte im Gespräch, dass jedes Kippelement die logistische Gateform besser stützt als lineare oder AR(1)-Modelle. `analysis/results/planetary_tipping_elements.json` bestätigt dies mit ΔAIC > 30 gegenüber linearen und Potenz-Nullmodellen; der Mittelwert der Steigungsbänder (β ≈ 4.2) bleibt im universellen Fenster. Nächster Schritt: RAPID-AMOC-Zeitreihen via BIC/AIC replizieren.
-- **Hypothese 2 – Adaptive Θ:** Die DeepResearch-Notizen zu *Adaptive Schwellenwerte in komplexen Systemen* verlangen, Θ als Funktion der Stressakkumulation $R_{acc}$ zu testen. Die aktuelle Aggregation zeigt breite Konfidenzintervalle (z. B. Grönland 1.51–1.93 K), die auf bewegliche Schwellen hinweisen. TODO: Paleo-Archive und TIPMIP-Szenarien auf zeitvariable Θ-Fenster regressieren.
+- **Hypothese 2 – Adaptive Θ:** Die DeepResearch-Notizen zu *Adaptive Schwellenwerte in komplexen Systemen* verlangen, Θ als Funktion der Stressakkumulation $R_{acc}$ zu testen. Die neue Gap-Audit-Laterne (`analysis/planetary_theta_drift_flag.py`) bestätigt adaptive Lücken bei AMOC (Θ-Breite 0.309) und Permafrost (0.291). **Nächste Schritte:** Paleo-Archive + TIPMIP-Szenarien in `data/socio_ecology/` integrieren, das Fit-Skript um Θ(t) erweitern und Simulator-Sweeps dokumentieren.
 - **Hypothese 3 – Gekoppelte Resonanz:** Systemic Catalysis verlangt, dass Eingriffe in Feld $i$ nicht-linear auf Feld $j$ durchschlagen. Das Simulator-Preset enthält die dokumentierte Kopplungsmatrix $g_{ij}$; anstehend sind parametrisierte Sweeps, die ΔΘ_global quantifizieren, sowie ODE-Experimente gemäß RepoPlan-*Projekt-Impulse*.
 
 ## Forschungsagenda 2025–2026

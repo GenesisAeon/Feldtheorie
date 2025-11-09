@@ -6,9 +6,9 @@
     "description": "Analysis-Skripte und Notebooks, die UTF logistic response σ(β(R-Θ))\nan empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.\n",
     "version": "1.0.0",
     "created": "2025-11-06",
-    "updated": "2025-12-28T00:00:00Z",
+    "updated": "2026-03-27T00:00:00Z",
     "status": "active",
-    "python_files": 41,
+    "python_files": 42,
     "subdirectories": 5
   },
   "categories": {
@@ -34,7 +34,7 @@
       "name": "Utilities & Guards",
       "description": "Helper-Funktionen, Guards, Corrections",
       "color": "#9B59B6",
-      "count": 9
+      "count": 10
     },
     "subdirs": {
       "name": "Unterverzeichnisse",
@@ -662,6 +662,21 @@
       "description": "Aggregiert Manifest-Status, Analysis-Hooks, Simulator-Presets und\nSigillin-Brücken zu einem σ(β(R-Θ)) Readiness-Score. Exportiert\nTri-Layer-Reports (`analysis/reports/utac_v2_readiness.{json,yaml,md}`)\nund priorisiert Aktionen für die V2.0 Aktivierung.\n"
     },
     {
+      "id": "analysis-util-010",
+      "name": "planetary_theta_drift_flag.py",
+      "category": "utilities",
+      "type": "diagnostics",
+      "status": "active",
+      "relevance": "medium",
+      "keywords": [
+        "socio-ecology",
+        "theta-drift",
+        "σ(β(R-Θ))",
+        "gap-audit"
+      ],
+      "description": "Adaptive Θ drift guard für Planetary Tipping Elements.\nNormalisiert Θ/β Konfidenzbänder, markiert σ(β(R-Θ)) Gaps und liefert Implementierungsleitfäden.\nOutput: results/planetary_theta_drift_flags.json\n"
+    },
+    {
       "id": "analysis-special-001",
       "name": "adaptive_membrane_phase_scan.py",
       "category": "fit_scripts",
@@ -852,16 +867,17 @@
         "seismic_rupture_threshold_fit.py (Cascadia)"
       ]
     },
-    "socio_ecology": {
-      "name": "Socio-Ecology & Climate",
-      "scripts": 4,
-      "highlights": [
-        "amazon_resilience_fit.py (β=14.6)",
-        "urban_heat_canopy_fit.py (β=16.3 OUTLIER!)",
-        "planetary_tipping_elements_fit.py",
-        "outlier_beta_review.py (Instrumentation-Flag Ledger)"
-      ]
-    },
+  "socio_ecology": {
+    "name": "Socio-Ecology & Climate",
+    "scripts": 5,
+    "highlights": [
+      "amazon_resilience_fit.py (β=14.6)",
+      "urban_heat_canopy_fit.py (β=16.3 OUTLIER!)",
+      "planetary_tipping_elements_fit.py",
+      "outlier_beta_review.py (Instrumentation-Flag Ledger)",
+      "planetary_theta_drift_flag.py (Adaptive Θ Gap Audit)"
+    ]
+  },
     "cross_domain": {
       "name": "Cross-Domain & Meta",
       "scripts": 6,
@@ -913,7 +929,8 @@
       "Meta-Regression",
       "Universality",
       "Cohort-Summary",
-      "Instrumentation-Flag"
+      "Instrumentation-Flag",
+      "Adaptive-Theta-Gap"
     ]
   },
   "quicklinks": {
@@ -931,7 +948,8 @@
       "analysis-batch-005",
       "analysis-batch-003",
       "analysis-util-001",
-      "analysis-util-004"
+      "analysis-util-004",
+      "analysis-util-010"
     ],
     "high_impact_fits": [
       "analysis-fit-001",
