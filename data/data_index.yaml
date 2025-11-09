@@ -14,9 +14,9 @@ meta:
   version: "1.0.0"
   created: "2025-11-06"
   status: "active"
-  total_files: 49
-  domains: 8
-  updated: "2025-11-08T22:22:38Z"
+  total_files: 54
+  domains: 12
+  updated: "2025-12-19T12:00:00Z"
 
 # ═══════════════════════════════════════════════════════════════════
 # DOMAINS: Die 8 Datenquellen-Bereiche
@@ -96,6 +96,50 @@ domains:
       - name: "domain_covariates.csv"
         description: "Kovariaten für Meta-Regression (UTAC v1.2)"
         keywords: [covariates, meta-regression, v1.2, drivers]
+
+  climate:
+    name: "Climate Expansion (UTAC v1.3)"
+    path: "climate/"
+    file_count: 1
+    description: "Staging-Area für Urban Heat & Amazon Hydro Laternen (Manifest v1.3)."
+    color: "#16A085"
+    key_datasets:
+      - name: "README.md"
+        description: "Logistischer Guard & Aufgabenliste, Rohdaten pending."
+        keywords: [urban-heat, amazon, staging]
+
+  ocean:
+    name: "Oceanic Thresholds"
+    path: "ocean/"
+    file_count: 1
+    description: "AMOC Transport Vorbereitungsraum gemäß Manifest."
+    color: "#2980B9"
+    key_datasets:
+      - name: "README.md"
+        description: "Schwellenwerte & ΔAIC-Protokolle für RAPID-Zeitreihen."
+        keywords: [amoc, ocean, staging]
+
+  neuro_ai:
+    name: "Neuro–AI Hybrid"
+    path: "neuro_ai/"
+    file_count: 1
+    description: "EEG ↔ Transformer Aktivierungsvergleich (v1.3)."
+    color: "#8E44AD"
+    key_datasets:
+      - name: "README.md"
+        description: "Staging-Notiz für Hybrid Activation Pipeline."
+        keywords: [eeg, llm, hybrid, staging]
+
+  economy:
+    name: "Energy & Finance"
+    path: "economy/"
+    file_count: 1
+    description: "Systemische Schwellen für Energie/Finanz Koppelungen."
+    color: "#D35400"
+    key_datasets:
+      - name: "README.md"
+        description: "Staging-Rahmen für gekoppelte Stressmetriken."
+        keywords: [energy, finance, systemic, staging]
 
   geophysics:
     name: "Geophysics & Seismology"
@@ -177,6 +221,21 @@ metadata_schema:
       "analysis_link": "analysis/results/lenski_citplus_fit.json"
     }
 
+expansion_manifest:
+  file: "utac_v1_3_data_manifest.yaml"
+  status: "draft"
+  description: "Planungsmanifest für neue Domänen (Climate, Ocean, Neuro-AI, Economy)."
+  logistic_targets:
+    - "urban_heat_intensity"
+    - "amazon_precip_evapo"
+    - "amoc_transport"
+    - "hybrid_activation"
+    - "systemic_thresholds"
+  sync_requirements:
+    - "Update codexfeedback nach jeder neuen Laterne"
+    - "Schatten-Spiegel im metaquest_shadow_index halten"
+    - "analysis/climate_beta_extractor.py Telemetrie exportieren"
+
 # ═══════════════════════════════════════════════════════════════════
 # TRIGGER-BEGRIFFE
 # ═══════════════════════════════════════════════════════════════════
@@ -198,6 +257,10 @@ triggers:
     - LLM
     - Wei-PaLM
     - Lenski-LTEE
+    - Urban-Heat
+    - AMOC
+    - Neuro-AI
+    - Energy-Finance
     - QPO-Black-Hole
     - Synaptic
     - Honeybee

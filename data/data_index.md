@@ -1,14 +1,14 @@
 # 📦 Data Index - Resonance Archive Navigator
 
 **Version:** 1.0.0
-**Datum:** 6. November 2025
+**Datum:** 19. Dezember 2025
 **Verzeichnis:** `data/`
 
 ---
 
 ## 🎯 Was ist das?
 
-Die **Data Resonance Archive** - der empirische Schatz von UTAC! Hier liegen die Rohdaten aus 8 Domänen, die das β-Spektrum (2.5-16.3) beweisen.
+Die **Data Resonance Archive** - der empirische Schatz von UTAC! Hier liegen die Rohdaten aus 12 Domänen, die das β-Spektrum (2.5-16.3) beweisen und jetzt die v1.3-Erweiterung vorbereiten.
 
 ```
 data/
@@ -19,9 +19,13 @@ data/
 ├── derived/          (5 files)  ⭐ ZENTRAL! beta_estimates.csv
 ├── geophysics/       (4 files)  🌍 Cascadia, Seismik
 ├── socio_ecology/   (10 files)  🌿 Amazon, Urban Heat, AMOC
-└── safety_delay/    (4 files)  🛡️ τ*-Controller ΔAIC Ledger
+├── safety_delay/    (4 files)  🛡️ τ*-Controller ΔAIC Ledger
+├── climate/         (1 file)   🌡️ UTAC v1.3 Climate Staging
+├── ocean/           (1 file)   🌊 AMOC Threshold Staging
+├── neuro_ai/        (1 file)   🧠🤖 Hybrid Activation Staging
+└── economy/         (1 file)   ⚡💶 Energy-Finance Threshold Staging
 
-Total: 47 files
+Total: 54 files
 ```
 
 ---
@@ -31,6 +35,7 @@ Total: 47 files
 ### ⭐ **MUST-SEE:**
 - `derived/beta_estimates.csv` - **ALLE β-Werte!** (Kern von UTAC)
 - `derived/domain_covariates.csv` - Kovariaten für Meta-Regression v1.2
+- `utac_v1_3_data_manifest.yaml` - Planungsmanifest für neue Laternen (Climate, Ocean, Neuro-AI, Economy)
 
 ### 🔥 **High-Impact Datasets:**
 - `ai/wei_emergent_abilities.csv` - Wei's PaLM (β=3.47±0.47)
@@ -46,7 +51,7 @@ Total: 47 files
 
 ---
 
-## 📊 Die 8 Domänen
+## 📊 Die 12 Domänen
 
 ### 🤖 AI (9 files)
 **Was:** LLM Emergence, Introspection, Wei's PaLM Data
@@ -121,6 +126,38 @@ Total: 47 files
 - `safety_delay_delta_aic_20251107T211928Z.csv` - σ(β(R-Θ)) falsification vs lineare & konstante Nullmodelle
 
 **Hinweis:** Generiert über `python -m simulator.cli safety-delay` inkl. Metadaten & Summary JSON.
+
+---
+
+### 🌡️ Climate Expansion (1 file)
+**Was:** Staging-Bereich für Urban Heat & Amazon Hydro Datensätze (UTAC v1.3)
+
+**Key Artefakt:**
+- `README.md` – Logistischer Guard & Aufgabenliste (Manifest-Einträge `utac-v1_3-ds-001/002`).
+
+---
+
+### 🌊 Oceanic Thresholds (1 file)
+**Was:** AMOC Transport Staging laut UTAC v1.3 Manifest
+
+**Key Artefakt:**
+- `README.md` – ΔAIC-Protokoll & Workflow für RAPID Array Integration.
+
+---
+
+### 🧠🤖 Neuro–AI Hybrid (1 file)
+**Was:** Vorbereitung EEG ↔ Transformer Aktivierungsvergleiche
+
+**Key Artefakt:**
+- `README.md` – Workflow & Nullmodelle (`randomized_prompt_baseline`, `phase_scrambled_surrogate`).
+
+---
+
+### ⚡💶 Energy & Finance (1 file)
+**Was:** Staging für gekoppelte Energie-/Finanz-Schwellen
+
+**Key Artefakt:**
+- `README.md` – Anleitung zur Konstruktion des Coupled Energy-Finance Index.
 
 ---
 
@@ -206,11 +243,11 @@ beta_estimates = 'data/derived/beta_estimates.csv'
 
 ## 🌊 Die Essenz
 
-> **"47 Dateien. 8 Domänen. Ein β-Spektrum (2.5-16.3)."**
+> **"54 Dateien. 12 Domänen. Ein β-Spektrum (2.5-16.3)."**
 
 > **"Von Wei's PaLM (β=3.47) bis Cascadia (β=16.29) - die Daten sind REAL."**
 
-> **"`derived/beta_estimates.csv` ist der Rosetta-Stone von UTAC."**
+> **"`derived/beta_estimates.csv` ist der Rosetta-Stone von UTAC, `utac_v1_3_data_manifest.yaml` die Karte für neue Laternen."**
 
 ---
 

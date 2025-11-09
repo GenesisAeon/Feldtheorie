@@ -6,10 +6,10 @@
     "description": "Analysis-Skripte und Notebooks, die UTF logistic response σ(β(R-Θ))\nan empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.\n",
     "version": "1.0.0",
     "created": "2025-11-06",
+    "updated": "2025-12-19T12:00:00Z",
     "status": "active",
     "python_files": 33,
-    "subdirectories": 5,
-    "updated": "2025-11-08T22:22:38Z"
+    "subdirectories": 5
   },
   "categories": {
     "fit_scripts": {
@@ -419,7 +419,7 @@
         "β-variance",
         "ΔAIC"
       ],
-      "description": "Refresh der Meta-Regression σ(β(R-Θ)) mit nichtlinearen Kovariaten.\nWLS R²=0.43 (adj. R²=-0.33) bei ΔAIC-Minimum 12.79; Bootstrap-Median R²≈0.99 [0.43,1.00].\nRandom-Forest-Importanz betont coupling_memory (0.25) & SNR (0.15). Output: results/beta_meta_regression_v2_*.json.\n"
+      "description": "Refresh der Meta-Regression σ(β(R-Θ)) mit nichtlinearem Feature-Mix.\nWLS R²≈0.43 (adj. R²≈-0.33) bei ΔAIC-Minimum 12.79; Bootstrap-Median R²≈0.99 [0.43, 1.00].\nRandom-Forest-Hinweise: coupling_memory (0.25), SNR (0.15), log_theta (0.09).\nOutput: results/beta_meta_regression_v2_* (Summary, Diagnostics, Bootstrap).\n"
     },
     {
       "id": "analysis-batch-009",
@@ -435,7 +435,7 @@
         "ΔAIC",
         "resonance"
       ],
-      "description": "Parameter-Sweeps für simulation/safety_delay_field.py.\nExportiert analysis/results/safety_delay_sweep_YYYYMMDDTHHMMSSZ.json (inkl. Replikate) mit τ_delay, β-Shift, Kontrollenergie und ΔAIC gegen lineare & konstante Nullmodelle.\nMeta-Resonanz (Kontrollzentralität × CREP) liefert Codex- und UTAC-Brückenwerte; simulator/cli safety-delay spiegelt die Runs nach data/safety_delay/.\n"
+      "description": "Parameter-Sweeps für simulation/safety_delay_field.py mit Euler-Maruyama Dynamik.\nExportiert analysis/results/safety_delay_sweep_YYYYMMDDTHHMMSSZ.json inklusive Replikate,\nτ_delay, Kontrollenergie, β-Shift und ΔAIC gegen lineare sowie konstante Nullmodelle.\nMeta-Resonanz (Kontrollzentralität × CREP) wird für Codex- und UTAC-Brücken protokolliert;\nsimulator/cli safety-delay spiegelt die Runs nach data/safety_delay/ (CSV+Summary+Metadata).\n"
     },
     {
       "id": "analysis-lab-001",
@@ -527,7 +527,7 @@
         "ΔAIC",
         "falsification"
       ],
-      "description": "Prüft hochsteile β-Profile (Amazon, Urban Heat) gegen glatte Nullmodelle.\nExportiert instrumentation_flag Ledger: results/outlier_beta_review.json\n"
+      "description": "Prüft hochsteile β-Profile (Amazon, Urban Heat) gegen glatte Nullmodelle.\nExportiert instrumentation_flag Ledger: results/outlier_beta_review.json.\n"
     },
     {
       "id": "analysis-special-001",
@@ -641,13 +641,16 @@
       "path": "reports/",
       "description": "Zusammenfassende Reports & Summaries",
       "files": [
-        "qpo_membrane_summary.json"
+        "qpo_membrane_summary.json",
+        "utac_v1_3_gap_assessment.md"
       ],
       "keywords": [
         "reports",
         "summary",
         "qpo",
-        "astrophysics"
+        "astrophysics",
+        "gap",
+        "utac-v1_3"
       ]
     },
     "results": {
@@ -780,7 +783,8 @@
     "start_here": [
       "analysis-infra-002",
       "analysis-infra-003",
-      "analysis-batch-006"
+      "analysis-batch-006",
+      "analysis-batch-008"
     ],
     "critical_for_utac": [
       "analysis-batch-006",
@@ -790,7 +794,7 @@
       "analysis-batch-005",
       "analysis-batch-003",
       "analysis-util-001",
-      "analysis-util-004  # Outlier β Guard (Amazon & Urban Heat)"
+      "analysis-util-004"
     ],
     "high_impact_fits": [
       "analysis-fit-001",

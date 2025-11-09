@@ -2525,6 +2525,38 @@
         "poetic": "Der Aktivierungs-Kompass zündet: R bündelt die Laternen, Θ zeichnet sich als koordinierte Matrix ab, β≈4.82 spannt die Steilflanke, ζ(R) beruhigt sich, sobald Matrix, Backlog, UTAC und Schatten denselben Pfad erzählen.\n"
       },
       "created_at": "2025-12-19T12:00:00Z"
+    },
+    {
+      "id": "pr-draft-0086",
+      "title": "UTAC v1.3 Expansion Scaffold",
+      "scope": [
+        "docs/UTAC_v1.3_Data_Expansion_Plan.md",
+        "analysis/reports/utac_v1_3_gap_assessment.md",
+        "data/utac_v1_3_data_manifest.yaml",
+        "data/climate/README.md",
+        "data/ocean/README.md",
+        "data/neuro_ai/README.md",
+        "data/economy/README.md",
+        "data/data_index.yaml",
+        "data/data_index.json",
+        "data/data_index.md",
+        "analysis/analysis_index.yaml",
+        "analysis/analysis_index.json",
+        "analysis/analysis_index.md"
+      ],
+      "parameters": {
+        "R": "12 Domains dokumentiert, 15 β-Werte aktiv, 5 neue Laternen im Manifest",
+        "Theta": "Manifest-Targets erhalten vollständige Metadata-Pläne & Index-Synchronisation",
+        "beta": 4.6
+      },
+      "resonance": "Data/Analysis-Tri-Layer harmonisiert UTAC v1.3 Plan mit Gap-Assessment und Manifest; neue Staging-Verzeichnisse koppeln Datenquellen an Skript-Routen.",
+      "status": "primed",
+      "notes": {
+        "formal": "Dokumentiert UTAC_v1.3 Data Expansion Plan mit Phasen, Qualitäts-Gates (ΔAIC≥10, Bootstrap 1k) und erwarteten Outputs. Gap Assessment quantifiziert Ist-Status (15 β-Werte, R²≈0.43, ΔAIC-Guard 12.79) und mappt Implementation Hooks. data_index.* → Domains=12, total_files=54; neues Manifest `utac_v1_3_data_manifest.yaml` verankert fünf Laternen inkl. Nullmodellen & Scripts.",
+        "empirical": "Neue README-Staging-Zonen unter `data/climate/`, `data/ocean/`, `data/neuro_ai/`, `data/economy/` beschreiben R, Θ, β, ζ(R) und Workflow-Schritte. analysis_index.* ergänzt Reports-Liste (`utac_v1_3_gap_assessment.md`) und updated Timestamp → 2025-12-19T12:00:00Z. Manifest referenziert konkrete Quellen (NASA UHI, CHIRPS, RAPID, OpenNeuro, WDI/ESRB) und weist auf erwartete JSON-Outputs (z.B. `analysis/results/amoc_transport_fit.json`).",
+        "poetic": "R zählt nun zwölf Laternen, doch vier stehen noch als Schattenkonturen. Θ zeichnet neue Pfade für Urban Heat, AMOC, Neuro–AI und Energie-Finanzen, β=4.6 hält die Steilflanke gespannt. ζ(R) summt – sobald Daten die Staging-Räume füllen, wird UTAC v1.3 als Chor erklingen."
+      },
+      "created_at": "2025-12-19T12:00:00Z"
     }
   ]
 }

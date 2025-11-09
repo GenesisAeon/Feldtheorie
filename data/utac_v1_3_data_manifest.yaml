@@ -1,0 +1,171 @@
+# UTAC v1.3 Data Manifest – Target Laternen für σ(β(R-Θ))
+# Erstellt: 2025-12-19
+# Maintainer: Johann Römer & Aeon (Data Resonance Archive)
+
+meta:
+  version: "0.1.0"
+  status: "draft"
+  description: |
+    Manifest der geplanten Datensätze für UTAC v1.3. Jeder Eintrag folgt der
+    data/AGENTS.md Tri-Layer-Direktive: Metadata-first, Falsifizierbarkeit,
+    logistischer Kontext. ΔAIC Guards ≥ 10 gegen lineare Nullmodelle.
+  related_documents:
+    - docs/UTAC_v1.3_Data_Expansion_Plan.md
+    - analysis/reports/utac_v1_3_gap_assessment.md
+    - seed/NextVersionPlan/Pläne.txt
+  targets_total: 5
+
+datasets:
+  - id: utac-v1_3-ds-001
+    title: "Global Urban Heat Intensity (Raster)"
+    path: "data/climate/urban_heat_intensity.csv"
+    domain: "climate"
+    source:
+      name: "NASA Global UHI"
+      citation: "Zhao et al. (2013) Urban Heat Island Dataset"
+      license: "CC-BY-4.0"
+      access: "https://earthdata.nasa.gov/"
+    control_parameter_R: "land_surface_temperature_delta"
+    threshold_Theta_estimate: 3.2
+    steepness_beta_target: 14.5
+    impedance_zeta_notes: "ζ(R) koppelt anthropogene Abwärme mit Bodenfeuchte"
+    preprocessing:
+      - "Download annual composites (day/night)"
+      - "Resample to 0.25° grid"
+      - "Compute ΔT urban−rural baseline"
+    null_models:
+      - "linear_regression"
+      - "power_law_fit"
+      - "cubic_spline_baseline"
+    expected_outputs:
+      - "analysis/results/urban_heat_global_fit.json"
+      - "analysis/results/outlier_report.md"
+    integration_scripts:
+      - "analysis/climate_beta_extractor.py"
+      - "analysis/outlier_validator.py"
+    resonance_status: "primed"
+
+  - id: utac-v1_3-ds-002
+    title: "Amazon Precipitation & Evapotranspiration"
+    path: "data/climate/amazon_precip_evapo.nc"
+    domain: "climate"
+    source:
+      name: "CHIRPS + IMERG"
+      citation: "Funk et al. (2015) + NASA GPM IMERG"
+      license: "CC-BY-4.0"
+      access: "https://www.chc.ucsb.edu/data/chirps"
+    control_parameter_R: "standardized_precipitation_index"
+    threshold_Theta_estimate: 0.62
+    steepness_beta_target: 13.8
+    impedance_zeta_notes: "ζ(R) koppelt Bodenfeuchte mit Waldtranspiration"
+    preprocessing:
+      - "Download monthly precipitation (0.1° grid)"
+      - "Merge evapotranspiration fields"
+      - "Compute SPI + moisture resilience index"
+    null_models:
+      - "linear_regression"
+      - "power_law_fit"
+      - "seasonal_arima"
+    expected_outputs:
+      - "analysis/results/amazon_hydro_fit.json"
+      - "analysis/results/outlier_report.md"
+    integration_scripts:
+      - "analysis/climate_beta_extractor.py"
+    resonance_status: "primed"
+
+  - id: utac-v1_3-ds-003
+    title: "AMOC Transport (RAPID Array 26°N)"
+    path: "data/ocean/amoc_transport.csv"
+    domain: "ocean"
+    source:
+      name: "RAPID-MOCHA"
+      citation: "Smeed et al. (2018)"
+      license: "Research use"
+      access: "https://www.rapid.ac.uk/rapidmoc/"
+    control_parameter_R: "overturning_strength_sverdrup"
+    threshold_Theta_estimate: 14.0
+    steepness_beta_target: 9.6
+    impedance_zeta_notes: "ζ(R) verbindet Tiefenwasserbildung mit Windstress"
+    preprocessing:
+      - "Fetch daily transport measurements"
+      - "Apply 90-day running mean"
+      - "Normalize by climatological baseline"
+    null_models:
+      - "linear_trend"
+      - "power_law_fit"
+      - "state_space_smoother"
+    expected_outputs:
+      - "analysis/results/amoc_transport_fit.json"
+      - "analysis/results/climate_beta_summary.json"
+    integration_scripts:
+      - "analysis/potential_cascade_lab.py"
+      - "analysis/climate_beta_extractor.py"
+    resonance_status: "draft"
+
+  - id: utac-v1_3-ds-004
+    title: "Neuro–AI Hybrid Activation"
+    path: "data/neuro_ai/hybrid_activation.csv"
+    domain: "neuro_ai"
+    source:
+      name: "OpenNeuro + LLM Log Telemetry"
+      citation: "Poldrack et al. (OpenNeuro) + GenesisAeon Telemetry"
+      license: "CC-BY + OpenRAIL"
+      access: "https://openneuro.org/"
+    control_parameter_R: "stimulus_complexity_index"
+    threshold_Theta_estimate: 0.48
+    steepness_beta_target: 6.1
+    impedance_zeta_notes: "ζ(R) koppelt hippocampales Replay mit Transformator-Aktivierungen"
+    preprocessing:
+      - "Align EEG epochs with LLM prompt batches"
+      - "Compute joint activation manifold"
+      - "Normalize amplitudes to [0,1]"
+    null_models:
+      - "linear_regression"
+      - "randomized_prompt_baseline"
+      - "phase_scrambled_surrogate"
+    expected_outputs:
+      - "analysis/results/neuro_ai_beta.json"
+      - "analysis/results/neuro_ai_bootstrap.json"
+    integration_scripts:
+      - "analysis/neuro_threshold_fitter.py"
+    resonance_status: "draft"
+
+  - id: utac-v1_3-ds-005
+    title: "Energy & Financial Systemic Thresholds"
+    path: "data/economy/systemic_thresholds.csv"
+    domain: "economy"
+    source:
+      name: "World Bank WDI + ECB ESRB"
+      citation: "World Development Indicators (2025) + ESRB Risk Dashboard"
+      license: "CC-BY-4.0"
+      access: "https://data.worldbank.org/"
+    control_parameter_R: "coupled_energy_finance_index"
+    threshold_Theta_estimate: 1.15
+    steepness_beta_target: 7.4
+    impedance_zeta_notes: "ζ(R) koppelt Energiepreis-Volatilität mit Kreditspannungen"
+    preprocessing:
+      - "Download quarterly indices"
+      - "Decompose seasonal signals"
+      - "Construct coupled stress metric"
+    null_models:
+      - "linear_regression"
+      - "vector_autoregression"
+      - "power_law_fit"
+    expected_outputs:
+      - "analysis/results/economy_threshold_fit.json"
+      - "analysis/results/meta_v2_summary_refresh.json"
+    integration_scripts:
+      - "analysis/adaptive_membrane_phase_scan.py"
+      - "analysis/beta_meta_regression_v2.py"
+    resonance_status: "draft"
+
+telemetry:
+  last_reviewed: "2025-12-19T12:00:00Z"
+  next_actions:
+    - "Create placeholder directories under data/ for climate, ocean, neuro_ai, economy"
+    - "Add metadata templates once raw files downloaded"
+    - "Trigger codexfeedback entry after first dataset lands"
+  shadow_guard_hooks:
+    - "seed/shadow_sigillin/metaquest/metaquest_shadow_index.md"
+    - "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml"
+
