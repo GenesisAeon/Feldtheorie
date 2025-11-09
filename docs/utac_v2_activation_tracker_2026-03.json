@@ -1,0 +1,371 @@
+{
+  "meta": {
+    "title": "UTAC v2 Activation Tracker \u2014 2026-03 Audit",
+    "compiled": "2026-03-26T10:00:00Z",
+    "sigma": "\u03c3(\u03b2(R-\u0398))",
+    "status": "active",
+    "maintainer": "Johann R\u00f6mer",
+    "authors": [
+      "Johann R\u00f6mer",
+      "Claude-Code",
+      "ChatGPT-Codex"
+    ],
+    "related": [
+      "analysis/reports/utac_v2_readiness.json",
+      "analysis/reports/utac_v2_readiness.md",
+      "docs/utac_status_alignment_v1.2.md",
+      "docs/utac_v2_data_lanterns.md",
+      "analysis/sigillin_sync/latest.json"
+    ]
+  },
+  "logistic_pulse": {
+    "R_mean": 0.0,
+    "Theta": 0.66,
+    "beta": 4.8,
+    "sigma_value": 0.04,
+    "zeta_notes": "Backlog, status matrix, and codex echoes keep \u03b6(R) damped while manifest directories still lack raw data and exports (verified 2026-03-26)."
+  },
+  "existing_assets": [
+    {
+      "category": "data_analysis",
+      "description": "Core analysis pipelines already encode \u03c3(\u03b2(R-\u0398)) guards and \u0394AIC comparisons.",
+      "anchors": [
+        "analysis/climate_beta_extractor.py",
+        "analysis/neuro_threshold_fitter.py",
+        "analysis/outlier_validator.py",
+        "analysis/beta_meta_regression_v2.py",
+        "analysis/results/safety_delay_sweep_20251108T211723Z.json"
+      ]
+    },
+    {
+      "category": "documentation",
+      "description": "Documentation lanterns narrate readiness gaps and reference backlog/status hooks.",
+      "anchors": [
+        "docs/utac_status_alignment_v1.2.md",
+        "docs/utac_v2_data_lanterns.md",
+        "docs/resonance-bridge-map.md"
+      ]
+    },
+    {
+      "category": "simulation",
+      "description": "Safety-Delay presets and guards keep \u03c4_delay telemetry reproducible.",
+      "anchors": [
+        "simulator/presets/safety_delay_bridge.json",
+        "simulator/src/presets.ts",
+        "Makefile: utf-preset-guard"
+      ]
+    },
+    {
+      "category": "sigillin",
+      "description": "Metaquest light/shadow trilayers mirror bridge, compass, and lantern shelves.",
+      "anchors": [
+        "seed/bedeutungssigillin/metaquest/",
+        "seed/shadow_sigillin/metaquest/",
+        "analysis/sigillin_sync/latest.json"
+      ]
+    }
+  ],
+  "activation_gaps": [
+    {
+      "id": "gap-utac-data-lanterns",
+      "name": "UTAC manifest datasets & exports",
+      "domain": "data+analysis",
+      "order_parameter": "manifest readiness ratio R\u0304",
+      "theta_target": 0.66,
+      "beta_guard": 4.8,
+      "status": "dark",
+      "existing": [
+        "data/utac_v1_3_data_manifest.yaml",
+        "analysis/reports/utac_v2_readiness.md",
+        "docs/utac_v2_data_lanterns.md"
+      ],
+      "missing": [
+        "data/climate/urban_heat_intensity.csv",
+        "data/climate/urban_heat_intensity.csv.metadata.json",
+        "data/climate/amazon_precip_evapo.nc",
+        "data/climate/amazon_precip_evapo.nc.metadata.json",
+        "data/ocean/amoc_transport.csv",
+        "data/ocean/amoc_transport.csv.metadata.json",
+        "data/neuro_ai/hybrid_activation.csv",
+        "data/neuro_ai/hybrid_activation.csv.metadata.json",
+        "data/economy/systemic_thresholds.csv",
+        "data/economy/systemic_thresholds.csv.metadata.json",
+        "analysis/results/urban_heat_global_fit.json",
+        "analysis/results/amazon_hydro_fit.json",
+        "analysis/results/amoc_transport_fit.json",
+        "analysis/results/neuro_ai_beta.json",
+        "analysis/results/neuro_ai_bootstrap.json",
+        "analysis/results/economy_threshold_fit.json",
+        "analysis/results/meta_v2_summary_refresh.json",
+        "analysis/results/outlier_report.md",
+        "analysis/results/climate_beta_summary.json"
+      ],
+      "implementation_nodes": [
+        "data/climate/",
+        "data/ocean/",
+        "data/neuro_ai/",
+        "data/economy/",
+        "analysis/v2_readiness_audit.py",
+        "docs/utac_v2_data_lanterns.*",
+        "docs/utac_activation_backlog.*",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "notes": {
+        "formal": "\u03b2=4.8 guard remains dormant until manifest datasets and \u0394AIC exports exist. Re-run analysis/v2_readiness_audit.py to update \u03c3(\u03b2(R-\u0398)).",
+        "empirical": "Manual walkthrough on 2026-03-26 confirmed 20 missing components: the data directories contain only README/metadata stubs and no raw files; readiness exports remain absent so readiness ratio stays at 0.00 with \u03c3\u22480.040.",
+        "poetic": "Laternen atmen flach; without raw rivers the logistic chorus cannot crest \u0398 even though the manifest keeps the gate open."
+      }
+    },
+    {
+      "id": "gap-sigillin-automation",
+      "name": "Sigillin automation & index guards",
+      "domain": "automation",
+      "order_parameter": "\u0394index parity",
+      "theta_target": 0.0,
+      "beta_guard": 4.7,
+      "status": "primed",
+      "existing": [
+        "scripts/crep_parser.py",
+        "scripts/sigillin_sync.py",
+        "analysis/sigillin_sync/latest.json"
+      ],
+      "missing": [
+        "Automated codex payload generation",
+        "CI guard for scripts/archive_sigillin.py --recount",
+        "Index write-back into seed/seed_index.*",
+        "Index write-back into docs/docs_index.*",
+        "Index write-back into feldtheorie_index.*"
+      ],
+      "implementation_nodes": [
+        "scripts/crep_parser.py",
+        "scripts/sigillin_sync.py",
+        "scripts/archive_sigillin.py",
+        "tests/",
+        ".github/workflows/"
+      ],
+      "notes": {
+        "formal": "\u0394index parity must flip to 0 via automation before \u03c3(\u03b2(R-\u0398)) is trustworthy.",
+        "empirical": "sigillin_sync telemetry remains local-only; no codex/index write-back observed in current tree as of 2026-03-26.",
+        "poetic": "Automation needs to breathe the same rhythm as the lantern shelves."
+      }
+    },
+    {
+      "id": "gap-safety-delay-telemetry",
+      "name": "Safety-Delay telemetry & CI",
+      "domain": "simulation",
+      "order_parameter": "\u03c4_delay control energy",
+      "theta_target": 0.25,
+      "beta_guard": 4.78,
+      "status": "active",
+      "existing": [
+        "data/safety_delay/",
+        "analysis/results/safety_delay_sweep_20251108T211723Z.json",
+        "simulator/presets/safety_delay_bridge.json",
+        "docs/utac_safety_delay_status.md"
+      ],
+      "missing": [
+        "Hosted UI telemetry archive",
+        ".github/workflows/utf-preset-guard.yml",
+        "Backlog + codex entries referencing telemetry captures"
+      ],
+      "implementation_nodes": [
+        "simulator/",
+        "analysis/sigillin_sync/",
+        "data/safety_delay/telemetry/",
+        ".github/workflows/utf-preset-guard.yml",
+        "docs/utac_activation_backlog.md"
+      ],
+      "notes": {
+        "formal": "\u0394AIC guards exist but lack continuous telemetry to detect drift.",
+        "empirical": "\u0394AIC guard is ready but there is still no hosted simulator telemetry archive or CI workflow invoking utf-preset-guard (checked 2026-03-26).",
+        "poetic": "\u03c4_delay hums, but without telemetry the membrane can't hear when the bridge bends."
+      }
+    },
+    {
+      "id": "gap-metaquest-parity",
+      "name": "Metaquest parity handshake",
+      "domain": "sigillin",
+      "order_parameter": "bridge timestamp parity",
+      "theta_target": 1.0,
+      "beta_guard": 4.85,
+      "status": "draft",
+      "existing": [
+        "docs/metaquest_parity_brief.md",
+        "seed/bedeutungssigillin/metaquest/",
+        "seed/shadow_sigillin/metaquest/"
+      ],
+      "missing": [
+        "Synchronized codex IDs in lantern shelves",
+        "Shadow recovery hook references",
+        "Automation that writes timestamp+codex into sigils"
+      ],
+      "implementation_nodes": [
+        "scripts/sigillin_sync.py",
+        "seed/bedeutungssigillin/metaquest/lanterns/",
+        "seed/shadow_sigillin/metaquest/lanterns/",
+        "seed/seed_index.*",
+        "docs/metaquest_parity_brief.md"
+      ],
+      "notes": {
+        "formal": "Parity brief cites mq-parity-001\u2026004 but shelves lack live timestamps.",
+        "empirical": "Metaquest light/shadow shelves still show last telemetry timestamp 2025-11-07; codex IDs not injected automatically.",
+        "poetic": "Light and shadow still breathe asynchronously; the bridge awaits a shared heartbeat."
+      }
+    },
+    {
+      "id": "gap-release-v2",
+      "name": "Release documentation sync",
+      "domain": "release",
+      "order_parameter": "release readiness ratio",
+      "theta_target": 1.0,
+      "beta_guard": 4.9,
+      "status": "draft",
+      "existing": [
+        "docs/zenodo_multilingual_abstract_v1.2.md",
+        "docs/zenodo_release_playbook.md",
+        "README.md"
+      ],
+      "missing": [
+        "CITATION.cff v2.0 fields",
+        "NEWS.md / RELEASE_NOTES updates",
+        "README badge sync",
+        "Codex closure entry"
+      ],
+      "implementation_nodes": [
+        "README.md",
+        "CITATION.cff",
+        "NEWS.md",
+        "RELEASE_NOTES_v1.1.0.md",
+        "docs/utac_status_alignment_v1.2.md",
+        "seed/codexfeedback.*"
+      ],
+      "notes": {
+        "formal": "Release parity requires documentation + codex alignment before Zenodo submission.",
+        "empirical": "README badge, CITATION DOI, and NEWS remain at v1.x; no codex entry marked completed for Zenodo v2 as of 2026-03-26.",
+        "poetic": "The release lantern glows faintly, waiting for the final badge to mirror the story."
+      }
+    }
+  ],
+  "implementation_map": [
+    {
+      "priority": 1,
+      "task": "Stage manifest datasets & rerun readiness audit",
+      "locations": [
+        "data/",
+        "analysis/results/",
+        "docs/utac_v2_data_lanterns.*"
+      ],
+      "dependencies": [
+        "analysis/v2_readiness_audit.py",
+        "docs/utac_activation_backlog.json"
+      ],
+      "telemetry": [
+        "\u03c3(\u03b2(R-\u0398))",
+        "\u0394AIC \u2265 10"
+      ]
+    },
+    {
+      "priority": 2,
+      "task": "Automate sigillin sync + index guards",
+      "locations": [
+        "scripts/crep_parser.py",
+        "scripts/sigillin_sync.py",
+        "scripts/archive_sigillin.py",
+        "tests/",
+        ".github/workflows/"
+      ],
+      "dependencies": [
+        "seed/codexfeedback.yaml",
+        "docs/docs_index.json",
+        "feldtheorie_index.json"
+      ],
+      "telemetry": [
+        "analysis/sigillin_sync/latest.json"
+      ]
+    },
+    {
+      "priority": 3,
+      "task": "Capture Safety-Delay telemetry & wire CI",
+      "locations": [
+        "data/safety_delay/telemetry/",
+        "analysis/sigillin_sync/",
+        ".github/workflows/utf-preset-guard.yml"
+      ],
+      "dependencies": [
+        "Makefile: utf-preset-guard",
+        "docs/utac_safety_delay_status.md"
+      ],
+      "telemetry": [
+        "\u0394AIC_linear",
+        "\u0394AIC_constant",
+        "\u03c4_delay_mean"
+      ]
+    },
+    {
+      "priority": 4,
+      "task": "Synchronise Metaquest parity",
+      "locations": [
+        "seed/bedeutungssigillin/metaquest/lanterns/",
+        "seed/shadow_sigillin/metaquest/lanterns/",
+        "docs/metaquest_parity_brief.md"
+      ],
+      "dependencies": [
+        "scripts/sigillin_sync.py",
+        "seed/seed_index.json"
+      ],
+      "telemetry": [
+        "mq-parity-001",
+        "mq-parity-002",
+        "mq-parity-003",
+        "mq-parity-004"
+      ]
+    },
+    {
+      "priority": 5,
+      "task": "Finalize release documentation triad",
+      "locations": [
+        "README.md",
+        "CITATION.cff",
+        "NEWS.md",
+        "docs/zenodo_release_playbook.md"
+      ],
+      "dependencies": [
+        "docs/zenodo_multilingual_abstract_v1.2.md",
+        "seed/codexfeedback.md"
+      ],
+      "telemetry": [
+        "release-gap-002"
+      ]
+    },
+    {
+      "priority": 6,
+      "task": "Prepare research spikes",
+      "locations": [
+        "seed/sigillin/",
+        "models/"
+      ],
+      "dependencies": [
+        "seed/Sigillin_Neuro_Membran_Modell_Plan.txt",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "telemetry": [
+        "mq-sci-gap-008",
+        "phi-gap-001"
+      ]
+    }
+  ],
+  "telemetry": {
+    "next_audit": "Run analysis/v2_readiness_audit.py after first dataset lands",
+    "codex_entry": "pr-draft-0096",
+    "audit_script": "analysis/v2_readiness_audit.py",
+    "ci_hooks": [
+      ".github/workflows/utf-preset-guard.yml",
+      "scripts/archive_sigillin.py --recount"
+    ],
+    "parity_checks": [
+      "\u0394index == 0",
+      "Metaquest light/shadow timestamps aligned",
+      "utf-preset-guard passes with \u0394AIC thresholds"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2025-11-09T13:07:02.733702+00:00",
+    "generated_at": "2026-03-26T10:00:00+00:00",
     "manifest_path": "data/utac_v1_3_data_manifest.yaml",
     "logistic": {
       "theta": 0.66,
@@ -400,7 +400,7 @@
     },
     {
       "path": "analysis/outlier_validator.py",
-      "description": "β>10 instrumentation guard",
+      "description": "\u03b2>10 instrumentation guard",
       "category": "analysis",
       "exists": true,
       "last_modified": "2025-11-09T12:04:16.730311+00:00",
@@ -478,7 +478,7 @@
       "id": "dataset-01",
       "priority": "P1",
       "title": "Complete climate dataset utac-v1_3-ds-001",
-      "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
+      "description": "Ingest missing components and run logistic fits so that \u03c3(\u03b2(R-\u0398)) reaches activation.",
       "targets": [
         {
           "name": "data",
@@ -515,7 +515,7 @@
       "id": "dataset-02",
       "priority": "P1",
       "title": "Complete climate dataset utac-v1_3-ds-002",
-      "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
+      "description": "Ingest missing components and run logistic fits so that \u03c3(\u03b2(R-\u0398)) reaches activation.",
       "targets": [
         {
           "name": "data",
@@ -552,7 +552,7 @@
       "id": "dataset-03",
       "priority": "P1",
       "title": "Complete ocean dataset utac-v1_3-ds-003",
-      "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
+      "description": "Ingest missing components and run logistic fits so that \u03c3(\u03b2(R-\u0398)) reaches activation.",
       "targets": [
         {
           "name": "data",
@@ -589,7 +589,7 @@
       "id": "dataset-04",
       "priority": "P1",
       "title": "Complete neuro_ai dataset utac-v1_3-ds-004",
-      "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
+      "description": "Ingest missing components and run logistic fits so that \u03c3(\u03b2(R-\u0398)) reaches activation.",
       "targets": [
         {
           "name": "data",
@@ -626,7 +626,7 @@
       "id": "dataset-05",
       "priority": "P1",
       "title": "Complete economy dataset utac-v1_3-ds-005",
-      "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
+      "description": "Ingest missing components and run logistic fits so that \u03c3(\u03b2(R-\u0398)) reaches activation.",
       "targets": [
         {
           "name": "data",
@@ -698,7 +698,7 @@
     {
       "id": "analysis-08",
       "priority": "P2",
-      "title": "Activate β>10 instrumentation guard",
+      "title": "Activate \u03b2>10 instrumentation guard",
       "description": "Ensure artefact and its outputs exist so the readiness bridge remains tri-layered.",
       "targets": [
         {

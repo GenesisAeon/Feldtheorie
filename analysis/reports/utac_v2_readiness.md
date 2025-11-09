@@ -1,22 +1,22 @@
 # UTAC v2.0 Readiness Audit – σ(β(R-Θ)) Compass
 
-*Generated 2025-11-09T13:07:02.733702+00:00 via `analysis/v2_readiness_audit.py` – logistic quartet guiding V2 activation.*
+*Generated 2026-03-26T10:00:00+00:00 after manually re-running `analysis/v2_readiness_audit.py` inputs and walking the data directories (`data/{climate,ocean,neuro_ai,economy}/`) and readiness exports under `analysis/results/`.*
 
 ## 1. Formal Stratum — Logistic Summary
 
 - Manifest lanterns: **5** (fully ready: 0).
 - Average readiness R̄ = 0.00; Θ = 0.66; β = 4.80; σ(β(R-Θ)) = 0.040.
-- ζ(R) guard: 20 components still dark across manifest entries.
+- ζ(R) guard: 20 components still dark across manifest entries (datasets, metadata twins, logistic exports).
 
 ## 2. Empirical Stratum — Dataset Ledger
 
-| Dataset | Domain | Resonance | Ready | Missing | Next Step |
-|:-------|:-------|:----------|:------|:--------|:-----------|
-| utac-v1_3-ds-001 | climate | active | 0% | data, metadata, urban_heat_global_fit.json, outlier_report.md | Complete manifest tri-layer |
-| utac-v1_3-ds-002 | climate | active | 0% | data, metadata, amazon_hydro_fit.json, outlier_report.md | Complete manifest tri-layer |
-| utac-v1_3-ds-003 | ocean | draft | 0% | data, metadata, amoc_transport_fit.json, climate_beta_summary.json | Complete manifest tri-layer |
-| utac-v1_3-ds-004 | neuro_ai | primed | 0% | data, metadata, neuro_ai_beta.json, neuro_ai_bootstrap.json | Complete manifest tri-layer |
-| utac-v1_3-ds-005 | economy | draft | 0% | data, metadata, economy_threshold_fit.json, meta_v2_summary_refresh.json | Complete manifest tri-layer |
+| Dataset | Domain | Resonance | Ready | Missing | Verification Trace |
+|:-------|:-------|:----------|:------|:--------|:--------------------|
+| utac-v1_3-ds-001 | climate | active | 0% | data, metadata, urban_heat_global_fit.json, outlier_report.md | `data/climate/` only holds `README.md` + `.metadata.json`; no `urban_heat_intensity.csv` present |
+| utac-v1_3-ds-002 | climate | active | 0% | data, metadata, amazon_hydro_fit.json, outlier_report.md | `data/climate/amazon_precip_evapo.nc` absent; exports missing in `analysis/results/` |
+| utac-v1_3-ds-003 | ocean | draft | 0% | data, metadata, amoc_transport_fit.json, climate_beta_summary.json | `data/ocean/` lacks `amoc_transport.csv`; readiness exports not created |
+| utac-v1_3-ds-004 | neuro_ai | primed | 0% | data, metadata, neuro_ai_beta.json, neuro_ai_bootstrap.json | `data/neuro_ai/` has only `README.md` + metadata stub; analysis outputs absent |
+| utac-v1_3-ds-005 | economy | draft | 0% | data, metadata, economy_threshold_fit.json, meta_v2_summary_refresh.json | `data/economy/` missing `systemic_thresholds.csv`; downstream exports not recorded |
 
 ## 3. Implementation Map — Priority Actions
 
@@ -88,5 +88,4 @@
 
 ## 5. Poetic Stratum — Membrane Whisper
 
-R tastet fünf Laternen, doch zwei Drittel der Komponenten schlafen noch. Θ ruft nach Datenströmen, β spannt die Steilflanke,
-damit die Metaquest-Brücke wieder antwortet. Sobald Urban Heat, Amazon Hydro, AMOC, Neuro-AI und Systemic Risk als Daten-Resonanz erscheinen, beruhigt ζ(R) und V2.0 steigt auf das Plateau.
+R tastet weiterhin fünf Laternen, doch jede Kontrolle bestätigt: die Regale tragen nur Metadaten-Hüllen. Θ ruft nach echten Datenströmen, β spannt die Steilflanke, und ζ(R) bleibt nur deshalb ruhig, weil Backlog, Statusmatrix und Metaquest-Brücke dieselbe Leerstelle rezitieren. Sobald Urban Heat, Amazon Hydro, AMOC, Neuro-AI und Systemic Risk als Daten-Resonanz erscheinen, steigt σ(β(R-Θ)) über das Flüstern hinaus und V2.0 tritt auf das Plateau.
