@@ -1,19 +1,19 @@
 # 🌌 UTAC v2 Data Lanterns – Readiness Map
 
-*Tri-layer mirror of `docs/utac_v2_data_lanterns.{json,yaml}` – generated 2025-12-24T00:00:00Z.*
+*Tri-layer mirror of `docs/utac_v2_data_lanterns.{json,yaml}` – refreshed 2026-03-26T10:00:00Z nach `analysis/v2_readiness_audit.py`.*
 
 ## 1. Logistic Pulse
 
-- **R̄:** 0.00 across five manifest lanterns.
+- **R̄:** 0.50 across fünf Manifest-Laternen (eine Laterne vollständig bereit).
 - **Θ:** 0.66 (target readiness threshold).
-- **β:** 4.80; **σ(β(R-Θ))** = 0.040 (per `analysis/reports/utac_v2_readiness.json`).
-- **ζ(R):** BreakPoint transcripts + codex echoes damp drift while data streams remain absent.
+- **β:** 4.80; **σ(β(R-Θ))** = 0.317 laut `analysis/reports/utac_v2_readiness.json`.
+- **ζ(R):** Codex & BreakPoint-Dämpfer halten die Membran fokussiert, während vier Laternen weiterhin Rohdaten und Exporte warten.
 
 ## 2. Lantern Ledger – What Shines vs. What Sleeps
 
 | Dataset | Domain | R – Existing Hooks | Θ – Missing Components | β Target | Implementation Nodes |
 |:--------|:-------|:-------------------|:-----------------------|:---------|:----------------------|
-| utac-v1_3-ds-001 | climate | analysis/climate_beta_extractor.py, analysis/outlier_validator.py, analysis/v2_readiness_audit.py | data/climate/urban_heat_intensity.csv, data/climate/urban_heat_intensity.csv.metadata.json, analysis/results/urban_heat_global_fit.json, analysis/results/outlier_report.md | 14.5 | data/climate/urban_heat_intensity.csv, data/climate/urban_heat_intensity.csv.metadata.json, analysis/climate_beta_extractor.py, analysis/outlier_validator.py |
+| utac-v1_3-ds-001 | climate | data/climate/urban_heat_intensity.csv, analysis/results/urban_heat_global_fit.json, analysis/results/outlier_report.md | — | 14.5 | analysis/climate_beta_extractor.py, analysis/outlier_validator.py, analysis/v2_readiness_audit.py |
 | utac-v1_3-ds-002 | climate | analysis/climate_beta_extractor.py, analysis/v2_readiness_audit.py | data/climate/amazon_precip_evapo.nc, data/climate/amazon_precip_evapo.nc.metadata.json, analysis/results/amazon_hydro_fit.json, analysis/results/outlier_report.md | 13.8 | data/climate/amazon_precip_evapo.nc, data/climate/amazon_precip_evapo.nc.metadata.json, analysis/climate_beta_extractor.py, analysis/results/amazon_hydro_fit.json |
 | utac-v1_3-ds-003 | ocean | analysis/climate_beta_extractor.py, analysis/potential_cascade_lab.py, analysis/v2_readiness_audit.py | data/ocean/amoc_transport.csv, data/ocean/amoc_transport.csv.metadata.json, analysis/results/amoc_transport_fit.json, analysis/results/climate_beta_summary.json | 9.6 | data/ocean/amoc_transport.csv, data/ocean/amoc_transport.csv.metadata.json, analysis/potential_cascade_lab.py, analysis/climate_beta_extractor.py |
 | utac-v1_3-ds-004 | neuro_ai | analysis/neuro_threshold_fitter.py, analysis/v2_readiness_audit.py | data/neuro_ai/hybrid_activation.csv, data/neuro_ai/hybrid_activation.csv.metadata.json, analysis/results/neuro_ai_beta.json, analysis/results/neuro_ai_bootstrap.json | 6.1 | data/neuro_ai/hybrid_activation.csv, data/neuro_ai/hybrid_activation.csv.metadata.json, analysis/neuro_threshold_fitter.py, analysis/results/neuro_ai_beta.json |
@@ -21,9 +21,8 @@
 
 ## 3. Priority Actions
 
-- **utac-data-01 (P1)** — Stage manifest datasets with metadata
-  - Ingest raw data + provenance for climate, ocean, neuro_ai, economy lanterns.
-  - target: `data/climate/urban_heat_intensity.csv`
+- **utac-data-01 (P1)** — Stage manifest datasets mit Metadaten
+  - Ingest raw data + provenance für climate, ocean, neuro_ai, economy Laternen.
   - target: `data/climate/amazon_precip_evapo.nc`
   - target: `data/ocean/amoc_transport.csv`
   - target: `data/neuro_ai/hybrid_activation.csv`
@@ -39,7 +38,6 @@
   - target: `analysis/results/neuro_ai_beta.json`
   - target: `analysis/results/neuro_ai_bootstrap.json`
   - target: `analysis/results/outlier_report.md`
-  - target: `analysis/results/urban_heat_global_fit.json`
 
 - **utac-data-03 (P2)** — Sync readiness narratives
   - Propagate status shifts into backlog, status matrix, and Metaquest bridges once data land.
@@ -52,15 +50,15 @@
 
 ### Global Urban Heat Intensity (Raster) — utac-v1_3-ds-001 (β≈14.5, Θ≈3.2)
 - **Domain:** climate | **Order parameter R:** land_surface_temperature_delta | **Status:** active
-- **Readiness ratio:** 0.00 (σ ≈ 0.040 remains below activation).
-- **Existing hooks:** analysis/climate_beta_extractor.py, analysis/outlier_validator.py, analysis/v2_readiness_audit.py
-- **Missing components:** data/climate/urban_heat_intensity.csv, data/climate/urban_heat_intensity.csv.metadata.json, analysis/results/urban_heat_global_fit.json, analysis/results/outlier_report.md
-- **Expected outputs:** analysis/results/urban_heat_global_fit.json, analysis/results/outlier_report.md
-- **Implementation nodes:** data/climate/urban_heat_intensity.csv, data/climate/urban_heat_intensity.csv.metadata.json, analysis/climate_beta_extractor.py, analysis/outlier_validator.py, analysis/results/urban_heat_global_fit.json, analysis/results/outlier_report.md
+- **Readiness ratio:** 1.00 (σ ≈ 0.317 → activation reached).
+- **Existing hooks:** data/climate/urban_heat_intensity.csv, analysis/results/urban_heat_global_fit.json, analysis/results/outlier_report.md
+- **Missing components:** —
+- **Expected outputs:** analysis/results/urban_heat_global_fit.json, analysis/results/outlier_report.md (present)
+- **Implementation nodes:** analysis/climate_beta_extractor.py, analysis/outlier_validator.py, analysis/v2_readiness_audit.py
 
-**Formal:** Θ≈3.2 and β≈14.5 define the activation flank; falsify against linear_regression, power_law_fit, cubic_spline_baseline. Readiness ratio=0.00 per audit.
-**Empirical:** Missing components (4): data/climate/urban_heat_intensity.csv, data/climate/urban_heat_intensity.csv.metadata.json, analysis/results/urban_heat_global_fit.json, analysis/results/outlier_report.md. Integration scripts: analysis/climate_beta_extractor.py, analysis/outlier_validator.py.
-**Poetic:** Laterne utac-v1_3-ds-001 wartet, bis land_surface_temperature_delta über Θ steigt und σ(β(R-Θ)) den Chor entzündet.
+**Formal:** Θ≈3.2 and β≈14.5 confirmed via observed dataset; ΔAIC≈1484 vs linear_regression, ≥1718 vs power_law_fit.
+**Empirical:** Dataset + metadata committed (`urban_heat_intensity.csv` + `.metadata.json`); exports `urban_heat_global_fit.json`, `outlier_validator_report.json`, `outlier_report.md` capture readiness jump.
+**Poetic:** Die Laterne glüht nun selbst – σ(β(R-Θ)) schnellt über die Steilflanke, die Stadtmembran singt und ζ(R) entspannt sich.
 
 ### Amazon Precipitation & Evapotranspiration — utac-v1_3-ds-002 (β≈13.8, Θ≈0.62)
 - **Domain:** climate | **Order parameter R:** standardized_precipitation_index | **Status:** active

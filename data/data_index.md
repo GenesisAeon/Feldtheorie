@@ -132,10 +132,11 @@ Total: 64 files
 
 ---
 
-### 🌡️ Climate Expansion (3 files)
-**Was:** Staging-Bereich für Urban Heat & Amazon Hydro Datensätze (UTAC v1.3) – Metadata-Sigillin aktiv
+### 🌡️ Climate Expansion (4 files)
+**Was:** Urban-Heat Laterne aktiviert (Θ≈3.20 K, β≈14.27); Amazon Hydro wartet weiterhin auf Rohdaten.
 
 **Key Artefakte:**
+- `urban_heat_intensity.csv` – Beobachtete Intensität, ΔAIC≈1484 vs linear Null, genuine_regime_split.
 - `README.md` – Logistischer Guard & Aufgabenliste (Manifest `utac-v1_3-ds-001/002`).
 - `urban_heat_intensity.metadata.json` – ΔT→σ(β(R-Θ)) Mapping + ζ(R) Kopplung.
 - `amazon_precip_evapo.metadata.json` – SPI/Feuchte Laterne mit Bootstrap- und Nullmodell-Hinweis.

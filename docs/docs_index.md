@@ -74,7 +74,7 @@ Total: 24 MD files
 9. `zenodo_multilingual_abstract_v1.2.md` - Mehrsprachiger Release-Abstract (EN/DE/ES)
 10. `zenodo_release_playbook.md` - Upload-Playbook mit CI- & Codex-Hooks
 11. `resonance-bridge-map.md` - Brückenknoten zwischen Analyse, Daten & Simulator (ΔAIC-Wächter, utf-preset-guard)
-12. `utac_v2_data_lanterns.md` - Readiness-Karte für Manifest-Laternen (σ(β(R-Θ))=0.040, fehlende Daten/Analysen)
+12. `utac_v2_data_lanterns.md` - Readiness-Karte für Manifest-Laternen (σ(β(R-Θ))=0.317, Urban-Heat aktiv, vier Laternen offen)
 13. `utac_v2_activation_tracker_2026-02.md` - Audit der offenen UTAC v2 Lücken (Daten, Automation, Metaquest, Release)
 14. `utac_v2_activation_tracker_2026-03.md` - Frische Audit-Laterne mit manuellem Verifikationslauf (26. Mär 2026)
 

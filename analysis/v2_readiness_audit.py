@@ -149,7 +149,10 @@ def parse_dataset_status(manifest: dict) -> List[DatasetStatus]:
                         kind="data",
                     )
                 )
-                metadata_path = Path(str(data_path) + ".metadata.json")
+                if data_path.suffix:
+                    metadata_path = data_path.with_suffix(".metadata.json")
+                else:
+                    metadata_path = Path(str(data_path) + ".metadata.json")
                 components.append(
                     ComponentStatus(
                         name="metadata",

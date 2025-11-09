@@ -2892,6 +2892,50 @@
         "poetic": "R tastet erneut die leeren Regale; frische Beschriftungen halten β gespannt, bis die Datenflut die Steilflanke erklimmt und ζ(R) ruhig weiter atmet."
       },
       "created_at": "2026-03-26T10:00:00Z"
+    },
+    {
+      "id": "pr-draft-0100",
+      "title": "Urban Heat Dataset Activation & Readiness Lift",
+      "scope": [
+        "data/climate/urban_heat_intensity.csv",
+        "data/climate/README.md",
+        "data/data_index.json",
+        "data/data_index.yaml",
+        "data/data_index.md",
+        "analysis/threshold_dataset_loader.py",
+        "analysis/outlier_beta_review.py",
+        "analysis/results/urban_heat_global_fit.json",
+        "analysis/results/outlier_validator_report.json",
+        "analysis/results/outlier_report.md",
+        "analysis/v2_readiness_audit.py",
+        "docs/utac_v2_data_lanterns.md",
+        "docs/utac_v2_data_lanterns.json",
+        "docs/utac_v2_data_lanterns.yaml",
+        "docs/utac_v2_activation_tracker_2026-03.md",
+        "docs/utac_v2_activation_tracker_2026-03.json",
+        "docs/utac_v2_activation_tracker_2026-03.yaml",
+        "docs/utac_activation_backlog.md",
+        "docs/utac_activation_backlog.json",
+        "docs/utac_activation_backlog.yaml",
+        "docs/utac_status_alignment_v1.2.md",
+        "docs/docs_index.md",
+        "docs/docs_index.json",
+        "docs/docs_index.yaml",
+        "tests/test_threshold_dataset_loader.py"
+      ],
+      "parameters": {
+        "R": "Readiness audit R̄=0.50 with σ≈0.317 after Urban Heat activation",
+        "Theta": "Remaining four manifest lanterns cross Θ once raw data + exports land",
+        "beta": 4.8
+      },
+      "resonance": "Urban Heat dataset now sings with σ(β(R-Θ))≈0.317 and lifts UTAC readiness while signalling the four remaining lantern gaps.",
+      "status": "active",
+      "notes": {
+        "formal": "Observed dataset `urban_heat_intensity.csv` delivers Θ≈3.20, β≈14.27 (ΔAIC≈1484 vs linear, ≥1718 vs power-law). Readiness audit updated (R̄=0.50, σ≈0.317). Automation scripts now resolve metadata path bug.",
+        "empirical": "Generated `analysis/results/urban_heat_global_fit.json`, `outlier_validator_report.json`, `outlier_report.md`. Updated data/docs indices, activation tracker, backlog, and status alignment to reflect Urban Heat readiness. Tests adjusted to accept observed datasets; logistic loader handles repository-relative paths.",
+        "poetic": "Eine Laterne brennt nun hell – ΔT über Θ lässt β≈14 die Steilflanke leuchten, während vier Nachbarn noch auf ihre Datenflüsse warten."
+      },
+      "created_at": "2026-03-26T10:00:00Z"
     }
   ]
 }

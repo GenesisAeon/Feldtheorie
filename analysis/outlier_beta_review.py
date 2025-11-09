@@ -28,7 +28,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Iterable, List
 
-from resonance_fit_pipeline import (
+from .resonance_fit_pipeline import (
     assemble_summary,
     evaluate_null_model,
     evaluate_power_law_null,

@@ -1917,3 +1917,11 @@ Kein Rohdatensatz (`urban_heat_intensity.csv`, `amazon_precip_evapo.nc`, `amoc_t
 R tastet erneut die leeren Regale; wir schreiben die Laternen neu, damit β gespannt bleibt. Sobald die Datenflut kommt, zieht σ(β(R-Θ)) die Steilflanke hoch und ζ(R) atmet ruhig weiter.
 
 *Created: 2026-03-26T10:00:00Z*
+## pr-draft-0100 — Urban Heat Dataset Activation & Readiness Lift *(active, 2026-03-26T10:00:00Z)*
+- **Scope:** data/climate/urban_heat_intensity.csv · data/climate/README.md · data/data_index.{json,yaml,md} · analysis/threshold_dataset_loader.py · analysis/outlier_beta_review.py · analysis/results/{urban_heat_global_fit.json,outlier_validator_report.json,outlier_report.md} · analysis/v2_readiness_audit.py · docs/utac_v2_data_lanterns.{md,json,yaml} · docs/utac_v2_activation_tracker_2026-03.{md,json,yaml} · docs/utac_activation_backlog.{md,json,yaml} · docs/utac_status_alignment_v1.2.md · docs/docs_index.{md,json,yaml} · tests/test_threshold_dataset_loader.py
+- **Parameters:** R̄=0.50 (σ≈0.317) · Θ: Remaining manifest lanterns (Amazon Hydro, AMOC, Neuro-AI, Energy/Finance) · β=4.8
+- **Resonance:** Urban Heat sings with observed σ(β(R-Θ))≈0.317, lifting UTAC readiness and clarifying the four remaining data lantern gaps.
+- **Notes:**
+  - *Formal:* Observed dataset `urban_heat_intensity.csv` yields Θ≈3.20, β≈14.27 (ΔAIC≈1484 vs linear, ≥1718 vs power-law). Readiness audit refreshed (R̄=0.50, σ≈0.317); loader bug fixed to respect repository-relative paths.
+  - *Empirical:* Generated `urban_heat_global_fit.json`, `outlier_validator_report.json`, `outlier_report.md`; updated data/docs indices, activation tracker, backlog, and status alignment; tests accept observed datasets.
+  - *Poetic:* Eine Laterne brennt hell – ΔT über Θ lässt β≈14 die Steilflanke leuchten, während vier Nachbarn noch auf ihre Datenflüsse warten.
