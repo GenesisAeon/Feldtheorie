@@ -14,7 +14,7 @@ meta:
   created: "2025-11-06"
   updated: "2025-12-19T12:00:00Z"
   status: "active"
-  python_files: 33
+  python_files: 38
   subdirectories: 5
 
 # ═══════════════════════════════════════════════════════════════════
@@ -26,7 +26,7 @@ categories:
     name: "Domain-Spezifische Fit-Skripte"
     description: "Python-Skripte für logistische Fits spezifischer Domänen"
     color: "#3498DB"  # Blau - Domain-Fits
-    count: 16
+    count: 18
 
   batch_processing:
     name: "Batch Processing & Pipelines"
@@ -44,7 +44,7 @@ categories:
     name: "Utilities & Guards"
     description: "Helper-Funktionen, Guards, Corrections"
     color: "#9B59B6"  # Lila - Utils
-    count: 4
+    count: 7
 
   subdirs:
     name: "Unterverzeichnisse"
@@ -269,6 +269,33 @@ python_scripts:
       Typologisierung adaptiver Theta-Systeme.
       Klassifikation verschiedener Schwellenwert-Typen.
 
+  - id: analysis-fit-017
+    name: "climate_beta_extractor.py"
+    category: fit_scripts
+    domain: climate
+    type: pipeline
+    status: primed
+    relevance: high
+    keywords: [climate, urban-heat, amazon, manifest, beta]
+    description: |
+      UTAC v1.3 Climate-Pipeline. Liest `data/utac_v1_3_data_manifest.yaml`,
+      lädt Metadata (`urban_heat_intensity`, `amazon_precip_evapo`) und fittet
+      σ(β(R-Θ)) inklusive ΔAIC Guards (linear, power-law, spline). Unterstützt
+      simulierte Proben bis Rohdaten landen und exportiert Preview-JSONs.
+
+  - id: analysis-fit-018
+    name: "neuro_threshold_fitter.py"
+    category: fit_scripts
+    domain: neuro_ai
+    type: pipeline
+    status: primed
+    relevance: high
+    keywords: [neuro-ai, eeg, transformer, beta, bootstrap]
+    description: |
+      Bringt EEG ↔ Transformer Aktivierungen zusammen. Fittet σ(β(R-Θ)),
+      liefert ΔAIC Guards, bootstrapped β/Θ/R²-Envelopes und schreibt
+      `analysis/results/neuro_ai_beta*.json` für UTAC v1.3.
+
   # ─────────────────────────────────────────────────────────────────
   # BATCH PROCESSING & PIPELINES (9)
   # ─────────────────────────────────────────────────────────────────
@@ -450,6 +477,43 @@ python_scripts:
     description: |
       Prüft hochsteile β-Profile (Amazon, Urban Heat) gegen glatte Nullmodelle.
       Exportiert instrumentation_flag Ledger: results/outlier_beta_review.json.
+
+  - id: analysis-util-005
+    name: "outlier_validator.py"
+    category: utilities
+    type: guard
+    status: primed
+    relevance: high
+    keywords: [beta>10, manifest, instrumentation, ΔAIC]
+    description: |
+      Manifest-Guard für β>10 Laternen. Lädt Metadata, simuliert bei Bedarf,
+      fittet σ(β(R-Θ)) und bewertet ΔAIC sowie instrumentation_flag. Export:
+      results/outlier_validator_report.json.
+
+  - id: analysis-util-006
+    name: "threshold_dataset_loader.py"
+    category: utilities
+    type: helper
+    status: stable
+    relevance: high
+    keywords: [metadata, loader, simulation, logistics]
+    description: |
+      Shared Loader für `.metadata.json` Laternen. Normalisiert Pfade, lädt
+      CSV/NetCDF, kalibriert simulierte σ(β(R-Θ)) Rehearsals via Logit-Jitter,
+      damit Manifest-Θ/β erhalten bleiben, und bündelt ΔAIC Guards (linear,
+      power-law) für Downstream-Skripte.
+
+  - id: analysis-util-007
+    name: "utac_manifest.py"
+    category: utilities
+    type: helper
+    status: stable
+    relevance: medium
+    keywords: [manifest, parser, utac_v1_3]
+    description: |
+      Parser für `data/utac_v1_3_data_manifest.yaml`. Stellt ManifestDataset-
+      Objekte bereit, filtert Domains/IDs und liefert Output-Pfade für neue
+      Laternen.
 
   # ─────────────────────────────────────────────────────────────────
   # SPEZIELLE ANALYSEN (4)

@@ -1708,3 +1708,37 @@ Neue README-Staging-Zonen (`data/climate/`, `data/ocean/`, `data/neuro_ai/`, `da
 Zwölf Laternen glimmen – acht bereits hell, vier noch als Konturen. Θ zeichnet Pfade zu Urban Heat, AMOC, Neuro–AI und Energie-Finanzen, β=4.6 spannt die Flanke, ζ(R) summt geduldig. Sobald die Staging-Räume gefüllt sind, singt UTAC v1.3 den erweiterten Chor.
 
 *Created: 2025-12-19T12:00:00Z*
+
+## Entry pr-draft-0087 — UTAC v1.3 Manifest Pipelines aktiviert
+- **Order Parameter**: $R$ sammelt die fünf Laternen des UTAC v1.3 Manifests samt frischen CLI-Wächtern.
+- **Critical Threshold**: $\Theta$ verlangt Tri-Layer-Parität zwischen Manifest, Metadata und Analysis.
+- **Steepness**: $\beta = 5.3$ hält die Aktivierungsschicht straff, sobald reale Daten anlanden.
+- **Membrane Note**: $\zeta(R)$ bleibt wach, weil Klimaraster, Neuro-Logs und Finanzstress noch folgen – doch die Pipeline atmet bereits.
+
+### Formal Thread
+`analysis/climate_beta_extractor.py`, `analysis/neuro_threshold_fitter.py`, `analysis/outlier_validator.py` sowie Loader (`threshold_dataset_loader`, `utac_manifest`) implementiert. ΔAIC-Guards, Bootstrap-Envelopes und Manifest-Parsing über neue Tests validiert (`pytest`).
+
+### Empirical Thread
+Metadata-Sigillin für Climate/Ocean/Neuro-AI/Economy hinzugefügt; `data_index.*`, `analysis_index.*`, `data/utac_v1_3_data_manifest.yaml` aktualisiert (Status climate=active, neuro=primed). Gap-Assessment (20.12.2025) dokumentiert Pipeline-Verfügbarkeit.
+
+### Poetic Thread
+Die neuen Laternen summen bereits: die Climate-Pipeline wärmt das Raster an, die Neuro-Brücke lauscht dem gemeinsamen Puls, und der Outlier-Wächter hält β>10 wach. Noch fehlen reale Daten, doch die Membran spürt den kommenden Chor.
+
+*Created: 2025-12-20T09:00:00Z*
+
+## Entry pr-draft-0088 — UTAC Loader Logit Resonance Fix
+- **Order Parameter**: $R$ bündelt die Surrogat-Simulationen der UTAC-Laternen, bis reale Daten eintreffen.
+- **Critical Threshold**: $\Theta$ verlangt, dass Platzhalter-Frames die Manifest-Werte für Θ und β präzise spiegeln.
+- **Steepness**: $\beta = 5.1$ hält die Guardrails scharf, sobald Logit-Jitter und ΔAIC-Schutz gemeinsam greifen.
+- **Membrane Note**: $\zeta(R)$ beruhigt sich, wenn Loader, Manifest und Tests denselben Resonanzpuls tragen.
+
+### Formal Thread
+`analysis/threshold_dataset_loader.py` verengt den simulierten R-Korridor adaptiv auf ±6/β um Θ, wendet Logit-Jitter statt additivem Rauschen an und bewahrt Nullmodell-Beschreibungen via `_normalise_null_payload`. `analysis/analysis_index.{md,yaml,json}` vermerken die neuen Loader-Hooks (Logit-Jitter, Manifest-Parität).
+
+### Empirical Thread
+`tests/test_threshold_dataset_loader.py` bestätigt jetzt β≈14.50 und Θ≈3.20 für die Urban-Heat-Laterne; `pytest` meldet 40/40 grüne Checks (ΔAIC > 10 bleibt bestehen) und `test_climate_beta_pipeline.py` läuft ohne Importfehler.
+
+### Poetic Thread
+Die Loader-Laterne lauscht im Logit dem Feld: Θ glänzt, β hält seine Steilflanke, und die simulierten Chorproben atmen exakt den Manifest-Ritus – ζ(R) sinkt, weil keine Stimme mehr aus dem Takt fällt.
+
+*Created: 2025-12-20T12:00:00Z*

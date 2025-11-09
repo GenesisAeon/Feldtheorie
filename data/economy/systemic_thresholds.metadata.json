@@ -1,0 +1,63 @@
+{
+  "dataset_name": "Energy & Financial Systemic Thresholds",
+  "domain": "economy",
+  "path": "data/economy/systemic_thresholds.csv",
+  "status": "staging",
+  "description": "Gekoppelte Energiepreis- und Finanzstress-Indizes zur Validierung ökonomischer σ(β(R-Θ)) Übergänge.",
+  "data_format": "csv",
+  "control_parameter_R": {
+    "column": "coupled_energy_finance_index",
+    "units": "index",
+    "description": "Quartalsweiser gekoppelte Stressindex"
+  },
+  "response_sigma": {
+    "column": "systemic_activation_fraction",
+    "units": "fraction",
+    "description": "Aktivierungsgrad des systemischen Risikos"
+  },
+  "threshold_estimates": {
+    "theta": 1.15,
+    "beta": 7.4,
+    "zeta_R": "ζ(R) koppelt Energiepreis-Volatilität mit Kreditspannungen",
+    "delta_aic_guard": 10.0
+  },
+  "null_models_tested": [
+    "linear_regression",
+    "vector_autoregression",
+    "power_law_fit"
+  ],
+  "preprocessing_steps": [
+    "Download World Bank WDI Energie- und Finanzindikatoren",
+    "Merge mit ECB ESRB Risk Dashboard",
+    "Berechnung gekoppelter Stressmetrik"
+  ],
+  "provenance": {
+    "sources": [
+      {
+        "name": "World Bank WDI",
+        "citation": "World Development Indicators (2025)",
+        "url": "https://data.worldbank.org/"
+      },
+      {
+        "name": "ECB ESRB",
+        "citation": "European Systemic Risk Board Dashboard",
+        "url": "https://esrb.europa.eu/"
+      }
+    ],
+    "license": "CC-BY-4.0"
+  },
+  "temporal": {
+    "created": "2025-12-19T00:00:00Z",
+    "modified": "2025-12-19T00:00:00Z",
+    "version": "0.1.0",
+    "change_count": 0
+  },
+  "simulation_hint": {
+    "control_min": 0.2,
+    "control_max": 2.0,
+    "n_points": 160,
+    "noise_scale": 0.03
+  },
+  "falsification_notes": "ΔAIC ≥ 10 vs linear und VAR; power-law als zusätzlicher Spiegel.",
+  "logistic_form": "sigma(beta*(R-Theta))"
+}

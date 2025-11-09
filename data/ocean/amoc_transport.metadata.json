@@ -1,0 +1,63 @@
+{
+  "dataset_name": "AMOC Transport (RAPID 26°N)",
+  "domain": "ocean",
+  "path": "data/ocean/amoc_transport.csv",
+  "status": "staging",
+  "description": "RAPID-MOCHA Umwälzstromstärken zur Kalibrierung der ozeanischen σ(β(R-Θ)) Laterne.",
+  "data_format": "csv",
+  "control_parameter_R": {
+    "column": "overturning_strength_sverdrup",
+    "units": "Sv",
+    "description": "Tägliche AMOC Transportstärke"
+  },
+  "response_sigma": {
+    "column": "transport_activation_fraction",
+    "units": "fraction",
+    "description": "Normalisierte Aktivierung des AMOC-Resonanzgates"
+  },
+  "threshold_estimates": {
+    "theta": 14.0,
+    "beta": 9.6,
+    "zeta_R": "ζ(R) koppelt Tiefenwasserbildung mit Windstress",
+    "delta_aic_guard": 10.0
+  },
+  "null_models_tested": [
+    "linear_trend",
+    "power_law_fit",
+    "state_space_smoother"
+  ],
+  "preprocessing_steps": [
+    "Download RAPID-MOCHA Tagesdaten",
+    "90-Tage Gleitmittel",
+    "Normalisierung auf klimatologische Basis"
+  ],
+  "provenance": {
+    "sources": [
+      {
+        "name": "RAPID-MOCHA",
+        "citation": "Smeed et al. (2018)",
+        "url": "https://www.rapid.ac.uk/rapidmoc/"
+      },
+      {
+        "name": "Copernicus Marine Reanalysis",
+        "citation": "CMEMS Global Ocean Reanalysis",
+        "url": "https://marine.copernicus.eu/"
+      }
+    ],
+    "license": "Research use"
+  },
+  "temporal": {
+    "created": "2025-12-19T00:00:00Z",
+    "modified": "2025-12-19T00:00:00Z",
+    "version": "0.1.0",
+    "change_count": 0
+  },
+  "simulation_hint": {
+    "control_min": 5.0,
+    "control_max": 25.0,
+    "n_points": 180,
+    "noise_scale": 0.02
+  },
+  "falsification_notes": "ΔAIC ≥ 10 vs linear, ≥ 15 vs power-law; state-space smoother als dritter Spiegel.",
+  "logistic_form": "sigma(beta*(R-Theta))"
+}

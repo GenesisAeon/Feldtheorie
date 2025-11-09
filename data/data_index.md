@@ -1,7 +1,7 @@
 # 📦 Data Index - Resonance Archive Navigator
 
 **Version:** 1.0.0
-**Datum:** 19. Dezember 2025
+**Datum:** 20. Dezember 2025
 **Verzeichnis:** `data/`
 
 ---
@@ -20,12 +20,12 @@ data/
 ├── geophysics/       (4 files)  🌍 Cascadia, Seismik
 ├── socio_ecology/   (10 files)  🌿 Amazon, Urban Heat, AMOC
 ├── safety_delay/    (4 files)  🛡️ τ*-Controller ΔAIC Ledger
-├── climate/         (1 file)   🌡️ UTAC v1.3 Climate Staging
-├── ocean/           (1 file)   🌊 AMOC Threshold Staging
-├── neuro_ai/        (1 file)   🧠🤖 Hybrid Activation Staging
-└── economy/         (1 file)   ⚡💶 Energy-Finance Threshold Staging
+├── climate/         (3 files)  🌡️ UTAC v1.3 Climate Staging + Metadata
+├── ocean/           (2 files)  🌊 AMOC Threshold Staging + Metadata
+├── neuro_ai/        (2 files)  🧠🤖 Hybrid Activation Staging + Metadata
+└── economy/         (2 files)  ⚡💶 Energy-Finance Threshold Staging + Metadata
 
-Total: 54 files
+Total: 62 files
 ```
 
 ---
@@ -129,35 +129,40 @@ Total: 54 files
 
 ---
 
-### 🌡️ Climate Expansion (1 file)
-**Was:** Staging-Bereich für Urban Heat & Amazon Hydro Datensätze (UTAC v1.3)
+### 🌡️ Climate Expansion (3 files)
+**Was:** Staging-Bereich für Urban Heat & Amazon Hydro Datensätze (UTAC v1.3) – Metadata-Sigillin aktiv
 
-**Key Artefakt:**
-- `README.md` – Logistischer Guard & Aufgabenliste (Manifest-Einträge `utac-v1_3-ds-001/002`).
+**Key Artefakte:**
+- `README.md` – Logistischer Guard & Aufgabenliste (Manifest `utac-v1_3-ds-001/002`).
+- `urban_heat_intensity.metadata.json` – ΔT→σ(β(R-Θ)) Mapping + ζ(R) Kopplung.
+- `amazon_precip_evapo.metadata.json` – SPI/Feuchte Laterne mit Bootstrap- und Nullmodell-Hinweis.
 
 ---
 
-### 🌊 Oceanic Thresholds (1 file)
-**Was:** AMOC Transport Staging laut UTAC v1.3 Manifest
+### 🌊 Oceanic Thresholds (2 files)
+**Was:** AMOC Transport Staging laut UTAC v1.3 Manifest – Metadata-Sigillum angelegt
 
-**Key Artefakt:**
+**Key Artefakte:**
 - `README.md` – ΔAIC-Protokoll & Workflow für RAPID Array Integration.
+- `amoc_transport.metadata.json` – Sv→σ(β(R-Θ)) Pfad inkl. state-space Nullmodell.
 
 ---
 
-### 🧠🤖 Neuro–AI Hybrid (1 file)
-**Was:** Vorbereitung EEG ↔ Transformer Aktivierungsvergleiche
+### 🧠🤖 Neuro–AI Hybrid (2 files)
+**Was:** Vorbereitung EEG ↔ Transformer Aktivierungsvergleiche – Metadata aktiv
 
-**Key Artefakt:**
+**Key Artefakte:**
 - `README.md` – Workflow & Nullmodelle (`randomized_prompt_baseline`, `phase_scrambled_surrogate`).
+- `hybrid_activation.metadata.json` – Stimulus-Komplexität → σ(β(R-Θ)) Mapping & Nullmodell-Set.
 
 ---
 
-### ⚡💶 Energy & Finance (1 file)
-**Was:** Staging für gekoppelte Energie-/Finanz-Schwellen
+### ⚡💶 Energy & Finance (2 files)
+**Was:** Staging für gekoppelte Energie-/Finanz-Schwellen – Metadata-Sigillum online
 
-**Key Artefakt:**
+**Key Artefakte:**
 - `README.md` – Anleitung zur Konstruktion des Coupled Energy-Finance Index.
+- `systemic_thresholds.metadata.json` – ΔAIC-Guard und VAR Nullmodell für gekoppelte Stressmetrik.
 
 ---
 

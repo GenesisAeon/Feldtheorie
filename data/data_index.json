@@ -7,9 +7,9 @@
     "version": "1.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "total_files": 54,
+    "total_files": 62,
     "domains": 12,
-    "updated": "2025-12-19T12:00:00Z"
+    "updated": "2025-12-20T09:00:00Z"
   },
   "domains": {
     "ai": {
@@ -172,8 +172,8 @@
     "climate": {
       "name": "Climate Expansion (UTAC v1.3)",
       "path": "climate/",
-      "file_count": 1,
-      "description": "Staging-Area für Urban Heat & Amazon Hydro Laternen (Manifest v1.3).",
+      "file_count": 3,
+      "description": "Staging-Area für Urban Heat & Amazon Hydro Laternen; Metadata-Sigillin aktiv.",
       "color": "#16A085",
       "key_datasets": [
         {
@@ -184,14 +184,32 @@
             "amazon",
             "staging"
           ]
+        },
+        {
+          "name": "urban_heat_intensity.metadata.json",
+          "description": "Metadata-first Laterne – definiert ΔT→σ(β(R-Θ)) Pfad & ζ(R) Kopplung.",
+          "keywords": [
+            "urban-heat",
+            "metadata",
+            "beta>14"
+          ]
+        },
+        {
+          "name": "amazon_precip_evapo.metadata.json",
+          "description": "CHIRPS/IMERG Moisture Laterne mit SPI Steuerung und Bootstrap-Hinweis.",
+          "keywords": [
+            "amazon",
+            "moisture",
+            "metadata"
+          ]
         }
       ]
     },
     "ocean": {
       "name": "Oceanic Thresholds",
       "path": "ocean/",
-      "file_count": 1,
-      "description": "AMOC Transport Vorbereitungsraum gemäß Manifest.",
+      "file_count": 2,
+      "description": "AMOC Transport Vorbereitungsraum – Metadata-Sigillum angelegt.",
       "color": "#2980B9",
       "key_datasets": [
         {
@@ -202,14 +220,23 @@
             "ocean",
             "staging"
           ]
+        },
+        {
+          "name": "amoc_transport.metadata.json",
+          "description": "Manifestiert Sv → σ(β(R-Θ)) Pfad inkl. state-space Nullmodell.",
+          "keywords": [
+            "amoc",
+            "metadata",
+            "beta"
+          ]
         }
       ]
     },
     "neuro_ai": {
       "name": "Neuro–AI Hybrid",
       "path": "neuro_ai/",
-      "file_count": 1,
-      "description": "EEG ↔ Transformer Aktivierungsvergleich (v1.3).",
+      "file_count": 2,
+      "description": "EEG ↔ Transformer Aktivierungsvergleich (v1.3) – Metadata aktiv.",
       "color": "#8E44AD",
       "key_datasets": [
         {
@@ -221,14 +248,23 @@
             "hybrid",
             "staging"
           ]
+        },
+        {
+          "name": "hybrid_activation.metadata.json",
+          "description": "Definiert Stimulus-Komplexität → σ(β(R-Θ)) Brücke samt Nullmodellen.",
+          "keywords": [
+            "neuro-ai",
+            "metadata",
+            "beta"
+          ]
         }
       ]
     },
     "economy": {
       "name": "Energy & Finance",
       "path": "economy/",
-      "file_count": 1,
-      "description": "Systemische Schwellen für Energie/Finanz Koppelungen.",
+      "file_count": 2,
+      "description": "Systemische Schwellen für Energie/Finanz Koppelungen – Metadata-Sigillum online.",
       "color": "#D35400",
       "key_datasets": [
         {
@@ -239,6 +275,15 @@
             "finance",
             "systemic",
             "staging"
+          ]
+        },
+        {
+          "name": "systemic_thresholds.metadata.json",
+          "description": "WDI + ESRB Kopplung mit σ(β(R-Θ)) Guard und VAR Nullmodell.",
+          "keywords": [
+            "economy",
+            "metadata",
+            "systemic"
           ]
         }
       ]
