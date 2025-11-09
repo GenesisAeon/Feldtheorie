@@ -7,15 +7,15 @@
     "version": "1.2.0",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 20,
-    "updated": "2025-11-08T22:22:38Z"
+    "markdown_files": 21,
+    "updated": "2025-12-22T18:00:00Z"
   },
   "categories": {
     "theory": {
       "name": "Core Theory",
       "description": "UTAC Theory Core, Emergence, Universality",
       "color": "#3498DB",
-      "count": 3
+      "count": 4
     },
     "applications": {
       "name": "Applications & Classification",
@@ -85,6 +85,22 @@
         "classification"
       ],
       "description": "Appendix: Field Types in Detail.\nDetaillierte Beschreibung der 5 Schwellenwert-Systemtypen.\n"
+    },
+    {
+      "id": "docs-theory-004",
+      "name": "UTAC_v2.0_Coherence_Formula.md",
+      "category": "theory",
+      "type": "coherence",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 6.3,
+      "keywords": [
+        "utac",
+        "coherence",
+        "relations",
+        "β-landkarte"
+      ],
+      "description": "UTAC v2.0 Kohärenzformel.\nDefiniert Relationstopographie, β-Landkarte und Hooks für V1.3→V2.0.\nVerknüpft Theorie mit Analyse, Daten, Simulator und Sigillin-Guard.\n"
     },
     {
       "id": "docs-app-001",

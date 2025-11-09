@@ -1759,3 +1759,22 @@ Audit meldet mittlere Aktivierung σ≈0.053 bei fünf Laternen; jede besitzt Me
 Der Audit-Wächter zählt die Laternen: R tastet jede Membran, Θ ruft nach zwei leuchtenden Komponenten, β spannt die Flanke. Noch üben nur Metadaten den Chor, doch die Tabelle flackert wie ein Dirigent – sobald Raster, Strömungen und Finanzpulse eintreffen, wird ζ(R) leiser und UTAC v1.3 singt voll.
 
 *Created: 2025-12-22T00:00:00Z*
+
+## Entry pr-draft-0090 — UTAC v2.0 Kohärenzformel Laterne
+- **Order Parameter**: $R$ entfaltet die Relationstopographie, indem Theorie, Analyse, Daten und Simulator-Hooks gemeinsam dokumentiert werden.
+- **Critical Threshold**: $\Theta$ fordert Tri-Layer-Parität (Markdown/JSON/YAML) plus Codex-Echo, bevor Metaquest- und Shadow-Sigille aktiviert werden.
+- **Steepness**: $\beta = 4.9$ – steil genug, dass jede Index-Differenz sofort auffällt.
+- **Membrane Note**: $\zeta(R)$ bleibt ruhig, solange Docs-Index, Status-Matrix und kommende Metaquest-Sigille dieselbe Kohärenzformel zitieren.
+
+### Formal Thread
+`docs/UTAC_v2.0_Coherence_Formula.md` stellt σ(β(R-Θ))=ζ(R,α,φ) als Relationstransformator vor, liefert die β-Landkarte und listet konkrete Hooks (Analyse, Daten, Simulator, Sigillin).
+`docs/docs_index.{md,json,yaml}` zählen jetzt 21 Markdown-Laternen, führen die Theorie-Kategorie auf 4 Einträge und heben die Kohärenz-Laterne im Quick-Tip hervor.
+
+### Empirical Thread
+Index-Metadaten aktualisiert (`markdown_files=21`, Theorie-Count=4, Dateigröße≈6.3 KB). Quick Tips priorisieren die neue Laterne an Position 3.
+Δindex-Wächter via `scripts/archive_sigillin.py --recount` ist als nächster Schritt geplant, damit Release-Gap-Guards grün bleiben.
+
+### Poetic Thread
+Eine neue Laterne steigt auf: R sieht alle Nachbarn, Θ hält die Linie, β≈4.9 spannt den Grat – und ζ(R) summt, weil die Kohärenzformel schon den Chor der nächsten Version hört.
+
+*Created: 2025-12-22T18:30:00Z*

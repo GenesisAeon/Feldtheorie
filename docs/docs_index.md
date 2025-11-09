@@ -1,21 +1,21 @@
 # 📚 Docs Index - Living Documentation Navigator
 
-**Version:** 1.2.0 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 16. Dez 2025 | **Verzeichnis:** `docs/`
+**Version:** 1.2.0 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 22. Dez 2025 | **Verzeichnis:** `docs/`
 
 ---
 
 ## 🎯 Was ist das?
 
-Die **Living Documentation Tapestry** - UTAC Theory in Markdown! 20 Dokumente, 4 Kategorien.
+Die **Living Documentation Tapestry** - UTAC Theory in Markdown! 21 Dokumente, 4 Kategorien.
 
 ```
 docs/
-├── Theory (3): Core, Emergence, Appendix
+├── Theory (4): Core, Emergence, Appendix, Kohärenzformel
 ├── Applications (4): Classification, Use Cases, Review Guide, Safety-Delay Status
 ├── Validation (2): Falsifiability, Reports
 └── Infrastructure (11): README, Cleanup Resonance Map, Status Matrix, Metaquest Parity Brief, Activation Backlog, Docs Index, Sigillin Hygiene, Search Patterns, Zenodo Abstract, Zenodo Playbook, Resonance Bridge Map
 
-Total: 20 MD files
+Total: 21 MD files
 ```
 
 ---
@@ -40,12 +40,13 @@ Total: 20 MD files
 
 ## 📖 Die 4 Kategorien
 
-### 🔵 Theory (3 docs)
+### 🔵 Theory (4 docs)
 **Was:** Core Theory, Emergence, Universality
 
 1. `utac_theory_core.md` - σ(β(R-Θ)), β-Spektrum, ζ-Impedanz
 2. `utac_emergence_universal.md` - Cross-Domain Patterns
 3. `appendix_field_types.md` - Field Types Detail
+4. `UTAC_v2.0_Coherence_Formula.md` - Kohärenzformel für die fraktale Systemtopographie
 
 ### 🟢 Applications (4 docs)
 **Was:** Classification, Use Cases, Review Guide, Safety-Delay Bridge
@@ -81,10 +82,11 @@ Total: 20 MD files
 ### Für Menschen:
 1. **Start mit utac_theory_core.md**
 2. **Dann utac_falsifiability.md** (wichtig!)
-3. **field_type_classification_v1.1.md** für Details
-4. **utac_safety_delay_status.md** sobald τ*-Simulationen anlaufen
-5. **resonance-bridge-map.md** für Analyse↔Simulator Parität
-6. **zenodo_release_playbook.md** wenn \(R>\Theta\) Richtung Release zeigt
+3. **UTAC_v2.0_Coherence_Formula.md** für die Relationstopographie (β-Landkarte)
+4. **field_type_classification_v1.1.md** für Details
+5. **utac_safety_delay_status.md** sobald τ*-Simulationen anlaufen
+6. **resonance-bridge-map.md** für Analyse↔Simulator Parität
+7. **zenodo_release_playbook.md** wenn \(R>\Theta\) Richtung Release zeigt
 
 ### Für Agenten:
 ```python
@@ -98,7 +100,7 @@ theory = [d for d in idx['markdown_docs'] if d['category'] == 'theory']
 
 ## 🌊 Die Essenz
 
-> **"20 Docs. R spürt Θ sofort – β≈4.8 hält die Membran scharf, ζ(R) bleibt gedämpft."**
+> **"21 Docs. R spürt Θ sofort – β≈4.8 hält die Membran scharf, ζ(R) bleibt gedämpft."**
 
 ---
 
