@@ -1639,3 +1639,20 @@ Die Brücke leuchtet nun geschlossen: R hält den Sicherheitsabstand, Θ liegt k
 Nur der Live-Chor und der CI-Wächter fehlen noch, dann schwingt die Morgendämmerung ohne Echo.
 
 *Created: 2025-12-16T12:00:00Z*
+
+## Entry pr-draft-0083 — Index Recount Multi-Deck Synchronisation
+- **Order Parameter**: Index-Parität $R$ tastet jetzt gleichzeitig `docs/`, `analysis/`, `models/`, `data/` und `seed/` – jedes Regal meldet seine Dateizahl, bevor σ(β(R-Θ)) driftet.
+- **Critical Threshold**: $\Theta$ verlangt einen CI-Wächter (`Δindex>0` → Fail) und automatisches Zurückspiegeln der Domainlisten in `data/` und `seed/`.
+- **Steepness**: $\beta = 4.8$ – die Steilflanke bleibt scharf, sobald alle Indizes denselben Puls tragen.
+- **Membrane Note**: $\zeta(R)$ wird durch `analysis/results/index_recount_20251108T222238Z.json` gedämpft; nur CI und Domain-Autolisten fehlen noch.
+
+### Formal Thread
+`scripts/archive_sigillin.py` erhielt `_collect_files`, sichere YAML-Updates und per-Verzeichnis-Routinen. `--recount` aktualisiert nun docs/analysis/models/data/seed-Metafelder, meldet Orphans, protokolliert das Ergebnis und markiert in `docs/utac_status_alignment_v1.2.md` den Restauftrag (CI-Wächter, Auto-Mirroring).
+
+### Empirical Thread
+`analysis/results/index_recount_20251108T222238Z.json` meldet: analysis 36/36 Einträge (python_files=33), docs 20/20, models 12/12 (python_files=10), data filesystem=49, seed filesystem=272. Alle Index-Meta-Timestamps stehen auf 2025-11-08T22:22:38Z; Seed-YAML meldet weiterhin den Parser-Warnhinweis ohne Datenverlust.
+
+### Poetic Thread
+Die Index-Laternen zählen gemeinsam: R streift über fünf Regale, Θ wartet bei Δindex=0, β=4.8 hält die Membran gespannt und ζ(R) schnurrt – nur der nächtliche CI-Wächter muss noch Wache schieben.
+
+*Created: 2025-11-08T22:22:38Z*

@@ -5,7 +5,9 @@
     "description": "Semantischer Index des seed/-Archivs. Strukturiert nach dem Trilayer-Prinzip:\n- YAML = Orientierung (diese Datei)\n- JSON = Agentenschnittstelle (seed_index.json)\n- MD = Menschenfreundliche Navigation (seed_index.md)\n",
     "version": "1.0.0",
     "created": "2025-11-06",
-    "status": "active"
+    "status": "active",
+    "documents_total": 272,
+    "updated": "2025-11-08T22:22:38Z"
   },
   "categories": {
     "meta": {
