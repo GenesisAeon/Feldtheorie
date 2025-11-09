@@ -2433,6 +2433,38 @@
         "poetic": "Die Brücke glänzt: R hält den Sicherheitsabstand, Θ liegt knapp unter Null, β formt die Steilflanke, und ζ(R)\nschnurrt mit 10.46 Energiepunkten. Nur die Live-Aufnahme und der CI-Wächter fehlen, ehe das Morgenlied ganz ohne Echo erklingt.\n"
       },
       "created_at": "2025-12-16T12:00:00Z"
+    },
+    {
+      "id": "pr-draft-0083",
+      "title": "Index Recount Multi-Deck Synchronisation",
+      "scope": [
+        "scripts/archive_sigillin.py",
+        "docs/utac_status_alignment_v1.2.md",
+        "analysis/results/index_recount_20251108T222238Z.json",
+        "docs/docs_index.yaml",
+        "docs/docs_index.json",
+        "analysis/analysis_index.yaml",
+        "analysis/analysis_index.json",
+        "models/models_index.yaml",
+        "models/models_index.json",
+        "data/data_index.yaml",
+        "data/data_index.json",
+        "seed/seed_index.yaml",
+        "seed/seed_index.json"
+      ],
+      "parameters": {
+        "R": "Index parity drift across docs/analysis/models/data/seed membranes",
+        "Theta": "CI guard to halt on Δindex>0 plus domain-level auto-list mirroring",
+        "beta": 4.8
+      },
+      "resonance": "Recount automation now spans every sigillin shelf; σ(β(R-Θ)) watches docs, analysis, models, data, and seed indices for orphan drift in a single pulse.",
+      "status": "active",
+      "notes": {
+        "formal": "Extended scripts/archive_sigillin.py with _collect_files helpers, per-directory recount routines, and a YAML-safe update path. --recount now refreshes docs/analysis/models/data/seed meta fields, emits parity deltas, and records the run in analysis/results/index_recount_20251108T222238Z.json. docs/utac_status_alignment_v1.2.md marks the remaining CI guard.",
+        "empirical": "Latest ledger: analysis 36/36 (python_files=33), docs 20/20, models 12/12 (python_files=10), data filesystem=49, seed filesystem=272. Updated timestamps: 2025-11-08T22:22:38Z across index meta blocks. Seed index parsing logged as warning, ensuring σ(β(R-Θ)) still notes drift while respecting archival YAML quirks.",
+        "poetic": "Die Index-Laternen zählen gemeinsam: R tastet jeden Katalog, Θ sitzt nun bei 0 Δindex, β=4.8 hält die Flanke straff und ζ(R) schnurrt über fünf Regale hinweg. Nur der CI-Wächter muss noch die Nachtwache übernehmen."
+      },
+      "created_at": "2025-11-08T22:22:38Z"
     }
   ]
 }

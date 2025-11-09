@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "generated_at": "2025-11-08T22:22:38Z",
+    "base_path": "/workspace/Feldtheorie",
+    "order_parameter_R": "index parity delta",
+    "threshold_Theta": "filesystem counts",
+    "beta": 4.8,
+    "zeta": "σ(β(R-Θ)) guard for index parity"
+  },
+  "indices": [
+    {
+      "index": "analysis",
+      "directory": "analysis/",
+      "counts": {
+        "filesystem": 36,
+        "listed": 36
+      },
+      "delta": 0,
+      "missing_files": [],
+      "orphan_entries": [],
+      "meta_updates": {
+        "yaml": {
+          "python_files": "36",
+          "subdirectories": "5",
+          "updated": "\"2025-11-08T22:22:03Z\""
+        },
+        "json": {
+          "python_files": 36,
+          "subdirectories": 5,
+          "updated": "2025-11-08T22:22:03Z"
+        }
+      },
+      "logistic": {
+        "beta": 4.8,
+        "zeta": "analysis-index parity damping"
+      }
+    },
+    {
+      "index": "data",
+      "directory": "data/",
+      "counts": {
+        "filesystem": 49,
+        "listed": null
+      },
+      "delta": null,
+      "missing_files": [],
+      "orphan_entries": [],
+      "meta_updates": {
+        "yaml": {
+          "total_files": "49",
+          "domains": "8",
+          "updated": "\"2025-11-08T22:22:03Z\""
+        },
+        "json": {
+          "total_files": 49,
+          "domains": 8,
+          "updated": "2025-11-08T22:22:03Z"
+        }
+      },
+      "logistic": {
+        "beta": 4.8,
+        "zeta": "data-index volume damping"
+      }
+    },
+    {
+      "index": "docs",
+      "directory": "docs/",
+      "counts": {
+        "filesystem": 20,
+        "listed": 20
+      },
+      "delta": 0,
+      "missing_files": [],
+      "orphan_entries": [],
+      "meta_updates": {
+        "yaml": {
+          "markdown_files": "20",
+          "updated": "\"2025-11-08T22:22:03Z\""
+        },
+        "json": {
+          "markdown_files": 20,
+          "updated": "2025-11-08T22:22:03Z"
+        }
+      },
+      "logistic": {
+        "beta": 4.8,
+        "zeta": "docs-index parity damping"
+      }
+    },
+    {
+      "index": "models",
+      "directory": "models/",
+      "counts": {
+        "filesystem": 12,
+        "listed": 12
+      },
+      "delta": 0,
+      "missing_files": [],
+      "orphan_entries": [],
+      "meta_updates": {
+        "yaml": {
+          "python_files": "12",
+          "updated": "\"2025-11-08T22:22:03Z\""
+        },
+        "json": {
+          "python_files": 12,
+          "updated": "2025-11-08T22:22:03Z"
+        }
+      },
+      "logistic": {
+        "beta": 4.8,
+        "zeta": "model-index parity damping"
+      }
+    },
+    {
+      "index": "seed",
+      "directory": "seed/",
+      "counts": {
+        "filesystem": 272,
+        "listed": null
+      },
+      "delta": null,
+      "missing_files": [],
+      "orphan_entries": [],
+      "meta_updates": {
+        "yaml": {
+          "documents_total": "272",
+          "updated": "\"2025-11-08T22:22:03Z\""
+        },
+        "json": {
+          "documents_total": 272,
+          "updated": "2025-11-08T22:22:03Z"
+        }
+      },
+      "logistic": {
+        "beta": 4.8,
+        "zeta": "seed-index archive damping"
+      }
+    }
+  ]
+}

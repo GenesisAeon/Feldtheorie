@@ -7,8 +7,9 @@
     "version": "1.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "total_files": 47,
-    "domains": 8
+    "total_files": 49,
+    "domains": 8,
+    "updated": "2025-11-08T22:22:38Z"
   },
   "domains": {
     "ai": {
@@ -282,21 +283,21 @@
       "JSON (metadata, simulations)",
       "metadata.json (annotations)"
     ],
-      "domains_keywords": [
-        "LLM",
-        "Wei-PaLM",
-        "Lenski-LTEE",
-        "QPO-Black-Hole",
-        "Synaptic",
-        "Honeybee",
-        "Working-Memory",
-        "Cascadia",
-        "Amazon",
-        "Urban-Heat",
-        "AMOC",
-        "Tipping-Points",
-        "Safety-Delay"
-      ],
+    "domains_keywords": [
+      "LLM",
+      "Wei-PaLM",
+      "Lenski-LTEE",
+      "QPO-Black-Hole",
+      "Synaptic",
+      "Honeybee",
+      "Working-Memory",
+      "Cascadia",
+      "Amazon",
+      "Urban-Heat",
+      "AMOC",
+      "Tipping-Points",
+      "Safety-Delay"
+    ],
     "special": [
       "beta_estimates.csv (⭐ ZENTRAL!)",
       "domain_covariates.csv (Meta-Regression)",

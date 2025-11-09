@@ -394,37 +394,436 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
             else:
                 replacement_value = str(value)
 
-            content = pattern.sub(rf"\1{replacement_value}", content, count=1)
+            content = pattern.sub(rf"\g<1>{replacement_value}", content, count=1)
 
         path.write_text(content, encoding='utf-8')
         return previous
+
+    def _collect_files(
+        self,
+        directory: Path,
+        *,
+        patterns=None,
+        recursive: bool = False,
+        include_suffixes=None,
+        exclude_names=None,
+        exclude_paths=None,
+        use_relative: bool = False,
+    ) -> set:
+        """Return a set of filenames (or relative paths) that match the spec."""
+
+        patterns = patterns or ['*']
+        exclude_names = {name for name in (exclude_names or [])}
+        exclude_paths = {path for path in (exclude_paths or [])}
+        include_suffixes = {s for s in (include_suffixes or [])}
+
+        collected = set()
+        for pattern in patterns:
+            iterator = directory.rglob(pattern) if recursive else directory.glob(pattern)
+            for path in iterator:
+                if not path.is_file():
+                    continue
+
+                rel = path.relative_to(directory)
+                rel_str = rel.as_posix() if use_relative else rel.name
+
+                if rel.name in exclude_names or rel_str in exclude_paths:
+                    continue
+
+                if include_suffixes and rel.suffix not in include_suffixes:
+                    continue
+
+                collected.add(rel_str)
+
+        return collected
+
+    def _load_yaml_or_empty(self, path: Path) -> dict:
+        """Load YAML content and fall back to an empty mapping on parse errors."""
+
+        try:
+            with open(path, 'r', encoding='utf-8') as handle:
+                return yaml.safe_load(handle) or {}
+        except yaml.YAMLError as exc:
+            print(f"⚠️  YAML parse issue for {path}: {exc}. Treating as empty mapping.")
+            return {}
+
+    def _prepare_summary(self, timestamp: str) -> dict:
+        return {
+            'meta': {
+                'generated_at': timestamp,
+                'base_path': str(self.base_path),
+                'order_parameter_R': 'index parity delta',
+                'threshold_Theta': 'filesystem counts',
+                'beta': 4.8,
+                'zeta': 'σ(β(R-Θ)) guard for index parity',
+            },
+            'indices': [],
+        }
+
+    def _log_index_delta(self, target: str, filesystem: int, listed: int, missing, orphans) -> None:
+        print("\n🔁 Index recount:")
+        print(f"   • Target: {target}")
+        print(f"   • Filesystem count: {filesystem}")
+        if listed is not None:
+            print(f"   • Listed entries: {listed}")
+        if missing:
+            print(f"   • Missing in index: {', '.join(missing)}")
+        if orphans:
+            print(f"   • Orphan entries: {', '.join(orphans)}")
+
+    def _recount_docs(self, timestamp: str) -> dict:
+        directory = self.base_path / 'docs'
+        files = self._collect_files(
+            directory,
+            patterns=['*.md'],
+            recursive=False,
+        )
+
+        index_yaml = directory / 'docs_index.yaml'
+        index_json = directory / 'docs_index.json'
+
+        yaml_data = self._load_yaml_or_empty(index_yaml)
+
+        with open(index_json, 'r', encoding='utf-8') as f:
+            json_data = json.load(f)
+
+        listed_entries = [
+            entry.get('name')
+            for entry in (yaml_data.get('markdown_docs') or [])
+            if isinstance(entry, dict)
+        ]
+        listed_set = {name for name in listed_entries if name}
+
+        filesystem_count = len(files)
+
+        yaml_replacements = {
+            'markdown_files': filesystem_count,
+            'updated': timestamp,
+        }
+        previous_yaml = self._update_yaml_fields(index_yaml, yaml_replacements)
+
+        previous_json = {
+            'markdown_files': json_data.get('meta', {}).get('markdown_files'),
+            'updated': json_data.get('meta', {}).get('updated'),
+        }
+        json_data.setdefault('meta', {})['markdown_files'] = filesystem_count
+        json_data['meta']['updated'] = timestamp
+
+        with open(index_json, 'w', encoding='utf-8') as f:
+            json.dump(json_data, f, ensure_ascii=False, indent=2)
+
+        missing_files = sorted(files - listed_set)
+        orphan_entries = sorted(listed_set - files)
+
+        self._log_index_delta('docs', filesystem_count, len(listed_set), missing_files, orphan_entries)
+
+        return {
+            'index': 'docs',
+            'directory': 'docs/',
+            'counts': {
+                'filesystem': filesystem_count,
+                'listed': len(listed_set),
+            },
+            'delta': filesystem_count - len(listed_set),
+            'missing_files': missing_files,
+            'orphan_entries': orphan_entries,
+            'meta_updates': {
+                'yaml': previous_yaml,
+                'json': previous_json,
+            },
+            'logistic': {
+                'beta': 4.8,
+                'zeta': 'docs-index parity damping',
+            },
+        }
+
+    def _recount_analysis(self, timestamp: str) -> dict:
+        directory = self.base_path / 'analysis'
+        py_files = self._collect_files(
+            directory,
+            patterns=['*.py'],
+            recursive=False,
+            exclude_names={
+                'analysis_index.py',
+            },
+        )
+        aux_files = self._collect_files(
+            directory,
+            patterns=['*.md', '*.ipynb'],
+            recursive=False,
+            exclude_names={
+                'analysis_index.md',
+            },
+        )
+        files = py_files | aux_files
+
+        index_yaml = directory / 'analysis_index.yaml'
+        index_json = directory / 'analysis_index.json'
+
+        yaml_data = self._load_yaml_or_empty(index_yaml)
+
+        with open(index_json, 'r', encoding='utf-8') as f:
+            json_data = json.load(f)
+
+        listed_entries = [
+            entry.get('name')
+            for entry in (yaml_data.get('python_scripts') or [])
+            if isinstance(entry, dict)
+        ]
+        listed_set = {name for name in listed_entries if name}
+
+        filesystem_count = len(files)
+        python_file_count = len(py_files)
+        subdirectories = len([p for p in directory.iterdir() if p.is_dir()])
+
+        yaml_replacements = {
+            'python_files': python_file_count,
+            'subdirectories': subdirectories,
+            'updated': timestamp,
+        }
+        previous_yaml = self._update_yaml_fields(index_yaml, yaml_replacements)
+
+        previous_json = {
+            'python_files': json_data.get('meta', {}).get('python_files'),
+            'subdirectories': json_data.get('meta', {}).get('subdirectories'),
+            'updated': json_data.get('meta', {}).get('updated'),
+        }
+        json_data.setdefault('meta', {})['python_files'] = python_file_count
+        json_data['meta']['subdirectories'] = subdirectories
+        json_data['meta']['updated'] = timestamp
+
+        with open(index_json, 'w', encoding='utf-8') as f:
+            json.dump(json_data, f, ensure_ascii=False, indent=2)
+
+        missing_files = sorted(files - listed_set)
+        orphan_entries = sorted(listed_set - files)
+
+        self._log_index_delta('analysis', filesystem_count, len(listed_set), missing_files, orphan_entries)
+
+        return {
+            'index': 'analysis',
+            'directory': 'analysis/',
+            'counts': {
+                'filesystem': filesystem_count,
+                'listed': len(listed_set),
+            },
+            'delta': filesystem_count - len(listed_set),
+            'missing_files': missing_files,
+            'orphan_entries': orphan_entries,
+            'meta_updates': {
+                'yaml': previous_yaml,
+                'json': previous_json,
+            },
+            'logistic': {
+                'beta': 4.8,
+                'zeta': 'analysis-index parity damping',
+            },
+        }
+
+    def _recount_models(self, timestamp: str) -> dict:
+        directory = self.base_path / 'models'
+        py_files = self._collect_files(
+            directory,
+            patterns=['*.py'],
+            recursive=False,
+            exclude_names={'models_index.py'},
+        )
+        doc_files = self._collect_files(
+            directory,
+            patterns=['*.md'],
+            recursive=False,
+            exclude_names={'models_index.md'},
+        )
+        files = py_files | doc_files
+
+        index_yaml = directory / 'models_index.yaml'
+        index_json = directory / 'models_index.json'
+
+        yaml_data = self._load_yaml_or_empty(index_yaml)
+
+        with open(index_json, 'r', encoding='utf-8') as f:
+            json_data = json.load(f)
+
+        listed_entries = [
+            entry.get('name')
+            for entry in (yaml_data.get('python_models') or [])
+            if isinstance(entry, dict)
+        ]
+        listed_set = {name for name in listed_entries if name}
+
+        filesystem_count = len(files)
+        python_file_count = len(py_files)
+
+        yaml_replacements = {
+            'python_files': python_file_count,
+            'updated': timestamp,
+        }
+        previous_yaml = self._update_yaml_fields(index_yaml, yaml_replacements)
+
+        previous_json = {
+            'python_files': json_data.get('meta', {}).get('python_files'),
+            'updated': json_data.get('meta', {}).get('updated'),
+        }
+        json_data.setdefault('meta', {})['python_files'] = python_file_count
+        json_data['meta']['updated'] = timestamp
+
+        with open(index_json, 'w', encoding='utf-8') as f:
+            json.dump(json_data, f, ensure_ascii=False, indent=2)
+
+        missing_files = sorted(files - listed_set)
+        orphan_entries = sorted(listed_set - files)
+
+        self._log_index_delta('models', filesystem_count, len(listed_set), missing_files, orphan_entries)
+
+        return {
+            'index': 'models',
+            'directory': 'models/',
+            'counts': {
+                'filesystem': filesystem_count,
+                'listed': len(listed_set),
+            },
+            'delta': filesystem_count - len(listed_set),
+            'missing_files': missing_files,
+            'orphan_entries': orphan_entries,
+            'meta_updates': {
+                'yaml': previous_yaml,
+                'json': previous_json,
+            },
+            'logistic': {
+                'beta': 4.8,
+                'zeta': 'model-index parity damping',
+            },
+        }
+
+    def _recount_data(self, timestamp: str) -> dict:
+        directory = self.base_path / 'data'
+        files = self._collect_files(
+            directory,
+            patterns=['**/*'],
+            recursive=True,
+            include_suffixes={'.csv', '.json', '.md', '.yaml'},
+            exclude_names={'data_index.yaml', 'data_index.json', 'data_index.md'},
+            use_relative=True,
+        )
+
+        index_yaml = directory / 'data_index.yaml'
+        index_json = directory / 'data_index.json'
+
+        yaml_data = self._load_yaml_or_empty(index_yaml)
+
+        with open(index_json, 'r', encoding='utf-8') as f:
+            json_data = json.load(f)
+
+        filesystem_count = len(files)
+        domain_dirs = [p for p in directory.iterdir() if p.is_dir()]
+
+        yaml_replacements = {
+            'total_files': filesystem_count,
+            'domains': len(domain_dirs),
+            'updated': timestamp,
+        }
+        previous_yaml = self._update_yaml_fields(index_yaml, yaml_replacements)
+
+        previous_json = {
+            'total_files': json_data.get('meta', {}).get('total_files'),
+            'domains': json_data.get('meta', {}).get('domains'),
+            'updated': json_data.get('meta', {}).get('updated'),
+        }
+        json_data.setdefault('meta', {})['total_files'] = filesystem_count
+        json_data['meta']['domains'] = len(domain_dirs)
+        json_data['meta']['updated'] = timestamp
+
+        with open(index_json, 'w', encoding='utf-8') as f:
+            json.dump(json_data, f, ensure_ascii=False, indent=2)
+
+        self._log_index_delta('data', filesystem_count, None, [], [])
+
+        return {
+            'index': 'data',
+            'directory': 'data/',
+            'counts': {
+                'filesystem': filesystem_count,
+                'listed': None,
+            },
+            'delta': None,
+            'missing_files': [],
+            'orphan_entries': [],
+            'meta_updates': {
+                'yaml': previous_yaml,
+                'json': previous_json,
+            },
+            'logistic': {
+                'beta': 4.8,
+                'zeta': 'data-index volume damping',
+            },
+        }
+
+    def _recount_seed(self, timestamp: str) -> dict:
+        directory = self.base_path / 'seed'
+        files = self._collect_files(
+            directory,
+            patterns=['**/*'],
+            recursive=True,
+            include_suffixes={'.md', '.txt', '.pdf', '.json', '.yaml', '.latex'},
+            exclude_names={'seed_index.yaml', 'seed_index.json', 'seed_index.md'},
+            use_relative=True,
+        )
+
+        index_yaml = directory / 'seed_index.yaml'
+        index_json = directory / 'seed_index.json'
+
+        yaml_data = self._load_yaml_or_empty(index_yaml)
+
+        with open(index_json, 'r', encoding='utf-8') as f:
+            json_data = json.load(f)
+
+        filesystem_count = len(files)
+
+        yaml_replacements = {
+            'documents_total': filesystem_count,
+            'updated': timestamp,
+        }
+        previous_yaml = self._update_yaml_fields(index_yaml, yaml_replacements)
+
+        previous_json = {
+            'documents_total': json_data.get('meta', {}).get('documents_total'),
+            'updated': json_data.get('meta', {}).get('updated'),
+        }
+        json_data.setdefault('meta', {})['documents_total'] = filesystem_count
+        json_data['meta']['updated'] = timestamp
+
+        with open(index_json, 'w', encoding='utf-8') as f:
+            json.dump(json_data, f, ensure_ascii=False, indent=2)
+
+        self._log_index_delta('seed', filesystem_count, None, [], [])
+
+        return {
+            'index': 'seed',
+            'directory': 'seed/',
+            'counts': {
+                'filesystem': filesystem_count,
+                'listed': None,
+            },
+            'delta': None,
+            'missing_files': [],
+            'orphan_entries': [],
+            'meta_updates': {
+                'yaml': previous_yaml,
+                'json': previous_json,
+            },
+            'logistic': {
+                'beta': 4.8,
+                'zeta': 'seed-index archive damping',
+            },
+        }
 
     def recount_indices(self, targets=None, output_dir=None):
         """Refresh index metadata counts and emit a parity summary."""
 
         timestamp = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
+        summary = self._prepare_summary(timestamp)
 
-        index_specs = {
-            'docs': {
-                'label': 'docs/',
-                'directory': self.base_path / 'docs',
-                'glob': '*.md',
-                'index_files': {
-                    'yaml': self.base_path / 'docs/docs_index.yaml',
-                    'json': self.base_path / 'docs/docs_index.json',
-                    'md': self.base_path / 'docs/docs_index.md',
-                },
-                'list_key': 'markdown_docs',
-                'name_field': 'name',
-                'meta_fields': ['markdown_files'],
-                'logistic': {
-                    'beta': 4.8,
-                    'zeta': 'docs-index parity damping',
-                },
-            },
-        }
-
-        available_targets = sorted(index_specs.keys())
+        available_targets = ['analysis', 'data', 'docs', 'models', 'seed']
 
         if targets:
             requested = []
@@ -438,99 +837,28 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
         else:
             requested = available_targets
 
-        unknown = [t for t in requested if t not in index_specs]
+        unknown = [t for t in requested if t not in available_targets]
         if unknown:
             raise ValueError(f"Unknown indices for recount: {', '.join(unknown)}")
-
-        summary = {
-            'meta': {
-                'generated_at': timestamp,
-                'base_path': str(self.base_path),
-                'order_parameter_R': 'index parity delta',
-                'threshold_Theta': 'filesystem counts',
-                'beta': 4.8,
-                'zeta': 'σ(β(R-Θ)) guard for docs indices',
-            },
-            'indices': [],
-        }
 
         results_dir = self.base_path / 'analysis' / 'results'
         results_dir.mkdir(parents=True, exist_ok=True)
 
         for target in requested:
-            spec = index_specs[target]
-            dir_path = spec['directory']
-            files = sorted({p.name for p in dir_path.glob(spec['glob']) if p.is_file()})
-
-            index_yaml = spec['index_files']['yaml']
-            index_json = spec['index_files']['json']
-
-            if not index_yaml.exists() or not index_json.exists():
-                print(f"⚠️  Skipping {target}: index files missing")
+            if target == 'docs':
+                info = self._recount_docs(timestamp)
+            elif target == 'analysis':
+                info = self._recount_analysis(timestamp)
+            elif target == 'models':
+                info = self._recount_models(timestamp)
+            elif target == 'data':
+                info = self._recount_data(timestamp)
+            elif target == 'seed':
+                info = self._recount_seed(timestamp)
+            else:
                 continue
 
-            with open(index_yaml, 'r', encoding='utf-8') as f:
-                yaml_data = yaml.safe_load(f)
-
-            with open(index_json, 'r', encoding='utf-8') as f:
-                json_data = json.load(f)
-
-            listed_entries = []
-            if spec['list_key'] and yaml_data:
-                listed_entries = [entry.get(spec['name_field']) for entry in yaml_data.get(spec['list_key'], [])]
-
-            listed_set = {name for name in listed_entries if name}
-            filesystem_set = set(files)
-
-            missing_files = sorted(filesystem_set - listed_set)
-            orphan_entries = sorted(listed_set - filesystem_set)
-
-            # Update YAML meta counts via regex replacement to preserve comments
-            new_count = len(filesystem_set)
-            yaml_replacements = {
-                field: new_count for field in spec['meta_fields']
-            }
-            yaml_replacements['updated'] = timestamp
-            previous_yaml = self._update_yaml_fields(index_yaml, yaml_replacements)
-
-            # Update JSON meta counts
-            previous_json = {}
-            for field in spec['meta_fields']:
-                previous_json[field] = json_data.get('meta', {}).get(field)
-                json_data.setdefault('meta', {})[field] = new_count
-            previous_json['updated'] = json_data.get('meta', {}).get('updated')
-            json_data['meta']['updated'] = timestamp
-
-            with open(index_json, 'w', encoding='utf-8') as f:
-                json.dump(json_data, f, ensure_ascii=False, indent=2)
-
-            index_summary = {
-                'index': target,
-                'directory': spec['label'],
-                'counts': {
-                    'filesystem': new_count,
-                    'listed': len(listed_set),
-                },
-                'delta': new_count - len(listed_set),
-                'missing_files': missing_files,
-                'orphan_entries': orphan_entries,
-                'meta_updates': {
-                    'yaml': previous_yaml,
-                    'json': previous_json,
-                },
-                'logistic': spec['logistic'],
-            }
-
-            summary['indices'].append(index_summary)
-
-            print("\n🔁 Index recount:")
-            print(f"   • Target: {target}")
-            print(f"   • Filesystem count: {new_count}")
-            print(f"   • Listed entries: {len(listed_set)}")
-            if missing_files:
-                print(f"   • Missing in index: {', '.join(missing_files)}")
-            if orphan_entries:
-                print(f"   • Orphan entries: {', '.join(orphan_entries)}")
+            summary['indices'].append(info)
 
         summary_path = results_dir / f"index_recount_{timestamp.replace(':', '').replace('-', '')}.json"
         with open(summary_path, 'w', encoding='utf-8') as f:

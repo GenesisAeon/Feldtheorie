@@ -8,7 +8,7 @@
     "created": "2025-11-06",
     "status": "active",
     "markdown_files": 20,
-    "updated": "2025-12-16T00:00:00Z"
+    "updated": "2025-11-08T22:22:38Z"
   },
   "categories": {
     "theory": {
@@ -315,8 +315,7 @@
         "tooling"
       ],
       "description": "Suchmuster-Atlas für Sigillin & Indizes.\nLiefert CLI-Beispiele, Regex-Wächter und Paritätsprüfungen,\ndamit σ(β(R-Θ)) Signale automatisiert auffindbar bleiben.\n"
-    }
-    ,
+    },
     {
       "id": "docs-infra-009",
       "name": "zenodo_multilingual_abstract_v1.2.md",
