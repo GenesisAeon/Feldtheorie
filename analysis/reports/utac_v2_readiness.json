@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2025-11-09T12:41:11.639421+00:00",
+    "generated_at": "2025-11-09T13:07:02.733702+00:00",
     "manifest_path": "data/utac_v1_3_data_manifest.yaml",
     "logistic": {
       "theta": 0.66,
@@ -375,7 +375,7 @@
       "description": "climate beta extractor pipeline",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-11-09T12:03:51.301748+00:00",
+      "last_modified": "2025-11-09T12:04:16.730311+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/urban_heat_global_fit.json",
@@ -389,7 +389,7 @@
       "description": "neuro-AI hybrid threshold fitter",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-11-09T12:03:51.301748+00:00",
+      "last_modified": "2025-11-09T12:04:16.730311+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/neuro_ai_beta.json",
@@ -403,7 +403,7 @@
       "description": "β>10 instrumentation guard",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-11-09T12:03:51.301748+00:00",
+      "last_modified": "2025-11-09T12:04:16.730311+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/outlier_validator_report.json",
@@ -417,7 +417,7 @@
       "description": "meta regression v2 refresh",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-11-09T12:03:51.301748+00:00",
+      "last_modified": "2025-11-09T12:04:16.730311+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/beta_meta_regression_v2_latest.json",
@@ -433,7 +433,7 @@
       "description": "UTAC v2.0 coherence formula narrative",
       "category": "documentation",
       "exists": true,
-      "last_modified": "2025-11-09T12:37:56.788998+00:00",
+      "last_modified": "2025-11-09T13:06:24.164566+00:00",
       "expected_outputs": []
     },
     {
@@ -441,7 +441,7 @@
       "description": "resonance bridge map",
       "category": "documentation",
       "exists": true,
-      "last_modified": "2025-11-09T12:37:48.641023+00:00",
+      "last_modified": "2025-11-09T13:06:24.164566+00:00",
       "expected_outputs": []
     }
   ],
@@ -451,7 +451,7 @@
       "description": "coherence formula simulator preset",
       "category": "simulator",
       "exists": true,
-      "last_modified": "2025-11-09T12:37:28.065088+00:00",
+      "last_modified": "2025-11-09T13:06:24.180566+00:00",
       "expected_outputs": []
     }
   ],
@@ -461,7 +461,7 @@
       "description": "metaquest system map",
       "category": "sigillin",
       "exists": true,
-      "last_modified": "2025-11-09T12:33:55.857791+00:00",
+      "last_modified": "2025-11-09T13:06:24.168566+00:00",
       "expected_outputs": []
     },
     {
@@ -469,7 +469,7 @@
       "description": "metaquest system shadow map",
       "category": "sigillin",
       "exists": true,
-      "last_modified": "2025-11-09T12:34:30.165676+00:00",
+      "last_modified": "2025-11-09T13:06:24.180566+00:00",
       "expected_outputs": []
     }
   ],

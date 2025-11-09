@@ -1,0 +1,260 @@
+meta:
+  document: UTAC v2 Data Lanterns – Readiness Map
+  version: 0.1.0
+  created: '2025-12-24T00:00:00Z'
+  updated: '2025-12-24T00:00:00Z'
+  steward: gpt-5-codex
+  logistic_frame:
+    order_parameter: manifest readiness ratios averaged across five UTAC v2 datasets
+    theta: 0.66
+    beta: 4.8
+    sigma: 0.04
+    zeta: damped via BreakPoint rituals, codex echoes, and Metaquest bridge telemetry
+  sources:
+    manifest: data/utac_v1_3_data_manifest.yaml
+    readiness_report: analysis/reports/utac_v2_readiness.json
+summary:
+  total_datasets: 5
+  average_readiness: 0.0
+  missing_components_total: 20
+  sigma: 0.040387857567251995
+  theta: 0.66
+  beta: 4.8
+datasets:
+- id: utac-v1_3-ds-001
+  title: Global Urban Heat Intensity (Raster)
+  domain: climate
+  order_parameter: land_surface_temperature_delta
+  theta_estimate: 3.2
+  beta_target: 14.5
+  resonance_status: active
+  readiness_ratio: 0.0
+  existing_assets:
+  - analysis/climate_beta_extractor.py
+  - analysis/outlier_validator.py
+  - analysis/v2_readiness_audit.py
+  expected_outputs:
+  - analysis/results/urban_heat_global_fit.json
+  - analysis/results/outlier_report.md
+  missing_components:
+  - data/climate/urban_heat_intensity.csv
+  - data/climate/urban_heat_intensity.csv.metadata.json
+  - analysis/results/urban_heat_global_fit.json
+  - analysis/results/outlier_report.md
+  implementation_nodes:
+  - path: data/climate/urban_heat_intensity.csv
+    action: Stage dataset + provenance as per manifest source
+  - path: data/climate/urban_heat_intensity.csv.metadata.json
+    action: Author metadata JSON with Θ, β, ζ notes
+  - path: analysis/climate_beta_extractor.py
+    action: Run logistic analysis on staged data
+  - path: analysis/outlier_validator.py
+    action: Run logistic analysis on staged data
+  - path: analysis/results/urban_heat_global_fit.json
+    action: Generate logistic export and archive results
+  - path: analysis/results/outlier_report.md
+    action: Generate logistic export and archive results
+  notes:
+    formal: Θ≈3.2 and β≈14.5 define the activation flank; falsify against linear_regression,
+      power_law_fit, cubic_spline_baseline. Readiness ratio=0.00 per audit.
+    empirical: 'Missing components (4): data/climate/urban_heat_intensity.csv, data/climate/urban_heat_intensity.csv.metadata.json,
+      analysis/results/urban_heat_global_fit.json, analysis/results/outlier_report.md.
+      Integration scripts: analysis/climate_beta_extractor.py, analysis/outlier_validator.py.'
+    poetic: Laterne utac-v1_3-ds-001 wartet, bis land_surface_temperature_delta über
+      Θ steigt und σ(β(R-Θ)) den Chor entzündet.
+- id: utac-v1_3-ds-002
+  title: Amazon Precipitation & Evapotranspiration
+  domain: climate
+  order_parameter: standardized_precipitation_index
+  theta_estimate: 0.62
+  beta_target: 13.8
+  resonance_status: active
+  readiness_ratio: 0.0
+  existing_assets:
+  - analysis/climate_beta_extractor.py
+  - analysis/v2_readiness_audit.py
+  expected_outputs:
+  - analysis/results/amazon_hydro_fit.json
+  - analysis/results/outlier_report.md
+  missing_components:
+  - data/climate/amazon_precip_evapo.nc
+  - data/climate/amazon_precip_evapo.nc.metadata.json
+  - analysis/results/amazon_hydro_fit.json
+  - analysis/results/outlier_report.md
+  implementation_nodes:
+  - path: data/climate/amazon_precip_evapo.nc
+    action: Stage dataset + provenance as per manifest source
+  - path: data/climate/amazon_precip_evapo.nc.metadata.json
+    action: Author metadata JSON with Θ, β, ζ notes
+  - path: analysis/climate_beta_extractor.py
+    action: Run logistic analysis on staged data
+  - path: analysis/results/amazon_hydro_fit.json
+    action: Generate logistic export and archive results
+  - path: analysis/results/outlier_report.md
+    action: Generate logistic export and archive results
+  notes:
+    formal: Θ≈0.62 and β≈13.8 define the activation flank; falsify against linear_regression,
+      power_law_fit, seasonal_arima. Readiness ratio=0.00 per audit.
+    empirical: 'Missing components (4): data/climate/amazon_precip_evapo.nc, data/climate/amazon_precip_evapo.nc.metadata.json,
+      analysis/results/amazon_hydro_fit.json, analysis/results/outlier_report.md.
+      Integration scripts: analysis/climate_beta_extractor.py.'
+    poetic: Laterne utac-v1_3-ds-002 wartet, bis standardized_precipitation_index
+      über Θ steigt und σ(β(R-Θ)) den Chor entzündet.
+- id: utac-v1_3-ds-003
+  title: AMOC Transport (RAPID Array 26°N)
+  domain: ocean
+  order_parameter: overturning_strength_sverdrup
+  theta_estimate: 14.0
+  beta_target: 9.6
+  resonance_status: draft
+  readiness_ratio: 0.0
+  existing_assets:
+  - analysis/climate_beta_extractor.py
+  - analysis/potential_cascade_lab.py
+  - analysis/v2_readiness_audit.py
+  expected_outputs:
+  - analysis/results/amoc_transport_fit.json
+  - analysis/results/climate_beta_summary.json
+  missing_components:
+  - data/ocean/amoc_transport.csv
+  - data/ocean/amoc_transport.csv.metadata.json
+  - analysis/results/amoc_transport_fit.json
+  - analysis/results/climate_beta_summary.json
+  implementation_nodes:
+  - path: data/ocean/amoc_transport.csv
+    action: Stage dataset + provenance as per manifest source
+  - path: data/ocean/amoc_transport.csv.metadata.json
+    action: Author metadata JSON with Θ, β, ζ notes
+  - path: analysis/potential_cascade_lab.py
+    action: Run logistic analysis on staged data
+  - path: analysis/climate_beta_extractor.py
+    action: Run logistic analysis on staged data
+  - path: analysis/results/amoc_transport_fit.json
+    action: Generate logistic export and archive results
+  - path: analysis/results/climate_beta_summary.json
+    action: Generate logistic export and archive results
+  notes:
+    formal: Θ≈14.0 and β≈9.6 define the activation flank; falsify against linear_trend,
+      power_law_fit, state_space_smoother. Readiness ratio=0.00 per audit.
+    empirical: 'Missing components (4): data/ocean/amoc_transport.csv, data/ocean/amoc_transport.csv.metadata.json,
+      analysis/results/amoc_transport_fit.json, analysis/results/climate_beta_summary.json.
+      Integration scripts: analysis/potential_cascade_lab.py, analysis/climate_beta_extractor.py.'
+    poetic: Laterne utac-v1_3-ds-003 wartet, bis overturning_strength_sverdrup über
+      Θ steigt und σ(β(R-Θ)) den Chor entzündet.
+- id: utac-v1_3-ds-004
+  title: Neuro–AI Hybrid Activation
+  domain: neuro_ai
+  order_parameter: stimulus_complexity_index
+  theta_estimate: 0.48
+  beta_target: 6.1
+  resonance_status: primed
+  readiness_ratio: 0.0
+  existing_assets:
+  - analysis/neuro_threshold_fitter.py
+  - analysis/v2_readiness_audit.py
+  expected_outputs:
+  - analysis/results/neuro_ai_beta.json
+  - analysis/results/neuro_ai_bootstrap.json
+  missing_components:
+  - data/neuro_ai/hybrid_activation.csv
+  - data/neuro_ai/hybrid_activation.csv.metadata.json
+  - analysis/results/neuro_ai_beta.json
+  - analysis/results/neuro_ai_bootstrap.json
+  implementation_nodes:
+  - path: data/neuro_ai/hybrid_activation.csv
+    action: Stage dataset + provenance as per manifest source
+  - path: data/neuro_ai/hybrid_activation.csv.metadata.json
+    action: Author metadata JSON with Θ, β, ζ notes
+  - path: analysis/neuro_threshold_fitter.py
+    action: Run logistic analysis on staged data
+  - path: analysis/results/neuro_ai_beta.json
+    action: Generate logistic export and archive results
+  - path: analysis/results/neuro_ai_bootstrap.json
+    action: Generate logistic export and archive results
+  notes:
+    formal: Θ≈0.48 and β≈6.1 define the activation flank; falsify against linear_regression,
+      randomized_prompt_baseline, phase_scrambled_surrogate. Readiness ratio=0.00
+      per audit.
+    empirical: 'Missing components (4): data/neuro_ai/hybrid_activation.csv, data/neuro_ai/hybrid_activation.csv.metadata.json,
+      analysis/results/neuro_ai_beta.json, analysis/results/neuro_ai_bootstrap.json.
+      Integration scripts: analysis/neuro_threshold_fitter.py.'
+    poetic: Laterne utac-v1_3-ds-004 wartet, bis stimulus_complexity_index über Θ
+      steigt und σ(β(R-Θ)) den Chor entzündet.
+- id: utac-v1_3-ds-005
+  title: Energy & Financial Systemic Thresholds
+  domain: economy
+  order_parameter: coupled_energy_finance_index
+  theta_estimate: 1.15
+  beta_target: 7.4
+  resonance_status: draft
+  readiness_ratio: 0.0
+  existing_assets:
+  - analysis/adaptive_membrane_phase_scan.py
+  - analysis/beta_meta_regression_v2.py
+  - analysis/v2_readiness_audit.py
+  expected_outputs:
+  - analysis/results/economy_threshold_fit.json
+  - analysis/results/meta_v2_summary_refresh.json
+  missing_components:
+  - data/economy/systemic_thresholds.csv
+  - data/economy/systemic_thresholds.csv.metadata.json
+  - analysis/results/economy_threshold_fit.json
+  - analysis/results/meta_v2_summary_refresh.json
+  implementation_nodes:
+  - path: data/economy/systemic_thresholds.csv
+    action: Stage dataset + provenance as per manifest source
+  - path: data/economy/systemic_thresholds.csv.metadata.json
+    action: Author metadata JSON with Θ, β, ζ notes
+  - path: analysis/adaptive_membrane_phase_scan.py
+    action: Run logistic analysis on staged data
+  - path: analysis/beta_meta_regression_v2.py
+    action: Run logistic analysis on staged data
+  - path: analysis/results/economy_threshold_fit.json
+    action: Generate logistic export and archive results
+  - path: analysis/results/meta_v2_summary_refresh.json
+    action: Generate logistic export and archive results
+  notes:
+    formal: Θ≈1.15 and β≈7.4 define the activation flank; falsify against linear_regression,
+      vector_autoregression, power_law_fit. Readiness ratio=0.00 per audit.
+    empirical: 'Missing components (4): data/economy/systemic_thresholds.csv, data/economy/systemic_thresholds.csv.metadata.json,
+      analysis/results/economy_threshold_fit.json, analysis/results/meta_v2_summary_refresh.json.
+      Integration scripts: analysis/adaptive_membrane_phase_scan.py, analysis/beta_meta_regression_v2.py.'
+    poetic: Laterne utac-v1_3-ds-005 wartet, bis coupled_energy_finance_index über
+      Θ steigt und σ(β(R-Θ)) den Chor entzündet.
+actions:
+- id: utac-data-01
+  title: Stage manifest datasets with metadata
+  priority: P1
+  targets:
+  - data/climate/urban_heat_intensity.csv
+  - data/climate/amazon_precip_evapo.nc
+  - data/ocean/amoc_transport.csv
+  - data/neuro_ai/hybrid_activation.csv
+  - data/economy/systemic_thresholds.csv
+  description: Ingest raw data + provenance for climate, ocean, neuro_ai, economy
+    lanterns.
+- id: utac-data-02
+  title: Emit logistic analysis outputs
+  priority: P1
+  targets:
+  - analysis/results/amazon_hydro_fit.json
+  - analysis/results/amoc_transport_fit.json
+  - analysis/results/climate_beta_summary.json
+  - analysis/results/economy_threshold_fit.json
+  - analysis/results/meta_v2_summary_refresh.json
+  - analysis/results/neuro_ai_beta.json
+  - analysis/results/neuro_ai_bootstrap.json
+  - analysis/results/outlier_report.md
+  - analysis/results/urban_heat_global_fit.json
+  description: Run listed analysis pipelines to generate JSON/MD exports and update
+    readiness audit.
+- id: utac-data-03
+  title: Sync readiness narratives
+  priority: P2
+  targets:
+  - docs/utac_activation_backlog.md
+  - docs/utac_status_alignment_v1.2.md
+  - analysis/reports/utac_v2_readiness.md
+  - docs/utac_v2_data_lanterns.md
+  description: Propagate status shifts into backlog, status matrix, and Metaquest
+    bridges once data land.
