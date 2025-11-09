@@ -1,0 +1,170 @@
+{
+  "datasets": [
+    {
+      "beta_target": 14.5,
+      "components": [
+        {
+          "exists": false,
+          "name": "data",
+          "path": "/workspace/Feldtheorie/data/climate/urban_heat_intensity.csv"
+        },
+        {
+          "exists": true,
+          "name": "metadata",
+          "path": "/workspace/Feldtheorie/data/climate/urban_heat_intensity.metadata.json"
+        },
+        {
+          "exists": false,
+          "name": "results",
+          "path": "/workspace/Feldtheorie/analysis/results/urban_heat_global_fit.json"
+        }
+      ],
+      "domain": "climate",
+      "id": "utac-v1_3-ds-001",
+      "logistic_activation": 0.008691617043010748,
+      "metadata_status": "staging",
+      "missing_components": [
+        "data",
+        "results"
+      ],
+      "readiness_ratio": 0.3333333333333333,
+      "resonance_status": "active",
+      "theta_estimate": 3.2
+    },
+    {
+      "beta_target": 13.8,
+      "components": [
+        {
+          "exists": false,
+          "name": "data",
+          "path": "/workspace/Feldtheorie/data/climate/amazon_precip_evapo.nc"
+        },
+        {
+          "exists": true,
+          "name": "metadata",
+          "path": "/workspace/Feldtheorie/data/climate/amazon_precip_evapo.metadata.json"
+        },
+        {
+          "exists": false,
+          "name": "results",
+          "path": "/workspace/Feldtheorie/analysis/results/amazon_hydro_fit.json"
+        }
+      ],
+      "domain": "climate",
+      "id": "utac-v1_3-ds-002",
+      "logistic_activation": 0.010900352006199333,
+      "metadata_status": "staging",
+      "missing_components": [
+        "data",
+        "results"
+      ],
+      "readiness_ratio": 0.3333333333333333,
+      "resonance_status": "active",
+      "theta_estimate": 0.62
+    },
+    {
+      "beta_target": 9.6,
+      "components": [
+        {
+          "exists": false,
+          "name": "data",
+          "path": "/workspace/Feldtheorie/data/ocean/amoc_transport.csv"
+        },
+        {
+          "exists": true,
+          "name": "metadata",
+          "path": "/workspace/Feldtheorie/data/ocean/amoc_transport.metadata.json"
+        },
+        {
+          "exists": false,
+          "name": "results",
+          "path": "/workspace/Feldtheorie/analysis/results/amoc_transport_fit.json"
+        }
+      ],
+      "domain": "ocean",
+      "id": "utac-v1_3-ds-003",
+      "logistic_activation": 0.04164647510891734,
+      "metadata_status": "staging",
+      "missing_components": [
+        "data",
+        "results"
+      ],
+      "readiness_ratio": 0.3333333333333333,
+      "resonance_status": "draft",
+      "theta_estimate": 14.0
+    },
+    {
+      "beta_target": 6.1,
+      "components": [
+        {
+          "exists": false,
+          "name": "data",
+          "path": "/workspace/Feldtheorie/data/neuro_ai/hybrid_activation.csv"
+        },
+        {
+          "exists": true,
+          "name": "metadata",
+          "path": "/workspace/Feldtheorie/data/neuro_ai/hybrid_activation.metadata.json"
+        },
+        {
+          "exists": false,
+          "name": "results",
+          "path": "/workspace/Feldtheorie/analysis/results/neuro_ai_beta.json"
+        }
+      ],
+      "domain": "neuro_ai",
+      "id": "utac-v1_3-ds-004",
+      "logistic_activation": 0.11997502763568728,
+      "metadata_status": "staging",
+      "missing_components": [
+        "data",
+        "results"
+      ],
+      "readiness_ratio": 0.3333333333333333,
+      "resonance_status": "primed",
+      "theta_estimate": 0.48
+    },
+    {
+      "beta_target": 7.4,
+      "components": [
+        {
+          "exists": false,
+          "name": "data",
+          "path": "/workspace/Feldtheorie/data/economy/systemic_thresholds.csv"
+        },
+        {
+          "exists": true,
+          "name": "metadata",
+          "path": "/workspace/Feldtheorie/data/economy/systemic_thresholds.metadata.json"
+        },
+        {
+          "exists": false,
+          "name": "results",
+          "path": "/workspace/Feldtheorie/analysis/results/economy_threshold_fit.json"
+        }
+      ],
+      "domain": "economy",
+      "id": "utac-v1_3-ds-005",
+      "logistic_activation": 0.0818604569706572,
+      "metadata_status": "staging",
+      "missing_components": [
+        "data",
+        "results"
+      ],
+      "readiness_ratio": 0.3333333333333333,
+      "resonance_status": "draft",
+      "theta_estimate": 1.15
+    }
+  ],
+  "meta": {
+    "activation_mean": 0.052614785752894376,
+    "datasets_total": 5,
+    "generated_at": "2025-11-09T11:32:36.988583+00:00",
+    "manifest_path": "/workspace/Feldtheorie/data/utac_v1_3_data_manifest.yaml",
+    "status_counter": {
+      "active": 2,
+      "draft": 2,
+      "primed": 1
+    }
+  }
+}

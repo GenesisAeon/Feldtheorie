@@ -12,9 +12,9 @@ meta:
     an empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.
   version: "1.0.0"
   created: "2025-11-06"
-  updated: "2025-12-19T12:00:00Z"
+  updated: "2025-12-22T00:00:00Z"
   status: "active"
-  python_files: 38
+  python_files: 39
   subdirectories: 5
 
 # ═══════════════════════════════════════════════════════════════════
@@ -44,7 +44,7 @@ categories:
     name: "Utilities & Guards"
     description: "Helper-Funktionen, Guards, Corrections"
     color: "#9B59B6"  # Lila - Utils
-    count: 7
+    count: 8
 
   subdirs:
     name: "Unterverzeichnisse"
@@ -53,7 +53,7 @@ categories:
     count: 4
 
 # ═══════════════════════════════════════════════════════════════════
-# PYTHON-DATEIEN: Die 33 Analyse-Skripte
+# PYTHON-DATEIEN: Die 34 Analyse-Skripte
 # ═══════════════════════════════════════════════════════════════════
 
 python_scripts:
@@ -515,6 +515,19 @@ python_scripts:
       Objekte bereit, filtert Domains/IDs und liefert Output-Pfade für neue
       Laternen.
 
+  - id: analysis-util-008
+    name: "utac_manifest_audit.py"
+    category: utilities
+    type: guard
+    status: primed
+    relevance: high
+    keywords: [manifest, audit, readiness, σ, ΔAIC]
+    description: |
+      Auditiert das UTAC v1.3 Manifest: prüft Daten-, Metadata- und Result-
+      Komponenten, berechnet σ(β(R-Θ)) Aktivierungen für jede Laterne und
+      exportiert JSON/YAML/Markdown-Reports (`utac_v1_3_manifest_audit.*`).
+      Unterstützt Docs & Seed bei der Füllstandskontrolle.
+
   # ─────────────────────────────────────────────────────────────────
   # SPEZIELLE ANALYSEN (4)
   # ─────────────────────────────────────────────────────────────────
@@ -611,7 +624,8 @@ subdirectories:
     files:
       - "qpo_membrane_summary.json"
       - "utac_v1_3_gap_assessment.md"
-    keywords: [reports, summary, qpo, astrophysics, gap, utac-v1_3]
+      - "utac_v1_3_manifest_audit.md"
+    keywords: [reports, summary, qpo, astrophysics, gap, utac-v1_3, audit]
 
   results:
     name: "Fit Results (JSON)"

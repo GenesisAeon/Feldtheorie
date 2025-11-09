@@ -26,4 +26,5 @@ __all__ = [
     "threshold_dataset_loader",
     "universal_beta_extractor",
     "utac_manifest",
+    "utac_manifest_audit",
 ]
