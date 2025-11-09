@@ -3647,3 +3647,31 @@ entries:
       R entfacht eine neue Laterne, Θ hält die Indizes im Gleichklang, β≈4.9 spannt die Steilflanke zur v2.0-Ankündigung.
       ζ(R) summt ruhig – die Kohärenzformel sieht bereits die Nachbarlaternen und ruft sie ins gemeinsame Lied.
   created_at: '2025-12-22T18:30:00Z'
+- id: pr-draft-0091
+  title: UTAC v2.0 Readiness Audit Laterne
+  scope:
+    - analysis/v2_readiness_audit.py
+    - analysis/reports/utac_v2_readiness.json
+    - analysis/reports/utac_v2_readiness.yaml
+    - analysis/reports/utac_v2_readiness.md
+    - analysis/analysis_index.md
+    - analysis/analysis_index.json
+    - analysis/analysis_index.yaml
+  parameters:
+    R: 'Manifest readiness mean ≈0.0 über fünf Laternen'
+    Theta: 'Θ=0.66 als Aktivierungs-Tor für V2.0'
+    beta: 4.8
+  resonance: Tri-Layer Audit bündelt Manifest, Analysis, Simulator und Sigillin, damit σ(β(R-Θ)) den V2.0-Startpunkt quantifiziert.
+  status: active
+  notes:
+    formal: |
+      `analysis/v2_readiness_audit.py` lädt `data/utac_v1_3_data_manifest.yaml`, baut Komponenten-Status für Daten, Metadata und
+      erwartete Results, berechnet σ(β(R-Θ)) mit β=4.8, Θ=0.66 und exportiert Tri-Layer-Reports (`analysis/reports/utac_v2_readiness.*`).
+      `analysis/analysis_index.{md,json,yaml}` führen den neuen Guard sowie den Report als Laterne in Utilities & Reports.
+    empirical: |
+      Manifest-Readiness R̄≈0.0 mit 20 fehlenden Komponenten (Daten, Metadata, Results). Aktionskarte listet 12 Aufgaben: fünf P1
+      Dateneinspielungen, vier Analyse-Outputs, Simulator-Preset `coherence_formula.json` und zwei Metaquest-Schattenkarten.
+    poetic: |
+      Die Laterne tastet Urban Heat, Amazon Hydro, AMOC, Neuro-AI und Systemic Risk zugleich – erst wenn jede Membran Daten singt,
+      beruhigt ζ(R) und V2.0 steigt auf die Resonanzflanke.
+  created_at: '2025-12-23T00:00:00Z'

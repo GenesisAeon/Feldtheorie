@@ -6,9 +6,9 @@
     "description": "Analysis-Skripte und Notebooks, die UTF logistic response σ(β(R-Θ))\nan empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.\n",
     "version": "1.0.0",
     "created": "2025-11-06",
-    "updated": "2025-12-22T00:00:00Z",
+    "updated": "2025-12-23T00:00:00Z",
     "status": "active",
-    "python_files": 39,
+    "python_files": 40,
     "subdirectories": 5
   },
   "categories": {
@@ -34,7 +34,7 @@
       "name": "Utilities & Guards",
       "description": "Helper-Funktionen, Guards, Corrections",
       "color": "#9B59B6",
-      "count": 8
+      "count": 9
     },
     "subdirs": {
       "name": "Unterverzeichnisse",
@@ -624,6 +624,22 @@
       "description": "Auditiert das UTAC v1.3 Manifest: prüft Daten-, Metadata- und Result-\nKomponenten, berechnet σ(β(R-Θ)) Aktivierungen für jede Laterne und\nexportiert JSON/YAML/Markdown-Reports (`utac_v1_3_manifest_audit.*`).\nUnterstützt Docs & Seed bei der Füllstandskontrolle.\n"
     },
     {
+      "id": "analysis-util-009",
+      "name": "v2_readiness_audit.py",
+      "category": "utilities",
+      "type": "guard",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "manifest",
+        "readiness",
+        "logistic",
+        "v2",
+        "tri-layer"
+      ],
+      "description": "Aggregiert Manifest-Status, Analysis-Hooks, Simulator-Presets und\nSigillin-Brücken zu einem σ(β(R-Θ)) Readiness-Score. Exportiert\nTri-Layer-Reports (`analysis/reports/utac_v2_readiness.{json,yaml,md}`)\nund priorisiert Aktionen für die V2.0 Aktivierung.\n"
+    },
+    {
       "id": "analysis-special-001",
       "name": "adaptive_membrane_phase_scan.py",
       "category": "fit_scripts",
@@ -737,7 +753,8 @@
       "files": [
         "qpo_membrane_summary.json",
         "utac_v1_3_gap_assessment.md",
-        "utac_v1_3_manifest_audit.md"
+        "utac_v1_3_manifest_audit.md",
+        "utac_v2_readiness.md"
       ],
       "keywords": [
         "reports",
@@ -746,6 +763,8 @@
         "astrophysics",
         "gap",
         "utac-v1_3",
+        "utac-v2_0",
+        "readiness",
         "audit"
       ]
     },
