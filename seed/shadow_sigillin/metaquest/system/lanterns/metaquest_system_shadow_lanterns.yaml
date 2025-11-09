@@ -4,58 +4,79 @@ meta:
   created: '2025-12-18T00:00:00Z'
   updated: '2025-12-18T00:00:00Z'
   logistic:
-    R: 'Risks of stale automation parity, missing telemetry, or ritual amnesia in the system lane.'
-    Theta: 'Parity brief, codex echo, and UTAC handshake refreshed within 24h of any alert.'
+    R: Risks of stale automation parity, missing telemetry, or ritual amnesia in the
+      system lane.
+    Theta: Parity brief, codex echo, and UTAC handshake refreshed within 24h of any
+      alert.
     beta: 5.1
-    zeta: 'Spikes when sigillin_sync cadence slips or BreakPoint rituals are skipped.'
-  resonance: |
-    Lanterns that illuminate failure signatures and recovery plays for Metaquest
-    system assets. Each entry mirrors a light-side meaning lantern and encodes the
-    guardrails needed to restore σ(β(R-Θ)).
+    zeta: Spikes when sigillin_sync cadence slips or BreakPoint rituals are skipped.
+  resonance: "Lanterns that illuminate failure signatures and recovery plays for Metaquest\n\
+    system assets. Each entry mirrors a light-side meaning lantern and encodes the\n\
+    guardrails needed to restore \u03C3(\u03B2(R-\u0398)).\n"
 lanterns:
-  - id: mq-sys-shadow-lantern-a
-    title: Bridge Drift Detector
-    mirrors: seed/bedeutungssigillin/system/metaquest/lanterns/metaquest_system_lanterns.yaml#m
-    risk: 'Bridge dashboard timestamp diverges from compass/map >24h.'
-    signals:
-      - 'Bridge index older than system compass by one sprint.'
-      - 'Codex lacks mq-sys reference for latest automation change.'
-    escalation:
-      - 'Trigger mq-sys-shadow-index-001.'
-      - 'Freeze automation updates until parity restored.'
-    remediation:
-      - 'Run scripts/sigillin_sync.py and propagate timestamp.'
-      - 'Document codex entry with shared mq-sys id.'
-    evidence:
-      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
-      - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.md
-  - id: mq-sys-shadow-lantern-b
-    title: Automation Null-Guard Alarm
-    mirrors: seed/bedeutungssigillin/system/metaquest/lanterns/metaquest_system_lanterns.yaml#b
-    risk: 'CI/Nox parity guard missing ΔAIC/null checks.'
-    signals:
-      - 'Recent automation commit lacks codex ΔAIC note.'
-      - 'tests/test_sigillin_sync.py skipped or failing.'
-    escalation:
-      - 'Open incident mq-sys-shadow-004 in codex.'
-    remediation:
-      - 'Run parity audit, append ΔAIC results to codex and UTAC matrix.'
-      - 'Re-run tests/test_sigillin_sync.py before resuming automation.'
-    evidence:
-      - scripts/archive_sigillin.py
-      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.md
-  - id: mq-sys-shadow-lantern-c
-    title: Ritual Silence Alarm
-    mirrors: seed/bedeutungssigillin/system/metaquest/lanterns/metaquest_system_lanterns.yaml#c
-    risk: 'BreakPoint references missing from latest mq-sys codex note.'
-    signals:
-      - 'System map lacks WayToGo/Reaktion citation for new automation tasks.'
-      - 'Codex entry missing ritual acknowledgment.'
-    escalation:
-      - 'Escalate to mq-sys-shadow-index-003.'
-    remediation:
-      - 'Execute BreakPoint ritual, attach transcript to codex + map.'
-      - 'Mirror update in bridge dashboard and UTAC matrix.'
-    evidence:
-      - seed/BreakPointAnalyse/WayToGo.txt
-      - seed/BreakPointAnalyse/ReaktionWayToGo.txt
+- id: mq-sys-shadow-lantern-a
+  title: Bridge Drift Detector
+  mirrors: seed/bedeutungssigillin/system/metaquest/lanterns/metaquest_system_lanterns.yaml#m
+  risk: Bridge dashboard timestamp diverges from compass/map >24h.
+  signals:
+  - Bridge index older than system compass by one sprint.
+  - Codex lacks mq-sys reference for latest automation change.
+  escalation:
+  - Trigger mq-sys-shadow-index-001.
+  - Freeze automation updates until parity restored.
+  remediation:
+  - Run scripts/sigillin_sync.py and propagate timestamp.
+  - Document codex entry with shared mq-sys id.
+  evidence:
+  - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+  - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.md
+- id: mq-sys-shadow-lantern-b
+  title: Automation Null-Guard Alarm
+  mirrors: seed/bedeutungssigillin/system/metaquest/lanterns/metaquest_system_lanterns.yaml#b
+  risk: "CI/Nox parity guard missing \u0394AIC/null checks."
+  signals:
+  - "Recent automation commit lacks codex \u0394AIC note."
+  - tests/test_sigillin_sync.py skipped or failing.
+  escalation:
+  - Open incident mq-sys-shadow-004 in codex.
+  remediation:
+  - "Run parity audit, append \u0394AIC results to codex and UTAC matrix."
+  - Re-run tests/test_sigillin_sync.py before resuming automation.
+  evidence:
+  - scripts/archive_sigillin.py
+  - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.md
+- id: mq-sys-shadow-lantern-c
+  title: Ritual Silence Alarm
+  mirrors: seed/bedeutungssigillin/system/metaquest/lanterns/metaquest_system_lanterns.yaml#c
+  risk: BreakPoint references missing from latest mq-sys codex note.
+  signals:
+  - System map lacks WayToGo/Reaktion citation for new automation tasks.
+  - Codex entry missing ritual acknowledgment.
+  escalation:
+  - Escalate to mq-sys-shadow-index-003.
+  remediation:
+  - Execute BreakPoint ritual, attach transcript to codex + map.
+  - Mirror update in bridge dashboard and UTAC matrix.
+  evidence:
+  - seed/BreakPointAnalyse/WayToGo.txt
+  - seed/BreakPointAnalyse/ReaktionWayToGo.txt
+- id: mq-sys-shadow-lantern-d
+  title: Bridge Map Parity Alarm
+  mirrors: seed/bedeutungssigillin/metaquest/system/lanterns/metaquest_system_lanterns.yaml#mq-sys-lantern-000
+  risk: Bridge map missing readiness logistic, simulator hook, or telemetry parity.
+  signals:
+  - "Bridge map lacks latest \u0398/\u03B2 values from analysis/v2_readiness_audit.py."
+  - simulator/presets/coherence_formula.json not referenced in bridge map metadata.
+  - Bridge map timestamp diverges from bridge dashboard telemetry.
+  escalation:
+  - Trigger mq-sys-shadow-bridge-002 or mq-sys-shadow-bridge-003 depending on root
+    cause.
+  - Notify bridge dashboard maintainer.
+  remediation:
+  - Re-run readiness audit and update bridge map tri-layer.
+  - Verify simulator preset import in simulator/src/presets.ts.
+  - Log codex entry citing mq-sys-shadow-bridge-002/003 and updated timestamps.
+  evidence:
+  - analysis/v2_readiness_audit.py
+  - simulator/src/presets.ts
+  - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow.md

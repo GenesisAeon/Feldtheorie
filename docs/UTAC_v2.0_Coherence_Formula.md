@@ -61,8 +61,8 @@
    - `data/socio_ecology/urban_heat/` und `data/climate/arctic_sea_ice/` vorbereiten.
    - Nutze `analysis/utac_manifest_audit.py`, um R-Θ-Parität zu prüfen.
 4. **Simulator-Vignette:**
-   - Erweitere `simulator/src/presets.ts` um eine `coherenceFormula`-Playlist.
-   - Dokumentiere Kontrollparameter in `simulator/presets/coherence_formula.json` (ΔAIC-Guard >= 10).
+   - `simulator/src/presets.ts` trägt jetzt die `coherenceFormula`-Playlist (2025-12-24).
+   - `simulator/presets/coherence_formula.json` dokumentiert Θ=0.66, β=4.8; ΔAIC-Guard ≥ 10 folgt nach realer Dateneinspielung.
 5. **Sigillin-Sync:**
    - Erstelle Bedeutungs-/Shadow-Sigille für die neue Laterne (`seed/bedeutungssigillin/metaquest/system/` & Spiegel).
    - Pflege `scripts/sigillin_sync.py`-Outputs (`analysis/sigillin_sync/latest.json`).

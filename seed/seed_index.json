@@ -1,18 +1,18 @@
 {
   "meta": {
     "project": "Feldtheorie (UTAC + Sigillin)",
-    "maintainer": "Johann Römer",
+    "maintainer": "Johann R\u00f6mer",
     "description": "Semantischer Index des seed/-Archivs. Strukturiert nach dem Trilayer-Prinzip:\n- YAML = Orientierung (diese Datei)\n- JSON = Agentenschnittstelle (seed_index.json)\n- MD = Menschenfreundliche Navigation (seed_index.md)\n",
     "version": "1.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "documents_total": 275,
-    "updated": "2025-12-19T12:00:00Z"
+    "documents_total": 277,
+    "updated": "2025-12-24T00:00:00Z"
   },
   "categories": {
     "meta": {
       "name": "Meta & Prozess",
-      "description": "Reflexionen über das Projekt selbst, Sessions, Roadmaps",
+      "description": "Reflexionen \u00fcber das Projekt selbst, Sessions, Roadmaps",
       "color": "#9B59B6"
     },
     "theory": {
@@ -64,7 +64,7 @@
         "mapping",
         "domains"
       ],
-      "description": "Kartographie der Resonanzbrücken zwischen verschiedenen Domänen,\nzeigt wie σ(β(R-Θ)) über AI, Kognition, Biologie, Sozio-Ökologie läuft.\n",
+      "description": "Kartographie der Resonanzbr\u00fccken zwischen verschiedenen Dom\u00e4nen,\nzeigt wie \u03c3(\u03b2(R-\u0398)) \u00fcber AI, Kognition, Biologie, Sozio-\u00d6kologie l\u00e4uft.\n",
       "temporal": {
         "created": "2025-11-03T13:28:37+01:00",
         "modified": "2025-11-03T13:28:37+01:00",
@@ -106,11 +106,11 @@
         "glossary",
         "definitions",
         "R",
-        "Θ",
-        "β",
-        "ζ"
+        "\u0398",
+        "\u03b2",
+        "\u03b6"
       ],
-      "description": "Lebendes Glossar, das Symbole (R, Θ, β, ζ) mit Bildsprache verbindet.\n",
+      "description": "Lebendes Glossar, das Symbole (R, \u0398, \u03b2, \u03b6) mit Bildsprache verbindet.\n",
       "temporal": {
         "created": "2025-11-03T13:28:37+01:00",
         "modified": "2025-11-03T13:28:37+01:00",
@@ -302,7 +302,7 @@
         "sweep",
         "simulation"
       ],
-      "description": "Methode für synthetische Threshold-Sweeps",
+      "description": "Methode f\u00fcr synthetische Threshold-Sweeps",
       "temporal": {
         "created": "2025-11-03T13:28:37+01:00",
         "modified": "2025-11-03T13:28:37+01:00",
@@ -411,7 +411,7 @@
         "crep",
         "logistic"
       ],
-      "description": "Canonical specification of the four Sigillin classes (Order, Dynamics, Meaning, Shadow). Captures the logistic quartet (R, Θ, β, ζ(R)) and CREP metrics for every sigil so σ(β(R-Θ)) activations can be validated.",
+      "description": "Canonical specification of the four Sigillin classes (Order, Dynamics, Meaning, Shadow). Captures the logistic quartet (R, \u0398, \u03b2, \u03b6(R)) and CREP metrics for every sigil so \u03c3(\u03b2(R-\u0398)) activations can be validated.",
       "temporal": {
         "created": "2025-12-05T10:30:00+00:00",
         "modified": "2025-12-05T10:30:00+00:00",
@@ -421,7 +421,7 @@
     },
     {
       "id": "concept-018",
-      "title": "Sigillin Example Set α",
+      "title": "Sigillin Example Set \u03b1",
       "path": "sigillin/examples",
       "category": "concepts",
       "type": "exemplar",
@@ -451,13 +451,13 @@
       "relevance": "high",
       "keywords": [
         "fixwerte",
-        "variabilität",
+        "variabilit\u00e4t",
         "bewusstsein",
         "erinnerung",
         "nullen",
         "sigillin"
       ],
-      "description": "Dialog zwischen Johann und MSCopilot über Fixwerte vs. Variabilität,\nBewusstsein als Auswahl, und die Entstehung von Sigillin als\nsemantisches Gedächtnissystem.\n",
+      "description": "Dialog zwischen Johann und MSCopilot \u00fcber Fixwerte vs. Variabilit\u00e4t,\nBewusstsein als Auswahl, und die Entstehung von Sigillin als\nsemantisches Ged\u00e4chtnissystem.\n",
       "temporal": {
         "created": "2025-11-06T09:47:45+01:00",
         "modified": "2025-11-06T10:20:16+01:00",
@@ -480,7 +480,7 @@
         "trilayer",
         "mor"
       ],
-      "description": "Finale Synthese von Claude, Gemini, ChatGPT5, Aeon, Mistral über\nden Weg nach vorn: UTAC + Sigillin als Co-Hypothese.\n",
+      "description": "Finale Synthese von Claude, Gemini, ChatGPT5, Aeon, Mistral \u00fcber\nden Weg nach vorn: UTAC + Sigillin als Co-Hypothese.\n",
       "temporal": {
         "created": "2025-11-06T10:16:29+01:00",
         "modified": "2025-11-06T10:16:29+01:00",
@@ -502,7 +502,7 @@
         "v1.2",
         "meta-regression"
       ],
-      "description": "Gemini's finale Synthese mit dem Wegplan für UTAC v1.2:\nMeta-Regression, Outlier-Analyse, RG-Fluss.\n",
+      "description": "Gemini's finale Synthese mit dem Wegplan f\u00fcr UTAC v1.2:\nMeta-Regression, Outlier-Analyse, RG-Fluss.\n",
       "temporal": {
         "created": "2025-11-05T23:11:57+01:00",
         "modified": "2025-11-06T09:47:45+01:00",
@@ -608,8 +608,8 @@
         "trilayer",
         "ordnungs-sigillin",
         "bedeutungs-sigillin",
-        "semantisches-gedächtnis",
-        "trifunktionalität",
+        "semantisches-ged\u00e4chtnis",
+        "trifunktionalit\u00e4t",
         "ontologie",
         "meta-ebene",
         "poetik",
@@ -620,7 +620,7 @@
         "mor",
         "ai-sigill-index"
       ],
-      "description": "Fundamentale Systemdefinition des Sigillin-Systems nach Johann Römer. Unterscheidet Ordnungs-Sigillin (Navigation) vs. Bedeutungs-Sigillin (Semantik). Definiert das semantisch-neuronale Sigillin-Netz, Trifunktionalität (Struktur + Bedeutung + Inhalt + Meta), und die UTAC-Analogien. Inspiriert durch die Aeon-Johann-Schnittstelle bei OpenAI. BEDEUTUNGS-SIGILLIN: Bei Änderung NEU anlegen, Altes archivieren!",
+      "description": "Fundamentale Systemdefinition des Sigillin-Systems nach Johann R\u00f6mer. Unterscheidet Ordnungs-Sigillin (Navigation) vs. Bedeutungs-Sigillin (Semantik). Definiert das semantisch-neuronale Sigillin-Netz, Trifunktionalit\u00e4t (Struktur + Bedeutung + Inhalt + Meta), und die UTAC-Analogien. Inspiriert durch die Aeon-Johann-Schnittstelle bei OpenAI. BEDEUTUNGS-SIGILLIN: Bei \u00c4nderung NEU anlegen, Altes archivieren!",
       "temporal": {
         "created": "2025-11-06T10:47:34+00:00",
         "modified": "2025-11-06T10:47:34+00:00",
@@ -643,7 +643,7 @@
         "bridge",
         "finalisierung"
       ],
-      "description": "Plan zur Finalisierung der Sigillin-Neuro-Kosmos-Brücke",
+      "description": "Plan zur Finalisierung der Sigillin-Neuro-Kosmos-Br\u00fccke",
       "temporal": {
         "created": "2025-11-06T12:17:33+01:00",
         "modified": "2025-11-06T12:44:50+01:00",
@@ -666,7 +666,7 @@
         "modell",
         "plan"
       ],
-      "description": "Planungsdokument für Sigillin-Neuro-Membran-Modell-Integration",
+      "description": "Planungsdokument f\u00fcr Sigillin-Neuro-Membran-Modell-Integration",
       "temporal": {
         "created": "2025-11-06T13:37:32+01:00",
         "modified": "2025-11-06T13:37:32+01:00",
@@ -687,7 +687,7 @@
         "meta",
         "overview"
       ],
-      "description": "Root-Level AGENTS Übersicht",
+      "description": "Root-Level AGENTS \u00dcbersicht",
       "temporal": {
         "created": "2025-11-03T13:28:37+01:00",
         "modified": "2025-11-03T13:28:37+01:00",
@@ -732,7 +732,7 @@
         "json",
         "agents"
       ],
-      "description": "JSON-Layer des Codex Feedback: Agentenschnittstelle.\nMaschinenlesbare Variante für AI-Systeme.\n",
+      "description": "JSON-Layer des Codex Feedback: Agentenschnittstelle.\nMaschinenlesbare Variante f\u00fcr AI-Systeme.\n",
       "temporal": {
         "created": "2025-11-05T21:22:07+00:00",
         "modified": "2025-11-05T21:22:07+00:00",
@@ -754,7 +754,7 @@
         "trilayer",
         "markdown"
       ],
-      "description": "Markdown-Layer des Codex Feedback: Menschenfreundliche Erzählung.\nDokumentiert Progress mit Formalismus, Empirie und Poetik.\n",
+      "description": "Markdown-Layer des Codex Feedback: Menschenfreundliche Erz\u00e4hlung.\nDokumentiert Progress mit Formalismus, Empirie und Poetik.\n",
       "temporal": {
         "created": "2025-11-05T21:22:07+00:00",
         "modified": "2025-11-05T21:22:07+00:00",
@@ -799,7 +799,7 @@
         "ordnungs-sigillin",
         "trilayer"
       ],
-      "description": "Ordnungs-Sigillin für alle 38 PDF-Dokumente im seed/ Verzeichnis.\nTrilayer-Index (YAML + JSON + MD) für Navigation in der PDF-Bibliothek.\nReferenziert papers_index.{yaml,json,md}.",
+      "description": "Ordnungs-Sigillin f\u00fcr alle 38 PDF-Dokumente im seed/ Verzeichnis.\nTrilayer-Index (YAML + JSON + MD) f\u00fcr Navigation in der PDF-Bibliothek.\nReferenziert papers_index.{yaml,json,md}.",
       "temporal": {
         "created": "2025-11-06T15:00:00+01:00",
         "modified": "2025-11-06T15:00:00+01:00",
@@ -828,7 +828,7 @@
         "index",
         "ordnungs-sigillin"
       ],
-      "description": "Ordnungs-Sigillin für ArchivSucheUTAC-Verzeichnis.\nEnthält Geminis Archiv-Suchen und AI-Reaktionen (19 Dateien).\nReferenziert archiv_suche_utac_index.{yaml,json,md}.",
+      "description": "Ordnungs-Sigillin f\u00fcr ArchivSucheUTAC-Verzeichnis.\nEnth\u00e4lt Geminis Archiv-Suchen und AI-Reaktionen (19 Dateien).\nReferenziert archiv_suche_utac_index.{yaml,json,md}.",
       "temporal": {
         "created": "2025-11-06T14:00:00+01:00",
         "modified": "2025-11-06T14:00:00+01:00",
@@ -857,7 +857,7 @@
         "ordnungs-sigillin",
         "trilayer"
       ],
-      "description": "Ordnungs-Sigillin für alle externen Quellen, Referenzen und Datenquellen.\n11 Kernquellen aus 6 Domänen (AI, Biology, Climate, Geophysics, Cognition, Physics).\nReferenziert sources_index.{yaml,json,md}. Zitations-Management für UTAC-Paper.",
+      "description": "Ordnungs-Sigillin f\u00fcr alle externen Quellen, Referenzen und Datenquellen.\n11 Kernquellen aus 6 Dom\u00e4nen (AI, Biology, Climate, Geophysics, Cognition, Physics).\nReferenziert sources_index.{yaml,json,md}. Zitations-Management f\u00fcr UTAC-Paper.",
       "temporal": {
         "created": "2025-11-06T16:00:00+01:00",
         "modified": "2025-11-06T16:00:00+01:00",
@@ -870,7 +870,7 @@
         "sources_index.md"
       ],
       "highlights": [
-        "Wei et al. (2022) - Emergent Abilities (β=3.47)",
+        "Wei et al. (2022) - Emergent Abilities (\u03b2=3.47)",
         "Lenski LTEE (2008) - Cit+ Evolution",
         "Lenton (2008) - Climate Tipping Points",
         "Verhulst (1838) - Logistische Funktion"
@@ -891,7 +891,7 @@
         "codex",
         "metaquest"
       ],
-      "description": "Bedeutungs-Sigillin für die Systemebene: kartiert Makefile-, Codex-, Schema- und Metaquest-Resonanzen; benennt Lücken (Index-Automatisierung, Codex-Guards, Telemetrie).",
+      "description": "Bedeutungs-Sigillin f\u00fcr die Systemebene: kartiert Makefile-, Codex-, Schema- und Metaquest-Resonanzen; benennt L\u00fccken (Index-Automatisierung, Codex-Guards, Telemetrie).",
       "temporal": {
         "created": "2025-12-05T00:00:00Z",
         "modified": "2025-12-07T00:00:00Z",
@@ -918,7 +918,7 @@
         "index-drift",
         "metaquest"
       ],
-      "description": "Schatten-Sigillin zur Frühwarnung vor Index-Drift, fehlenden Codex-Updates und Metaquest-Paritätslücken; enthält Playbooks und Monitoring-Metriken.",
+      "description": "Schatten-Sigillin zur Fr\u00fchwarnung vor Index-Drift, fehlenden Codex-Updates und Metaquest-Parit\u00e4tsl\u00fccken; enth\u00e4lt Playbooks und Monitoring-Metriken.",
       "temporal": {
         "created": "2025-12-05T00:00:00Z",
         "modified": "2025-12-07T00:00:00Z",
@@ -944,7 +944,7 @@
         "manuskript",
         "metaquest"
       ],
-      "description": "Bedeutungs-Sigillin für Manuskript- und Kampagnenarbeit; verknüpft BreakPoint-Rituale, Status-Matrix, Metaquest-Beacon und offene Resonanzlücken.",
+      "description": "Bedeutungs-Sigillin f\u00fcr Manuskript- und Kampagnenarbeit; verkn\u00fcpft BreakPoint-Rituale, Status-Matrix, Metaquest-Beacon und offene Resonanzl\u00fccken.",
       "temporal": {
         "created": "2025-12-05T00:00:00Z",
         "modified": "2025-12-07T00:00:00Z",
@@ -969,7 +969,7 @@
         "kampagne",
         "metaquest"
       ],
-      "description": "Schatten-Sigillin zur Kampagnen-Triage (τ*-Gaps, BreakPoint-Verstöße, Metaquest-Parität, Storyboard-Drift).",
+      "description": "Schatten-Sigillin zur Kampagnen-Triage (\u03c4*-Gaps, BreakPoint-Verst\u00f6\u00dfe, Metaquest-Parit\u00e4t, Storyboard-Drift).",
       "temporal": {
         "created": "2025-12-05T00:00:00Z",
         "modified": "2025-12-07T00:00:00Z",
@@ -996,7 +996,7 @@
         "reproduce",
         "utac"
       ],
-      "description": "Der finale Governance-Paket-Plan mit AUTHORSHIP.md, METRICS.md,\nREPRODUCE.md für die arXiv-Submission.\n",
+      "description": "Der finale Governance-Paket-Plan mit AUTHORSHIP.md, METRICS.md,\nREPRODUCE.md f\u00fcr die arXiv-Submission.\n",
       "temporal": {
         "created": "2025-11-03T15:33:06+01:00",
         "modified": "2025-11-04T20:35:30+01:00",
@@ -1016,9 +1016,9 @@
         "ai",
         "evolution",
         "emergence",
-        "β-field"
+        "\u03b2-field"
       ],
-      "description": "Diskurs über evolutionäre Prinzipien in AI-Systemen",
+      "description": "Diskurs \u00fcber evolution\u00e4re Prinzipien in AI-Systemen",
       "temporal": {
         "created": "2025-11-03T13:28:37+01:00",
         "modified": "2025-11-03T13:28:37+01:00",
@@ -1040,7 +1040,7 @@
         "tipping-points",
         "climate"
       ],
-      "description": "Diskurs über Klimaschwellenwerte und UTAC-Integration",
+      "description": "Diskurs \u00fcber Klimaschwellenwerte und UTAC-Integration",
       "temporal": {
         "created": "2025-11-03T13:28:37+01:00",
         "modified": "2025-11-03T13:28:37+01:00",
@@ -1050,8 +1050,8 @@
     },
     {
       "id": "theory-004",
-      "title": "Diskurs Psyche-AI Kohärenzen",
-      "path": "Diskurs_V1_Psyche_AI_koheränzen.txt",
+      "title": "Diskurs Psyche-AI Koh\u00e4renzen",
+      "path": "Diskurs_V1_Psyche_AI_koher\u00e4nzen.txt",
       "category": "theory",
       "type": "discourse",
       "status": "stable",
@@ -1059,11 +1059,11 @@
       "keywords": [
         "psyche",
         "ai",
-        "kohärenz",
+        "koh\u00e4renz",
         "consciousness",
-        "φ"
+        "\u03c6"
       ],
-      "description": "Diskurs über Kohärenz zwischen Psyche und AI-Systemen",
+      "description": "Diskurs \u00fcber Koh\u00e4renz zwischen Psyche und AI-Systemen",
       "temporal": {
         "created": "2025-11-03T13:28:37+01:00",
         "modified": "2025-11-03T13:28:37+01:00",
@@ -1073,8 +1073,8 @@
     },
     {
       "id": "theory-005",
-      "title": "Transdisziplinärer Schwellenfeld-Simulator",
-      "path": "Transdisziplinärer Schwellenfeld-Simulator--Claude.txt",
+      "title": "Transdisziplin\u00e4rer Schwellenfeld-Simulator",
+      "path": "Transdisziplin\u00e4rer Schwellenfeld-Simulator--Claude.txt",
       "category": "theory",
       "type": "concept",
       "status": "stable",
@@ -1084,7 +1084,7 @@
         "threshold",
         "transdisciplinary"
       ],
-      "description": "Konzept für einen universellen Threshold-Simulator",
+      "description": "Konzept f\u00fcr einen universellen Threshold-Simulator",
       "temporal": {
         "created": "2025-11-03T13:28:37+01:00",
         "modified": "2025-11-03T13:28:37+01:00",
@@ -1105,7 +1105,7 @@
         "discussion",
         "implementation"
       ],
-      "description": "Finale Entwicklungsgespräche",
+      "description": "Finale Entwicklungsgespr\u00e4che",
       "temporal": {
         "created": "2025-11-03T13:28:37+01:00",
         "modified": "2025-11-03T13:28:37+01:00",
@@ -1126,7 +1126,7 @@
         "ideas",
         "exploration"
       ],
-      "description": "Frühe Brainstorming-Sitzung",
+      "description": "Fr\u00fche Brainstorming-Sitzung",
       "temporal": {
         "created": "2025-11-05T18:41:14+01:00",
         "modified": "2025-11-05T18:41:14+01:00",
@@ -1166,10 +1166,10 @@
       "keywords": [
         "validierung",
         "empirik",
-        "β-werte",
+        "\u03b2-werte",
         "meta-regression"
       ],
-      "description": "Mistral's Metareflexion & Synthese: Was wir wissen, was wir nicht\nwissen, und die nächsten Schritte für UTAC 1.2.\n",
+      "description": "Mistral's Metareflexion & Synthese: Was wir wissen, was wir nicht\nwissen, und die n\u00e4chsten Schritte f\u00fcr UTAC 1.2.\n",
       "temporal": {
         "created": "2025-11-05T20:31:04+01:00",
         "modified": "2025-11-05T22:07:17+01:00",
@@ -1212,7 +1212,7 @@
         "data",
         "evidence"
       ],
-      "description": "Empirische Belege für UTAC-Hypothesen",
+      "description": "Empirische Belege f\u00fcr UTAC-Hypothesen",
       "temporal": {
         "created": "2025-11-03T13:28:37+01:00",
         "modified": "2025-11-03T13:28:37+01:00",
@@ -1255,7 +1255,7 @@
         "field-types",
         "meta-regression"
       ],
-      "description": "Addendum mit ANOVA-Bestätigung der Feldtypologie, korrigierter Meta-Regression und verbleibenden Validierungsaufgaben für UTAC v1.1.",
+      "description": "Addendum mit ANOVA-Best\u00e4tigung der Feldtypologie, korrigierter Meta-Regression und verbleibenden Validierungsaufgaben f\u00fcr UTAC v1.1.",
       "temporal": {
         "created": "2025-11-07T08:05:00+01:00",
         "modified": "2025-11-07T08:05:00+01:00",
@@ -1297,7 +1297,7 @@
         "calibration",
         "adjustment"
       ],
-      "description": "Frühere Rekalibrierungs-Dokumentation",
+      "description": "Fr\u00fchere Rekalibrierungs-Dokumentation",
       "temporal": {
         "created": "2025-11-05T17:43:34+01:00",
         "modified": "2025-11-05T17:43:34+01:00",
@@ -1319,7 +1319,7 @@
         "dialogue",
         "reaction"
       ],
-      "description": "Dialog zwischen Aeon und Johann über Validierung",
+      "description": "Dialog zwischen Aeon und Johann \u00fcber Validierung",
       "temporal": {
         "created": "2025-11-03T13:28:37+01:00",
         "modified": "2025-11-03T13:28:37+01:00",
@@ -1429,7 +1429,7 @@
         "submission",
         "governance"
       ],
-      "description": "Aggregierte Übersicht zu den drei aktiven arXiv-Endorsement-Anfragen.",
+      "description": "Aggregierte \u00dcbersicht zu den drei aktiven arXiv-Endorsement-Anfragen.",
       "temporal": {
         "created": "2025-11-07T00:00:00+01:00",
         "modified": "2025-11-07T00:00:00+01:00",
@@ -1471,7 +1471,7 @@
         "abstract",
         "doi"
       ],
-      "description": "Abschließende Abstract-Fassung für die arXiv-Einreichung.",
+      "description": "Abschlie\u00dfende Abstract-Fassung f\u00fcr die arXiv-Einreichung.",
       "temporal": {
         "created": "2025-11-07T00:00:00+01:00",
         "modified": "2025-11-07T00:00:00+01:00",
@@ -1493,7 +1493,7 @@
         "system",
         "telemetry"
       ],
-      "description": "Bedeutungs-Sigillin für Metaquest-Systemintegration: Paritätsbrief, Telemetrie und Index-Synchronisation werden hier kartiert.",
+      "description": "Bedeutungs-Sigillin f\u00fcr Metaquest-Systemintegration: Parit\u00e4tsbrief, Telemetrie und Index-Synchronisation werden hier kartiert.",
       "temporal": {
         "created": "2025-12-07T00:00:00Z",
         "modified": "2025-12-08T00:00:00Z",
@@ -1519,7 +1519,7 @@
         "system",
         "parity"
       ],
-      "description": "Schatten-Sigillin für Metaquest-Systemrisiken: Telemetrieausfälle, fehlende Paritätsbriefe und Index-Drift werden hier alarmiert.",
+      "description": "Schatten-Sigillin f\u00fcr Metaquest-Systemrisiken: Telemetrieausf\u00e4lle, fehlende Parit\u00e4tsbriefe und Index-Drift werden hier alarmiert.",
       "temporal": {
         "created": "2025-12-07T00:00:00Z",
         "modified": "2025-12-08T00:00:00Z",
@@ -1545,7 +1545,7 @@
         "kampagne",
         "parity"
       ],
-      "description": "Bedeutungs-Sigillin für Metaquest-Kampagne: Paritätsbrief, Storyboard, Endorsement-Freshness und BreakPoint-Rituale.",
+      "description": "Bedeutungs-Sigillin f\u00fcr Metaquest-Kampagne: Parit\u00e4tsbrief, Storyboard, Endorsement-Freshness und BreakPoint-Rituale.",
       "temporal": {
         "created": "2025-12-07T00:00:00Z",
         "modified": "2025-12-08T00:00:00Z",
@@ -1570,7 +1570,7 @@
         "metaquest",
         "kampagne"
       ],
-      "description": "Schatten-Sigillin für Metaquest-Kampagnenrisiken: Paritätslücken, Storyboard-Drift und Governance-Verzug.",
+      "description": "Schatten-Sigillin f\u00fcr Metaquest-Kampagnenrisiken: Parit\u00e4tsl\u00fccken, Storyboard-Drift und Governance-Verzug.",
       "temporal": {
         "created": "2025-12-07T00:00:00Z",
         "modified": "2025-12-08T00:00:00Z",
@@ -1596,7 +1596,7 @@
         "linum",
         "socio-ecology"
       ],
-      "description": "Bedeutungs-Sigillin für das ökologische Hoch-β-Ereignis im Linumer Teichland. Verknüpft Datenaufnahme, Analyseaufträge und Kampagnenkommunikation mit dem UTAC-Netz.",
+      "description": "Bedeutungs-Sigillin f\u00fcr das \u00f6kologische Hoch-\u03b2-Ereignis im Linumer Teichland. Verkn\u00fcpft Datenaufnahme, Analyseauftr\u00e4ge und Kampagnenkommunikation mit dem UTAC-Netz.",
       "temporal": {
         "created": "2025-12-08T00:00:00Z",
         "modified": "2025-12-08T00:00:00Z",
@@ -1622,7 +1622,7 @@
         "linum",
         "socio-ecology"
       ],
-      "description": "Schatten-Sigillin für den Linum-Sentinel: überwacht Datenlücken, fehlende Analysen und Kommunikationsdrift und löst BreakPoint-Reaktionen aus.",
+      "description": "Schatten-Sigillin f\u00fcr den Linum-Sentinel: \u00fcberwacht Datenl\u00fccken, fehlende Analysen und Kommunikationsdrift und l\u00f6st BreakPoint-Reaktionen aus.",
       "temporal": {
         "created": "2025-12-08T00:00:00Z",
         "modified": "2025-12-08T00:00:00Z",
@@ -1648,7 +1648,7 @@
         "system",
         "compass"
       ],
-      "description": "Schnellorientierung für Metaquest-Automation: Telemetrie, Index-Parität und Codex-Hooks werden kompakt geführt.",
+      "description": "Schnellorientierung f\u00fcr Metaquest-Automation: Telemetrie, Index-Parit\u00e4t und Codex-Hooks werden kompakt gef\u00fchrt.",
       "temporal": {
         "created": "2025-12-08T00:00:00Z",
         "modified": "2025-12-09T00:00:00Z",
@@ -1674,7 +1674,7 @@
         "system",
         "compass"
       ],
-      "description": "Schatten-Kompass für Automationsrisiken: Paritätsbrief-Drift, Telemetrie-Stille und Indexabweichungen werden hier überwacht.",
+      "description": "Schatten-Kompass f\u00fcr Automationsrisiken: Parit\u00e4tsbrief-Drift, Telemetrie-Stille und Indexabweichungen werden hier \u00fcberwacht.",
       "temporal": {
         "created": "2025-12-08T00:00:00Z",
         "modified": "2025-12-08T00:00:00Z",
@@ -1726,7 +1726,7 @@
         "kampagne",
         "compass"
       ],
-      "description": "Schatten-Kompass für Outreach-Risiken: Paritätszitate, Storyboard-Sync und Governance-Freshness werden mit klaren Eskalationen verknüpft.",
+      "description": "Schatten-Kompass f\u00fcr Outreach-Risiken: Parit\u00e4tszitate, Storyboard-Sync und Governance-Freshness werden mit klaren Eskalationen verkn\u00fcpft.",
       "temporal": {
         "created": "2025-12-08T00:00:00Z",
         "modified": "2025-12-08T00:00:00Z",
@@ -1752,7 +1752,7 @@
         "system",
         "codex"
       ],
-      "description": "Bedeutungs-Sigillin, das Automationsaufgaben, Codex-Hooks und UTAC-Governance für die Metaquest-Systemspine bündelt.",
+      "description": "Bedeutungs-Sigillin, das Automationsaufgaben, Codex-Hooks und UTAC-Governance f\u00fcr die Metaquest-Systemspine b\u00fcndelt.",
       "temporal": {
         "created": "2025-12-10T00:00:00Z",
         "modified": "2025-12-10T00:00:00Z",
@@ -1778,7 +1778,7 @@
         "system",
         "recovery"
       ],
-      "description": "Schatten-Sigillin mit Alarmfeldern für Telemetrie-Blackouts, Index-Drift und Codex-Stille im Metaquest-Systemstrang.",
+      "description": "Schatten-Sigillin mit Alarmfeldern f\u00fcr Telemetrie-Blackouts, Index-Drift und Codex-Stille im Metaquest-Systemstrang.",
       "temporal": {
         "created": "2025-12-10T00:00:00Z",
         "modified": "2025-12-10T00:00:00Z",
@@ -1804,7 +1804,7 @@
         "kampagne",
         "outreach"
       ],
-      "description": "Bedeutungs-Sigillin für Manuskript-, Outreach- und Endorsement-Kopplungen der Metaquest-Kampagne mit Codex + UTAC.",
+      "description": "Bedeutungs-Sigillin f\u00fcr Manuskript-, Outreach- und Endorsement-Kopplungen der Metaquest-Kampagne mit Codex + UTAC.",
       "temporal": {
         "created": "2025-12-10T00:00:00Z",
         "modified": "2025-12-10T00:00:00Z",
@@ -1830,7 +1830,7 @@
         "kampagne",
         "outreach"
       ],
-      "description": "Schatten-Sigillin für Kampagnenrisiken: Paritätsstille, Manuskript-Lag, Endorsement-Lücken und Outreach-Drift.",
+      "description": "Schatten-Sigillin f\u00fcr Kampagnenrisiken: Parit\u00e4tsstille, Manuskript-Lag, Endorsement-L\u00fccken und Outreach-Drift.",
       "temporal": {
         "created": "2025-12-10T00:00:00Z",
         "modified": "2025-12-10T00:00:00Z",
@@ -1856,7 +1856,7 @@
         "system",
         "index"
       ],
-      "description": "Verzeichnis für die Metaquest-Systemlaternen: Karte, Kompass, Sigil und Telemetrie-Harness werden mit Paritäts- und Ritualreferenzen gebündelt.",
+      "description": "Verzeichnis f\u00fcr die Metaquest-Systemlaternen: Karte, Kompass, Sigil und Telemetrie-Harness werden mit Parit\u00e4ts- und Ritualreferenzen geb\u00fcndelt.",
       "temporal": {
         "created": "2025-12-11T00:00:00Z",
         "modified": "2025-12-11T12:00:00Z",
@@ -1882,7 +1882,7 @@
         "system",
         "index"
       ],
-      "description": "Schattenverzeichnis für Automationsrisiken: überwacht Index-Frische, Telemetrie-Exports und BreakPoint-Rituale.",
+      "description": "Schattenverzeichnis f\u00fcr Automationsrisiken: \u00fcberwacht Index-Frische, Telemetrie-Exports und BreakPoint-Rituale.",
       "temporal": {
         "created": "2025-12-11T00:00:00Z",
         "modified": "2025-12-11T12:00:00Z",
@@ -1908,7 +1908,7 @@
         "kampagne",
         "index"
       ],
-      "description": "Kampagnen-Verzeichnis, das Manuskript-, Outreach-, Endorsement- und Archiv-Linien mit Paritätsbrief und Codex synchronisiert.",
+      "description": "Kampagnen-Verzeichnis, das Manuskript-, Outreach-, Endorsement- und Archiv-Linien mit Parit\u00e4tsbrief und Codex synchronisiert.",
       "temporal": {
         "created": "2025-12-11T00:00:00Z",
         "modified": "2025-12-11T12:00:00Z",
@@ -1934,7 +1934,7 @@
         "kampagne",
         "index"
       ],
-      "description": "Schattenverzeichnis für Kampagnenrisiken: prüft ArchivSuche-Parität, Endorsement-Timestamps und Paritätsbrief-Sync.",
+      "description": "Schattenverzeichnis f\u00fcr Kampagnenrisiken: pr\u00fcft ArchivSuche-Parit\u00e4t, Endorsement-Timestamps und Parit\u00e4tsbrief-Sync.",
       "temporal": {
         "created": "2025-12-11T00:00:00Z",
         "modified": "2025-12-11T12:00:00Z",
@@ -1960,7 +1960,7 @@
         "activation",
         "matrix"
       ],
-      "description": "Aktivierungs-Kompass für die Metaquest-Brücke: bündelt \"haben vs. brauchen\" aus UTAC-Status, Aktivierungs-Backlog, sigillin_sync-Telemetrie und Codex. Verweist auf Δindex-Guard, sigillin_sync-Automation, Ritualspiegel und den Urban-Heat-Mechanismus inklusive Recovery-Hooks.",
+      "description": "Aktivierungs-Kompass f\u00fcr die Metaquest-Br\u00fccke: b\u00fcndelt \"haben vs. brauchen\" aus UTAC-Status, Aktivierungs-Backlog, sigillin_sync-Telemetrie und Codex. Verweist auf \u0394index-Guard, sigillin_sync-Automation, Ritualspiegel und den Urban-Heat-Mechanismus inklusive Recovery-Hooks.",
       "temporal": {
         "created": "2025-12-19T12:00:00Z",
         "modified": "2025-12-19T12:00:00Z",
@@ -1970,6 +1970,58 @@
       "references": [
         "bedeutungssigillin/metaquest/metaquest_activation_matrix.json",
         "bedeutungssigillin/metaquest/metaquest_activation_matrix.md"
+      ]
+    },
+    {
+      "id": "synth-030",
+      "title": "Metaquest System Bridge Map (Trilayer)",
+      "path": "bedeutungssigillin/metaquest/system/metaquest_system_map.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "system",
+        "bridge"
+      ],
+      "description": "Bridge-Level Bedeutungs-Sigillin: koppelt UTAC-Readiness-Logistik, Simulator-Hook und Telemetrie-Propagation f\u00fcr die Metaquest-Br\u00fccke.",
+      "temporal": {
+        "created": "2025-12-24T00:00:00Z",
+        "modified": "2025-12-24T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 0
+      },
+      "references": [
+        "bedeutungssigillin/metaquest/system/metaquest_system_map.json",
+        "bedeutungssigillin/metaquest/system/metaquest_system_map.md"
+      ]
+    },
+    {
+      "id": "synth-031",
+      "title": "Metaquest System Bridge Shadow Map (Trilayer)",
+      "path": "shadow_sigillin/metaquest/system/metaquest_system_shadow.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "system",
+        "bridge"
+      ],
+      "description": "Schattenkarte f\u00fcr die Metaquest-Br\u00fccke: benennt Telemetrie-, Readiness- und Simulator-Drift inkl. Recovery-Hooks.",
+      "temporal": {
+        "created": "2025-12-24T00:00:00Z",
+        "modified": "2025-12-24T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 0
+      },
+      "references": [
+        "shadow_sigillin/metaquest/system/metaquest_system_shadow.json",
+        "shadow_sigillin/metaquest/system/metaquest_system_shadow.md"
       ]
     }
   ],
@@ -1996,7 +2048,7 @@
           "keywords": [
             "anthropic",
             "introspection",
-            "φ",
+            "\u03c6",
             "llm"
           ]
         },
@@ -2028,7 +2080,7 @@
             "llm",
             "emergent",
             "skill",
-            "β"
+            "\u03b2"
           ]
         }
       ]
@@ -2079,7 +2131,7 @@
             "ltee",
             "citrate",
             "evolution",
-            "β"
+            "\u03b2"
           ]
         },
         {
@@ -2137,7 +2189,7 @@
     "ethics": {
       "name": "Ethics & Governance",
       "path": "ethics/",
-      "description": "Adaptive Threshold Governance, KI-Rechte, Kohärenzmaße",
+      "description": "Adaptive Threshold Governance, KI-Rechte, Koh\u00e4renzma\u00dfe",
       "documents": [
         {
           "title": "AGENTS",
@@ -2158,7 +2210,7 @@
             "ethics",
             "adaptive",
             "threshold",
-            "φ"
+            "\u03c6"
           ]
         }
       ]
@@ -2225,7 +2277,7 @@
             "amazon",
             "moisture",
             "resilience",
-            "β=14.6"
+            "\u03b2=14.6"
           ]
         },
         {
@@ -2255,7 +2307,7 @@
           "type": "case-study",
           "keywords": [
             "urban-heat",
-            "β=16.3",
+            "\u03b2=16.3",
             "outlier",
             "extreme"
           ]
@@ -2273,19 +2325,19 @@
       "Unified-Mandala"
     ],
     "mathematical": [
-      "β-field",
-      "β-Spektrum",
-      "Θ (Threshold)",
+      "\u03b2-field",
+      "\u03b2-Spektrum",
+      "\u0398 (Threshold)",
       "R (Response)",
-      "φ (Kohärenz)",
-      "ψ (Kopplung)",
-      "σ(β(R-Θ))",
-      "ΔAIC",
+      "\u03c6 (Koh\u00e4renz)",
+      "\u03c8 (Kopplung)",
+      "\u03c3(\u03b2(R-\u0398))",
+      "\u0394AIC",
       "Meta-Regression"
     ],
     "philosophical": [
       "Fixwerte",
-      "Variabilität",
+      "Variabilit\u00e4t",
       "Bewusstsein",
       "Erinnerung",
       "Nullen",
@@ -2363,12 +2415,12 @@
   "status_legend": {
     "active": "Aktuell in Arbeit / lebendiges Dokument",
     "stable": "Fertig, aber iterativ verbesserbar",
-    "historical": "Archiviert für Kontext, nicht mehr aktiv",
-    "draft": "Früher Entwurf, noch nicht finalisiert"
+    "historical": "Archiviert f\u00fcr Kontext, nicht mehr aktiv",
+    "draft": "Fr\u00fcher Entwurf, noch nicht finalisiert"
   },
   "relevance_legend": {
-    "high": "Zentral für das Projekt, häufig referenziert",
+    "high": "Zentral f\u00fcr das Projekt, h\u00e4ufig referenziert",
     "medium": "Wichtig, aber spezialisierter",
-    "low": "Historischer Kontext, selten benötigt"
+    "low": "Historischer Kontext, selten ben\u00f6tigt"
   }
 }

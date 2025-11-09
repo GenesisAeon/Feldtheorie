@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "sigil": "shadow-metaquest-system-bridge-map",
+    "version": "0.1.0",
+    "created": "2025-12-24T00:00:00Z",
+    "updated": "2025-12-24T00:00:00Z",
+    "logistic": {
+      "R": "Telemetry gaps, stale readiness audits, simulator preset drift, uncoupled indices.",
+      "Theta": "Bridge, compass, UTAC matrix, and codex echo same mq-sys timestamp/codex id within 24h.",
+      "beta": 5.1,
+      "zeta": "Spikes when BreakPoint rituals lapse or shadow remediation logs are missing before release freeze."
+    },
+    "light_coupling": "../../../bedeutungssigillin/metaquest/system/metaquest_system_map.yaml"
+  },
+  "alerts": [
+    {
+      "id": "mq-sys-shadow-bridge-001",
+      "risk": "Telemetry silence",
+      "signals": [
+        "analysis/sigillin_sync/latest.json older than one sprint",
+        "Bridge map missing latest sigillin_sync timestamp"
+      ],
+      "mitigation": [
+        "Freeze automation",
+        "Run scripts/sigillin_sync.py and propagate timestamp to bridge map, compass, meaning index",
+        "Log codex entry with mq-sys-shadow reference"
+      ],
+      "guardrail": {
+        "metric": "telemetry cadence",
+        "threshold": "≤1 sprint between exports"
+      }
+    },
+    {
+      "id": "mq-sys-shadow-bridge-002",
+      "risk": "Readiness drift",
+      "signals": [
+        "analysis/v2_readiness_audit.py not re-run after manifest/preset update",
+        "Bridge map missing Θ/β values from latest audit"
+      ],
+      "mitigation": [
+        "Re-run analysis/v2_readiness_audit.py and regenerate tri-layer outputs",
+        "Update docs/utac_status_alignment_v1.2.md and codex with ΔAIC summary",
+        "Notify campaign lane of readiness delta"
+      ],
+      "guardrail": {
+        "metric": "readiness audit freshness",
+        "threshold": "Audit rerun within 24h of manifest/preset change"
+      }
+    },
+    {
+      "id": "mq-sys-shadow-bridge-003",
+      "risk": "Simulator desync",
+      "signals": [
+        "simulator/presets/coherence_formula.json missing or outdated",
+        "Preset not imported in simulator/src/presets.ts",
+        "docs/resonance-bridge-map.md lacks coherence preset entry"
+      ],
+      "mitigation": [
+        "Restore preset JSON and import in simulator/src/presets.ts",
+        "Run analysis/preset_alignment_guard.py and refresh indices",
+        "Log codex note with mq-bridge-shadow reference"
+      ],
+      "guardrail": {
+        "metric": "preset parity",
+        "threshold": "Preset + import updated within 24h of analysis change"
+      }
+    },
+    {
+      "id": "mq-sys-shadow-bridge-004",
+      "risk": "Shadow echo missing",
+      "signals": [
+        "Bridge map updated without matching shadow map entry",
+        "Codex entry lacks mq-sys-shadow id after bridge update"
+      ],
+      "mitigation": [
+        "Update shadow map with recovery hooks",
+        "Cross-link to docs/utac_status_alignment_v1.2.md",
+        "Record BreakPoint ritual completion"
+      ],
+      "guardrail": {
+        "metric": "shadow parity",
+        "threshold": "Shadow map updated within same day as bridge map"
+      }
+    }
+  ],
+  "recovery_hooks": [
+    {
+      "name": "Telemetry reset ritual",
+      "steps": [
+        "Run scripts/sigillin_sync.py",
+        "Archive latest report",
+        "Update bridge map, compass, meaning index, and codex",
+        "Confirm UTAC matrix mirrors timestamp"
+      ],
+      "evidence": [
+        "scripts/sigillin_sync.py",
+        "analysis/sigillin_sync/latest.json"
+      ]
+    },
+    {
+      "name": "Readiness audit cycle",
+      "steps": [
+        "Execute analysis/v2_readiness_audit.py",
+        "Regenerate analysis/reports/utac_v2_readiness.*",
+        "Annotate ΔAIC summary in bridge + shadow maps",
+        "File codex entry referencing mq-sys-shadow-bridge-002"
+      ],
+      "evidence": [
+        "analysis/v2_readiness_audit.py",
+        "analysis/reports/utac_v2_readiness.yaml"
+      ]
+    },
+    {
+      "name": "Simulator alignment loop",
+      "steps": [
+        "Restore simulator/presets/coherence_formula.json",
+        "Import preset in simulator/src/presets.ts",
+        "Run analysis/preset_alignment_guard.py",
+        "Update docs/resonance-bridge-map.md and indices"
+      ],
+      "evidence": [
+        "simulator/src/presets.ts",
+        "docs/resonance-bridge-map.md"
+      ]
+    },
+    {
+      "name": "Codex echo seal",
+      "steps": [
+        "Record mq-sys-shadow id, timestamp, and UTAC reference in seed/codexfeedback.*",
+        "Ensure docs/utac_status_alignment_v1.2.md notes remediation",
+        "Notify bridge dashboard of completed recovery"
+      ],
+      "evidence": [
+        "seed/codexfeedback.md",
+        "docs/utac_status_alignment_v1.2.md"
+      ]
+    }
+  ],
+  "null_model": {
+    "description": "Bridge assets glow while telemetry, readiness, or simulator hooks stay silent; Δindex parity grows and ζ(R) surges.",
+    "detection": [
+      "Bridge map shows updates without matching shadow entries",
+      "UTAC matrix missing latest mq-sys timestamp",
+      "Codex lacks mq-sys-shadow reference after automation change"
+    ],
+    "restoration": [
+      "Trigger telemetry reset ritual",
+      "Run readiness audit cycle",
+      "Complete simulator alignment loop"
+    ]
+  }
+}

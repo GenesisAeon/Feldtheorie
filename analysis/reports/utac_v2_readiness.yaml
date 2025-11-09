@@ -1,5 +1,5 @@
 meta:
-  generated_at: '2025-11-09T12:20:12.156464+00:00'
+  generated_at: '2025-11-09T12:41:11.639421+00:00'
   manifest_path: data/utac_v1_3_data_manifest.yaml
   logistic:
     theta: 0.66
@@ -268,7 +268,7 @@ analysis_targets:
   description: climate beta extractor pipeline
   category: analysis
   exists: true
-  last_modified: '2025-11-09T11:29:15.204607+00:00'
+  last_modified: '2025-11-09T12:03:51.301748+00:00'
   expected_outputs:
   - path: analysis/results/urban_heat_global_fit.json
     exists: false
@@ -277,7 +277,7 @@ analysis_targets:
   description: neuro-AI hybrid threshold fitter
   category: analysis
   exists: true
-  last_modified: '2025-11-09T11:29:15.204607+00:00'
+  last_modified: '2025-11-09T12:03:51.301748+00:00'
   expected_outputs:
   - path: analysis/results/neuro_ai_beta.json
     exists: false
@@ -286,7 +286,7 @@ analysis_targets:
   description: β>10 instrumentation guard
   category: analysis
   exists: true
-  last_modified: '2025-11-09T11:29:15.204607+00:00'
+  last_modified: '2025-11-09T12:03:51.301748+00:00'
   expected_outputs:
   - path: analysis/results/outlier_validator_report.json
     exists: false
@@ -295,7 +295,7 @@ analysis_targets:
   description: meta regression v2 refresh
   category: analysis
   exists: true
-  last_modified: '2025-11-09T11:29:15.204607+00:00'
+  last_modified: '2025-11-09T12:03:51.301748+00:00'
   expected_outputs:
   - path: analysis/results/beta_meta_regression_v2_latest.json
     exists: false
@@ -305,33 +305,33 @@ doc_targets:
   description: UTAC v2.0 coherence formula narrative
   category: documentation
   exists: true
-  last_modified: '2025-11-09T12:15:54.683159+00:00'
+  last_modified: '2025-11-09T12:37:56.788998+00:00'
   expected_outputs: []
 - path: docs/resonance-bridge-map.md
   description: resonance bridge map
   category: documentation
   exists: true
-  last_modified: '2025-11-09T12:15:54.683159+00:00'
+  last_modified: '2025-11-09T12:37:48.641023+00:00'
   expected_outputs: []
 simulator_targets:
 - path: simulator/presets/coherence_formula.json
   description: coherence formula simulator preset
   category: simulator
-  exists: false
-  last_modified: null
+  exists: true
+  last_modified: '2025-11-09T12:37:28.065088+00:00'
   expected_outputs: []
 sigillin_targets:
 - path: seed/bedeutungssigillin/metaquest/system/metaquest_system_map.json
   description: metaquest system map
   category: sigillin
-  exists: false
-  last_modified: null
+  exists: true
+  last_modified: '2025-11-09T12:33:55.857791+00:00'
   expected_outputs: []
 - path: seed/shadow_sigillin/metaquest/system/metaquest_system_shadow.json
   description: metaquest system shadow map
   category: sigillin
-  exists: false
-  last_modified: null
+  exists: true
+  last_modified: '2025-11-09T12:34:30.165676+00:00'
   expected_outputs: []
 action_items:
 - id: dataset-01
@@ -517,30 +517,3 @@ action_items:
   - path: analysis/results/beta_meta_regression_v2_latest.json
     exists: false
     category: output
-- id: sim-10
-  priority: P2
-  title: Activate coherence formula simulator preset
-  description: Ensure artefact and its outputs exist so the readiness bridge remains
-    tri-layered.
-  targets:
-  - path: simulator/presets/coherence_formula.json
-    exists: false
-    category: simulator
-- id: sigillin-11
-  priority: P3
-  title: Activate metaquest system map
-  description: Ensure artefact and its outputs exist so the readiness bridge remains
-    tri-layered.
-  targets:
-  - path: seed/bedeutungssigillin/metaquest/system/metaquest_system_map.json
-    exists: false
-    category: sigillin
-- id: sigillin-12
-  priority: P3
-  title: Activate metaquest system shadow map
-  description: Ensure artefact and its outputs exist so the readiness bridge remains
-    tri-layered.
-  targets:
-  - path: seed/shadow_sigillin/metaquest/system/metaquest_system_shadow.json
-    exists: false
-    category: sigillin

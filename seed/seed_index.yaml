@@ -13,8 +13,8 @@ meta:
   version: 1.0.0
   created: '2025-11-06'
   status: active
-  documents_total: 275
-  updated: "2025-12-19T12:00:00Z"
+  documents_total: 277
+  updated: "2025-12-24T00:00:00Z"
 categories:
   meta:
     name: Meta & Prozess
@@ -2033,3 +2033,49 @@ relevance_legend:
   references:
   - shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.json
   - shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md
+- id: synth-030
+  title: Metaquest System Bridge Map (Trilayer)
+  path: bedeutungssigillin/metaquest/system/metaquest_system_map.yaml
+  category: synthesis
+  type: bedeutungs-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - bedeutungssigillin
+  - metaquest
+  - system
+  - bridge
+  description: |
+    Bridge-Level Bedeutungs-Sigillin: koppelt UTAC-Readiness-Logistik,
+    Simulator-Hook und Telemetrie-Propagation für die Metaquest-Brücke.
+  temporal:
+    created: '2025-12-24T00:00:00Z'
+    modified: '2025-12-24T00:00:00Z'
+    version: '0.1.0'
+    change_count: 0
+  references:
+  - bedeutungssigillin/metaquest/system/metaquest_system_map.json
+  - bedeutungssigillin/metaquest/system/metaquest_system_map.md
+- id: synth-031
+  title: Metaquest System Bridge Shadow Map (Trilayer)
+  path: shadow_sigillin/metaquest/system/metaquest_system_shadow.yaml
+  category: synthesis
+  type: shadow-sigillin
+  status: active
+  relevance: high
+  keywords:
+  - shadow
+  - metaquest
+  - system
+  - bridge
+  description: |
+    Schattenkarte für die Metaquest-Brücke: benennt Telemetrie-,
+    Readiness- und Simulator-Drift inkl. Recovery-Hooks.
+  temporal:
+    created: '2025-12-24T00:00:00Z'
+    modified: '2025-12-24T00:00:00Z'
+    version: '0.1.0'
+    change_count: 0
+  references:
+  - shadow_sigillin/metaquest/system/metaquest_system_shadow.json
+  - shadow_sigillin/metaquest/system/metaquest_system_shadow.md

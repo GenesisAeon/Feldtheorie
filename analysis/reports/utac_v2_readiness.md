@@ -1,6 +1,6 @@
 # UTAC v2.0 Readiness Audit – σ(β(R-Θ)) Compass
 
-*Generated 2025-11-09T12:20:12.156464+00:00 via `analysis/v2_readiness_audit.py` – logistic quartet guiding V2 activation.*
+*Generated 2025-11-09T12:41:11.639421+00:00 via `analysis/v2_readiness_audit.py` – logistic quartet guiding V2 activation.*
 
 ## 1. Formal Stratum — Logistic Summary
 
@@ -66,15 +66,6 @@
   - Ensure artefact and its outputs exist so the readiness bridge remains tri-layered.
   - target: `analysis/beta_meta_regression_v2.py` (exists: True)
   - target: `analysis/results/beta_meta_regression_v2_latest.json` (exists: False)
-- **sim-10 (P2)** — Activate coherence formula simulator preset
-  - Ensure artefact and its outputs exist so the readiness bridge remains tri-layered.
-  - target: `simulator/presets/coherence_formula.json` (exists: False)
-- **sigillin-11 (P3)** — Activate metaquest system map
-  - Ensure artefact and its outputs exist so the readiness bridge remains tri-layered.
-  - target: `seed/bedeutungssigillin/metaquest/system/metaquest_system_map.json` (exists: False)
-- **sigillin-12 (P3)** — Activate metaquest system shadow map
-  - Ensure artefact and its outputs exist so the readiness bridge remains tri-layered.
-  - target: `seed/shadow_sigillin/metaquest/system/metaquest_system_shadow.json` (exists: False)
 
 ## 4. Beacon Status — Analysis · Docs · Simulator · Sigillin
 
@@ -89,11 +80,11 @@
 - `docs/resonance-bridge-map.md` — exists: True; outputs: —
 
 ### Simulator
-- `simulator/presets/coherence_formula.json` — exists: False; outputs: —
+- `simulator/presets/coherence_formula.json` — exists: True; outputs: —
 
 ### Sigillin
-- `seed/bedeutungssigillin/metaquest/system/metaquest_system_map.json` — exists: False; outputs: —
-- `seed/shadow_sigillin/metaquest/system/metaquest_system_shadow.json` — exists: False; outputs: —
+- `seed/bedeutungssigillin/metaquest/system/metaquest_system_map.json` — exists: True; outputs: —
+- `seed/shadow_sigillin/metaquest/system/metaquest_system_shadow.json` — exists: True; outputs: —
 
 ## 5. Poetic Stratum — Membrane Whisper
 

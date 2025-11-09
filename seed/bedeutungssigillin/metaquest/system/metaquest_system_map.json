@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "sigil": "bedeutungs-metaquest-system-bridge-map",
+    "version": "0.1.0",
+    "created": "2025-12-24T00:00:00Z",
+    "updated": "2025-12-24T00:00:00Z",
+    "logistic": {
+      "R": "Cross-membrane Metaquest backlog: telemetry exports, readiness audits, simulator presets, index parity.",
+      "Theta": "docs/utac_status_alignment_v1.2.md and seed/codexfeedback.* mirror the same mq-sys timestamp within 24h.",
+      "beta": 4.8,
+      "zeta": "Damped when BreakPoint rituals and scripts/sigillin_sync.py keep automation, audit reports, and simulator hooks in phase."
+    },
+    "resonance": "Bridge-level map tying the Metaquest hub to the system spine so readiness logistics, simulator hooks, and codex echoes stay synchronised.",
+    "shadow_coupling": "../../../shadow_sigillin/metaquest/system/metaquest_system_shadow.yaml"
+  },
+  "lanterns": [
+    {
+      "id": "mq-sys-bridge-lantern-001",
+      "title": "UTAC Status Matrix Handshake",
+      "path": "docs/utac_status_alignment_v1.2.md#metaquest-handshake",
+      "logistic_focus": "Extends ΔAIC/null guards from readiness audit into Metaquest activation backlog.",
+      "evidence": [
+        "analysis/v2_readiness_audit.py",
+        "analysis/reports/utac_v2_readiness.json"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "mq-sys-bridge-lantern-002",
+      "title": "System Beacon (Parent)",
+      "path": "../../system/metaquest/metaquest_system_map.yaml",
+      "logistic_focus": "Holds automation ledgers and BreakPoint evidence Metaquest inherits.",
+      "evidence": [
+        "scripts/archive_sigillin.py",
+        "seed/BreakPointAnalyse/WayToGo.txt"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "mq-sys-bridge-lantern-003",
+      "title": "Metaquest Meaning Index",
+      "path": "../metaquest_meaning_index.yaml",
+      "logistic_focus": "Aligns campaign + system timelines and records mq-parity ids.",
+      "evidence": [
+        "seed/codexfeedback.yaml",
+        "seed/codexfeedback.json"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "mq-sys-bridge-lantern-004",
+      "title": "Coherence Formula Laterne",
+      "path": "docs/UTAC_v2.0_Coherence_Formula.md",
+      "logistic_focus": "Documents σ(β(R-Θ))=ζ(R,α,φ) and binds simulator preset Θ=0.66, β=4.8, ζ∈[0.58,0.94].",
+      "evidence": [
+        "simulator/presets/coherence_formula.json",
+        "analysis/reports/utac_v2_readiness.yaml"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "mq-sys-bridge-lantern-005",
+      "title": "Metaquest System Compass",
+      "path": "metaquest_system_compass.yaml",
+      "logistic_focus": "Provides quick orientation for telemetry cadence and mq-sys gap tracking.",
+      "evidence": [
+        "metaquest_system_compass.md",
+        "scripts/sigillin_sync.py"
+      ],
+      "status": "active"
+    }
+  ],
+  "activation_threads": [
+    {
+      "id": "mq-sys-bridge-001",
+      "description": "Propagate scripts/sigillin_sync.py timestamp + codex id across bridge map, compass, and index.",
+      "evidence": [
+        "scripts/sigillin_sync.py",
+        "analysis/sigillin_sync/latest.json"
+      ],
+      "guardrails": {
+        "Theta": "Telemetry delta ≤ 1 sprint vs. bridge dashboard.",
+        "beta": 4.8,
+        "null_model": "Telemetry older than one sprint triggers mq-sys-shadow-002."
+      }
+    },
+    {
+      "id": "mq-sys-bridge-002",
+      "description": "Re-run analysis/v2_readiness_audit.py after manifest or preset updates; record σ(β(R-Θ)) deltas in codex and docs.",
+      "evidence": [
+        "analysis/v2_readiness_audit.py",
+        "analysis/reports/utac_v2_readiness.md"
+      ],
+      "guardrails": {
+        "Theta": "Θ=0.66±0.02, β=4.8±0.1 remain stable across reruns.",
+        "beta": 4.8,
+        "null_model": "ΔAIC vs. null < 10 flags readiness drift."
+      }
+    },
+    {
+      "id": "mq-sys-bridge-003",
+      "description": "Keep simulator/presets/coherence_formula.json registered in simulator/src/presets.ts and indices within 24h.",
+      "evidence": [
+        "simulator/src/presets.ts",
+        "docs/resonance-bridge-map.md"
+      ],
+      "guardrails": {
+        "Theta": "Preset alignment guard passes with ΔAIC ≥ 10.",
+        "beta": 4.8,
+        "null_model": "Preset missing or misaligned triggers mq-bridge-shadow-002."
+      }
+    },
+    {
+      "id": "mq-sys-bridge-004",
+      "description": "Mirror bridge updates inside the shadow map and log mq-sys-shadow remediation hooks.",
+      "evidence": [
+        "../../../shadow_sigillin/metaquest/system/metaquest_system_shadow.yaml",
+        "seed/codexfeedback.md"
+      ],
+      "guardrails": {
+        "Theta": "Shadow map references remediation scripts before release freeze.",
+        "beta": 5.0,
+        "null_model": "Shadow silence triggers mq-sys-shadow-001."
+      }
+    }
+  ],
+  "implementation_lattice": [
+    {
+      "thread": "mq-sys-bridge-001",
+      "evidence_trail": [
+        "scripts/sigillin_sync.py",
+        "analysis/sigillin_sync/latest.json",
+        "seed/codexfeedback.json"
+      ],
+      "guardrails": "Telemetry delta ≤ 1 sprint; missing update escalates mq-sys-shadow-002."
+    },
+    {
+      "thread": "mq-sys-bridge-002",
+      "evidence_trail": [
+        "analysis/v2_readiness_audit.py",
+        "analysis/reports/utac_v2_readiness.json",
+        "docs/utac_status_alignment_v1.2.md"
+      ],
+      "guardrails": "Logistic parameters stay within tolerance; ΔAIC vs. null ≥ 10."
+    },
+    {
+      "thread": "mq-sys-bridge-003",
+      "evidence_trail": [
+        "simulator/presets/coherence_formula.json",
+        "simulator/src/presets.ts",
+        "docs/resonance-bridge-map.md"
+      ],
+      "guardrails": "Preset registered + indices refreshed within 24h; preset alignment guard reports success."
+    },
+    {
+      "thread": "mq-sys-bridge-004",
+      "evidence_trail": [
+        "../../../shadow_sigillin/metaquest/system/metaquest_system_shadow.json",
+        "seed/codexfeedback.yaml"
+      ],
+      "guardrails": "Shadow remediation logged before release freeze."
+    }
+  ],
+  "null_model": {
+    "description": "Metaquest automation advances without readiness logistic or simulator hook; Δindex parity grows and ζ(R) spikes.",
+    "signals": [
+      "Bridge dashboard lacks latest sigillin_sync timestamp.",
+      "Coherence preset absent from simulator/src/presets.ts.",
+      "Codex entry missing mq-sys reference."
+    ],
+    "recovery": [
+      "Run scripts/sigillin_sync.py and propagate timestamp across bridge assets.",
+      "Re-run analysis/v2_readiness_audit.py and archive outputs.",
+      "Update codex with mq-sys gap references and shadow remediation steps."
+    ]
+  }
+}

@@ -1,107 +1,125 @@
 meta:
   sigil: shadow-metaquest-bridge
-  version: 0.3.1
+  version: 0.4.0
   created: '2025-12-07T00:00:00Z'
-  updated: '2025-12-19T12:00:00Z'
+  updated: '2025-12-24T00:00:00Z'
   logistic:
-    R: 'Unresolved Metaquest risks spanning automation + outreach (telemetry lapse, index drift, endorsement delay).'
-    Theta: 'Parity brief published, codex echo logged, and bridge dashboard updated within 24h.'
+    R: Unresolved Metaquest risks spanning automation + outreach (telemetry lapse,
+      index drift, endorsement delay).
+    Theta: Parity brief published, codex echo logged, and bridge dashboard updated
+      within 24h.
     beta: 5.1
-    zeta: 'Spikes when BreakPoint rituals are skipped or telemetry reports fall silent.'
+    zeta: Spikes when BreakPoint rituals are skipped or telemetry reports fall silent.
   coupling:
-    lichtpfad: '../../bedeutungssigillin/metaquest/metaquest_meaning_index.yaml'
-    system_index: '../../bedeutungssigillin/metaquest/system/metaquest_system_index.yaml'
-    campaign_index: '../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.yaml'
-    system_compass: '../../bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml'
-    campaign_compass: '../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml'
-    system_sigil: '../../bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml'
-    campaign_sigil: '../../bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml'
+    lichtpfad: ../../bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+    system_index: ../../bedeutungssigillin/metaquest/system/metaquest_system_index.yaml
+    campaign_index: ../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.yaml
+    system_compass: ../../bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml
+    campaign_compass: ../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml
+    system_sigil: ../../bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml
+    campaign_sigil: ../../bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
+    bridge_map: ../../bedeutungssigillin/metaquest/system/metaquest_system_map.yaml
 alerts:
-  - id: mq-bridge-shadow-001
-    risk: 'Bridge dashboard stale; system and campaign checkpoints diverge.'
-    signal:
-      - 'docs/utac_status_alignment_v1.2.md#metaquest-handshake lacks latest bridge entry.'
-      - 'metaquest_meaning_index.md timestamp older than 24h vs latest codex entry.'
-      - 'Parity brief updated without bridge reference.'
-      - 'Directory indices (system/campaign) missing new mq-sys/mq-sci codex id.'
-    consequence: 'Automation/outreach drift; Θ becomes invisible and β overshoots during launch prep.'
-    mitigation:
-      - 'Freeze Metaquest changes, refresh bridge dashboard, cite update in codex.'
-      - 'Ping both beacons to ensure parity references match.'
-    guard:
-      metric: 'bridge freshness'
-      threshold: '≤24h difference between codex + bridge timestamps'
-  - id: mq-bridge-shadow-002
-    risk: 'Telemetry timestamp mismatch between bridge and beacons.'
-    signal:
-      - 'metaquest_system_map.yaml lacks latest telemetry timestamp noted in bridge JSON.'
-      - 'Metaquest campaign beacon references different codex id than bridge.'
-      - '`scripts/sigillin_sync.py` report missing for >1 sprint.'
-      - 'Compasses (`metaquest_system_compass.json`, `metaquest_campaign_compass.json`) out of sync with bridge timestamp.'
-      - 'Directory indices show older telemetry stamp than bridge dashboard.'
-    consequence: 'Shadow handshake fails; readiness cannot be proven before outreach commitments.'
-    mitigation:
-      - 'Run `scripts/sigillin_sync.py` manually, update all trilayers with common timestamp + codex id.'
-      - 'Log remediation in codex and UTAC status matrix.'
-    guard:
-      metric: 'telemetry parity'
-      threshold: 'timestamps aligned within one sprint'
-  - id: mq-bridge-shadow-003
-    risk: 'Indices omit bridge assets while light/shadow beacons change.'
-    signal:
-      - 'scripts/crep_parser.py diff shows missing bridge paths in seed_index.* or feldtheorie_index.*.'
-      - 'Recent commits add Metaquest assets without index refresh log.'
-    consequence: 'Agents cannot navigate Metaquest constellation; recovery rituals activate late.'
-    mitigation:
-      - 'Run scripts/archive_sigillin.py --refresh and verify parser output.'
-      - 'Document fix in codex and bridge null-guard notes.'
-    guard:
-      metric: 'Δindex parity'
-      threshold: '≤0 after remediation commit'
-  - id: mq-bridge-shadow-004
-    risk: 'Light/shadow sigils drift — codex IDs or rituals not mirrored between system/campaign pairs.'
-    signal:
-      - 'metaquest_system_sigil.yaml references codex ID absent in metaquest_system_shadow_sigil.yaml (or vice versa).'
-      - 'metaquest_campaign_sigil.yaml missing BreakPoint citation acknowledged in shadow counterpart.'
-      - 'Codex entry lacks mq-sys/mq-sci shadow acknowledgement within 24h.'
-    consequence: 'Recovery scripts desynchronise; Θ cannot be certified for automation or outreach.'
-    mitigation:
-      - 'Update light + shadow sigils together with shared codex/timestamp fields.'
-      - 'Log remediation in codex and UTAC matrix, ping bridge dashboard to confirm parity.'
-    guard:
-      metric: 'sigil parity'
-      threshold: '≤24h difference between light/shadow updates'
-  - id: mq-bridge-shadow-005
-    risk: 'Activation matrix veraltet oder fehlt; "haben vs. brauchen" nicht mehr gekoppelt an Backlog/UTAC.'
-    signal:
-      - 'metaquest_activation_matrix.yaml timestamp älter als 24h gegenüber docs/utac_status_alignment_v1.2.md oder codexfeedback.'
-      - 'Neue mq-gap IDs in docs/utac_activation_backlog.md ohne Verweis in der Aktivierungs-Matrix.'
-      - 'Shadow index verweist auf mq-gap-Recovery ohne korrespondierende matrix recovery_hooks.'
-    consequence: 'Schatten-Wächter verlieren Sicht auf offene Risiken; R wächst unbeobachtet und löst verspätete Eskalationen aus.'
-    mitigation:
-      - 'Aktualisiere metaquest_activation_matrix.{yaml,json,md} mit neuen Pfaden und Recovery-Hooks.'
-      - 'Spiegle Änderungen in shadow index + codex, referenziere UTAC-Matrix und Backlog.'
-    guard:
-      metric: 'activation matrix freshness'
-      threshold: '≤24h Unterschied zwischen Matrix, Backlog und Codex timestamps'
+- id: mq-bridge-shadow-001
+  risk: Bridge dashboard stale; system and campaign checkpoints diverge.
+  signal:
+  - docs/utac_status_alignment_v1.2.md#metaquest-handshake lacks latest bridge entry.
+  - metaquest_meaning_index.md timestamp older than 24h vs latest codex entry.
+  - Parity brief updated without bridge reference.
+  - Directory indices (system/campaign) missing new mq-sys/mq-sci codex id.
+  consequence: "Automation/outreach drift; \u0398 becomes invisible and \u03B2 overshoots\
+    \ during launch prep."
+  mitigation:
+  - Freeze Metaquest changes, refresh bridge dashboard, cite update in codex.
+  - Ping both beacons to ensure parity references match.
+  guard:
+    metric: bridge freshness
+    threshold: "\u226424h difference between codex + bridge timestamps"
+- id: mq-bridge-shadow-002
+  risk: Telemetry timestamp mismatch between bridge and beacons.
+  signal:
+  - metaquest_system_map.yaml lacks latest telemetry timestamp noted in bridge JSON.
+  - Metaquest campaign beacon references different codex id than bridge.
+  - '`scripts/sigillin_sync.py` report missing for >1 sprint.'
+  - Compasses (`metaquest_system_compass.json`, `metaquest_campaign_compass.json`)
+    out of sync with bridge timestamp.
+  - Directory indices show older telemetry stamp than bridge dashboard.
+  consequence: Shadow handshake fails; readiness cannot be proven before outreach
+    commitments.
+  mitigation:
+  - Run `scripts/sigillin_sync.py` manually, update all trilayers with common timestamp
+    + codex id.
+  - Log remediation in codex and UTAC status matrix.
+  guard:
+    metric: telemetry parity
+    threshold: timestamps aligned within one sprint
+- id: mq-bridge-shadow-003
+  risk: Indices omit bridge assets while light/shadow beacons change.
+  signal:
+  - scripts/crep_parser.py diff shows missing bridge paths in seed_index.* or feldtheorie_index.*.
+  - Recent commits add Metaquest assets without index refresh log.
+  consequence: Agents cannot navigate Metaquest constellation; recovery rituals activate
+    late.
+  mitigation:
+  - Run scripts/archive_sigillin.py --refresh and verify parser output.
+  - Document fix in codex and bridge null-guard notes.
+  guard:
+    metric: "\u0394index parity"
+    threshold: "\u22640 after remediation commit"
+- id: mq-bridge-shadow-004
+  risk: "Light/shadow sigils drift \u2014 codex IDs or rituals not mirrored between\
+    \ system/campaign pairs."
+  signal:
+  - metaquest_system_sigil.yaml references codex ID absent in metaquest_system_shadow_sigil.yaml
+    (or vice versa).
+  - metaquest_campaign_sigil.yaml missing BreakPoint citation acknowledged in shadow
+    counterpart.
+  - Codex entry lacks mq-sys/mq-sci shadow acknowledgement within 24h.
+  consequence: "Recovery scripts desynchronise; \u0398 cannot be certified for automation\
+    \ or outreach."
+  mitigation:
+  - Update light + shadow sigils together with shared codex/timestamp fields.
+  - Log remediation in codex and UTAC matrix, ping bridge dashboard to confirm parity.
+  guard:
+    metric: sigil parity
+    threshold: "\u226424h difference between light/shadow updates"
+- id: mq-bridge-shadow-005
+  risk: Activation matrix veraltet oder fehlt; "haben vs. brauchen" nicht mehr gekoppelt
+    an Backlog/UTAC.
+  signal:
+  - "metaquest_activation_matrix.yaml timestamp \xE4lter als 24h gegen\xFCber docs/utac_status_alignment_v1.2.md\
+    \ oder codexfeedback."
+  - Neue mq-gap IDs in docs/utac_activation_backlog.md ohne Verweis in der Aktivierungs-Matrix.
+  - Shadow index verweist auf mq-gap-Recovery ohne korrespondierende matrix recovery_hooks.
+  consequence: "Schatten-W\xE4chter verlieren Sicht auf offene Risiken; R w\xE4chst\
+    \ unbeobachtet und l\xF6st versp\xE4tete Eskalationen aus."
+  mitigation:
+  - Aktualisiere metaquest_activation_matrix.{yaml,json,md} mit neuen Pfaden und Recovery-Hooks.
+  - "Spiegle \xC4nderungen in shadow index + codex, referenziere UTAC-Matrix und Backlog."
+  guard:
+    metric: activation matrix freshness
+    threshold: "\u226424h Unterschied zwischen Matrix, Backlog und Codex timestamps"
 playbooks:
-  - trigger: 'mq-bridge-shadow-001 fired'
-    response:
-      - 'Halt Metaquest automation/outreach tasks.'
-      - 'Update bridge dashboard + UTAC matrix; post codex entry with timeline.'
-  - trigger: 'mq-bridge-shadow-002 fired'
-    response:
-      - 'Execute telemetry export, align timestamps across bridge/beacons.'
-      - 'Escalate to system + campaign stewards if delay exceeds sprint length.'
-  - trigger: 'mq-bridge-shadow-003 fired'
-    response:
-      - 'Refresh indices, rerun parser, notify maintainers of missing automation.'
-      - 'Reference remediation in bridge + beacons to close loop.'
-  - trigger: 'mq-bridge-shadow-004 fired'
-    response:
-      - 'Synchronise Bedeutungs- und Schatten-Sigille (system + kampagne) with shared codex ID and ritual references.'
-      - 'Reconfirm parity in bridge dashboard + UTAC matrix before resuming launch work.'
-  - trigger: 'mq-bridge-shadow-005 fired'
-    response:
-      - 'Aktualisiere metaquest_activation_matrix.* sowie docs/utac_status_alignment_v1.2.md und docs/utac_activation_backlog.* mit den gleichen mq-gap Pfaden.'
-      - 'Spiegle die Änderungen in codexfeedback (Status + Recovery) und bestätige, dass Schatten-Indizes dieselben recovery_hooks führen.'
+- trigger: mq-bridge-shadow-001 fired
+  response:
+  - Halt Metaquest automation/outreach tasks.
+  - Update bridge dashboard + UTAC matrix; post codex entry with timeline.
+- trigger: mq-bridge-shadow-002 fired
+  response:
+  - Execute telemetry export, align timestamps across bridge/beacons.
+  - Escalate to system + campaign stewards if delay exceeds sprint length.
+- trigger: mq-bridge-shadow-003 fired
+  response:
+  - Refresh indices, rerun parser, notify maintainers of missing automation.
+  - Reference remediation in bridge + beacons to close loop.
+- trigger: mq-bridge-shadow-004 fired
+  response:
+  - Synchronise Bedeutungs- und Schatten-Sigille (system + kampagne) with shared codex
+    ID and ritual references.
+  - Reconfirm parity in bridge dashboard + UTAC matrix before resuming launch work.
+- trigger: mq-bridge-shadow-005 fired
+  response:
+  - Aktualisiere metaquest_activation_matrix.* sowie docs/utac_status_alignment_v1.2.md
+    und docs/utac_activation_backlog.* mit den gleichen mq-gap Pfaden.
+  - "Spiegle die \xC4nderungen in codexfeedback (Status + Recovery) und best\xE4tige,\
+    \ dass Schatten-Indizes dieselben recovery_hooks f\xFChren."
