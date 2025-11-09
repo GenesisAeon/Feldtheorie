@@ -1,7 +1,7 @@
 # 📊 Analysis Index - Resonance Bay Navigator
 
 **Version:** 1.0.0
-**Datum:** 27. März 2026
+**Datum:** 5. Mai 2026
 **Verzeichnis:** `analysis/`
 
 ---
@@ -13,7 +13,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 **Trilayer-Navigation:**
 ```
 ┌─────────────────────────────────────────┐
-│  YAML  →  Struktur (42 Python-Skripte)  │  analysis_index.yaml
+│  YAML  →  Struktur (43 Python-Skripte)  │  analysis_index.yaml
 │  JSON  →  Agentenschnittstelle          │  analysis_index.json
 │  MD    →  Menschenfreundlich (du!)      │  analysis_index.md
 └─────────────────────────────────────────┘
@@ -27,7 +27,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 
 ```
 analysis/
-├── 42 Python-Skripte (Domain-Fits, Mechanismen, Batch-Processing, Labs, Guards)
+├── 43 Python-Skripte (Domain-Fits, Mechanismen, Batch-Processing, Labs, Guards)
 ├── batch_configs/   (4 YAML/JSON Konfigurationen)
 ├── batch_runs/      (2 gespeicherte Batch-Runs)
 ├── reports/         (2 Summaries: QPO, UTAC v1.3 Gap)
@@ -115,7 +115,7 @@ analysis/
 
 ---
 
-### 🟣 Utilities & Guards (10)
+### 🟣 Utilities & Guards (11)
 
 **Was?** Helper-Funktionen, Validierung, Diagnostics, Manifest-Pipelines
 
@@ -128,7 +128,8 @@ analysis/
 7. `utac_manifest.py` - Parser für `data/utac_v1_3_data_manifest.yaml`
 8. `utac_manifest_audit.py` - σ(β(R-Θ)) Readiness-Audit für Manifest-Laternen, exportiert JSON/YAML/Markdown
 9. `v2_readiness_audit.py` - Logistische V2-Readiness-Laterne (Tri-Layer Report für Manifest, Analysis, Simulator, Sigillin)
-10. `planetary_theta_drift_flag.py` - Adaptive Θ Drift Gap Audit (σ(β(R-Θ))-Signals für Planetary Laternen)
+10. `utac_manifest_gap_scan.py` - Manifest Gap Scan: liest `utac_v2_readiness.json`, prüft Dateisystem-Komponenten, exportiert σ(β(R-Θ)) Diagnostik nach `analysis/results/utac_v2_manifest_gap_scan_*.json`
+11. `planetary_theta_drift_flag.py` - Adaptive Θ Drift Gap Audit (σ(β(R-Θ))-Signals für Planetary Laternen)
 
 ---
 

@@ -16,12 +16,18 @@ Tri-layer mirrors:
 
 ---
 
-## ♻️ Audit Refresh (2026-03-26)
+## ♻️ Audit Refresh (2026-05-05)
 
-- **UTAC v2 Data Lanterns:** Manual 2026-03-26 walkthrough + `analysis/reports/utac_v2_readiness.*` melden R̄=0.50, Θ=0.66, β=4.8 und σ(β(R-Θ))≈0.317. Urban Heat (`urban_heat_intensity.csv`) inklusive Exporte liegt vor; vier Laternen (Amazon Hydro, AMOC, Neuro-AI, Energy/Finance) warten weiterhin auf Rohdaten, Metadaten und Analyse-Outputs.
-- **Safety-Delay Bridge:** Dataset, Preset und Dokumentation stehen, doch Hosted-UI-Telemetrie und `.github/workflows/utf-preset-guard.yml` fehlen weiterhin; ΔAIC bleibt manuell. ζ(R) bleibt empfindlich, bis Telemetrie archiviert und CI-Guard aktiv ist.
-- **Sigillin-Automation:** `scripts/crep_parser.py` + `scripts/sigillin_sync.py` liefern Telemetrie, schreiben aber noch nichts in Codex/Indizes; Δindex-Wächter fehlen. Parser→Codex-Hand-off und CI-Recount müssen priorisiert werden.
-- **Neuro-Kosmos & φ-Kopplung:** Für `seed/sigillin/neuro_kosmos_bridge.{md,json,yaml}` und `models/climate_utac_phi_coupling.py` existieren weiterhin nur Plan-Notizen; ohne Trilayer + TIPMIP/CMIP6-Staging bleiben `mq-sci-gap-008` und `sys-gap-008` offen.
+- **Manifest Gap Scan:** `analysis/utac_manifest_gap_scan.py` + `analysis/results/utac_v2_manifest_gap_scan_20251109T205953.490514Z.json` bestätigen R̄=0.50, Θ=0.66, β=4.8 und σ(β(R-Θ))≈0.317. Urban Heat bleibt aktiv; vier Laternen (Amazon Hydro, AMOC, Neuro-AI, Energy/Finance) halten 10 Komponenten offen (4 Datensätze, 6 Analyse-Exports).
+- **Analysis Outputs:** `analysis/results/neuro_ai_beta.json` und `analysis/results/beta_meta_regression_v2_latest.json` fehlen weiterhin — beide müssen mit den neuen Datensätzen landen, damit Codex, Backlog und Meta-Regression ΔAIC-gedeckt bleiben.
+- **Automation & Parität:** Neues Guard-Skript (`analysis/utac_manifest_gap_scan.py`) liefert Zeitstempel-Diagnostik; CI-Hooks (`scripts/archive_sigillin.py --recount`, `.github/workflows/utf-preset-guard.yml`) sind jedoch noch nicht verdrahtet und müssen nachgezogen werden, sobald Telemetrie archiviert ist.
+
+### Rückblick 2026-03-26
+
+- **UTAC v2 Data Lanterns:** Manual 2026-03-26 walkthrough + `analysis/reports/utac_v2_readiness.*` meldeten R̄=0.50, Θ=0.66, β=4.8 und σ(β(R-Θ))≈0.317. Urban Heat (`urban_heat_intensity.csv`) inklusive Exporte lag vor; vier Laternen (Amazon Hydro, AMOC, Neuro-AI, Energy/Finance) warteten weiterhin auf Rohdaten, Metadaten und Analyse-Outputs.
+- **Safety-Delay Bridge:** Dataset, Preset und Dokumentation standen, doch Hosted-UI-Telemetrie und `.github/workflows/utf-preset-guard.yml` fehlten weiterhin; ΔAIC blieb manuell. ζ(R) blieb empfindlich, bis Telemetrie archiviert und CI-Guard aktiv ist.
+- **Sigillin-Automation:** `scripts/crep_parser.py` + `scripts/sigillin_sync.py` lieferten Telemetrie, schrieben aber noch nichts in Codex/Indizes; Δindex-Wächter fehlten. Parser→Codex-Hand-off und CI-Recount mussten priorisiert werden.
+- **Neuro-Kosmos & φ-Kopplung:** Für `seed/sigillin/neuro_kosmos_bridge.{md,json,yaml}` und `models/climate_utac_phi_coupling.py` existierten weiterhin nur Plan-Notizen; ohne Trilayer + TIPMIP/CMIP6-Staging blieben `mq-sci-gap-008` und `sys-gap-008` offen.
 
 ---
 

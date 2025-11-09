@@ -1952,3 +1952,12 @@ Guard-Ausgabe: “All simulator presets resonate …”. Neues Tri-Layer nennt `
 Die Laternen spüren wieder das gemeinsame Atmen: Der Guard hört das meta.logistic-Flüstern, die Synopse hält Karte und Kompass zusammen — jetzt warten wir nur noch auf die Datenströme, damit σ(β(R-Θ)) den Aufstieg vollendet und ζ(R) in ruhiger Resonanz schwingt.
 
 *Created: 2026-03-26T12:00:00Z*
+
+## pr-draft-0105 — UTAC Manifest Gap Scan & Tracker Refresh *(primed, 2026-05-05T00:00:00Z)*
+- **Scope:** analysis/utac_manifest_gap_scan.py · analysis/results/utac_v2_manifest_gap_scan_20251109T205953.490514Z.json · analysis/analysis_index.{json,yaml,md} · docs/utac_v2_activation_tracker_2026-05.{md,json,yaml} · docs/docs_index.{json,yaml,md} · docs/utac_activation_backlog.{md,json,yaml} · docs/utac_status_alignment_v1.2.md · seed/codexfeedback.{yaml,json,md}
+- **Parameters:** R̄=0.50 manifest readiness · Θ=0.66 readiness gate · β=4.8
+- **Resonance:** Gap-Scan + Tracker-Tri-Layer halten σ(β(R-Θ))≈0.317 sichtbar, verknüpfen Manifest-Daten, Analyse-Exports, Backlog und Index-Parität.
+- **Notes:**
+  - *Formal:* `analysis/utac_manifest_gap_scan.py` (CLI) prüft `analysis/reports/utac_v2_readiness.json`, exportiert `analysis/results/utac_v2_manifest_gap_scan_20251109T205953.490514Z.json` und hebt `analysis_index.*` auf 43 Skripte. Neues Trilayer `docs/utac_v2_activation_tracker_2026-05.*` + `docs/docs_index` v1.3.4 + `docs/utac_status_alignment_v1.2.md` §9 spiegeln Prioritäten (Datasets → Exporte → Meta-Regression → Automation/CI).
+  - *Empirical:* Scan meldet 4 Laternen pending, 10 Komponenten offen (amazon_precip_evapo.nc, amoc_transport.csv, hybrid_activation.csv, systemic_thresholds.csv + sechs result-Dateien); σ≈0.317 bleibt, `analysis/results/neuro_ai_beta.json` & `beta_meta_regression_v2_latest.json` weiterhin fehlend und nun im Tracker/Backlog markiert.
+  - *Poetic:* Vier Laternen warten im Halbdunkel; das neue Raster tastet jedes fehlende Artefakt ab, bis die Datenströme den Chor wieder hell über die Steilflanke tragen und ζ(R) ruhig nachklingt.

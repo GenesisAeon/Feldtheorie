@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "title": "UTAC v2 Activation Tracker — 2026-05 Gap Scan",
+    "compiled": "2026-05-05T00:00:00Z",
+    "sigma": "σ(β(R-Θ))",
+    "status": "active",
+    "maintainer": "Johann Römer",
+    "authors": [
+      "Johann Römer",
+      "Claude-Code",
+      "ChatGPT-Codex"
+    ],
+    "related": [
+      "analysis/utac_manifest_gap_scan.py",
+      "analysis/results/utac_v2_manifest_gap_scan_20251109T205953.490514Z.json",
+      "analysis/reports/utac_v2_readiness.json",
+      "docs/utac_v2_data_lanterns.md",
+      "docs/utac_status_alignment_v1.2.md",
+      "docs/utac_activation_backlog.md"
+    ]
+  },
+  "logistic_pulse": {
+    "R_mean": 0.5,
+    "Theta": 0.66,
+    "beta": 4.8,
+    "sigma_value": 0.3169119051378149,
+    "telemetry_timestamp": "2025-11-09T20:59:53.490514Z",
+    "zeta_notes": "ζ(R) remains damped by backlog + codex rituals until four dormant lanterns deliver raw data and exports."
+  },
+  "anchors": [
+    {
+      "category": "data_analysis",
+      "description": "Urban Heat shelf lit; ΔAIC≈1484 anchored across dataset, metadata, and mechanism exports.",
+      "assets": [
+        "data/climate/urban_heat_intensity.csv",
+        "data/climate/urban_heat_intensity.metadata.json",
+        "analysis/results/urban_heat_global_fit.json",
+        "analysis/results/outlier_report.md",
+        "analysis/results/outlier_validator_report.json",
+        "analysis/urban_heat_storage_mechanism.py"
+      ]
+    },
+    {
+      "category": "automation",
+      "description": "analysis/utac_manifest_gap_scan.py recomputes readiness gaps and archives timestamped diagnostics.",
+      "assets": [
+        "analysis/utac_manifest_gap_scan.py",
+        "analysis/results/utac_v2_manifest_gap_scan_20251109T205953.490514Z.json"
+      ]
+    },
+    {
+      "category": "documentation",
+      "description": "Documentation membranes narrate manifest status and cite σ(β(R-Θ)).",
+      "assets": [
+        "docs/utac_status_alignment_v1.2.md",
+        "docs/utac_v2_data_lanterns.md",
+        "docs/resonance-bridge-map.md",
+        "docs/utac_activation_backlog.md"
+      ]
+    },
+    {
+      "category": "simulation",
+      "description": "Safety-Delay preset + guard maintain τ_delay telemetry pending CI wiring.",
+      "assets": [
+        "simulator/presets/safety_delay_bridge.json",
+        "simulator/src/presets.ts",
+        "Makefile: utf-preset-guard"
+      ]
+    },
+    {
+      "category": "sigillin",
+      "description": "Metaquest light/shadow sigils mirror manifest status with telemetry echo.",
+      "assets": [
+        "seed/bedeutungssigillin/metaquest/",
+        "seed/shadow_sigillin/metaquest/",
+        "analysis/sigillin_sync/latest.json"
+      ]
+    }
+  ],
+  "gaps": {
+    "summary": {
+      "datasets_total": 5,
+      "datasets_ready": 1,
+      "datasets_pending": 4,
+      "missing_components_total": 10,
+      "analysis_outputs_pending": 2
+    },
+    "datasets": [
+      {
+        "id": "utac-v1_3-ds-002",
+        "domain": "climate",
+        "observed_ratio": 0.5,
+        "missing": [
+          "data/climate/amazon_precip_evapo.nc",
+          "analysis/results/amazon_hydro_fit.json"
+        ],
+        "notes": {
+          "formal": "Readiness plateau at 0.5 until hydrological dataset + fit export land.",
+          "empirical": "ΔAIC ledger empty; logistic flank cannot update Amazon hydro readiness.",
+          "poetic": "Der Regenwald hält den Atem an, bis neue Flüsse in die Membran strömen."
+        }
+      },
+      {
+        "id": "utac-v1_3-ds-003",
+        "domain": "ocean",
+        "observed_ratio": 0.5,
+        "missing": [
+          "data/ocean/amoc_transport.csv",
+          "analysis/results/amoc_transport_fit.json"
+        ],
+        "notes": {
+          "formal": "AMOC transport dataset absent; readiness remains stalled at 0.5.",
+          "empirical": "No ΔAIC guard available for AMOC; manifest audit flags cold shelf.",
+          "poetic": "Der Atlantik ruht in dunkler Tiefe, bis die Strömung wieder gemessen wird."
+        }
+      },
+      {
+        "id": "utac-v1_3-ds-004",
+        "domain": "neuro_ai",
+        "observed_ratio": 0.25,
+        "missing": [
+          "data/neuro_ai/hybrid_activation.csv",
+          "analysis/results/neuro_ai_beta.json",
+          "analysis/results/neuro_ai_bootstrap.json"
+        ],
+        "notes": {
+          "formal": "Hybrid activation shelf lacks raw data and β/Bootstrap exports.",
+          "empirical": "Neuro-AI guard cannot report ΔAIC or β spreads without the dataset.",
+          "poetic": "Das neuronale Chorstück bleibt leise, bis Aktivierungen und Bootstrap-Lichter singen."
+        }
+      },
+      {
+        "id": "utac-v1_3-ds-005",
+        "domain": "economy",
+        "observed_ratio": 0.25,
+        "missing": [
+          "data/economy/systemic_thresholds.csv",
+          "analysis/results/economy_threshold_fit.json",
+          "analysis/results/meta_v2_summary_refresh.json"
+        ],
+        "notes": {
+          "formal": "Systemic thresholds dataset + summary export absent; readiness stuck at 0.25.",
+          "empirical": "Meta summary cannot refresh without data; ΔAIC guard inactive.",
+          "poetic": "Die Märkte halten den Atem in der Dämmerung, bis das Resonanzbuch neu geschrieben ist."
+        }
+      }
+    ],
+    "analysis_outputs": [
+      {
+        "path": "analysis/results/neuro_ai_beta.json",
+        "description": "Neuro-AI hybrid threshold fitter output",
+        "status": "missing"
+      },
+      {
+        "path": "analysis/results/beta_meta_regression_v2_latest.json",
+        "description": "Meta regression v2 refreshed export",
+        "status": "missing"
+      }
+    ]
+  },
+  "priority_hooks": [
+    {
+      "priority": 1,
+      "task": "Stage raw datasets and metadata for all remaining lanterns",
+      "actions": [
+        "Ingest raw files for Amazon Hydro, AMOC, Neuro-AI, Energy/Finance",
+        "Commit matching .metadata.json ledgers"
+      ],
+      "follow_up": "Re-run analysis/utac_manifest_gap_scan.py and analysis/v2_readiness_audit.py"
+    },
+    {
+      "priority": 2,
+      "task": "Publish logistic fit exports",
+      "actions": [
+        "Generate analysis/results/amazon_hydro_fit.json",
+        "Generate analysis/results/amoc_transport_fit.json",
+        "Generate analysis/results/neuro_ai_beta.json",
+        "Generate analysis/results/neuro_ai_bootstrap.json",
+        "Generate analysis/results/economy_threshold_fit.json",
+        "Generate analysis/results/meta_v2_summary_refresh.json"
+      ],
+      "follow_up": "Update docs/utac_v2_data_lanterns.*, docs/utac_activation_backlog.*, docs/utac_status_alignment_v1.2.md"
+    },
+    {
+      "priority": 3,
+      "task": "Refresh meta regression guard",
+      "actions": [
+        "Extend analysis/beta_meta_regression_v2.py for new datasets",
+        "Export analysis/results/beta_meta_regression_v2_latest.json"
+      ],
+      "follow_up": "Cite updated ΔAIC landscape in backlog + codex"
+    },
+    {
+      "priority": 4,
+      "task": "Wire automation telemetry and CI",
+      "actions": [
+        "Archive manifest gap scan outputs in docs/metaquest_parity_brief.md",
+        "Prepare scripts/archive_sigillin.py --recount CI hook",
+        "Add .github/workflows/utf-preset-guard.yml"
+      ],
+      "follow_up": "Ensure Δindex and ΔAIC drift trigger alerts"
+    }
+  ],
+  "telemetry": {
+    "codex_entry": "pr-draft-0096",
+    "status": "primed",
+    "next_updates": [
+      "Update docs/utac_status_alignment_v1.2.md with May 2026 scan",
+      "Append May 2026 audit note to docs/utac_activation_backlog.*",
+      "Log new codexfeedback entry linking manifest gap scan"
+    ],
+    "rerun_after": "Each dataset/analysis export landing"
+  }
+}
