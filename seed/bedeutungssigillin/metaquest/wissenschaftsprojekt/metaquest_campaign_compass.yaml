@@ -1,66 +1,88 @@
 meta:
   sigil: bedeutungs-metaquest-campaign-compass
-  version: 0.1.0
+  version: 0.1.1
   created: '2025-12-18T00:00:00Z'
-  updated: '2025-12-18T00:00:00Z'
+  updated: '2025-12-19T00:00:00Z'
   logistic:
     R: 'Metaquest campaign backlog: manuscript cadence, outreach milestones, endorsement alignment.'
-    Theta: 'Parity brief + codex echo + UTAC status matrix updated within 24h.'
+    Theta: Parity brief + codex echo + UTAC status matrix updated within 24h.
     beta: 4.85
-    zeta: 'Kept stable through BreakPoint rituals, telemetry syncs, and endorsement rehearsals.'
-  resonance: |
-    Compass for the wissenschaftsprojekt lane of Metaquest. It lists the activation
-    vectors that transform manuscripts, outreach, and endorsements into a coherent
-    launch narrative without losing falsifiability.
+    zeta: Kept stable through BreakPoint rituals, telemetry syncs, and endorsement rehearsals.
+  resonance: Compass vectors orienting the Metaquest campaign lane without losing falsifiability.
 vectors:
-  - id: mq-sci-vector-001
-    name: Manuscript Telemetry Sync
-    description: |
-      Keep manuscript updates mirrored in parity brief + codex entries so bridge
-      telemetry reflects the same timestamp.
-    checkpoints:
-      - seed/Manuskriptfinalisierung und Kampagnenstart.pdf
-      - docs/metaquest_parity_brief.md
-      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
-    actions:
-      - 'Log ΔAIC / governance shifts in seed/codexfeedback.*'
-      - 'Update bridge dashboard timestamp within 24h.'
-    null_model:
-      description: 'Manuscript revision not mirrored in parity brief.'
-      response:
-        - 'Trigger mq-sci-shadow-lantern-a.'
-        - 'Freeze outreach comms until parity restored.'
-  - id: mq-sci-vector-002
-    name: Outreach Resonance Loop
-    description: |
-      Coordinate press kit, endorsements, and simulator playlist with the Metaquest
-      storyline so each asset references shared checkpoints.
-    checkpoints:
-      - docs/metaquest_parity_brief.md#mqp-arena
-      - docs/utac_status_alignment_v1.2.md#implementation-map
-      - seed/Finalize_Publish.txt
-    actions:
-      - 'Archive rehearsal transcript in codex with mq-sci scope.'
-      - 'Update metaquest_campaign_map.* with milestone + timestamp.'
-    null_model:
-      description: 'Outreach asset lacks parity reference.'
-      response:
-        - 'Escalate to mq-sci-shadow-lantern-b.'
-        - 'Re-run BreakPoint ritual before next announcement.'
-  - id: mq-sci-vector-003
-    name: Telemetry + Codex Echo
-    description: |
-      Ensure `scripts/sigillin_sync.py` exports include campaign annotations and the
-      codex records mq-sci scope with the same timestamp as the bridge dashboard.
-    checkpoints:
-      - scripts/sigillin_sync.py
-      - seed/codexfeedback.yaml
-      - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
-    actions:
-      - 'Record run id + timestamp in compass + bridge.'
-      - 'Notify shadow compass of telemetry cadence.'
-    null_model:
-      description: 'Telemetry export skipped or codex silent on mq-sci scope.'
-      response:
-        - 'Trigger mq-sci-shadow-lantern-c.'
-        - 'Document recovery in UTAC matrix and codex.'
+- id: mq-sci-vector-001
+  name: Manuscript Telemetry Sync
+  description: Keep manuscript updates mirrored in parity brief and codex entries.
+  checkpoints:
+  - seed/Manuskriptfinalisierung und Kampagnenstart.pdf
+  - docs/metaquest_parity_brief.md
+  - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+  actions:
+  - Log ΔAIC / governance shifts in seed/codexfeedback.*
+  - Update bridge dashboard timestamp within 24h.
+  - Reference mq-bridge-gap-002 in compass updates.
+  null_model:
+    description: Manuscript revision not mirrored in parity brief.
+    response:
+    - Trigger mq-sci-shadow-lantern-a.
+    - Freeze outreach comms until parity restored.
+  status: in_progress
+- id: mq-sci-vector-002
+  name: Outreach Resonance Loop
+  description: Coordinate press kit, endorsements, and simulator playlist with the Metaquest storyline.
+  checkpoints:
+  - docs/metaquest_parity_brief.md#mqp-arena
+  - docs/utac_status_alignment_v1.2.md#implementation-map
+  - seed/Finalize_Publish.txt
+  actions:
+  - Archive rehearsal transcript in codex with mq-sci scope.
+  - Update metaquest_campaign_map.* with milestone + timestamp.
+  - Log endorsements in codex with mq-sci scope + backlog row.
+  null_model:
+    description: Outreach asset lacks parity reference.
+    response:
+    - Escalate to mq-sci-shadow-lantern-b.
+    - Re-run BreakPoint ritual before next announcement.
+  status: open
+- id: mq-sci-vector-003
+  name: Telemetry + Codex Echo
+  description: Ensure sigillin_sync exports include campaign annotations and codex records mq-sci scope.
+  checkpoints:
+  - scripts/sigillin_sync.py
+  - seed/codexfeedback.yaml
+  - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+  actions:
+  - Record run id + timestamp in compass + bridge.
+  - Notify shadow compass of telemetry cadence.
+  - Attach sigillin_sync run id + backlog reference to compass narrative.
+  null_model:
+    description: Telemetry export skipped or codex silent on mq-sci scope.
+    response:
+    - Trigger mq-sci-shadow-lantern-c.
+    - Document recovery in UTAC matrix and codex.
+  status: open
+- id: mq-sci-vector-004
+  name: Backlog Cross-Link
+  description: Mirror UTAC backlog rows + mq-gap ids inside campaign compass + bridge entries.
+  checkpoints:
+  - ../../docs/utac_activation_backlog.md
+  - ../metaquest_meaning_index.md
+  - ../../system/metaquest_system_compass.md
+  actions:
+  - Cite mq-bridge-gap-001…006 when campaign milestones shift.
+  - Record codex entry referencing backlog row + telemetry timestamp.
+  - Update bridge dashboard with backlog pointer within 24h.
+  null_model:
+    description: Backlog adjustments not reflected in campaign compass.
+    response:
+    - Trigger mq-sci-shadow-lantern-d.
+    - Re-run BreakPoint ritual and annotate backlog in codex.
+  status: open
+telemetry:
+  latest_run: '2025-11-07T21:52:52Z'
+  source: analysis/sigillin_sync/latest.json
+  trilayers: 12
+  gaps: 0
+  codex_entry: pr-draft-0075
+  notes: Campaign lane still mirrors timestamp manually; backlog mq-bridge-gap-002 and mq-bridge-gap-006 track automation
+    needs.

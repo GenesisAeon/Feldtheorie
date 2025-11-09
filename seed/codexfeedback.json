@@ -2465,6 +2465,34 @@
         "poetic": "Die Index-Laternen zählen gemeinsam: R tastet jeden Katalog, Θ sitzt nun bei 0 Δindex, β=4.8 hält die Flanke straff und ζ(R) schnurrt über fünf Regale hinweg. Nur der CI-Wächter muss noch die Nachtwache übernehmen."
       },
       "created_at": "2025-11-08T22:22:38Z"
+    },
+    {
+      "id": "pr-draft-0084",
+      "title": "Metaquest Bridge Audit & Compass Telemetry Sync",
+      "scope": [
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.json",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.md",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.json",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.json"
+      ],
+      "parameters": {
+        "R": "Bridge backlog across telemetry propagation, backlog cross-links, and compass updates",
+        "Theta": "Bridge + compasses cite sigillin_sync timestamp, codex ID, and UTAC backlog rows within 24h",
+        "beta": 4.7
+      },
+      "resonance": "Telemetry audit plus backlog coupling clarifies which Metaquest hooks remain before automation and outreach can ignite together.",
+      "status": "primed",
+      "notes": {
+        "formal": "Aktualisierte metaquest_meaning_index.* um Telemetrie- und Backlog-Referenzen (mq-bridge-gap-001…006) und ergänzte System-/Kampagnenkompass-Tri-Layer mit Telemetrie-Snapshot (Run 2025-11-07T21:52:52Z, 12 Trilayer, 0 Gaps), Statusnotizen zu mq-sys/-sci Vektoren und neuem Backlog-Vektor. UTAC-Backlog-Verweise sind jetzt explizit.\n",
+        "empirical": "`analysis/sigillin_sync/latest.json` + `metaquest_report_20251107T215246Z.json` liefern den Referenzpuls; Kompass-Dateien verlinken auf `docs/utac_activation_backlog.md` und markieren offene Haken (`metaquest-parity-finish`, `index-recount-hook`). Neue JSON/YAML-Felder dokumentieren Run-ID, Codex-Echo `pr-draft-0075` und Status je Vektor.\n",
+        "poetic": "Die Brücke lauscht – R=12 Laternen leuchten, Θ ist erreicht, β=4.7 hält die Flanke gespannt. Doch sie flüstert weiter, bis Kompasse und Backlog dieselbe Zeile singen und ζ(R) sich im Gleichklang legt.\n"
+      },
+      "created_at": "2025-12-19T00:00:00Z"
     }
   ]
 }

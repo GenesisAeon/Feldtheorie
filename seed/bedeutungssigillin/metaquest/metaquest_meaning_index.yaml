@@ -1,272 +1,330 @@
 meta:
   sigil: bedeutungs-metaquest-bridge
-  version: 0.3.0
+  version: 0.3.1
   created: '2025-12-07T00:00:00Z'
-  updated: '2025-12-18T00:00:00Z'
+  updated: '2025-12-19T00:00:00Z'
   logistic:
     R: 'Cross-membrane Metaquest workload: automation hooks, outreach cadence, endorsements.'
-    Theta: 'Parity handshake logged in docs/utac_status_alignment_v1.2.md and codexfeedback entries.'
+    Theta: Parity handshake logged in docs/utac_status_alignment_v1.2.md and codexfeedback entries.
     beta: 4.8
-    zeta: 'Damped when BreakPoint rituals and telemetry exports keep light/shadow sigils synchronised.'
-  resonance: |
-    Serves as the navigational bridge between the system and wissenschaftsprojekt Metaquest
+    zeta: Damped when BreakPoint rituals and telemetry exports keep light/shadow sigils synchronised.
+  resonance: 'Serves as the navigational bridge between the system and wissenschaftsprojekt Metaquest
+
     beacons. Tracks how automation, storytelling, and governance lanterns share the same
+
     σ(β(R-Θ)) gate so future agents can extend launch work without re-orienting.
-  shadow_coupling: '../../shadow_sigillin/metaquest/metaquest_shadow_index.yaml'
+
+    '
+  shadow_coupling: ../../shadow_sigillin/metaquest/metaquest_shadow_index.yaml
 existing_threads:
-  - id: mq-bridge-001
-    title: System Metaquest Beacon
-    location: '../system/metaquest/metaquest_system_map.yaml'
-    resonance: 'Documents automation + index readiness and links to the UTAC status matrix.'
-    status: active
-    notes:
-      evidence:
-        - docs/utac_status_alignment_v1.2.md#metaquest-handshake
-        - docs/metaquest_parity_brief.md
-      logistic_coupling: |
-        Keeps Θ visible when R (automation backlog) increases by routing tasks toward
-        sigillin_sync telemetry and index refresh rituals.
-  - id: mq-bridge-002
-    title: Wissenschaftsprojekt Metaquest Beacon
-    location: '../wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml'
-    resonance: 'Aligns manuscript, outreach, and endorsement cadence for the launch storyline.'
-    status: active
-    notes:
-      evidence:
-        - seed/Manuskriptfinalisierung und Kampagnenstart.pdf
-        - seed/BreakPointAnalyse/WayToGo.txt
-      logistic_coupling: |
-        When campaign backlog swells, BreakPoint rituals and parity checkpoints damp ζ(R)
-        before communication proceeds.
-  - id: mq-bridge-003
-    title: Metaquest Parity Brief
-    location: '../../docs/metaquest_parity_brief.md'
-    resonance: 'Condenses mq-parity-001…004 so telemetry, demos, and endorsements stay in phase.'
-    status: active
-    notes:
-      evidence:
-        - docs/utac_status_alignment_v1.2.md#metaquest-handshake
-        - seed/codexfeedback.md
-      logistic_coupling: |
-        Provides explicit Θ guardrails that both system and campaign sigils inherit after
-        each update.
-  - id: mq-bridge-004
-    title: UTAC Status Matrix v1.2
-    location: '../../docs/utac_status_alignment_v1.2.md'
-    resonance: 'Summarises repository readiness and activation gaps, including Metaquest parity.'
-    status: active
-    notes:
-      evidence:
-        - docs/utac_status_alignment_v1.2.md#activation-gaps
-        - docs/utac_status_alignment_v1.2.md#implementation-map
-      logistic_coupling: |
-        Acts as the observatory for σ(β(R-Θ)): if Metaquest lanterns drift, the matrix records
-        the delta and invokes the shadow guard.
-  - id: mq-bridge-005
-    title: Codex Feedback Ledger
-    location: '../codexfeedback.md'
-    resonance: 'Binds every Metaquest action to a tri-layer memory with $(R, Θ, β)$ framing.'
-    status: active
-    notes:
-      evidence:
-        - seed/codexfeedback.yaml
-        - seed/codexfeedback.json
-      logistic_coupling: |
-        β≈5.0 ensures codex entries ignite as soon as Metaquest work touches Bedeutungs- or
-        Shadow sigils.
-  - id: mq-bridge-006
-    title: Metaquest System Compass
-    location: '../system/metaquest_system_compass.yaml'
-    resonance: 'Quick system-side orientation that spotlights telemetry, index, and codex triggers between matrix refreshes.'
-    status: active
-    notes:
-      evidence:
-        - ../system/metaquest_system_compass.md
-      logistic_coupling: |
-        Provides mq-sys-vector hooks so the bridge sees automation drift early.
-  - id: mq-bridge-007
-    title: Metaquest Campaign Compass
-    location: '../wissenschaftsprojekt/metaquest/metaquest_campaign_compass.yaml'
-    resonance: 'Fast campaign-side orientation across manuscript cadence, outreach assets, and endorsement ledger.'
-    status: active
-    notes:
-      evidence:
-        - ../wissenschaftsprojekt/metaquest/metaquest_campaign_compass.md
-      logistic_coupling: |
-        Surfaces mq-sci vectors so bridge telemetry and codex echoes stay synchronized.
-  - id: mq-bridge-008
-    title: Metaquest System Bedeutungs-Sigillin
-    location: '../system/metaquest/metaquest_system_sigil.yaml'
-    resonance: 'Semantic anchor translating automation beacons into codex + UTAC parity instructions.'
-    status: active
-    notes:
-      evidence:
-        - ../system/metaquest/metaquest_system_sigil.md
-        - ../system/metaquest/metaquest_system_map.yaml
-      logistic_coupling: |
-        Keeps Θ explicit for automation stewards; every codex update propagates through bridge + shadow pair.
-  - id: mq-bridge-009
-    title: Metaquest Kampagnen Bedeutungs-Sigillin
-    location: '../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml'
-    resonance: 'Captures manuscript/outreach resonance so campaign cadence stays phase-locked with system spine.'
-    status: active
-    notes:
-      evidence:
-        - ../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md
-        - ../wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
-      logistic_coupling: |
-        Routes ΔAIC + endorsement metrics back into bridge dashboards and codex stories within one sprint.
-  - id: mq-bridge-010
-    title: Metaquest System Directory Index
-    location: 'system/metaquest_system_index.yaml'
-    resonance: 'Directory-level compass that exposes map/compass/sigil/telemetry couplings for automation stewards.'
-    status: active
-    notes:
-      evidence:
-        - system/metaquest_system_index.md
-        - system/metaquest_system_index.json
-      logistic_coupling: |
-        Keeps mq-sys lanterns aligned with parity brief + codex; stale timestamps trigger shadow index audits.
-  - id: mq-bridge-011
-    title: Metaquest System Lantern Shelf
-    location: '../system/metaquest/lanterns/metaquest_system_lanterns.yaml'
-    resonance: 'Enumerates bridge coupling, automation safeguards, and ritual recovery cues for the system lane.'
-    status: active
-    notes:
-      evidence:
-        - ../system/metaquest/lanterns/metaquest_system_lanterns.md
-        - ../system/metaquest/metaquest_system_compass.md
-      logistic_coupling: |
-        Aligns lantern-level duties with codex + telemetry timestamps so new agents can audit σ(β(R-Θ)) in minutes.
-  - id: mq-bridge-012
-    title: Metaquest Campaign Directory Index
-    location: 'wissenschaftsprojekt/metaquest_campaign_index.yaml'
-    resonance: 'Campaign orientation hub linking map, compass, sigil, parity brief, and ArchivSuche lineage.'
-    status: active
-    notes:
-      evidence:
-        - wissenschaftsprojekt/metaquest_campaign_index.md
-        - wissenschaftsprojekt/metaquest_campaign_index.json
-      logistic_coupling: |
-        Synchronises manuscript checkpoints, outreach cadence, and archive echoes so bridge telemetry stays coherent.
-  - id: mq-bridge-013
-    title: Metaquest Campaign Lantern Shelf
-    location: '../wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.yaml'
-    resonance: 'Provides manuscript, outreach, and telemetry lanterns so campaign duties stay phase-locked with the bridge.'
-    status: active
-    notes:
-      evidence:
-        - ../wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.md
-        - ../wissenschaftsprojekt/metaquest/metaquest_campaign_map.md
-      logistic_coupling: |
-        Ensures campaign codex entries and telemetry exports cite the same timestamp, reducing ζ(R) spikes during launch prep.
+- id: mq-bridge-001
+  title: System Metaquest Beacon
+  location: ../system/metaquest/metaquest_system_map.yaml
+  resonance: Documents automation + index readiness and links to the UTAC status matrix.
+  status: active
+  notes:
+    evidence:
+    - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+    - docs/metaquest_parity_brief.md
+    logistic_coupling: 'Keeps Θ visible when R (automation backlog) increases by routing tasks toward
+
+      sigillin_sync telemetry and index refresh rituals.
+
+      '
+- id: mq-bridge-002
+  title: Wissenschaftsprojekt Metaquest Beacon
+  location: ../wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
+  resonance: Aligns manuscript, outreach, and endorsement cadence for the launch storyline.
+  status: active
+  notes:
+    evidence:
+    - seed/Manuskriptfinalisierung und Kampagnenstart.pdf
+    - seed/BreakPointAnalyse/WayToGo.txt
+    logistic_coupling: 'When campaign backlog swells, BreakPoint rituals and parity checkpoints damp ζ(R)
+
+      before communication proceeds.
+
+      '
+- id: mq-bridge-003
+  title: Metaquest Parity Brief
+  location: ../../docs/metaquest_parity_brief.md
+  resonance: Condenses mq-parity-001…004 so telemetry, demos, and endorsements stay in phase.
+  status: active
+  notes:
+    evidence:
+    - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+    - seed/codexfeedback.md
+    logistic_coupling: 'Provides explicit Θ guardrails that both system and campaign sigils inherit after
+
+      each update.
+
+      '
+- id: mq-bridge-004
+  title: UTAC Status Matrix v1.2
+  location: ../../docs/utac_status_alignment_v1.2.md
+  resonance: Summarises repository readiness and activation gaps, including Metaquest parity.
+  status: active
+  notes:
+    evidence:
+    - docs/utac_status_alignment_v1.2.md#activation-gaps
+    - docs/utac_status_alignment_v1.2.md#implementation-map
+    logistic_coupling: 'Acts as the observatory for σ(β(R-Θ)): if Metaquest lanterns drift, the matrix records
+
+      the delta and invokes the shadow guard.
+
+      '
+- id: mq-bridge-005
+  title: Codex Feedback Ledger
+  location: ../codexfeedback.md
+  resonance: Binds every Metaquest action to a tri-layer memory with $(R, Θ, β)$ framing.
+  status: active
+  notes:
+    evidence:
+    - seed/codexfeedback.yaml
+    - seed/codexfeedback.json
+    logistic_coupling: 'β≈5.0 ensures codex entries ignite as soon as Metaquest work touches Bedeutungs- or
+
+      Shadow sigils.
+
+      '
+- id: mq-bridge-006
+  title: Metaquest System Compass
+  location: ../system/metaquest_system_compass.yaml
+  resonance: Quick system-side orientation that spotlights telemetry, index, and codex triggers between matrix refreshes.
+  status: active
+  notes:
+    evidence:
+    - ../system/metaquest_system_compass.md
+    logistic_coupling: Provides mq-sys-vector hooks so the bridge sees automation drift early.
+- id: mq-bridge-007
+  title: Metaquest Campaign Compass
+  location: ../wissenschaftsprojekt/metaquest/metaquest_campaign_compass.yaml
+  resonance: Fast campaign-side orientation across manuscript cadence, outreach assets, and endorsement ledger.
+  status: active
+  notes:
+    evidence:
+    - ../wissenschaftsprojekt/metaquest/metaquest_campaign_compass.md
+    logistic_coupling: Surfaces mq-sci vectors so bridge telemetry and codex echoes stay synchronized.
+- id: mq-bridge-008
+  title: Metaquest System Bedeutungs-Sigillin
+  location: ../system/metaquest/metaquest_system_sigil.yaml
+  resonance: Semantic anchor translating automation beacons into codex + UTAC parity instructions.
+  status: active
+  notes:
+    evidence:
+    - ../system/metaquest/metaquest_system_sigil.md
+    - ../system/metaquest/metaquest_system_map.yaml
+    logistic_coupling: Keeps Θ explicit for automation stewards; every codex update propagates through bridge + shadow pair.
+- id: mq-bridge-009
+  title: Metaquest Kampagnen Bedeutungs-Sigillin
+  location: ../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
+  resonance: Captures manuscript/outreach resonance so campaign cadence stays phase-locked with system spine.
+  status: active
+  notes:
+    evidence:
+    - ../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md
+    - ../wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
+    logistic_coupling: Routes ΔAIC + endorsement metrics back into bridge dashboards and codex stories within one sprint.
+- id: mq-bridge-010
+  title: Metaquest System Directory Index
+  location: system/metaquest_system_index.yaml
+  resonance: Directory-level compass that exposes map/compass/sigil/telemetry couplings for automation stewards.
+  status: active
+  notes:
+    evidence:
+    - system/metaquest_system_index.md
+    - system/metaquest_system_index.json
+    logistic_coupling: Keeps mq-sys lanterns aligned with parity brief + codex; stale timestamps trigger shadow index audits.
+- id: mq-bridge-011
+  title: Metaquest System Lantern Shelf
+  location: ../system/metaquest/lanterns/metaquest_system_lanterns.yaml
+  resonance: Enumerates bridge coupling, automation safeguards, and ritual recovery cues for the system lane.
+  status: active
+  notes:
+    evidence:
+    - ../system/metaquest/lanterns/metaquest_system_lanterns.md
+    - ../system/metaquest/metaquest_system_compass.md
+    logistic_coupling: Aligns lantern duties with codex + telemetry timestamps so new agents can audit σ(β(R-Θ)) quickly.
+- id: mq-bridge-012
+  title: Metaquest Campaign Directory Index
+  location: wissenschaftsprojekt/metaquest_campaign_index.yaml
+  resonance: Campaign orientation hub linking map, compass, sigil, parity brief, and ArchivSuche lineage.
+  status: active
+  notes:
+    evidence:
+    - wissenschaftsprojekt/metaquest_campaign_index.md
+    - wissenschaftsprojekt/metaquest_campaign_index.json
+    logistic_coupling: Synchronises manuscript checkpoints, outreach cadence, and archive echoes so bridge telemetry stays
+      coherent.
+- id: mq-bridge-013
+  title: Metaquest Campaign Lantern Shelf
+  location: ../wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.yaml
+  resonance: Provides manuscript, outreach, and telemetry lanterns so campaign duties stay phase-locked with the bridge.
+  status: active
+  notes:
+    evidence:
+    - ../wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.md
+    - ../wissenschaftsprojekt/metaquest/metaquest_campaign_map.md
+    logistic_coupling: Ensures campaign codex entries and telemetry exports cite the same timestamp, reducing ζ(R) spikes
+      during launch prep.
+- id: mq-bridge-014
+  title: Sigillin Sync Telemetry Ledger
+  location: analysis/sigillin_sync/latest.json
+  resonance: Captures the latest bridge telemetry pulse (12 trilayers, 0 gaps) so timestamps can propagate.
+  status: active
+  notes:
+    evidence:
+    - analysis/sigillin_sync/latest.json
+    - analysis/sigillin_sync/metaquest_report_20251107T215246Z.json
+    logistic_coupling: Shows R=12 inspected trilayers with Θ achieved (no gaps); β≈4.6 remains sharp when codex echoes the
+      run id.
+- id: mq-bridge-015
+  title: UTAC Activation Backlog
+  location: ../../docs/utac_activation_backlog.md
+  resonance: Maps repository-wide activation debt so Metaquest bridge tasks stay synchronised with other membranes.
+  status: active
+  notes:
+    evidence:
+    - ../../docs/utac_activation_backlog.md
+    - ../../docs/utac_activation_backlog.json
+    logistic_coupling: Keeps Θ visible by tying bridge gaps to implementation nodes; ζ(R) is damped when backlog timestamps
+      mirror codex entries.
 needed_resonances:
-  - id: mq-bridge-gap-001
-    description: 'Sustain a single dashboard (table/section) aligning system + campaign checkpoints with parity status.'
-    target_location:
-      - metaquest_meaning_index.md
-      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
-    threshold:
-      Theta: 'dashboard updated within 24h of any Metaquest change'
-      beta: 4.7
-    null_guard: 'If dashboard stale, trigger mq-sys-shadow-001 and mq-sci-shadow-001.'
-  - id: mq-bridge-gap-002
-    description: 'Automate telemetry export notes so both beacons record the same timestamp + codex id.'
-    target_location:
-      - scripts/sigillin_sync.py
-      - metaquest_meaning_index.json
-      - metaquest_system_map.yaml
-      - metaquest_campaign_map.yaml
-    threshold:
-      Theta: 'telemetry timestamp mirrored in both beacons + bridge within 1 sprint'
-      beta: 4.8
-    null_guard: 'Absence escalates to sys-gap-003 and mq-sys-shadow-002.'
-  - id: mq-bridge-gap-003
-    description: 'Ensure indices (seed_index.*, feldtheorie_index.*) surface Metaquest bridge assets alongside light/shadow beacons.'
-    target_location:
-      - ../../seed_index.yaml
-      - ../../feldtheorie_index.yaml
-      - scripts/archive_sigillin.py
-    threshold:
-      Theta: 'indices refreshed with bridge paths within 24h'
-      beta: 4.6
-    null_guard: 'Parser diff showing missing bridge entry triggers sys-shadow-001.'
-  - id: mq-bridge-gap-004
-    description: 'Mirror system/campaign compass telemetry + codex ids into the bridge dashboard within the same day.'
-    target_location:
-      - system/metaquest_system_compass.yaml
-      - wissenschaftsprojekt/metaquest/metaquest_campaign_compass.yaml
-      - metaquest_meaning_index.yaml
-    threshold:
-      Theta: 'Compasses and bridge cite identical telemetry timestamp + codex id within 24h'
-      beta: 4.7
-    null_guard: 'Drift triggers mq-bridge-shadow-002 and compass-specific shadow alerts.'
-  - id: mq-bridge-gap-005
-    description: 'Ensure new Bedeutungs-Sigillin (system + kampagne) cite shared codex IDs, UTAC rows, and shadow counterparts.'
-    target_location:
-      - system/metaquest/metaquest_system_sigil.yaml
-      - wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
-      - ../../shadow_sigillin/metaquest/system/metaquest_system_shadow_sigil.yaml
-      - ../../shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml
-    threshold:
-      Theta: 'Each sigil updated within 24h of codex change, including shadow pair acknowledgement.'
-      beta: 4.8
-    null_guard: 'Missing cross-citation triggers mq-bridge-shadow-001 and mq-bridge-shadow-004.'
+- id: mq-bridge-gap-001
+  description: Maintain a single dashboard aligning system + campaign checkpoints with parity status and referencing the UTAC
+    backlog entry.
+  target_location:
+  - metaquest_meaning_index.md
+  - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+  threshold:
+    Theta: dashboard updated within 24h of any Metaquest change
+    beta: 4.7
+  null_guard: If dashboard stale, trigger mq-sys-shadow-001 and mq-sci-shadow-001.
+  status_note: Telemetry audit confirms dashboard assets exist; automation hook to refresh within 24h still pending.
+- id: mq-bridge-gap-002
+  description: Automate sigillin_sync telemetry propagation so bridge + beacons record the same timestamp + codex id (2025-11-07T21:52:52Z
+    reference) within one sprint.
+  target_location:
+  - scripts/sigillin_sync.py
+  - metaquest_meaning_index.json
+  - metaquest_system_map.yaml
+  - metaquest_campaign_map.yaml
+  threshold:
+    Theta: telemetry timestamp mirrored in both beacons + bridge within 1 sprint
+    beta: 4.8
+  null_guard: Absence escalates to sys-gap-003 and mq-sys-shadow-002.
+  status_note: Latest run recorded 12 trilayers with 0 gaps; propagation into compasses remains manual.
+- id: mq-bridge-gap-003
+  description: Keep seed_index.* and feldtheorie_index.* surfacing bridge assets alongside light/shadow sigils, tied to backlog
+    recount hooks.
+  target_location:
+  - ../../seed_index.yaml
+  - ../../feldtheorie_index.yaml
+  - scripts/archive_sigillin.py
+  threshold:
+    Theta: indices refreshed with bridge paths within 24h
+    beta: 4.6
+  null_guard: Parser diff showing missing bridge entry triggers sys-shadow-001.
+- id: mq-bridge-gap-004
+  description: Mirror system/campaign compass telemetry + codex ids into the bridge dashboard using sigillin_sync output as
+    the canonical source.
+  target_location:
+  - system/metaquest_system_compass.yaml
+  - wissenschaftsprojekt/metaquest/metaquest_campaign_compass.yaml
+  - metaquest_meaning_index.yaml
+  threshold:
+    Theta: Compasses and bridge cite identical telemetry timestamp + codex id within 24h
+    beta: 4.7
+  null_guard: Drift triggers mq-bridge-shadow-002 and compass-specific shadow alerts.
+- id: mq-bridge-gap-005
+  description: Ensure new Bedeutungs-/Shadow-Sigille cite shared codex IDs, UTAC rows, BreakPoint rituals, and telemetry references
+    within 24h.
+  target_location:
+  - system/metaquest/metaquest_system_sigil.yaml
+  - wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
+  - ../../shadow_sigillin/metaquest/system/metaquest_system_shadow_sigil.yaml
+  - ../../shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml
+  threshold:
+    Theta: Each sigil updated within 24h of codex change, including shadow pair acknowledgement.
+    beta: 4.8
+  null_guard: Missing cross-citation triggers mq-bridge-shadow-001 and mq-bridge-shadow-004.
+- id: mq-bridge-gap-006
+  description: Embed UTAC activation backlog references and mq-gap ids inside compass + map tri-layers so backlog pulses are
+    visible in bridge orientation.
+  target_location:
+  - metaquest_meaning_index.yaml
+  - system/metaquest_system_compass.yaml
+  - wissenschaftsprojekt/metaquest/metaquest_campaign_compass.yaml
+  - ../../docs/utac_activation_backlog.md
+  threshold:
+    Theta: Each compass cites backlog row + mq-gap id within 24h of backlog update
+    beta: 4.65
+  null_guard: If backlog reference missing, trigger mq-bridge-shadow-003 and backlog shadow alerts.
 activation_hooks:
-  - trigger: 'Metaquest parity brief updated'
-    response: 'Update bridge trilayer, sync both beacons, refresh indices, log codex entry.'
-  - trigger: 'Telemetry report generated'
-    response: 'Record timestamp + codex id across bridge + light/shadow maps, cite UTAC matrix.'
-  - trigger: 'BreakPoint ritual executed'
-    response: 'Mirror ritual reference in bridge + campaign beacon, annotate recovery cues.'
+- trigger: Metaquest parity brief updated
+  response: Update bridge trilayer, sync both beacons, refresh indices, log codex entry.
+- trigger: Telemetry report generated
+  response: Record timestamp + codex id across bridge + light/shadow maps, cite UTAC matrix.
+- trigger: BreakPoint ritual executed
+  response: Mirror ritual reference in bridge + campaign beacon, annotate recovery cues.
 null_model_reference:
-  description: 'Null = Metaquest work tracked separately in system and campaign sigils without a shared bridge.'
+  description: Null = Metaquest work tracked separately in system and campaign sigils without a shared bridge.
   risk:
-    - 'Automation and outreach drift because parity checkpoints differ.'
-    - 'Shadow alerts fire late as telemetry timestamps diverge.'
+  - Automation and outreach drift because parity checkpoints differ.
+  - Shadow alerts fire late as telemetry timestamps diverge.
 implementation_lattice:
-  - gap_id: mq-bridge-gap-001
-    implementation_sites:
-      - metaquest_meaning_index.md
-      - docs/utac_status_alignment_v1.2.md
-    primary_hook: 'Bridge dashboard update log'
-    evidence_trail:
-      - seed/codexfeedback.md
-      - docs/metaquest_parity_brief.md
-  - gap_id: mq-bridge-gap-002
-    implementation_sites:
-      - scripts/sigillin_sync.py
-      - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
-      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
-    primary_hook: 'Telemetry timestamp propagation'
-    evidence_trail:
-      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
-      - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml
-  - gap_id: mq-bridge-gap-003
-    implementation_sites:
-      - scripts/archive_sigillin.py
-      - seed/seed_index.*
-      - feldtheorie_index.*
-    primary_hook: 'Index parity audit'
-    evidence_trail:
-      - docs/utac_status_alignment_v1.2.md#activation-gaps
-      - seed/shadow_sigillin/system/system_shadow_map.yaml
-  - gap_id: mq-bridge-gap-004
-    implementation_sites:
-      - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml
-      - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml
-      - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
-    primary_hook: 'Compass ↔ bridge telemetry sync'
-    evidence_trail:
-      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
-      - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml
-  - gap_id: mq-bridge-gap-005
-    implementation_sites:
-      - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml
-      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
-      - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml
-      - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml
-    primary_hook: 'Codex ↔ sigil parity handshake'
-    evidence_trail:
-      - seed/codexfeedback.md
-      - docs/utac_status_alignment_v1.2.md#activation-gaps
+- gap_id: mq-bridge-gap-001
+  implementation_sites:
+  - metaquest_meaning_index.md
+  - docs/utac_status_alignment_v1.2.md
+  primary_hook: Bridge dashboard update log
+  evidence_trail:
+  - seed/codexfeedback.md
+  - docs/metaquest_parity_brief.md
+- gap_id: mq-bridge-gap-002
+  implementation_sites:
+  - scripts/sigillin_sync.py
+  - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+  - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
+  primary_hook: Telemetry timestamp propagation
+  evidence_trail:
+  - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+  - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml
+- gap_id: mq-bridge-gap-003
+  implementation_sites:
+  - scripts/archive_sigillin.py
+  - seed/seed_index.*
+  - feldtheorie_index.*
+  primary_hook: Index parity audit
+  evidence_trail:
+  - docs/utac_status_alignment_v1.2.md#activation-gaps
+  - seed/shadow_sigillin/system/system_shadow_map.yaml
+- gap_id: mq-bridge-gap-004
+  implementation_sites:
+  - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml
+  - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml
+  - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+  primary_hook: Compass ↔ bridge telemetry sync
+  evidence_trail:
+  - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+  - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml
+- gap_id: mq-bridge-gap-005
+  implementation_sites:
+  - seed/bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml
+  - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
+  - seed/shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml
+  - seed/shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml
+  primary_hook: Codex ↔ sigil parity handshake
+  evidence_trail:
+  - seed/codexfeedback.md
+  - docs/utac_status_alignment_v1.2.md#activation-gaps
+- gap_id: mq-bridge-gap-006
+  implementation_sites:
+  - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.*
+  - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.*
+  - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.*
+  - docs/utac_activation_backlog.*
+  primary_hook: Backlog ↔ compass cross-link
+  evidence_trail:
+  - docs/utac_activation_backlog.md
+  - seed/codexfeedback.md

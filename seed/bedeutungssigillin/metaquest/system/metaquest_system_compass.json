@@ -1,9 +1,9 @@
 {
   "meta": {
     "sigil": "bedeutungs-metaquest-system-compass",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "created": "2025-12-08T00:00:00Z",
-    "updated": "2025-12-09T00:00:00Z",
+    "updated": "2025-12-19T00:00:00Z",
     "logistic": {
       "R": "Automation + governance backlog required to embed Metaquest into the UTAC system spine.",
       "Theta": "Parity brief + UTAC status matrix entries refreshed within 24h and echoed in codexfeedback.",
@@ -28,7 +28,15 @@
       "docs/metaquest_parity_brief.md",
       "seed/BreakPointAnalyse/WayToGo.txt",
       "seed/Finalize_Publish.txt"
-    ]
+    ],
+    "backlog_reference": {
+      "document": "../../docs/utac_activation_backlog.md",
+      "rows": [
+        "metaquest-parity-finish",
+        "sigillin-automation-loop",
+        "index-recount-hook"
+      ]
+    }
   },
   "lanterns": [
     {
@@ -127,7 +135,9 @@
         "Theta": "Telemetry timestamp published with each sprint and mirrored in bridge + compass.",
         "beta": 4.8,
         "null_model": "Telemetry missing → automation freeze + mq-sys-shadow alert."
-      }
+      },
+      "status": "in_progress",
+      "notes": "Telemetry run recorded; automation to push timestamp into compasses/bridge pending."
     },
     {
       "id": "mq-sys-vector-002",
@@ -141,7 +151,9 @@
         "Theta": "CI job compares indices vs. sigil directories on every PR touching Metaquest assets.",
         "beta": 4.6,
         "null_model": "Index drift passes unnoticed and triggers mq-bridge-shadow-003."
-      }
+      },
+      "status": "open",
+      "notes": "CI guard not yet wired; backlog row index-recount-hook tracks next steps."
     },
     {
       "id": "mq-sys-vector-003",
@@ -154,7 +166,25 @@
         "Theta": "Compass lists null automation scenario and cites ΔAIC improvements.",
         "beta": 4.5,
         "null_model": "Automation changes proceed without falsifiability check."
-      }
+      },
+      "status": "open",
+      "notes": "Null comparison narrative missing; link to backlog + codex once drafted."
+    },
+    {
+      "id": "mq-sys-vector-004",
+      "description": "Embed UTAC backlog row references + mq-gap ids into compass tri-layer and codex updates.",
+      "target_locations": [
+        "metaquest_system_compass.md",
+        "../../docs/utac_activation_backlog.md",
+        "../metaquest_meaning_index.md"
+      ],
+      "guardrails": {
+        "Theta": "Compass lists backlog rows + mq-gap ids within 24h of backlog change",
+        "beta": 4.65,
+        "null_model": "Backlog delta invisible to compass; triggers mq-bridge-shadow-003."
+      },
+      "status": "open",
+      "notes": "New backlog gap mq-bridge-gap-006 requires explicit referencing from system compass."
     }
   ],
   "activation_hooks": [
@@ -178,5 +208,13 @@
       "Telemetry timestamps diverge from campaign narrative, eroding trust.",
       "Shadow alerts trigger late, forcing emergency remediation."
     ]
+  },
+  "telemetry": {
+    "latest_run": "2025-11-07T21:52:52Z",
+    "source": "analysis/sigillin_sync/latest.json",
+    "trilayers": 12,
+    "gaps": 0,
+    "codex_entry": "pr-draft-0075",
+    "notes": "Run exported to analysis/sigillin_sync/metaquest_report_20251107T215246Z.json; compasses still mirror timestamp manually."
   }
 }
