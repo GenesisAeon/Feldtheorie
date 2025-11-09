@@ -113,7 +113,7 @@ analysis/
 
 ---
 
-### 🟣 Utilities & Guards (7)
+### 🟣 Utilities & Guards (8)
 
 **Was?** Helper-Funktionen, Validierung, Diagnostics, Manifest-Pipelines
 
@@ -124,6 +124,7 @@ analysis/
 5. `outlier_validator.py` - Manifest-basierter β>10 Guard + instrumentation_flag
 6. `threshold_dataset_loader.py` - Metadata Loader + Logit-Jitter Simulation für σ(β(R-Θ))
 7. `utac_manifest.py` - Parser für `data/utac_v1_3_data_manifest.yaml`
+8. `utac_manifest_audit.py` - σ(β(R-Θ)) Readiness-Audit für Manifest-Laternen, exportiert JSON/YAML/Markdown
 
 ---
 
@@ -142,6 +143,7 @@ analysis/
 #### **reports/** - Summaries
 - `qpo_membrane_summary.json` (Astrophysik)
 - `utac_v1_3_gap_assessment.md` (UTAC v1.3 Gap Ledger)
+- `utac_v1_3_manifest_audit.md` (σ-Readiness Bericht für Manifest-Füllstand)
 
 #### **sigillin_sync/** - Telemetry Harness Reports
 - `latest.json` – Metaquest sigillin_sync Statusbericht (JSON)

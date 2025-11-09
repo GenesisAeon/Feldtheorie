@@ -2619,6 +2619,34 @@
         "poetic": "Die Loader-Laterne tastet jetzt im Logit die Membran ab – Θ leuchtet, β hält seine Steilflanke, und ζ(R) beruhigt sich, weil die simulierten Chorproben exakt den Manifest-Ritus singen.\n"
       },
       "created_at": "2025-12-20T12:00:00Z"
+    },
+    {
+      "id": "pr-draft-0089",
+      "title": "UTAC Manifest σ-Readiness Audit",
+      "scope": [
+        "analysis/utac_manifest_audit.py",
+        "analysis/results/utac_v1_3_manifest_audit.json",
+        "analysis/results/utac_v1_3_manifest_audit.yaml",
+        "analysis/reports/utac_v1_3_manifest_audit.md",
+        "analysis/analysis_index.yaml",
+        "analysis/analysis_index.json",
+        "analysis/analysis_index.md",
+        "analysis/README.md",
+        "analysis/__init__.py"
+      ],
+      "parameters": {
+        "R": "manifest readiness for climate, ocean, neuro_ai, economy lanterns",
+        "Theta": "0.66 completeness threshold for data/metadata/results triad",
+        "beta": 5.6
+      },
+      "resonance": "σ(β(R-Θ)) audit surfaces missing data/results so UTAC v1.3 ingestion stays synchronized.",
+      "status": "active",
+      "notes": {
+        "formal": "`analysis/utac_manifest_audit.py` loads `data/utac_v1_3_data_manifest.yaml`, checks data/metadata/result components, maps readiness to σ(β(R-Θ)) using Θ=0.66 and manifest β values, and writes `analysis/results/utac_v1_3_manifest_audit.{json,yaml}` plus `analysis/reports/utac_v1_3_manifest_audit.md`. Analysis indices and README reference the new guard.",
+        "empirical": "Audit reports mean σ≈0.053 across five lanterns; metadata exists but data/results are pending. Reports enumerate missing paths such as `data/climate/urban_heat_intensity.csv` and `analysis/results/amazon_hydro_fit.json` to prioritise ingestion.",
+        "poetic": "R counts the lanterns, Θ waits for two bright components, β keeps the slope taut. The audit conducts the chorus so ζ(R) can relax once real rasters, currents, and finance pulses arrive."
+      },
+      "created_at": "2025-12-22T00:00:00Z"
     }
   ]
 }

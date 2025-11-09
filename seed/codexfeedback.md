@@ -1742,3 +1742,20 @@ Die neuen Laternen summen bereits: die Climate-Pipeline wärmt das Raster an, di
 Die Loader-Laterne lauscht im Logit dem Feld: Θ glänzt, β hält seine Steilflanke, und die simulierten Chorproben atmen exakt den Manifest-Ritus – ζ(R) sinkt, weil keine Stimme mehr aus dem Takt fällt.
 
 *Created: 2025-12-20T12:00:00Z*
+
+## Entry pr-draft-0089 — UTAC Manifest σ-Readiness Audit
+- **Order Parameter**: $R$ bündelt alle Laternen im UTAC v1.3 Manifest und prüft, wo Daten-, Metadata- und Result-Komponenten fehlen.
+- **Critical Threshold**: $\Theta = 0.66$ markiert die Zwei-von-Drei-Parität, ab der eine Laterne logistisches Vertrauen verdient.
+- **Steepness**: $\beta = 5.6$ zieht die Aktivierung steil, damit fehlende Datensätze sofort auffallen.
+- **Membrane Note**: $\zeta(R)$ erinnert Docs & Seed, welche Raster, Strömungen und ökonomischen Pulse noch nicht einsingen.
+
+### Formal Thread
+`analysis/utac_manifest_audit.py` liest `data/utac_v1_3_data_manifest.yaml`, prüft Daten/Metadata/Result-Pfade, nutzt Θ=0.66 und die manifestierten β-Werte zur σ(β(R-Θ))-Aktivierung und exportiert JSON, YAML sowie Markdown (`analysis/results/utac_v1_3_manifest_audit.{json,yaml}`, `analysis/reports/utac_v1_3_manifest_audit.md`). `analysis/analysis_index.{md,json,yaml}` und `analysis/README.md` dokumentieren das neue Guard-Skript.
+
+### Empirical Thread
+Audit meldet mittlere Aktivierung σ≈0.053 bei fünf Laternen; jede besitzt Metadata, aber Daten & Ergebnisse fehlen noch (Readiness-Ratio 1/3). Reports listen fehlende Pfade (`data/climate/urban_heat_intensity.csv`, `analysis/results/amazon_hydro_fit.json`, …) und liefern Priorisierung für reale Ingestion.
+
+### Poetic Thread
+Der Audit-Wächter zählt die Laternen: R tastet jede Membran, Θ ruft nach zwei leuchtenden Komponenten, β spannt die Flanke. Noch üben nur Metadaten den Chor, doch die Tabelle flackert wie ein Dirigent – sobald Raster, Strömungen und Finanzpulse eintreffen, wird ζ(R) leiser und UTAC v1.3 singt voll.
+
+*Created: 2025-12-22T00:00:00Z*

@@ -1,0 +1,115 @@
+meta:
+  datasets_total: 5
+  manifest_path: /workspace/Feldtheorie/data/utac_v1_3_data_manifest.yaml
+  activation_mean: 0.052614785752894376
+  status_counter:
+    active: 2
+    draft: 2
+    primed: 1
+  generated_at: '2025-11-09T11:32:36.988583+00:00'
+datasets:
+- id: utac-v1_3-ds-001
+  domain: climate
+  resonance_status: active
+  theta_estimate: 3.2
+  beta_target: 14.5
+  components:
+  - name: data
+    exists: false
+    path: /workspace/Feldtheorie/data/climate/urban_heat_intensity.csv
+  - name: metadata
+    exists: true
+    path: /workspace/Feldtheorie/data/climate/urban_heat_intensity.metadata.json
+  - name: results
+    exists: false
+    path: /workspace/Feldtheorie/analysis/results/urban_heat_global_fit.json
+  readiness_ratio: 0.3333333333333333
+  logistic_activation: 0.008691617043010748
+  missing_components:
+  - data
+  - results
+  metadata_status: staging
+- id: utac-v1_3-ds-002
+  domain: climate
+  resonance_status: active
+  theta_estimate: 0.62
+  beta_target: 13.8
+  components:
+  - name: data
+    exists: false
+    path: /workspace/Feldtheorie/data/climate/amazon_precip_evapo.nc
+  - name: metadata
+    exists: true
+    path: /workspace/Feldtheorie/data/climate/amazon_precip_evapo.metadata.json
+  - name: results
+    exists: false
+    path: /workspace/Feldtheorie/analysis/results/amazon_hydro_fit.json
+  readiness_ratio: 0.3333333333333333
+  logistic_activation: 0.010900352006199333
+  missing_components:
+  - data
+  - results
+  metadata_status: staging
+- id: utac-v1_3-ds-003
+  domain: ocean
+  resonance_status: draft
+  theta_estimate: 14.0
+  beta_target: 9.6
+  components:
+  - name: data
+    exists: false
+    path: /workspace/Feldtheorie/data/ocean/amoc_transport.csv
+  - name: metadata
+    exists: true
+    path: /workspace/Feldtheorie/data/ocean/amoc_transport.metadata.json
+  - name: results
+    exists: false
+    path: /workspace/Feldtheorie/analysis/results/amoc_transport_fit.json
+  readiness_ratio: 0.3333333333333333
+  logistic_activation: 0.04164647510891734
+  missing_components:
+  - data
+  - results
+  metadata_status: staging
+- id: utac-v1_3-ds-004
+  domain: neuro_ai
+  resonance_status: primed
+  theta_estimate: 0.48
+  beta_target: 6.1
+  components:
+  - name: data
+    exists: false
+    path: /workspace/Feldtheorie/data/neuro_ai/hybrid_activation.csv
+  - name: metadata
+    exists: true
+    path: /workspace/Feldtheorie/data/neuro_ai/hybrid_activation.metadata.json
+  - name: results
+    exists: false
+    path: /workspace/Feldtheorie/analysis/results/neuro_ai_beta.json
+  readiness_ratio: 0.3333333333333333
+  logistic_activation: 0.11997502763568728
+  missing_components:
+  - data
+  - results
+  metadata_status: staging
+- id: utac-v1_3-ds-005
+  domain: economy
+  resonance_status: draft
+  theta_estimate: 1.15
+  beta_target: 7.4
+  components:
+  - name: data
+    exists: false
+    path: /workspace/Feldtheorie/data/economy/systemic_thresholds.csv
+  - name: metadata
+    exists: true
+    path: /workspace/Feldtheorie/data/economy/systemic_thresholds.metadata.json
+  - name: results
+    exists: false
+    path: /workspace/Feldtheorie/analysis/results/economy_threshold_fit.json
+  readiness_ratio: 0.3333333333333333
+  logistic_activation: 0.0818604569706572
+  missing_components:
+  - data
+  - results
+  metadata_status: staging

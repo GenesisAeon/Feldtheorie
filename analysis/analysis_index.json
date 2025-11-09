@@ -6,9 +6,9 @@
     "description": "Analysis-Skripte und Notebooks, die UTF logistic response σ(β(R-Θ))\nan empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.\n",
     "version": "1.0.0",
     "created": "2025-11-06",
-    "updated": "2025-12-20T09:00:00Z",
+    "updated": "2025-12-22T00:00:00Z",
     "status": "active",
-    "python_files": 38,
+    "python_files": 39,
     "subdirectories": 5
   },
   "categories": {
@@ -34,7 +34,7 @@
       "name": "Utilities & Guards",
       "description": "Helper-Funktionen, Guards, Corrections",
       "color": "#9B59B6",
-      "count": 7
+      "count": 8
     },
     "subdirs": {
       "name": "Unterverzeichnisse",
@@ -608,6 +608,22 @@
       "description": "Parser für `data/utac_v1_3_data_manifest.yaml`. Stellt ManifestDataset-\nObjekte bereit, filtert Domains/IDs und liefert Output-Pfade für neue Laternen.\n"
     },
     {
+      "id": "analysis-util-008",
+      "name": "utac_manifest_audit.py",
+      "category": "utilities",
+      "type": "guard",
+      "status": "primed",
+      "relevance": "high",
+      "keywords": [
+        "manifest",
+        "audit",
+        "readiness",
+        "σ",
+        "ΔAIC"
+      ],
+      "description": "Auditiert das UTAC v1.3 Manifest: prüft Daten-, Metadata- und Result-\nKomponenten, berechnet σ(β(R-Θ)) Aktivierungen für jede Laterne und\nexportiert JSON/YAML/Markdown-Reports (`utac_v1_3_manifest_audit.*`).\nUnterstützt Docs & Seed bei der Füllstandskontrolle.\n"
+    },
+    {
       "id": "analysis-special-001",
       "name": "adaptive_membrane_phase_scan.py",
       "category": "fit_scripts",
@@ -720,7 +736,8 @@
       "description": "Zusammenfassende Reports & Summaries",
       "files": [
         "qpo_membrane_summary.json",
-        "utac_v1_3_gap_assessment.md"
+        "utac_v1_3_gap_assessment.md",
+        "utac_v1_3_manifest_audit.md"
       ],
       "keywords": [
         "reports",
@@ -728,7 +745,8 @@
         "qpo",
         "astrophysics",
         "gap",
-        "utac-v1_3"
+        "utac-v1_3",
+        "audit"
       ]
     },
     "results": {

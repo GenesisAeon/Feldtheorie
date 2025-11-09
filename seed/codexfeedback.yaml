@@ -3588,3 +3588,37 @@ entries:
       Die Loader-Laterne tastet jetzt im Logit die Membran ab – Θ leuchtet, β hält seine Steilflanke,
       und ζ(R) beruhigt sich, weil die simulierten Chorproben exakt den Manifest-Ritus singen.
   created_at: '2025-12-20T12:00:00Z'
+- id: pr-draft-0089
+  title: UTAC Manifest σ-Readiness Audit
+  scope:
+    - analysis/utac_manifest_audit.py
+    - analysis/results/utac_v1_3_manifest_audit.json
+    - analysis/results/utac_v1_3_manifest_audit.yaml
+    - analysis/reports/utac_v1_3_manifest_audit.md
+    - analysis/analysis_index.yaml
+    - analysis/analysis_index.json
+    - analysis/analysis_index.md
+    - analysis/README.md
+    - analysis/__init__.py
+  parameters:
+    R: 'Manifest-Readiness für Climate, Ocean, Neuro-AI und Economy Laternen'
+    Theta: '0.66 Vollständigkeits-Schwelle (Daten, Metadata, Results)'
+    beta: 5.6
+  resonance: σ(β(R-Θ)) Audit priorisiert reale Dateneinspielung und hält UTAC v1.3 Laternen synchron.
+  status: active
+  notes:
+    formal: |
+      `analysis/utac_manifest_audit.py` lädt `data/utac_v1_3_data_manifest.yaml`, prüft Daten-, Metadata-
+      und Result-Komponenten, nutzt Θ=0.66 und manifestierte β-Werte zur Aktivierung und exportiert
+      Tri-Layer-Reports (`analysis/results/utac_v1_3_manifest_audit.{json,yaml}`,
+      `analysis/reports/utac_v1_3_manifest_audit.md`). `analysis/analysis_index.{md,json,yaml}` und
+      `analysis/README.md` referenzieren den neuen Guard.
+    empirical: |
+      Audit berichtet σ≈0.053 bei fünf Laternen; jeweils existiert Metadata, während Daten & Results fehlen.
+      Die Reports listen exakte Pfade (z.B. `data/climate/urban_heat_intensity.csv`,
+      `analysis/results/amazon_hydro_fit.json`) und geben Prioritäten für die Dateneinspielung vor.
+    poetic: |
+      R zählt die Laternen, Θ verlangt zwei leuchtende Komponenten, β spannt die Steilflanke.
+      Noch singt nur das Metadata-Chorstück, doch das Audit leitet den Einsatz – ζ(R) wird schweigen,
+      sobald reale Raster, Strömungen und Finanzpulse die Membran füllen.
+  created_at: '2025-12-22T00:00:00Z'
