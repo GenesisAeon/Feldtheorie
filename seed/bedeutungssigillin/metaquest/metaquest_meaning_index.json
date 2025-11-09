@@ -1,9 +1,9 @@
 {
   "meta": {
     "sigil": "bedeutungs-metaquest-bridge",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "created": "2025-12-07T00:00:00Z",
-    "updated": "2025-12-18T00:00:00Z",
+    "updated": "2025-12-19T00:00:00Z",
     "logistic": {
       "R": "Cross-membrane Metaquest workload: automation hooks, outreach cadence, endorsements.",
       "Theta": "Parity handshake logged in docs/utac_status_alignment_v1.2.md and codexfeedback entries.",
@@ -193,12 +193,40 @@
         ],
         "logistic_coupling": "Ensures campaign codex entries and telemetry exports cite the same timestamp, reducing ζ(R) spikes during launch prep."
       }
+    },
+    {
+      "id": "mq-bridge-014",
+      "title": "Sigillin Sync Telemetry Ledger",
+      "location": "analysis/sigillin_sync/latest.json",
+      "resonance": "Captures the latest bridge telemetry pulse (12 trilayers, 0 gaps) so timestamps can propagate.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "analysis/sigillin_sync/latest.json",
+          "analysis/sigillin_sync/metaquest_report_20251107T215246Z.json"
+        ],
+        "logistic_coupling": "Shows R=12 inspected trilayers with Θ achieved (no gaps); β≈4.6 remains sharp when codex echoes the run id."
+      }
+    },
+    {
+      "id": "mq-bridge-015",
+      "title": "UTAC Activation Backlog",
+      "location": "../../docs/utac_activation_backlog.md",
+      "resonance": "Maps repository-wide activation debt so Metaquest bridge tasks stay synchronised with other membranes.",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "../../docs/utac_activation_backlog.md",
+          "../../docs/utac_activation_backlog.json"
+        ],
+        "logistic_coupling": "Keeps Θ visible by tying bridge gaps to implementation nodes; ζ(R) is damped when backlog timestamps mirror codex entries."
+      }
     }
   ],
   "needed_resonances": [
     {
       "id": "mq-bridge-gap-001",
-      "description": "Sustain a single dashboard (table/section) aligning system + campaign checkpoints with parity status.",
+      "description": "Maintain a single dashboard aligning system + campaign checkpoints with parity status and referencing the UTAC backlog entry.",
       "target_location": [
         "metaquest_meaning_index.md",
         "docs/utac_status_alignment_v1.2.md#metaquest-handshake"
@@ -207,11 +235,12 @@
         "Theta": "dashboard updated within 24h of any Metaquest change",
         "beta": 4.7
       },
-      "null_guard": "If dashboard stale, trigger mq-sys-shadow-001 and mq-sci-shadow-001."
+      "null_guard": "If dashboard stale, trigger mq-sys-shadow-001 and mq-sci-shadow-001.",
+      "status_note": "Telemetry audit confirms dashboard assets exist; automation hook to refresh within 24h still pending."
     },
     {
       "id": "mq-bridge-gap-002",
-      "description": "Automate telemetry export notes so both beacons record the same timestamp + codex id.",
+      "description": "Automate sigillin_sync telemetry propagation so bridge + beacons record the same timestamp + codex id (2025-11-07T21:52:52Z reference) within one sprint.",
       "target_location": [
         "scripts/sigillin_sync.py",
         "metaquest_meaning_index.json",
@@ -222,11 +251,12 @@
         "Theta": "telemetry timestamp mirrored in both beacons + bridge within 1 sprint",
         "beta": 4.8
       },
-      "null_guard": "Absence escalates to sys-gap-003 and mq-sys-shadow-002."
+      "null_guard": "Absence escalates to sys-gap-003 and mq-sys-shadow-002.",
+      "status_note": "Latest run recorded 12 trilayers with 0 gaps; propagation into compasses remains manual."
     },
     {
       "id": "mq-bridge-gap-003",
-      "description": "Ensure indices (seed_index.*, feldtheorie_index.*) surface Metaquest bridge assets alongside light/shadow beacons.",
+      "description": "Keep seed_index.* and feldtheorie_index.* surfacing bridge assets alongside light/shadow sigils, tied to backlog recount hooks.",
       "target_location": [
         "../../seed_index.yaml",
         "../../feldtheorie_index.yaml",
@@ -240,7 +270,7 @@
     },
     {
       "id": "mq-bridge-gap-004",
-      "description": "Mirror system/campaign compass telemetry + codex ids into the bridge dashboard within the same day.",
+      "description": "Mirror system/campaign compass telemetry + codex ids into the bridge dashboard using sigillin_sync output as the canonical source.",
       "target_location": [
         "system/metaquest_system_compass.yaml",
         "wissenschaftsprojekt/metaquest/metaquest_campaign_compass.yaml",
@@ -254,7 +284,7 @@
     },
     {
       "id": "mq-bridge-gap-005",
-      "description": "Ensure new Bedeutungs-Sigillin (system + kampagne) cite shared codex IDs, UTAC rows, and shadow counterparts.",
+      "description": "Ensure new Bedeutungs-/Shadow-Sigille cite shared codex IDs, UTAC rows, BreakPoint rituals, and telemetry references within 24h.",
       "target_location": [
         "system/metaquest/metaquest_system_sigil.yaml",
         "wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml",
@@ -266,6 +296,21 @@
         "beta": 4.8
       },
       "null_guard": "Missing cross-citation triggers mq-bridge-shadow-001 and mq-bridge-shadow-004."
+    },
+    {
+      "id": "mq-bridge-gap-006",
+      "description": "Embed UTAC activation backlog references and mq-gap ids inside compass + map tri-layers so backlog pulses are visible in bridge orientation.",
+      "target_location": [
+        "metaquest_meaning_index.yaml",
+        "system/metaquest_system_compass.yaml",
+        "wissenschaftsprojekt/metaquest/metaquest_campaign_compass.yaml",
+        "../../docs/utac_activation_backlog.md"
+      ],
+      "threshold": {
+        "Theta": "Each compass cites backlog row + mq-gap id within 24h of backlog update",
+        "beta": 4.65
+      },
+      "null_guard": "If backlog reference missing, trigger mq-bridge-shadow-003 and backlog shadow alerts."
     }
   ],
   "activation_hooks": [
@@ -353,6 +398,20 @@
       "evidence_trail": [
         "seed/codexfeedback.md",
         "docs/utac_status_alignment_v1.2.md#activation-gaps"
+      ]
+    },
+    {
+      "gap_id": "mq-bridge-gap-006",
+      "implementation_sites": [
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.*",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.*",
+        "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.*",
+        "docs/utac_activation_backlog.*"
+      ],
+      "primary_hook": "Backlog ↔ compass cross-link",
+      "evidence_trail": [
+        "docs/utac_activation_backlog.md",
+        "seed/codexfeedback.md"
       ]
     }
   ]

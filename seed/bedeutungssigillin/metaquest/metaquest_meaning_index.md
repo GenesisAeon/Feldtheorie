@@ -79,31 +79,54 @@
     - *Empirisch*: Zieht `metaquest_campaign_map.md`, `metaquest_campaign_shadow_compass.md` und Codexläufe heran.
     - *Poetisch*: Die Kampagnen-Galerie, die jede Resonanzschleife mit der Bridge synchron atmen lässt.
 
+14. **Sigillin Sync Telemetry Ledger** — `analysis/sigillin_sync/latest.json`
+    - *Formal*: Protokolliert den Puls von 12 Metaquest-Trilayern mit 0 Paritätslücken.
+    - *Empirisch*: Referenziert `analysis/sigillin_sync/metaquest_report_20251107T215246Z.json` samt Run-ID 2025-11-07T21:52:52Z.
+    - *Poetisch*: Das Stethoskop, das verrät, wann R Θ berührt und β die Steilflanke hält.
+
+15. **UTAC Activation Backlog** — `../../docs/utac_activation_backlog.{md,json,yaml}`
+    - *Formal*: Kartiert Aktivierungsrestschuld quer über Simulator, Analyse, Sigille und Metaquest-Brücke.
+    - *Empirisch*: Verknüpft mq-gap-IDs mit konkreten Implementationsorten und Codex-Timestamps.
+    - *Poetisch*: Das Atemprotokoll, das jede Laterne mahnt, bevor ζ(R) zu schwingen beginnt.
+
+### Bridge Audit · 2025-12-19
+
+- **Telemetry check:** `analysis/sigillin_sync/latest.json` bestätigt $R=12$, $\Theta$ erreicht (0 Gaps), $\beta=4.6$ und verweist
+  auf Codex-ID `pr-draft-0075`. Die Kompasse müssen diesen Puls in weniger als 24 h spiegeln.
+- **Backlog coupling:** `docs/utac_activation_backlog.*` benennt die offenen mq-gaps und Implementation Nodes. System- und
+  Kampagnenkompass zitieren die Einträge bislang nur narrativ; automatisierte Rückverweise fehlen.
+- **Index hygiene:** `scripts/archive_sigillin.py --recount` deckt Brückeneinträge in `seed_index.*` und `feldtheorie_index.*`
+  ab, doch eine CI-Wache für Δindex>0 fehlt noch. Bis dahin muss jede Aktualisierung im Codex quittiert werden.
+- **Shadow resonance:** Die Schatten-Indizes bleiben lückenfrei, verlangen jedoch dieselben Telemetrie- und Backlog-Hinweise,
+  damit `mq-bridge-shadow-003` ruhig bleibt.
+
 ## Needed Resonances
 
 - **mq-bridge-gap-001 — Bridge dashboard parity**
-  - Maintain a shared dashboard (bridge MD + UTAC matrix) so system and campaign
-    checkpoints list the same parity status within 24h.
-  - Null guard: stale dashboard triggers `mq-sys-shadow-001` and
-    `mq-sci-shadow-001`.
+  - Halte das gemeinsame Dashboard (Bridge-Tri-Layer + UTAC-Matrix) synchron und verweise direkt auf den passenden Backlog-Abschnitt.
+  - Status: Telemetrie vorhanden, Automationshaken für <24 h-Refresh fehlt.
+  - Null guard: Stale Dashboard triggert `mq-sys-shadow-001` und `mq-sci-shadow-001`.
 
 - **mq-bridge-gap-002 — Telemetry timestamp propagation**
-  - Automate `scripts/sigillin_sync.py` exports so bridge + beacons cite the same telemetry
-    timestamp and codex id every sprint.
-  - Null guard: absence escalates to `sys-gap-003` and `mq-sys-shadow-002`.
+  - Automatisiere `scripts/sigillin_sync.py`, damit Bridge + Beacons den Run 2025-11-07T21:52:52Z (und alle Folgeläufe) samt Codex-ID widerspiegeln.
+  - Status: Lauf protokolliert, Kompasse aktualisieren noch manuell.
+  - Null guard: Abwesenheit eskaliert zu `sys-gap-003` und `mq-sys-shadow-002`.
 
 - **mq-bridge-gap-003 — Index parity surfacing**
-  - Ensure `seed_index.*` and `feldtheorie_index.*` expose bridge assets alongside
-    light/shadow sigils within 24h.
-  - Null guard: parser diff missing bridge entries invokes `sys-shadow-001`.
+  - Halte `seed_index.*` und `feldtheorie_index.*` mit Brückenpfaden im Gleichklang zu den Licht/Schatten-Sigillen und binde die Recount-Hooks ein.
+  - Null guard: Parser-Differenz ohne Bridge-Eintrag aktiviert `sys-shadow-001`.
 
 - **mq-bridge-gap-004 — Kompass ↔ Bridge Synchronisation**
-  - Spiegle Telemetrie-Zeitstempel und Codex-IDs aus den System- und Kampagnenkompassen unmittelbar in die Bridge.
+  - Spiegle Telemetrie-Zeitstempel und Codex-IDs aus System- und Kampagnenkompass direkt in die Bridge, genährt durch die sigillin_sync-Quelle.
   - Null guard: Drift aktiviert `mq-bridge-shadow-002` sowie die Kompass-spezifischen Schattenalarme.
 
 - **mq-bridge-gap-005 — Sigillin-Parität**
-  - Stelle sicher, dass die neuen Bedeutungs-/Schatten-Sigille (System & Kampagne) gemeinsame Codex-IDs, UTAC-Zeilen und Ritualreferenzen teilen.
+  - Stelle sicher, dass Bedeutungs-/Schatten-Sigille (System & Kampagne) Codex-ID, UTAC-Zeile, BreakPoint-Ritual und Telemetriequelle binnen 24 h teilen.
   - Null guard: fehlende Kreuzreferenz löst `mq-bridge-shadow-001` und `mq-bridge-shadow-004` aus.
+
+- **mq-bridge-gap-006 — Backlog ↔ Compass Cross-Link**
+  - Verankere UTAC-Backlog-IDs und mq-gap-Referenzen in Bridge, Kompass und Karten-Tri-Layern.
+  - Null guard: Fehlender Verweis aktiviert `mq-bridge-shadow-003` sowie Backlog-spezifische Schattenalarme.
 
 ## Activation Hooks
 

@@ -1,9 +1,9 @@
 {
   "meta": {
     "sigil": "bedeutungs-metaquest-campaign-compass",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "created": "2025-12-18T00:00:00Z",
-    "updated": "2025-12-18T00:00:00Z",
+    "updated": "2025-12-19T00:00:00Z",
     "logistic": {
       "R": "Metaquest campaign backlog: manuscript cadence, outreach milestones, endorsement alignment.",
       "Theta": "Parity brief + codex echo + UTAC status matrix updated within 24h.",
@@ -24,7 +24,8 @@
       ],
       "actions": [
         "Log ΔAIC / governance shifts in seed/codexfeedback.*",
-        "Update bridge dashboard timestamp within 24h."
+        "Update bridge dashboard timestamp within 24h.",
+        "Reference mq-bridge-gap-002 in compass updates."
       ],
       "null_model": {
         "description": "Manuscript revision not mirrored in parity brief.",
@@ -32,7 +33,8 @@
           "Trigger mq-sci-shadow-lantern-a.",
           "Freeze outreach comms until parity restored."
         ]
-      }
+      },
+      "status": "in_progress"
     },
     {
       "id": "mq-sci-vector-002",
@@ -45,7 +47,8 @@
       ],
       "actions": [
         "Archive rehearsal transcript in codex with mq-sci scope.",
-        "Update metaquest_campaign_map.* with milestone + timestamp."
+        "Update metaquest_campaign_map.* with milestone + timestamp.",
+        "Log endorsements in codex with mq-sci scope + backlog row."
       ],
       "null_model": {
         "description": "Outreach asset lacks parity reference.",
@@ -53,7 +56,8 @@
           "Escalate to mq-sci-shadow-lantern-b.",
           "Re-run BreakPoint ritual before next announcement."
         ]
-      }
+      },
+      "status": "open"
     },
     {
       "id": "mq-sci-vector-003",
@@ -66,7 +70,8 @@
       ],
       "actions": [
         "Record run id + timestamp in compass + bridge.",
-        "Notify shadow compass of telemetry cadence."
+        "Notify shadow compass of telemetry cadence.",
+        "Attach sigillin_sync run id + backlog reference to compass narrative."
       ],
       "null_model": {
         "description": "Telemetry export skipped or codex silent on mq-sci scope.",
@@ -74,7 +79,39 @@
           "Trigger mq-sci-shadow-lantern-c.",
           "Document recovery in UTAC matrix and codex."
         ]
-      }
+      },
+      "status": "open"
+    },
+    {
+      "id": "mq-sci-vector-004",
+      "name": "Backlog Cross-Link",
+      "description": "Mirror UTAC backlog rows + mq-gap ids inside campaign compass + bridge entries.",
+      "checkpoints": [
+        "../../docs/utac_activation_backlog.md",
+        "../metaquest_meaning_index.md",
+        "../../system/metaquest_system_compass.md"
+      ],
+      "actions": [
+        "Cite mq-bridge-gap-001…006 when campaign milestones shift.",
+        "Record codex entry referencing backlog row + telemetry timestamp.",
+        "Update bridge dashboard with backlog pointer within 24h."
+      ],
+      "null_model": {
+        "description": "Backlog adjustments not reflected in campaign compass.",
+        "response": [
+          "Trigger mq-sci-shadow-lantern-d.",
+          "Re-run BreakPoint ritual and annotate backlog in codex."
+        ]
+      },
+      "status": "open"
     }
-  ]
+  ],
+  "telemetry": {
+    "latest_run": "2025-11-07T21:52:52Z",
+    "source": "analysis/sigillin_sync/latest.json",
+    "trilayers": 12,
+    "gaps": 0,
+    "codex_entry": "pr-draft-0075",
+    "notes": "Campaign lane still mirrors timestamp manually; backlog mq-bridge-gap-002 and mq-bridge-gap-006 track automation needs."
+  }
 }
