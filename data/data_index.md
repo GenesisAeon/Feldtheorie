@@ -25,7 +25,7 @@ data/
 ├── neuro_ai/        (2 files)  🧠🤖 Hybrid Activation Staging + Metadata
 └── economy/         (2 files)  ⚡💶 Energy-Finance Threshold Staging + Metadata
 
-Total: 62 files
+Total: 64 files
 ```
 
 ---
@@ -42,12 +42,14 @@ Total: 62 files
 - `biology/lenski_citplus.csv` - Evolution (β=5.08, R²=0.990)
 - `geophysics/subduction_rupture_threshold.csv` - Cascadia (β=16.29!)
 - `socio_ecology/urban_heat_canopy.csv` - **β≈15.3 OUTLIER!** 🔥
+- `socio_ecology/urban_heat_storage_profiles.csv` - Mechanismus-Ledger (Θ≈0.19–0.34, β≈7.5–16.3, ΔAIC-gesichert)
 - `safety_delay/safety_delay_delta_aic_20251107T211928Z.csv` - Safety-Delay ΔAIC ledger
 
 ### 🚨 **Outliers (β>14):**
 1. geophysics/subduction_rupture_threshold.csv (β=16.29)
 2. socio_ecology/urban_heat_canopy.csv (β≈15.3)
-3. socio_ecology/amazon_resilience.csv (β≈14.0)
+3. socio_ecology/urban_heat_storage_profiles.csv (β≈7.5–16.3 Mechanismus)
+4. socio_ecology/amazon_resilience.csv (β≈14.0)
 
 ---
 
@@ -109,12 +111,13 @@ Total: 62 files
 
 ---
 
-### 🌿 Socio-Ecology (10 files)
+### 🌿 Socio-Ecology (12 files)
 **Was:** Amazon, Urban Heat, Planetary Tipping Points
 
 **Key Datasets:**
 - `amazon_resilience.csv` - Amazon Moisture (β≈14.0)
 - `urban_heat_canopy.csv` - **β≈15.3 (Outlier!)**
+- `urban_heat_storage_profiles.csv` - Mechanismus-Szenarien (Θ≈0.19–0.34, β≈7.5–16.3)
 - `planetary_tipping_elements.csv` - AMOC, Grönland
 
 ---

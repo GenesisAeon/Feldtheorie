@@ -12,9 +12,9 @@ meta:
     an empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.
   version: "1.0.0"
   created: "2025-11-06"
-  updated: "2025-12-23T00:00:00Z"
+  updated: "2025-12-28T00:00:00Z"
   status: "active"
-  python_files: 40
+  python_files: 41
   subdirectories: 5
 
 # ═══════════════════════════════════════════════════════════════════
@@ -40,6 +40,12 @@ categories:
     color: "#E67E22"  # Orange - Experiments
     count: 2
 
+  mechanism_analysis:
+    name: "Mechanismus-Analysen & Simulation"
+    description: "Simulationen, die physikalische Mechanismen hinter β-Ausreißern rekonstruieren"
+    color: "#9B59B6"  # Lila - Mechanismen
+    count: 1
+
   utilities:
     name: "Utilities & Guards"
     description: "Helper-Funktionen, Guards, Corrections"
@@ -53,7 +59,7 @@ categories:
     count: 4
 
 # ═══════════════════════════════════════════════════════════════════
-# PYTHON-DATEIEN: Die 34 Analyse-Skripte
+# PYTHON-DATEIEN: Die 41 Analyse-Skripte
 # ═══════════════════════════════════════════════════════════════════
 
 python_scripts:
@@ -206,6 +212,19 @@ python_scripts:
       Urban Heat Canopy Resonance (β=16.3 - EXTREMER OUTLIER!).
       Höchster gemessener β-Wert im gesamten Projekt.
       Muss für UTAC v1.2 Outlier-Analyse untersucht werden.
+
+  - id: analysis-fit-011a
+    name: "urban_heat_storage_mechanism.py"
+    category: mechanism_analysis
+    domain: socio_ecology
+    type: simulation
+    status: prototype
+    relevance: high
+    keywords: [urban-heat, storage, mechanism, β≈16]
+    description: |
+      Stochastische Energie-Bilanz Simulation für urbane Straßenschluchten.
+      Rekonstruiert wie Materialimpedanz β≈16 erzeugt, exportiert ΔAIC-gardierte Ledgers
+      und speist data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv.
 
   - id: analysis-fit-012
     name: "planetary_tipping_elements_fit.py"
@@ -787,6 +806,7 @@ quicklinks:
     - analysis-fit-004  # Lenski (β=5.08)
     - analysis-fit-009  # Cascadia (β=16.29)
     - analysis-fit-011  # Urban Heat (β=16.3 OUTLIER!)
+    - analysis-fit-011a # Urban Heat storage mechanism (β≈16 → Materialimpedanz)
     - analysis-fit-010  # Amazon (β=14.6)
 
   batch_infrastructure:

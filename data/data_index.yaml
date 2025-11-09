@@ -14,9 +14,9 @@ meta:
   version: "1.0.0"
   created: "2025-11-06"
   status: "active"
-  total_files: 62
+  total_files: 64
   domains: 12
-  updated: "2025-12-20T09:00:00Z"
+  updated: "2025-12-28T00:00:00Z"
 
 # ═══════════════════════════════════════════════════════════════════
 # DOMAINS: Die 8 Datenquellen-Bereiche
@@ -170,7 +170,7 @@ domains:
   socio_ecology:
     name: "Socio-Ecology & Climate"
     path: "socio_ecology/"
-    file_count: 10
+    file_count: 12
     description: "Amazon, Urban Heat, Planetary Tipping Points"
     color: "#C0392B"
     key_datasets:
@@ -180,6 +180,9 @@ domains:
       - name: "urban_heat_canopy.csv"
         description: "Urban heat ⭐ β≈15.3 (Outlier!)"
         keywords: [urban-heat, canopy, β-outlier, extreme]
+      - name: "urban_heat_storage_profiles.csv"
+        description: "Mechanismus-Szenarien (Θ≈0.19–0.34, β≈7.5–16.3) + ΔAIC Ledger"
+        keywords: [urban-heat, storage, mechanism, β≈16]
       - name: "planetary_tipping_elements.csv"
         description: "AMOC, Grönland, multi-threshold climate"
         keywords: [planetary, amoc, tipping-points, climate]

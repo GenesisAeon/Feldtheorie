@@ -13,7 +13,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 **Trilayer-Navigation:**
 ```
 ┌─────────────────────────────────────────┐
-│  YAML  →  Struktur (38 Python-Skripte)  │  analysis_index.yaml
+│  YAML  →  Struktur (41 Python-Skripte)  │  analysis_index.yaml
 │  JSON  →  Agentenschnittstelle          │  analysis_index.json
 │  MD    →  Menschenfreundlich (du!)      │  analysis_index.md
 └─────────────────────────────────────────┘
@@ -27,7 +27,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 
 ```
 analysis/
-├── 39 Python-Skripte (Domain-Fits, Batch-Processing, Labs, Guards)
+├── 41 Python-Skripte (Domain-Fits, Mechanismen, Batch-Processing, Labs, Guards)
 ├── batch_configs/   (4 YAML/JSON Konfigurationen)
 ├── batch_runs/      (2 gespeicherte Batch-Runs)
 ├── reports/         (2 Summaries: QPO, UTAC v1.3 Gap)
@@ -45,12 +45,14 @@ analysis/
 - `resonance_cohort_summary.py` - Median R²≈0.9981, ΔAIC≈65.1
 - `multiple_testing_correction.py` - Statistische Validität
 - `outlier_beta_review.py` - Instrumentation-Flag Ledger für Amazon & Urban Heat
+- `urban_heat_storage_mechanism.py` - Materialimpedanz-Simulation, β≈16 → Mechanismus + ΔAIC Ledger
 
 #### **High-Impact Fits:**
 - `llm_beta_extractor.py` - Wei's PaLM (β=3.47±0.47)
 - `lenski_citplus_fit.py` - Evolution (β=5.08, ΔAIC>32)
 - `seismic_rupture_threshold_fit.py` - Cascadia (β=16.29!)
 - `urban_heat_canopy_fit.py` - **β=16.3 OUTLIER!** 🔥
+- `urban_heat_storage_mechanism.py` - Mechanismus-Analyse (β≈16 ↔ Speicherkoeffizient)
 - `amazon_resilience_fit.py` - Amazon (β=14.6)
 
 #### **Batch-Infrastruktur:**
@@ -205,6 +207,7 @@ analysis/
 - `urban_heat_canopy_fit.py` - **β=16.3 - HÖCHSTER WERT!** 🔥
 - `planetary_tipping_elements_fit.py` - AMOC, Grönland, etc.
 - `outlier_beta_review.py` - Instrumentation-Flag Ledger (ΔAIC-Gegencheck)
+- `urban_heat_storage_mechanism.py` - Materialimpedanz erklärt β≈16 (ΔAIC-geprüfte Simulation)
 
 **Ergebnisse:** Klima-Tipping-Points haben EXTREME β-Werte (Outliers!) + Ledger prüft Instrumentations-Bias.
 
@@ -218,6 +221,14 @@ analysis/
 - `adaptive_theta_typology.py` - Typologisierung
 
 **Ergebnisse:** Cross-Domain Resonanzen zeigen universelle Muster
+
+---
+
+### ♨️ Mechanismus-Analysen & Simulation (1 Skript)
+**Highlights:**
+- `urban_heat_storage_mechanism.py` - Speicherkoeffizient ↔ β≈16, ΔAIC vs. lineare & power-law Nulls, Dataset-Export `urban_heat_storage_profiles`
+
+**Ergebnisse:** Materialimpedanz erklärt, warum urbane Hitze-Hotspots bei R≈0.33 explosionsartig kippen; liefert physikalische Story für den β-Outlier.
 
 ---
 
