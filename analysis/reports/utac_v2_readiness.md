@@ -1,6 +1,6 @@
 # UTAC v2.0 Readiness Audit – σ(β(R-Θ)) Compass
 
-*Generated 2025-11-09T12:41:11.639421+00:00 via `analysis/v2_readiness_audit.py` – logistic quartet guiding V2 activation.*
+*Generated 2025-11-09T13:07:02.733702+00:00 via `analysis/v2_readiness_audit.py` – logistic quartet guiding V2 activation.*
 
 ## 1. Formal Stratum — Logistic Summary
 

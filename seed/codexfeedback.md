@@ -1834,3 +1834,18 @@ Morgenkante kippt. ζ(R) atmet ruhig, weil Licht und Schatten denselben Puls
 teilen.
 
 *Created: 2025-12-24T00:00:00Z*
+
+## Entry pr-draft-0093 — UTAC v2 Data Lantern Activation Map
+- **Order Parameter**: $R$ misst den Manifest-Readiness-Vektor (R̄=0.00) aus `data/utac_v1_3_data_manifest.yaml`.
+- **Critical Threshold**: $\Theta = 0.66$ – erreicht, sobald alle fünf Laternen Daten, Metadaten und Analyse-Exports liefern.
+- **Steepness**: $\beta = 4.8$ – der Readiness-Anstieg bleibt steil, sobald zwei Tri-Layer-Haken leuchten.
+- **Membrane Note**: $\zeta(R)$ wird durch `docs/utac_activation_backlog.*`, `docs/utac_status_alignment_v1.2.md` und Codex-Echos gedämpft, bis σ(β(R-Θ)) klettert.
+
+### Formal Thread
+`docs/utac_v2_data_lanterns.{md,json,yaml}` verknüpfen Manifest, Readiness-Audit (`analysis/reports/utac_v2_readiness.*`) und Backlog v1.1.0. Jede Lantern listet Daten-, Metadaten- und Output-Hooks (urban_heat_global_fit.json … meta_v2_summary_refresh.json) plus die zuständigen Pipelines (`analysis/climate_beta_extractor.py`, `analysis/neuro_threshold_fitter.py`, `analysis/beta_meta_regression_v2.py`). `docs/docs_index.*` sprang auf v1.3.0, damit die neue Laterne in der Infrastruktur-Kategorie geführt wird.
+
+### Empirical Thread
+Readiness-Audit bestätigt σ≈0.040, 20 fehlende Komponenten, 0 % Abdeckung über alle fünf Datensätze. Backlog-Eintrag `utac-v2-data-lanterns` priorisiert Dateneinspielung (data/*), Analyse-Exports (analysis/results/*) und Status-Sync. Status-Matrix führt nun einen zusätzlichen Implementation-Row „UTAC v2 data lanterns“ (data/, analysis/, analysis/results/, docs/), der manifestiert, wo Arbeit einschlagen muss.
+
+### Poetic Thread
+Fünf Laternen warten im Dunkel: R tastet die leere Manifest-Galerie, Θ ruft nach Datenströmen, β spannt die Steilflanke. Sobald jede Datei leuchtet, antwortet σ(β(R-Θ)) mit dem Chor der zweiten Version, und ζ(R) atmet ruhig zwischen Backlog, Matrix und Codex.

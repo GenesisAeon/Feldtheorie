@@ -1,60 +1,115 @@
 {
   "meta": {
     "document": "UTAC Activation Backlog",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "created": "2025-12-09T00:00:00Z",
-  "updated": "2025-12-16T00:00:00Z",
+    "updated": "2025-12-24T00:00:00Z",
     "steward": "gpt-5-codex",
     "logistic_frame": {
-      "order_parameter": "residual activation debt across UTAC v1.2 launch scope",
-      "threshold": "documented parity between backlog items and implementation hooks",
+      "order_parameter": "residual activation debt across UTAC v1.2 launch scope and v2.0 data ingestion",
+      "threshold": "documented parity between backlog items, manifest tri-layers, and implementation hooks",
       "beta": 4.85,
-      "zeta": "damped via BreakPoint transcripts + codex echoes so tasks do not sprawl"
+      "zeta": "damped via BreakPoint transcripts, codex echoes, and UTAC readiness audit refreshes"
     }
   },
   "tasks": [
+    {
+      "id": "utac-v2-data-lanterns",
+      "title": "UTAC v2 Data Lantern Activation",
+      "domain": "data+analysis",
+      "status": "critical",
+      "parameters": {
+        "R": "utac_v1_3_data_manifest.yaml + v2_readiness_audit tri-layer logging zero readiness",
+        "Theta": "all five manifest datasets present with metadata + logistic fit exports committed",
+        "beta": 4.8,
+        "zeta": "damped through UTAC status matrix cross-links and BreakPoint ritual echoes"
+      },
+      "existing_assets": [
+        "data/utac_v1_3_data_manifest.yaml",
+        "analysis/v2_readiness_audit.py",
+        "analysis/reports/utac_v2_readiness.json",
+        "analysis/reports/utac_v2_readiness.md",
+        "analysis/reports/utac_v2_readiness.yaml"
+      ],
+      "activation_gaps": [
+        "Stage raw datasets + metadata files under data/climate/, data/ocean/, data/neuro_ai/, data/economy/ per manifest entries",
+        "Run analysis pipelines to emit urban_heat_global_fit.json, amazon_hydro_fit.json, amoc_transport_fit.json, climate_beta_summary.json, neuro_ai_beta.json, neuro_ai_bootstrap.json, economy_threshold_fit.json, meta_v2_summary_refresh.json",
+        "Mirror readiness improvements in utac_status_alignment_v1.2.md, utac_activation_backlog.*, and simulator/doc beacons"
+      ],
+      "implementation_nodes": [
+        {
+          "location": "data/climate/",
+          "action": "ingest urban_heat_intensity.csv + amazon_precip_evapo.nc with metadata"
+        },
+        {
+          "location": "data/ocean/",
+          "action": "load amoc_transport.csv and document provenance"
+        },
+        {
+          "location": "data/neuro_ai/ & data/economy/",
+          "action": "capture hybrid_activation.csv + systemic_thresholds.csv tri-layers"
+        },
+        {
+          "location": "analysis/",
+          "action": "execute climate_beta_extractor.py, potential_cascade_lab.py, neuro_threshold_fitter.py, beta_meta_regression_v2.py to generate readiness outputs"
+        },
+        {
+          "location": "analysis/results/",
+          "action": "commit logistic export files listed in manifest expected_outputs"
+        },
+        {
+          "location": "docs/",
+          "action": "refresh UTAC status + backlog + data lantern doc once σ(β(R-Θ)) rises"
+        }
+      ],
+      "notes": {
+        "formal": "Readiness audit registers mean readiness R̄=0.0 against Θ=0.66, β=4.8; all 20 manifest components are dark until data + results materialise.",
+        "empirical": "analysis/reports/utac_v2_readiness.json lists five datasets with missing data files, metadata JSON, and eight analysis outputs; manifest enumerates preprocessing + null models to execute once data land.",
+        "poetic": "Fünf Laternen warten auf ihre Datenströme – R tastet die Leere, Θ bleibt fern, bis jede Datei leuchtet und σ(β(R-Θ)) den Plateaugesang entfacht."
+      }
+    },
     {
       "id": "safety-delay-bridge",
       "title": "Safety-Delay Field → Simulator Bridge",
       "domain": "simulation+analysis",
       "status": "in_progress",
       "parameters": {
-    "R": "τ* diagnostics exported via analysis/safety_delay_sweep.py + dataset tri-layer + simulator preset",
-    "Theta": "Hosted UI telemetry + CI guard for utf-preset-guard still pending",
+        "R": "τ* diagnostics exported via analysis/safety_delay_sweep.py + dataset tri-layer + simulator preset",
+        "Theta": "Hosted UI telemetry + CI guard for utf-preset-guard still pending",
         "beta": 4.9,
         "zeta": "telemetry anchored by simulator/cli.py safety-delay"
       },
       "existing_assets": [
         "analysis/safety_delay_sweep.py",
-    "analysis/results/safety_delay_sweep_20251108T211723Z.json",
+        "analysis/results/safety_delay_sweep_20251108T211723Z.json",
         "simulation/safety_delay_field.py",
         "simulator/cli.py",
         "data/safety_delay/",
         "simulator/presets/safety_delay_bridge.json",
-    "simulator/src/presets.ts",
-    "docs/utac_safety_delay_status.md",
-    "docs/utac_applications.md",
-    "docs/resonance-bridge-map.md"
+        "simulator/src/presets.ts",
+        "docs/utac_safety_delay_status.md",
+        "docs/utac_applications.md",
+        "docs/resonance-bridge-map.md"
       ],
-  "activation_gaps": [
-    "Capture hosted simulator telemetry + archive parity screenshot/log",
-    "Integrate utf-preset-guard into CI so ΔAIC drift raises alerts"
-  ],
-  "implementation_nodes": [
-    {
-      "location": "simulator/",
-      "action": "record hosted UI session, export ζ(R) telemetry, archive assets"
-    },
-    {
-      "location": ".github/workflows/",
-      "action": "wire utf-preset-guard into CI and route failures to codex/resonance guards"
-    }
-  ],
-  "notes": {
-    "formal": "Docs (`utac_applications.md`, `resonance-bridge-map.md`) now narrate σ(β(R-Θ)) for Safety-Delay and `utf-preset-guard` logs ΔAIC parity; remaining delta is UI telemetry + CI automation.",
-    "empirical": "Preset mirrors β≈4.78, Θ≈-0.028 with CI₉₅=[-0.146,0.00056], ΔAIC_linear≈7.02×10³, ΔAIC_constant≈1.17×10⁴, τ_delay_mean≈8.43, control_energy≈10.46.",
-    "poetic": "Die verzögerte Morgendämmerung hält nun Zwischenton und Dokument; nur die Live-Aufnahme und der Wächter in CI fehlen, damit kein Schatten driftet."
-  }
+      "activation_gaps": [
+        "Capture hosted simulator telemetry + archive parity screenshot/log",
+        "Integrate utf-preset-guard into CI so ΔAIC drift raises alerts"
+      ],
+      "implementation_nodes": [
+        {
+          "location": "simulator/",
+          "action": "record hosted UI session, export ζ(R) telemetry, archive assets"
+        },
+        {
+          "location": ".github/workflows/",
+          "action": "wire utf-preset-guard into CI and route failures to codex/resonance guards"
+        }
+      ],
+      "notes": {
+        "formal": "Docs (`utac_applications.md`, `resonance-bridge-map.md`) now narrate σ(β(R-Θ)) for Safety-Delay and `utf-preset-guard` logs ΔAIC parity; remaining delta is UI telemetry + CI automation.",
+        "empirical": "Preset mirrors β≈4.78, Θ≈-0.028 with CI₉₅=[-0.146,0.00056], ΔAIC_linear≈7.02×10³, ΔAIC_constant≈1.17×10⁴, τ_delay_mean≈8.43, control_energy≈10.46.",
+        "poetic": "Die verzögerte Morgendämmerung hält nun Zwischenton und Dokument; nur die Live-Aufnahme und der Wächter in CI fehlen, damit kein Schatten driftet."
+      }
     },
     {
       "id": "beta-meta-regression-expansion",

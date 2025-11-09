@@ -1,406 +1,510 @@
-# Docs Index - YAML Layer (Struktur & Orientierung)
-# Trilayer-Aktivierung für docs/ Verzeichnis
-# Version: 1.2.0
-# Datum: 2025-11-06
-# Updated: 2025-12-22
-
 meta:
-  directory: "docs/"
-  project: "Feldtheorie (UTAC) - Living Documentation Tapestry"
-  maintainer: "Johann Römer"
-  description: |
-    UTAC Theory Documentation: Core Theory, Applications, Falsifiability,
+  directory: docs/
+  project: Feldtheorie (UTAC) - Living Documentation Tapestry
+  maintainer: Johann Römer
+  description: 'UTAC Theory Documentation: Core Theory, Applications, Falsifiability,
+
     Field Type Classification, Validation Reports.
+
     Tri-layer Cadence: Formal, Empirical, Metaphorical.
-  version: "1.2.0"
-  created: "2025-11-06"
-  updated: "2025-12-22T18:00:00Z"
-  status: "active"
-  markdown_files: 21
 
-# ═══════════════════════════════════════════════════════════════════
-# KATEGORIEN: Die 4 Doc-Typen
-# ═══════════════════════════════════════════════════════════════════
-
+    '
+  version: 1.3.0
+  created: '2025-11-06'
+  status: active
+  markdown_files: 22
+  updated: '2025-12-24T00:00:00Z'
 categories:
   theory:
-    name: "Core Theory"
-    description: "UTAC Theory Core, Emergence, Universality"
-    color: "#3498DB"
+    name: Core Theory
+    description: UTAC Theory Core, Emergence, Universality
+    color: '#3498DB'
     count: 4
-
   applications:
-    name: "Applications & Classification"
-    description: "Field Types, Use Cases, Review Considerations"
-    color: "#27AE60"
+    name: Applications & Classification
+    description: Field Types, Use Cases, Review Considerations
+    color: '#27AE60'
     count: 4
-
   validation:
-    name: "Validation & Falsifiability"
-    description: "Falsifiability Protocol, Validation Reports"
-    color: "#E67E22"
+    name: Validation & Falsifiability
+    description: Falsifiability Protocol, Validation Reports
+    color: '#E67E22'
     count: 2
-
   infrastructure:
-    name: "Infrastructure"
-    description: "README, Operational Resonance Maps"
-    color: "#9B59B6"
+    name: Infrastructure
+    description: README, Operational Resonance Maps
+    color: '#9B59B6'
     count: 11
-
-  # ═══════════════════════════════════════════════════════════════════
-  # MARKDOWN-DOKUMENTE: Die 21 Docs
-  # ═══════════════════════════════════════════════════════════════════
-
 markdown_docs:
-  # ─────────────────────────────────────────────────────────────────
-  # CORE THEORY (4)
-  # ─────────────────────────────────────────────────────────────────
+- id: docs-theory-001
+  name: utac_theory_core.md
+  category: theory
+  type: theory
+  status: stable
+  relevance: high
+  size_kb: 3.2
+  keywords:
+  - utac
+  - theory
+  - core
+  - σ(β(R-Θ))
+  - fundamental
+  description: '⭐ DAS THEORIE-FUNDAMENT!
 
-  - id: docs-theory-001
-    name: "utac_theory_core.md"
-    category: theory
-    type: theory
-    status: stable
-    relevance: high
-    size_kb: 3.2
-    keywords: [utac, theory, core, σ(β(R-Θ)), fundamental]
-    description: |
-      ⭐ DAS THEORIE-FUNDAMENT!
-      Definiert σ(β(R-Θ)), erklärt β-Spektrum, Θ-Dynamik, ζ-Impedanz.
-      Basis für alle anderen Docs.
+    Definiert σ(β(R-Θ)), erklärt β-Spektrum, Θ-Dynamik, ζ-Impedanz.
 
-  - id: docs-theory-002
-    name: "utac_emergence_universal.md"
-    category: theory
-    type: emergence
-    status: stable
-    relevance: high
-    size_kb: 10.7
-    keywords: [emergence, universal, cross-domain, β-convergence]
-    description: |
-      UTAC Emergence Universal: Cross-Domain Patterns.
-      Zeigt wie σ(β(R-Θ)) über AI, Biology, Geophysics, Socio-Ecology gilt.
-      Argumentiert für β-Universalität (trotz Spektrum).
+    Basis für alle anderen Docs.
 
-  - id: docs-theory-003
-    name: "appendix_field_types.md"
-    category: theory
-    type: appendix
-    status: stable
-    relevance: medium
-    size_kb: 10.2
-    keywords: [appendix, field-types, taxonomy, classification]
-    description: |
-      Appendix: Field Types in Detail.
-      Detaillierte Beschreibung der 5 Schwellenwert-Systemtypen.
+    '
+- id: docs-theory-002
+  name: utac_emergence_universal.md
+  category: theory
+  type: emergence
+  status: stable
+  relevance: high
+  size_kb: 10.7
+  keywords:
+  - emergence
+  - universal
+  - cross-domain
+  - β-convergence
+  description: 'UTAC Emergence Universal: Cross-Domain Patterns.
 
-  - id: docs-theory-004
-    name: "UTAC_v2.0_Coherence_Formula.md"
-    category: theory
-    type: coherence
-    status: active
-    relevance: high
-    size_kb: 6.3
-    keywords: [utac, coherence, relations, β-landkarte]
-    description: |
-      UTAC v2.0 Kohärenzformel.
-      Definiert Relationstopographie, β-Landkarte und Hooks für V1.3→V2.0.
-      Verknüpft Theorie, Analyse, Daten, Simulator und Sigillin-Guards.
+    Zeigt wie σ(β(R-Θ)) über AI, Biology, Geophysics, Socio-Ecology gilt.
 
-  # ─────────────────────────────────────────────────────────────────
-  # APPLICATIONS (4)
-  # ─────────────────────────────────────────────────────────────────
+    Argumentiert für β-Universalität (trotz Spektrum).
 
-  - id: docs-app-001
-    name: "field_type_classification_v1.1.md"
-    category: applications
-    type: classification
-    status: stable
-    relevance: high
-    size_kb: 21.1
-    keywords: [classification, field-types, taxonomy, v1.1]
-    description: |
-      ⭐ FIELD TYPE CLASSIFICATION v1.1!
-      Die 5 Systemtypen: Sharp Gates, Gradual Transitions, Coupled,
-      Adaptive, Recursive. Mit Beispielen aus allen Domänen.
+    '
+- id: docs-theory-003
+  name: appendix_field_types.md
+  category: theory
+  type: appendix
+  status: stable
+  relevance: medium
+  size_kb: 10.2
+  keywords:
+  - appendix
+  - field-types
+  - taxonomy
+  - classification
+  description: 'Appendix: Field Types in Detail.
 
-  - id: docs-app-002
-    name: "utac_applications.md"
-    category: applications
-    type: applications
-    status: stable
-    relevance: high
-    size_kb: 10.6
-    keywords: [applications, use-cases, domains, practical]
-    description: |
-      UTAC Applications: Praktische Anwendungen.
-      Von LLM-Training bis Climate Tipping Points.
-      Zeigt wie UTAC in der Praxis genutzt wird.
+    Detaillierte Beschreibung der 5 Schwellenwert-Systemtypen.
 
-  - id: docs-app-003
-    name: "utac_review_considerations.md"
-    category: applications
-    type: review-guide
-    status: stable
-    relevance: medium
-    size_kb: 10.9
-    keywords: [review, considerations, peer-review, guidelines]
-    description: |
-      UTAC Review Considerations: Guide für Reviewer.
-      Was sind die Stärken? Was sind die Limitationen?
-      Ehrliche Selbst-Evaluation.
+    '
+- id: docs-theory-004
+  name: UTAC_v2.0_Coherence_Formula.md
+  category: theory
+  type: coherence
+  status: active
+  relevance: high
+  size_kb: 6.3
+  keywords:
+  - utac
+  - coherence
+  - relations
+  - β-landkarte
+  description: 'UTAC v2.0 Kohärenzformel.
 
-  - id: docs-app-004
-    name: "utac_safety_delay_status.md"
-    category: applications
-    type: bridge
-    status: active
-    relevance: high
-    size_kb: 5.7
-    keywords: [safety-delay, simulator, ΔAIC, τ_delay, bridge]
-    description: |
-      Safety-Delay Statusbrief – koppelt Simulation, Analyse und Docs.
-      Dokumentiert Θ_delay, β-Steigung und ΔAIC-Wächter für das τ*-Feld.
-      Verweist auf `simulation/` Presets und den Launch-Backlog.
+    Definiert Relationstopographie, β-Landkarte und Hooks für V1.3→V2.0.
 
-  # ─────────────────────────────────────────────────────────────────
-  # VALIDATION (2)
-  # ─────────────────────────────────────────────────────────────────
+    Verknüpft Theorie mit Analyse, Daten, Simulator und Sigillin-Guard.
 
-  - id: docs-val-001
-    name: "utac_falsifiability.md"
-    category: validation
-    type: falsifiability
-    status: stable
-    relevance: high
-    size_kb: 2.6
-    keywords: [falsifiability, null-models, ΔAIC, popper]
-    description: |
-      ⭐ FALSIFIABILITY PROTOCOL!
-      Wie UTAC falsifizierbar ist: Null-Models, ΔAIC>10, R²-Tests.
-      Kernargument: UTAC ist NICHT unfalsifizierbar!
+    '
+- id: docs-app-001
+  name: field_type_classification_v1.1.md
+  category: applications
+  type: classification
+  status: stable
+  relevance: high
+  size_kb: 21.1
+  keywords:
+  - classification
+  - field-types
+  - taxonomy
+  - v1.1
+  description: '⭐ FIELD TYPE CLASSIFICATION v1.1!
 
-  - id: docs-val-002
-    name: "validation_report_v1.0.1.md"
-    category: validation
-    type: report
-    status: stable
-    relevance: high
-    size_kb: 18.5
-    keywords: [validation, report, v1.0.1, results, empirical]
-    description: |
-      Validation Report v1.0.1: Empirische Ergebnisse.
-      Zusammenfassung aller Fits, ΔAIC-Werte, R²-Statistiken.
-      Zeigt dass logistische Modelle konsistent besser sind.
+    Die 5 Systemtypen: Sharp Gates, Gradual Transitions, Coupled,
 
-  # ─────────────────────────────────────────────────────────────────
-  # INFRASTRUCTURE (11)
-  # ─────────────────────────────────────────────────────────────────
+    Adaptive, Recursive. Mit Beispielen aus allen Domänen.
 
-  - id: docs-infra-001
-    name: "README.md"
-    category: infrastructure
-    type: readme
-    status: stable
-    relevance: high
-    size_kb: 5.4
-    keywords: [readme, overview, mandate, tapestry]
-    description: |
-      Living Documentation Tapestry - RepoPlan 2.0 Mandate.
-      Beschreibt Tri-Layer Cadence und Documentation-Philosophie.
+    '
+- id: docs-app-002
+  name: utac_applications.md
+  category: applications
+  type: applications
+  status: stable
+  relevance: high
+  size_kb: 10.6
+  keywords:
+  - applications
+  - use-cases
+  - domains
+  - practical
+  description: 'UTAC Applications: Praktische Anwendungen.
 
-  - id: docs-infra-002
-    name: "repo_cleanup_resonance.md"
-    category: infrastructure
-    type: operations
-    status: active
-    relevance: high
-    size_kb: 8.0
-    keywords: [cleanup, resonance, operations, σ(β(R-Θ))]
-    description: |
-      Resonanzkarte für Struktur- & Metadaten-Aufgaben.
-      Verknüpft Aeon-Checkliste mit konkreten Hooks.
+    Von LLM-Training bis Climate Tipping Points.
 
-  - id: docs-infra-003
-    name: "utac_status_alignment_v1.2.md"
-    category: infrastructure
-    type: status-matrix
-    status: active
-    relevance: high
-    size_kb: 8.0
-    keywords: [status, roadmap, implementation, sigillin]
-    description: |
-      UTAC Status & Implementation Matrix (v1.2-pre).
-      Kartiert vorhandene Resonanzen vs. Aktivierungs-Lücken,
-      verweist auf Seed-Sigillin, Safety-Delay-Feld und CREP-Pfade.
+    Zeigt wie UTAC in der Praxis genutzt wird.
 
-  - id: docs-infra-004
-    name: "metaquest_parity_brief.md"
-    category: infrastructure
-    type: parity-brief
-    status: active
-    relevance: high
-    size_kb: 6.1
-    keywords: [metaquest, parity, telemetry, codex, sigillin]
-    description: |
-      Metaquest Parity Brief – bündelt mq-parity-001…004.
-      Verknüpft Bedeutungs-/Shadow-Sigille, Telemetrie,
-      Simulator-Playlist und Endorsement-Ledger mit Codex-Echos.
+    '
+- id: docs-app-003
+  name: utac_review_considerations.md
+  category: applications
+  type: review-guide
+  status: stable
+  relevance: medium
+  size_kb: 10.9
+  keywords:
+  - review
+  - considerations
+  - peer-review
+  - guidelines
+  description: 'UTAC Review Considerations: Guide für Reviewer.
 
-  - id: docs-infra-005
-    name: "utac_activation_backlog.md"
-    category: infrastructure
-    type: backlog
-    status: active
-    relevance: high
-    size_kb: 8.0
-    keywords: [activation, backlog, σ(β(R-Θ)), implementation, hooks]
-    description: |
-      UTAC Activation Backlog (Tri-Layer).
-      Kartiert Restaufgaben vs. vorhandene Assets,
-      verlinkt Umsetzungsknoten für Launch-Vorbereitung.
+    Was sind die Stärken? Was sind die Limitationen?
 
-  - id: docs-infra-006
-    name: "docs_index.md"
-    category: infrastructure
-    type: index
-    status: active
-    relevance: high
-    size_kb: 2.7
-    keywords: [index, navigation, docs, σ(β(R-Θ))]
-    description: |
-      Menschliche Navigationskarte für das docs/-Membran.
-      Hält Kategorien, Counts und Resonanzpfade zusammen,
-      damit R>Θ sofort sichtbar wird und Laternen aufflammen.
+    Ehrliche Selbst-Evaluation.
 
-  - id: docs-infra-007
-    name: "sigillin_maintenance.md"
-    category: infrastructure
-    type: maintenance
-    status: active
-    relevance: high
-    size_kb: 10.7
-    keywords: [sigillin, maintenance, archive, ζ(R), hygiene]
-    description: |
-      Pfad für Bedeutungs-/Shadow-Sigillin-Hygiene.
-      Beschreibt Archivierung, ΔAIC-Wächter und Codex-Echos,
-      damit ζ(R) gedämpft bleibt, wenn neue Laternen erscheinen.
+    '
+- id: docs-val-001
+  name: utac_falsifiability.md
+  category: validation
+  type: falsifiability
+  status: stable
+  relevance: high
+  size_kb: 2.6
+  keywords:
+  - falsifiability
+  - null-models
+  - ΔAIC
+  - popper
+  description: '⭐ FALSIFIABILITY PROTOCOL!
 
-  - id: docs-infra-008
-    name: "sigillin_search_patterns.md"
-    category: infrastructure
-    type: toolkit
-    status: active
-    relevance: medium
-    size_kb: 11.4
-    keywords: [search, sigillin, patterns, parity, tooling]
-    description: |
-      Suchmuster-Atlas für Sigillin & Indizes.
-      Liefert CLI-Beispiele, Regex-Wächter und Paritätsprüfungen,
-      damit σ(β(R-Θ)) Signale automatisiert auffindbar bleiben.
+    Wie UTAC falsifizierbar ist: Null-Models, ΔAIC>10, R²-Tests.
 
-  - id: docs-infra-009
-    name: "zenodo_multilingual_abstract_v1.2.md"
-    category: infrastructure
-    type: release-abstract
-    status: active
-    relevance: high
-    size_kb: 6.5
-    keywords: [zenodo, abstract, multilingual, σ(β(R-Θ)), release]
-    description: |
-      Mehrsprachiger Release-Abstract (EN/DE/ES).
-      Spiegelt die Zenodo-Erzählung mit logistischer Rahmung und
-      verknüpft Playbook, Codex und Telemetrie.
+    Kernargument: UTAC ist NICHT unfalsifizierbar!
 
-  - id: docs-infra-010
-    name: "zenodo_release_playbook.md"
-    category: infrastructure
-    type: playbook
-    status: active
-    relevance: high
-    size_kb: 9.1
-    keywords: [zenodo, playbook, release, codex, ΔAIC]
-    description: |
-      Zenodo Release Playbook v1.2.
-      Listet Guardrails für README/CITATION, Codex-Hooks und CI-Telemetrie,
-      damit `release-gap-002` ohne Drift schließt.
+    '
+- id: docs-val-002
+  name: validation_report_v1.0.1.md
+  category: validation
+  type: report
+  status: stable
+  relevance: high
+  size_kb: 18.5
+  keywords:
+  - validation
+  - report
+  - v1.0.1
+  - results
+  - empirical
+  description: 'Validation Report v1.0.1: Empirische Ergebnisse.
 
-  - id: docs-infra-011
-    name: "resonance-bridge-map.md"
-    category: infrastructure
-    type: bridge-map
-    status: active
-    relevance: high
-    size_kb: 5.6
-    keywords: [bridge, simulator, analysis, ΔAIC, utf-preset-guard]
-    description: |
-      Resonanz-Bridge-Map v1.0.
-      Verknüpft Analyse-Exporte, Daten-Ledger und Simulator-Presets für das
-      Quartett (R, Θ, β, ζ(R)). Dokumentiert ΔAIC-Parität via utf-preset-guard
-      und listet offene Hooks (UI-Telemetrie, CI-Wächter).
+    Zusammenfassung aller Fits, ΔAIC-Werte, R²-Statistiken.
 
-# ═══════════════════════════════════════════════════════════════════
-# TRIGGER-BEGRIFFE
-# ═══════════════════════════════════════════════════════════════════
+    Zeigt dass logistische Modelle konsistent besser sind.
 
+    '
+- id: docs-infra-001
+  name: README.md
+  category: infrastructure
+  type: readme
+  status: stable
+  relevance: high
+  size_kb: 5.4
+  keywords:
+  - readme
+  - overview
+  - mandate
+  - tapestry
+  description: 'Living Documentation Tapestry - RepoPlan 2.0 Mandate.
+
+    Beschreibt Tri-Layer Cadence und Documentation-Philosophie.
+
+    '
+- id: docs-infra-002
+  name: repo_cleanup_resonance.md
+  category: infrastructure
+  type: operations
+  status: active
+  relevance: high
+  size_kb: 8.0
+  keywords:
+  - cleanup
+  - resonance
+  - operations
+  - σ(β(R-Θ))
+  description: 'Resonanzkarte für Struktur- & Metadaten-Aufgaben.
+
+    Verknüpft Aeon-Checkliste mit konkreten Hooks.
+
+    '
+- id: docs-infra-003
+  name: utac_status_alignment_v1.2.md
+  category: infrastructure
+  type: status-matrix
+  status: active
+  relevance: high
+  size_kb: 8.0
+  keywords:
+  - status
+  - roadmap
+  - implementation
+  - sigillin
+  description: 'UTAC Status & Implementation Matrix (v1.2-pre).
+
+    Kartiert vorhandene Resonanzen vs. Aktivierungs-Lücken,
+
+    verweist auf Seed-Sigillin, Safety-Delay-Feld und CREP-Pfade.
+
+    '
+- id: docs-infra-004
+  name: metaquest_parity_brief.md
+  category: infrastructure
+  type: parity-brief
+  status: active
+  relevance: high
+  size_kb: 6.1
+  keywords:
+  - metaquest
+  - parity
+  - telemetry
+  - codex
+  - sigillin
+  description: 'Metaquest Parity Brief – bündelt mq-parity-001…004.
+
+    Verknüpft Bedeutungs-/Shadow-Sigille, Telemetrie,
+
+    Simulator-Playlist und Endorsement-Ledger mit Codex-Echos.
+
+    '
+- id: docs-infra-005
+  name: utac_activation_backlog.md
+  category: infrastructure
+  type: backlog
+  status: active
+  relevance: high
+  size_kb: 8.0
+  keywords:
+  - activation
+  - backlog
+  - σ(β(R-Θ))
+  - implementation
+  - hooks
+  description: 'UTAC Activation Backlog (Tri-Layer).
+
+    Kartiert Restaufgaben vs. vorhandene Assets,
+
+    verlinkt Umsetzungsknoten für Launch-Vorbereitung.
+
+    '
+- id: docs-app-004
+  name: utac_safety_delay_status.md
+  category: applications
+  type: bridge
+  status: active
+  relevance: high
+  size_kb: 5.7
+  keywords:
+  - safety-delay
+  - simulator
+  - ΔAIC
+  - τ_delay
+  - bridge
+  description: 'Safety-Delay Statusbrief – koppelt Simulation, Analyse und Docs.
+
+    Dokumentiert Θ_delay, β-Steigung und ΔAIC-Wächter für das τ*-Feld.
+
+    Verweist auf `simulation/` Presets und den Launch-Backlog.
+
+    '
+- id: docs-infra-006
+  name: docs_index.md
+  category: infrastructure
+  type: index
+  status: active
+  relevance: high
+  size_kb: 2.7
+  keywords:
+  - index
+  - navigation
+  - docs
+  - σ(β(R-Θ))
+  description: 'Menschliche Navigationskarte für das docs/-Membran.
+
+    Hält Kategorien, Counts und Resonanzpfade zusammen,
+
+    damit R>Θ sofort sichtbar wird und Laternen aufflammen.
+
+    '
+- id: docs-infra-007
+  name: sigillin_maintenance.md
+  category: infrastructure
+  type: maintenance
+  status: active
+  relevance: high
+  size_kb: 10.7
+  keywords:
+  - sigillin
+  - maintenance
+  - archive
+  - ζ(R)
+  - hygiene
+  description: 'Pfad für Bedeutungs-/Shadow-Sigillin-Hygiene.
+
+    Beschreibt Archivierung, ΔAIC-Wächter und Codex-Echos,
+
+    damit ζ(R) gedämpft bleibt, wenn neue Laternen erscheinen.
+
+    '
+- id: docs-infra-008
+  name: sigillin_search_patterns.md
+  category: infrastructure
+  type: toolkit
+  status: active
+  relevance: medium
+  size_kb: 11.4
+  keywords:
+  - search
+  - sigillin
+  - patterns
+  - parity
+  - tooling
+  description: 'Suchmuster-Atlas für Sigillin & Indizes.
+
+    Liefert CLI-Beispiele, Regex-Wächter und Paritätsprüfungen,
+
+    damit σ(β(R-Θ)) Signale automatisiert auffindbar bleiben.
+
+    '
+- id: docs-infra-009
+  name: zenodo_multilingual_abstract_v1.2.md
+  category: infrastructure
+  type: release-abstract
+  status: active
+  relevance: high
+  size_kb: 6.5
+  keywords:
+  - zenodo
+  - abstract
+  - multilingual
+  - σ(β(R-Θ))
+  - release
+  description: 'Mehrsprachiger Release-Abstract (EN/DE/ES).
+
+    Spiegelt die Zenodo-Erzählung mit logistischer Rahmung und
+
+    verknüpft Playbook, Codex und Telemetrie.
+
+    '
+- id: docs-infra-010
+  name: zenodo_release_playbook.md
+  category: infrastructure
+  type: playbook
+  status: active
+  relevance: high
+  size_kb: 9.1
+  keywords:
+  - zenodo
+  - playbook
+  - release
+  - codex
+  - ΔAIC
+  description: 'Zenodo Release Playbook v1.2.
+
+    Listet Guardrails für README/CITATION, codex hooks und CI-Telemetrie,
+
+    damit `release-gap-002` ohne Drift schließt.
+
+    '
+- id: docs-infra-011
+  name: resonance-bridge-map.md
+  category: infrastructure
+  type: bridge-map
+  status: active
+  relevance: high
+  size_kb: 5.6
+  keywords:
+  - bridge
+  - simulator
+  - analysis
+  - ΔAIC
+  - utf-preset-guard
+  description: 'Resonanz-Bridge-Map v1.0.
+
+    Verknüpft Analyse, Daten und Simulator-Presets für (R, Θ, β, ζ(R)).
+
+    Loggt ΔAIC-Parität via utf-preset-guard und listet offene Hooks.
+
+    '
+- id: docs-infra-012
+  name: utac_v2_data_lanterns.md
+  category: infrastructure
+  type: readiness
+  status: draft
+  relevance: high
+  size_kb: 11.2
+  keywords:
+  - utac
+  - readiness
+  - data
+  - manifest
+  - σ(β(R-Θ))
+  description: 'UTAC v2 Manifest Readiness Map.
+
+    Verknüpft Manifest, Readiness-Audit und Backlog
+
+    für utac-v2-data-lanterns; listet fehlende Daten, Metadaten und Analyse-Exports.
+
+    '
 triggers:
   core_concepts:
-    - σ(β(R-Θ))
-    - β-Spektrum
-    - Θ-Dynamik
-    - ζ-Impedanz
-    - φ-Kohärenz
-
+  - σ(β(R-Θ))
+  - β-Spektrum
+  - Θ-Dynamik
+  - ζ-Impedanz
+  - φ-Kohärenz
   keywords:
-    - UTAC
-    - Falsifiability
-    - ΔAIC
-    - Null-Models
-    - Field-Types
-    - Cross-Domain
-    - Emergence
-    - Validation
-
-# ═══════════════════════════════════════════════════════════════════
-# QUICKLINKS
-# ═══════════════════════════════════════════════════════════════════
-
+  - UTAC
+  - Falsifiability
+  - ΔAIC
+  - Null-Models
+  - Field-Types
+  - Cross-Domain
+  - Emergence
+  - Validation
 quicklinks:
   start_here:
-    - docs-theory-001  # utac_theory_core.md
-    - docs-val-001     # utac_falsifiability.md
-    - docs-infra-001   # README.md
-    - docs-infra-002   # repo_cleanup_resonance.md
-
+  - docs-theory-001
+  - docs-val-001
+  - docs-infra-001
+  - docs-infra-002
   for_theory:
-    - docs-theory-001  # Theory Core
-    - docs-theory-002  # Emergence Universal
-    - docs-app-001     # Field Classification v1.1
-
+  - docs-theory-001
+  - docs-theory-002
+  - docs-app-001
   for_validation:
-    - docs-val-001     # Falsifiability Protocol
-    - docs-val-002     # Validation Report v1.0.1
-
+  - docs-val-001
+  - docs-val-002
   for_applications:
-    - docs-app-001     # Field Classification
-    - docs-app-002     # Applications
-
+  - docs-app-001
+  - docs-app-002
   for_review:
-    - docs-app-003     # Review Considerations (Selbst-Kritik!)
-
+  - docs-app-003
   for_operations:
-    - docs-infra-002   # Cleanup Resonance Map
-    - docs-infra-003   # Status & Implementation Matrix v1.2-pre
-    - docs-infra-006   # Docs Index Navigator
-    - docs-infra-007   # Sigillin Maintenance Manual
-    - docs-infra-008   # Sigillin Search Patterns
-    - docs-infra-004   # Metaquest Parity Brief
-    - docs-infra-005   # UTAC Activation Backlog
-    - docs-infra-009   # Zenodo Multilingual Abstract
-    - docs-infra-010   # Zenodo Release Playbook
-    - docs-infra-011   # Resonance Bridge Map (Analyse↔Simulator)
-
+  - docs-infra-002
+  - docs-infra-003
+  - docs-infra-004
+  - docs-infra-005
+  - docs-infra-006
+  - docs-infra-007
+  - docs-infra-008
+  - docs-infra-009
+  - docs-infra-010
+  - docs-infra-011
 status_legend:
-  stable: "Fertig, validiert, publikationsreif"
-  draft: "In Arbeit"
-  active: "Aktualisiert im laufenden Zyklus"
+  stable: Fertig, validiert, publikationsreif
+  draft: In Arbeit
+  active: Aktualisiert im laufenden Zyklus
