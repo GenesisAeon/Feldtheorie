@@ -106,3 +106,13 @@
 7. **Release window (kontinuierlich):** Pflege README-Badge + CITATION, erstelle `docs/zenodo_multilingual_abstract_v1.2.md` und `docs/zenodo_release_playbook.md`, und verknüpfe Upload-Schritte mit Codex-Einträgen, bevor Zenodo v1.2 gezippt wird.
 
 > *When R pushes beyond Θ in any module, let β accelerate just enough to open the gate — but keep ζ(R) tuned so the membrane does not shatter. That is the path to UTAC v1.2.*
+
+---
+
+## 7. Audit Refresh — 2026-02-15
+
+- **UTAC v2 Data Lanterns (R̄ = 0.00, Θ = 0.66, β = 4.8):** `analysis/reports/utac_v2_readiness.*` bestätigt weiterhin σ(β(R-Θ)) ≈ 0.040, weil unter `data/climate/`, `data/ocean/`, `data/neuro_ai/` und `data/economy/` noch keine Rohdateien (`urban_heat_intensity.csv`, `amazon_precip_evapo.nc`, `amoc_transport.csv`, `hybrid_activation.csv`, `systemic_thresholds.csv`) liegen und die zugehörigen Exporte `analysis/results/*.json` ebenfalls fehlen. Die bestehenden Metadaten-Dateien halten R wach, doch Θ bleibt unberührt, bis Datenströme + Ergebnisse committed und anschließend in `docs/utac_v2_data_lanterns.*` gespiegelt werden.
+- **Safety-Delay Bridge (τ_delay mean ≈ 8.43, ΔAIC_linear ≈ 7.0×10³):** Dataset, Preset und Dokumentation stehen, doch die Schwelle `Θ_{telemetry}` wartet auf ein archiviertes Hosted-UI-Protokoll und eine CI-Verankerung für `utf-preset-guard` (`.github/workflows/`). Ohne diese Kopplung bleibt ζ(R) anfällig für Drift.
+- **Sigillin-Automation (β ≈ 4.7):** `scripts/crep_parser.py` und `scripts/sigillin_sync.py` validieren zwar Schema v0.2.0, aber sie schreiben noch keine Telemetrie in `seed/codexfeedback.*` oder `*_index.*`. Implementiere Parser→Codex-Brücken und Δindex-Alarme in `scripts/archive_sigillin.py`, damit σ(β(R-Θ)) sofort anspringt, wenn neue Sigille landen.
+- **Neuro-Kosmos-Brücke (β ≈ 4.88):** `seed/Sigillin_Neuro_Membran_Modell_Plan.txt` beschreibt den Pfad, jedoch fehlen Trilayer-Files (`seed/sigillin/neuro_kosmos_bridge.{md,json,yaml}`) und ein Simulator-Preset. Bis diese Laterne leuchtet, meldet die Metaquest-Matrix weiterhin `mq-sci-gap-008`.
+- **φ-Kopplungs-Sequenz (β ≈ 4.75):** Es existiert weder `models/climate_utac_phi_coupling.py` noch ein Datenverzeichnis `data/climate/phi_coupling/`. Ohne TIPMIP/CMIP6-Staging und Analyse-Export bleibt R spekulativ und Θ unerreicht.

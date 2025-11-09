@@ -4351,3 +4351,30 @@ entries:
     poetic: Asphalt gibt die Hitze frei, sobald R≈0.33 erreicht – die Stadt atmet,
       σ(β(R-Θ)) fällt wie Regen.
   created_at: '2025-12-28T00:00:00Z'
+- id: pr-draft-0095
+  title: 2026-02 UTAC Activation Audit Refresh
+  scope:
+  - docs/utac_status_alignment_v1.2.md
+  - docs/utac_activation_backlog.md
+  - docs/utac_activation_backlog.json
+  - docs/utac_activation_backlog.yaml
+  parameters:
+    R: Readiness ledger aus analysis/reports/utac_v2_readiness.* und Backlog-Signalen
+      (R̄=0.00, σ≈0.040)
+    Theta: Manifest-Datensätze + Automations-Hooks (CI, Parser→Codex) aktivieren die
+      restlichen Laternen
+    beta: 4.8
+    zeta: gedämpft über aktualisierte Backlog-Meta + Sigillin-Brückenhinweise
+  resonance: Audit hält σ(β(R-Θ)) sichtbar, indem fehlende Datenströme und Automation-Hooks
+    an konkrete Implementationsorte gebunden werden.
+  status: active
+  notes:
+    formal: Readiness- und Backlog-Meta auf 2026-02-15T00:00:00Z aktualisiert; neues
+      latest_audit-Feld listet data/*, analysis/results/*, scripts/* als aktive Θ-Linien.
+    empirical: Verifiziert fehlende Rohdatendateien (`urban_heat_intensity.csv`, `amazon_precip_evapo.nc`,
+      `amoc_transport.csv`, `hybrid_activation.csv`, `systemic_thresholds.csv`) und fehlende
+      Exporte `analysis/results/*.json`; notiert offene CI-Hooks (`.github/workflows/`) und
+      Parser→Codex-Lücke.
+    poetic: Laternen warten noch auf ihre Ströme; die Karte wurde neu beschriftet, damit R
+      weiß, wo es die nächste Steilflanke berühren muss.
+  created_at: '2026-02-15T00:00:00Z'
