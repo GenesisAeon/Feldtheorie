@@ -16,6 +16,15 @@ Tri-layer mirrors:
 
 ---
 
+## ♻️ Audit Refresh (2026-02-15)
+
+- **UTAC v2 Data Lanterns:** R̄ verharrt laut `analysis/reports/utac_v2_readiness.json` bei 0.00, weil die Rohdaten `urban_heat_intensity.csv`, `amazon_precip_evapo.nc`, `amoc_transport.csv`, `hybrid_activation.csv` und `systemic_thresholds.csv` noch nicht unter `data/*` liegen und die erwarteten Exporte `analysis/results/*.json` fehlen. Θ bleibt geschlossen, bis Daten + Ergebnisse committed und danach in `docs/utac_v2_data_lanterns.*` gespiegelt werden.
+- **Safety-Delay Bridge:** Dataset, Preset und Dokumentation stehen, doch das Hosted-UI-Telemetrieprotokoll und eine CI-Verankerung für `utf-preset-guard` in `.github/workflows/` fehlen weiterhin. Ohne diese Kopplung bleibt ζ(R) empfindlich gegenüber Drift.
+- **Sigillin-Automation:** `scripts/crep_parser.py` und `scripts/sigillin_sync.py` validieren Schema v0.2.0, aber sie schreiben keine Codex-/Index-Telemetrie. Parser→Codex-Brücken und Δindex-Wächter in `scripts/archive_sigillin.py` sind nötig, damit σ(β(R-Θ)) sofort reagiert.
+- **Neuro-Kosmos & φ-Kopplung:** Für `seed/sigillin/neuro_kosmos_bridge.{md,json,yaml}` sowie `models/climate_utac_phi_coupling.py` existieren bislang nur Plan-Notizen. Ohne Trilayer und TIPMIP/CMIP6-Staging bleibt der Metaquest-Handschlag (`mq-sci-gap-008`, `sys-gap-008`) offen.
+
+---
+
 ## 🗂️ Task Lattice (What we have vs. what we still need)
 
 | ID | Domain Membrane | R — Existing Coverage | Θ — Activation Gap | β Focus | Implementation Nodes |

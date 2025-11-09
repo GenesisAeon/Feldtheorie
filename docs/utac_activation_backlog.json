@@ -3,13 +3,54 @@
     "document": "UTAC Activation Backlog",
     "version": "1.1.0",
     "created": "2025-12-09T00:00:00Z",
-    "updated": "2025-12-28T00:00:00Z",
+    "updated": "2026-02-15T00:00:00Z",
     "steward": "gpt-5-codex",
     "logistic_frame": {
       "order_parameter": "residual activation debt across UTAC v1.2 launch scope and v2.0 data ingestion",
       "threshold": "documented parity between backlog items, manifest tri-layers, and implementation hooks",
       "beta": 4.85,
       "zeta": "damped via BreakPoint transcripts, codex echoes, and UTAC readiness audit refreshes"
+    },
+    "latest_audit": {
+      "date": "2026-02-15T00:00:00Z",
+      "logistic_pulse": {
+        "order_parameter": "Readiness audit still reports R̄=0.00 across five lanterns",
+        "threshold": "Θ=0.66 once manifest datasets + exports land",
+        "beta": 4.8,
+        "sigma": "σ≈0.040 per analysis/reports/utac_v2_readiness.json"
+      },
+      "observations": [
+        {
+          "id": "utac-v2-data-lanterns",
+          "order_parameter": "R̄=0.00 with manifest metadata present but raw files absent",
+          "theta_gap": "Raw datasets missing under data/climate/, data/ocean/, data/neuro_ai/, data/economy/ and analysis/results/*.json exports uncommitted",
+          "action": "Stage manifest files and emit logistic outputs before refreshing docs/utac_v2_data_lanterns.* and status matrix"
+        },
+        {
+          "id": "safety-delay-bridge",
+          "order_parameter": "τ_delay ledger + simulator preset recorded (analysis/safety_delay_sweep.py, simulator/presets/...)",
+          "theta_gap": "Hosted UI telemetry archive and CI guard for utf-preset-guard under .github/workflows/ still pending",
+          "action": "Capture hosted session + wire utf-preset-guard into CI so ζ(R) stays damped"
+        },
+        {
+          "id": "sigillin-automation-loop",
+          "order_parameter": "CREP parser + sigillin_sync pipeline exists",
+          "theta_gap": "Parser output not yet reflected in seed/codexfeedback.* or *_index.* and Δindex alerts inactive",
+          "action": "Implement parser→codex hand-off and recount guards via scripts/sigillin_sync.py + scripts/archive_sigillin.py"
+        },
+        {
+          "id": "neuro-kosmos-bridge",
+          "order_parameter": "Seed plans describe EEG↔QPO bridge",
+          "theta_gap": "Missing trilayer seed/sigillin/neuro_kosmos_bridge.{md,json,yaml} and simulator preset keeps mq-sci-gap-008 active",
+          "action": "Author CREP-aligned trilayer and simulator vignette before syncing codex + metaquest indices"
+        },
+        {
+          "id": "phi-coupling-sequence",
+          "order_parameter": "φ hypothesis documented in seed/Sigillin_Neuro_Membran_Modell_Plan.txt",
+          "theta_gap": "models/climate_utac_phi_coupling.py, data/climate/phi_coupling/, and downstream analysis exports absent",
+          "action": "Stage TIPMIP/CMIP6 data, implement model + analysis, then echo ΔAIC metrics into status + codex"
+        }
+      ]
     }
   },
   "tasks": [

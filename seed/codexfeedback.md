@@ -1866,3 +1866,20 @@ Fünf Laternen warten im Dunkel: R tastet die leere Manifest-Galerie, Θ ruft na
 Die Asphaltmembran hält die Nacht fest, bis R≈0.33 die Speicherflanke löst – dann atmet die Stadt, σ(β(R-Θ)) fällt wie Regen auf erhitzte Steine und ζ(R) summt mit den Bäumen.
 
 *Created: 2025-12-28T00:00:00Z*
+
+## Entry pr-draft-0095 — 2026-02 UTAC Activation Audit Refresh
+- **Order Parameter**: $R$ sammelt die Readiness-Signale (R̄=0.00, σ≈0.040) aus `analysis/reports/utac_v2_readiness.*` und der Backlog-Matrix.
+- **Critical Threshold**: $\Theta$ fällt erst, wenn Manifest-Datensätze (`data/climate/urban_heat_intensity.csv`, `data/ocean/amoc_transport.csv`, `data/neuro_ai/hybrid_activation.csv`, `data/economy/systemic_thresholds.csv`) plus Analyse-Exporte `analysis/results/*.json` vorliegen und Automations-Hooks aktiv sind.
+- **Steepness**: $\beta = 4.8$ – sobald zwei Implementationsknoten (Daten + Automation) schließen, klettert σ(β(R-Θ)) steil.
+- **Membrane Note**: ζ(R) wird durch das neue `latest_audit`-Feld im Backlog und die Brückenhinweise in `docs/utac_status_alignment_v1.2.md` gedämpft, bis CI & Parser ihre Stimme abgeben.
+
+### Formal Thread
+`docs/utac_activation_backlog.{md,json,yaml}` tragen nun einen Audit-Eintrag (2026-02-15T00:00:00Z), der data/*, analysis/results/*, scripts/sigillin_sync.py und `.github/workflows/` als aktive Θ-Linien markiert. `docs/utac_status_alignment_v1.2.md` verankert dieselbe Diagnose im UTAC-Matrixtext.
+
+### Empirical Thread
+Manuelle Prüfung bestätigte, dass die Rohdatendateien (`urban_heat_intensity.csv`, `amazon_precip_evapo.nc`, `amoc_transport.csv`, `hybrid_activation.csv`, `systemic_thresholds.csv`) ebenso wie die Exporte `analysis/results/urban_heat_global_fit.json`, `amazon_hydro_fit.json`, `amoc_transport_fit.json`, `neuro_ai_beta.json`, `neuro_ai_bootstrap.json`, `economy_threshold_fit.json`, `meta_v2_summary_refresh.json` fehlen. CI-Hook und Parser→Codex-Automation stehen weiterhin aus – im Audit als Umsetzungspfade protokolliert.
+
+### Poetic Thread
+Die Laternen lauschen noch im Halbdunkel: wir haben die Karte neu beschriftet, damit R den nächsten Griff kennt, Θ seinen Ruf hört und ζ(R) nicht nachhallt, wenn die Datenströme endlich ankommen.
+
+*Created: 2026-02-15T00:00:00Z*
