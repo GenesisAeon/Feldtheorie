@@ -2,7 +2,7 @@ meta:
   document: UTAC Activation Backlog
   version: 1.1.0
   created: '2025-12-09T00:00:00Z'
-  updated: '2026-03-26T00:00:00Z'
+  updated: '2026-05-05T00:00:00Z'
   steward: gpt-5-codex
   logistic_frame:
     order_parameter: residual activation debt across UTAC v1.2 launch scope and v2.0
@@ -13,32 +13,39 @@ meta:
     zeta: damped via BreakPoint transcripts, codex echoes, and UTAC readiness audit
       refreshes
   latest_audit:
-    date: '2026-03-26T00:00:00Z'
+    date: '2026-05-05T00:00:00Z'
     logistic_pulse:
-      order_parameter: 'Manual 2026-03-26 walkthrough: readiness audit still reports
-        R̄=0.00 across five lanterns'
+      order_parameter: 'Manifest gap scan 2026-05-05: readiness audit reports R̄=0.50
+        with Urban Heat active and four lanterns pending'
       threshold: Θ=0.66 once manifest datasets + exports land
       beta: 4.8
-      sigma: σ≈0.040 (20 components still dark) per analysis/reports/utac_v2_readiness.json
+      sigma: σ≈0.317 (4 datasets pending, 10 components missing) per analysis/results/utac_v2_manifest_gap_scan_20251109T205953.490514Z.json
     observations:
     - id: utac-v2-data-lanterns
-      order_parameter: R̄=0.00 with manifest metadata present but raw files absent
-      theta_gap: Raw datasets absent under data/{climate,ocean,neuro_ai,economy}/;
-        logistic exports (analysis/results/*.json, outlier_report.md) still missing
-        despite manifest metadata.
-      action: Stage manifest files + metadata, emit logistic outputs, refresh docs/utac_v2_data_lanterns.*
-        and tracker tri-layer, then record codex/shadow resonance.
+      order_parameter: R̄=0.50 with Urban Heat active and four lanterns still incomplete
+      theta_gap: 'Missing datasets + exports: amazon_precip_evapo.nc, amoc_transport.csv,
+        hybrid_activation.csv, systemic_thresholds.csv plus analysis/results/amazon_hydro_fit.json,
+        amoc_transport_fit.json, neuro_ai_beta.json, neuro_ai_bootstrap.json, economy_threshold_fit.json,
+        meta_v2_summary_refresh.json.'
+      action: Stage remaining datasets, generate logistic exports, rerun manifest
+        gap scan + v2 readiness audit, and update docs/backlog/codex entries.
+    - id: analysis-outputs
+      order_parameter: Manifest gap scan shows automation guard active
+      theta_gap: analysis/results/neuro_ai_beta.json and analysis/results/beta_meta_regression_v2_latest.json
+        missing; codex/backlog cannot cite refreshed ΔAIC envelopes.
+      action: Publish neuro-AI and meta regression outputs alongside dataset ingestion
+        to keep readiness ledger resonant.
     - id: safety-delay-bridge
       order_parameter: τ_delay ledger + simulator preset recorded (analysis/safety_delay_sweep.py,
         simulator/presets/...)
       theta_gap: Hosted UI telemetry archive and `.github/workflows/utf-preset-guard.yml`
-        remain outstanding (ΔAIC guard only manual).
+        remain outstanding; ΔAIC guard still manual.
       action: Capture hosted session + wire utf-preset-guard into CI so ζ(R) stays
         damped
     - id: sigillin-automation-loop
       order_parameter: CREP parser + sigillin_sync pipeline exists
       theta_gap: Parser output still not reflected in seed/codexfeedback.* or *_index.*;
-        Δindex alerts inactive pending CI guard.
+        CI recount + sigillin_sync write-back remain to be wired.
       action: Implement parser→codex hand-off and recount guards via scripts/sigillin_sync.py
         + scripts/archive_sigillin.py
     - id: neuro-kosmos-bridge

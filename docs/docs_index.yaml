@@ -9,12 +9,12 @@ meta:
     Tri-layer Cadence: Formal, Empirical, Metaphorical.
 
     '
-  version: 1.3.3
+  version: 1.3.4
   created: '2025-11-06'
   status: active
-  markdown_files: 25
-  updated: '2026-03-26T00:00:00Z'
-  last_updated: '2026-03-26'
+  markdown_files: 26
+  updated: '2026-05-05T00:00:00Z'
+  last_updated: '2026-05-05'
 categories:
   theory:
     name: Core Theory
@@ -35,7 +35,7 @@ categories:
     name: Infrastructure
     description: README, Operational Resonance Maps
     color: '#9B59B6'
-    count: 15
+    count: 16
 markdown_docs:
 - id: docs-theory-001
   name: utac_theory_core.md
@@ -517,6 +517,26 @@ markdown_docs:
 
     Summarises existing assets vs. open lantern gaps and notes the updated preset
     guard parsing meta.logistic.
+
+    '
+- id: docs-infra-016
+  name: utac_v2_activation_tracker_2026-05.md
+  category: infrastructure
+  type: activation-tracker
+  status: active
+  relevance: high
+  size_kb: 8.0
+  keywords:
+  - utac
+  - activation
+  - tracker
+  - σ(β(R-Θ))
+  - readiness
+  description: 'UTAC v2 Activation Tracker 2026-05.
+
+    Verknüpft den neuen Manifest Gap Scan, nennt fehlende Daten/Exports (4 Laternen,
+    10 Komponenten, 2 Analyse-Outputs) und priorisiert Hooks für Daten, Automation
+    und Codex-Sync.
 
     '
 triggers:
