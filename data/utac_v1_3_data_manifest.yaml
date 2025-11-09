@@ -43,7 +43,7 @@ datasets:
     integration_scripts:
       - "analysis/climate_beta_extractor.py"
       - "analysis/outlier_validator.py"
-    resonance_status: "primed"
+    resonance_status: "active"
 
   - id: utac-v1_3-ds-002
     title: "Amazon Precipitation & Evapotranspiration"
@@ -71,7 +71,7 @@ datasets:
       - "analysis/results/outlier_report.md"
     integration_scripts:
       - "analysis/climate_beta_extractor.py"
-    resonance_status: "primed"
+    resonance_status: "active"
 
   - id: utac-v1_3-ds-003
     title: "AMOC Transport (RAPID Array 26°N)"
@@ -128,7 +128,7 @@ datasets:
       - "analysis/results/neuro_ai_bootstrap.json"
     integration_scripts:
       - "analysis/neuro_threshold_fitter.py"
-    resonance_status: "draft"
+    resonance_status: "primed"
 
   - id: utac-v1_3-ds-005
     title: "Energy & Financial Systemic Thresholds"
@@ -160,11 +160,11 @@ datasets:
     resonance_status: "draft"
 
 telemetry:
-  last_reviewed: "2025-12-19T12:00:00Z"
+  last_reviewed: "2025-12-20T09:00:00Z"
   next_actions:
-    - "Create placeholder directories under data/ for climate, ocean, neuro_ai, economy"
-    - "Add metadata templates once raw files downloaded"
-    - "Trigger codexfeedback entry after first dataset lands"
+    - "Ingest reale Urban-Heat Raster & Amazon Hydro Felder laut Metadata"
+    - "Beschaffen AMOC Transport CSV & Energy-Finance Index (economy)"
+    - "Synchronisiere Codex-Feedback nach erster Dateneinspielung"
   shadow_guard_hooks:
     - "seed/shadow_sigillin/metaquest/metaquest_shadow_index.md"
     - "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml"

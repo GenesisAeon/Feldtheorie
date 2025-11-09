@@ -15,10 +15,15 @@ Metaphorical stratum:
 """
 
 __all__ = [
+    "climate_beta_extractor",
+    "neuro_threshold_fitter",
+    "outlier_validator",
     "planetary_tipping_elements_fit",
-    "resonance_batch_runner",
-    "resonance_fit_pipeline",
     "potential_cascade_lab",
     "preset_alignment_guard",
+    "resonance_batch_runner",
+    "resonance_fit_pipeline",
+    "threshold_dataset_loader",
     "universal_beta_extractor",
+    "utac_manifest",
 ]

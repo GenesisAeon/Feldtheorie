@@ -1,0 +1,63 @@
+{
+  "dataset_name": "Amazon Precipitation & Evapotranspiration",
+  "domain": "climate",
+  "path": "data/climate/amazon_precip_evapo.nc",
+  "status": "staging",
+  "description": "CHIRPS/IMERG Feuchte- und Niederschlagsfelder zur Prüfung der Amazon-Resilienz über σ(β(R-Θ)).",
+  "data_format": "netcdf",
+  "control_parameter_R": {
+    "column": "standardized_precipitation_index",
+    "units": "index",
+    "description": "Standardized Precipitation Index pro Gitterpunkt"
+  },
+  "response_sigma": {
+    "column": "moisture_resilience_activation",
+    "units": "fraction",
+    "description": "Aktivierungsanteil der Feuchte-Resonanz (0–1)"
+  },
+  "threshold_estimates": {
+    "theta": 0.62,
+    "beta": 13.8,
+    "zeta_R": "ζ(R) koppelt Bodenfeuchte mit Waldtranspiration",
+    "delta_aic_guard": 12.0
+  },
+  "null_models_tested": [
+    "linear_regression",
+    "power_law_fit",
+    "seasonal_arima"
+  ],
+  "preprocessing_steps": [
+    "Download monatliche CHIRPS Niederschlagszeitreihen",
+    "Merge mit NASA GPM IMERG Evapotranspiration",
+    "Berechnung SPI und Moisture Resilience Index"
+  ],
+  "provenance": {
+    "sources": [
+      {
+        "name": "CHIRPS",
+        "citation": "Funk et al. (2015)",
+        "url": "https://www.chc.ucsb.edu/data/chirps"
+      },
+      {
+        "name": "NASA GPM IMERG",
+        "citation": "NASA Goddard Space Flight Center",
+        "url": "https://gpm.nasa.gov/data"
+      }
+    ],
+    "license": "CC-BY-4.0"
+  },
+  "temporal": {
+    "created": "2025-12-19T00:00:00Z",
+    "modified": "2025-12-19T00:00:00Z",
+    "version": "0.1.0",
+    "change_count": 0
+  },
+  "simulation_hint": {
+    "control_min": -2.0,
+    "control_max": 2.0,
+    "n_points": 360,
+    "noise_scale": 0.03
+  },
+  "falsification_notes": "ΔAIC ≥ 12 vs linear, ≥ 18 vs power-law; saisonale ARIMA als dritter Spiegel.",
+  "logistic_form": "sigma(beta*(R-Theta))"
+}

@@ -6,9 +6,9 @@
     "description": "Analysis-Skripte und Notebooks, die UTF logistic response σ(β(R-Θ))\nan empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.\n",
     "version": "1.0.0",
     "created": "2025-11-06",
-    "updated": "2025-12-19T12:00:00Z",
+    "updated": "2025-12-20T09:00:00Z",
     "status": "active",
-    "python_files": 33,
+    "python_files": 38,
     "subdirectories": 5
   },
   "categories": {
@@ -16,7 +16,7 @@
       "name": "Domain-Spezifische Fit-Skripte",
       "description": "Python-Skripte für logistische Fits spezifischer Domänen",
       "color": "#3498DB",
-      "count": 16
+      "count": 18
     },
     "batch_processing": {
       "name": "Batch Processing & Pipelines",
@@ -34,7 +34,7 @@
       "name": "Utilities & Guards",
       "description": "Helper-Funktionen, Guards, Corrections",
       "color": "#9B59B6",
-      "count": 4
+      "count": 7
     },
     "subdirs": {
       "name": "Unterverzeichnisse",
@@ -301,6 +301,40 @@
       "description": "Typologisierung adaptiver Theta-Systeme.\nKlassifikation verschiedener Schwellenwert-Typen.\n"
     },
     {
+      "id": "analysis-fit-017",
+      "name": "climate_beta_extractor.py",
+      "category": "fit_scripts",
+      "domain": "climate",
+      "type": "pipeline",
+      "status": "primed",
+      "relevance": "high",
+      "keywords": [
+        "climate",
+        "urban-heat",
+        "amazon",
+        "manifest",
+        "beta"
+      ],
+      "description": "UTAC v1.3 Climate-Pipeline. Liest `data/utac_v1_3_data_manifest.yaml`,\nlädt Metadata (`urban_heat_intensity`, `amazon_precip_evapo`) und fittet\nσ(β(R-Θ)) inklusive ΔAIC Guards (linear, power-law, spline). Unterstützt\nsimulierte Proben bis Rohdaten landen und exportiert Preview-JSONs.\n"
+    },
+    {
+      "id": "analysis-fit-018",
+      "name": "neuro_threshold_fitter.py",
+      "category": "fit_scripts",
+      "domain": "neuro_ai",
+      "type": "pipeline",
+      "status": "primed",
+      "relevance": "high",
+      "keywords": [
+        "neuro-ai",
+        "eeg",
+        "transformer",
+        "beta",
+        "bootstrap"
+      ],
+      "description": "Bringt EEG ↔ Transformer Aktivierungen zusammen. Fittet σ(β(R-Θ)),\nliefert ΔAIC Guards, bootstrapped β/Θ/R²-Envelopes und schreibt\n`analysis/results/neuro_ai_beta*.json` für UTAC v1.3.\n"
+    },
+    {
       "id": "analysis-batch-001",
       "name": "resonance_batch_runner.py",
       "category": "batch_processing",
@@ -528,6 +562,50 @@
         "falsification"
       ],
       "description": "Prüft hochsteile β-Profile (Amazon, Urban Heat) gegen glatte Nullmodelle.\nExportiert instrumentation_flag Ledger: results/outlier_beta_review.json.\n"
+    },
+    {
+      "id": "analysis-util-005",
+      "name": "outlier_validator.py",
+      "category": "utilities",
+      "type": "guard",
+      "status": "primed",
+      "relevance": "high",
+      "keywords": [
+        "beta>10",
+        "manifest",
+        "instrumentation",
+        "ΔAIC"
+      ],
+      "description": "Manifest-Guard für β>10 Laternen. Lädt Metadata, simuliert bei Bedarf,\nfittet σ(β(R-Θ)) und bewertet ΔAIC sowie instrumentation_flag. Export:\nresults/outlier_validator_report.json.\n"
+    },
+    {
+      "id": "analysis-util-006",
+      "name": "threshold_dataset_loader.py",
+      "category": "utilities",
+      "type": "helper",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "metadata",
+        "loader",
+        "simulation",
+        "logistics"
+      ],
+      "description": "Shared Loader für `.metadata.json` Laternen. Normalisiert Pfade, lädt\nCSV/NetCDF, kalibriert simulierte σ(β(R-Θ)) Rehearsals via Logit-Jitter,\ndamit Manifest-Θ/β erhalten bleiben, und bündelt ΔAIC Guards (linear,\npower-law) für Downstream-Skripte.\n"
+    },
+    {
+      "id": "analysis-util-007",
+      "name": "utac_manifest.py",
+      "category": "utilities",
+      "type": "helper",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "manifest",
+        "parser",
+        "utac_v1_3"
+      ],
+      "description": "Parser für `data/utac_v1_3_data_manifest.yaml`. Stellt ManifestDataset-\nObjekte bereit, filtert Domains/IDs und liefert Output-Pfade für neue Laternen.\n"
     },
     {
       "id": "analysis-special-001",

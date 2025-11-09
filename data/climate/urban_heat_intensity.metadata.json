@@ -1,0 +1,63 @@
+{
+  "dataset_name": "Global Urban Heat Intensity",
+  "domain": "climate",
+  "path": "data/climate/urban_heat_intensity.csv",
+  "status": "staging",
+  "description": "Rasterisierte Urban-Heat-Delta-Messungen, vorbereitet für σ(β(R-Θ)) Fits mit anthropogener Impedanz ζ(R).",
+  "data_format": "csv",
+  "control_parameter_R": {
+    "column": "land_surface_temperature_delta",
+    "units": "K",
+    "description": "Urban minus rural land surface temperature ΔT pro Rasterzelle."
+  },
+  "response_sigma": {
+    "column": "heat_activation_fraction",
+    "units": "fraction",
+    "description": "Anteil urbaner Zellen, die den Hitzestress-Logistikschwellwert überschreiten."
+  },
+  "threshold_estimates": {
+    "theta": 3.2,
+    "beta": 14.5,
+    "zeta_R": "ζ(R) koppelt anthropogene Wärmeabgabe mit Bodenfeuchte-Rückkopplung",
+    "delta_aic_guard": 10.0
+  },
+  "null_models_tested": [
+    "linear_regression",
+    "power_law_fit",
+    "cubic_spline_baseline"
+  ],
+  "preprocessing_steps": [
+    "Download day/night composites aus NASA Global UHI",
+    "Resampling auf 0.25° Raster",
+    "Berechnung ΔT urban−rural und Normalisierung"
+  ],
+  "provenance": {
+    "sources": [
+      {
+        "name": "NASA Global UHI",
+        "citation": "Zhao et al. (2013)",
+        "url": "https://earthdata.nasa.gov/"
+      },
+      {
+        "name": "Yale Center for Earth Observation",
+        "citation": "Surface Urban Heat Island Intensity (2003–2018)",
+        "url": "https://yceo.yale.edu/"
+      }
+    ],
+    "license": "CC-BY-4.0"
+  },
+  "temporal": {
+    "created": "2025-12-19T00:00:00Z",
+    "modified": "2025-12-19T00:00:00Z",
+    "version": "0.1.0",
+    "change_count": 0
+  },
+  "simulation_hint": {
+    "control_min": 0.5,
+    "control_max": 6.0,
+    "n_points": 240,
+    "noise_scale": 0.025
+  },
+  "falsification_notes": "ΔAIC ≥ 10 gegen linearen Drift und ≥ 20 gegen power-law Null; spline-Basis als dritte Referenz.",
+  "logistic_form": "sigma(beta*(R-Theta))"
+}

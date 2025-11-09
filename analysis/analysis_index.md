@@ -1,7 +1,7 @@
 # 📊 Analysis Index - Resonance Bay Navigator
 
 **Version:** 1.0.0
-**Datum:** 19. Dezember 2025
+**Datum:** 20. Dezember 2025
 **Verzeichnis:** `analysis/`
 
 ---
@@ -13,7 +13,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 **Trilayer-Navigation:**
 ```
 ┌─────────────────────────────────────────┐
-│  YAML  →  Struktur (33 Python-Skripte)  │  analysis_index.yaml
+│  YAML  →  Struktur (38 Python-Skripte)  │  analysis_index.yaml
 │  JSON  →  Agentenschnittstelle          │  analysis_index.json
 │  MD    →  Menschenfreundlich (du!)      │  analysis_index.md
 └─────────────────────────────────────────┘
@@ -27,7 +27,7 @@ Willkommen in der **Analysis Resonance Bay** - dem Herzstück der empirischen UT
 
 ```
 analysis/
-├── 33 Python-Skripte (Domain-Fits, Batch-Processing, Labs)
+├── 38 Python-Skripte (Domain-Fits, Batch-Processing, Labs, Guards)
 ├── batch_configs/   (4 YAML/JSON Konfigurationen)
 ├── batch_runs/      (2 gespeicherte Batch-Runs)
 ├── reports/         (2 Summaries: QPO, UTAC v1.3 Gap)
@@ -59,11 +59,17 @@ analysis/
 - `resonance_fit_pipeline.py` - Haupt-Pipeline
 - `beta_meta_regression_v2.py` - Nichtlineare Meta-Regression + Bootstrap/Random-Forest-Diagnostics
 
+#### **Neu für UTAC v1.3:**
+- `climate_beta_extractor.py` - Manifest-getriebene Pipeline für Urban Heat & Amazon Hydro (ΔAIC Guards, Simulationen)
+- `neuro_threshold_fitter.py` - EEG ↔ Transformer Brücke mit Bootstrap-Envelopes
+- `outlier_validator.py` - β>10 Guardrail auf Basis `data/utac_v1_3_data_manifest`
+- `threshold_dataset_loader.py` & `utac_manifest.py` - Metadata Loader (Logit-Jitter Simulation) & Manifest Parser für neue Laternen
+
 ---
 
 ## 📂 Die 5 Kategorien
 
-### 🔵 Domain-Spezifische Fit-Skripte (16)
+### 🔵 Domain-Spezifische Fit-Skripte (18)
 
 **Was?** Python-Skripte für logistische Fits spezifischer Domänen
 
@@ -73,7 +79,9 @@ analysis/
 - **Cognition (2):** working_memory_gate, adaptive_theta_plasticity
 - **Geophysics (1):** seismic_rupture_threshold (Cascadia)
 - **Socio-Ecology (4):** amazon_resilience, urban_heat_canopy, planetary_tipping, outlier_beta_review
-- **Cross-Domain (6):** coupled_field, membrane_robin_semantic, meta_threshold, etc.
+- **Climate (1):** climate_beta_extractor (UTAC v1.3 Pipeline)
+- **Neuro-AI (1):** neuro_threshold_fitter (Hybrid Activation)
+- **Cross-Domain (7):** coupled_field, membrane_robin_semantic, meta_threshold, adaptive_theta_typology, etc.
 
 **Output:** Alle exportieren nach `results/*.json`
 
@@ -105,14 +113,17 @@ analysis/
 
 ---
 
-### 🟣 Utilities & Guards (4)
+### 🟣 Utilities & Guards (7)
 
-**Was?** Helper-Funktionen, Validierung, Diagnostics
+**Was?** Helper-Funktionen, Validierung, Diagnostics, Manifest-Pipelines
 
 1. `multiple_testing_correction.py` - **Wichtig!** Bonferroni, FDR
 2. `preset_alignment_guard.py` - Validiert Preset-Konsistenz
 3. `resonant_impedance_diagnostics.py` - ζ(R) Diagnostics
 4. `outlier_beta_review.py` - ΔAIC Outlier-Wacht (instrumentation_flag)
+5. `outlier_validator.py` - Manifest-basierter β>10 Guard + instrumentation_flag
+6. `threshold_dataset_loader.py` - Metadata Loader + Logit-Jitter Simulation für σ(β(R-Θ))
+7. `utac_manifest.py` - Parser für `data/utac_v1_3_data_manifest.yaml`
 
 ---
 
