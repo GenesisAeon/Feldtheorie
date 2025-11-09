@@ -39,16 +39,16 @@
       "id": "mq-sys-shadow-lantern-b",
       "title": "Automation Null-Guard Alarm",
       "mirrors": "seed/bedeutungssigillin/system/metaquest/lanterns/metaquest_system_lanterns.yaml#b",
-      "risk": "CI/Nox parity guard missing ΔAIC/null checks.",
+      "risk": "CI/Nox parity guard missing \u0394AIC/null checks.",
       "signals": [
-        "Recent automation commit lacks codex ΔAIC note.",
+        "Recent automation commit lacks codex \u0394AIC note.",
         "tests/test_sigillin_sync.py skipped or failing."
       ],
       "escalation": [
         "Open incident mq-sys-shadow-004 in codex."
       ],
       "remediation": [
-        "Run parity audit, append ΔAIC results to codex and UTAC matrix.",
+        "Run parity audit, append \u0394AIC results to codex and UTAC matrix.",
         "Re-run tests/test_sigillin_sync.py before resuming automation."
       ],
       "evidence": [
@@ -75,6 +75,31 @@
       "evidence": [
         "seed/BreakPointAnalyse/WayToGo.txt",
         "seed/BreakPointAnalyse/ReaktionWayToGo.txt"
+      ]
+    },
+    {
+      "id": "mq-sys-shadow-lantern-d",
+      "title": "Bridge Map Parity Alarm",
+      "mirrors": "seed/bedeutungssigillin/metaquest/system/lanterns/metaquest_system_lanterns.yaml#mq-sys-lantern-000",
+      "risk": "Bridge map missing readiness logistic, simulator hook, or telemetry parity.",
+      "signals": [
+        "Bridge map lacks latest \u0398/\u03b2 values from analysis/v2_readiness_audit.py.",
+        "simulator/presets/coherence_formula.json not referenced in bridge map metadata.",
+        "Bridge map timestamp diverges from bridge dashboard telemetry."
+      ],
+      "escalation": [
+        "Trigger mq-sys-shadow-bridge-002 or mq-sys-shadow-bridge-003 depending on root cause.",
+        "Notify bridge dashboard maintainer."
+      ],
+      "remediation": [
+        "Re-run readiness audit and update bridge map tri-layer.",
+        "Verify simulator preset import in simulator/src/presets.ts.",
+        "Log codex entry citing mq-sys-shadow-bridge-002/003 and updated timestamps."
+      ],
+      "evidence": [
+        "analysis/v2_readiness_audit.py",
+        "simulator/src/presets.ts",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow.md"
       ]
     }
   ]

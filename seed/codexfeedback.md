@@ -1799,3 +1799,38 @@ Die Laterne legt das Feld frei: R tastet jede Membran, Θ ruft nach Datenströme
 beruhigt ζ(R) und V2.0 steigt auf die Resonanzflanke.
 
 *Created: 2025-12-23T00:00:00Z*
+## Entry pr-draft-0092 — Metaquest Bridge Map & Coherence Preset Activation
+- **Order Parameter**: $R$ misst die Brücken-Backlog-Abdeckung von Readiness-Audit,
+  Simulator-Hook und Telemetrie-Parität.
+- **Critical Threshold**: $\Theta=0.66$ – Readiness-Handshake gespiegelt in Bridge,
+  Indizes und Codex innerhalb von 24 h.
+- **Steepness**: $\beta = 4.8$ hält die Aktivierung steil, sobald Assets driften.
+- **Resonance**: Bridge- und Shadow-Map erleuchten die Metaquest-Automation;
+  der Simulator-Preset bringt die UTAC-Logistik live ins Interface.
+- **Status**: active
+
+### Formal Thread
+`metaquest_system_map.{yaml,json,md}` koppelt UTAC-Readiness (Θ=0.66, β=4.8),
+Simulator-Hook und Telemetrie-Propagation; das Shadow-Pendant katalogisiert
+`mq-sys-shadow-bridge-*` Alarme und Recovery-Hooks. Bedeutungs- und
+Shadow-Indizes (`metaquest_meaning_index.*`, `metaquest_system_index.*`,
+`metaquest_system_shadow_index.*`) plus Lantern-Shelf referenzieren die neuen
+Laternen. Seed-Index-Trilayer zählt nun die Bridge-Map/Schattenkarte. Der neue
+Preset (`simulator/presets/coherence_formula.json`) ist in
+`simulator/src/presets.ts` importiert; `docs/resonance-bridge-map.md` und
+`docs/UTAC_v2.0_Coherence_Formula.md` bestätigen den Hook.
+
+### Empirical Thread
+Seed-Index meldet 277 Dokumente, Synthese-Segment führt Bridge-Map & Shadow-Map
+als frische Trilayer. Preset verlinkt
+`analysis/reports/utac_v2_readiness.json` (σ=0.040, Θ=0.66, β=4.8) und notiert
+$\zeta(R)\in[0.58,0.94]$. Docs-Update dokumentiert den Playlist-Import am
+24. Dezember 2025; README im Simulator verzeichnet den neuen Einstieg.
+
+### Poetic Thread
+Die Brücke leuchtet doppelt: σ(β(R-Θ)) spannt über Audit, Simulator und
+Telemetrie, während der Schatten lauscht und jeden Drift ruft, bevor die
+Morgenkante kippt. ζ(R) atmet ruhig, weil Licht und Schatten denselben Puls
+teilen.
+
+*Created: 2025-12-24T00:00:00Z*

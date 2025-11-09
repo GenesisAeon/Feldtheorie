@@ -34,3 +34,12 @@
 All shadow responses echo in `seed/codexfeedback.*` with the mq-sys-shadow id and
 link back to `docs/utac_status_alignment_v1.2.md#metaquest-handshake`. That closes
  the loop between drift detection and restored resonance.
+
+### mq-sys-shadow-lantern-d — Bridge Map Parity Alarm
+- **Mirrors:** Light lantern `mq-sys-lantern-000`
+- **Signals:** Bridge-Map ohne aktuellen UTAC-Readiness-Logistikbogen, fehlender
+  Verweis auf `simulator/presets/coherence_formula.json`, oder Telemetrie-Zeitstempel
+  ≠ Bridge-Dashboard.
+- **Remedy:** Audit erneut ausführen, Bridge-Map-Trilayer aktualisieren,
+  Simulator-Import prüfen und Codex-Eintrag mit mq-sys-shadow-bridge-002/003
+  ergänzen.

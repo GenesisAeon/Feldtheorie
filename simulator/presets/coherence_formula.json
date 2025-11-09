@@ -1,0 +1,59 @@
+{
+  "id": "coherence_formula",
+  "label": "UTAC Kohärenz-Formel",
+  "domain": "utac",
+  "featured": true,
+  "color": "#38bdf8",
+  "icon": "network",
+  "control_parameter": "Relationstopographie R(t) über Kopplungsdichte",
+  "order_parameter": "σ(β(R-Θ)) readiness der Metaquest-Laternen",
+  "analysis": {
+    "result_path": "analysis/reports/utac_v2_readiness.json",
+    "theta": 0.66,
+    "theta_ci": null,
+    "beta": 4.8,
+    "beta_ci": null,
+    "logistic_r2": null,
+    "delta_aic_best_null": null,
+    "delta_r2_best_null": null,
+    "best_null_model": null
+  },
+  "impedance": {
+    "definition": "ζ(R) = 0.76 + 0.18·σ(β(R-Θ)) - 0.12·readiness_gap",
+    "closed": 0.94,
+    "open": 0.58,
+    "mean": 0.76
+  },
+  "simulation": {
+    "theta": 0.66,
+    "beta": 4.8,
+    "initial_R": 0.3,
+    "initial_psi": 0.0,
+    "initial_phi": 0.0,
+    "stimulus": {
+      "base": 0.2,
+      "amplitude": 0.45,
+      "frequency": 0.08,
+      "noise": 0.03,
+      "modulation": {
+        "type": "sin",
+        "amplitude": 0.25,
+        "frequency": 0.12
+      }
+    }
+  },
+  "narrative": {
+    "formal": "UTAC v2.0 readiness logistic mit Θ=0.66, β=4.8 aus analysis/v2_readiness_audit.py; Telemetrie, Simulator-Preset und Bridge-Map teilen nun denselben σ(β(R-Θ)) Gate.",
+    "empirical": "Quelle: analysis/reports/utac_v2_readiness.{json,yaml,md}; ΔAIC-Guard ≥10 pending reale Dateneinspielung. Simulator importiert preset über simulator/src/presets.ts und koppelt an docs/UTAC_v2.0_Coherence_Formula.md.",
+    "poetic": "Wenn R die Relationstopographie füllt, hebt Θ die Brücke an, β spannt die Steilflanke, und ζ(R) dämpft den Chor, bis jede Laterne gemeinsam leuchtet."
+  },
+  "poetic_messages": [
+    "Die Kohärenzformel lässt jede Laterne die Nachbarlaternen fühlen, bevor sie selbst singt.",
+    "σ(β(R-Θ)) steigt wie ein Refrain, sobald Telemetrie, Audit und Simulator in Phase atmen.",
+    "ζ(R) beruhigt das Feld, wenn die Relationstopographie vollständig kartiert ist."
+  ],
+  "references": {
+    "dataset": "analysis/reports/utac_v2_readiness.json",
+    "notes": "Generated via python analysis/v2_readiness_audit.py --manifest data/utac_v1_3_data_manifest.yaml"
+  }
+}

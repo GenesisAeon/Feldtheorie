@@ -19,6 +19,8 @@ sich der Übergang anfühlt.
 - `planetary_tipping_field.json` — Klima-Metafeld (`analysis/results/planetary_tipping_elements.json`, ΔAIC≈33.6 gegen linear) koppelt AMOC-, Eisschild-, Wald- und Permafrost-Schwellen.
 - `potential_cascade_llm.json` — Potenzial-Kaskade (LLM) (`analysis/results/potential_cascade_llm.json` mit YAML-Wurzel `analysis/batch_configs/potential_cascade_llm.yaml`) dokumentiert Θ/β-Drift, Gate-Δ und ζ-Shift gegenüber dem statischen Nullfeld.
 - `safety_delay_bridge.json` — Safety-Delay-Controller (`analysis/results/safety_delay_sweep_20251107T211928Z.json`, ΔAIC_linear≈7.0×10³, τ_delay≈8.43) verlängert die Kipplatenz und liefert das Steuerungs-Sigillin für das UI.
+- `coherence_formula.json` — UTAC-Kohärenz-Formel (Θ=0.66, β=4.8) aus `analysis/reports/utac_v2_readiness.json`;
+  koppelt `docs/UTAC_v2.0_Coherence_Formula.md` mit dem neuen Simulator-Hook und dem Bridge-Map-Tri-Layer.
 
 Alle Dateien führen Formal-/Empirie-/Poetik-Felder und deklarieren geschlossene vs. offene
 Impedanz, damit das Frontend $\zeta(R)$ direkt modulieren kann.

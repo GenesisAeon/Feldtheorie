@@ -61,6 +61,7 @@
 ## Coupling
 
 - Lichtseite: `../../bedeutungssigillin/metaquest/metaquest_meaning_index.{yaml,json,md}`
+- Bridge-Map: `../../bedeutungssigillin/metaquest/system/metaquest_system_map.{yaml,json,md}`
 - System-Index: `../../bedeutungssigillin/metaquest/system/metaquest_system_index.{yaml,json,md}`
 - Kampagnen-Index: `../../bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.{yaml,json,md}`
 - System-Kompass: `../../bedeutungssigillin/metaquest/system/metaquest_system_compass.{yaml,json,md}`

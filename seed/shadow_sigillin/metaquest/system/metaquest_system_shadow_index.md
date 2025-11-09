@@ -14,6 +14,7 @@ Automationsschritt ohne dokumentierte Parität durchrutscht.
 - **Light Index**: `seed/bedeutungssigillin/metaquest/system/metaquest_system_index.yaml`
 - **Shadow Compass**: `seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml`
 - **Shadow Map**: `seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml`
+- **Bridge Shadow Map**: `seed/shadow_sigillin/metaquest/system/metaquest_system_shadow.{yaml,json,md}`
 
 ## Alerts
 1. **mq-sys-shadow-index-001 — Index stale**

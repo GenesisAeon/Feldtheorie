@@ -16,7 +16,7 @@ empirical (data), and experiential (simulator) layers.
 | **LLM Resonance** | $(R=\text{Parameteranzahl},\ \Theta\approx8.5\times10^9,\ \beta=3.47,\ \zeta(R)=\text{alignment impedance})$ | `analysis/llm_beta_extractor.py` → `analysis/results/llm_beta_extractor.json` | `data/ai/wei_emergent_abilities.csv` | `simulator/presets/llm_resonance.json` | $>10$ gegenüber Power-Law |
 | **Planetary Tipping Field** | $(R=\text{aggregierter Klimastress},\ \Theta=1.67\,\mathrm{K},\ \beta=4.21,\ \zeta(R)=1.62-0.41\,\sigma)$ | `analysis/planetary_tipping_elements_fit.py` → `analysis/results/planetary_tipping_elements.json` | `data/socio_ecology/planetary_tipping_elements.json` | `simulator/presets/planetary_tipping_field.json` | $+33.6$ gegenüber linear |
 | **Honeybee Decision Gate** | $(R=\text{Tanz-Kohärenz},\ \Theta=\text{Konsensusbedarf},\ \beta=4.5,\ \zeta(R)=\text{Nektarrauschen})$ | `analysis/honeybee_waggle_fit.py` → `analysis/results/honeybee_waggle_fit.json` | `data/biology/honeybee_waggle_activation.csv` | `simulator/presets/honeybee_membrane.json` | $+18.7$ gegenüber Power-Law |
-| **UTAC v2.0 Kohärenzformel** | $(R=\text{Relationstopographie-Abdeckung},\ \Theta=\text{Tri-Layer-Parität},\ \beta=4.9,\ \zeta(R)=\text{Index-Drift})$ | `docs/UTAC_v2.0_Coherence_Formula.md` ↔ `analysis/universal_beta_extractor.py`, `analysis/beta_meta_regression_v2.py` | `data/derived/beta_estimates.csv` (+ geplante `data/socio_ecology/urban_heat/`, `data/climate/arctic_sea_ice/`) | *(geplant)* `simulator/presets/coherence_formula.json` | ΔAIC-Wächter folgt nach Dateneinspielung |
+| **UTAC v2.0 Kohärenzformel** | $(R=\text{Relationstopographie-Abdeckung},\ \Theta=\text{Tri-Layer-Parität},\ \beta=4.9,\ \zeta(R)=\text{Index-Drift})$ | `docs/UTAC_v2.0_Coherence_Formula.md` ↔ `analysis/universal_beta_extractor.py`, `analysis/beta_meta_regression_v2.py` | `data/derived/beta_estimates.csv` (+ geplante `data/socio_ecology/urban_heat/`, `data/climate/arctic_sea_ice/`) | `simulator/presets/coherence_formula.json` (β=4.8, Θ=0.66) | ΔAIC-Wächter folgt nach Dateneinspielung |
 
 Each row anchors the logistic response to a simulator preset. If a preset drifts
 from its analysis source, run `utf-preset-guard` to report the ΔAIC gap and echo
@@ -59,7 +59,7 @@ confirming the preset mirrors the analysis exports without resonance drift.
    ΔAIC parity falls below 10.
 3. **Codex Echo** — Advance Codex entry `pr-draft-0082` (this work) from
    *primed* to *resonant* once telemetry and CI hooks are live.
-4. **Kohärenz-Laterne** — Implement `simulator/presets/coherence_formula.json`
+4. **Kohärenz-Laterne** — `simulator/presets/coherence_formula.json` aktivieren (Tri-Layer + Simulator-Import erfolgt)
    plus Shadow/Bedeutungs-Sigille; verlinke ΔAIC-Guards zurück in
    `docs/UTAC_v2.0_Coherence_Formula.md` und Codex-Eintrag `pr-draft-0090`.
 

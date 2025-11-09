@@ -7,6 +7,7 @@ import lenskiData from '../presets/lenski_citplus.json';
 import climateData from '../presets/planetary_tipping_field.json';
 import cascadeLlmData from '../presets/potential_cascade_llm.json';
 import safetyDelayData from '../presets/safety_delay_bridge.json';
+import coherenceData from '../presets/coherence_formula.json';
 import { DomainPreset } from './types';
 
 export const PRESETS: DomainPreset[] = [
@@ -18,7 +19,8 @@ export const PRESETS: DomainPreset[] = [
   lenskiData as DomainPreset,
   climateData as DomainPreset,
   cascadeLlmData as DomainPreset,
-  safetyDelayData as DomainPreset
+  safetyDelayData as DomainPreset,
+  coherenceData as DomainPreset
 ];
 
 export const FEATURED_PRESETS = PRESETS.filter((preset) => preset.featured);

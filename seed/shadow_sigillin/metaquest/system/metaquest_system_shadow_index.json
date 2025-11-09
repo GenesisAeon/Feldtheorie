@@ -1,9 +1,9 @@
 {
   "meta": {
     "sigil": "shadow-metaquest-system-index",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "created": "2025-12-11T00:00:00Z",
-    "updated": "2025-12-18T00:00:00Z",
+    "updated": "2025-12-24T00:00:00Z",
     "logistic": {
       "R": "Untracked Metaquest system risks: stale compass, unsynchronised map, missing telemetry exports.",
       "Theta": "docs/metaquest_parity_brief.md + seed/codexfeedback.* carry matching mq-sys references within 24h.",
@@ -13,7 +13,8 @@
     "mirrors": {
       "light_index": "seed/bedeutungssigillin/metaquest/system/metaquest_system_index.yaml",
       "shadow_compass": "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml",
-      "shadow_map": "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml"
+      "shadow_map": "seed/shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml",
+      "bridge_map": "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow.yaml"
     }
   },
   "alerts": [
@@ -24,7 +25,7 @@
         "metaquest_system_index.yaml updated timestamp older than docs/metaquest_parity_brief.md.",
         "Latest codex entry with mq-sys scope missing reference to this index."
       ],
-      "consequence": "Automation teams lose Θ visibility; launch tasks proceed without documented parity.",
+      "consequence": "Automation teams lose \u0398 visibility; launch tasks proceed without documented parity.",
       "mitigation": [
         "Freeze automation changes until index refreshed.",
         "Update index + bridge, cite remediation in codex with shared timestamp.",
@@ -32,7 +33,7 @@
       ],
       "guardrail": {
         "metric": "index freshness",
-        "threshold": "≤24h delta vs parity brief + codex entry"
+        "threshold": "\u226424h delta vs parity brief + codex entry"
       }
     },
     {
@@ -50,7 +51,7 @@
       ],
       "guardrail": {
         "metric": "telemetry cadence",
-        "threshold": "≤1 sprint between exports"
+        "threshold": "\u22641 sprint between exports"
       }
     },
     {
@@ -60,7 +61,7 @@
         "Index or lantern MD lacks WayToGo/ReaktionWayToGo citations for newest automation tasks.",
         "codex entry referencing mq-sys omits BreakPoint acknowledgement."
       ],
-      "consequence": "ζ(R) spikes during automation sprint; recovery scripts unclear.",
+      "consequence": "\u03b6(R) spikes during automation sprint; recovery scripts unclear.",
       "mitigation": [
         "Trigger BreakPoint ritual, attach transcript to codex, update index + compass with references.",
         "Notify bridge dashboard to re-synchronise rituals across campaign lane."
