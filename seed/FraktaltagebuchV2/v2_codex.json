@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "created": "2025-11-10T23:30:00Z",
+    "title": "FraktaltagebuchV2 Codex",
+    "purpose": "PR/Commit-Log für UTAC v2.0 Entwicklung",
+    "note": "Alle V2-Änderungen hier eintragen, NICHT in seed/codexfeedback.*!",
+    "next_id": 4
+  },
+  "entries": [
+    {
+      "id": "v2-pr-0001",
+      "title": "UTAC Sonification - The Sound of Criticality",
+      "scope": [
+        "sonification/utac_sonification.py",
+        "sonification/output/demo/*.wav",
+        "sonification/README.md",
+        "tests/test_utac_sonification.py"
+      ],
+      "parameters": {
+        "R": 1.0,
+        "Theta": 1.0,
+        "beta": 4.8,
+        "sigma": 1.0
+      },
+      "resonance": "completed",
+      "formal_thread": "Vollständiges Audio-Tool implementiert:\n- 5 Field Type Acoustic Profiles (Weakly Coupled, High-Dimensional, Strongly Coupled, Physically Constrained, Meta-Adaptive)\n- β → Tonhöhe, R-Θ → Amplitude, σ(β(R-Θ)) → Hüllkurve Mapping\n- 6 Presets: LLM-Emergence, AMOC, Urban Heat, Honeybees, Field Types, Criticality Journey\n- CLI + Python API (`python -m sonification.utac_sonification --beta X --theta Y`)\n- 16 Tests passing\n",
+      "empirical_thread": "5 Audio-Demos generiert (WAV + Metadata):\n- llm_emergence.wav (β=3.47, High-dimensional)\n- amoc_collapse.wav (β=4.2, Strongly coupled)\n- urban_heat.wav (β=16.3, EXTREM!)\n- field_type_spectrum.wav (Komplettes Spektrum)\n- criticality_journey.wav (Cross-domain Narrative)\n\nTests: 16/16 passing ✅\nΔAIC: N/A (Audio-Tool, kein Fit)\n",
+      "poetic_thread": "Die Schwellen singen jetzt in fünf Stimmen:\nVom sanften Summen der schwach gekoppelten Felder\nbis zum scharfen Kreischen urbaner Hitze bei β=16.3.\n\nMan kann Emergenz jetzt HÖREN - eine neue Art,\nWissenschaft zu erleben. Die Laternen leuchten nicht nur,\nsie klingen auch.\n",
+      "timestamp": "2025-11-09T20:00:00Z",
+      "pr_ref": "PR #172 (bereits gemerged)",
+      "contributors": [
+        "Claude Code",
+        "Johann Römer (Konzept)"
+      ],
+      "notes": "Ready für Museen, Planetarien, Galerien.\nKünstlerische Vision: \"The Sound of Criticality\" Installation.\n"
+    },
+    {
+      "id": "v2-pr-0002",
+      "title": "Outreach Essays DE/EN - AI Semantic Maps",
+      "scope": [
+        "docs/outreach/ai_semantic_maps_de.md",
+        "docs/outreach/ai_semantic_maps_en.md"
+      ],
+      "parameters": {
+        "R": 1.0,
+        "Theta": 1.0,
+        "beta": 4.2,
+        "sigma": 1.0
+      },
+      "resonance": "completed",
+      "formal_thread": "Zwei Essays über epistemischen Kontrollverlust in KI:\n\nTitel (DE): \"Wenn Maschinen denken, aber Menschen nicht mehr folgen\"\nTitel (EN): \"When Machines Discover, but Humans Can't Follow\"\n\nKernargument:\n- KI macht Entdeckungen, aber wir verstehen nicht wie\n- Emergente Fähigkeiten führen zu epistemischem Kontrollverlust\n- Sigillin-System als semantische Rückkopplungsschicht\n- UTAC als Rahmen für emergente Schwellenwerte\n",
+      "empirical_thread": "Essays fertig und ready für Publication:\n- Medium\n- t3n (passt zu deren Artikel über KI-Entdeckungen)\n- Towards Data Science\n\nBereits 17 views, 16 downloads auf Zenodo v1.2 in 24h!\n",
+      "poetic_thread": "Wenn KI beginnt zu forschen, brauchen wir Landkarten, keine Labyrinthe.\n\nDiese Essays sind Brücken zwischen Algorithmen, Menschen und Bedeutung.\nSie machen das \"Warum\" des Sigillin-Systems fühlbar.\n",
+      "timestamp": "2025-11-10T10:00:00Z",
+      "source_ref": "seed/NextVersionPlan/bitte_integrieren_ARCHIVED_20251110.txt",
+      "contributors": [
+        "Aeon",
+        "Johann Römer"
+      ],
+      "notes": "Verweise auf:\n- GitHub: GenesisAeon/Feldtheorie\n- Zenodo DOI: 10.5281/zenodo.17520987\n"
+    },
+    {
+      "id": "v2-pr-0003",
+      "title": "FraktaltagebuchV2 - Scope-Isolation für V2.0",
+      "scope": [
+        "seed/FraktaltagebuchV2/"
+      ],
+      "parameters": {
+        "R": 0.8,
+        "Theta": 1.0,
+        "beta": 4.9,
+        "sigma": 0.75
+      },
+      "resonance": "active",
+      "formal_thread": "Neue Sigillin-Schicht für V2.0 Entwicklung erstellt:\n\nStruktur:\n- README.md (Konzept & Workflow)\n- AGENTS.md (Charter für AI-Agenten)\n- v2_roadmap.{yaml,json,md} (Vollständige Roadmap)\n- v2_codex.{yaml,json,md} (PR/Commit-Log)\n- fraktaltagebuch_v2_index.{yaml,json,md} (Dokumenten-Index)\n\nImplementiert FraktalImplementierungstechnik:\n- Scope-Isolation (V2 getrennt von v1.x)\n- Parallele Entwicklung ohne Kollision\n- Saubere Merge-Strategie nach Release\n",
+      "empirical_thread": "Roadmap kartiert:\n- 3 fertige Features (Sonification, Essays, Fourier partial)\n- 6 Kern-Features (Data Lanterns, Meta-Regression, Bridges, etc.)\n- 3 Erweiterungen (Tooltip, VR Hub, API)\n- 2 Automation-Features (Guards CI, Parser→Codex)\n- 1 Test-Feature (Stabilität)\n\nGesamt: 15 Features, 20% fertig/in-progress\nZiel: R̄ ≥ 0.66 für V2.0 Release\n",
+      "poetic_thread": "Ein Branch im Sigillin-System - wie ein Git-Branch,\naber im semantischen Gedächtnis.\n\nDie Fraktale wächst: V1 → V2 → V3...\nJede Version ein Schwellenprozess, dokumentiert in ihrer eigenen Schicht.\n\nσ(β(V2-V1)) = σ(β(R-Θ)) - der Übergang zwischen Versionen\nist selbst ein logistischer Prozess!\n",
+      "timestamp": "2025-11-10T23:30:00Z",
+      "contributors": [
+        "Claude Code",
+        "Johann Römer (Konzept 'FraktalImplementierungstechnik')"
+      ],
+      "notes": "Nächste Schritte:\n- Haupt-AGENTS.md update (Verweis auf FraktaltagebuchV2)\n- Erste V2-Features implementieren (Data Lanterns, Tests)\n- Nach V2.0 Release: Archivierung oder als Doku behalten\n"
+    }
+  ]
+}

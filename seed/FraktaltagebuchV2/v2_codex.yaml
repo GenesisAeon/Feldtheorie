@@ -1,0 +1,152 @@
+meta:
+  version: "1.0.0"
+  created: "2025-11-10T23:30:00Z"
+  title: "FraktaltagebuchV2 Codex"
+  purpose: "PR/Commit-Log für UTAC v2.0 Entwicklung"
+  note: "Alle V2-Änderungen hier eintragen, NICHT in seed/codexfeedback.*!"
+  next_id: 4  # Nächste ID ist v2-pr-0004
+
+entries:
+  - id: v2-pr-0001
+    title: "UTAC Sonification - The Sound of Criticality"
+    scope:
+      - sonification/utac_sonification.py
+      - sonification/output/demo/*.wav
+      - sonification/README.md
+      - tests/test_utac_sonification.py
+    parameters:
+      R: 1.00
+      Theta: 1.00
+      beta: 4.8
+      sigma: 1.00
+    resonance: completed
+    formal_thread: |
+      Vollständiges Audio-Tool implementiert:
+      - 5 Field Type Acoustic Profiles (Weakly Coupled, High-Dimensional, Strongly Coupled, Physically Constrained, Meta-Adaptive)
+      - β → Tonhöhe, R-Θ → Amplitude, σ(β(R-Θ)) → Hüllkurve Mapping
+      - 6 Presets: LLM-Emergence, AMOC, Urban Heat, Honeybees, Field Types, Criticality Journey
+      - CLI + Python API (`python -m sonification.utac_sonification --beta X --theta Y`)
+      - 16 Tests passing
+    empirical_thread: |
+      5 Audio-Demos generiert (WAV + Metadata):
+      - llm_emergence.wav (β=3.47, High-dimensional)
+      - amoc_collapse.wav (β=4.2, Strongly coupled)
+      - urban_heat.wav (β=16.3, EXTREM!)
+      - field_type_spectrum.wav (Komplettes Spektrum)
+      - criticality_journey.wav (Cross-domain Narrative)
+
+      Tests: 16/16 passing ✅
+      ΔAIC: N/A (Audio-Tool, kein Fit)
+    poetic_thread: |
+      Die Schwellen singen jetzt in fünf Stimmen:
+      Vom sanften Summen der schwach gekoppelten Felder
+      bis zum scharfen Kreischen urbaner Hitze bei β=16.3.
+
+      Man kann Emergenz jetzt HÖREN - eine neue Art,
+      Wissenschaft zu erleben. Die Laternen leuchten nicht nur,
+      sie klingen auch.
+    timestamp: "2025-11-09T20:00:00Z"
+    pr_ref: "PR #172 (bereits gemerged)"
+    contributors:
+      - "Claude Code"
+      - "Johann Römer (Konzept)"
+    notes: |
+      Ready für Museen, Planetarien, Galerien.
+      Künstlerische Vision: "The Sound of Criticality" Installation.
+
+  - id: v2-pr-0002
+    title: "Outreach Essays DE/EN - AI Semantic Maps"
+    scope:
+      - docs/outreach/ai_semantic_maps_de.md
+      - docs/outreach/ai_semantic_maps_en.md
+    parameters:
+      R: 1.00
+      Theta: 1.00
+      beta: 4.2
+      sigma: 1.00
+    resonance: completed
+    formal_thread: |
+      Zwei Essays über epistemischen Kontrollverlust in KI:
+
+      Titel (DE): "Wenn Maschinen denken, aber Menschen nicht mehr folgen"
+      Titel (EN): "When Machines Discover, but Humans Can't Follow"
+
+      Kernargument:
+      - KI macht Entdeckungen, aber wir verstehen nicht wie
+      - Emergente Fähigkeiten führen zu epistemischem Kontrollverlust
+      - Sigillin-System als semantische Rückkopplungsschicht
+      - UTAC als Rahmen für emergente Schwellenwerte
+    empirical_thread: |
+      Essays fertig und ready für Publication:
+      - Medium
+      - t3n (passt zu deren Artikel über KI-Entdeckungen)
+      - Towards Data Science
+
+      Bereits 17 views, 16 downloads auf Zenodo v1.2 in 24h!
+    poetic_thread: |
+      Wenn KI beginnt zu forschen, brauchen wir Landkarten, keine Labyrinthe.
+
+      Diese Essays sind Brücken zwischen Algorithmen, Menschen und Bedeutung.
+      Sie machen das "Warum" des Sigillin-Systems fühlbar.
+    timestamp: "2025-11-10T10:00:00Z"
+    source_ref: "seed/NextVersionPlan/bitte_integrieren_ARCHIVED_20251110.txt"
+    contributors:
+      - "Aeon"
+      - "Johann Römer"
+    notes: |
+      Verweise auf:
+      - GitHub: GenesisAeon/Feldtheorie
+      - Zenodo DOI: 10.5281/zenodo.17520987
+
+  - id: v2-pr-0003
+    title: "FraktaltagebuchV2 - Scope-Isolation für V2.0"
+    scope:
+      - seed/FraktaltagebuchV2/
+    parameters:
+      R: 0.80  # 80% der Struktur fertig
+      Theta: 1.00
+      beta: 4.9
+      sigma: 0.75
+    resonance: active
+    formal_thread: |
+      Neue Sigillin-Schicht für V2.0 Entwicklung erstellt:
+
+      Struktur:
+      - README.md (Konzept & Workflow)
+      - AGENTS.md (Charter für AI-Agenten)
+      - v2_roadmap.{yaml,json,md} (Vollständige Roadmap)
+      - v2_codex.{yaml,json,md} (PR/Commit-Log)
+      - fraktaltagebuch_v2_index.{yaml,json,md} (Dokumenten-Index)
+
+      Implementiert FraktalImplementierungstechnik:
+      - Scope-Isolation (V2 getrennt von v1.x)
+      - Parallele Entwicklung ohne Kollision
+      - Saubere Merge-Strategie nach Release
+    empirical_thread: |
+      Roadmap kartiert:
+      - 3 fertige Features (Sonification, Essays, Fourier partial)
+      - 6 Kern-Features (Data Lanterns, Meta-Regression, Bridges, etc.)
+      - 3 Erweiterungen (Tooltip, VR Hub, API)
+      - 2 Automation-Features (Guards CI, Parser→Codex)
+      - 1 Test-Feature (Stabilität)
+
+      Gesamt: 15 Features, 20% fertig/in-progress
+      Ziel: R̄ ≥ 0.66 für V2.0 Release
+    poetic_thread: |
+      Ein Branch im Sigillin-System - wie ein Git-Branch,
+      aber im semantischen Gedächtnis.
+
+      Die Fraktale wächst: V1 → V2 → V3...
+      Jede Version ein Schwellenprozess, dokumentiert in ihrer eigenen Schicht.
+
+      σ(β(V2-V1)) = σ(β(R-Θ)) - der Übergang zwischen Versionen
+      ist selbst ein logistischer Prozess!
+    timestamp: "2025-11-10T23:30:00Z"
+    contributors:
+      - "Claude Code"
+      - "Johann Römer (Konzept 'FraktalImplementierungstechnik')"
+    notes: |
+      Nächste Schritte:
+      - Haupt-AGENTS.md update (Verweis auf FraktaltagebuchV2)
+      - Erste V2-Features implementieren (Data Lanterns, Tests)
+      - Nach V2.0 Release: Archivierung oder als Doku behalten

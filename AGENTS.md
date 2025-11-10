@@ -54,6 +54,42 @@
 - Änderungen an Bedeutungs-/Schatten-Sigillin **ohne** Codex-Eintrag erzeugen
   den Incident `sys-shadow-002`.
 
+### 2.4 FraktaltagebuchV2 - Scope-Isolation für V2.0
+
+**WICHTIG:** Ab jetzt gilt eine **Trennung zwischen v1.x und v2.0 Entwicklung**!
+
+- **Für v1.x Maintenance:** Nutze weiterhin `seed/codexfeedback.*` (wie gehabt)
+- **Für v2.0 Features:** Nutze `seed/FraktaltagebuchV2/v2_codex.*` (NEU!)
+
+**Warum?**
+- V2.0-Entwicklung ist umfangreich (Data Lanterns, VR Hub, API, etc.)
+- Hauptcodex würde überflutet werden (Archive-Hypnose!)
+- **FraktalImplementierungstechnik** ermöglicht saubere Scope-Isolation
+
+**Struktur:**
+```
+seed/FraktaltagebuchV2/
+├── README.md                   # Konzept & Workflow
+├── AGENTS.md                   # Charter für V2-Arbeit
+├── v2_roadmap.{yaml,json,md}   # Was ist zu tun?
+├── v2_codex.{yaml,json,md}     # V2 PR/Commit-Log
+└── fraktaltagebuch_v2_index.*  # Navigation
+```
+
+**Workflow für V2-Features:**
+1. Lies `seed/FraktaltagebuchV2/v2_roadmap.md` → Feature auswählen
+2. Implementiere Feature
+3. **Eintrag in `seed/FraktaltagebuchV2/v2_codex.*`** erstellen (Trilayer!)
+4. **NICHT** in `seed/codexfeedback.*` schreiben!
+5. Roadmap-Status aktualisieren
+
+**Nach V2.0 Release:**
+- Wichtige Einträge aus `v2_codex.*` in `codexfeedback.*` mergen
+- FraktaltagebuchV2/ archivieren oder als V2-Dokumentation behalten
+- Optional: FraktaltagebuchV3/ für nächste Major Version
+
+**Siehe:** `seed/FraktaltagebuchV2/README.md` für vollständige Dokumentation
+
 ---
 
 ## 3. Arbeitsrhythmus
