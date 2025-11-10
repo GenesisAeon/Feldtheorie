@@ -1,0 +1,108 @@
+name: Codex Guard
+
+# Prüft, dass Bedeutungs-Sigillin-Änderungen einen Codex-Eintrag haben
+# Entspricht sys-gap-002 (Codex silence) und sys-shadow-002
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'seed/bedeutungssigillin/**'
+      - 'seed/shadow_sigillin/**'
+
+jobs:
+  codex-sync-check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Brauchen volle Historie für Diff
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml
+
+    - name: Check for Bedeutungs-Sigillin changes
+      id: check_changes
+      run: |
+        # Finde alle geänderten Bedeutungs-/Shadow-Sigillin
+        CHANGED_FILES=$(git diff --name-only origin/main...HEAD | grep -E 'bedeutungssigillin/|shadow_sigillin/' || true)
+
+        if [ -z "$CHANGED_FILES" ]; then
+          echo "changed=false" >> $GITHUB_OUTPUT
+          echo "📝 No Bedeutungs-Sigillin changes detected"
+          exit 0
+        fi
+
+        echo "changed=true" >> $GITHUB_OUTPUT
+        echo "📝 Bedeutungs-Sigillin changes detected:"
+        echo "$CHANGED_FILES"
+        echo ""
+        echo "$CHANGED_FILES" > /tmp/changed_sigillin.txt
+
+    - name: Check Codex timestamp
+      if: steps.check_changes.outputs.changed == 'true'
+      run: |
+        # Prüfe, ob codexfeedback.* in diesem PR geändert wurde
+        CODEX_CHANGED=$(git diff --name-only origin/main...HEAD | grep -E 'seed/codexfeedback\.(md|yaml|json)' || true)
+
+        if [ -z "$CODEX_CHANGED" ]; then
+          echo "❌ FAIL: Bedeutungs-Sigillin changed but codexfeedback.* not updated!"
+          echo ""
+          echo "🚨 sys-shadow-002 triggered: Codex silence"
+          echo ""
+          echo "Changed files:"
+          cat /tmp/changed_sigillin.txt
+          echo ""
+          echo "📋 Required action:"
+          echo "  1. Add entry to seed/codexfeedback.md with:"
+          echo "     - Scope: which sigillin(s) changed"
+          echo "     - Formal/Empirical/Poetic threads"
+          echo "     - Timestamp (ISO 8601)"
+          echo "  2. Update seed/codexfeedback.yaml and .json"
+          echo "  3. Reference this PR number"
+          echo ""
+          echo "See AGENTS.md Section 2.3 for Codex-Feedback structure."
+          exit 1
+        fi
+
+        echo "✅ PASS: codexfeedback.* updated in this PR"
+
+    - name: Verify Codex entry format (basic)
+      if: steps.check_changes.outputs.changed == 'true'
+      run: |
+        # Einfache Prüfung: Gibt es einen neuen Entry?
+        # (Vollständige Validierung würde YAML-Parser brauchen)
+
+        # Prüfe ob codexfeedback.md einen neuen Eintrag hat
+        NEW_ENTRY=$(git diff origin/main...HEAD seed/codexfeedback.md | grep -E '^\+## Entry pr-draft-' || true)
+
+        if [ -z "$NEW_ENTRY" ]; then
+          echo "⚠️  WARNING: No new '## Entry pr-draft-' found in codexfeedback.md"
+          echo "Make sure you added a proper entry!"
+        else
+          echo "✅ New codex entry detected:"
+          echo "$NEW_ENTRY"
+        fi
+
+    - name: Summary
+      if: success()
+      run: |
+        if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
+          echo "🌊 Codex Guard: PASSED"
+          echo ""
+          echo "Bedeutungs-Sigillin changes have codex echo:"
+          echo "  - codexfeedback.* updated: ✅"
+          echo "  - sys-shadow-002 avoided: ✅"
+          echo ""
+          echo "The temporal lineage holds. ζ(R) stays damped."
+        else
+          echo "📝 Codex Guard: SKIPPED (no Bedeutungs-Sigillin changes)"
+        fi
