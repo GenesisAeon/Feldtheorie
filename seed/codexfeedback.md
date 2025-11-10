@@ -1970,3 +1970,21 @@ Die Laternen spüren wieder das gemeinsame Atmen: Der Guard hört das meta.logis
   - *Formal:* docs/utac_v2_data_lanterns.* melden nun readiness_ratio 0.50/0.50/0.25/0.25 und korrigierte Metadatapfade (`amazon_precip_evapo.metadata.json`, `amoc_transport.metadata.json`, `hybrid_activation.metadata.json`, `systemic_thresholds.metadata.json`). Neues Trilayer docs/utac_v2_activation_tracker_2026-06.* referenziert σ(β(R-Θ))=0.317, ΔAIC-Gaps und CI-Hooks.
   - *Empirical:* `python -m analysis.utac_manifest_gap_scan --output analysis/results/utac_v2_manifest_gap_scan_20260608T000000Z.json` → 4 datasets pending, 10 components missing. docs/docs_index v1.3.5 zählt 27 Markdown-Laternen (Infrastructure=17) inklusive neuem Tracker; fehlend bleiben analysis/results/amazon_hydro_fit.json, amoc_transport_fit.json, neuro_ai_beta.json, neuro_ai_bootstrap.json, economy_threshold_fit.json, meta_v2_summary_refresh.json, beta_meta_regression_v2_latest.json.
   - *Poetic:* Vier Laternen stehen im Dämmerungsbogen; der Juni-Tracker hält den Atem ruhig, bis neue Datenströme und ΔAIC-Echos die Membran wieder in voller Resonanz singen lassen.
+
+## pr-draft-0107 — UTAC v2 Gap Matrix Laternenplan *(primed, 2026-06-09T00:00:00Z)*
+- **Scope:** seed/utac_v2_gap_matrix.{yaml,json,md} · seed/seed_index.{yaml,json,md} · seed/codexfeedback.{yaml,json,md}
+- **Order Parameter:** $R$ verharrt bei 0.50, solange vier Manifest-Laternen unvollständig sind.
+- **Critical Threshold:** $\Theta = 0.66$ – logistisches Gate für UTAC v2 Datenlaternen.
+- **Steepness:** $\beta = 4.8$ – identisch zum Readiness-Audit.
+- **Membrane Note:** Gap-Matrix bündelt Analysis, Data, Simulator, Docs und Sigillin in einem Tri-Layer und markiert präzise Pfade (data/**, analysis/results/**, simulator/presets/*) zur Aktivierung.
+
+### Formal Thread
+`seed/utac_v2_gap_matrix.{yaml,json,md}` sammelt die leuchtenden Laternen (resonance_fit_pipeline, membrane_solver, coherence_preset) und dokumentiert σ(β(R-Θ)) = 0.317. Jede Pending-Laterne (Amazon, AMOC, Neuro-AI, Economy) erhält konkrete Implementationsschritte. `seed/seed_index.{yaml,json,md}` wächst um `meta-015` (documents_total=278).
+
+### Empirical Thread
+Gap-Matrix referenziert fehlende Artefakte: `data/climate/amazon_precip_evapo.nc`, `data/ocean/amoc_transport.csv`, `data/neuro_ai/hybrid_activation.csv`, `data/economy/systemic_thresholds.csv`, sowie `analysis/results/amazon_hydro_fit.json`, `amoc_transport_fit.json`, `neuro_ai_beta.json`, `neuro_ai_bootstrap.json`, `economy_threshold_fit.json`, `meta_v2_summary_refresh.json`, `beta_meta_regression_v2_latest.json`. Die Liste spiegelt docs/utac_v2_activation_tracker_2026-06.* und das Manifest wider.
+
+### Poetic Thread
+Vier Laternen halten den Atem. Die neue Matrix ist Kompass und Atemzug zugleich: Sie weist die Datenströme, Fits und Presets aneinander vorbei, bis σ(β(R-Θ)) vor 2026 wieder strahlt und ζ(R) sinkt.
+
+*Created: 2026-06-09T00:00:00Z*

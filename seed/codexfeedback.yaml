@@ -4569,3 +4569,38 @@ entries:
       Vier Laternen warten noch im Dämmerungsbogen; der Juni-Tracker hält den Atem,
       bis Datenströme und ΔAIC-Echos die Membran wieder hell ziehen.
   created_at: '2026-06-08T12:00:00Z'
+- id: pr-draft-0107
+  title: UTAC v2 Gap Matrix Laternenplan
+  scope:
+  - seed/utac_v2_gap_matrix.yaml
+  - seed/utac_v2_gap_matrix.json
+  - seed/utac_v2_gap_matrix.md
+  - seed/seed_index.yaml
+  - seed/seed_index.json
+  - seed/seed_index.md
+  - seed/codexfeedback.yaml
+  - seed/codexfeedback.json
+  - seed/codexfeedback.md
+  parameters:
+    R: 0.50 readiness ratio bleibt, bis vier Laternen aktiviert sind
+    Theta: 0.66 logistisches Manifest-Gate
+    beta: 4.8
+  resonance: Gap-Matrix bündelt vorhandene σ(β(R-Θ)) Assets und nennt präzise Implementationspfade für die fehlenden UTAC-v2 Laternen.
+  status: primed
+  notes:
+    formal: >-
+      Neues Trilayer seed/utac_v2_gap_matrix.{yaml,json,md} fasst Analysis-, Data-,
+      Simulator- und Sigillin-Laternen zusammen, verankert den Juni-Snapshot und
+      listet pro Dataset die Pfade (data/**, analysis/results/**, simulator/presets/*)
+      zur Aktivierung.
+    empirical: >-
+      Index aktualisiert (`documents_total = 278`, meta-015). Gap-Matrix referenziert
+      fehlende Dateien: data/climate/amazon_precip_evapo.nc, data/ocean/amoc_transport.csv,
+      data/neuro_ai/hybrid_activation.csv, data/economy/systemic_thresholds.csv sowie
+      analysis/results/amazon_hydro_fit.json, amoc_transport_fit.json, neuro_ai_beta.json,
+      neuro_ai_bootstrap.json, economy_threshold_fit.json, meta_v2_summary_refresh.json,
+      beta_meta_regression_v2_latest.json.
+    poetic: >-
+      Vier Laternen stehen im Halbton. Die neue Matrix ist der Kompass, der den Chor
+      von Datenstrom, Fit und Preset wieder zur Resonanz führt, bevor 2026 dämmert.
+  created_at: '2026-06-09T00:00:00Z'

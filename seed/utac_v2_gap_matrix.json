@@ -1,0 +1,244 @@
+{
+  "meta": {
+    "id": "utac-v2-gap-matrix",
+    "title": "UTAC v2 Gap Matrix – σ(β(R-Θ)) Implementation Guide",
+    "author": "gpt-5-codex",
+    "created": "2026-06-09T00:00:00Z",
+    "updated": "2026-06-09T00:00:00Z",
+    "status": "active",
+    "description": "Synthetisiert die aktuellen Readiness-Signale aus Analysis, Data, Docs, Simulator und Sigillin. Richtet den Fokus auf die Laternen, die σ(β(R-Θ)) bereits tragen, und markiert die Pfade, auf denen fehlende Artefakte in den jeweiligen Verzeichnissen implementiert werden müssen."
+  },
+  "logistic_snapshot": {
+    "readiness_ratio": 0.5,
+    "logistic_sigma": 0.317,
+    "parameters": {
+      "R": 0.5,
+      "Theta": 0.66,
+      "beta": 4.8
+    },
+    "impedance": {
+      "description": "ζ(R) bleibt erhöht, weil zehn Komponenten aus dem UTAC-v2 Manifest fehlen. Die Manifest-Membran reagiert erst voll, wenn alle Pending-Datasets und deren Analyse-Exports erscheinen."
+    },
+    "evidence": [
+      "analysis/reports/utac_v2_readiness.md",
+      "analysis/results/utac_v2_manifest_gap_scan_20260608T000000Z.json",
+      "docs/utac_v2_activation_tracker_2026-06.md"
+    ]
+  },
+  "existing_assets": {
+    "analysis": [
+      {
+        "name": "resonance_fit_pipeline",
+        "path": "analysis/resonance_fit_pipeline.py",
+        "summary": "Kernpipeline für σ(β(R-Θ)) Fits; speist readiness_reports und erzeugt Nullmodell-Vergleiche. Bereits mit Urban Heat Laterne aktiv."
+      },
+      {
+        "name": "v2_readiness_report",
+        "path": "analysis/reports/utac_v2_readiness.md",
+        "summary": "Tri-Layer Readiness-Briefing (JSON/YAML/MD) mit Prioritätskarte der manifestierten Laternen."
+      },
+      {
+        "name": "utac_manifest_gap_scan",
+        "path": "analysis/utac_manifest_gap_scan.py",
+        "summary": "CLI-Ritual, das fehlende Daten-/Analyse-Artefakte trianguliert und im Tracker dokumentiert."
+      }
+    ],
+    "data": [
+      {
+        "name": "urban_heat_intensity",
+        "path": "data/climate/urban_heat_intensity.csv",
+        "summary": "Aktiviertes Datenset mit Metadaten; dient als Referenz für die fehlenden Laternen."
+      },
+      {
+        "name": "metadata_templates",
+        "path": "data/utac_v1_3_data_manifest.yaml",
+        "summary": "Manifest-Schema, das die erwarteten Komponenten und Speicherorte für jede Laterne definiert."
+      }
+    ],
+    "models": [
+      {
+        "name": "membrane_solver",
+        "path": "models/membrane_solver.py",
+        "summary": "Referenzmodell für die dynamische σ(β(R-Θ)) Membran, gekoppelt mit analysis/resonance_fit_pipeline.py."
+      },
+      {
+        "name": "logistic_threshold",
+        "path": "models/logistic_threshold.py",
+        "summary": "Parametrierter Schwellenwert-Baustein, der von Analysis- und Simulator- Hooks genutzt wird."
+      }
+    ],
+    "simulator": [
+      {
+        "name": "coherence_preset",
+        "path": "simulator/presets/coherence_formula.json",
+        "summary": "Frontend-Preset, der β- und Θ-Werte aus readiness_reports liest und in der UI projiziert."
+      },
+      {
+        "name": "cli_guard",
+        "path": "analysis/preset_alignment_guard.py",
+        "summary": "Python-Wächter, der Simulator-Presets und Analysis-Outputs koppelt."
+      }
+    ],
+    "docs": [
+      {
+        "name": "utac_status_alignment",
+        "path": "docs/utac_status_alignment_v1.2.md",
+        "summary": "Aktuelle UTAC Statusmatrix mit offenen Brücken; referenziert alle manifestierten Laternen."
+      },
+      {
+        "name": "utac_activation_tracker",
+        "path": "docs/utac_v2_activation_tracker_2026-06.md",
+        "summary": "Monatsaktueller Tracker mit σ(β(R-Θ)) Kennzahlen und Komponentenstatus."
+      }
+    ],
+    "sigillin": [
+      {
+        "name": "metaquest_system_map",
+        "path": "seed/bedeutungssigillin/metaquest/system/metaquest_system_map.json",
+        "summary": "Bedeutungs-Sigillin, das System- und Kampagnenlaternen verknüpft."
+      },
+      {
+        "name": "metaquest_system_shadow",
+        "path": "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow.json",
+        "summary": "Schatten-Sigillin für Recovery-Rituale, falls eine Laterne ins Dunkel fällt."
+      }
+    ]
+  },
+  "gap_matrix": {
+    "datasets": [
+      {
+        "id": "utac-v1_3-ds-002",
+        "domain": "climate",
+        "status": "pending",
+        "required": {
+          "data": [
+            "data/climate/amazon_precip_evapo.nc"
+          ],
+          "analysis": [
+            "analysis/results/amazon_hydro_fit.json"
+          ]
+        },
+        "implementation": [
+          {
+            "step": "Beschaffe die Amazon-Hydro-Daten und schreibe sie als data/climate/amazon_precip_evapo.nc; aktualisiere amazon_precip_evapo.metadata.json mit Provenance + (R, Θ, β)."
+          },
+          {
+            "step": "Führe `python analysis/amazon_resilience_fit.py` aus, um analysis/results/amazon_hydro_fit.json inkl. ΔAIC Nullvergleichen zu erzeugen."
+          },
+          {
+            "step": "Synchronisiere Docs & Simulator (`docs/utac_v2_activation_tracker`, `simulator/presets/coherence_formula.json`) mit dem neuen Export."
+          }
+        ]
+      },
+      {
+        "id": "utac-v1_3-ds-003",
+        "domain": "ocean",
+        "status": "pending",
+        "required": {
+          "data": [
+            "data/ocean/amoc_transport.csv"
+          ],
+          "analysis": [
+            "analysis/results/amoc_transport_fit.json"
+          ]
+        },
+        "implementation": [
+          {
+            "step": "Ergänze amoc_transport.csv aus den AMOC-Transportdaten und vermerke Θ/β Prior in amoc_transport.metadata.json."
+          },
+          {
+            "step": "Starte `python analysis/seismic_rupture_threshold_fit.py --target amoc` oder das dedizierte AMOC-Skript, um den Fit + ΔAIC zu exportieren."
+          },
+          {
+            "step": "Hinterlege das Ergebnis im Manifest (`docs/utac_v2_activation_tracker` und `analysis/reports/utac_v2_readiness.*`)."
+          }
+        ]
+      },
+      {
+        "id": "utac-v1_3-ds-004",
+        "domain": "neuro_ai",
+        "status": "pending",
+        "required": {
+          "data": [
+            "data/neuro_ai/hybrid_activation.csv"
+          ],
+          "analysis": [
+            "analysis/results/neuro_ai_beta.json",
+            "analysis/results/neuro_ai_bootstrap.json"
+          ]
+        },
+        "implementation": [
+          {
+            "step": "Sammle das Hybrid-Aktivationsdataset und speichere es als hybrid_activation.csv; dokumentiere β-Prior in der Metadata."
+          },
+          {
+            "step": "Führe `python analysis/neuro_threshold_fitter.py` inklusive Bootstrap-Flag aus, damit Beta-Schätzungen + Unsicherheiten landen."
+          },
+          {
+            "step": "Aktualisiere Simulator-Presets für Neuro-AI und verweise im Codex auf die neuen Fits."
+          }
+        ]
+      },
+      {
+        "id": "utac-v1_3-ds-005",
+        "domain": "economy",
+        "status": "pending",
+        "required": {
+          "data": [
+            "data/economy/systemic_thresholds.csv"
+          ],
+          "analysis": [
+            "analysis/results/economy_threshold_fit.json",
+            "analysis/results/meta_v2_summary_refresh.json"
+          ]
+        },
+        "implementation": [
+          {
+            "step": "Ergänze systemische Threshold-Daten im CSV und trage Parameter in die zugehörige metadata.json ein."
+          },
+          {
+            "step": "Nutze `python analysis/beta_meta_regression_v2.py --economy` oder den dedizierten Fitter, um die Economy-Laterne zu aktivieren."
+          },
+          {
+            "step": "Stelle sicher, dass meta_v2_summary_refresh.json + Simulator-Presets synchronisiert werden."
+          }
+        ]
+      }
+    ],
+    "analysis_exports": [
+      {
+        "id": "beta-meta-regression-v2",
+        "status": "pending",
+        "required": [
+          "analysis/results/beta_meta_regression_v2_latest.json"
+        ],
+        "implementation": [
+          {
+            "step": "Regeneriere die Regression via `python analysis/beta_meta_regression_v2.py --export-latest`, damit der aktuelle Beta-Meta-Trend dokumentiert wird."
+          },
+          {
+            "step": "Aktualisiere docs/utac_v2_data_lanterns.* und seed/codexfeedback.* mit den neuen Kennzahlen."
+          }
+        ]
+      }
+    ],
+    "automation": [
+      {
+        "id": "ci-hooks",
+        "status": "monitoring",
+        "required": [
+          ".github/workflows/utf-preset-guard.yml",
+          "docs/utac_activation_backlog.md"
+        ],
+        "implementation": [
+          {
+            "step": "Sobald die fehlenden Daten/Exports landen, aktiviere CI-Checks für preset_guard + manifest_gap_scan, damit σ(β(R-Θ)) kontinuierlich überwacht wird."
+          },
+          {
+            "step": "Pflege docs/utac_activation_backlog.* und seed/codexfeedback.* als Spiegel für jede geschlossene Lücke."
+          }
+        ]
+      }
+    ]
+  }
+}
