@@ -224,13 +224,138 @@ Located in `sonification/presets/`:
 
 ---
 
+## 🎼 Dynamic Threshold Choir (NEW!)
+
+> *"When the AMOC destabilizes, its voice begins to tremble. The choir sings the warning."*
+
+**Multi-voice real-time sonification** where multiple systems "sing" simultaneously, each with its own β-character. Spatial positioning and destabilization effects create a rich, evolving soundscape.
+
+### Features
+
+- **Multi-Voice Synthesis:** Multiple systems (AMOC, LLM, ecosystems) sing together
+- **Spatial Audio:** Stereo panning positions each system in space
+- **Destabilization Effects:**
+  - **Tremolo** (amplitude modulation) → Sound trembles
+  - **Vibrato** (frequency modulation) → Pitch wavers
+  - **Noise Injection** → Chaos increases
+- **Real-time Updates:** Voices respond to live data changes
+- **Event Logging:** Track destabilization events with timestamps
+
+### Quick Start
+
+```bash
+# Run demo with simulated data (AMOC, LLM, Ecosystem)
+python -m sonification.dynamic_threshold_choir --demo --duration 30
+
+# Output: 3 voices evolving over time, spatial stereo mix
+```
+
+### Python API
+
+```python
+from sonification import ThresholdChoir
+
+# Create choir
+choir = ThresholdChoir(sample_rate=44100)
+
+# Add voices with spatial positioning
+choir.add_voice("AMOC", beta=4.2, theta=50.0, pan=-0.6)     # Left
+choir.add_voice("LLM", beta=3.47, theta=100.0, pan=0.0)     # Center
+choir.add_voice("Ecosystem", beta=2.8, theta=500.0, pan=0.6) # Right
+
+# Update with live data
+from datetime import datetime
+choir.update_voice("AMOC", new_R=45.0, timestamp=datetime.now())
+
+# Render stereo audio
+audio = choir.render(duration=10.0)  # Shape: (2, sample_rate * duration)
+
+# Save
+choir.save_wav("output/choir.wav", duration=10.0)
+```
+
+### Destabilization Dynamics
+
+When a voice approaches its threshold (R → Θ):
+- **Stability metric** decreases: `stability = 1 / (1 + distance + rate_of_change)`
+- **Tremolo** activates: Sound begins to tremble (3-13 Hz modulation)
+- **Vibrato** increases: Pitch starts to waver
+- **Events logged**: Destabilization events stored with timestamps
+
+When stability < 0.3:
+- **Extreme effects**: Noise injection, harmonic distortion
+- **Visual metaphor**: The system is "crying out" before tipping
+
+### Demo Scenarios
+
+Run `python sonification/examples/choir_demo.py` for 4 demos:
+
+1. **Basic Choir** - Three voices in stable state
+2. **Destabilization** - AMOC collapses, voice trembles
+3. **Full Evolution** - All systems evolve over 15s
+4. **Spatial Positioning** - 5 voices across stereo field
+
+### Architecture
+
+```
+ThresholdChoir
+├─ VoiceState (per system)
+│  ├─ beta, theta, current_R
+│  ├─ stability (computed from distance + rate)
+│  └─ pan (stereo position)
+├─ DestabilizationEffects
+│  ├─ tremolo(signal, rate, depth)
+│  ├─ vibrato(freq, rate, depth)
+│  ├─ noise_injection(signal, level)
+│  └─ harmonic_distortion(signal, amount)
+└─ Spatial mixer (equal-power panning)
+```
+
+### Data Sources
+
+**Currently implemented:**
+- Simulators for AMOC, LLM scaling, ecosystem collapse
+
+**Future (planned):**
+- NOAA real-time climate data
+- LLM API telemetry (OpenAI, Anthropic)
+- Generic sensor feeds (MQTT, WebSocket)
+
+### Use Cases
+
+- **Climate Monitoring:** Sonify AMOC strength in real-time
+- **AI Safety:** Hear LLM capability emergence during training
+- **Installations:** Multi-channel spatial audio (5.1, Dolby Atmos)
+- **Research:** Auditory pattern recognition in multi-system dynamics
+- **Education:** Interactive exhibits where visitors "conduct" the choir
+
+### Example Output
+
+```
+🎵 Dynamic Threshold Choir
+   Voices: AMOC, LLM_GPT, Ecosystem
+
+   AMOC        : β=4.20, Θ=50.0, R=45.0, stability=0.65 (trembling)
+   LLM_GPT     : β=3.47, Θ=100.0, R=105.0, stability=0.45 (post-emergence)
+   Ecosystem   : β=2.80, Θ=500.0, R=300.0, stability=0.18 (collapsing!)
+
+   Destabilization events: 3
+   - Ecosystem: stability=0.18 (critical!)
+   - AMOC: stability=0.28 (unstable)
+```
+
+---
+
 ## 🔮 Future Extensions
 
-- [ ] **Real-time sonification** from live data streams
-- [ ] **Spatial audio (stereo/5.1)** for multi-field compositions
+- [x] **Real-time sonification** from live data streams ✅ *Dynamic Threshold Choir*
+- [x] **Spatial audio (stereo)** for multi-field compositions ✅ *Dynamic Threshold Choir*
+- [ ] **5.1/Atmos spatial audio** for immersive installations
 - [ ] **MIDI export** for DAW integration
 - [ ] **Integration with simulator** for audiovisual presets
 - [ ] **Machine learning** to learn optimal acoustic mappings
+- [ ] **WebSocket streaming** for real-time web apps
+- [ ] **NOAA/API connectors** for live climate/LLM data
 - [ ] **Community presets** - submit your own field mappings!
 
 ---
