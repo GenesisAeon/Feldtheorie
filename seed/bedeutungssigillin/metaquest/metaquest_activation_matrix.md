@@ -16,10 +16,10 @@
    - *Kopplung*: `../system/metaquest_system_map.yaml`, `../wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml`, `../codexfeedback.md`.
 
 2. **Activation Backlog Ledger** — `../../docs/utac_activation_backlog.{md,json,yaml}`
-   - *Formal*: Führt mq-gap IDs, Null-Guards und Umsetzungskanäle (automation/outreach/analysis) zusammen.
-   - *Empirisch*: Abschnitt *Metaquest Parity Hooks* + *Implementation Ledger* referenzieren Kompassvektoren und sigillin_sync-Run-ID.
-   - *Poetisch*: Der Schaltplan, der R gezielt zu den richtigen Laternen lenkt.
-   - *Kopplung*: `../system/metaquest_system_compass.yaml`, `../wissenschaftsprojekt/metaquest_campaign_compass.yaml`, `../../analysis/sigillin_sync/latest.json`.
+   - *Formal*: Führt mq-gap IDs, Null-Guards und Umsetzungskanäle (automation/outreach/analysis) zusammen; `meta.updated` → 2026-08-20.
+   - *Empirisch*: Abschnitt *Metaquest Parity Hooks* + *Implementation Ledger* referenzieren Kompassvektoren, sigillin_sync-Run-ID und spiegeln die August-Telemetrie (`analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json`).
+   - *Poetisch*: Der Schaltplan, der R gezielt zu den richtigen Laternen lenkt, solange σ(β(R-Θ))≈0.317 bestehen bleibt.
+   - *Kopplung*: `../system/metaquest_system_compass.yaml`, `../wissenschaftsprojekt/metaquest_campaign_compass.yaml`, `../../analysis/sigillin_sync/latest.json`, `../../docs/utac_v2_activation_tracker_2026-08.md`.
 
 3. **Sigillin Sync Telemetry Pulse** — `../../analysis/sigillin_sync/latest.json`
    - *Formal*: Meldet $R=12$, $\Theta$ erreicht (0 Gaps), $\beta≈4.6$ und referenziert `metaquest_report_20251107T215246Z.json`.
@@ -28,10 +28,10 @@
    - *Kopplung*: `../system/metaquest/lanterns/metaquest_system_lanterns.yaml`, `../wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.yaml`, `../../shadow_sigillin/metaquest/system/metaquest_system_shadow_index.yaml`.
 
 4. **Codex Feedback Echo** — `../codexfeedback.{yaml,json,md}`
-   - *Formal*: Tri-Layer-Protokoll aller Aktivierungsschritte inkl. $(R,\Theta,\beta)$ und Statusverlauf.
-   - *Empirisch*: Neueste Einträge verknüpfen Telemetrie, Backlog und Ritualreferenzen.
+   - *Formal*: Tri-Layer-Protokoll aller Aktivierungsschritte inkl. $(R,\Theta,\beta)$ und Statusverlauf (`pr-draft-0110` → August-Scan).
+   - *Empirisch*: Neueste Einträge verknüpfen Telemetrie, Backlog (2026-08-20) und Ritualreferenzen.
    - *Poetisch*: Das Myzel, das jede Laterne informiert, wenn der Atem stockt oder beschleunigt.
-   - *Kopplung*: `../system/metaquest/metaquest_system_sigil.yaml`, `../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml`, `../../shadow_sigillin/metaquest/metaquest_shadow_index.yaml`.
+   - *Kopplung*: `../system/metaquest/metaquest_system_sigil.yaml`, `../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml`, `../../shadow_sigillin/metaquest/metaquest_shadow_index.yaml`, `../../docs/utac_v2_activation_tracker_2026-08.md`.
 
 ## Offene Aktivierungsdrehungen
 

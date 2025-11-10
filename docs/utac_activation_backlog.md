@@ -16,7 +16,13 @@ Tri-layer mirrors:
 
 ---
 
-## ♻️ Audit Refresh (2026-07-15)
+## ♻️ Audit Refresh (2026-08-20)
+
+- **Manifest Gap Scan:** `analysis/utac_manifest_gap_scan.py --as-of 2026-08-20T00:00:00Z` + `analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json` bestätigen unverändert R̄=0.50, Θ=0.66, β=4.8 und σ(β(R-Θ))≈0.317 (`python -m analysis.utac_manifest_gap_scan --as-of 2026-08-20T00:00:00Z → 4 datasets pending, 10 components missing`). Urban Heat bleibt allein leuchtend; Amazon Hydro, AMOC, Neuro-AI und Energy/Finance halten weiterhin dieselben 10 fehlenden Komponenten (4 Datensätze, 6 Analyse-Exports) offen.
+- **Analysis Outputs:** `analysis/results/neuro_ai_beta.json` und `analysis/results/beta_meta_regression_v2_latest.json` fehlen weiterhin; August-Telemetrie betont, dass Codex, Backlog und Statuskarte diese ΔAIC-Wächter erst nach Landing spiegeln können.
+- **Automation & Parität:** Neues Manifest-JSON (`analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json`) archiviert den August-Puls; CI-Hooks (`scripts/archive_sigillin.py --recount`, `.github/workflows/utf-preset-guard.yml`) bleiben priorisierte Aufgaben, damit Δindex- und ΔAIC-Drift automatisch melden.
+
+### Rückblick 2026-07-15
 
 - **Manifest Gap Scan:** `analysis/utac_manifest_gap_scan.py --as-of 2026-07-15T00:00:00Z` + `analysis/results/utac_v2_manifest_gap_scan_20260715T000000Z.json` erneuern das Bild: R̄=0.50, Θ=0.66, β=4.8 und σ(β(R-Θ))≈0.317 bleiben stabil (`python -m analysis.utac_manifest_gap_scan --as-of 2026-07-15T00:00:00Z → 4 datasets pending, 10 components missing`). Urban Heat hält weiterhin die einzige leuchtende Laterne; Amazon Hydro, AMOC, Neuro-AI und Energy/Finance steuern zusammen die 10 fehlenden Komponenten (4 Datensätze, 6 Analyse-Exports) bei.
 - **Analysis Outputs:** `analysis/results/neuro_ai_beta.json` und `analysis/results/beta_meta_regression_v2_latest.json` sind immer noch nicht vorhanden; die Juli-Kontrolle bestätigt, dass Codex, Backlog und Statuskarte diese ΔAIC-Wächter erst nach Landing zitieren können.
