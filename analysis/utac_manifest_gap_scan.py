@@ -95,7 +95,9 @@ def _collect_target_gaps(targets: Iterable[Mapping[str, Any]]) -> List[Dict[str,
     return gaps
 
 
-def scan_manifest(manifest_path: Path) -> Dict[str, Any]:
+def scan_manifest(
+    manifest_path: Path, *, generated_at: _dt.datetime | None = None
+) -> Dict[str, Any]:
     """Generate a gap summary for the provided manifest file."""
 
     manifest_data = json.loads(manifest_path.read_text())
@@ -138,10 +140,13 @@ def scan_manifest(manifest_path: Path) -> Dict[str, Any]:
     sigillin_gaps = _collect_target_gaps(manifest_data.get("sigillin_targets", []))
     simulator_gaps = _collect_target_gaps(manifest_data.get("simulator_targets", []))
 
-    now = _dt.datetime.now(tz=_dt.timezone.utc)
+    if generated_at is None:
+        generated_at = _dt.datetime.now(tz=_dt.timezone.utc)
+    else:
+        generated_at = generated_at.astimezone(_dt.timezone.utc)
 
     summary: Dict[str, Any] = {
-        "generated_at": now.isoformat().replace("+00:00", "Z"),
+        "generated_at": generated_at.isoformat().replace("+00:00", "Z"),
         "source_manifest": str(manifest_path),
         "logistic": {
             "beta": beta,
@@ -176,6 +181,21 @@ def _default_output_path(timestamp: str) -> Path:
     return RESULT_DIRECTORY / f"utac_v2_manifest_gap_scan_{timestamp}.json"
 
 
+def _parse_iso_datetime(value: str) -> _dt.datetime:
+    """Return an aware datetime from an ISO 8601 string."""
+
+    try:
+        parsed = _dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:  # pragma: no cover - defensive path
+        raise argparse.ArgumentTypeError(
+            f"invalid ISO-8601 datetime value: {value!r}"
+        ) from exc
+
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=_dt.timezone.utc)
+    return parsed.astimezone(_dt.timezone.utc)
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -195,6 +215,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         action="store_true",
         help="Suppress the brief stdout summary.",
     )
+    parser.add_argument(
+        "--as-of",
+        type=_parse_iso_datetime,
+        default=None,
+        help=(
+            "Override the generated_at timestamp (ISO 8601). Useful when the audit "
+            "documents a past logistic pulse."
+        ),
+    )
 
     args = parser.parse_args(argv)
 
@@ -202,7 +231,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     if not manifest_path.exists():
         parser.error(f"manifest file not found: {manifest_path}")
 
-    summary = scan_manifest(manifest_path)
+    summary = scan_manifest(manifest_path, generated_at=args.as_of)
     timestamp = summary["generated_at"].replace(":", "").replace("-", "")
     if args.output is None:
         output_path = _default_output_path(timestamp)

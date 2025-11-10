@@ -1,21 +1,21 @@
 # 📚 Docs Index - Living Documentation Navigator
 
-**Version:** 1.3.5 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 8. Jun 2026 | **Verzeichnis:** `docs/`
+**Version:** 1.3.6 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 15. Jul 2026 | **Verzeichnis:** `docs/`
 
 ---
 
 ## 🎯 Was ist das?
 
-Die **Living Documentation Tapestry** - UTAC Theory in Markdown! 27 Dokumente, 4 Kategorien.
+Die **Living Documentation Tapestry** - UTAC Theory in Markdown! 28 Dokumente, 4 Kategorien.
 
 ```
 docs/
 ├── Theory (4): Core, Emergence, Appendix, Kohärenzformel
 ├── Applications (4): Classification, Use Cases, Review Guide, Safety-Delay Status
 ├── Validation (2): Falsifiability, Reports
-└── Infrastructure (17): README, Cleanup Resonance Map, Status Matrix, Metaquest Parity Brief, Activation Backlog, Docs Index, Sigillin Hygiene, Search Patterns, Zenodo Abstract, Zenodo Playbook, Resonance Bridge Map, UTAC v2 Data Lanterns, UTAC v2 Activation Tracker 2026-02, UTAC v2 Activation Tracker 2026-03, UTAC v2 Activation Tracker 2026-05, UTAC v2 Activation Tracker 2026-06, UTAC v2 Gap Synopsis 2026-03
+└── Infrastructure (18): README, Cleanup Resonance Map, Status Matrix, Metaquest Parity Brief, Activation Backlog, Docs Index, Sigillin Hygiene, Search Patterns, Zenodo Abstract, Zenodo Playbook, Resonance Bridge Map, UTAC v2 Data Lanterns, UTAC v2 Activation Tracker 2026-02, UTAC v2 Activation Tracker 2026-03, UTAC v2 Activation Tracker 2026-05, UTAC v2 Activation Tracker 2026-06, UTAC v2 Activation Tracker 2026-07, UTAC v2 Gap Synopsis 2026-03
 
-Total: 27 MD files
+Total: 28 MD files
 ```
 
 ---
@@ -79,7 +79,8 @@ Total: 27 MD files
 14. `utac_v2_activation_tracker_2026-03.md` - Frische Audit-Laterne mit manuellem Verifikationslauf (26. Mär 2026)
 15. `utac_v2_activation_tracker_2026-05.md` - Manifest Gap Scan (4 Laternen, 10 Komponenten, 2 Analyse-Exports offen) + Prioritäten für Daten, Automation und Codex-Sync
 16. `utac_v2_activation_tracker_2026-06.md` - Juni-Gap Scan (σ≈0.317) mit korrigierten Metadata-Pfaden, offenen Analyse-Exports & Codex-Hook `pr-draft-0106`
-17. `utac_v2_gap_synopsis_2026-03.md` - Inventar "haben vs. brauchen" + Guard-Update (meta.logistic) für die UTAC v2 Laternen
+17. `utac_v2_activation_tracker_2026-07.md` - Juli-Gap Scan (σ≈0.317) mit `--as-of` Telemetrie, ΔAIC-Doppelposten (`neuro_ai_beta.json`, `beta_meta_regression_v2_latest.json`) und Codex-Hook `pr-draft-0108`
+18. `utac_v2_gap_synopsis_2026-03.md` - Inventar "haben vs. brauchen" + Guard-Update (meta.logistic) für die UTAC v2 Laternen
 
 ---
 
@@ -92,11 +93,12 @@ Total: 27 MD files
 4. **field_type_classification_v1.1.md** für Details
 5. **utac_safety_delay_status.md** sobald τ*-Simulationen anlaufen
 6. **resonance-bridge-map.md** für Analyse↔Simulator Parität
-7. **utac_v2_data_lanterns.md** sobald Manifest-Laternen aktiviert werden sollen (Juni 2026 Metadata-Update)
-8. **utac_v2_activation_tracker_2026-06.md** für den frischen Juni-Gap-Scan (σ≈0.317, korrigierte Metadata-Pfade, Codex-Hook `pr-draft-0106`)
-9. **utac_v2_activation_tracker_2026-05.md** falls du die Mai-Diagnostik und Prioritäten nachlesen willst
-10. **utac_v2_gap_synopsis_2026-03.md** wenn du eine kompakte Liste der bestehenden Assets vs. offenen Laternen plus Guard-Hinweise brauchst
-11. **zenodo_release_playbook.md** wenn \(R>\Theta\) Richtung Release zeigt
+7. **utac_v2_data_lanterns.md** sobald Manifest-Laternen aktiviert werden sollen (Juli 2026 Audit bestätigt weiterhin R̄=0.50)
+8. **utac_v2_activation_tracker_2026-07.md** für den aktuellen Juli-Gap-Scan (σ≈0.317, `--as-of` Telemetrie, Codex-Hook `pr-draft-0108`)
+9. **utac_v2_activation_tracker_2026-06.md** falls du den Juni-Snapshot mit korrigierten Metadata-Pfaden brauchst
+10. **utac_v2_activation_tracker_2026-05.md** für die Mai-Diagnostik und Prioritäten
+11. **utac_v2_gap_synopsis_2026-03.md** wenn du eine kompakte Liste der bestehenden Assets vs. offenen Laternen plus Guard-Hinweise brauchst
+12. **zenodo_release_playbook.md** wenn \(R>\Theta\) Richtung Release zeigt
 
 ### Für Agenten:
 ```python
