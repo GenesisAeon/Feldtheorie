@@ -1,0 +1,82 @@
+{
+  "n_transitions": 5,
+  "total_duration_sec": 17.5,
+  "gap_duration_sec": 0.5,
+  "transitions": [
+    {
+      "beta": 2.5,
+      "theta": 100.0,
+      "R_range": [
+        99.2,
+        100.8
+      ],
+      "L": 1.0,
+      "field_type": "weakly_coupled",
+      "base_frequency_hz": 115.5,
+      "profile": "Neural plasticity, ecosystems",
+      "duration_sec": 3.0,
+      "sample_rate_hz": 44100,
+      "label": "Weakly Coupled (\u03b2=2.5)"
+    },
+    {
+      "beta": 3.25,
+      "theta": 100.0,
+      "R_range": [
+        99.38461538461539,
+        100.61538461538461
+      ],
+      "L": 1.0,
+      "field_type": "high_dimensional",
+      "base_frequency_hz": 370.83375,
+      "profile": "LLMs, evolutionary systems",
+      "duration_sec": 3.0,
+      "sample_rate_hz": 44100,
+      "label": "High-Dimensional (\u03b2=3.25)"
+    },
+    {
+      "beta": 4.0,
+      "theta": 100.0,
+      "R_range": [
+        99.5,
+        100.5
+      ],
+      "L": 1.0,
+      "field_type": "strongly_coupled",
+      "base_frequency_hz": 264.0,
+      "profile": "Neural networks, AMOC, honeybees",
+      "duration_sec": 3.0,
+      "sample_rate_hz": 44100,
+      "label": "Strongly Coupled (\u03b2=4.0)"
+    },
+    {
+      "beta": 5.0,
+      "theta": 100.0,
+      "R_range": [
+        99.6,
+        100.4
+      ],
+      "L": 1.0,
+      "field_type": "strongly_coupled",
+      "base_frequency_hz": 286.0,
+      "profile": "Neural networks, AMOC, honeybees",
+      "duration_sec": 3.0,
+      "sample_rate_hz": 44100,
+      "label": "Physically Constrained (\u03b2=5.0)"
+    },
+    {
+      "beta": 8.0,
+      "theta": 100.0,
+      "R_range": [
+        99.75,
+        100.25
+      ],
+      "L": 1.0,
+      "field_type": "meta_adaptive",
+      "base_frequency_hz": 418.608,
+      "profile": "Climate cascades, markets, urban heat",
+      "duration_sec": 3.0,
+      "sample_rate_hz": 44100,
+      "label": "Meta-Adaptive (\u03b2=8.0)"
+    }
+  ]
+}

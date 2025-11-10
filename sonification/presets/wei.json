@@ -1,0 +1,10 @@
+{
+  "name": "Wei et al. - LLM Emergence",
+  "description": "Emergent abilities in large language models (GPT-3)",
+  "reference": "Wei et al. (2022)",
+  "beta": 3.47,
+  "theta": 100.0,
+  "field_type": "high_dimensional",
+  "dataset": "data/ai/wei_emergent_abilities.csv",
+  "notes": "The sonic signature of language model emergence - complex, ethereal tones representing high-dimensional phase transitions"
+}

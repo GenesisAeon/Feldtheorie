@@ -1,0 +1,14 @@
+{
+  "beta": 16.3,
+  "theta": 100,
+  "R_range": [
+    99.87730061349693,
+    100.12269938650307
+  ],
+  "L": 1.0,
+  "field_type": "meta_adaptive",
+  "base_frequency_hz": 635.7609,
+  "profile": "Climate cascades, markets, urban heat",
+  "duration_sec": 3.0,
+  "sample_rate_hz": 44100
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Field Type Spectrum",
+  "description": "Sonic journey through all five UTAC field types",
+  "reference": "Field Type Classification v1.1",
+  "beta_values": [2.5, 3.25, 4.0, 5.0, 8.0],
+  "theta_values": [100.0, 100.0, 100.0, 100.0, 100.0],
+  "labels": [
+    "Weakly Coupled (β=2.5)",
+    "High-Dimensional (β=3.25)",
+    "Strongly Coupled (β=4.0)",
+    "Physically Constrained (β=5.0)",
+    "Meta-Adaptive (β=8.0)"
+  ],
+  "notes": "A complete sonic spectrum from soft, diffuse transitions to sharp, critical thresholds. Listen to how β-steepness transforms the character of emergence."
+}

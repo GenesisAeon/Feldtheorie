@@ -1,0 +1,67 @@
+{
+  "n_transitions": 4,
+  "total_duration_sec": 14.799909297052155,
+  "gap_duration_sec": 0.7,
+  "transitions": [
+    {
+      "beta": 3.47,
+      "theta": 100.0,
+      "R_range": [
+        99.42363112391931,
+        100.57636887608069
+      ],
+      "L": 1.0,
+      "field_type": "high_dimensional",
+      "base_frequency_hz": 378.08561,
+      "profile": "LLMs, evolutionary systems",
+      "duration_sec": 3.0,
+      "sample_rate_hz": 44100,
+      "label": "LLM Emergence (\u03b2=3.47)"
+    },
+    {
+      "beta": 4.2,
+      "theta": 100.0,
+      "R_range": [
+        99.52380952380952,
+        100.47619047619048
+      ],
+      "L": 1.0,
+      "field_type": "strongly_coupled",
+      "base_frequency_hz": 268.4,
+      "profile": "Neural networks, AMOC, honeybees",
+      "duration_sec": 3.0,
+      "sample_rate_hz": 44100,
+      "label": "AMOC Collapse (\u03b2=4.2)"
+    },
+    {
+      "beta": 5.5,
+      "theta": 100.0,
+      "R_range": [
+        99.63636363636364,
+        100.36363636363636
+      ],
+      "L": 1.0,
+      "field_type": "physically_constrained",
+      "base_frequency_hz": 594.0,
+      "profile": "Black holes, earthquakes",
+      "duration_sec": 3.0,
+      "sample_rate_hz": 44100,
+      "label": "Black Hole Accretion (\u03b2=5.5)"
+    },
+    {
+      "beta": 16.3,
+      "theta": 100.0,
+      "R_range": [
+        99.87730061349693,
+        100.12269938650307
+      ],
+      "L": 1.0,
+      "field_type": "meta_adaptive",
+      "base_frequency_hz": 635.7609,
+      "profile": "Climate cascades, markets, urban heat",
+      "duration_sec": 3.0,
+      "sample_rate_hz": 44100,
+      "label": "Urban Heat Island (\u03b2=16.3)"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Journey to Criticality",
+  "description": "Sonic narrative of emergence across domains",
+  "reference": "Cross-domain UTAC analysis",
+  "beta_values": [3.47, 4.2, 5.5, 16.3],
+  "theta_values": [100.0, 100.0, 100.0, 100.0],
+  "labels": [
+    "LLM Emergence (β=3.47)",
+    "AMOC Collapse (β=4.2)",
+    "Black Hole Accretion (β=5.5)",
+    "Urban Heat Island (β=16.3)"
+  ],
+  "notes": "From language model cognition to planetary circulation to gravitational singularity to urban thermal extremes - the universal sound of threshold transitions"
+}

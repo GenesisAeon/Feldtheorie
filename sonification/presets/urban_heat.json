@@ -1,0 +1,10 @@
+{
+  "name": "Urban Heat Island",
+  "description": "Extreme β-value outlier (thermal storage mechanism)",
+  "reference": "Urban climate data",
+  "beta": 16.3,
+  "theta": 100.0,
+  "field_type": "meta_adaptive",
+  "dataset": "data/socio_ecology/urban_heat_canopy.csv",
+  "notes": "Sharp, intense tones - the steepest transition in the UTAC spectrum. Morphing, adaptive character reflects thermal storage dynamics"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "AMOC Collapse",
+  "description": "Atlantic Meridional Overturning Circulation tipping point",
+  "reference": "Climate models",
+  "beta": 4.2,
+  "theta": 100.0,
+  "field_type": "strongly_coupled",
+  "dataset": "data/climate/amoc_*.csv",
+  "notes": "Deep, resonant tones reflecting ocean circulation coupling - the sound of a planetary system at the edge"
+}
