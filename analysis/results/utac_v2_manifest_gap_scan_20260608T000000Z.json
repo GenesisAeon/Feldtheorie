@@ -1,0 +1,131 @@
+{
+  "generated_at": "2025-11-09T21:13:46.818652Z",
+  "source_manifest": "analysis/reports/utac_v2_readiness.json",
+  "logistic": {
+    "beta": 4.8,
+    "theta": 0.66,
+    "mean_readiness": 0.5,
+    "sigma": 0.3169119051378149
+  },
+  "datasets": [
+    {
+      "id": "utac-v1_3-ds-001",
+      "domain": "climate",
+      "reported_ratio": 1.0,
+      "observed_ratio": 1.0,
+      "missing_components": []
+    },
+    {
+      "id": "utac-v1_3-ds-002",
+      "domain": "climate",
+      "reported_ratio": 0.5,
+      "observed_ratio": 0.5,
+      "missing_components": [
+        {
+          "name": "data",
+          "path": "data/climate/amazon_precip_evapo.nc",
+          "kind": "data"
+        },
+        {
+          "name": "amazon_hydro_fit.json",
+          "path": "analysis/results/amazon_hydro_fit.json",
+          "kind": "result"
+        }
+      ]
+    },
+    {
+      "id": "utac-v1_3-ds-003",
+      "domain": "ocean",
+      "reported_ratio": 0.5,
+      "observed_ratio": 0.5,
+      "missing_components": [
+        {
+          "name": "data",
+          "path": "data/ocean/amoc_transport.csv",
+          "kind": "data"
+        },
+        {
+          "name": "amoc_transport_fit.json",
+          "path": "analysis/results/amoc_transport_fit.json",
+          "kind": "result"
+        }
+      ]
+    },
+    {
+      "id": "utac-v1_3-ds-004",
+      "domain": "neuro_ai",
+      "reported_ratio": 0.25,
+      "observed_ratio": 0.25,
+      "missing_components": [
+        {
+          "name": "data",
+          "path": "data/neuro_ai/hybrid_activation.csv",
+          "kind": "data"
+        },
+        {
+          "name": "neuro_ai_beta.json",
+          "path": "analysis/results/neuro_ai_beta.json",
+          "kind": "result"
+        },
+        {
+          "name": "neuro_ai_bootstrap.json",
+          "path": "analysis/results/neuro_ai_bootstrap.json",
+          "kind": "result"
+        }
+      ]
+    },
+    {
+      "id": "utac-v1_3-ds-005",
+      "domain": "economy",
+      "reported_ratio": 0.25,
+      "observed_ratio": 0.25,
+      "missing_components": [
+        {
+          "name": "data",
+          "path": "data/economy/systemic_thresholds.csv",
+          "kind": "data"
+        },
+        {
+          "name": "economy_threshold_fit.json",
+          "path": "analysis/results/economy_threshold_fit.json",
+          "kind": "result"
+        },
+        {
+          "name": "meta_v2_summary_refresh.json",
+          "path": "analysis/results/meta_v2_summary_refresh.json",
+          "kind": "result"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "datasets_total": 5,
+    "datasets_ready": 1,
+    "datasets_partial": 4,
+    "datasets_pending": 4,
+    "missing_components_total": 10,
+    "analysis_gaps": 2,
+    "documentation_gaps": 0,
+    "sigillin_gaps": 0,
+    "simulator_gaps": 0
+  },
+  "gaps": {
+    "analysis": [
+      {
+        "path": "analysis/results/neuro_ai_beta.json",
+        "category": "analysis",
+        "description": "neuro-AI hybrid threshold fitter",
+        "kind": "expected_output"
+      },
+      {
+        "path": "analysis/results/beta_meta_regression_v2_latest.json",
+        "category": "analysis",
+        "description": "meta regression v2 refresh",
+        "kind": "expected_output"
+      }
+    ],
+    "documentation": [],
+    "sigillin": [],
+    "simulator": []
+  }
+}

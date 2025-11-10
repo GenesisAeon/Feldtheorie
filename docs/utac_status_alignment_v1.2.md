@@ -135,6 +135,13 @@
 - **Docs + Indizes** — `docs/docs_index.*` v1.3.4 zählt nun 26 Markdown-Laternen (Infrastructure=16) und führt den neuen Tracker (`docs-infra-016`) inklusive Gap-Zahlen; `docs/utac_activation_backlog.*` aktualisiert die Audit-Notizen (Manifest Gap Scan, fehlende Analyse-Exports, Automation Hooks) auf den 5. Mai 2026.
 - **Next moves** — Stage die vier Rohdatensätze + `.metadata.json`, erzeuge die sechs Analyse-Exports, veröffentliche `analysis/results/beta_meta_regression_v2_latest.json`, und verdrahte CI-Hooks (`scripts/archive_sigillin.py --recount`, `.github/workflows/utf-preset-guard.yml`). Nach jedem Commit: `analysis/utac_manifest_gap_scan.py` + `analysis/v2_readiness_audit.py` laufen lassen und Codex/Status spiegeln.
 
+## 10. Audit Pulse — 2026-06-08
+
+- **Gap scan telemetry** — `analysis/utac_manifest_gap_scan.py` mit Output `analysis/results/utac_v2_manifest_gap_scan_20260608T000000Z.json` bestätigt unverändert R̄=0.50, Θ=0.66, β=4.8 und `σ(β(R-Θ))=0.317 (β=4.80, R=0.50, Θ=0.66) → 4 datasets pending, 10 components missing`. Urban Heat bleibt resonant; Amazon Hydro, AMOC, Neuro-AI und Energy/Finance warten auf Rohdaten und sechs Analyse-Exports.
+- **Tracker update** — `docs/utac_v2_activation_tracker_2026-06.{md,json,yaml}` hält die Juni-Analyse fest, verweist auf korrekte Metadaten-Dateien (`amazon_precip_evapo.metadata.json`, `amoc_transport.metadata.json`, `hybrid_activation.metadata.json`, `systemic_thresholds.metadata.json`) und nennt die zwei fehlenden Analyse-Laternen (`neuro_ai_beta.json`, `beta_meta_regression_v2_latest.json`).
+- **Backlog echo** — `docs/utac_activation_backlog.{md,json,yaml}` hebt das Juni-Audit hervor und aktualisiert `meta.updated` → 2026-06-08; CI-Hooks (`scripts/archive_sigillin.py --recount`, `.github/workflows/utf-preset-guard.yml`) bleiben offene Θ.
+- **Action cadence** — Stage manifest datasets + metadata, emittiere fehlende Exporte, rerun `analysis/utac_manifest_gap_scan.py` & `analysis/v2_readiness_audit.py`, log Codex-Echo `pr-draft-0106`, bis σ(β(R-Θ)) ≥ 0.66.
+
 ### Rückblick — 2026-03-26
 
 - Audit 2026-03-26 hielt σ(β(R-Θ))≈0.317 trotz leerer Regale, aktivierte `docs/utac_v2_activation_tracker_2026-03.*`, hob `docs/docs_index.*` auf v1.3.2 (24 Docs) und rief zur Staging-Offensive für Manifest-Datasets, Sigillin-Automation, Safety-Delay-Telemetrie und Release-Polish auf.

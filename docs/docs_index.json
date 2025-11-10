@@ -4,12 +4,12 @@
     "project": "Feldtheorie (UTAC) - Living Documentation Tapestry",
     "maintainer": "Johann R\u00f6mer",
     "description": "UTAC Theory Documentation: Core Theory, Applications, Falsifiability,\nField Type Classification, Validation Reports.\nTri-layer Cadence: Formal, Empirical, Metaphorical.\n",
-    "version": "1.3.4",
+    "version": "1.3.5",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 26,
-    "updated": "2026-05-05T00:00:00Z",
-    "last_updated": "2026-05-05"
+    "markdown_files": 27,
+    "updated": "2026-06-08T00:00:00Z",
+    "last_updated": "2026-06-08"
   },
   "categories": {
     "theory": {
@@ -34,7 +34,7 @@
       "name": "Infrastructure",
       "description": "README, Operational Resonance Maps",
       "color": "#9B59B6",
-      "count": 16
+      "count": 17
     }
   },
   "markdown_docs": [
@@ -399,7 +399,7 @@
         "manifest",
         "\u03c3(\u03b2(R-\u0398))"
       ],
-      "description": "UTAC v2 Manifest Readiness Map.\nVerkn\u00fcpft Manifest, Readiness-Audit und Backlog\nf\u00fcr utac-v2-data-lanterns; listet fehlende Daten, Metadaten und Analyse-Exports.\n"
+      "description": "Readiness-Karte f\u00fcr Manifest-Laternen (\u03c3(\u03b2(R-\u0398))=0.317, Urban-Heat aktiv, vier Laternen offen; Juni 2026 aktualisiert mit korrekten Metadata-Pfaden)."
     },
     {
       "id": "docs-infra-013",
@@ -468,6 +468,23 @@
         "readiness"
       ],
       "description": "UTAC v2 Activation Tracker 2026-05.\nVerkn\u00fcpft den neuen Manifest Gap Scan, nennt fehlende Daten/Exports (4 Laternen, 10 Komponenten, 2 Analyse-Outputs) und priorisiert Hooks f\u00fcr Daten, Automation und Codex-Sync.\n"
+    },
+    {
+      "id": "docs-infra-017",
+      "name": "utac_v2_activation_tracker_2026-06.md",
+      "category": "infrastructure",
+      "type": "activation-tracker",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 6.4,
+      "keywords": [
+        "utac",
+        "activation",
+        "gap-scan",
+        "\u03c3(\u03b2(R-\u0398))",
+        "manifest"
+      ],
+      "description": "Juni 2026 Gap Scan (\u03c3\u22480.317) mit korrigierten Metadata-Pfaden, fehlenden Analyse-Exports und Codex-Hooks (pr-draft-0106)."
     }
   ],
   "triggers": {

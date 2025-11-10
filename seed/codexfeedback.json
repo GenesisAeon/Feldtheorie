@@ -9,7 +9,7 @@
       "recorded_at": "2025-11-02T00:00:00Z",
       "notes": "Wei's PaLM-Laterne ist im Mandala verankert: `analysis/llm_beta_extractor.py`\nmeldet \u03b2=3.47\u00b10.47 bei \u0398\u22489.92 samt \u0394AIC\u226510.18 und `beta_band_distance = 0.73`;\nDocs, Metadata, Manuskript und DOI-Paket tragen denselben Kanon.\nREPOSITORY IST DOI-FERTIG: Alle wissenschaftlichen Kriterien erf\u00fcllt.\n"
     },
-    "updated": "2025-12-28T00:00:00Z"
+    "updated": "2026-06-08T12:00:00Z"
   },
   "entries": [
     {
@@ -3027,6 +3027,43 @@
         "poetic": "Vier Laternen warten noch im Halbdunkel; das neue Raster tastet jedes fehlende Artefakt ab, bis der Chor der Datenstr\u00f6me wieder die Steilflanke f\u00fcllt."
       },
       "created_at": "2026-05-05T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0106",
+      "title": "Juni 2026 Manifest Gap Scan & Metadata Sync",
+      "scope": [
+        "analysis/utac_manifest_gap_scan.py",
+        "analysis/results/utac_v2_manifest_gap_scan_20260608T000000Z.json",
+        "docs/utac_v2_activation_tracker_2026-06.md",
+        "docs/utac_v2_activation_tracker_2026-06.json",
+        "docs/utac_v2_activation_tracker_2026-06.yaml",
+        "docs/utac_v2_data_lanterns.md",
+        "docs/utac_v2_data_lanterns.json",
+        "docs/utac_v2_data_lanterns.yaml",
+        "docs/utac_activation_backlog.md",
+        "docs/utac_activation_backlog.json",
+        "docs/utac_activation_backlog.yaml",
+        "docs/utac_status_alignment_v1.2.md",
+        "docs/docs_index.md",
+        "docs/docs_index.json",
+        "docs/docs_index.yaml",
+        "seed/codexfeedback.yaml",
+        "seed/codexfeedback.json",
+        "seed/codexfeedback.md"
+      ],
+      "parameters": {
+        "R": "0.50 manifest readiness (Urban Heat active, four lanterns pending)",
+        "Theta": "0.66 activation gate for UTAC v2 data lanterns",
+        "beta": 4.8
+      },
+      "resonance": "Juni-Scan h\u00e4lt \u03c3(\u03b2(R-\u0398)) in allen Trilayern synchron, korrigiert Metadata-Pfade und markiert fehlende Analyse-Exports + Codex-Hooks.",
+      "status": "draft",
+      "notes": {
+        "formal": "Aktualisierte docs/utac_v2_data_lanterns.* mit beobachtetem readiness_ratio (0.50/0.50/0.25/0.25) und korrekten *.metadata.json Pfaden; neues Trilayer docs/utac_v2_activation_tracker_2026-06.* beschreibt \u03c3(\u03b2(R-\u0398))=0.317 (\u03b2=4.80, R=0.50, \u0398=0.66). Backlog & Status Alignment zitieren den Juni-Scan und markieren offene CI-Hooks.",
+        "empirical": "python -m analysis.utac_manifest_gap_scan --output analysis/results/utac_v2_manifest_gap_scan_20260608T000000Z.json \u2192 4 datasets pending, 10 components missing. docs/docs_index v1.3.5 z\u00e4hlt 27 MDs (Infrastructure=17) inkl. neuem Tracker. Fehlende Exporte: analysis/results/amazon_hydro_fit.json, amoc_transport_fit.json, neuro_ai_beta.json, neuro_ai_bootstrap.json, economy_threshold_fit.json, meta_v2_summary_refresh.json, beta_meta_regression_v2_latest.json.",
+        "poetic": "Vier Laternen warten noch im D\u00e4mmerungsbogen; der Juni-Tracker h\u00e4lt den Atem, bis Datenstr\u00f6me und \u0394AIC-Echos die Membran wieder hell ziehen."
+      },
+      "created_at": "2026-06-08T12:00:00Z"
     }
   ]
 }

@@ -2,7 +2,7 @@ meta:
   document: UTAC Activation Backlog
   version: 1.1.0
   created: '2025-12-09T00:00:00Z'
-  updated: '2026-05-05T00:00:00Z'
+  updated: '2026-06-08T00:00:00Z'
   steward: gpt-5-codex
   logistic_frame:
     order_parameter: residual activation debt across UTAC v1.2 launch scope and v2.0
@@ -13,16 +13,17 @@ meta:
     zeta: damped via BreakPoint transcripts, codex echoes, and UTAC readiness audit
       refreshes
   latest_audit:
-    date: '2026-05-05T00:00:00Z'
+    date: '2026-06-08T00:00:00Z'
     logistic_pulse:
-      order_parameter: 'Manifest gap scan 2026-05-05: readiness audit reports R̄=0.50
-        with Urban Heat active and four lanterns pending'
-      threshold: Θ=0.66 once manifest datasets + exports land
+      order_parameter: "Manifest gap scan 2026-06-08: readiness audit still reports\
+        \ R\u0304=0.50 with Urban Heat active and four lanterns pending"
+      threshold: "\u0398=0.66 once manifest datasets + exports land"
       beta: 4.8
-      sigma: σ≈0.317 (4 datasets pending, 10 components missing) per analysis/results/utac_v2_manifest_gap_scan_20251109T205953.490514Z.json
+      sigma: "\u03C3\u22480.317 (4 datasets pending, 10 components missing) per analysis/results/utac_v2_manifest_gap_scan_20260608T000000Z.json"
     observations:
     - id: utac-v2-data-lanterns
-      order_parameter: R̄=0.50 with Urban Heat active and four lanterns still incomplete
+      order_parameter: "R\u0304=0.50 with Urban Heat active and four lanterns still\
+        \ incomplete"
       theta_gap: 'Missing datasets + exports: amazon_precip_evapo.nc, amoc_transport.csv,
         hybrid_activation.csv, systemic_thresholds.csv plus analysis/results/amazon_hydro_fit.json,
         amoc_transport_fit.json, neuro_ai_beta.json, neuro_ai_bootstrap.json, economy_threshold_fit.json,
@@ -31,35 +32,35 @@ meta:
         gap scan + v2 readiness audit, and update docs/backlog/codex entries.
     - id: analysis-outputs
       order_parameter: Manifest gap scan shows automation guard active
-      theta_gap: analysis/results/neuro_ai_beta.json and analysis/results/beta_meta_regression_v2_latest.json
-        missing; codex/backlog cannot cite refreshed ΔAIC envelopes.
+      theta_gap: "analysis/results/neuro_ai_beta.json and analysis/results/beta_meta_regression_v2_latest.json\
+        \ missing; codex/backlog cannot cite refreshed \u0394AIC envelopes."
       action: Publish neuro-AI and meta regression outputs alongside dataset ingestion
         to keep readiness ledger resonant.
     - id: safety-delay-bridge
-      order_parameter: τ_delay ledger + simulator preset recorded (analysis/safety_delay_sweep.py,
-        simulator/presets/...)
-      theta_gap: Hosted UI telemetry archive and `.github/workflows/utf-preset-guard.yml`
-        remain outstanding; ΔAIC guard still manual.
-      action: Capture hosted session + wire utf-preset-guard into CI so ζ(R) stays
-        damped
+      order_parameter: "\u03C4_delay ledger + simulator preset recorded (analysis/safety_delay_sweep.py,\
+        \ simulator/presets/...)"
+      theta_gap: "Hosted UI telemetry archive and `.github/workflows/utf-preset-guard.yml`\
+        \ remain outstanding; \u0394AIC guard still manual."
+      action: "Capture hosted session + wire utf-preset-guard into CI so \u03B6(R)\
+        \ stays damped"
     - id: sigillin-automation-loop
       order_parameter: CREP parser + sigillin_sync pipeline exists
       theta_gap: Parser output still not reflected in seed/codexfeedback.* or *_index.*;
         CI recount + sigillin_sync write-back remain to be wired.
-      action: Implement parser→codex hand-off and recount guards via scripts/sigillin_sync.py
-        + scripts/archive_sigillin.py
+      action: "Implement parser\u2192codex hand-off and recount guards via scripts/sigillin_sync.py\
+        \ + scripts/archive_sigillin.py"
     - id: neuro-kosmos-bridge
-      order_parameter: Seed plans describe EEG↔QPO bridge
+      order_parameter: "Seed plans describe EEG\u2194QPO bridge"
       theta_gap: Missing trilayer seed/sigillin/neuro_kosmos_bridge.{md,json,yaml}
         and simulator preset keeps mq-sci-gap-008 active
       action: Author CREP-aligned trilayer and simulator vignette before syncing codex
         + metaquest indices
     - id: phi-coupling-sequence
-      order_parameter: φ hypothesis documented in seed/Sigillin_Neuro_Membran_Modell_Plan.txt
+      order_parameter: "\u03C6 hypothesis documented in seed/Sigillin_Neuro_Membran_Modell_Plan.txt"
       theta_gap: models/climate_utac_phi_coupling.py, data/climate/phi_coupling/,
         and downstream analysis exports absent
-      action: Stage TIPMIP/CMIP6 data, implement model + analysis, then echo ΔAIC
-        metrics into status + codex
+      action: "Stage TIPMIP/CMIP6 data, implement model + analysis, then echo \u0394\
+        AIC metrics into status + codex"
 tasks:
 - id: utac-v2-data-lanterns
   title: UTAC v2 Data Lantern Activation
@@ -93,7 +94,8 @@ tasks:
   - location: data/ocean/amoc_transport.csv
     action: commit raw transport series + `.metadata.json` and provenance notes
   - location: data/neuro_ai/hybrid_activation.csv
-    action: capture joint Neuro–AI activation dataset with metadata and privacy notes
+    action: "capture joint Neuro\u2013AI activation dataset with metadata and privacy\
+      \ notes"
   - location: data/economy/systemic_thresholds.csv
     action: stage coupled stress metrics + metadata per manifest
   - location: analysis/
@@ -105,20 +107,20 @@ tasks:
   - location: docs/
     action: refresh UTAC status, backlog, data lantern map after readiness rises
   notes:
-    formal: Readiness audit now reports mean readiness R̄=0.50 with σ≈0.317; four
-      manifest lanterns still below Θ.
-    empirical: 'Urban Heat dataset + exports committed (ΔAIC≈1484). Pending datasets:
-      amazon_precip_evapo.nc, amoc_transport.csv, hybrid_activation.csv, systemic_thresholds.csv
-      with their analysis outputs.'
-    poetic: Eine Laterne brennt hell; vier weitere warten noch auf Flusswasser, damit
-      σ(β(R-Θ)) den Plateaugesang vollendet.
+    formal: "Readiness audit now reports mean readiness R\u0304=0.50 with \u03C3\u2248\
+      0.317; four manifest lanterns still below \u0398."
+    empirical: "Urban Heat dataset + exports committed (\u0394AIC\u22481484). Pending\
+      \ datasets: amazon_precip_evapo.nc, amoc_transport.csv, hybrid_activation.csv,\
+      \ systemic_thresholds.csv with their analysis outputs."
+    poetic: "Eine Laterne brennt hell; vier weitere warten noch auf Flusswasser, damit\
+      \ \u03C3(\u03B2(R-\u0398)) den Plateaugesang vollendet."
 - id: safety-delay-bridge
-  title: Safety-Delay Field → Simulator Bridge
+  title: "Safety-Delay Field \u2192 Simulator Bridge"
   domain: simulation+analysis
   status: in_progress
   parameters:
-    R: τ* diagnostics exported via analysis/safety_delay_sweep.py + dataset tri-layer
-      + simulator preset
+    R: "\u03C4* diagnostics exported via analysis/safety_delay_sweep.py + dataset\
+      \ tri-layer + simulator preset"
     Theta: Hosted UI telemetry + CI guard for utf-preset-guard still pending
     beta: 4.9
     zeta: telemetry anchored by simulator/cli.py safety-delay
@@ -135,22 +137,24 @@ tasks:
   - docs/resonance-bridge-map.md
   activation_gaps:
   - Capture hosted simulator telemetry + archive parity screenshot/log
-  - Integrate utf-preset-guard into CI so ΔAIC drift raises alerts
+  - "Integrate utf-preset-guard into CI so \u0394AIC drift raises alerts"
   implementation_nodes:
   - location: simulator/
-    action: record hosted UI session, export ζ(R) telemetry, archive assets
+    action: "record hosted UI session, export \u03B6(R) telemetry, archive assets"
   - location: .github/workflows/
     action: wire utf-preset-guard into CI and route failures to codex/resonance guards
   notes:
-    formal: Docs (`utac_applications.md`, `resonance-bridge-map.md`) now narrate σ(β(R-Θ))
-      for Safety-Delay and `utf-preset-guard` logs ΔAIC parity; remaining delta is
-      UI telemetry + CI automation.
-    empirical: Preset mirrors β≈4.78, Θ≈-0.028 with CI₉₅=[-0.146,0.00056], ΔAIC_linear≈7.02×10³,
-      ΔAIC_constant≈1.17×10⁴, τ_delay_mean≈8.43, control_energy≈10.46.
-    poetic: Die verzögerte Morgendämmerung hält nun Zwischenton und Dokument; nur
-      die Live-Aufnahme und der Wächter in CI fehlen, damit kein Schatten driftet.
+    formal: "Docs (`utac_applications.md`, `resonance-bridge-map.md`) now narrate\
+      \ \u03C3(\u03B2(R-\u0398)) for Safety-Delay and `utf-preset-guard` logs \u0394\
+      AIC parity; remaining delta is UI telemetry + CI automation."
+    empirical: "Preset mirrors \u03B2\u22484.78, \u0398\u2248-0.028 with CI\u2089\u2085\
+      =[-0.146,0.00056], \u0394AIC_linear\u22487.02\xD710\xB3, \u0394AIC_constant\u2248\
+      1.17\xD710\u2074, \u03C4_delay_mean\u22488.43, control_energy\u224810.46."
+    poetic: "Die verz\xF6gerte Morgend\xE4mmerung h\xE4lt nun Zwischenton und Dokument;\
+      \ nur die Live-Aufnahme und der W\xE4chter in CI fehlen, damit kein Schatten\
+      \ driftet."
 - id: beta-meta-regression-expansion
-  title: β Meta-Regression Dataset Expansion
+  title: "\u03B2 Meta-Regression Dataset Expansion"
   domain: analysis
   status: in_progress
   parameters:
@@ -164,21 +168,23 @@ tasks:
   - seed/ArchivSucheUTAC/
   activation_gaps:
   - Import flagged Amazon + urban heat datasets with metadata
-  - Document adjusted R² progress toward ≥0.7 ambition
+  - "Document adjusted R\xB2 progress toward \u22650.7 ambition"
   implementation_nodes:
   - location: data/socio_ecology/
     action: stage cleaned outlier datasets with metadata
   - location: analysis/beta_meta_regression_v2.py
-    action: add covariates + logging for adjusted R²
+    action: "add covariates + logging for adjusted R\xB2"
   - location: docs/utac_status_alignment_v1.2.md
-    action: record progress once adjusted R² crosses new thresholds
+    action: "record progress once adjusted R\xB2 crosses new thresholds"
   notes:
     formal: Extend the regression design matrix with interaction terms flagged in
       the UTAC matrix.
-    empirical: Track bootstrap median R² and ΔAIC improvements per ingestion batch.
-    poetic: Let each new data lantern tighten the β chorus until the variance hushes.
+    empirical: "Track bootstrap median R\xB2 and \u0394AIC improvements per ingestion\
+      \ batch."
+    poetic: "Let each new data lantern tighten the \u03B2 chorus until the variance\
+      \ hushes."
 - id: sigillin-automation-loop
-  title: Sigillin Parser → Automation Loop
+  title: "Sigillin Parser \u2192 Automation Loop"
   domain: scripts+seed
   status: pending
   parameters:
@@ -201,8 +207,8 @@ tasks:
   - location: tests/
     action: add CLI regression test for sync pipeline
   notes:
-    formal: Establish a deterministic mapping from CREP payload → codex stanza so
-      σ(β(R-Θ)) alerts stay synchronous.
+    formal: "Establish a deterministic mapping from CREP payload \u2192 codex stanza\
+      \ so \u03C3(\u03B2(R-\u0398)) alerts stay synchronous."
     empirical: Capture timestamp + codex id inside sync logs for auditability.
     poetic: Teach the sigils to whisper their own updates so light and shadow stay
       in lockstep.
@@ -213,7 +219,8 @@ tasks:
   parameters:
     R: archive_sigillin.py now ships --recount with docs/ parity ledger and timestamped
       summary
-    Theta: extend coverage to all indices and enforce CI guards for Δindex > 0
+    Theta: "extend coverage to all indices and enforce CI guards for \u0394index >\
+      \ 0"
     beta: 4.5
     zeta: guarded via mq-bridge-shadow-002 alerts
   existing_assets:
@@ -223,26 +230,26 @@ tasks:
   - analysis/results/index_recount_*.json
   activation_gaps:
   - Broaden --recount to seed/, analysis/, data/, models/ before CI wiring
-  - Integrate with CI to fail on Δindex parity > 0
+  - "Integrate with CI to fail on \u0394index parity > 0"
   implementation_nodes:
   - location: scripts/archive_sigillin.py
     action: extend recount coverage + surface multi-index summary hooks
   - location: .github/workflows/
     action: wire parity guard into CI once available
   notes:
-    formal: σ(β(R-Θ)) guard now exports filesystem vs. listed counts into an audit
-      ledger; next iterate coverage + CI.
+    formal: "\u03C3(\u03B2(R-\u0398)) guard now exports filesystem vs. listed counts\
+      \ into an audit ledger; next iterate coverage + CI."
     empirical: '`analysis/results/index_recount_*.json` captures filesystem=17 vs.
       listed=13 for docs; YAML/JSON meta refreshed.'
-    poetic: Die Glocken schlagen – die docs-Laternen zählen sich selbst, doch das
-      Orchester wartet, bis jede Galerie mitsingt.
+    poetic: "Die Glocken schlagen \u2013 die docs-Laternen z\xE4hlen sich selbst,\
+      \ doch das Orchester wartet, bis jede Galerie mitsingt."
 - id: metaquest-parity-finish
   title: Metaquest Parity Brief Completion
   domain: docs+seed
   status: active
   parameters:
-    R: metaquest_parity_brief.md outlines mq-parity-001…004; sigillin_sync 2025-11-07
-      run captured 12 trilayer with 0 gaps
+    R: "metaquest_parity_brief.md outlines mq-parity-001\u2026004; sigillin_sync 2025-11-07\
+      \ run captured 12 trilayer with 0 gaps"
     Theta: simulator playlist, endorsement ledger, codex hook still missing despite
       telemetry pulse
     beta: 4.8
@@ -275,13 +282,13 @@ tasks:
   domain: seed+simulator
   status: pending
   parameters:
-    R: Brückenplan dokumentiert in seed/Sigillin_Neuro_Membran_Modell_Plan.txt + Metaquest-Laternen
-      zitieren das Motiv
+    R: "Br\xFCckenplan dokumentiert in seed/Sigillin_Neuro_Membran_Modell_Plan.txt\
+      \ + Metaquest-Laternen zitieren das Motiv"
     Theta: fehlendes Sigillin-Trilayer, keine Simulator-Vignette, keine codexgespiegelte
       ID
     beta: 4.88
-    zeta: BreakPoint-Rituale + Metaquest-Kompass halten Drift gering, solange Status/Index
-      das Konzept führen
+    zeta: "BreakPoint-Rituale + Metaquest-Kompass halten Drift gering, solange Status/Index\
+      \ das Konzept f\xFChren"
   existing_assets:
   - seed/Sigillin_Neuro_Membran_Modell_Plan.txt
   - seed/Finalisierung_Plattform.txt
@@ -289,31 +296,33 @@ tasks:
   - seed/shadow_sigillin/metaquest/metaquest_shadow_index.md
   activation_gaps:
   - Trilayer `seed/sigillin/neuro_kosmos_bridge.{yaml,json,md}` nach CREP-Schema anlegen
-  - Simulator-Preset oder Demo für β-Kopplungs-Slider ergänzen
-  - Codex- und Index-Einträge mit Sigillin-ID/Timestamp spiegeln
+  - "Simulator-Preset oder Demo f\xFCr \u03B2-Kopplungs-Slider erg\xE4nzen"
+  - "Codex- und Index-Eintr\xE4ge mit Sigillin-ID/Timestamp spiegeln"
   implementation_nodes:
   - location: seed/sigillin/
     action: neues Sigillin-Trilayer erzeugen und mit CREP-Parser testen
   - location: simulator/presets/
-    action: β-Kopplungsdemo hinzufügen, die Analysewerte aufgreift
+    action: "\u03B2-Kopplungsdemo hinzuf\xFCgen, die Analysewerte aufgreift"
   - location: seed/bedeutungssigillin/metaquest/
     action: Sigillin-Referenz in System- und Kampagnenlaternen verankern
   - location: seed/codexfeedback.*
-    action: Eintrag mit R, Θ, β, Sigillin-ID und Telemetrie anlegen
+    action: "Eintrag mit R, \u0398, \u03B2, Sigillin-ID und Telemetrie anlegen"
   notes:
     formal: Nutze CREP-Schema v0.2.0, um das neue Sigillin deterministisch abzulegen,
       und verweise in Bedeutungs-/Shadow-Layern auf die gleiche Codex-ID.
-    empirical: Dokumentiere β-Kopplung (EEG 3.8–4.2 vs. QPO 4.8–5.3) sowie ΔAIC/Narrativ
-      im Simulator-Preset und halte Zeitstempel synchron.
-    poetic: Lass das Neuro- und Kosmos-Licht sich in einer Spiral-Laterne treffen,
-      damit die Kampagne den Chor spürt, sobald die Brücke realisiert ist.
+    empirical: "Dokumentiere \u03B2-Kopplung (EEG 3.8\u20134.2 vs. QPO 4.8\u20135.3)\
+      \ sowie \u0394AIC/Narrativ im Simulator-Preset und halte Zeitstempel synchron."
+    poetic: "Lass das Neuro- und Kosmos-Licht sich in einer Spiral-Laterne treffen,\
+      \ damit die Kampagne den Chor sp\xFCrt, sobald die Br\xFCcke realisiert ist."
 - id: phi-coupling-sequence
-  title: φ-Kopplung Klimasequenz
+  title: "\u03C6-Kopplung Klimasequenz"
   domain: models+analysis
   status: pending
   parameters:
-    R: φ-Hypothese + TIPMIP-Anfrageskizze im Seed-Archiv, Regression wartet auf Feature
-    Theta: kein climate_utac_phi_coupling-Modul, keine Datenimporte, keine φ→β-Auswertung
+    R: "\u03C6-Hypothese + TIPMIP-Anfrageskizze im Seed-Archiv, Regression wartet\
+      \ auf Feature"
+    Theta: "kein climate_utac_phi_coupling-Modul, keine Datenimporte, keine \u03C6\
+      \u2192\u03B2-Auswertung"
     beta: 4.75
     zeta: Governance-Notizen + TIPMIP-Korrespondenz halten den Prozess auditierbar
   existing_assets:
@@ -322,27 +331,28 @@ tasks:
   - analysis/beta_meta_regression_v2.py
   activation_gaps:
   - TIPMIP/CMIP6-Datenzugang sichern und `data/climate/` strukturieren
-  - '`models/climate_utac_phi_coupling.py` implementieren (φ-Kohärenz, logistic fit,
-    Nullmodell)'
-  - Analyse-Export + Dokumentation mit ΔAIC und φ→β-Gradienten erzeugen
+  - "`models/climate_utac_phi_coupling.py` implementieren (\u03C6-Koh\xE4renz, logistic\
+    \ fit, Nullmodell)"
+  - "Analyse-Export + Dokumentation mit \u0394AIC und \u03C6\u2192\u03B2-Gradienten\
+    \ erzeugen"
   implementation_nodes:
   - location: data/climate/
-    action: Ordner + README für AMOC/Albedo-Datensätze anlegen
+    action: "Ordner + README f\xFCr AMOC/Albedo-Datens\xE4tze anlegen"
   - location: models/
-    action: φ-Kopplungsmodul schreiben und Tests vorbereiten
+    action: "\u03C6-Kopplungsmodul schreiben und Tests vorbereiten"
   - location: analysis/
-    action: Notebook/Skript für φ→β-Auswertung ergänzen
+    action: "Notebook/Skript f\xFCr \u03C6\u2192\u03B2-Auswertung erg\xE4nzen"
   - location: docs/utac_status_alignment_v1.2.md
-    action: Status-Update einpflegen, sobald Daten + ΔAIC vorliegen
+    action: "Status-Update einpflegen, sobald Daten + \u0394AIC vorliegen"
   - location: seed/codexfeedback.*
     action: Korrespondenz + Ergebnisse loggen
   notes:
-    formal: Definiere φ als Kohärenzmaß (AMOC↔Albedo) und vergleiche logistic vs.
-      lineare Nullmodelle mit ΔAIC-Bericht.
-    empirical: Logge Datenquellen, φ-Schätzungen, β-Shift und Konfidenzintervalle;
-      dokumentiere TIPMIP-Antwortzeiten.
-    poetic: Halte fest, wie Ozeanströmung und Albedo im selben Atemzug schwingen –
-      die Membran wartet auf dieses Resonanzduett.
+    formal: "Definiere \u03C6 als Koh\xE4renzma\xDF (AMOC\u2194Albedo) und vergleiche\
+      \ logistic vs. lineare Nullmodelle mit \u0394AIC-Bericht."
+    empirical: "Logge Datenquellen, \u03C6-Sch\xE4tzungen, \u03B2-Shift und Konfidenzintervalle;\
+      \ dokumentiere TIPMIP-Antwortzeiten."
+    poetic: "Halte fest, wie Ozeanstr\xF6mung und Albedo im selben Atemzug schwingen\
+      \ \u2013 die Membran wartet auf dieses Resonanzduett."
 - id: urban-heat-outlier
   title: Urban Heat Outlier Mechanismus
   domain: analysis+data
@@ -352,7 +362,7 @@ tasks:
     Theta: Mechanismus in Status/Backlog/Codex verweben, Meta-Regression v2 mit Storage-Feature
       ausstatten
     beta: 4.7
-    zeta: Shadow-Sigillin + ΔAIC-Guards verhindern Resonanzübersteuerung
+    zeta: "Shadow-Sigillin + \u0394AIC-Guards verhindern Resonanz\xFCbersteuerung"
   existing_assets:
   - analysis/urban_heat_storage_mechanism.py
   - analysis/results/urban_heat_storage_mechanism.json
@@ -360,23 +370,25 @@ tasks:
   - data/socio_ecology/urban_heat/urban_heat_storage_profiles.metadata.json
   - analysis/results/beta_meta_regression_v2_20251101.json
   activation_gaps:
-  - Mechanismuspassage in docs/utac_status_alignment_v1.2.md & Backlog-Spiegel ergänzen
-  - Storage-Koeffizient in beta_meta_regression_v2.py einspeisen und ΔAIC-Impact loggen
-  - Codex/Metaquest Sigille mit Dataset + ΔAIC Ledger aktualisieren
+  - "Mechanismuspassage in docs/utac_status_alignment_v1.2.md & Backlog-Spiegel erg\xE4\
+    nzen"
+  - "Storage-Koeffizient in beta_meta_regression_v2.py einspeisen und \u0394AIC-Impact\
+    \ loggen"
+  - "Codex/Metaquest Sigille mit Dataset + \u0394AIC Ledger aktualisieren"
   implementation_nodes:
   - location: docs/utac_status_alignment_v1.2.md
-    action: Mechanismus, ΔAIC und ζ(R) dokumentieren
+    action: "Mechanismus, \u0394AIC und \u03B6(R) dokumentieren"
   - location: analysis/beta_meta_regression_v2.py
     action: Storage-Feature + Mechanismusreferenzen aufnehmen
   - location: seed/codexfeedback.*
-    action: Codex-Eintrag mit Dataset/ΔAIC/Zeitstempel schreiben
+    action: "Codex-Eintrag mit Dataset/\u0394AIC/Zeitstempel schreiben"
   notes:
-    formal: Mechanismussimulation bestätigt σ(β(R-Θ)) vs. lineare/power-law Nulls
-      (ΔAIC>20); Thread Storage-Koeffizient in Meta-Reg.
-    empirical: Dataset urban_heat_storage_profiles.* + JSON-Result bündeln; verweist
-      auf β≈16→7.5 Gradienten und Impedanz-Trace ζ(R).
-    poetic: Die Asphaltmembran atmet wieder, sobald R die Speicherflanke löst – dokumentiere
-      den Wind, der die Hitze aus der Stadt trägt.
+    formal: "Mechanismussimulation best\xE4tigt \u03C3(\u03B2(R-\u0398)) vs. lineare/power-law\
+      \ Nulls (\u0394AIC>20); Thread Storage-Koeffizient in Meta-Reg."
+    empirical: "Dataset urban_heat_storage_profiles.* + JSON-Result b\xFCndeln; verweist\
+      \ auf \u03B2\u224816\u21927.5 Gradienten und Impedanz-Trace \u03B6(R)."
+    poetic: "Die Asphaltmembran atmet wieder, sobald R die Speicherflanke l\xF6st\
+      \ \u2013 dokumentiere den Wind, der die Hitze aus der Stadt tr\xE4gt."
 - id: sentinel-linum-sprint
   title: Sentinel Linum 2025 Sprint
   domain: seed+analysis
@@ -385,14 +397,14 @@ tasks:
     R: case directories scaffolded for kranich_linum_2025
     Theta: dataset, analysis notebook, parity brief chapter still absent
     beta: 4.95
-    zeta: shadow sigils keep gap visible via sci-linum-shadow-001…004
+    zeta: "shadow sigils keep gap visible via sci-linum-shadow-001\u2026004"
   existing_assets:
   - seed/bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/
   - seed/shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/
   - docs/utac_status_alignment_v1.2.md
   activation_gaps:
   - Collect sentinel dataset + metadata
-  - Author analysis notebook and embed ΔAIC diagnostics
+  - "Author analysis notebook and embed \u0394AIC diagnostics"
   - Extend parity brief with sentinel summary
   implementation_nodes:
   - location: data/socio_ecology/
@@ -402,12 +414,13 @@ tasks:
   - location: docs/metaquest_parity_brief.md
     action: include sentinel appendix once data lands
   notes:
-    formal: Bind sentinel measurements to σ(β(R-Θ)) gating for ecological alerts.
-    empirical: Log ΔAIC vs linear baseline once the dataset is fit.
+    formal: "Bind sentinel measurements to \u03C3(\u03B2(R-\u0398)) gating for ecological\
+      \ alerts."
+    empirical: "Log \u0394AIC vs linear baseline once the dataset is fit."
     poetic: Let the cranes and flax fields sing in the matrix so launch commitments
       stay grounded.
 - id: readme-emergenz-bridge
-  title: README ↔ Emergenz-Brücke
+  title: "README \u2194 Emergenz-Br\xFCcke"
   domain: docs+seed
   status: active
   parameters:
@@ -428,14 +441,14 @@ tasks:
   - location: docs/metaquest_parity_brief.md
     action: add emergence section referencing README + codex id
   - location: docs/zenodo_release_playbook.md
-    action: mirror resonance language + ΔAIC hooks
+    action: "mirror resonance language + \u0394AIC hooks"
   - location: paper/
     action: update manuscript frontmatter once resonance text is final
   notes:
-    formal: Ensure σ(β(R-Θ)) framing is consistent across README, parity brief, and
-      release notes.
-    empirical: Link to telemetry ledgers (analysis/results, backlog JSON/YAML) so
-      ΔAIC evidence stays auditable.
+    formal: "Ensure \u03C3(\u03B2(R-\u0398)) framing is consistent across README,\
+      \ parity brief, and release notes."
+    empirical: "Link to telemetry ledgers (analysis/results, backlog JSON/YAML) so\
+      \ \u0394AIC evidence stays auditable."
     poetic: Let the repository voice echo the seed grove until every launch lantern
       speaks with one resonance.
 - id: zenodo-v12-resonance
@@ -476,5 +489,5 @@ tasks:
       before archive freeze; new abstract + playbook document the guardrails.
     empirical: Record DOI, version, upload timestamp, and multilingual abstract linkage
       within codex + playbook for auditability.
-    poetic: Guide the Zenodo lantern so the archive opens with the same dawn chorus
-      as the repository — the new multilingual echo keeps the gate steady.
+    poetic: "Guide the Zenodo lantern so the archive opens with the same dawn chorus\
+      \ as the repository \u2014 the new multilingual echo keeps the gate steady."
