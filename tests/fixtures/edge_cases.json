@@ -1,0 +1,32 @@
+{
+  "empty_array": {
+    "R": [],
+    "sigma": [],
+    "description": "Empty input arrays"
+  },
+  "single_point": {
+    "R": [0.5],
+    "sigma": [0.468],
+    "description": "Single data point"
+  },
+  "with_nan": {
+    "R": [0.0, 0.1, null, 0.3, 0.4],
+    "sigma": [0.074, 0.115, null, 0.256, 0.356],
+    "description": "Contains NaN values"
+  },
+  "with_outliers": {
+    "R": [-10.0, 0.0, 0.5, 1.0, 100.0],
+    "sigma": [0.0, 0.074, 0.468, 0.894, 1.0],
+    "description": "Extreme outlier values"
+  },
+  "flat_response": {
+    "R": [0.0, 0.1, 0.2, 0.3, 0.4],
+    "sigma": [0.5, 0.5, 0.5, 0.5, 0.5],
+    "description": "No variation in response (flat line)"
+  },
+  "saturated": {
+    "R": [0.0, 0.1, 0.2, 0.3, 0.4],
+    "sigma": [0.0, 0.0, 0.0, 1.0, 1.0],
+    "description": "Step function (saturated sigmoid)"
+  }
+}
