@@ -1,0 +1,14 @@
+{
+  "beta": 3.47,
+  "theta": 100,
+  "R_range": [
+    99.42363112391931,
+    100.57636887608069
+  ],
+  "L": 1.0,
+  "field_type": "high_dimensional",
+  "base_frequency_hz": 378.08561,
+  "profile": "LLMs, evolutionary systems",
+  "duration_sec": 3.0,
+  "sample_rate_hz": 44100
+}

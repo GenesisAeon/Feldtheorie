@@ -1,0 +1,10 @@
+{
+  "name": "Honeybee Collective Decision",
+  "description": "Swarm intelligence and collective threshold",
+  "reference": "Seeley et al.",
+  "beta": 4.0,
+  "theta": 100.0,
+  "field_type": "strongly_coupled",
+  "dataset": "data/biology/honeybee_*.csv",
+  "notes": "Warm, resonant tones of biological coupling - the sound of collective intelligence reaching consensus"
+}

@@ -1,0 +1,14 @@
+{
+  "beta": 4.2,
+  "theta": 100,
+  "R_range": [
+    99.52380952380952,
+    100.47619047619048
+  ],
+  "L": 1.0,
+  "field_type": "strongly_coupled",
+  "base_frequency_hz": 268.4,
+  "profile": "Neural networks, AMOC, honeybees",
+  "duration_sec": 3.0,
+  "sample_rate_hz": 44100
+}
