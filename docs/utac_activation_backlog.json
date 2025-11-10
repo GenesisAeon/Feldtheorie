@@ -3,7 +3,7 @@
     "document": "UTAC Activation Backlog",
     "version": "1.1.0",
     "created": "2025-12-09T00:00:00Z",
-    "updated": "2026-05-05T00:00:00Z",
+    "updated": "2026-06-08T00:00:00Z",
     "steward": "gpt-5-codex",
     "logistic_frame": {
       "order_parameter": "residual activation debt across UTAC v1.2 launch scope and v2.0 data ingestion",
@@ -12,12 +12,12 @@
       "zeta": "damped via BreakPoint transcripts, codex echoes, and UTAC readiness audit refreshes"
     },
     "latest_audit": {
-      "date": "2026-05-05T00:00:00Z",
+      "date": "2026-06-08T00:00:00Z",
       "logistic_pulse": {
-        "order_parameter": "Manifest gap scan 2026-05-05: readiness audit reports R\u0304=0.50 with Urban Heat active and four lanterns pending",
+        "order_parameter": "Manifest gap scan 2026-06-08: readiness audit still reports R\u0304=0.50 with Urban Heat active and four lanterns pending",
         "threshold": "\u0398=0.66 once manifest datasets + exports land",
         "beta": 4.8,
-        "sigma": "\u03c3\u22480.317 (4 datasets pending, 10 components missing) per analysis/results/utac_v2_manifest_gap_scan_20251109T205953.490514Z.json"
+        "sigma": "\u03c3\u22480.317 (4 datasets pending, 10 components missing) per analysis/results/utac_v2_manifest_gap_scan_20260608T000000Z.json"
       },
       "observations": [
         {

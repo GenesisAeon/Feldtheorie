@@ -16,11 +16,17 @@ Tri-layer mirrors:
 
 ---
 
-## ♻️ Audit Refresh (2026-05-05)
+## ♻️ Audit Refresh (2026-06-08)
 
-- **Manifest Gap Scan:** `analysis/utac_manifest_gap_scan.py` + `analysis/results/utac_v2_manifest_gap_scan_20251109T205953.490514Z.json` bestätigen R̄=0.50, Θ=0.66, β=4.8 und σ(β(R-Θ))≈0.317. Urban Heat bleibt aktiv; vier Laternen (Amazon Hydro, AMOC, Neuro-AI, Energy/Finance) halten 10 Komponenten offen (4 Datensätze, 6 Analyse-Exports).
-- **Analysis Outputs:** `analysis/results/neuro_ai_beta.json` und `analysis/results/beta_meta_regression_v2_latest.json` fehlen weiterhin — beide müssen mit den neuen Datensätzen landen, damit Codex, Backlog und Meta-Regression ΔAIC-gedeckt bleiben.
-- **Automation & Parität:** Neues Guard-Skript (`analysis/utac_manifest_gap_scan.py`) liefert Zeitstempel-Diagnostik; CI-Hooks (`scripts/archive_sigillin.py --recount`, `.github/workflows/utf-preset-guard.yml`) sind jedoch noch nicht verdrahtet und müssen nachgezogen werden, sobald Telemetrie archiviert ist.
+- **Manifest Gap Scan:** `analysis/utac_manifest_gap_scan.py` + `analysis/results/utac_v2_manifest_gap_scan_20260608T000000Z.json` bestätigen erneut R̄=0.50, Θ=0.66, β=4.8 und σ(β(R-Θ))≈0.317 (`python -m analysis.utac_manifest_gap_scan … → 4 datasets pending, 10 components missing`). Urban Heat bleibt aktiv; Amazon Hydro, AMOC, Neuro-AI und Energy/Finance halten zusammen 10 Komponenten (4 Datensätze, 6 Analyse-Exports) offen.
+- **Analysis Outputs:** `analysis/results/neuro_ai_beta.json` und `analysis/results/beta_meta_regression_v2_latest.json` fehlen weiterhin und stehen jetzt explizit im Juni-Tracker (`docs/utac_v2_activation_tracker_2026-06.*`).
+- **Automation & Parität:** Gap-Scan-JSON wird jetzt als Juni-Diagnostik archiviert; CI-Hooks (`scripts/archive_sigillin.py --recount`, `.github/workflows/utf-preset-guard.yml`) müssen weiterhin verdrahtet werden, damit Telemetrie + Δindex automatisch alarmieren.
+
+### Rückblick 2026-05-05
+
+- **Manifest Gap Scan:** `analysis/utac_manifest_gap_scan.py` + `analysis/results/utac_v2_manifest_gap_scan_20251109T205953.490514Z.json` bestätigten R̄=0.50, Θ=0.66, β=4.8 und σ(β(R-Θ))≈0.317. Urban Heat blieb aktiv; vier Laternen (Amazon Hydro, AMOC, Neuro-AI, Energy/Finance) hielten 10 Komponenten offen (4 Datensätze, 6 Analyse-Exports).
+- **Analysis Outputs:** `analysis/results/neuro_ai_beta.json` und `analysis/results/beta_meta_regression_v2_latest.json` fehlten weiterhin — beide mussten mit den neuen Datensätzen landen, damit Codex, Backlog und Meta-Regression ΔAIC-gedeckt bleiben.
+- **Automation & Parität:** Neues Guard-Skript (`analysis/utac_manifest_gap_scan.py`) lieferte Zeitstempel-Diagnostik; CI-Hooks (`scripts/archive_sigillin.py --recount`, `.github/workflows/utf-preset-guard.yml`) waren noch nicht verdrahtet und mussten nachgezogen werden, sobald Telemetrie archiviert ist.
 
 ### Rückblick 2026-03-26
 

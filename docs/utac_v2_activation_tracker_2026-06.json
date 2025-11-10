@@ -1,0 +1,216 @@
+{
+  "meta": {
+    "title": "UTAC v2 Activation Tracker \u2014 2026-06 Gap Scan",
+    "compiled": "2026-06-08T00:00:00Z",
+    "sigma": "\u03c3(\u03b2(R-\u0398))",
+    "status": "active",
+    "maintainer": "Johann R\u00f6mer",
+    "authors": [
+      "Johann R\u00f6mer",
+      "Claude-Code",
+      "ChatGPT-Codex"
+    ],
+    "related": [
+      "analysis/utac_manifest_gap_scan.py",
+      "analysis/results/utac_v2_manifest_gap_scan_20260608T000000Z.json",
+      "analysis/reports/utac_v2_readiness.json",
+      "docs/utac_v2_data_lanterns.md",
+      "docs/utac_status_alignment_v1.2.md",
+      "docs/utac_activation_backlog.md",
+      "docs/utac_v2_activation_tracker_2026-06.md"
+    ]
+  },
+  "logistic_pulse": {
+    "R_mean": 0.5,
+    "Theta": 0.66,
+    "beta": 4.8,
+    "sigma_value": 0.3169119051378149,
+    "telemetry_timestamp": "2025-11-09T21:13:46.818652Z",
+    "zeta_notes": "\u03b6(R) remains damped by backlog rituals, codex echoes, and the June 2026 tracker until the four dormant lanterns deliver raw data and \u0394AIC exports."
+  },
+  "anchors": [
+    {
+      "category": "data_analysis",
+      "description": "Urban Heat shelf lit; \u0394AIC\u22481484 anchored across dataset, metadata, and mechanism exports.",
+      "assets": [
+        "data/climate/urban_heat_intensity.csv",
+        "data/climate/urban_heat_intensity.metadata.json",
+        "analysis/results/urban_heat_global_fit.json",
+        "analysis/results/outlier_report.md",
+        "analysis/results/outlier_validator_report.json",
+        "analysis/urban_heat_storage_mechanism.py"
+      ]
+    },
+    {
+      "category": "automation",
+      "description": "analysis/utac_manifest_gap_scan.py recomputes readiness gaps; the 2026-06 run archived a fresh diagnostic JSON for audit echoes.",
+      "assets": [
+        "analysis/utac_manifest_gap_scan.py",
+        "analysis/results/utac_v2_manifest_gap_scan_20260608T000000Z.json"
+      ]
+    },
+    {
+      "category": "documentation",
+      "description": "Documentation membranes narrate manifest status, the June 2026 tracker, and cite \u03c3(\u03b2(R-\u0398)) alongside backlog updates.",
+      "assets": [
+        "docs/utac_status_alignment_v1.2.md",
+        "docs/utac_v2_data_lanterns.md",
+        "docs/resonance-bridge-map.md",
+        "docs/utac_activation_backlog.md",
+        "docs/utac_v2_activation_tracker_2026-06.md"
+      ]
+    },
+    {
+      "category": "simulation",
+      "description": "Safety-Delay preset + guard maintain \u03c4_delay telemetry pending CI wiring.",
+      "assets": [
+        "simulator/presets/safety_delay_bridge.json",
+        "simulator/src/presets.ts",
+        "Makefile: utf-preset-guard"
+      ]
+    },
+    {
+      "category": "sigillin",
+      "description": "Metaquest light/shadow sigils mirror manifest status with telemetry echo.",
+      "assets": [
+        "seed/bedeutungssigillin/metaquest/",
+        "seed/shadow_sigillin/metaquest/",
+        "analysis/sigillin_sync/latest.json"
+      ]
+    }
+  ],
+  "gaps": {
+    "summary": {
+      "datasets_total": 5,
+      "datasets_ready": 1,
+      "datasets_pending": 4,
+      "missing_components_total": 10,
+      "analysis_outputs_pending": 2
+    },
+    "datasets": [
+      {
+        "id": "utac-v1_3-ds-002",
+        "domain": "climate",
+        "observed_ratio": 0.5,
+        "missing": [
+          "data/climate/amazon_precip_evapo.nc",
+          "analysis/results/amazon_hydro_fit.json"
+        ],
+        "notes": {
+          "formal": "Readiness plateau at 0.5 until hydrological dataset + fit export land.",
+          "empirical": "\u0394AIC ledger empty; logistic flank cannot update Amazon hydro readiness.",
+          "poetic": "Der Regenwald h\u00e4lt den Atem an, bis neue Fl\u00fcsse in die Membran str\u00f6men."
+        }
+      },
+      {
+        "id": "utac-v1_3-ds-003",
+        "domain": "ocean",
+        "observed_ratio": 0.5,
+        "missing": [
+          "data/ocean/amoc_transport.csv",
+          "analysis/results/amoc_transport_fit.json"
+        ],
+        "notes": {
+          "formal": "AMOC transport dataset absent; readiness remains stalled at 0.5.",
+          "empirical": "No \u0394AIC guard available for AMOC; manifest audit flags cold shelf.",
+          "poetic": "Der Atlantik ruht in dunkler Tiefe, bis die Str\u00f6mung wieder gemessen wird."
+        }
+      },
+      {
+        "id": "utac-v1_3-ds-004",
+        "domain": "neuro_ai",
+        "observed_ratio": 0.25,
+        "missing": [
+          "data/neuro_ai/hybrid_activation.csv",
+          "analysis/results/neuro_ai_beta.json",
+          "analysis/results/neuro_ai_bootstrap.json"
+        ],
+        "notes": {
+          "formal": "Hybrid activation shelf lacks raw data and \u03b2/Bootstrap exports.",
+          "empirical": "Neuro-AI guard cannot report \u0394AIC or \u03b2 spreads without the dataset.",
+          "poetic": "Das neuronale Chorst\u00fcck bleibt leise, bis Aktivierungen und Bootstrap-Lichter singen."
+        }
+      },
+      {
+        "id": "utac-v1_3-ds-005",
+        "domain": "economy",
+        "observed_ratio": 0.25,
+        "missing": [
+          "data/economy/systemic_thresholds.csv",
+          "analysis/results/economy_threshold_fit.json",
+          "analysis/results/meta_v2_summary_refresh.json"
+        ],
+        "notes": {
+          "formal": "Systemic thresholds dataset + summary export absent; readiness stuck at 0.25.",
+          "empirical": "Meta summary cannot refresh without data; \u0394AIC guard inactive.",
+          "poetic": "Die M\u00e4rkte halten den Atem in der D\u00e4mmerung, bis das Resonanzbuch neu geschrieben ist."
+        }
+      }
+    ],
+    "analysis_outputs": [
+      {
+        "path": "analysis/results/neuro_ai_beta.json",
+        "description": "Neuro-AI hybrid threshold fitter output",
+        "status": "missing"
+      },
+      {
+        "path": "analysis/results/beta_meta_regression_v2_latest.json",
+        "description": "Meta regression v2 refreshed export",
+        "status": "missing"
+      }
+    ]
+  },
+  "priority_hooks": [
+    {
+      "priority": 1,
+      "task": "Stage raw datasets and metadata for all remaining lanterns",
+      "actions": [
+        "Ingest raw files for Amazon Hydro, AMOC, Neuro-AI, Energy/Finance",
+        "Commit matching .metadata.json ledgers"
+      ],
+      "follow_up": "Re-run analysis/utac_manifest_gap_scan.py and analysis/v2_readiness_audit.py"
+    },
+    {
+      "priority": 2,
+      "task": "Publish logistic fit exports",
+      "actions": [
+        "Generate analysis/results/amazon_hydro_fit.json",
+        "Generate analysis/results/amoc_transport_fit.json",
+        "Generate analysis/results/neuro_ai_beta.json",
+        "Generate analysis/results/neuro_ai_bootstrap.json",
+        "Generate analysis/results/economy_threshold_fit.json",
+        "Generate analysis/results/meta_v2_summary_refresh.json"
+      ],
+      "follow_up": "Update docs/utac_v2_data_lanterns.*, docs/utac_activation_backlog.*, docs/utac_status_alignment_v1.2.md"
+    },
+    {
+      "priority": 3,
+      "task": "Refresh meta regression guard",
+      "actions": [
+        "Extend analysis/beta_meta_regression_v2.py for new datasets",
+        "Export analysis/results/beta_meta_regression_v2_latest.json"
+      ],
+      "follow_up": "Cite updated \u0394AIC landscape in backlog + codex"
+    },
+    {
+      "priority": 4,
+      "task": "Wire automation telemetry and CI",
+      "actions": [
+        "Archive manifest gap scan outputs in docs/metaquest_parity_brief.md",
+        "Prepare scripts/archive_sigillin.py --recount CI hook",
+        "Add .github/workflows/utf-preset-guard.yml"
+      ],
+      "follow_up": "Ensure \u0394index and \u0394AIC drift trigger alerts"
+    }
+  ],
+  "telemetry": {
+    "codex_entry": "pr-draft-0106",
+    "status": "draft",
+    "next_updates": [
+      "Mirror the June 2026 scan inside docs/utac_status_alignment_v1.2.md",
+      "Append the June audit section to docs/utac_activation_backlog.*",
+      "Advance codex entry pr-draft-0106 after readiness assets land"
+    ],
+    "rerun_after": "Each manifest dataset or analysis export landing"
+  }
+}
