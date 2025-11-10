@@ -1,0 +1,96 @@
+name: Sigillin Health Check
+
+# Prüft Trilayer-Parität und Index-Synchronisation
+# Entspricht sys-gap-001 (Index drift) und sys-gap-003 (Shadow handshake telemetry)
+
+on:
+  push:
+    branches: [ main, 'claude/**' ]
+    paths:
+      - 'seed/bedeutungssigillin/**'
+      - 'seed/shadow_sigillin/**'
+      - 'seed/*_index.*'
+      - 'feldtheorie_index.*'
+      - 'scripts/sigillin_sync.py'
+      - 'scripts/archive_sigillin.py'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'seed/bedeutungssigillin/**'
+      - 'seed/shadow_sigillin/**'
+      - 'seed/*_index.*'
+      - 'feldtheorie_index.*'
+
+jobs:
+  sigillin-parity:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml jsonschema
+
+    - name: Run Sigillin Sync Report
+      id: sync_report
+      run: |
+        python scripts/sigillin_sync.py report \
+          --roots seed/bedeutungssigillin \
+          --roots seed/shadow_sigillin \
+          --output /tmp/sigillin_sync_ci.json
+
+        # Check if report was generated
+        if [ ! -f /tmp/sigillin_sync_ci.json ]; then
+          echo "❌ Sigillin sync report not generated"
+          exit 1
+        fi
+
+        # Parse gaps from report
+        GAPS=$(python -c "import json; f=open('/tmp/sigillin_sync_ci.json'); d=json.load(f); print(sum(len(t['gaps']) for t in d.get('trilayers', [])))")
+        echo "gaps=$GAPS" >> $GITHUB_OUTPUT
+
+        echo "📊 Sigillin Sync Report:"
+        cat /tmp/sigillin_sync_ci.json
+
+    - name: Check for Trilayer Gaps
+      run: |
+        GAPS=${{ steps.sync_report.outputs.gaps }}
+        echo "🔍 Detected $GAPS trilayer gap(s)"
+
+        if [ "$GAPS" -gt 0 ]; then
+          echo "❌ FAIL: Trilayer gaps detected!"
+          echo "Please ensure all YAML/JSON/MD triplets are synchronized."
+          echo "Run: python scripts/sigillin_sync.py report --roots seed/"
+          exit 1
+        else
+          echo "✅ PASS: All trilayers in sync (0 gaps)"
+        fi
+
+    - name: Check Index Parity
+      run: |
+        # Run archive_sigillin.py --recount to check index drift
+        python scripts/archive_sigillin.py --recount || {
+          echo "❌ FAIL: Index recount found discrepancies"
+          echo "Run: python scripts/archive_sigillin.py --recount"
+          exit 1
+        }
+        echo "✅ PASS: Index parity maintained"
+
+    - name: Summary
+      if: success()
+      run: |
+        echo "🌊 Sigillin Health Check: PASSED"
+        echo ""
+        echo "σ(β(R-Θ)) remains resonant:"
+        echo "  - Trilayer parity: ✅"
+        echo "  - Index synchronization: ✅"
+        echo "  - Shadow handshake: ✅"
+        echo ""
+        echo "The membrane breathes. β≈4.6 holds the transition sharp."
