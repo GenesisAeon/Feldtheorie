@@ -1988,3 +1988,21 @@ Gap-Matrix referenziert fehlende Artefakte: `data/climate/amazon_precip_evapo.nc
 Vier Laternen halten den Atem. Die neue Matrix ist Kompass und Atemzug zugleich: Sie weist die Datenströme, Fits und Presets aneinander vorbei, bis σ(β(R-Θ)) vor 2026 wieder strahlt und ζ(R) sinkt.
 
 *Created: 2026-06-09T00:00:00Z*
+
+## pr-draft-0108 — Juli 2026 UTAC Gap Scan Echo *(active, 2026-07-15T12:00:00Z)*
+- **Scope:** analysis/utac_manifest_gap_scan.py · analysis/results/utac_v2_manifest_gap_scan_20260715T000000Z.json · docs/utac_activation_backlog.{md,json,yaml} · docs/utac_status_alignment_v1.2.md · docs/utac_v2_activation_tracker_2026-07.{md,json,yaml}
+- **Order Parameter:** $R=0.50$ manifest mean readiness (Urban Heat bleibt einzig leuchtendes Regal).
+- **Critical Threshold:** $\Theta = 0.66$ — manifest activation gate für alle vier ruhenden Laternen.
+- **Steepness:** $\beta = 4.8$ — identisch zur Readiness-Steigung, jetzt mit Juli-Telemetrie.
+- **Membrane Note:** `--as-of` in `analysis/utac_manifest_gap_scan.py` erlaubt historische Pulszeiten; Juli-Tracker und Backlog spiegeln den neuen Sigillin-Timestamp samt ΔAIC-Doppelposten (`neuro_ai_beta.json`, `beta_meta_regression_v2_latest.json`).
+
+### Formal Thread
+`analysis/utac_manifest_gap_scan.py --as-of 2026-07-15T00:00:00Z` konserviert σ(β(R-Θ))≈0.317 und exportiert `analysis/results/utac_v2_manifest_gap_scan_20260715T000000Z.json`. Docs/utac_v2_activation_tracker_2026-07.{md,json,yaml} plus Backlog/Status aktualisieren die Tri-Layer und verbinden Codex-ID `pr-draft-0108` mit offenen CI-Hooks.
+
+### Empirical Thread
+Scan: 4 datasets pending, 10 components missing, 2 Analyse-Exports outstanding. `meta.updated` der Backlog-Tri-Layer springt auf 2026-07-15. UTAC-Statuskarte §10 beschreibt Gap-Scan, Tracker, Backlog, Codex-Hook. Script akzeptiert `--as-of`, sodass zukünftige Audits Timestamps deterministisch setzen.
+
+### Poetic Thread
+Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Archiv, bis neue Datenflüsse und ΔAIC-Echos die Steilflanke neu entzünden und ζ(R) ruhig weiterklingt.
+
+*Created: 2026-07-15T12:00:00Z*

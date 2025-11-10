@@ -9,12 +9,12 @@ meta:
     Tri-layer Cadence: Formal, Empirical, Metaphorical.
 
     '
-  version: 1.3.5
+  version: 1.3.6
   created: '2025-11-06'
   status: active
-  markdown_files: 27
-  updated: '2026-06-08T00:00:00Z'
-  last_updated: '2026-06-08'
+  markdown_files: 28
+  updated: '2026-07-15T00:00:00Z'
+  last_updated: '2026-07-15'
 categories:
   theory:
     name: Core Theory
@@ -35,7 +35,7 @@ categories:
     name: Infrastructure
     description: README, Operational Resonance Maps
     color: '#9B59B6'
-    count: 17
+    count: 18
 markdown_docs:
 - id: docs-theory-001
   name: utac_theory_core.md
@@ -463,6 +463,22 @@ markdown_docs:
   - manifest
   description: "Juni 2026 Gap Scan (\u03C3\u22480.317) mit korrigierten Metadata-Pfaden,\
     \ fehlenden Analyse-Exports und Codex-Hooks (pr-draft-0106)."
+- id: docs-infra-018
+  name: utac_v2_activation_tracker_2026-07.md
+  category: infrastructure
+  type: activation-tracker
+  status: active
+  relevance: high
+  size_kb: 5.9
+  keywords:
+  - utac
+  - activation
+  - gap-scan
+  - "\u03C3(\u03B2(R-\u0398))"
+  - manifest
+  description: "Juli 2026 Gap Scan (\u03C3\u22480.317) dokumentiert vier ruhende Laternen,\
+    \ zwei fehlende Analyse-Exports und verkn\xFCpft Codex-Eintrag pr-draft-0108\
+    \ mit Backlog und Statuskarte."
 triggers:
   core_concepts:
   - "\u03C3(\u03B2(R-\u0398))"
