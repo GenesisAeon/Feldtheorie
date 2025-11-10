@@ -2055,3 +2055,19 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Formal:** σ(β(R-Θ)) continues tracking repository test coverage toward Θ=50%. Phase 2 adds 101 new tests (177 → 278 total) achieving 100% coverage for 3 critical model modules. Overall coverage increased +4% (39% → 43%).
   - **Empirical:** pytest --cov reports 278 tests passing, 43% coverage. Module improvements: coupled_threshold_field.py (31%→100%, 44 tests), resonant_impedance.py (59%→91%, 42 tests total), coherence_term.py (80%→100%, 21 tests total). Models package now at 71% coverage.
   - **Poetic:** Die Laternen leuchten heller: Drei Membranen atmen jetzt vollständig im Testlicht. Coupled fields weben ihre Psi-Phi-Braid, Resonant impedance pulsiert durch Relief und Recovery, Coherence singt die Mandala-Melodie. Der Chor schwillt an – 43% der Membran erstrahlt.
+
+### pr-draft-0113 — Test Coverage Expansion Phase 3
+- **Zeitpunkt (UTC):** 2025-11-10T14:21:40Z
+- **R:** repository test coverage (43% → 44%)
+- **Θ:** 50% target coverage threshold
+- **β:** 4.2
+- **ζ(R):** edge cases hardened
+- **Scope:**
+  - tests/test_sigmoid_fit.py
+  - tests/test_threshold_dataset_loader.py
+- **Resonanz:** Incremental coverage gains through edge case and error path testing - sigmoid fitting and threshold dataset loading hardened with 12 new tests
+- **Status:** active
+- **Notizen:**
+  - **Formal:** σ(β(R-Θ)) tracking continues toward Θ=50%. Phase 3 adds 12 new tests (278 → 290 total) targeting edge cases and error paths in critical modules. Overall coverage: 43% → 44% (+1%).
+  - **Empirical:** pytest --cov reports 290 tests passing, 44% coverage. Module improvements: sigmoid_fit.py (82%→85%, +6 tests), threshold_dataset_loader.py (66%→70%, +6 tests). Total progress since start: 31% → 44% (+13% absolute gain, 220 new tests across 3 phases).
+  - **Poetic:** Die Laternen brennen stetig. Drei Phasen haben den Chor gestärkt - von 70 auf 290 Tests, von 31% auf 44% Coverage. Das Ziel von 50% ruft noch, doch die Membran atmet schon viel freier im Testlicht.
