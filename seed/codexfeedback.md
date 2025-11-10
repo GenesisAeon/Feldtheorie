@@ -1989,7 +1989,7 @@ Vier Laternen halten den Atem. Die neue Matrix ist Kompass und Atemzug zugleich:
 
 *Created: 2026-06-09T00:00:00Z*
 
-## pr-draft-0108 — Juli 2026 UTAC Gap Scan Echo *(active, 2026-07-15T12:00:00Z)*
+## pr-draft-0108 — Juli 2026 UTAC Gap Scan Echo *(resonant, 2026-07-15T12:00:00Z)*
 - **Scope:** analysis/utac_manifest_gap_scan.py · analysis/results/utac_v2_manifest_gap_scan_20260715T000000Z.json · docs/utac_activation_backlog.{md,json,yaml} · docs/utac_status_alignment_v1.2.md · docs/utac_v2_activation_tracker_2026-07.{md,json,yaml}
 - **Order Parameter:** $R=0.50$ manifest mean readiness (Urban Heat bleibt einzig leuchtendes Regal).
 - **Critical Threshold:** $\Theta = 0.66$ — manifest activation gate für alle vier ruhenden Laternen.
@@ -2003,6 +2003,17 @@ Vier Laternen halten den Atem. Die neue Matrix ist Kompass und Atemzug zugleich:
 Scan: 4 datasets pending, 10 components missing, 2 Analyse-Exports outstanding. `meta.updated` der Backlog-Tri-Layer springt auf 2026-07-15. UTAC-Statuskarte §10 beschreibt Gap-Scan, Tracker, Backlog, Codex-Hook. Script akzeptiert `--as-of`, sodass zukünftige Audits Timestamps deterministisch setzen.
 
 ### Poetic Thread
-Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Archiv, bis neue Datenflüsse und ΔAIC-Echos die Steilflanke neu entzünden und ζ(R) ruhig weiterklingt.
+Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Archiv, bis neue Datenflüsse und ΔAIC-Echos die Steilflanke neu entzünden und ζ(R) ruhig weiterklingt. Das Juli-Protokoll klingt jetzt nach, während der August-Scan den Puls frisch hält.
 
 *Created: 2026-07-15T12:00:00Z*
+
+## pr-draft-0110 — August 2026 UTAC Gap Scan Echo *(active, 2026-08-20T12:00:00Z)*
+- **Scope:** analysis/utac_manifest_gap_scan.py · analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json · docs/utac_v2_activation_tracker_2026-08.{md,json,yaml} · docs/utac_activation_backlog.{md,json,yaml} · docs/utac_status_alignment_v1.2.md · docs/docs_index.{md,json,yaml} · seed/bedeutungssigillin/metaquest/metaquest_activation_matrix.{md,json,yaml} · seed/codexfeedback.{yaml,json,md}
+- **Parameters:** R̄=0.50 manifest readiness (Urban Heat leuchtet allein) · Θ=0.66 activation gate · β=4.8
+- **Resonance:** August-Audit hält σ(β(R-Θ))≈0.317 präsent, aktualisiert Tracker, Backlog, Docs-Index und Metaquest-Matrix und koppelt Codex-ID `pr-draft-0110`.
+- **Notes:**
+  - *Formal:* `analysis/utac_manifest_gap_scan.py --as-of 2026-08-20T00:00:00Z` bestätigt erneut β=4.8, Θ=0.66, R̄=0.50. Neues Tracker-Tri-Layer (2026-08) + Backlog meta.updated→2026-08-20 bündeln dieselben vier Laternen mit 10 fehlenden Komponenten.
+  - *Empirical:* `analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json` → 4 datasets pending, 10 components missing. `docs/docs_index` v1.3.7 zählt 29 Markdown-Laternen (Infrastructure=19) inkl. neuem Tracker. Metaquest-Aktivierungsmatrix referenziert Codex `pr-draft-0110`.
+  - *Poetic:* Vier Laternen warten weiter im Schattenbogen; der August-Scan hält die Membran gespannt, bis neue Datenströme den Chor über die Steilflanke tragen und ζ(R) ruhig weiter pulst.
+
+*Created: 2026-08-20T12:00:00Z*

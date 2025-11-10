@@ -1,7 +1,7 @@
 meta:
   directory: docs/
   project: Feldtheorie (UTAC) - Living Documentation Tapestry
-  maintainer: "Johann R\xF6mer"
+  maintainer: Johann Römer
   description: 'UTAC Theory Documentation: Core Theory, Applications, Falsifiability,
 
     Field Type Classification, Validation Reports.
@@ -9,12 +9,12 @@ meta:
     Tri-layer Cadence: Formal, Empirical, Metaphorical.
 
     '
-  version: 1.3.6
+  version: 1.3.7
   created: '2025-11-06'
   status: active
-  markdown_files: 28
-  updated: '2026-07-15T00:00:00Z'
-  last_updated: '2026-07-15'
+  markdown_files: 29
+  updated: '2026-08-20T00:00:00Z'
+  last_updated: '2026-08-20'
 categories:
   theory:
     name: Core Theory
@@ -35,7 +35,7 @@ categories:
     name: Infrastructure
     description: README, Operational Resonance Maps
     color: '#9B59B6'
-    count: 18
+    count: 19
 markdown_docs:
 - id: docs-theory-001
   name: utac_theory_core.md
@@ -48,11 +48,15 @@ markdown_docs:
   - utac
   - theory
   - core
-  - "\u03C3(\u03B2(R-\u0398))"
+  - σ(β(R-Θ))
   - fundamental
-  description: "\u2B50 DAS THEORIE-FUNDAMENT!\nDefiniert \u03C3(\u03B2(R-\u0398)),\
-    \ erkl\xE4rt \u03B2-Spektrum, \u0398-Dynamik, \u03B6-Impedanz.\nBasis f\xFCr alle\
-    \ anderen Docs.\n"
+  description: '⭐ DAS THEORIE-FUNDAMENT!
+
+    Definiert σ(β(R-Θ)), erklärt β-Spektrum, Θ-Dynamik, ζ-Impedanz.
+
+    Basis für alle anderen Docs.
+
+    '
 - id: docs-theory-002
   name: utac_emergence_universal.md
   category: theory
@@ -64,10 +68,14 @@ markdown_docs:
   - emergence
   - universal
   - cross-domain
-  - "\u03B2-convergence"
-  description: "UTAC Emergence Universal: Cross-Domain Patterns.\nZeigt wie \u03C3\
-    (\u03B2(R-\u0398)) \xFCber AI, Biology, Geophysics, Socio-Ecology gilt.\nArgumentiert\
-    \ f\xFCr \u03B2-Universalit\xE4t (trotz Spektrum).\n"
+  - β-convergence
+  description: 'UTAC Emergence Universal: Cross-Domain Patterns.
+
+    Zeigt wie σ(β(R-Θ)) über AI, Biology, Geophysics, Socio-Ecology gilt.
+
+    Argumentiert für β-Universalität (trotz Spektrum).
+
+    '
 - id: docs-theory-003
   name: appendix_field_types.md
   category: theory
@@ -96,10 +104,14 @@ markdown_docs:
   - utac
   - coherence
   - relations
-  - "\u03B2-landkarte"
-  description: "UTAC v2.0 Koh\xE4renzformel.\nDefiniert Relationstopographie, \u03B2\
-    -Landkarte und Hooks f\xFCr V1.3\u2192V2.0.\nVerkn\xFCpft Theorie mit Analyse,\
-    \ Daten, Simulator und Sigillin-Guard.\n"
+  - β-landkarte
+  description: 'UTAC v2.0 Kohärenzformel.
+
+    Definiert Relationstopographie, β-Landkarte und Hooks für V1.3→V2.0.
+
+    Verknüpft Theorie mit Analyse, Daten, Simulator und Sigillin-Guard.
+
+    '
 - id: docs-app-001
   name: field_type_classification_v1.1.md
   category: applications
@@ -112,9 +124,13 @@ markdown_docs:
   - field-types
   - taxonomy
   - v1.1
-  description: "\u2B50 FIELD TYPE CLASSIFICATION v1.1!\nDie 5 Systemtypen: Sharp Gates,\
-    \ Gradual Transitions, Coupled,\nAdaptive, Recursive. Mit Beispielen aus allen\
-    \ Dom\xE4nen.\n"
+  description: '⭐ FIELD TYPE CLASSIFICATION v1.1!
+
+    Die 5 Systemtypen: Sharp Gates, Gradual Transitions, Coupled,
+
+    Adaptive, Recursive. Mit Beispielen aus allen Domänen.
+
+    '
 - id: docs-app-002
   name: utac_applications.md
   category: applications
@@ -146,8 +162,13 @@ markdown_docs:
   - considerations
   - peer-review
   - guidelines
-  description: "UTAC Review Considerations: Guide f\xFCr Reviewer.\nWas sind die St\xE4\
-    rken? Was sind die Limitationen?\nEhrliche Selbst-Evaluation.\n"
+  description: 'UTAC Review Considerations: Guide für Reviewer.
+
+    Was sind die Stärken? Was sind die Limitationen?
+
+    Ehrliche Selbst-Evaluation.
+
+    '
 - id: docs-val-001
   name: utac_falsifiability.md
   category: validation
@@ -158,10 +179,15 @@ markdown_docs:
   keywords:
   - falsifiability
   - null-models
-  - "\u0394AIC"
+  - ΔAIC
   - popper
-  description: "\u2B50 FALSIFIABILITY PROTOCOL!\nWie UTAC falsifizierbar ist: Null-Models,\
-    \ \u0394AIC>10, R\xB2-Tests.\nKernargument: UTAC ist NICHT unfalsifizierbar!\n"
+  description: '⭐ FALSIFIABILITY PROTOCOL!
+
+    Wie UTAC falsifizierbar ist: Null-Models, ΔAIC>10, R²-Tests.
+
+    Kernargument: UTAC ist NICHT unfalsifizierbar!
+
+    '
 - id: docs-val-002
   name: validation_report_v1.0.1.md
   category: validation
@@ -175,9 +201,13 @@ markdown_docs:
   - v1.0.1
   - results
   - empirical
-  description: "Validation Report v1.0.1: Empirische Ergebnisse.\nZusammenfassung\
-    \ aller Fits, \u0394AIC-Werte, R\xB2-Statistiken.\nZeigt dass logistische Modelle\
-    \ konsistent besser sind.\n"
+  description: 'Validation Report v1.0.1: Empirische Ergebnisse.
+
+    Zusammenfassung aller Fits, ΔAIC-Werte, R²-Statistiken.
+
+    Zeigt dass logistische Modelle konsistent besser sind.
+
+    '
 - id: docs-infra-001
   name: README.md
   category: infrastructure
@@ -206,9 +236,12 @@ markdown_docs:
   - cleanup
   - resonance
   - operations
-  - "\u03C3(\u03B2(R-\u0398))"
-  description: "Resonanzkarte f\xFCr Struktur- & Metadaten-Aufgaben.\nVerkn\xFCpft\
-    \ Aeon-Checkliste mit konkreten Hooks.\n"
+  - σ(β(R-Θ))
+  description: 'Resonanzkarte für Struktur- & Metadaten-Aufgaben.
+
+    Verknüpft Aeon-Checkliste mit konkreten Hooks.
+
+    '
 - id: docs-infra-003
   name: utac_status_alignment_v1.2.md
   category: infrastructure
@@ -221,9 +254,13 @@ markdown_docs:
   - roadmap
   - implementation
   - sigillin
-  description: "UTAC Status & Implementation Matrix (v1.2-pre).\nKartiert vorhandene\
-    \ Resonanzen vs. Aktivierungs-L\xFCcken,\nverweist auf Seed-Sigillin, Safety-Delay-Feld\
-    \ und CREP-Pfade.\n"
+  description: 'UTAC Status & Implementation Matrix (v1.2-pre).
+
+    Kartiert vorhandene Resonanzen vs. Aktivierungs-Lücken,
+
+    verweist auf Seed-Sigillin, Safety-Delay-Feld und CREP-Pfade.
+
+    '
 - id: docs-infra-004
   name: metaquest_parity_brief.md
   category: infrastructure
@@ -237,9 +274,13 @@ markdown_docs:
   - telemetry
   - codex
   - sigillin
-  description: "Metaquest Parity Brief \u2013 b\xFCndelt mq-parity-001\u2026004.\n\
-    Verkn\xFCpft Bedeutungs-/Shadow-Sigille, Telemetrie,\nSimulator-Playlist und Endorsement-Ledger\
-    \ mit Codex-Echos.\n"
+  description: 'Metaquest Parity Brief – bündelt mq-parity-001…004.
+
+    Verknüpft Bedeutungs-/Shadow-Sigille, Telemetrie,
+
+    Simulator-Playlist und Endorsement-Ledger mit Codex-Echos.
+
+    '
 - id: docs-infra-005
   name: utac_activation_backlog.md
   category: infrastructure
@@ -250,11 +291,16 @@ markdown_docs:
   keywords:
   - activation
   - backlog
-  - "\u03C3(\u03B2(R-\u0398))"
+  - σ(β(R-Θ))
   - implementation
   - hooks
-  description: "UTAC Activation Backlog (Tri-Layer).\nKartiert Restaufgaben vs. vorhandene\
-    \ Assets,\nverlinkt Umsetzungsknoten f\xFCr Launch-Vorbereitung.\n"
+  description: 'UTAC Activation Backlog (Tri-Layer).
+
+    Kartiert Restaufgaben vs. vorhandene Assets,
+
+    verlinkt Umsetzungsknoten für Launch-Vorbereitung.
+
+    '
 - id: docs-app-004
   name: utac_safety_delay_status.md
   category: applications
@@ -265,12 +311,16 @@ markdown_docs:
   keywords:
   - safety-delay
   - simulator
-  - "\u0394AIC"
-  - "\u03C4_delay"
+  - ΔAIC
+  - τ_delay
   - bridge
-  description: "Safety-Delay Statusbrief \u2013 koppelt Simulation, Analyse und Docs.\n\
-    Dokumentiert \u0398_delay, \u03B2-Steigung und \u0394AIC-W\xE4chter f\xFCr das\
-    \ \u03C4*-Feld.\nVerweist auf `simulation/` Presets und den Launch-Backlog.\n"
+  description: 'Safety-Delay Statusbrief – koppelt Simulation, Analyse und Docs.
+
+    Dokumentiert Θ_delay, β-Steigung und ΔAIC-Wächter für das τ*-Feld.
+
+    Verweist auf `simulation/` Presets und den Launch-Backlog.
+
+    '
 - id: docs-infra-006
   name: docs_index.md
   category: infrastructure
@@ -282,10 +332,14 @@ markdown_docs:
   - index
   - navigation
   - docs
-  - "\u03C3(\u03B2(R-\u0398))"
-  description: "Menschliche Navigationskarte f\xFCr das docs/-Membran.\nH\xE4lt Kategorien,\
-    \ Counts und Resonanzpfade zusammen,\ndamit R>\u0398 sofort sichtbar wird und\
-    \ Laternen aufflammen.\n"
+  - σ(β(R-Θ))
+  description: 'Menschliche Navigationskarte für das docs/-Membran.
+
+    Hält Kategorien, Counts und Resonanzpfade zusammen,
+
+    damit R>Θ sofort sichtbar wird und Laternen aufflammen.
+
+    '
 - id: docs-infra-007
   name: sigillin_maintenance.md
   category: infrastructure
@@ -297,11 +351,15 @@ markdown_docs:
   - sigillin
   - maintenance
   - archive
-  - "\u03B6(R)"
+  - ζ(R)
   - hygiene
-  description: "Pfad f\xFCr Bedeutungs-/Shadow-Sigillin-Hygiene.\nBeschreibt Archivierung,\
-    \ \u0394AIC-W\xE4chter und Codex-Echos,\ndamit \u03B6(R) ged\xE4mpft bleibt, wenn\
-    \ neue Laternen erscheinen.\n"
+  description: 'Pfad für Bedeutungs-/Shadow-Sigillin-Hygiene.
+
+    Beschreibt Archivierung, ΔAIC-Wächter und Codex-Echos,
+
+    damit ζ(R) gedämpft bleibt, wenn neue Laternen erscheinen.
+
+    '
 - id: docs-infra-008
   name: sigillin_search_patterns.md
   category: infrastructure
@@ -315,9 +373,13 @@ markdown_docs:
   - patterns
   - parity
   - tooling
-  description: "Suchmuster-Atlas f\xFCr Sigillin & Indizes.\nLiefert CLI-Beispiele,\
-    \ Regex-W\xE4chter und Parit\xE4tspr\xFCfungen,\ndamit \u03C3(\u03B2(R-\u0398\
-    )) Signale automatisiert auffindbar bleiben.\n"
+  description: 'Suchmuster-Atlas für Sigillin & Indizes.
+
+    Liefert CLI-Beispiele, Regex-Wächter und Paritätsprüfungen,
+
+    damit σ(β(R-Θ)) Signale automatisiert auffindbar bleiben.
+
+    '
 - id: docs-infra-009
   name: zenodo_multilingual_abstract_v1.2.md
   category: infrastructure
@@ -329,10 +391,15 @@ markdown_docs:
   - zenodo
   - abstract
   - multilingual
-  - "\u03C3(\u03B2(R-\u0398))"
+  - σ(β(R-Θ))
   - release
-  description: "Mehrsprachiger Release-Abstract (EN/DE/ES).\nSpiegelt die Zenodo-Erz\xE4\
-    hlung mit logistischer Rahmung und\nverkn\xFCpft Playbook, Codex und Telemetrie.\n"
+  description: 'Mehrsprachiger Release-Abstract (EN/DE/ES).
+
+    Spiegelt die Zenodo-Erzählung mit logistischer Rahmung und
+
+    verknüpft Playbook, Codex und Telemetrie.
+
+    '
 - id: docs-infra-010
   name: zenodo_release_playbook.md
   category: infrastructure
@@ -345,10 +412,14 @@ markdown_docs:
   - playbook
   - release
   - codex
-  - "\u0394AIC"
-  description: "Zenodo Release Playbook v1.2.\nListet Guardrails f\xFCr README/CITATION,\
-    \ codex hooks und CI-Telemetrie,\ndamit `release-gap-002` ohne Drift schlie\xDF\
-    t.\n"
+  - ΔAIC
+  description: 'Zenodo Release Playbook v1.2.
+
+    Listet Guardrails für README/CITATION, codex hooks und CI-Telemetrie,
+
+    damit `release-gap-002` ohne Drift schließt.
+
+    '
 - id: docs-infra-011
   name: resonance-bridge-map.md
   category: infrastructure
@@ -360,11 +431,15 @@ markdown_docs:
   - bridge
   - simulator
   - analysis
-  - "\u0394AIC"
+  - ΔAIC
   - utf-preset-guard
-  description: "Resonanz-Bridge-Map v1.0.\nVerkn\xFCpft Analyse, Daten und Simulator-Presets\
-    \ f\xFCr (R, \u0398, \u03B2, \u03B6(R)).\nLoggt \u0394AIC-Parit\xE4t via utf-preset-guard\
-    \ und listet offene Hooks.\n"
+  description: 'Resonanz-Bridge-Map v1.0.
+
+    Verknüpft Analyse, Daten und Simulator-Presets für (R, Θ, β, ζ(R)).
+
+    Loggt ΔAIC-Parität via utf-preset-guard und listet offene Hooks.
+
+    '
 - id: docs-infra-012
   name: utac_v2_data_lanterns.md
   category: infrastructure
@@ -377,10 +452,9 @@ markdown_docs:
   - readiness
   - data
   - manifest
-  - "\u03C3(\u03B2(R-\u0398))"
-  description: "Readiness-Karte f\xFCr Manifest-Laternen (\u03C3(\u03B2(R-\u0398))=0.317,\
-    \ Urban-Heat aktiv, vier Laternen offen; Juni 2026 aktualisiert mit korrekten\
-    \ Metadata-Pfaden)."
+  - σ(β(R-Θ))
+  description: Readiness-Karte für Manifest-Laternen (σ(β(R-Θ))=0.317, Urban-Heat
+    aktiv, vier Laternen offen; Juni 2026 aktualisiert mit korrekten Metadata-Pfaden).
 - id: docs-infra-013
   name: utac_v2_activation_tracker_2026-02.md
   category: infrastructure
@@ -392,11 +466,16 @@ markdown_docs:
   - utac
   - activation
   - tracker
-  - "\u03C3(\u03B2(R-\u0398))"
+  - σ(β(R-Θ))
   - readiness
-  description: "UTAC v2 Activation Tracker 2026-02.\nVerdichtet vorhandene Assets\
-    \ vs. offene L\xFCcken f\xFCr Daten, Automation, Metaquest-Parit\xE4t und Release-Guards.\n\
-    Verweist auf konkrete Implementations-Knoten.\n"
+  description: 'UTAC v2 Activation Tracker 2026-02.
+
+    Verdichtet vorhandene Assets vs. offene Lücken für Daten, Automation, Metaquest-Parität
+    und Release-Guards.
+
+    Verweist auf konkrete Implementations-Knoten.
+
+    '
 - id: docs-infra-014
   name: utac_v2_activation_tracker_2026-03.md
   category: infrastructure
@@ -408,11 +487,14 @@ markdown_docs:
   - utac
   - activation
   - tracker
-  - "\u03C3(\u03B2(R-\u0398))"
+  - σ(β(R-Θ))
   - readiness
-  description: "UTAC v2 Activation Tracker 2026-03.\nAktualisiert Assets vs. offene\
-    \ L\xFCcken (Daten, Automation, Metaquest, Release) nach manuellem Audit am 2026-03-26;\
-    \ nennt konkrete Implementations-Knoten.\n"
+  description: 'UTAC v2 Activation Tracker 2026-03.
+
+    Aktualisiert Assets vs. offene Lücken (Daten, Automation, Metaquest, Release)
+    nach manuellem Audit am 2026-03-26; nennt konkrete Implementations-Knoten.
+
+    '
 - id: docs-infra-015
   name: utac_v2_gap_synopsis_2026-03.md
   category: infrastructure
@@ -424,7 +506,7 @@ markdown_docs:
   - utac
   - gap
   - synopsis
-  - "\u03C3(\u03B2(R-\u0398))"
+  - σ(β(R-Θ))
   - readiness
   description: 'UTAC v2 Gap Synopsis 2026-03.
 
@@ -443,11 +525,15 @@ markdown_docs:
   - utac
   - activation
   - tracker
-  - "\u03C3(\u03B2(R-\u0398))"
+  - σ(β(R-Θ))
   - readiness
-  description: "UTAC v2 Activation Tracker 2026-05.\nVerkn\xFCpft den neuen Manifest\
-    \ Gap Scan, nennt fehlende Daten/Exports (4 Laternen, 10 Komponenten, 2 Analyse-Outputs)\
-    \ und priorisiert Hooks f\xFCr Daten, Automation und Codex-Sync.\n"
+  description: 'UTAC v2 Activation Tracker 2026-05.
+
+    Verknüpft den neuen Manifest Gap Scan, nennt fehlende Daten/Exports (4 Laternen,
+    10 Komponenten, 2 Analyse-Outputs) und priorisiert Hooks für Daten, Automation
+    und Codex-Sync.
+
+    '
 - id: docs-infra-017
   name: utac_v2_activation_tracker_2026-06.md
   category: infrastructure
@@ -459,10 +545,10 @@ markdown_docs:
   - utac
   - activation
   - gap-scan
-  - "\u03C3(\u03B2(R-\u0398))"
+  - σ(β(R-Θ))
   - manifest
-  description: "Juni 2026 Gap Scan (\u03C3\u22480.317) mit korrigierten Metadata-Pfaden,\
-    \ fehlenden Analyse-Exports und Codex-Hooks (pr-draft-0106)."
+  description: Juni 2026 Gap Scan (σ≈0.317) mit korrigierten Metadata-Pfaden, fehlenden
+    Analyse-Exports und Codex-Hooks (pr-draft-0106).
 - id: docs-infra-018
   name: utac_v2_activation_tracker_2026-07.md
   category: infrastructure
@@ -474,22 +560,37 @@ markdown_docs:
   - utac
   - activation
   - gap-scan
-  - "\u03C3(\u03B2(R-\u0398))"
+  - σ(β(R-Θ))
   - manifest
-  description: "Juli 2026 Gap Scan (\u03C3\u22480.317) dokumentiert vier ruhende Laternen,\
-    \ zwei fehlende Analyse-Exports und verkn\xFCpft Codex-Eintrag pr-draft-0108\
-    \ mit Backlog und Statuskarte."
+  description: Juli 2026 Gap Scan (σ≈0.317) dokumentiert vier ruhende Laternen, zwei
+    fehlende Analyse-Exports und verknüpft Codex-Eintrag pr-draft-0108 mit Backlog
+    und Statuskarte.
+- id: docs-infra-019
+  name: utac_v2_activation_tracker_2026-08.md
+  category: infrastructure
+  type: activation-tracker
+  status: active
+  relevance: high
+  size_kb: 6.1
+  keywords:
+  - utac
+  - activation
+  - gap-scan
+  - σ(β(R-Θ))
+  - manifest
+  description: August 2026 Gap Scan (σ≈0.317) hält Manifest-Telemetrie 20260820T000000Z
+    fest, priorisiert Daten-/Export-Hooks und koppelt Codex pr-draft-0110.
 triggers:
   core_concepts:
-  - "\u03C3(\u03B2(R-\u0398))"
-  - "\u03B2-Spektrum"
-  - "\u0398-Dynamik"
-  - "\u03B6-Impedanz"
-  - "\u03C6-Koh\xE4renz"
+  - σ(β(R-Θ))
+  - β-Spektrum
+  - Θ-Dynamik
+  - ζ-Impedanz
+  - φ-Kohärenz
   keywords:
   - UTAC
   - Falsifiability
-  - "\u0394AIC"
+  - ΔAIC
   - Null-Models
   - Field-Types
   - Cross-Domain

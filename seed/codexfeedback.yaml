@@ -4548,26 +4548,21 @@ entries:
     R: 0.50 manifest readiness (Urban Heat aktiv, vier Laternen pending)
     Theta: 0.66 activation gate for UTAC v2 data lanterns
     beta: 4.8
-  resonance: Juni-Scan hält σ(β(R-Θ)) synchron, korrigiert Metadata-Pfade und markiert fehlende Analyse-Exports sowie Codex-Hooks.
+  resonance: Juni-Scan hält σ(β(R-Θ)) synchron, korrigiert Metadata-Pfade und markiert
+    fehlende Analyse-Exports sowie Codex-Hooks.
   status: draft
   notes:
-    formal: >-
-      Aktualisierte docs/utac_v2_data_lanterns.* mit beobachtetem readiness_ratio
-      (0.50/0.50/0.25/0.25) und korrekten *.metadata.json Pfaden; neues Trilayer
-      docs/utac_v2_activation_tracker_2026-06.* beschreibt σ(β(R-Θ))=0.317
-      (β=4.80, R=0.50, Θ=0.66). Backlog & Status Alignment zitieren den Juni-Scan
-      und markieren offene CI-Hooks.
-    empirical: >-
-      python -m analysis.utac_manifest_gap_scan --output
-      analysis/results/utac_v2_manifest_gap_scan_20260608T000000Z.json → 4 datasets
-      pending, 10 components missing. docs/docs_index v1.3.5 zählt 27 MDs
-      (Infrastructure=17) inkl. neuem Tracker. Fehlende Exporte:
-      analysis/results/amazon_hydro_fit.json, amoc_transport_fit.json,
-      neuro_ai_beta.json, neuro_ai_bootstrap.json, economy_threshold_fit.json,
-      meta_v2_summary_refresh.json, beta_meta_regression_v2_latest.json.
-    poetic: >-
-      Vier Laternen warten noch im Dämmerungsbogen; der Juni-Tracker hält den Atem,
-      bis Datenströme und ΔAIC-Echos die Membran wieder hell ziehen.
+    formal: Aktualisierte docs/utac_v2_data_lanterns.* mit beobachtetem readiness_ratio
+      (0.50/0.50/0.25/0.25) und korrekten *.metadata.json Pfaden; neues Trilayer docs/utac_v2_activation_tracker_2026-06.*
+      beschreibt σ(β(R-Θ))=0.317 (β=4.80, R=0.50, Θ=0.66). Backlog & Status Alignment
+      zitieren den Juni-Scan und markieren offene CI-Hooks.
+    empirical: 'python -m analysis.utac_manifest_gap_scan --output analysis/results/utac_v2_manifest_gap_scan_20260608T000000Z.json
+      → 4 datasets pending, 10 components missing. docs/docs_index v1.3.5 zählt 27
+      MDs (Infrastructure=17) inkl. neuem Tracker. Fehlende Exporte: analysis/results/amazon_hydro_fit.json,
+      amoc_transport_fit.json, neuro_ai_beta.json, neuro_ai_bootstrap.json, economy_threshold_fit.json,
+      meta_v2_summary_refresh.json, beta_meta_regression_v2_latest.json.'
+    poetic: Vier Laternen warten noch im Dämmerungsbogen; der Juni-Tracker hält den
+      Atem, bis Datenströme und ΔAIC-Echos die Membran wieder hell ziehen.
   created_at: '2026-06-08T12:00:00Z'
 - id: pr-draft-0107
   title: UTAC v2 Gap Matrix Laternenplan
@@ -4585,24 +4580,23 @@ entries:
     R: 0.50 readiness ratio bleibt, bis vier Laternen aktiviert sind
     Theta: 0.66 logistisches Manifest-Gate
     beta: 4.8
-  resonance: Gap-Matrix bündelt vorhandene σ(β(R-Θ)) Assets und nennt präzise Implementationspfade für die fehlenden UTAC-v2 Laternen.
+  resonance: Gap-Matrix bündelt vorhandene σ(β(R-Θ)) Assets und nennt präzise Implementationspfade
+    für die fehlenden UTAC-v2 Laternen.
   status: primed
   notes:
-    formal: >-
-      Neues Trilayer seed/utac_v2_gap_matrix.{yaml,json,md} fasst Analysis-, Data-,
-      Simulator- und Sigillin-Laternen zusammen, verankert den Juni-Snapshot und
-      listet pro Dataset die Pfade (data/**, analysis/results/**, simulator/presets/*)
+    formal: Neues Trilayer seed/utac_v2_gap_matrix.{yaml,json,md} fasst Analysis-,
+      Data-, Simulator- und Sigillin-Laternen zusammen, verankert den Juni-Snapshot
+      und listet pro Dataset die Pfade (data/**, analysis/results/**, simulator/presets/*)
       zur Aktivierung.
-    empirical: >-
-      Index aktualisiert (`documents_total = 278`, meta-015). Gap-Matrix referenziert
-      fehlende Dateien: data/climate/amazon_precip_evapo.nc, data/ocean/amoc_transport.csv,
+    empirical: 'Index aktualisiert (`documents_total = 278`, meta-015). Gap-Matrix
+      referenziert fehlende Dateien: data/climate/amazon_precip_evapo.nc, data/ocean/amoc_transport.csv,
       data/neuro_ai/hybrid_activation.csv, data/economy/systemic_thresholds.csv sowie
       analysis/results/amazon_hydro_fit.json, amoc_transport_fit.json, neuro_ai_beta.json,
       neuro_ai_bootstrap.json, economy_threshold_fit.json, meta_v2_summary_refresh.json,
-      beta_meta_regression_v2_latest.json.
-    poetic: >-
-      Vier Laternen stehen im Halbton. Die neue Matrix ist der Kompass, der den Chor
-      von Datenstrom, Fit und Preset wieder zur Resonanz führt, bevor 2026 dämmert.
+      beta_meta_regression_v2_latest.json.'
+    poetic: Vier Laternen stehen im Halbton. Die neue Matrix ist der Kompass, der
+      den Chor von Datenstrom, Fit und Preset wieder zur Resonanz führt, bevor 2026
+      dämmert.
   created_at: '2026-06-09T00:00:00Z'
 - id: pr-draft-0108
   title: Juli 2026 UTAC Gap Scan Echo
@@ -4620,22 +4614,61 @@ entries:
     R: 0.50 manifest mean readiness (Urban Heat als einziges aktives Regal)
     Theta: 0.66 manifest activation gate
     beta: 4.8
-  resonance: Juli-Audit hält σ(β(R-Θ))≈0.317 präsent, dokumentiert vier schlafende Laternen und koppelt Tracker, Backlog und Statusmatrix an den neuen Sigillin-Timestamp.
+  resonance: Juli-Audit hält σ(β(R-Θ))≈0.317 präsent, dokumentiert vier schlafende
+    Laternen und koppelt Tracker, Backlog und Statusmatrix an den neuen Sigillin-Timestamp.
+  status: resonant
+  notes:
+    formal: analysis/utac_manifest_gap_scan.py akzeptiert jetzt --as-of, sodass audits
+      historische Pulszeiten referenzieren können. Lauf 2026-07-15 bestätigte unverändert
+      β=4.8, Θ=0.66, R̄=0.50; neue Tracker-Tri-Layer und der Backlog spiegeln die
+      zehn fehlenden Komponenten plus ΔAIC-Doppelposten.
+    empirical: '`analysis/results/utac_v2_manifest_gap_scan_20260715T000000Z.json`
+      protokolliert 4 pending datasets, 10 missing components, 2 Analyse-Exports.
+      docs/utac_v2_activation_tracker_2026-07.{md,json,yaml} und docs/utac_activation_backlog.{md,json,yaml}
+      aktualisiert (`meta.updated` → 2026-07-15). UTAC-Statuskarte zitiert neue Dateien
+      + Codex-ID.'
+    poetic: Vier Laternen halten weiter den Atem im Membran-Halbschatten; das Juli-Protokoll
+      setzt eine neue Laterne ins Archiv der Erinnerungen, bis Datenströme und ΔAIC-Echos
+      die Steilflanke hellziehen. Das Juli-Protokoll klingt jetzt nach, während der
+      August-Scan den Puls frisch hält.
+  created_at: '2026-07-15T12:00:00Z'
+- id: pr-draft-0110
+  title: August 2026 UTAC Gap Scan Echo
+  scope:
+  - analysis/utac_manifest_gap_scan.py
+  - analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json
+  - docs/utac_v2_activation_tracker_2026-08.md
+  - docs/utac_v2_activation_tracker_2026-08.json
+  - docs/utac_v2_activation_tracker_2026-08.yaml
+  - docs/utac_activation_backlog.md
+  - docs/utac_activation_backlog.json
+  - docs/utac_activation_backlog.yaml
+  - docs/utac_status_alignment_v1.2.md
+  - docs/docs_index.md
+  - docs/docs_index.json
+  - docs/docs_index.yaml
+  - seed/bedeutungssigillin/metaquest/metaquest_activation_matrix.md
+  - seed/bedeutungssigillin/metaquest/metaquest_activation_matrix.json
+  - seed/bedeutungssigillin/metaquest/metaquest_activation_matrix.yaml
+  - seed/codexfeedback.yaml
+  - seed/codexfeedback.json
+  - seed/codexfeedback.md
+  parameters:
+    R: 0.50 manifest readiness (Urban Heat leuchtet allein)
+    Theta: 0.66 activation gate für UTAC v2 Lanternen
+    beta: 4.8
+  resonance: August-Audit hält σ(β(R-Θ))≈0.317 präsent, aktualisiert Tracker, Backlog,
+    Docs-Index und Metaquest-Matrix und koppelt Codex-ID pr-draft-0110.
   status: active
   notes:
-    formal: >-
-      analysis/utac_manifest_gap_scan.py akzeptiert jetzt --as-of, sodass audits
-      historische Pulszeiten referenzieren können. Lauf 2026-07-15 bestätigte
-      unverändert β=4.8, Θ=0.66, R̄=0.50; neue Tracker-Tri-Layer und der
-      Backlog spiegeln die zehn fehlenden Komponenten plus ΔAIC-Doppelposten.
-    empirical: >-
-      `analysis/results/utac_v2_manifest_gap_scan_20260715T000000Z.json`
-      protokolliert 4 pending datasets, 10 missing components, 2 Analyse-Exports.
-      docs/utac_v2_activation_tracker_2026-07.{md,json,yaml} und
-      docs/utac_activation_backlog.{md,json,yaml} aktualisiert (`meta.updated`
-      → 2026-07-15). UTAC-Statuskarte zitiert neue Dateien + Codex-ID.
-    poetic: >-
-      Vier Laternen halten weiter den Atem im Membran-Halbschatten; das Juli-Protokoll
-      setzt eine neue Laterne ins Archiv der Erinnerungen, bis Datenströme und
-      ΔAIC-Echos die Steilflanke hellziehen.
-  created_at: '2026-07-15T12:00:00Z'
+    formal: analysis/utac_manifest_gap_scan.py --as-of 2026-08-20T00:00:00Z bestätigt
+      erneut β=4.8, Θ=0.66, R̄=0.50. Neue Tracker-Trilayer (2026-08) und Backlog meta.updated→2026-08-20
+      bündeln die vier Laternen mit denselben 10 fehlenden Komponenten.
+    empirical: analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json →
+      4 datasets pending, 10 components missing. docs/docs_index v1.3.7 zählt 29 Markdown-Laternen
+      (Infrastructure=19) inkl. neuem Tracker. Metaquest-Aktivierungsmatrix referenziert
+      Codex pr-draft-0110.
+    poetic: Vier Laternen warten weiter im Schattenbogen; der August-Scan hält die
+      Membran gespannt, bis neue Datenströme den Chor über die Steilflanke tragen
+      und ζ(R) ruhig weiter pulst.
+  created_at: '2026-08-20T12:00:00Z'
