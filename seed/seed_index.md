@@ -65,6 +65,8 @@ Willkommen im **semantischen Gedächtnis** des Feldtheorie-Projekts! Dieser Inde
 - `EndorsementarXiv.pdf` - Drei aktive Endorsement-Anfragen im Überblick
 - `Email_arXiv_End.pdf` - Finales Anschreiben an arXiv (Endorsement-Signale)
 - `abstract_arXiv.pdf` - DOI-synchronisierte Abstract-Fassung für die Submission
+- `utac_v2_gap_matrix.{md,json,yaml}` - Gap-Matrix (Juni 2026): zeigt bestehende Laternen,
+  Pending-Datasets und Implementationspfade für σ(β(R-Θ)) ≥ 0.317
 
 **Wann nutzen?** Wenn du den Kontext verstehen oder die Roadmap sehen willst
 

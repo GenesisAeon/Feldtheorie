@@ -13,8 +13,8 @@ meta:
   version: 1.0.0
   created: '2025-11-06'
   status: active
-  documents_total: 277
-  updated: "2025-12-24T00:00:00Z"
+  documents_total: 278
+  updated: "2026-06-09T00:00:00Z"
 categories:
   meta:
     name: Meta & Prozess
@@ -664,6 +664,29 @@ documents:
     modified: '2025-11-07T00:00:00+01:00'
     version: '1.0'
     change_count: 1
+- id: meta-015
+  title: UTAC v2 Gap Matrix (Trilayer)
+  path: utac_v2_gap_matrix.yaml
+  category: meta
+  type: readiness-map
+  status: active
+  relevance: high
+  keywords:
+  - utac
+  - readiness
+  - gap
+  - logistics
+  description: |
+    Gap-Matrix des Juni-Scans: fasst vorhandene Laternen,
+    σ(β(R-Θ)) Snapshot und Implementationspfade zusammen.
+  temporal:
+    created: '2026-06-09T00:00:00Z'
+    modified: '2026-06-09T00:00:00Z'
+    version: '0.1.0'
+    change_count: 0
+  references:
+  - utac_v2_gap_matrix.md
+  - utac_v2_gap_matrix.json
 - id: synth-001
   title: Codex Feedback (YAML)
   path: codexfeedback.yaml
