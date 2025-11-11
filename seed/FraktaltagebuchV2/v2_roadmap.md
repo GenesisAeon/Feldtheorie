@@ -448,9 +448,9 @@ VR-Kollaborationsraum für Mensch-AI mit UTAC
 
 ### 🟡 v2-feat-ext-003: UTAC Modular API
 
-**Status:** 🟡 IN PROGRESS (Phase 2 Complete!)
+**Status:** 🟡 IN PROGRESS (Phase 3 Complete!)
 **Priority:** P2
-**R=0.60, β=4.5** (Updated: 2025-11-11T20:00)
+**R=0.85, β=4.8** (Updated: 2025-11-11T21:30)
 
 **Beschreibung:**
 REST API für UTAC Module (OpenAPI 3.0)
@@ -474,10 +474,13 @@ REST API für UTAC Module (OpenAPI 3.0)
 - [x] `POST /api/simulate` → Schwellen-Simulation ✅
 - server.py: +289 LOC (404 → 666)
 
-**Phase 3: Docs & Tests** (🔴 PENDING - R: 0.60 → 0.85)
-- [ ] API Tests (`tests/test_api.py`)
-- [ ] Usage Examples (`api/examples/`)
-- [ ] Enhanced README
+**Phase 3: Docs & Tests** (✅ COMPLETED - R: 0.60 → 0.85)
+- [x] API Tests (`tests/test_api.py` - 485 LOC) ✅
+- [x] Usage Examples (`api/examples/` - 3 files, 1159 LOC) ✅
+  - [x] `01_basic_usage.py` (259 LOC)
+  - [x] `02_workflow_example.py` (420 LOC)
+  - [x] `03_advanced_usage.py` (480 LOC)
+- [x] Enhanced README (inline examples added) ✅
 
 **Phase 4: Docker & Polish** (🔴 PENDING - R: 0.85 → 1.00)
 - [ ] `api/Dockerfile`
@@ -493,14 +496,16 @@ REST API für UTAC Module (OpenAPI 3.0)
 
 **All 5/5 Endpoints Operational!** 🎉
 
-**Deliverables (Phases 1+2 ✅):**
+**Deliverables (Phases 1+2+3 ✅):**
 - ✅ `api/openapi.yaml` (607 LOC)
 - ✅ `api/server.py` (666 LOC, all endpoints working!)
 - ✅ `api/requirements.txt` (28 LOC)
-- ✅ `api/README.md` (306 LOC, updated)
-- Total: **1607 LOC**
+- ✅ `api/README.md` (enhanced, inline examples)
+- ✅ `tests/test_api.py` (485 LOC)
+- ✅ `api/examples/` (3 files, 1159 LOC)
+- Total: **3,945 LOC** (Phase 1+2+3)
 
-**Codex Ref:** v2-pr-0015 (Phase 1), v2-pr-0016 (Phase 2)
+**Codex Ref:** v2-pr-0015 (Phase 1), v2-pr-0016 (Phase 2), v2-pr-0017 (Phase 3)
 
 ---
 

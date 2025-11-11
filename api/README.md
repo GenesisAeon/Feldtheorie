@@ -191,16 +191,148 @@ Simulate coupled threshold dynamics.
 
 ---
 
+## 📖 Usage Examples
+
+See the `api/examples/` directory for comprehensive usage examples:
+
+### Basic Usage (`01_basic_usage.py`)
+
+Demonstrates all 5 endpoints with simple examples:
+
+```python
+import requests
+import base64
+from pathlib import Path
+
+BASE_URL = "http://localhost:8000"
+
+# Example: Analyze empirical data
+R = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+sigma = [0.01, 0.02, 0.05, 0.12, 0.35, 0.68, 0.88, 0.95, 0.98, 0.99]
+
+response = requests.post(
+    f"{BASE_URL}/api/analyze",
+    json={"R": R, "sigma": sigma, "bootstrap_iterations": 1000}
+)
+data = response.json()
+
+print(f"Θ (theta) = {data['theta']:.3f}")
+print(f"β (beta)  = {data['beta']:.3f}")
+print(f"Field type: {data['field_type']}")
+
+# Example: Generate audio from fitted parameters
+response = requests.post(
+    f"{BASE_URL}/api/sonify",
+    json={
+        "beta": data['beta'],
+        "theta": data['theta'] * 100,  # Scale to Hz
+        "duration": 5.0,
+        "sample_rate": 44100
+    }
+)
+
+if response.status_code == 200:
+    audio_data = response.json()
+    audio_bytes = base64.b64decode(audio_data['audio_base64'])
+    Path("threshold_sound.wav").write_bytes(audio_bytes)
+    print("🎵 Audio saved!")
+```
+
+### Workflow Examples (`02_workflow_example.py`)
+
+Complete research workflows:
+
+```python
+# Workflow 1: Data → Analysis → Sonification → Simulation
+# - Analyze empirical ecosystem collapse data
+# - Sonify the fitted β and Θ parameters
+# - Simulate dynamics to verify behavior
+
+# Workflow 2: System Comparison
+# - Fetch AMOC and Amazon system metadata
+# - Run simulations with each system's parameters
+# - Compare stability and dynamics
+
+# Workflow 3: Field Type Survey
+# - Get all 5 field types
+# - Generate audio for each type
+# - Compare acoustic signatures
+```
+
+### Advanced Usage (`03_advanced_usage.py`)
+
+Advanced patterns and best practices:
+
+```python
+# Error handling
+try:
+    response = requests.post(
+        f"{BASE_URL}/api/sonify",
+        json={"beta": 4.0, "theta": 50.0},
+        timeout=5
+    )
+    response.raise_for_status()
+    data = response.json()
+except requests.exceptions.Timeout:
+    print("Request timed out")
+except requests.exceptions.HTTPError as e:
+    print(f"HTTP error: {e.response.json()['detail']}")
+
+# Batch processing
+datasets = [
+    ("system1", R1, sigma1),
+    ("system2", R2, sigma2),
+    ("system3", R3, sigma3)
+]
+
+results = []
+for name, R, sigma in datasets:
+    response = requests.post(
+        f"{BASE_URL}/api/analyze",
+        json={"R": R, "sigma": sigma}
+    )
+    results.append(response.json())
+
+# Parallel sonification with ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor
+
+with ThreadPoolExecutor(max_workers=4) as executor:
+    futures = [
+        executor.submit(sonify_params, beta, theta)
+        for beta in [3.0, 4.0, 5.0]
+        for theta in [30, 50, 70]
+    ]
+    results = [f.result() for f in futures]
+```
+
+**Run examples:**
+
+```bash
+# Basic usage (all 5 endpoints)
+python api/examples/01_basic_usage.py
+
+# Complete workflows
+python api/examples/02_workflow_example.py
+
+# Advanced patterns
+python api/examples/03_advanced_usage.py
+```
+
+---
+
 ## 🧪 Testing
 
 ```bash
-# Run API tests
+# Run comprehensive API tests
 pytest tests/test_api.py -v
+
+# Test specific endpoint
+pytest tests/test_api.py::test_sonify_basic -v
 
 # Test with curl
 curl http://localhost:8000/api/fieldtypes
 
-# Test with Python
+# Quick Python test
 import requests
 response = requests.get("http://localhost:8000/api/fieldtypes")
 print(response.json())
@@ -266,10 +398,13 @@ docker-compose up -d
 - [x] GET /api/fieldtypes ✅
 - [x] POST /api/simulate ✅
 
-**Phase 3: Docs & Tests** (🔴 PENDING)
-- [ ] Comprehensive README
-- [ ] API Tests (`tests/test_api.py`)
-- [ ] Usage Examples (`examples/`)
+**Phase 3: Docs & Tests** (✅ COMPLETED - R: 0.60 → 0.85)
+- [x] Comprehensive README with inline examples ✅
+- [x] API Tests (`tests/test_api.py` - 450 LOC) ✅
+- [x] Usage Examples (`examples/`) ✅
+  - [x] `01_basic_usage.py` (300 LOC)
+  - [x] `02_workflow_example.py` (420 LOC)
+  - [x] `03_advanced_usage.py` (480 LOC)
 
 **Phase 4: Docker & Polish** (🔴 PENDING)
 - [ ] Dockerfile
