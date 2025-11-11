@@ -1,23 +1,23 @@
 meta:
-  version: 1.0.9
+  version: 1.0.10
   created: '2025-11-10T23:30:00Z'
-  updated: '2025-11-11T14:00:00Z'
+  updated: '2025-11-11T15:30:00Z'
   title: UTAC v2.0 Roadmap
   purpose: Vollständige Übersicht aller V2.0 Features und ihres Status
   parameters:
-    R_mean: 0.47
+    R_mean: 0.53
     Theta: 0.66
     beta: 4.8
-    sigma: 0.317
+    sigma: 0.349
   status_summary:
     total_features: 15
-    completed: 8
-    in_progress: 1
-    pending: 6
+    completed: 7
+    in_progress: 3
+    pending: 5
     completion_rate: 0.53
-  last_updated: '2025-11-11T14:00:00Z'
+  last_updated: '2025-11-11T15:30:00Z'
   overall_progress: 0.53
-  sigma: 0.441
+  sigma: 0.349
 completed_features:
 - id: v2-feat-done-001
   title: UTAC Sonifikation - The Sound of Criticality

@@ -1,24 +1,24 @@
 # 🗺️ UTAC v2.0 Roadmap
 
-**Version:** 1.0.9
+**Version:** 1.0.10
 **Erstellt:** 2025-11-10
-**Letztes Update:** 2025-11-11 (14:00 UTC)
-**Status:** R̄=0.47, Θ=0.66, σ(β(R-Θ))≈0.317 (wachsend!) 🎉
+**Letztes Update:** 2025-11-11 (15:30 UTC)
+**Status:** R̄=0.53, Θ=0.66, σ(β(R-Θ))≈0.349 (wachsend!) 🎉
 
 ---
 
 ## 📊 Übersicht
 
-**Gesamtfortschritt:** 8 completed von 15 Features (53%)
+**Gesamtfortschritt:** 7 completed + 3 in progress von 15 Features (53%)
 
 ```
 V2.0 Readiness: ██████████░░░░░░░░ 53%
 
-Kern-Features:  ████░░░░░░░░░░░░░░ 25% (2/6) ✅✅ (+1!)
+Kern-Features:  ████████░░░░░░░░░░ 50% (2/6 ✅, 3/6 🟡, 1/6 ❌)
 Erweiterungen:  ░░░░░░░░░░░░░░░░░░  0% (0/3)
-Automation:     ██████████████████ 100% (2/2) ✅✅
+Automation:     █████████░░░░░░░░░ 50% (1/2 ✅, 1/2 ❌)
 Tests:          ██████████████████ 98.5% (396/402) ✅
-Completed:      ██████████████████ 100% (6/6 ✅)
+Completed:      ██████████████████ 100% (3/3 ✅)
 ```
 
 **Release Criteria:** R̄ ≥ 0.66 über alle Kern-Features
@@ -570,19 +570,19 @@ CREP Parser schreibt automatisch in Codex
 
 | Kategorie | Fertig | In Progress | Pending | Total | %     |
 |:----------|:-------|:------------|:--------|:------|:------|
-| Completed | 2      | 1           | 0       | 3     | 100%  |
-| Core      | 0      | 0           | 6       | 6     | 0%    |
+| Completed | 3      | 0           | 0       | 3     | 100%  |
+| Core      | 2      | 3           | 1       | 6     | 50%   |
 | Extensions| 0      | 0           | 3       | 3     | 0%    |
-| Automation| 0      | 0           | 2       | 2     | 12.5% |
-| Tests     | 0      | 0           | 1       | 1     | 4%    |
-| **TOTAL** | **2**  | **1**       | **12**  | **15**| **20%**|
+| Automation| 1      | 0           | 1       | 2     | 50%   |
+| Tests     | 1      | 0           | 0       | 1     | 98.5% |
+| **TOTAL** | **7**  | **3**       | **5**   | **15**| **53%**|
 
-**Overall Progress:** 20% (3/15 features done/in-progress)
+**Overall Progress:** 53% (7/15 completed, 3/15 in progress)
 
 ---
 
-**Version:** 1.0.0
-**Letztes Update:** 2025-11-10T23:30:00Z
+**Version:** 1.0.10
+**Letztes Update:** 2025-11-11T15:30:00Z
 **Maintained by:** Claude Code + Johann Römer
 
 *"R tastet die Schwelle - lass uns gemeinsam über Θ steigen!"* 🚀

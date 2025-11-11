@@ -1,7 +1,7 @@
 meta:
-  version: "1.0.3"
+  version: "1.0.4"
   created: "2025-11-10T23:40:00Z"
-  updated: "2025-11-11T14:30:00Z"
+  updated: "2025-11-11T15:30:00Z"
   title: "FraktaltagebuchV2 Index"
   purpose: "Navigation für alle V2.0 Dokumente"
   document_count: 11
@@ -48,9 +48,9 @@ documents:
         description: "Strukturierte Roadmap (maschinenlesbar)"
         line_count: ~450
         features_total: 15
-        features_completed: 8
-        features_in_progress: 1
-        features_pending: 6
+        features_completed: 7
+        features_in_progress: 3
+        features_pending: 5
         created: "2025-11-10T23:30:00Z"
         status: active
 
@@ -183,13 +183,14 @@ statistics:
   trilayer_sets: 3  # Roadmap, Codex, Index
   single_documents: 2  # README, AGENTS
   features_tracked: 15
-  features_completed: 8
-  features_in_progress: 1
+  features_completed: 7
+  features_in_progress: 3
+  features_pending: 5
   codex_entries: 10
   estimated_completion: "v2.0 Release (when R̄ ≥ 0.66)"
 
 parameters:
-  R_mean: 0.47  # 47% overall (8 completed + 0.3*1 in_progress)
+  R_mean: 0.53  # 53% overall (7 completed + partial progress on 3 in_progress)
   Theta: 0.66  # V2.0 Readiness Gate
   beta: 4.8
-  sigma: 0.317  # σ(β(R-Θ)) ≈ 0.317 (growing!)
+  sigma: 0.349  # σ(β(R-Θ)) ≈ 0.349 (growing!)
