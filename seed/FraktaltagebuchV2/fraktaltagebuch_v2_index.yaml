@@ -1,6 +1,7 @@
 meta:
-  version: "1.0.0"
+  version: "1.0.1"
   created: "2025-11-10T23:40:00Z"
+  updated: "2025-11-11T01:15:00Z"
   title: "FraktaltagebuchV2 Index"
   purpose: "Navigation für alle V2.0 Dokumente"
   document_count: 11
@@ -81,8 +82,8 @@ documents:
         format: yaml
         layer: struktur
         description: "PR/Commit-Log für V2 (strukturiert)"
-        entries_count: 3
-        next_id: "v2-pr-0004"
+        entries_count: 5
+        next_id: "v2-pr-0006"
         created: "2025-11-10T23:40:00Z"
         status: active
 
@@ -184,7 +185,7 @@ statistics:
   features_tracked: 15
   features_completed: 2
   features_in_progress: 1
-  codex_entries: 3
+  codex_entries: 5
   estimated_completion: "v2.0 Release (when R̄ ≥ 0.66)"
 
 parameters:
