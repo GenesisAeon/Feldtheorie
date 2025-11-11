@@ -8,18 +8,21 @@
 
 ## 📊 Übersicht
 
-**Gesamtfortschritt:** 50% der Manifest-Laternen aktiv
+**Gesamtfortschritt:** 2 von 15 Features completed (13%)
 
 ```
-V2.0 Readiness: ████████░░░░░░░░░░ 40%
+V2.0 Readiness: ██░░░░░░░░░░░░░░░░ 13%
 
-Kern-Features:  ███░░░░░░░░░░░░░░░ 18% (1/6)
+Kern-Features:  ░░░░░░░░░░░░░░░░░░  0% (0/6)
 Erweiterungen:  ░░░░░░░░░░░░░░░░░░  0% (0/3)
-Automation:     ██░░░░░░░░░░░░░░░░ 12% (0.25/2)
+Automation:     █░░░░░░░░░░░░░░░░░  6% (0.125/2)
 Tests:          █░░░░░░░░░░░░░░░░░  4% (12/290)
+Completed:      ██████████████████ 100% (2/2)
 ```
 
 **Release Criteria:** R̄ ≥ 0.66 über alle Kern-Features
+
+**Korrektur-Hinweis:** Fourier-Feature von "in_progress" auf "pending" korrigiert (Code existiert nicht)
 
 ---
 
@@ -80,25 +83,31 @@ Essays über epistemischen Kontrollverlust in KI-Forschung
 
 ---
 
-### 🟡 v2-feat-progress-001: Fourier-Analyse Modul
+### ⏳ v2-feat-progress-001: Fourier-Analyse Modul
 
-**Status:** 🟡 IN PROGRESS (seit 2025-11-08)
-**Scope:** `analysis/`
-**R=0.60, β=4.5**
+**Status:** ❌ PENDING (geplant seit 2025-11-08)
+**Scope:** `sonification/`, `analysis/`
+**R=0.00, β=4.5** ⚠️ **KORRIGIERT!**
 
 **Beschreibung:**
 Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)
 
-**Deliverables:**
-- ✅ `sonification/utac_fourier.py` (Kernmodul fertig!)
-- ⏳ `analysis/fourier_analysis.py` (CLI)
-- ⏳ `docs/utac_fourier_guide.md`
-- ⏳ `analysis/results/frequency_profiles/`
+**Deliverables (geplant):**
+- ❌ `sonification/utac_fourier.py` (Kernmodul)
+- ❌ `analysis/fourier_analysis.py` (CLI-Wrapper)
+- ❌ `docs/utac_fourier_guide.md`
+- ❌ `analysis/results/frequency_profiles/`
+
+**Status-Korrektur:**
+- Vorher fälschlich als "60% fertig" markiert
+- **Realität:** Code existiert nicht im Repo
+- Nur konzeptionell in `seed/NextVersionPlan/Letzte_Zusätze_bis_V2.txt`
 
 **Next Steps:**
-1. CLI-Wrapper schreiben
-2. Dokumentation vervollständigen
-3. Spektrogramm-Visualisierung
+1. Fourier-Kernmodul implementieren (`utac_fourier.py`)
+2. CLI-Wrapper schreiben
+3. Dokumentation erstellen
+4. Spektrogramm-Visualisierung
 
 ---
 
