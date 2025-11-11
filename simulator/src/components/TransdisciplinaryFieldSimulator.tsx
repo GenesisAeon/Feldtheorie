@@ -12,9 +12,11 @@ import {
 } from 'recharts';
 import { Pause, Play, RotateCcw, Sparkles } from 'lucide-react';
 import { DomainCard } from './DomainCard';
+import { UTACTooltip } from './UTACTooltip';
 import { FEATURED_PRESETS, PRESETS } from '../presets';
 import { DomainPreset, DomainState, TrajectoryPoint } from '../types';
 import { clamp, logistic } from '../utils/logistic';
+import { buildTooltipDataMap } from '../utils/tooltipDataBuilder';
 
 const BASE_THETA = 5;
 const BASE_BETA = 4;
@@ -298,6 +300,12 @@ export const TransdisciplinaryFieldSimulator = () => {
     [activePresetIds, presetsById]
   );
 
+  // Build tooltip data map for rich tooltips (v2-feat-ext-001)
+  const tooltipDataMap = useMemo(
+    () => buildTooltipDataMap(activePresets),
+    [activePresets]
+  );
+
   const chartLines = activePresets.map((preset) => (
     <Line
       key={preset.id}
@@ -458,7 +466,7 @@ export const TransdisciplinaryFieldSimulator = () => {
             <XAxis dataKey="time" stroke="rgba(209,213,255,0.65)" type="number" domain={['dataMin', 'dataMax']} />
             <YAxis stroke="rgba(209,213,255,0.65)" domain={[0, 'auto']} />
             <Tooltip
-              contentStyle={{ background: 'rgba(17,16,35,0.9)', border: '1px solid rgba(129,140,248,0.45)', borderRadius: '12px' }}
+              content={<UTACTooltip tooltipData={tooltipDataMap} showCREP={true} showFieldType={true} showNarrative={false} />}
             />
             <Legend />
             <ReferenceLine y={controls.theta} stroke="#f87171" strokeDasharray="6 4" label="Θ" />

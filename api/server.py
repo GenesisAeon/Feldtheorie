@@ -638,22 +638,231 @@ async def simulate(request: SimulateRequest):
 # Health Check
 # ============================================================================
 
+# ============================================================================
+# Tooltip System Endpoints (v2-feat-ext-001)
+# ============================================================================
+
+class CREPScores(BaseModel):
+    """CREP (Coherence, Resilience, Empathy, Propagation) scores"""
+    coherence: float = Field(..., ge=0, le=1, description="Internal consistency (R²-based)")
+    resilience: float = Field(..., ge=0, le=1, description="Recovery capacity (impedance-based)")
+    empathy: float = Field(..., ge=0, le=1, description="Cross-domain resonance (ΔAIC-based)")
+    propagation: float = Field(..., ge=0, le=1, description="Signal transmission (β-based)")
+
+
+class FieldTypeInfo(BaseModel):
+    """Field type classification with β-range"""
+    type: str = Field(..., description="Field type name")
+    description: str = Field(..., description="Human-readable description")
+    beta_range: List[float] = Field(..., min_items=2, max_items=2, description="[min, max] β range")
+    color: str = Field(..., description="Hex color code")
+
+
+class TooltipData(BaseModel):
+    """Complete tooltip data for interactive visualizations"""
+    preset_id: str
+    label: str
+    domain: str
+    beta: Optional[float] = None
+    beta_ci: Optional[List[float]] = None
+    theta: Optional[float] = None
+    theta_ci: Optional[List[float]] = None
+    r_squared: Optional[float] = None
+    delta_aic: Optional[float] = None
+    delta_r2: Optional[float] = None
+    best_null_model: Optional[str] = None
+    crep: Optional[CREPScores] = None
+    field_type: Optional[FieldTypeInfo] = None
+    impedance_closed: float
+    impedance_open: float
+    impedance_mean: float
+    formal_thread: Optional[str] = None
+    empirical_thread: Optional[str] = None
+    poetic_thread: Optional[str] = None
+
+
+def classify_field_type(beta: Optional[float]) -> FieldTypeInfo:
+    """Classify field type based on β value"""
+    if beta is None:
+        beta = 3.5  # Default to high-dimensional
+
+    if beta < 2.5:
+        return FieldTypeInfo(
+            type="weakly_coupled",
+            description="Weakly Coupled: Gradual transitions, low coupling",
+            beta_range=[0.0, 2.5],
+            color="#a8dadc"
+        )
+    elif beta < 4.0:
+        return FieldTypeInfo(
+            type="high_dimensional",
+            description="High-Dimensional: Complex state spaces (AI, neural)",
+            beta_range=[2.5, 4.0],
+            color="#457b9d"
+        )
+    elif beta < 5.5:
+        return FieldTypeInfo(
+            type="strongly_coupled",
+            description="Strongly Coupled: Resonant systems (climate, ecology)",
+            beta_range=[4.0, 5.5],
+            color="#1d3557"
+        )
+    elif beta < 10.0:
+        return FieldTypeInfo(
+            type="physically_constrained",
+            description="Physically Constrained: Hard constraints (astrophysics)",
+            beta_range=[5.5, 10.0],
+            color="#e63946"
+        )
+    else:
+        return FieldTypeInfo(
+            type="meta_adaptive",
+            description="Meta-Adaptive: Extreme nonlinearity (urban systems)",
+            beta_range=[10.0, 1000.0],
+            color="#f77f00"
+        )
+
+
+def compute_crep_scores(r2: Optional[float], delta_aic: Optional[float],
+                       impedance_mean: float, beta: Optional[float]) -> Optional[CREPScores]:
+    """Compute CREP scores from metrics"""
+    if r2 is None or delta_aic is None or beta is None:
+        return None
+
+    # Coherence: R² (model fit)
+    coherence = min(1.0, r2)
+
+    # Resilience: Impedance-based recovery
+    resilience = min(1.0, impedance_mean / 2.0)
+
+    # Empathy: ΔAIC-based transferability
+    empathy = min(1.0, delta_aic / 100.0)
+
+    # Propagation: β-dependent transmission
+    propagation = min(1.0, 1.0 / (1.0 + np.exp(-0.2 * (beta - 5.0))))
+
+    return CREPScores(
+        coherence=coherence,
+        resilience=resilience,
+        empathy=empathy,
+        propagation=propagation
+    )
+
+
+@app.get("/api/tooltip/{preset_id}", response_model=TooltipData, tags=["tooltip"])
+async def get_tooltip_data(preset_id: str):
+    """
+    Get rich tooltip data for a specific preset
+
+    Returns comprehensive metadata for interactive tooltips:
+    - UTAC parameters (β, Θ with CIs)
+    - Statistical metrics (R², ΔAIC)
+    - CREP scores
+    - Field type classification
+    - Narrative threads
+
+    **Example:**
+    ```bash
+    curl http://localhost:8000/api/tooltip/llm_resonance
+    ```
+    """
+    # Load preset
+    preset_path = PROJECT_ROOT / "simulator" / "presets" / f"{preset_id}.json"
+
+    if not preset_path.exists():
+        raise HTTPException(status_code=404, detail=f"Preset '{preset_id}' not found")
+
+    import json
+    with open(preset_path) as f:
+        preset = json.load(f)
+
+    analysis = preset.get("analysis", {})
+    impedance = preset.get("impedance", {})
+    narrative = preset.get("narrative", {})
+
+    # Extract metrics
+    beta = analysis.get("beta")
+    theta = analysis.get("theta")
+    r2 = analysis.get("logistic_r2")
+    delta_aic = analysis.get("delta_aic_best_null")
+
+    # Compute derived data
+    field_type = classify_field_type(beta)
+    crep = compute_crep_scores(r2, delta_aic, impedance.get("mean", 1.0), beta)
+
+    return TooltipData(
+        preset_id=preset.get("id", preset_id),
+        label=preset.get("label", preset_id),
+        domain=preset.get("domain", "unknown"),
+        beta=beta,
+        beta_ci=analysis.get("beta_ci"),
+        theta=theta,
+        theta_ci=analysis.get("theta_ci"),
+        r_squared=r2,
+        delta_aic=delta_aic,
+        delta_r2=analysis.get("delta_r2_best_null"),
+        best_null_model=analysis.get("best_null_model"),
+        crep=crep,
+        field_type=field_type,
+        impedance_closed=impedance.get("closed", 0.0),
+        impedance_open=impedance.get("open", 1.0),
+        impedance_mean=impedance.get("mean", 0.5),
+        formal_thread=narrative.get("formal"),
+        empirical_thread=narrative.get("empirical"),
+        poetic_thread=narrative.get("poetic")
+    )
+
+
+@app.get("/api/tooltip", response_model=List[TooltipData], tags=["tooltip"])
+async def get_all_tooltip_data():
+    """
+    Get tooltip data for all available presets
+
+    Returns a list of tooltip data for all presets in simulator/presets/
+
+    **Example:**
+    ```bash
+    curl http://localhost:8000/api/tooltip
+    ```
+    """
+    presets_dir = PROJECT_ROOT / "simulator" / "presets"
+
+    if not presets_dir.exists():
+        raise HTTPException(status_code=500, detail="Presets directory not found")
+
+    results = []
+    for preset_file in presets_dir.glob("*.json"):
+        if preset_file.name == "README.md":
+            continue
+
+        preset_id = preset_file.stem
+        try:
+            tooltip_data = await get_tooltip_data(preset_id)
+            results.append(tooltip_data)
+        except Exception as e:
+            print(f"Warning: Could not load preset {preset_id}: {e}")
+            continue
+
+    return results
+
+
 @app.get("/health", tags=["health"])
 async def health_check():
     """Health check endpoint"""
     return {
         "status": "healthy",
-        "version": "1.0.0",
-        "phase": "2",
-        "progress": "60%",
+        "version": "2.0.0",
+        "phase": "tooltip-system",
+        "progress": "80%",
         "endpoints": {
             "sonify": "implemented",
             "analyze": "implemented",
             "system": "implemented",
             "fieldtypes": "implemented",
-            "simulate": "implemented"
+            "simulate": "implemented",
+            "tooltip": "implemented ✨ NEW!"
         },
-        "message": "All 5 endpoints operational! Phase 2 complete."
+        "message": "All 6 endpoints operational! Tooltip system online."
     }
 
 

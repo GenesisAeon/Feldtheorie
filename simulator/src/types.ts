@@ -83,3 +83,75 @@ export interface TrajectoryPoint {
   time: number;
   value: number;
 }
+
+// ============================================================================
+// Tooltip System Types (v2-feat-ext-001)
+// ============================================================================
+
+/**
+ * CREP Scores: Coherence, Resilience, Empathy, Propagation
+ * Measures of system quality in UTAC framework
+ */
+export interface CREPScores {
+  coherence: number;      // 0-1: Internal consistency
+  resilience: number;     // 0-1: Recovery capacity
+  empathy: number;        // 0-1: Cross-domain resonance
+  propagation: number;    // 0-1: Signal transmission
+}
+
+/**
+ * Field Type Classification
+ * Five UTAC field types with different β-characteristics
+ */
+export type FieldType =
+  | 'weakly_coupled'       // β < 2.5
+  | 'high_dimensional'     // β ∈ [2.5, 4.0]
+  | 'strongly_coupled'     // β ∈ [4.0, 5.5]
+  | 'physically_constrained' // β ∈ [5.5, 10.0]
+  | 'meta_adaptive';       // β > 10.0
+
+export interface FieldTypeInfo {
+  type: FieldType;
+  description: string;
+  beta_range: [number, number];
+  color: string;
+}
+
+/**
+ * Complete Tooltip Data
+ * All information needed for rich interactive tooltips
+ */
+export interface TooltipData {
+  // Basic identification
+  preset_id: string;
+  label: string;
+  domain: string;
+
+  // UTAC parameters (from AnalysisSummary)
+  beta: number | null;
+  beta_ci?: [number, number] | null;
+  theta: number | null;
+  theta_ci?: [number, number] | null;
+
+  // Statistical metrics
+  r_squared: number | null;
+  delta_aic: number | null;
+  delta_r2: number | null;
+  best_null_model: string | null;
+
+  // CREP scores
+  crep?: CREPScores;
+
+  // Field type classification
+  field_type?: FieldTypeInfo;
+
+  // Impedance (ζ)
+  impedance_closed: number;
+  impedance_open: number;
+  impedance_mean: number;
+
+  // Narrative context
+  formal_thread?: string;
+  empirical_thread?: string;
+  poetic_thread?: string;
+}

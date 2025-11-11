@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "analysis": "Beta Scaling Follow-up (Post-Phi Falsification)",
+    "version": "1.0",
+    "date": "2025-11-11",
+    "n_domains": 15,
+    "observed_mean_ratio": 1.1776
+  },
+  "research_question_1_field_types": {
+    "high_dimensional": {
+      "n": 3,
+      "beta_range": [
+        3.47,
+        3.92
+      ],
+      "ratios": [
+        1.005763688760807,
+        1.1232091690544412
+      ],
+      "mean_ratio": 1.0644864289076241,
+      "std_ratio": 0.0830464955353398,
+      "systems": [
+        "llm_emergent",
+        "climate_permafrost",
+        "lenski_citplus"
+      ]
+    },
+    "meta_adaptive": {
+      "n": 3,
+      "beta_range": [
+        6.0811821343356005,
+        16.276030904088
+      ],
+      "ratios": [
+        2.3943418457923498,
+        1.1178263404818465
+      ],
+      "mean_ratio": 1.756084093137098,
+      "std_ratio": 0.9026327700948292,
+      "systems": [
+        "llm_skill_emergence",
+        "amazon_moisture",
+        "urban_heat"
+      ]
+    },
+    "physically_constrained": {
+      "n": 3,
+      "beta_range": [
+        4.38,
+        5.3
+      ],
+      "ratios": [
+        1.1073059360730593,
+        1.0927835051546393
+      ],
+      "mean_ratio": 1.1000447206138493,
+      "std_ratio": 0.010268909381727951,
+      "systems": [
+        "climate_greenland",
+        "seismic_rupture",
+        "blackhole_qpo"
+      ]
+    },
+    "strongly_coupled": {
+      "n": 4,
+      "beta_range": [
+        4.02,
+        4.2
+      ],
+      "ratios": [
+        1.0199004975124377,
+        1.0073170731707317,
+        1.016949152542373
+      ],
+      "mean_ratio": 1.0147222410751808,
+      "std_ratio": 0.0065806529351496714,
+      "systems": [
+        "climate_amoc",
+        "working_memory",
+        "honeybee_waggle",
+        "synapse_release"
+      ]
+    },
+    "weakly_coupled": {
+      "n": 2,
+      "beta_range": [
+        2.5,
+        3.77
+      ],
+      "ratios": [
+        1.508
+      ],
+      "mean_ratio": 1.508,
+      "std_ratio": 0.0,
+      "systems": [
+        "theta_plasticity",
+        "climate_amazon"
+      ]
+    },
+    "anova": {
+      "f_statistic": 1.3043079373650797,
+      "p_value": 0.3813942799957866,
+      "significant": false
+    }
+  },
+  "research_question_2_dimensionality": {
+    "D_eff": {
+      "pearson_r": -0.3873262746658805,
+      "p_value": 0.15376258362362458,
+      "regression": {
+        "slope": -0.3007829043230029,
+        "intercept": 8.116210414796967,
+        "r_squared": 0.150021643046549,
+        "p_value": 0.15376258362362472,
+        "stderr": 0.19856762768688202
+      },
+      "significant": false
+    },
+    "C_eff": {
+      "pearson_r": 0.48462137068181277,
+      "p_value": 0.06713113799135692,
+      "regression": {
+        "slope": 18.274449834304733,
+        "intercept": -8.170007214876907,
+        "r_squared": 0.23485787292151886,
+        "p_value": 0.06713113799135699,
+        "stderr": 9.148315425866615
+      },
+      "significant": false
+    },
+    "SNR": {
+      "pearson_r": 0.41189356005118527,
+      "p_value": 0.12712777179293203,
+      "regression": {
+        "slope": 0.7353336334934236,
+        "intercept": 2.1353391279781544,
+        "r_squared": 0.16965630481163918,
+        "p_value": 0.1271277717929322,
+        "stderr": 0.45118712571958275
+      },
+      "significant": false
+    },
+    "Memory": {
+      "pearson_r": -0.1154931334856228,
+      "p_value": 0.6818984771725605,
+      "regression": {
+        "slope": -1.703339270087479,
+        "intercept": 6.6350683793527825,
+        "r_squared": 0.0133386638823279,
+        "p_value": 0.6818984771725605,
+        "stderr": 4.063098711144954
+      },
+      "significant": false
+    },
+    "log_log_D_eff": {
+      "exponent": -0.36053455455082795,
+      "r_squared": 0.22937408670265566,
+      "p_value": 0.07088898653548834
+    }
+  },
+  "research_question_3_mathematical": {
+    "phi": {
+      "value": 1.61803398875,
+      "absolute_difference": 0.44043398874999995,
+      "relative_difference_percent": 37.40098409901494
+    },
+    "phi_cbrt": {
+      "value": 1.173984996705354,
+      "absolute_difference": 0.0036150032946460353,
+      "relative_difference_percent": 0.30698057868937123
+    },
+    "phi_sqrt": {
+      "value": 1.2720196495141103,
+      "absolute_difference": 0.0944196495141103,
+      "relative_difference_percent": 8.0179729546629
+    },
+    "e_sixth": {
+      "value": 1.1813604128656459,
+      "absolute_difference": 0.003760412865645879,
+      "relative_difference_percent": 0.3193285381832438
+    },
+    "sqrt_2_cbrt": {
+      "value": 1.122462048309373,
+      "absolute_difference": 0.05513795169062696,
+      "relative_difference_percent": 4.682230951989382
+    },
+    "sqrt_3_cbrt": {
+      "value": 1.2009369551760027,
+      "absolute_difference": 0.02333695517600276,
+      "relative_difference_percent": 1.981738720788278
+    },
+    "best_match": {
+      "constant": "phi_cbrt",
+      "value": 1.173984996705354,
+      "difference": 0.0036150032946460353,
+      "interpretation": "Φ^(1/3) ≈ 1.176: Sub-Φ scaling (cubic root of golden ratio)"
+    }
+  },
+  "visualization": "analysis/results/beta_scaling_followup_analysis.png"
+}
