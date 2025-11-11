@@ -446,30 +446,57 @@ VR-Kollaborationsraum für Mensch-AI mit UTAC
 
 ---
 
-### 🔵 v2-feat-ext-003: UTAC Modular API
+### 🟡 v2-feat-ext-003: UTAC Modular API
 
-**Status:** ❌ PENDING
+**Status:** 🟡 IN PROGRESS (Phase 1 Complete!)
 **Priority:** P2
-**R=0.00, β=4.0**
+**R=0.25, β=4.0** (Updated: 2025-11-11)
 
 **Beschreibung:**
 REST API für UTAC Module (OpenAPI 3.0)
 
-**Tech Stack:** FastAPI/Flask + OpenAPI + Docker
+**Tech Stack:** FastAPI + OpenAPI 3.0 + Docker
 
-**Estimated Effort:** 2-3 Wochen
+**Estimated Effort:** 2-3 Wochen (4 Phases)
+
+**Phase 1: Foundation** (✅ COMPLETED - R: 0.00 → 0.25)
+- ✅ `api/openapi.yaml` (607 LOC, 5 endpoints defined)
+- ✅ `api/server.py` (404 LOC, FastAPI skeleton)
+- ✅ `api/requirements.txt` (28 LOC)
+- ✅ `api/README.md` (306 LOC, comprehensive)
+- ✅ Total: 1345 LOC
+- ✅ 1/5 Endpoints working: GET /api/fieldtypes
+
+**Phase 2: Core Endpoints** (🔴 PENDING - R: 0.25 → 0.60)
+- [ ] `POST /api/sonify` → Audio generieren (integrate utac_sonification.py)
+- [ ] `POST /api/analyze` → β-Fit durchführen (integrate sigmoid_fit.py)
+- [ ] `GET /api/system/:id` → System-Metadaten (load from analysis/results/)
+- [ ] `POST /api/simulate` → Schwellen-Simulation (integrate coupled_threshold_field.py)
+
+**Phase 3: Docs & Tests** (🔴 PENDING - R: 0.60 → 0.85)
+- [ ] API Tests (`tests/test_api.py`)
+- [ ] Usage Examples (`api/examples/`)
+- [ ] Enhanced README
+
+**Phase 4: Docker & Polish** (🔴 PENDING - R: 0.85 → 1.00)
+- [ ] `api/Dockerfile`
+- [ ] `api/docker-compose.yml`
+- [ ] Production deployment guide
 
 **Endpoints:**
-- `POST /api/sonify` → Audio generieren
-- `POST /api/analyze` → β-Fit durchführen
-- `GET /api/system/:id` → System-Metadaten
-- `GET /api/fieldtypes` → Field Type Übersicht
-- `POST /api/simulate` → Schwellen-Simulation
+- ✅ `GET /api/fieldtypes` → Field Type Übersicht (IMPLEMENTED!)
+- 🔴 `POST /api/sonify` → Audio generieren
+- 🔴 `POST /api/analyze` → β-Fit durchführen
+- 🔴 `GET /api/system/:id` → System-Metadaten
+- 🔴 `POST /api/simulate` → Schwellen-Simulation
 
-**Deliverables:**
-- `api/openapi.yaml`
-- `api/server.py`
-- `api/README.md`
+**Deliverables (Phase 1 ✅):**
+- ✅ `api/openapi.yaml`
+- ✅ `api/server.py`
+- ✅ `api/requirements.txt`
+- ✅ `api/README.md`
+
+**Codex Ref:** v2-pr-0015 (Phase 1)
 
 ---
 
