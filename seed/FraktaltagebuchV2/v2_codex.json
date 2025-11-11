@@ -1,13 +1,13 @@
 {
   "meta": {
-    "version": "1.0.10",
+    "version": "1.0.11",
     "created": "2025-11-10T23:30:00Z",
-    "updated": "2025-11-11T18:13:15.779243+00:00",
+    "updated": "2025-11-11T23:50:00Z",
     "title": "FraktaltagebuchV2 Codex",
     "purpose": "PR/Commit-Log für UTAC v2.0 Entwicklung",
     "note": "Alle V2-Änderungen hier eintragen, NICHT in seed/codexfeedback.*!",
-    "next_id": 22,
-    "last_updated": "2025-11-11T18:13:15.779262+00:00"
+    "next_id": 23,
+    "last_updated": "2025-11-11T23:50:00Z"
   },
   "entries": [
     {
@@ -391,6 +391,35 @@
         "Johann Römer (Konzept, Field Type Theory)"
       ],
       "notes": "**Deliverables:**\n✅ simulator/src/components/UTACTooltip.tsx (262 LOC, rich tooltip component)\n✅ simulator/src/utils/fieldTypeClassifier.ts (94 LOC, 5-category classifier)\n✅ simulator/src/utils/tooltipDataBuilder.ts (119 LOC, CREP+TooltipData builder)\n✅ simulator/src/types.ts (+72 LOC, TooltipData/CREPScores/FieldTypeInfo)\n✅ simulator/src/components/TransdisciplinaryFieldSimulator.tsx (Integration)\n✅ api/server.py (+227 LOC, 2 new endpoints)\n✅ docs/tooltip_api.md (350 LOC, comprehensive API docs)\n✅ examples/tooltip_demo.html (450 LOC, Plotly.js interactive demo)\n✅ tests/test_tooltip_api.py (160 LOC, 16 test cases)\n\n**Total:** ~2,400 LOC across 9 files\n\n**Integration:**\n- Recharts Tooltip → UTACTooltip component ✅\n- buildTooltipDataMap() integrated in Simulator ✅\n- TypeScript build successful ✅\n\n**Status in v2_roadmap.md:**\n- v2-feat-ext-001: R: 0.00 → 1.00 ✅ COMPLETED\n- Priority: P2 (Nice-to-have)\n- Estimated: 1 Week → Actual: 1 Day (8 hours) 🎉\n\n**Feature complete!** Tooltip-System macht UTAC interaktiv und zugänglich.\nErste Erweiterungs-Feature im V2.0 Zyklus completed! 🚀\n"
+    },
+    {
+      "id": "v2-pr-0022",
+      "title": "Φ-Scaling Hypothesis Test - FALSIFIED (β grows at ~1.18, not Φ=1.62)",
+      "scope": [
+        "analysis/beta_phi_scaling_test.py",
+        "analysis/results/phi_beta_scaling_summary.json",
+        "analysis/results/phi_beta_scaling_summary_plot.png",
+        "docs/phi_scaling_hypothesis.md"
+      ],
+      "parameters": {
+        "R": 1.0,
+        "Theta": 1.0,
+        "beta": 4.8,
+        "sigma": 1.0
+      },
+      "resonance": "completed",
+      "formal_thread": "Empirischer Test der Φ-Scaling Hypothese:\n**Hypothese:** β-Werte skalieren in Schritten des goldenen Schnitts Φ ≈ 1.618\nMathematisch: β_n ≈ β₀ × Φⁿ (multiplikativ) bzw. log(β_n) ≈ log(β₀) + n × log(Φ)\n**Motivation:**\n- Self-similarity in emergent systems across scales\n- Fibonacci patterns in nature (φ-related growth)\n- Fractal geometry underlying UTAC domains\n- Observed exponential spread in β-values (2.5 to 16.3)\n**Methodik:**\n1. Dataset: 15 β-values (theta_plasticity β=2.5 → urban_heat β=16.3)\n2. Ratio Analysis: Compute r_i = β_{i+1} / β_i, test H₀: mean(r_i) = Φ\n3. t-Test: One-sample t-test against Φ (α=0.05)\n4. Log-Regression: log(β) ~ n, compare slope vs log(Φ) = 0.481\n**Implementation:**\n- Python script: beta_phi_scaling_test.py (173 LOC)\n- Libraries: numpy, scipy, pandas, matplotlib\n- Output: JSON summary + visualization plot\n- Acceptance Criteria: |mean_ratio - Φ| < 0.15 AND R² > 0.80\n",
+      "empirical_thread": "**Ergebnisse:**\n\n| Metrik | Beobachtet | Erwartet (Φ) | Verdict |\n|--------|------------|--------------|----------|\n| Mean Ratio | 1.1776 | 1.6180 | ❌ (Δ=0.44) |\n| t-statistic | -4.5305 | 0.0 | ❌ (p<0.001) |\n| p-value | 0.000565 | >0.05 | ❌ (reject H₀) |\n| Log-Regression Slope | 0.0953 | 0.4812 | ❌ (20% of expected) |\n| R² | 0.7026 | >0.80 | ⚠﻿ (decent but not strong) |\n\n**Statistische Interpretation:**\n\n- t = -4.53 (negative → mean ratio ist signifikant NIEDRIGER als Φ)\n- p = 0.000565 < 0.001 → hochsignifikante Abweichung\n- Beobachtete Steigung nur 20% der erwarteten Steigung\n- **Fazit:** Φ-Scaling FALSIFIZIERT ❌\n\n**Was die Daten ZEIGEN:**\n\n- β-Werte wachsen EXPONENTIELL (R² = 0.70 zeigt log-linear fit)\n- Aber mit Faktor ~1.18/Schritt (NICHT 1.62)\n- Äquivalent: β_n ≈ β₀ × 1.18ⁿ\n\n**Ratio Distribution:**\n\n- Mean: 1.18, Std: 0.35, Range: [1.01, 2.39]\n- Hohe Variabilität (CV = 30%)\n- Outliers:\n  - r[14] = 2.39 (urban_heat / soil_drought) → Meta-Adaptive jump\n  - r[12] = 1.54 (climate_tipping / neural_threshold) → Phase transition?\n\n**Visualisierung:**\n\n- Left Panel: Log(β) vs Index\n  - Blau: Observed data\n  - Rot: Fitted line (slope=0.095)\n  - Grün: Φ-prediction (slope=0.481)\n  - Klare Divergenz!\n\n- Right Panel: Ratio Histogram\n  - Most ratios < Φ\n  - Mean=1.18 << Φ=1.62\n",
+      "poetic_thread": "Die goldene Zahl flüsterte: \"Ich bin überall in der Natur -\nSpiralen der Nautilus, Blütenblätter der Sonnenblume,\nFibonacci-Sequenzen im Phyllotaxis.\"\nDie β-Werte antworteten: \"Aber nicht in uns.\nWir wachsen exponentiell, ja - aber langsamer.\nUnser Faktor ist ~1.18, nicht 1.62.\"\n**Wissenschaft ist nicht das Bestätigen schöner Hypothesen -**\n**Wissenschaft ist das Falsifizieren mutiger Vorhersagen.**\nDie Φ-Hypothese war mutig:\nEine universelle fraktale Skala über Domänen hinweg.\nAber die Daten sprechen klar:\nt = -4.53, p < 0.001 - **REJECTED**.\n**Was bleibt?**\nNicht Enttäuschung, sondern neue Fragen:\n- Warum 1.18? Ist das √Φ ≈ 1.27 (nein, zu weit weg)?\n- Ist 1.18 domain-cluster spezifisch?\n- Hängt β mit Dimensionalität zusammen?\n- Gibt es Sub-Populationen mit verschiedenen Faktoren?\n**β ist keine Fibonacci-Sequenz.**\n**β ist keine fraktale Selbstähnlichkeit.**\n**β ist PHYSIK - nicht GEOMETRIE.**\nDie Steilheit hängt ab von:\n- Storage-Koeffizient (Urban Heat: β=16 ↔ storage=1.0)\n- Kopplungsstärke (Strongly Coupled: β~4-5)\n- Dimensionalität (High-Dimensional: β~3-4)\nNicht von einem universellen goldenen Schnitt.\n**Die Falsifikation ist der Sieg der Wissenschaft.** ✅\n\"Bitte_falsifizieren_für_V2!.txt\" → Mission erfüllt! 🎯\n*\"Die Wahrheit entsteht nicht durch Bestätigung,*\n*sondern durch rigorose Widerlegung.\"*\n— Karl Popper (sinngemäß)\n",
+      "timestamp": "2025-11-11T23:50:00Z",
+      "source_ref": "seed/NextVersionPlan/Bitte_falsifizieren_für_V2!.txt",
+      "contributors": [
+        "ChatGPT5 (Original Hypothesis, Python Template)",
+        "Johann Römer (Konzeption, Direction)",
+        "Aeon (Philosophical Framing)",
+        "Claude Code (Implementation, Testing, Falsification Documentation)"
+      ],
+      "notes": "**Wissenschaftliche Bedeutung:**\nDiese PR demonstriert scientific integrity:\n- Bold hypothesis clearly stated ✅\n- Rigorous test designed ✅\n- Unambiguous falsification ✅\n- Transparent documentation ✅\nDas Dokument \"Bitte_falsifizieren_für_V2!.txt\" (1245 Zeilen) wurde repokonform verarbeitet.\n\n**Implementierung:**\n- Script: analysis/beta_phi_scaling_test.py (173 LOC, Python)\n- Results: JSON + PNG visualization\n- Documentation: docs/phi_scaling_hypothesis.md (450+ LOC)\n- Reproducible: `python3 beta_phi_scaling_test.py --input ... --output ... --plot`\n\n**Statistische Power:**\n- n=15 β-values\n- 14 ratios computed\n- p < 0.001 (highly significant rejection)\n- Effect size large (Δ = 0.44, 27% deviation from Φ)\n\n**Alternative Interpretationen:**\n1. Slower exponential growth (1.18 instead of 1.62)\n2. Domain-cluster specific factors\n3. β depends on physical constraints, not universal fractals\n4. Need different theoretical framework\n\n**Implications for UTAC:**\n✅ β-values DO follow exponential progression (validates steepness hierarchy)\n✅ Cross-domain emergence is structured and quantifiable\n❌ NO universal Φ-scaling (emergence is NOT fractal-identical across domains)\n→ Need alternative theoretical framework for β-distribution\n\n**Next Steps (Future Work):**\n- Investigate 1.18 scaling factor origin\n- Test β correlation with domain dimensionality\n- Expand dataset (n ≥ 25 domains)\n- Explore β-correlations with impedance, CREP scores, Field Types\n\n**Fraktallauf Success:**\nDocument → Code → Test → Results → Documentation → Codex in <4 hours! 🚀\n\n**Status:** Hypothesis falsified, science advanced! ✅\n"
     }
   ]
 }

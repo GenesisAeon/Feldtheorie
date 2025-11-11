@@ -1,0 +1,33 @@
+{
+    "n": 15,
+    "phi_constant": 1.61803398875,
+    "beta_range": {
+        "min": 2.5,
+        "max": 16.276030904088,
+        "span": 13.776030904088
+    },
+    "ratios": {
+        "mean": 1.1776,
+        "std": 0.3505,
+        "min": 1.0058,
+        "max": 2.3943
+    },
+    "hypothesis_test": {
+        "t_statistic": -4.5305,
+        "p_value": 0.000565,
+        "interpretation": "H0: mean_ratio = Φ",
+        "significant": true
+    },
+    "log_regression": {
+        "slope": 0.0953,
+        "expected_slope_log_phi": 0.4812,
+        "slope_difference": 0.3859,
+        "r_squared": 0.7026,
+        "p_value": 9.5e-05
+    },
+    "conclusion": {
+        "phi_scaling_detected": false,
+        "mean_ratio_close_to_phi": false,
+        "log_regression_strong": false
+    }
+}
