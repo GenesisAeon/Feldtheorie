@@ -1,7 +1,7 @@
 # 📚 FraktaltagebuchV2 Index
 
-**Version:** 1.0.0
-**Erstellt:** 2025-11-10
+**Version:** 1.0.1
+**Erstellt:** 2025-11-10 | **Aktualisiert:** 2025-11-11
 **Dokumente:** 11 | **Trilayer-Sets:** 3
 
 ---
@@ -65,12 +65,14 @@
 | [`v2_codex.json`](v2_codex.json) | Schnittstelle | JSON | Agenten/Tools | ✅ |
 | [`v2_codex.md`](v2_codex.md) | Narrativ | Markdown | Drei Threads | ✅ |
 
-**Inhalt:** 3 Einträge
+**Inhalt:** 5 Einträge
 - v2-pr-0001: UTAC Sonification ✅
 - v2-pr-0002: Outreach Essays ✅
 - v2-pr-0003: FraktaltagebuchV2 Setup 🟢
+- v2-pr-0004: FIT Paper ✅
+- v2-pr-0005: Fourier Analysis Module 🟡
 
-**Nächste ID:** v2-pr-0004
+**Nächste ID:** v2-pr-0006
 
 ---
 
@@ -144,7 +146,7 @@
 | **Features Completed** | 2 |
 | **Features In Progress** | 1 |
 | **Features Pending** | 12 |
-| **Codex Entries** | 3 |
+| **Codex Entries** | 5 |
 | **Estimated Completion** | When R̄ ≥ 0.66 |
 
 ---
@@ -187,8 +189,8 @@ Tests:          █░░░░░░░░░░░░░░░░░  4%
 
 ---
 
-**Version:** 1.0.0
-**Letztes Update:** 2025-11-10T23:45:00Z
+**Version:** 1.0.1
+**Letztes Update:** 2025-11-11T01:15:00Z
 **Maintained by:** Claude Code + Johann Römer
 
 *"Trilayer navigation - von Struktur über Schnittstelle zu Narrativ!"* 📚✨
