@@ -17,13 +17,15 @@ Kern-Features:  ░░░░░░░░░░░░░░░░░░  0% (0/6)
 Erweiterungen:  ░░░░░░░░░░░░░░░░░░  0% (0/3)
 Automation:     █░░░░░░░░░░░░░░░░░  6% (0.125/2)
 Tests:          █░░░░░░░░░░░░░░░░░  4% (12/290)
-In Progress:    ████████████████░░ 80% (1/1 - Fourier)
+In Progress:    ███████████████████ 95% (1/1 - Fourier fast fertig!)
 Completed:      ██████████████████ 100% (2/2)
 ```
 
 **Release Criteria:** R̄ ≥ 0.66 über alle Kern-Features
 
-**Update 2025-11-11:** Fourier-Modul von Aeon ins Repo gebracht! (R: 0.00 → 0.80)
+**Update 2025-11-11:**
+- Fourier-Modul implementiert: R: 0.00 → 0.80 → 0.95
+- Kernmodul (Aeon) + CLI + umfassende Doku!
 
 ---
 
@@ -87,32 +89,49 @@ Essays über epistemischen Kontrollverlust in KI-Forschung
 ### 🟡 v2-feat-progress-001: Fourier-Analyse Modul
 
 **Status:** 🟡 IN PROGRESS (seit 2025-11-11)
-**Scope:** `sonification/`, `analysis/`
-**R=0.80, β=4.5** ✨ **IMPLEMENTIERT!**
+**Scope:** `sonification/`, `analysis/`, `docs/`
+**R=0.95, β=4.5** 🎉 **FAST FERTIG!**
 
 **Beschreibung:**
 Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)
 
 **Deliverables:**
 - ✅ `sonification/utac_fourier.py` (Kernmodul - 242 LOC)
-- ⏳ `analysis/fourier_analysis.py` (CLI-Wrapper)
-- ⏳ `docs/utac_fourier_guide.md`
-- ⏳ `analysis/results/frequency_profiles/`
+- ✅ `analysis/fourier_analysis.py` (CLI-Wrapper - 180 LOC + argparse)
+- ✅ `docs/utac_fourier_guide.md` (Comprehensive - 450 LOC, 12 Sektionen)
+- ✅ `analysis/results/frequency_profiles/` (Directory + README)
 
 **Funktionen implementiert:**
+
+*Kernmodul (utac_fourier.py):*
 - `compute_fourier()` - FFT-Berechnung
 - `spectral_features()` - Dominant Freq, Entropy, Centroid
-- `classify_field_type()` - UTAC Field Type Mapping
+- `classify_field_type()` - UTAC Field Type Mapping (5 types)
 - `plot_spectrum()` - Log-Log Visualisierung
 - `run_analysis()` - Komplette Pipeline
 
-**Quelle:** Code von Aeon aus `Letzte_Zusätze_bis_V2.txt` (Lines 269-352)
+*CLI (fourier_analysis.py):*
+- Multi-format support (CSV, TXT, NPY)
+- Custom sampling rates
+- JSON export
+- Verbose mode
+- Comprehensive help & examples
 
-**Next Steps:**
-1. CLI-Wrapper schreiben
-2. Dokumentation erstellen
-3. Spektrogramm-Visualisierung
-4. Integration mit `utac_sonification.py`
+*Dokumentation (utac_fourier_guide.md):*
+- Quick Start + API Reference
+- 3 Workflow Examples (AMOC, LLM, Cross-Domain)
+- Field Type Frequency Mapping
+- Troubleshooting Guide
+- Theoretical Background
+
+**Quellen:**
+- Kernmodul: Aeon (Letzte_Zusätze_bis_V2.txt, Lines 269-352)
+- CLI & Doku: Johann + Claude
+
+**Still TODO (optional für v1.0):**
+- Integration mit `utac_sonification.py` (kann separater PR sein)
+- Time-frequency analysis (Spectrograms)
+- Automated Field Type classifier (ML)
 
 ---
 

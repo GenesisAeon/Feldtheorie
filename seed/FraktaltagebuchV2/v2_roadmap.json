@@ -65,7 +65,7 @@
       "title": "Fourier-Analyse Modul",
       "status": "in_progress",
       "started_date": "2025-11-11T00:00:00Z",
-      "scope": "sonification/, analysis/",
+      "scope": "sonification/, analysis/, docs/",
       "description": "Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)",
       "deliverables_planned": [
         "sonification/utac_fourier.py (Kernmodul)",
@@ -74,15 +74,18 @@
         "docs/utac_fourier_guide.md"
       ],
       "deliverables_completed": [
-        "sonification/utac_fourier.py (✅ Kernmodul implementiert!)"
+        "sonification/utac_fourier.py (✅ 242 LOC)",
+        "analysis/fourier_analysis.py (✅ 180 LOC + argparse)",
+        "analysis/results/frequency_profiles/ (✅ directory + README)",
+        "docs/utac_fourier_guide.md (✅ 450 LOC comprehensive)"
       ],
       "parameters": {
-        "R": 0.80,
+        "R": 0.95,
         "Theta": 1.0,
         "beta": 4.5
       },
       "blockers": [],
-      "notes": "Code von Aeon (aus Letzte_Zusätze_bis_V2.txt) ins Repo gebracht. Inkl. compute_fourier(), spectral_features(), classify_field_type(). Noch fehlt: CLI-Wrapper, Doku."
+      "notes": "Fast fertig! Kernmodul (Aeon), CLI (Johann+Claude), umfassende Doku (12 Sektionen). Noch offen: Integration mit utac_sonification.py (kann später in separatem PR kommen)."
     }
   ],
   "core_features": [
