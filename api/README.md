@@ -58,7 +58,7 @@ Convert UTAC parameters into audio.
 
 **Response:** WAV audio (binary) or JSON metadata
 
-**Status:** 🔴 Not Implemented (Phase 2)
+**Status:** ✅ **IMPLEMENTED** (Phase 2)
 
 ---
 
@@ -91,7 +91,7 @@ Fit logistic model to empirical data.
 }
 ```
 
-**Status:** 🔴 Not Implemented (Phase 2)
+**Status:** ✅ **IMPLEMENTED** (Phase 2)
 
 ---
 
@@ -122,7 +122,7 @@ GET /api/system/amoc
 }
 ```
 
-**Status:** 🔴 Not Implemented (Phase 2)
+**Status:** ✅ **IMPLEMENTED** (Phase 2)
 
 ---
 
@@ -187,7 +187,7 @@ Simulate coupled threshold dynamics.
 }
 ```
 
-**Status:** 🔴 Not Implemented (Phase 2)
+**Status:** ✅ **IMPLEMENTED** (Phase 2)
 
 ---
 
@@ -259,12 +259,12 @@ docker-compose up -d
 - [x] Requirements (`requirements.txt`)
 - [x] Initial README
 
-**Phase 2: Core Endpoints** (🔴 PENDING)
-- [ ] POST /api/sonify
-- [ ] POST /api/analyze
-- [ ] GET /api/system/:id
+**Phase 2: Core Endpoints** (✅ COMPLETED - R: 0.25 → 0.60)
+- [x] POST /api/sonify ✅
+- [x] POST /api/analyze ✅
+- [x] GET /api/system/:id ✅
 - [x] GET /api/fieldtypes ✅
-- [ ] POST /api/simulate
+- [x] POST /api/simulate ✅
 
 **Phase 3: Docs & Tests** (🔴 PENDING)
 - [ ] Comprehensive README

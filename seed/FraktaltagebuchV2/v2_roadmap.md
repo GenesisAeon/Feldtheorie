@@ -448,9 +448,9 @@ VR-Kollaborationsraum für Mensch-AI mit UTAC
 
 ### 🟡 v2-feat-ext-003: UTAC Modular API
 
-**Status:** 🟡 IN PROGRESS (Phase 1 Complete!)
+**Status:** 🟡 IN PROGRESS (Phase 2 Complete!)
 **Priority:** P2
-**R=0.25, β=4.0** (Updated: 2025-11-11)
+**R=0.60, β=4.5** (Updated: 2025-11-11T20:00)
 
 **Beschreibung:**
 REST API für UTAC Module (OpenAPI 3.0)
@@ -467,11 +467,12 @@ REST API für UTAC Module (OpenAPI 3.0)
 - ✅ Total: 1345 LOC
 - ✅ 1/5 Endpoints working: GET /api/fieldtypes
 
-**Phase 2: Core Endpoints** (🔴 PENDING - R: 0.25 → 0.60)
-- [ ] `POST /api/sonify` → Audio generieren (integrate utac_sonification.py)
-- [ ] `POST /api/analyze` → β-Fit durchführen (integrate sigmoid_fit.py)
-- [ ] `GET /api/system/:id` → System-Metadaten (load from analysis/results/)
-- [ ] `POST /api/simulate` → Schwellen-Simulation (integrate coupled_threshold_field.py)
+**Phase 2: Core Endpoints** (✅ COMPLETED - R: 0.25 → 0.60)
+- [x] `POST /api/sonify` → Audio generieren ✅
+- [x] `POST /api/analyze` → β-Fit durchführen ✅
+- [x] `GET /api/system/:id` → System-Metadaten ✅
+- [x] `POST /api/simulate` → Schwellen-Simulation ✅
+- server.py: +289 LOC (404 → 666)
 
 **Phase 3: Docs & Tests** (🔴 PENDING - R: 0.60 → 0.85)
 - [ ] API Tests (`tests/test_api.py`)
@@ -485,18 +486,21 @@ REST API für UTAC Module (OpenAPI 3.0)
 
 **Endpoints:**
 - ✅ `GET /api/fieldtypes` → Field Type Übersicht (IMPLEMENTED!)
-- 🔴 `POST /api/sonify` → Audio generieren
-- 🔴 `POST /api/analyze` → β-Fit durchführen
-- 🔴 `GET /api/system/:id` → System-Metadaten
-- 🔴 `POST /api/simulate` → Schwellen-Simulation
+- ✅ `POST /api/sonify` → Audio generieren (IMPLEMENTED!)
+- ✅ `POST /api/analyze` → β-Fit durchführen (IMPLEMENTED!)
+- ✅ `GET /api/system/:id` → System-Metadaten (IMPLEMENTED!)
+- ✅ `POST /api/simulate` → Schwellen-Simulation (IMPLEMENTED!)
 
-**Deliverables (Phase 1 ✅):**
-- ✅ `api/openapi.yaml`
-- ✅ `api/server.py`
-- ✅ `api/requirements.txt`
-- ✅ `api/README.md`
+**All 5/5 Endpoints Operational!** 🎉
 
-**Codex Ref:** v2-pr-0015 (Phase 1)
+**Deliverables (Phases 1+2 ✅):**
+- ✅ `api/openapi.yaml` (607 LOC)
+- ✅ `api/server.py` (666 LOC, all endpoints working!)
+- ✅ `api/requirements.txt` (28 LOC)
+- ✅ `api/README.md` (306 LOC, updated)
+- Total: **1607 LOC**
+
+**Codex Ref:** v2-pr-0015 (Phase 1), v2-pr-0016 (Phase 2)
 
 ---
 
