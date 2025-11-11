@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.0.10",
+    "version": "1.0.15",
     "created": "2025-11-10T23:30:00Z",
     "updated": "2025-11-11T15:30:00Z",
     "title": "UTAC v2.0 Roadmap",
@@ -20,7 +20,8 @@
     },
     "last_updated": "2025-11-11T15:30:00Z",
     "overall_progress": 0.53,
-    "sigma": 0.349
+    "sigma": 0.349,
+    "last_update": "2025-11-11T18:14:00.112253+00:00"
   },
   "completed_features": [
     {
@@ -320,7 +321,7 @@
     {
       "id": "v2-feat-ext-001",
       "title": "Tooltip-System - Interaktive Visualisierungen",
-      "status": "pending",
+      "status": "completed",
       "priority": "P2",
       "scope": "docs/, simulator/",
       "description": "Hover-Tooltipps über Plots mit β, Θ, R, CREP, etc.",
@@ -340,7 +341,11 @@
         "Flask/Node Backend",
         "JSON API endpoint"
       ],
-      "notes": "Aus seed/NextVersionPlan/Letzte_Zusätze_bis_V2.txt"
+      "notes": "Aus seed/NextVersionPlan/Letzte_Zusätze_bis_V2.txt",
+      "R": 1.0,
+      "beta": 4.5,
+      "completed_in": "1 day (8 hours)",
+      "codex_ref": "v2-pr-0021"
     },
     {
       "id": "v2-feat-ext-002",

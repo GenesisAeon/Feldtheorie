@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTAC Tooltip System Demo</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e2e8ff;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(14, 10, 35, 0.6);
+            border-radius: 16px;
+            border: 2px solid rgba(129, 140, 248, 0.3);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(120deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: rgba(226, 232, 255, 0.75);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(129, 140, 248, 0.2);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(129, 140, 248, 0.4);
+        }
+
+        .plot-section {
+            background: rgba(17, 16, 35, 0.8);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .plot-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #c4b5fd;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            font-size: 1.2rem;
+            color: #9ca3af;
+        }
+
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(14, 10, 35, 0.6);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(129, 140, 248, 0.2);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+
+        .api-info {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 2rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            color: #fca5a5;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            color: rgba(156, 163, 175, 0.8);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 UTAC Tooltip System Demo</h1>
+            <p class="subtitle">Interactive visualizations with rich metadata tooltips</p>
+            <div class="badge">v2-feat-ext-001: Tooltip System</div>
+        </header>
+
+        <div class="stats-grid" id="stats">
+            <div class="loading">Loading statistics</div>
+        </div>
+
+        <div class="plot-section">
+            <h2 class="plot-title">📊 β-Parameter Distribution Across Domains</h2>
+            <div id="plot-beta" class="loading">Loading plot...</div>
+        </div>
+
+        <div class="plot-section">
+            <h2 class="plot-title">📈 R² vs ΔAIC: Model Quality Scatter</h2>
+            <div id="plot-quality" class="loading">Loading plot...</div>
+        </div>
+
+        <div class="plot-section">
+            <h2 class="plot-title">🎨 Field Type Distribution</h2>
+            <div id="plot-fieldtype" class="loading">Loading plot...</div>
+        </div>
+
+        <div class="api-info">
+            <strong>API Endpoint:</strong> <code>GET http://localhost:8000/api/tooltip</code><br>
+            <strong>Data Points:</strong> <span id="data-count">Loading...</span><br>
+            <strong>Status:</strong> <span id="api-status">Checking...</span>
+        </div>
+
+        <footer>
+            <p>UTAC v2.0 Tooltip System | Powered by FastAPI + Plotly</p>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem;">
+                Unified Theory of Adaptive Criticality - Interactive Visualizations
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+
+        // Load tooltip data and render visualizations
+        async function loadData() {
+            try {
+                const response = await fetch(`${API_BASE}/api/tooltip`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+
+                document.getElementById('api-status').textContent = '✅ Online';
+                document.getElementById('api-status').style.color = '#34d399';
+                document.getElementById('data-count').textContent = data.length;
+
+                renderStats(data);
+                renderBetaPlot(data);
+                renderQualityPlot(data);
+                renderFieldTypePlot(data);
+
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('plot-beta').innerHTML = `
+                    <div class="error">
+                        <strong>Error:</strong> ${error.message}<br><br>
+                        <strong>Solution:</strong> Start the API server with:<br>
+                        <code>cd api && uvicorn server:app --reload</code>
+                    </div>
+                `;
+                document.getElementById('api-status').textContent = '❌ Offline';
+                document.getElementById('api-status').style.color = '#f87171';
+            }
+        }
+
+        function renderStats(data) {
+            const validBetas = data.filter(d => d.beta !== null).map(d => d.beta);
+            const avgBeta = (validBetas.reduce((a, b) => a + b, 0) / validBetas.length).toFixed(2);
+            const maxBeta = Math.max(...validBetas).toFixed(2);
+            const avgR2 = (data.filter(d => d.r_squared !== null)
+                              .map(d => d.r_squared)
+                              .reduce((a, b) => a + b, 0) / data.length).toFixed(3);
+
+            document.getElementById('stats').innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-label">Total Systems</div>
+                    <div class="stat-value">${data.length}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Average β</div>
+                    <div class="stat-value">${avgBeta}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Max β</div>
+                    <div class="stat-value">${maxBeta}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Average R²</div>
+                    <div class="stat-value">${avgR2}</div>
+                </div>
+            `;
+        }
+
+        function renderBetaPlot(data) {
+            const validData = data.filter(d => d.beta !== null);
+
+            const trace = {
+                x: validData.map(d => d.label),
+                y: validData.map(d => d.beta),
+                type: 'bar',
+                marker: {
+                    color: validData.map(d => d.field_type?.color || '#818cf8'),
+                    line: {
+                        color: '#e2e8ff',
+                        width: 1
+                    }
+                },
+                text: validData.map(d => `β=${d.beta.toFixed(2)}`),
+                textposition: 'outside',
+                hovertemplate: '<b>%{x}</b><br>' +
+                              'β: %{y:.2f}<br>' +
+                              'Field Type: %{customdata[0]}<br>' +
+                              'R²: %{customdata[1]:.3f}<br>' +
+                              'ΔAIC: %{customdata[2]:.1f}<br>' +
+                              '<extra></extra>',
+                customdata: validData.map(d => [
+                    d.field_type?.type || 'unknown',
+                    d.r_squared || 0,
+                    d.delta_aic || 0
+                ])
+            };
+
+            const layout = {
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(14,10,35,0.4)',
+                font: { color: '#e2e8ff', family: 'Segoe UI' },
+                xaxis: {
+                    title: 'System',
+                    gridcolor: 'rgba(129,140,248,0.1)',
+                    tickangle: -45
+                },
+                yaxis: {
+                    title: 'β (Criticality Parameter)',
+                    gridcolor: 'rgba(129,140,248,0.1)'
+                },
+                margin: { l: 60, r: 30, t: 30, b: 120 }
+            };
+
+            Plotly.newPlot('plot-beta', [trace], layout, { responsive: true });
+        }
+
+        function renderQualityPlot(data) {
+            const validData = data.filter(d => d.r_squared !== null && d.delta_aic !== null);
+
+            const trace = {
+                x: validData.map(d => d.r_squared),
+                y: validData.map(d => d.delta_aic),
+                mode: 'markers',
+                type: 'scatter',
+                marker: {
+                    size: validData.map(d => (d.beta || 4) * 3),
+                    color: validData.map(d => d.field_type?.color || '#818cf8'),
+                    line: {
+                        color: '#e2e8ff',
+                        width: 1
+                    }
+                },
+                text: validData.map(d => d.label),
+                hovertemplate: '<b>%{text}</b><br>' +
+                              'R²: %{x:.3f}<br>' +
+                              'ΔAIC: %{y:.1f}<br>' +
+                              'β: %{customdata[0]:.2f}<br>' +
+                              'Field Type: %{customdata[1]}<br>' +
+                              '<extra></extra>',
+                customdata: validData.map(d => [
+                    d.beta || 0,
+                    d.field_type?.type || 'unknown'
+                ])
+            };
+
+            const layout = {
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(14,10,35,0.4)',
+                font: { color: '#e2e8ff', family: 'Segoe UI' },
+                xaxis: {
+                    title: 'R² (Model Fit)',
+                    gridcolor: 'rgba(129,140,248,0.1)',
+                    range: [0, 1]
+                },
+                yaxis: {
+                    title: 'ΔAIC (vs Best Null)',
+                    gridcolor: 'rgba(129,140,248,0.1)'
+                },
+                shapes: [
+                    // Significance threshold line (ΔAIC > 10)
+                    {
+                        type: 'line',
+                        x0: 0,
+                        y0: 10,
+                        x1: 1,
+                        y1: 10,
+                        line: {
+                            color: '#f87171',
+                            width: 2,
+                            dash: 'dash'
+                        }
+                    }
+                ],
+                annotations: [
+                    {
+                        x: 0.95,
+                        y: 12,
+                        text: 'Significance Threshold (ΔAIC=10)',
+                        showarrow: false,
+                        font: { color: '#f87171', size: 10 }
+                    }
+                ],
+                margin: { l: 60, r: 30, t: 30, b: 60 }
+            };
+
+            Plotly.newPlot('plot-quality', [trace], layout, { responsive: true });
+        }
+
+        function renderFieldTypePlot(data) {
+            const fieldTypeCounts = {};
+            data.forEach(d => {
+                const type = d.field_type?.type || 'unknown';
+                fieldTypeCounts[type] = (fieldTypeCounts[type] || 0) + 1;
+            });
+
+            const types = Object.keys(fieldTypeCounts);
+            const counts = Object.values(fieldTypeCounts);
+            const colors = types.map(type => {
+                const item = data.find(d => d.field_type?.type === type);
+                return item?.field_type?.color || '#818cf8';
+            });
+
+            const trace = {
+                labels: types,
+                values: counts,
+                type: 'pie',
+                marker: { colors: colors },
+                textinfo: 'label+percent',
+                textposition: 'inside',
+                hovertemplate: '<b>%{label}</b><br>' +
+                              'Count: %{value}<br>' +
+                              'Percentage: %{percent}<br>' +
+                              '<extra></extra>'
+            };
+
+            const layout = {
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                font: { color: '#e2e8ff', family: 'Segoe UI' },
+                showlegend: true,
+                margin: { l: 30, r: 30, t: 30, b: 30 }
+            };
+
+            Plotly.newPlot('plot-fieldtype', [trace], layout, { responsive: true });
+        }
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>
