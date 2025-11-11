@@ -1,0 +1,8 @@
+dataset: Urban Heat Islands
+source: NASA Global UHI Dataset, YCEO Surface UHI
+period: 2003-2018
+variables:
+  - land_surface_temperature
+  - urban_vs_rural_delta
+license: CC-BY-4.0
+notes: Pixel-level intensities for >10,000 urban clusters, day/night separation

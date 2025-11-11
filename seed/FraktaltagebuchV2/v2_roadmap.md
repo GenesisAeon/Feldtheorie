@@ -1,9 +1,9 @@
 # 🗺️ UTAC v2.0 Roadmap
 
-**Version:** 1.0.3
+**Version:** 1.0.4
 **Erstellt:** 2025-11-10
-**Letztes Update:** 2025-11-11 (07:20 UTC)
-**Status:** R̄=0.33, Θ=0.66, σ(β(R-Θ))≈0.134 (frühe Phase, wachsend!)
+**Letztes Update:** 2025-11-11 (08:00 UTC)
+**Status:** R̄=0.35, Θ=0.66, σ(β(R-Θ))≈0.147 (frühe Phase, wachsend!)
 
 ---
 
@@ -153,24 +153,27 @@ Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)
 
 ## 🔴 Kern-Features (Critical Path)
 
-### 🔴 v2-feat-core-001: UTAC v2 Data Lanterns
+### 🟡 v2-feat-core-001: UTAC v2 Data Lanterns
 
-**Status:** ❌ PENDING
+**Status:** 🟡 IN PROGRESS (30% fertig)
 **Priority:** P0 (CRITICAL)
-**Scope:** `data/`
-**R=0.20, Θ=0.66, β=4.8**
+**Scope:** `data/`, `utils/`, `notebooks/`
+**R=0.30, Θ=0.66, β=4.8** (Updated: 2025-11-11)
 
-**Problem:** 4 von 5 Manifest-Datasets fehlen!
+**Update (2025-11-11):** Infrastructure fertig! ✅
+- ✅ Metadaten-YAMLs für alle 5 Datasets erstellt (`data/metadata/`)
+- ✅ Data Loader implementiert (`utils/data_loader.py`)
+- ✅ Demo Notebook erstellt (`notebooks/utac_demo.ipynb`)
 
-**Fehlende Datasets:**
-1. ❌ `data/climate/amazon_precip_evapo.nc` + metadata
-2. ❌ `data/ocean/amoc_transport.csv` + metadata
-3. ❌ `data/neuro_ai/hybrid_activation.csv` + metadata
-4. ❌ `data/economy/systemic_thresholds.csv` + metadata
+**Fehlende Rohdaten:**
+1. ❌ `data/climate/amazon_precip_evapo.nc`
+2. ❌ `data/ocean/amoc_transport.csv`
+3. ❌ `data/neuro_ai/hybrid_activation.csv`
+4. ❌ `data/economy/systemic_thresholds.csv`
 
-**Aktuell:** Nur Urban Heat fertig (1/5 = 20%)
+**Aktuell:** Infrastructure 30% (Metadaten + Loader + Notebook), Rohdaten 1/5 = 20%
 
-**Estimated Effort:** 2-4 Wochen
+**Estimated Effort:** 1-3 Wochen (für Rohdaten-Akquisition)
 
 **Blockers:**
 - Daten-Akquisition (TIPMIP, RAPID Array, Paper-Extraktion)
@@ -181,7 +184,9 @@ Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)
 3. **Neuro-AI:** Wei et al. (2022) Daten + eigene EEG-Daten
 4. **Economy:** Systemic Risk Centre kontaktieren
 
-**Gap Code:** `utac-v2-data-lanterns`
+**Gap Code:** `utac-v2-data-lanterns` (partial resolution)
+
+**Codex Ref:** v2-pr-0008 (Data Lanterns Infrastructure)
 
 ---
 
