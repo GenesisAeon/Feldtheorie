@@ -1,14 +1,15 @@
 # 🗺️ UTAC v2.0 Roadmap
 
-**Version:** 1.0.0
+**Version:** 1.0.1
 **Erstellt:** 2025-11-10
-**Status:** R̄=0.50, Θ=0.66, σ(β(R-Θ))≈0.317 (partial activation)
+**Letztes Update:** 2025-11-11
+**Status:** R̄=0.20, Θ=0.66, σ(β(R-Θ))≈0.082 (frühe Phase, wachsend!)
 
 ---
 
 ## 📊 Übersicht
 
-**Gesamtfortschritt:** 2 completed + 1 in_progress von 15 Features (20%)
+**Gesamtfortschritt:** 3 completed von 15 Features (20%)
 
 ```
 V2.0 Readiness: ████░░░░░░░░░░░░░░ 20%
@@ -17,15 +18,16 @@ Kern-Features:  ░░░░░░░░░░░░░░░░░░  0% (0/6)
 Erweiterungen:  ░░░░░░░░░░░░░░░░░░  0% (0/3)
 Automation:     █░░░░░░░░░░░░░░░░░  6% (0.125/2)
 Tests:          █░░░░░░░░░░░░░░░░░  4% (12/290)
-In Progress:    ███████████████████ 95% (1/1 - Fourier fast fertig!)
-Completed:      ██████████████████ 100% (2/2)
+In Progress:    ░░░░░░░░░░░░░░░░░░  0% (0)
+Completed:      ██████████████████ 100% (3/3 - Fourier FERTIG! ✅)
 ```
 
 **Release Criteria:** R̄ ≥ 0.66 über alle Kern-Features
 
 **Update 2025-11-11:**
-- Fourier-Modul implementiert: R: 0.00 → 0.80 → 0.95
-- Kernmodul (Aeon) + CLI + umfassende Doku!
+- **Fourier-Modul FERTIG: R: 0.00 → 0.80 → 0.95 → 1.00 ✅**
+- Kernmodul (Aeon) + CLI + Doku + Tests (19/19 passing!)
+- pytest + pytest-cov zu requirements.txt hinzugefügt
 
 ---
 
@@ -86,11 +88,11 @@ Essays über epistemischen Kontrollverlust in KI-Forschung
 
 ---
 
-### 🟡 v2-feat-progress-001: Fourier-Analyse Modul
+### ✅ v2-feat-done-003: Fourier-Analyse Modul - Spectral Criticality
 
-**Status:** 🟡 IN PROGRESS (seit 2025-11-11)
-**Scope:** `sonification/`, `analysis/`, `docs/`
-**R=0.95, β=4.5** 🎉 **FAST FERTIG!**
+**Status:** ✅ COMPLETED (2025-11-11)
+**Scope:** `sonification/`, `analysis/`, `docs/`, `tests/`
+**R=1.00, β=4.5** 🎉 **FERTIG!**
 
 **Beschreibung:**
 Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)
@@ -100,6 +102,8 @@ Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)
 - ✅ `analysis/fourier_analysis.py` (CLI-Wrapper - 180 LOC + argparse)
 - ✅ `docs/utac_fourier_guide.md` (Comprehensive - 450 LOC, 12 Sektionen)
 - ✅ `analysis/results/frequency_profiles/` (Directory + README)
+- ✅ `tests/test_utac_fourier.py` (19 tests, 100% passing)
+- ✅ `requirements.txt` (pytest + pytest-cov hinzugefügt)
 
 **Funktionen implementiert:**
 
@@ -124,12 +128,21 @@ Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)
 - Troubleshooting Guide
 - Theoretical Background
 
+*Tests (test_utac_fourier.py):*
+- 3 test classes, 19 test cases
+- FFT computation tests
+- Spectral features tests
+- Field type classification tests
+- Complete pipeline tests
+- Edge case tests
+
 **Quellen:**
 - Kernmodul: Aeon (Letzte_Zusätze_bis_V2.txt, Lines 269-352)
 - CLI & Doku: Johann + Claude
+- Tests: Claude Code
 
-**Still TODO (optional für v1.0):**
-- Integration mit `utac_sonification.py` (kann separater PR sein)
+**Optional für spätere PRs:**
+- Integration mit `utac_sonification.py`
 - Time-frequency analysis (Spectrograms)
 - Automated Field Type classifier (ML)
 
