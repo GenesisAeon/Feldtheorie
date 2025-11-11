@@ -12,9 +12,9 @@ meta:
   status_summary:
     total_features: 15
     completed: 2
-    in_progress: 0  # Fourier korrigiert!
-    pending: 13
-    completion_rate: 0.133
+    in_progress: 1  # Fourier jetzt implementiert!
+    pending: 12
+    completion_rate: 0.20
 
 # =============================================================================
 # KATEGORIE 1: FERTIG / IN PROGRESS (aus seed/NextVersionPlan/)
@@ -56,8 +56,8 @@ completed_features:
 
   - id: v2-feat-progress-001
     title: "Fourier-Analyse Modul"
-    status: pending
-    planned_date: "2025-11-08T00:00:00Z"
+    status: in_progress
+    started_date: "2025-11-11T00:00:00Z"
     scope: sonification/, analysis/
     description: "Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)"
     deliverables_planned:
@@ -65,13 +65,14 @@ completed_features:
       - analysis/fourier_analysis.py (CLI-Wrapper)
       - analysis/results/frequency_profiles/
       - docs/utac_fourier_guide.md
-    deliverables_completed: []
+    deliverables_completed:
+      - sonification/utac_fourier.py (✅ Kernmodul implementiert!)
     parameters:
-      R: 0.00  # KORRIGIERT: Code existiert nicht im Repo!
+      R: 0.80  # Kernmodul fertig, CLI + Doku noch offen
       Theta: 1.00
       beta: 4.5
     blockers: []
-    notes: "Nur konzeptionell in seed/NextVersionPlan/Letzte_Zusätze_bis_V2.txt. Implementierung noch ausstehend."
+    notes: "Code von Aeon (aus Letzte_Zusätze_bis_V2.txt) ins Repo gebracht. Inkl. compute_fourier(), spectral_features(), classify_field_type(). Noch fehlt: CLI-Wrapper, Doku."
 
 # =============================================================================
 # KATEGORIE 2: KERN-FEATURES (Critical Path für V2.0)

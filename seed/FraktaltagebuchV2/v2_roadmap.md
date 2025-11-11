@@ -8,21 +8,22 @@
 
 ## 📊 Übersicht
 
-**Gesamtfortschritt:** 2 von 15 Features completed (13%)
+**Gesamtfortschritt:** 2 completed + 1 in_progress von 15 Features (20%)
 
 ```
-V2.0 Readiness: ██░░░░░░░░░░░░░░░░ 13%
+V2.0 Readiness: ████░░░░░░░░░░░░░░ 20%
 
 Kern-Features:  ░░░░░░░░░░░░░░░░░░  0% (0/6)
 Erweiterungen:  ░░░░░░░░░░░░░░░░░░  0% (0/3)
 Automation:     █░░░░░░░░░░░░░░░░░  6% (0.125/2)
 Tests:          █░░░░░░░░░░░░░░░░░  4% (12/290)
+In Progress:    ████████████████░░ 80% (1/1 - Fourier)
 Completed:      ██████████████████ 100% (2/2)
 ```
 
 **Release Criteria:** R̄ ≥ 0.66 über alle Kern-Features
 
-**Korrektur-Hinweis:** Fourier-Feature von "in_progress" auf "pending" korrigiert (Code existiert nicht)
+**Update 2025-11-11:** Fourier-Modul von Aeon ins Repo gebracht! (R: 0.00 → 0.80)
 
 ---
 
@@ -83,31 +84,35 @@ Essays über epistemischen Kontrollverlust in KI-Forschung
 
 ---
 
-### ⏳ v2-feat-progress-001: Fourier-Analyse Modul
+### 🟡 v2-feat-progress-001: Fourier-Analyse Modul
 
-**Status:** ❌ PENDING (geplant seit 2025-11-08)
+**Status:** 🟡 IN PROGRESS (seit 2025-11-11)
 **Scope:** `sonification/`, `analysis/`
-**R=0.00, β=4.5** ⚠️ **KORRIGIERT!**
+**R=0.80, β=4.5** ✨ **IMPLEMENTIERT!**
 
 **Beschreibung:**
 Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)
 
-**Deliverables (geplant):**
-- ❌ `sonification/utac_fourier.py` (Kernmodul)
-- ❌ `analysis/fourier_analysis.py` (CLI-Wrapper)
-- ❌ `docs/utac_fourier_guide.md`
-- ❌ `analysis/results/frequency_profiles/`
+**Deliverables:**
+- ✅ `sonification/utac_fourier.py` (Kernmodul - 242 LOC)
+- ⏳ `analysis/fourier_analysis.py` (CLI-Wrapper)
+- ⏳ `docs/utac_fourier_guide.md`
+- ⏳ `analysis/results/frequency_profiles/`
 
-**Status-Korrektur:**
-- Vorher fälschlich als "60% fertig" markiert
-- **Realität:** Code existiert nicht im Repo
-- Nur konzeptionell in `seed/NextVersionPlan/Letzte_Zusätze_bis_V2.txt`
+**Funktionen implementiert:**
+- `compute_fourier()` - FFT-Berechnung
+- `spectral_features()` - Dominant Freq, Entropy, Centroid
+- `classify_field_type()` - UTAC Field Type Mapping
+- `plot_spectrum()` - Log-Log Visualisierung
+- `run_analysis()` - Komplette Pipeline
+
+**Quelle:** Code von Aeon aus `Letzte_Zusätze_bis_V2.txt` (Lines 269-352)
 
 **Next Steps:**
-1. Fourier-Kernmodul implementieren (`utac_fourier.py`)
-2. CLI-Wrapper schreiben
-3. Dokumentation erstellen
-4. Spektrogramm-Visualisierung
+1. CLI-Wrapper schreiben
+2. Dokumentation erstellen
+3. Spektrogramm-Visualisierung
+4. Integration mit `utac_sonification.py`
 
 ---
 
