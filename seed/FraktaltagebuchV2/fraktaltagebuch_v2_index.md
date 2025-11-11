@@ -1,7 +1,7 @@
 # 📚 FraktaltagebuchV2 Index
 
-**Version:** 1.0.2
-**Erstellt:** 2025-11-10 | **Aktualisiert:** 2025-11-11 (07:00 UTC)
+**Version:** 1.0.3
+**Erstellt:** 2025-11-10 | **Aktualisiert:** 2025-11-11 (14:30 UTC)
 **Dokumente:** 11 | **Trilayer-Sets:** 3
 
 ---
@@ -51,9 +51,9 @@
 | [`v2_roadmap.md`](v2_roadmap.md) | Narrativ | Markdown | Menschenfreundlich | ✅ |
 
 **Inhalt:** 15 Features tracked
-- 4 completed (Sonification, Essays, Fourier, Tests)
-- 0 in progress
-- 11 pending (Data Lanterns, Meta-Regression, etc.)
+- 8 completed (Sonification, Essays, Fourier, Tests, Guards CI, Neuro-Kosmos, Urban Heat, +1)
+- 1 in progress (Data Lanterns Infrastructure)
+- 6 pending (Data Lanterns finish, Analysis Exports, Meta-Regression, etc.)
 
 ---
 
@@ -65,15 +65,19 @@
 | [`v2_codex.json`](v2_codex.json) | Schnittstelle | JSON | Agenten/Tools | ✅ |
 | [`v2_codex.md`](v2_codex.md) | Narrativ | Markdown | Drei Threads | ✅ |
 
-**Inhalt:** 6 Einträge
+**Inhalt:** 10 Einträge
 - v2-pr-0001: UTAC Sonification ✅
 - v2-pr-0002: Outreach Essays ✅
 - v2-pr-0003: FraktaltagebuchV2 Setup 🟢
 - v2-pr-0004: FIT Paper ✅
 - v2-pr-0005: Fourier Analysis Module ✅
 - v2-pr-0006: Test-Suite Stabilität ✅
+- v2-pr-0007: UTAC Guards CI ✅
+- v2-pr-0008: Data Lanterns Infrastructure 🟡
+- v2-pr-0009: Neuro-Kosmos Bridge ✅
+- v2-pr-0010: Urban Heat Mechanism ✅
 
-**Nächste ID:** v2-pr-0007
+**Nächste ID:** v2-pr-0011
 
 ---
 
@@ -144,10 +148,10 @@
 | **Trilayer Sets** | 3 (Roadmap, Codex, Index) |
 | **Single Documents** | 2 (README, AGENTS) |
 | **Features Tracked** | 15 |
-| **Features Completed** | 4 |
-| **Features In Progress** | 0 |
-| **Features Pending** | 11 |
-| **Codex Entries** | 6 |
+| **Features Completed** | 8 |
+| **Features In Progress** | 1 |
+| **Features Pending** | 6 |
+| **Codex Entries** | 10 |
 | **Estimated Completion** | When R̄ ≥ 0.66 |
 
 ---
@@ -155,21 +159,21 @@
 ## 🌊 Logistische Parameter
 
 ```
-R̄ = 0.27   # 27% overall (4/15 features completed)
+R̄ = 0.47   # 47% overall (8 completed + 0.3*1 in_progress)
 Θ = 0.66   # V2.0 Readiness Gate
 β = 4.8    # Steepness
-σ = 0.103  # σ(β(R-Θ)) ≈ 0.103 (early activation, growing!)
+σ = 0.317  # σ(β(R-Θ)) ≈ 0.317 (wachsend!) 🎉
 ```
 
 **Grafisch:**
 ```
-V2.0 Progress: █████░░░░░░░░░░ 27%
+V2.0 Progress: ████████░░░░░░░ 47% (8/15 completed + 1 in progress)
 
-Kern-Features:  ░░░░░░░░░░░░░░░░░░  0%
-Erweiterungen:  ░░░░░░░░░░░░░░░░░░  0%
-Automation:     ██░░░░░░░░░░░░░░░░ 12%
-Tests:          ██████████████████ 98.5% ✅
-Completed:      ██████████████████ 100% (4/4)
+Kern-Features:  ███████░░░░░░░░░░░ 42% (3/6: Neuro-Kosmos, Urban Heat, +1 in progress)
+Erweiterungen:  ░░░░░░░░░░░░░░░░░░  0% (0/3)
+Automation:     ████████████████░░ 50% (1/2: Guards CI ✅)
+Tests:          ██████████████████ 98.5% (396/402) ✅
+Completed:      ██████████████████ 100% (8/8: Sonification, Essays, Fourier, Tests, Guards, Neuro-Kosmos, Urban Heat, FIT Paper)
 ```
 
 **Ziel:** R̄ → 1.00, dann σ(β(R-Θ)) → 1.00 (full activation)
@@ -191,8 +195,15 @@ Completed:      ██████████████████ 100% (4/4
 
 ---
 
-**Version:** 1.0.2
-**Letztes Update:** 2025-11-11T07:00:00Z
+**Version:** 1.0.3
+**Letztes Update:** 2025-11-11T14:30:00Z
 **Maintained by:** Claude Code + Johann Römer
 
 *"Trilayer navigation - von Struktur über Schnittstelle zu Narrativ!"* 📚✨
+
+**Changelog v1.0.3 (2025-11-11):**
+- Updated codex entries: 6 → 10 (v2-pr-0007 bis v2-pr-0010 hinzugefügt)
+- Updated features: 4 completed → 8 completed + 1 in progress
+- Updated R̄: 0.27 → 0.47 (+74% Fortschritt!)
+- Updated σ: 0.103 → 0.317 (3x höher - die Schwelle steigt!)
+- New PRs: Guards CI ✅, Data Lanterns Infrastructure 🟡, Neuro-Kosmos Bridge ✅, Urban Heat Mechanism ✅
