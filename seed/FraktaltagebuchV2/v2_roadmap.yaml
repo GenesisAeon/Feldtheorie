@@ -1,18 +1,18 @@
 meta:
   version: "1.0.1"
   created: "2025-11-10T23:30:00Z"
-  updated: "2025-11-11T00:00:00Z"
+  updated: "2025-11-11T06:30:00Z"
   title: "UTAC v2.0 Roadmap"
   purpose: "Vollständige Übersicht aller V2.0 Features und ihres Status"
   parameters:
-    R_mean: 0.13  # Durchschnittlicher Fortschritt (2/15 completed)
+    R_mean: 0.20  # Durchschnittlicher Fortschritt (3/15 completed)
     Theta: 0.66  # V2.0 Readiness Gate
     beta: 4.8
-    sigma: 0.042  # σ(β(R-Θ)) ≈ 0.042 (sehr frühe Phase)
+    sigma: 0.082  # σ(β(R-Θ)) ≈ 0.082 (frühe Phase, aber wachsend!)
   status_summary:
     total_features: 15
-    completed: 2
-    in_progress: 1  # Fourier jetzt implementiert!
+    completed: 3  # Fourier ist fertig! ✅
+    in_progress: 0
     pending: 12
     completion_rate: 0.20
 
@@ -54,28 +54,26 @@ completed_features:
     pr_ref: "seed/NextVersionPlan/bitte_integrieren_ARCHIVED_20251110.txt"
     notes: "Ready für Medium, t3n, Towards Data Science"
 
-  - id: v2-feat-progress-001
-    title: "Fourier-Analyse Modul"
-    status: in_progress
+  - id: v2-feat-done-003
+    title: "Fourier-Analyse Modul - Spectral Criticality"
+    status: completed
     started_date: "2025-11-11T00:00:00Z"
-    scope: sonification/, analysis/, docs/
+    completed_date: "2025-11-11T06:30:00Z"
+    scope: sonification/, analysis/, docs/, tests/
     description: "Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)"
-    deliverables_planned:
-      - sonification/utac_fourier.py (Kernmodul)
-      - analysis/fourier_analysis.py (CLI-Wrapper)
-      - analysis/results/frequency_profiles/
-      - docs/utac_fourier_guide.md
-    deliverables_completed:
-      - sonification/utac_fourier.py (✅ 242 LOC)
-      - analysis/fourier_analysis.py (✅ 180 LOC + argparse)
+    deliverables:
+      - sonification/utac_fourier.py (✅ 242 LOC - Kernmodul)
+      - analysis/fourier_analysis.py (✅ 180 LOC - CLI mit argparse)
       - analysis/results/frequency_profiles/ (✅ directory + README)
-      - docs/utac_fourier_guide.md (✅ 450 LOC comprehensive)
+      - docs/utac_fourier_guide.md (✅ 450 LOC - comprehensive guide)
+      - tests/test_utac_fourier.py (✅ 19 tests, 100% passing)
+      - requirements.txt (✅ pytest + pytest-cov hinzugefügt)
     parameters:
-      R: 0.95  # Kernmodul, CLI, Doku fertig! Nur Integration fehlt
+      R: 1.00
       Theta: 1.00
       beta: 4.5
-    blockers: []
-    notes: "Fast fertig! Kernmodul (Aeon), CLI (Johann+Claude), umfassende Doku (12 Sektionen). Noch offen: Integration mit utac_sonification.py (kann später in separatem PR kommen)."
+    pr_ref: "v2-pr-0005 in FraktaltagebuchV2/v2_codex.md"
+    notes: "FERTIG! ✅ Kernmodul (Aeon), CLI (Johann+Claude), Doku (12 Sektionen), Tests (19/19 passing). Integration mit utac_sonification.py optional für späteren PR."
 
 # =============================================================================
 # KATEGORIE 2: KERN-FEATURES (Critical Path für V2.0)
