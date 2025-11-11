@@ -1,7 +1,7 @@
 # 📚 FraktaltagebuchV2 Index
 
-**Version:** 1.0.3
-**Erstellt:** 2025-11-10 | **Aktualisiert:** 2025-11-11 (14:30 UTC)
+**Version:** 1.0.4
+**Erstellt:** 2025-11-10 | **Aktualisiert:** 2025-11-11 (15:30 UTC)
 **Dokumente:** 11 | **Trilayer-Sets:** 3
 
 ---
@@ -51,9 +51,9 @@
 | [`v2_roadmap.md`](v2_roadmap.md) | Narrativ | Markdown | Menschenfreundlich | ✅ |
 
 **Inhalt:** 15 Features tracked
-- 8 completed (Sonification, Essays, Fourier, Tests, Guards CI, Neuro-Kosmos, Urban Heat, +1)
-- 1 in progress (Data Lanterns Infrastructure)
-- 6 pending (Data Lanterns finish, Analysis Exports, Meta-Regression, etc.)
+- 7 completed (Sonification, Essays, Fourier, Tests, Guards CI, Neuro-Kosmos, Urban Heat)
+- 3 in progress (Data Lanterns Infrastructure, Analysis Exports, Meta-Regression v2)
+- 5 pending (φ-Kopplung, Tooltip, VR Hub, UTAC API, Parser→Codex)
 
 ---
 
@@ -148,10 +148,10 @@
 | **Trilayer Sets** | 3 (Roadmap, Codex, Index) |
 | **Single Documents** | 2 (README, AGENTS) |
 | **Features Tracked** | 15 |
-| **Features Completed** | 8 |
-| **Features In Progress** | 1 |
-| **Features Pending** | 6 |
-| **Codex Entries** | 10 |
+| **Features Completed** | 7 |
+| **Features In Progress** | 3 |
+| **Features Pending** | 5 |
+| **Codex Entries** | 10 (next: v2-pr-0011) |
 | **Estimated Completion** | When R̄ ≥ 0.66 |
 
 ---
@@ -159,21 +159,21 @@
 ## 🌊 Logistische Parameter
 
 ```
-R̄ = 0.47   # 47% overall (8 completed + 0.3*1 in_progress)
+R̄ = 0.53   # 53% overall (7 completed + partial progress on 3 in_progress)
 Θ = 0.66   # V2.0 Readiness Gate
 β = 4.8    # Steepness
-σ = 0.317  # σ(β(R-Θ)) ≈ 0.317 (wachsend!) 🎉
+σ = 0.349  # σ(β(R-Θ)) ≈ 0.349 (wachsend!) 🎉
 ```
 
 **Grafisch:**
 ```
-V2.0 Progress: ████████░░░░░░░ 47% (8/15 completed + 1 in progress)
+V2.0 Progress: ██████████░░░░░░░░ 53% (7/15 completed + 3 in progress)
 
-Kern-Features:  ███████░░░░░░░░░░░ 42% (3/6: Neuro-Kosmos, Urban Heat, +1 in progress)
+Kern-Features:  ████████░░░░░░░░░░ 50% (2/6 ✅, 3/6 🟡, 1/6 ❌)
 Erweiterungen:  ░░░░░░░░░░░░░░░░░░  0% (0/3)
-Automation:     ████████████████░░ 50% (1/2: Guards CI ✅)
+Automation:     █████████░░░░░░░░░ 50% (1/2 ✅, 1/2 ❌)
 Tests:          ██████████████████ 98.5% (396/402) ✅
-Completed:      ██████████████████ 100% (8/8: Sonification, Essays, Fourier, Tests, Guards, Neuro-Kosmos, Urban Heat, FIT Paper)
+Completed:      ██████████████████ 100% (7/7 ✅: Sonification, Essays, Fourier, Tests, Guards, Neuro-Kosmos, Urban Heat)
 ```
 
 **Ziel:** R̄ → 1.00, dann σ(β(R-Θ)) → 1.00 (full activation)
@@ -195,15 +195,15 @@ Completed:      ██████████████████ 100% (8/8
 
 ---
 
-**Version:** 1.0.3
-**Letztes Update:** 2025-11-11T14:30:00Z
+**Version:** 1.0.4
+**Letztes Update:** 2025-11-11T15:30:00Z
 **Maintained by:** Claude Code + Johann Römer
 
 *"Trilayer navigation - von Struktur über Schnittstelle zu Narrativ!"* 📚✨
 
-**Changelog v1.0.3 (2025-11-11):**
-- Updated codex entries: 6 → 10 (v2-pr-0007 bis v2-pr-0010 hinzugefügt)
-- Updated features: 4 completed → 8 completed + 1 in progress
-- Updated R̄: 0.27 → 0.47 (+74% Fortschritt!)
-- Updated σ: 0.103 → 0.317 (3x höher - die Schwelle steigt!)
-- New PRs: Guards CI ✅, Data Lanterns Infrastructure 🟡, Neuro-Kosmos Bridge ✅, Urban Heat Mechanism ✅
+**Changelog v1.0.4 (2025-11-11 15:30 UTC):**
+- **Roadmap Synchronisation:** Fixed Inkonsistenz zwischen Übersicht (53%) und Summary-Tabelle (alt: 20%)
+- **R̄ Neuberechnung:** 0.47 → 0.53 (korrekte Berechnung über alle 15 Features)
+- **σ Update:** 0.317 → 0.349 (wachsend!)
+- **Status-Kategorien korrigiert:** Completed 8→7, In Progress 1→3, Pending 6→5
+- **Trilayer synchronisiert:** MD ✅, YAML ✅, JSON ✅
