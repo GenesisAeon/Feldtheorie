@@ -304,8 +304,9 @@ class ThresholdChoir:
         # Rate of change magnitude
         roc_magnitude = abs(voice.rate_of_change)
 
-        # Stability: decreases with proximity to threshold and high rate of change
-        voice.stability = 1.0 / (1.0 + distance_to_threshold + roc_magnitude * 10)
+        # Stability: HIGH when FAR from threshold, LOW when NEAR threshold
+        # Using direct relationship: high distance → high stability
+        voice.stability = min(1.0, distance_to_threshold / (1.0 + roc_magnitude * 10))
 
         # Check for destabilization event
         if voice.stability < 0.3:
@@ -408,17 +409,26 @@ class ThresholdChoir:
                 signal = DestabilizationEffects.noise_injection(signal, noise_level)
 
         else:
-            # Stable state - use standard synthesis
-            signal = self.sonifier.generate_tone(
-                base_freq,
-                amplitude,
-                profile["harmonics"],
-                profile["envelope"]
-            )
+            # Stable state - generate signal with correct duration
+            # (Can't use sonifier.generate_tone as it uses fixed self.duration)
+            t = np.linspace(0, duration, int(self.sample_rate * duration))
+            signal = np.zeros_like(t)
 
-        # Apply amplitude envelope
-        envelope = self.sonifier._create_envelope(profile["envelope"], len(signal))
-        signal = signal * envelope * amplitude
+            # Add harmonics
+            for i, harmonic_amp in enumerate(profile["harmonics"]):
+                harmonic_freq = base_freq * (i + 1)
+                signal += harmonic_amp * np.sin(2 * np.pi * harmonic_freq * t)
+
+            # Normalize
+            if np.max(np.abs(signal)) > 0:
+                signal = signal / np.max(np.abs(signal))
+
+            # Apply amplitude envelope
+            envelope = self.sonifier._create_envelope(profile["envelope"], len(signal))
+            signal = signal * envelope * amplitude
+
+        # No need to apply envelope again - already applied above
+        # (Removed duplicate envelope application)
 
         return signal
 
