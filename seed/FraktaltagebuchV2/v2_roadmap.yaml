@@ -1,23 +1,23 @@
 meta:
-  version: 1.0.3
+  version: 1.0.9
   created: '2025-11-10T23:30:00Z'
-  updated: '2025-11-11T06:45:00Z'
+  updated: '2025-11-11T14:00:00Z'
   title: UTAC v2.0 Roadmap
   purpose: Vollständige Übersicht aller V2.0 Features und ihres Status
   parameters:
-    R_mean: 0.27
+    R_mean: 0.47
     Theta: 0.66
     beta: 4.8
-    sigma: 0.103
+    sigma: 0.317
   status_summary:
     total_features: 15
-    completed: 4
+    completed: 8
     in_progress: 1
-    pending: 10
-    completion_rate: 0.27
-  last_updated: '2025-11-11T07:20:00Z'
-  overall_progress: 0.33
-  sigma: 0.134
+    pending: 6
+    completion_rate: 0.53
+  last_updated: '2025-11-11T14:00:00Z'
+  overall_progress: 0.53
+  sigma: 0.441
 completed_features:
 - id: v2-feat-done-001
   title: UTAC Sonifikation - The Sound of Criticality
@@ -213,24 +213,52 @@ core_features:
   - Theorie-Dokument schreiben
 - id: v2-feat-core-006
   title: Urban Heat Outlier Mechanism - β=16.3
-  status: pending
+  status: completed
+  completed_date: '2025-11-11T14:00:00Z'
   priority: P2
   scope: analysis/, docs/
   description: Physikalische Erklärung für extremen β-Wert
-  deliverables_required:
-  - analysis/urban_heat_storage_mechanism.py
-  - analysis/results/urban_heat_storage_mechanism.json
-  - data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv
-  - data/socio_ecology/urban_heat/urban_heat_storage_profiles.metadata.json
-  - docs/urban_heat_mechanism.md
+  deliverables_completed:
+  - analysis/urban_heat_storage_mechanism.py (457 LOC, bereits vorhanden)
+  - analysis/results/urban_heat_storage_mechanism.json (5 scenarios, bereits vorhanden)
+  - data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv (bereits vorhanden)
+  - data/socio_ecology/urban_heat/urban_heat_storage_profiles.metadata.json (bereits vorhanden)
+  - docs/urban_heat_mechanism.md (NEU ERSTELLT! ✅)
   parameters:
-    R: 0.0
+    R: 1.0
     Theta: 0.66
-    beta: 16.3
-  estimated_effort: 1-2 Wochen
-  dependencies: []
+    beta: 11.6
   gap_code: socio-gap-004
-  notes: Material-Speicherkoeffizient moduliert β≈16→β≈7.5
+  gap_resolution: RESOLVED ✅
+  key_finding: 'β-Storage Correlation: β = 14.7·storage + 0.79, R²=0.963 (p<0.001)'
+  scenarios:
+  - name: Asphalt Canyon
+    beta: 16.29
+    storage: 1.0
+    delta_aic: 20.6
+  - name: Dense Midrise
+    beta: 12.36
+    storage: 0.85
+    delta_aic: 23.8
+  - name: Mixed Residential
+    beta: 10.48
+    storage: 0.68
+    delta_aic: 54.0
+  - name: Garden Courtyard
+    beta: 9.06
+    storage: 0.55
+    delta_aic: 62.2
+  - name: Waterfront Breeze
+    beta: 7.55
+    storage: 0.44
+    delta_aic: 45.5
+  notes: |
+    Feature war bereits ~95% fertig (Code/Results/CSV/Metadata existierten).
+    Dokumentation (docs/urban_heat_mechanism.md) erstellt in diesem Sprint.
+    9 Sektionen: Executive Summary, Motivation, Physical Mechanism, 5 Scenarios, Validation, Reproducibility, Implications.
+    Scientific Significance: β ist nicht nur Fit-Parameter - β hat physikalische Bedeutung!
+    Practical Significance: Urban planning insights (increase canopy, reflective materials, water features).
+  pr_ref: v2-pr-0010
 extensions:
 - id: v2-feat-ext-001
   title: Tooltip-System - Interaktive Visualisierungen

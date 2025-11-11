@@ -1,20 +1,20 @@
 # 🗺️ UTAC v2.0 Roadmap
 
-**Version:** 1.0.5
+**Version:** 1.0.9
 **Erstellt:** 2025-11-10
-**Letztes Update:** 2025-11-11 (12:00 UTC)
-**Status:** R̄=0.40, Θ=0.66, σ(β(R-Θ))≈0.177 (wachsend!)
+**Letztes Update:** 2025-11-11 (14:00 UTC)
+**Status:** R̄=0.47, Θ=0.66, σ(β(R-Θ))≈0.317 (wachsend!) 🎉
 
 ---
 
 ## 📊 Übersicht
 
-**Gesamtfortschritt:** 6 completed von 15 Features (40%)
+**Gesamtfortschritt:** 8 completed von 15 Features (53%)
 
 ```
-V2.0 Readiness: ████████░░░░░░░░░░ 40%
+V2.0 Readiness: ██████████░░░░░░░░ 53%
 
-Kern-Features:  ███░░░░░░░░░░░░░░░ 16.7% (1/6) ✅
+Kern-Features:  ████░░░░░░░░░░░░░░ 25% (2/6) ✅✅ (+1!)
 Erweiterungen:  ░░░░░░░░░░░░░░░░░░  0% (0/3)
 Automation:     ██████████████████ 100% (2/2) ✅✅
 Tests:          ██████████████████ 98.5% (396/402) ✅
@@ -330,33 +330,52 @@ AMOC↔Albedo φ-Kopplungs-Modell
 
 ---
 
-### 🔴 v2-feat-core-006: Urban Heat Mechanism
+### ✅ v2-feat-core-006: Urban Heat Mechanism
 
-**Status:** ❌ PENDING
+**Status:** ✅ COMPLETED (2025-11-11)
 **Priority:** P2
 **Scope:** `analysis/`, `docs/`
-**R=0.00, Θ=0.66, β=16.3 (!)**
+**R=1.00, Θ=0.66, β=11.6 (mean 7.5-16.3)** 🎉
 
 **Beschreibung:**
 Physikalische Erklärung für extremen β=16.3 Wert bei Urban Heat
 
-**Deliverables:**
-- `analysis/urban_heat_storage_mechanism.py`
-- `analysis/results/urban_heat_storage_mechanism.json`
-- `data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv`
-- `data/socio_ecology/urban_heat/urban_heat_storage_profiles.metadata.json`
-- `docs/urban_heat_mechanism.md`
+**Deliverables Completed:**
+- ✅ `analysis/urban_heat_storage_mechanism.py` (457 LOC, bereits vorhanden)
+- ✅ `analysis/results/urban_heat_storage_mechanism.json` (5 scenarios, bereits vorhanden)
+- ✅ `data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv` (bereits vorhanden)
+- ✅ `data/socio_ecology/urban_heat/urban_heat_storage_profiles.metadata.json` (bereits vorhanden)
+- ✅ `docs/urban_heat_mechanism.md` (**NEU ERSTELLT!** ✨)
 
-**Estimated Effort:** 1-2 Wochen
+**Gap Code:** `socio-gap-004` → **RESOLVED** ✅
 
-**Gap Code:** `socio-gap-004`
+**Key Finding:**
+> **β-Storage Correlation:** β = 14.7 · storage_coefficient + 0.79, **R²=0.963 (p<0.001)!**
 
-**Hypothese:** Material-Speicherkoeffizient moduliert β≈16→β≈7.5
+**5 Scenarios:**
+1. **Asphalt Canyon:** β=16.29, storage=1.00, ΔAIC=20.6
+2. **Dense Midrise:** β=12.36, storage=0.85, ΔAIC=23.8
+3. **Mixed Residential:** β=10.48, storage=0.68, ΔAIC=54.0
+4. **Garden Courtyard:** β=9.06, storage=0.55, ΔAIC=62.2
+5. **Waterfront Breeze:** β=7.55, storage=0.44, ΔAIC=45.5
 
-**Next Steps:**
-1. Literatur zu Urban Heat Island Storage Coefficient
-2. Mechanismus formalisieren
-3. ΔAIC>20 gegen Nullmodelle validieren
+**Validation:** All scenarios beat nulls by ΔAIC>17, all R²>0.99 ✅
+
+**Scientific Significance:**
+β ist nicht nur ein Fit-Parameter - β hat **physikalische Bedeutung!**
+β kodiert Storage-Dynamik in urbaner Energie-Balance.
+
+**Practical Significance:**
+Urban Planning Insight: Every -0.1 storage reduction → -1.47 gentler β
+→ **Increase canopy, use reflective materials, create water features!**
+
+**PR Ref:** v2-pr-0010
+
+**Notes:**
+Feature war bereits ~95% fertig (Code/Results/CSV/Metadata existierten).
+Dokumentation (docs/urban_heat_mechanism.md) erstellt in diesem Sprint (9 Sektionen).
+
+*"Die Stadt atmet – β misst die Steilheit des Ausatmens!"* 🏙️🔥→🌿💧
 
 ---
 
