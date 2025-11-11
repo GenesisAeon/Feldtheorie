@@ -1,24 +1,24 @@
 # 🗺️ UTAC v2.0 Roadmap
 
-**Version:** 1.0.11
+**Version:** 1.0.12
 **Erstellt:** 2025-11-10
-**Letztes Update:** 2025-11-11 (16:30 UTC)
-**Status:** R̄=0.55, Θ=0.66, σ(β(R-Θ))≈0.361 (wachsend!) 🎉
+**Letztes Update:** 2025-11-11 (22:00 UTC)
+**Status:** R̄=0.60, Θ=0.66, σ(β(R-Θ))≈0.40 (wachsend!) 🎉
 
 ---
 
 ## 📊 Übersicht
 
-**Gesamtfortschritt:** 7 completed + 4 in progress von 15 Features (55%)
+**Gesamtfortschritt:** 8 completed + 3 in progress von 15 Features (60%)
 
 ```
-V2.0 Readiness: ███████████░░░░░░░ 55%
+V2.0 Readiness: ████████████░░░░░░ 60%
 
-Kern-Features:  █████████░░░░░░░░░ 52% (2/6 ✅, 4/6 🟡, 0/6 ❌)
-Erweiterungen:  ░░░░░░░░░░░░░░░░░░  0% (0/3)
+Kern-Features:  █████████░░░░░░░░░ 52% (2/6 ✅, 3/6 🟡, 1/6 ❌)
+Erweiterungen:  ██████░░░░░░░░░░░░ 33% (1/3 ✅: API, 0/3 🟡, 2/3 ❌)
 Automation:     █████████░░░░░░░░░ 50% (1/2 ✅, 1/2 ❌)
-Tests:          ██████████████████ 98.5% (396/402) ✅
-Completed:      ██████████████████ 100% (7/7 ✅)
+Tests:          ██████████████████ 100% (402/402) ✅
+Completed:      ██████████████████ 100% (8/8 ✅)
 ```
 
 **Release Criteria:** R̄ ≥ 0.66 über alle Kern-Features
@@ -42,6 +42,14 @@ Completed:      ██████████████████ 100% (7/7
   - Datenstruktur (data/climate/phi_coupling/ + README)
   - TIPMIP Email-Template (EN + DE, ready to send)
   - Gap Code sys-gap-008 → PARTIAL RESOLUTION! ✅
+
+**Updates 2025-11-11 (Abend):**
+- **UTAC API FERTIG: R: 0.00 → 1.00 ✅**
+  - Alle 4 Phasen abgeschlossen (Foundation → Endpoints → Docs → Docker)
+  - 5/5 Endpoints operational (fieldtypes, sonify, analyze, system, simulate)
+  - 4,531 LOC total (Code + Docs + Infrastructure)
+  - Docker-ready (Dockerfile + compose + DEPLOYMENT.md)
+  - **Erstes Erweiterungs-Feature completed!** 🎉
 
 ---
 
@@ -446,11 +454,11 @@ VR-Kollaborationsraum für Mensch-AI mit UTAC
 
 ---
 
-### 🟡 v2-feat-ext-003: UTAC Modular API
+### ✅ v2-feat-ext-003: UTAC Modular API
 
-**Status:** 🟡 IN PROGRESS (Phase 3 Complete!)
+**Status:** ✅ COMPLETED (All Phases Complete!)
 **Priority:** P2
-**R=0.85, β=4.8** (Updated: 2025-11-11T21:30)
+**R=1.00, β=4.8** (Updated: 2025-11-11T22:00)
 
 **Beschreibung:**
 REST API für UTAC Module (OpenAPI 3.0)
@@ -482,10 +490,12 @@ REST API für UTAC Module (OpenAPI 3.0)
   - [x] `03_advanced_usage.py` (480 LOC)
 - [x] Enhanced README (inline examples added) ✅
 
-**Phase 4: Docker & Polish** (🔴 PENDING - R: 0.85 → 1.00)
-- [ ] `api/Dockerfile`
-- [ ] `api/docker-compose.yml`
-- [ ] Production deployment guide
+**Phase 4: Docker & Polish** (✅ COMPLETED - R: 0.85 → 1.00)
+- [x] `api/Dockerfile` (58 LOC, multi-stage build) ✅
+- [x] `api/docker-compose.yml` (76 LOC, production-ready) ✅
+- [x] `api/.dockerignore` (32 LOC, optimized) ✅
+- [x] `api/DEPLOYMENT.md` (380 LOC, comprehensive guide) ✅
+- [x] Enhanced `api/README.md` (Docker sections) ✅
 
 **Endpoints:**
 - ✅ `GET /api/fieldtypes` → Field Type Übersicht (IMPLEMENTED!)
@@ -496,16 +506,20 @@ REST API für UTAC Module (OpenAPI 3.0)
 
 **All 5/5 Endpoints Operational!** 🎉
 
-**Deliverables (Phases 1+2+3 ✅):**
+**Deliverables (All Phases ✅):**
 - ✅ `api/openapi.yaml` (607 LOC)
 - ✅ `api/server.py` (666 LOC, all endpoints working!)
 - ✅ `api/requirements.txt` (28 LOC)
-- ✅ `api/README.md` (enhanced, inline examples)
+- ✅ `api/README.md` (enhanced, inline examples, Docker sections)
 - ✅ `tests/test_api.py` (485 LOC)
 - ✅ `api/examples/` (3 files, 1159 LOC)
-- Total: **3,945 LOC** (Phase 1+2+3)
+- ✅ `api/Dockerfile` (58 LOC, multi-stage)
+- ✅ `api/docker-compose.yml` (76 LOC)
+- ✅ `api/.dockerignore` (32 LOC)
+- ✅ `api/DEPLOYMENT.md` (380 LOC)
+- Total: **4,531 LOC** (All 4 Phases)
 
-**Codex Ref:** v2-pr-0015 (Phase 1), v2-pr-0016 (Phase 2), v2-pr-0017 (Phase 3)
+**Codex Ref:** v2-pr-0015 (Phase 1), v2-pr-0016 (Phase 2), v2-pr-0017 (Phase 3), v2-pr-0018 (Phase 4)
 
 ---
 
@@ -634,18 +648,18 @@ CREP Parser schreibt automatisch in Codex
 |:----------|:-------|:------------|:--------|:------|:------|
 | Completed | 3      | 0           | 0       | 3     | 100%  |
 | Core      | 2      | 3           | 1       | 6     | 50%   |
-| Extensions| 0      | 0           | 3       | 3     | 0%    |
+| Extensions| 1      | 0           | 2       | 3     | 33% ✅ |
 | Automation| 1      | 0           | 1       | 2     | 50%   |
 | Tests     | 1      | 0           | 0       | 1     | 100% ✅ |
-| **TOTAL** | **7**  | **3**       | **5**   | **15**| **53%**|
+| **TOTAL** | **8**  | **3**       | **4**   | **15**| **60%**|
 
-**Overall Progress:** 53% (7/15 completed, 3/15 in progress)
+**Overall Progress:** 60% (8/15 completed, 3/15 in progress)
 **Test Status:** 402/402 passing (100%) 🎉
 
 ---
 
-**Version:** 1.0.11
-**Letztes Update:** 2025-11-11T18:30:00Z
+**Version:** 1.0.12
+**Letztes Update:** 2025-11-11T22:00:00Z
 **Maintained by:** Claude Code + Johann Römer
 
-*"402 grüne Lichter - die Schwelle pulsiert bei 100%!"* 🎉🚀
+*"API bei R=1.00 - 60% Gesamtfortschritt - die Schwellen sprechen HTTP!"* 🌐🎉🚀
