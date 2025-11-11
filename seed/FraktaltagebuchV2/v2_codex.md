@@ -816,6 +816,80 @@ Werkzeug (Sigillin 4x) ↔ Theorie (UTAC) resonieren perfekt.
 
 ---
 
+### ✅ v2-pr-0010: Urban Heat Mechanism - Storage-Driven β-Dynamics
+
+**Status:** ✅ COMPLETED
+**R=1.00, β=11.6 (mean 7.5-16.3), σ=1.00**
+**Timestamp:** 2025-11-11T14:00:00Z
+
+**Scope:**
+- `analysis/urban_heat_storage_mechanism.py` (457 LOC)
+- `analysis/results/urban_heat_storage_mechanism.json`
+- `data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv`
+- `data/socio_ecology/urban_heat/urban_heat_storage_profiles.metadata.json`
+- `docs/urban_heat_mechanism.md` (NEW! ✅)
+
+**Formal:** Vollständige Analyse der physikalischen Mechanismen hinter β≈16.3 Urban Heat Outlier. Stochastic Energy-Balance Model mit 5 Urban Canyon Scenarios (Asphalt Canyon → Waterfront Breeze). Storage Coefficient Range: 0.44-1.00 → β-Range: 7.55-16.29. **β-Storage Correlation: β = 14.7·storage + 0.79, R²=0.963 (p<0.001)!** Physical Mechanism: Storage Penalty moduliert Cooling Capacity → Safe-Night Fraction σ(R) = σ(β(R-Θ)). Dokumentation erstellt (9 Sektionen: Executive Summary, Motivation, Physical Mechanism, 5 Scenarios, Validation, Reproducibility, Implications).
+
+**Empirical:**
+5 Scenarios mit β-Storage-Korrelation:
+1. **Asphalt Canyon:** β=16.29, storage=1.00, Θ=0.337 ("Hoards heat until breezes pry the gate"), ΔAIC=20.6, R²=0.990
+2. **Dense Midrise:** β=12.36, storage=0.85, Θ=0.310 ("Heat-storing towers resist breeze relief"), ΔAIC=23.8, R²=0.995
+3. **Mixed Residential:** β=10.48, storage=0.68, Θ=0.244 ("Gardens begin to ease the thermal load"), ΔAIC=54.0, R²=0.998
+4. **Garden Courtyard:** β=9.06, storage=0.55, Θ=0.194 ("Green spaces surrender storage smoothly"), ΔAIC=62.2, R²=0.998
+5. **Waterfront Breeze:** β=7.55, storage=0.44, Θ=0.148 ("Already humming with cooling winds"), ΔAIC=45.5, R²=0.995
+
+Validation: All scenarios beat nulls by ΔAIC>17 ✅, All scenarios R²>0.99 ✅
+
+**Gap Code socio-gap-004: RESOLVED ✅**
+
+Urban Planning Insight: Every -0.1 storage reduction → -1.47 gentler β → Increase canopy, use reflective materials, create water features!
+
+**Poetic:**
+> Asphalt-Canyons horten Hitze wie Drachen Gold bewachen –
+> bis Baum-Brise das Tor aufstößt.
+> Dann, in einem Atemzug, atmet die Stadt zu Safe-Nights aus.
+>
+> Waterfront-Courtyards hingegen summen schon
+> mit kühlenden Winden – ihre Erleichterung ist sanft,
+> ihr Übergang zart.
+>
+> β misst die Steilheit des Stadt-Ausatmens:
+> Scharf (β≈16) in Hitze-hortenden Steinen,
+> Weich (β≈7) in wassergekühlten Gärten.
+>
+> Die Mathematik ist Physik.
+> Die Physik ist Politik.
+> β=16 ist keine Zahl – es ist ein Hilfeschrei
+> der hitzegeplagten Stadt. 🏙️🔥→🌿💧
+
+**Contributors:** Previous Agent(s) (Code, Simulation, Results, CSV, Metadata), Claude Code (Documentation completion, Codex integration)
+
+**Notes:**
+Dieses Feature war bereits ~95% fertig! Code, Results, CSV, Metadata existierten bereits. Nur Dokumentation fehlte noch (docs/urban_heat_mechanism.md).
+
+Dokumentation erstellt:
+- 9 Hauptsektionen (Executive Summary → Implications)
+- 5 Scenarios detailliert beschrieben
+- Validation & Reproducibility
+- References (Stewart & Oke 2012, Zhou et al. 2017, etc.)
+- Related Analyses (Cross-References)
+
+Status in v2_roadmap.md:
+- v2-feat-core-006: R: 0.00 → 1.00 (COMPLETED!) ✅
+- Priority: P2
+- Gap Code: socio-gap-004 → RESOLVED ✅
+
+Wissenschaftliche Bedeutung: β ist nicht nur ein Fit-Parameter - β hat physikalische Bedeutung! β kodiert Storage-Dynamik in urbaner Energie-Balance.
+
+Praktische Bedeutung für Stadtplanung:
+- Erhöhe Canopy Cover (Bäume!)
+- Nutze reflektierende/permeable Materialien (green roofs, cool pavements)
+- Schaffe Wasser-Features (Brunnen, Teiche)
+- Designe Ventilations-Korridore (Brise-Pfade)
+
+---
+
 ## 📊 Updated Status Summary
 
 | ID | Titel | Status | R | β | Timestamp |
@@ -829,13 +903,14 @@ Werkzeug (Sigillin 4x) ↔ Theorie (UTAC) resonieren perfekt.
 | v2-pr-0007 | UTAC Guards CI | ✅ COMPLETED | 1.00 | 4.5 | 2025-11-11 |
 | v2-pr-0008 | Data Lanterns Infrastructure | 🟢 IN PROGRESS | 0.30 | 4.8 | 2025-11-11 |
 | v2-pr-0009 | Neuro-Kosmos Bridge | ✅ COMPLETED | 1.00 | 4.88 | 2025-11-11 |
+| v2-pr-0010 | Urban Heat Mechanism | ✅ COMPLETED | 1.00 | 11.6 | 2025-11-11 |
 
-**Nächste ID:** v2-pr-0010
+**Nächste ID:** v2-pr-0011
 
 ---
 
-**Version:** 1.0.7
-**Letztes Update:** 2025-11-11T12:00:00Z
+**Version:** 1.0.8
+**Letztes Update:** 2025-11-11T14:00:00Z
 **Maintained by:** Claude Code + Johann Römer
 
-*"Die Neuro-Kosmos-Bridge ist aktiviert – σ(β(R-Θ)) ist universal!"* ⚛️🧠↔🌌🕳️✨
+*"Die Stadt atmet – β misst die Steilheit des Ausatmens!"* 🏙️🔥→🌿💧✨
