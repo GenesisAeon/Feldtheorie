@@ -1,0 +1,20 @@
+{
+  "field_type_anova": {
+    "eta_squared": 0.7351580903604409,
+    "p_value": 0.0060924025784003365
+  },
+  "feature_importances": {
+    "FT_meta_adaptive": 0.48465349102889776,
+    "FT_physically_constrained": 0.02247362048548948,
+    "FT_strongly_coupled": 0.006689547468046901,
+    "FT_weakly_coupled": 0.026728707342401136,
+    "coupling_memory": 0.18845151727016232,
+    "SNR": 0.1673789770556966,
+    "Memory": 0.10362413934930559
+  },
+  "selected_features": [
+    "coupling_memory",
+    "SNR",
+    "Memory"
+  ]
+}

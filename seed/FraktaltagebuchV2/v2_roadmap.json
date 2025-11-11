@@ -223,30 +223,37 @@
     {
       "id": "v2-feat-core-005",
       "title": "φ-Kopplung Klimasequenz - AMOC↔Albedo",
-      "status": "pending",
+      "status": "in_progress",
       "priority": "P1",
-      "scope": "models/, data/climate/",
-      "description": "φ-Kopplungs-Modul für AMOC-Albedo-Feedback",
+      "scope": "models/, data/climate/, docs/",
+      "description": "φ-Kopplungs-Modul für AMOC-Albedo-Feedback (Foundation Complete!)",
       "deliverables_required": [
-        "models/climate_utac_phi_coupling.py",
-        "data/climate/phi_coupling/ (TIPMIP/CMIP6)",
-        "analysis/results/phi_coupling_beta_gradients.json",
-        "docs/phi_coupling_theory.md"
+        "models/climate_utac_phi_coupling.py (awaiting data)",
+        "data/climate/phi_coupling/ (Structure ready ✅)",
+        "analysis/results/phi_coupling_beta_gradients.json (awaiting data)",
+        "docs/phi_coupling_theory.md (450+ LOC ✅)",
+        "docs/phi_coupling_tipmip_email_template.md (EN + DE ✅)"
       ],
       "parameters": {
-        "R": 0.0,
+        "R": 0.35,
         "Theta": 0.66,
-        "beta": 4.75
+        "beta": 4.75,
+        "sigma": 0.2
       },
-      "estimated_effort": "2-3 Wochen",
+      "estimated_effort": "2-3 Monate (abhängig von Daten-Akquisition)",
       "dependencies": [],
       "blockers": [
-        "TIPMIP Data Request (Email ausstehend)"
+        "TIPMIP Data Request (Template ready, Versand ausstehend)",
+        "RAPID Array Daten (Email ausstehend)",
+        "CERES Albedo (Registration ausstehend)"
       ],
-      "gap_code": "sys-gap-008",
+      "gap_code": "sys-gap-008 (partial resolution)",
+      "codex_ref": "v2-pr-0012",
       "next_steps": [
-        "TIPMIP Email senden (Template vorhanden)",
-        "Datenstrukturen vorbereiten",
+        "Email senden (TIPMIP, RAPID, CERES)",
+        "Daten warten (~1-2 Monate)",
+        "models/climate_utac_phi_coupling.py implementieren",
+        "φ-Berechnung + β vs φ Regression",
         "Theorie-Dokument schreiben"
       ]
     },
