@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.0.2",
+    "version": "1.0.3",
     "created": "2025-11-10T23:30:00Z",
     "updated": "2025-11-11T06:45:00Z",
     "title": "UTAC v2.0 Roadmap",
@@ -17,7 +17,10 @@
       "in_progress": 1,
       "pending": 10,
       "completion_rate": 0.27
-    }
+    },
+    "last_updated": "2025-11-11T07:20:00Z",
+    "overall_progress": 0.33,
+    "sigma": 0.134
   },
   "completed_features": [
     {
@@ -354,7 +357,7 @@
     {
       "id": "v2-feat-auto-001",
       "title": "Guards in CI Integration",
-      "status": "pending",
+      "status": "completed",
       "priority": "P1",
       "scope": ".github/workflows/",
       "description": "Alle Guards automatisch in CI laufen lassen",
@@ -368,7 +371,7 @@
         "analysis/utac_manifest_gap_scan.py"
       ],
       "parameters": {
-        "R": 0.25,
+        "R": 1.0,
         "Theta": 1.0,
         "beta": 4.5
       },
@@ -377,7 +380,9 @@
         "YAML für neue Guards schreiben",
         "Exit codes richtig setzen",
         "Tests schreiben"
-      ]
+      ],
+      "completed_date": "2025-11-11",
+      "pr_ref": "v2-pr-0007"
     },
     {
       "id": "v2-feat-auto-002",

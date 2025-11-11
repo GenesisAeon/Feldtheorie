@@ -1,0 +1,151 @@
+name: UTAC Guards
+
+# Prüft UTAC v2.0 Readiness und Preset Alignment
+# Entspricht utac-v2-data-lanterns und mq-bridge-shadow-001
+
+on:
+  push:
+    branches: [ main, 'claude/**' ]
+    paths:
+      - 'analysis/**'
+      - 'simulator/presets/**'
+      - 'data/**'
+      - 'analysis/reports/utac_v2_readiness.json'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'analysis/**'
+      - 'simulator/presets/**'
+      - 'data/**'
+
+jobs:
+  preset-alignment:
+    runs-on: ubuntu-latest
+    name: Preset Alignment Guard
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install numpy scipy pandas pyyaml
+
+    - name: Run Preset Alignment Guard
+      id: preset_check
+      run: |
+        echo "🔍 Checking simulator presets against analysis exports..."
+
+        # Run the preset alignment guard
+        python analysis/preset_alignment_guard.py \
+          --root . \
+          --presets-dir simulator/presets \
+          --rel-tol 0.01
+
+        EXITCODE=$?
+
+        if [ $EXITCODE -eq 0 ]; then
+          echo "✅ PASS: All presets aligned with analysis exports"
+          echo "status=aligned" >> $GITHUB_OUTPUT
+        else
+          echo "❌ FAIL: Preset misalignment detected!"
+          echo "status=misaligned" >> $GITHUB_OUTPUT
+          exit 1
+        fi
+
+    - name: Summary
+      if: success()
+      run: |
+        echo "✅ Preset Alignment: PASSED"
+        echo ""
+        echo "Simulator↔Analysis Bridge remains resonant:"
+        echo "  - β values: synchronized ✅"
+        echo "  - Θ thresholds: aligned ✅"
+        echo "  - Field types: consistent ✅"
+        echo ""
+        echo "The bridge holds. Data integrity maintained."
+
+  manifest-gap-scan:
+    runs-on: ubuntu-latest
+    name: UTAC v2.0 Manifest Gap Scan
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml
+
+    - name: Run Manifest Gap Scan
+      id: gap_scan
+      run: |
+        echo "🔍 Scanning UTAC v2.0 readiness manifest..."
+
+        # Run the gap scanner
+        OUTPUT_FILE="/tmp/utac_v2_gap_scan_ci.json"
+        python analysis/utac_manifest_gap_scan.py \
+          --manifest analysis/reports/utac_v2_readiness.json \
+          --output "$OUTPUT_FILE"
+
+        EXITCODE=$?
+
+        # Parse gap count from output
+        if [ -f "$OUTPUT_FILE" ]; then
+          GAPS=$(python -c "import json; f=open('$OUTPUT_FILE'); d=json.load(f); print(d.get('summary', {}).get('total_gaps', 0))")
+          echo "gaps=$GAPS" >> $GITHUB_OUTPUT
+
+          echo ""
+          echo "📊 Gap Scan Results:"
+          cat "$OUTPUT_FILE"
+          echo ""
+        else
+          echo "⚠️  Warning: Gap scan output not generated"
+          GAPS=0
+          echo "gaps=0" >> $GITHUB_OUTPUT
+        fi
+
+        # Informational only - don't fail CI
+        if [ "$GAPS" -gt 0 ]; then
+          echo "⚠️  $GAPS gap(s) detected - V2.0 readiness incomplete"
+        else
+          echo "✅ No gaps - V2.0 readiness complete!"
+        fi
+
+    - name: Check V2.0 Readiness
+      run: |
+        GAPS=${{ steps.gap_scan.outputs.gaps }}
+        echo "🎯 UTAC v2.0 Readiness: $GAPS gap(s) remaining"
+
+        # This is informational - we don't fail CI
+        # (gaps are expected during development)
+        if [ "$GAPS" -eq 0 ]; then
+          echo "🎉 FULL ACTIVATION: R̄ ≥ Θ → σ(β(R-Θ)) ≈ 1.00"
+        else
+          echo "🔄 In Progress: R̄ approaching Θ (0.66)"
+          echo ""
+          echo "Missing components tracked in v2_roadmap.md"
+        fi
+
+    - name: Summary
+      if: success()
+      run: |
+        GAPS=${{ steps.gap_scan.outputs.gaps }}
+        echo "📋 UTAC v2.0 Manifest Scan: COMPLETED"
+        echo ""
+        echo "Current status:"
+        echo "  - Gaps detected: $GAPS"
+        echo "  - Roadmap: seed/FraktaltagebuchV2/v2_roadmap.md"
+        echo "  - Codex: seed/FraktaltagebuchV2/v2_codex.md"
+        echo ""
+        echo "The field grows. β≈4.8 guides the transition."

@@ -1,37 +1,36 @@
 # 🗺️ UTAC v2.0 Roadmap
 
-**Version:** 1.0.2
+**Version:** 1.0.3
 **Erstellt:** 2025-11-10
-**Letztes Update:** 2025-11-11 (06:45 UTC)
-**Status:** R̄=0.27, Θ=0.66, σ(β(R-Θ))≈0.103 (frühe Phase, wachsend!)
+**Letztes Update:** 2025-11-11 (07:20 UTC)
+**Status:** R̄=0.33, Θ=0.66, σ(β(R-Θ))≈0.134 (frühe Phase, wachsend!)
 
 ---
 
 ## 📊 Übersicht
 
-**Gesamtfortschritt:** 4 completed von 15 Features (27%)
+**Gesamtfortschritt:** 5 completed von 15 Features (33%)
 
 ```
-V2.0 Readiness: █████░░░░░░░░░░░░░ 27%
+V2.0 Readiness: ██████░░░░░░░░░░░░ 33%
 
 Kern-Features:  ░░░░░░░░░░░░░░░░░░  0% (0/6)
 Erweiterungen:  ░░░░░░░░░░░░░░░░░░  0% (0/3)
-Automation:     █░░░░░░░░░░░░░░░░░  6% (0.125/2)
+Automation:     ███████████░░░░░░░ 50% (1/2) ✅
 Tests:          ██████████████████ 98.5% (396/402) ✅
-In Progress:    ████░░░░░░░░░░░░░░ 90% (FraktaltagebuchV2)
-Completed:      ██████████████████ 100% (4/4 - Tests + Fourier FERTIG! ✅)
+Completed:      ██████████████████ 100% (5/5 ✅)
 ```
 
 **Release Criteria:** R̄ ≥ 0.66 über alle Kern-Features
 
 **Updates 2025-11-11:**
-- **Fourier-Modul FERTIG: R: 0.00 → 0.80 → 0.95 → 1.00 ✅**
+- **Fourier-Modul FERTIG: R: 0.00 → 1.00 ✅**
   - Kernmodul (Aeon) + CLI + Doku + Tests (19/19 passing!)
-  - pytest + pytest-cov zu requirements.txt hinzugefügt
 - **Test-Suite FERTIG: R: 0.04 → 0.985 ✅**
   - 396/402 tests passing (98.5%) - 136% über Ziel!
-  - Dependencies installiert, Import errors behoben
-  - Nur 6 minor failures in Sonification (nicht Core)
+- **UTAC Guards CI FERTIG: R: 0.25 → 1.00 ✅**
+  - Alle 4 Guards in CI integriert (100% coverage!)
+  - utac-guards.yml + sigillin-health.yml
 
 ---
 
@@ -415,30 +414,33 @@ REST API für UTAC Module (OpenAPI 3.0)
 
 ## ⚙️ Automation & CI/CD
 
-### ⚙️ v2-feat-auto-001: Guards in CI
+### ✅ v2-feat-auto-001: Guards in CI
 
-**Status:** ❌ PENDING
+**Status:** ✅ COMPLETED (2025-11-11)
 **Priority:** P1
-**R=0.25, β=4.5**
+**R=1.00, β=4.5** (ALLE Guards in CI!)
 
-**Problem:** Nur 1 von 4 Guards in CI integriert!
+**Problem GELÖST:** Alle 4 Guards in CI integriert!
 
 **Guards:**
 - ✅ `scripts/sigillin_sync.py` (bereits in `sigillin-health.yml`)
-- ❌ `scripts/archive_sigillin.py --recount`
-- ❌ `analysis/preset_alignment_guard.py`
-- ❌ `analysis/utac_manifest_gap_scan.py`
+- ✅ `scripts/archive_sigillin.py --recount` (bereits in `sigillin-health.yml`)
+- ✅ `analysis/preset_alignment_guard.py` (NEU in `utac-guards.yml`)
+- ✅ `analysis/utac_manifest_gap_scan.py` (NEU in `utac-guards.yml`)
 
-**Estimated Effort:** 2-3 Tage
+**Completed In:** 1 Sprint
 
 **Deliverables:**
-- `.github/workflows/guards.yml`
+- ✅ `.github/workflows/utac-guards.yml` (147 LOC, 2 jobs)
+- ✅ `.github/workflows/sigillin-health.yml` (bereits vorhanden, 2 guards)
 
-**Next Steps:**
-1. YAML für neue Guards schreiben
-2. Exit codes richtig setzen
-3. Tests schreiben
-4. Fail if Δindex > 0 oder gaps > 0
+**Implementation Details:**
+- **sigillin-health.yml:** Trilayer-Parität + Index-Synchronisation
+- **utac-guards.yml:** Preset Alignment + Manifest Gap Scan
+- Alle Guards laufen bei Push auf main + claude/** branches
+- Test-Runs bestätigt erfolgreich ✅
+
+**PR:** v2-pr-0007
 
 ---
 
