@@ -250,8 +250,199 @@ def create_argument_parser() -> argparse.ArgumentParser:
     )
     return parser
 
+# ============================================================================
+# Codex Integration (v2-pr-0019)
+# ============================================================================
 
-def main(argv: List[str] | None = None) -> int:
+def sigil_to_codex_entry(sigil, timestamp):
+    """Convert a ParsedSigil to a codexfeedback entry format."""
+    core = sigil.core
+    logistic_frame = sigil.logistic_frame
+    tri_layer = sigil.data["sigil"]["tri_layer"]
+    
+    # Generate codex ID from sigil ID (maintain traceability)
+    codex_id = f"sigil-{core['id']}"
+    
+    return {
+        "id": codex_id,
+        "title": core["title"],
+        "scope": [str(sigil.path.relative_to(Path.cwd()))],
+        "parameters": {
+            "R": logistic_frame.get("R", "Sigillin activation level"),
+            "Theta": logistic_frame.get("Theta", 0.66),
+            "beta": logistic_frame["beta"],
+        },
+        "resonance": f"Sigillin {core['type']} artifact with CREP: {sigil.crep}",
+        "status": core["status"],
+        "notes": {
+            "formal": tri_layer.get("formal", ""),
+            "empirical": tri_layer.get("empirical", ""),
+            "poetic": tri_layer.get("poetic", ""),
+        },
+        "timestamp": timestamp,
+        "source": "crep_parser --write-codex",
+    }
+
+
+def load_codex_trilayer(codex_dir):
+    """Load existing codexfeedback YAML and JSON."""
+    yaml_path = codex_dir / "codexfeedback.yaml"
+    json_path = codex_dir / "codexfeedback.json"
+    
+    if not yaml_path.exists():
+        raise SigilValidationError(f"Codex YAML not found: {yaml_path}")
+    if not json_path.exists():
+        raise SigilValidationError(f"Codex JSON not found: {json_path}")
+    
+    with yaml_path.open("r", encoding="utf-8") as f:
+        codex_yaml = yaml.safe_load(f)
+    
+    with json_path.open("r", encoding="utf-8") as f:
+        codex_json = json.load(f)
+    
+    return codex_yaml, codex_json
+
+
+def write_codex_trilayer(codex_dir, codex_yaml, codex_json):
+    """Write updated codexfeedback to YAML, JSON, and MD (Trilayer!)."""
+    import sys
+    yaml_path = codex_dir / "codexfeedback.yaml"
+    json_path = codex_dir / "codexfeedback.json"
+    md_path = codex_dir / "codexfeedback.md"
+    
+    # Write YAML
+    with yaml_path.open("w", encoding="utf-8") as f:
+        yaml.dump(codex_yaml, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+    
+    # Write JSON
+    with json_path.open("w", encoding="utf-8") as f:
+        json.dump(codex_json, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    
+    # Generate MD from entries
+    md_content = generate_codex_markdown(codex_yaml)
+    with md_path.open("w", encoding="utf-8") as f:
+        f.write(md_content)
+
+
+def generate_codex_markdown(codex_yaml):
+    """Generate Markdown representation of codexfeedback."""
+    lines = ["# Codex Feedback Matrix\n\n"]
+    lines.append(f"**Project:** {codex_yaml['meta']['project']}\n\n")
+    lines.append(f"**Version:** {codex_yaml['meta']['current_release']['version']}\n\n")
+    lines.append(f"**Status:** {codex_yaml['meta']['current_release']['status']}\n\n")
+    lines.append(f"**Updated:** {codex_yaml['meta']['updated']}\n\n")
+    lines.append("---\n\n")
+    lines.append("## Entries\n\n")
+    
+    for entry in codex_yaml["entries"]:
+        lines.append(f"### {entry['id']}: {entry['title']}\n\n")
+        lines.append(f"**Status:** {entry.get('status', 'active')}\n\n")
+        lines.append(f"**Scope:** {', '.join(entry.get('scope', []))}\n\n")
+        
+        params = entry.get("parameters", {})
+        lines.append(f"**Parameters:** β={params.get('beta', 'N/A')}, Θ={params.get('Theta', 'N/A')}\n\n")
+        lines.append(f"**Resonance:** {entry.get('resonance', '')}\n\n")
+        
+        if "notes" in entry:
+            notes = entry["notes"]
+            lines.append("**Formal Thread:**\n\n")
+            lines.append(f"{notes.get('formal', '')}\n\n")
+            lines.append("**Empirical Thread:**\n\n")
+            lines.append(f"{notes.get('empirical', '')}\n\n")
+            lines.append("**Poetic Thread:**\n\n")
+            lines.append(f"{notes.get('poetic', '')}\n\n")
+        
+        lines.append("---\n\n")
+    
+    return "".join(lines)
+
+
+def append_to_codex(sigils, codex_dir, timestamp):
+    """Append parsed sigils to codexfeedback.* (Trilayer!)"""
+    import sys
+    try:
+        codex_yaml, codex_json = load_codex_trilayer(codex_dir)
+    except SigilValidationError as exc:
+        print(f"Error loading codex: {exc}", file=sys.stderr)
+        return 1
+    
+    # Convert sigils to codex entries
+    new_entries = [sigil_to_codex_entry(sigil, timestamp) for sigil in sigils]
+    
+    # Check for ID collisions
+    existing_ids = {entry["id"] for entry in codex_yaml["entries"]}
+    collisions = [entry["id"] for entry in new_entries if entry["id"] in existing_ids]
+    if collisions:
+        print(f"Warning: Skipping {len(collisions)} entries with existing IDs: {collisions}", file=sys.stderr)
+        new_entries = [e for e in new_entries if e["id"] not in existing_ids]
+    
+    if not new_entries:
+        print("No new entries to add to codex.", file=sys.stderr)
+        return 0
+    
+    # Append to YAML and JSON
+    codex_yaml["entries"].extend(new_entries)
+    codex_json["entries"].extend(new_entries)
+    
+    # Update metadata
+    codex_yaml["meta"]["updated"] = timestamp
+    codex_json["meta"]["updated"] = timestamp
+    
+    # Write Trilayer
+    try:
+        write_codex_trilayer(codex_dir, codex_yaml, codex_json)
+        print(f"✅ Added {len(new_entries)} entries to codex (Trilayer: YAML, JSON, MD)")
+        for entry in new_entries:
+            print(f"   - {entry['id']}: {entry['title']}")
+        return 0
+    except Exception as exc:
+        print(f"Error writing codex: {exc}", file=sys.stderr)
+        return 1
+
+
+
+def create_argument_parser():
+    parser = argparse.ArgumentParser(
+        description="Parse Sigillin YAML files and emit CREP/logistic summaries.",
+    )
+    parser.add_argument(
+        "files", nargs="*", help="Explicit Sigillin files to parse."
+    )
+    parser.add_argument(
+        "-d",
+        "--directory",
+        help="Directory containing Sigillin YAML files (non-recursive).",
+    )
+    parser.add_argument(
+        "--examples",
+        action="store_true",
+        help="Parse the canonical examples in seed/sigillin/examples.",
+    )
+    parser.add_argument(
+        "--validate",
+        action="store_true",
+        help="Enforce schema constraints and numeric bounds while parsing.",
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        help="Optional path to write the JSON summary. Defaults to stdout.",
+    )
+    parser.add_argument(
+        "--write-codex",
+        action="store_true",
+        help="Automatically write parsed Sigillins as entries to seed/codexfeedback.*",
+    )
+    parser.add_argument(
+        "--codex-dir",
+        default="seed",
+        help="Directory containing codexfeedback.* files (default: seed/)",
+    )
+    return parser
+
+
+def main(argv=None):
     parser = create_argument_parser()
     args = parser.parse_args(argv)
 
@@ -263,8 +454,17 @@ def main(argv: List[str] | None = None) -> int:
             summary["root"] = str(root)
     except SigilValidationError as exc:
         parser.error(str(exc))
-        return 2  # pragma: no cover - parser.error exits, but keep explicit return
+        return 2
 
+    # Write to codex if requested
+    if args.write_codex:
+        codex_dir = Path(args.codex_dir).resolve()
+        timestamp = args_timestamp()
+        return_code = append_to_codex(sigils, codex_dir, timestamp)
+        if return_code != 0:
+            return return_code
+
+    # Standard output
     output = json.dumps(summary, indent=2, ensure_ascii=False)
     if args.output:
         Path(args.output).write_text(output + "\n", encoding="utf-8")
