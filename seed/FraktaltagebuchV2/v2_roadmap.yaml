@@ -1,403 +1,373 @@
 meta:
-  version: "1.0.2"
-  created: "2025-11-10T23:30:00Z"
-  updated: "2025-11-11T06:45:00Z"
-  title: "UTAC v2.0 Roadmap"
-  purpose: "Vollständige Übersicht aller V2.0 Features und ihres Status"
+  version: 1.0.3
+  created: '2025-11-10T23:30:00Z'
+  updated: '2025-11-11T06:45:00Z'
+  title: UTAC v2.0 Roadmap
+  purpose: Vollständige Übersicht aller V2.0 Features und ihres Status
   parameters:
-    R_mean: 0.27  # Durchschnittlicher Fortschritt (4/15 completed)
-    Theta: 0.66  # V2.0 Readiness Gate
+    R_mean: 0.27
+    Theta: 0.66
     beta: 4.8
-    sigma: 0.103  # σ(β(R-Θ)) ≈ 0.103 (frühe Phase, aber wachsend!)
+    sigma: 0.103
   status_summary:
     total_features: 15
-    completed: 4  # Sonification, Essays, Fourier, Tests! ✅
-    in_progress: 1  # FraktaltagebuchV2
+    completed: 4
+    in_progress: 1
     pending: 10
     completion_rate: 0.27
-
-# =============================================================================
-# KATEGORIE 1: FERTIG / IN PROGRESS (aus seed/NextVersionPlan/)
-# =============================================================================
+  last_updated: '2025-11-11T07:20:00Z'
+  overall_progress: 0.33
+  sigma: 0.134
 completed_features:
-  - id: v2-feat-done-001
-    title: "UTAC Sonifikation - The Sound of Criticality"
-    status: completed
-    completed_date: "2025-11-09T20:00:00Z"
-    scope: sonification/
-    description: "Audio-Tool das β-Spektren in Klang verwandelt"
-    deliverables:
-      - sonification/utac_sonification.py
-      - sonification/output/demo/*.wav
-      - sonification/README.md
-      - 16 Tests passing
-    parameters:
-      R: 1.00
-      Theta: 1.00
-      beta: 4.8
-    pr_ref: "PR #172 (bereits gemerged)"
-    notes: "5 Field Type Profiles, CLI + API ready, ready für Museen/Planetarien"
-
-  - id: v2-feat-done-002
-    title: "Outreach Essays DE/EN - AI Semantic Maps"
-    status: completed
-    completed_date: "2025-11-10T10:00:00Z"
-    scope: docs/outreach/
-    description: "Essays über epistemischen Kontrollverlust in KI"
-    deliverables:
-      - docs/outreach/ai_semantic_maps_de.md
-      - docs/outreach/ai_semantic_maps_en.md
-    parameters:
-      R: 1.00
-      Theta: 1.00
-      beta: 4.2
-    pr_ref: "seed/NextVersionPlan/bitte_integrieren_ARCHIVED_20251110.txt"
-    notes: "Ready für Medium, t3n, Towards Data Science"
-
-  - id: v2-feat-done-003
-    title: "Fourier-Analyse Modul - Spectral Criticality"
-    status: completed
-    started_date: "2025-11-11T00:00:00Z"
-    completed_date: "2025-11-11T06:30:00Z"
-    scope: sonification/, analysis/, docs/, tests/
-    description: "Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)"
-    deliverables:
-      - sonification/utac_fourier.py (✅ 242 LOC - Kernmodul)
-      - analysis/fourier_analysis.py (✅ 180 LOC - CLI mit argparse)
-      - analysis/results/frequency_profiles/ (✅ directory + README)
-      - docs/utac_fourier_guide.md (✅ 450 LOC - comprehensive guide)
-      - tests/test_utac_fourier.py (✅ 19 tests, 100% passing)
-      - requirements.txt (✅ pytest + pytest-cov hinzugefügt)
-    parameters:
-      R: 1.00
-      Theta: 1.00
-      beta: 4.5
-    pr_ref: "v2-pr-0005 in FraktaltagebuchV2/v2_codex.md"
-    notes: "FERTIG! ✅ Kernmodul (Aeon), CLI (Johann+Claude), Doku (12 Sektionen), Tests (19/19 passing). Integration mit utac_sonification.py optional für späteren PR."
-
-# =============================================================================
-# KATEGORIE 2: KERN-FEATURES (Critical Path für V2.0)
-# =============================================================================
+- id: v2-feat-done-001
+  title: UTAC Sonifikation - The Sound of Criticality
+  status: completed
+  completed_date: '2025-11-09T20:00:00Z'
+  scope: sonification/
+  description: Audio-Tool das β-Spektren in Klang verwandelt
+  deliverables:
+  - sonification/utac_sonification.py
+  - sonification/output/demo/*.wav
+  - sonification/README.md
+  - 16 Tests passing
+  parameters:
+    R: 1.0
+    Theta: 1.0
+    beta: 4.8
+  pr_ref: 'PR #172 (bereits gemerged)'
+  notes: 5 Field Type Profiles, CLI + API ready, ready für Museen/Planetarien
+- id: v2-feat-done-002
+  title: Outreach Essays DE/EN - AI Semantic Maps
+  status: completed
+  completed_date: '2025-11-10T10:00:00Z'
+  scope: docs/outreach/
+  description: Essays über epistemischen Kontrollverlust in KI
+  deliverables:
+  - docs/outreach/ai_semantic_maps_de.md
+  - docs/outreach/ai_semantic_maps_en.md
+  parameters:
+    R: 1.0
+    Theta: 1.0
+    beta: 4.2
+  pr_ref: seed/NextVersionPlan/bitte_integrieren_ARCHIVED_20251110.txt
+  notes: Ready für Medium, t3n, Towards Data Science
+- id: v2-feat-done-003
+  title: Fourier-Analyse Modul - Spectral Criticality
+  status: completed
+  started_date: '2025-11-11T00:00:00Z'
+  completed_date: '2025-11-11T06:30:00Z'
+  scope: sonification/, analysis/, docs/, tests/
+  description: Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)
+  deliverables:
+  - sonification/utac_fourier.py (✅ 242 LOC - Kernmodul)
+  - analysis/fourier_analysis.py (✅ 180 LOC - CLI mit argparse)
+  - analysis/results/frequency_profiles/ (✅ directory + README)
+  - docs/utac_fourier_guide.md (✅ 450 LOC - comprehensive guide)
+  - tests/test_utac_fourier.py (✅ 19 tests, 100% passing)
+  - requirements.txt (✅ pytest + pytest-cov hinzugefügt)
+  parameters:
+    R: 1.0
+    Theta: 1.0
+    beta: 4.5
+  pr_ref: v2-pr-0005 in FraktaltagebuchV2/v2_codex.md
+  notes: FERTIG! ✅ Kernmodul (Aeon), CLI (Johann+Claude), Doku (12 Sektionen), Tests
+    (19/19 passing). Integration mit utac_sonification.py optional für späteren PR.
 core_features:
-  - id: v2-feat-core-001
-    title: "UTAC v2 Data Lanterns - 4 fehlende Datasets"
-    status: pending
-    priority: P0
-    scope: data/
-    description: "Rohdaten + Metadaten für Amazon Hydro, AMOC, Neuro-AI, Energy/Finance"
-    deliverables_required:
-      - data/climate/amazon_precip_evapo.nc
-      - data/climate/amazon_precip_evapo.metadata.json
-      - data/ocean/amoc_transport.csv
-      - data/ocean/amoc_transport.metadata.json
-      - data/neuro_ai/hybrid_activation.csv
-      - data/neuro_ai/hybrid_activation.metadata.json
-      - data/economy/systemic_thresholds.csv
-      - data/economy/systemic_thresholds.metadata.json
-    parameters:
-      R: 0.20  # Nur Urban Heat fertig (1/5)
-      Theta: 0.66
-      beta: 4.8
-    estimated_effort: "2-4 Wochen"
-    dependencies: []
-    blockers:
-      - "Daten-Akquisition (TIPMIP, RAPID, Paper-Extraktion)"
-    gap_code: "utac-v2-data-lanterns"
-    current_status: "4 datasets pending, 1 completed (Urban Heat)"
-    next_steps:
-      - "AMOC: RAPID Array Data anfragen"
-      - "Amazon: TIPMIP/CMIP6 Request"
-      - "Neuro-AI: Wei et al. Daten + eigene EEG"
-      - "Economy: Systemic Risk Centre"
-
-  - id: v2-feat-core-002
-    title: "UTAC v2 Analysis Exports - 6 fehlende JSONs"
-    status: pending
-    priority: P0
-    scope: analysis/results/
-    description: "β-Fits und ΔAIC für die 4 neuen Datasets + Meta-Regression"
-    deliverables_required:
-      - analysis/results/amazon_hydro_fit.json
-      - analysis/results/amoc_transport_fit.json
-      - analysis/results/neuro_ai_beta.json
-      - analysis/results/neuro_ai_bootstrap.json
-      - analysis/results/economy_threshold_fit.json
-      - analysis/results/beta_meta_regression_v2_latest.json
-    parameters:
-      R: 0.17  # 1/6 fertig (urban_heat_global_fit.json)
-      Theta: 0.66
-      beta: 4.8
-    estimated_effort: "1-2 Wochen (nach Daten)"
-    dependencies:
-      - v2-feat-core-001  # Braucht Rohdaten zuerst
-    blockers: []
-    next_steps:
-      - "Sobald Datasets da sind: analysis/*_extractor.py runs"
-      - "Bootstrap CIs berechnen"
-      - "ΔAIC ≥ 10 validieren"
-
-  - id: v2-feat-core-003
-    title: "Meta-Regression v2 - R² ≥ 0.7"
-    status: pending
-    priority: P0
-    scope: analysis/
-    description: "Field Types + kontinuierliche Kovariaten kombinieren"
-    current_status: "WLS R² ≈ 0.43, Bootstrap Median R² ≈ 0.99"
-    target: "R² ≥ 0.7 (adjusted)"
-    deliverables_required:
-      - analysis/beta_meta_regression_v2.py (enhanced)
-      - analysis/results/beta_meta_regression_v2_latest.json
-      - docs/meta_regression_v2_report.md
-    parameters:
-      R: 0.50  # Partial implementation
-      Theta: 0.70
-      beta: 4.2
-    estimated_effort: "1 Woche"
-    dependencies:
-      - v2-feat-core-002  # Braucht alle β-estimates
-    approach:
-      - "Field Types als Dummies in Regression"
-      - "Hierarchical Model (mixed effects)"
-      - "Random Forest feature importance"
-    next_steps:
-      - "One-hot encode field types"
-      - "Rerun mit erweiterten Features"
-      - "Bootstrap validation"
-
-  - id: v2-feat-core-004
-    title: "Neuro-Kosmos Sigillin Bridge - EEG↔QPO"
-    status: pending
-    priority: P1
-    scope: seed/sigillin/
-    description: "Trilayer für EEG-QPO β-coupling + Simulator-Preset"
-    deliverables_required:
-      - seed/sigillin/neuro_kosmos_bridge.yaml
-      - seed/sigillin/neuro_kosmos_bridge.json
-      - seed/sigillin/neuro_kosmos_bridge.md
-      - simulator/presets/neuro_kosmos_bridge.json
-      - models/neuro_kosmos_coupling.py (optional)
-    parameters:
-      R: 0.00
-      Theta: 0.66
-      beta: 4.88
-    estimated_effort: "3-5 Tage"
-    dependencies: []
-    gap_code: "mq-sci-gap-008"
-    notes: "Konzeptuell skizziert in seed/Sigillin_Neuro_Membran_Modell_Plan.txt"
-
-  - id: v2-feat-core-005
-    title: "φ-Kopplung Klimasequenz - AMOC↔Albedo"
-    status: pending
-    priority: P1
-    scope: models/, data/climate/
-    description: "φ-Kopplungs-Modul für AMOC-Albedo-Feedback"
-    deliverables_required:
-      - models/climate_utac_phi_coupling.py
-      - data/climate/phi_coupling/ (TIPMIP/CMIP6)
-      - analysis/results/phi_coupling_beta_gradients.json
-      - docs/phi_coupling_theory.md
-    parameters:
-      R: 0.00
-      Theta: 0.66
-      beta: 4.75
-    estimated_effort: "2-3 Wochen"
-    dependencies: []
-    blockers:
-      - "TIPMIP Data Request (Email ausstehend)"
-    gap_code: "sys-gap-008"
-    next_steps:
-      - "TIPMIP Email senden (Template vorhanden)"
-      - "Datenstrukturen vorbereiten"
-      - "Theorie-Dokument schreiben"
-
-  - id: v2-feat-core-006
-    title: "Urban Heat Outlier Mechanism - β=16.3"
-    status: pending
-    priority: P2
-    scope: analysis/, docs/
-    description: "Physikalische Erklärung für extremen β-Wert"
-    deliverables_required:
-      - analysis/urban_heat_storage_mechanism.py
-      - analysis/results/urban_heat_storage_mechanism.json
-      - data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv
-      - data/socio_ecology/urban_heat/urban_heat_storage_profiles.metadata.json
-      - docs/urban_heat_mechanism.md
-    parameters:
-      R: 0.00
-      Theta: 0.66
-      beta: 16.3  # Der Wert selbst!
-    estimated_effort: "1-2 Wochen"
-    dependencies: []
-    gap_code: "socio-gap-004"
-    notes: "Material-Speicherkoeffizient moduliert β≈16→β≈7.5"
-
-# =============================================================================
-# KATEGORIE 3: ERWEITERUNGEN (Nice-to-have, nicht Critical Path)
-# =============================================================================
+- id: v2-feat-core-001
+  title: UTAC v2 Data Lanterns - 4 fehlende Datasets
+  status: pending
+  priority: P0
+  scope: data/
+  description: Rohdaten + Metadaten für Amazon Hydro, AMOC, Neuro-AI, Energy/Finance
+  deliverables_required:
+  - data/climate/amazon_precip_evapo.nc
+  - data/climate/amazon_precip_evapo.metadata.json
+  - data/ocean/amoc_transport.csv
+  - data/ocean/amoc_transport.metadata.json
+  - data/neuro_ai/hybrid_activation.csv
+  - data/neuro_ai/hybrid_activation.metadata.json
+  - data/economy/systemic_thresholds.csv
+  - data/economy/systemic_thresholds.metadata.json
+  parameters:
+    R: 0.2
+    Theta: 0.66
+    beta: 4.8
+  estimated_effort: 2-4 Wochen
+  dependencies: []
+  blockers:
+  - Daten-Akquisition (TIPMIP, RAPID, Paper-Extraktion)
+  gap_code: utac-v2-data-lanterns
+  current_status: 4 datasets pending, 1 completed (Urban Heat)
+  next_steps:
+  - 'AMOC: RAPID Array Data anfragen'
+  - 'Amazon: TIPMIP/CMIP6 Request'
+  - 'Neuro-AI: Wei et al. Daten + eigene EEG'
+  - 'Economy: Systemic Risk Centre'
+- id: v2-feat-core-002
+  title: UTAC v2 Analysis Exports - 6 fehlende JSONs
+  status: pending
+  priority: P0
+  scope: analysis/results/
+  description: β-Fits und ΔAIC für die 4 neuen Datasets + Meta-Regression
+  deliverables_required:
+  - analysis/results/amazon_hydro_fit.json
+  - analysis/results/amoc_transport_fit.json
+  - analysis/results/neuro_ai_beta.json
+  - analysis/results/neuro_ai_bootstrap.json
+  - analysis/results/economy_threshold_fit.json
+  - analysis/results/beta_meta_regression_v2_latest.json
+  parameters:
+    R: 0.17
+    Theta: 0.66
+    beta: 4.8
+  estimated_effort: 1-2 Wochen (nach Daten)
+  dependencies:
+  - v2-feat-core-001
+  blockers: []
+  next_steps:
+  - 'Sobald Datasets da sind: analysis/*_extractor.py runs'
+  - Bootstrap CIs berechnen
+  - ΔAIC ≥ 10 validieren
+- id: v2-feat-core-003
+  title: Meta-Regression v2 - R² ≥ 0.7
+  status: pending
+  priority: P0
+  scope: analysis/
+  description: Field Types + kontinuierliche Kovariaten kombinieren
+  current_status: WLS R² ≈ 0.43, Bootstrap Median R² ≈ 0.99
+  target: R² ≥ 0.7 (adjusted)
+  deliverables_required:
+  - analysis/beta_meta_regression_v2.py (enhanced)
+  - analysis/results/beta_meta_regression_v2_latest.json
+  - docs/meta_regression_v2_report.md
+  parameters:
+    R: 0.5
+    Theta: 0.7
+    beta: 4.2
+  estimated_effort: 1 Woche
+  dependencies:
+  - v2-feat-core-002
+  approach:
+  - Field Types als Dummies in Regression
+  - Hierarchical Model (mixed effects)
+  - Random Forest feature importance
+  next_steps:
+  - One-hot encode field types
+  - Rerun mit erweiterten Features
+  - Bootstrap validation
+- id: v2-feat-core-004
+  title: Neuro-Kosmos Sigillin Bridge - EEG↔QPO
+  status: pending
+  priority: P1
+  scope: seed/sigillin/
+  description: Trilayer für EEG-QPO β-coupling + Simulator-Preset
+  deliverables_required:
+  - seed/sigillin/neuro_kosmos_bridge.yaml
+  - seed/sigillin/neuro_kosmos_bridge.json
+  - seed/sigillin/neuro_kosmos_bridge.md
+  - simulator/presets/neuro_kosmos_bridge.json
+  - models/neuro_kosmos_coupling.py (optional)
+  parameters:
+    R: 0.0
+    Theta: 0.66
+    beta: 4.88
+  estimated_effort: 3-5 Tage
+  dependencies: []
+  gap_code: mq-sci-gap-008
+  notes: Konzeptuell skizziert in seed/Sigillin_Neuro_Membran_Modell_Plan.txt
+- id: v2-feat-core-005
+  title: φ-Kopplung Klimasequenz - AMOC↔Albedo
+  status: pending
+  priority: P1
+  scope: models/, data/climate/
+  description: φ-Kopplungs-Modul für AMOC-Albedo-Feedback
+  deliverables_required:
+  - models/climate_utac_phi_coupling.py
+  - data/climate/phi_coupling/ (TIPMIP/CMIP6)
+  - analysis/results/phi_coupling_beta_gradients.json
+  - docs/phi_coupling_theory.md
+  parameters:
+    R: 0.0
+    Theta: 0.66
+    beta: 4.75
+  estimated_effort: 2-3 Wochen
+  dependencies: []
+  blockers:
+  - TIPMIP Data Request (Email ausstehend)
+  gap_code: sys-gap-008
+  next_steps:
+  - TIPMIP Email senden (Template vorhanden)
+  - Datenstrukturen vorbereiten
+  - Theorie-Dokument schreiben
+- id: v2-feat-core-006
+  title: Urban Heat Outlier Mechanism - β=16.3
+  status: pending
+  priority: P2
+  scope: analysis/, docs/
+  description: Physikalische Erklärung für extremen β-Wert
+  deliverables_required:
+  - analysis/urban_heat_storage_mechanism.py
+  - analysis/results/urban_heat_storage_mechanism.json
+  - data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv
+  - data/socio_ecology/urban_heat/urban_heat_storage_profiles.metadata.json
+  - docs/urban_heat_mechanism.md
+  parameters:
+    R: 0.0
+    Theta: 0.66
+    beta: 16.3
+  estimated_effort: 1-2 Wochen
+  dependencies: []
+  gap_code: socio-gap-004
+  notes: Material-Speicherkoeffizient moduliert β≈16→β≈7.5
 extensions:
-  - id: v2-feat-ext-001
-    title: "Tooltip-System - Interaktive Visualisierungen"
-    status: pending
-    priority: P2
-    scope: docs/, simulator/
-    description: "Hover-Tooltipps über Plots mit β, Θ, R, CREP, etc."
-    deliverables_required:
-      - simulator/src/components/TooltipOverlay.tsx
-      - docs/tooltip_api.md
-      - examples/tooltip_demo.html
-    parameters:
-      R: 0.00
-      Theta: 1.00
-      beta: 3.8
-    estimated_effort: "1 Woche"
-    tech_stack:
-      - "D3.js / Plotly"
-      - "Flask/Node Backend"
-      - "JSON API endpoint"
-    notes: "Aus seed/NextVersionPlan/Letzte_Zusätze_bis_V2.txt"
-
-  - id: v2-feat-ext-002
-    title: "VR Emergenz Hub - Kollaborationsraum"
-    status: pending
-    priority: P3
-    scope: vr/ (neuer Ordner)
-    description: "VR-Raum für Mensch-AI-Kollaboration mit UTAC"
-    deliverables_required:
-      - vr/unity_project/
-      - vr/websocket_bridge.py
-      - vr/README.md
-    parameters:
-      R: 0.00
-      Theta: 1.00
-      beta: 3.2
-    estimated_effort: "4-6 Wochen"
-    tech_stack:
-      - "Unity / Unreal Engine"
-      - "OpenXR / WebXR"
-      - "Python WebSocket Bridge"
-    notes: "Große Erweiterung, optional für V2.0"
-
-  - id: v2-feat-ext-003
-    title: "UTAC Modular API - OpenAPI Spec"
-    status: pending
-    priority: P2
-    scope: api/ (neuer Ordner)
-    description: "REST API für UTAC Module"
-    deliverables_required:
-      - api/openapi.yaml
-      - api/server.py
-      - api/README.md
-    endpoints_planned:
-      - POST /api/sonify
-      - POST /api/analyze
-      - GET /api/system/:id
-      - GET /api/fieldtypes
-      - POST /api/simulate
-    parameters:
-      R: 0.00
-      Theta: 1.00
-      beta: 4.0
-    estimated_effort: "2-3 Wochen"
-    tech_stack:
-      - "FastAPI / Flask"
-      - "OpenAPI 3.0"
-      - "Docker-ized"
-    notes: "Ermöglicht externe Integrationen (Jupyter, Museums-Exhibits, etc.)"
-
-# =============================================================================
-# KATEGORIE 4: CI/CD & AUTOMATION
-# =============================================================================
+- id: v2-feat-ext-001
+  title: Tooltip-System - Interaktive Visualisierungen
+  status: pending
+  priority: P2
+  scope: docs/, simulator/
+  description: Hover-Tooltipps über Plots mit β, Θ, R, CREP, etc.
+  deliverables_required:
+  - simulator/src/components/TooltipOverlay.tsx
+  - docs/tooltip_api.md
+  - examples/tooltip_demo.html
+  parameters:
+    R: 0.0
+    Theta: 1.0
+    beta: 3.8
+  estimated_effort: 1 Woche
+  tech_stack:
+  - D3.js / Plotly
+  - Flask/Node Backend
+  - JSON API endpoint
+  notes: Aus seed/NextVersionPlan/Letzte_Zusätze_bis_V2.txt
+- id: v2-feat-ext-002
+  title: VR Emergenz Hub - Kollaborationsraum
+  status: pending
+  priority: P3
+  scope: vr/ (neuer Ordner)
+  description: VR-Raum für Mensch-AI-Kollaboration mit UTAC
+  deliverables_required:
+  - vr/unity_project/
+  - vr/websocket_bridge.py
+  - vr/README.md
+  parameters:
+    R: 0.0
+    Theta: 1.0
+    beta: 3.2
+  estimated_effort: 4-6 Wochen
+  tech_stack:
+  - Unity / Unreal Engine
+  - OpenXR / WebXR
+  - Python WebSocket Bridge
+  notes: Große Erweiterung, optional für V2.0
+- id: v2-feat-ext-003
+  title: UTAC Modular API - OpenAPI Spec
+  status: pending
+  priority: P2
+  scope: api/ (neuer Ordner)
+  description: REST API für UTAC Module
+  deliverables_required:
+  - api/openapi.yaml
+  - api/server.py
+  - api/README.md
+  endpoints_planned:
+  - POST /api/sonify
+  - POST /api/analyze
+  - GET /api/system/:id
+  - GET /api/fieldtypes
+  - POST /api/simulate
+  parameters:
+    R: 0.0
+    Theta: 1.0
+    beta: 4.0
+  estimated_effort: 2-3 Wochen
+  tech_stack:
+  - FastAPI / Flask
+  - OpenAPI 3.0
+  - Docker-ized
+  notes: Ermöglicht externe Integrationen (Jupyter, Museums-Exhibits, etc.)
 automation:
-  - id: v2-feat-auto-001
-    title: "Guards in CI Integration"
-    status: pending
-    priority: P1
-    scope: .github/workflows/
-    description: "Alle Guards automatisch in CI laufen lassen"
-    deliverables_required:
-      - .github/workflows/guards.yml
-    guards_to_integrate:
-      - scripts/sigillin_sync.py (✅ bereits in sigillin-health.yml)
-      - scripts/archive_sigillin.py --recount
-      - analysis/preset_alignment_guard.py
-      - analysis/utac_manifest_gap_scan.py
-    parameters:
-      R: 0.25  # Einer von vier schon drin
-      Theta: 1.00
-      beta: 4.5
-    estimated_effort: "2-3 Tage"
-    next_steps:
-      - "YAML für neue Guards schreiben"
-      - "Exit codes richtig setzen"
-      - "Tests schreiben"
-
-  - id: v2-feat-auto-002
-    title: "Parser → Codex Automation"
-    status: pending
-    priority: P2
-    scope: scripts/
-    description: "CREP Parser schreibt automatisch in Codex"
-    deliverables_required:
-      - scripts/crep_parser.py (enhanced mit --write-codex)
-      - tests/test_crep_parser_codex.py
-    parameters:
-      R: 0.00
-      Theta: 1.00
-      beta: 4.2
-    estimated_effort: "2-3 Tage"
-    notes: "Verhindert Codex-Verletzungen"
-
-# =============================================================================
-# KATEGORIE 5: TEST-SUITE & STABILITÄT
-# =============================================================================
+- id: v2-feat-auto-001
+  title: Guards in CI Integration
+  status: completed
+  priority: P1
+  scope: .github/workflows/
+  description: Alle Guards automatisch in CI laufen lassen
+  deliverables_required:
+  - .github/workflows/guards.yml
+  guards_to_integrate:
+  - scripts/sigillin_sync.py (✅ bereits in sigillin-health.yml)
+  - scripts/archive_sigillin.py --recount
+  - analysis/preset_alignment_guard.py
+  - analysis/utac_manifest_gap_scan.py
+  parameters:
+    R: 1.0
+    Theta: 1.0
+    beta: 4.5
+  estimated_effort: 2-3 Tage
+  next_steps:
+  - YAML für neue Guards schreiben
+  - Exit codes richtig setzen
+  - Tests schreiben
+  completed_date: '2025-11-11'
+  pr_ref: v2-pr-0007
+- id: v2-feat-auto-002
+  title: Parser → Codex Automation
+  status: pending
+  priority: P2
+  scope: scripts/
+  description: CREP Parser schreibt automatisch in Codex
+  deliverables_required:
+  - scripts/crep_parser.py (enhanced mit --write-codex)
+  - tests/test_crep_parser_codex.py
+  parameters:
+    R: 0.0
+    Theta: 1.0
+    beta: 4.2
+  estimated_effort: 2-3 Tage
+  notes: Verhindert Codex-Verletzungen
 tests:
-  - id: v2-feat-test-001
-    title: "Test-Suite Stabilität - Import Errors fixen"
-    status: completed
-    priority: P0
-    scope: tests/
-    description: "Alle Tests sollten collected werden können"
-    current_status: "✅ 396/402 tests passing (98.5%) - EXCEEDED TARGET!"
-    target: "290 tests passing (wie in README)"
-    parameters:
-      R: 0.985  # 396/402
-      Theta: 0.80  # Target: 80%
-      beta: 5.0
-      sigma: 1.00  # Fully activated!
-    estimated_effort: "1 Tag"
-    completed_in: "1 Sprint (2-3 Stunden)"
-    solution:
-      - "Dependencies installiert (numpy, scipy, pandas, etc.)"
-      - "PyYAML Konflikt mit --ignore-installed umgangen"
-      - "Tests mit python3 -m pytest statt pytest ausgeführt"
-    result:
-      - "402 tests collected (statt 12 items / 20 errors)"
-      - "396 tests PASSED (98.5%)"
-      - "6 tests FAILED (1.5% - nur Sonification, nicht Core)"
-      - "RIESIGER Erfolg: 136% über Ziel!"
-    codex_ref: "v2-pr-0006"
-
-# =============================================================================
-# RELEASE CRITERIA
-# =============================================================================
+- id: v2-feat-test-001
+  title: Test-Suite Stabilität - Import Errors fixen
+  status: completed
+  priority: P0
+  scope: tests/
+  description: Alle Tests sollten collected werden können
+  current_status: ✅ 396/402 tests passing (98.5%) - EXCEEDED TARGET!
+  target: 290 tests passing (wie in README)
+  parameters:
+    R: 0.985
+    Theta: 0.8
+    beta: 5.0
+    sigma: 1.0
+  estimated_effort: 1 Tag
+  completed_in: 1 Sprint (2-3 Stunden)
+  solution:
+  - Dependencies installiert (numpy, scipy, pandas, etc.)
+  - PyYAML Konflikt mit --ignore-installed umgangen
+  - Tests mit python3 -m pytest statt pytest ausgeführt
+  result:
+  - 402 tests collected (statt 12 items / 20 errors)
+  - 396 tests PASSED (98.5%)
+  - 6 tests FAILED (1.5% - nur Sonification, nicht Core)
+  - 'RIESIGER Erfolg: 136% über Ziel!'
+  codex_ref: v2-pr-0006
 v2_release_criteria:
   required:
-    - "R̄ ≥ 0.66 über alle core_features"
-    - "All P0 features completed"
-    - "Tests passing ≥ 80%"
-    - "ΔAIC ≥ 10 für alle neuen Datasets"
-    - "Meta-Regression R² ≥ 0.7"
-    - "Dokumentation vollständig"
-
+  - R̄ ≥ 0.66 über alle core_features
+  - All P0 features completed
+  - Tests passing ≥ 80%
+  - ΔAIC ≥ 10 für alle neuen Datasets
+  - Meta-Regression R² ≥ 0.7
+  - Dokumentation vollständig
   optional:
-    - "P2/P3 features nice-to-have"
-    - "Extensions können in v2.1 folgen"
-
+  - P2/P3 features nice-to-have
+  - Extensions können in v2.1 folgen
   release_process:
-    - "Review aller v2_codex.* Einträge"
-    - "Merge wichtiger Einträge in seed/codexfeedback.*"
-    - "README.md update (v2.0 features)"
-    - "CITATION.cff → v2.0"
-    - "Zenodo v2.0 upload"
-    - "arXiv v2 submission"
-    - "FraktaltagebuchV2/ archivieren oder als Doku behalten"
+  - Review aller v2_codex.* Einträge
+  - Merge wichtiger Einträge in seed/codexfeedback.*
+  - README.md update (v2.0 features)
+  - CITATION.cff → v2.0
+  - Zenodo v2.0 upload
+  - arXiv v2 submission
+  - FraktaltagebuchV2/ archivieren oder als Doku behalten
