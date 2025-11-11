@@ -65,7 +65,7 @@
 | [`v2_codex.json`](v2_codex.json) | Schnittstelle | JSON | Agenten/Tools | ✅ |
 | [`v2_codex.md`](v2_codex.md) | Narrativ | Markdown | Drei Threads | ✅ |
 
-**Inhalt:** 10 Einträge
+**Inhalt:** 12 Einträge
 - v2-pr-0001: UTAC Sonification ✅
 - v2-pr-0002: Outreach Essays ✅
 - v2-pr-0003: FraktaltagebuchV2 Setup 🟢
@@ -76,8 +76,10 @@
 - v2-pr-0008: Data Lanterns Infrastructure 🟡
 - v2-pr-0009: Neuro-Kosmos Bridge ✅
 - v2-pr-0010: Urban Heat Mechanism ✅
+- v2-pr-0011: Roadmap & Index Sync ✅
+- v2-pr-0012: φ-Kopplung Foundation 🟡
 
-**Nächste ID:** v2-pr-0011
+**Nächste ID:** v2-pr-0013
 
 ---
 
@@ -149,9 +151,9 @@
 | **Single Documents** | 2 (README, AGENTS) |
 | **Features Tracked** | 15 |
 | **Features Completed** | 7 |
-| **Features In Progress** | 3 |
-| **Features Pending** | 5 |
-| **Codex Entries** | 10 (next: v2-pr-0011) |
+| **Features In Progress** | 4 |
+| **Features Pending** | 4 |
+| **Codex Entries** | 12 (next: v2-pr-0013) |
 | **Estimated Completion** | When R̄ ≥ 0.66 |
 
 ---
@@ -159,17 +161,17 @@
 ## 🌊 Logistische Parameter
 
 ```
-R̄ = 0.53   # 53% overall (7 completed + partial progress on 3 in_progress)
+R̄ = 0.55   # 55% overall (7 completed + partial progress on 4 in_progress)
 Θ = 0.66   # V2.0 Readiness Gate
 β = 4.8    # Steepness
-σ = 0.349  # σ(β(R-Θ)) ≈ 0.349 (wachsend!) 🎉
+σ = 0.361  # σ(β(R-Θ)) ≈ 0.361 (wachsend!) 🎉
 ```
 
 **Grafisch:**
 ```
-V2.0 Progress: ██████████░░░░░░░░ 53% (7/15 completed + 3 in progress)
+V2.0 Progress: ███████████░░░░░░░ 55% (7/15 completed + 4 in progress)
 
-Kern-Features:  ████████░░░░░░░░░░ 50% (2/6 ✅, 3/6 🟡, 1/6 ❌)
+Kern-Features:  █████████░░░░░░░░░ 52% (2/6 ✅, 4/6 🟡, 0/6 ❌)
 Erweiterungen:  ░░░░░░░░░░░░░░░░░░  0% (0/3)
 Automation:     █████████░░░░░░░░░ 50% (1/2 ✅, 1/2 ❌)
 Tests:          ██████████████████ 98.5% (396/402) ✅
@@ -195,15 +197,16 @@ Completed:      ██████████████████ 100% (7/7
 
 ---
 
-**Version:** 1.0.4
-**Letztes Update:** 2025-11-11T15:30:00Z
+**Version:** 1.0.5
+**Letztes Update:** 2025-11-11T16:30:00Z
 **Maintained by:** Claude Code + Johann Römer
 
 *"Trilayer navigation - von Struktur über Schnittstelle zu Narrativ!"* 📚✨
 
-**Changelog v1.0.4 (2025-11-11 15:30 UTC):**
-- **Roadmap Synchronisation:** Fixed Inkonsistenz zwischen Übersicht (53%) und Summary-Tabelle (alt: 20%)
-- **R̄ Neuberechnung:** 0.47 → 0.53 (korrekte Berechnung über alle 15 Features)
-- **σ Update:** 0.317 → 0.349 (wachsend!)
-- **Status-Kategorien korrigiert:** Completed 8→7, In Progress 1→3, Pending 6→5
-- **Trilayer synchronisiert:** MD ✅, YAML ✅, JSON ✅
+**Changelog v1.0.5 (2025-11-11 16:30 UTC):**
+- **v2-pr-0012 hinzugefügt:** φ-Kopplung Foundation (Theorie + Struktur + Template)
+- **Roadmap Update:** v2-feat-core-005 Status: pending → in_progress (R: 0.00 → 0.35)
+- **R̄ Update:** 0.53 → 0.55 (+2%)
+- **σ Update:** 0.349 → 0.361 (+3%)
+- **Codex Entries:** 10 → 12 (v2-pr-0011, v2-pr-0012)
+- **Status-Kategorien:** In Progress 3→4, Pending 5→4

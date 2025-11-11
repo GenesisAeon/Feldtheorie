@@ -1,29 +1,29 @@
 # 🗺️ UTAC v2.0 Roadmap
 
-**Version:** 1.0.10
+**Version:** 1.0.11
 **Erstellt:** 2025-11-10
-**Letztes Update:** 2025-11-11 (15:30 UTC)
-**Status:** R̄=0.53, Θ=0.66, σ(β(R-Θ))≈0.349 (wachsend!) 🎉
+**Letztes Update:** 2025-11-11 (16:30 UTC)
+**Status:** R̄=0.55, Θ=0.66, σ(β(R-Θ))≈0.361 (wachsend!) 🎉
 
 ---
 
 ## 📊 Übersicht
 
-**Gesamtfortschritt:** 7 completed + 3 in progress von 15 Features (53%)
+**Gesamtfortschritt:** 7 completed + 4 in progress von 15 Features (55%)
 
 ```
-V2.0 Readiness: ██████████░░░░░░░░ 53%
+V2.0 Readiness: ███████████░░░░░░░ 55%
 
-Kern-Features:  ████████░░░░░░░░░░ 50% (2/6 ✅, 3/6 🟡, 1/6 ❌)
+Kern-Features:  █████████░░░░░░░░░ 52% (2/6 ✅, 4/6 🟡, 0/6 ❌)
 Erweiterungen:  ░░░░░░░░░░░░░░░░░░  0% (0/3)
 Automation:     █████████░░░░░░░░░ 50% (1/2 ✅, 1/2 ❌)
 Tests:          ██████████████████ 98.5% (396/402) ✅
-Completed:      ██████████████████ 100% (3/3 ✅)
+Completed:      ██████████████████ 100% (7/7 ✅)
 ```
 
 **Release Criteria:** R̄ ≥ 0.66 über alle Kern-Features
 
-**Updates 2025-11-11:**
+**Updates 2025-11-11 (Vormittag):**
 - **Fourier-Modul FERTIG: R: 0.00 → 1.00 ✅**
   - Kernmodul (Aeon) + CLI + Doku + Tests (19/19 passing!)
 - **Test-Suite FERTIG: R: 0.04 → 0.985 ✅**
@@ -35,6 +35,13 @@ Completed:      ██████████████████ 100% (3/3
   - Trilayer Sigillin (YAML+JSON+MD) + Simulator Preset
   - β_unified ≈ 4.88 bridges EEG (3.8-4.2) ↔ QPO (4.8-5.3)
   - Gap Code mq-sci-gap-008 RESOLVED! 🎉
+
+**Updates 2025-11-11 (Nachmittag):**
+- **φ-Kopplung Foundation ERSTELLT: R: 0.00 → 0.35 🟡**
+  - Theorie-Dokument (450+ LOC, comprehensive theory)
+  - Datenstruktur (data/climate/phi_coupling/ + README)
+  - TIPMIP Email-Template (EN + DE, ready to send)
+  - Gap Code sys-gap-008 → PARTIAL RESOLUTION! ✅
 
 ---
 
@@ -299,34 +306,48 @@ Co-Hypothesis Validation: Bridge ist BEWEIS für UTAC als domain-transcending pr
 
 ---
 
-### 🔴 v2-feat-core-005: φ-Kopplung Klimasequenz
+### 🟡 v2-feat-core-005: φ-Kopplung Klimasequenz
 
-**Status:** ❌ PENDING
+**Status:** 🟡 IN PROGRESS (Foundation Complete!)
 **Priority:** P1
-**Scope:** `models/`, `data/climate/`
-**R=0.00, Θ=0.66, β=4.75**
+**Scope:** `models/`, `data/climate/`, `docs/`
+**R=0.35, Θ=0.66, β=4.75** (Updated: 2025-11-11)
 
 **Beschreibung:**
 AMOC↔Albedo φ-Kopplungs-Modell
 
 **Deliverables:**
-- `models/climate_utac_phi_coupling.py`
-- `data/climate/phi_coupling/` (TIPMIP/CMIP6 Daten)
-- `analysis/results/phi_coupling_beta_gradients.json`
-- `docs/phi_coupling_theory.md`
+- ⏸️ `models/climate_utac_phi_coupling.py` (awaiting data)
+- ✅ `data/climate/phi_coupling/` (Structure ready + README.md)
+- ⏸️ `analysis/results/phi_coupling_beta_gradients.json` (awaiting data)
+- ✅ `docs/phi_coupling_theory.md` (450+ LOC, comprehensive!)
+- ✅ `docs/phi_coupling_tipmip_email_template.md` (EN + DE, ready to send)
 
-**Estimated Effort:** 2-3 Wochen
+**Progress:** **Foundation Complete (35%)** 🎉
+- ✅ Theorie-Dokument (450+ Zeilen, mathematical formulation, 4-phase roadmap)
+- ✅ Datenstruktur vorbereitet (directory + README + metadata format)
+- ✅ TIPMIP Email-Template (EN + DE, research context, checkliste)
+
+**Estimated Effort:** 2-3 Monate (abhängig von Daten-Akquisition)
 
 **Blockers:**
-- TIPMIP Data Request (Email ausstehend)
+- TIPMIP Data Request (Email Template ready, Versand ausstehend)
+- RAPID Array Daten (Email ausstehend)
+- CERES Albedo (Registration ausstehend)
 
-**Gap Code:** `sys-gap-008`
+**Gap Code:** `sys-gap-008` → **PARTIAL RESOLUTION** ✅
 
 **Next Steps:**
-1. TIPMIP Email senden (Template vorhanden in meinem Feedback)
-2. Codex-Eintrag erstellen (pr-draft-0120)
-3. Datenstrukturen vorbereiten
-4. Theorie-Dokument schreiben
+1. ✅ Theorie-Dokument erstellen (DONE!)
+2. ✅ Datenstrukturen vorbereiten (DONE!)
+3. ✅ TIPMIP Email-Template erstellen (DONE!)
+4. ✅ Codex-Eintrag erstellen (v2-pr-0012 - DONE!)
+5. **TODO:** Email senden (TIPMIP, RAPID, CERES)
+6. **TODO:** Daten warten (~1-2 Monate)
+7. **TODO:** `models/climate_utac_phi_coupling.py` implementieren
+8. **TODO:** φ-Berechnung + β vs φ Regression
+
+**Codex Ref:** v2-pr-0012
 
 ---
 

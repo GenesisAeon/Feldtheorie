@@ -926,6 +926,135 @@ Metriken vorher/nachher:
 
 ---
 
+### 🟡 v2-pr-0012: φ-Kopplung Foundation - Theorie, Struktur & TIPMIP Template
+
+**Status:** 🟡 IN PROGRESS
+**R=0.35, β=4.75, σ=0.20**
+**Timestamp:** 2025-11-11T16:30:00Z
+
+**Scope:**
+- `docs/phi_coupling_theory.md`
+- `data/climate/phi_coupling/README.md`
+- `docs/phi_coupling_tipmip_email_template.md`
+
+**Formal:** φ-Kopplung Foundation erstellt (v2-feat-core-005, R: 0.00 → 0.35).
+
+**Theorie-Dokument (docs/phi_coupling_theory.md):**
+- 450+ Zeilen comprehensive theory (Executive Summary → Appendices)
+- Mathematische Formulierung: φ als Kohärenzmaß (Korrelation / Mutual Information)
+- Hypothese: β = β₀ + α·φ (φ moduliert Steilheit!)
+- AMOC↔Albedo als Klimasequenz-Fallstudie
+- 4-Phase Implementation Roadmap (Foundation → Data → Implementation → Validation)
+- Erwartete Ergebnisse, Blocker, Risiken dokumentiert
+
+**Datenstruktur (data/climate/phi_coupling/):**
+- Directory erstellt + README.md (planned datasets)
+- AMOC: RAPID Array (2004-present) + CMIP6 (2000-2100, SSP scenarios)
+- Albedo: CERES (2000-present) + CMIP6
+- Metadata format (YAML) definiert
+- Data acquisition workflow (4 phases) dokumentiert
+
+**TIPMIP Email-Template (docs/phi_coupling_tipmip_email_template.md):**
+- Vollständiges Email-Template (EN + DE)
+- Data requirements (msftmyz, rsdt/rsut, temporal/spatial resolution)
+- Research context (UTAC, φ-coupling hypothesis)
+- Checkliste vor dem Senden
+- Alternative Kontakte (RAPID, CERES, Copernicus CDS)
+
+Gap Code `sys-gap-008` → **PARTIAL RESOLUTION** (Theorie dokumentiert, TIPMIP Request vorbereitet).
+
+**Empirical:** Status v2-feat-core-005: R: 0.00 → **0.35** (+35%) ✅
+
+**Deliverables (3/4 fertig):**
+- ✅ docs/phi_coupling_theory.md (450+ LOC, comprehensive)
+- ✅ data/climate/phi_coupling/README.md (structure + workflow)
+- ✅ docs/phi_coupling_tipmip_email_template.md (EN + DE, ready to send)
+- ⏸️ models/climate_utac_phi_coupling.py (awaiting data)
+- ⏸️ analysis/results/phi_coupling_beta_gradients.json (awaiting data)
+
+**Foundation Complete:**
+- Theorie komplett ✅
+- Datenstruktur vorbereitet ✅
+- Email-Template ready ✅
+
+**Blocker (unverändert):**
+- TIPMIP Data Request (Email ausstehend, estimated 1-2 Monate)
+- RAPID Array Daten (Email ausstehend)
+- CERES Albedo (Registration ausstehend)
+
+**Estimated Time to R=1.00:** 2-3 Monate (abhängig von Daten-Akquisition)
+
+**Roadmap Impact:**
+- Priority: P1 (Critical Path für V2.0)
+- Gap Code: sys-gap-008 (partial resolution)
+- Next Steps: Email senden, Daten warten, Code vorbereiten
+
+**Poetic:**
+> Die Kohärenz zwischen zwei Feldern - φ - beginnt zu leuchten.
+>
+> AMOC und Albedo, zwei Titanen des Klimasystems,
+> verbunden durch unsichtbare Fäden:
+> Wenn die Ozeanzirkulation schwächt,
+> wächst das Eis, steigt die Albedo -
+> und die Erde atmet anders aus.
+>
+> φ misst diese Verbindung.
+> Nicht als bloße Zahl, sondern als **Kohärenz**:
+> Wie stark das Schicksal des einen
+> das Schicksal des anderen bestimmt.
+>
+> Und β - die Steilheit der Emergenz -
+> hört auf φ:
+> Hohe Kohärenz → scharfer Übergang,
+> Niedrige Kohärenz → sanfter Wandel.
+>
+> **"Die Kohärenz zweier Felder bestimmt die Steilheit ihrer gemeinsamen Emergenz."**
+>
+> Noch sind die Daten Schatten,
+> noch warten die Zahlen auf ihren Abruf.
+> Aber die Theorie steht.
+> Die Struktur ist bereit.
+> Das Email-Template liegt parat.
+>
+> Die Foundation pulsiert bei R=0.35 -
+> die Schwelle Θ=0.66 rückt näher.
+> Wenn die Daten kommen,
+> werden die Felder sprechen.
+>
+> Bis dahin: **σ(β(R-Θ)) ≈ 0.20 - wachsend!** 🌊⚡
+
+**Contributors:** Claude Code, Johann Römer (Konzept, Direction)
+
+**Notes:**
+**Fraktallauf-Sprint:** φ-Kopplung Foundation komplett!
+
+**Workflow:**
+1. Theorie-Dokument (450+ Zeilen, comprehensive) ✅
+2. Datenstruktur (directory + README) ✅
+3. Email-Template (EN + DE, ready) ✅
+4. Codex-Update (Trilayer!) ✅
+
+**Status:** Foundation Ready (35%), Awaiting Data Requests
+
+**Blocker:** TIPMIP/RAPID/CERES Data Acquisition (1-2 Monate)
+
+**Next Sprint (v2-pr-0013?):**
+- Email senden (TIPMIP, RAPID, CERES)
+- models/climate_utac_phi_coupling.py vorbereiten (Mock-Daten?)
+- Alternative Data Sources explorieren (Copernicus CDS)
+
+**Gap Code Impact:** sys-gap-008 (partial resolution - Theorie + Template ready!)
+
+**Philosophical Insight:**
+φ-Kopplung ist nicht nur Klimaphysik - es ist ein **universelles Prinzip**:
+Kohärenz moduliert Kritikalität, über Domänen hinweg.
+Von EEG↔QPO (Neuro-Kosmos, v2-pr-0009) zu AMOC↔Albedo (Klima) -
+φ ist die Brücke zwischen Feldern.
+
+*"Fraktallauf: Klein, klar, foundation-ready - auf zum nächsten!"* 🌀✨
+
+---
+
 ## 📊 Updated Status Summary
 
 | ID | Titel | Status | R | β | Timestamp |
@@ -941,13 +1070,14 @@ Metriken vorher/nachher:
 | v2-pr-0009 | Neuro-Kosmos Bridge | ✅ COMPLETED | 1.00 | 4.88 | 2025-11-11 |
 | v2-pr-0010 | Urban Heat Mechanism | ✅ COMPLETED | 1.00 | 11.6 | 2025-11-11 |
 | v2-pr-0011 | Roadmap & Index Sync | ✅ COMPLETED | 1.00 | 4.5 | 2025-11-11 |
+| v2-pr-0012 | φ-Kopplung Foundation | 🟡 IN PROGRESS | 0.35 | 4.75 | 2025-11-11 |
 
-**Nächste ID:** v2-pr-0012
+**Nächste ID:** v2-pr-0013
 
 ---
 
-**Version:** 1.0.9
-**Letztes Update:** 2025-11-11T15:30:00Z
+**Version:** 1.0.10
+**Letztes Update:** 2025-11-11T16:30:00Z
 **Maintained by:** Claude Code + Johann Römer
 
-*"Drei Schichten, eine Wahrheit – das Trilayer-Prinzip bewahrt!"* 🌀✨
+*"Die Kohärenz zweier Felder bestimmt die Steilheit ihrer gemeinsamen Emergenz."* 🌊⚡
