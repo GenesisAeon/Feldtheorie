@@ -1,0 +1,607 @@
+openapi: 3.0.3
+info:
+  title: UTAC Modular API
+  description: |
+    REST API for the Unified Theory of Adaptive Criticality (UTAC) modules.
+
+    This API provides programmatic access to:
+    - **Sonification**: Generate audio representations of threshold dynamics
+    - **Analysis**: Perform β-fits on threshold data
+    - **Simulation**: Run coupled threshold field simulations
+    - **Metadata**: Access system and field type information
+
+    ## Logistic Framework
+
+    All UTAC systems are characterized by:
+    - **R**: Control parameter (0-1 or system-specific units)
+    - **Θ (Theta)**: Threshold value
+    - **β (Beta)**: Steepness parameter (criticality measure)
+    - **σ(β(R-Θ))**: Logistic activation function
+
+    ## Field Types
+
+    UTAC categorizes systems into 5 field types:
+    1. **Weakly Coupled** (β ≈ 2-3): Gradual transitions
+    2. **High-Dimensional** (β ≈ 3-4): Complex, multi-scale dynamics
+    3. **Strongly Coupled** (β ≈ 4-5): Sharp, resonant thresholds
+    4. **Physically Constrained** (β ≈ 5-10): Hard physical limits
+    5. **Meta-Adaptive** (β > 10): Extreme sensitivity, feedback loops
+
+  version: 1.0.0
+  contact:
+    name: Feldtheorie Project
+    url: https://github.com/GenesisAeon/Feldtheorie
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:8000
+    description: Local development server
+  - url: https://api.feldtheorie.org
+    description: Production server (future)
+
+tags:
+  - name: sonification
+    description: Audio generation from threshold dynamics
+  - name: analysis
+    description: Statistical fitting and parameter estimation
+  - name: simulation
+    description: Coupled threshold field simulations
+  - name: metadata
+    description: System information and field types
+
+paths:
+  /api/sonify:
+    post:
+      summary: Generate audio from threshold dynamics
+      description: |
+        Converts UTAC parameters (β, Θ, R-trajectory) into audio using field type acoustic profiles.
+
+        **Acoustic Mapping:**
+        - β → Pitch (steeper = higher frequency)
+        - R-Θ → Amplitude (closer to threshold = louder)
+        - σ(β(R-Θ)) → Envelope (peak at threshold crossing)
+      tags:
+        - sonification
+      operationId: sonify
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SonifyRequest'
+            examples:
+              amoc_collapse:
+                summary: AMOC Collapse Sonification
+                value:
+                  beta: 4.2
+                  theta: 50.0
+                  field_type: strongly_coupled
+                  duration: 5.0
+                  sample_rate: 44100
+              llm_emergence:
+                summary: LLM Emergence Sonification
+                value:
+                  beta: 3.47
+                  theta: 100.0
+                  field_type: high_dimensional
+                  duration: 3.0
+      responses:
+        '200':
+          description: Audio generated successfully
+          content:
+            audio/wav:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SonifyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /api/analyze:
+    post:
+      summary: Perform β-fit on threshold data
+      description: |
+        Fits logistic model σ(β(R-Θ)) to empirical data and returns:
+        - Best-fit parameters (β, Θ)
+        - Confidence intervals (bootstrap)
+        - Model comparison (ΔAIC vs null models)
+        - Field type classification
+      tags:
+        - analysis
+      operationId: analyze
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyzeRequest'
+            examples:
+              simple_fit:
+                summary: Simple logistic fit
+                value:
+                  R: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+                  sigma: [0.01, 0.02, 0.05, 0.12, 0.35, 0.68, 0.88, 0.95, 0.98, 0.99]
+                  bootstrap_iterations: 1000
+      responses:
+        '200':
+          description: Analysis completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyzeResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /api/system/{system_id}:
+    get:
+      summary: Get system metadata
+      description: |
+        Returns metadata for a specific UTAC system including:
+        - System name and domain
+        - Fitted parameters (β, Θ, R²)
+        - Field type classification
+        - References and data sources
+      tags:
+        - metadata
+      operationId: getSystem
+      parameters:
+        - name: system_id
+          in: path
+          required: true
+          description: System identifier (e.g., 'amoc', 'llm_gpt4', 'urban_heat')
+          schema:
+            type: string
+          examples:
+            amoc:
+              value: amoc
+              summary: AMOC system
+            llm:
+              value: llm_gpt4
+              summary: LLM GPT-4 emergence
+      responses:
+        '200':
+          description: System metadata retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemMetadata'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /api/fieldtypes:
+    get:
+      summary: List all field types
+      description: |
+        Returns overview of all 5 UTAC field types with:
+        - β-range and acoustic profile
+        - Example systems
+        - Characteristic dynamics
+      tags:
+        - metadata
+      operationId: getFieldTypes
+      responses:
+        '200':
+          description: Field types retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldTypesResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /api/simulate:
+    post:
+      summary: Run coupled threshold field simulation
+      description: |
+        Simulates coupled threshold dynamics using:
+        - Membrane solver (coupled PDEs)
+        - Resonant impedance ζ(R)
+        - Coherence coupling φ
+
+        Returns time series of (R, Ψ, φ, σ) for visualization.
+      tags:
+        - simulation
+      operationId: simulate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SimulateRequest'
+            examples:
+              simple_simulation:
+                summary: Simple coupled simulation
+                value:
+                  theta: 0.66
+                  beta: 4.8
+                  initial_R: 0.5
+                  initial_psi: 0.1
+                  initial_phi: 0.05
+                  duration: 10.0
+                  dt: 0.01
+      responses:
+        '200':
+          description: Simulation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimulateResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+components:
+  schemas:
+    SonifyRequest:
+      type: object
+      required:
+        - beta
+        - theta
+      properties:
+        beta:
+          type: number
+          description: Steepness parameter β (typically 2-10)
+          minimum: 0.1
+          maximum: 20.0
+          example: 4.2
+        theta:
+          type: number
+          description: Threshold value Θ
+          example: 50.0
+        field_type:
+          type: string
+          description: UTAC field type (determines acoustic profile)
+          enum:
+            - weakly_coupled
+            - high_dimensional
+            - strongly_coupled
+            - physically_constrained
+            - meta_adaptive
+          default: strongly_coupled
+        duration:
+          type: number
+          description: Audio duration in seconds
+          minimum: 0.1
+          maximum: 60.0
+          default: 5.0
+        sample_rate:
+          type: integer
+          description: Audio sample rate (Hz)
+          enum: [22050, 44100, 48000]
+          default: 44100
+        preset:
+          type: string
+          description: Optional preset name (overrides beta/theta if provided)
+          example: amoc_collapse
+
+    SonifyResponse:
+      type: object
+      properties:
+        audio_base64:
+          type: string
+          description: Base64-encoded WAV audio
+        metadata:
+          type: object
+          properties:
+            beta:
+              type: number
+            theta:
+              type: number
+            field_type:
+              type: string
+            duration:
+              type: number
+            sample_rate:
+              type: integer
+            format:
+              type: string
+              example: wav
+
+    AnalyzeRequest:
+      type: object
+      required:
+        - R
+        - sigma
+      properties:
+        R:
+          type: array
+          description: Control parameter values (independent variable)
+          items:
+            type: number
+          minItems: 5
+          example: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+        sigma:
+          type: array
+          description: Order parameter values (dependent variable, 0-1)
+          items:
+            type: number
+            minimum: 0
+            maximum: 1
+          minItems: 5
+          example: [0.01, 0.05, 0.12, 0.35, 0.68, 0.88, 0.95, 0.98, 0.99, 1.0]
+        bootstrap_iterations:
+          type: integer
+          description: Number of bootstrap iterations for CI estimation
+          minimum: 100
+          maximum: 10000
+          default: 1000
+        null_models:
+          type: array
+          description: Null models to compare against
+          items:
+            type: string
+            enum: [linear, exponential, power_law]
+          default: [linear, exponential, power_law]
+
+    AnalyzeResponse:
+      type: object
+      properties:
+        theta:
+          type: number
+          description: Best-fit threshold value
+        theta_ci:
+          type: array
+          description: 95% confidence interval for Θ
+          items:
+            type: number
+          minItems: 2
+          maxItems: 2
+        beta:
+          type: number
+          description: Best-fit steepness parameter
+        beta_ci:
+          type: array
+          description: 95% confidence interval for β
+          items:
+            type: number
+          minItems: 2
+          maxItems: 2
+        r_squared:
+          type: number
+          description: Coefficient of determination
+          minimum: 0
+          maximum: 1
+        aic:
+          type: number
+          description: Akaike Information Criterion
+        null_models:
+          type: object
+          description: Comparison with null models
+          additionalProperties:
+            type: object
+            properties:
+              delta_aic:
+                type: number
+              delta_r2:
+                type: number
+        field_type:
+          type: string
+          description: Classified field type based on β
+          enum:
+            - weakly_coupled
+            - high_dimensional
+            - strongly_coupled
+            - physically_constrained
+            - meta_adaptive
+
+    SystemMetadata:
+      type: object
+      properties:
+        id:
+          type: string
+          example: amoc
+        name:
+          type: string
+          example: Atlantic Meridional Overturning Circulation
+        domain:
+          type: string
+          example: climate
+        parameters:
+          type: object
+          properties:
+            beta:
+              type: number
+            beta_ci:
+              type: array
+              items:
+                type: number
+            theta:
+              type: number
+            theta_ci:
+              type: array
+              items:
+                type: number
+            r_squared:
+              type: number
+        field_type:
+          type: string
+        references:
+          type: array
+          items:
+            type: string
+        data_sources:
+          type: array
+          items:
+            type: string
+
+    FieldTypesResponse:
+      type: object
+      properties:
+        field_types:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              beta_range:
+                type: array
+                items:
+                  type: number
+                minItems: 2
+                maxItems: 2
+              description:
+                type: string
+              examples:
+                type: array
+                items:
+                  type: string
+              acoustic_profile:
+                type: object
+                properties:
+                  base_frequency:
+                    type: number
+                  timbre:
+                    type: string
+
+    SimulateRequest:
+      type: object
+      required:
+        - theta
+        - beta
+      properties:
+        theta:
+          type: number
+          description: Threshold value Θ
+          example: 0.66
+        beta:
+          type: number
+          description: Steepness parameter β
+          example: 4.8
+        initial_R:
+          type: number
+          description: Initial control parameter value
+          default: 0.5
+        initial_psi:
+          type: number
+          description: Initial potential Ψ
+          default: 0.1
+        initial_phi:
+          type: number
+          description: Initial coherence φ
+          default: 0.05
+        duration:
+          type: number
+          description: Simulation duration (arbitrary units)
+          minimum: 1.0
+          maximum: 100.0
+          default: 10.0
+        dt:
+          type: number
+          description: Time step size
+          minimum: 0.001
+          maximum: 0.1
+          default: 0.01
+        stimulus:
+          type: object
+          description: External stimulus parameters
+          properties:
+            base:
+              type: number
+              default: 0.1
+            amplitude:
+              type: number
+              default: 0.2
+            frequency:
+              type: number
+              default: 0.5
+
+    SimulateResponse:
+      type: object
+      properties:
+        time:
+          type: array
+          description: Time points
+          items:
+            type: number
+        R:
+          type: array
+          description: Control parameter trajectory
+          items:
+            type: number
+        psi:
+          type: array
+          description: Potential trajectory
+          items:
+            type: number
+        phi:
+          type: array
+          description: Coherence trajectory
+          items:
+            type: number
+        sigma:
+          type: array
+          description: Activation σ(β(R-Θ)) trajectory
+          items:
+            type: number
+        metadata:
+          type: object
+          properties:
+            theta:
+              type: number
+            beta:
+              type: number
+            dt:
+              type: number
+            n_steps:
+              type: integer
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error type
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          description: Additional error details
+
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: ValidationError
+            message: "Parameter 'beta' must be between 0.1 and 20.0"
+            details:
+              field: beta
+              value: 25.0
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: NotFound
+            message: "System 'xyz' not found"
+
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: InternalError
+            message: "Unexpected error during simulation"
+            details:
+              exception: "ValueError: Invalid initial conditions"
