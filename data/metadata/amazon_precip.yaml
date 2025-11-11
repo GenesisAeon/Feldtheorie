@@ -1,0 +1,9 @@
+dataset: Amazon Moisture / Precipitation
+source: Copernicus CDS, CHIRPS, IMERG
+period: 1980-2022
+variables:
+  - precipitation_mm
+  - evapotranspiration
+  - soil_moisture
+license: CC-BY-4.0
+notes: Long-term rainfall trends and drought events in the Amazon basin

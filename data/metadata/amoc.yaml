@@ -1,0 +1,9 @@
+dataset: Atlantic Meridional Overturning Circulation (AMOC)
+source: RAPID Array 26°N, Copernicus Marine Service, NOAA AOML
+period: 1993-present
+variables:
+  - overturning_strength
+  - salinity
+  - temperature_profile
+license: CC-BY-4.0
+notes: Time series of ocean circulation variability and reanalysis ensembles

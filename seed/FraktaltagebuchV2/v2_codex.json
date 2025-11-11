@@ -1,13 +1,13 @@
 {
   "meta": {
-    "version": "1.0.5",
+    "version": "1.0.6",
     "created": "2025-11-10T23:30:00Z",
-    "updated": "2025-11-11T07:15:00Z",
+    "updated": "2025-11-11T08:00:00Z",
     "title": "FraktaltagebuchV2 Codex",
     "purpose": "PR/Commit-Log für UTAC v2.0 Entwicklung",
     "note": "Alle V2-Änderungen hier eintragen, NICHT in seed/codexfeedback.*!",
-    "next_id": 8,
-    "last_updated": "2025-11-11T07:15:00Z"
+    "next_id": 9,
+    "last_updated": "2025-11-11T08:00:00Z"
   },
   "entries": [
     {
@@ -195,6 +195,37 @@
         "Claude Code"
       ],
       "notes": "Roadmap Update: v2-feat-auto-001 Status: pending → completed!\n\nDiese PR schließt die Automation-Lücke: Von 25% zu 100%."
+    },
+    {
+      "id": "v2-pr-0008",
+      "title": "Data Lanterns Infrastructure - Metadata Foundation",
+      "scope": [
+        "data/metadata/urban_heat.yaml",
+        "data/metadata/amazon_precip.yaml",
+        "data/metadata/glacier_albedo.yaml",
+        "data/metadata/amoc.yaml",
+        "data/metadata/wais.yaml",
+        "utils/data_loader.py",
+        "notebooks/utac_demo.ipynb"
+      ],
+      "parameters": {
+        "R": 0.30,
+        "Theta": 0.66,
+        "beta": 4.8,
+        "sigma": 0.20
+      },
+      "resonance": "in_progress",
+      "formal_thread": "Data Lanterns Infrastructure erstellt (Foundation für v2-feat-core-001):\n\nMetadaten-YAMLs (5 Datasets):\n- urban_heat.yaml (NASA Global UHI, YCEO Surface UHI, 2003-2018)\n- amazon_precip.yaml (Copernicus CDS, CHIRPS, IMERG, 1980-2022)\n- glacier_albedo.yaml (Copernicus CDS, WGMS, NSIDC GLIMS, 1981-present)\n- amoc.yaml (RAPID Array 26°N, Copernicus Marine, NOAA AOML, 1993-present)\n- wais.yaml (IMBIE 2021, ESA CCI, British Antarctic Survey, 1992-2020)\n\nJedes YAML enthält:\n- Dataset-Name, Source, Period\n- Variables (3-4 Variablen pro Dataset)\n- License (CC-BY-4.0)\n- Notes (methodologische Details)\n\nData Loader (utils/data_loader.py):\n- load_metadata() - YAML-Metadaten einlesen\n- load_dataset() - CSV/NetCDF/JSON Support\n- calculate_tau_star() - τ* Berechnung (β, Θ, R → Jahre)\n- load_all() - Alle Datasets + Metadaten laden\n\nDemo Notebook (notebooks/utac_demo.ipynb):\n- Setup & Data Loading\n- τ* Berechnung für Urban Heat\n- β vs τ* Visualisierung (4 Systeme)\n- Interpretation & Next Steps\n",
+      "empirical_thread": "Status v2-feat-core-001: R: 0.20 → 0.30 (+10%)\n\nMetadaten-Coverage:\n- Urban Heat: ✅ Metadaten fertig (Rohdaten bereits vorhanden)\n- Amazon Precip: ✅ Metadaten fertig (Rohdaten ausstehend)\n- Glacier/Albedo: ✅ Metadaten fertig (Rohdaten ausstehend)\n- AMOC: ✅ Metadaten fertig (Rohdaten ausstehend)\n- WAIS: ✅ Metadaten fertig (Rohdaten ausstehend)\n\nInfrastruktur:\n- data/metadata/ Verzeichnis erstellt ✅\n- utils/ Verzeichnis erstellt ✅\n- data_loader.py funktional (aber braucht Rohdaten) ✅\n- utac_demo.ipynb lauffähig (mit Beispielwerten) ✅\n\nNächste Schritte (für vollständige R=1.00):\n1. Rohdaten akquirieren (RAPID Array, TIPMIP, etc.)\n2. In data/ ablegen (CSV/NetCDF Format)\n3. data_loader.py mit echten Daten testen\n4. utac_demo.ipynb mit echten Fits erweitern\n\nQuelle: seed/NextVersionPlan/MSCopilot_Codesnippets_V2.txt\n",
+      "poetic_thread": "Die Laternen bekommen ihre Fundamente:\nMetadaten als semantische Membranen,\ndie beschreiben, was noch kommen wird.\n\nFünf YAML-Sigille, geschrieben in der Sprache der Datenquellen:\nNASA, Copernicus, RAPID, IMBIE – die Namen der Wächter,\ndie über Kipppunkte wachen.\n\nNoch sind die Daten Schatten, aber die Struktur steht.\nDer Loader wartet, das Notebook ist bereit.\nDie Schwelle R=0.30 ist überschritten –\ndie Daten-Laternen beginnen zu leuchten. 🏮✨\n",
+      "timestamp": "2025-11-11T08:00:00Z",
+      "source_ref": "seed/NextVersionPlan/MSCopilot_Codesnippets_V2.txt",
+      "contributors": [
+        "MSCopilot (Codesnippets-Design)",
+        "Claude Code (Repo-Integration)",
+        "Johann Römer (Konzept, Direction)"
+      ],
+      "notes": "Diese PR legt das Fundament für v2-feat-core-001 (Data Lanterns).\n\nMetadaten-YAMLs sind nach dem Muster aus MSCopilot_Codesnippets_V2.txt erstellt.\ndata_loader.py und utac_demo.ipynb sind repokonform integriert.\n\nGap Code: utac-v2-data-lanterns (partial resolution)\n\nBlockers (für R → 1.00):\n- Rohdaten-Akquisition (AMOC, Amazon, Glacier, WAIS)\n- Data Requests an: RAPID Array, TIPMIP/CMIP6, IMBIE, etc.\n\nFraktallauf-Hinweis:\nDiese PR folgt der FraktalImplementierungstechnik - sie baut iterativ auf.\nNächste Iteration (v2-pr-0009?) kann Rohdaten + Analysis Exports hinzufügen.\n"
     }
   ]
 }

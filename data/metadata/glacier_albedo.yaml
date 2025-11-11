@@ -1,0 +1,9 @@
+dataset: Glacier / Albedo
+source: Copernicus CDS, WGMS, NSIDC GLIMS
+period: 1981-present
+variables:
+  - surface_albedo
+  - glacier_mass_balance
+  - ice_thickness
+license: CC-BY-4.0
+notes: Global glacier outlines, mass balance time series, and albedo changes
