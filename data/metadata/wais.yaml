@@ -1,0 +1,9 @@
+dataset: West Antarctic Ice Sheet (WAIS)
+source: IMBIE 2021, ESA CCI, British Antarctic Survey
+period: 1992-2020
+variables:
+  - ice_mass_balance
+  - surface_elevation_change
+  - gravimetry
+license: CC-BY-4.0
+notes: Mass balance estimates from satellite altimetry and gravimetry, Amundsen Sea focus
