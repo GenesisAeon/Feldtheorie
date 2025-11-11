@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": "1.0.4",
+    "version": "1.0.5",
     "created": "2025-11-10T23:40:00Z",
-    "updated": "2025-11-11T15:30:00Z",
+    "updated": "2025-11-11T16:30:00Z",
     "title": "FraktaltagebuchV2 Index",
     "purpose": "Navigation für alle V2.0 Dokumente",
     "document_count": 11,
@@ -95,8 +95,8 @@
           "format": "yaml",
           "layer": "struktur",
           "description": "PR/Commit-Log für V2 (strukturiert)",
-          "entries_count": 10,
-          "next_id": "v2-pr-0011",
+          "entries_count": 12,
+          "next_id": "v2-pr-0013",
           "created": "2025-11-10T23:40:00Z",
           "status": "active"
         },
@@ -209,15 +209,15 @@
     "single_documents": 2,
     "features_tracked": 15,
     "features_completed": 7,
-    "features_in_progress": 3,
-    "features_pending": 5,
-    "codex_entries": 10,
+    "features_in_progress": 4,
+    "features_pending": 4,
+    "codex_entries": 12,
     "estimated_completion": "v2.0 Release (when R̄ ≥ 0.66)"
   },
   "parameters": {
-    "R_mean": 0.53,
+    "R_mean": 0.55,
     "Theta": 0.66,
     "beta": 4.8,
-    "sigma": 0.349
+    "sigma": 0.361
   }
 }
