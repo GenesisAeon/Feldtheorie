@@ -1,0 +1,30 @@
+{
+  "timestamp": "20251111T155257Z",
+  "model_type": "WLS_with_FieldTypes",
+  "r_squared": 0.5961781227004816,
+  "adjusted_r_squared": 0.29331171472584283,
+  "aic": 74.41014520940695,
+  "bic": 79.36649661712242,
+  "rmse": 2.4853752530751527,
+  "canonical_beta": 4.2,
+  "canonical_band": [
+    3.6,
+    4.8
+  ],
+  "beta_mean": 5.669842792969877,
+  "beta_std": 4.055012657732297,
+  "beta_band_fraction": 0.4666666666666667,
+  "delta_aic_guard_min": 12.79,
+  "bootstrap_r2_median": 0.8690601456936629,
+  "bootstrap_r2_interval": [
+    0.5142936715099704,
+    0.9995271777504938
+  ],
+  "random_forest_oob_r2": 0.08549664810880009,
+  "field_type_anova_eta_squared": 0.7351580903604409,
+  "field_type_anova_p_value": 0.0060924025784003365,
+  "top_features": [
+    "coupling_memory",
+    "SNR"
+  ]
+}
