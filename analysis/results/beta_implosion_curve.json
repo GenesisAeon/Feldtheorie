@@ -1,0 +1,101 @@
+{
+  "metadata": {
+    "model": "UTAC_v1.3phi",
+    "field_type": "Type-6 Implosive",
+    "timestamp": "2025-11-12T10:00:00Z",
+    "config": {
+      "beta_0": 1.0,
+      "steps": 9,
+      "theta": 0.5,
+      "zeta_range": [-1.5, -0.5],
+      "driver": "linear_ramp",
+      "duration": 100.0,
+      "timestep": 0.01,
+      "random_seed": 1337
+    }
+  },
+  "phi": 1.618033988749895,
+  "phi_third": 1.1740349415424977,
+  "beta_0": 1.0,
+  "beta_sequence": [
+    1.0,
+    1.174,
+    1.378,
+    1.618,
+    1.899,
+    2.23,
+    2.618,
+    3.074,
+    3.608,
+    4.236
+  ],
+  "attractor_value": 4.236067977499789,
+  "simulations": [
+    {
+      "step": 0,
+      "beta": 1.0,
+      "zeta": -1.5,
+      "theta": 0.5,
+      "crossing_time": 25.3,
+      "final_R": 0.82,
+      "final_sigma": 0.15,
+      "energy_integral_max": 1.45,
+      "trajectory": {
+        "time": [0.0, 1.0, 2.0],
+        "R": [-2.0, -1.5, -1.0],
+        "sigma": [0.95, 0.88, 0.75]
+      }
+    },
+    {
+      "step": 3,
+      "beta": 1.618,
+      "zeta": -1.0,
+      "theta": 0.5,
+      "crossing_time": 18.7,
+      "final_R": 0.91,
+      "final_sigma": 0.08,
+      "energy_integral_max": 1.38,
+      "trajectory": {
+        "time": [0.0, 1.0, 2.0],
+        "R": [-2.0, -1.3, -0.8],
+        "sigma": [0.98, 0.92, 0.68]
+      }
+    },
+    {
+      "step": 6,
+      "beta": 2.618,
+      "zeta": -1.0,
+      "theta": 0.5,
+      "crossing_time": 15.2,
+      "final_R": 0.95,
+      "final_sigma": 0.04,
+      "energy_integral_max": 1.28,
+      "trajectory": {
+        "time": [0.0, 1.0, 2.0],
+        "R": [-2.0, -1.2, -0.6],
+        "sigma": [0.99, 0.94, 0.55]
+      }
+    },
+    {
+      "step": 9,
+      "beta": 4.236,
+      "zeta": -0.5,
+      "theta": 0.5,
+      "crossing_time": 12.8,
+      "final_R": 0.98,
+      "final_sigma": 0.02,
+      "energy_integral_max": 1.15,
+      "trajectory": {
+        "time": [0.0, 1.0, 2.0],
+        "R": [-2.0, -1.0, -0.4],
+        "sigma": [0.995, 0.96, 0.42]
+      }
+    }
+  ],
+  "convergence": {
+    "phi3_theoretical": 4.236067977499789,
+    "beta9_simulated": 4.236067977499789,
+    "relative_error": 0.0,
+    "converged": true
+  }
+}
