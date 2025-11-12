@@ -2714,3 +2714,7 @@ for their orchestration within the Mixed-Orchestrated-Research (MOR) framework.
 ---
 
 Möchtest du, dass ich **gleich die Python-Skripte und Datentemplates für Phase 2** (Simulation + β-Spiral) direkt mitliefere, damit du sie im gleichen Branch ablegen kannst?
+
+
+[Gemini]:
+seed/NextVersionPlan/UTAC-Projekt_ Forschungsschritte und Entscheidungen.pdf
