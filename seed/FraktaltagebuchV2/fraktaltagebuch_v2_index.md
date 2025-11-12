@@ -209,3 +209,23 @@ Completed:      ██████████████████ 100% (12/
 - **Extensions:** 0% → 67% (API + Tooltip completed!) ✅
 - **Tests:** 98.5% → 100% (402/402 passing, Perfect Score!) 🎉
 - **Trilayer:** v2_roadmap.{yaml,json,md} all synchronized to v1.0.15
+
+---
+
+## 📝 Detailed Entries
+
+### Features
+- [v2-feat-type6-001](entries/v2-feat-type6-001.md) - Type-6 Implosive Origin Fields Foundation
+
+### Pull Requests / Commits
+- [v2-pr-0025](entries/v2-pr-0025-fractal-documents-integration.md) - Fractal Documents Integration
+- [v2-pr-0026](entries/v2-pr-0026-type6-validation-infrastructure.md) - Type-6 Validation Infrastructure
+- [v2-pr-0027](entries/v2-pr-0027-type6-implosive-validations.md) - **Type-6 Implosive Validations** (LLM β-Spiral + Urban Heat) ✅
+- [v2-pr-0028](entries/v2-pr-0028-bootstrap-sensitivity-analysis.md) - **Bootstrap & Jackknife Sensitivity Analysis** ✅
+
+### Session Summaries
+- [2025-11-12 Session](entries/v2-session-2025-11-12-summary.md) - Type-6 Validations + Sensitivity Analysis
+
+---
+
+**Aktualisiert:** 2025-11-12 | **Neue Entries:** v2-pr-0027, v2-pr-0028
