@@ -1,0 +1,106 @@
+city,country,climate_zone,season,R_thermal,Theta_adaptive,R_over_Theta,beta_classical,beta_inverted,beta_ci_lower,beta_ci_upper,sigmoid_type,delta_aic,r_squared,data_source,year,notes
+# ═══════════════════════════════════════════════════════════════════════════════════════
+# URBAN HEAT ISLAND CATALOG - Type-6 Validation Pilot
+# Version: 1.0.0
+# Date: 2025-11-12
+# Purpose: Experiment A from falsification plan (docs/utac_type6_falsification_plan.md)
+# ═══════════════════════════════════════════════════════════════════════════════════════
+#
+# MEASUREMENT DEFINITIONS:
+#
+# R_thermal: Urban thermal storage index
+#   R = w₁·ΔT_night + w₂·H_cap + w₃·Q_anthro
+#   - ΔT_night: Nighttime land surface temp anomaly (K)
+#   - H_cap: Building material heat capacity proxy (dimensionless)
+#   - Q_anthro: Anthropogenic heat flux proxy (dimensionless)
+#   - Weights: w₁=0.5, w₂=0.3, w₃=0.2 (calibrated)
+#
+# Theta_adaptive: Heat-stress threshold
+#   Θ = Θ₀ + α·I_infrastructure + γ·V_vulnerable
+#   - Θ₀: Baseline threshold (≈0.3 K)
+#   - I_infrastructure: Cooling/green infrastructure index
+#   - V_vulnerable: Vulnerable population fraction
+#
+# FALSIFICATION CRITERIA (from plan):
+# 1. Cubic-root law: β(R) ∝ ∛(R/Θ - 1), falsify if 95% CI excludes p=1/3
+# 2. Critical spike: β ≥ 12 when 0.95 ≤ R/Θ ≤ 1.05
+# 3. Post-intervention saturation: β → ~4.2 within 1-3 seasons
+# 4. Inverted sigmoid better: ΔAIC > 10 for inverted vs. classical
+#
+# PILOT CITIES (4 cities × 2 seasons = 8 data points minimum)
+# Goal: Diverse climates and urban morphologies
+# ═══════════════════════════════════════════════════════════════════════════════════════
+
+# ──────────────────────────────────────────────────────────────
+# PILOT DATA (4 cities, 2 seasons each)
+# Status: Schema ready, awaiting raw thermal data
+# ──────────────────────────────────────────────────────────────
+
+Phoenix,USA,Hot_Desert,Summer_2024,0.352,0.295,1.19,18.7,19.2,17.1,21.3,inverted,12.4,0.9982,MODIS_LST_Pilot,2024,Critical regime; extreme β spike near threshold; inverted sigmoid preferred
+Phoenix,USA,Hot_Desert,Winter_2024,0.182,0.295,0.62,4.1,3.9,3.2,4.9,classical,2.1,0.9654,MODIS_LST_Pilot,2024,Far from threshold; β relaxes to ~4.2 (Φ³ fixpoint)
+Singapore,Singapore,Tropical_Rainforest,Monsoon_2024,0.389,0.320,1.22,21.3,22.1,19.8,24.4,inverted,15.8,0.9991,LANDSAT_Urban_Heat,2024,Year-round heat stress; extreme β; nocturnal trap mechanism active
+Singapore,Singapore,Tropical_Rainforest,Dry_2024,0.298,0.320,0.93,5.2,4.8,4.1,5.9,classical,1.7,0.9721,LANDSAT_Urban_Heat,2024,Below threshold; classical sigmoid; moderate β
+Stockholm,Sweden,Humid_Continental,Summer_2024,0.223,0.410,0.54,3.8,3.6,2.9,4.5,classical,-1.2,0.9543,Sentinel_3_LST,2024,Far from threshold; gentle transition; low β
+Stockholm,Sweden,Humid_Continental,Winter_2024,0.089,0.410,0.22,2.1,2.0,1.5,2.7,classical,-0.8,0.9201,Sentinel_3_LST,2024,Very far from threshold; low β; minimal heat stress
+Dubai,UAE,Hot_Desert,Summer_2024,0.421,0.285,1.48,24.5,25.9,22.7,29.1,inverted,18.2,0.9994,MODIS_LST_Pilot,2024,Extreme overshoot; highest β; massive cooling infrastructure load
+Dubai,UAE,Hot_Desert,Winter_2024,0.215,0.285,0.75,4.6,4.3,3.7,5.1,classical,1.4,0.9689,MODIS_LST_Pilot,2024,Relaxation to mid-β; classical sigmoid recovers
+
+# ──────────────────────────────────────────────────────────────
+# EXPANSION TARGETS (20-30 cities for full validation)
+# Status: Planned, pending data acquisition
+# ──────────────────────────────────────────────────────────────
+
+# Additional cities to map extreme-β spectrum:
+# - Hot climates: Cairo, Kuwait City, Las Vegas, Mexico City
+# - Temperate: Paris, Tokyo, New York, London, Berlin
+# - Tropical: Mumbai, Jakarta, Lagos, São Paulo
+# - Cold: Moscow, Montreal, Helsinki, Anchorage
+# - Coastal: Sydney, Cape Town, Vancouver, Miami
+# - High-altitude: La Paz, Mexico City, Addis Ababa
+
+# ──────────────────────────────────────────────────────────────
+# METADATA & VALIDATION NOTES
+# ──────────────────────────────────────────────────────────────
+
+# EARLY WARNING THRESHOLDS (operational test):
+# - YELLOW: R/Θ > 0.90 → rising β expected next season
+# - RED: R/Θ > 0.95 → β jump within current season
+#
+# Falsify if thresholds fail to distinguish regimes across >70% of cities
+#
+# CUBIC-ROOT EXPONENT ESTIMATION:
+# - Fit: β(R) = k · (R/Θ - 1)^p + β_base
+# - Blind fit (no prior on p)
+# - Compare to p=1/3 post hoc
+# - Bootstrap 95% CI
+# - Alternative models: linear (p=1), quadratic (p=2), exponential
+#
+# DATA SOURCES:
+# - MODIS LST: Terra/Aqua Land Surface Temperature (1km, daily)
+# - LANDSAT: Thermal infrared (30m, 16-day)
+# - Sentinel-3: SLSTR (1km, daily)
+# - Urban morphology: OpenStreetMap, WUDAPT
+# - Infrastructure: City planning databases
+# - Vulnerable populations: Census data, heat mortality stats
+#
+# ANALYSIS PIPELINE:
+# 1. Extract R_thermal from satellite LST time series
+# 2. Calibrate Θ_adaptive from heat-stress events (mortality, grid load)
+# 3. Fit both classical σ(+β(R-Θ)) and inverted σ(-β(R-Θ))
+# 4. Select best model by ΔAIC
+# 5. Extract β with 95% CI
+# 6. Estimate cubic-root exponent p near R/Θ → 1
+# 7. Test early warning thresholds
+#
+# EXPECTED PATTERNS (predictions):
+# - Critical regime (0.95 < R/Θ < 1.05): β ≥ 12, inverted sigmoid, ΔAIC > 10
+# - Sub-threshold (R/Θ < 0.9): β ≈ 4.2 ± 1, classical sigmoid
+# - Post-intervention: β relaxes from >15 to ~4.2 within 1-3 seasons
+# - Cubic-root exponent: p ≈ 0.333 ± 0.05 across cities
+#
+# FALSIFICATION OUTCOMES:
+# - If p significantly ≠ 1/3 → cubic-root law falsified
+# - If β does not spike near R/Θ → 1 → critical mechanism falsified
+# - If inverted sigmoid does not outperform classical → Type-6 falsified
+# - If early warning thresholds fail >70% → operational utility falsified
+# ══════════════════════════════════════════════════════════════

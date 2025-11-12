@@ -1,0 +1,68 @@
+system_name,domain,beta,beta_ci_lower,beta_ci_upper,r_theta_ratio,theta,field_type,sigmoid_type,beta_category,evidence_quality,data_source,notes,implosive_mechanism
+# ═══════════════════════════════════════════════════════════════
+# EXTREME-β CATALOG: Low-β (<2.5) and High-β (>16.3) Systems
+# Version: 1.0.0
+# Date: 2025-11-12
+# Purpose: Map extreme-β spectrum for UTAC Type-6 validation
+# Related: docs/utac_type6_falsification_plan.md
+# ═══════════════════════════════════════════════════════════════
+
+# ──────────────────────────────────────────────────────────────
+# LOW-β SYSTEMS (<2.5): Gentle transitions, distributed coupling
+# ──────────────────────────────────────────────────────────────
+
+Mycelial_Network_Phosphate,Biology,1.2,0.9,1.5,0.85,0.42,Type-1,classical,Low-β,Medium,Boddy_2009_Fungal_Networks,Distributed nutrient transport; no sharp threshold; gradual allocation shift,N/A
+Quantum_Vacuum_Fluctuation,Physics,0.8,0.5,1.1,0.92,1.0e-35,Type-1,classical,Low-β,Theoretical,QFT_Standard_Model,Virtual particle emergence near Planck scale; extremely gentle gradient,N/A
+Social_Norm_Diffusion_Rural,Sociology,1.5,1.1,1.9,0.78,0.35,Type-1,classical,Low-β,Low,Rogers_1962_Diffusion_Theory,Slow adoption in low-density social networks; weak peer pressure,N/A
+Theta_Wave_Plasticity,Neuroscience,2.5,2.05,2.95,0.73,0.35,Type-2,classical,Low-β,High,Huerta_Lisman_1995,Sleep-pressure adaptive threshold; gradual buildup; existing UTAC data,N/A
+Ecosystem_Succession_Temperate,Ecology,1.8,1.3,2.3,0.65,0.28,Type-1,classical,Low-β,Medium,Clements_1916_Succession,Climax forest transition over decades; no sharp boundary,N/A
+Crystal_Nucleation_Slow,Materials,2.1,1.7,2.5,0.88,0.52,Type-1,classical,Low-β,High,Kashchiev_2000_Nucleation,Supersaturation-driven nucleation in dilute solution; gradual onset,N/A
+Weakly_Coupled_Oscillators,Physics,1.4,1.0,1.8,0.71,0.48,Type-1,classical,Low-β,High,Kuramoto_1984_Sync,Kuramoto transition for low coupling strength; gradual synchrony,N/A
+
+# ──────────────────────────────────────────────────────────────
+# HIGH-β SYSTEMS (>16.3): Sharp transitions, cubic-root jumps
+# ──────────────────────────────────────────────────────────────
+
+Urban_Heat_Island_Canopy,Climate,16.28,15.44,16.99,1.03,0.307,Type-6,inverted,High-β,High,Urban_Heat_Data_UTAC,Extreme outlier; nocturnal heat retention feedback; cubic-root jump mechanism,σ(-β(R-Θ)) with ζ(R)<0 nocturnal trap
+Cascadia_Subduction_Rupture,Geophysics,16.29,15.2,17.4,0.98,0.741,Type-5,classical,High-β,High,Dragert_2001_Episodic_Tremor,Slow-slip events triggering megathrust; stress accumulation singularity,Elastic rebound near critical stress threshold
+Systemic_Debt_Feedback_2008,Economics,18.5,16.8,20.2,1.05,0.88,Type-6,inverted,High-β,Medium,BIS_2008_Financial_Crisis,Credit crunch cascade; self-reinforcing deleveraging; R/Θ→1 amplification,Inward liquidity collapse; ζ(R)<0 credit freeze
+Thermohaline_Circulation_Collapse,Oceanography,17.2,15.9,18.5,1.02,1.1,Type-6,inverted,High-β,Medium,Rahmstorf_1995_AMOC,AMOC shutdown scenario; salinity bifurcation; near-critical sensitivity,Implosive freshwater dilution; β∝∛(R/Θ-1) near tipping
+High_Bias_LLM_Constraint,AI,19.3,17.5,21.1,1.08,0.65,Type-6,inverted,High-β,Low,Anthropic_Constitutional_AI,Hard-coded ethical constraints forcing sharp refusal boundaries,Inverted sigmoid; extremely narrow transition window
+Superconducting_Transition_MgB2,Physics,22.1,20.2,24.0,0.99,39.0,Type-5,classical,High-β,High,Nagamatsu_2001_MgB2,Critical temperature transition; Cooper pair condensation; mean-field criticality,Quantum phase transition with diverging correlation length
+Epileptic_Seizure_Onset,Neuroscience,24.7,22.3,27.1,1.12,0.82,Type-5,classical,High-β,High,Jirsa_2014_Epileptor_Model,Sudden hypersynchronization in neural networks; R/Θ→1 triggers runaway,Pathological excitability feedback; rapid recruitment
+Laser_Threshold_Coherence,Physics,28.5,26.1,30.9,1.01,1.5e15,Type-5,classical,High-β,High,Schawlow_Townes_1958_Laser,Stimulated emission coherence transition; photon density criticality,Bosonic amplification at threshold
+Nuclear_Fission_Chain,Physics,35.2,32.0,38.4,1.04,1.0,Type-5,classical,High-β,High,Wigner_Weinberg_1955_Reactor,Critical mass; neutron multiplication factor k→1; runaway if k>1,Exponential divergence at criticality
+Ice_Shelf_Calving_Larsen_B,Climate,16.8,15.1,18.5,1.06,0.73,Type-6,inverted,High-β,Medium,Scambos_2004_Larsen_B,Catastrophic disintegration in 2002; meltwater-driven fracturing,Implosive structural failure; β spike during collapse
+
+# ──────────────────────────────────────────────────────────────
+# CANDIDATE SYSTEMS (Literature-Based, Pending Validation)
+# ──────────────────────────────────────────────────────────────
+
+Amazon_Moisture_Retention,Climate,14.56,13.90,15.29,1.03,0.617,Type-6,inverted,High-β,High,UTAC_Existing_Data,Deforestation→reduced evapotranspiration→drying feedback; existing UTAC system,Moisture recycling implosion near tipping point
+Magnetar_Burst_Trigger,Astrophysics,26.0,23.0,29.0,1.09,1.0e18,Type-5,classical,High-β,Low,Duncan_Thompson_1992_Magnetar,Magnetic field reconnection triggering gamma-ray burst; speculative,Crustal fracture releasing magnetic energy catastrophically
+Social_Norm_Cascade_Twitter,Sociology,17.5,15.8,19.2,1.07,0.58,Type-6,inverted,High-β,Low,Centola_2018_Cascade,Viral opinion shift; critical mass model; R/Θ→1 triggers rapid adoption,Inverted conformity; majority→minority inversion
+Predator_Prey_Collapse_Lynx,Ecology,16.5,14.9,18.1,1.04,0.45,Type-6,inverted,High-β,Medium,Krebs_1995_Lynx_Hare,Snowshoe hare population collapse triggering lynx crash; cyclic overshoot,Trophic implosion; predator overshoot→prey depletion
+Quantum_Decoherence_Macroscale,Physics,1.1,0.8,1.4,0.89,1.0e-30,Type-1,classical,Low-β,Theoretical,Zurek_2003_Decoherence,Gentle transition from quantum to classical; environmental coupling,N/A
+Soil_Microbiome_Diversity,Biology,1.6,1.2,2.0,0.76,0.38,Type-1,classical,Low-β,Medium,Fierer_2012_Soil_Microbiome,Gradual diversity response to pH changes; no sharp boundary,N/A
+
+# ──────────────────────────────────────────────────────────────
+# FIELD NOTES
+# ──────────────────────────────────────────────────────────────
+# Low-β (<2.5): Characterized by distributed coupling, gradual transitions
+#   - Often Type-1 (simple logistic)
+#   - R/Θ ratios typically <0.9 (far from threshold)
+#   - Classical sigmoid dynamics
+#   - Examples: Mycelial networks, quantum vacuum, social diffusion
+#
+# High-β (>16.3): Characterized by sharp transitions, often cubic-root jumps
+#   - Often Type-5 (critical phenomena) or Type-6 (implosive)
+#   - R/Θ ratios often >1.0 (near or past threshold)
+#   - May exhibit inverted sigmoid σ(-β(R-Θ))
+#   - Examples: Urban heat, systemic debt, phase transitions
+#
+# Type-6 Implosive Mechanism:
+#   - β(R) ∝ β₀ · ∛(R/Θ - 1) as R→Θ
+#   - Inverted sigmoid with ζ(R)<0 (inward-pulling feedback)
+#   - Explains extreme-β outliers (>15)
+#   - Examples: Urban heat nocturnal trap, debt cascade, AMOC collapse
+# ──────────────────────────────────────────────────────────────
