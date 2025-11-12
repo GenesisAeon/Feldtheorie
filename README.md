@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17472834.svg)](https://doi.org/10.5281/zenodo.17472834)
 [![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-blue)](https://github.com/GenesisAeon/Feldtheorie)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Version](https://img.shields.io/badge/Version-2.0.0-green.svg)](RELEASE_NOTES_v2.0.0.md)
 [![Tests](https://img.shields.io/badge/tests-402%2F402%20passing-brightgreen.svg)](#tests--stability)
 [![Progress](https://img.shields.io/badge/v2.0%20progress-73%25-blue.svg)](#v20-roadmap)
