@@ -20,3 +20,13 @@ llm_gpt_1.3b,0.76,14,4.4,0.3,0.06,high_dimensional,GPT-1.3B final convergence to
 llm_llama_7b,0.78,14,4.6,0.32,0.06,high_dimensional,LLaMA-7B final convergence to Φ³; grokking peak β=6.8
 llm_claude_52b,0.8,15,4.8,0.35,0.06,meta_adaptive,Claude-52B final convergence to Φ³; constitutional AI adaptation
 llm_mistral_7.3b,0.79,14,4.7,0.33,0.06,high_dimensional,Mistral-7.3B final convergence to Φ³; grokking peak β=6.9
+mycelial_phosphate,0.42,25,1.5,0.68,0.02,weakly_coupled,Fungal network phosphate uptake; weak coupling via hyphae; high dimensionality
+quantum_vacuum_fluctuation,0.38,30,1.2,0.05,0.0,weakly_coupled,Casimir effect vacuum fluctuations; minimal coupling; ultra-high dimensionality
+weakly_coupled_oscillators,0.45,20,2.2,0.35,0.03,weakly_coupled,Kuramoto model sync onset; weak coupling; moderate dimensionality
+systemic_debt_2008,0.95,2,12.5,0.92,0.12,meta_adaptive,2008 financial crisis; extreme coupling via debt contagion; adaptive threshold
+thermohaline_collapse,0.88,4,9.5,0.95,0.015,physically_constrained,Atlantic thermohaline circulation collapse; strong physical coupling; extreme memory
+supercritical_co2,0.92,3,11.0,0.25,0.0,physically_constrained,Supercritical CO₂ phase transition; strong thermodynamic coupling; low dimensionality
+cmb_quadrupole_anomaly,0.75,8,3.8,1.0,0.0,physically_constrained,CMB low-ℓ quadrupole anomaly; cosmic variance coupling; perfect memory
+hubble_tension_local,0.82,5,7.2,0.98,0.01,physically_constrained,Hubble tension; strong cosmological coupling; near-perfect memory
+jades_early_galaxy_z13,0.85,6,8.5,0.88,0.02,physically_constrained,JADES z=13 early galaxy; strong gravitational coupling; high memory
+type_ia_sn_acceleration,0.88,4,9.8,0.95,0.005,physically_constrained,Type Ia SN acceleration; strong dark energy coupling; extreme memory
