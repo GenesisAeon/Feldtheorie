@@ -371,36 +371,54 @@ def test_fixpoint_convergence(
 
 
 # ═══════════════════════════════════════════════════════════════
-# TEST 4: IMPLOSIVE DELAY & GROKKING TIME
+# TEST 4: IMPLOSIVE DELAY & GROKKING TIME (REFINED v2.1)
 # ═══════════════════════════════════════════════════════════════
 
 def test_implosive_delay(
     df: pd.DataFrame,
-    verbose: bool = True
+    verbose: bool = True,
+    n_bootstrap: int = 1000
 ) -> Dict:
-    """Test whether grokking delay follows τ* ∝ (1/β) · log(|R-Θ|).
+    """Test whether grokking delay follows τ* = a/β + b·log(|R-Θ|) + c.
 
     Prediction: Time to grokking should be inversely proportional to β
     and logarithmically dependent on proximity to threshold.
 
-    Falsify if no inverse relationship with β (correlation > -0.3).
+    Refinements (v2.1):
+    1. Full regression model (not just correlation)
+    2. Null model comparison (ΔAIC)
+    3. Bootstrap CIs for coefficients
+    4. Multi-level falsification criteria
+
+    Falsify if:
+    1. ΔAIC < 4 vs. constant model (no predictive power)
+    2. a coefficient not significant (1/β term irrelevant)
+    3. Bootstrap CI for a includes zero
 
     Parameters
     ----------
     df : DataFrame
-        LLM data with columns: run_id, epoch, beta, grokking_event
+        LLM data with columns: run_id, epoch, beta, capability_score, grokking_event
     verbose : bool
         Print detailed results
+    n_bootstrap : int
+        Number of bootstrap iterations for CI estimation
 
     Returns
     -------
     results : dict
-        - correlation_beta_time: Correlation between 1/β and grokking delay
-        - mean_delay: Mean epochs to grokking
-        - falsified: True if correlation > -0.3
+        - coefficients: Dict with a (1/β), b (log proximity), c (intercept)
+        - r_squared: R² of full model
+        - aic_full: AIC of full model
+        - aic_null: AIC of null (constant) model
+        - delta_aic: ΔAIC (null - full)
+        - bootstrap_ci: 95% CIs for coefficients
+        - falsified: Multi-level falsification result
     """
-    grokking_delays = []
-    beta_at_grokking = []
+    from scipy.optimize import curve_fit
+
+    # Extract grokking events with context
+    grokking_data = []
 
     for run_id in df['run_id'].unique():
         run_data = df[df['run_id'] == run_id].sort_values('epoch')
@@ -410,43 +428,288 @@ def test_implosive_delay(
             continue
 
         for grok_epoch in grok_epochs:
-            # Find β before grokking
+            # Find β and capability score before grokking
             pre_grok = run_data[run_data['epoch'] < grok_epoch]
             if len(pre_grok) > 0:
                 beta_pre = pre_grok['beta'].values[-1]
+                capability_pre = pre_grok['capability_score'].values[-1]
                 delay = grok_epoch - run_data['epoch'].values[0]
 
-                grokking_delays.append(delay)
-                beta_at_grokking.append(beta_pre)
+                # Estimate Θ from capability scores (normalize to 0-100)
+                capability_seq = run_data['capability_score'].values
+                if len(capability_seq) > 2:
+                    # Θ ≈ midpoint of capability transition
+                    Theta_est = (np.min(capability_seq) + np.max(capability_seq)) / 2.0
+                    R_est = capability_pre
+                    proximity = np.abs(R_est - Theta_est) + 1e-6  # Avoid log(0)
 
-    if len(grokking_delays) < 3:
+                    grokking_data.append({
+                        'delay': delay,
+                        'beta': beta_pre,
+                        'inv_beta': 1.0 / beta_pre,
+                        'log_proximity': np.log(proximity),
+                        'R': R_est,
+                        'Theta': Theta_est,
+                    })
+
+    if len(grokking_data) < 5:
         return {
-            'correlation_beta_time': np.nan,
-            'mean_delay': np.nan,
+            'coefficients': {'a': np.nan, 'b': np.nan, 'c': np.nan},
+            'r_squared': np.nan,
+            'aic_full': np.nan,
+            'aic_null': np.nan,
+            'delta_aic': np.nan,
+            'bootstrap_ci': {},
             'falsified': None,
-            'message': 'Insufficient grokking events',
+            'message': 'Insufficient grokking events (need ≥5)',
         }
 
-    # Correlation: 1/β vs. delay (should be positive if τ* ∝ 1/β)
-    inv_beta = 1.0 / np.array(beta_at_grokking)
-    correlation, pval = stats.pearsonr(inv_beta, grokking_delays)
-    mean_delay = np.mean(grokking_delays)
+    # Convert to arrays
+    delays = np.array([d['delay'] for d in grokking_data])
+    inv_betas = np.array([d['inv_beta'] for d in grokking_data])
+    log_proximities = np.array([d['log_proximity'] for d in grokking_data])
 
-    # Falsification: correlation not positive (no 1/β relationship)
-    falsified = correlation < 0.3
+    # Full model: τ* = a/β + b·log(|R-Θ|) + c
+    def full_model(X, a, b, c):
+        inv_beta, log_prox = X
+        return a * inv_beta + b * log_prox + c
+
+    try:
+        X_full = np.vstack([inv_betas, log_proximities])
+        popt_full, pcov_full = curve_fit(full_model, X_full, delays, maxfev=5000)
+        a_fit, b_fit, c_fit = popt_full
+
+        # Predictions and R²
+        delays_pred = full_model(X_full, a_fit, b_fit, c_fit)
+        ss_res = np.sum((delays - delays_pred) ** 2)
+        ss_tot = np.sum((delays - np.mean(delays)) ** 2)
+        r_squared = 1 - (ss_res / ss_tot) if ss_tot > 0 else 0.0
+
+        # AIC calculation
+        n = len(delays)
+        k_full = 3  # 3 parameters (a, b, c)
+        log_likelihood_full = -0.5 * n * np.log(2 * np.pi * ss_res / n) - 0.5 * n
+        aic_full = 2 * k_full - 2 * log_likelihood_full
+
+        # Null model: τ* = constant
+        mean_delay = np.mean(delays)
+        ss_res_null = np.sum((delays - mean_delay) ** 2)
+        k_null = 1
+        log_likelihood_null = -0.5 * n * np.log(2 * np.pi * ss_res_null / n) - 0.5 * n
+        aic_null = 2 * k_null - 2 * log_likelihood_null
+
+        delta_aic = aic_null - aic_full
+
+        # Bootstrap CIs
+        bootstrap_coeffs = {'a': [], 'b': [], 'c': []}
+        rng = np.random.RandomState(42)
+
+        for _ in range(n_bootstrap):
+            indices = rng.choice(len(delays), size=len(delays), replace=True)
+            delays_boot = delays[indices]
+            inv_betas_boot = inv_betas[indices]
+            log_prox_boot = log_proximities[indices]
+
+            X_boot = np.vstack([inv_betas_boot, log_prox_boot])
+            try:
+                popt_boot, _ = curve_fit(full_model, X_boot, delays_boot, maxfev=5000)
+                bootstrap_coeffs['a'].append(popt_boot[0])
+                bootstrap_coeffs['b'].append(popt_boot[1])
+                bootstrap_coeffs['c'].append(popt_boot[2])
+            except:
+                continue
+
+        # Compute 95% CIs
+        bootstrap_ci = {}
+        for coef in ['a', 'b', 'c']:
+            if len(bootstrap_coeffs[coef]) > 0:
+                lower = np.percentile(bootstrap_coeffs[coef], 2.5)
+                upper = np.percentile(bootstrap_coeffs[coef], 97.5)
+                bootstrap_ci[coef] = (lower, upper)
+            else:
+                bootstrap_ci[coef] = (np.nan, np.nan)
+
+        # Falsification criteria
+        falsified_aic = delta_aic < 4  # No improvement over null
+        falsified_coef_a = (bootstrap_ci['a'][0] <= 0 and bootstrap_ci['a'][1] >= 0)  # CI includes 0
+        falsified_r2 = r_squared < 0.3  # Poor fit
+
+        falsified = falsified_aic or falsified_coef_a or falsified_r2
+
+        if verbose:
+            print(f"  Full model: τ* = a/β + b·log(|R-Θ|) + c")
+            print(f"    a (1/β coef): {a_fit:.3f} [{bootstrap_ci['a'][0]:.3f}, {bootstrap_ci['a'][1]:.3f}]")
+            print(f"    b (log coef): {b_fit:.3f} [{bootstrap_ci['b'][0]:.3f}, {bootstrap_ci['b'][1]:.3f}]")
+            print(f"    c (intercept): {c_fit:.3f} [{bootstrap_ci['c'][0]:.3f}, {bootstrap_ci['c'][1]:.3f}]")
+            print(f"  R²: {r_squared:.3f}")
+            print(f"  ΔAIC (null - full): {delta_aic:.1f}")
+            print(f"  Mean grokking delay: {mean_delay:.1f} epochs")
+            print()
+            if falsified_aic:
+                print(f"    ⚠️  ΔAIC={delta_aic:.1f} < 4 (no improvement over null)")
+            if falsified_coef_a:
+                print(f"    ⚠️  Coefficient 'a' CI includes zero (1/β term not significant)")
+            if falsified_r2:
+                print(f"    ⚠️  R²={r_squared:.3f} < 0.3 (poor fit)")
+            print()
+
+        return {
+            'coefficients': {'a': a_fit, 'b': b_fit, 'c': c_fit},
+            'r_squared': r_squared,
+            'aic_full': aic_full,
+            'aic_null': aic_null,
+            'delta_aic': delta_aic,
+            'bootstrap_ci': bootstrap_ci,
+            'mean_delay': mean_delay,
+            'n_events': len(delays),
+            'falsified': falsified,
+            'falsification_details': {
+                'aic': falsified_aic,
+                'coef_a': falsified_coef_a,
+                'r2': falsified_r2,
+            },
+            'message': 'FALSIFIED' if falsified else 'VALIDATED',
+        }
+
+    except Exception as e:
+        return {
+            'coefficients': {'a': np.nan, 'b': np.nan, 'c': np.nan},
+            'r_squared': np.nan,
+            'aic_full': np.nan,
+            'aic_null': np.nan,
+            'delta_aic': np.nan,
+            'bootstrap_ci': {},
+            'falsified': None,
+            'message': f'Fit failed: {str(e)}',
+        }
+
+
+# ═══════════════════════════════════════════════════════════════
+# CROSS-VALIDATION: K-FOLD VALIDATION (v2.1)
+# ═══════════════════════════════════════════════════════════════
+
+def cross_validate_tests(
+    df: pd.DataFrame,
+    k_folds: int = 5,
+    verbose: bool = True
+) -> Dict:
+    """Perform k-fold cross-validation on all 4 tests.
+
+    Validates robustness of findings by splitting data into k folds
+    and computing metrics on held-out test sets.
+
+    Parameters
+    ----------
+    df : DataFrame
+        LLM training data with all required columns
+    k_folds : int
+        Number of folds for cross-validation
+    verbose : bool
+        Print detailed results
+
+    Returns
+    -------
+    results : dict
+        Cross-validation scores for each test:
+        - test1_autocorr: Mean autocorrelation across folds
+        - test2_correlation: Mean grokking-β correlation across folds
+        - test3_final_beta: Mean final β across folds
+        - test4_r_squared: Mean R² for implosive delay model across folds
+        - std_*: Standard deviations for each metric
+    """
+    from sklearn.model_selection import KFold
+
+    # Get unique run IDs
+    run_ids = df['run_id'].unique()
+    n_runs = len(run_ids)
+
+    if n_runs < k_folds:
+        return {
+            'message': f'Insufficient runs for {k_folds}-fold CV (have {n_runs})',
+            'mean_test1_autocorr': np.nan,
+            'mean_test2_corr': np.nan,
+            'mean_test3_beta': np.nan,
+            'mean_test4_r2': np.nan,
+        }
+
+    kf = KFold(n_splits=k_folds, shuffle=True, random_state=42)
+
+    # Store fold results
+    fold_results = {
+        'test1_autocorr': [],
+        'test2_corr': [],
+        'test3_beta': [],
+        'test4_r2': [],
+        'test4_delta_aic': [],
+    }
+
+    for fold_idx, (train_idx, test_idx) in enumerate(kf.split(run_ids)):
+        if verbose:
+            print(f"  Fold {fold_idx + 1}/{k_folds}:")
+
+        # Split data by run IDs
+        test_run_ids = run_ids[test_idx]
+        df_fold = df[df['run_id'].isin(test_run_ids)]
+
+        # Test 1: Spiral Coherence
+        result1 = test_spiral_coherence(df_fold, verbose=False)
+        if not np.isnan(result1['mean_autocorr']):
+            fold_results['test1_autocorr'].append(result1['mean_autocorr'])
+            if verbose:
+                print(f"    Test 1 (Autocorr): {result1['mean_autocorr']:.3f}")
+
+        # Test 2: Grokking β-Jumps
+        result2 = test_grokking_beta_jumps(df_fold, verbose=False)
+        if not np.isnan(result2['mean_correlation']):
+            fold_results['test2_corr'].append(result2['mean_correlation'])
+            if verbose:
+                print(f"    Test 2 (Grokking Corr): {result2['mean_correlation']:.3f}")
+
+        # Test 3: Fixpoint Convergence
+        result3 = test_fixpoint_convergence(df_fold, verbose=False)
+        if not np.isnan(result3['final_mean_beta']):
+            fold_results['test3_beta'].append(result3['final_mean_beta'])
+            if verbose:
+                print(f"    Test 3 (Final β): {result3['final_mean_beta']:.3f}")
+
+        # Test 4: Implosive Delay (reduced bootstrap for speed)
+        result4 = test_implosive_delay(df_fold, verbose=False, n_bootstrap=200)
+        if not np.isnan(result4['r_squared']):
+            fold_results['test4_r2'].append(result4['r_squared'])
+            fold_results['test4_delta_aic'].append(result4['delta_aic'])
+            if verbose:
+                print(f"    Test 4 (R²): {result4['r_squared']:.3f}, ΔAIC: {result4['delta_aic']:.1f}")
+
+        if verbose:
+            print()
+
+    # Compute statistics across folds
+    cv_summary = {}
+    for key, values in fold_results.items():
+        if len(values) > 0:
+            cv_summary[f'mean_{key}'] = np.mean(values)
+            cv_summary[f'std_{key}'] = np.std(values)
+            cv_summary[f'cv_{key}'] = np.std(values) / np.mean(values) if np.mean(values) != 0 else np.nan
+        else:
+            cv_summary[f'mean_{key}'] = np.nan
+            cv_summary[f'std_{key}'] = np.nan
+            cv_summary[f'cv_{key}'] = np.nan
+
+    cv_summary['n_folds'] = k_folds
+    cv_summary['n_folds_completed'] = len(fold_results['test1_autocorr'])
 
     if verbose:
-        print(f"  Correlation (1/β ↔ delay): {correlation:.3f} (p={pval:.4f})")
-        print(f"  Mean grokking delay: {mean_delay:.1f} epochs")
+        print("═" * 70)
+        print(f"CROSS-VALIDATION SUMMARY ({k_folds}-Fold)")
+        print("═" * 70)
+        print(f"  Test 1 (Autocorr): {cv_summary['mean_test1_autocorr']:.3f} ± {cv_summary['std_test1_autocorr']:.3f}")
+        print(f"  Test 2 (Grokking Corr): {cv_summary['mean_test2_corr']:.3f} ± {cv_summary['std_test2_corr']:.3f}")
+        print(f"  Test 3 (Final β): {cv_summary['mean_test3_beta']:.3f} ± {cv_summary['std_test3_beta']:.3f}")
+        print(f"  Test 4 (R²): {cv_summary['mean_test4_r2']:.3f} ± {cv_summary['std_test4_r2']:.3f}")
+        print(f"  Test 4 (ΔAIC): {cv_summary['mean_test4_delta_aic']:.1f} ± {cv_summary['std_test4_delta_aic']:.1f}")
         print()
 
-    return {
-        'correlation_beta_time': correlation,
-        'pval': pval,
-        'mean_delay': mean_delay,
-        'falsified': falsified,
-        'message': 'FALSIFIED' if falsified else 'VALIDATED',
-    }
+    return cv_summary
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -592,6 +855,10 @@ def main():
                         help='Output path for validation figure')
     parser.add_argument('--verbose', action='store_true',
                         help='Print detailed results')
+    parser.add_argument('--cross-validate', action='store_true',
+                        help='Perform k-fold cross-validation (adds ~2-3 minutes)')
+    parser.add_argument('--k-folds', type=int, default=5,
+                        help='Number of folds for cross-validation (default: 5)')
 
     args = parser.parse_args()
 
@@ -655,19 +922,34 @@ def main():
         print(f"  ○ INCONCLUSIVE: {fixpoint_result['message']}")
     print()
 
-    # TEST 4: Implosive Delay
+    # TEST 4: Implosive Delay (REFINED v2.1)
     print("─" * 70)
-    print("TEST 4: Implosive Delay (τ* ∝ 1/β)")
+    print("TEST 4: Implosive Delay (τ* = a/β + b·log(|R-Θ|) + c) [REFINED v2.1]")
     print("─" * 70)
-    delay_result = test_implosive_delay(df, verbose=True)
+    delay_result = test_implosive_delay(df, verbose=True, n_bootstrap=1000)
 
     if delay_result['falsified'] == False:
-        print(f"  ✓ VALIDATED: Correlation(1/β, delay)={delay_result['correlation_beta_time']:.3f} > 0.3")
+        print(f"  ✓ VALIDATED: R²={delay_result['r_squared']:.3f}, ΔAIC={delay_result['delta_aic']:.1f}")
     elif delay_result['falsified'] == True:
-        print(f"  ⚠️  FALSIFIED: No 1/β relationship found")
+        print(f"  ⚠️  FALSIFIED: {delay_result['message']}")
+        if 'falsification_details' in delay_result:
+            details = delay_result['falsification_details']
+            if details.get('aic'): print(f"      - Poor model fit (ΔAIC < 4)")
+            if details.get('coef_a'): print(f"      - 1/β coefficient not significant")
+            if details.get('r2'): print(f"      - R² < 0.3")
     else:
         print(f"  ○ INCONCLUSIVE: {delay_result['message']}")
     print()
+
+    # Optional: Cross-Validation
+    cv_result = None
+    if args.cross_validate:
+        print("─" * 70)
+        print(f"CROSS-VALIDATION ({args.k_folds}-Fold)")
+        print("─" * 70)
+        print("Running k-fold cross-validation (this may take 2-3 minutes)...")
+        print()
+        cv_result = cross_validate_tests(df, k_folds=args.k_folds, verbose=True)
 
     # Summary
     print("═" * 70)
@@ -682,6 +964,8 @@ def main():
     print(f"  Validated: {validated_count}")
     print(f"  Falsified: {falsified_count}")
     print(f"  Inconclusive: {4 - validated_count - falsified_count}")
+    if cv_result and 'n_folds_completed' in cv_result:
+        print(f"  Cross-validation: {cv_result['n_folds_completed']}/{cv_result['n_folds']} folds completed")
     print()
 
     if falsified_count >= 2:
