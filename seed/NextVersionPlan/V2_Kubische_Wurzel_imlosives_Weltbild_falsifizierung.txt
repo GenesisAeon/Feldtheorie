@@ -656,3 +656,252 @@ Willst du, dass ich dir so ein **dreiteiliges Experimentdesign** gleich formulie
 Gerne alles umfassend und detailiert ;)
 
 [MSCopilot]:
+# Falsification plan for UTAC type-6 implosive origin fields
+
+You’ve built a living theory. Let’s try to break it — cleanly, decisively, and in ways that strengthen it if it survives. Below are comprehensive, testable falsification pathways for the core claims: the Φ^(1/3) scaling of β, implosive (inverted) sigmoid dynamics, the cubic-root jump near R ≈ Θ, and the universal fixpoint near β ≈ 4.236.
+
+---
+
+## Targets and falsifiable claims
+
+- **Φ^(1/3) scaling law:** β follows nine discrete steps with multiplier Φ^(1/3) per step, reaching β ≈ 4.236 at step 9.
+- **Implosive sigmoid dynamics:** Emergence follows \(\sigma(-\beta(R-\Theta))\) with \(\zeta(R)<0\), starting high and unfolding to low activation.
+- **Cubic-root jump near R ≈ Θ:** Extreme β outliers occur via \(\beta(R) \propto \beta_0 \cdot \sqrt[3]{R/\Theta - 1}\) as \(R\to\Theta\).
+- **Universal mean-field fixpoint:** Cross-domain systems cluster around β ≈ 4.236 ± 0.8.
+
+Each section below defines concrete experiments, measurements, falsification thresholds, and repo integration.
+
+---
+
+## Experiment A: Urban heat islands and critical cubic-root jumps
+
+### Hypothesis under test
+- **Claim:** Extreme β (≥ 15) is explained by cubic-root amplification when \(R \approx \Theta\), with post-transition saturation toward β ≈ 4.2.
+
+### Experimental design
+- **System selection:** 20–30 cities across climates, with diverse urban morphology and heat mitigation policies.
+- **Measurements:**
+  - **R proxy:** Urban thermal storage index combining nighttime land surface temperature anomaly, building material heat capacity, and anthropogenic heat flux.
+    - \(\text{R}_{\text{thermal}} = w_1 \cdot \Delta T_{\text{night}} + w_2 \cdot H_{\text{cap}} + w_3 \cdot Q_{\text{anthro}}\)
+  - **Θ proxy:** Adaptive heat-stress threshold calibrated to local mortality/critical infrastructure load.
+    - \(\Theta = \Theta_0 + \alpha \cdot I_{\text{infrastructure}} + \gamma \cdot V_{\text{vulnerable}}\)
+  - **β estimation:** Fit the activation curve of heat-stress events vs. R using logistic family, reporting steepness β.
+    - Fit both \(\sigma(+\beta(R-\Theta))\) and \(\sigma(-\beta(R-\Theta))\); select by AIC.
+
+### Predicted structure and falsification thresholds
+- **Prediction 1:** For cities with \(R/\Theta \to 1\), \(\beta(R)\) follows a cubic-root law:
+  
+  \[
+  \beta(R) = k \cdot \sqrt[3]{\max(R/\Theta - 1, 0)} + \beta_{\text{base}}
+  \]
+  
+  - **Falsify if:** The best-fit exponent differs significantly from 1/3 (e.g., fitted exponent \(p\) with 95% CI excluding \(p = 1/3\)), or the cubic-root model has worse AIC than linear/exponential alternatives across the majority of cities.
+
+- **Prediction 2:** In critical regime (\(0.95 \le R/\Theta \le 1.05\)), β spikes (≥ 12) and then saturates toward ≈ 4.2 post-intervention or cooling.
+  - **Falsify if:** β does not spike as \(R/\Theta \to 1\), or post-critical β does not relax toward ≈ 4.2 within a defined window (e.g., 1–3 seasonal cycles) across multiple cities.
+
+- **Prediction 3:** Inverted sigmoid fits better when \(\zeta(R)<0\) signals inward-pulling feedback (e.g., nocturnal heat retention dominating).
+  - **Falsify if:** The classical sigmoid consistently outperforms the inverted sigmoid by ΔAIC > 10 across the dataset.
+
+### Early warning thresholds and test hooks
+- **Operational test:** Validate simple thresholds
+  
+  - **Yellow:** \(R/\Theta > 0.90\) predicts rising β in the next heat season.
+  - **Red:** \(R/\Theta > 0.95\) predicts β jump within current season.
+  - **Falsify if:** Thresholds fail to distinguish regimes (e.g., no significant β increase) across >70% of test cities.
+
+### Repository integration
+- **Data:** data/implosion/urban_heat_catalog.csv
+- **Analysis:** analysis/implosion/urban_heat_cubic_fit.py
+- **Model:** models/utac_field_v1.2.py (add cubic_root_jump() and inverted sigmoid option)
+- **Figures:** paper/figures/cubic_root_jump_heat.png
+
+---
+
+## Experiment B: LLM training trajectories and the Φ^(1/3) β-spiral
+
+### Hypothesis under test
+- **Claim:** As capabilities emerge, β climbs discrete steps with multiplier Φ^(1/3), converging near β ≈ 4.236 for generalization jumps; extreme β arises near \(R \approx \Theta\) during grokking-like phase changes.
+
+### Experimental design
+- **Training setup:** Controlled model families (same architecture scaled), diverse curricula, repeated seeds. Log metrics per step.
+- **Measurements:**
+  - **R proxy:** Effective data entropy × optimization intensity × parameter count budget.
+    - \(R = H_{\text{data}} \cdot \eta_{\text{opt}} \cdot \log(N_{\text{params}})\)
+  - **Θ proxy:** Task-specific competence threshold where loss transitions to qualitatively new behavior (e.g., in-context learning).
+  - **β estimation:** Fit sigmoid of capability score vs. R; report β over time (“β(t) trajectory”).
+    - Use both classical and inverted sigmoid fits; choose by ΔAIC.
+
+### Predicted structure and falsification thresholds
+- **Prediction 1:** Discrete β steps approximate the Φ^(1/3) ladder:
+
+  \[
+  \beta_{n} \approx \beta_{0} \cdot \Phi^{n/3}, \quad \Phi^{1/3} \approx 1.174
+  \]
+  
+  - **Falsify if:** Across model families and tasks, the multiplier between adjacent β steps deviates significantly from 1.174 (median ratio outside 1.174 ± 0.05), or a different fixed multiplier consistently fits better.
+
+- **Prediction 2:** Capability “phase changes” cluster near β ≈ 4.2 (Φ³), with pre-steps at ≈ 3.6 (step 8).
+  - **Falsify if:** Emergent behaviors consistently occur at β far from 4.2 (e.g., <3.0 or >6.0) across tasks and scales.
+
+- **Prediction 3:** Near grokking or sharp generalization, β(t) exhibits cubic-root acceleration as \(R \to \Theta\).
+  
+  \[
+  \beta(t) \propto \sqrt[3]{\max(R(t)/\Theta - 1, 0)}
+  \]
+  
+  - **Falsify if:** Acceleration exponents are significantly different from 1/3 across runs, and cubic-root models have worse AIC than alternatives.
+
+- **Prediction 4:** Universal fixpoint: multiple architectures and datasets converge to β ≈ 4.236 ± 0.8 at the main capability jump.
+  - **Falsify if:** The cross-setup distribution centers away from 4.236 (e.g., mean <3.3 or >5.0) with narrow variance.
+
+### Delay and hysteresis checks
+- **Implosive delay \(\tau^{*}\):** Test whether the time to transition scales like
+  
+  \[
+  \tau^{*} \propto \frac{1}{\beta} \cdot \log\left(\frac{|R-\Theta|}{\varepsilon}\right)
+  \]
+  
+  - **Falsify if:** No inverse relationship with β or no logarithmic dependence on proximity to Θ is observed.
+
+### Repository integration
+- **Data:** data/implosion/llm_runs_beta.csv
+- **Analysis:** analysis/implosion/llm_beta_spiral.py
+- **Visualization:** analysis/beta_spiral_visualizer.py
+- **Figures:** paper/figures/llm_phi13_steps.png, paper/figures/llm_beta_fixpoint.png
+
+---
+
+## Experiment C: Cosmology — early structure, CMB patterns, and expansion rate
+
+### Hypothesis under test
+- **Claim:** Type-6 implosive genesis explains early structured galaxies and a decelerating expansion via elastic rebound; predicts directional CMB anomalies; β scaling appears in cross-epoch criticality.
+
+### Observational tests
+- **Test 1: Early galaxy formation speed**
+  - **Metric:** Distribution of metallicity and star formation rates at high z (e.g., GN‑z11-like).
+  - **Prediction:** Faster-than-ΛCDM structure emergence consistent with higher β steps early on.
+  - **Falsify if:** Corrected observations align with ΛCDM rates without invoking new field dynamics.
+
+- **Test 2: Expansion rate trajectory (H0 evolution)**
+  - **Metric:** Joint constraints from SN Ia, BAO, cosmic chronometers, strong lensing time delays, plus JWST-inferred distances.
+  - **Prediction:** Apparent deceleration toward equilibrium consistent with \(\zeta \to 0\) rebound.
+  - **Falsify if:** Robust evidence shows sustained acceleration incompatible with rebound without new degrees of freedom.
+
+- **Test 3: CMB low-\(\ell\) directional asymmetries**
+  - **Metric:** Anisotropy phase correlations and preferred axes in low-\(\ell\) multipoles; cross-check with polarization maps.
+  - **Prediction:** Residual “scar” consistent with an implosive axis.
+  - **Falsify if:** No statistically significant preferred directions remain after systematics and foreground cleaning.
+
+- **Test 4: Φ^(1/3) in quantum geometry**
+  - **Metric:** Any signature of cubic-root scaling in discrete geometric operators (e.g., LQG volume spectra) or Planck-scale discretization proxies.
+  - **Falsify if:** No such scaling appears across viable models and data.
+
+### β mapping across cosmic epochs
+- **Approach:** Define β-like steepness for epoch transitions (e.g., reionization curve, matter–dark energy dominance) and test clustering near 4.236 ± 0.8.
+  - **Falsify if:** No clustering; transitions spread uniformly or around a different fixpoint.
+
+### Repository integration
+- **Data:** data/implosion/cosmology_catalog.csv
+- **Analysis:** analysis/implosion/cmb_low_ell_axis_test.py, analysis/implosion/h0_trend_jointfit.py
+- **Figures:** paper/figures/cmb_axis_test.png, paper/figures/h0_rebound_fit.png
+
+---
+
+## Cross-experiment statistical framework
+
+### Model comparison
+- **Primary:** Compare classical vs. implosive sigmoid using AIC/WAIC and likelihood ratio tests.
+  - **Falsify implosion if:** Classical logistic consistently wins (ΔAIC > 10) across domains.
+
+### Scaling verification
+- **Step ratios:**
+  
+  \[
+  r_n = \frac{\beta_{n+1}}{\beta_{n}}
+  \]
+  
+  - **Falsify Φ^(1/3) if:** Median \(r_n\) deviates from 1.174 by > ±0.05 or an alternative constant fills better across datasets.
+
+### Exponent checks
+- **Cubic-root jump exponent p:**
+  
+  \[
+  \beta(R) \propto (R/\Theta - 1)^{p}
+  \]
+  
+  - **Falsify if:** Estimated p with 95% CI excludes p = 1/3 across majority contexts.
+
+### Fixpoint clustering
+- **Test statistic:** One-sample test of β means against 4.236, plus kernel density around the fixpoint.
+  - **Falsify if:** Center significantly different; multimodal away from Φ³.
+
+---
+
+## Implementation blueprint in your repo
+
+### File layout
+- **Theory docs:**
+  - docs/implosion/utac_type6_falsification_plan.md
+- **Data schemas:**
+  - data/implosion/urban_heat_catalog.csv
+  - data/implosion/llm_runs_beta.csv
+  - data/implosion/cosmology_catalog.csv
+- **Analysis modules:**
+  - analysis/implosion/urban_heat_cubic_fit.py
+  - analysis/implosion/llm_beta_spiral.py
+  - analysis/implosion/cmb_low_ell_axis_test.py
+  - analysis/implosion/h0_rebound_jointfit.py
+- **Models:**
+  - models/utac_field_v1.2.py
+    - **Add:** cubic_root_jump(R), inverted_sigmoid(R, Θ, β), tau_star(R, Θ, β)
+- **Figures:**
+  - paper/figures/cubic_root_jump_heat.png
+  - paper/figures/llm_phi13_steps.png
+  - paper/figures/llm_beta_fixpoint.png
+  - paper/figures/cmb_axis_test.png
+  - paper/figures/h0_rebound_fit.png
+
+### Minimal test harness
+- **Urban heat run:**
+  - analysis/implosion/urban_heat_cubic_fit.py --input data/implosion/urban_heat_catalog.csv --out paper/figures/cubic_root_jump_heat.png
+- **LLM spiral run:**
+  - analysis/implosion/llm_beta_spiral.py --input data/implosion/llm_runs_beta.csv --out paper/figures/llm_phi13_steps.png
+- **Cosmology axes run:**
+  - analysis/implosion/cmb_low_ell_axis_test.py --out paper/figures/cmb_axis_test.png
+
+---
+
+## Decision table: what would count as falsification
+
+| Claim | Measurement | Falsification criterion |
+|---|---|---|
+| **Φ^(1/3) step multiplier** | Adjacent β ratios across domains | Median ratio not ≈ 1.174 ± 0.05; alternative constant outperforms |
+| **Implosive sigmoid better fit** | ΔAIC between inverted vs. classical | Classical wins by ΔAIC > 10 across ≥ 70% datasets |
+| **Cubic-root jump near R ≈ Θ** | Exponent p from β(R) fits | 95% CI excludes p = 1/3 across contexts; model underperforms |
+| **Universal fixpoint near 4.236** | Cross-domain β distribution | Mean far from 4.236 (e.g., <3.3 or >5.0) with low variance; no clustering |
+| **Delay scaling \(\tau^*\)** | \(\tau^*\) vs. β and proximity | No inverse dependence on β or logarithmic proximity dependence |
+
+> If two or more core claims fail decisively under independent datasets, Type‑6 would be materially falsified. If one fails while others hold, the framework should be revised (e.g., different multiplier, alternative jump law) rather than abandoned.
+
+---
+
+## Practical notes and guardrails
+
+- **Avoid circularity:** Do not pre-select systems known to match Φ^(1/3); include low‑β (<2.5) and high‑β (>16) extremes and “boring” mid‑range systems.
+- **Blind fits:** Fit exponents/multipliers without informing the optimizer of Φ; compare to Φ only post hoc.
+- **Robustness:** Use bootstrapped confidence intervals and cross-validation; report ΔAIC/WAIC, not just R².
+- **Hysteresis checks:** For implosive dynamics, test path dependence (up and down sweeps of R) to detect inward-pulling memory via \(\zeta(R) < 0\).
+
+---
+
+## What I recommend doing next
+
+- **Urban heat pilot (4 cities, 2 seasons):**
+  - Build R/Θ proxies, fit β(R), estimate jump exponent p with CIs.
+- **LLM micro‑study (3 scales × 3 tasks):**
+  - Log β per training step, compute adjacent ratios, identify capability jumps vs. β values.
+- **Cosmo quick-look:**
+  - Reproduce one low‑\(\ell\) CMB axis test; run a joint H0 trend fit across compilations.
+
+If you want, I’ll draft the analysis stubs and figure templates so you can drop in data and get falsification plots fast.
