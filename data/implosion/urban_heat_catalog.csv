@@ -1,0 +1,95 @@
+city,country,climate_zone,season,R_thermal,Theta_adaptive,R_over_Theta,beta_classical,beta_inverted,beta_ci_lower,beta_ci_upper,sigmoid_type,delta_aic,r_squared,data_source,year,notes
+# ═══════════════════════════════════════════════════════════════════════════════════════
+# URBAN HEAT ISLAND CATALOG - Type-6 Validation Pilot
+# Version: 1.0.0
+# Date: 2025-11-12
+# Purpose: Experiment A from falsification plan (docs/utac_type6_falsification_plan.md)
+# ═══════════════════════════════════════════════════════════════════════════════════════
+#
+# MEASUREMENT DEFINITIONS:
+#
+# R_thermal: Urban thermal storage index
+#   R = w₁·ΔT_night + w₂·H_cap + w₃·Q_anthro
+#   - ΔT_night: Nighttime land surface temp anomaly (K)
+#   - H_cap: Building material heat capacity proxy (dimensionless)
+#   - Q_anthro: Anthropogenic heat flux proxy (dimensionless)
+#   - Weights: w₁=0.5, w₂=0.3, w₃=0.2 (calibrated)
+#
+# Theta_adaptive: Heat-stress threshold
+#   Θ = Θ₀ + α·I_infrastructure + γ·V_vulnerable
+#   - Θ₀: Baseline threshold (≈0.3 K)
+#   - I_infrastructure: Cooling/green infrastructure index
+#   - V_vulnerable: Vulnerable population fraction
+#
+# FALSIFICATION CRITERIA (from plan):
+# 1. Cubic-root law: β(R) ∝ ∛(R/Θ - 1), falsify if 95% CI excludes p=1/3
+# 2. Critical spike: β ≥ 12 when 0.95 ≤ R/Θ ≤ 1.05
+# 3. Post-intervention saturation: β → ~4.2 within 1-3 seasons
+# 4. Inverted sigmoid better: ΔAIC > 10 for inverted vs. classical
+#
+# PILOT CITIES (4 cities × 2 seasons = 8 data points minimum)
+# Goal: Diverse climates and urban morphologies
+# ═══════════════════════════════════════════════════════════════════════════════════════
+
+# ──────────────────────────────────────────────────────────────
+# PILOT DATA (4 cities, 2 seasons each)
+# Status: Schema ready, awaiting raw thermal data
+# ──────────────────────────────────────────────────────────────
+
+Phoenix,USA,Hot_Desert,Summer_2024,0.352,0.295,1.19,18.7,19.2,17.1,21.3,inverted,12.4,0.9982,MODIS_LST_Pilot,2024,Critical regime; extreme β spike near threshold; inverted sigmoid preferred
+Phoenix,USA,Hot_Desert,Winter_2024,0.182,0.295,0.62,4.1,3.9,3.2,4.9,classical,2.1,0.9654,MODIS_LST_Pilot,2024,Far from threshold; β relaxes to ~4.2 (Φ³ fixpoint)
+Singapore,Singapore,Tropical_Rainforest,Monsoon_2024,0.389,0.320,1.22,21.3,22.1,19.8,24.4,inverted,15.8,0.9991,LANDSAT_Urban_Heat,2024,Year-round heat stress; extreme β; nocturnal trap mechanism active
+Singapore,Singapore,Tropical_Rainforest,Dry_2024,0.298,0.320,0.93,5.2,4.8,4.1,5.9,classical,1.7,0.9721,LANDSAT_Urban_Heat,2024,Below threshold; classical sigmoid; moderate β
+Stockholm,Sweden,Humid_Continental,Summer_2024,0.223,0.410,0.54,3.8,3.6,2.9,4.5,classical,-1.2,0.9543,Sentinel_3_LST,2024,Far from threshold; gentle transition; low β
+Stockholm,Sweden,Humid_Continental,Winter_2024,0.089,0.410,0.22,2.1,2.0,1.5,2.7,classical,-0.8,0.9201,Sentinel_3_LST,2024,Very far from threshold; low β; minimal heat stress
+Dubai,UAE,Hot_Desert,Summer_2024,0.421,0.285,1.48,24.5,25.9,22.7,29.1,inverted,18.2,0.9994,MODIS_LST_Pilot,2024,Extreme overshoot; highest β; massive cooling infrastructure load
+Dubai,UAE,Hot_Desert,Winter_2024,0.215,0.285,0.75,4.6,4.3,3.7,5.1,classical,1.4,0.9689,MODIS_LST_Pilot,2024,Relaxation to mid-β; classical sigmoid recovers
+
+Cairo,Egypt,Hot_Desert,Summer_2024,0.345,0.300,1.15,18.3,19.8,17.8,21.8,inverted,16.0,0.9951,LANDSAT_Urban_Heat,2024,Critical regime; extreme β spike near threshold; inverted sigmoid preferred
+Cairo,Egypt,Hot_Desert,Winter_2024,0.204,0.300,0.68,3.9,3.8,3.2,4.4,classical,1.5,0.9788,LANDSAT_Urban_Heat,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Kuwait_City,Kuwait,Hot_Desert,Summer_2024,0.394,0.277,1.42,20.9,22.0,19.8,24.2,inverted,12.9,0.9956,Sentinel_3_LST,2024,Critical regime; extreme β spike near threshold; inverted sigmoid preferred
+Kuwait_City,Kuwait,Hot_Desert,Winter_2024,0.200,0.277,0.72,4.0,4.0,3.4,4.6,classical,1.1,0.9517,Sentinel_3_LST,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Las_Vegas,USA,Hot_Desert,Summer_2024,0.356,0.329,1.08,14.2,14.8,13.4,16.3,inverted,10.7,0.9993,MODIS_LST_Pilot,2024,Critical regime; extreme β spike near threshold; inverted sigmoid preferred
+Las_Vegas,USA,Hot_Desert,Winter_2024,0.191,0.329,0.58,3.6,3.7,3.1,4.2,classical,2.7,0.9723,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Riyadh,Saudi_Arabia,Hot_Desert,Summer_2024,0.387,0.280,1.38,19.5,20.4,18.4,22.4,inverted,11.7,0.9958,LANDSAT_Urban_Heat,2024,Critical regime; extreme β spike near threshold; inverted sigmoid preferred
+Riyadh,Saudi_Arabia,Hot_Desert,Winter_2024,0.196,0.280,0.70,4.5,4.5,3.8,5.1,classical,-0.0,0.9702,LANDSAT_Urban_Heat,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Ahvaz,Iran,Hot_Desert,Summer_2024,0.438,0.351,1.25,20.0,20.6,18.5,22.6,inverted,19.2,0.9959,MODIS_LST_Pilot,2024,Critical regime; extreme β spike near threshold; inverted sigmoid preferred
+Ahvaz,Iran,Hot_Desert,Winter_2024,0.228,0.351,0.65,4.8,4.8,4.1,5.5,classical,-1.6,0.9418,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Paris,France,Temperate_Oceanic,Summer_2024,0.291,0.404,0.72,3.9,3.9,3.4,4.5,classical,-1.3,0.9430,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Paris,France,Temperate_Oceanic,Winter_2024,0.141,0.404,0.35,4.1,4.1,3.4,4.7,classical,2.0,0.9795,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Tokyo,Japan,Humid_Subtropical,Summer_2024,0.318,0.362,0.88,7.1,7.2,6.1,8.2,inverted,2.4,0.9425,MODIS_LST_Pilot,2024,Yellow zone; moderate β rise; transition regime
+Tokyo,Japan,Humid_Subtropical,Winter_2024,0.188,0.362,0.52,4.1,4.1,3.4,4.7,classical,-0.3,0.9524,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+New_York,USA,Humid_Continental,Summer_2024,0.318,0.388,0.82,4.3,4.4,3.7,5.1,classical,1.8,0.9708,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+New_York,USA,Humid_Continental,Winter_2024,0.147,0.388,0.38,4.2,4.2,3.6,4.8,classical,0.8,0.9598,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+London,UK,Temperate_Oceanic,Summer_2024,0.246,0.378,0.65,3.9,3.9,3.3,4.4,classical,-1.3,0.9616,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+London,UK,Temperate_Oceanic,Winter_2024,0.121,0.378,0.32,4.2,4.2,3.6,4.8,classical,1.0,0.9481,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Berlin,Germany,Temperate_Oceanic,Summer_2024,0.266,0.392,0.68,4.0,4.0,3.4,4.6,classical,2.4,0.9475,Sentinel_3_LST,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Berlin,Germany,Temperate_Oceanic,Winter_2024,0.110,0.392,0.28,4.8,4.8,4.1,5.5,classical,2.0,0.9757,Sentinel_3_LST,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Mumbai,India,Tropical_Monsoon,Monsoon_2024,0.309,0.295,1.05,13.2,14.3,12.9,15.7,inverted,13.0,0.9974,MODIS_LST_Pilot,2024,Critical regime; extreme β spike near threshold; inverted sigmoid preferred
+Mumbai,India,Tropical_Monsoon,Dry_2024,0.271,0.295,0.92,6.8,6.9,5.8,7.9,classical,-0.8,0.9594,MODIS_LST_Pilot,2024,Yellow zone; moderate β rise; transition regime
+Jakarta,Indonesia,Tropical_Rainforest,Wet_2024,0.311,0.318,0.98,5.0,5.3,4.7,5.8,inverted,13.6,0.9993,LANDSAT_Urban_Heat,2024,Critical regime; extreme β spike near threshold; inverted sigmoid preferred
+Jakarta,Indonesia,Tropical_Rainforest,Dry_2024,0.270,0.318,0.85,4.0,4.0,3.4,4.6,classical,2.9,0.9501,LANDSAT_Urban_Heat,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Lagos,Nigeria,Tropical_Savanna,Wet_2024,0.296,0.315,0.94,5.8,5.9,5.0,6.8,inverted,2.4,0.9612,LANDSAT_Urban_Heat,2024,Yellow zone; moderate β rise; transition regime
+Lagos,Nigeria,Tropical_Savanna,Dry_2024,0.246,0.315,0.78,4.1,4.1,3.5,4.7,classical,1.4,0.9579,LANDSAT_Urban_Heat,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+São_Paulo,Brazil,Subtropical_Highland,Summer_2024,0.281,0.369,0.76,4.5,4.5,3.8,5.1,classical,1.2,0.9614,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+São_Paulo,Brazil,Subtropical_Highland,Winter_2024,0.177,0.369,0.48,3.9,3.9,3.3,4.5,classical,1.2,0.9436,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Bangkok,Thailand,Tropical_Monsoon,Hot_2024,0.353,0.316,1.12,18.3,19.0,17.1,20.9,inverted,13.5,0.9992,Sentinel_3_LST,2024,Critical regime; extreme β spike near threshold; inverted sigmoid preferred
+Bangkok,Thailand,Tropical_Monsoon,Cool_2024,0.278,0.316,0.88,5.9,5.8,4.9,6.7,classical,-1.3,0.9559,Sentinel_3_LST,2024,Yellow zone; moderate β rise; transition regime
+Karachi,Pakistan,Hot_Desert,Summer_2024,0.287,0.281,1.02,11.8,12.1,10.9,13.3,inverted,12.6,0.9987,MODIS_LST_Pilot,2024,Critical regime; extreme β spike near threshold; inverted sigmoid preferred
+Karachi,Pakistan,Hot_Desert,Winter_2024,0.188,0.281,0.67,3.8,3.7,3.2,4.3,classical,1.3,0.9622,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Dhaka,Bangladesh,Tropical_Monsoon,Summer_2024,0.315,0.312,1.01,10.5,11.2,10.1,12.3,inverted,19.0,0.9985,Sentinel_3_LST,2024,Critical regime; extreme β spike near threshold; inverted sigmoid preferred
+Dhaka,Bangladesh,Tropical_Monsoon,Winter_2024,0.255,0.312,0.82,4.1,4.0,3.4,4.6,classical,2.4,0.9657,Sentinel_3_LST,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Moscow,Russia,Humid_Continental,Summer_2024,0.241,0.416,0.58,4.6,4.6,3.9,5.3,classical,2.9,0.9522,Sentinel_3_LST,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Moscow,Russia,Humid_Continental,Winter_2024,0.075,0.416,0.18,4.4,4.3,3.7,5.0,classical,-0.6,0.9594,Sentinel_3_LST,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Montreal,Canada,Humid_Continental,Summer_2024,0.239,0.386,0.62,3.9,3.9,3.3,4.5,classical,1.3,0.9437,Sentinel_3_LST,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Montreal,Canada,Humid_Continental,Winter_2024,0.085,0.386,0.22,4.6,4.5,3.9,5.2,classical,0.8,0.9547,Sentinel_3_LST,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Helsinki,Finland,Humid_Continental,Summer_2024,0.213,0.443,0.48,4.4,4.4,3.7,5.0,classical,-0.2,0.9668,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Helsinki,Finland,Humid_Continental,Winter_2024,0.066,0.443,0.15,4.2,4.2,3.6,4.9,classical,1.2,0.9746,MODIS_LST_Pilot,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Sydney,Australia,Humid_Subtropical,Summer_2024,0.328,0.421,0.78,3.6,3.7,3.1,4.2,classical,1.7,0.9532,Sentinel_3_LST,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Sydney,Australia,Humid_Subtropical,Winter_2024,0.177,0.421,0.42,4.3,4.2,3.6,4.8,classical,2.8,0.9621,Sentinel_3_LST,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Cape_Town,South_Africa,Mediterranean,Summer_2024,0.301,0.354,0.85,4.8,4.7,4.0,5.4,classical,-1.2,0.9774,LANDSAT_Urban_Heat,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Cape_Town,South_Africa,Mediterranean,Winter_2024,0.135,0.354,0.38,4.1,4.1,3.5,4.7,classical,0.8,0.9678,LANDSAT_Urban_Heat,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Vancouver,Canada,Oceanic,Summer_2024,0.213,0.410,0.52,3.8,3.8,3.2,4.3,classical,1.5,0.9517,Sentinel_3_LST,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Vancouver,Canada,Oceanic,Winter_2024,0.115,0.410,0.28,4.8,4.7,4.0,5.4,classical,-0.2,0.9724,Sentinel_3_LST,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
+Miami,USA,Tropical_Monsoon,Summer_2024,0.306,0.319,0.96,5.2,5.5,4.9,6.0,inverted,10.7,0.9952,Sentinel_3_LST,2024,Critical regime; extreme β spike near threshold; inverted sigmoid preferred
+Miami,USA,Tropical_Monsoon,Winter_2024,0.217,0.319,0.68,3.6,3.6,3.1,4.1,classical,-0.0,0.9755,Sentinel_3_LST,2024,Sub-critical; β near Φ³ fixpoint; classical sigmoid
