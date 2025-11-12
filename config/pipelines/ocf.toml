@@ -1,0 +1,45 @@
+# Feldtheorie OCF Data Pipelines Configuration
+# Portions inspired by Open Climate Fix (MIT)
+
+# ============================================================================
+# ICON-EU Source (DWD via OpenClimateFix HuggingFace)
+# ============================================================================
+[sources.icon_eu]
+url = "https://huggingface.co/datasets/openclimatefix/dwd-icon-eu/resolve/main/icon_eu.zarr"
+
+# Variable renaming: ICON-EU → FieldCube standard
+[sources.icon_eu.rename]
+t_2m = "t2m"
+u_10m = "u10"
+v_10m = "v10"
+total_precipitation = "tp"
+ssrd = "ssrd"
+
+[sources.icon_eu.attrs]
+provider = "DWD/ICON-EU via OpenClimateFix (HuggingFace)"
+license = "Open data (check provider)"
+conventions = "CF-1.10"
+
+# ============================================================================
+# Radar Source (Nimrod/MRMS)
+# ============================================================================
+[sources.radar]
+# Replace with your actual Nimrod/MRMS Zarr or NetCDF path
+url = "s3://my-bucket/radar/nimrod.zarr"
+
+[sources.radar.rename]
+rainrate = "rr"
+reflectivity = "dbz"
+
+[sources.radar.attrs]
+provider = "MetOffice Nimrod or NOAA MRMS"
+conventions = "CF-1.10"
+
+# ============================================================================
+# FieldCube Output
+# ============================================================================
+[output]
+zarr_path = "/data/fieldcube"
+consolidated = true
+compression = "zstd"
+compression_level = 3
