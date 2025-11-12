@@ -14,3 +14,9 @@ blackhole_qpo,5.3,4.8,5.8,1.0,0.125,0.988,95.4,LIGO-Virgo
 urban_heat,16.276030904088,15.435615025362926,16.991354470178052,1.555739444815126,0.30665064835512296,0.9994759126805306,64.63319381534124,Urban heat island canopy threshold
 llm_skill_emergence,6.0811821343356005,5.772726713122262,6.389669311632212,0.6169425985099499,4.716510467736563,0.9994883376556732,82.40848629720524,LLM skill emergence threshold
 amazon_moisture,14.560428856124563,13.899131701162439,15.289579143600982,1.3904474424385427,0.6169618835826125,0.9994152438291395,66.19689714996419,Amazon moisture retention threshold
+llm_gpt_125m,4.2,3.8,4.6,0.8,0.7,0.975,45.2,Synthetic LLM training trajectory (GPT-125M convergence)
+llm_gpt_350m,4.25,3.85,4.65,0.8,0.71,0.978,48.5,Synthetic LLM training trajectory (GPT-350M convergence)
+llm_gpt_1.3b,4.28,3.88,4.68,0.8,0.72,0.98,51.3,Synthetic LLM training trajectory (GPT-1.3B convergence)
+llm_llama_7b,4.32,3.92,4.72,0.8,0.74,0.982,54.8,Synthetic LLM training trajectory (LLaMA-7B convergence)
+llm_claude_52b,4.35,3.95,4.75,0.8,0.76,0.985,58.2,Synthetic LLM training trajectory (Claude-52B convergence)
+llm_mistral_7.3b,4.33,3.93,4.73,0.8,0.73,0.983,56.1,Synthetic LLM training trajectory (Mistral-7.3B convergence)
