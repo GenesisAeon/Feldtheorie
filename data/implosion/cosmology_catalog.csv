@@ -1,0 +1,26 @@
+system_id,system_name,domain,redshift,age_myr,observable,value,uncertainty,R_proxy,Theta_proxy,beta_estimate,beta_uncertainty,field_type,implosive_signature,reference,notes
+cosmo_001,GN-z11 Oxygen Detection,early_structure,10.957,400,O_III_emission,3.2,0.5,0.95,0.80,4.8,0.6,Type-5,early_metallicity,Oesch+2016,Oxygen detected 400 Myr post-Big Bang - too early for ΛCDM
+cosmo_002,JADES-GS-z13-0,early_structure,13.2,320,stellar_mass_log,8.5,0.3,0.98,0.85,5.2,0.8,Type-5,ultra_early_stars,Curtis-Lake+2023,JWST - massive galaxy at z=13.2
+cosmo_003,GLASS-z12,early_structure,12.4,350,star_formation_rate,15.0,5.0,0.92,0.82,4.6,0.7,Type-5,rapid_sfr,Castellano+2022,High SFR only 350 Myr after Big Bang
+cosmo_004,CMB Quadrupole Anomaly,cmb_structure,1089.0,380000,C_2_power,200.0,50.0,0.88,1.00,3.8,0.5,Type-6,low_ell_deficit,Planck+2020,Low-ℓ power deficit - implosive scar?
+cosmo_005,CMB Octopole Alignment,cmb_structure,1089.0,380000,alignment_angle,12.0,5.0,0.85,1.00,4.2,0.6,Type-6,axis_of_evil,Planck+2020,Quadrupole-octopole alignment - directional asymmetry
+cosmo_006,Hubble Tension (Local),expansion,0.0,13700,H0_local,73.2,1.0,1.05,1.00,5.5,0.4,Type-6,deceleration,Riess+2022,SH0ES - higher than CMB prediction
+cosmo_007,Hubble Tension (CMB),expansion,1089.0,380000,H0_cmb,67.4,0.5,0.92,1.00,4.0,0.3,Type-5,standard_model,Planck+2020,ΛCDM prediction - lower than local
+cosmo_008,MACS0647-JD,early_structure,10.7,420,UV_luminosity,-20.5,0.8,0.93,0.83,4.5,0.7,Type-5,bright_early_galaxy,Coe+2013,Very luminous at z~11
+cosmo_009,HD1 Candidate,early_structure,13.27,330,luminosity_distance,33.4,1.2,0.96,0.86,5.0,0.9,Type-5,extreme_distance,Harikane+2022,Possible z~13.3 galaxy - structure too early
+cosmo_010,Cosmic Noon Quenching,galaxy_evolution,2.0,3200,quenching_timescale,0.5,0.1,0.88,0.75,4.3,0.5,Type-5,rapid_shutdown,Tacchella+2016,Rapid star formation shutdown at z~2
+cosmo_011,Reionization Patchy Structure,reionization,7.0,750,ionization_fraction,0.5,0.1,0.90,0.85,4.4,0.6,Type-5,bubble_percolation,Robertson+2015,Patchy reionization - threshold percolation
+cosmo_012,Lyman-α Forest Void,large_scale,3.0,2000,transmission_gap,0.05,0.02,0.75,0.90,3.5,0.5,Type-4,weakly_adaptive,McDonald+2006,Large void in Lyman-α - underdense region
+cosmo_013,Bullet Cluster Collision,structure_formation,0.296,10200,collision_velocity,4500.0,500.0,0.92,0.80,4.6,0.7,Type-5,high_energy_impact,Clowe+2006,Dark matter separation - high-β collision
+cosmo_014,El Gordo Cluster,structure_formation,0.87,6500,mass_solar_log,15.2,0.1,0.94,0.82,4.7,0.6,Type-5,extreme_mass,Menanteau+2012,Most massive at z~0.87 - too massive too early
+cosmo_015,JWST CEERS2 Galaxy,early_structure,12.0,360,stellar_mass_log,9.0,0.4,0.97,0.84,5.1,0.8,Type-5,massive_early,Finkelstein+2022,Surprisingly massive at z~12
+cosmo_016,SPT0615-JD,early_structure,10.0,480,dust_emission,2.5,0.8,0.91,0.81,4.4,0.7,Type-5,early_dust,Marrone+2018,Dust detection at z~10 - rapid enrichment
+cosmo_017,Cosmic Web Filament,large_scale,0.43,9800,filament_density,2.5,0.5,0.82,0.88,3.9,0.5,Type-4,weakly_adaptive,Eckert+2015,WHIM filament - percolation structure
+cosmo_018,BAO Peak (SDSS),large_scale,0.35,10500,correlation_length,105.0,2.0,0.78,0.92,3.6,0.4,Type-4,weakly_adaptive,Eisenstein+2005,Baryon acoustic oscillation - standard ruler
+cosmo_019,Void Supervoid,large_scale,0.22,11800,void_radius,220.0,30.0,0.70,0.95,3.2,0.5,Type-3,intermediate,Szapudi+2015,Cold spot supervoid - underdense region
+cosmo_020,Type Ia SN Acceleration,expansion,0.5,8500,deceleration_q,-0.55,0.05,1.08,1.00,6.2,0.5,Type-6,dark_energy,Perlmutter+1999,Accelerating expansion discovery - or rebound?
+cosmo_021,Cosmic Dawn 21cm Signal,reionization,17.0,180,absorption_depth,-500.0,200.0,0.99,0.88,5.8,1.0,Type-6,extreme_absorption,Bowman+2018,EDGES - stronger than expected (disputed)
+cosmo_022,Primordial Black Holes,early_structure,30.0,100,mass_distribution,30.0,10.0,0.85,0.90,4.1,0.8,Type-5,collapse_seeds,Carr+2016,PBH as dark matter - early collapse
+cosmo_023,First Stars (Pop III),early_structure,20.0,150,mass_range,100.0,50.0,0.93,0.87,4.9,0.9,Type-5,massive_early,Bromm+2004,Very massive first stars - rapid collapse
+cosmo_024,Lensed Arc (SMACS 0723),structure_formation,1.0,5800,magnification,10.0,2.0,0.87,0.83,4.2,0.6,Type-5,gravitational_lens,JWST+2022,Strong lensing - high concentration
+cosmo_025,Shapley Supercluster,large_scale,0.046,13200,mass_solar_log,16.0,0.2,0.89,0.79,4.3,0.5,Type-5,local_attractor,Proust+2006,Largest local structure - Great Attractor target
