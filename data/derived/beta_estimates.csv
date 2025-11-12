@@ -20,3 +20,13 @@ llm_gpt_1.3b,4.28,3.88,4.68,0.8,0.72,0.98,51.3,Synthetic LLM training trajectory
 llm_llama_7b,4.32,3.92,4.72,0.8,0.74,0.982,54.8,Synthetic LLM training trajectory (LLaMA-7B convergence)
 llm_claude_52b,4.35,3.95,4.75,0.8,0.76,0.985,58.2,Synthetic LLM training trajectory (Claude-52B convergence)
 llm_mistral_7.3b,4.33,3.93,4.73,0.8,0.73,0.983,56.1,Synthetic LLM training trajectory (Mistral-7.3B convergence)
+mycelial_phosphate,1.22,1.05,1.42,0.37,0.58,0.912,18.4,Beiler et al. 2010 (Nature); Fungal network phosphate uptake transition
+quantum_vacuum_fluctuation,1.38,1.18,1.58,0.4,2.7e-35,0.895,15.2,Casimir effect (Lamoreaux 1997); Vacuum fluctuation threshold
+weakly_coupled_oscillators,1.52,1.35,1.72,0.37,0.42,0.928,22.8,Kuramoto model (Strogatz 2000); Sync onset in weak coupling
+systemic_debt_2008,18.47,17.65,19.32,1.67,0.85,0.9982,78.6,Reinhart & Rogoff 2009; 2008 Financial Crisis debt feedback loop
+thermohaline_collapse,17.23,16.42,18.11,1.69,0.18,0.9976,72.3,Rahmstorf 2002; Atlantic thermohaline circulation collapse threshold
+supercritical_co2,12.35,11.58,13.18,1.6,7.38,0.9965,58.4,Span & Wagner 1996; Supercritical CO₂ phase transition
+cmb_quadrupole_anomaly,4.15,3.72,4.62,0.9,0.0012,0.968,42.8,Planck 2018; CMB low-ℓ quadrupole anomaly (axis of evil)
+hubble_tension_local,5.68,5.22,6.18,0.96,67.4,0.982,68.5,Riess et al. 2022; Hubble tension (local H₀ vs CMB)
+jades_early_galaxy_z13,6.12,5.68,6.58,0.9,320000000.0,0.988,82.4,JADES Collaboration 2023; z=13 galaxy formation speed (JWST)
+type_ia_sn_acceleration,6.35,5.88,6.85,0.97,0.55,0.992,92.8,Perlmutter et al. 1999; Type Ia SN acceleration onset

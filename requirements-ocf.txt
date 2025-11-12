@@ -1,0 +1,37 @@
+# Feldtheorie OCF Data Pipelines Dependencies
+# Based on Open Climate Fix infrastructure (MIT)
+
+# ============================================================================
+# Core Data Stack
+# ============================================================================
+xarray>=2024.6.0
+dask[array]>=2024.6.0
+fsspec>=2024.5.0
+zarr>=2.17.0
+numcodecs>=0.12.0
+numpy>=1.26
+pandas>=2.2
+python-dateutil>=2.9
+
+# ============================================================================
+# Optional: Progress/CLI
+# ============================================================================
+tqdm>=4.66
+typer>=0.12
+
+# ============================================================================
+# Optional: Config
+# ============================================================================
+tomli>=2.0 ; python_version < "3.11"
+
+# ============================================================================
+# Optional: Airflow (only if using DAGs)
+# ============================================================================
+# apache-airflow>=2.9 ; python_version >= "3.9"
+
+# ============================================================================
+# Notes:
+# ============================================================================
+# • Portions inspired by Open Climate Fix (graph_weather, skillful_nowcasting, PVNet)
+# • MIT License - see ACKNOWLEDGEMENTS.md for attribution
+# • For Airflow usage: uncomment apache-airflow line above
