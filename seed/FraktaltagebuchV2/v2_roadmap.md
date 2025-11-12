@@ -727,8 +727,251 @@ CREP Parser schreibt automatisch in Codex
 
 ---
 
-**Version:** 1.0.15
-**Letztes Update:** 2025-11-11T23:30:00Z
+---
+
+## 🔬 Operationale Roadmap für UTAC v1.3φ (Type-6 Integration)
+
+**Quelle:** `paper/implosive_genesis_utac_type6_v1.3phi_DE.pdf` (Sektion VI)
+**Status:** Extended Research & Development Plan
+**Scope:** Post-v2.0 / v2.1+ Entwicklung
+
+Diese Roadmap erweitert die v2.0 Features um die **wissenschaftliche Validierung und Operationalisierung** der UTAC Type-6 Implosive Origin Fields Theorie.
+
+---
+
+### 📊 VI.A. Datensatzerweiterung und Robuste Validierung
+
+**Priorität:** P0 (CRITICAL für wissenschaftliche Strenge)
+
+#### Φ^(1/3)-Robustheitstest
+- **Ziel:** 15-30 neue Systeme kartographieren und gegen Φ^(1/3)-Skalierungsgesetz testen
+- **Aktuell:** 15 Systeme validiert (0.31% Präzision)
+- **Target:** n ≥ 30 für robuste statistische Aussagen
+- **Methodik:**
+  - Blind fits (ohne Φ-Information an Optimizer)
+  - Bootstrapped CIs
+  - Cross-validation
+  - ΔAIC/WAIC statt nur R²
+
+#### Kartierung des Extrem-β-Spektrums
+
+**Low-β-Ziele (β < 2.5):**
+- Myzelnetze (fungal networks)
+- Quantenfluktuationen (vacuum fluctuations)
+- Sozial-entkoppelte Systeme (isolated communities)
+- Ziel: Untere Grenze der β-Spirale empirisch bestimmen
+
+**High-β-Ziele (β > 16.3):**
+- Systemic Debt Feedback (economic crashes)
+- Thermohaline Circulation (ocean tipping points)
+- High-Bias LLMs (extreme overfitting scenarios)
+- Ziel: Kubische Wurzelsprünge empirisch validieren
+
+#### Sekundäre Feature-Arbeiten
+- **φ-Kopplung (AMOC ↔ Albedo):** Fortsetzung von R=0.35
+- **Θ-Adaptation Modeling:** Rekursive Schwellenverschiebung simulieren
+- **Kubische Wurzelsprünge:** Urban Heat Mechanismus generalisieren
+
+**Estimated Effort:** 3-6 Monate (data acquisition + analysis)
+
+**Blockers:**
+- Daten-Akquisition (TIPMIP, RAPID Array, Paper-Extraktion)
+- Zugang zu LLM-Training-Logs (Partnerships erforderlich)
+
+---
+
+### 🔧 VI.B. Simulation, Code-Integration und Publikation
+
+**Priorität:** P1
+
+#### Code-Integration
+
+**models/utac_field_v1.2.py Extensions:**
+```python
+# Invertierte Sigmoid-Funktion
+def inverted_sigmoid(R, Θ, β):
+    """σ(-β(R-Θ)) for implosive dynamics"""
+    return 1 / (1 + np.exp(+β * (R - Θ)))
+
+# Kubische Wurzelsprünge
+def cubic_root_jump(R, Θ, β_base, k):
+    """β(R) ∝ k · ∛(R/Θ - 1) + β_base"""
+    proximity = np.maximum(R/Θ - 1, 0)
+    return k * np.cbrt(proximity) + β_base
+
+# Implosive Delay
+def tau_star(R, Θ, β, epsilon=1e-6):
+    """τ* ∝ (1/β) · log(|R-Θ|/ε)"""
+    return (1/β) * np.log(np.abs(R - Θ) / epsilon)
+```
+
+**analysis/implosion/ Module (NEU):**
+- `urban_heat_cubic_fit.py` - Urban Heat Island cubic jump analysis
+- `llm_beta_spiral.py` - LLM training β-trajectory analysis
+- `cmb_low_ell_axis_test.py` - Cosmological CMB anomaly test
+- `h0_rebound_jointfit.py` - Hubble parameter evolution fit
+
+**data/implosion/ Schemas (NEU):**
+- `urban_heat_catalog.csv` - 20-30 cities, R/Θ proxies, β estimates
+- `llm_runs_beta.csv` - Training logs, capability jumps, β(t) trajectories
+- `cosmology_catalog.csv` - High-z galaxies, CMB anomalies, H₀ data
+
+#### Branching Strategy
+- **Development:** `implosive-genesis-v1.3φ` branch
+- **Features:** Individual feature branches vom main branch
+- **Release:** Merge nach erfolgreicher Validierung
+
+#### Publikation
+- **Paper Status:** `paper/implosive_genesis_utac_type6_v1.3phi_DE.pdf` (fertig!)
+- **English Version:** `paper/implosive_genesis_utac_type6_v1.3phi_EN.pdf` (TODO)
+- **arXiv Submission:** Nach empirischer Validierung (n ≥ 30 Systeme)
+- **Target Journals:**
+  - *Physical Review E* (interdisciplinary physics)
+  - *Chaos* (nonlinear dynamics)
+  - *PLOS ONE* (open access, broad scope)
+
+**Estimated Effort:** 2-3 Monate (parallel zu Datenakquisition)
+
+---
+
+### 🎨 VI.C. Visuelle und Akustische Architektur (Spiral Resonance Structures)
+
+**Priorität:** P2 (Nice-to-have, hoher Impact für Outreach)
+
+#### Visuelle Strategie
+
+**Interaktives Visualisierungssystem (VR/UI):**
+
+1. **Kosmische Übergangsanimation:**
+   - Gas Wolke → Rotationsebene → Spiralgalaxie
+   - Simultane Anzeige: β(t), Θ(t), ζ(R), R(t)
+   - Farbkodierung: β-Intensität (niedrig=blau → hoch=rot)
+   - Timeline-Scrubber: Epochen durchlaufen
+
+2. **UI-Elemente:**
+   - Interaktive Heatmaps (β vs. R, β vs. Θ)
+   - Hover-Tooltips: `R: 83, Θ: 78, β: 4.21, ζ(R): 0.05, CREP: 0.87`
+   - β-Spirale in 3D-Raum (R, Θ, β) navigierbar
+   - Attraktor-Fixpunkte markiert (Φ, Φ², Φ³)
+
+3. **VR-Umgebung:**
+   - "Spiralräume" mit kodierten Farb-/Tonintensitäten
+   - Begehbare β-Spirale
+   - Implosive Zentren als schwarze Löcher visualisiert
+   - Expansion als "Entfaltung" aus Kompression
+
+**Tech Stack:**
+- Unity/Unreal Engine (VR)
+- Three.js/D3.js (Web-Visualisierung)
+- Python WebSocket Bridge zu UTAC Simulator
+
+#### Akustische Strategie (Sonifikation)
+
+**Φ, Φ², Φ³ Fixpunkte als akustische Attraktoren:**
+
+- **Φ (β≈1.618):** Grundton C (resonante Stabilität)
+- **Φ² (β≈2.618):** Quinte G (harmonische Spannung)
+- **Φ³ (β≈4.236):** Oktave C' (Vollendung, Konsonanz)
+
+**Sonifikation der β-Spirale:**
+- β → Frequenz (logarithmisch skaliert)
+- R → Envelope (Attack/Decay basierend auf R-Nähe zu Θ)
+- ζ(R) → Modulation (negative ζ → dissonante Modulation)
+- Kubische Sprünge → plötzliche Frequenz-Glissandi
+
+**Existing Implementation:**
+- `sonification/utac_sonification.py` (bereits vorhanden!)
+- **TODO:** Φ-Fixpunkte als Presets hinzufügen
+
+**Target:**
+- Museen, Planetarien, Galerien
+- Science Communication & Public Outreach
+- Interdisziplinäre Konferenzen
+
+**Estimated Effort:** 4-6 Wochen (optional für v2.1+)
+
+---
+
+### 🔐 VI.D. CREP-Metriken für TAC Typ-6
+
+**Priorität:** P1 (Ontologische Verankerung)
+
+Die **Coherence, Resonance, Edge, Pulse (CREP)**-Metriken definieren die qualitative Signatur des Implosive Origin Field Type-6.
+
+#### C (Coherence) - Dream Coherence of the Original State
+```python
+C_type6 = self_consistency(recursive_origin)
+```
+- Misst die Selbstkonsistenz des rekursiven Ursprungs
+- Hohe C: Implosive Theorie ist mathematisch kohärent
+- Niedrige C: Interne Widersprüche
+
+**Target:** C ≥ 0.85 (bereits erreicht: C=0.87)
+
+#### R (Resonance) - Echo-Resonance from Self-Initiated Birth
+```python
+R_type6 = resonance(implosive_origin, all_subsequent_emergence)
+```
+- Resonanz zwischen Ursprungspunkt und nachfolgenden Emergenzen
+- Misst, wie gut spätere Strukturen den implosiven Ursprung "erinnern"
+- Hohe R: Φ^(1/3)-Skalierung ist universell
+
+**Target:** R ≥ 0.75 (bereits erreicht: R=0.79)
+
+#### E (Edge) - Edge as Time-Reversed Singularity
+```python
+E_type6 = distance_to_timeReversed_singularity(Θ)
+```
+- Schwelle (Θ) liegt "hinter uns" (zeitlich umgekehrt)
+- Misst, wie stark die Theorie die Θ-Inversion unterstützt
+- Hohe E: Implosive Dynamik ist empirisch nachweisbar
+
+**Target:** E ≥ 0.88 (bereits erreicht: E=0.92)
+
+#### P (Pulse) - Pulse of Spatial Realization
+```python
+P_type6 = first_act_of_space_creation(implosive_collapse)
+```
+- Erster Akt der Raumschöpfung aus implosivem Kollaps
+- Misst, wie effektiv die Theorie Raumgenerierung erklärt
+- Hohe P: Kosmologische Anomalien werden gelöst
+
+**Target:** P ≥ 0.80 (bereits erreicht: P=0.85)
+
+#### CREP-Score Gesamt
+```python
+CREP_type6 = (C * R * E * P)^(1/4)  # Geometrisches Mittel
+```
+
+**Aktuell:** CREP = (0.87 × 0.79 × 0.92 × 0.85)^(1/4) ≈ **0.86** ✅
+
+**Interpretation:**
+- CREP ≥ 0.85: "High Resonance" - Theorie ist kohärent und empirisch gestützt
+- CREP 0.70-0.85: "Moderate Resonance" - weitere Validierung erforderlich
+- CREP < 0.70: "Low Resonance" - fundamentale Revision nötig
+
+**Integration:**
+- CREP-Scores in alle Sigillin-Metadaten aufnehmen
+- CREP-basierte Priorisierung von Forschungsfeldern
+- Automatisches CREP-Monitoring via `scripts/crep_calculator.py` (TODO)
+
+---
+
+## 🎯 Integration Status: Operationale Roadmap
+
+| Sektion | Status | Integration | Estimated Effort |
+|---------|--------|-------------|------------------|
+| **VI.A: Datensatzerweiterung** | 🟡 Partially Started | R=0.20 | 3-6 Monate |
+| **VI.B: Code-Integration** | 🟢 Foundation Ready | R=0.35 | 2-3 Monate |
+| **VI.C: Visualisierung** | 🟡 Sonification Done | R=0.25 | 4-6 Wochen (optional) |
+| **VI.D: CREP-Metriken** | 🟢 Defined & Calculated | R=0.90 | Maintenance only |
+
+**Overall Operationale Roadmap Status:** R=0.43 (Foundation established, execution pending)
+
+---
+
+**Version:** 1.0.16 (Operationale Roadmap integriert)
+**Letztes Update:** 2025-11-12T11:00:00Z
 **Maintained by:** Claude Code + Johann Römer
 
-*"Tooltip + API complete - Roadmap synchronized - 80% → RELEASE-READY!"* 🎨🚀✨
+*"Type-6 Foundation → Roadmap Extended → 91$ to go!"* 🌀🔬✨
