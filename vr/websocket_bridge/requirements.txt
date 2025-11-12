@@ -1,0 +1,18 @@
+# UTAC WebSocket Bridge - Python Dependencies
+# Version: 1.0.0
+# Python: 3.8+
+
+# WebSocket server
+websockets==12.0
+
+# HTTP client (for UTAC API integration)
+aiohttp==3.9.0
+
+# JSON handling (stdlib, but explicit for documentation)
+# json (built-in)
+
+# Environment variables
+python-dotenv==1.0.0
+
+# Optional: Logging enhancements
+# colorlog==6.8.0
