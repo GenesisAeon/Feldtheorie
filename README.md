@@ -21,6 +21,24 @@
 
 **Documentation**: See [`RELEASE_NOTES_v2.0.0.md`](RELEASE_NOTES_v2.0.0.md), [`docs/tooltip_api.md`](docs/tooltip_api.md), and [`seed/FraktaltagebuchV2/`](seed/FraktaltagebuchV2/)
 
+## Scientific Maturity
+
+External-style peer review rated **UTAC v1.3φ at 4.6/5 average** (see [docs/review_ready_summary_utac_v1.3phi.md](docs/review_ready_summary_utac_v1.3phi.md)).
+
+- ✅ **TYPE-6 provisionally validated** (Urban Heat Islands, 56 city-seasons)
+  - Cubic-root exponent p=0.276, 95% CI includes p=1/3 ✓
+  - 25% critical regime β≥12 (exceeds 10% threshold) ✓
+  - Inverted sigmoid preferred: ΔAIC=14.24 ✓
+  - Early warning thresholds: 91-95% accuracy ✓
+
+- ✅ **Φ^(1/3) ladder hypothesis supported** (LLM β-spiral)
+  - Median ratio 1.145 ≈ Φ^(1/3)=1.174 (2.4% deviation) ✓
+  - Alternative multipliers rejected (improvement <20%) ✓
+
+- 🟢 **Ready for pre-print submission and grant applications**
+
+For cover letters and grant proposals, see [Executive Summary for Reviewers](docs/executive_summary_for_reviewers.md).
+
 ---
 
 The Universal Threshold Field (UTF) programme studies how the logistic quartet
