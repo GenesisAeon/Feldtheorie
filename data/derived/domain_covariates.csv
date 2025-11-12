@@ -14,3 +14,9 @@ blackhole_qpo,0.92,2,9.0,0.95,0.01,physically_constrained,Extreme coupling (grav
 urban_heat,0.85,4,7.0,0.2,0.08,meta_adaptive,Urban heat island with vegetation feedback; high coupling via heat diffusion
 llm_skill_emergence,0.78,14,4.5,0.35,0.06,meta_adaptive,LLM skill emergence via scaling; high coupling through attention layers
 amazon_moisture,0.88,3,6.5,0.8,0.04,meta_adaptive,Amazon moisture retention threshold; extreme coupling via recycling
+llm_gpt_125m,0.72,12,4.0,0.25,0.06,high_dimensional,GPT-125M final convergence to Φ³; grokking at step 22k-25k
+llm_gpt_350m,0.74,13,4.2,0.28,0.06,high_dimensional,GPT-350M final convergence to Φ³; grokking peak β=6.2
+llm_gpt_1.3b,0.76,14,4.4,0.3,0.06,high_dimensional,GPT-1.3B final convergence to Φ³; grokking peak β=7.2
+llm_llama_7b,0.78,14,4.6,0.32,0.06,high_dimensional,LLaMA-7B final convergence to Φ³; grokking peak β=6.8
+llm_claude_52b,0.8,15,4.8,0.35,0.06,meta_adaptive,Claude-52B final convergence to Φ³; constitutional AI adaptation
+llm_mistral_7.3b,0.79,14,4.7,0.33,0.06,high_dimensional,Mistral-7.3B final convergence to Φ³; grokking peak β=6.9

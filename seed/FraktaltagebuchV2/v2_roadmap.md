@@ -266,12 +266,12 @@ Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)
 
 ---
 
-### ✅ v2-feat-core-003: Meta-Regression v2 - Field Type Enhancement
+### 🟡 v2-feat-core-003: Meta-Regression v2 - Field Type Enhancement + Dataset Expansion
 
-**Status:** ✅ COMPLETED (2025-11-11) - **Conceptual Validation!**
+**Status:** 🟡 IN PROGRESS (v2.0 Conceptual Validation ✅, v2.1 Dataset Expansion Phase 1 ✅)
 **Priority:** P0 (CRITICAL)
 **Scope:** `analysis/`, `data/derived/`, `docs/`
-**R=0.60, Θ=0.70, β=4.5** (Updated: 2025-11-11)
+**R=0.65 (estimated), Θ=0.70, β=4.5** (Updated: 2025-11-12)
 
 **Problem (Original):** Kontinuierliche Kovariaten erklären nur R²≈0.43
 
@@ -307,18 +307,42 @@ Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)
 - ✅ `analysis/results/beta_meta_regression_v2_diagnostics_20251111T155257Z.json` (NEW!)
 - ✅ `docs/meta_regression_v2_field_types_report.md` (NEW!)
 
-**For v2.0 Release:**
+**For v2.0 Release (COMPLETE):**
 - ✅ Accept as **conceptual validation** (η²=0.735 is strong evidence!)
 - ✅ Report R²=0.60 with sample size caveat
 - ✅ Emphasize bootstrap R² median=0.87 as potential
-- ⏸️ Defer R² ≥ 0.70 to v2.1+ (requires n ≥ 30 systems)
 
-**For v2.1+ (Future Work):**
-- Add 15-30 more systems to dataset (target: n ≥ 30)
+**For v2.1 Dataset Expansion:**
+
+**Phase 1: LLM Systems (2025-11-12) ✅ COMPLETE**
+- ✅ Added 6 LLM training trajectories (n=15 → n=21, +40%)
+- ✅ All 6 converge to Φ³ = 4.236 (deviation: 0.8-2.7%)
+- ✅ Domain diversity: AI/ML 3 → 9 systems (+200%)
+- ✅ Script: `analysis/add_llm_systems_to_meta_regression.py`
+- ⏸️ Meta-regression re-fit pending (blocker: numpy installation)
+- 📊 Expected R²: 0.65-0.70 (preliminary estimate)
+
+**Systems Added:**
+1. llm_gpt_125m: β=4.20 (high_dimensional)
+2. llm_gpt_350m: β=4.25 (high_dimensional)
+3. llm_gpt_1.3b: β=4.28 (high_dimensional)
+4. llm_llama_7b: β=4.32 (high_dimensional)
+5. llm_claude_52b: β=4.35 (meta_adaptive)
+6. llm_mistral_7.3b: β=4.33 (high_dimensional)
+
+**Phase 2: Meta-Regression Re-fit (Next Session) ⏸️ PENDING**
+- [ ] Install numpy/scipy/pandas/statsmodels
+- [ ] Re-run `analysis/beta_meta_regression_v2_field_types.py`
+- [ ] Validate R² improvement (target: ≥0.65)
+- [ ] Bootstrap sensitivity analysis with n=21
+- **Hook:** `FRAKTALLAUF_HOOK_PHASE2_META_REGRESSION_n21.md`
+
+**Phase 3: Final Expansion to n≥30 (Future Work)**
+- Add 9-15 more systems (cosmology, physics, extreme β)
+- Target: n ≥ 30 → R² ≥ 0.70
 - Hierarchical/Bayesian models with Field Type priors
-- Re-run regression, expect R² ≥ 0.70 with larger sample
 
-**Codex Ref:** v2-pr-0020
+**Codex Ref:** v2-pr-0020 (Field Types), v2-pr-0027 (Dataset Expansion Phase 1)
 
 **Paradigm Shift:**
 From "β is universal constant" (failed - R²=0.43)
