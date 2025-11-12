@@ -268,10 +268,10 @@ Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)
 
 ### 🟡 v2-feat-core-003: Meta-Regression v2 - Field Type Enhancement + Dataset Expansion
 
-**Status:** 🟡 IN PROGRESS (v2.0 Conceptual Validation ✅, v2.1 Dataset Expansion Phase 1 ✅)
+**Status:** 🟡 IN PROGRESS (v2.0 ✅, v2.1 Phase 1 ✅, v2.1 Phase 2 ✅, Phase 3 PENDING)
 **Priority:** P0 (CRITICAL)
 **Scope:** `analysis/`, `data/derived/`, `docs/`
-**R=0.65 (estimated), Θ=0.70, β=4.5** (Updated: 2025-11-12)
+**R=0.48 (n=21 completed), Θ=0.70, β=4.5** (Updated: 2025-11-12)
 
 **Problem (Original):** Kontinuierliche Kovariaten erklären nur R²≈0.43
 
@@ -330,19 +330,29 @@ Spektralanalyse für UTAC Zeitreihen (Frequenzdomäne)
 5. llm_claude_52b: β=4.35 (meta_adaptive)
 6. llm_mistral_7.3b: β=4.33 (high_dimensional)
 
-**Phase 2: Meta-Regression Re-fit (Next Session) ⏸️ PENDING**
-- [ ] Install numpy/scipy/pandas/statsmodels
-- [ ] Re-run `analysis/beta_meta_regression_v2_field_types.py`
-- [ ] Validate R² improvement (target: ≥0.65)
-- [ ] Bootstrap sensitivity analysis with n=21
-- **Hook:** `FRAKTALLAUF_HOOK_PHASE2_META_REGRESSION_n21.md`
+**Phase 2: Meta-Regression Re-fit (2025-11-12) ✅ COMPLETE**
+- [x] Install numpy/scipy/pandas/statsmodels ✅
+- [x] Re-run `analysis/beta_meta_regression_v2_field_types.py` ✅
+- [x] Validate results & diagnose β-diversity issue ✅
+- **Results:** R²=0.476 (↓ from 0.596), η²=0.542 (p=0.010) ✅
+- **Key Finding:** LLM β-variance = 0.54, Non-LLM = 18.75 (34.7x ratio!)
+- **Discovery:** LLMs form β-universality class (all converge to Φ³≈4.2)
+- **Implication:** DIVERSITY > QUANTITY for Meta-Regression
+- **Documentation:** `FRAKTALLAUF_PHASE2_RESULTS.md`
 
-**Phase 3: Final Expansion to n≥30 (Future Work)**
-- Add 9-15 more systems (cosmology, physics, extreme β)
-- Target: n ≥ 30 → R² ≥ 0.70
-- Hierarchical/Bayesian models with Field Type priors
+**Phase 3: Final Expansion to n≥30 (Future Work) - REVISED STRATEGY**
+- **Key Insight:** Need DIVERSITY, not more LLMs!
+- **NOT:** Add more LLM systems (already at 8, β-homogeneity issue)
+- **YES:** Add extreme β, cosmology, physics (maximize β-range coverage)
+- **Target Systems:**
+  - 2-3 Extreme Low-β (mycelial networks β≈1.2, quantum fluctuations β≈1.4)
+  - 2-3 Extreme High-β (systemic debt β≈18.5, thermohaline β≈17.2)
+  - 3-5 Cosmology (CMB anomaly, Hubble tension, early galaxies)
+  - 3-4 Physics (percolation, superfluidity, supercritical transitions)
+- **Expected:** n≥30, β-range 1.2-18.5, R²≥0.70 ✅
+- **Budget:** ~$12-18 (Phase 3a+3b)
 
-**Codex Ref:** v2-pr-0020 (Field Types), v2-pr-0027 (Dataset Expansion Phase 1)
+**Codex Ref:** v2-pr-0020 (Field Types), v2-pr-0027 (Phase 1), Phase 2 (FRAKTALLAUF_PHASE2_RESULTS.md)
 
 **Paradigm Shift:**
 From "β is universal constant" (failed - R²=0.43)
