@@ -7,6 +7,7 @@ import os
 import yaml
 import pandas as pd
 import xarray as xr
+from pathlib import Path
 
 METADATA_DIR = "data/metadata/"
 DATA_DIR = "data/"
@@ -45,49 +46,63 @@ def load_dataset(meta):
 
 def calculate_tau_star(beta, theta, R):
     """
-    Calculate τ* (time to threshold) using the logistic UTAC model.
-
-    Parameters:
-    -----------
-    beta : float
-        Steepness of the logistic curve
-    theta : float
-        Threshold value
-    R : float
-        Current state variable
-
+    Calculate τ* (time to threshold) for a system.
+    
+    Args:
+        beta: Steepness parameter
+        theta: Threshold value
+        R: Current resource/activation level
+    
     Returns:
-    --------
-    float
-        Time to threshold τ* (in years, assuming normalized time scale)
+        float: Time to threshold (arbitrary units)
     """
-    import numpy as np
-    # Simplified calculation: τ* ≈ (Θ - R) / (β * σ(β(R-Θ)))
-    # For demonstration purposes, using a linear approximation
-    sigma_val = 1 / (1 + np.exp(-beta * (R - theta)))
-    if sigma_val < 0.01:
-        # System far from threshold
-        return (theta - R) / 0.1  # Conservative estimate
-    else:
-        # System near threshold
-        return (theta - R) / (beta * sigma_val)
+    if R >= theta:
+        return 0.0  # Already at threshold
+    
+    # Simplified τ* calculation: τ* ∝ 1/(β·(θ-R))
+    # This is a first-order approximation
+    tau_star = 1.0 / (beta * (theta - R) + 1e-10)
+    return tau_star
 
 def load_all():
     """Load all metadata + datasets into a dictionary."""
     datasets = {}
+    metadata_path = Path(METADATA_DIR)
+    
+    if not metadata_path.exists():
+        print(f"Warning: {METADATA_DIR} does not exist")
+        return datasets
+    
     for file in os.listdir(METADATA_DIR):
         if file.endswith(".yaml"):
-            meta = load_metadata(file)
-            data = load_dataset(meta)
-            datasets[meta["dataset"]] = {
-                "metadata": meta,
-                "data": data
-            }
+            try:
+                meta = load_metadata(file)
+                data = load_dataset(meta)
+                datasets[meta["dataset"]] = {
+                    "metadata": meta,
+                    "data": data
+                }
+            except Exception as e:
+                print(f"Error loading {file}: {e}")
+    
     return datasets
 
 if __name__ == "__main__":
     all_data = load_all()
+    print(f"\n📊 Loaded {len(all_data)} datasets:\n")
+    
     for name, content in all_data.items():
-        print(f"Loaded: {name}")
+        print(f"  ✅ {name}")
+        meta = content["metadata"]
+        print(f"     β: {meta.get('beta_estimate', 'N/A')}")
+        print(f"     Period: {meta.get('period', 'N/A')}")
+        print(f"     Source: {meta.get('source', 'N/A')}")
+        
         if content["data"] is not None:
-            print(f" → Shape: {content['data'].shape if hasattr(content['data'], 'shape') else 'xarray dataset'}")
+            if hasattr(content['data'], 'shape'):
+                print(f"     Shape: {content['data'].shape}")
+            else:
+                print(f"     Type: xarray dataset")
+        else:
+            print(f"     ⚠️  No data file found (metadata only)")
+        print()

@@ -7,3 +7,18 @@ variables:
   - temperature_profile
 license: CC-BY-4.0
 notes: Time series of ocean circulation variability and reanalysis ensembles
+field_type: Weakly Coupled
+beta_estimate: 4.0
+beta_ci_low: 3.5
+beta_ci_high: 4.5
+threshold_theta: 15.0
+coupling_strength: Moderate
+dimensionality: Low
+references:
+  - "RAPID Array Monitoring Program"
+  - "Copernicus Marine Environment Monitoring Service"
+  - "NOAA Atlantic Oceanographic and Meteorological Laboratory"
+data_quality: Very High
+sample_size: Large (30+ years continuous monitoring)
+critical_threshold: true
+tipping_risk: High (Potential for abrupt transition)

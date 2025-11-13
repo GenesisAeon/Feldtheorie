@@ -7,3 +7,19 @@ variables:
   - gravimetry
 license: CC-BY-4.0
 notes: Mass balance estimates from satellite altimetry and gravimetry, Amundsen Sea focus
+field_type: Strongly Coupled
+beta_estimate: 5.7
+beta_ci_low: 4.9
+beta_ci_high: 6.5
+threshold_theta: 2.5
+coupling_strength: High
+dimensionality: Medium
+references:
+  - "Ice sheet Mass Balance Inter-comparison Exercise (IMBIE) 2021"
+  - "ESA Climate Change Initiative"
+  - "British Antarctic Survey"
+data_quality: High
+sample_size: Medium (28 years, multiple satellites)
+critical_threshold: true
+tipping_risk: Very High (Marine ice sheet instability)
+societal_impact: Extreme (Multi-meter sea level rise potential)
