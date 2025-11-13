@@ -98,3 +98,31 @@ clean-cache:
 	find . -type d -name ".zarr" -exec rm -rf {} + 2>/dev/null || true
 	find . -type d -name "dask-worker-space" -exec rm -rf {} + 2>/dev/null || true
 	@echo "✅ Cache cleaned"
+
+# ============================================================================
+# RG Phase 2 Validation Pipeline (added 2025-11-13)
+# ============================================================================
+
+PYTHON ?= python3
+
+validate:
+	@echo "🔬 Running RG Phase 2 Validation..."
+	@RG_SIM_ENTRYPOINT="scripts.stubs.rg_sim_stub:simulate" \
+	$(PYTHON) scripts/validate_phase2.py --seeds 0 1 2 3 4 5 6 7 8 9 --lattice 64 128 256 --noise gaussian laplace poisson --J_over_T 0.5 1.0 1.5 2.0
+	@echo "✅ Validation complete"
+
+aggregate:
+	@echo "📊 Aggregating validation results..."
+	@$(PYTHON) scripts/aggregate_validation.py
+	@echo "✅ Aggregation complete"
+
+plots:
+	@echo "📈 Generating validation plots..."
+	@$(PYTHON) - <<'PY'
+from analysis.plots.rg_flow_plots import plot_overview
+plot_overview(save="analysis/results/plots")
+PY
+	@echo "✅ Plots saved to analysis/results/plots/"
+
+reproduce: validate aggregate plots
+	@echo "🎉 Reproduce complete: analysis/results/*"

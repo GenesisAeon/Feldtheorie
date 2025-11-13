@@ -7,3 +7,16 @@ variables:
   - ice_thickness
 license: CC-BY-4.0
 notes: Global glacier outlines, mass balance time series, and albedo changes
+field_type: Strongly Coupled
+beta_estimate: 5.3
+beta_ci_low: 4.5
+beta_ci_high: 6.1
+threshold_theta: 0.3
+coupling_strength: Moderate
+dimensionality: Medium
+references:
+  - "World Glacier Monitoring Service (WGMS)"
+  - "NSIDC Global Land Ice Measurements from Space (GLIMS)"
+  - "Copernicus Climate Change Service"
+data_quality: High
+sample_size: Medium (~40 years, global coverage)

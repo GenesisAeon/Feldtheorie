@@ -6,3 +6,16 @@ variables:
   - urban_vs_rural_delta
 license: CC-BY-4.0
 notes: Pixel-level intensities for >10,000 urban clusters, day/night separation
+field_type: Physically Triggered
+beta_estimate: 16.3
+beta_ci_low: 14.0
+beta_ci_high: 18.5
+threshold_theta: 10.0
+coupling_strength: Very High
+dimensionality: High-Dimensional
+references:
+  - "NASA MODIS Land Surface Temperature"
+  - "Yale Center for Earth Observation Surface UHI Database"
+  - "DWD Climate Data Center"
+data_quality: High
+sample_size: Large (>10,000 locations)

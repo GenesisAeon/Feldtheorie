@@ -7,3 +7,16 @@ variables:
   - soil_moisture
 license: CC-BY-4.0
 notes: Long-term rainfall trends and drought events in the Amazon basin
+field_type: Strongly Coupled
+beta_estimate: 14.6
+beta_ci_low: 12.8
+beta_ci_high: 16.4
+threshold_theta: 10.0
+coupling_strength: Very High
+dimensionality: High-Dimensional
+references:
+  - "Copernicus Climate Data Store"
+  - "CHIRPS: Climate Hazards Group InfraRed Precipitation with Station data"
+  - "IMERG: Integrated Multi-satellitE Retrievals for GPM"
+data_quality: High
+sample_size: Large (42+ years)
