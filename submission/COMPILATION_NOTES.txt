@@ -1,0 +1,51 @@
+COMPILATION NOTES FOR EMERGENT STEEPNESS PAPER
+==============================================
+
+QUICK START (Overleaf):
+1. Create new project on Overleaf
+2. Upload emergent_steepness.tex
+3. Upload references.bib
+4. Create "figures/" folder and upload all PDFs from figures/
+5. Compiler: pdflatex
+6. Click "Recompile"
+
+FIGURE PLACEMENT:
+All figures are referenced in the LaTeX as:
+  \includegraphics[width=0.95\textwidth]{figures/figure1_utac_overview.pdf}
+
+Make sure the figures/ directory structure is preserved!
+
+BIBLIOGRAPHY:
+The paper uses natbib with authoryear style.
+BibTeX must be run BETWEEN pdflatex runs:
+  pdflatex → bibtex → pdflatex → pdflatex
+
+KNOWN ISSUES:
+- None! Paper compiles cleanly with standard packages.
+
+MISSING COMPONENTS (to be added by authors):
+- Author names & affiliations
+- Acknowledgments (AI collaboration already documented)
+- Funding information
+- ORCID IDs
+- Corresponding author email
+
+SUPPLEMENTARY MATERIAL:
+- supplementary_information.md is in Markdown format
+- Can be converted to PDF using pandoc or submitted as-is
+- Contains complete 36-system table, derivations, ABM code
+
+FIGURE REGENERATION:
+If figures need to be regenerated with updated data:
+  python scripts/generate_all_figures.py --output figures/ --format pdf
+
+VALIDATION DATA:
+To regenerate with real validation data:
+  make reproduce
+  python scripts/generate_all_figures.py --output figures/ --format pdf
+
+This will use actual ABM simulation results instead of synthetic data.
+
+---
+Generated: 2025-11-13
+UTAC V2.0 - Emergent Steepness Project
