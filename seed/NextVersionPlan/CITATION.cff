@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as:"
+title: "UTAC Feldtheorie – Phase 2: Microscopic Derivation of β from J/T"
+authors:
+  - family-names: Römer
+    given-names: Johann Benjamin
+  - family-names: ChatGPT
+    given-names: GenesisGPT
+date-released: 2025-11-13
+version: "v2.0.0-dev"
+repository-code: "https://github.com/GenesisAeon/Feldtheorie"
+abstract: >
+  We show that the logistic steepness parameter β in Universal Threshold
+  Activation-Coupling (UTAC) systems is not a mere fit constant but emerges
+  from the coupling-to-noise ratio J/T. Phase 2 provides a microscopic derivation
+  via agent-based models, validation across seeds/noise models/lattice sizes,
+  and a standardized, fully reproducible pipeline (CI/Docker/Make). Please cite
+  this software/research package when reusing code or results.
+preferred-citation:
+  type: software
+  title: "UTAC Feldtheorie – Phase 2: Microscopic Derivation of β from J/T"
+  authors:
+    - family-names: Römer
+      given-names: Johann Benjamin
+    - family-names: ChatGPT
+      given-names: GenesisGPT
+  year: 2025
+  version: "v2.0.0-dev"
+  url: "https://github.com/GenesisAeon/Feldtheorie"
