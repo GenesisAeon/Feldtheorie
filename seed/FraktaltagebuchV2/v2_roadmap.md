@@ -23389,3 +23389,83 @@ CREP_type6 = (C * R * E * P)^(1/4)  # Geometrisches Mittel
 - **Phase 4 (n=36): R²=0.732, adj. R²=0.665** (↑ **+0.9% adj. R²**, GAP FILLING!)
 
 **Codex Ref:** v2-pr-0020 (Field Types), v2-pr-0027 (Phase 1), v2-pr-0029 (Phase 3a), v2-pr-0030 (Phase 4)
+
+---
+
+## 🌍 Outreach & Community (NEW!)
+
+### 🟢 v2-feat-outreach-001: Zenodo Community Growth & Living Atlas
+
+**Status:** 🟡 IN PROGRESS (Foundation Complete!)
+**Priority:** P2 (Important for long-term impact)
+**Scope:** `docs/`, Zenodo, GitHub, Social
+**R=0.25, β=3.5** (Updated: 2025-11-13)
+
+**Beschreibung:**
+Community building through Zenodo releases, Living Atlas, and strategic outreach
+
+**Current Metrics (2025-11-13):**
+
+**Zenodo v1.2 (2 weeks):**
+- Views: 129
+- Downloads: 49
+- Conversion: 38%
+- **Signal:** 🟢 Strong resonance! (Real usage, not just curiosity)
+
+**Zenodo v4 (5 days):**
+- Views: 50
+- Downloads: 48
+- Conversion: 96%! 🎉
+- **Signal:** 🟢 Updates are taken seriously!
+
+**Interpretation:**
+- ✅ Aufbauende Resonanz (not just "curiosity clicks")
+- ✅ Iterative Aufmerksamkeit (community follows updates)
+- ✅ Signalwirkung (niche positioning works!)
+
+**3-Step Strategy:**
+
+**1. Release Timeline (Living Updates):**
+- Cadence: Alle 2-3 Wochen
+- Format: Klare Neuerung pro Version
+- Impact: Steady growth, community engaged
+
+**2. Living Atlas (Systemtyp-Kartographie):**
+- Interaktive Karte aller 36+ Systeme
+- Searchable/filterable (HTML + PDF)
+- β-Spiral Visualization
+- CREP-Scores pro System
+- Versioniert via Zenodo (DOI)
+
+**3. Zenodo-Outreach Boost:**
+- Keywords optimieren (field type classification, emergent beta, etc.)
+- Abstract schärfen (clear value proposition)
+- Cross-linking (GitHub ↔ Zenodo ↔ arXiv)
+- Community-Engagement (Use Cases dokumentieren)
+
+**Deliverables:**
+- ✅ `docs/outreach_community_strategy.md` (Complete!)
+- ⏳ `docs/living_atlas_v1.0.html` (Interactive, Week 2)
+- ⏳ `docs/living_atlas_v1.0.pdf` (Citable, Week 2)
+- ⏳ Zenodo v2.0 Release (Optimized, Week 2)
+- ⏳ GitHub README update (Badges + Highlights, Week 2)
+
+**Estimated Effort:** 1-2 weeks (parallel)
+
+**Expected Impact (30 days):**
+- Views: 129 → 200-300
+- Downloads: 49 → 80-120
+- Citations: 0 → 1-3 (wenn Papers erscheinen)
+- GitHub Stars: ⭐ +10-20
+
+**Gap Code:** `utac-outreach-001` (community growth)
+
+**Next Steps:**
+1. **Living Atlas v1.0** erstellen (Systemtyp-Kartographie)
+2. **Zenodo v2.0** vorbereiten (optimierter Abstract + Keywords)
+3. **Cross-linking** aktivieren (GitHub ↔ Zenodo ↔ arXiv)
+
+**Source:** User Feedback (Zenodo Stats Analysis, 2025-11-13)
+
+---
+
