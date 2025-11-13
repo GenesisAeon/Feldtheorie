@@ -222,10 +222,12 @@ Completed:      ██████████████████ 100% (12/
 - [v2-pr-0026](entries/v2-pr-0026-type6-validation-infrastructure.md) - Type-6 Validation Infrastructure
 - [v2-pr-0027](entries/v2-pr-0027-type6-implosive-validations.md) - **Type-6 Implosive Validations** (LLM β-Spiral + Urban Heat) ✅
 - [v2-pr-0028](entries/v2-pr-0028-bootstrap-sensitivity-analysis.md) - **Bootstrap & Jackknife Sensitivity Analysis** ✅
+- [v2-pr-0030](entries/v2-pr-0030-rg-phase1-phenomenological-flow.md) - **RG Phase 1 Phenomenological Flow** ✅
+- [v2-pr-0031](entries/v2-pr-0031-latex-paper-compilation.md) - **LaTeX Paper Compilation - V2.0 Submission Ready** ✅ 📄
 
 ### Session Summaries
 - [2025-11-12 Session](entries/v2-session-2025-11-12-summary.md) - Type-6 Validations + Sensitivity Analysis
 
 ---
 
-**Aktualisiert:** 2025-11-12 | **Neue Entries:** v2-pr-0027, v2-pr-0028
+**Aktualisiert:** 2025-11-13 | **Neue Entries:** v2-pr-0030, v2-pr-0031 (Paper Compilation!)
