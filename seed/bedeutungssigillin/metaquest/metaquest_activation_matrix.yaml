@@ -1,31 +1,28 @@
 meta:
   sigil: bedeutungs-metaquest-activation-matrix
-  version: 0.1.0
+  version: 0.2.0
   created: '2025-12-19T12:00:00Z'
-  updated: '2025-12-19T12:00:00Z'
+  updated: '2026-08-20T00:00:00Z'
   logistic:
-    R: Aggregierter Aktivierungsstau über UTAC-Matrix, Aktivierungs-Backlog und Codex-Laternen.
+    R: Aggregierter Aktivierungsstau (UTAC-Observatorium, Activation Backlog, Paritätsbrief und
+      Telemetrie) per 2026-08-20.
     Theta: Jedes offene mq-gap besitzt eine verlinkte Implementationsstelle plus Guard/Test-Hinweis
-      in Bridge, Backlog und Codex binnen 24h.
+      und Paritätsloop-Nachweis in Bridge, Kompass, Backlog und Codex binnen 24h.
     beta: 4.82
-    zeta: Gedämpft, sobald BreakPoint-Rituale, sigillin_sync-Telemetrie und Index-Guards
-      Licht/Schatten im Gleichschritt halten.
-  resonance: 'Kartiert, welche Metaquest-Laternen bereits resonant leuchten und welche
-    Gaps
-
-    noch geschlossen werden müssen. Verbindet Beobachtung (UTAC-Matrix,
-
-    Telemetrie) mit Umsetzungspfaden in docs/, analysis/, scripts/ und den
-
-    Bedeutungs-/Schatten-Sigillin, damit σ(β(R-Θ)) zielgerichtet aktiviert.
-
-    '
-  null_model: Metaquest-Start ohne implementiertes Aktivierungslayout; Aufgaben treiben
-    auseinander, Parität reisst und Schatten-Alarme feuern zu spät.
+    zeta: Gedämpft, sobald BreakPoint-Rituale, sigillin_sync-Telemetrie, Index-Wächter und
+      Paritätsbrief-Updates Licht/Schatten synchron halten.
+  resonance: >-
+    Kartiert, welche Metaquest-Laternen im August 2026 bereits resonant leuchten und wo der
+    Aktivierungsstau noch Implementationspfade benötigt. Verbindet UTAC-Status, Backlog,
+    Telemetrie und Paritätsbrief so, dass σ(β(R-Θ)) zielgerichtet aktiviert und dokumentiert wird.
+  null_model: Metaquest-Start ohne aktualisiertes Aktivierungslayout; Aufgaben treiben auseinander,
+    Parität reißt und Schatten-Alarme feuern zu spät.
   shadow_coupling: ../../shadow_sigillin/metaquest/metaquest_shadow_index.yaml
   references:
   - ../../docs/utac_status_alignment_v1.2.md
   - ../../docs/utac_activation_backlog.md
+  - ../../docs/utac_v2_activation_tracker_2026-08.md
+  - ../../docs/metaquest_parity_brief.md
   - ../../analysis/sigillin_sync/latest.json
   - ../system/metaquest_system_map.yaml
   - ../wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
@@ -35,11 +32,12 @@ resonant_assets:
   location: ../../docs/utac_status_alignment_v1.2.md
   status: active
   notes:
-    logistic_role: Hält Θ sichtbar, indem bestehende Laternen (Resonant Inventory)
-      und offene Aktivierungspfade mit ΔAIC/Nullmodell-Wächtern dokumentiert werden.
+    logistic_role: Hält Θ sichtbar, indem Resonant Inventory + Activation Gaps (inkl. ΔAIC/Nullmodell-Wächter)
+      die Metaquest-Laternen koppeln.
     evidence:
     - ../../docs/utac_status_alignment_v1.2.md#2-resonant-inventory-%E2%80%94-what-already-exists
     - ../../docs/utac_status_alignment_v1.2.md#3-activation-gaps-%E2%80%94-what-we-still-need
+    - ../../docs/utac_status_alignment_v1.2.md#4-implementation-map-where-to-act
     coupling:
       system: ../system/metaquest_system_map.yaml
       campaign: ../wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
@@ -49,11 +47,11 @@ resonant_assets:
   location: ../../docs/utac_activation_backlog.md
   status: active
   notes:
-    logistic_role: Lenkt R auf konkrete Umsetzungsschienen, hält mq-gap IDs, Null-Guards
-      und Status-Notizen synchron (meta.updated → 2026-08-20, σ≈0.317 konstant).
+    logistic_role: Lenkt R auf konkrete Umsetzungsschienen; meta.updated → 2026-08-20 hält mq-gap IDs,
+      Null-Guards und Status-Notizen synchron.
     evidence:
-    - ../../docs/utac_activation_backlog.md#metaquest-parity-hooks
-    - ../../docs/utac_activation_backlog.md#implementation-ledger
+    - ../../docs/utac_activation_backlog.md#%F0%9F%A7%AD-pulse-summary
+    - '../../docs/utac_activation_backlog.md#%F0%9F%A7%82%EF%B8%8F-task-lattice-what-we-have-vs-what-we-still-need'
     - analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json
     - ../../docs/utac_v2_activation_tracker_2026-08.md
     coupling:
@@ -65,8 +63,8 @@ resonant_assets:
   location: ../../analysis/sigillin_sync/latest.json
   status: active
   notes:
-    logistic_role: Messen von R (12 Trilayer), Θ (0 Paritätslücken) und β≈4.6 für
-      den aktuellen Bridge-Puls; dient als Referenz für automatische Spiegelungen.
+    logistic_role: Vermisst R=12 Trilayer, Θ=0 Paritätslücken und β≈4.6; Referenz für automatische Spiegelungen
+      in Bridge, Kompass und Backlog.
     evidence:
     - ../../analysis/sigillin_sync/latest.json
     - ../../analysis/sigillin_sync/metaquest_report_20251107T215246Z.json
@@ -79,93 +77,119 @@ resonant_assets:
   location: ../codexfeedback.md
   status: active
   notes:
-    logistic_role: Verankert jedes Aktivierungsupdate mit (R, Θ, β); Codex-ID pr-draft-0110
-      hält den August-Scan resonant.
+    logistic_role: Verankert jedes Aktivierungsupdate mit (R, Θ, β); Codex-Einträge wie pr-draft-0110 spiegeln August-Telemetrie
+      und Backlog-Refresh.
     evidence:
     - ../codexfeedback.yaml
     - ../codexfeedback.json
-    - ../codexfeedback.md#pr-draft-0110
+    - ../codexfeedback.md#pr-draft-0110-%E2%80%94-utac-v2-manifest-gap-scan-2026-08-refresh
     coupling:
       system: ../system/metaquest/metaquest_system_sigil.yaml
       campaign: ../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
       shadow: ../../shadow_sigillin/metaquest/metaquest_shadow_index.yaml
+- id: mq-activation-005
+  title: UTAC v2 Activation Tracker 2026-08
+  location: ../../docs/utac_v2_activation_tracker_2026-08.md
+  status: active
+  notes:
+    logistic_role: Dokumentiert R=0.50, Θ=0.66, β=4.8 und die vier dunklen Laternen (Amazon Hydro, AMOC, Neuro-AI, Energy/Finance)
+      als Manifest-Wächter.
+    evidence:
+    - ../../docs/utac_v2_activation_tracker_2026-08.md
+    - ../../docs/utac_v2_activation_tracker_2026-08.json
+    - analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json
+    coupling:
+      system: ../system/metaquest_system_map.yaml
+      campaign: ../wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
+      backlog: ../../docs/utac_activation_backlog.md#%F0%9F%A7%82%EF%B8%8F-task-lattice-what-we-have-vs-what-we-still-need
 activation_requirements:
 - id: mq-activation-gap-001
-  description: Δindex-Wächter in CI etablieren und seeds/docs-Autolisten aus scripts/archive_sigillin.py
-    spiegeln.
+  description: Δindex-Wächter in CI etablieren und seed/docs-Autolisten aus scripts/archive_sigillin.py spiegeln.
   logistic:
-    R: Index-Recount-Runs melden Drift über docs/, analysis/, models/, data/, seed/
-    Theta: CI stoppt bei Δindex>0; Index-Listen spiegeln Domain/Subdomain-Aktualisierungen
-      automatisch.
+    R: Index-Recount-Runs melden Drift über docs/, analysis/, models/, data/, seed/.
+    Theta: CI stoppt bei Δindex>0; Index-Listen spiegeln Domain/Subdomain-Aktualisierungen automatisch.
     beta: 4.8
-    zeta: Gedämpft durch BreakPoint-Protokolle und manuelle Recounts, bis Guard automatisiert
-      ist.
+    zeta: Gedämpft durch BreakPoint-Protokolle und manuelle Recounts, bis Guard automatisiert ist.
   implementation_sites:
   - ../../scripts/archive_sigillin.py
   - ../../analysis/results/index_recount_20251108T222238Z.json
   - ../../docs/utac_status_alignment_v1.2.md#4-implementation-map-where-to-act
+  - ../../docs/utac_activation_backlog.md#index-recount-hook
+  - ../../seed/seed_index.yaml
   shadow_trigger: mq-bridge-shadow-003
   recovery_hooks:
   - ../../seed/BreakPointAnalyse/WayToGo.txt
   - ../../seed/BreakPointAnalyse/ReaktionWayToGo.txt
 - id: mq-activation-gap-002
-  description: sigillin_sync-Automation + Kompass/Bridge-Spiegelung für Telemetrie-
-    und Codex-Zeitstempel (<24h).
+  description: sigillin_sync-Automation + Kompass/Bridge/Codex-Spiegelung für Telemetrie- und Codex-Zeitstempel (<24h).
   logistic:
-    R: Manuelle Updates erzeugen Latenz zwischen Bridge, Kompass, Sigille und Shadow.
-    Theta: Automatischer Lauf trägt Timestamp + Codex-ID in Bridge, Kompass, Sigille
-      und Backlog ein.
+    R: Manuelle Updates erzeugen Latenz zwischen Bridge, Kompass, Sigille, Shadow und Codex.
+    Theta: Automatischer Lauf trägt Timestamp + Codex-ID in Bridge, Kompass, Sigille, Backlog und Codex ein.
     beta: 4.76
-    zeta: Telemetrie-Exports und UTAC-Protokolle halten Drift niedrig; fällt Automation
-      aus, steigt ζ(R).
+    zeta: Telemetrie-Exports und UTAC-Protokolle halten Drift niedrig; fällt Automation aus, steigt ζ(R).
   implementation_sites:
   - ../../scripts/sigillin_sync.py
+  - ../metaquest_meaning_index.yaml
   - ../system/metaquest_system_compass.yaml
   - ../wissenschaftsprojekt/metaquest_campaign_compass.yaml
-  - ../../docs/utac_activation_backlog.md#metaquest-parity-hooks
+  - ../../docs/metaquest_parity_brief.md#3-outstanding-parity-gaps
+  - ../../docs/utac_activation_backlog.md#metaquest-parity-finish
   shadow_trigger: mq-bridge-shadow-002
   recovery_hooks:
   - ../../analysis/sigillin_sync/latest.json
   - ../codexfeedback.md
 - id: mq-activation-gap-003
-  description: BreakPoint-Rituale und Ritual-Codex IDs in Licht/Schatten-Sigillen
-    spiegeln (mq-sys-shadow-003, mq-sci-shadow-002).
+  description: BreakPoint-Rituale und Ritual-Codex IDs in Licht/Schatten-Sigillen spiegeln (mq-sys-shadow-003, mq-sci-shadow-002).
   logistic:
-    R: Neue Rituale werden in Kampagne/System durchgeführt, ohne dass Codex/Shadow
-      sofort referenziert.
-    Theta: Bedeutungs- und Schatten-Sigille tragen identische Ritualzitate, Codex-ID
-      und UTAC-Matrix-Referenz innerhalb 24h.
+    R: Neue Rituale werden in Kampagne/System durchgeführt, ohne dass Codex/Shadow sofort referenziert.
+    Theta: Bedeutungs- und Schatten-Sigille tragen identische Ritualzitate, Codex-ID und UTAC-Matrix-Referenz innerhalb 24h.
     beta: 4.9
-    zeta: BreakPoint-Protokolle dämpfen; bleibt Spiegel aus, eskaliert ζ(R) Richtung
-      Schatten-Alarm.
+    zeta: BreakPoint-Protokolle dämpfen; bleibt Spiegel aus, eskaliert ζ(R) Richtung Schatten-Alarm.
   implementation_sites:
   - ../system/metaquest/metaquest_system_sigil.yaml
   - ../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
   - ../../shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml
   - ../../shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml
+  - ../codexfeedback.md
   shadow_trigger: mq-bridge-shadow-004
   recovery_hooks:
   - ../../seed/Finalize_Publish.txt
   - ../../seed/BreakPointAnalyse/ReaktionWayToGo.txt
 - id: mq-activation-gap-004
-  description: Urban-Heat-Outlier-Mechanismus modellieren und an Metaquest-Story koppeln
-    (socio-gap-004).
+  description: Urban-Heat-Outlier-Mechanismus modellieren und an Metaquest-Story koppeln (socio-gap-004).
   logistic:
-    R: β≈16 Hotspots liegen ohne physikalisches Narrativ und Simulator-Brücke vor.
-    Theta: analysis/urban_heat_analysis.py + data/socio_ecology/urban_heat/ liefern
-      ΔAIC>10, Mechanismus-Brief und Metaquest-Kompass-Verweis.
+    R: β≈16-Hotspots liegen ohne physikalisches Narrativ und Simulator-Brücke vor.
+    Theta: analysis/urban_heat_analysis.py + data/socio_ecology/urban_heat/ liefern ΔAIC>10, Mechanismus-Brief und Metaquest-Kompass-Verweis.
     beta: 5.2
-    zeta: Codex- und UTAC-Backlog-Updates dämpfen bis Implementierung steht; ansonsten
-      eskaliert ζ(R) in Kampagnenkommunikation.
+    zeta: Codex- und UTAC-Backlog-Updates dämpfen bis Implementierung steht; ansonsten eskaliert ζ(R) in Kampagnenkommunikation.
   implementation_sites:
   - ../../analysis/urban_heat_analysis.py
+  - ../../analysis/results/urban_heat_storage_mechanism.json
   - ../../data/socio_ecology/urban_heat/
   - ../../docs/utac_status_alignment_v1.2.md#3-activation-gaps-%E2%80%94-what-we-still-need
-  - ../../docs/utac_activation_backlog.md#socio-ecology-outlier-arc
+  - ../../docs/utac_activation_backlog.md#urban-heat-outlier
   shadow_trigger: socio-gap-004
   recovery_hooks:
   - ../../seed/ArchivSucheUTAC/Geminis Suche4!.txt
   - ../../seed/Finalisierung_Plattform.txt
+- id: mq-activation-gap-005
+  description: Paritätsbrief-Schließung (mq-parity-002/003/004) im Bridge-Netz verankern.
+  logistic:
+    R: Simulator-Playlist, Endorsement-Ledger und Codex-Querverweis fehlen im Paritätsbrief oder wurden nicht gespiegelt.
+    Theta: Paritätsbrief führt Playlist + Endorsement-Ledger + Codex-ID binnen 24h in Bridge, Kompassen, Backlog und Codex.
+    beta: 4.88
+    zeta: Gedämpft, wenn Paritätsloop + BreakPoint-Protokolle synchron laufen; ohne Spiegelung steigt ζ(R) und löst mq-bridge-shadow-Alerts aus.
+  implementation_sites:
+  - ../../docs/metaquest_parity_brief.md#3-outstanding-parity-gaps
+  - ../metaquest_meaning_index.md
+  - ../../docs/utac_activation_backlog.md#metaquest-parity-finish
+  - ../../simulator/presets/
+  - ../codexfeedback.md
+  - ../../seed/Finalisierung_Plattform.txt
+  shadow_trigger: mq-bridge-shadow-001
+  recovery_hooks:
+  - ../../seed/BreakPointAnalyse/WayToGo.txt
+  - ../../seed/Finalize_Publish.txt
 implementation_channels:
   telemetry_loop:
     description: sigillin_sync → Kompass/Bridge → UTAC Backlog → Codex
@@ -174,18 +198,24 @@ implementation_channels:
     - ../../scripts/archive_sigillin.py
     cadence: mindestens jede Sprintgrenze (<7 Tage) oder sofort nach Metaquest-Laternen-Update
   governance_loop:
-    description: BreakPoint-Rituale → Codex-ID → Bedeutungs-/Schatten-Sigille → UTAC
-      Matrix
+    description: BreakPoint-Rituale → Codex-ID → Bedeutungs-/Schatten-Sigille → UTAC Matrix
     rituals:
     - ../../seed/BreakPointAnalyse/WayToGo.txt
     - ../../seed/BreakPointAnalyse/ReaktionWayToGo.txt
     - ../../seed/Finalize_Publish.txt
     cadence: nach jedem Kampagnenentscheid oder Paritätsbrief-Update
   analysis_loop:
-    description: Neue Analysen/Datasets → UTAC Backlog → Kompass-Laternen → Metaquest
-      Story
+    description: Neue Analysen/Datasets → UTAC Backlog → Kompass-Laternen → Metaquest Story
     anchors:
     - ../../analysis/outlier_beta_review.py
     - ../../analysis/universal_beta_extractor.py
     - ../../simulation/safety_delay_field.py
     cadence: wenn neue ΔAIC/β-Messungen entstehen oder Backlog-Knoten schliessen
+  parity_loop:
+    description: Paritätsbrief ↔ Simulator-Playlist ↔ Endorsement-Ledger ↔ Codex
+    anchors:
+    - ../../docs/metaquest_parity_brief.md
+    - ../../simulator/presets/
+    - ../../seed/Finalisierung_Plattform.txt
+    - ../codexfeedback.md
+    cadence: Vor jedem Outreach-Sprint und vor Release-Freigaben; bestätige mq-parity-002…004 jeweils binnen 24h
