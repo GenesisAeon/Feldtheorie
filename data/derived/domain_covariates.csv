@@ -30,3 +30,8 @@ cmb_quadrupole_anomaly,0.75,8,3.8,1.0,0.0,physically_constrained,CMB low-ℓ qua
 hubble_tension_local,0.82,5,7.2,0.98,0.01,physically_constrained,Hubble tension; strong cosmological coupling; near-perfect memory
 jades_early_galaxy_z13,0.85,6,8.5,0.88,0.02,physically_constrained,JADES z=13 early galaxy; strong gravitational coupling; high memory
 type_ia_sn_acceleration,0.88,4,9.8,0.95,0.005,physically_constrained,Type Ia SN acceleration; strong dark energy coupling; extreme memory
+coral_bleaching_gbr,0.58,18,2.2,0.65,0.04,weakly_coupled,Great Barrier Reef coral bleaching at 30°C; weak coupling via zooxanthellae symbiosis; high spatial heterogeneity
+earthquake_aftershock_omori,0.85,4,6.8,0.88,0.02,physically_constrained,Earthquake aftershock cascade following Omori law; strong coupling via stress transfer; low dimensionality (fault network)
+power_grid_blackout_2003,0.82,8,7.5,0.45,0.08,meta_adaptive,2003 Northeast blackout cascade; strong coupling via network topology; adaptive threshold via load shedding
+forest_fire_percolation,0.68,16,3.5,0.55,0.05,high_dimensional,Forest fire percolation threshold (Drossel-Schwabl model); moderate coupling via fuel connectivity; high dimensionality
+polymer_glass_transition,0.9,3,9.5,0.35,0.0,physically_constrained,Polymer glass transition at Tg; very strong coupling via molecular interactions; sharp viscosity increase
