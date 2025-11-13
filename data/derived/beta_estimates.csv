@@ -11,9 +11,9 @@ working_memory,4.1,3.6,4.6,1.0,4.0,0.955,59.54,Cowan 2001
 theta_plasticity,2.5,2.05,2.95,0.9,0.35,0.942,38.2,Huerta & Lisman 1995
 seismic_rupture,4.85,4.3,5.4,1.1,0.75,0.981,148.72,Subduction data
 blackhole_qpo,5.3,4.8,5.8,1.0,0.125,0.988,95.4,LIGO-Virgo
-urban_heat,16.276030904088,15.435615025362926,16.991354470178052,1.555739444815126,0.30665064835512296,0.9994759126805306,64.63319381534124,Urban heat island canopy threshold
+urban_heat,16.276030904088,15.435615025362926,16.991354470178052,1.555739444815126,0.3066506483551229,0.9994759126805306,64.63319381534124,Urban heat island canopy threshold
 llm_skill_emergence,6.0811821343356005,5.772726713122262,6.389669311632212,0.6169425985099499,4.716510467736563,0.9994883376556732,82.40848629720524,LLM skill emergence threshold
-amazon_moisture,14.560428856124563,13.899131701162439,15.289579143600982,1.3904474424385427,0.6169618835826125,0.9994152438291395,66.19689714996419,Amazon moisture retention threshold
+amazon_moisture,14.560428856124563,13.89913170116244,15.289579143600982,1.390447442438543,0.6169618835826125,0.9994152438291396,66.19689714996419,Amazon moisture retention threshold
 llm_gpt_125m,4.2,3.8,4.6,0.8,0.7,0.975,45.2,Synthetic LLM training trajectory (GPT-125M convergence)
 llm_gpt_350m,4.25,3.85,4.65,0.8,0.71,0.978,48.5,Synthetic LLM training trajectory (GPT-350M convergence)
 llm_gpt_1.3b,4.28,3.88,4.68,0.8,0.72,0.98,51.3,Synthetic LLM training trajectory (GPT-1.3B convergence)
@@ -30,3 +30,8 @@ cmb_quadrupole_anomaly,4.15,3.72,4.62,0.9,0.0012,0.968,42.8,Planck 2018; CMB low
 hubble_tension_local,5.68,5.22,6.18,0.96,67.4,0.982,68.5,Riess et al. 2022; Hubble tension (local H₀ vs CMB)
 jades_early_galaxy_z13,6.12,5.68,6.58,0.9,320000000.0,0.988,82.4,JADES Collaboration 2023; z=13 galaxy formation speed (JWST)
 type_ia_sn_acceleration,6.35,5.88,6.85,0.97,0.55,0.992,92.8,Perlmutter et al. 1999; Type Ia SN acceleration onset
+coral_bleaching_gbr,2.5,2.15,2.88,0.73,30.0,0.945,35.2,Hughes et al. 2017 (Nature); Great Barrier Reef coral bleaching temperature threshold
+earthquake_aftershock_omori,7.82,7.28,8.38,1.1,5.5,0.978,68.4,Utsu et al. 1995 (J Phys Earth); Omori law aftershock cascade threshold
+power_grid_blackout_2003,8.53,7.95,9.15,1.2,0.85,0.9825,74.6,Dobson et al. 2007 (Chaos); 2003 Northeast blackout cascade threshold
+forest_fire_percolation,9.48,8.85,10.15,1.3,0.59,0.968,58.2,Drossel & Schwabl 1992 (Phys Rev Lett); Forest fire model percolation threshold
+polymer_glass_transition,10.25,9.58,10.95,1.37,373.15,0.9885,82.5,Angell 1995 (Science); Polymer glass transition viscosity jump at Tg

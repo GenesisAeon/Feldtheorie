@@ -1,31 +1,31 @@
 {
-  "timestamp": "20251112T201503Z",
+  "timestamp": "20251113T081154Z",
   "model_type": "WLS_with_FieldTypes",
-  "r_squared": 0.738576289086229,
-  "adjusted_r_squared": 0.6590125509820377,
-  "aic": 139.6123934419638,
-  "bic": 151.08429107784497,
-  "rmse": 2.2752392694842585,
+  "r_squared": 0.7318601771514821,
+  "adjusted_r_squared": 0.6648252214393526,
+  "aic": 162.52551819265383,
+  "bic": 175.1936697003027,
+  "rmse": 2.2506217199026084,
   "canonical_beta": 4.2,
   "canonical_band": [
     3.6,
     4.8
   ],
-  "beta_mean": 5.975730383695102,
-  "beta_std": 4.616191014385973,
-  "beta_band_fraction": 0.45161290322580644,
+  "beta_mean": 6.217434497070781,
+  "beta_std": 4.439205348781906,
+  "beta_band_fraction": 0.3888888888888889,
   "delta_aic_guard_min": 12.79,
-  "bootstrap_r2_median": 0.8028503834426135,
+  "bootstrap_r2_median": 0.7800070971319017,
   "bootstrap_r2_interval": [
-    0.689981261264725,
-    0.9416201551593588
+    0.6720024497342577,
+    0.8678893336855567
   ],
-  "random_forest_oob_r2": 0.428713143279416,
-  "field_type_anova_eta_squared": 0.49444751059615766,
-  "field_type_anova_p_value": 0.0010467007249924268,
+  "random_forest_oob_r2": 0.3934623315368514,
+  "field_type_anova_eta_squared": 0.4680698044321698,
+  "field_type_anova_p_value": 0.0004650165127527753,
   "top_features": [
     "SNR",
     "D_eff",
-    "coupling_sq"
+    "C_eff"
   ]
 }
