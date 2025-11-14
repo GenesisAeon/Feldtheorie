@@ -1,0 +1,35 @@
+# Phase 4 Data Adapters - Python Dependencies
+# Week 1-2: Real Data Integration
+
+# Core dependencies
+requests>=2.31.0
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.11.0
+
+# Data sources
+netCDF4>=1.6.4          # GRACE/AMOC NetCDF files
+xarray>=2023.1.0        # Multi-dimensional arrays
+h5py>=3.9.0             # HDF5 files
+
+# Time series analysis
+statsmodels>=0.14.0     # AR(1), variance analysis
+pymannkendall>=1.4.3    # Kendall tau for EWS
+
+# API & HTTP
+aiohttp>=3.8.5          # Async HTTP client
+python-dotenv>=1.0.0    # Environment variables
+
+# Utilities
+python-dateutil>=2.8.2
+pytz>=2023.3
+pyyaml>=6.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-mock>=3.11.0
+
+# Type hints
+mypy>=1.4.0
+types-requests>=2.31.0
