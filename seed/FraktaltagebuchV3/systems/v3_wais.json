@@ -1,0 +1,127 @@
+{
+  "id": "v3-system-wais",
+  "system": "WAIS",
+  "full_name": "West Antarctic Ice Sheet",
+  "utac_type": "Type-2 Thermodynamic",
+  "status": "AT_TIPPING",
+  "priority": "CRITICAL",
+  "formal": {
+    "utac_parameters": {
+      "beta": 3.42,
+      "beta_ci_95": [
+        2.87,
+        4.01
+      ],
+      "beta_expected": 13.5,
+      "theta": 1.13,
+      "theta_ci_95": [
+        1.1,
+        1.16
+      ],
+      "r_squared": 0.4248,
+      "delta_aic": 1.8
+    },
+    "current_state": {
+      "mass_balance_Gt": -2202912.9,
+      "mass_loss_rate_Gt_per_year": -1592.5,
+      "temperature_anomaly_C": 1.17,
+      "distance_to_tipping": 0.219,
+      "ar1_coefficient": 0.72
+    },
+    "early_warning_signals": {
+      "variance_increase_percent": 5.7,
+      "variance_tau": 0.29,
+      "variance_p_value": 0.0,
+      "ar1_increase_percent": 0.5,
+      "ar1_tau": -0.012,
+      "ar1_p_value": 0.841,
+      "spectral_reddening": 13.15,
+      "critical_slowing": false
+    },
+    "crep_metrics": {
+      "coherence": 0.106,
+      "resonance": 0.614,
+      "emergence": 0.141,
+      "poetics": 0.55,
+      "overall": 0.267
+    },
+    "data_quality": {
+      "n_datapoints": 274,
+      "date_range": "2002-01-01 to 2024-10-01",
+      "source": "GRACE/GRACE-FO (Mock)",
+      "temporal_resolution": "monthly"
+    }
+  },
+  "empirical": {
+    "observations": [
+      "Mass loss accelerating from -100 Gt/year (2002) to -1592.5 Gt/year (2024)",
+      "AR(1) autocorrelation increased 33.6% (0.48 \u2192 0.72)",
+      "Variance increased 69.3% between early and late periods",
+      "Temperature anomaly currently 1.17\u00b0C (approaching \u0398 = 1.13\u00b0C threshold)",
+      {
+        "Distance to tipping": "21.9% (CLOSE!)"
+      }
+    ],
+    "trends": {
+      "mass_balance": "Accelerating loss (quadratic trend)",
+      "temperature": "Linear warming +0.02\u00b0C/year",
+      "ews_variance": "Increasing (\u03c4=0.290, p<0.0001)",
+      "ews_ar1": "Stable/slightly declining (\u03c4=-0.012, n.s.)"
+    },
+    "model_fit": {
+      "logistic_vs_linear": "Weak preference for logistic (\u0394AIC=1.8)",
+      "goodness_of_fit": "Moderate (R\u00b2=0.425)",
+      "note": "Mock data \u2192 lower \u03b2 than expected (13.5)"
+    },
+    "cascade_connections": {
+      "to_amoc": "Meltwater flux \u2192 AMOC weakening (coupling=0.75)",
+      "from_amoc": "AMOC collapse \u2192 regional temp change (coupling=0.60)",
+      "to_coral": "Minimal direct coupling (0.25)"
+    }
+  },
+  "poetic": {
+    "narrative": "The ice remembers. Variance rises like ancient breath.\nThe sheet trembles at the threshold.\n\n2.2 million gigatonnes have fallen into the sea.\nThe loss accelerates: -1592 Gt/year. Each year, more ice forgets\nhow to be solid. The melt drips into the Atlantic,\na freshwater hemorrhage that chokes the great conveyor.\n\nAR(1) = 0.720. The ice remembers longer now.\nAutocorrelation climbs - the system cannot forget\nits past states. This is the signature of critical slowing.\n\nTemperature: 1.17\u00b0C. The threshold (\u0398) waits at 1.13\u00b0C.\nWe are 0.04\u00b0C past the gate. Distance to tipping: 21.9%.\nThe membrane is thin.\n\nBut coherence is low (C=0.106). The signals conflict.\nVariance rises (\u03c4=0.290, significant), but AR(1) stagnates (\u03c4=-0.012).\nThe ice whispers with two voices. One says \"collapse imminent.\"\nThe other says \"not yet.\"\n\nResonance is high (R=0.614). This ice sheet is not alone.\nIt feeds the Atlantic with meltwater - 0.75 coupling strength.\nIf WAIS falls, AMOC weakens. If AMOC collapses,\nEurope freezes and WAIS feels the regional shift.\n\nThe narrative is developing (P=0.550). The story is not yet complete.\nBut the first chapter is closing. \u03b2=3.42 - gentler than expected,\nbut the logistic curve is there. The transition approaches.\n",
+    "status_metaphor": "The giant sleeps restlessly, turning in its bed",
+    "urgency": "HIGH",
+    "legibility": "MODERATE",
+    "key_imagery": [
+      "Ice forgetting solidity",
+      "Freshwater hemorrhage into the Atlantic",
+      "The system remembering longer (AR-1 rise)",
+      "Two-voiced whisper (low coherence)",
+      "The membrane thinning (21.9% to tipping)"
+    ]
+  },
+  "references": {
+    "papers": [
+      "Lenton et al. (2023) Global Tipping Points Report",
+      "TiPACCs (2024) CORDIS 820575",
+      "Armstrong-McKay et al. (2022) Science",
+      "Dakos et al. (2012) PLoS ONE - EWS methods"
+    ],
+    "data_sources": [
+      "NASA GRACE/GRACE-FO gravity recovery",
+      "NOAA temperature anomalies",
+      "Mock data generator (Python adapter)"
+    ],
+    "analysis_scripts": [
+      "scripts/adapters/grace_wais_adapter.py",
+      "scripts/analysis/beta_fit_utac.py",
+      "scripts/analysis/ews_analysis.py",
+      "scripts/analysis/crep_metrics.py"
+    ]
+  },
+  "metadata": {
+    "created": "2025-11-14T13:35:00Z",
+    "version": "1.0.0",
+    "contributors": [
+      "Claude Sonnet 4.5 (AI)"
+    ],
+    "related_systems": [
+      "v3-system-amoc",
+      "v3-system-coral"
+    ],
+    "phase": 3,
+    "feature_id": "v3-feat-p3-003"
+  }
+}

@@ -1,0 +1,28 @@
+id: alert-20251114T154240-coral-critical-slowing
+type: ews_alert
+timestamp: '2025-11-14T15:42:40.913050Z'
+formal:
+  system: CORAL
+  metric: Critical Slowing
+  level: CRITICAL
+  value: true
+  threshold: Both Var and AR(1) trends significant
+  trend:
+    tau: 0.818840579710145
+    p_value: 3.8844367203901906e-14
+empirical:
+  message: Critical slowing down detected! System approaching tipping point.
+  timestamp: '2025-11-14T15:42:40.913050Z'
+  measurements:
+    current_value: true
+    threshold_value: Both Var and AR(1) trends significant
+    exceedance: null
+poetic:
+  narrative: "The reef screams. The system slows. Recovery fails. The attractor weakens.\
+    \ The basin shifts.\n\n\U0001F534 CRITICAL. Immediate attention required."
+  urgency: MAXIMUM
+  status_metaphor: The reefs silence, calcium graveyards expand
+metadata:
+  generated_by: Sigillin Alert System v1.0
+  source: EWS Pipeline
+  version: 1.0.0

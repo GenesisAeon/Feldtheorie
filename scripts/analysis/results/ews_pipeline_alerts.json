@@ -1,0 +1,130 @@
+{
+  "pipeline_run": {
+    "timestamp": "2025-11-14T15:42:40.913050Z",
+    "systems_analyzed": [
+      "wais",
+      "amoc",
+      "coral"
+    ],
+    "alerts_generated": 10
+  },
+  "alerts": [
+    {
+      "system": "WAIS",
+      "metric": "Distance to Tipping",
+      "level": "WARNING",
+      "value": 0.2188,
+      "threshold": 0.3,
+      "message": "WAIS approaching tipping point: 21.9%",
+      "trend_tau": null,
+      "trend_p": null
+    },
+    {
+      "system": "AMOC",
+      "metric": "EWS Trends",
+      "level": "WARNING",
+      "value": {
+        "var_tau": -0.25399250104152193,
+        "ar1_tau": 0.7297597555895013
+      },
+      "threshold": {
+        "var_tau": 0.5,
+        "ar1_tau": 0.5
+      },
+      "message": "Moderate increasing trends detected (Var \u03c4=-0.254, AR(1) \u03c4=0.730)",
+      "trend_tau": 0.2378836272739897,
+      "trend_p": 4.026833876132349e-100
+    },
+    {
+      "system": "AMOC",
+      "metric": "FovS Indicator",
+      "level": "CRITICAL",
+      "value": 0.3902,
+      "threshold": 0.0,
+      "message": "AMOC FovS crossed zero! System TIPPED (FovS=0.390)",
+      "trend_tau": null,
+      "trend_p": null
+    },
+    {
+      "system": "AMOC",
+      "metric": "Weakening Rate",
+      "level": "WARNING",
+      "value": -0.14469816372039607,
+      "threshold": -0.05,
+      "message": "AMOC weakening accelerating: -0.145 Sv/year",
+      "trend_tau": null,
+      "trend_p": null
+    },
+    {
+      "system": "CORAL",
+      "metric": "Variance",
+      "level": "CRITICAL",
+      "value": 179.27522058801125,
+      "threshold": 100,
+      "message": "Variance increase extremely high: 179.3%",
+      "trend_tau": 0.891304347826087,
+      "trend_p": 3.8844367203901906e-14
+    },
+    {
+      "system": "CORAL",
+      "metric": "AR(1)",
+      "level": "CRITICAL",
+      "value": 0.8645501658271566,
+      "threshold": 0.8,
+      "message": "AR(1) critically high: 0.865 (recovery time very long)",
+      "trend_tau": 0.7463768115942029,
+      "trend_p": 9.954293378839959e-09
+    },
+    {
+      "system": "CORAL",
+      "metric": "EWS Trends",
+      "level": "CRITICAL",
+      "value": {
+        "var_tau": 0.891304347826087,
+        "ar1_tau": 0.7463768115942029
+      },
+      "threshold": {
+        "var_tau": 0.7,
+        "ar1_tau": 0.5
+      },
+      "message": "Strong increasing trends in both EWS (Var \u03c4=0.891, AR(1) \u03c4=0.746)",
+      "trend_tau": 0.818840579710145,
+      "trend_p": 3.8844367203901906e-14
+    },
+    {
+      "system": "CORAL",
+      "metric": "Critical Slowing",
+      "level": "CRITICAL",
+      "value": true,
+      "threshold": "Both Var and AR(1) trends significant",
+      "message": "Critical slowing down detected! System approaching tipping point.",
+      "trend_tau": 0.818840579710145,
+      "trend_p": 3.8844367203901906e-14
+    },
+    {
+      "system": "CORAL",
+      "metric": "Spectral Reddening",
+      "level": "CRITICAL",
+      "value": 25.86914633733129,
+      "threshold": 20,
+      "message": "Extreme spectral reddening: 25.87 (low-freq dominance)",
+      "trend_tau": null,
+      "trend_p": null
+    },
+    {
+      "system": "CORAL",
+      "metric": "Tipping Status",
+      "level": "CRITICAL",
+      "value": 100.0,
+      "threshold": 99.0,
+      "message": "Coral reefs FULLY TIPPED: 100.0% bleached",
+      "trend_tau": null,
+      "trend_p": null
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "critical": 7,
+    "warning": 3
+  }
+}

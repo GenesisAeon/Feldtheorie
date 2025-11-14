@@ -1,0 +1,106 @@
+{
+  "metadata": {
+    "analysis": "UTAC \u03b2-Fit",
+    "model": "\u03c3(\u03b2(R-\u0398)) = 1/(1 + exp(-\u03b2(R-\u0398)))",
+    "version": "1.0.0",
+    "generated": "2025-11-14T13:13:25Z"
+  },
+  "systems": {
+    "WAIS": {
+      "system": "WAIS",
+      "n_datapoints": 274,
+      "fit_parameters": {
+        "beta": 3.4223785542558853,
+        "beta_std": 0.26816352599648,
+        "beta_ci_95": [
+          2.8722011457381322,
+          4.007655725020976
+        ],
+        "theta": 1.126874505478113,
+        "theta_std": 0.01325437992354231,
+        "theta_ci_95": [
+          1.0997947348959594,
+          1.1620308950807319
+        ]
+      },
+      "goodness_of_fit": {
+        "r2_logistic": 0.42477853925976095,
+        "r2_linear": 0.42091049396639507,
+        "rss_logistic": 6.069829584384064,
+        "rss_linear": 6.110645821881866,
+        "aic_logistic": -1039.8845360352707,
+        "aic_linear": -1038.0482052580705,
+        "delta_aic": 1.8363307772001463,
+        "logistic_preferred": false
+      },
+      "comparison_to_expected": {
+        "beta_expected": 13.5,
+        "beta_deviation_percent": -74.64904774625269
+      }
+    },
+    "AMOC": {
+      "system": "AMOC",
+      "n_datapoints": 757,
+      "fit_parameters": {
+        "beta": 4.653042985650675,
+        "beta_std": 0.1524872770612342,
+        "beta_ci_95": [
+          4.361285505782581,
+          4.963779860817019
+        ],
+        "theta": 1.0198096706050144,
+        "theta_std": 0.0046400581314238075,
+        "theta_ci_95": [
+          1.0105825334367085,
+          1.0282709420908567
+        ]
+      },
+      "goodness_of_fit": {
+        "r2_logistic": 0.6343334591019972,
+        "r2_linear": 0.6219791210461916,
+        "rss_logistic": 12.955969360562602,
+        "rss_linear": 13.393697201146427,
+        "aic_logistic": -3075.3296090804947,
+        "aic_linear": -3050.176314549598,
+        "delta_aic": 25.1532945308968,
+        "logistic_preferred": true
+      },
+      "comparison_to_expected": {
+        "beta_expected": 10.2,
+        "beta_deviation_percent": -54.38193151322867
+      }
+    },
+    "Coral": {
+      "system": "Coral",
+      "n_datapoints": 45,
+      "fit_parameters": {
+        "beta": 5.81022882744192,
+        "beta_std": 0.47309501879791244,
+        "beta_ci_95": [
+          5.097148819066614,
+          6.770432537636279
+        ],
+        "theta": 0.9535036469372786,
+        "theta_std": 0.015291592685438874,
+        "theta_ci_95": [
+          0.918653244834706,
+          0.9893163322263494
+        ]
+      },
+      "goodness_of_fit": {
+        "r2_logistic": 0.9271316500707861,
+        "r2_linear": 0.916262162353423,
+        "rss_logistic": 0.38428330804153665,
+        "rss_linear": 0.4416053511618056,
+        "aic_logistic": -210.33669680750475,
+        "aic_linear": -204.08005202881355,
+        "delta_aic": 6.2566447786911965,
+        "logistic_preferred": true
+      },
+      "comparison_to_expected": {
+        "beta_expected": 7.5,
+        "beta_deviation_percent": -22.530282300774402
+      }
+    }
+  }
+}
