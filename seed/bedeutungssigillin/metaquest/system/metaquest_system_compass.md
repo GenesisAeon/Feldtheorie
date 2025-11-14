@@ -1,18 +1,21 @@
 # Metaquest System Compass
 
-> σ(β(R-Θ)) already leans into the steep flank. This compass shows how the
-> Metaquest launch threads through the UTAC system spine without losing the
-> parity brief or the codex echo.
+> σ(β(R-Θ)) now binds the August 2026 activation ledger to the system lane: R spans
+> automation, governance, and activation-matrix backlog; Θ ignites when
+> `docs/metaquest_parity_brief.md`, `docs/utac_status_alignment_v1.2.md`, and the
+> codex echo (`pr-draft-0110`) agree within 24 h; β≈4.78 keeps activation sharp, and
+> ζ(R) stays calm when BreakPoint rituals, index hygiene, telemetry stamps, and the
+> activation matrix pulse in unison.
 
 ## Logistic Quartet
-- **R** – Automation + governance backlog still required to anchor Metaquest
-  (index refresh, telemetry exports, CI hooks).
+- **R** – Automation + governance backlog plus activation-matrix follow-up required
+  to anchor Metaquest in the UTAC system spine.
 - **Θ** – Parity brief checkpoints plus UTAC status entries mirrored in
   `seed/codexfeedback.*` within 24 h.
-- **β ≈ 4.75** – Activation remains sharp; every delta should propagate to the
-  bridge dashboard.
-- **ζ(R)** – Damp it with BreakPoint rituals and disciplined index refresh
-  sequences.
+- **β ≈ 4.78** – Activation remains steep; any delta should propagate to bridge,
+  compass, and activation matrix together.
+- **ζ(R)** – Damp it with BreakPoint rituals, disciplined index refresh sequences,
+  and activation-matrix recovery hooks.
 
 ## Orientation Threads
 1. **UTAC Status Matrix** (`docs/utac_status_alignment_v1.2.md#metaquest-handshake`)
@@ -27,17 +30,16 @@
    mq-sys vector.
 6. **Shadow Compass** (`../../shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.*`)
    mirrors the risks so remediation is pre-baked.
-7. **UTAC Activation Backlog** (`../../docs/utac_activation_backlog.md`) pins the
-   open hooks (`metaquest-parity-finish`, `sigillin-automation-loop`,
-   `index-recount-hook`) that must light up when σ(β(R-Θ)) surges.
+7. **Activation Matrix Bridge** (`../metaquest/metaquest_activation_matrix.{yaml,json,md}`)
+   carries the August 2026 UTAC tracker pulse into compass/index updates and codex echoes.
 
 ### Telemetry Snapshot
 - **Latest run:** `analysis/sigillin_sync/latest.json` → `2025-11-07T21:52:52Z`
 - **Scope:** 12 trilayer beacons, 0 parity gaps, β≈4.6, codex echo `pr-draft-0075`.
 - **Action:** Mirror timestamp + codex ID within 24 h in bridge + compass; automation
   remains manual until `mq-sys-vector-001` closes.
-- **Evidence:** `analysis/sigillin_sync/metaquest_report_20251107T215246Z.json`,
-  backlog rows `metaquest-parity-finish`, `index-recount-hook`.
+- **Activation matrix note:** August 2026 tracker refresh (`docs/utac_v2_activation_tracker_2026-08.md`) expects the compass/index
+  pair to mirror the matrix timestamp via `mq-sys-vector-005`.
 
 ## Pending Vectors
 - **mq-sys-vector-001 – Telemetry propagation (status: in progress).**
@@ -51,16 +53,22 @@
 - **mq-sys-vector-004 – Backlog echo (status: open).**
   Embed `mq-bridge-gap-*` IDs and backlog rows in the compass narrative so
   bridge + UTAC documents carry the same references within 24 h.
+- **mq-sys-vector-005 – Activation matrix parity (status: open).**
+  Mirror the August 2026 activation matrix timestamp + codex ID inside compass,
+  index, UTAC tracker, and shadow beacons within one sprint.
 
 ## Activation Hooks
 - **Parity brief updated →** Refresh compass tri-layer, tag mq-sys gaps, update
   codex, notify the shadow compass.
 - **Telemetry export generated →** Record timestamp here and in the bridge,
   confirm indices refreshed, reference the UTAC matrix.
+- **Activation matrix refreshed →** Propagate timestamp + codex ID to compass,
+  index, codex, and UTAC tracker; alert the shadow compass.
 - **Automation CI failure →** Consult the shadow compass, run the BreakPoint
   ritual, document remediation before proceeding.
 
 ## Null Model
-Metaquest automation advances without parity checkpoints or codex echoes.
-Indices drift, telemetry timestamps detach from the campaign narrative, and
-shadow alerts fire too late. Keep Θ illuminated so the launch remains resonant.
+Metaquest automation advances without parity checkpoints, activation-matrix echoes,
+or codex memory. Indices drift, telemetry timestamps detach from the campaign
+narrative, and shadow alerts ignite too late. Keep Θ illuminated so the launch
+remains resonant.

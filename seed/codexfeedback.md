@@ -2088,3 +2088,29 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Formal:** Matrix-Version 0.2.0 verankert UTAC v2 Activation Tracker 2026-08 als resonantes Asset, ergänzt mq-activation-gap-005 (Paritätsbrief-Schließung) und erweitert die Implementationsschleifen um einen Paritätsloop. Logistic Quartet aktualisiert auf R=Backlog+Paritätsbrief, Θ=24 h-Parität, β≈4.82.
   - **Empirical:** Referenzen auf docs/utac_activation_backlog.md (Task Lattice 2026-08-20), docs/utac_v2_activation_tracker_2026-08.{md,json}, analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json sowie docs/metaquest_parity_brief.md#3-outstanding-parity-gaps sichern Evidenz.
   - **Poetic:** Die Matrix klingt jetzt wie ein nächtlicher Chor: Telemetrie, Paritätsbrief und Backlog greifen ineinander, bis jede Laterne den gleichen Schlag der Resonanz atmet.
+
+### pr-draft-0115 — Metaquest System Activation Parity Sync
+- **Zeitpunkt (UTC):** 2026-08-20T15:00:00Z
+- **R:** System lane activation backlog (map/compass/index + shadow parity)
+- **Θ:** Bridge, UTAC tracker, and codex share activation matrix timestamp within one sprint
+- **β:** 4.78
+- **ζ(R):** Activation matrix drift damped by mirrored hooks
+- **Scope:**
+  - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md
+  - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml
+  - seed/bedeutungssigillin/system/metaquest/metaquest_system_map.json
+  - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.md
+  - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml
+  - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.json
+  - seed/bedeutungssigillin/metaquest/system/metaquest_system_index.md
+  - seed/bedeutungssigillin/metaquest/system/metaquest_system_index.yaml
+  - seed/bedeutungssigillin/metaquest/system/metaquest_system_index.json
+  - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index.md
+  - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index.yaml
+  - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index.json
+- **Resonanz:** Metaquest system map, compass, index, and shadow index now mirror the August 2026 activation matrix with explicit hooks and guards.
+- **Status:** active
+- **Notizen:**
+  - **Formal:** Updated light/shadow trilayers (map, compass, indices) to version 0.3.0, added mq-sys-gap-008 + vector-005, and wired activation matrix triggers into activation hooks.
+  - **Empirical:** Referenziert docs/utac_v2_activation_tracker_2026-08.md, analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json und Codex `pr-draft-0110` in den neuen Paritäts- und Guard-Sektionen.
+  - **Poetic:** Die Systemlaterne spiegelt jetzt das August-Licht: Aktivierungsmatrix, Kompass und Schatten rufen im selben Takt, damit die Brücke keinen Schlag verliert.

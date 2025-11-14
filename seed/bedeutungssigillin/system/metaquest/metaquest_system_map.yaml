@@ -1,17 +1,17 @@
 meta:
   sigil: bedeutungs-system-metaquest
-  version: 0.2.0
+  version: 0.3.0
   created: '2025-12-07T00:00:00Z'
-  updated: '2025-12-08T00:00:00Z'
+  updated: '2026-08-20T00:00:00Z'
   logistic:
-    R: 'Metaquest integration backlog across automation, indices, and governance hooks'
-    Theta: 'Parity brief anchored in docs/utac_status_alignment_v1.2.md + codexfeedback entry'
-    beta: 4.7
-    zeta: 'Damped when indices refresh and telemetry reports land within one sprint'
+    R: 'Metaquest integration backlog across automation, indices, governance hooks, and the 2026-08 activation tracker parity loop.'
+    Theta: 'Parity brief anchored in docs/utac_status_alignment_v1.2.md + codexfeedback (pr-draft-0110) mirrored across bridge and beacons within 24h.'
+    beta: 4.78
+    zeta: 'Damped when indices refresh, sigillin_sync telemetry is cited across lanterns, and activation-matrix recovery hooks close each sprint.'
   resonance: |
-    Ensures the Metaquest launch is braided into the UTAC system spine: each
-    automation hook, index refresh, and codex echo stays synchronised so the
-    campaign can inherit reproducible logistics without fragmenting the
+    Ensures the Metaquest launch is braided into the UTAC system spine: August 2026
+    activation telemetry, backlog hooks, and codex echoes stay synchronised so the
+    campaign inherits reproducible logistics without fragmenting the
     Bedeutungs-/Shadow pairing.
   shadow_coupling: '../../shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml'
 existing_assets:
@@ -83,6 +83,19 @@ existing_assets:
       logistic_coupling: |
         Highlights telemetry + parity triggers so bridge and system map remain in
         phase between larger updates.
+  - id: mq-sys-asset-007
+    title: Metaquest Activation Matrix (2026-08)
+    location: '../metaquest/metaquest_activation_matrix.yaml'
+    resonance: 'Binds UTAC tracker, backlog, and codex echoes so August 2026 gaps stay observable from the system lane.'
+    status: active
+    notes:
+      evidence:
+        - ../metaquest/metaquest_activation_matrix.md
+        - ../../docs/utac_v2_activation_tracker_2026-08.md
+        - ../../analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json
+      logistic_coupling: |
+        Keeps σ(β(R-Θ)) tied to current manifest telemetry; updates must cascade into
+        compass, map, and indices within one sprint.
 needed_resonances:
   - id: mq-sys-gap-001
     description: 'Populate parity brief with telemetry timestamp, simulator playlist, endorsement ledger, and codex ID.'
@@ -155,6 +168,18 @@ needed_resonances:
       Theta: 'Compass updates reflected in UTAC matrix + codex entry on same day'
       beta: 4.6
     null_guard: 'If compass data absent from matrix/codex, trigger mq-sys-shadow-001 and mq-sys-shadow-002.'
+  - id: mq-sys-gap-008
+    description: 'Propagate metaquest_activation_matrix (2026-08) updates into compass, indices, and codex with shared timestamps.'
+    target_location:
+      - seed/bedeutungssigillin/metaquest/metaquest_activation_matrix.yaml
+      - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml
+      - seed/bedeutungssigillin/metaquest/system/metaquest_system_index.yaml
+      - seed/codexfeedback.*
+      - docs/utac_v2_activation_tracker_2026-08.md
+    threshold:
+      Theta: 'Activation matrix refresh mirrored across compass/index/codex within one sprint'
+      beta: 4.8
+    null_guard: 'Stale activation matrix relative to UTAC tracker triggers mq-bridge-shadow-005 and mq-sys-shadow-index alerts.'
 activation_hooks:
   - trigger: 'New Metaquest asset created'
     response: 'Update trilayer files, refresh indices, log codex entry, cite status matrix.'
@@ -162,14 +187,16 @@ activation_hooks:
     response: 'Consult shadow map, schedule sigillin_sync run, update docs + codex.'
   - trigger: 'Parity brief updated'
     response: 'Cross-link change in docs, codex, and simulator presets; archive previous version.'
+  - trigger: 'Activation matrix refreshed'
+    response: 'Mirror timestamp + codex id in compass, index, and UTAC status matrix; notify shadow counterparts.'
 null_model_reference:
   description: 'Null = Metaquest launch without documented parity; automation + governance decouple.'
   monitoring:
-    - metric: 'index parity'
+    - metric: index parity
       condition: 'Metaquest folders listed in seed_index.* and feldtheorie_index.*'
-    - metric: 'codex echo'
+    - metric: codex echo
       condition: 'Latest Metaquest change accompanied by codexfeedback entry referencing this map'
-    - metric: 'telemetry cadence'
+    - metric: telemetry cadence
       condition: 'sigillin_sync report timestamp ≤ 1 sprint old'
 implementation_lattice:
   - gap_id: mq-sys-gap-001
@@ -228,3 +255,15 @@ implementation_lattice:
     evidence_trail:
       - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.md
       - docs/metaquest_parity_brief.md
+  - gap_id: mq-sys-gap-008
+    implementation_sites:
+      - seed/bedeutungssigillin/metaquest/metaquest_activation_matrix.yaml
+      - seed/bedeutungssigillin/metaquest/system/metaquest_system_index.yaml
+      - seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml
+      - docs/utac_v2_activation_tracker_2026-08.md
+      - seed/codexfeedback.*
+    primary_hook: 'Activation matrix parity propagation'
+    evidence_trail:
+      - seed/bedeutungssigillin/metaquest/metaquest_activation_matrix.md
+      - analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json
+      - docs/utac_activation_backlog.md

@@ -3248,6 +3248,37 @@
         "poetic": "Die Matrix klingt jetzt wie ein nächtlicher Chor: Telemetrie, Paritätsbrief und Backlog greifen ineinander, bis jede Laterne den gleichen Schlag der Resonanz atmet."
       },
       "created_at": "2026-08-20T12:00:00Z"
+    },
+    {
+      "id": "pr-draft-0115",
+      "title": "Metaquest System Activation Parity Sync",
+      "scope": [
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.md",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.yaml",
+        "seed/bedeutungssigillin/system/metaquest/metaquest_system_map.json",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.md",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass.json",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_index.md",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_index.yaml",
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_index.json",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index.md",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index.yaml",
+        "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index.json"
+      ],
+      "parameters": {
+        "R": "System lane activation backlog (map/compass/index + shadow parity)",
+        "Theta": "Bridge, UTAC tracker, and codex share activation matrix timestamp within one sprint",
+        "beta": 4.78
+      },
+      "resonance": "Metaquest system map, compass, index, and shadow index now mirror the August 2026 activation matrix with explicit hooks and guards.",
+      "status": "active",
+      "notes": {
+        "formal": "Updated light/shadow trilayers (map, compass, indices) to version 0.3.0, added mq-sys-gap-008 + vector-005, and wired activation matrix triggers into activation hooks.",
+        "empirical": "References docs/utac_v2_activation_tracker_2026-08.md, analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json, and codex pr-draft-0110 across map/compass/index parity guards.",
+        "poetic": "Die Systemlaterne spiegelt jetzt das August-Licht: Aktivierungsmatrix, Kompass und Schatten rufen im selben Takt, damit die Brücke keinen Schlag verliert."
+      },
+      "created_at": "2026-08-20T15:00:00Z"
     }
   ]
 }
