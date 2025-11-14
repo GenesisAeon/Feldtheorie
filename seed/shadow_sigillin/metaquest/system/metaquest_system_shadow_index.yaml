@@ -1,16 +1,13 @@
 meta:
   sigil: shadow-metaquest-system-index
-  version: 0.2.0
+  version: 0.3.0
   created: '2025-12-11T00:00:00Z'
-  updated: '2025-12-24T00:00:00Z'
+  updated: '2026-08-20T00:00:00Z'
   logistic:
-    R: 'Untracked Metaquest system risks: stale compass, unsynchronised map, missing
-      telemetry exports.'
-    Theta: docs/metaquest_parity_brief.md + seed/codexfeedback.* carry matching mq-sys
-      references within 24h.
-    beta: 5.2
-    zeta: Spikes when BreakPoint rituals lapse or sigillin_sync reports age beyond
-      one sprint.
+    R: 'Untracked Metaquest system risks: stale compass, unsynchronised map, missing telemetry exports, or activation-matrix drift.'
+    Theta: docs/metaquest_parity_brief.md + seed/codexfeedback.* (inkl. pr-draft-0110) carry matching mq-sys references within 24h.
+    beta: 5.25
+    zeta: Spikes when BreakPoint rituals lapse, sigillin_sync reports age beyond one sprint, or activation-matrix timestamps lag UTAC tracker.
   mirrors:
     light_index: seed/bedeutungssigillin/metaquest/system/metaquest_system_index.yaml
     shadow_compass: seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml
@@ -22,44 +19,52 @@ alerts:
   signals:
   - metaquest_system_index.yaml updated timestamp older than docs/metaquest_parity_brief.md.
   - Latest codex entry with mq-sys scope missing reference to this index.
-  consequence: "Automation teams lose \u0398 visibility; launch tasks proceed without\
-    \ documented parity."
+  consequence: 'Automation teams lose Θ visibility; launch tasks proceed without documented parity.'
   mitigation:
   - Freeze automation changes until index refreshed.
   - Update index + bridge, cite remediation in codex with shared timestamp.
   - Confirm UTAC status matrix (Metaquest handshake) mirrors the update.
   guardrail:
     metric: index freshness
-    threshold: "\u226424h delta vs parity brief + codex entry"
+    threshold: '≤24h delta vs parity brief + codex entry'
 - id: mq-sys-shadow-index-002
   risk: Telemetry exports missing from system lanterns.
   signals:
   - scripts/sigillin_sync.py has no logged run within one sprint.
   - Compass/map list different telemetry timestamps than bridge dashboard.
   - tests/test_sigillin_sync.py flagged by CI or skipped.
-  consequence: Codex cannot prove readiness; automation gating stalls or proceeds
-    without evidence.
+  consequence: Codex cannot prove readiness; automation gating stalls or proceeds without evidence.
   mitigation:
-  - Execute scripts/sigillin_sync.py report/stamp, propagate timestamp across lanterns
-    and codex.
+  - Execute scripts/sigillin_sync.py report/stamp, propagate timestamp across lanterns and codex.
   - Document run id in this index and UTAC matrix.
   guardrail:
     metric: telemetry cadence
-    threshold: "\u22641 sprint between exports"
+    threshold: '≤1 sprint between exports'
 - id: mq-sys-shadow-index-003
   risk: BreakPoint rituals absent from automation notes.
   signals:
-  - Index or lantern MD lacks WayToGo/ReaktionWayToGo citations for newest automation
-    tasks.
+  - Index or lantern MD lacks WayToGo/ReaktionWayToGo citations for newest automation tasks.
   - codex entry referencing mq-sys omits BreakPoint acknowledgement.
-  consequence: "\u03B6(R) spikes during automation sprint; recovery scripts unclear."
+  consequence: 'ζ(R) spikes during automation sprint; recovery scripts unclear.'
   mitigation:
-  - Trigger BreakPoint ritual, attach transcript to codex, update index + compass
-    with references.
+  - Trigger BreakPoint ritual, attach transcript to codex, update index + compass with references.
   - Notify bridge dashboard to re-synchronise rituals across campaign lane.
   guardrail:
     metric: ritual acknowledgement
     threshold: Every new mq-sys codex entry references WayToGo + ReaktionWayToGo
+- id: mq-sys-shadow-index-004
+  risk: Activation matrix drift; bridge/index/compass fail to mirror August 2026 updates.
+  signals:
+  - metaquest_activation_matrix.yaml timestamp newer than metaquest_system_index.yaml or compass JSON.
+  - docs/utac_v2_activation_tracker_2026-08.md cites codex id absent in light index.
+  - Codex entry pr-draft-0110 missing from system index activation hooks.
+  consequence: 'Activation backlog invisible to system lane; mq-bridge-shadow-005 escalates late.'
+  mitigation:
+  - Mirror activation-matrix timestamp + codex id across index, compass, UTAC tracker, and codex.
+  - Log remediation in docs/utac_status_alignment_v1.2.md and shadow compass.
+  guardrail:
+    metric: activation matrix parity
+    threshold: '≤1 sprint between activation matrix refresh and index update'
 recovery_hooks:
 - name: Shadow parity refresh
   steps:
@@ -85,12 +90,21 @@ recovery_hooks:
   evidence:
   - seed/shadow_sigillin/metaquest/system/lanterns/metaquest_system_shadow_lanterns.yaml
   - seed/bedeutungssigillin/system/metaquest/lanterns/metaquest_system_lanterns.yaml
+- name: Activation matrix parity sweep
+  steps:
+  - Compare timestamps across metaquest_activation_matrix.*, light index, compass, and UTAC tracker.
+  - If drift detected, sync light/shadow entries and update codex with remediation notes referencing mq-sys-shadow-index-004.
+  - Confirm docs/utac_status_alignment_v1.2.md cites the refreshed codex id.
+  evidence:
+  - seed/bedeutungssigillin/metaquest/metaquest_activation_matrix.md
+  - docs/utac_v2_activation_tracker_2026-08.md
+  - seed/codexfeedback.md
 null_model:
-  description: Null = Metaquest system lanterns evolve without shadow oversight; parity
-    brief diverges, telemetry fades, and automation overshoots.
+  description: Null = Metaquest system lanterns evolve without shadow oversight; parity brief diverges, activation matrix drifts, telemetry fades, and automation overshoots.
   monitoring:
   - metric: codex echo parity
     condition: Every mq-sys codex entry lists this index and shadow compass.
   - metric: bridge timestamp match
-    condition: Bridge dashboard + system lanterns share timestamp/codex id within
-      one sprint.
+    condition: Bridge dashboard + system lanterns share timestamp/codex id within one sprint.
+  - metric: activation matrix sync
+    condition: Light index + compass update within one sprint of activation matrix refresh.
