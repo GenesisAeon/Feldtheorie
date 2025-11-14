@@ -7,8 +7,8 @@
 metadata:
   version: "3.0.0"
   created: "2025-11-14T12:55:00Z"
-  last_updated: "2026-08-23T12:55:00Z"
-  total_documents: 11
+  last_updated: "2026-08-24T10:30:00Z"
+  total_documents: 24
   scope: "V3.0 Real-World Systems Integration"
 
 # ============================================================================
@@ -217,32 +217,32 @@ analysis_results_pending:
     roadmap_id: "v3-feat-p2-005"
 
 # ============================================================================
-# SCRIPTS (To be created)
+# SCRIPTS (Aktiviert)
 # ============================================================================
 
-scripts_pending:
+scripts_active:
   - id: v3-script-001
     title: "scripts/adapters/grace_wais_adapter.py"
     path: "scripts/adapters/grace_wais_adapter.py"
     type: "script"
-    description: "GRACE Mock-Adapter für WAIS Daten"
-    status: "pending"
+    description: "GRACE Mock-Adapter für WAIS Daten (σ-Wächter aktiv)"
+    status: "active"
     roadmap_id: "v3-feat-p1-004"
 
   - id: v3-script-002
     title: "scripts/adapters/rapid_amoc_adapter.py"
     path: "scripts/adapters/rapid_amoc_adapter.py"
     type: "script"
-    description: "RAPID Mock-Adapter für AMOC Daten"
-    status: "pending"
+    description: "RAPID Mock-Adapter für AMOC Daten (FovS Trigger)"
+    status: "active"
     roadmap_id: "v3-feat-p1-005"
 
   - id: v3-script-003
     title: "scripts/adapters/oisst_coral_adapter.py"
     path: "scripts/adapters/oisst_coral_adapter.py"
     type: "script"
-    description: "OISST Mock-Adapter für Coral Daten"
-    status: "pending"
+    description: "OISST Mock-Adapter für Coral Daten (DHW Alerts)"
+    status: "active"
     roadmap_id: "v3-feat-p1-006"
 
 # ============================================================================
@@ -275,12 +275,12 @@ navigation_paths:
 # ============================================================================
 
 statistics:
-  total_documents: 11
+  total_documents: 24
   core_documents: 5
   related_documents: 8
-  data_sources_pending: 3
+  data_sources_active: 3
   analysis_results_pending: 5
-  scripts_pending: 3
+  scripts_active: 3
 
   by_type:
     documentation: 3
@@ -297,5 +297,5 @@ statistics:
     script: 3
 
   by_status:
-    active: 13
-    pending: 11
+    active: 19
+    pending: 5

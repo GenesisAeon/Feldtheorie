@@ -7,16 +7,16 @@
 metadata:
   version: "3.0.0"
   created: "2025-11-14T12:30:00Z"
-  last_updated: "2026-08-23T12:20:00Z"
+  last_updated: "2026-08-24T10:30:00Z"
   total_features: 18
-  completed_features: 3
+  completed_features: 6
 
   # Logistic activation tracking
   parameters:
-    R_bar: 0.17        # Mean progress (0-1)
+    R_bar: 0.33        # Mean progress (0-1)
     Theta: 0.66        # Release gate
     beta: 4.8          # Steepness
-    sigma: 0.086       # σ(β(R̄-Θ)) activation level
+    sigma: 0.173       # σ(β(R̄-Θ)) activation level
 
 # ============================================================================
 # PHASE 1: FOUNDATION (R = 0.00 → 0.30)
@@ -111,7 +111,9 @@ features_phase1_foundation:
       - Lade Mock-CSV
       - Berechne monatliche Δ Mass
       - Export als JSON für TypeScript
-    status: pending
+    status: completed
+    completed_at: "2026-08-24T09:50:00Z"
+    status_notes: "Mock-Adapter liest CSV, berechnet EWS-Metriken und exportiert JSON (CLI-Test: 274 Punkte, σ-Guard aktiv)."
     priority: P1
     assignee: Claude
     dependencies:
@@ -123,6 +125,8 @@ features_phase1_foundation:
     effort_hours: 1.5
     output:
       - scripts/adapters/grace_wais_adapter.py
+    artifacts:
+      - analysis/results/wais_adapter_output.json
 
   - id: v3-feat-p1-005
     title: "Python Adapter: RAPID Mock (AMOC)"
@@ -135,7 +139,9 @@ features_phase1_foundation:
       - Berechne 10-Tage MOC Mittelwert
       - FovS (Freshwater overshoot South) Indikator
       - Export als JSON
-    status: pending
+    status: completed
+    completed_at: "2026-08-24T09:55:00Z"
+    status_notes: "Adapter erzeugt JSON mit FovS>0, CLI-Test bestätigt 757 Punkte und Distance-to-Tipping 70%."
     priority: P1
     assignee: Claude
     dependencies:
@@ -147,6 +153,8 @@ features_phase1_foundation:
     effort_hours: 1.5
     output:
       - scripts/adapters/rapid_amoc_adapter.py
+    artifacts:
+      - analysis/results/amoc_adapter_output.json
 
   - id: v3-feat-p1-006
     title: "Python Adapter: OISST Mock (Coral)"
@@ -159,7 +167,9 @@ features_phase1_foundation:
       - Berechne DHW (Degree Heating Weeks)
       - Bleaching-Wahrscheinlichkeit
       - Export als JSON
-    status: pending
+    status: completed
+    completed_at: "2026-08-24T10:00:00Z"
+    status_notes: "Adapter liefert JSON mit 45 Jahrespunkten, markiert σ→1 (Tipping erreicht) und DHW=15.3."
     priority: P1
     assignee: Claude
     dependencies:
@@ -171,6 +181,8 @@ features_phase1_foundation:
     effort_hours: 1
     output:
       - scripts/adapters/oisst_coral_adapter.py
+    artifacts:
+      - analysis/results/coral_adapter_output.json
 
 # ============================================================================
 # PHASE 2: DATA INTEGRATION (R = 0.30 → 0.60)

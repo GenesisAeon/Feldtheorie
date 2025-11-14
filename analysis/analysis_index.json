@@ -2,11 +2,11 @@
   "meta": {
     "directory": "analysis/",
     "project": "Feldtheorie (UTAC) - Analysis Resonance Bay",
-    "maintainer": "Johann R\u00f6mer",
-    "description": "Analysis-Skripte und Notebooks, die UTF logistic response \u03c3(\u03b2(R-\u0398))\nan empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.\n",
+    "maintainer": "Johann Römer",
+    "description": "Analysis-Skripte und Notebooks, die UTF logistic response σ(β(R-Θ))\nan empirische Datasets fitten. Tri-layer Cadence: Formal, Empirisch, Metaphorisch.\n",
     "version": "1.0.0",
     "created": "2025-11-06",
-    "updated": "2026-05-05T00:00:00Z",
+    "updated": "2026-08-24T10:30:00Z",
     "status": "active",
     "python_files": 43,
     "subdirectories": 5
@@ -14,7 +14,7 @@
   "categories": {
     "fit_scripts": {
       "name": "Domain-Spezifische Fit-Skripte",
-      "description": "Python-Skripte f\u00fcr logistische Fits spezifischer Dom\u00e4nen",
+      "description": "Python-Skripte für logistische Fits spezifischer Domänen",
       "color": "#3498DB",
       "count": 18
     },
@@ -44,7 +44,7 @@
     },
     "mechanism_analysis": {
       "name": "Mechanismus-Analysen & Simulation",
-      "description": "Simulationen, die physikalische Mechanismen hinter \u03b2-Ausrei\u00dfern rekonstruieren",
+      "description": "Simulationen, die physikalische Mechanismen hinter β-Ausreißern rekonstruieren",
       "color": "#9B59B6",
       "count": 1
     }
@@ -62,10 +62,10 @@
         "llm",
         "wei",
         "palm",
-        "\u03b2-extraction",
-        "\u03b4aic"
+        "β-extraction",
+        "δaic"
       ],
-      "description": "Digitalisiert Jason Wei's PaLM sweeps, fittet \u03c3(\u03b2(R-\u0398)) via logit regression.\nExportiert \u03b2=3.47\u00b10.47, \u0398\u22489.92 mit \u0394AIC\u226510.18.\nOutput: results/llm_beta_extractor.json\n"
+      "description": "Digitalisiert Jason Wei's PaLM sweeps, fittet σ(β(R-Θ)) via logit regression.\nExportiert β=3.47±0.47, Θ≈9.92 mit ΔAIC≥10.18.\nOutput: results/llm_beta_extractor.json\n"
     },
     {
       "id": "analysis-fit-002",
@@ -81,7 +81,7 @@
         "multilingual",
         "chain-of-thought"
       ],
-      "description": "Multilingual chain-of-thought threshold fit.\n\u0394AIC \u2248 48.8 gegen linear/power-law nulls.\nOutput: results/llm_emergent_skill.json\n"
+      "description": "Multilingual chain-of-thought threshold fit.\nΔAIC ≈ 48.8 gegen linear/power-law nulls.\nOutput: results/llm_emergent_skill.json\n"
     },
     {
       "id": "analysis-fit-003",
@@ -94,10 +94,10 @@
       "keywords": [
         "anthropic",
         "introspection",
-        "\u03c6",
+        "φ",
         "llm-consciousness"
       ],
-      "description": "Anthropic Introspection Validation - \u03c6-Kopplung Analyse.\nValidiert LLM-Koh\u00e4renz gegen Threshold-Modell.\n"
+      "description": "Anthropic Introspection Validation - φ-Kopplung Analyse.\nValidiert LLM-Kohärenz gegen Threshold-Modell.\n"
     },
     {
       "id": "analysis-fit-004",
@@ -114,7 +114,7 @@
         "evolution",
         "ara-3"
       ],
-      "description": "Lenski LTEE Ara-3 evolutionary jump.\n\u0398=32.77 (kgen), \u03b2=5.08, R\u00b2=0.990, \u0394AIC>32.\nOutput: results/lenski_citplus_fit.json\n"
+      "description": "Lenski LTEE Ara-3 evolutionary jump.\nΘ=32.77 (kgen), β=5.08, R²=0.990, ΔAIC>32.\nOutput: results/lenski_citplus_fit.json\n"
     },
     {
       "id": "analysis-fit-005",
@@ -130,7 +130,7 @@
         "hippocampus",
         "vesicle"
       ],
-      "description": "Hippocampaler Vesicle-Release Threshold.\n\u0398=12.68 Hz, \u03b2=0.81, R\u00b2=0.997.\nImpedanz: \u03b6(R) = 1.40 - 0.45\u03c3.\nOutput: results/synaptic_release_fit.json\n"
+      "description": "Hippocampaler Vesicle-Release Threshold.\nΘ=12.68 Hz, β=0.81, R²=0.997.\nImpedanz: ζ(R) = 1.40 - 0.45σ.\nOutput: results/synaptic_release_fit.json\n"
     },
     {
       "id": "analysis-fit-006",
@@ -162,7 +162,7 @@
         "gate",
         "cognition"
       ],
-      "description": "Prefrontaler Rehearsal Threshold.\n\u0398=0.579, \u03b2=12.28, R\u00b2=0.9986, \u0394AIC>51.\nImpedanz: \u03b6(R) = 1.35 - 0.38\u03c3.\nOutput: results/working_memory_gate.json\n"
+      "description": "Prefrontaler Rehearsal Threshold.\nΘ=0.579, β=12.28, R²=0.9986, ΔAIC>51.\nImpedanz: ζ(R) = 1.35 - 0.38σ.\nOutput: results/working_memory_gate.json\n"
     },
     {
       "id": "analysis-fit-008",
@@ -178,7 +178,7 @@
         "hippocampus",
         "replay"
       ],
-      "description": "Sleep-pressure index escortiert hippocampale Replay.\n\u0398=0.477, \u03b2=10.86, R\u00b2=0.990, \u0394AIC\u224834.9.\nImpedanz: \u03b6(R) = 1.12 - 0.25\u03c3.\nOutput: results/adaptive_theta_plasticity.json\n"
+      "description": "Sleep-pressure index escortiert hippocampale Replay.\nΘ=0.477, β=10.86, R²=0.990, ΔAIC≈34.9.\nImpedanz: ζ(R) = 1.12 - 0.25σ.\nOutput: results/adaptive_theta_plasticity.json\n"
     },
     {
       "id": "analysis-fit-009",
@@ -194,7 +194,7 @@
         "slow-slip",
         "subduction"
       ],
-      "description": "Cascadia-inspirierter Slow-Slip Gate.\n\u0398=0.741, \u03b2=16.29, R\u00b2=0.99997, \u0394AIC\u2248138.6.\nImpedanz: \u03b6(R) = 1.70 - 0.55\u03c3.\nOutput: results/subduction_rupture_threshold.json\n"
+      "description": "Cascadia-inspirierter Slow-Slip Gate.\nΘ=0.741, β=16.29, R²=0.99997, ΔAIC≈138.6.\nImpedanz: ζ(R) = 1.70 - 0.55σ.\nOutput: results/subduction_rupture_threshold.json\n"
     },
     {
       "id": "analysis-fit-010",
@@ -210,7 +210,7 @@
         "resilience",
         "tipping-point"
       ],
-      "description": "Amazon Moisture Resilience Threshold (\u03b2=14.6 outlier).\n\u0394AIC\u224861.1 (linear), \u0394AIC\u224870.7 (power-law).\nImpedanz: \u03b6(R) = 1.8 - 0.6\u03c3.\nOutput: results/amazon_resilience_fit.json\n"
+      "description": "Amazon Moisture Resilience Threshold (β=14.6 outlier).\nΔAIC≈61.1 (linear), ΔAIC≈70.7 (power-law).\nImpedanz: ζ(R) = 1.8 - 0.6σ.\nOutput: results/amazon_resilience_fit.json\n"
     },
     {
       "id": "analysis-fit-011",
@@ -223,10 +223,10 @@
       "keywords": [
         "urban-heat",
         "canopy",
-        "\u03b2=16.3",
+        "β=16.3",
         "extreme-outlier"
       ],
-      "description": "Urban Heat Canopy Resonance (\u03b2=16.3 - EXTREMER OUTLIER!).\nH\u00f6chster gemessener \u03b2-Wert im gesamten Projekt.\nMuss f\u00fcr UTAC v1.2 Outlier-Analyse untersucht werden.\n"
+      "description": "Urban Heat Canopy Resonance (β=16.3 - EXTREMER OUTLIER!).\nHöchster gemessener β-Wert im gesamten Projekt.\nMuss für UTAC v1.2 Outlier-Analyse untersucht werden.\n"
     },
     {
       "id": "analysis-fit-011a",
@@ -240,9 +240,9 @@
         "urban-heat",
         "storage",
         "mechanism",
-        "\u03b2\u224816"
+        "β≈16"
       ],
-      "description": "Simuliert urban heat storage Szenarien, koppelt \u03c3(\u03b2(R-\u0398)) an Materialimpedanz und exportiert \u0394AIC-gardierte Ledgers f\u00fcr das Outlier-Review."
+      "description": "Simuliert urban heat storage Szenarien, koppelt σ(β(R-Θ)) an Materialimpedanz und exportiert ΔAIC-gardierte Ledgers für das Outlier-Review."
     },
     {
       "id": "analysis-fit-012",
@@ -258,7 +258,7 @@
         "climate",
         "amoc"
       ],
-      "description": "Planetary Tipping Elements (AMOC, Gr\u00f6nland, etc.).\nMulti-Threshold Climate-System Analyse.\n"
+      "description": "Planetary Tipping Elements (AMOC, Grönland, etc.).\nMulti-Threshold Climate-System Analyse.\n"
     },
     {
       "id": "analysis-fit-013",
@@ -305,7 +305,7 @@
         "adaptive",
         "controller"
       ],
-      "description": "Membrane mit AdaptiveThresholdController.\nLoggt \u0398(t), \u03b2(t), meta-gate occupancy.\nOutput: results/meta_threshold_resonance.json\n"
+      "description": "Membrane mit AdaptiveThresholdController.\nLoggt Θ(t), β(t), meta-gate occupancy.\nOutput: results/meta_threshold_resonance.json\n"
     },
     {
       "id": "analysis-fit-016",
@@ -337,7 +337,7 @@
         "manifest",
         "beta"
       ],
-      "description": "UTAC v1.3 Climate-Pipeline. Liest `data/utac_v1_3_data_manifest.yaml`,\nl\u00e4dt Metadata (`urban_heat_intensity`, `amazon_precip_evapo`) und fittet\n\u03c3(\u03b2(R-\u0398)) inklusive \u0394AIC Guards (linear, power-law, spline). Unterst\u00fctzt\nsimulierte Proben bis Rohdaten landen und exportiert Preview-JSONs.\n"
+      "description": "UTAC v1.3 Climate-Pipeline. Liest `data/utac_v1_3_data_manifest.yaml`,\nlädt Metadata (`urban_heat_intensity`, `amazon_precip_evapo`) und fittet\nσ(β(R-Θ)) inklusive ΔAIC Guards (linear, power-law, spline). Unterstützt\nsimulierte Proben bis Rohdaten landen und exportiert Preview-JSONs.\n"
     },
     {
       "id": "analysis-fit-018",
@@ -354,7 +354,7 @@
         "beta",
         "bootstrap"
       ],
-      "description": "Bringt EEG \u2194 Transformer Aktivierungen zusammen. Fittet \u03c3(\u03b2(R-\u0398)),\nliefert \u0394AIC Guards, bootstrapped \u03b2/\u0398/R\u00b2-Envelopes und schreibt\n`analysis/results/neuro_ai_beta*.json` f\u00fcr UTAC v1.3.\n"
+      "description": "Bringt EEG ↔ Transformer Aktivierungen zusammen. Fittet σ(β(R-Θ)),\nliefert ΔAIC Guards, bootstrapped β/Θ/R²-Envelopes und schreibt\n`analysis/results/neuro_ai_beta*.json` für UTAC v1.3.\n"
     },
     {
       "id": "analysis-batch-001",
@@ -369,7 +369,7 @@
         "pipeline",
         "automation"
       ],
-      "description": "Liest batch_configs/resonance_runs.json, replays solver simulations,\nre-fitted \u03c3(\u03b2(R-\u0398)), emittiert JSON mit \u0394AIC deltas.\n"
+      "description": "Liest batch_configs/resonance_runs.json, replays solver simulations,\nre-fitted σ(β(R-Θ)), emittiert JSON mit ΔAIC deltas.\n"
     },
     {
       "id": "analysis-batch-002",
@@ -384,7 +384,7 @@
         "automation",
         "workflow"
       ],
-      "description": "Haupt-Pipeline f\u00fcr Resonance-Fits.\nKoordiniert Daten-Import, Fitting, Export.\n"
+      "description": "Haupt-Pipeline für Resonance-Fits.\nKoordiniert Daten-Import, Fitting, Export.\n"
     },
     {
       "id": "analysis-batch-003",
@@ -399,7 +399,7 @@
         "statistics",
         "median"
       ],
-      "description": "Scannt results/, rankt Membranen nach \u0394AIC und \u0394R\u00b2.\nEmittiert results/resonance_cohort_summary.json.\nMedian R\u00b2\u22480.9981, median \u0394AIC\u224865.1.\n"
+      "description": "Scannt results/, rankt Membranen nach ΔAIC und ΔR².\nEmittiert results/resonance_cohort_summary.json.\nMedian R²≈0.9981, median ΔAIC≈65.1.\n"
     },
     {
       "id": "analysis-batch-004",
@@ -414,7 +414,7 @@
         "cross-reference",
         "lantern"
       ],
-      "description": "Sammelt alle Results mit (R, \u0398, \u03b2, \u03b6(R)).\nExportiert results/resonance_bridge_table.json + Markdown.\n"
+      "description": "Sammelt alle Results mit (R, Θ, β, ζ(R)).\nExportiert results/resonance_bridge_table.json + Markdown.\n"
     },
     {
       "id": "analysis-batch-005",
@@ -426,10 +426,10 @@
       "keywords": [
         "universality",
         "test",
-        "\u03b2-convergence",
+        "β-convergence",
         "statistical"
       ],
-      "description": "Testet \u03b2-Universalit\u00e4t \u00fcber alle Dom\u00e4nen hinweg.\nKritisch f\u00fcr UTAC v1.2 Meta-Regression!\n"
+      "description": "Testet β-Universalität über alle Domänen hinweg.\nKritisch für UTAC v1.2 Meta-Regression!\n"
     },
     {
       "id": "analysis-batch-006",
@@ -440,11 +440,11 @@
       "relevance": "high",
       "keywords": [
         "meta-regression",
-        "\u03b2-drivers",
+        "β-drivers",
         "kovariaten",
         "v1.2"
       ],
-      "description": "Meta-Regression zur Erkl\u00e4rung der \u03b2-Varianz.\nKERN von UTAC v1.2! R\u00b2=0.33 \u2192 soll auf >0.7 steigen.\n"
+      "description": "Meta-Regression zur Erklärung der β-Varianz.\nKERN von UTAC v1.2! R²=0.33 → soll auf >0.7 steigen.\n"
     },
     {
       "id": "analysis-batch-007",
@@ -459,7 +459,7 @@
         "delta-aic",
         "validation"
       ],
-      "description": "Aggregiert \u03b2, \u0398 und \u0394AIC \u00fcber alle results/*.json.\nExportiert master ledger + Canonical-\u03b2-Guard (\u0394AIC\u226510, R\u00b2\u22650.9).\n"
+      "description": "Aggregiert β, Θ und ΔAIC über alle results/*.json.\nExportiert master ledger + Canonical-β-Guard (ΔAIC≥10, R²≥0.9).\n"
     },
     {
       "id": "analysis-batch-008",
@@ -472,10 +472,10 @@
         "meta-regression",
         "bootstrap",
         "random-forest",
-        "\u03b2-variance",
-        "\u0394AIC"
+        "β-variance",
+        "ΔAIC"
       ],
-      "description": "Refresh der Meta-Regression \u03c3(\u03b2(R-\u0398)) mit nichtlinearem Feature-Mix.\nWLS R\u00b2\u22480.43 (adj. R\u00b2\u2248-0.33) bei \u0394AIC-Minimum 12.79; Bootstrap-Median R\u00b2\u22480.99 [0.43, 1.00].\nRandom-Forest-Hinweise: coupling_memory (0.25), SNR (0.15), log_theta (0.09).\nOutput: results/beta_meta_regression_v2_* (Summary, Diagnostics, Bootstrap).\n"
+      "description": "Refresh der Meta-Regression σ(β(R-Θ)) mit nichtlinearem Feature-Mix.\nWLS R²≈0.43 (adj. R²≈-0.33) bei ΔAIC-Minimum 12.79; Bootstrap-Median R²≈0.99 [0.43, 1.00].\nRandom-Forest-Hinweise: coupling_memory (0.25), SNR (0.15), log_theta (0.09).\nOutput: results/beta_meta_regression_v2_* (Summary, Diagnostics, Bootstrap).\n"
     },
     {
       "id": "analysis-batch-009",
@@ -486,12 +486,12 @@
       "relevance": "high",
       "keywords": [
         "safety-delay",
-        "\u03c4*",
-        "\u03c3(\u03b2(R-\u0398))",
-        "\u0394AIC",
+        "τ*",
+        "σ(β(R-Θ))",
+        "ΔAIC",
         "resonance"
       ],
-      "description": "Parameter-Sweeps f\u00fcr simulation/safety_delay_field.py mit Euler-Maruyama Dynamik.\nExportiert analysis/results/safety_delay_sweep_YYYYMMDDTHHMMSSZ.json inklusive Replikate,\n\u03c4_delay, Kontrollenergie, \u03b2-Shift und \u0394AIC gegen lineare sowie konstante Nullmodelle.\nMeta-Resonanz (Kontrollzentralit\u00e4t \u00d7 CREP) wird f\u00fcr Codex- und UTAC-Br\u00fccken protokolliert;\nsimulator/cli safety-delay spiegelt die Runs nach data/safety_delay/ (CSV+Summary+Metadata).\n"
+      "description": "Parameter-Sweeps für simulation/safety_delay_field.py mit Euler-Maruyama Dynamik.\nExportiert analysis/results/safety_delay_sweep_YYYYMMDDTHHMMSSZ.json inklusive Replikate,\nτ_delay, Kontrollenergie, β-Shift und ΔAIC gegen lineare sowie konstante Nullmodelle.\nMeta-Resonanz (Kontrollzentralität × CREP) wird für Codex- und UTAC-Brücken protokolliert;\nsimulator/cli safety-delay spiegelt die Runs nach data/safety_delay/ (CSV+Summary+Metadata).\n"
     },
     {
       "id": "analysis-lab-001",
@@ -507,7 +507,7 @@
         "threshold",
         "experiments"
       ],
-      "description": "Jupyter Notebook f\u00fcr dynamische Threshold-Experimente.\nInteraktive Exploration von Parametern.\n"
+      "description": "Jupyter Notebook für dynamische Threshold-Experimente.\nInteraktive Exploration von Parametern.\n"
     },
     {
       "id": "analysis-lab-002",
@@ -521,7 +521,7 @@
         "lab",
         "experiments"
       ],
-      "description": "Labor f\u00fcr Potential-Kaskade Experimente.\nTestet rekursive Schwellenwert-Dynamiken.\n"
+      "description": "Labor für Potential-Kaskade Experimente.\nTestet rekursive Schwellenwert-Dynamiken.\n"
     },
     {
       "id": "analysis-util-001",
@@ -536,7 +536,7 @@
         "fdr",
         "correction"
       ],
-      "description": "Multiple Testing Correction (Bonferroni, FDR).\nWichtig f\u00fcr statistische Validit\u00e4t!\n"
+      "description": "Multiple Testing Correction (Bonferroni, FDR).\nWichtig für statistische Validität!\n"
     },
     {
       "id": "analysis-util-002",
@@ -551,7 +551,7 @@
         "guard",
         "validation"
       ],
-      "description": "Guard f\u00fcr Preset-Alignment.\nValidiert Konsistenz zwischen Presets und Results.\n"
+      "description": "Guard für Preset-Alignment.\nValidiert Konsistenz zwischen Presets und Results.\n"
     },
     {
       "id": "analysis-util-003",
@@ -563,7 +563,7 @@
       "keywords": [
         "impedance",
         "diagnostics",
-        "\u03b6",
+        "ζ",
         "relief",
         "recovery"
       ],
@@ -580,10 +580,10 @@
         "socio-ecology",
         "beta",
         "outlier",
-        "\u0394AIC",
+        "ΔAIC",
         "falsification"
       ],
-      "description": "Pr\u00fcft hochsteile \u03b2-Profile (Amazon, Urban Heat) gegen glatte Nullmodelle.\nExportiert instrumentation_flag Ledger: results/outlier_beta_review.json.\n"
+      "description": "Prüft hochsteile β-Profile (Amazon, Urban Heat) gegen glatte Nullmodelle.\nExportiert instrumentation_flag Ledger: results/outlier_beta_review.json.\n"
     },
     {
       "id": "analysis-util-005",
@@ -596,9 +596,9 @@
         "beta>10",
         "manifest",
         "instrumentation",
-        "\u0394AIC"
+        "ΔAIC"
       ],
-      "description": "Manifest-Guard f\u00fcr \u03b2>10 Laternen. L\u00e4dt Metadata, simuliert bei Bedarf,\nfittet \u03c3(\u03b2(R-\u0398)) und bewertet \u0394AIC sowie instrumentation_flag. Export:\nresults/outlier_validator_report.json.\n"
+      "description": "Manifest-Guard für β>10 Laternen. Lädt Metadata, simuliert bei Bedarf,\nfittet σ(β(R-Θ)) und bewertet ΔAIC sowie instrumentation_flag. Export:\nresults/outlier_validator_report.json.\n"
     },
     {
       "id": "analysis-util-006",
@@ -613,7 +613,7 @@
         "simulation",
         "logistics"
       ],
-      "description": "Shared Loader f\u00fcr `.metadata.json` Laternen. Normalisiert Pfade, l\u00e4dt\nCSV/NetCDF, kalibriert simulierte \u03c3(\u03b2(R-\u0398)) Rehearsals via Logit-Jitter,\ndamit Manifest-\u0398/\u03b2 erhalten bleiben, und b\u00fcndelt \u0394AIC Guards (linear,\npower-law) f\u00fcr Downstream-Skripte.\n"
+      "description": "Shared Loader für `.metadata.json` Laternen. Normalisiert Pfade, lädt\nCSV/NetCDF, kalibriert simulierte σ(β(R-Θ)) Rehearsals via Logit-Jitter,\ndamit Manifest-Θ/β erhalten bleiben, und bündelt ΔAIC Guards (linear,\npower-law) für Downstream-Skripte.\n"
     },
     {
       "id": "analysis-util-007",
@@ -627,7 +627,7 @@
         "parser",
         "utac_v1_3"
       ],
-      "description": "Parser f\u00fcr `data/utac_v1_3_data_manifest.yaml`. Stellt ManifestDataset-\nObjekte bereit, filtert Domains/IDs und liefert Output-Pfade f\u00fcr neue Laternen.\n"
+      "description": "Parser für `data/utac_v1_3_data_manifest.yaml`. Stellt ManifestDataset-\nObjekte bereit, filtert Domains/IDs und liefert Output-Pfade für neue Laternen.\n"
     },
     {
       "id": "analysis-util-008",
@@ -640,10 +640,10 @@
         "manifest",
         "audit",
         "readiness",
-        "\u03c3",
-        "\u0394AIC"
+        "σ",
+        "ΔAIC"
       ],
-      "description": "Auditiert das UTAC v1.3 Manifest: pr\u00fcft Daten-, Metadata- und Result-\nKomponenten, berechnet \u03c3(\u03b2(R-\u0398)) Aktivierungen f\u00fcr jede Laterne und\nexportiert JSON/YAML/Markdown-Reports (`utac_v1_3_manifest_audit.*`).\nUnterst\u00fctzt Docs & Seed bei der F\u00fcllstandskontrolle.\n"
+      "description": "Auditiert das UTAC v1.3 Manifest: prüft Daten-, Metadata- und Result-\nKomponenten, berechnet σ(β(R-Θ)) Aktivierungen für jede Laterne und\nexportiert JSON/YAML/Markdown-Reports (`utac_v1_3_manifest_audit.*`).\nUnterstützt Docs & Seed bei der Füllstandskontrolle.\n"
     },
     {
       "id": "analysis-util-009",
@@ -659,7 +659,7 @@
         "v2",
         "tri-layer"
       ],
-      "description": "Aggregiert Manifest-Status, Analysis-Hooks, Simulator-Presets und\nSigillin-Br\u00fccken zu einem \u03c3(\u03b2(R-\u0398)) Readiness-Score. Exportiert\nTri-Layer-Reports (`analysis/reports/utac_v2_readiness.{json,yaml,md}`)\nund priorisiert Aktionen f\u00fcr die V2.0 Aktivierung.\n"
+      "description": "Aggregiert Manifest-Status, Analysis-Hooks, Simulator-Presets und\nSigillin-Brücken zu einem σ(β(R-Θ)) Readiness-Score. Exportiert\nTri-Layer-Reports (`analysis/reports/utac_v2_readiness.{json,yaml,md}`)\nund priorisiert Aktionen für die V2.0 Aktivierung.\n"
     },
     {
       "id": "analysis-util-010",
@@ -671,10 +671,10 @@
       "keywords": [
         "socio-ecology",
         "theta-drift",
-        "\u03c3(\u03b2(R-\u0398))",
+        "σ(β(R-Θ))",
         "gap-audit"
       ],
-      "description": "Adaptive \u0398 drift guard f\u00fcr Planetary Tipping Elements.\nNormalisiert \u0398/\u03b2 Konfidenzb\u00e4nder, markiert \u03c3(\u03b2(R-\u0398)) Gaps und liefert Implementierungsleitf\u00e4den.\nOutput: results/planetary_theta_drift_flags.json\n"
+      "description": "Adaptive Θ drift guard für Planetary Tipping Elements.\nNormalisiert Θ/β Konfidenzbänder, markiert σ(β(R-Θ)) Gaps und liefert Implementierungsleitfäden.\nOutput: results/planetary_theta_drift_flags.json\n"
     },
     {
       "id": "analysis-util-011",
@@ -687,10 +687,10 @@
         "manifest",
         "readiness",
         "gap-scan",
-        "\u03c3(\u03b2(R-\u0398))",
+        "σ(β(R-Θ))",
         "automation"
       ],
-      "description": "Scannt analysis/reports/utac_v2_readiness.json, pr\u00fcft Komponenten auf dem Dateisystem, berechnet \u03c3(\u03b2(R-\u0398)) Readiness und exportiert Zeitstempel-Diagnostik nach analysis/results/utac_v2_manifest_gap_scan_*.json.\n"
+      "description": "Scannt analysis/reports/utac_v2_readiness.json, prüft Komponenten auf dem Dateisystem, berechnet σ(β(R-Θ)) Readiness und exportiert Zeitstempel-Diagnostik nach analysis/results/utac_v2_manifest_gap_scan_*.json.\n"
     },
     {
       "id": "analysis-special-001",
@@ -706,7 +706,7 @@
         "phase-scan",
         "gate-occupancy"
       ],
-      "description": "Treibt lightweight helper \u00fcber auroral ramps, pulsed gates.\nExportiert gate occupancy, \u0398/\u03b2 drifts, resonance-gain deltas.\nOutput: results/adaptive_membrane_phase_scan.json\n"
+      "description": "Treibt lightweight helper über auroral ramps, pulsed gates.\nExportiert gate occupancy, Θ/β drifts, resonance-gain deltas.\nOutput: results/adaptive_membrane_phase_scan.json\n"
     },
     {
       "id": "analysis-special-002",
@@ -722,7 +722,7 @@
         "simulation",
         "parameter-space"
       ],
-      "description": "Synthetische Threshold-Sweeps \u00fcber Parameter-Raum.\nGeneriert k\u00fcnstliche Daten f\u00fcr Validierung.\n"
+      "description": "Synthetische Threshold-Sweeps über Parameter-Raum.\nGeneriert künstliche Daten für Validierung.\n"
     },
     {
       "id": "analysis-infra-001",
@@ -771,7 +771,7 @@
     "batch_configs": {
       "name": "Batch Configurations",
       "path": "batch_configs/",
-      "description": "YAML/JSON Konfigurationen f\u00fcr Batch-Runs",
+      "description": "YAML/JSON Konfigurationen für Batch-Runs",
       "files": [
         "potential_cascade.yaml",
         "potential_cascade_climate.yaml",
@@ -824,7 +824,7 @@
     "results": {
       "name": "Fit Results (JSON)",
       "path": "results/",
-      "description": "DIE ZENTRALE SAMMLUNG aller Fit-Ergebnisse!\nJedes Domain-Fit-Skript exportiert hierher.\nEnth\u00e4lt (R, \u0398, \u03b2, \u03b6(R), \u0394AIC, R\u00b2, etc.)\n",
+      "description": "DIE ZENTRALE SAMMLUNG aller Fit-Ergebnisse!\nJedes Domain-Fit-Skript exportiert hierher.\nEnthält (R, Θ, β, ζ(R), ΔAIC, R², etc.)\n",
       "keywords": [
         "results",
         "fit-output",
@@ -832,7 +832,30 @@
         "json"
       ],
       "importance": "critical",
-      "note": "Dieser Ordner ist ZENTRAL f\u00fcr UTAC!\nEnth\u00e4lt alle empirischen Beweise f\u00fcr \u03b2-Spektrum.\n"
+      "note": "Dieser Ordner ist ZENTRAL für UTAC!\nEnthält alle empirischen Beweise für β-Spektrum.\n",
+      "recent": [
+        {
+          "id": "results-wais-adapter-v3",
+          "file": "analysis/results/wais_adapter_output.json",
+          "generated": "2026-08-24T10:30:00Z",
+          "scope": "WAIS Mock Adapter – σ-Distanz 0.22, AR(1) 0.720",
+          "roadmap": "v3-feat-p1-004"
+        },
+        {
+          "id": "results-amoc-adapter-v3",
+          "file": "analysis/results/amoc_adapter_output.json",
+          "generated": "2026-08-24T10:30:00Z",
+          "scope": "AMOC Mock Adapter – FovS>0, Distance-to-Tipping 0.70",
+          "roadmap": "v3-feat-p1-005"
+        },
+        {
+          "id": "results-coral-adapter-v3",
+          "file": "analysis/results/coral_adapter_output.json",
+          "generated": "2026-08-24T10:30:00Z",
+          "scope": "Coral Mock Adapter – DHW 15.3, σ≈1 (tipped)",
+          "roadmap": "v3-feat-p1-006"
+        }
+      ]
     },
     "sigillin_sync": {
       "name": "Sigillin Telemetry Reports",
@@ -887,11 +910,11 @@
       "name": "Socio-Ecology & Climate",
       "scripts": 5,
       "highlights": [
-        "amazon_resilience_fit.py (\u03b2=14.6)",
-        "urban_heat_canopy_fit.py (\u03b2=16.3 OUTLIER!)",
+        "amazon_resilience_fit.py (β=14.6)",
+        "urban_heat_canopy_fit.py (β=16.3 OUTLIER!)",
         "planetary_tipping_elements_fit.py",
         "outlier_beta_review.py (Instrumentation-Flag Ledger)",
-        "planetary_theta_drift_flag.py (Adaptive \u0398 Gap Audit)"
+        "planetary_theta_drift_flag.py (Adaptive Θ Gap Audit)"
       ]
     },
     "cross_domain": {
@@ -907,13 +930,13 @@
   },
   "triggers": {
     "core_metrics": [
-      "\u03b2 (beta)",
-      "\u0398 (theta)",
+      "β (beta)",
+      "Θ (theta)",
       "R (response)",
-      "\u03b6 (zeta / impedance)",
-      "\u0394AIC",
-      "R\u00b2",
-      "\u03c3(\u03b2(R-\u0398))"
+      "ζ (zeta / impedance)",
+      "ΔAIC",
+      "R²",
+      "σ(β(R-Θ))"
     ],
     "methods": [
       "logistic-fit",
@@ -937,8 +960,8 @@
       "Tipping-Points"
     ],
     "special_concepts": [
-      "\u03b2-Spektrum",
-      "Outlier (\u03b2=16.3)",
+      "β-Spektrum",
+      "Outlier (β=16.3)",
       "Resonance",
       "Membrane",
       "Impedance",
@@ -984,7 +1007,7 @@
       "analysis-batch-007"
     ],
     "results_directory": {
-      "description": "ZENTRAL! Enth\u00e4lt alle JSON-Exports der Fit-Skripte.\nBasis f\u00fcr Cohort-Summary, Bridge-Table, und UTAC v1.2.\n",
+      "description": "ZENTRAL! Enthält alle JSON-Exports der Fit-Skripte.\nBasis für Cohort-Summary, Bridge-Table, und UTAC v1.2.\n",
       "path": "results/"
     }
   },
@@ -995,7 +1018,7 @@
     "deprecated": "Veraltet, wird ersetzt"
   },
   "relevance_legend": {
-    "high": "Kritisch f\u00fcr UTAC, h\u00e4ufig genutzt",
+    "high": "Kritisch für UTAC, häufig genutzt",
     "medium": "Wichtig, aber spezialisiert",
     "low": "Infrastruktur, selten direkt genutzt"
   }

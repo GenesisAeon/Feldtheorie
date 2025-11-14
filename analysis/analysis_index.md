@@ -1,7 +1,7 @@
 # 📊 Analysis Index - Resonance Bay Navigator
 
 **Version:** 1.0.0
-**Datum:** 5. Mai 2026
+**Datum:** 24. August 2026
 **Verzeichnis:** `analysis/`
 
 ---
@@ -161,6 +161,10 @@ analysis/
 - Format: `{domain}_{system}_fit.json`
 - Struktur: `{R, Θ, β, ζ(R), ΔAIC, R², CI, ...}`
 - Basis für Cohort-Summary, Bridge-Table, Meta-Regression
+- **Neu (V3 Foundation, 24.08.2026):**
+  - `analysis/results/wais_adapter_output.json` – WAIS Mock Adapter (σ-Distanz 0.22, AR(1)=0.720)
+  - `analysis/results/amoc_adapter_output.json` – AMOC Mock Adapter (FovS>0, Distance-to-Tipping 0.70)
+  - `analysis/results/coral_adapter_output.json` – Coral Mock Adapter (DHW 15.3, σ≈1 → tipped)
 
 ---
 

@@ -2,14 +2,14 @@
   "metadata": {
     "version": "3.0.0",
     "created": "2025-11-14T12:30:00Z",
-    "last_updated": "2026-08-23T12:20:00Z",
+    "last_updated": "2026-08-24T10:30:00Z",
     "total_features": 18,
-    "completed_features": 3,
+    "completed_features": 6,
     "parameters": {
-      "R_bar": 0.17,
+      "R_bar": 0.33,
       "Theta": 0.66,
       "beta": 4.8,
-      "sigma": 0.086
+      "sigma": 0.173
     }
   },
   "features_phase1_foundation": [
@@ -91,7 +91,9 @@
       "id": "v3-feat-p1-004",
       "title": "Python Adapter: GRACE Mock (WAIS)",
       "description": "Implementiere grace_wais_adapter.py - Mock-Version für Entwicklung.\nSpäter: Echte NASA Earthdata API (wenn Credentials vorhanden).\n\nFeatures:\n- Lade Mock-CSV\n- Berechne monatliche Δ Mass\n- Export als JSON für TypeScript\n",
-      "status": "pending",
+      "status": "completed",
+      "completed_at": "2026-08-24T09:50:00Z",
+      "status_notes": "Mock-Adapter liest CSV, berechnet EWS-Metriken und exportiert JSON (CLI-Test: 274 Punkte, σ-Guard aktiv).",
       "priority": "P1",
       "assignee": "Claude",
       "dependencies": [
@@ -105,13 +107,18 @@
       "effort_hours": 1.5,
       "output": [
         "scripts/adapters/grace_wais_adapter.py"
+      ],
+      "artifacts": [
+        "analysis/results/wais_adapter_output.json"
       ]
     },
     {
       "id": "v3-feat-p1-005",
       "title": "Python Adapter: RAPID Mock (AMOC)",
       "description": "Implementiere rapid_amoc_adapter.py - Mock-Version für Entwicklung.\nSpäter: Echte RAPID-MOCHA ASCII-Daten (rapid.ac.uk).\n\nFeatures:\n- Lade Mock-CSV\n- Berechne 10-Tage MOC Mittelwert\n- FovS (Freshwater overshoot South) Indikator\n- Export als JSON\n",
-      "status": "pending",
+      "status": "completed",
+      "completed_at": "2026-08-24T09:55:00Z",
+      "status_notes": "Adapter erzeugt JSON mit FovS>0, CLI-Test bestätigt 757 Punkte und Distance-to-Tipping 70%.",
       "priority": "P1",
       "assignee": "Claude",
       "dependencies": [
@@ -125,13 +132,18 @@
       "effort_hours": 1.5,
       "output": [
         "scripts/adapters/rapid_amoc_adapter.py"
+      ],
+      "artifacts": [
+        "analysis/results/amoc_adapter_output.json"
       ]
     },
     {
       "id": "v3-feat-p1-006",
       "title": "Python Adapter: OISST Mock (Coral)",
       "description": "Implementiere oisst_coral_adapter.py - Mock-Version für Entwicklung.\nSpäter: Echte NOAA OISST NetCDF-Daten.\n\nFeatures:\n- Lade Mock-CSV\n- Berechne DHW (Degree Heating Weeks)\n- Bleaching-Wahrscheinlichkeit\n- Export als JSON\n",
-      "status": "pending",
+      "status": "completed",
+      "completed_at": "2026-08-24T10:00:00Z",
+      "status_notes": "Adapter liefert JSON mit 45 Jahrespunkten, markiert σ→1 (Tipping erreicht) und DHW=15.3.",
       "priority": "P1",
       "assignee": "Claude",
       "dependencies": [
@@ -145,6 +157,9 @@
       "effort_hours": 1,
       "output": [
         "scripts/adapters/oisst_coral_adapter.py"
+      ],
+      "artifacts": [
+        "analysis/results/coral_adapter_output.json"
       ]
     }
   ],
