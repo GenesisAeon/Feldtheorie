@@ -1,0 +1,282 @@
+{
+  "metadata": {
+    "version": "3.0.0",
+    "created": "2025-11-14T12:55:00Z",
+    "last_updated": "2025-11-14T12:55:00Z",
+    "total_documents": 8,
+    "scope": "V3.0 Real-World Systems Integration"
+  },
+  "core_documents": [
+    {
+      "id": "v3-doc-001",
+      "title": "README.md",
+      "path": "seed/FraktaltagebuchV3/README.md",
+      "type": "documentation",
+      "description": "Übersicht über FraktaltagebuchV3, die 6 Systeme, FIT-Methodik",
+      "created": "2025-11-14T12:20:00Z",
+      "status": "active"
+    },
+    {
+      "id": "v3-doc-002",
+      "title": "AGENTS.md",
+      "path": "seed/FraktaltagebuchV3/AGENTS.md",
+      "type": "charter",
+      "description": "Scope-Regeln, Trilayer-Konsistenz, Codex-Template für AI-Agents",
+      "created": "2025-11-14T12:25:00Z",
+      "status": "active"
+    },
+    {
+      "id": "v3-doc-003",
+      "title": "v3_roadmap.{yaml,json,md}",
+      "path": "seed/FraktaltagebuchV3/v3_roadmap.*",
+      "type": "roadmap",
+      "description": "18 Features über 4 Phasen, Progress Tracking (R̄, σ)",
+      "created": "2025-11-14T12:30:00Z",
+      "status": "active",
+      "trilayer": true
+    },
+    {
+      "id": "v3-doc-004",
+      "title": "v3_codex.{yaml,json,md}",
+      "path": "seed/FraktaltagebuchV3/v3_codex.*",
+      "type": "codex",
+      "description": "Chronologisches PR/Commit-Log mit formal/empirical/poetic threads",
+      "created": "2025-11-14T12:50:00Z",
+      "status": "active",
+      "trilayer": true
+    },
+    {
+      "id": "v3-doc-005",
+      "title": "v3_index.{yaml,json,md}",
+      "path": "seed/FraktaltagebuchV3/v3_index.*",
+      "type": "index",
+      "description": "Dieses Dokument - Navigiert alle V3-Dokumente",
+      "created": "2025-11-14T12:55:00Z",
+      "status": "active",
+      "trilayer": true
+    }
+  ],
+  "related_documents": [
+    {
+      "id": "v3-related-001",
+      "title": "seed/RoadToV.3/README.md",
+      "path": "seed/RoadToV.3/README.md",
+      "type": "documentation",
+      "description": "Übersicht über die 6 TypeScript-Systeme (~1,950 Zeilen)",
+      "created": "2024-11-14",
+      "status": "active"
+    },
+    {
+      "id": "v3-related-002",
+      "title": "seed/RoadToV.3/INTEGRATION_GUIDE.md",
+      "path": "seed/RoadToV.3/INTEGRATION_GUIDE.md",
+      "type": "guide",
+      "description": "8-Wochen-Plan für unified-mandala Integration",
+      "created": "2024-11-14",
+      "status": "active"
+    },
+    {
+      "id": "v3-related-003",
+      "title": "seed/RoadToV.3/activation_audit.md",
+      "path": "seed/RoadToV.3/activation_audit.md",
+      "type": "audit",
+      "description": "Activation Gaps & Implementation Map (σ≈0.21)",
+      "created": "2024-11-14",
+      "status": "active"
+    },
+    {
+      "id": "v3-related-004",
+      "title": "seed/RoadToV.3/antarctic-ice-sheet.ts",
+      "path": "seed/RoadToV.3/antarctic-ice-sheet.ts",
+      "type": "code",
+      "description": "WAIS System (β=13.5) - ~750 Zeilen TypeScript",
+      "created": "2024-11-14",
+      "status": "active"
+    },
+    {
+      "id": "v3-related-005",
+      "title": "seed/RoadToV.3/amoc-collapse.ts",
+      "path": "seed/RoadToV.3/amoc-collapse.ts",
+      "type": "code",
+      "description": "AMOC System (β=10.2) - ~650 Zeilen TypeScript",
+      "created": "2024-11-14",
+      "status": "active"
+    },
+    {
+      "id": "v3-related-006",
+      "title": "seed/RoadToV.3/additional-systems.ts",
+      "path": "seed/RoadToV.3/additional-systems.ts",
+      "type": "code",
+      "description": "Coral/Measles/Finance/Cancer (β 3.5-7.5) - ~550 Zeilen",
+      "created": "2024-11-14",
+      "status": "active"
+    },
+    {
+      "id": "v3-related-007",
+      "title": "docs/fractal_implementation_technique.md",
+      "path": "docs/fractal_implementation_technique.md",
+      "type": "methodology",
+      "description": "FIT (Fractal Implementation Technique) - Scope-Isolation Methodik",
+      "created": "2025-11-10",
+      "status": "active"
+    },
+    {
+      "id": "v3-related-008",
+      "title": "seed/Sigillin_System_Definition.md",
+      "path": "seed/Sigillin_System_Definition.md",
+      "type": "methodology",
+      "description": "Trilayer-System (YAML/JSON/MD), Ordnungs- vs Bedeutungs-Sigillin",
+      "created": "2025-11-06",
+      "status": "active"
+    }
+  ],
+  "data_sources_pending": [
+    {
+      "id": "v3-data-001",
+      "title": "data/climate/wais_mass_balance_mock.csv",
+      "path": "data/climate/wais_mass_balance_mock.csv",
+      "type": "dataset",
+      "description": "WAIS Eismassenbalance 2002-2024 (Mock, GRACE-basiert)",
+      "status": "pending",
+      "roadmap_id": "v3-feat-p1-001"
+    },
+    {
+      "id": "v3-data-002",
+      "title": "data/ocean/amoc_strength_mock.csv",
+      "path": "data/ocean/amoc_strength_mock.csv",
+      "type": "dataset",
+      "description": "AMOC Stärke 2004-2024 (Mock, RAPID-basiert)",
+      "status": "pending",
+      "roadmap_id": "v3-feat-p1-002"
+    },
+    {
+      "id": "v3-data-003",
+      "title": "data/biology/coral_bleaching_global_mock.csv",
+      "path": "data/biology/coral_bleaching_global_mock.csv",
+      "type": "dataset",
+      "description": "Globales Korallenbleichen 1980-2024 (Mock, NOAA-basiert)",
+      "status": "pending",
+      "roadmap_id": "v3-feat-p1-003"
+    }
+  ],
+  "analysis_results_pending": [
+    {
+      "id": "v3-analysis-001",
+      "title": "analysis/results/wais_beta_fit_v3.json",
+      "path": "analysis/results/wais_beta_fit_v3.json",
+      "type": "analysis",
+      "description": "β-Fit für WAIS (β≈13.5, Θ≈1.48°C, R²≈0.94)",
+      "status": "pending",
+      "roadmap_id": "v3-feat-p2-001"
+    },
+    {
+      "id": "v3-analysis-002",
+      "title": "analysis/results/amoc_beta_fit_v3.json",
+      "path": "analysis/results/amoc_beta_fit_v3.json",
+      "type": "analysis",
+      "description": "β-Fit für AMOC (β≈10.2, Θ≈4.0°C, R²≈0.91)",
+      "status": "pending",
+      "roadmap_id": "v3-feat-p2-002"
+    },
+    {
+      "id": "v3-analysis-003",
+      "title": "analysis/results/coral_beta_fit_v3.json",
+      "path": "analysis/results/coral_beta_fit_v3.json",
+      "type": "analysis",
+      "description": "β-Fit für Coral (β≈7.5, Θ≈1.0°C, R²≈0.88)",
+      "status": "pending",
+      "roadmap_id": "v3-feat-p2-003"
+    },
+    {
+      "id": "v3-analysis-004",
+      "title": "analysis/results/wais_ews_signals.json",
+      "path": "analysis/results/wais_ews_signals.json",
+      "type": "analysis",
+      "description": "Early Warning Signals: Varianz, AR(1), Spectral für WAIS",
+      "status": "pending",
+      "roadmap_id": "v3-feat-p2-004"
+    },
+    {
+      "id": "v3-analysis-005",
+      "title": "analysis/results/amoc_ews_signals.json",
+      "path": "analysis/results/amoc_ews_signals.json",
+      "type": "analysis",
+      "description": "Early Warning Signals: FovS Indikator, AR(1) für AMOC",
+      "status": "pending",
+      "roadmap_id": "v3-feat-p2-005"
+    }
+  ],
+  "scripts_pending": [
+    {
+      "id": "v3-script-001",
+      "title": "scripts/adapters/grace_wais_adapter.py",
+      "path": "scripts/adapters/grace_wais_adapter.py",
+      "type": "script",
+      "description": "GRACE Mock-Adapter für WAIS Daten",
+      "status": "pending",
+      "roadmap_id": "v3-feat-p1-004"
+    },
+    {
+      "id": "v3-script-002",
+      "title": "scripts/adapters/rapid_amoc_adapter.py",
+      "path": "scripts/adapters/rapid_amoc_adapter.py",
+      "type": "script",
+      "description": "RAPID Mock-Adapter für AMOC Daten",
+      "status": "pending",
+      "roadmap_id": "v3-feat-p1-005"
+    },
+    {
+      "id": "v3-script-003",
+      "title": "scripts/adapters/oisst_coral_adapter.py",
+      "path": "scripts/adapters/oisst_coral_adapter.py",
+      "type": "script",
+      "description": "OISST Mock-Adapter für Coral Daten",
+      "status": "pending",
+      "roadmap_id": "v3-feat-p1-006"
+    }
+  ],
+  "navigation_paths": {
+    "quick_start": [
+      "seed/FraktaltagebuchV3/README.md",
+      "seed/FraktaltagebuchV3/v3_roadmap.md",
+      "seed/FraktaltagebuchV3/AGENTS.md"
+    ],
+    "typescript_integration": [
+      "seed/RoadToV.3/README.md",
+      "seed/RoadToV.3/INTEGRATION_GUIDE.md",
+      "seed/RoadToV.3/antarctic-ice-sheet.ts",
+      "seed/RoadToV.3/amoc-collapse.ts"
+    ],
+    "methodology": [
+      "docs/fractal_implementation_technique.md",
+      "seed/Sigillin_System_Definition.md",
+      "seed/FraktaltagebuchV3/AGENTS.md"
+    ]
+  },
+  "statistics": {
+    "total_documents": 8,
+    "core_documents": 5,
+    "related_documents": 8,
+    "data_sources_pending": 3,
+    "analysis_results_pending": 5,
+    "scripts_pending": 3,
+    "by_type": {
+      "documentation": 3,
+      "charter": 1,
+      "roadmap": 1,
+      "codex": 1,
+      "index": 1,
+      "guide": 1,
+      "audit": 1,
+      "code": 3,
+      "methodology": 2,
+      "dataset": 3,
+      "analysis": 5,
+      "script": 3
+    },
+    "by_status": {
+      "active": 13,
+      "pending": 11
+    }
+  }
+}

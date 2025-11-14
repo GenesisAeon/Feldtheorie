@@ -1,0 +1,577 @@
+---
+# V3.0 Roadmap - UTAC Real-World Systems Integration
+# Version: 1.0.0
+# Created: 2025-11-14T12:30:00Z
+# Purpose: Track development of 6 critical tipping-point systems (β 3.5 → 13.5)
+
+metadata:
+  version: "3.0.0"
+  created: "2025-11-14T12:30:00Z"
+  last_updated: "2025-11-14T12:30:00Z"
+  total_features: 18
+  completed_features: 0
+
+  # Logistic activation tracking
+  parameters:
+    R_bar: 0.00        # Mean progress (0-1)
+    Theta: 0.66        # Release gate
+    beta: 4.8          # Steepness
+    sigma: 0.000       # σ(β(R̄-Θ)) activation level
+
+# ============================================================================
+# PHASE 1: FOUNDATION (R = 0.00 → 0.30)
+# ============================================================================
+
+features_phase1_foundation:
+
+  - id: v3-feat-p1-001
+    title: "Mock-Daten: WAIS (West Antarctic Ice Sheet)"
+    description: |
+      Generiere synthetische Zeitreihe für WAIS Eismassenbalance (2002-2024)
+      basierend auf GRACE/GRACE-FO Paper-Werten.
+      - Massenverlust: -150 Gt/year
+      - EWS: Varianz ↑, AR(1) ↑
+      - β≈13.5, Θ≈1.5°C
+    status: pending
+    priority: P0
+    assignee: Claude
+    dependencies: []
+    parameters:
+      R: 0.00
+      Theta: 1.00
+      beta: 13.5
+    effort_hours: 2
+    datasources:
+      - TiPACCs Project (2024) CORDIS 820575
+      - Armstrong-McKay et al. (2022) Science
+    output:
+      - data/climate/wais_mass_balance_mock.csv
+
+  - id: v3-feat-p1-002
+    title: "Mock-Daten: AMOC (Atlantic Meridional Overturning Circulation)"
+    description: |
+      Generiere synthetische Zeitreihe für AMOC Stärke (2004-2024)
+      basierend auf RAPID-MOCHA Array + van Westen Indikator.
+      - Schwächung: 17 Sv → 14 Sv
+      - FovS (34°S): negativ → positiv (Kipppunkt!)
+      - β≈10.2, Θ≈4.0°C
+    status: pending
+    priority: P0
+    assignee: Claude
+    dependencies: []
+    parameters:
+      R: 0.00
+      Theta: 1.00
+      beta: 10.2
+    effort_hours: 2
+    datasources:
+      - van Westen et al. (2024) Science Advances
+      - Ditlevsen & Ditlevsen (2023) Nature Comms
+      - RAPID-MOCHA Array (rapid.ac.uk)
+    output:
+      - data/ocean/amoc_strength_mock.csv
+
+  - id: v3-feat-p1-003
+    title: "Mock-Daten: Coral Reef Bleaching (Global)"
+    description: |
+      Generiere synthetische Zeitreihe für globales Korallenbleichen (1980-2024)
+      basierend auf NOAA Coral Reef Watch.
+      - 84% bleached seit Jan 2023 (ERSTER ÜBERSCHRITTENER KIPPPUNKT!)
+      - DHW (Degree Heating Weeks)
+      - β≈7.5, Θ≈1.0°C (bereits überschritten)
+    status: pending
+    priority: P0
+    assignee: Claude
+    dependencies: []
+    parameters:
+      R: 1.20    # Überschritten!
+      Theta: 1.00
+      beta: 7.5
+    effort_hours: 1.5
+    datasources:
+      - NOAA Coral Reef Watch
+      - Global Tipping Points Report 2025
+      - Lenton et al. (2025)
+    output:
+      - data/biology/coral_bleaching_global_mock.csv
+
+  - id: v3-feat-p1-004
+    title: "Python Adapter: GRACE Mock (WAIS)"
+    description: |
+      Implementiere grace_wais_adapter.py - Mock-Version für Entwicklung.
+      Später: Echte NASA Earthdata API (wenn Credentials vorhanden).
+
+      Features:
+      - Lade Mock-CSV
+      - Berechne monatliche Δ Mass
+      - Export als JSON für TypeScript
+    status: pending
+    priority: P1
+    assignee: Claude
+    dependencies:
+      - v3-feat-p1-001
+    parameters:
+      R: 0.00
+      Theta: 0.80
+      beta: 4.5
+    effort_hours: 1.5
+    output:
+      - scripts/adapters/grace_wais_adapter.py
+
+  - id: v3-feat-p1-005
+    title: "Python Adapter: RAPID Mock (AMOC)"
+    description: |
+      Implementiere rapid_amoc_adapter.py - Mock-Version für Entwicklung.
+      Später: Echte RAPID-MOCHA ASCII-Daten (rapid.ac.uk).
+
+      Features:
+      - Lade Mock-CSV
+      - Berechne 10-Tage MOC Mittelwert
+      - FovS (Freshwater overshoot South) Indikator
+      - Export als JSON
+    status: pending
+    priority: P1
+    assignee: Claude
+    dependencies:
+      - v3-feat-p1-002
+    parameters:
+      R: 0.00
+      Theta: 0.80
+      beta: 4.5
+    effort_hours: 1.5
+    output:
+      - scripts/adapters/rapid_amoc_adapter.py
+
+  - id: v3-feat-p1-006
+    title: "Python Adapter: OISST Mock (Coral)"
+    description: |
+      Implementiere oisst_coral_adapter.py - Mock-Version für Entwicklung.
+      Später: Echte NOAA OISST NetCDF-Daten.
+
+      Features:
+      - Lade Mock-CSV
+      - Berechne DHW (Degree Heating Weeks)
+      - Bleaching-Wahrscheinlichkeit
+      - Export als JSON
+    status: pending
+    priority: P1
+    assignee: Claude
+    dependencies:
+      - v3-feat-p1-003
+    parameters:
+      R: 0.00
+      Theta: 0.80
+      beta: 4.5
+    effort_hours: 1
+    output:
+      - scripts/adapters/oisst_coral_adapter.py
+
+# ============================================================================
+# PHASE 2: DATA INTEGRATION (R = 0.30 → 0.60)
+# ============================================================================
+
+features_phase2_integration:
+
+  - id: v3-feat-p2-001
+    title: "β-Fit: WAIS (β≈13.5)"
+    description: |
+      Logistische Regression auf WAIS Mock-Daten.
+      - Model: σ(β(T-Θ)) mit T = Global Temp
+      - Bootstrap CIs (1000 iterations)
+      - ΔAIC vs nulls (linear, exp, power-law)
+      - Export JSON für TypeScript
+    status: pending
+    priority: P0
+    assignee: Claude
+    dependencies:
+      - v3-feat-p1-001
+      - v3-feat-p1-004
+    parameters:
+      R: 0.00
+      Theta: 0.90
+      beta: 4.8
+    effort_hours: 2
+    expected_output:
+      beta: 13.5
+      theta: 1.48
+      r_squared: 0.94
+      delta_aic_linear: 142
+    output:
+      - analysis/results/wais_beta_fit_v3.json
+      - figures/wais_logistic_curve.png
+
+  - id: v3-feat-p2-002
+    title: "β-Fit: AMOC (β≈10.2)"
+    description: |
+      Logistische Regression auf AMOC Mock-Daten.
+      - Model: σ(β(T-Θ)) mit T = Global Temp
+      - Bistabilität modellieren (Hysterese)
+      - Bootstrap CIs
+      - Export JSON
+    status: pending
+    priority: P0
+    assignee: Claude
+    dependencies:
+      - v3-feat-p1-002
+      - v3-feat-p1-005
+    parameters:
+      R: 0.00
+      Theta: 0.90
+      beta: 4.8
+    effort_hours: 2
+    expected_output:
+      beta: 10.2
+      theta: 4.0
+      r_squared: 0.91
+      delta_aic_linear: 87
+    output:
+      - analysis/results/amoc_beta_fit_v3.json
+      - figures/amoc_bistability.png
+
+  - id: v3-feat-p2-003
+    title: "β-Fit: Coral Reefs (β≈7.5)"
+    description: |
+      Logistische Regression auf Coral Mock-Daten.
+      - Model: σ(β(DHW-Θ_DHW))
+      - POST-TIPPING Analyse (R>Θ)
+      - Bootstrap CIs
+      - Export JSON
+    status: pending
+    priority: P0
+    assignee: Claude
+    dependencies:
+      - v3-feat-p1-003
+      - v3-feat-p1-006
+    parameters:
+      R: 0.00
+      Theta: 0.90
+      beta: 4.8
+    effort_hours: 1.5
+    expected_output:
+      beta: 7.5
+      theta: 1.0
+      r_squared: 0.88
+      delta_aic_linear: 65
+    output:
+      - analysis/results/coral_beta_fit_v3.json
+      - figures/coral_bleaching_timeline.png
+
+  - id: v3-feat-p2-004
+    title: "Early Warning Signals: WAIS"
+    description: |
+      Berechne EWS für WAIS Mock-Daten:
+      - Variance (rolling window)
+      - AR(1) autocorrelation
+      - Spectral reddening (FFT)
+      - Critical slowing detection
+    status: pending
+    priority: P1
+    assignee: Claude
+    dependencies:
+      - v3-feat-p1-001
+    parameters:
+      R: 0.00
+      Theta: 0.85
+      beta: 4.5
+    effort_hours: 2
+    output:
+      - analysis/results/wais_ews_signals.json
+
+  - id: v3-feat-p2-005
+    title: "Early Warning Signals: AMOC"
+    description: |
+      Berechne EWS für AMOC Mock-Daten:
+      - Variance
+      - AR(1)
+      - van Westen FovS Indicator (Freshwater overshoot)
+      - Spectral analysis
+    status: pending
+    priority: P1
+    assignee: Claude
+    dependencies:
+      - v3-feat-p1-002
+    parameters:
+      R: 0.00
+      Theta: 0.85
+      beta: 4.5
+    effort_hours: 2
+    output:
+      - analysis/results/amoc_ews_signals.json
+
+  - id: v3-feat-p2-006
+    title: "Bootstrap CIs für alle 6 Systeme"
+    description: |
+      Paired bootstrap resampling (1000 iterations, seed=1337):
+      - WAIS, AMOC, Coral, Measles, Finance, Cancer
+      - 95% CIs für β, Θ
+      - Update data/derived/beta_estimates.csv
+    status: pending
+    priority: P1
+    assignee: Claude
+    dependencies:
+      - v3-feat-p2-001
+      - v3-feat-p2-002
+      - v3-feat-p2-003
+    parameters:
+      R: 0.00
+      Theta: 0.80
+      beta: 4.5
+    effort_hours: 1.5
+    output:
+      - data/derived/beta_estimates_v3.csv
+
+# ============================================================================
+# PHASE 3: TYPESCRIPT BRIDGE (R = 0.60 → 0.85)
+# ============================================================================
+
+features_phase3_bridge:
+
+  - id: v3-feat-p3-001
+    title: "TypeScript Integration Test: WAIS"
+    description: |
+      Teste Python JSON → TypeScript System-Klassen:
+      - Lade analysis/results/wais_beta_fit_v3.json
+      - Instanziiere WAISSystem aus seed/RoadToV.3/antarctic-ice-sheet.ts
+      - Validiere: β, Θ, EWS korrekt geladen
+      - Teste CREP-Generierung
+    status: pending
+    priority: P1
+    assignee: Claude
+    dependencies:
+      - v3-feat-p2-001
+      - v3-feat-p2-004
+    parameters:
+      R: 0.00
+      Theta: 0.90
+      beta: 4.5
+    effort_hours: 2
+    output:
+      - tests/integration/test_python_ts_bridge_wais.py
+
+  - id: v3-feat-p3-002
+    title: "CREP Metrics für alle 6 Systeme"
+    description: |
+      Generiere Coherence, Resonance, Emergence, Poetics:
+      - Coherence: Systemintegrität (0-1)
+      - Resonance: Antwort auf Forcing (0-1)
+      - Emergence: β-normalisierte Emergenz (0-1)
+      - Poetics: Menschenlesbarer Zustand
+    status: pending
+    priority: P1
+    assignee: Claude (formal) + Aeon (poetic)
+    dependencies:
+      - v3-feat-p2-001
+      - v3-feat-p2-002
+      - v3-feat-p2-003
+    parameters:
+      R: 0.00
+      Theta: 0.85
+      beta: 4.5
+    effort_hours: 2
+    output:
+      - analysis/results/v3_crep_metrics.json
+
+  - id: v3-feat-p3-003
+    title: "Trilayer-Dokumentation: WAIS"
+    description: |
+      Erstelle seed/bedeutungssigillin/climate/wais_v3.{yaml,json,md}
+      mit formal/empirical/poetic threads.
+    status: pending
+    priority: P2
+    assignee: Claude + Team
+    dependencies:
+      - v3-feat-p2-001
+      - v3-feat-p2-004
+    parameters:
+      R: 0.00
+      Theta: 0.80
+      beta: 4.5
+    effort_hours: 1.5
+    output:
+      - seed/bedeutungssigillin/climate/wais_v3.yaml
+      - seed/bedeutungssigillin/climate/wais_v3.json
+      - seed/bedeutungssigillin/climate/wais_v3.md
+
+  - id: v3-feat-p3-004
+    title: "Trilayer-Dokumentation: AMOC"
+    description: |
+      Erstelle seed/bedeutungssigillin/ocean/amoc_v3.{yaml,json,md}
+      mit formal/empirical/poetic threads.
+    status: pending
+    priority: P2
+    assignee: Claude + Team
+    dependencies:
+      - v3-feat-p2-002
+      - v3-feat-p2-005
+    parameters:
+      R: 0.00
+      Theta: 0.80
+      beta: 4.5
+    effort_hours: 1.5
+    output:
+      - seed/bedeutungssigillin/ocean/amoc_v3.yaml
+      - seed/bedeutungssigillin/ocean/amoc_v3.json
+      - seed/bedeutungssigillin/ocean/amoc_v3.md
+
+  - id: v3-feat-p3-005
+    title: "Shadow-Sigillin für alle 6 Systeme"
+    description: |
+      Erstelle seed/shadow_sigillin/v3/{system}_shadow.yaml
+      für WAIS, AMOC, Coral, Measles, Finance, Cancer.
+
+      Minimum pro System:
+      - 3 Risiken (severity: high/medium/low)
+      - 2 Recovery-Playbook-Einträge
+    status: pending
+    priority: P2
+    assignee: Claude
+    dependencies: []
+    parameters:
+      R: 0.00
+      Theta: 0.75
+      beta: 4.5
+    effort_hours: 2
+    output:
+      - seed/shadow_sigillin/v3/wais_shadow.yaml
+      - seed/shadow_sigillin/v3/amoc_shadow.yaml
+      - seed/shadow_sigillin/v3/coral_shadow.yaml
+      - seed/shadow_sigillin/v3/measles_shadow.yaml
+      - seed/shadow_sigillin/v3/finance_shadow.yaml
+      - seed/shadow_sigillin/v3/cancer_shadow.yaml
+
+# ============================================================================
+# PHASE 4: REAL-TIME MONITORING (R = 0.85 → 1.00)
+# ============================================================================
+
+features_phase4_monitoring:
+
+  - id: v3-feat-p4-001
+    title: "EWS Pipeline: Continuous Monitoring"
+    description: |
+      Automatisierte Early Warning Signal Pipeline:
+      - Cron-Job oder GitHub Actions (alle 6h)
+      - Lade neueste Mock-Daten (später: echte APIs)
+      - Berechne Varianz, AR(1), Spectral Reddening
+      - Alert wenn Schwellenwerte überschritten
+    status: pending
+    priority: P2
+    assignee: Claude
+    dependencies:
+      - v3-feat-p2-004
+      - v3-feat-p2-005
+    parameters:
+      R: 0.00
+      Theta: 0.90
+      beta: 4.8
+    effort_hours: 3
+    output:
+      - scripts/monitoring/ews_pipeline.py
+      - .github/workflows/v3-ews-monitor.yml
+
+  - id: v3-feat-p4-002
+    title: "Alert System via Sigillin"
+    description: |
+      Schwellenwert-Alarme über Sigillin-Bridge:
+      - Wenn Varianz > Threshold → Eintrag in v3_codex.*
+      - Wenn AR(1) > 0.75 → Shadow-Sigillin Update
+      - Wenn FovS > 0 (AMOC) → CRITICAL Alert
+    status: pending
+    priority: P2
+    assignee: Claude
+    dependencies:
+      - v3-feat-p4-001
+    parameters:
+      R: 0.00
+      Theta: 0.85
+      beta: 4.8
+    effort_hours: 2
+    output:
+      - scripts/monitoring/sigillin_alert_system.py
+
+  - id: v3-feat-p4-003
+    title: "Dashboard Integration (React UI)"
+    description: |
+      Integriere 6 Systeme in simulator/ Dashboard:
+      - Live σ(β(R-Θ)) Kurven
+      - EWS Zeitreihen (Varianz, AR1)
+      - CREP-Scores
+      - Tooltips mit Trilayer-Dokumentation
+    status: pending
+    priority: P3
+    assignee: Claude
+    dependencies:
+      - v3-feat-p3-001
+      - v3-feat-p3-002
+    parameters:
+      R: 0.00
+      Theta: 0.85
+      beta: 4.8
+    effort_hours: 4
+    output:
+      - simulator/src/components/V3SystemsOverview.tsx
+
+# ============================================================================
+# SUMMARY
+# ============================================================================
+
+summary:
+  total_phases: 4
+  total_features: 18
+  estimated_hours: 37.5
+
+  phase_breakdown:
+    phase1_foundation:
+      features: 6
+      hours: 9.5
+      R_target: 0.30
+
+    phase2_integration:
+      features: 6
+      hours: 11.0
+      R_target: 0.60
+
+    phase3_bridge:
+      features: 5
+      hours: 9.5
+      R_target: 0.85
+
+    phase4_monitoring:
+      features: 3
+      hours: 9.0
+      R_target: 1.00
+
+  systems_covered:
+    - name: "WAIS (West Antarctic Ice Sheet)"
+      beta: 13.5
+      status: "AT_TIPPING"
+      priority: "CRITICAL"
+
+    - name: "AMOC (Atlantic Meridional Overturning Circulation)"
+      beta: 10.2
+      status: "WEAKENING"
+      priority: "CRITICAL"
+
+    - name: "Coral Reef Bleaching (Global)"
+      beta: 7.5
+      status: "POST_TIPPING"
+      priority: "CRITICAL"
+
+    - name: "Measles Herd Immunity (Canada)"
+      beta: 5.8
+      status: "OUTBREAK"
+      priority: "HIGH"
+
+    - name: "Financial Contagion 2008"
+      beta: 4.9
+      status: "POST_EVENT"
+      priority: "MEDIUM"
+
+    - name: "Cancer-Immune Threshold"
+      beta: 3.5
+      status: "THERAPEUTIC"
+      priority: "LOW"
+
+  beta_range:
+    min: 3.5
+    max: 13.5
+    validation: "UTAC validated across full predicted spectrum!"

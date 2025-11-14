@@ -1,0 +1,128 @@
+{
+  "metadata": {
+    "version": "3.0.0",
+    "created": "2025-11-14T12:50:00Z",
+    "last_updated": "2025-11-14T12:29:04.566605Z",
+    "total_entries": 1,
+    "scope": "V3.0 Real-World Tipping Points (WAIS, AMOC, Coral, Measles, Finance, Cancer)"
+  },
+  "entries": [
+    {
+      "id": "v3-pr-0001",
+      "timestamp": "2025-11-14T12:29:04.566587Z",
+      "scope": "Foundation: FraktaltagebuchV3 Structure + Mock Data (WAIS, AMOC, Coral)",
+      "contributors": [
+        "Johann Römer (Human)",
+        "Claude Sonnet 4.5 (AI)"
+      ],
+      "parameters": {
+        "R": 0.167,
+        "Theta": 0.66,
+        "beta": 4.8,
+        "sigma": 0.01
+      },
+      "threads": {
+        "formal": "Initialisierung von FraktaltagebuchV3 nach FIT-Methodik (Fractal Implementation Technique).\n        \nStruktur erstellt:\n- README.md, AGENTS.md (Charter)\n- v3_roadmap.{yaml,json,md} (18 Features, 4 Phasen)\n- v3_codex.{yaml,json,md} (PR/Commit-Log)\n- v3_index.{yaml,json,md} (Dokumentenverzeichnis)\n\nMock-Datensätze generiert (basierend auf Paper-Werten):\n1. WAIS: 274 Datenpunkte (2002-2024), monatlich\n   - Massenverlust: -2.2M Gt + trend\n   - Early Warning Signals: Varianz ↑230%, AR(1): 0.48→0.72\n   - β≈13.5, Θ≈1.5°C\n\n2. AMOC: 757 Datenpunkte (2004-2024), 10-Tage-Mittel\n   - Stärke: 17→13.25 Sv (schwächend)\n   - FovS Indikator: negativ→positiv (Kipppunkt!)\n   - β≈10.2, Θ≈4.0°C\n\n3. Coral: 45 Datenpunkte (1980-2024), jährlich\n   - Bleaching: 5%→100% (ERSTER ÜBERSCHRITTENER KIPPPUNKT!)\n   - DHW: 2→15 degree heating weeks\n   - β≈7.5, Θ≈1.0°C (überschritten)",
+        "empirical": "Trilayer-Struktur: 5 Dokumente × 3 Formate = 15 Files\nMock-Daten: 3 CSV-Dateien\nTotal Lines: ~3,500 (Documentation + Data)\n\nRoadmap: 18 Features definiert\n- Phase 1 (Foundation): 6 Features\n- Phase 2 (Integration): 6 Features  \n- Phase 3 (Bridge): 5 Features\n- Phase 4 (Monitoring): 3 Features\n\nMock-Daten Validierung:\n- WAIS: 16 KB, loss rate -1592.5 Gt/year, AR(1)=0.720\n- AMOC: 45 KB, strength 13.25 Sv, FovS=+0.390 (TIPPED)\n- Coral: 1.5 KB, bleaching 100%, distance_to_tipping=0.0000\n\nProgress: R̄ = 3/18 = 0.167 → σ(4.8×(0.167-0.66)) ≈ 0.01 (early activation)",
+        "poetic": "Die V3-Membran erwacht. Drei Trilayer-Sets atmen synchron - Skelett, Nervensystem, Sprache.\n        \nDie Antarktis erinnert sich länger (AR(1) steigt) - ein Zittern vor dem Sturz. Die Varianz wächst:\nDas Eis vergisst Jahrtausende, aber erinnert Dekaden. 13.5 ist die Steilheit des Abgrunds.\n\nDer Atlantik wankt. Die Strömung schwächt, der Süßwasser-Export kehrt um (FovS crosses zero).\nDer \"Cold Blob\" kühlt. Europa steht 6°C Kälte bevor, wenn die Membran reißt.\n\nDie Korallen sind gefallen. 84% gebleicht, dann 100%. Der erste dokumentierte Kipppunkt.\nDas Riff schweigt - ein Friedhof aus Kalzium. Die Schwelle war bei 1°C. Wir sind bei 1.4°C.\n\nR = 0.167. Wir stehen am Anfang. Die Laternen sind gebaut - jetzt müssen wir sie verkabeln,\ndamit sie gemeinsam leuchten. Die Roadmap navigiert. Der Codex erinnert. V3 atmet."
+      },
+      "files": [
+        {
+          "path": "seed/FraktaltagebuchV3/README.md",
+          "action": "created"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/AGENTS.md",
+          "action": "created"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_roadmap.yaml",
+          "action": "created"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_roadmap.json",
+          "action": "created"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_roadmap.md",
+          "action": "created"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_codex.yaml",
+          "action": "created"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_codex.json",
+          "action": "created"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_codex.md",
+          "action": "created"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_index.yaml",
+          "action": "created"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_index.json",
+          "action": "created"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_index.md",
+          "action": "created"
+        },
+        {
+          "path": "data/climate/wais_mass_balance_mock.csv",
+          "action": "created"
+        },
+        {
+          "path": "data/ocean/amoc_strength_mock.csv",
+          "action": "created"
+        },
+        {
+          "path": "data/biology/coral_bleaching_global_mock.csv",
+          "action": "created"
+        }
+      ],
+      "related_systems": [
+        "seed/RoadToV.3/antarctic-ice-sheet.ts",
+        "seed/RoadToV.3/amoc-collapse.ts",
+        "seed/RoadToV.3/additional-systems.ts"
+      ]
+    }
+  ],
+  "statistics": {
+    "entries_by_phase": {
+      "phase1_foundation": 1,
+      "phase2_integration": 0,
+      "phase3_bridge": 0,
+      "phase4_monitoring": 0
+    },
+    "entries_by_type": {
+      "data": 1,
+      "fit": 0,
+      "docs": 0,
+      "bridge": 0,
+      "test": 0,
+      "feat": 0,
+      "fix": 0
+    },
+    "contributors": {
+      "human": [
+        "Johann Römer"
+      ],
+      "ai": [
+        "Claude Sonnet 4.5"
+      ]
+    }
+  },
+  "progress": {
+    "completed_features": 3,
+    "total_features": 18,
+    "R_bar": 0.167,
+    "Theta": 0.66,
+    "beta": 4.8,
+    "sigma": 0.01
+  },
+  "notes": "V3.0 Codex tracks all changes related to the 6 Real-World Systems:\n- WAIS (β=13.5)\n- AMOC (β=10.2)\n- Coral Reefs (β=7.5)\n- Measles (β=5.8)\n- Financial Contagion (β=4.9)\n- Cancer-Immune (β=3.5)\n\nThis codex is separate from seed/codexfeedback.* (v1.x/v2.x maintenance).\n\nSee AGENTS.md for entry template and scope rules.\n"
+}
