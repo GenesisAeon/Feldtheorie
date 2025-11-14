@@ -51,7 +51,7 @@ indexed_directories:
       yaml: seed/seed_index.yaml
       json: seed/seed_index.json
       md: seed/seed_index.md
-    total_items: 79
+    total_items: 82
     categories: 6
     description: 'Das semantische Gedächtnis des Projekts:
 
@@ -66,6 +66,7 @@ indexed_directories:
     - Metareflexion.txt (Philosophische Grundlage)
     - Rekalibrierung_Abschlus.txt (Unser Weg)
     - FinalerPlan.txt (Governance für v1.2)
+    - RoadToV.3/activation_audit.md (V3 Aktivierungs-Audit, σ(β(R-Θ)) Snapshot)
     - bedeutungssigillin/system/metaquest/metaquest_system_map.md (Metaquest System-Beacon)
     - bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md
       (Metaquest Kampagnen-Beacon)
@@ -355,7 +356,7 @@ triggers:
   - Trilayer-Aktivierung
 statistics:
   directories_indexed: 6
-  total_files_cataloged: 168
+  total_files_cataloged: 171
   trilayer_indices: 18
   breakdown:
     seed: 69

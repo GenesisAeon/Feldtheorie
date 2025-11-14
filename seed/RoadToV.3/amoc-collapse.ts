@@ -32,7 +32,7 @@ export interface AMOCSystemState {
   // Core observables
   strength: number; // Sverdrups (Sv) at 26°N, normal ~17 Sv
   strengthAnomaly: number; // Deviation from 1950-2000 baseline
-  frestwaterFlux34S: number; // Sv, the van Westen indicator
+  freshwaterFlux34S: number; // Sv, the van Westen indicator
   coldBlobSST: number; // °C anomaly in subpolar North Atlantic
   
   // Early Warning Signals
@@ -58,7 +58,7 @@ export interface AMOCSystemState {
 }
 
 export interface AMOCBetaCalculation {
-  method: "bifurcation_theory" | "paleoclimate_DO" | "model_ensemble";
+  method: "bifurcation_theory" | "paleoclimate_DO" | "model_ensemble" | "ensemble";
   betaValue: number;
   confidence: number;
   dataSource: string;
@@ -170,7 +170,7 @@ export class AMOCBetaEstimator {
     );
     
     return {
-      method: "bifurcation_theory",
+      method: "ensemble",
       betaValue: betaEnsemble,
       confidence: confidenceEnsemble,
       dataSource: "Ensemble of three methods",
@@ -199,8 +199,8 @@ export class AMOCEarlyWarningSystem {
     // FovS = ∫ (S - S_ref) * v dz
     // Simplified: FovS ≈ (S - 35) * velocity
     
-    const referenecSalinity = 35.0; // PSU
-    const FovS = (salinityAt34S - referenecSalinity) * velocityAt34S;
+    const referenceSalinity = 35.0; // PSU
+    const FovS = (salinityAt34S - referenceSalinity) * velocityAt34S;
     
     return FovS;
   }
@@ -249,19 +249,27 @@ export class AMOCEarlyWarningSystem {
   
   private static calculateAR1(data: number[]): number {
     const n = data.length;
+    if (n <= 1) {
+      return 0;
+    }
+
     const mean = data.reduce((sum, val) => sum + val, 0) / n;
-    
+
     let numerator = 0;
     let denominator = 0;
-    
+
     for (let t = 0; t < n - 1; t++) {
       numerator += (data[t] - mean) * (data[t + 1] - mean);
     }
-    
+
     for (let t = 0; t < n; t++) {
       denominator += Math.pow(data[t] - mean, 2);
     }
-    
+
+    if (denominator === 0) {
+      return 0;
+    }
+
     return numerator / denominator;
   }
 }
@@ -276,7 +284,7 @@ export class AMOCUTACModel {
     this.state = {
       strength: 14.5, // Sv (weakened from ~17 Sv in 1950)
       strengthAnomaly: -2.5, // 3 Sv weaker than mid-20th century
-      frestwaterFlux34S: -0.05, // Still exporting (stable), but decreasing
+      freshwaterFlux34S: -0.05, // Still exporting (stable), but decreasing
       coldBlobSST: -0.8, // °C anomaly
       
       variance: 0.0,
@@ -353,8 +361,16 @@ export class AMOCUTACModel {
     
     // Central estimate
     const tempToThreshold = criticalTemperature - globalTemperature;
+    if (warmingRate === 0) {
+      return {
+        years: Infinity,
+        uncertainty: [Infinity, Infinity],
+        probability: 0
+      };
+    }
+
     const yearsCentral = tempToThreshold / warmingRate;
-    
+
     // Uncertainty range from hysteresis width
     const minYears = (criticalTemperature - 2.6 - globalTemperature) / (warmingRate * 1.2);
     const maxYears = (criticalTemperature + 2.0 - globalTemperature) / (warmingRate * 0.8);

@@ -67,6 +67,8 @@ Willkommen im **semantischen Gedächtnis** des Feldtheorie-Projekts! Dieser Inde
 - `abstract_arXiv.pdf` - DOI-synchronisierte Abstract-Fassung für die Submission
 - `utac_v2_gap_matrix.{md,json,yaml}` - Gap-Matrix (Juni 2026): zeigt bestehende Laternen,
   Pending-Datasets und Implementationspfade für σ(β(R-Θ)) ≥ 0.317
+- `RoadToV.3/activation_audit.{md,json,yaml}` - Aktivierungs-Audit (August 2026):
+  inventarisiert V3-Laternen, Daten-/Simulator-Gaps und Implementation Map
 
 **Wann nutzen?** Wenn du den Kontext verstehen oder die Roadmap sehen willst
 
