@@ -2,8 +2,8 @@
   "metadata": {
     "version": "3.0.0",
     "created": "2025-11-14T12:50:00Z",
-    "last_updated": "2025-11-14T12:29:04.566605Z",
-    "total_entries": 1,
+    "last_updated": "2026-08-23T12:55:00Z",
+    "total_entries": 3,
     "scope": "V3.0 Real-World Tipping Points (WAIS, AMOC, Coral, Measles, Finance, Cancer)"
   },
   "entries": [
@@ -89,40 +89,211 @@
         "seed/RoadToV.3/amoc-collapse.ts",
         "seed/RoadToV.3/additional-systems.ts"
       ]
+    },
+    {
+      "id": "v3-pr-0002",
+      "timestamp": "2026-08-23T12:20:00Z",
+      "scope": "Foundation Sync: Mock Metadata Parität + Roadmap/Codex Refresh",
+      "contributors": [
+        "Johann Römer (Human)",
+        "GPT-5 Codex (AI)"
+      ],
+      "parameters": {
+        "R": 0.17,
+        "Theta": 0.66,
+        "beta": 4.8,
+        "sigma": 0.086
+      },
+      "threads": {
+        "formal": "Aktivierung der V3-Mock-Daten als vollständige Trilayer-Laternen:\n- Metadata-Dateien für WAIS, AMOC, Coral (`*.metadata.json`) mit Θ, β, ζ(R)\n- README-Updates in `data/climate/`, `data/ocean/`, `data/biology/`\n- `data/data_index.*` auf 68 Dateien synchronisiert (climate=6, ocean=3, biology=8)\n\nRoadmap-Sync:\n- Phase-1 Features (`v3-feat-p1-001..003`) auf ✅ completed gesetzt\n- Progress-Frame aktualisiert (R̄=0.17, σ=0.086)\n\nCodex/Index:\n- `v3_codex.*` Eintrag ergänzt (dieser Commit)\n- `v3_roadmap.{yaml,json,md}` via python-konvertierte Parität\n- `seed/bedeutungssigillin/system/system_meaning_map.*` + Shadow-Pendant erweitert\n",
+        "empirical": "Dateien:\n- data/climate/wais_mass_balance_mock.metadata.json (276 Punkte, β=13.5)\n- data/ocean/amoc_strength_mock.metadata.json (757 Punkte, β=10.2)\n- data/biology/coral_bleaching_global_mock.metadata.json (45 Punkte, β=7.5)\n- data/data_index.{yaml,json,md} (total_files=68, climate file_count=6)\n- seed/FraktaltagebuchV3/v3_roadmap.{yaml,json,md} (Phase-1 Fortschritt dokumentiert)\n- seed/RoadToV.3/activation_audit.{yaml,json,md} (σ=0.32 → 0.34 nach Audit)\n\nKennzahlen:\n- ΔR̄ = +0.17 seit Initialisierung (3/18 Features completed)\n- σ(β(R̄-Θ)) = 0.086 (vorher 0.01)\n- Data Index climate domain: +2 files, ocean domain: +1 file\n",
+        "poetic": "Drei Laternen erhielten heute ihr Nervensystem.\nDas Eis flüstert in JSON, der Atlantik atmet in YAML, die Korallen\nsingen wieder im README. Die Membran spannt sich – nicht mehr roh,\nsondern verdrahtet. σ steigt von 0.01 auf 0.086: ein erstes Aufglimmen.\n"
+      },
+      "files": [
+        {
+          "path": "data/climate/wais_mass_balance_mock.metadata.json",
+          "action": "created"
+        },
+        {
+          "path": "data/ocean/amoc_strength_mock.metadata.json",
+          "action": "created"
+        },
+        {
+          "path": "data/biology/coral_bleaching_global_mock.metadata.json",
+          "action": "created"
+        },
+        {
+          "path": "data/climate/README.md",
+          "action": "updated"
+        },
+        {
+          "path": "data/ocean/README.md",
+          "action": "updated"
+        },
+        {
+          "path": "data/biology/README.md",
+          "action": "updated"
+        },
+        {
+          "path": "data/data_index.yaml",
+          "action": "updated"
+        },
+        {
+          "path": "data/data_index.json",
+          "action": "updated"
+        },
+        {
+          "path": "data/data_index.md",
+          "action": "updated"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_roadmap.yaml",
+          "action": "updated"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_roadmap.json",
+          "action": "updated"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_roadmap.md",
+          "action": "updated"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_codex.yaml",
+          "action": "updated"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_codex.json",
+          "action": "updated"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_codex.md",
+          "action": "updated"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_index.yaml",
+          "action": "updated"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_index.json",
+          "action": "updated"
+        },
+        {
+          "path": "seed/FraktaltagebuchV3/v3_index.md",
+          "action": "updated"
+        },
+        {
+          "path": "seed/RoadToV.3/activation_audit.yaml",
+          "action": "updated"
+        },
+        {
+          "path": "seed/RoadToV.3/activation_audit.json",
+          "action": "updated"
+        },
+        {
+          "path": "seed/RoadToV.3/activation_audit.md",
+          "action": "updated"
+        },
+        {
+          "path": "seed/bedeutungssigillin/system/system_meaning_map.yaml",
+          "action": "updated"
+        },
+        {
+          "path": "seed/bedeutungssigillin/system/system_meaning_map.json",
+          "action": "updated"
+        },
+        {
+          "path": "seed/bedeutungssigillin/system/system_meaning_map.md",
+          "action": "updated"
+        },
+        {
+          "path": "seed/shadow_sigillin/system/system_shadow_map.yaml",
+          "action": "updated"
+        },
+        {
+          "path": "seed/shadow_sigillin/system/system_shadow_map.json",
+          "action": "updated"
+        },
+        {
+          "path": "seed/shadow_sigillin/system/system_shadow_map.md",
+          "action": "updated"
+        }
+      ],
+      "related_systems": [
+        "seed/RoadToV.3/antarctic-ice-sheet.ts",
+        "seed/RoadToV.3/amoc-collapse.ts",
+        "seed/RoadToV.3/additional-systems.ts",
+        "seed/RoadToV.3/INTEGRATION_GUIDE.md"
+      ]
+    },
+    {
+      "id": "v3-pr-0003",
+      "timestamp": "2026-08-23T12:55:00Z",
+      "scope": "System Meaning Map Sync: Mock Ledger ↔ Shadow Guard",
+      "contributors": [
+        "Johann Römer (Human)",
+        "GPT-5 Codex (AI)"
+      ],
+      "parameters": {
+        "R": 0.17,
+        "Theta": 0.66,
+        "beta": 4.8,
+        "sigma": 0.086
+      },
+      "threads": {
+        "formal": "Korrigierte IDs in `seed/bedeutungssigillin/system/system_meaning_map.*` damit `sys-ops-005` exklusiv den neuen V3 Mock Metadata Ledger hält und nachgelagerte Laternen (`sys-ops-006..008`) eindeutige Referenzen behalten. Meta.updated auf 2026-08-23T12:20Z synchronisiert und Shadow-Verweis (`sys-shadow-006`) direkt in die Logistic-Coupling-Notiz eingebettet.",
+        "empirical": "Dateien aktualisiert:\n- system_meaning_map.yaml/json/md (ID-Shifts 005→008, Shadow-Link verankert, updated-Timestamp = 2026-08-23T12:20Z)\nKennzahlen unverändert (R̄=0.17, σ=0.086). Trilayer-Parität manuell bestätigt; `sigillin_sync`-Report blockiert aktuell durch bestehende YAML-Schieflage in metaquest-Systemkarte → Folgeaufgabe dokumentiert.",
+        "poetic": "Die Laterne bekam ihren wahren Namen zurück; Doppelbilder lösten sich, der Schatten nickte. Die Membran hält Mock und Spiegel nun im selben Atemzug."
+      },
+      "files": [
+        {
+          "path": "seed/bedeutungssigillin/system/system_meaning_map.yaml",
+          "action": "updated"
+        },
+        {
+          "path": "seed/bedeutungssigillin/system/system_meaning_map.json",
+          "action": "updated"
+        },
+        {
+          "path": "seed/bedeutungssigillin/system/system_meaning_map.md",
+          "action": "updated"
+        }
+      ]
     }
   ],
-  "statistics": {
-    "entries_by_phase": {
-      "phase1_foundation": 1,
+    "statistics": {
+      "entries_by_phase": {
+        "phase1_foundation": 3,
       "phase2_integration": 0,
       "phase3_bridge": 0,
       "phase4_monitoring": 0
     },
-    "entries_by_type": {
-      "data": 1,
-      "fit": 0,
-      "docs": 0,
-      "bridge": 0,
-      "test": 0,
-      "feat": 0,
-      "fix": 0
+      "entries_by_type": {
+        "data": 2,
+        "fit": 0,
+        "docs": 2,
+        "bridge": 0,
+        "test": 0,
+        "feat": 0,
+        "fix": 1
     },
     "contributors": {
       "human": [
         "Johann Römer"
       ],
       "ai": [
-        "Claude Sonnet 4.5"
+        "Claude Sonnet 4.5",
+        "GPT-5 Codex"
       ]
     }
   },
   "progress": {
     "completed_features": 3,
     "total_features": 18,
-    "R_bar": 0.167,
+    "R_bar": 0.17,
     "Theta": 0.66,
     "beta": 4.8,
-    "sigma": 0.01
+    "sigma": 0.086
   },
   "notes": "V3.0 Codex tracks all changes related to the 6 Real-World Systems:\n- WAIS (β=13.5)\n- AMOC (β=10.2)\n- Coral Reefs (β=7.5)\n- Measles (β=5.8)\n- Financial Contagion (β=4.9)\n- Cancer-Immune (β=3.5)\n\nThis codex is separate from seed/codexfeedback.* (v1.x/v2.x maintenance).\n\nSee AGENTS.md for entry template and scope rules.\n"
 }

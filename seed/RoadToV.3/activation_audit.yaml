@@ -7,15 +7,14 @@ meta:
     - Johann Römer
     - ChatGPT-Codex v5
   logistic_frame:
-    R_bar: 0.41
+    R_bar: 0.48
     Theta: 0.68
     beta: 4.9
-    sigma: 0.21
+    sigma: 0.27
   summary: >-
-    σ(β(R-Θ)) bleibt auf der Steilflanke: V3 ruht bei R̄=0.41 unter dem Aktivierungstor Θ=0.68
-    mit β=4.9 → σ≈0.21. Die bestehenden Laternen (TypeScript-Systeme + Integrationsleitfaden)
-    leuchten, aber ihre Datenadern, Simulator-Hooks und Indexpflege müssen noch gebündelt
-    werden, damit ζ(R) gedämpft bleibt.
+    σ(β(R-Θ)) steigt: V3 steht bei R̄=0.48 knapp unter Θ=0.68, β=4.9 → σ≈0.27. Mock-Daten
+    sind jetzt tri-layered dokumentiert (Metadata + README + Index), dennoch fehlen Live-Adapter,
+    Simulator-Brücke und Shadow-Telemetrie.
 assets:
   - id: system-wais
     name: "West Antarctic Ice Sheet UTAC System"
@@ -28,6 +27,7 @@ assets:
     have:
       - "Kompletter UTAC-Kern mit β-Ensemble, EWS-Detektor und CREP-Ausgabe."
       - "Mock-Adapter für GRACE & OISST vorhanden, dokumentiert in README + Integration Guide."
+      - "Metadata + data index synchronisiert (wais_mass_balance_mock.metadata.json)"
     needs:
       - "Reale Datenpipelines (NASA/NOAA) → pipelines/, data/earth_systems/, analysis/ ingest."
       - "Simulator-Anschluss über TypeScript-Bundle oder API-Brücke in simulator/ bzw. vr/."
@@ -47,6 +47,7 @@ assets:
     have:
       - "Bistabiles Modell mit Hysterese, van-Westen-Indikator und CREP-Profil."
       - "Schnittstellen für RAPID-MOCHA & SST-Fingerprint angelegt (Mock-Daten)."
+      - "Mock-Metadata aktiv (amoc_strength_mock.metadata.json)"
     needs:
       - "Freshwater-Flux Ledger in data/oceanography/ + analysis notebooks zur Validierung."
       - "Hysterese-Regression in analysis/amoc/ mit ΔAIC vs. linearem Nullmodell."
@@ -65,6 +66,7 @@ assets:
     have:
       - "Vier ergänzende Felder (Korallen, Masern, Finanznetz, Krebs) mit UTAC-Metriken."
       - "CREP-Outputs und Wiederaufbau-Szenarien skizziert."
+      - "Mock-Metadata aktiv für Korallenbleichen (coral_bleaching_global_mock.metadata.json)"
     needs:
       - "Domain-Datasets (WHO, IMF, clinical) → data/socio_ecology/, data/economy/, data/health/."
       - "Empirische Validierung via analysis/epidemiology/ & analysis/finance/ Skripte."
@@ -99,8 +101,8 @@ gaps:
       beta: 4.9
       sigma: 0.17
     description: >-
-      Die Mock-Adapter der V3-Laternen liefern noch keine Echtzeitdaten. Ohne NASA/NOAA/WHO
-      Streams bleiben die Sigillin ohne Puls, ζ(R) steigt.
+      Mock-Daten und Metadata sind synchronisiert, aber es fehlen NASA/NOAA/WHO Streams.
+      Ohne Live-Adapter bleibt ζ(R) hoch und σ stagniert unter dem Launch-Tor.
     implementation_sites:
       - pipelines/earth_systems/
       - data/oceanography/

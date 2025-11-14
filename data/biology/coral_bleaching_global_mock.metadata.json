@@ -1,0 +1,64 @@
+{
+  "dataset_name": "Global Coral Bleaching Mock Series",
+  "domain": "biology",
+  "path": "data/biology/coral_bleaching_global_mock.csv",
+  "status": "synthetic-staging",
+  "description": "NOAA Coral Reef Watch inspired bleaching trajectory covering the 1980-2024 thermal stress history for V3 rehearsal.",
+  "data_format": "csv",
+  "control_parameter_R": {
+    "column": "sst_anomaly_C",
+    "units": "degree_celsius",
+    "description": "Sea surface temperature anomaly driving Degree Heating Weeks accumulation."
+  },
+  "response_sigma": {
+    "column": "bleaching_percent",
+    "units": "percent",
+    "description": "Share of global reef cover experiencing bleaching each year."
+  },
+  "threshold_estimates": {
+    "theta": 1.0,
+    "beta": 7.5,
+    "zeta_R": "ζ(R) traces interaction between DHW load and symbiont recovery delay; high ζ slows bleaching reversal.",
+    "delta_aic_guard": 20.0
+  },
+  "null_models_tested": [
+    "linear_trend",
+    "exponential_growth",
+    "gam_baseline"
+  ],
+  "preprocessing_steps": [
+    "Generate annual bleaching percentages from 1980-2024 using logistic rise after 2015",
+    "Couple DHW field to bleaching response with noise consistent with NOAA watch reports",
+    "Emit CSV for downstream TypeScript loaders and analysis notebooks"
+  ],
+  "provenance": {
+    "sources": [
+      {
+        "name": "NOAA Coral Reef Watch",
+        "citation": "Global Coral Bleaching Event 2023-2024",
+        "url": "https://coralreefwatch.noaa.gov/"
+      },
+      {
+        "name": "Global Tipping Points Report (2025)",
+        "citation": "Lenton et al. (2025)",
+        "url": "https://global-tipping-points.org/"
+      }
+    ],
+    "license": "CC-BY-4.0",
+    "synthetic": true
+  },
+  "temporal": {
+    "created": "2026-08-23T12:10:00Z",
+    "modified": "2026-08-23T12:10:00Z",
+    "version": "0.2.0",
+    "change_count": 0
+  },
+  "simulation_hint": {
+    "control_min": 0.2,
+    "control_max": 1.6,
+    "n_points": 45,
+    "noise_scale": 0.04
+  },
+  "falsification_notes": "Live NOAA feeds must keep ΔAIC ≥ 20 beyond linear and exponential nulls; flag if bleaching share drops below 70% for >3 years.",
+  "logistic_form": "sigma(beta*(R-Theta))"
+}

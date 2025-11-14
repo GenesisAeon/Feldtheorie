@@ -14,9 +14,9 @@ meta:
   version: "1.0.0"
   created: "2025-11-06"
   status: "active"
-  total_files: 65
+  total_files: 68
   domains: 12
-  updated: "2026-03-26T10:00:00Z"
+  updated: "2026-08-23T12:15:00Z"
 
 # ═══════════════════════════════════════════════════════════════════
 # DOMAINS: Die 8 Datenquellen-Bereiche
@@ -54,10 +54,16 @@ domains:
   biology:
     name: "Biology & Evolution"
     path: "biology/"
-    file_count: 7
-    description: "Lenski LTEE, Synaptic Release, Honeybee Quorum"
+    file_count: 8
+    description: "Lenski LTEE, Synaptic Release, Honeybee Quorum, Coral Bleaching"
     color: "#27AE60"
     key_datasets:
+      - name: "coral_bleaching_global_mock.csv"
+        description: "Global Coral Bleaching (Mock) – NOAA-inspirierte Thermal Stress Laterne."
+        keywords: [coral, bleaching, tipping-point, beta>7]
+      - name: "coral_bleaching_global_mock.metadata.json"
+        description: "Θ≈1.0 °C, β≈7.5; DHW-Impedanz für Recovery-Failure Dokumentation."
+        keywords: [coral, metadata, logistic]
       - name: "lenski_citplus.csv"
         description: "LTEE Cit+ evolution (Θ=32.77 kgen, β=5.08)"
         keywords: [lenski, ltee, citrate, evolution, ara-3]
@@ -100,8 +106,8 @@ domains:
   climate:
     name: "Climate Expansion (UTAC v1.3)"
     path: "climate/"
-    file_count: 4
-    description: "Urban-Heat Laterne aktiviert (Θ≈3.20 K, β≈14.27); Amazon Hydro wartet weiterhin auf Rohdaten."
+    file_count: 6
+    description: "Urban-Heat Laterne aktiviert (Θ≈3.20 K, β≈14.27); WAIS Mock-Daten testen GRACE-Pipeline; Amazon Hydro wartet weiterhin auf Rohdaten."
     color: "#16A085"
     key_datasets:
       - name: "urban_heat_intensity.csv"
@@ -116,17 +122,29 @@ domains:
       - name: "amazon_precip_evapo.metadata.json"
         description: "CHIRPS/IMERG Moisture Laterne mit SPI Steuerung und Bootstrap-Hinweis."
         keywords: [amazon, moisture, metadata]
+      - name: "wais_mass_balance_mock.csv"
+        description: "WAIS Eismassenbilanz (Mock 2002–2024), Varianz/AR(1) für V3 Foundation."
+        keywords: [wais, tipping-point, grace, beta>13]
+      - name: "wais_mass_balance_mock.metadata.json"
+        description: "Thermodynamisches Quartett Θ≈1.48 °C, β≈13.5 (synthetic) für Adapter-Shakedown."
+        keywords: [wais, metadata, logistic, v3]
 
   ocean:
     name: "Oceanic Thresholds"
     path: "ocean/"
-    file_count: 2
-    description: "AMOC Transport Vorbereitungsraum – Metadata-Sigillum angelegt."
+    file_count: 3
+    description: "AMOC Transport Vorbereitungsraum mit Mock-Serie für RAPID-Testlauf."
     color: "#2980B9"
     key_datasets:
       - name: "README.md"
         description: "Schwellenwerte & ΔAIC-Protokolle für RAPID-Zeitreihen."
         keywords: [amoc, ocean, staging]
+      - name: "amoc_strength_mock.csv"
+        description: "AMOC Transport 10-Tage-Kadenz (Mock) mit FovS-Indikator für V3."
+        keywords: [amoc, rapid, tipping-point, beta>10]
+      - name: "amoc_strength_mock.metadata.json"
+        description: "Mock-Metadaten: Θ≈14 Sv, β≈10.2, ζ(R) Windstress/Freshwater-Impedanz."
+        keywords: [amoc, metadata, logistic]
       - name: "amoc_transport.metadata.json"
         description: "Manifestiert Sv → σ(β(R-Θ)) Pfad inkl. state-space Nullmodell."
         keywords: [amoc, metadata, beta]

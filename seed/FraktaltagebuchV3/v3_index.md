@@ -58,15 +58,15 @@
 
 ---
 
-## 📊 Data Sources (To Be Created)
+## 📊 Data Sources (Aktiviert)
 
-| ID | Path | Roadmap Feature | Status |
-|----|------|-----------------|:------:|
-| `v3-data-001` | `data/climate/wais_mass_balance_mock.csv` | `v3-feat-p1-001` | ⬜ pending |
-| `v3-data-002` | `data/ocean/amoc_strength_mock.csv` | `v3-feat-p1-002` | ⬜ pending |
-| `v3-data-003` | `data/biology/coral_bleaching_global_mock.csv` | `v3-feat-p1-003` | ⬜ pending |
+| ID | Path | Roadmap Feature | Status | Metadata |
+|----|------|-----------------|:------:|----------|
+| `v3-data-001` | `data/climate/wais_mass_balance_mock.csv` | `v3-feat-p1-001` | ✅ active | `wais_mass_balance_mock.metadata.json` |
+| `v3-data-002` | `data/ocean/amoc_strength_mock.csv` | `v3-feat-p1-002` | ✅ active | `amoc_strength_mock.metadata.json` |
+| `v3-data-003` | `data/biology/coral_bleaching_global_mock.csv` | `v3-feat-p1-003` | ✅ active | `coral_bleaching_global_mock.metadata.json` |
 
-**Details:** WAIS (2002-2024, monatlich), AMOC (2004-2024, 10-Tage-Mittel), Coral (1980-2024, jährlich)
+**Details:** WAIS (2002-2024, monatlich), AMOC (2004-2024, 10-Tage-Mittel), Coral (1980-2024, jährlich). σ(β(R̄-Θ)) = 0.086 nach Metadata-Sync.
 
 ---
 
@@ -139,7 +139,7 @@
 | Audit | 1 |
 | Code (TypeScript) | 3 |
 | Methodology | 2 |
-| Dataset (pending) | 3 |
+| Dataset (active) | 3 |
 | Analysis (pending) | 5 |
 | Script (pending) | 3 |
 
@@ -147,8 +147,8 @@
 
 | Status | Count |
 |--------|------:|
-| Active | 13 |
-| Pending | 11 |
+| Active | 16 |
+| Pending | 8 |
 | **Total** | **24** |
 
 ---
@@ -156,18 +156,18 @@
 ## 🌊 The V3 Journey
 
 ```
-Phase 1 (Foundation):     ⬜⬜⬜⬜⬜⬜  0/6 Features
+Phase 1 (Foundation):     ✅✅✅⬜⬜⬜  3/6 Features
 Phase 2 (Integration):    ⬜⬜⬜⬜⬜⬜  0/6 Features
 Phase 3 (Bridge):         ⬜⬜⬜⬜⬜    0/5 Features
 Phase 4 (Monitoring):     ⬜⬜⬜        0/3 Features
 
-σ(β(R̄-Θ)) = 0.000  (No activation yet - let's begin!)
+σ(β(R̄-Θ)) = 0.086  (Foundation metadata synced, activation rising)
 ```
 
 ---
 
 **Version:** 1.0.0
-**Last Updated:** 2025-11-14T13:00:00Z
-**Maintained by:** Johann B. Römer, Claude Code
+**Last Updated:** 2026-08-23T12:20:00Z
+**Maintained by:** Johann B. Römer, Claude Code, GPT-5 Codex
 
 *"Der Index navigiert. Die Membran atmet. Jedes Dokument ein Knoten im Netz."* 🗂️✨

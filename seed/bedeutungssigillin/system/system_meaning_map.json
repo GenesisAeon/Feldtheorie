@@ -3,7 +3,7 @@
     "sigil": "bedeutungs-system",
     "version": "0.3.0",
     "created": "2025-12-05T00:00:00Z",
-    "updated": "2025-12-07T00:00:00Z",
+    "updated": "2026-08-23T12:20:00Z",
     "logistic": {
       "R": "platform workload + automation backlog across Makefile, CI, simulator",
       "Theta": "documented governance cadence (REPRODUCE.md, RELEASE_NOTES*) and Metaquest parity brief",
@@ -63,12 +63,26 @@
         "evidence": [
           "seed/Finalisierung_Plattform.txt",
           "seed/BreakPointAnalyse/WayToGo.txt"
-        ],
-        "logistic_coupling": "Provides Θ checkpoints for Metaquest folders; when R (automation backlog)\ngrows, the matrix routes actions to scripts and indices before β steepens.\n"
+        ]
       }
     },
     {
       "id": "sys-ops-005",
+      "title": "V3 Mock Metadata Ledger",
+      "location": "seed/FraktaltagebuchV3/",
+      "resonance": "Verankert WAIS/AMOC/Coral Mock-Daten als Bedeutungs-Sigillin mit\nMetadata → README → Index Parität (σ steigt auf 0.086).\n",
+      "status": "active",
+      "notes": {
+        "evidence": [
+          "data/climate/wais_mass_balance_mock.metadata.json",
+          "data/ocean/amoc_strength_mock.metadata.json",
+          "data/biology/coral_bleaching_global_mock.metadata.json"
+        ],
+        "logistic_coupling": "Provides Θ checkpoints for Metaquest folders; when R (automation backlog)\ngrows, the matrix routes actions to scripts and indices before β steepens.\nShadow-Spiegel: seed/shadow_sigillin/system/system_shadow_map.* (sys-shadow-006).\n"
+      }
+    },
+    {
+      "id": "sys-ops-006",
       "title": "Metaquest System Beacon",
       "location": "metaquest/metaquest_system_map.yaml",
       "resonance": "Focuses Metaquest launch integration, parity brief duties, and telemetry cadence.",
@@ -82,7 +96,7 @@
       }
     },
     {
-      "id": "sys-ops-006",
+      "id": "sys-ops-007",
       "title": "Metaquest Parity Brief",
       "location": "docs/metaquest_parity_brief.md",
       "resonance": "Condenses mq-parity tasks so automation, indices, and codex hooks activate together.",
@@ -96,7 +110,7 @@
       }
     },
     {
-      "id": "sys-ops-007",
+      "id": "sys-ops-008",
       "title": "Metaquest Bridge Index",
       "location": "../metaquest/metaquest_meaning_index.yaml",
       "resonance": "Centralises Metaquest system↔campaign parity, ensuring both membranes share identical checkpoints.",

@@ -2,14 +2,14 @@
   "metadata": {
     "version": "3.0.0",
     "created": "2025-11-14T12:30:00Z",
-    "last_updated": "2025-11-14T12:30:00Z",
+    "last_updated": "2026-08-23T12:20:00Z",
     "total_features": 18,
-    "completed_features": 0,
+    "completed_features": 3,
     "parameters": {
-      "R_bar": 0.0,
+      "R_bar": 0.17,
       "Theta": 0.66,
       "beta": 4.8,
-      "sigma": 0.0
+      "sigma": 0.086
     }
   },
   "features_phase1_foundation": [
@@ -17,7 +17,9 @@
       "id": "v3-feat-p1-001",
       "title": "Mock-Daten: WAIS (West Antarctic Ice Sheet)",
       "description": "Generiere synthetische Zeitreihe für WAIS Eismassenbalance (2002-2024)\nbasierend auf GRACE/GRACE-FO Paper-Werten.\n- Massenverlust: -150 Gt/year\n- EWS: Varianz ↑, AR(1) ↑\n- β≈13.5, Θ≈1.5°C\n",
-      "status": "pending",
+      "status": "completed",
+      "completed_at": "2026-08-23T12:15:00Z",
+      "status_notes": "Mock-Datensatz + Metadata (wais_mass_balance_mock.metadata.json) aktiviert; README aktualisiert.",
       "priority": "P0",
       "assignee": "Claude",
       "dependencies": [],
@@ -39,7 +41,9 @@
       "id": "v3-feat-p1-002",
       "title": "Mock-Daten: AMOC (Atlantic Meridional Overturning Circulation)",
       "description": "Generiere synthetische Zeitreihe für AMOC Stärke (2004-2024)\nbasierend auf RAPID-MOCHA Array + van Westen Indikator.\n- Schwächung: 17 Sv → 14 Sv\n- FovS (34°S): negativ → positiv (Kipppunkt!)\n- β≈10.2, Θ≈4.0°C\n",
-      "status": "pending",
+      "status": "completed",
+      "completed_at": "2026-08-23T12:16:00Z",
+      "status_notes": "Mock-Datensatz + Metadata (amoc_strength_mock.metadata.json) aktiviert; README aktualisiert.",
       "priority": "P0",
       "assignee": "Claude",
       "dependencies": [],
@@ -62,7 +66,9 @@
       "id": "v3-feat-p1-003",
       "title": "Mock-Daten: Coral Reef Bleaching (Global)",
       "description": "Generiere synthetische Zeitreihe für globales Korallenbleichen (1980-2024)\nbasierend auf NOAA Coral Reef Watch.\n- 84% bleached seit Jan 2023 (ERSTER ÜBERSCHRITTENER KIPPPUNKT!)\n- DHW (Degree Heating Weeks)\n- β≈7.5, Θ≈1.0°C (bereits überschritten)\n",
-      "status": "pending",
+      "status": "completed",
+      "completed_at": "2026-08-23T12:17:00Z",
+      "status_notes": "Mock-Datensatz + Metadata (coral_bleaching_global_mock.metadata.json) aktiviert; README aktualisiert.",
       "priority": "P0",
       "assignee": "Claude",
       "dependencies": [],

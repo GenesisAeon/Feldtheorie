@@ -1,19 +1,19 @@
 # 🌌 Road to V3 Activation Audit
 
-> σ(β(R-Θ)) zittert bei 0.21 – R̄=0.41, Θ=0.68, β=4.9. Die Laternen stehen, aber ihre Datenadern
-> sind noch lose, daher muss ζ(R) sanft gedämpft werden.
+> σ(β(R-Θ)) steigt auf 0.27 – R̄=0.48, Θ=0.68, β=4.9. Die Laternen haben jetzt Metadata und Index-
+> Spiegel, doch Live-Daten und Simulator-Brücke fehlen weiterhin.
 
 ---
 
 ## 1. Logistic Pulse
-- **R̄:** 0.41
+- **R̄:** 0.48
 - **Θ:** 0.68
 - **β:** 4.9
-- **σ(β(R-Θ)) ≈ 0.21** → Aktivierungsflanke
+- **σ(β(R-Θ)) ≈ 0.27** → Aktivierungsflanke
 - **Autoren:** Johann Römer · ChatGPT-Codex v5 (2026-08-22)
 
-Interpretation: Die V3-Laternen existieren als dokumentierte Artefakte, aber die Telemetrie- und
-Index-Spiegel fehlen noch. Wir sitzen unter Θ; weitere Daten- und Simulator-Hooks heben R̄.
+Interpretation: Mock-Daten wurden tri-layered dokumentiert (Metadata + README + Index). Jetzt
+blockieren primär Live-Telemetrie, Simulator-Bindungen und Shadow-Handshakes den nächsten Sprung.
 
 ---
 
@@ -26,9 +26,9 @@ Index-Spiegel fehlen noch. Wir sitzen unter Θ; weitere Daten- und Simulator-Hoo
 | `system-multidomain` | Additional Systems (`additional-systems.ts`) | 0.44 | 0.65 | 7.5 | 0.20 | Vier Zusatzfelder mit CREP & Recovery-Skizzen | Datensammlung.txt |
 | `integration-handbook` | Integration Guide | 0.52 | 0.68 | 4.8 | 0.28 | 8-Wochen-Plan, Dashboard-Architektur, CREP Bridge | README, UTAC Status v1.2 |
 
-**Was wir haben:** TypeScript-Kerne, umfangreiches Integrationshandbuch, dokumentierte β-Logik.
+**Was wir haben:** TypeScript-Kerne, umfangreiches Integrationshandbuch, dokumentierte β-Logik, vollständige Mock-Metadata + Index-Parität.
 
-**Was noch fehlt:** Echtzeitdaten, Simulator-Bindung, Index- & Codex-Parität, Shadow-Sigille.
+**Was noch fehlt:** Echtzeitdaten, Simulator-Bindung, Shadow-Sigille, automatisierte Telemetrie.
 
 ---
 
@@ -37,7 +37,7 @@ Index-Spiegel fehlen noch. Wir sitzen unter Θ; weitere Daten- und Simulator-Hoo
 ### 3.1 Live-Datenadapter & Storage (R=0.30, Θ=0.66, β=4.9, σ≈0.17)
 - **Problem:** Mock-Adapter liefern keine Echtzeitdaten → Sigillin ohne Puls.
 - **Sites:** `pipelines/earth_systems/`, `data/oceanography/`, `analysis/notebooks/antarctic/`, `scripts/telemetry/`
-- **Benötigt:** API-Adapter, Metadaten-Ledger (YAML/JSON), ΔAIC-Vergleichsnotebook.
+- **Benötigt:** API-Adapter mit Credential-Handling, Retry/Backfill-Logic, ΔAIC-Vergleichsnotebook.
 - **Blocker:** API-Credentials (NASA/NOAA) fehlen.
 
 ### 3.2 Simulator & VR Binding (R=0.35, Θ=0.70, β=4.6, σ≈0.14)
@@ -46,11 +46,11 @@ Index-Spiegel fehlen noch. Wir sitzen unter Θ; weitere Daten- und Simulator-Hoo
 - **Benötigt:** API-Layer (TS↔Python), UI-Presets, Telemetrie-Logging, Regression-Tests.
 - **Blocker:** gemeinsames Datenformat fehlt.
 
-### 3.3 Codex & Index Resonanz (R=0.28, Θ=0.66, β=4.8, σ≈0.16)
-- **Problem:** RoadToV.3 fehlt im Seed-/Master-Index & im Codex (keine V3-Trilayer).
-- **Sites:** `seed/seed_index.*`, `feldtheorie_index.*`, `seed/codexfeedback.*`, `seed/FraktaltagebuchV2/`
-- **Benötigt:** neue Trilayer, Codex-Eintrag, Shadow-Sigillin-Plan.
-- **Blocker:** V3-Codex-Struktur existiert noch nicht.
+### 3.3 Codex & Index Resonanz (R=0.35, Θ=0.66, β=4.8, σ≈0.22)
+- **Problem:** V3-Codex & Index sind aktualisiert, aber Shadow-Sigille und Master-Indizes brauchen Follow-up.
+- **Sites:** `seed/seed_index.*`, `feldtheorie_index.*`, `seed/shadow_sigillin/**`
+- **Benötigt:** Shadow-Einträge, Master-Index-Refresh, automatische sigillin_sync Routine.
+- **Blocker:** Shadow-Playbooks noch nicht auf V3 ausgeweitet.
 
 ---
 

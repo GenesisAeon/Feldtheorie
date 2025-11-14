@@ -10,11 +10,11 @@
 ## 📊 Progress Tracking
 
 ```
-R̄  = 0.00 / 0.66  (0% → Release Gate)
-σ  = 0.000         (σ(β(R̄-Θ)) - Activation Level)
+R̄  = 0.17 / 0.66  (17% → Release Gate)
+σ  = 0.086         (σ(β(R̄-Θ)) - Activation Level)
 β  = 4.8           (Steepness)
 
-Progress: ░░░░░░░░░░░░░░░░░░ 0%
+Progress: ███░░░░░░░░░░░░░░░ 17%
 ```
 
 ---
@@ -40,37 +40,43 @@ Progress: ░░░░░░░░░░░░░░░░░░ 0%
 
 | ID | Feature | Priority | Status | Hours | Assignee |
 |----|---------|:--------:|:------:|:-----:|:--------:|
-| `v3-feat-p1-001` | Mock-Daten: WAIS | P0 | ⬜ pending | 2.0h | Claude |
-| `v3-feat-p1-002` | Mock-Daten: AMOC | P0 | ⬜ pending | 2.0h | Claude |
-| `v3-feat-p1-003` | Mock-Daten: Coral Reefs | P0 | ⬜ pending | 1.5h | Claude |
+| `v3-feat-p1-001` | Mock-Daten: WAIS | P0 | ✅ completed | 2.0h | Claude → GPT-5 Codex |
+| `v3-feat-p1-002` | Mock-Daten: AMOC | P0 | ✅ completed | 2.0h | Claude → GPT-5 Codex |
+| `v3-feat-p1-003` | Mock-Daten: Coral Reefs | P0 | ✅ completed | 1.5h | Claude → GPT-5 Codex |
 | `v3-feat-p1-004` | Python Adapter: GRACE (WAIS) | P1 | ⬜ pending | 1.5h | Claude |
 | `v3-feat-p1-005` | Python Adapter: RAPID (AMOC) | P1 | ⬜ pending | 1.5h | Claude |
 | `v3-feat-p1-006` | Python Adapter: OISST (Coral) | P1 | ⬜ pending | 1.0h | Claude |
 
-**Total:** 9.5h
+**Total:** 9.5h (3/6 Features completed → R̄=0.17, σ=0.086)
 
 ### Feature Details
 
-#### `v3-feat-p1-001`: Mock-Daten WAIS
+#### `v3-feat-p1-001`: Mock-Daten WAIS *(✅ 2026-08-23)*
 - **Zeitreihe:** 2002-2024 (monatlich, 276 Datenpunkte)
 - **Massenverlust:** -150 Gt/year (aktuell)
 - **EWS:** Varianz ↑ 230%, AR(1) 0.48→0.72
 - **Papers:** TiPACCs (2024), Armstrong-McKay (2022)
 - **Output:** `data/climate/wais_mass_balance_mock.csv`
+- **Metadata:** `data/climate/wais_mass_balance_mock.metadata.json` (Θ≈1.48 °C, β≈13.5, ζ(R) basal melt ↔ Buttressing)
+- **Docs:** `data/climate/README.md` Abschnitt "Aktivierungen" aktualisiert
 
-#### `v3-feat-p1-002`: Mock-Daten AMOC
+#### `v3-feat-p1-002`: Mock-Daten AMOC *(✅ 2026-08-23)*
 - **Zeitreihe:** 2004-2024 (täglich → 10-Tage-Mittel)
 - **Schwächung:** 17 Sv → 14 Sv
 - **FovS Indikator:** negativ → positiv (Kipppunkt!)
 - **Papers:** van Westen (2024), Ditlevsen (2023)
 - **Output:** `data/ocean/amoc_strength_mock.csv`
+- **Metadata:** `data/ocean/amoc_strength_mock.metadata.json` (Θ≈14 Sv, β≈10.2, ζ(R) Windstress/Freshwater)
+- **Docs:** `data/ocean/README.md` → Aktivierungen + Mock-Hinweis
 
-#### `v3-feat-p1-003`: Mock-Daten Coral Reefs
+#### `v3-feat-p1-003`: Mock-Daten Coral Reefs *(✅ 2026-08-23)*
 - **Zeitreihe:** 1980-2024 (jährlich)
 - **Bleaching:** 84% seit Jan 2023 (ERSTER ÜBERSCHRITTENER KIPPPUNKT!)
 - **DHW:** Degree Heating Weeks
 - **Papers:** NOAA Coral Reef Watch, Lenton (2025)
 - **Output:** `data/biology/coral_bleaching_global_mock.csv`
+- **Metadata:** `data/biology/coral_bleaching_global_mock.metadata.json` (Θ≈1.0 °C, β≈7.5, DHW-Impedanz)
+- **Docs:** `data/biology/README.md` → neuer Abschnitt "Global Coral Bleaching Mock"
 
 ---
 

@@ -7,8 +7,8 @@
 metadata:
   version: "3.0.0"
   created: "2025-11-14T12:55:00Z"
-  last_updated: "2025-11-14T12:55:00Z"
-  total_documents: 8
+  last_updated: "2026-08-23T12:55:00Z"
+  total_documents: 11
   scope: "V3.0 Real-World Systems Integration"
 
 # ============================================================================
@@ -133,33 +133,43 @@ related_documents:
     status: "active"
 
 # ============================================================================
-# DATA SOURCES (To be created)
+# ============================================================================
+# DATA SOURCES (Aktiviert)
 # ============================================================================
 
-data_sources_pending:
+data_sources:
   - id: v3-data-001
     title: "data/climate/wais_mass_balance_mock.csv"
     path: "data/climate/wais_mass_balance_mock.csv"
     type: "dataset"
     description: "WAIS Eismassenbalance 2002-2024 (Mock, GRACE-basiert)"
-    status: "pending"
+    status: "active"
     roadmap_id: "v3-feat-p1-001"
+    metadata:
+      path: "data/climate/wais_mass_balance_mock.metadata.json"
+      status: "active"
 
   - id: v3-data-002
     title: "data/ocean/amoc_strength_mock.csv"
     path: "data/ocean/amoc_strength_mock.csv"
     type: "dataset"
     description: "AMOC Stärke 2004-2024 (Mock, RAPID-basiert)"
-    status: "pending"
+    status: "active"
     roadmap_id: "v3-feat-p1-002"
+    metadata:
+      path: "data/ocean/amoc_strength_mock.metadata.json"
+      status: "active"
 
   - id: v3-data-003
     title: "data/biology/coral_bleaching_global_mock.csv"
     path: "data/biology/coral_bleaching_global_mock.csv"
     type: "dataset"
     description: "Globales Korallenbleichen 1980-2024 (Mock, NOAA-basiert)"
-    status: "pending"
+    status: "active"
     roadmap_id: "v3-feat-p1-003"
+    metadata:
+      path: "data/biology/coral_bleaching_global_mock.metadata.json"
+      status: "active"
 
 # ============================================================================
 # ANALYSIS RESULTS (To be created)
@@ -265,7 +275,7 @@ navigation_paths:
 # ============================================================================
 
 statistics:
-  total_documents: 8
+  total_documents: 11
   core_documents: 5
   related_documents: 8
   data_sources_pending: 3
