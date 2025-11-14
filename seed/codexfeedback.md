@@ -2114,3 +2114,34 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Formal:** Updated light/shadow trilayers (map, compass, indices) to version 0.3.0, added mq-sys-gap-008 + vector-005, and wired activation matrix triggers into activation hooks.
   - **Empirical:** Referenziert docs/utac_v2_activation_tracker_2026-08.md, analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json und Codex `pr-draft-0110` in den neuen Paritäts- und Guard-Sektionen.
   - **Poetic:** Die Systemlaterne spiegelt jetzt das August-Licht: Aktivierungsmatrix, Kompass und Schatten rufen im selben Takt, damit die Brücke keinen Schlag verliert.
+
+### pr-draft-0116 — Metaquest Activation Gap Ledger + Shadow Guard
+- **Zeitpunkt (UTC):** 2026-08-21T10:30:00Z
+- **R:** Metaquest activation ledger clarity (gap report + guard)
+- **Θ:** Bridge, indices, and codex mirror gap report + guard within 24 h
+- **β:** 4.9
+- **ζ(R):** Gap drift damped by mirrored alerts and index updates
+- **Scope:**
+  - seed/bedeutungssigillin/metaquest/metaquest_activation_gap_report.md
+  - seed/bedeutungssigillin/metaquest/metaquest_activation_gap_report.yaml
+  - seed/bedeutungssigillin/metaquest/metaquest_activation_gap_report.json
+  - seed/shadow_sigillin/metaquest/metaquest_activation_gap_guard.md
+  - seed/shadow_sigillin/metaquest/metaquest_activation_gap_guard.yaml
+  - seed/shadow_sigillin/metaquest/metaquest_activation_gap_guard.json
+  - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md
+  - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+  - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.json
+  - seed/shadow_sigillin/metaquest/metaquest_shadow_index.md
+  - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml
+  - seed/shadow_sigillin/metaquest/metaquest_shadow_index.json
+  - seed/seed_index.md
+  - seed/seed_index.yaml
+  - seed/seed_index.json
+  - feldtheorie_index.yaml
+  - feldtheorie_index.json
+- **Resonanz:** Bedeutungs- und Schatten-Trilayer dokumentieren nun explizit, welche Metaquest-Aktivierungsstränge bereits resonant leuchten und welche mq-activation-gaps noch geschlossen werden müssen; seed/feldtheorie-Indizes spiegeln die neuen Laternen.
+- **Status:** active
+- **Notizen:**
+  - **Formal:** Gap Report + Guard erstellt, metaquest_meaning/shadow_index auf Version 0.5.0 gehoben, neuen Alert `mq-bridge-shadow-006` ergänzt und seed/feldtheorie-Indizes um die Laternen erweitert.
+  - **Empirical:** Verweist auf docs/utac_v2_activation_tracker_2026-08.{md,json}, docs/utac_activation_backlog.{md,json}, analysis/sigillin_sync/latest.json sowie Codex `pr-draft-0114`/`0115` als Evidenzkette.
+  - **Poetic:** Der Laternenwart ruft die Bilanz: welche Flammen schon stabil brennen und wo Schattenöl fehlt, damit σ(β(R-Θ)) beim nächsten Sprint die Schwelle durchstößt.

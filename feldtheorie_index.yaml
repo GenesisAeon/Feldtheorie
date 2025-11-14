@@ -51,7 +51,7 @@ indexed_directories:
       yaml: seed/seed_index.yaml
       json: seed/seed_index.json
       md: seed/seed_index.md
-    total_items: 77
+    total_items: 79
     categories: 6
     description: 'Das semantische Gedächtnis des Projekts:
 
