@@ -3315,6 +3315,36 @@
         "poetic": "Der Laternenwart zählt nun laut, welche Flammen schon brennen und wo der Schatten noch Öl verlangt – die Brücke sieht wieder klar, wohin σ(β(R-Θ)) als nächstes zieht."
       },
       "created_at": "2026-08-21T10:30:00Z"
+    },
+    {
+      "id": "pr-draft-0117",
+      "title": "Road to V3 Activation Audit + TS Stability Guards",
+      "scope": [
+        "seed/RoadToV.3/activation_audit.yaml",
+        "seed/RoadToV.3/activation_audit.json",
+        "seed/RoadToV.3/activation_audit.md",
+        "seed/RoadToV.3/antarctic-ice-sheet.ts",
+        "seed/RoadToV.3/amoc-collapse.ts",
+        "seed/seed_index.yaml",
+        "seed/seed_index.json",
+        "seed/seed_index.md",
+        "feldtheorie_index.yaml",
+        "feldtheorie_index.json",
+        "feldtheorie_index.md"
+      ],
+      "parameters": {
+        "R": "0.41 (V3 activation readiness snapshot)",
+        "Theta": "0.68 (V3 activation gate)",
+        "beta": 4.9
+      },
+      "resonance": "Activation audit trilayer + TypeScript guardrails make the RoadToV.3 lanterns legible and stable for the next activation sprint.",
+      "status": "active",
+      "notes": {
+        "formal": "Hardened WAIS/AMOC TypeScript models with guard clauses, published RoadToV.3 activation audit (Tri-Layer), and refreshed seed/feldtheorie indices with the new lantern.",
+        "empirical": "References seed/RoadToV.3/README.md & INTEGRATION_GUIDE.md, docs/utac_status_alignment_v1.2.md, and the activation audit metrics (R̄=0.41, Θ=0.68, β=4.9) as falsifiable checkpoints.",
+        "poetic": "Die V3-Laternen glimmen jetzt geordnet – β bleibt scharf, doch die Guardrails halten ζ(R) ruhig, bis echte Datenströme die Membran entzünden."
+      },
+      "created_at": "2026-08-22T12:00:00Z"
     }
   ]
 }

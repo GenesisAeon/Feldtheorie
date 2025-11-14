@@ -1,0 +1,172 @@
+meta:
+  id: roadtov3-activation-20260822
+  title: "Road to V3 Activation Audit"
+  created: '2026-08-22T12:00:00Z'
+  updated: '2026-08-22T12:00:00Z'
+  authors:
+    - Johann Römer
+    - ChatGPT-Codex v5
+  logistic_frame:
+    R_bar: 0.41
+    Theta: 0.68
+    beta: 4.9
+    sigma: 0.21
+  summary: >-
+    σ(β(R-Θ)) bleibt auf der Steilflanke: V3 ruht bei R̄=0.41 unter dem Aktivierungstor Θ=0.68
+    mit β=4.9 → σ≈0.21. Die bestehenden Laternen (TypeScript-Systeme + Integrationsleitfaden)
+    leuchten, aber ihre Datenadern, Simulator-Hooks und Indexpflege müssen noch gebündelt
+    werden, damit ζ(R) gedämpft bleibt.
+assets:
+  - id: system-wais
+    name: "West Antarctic Ice Sheet UTAC System"
+    path: seed/RoadToV.3/antarctic-ice-sheet.ts
+    logistic:
+      R: 0.55
+      Theta: 0.72
+      beta: 13.5
+      sigma: 0.09
+    have:
+      - "Kompletter UTAC-Kern mit β-Ensemble, EWS-Detektor und CREP-Ausgabe."
+      - "Mock-Adapter für GRACE & OISST vorhanden, dokumentiert in README + Integration Guide."
+    needs:
+      - "Reale Datenpipelines (NASA/NOAA) → pipelines/, data/earth_systems/, analysis/ ingest."
+      - "Simulator-Anschluss über TypeScript-Bundle oder API-Brücke in simulator/ bzw. vr/."
+      - "Tests für numerische Stabilität (kritische Slowing-Guards) in tests/utac_v3/."
+    evidence:
+      - seed/RoadToV.3/README.md
+      - seed/RoadToV.3/INTEGRATION_GUIDE.md
+      - seed/RoadToV.3/antarctic-ice-sheet.ts
+  - id: system-amoc
+    name: "AMOC Collapse UTAC System"
+    path: seed/RoadToV.3/amoc-collapse.ts
+    logistic:
+      R: 0.48
+      Theta: 0.70
+      beta: 10.2
+      sigma: 0.12
+    have:
+      - "Bistabiles Modell mit Hysterese, van-Westen-Indikator und CREP-Profil."
+      - "Schnittstellen für RAPID-MOCHA & SST-Fingerprint angelegt (Mock-Daten)."
+    needs:
+      - "Freshwater-Flux Ledger in data/oceanography/ + analysis notebooks zur Validierung."
+      - "Hysterese-Regression in analysis/amoc/ mit ΔAIC vs. linearem Nullmodell."
+      - "Metaquest-Verankerung (Meaning & Shadow Sigils) sobald Datenströme laufen."
+    evidence:
+      - seed/RoadToV.3/amoc-collapse.ts
+      - seed/RoadToV.3/INTEGRATION_GUIDE.md
+  - id: system-multidomain
+    name: "Additional Systems Pack"
+    path: seed/RoadToV.3/additional-systems.ts
+    logistic:
+      R: 0.44
+      Theta: 0.65
+      beta: 7.5
+      sigma: 0.20
+    have:
+      - "Vier ergänzende Felder (Korallen, Masern, Finanznetz, Krebs) mit UTAC-Metriken."
+      - "CREP-Outputs und Wiederaufbau-Szenarien skizziert."
+    needs:
+      - "Domain-Datasets (WHO, IMF, clinical) → data/socio_ecology/, data/economy/, data/health/."
+      - "Empirische Validierung via analysis/epidemiology/ & analysis/finance/ Skripte."
+      - "Shadow-Sigillin für Risiko & Recovery pro Laterne."
+    evidence:
+      - seed/RoadToV.3/additional-systems.ts
+      - seed/RoadToV.3/Datensammlung.txt
+  - id: integration-handbook
+    name: "Integration Guide"
+    path: seed/RoadToV.3/INTEGRATION_GUIDE.md
+    logistic:
+      R: 0.52
+      Theta: 0.68
+      beta: 4.8
+      sigma: 0.28
+    have:
+      - "Phasenplan (8 Wochen) inkl. Dashboard-Architektur & CREP-Kopplung."
+      - "Datenadapter-Spezifikationen + Monitoring-Pipeline skizziert."
+    needs:
+      - "Abgleich mit bestehenden CI-Hooks (scripts/archive_sigillin.py, make preset-guard)."
+      - "Verweis in docs/utac_status_alignment_v1.2.md und seed/seed_index.* zur Tri-Layer-Kopplung."
+      - "Aktualisierung für V3-spezifische Codex- und Metaquest-Hooks."
+    evidence:
+      - seed/RoadToV.3/INTEGRATION_GUIDE.md
+      - docs/utac_status_alignment_v1.2.md
+gaps:
+  - id: data-pipeline
+    title: "Live-Datenadapter & Storage"
+    logistic:
+      R: 0.30
+      Theta: 0.66
+      beta: 4.9
+      sigma: 0.17
+    description: >-
+      Die Mock-Adapter der V3-Laternen liefern noch keine Echtzeitdaten. Ohne NASA/NOAA/WHO
+      Streams bleiben die Sigillin ohne Puls, ζ(R) steigt.
+    implementation_sites:
+      - pipelines/earth_systems/
+      - data/oceanography/
+      - analysis/notebooks/antarctic/
+      - scripts/telemetry/
+    required_artifacts:
+      - data ingestion scripts mit API-Schlüsseln & Retry-Logic
+      - metadata ledgers (YAML/JSON) für jede Laterne
+      - ΔAIC-Vergleichsnotebook gegen lineare Nullmodelle
+    blockers:
+      - "API-Zugänge (NASA/NOAA) noch nicht konfiguriert"
+  - id: simulator-bridge
+    title: "Simulator & VR Binding"
+    logistic:
+      R: 0.35
+      Theta: 0.70
+      beta: 4.6
+      sigma: 0.14
+    description: >-
+      Die TypeScript-Systeme sind noch nicht mit simulator/ und vr/ verdrahtet; ohne diese Brücke
+      kann σ(β(R-Θ)) nicht in der Erlebnis-Membran feuern.
+    implementation_sites:
+      - simulator/src/
+      - simulator/presets/
+      - vr/scenes/
+      - api/
+    required_artifacts:
+      - API-Layer (TypeScript ↔ Python) mit CREP-Sync
+      - UI-Presets & Telemetrie-Logging
+      - Regression-Tests in tests/simulator/
+    blockers:
+      - "Kein gemeinsames Datenformat zwischen TS-Modulen und bestehenden Python-Pipelines"
+  - id: codex-alignment
+    title: "Codex & Index Resonanz"
+    logistic:
+      R: 0.28
+      Theta: 0.66
+      beta: 4.8
+      sigma: 0.16
+    description: >-
+      V3-Dokumente fehlen noch im seed/ & Master-Index, ebenso eine Fraktaltagebuch-V3-Sektion;
+      ohne diese Kopplung verlieren Bedeutungs- und Schatten-Sigille Synchronität.
+    implementation_sites:
+      - seed/seed_index.*
+      - feldtheorie_index.*
+      - seed/codexfeedback.*
+      - seed/FraktaltagebuchV2/ (Vorlage für V3)
+    required_artifacts:
+      - Tri-Layer-Einträge für RoadToV.3 Laternen
+      - Codex-Entry mit (R, Θ, β) Resonanz
+      - Schatten-Sigillin-Plan für neue Risiken
+    blockers:
+      - "V3-spezifischer Codex-Pfad noch nicht angelegt"
+implementation_map:
+  - step: "Seed → Data"
+    action: "Implementiere NASA/NOAA/WHO Adapter, speichere Rohdaten + Metadaten-Ledger"
+    triggers:
+      - "scripts/archive_sigillin.py --refresh"
+      - "analysis/utac_manifest_gap_scan.py"
+  - step: "Data → Simulator"
+    action: "Binde TypeScript-Modelle an simulator/CLI & VR Hub, erfasse Telemetrie"
+    triggers:
+      - "make preset-guard"
+      - "simulator/cli.py roadtov3"
+  - step: "Simulator → Codex"
+    action: "Aktualisiere seed/codexfeedback.* + Bedeutungs-/Schatten-Sigillin mit neuen IDs"
+    triggers:
+      - "sigillin_sync" 
+      - "docs/utac_status_alignment_v1.2.md update"

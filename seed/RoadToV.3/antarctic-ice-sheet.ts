@@ -48,7 +48,7 @@ export interface WAISSystemState {
 }
 
 export interface WAISBetaCalculation {
-  method: "sigmoid_fit" | "feedback_amplification" | "paleoclimate_analog";
+  method: "sigmoid_fit" | "feedback_amplification" | "paleoclimate_analog" | "ensemble";
   betaValue: number;
   confidence: number; // 0-1
   dataSource: string;
@@ -176,7 +176,7 @@ export class WAISBetaEstimator {
     );
     
     return {
-      method: "sigmoid_fit", // Representative
+      method: "ensemble",
       betaValue: betaEnsemble,
       confidence: confidenceEnsemble,
       dataSource: "Ensemble of three methods",
@@ -203,12 +203,16 @@ export class WAISEarlyWarningSystem {
     windowSize: number = 24 // months
   ): number {
     const window = massBalanceTimeSeries.slice(-windowSize);
+    if (window.length === 0) {
+      return 0;
+    }
+
     const mean = window.reduce((sum, val) => sum + val, 0) / window.length;
     const variance = window.reduce(
       (sum, val) => sum + Math.pow(val - mean, 2),
       0
     ) / window.length;
-    
+
     return variance;
   }
   
@@ -220,19 +224,27 @@ export class WAISEarlyWarningSystem {
     lag: number = 1
   ): number {
     const n = timeSeries.length;
+    if (n === 0 || n <= lag) {
+      return 0;
+    }
+
     const mean = timeSeries.reduce((sum, val) => sum + val, 0) / n;
-    
+
     let numerator = 0;
     let denominator = 0;
-    
+
     for (let t = 0; t < n - lag; t++) {
       numerator += (timeSeries[t] - mean) * (timeSeries[t + lag] - mean);
     }
-    
+
     for (let t = 0; t < n; t++) {
       denominator += Math.pow(timeSeries[t] - mean, 2);
     }
-    
+
+    if (denominator === 0) {
+      return 0;
+    }
+
     return numerator / denominator;
   }
   
@@ -250,29 +262,41 @@ export class WAISEarlyWarningSystem {
     // Check if variance is trending upward
     const recentVariance = varianceTimeSeries.slice(-60); // Last 5 years
     const varianceTrend = this.linearTrend(recentVariance);
-    
+
     // Check if autocorrelation is high and increasing
     const recentAR1 = autocorrelationTimeSeries.slice(-60);
+    if (recentAR1.length === 0) {
+      return false;
+    }
+
     const ar1Mean = recentAR1.reduce((sum, val) => sum + val, 0) / recentAR1.length;
     const ar1Trend = this.linearTrend(recentAR1);
-    
+
     return varianceTrend > 0 && ar1Mean > 0.7 && ar1Trend > 0;
   }
   
   private static linearTrend(data: number[]): number {
     const n = data.length;
+    if (n === 0) {
+      return 0;
+    }
+
     const x = Array.from({ length: n }, (_, i) => i);
     const xMean = x.reduce((sum, val) => sum + val, 0) / n;
     const yMean = data.reduce((sum, val) => sum + val, 0) / n;
-    
+
     let numerator = 0;
     let denominator = 0;
-    
+
     for (let i = 0; i < n; i++) {
       numerator += (x[i] - xMean) * (data[i] - yMean);
       denominator += Math.pow(x[i] - xMean, 2);
     }
-    
+
+    if (denominator === 0) {
+      return 0;
+    }
+
     return numerator / denominator; // Slope
   }
 }
@@ -349,6 +373,13 @@ export class WAISUTACModel {
     warmingRate: number = 0.02 // °C/year
   ): { years: number; uncertainty: number } {
     const tempToThreshold = this.state.thresholdTemperature - currentTemperature;
+    if (warmingRate === 0) {
+      return {
+        years: Infinity,
+        uncertainty: Infinity
+      };
+    }
+
     const years = tempToThreshold / warmingRate;
     
     // Uncertainty from β estimation

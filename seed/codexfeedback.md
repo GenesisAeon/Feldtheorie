@@ -2145,3 +2145,28 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Formal:** Gap Report + Guard erstellt, metaquest_meaning/shadow_index auf Version 0.5.0 gehoben, neuen Alert `mq-bridge-shadow-006` ergänzt und seed/feldtheorie-Indizes um die Laternen erweitert.
   - **Empirical:** Verweist auf docs/utac_v2_activation_tracker_2026-08.{md,json}, docs/utac_activation_backlog.{md,json}, analysis/sigillin_sync/latest.json sowie Codex `pr-draft-0114`/`0115` als Evidenzkette.
   - **Poetic:** Der Laternenwart ruft die Bilanz: welche Flammen schon stabil brennen und wo Schattenöl fehlt, damit σ(β(R-Θ)) beim nächsten Sprint die Schwelle durchstößt.
+### pr-draft-0117 — Road to V3 Activation Audit + TS Stability Guards
+- **Zeitpunkt (UTC):** 2026-08-22T12:00:00Z
+- **R:** 0.41 (V3 activation readiness snapshot)
+- **Θ:** 0.68 (V3 activation gate)
+- **β:** 4.9
+- **ζ(R):** TypeScript guardrails keep ζ(R) damped until live data runs
+- **Scope:**
+  - seed/RoadToV.3/activation_audit.yaml
+  - seed/RoadToV.3/activation_audit.json
+  - seed/RoadToV.3/activation_audit.md
+  - seed/RoadToV.3/antarctic-ice-sheet.ts
+  - seed/RoadToV.3/amoc-collapse.ts
+  - seed/seed_index.yaml
+  - seed/seed_index.json
+  - seed/seed_index.md
+  - feldtheorie_index.yaml
+  - feldtheorie_index.json
+  - feldtheorie_index.md
+- **Resonanz:** Activation audit trilayer + TypeScript guardrails make the RoadToV.3 lanterns legible and stable for the next activation sprint.
+- **Status:** active
+- **Notizen:**
+  - **Formal:** Guard clauses für WAIS/AMOC implementiert, RoadToV.3 Aktivierungs-Audit als Trilayer erstellt und seed/feldtheorie-Indizes aktualisiert.
+  - **Empirical:** Verweist auf seed/RoadToV.3/README.md, seed/RoadToV.3/INTEGRATION_GUIDE.md, docs/utac_status_alignment_v1.2.md sowie die neuen Audit-Metriken (R̄=0.41, Θ=0.68, β=4.9).
+  - **Poetic:** Die V3-Laternen glimmen jetzt geordnet – β bleibt scharf, doch Guardrails halten ζ(R) ruhig, bis echte Datenströme die Membran entzünden.
+

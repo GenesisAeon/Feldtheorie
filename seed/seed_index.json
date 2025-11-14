@@ -6,8 +6,8 @@
     "version": "1.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "documents_total": 280,
-    "updated": "2026-08-21T10:00:00Z"
+    "documents_total": 283,
+    "updated": "2026-08-22T12:00:00Z"
   },
   "categories": {
     "meta": {
@@ -719,6 +719,32 @@
       "references": [
         "utac_v2_gap_matrix.md",
         "utac_v2_gap_matrix.json"
+      ]
+    },
+    {
+      "id": "meta-016",
+      "title": "Road to V3 Activation Audit (Trilayer)",
+      "path": "RoadToV.3/activation_audit.yaml",
+      "category": "meta",
+      "type": "activation-audit",
+      "status": "primed",
+      "relevance": "high",
+      "keywords": [
+        "utac v3",
+        "activation",
+        "roadmap",
+        "logistics"
+      ],
+      "description": "Audit der RoadToV.3-Laternen: dokumentiert vorhandene Systeme, offene Daten-/Simulator-Hooks und σ(β(R-Θ)) für die V3-Aktivierung.",
+      "temporal": {
+        "created": "2026-08-22T12:00:00Z",
+        "modified": "2026-08-22T12:00:00Z",
+        "version": "0.1.0",
+        "change_count": 0
+      },
+      "references": [
+        "RoadToV.3/activation_audit.md",
+        "RoadToV.3/activation_audit.json"
       ]
     },
     {

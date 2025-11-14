@@ -8,19 +8,19 @@
 
 ## 🎯 Was ist das?
 
-Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **164 katalogisierte Dateien** über **6 Hauptverzeichnisse**!
+Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **167 katalogisierte Dateien** über **6 Hauptverzeichnisse**!
 
 ```
 🌳 Feldtheorie (UTAC + Sigillin)
 │
-├── 🌱 seed/        71 docs   (Meta, Theorie, Validierung)
+├── 🌱 seed/        74 docs   (Meta, Theorie, Validierung)
 ├── 📊 analysis/    32 scripts (Fits, Batch, Meta-Regression)
 ├── 📦 data/        47 files   (8 Domänen, β-Estimates)
 ├── 🔬 models/      10 models  (Solver, ODE-Systeme)
 ├── 📚 docs/        12 docs    (Theory, Falsifiability, Parity)
 └── 🗄️  archive/      0 items   (Sigillin Cold Storage)
 
-Total: 168 files | 18 Trilayer-Indizes (YAML+JSON+MD)
+Total: 171 files | 18 Trilayer-Indizes (YAML+JSON+MD)
 ```
 
 ---
@@ -99,6 +99,7 @@ stats = idx['statistics']
 - `Rekalibrierung_Abschlus.txt` - Finale Synthese aller AIs
 - `Metareflexion.txt` - Fixwerte ↔ Variabilität
 - `FinalerPlan.txt` - Governance für v1.2
+- `seed/RoadToV.3/activation_audit.md` - V3 Aktivierungs-Audit (σ(β(R-Θ)) Snapshot & Implementationspfade)
 - `bedeutungssigillin/system/metaquest/metaquest_system_map.md` - Metaquest System-Beacon (Parität & Telemetrie)
 - `bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md` - Metaquest Kampagnen-Beacon (Storyboard & Endorsements)
 - `bedeutungssigillin/metaquest/system/metaquest_system_index.md` - Directory-Index für Systemlaternen (Kompass, Karte, Sigil, Telemetrie)
