@@ -32,6 +32,11 @@
    - *Fallout*: Launch readiness verliert Θ-Sichtbarkeit; Automation und Outreach laufen auseinander.
    - *Remedy*: Bridge-Dashboard auffrischen, Telemetrie + Codex-ID in beiden Bedeutungs-Sigillen und UTAC-Matrix spiegeln.
 
+6. **sys-shadow-006 — Mock-Daten ohne Kennzeichnung**
+   - *Signal*: API-Adapter nutzen Mock-CSV ohne `metadata.synthetic=true`; UI zeigt σ-Kurven ohne Mock-Hinweis.
+   - *Fallout*: Fehlalarme oder trügerische Sicherheit; Veröffentlichungen behaupten Live-Telemetrie ohne Datenbasis.
+   - *Remedy*: Mock-Flag in APIs/UI erzwingen, Shadow-Playbook referenzieren, Codex-Update bei Statuswechsel Mock → Live.
+
 ## Playbooks
 
 - **Index drift** → Synchronise indices and notify docs maintainers if persistent.

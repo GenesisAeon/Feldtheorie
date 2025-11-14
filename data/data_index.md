@@ -14,18 +14,18 @@ Die **Data Resonance Archive** - der empirische Schatz von UTAC! Hier liegen die
 data/
 ├── ai/               (9 files)  🤖 LLM, Wei's PaLM
 ├── astrophysics/     (2 files)  🌌 QPO, Black Holes
-├── biology/          (7 files)  🧬 Lenski, Synaptic, Honeybee
+├── biology/          (8 files)  🧬 Lenski, Synaptic, Honeybee, Coral
 ├── cognition/        (6 files)  🧠 Working Memory, Sleep
 ├── derived/          (5 files)  ⭐ ZENTRAL! beta_estimates.csv
 ├── geophysics/       (4 files)  🌍 Cascadia, Seismik
 ├── socio_ecology/   (10 files)  🌿 Amazon, Urban Heat, AMOC
 ├── safety_delay/    (4 files)  🛡️ τ*-Controller ΔAIC Ledger
-├── climate/         (3 files)  🌡️ UTAC v1.3 Climate Staging + Metadata
-├── ocean/           (2 files)  🌊 AMOC Threshold Staging + Metadata
+├── climate/         (6 files)  🌡️ UTAC v1.3 Climate Staging + WAIS Mock
+├── ocean/           (3 files)  🌊 AMOC Threshold Staging + Mock Series
 ├── neuro_ai/        (2 files)  🧠🤖 Hybrid Activation Staging + Metadata
 └── economy/         (2 files)  ⚡💶 Energy-Finance Threshold Staging + Metadata
 
-Total: 64 files
+Total: 68 files
 ```
 
 ---
@@ -73,10 +73,12 @@ Total: 64 files
 
 ---
 
-### 🧬 Biology (7 files)
-**Was:** Lenski LTEE, Synaptic Release, Honeybee Quorum
+### 🧬 Biology (8 files)
+**Was:** Lenski LTEE, Synaptic Release, Honeybee Quorum, Coral Bleaching Mock
 
 **Key Datasets:**
+- `coral_bleaching_global_mock.csv` - **Global Coral Bleaching (Mock, β≈7.5)**
+- `coral_bleaching_global_mock.metadata.json` - Θ≈1.0 °C, ζ(R) beschreibt DHW-Impedanz
 - `lenski_citplus.csv` - **LTEE Evolution! (β=5.08)**
 - `synaptic_release_threshold.csv` - Hippocampus (Θ=12.68 Hz)
 - `honeybee_waggle_activation.csv` - Quorum-Call
@@ -132,22 +134,26 @@ Total: 64 files
 
 ---
 
-### 🌡️ Climate Expansion (4 files)
-**Was:** Urban-Heat Laterne aktiviert (Θ≈3.20 K, β≈14.27); Amazon Hydro wartet weiterhin auf Rohdaten.
+### 🌡️ Climate Expansion (6 files)
+**Was:** Urban-Heat Laterne aktiviert (Θ≈3.20 K, β≈14.27); WAIS Mock-Serie testet GRACE-Adapter; Amazon Hydro wartet weiterhin auf Rohdaten.
 
 **Key Artefakte:**
 - `urban_heat_intensity.csv` – Beobachtete Intensität, ΔAIC≈1484 vs linear Null, genuine_regime_split.
+- `wais_mass_balance_mock.csv` – WAIS Massenbilanz (Mock 2002–2024) mit Varianz/AR(1)-Trend.
 - `README.md` – Logistischer Guard & Aufgabenliste (Manifest `utac-v1_3-ds-001/002`).
 - `urban_heat_intensity.metadata.json` – ΔT→σ(β(R-Θ)) Mapping + ζ(R) Kopplung.
+- `wais_mass_balance_mock.metadata.json` – Θ≈1.48 °C, β≈13.5 (synthetic) für Adapter-Shakedown.
 - `amazon_precip_evapo.metadata.json` – SPI/Feuchte Laterne mit Bootstrap- und Nullmodell-Hinweis.
 
 ---
 
-### 🌊 Oceanic Thresholds (2 files)
-**Was:** AMOC Transport Staging laut UTAC v1.3 Manifest – Metadata-Sigillum angelegt
+### 🌊 Oceanic Thresholds (3 files)
+**Was:** AMOC Transport Staging laut UTAC v1.3 Manifest – Mock-Serie + Metadata vorbereitet
 
 **Key Artefakte:**
 - `README.md` – ΔAIC-Protokoll & Workflow für RAPID Array Integration.
+- `amoc_strength_mock.csv` – 10-Tage-Kadenz (Mock) mit FovS-Indikator & AR(1)-Drift.
+- `amoc_strength_mock.metadata.json` – Θ≈14 Sv, β≈10.2, ζ(R) Windstress/Freshwater.
 - `amoc_transport.metadata.json` – Sv→σ(β(R-Θ)) Pfad inkl. state-space Nullmodell.
 
 ---

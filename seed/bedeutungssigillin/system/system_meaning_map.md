@@ -37,19 +37,24 @@
    - *Poetic*: The matrix is the observatory window — every update lets the membranes
      see the same dawn.
 
-5. **Metaquest System Beacon** — `metaquest/metaquest_system_map.{yaml,json,md}`
+5. **V3 Mock Metadata Ledger** — `seed/FraktaltagebuchV3/`
+   - *Formal*: Hält die Mock-Daten WAIS/AMOC/Coral als Bedeutungs-Sigillin über Metadata → README → Index Parität und bindet den Shadow-Spiegel (`sys-shadow-006`) direkt ein.
+   - *Empirical*: `data/*/*.metadata.json`, `data/data_index.*`, `seed/FraktaltagebuchV3/v3_roadmap.*` dokumentieren R̄=0.17, σ=0.086 und verweisen auf `seed/shadow_sigillin/system/system_shadow_map.*`.
+   - *Poetic*: Drei Laternen erhielten ihre Nerven; das Licht steigt, doch der Schatten wartet auf sein Echo.
+
+6. **Metaquest System Beacon** — `metaquest/metaquest_system_map.{yaml,json,md}`
    - *Formal*: Focuses Metaquest parity brief duties, telemetry cadence, and shadow
      handshake hooks.
    - *Empirical*: Anchored by `docs/utac_status_alignment_v1.2.md#metaquest-handshake`
      and codex echoes.
    - *Poetic*: The launch lantern plugging the Metaquest tide into the system spine.
 
-6. **Metaquest Parity Brief** — `docs/metaquest_parity_brief.md`
+7. **Metaquest Parity Brief** — `docs/metaquest_parity_brief.md`
    - *Formal*: Tracks `mq-parity-001`…`004` so automation, indices, and codex hooks activate together.
    - *Empirical*: Draws telemetry expectations from `scripts/sigillin_sync.py` and endorsement ledgers (`seed/Finalize_Publish.txt`).
    - *Poetic*: The tuning fork ensuring every membrane hears the same launch tone.
 
-7. **Metaquest Bridge Index** — `../metaquest/metaquest_meaning_index.{yaml,json,md}`
+8. **Metaquest Bridge Index** — `../metaquest/metaquest_meaning_index.{yaml,json,md}`
    - *Formal*: Centralises system ↔ campaign checkpoints so parity stays observable.
    - *Empirical*: References bridge + shadow dashboards; cites telemetry timestamps and codex ids.
    - *Poetic*: The braided lantern where automation and outreach breathe the same dawn.

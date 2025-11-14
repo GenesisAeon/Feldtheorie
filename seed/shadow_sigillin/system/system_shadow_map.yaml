@@ -73,6 +73,18 @@ incidents:
     monitoring:
       metric: 'bridge freshness'
       threshold: '≤24h delta between bridge + codex timestamps'
+  - id: sys-shadow-006
+    risk: 'Mock-Daten werden als Live-Telemetrie interpretiert (fehlende Kennzeichnung).'
+    symptom:
+      - 'API-Adapter greifen auf *.metadata.json ohne Live-Flag zu.'
+      - 'Simulator/vr/ zeigen σ-Kurven ohne Hinweis auf synthetische Quellen.'
+    consequence: 'Fehlalarme oder falsche Sicherheit; Veröffentlichungen behaupten Real-Time-Kopplung ohne Datenbasis.'
+    mitigation:
+      - 'Kennzeichne Mock-Status in APIs & UI, verknüpfe Shadow-Playbook, aktiviere Live-Flag vor Launch.'
+      - 'Codex-Eintrag + Shadow-Spiegel bei jeder Statusänderung (Mock → Live).'
+    monitoring:
+      metric: 'mock_flag integrity'
+      threshold: 'CI-Check stellt sicher, dass metadata.synthetic = true solange keine Credentials aktiv sind'
 playbooks:
   - trigger: 'CI or manual audit flags sys-shadow-001'
     response:

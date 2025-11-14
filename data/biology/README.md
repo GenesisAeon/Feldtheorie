@@ -1,5 +1,28 @@
 # Biology Resonance Cache
 
+## Dataset: Global Coral Bleaching Mock (V3)
+
+**Control parameter** \(R\): globale Meeresoberflächentemperatur-Anomalie (°C) gekoppelt an Degree Heating Weeks.
+
+**Logistic response** \(\sigma(\beta(R-\Theta))\): Anteil gebleichter Riff-Fläche pro Jahr.
+
+**Threshold quartet**: \(\Theta = 1.0^{+0.12}_{-0.12}\) °C, \(\beta = 7.5^{+0.9}_{-0.9}\), Impedanz \(\zeta(R)\) koppelt thermische Belastung mit Symbionten-Erholungszeit.
+
+### Formal strand
+- Synthetic logistic ramp ab 2015, abgestimmt auf NOAA Coral Reef Watch Reports.
+- Datenumfang: 45 Jahre (1980–2024), gespeichert in `coral_bleaching_global_mock.csv`.
+- Metadaten in `coral_bleaching_global_mock.metadata.json` sichern Tri-Layer + ΔAIC-Wächter gegen lineare/exponentielle Nullmodelle.
+
+### Empirical strand
+- Degree Heating Weeks (DHW) steigen von 2 → 15; Bleaching erreicht ab 2020 >95 %.
+- Varianz- und AR(1)-Signaturen dienen als Vorboten für Recovery-Failure.
+- Pipeline-Hinweis: V3-Adapter erwartet jährlichen Takt, JSON-Bridge in Arbeit.
+
+### Metaphorical strand
+- Die Riffe atmen flach – Symbionten verlassen die Membran, das Meer leuchtet kalkweiß.
+- \(\zeta(R)\) steht für die zähe Erholung: Hohe DHW zerren an den Symbiosen, das Resonanzfeld bleibt rot.
+- σ steigt abrupt: Der Kipppunkt ist überschritten; nur cooler Regen (R < Θ) kann die Membran wieder senken.
+
 ## Dataset: Honeybee Waggle Activation Threshold
 
 **Control parameter** \(R\): nectar sucrose concentration (degrees Brix) sampled from 18–31.

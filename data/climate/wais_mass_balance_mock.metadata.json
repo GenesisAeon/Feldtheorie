@@ -1,0 +1,64 @@
+{
+  "dataset_name": "WAIS Mass Balance Mock Series",
+  "domain": "climate",
+  "path": "data/climate/wais_mass_balance_mock.csv",
+  "status": "synthetic-staging",
+  "description": "Mocked GRACE/GRACE-FO inspired mass balance record for the West Antarctic Ice Sheet used to exercise V3 adapters before live credentials are issued.",
+  "data_format": "csv",
+  "control_parameter_R": {
+    "column": "temp_anomaly_C",
+    "units": "degree_celsius",
+    "description": "Near-shelf ocean temperature anomaly influencing basal melt."
+  },
+  "response_sigma": {
+    "column": "distance_to_tipping",
+    "units": "fraction",
+    "description": "Normalised distance of the logistic membrane to the collapse threshold."
+  },
+  "threshold_estimates": {
+    "theta": 1.48,
+    "beta": 13.5,
+    "zeta_R": "ζ(R) couples basal melt feedbacks with ice-shelf buttressing; higher ζ increases collapse impedance.",
+    "delta_aic_guard": 25.0
+  },
+  "null_models_tested": [
+    "linear_trend",
+    "power_law_baseline",
+    "exponential_decay"
+  ],
+  "preprocessing_steps": [
+    "Synthetically generate monthly mass balance and meltwater flux trajectories (2002-01 to 2024-10)",
+    "Inject variance and AR(1) drift to mimic critical slowing",
+    "Export CSV compatible with scripts/adapters/grace_wais_adapter.py"
+  ],
+  "provenance": {
+    "sources": [
+      {
+        "name": "TiPACCs Project",
+        "citation": "EU Horizon 2020 CORDIS 820575",
+        "url": "https://cordis.europa.eu/project/id/820575"
+      },
+      {
+        "name": "Armstrong-McKay et al. (2022)",
+        "citation": "Exceeding 1.5°C global warming could trigger multiple climate tipping points",
+        "url": "https://www.science.org/doi/10.1126/science.abn7950"
+      }
+    ],
+    "license": "CC-BY-4.0",
+    "synthetic": true
+  },
+  "temporal": {
+    "created": "2026-08-23T12:00:00Z",
+    "modified": "2026-08-23T12:00:00Z",
+    "version": "0.2.0",
+    "change_count": 0
+  },
+  "simulation_hint": {
+    "control_min": 0.6,
+    "control_max": 1.6,
+    "n_points": 276,
+    "noise_scale": 0.08
+  },
+  "falsification_notes": "Guard rail: retain ΔAIC ≥ 25 over linear/power-law nulls once live data replace the mock sequence.",
+  "logistic_form": "sigma(beta*(R-Theta))"
+}

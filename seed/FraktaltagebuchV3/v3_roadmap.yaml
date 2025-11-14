@@ -7,16 +7,16 @@
 metadata:
   version: "3.0.0"
   created: "2025-11-14T12:30:00Z"
-  last_updated: "2025-11-14T12:30:00Z"
+  last_updated: "2026-08-23T12:20:00Z"
   total_features: 18
-  completed_features: 0
+  completed_features: 3
 
   # Logistic activation tracking
   parameters:
-    R_bar: 0.00        # Mean progress (0-1)
+    R_bar: 0.17        # Mean progress (0-1)
     Theta: 0.66        # Release gate
     beta: 4.8          # Steepness
-    sigma: 0.000       # σ(β(R̄-Θ)) activation level
+    sigma: 0.086       # σ(β(R̄-Θ)) activation level
 
 # ============================================================================
 # PHASE 1: FOUNDATION (R = 0.00 → 0.30)
@@ -32,7 +32,9 @@ features_phase1_foundation:
       - Massenverlust: -150 Gt/year
       - EWS: Varianz ↑, AR(1) ↑
       - β≈13.5, Θ≈1.5°C
-    status: pending
+    status: completed
+    completed_at: "2026-08-23T12:15:00Z"
+    status_notes: "Mock-Datensatz + Metadata (wais_mass_balance_mock.metadata.json) aktiviert; README aktualisiert."
     priority: P0
     assignee: Claude
     dependencies: []
@@ -55,7 +57,9 @@ features_phase1_foundation:
       - Schwächung: 17 Sv → 14 Sv
       - FovS (34°S): negativ → positiv (Kipppunkt!)
       - β≈10.2, Θ≈4.0°C
-    status: pending
+    status: completed
+    completed_at: "2026-08-23T12:16:00Z"
+    status_notes: "Mock-Datensatz + Metadata (amoc_strength_mock.metadata.json) aktiviert; README aktualisiert."
     priority: P0
     assignee: Claude
     dependencies: []
@@ -79,7 +83,9 @@ features_phase1_foundation:
       - 84% bleached seit Jan 2023 (ERSTER ÜBERSCHRITTENER KIPPPUNKT!)
       - DHW (Degree Heating Weeks)
       - β≈7.5, Θ≈1.0°C (bereits überschritten)
-    status: pending
+    status: completed
+    completed_at: "2026-08-23T12:17:00Z"
+    status_notes: "Mock-Datensatz + Metadata (coral_bleaching_global_mock.metadata.json) aktiviert; README aktualisiert."
     priority: P0
     assignee: Claude
     dependencies: []

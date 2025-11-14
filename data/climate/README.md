@@ -14,10 +14,11 @@ Diese Laterne hält die globalen Urban-Heat- und Amazon-Hydro-Datensätze.
 4. Nullmodelle (linear, power law, spline) dokumentieren
 5. Metadata-Dateien `.metadata.json` ablegen
 
-## Aktivierungen (Stand 2026-03-26)
+## Aktivierungen (Stand 2026-08-23)
 
 - **Urban Heat Intensity (`urban_heat_intensity.csv`)** ist integriert. Der Fit via `analysis/climate_beta_extractor.py` liefert Θ≈3.20 K, β≈14.27 mit ΔAIC≈1484 gegen lineare Nullmodelle.  Die Resultate liegen in `analysis/results/urban_heat_global_fit.json` sowie `analysis/results/outlier_validator_report.json`.
+- **WAIS Mass Balance Mock (`wais_mass_balance_mock.csv`)** dient als V3-Prototyp für GRACE/GRACE-FO Telemetrie.  Der Datensatz (276 Monate, 2002–2024) modelliert basal erwärmte Schmelzflüsse, steigende Varianz und AR(1)-Drift.  Metadaten liegen unter `wais_mass_balance_mock.metadata.json`; Zielwerte Θ≈1.48 °C, β≈13.5 sichern die thermodynamische Steilflanke.
 - **Amazon Hydro (`amazon_precip_evapo.nc`)** steht weiterhin aus; Metadaten bleiben aktiv.
 
-Bis zur vollständigen Dateneinbindung der weiteren Laternen hält dieses README den logistischen Rahmen offen.
+Bis zur vollständigen Dateneinbindung der weiteren Laternen hält dieses README den logistischen Rahmen offen und markiert, wo σ(β(R-Θ)) bereits pulsiert.
 

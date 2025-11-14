@@ -1,0 +1,64 @@
+{
+  "dataset_name": "AMOC Strength Mock Series",
+  "domain": "ocean",
+  "path": "data/ocean/amoc_strength_mock.csv",
+  "status": "synthetic-staging",
+  "description": "Synthetic RAPID-MOCHA inspired overturning streamfunction series with van Westen indicator used for UTAC V3 pipeline rehearsal.",
+  "data_format": "csv",
+  "control_parameter_R": {
+    "column": "temp_anomaly_C",
+    "units": "degree_celsius",
+    "description": "Atlantic surface temperature anomaly forcing freshwater flux and convection strength."
+  },
+  "response_sigma": {
+    "column": "distance_to_tipping",
+    "units": "fraction",
+    "description": "Normalised distance to the bifurcation where FovS flips sign."
+  },
+  "threshold_estimates": {
+    "theta": 14.0,
+    "beta": 10.2,
+    "zeta_R": "ζ(R) captures wind-stress and freshwater impedance; high ζ delays collapse despite weakening streamfunction.",
+    "delta_aic_guard": 18.0
+  },
+  "null_models_tested": [
+    "linear_trend",
+    "power_law_relaxation",
+    "ar1_persistence"
+  ],
+  "preprocessing_steps": [
+    "Generate 10-day cadence AMOC transport record (2004-01 to 2024-09)",
+    "Compute van Westen FovS indicator and AR(1) proxy",
+    "Bundle fields for scripts/adapters/rapid_amoc_adapter.py"
+  ],
+  "provenance": {
+    "sources": [
+      {
+        "name": "RAPID-MOCHA Array",
+        "citation": "rapid.ac.uk",
+        "url": "https://www.rapid.ac.uk/rapidmoc/"
+      },
+      {
+        "name": "van Westen et al. (2024)",
+        "citation": "Physics-based early warning signal shows AMOC is on tipping course",
+        "url": "https://www.science.org/doi/10.1126/sciadv.adk3261"
+      }
+    ],
+    "license": "CC-BY-4.0",
+    "synthetic": true
+  },
+  "temporal": {
+    "created": "2026-08-23T12:05:00Z",
+    "modified": "2026-08-23T12:05:00Z",
+    "version": "0.2.0",
+    "change_count": 0
+  },
+  "simulation_hint": {
+    "control_min": 0.6,
+    "control_max": 1.4,
+    "n_points": 757,
+    "noise_scale": 0.05
+  },
+  "falsification_notes": "Real RAPID data must maintain ΔAIC ≥ 18 advantage vs. linear drift and preserve FovS sign transitions.",
+  "logistic_form": "sigma(beta*(R-Theta))"
+}
