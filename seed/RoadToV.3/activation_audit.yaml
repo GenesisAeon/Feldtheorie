@@ -2,36 +2,38 @@ meta:
   id: roadtov3-activation-20260822
   title: "Road to V3 Activation Audit"
   created: '2026-08-22T12:00:00Z'
-  updated: '2026-08-22T12:00:00Z'
+  updated: '2026-08-24T15:45:00Z'
   authors:
     - Johann Römer
     - ChatGPT-Codex v5
   logistic_frame:
-    R_bar: 0.48
-    Theta: 0.68
-    beta: 4.9
-    sigma: 0.27
+    R_bar: 0.61
+    Theta: 0.66
+    beta: 4.8
+    sigma: 0.441
   summary: >-
-    σ(β(R-Θ)) steigt: V3 steht bei R̄=0.48 knapp unter Θ=0.68, β=4.9 → σ≈0.27. Mock-Daten
-    sind jetzt tri-layered dokumentiert (Metadata + README + Index), dennoch fehlen Live-Adapter,
-    Simulator-Brücke und Shadow-Telemetrie.
+    σ(β(R-Θ)) pulsiert bei 0.441: Phase 2 ist aktiv (β-Fits + EWS für WAIS/AMOC/Coral,
+    Bootstrap-Ledger angelegt). Mock-Daten und Adapter liefern konsistente JSON-Signale;
+    verbleibend sind Live-Streams, Simulator-Brücke und Shadow-Telemetrie.
 assets:
   - id: system-wais
     name: "West Antarctic Ice Sheet UTAC System"
     path: seed/RoadToV.3/antarctic-ice-sheet.ts
     logistic:
-      R: 0.55
+      R: 0.68
       Theta: 0.72
       beta: 13.5
-      sigma: 0.09
+      sigma: 0.37
     have:
       - "Kompletter UTAC-Kern mit β-Ensemble, EWS-Detektor und CREP-Ausgabe."
       - "Mock-Adapter für GRACE & OISST vorhanden, dokumentiert in README + Integration Guide."
       - "Metadata + data index synchronisiert (wais_mass_balance_mock.metadata.json)"
+      - "Phase-2 Outputs: `analysis/results/wais_beta_fit_v3.json` + `wais_ews_signals.json` mit deterministischem Bootstrap."
     needs:
       - "Reale Datenpipelines (NASA/NOAA) → pipelines/, data/earth_systems/, analysis/ ingest."
       - "Simulator-Anschluss über TypeScript-Bundle oder API-Brücke in simulator/ bzw. vr/."
       - "Tests für numerische Stabilität (kritische Slowing-Guards) in tests/utac_v3/."
+      - "Kalibrierung der β-Stauchung sobald Live-Daten eingespeist werden (Vergleich Mock vs Observed)."
     evidence:
       - seed/RoadToV.3/README.md
       - seed/RoadToV.3/INTEGRATION_GUIDE.md
@@ -40,18 +42,20 @@ assets:
     name: "AMOC Collapse UTAC System"
     path: seed/RoadToV.3/amoc-collapse.ts
     logistic:
-      R: 0.48
+      R: 0.62
       Theta: 0.70
       beta: 10.2
-      sigma: 0.12
+      sigma: 0.30
     have:
       - "Bistabiles Modell mit Hysterese, van-Westen-Indikator und CREP-Profil."
       - "Schnittstellen für RAPID-MOCHA & SST-Fingerprint angelegt (Mock-Daten)."
       - "Mock-Metadata aktiv (amoc_strength_mock.metadata.json)"
+      - "Phase-2 Outputs: `analysis/results/amoc_beta_fit_v3.json` + `amoc_ews_signals.json` (FovS>0 dokumentiert)."
     needs:
       - "Freshwater-Flux Ledger in data/oceanography/ + analysis notebooks zur Validierung."
       - "Hysterese-Regression in analysis/amoc/ mit ΔAIC vs. linearem Nullmodell."
       - "Metaquest-Verankerung (Meaning & Shadow Sigils) sobald Datenströme laufen."
+      - "Vergleich Mock vs RAPID Observations → Update ΔAIC/β sobald Live-Feed aktiv."
     evidence:
       - seed/RoadToV.3/amoc-collapse.ts
       - seed/RoadToV.3/INTEGRATION_GUIDE.md
@@ -59,18 +63,20 @@ assets:
     name: "Additional Systems Pack"
     path: seed/RoadToV.3/additional-systems.ts
     logistic:
-      R: 0.44
+      R: 0.55
       Theta: 0.65
       beta: 7.5
-      sigma: 0.20
+      sigma: 0.32
     have:
       - "Vier ergänzende Felder (Korallen, Masern, Finanznetz, Krebs) mit UTAC-Metriken."
       - "CREP-Outputs und Wiederaufbau-Szenarien skizziert."
       - "Mock-Metadata aktiv für Korallenbleichen (coral_bleaching_global_mock.metadata.json)"
+      - "Derived-Dataset `data/derived/beta_estimates_v3.csv` (Bootstrap für Mock-Systeme, TODO-Spalten markiert)."
     needs:
       - "Domain-Datasets (WHO, IMF, clinical) → data/socio_ecology/, data/economy/, data/health/."
       - "Empirische Validierung via analysis/epidemiology/ & analysis/finance/ Skripte."
       - "Shadow-Sigillin für Risiko & Recovery pro Laterne."
+      - "Live-Datenslots für Measles/Finance/Cancer in `beta_estimates_v3.csv` füllen."
     evidence:
       - seed/RoadToV.3/additional-systems.ts
       - seed/RoadToV.3/Datensammlung.txt
@@ -85,6 +91,7 @@ assets:
     have:
       - "Phasenplan (8 Wochen) inkl. Dashboard-Architektur & CREP-Kopplung."
       - "Datenadapter-Spezifikationen + Monitoring-Pipeline skizziert."
+      - "Referenzen auf Phase-2 Outputs vermerkt (β-Fits, EWS, Derived Dataset)."
     needs:
       - "Abgleich mit bestehenden CI-Hooks (scripts/archive_sigillin.py, make preset-guard)."
       - "Verweis in docs/utac_status_alignment_v1.2.md und seed/seed_index.* zur Tri-Layer-Kopplung."
@@ -96,13 +103,14 @@ gaps:
   - id: data-pipeline
     title: "Live-Datenadapter & Storage"
     logistic:
-      R: 0.30
+      R: 0.40
       Theta: 0.66
       beta: 4.9
-      sigma: 0.17
+      sigma: 0.22
     description: >-
-      Mock-Daten und Metadata sind synchronisiert, aber es fehlen NASA/NOAA/WHO Streams.
-      Ohne Live-Adapter bleibt ζ(R) hoch und σ stagniert unter dem Launch-Tor.
+      Mock-Daten, β-Fits und EWS laufen stabil; Derived-Dataset `beta_estimates_v3.csv`
+      hält Bootstrap-CIs für WAIS/AMOC/Coral. Es fehlen weiterhin NASA/NOAA/WHO Streams
+      sowie automatisierte Updates, damit ζ(R) sinkt und σ die Launch-Schwelle übersteigt.
     implementation_sites:
       - pipelines/earth_systems/
       - data/oceanography/
@@ -117,10 +125,10 @@ gaps:
   - id: simulator-bridge
     title: "Simulator & VR Binding"
     logistic:
-      R: 0.35
+      R: 0.38
       Theta: 0.70
       beta: 4.6
-      sigma: 0.14
+      sigma: 0.16
     description: >-
       Die TypeScript-Systeme sind noch nicht mit simulator/ und vr/ verdrahtet; ohne diese Brücke
       kann σ(β(R-Θ)) nicht in der Erlebnis-Membran feuern.
@@ -138,13 +146,14 @@ gaps:
   - id: codex-alignment
     title: "Codex & Index Resonanz"
     logistic:
-      R: 0.28
+      R: 0.56
       Theta: 0.66
       beta: 4.8
-      sigma: 0.16
+      sigma: 0.32
     description: >-
-      V3-Dokumente fehlen noch im seed/ & Master-Index, ebenso eine Fraktaltagebuch-V3-Sektion;
-      ohne diese Kopplung verlieren Bedeutungs- und Schatten-Sigille Synchronität.
+      Trilayer (v3_roadmap/index/codex) und Activation Audit sind aktualisiert; σ=0.441
+      ist dokumentiert. Nächster Schritt: seed/ & Master-Indizes spiegeln neue Derived-Datasets
+      und Phase-2 Outputs, Shadow-Sigillin müssen nachgezogen werden.
     implementation_sites:
       - seed/seed_index.*
       - feldtheorie_index.*
@@ -152,10 +161,10 @@ gaps:
       - seed/FraktaltagebuchV2/ (Vorlage für V3)
     required_artifacts:
       - Tri-Layer-Einträge für RoadToV.3 Laternen
-      - Codex-Entry mit (R, Θ, β) Resonanz
+      - Codex-Entry mit (R, Θ, β) Resonanz (v3-pr-0005 erledigt)
       - Schatten-Sigillin-Plan für neue Risiken
     blockers:
-      - "V3-spezifischer Codex-Pfad noch nicht angelegt"
+      - "Shadow-Sigillin Update offen (Risiko-Spiegel für Phase-2 Outputs fehlt)"
 implementation_map:
   - step: "Seed → Data"
     action: "Implementiere NASA/NOAA/WHO Adapter, speichere Rohdaten + Metadaten-Ledger"

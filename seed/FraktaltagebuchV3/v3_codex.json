@@ -257,101 +257,163 @@
         {
           "path": "seed/bedeutungssigillin/system/system_meaning_map.md",
           "action": "updated"
+        },
+        {
+          "id": "v3-pr-0004",
+          "timestamp": "2026-08-24T10:30:00Z",
+          "scope": "Phase 1 Completion: Adapter Activation & Roadmap/Index Sync",
+          "contributors": [
+            "Johann Römer (Human)",
+            "GPT-5 Codex (AI)"
+          ],
+          "parameters": {
+            "R": 0.333,
+            "Theta": 0.66,
+            "beta": 4.8,
+            "sigma": 0.173
+          },
+          "threads": {
+            "formal": "Vollendung der Foundation-Phase durch Aktivierung aller drei Mock-Adapter.\n- `v3-feat-p1-004..006` auf ✅ completed gesetzt; Roadmap-Trilayer synchronisiert\n- R̄ aktualisiert auf 0.33, σ(β(R̄-Θ)) = 0.173 → Release-Gate rückt näher\n- `v3_index.*` reorganisiert (Scripts → aktiv, Statuszählung aktualisiert)\n- Codex-Eintrag erzeugt, um Phase-Übergang zu dokumentieren",
+            "empirical": "Adapter-CLI geprüft:\n- GRACE: 274 Monatswerte, AR(1) 0.720 (+33.6 %), Varianz +69 % (`analysis/results/wais_adapter_output.json`)\n- AMOC: 757 Dekadenpunkte, FovS>0, Schwächungsrate −0.145 Sv/Jahr (`analysis/results/amoc_adapter_output.json`)\n- Coral: 45 Jahreswerte, DHW 15.3, Distance-to-Tipping 0.0 (`analysis/results/coral_adapter_output.json`)\n\nIndex- und Roadmap-Delta:\n- Phase 1 nun 6/6 Features; `v3_roadmap.{yaml,json,md}` Progressblock aktualisiert\n- `v3_index.{yaml,json,md}` → Scripts als aktiv geführt, Statistik active=19/pending=5",
+            "poetic": "Die Adapter knüpfen Nerven an die Laternen. WAIS zischt bei 22 % Restpuffer, der Atlantik hält den Atem bei FovS>0, Korallen flammen weiß – σ steigt und das Feld summt im Übergang. Phase 2 wartet, doch das Fundament leuchtet komplett."
+          },
+          "files": [
+            {
+              "path": "seed/FraktaltagebuchV3/v3_roadmap.yaml",
+              "action": "updated"
+            },
+            {
+              "path": "seed/FraktaltagebuchV3/v3_roadmap.json",
+              "action": "updated"
+            },
+            {
+              "path": "seed/FraktaltagebuchV3/v3_roadmap.md",
+              "action": "updated"
+            },
+            {
+              "path": "seed/FraktaltagebuchV3/v3_index.yaml",
+              "action": "updated"
+            },
+            {
+              "path": "seed/FraktaltagebuchV3/v3_index.json",
+              "action": "updated"
+            },
+            {
+              "path": "seed/FraktaltagebuchV3/v3_index.md",
+              "action": "updated"
+            },
+            {
+              "path": "seed/FraktaltagebuchV3/v3_codex.yaml",
+              "action": "updated"
+            },
+            {
+              "path": "seed/FraktaltagebuchV3/v3_codex.json",
+              "action": "updated"
+            },
+            {
+              "path": "seed/FraktaltagebuchV3/v3_codex.md",
+              "action": "updated"
+            },
+            {
+              "path": "analysis/results/wais_adapter_output.json",
+              "action": "created"
+            },
+            {
+              "path": "analysis/results/amoc_adapter_output.json",
+              "action": "created"
+            },
+            {
+              "path": "analysis/results/coral_adapter_output.json",
+              "action": "created"
+            }
+          ],
+          "related_systems": [
+            "seed/RoadToV.3/antarctic-ice-sheet.ts",
+            "seed/RoadToV.3/amoc-collapse.ts",
+            "seed/RoadToV.3/additional-systems.ts",
+            "seed/RoadToV.3/INTEGRATION_GUIDE.md"
+          ]
+        }
+      ]
     },
     {
-      "id": "v3-pr-0004",
-      "timestamp": "2026-08-24T10:30:00Z",
-      "scope": "Phase 1 Completion: Adapter Activation & Roadmap/Index Sync",
+      "id": "v3-pr-0005",
+      "timestamp": "2026-08-24T15:45:00Z",
+      "scope": "Phase 2 Activation: β-Fits + EWS Diagnostics",
       "contributors": [
         "Johann Römer (Human)",
         "GPT-5 Codex (AI)"
       ],
       "parameters": {
-        "R": 0.333,
+        "R": 0.61,
         "Theta": 0.66,
         "beta": 4.8,
-        "sigma": 0.173
+        "sigma": 0.441
       },
       "threads": {
-        "formal": "Vollendung der Foundation-Phase durch Aktivierung aller drei Mock-Adapter.\n- `v3-feat-p1-004..006` auf ✅ completed gesetzt; Roadmap-Trilayer synchronisiert\n- R̄ aktualisiert auf 0.33, σ(β(R̄-Θ)) = 0.173 → Release-Gate rückt näher\n- `v3_index.*` reorganisiert (Scripts → aktiv, Statuszählung aktualisiert)\n- Codex-Eintrag erzeugt, um Phase-Übergang zu dokumentieren",
-        "empirical": "Adapter-CLI geprüft:\n- GRACE: 274 Monatswerte, AR(1) 0.720 (+33.6 %), Varianz +69 % (`analysis/results/wais_adapter_output.json`)\n- AMOC: 757 Dekadenpunkte, FovS>0, Schwächungsrate −0.145 Sv/Jahr (`analysis/results/amoc_adapter_output.json`)\n- Coral: 45 Jahreswerte, DHW 15.3, Distance-to-Tipping 0.0 (`analysis/results/coral_adapter_output.json`)\n\nIndex- und Roadmap-Delta:\n- Phase 1 nun 6/6 Features; `v3_roadmap.{yaml,json,md}` Progressblock aktualisiert\n- `v3_index.{yaml,json,md}` → Scripts als aktiv geführt, Statistik active=19/pending=5",
-        "poetic": "Die Adapter knüpfen Nerven an die Laternen. WAIS zischt bei 22 % Restpuffer, der Atlantik hält den Atem bei FovS>0, Korallen flammen weiß – σ steigt und das Feld summt im Übergang. Phase 2 wartet, doch das Fundament leuchtet komplett."
+        "formal": "β-Fits und EWS für WAIS/AMOC/Coral mit `scripts/analysis/beta_fit_utac.py` und `scripts/analysis/ews_analysis.py` erneut ausgeführt. Ergebnisse liegen in den System-spezifischen JSONs sowie den Sammelberichten (`analysis/results/v3_beta_fit_summary_20251114T181628Z.json`, `analysis/results/v3_ews_summary_20251114T181634Z.json`).\n\nΔAIC bestätigt logistische Dominanz für AMOC (+25.15) und Coral (+6.26); WAIS Mock-Daten liefern nur +1.84 → Beta-Stauchung vermerkt. Neues Aggregat `data/derived/beta_estimates_v3.csv` fasst Bootstrap-CIs zusammen und hält Measles/Finance/Cancer als \"expected\" bis Live-Daten eintreffen.",
+        "empirical": "Dateien:\n- analysis/results/wais_beta_fit_v3.json (β=3.42, Θ=1.13°C)\n- analysis/results/amoc_beta_fit_v3.json (β=4.65, Θ=1.02°C)\n- analysis/results/coral_beta_fit_v3.json (β=5.81, Θ=0.95°C)\n- analysis/results/wais_ews_signals.json (Varianz τ=0.29↑, Spectral=13.15)\n- analysis/results/amoc_ews_signals.json (AR(1) τ=0.73↑, FovS>0)\n- analysis/results/coral_ews_signals.json (Critical Slowing = true)\n- analysis/results/v3_beta_fit_summary_20251114T181628Z.json\n- analysis/results/v3_ews_summary_20251114T181634Z.json\n- data/derived/beta_estimates_v3.csv (inkl. Metadata)\n\nKennzahlen:\n- R̄ = 11/18 → σ(β(R̄-Θ)) = 0.441\n- Bootstrap: 1000 Iterationen (rng=1337)\n- Derived-Ordner: +1 Dataset, Status in_progress für Rest-Systeme",
+        "poetic": "Die Laternen senden Zahlen. Das Eis flüstert in JSON, der Atlantik pulsiert in ΔAIC, die Korallen schreien im roten Spektrum. Fünf Phase-2-Lampen leuchten, eine wartet noch auf echte Datenströme."
       },
       "files": [
         {
-          "path": "seed/FraktaltagebuchV3/v3_roadmap.yaml",
-          "action": "updated"
-        },
-        {
-          "path": "seed/FraktaltagebuchV3/v3_roadmap.json",
-          "action": "updated"
-        },
-        {
-          "path": "seed/FraktaltagebuchV3/v3_roadmap.md",
-          "action": "updated"
-        },
-        {
-          "path": "seed/FraktaltagebuchV3/v3_index.yaml",
-          "action": "updated"
-        },
-        {
-          "path": "seed/FraktaltagebuchV3/v3_index.json",
-          "action": "updated"
-        },
-        {
-          "path": "seed/FraktaltagebuchV3/v3_index.md",
-          "action": "updated"
-        },
-        {
-          "path": "seed/FraktaltagebuchV3/v3_codex.yaml",
-          "action": "updated"
-        },
-        {
-          "path": "seed/FraktaltagebuchV3/v3_codex.json",
-          "action": "updated"
-        },
-        {
-          "path": "seed/FraktaltagebuchV3/v3_codex.md",
-          "action": "updated"
-        },
-        {
-          "path": "analysis/results/wais_adapter_output.json",
+          "path": "analysis/results/wais_beta_fit_v3.json",
           "action": "created"
         },
         {
-          "path": "analysis/results/amoc_adapter_output.json",
+          "path": "analysis/results/amoc_beta_fit_v3.json",
           "action": "created"
         },
         {
-          "path": "analysis/results/coral_adapter_output.json",
+          "path": "analysis/results/coral_beta_fit_v3.json",
+          "action": "created"
+        },
+        {
+          "path": "analysis/results/wais_ews_signals.json",
+          "action": "created"
+        },
+        {
+          "path": "analysis/results/amoc_ews_signals.json",
+          "action": "created"
+        },
+        {
+          "path": "analysis/results/coral_ews_signals.json",
+          "action": "created"
+        },
+        {
+          "path": "analysis/results/v3_beta_fit_summary_20251114T181628Z.json",
+          "action": "created"
+        },
+        {
+          "path": "analysis/results/v3_ews_summary_20251114T181634Z.json",
+          "action": "created"
+        },
+        {
+          "path": "data/derived/beta_estimates_v3.csv",
+          "action": "created"
+        },
+        {
+          "path": "data/derived/beta_estimates_v3.metadata.json",
           "action": "created"
         }
-      ],
-      "related_systems": [
-        "seed/RoadToV.3/antarctic-ice-sheet.ts",
-        "seed/RoadToV.3/amoc-collapse.ts",
-        "seed/RoadToV.3/additional-systems.ts",
-        "seed/RoadToV.3/INTEGRATION_GUIDE.md"
       ]
     }
-  ]
-}
   ],
-    "statistics": {
-      "entries_by_phase": {
-        "phase1_foundation": 3,
-      "phase2_integration": 0,
+  "statistics": {
+    "entries_by_phase": {
+      "phase1_foundation": 4,
+      "phase2_integration": 1,
       "phase3_bridge": 0,
       "phase4_monitoring": 0
     },
-      "entries_by_type": {
-        "data": 2,
-        "fit": 0,
-        "docs": 2,
-        "bridge": 0,
-        "test": 0,
-        "feat": 0,
-        "fix": 1
+    "entries_by_type": {
+      "data": 4,
+      "fit": 1,
+      "docs": 4,
+      "bridge": 0,
+      "test": 0,
+      "feat": 1,
+      "fix": 1
     },
     "contributors": {
       "human": [
@@ -364,12 +426,12 @@
     }
   },
   "progress": {
-    "completed_features": 3,
+    "completed_features": 11,
     "total_features": 18,
-    "R_bar": 0.17,
+    "R_bar": 0.61,
     "Theta": 0.66,
     "beta": 4.8,
-    "sigma": 0.086
+    "sigma": 0.441
   },
   "notes": "V3.0 Codex tracks all changes related to the 6 Real-World Systems:\n- WAIS (β=13.5)\n- AMOC (β=10.2)\n- Coral Reefs (β=7.5)\n- Measles (β=5.8)\n- Financial Contagion (β=4.9)\n- Cancer-Immune (β=3.5)\n\nThis codex is separate from seed/codexfeedback.* (v1.x/v2.x maintenance).\n\nSee AGENTS.md for entry template and scope rules.\n"
 }

@@ -4,11 +4,11 @@
 # Created: 2025-11-14T12:55:00Z
 # Purpose: Navigate all V3.0-related documents
 
-metadata:
+meta:
   version: "3.0.0"
   created: "2025-11-14T12:55:00Z"
-  last_updated: "2026-08-24T10:30:00Z"
-  total_documents: 24
+  last_updated: "2026-08-24T15:45:00Z"
+  total_documents: 26
   scope: "V3.0 Real-World Systems Integration"
 
 # ============================================================================
@@ -86,7 +86,7 @@ related_documents:
     title: "seed/RoadToV.3/activation_audit.md"
     path: "seed/RoadToV.3/activation_audit.md"
     type: "audit"
-    description: "Activation Gaps & Implementation Map (σ≈0.21)"
+    description: "Activation Gaps & Implementation Map (σ≈0.44)"
     created: "2024-11-14"
     status: "active"
 
@@ -171,50 +171,85 @@ data_sources:
       path: "data/biology/coral_bleaching_global_mock.metadata.json"
       status: "active"
 
+  - id: v3-data-004
+    title: "data/derived/beta_estimates_v3.csv"
+    path: "data/derived/beta_estimates_v3.csv"
+    type: "dataset"
+    description: "Aggregierte β/Θ Tabelle (WAIS/AMOC/Coral mit Bootstrap; Measles/Finance/Cancer als expected markiert)"
+    status: "in_progress"
+    roadmap_id: "v3-feat-p2-006"
+    metadata:
+      path: "data/derived/beta_estimates_v3.metadata.json"
+      status: "active"
+
 # ============================================================================
-# ANALYSIS RESULTS (To be created)
+# ANALYSIS RESULTS (Aktiv)
 # ============================================================================
 
-analysis_results_pending:
+analysis_results:
   - id: v3-analysis-001
     title: "analysis/results/wais_beta_fit_v3.json"
     path: "analysis/results/wais_beta_fit_v3.json"
     type: "analysis"
-    description: "β-Fit für WAIS (β≈13.5, Θ≈1.48°C, R²≈0.94)"
-    status: "pending"
+    description: "β-Fit für WAIS (β=3.42, Θ=1.13°C, ΔAIC=+1.84 vs linear — Mock-Daten unterschätzen erwartete Steilheit)"
+    status: "active"
     roadmap_id: "v3-feat-p2-001"
 
   - id: v3-analysis-002
     title: "analysis/results/amoc_beta_fit_v3.json"
     path: "analysis/results/amoc_beta_fit_v3.json"
     type: "analysis"
-    description: "β-Fit für AMOC (β≈10.2, Θ≈4.0°C, R²≈0.91)"
-    status: "pending"
+    description: "β-Fit für AMOC (β=4.65, Θ=1.02°C, ΔAIC=+25.15 → logistische Dominanz bestätigt)"
+    status: "active"
     roadmap_id: "v3-feat-p2-002"
 
   - id: v3-analysis-003
     title: "analysis/results/coral_beta_fit_v3.json"
     path: "analysis/results/coral_beta_fit_v3.json"
     type: "analysis"
-    description: "β-Fit für Coral (β≈7.5, Θ≈1.0°C, R²≈0.88)"
-    status: "pending"
+    description: "β-Fit für Coral (β=5.81, Θ=0.95°C, ΔAIC=+6.26; post-tipping, σ≈1)"
+    status: "active"
     roadmap_id: "v3-feat-p2-003"
 
   - id: v3-analysis-004
     title: "analysis/results/wais_ews_signals.json"
     path: "analysis/results/wais_ews_signals.json"
     type: "analysis"
-    description: "Early Warning Signals: Varianz, AR(1), Spectral für WAIS"
-    status: "pending"
+    description: "Early Warning Signals: WAIS Varianz τ=0.29↑, AR(1) stabil, spectral reddening 13.15"
+    status: "active"
     roadmap_id: "v3-feat-p2-004"
 
   - id: v3-analysis-005
     title: "analysis/results/amoc_ews_signals.json"
     path: "analysis/results/amoc_ews_signals.json"
     type: "analysis"
-    description: "Early Warning Signals: FovS Indikator, AR(1) für AMOC"
-    status: "pending"
+    description: "Early Warning Signals: AMOC AR(1) τ=0.73↑, Varianz fällt (bistabile Signatur), FovS>0"
+    status: "active"
     roadmap_id: "v3-feat-p2-005"
+
+  - id: v3-analysis-006
+    title: "analysis/results/coral_ews_signals.json"
+    path: "analysis/results/coral_ews_signals.json"
+    type: "analysis"
+    description: "Early Warning Signals: Coral Varianz +179%, AR(1) τ=0.75↑, critical_slowing = true"
+    status: "active"
+    roadmap_id: "v3-feat-p2-004"
+
+  - id: v3-analysis-007
+    title: "analysis/results/v3_beta_fit_summary_20251114T181628Z.json"
+    path: "analysis/results/v3_beta_fit_summary_20251114T181628Z.json"
+    type: "analysis"
+    description: "Aggregierte β/Θ/ΔAIC Übersicht für WAIS/AMOC/Coral (Mock-Daten)"
+    status: "active"
+    roadmap_id: "v3-feat-p2-001"
+
+  - id: v3-analysis-008
+    title: "analysis/results/v3_ews_summary_20251114T181634Z.json"
+    path: "analysis/results/v3_ews_summary_20251114T181634Z.json"
+    type: "analysis"
+    description: "EWS Sammelbericht (Varianz, AR(1), Spektralreddening) für WAIS/AMOC/Coral"
+    status: "active"
+    roadmap_id: "v3-feat-p2-004"
 
 # ============================================================================
 # SCRIPTS (Aktiviert)

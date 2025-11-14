@@ -1,15 +1,15 @@
 {
-  "metadata": {
+  "meta": {
     "version": "3.0.0",
     "created": "2025-11-14T12:30:00Z",
-    "last_updated": "2026-08-24T10:30:00Z",
+    "last_updated": "2026-08-24T15:45:00Z",
     "total_features": 18,
-    "completed_features": 6,
+    "completed_features": 11,
     "parameters": {
-      "R_bar": 0.33,
+      "R_bar": 0.61,
       "Theta": 0.66,
       "beta": 4.8,
-      "sigma": 0.173
+      "sigma": 0.441
     }
   },
   "features_phase1_foundation": [
@@ -168,7 +168,9 @@
       "id": "v3-feat-p2-001",
       "title": "β-Fit: WAIS (β≈13.5)",
       "description": "Logistische Regression auf WAIS Mock-Daten.\n- Model: σ(β(T-Θ)) mit T = Global Temp\n- Bootstrap CIs (1000 iterations)\n- ΔAIC vs nulls (linear, exp, power-law)\n- Export JSON für TypeScript\n",
-      "status": "pending",
+      "status": "completed",
+      "completed_at": "2026-08-24T15:20:00Z",
+      "status_notes": "β-fit export generiert (analysis/results/wais_beta_fit_v3.json) + Summary (v3_beta_fit_summary_20251114T181628Z.json); ΔAIC=+1.84 bestätigt schwache Präferenz, erwartete β bleibt offen.",
       "priority": "P0",
       "assignee": "Claude",
       "dependencies": [
@@ -189,6 +191,7 @@
       },
       "output": [
         "analysis/results/wais_beta_fit_v3.json",
+        "analysis/results/v3_beta_fit_summary_20251114T181628Z.json",
         "figures/wais_logistic_curve.png"
       ]
     },
@@ -196,7 +199,9 @@
       "id": "v3-feat-p2-002",
       "title": "β-Fit: AMOC (β≈10.2)",
       "description": "Logistische Regression auf AMOC Mock-Daten.\n- Model: σ(β(T-Θ)) mit T = Global Temp\n- Bistabilität modellieren (Hysterese)\n- Bootstrap CIs\n- Export JSON\n",
-      "status": "pending",
+      "status": "completed",
+      "completed_at": "2026-08-24T15:22:00Z",
+      "status_notes": "AMOC β-Fit exportiert (analysis/results/amoc_beta_fit_v3.json) + Summary (v3_beta_fit_summary_20251114T181628Z.json); ΔAIC=+25 bestätigt logistische Dominanz, β liegt ~54% unter Erwartung (Mock-Daten).",
       "priority": "P0",
       "assignee": "Claude",
       "dependencies": [
@@ -217,6 +222,7 @@
       },
       "output": [
         "analysis/results/amoc_beta_fit_v3.json",
+        "analysis/results/v3_beta_fit_summary_20251114T181628Z.json",
         "figures/amoc_bistability.png"
       ]
     },
@@ -224,7 +230,9 @@
       "id": "v3-feat-p2-003",
       "title": "β-Fit: Coral Reefs (β≈7.5)",
       "description": "Logistische Regression auf Coral Mock-Daten.\n- Model: σ(β(DHW-Θ_DHW))\n- POST-TIPPING Analyse (R>Θ)\n- Bootstrap CIs\n- Export JSON\n",
-      "status": "pending",
+      "status": "completed",
+      "completed_at": "2026-08-24T15:23:00Z",
+      "status_notes": "Coral β-Fit (analysis/results/coral_beta_fit_v3.json) + Summary (v3_beta_fit_summary_20251114T181628Z.json); ΔAIC=+6.26 bestätigt logistische Überlegenheit, β bleibt unter Literaturwert durch Mock-Pegel.",
       "priority": "P0",
       "assignee": "Claude",
       "dependencies": [
@@ -245,6 +253,7 @@
       },
       "output": [
         "analysis/results/coral_beta_fit_v3.json",
+        "analysis/results/v3_beta_fit_summary_20251114T181628Z.json",
         "figures/coral_bleaching_timeline.png"
       ]
     },
@@ -252,7 +261,9 @@
       "id": "v3-feat-p2-004",
       "title": "Early Warning Signals: WAIS",
       "description": "Berechne EWS für WAIS Mock-Daten:\n- Variance (rolling window)\n- AR(1) autocorrelation\n- Spectral reddening (FFT)\n- Critical slowing detection\n",
-      "status": "pending",
+      "status": "completed",
+      "completed_at": "2026-08-24T15:25:00Z",
+      "status_notes": "EWS JSON (analysis/results/wais_ews_signals.json) + Summary (v3_ews_summary_20251114T181634Z.json); Varianztrend τ=0.29 signifikant, critical_slowing bleibt inaktiv.",
       "priority": "P1",
       "assignee": "Claude",
       "dependencies": [
@@ -265,14 +276,17 @@
       },
       "effort_hours": 2,
       "output": [
-        "analysis/results/wais_ews_signals.json"
+        "analysis/results/wais_ews_signals.json",
+        "analysis/results/v3_ews_summary_20251114T181634Z.json"
       ]
     },
     {
       "id": "v3-feat-p2-005",
       "title": "Early Warning Signals: AMOC",
       "description": "Berechne EWS für AMOC Mock-Daten:\n- Variance\n- AR(1)\n- van Westen FovS Indicator (Freshwater overshoot)\n- Spectral analysis\n",
-      "status": "pending",
+      "status": "completed",
+      "completed_at": "2026-08-24T15:27:00Z",
+      "status_notes": "AMOC EWS exportiert (analysis/results/amoc_ews_signals.json) + Summary (v3_ews_summary_20251114T181634Z.json); Varianztrend negativ, AR(1) stark positiv → FovS-Warnflag bestätigt.",
       "priority": "P1",
       "assignee": "Claude",
       "dependencies": [
@@ -285,14 +299,16 @@
       },
       "effort_hours": 2,
       "output": [
-        "analysis/results/amoc_ews_signals.json"
+        "analysis/results/amoc_ews_signals.json",
+        "analysis/results/v3_ews_summary_20251114T181634Z.json"
       ]
     },
     {
       "id": "v3-feat-p2-006",
       "title": "Bootstrap CIs für alle 6 Systeme",
       "description": "Paired bootstrap resampling (1000 iterations, seed=1337):\n- WAIS, AMOC, Coral, Measles, Finance, Cancer\n- 95% CIs für β, Θ\n- Update data/derived/beta_estimates.csv\n",
-      "status": "pending",
+      "status": "in_progress",
+      "status_notes": "Initial Aggregat erstellt (data/derived/beta_estimates_v3.csv + metadata); WAIS/AMOC/Coral enthalten echte Bootstrap-CIs, restliche Systeme als expected markiert bis Live-Daten einspeisen.",
       "priority": "P1",
       "assignee": "Claude",
       "dependencies": [
@@ -307,7 +323,8 @@
       },
       "effort_hours": 1.5,
       "output": [
-        "data/derived/beta_estimates_v3.csv"
+        "data/derived/beta_estimates_v3.csv",
+        "data/derived/beta_estimates_v3.metadata.json"
       ]
     }
   ],
