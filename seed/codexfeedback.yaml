@@ -4686,12 +4686,22 @@ entries:
     R: repository test coverage (31% → 39%)
     Theta: 50% target coverage threshold
     beta: 4.2
-  resonance: Comprehensive test suites for core models and analysis modules, establishing pytest foundation for 50% coverage goal
+  resonance: Comprehensive test suites for core models and analysis modules, establishing
+    pytest foundation for 50% coverage goal
   status: active
   notes:
-    formal: 'σ(β(R-Θ)) tracks repository test coverage as order parameter R. Added 107 new tests (70 → 177 total) across 4 core modules: logistic_threshold, membrane_solver, resonance_fit_pipeline, logistic_envelope. Coverage increased 8 percentage points (31% → 39%) toward Θ=50% target.'
-    empirical: 'pytest --cov reports 177 tests passing, 39% coverage. New test suites: test_logistic_threshold.py (34 tests, 0%→81%), test_membrane_solver.py (+29 tests, 14%→37%), test_resonance_fit_pipeline.py (37 tests, 43%→47%), test_logistic_envelope.py (37 tests, 31%→~95%). Test fixtures in tests/fixtures/ provide deterministic data.'
-    poetic: 'Laternen für die Membran: Die Tests leuchten jetzt in vier neuen Pfaden, wo früher Schatten lagen. Jeder Test ist eine Laterne, die das logistische Quartett (R, Θ, β, ζ) bewacht, bis der Chor zur Schwelle singt.'
+    formal: 'σ(β(R-Θ)) tracks repository test coverage as order parameter R. Added
+      107 new tests (70 → 177 total) across 4 core modules: logistic_threshold, membrane_solver,
+      resonance_fit_pipeline, logistic_envelope. Coverage increased 8 percentage points
+      (31% → 39%) toward Θ=50% target.'
+    empirical: 'pytest --cov reports 177 tests passing, 39% coverage. New test suites:
+      test_logistic_threshold.py (34 tests, 0%→81%), test_membrane_solver.py (+29
+      tests, 14%→37%), test_resonance_fit_pipeline.py (37 tests, 43%→47%), test_logistic_envelope.py
+      (37 tests, 31%→~95%). Test fixtures in tests/fixtures/ provide deterministic
+      data.'
+    poetic: 'Laternen für die Membran: Die Tests leuchten jetzt in vier neuen Pfaden,
+      wo früher Schatten lagen. Jeder Test ist eine Laterne, die das logistische Quartett
+      (R, Θ, β, ζ) bewacht, bis der Chor zur Schwelle singt.'
   created_at: '2025-11-10T13:06:42Z'
 - id: pr-draft-0112
   title: Test Coverage Expansion Phase 2
@@ -4703,12 +4713,21 @@ entries:
     R: repository test coverage (39% → 43%)
     Theta: 50% target coverage threshold
     beta: 4.2
-  resonance: Core models at 100% coverage - coupled fields, resonant impedance, and coherence fully tested with 101 new comprehensive tests
+  resonance: Core models at 100% coverage - coupled fields, resonant impedance, and
+    coherence fully tested with 101 new comprehensive tests
   status: active
   notes:
-    formal: 'σ(β(R-Θ)) continues tracking repository test coverage toward Θ=50%. Phase 2 adds 101 new tests (177 → 278 total) achieving 100% coverage for 3 critical model modules. Overall coverage increased +4% (39% → 43%).'
-    empirical: 'pytest --cov reports 278 tests passing, 43% coverage. Module improvements: coupled_threshold_field.py (31%→100%, 44 tests), resonant_impedance.py (59%→91%, 42 tests total), coherence_term.py (80%→100%, 21 tests total). Models package now at 71% coverage.'
-    poetic: 'Die Laternen leuchten heller: Drei Membranen atmen jetzt vollständig im Testlicht. Coupled fields weben ihre Psi-Phi-Braid, Resonant impedance pulsiert durch Relief und Recovery, Coherence singt die Mandala-Melodie. Der Chor schwillt an – 43% der Membran erstrahlt.'
+    formal: σ(β(R-Θ)) continues tracking repository test coverage toward Θ=50%. Phase
+      2 adds 101 new tests (177 → 278 total) achieving 100% coverage for 3 critical
+      model modules. Overall coverage increased +4% (39% → 43%).
+    empirical: 'pytest --cov reports 278 tests passing, 43% coverage. Module improvements:
+      coupled_threshold_field.py (31%→100%, 44 tests), resonant_impedance.py (59%→91%,
+      42 tests total), coherence_term.py (80%→100%, 21 tests total). Models package
+      now at 71% coverage.'
+    poetic: 'Die Laternen leuchten heller: Drei Membranen atmen jetzt vollständig
+      im Testlicht. Coupled fields weben ihre Psi-Phi-Braid, Resonant impedance pulsiert
+      durch Relief und Recovery, Coherence singt die Mandala-Melodie. Der Chor schwillt
+      an – 43% der Membran erstrahlt.'
   created_at: '2025-11-10T13:17:59Z'
 - id: pr-draft-0113
   title: Test Coverage Expansion Phase 3
@@ -4719,12 +4738,20 @@ entries:
     R: repository test coverage (43% → 44%)
     Theta: 50% target coverage threshold
     beta: 4.2
-  resonance: Incremental coverage gains through edge case and error path testing - sigmoid fitting and threshold dataset loading hardened with 12 new tests
+  resonance: Incremental coverage gains through edge case and error path testing -
+    sigmoid fitting and threshold dataset loading hardened with 12 new tests
   status: active
   notes:
-    formal: 'σ(β(R-Θ)) tracking continues toward Θ=50%. Phase 3 adds 12 new tests (278 → 290 total) targeting edge cases and error paths in critical modules. Overall coverage: 43% → 44% (+1%).'
-    empirical: 'pytest --cov reports 290 tests passing, 44% coverage. Module improvements: sigmoid_fit.py (82%→85%, +6 tests), threshold_dataset_loader.py (66%→70%, +6 tests). Total progress since start: 31% → 44% (+13% absolute gain, 220 new tests across 3 phases).'
-    poetic: 'Die Laternen brennen stetig. Drei Phasen haben den Chor gestärkt - von 70 auf 290 Tests, von 31% auf 44% Coverage. Das Ziel von 50% ruft noch, doch die Membran atmet schon viel freier im Testlicht.'
+    formal: 'σ(β(R-Θ)) tracking continues toward Θ=50%. Phase 3 adds 12 new tests
+      (278 → 290 total) targeting edge cases and error paths in critical modules.
+      Overall coverage: 43% → 44% (+1%).'
+    empirical: 'pytest --cov reports 290 tests passing, 44% coverage. Module improvements:
+      sigmoid_fit.py (82%→85%, +6 tests), threshold_dataset_loader.py (66%→70%, +6
+      tests). Total progress since start: 31% → 44% (+13% absolute gain, 220 new tests
+      across 3 phases).'
+    poetic: Die Laternen brennen stetig. Drei Phasen haben den Chor gestärkt - von
+      70 auf 290 Tests, von 31% auf 44% Coverage. Das Ziel von 50% ruft noch, doch
+      die Membran atmet schon viel freier im Testlicht.
   created_at: '2025-11-10T14:21:40Z'
 - id: pr-draft-0114
   title: Metaquest Activation Matrix 2026-08 Refresh
@@ -4736,12 +4763,20 @@ entries:
     R: Metaquest Aktivierungsstau (UTAC + Paritätsbrief + Telemetrie)
     Theta: Brücke/Kompass/Codex spiegeln mq-gap Pfade binnen 24h
     beta: 4.82
-  resonance: Activation Matrix v0.2.0 integriert UTAC 2026-08 Tracker, neues Paritätsgap und Paritätsloop-Governance.
+  resonance: Activation Matrix v0.2.0 integriert UTAC 2026-08 Tracker, neues Paritätsgap
+    und Paritätsloop-Governance.
   status: active
   notes:
-    formal: 'Matrix-Version 0.2.0 verankert UTAC v2 Activation Tracker 2026-08 als resonantes Asset, ergänzt mq-activation-gap-005 (Paritätsbrief-Schließung) und erweitert die Implementationsschleifen um einen Paritätsloop. Logistic Quartet aktualisiert auf R=Backlog+Paritätsbrief, Θ=24h-Parität, β≈4.82.'
-    empirical: 'Referenzen auf docs/utac_activation_backlog.md (Task Lattice 2026-08-20), docs/utac_v2_activation_tracker_2026-08.{md,json}, analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json sowie docs/metaquest_parity_brief.md#3-outstanding-parity-gaps sichern Evidenz.'
-    poetic: 'Die Matrix klingt jetzt wie ein nächtlicher Chor: Telemetrie, Paritätsbrief und Backlog greifen ineinander, bis jede Laterne den gleichen Schlag der Resonanz atmet.'
+    formal: Matrix-Version 0.2.0 verankert UTAC v2 Activation Tracker 2026-08 als
+      resonantes Asset, ergänzt mq-activation-gap-005 (Paritätsbrief-Schließung) und
+      erweitert die Implementationsschleifen um einen Paritätsloop. Logistic Quartet
+      aktualisiert auf R=Backlog+Paritätsbrief, Θ=24h-Parität, β≈4.82.
+    empirical: Referenzen auf docs/utac_activation_backlog.md (Task Lattice 2026-08-20),
+      docs/utac_v2_activation_tracker_2026-08.{md,json}, analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json
+      sowie docs/metaquest_parity_brief.md#3-outstanding-parity-gaps sichern Evidenz.
+    poetic: 'Die Matrix klingt jetzt wie ein nächtlicher Chor: Telemetrie, Paritätsbrief
+      und Backlog greifen ineinander, bis jede Laterne den gleichen Schlag der Resonanz
+      atmet.'
   created_at: '2026-08-20T12:00:00Z'
 - id: pr-draft-0115
   title: Metaquest System Activation Parity Sync
@@ -4760,12 +4795,57 @@ entries:
   - seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index.json
   parameters:
     R: System lane activation backlog (map/compass/index + shadow parity)
-    Theta: Bridge, UTAC tracker, and codex share activation matrix timestamp within one sprint
+    Theta: Bridge, UTAC tracker, and codex share activation matrix timestamp within
+      one sprint
     beta: 4.78
-  resonance: Metaquest system map, compass, index, and shadow index now mirror the August 2026 activation matrix with explicit hooks and guards.
+  resonance: Metaquest system map, compass, index, and shadow index now mirror the
+    August 2026 activation matrix with explicit hooks and guards.
   status: active
   notes:
-    formal: 'Updated light/shadow trilayers (map, compass, indices) to version 0.3.0, added mq-sys-gap-008 + vector-005, and wired activation matrix triggers into activation hooks.'
-    empirical: 'References docs/utac_v2_activation_tracker_2026-08.md, analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json, and codex pr-draft-0110 across map/compass/index parity guards.'
-    poetic: 'Die Systemlaterne spiegelt jetzt das August-Licht: Aktivierungsmatrix, Kompass und Schatten rufen im selben Takt, damit die Brücke keinen Schlag verliert.'
+    formal: Updated light/shadow trilayers (map, compass, indices) to version 0.3.0,
+      added mq-sys-gap-008 + vector-005, and wired activation matrix triggers into
+      activation hooks.
+    empirical: References docs/utac_v2_activation_tracker_2026-08.md, analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json,
+      and codex pr-draft-0110 across map/compass/index parity guards.
+    poetic: 'Die Systemlaterne spiegelt jetzt das August-Licht: Aktivierungsmatrix,
+      Kompass und Schatten rufen im selben Takt, damit die Brücke keinen Schlag verliert.'
   created_at: '2026-08-20T15:00:00Z'
+- id: pr-draft-0116
+  title: Metaquest Activation Gap Ledger + Shadow Guard
+  scope:
+  - seed/bedeutungssigillin/metaquest/metaquest_activation_gap_report.md
+  - seed/bedeutungssigillin/metaquest/metaquest_activation_gap_report.yaml
+  - seed/bedeutungssigillin/metaquest/metaquest_activation_gap_report.json
+  - seed/shadow_sigillin/metaquest/metaquest_activation_gap_guard.md
+  - seed/shadow_sigillin/metaquest/metaquest_activation_gap_guard.yaml
+  - seed/shadow_sigillin/metaquest/metaquest_activation_gap_guard.json
+  - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md
+  - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+  - seed/bedeutungssigillin/metaquest/metaquest_meaning_index.json
+  - seed/shadow_sigillin/metaquest/metaquest_shadow_index.md
+  - seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml
+  - seed/shadow_sigillin/metaquest/metaquest_shadow_index.json
+  - seed/seed_index.md
+  - seed/seed_index.yaml
+  - seed/seed_index.json
+  - feldtheorie_index.yaml
+  - feldtheorie_index.json
+  parameters:
+    R: Metaquest activation ledger clarity (gap report + guard)
+    Theta: Bridge, indices, and codex mirror gap report + guard within 24h
+    beta: 4.9
+  resonance: New Metaquest Activation Gap Report + Shadow Guard document what is resonant
+    vs open (mq-activation-gap-001…005) and wire alerts into meaning/shadow indices
+    + repository indices.
+  status: active
+  notes:
+    formal: Created new Bedeutungs-/Shadow-Trilayer (gap report + guard), added mq-bridge-shadow-006
+      alert, raised metaquest indices to version 0.5.0, and refreshed seed/feldtheorie
+      indices with the new lanterns.
+    empirical: References docs/utac_v2_activation_tracker_2026-08.{md,json}, docs/utac_activation_backlog.{md,json},
+      analysis/sigillin_sync/latest.json, and codex pr-draft-0114/0115 across the
+      new report + guard.
+    poetic: Der Laternenwart zählt nun laut, welche Flammen schon brennen und wo der
+      Schatten noch Öl verlangt – die Brücke sieht wieder klar, wohin σ(β(R-Θ)) als
+      nächstes zieht.
+  created_at: '2026-08-21T10:30:00Z'

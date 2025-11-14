@@ -1,8 +1,8 @@
 meta:
   sigil: shadow-metaquest-bridge
-  version: 0.4.0
+  version: 0.5.0
   created: '2025-12-07T00:00:00Z'
-  updated: '2025-12-24T00:00:00Z'
+  updated: '2026-08-21T10:00:00Z'
   logistic:
     R: Unresolved Metaquest risks spanning automation + outreach (telemetry lapse,
       index drift, endorsement delay).
@@ -27,14 +27,14 @@ alerts:
   - metaquest_meaning_index.md timestamp older than 24h vs latest codex entry.
   - Parity brief updated without bridge reference.
   - Directory indices (system/campaign) missing new mq-sys/mq-sci codex id.
-  consequence: "Automation/outreach drift; \u0398 becomes invisible and \u03B2 overshoots\
-    \ during launch prep."
+  consequence: Automation/outreach drift; Θ becomes invisible and β overshoots during
+    launch prep.
   mitigation:
   - Freeze Metaquest changes, refresh bridge dashboard, cite update in codex.
   - Ping both beacons to ensure parity references match.
   guard:
     metric: bridge freshness
-    threshold: "\u226424h difference between codex + bridge timestamps"
+    threshold: ≤24h difference between codex + bridge timestamps
 - id: mq-bridge-shadow-002
   risk: Telemetry timestamp mismatch between bridge and beacons.
   signal:
@@ -64,41 +64,59 @@ alerts:
   - Run scripts/archive_sigillin.py --refresh and verify parser output.
   - Document fix in codex and bridge null-guard notes.
   guard:
-    metric: "\u0394index parity"
-    threshold: "\u22640 after remediation commit"
+    metric: Δindex parity
+    threshold: ≤0 after remediation commit
 - id: mq-bridge-shadow-004
-  risk: "Light/shadow sigils drift \u2014 codex IDs or rituals not mirrored between\
-    \ system/campaign pairs."
+  risk: Light/shadow sigils drift — codex IDs or rituals not mirrored between system/campaign
+    pairs.
   signal:
   - metaquest_system_sigil.yaml references codex ID absent in metaquest_system_shadow_sigil.yaml
     (or vice versa).
   - metaquest_campaign_sigil.yaml missing BreakPoint citation acknowledged in shadow
     counterpart.
   - Codex entry lacks mq-sys/mq-sci shadow acknowledgement within 24h.
-  consequence: "Recovery scripts desynchronise; \u0398 cannot be certified for automation\
-    \ or outreach."
+  consequence: Recovery scripts desynchronise; Θ cannot be certified for automation
+    or outreach.
   mitigation:
   - Update light + shadow sigils together with shared codex/timestamp fields.
   - Log remediation in codex and UTAC matrix, ping bridge dashboard to confirm parity.
   guard:
     metric: sigil parity
-    threshold: "\u226424h difference between light/shadow updates"
+    threshold: ≤24h difference between light/shadow updates
 - id: mq-bridge-shadow-005
   risk: Activation matrix veraltet oder fehlt; "haben vs. brauchen" nicht mehr gekoppelt
     an Backlog/UTAC.
   signal:
-  - "metaquest_activation_matrix.yaml timestamp \xE4lter als 24h gegen\xFCber docs/utac_status_alignment_v1.2.md\
-    \ oder codexfeedback."
+  - metaquest_activation_matrix.yaml timestamp älter als 24h gegenüber docs/utac_status_alignment_v1.2.md
+    oder codexfeedback.
   - Neue mq-gap IDs in docs/utac_activation_backlog.md ohne Verweis in der Aktivierungs-Matrix.
   - Shadow index verweist auf mq-gap-Recovery ohne korrespondierende matrix recovery_hooks.
-  consequence: "Schatten-W\xE4chter verlieren Sicht auf offene Risiken; R w\xE4chst\
-    \ unbeobachtet und l\xF6st versp\xE4tete Eskalationen aus."
+  consequence: Schatten-Wächter verlieren Sicht auf offene Risiken; R wächst unbeobachtet
+    und löst verspätete Eskalationen aus.
   mitigation:
   - Aktualisiere metaquest_activation_matrix.{yaml,json,md} mit neuen Pfaden und Recovery-Hooks.
-  - "Spiegle \xC4nderungen in shadow index + codex, referenziere UTAC-Matrix und Backlog."
+  - Spiegle Änderungen in shadow index + codex, referenziere UTAC-Matrix und Backlog.
   guard:
     metric: activation matrix freshness
-    threshold: "\u226424h Unterschied zwischen Matrix, Backlog und Codex timestamps"
+    threshold: ≤24h Unterschied zwischen Matrix, Backlog und Codex timestamps
+- id: mq-bridge-shadow-006
+  risk: Activation gap ledger missing or outdated; bridge loses view on remaining
+    mq-activation gaps.
+  signal:
+  - metaquest_activation_gap_report.{yaml,json,md} absent or older than activation
+    matrix timestamp.
+  - UTAC activation backlog lists new mq-gap status without update in gap report.
+  - Codex lacks mq-activation-shadow reference after gap remediation.
+  consequence: Agents cannot prove which gaps remain; readiness claims lose falsifiability
+    and ζ(R) spikes.
+  mitigation:
+  - Refresh metaquest_activation_gap_report trilayer with latest backlog, telemetry,
+    parity brief references.
+  - Log codex entry referencing mq-bridge-shadow-006 and update UTAC matrix.
+  - Verify shadow guard notes mirror new gap statuses within 24h.
+  guard:
+    metric: gap ledger freshness
+    threshold: ≤24h difference between activation matrix update and gap report refresh
 playbooks:
 - trigger: mq-bridge-shadow-001 fired
   response:
@@ -121,5 +139,5 @@ playbooks:
   response:
   - Aktualisiere metaquest_activation_matrix.* sowie docs/utac_status_alignment_v1.2.md
     und docs/utac_activation_backlog.* mit den gleichen mq-gap Pfaden.
-  - "Spiegle die \xC4nderungen in codexfeedback (Status + Recovery) und best\xE4tige,\
-    \ dass Schatten-Indizes dieselben recovery_hooks f\xFChren."
+  - Spiegle die Änderungen in codexfeedback (Status + Recovery) und bestätige, dass
+    Schatten-Indizes dieselben recovery_hooks führen.

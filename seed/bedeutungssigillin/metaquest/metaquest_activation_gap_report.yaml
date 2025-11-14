@@ -1,0 +1,192 @@
+meta:
+  sigil: bedeutungs-metaquest-activation-gap-report
+  version: 0.1.0
+  created: '2026-08-21T10:00:00Z'
+  updated: '2026-08-21T10:00:00Z'
+  logistic:
+    R: Metaquest activation backlog combining activation matrix gaps, backlog hooks,
+      parity brief tasks, and telemetry sync duties.
+    Theta: Every gap carries an explicit implementation site with UTAC/backlog references
+      mirrored in codex + shadow guard within 24h.
+    beta: 4.8
+    zeta: Damped when activation matrix, UTAC backlog, parity brief, and sigillin_sync
+      telemetry report the same timestamp + codex echo.
+  resonance: 'Synthesises what the Metaquest bridge already lights (activation matrix,
+    UTAC tracker, backlog, telemetry, codex)
+
+    versus the open implementation strands. Guides agents to the correct membranes
+    when finishing the remaining
+
+    activation hooks so σ(β(R-Θ)) can crest before launch.'
+  shadow_coupling: ../../shadow_sigillin/metaquest/metaquest_activation_gap_guard.yaml
+assets:
+- id: mq-asset-001
+  title: Metaquest Activation Matrix v0.2.0
+  location: metaquest_activation_matrix.yaml
+  status: resonant
+  sigma: 0.64
+  summary: Tri-layer ledger aligning August 2026 activation telemetry with backlog
+    hooks, Δindex guard, sigillin_sync automation, ritual mirrors, and urban heat
+    recovery.
+  evidence:
+  - metaquest_activation_matrix.md
+  - ../../../docs/utac_v2_activation_tracker_2026-08.md
+  - ../../../analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json
+- id: mq-asset-002
+  title: UTAC v2 Activation Tracker 2026-08
+  location: ../../../docs/utac_v2_activation_tracker_2026-08.md
+  status: resonant
+  sigma: 0.62
+  summary: Narrates R̄=0.78 against Θ=0.66 with β=4.8, listing resonant lanterns and
+    dark threads for Metaquest readiness.
+  evidence:
+  - ../../../docs/utac_v2_activation_tracker_2026-08.json
+  - ../../../docs/utac_status_alignment_v1.2.md#3-activation-gaps-—-what-we-still-need
+- id: mq-asset-003
+  title: UTAC Activation Backlog
+  location: ../../../docs/utac_activation_backlog.md
+  status: resonant
+  sigma: 0.58
+  summary: Task lattice enumerating mq-gap IDs, recovery hooks, and implementation
+    nodes tying Metaquest to indices, telemetry, and governance.
+  evidence:
+  - ../../../docs/utac_activation_backlog.json
+  - ../../../docs/utac_status_alignment_v1.2.md#4-implementation-map-where-to-act
+- id: mq-asset-004
+  title: sigillin_sync Telemetry Pulse
+  location: ../../../analysis/sigillin_sync/latest.json
+  status: resonant
+  sigma: 0.55
+  summary: 2025-11-07 run capturing 12 Metaquest trilayers with 0 gaps; canonical
+    timestamp for propagation into bridge + compasses.
+  evidence:
+  - ../../../analysis/sigillin_sync/metaquest_report_20251107T215246Z.json
+  - metaquest_meaning_index.yaml
+- id: mq-asset-005
+  title: Metaquest Parity Brief
+  location: ../../../docs/metaquest_parity_brief.md
+  status: resonant
+  sigma: 0.53
+  summary: Parity storyline condensing mq-parity-001…004 with simulator playlist,
+    endorsement ledger, and codex checkpoints.
+  evidence:
+  - ../../../docs/metaquest_parity_brief.md#3-outstanding-parity-gaps
+  - ../../../seed/codexfeedback.md
+gaps:
+- id: mq-gap-Δindex-guard
+  source: mq-activation-gap-001
+  description: CI guard for Δindex parity so Metaquest assets automatically surface
+    in seed_index.* and feldtheorie_index.*.
+  logistic:
+    R: Manual recounts after Metaquest updates.
+    Theta: Automation halts merges when Δindex>0 and records remediation in codex.
+    beta: 4.8
+  implementation_sites:
+  - ../../../scripts/archive_sigillin.py
+  - ../../../analysis/results/index_recount_20251108T222238Z.json
+  - ../../../docs/utac_activation_backlog.md#index-recount-hook
+  next_actions:
+  - Design CI preset guard referencing scripts/archive_sigillin.py output.
+  - Document guard rails in docs/utac_status_alignment_v1.2.md and metaquest_system_compass.md.
+  status: open
+- id: mq-gap-telemetry-propagation
+  source: mq-activation-gap-002
+  description: sigillin_sync automation pushing timestamps and codex IDs into bridge,
+    compasses, and parity brief within one sprint.
+  logistic:
+    R: Telemetry propagation manual and lagging >1 sprint.
+    Theta: sigillin_sync writes canonical timestamp + codex id into bridge + beacons
+      within 24h.
+    beta: 4.76
+  implementation_sites:
+  - ../../../scripts/sigillin_sync.py
+  - metaquest_meaning_index.yaml
+  - system/metaquest_system_compass.yaml
+  - ../wissenschaftsprojekt/metaquest/metaquest_campaign_compass.yaml
+  next_actions:
+  - Extend sigillin_sync export to write JSON fragments for bridge + compass trilayers.
+  - Backfill codex entries with propagation timeline (mq-bridge-gap-002).
+  status: in_progress
+- id: mq-gap-ritual-mirror
+  source: mq-activation-gap-003
+  description: Synchronise BreakPoint ritual citations and codex IDs across light/shadow
+    sigils within 24h.
+  logistic:
+    R: Ritual references appear in light sigils without immediate shadow echo.
+    Theta: System + campaign sigils (light/shadow) share ritual + codex references
+      same day.
+    beta: 4.9
+  implementation_sites:
+  - ../system/metaquest/metaquest_system_sigil.yaml
+  - ../wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
+  - ../../shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml
+  - ../../shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml
+  next_actions:
+  - Add ritual + codex fields to sigil templates for quick parity updates.
+  - Log BreakPoint completion in codex referencing both light + shadow sigils.
+  status: open
+- id: mq-gap-urban-heat-bridge
+  source: mq-activation-gap-004
+  description: Integrate urban heat outlier mechanism into Metaquest storyline with
+    simulator + analysis references.
+  logistic:
+    R: Urban heat mechanism drafted but not yet coupled to Metaquest narrative.
+    Theta: analysis/urban_heat_analysis.py + data assets produce ΔAIC>10 summary cited
+      in compass + parity brief.
+    beta: 5.2
+  implementation_sites:
+  - ../../../analysis/urban_heat_analysis.py
+  - ../../../analysis/results/urban_heat_storage_mechanism.json
+  - ../../../data/socio_ecology/urban_heat/
+  - ../../../docs/utac_activation_backlog.md#urban-heat-outlier
+  next_actions:
+  - Run analysis/urban_heat_analysis.py with latest data and record ΔAIC vs null.
+  - Update metaquest_campaign_map.md with mechanism summary + evidence trail.
+  status: pending
+- id: mq-gap-parity-loop
+  source: mq-activation-gap-005
+  description: Close parity brief loops by mirroring simulator playlist, endorsement
+    ledger, and codex IDs across bridge + compasses.
+  logistic:
+    R: Parity brief still lacks playlist + endorsement linkage in bridge assets.
+    Theta: Bridge + compasses cite playlist + ledger with codex id within 24h of parity
+      brief update.
+    beta: 4.88
+  implementation_sites:
+  - ../../../docs/metaquest_parity_brief.md#3-outstanding-parity-gaps
+  - metaquest_meaning_index.md
+  - ../../../docs/utac_activation_backlog.md#metaquest-parity-finish
+  - ../../../simulator/presets/
+  next_actions:
+  - Document playlist + endorsement ledger references in bridge + compasses.
+  - Add parity loop acknowledgement to codex when simulator playlist changes.
+  status: in_progress
+integration_channels:
+  codex:
+    required_entries:
+    - pr-draft-0114
+    - pr-draft-0115
+    next_id_hint: pr-draft-0116
+    notes: Log every activation gap closure with (R, Θ, β) framing and cite both bridge
+      + shadow sigils.
+  indices:
+    watchers:
+    - seed/seed_index.*
+    - ../../../feldtheorie_index.*
+    action: Update listings whenever new Metaquest lanterns or guards appear; confirm
+      Δindex=0 via archive_sigillin.py.
+  telemetry:
+    source: ../../../analysis/sigillin_sync/latest.json
+    cadence: ≤1 sprint
+    notes: Propagate timestamp + codex id to bridge, compasses, activation matrix,
+      and parity brief.
+signals_to_monitor:
+- id: signal-telemetry
+  description: sigillin_sync generated_at older than one sprint.
+  escalation: Triggers mq-bridge-shadow-002 and demands telemetry propagation ritual.
+- id: signal-index
+  description: archive_sigillin.py --refresh reports Δindex>0 for Metaquest paths.
+  escalation: Engage mq-bridge-shadow-003 and run index recount hook.
+- id: signal-parity-brief
+  description: metaquest_parity_brief.md lacks latest playlist or codex reference.
+  escalation: Escalate to mq-bridge-shadow-001 and update parity loop items.

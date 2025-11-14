@@ -3279,6 +3279,42 @@
         "poetic": "Die Systemlaterne spiegelt jetzt das August-Licht: Aktivierungsmatrix, Kompass und Schatten rufen im selben Takt, damit die Brücke keinen Schlag verliert."
       },
       "created_at": "2026-08-20T15:00:00Z"
+    },
+    {
+      "id": "pr-draft-0116",
+      "title": "Metaquest Activation Gap Ledger + Shadow Guard",
+      "scope": [
+        "seed/bedeutungssigillin/metaquest/metaquest_activation_gap_report.md",
+        "seed/bedeutungssigillin/metaquest/metaquest_activation_gap_report.yaml",
+        "seed/bedeutungssigillin/metaquest/metaquest_activation_gap_report.json",
+        "seed/shadow_sigillin/metaquest/metaquest_activation_gap_guard.md",
+        "seed/shadow_sigillin/metaquest/metaquest_activation_gap_guard.yaml",
+        "seed/shadow_sigillin/metaquest/metaquest_activation_gap_guard.json",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml",
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.json",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.md",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.yaml",
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.json",
+        "seed/seed_index.md",
+        "seed/seed_index.yaml",
+        "seed/seed_index.json",
+        "feldtheorie_index.yaml",
+        "feldtheorie_index.json"
+      ],
+      "parameters": {
+        "R": "Metaquest activation ledger clarity (gap report + guard)",
+        "Theta": "Bridge, indices, and codex mirror gap report + guard within 24h",
+        "beta": 4.9
+      },
+      "resonance": "New Metaquest Activation Gap Report + Shadow Guard document what is resonant vs open (mq-activation-gap-001…005) and wire alerts into meaning/shadow indices + repository indices.",
+      "status": "active",
+      "notes": {
+        "formal": "Created new Bedeutungs-/Shadow-Trilayer (gap report + guard), added mq-bridge-shadow-006 alert, raised metaquest indices to version 0.5.0, and refreshed seed/feldtheorie indices with the new lanterns.",
+        "empirical": "References docs/utac_v2_activation_tracker_2026-08.{md,json}, docs/utac_activation_backlog.{md,json}, analysis/sigillin_sync/latest.json, and codex pr-draft-0114/0115 across the new report + guard.",
+        "poetic": "Der Laternenwart zählt nun laut, welche Flammen schon brennen und wo der Schatten noch Öl verlangt – die Brücke sieht wieder klar, wohin σ(β(R-Θ)) als nächstes zieht."
+      },
+      "created_at": "2026-08-21T10:30:00Z"
     }
   ]
 }

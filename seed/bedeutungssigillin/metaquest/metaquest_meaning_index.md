@@ -103,6 +103,11 @@
     - *Poetisch*: Das Prisma, das R bündelt und die nächsten Laternen im Morgenlicht sichtbar macht, bevor Schatten-Trigger feuern.
     - *Kopplung*: `metaquest_activation_matrix.yaml` ↔ `../system/metaquest_system_compass.{yaml,json,md}`, `../wissenschaftsprojekt/metaquest_campaign_compass.{yaml,json,md}`, `../../shadow_sigillin/metaquest/metaquest_shadow_index.{yaml,json,md}`.
 
+18. **Metaquest Activation Gap Report** — `metaquest_activation_gap_report.{yaml,json,md}`
+    - *Formal*: Bündelt Aktivierungsmatrix, UTAC-Tracker, Backlog, Telemetrie und Paritätsbrief zu einem "haben vs. brauchen"-Dossier und verweist auf mq-activation-gap-001…005 Umsetzungspfade.
+    - *Empirisch*: Stützt sich auf `docs/utac_v2_activation_tracker_2026-08.{md,json}`, `docs/utac_activation_backlog.{md,json}`, `analysis/sigillin_sync/latest.json` sowie `docs/metaquest_parity_brief.md`.
+    - *Poetisch*: Der Laternenwart, der aufzählt, was bereits glüht und welche Gänge noch Öl brauchen, bevor der Startschatten weicht.
+
 ### Bridge Audit · 2025-12-19
 
 - **Telemetry check:** `analysis/sigillin_sync/latest.json` bestätigt $R=12$, $\Theta$ erreicht (0 Gaps), $\beta=4.6$ und verweist

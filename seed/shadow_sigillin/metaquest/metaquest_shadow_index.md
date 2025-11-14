@@ -41,9 +41,17 @@
      ID & Rituale setzen, Bridge + UTAC bestätigen.
 
 5. **mq-bridge-shadow-005 — Activation Matrix Drift**
-   - *Signal*: `metaquest_activation_matrix.*` älter als 24 h vs. UTAC-Status oder Codex; neue mq-gap IDs im Backlog ohne Matrix-Verweis; Shadow-Indizes nennen Recovery ohne passende matrix recovery_hooks.
-   - *Consequence*: Schattenwache verliert Sicht auf offenen Aktivierungsstau; R wächst, ζ(R) schlägt aus, Eskalationen kommen verspätet.
-   - *Mitigation*: Matrix-Tri-Layer aktualisieren, Pfade in UTAC/Backlog/Kompassen spiegeln und Codex-Echo ergänzen.
+   - *Risiko*: Aktivierungsmatrix veraltet oder fehlt; „haben vs. brauchen" nicht mehr gekoppelt an Backlog/UTAC.
+   - *Signale*: metaquest_activation_matrix.yaml Timestamp älter als 24h gegen docs/utac_status_alignment_v1.2.md oder codexfeedback; neue mq-gap IDs ohne Matrix-Verweis; Shadow index verweist auf mq-gap-Recovery ohne korrespondierende matrix recovery_hooks.
+   - *Mitigation*: metaquest_activation_matrix.* aktualisieren, Shadow index + Codex spiegeln, UTAC-Backlog referenzieren.
+   - *Guardrail*: Aktivierungsmatrix ≤24h Unterschied zu Backlog/Codex Timestamps.
+
+6. **mq-bridge-shadow-006 — Gap Report Drift**
+   - *Risiko*: Metaquest Activation Gap Report veraltet → Brücke verliert Überblick über offene mq-activation-gap Pfade.
+   - *Signale*: Gap-Report älter als Aktivierungsmatrix, Backlog-Update ohne Report-Anpassung, Codex ohne mq-activation-shadow-Hinweis.
+   - *Mitigation*: Gap-Report-Trilayer aktualisieren, Codex-Eintrag mit mq-bridge-shadow-006 verfassen, UTAC Matrix & Shadow Guard synchronisieren.
+   - *Guardrail*: Gap-Report ≤24 h nach Aktivierungsmatrix-Update erneuert.
+
 
 ## Playbooks
 

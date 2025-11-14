@@ -1,0 +1,133 @@
+meta:
+  sigil: shadow-metaquest-activation-gap-guard
+  version: 0.1.0
+  created: '2026-08-21T10:00:00Z'
+  updated: '2026-08-21T10:00:00Z'
+  logistic:
+    R: 'Unresolved Metaquest activation risks: Δindex drift, stale telemetry, unsynchronised
+      parity loops, unmirrored rituals, uncoupled urban-heat narrative.'
+    Theta: Bridge dashboard, compasses, parity brief, and codex carry identical timestamps
+      + gap notes within 24h, shadow entries recorded.
+    beta: 5.1
+    zeta: Spikes if BreakPoint rituals or sigillin_sync exports lapse, or if activation
+      matrix/backlog diverge.
+  light_coupling: ../../bedeutungssigillin/metaquest/metaquest_activation_gap_report.yaml
+risks:
+- id: mq-activation-shadow-Δindex
+  mirrors: mq-gap-Δindex-guard
+  risk: Metaquest assets missing from seed/feldtheorie indices; Δindex>0 goes unnoticed.
+  signals:
+  - scripts/archive_sigillin.py --refresh emits non-zero delta for metaquest paths.
+  - CI preset guard absent or skipped on Metaquest commits.
+  - seed/codexfeedback.* lacks index recount note within 24h.
+  consequence: Agents lose navigation to activation assets, release readiness unverifiable.
+  mitigation:
+  - Freeze Metaquest merges, run archive_sigillin.py recount, attach diff to codex.
+  - Implement/polish CI guard and record in UTAC status matrix implementation map.
+  - Confirm feldtheorie_index.* + seed_index.* include new assets before release work
+    resumes.
+  guardrail:
+    metric: Δindex parity
+    threshold: 0 after remediation commit
+- id: mq-activation-shadow-telemetry
+  mirrors: mq-gap-telemetry-propagation
+  risk: sigillin_sync timestamp drifts; bridge + compasses cite different codex IDs.
+  signals:
+  - analysis/sigillin_sync/latest.json older than one sprint.
+  - metaquest_meaning_index.yaml lacks latest timestamp or codex id.
+  - System/campaign compasses show mismatched telemetry entries.
+  consequence: Launch readiness cannot be certified; outreach/automation diverge.
+  mitigation:
+  - Run sigillin_sync.py, propagate timestamp + codex id, update bridge + compasses.
+  - Log remediation in codex referencing mq-bridge-gap-002.
+  - Update docs/utac_status_alignment_v1.2.md telemetry row.
+  guardrail:
+    metric: Telemetry cadence
+    threshold: ≤1 sprint between exports and propagation
+- id: mq-activation-shadow-ritual
+  mirrors: mq-gap-ritual-mirror
+  risk: BreakPoint rituals noted in light sigils but missing from shadow partners.
+  signals:
+  - metaquest_system_sigil.yaml updated without metaquest_system_shadow_sigil.yaml
+    echo.
+  - Codex entry lacks mq-sys-shadow or mq-sci-shadow identifier.
+  - BreakPoint scripts executed without timestamp in shadow lanterns.
+  consequence: Recovery scripts fall out of sync; ζ(R) spikes during automation/outreach
+    adjustments.
+  mitigation:
+  - Update light + shadow sigils with shared ritual + codex references same day.
+  - Annotate BreakPoint completion in codex + UTAC matrix, referencing both sigils.
+  - Run sigillin_sync audit to confirm parity.
+  guardrail:
+    metric: Sigil parity
+    threshold: ≤24h difference between light/shadow ritual notes
+- id: mq-activation-shadow-urban-heat
+  mirrors: mq-gap-urban-heat-bridge
+  risk: Urban-heat mechanism missing from Metaquest narrative; outreach lacks falsifiable
+    story.
+  signals:
+  - analysis/urban_heat_analysis.py not updated after new data drop.
+  - metaquest_campaign_map.md lacks ΔAIC>10 summary or codex reference.
+  - UTAC backlog urban-heat row marked open for >1 sprint.
+  consequence: Campaign messaging drifts; reviewers question physical bridge for high-β
+    hotspots.
+  mitigation:
+  - Schedule analysis rerun, store outputs, cite in Metaquest compass/map.
+  - Log codex entry with mq-sci-shadow reference and ΔAIC summary.
+  - Ping parity brief to include mechanism trace.
+  guardrail:
+    metric: Urban-heat storyline parity
+    threshold: Backlog + compass cite mechanism within one sprint of data update
+- id: mq-activation-shadow-parity-loop
+  mirrors: mq-gap-parity-loop
+  risk: Parity brief lacks playlist/endorsement echo; compasses drift from governance
+    ledger.
+  signals:
+  - docs/metaquest_parity_brief.md missing latest playlist id or endorsement timestamp.
+  - simulator/presets updates without codex mention.
+  - Bridge dashboard references different codex entry than parity brief.
+  consequence: Launch governance cannot certify readiness; endorsements misalign with
+    demos.
+  mitigation:
+  - Update parity brief, bridge, compasses with playlist + ledger referencing codex.
+  - Record mq-bridge-shadow-001 remediation in codex + UTAC backlog.
+  - Verify simulator presets + endorsement ledger stored in repo.
+  guardrail:
+    metric: Parity loop synchronicity
+    threshold: Shared playlist + codex id across brief/bridge within 24h
+sentinels:
+- id: sentinel-sigillin-sync
+  location: ../../../analysis/sigillin_sync/latest.json
+  duty: Ping when generated_at > 7 days; auto-file mq-bridge-shadow-002.
+- id: sentinel-index-recount
+  location: ../../../analysis/results/index_recount_20251108T222238Z.json
+  duty: Compare Δindex to zero after Metaquest commits; escalate if mismatch persists.
+- id: sentinel-backlog
+  location: ../../../docs/utac_activation_backlog.md
+  duty: Track mq-gap rows; note sprint slippage in codex + UTAC matrix.
+playbooks:
+- trigger: Δindex>0 reported
+  response:
+  - Freeze Metaquest merges.
+  - Run archive_sigillin.py recount + commit index updates.
+  - Document remediation with mq-activation-shadow-Δindex in codex.
+- trigger: Telemetry timestamp drift
+  response:
+  - Execute sigillin_sync.py with Metaquest scope.
+  - Propagate timestamp/codex id to bridge + compasses.
+  - Update docs/utac_status_alignment_v1.2.md telemetry note.
+- trigger: Parity brief missing playlist or endorsement
+  response:
+  - Update parity brief with playlist id + endorsement ledger.
+  - Mirror changes in bridge + compasses.
+  - Log mq-activation-shadow-parity-loop closure in codex + backlog.
+null_model:
+  description: Metaquest launch proceeds with stale telemetry, missing indices, or
+    half-specified parity loops.
+  detection:
+  - Bridge dashboard older than codex entry by >24h.
+  - Backlog rows remain open without codex status updates.
+  - Shadow sigils lack matching ritual references.
+  restoration:
+  - Invoke relevant playbook, then confirm σ(β(R-Θ)) > 0.6 via activation matrix.
+  - Archive telemetry + index diffs for audit.

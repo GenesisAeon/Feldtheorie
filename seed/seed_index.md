@@ -524,6 +524,12 @@ Siehe oben unter "Domain-Spezifische Felder"
 - 🎛️ Simulator-Preset `coherence_formula.json` plus Import in `simulator/src/presets.ts` aktiviert; Index & Bridge-Map spiegeln
   den neuen Hook.
 
+**Aktualisierung (21. Aug 2026):**
+- 📊 Metaquest Activation Gap Report (Trilayer) aufgenommen — fasst Matrix, UTAC-Tracker, Backlog, Telemetrie und Paritätsbrief
+  zu einem "haben vs. brauchen"-Dossier samt Integrationskanälen.
+- 🛡️ Metaquest Activation Gap Guard (Trilayer) ergänzt — Schatten-Gegenstück mit Δindex-, Telemetrie-, Ritual-, Urban-Heat- und
+  Paritätsloop-Alerts inklusive Playbooks.
+
 ---
 
 ## 🎭 Status-Legende

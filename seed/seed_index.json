@@ -6,8 +6,8 @@
     "version": "1.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "documents_total": 278,
-    "updated": "2026-06-09T00:00:00Z"
+    "documents_total": 280,
+    "updated": "2026-08-21T10:00:00Z"
   },
   "categories": {
     "meta": {
@@ -2048,6 +2048,60 @@
       "references": [
         "shadow_sigillin/metaquest/system/metaquest_system_shadow.json",
         "shadow_sigillin/metaquest/system/metaquest_system_shadow.md"
+      ]
+    },
+    {
+      "id": "synth-032",
+      "title": "Metaquest Activation Gap Report (Trilayer)",
+      "path": "bedeutungssigillin/metaquest/metaquest_activation_gap_report.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "activation",
+        "gap",
+        "report"
+      ],
+      "description": "Aktivierungs-Dossier der Metaquest-Brücke: listet resonante Assets (Matrix, UTAC-Tracker, Backlog, Telemetrie, Paritätsbrief) sowie die offenen mq-activation-gap Umsetzungspfade inklusive Integrationskanälen.",
+      "temporal": {
+        "created": "2026-08-21T10:00:00Z",
+        "modified": "2026-08-21T10:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/metaquest/metaquest_activation_gap_report.json",
+        "bedeutungssigillin/metaquest/metaquest_activation_gap_report.md"
+      ]
+    },
+    {
+      "id": "synth-033",
+      "title": "Metaquest Activation Gap Guard (Trilayer)",
+      "path": "shadow_sigillin/metaquest/metaquest_activation_gap_guard.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "activation",
+        "gap",
+        "guard"
+      ],
+      "description": "Schatten-Gegenstück zum Gap Report: überwacht Δindex-, Telemetrie-, Ritual-, Urban-Heat- und Paritätsrisiken mit klaren Signalen und Recovery-Playbooks.",
+      "temporal": {
+        "created": "2026-08-21T10:00:00Z",
+        "modified": "2026-08-21T10:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/metaquest/metaquest_activation_gap_guard.json",
+        "shadow_sigillin/metaquest/metaquest_activation_gap_guard.md"
       ]
     }
   ],
