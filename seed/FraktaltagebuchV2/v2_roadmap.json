@@ -1,26 +1,26 @@
 {
   "meta": {
-    "version": "1.0.15",
+    "version": "1.0.16",
     "created": "2025-11-10T23:30:00Z",
-    "updated": "2025-11-11T23:30:00Z",
+    "updated": "2025-11-14T09:45:00Z",
     "title": "UTAC v2.0 Roadmap",
     "purpose": "Vollständige Übersicht aller V2.0 Features und ihres Status",
     "parameters": {
-      "R_mean": 0.8,
+      "R_mean": 0.78,
       "Theta": 0.66,
       "beta": 4.8,
-      "sigma": 0.738
+      "sigma": 0.64
     },
     "status_summary": {
       "total_features": 15,
-      "completed": 12,
-      "in_progress": 2,
-      "pending": 1,
-      "completion_rate": 0.8
+      "completed": 11,
+      "in_progress": 1,
+      "pending": 3,
+      "completion_rate": 0.73
     },
-    "last_updated": "2025-11-11T23:30:00Z",
-    "overall_progress": 0.8,
-    "sigma": 0.738
+    "last_updated": "2025-11-14T09:45:00Z",
+    "overall_progress": 0.78,
+    "sigma": 0.64
   },
   "completed_features": [
     {
@@ -117,13 +117,15 @@
         "Daten-Akquisition (TIPMIP, RAPID, Paper-Extraktion)"
       ],
       "gap_code": "utac-v2-data-lanterns",
-      "current_status": "4 datasets pending, 1 completed (Urban Heat)",
+      "current_status": "R=0.20 < Θ. σ≈0.18. Urban Heat Lantern steht; Amazon, AMOC, Neuro-AI und Finance warten auf externe Datenfreigaben.",
       "next_steps": [
-        "AMOC: RAPID Array Data anfragen",
-        "Amazon: TIPMIP/CMIP6 Request",
-        "Neuro-AI: Wei et al. Daten + eigene EEG",
-        "Economy: Systemic Risk Centre"
-      ]
+        "TIPMIP: Email senden (docs/phi_coupling_tipmip_email_template.md) für Amazon Hydro Daten.",
+        "RAPID: Kontakt zum AMOC-Team aufnehmen, Referenz auf Phase-4 Meta-Regression.",
+        "Neuro-AI: Wei et al. anfragen (β, CI, Feldtyp) + EEG-Kopplung erwähnen.",
+        "Finance: Systemic Risk Centre (LSE) wegen systemic_thresholds.csv kontaktieren.",
+        "Nach Eingang: Import-Sprint planen und domain_covariates/beta_estimates aktualisieren."
+      ],
+      "activation_signal": "Send confirmations for all four data requests → σ steigt über 0.4."
     },
     {
       "id": "v2-feat-core-002",
@@ -151,10 +153,12 @@
       ],
       "blockers": [],
       "next_steps": [
-        "Sobald Datasets da sind: analysis/*_extractor.py runs",
-        "Bootstrap CIs berechnen",
-        "ΔAIC ≥ 10 validieren"
-      ]
+        "Blocker heben: core-001 Datenbeschaffung abschließen.",
+        "analysis/add_phase4_beta_values.py an neue CSVs anpassen und dry-run dokumentieren.",
+        "Bootstrap + ΔAIC Reports generieren (analysis/results/*) sobald Daten vorhanden."
+      ],
+      "current_status": "R=0.17 < Θ. σ≈0.16. Blockiert durch fehlende Rohdaten aus core-001; Scripts warten auf neue Lanterns.",
+      "activation_signal": "Sobald alle vier Lanterns geladen sind → Analyse-Sprint (σ Ziel: 0.55)."
     },
     {
       "id": "v2-feat-core-003",
@@ -252,12 +256,13 @@
       "gap_code": "sys-gap-008 (partial resolution)",
       "codex_ref": "v2-pr-0012",
       "next_steps": [
-        "Email senden (TIPMIP, RAPID, CERES)",
-        "Daten warten (~1-2 Monate)",
-        "models/climate_utac_phi_coupling.py implementieren",
-        "φ-Berechnung + β vs φ Regression",
-        "Theorie-Dokument schreiben"
-      ]
+        "TIPMIP/RAPID/CERES E-Mails versenden und Follow-up Termine in Kalender setzen.",
+        "models/climate_utac_phi_coupling.py Skeleton gepflegt halten (Docstrings + TODOs).",
+        "Bei Dateneingang: Gradient-Analyse und Regression gegenüber β planen.",
+        "Zwischenzeitlich: Theorie-Dokument erweitern (Validierungsabschnitt vorbereiten)."
+      ],
+      "current_status": "R=0.35, Θ=0.66, σ≈0.20. Theorie & Templates fertig, φ-Kopplung wartet auf TIPMIP/RAPID/CERES Rückmeldungen.",
+      "activation_signal": "Erste Datenrückmeldung oder NDA Zusage → Modellierung aktivieren (σ→0.45)."
     },
     {
       "id": "v2-feat-core-006",
@@ -426,7 +431,14 @@
         "OpenXR / WebXR",
         "Python WebSocket Bridge"
       ],
-      "notes": "Große Erweiterung, optional für V2.0"
+      "notes": "Große Erweiterung, optional für V2.0",
+      "current_status": "R=0.00, Θ=1.0, σ≈0.12. Konzept vorhanden, Implementierung bewusst nach Release geschoben.",
+      "next_steps": [
+        "Scope bestätigen (Unity vs. WebXR) nach V2.0 Launch.",
+        "VR Architektur Blueprint mit Data Lantern Interfaces entwerfen.",
+        "Partner-Suche für Co-Development (optional)."
+      ],
+      "activation_signal": "Nach V2.0 Release + Ressourcenfreigabe → Sprintplanung starten."
     },
     {
       "id": "v2-feat-ext-003",

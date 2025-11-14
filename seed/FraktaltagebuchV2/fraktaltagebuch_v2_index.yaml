@@ -1,205 +1,186 @@
 meta:
-  version: "1.0.6"
-  created: "2025-11-10T23:40:00Z"
-  updated: "2025-11-11T23:30:00Z"
-  title: "FraktaltagebuchV2 Index"
-  purpose: "Navigation für alle V2.0 Dokumente"
+  version: 1.0.7
+  created: '2025-11-10T23:40:00Z'
+  updated: '2025-11-14T09:45:00Z'
+  title: FraktaltagebuchV2 Index
+  purpose: Navigation für alle V2.0 Dokumente
   document_count: 11
-  trilayer_count: 4  # README, AGENTS, Roadmap, Codex, Index
-  status: "RELEASE-READY (R̄=0.80 > Θ=0.66)"
+  trilayer_count: 4
+  status: R̄=0.78 > Θ=0.66, σ=0.64 – Data Lantern Gate pending
   roadmap_progress:
-    completed: 12
-    in_progress: 2
-    pending: 1
+    completed: 11
+    in_progress: 1
+    pending: 3
     total: 15
-    completion_rate: 0.80
-  codex_entries: 21
-  next_codex_id: "v2-pr-0022"
-
+    completion_rate: 0.73
+  codex_entries: 38
+  next_codex_id: v2-pr-0039
 documents:
   core:
-    - id: ftv2-doc-001
-      title: "README - Konzept & Workflow"
-      paths:
-        md: seed/FraktaltagebuchV2/README.md
-      type: bedeutungssigillin
-      category: documentation
-      description: "Erklärt FraktaltagebuchV2 Konzept, Struktur, Workflow"
-      keywords:
-        - "FraktalImplementierungstechnik"
-        - "Scope-Isolation"
-        - "V2.0"
-      created: "2025-11-10T23:00:00Z"
-      status: completed
-
-    - id: ftv2-doc-002
-      title: "AGENTS.md - Charter für V2-Arbeit"
-      paths:
-        md: seed/FraktaltagebuchV2/AGENTS.md
-      type: bedeutungssigillin
-      category: governance
-      description: "Regeln für AI-Agenten bei V2.0-Entwicklung"
-      keywords:
-        - "Workflow"
-        - "Rules"
-        - "Roadmap-Driven Development"
-      created: "2025-11-10T23:15:00Z"
-      status: completed
-
+  - id: ftv2-doc-001
+    title: README - Konzept & Workflow
+    paths:
+      md: seed/FraktaltagebuchV2/README.md
+    type: bedeutungssigillin
+    category: documentation
+    description: Erklärt FraktaltagebuchV2 Konzept, Struktur, Workflow
+    keywords:
+    - FraktalImplementierungstechnik
+    - Scope-Isolation
+    - V2.0
+    created: '2025-11-10T23:00:00Z'
+    status: completed
+  - id: ftv2-doc-002
+    title: AGENTS.md - Charter für V2-Arbeit
+    paths:
+      md: seed/FraktaltagebuchV2/AGENTS.md
+    type: bedeutungssigillin
+    category: governance
+    description: Regeln für AI-Agenten bei V2.0-Entwicklung
+    keywords:
+    - Workflow
+    - Rules
+    - Roadmap-Driven Development
+    created: '2025-11-10T23:15:00Z'
+    status: completed
   trilayers:
     roadmap:
-      - id: ftv2-trilayer-001-yaml
-        title: "v2_roadmap.yaml"
-        path: seed/FraktaltagebuchV2/v2_roadmap.yaml
-        type: ordnungssigillin
-        format: yaml
-        layer: struktur
-        description: "Strukturierte Roadmap (maschinenlesbar)"
-        line_count: ~450
-        features_total: 15
-        features_completed: 7
-        features_in_progress: 3
-        features_pending: 5
-        created: "2025-11-10T23:30:00Z"
-        status: active
-
-      - id: ftv2-trilayer-001-json
-        title: "v2_roadmap.json"
-        path: seed/FraktaltagebuchV2/v2_roadmap.json
-        type: ordnungssigillin
-        format: json
-        layer: schnittstelle
-        description: "Roadmap für Agenten/Tools"
-        created: "2025-11-10T23:30:00Z"
-        status: active
-
-      - id: ftv2-trilayer-001-md
-        title: "v2_roadmap.md"
-        path: seed/FraktaltagebuchV2/v2_roadmap.md
-        type: bedeutungssigillin
-        format: markdown
-        layer: narrativ
-        description: "Roadmap für Menschen (übersichtlich, navigierbar)"
-        created: "2025-11-10T23:35:00Z"
-        status: active
-
+    - id: ftv2-trilayer-001-yaml
+      title: v2_roadmap.yaml
+      path: seed/FraktaltagebuchV2/v2_roadmap.yaml
+      type: ordnungssigillin
+      format: yaml
+      layer: struktur
+      description: Strukturierte Roadmap (maschinenlesbar)
+      line_count: ~450
+      features_total: 15
+      features_completed: 7
+      features_in_progress: 3
+      features_pending: 5
+      created: '2025-11-10T23:30:00Z'
+      status: active
+    - id: ftv2-trilayer-001-json
+      title: v2_roadmap.json
+      path: seed/FraktaltagebuchV2/v2_roadmap.json
+      type: ordnungssigillin
+      format: json
+      layer: schnittstelle
+      description: Roadmap für Agenten/Tools
+      created: '2025-11-10T23:30:00Z'
+      status: active
+    - id: ftv2-trilayer-001-md
+      title: v2_roadmap.md
+      path: seed/FraktaltagebuchV2/v2_roadmap.md
+      type: bedeutungssigillin
+      format: markdown
+      layer: narrativ
+      description: Roadmap für Menschen (übersichtlich, navigierbar)
+      created: '2025-11-10T23:35:00Z'
+      status: active
     codex:
-      - id: ftv2-trilayer-002-yaml
-        title: "v2_codex.yaml"
-        path: seed/FraktaltagebuchV2/v2_codex.yaml
-        type: dynamiksigillin
-        format: yaml
-        layer: struktur
-        description: "PR/Commit-Log für V2 (strukturiert)"
-        entries_count: 12
-        next_id: "v2-pr-0013"
-        created: "2025-11-10T23:40:00Z"
-        status: active
-
-      - id: ftv2-trilayer-002-json
-        title: "v2_codex.json"
-        path: seed/FraktaltagebuchV2/v2_codex.json
-        type: dynamiksigillin
-        format: json
-        layer: schnittstelle
-        description: "Codex für Agenten/Tools"
-        created: "2025-11-10T23:40:00Z"
-        status: active
-
-      - id: ftv2-trilayer-002-md
-        title: "v2_codex.md"
-        path: seed/FraktaltagebuchV2/v2_codex.md
-        type: bedeutungssigillin
-        format: markdown
-        layer: narrativ
-        description: "Codex für Menschen (mit drei Threads)"
-        created: "2025-11-10T23:42:00Z"
-        status: active
-
+    - id: ftv2-trilayer-002-yaml
+      title: v2_codex.yaml
+      path: seed/FraktaltagebuchV2/v2_codex.yaml
+      type: dynamiksigillin
+      format: yaml
+      layer: struktur
+      description: PR/Commit-Log für V2 (strukturiert)
+      entries_count: 12
+      next_id: v2-pr-0013
+      created: '2025-11-10T23:40:00Z'
+      status: active
+    - id: ftv2-trilayer-002-json
+      title: v2_codex.json
+      path: seed/FraktaltagebuchV2/v2_codex.json
+      type: dynamiksigillin
+      format: json
+      layer: schnittstelle
+      description: Codex für Agenten/Tools
+      created: '2025-11-10T23:40:00Z'
+      status: active
+    - id: ftv2-trilayer-002-md
+      title: v2_codex.md
+      path: seed/FraktaltagebuchV2/v2_codex.md
+      type: bedeutungssigillin
+      format: markdown
+      layer: narrativ
+      description: Codex für Menschen (mit drei Threads)
+      created: '2025-11-10T23:42:00Z'
+      status: active
     index:
-      - id: ftv2-trilayer-003-yaml
-        title: "fraktaltagebuch_v2_index.yaml"
-        path: seed/FraktaltagebuchV2/fraktaltagebuch_v2_index.yaml
-        type: ordnungssigillin
-        format: yaml
-        layer: struktur
-        description: "Dieser Index (strukturiert)"
-        created: "2025-11-10T23:45:00Z"
-        status: active
-
-      - id: ftv2-trilayer-003-json
-        title: "fraktaltagebuch_v2_index.json"
-        path: seed/FraktaltagebuchV2/fraktaltagebuch_v2_index.json
-        type: ordnungssigillin
-        format: json
-        layer: schnittstelle
-        description: "Index für Agenten/Tools"
-        created: "2025-11-10T23:45:00Z"
-        status: pending
-
-      - id: ftv2-trilayer-003-md
-        title: "fraktaltagebuch_v2_index.md"
-        path: seed/FraktaltagebuchV2/fraktaltagebuch_v2_index.md
-        type: bedeutungssigillin
-        format: markdown
-        layer: narrativ
-        description: "Index für Menschen"
-        created: "2025-11-10T23:45:00Z"
-        status: pending
-
+    - id: ftv2-trilayer-003-yaml
+      title: fraktaltagebuch_v2_index.yaml
+      path: seed/FraktaltagebuchV2/fraktaltagebuch_v2_index.yaml
+      type: ordnungssigillin
+      format: yaml
+      layer: struktur
+      description: Dieser Index (strukturiert)
+      created: '2025-11-10T23:45:00Z'
+      status: active
+    - id: ftv2-trilayer-003-json
+      title: fraktaltagebuch_v2_index.json
+      path: seed/FraktaltagebuchV2/fraktaltagebuch_v2_index.json
+      type: ordnungssigillin
+      format: json
+      layer: schnittstelle
+      description: Index für Agenten/Tools
+      created: '2025-11-10T23:45:00Z'
+      status: pending
+    - id: ftv2-trilayer-003-md
+      title: fraktaltagebuch_v2_index.md
+      path: seed/FraktaltagebuchV2/fraktaltagebuch_v2_index.md
+      type: bedeutungssigillin
+      format: markdown
+      layer: narrativ
+      description: Index für Menschen
+      created: '2025-11-10T23:45:00Z'
+      status: pending
 navigation:
   quicklinks:
-    start_here: "README.md"
-    for_agents: "AGENTS.md"
-    roadmap: "v2_roadmap.md"
-    codex: "v2_codex.md"
-    index: "fraktaltagebuch_v2_index.md"
-
+    start_here: README.md
+    for_agents: AGENTS.md
+    roadmap: v2_roadmap.md
+    codex: v2_codex.md
+    index: fraktaltagebuch_v2_index.md
   workflows:
     new_feature:
-      - "Lies v2_roadmap.md → Feature auswählen"
-      - "AGENTS.md → Workflow verstehen"
-      - "Feature implementieren"
-      - "v2_codex.* → Eintrag erstellen (Trilayer!)"
-      - "v2_roadmap.* → Status update"
-
+    - Lies v2_roadmap.md → Feature auswählen
+    - AGENTS.md → Workflow verstehen
+    - Feature implementieren
+    - v2_codex.* → Eintrag erstellen (Trilayer!)
+    - v2_roadmap.* → Status update
     orientation:
-      - "README.md → Konzept verstehen"
-      - "v2_roadmap.md → Was ist zu tun?"
-      - "v2_codex.md → Was wurde schon gemacht?"
-
+    - README.md → Konzept verstehen
+    - v2_roadmap.md → Was ist zu tun?
+    - v2_codex.md → Was wurde schon gemacht?
     agent_onboarding:
-      - "AGENTS.md → Regeln lernen"
-      - "v2_roadmap.md → Tasks finden"
-      - "v2_codex.md → History verstehen"
-
+    - AGENTS.md → Regeln lernen
+    - v2_roadmap.md → Tasks finden
+    - v2_codex.md → History verstehen
 relationships:
   external:
-    main_agents: "/home/user/Feldtheorie/AGENTS.md"
-    main_codex: "/home/user/Feldtheorie/seed/codexfeedback.{yaml,json,md}"
-    seed_index: "/home/user/Feldtheorie/seed/seed_index.{yaml,json,md}"
-    utac_status: "/home/user/Feldtheorie/docs/utac_status_alignment_v1.2.md"
-    next_version_plan: "/home/user/Feldtheorie/seed/NextVersionPlan/"
-
+    main_agents: /home/user/Feldtheorie/AGENTS.md
+    main_codex: /home/user/Feldtheorie/seed/codexfeedback.{yaml,json,md}
+    seed_index: /home/user/Feldtheorie/seed/seed_index.{yaml,json,md}
+    utac_status: /home/user/Feldtheorie/docs/utac_status_alignment_v1.2.md
+    next_version_plan: /home/user/Feldtheorie/seed/NextVersionPlan/
   internal:
-    readme_to_roadmap: "README verweist auf Roadmap-Struktur"
-    agents_to_codex: "AGENTS definiert Codex-Eintrag-Format"
-    roadmap_to_codex: "Roadmap-Features werden im Codex dokumentiert"
-    index_to_all: "Index verweist auf alle anderen Dokumente"
-
+    readme_to_roadmap: README verweist auf Roadmap-Struktur
+    agents_to_codex: AGENTS definiert Codex-Eintrag-Format
+    roadmap_to_codex: Roadmap-Features werden im Codex dokumentiert
+    index_to_all: Index verweist auf alle anderen Dokumente
 statistics:
   total_documents: 11
-  trilayer_sets: 3  # Roadmap, Codex, Index
-  single_documents: 2  # README, AGENTS
+  trilayer_sets: 3
+  single_documents: 2
   features_tracked: 15
   features_completed: 7
   features_in_progress: 4
   features_pending: 4
   codex_entries: 12
-  estimated_completion: "v2.0 Release (when R̄ ≥ 0.66)"
-
+  estimated_completion: v2.0 Release (when R̄ ≥ 0.66)
 parameters:
-  R_mean: 0.55  # 55% overall (7 completed + partial progress on 4 in_progress)
-  Theta: 0.66  # V2.0 Readiness Gate
+  R_mean: 0.55
+  Theta: 0.66
   beta: 4.8
-  sigma: 0.361  # σ(β(R-Θ)) ≈ 0.361 (growing!)
+  sigma: 0.361

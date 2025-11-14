@@ -1,22 +1,22 @@
 {
   "meta": {
-    "version": "1.0.6",
+    "version": "1.0.7",
     "created": "2025-11-10T23:40:00Z",
-    "updated": "2025-11-11T23:30:00Z",
+    "updated": "2025-11-14T09:45:00Z",
     "title": "FraktaltagebuchV2 Index",
     "purpose": "Navigation für alle V2.0 Dokumente",
     "document_count": 11,
     "trilayer_count": 4,
-    "status": "RELEASE-READY (R̄=0.80 > Θ=0.66)",
+    "status": "R̄=0.78 > Θ=0.66, σ=0.64 – Data Lantern Gate pending",
     "roadmap_progress": {
-      "completed": 12,
-      "in_progress": 2,
-      "pending": 1,
+      "completed": 11,
+      "in_progress": 1,
+      "pending": 3,
       "total": 15,
-      "completion_rate": 0.8
+      "completion_rate": 0.73
     },
-    "codex_entries": 21,
-    "next_codex_id": "v2-pr-0022"
+    "codex_entries": 38,
+    "next_codex_id": "v2-pr-0039"
   },
   "documents": {
     "core": [
