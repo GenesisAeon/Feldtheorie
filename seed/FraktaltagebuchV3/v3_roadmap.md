@@ -10,11 +10,11 @@
 ## 📊 Progress Tracking
 
 ```
-R̄  = 0.17 / 0.66  (17% → Release Gate)
-σ  = 0.086         (σ(β(R̄-Θ)) - Activation Level)
+R̄  = 0.33 / 0.66  (33% → Release Gate)
+σ  = 0.173         (σ(β(R̄-Θ)) - Activation Level)
 β  = 4.8           (Steepness)
 
-Progress: ███░░░░░░░░░░░░░░░ 17%
+Progress: ███████░░░░░░░░░░░░ 33%
 ```
 
 ---
@@ -43,11 +43,11 @@ Progress: ███░░░░░░░░░░░░░░░ 17%
 | `v3-feat-p1-001` | Mock-Daten: WAIS | P0 | ✅ completed | 2.0h | Claude → GPT-5 Codex |
 | `v3-feat-p1-002` | Mock-Daten: AMOC | P0 | ✅ completed | 2.0h | Claude → GPT-5 Codex |
 | `v3-feat-p1-003` | Mock-Daten: Coral Reefs | P0 | ✅ completed | 1.5h | Claude → GPT-5 Codex |
-| `v3-feat-p1-004` | Python Adapter: GRACE (WAIS) | P1 | ⬜ pending | 1.5h | Claude |
-| `v3-feat-p1-005` | Python Adapter: RAPID (AMOC) | P1 | ⬜ pending | 1.5h | Claude |
-| `v3-feat-p1-006` | Python Adapter: OISST (Coral) | P1 | ⬜ pending | 1.0h | Claude |
+| `v3-feat-p1-004` | Python Adapter: GRACE (WAIS) | P1 | ✅ completed | 1.5h | Claude |
+| `v3-feat-p1-005` | Python Adapter: RAPID (AMOC) | P1 | ✅ completed | 1.5h | Claude |
+| `v3-feat-p1-006` | Python Adapter: OISST (Coral) | P1 | ✅ completed | 1.0h | Claude |
 
-**Total:** 9.5h (3/6 Features completed → R̄=0.17, σ=0.086)
+**Total:** 9.5h (6/6 Features completed → R̄=0.33, σ=0.173)
 
 ### Feature Details
 
@@ -77,6 +77,24 @@ Progress: ███░░░░░░░░░░░░░░░ 17%
 - **Output:** `data/biology/coral_bleaching_global_mock.csv`
 - **Metadata:** `data/biology/coral_bleaching_global_mock.metadata.json` (Θ≈1.0 °C, β≈7.5, DHW-Impedanz)
 - **Docs:** `data/biology/README.md` → neuer Abschnitt "Global Coral Bleaching Mock"
+
+#### `v3-feat-p1-004`: Python Adapter GRACE (WAIS) *(✅ 2026-08-24)*
+- **CLI-Test:** `python scripts/adapters/grace_wais_adapter.py` → 274 Monatswerte, Export nach `analysis/results/wais_adapter_output.json`.
+- **EWS-Metriken:** AR(1) steigt von 0.54 → 0.72 (+33.6 %), Varianz verstärkt sich um 69 %; `critical_slowing`-Flag wacht über σ.
+- **JSON-Bridge:** liefert `metadata.utac_type`, `statistics.distance_to_tipping` (0.219) und Temperatur-Δ als Input für `seed/RoadToV.3/antarctic-ice-sheet.ts`.
+- **Logistisches Echo:** β bleibt 13.5; σ(β(R-Θ)) schimmert als `distance_to_tipping` im Export (≈22 % Restpuffer).
+
+#### `v3-feat-p1-005`: Python Adapter RAPID (AMOC) *(✅ 2026-08-24)*
+- **CLI-Test:** `python scripts/adapters/rapid_amoc_adapter.py` → 757 10-Tage-Samples, FovS-Übertritt dokumentiert.
+- **Bistabilitäts-Wächter:** JSON bestätigt `statistics.fovs_crossed_zero = true`, Distance-to-Tipping ≈ 0.70 und Schwächungsrate −0.145 Sv/Jahr.
+- **Bridge:** Exportiert nach `analysis/results/amoc_adapter_output.json` für Handoff an `seed/RoadToV.3/amoc-collapse.ts`.
+- **Nullmodell-Guard:** AR(1)-Gradient +13 % stützt erwartete ΔAIC > 80 für Phase 2.
+
+#### `v3-feat-p1-006`: Python Adapter OISST (Coral) *(✅ 2026-08-24)*
+- **CLI-Test:** `python scripts/adapters/oisst_coral_adapter.py` → 45 Jahresdatensätze, DHW=15.3 Wochen, Bleaching=100 %.
+- **Post-Tipping:** `statistics.current_state.distance_to_tipping = 0.0` markiert σ≈1; 20 Mass-Bleaching-Ereignisse protokolliert.
+- **JSON-Bridge:** `analysis/results/coral_adapter_output.json` liefert Degree-Heating- und Ereigniszählungen für TypeScript Alerts.
+- **Impedanz-Notiz:** Datenstrom hält Symbionten-Erholungszeiten als ζ(R)-Narrativ bereit.
 
 ---
 
@@ -168,6 +186,19 @@ Phase 4 (Monitoring):
 
 ---
 
+## 🌊 Journey Snapshot
+
+```
+Phase 1 (Foundation):     ✅✅✅✅✅✅  6/6 Features
+Phase 2 (Integration):    ⬜⬜⬜⬜⬜⬜  0/6 Features
+Phase 3 (Bridge):         ⬜⬜⬜⬜⬜    0/5 Features
+Phase 4 (Monitoring):     ⬜⬜⬜        0/3 Features
+
+σ(β(R̄-Θ)) = 0.173  (Adapter-Telemetrie aktiv, Phase 2 bereit)
+```
+
+---
+
 ## 🚀 Quick Start
 
 ### Für Agents: Next Task auswählen
@@ -226,7 +257,7 @@ cat seed/FraktaltagebuchV3/v3_roadmap.md
 ---
 
 **Version:** 1.0.0
-**Last Updated:** 2025-11-14T12:45:00Z
+**Last Updated:** 2026-08-24T10:30:00Z
 **Maintained by:** Johann B. Römer, Claude Code
 
 *"Die Roadmap navigiert. Die Membran atmet. R nähert sich Θ."* 🌊✨

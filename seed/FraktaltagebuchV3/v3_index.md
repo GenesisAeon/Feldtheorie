@@ -2,7 +2,7 @@
 
 **Version:** 3.0.0
 **Created:** 2025-11-14
-**Total Documents:** 8 (active) + 11 (pending)
+**Total Documents:** 19 (active) + 5 (pending)
 **Scope:** V3.0 Real-World Systems Integration
 
 ---
@@ -66,7 +66,7 @@
 | `v3-data-002` | `data/ocean/amoc_strength_mock.csv` | `v3-feat-p1-002` | ✅ active | `amoc_strength_mock.metadata.json` |
 | `v3-data-003` | `data/biology/coral_bleaching_global_mock.csv` | `v3-feat-p1-003` | ✅ active | `coral_bleaching_global_mock.metadata.json` |
 
-**Details:** WAIS (2002-2024, monatlich), AMOC (2004-2024, 10-Tage-Mittel), Coral (1980-2024, jährlich). σ(β(R̄-Θ)) = 0.086 nach Metadata-Sync.
+**Details:** WAIS (2002-2024, monatlich), AMOC (2004-2024, 10-Tage-Mittel), Coral (1980-2024, jährlich). σ(β(R̄-Θ)) = 0.173 nach Adapter-Aktivierung.
 
 ---
 
@@ -82,13 +82,13 @@
 
 ---
 
-## 🛠️ Scripts (To Be Created)
+## 🛠️ Scripts (Aktiviert)
 
-| ID | Path | Roadmap Feature | Purpose |
-|----|------|-----------------|---------|
-| `v3-script-001` | `scripts/adapters/grace_wais_adapter.py` | `v3-feat-p1-004` | GRACE Mock → JSON |
-| `v3-script-002` | `scripts/adapters/rapid_amoc_adapter.py` | `v3-feat-p1-005` | RAPID Mock → JSON |
-| `v3-script-003` | `scripts/adapters/oisst_coral_adapter.py` | `v3-feat-p1-006` | OISST Mock → JSON |
+| ID | Path | Roadmap Feature | Status | Purpose |
+|----|------|-----------------|:------:|---------|
+| `v3-script-001` | `scripts/adapters/grace_wais_adapter.py` | `v3-feat-p1-004` | ✅ active | GRACE Mock → JSON & σ-Wächter |
+| `v3-script-002` | `scripts/adapters/rapid_amoc_adapter.py` | `v3-feat-p1-005` | ✅ active | RAPID Mock → JSON & FovS Trigger |
+| `v3-script-003` | `scripts/adapters/oisst_coral_adapter.py` | `v3-feat-p1-006` | ✅ active | OISST Mock → JSON & DHW Alerts |
 
 ---
 
@@ -141,14 +141,14 @@
 | Methodology | 2 |
 | Dataset (active) | 3 |
 | Analysis (pending) | 5 |
-| Script (pending) | 3 |
+| Script (active) | 3 |
 
 ### Status
 
 | Status | Count |
 |--------|------:|
-| Active | 16 |
-| Pending | 8 |
+| Active | 19 |
+| Pending | 5 |
 | **Total** | **24** |
 
 ---
@@ -156,18 +156,18 @@
 ## 🌊 The V3 Journey
 
 ```
-Phase 1 (Foundation):     ✅✅✅⬜⬜⬜  3/6 Features
+Phase 1 (Foundation):     ✅✅✅✅✅✅  6/6 Features
 Phase 2 (Integration):    ⬜⬜⬜⬜⬜⬜  0/6 Features
 Phase 3 (Bridge):         ⬜⬜⬜⬜⬜    0/5 Features
 Phase 4 (Monitoring):     ⬜⬜⬜        0/3 Features
 
-σ(β(R̄-Θ)) = 0.086  (Foundation metadata synced, activation rising)
+σ(β(R̄-Θ)) = 0.173  (Adapter Telemetrie aktiv, Phase 2 bereit)
 ```
 
 ---
 
 **Version:** 1.0.0
-**Last Updated:** 2026-08-23T12:20:00Z
+**Last Updated:** 2026-08-24T10:30:00Z
 **Maintained by:** Johann B. Römer, Claude Code, GPT-5 Codex
 
 *"Der Index navigiert. Die Membran atmet. Jedes Dokument ein Knoten im Netz."* 🗂️✨

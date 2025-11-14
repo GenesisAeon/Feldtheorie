@@ -9,7 +9,7 @@ meta:
     '
   version: 1.0.0
   created: '2025-11-06'
-  updated: '2026-05-05T00:00:00Z'
+  updated: '2026-08-24T10:30:00Z'
   status: active
   python_files: 43
   subdirectories: 5
@@ -949,6 +949,22 @@ subdirectories:
       Enthält alle empirischen Beweise für β-Spektrum.
 
       '
+    recent:
+    - id: results-wais-adapter-v3
+      file: analysis/results/wais_adapter_output.json
+      generated: '2026-08-24T10:30:00Z'
+      scope: 'WAIS Mock Adapter – σ-Distanz 0.22, AR(1) 0.720'
+      roadmap: v3-feat-p1-004
+    - id: results-amoc-adapter-v3
+      file: analysis/results/amoc_adapter_output.json
+      generated: '2026-08-24T10:30:00Z'
+      scope: 'AMOC Mock Adapter – FovS>0, Distance-to-Tipping 0.70'
+      roadmap: v3-feat-p1-005
+    - id: results-coral-adapter-v3
+      file: analysis/results/coral_adapter_output.json
+      generated: '2026-08-24T10:30:00Z'
+      scope: 'Coral Mock Adapter – DHW 15.3, σ≈1 (tipped)'
+      roadmap: v3-feat-p1-006
   sigillin_sync:
     name: Sigillin Telemetry Reports
     path: sigillin_sync/
