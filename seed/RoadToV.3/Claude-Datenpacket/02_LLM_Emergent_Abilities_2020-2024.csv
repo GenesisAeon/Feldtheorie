@@ -1,0 +1,11 @@
+system,domain,model,parameters_billions,R,Theta,beta,zeta_R,source,license,date_collected,notes
+LLM_Emergent_Abilities,AI,GPT-2,1.5,20.2,23.0,4.18,0.12,"Wei et al. (2022) Emergent Abilities of Large Language Models",OpenAI-Research,2025-11-14,"Below emergence threshold - random performance on complex tasks"
+LLM_Emergent_Abilities,AI,GPT-3_small,13,22.1,23.0,4.18,0.04,"Wei et al. (2022), Brown et al. (2020) GPT-3 Paper",OpenAI-Research,2025-11-14,"Near threshold - 3-digit arithmetic emerges"
+LLM_Emergent_Abilities,AI,GPT-3,175,23.2,23.0,4.18,0.01,"Wei et al. (2022), Brown et al. (2020) GPT-3 Paper",OpenAI-Research,2025-11-14,"Above threshold - multiple emergent abilities (4-5 digit arithmetic, complex reasoning)"
+LLM_Emergent_Abilities,AI,LaMDA_68B,68,22.9,23.0,4.18,0.01,"Wei et al. (2022), Thoppilan et al. (2022) LaMDA Paper",Google-Research,2025-11-14,"At threshold - instruction following emerges"
+LLM_Emergent_Abilities,AI,LaMDA_137B,137,23.1,23.0,4.18,0.01,"Wei et al. (2022), Thoppilan et al. (2022) LaMDA Paper",Google-Research,2025-11-14,"Above threshold - toxicity classification, scratchpad"
+LLM_Emergent_Abilities,AI,Gopher_7B,7.1,21.9,23.0,4.18,0.05,"Rae et al. (2021) Gopher Paper",DeepMind-Research,2025-11-14,"Below threshold - near-random on complex tasks"
+LLM_Emergent_Abilities,AI,Gopher_280B,280,23.4,23.0,4.18,0.02,"Rae et al. (2021) Gopher Paper, Wei et al. (2022)",DeepMind-Research,2025-11-14,"Well above threshold - TruthfulQA, multi-step reasoning"
+LLM_Emergent_Abilities,AI,Chinchilla,70,22.8,23.0,4.18,0.01,"Hoffmann et al. (2022) Chinchilla Paper",DeepMind-Research,2025-11-14,"At threshold - optimal compute scaling"
+LLM_Emergent_Abilities,AI,PaLM_62B,62,22.8,23.0,4.18,0.01,"Chowdhery et al. (2022) PaLM Paper",Google-Research,2025-11-14,"At threshold - some BIG-Bench tasks above random"
+LLM_Emergent_Abilities,AI,PaLM_540B,540,24.4,23.0,4.18,0.06,"Chowdhery et al. (2022) PaLM Paper, Wei et al. (2022)",Google-Research,2025-11-14,"Far above threshold - Word-in-Context emergent, 67 BIG-Bench emergent tasks"

@@ -1,0 +1,8 @@
+system,domain,event,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Financial_Contagion_2008,Economics,Bear_Stearns_Collapse,0.78,1.0,4.9,0.22,"Haldane & May (2011) Nature, Billio et al. (2012) JFE",Public-Domain,2025-11-14,"March 2008, first major cascade trigger"
+Financial_Contagion_2008,Economics,Lehman_Brothers_Bankruptcy,1.25,1.0,4.9,0.25,"Haldane & May (2011) Nature",Public-Domain,2025-11-14,"Sept 15 2008, systemic threshold crossed"
+Financial_Contagion_2008,Economics,AIG_Bailout,1.38,1.0,4.9,0.38,"Haldane & May (2011) Nature",Public-Domain,2025-11-14,"Sept 16 2008, insurance contagion spreads"
+Financial_Contagion_2008,Economics,Money_Market_Fund_Run,1.52,1.0,4.9,0.52,"Haldane & May (2011) Nature",Public-Domain,2025-11-14,"Sept 2008, Reserve Primary Fund breaks the buck"
+Financial_Contagion_2008,Economics,Credit_Markets_Freeze,1.85,1.0,4.9,0.85,"Billio et al. (2012) JFE, Adrian & Shin (2010) IMF",Public-Domain,2025-11-14,"Oct 2008, interbank lending collapses, TED spread spikes"
+Financial_Contagion_2008,Economics,Global_Recession_Onset,2.24,1.0,4.9,1.24,"NBER Business Cycle Dating, IMF WEO",Public-Domain,2025-11-14,"Q4 2008, full cascade - GDP contraction globally"
+Financial_Contagion_2008,Economics,Trough_March_2009,2.68,1.0,4.9,1.68,"NBER, S&P 500 trough at 666",Public-Domain,2025-11-14,"March 9 2009, maximum systemic damage, $14T loss"

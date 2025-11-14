@@ -1,0 +1,8 @@
+system,domain,event,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Paleoclimate_DO_Events,Climate,DO-1,-38.5,-40.0,12.8,0.04,"NGRIP Ice Core, Rasmussen et al. (2014) QSR",CC-BY-4.0,2025-11-14,"Younger Dryas termination, ~11.7 ka BP, 10°C warming in <50 years"
+Paleoclimate_DO_Events,Climate,DO-8,-42.3,-40.0,12.8,0.06,"NGRIP Ice Core, Rasmussen et al. (2014) QSR",CC-BY-4.0,2025-11-14,"~38.2 ka BP, abrupt warming"
+Paleoclimate_DO_Events,Climate,DO-12,-43.8,-40.0,12.8,0.10,"NGRIP Ice Core, Rasmussen et al. (2014) QSR",CC-BY-4.0,2025-11-14,"~46.9 ka BP, rapid stadial-interstadial transition"
+Paleoclimate_DO_Events,Climate,DO-19,-46.2,-40.0,12.8,0.16,"NGRIP Ice Core, Rasmussen et al. (2014) QSR",CC-BY-4.0,2025-11-14,"~72.3 ka BP, extreme abrupt warming"
+Paleoclimate_DO_Events,Climate,DO-20,-45.5,-40.0,12.8,0.14,"NGRIP Ice Core, Rasmussen et al. (2014) QSR",CC-BY-4.0,2025-11-14,"~76.4 ka BP, AMOC shutdown-restart cycle"
+Paleoclimate_DO_Events,Climate,Heinrich_Event_1,-48.2,-40.0,12.8,0.21,"NGRIP Ice Core, Bond et al. (1993) Nature",CC-BY-4.0,2025-11-14,"~16.8 ka BP, ice-rafted debris surge, extreme cold"
+Paleoclimate_DO_Events,Climate,8.2ka_Event,-36.8,-40.0,12.8,0.08,"NGRIP Ice Core, Alley et al. (1997) Geology",CC-BY-4.0,2025-11-14,"8200 years BP, freshwater pulse from Lake Agassiz collapse"

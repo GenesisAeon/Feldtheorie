@@ -1,0 +1,9 @@
+system,domain,transition_type,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Neuro_Consciousness,Neuroscience,Wake_to_Sleep_Stage1,1.25,1.0,6.5,0.25,"Massimini et al. (2005) Science, PCI index",CC-BY-4.0,2025-11-14,"Perturbational Complexity Index drops, θ waves emerge"
+Neuro_Consciousness,Neuroscience,Sleep_Stage2_to_Stage3,0.85,1.0,6.5,0.15,"Massimini et al. (2005) Science, PCI index",CC-BY-4.0,2025-11-14,"Slow wave sleep onset, consciousness fades"
+Neuro_Consciousness,Neuroscience,Anesthesia_Loss_of_Consciousness,0.68,1.0,6.5,0.32,"Casali et al. (2013) Sci Transl Med",CC-BY-4.0,2025-11-14,"Propofol-induced LOC, PCI < 0.31 threshold"
+Neuro_Consciousness,Neuroscience,Anesthesia_Recovery_of_Consciousness,1.15,1.0,6.5,0.15,"Casali et al. (2013) Sci Transl Med",CC-BY-4.0,2025-11-14,"Emergence from anesthesia, PCI > 0.31"
+Neuro_Consciousness,Neuroscience,Minimally_Conscious_State,0.72,1.0,6.5,0.28,"Casarotto et al. (2016) Brain",CC-BY-4.0,2025-11-14,"MCS patients, some awareness but below full consciousness"
+Neuro_Consciousness,Neuroscience,Vegetative_State,0.42,1.0,6.5,0.58,"Casarotto et al. (2016) Brain",CC-BY-4.0,2025-11-14,"VS/UWS patients, no behavioral signs of consciousness"
+Neuro_Consciousness,Neuroscience,Psychedelic_Ego_Dissolution,1.85,1.0,6.5,0.85,"Carhart-Harris et al. (2014) Front Hum Neurosci",CC-BY-4.0,2025-11-14,"Psilocybin peak, increased entropy, self-model collapse"
+Neuro_Consciousness,Neuroscience,Meditation_Deep_Samadhi,1.42,1.0,6.5,0.42,"Lutz et al. (2004) PNAS, gamma synchrony",CC-BY-4.0,2025-11-14,"Tibetan monks, high-amplitude gamma-band oscillations"

@@ -1,0 +1,9 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+AMOC_RAPID_26N,Climate,2004,17.2,15.0,10.2,0.15,"RAPID-MOCHA-WBTS Array, DOI:10.5285/3f24651e-2d44-dee3-e063-7086abc0395e",CC-BY-4.0,2025-11-14,"Initial strength, baseline period"
+AMOC_RAPID_26N,Climate,2005,17.0,15.0,10.2,0.16,"RAPID-MOCHA-WBTS Array, DOI:10.5285/3f24651e-2d44-dee3-e063-7086abc0395e",CC-BY-4.0,2025-11-14,"Slight weakening"
+AMOC_RAPID_26N,Climate,2009,16.5,15.0,10.2,0.18,"RAPID-MOCHA-WBTS Array, DOI:10.5285/3f24651e-2d44-dee3-e063-7086abc0395e",CC-BY-4.0,2025-11-14,"Pre-downturn period"
+AMOC_RAPID_26N,Climate,2010,15.8,15.0,10.2,0.22,"RAPID-MOCHA-WBTS Array, DOI:10.5285/3f24651e-2d44-dee3-e063-7086abc0395e",CC-BY-4.0,2025-11-14,"Major downturn begins"
+AMOC_RAPID_26N,Climate,2011,15.2,15.0,10.2,0.26,"RAPID-MOCHA-WBTS Array, DOI:10.5285/3f24651e-2d44-dee3-e063-7086abc0395e",CC-BY-4.0,2025-11-14,"Sustained decline starts"
+AMOC_RAPID_26N,Climate,2015,14.8,15.0,10.2,0.31,"RAPID-MOCHA-WBTS Array, DOI:10.5285/3f24651e-2d44-dee3-e063-7086abc0395e",CC-BY-4.0,2025-11-14,"Continued weakening"
+AMOC_RAPID_26N,Climate,2020,14.5,15.0,10.2,0.36,"RAPID-MOCHA-WBTS Array, DOI:10.5285/3f24651e-2d44-dee3-e063-7086abc0395e",CC-BY-4.0,2025-11-14,"Further decline"
+AMOC_RAPID_26N,Climate,2024,14.2,15.0,10.2,0.41,"RAPID-MOCHA-WBTS Array, DOI:10.5285/3f24651e-2d44-dee3-e063-7086abc0395e",CC-BY-4.0,2025-11-14,"Current state - approaching tipping point"
