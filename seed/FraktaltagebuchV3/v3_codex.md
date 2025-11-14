@@ -3,7 +3,7 @@
 **Version:** 3.0.0
 **Created:** 2025-11-14
 **Scope:** V3.0 Real-World Tipping Points (6 Systems, β 3.5 → 13.5)
-**Total Entries:** 4
+**Total Entries:** 5
 
 ---
 
@@ -24,11 +24,11 @@ Dieser Codex dokumentiert alle PRs, Commits und Änderungen für **Fraktaltagebu
 ## 📊 Progress Tracking
 
 ```
-R̄  = 0.33 / 0.66  (33% → Release Gate)
-σ  = 0.173         (Activation Level)
+R̄  = 0.61 / 0.66  (61% → Release Gate)
+σ  = 0.441        (Activation Level)
 β  = 4.8
 
-Entries: 4 / ~18 (estimated)
+Entries: 5 / ~18 (estimated)
 ```
 
 ---
@@ -41,6 +41,7 @@ Entries: 4 / ~18 (estimated)
 | `v3-pr-0002` | 2026-08-23T12:20:00Z | Mock Metadata Parität + Audit Refresh | Phase 1 |
 | `v3-pr-0003` | 2026-08-23T12:55:00Z | System Meaning Map Sync | Phase 1 |
 | `v3-pr-0004` | 2026-08-24T10:30:00Z | Phase 1 Completion: Adapter Activation & Sync | Phase 1 |
+| `v3-pr-0005` | 2026-08-24T15:45:00Z | Phase 2 Activation: β-Fits + EWS Diagnostics | Phase 2 |
 
 ---
 
@@ -51,7 +52,7 @@ Entries: 4 / ~18 (estimated)
 | Phase | Count |
 |-------|------:|
 | Phase 1 (Foundation) | 4 |
-| Phase 2 (Integration) | 0 |
+| Phase 2 (Integration) | 1 |
 | Phase 3 (Bridge) | 0 |
 | Phase 4 (Monitoring) | 0 |
 
@@ -59,9 +60,9 @@ Entries: 4 / ~18 (estimated)
 
 | Type | Count |
 |------|------:|
-| `data` (Datensätze) | 2 |
-| `fit` (β-Fits) | 0 |
-| `docs` (Dokumentation) | 2 |
+| `data` (Datensätze) | 4 |
+| `fit` (β-Fits) | 1 |
+| `docs` (Dokumentation) | 4 |
 | `bridge` (Python ↔ TS) | 0 |
 | `test` (Tests) | 0 |
 | `feat` (Features) | 1 |
@@ -379,4 +380,65 @@ die Korallen stehen im weißen Brand. σ steigt – die Membran vibriert, bereit
 - `seed/RoadToV.3/amoc-collapse.ts`
 - `seed/RoadToV.3/additional-systems.ts`
 - `seed/RoadToV.3/INTEGRATION_GUIDE.md`
+
+---
+
+## 📝 v3-pr-0005: Phase 2 Activation – β-Fits & EWS Diagnostics
+
+**Timestamp:** 2026-08-24T15:45:00Z  \
+**Scope:** Phase 2 Activation: β-Fits + EWS Diagnostics  \
+**Contributors:** Johann Römer (Human), GPT-5 Codex (AI)
+
+### Parameters
+```
+R̄  = 0.61  (11/18 features completed)
+Θ  = 0.66
+β  = 4.8
+σ  = 0.441  (integration membrane firing)
+```
+
+### Formal Thread
+
+- β-Fits für WAIS, AMOC und Coral mit `scripts/analysis/beta_fit_utac.py` re-run → deterministische Bootstrap (seed=1337).
+- Early-Warning-Skripte `scripts/analysis/ews_analysis.py` liefern System-JSONs + Sammelbericht (σ- und ΔAIC-Telemetrie synchron).
+- Aggregierter Datensatz `data/derived/beta_estimates_v3.csv` erstellt, Metadata (`.metadata.json`) referenziert offene Systeme (Measles/Finance/Cancer → expected).
+- Roadmap Phase 2 Feature-Status aktualisiert (5/6 completed, Bootstrap-Task in progress) inkl. Progress-Frame (R̄=0.61, σ=0.441).
+
+### Empirical Thread
+
+- Neue Dateien in `analysis/results/`: `wais_beta_fit_v3.json`, `amoc_beta_fit_v3.json`, `coral_beta_fit_v3.json`, jeweilige `*_ews_signals.json`, sowie Sammelreports `v3_beta_fit_summary_20251114T181628Z.json` und `v3_ews_summary_20251114T181634Z.json`.
+- Kennzahlen: WAIS β=3.42 (ΔAIC=+1.84), AMOC β=4.65 (ΔAIC=+25.15), Coral β=5.81 (ΔAIC=+6.26); Bootstrap-CIs dokumentiert im Derived-Datensatz.
+- σ(β(R̄-Θ)) springt auf 0.441 → Integration halb aktiviert; verbleibende Bootstrap-Spalten als TODO markiert.
+- `data/derived/beta_estimates_v3.metadata.json` beschreibt Quellen, Placeholder-Strategie und Folgearbeit für Live-Daten.
+
+### Poetic Thread
+
+Die Laternen senden Zahlen.  \
+Das Eis flüstert in JSON, der Atlantik pulsiert in ΔAIC,  \
+die Korallen schreien im roten Spektrum.  \
+Fünf Phase-2-Lampen leuchten, eine wartet noch auf echte Datenströme.  \
+σ=0.441 – die Membran zittert vor dem Brückenschlag.
+
+### Files
+
+- `analysis/results/wais_beta_fit_v3.json`
+- `analysis/results/amoc_beta_fit_v3.json`
+- `analysis/results/coral_beta_fit_v3.json`
+- `analysis/results/wais_ews_signals.json`
+- `analysis/results/amoc_ews_signals.json`
+- `analysis/results/coral_ews_signals.json`
+- `analysis/results/v3_beta_fit_summary_20251114T181628Z.json`
+- `analysis/results/v3_ews_summary_20251114T181634Z.json`
+- `data/derived/beta_estimates_v3.csv`
+- `data/derived/beta_estimates_v3.metadata.json`
+- `seed/FraktaltagebuchV3/v3_roadmap.{yaml,json,md}`
+- `seed/FraktaltagebuchV3/v3_codex.{yaml,json}`
+- `seed/FraktaltagebuchV3/v3_index.{yaml,json,md}`
+
+### Related Systems
+
+- `seed/RoadToV.3/antarctic-ice-sheet.ts`
+- `seed/RoadToV.3/amoc-collapse.ts`
+- `seed/RoadToV.3/additional-systems.ts`
+- `seed/RoadToV.3/activation_audit.{yaml,json,md}`
 

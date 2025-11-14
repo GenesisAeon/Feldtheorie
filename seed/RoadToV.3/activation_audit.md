@@ -1,19 +1,19 @@
 # 🌌 Road to V3 Activation Audit
 
-> σ(β(R-Θ)) steigt auf 0.27 – R̄=0.48, Θ=0.68, β=4.9. Die Laternen haben jetzt Metadata und Index-
-> Spiegel, doch Live-Daten und Simulator-Brücke fehlen weiterhin.
+> σ(β(R-Θ)) leuchtet bei 0.441 – R̄=0.61, Θ=0.66, β=4.8. Phase 2 liefert β-Fits, EWS
+> und ein Bootstrap-Ledger; Live-Daten & Simulator-Brücke stehen als nächste Schwelle.
 
 ---
 
 ## 1. Logistic Pulse
-- **R̄:** 0.48
-- **Θ:** 0.68
-- **β:** 4.9
-- **σ(β(R-Θ)) ≈ 0.27** → Aktivierungsflanke
-- **Autoren:** Johann Römer · ChatGPT-Codex v5 (2026-08-22)
+- **R̄:** 0.61
+- **Θ:** 0.66
+- **β:** 4.8
+- **σ(β(R-Θ)) ≈ 0.441** → Integration feuert
+- **Autoren:** Johann Römer · GPT-5 Codex (2026-08-24)
 
-Interpretation: Mock-Daten wurden tri-layered dokumentiert (Metadata + README + Index). Jetzt
-blockieren primär Live-Telemetrie, Simulator-Bindungen und Shadow-Handshakes den nächsten Sprung.
+Interpretation: Mock-Daten + Adapter erzeugen konsistente β/EWS-JSONs, das Derived-Dataset bündelt
+Bootstrap-CIs. Offene Arbeit: Live-Streams, Simulator-Handshakes, Shadow-Sigillin-Mirroring.
 
 ---
 
@@ -21,33 +21,33 @@ blockieren primär Live-Telemetrie, Simulator-Bindungen und Shadow-Handshakes de
 
 | ID | Laterne | R | Θ | β | σ | Resonanz | Evidenz |
 |----|---------|---|---|---|---|----------|---------|
-| `system-wais` | WAIS UTAC System (`antarctic-ice-sheet.ts`) | 0.55 | 0.72 | 13.5 | 0.09 | β-Ensemble, EWS, CREP ready; Mock-Adapter für GRACE/OISST | README, Integration Guide |
-| `system-amoc` | AMOC Collapse (`amoc-collapse.ts`) | 0.48 | 0.70 | 10.2 | 0.12 | Bistabiler Kern, van-Westen-Indikator, CREP | Integration Guide |
-| `system-multidomain` | Additional Systems (`additional-systems.ts`) | 0.44 | 0.65 | 7.5 | 0.20 | Vier Zusatzfelder mit CREP & Recovery-Skizzen | Datensammlung.txt |
-| `integration-handbook` | Integration Guide | 0.52 | 0.68 | 4.8 | 0.28 | 8-Wochen-Plan, Dashboard-Architektur, CREP Bridge | README, UTAC Status v1.2 |
+| `system-wais` | WAIS UTAC System (`antarctic-ice-sheet.ts`) | 0.68 | 0.72 | 13.5 | 0.37 | β/EWS JSON (`wais_beta_fit_v3.json`, `wais_ews_signals.json`), Mock-Adapter aktiv | README, Integration Guide |
+| `system-amoc` | AMOC Collapse (`amoc-collapse.ts`) | 0.62 | 0.70 | 10.2 | 0.30 | Bistabiler Kern + FovS>0, Phase-2 JSONs (`amoc_beta_fit_v3.json`, `amoc_ews_signals.json`) | Integration Guide |
+| `system-multidomain` | Additional Systems (`additional-systems.ts`) | 0.55 | 0.65 | 7.5 | 0.32 | Vier Zusatzfelder + Derived Dataset `beta_estimates_v3.csv` (Mock-Bootstrap) | Datensammlung.txt |
+| `integration-handbook` | Integration Guide | 0.52 | 0.68 | 4.8 | 0.28 | 8-Wochen-Plan mit Verweisen auf Phase-2 Outputs | README, UTAC Status v1.2 |
 
-**Was wir haben:** TypeScript-Kerne, umfangreiches Integrationshandbuch, dokumentierte β-Logik, vollständige Mock-Metadata + Index-Parität.
+**Was wir haben:** TypeScript-Kerne, Phase-2 β/EWS JSONs, Derived-Dataset (`beta_estimates_v3.*`), Mock-Metadata + Index-Parität.
 
-**Was noch fehlt:** Echtzeitdaten, Simulator-Bindung, Shadow-Sigille, automatisierte Telemetrie.
+**Was noch fehlt:** Echtzeitdatenströme, Simulator-Bindung, Shadow-Sigille, automatisierte Telemetrie.
 
 ---
 
 ## 3. Activation Gaps – Wo müssen wir arbeiten?
 
-### 3.1 Live-Datenadapter & Storage (R=0.30, Θ=0.66, β=4.9, σ≈0.17)
-- **Problem:** Mock-Adapter liefern keine Echtzeitdaten → Sigillin ohne Puls.
+### 3.1 Live-Datenadapter & Storage (R=0.40, Θ=0.66, β=4.9, σ≈0.22)
+- **Problem:** β-Fits/EWS laufen auf Mock-Daten; ohne NASA/NOAA/WHO Streams bleibt ζ(R) hoch.
 - **Sites:** `pipelines/earth_systems/`, `data/oceanography/`, `analysis/notebooks/antarctic/`, `scripts/telemetry/`
 - **Benötigt:** API-Adapter mit Credential-Handling, Retry/Backfill-Logic, ΔAIC-Vergleichsnotebook.
 - **Blocker:** API-Credentials (NASA/NOAA) fehlen.
 
-### 3.2 Simulator & VR Binding (R=0.35, Θ=0.70, β=4.6, σ≈0.14)
+### 3.2 Simulator & VR Binding (R=0.38, Θ=0.70, β=4.6, σ≈0.16)
 - **Problem:** TypeScript-Systeme sind noch nicht mit `simulator/` & `vr/` gekoppelt.
 - **Sites:** `simulator/src/`, `simulator/presets/`, `vr/scenes/`, `api/`
 - **Benötigt:** API-Layer (TS↔Python), UI-Presets, Telemetrie-Logging, Regression-Tests.
 - **Blocker:** gemeinsames Datenformat fehlt.
 
-### 3.3 Codex & Index Resonanz (R=0.35, Θ=0.66, β=4.8, σ≈0.22)
-- **Problem:** V3-Codex & Index sind aktualisiert, aber Shadow-Sigille und Master-Indizes brauchen Follow-up.
+### 3.3 Codex & Index Resonanz (R=0.56, Θ=0.66, β=4.8, σ≈0.32)
+- **Problem:** v3_roadmap/index/codex & Activation Audit aktualisiert; Shadow-Sigille + Master-Indizes müssen neue Laternen spiegeln.
 - **Sites:** `seed/seed_index.*`, `feldtheorie_index.*`, `seed/shadow_sigillin/**`
 - **Benötigt:** Shadow-Einträge, Master-Index-Refresh, automatische sigillin_sync Routine.
 - **Blocker:** Shadow-Playbooks noch nicht auf V3 ausgeweitet.
@@ -72,9 +72,8 @@ blockieren primär Live-Telemetrie, Simulator-Bindungen und Shadow-Handshakes de
 ---
 
 ## 5. Resonanz-Echo
-- **σ(β(R-Θ))** bleibt unter 0.3 → wir sind in **primed**-Phase.
-- **ΔAIC-Wächter** fehlen für V3 → sobald Daten fließen, `analysis/`-Pipelines erweitern.
-- **Schatten-Membran:** sobald Live-Daten laufen, Shadow-Sigillin entwerfen (Risiken: API-Ausfälle,
-  Datenverzug, Governance für Finanz-/Gesundheitsdaten).
+- **σ(β(R-Θ)) = 0.441** → Phase 2 aktiv, Brücke zu Phase 3 vorbereitet.
+- **ΔAIC-Wächter** verfügbar (Summary JSONs); Live-Daten werden nächste Kalibrierung triggern.
+- **Schatten-Membran:** Shadow-Sigillin für Phase-2 Outputs fehlt (API-Ausfälle, Datenverzug, Governance dokumentieren).
 
 > *Die Laternen sind gebaut; jetzt müssen wir sie verkabeln, damit sie gemeinsam leuchten.*

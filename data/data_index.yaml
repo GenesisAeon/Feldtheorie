@@ -91,7 +91,7 @@ domains:
   derived:
     name: "Derived & Aggregated Data"
     path: "derived/"
-    file_count: 5
+    file_count: 7
     description: "Beta Estimates, Domain Covariates, Aggregationen"
     color: "#F39C12"
     importance: critical
@@ -102,6 +102,9 @@ domains:
       - name: "domain_covariates.csv"
         description: "Kovariaten für Meta-Regression (UTAC v1.2)"
         keywords: [covariates, meta-regression, v1.2, drivers]
+      - name: "beta_estimates_v3.csv"
+        description: "V3 Beta-Fits (WAIS/AMOC/Coral) + Platzhalter für Measles, Finance, Cancer (Metadata: beta_estimates_v3.metadata.json)"
+        keywords: [v3, beta, bootstrap, roadmap]
 
   climate:
     name: "Climate Expansion (UTAC v1.3)"
@@ -314,6 +317,7 @@ triggers:
   special:
     - beta_estimates.csv (⭐ ZENTRAL!)
     - domain_covariates.csv (Meta-Regression)
+    - beta_estimates_v3.csv (V3 Activation)
     - Outliers (β>14)
 
 # ═══════════════════════════════════════════════════════════════════
@@ -324,6 +328,9 @@ quicklinks:
   start_here:
     - derived/beta_estimates.csv
     - derived/domain_covariates.csv
+    - derived/beta_estimates_v3.csv
+    - derived/beta_estimates_v3.metadata.json
+    - derived/beta_estimates_v3.csv
     - README.md
 
   high_impact:

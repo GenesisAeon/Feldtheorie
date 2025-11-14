@@ -4,19 +4,19 @@
 # Created: 2025-11-14T12:30:00Z
 # Purpose: Track development of 6 critical tipping-point systems (β 3.5 → 13.5)
 
-metadata:
+meta:
   version: "3.0.0"
   created: "2025-11-14T12:30:00Z"
-  last_updated: "2026-08-24T10:30:00Z"
+  last_updated: "2026-08-24T15:45:00Z"
   total_features: 18
-  completed_features: 6
+  completed_features: 11
 
   # Logistic activation tracking
   parameters:
-    R_bar: 0.33        # Mean progress (0-1)
+    R_bar: 0.61        # Mean progress (0-1)
     Theta: 0.66        # Release gate
     beta: 4.8          # Steepness
-    sigma: 0.173       # σ(β(R̄-Θ)) activation level
+    sigma: 0.441       # σ(β(R̄-Θ)) activation level
 
 # ============================================================================
 # PHASE 1: FOUNDATION (R = 0.00 → 0.30)
@@ -198,7 +198,9 @@ features_phase2_integration:
       - Bootstrap CIs (1000 iterations)
       - ΔAIC vs nulls (linear, exp, power-law)
       - Export JSON für TypeScript
-    status: pending
+    status: completed
+    completed_at: "2026-08-24T15:20:00Z"
+    status_notes: "β-fit export generiert (analysis/results/wais_beta_fit_v3.json) + Summary (v3_beta_fit_summary_20251114T181628Z.json); ΔAIC=+1.84 bestätigt schwache Präferenz, erwartete β bleibt offen."
     priority: P0
     assignee: Claude
     dependencies:
@@ -216,6 +218,7 @@ features_phase2_integration:
       delta_aic_linear: 142
     output:
       - analysis/results/wais_beta_fit_v3.json
+      - analysis/results/v3_beta_fit_summary_20251114T181628Z.json
       - figures/wais_logistic_curve.png
 
   - id: v3-feat-p2-002
@@ -226,7 +229,9 @@ features_phase2_integration:
       - Bistabilität modellieren (Hysterese)
       - Bootstrap CIs
       - Export JSON
-    status: pending
+    status: completed
+    completed_at: "2026-08-24T15:22:00Z"
+    status_notes: "AMOC β-Fit exportiert (analysis/results/amoc_beta_fit_v3.json) + Summary (v3_beta_fit_summary_20251114T181628Z.json); ΔAIC=+25 bestätigt logistische Dominanz, β liegt ~54% unter Erwartung (Mock-Daten)."
     priority: P0
     assignee: Claude
     dependencies:
@@ -244,6 +249,7 @@ features_phase2_integration:
       delta_aic_linear: 87
     output:
       - analysis/results/amoc_beta_fit_v3.json
+      - analysis/results/v3_beta_fit_summary_20251114T181628Z.json
       - figures/amoc_bistability.png
 
   - id: v3-feat-p2-003
@@ -254,7 +260,9 @@ features_phase2_integration:
       - POST-TIPPING Analyse (R>Θ)
       - Bootstrap CIs
       - Export JSON
-    status: pending
+    status: completed
+    completed_at: "2026-08-24T15:23:00Z"
+    status_notes: "Coral β-Fit (analysis/results/coral_beta_fit_v3.json) + Summary (v3_beta_fit_summary_20251114T181628Z.json); ΔAIC=+6.26 bestätigt logistische Überlegenheit, β bleibt unter Literaturwert durch Mock-Pegel."
     priority: P0
     assignee: Claude
     dependencies:
@@ -272,6 +280,7 @@ features_phase2_integration:
       delta_aic_linear: 65
     output:
       - analysis/results/coral_beta_fit_v3.json
+      - analysis/results/v3_beta_fit_summary_20251114T181628Z.json
       - figures/coral_bleaching_timeline.png
 
   - id: v3-feat-p2-004
@@ -282,7 +291,9 @@ features_phase2_integration:
       - AR(1) autocorrelation
       - Spectral reddening (FFT)
       - Critical slowing detection
-    status: pending
+    status: completed
+    completed_at: "2026-08-24T15:25:00Z"
+    status_notes: "EWS JSON (analysis/results/wais_ews_signals.json) + Summary (v3_ews_summary_20251114T181634Z.json); Varianztrend τ=0.29 signifikant, critical_slowing bleibt inaktiv."
     priority: P1
     assignee: Claude
     dependencies:
@@ -294,6 +305,7 @@ features_phase2_integration:
     effort_hours: 2
     output:
       - analysis/results/wais_ews_signals.json
+      - analysis/results/v3_ews_summary_20251114T181634Z.json
 
   - id: v3-feat-p2-005
     title: "Early Warning Signals: AMOC"
@@ -303,7 +315,9 @@ features_phase2_integration:
       - AR(1)
       - van Westen FovS Indicator (Freshwater overshoot)
       - Spectral analysis
-    status: pending
+    status: completed
+    completed_at: "2026-08-24T15:27:00Z"
+    status_notes: "AMOC EWS exportiert (analysis/results/amoc_ews_signals.json) + Summary (v3_ews_summary_20251114T181634Z.json); Varianztrend negativ, AR(1) stark positiv → FovS-Warnflag bestätigt."
     priority: P1
     assignee: Claude
     dependencies:
@@ -315,6 +329,7 @@ features_phase2_integration:
     effort_hours: 2
     output:
       - analysis/results/amoc_ews_signals.json
+      - analysis/results/v3_ews_summary_20251114T181634Z.json
 
   - id: v3-feat-p2-006
     title: "Bootstrap CIs für alle 6 Systeme"
@@ -323,7 +338,8 @@ features_phase2_integration:
       - WAIS, AMOC, Coral, Measles, Finance, Cancer
       - 95% CIs für β, Θ
       - Update data/derived/beta_estimates.csv
-    status: pending
+    status: in_progress
+    status_notes: "Initial Aggregat erstellt (data/derived/beta_estimates_v3.csv + metadata); WAIS/AMOC/Coral enthalten echte Bootstrap-CIs, restliche Systeme als expected markiert bis Live-Daten einspeisen."
     priority: P1
     assignee: Claude
     dependencies:
@@ -337,6 +353,7 @@ features_phase2_integration:
     effort_hours: 1.5
     output:
       - data/derived/beta_estimates_v3.csv
+      - data/derived/beta_estimates_v3.metadata.json
 
 # ============================================================================
 # PHASE 3: TYPESCRIPT BRIDGE (R = 0.60 → 0.85)

@@ -94,12 +94,13 @@ Total: 68 files
 
 ---
 
-### ⭐ Derived (5 files) **ZENTRAL!**
+### ⭐ Derived (7 files) **ZENTRAL!**
 **Was:** Aggregierte Daten, Beta Estimates, Kovariaten
 
 **Key Datasets:**
 - `beta_estimates.csv` - **ALLE β-Werte aus allen Domänen!**
 - `domain_covariates.csv` - **Kovariaten für UTAC v1.2!**
+- `beta_estimates_v3.csv` (+ `beta_estimates_v3.metadata.json`) - **V3 β-Fits (WAIS/AMOC/Coral) + TODO-Spalten für Measles/Finance/Cancer**
 
 **Wichtigkeit:** KRITISCH für Meta-Regression!
 

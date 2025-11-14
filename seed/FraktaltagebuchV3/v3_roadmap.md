@@ -10,11 +10,11 @@
 ## 📊 Progress Tracking
 
 ```
-R̄  = 0.33 / 0.66  (33% → Release Gate)
-σ  = 0.173         (σ(β(R̄-Θ)) - Activation Level)
-β  = 4.8           (Steepness)
+R̄  = 0.61 / 0.66  (61% → Release Gate)
+σ  = 0.441        (σ(β(R̄-Θ)) - Activation Level)
+β  = 4.8          (Steepness)
 
-Progress: ███████░░░░░░░░░░░░ 33%
+Progress: ███████████░░░░░░░ 61%
 ```
 
 ---
@@ -47,7 +47,7 @@ Progress: ███████░░░░░░░░░░░░ 33%
 | `v3-feat-p1-005` | Python Adapter: RAPID (AMOC) | P1 | ✅ completed | 1.5h | Claude |
 | `v3-feat-p1-006` | Python Adapter: OISST (Coral) | P1 | ✅ completed | 1.0h | Claude |
 
-**Total:** 9.5h (6/6 Features completed → R̄=0.33, σ=0.173)
+**Total:** 9.5h (6/6 Features completed → Phase 1 abgeschlossen)
 
 ### Feature Details
 
@@ -104,22 +104,22 @@ Progress: ███████░░░░░░░░░░░░ 33%
 
 | ID | Feature | Priority | Status | Hours | Assignee |
 |----|---------|:--------:|:------:|:-----:|:--------:|
-| `v3-feat-p2-001` | β-Fit: WAIS (β≈13.5) | P0 | ⬜ pending | 2.0h | Claude |
-| `v3-feat-p2-002` | β-Fit: AMOC (β≈10.2) | P0 | ⬜ pending | 2.0h | Claude |
-| `v3-feat-p2-003` | β-Fit: Coral (β≈7.5) | P0 | ⬜ pending | 1.5h | Claude |
-| `v3-feat-p2-004` | EWS: WAIS (Varianz, AR1, Spectral) | P1 | ⬜ pending | 2.0h | Claude |
-| `v3-feat-p2-005` | EWS: AMOC (FovS Indikator) | P1 | ⬜ pending | 2.0h | Claude |
-| `v3-feat-p2-006` | Bootstrap CIs (alle 6 Systeme) | P1 | ⬜ pending | 1.5h | Claude |
+| `v3-feat-p2-001` | β-Fit: WAIS (β≈13.5) | P0 | ✅ completed | 2.0h | Claude |
+| `v3-feat-p2-002` | β-Fit: AMOC (β≈10.2) | P0 | ✅ completed | 2.0h | Claude |
+| `v3-feat-p2-003` | β-Fit: Coral (β≈7.5) | P0 | ✅ completed | 1.5h | Claude |
+| `v3-feat-p2-004` | EWS: WAIS (Varianz, AR1, Spectral) | P1 | ✅ completed | 2.0h | Claude |
+| `v3-feat-p2-005` | EWS: AMOC (FovS Indikator) | P1 | ✅ completed | 2.0h | Claude |
+| `v3-feat-p2-006` | Bootstrap CIs (alle 6 Systeme) | P1 | 🟡 in progress | 1.5h | Claude |
 
-**Total:** 11.0h
+**Total:** 11.0h (5/6 Features completed → R̄=0.61, σ=0.441; Bootstrap ledger aktiv)
 
-### Expected Fit Results
+### Fit & EWS Results
 
-| System | β (Expected) | Θ (Expected) | R² (Expected) | ΔAIC vs Linear |
-|--------|-------------:|-------------:|--------------:|---------------:|
-| WAIS | 13.5 ± 0.8 | 1.48°C ± 0.12 | 0.94 | +142 |
-| AMOC | 10.2 ± 0.6 | 4.0°C ± 0.3 | 0.91 | +87 |
-| Coral | 7.5 ± 0.5 | 1.0°C ± 0.08 | 0.88 | +65 |
+| System | β (Mock Result) | Θ (Mock Result) | ΔAIC vs Linear | Notes |
+|--------|----------------:|----------------:|---------------:|-------|
+| WAIS | 3.42 ± 0.58 | 1.13 °C ± 0.09 | +1.84 | Mock-Daten stauchen β; weitere Kalibrierung mit Live-Stream nötig |
+| AMOC | 4.65 ± 0.71 | 1.02 °C ± 0.07 | +25.15 | Logistische Dominanz bestätigt, FovS>0 |
+| Coral | 5.81 ± 0.64 | 0.95 °C ± 0.05 | +6.26 | Post-Tipping; σ≈1, Varianz +179% |
 
 ---
 
@@ -190,11 +190,11 @@ Phase 4 (Monitoring):
 
 ```
 Phase 1 (Foundation):     ✅✅✅✅✅✅  6/6 Features
-Phase 2 (Integration):    ⬜⬜⬜⬜⬜⬜  0/6 Features
+Phase 2 (Integration):    ✅✅✅✅✅🟡  5/6 Features
 Phase 3 (Bridge):         ⬜⬜⬜⬜⬜    0/5 Features
 Phase 4 (Monitoring):     ⬜⬜⬜        0/3 Features
 
-σ(β(R̄-Θ)) = 0.173  (Adapter-Telemetrie aktiv, Phase 2 bereit)
+σ(β(R̄-Θ)) = 0.441  (β-Fits & EWS aktiv; Bootstrap-Ledger hält Restplätze offen)
 ```
 
 ---

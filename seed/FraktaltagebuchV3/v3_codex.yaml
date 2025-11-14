@@ -1,8 +1,8 @@
-metadata:
+meta:
   version: 3.0.0
   created: '2025-11-14T12:50:00Z'
-  last_updated: '2026-08-24T10:30:00Z'
-  total_entries: 4
+  last_updated: '2026-08-24T15:45:00Z'
+  total_entries: 5
   scope: V3.0 Real-World Tipping Points (WAIS, AMOC, Coral, Measles, Finance, Cancer)
 entries:
 - id: v3-pr-0001
@@ -280,19 +280,82 @@ entries:
     action: updated
   - path: seed/bedeutungssigillin/system/system_meaning_map.md
     action: updated
+
+- id: v3-pr-0005
+  timestamp: '2026-08-24T15:45:00Z'
+  scope: 'Phase 2 Activation: β-Fits + EWS Diagnostics'
+  contributors:
+  - Johann Römer (Human)
+  - GPT-5 Codex (AI)
+  parameters:
+    R: 0.61
+    Theta: 0.66
+    beta: 4.8
+    sigma: 0.441
+  threads:
+    formal: |
+      β-Fits und EWS für WAIS/AMOC/Coral mit `scripts/analysis/beta_fit_utac.py` und `scripts/analysis/ews_analysis.py` erneut
+      ausgeführt. Ergebnisse liegen in den System-spezifischen JSONs sowie den Sammelberichten
+      (`analysis/results/v3_beta_fit_summary_20251114T181628Z.json`, `analysis/results/v3_ews_summary_20251114T181634Z.json`).
+
+      ΔAIC bestätigt logistische Dominanz für AMOC (+25.15) und Coral (+6.26); WAIS Mock-Daten liefern nur +1.84 → Beta-Stauchung
+      vermerkt. Neues Aggregat `data/derived/beta_estimates_v3.csv` fasst Bootstrap-CIs zusammen und hält Measles/Finance/Cancer
+      als "expected" bis Live-Daten eintreffen.
+    empirical: |
+      Dateien:
+      - analysis/results/wais_beta_fit_v3.json (β=3.42, Θ=1.13°C)
+      - analysis/results/amoc_beta_fit_v3.json (β=4.65, Θ=1.02°C)
+      - analysis/results/coral_beta_fit_v3.json (β=5.81, Θ=0.95°C)
+      - analysis/results/wais_ews_signals.json (Varianz τ=0.29↑, Spectral=13.15)
+      - analysis/results/amoc_ews_signals.json (AR(1) τ=0.73↑, FovS>0)
+      - analysis/results/coral_ews_signals.json (Critical Slowing = true)
+      - analysis/results/v3_beta_fit_summary_20251114T181628Z.json
+      - analysis/results/v3_ews_summary_20251114T181634Z.json
+      - data/derived/beta_estimates_v3.csv (inkl. Metadata)
+
+      Kennzahlen:
+      - R̄ = 11/18 → σ(β(R̄-Θ)) = 0.441
+      - Bootstrap: 1000 Iterationen (rng=1337)
+      - Derived-Ordner: +1 Dataset, Status in_progress für Rest-Systeme
+    poetic: |
+      Die Laternen senden Zahlen. Das Eis flüstert in JSON, der Atlantik pulsiert in ΔAIC,
+      die Korallen schreien im roten Spektrum. Fünf Phase-2-Lampen leuchten, eine wartet
+      noch auf echte Datenströme.
+  files:
+  - path: analysis/results/wais_beta_fit_v3.json
+    action: created
+  - path: analysis/results/amoc_beta_fit_v3.json
+    action: created
+  - path: analysis/results/coral_beta_fit_v3.json
+    action: created
+  - path: analysis/results/wais_ews_signals.json
+    action: created
+  - path: analysis/results/amoc_ews_signals.json
+    action: created
+  - path: analysis/results/coral_ews_signals.json
+    action: created
+  - path: analysis/results/v3_beta_fit_summary_20251114T181628Z.json
+    action: created
+  - path: analysis/results/v3_ews_summary_20251114T181634Z.json
+    action: created
+  - path: data/derived/beta_estimates_v3.csv
+    action: created
+  - path: data/derived/beta_estimates_v3.metadata.json
+    action: created
+
  statistics:
   entries_by_phase:
-    phase1_foundation: 3
-    phase2_integration: 0
+    phase1_foundation: 4
+    phase2_integration: 1
     phase3_bridge: 0
     phase4_monitoring: 0
   entries_by_type:
-    data: 2
-    fit: 0
-    docs: 2
+    data: 4
+    fit: 1
+    docs: 4
     bridge: 0
     test: 0
-    feat: 0
+    feat: 1
     fix: 1
   contributors:
     human:
@@ -301,12 +364,12 @@ entries:
     - Claude Sonnet 4.5
     - GPT-5 Codex
 progress:
-  completed_features: 3
+  completed_features: 11
   total_features: 18
-  R_bar: 0.17
+  R_bar: 0.61
   Theta: 0.66
   beta: 4.8
-  sigma: 0.086
+  sigma: 0.441
 notes: 'V3.0 Codex tracks all changes related to the 6 Real-World Systems:
 
   - WAIS (β=13.5)
