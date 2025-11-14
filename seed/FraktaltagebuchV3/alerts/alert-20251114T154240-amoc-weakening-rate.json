@@ -1,0 +1,32 @@
+{
+  "id": "alert-20251114T154240-amoc-weakening-rate",
+  "type": "ews_alert",
+  "timestamp": "2025-11-14T15:42:40.913050Z",
+  "formal": {
+    "system": "AMOC",
+    "metric": "Weakening Rate",
+    "level": "WARNING",
+    "value": -0.14469816372039607,
+    "threshold": -0.05,
+    "trend": null
+  },
+  "empirical": {
+    "message": "AMOC weakening accelerating: -0.145 Sv/year",
+    "timestamp": "2025-11-14T15:42:40.913050Z",
+    "measurements": {
+      "current_value": -0.14469816372039607,
+      "threshold_value": -0.05,
+      "exceedance": 2.893963274407921
+    }
+  },
+  "poetic": {
+    "narrative": "The great conveyor weakens. Each year slower. The meltwater brake. The conveyor stalls.\n\n\u26a0\ufe0f  WARNING. Monitor closely.",
+    "urgency": "HIGH",
+    "status_metaphor": "The flow weakens, the rhythm breaks"
+  },
+  "metadata": {
+    "generated_by": "Sigillin Alert System v1.0",
+    "source": "EWS Pipeline",
+    "version": "1.0.0"
+  }
+}

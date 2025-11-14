@@ -1,0 +1,35 @@
+{
+  "id": "alert-20251114T154240-coral-variance",
+  "type": "ews_alert",
+  "timestamp": "2025-11-14T15:42:40.913050Z",
+  "formal": {
+    "system": "CORAL",
+    "metric": "Variance",
+    "level": "CRITICAL",
+    "value": 179.27522058801125,
+    "threshold": 100,
+    "trend": {
+      "tau": 0.891304347826087,
+      "p_value": 3.8844367203901906e-14
+    }
+  },
+  "empirical": {
+    "message": "Variance increase extremely high: 179.3%",
+    "timestamp": "2025-11-14T15:42:40.913050Z",
+    "measurements": {
+      "current_value": 179.27522058801125,
+      "threshold_value": 100,
+      "exceedance": 1.7927522058801124
+    }
+  },
+  "poetic": {
+    "narrative": "The reef screams. The variance explodes. Memory of every perturbation. The system cannot forget its wounds.\n\n\ud83d\udd34 CRITICAL. Immediate attention required.",
+    "urgency": "MAXIMUM",
+    "status_metaphor": "The reefs silence, calcium graveyards expand"
+  },
+  "metadata": {
+    "generated_by": "Sigillin Alert System v1.0",
+    "source": "EWS Pipeline",
+    "version": "1.0.0"
+  }
+}

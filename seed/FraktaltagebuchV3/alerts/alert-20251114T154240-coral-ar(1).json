@@ -1,0 +1,35 @@
+{
+  "id": "alert-20251114T154240-coral-ar(1)",
+  "type": "ews_alert",
+  "timestamp": "2025-11-14T15:42:40.913050Z",
+  "formal": {
+    "system": "CORAL",
+    "metric": "AR(1)",
+    "level": "CRITICAL",
+    "value": 0.8645501658271566,
+    "threshold": 0.8,
+    "trend": {
+      "tau": 0.7463768115942029,
+      "p_value": 9.954293378839959e-09
+    }
+  },
+  "empirical": {
+    "message": "AR(1) critically high: 0.865 (recovery time very long)",
+    "timestamp": "2025-11-14T15:42:40.913050Z",
+    "measurements": {
+      "current_value": 0.8645501658271566,
+      "threshold_value": 0.8,
+      "exceedance": 1.0806877072839456
+    }
+  },
+  "poetic": {
+    "narrative": "The reef screams. Recovery time lengthens. The system remembers longer, responds slower. Critical slowing approaches.\n\n\ud83d\udd34 CRITICAL. Immediate attention required.",
+    "urgency": "MAXIMUM",
+    "status_metaphor": "The reefs silence, calcium graveyards expand"
+  },
+  "metadata": {
+    "generated_by": "Sigillin Alert System v1.0",
+    "source": "EWS Pipeline",
+    "version": "1.0.0"
+  }
+}

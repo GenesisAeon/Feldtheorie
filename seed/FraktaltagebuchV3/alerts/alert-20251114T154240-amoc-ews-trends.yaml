@@ -1,0 +1,32 @@
+id: alert-20251114T154240-amoc-ews-trends
+type: ews_alert
+timestamp: '2025-11-14T15:42:40.913050Z'
+formal:
+  system: AMOC
+  metric: EWS Trends
+  level: WARNING
+  value: &id001
+    var_tau: -0.25399250104152193
+    ar1_tau: 0.7297597555895013
+  threshold: &id002
+    var_tau: 0.5
+    ar1_tau: 0.5
+  trend:
+    tau: 0.2378836272739897
+    p_value: 4.026833876132349e-100
+empirical:
+  message: "Moderate increasing trends detected (Var \u03C4=-0.254, AR(1) \u03C4=0.730)"
+  timestamp: '2025-11-14T15:42:40.913050Z'
+  measurements:
+    current_value: *id001
+    threshold_value: *id002
+    exceedance: null
+poetic:
+  narrative: "The great conveyor whispers. Both signals rise together. Variance and\
+    \ AR(1) aligned. The membrane thins.\n\n\u26A0\uFE0F  WARNING. Monitor closely."
+  urgency: HIGH
+  status_metaphor: The flow weakens, the rhythm breaks
+metadata:
+  generated_by: Sigillin Alert System v1.0
+  source: EWS Pipeline
+  version: 1.0.0

@@ -1,0 +1,32 @@
+id: alert-20251114T154240-coral-ews-trends
+type: ews_alert
+timestamp: '2025-11-14T15:42:40.913050Z'
+formal:
+  system: CORAL
+  metric: EWS Trends
+  level: CRITICAL
+  value: &id001
+    var_tau: 0.891304347826087
+    ar1_tau: 0.7463768115942029
+  threshold: &id002
+    var_tau: 0.7
+    ar1_tau: 0.5
+  trend:
+    tau: 0.818840579710145
+    p_value: 3.8844367203901906e-14
+empirical:
+  message: "Strong increasing trends in both EWS (Var \u03C4=0.891, AR(1) \u03C4=0.746)"
+  timestamp: '2025-11-14T15:42:40.913050Z'
+  measurements:
+    current_value: *id001
+    threshold_value: *id002
+    exceedance: null
+poetic:
+  narrative: "The reef screams. Both signals rise together. Variance and AR(1) aligned.\
+    \ The membrane thins.\n\n\U0001F534 CRITICAL. Immediate attention required."
+  urgency: MAXIMUM
+  status_metaphor: The reefs silence, calcium graveyards expand
+metadata:
+  generated_by: Sigillin Alert System v1.0
+  source: EWS Pipeline
+  version: 1.0.0

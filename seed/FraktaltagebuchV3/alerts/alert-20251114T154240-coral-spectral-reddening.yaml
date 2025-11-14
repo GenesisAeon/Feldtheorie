@@ -1,0 +1,26 @@
+id: alert-20251114T154240-coral-spectral-reddening
+type: ews_alert
+timestamp: '2025-11-14T15:42:40.913050Z'
+formal:
+  system: CORAL
+  metric: Spectral Reddening
+  level: CRITICAL
+  value: 25.86914633733129
+  threshold: 20
+  trend: null
+empirical:
+  message: 'Extreme spectral reddening: 25.87 (low-freq dominance)'
+  timestamp: '2025-11-14T15:42:40.913050Z'
+  measurements:
+    current_value: 25.86914633733129
+    threshold_value: 20
+    exceedance: 1.2934573168665646
+poetic:
+  narrative: "The reef screams. Low frequencies dominate. The slow modes awaken. Collapse\
+    \ frequency resonates.\n\n\U0001F534 CRITICAL. Immediate attention required."
+  urgency: MAXIMUM
+  status_metaphor: The reefs silence, calcium graveyards expand
+metadata:
+  generated_by: Sigillin Alert System v1.0
+  source: EWS Pipeline
+  version: 1.0.0
