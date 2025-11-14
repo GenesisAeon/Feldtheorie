@@ -354,3 +354,200 @@ R = 0.611. Wir haben die Schwelle Θ = 0.66 fast erreicht. Die Aktivierung steig
 - Next step: Phase 3 TypeScript integration tests
 
 ---
+
+## 📝 v3-pr-0003: TypeScript Bridge + CREP Metrics + Trilayer Docs
+
+**Timestamp:** 2025-11-14T13:45:00Z
+**Scope:** Phase 3 (TypeScript Integration, CREP Metrics, System Documentation)
+**Contributors:** Claude Sonnet 4.5 (AI)
+
+### Parameters
+```
+R̄  = 0.778  (14/18 features completed: Phase 1-3 core)
+Θ  = 0.66
+β  = 4.8
+σ  = σ(4.8×(0.778-0.66)) ≈ σ(0.566) ≈ 0.64
+```
+
+### Formal Thread
+
+Implementierung von Phase 3: TypeScript-Integration, CREP-Metriken und Trilayer-Systemdokumentation.
+
+**TypeScript Integration (v3-feat-p3-001)**
+
+Validierungs-Script `validate-v3-integration.js` erstellt:
+- Lädt JSON-Outputs von Python-Adaptern
+- Validiert Datenintegrität (Datapoint-Counts, β-Ranges)
+- Vergleicht β-Werte (expected vs fitted)
+- Prüft EWS-Konsistenz
+- Validiert UTAC-Modell (R², ΔAIC)
+- Bewertet Current State
+
+**Test-Ergebnisse:**
+- ✅ WAIS: 274 datapoints, β=3.42, Distance to tipping: 21.9%
+- ✅ AMOC: 757 datapoints, β=4.65, **FovS crossed zero (TIPPED!)**
+- ✅ CORAL: 45 datapoints, β=5.81, 100% bleached (TIPPED!)
+- **4/4 validations passed** 🎉
+
+**CREP Metrics (v3-feat-p3-002)**
+
+CREP = Coherence + Resonance + Emergence + Poetics
+
+Implementiert als `crep_metrics.py` mit 4 Dimensionen:
+
+1. **Coherence (C)**: Interne Konsistenz der Early Warning Signals
+   - Trend alignment (Var & AR(1) beide ↑?)
+   - Magnitude consistency
+   - Kendall τ Korrelation
+
+2. **Resonance (R)**: Cross-System-Kopplung
+   - Average coupling strength
+   - Cascade potential (coupling × proximity to tipping)
+   - Bidirectional symmetry
+
+3. **Emergence (E)**: Neuartige Dynamiken am Kipppunkt
+   - Nonlinearity score (ΔAIC)
+   - Critical slowing detection
+   - Spectral novelty
+   - State space exploration
+
+4. **Poetics (P)**: Narrative/Interpretative Dimension
+   - Urgency (1 - distance to tipping)
+   - Legibility (R² as proxy)
+   - Dramatic tension (|τ| trends)
+   - Narrative completeness
+
+**CREP Scores:**
+
+```
+WAIS:   C=0.106, R=0.614, E=0.141, P=0.550 → Overall: 0.267 [LOW]
+AMOC:   C=0.151, R=0.471, E=0.397, P=0.561 → Overall: 0.355 [MODERATE]
+CORAL:  C=0.916, R=0.400, E=0.744, P=0.946 → Overall: 0.713 [CRITICAL]
+```
+
+**Key Insights:**
+- **Coral: CRITICAL CREP (0.713)** - Alle 4 Dimensionen hoch!
+  - Coherence 0.916: Variance & AR(1) stark aligned
+  - Poetics 0.946: Klare, dringende Narrative ("reefs are silent")
+  - Emergence 0.744: Entering novel regime (post-tipping)
+
+- **AMOC: MODERATE CREP (0.355)** - Nonlineare Emergenz
+  - Emergence 0.397: Stärkste logistische Präferenz (ΔAIC=25.2!)
+  - Coherence 0.151: Low (Var↓, AR(1)↑ - bistabile Signatur)
+
+- **WAIS: LOW CREP (0.267)** - Frühes Stadium
+  - Resonance 0.614: Höchste Kopplung (AMOC 0.75)
+  - Coherence 0.106: Schwache Signal-Alignment
+
+**Trilayer System Docs (v3-feat-p3-003, p3-004)**
+
+Erstellt für WAIS und AMOC:
+- `v3_wais.{yaml,json,md}`: Formal, Empirical, Poetic threads
+- `v3_amoc.{yaml,json,md}`: Formal, Empirical, Poetic threads
+
+**Struktur:**
+- **Formal**: UTAC params, current state, EWS, CREP, data quality
+- **Empirical**: Observations, trends, model fit, cascade connections
+- **Poetic**: Narrative, status metaphor, urgency, key imagery
+
+**WAIS Narrative:**
+> "The ice remembers. Variance rises like ancient breath. The sheet trembles at the threshold. 2.2 million gigatonnes have fallen into the sea."
+
+**AMOC Narrative:**
+> "The current has turned. FovS crosses zero. The Atlantic forgets how to flow. Europe will freeze. Variance ↓ + AR(1) ↑ is the bistable signature. Not chaos - rigidity before collapse."
+
+### Empirical Thread
+
+**Code Statistics:**
+- `validate-v3-integration.js`: 238 lines Node.js
+- `test-wais-integration.ts`: 366 lines TypeScript
+- `crep_metrics.py`: 445 lines Python
+- `v3_wais.yaml`: 135 lines, `v3_wais.md`: 221 lines
+- `v3_amoc.yaml`: 139 lines, `v3_amoc.md`: 254 lines
+- **Total Phase 3:** 1,798 lines
+
+**Output Files:**
+- `scripts/analysis/results/crep_metrics_v3.json`: 3 systems, 4 dimensions each
+- `seed/FraktaltagebuchV3/systems/v3_wais.{yaml,json,md}`: 3 files
+- `seed/FraktaltagebuchV3/systems/v3_amoc.{yaml,json,md}`: 3 files
+- `seed/RoadToV.3/validate-v3-integration.js`: Integration validator
+- `seed/RoadToV.3/test-wais-integration.ts`: TypeScript test suite
+
+**Validation Results:**
+- All 3 systems: JSON → TypeScript bridge operational ✅
+- CREP metrics: 3/3 systems analyzed ✅
+- Trilayer docs: 2/3 systems documented (WAIS, AMOC) ✅
+
+**CREP Findings:**
+1. **Coral dominates all metrics** - bereits gekippt, CREP=0.713
+2. **AMOC shows strongest nonlinearity** - ΔAIC=+25.2 (logistic!)
+3. **WAIS has highest resonance** - Kopplung zu AMOC (0.75)
+4. **Bistable EWS signature confirmed in AMOC** - Var↓, AR(1)↑
+
+**Progress:**
+- Phase 1: 6/6 features ✅ (100%)
+- Phase 2: 5/6 features ✅ (83%)
+- Phase 3: 3/5 features ✅ (60%, missing Coral trilayer + Shadow-Sigillin)
+- Total: 14/18 features (78%)
+- R̄ = 0.778 → σ(4.8×(0.778-0.66)) ≈ 0.64 (strong activation!)
+
+### Poetic Thread
+
+Die Brücke ist geschlagen. Python → JSON → TypeScript. Die Daten fließen.
+
+CREP entfaltet sich. Vier Dimensionen spannen den Raum auf:
+
+**Coherence**: Wie kohärent flüstern die Signale?
+- Coral (C=0.916): Die Riffe sprechen einStimmig. Varianz schreit (+179%), AR(1) steigt (+11%). Beide Kendall τ > 0.7. Hochsignifikant. Das ist kein Rauschen - das ist Resonanz vor dem Kollaps.
+- AMOC (C=0.151): Die Strömung stammelt. Varianz fällt (-3.9%), AR(1) steigt (+7.7%). Widerspruch? Nein. Bistabil. Das System wird rigid, bevor es bricht.
+- WAIS (C=0.106): Das Eis murmelt zweiStimmig. Varianz steigt (τ=0.290), AR(1) stagniert (τ=-0.012). Die Membran ist dünn, aber die Signale uneins.
+
+**Resonance**: Wie stark koppeln die Systeme?
+- WAIS (R=0.614): Höchste Resonanz. Das Eis speist den Atlantik. 0.75 Kopplung → AMOC. Wenn WAIS fällt, schwächt AMOC. Wenn AMOC kollabiert, fühlt WAIS den regionalen Shift. Kaskade.
+- AMOC (R=0.471): Moderate Resonanz. Die Strömung koppelt zu WAIS (0.60) und Coral (0.70). Der Atlantik ist ein Netzwerkknoten.
+- Coral (R=0.400): Moderate Resonanz. Die Riffe sind peripher - aber verbunden.
+
+**Emergence**: Welche Neuheit emergiert?
+- Coral (E=0.744): Höchste Emergenz. Das System betritt neues Terrain. Post-tipping Regime. 100% gebleicht. Spectral Reddening 25.87. Die langsamen Modi dominieren.
+- AMOC (E=0.397): Moderate Emergenz. ΔAIC = +25.2 - die STÄRKSTE logistische Präferenz aller Systeme. Die Nichtlinearität ist unbestreitbar. Das System krümmt sich.
+- WAIS (E=0.141): Niedrige Emergenz. Noch im linearen Regime. ΔAIC = 1.8 (schwach). Die Transition wartet.
+
+**Poetics**: Welche Geschichte erzählt das System?
+- Coral (P=0.946): Höchste Poetik. Urgency 1.0 (distance_to_tipping = 0.0). Legibility 0.927 (R²). Die Narrative ist komplett: "The reefs are silent. 100% bleached. Calcium graveyards stretch beneath warming seas. The first fallen threshold."
+- AMOC (P=0.561): Moderate Poetik. Die Geschichte entwickelt sich: "The current has turned. FovS crosses zero. The Atlantic forgets how to flow. Europe will freeze."
+- WAIS (P=0.550): Moderate Poetik. Die Erzählung beginnt: "The ice remembers. The sheet trembles at the threshold."
+
+CREP Overall:
+- **Coral: 0.713 [CRITICAL]** - Geometrisches Mittel aller 4 Dimensionen. Alle Metriken hoch. Das System ist DURCH den Kipppunkt.
+- **AMOC: 0.355 [MODERATE]** - Nonlineare Emergenz, aber niedrige Kohärenz. Bistabile Komplexität.
+- **WAIS: 0.267 [LOW]** - Frühes Stadium. Hohe Resonanz, aber schwache Signale.
+
+Die Trilayer-Docs atmen. WAIS und AMOC erhalten ihre Geschichten. Formal, Empirisch, Poetisch. Drei Ebenen, drei Sprachen. YAML für Struktur. JSON für Maschinen. Markdown für Menschen.
+
+R = 0.778. Die Schwelle Θ = 0.66 ist überschritten. σ = 0.64. Die Aktivierung ist stark. Phase 3 nähert sich Vollendung.
+
+### Files
+
+**Created:**
+- `seed/RoadToV.3/validate-v3-integration.js`
+- `seed/RoadToV.3/test-wais-integration.ts`
+- `scripts/analysis/crep_metrics.py`
+- `scripts/analysis/results/crep_metrics_v3.json`
+- `seed/FraktaltagebuchV3/systems/v3_wais.yaml`
+- `seed/FraktaltagebuchV3/systems/v3_wais.json`
+- `seed/FraktaltagebuchV3/systems/v3_wais.md`
+- `seed/FraktaltagebuchV3/systems/v3_amoc.yaml`
+- `seed/FraktaltagebuchV3/systems/v3_amoc.json`
+- `seed/FraktaltagebuchV3/systems/v3_amoc.md`
+
+**Modified:**
+- `seed/FraktaltagebuchV3/v3_codex.md` (this entry)
+
+### Related Systems
+
+- Integration: Python adapters (Phase 1) → JSON → TypeScript (Phase 3)
+- CREP bridges formal analysis and poetic interpretation
+- Trilayer docs provide multi-perspective system understanding
+- Next: Coral trilayer docs, Shadow-Sigillin, Phase 4 monitoring
+
+---

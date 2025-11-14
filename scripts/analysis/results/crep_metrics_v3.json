@@ -1,0 +1,159 @@
+{
+  "metadata": {
+    "analysis": "CREP Metrics",
+    "version": "1.0.0",
+    "components": {
+      "C": "Coherence - Internal consistency of EWS",
+      "R": "Resonance - Cross-system coupling",
+      "E": "Emergence - Novel dynamics",
+      "P": "Poetics - Narrative dimension"
+    },
+    "generated": "2025-11-14T13:32:38Z"
+  },
+  "systems": {
+    "wais": {
+      "system": "WAIS",
+      "coherence": {
+        "score": 0.10583464536934296,
+        "components": {
+          "trend_alignment": 0.0,
+          "magnitude_consistency": 0.3,
+          "tau_correlation": 0.0033385814773718506
+        },
+        "interpretation": "Low coherence - weak/inconsistent signals"
+      },
+      "resonance": {
+        "score": 0.613655,
+        "components": {
+          "average_coupling": 0.5,
+          "cascade_potential": 0.5859,
+          "bidirectional_symmetry": 0.875
+        },
+        "couplings": {
+          "amoc": 0.75,
+          "coral": 0.25
+        },
+        "interpretation": "High resonance - strong cascade potential"
+      },
+      "emergence": {
+        "score": 0.14138792525724136,
+        "components": {
+          "nonlinearity": 0.09181653886000732,
+          "critical_slowing": 0.0,
+          "spectral_novelty": 0.43834202430916763,
+          "state_exploration": 0.028383050146315102
+        },
+        "interpretation": "Low emergence - linear/stable regime"
+      },
+      "poetics": {
+        "score": 0.5497214792029652,
+        "components": {
+          "urgency": 0.7812,
+          "legibility": 0.42477853925976095,
+          "dramatic_tension": 0.1505342219401248,
+          "narrative_completeness": 0.7
+        },
+        "narrative": "The ice remembers. Variance rises like ancient breath. The sheet trembles at the threshold.",
+        "interpretation": "Moderate poetics - developing story"
+      },
+      "overall_crep": 0.26654883643111993,
+      "rating": "LOW"
+    },
+    "amoc": {
+      "system": "AMOC",
+      "coherence": {
+        "score": 0.1513383763704068,
+        "components": {
+          "trend_alignment": 0.0,
+          "magnitude_consistency": 0.3,
+          "tau_correlation": 0.1853535054816272
+        },
+        "interpretation": "Low coherence - weak/inconsistent signals"
+      },
+      "resonance": {
+        "score": 0.471433,
+        "components": {
+          "average_coupling": 0.6499999999999999,
+          "cascade_potential": 0.20874,
+          "bidirectional_symmetry": 0.75
+        },
+        "couplings": {
+          "wais": 0.6,
+          "coral": 0.7
+        },
+        "interpretation": "Moderate resonance - some coupling"
+      },
+      "emergence": {
+        "score": 0.3969139652914355,
+        "components": {
+          "nonlinearity": 1.0,
+          "critical_slowing": 0.0,
+          "spectral_novelty": 0.37588399719327936,
+          "state_exploration": 0.01961977328743813
+        },
+        "interpretation": "Moderate emergence - nonlinear dynamics appearing"
+      },
+      "poetics": {
+        "score": 0.5613285904386016,
+        "components": {
+          "urgency": 0.2982,
+          "legibility": 0.6343334591019972,
+          "dramatic_tension": 0.49187612831551164,
+          "narrative_completeness": 1.0
+        },
+        "narrative": "The current has turned. FovS crosses zero. The Atlantic forgets how to flow. Europe will freeze.",
+        "interpretation": "Moderate poetics - developing story"
+      },
+      "overall_crep": 0.3550754516492804,
+      "rating": "MODERATE"
+    },
+    "coral": {
+      "system": "CORAL",
+      "coherence": {
+        "score": 0.9163122243226213,
+        "components": {
+          "trend_alignment": 1.0,
+          "magnitude_consistency": 1.0,
+          "tau_correlation": 0.6652488972904852
+        },
+        "interpretation": "High coherence - EWS strongly aligned"
+      },
+      "resonance": {
+        "score": 0.4,
+        "components": {
+          "average_coupling": 0.25,
+          "cascade_potential": 0.35,
+          "bidirectional_symmetry": 0.775
+        },
+        "couplings": {
+          "wais": 0.15,
+          "amoc": 0.35
+        },
+        "interpretation": "Moderate resonance - some coupling"
+      },
+      "emergence": {
+        "score": 0.7438823065991371,
+        "components": {
+          "nonlinearity": 0.3128322389345598,
+          "critical_slowing": 1.0,
+          "spectral_novelty": 0.862304877911043,
+          "state_exploration": 0.8963761029400562
+        },
+        "interpretation": "High emergence - entering novel regime"
+      },
+      "poetics": {
+        "score": 0.9455510284597255,
+        "components": {
+          "urgency": 1.0,
+          "legibility": 0.9271316500707861,
+          "dramatic_tension": 0.818840579710145,
+          "narrative_completeness": 1.0
+        },
+        "narrative": "The reefs are silent. 100% bleached. Calcium graveyards stretch beneath warming seas. The first fallen threshold.",
+        "interpretation": "High poetics - clear, urgent narrative"
+      },
+      "overall_crep": 0.7125628363825026,
+      "rating": "CRITICAL"
+    }
+  }
+}
