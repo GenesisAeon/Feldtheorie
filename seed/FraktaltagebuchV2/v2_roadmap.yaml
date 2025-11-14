@@ -1,23 +1,23 @@
 meta:
-  version: 1.0.15
+  version: 1.0.16
   created: '2025-11-10T23:30:00Z'
-  updated: '2025-11-11T23:30:00Z'
+  updated: '2025-11-14T09:45:00Z'
   title: UTAC v2.0 Roadmap
   purpose: Vollständige Übersicht aller V2.0 Features und ihres Status
   parameters:
-    R_mean: 0.80
+    R_mean: 0.78
     Theta: 0.66
     beta: 4.8
-    sigma: 0.738
+    sigma: 0.64
   status_summary:
     total_features: 15
-    completed: 12
-    in_progress: 2
-    pending: 1
-    completion_rate: 0.80
-  last_updated: '2025-11-11T23:30:00Z'
-  overall_progress: 0.80
-  sigma: 0.738
+    completed: 11
+    in_progress: 1
+    pending: 3
+    completion_rate: 0.73
+  last_updated: '2025-11-14T09:45:00Z'
+  overall_progress: 0.78
+  sigma: 0.64
 completed_features:
 - id: v2-feat-done-001
   title: UTAC Sonifikation - The Sound of Criticality
@@ -97,12 +97,17 @@ core_features:
   blockers:
   - Daten-Akquisition (TIPMIP, RAPID, Paper-Extraktion)
   gap_code: utac-v2-data-lanterns
-  current_status: 4 datasets pending, 1 completed (Urban Heat)
+  current_status: R=0.20 < Θ. σ≈0.18. Urban Heat Lantern steht; Amazon, AMOC, Neuro-AI
+    und Finance warten auf externe Datenfreigaben.
   next_steps:
-  - 'AMOC: RAPID Array Data anfragen'
-  - 'Amazon: TIPMIP/CMIP6 Request'
-  - 'Neuro-AI: Wei et al. Daten + eigene EEG'
-  - 'Economy: Systemic Risk Centre'
+  - 'TIPMIP: Email senden (docs/phi_coupling_tipmip_email_template.md) für Amazon
+    Hydro Daten.'
+  - 'RAPID: Kontakt zum AMOC-Team aufnehmen, Referenz auf Phase-4 Meta-Regression.'
+  - 'Neuro-AI: Wei et al. anfragen (β, CI, Feldtyp) + EEG-Kopplung erwähnen.'
+  - 'Finance: Systemic Risk Centre (LSE) wegen systemic_thresholds.csv kontaktieren.'
+  - 'Nach Eingang: Import-Sprint planen und domain_covariates/beta_estimates aktualisieren.'
+  activation_signal: Send confirmations for all four data requests → σ steigt über
+    0.4.
 - id: v2-feat-core-002
   title: UTAC v2 Analysis Exports - 6 fehlende JSONs
   status: pending
@@ -125,9 +130,13 @@ core_features:
   - v2-feat-core-001
   blockers: []
   next_steps:
-  - 'Sobald Datasets da sind: analysis/*_extractor.py runs'
-  - Bootstrap CIs berechnen
-  - ΔAIC ≥ 10 validieren
+  - 'Blocker heben: core-001 Datenbeschaffung abschließen.'
+  - analysis/add_phase4_beta_values.py an neue CSVs anpassen und dry-run dokumentieren.
+  - Bootstrap + ΔAIC Reports generieren (analysis/results/*) sobald Daten vorhanden.
+  current_status: R=0.17 < Θ. σ≈0.16. Blockiert durch fehlende Rohdaten aus core-001;
+    Scripts warten auf neue Lanterns.
+  activation_signal: 'Sobald alle vier Lanterns geladen sind → Analyse-Sprint (σ Ziel:
+    0.55).'
 - id: v2-feat-core-003
   title: Meta-Regression v2 - Field Type Enhancement (η²=0.735!)
   status: completed
@@ -143,8 +152,8 @@ core_features:
   - analysis/results/beta_meta_regression_v2_diagnostics_20251111T155257Z.json (NEW!)
   - docs/meta_regression_v2_field_types_report.md (NEW!)
   parameters:
-    R: 0.60
-    Theta: 0.70
+    R: 0.6
+    Theta: 0.7
     beta: 4.5
     sigma: 0.76
   completed_in: 1 Sprint (4 hours)
@@ -154,32 +163,47 @@ core_features:
     r2_wls: 0.596
     r2_adjusted: 0.293
     bootstrap_r2_median: 0.869
-    improvement_vs_v1: '+38% R²'
-  interpretation: |
-    **Conceptual Validation Complete!**
+    improvement_vs_v1: +38% R²
+  interpretation: '**Conceptual Validation Complete!**
+
     Field Type ANOVA: η²=0.735, p<0.01 (highly significant)
+
     → Field Types explain 73.5% of β-variance
+
     → β-heterogeneity is systematic, not noise ✅
 
+
     **Why R²=0.60 < 0.70 (target)?**
+
     → Sample size limitation: n=15 obs, 7 params (2.1 obs/param)
+
     → Need n ≥ 70-105 for stable regression (rule: 10-15 obs/param)
+
     → Bootstrap R² median=0.87 shows high model potential
+
     → This is DATA bottleneck, not CONCEPT failure
 
+
     **Paradigm Shift:**
+
     From "β is universal constant" (failed - R²=0.43)
+
     To "β is diagnostic of system architecture" (validated - η²=0.74) ✅
+
+    '
   pr_ref: v2-pr-0020
   gap_code: null
-  future_work: |
-    For v2.1+: Add 15-30 systems (target n ≥ 30)
+  future_work: 'For v2.1+: Add 15-30 systems (target n ≥ 30)
+
     → Hierarchical/Bayesian models with Field Type priors
+
     → Re-run regression, expect R² ≥ 0.70
+
+    '
 - id: v2-feat-core-004
   title: Neuro-Kosmos Sigillin Bridge - EEG↔QPO
   status: completed
-  completed_date: "2025-11-11"
+  completed_date: '2025-11-11'
   priority: P1
   scope: seed/sigillin/, simulator/presets/
   description: Trilayer für EEG-QPO β-coupling + Simulator-Preset
@@ -191,23 +215,30 @@ core_features:
   deliverables_optional:
   - models/neuro_kosmos_coupling.py (not needed)
   parameters:
-    R: 1.00
+    R: 1.0
     Theta: 0.66
     beta: 4.88
-    sigma: 1.00
+    sigma: 1.0
   completed_in: 1 sprint (4 hours)
   dependencies: []
   gap_code: mq-sci-gap-008
   gap_status: RESOLVED
   codex_ref: v2-pr-0009
-  notes: |
-    Konzept aus seed/Sigillin_Neuro_Membran_Modell_Plan.txt vollständig umgesetzt!
+  notes: 'Konzept aus seed/Sigillin_Neuro_Membran_Modell_Plan.txt vollständig umgesetzt!
+
     Trilayer Sigillin nach Schema v0.2.0 (id: B-004, type: meaning)
+
     Mathematical basis: Neuro (β=3.8-4.2) ↔ Kosmos (β=4.8-5.3)
+
     Bridge: β_unified ≈ 4.88 (coupling efficiency normalized)
+
     CREP: Coherence 0.82, Resilience 0.75, Empathy 0.88, Propagation 0.90
+
     Applications: AI Ethics, Climate, Outreach, Physics
+
     Co-Hypothesis Validation: Bridge ist BEWEIS für UTAC als domain-transcending principle!
+
+    '
 - id: v2-feat-core-005
   title: φ-Kopplung Klimasequenz - AMOC↔Albedo
   status: in_progress
@@ -224,7 +255,7 @@ core_features:
     R: 0.35
     Theta: 0.66
     beta: 4.75
-    sigma: 0.20
+    sigma: 0.2
   estimated_effort: 2-3 Monate (abhängig von Daten-Akquisition)
   dependencies: []
   blockers:
@@ -234,11 +265,14 @@ core_features:
   gap_code: sys-gap-008 (partial resolution)
   codex_ref: v2-pr-0012
   next_steps:
-  - Email senden (TIPMIP, RAPID, CERES)
-  - Daten warten (~1-2 Monate)
-  - models/climate_utac_phi_coupling.py implementieren
-  - φ-Berechnung + β vs φ Regression
-  - Theorie-Dokument schreiben
+  - TIPMIP/RAPID/CERES E-Mails versenden und Follow-up Termine in Kalender setzen.
+  - models/climate_utac_phi_coupling.py Skeleton gepflegt halten (Dokstrings + TODOs).
+  - 'Bei Dateneingang: Gradient-Analyse und Regression gegenüber β planen.'
+  - 'Zwischenzeitlich: Theorie-Dokument erweitern (Validierungsabschnitt vorbereiten).'
+  current_status: R=0.35, Θ=0.66, σ≈0.20. Theorie & Templates fertig, φ-Kopplung wartet
+    auf TIPMIP/RAPID/CERES Rückmeldungen.
+  activation_signal: Erste Datenrückmeldung oder NDA Zusage → Modellierung aktivieren
+    (σ→0.45).
 - id: v2-feat-core-006
   title: Urban Heat Outlier Mechanism - β=16.3
   status: completed
@@ -250,7 +284,8 @@ core_features:
   - analysis/urban_heat_storage_mechanism.py (457 LOC, bereits vorhanden)
   - analysis/results/urban_heat_storage_mechanism.json (5 scenarios, bereits vorhanden)
   - data/socio_ecology/urban_heat/urban_heat_storage_profiles.csv (bereits vorhanden)
-  - data/socio_ecology/urban_heat/urban_heat_storage_profiles.metadata.json (bereits vorhanden)
+  - data/socio_ecology/urban_heat/urban_heat_storage_profiles.metadata.json (bereits
+    vorhanden)
   - docs/urban_heat_mechanism.md (NEU ERSTELLT! ✅)
   parameters:
     R: 1.0
@@ -280,12 +315,19 @@ core_features:
     beta: 7.55
     storage: 0.44
     delta_aic: 45.5
-  notes: |
-    Feature war bereits ~95% fertig (Code/Results/CSV/Metadata existierten).
+  notes: 'Feature war bereits ~95% fertig (Code/Results/CSV/Metadata existierten).
+
     Dokumentation (docs/urban_heat_mechanism.md) erstellt in diesem Sprint.
-    9 Sektionen: Executive Summary, Motivation, Physical Mechanism, 5 Scenarios, Validation, Reproducibility, Implications.
+
+    9 Sektionen: Executive Summary, Motivation, Physical Mechanism, 5 Scenarios, Validation,
+    Reproducibility, Implications.
+
     Scientific Significance: β ist nicht nur Fit-Parameter - β hat physikalische Bedeutung!
-    Practical Significance: Urban planning insights (increase canopy, reflective materials, water features).
+
+    Practical Significance: Urban planning insights (increase canopy, reflective materials,
+    water features).
+
+    '
   pr_ref: v2-pr-0010
 extensions:
 - id: v2-feat-ext-001
@@ -294,7 +336,8 @@ extensions:
   completed_date: '2025-11-11T18:13:15Z'
   priority: P2
   scope: Frontend (React/TSX) + Backend (FastAPI) + Docs + Tests
-  description: Complete interactive tooltip system showing β, Θ, R², ΔAIC, CREP, Field Types
+  description: Complete interactive tooltip system showing β, Θ, R², ΔAIC, CREP, Field
+    Types
   deliverables_completed:
   - simulator/src/components/UTACTooltip.tsx (262 LOC, rich tooltip component)
   - simulator/src/utils/fieldTypeClassifier.ts (94 LOC, 5-category classifier)
@@ -306,10 +349,10 @@ extensions:
   - examples/tooltip_demo.html (Plotly.js, 3 interactive plots, ~450 LOC)
   - tests/test_tooltip_api.py (16 test cases)
   parameters:
-    R: 1.00
+    R: 1.0
     Theta: 1.0
     beta: 4.5
-    sigma: 1.00
+    sigma: 1.0
   completed_in: 1 Sprint
   tech_stack:
   - React/TypeScript (Frontend)
@@ -324,25 +367,38 @@ extensions:
   - 2 API endpoints (GET /api/tooltip, GET /api/tooltip/{preset_id})
   field_types:
   - type: Weakly Coupled
-    beta_range: [0, 2.5]
+    beta_range:
+    - 0
+    - 2.5
     color: '#a8dadc'
   - type: High-Dimensional
-    beta_range: [2.5, 4.0]
+    beta_range:
+    - 2.5
+    - 4.0
     color: '#457b9d'
   - type: Strongly Coupled
-    beta_range: [4.0, 5.5]
+    beta_range:
+    - 4.0
+    - 5.5
     color: '#1d3557'
   - type: Physically Constrained
-    beta_range: [5.5, 10.0]
+    beta_range:
+    - 5.5
+    - 10.0
     color: '#e63946'
   - type: Meta-Adaptive
-    beta_range: [10.0, Inf]
+    beta_range:
+    - 10.0
+    - Inf
     color: '#f77f00'
   pr_ref: v2-pr-0021
-  notes: |
-    Die Laternen sprechen jetzt! Tooltips sind Portale in die UTAC-Ontologie.
+  notes: 'Die Laternen sprechen jetzt! Tooltips sind Portale in die UTAC-Ontologie.
+
     Vollständig integriert in Simulator + API + Tests.
+
     TypeScript Build ✅, API Endpoints ✅, Integration ✅
+
+    '
 - id: v2-feat-ext-002
   title: VR Emergenz Hub - Kollaborationsraum
   status: pending
@@ -363,6 +419,13 @@ extensions:
   - OpenXR / WebXR
   - Python WebSocket Bridge
   notes: Große Erweiterung, optional für V2.0
+  current_status: R=0.00, Θ=1.0, σ≈0.12. Konzept vorhanden, Implementierung bewusst
+    nach Release geschoben.
+  next_steps:
+  - Scope bestätigen (Unity vs. WebXR) nach V2.0 Launch.
+  - VR Architektur Blueprint mit Data Lantern Interfaces entwerfen.
+  - Partner-Suche für Co-Development (optional).
+  activation_signal: Nach V2.0 Release + Ressourcenfreigabe → Sprintplanung starten.
 - id: v2-feat-ext-003
   title: UTAC Modular API - Production-Ready (Docker + All Endpoints)
   status: completed
@@ -388,10 +451,10 @@ extensions:
   - GET /api/system/:id (System metadata retrieval)
   - POST /api/simulate (Threshold simulation)
   parameters:
-    R: 1.00
+    R: 1.0
     Theta: 1.0
     beta: 4.8
-    sigma: 1.00
+    sigma: 1.0
   completed_in: 4 Sprints (Phase 1-4)
   total_loc: 4531
   tech_stack:
@@ -413,7 +476,7 @@ extensions:
   - phase: 2
     title: Core Endpoints
     pr_ref: v2-pr-0016
-    r: 0.60
+    r: 0.6
     deliverables:
     - server.py enhanced (+289 LOC → 666 LOC)
     - All 5 endpoints implemented
@@ -429,21 +492,29 @@ extensions:
   - phase: 4
     title: Docker & Deployment
     pr_ref: v2-pr-0018
-    r: 1.00
+    r: 1.0
     deliverables:
     - Dockerfile (58 LOC, multi-stage)
     - docker-compose.yml (76 LOC)
     - .dockerignore (32 LOC)
     - DEPLOYMENT.md (380 LOC)
-  notes: |
-    **Complete Production-Ready API!**
+  notes: '**Complete Production-Ready API!**
+
     - All 5/5 endpoints operational
+
     - Docker-ready (multi-stage build)
+
     - Comprehensive tests (485 LOC)
+
     - 3 usage examples (1159 LOC)
+
     - Full deployment guide (380 LOC)
+
     - Total: 4,531 LOC across 4 phases
+
     **Erstes Erweiterungs-Feature completed!** 🎉
+
+    '
 automation:
 - id: v2-feat-auto-001
   title: Guards in CI Integration
@@ -480,10 +551,10 @@ automation:
   - scripts/crep_parser.py (277 → 477 LOC, +200 LOC)
   - scripts/README_crep_parser.md (120 LOC, comprehensive guide)
   parameters:
-    R: 1.00
+    R: 1.0
     Theta: 1.0
     beta: 4.7
-    sigma: 1.00
+    sigma: 1.0
   completed_in: 1 Sprint (2-3 Stunden)
   features:
   - --write-codex flag in crep_parser.py
@@ -495,10 +566,14 @@ automation:
   gap_code: sys-shadow-002 (Codex violations)
   gap_resolution: RESOLVED ✅
   pr_ref: v2-pr-0019
-  notes: |
-    **Automation Complete!**
+  notes: '**Automation Complete!**
+
     Verhindert Codex-Verletzungen durch automatisierte Trilayer-Konsistenz.
-    Parser kann jetzt direkt von Sigillin in Codex schreiben - keine manuellen Einträge mehr nötig!
+
+    Parser kann jetzt direkt von Sigillin in Codex schreiben - keine manuellen Einträge
+    mehr nötig!
+
+    '
 tests:
 - id: v2-feat-test-001
   title: Test-Suite Stabilität - 100% Passing!
@@ -509,7 +584,7 @@ tests:
   current_status: ✅ 402/402 tests passing (100%) - PERFECT SCORE! 🎉
   target: 290 tests passing (wie in README)
   parameters:
-    R: 1.00
+    R: 1.0
     Theta: 0.8
     beta: 5.0
     sigma: 1.0
