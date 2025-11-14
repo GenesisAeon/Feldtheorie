@@ -46,10 +46,11 @@ interface WAISAdapterOutput {
     };
     current_state: {
       mass_balance_Gt: number;
-      mass_change_rate_Gt_per_year: number;
+      mass_loss_rate_Gt_per_year: number;
       temperature_anomaly_C: number;
       distance_to_tipping: number;
       ar1_coefficient: number;
+      variance_factor: number;
     };
     early_warning_signals: {
       ar1_increase_percent: number;
@@ -133,7 +134,7 @@ export class WAISIntegrationTest {
   private basePath: string;
 
   constructor(basePath?: string) {
-    this.basePath = basePath || path.join(__dirname, '../../scripts/analysis/results');
+    this.basePath = basePath || '/home/user/Feldtheorie/scripts/analysis/results';
   }
 
   /**
@@ -313,7 +314,7 @@ export class WAISIntegrationTest {
     const current = this.adapterData.statistics.current_state;
 
     console.log(`   Mass balance:    ${current.mass_balance_Gt.toFixed(1)} Gt`);
-    console.log(`   Change rate:     ${current.mass_change_rate_Gt_per_year.toFixed(1)} Gt/year`);
+    console.log(`   Loss rate:       ${current.mass_loss_rate_Gt_per_year.toFixed(1)} Gt/year`);
     console.log(`   Temperature:     ${current.temperature_anomaly_C.toFixed(2)}°C`);
     console.log(`   Distance to tip: ${(current.distance_to_tipping * 100).toFixed(1)}%`);
     console.log(`   AR(1):           ${current.ar1_coefficient.toFixed(3)}`);
@@ -367,7 +368,6 @@ export class WAISIntegrationTest {
 
 // ==================== CLI Entry Point ====================
 
-if (require.main === module) {
-  const test = new WAISIntegrationTest();
-  test.runAllTests();
-}
+// Auto-run when executed directly
+const test = new WAISIntegrationTest();
+test.runAllTests();

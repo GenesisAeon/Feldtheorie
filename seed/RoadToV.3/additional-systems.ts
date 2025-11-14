@@ -526,6 +526,75 @@ export class CancerImmuneBetaEstimator {
   }
 }
 
+/**
+ * Cancer-Immune UTAC Model
+ *
+ * Type-3: Electrochemical threshold
+ * β ≈ 3.5 (moderate steepness, therapeutic window)
+ *
+ * Threshold: T cell effector function vs. tumor immune escape
+ */
+export class CancerImmuneUTACModel {
+  private state: CancerImmuneSystemState;
+
+  constructor() {
+    this.state = {
+      tumorCellCount: 1e6,
+      immuneCellCount: 1e5,
+      immunoEditingPhase: "equilibrium", // elimination → equilibrium → escape
+      threshold: 10, // Immune cells per tumor cell needed for clearance
+      beta: 3.5,
+      distanceToEscape: 0.5, // 0 = immune clearance, 1 = full escape
+      timestamp: new Date()
+    };
+  }
+
+  /**
+   * Update system state
+   */
+  updateState(newState: Partial<CancerImmuneSystemState>) {
+    this.state = {
+      ...this.state,
+      ...newState,
+      timestamp: new Date()
+    };
+  }
+
+  /**
+   * Get current state
+   */
+  getState(): CancerImmuneSystemState {
+    return { ...this.state };
+  }
+
+  /**
+   * Generate CREP metrics
+   */
+  generateCREPMetrics() {
+    const { immunoEditingPhase, distanceToEscape, threshold } = this.state;
+
+    // Coherence: High in elimination, degrades in escape
+    const coherence = immunoEditingPhase === "elimination" ? 0.90 :
+                      immunoEditingPhase === "equilibrium" ? 0.65 : 0.25;
+
+    // Resonance: Response to immunotherapy
+    const resonance = 0.7 - (distanceToEscape * 0.5);
+
+    // Emergence: β-normalized, therapeutic potential
+    const emergence = 3.5 / 15; // Lower than climate systems
+
+    // Poetics: Individual-level tragedy and hope
+    const poetics = `A microscopic war. Each immune cell a sentinel, each tumor cell a traitor. At threshold ${threshold.toFixed(0)}:1, the body decides: heal or yield. Immunotherapy tilts the field.`;
+
+    return {
+      coherence,
+      resonance,
+      emergence,
+      poetics
+    };
+  }
+}
+
 // ============================================================================
 // EXPORTS
 // ============================================================================
@@ -573,7 +642,9 @@ export const CancerImmuneSystem = {
     utacType: "Type-3: Electrochemical",
     beta: 3.5,
     status: "THERAPEUTIC",
-    urgency: "LOW"
+    urgency: "LOW",
+    realWorldImpact: "Individual-level therapeutic target, checkpoint inhibitors, CAR-T therapy"
   },
+  model: CancerImmuneUTACModel,
   betaEstimator: CancerImmuneBetaEstimator
 };
