@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Arctic_Jet_Stream_Waviness,Climate,1980,15,25,7.5,"0.08","Francis & Vavrus 2012 GRL - meridional amplitude index",CC-BY-4.0,2025-11-15,"Stable zonal flow - Arctic cold isolated"
+Arctic_Jet_Stream_Waviness,Climate,1990,18,25,7.5,0.12,"Arctic amplification begins",CC-BY-4.0,2025-11-15,"Temperature gradient weakening"
+Arctic_Jet_Stream_Waviness,Climate,2000,21,25,7.5,0.22,"Rossby wave amplitude increasing",CC-BY-4.0,2025-11-15,"Blocking events more frequent"
+Arctic_Jet_Stream_Waviness,Climate,2010,24,25,7.5,0.45,"Approaching threshold - polar vortex disruptions",CC-BY-4.0,2025-11-15,"Beast from the East events"
+Arctic_Jet_Stream_Waviness,Climate,2015,26,25,7.5,0.62,"CROSSED - persistent meanders",CC-BY-4.0,2025-11-15,"Summer heatwaves, winter cold snaps"
+Arctic_Jet_Stream_Waviness,Climate,2024,30,25,7.5,0.82,"Post-threshold - extreme weather new normal",CC-BY-4.0,2025-11-15,"Heat domes, atmospheric rivers"

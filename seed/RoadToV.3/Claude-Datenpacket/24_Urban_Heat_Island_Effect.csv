@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Urban_Heat_Island_Phoenix,Climate,1970,2.5,4.0,6.8,0.08,"Imhoff et al. 2010 Remote Sensing Environment - Phoenix AZ",CC-BY-4.0,2025-11-15,"Urban-rural temp difference (°C) - moderate UHI"
+Urban_Heat_Island_Phoenix,Climate,1980,3.1,4.0,6.8,0.12,"Urbanization accelerates - sprawl begins",CC-BY-4.0,2025-11-15,"Growing heat island"
+Urban_Heat_Island_Phoenix,Climate,1990,3.7,4.0,6.8,0.22,"Georgescu et al. 2014 Nature Climate Change",CC-BY-4.0,2025-11-15,"Approaching threshold - vegetation loss"
+Urban_Heat_Island_Phoenix,Climate,2000,4.2,4.0,6.8,0.55,"Crossed threshold - dangerous heat events",CC-BY-4.0,2025-11-15,"Public health threshold exceeded"
+Urban_Heat_Island_Phoenix,Climate,2010,5.5,4.0,6.8,0.82,"Post-threshold - adaptation required",CC-BY-4.0,2025-11-15,"Cooling centers, night-time heat persistence"
+Urban_Heat_Island_Phoenix,Climate,2020,6.8,4.0,6.8,0.94,"Extreme UHI - uninhabitable days emerging",CC-BY-4.0,2025-11-15,"Wet-bulb temps approach limits"

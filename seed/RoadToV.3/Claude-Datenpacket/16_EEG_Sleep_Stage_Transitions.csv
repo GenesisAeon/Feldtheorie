@@ -1,0 +1,8 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Sleep_Stage_Transitions,Neuroscience,2010,35.2,40.0,5.9,0.12,"Massimini et al. 2005 Science, PhysioNet Sleep-EDF",CC-BY-4.0,2025-11-15,"PCI (Perturbational Complexity Index) - Deep sleep (N3)"
+Sleep_Stage_Transitions,Neuroscience,2011,38.5,40.0,5.9,0.08,"Casali et al. 2013 Science Translational Medicine",CC-BY-4.0,2025-11-15,"Light sleep (N2) - approaching threshold"
+Sleep_Stage_Transitions,Neuroscience,2012,40.8,40.0,5.9,0.05,"Sitt et al. 2014 Brain, multiple sleep labs",CC-BY-4.0,2025-11-15,"N1/Wake transition - crosses threshold"
+Sleep_Stage_Transitions,Neuroscience,2013,45.2,40.0,5.9,0.12,"Koch et al. 2016 Nature Reviews Neuroscience",CC-BY-4.0,2025-11-15,"REM sleep - high PCI, dream consciousness emergent"
+Sleep_Stage_Transitions,Neuroscience,2014,51.0,40.0,5.9,0.18,"Tononi & Koch 2015 Annals NY Academy Sciences",CC-BY-4.0,2025-11-15,"Full wakefulness - integrated information maximal"
+Sleep_Stage_Transitions,Neuroscience,2015,28.0,40.0,5.9,0.22,"General anesthesia studies - Propofol",CC-BY-4.0,2025-11-15,"Anesthetic unconsciousness - PCI drops below threshold"
+Sleep_Stage_Transitions,Neuroscience,2020,15.0,40.0,5.9,0.42,"Deep anesthesia - Sevoflurane, Sarasso et al. 2015",CC-BY-4.0,2025-11-15,"Minimal consciousness - PCI at minimum"

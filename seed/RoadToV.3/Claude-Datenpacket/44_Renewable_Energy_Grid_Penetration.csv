@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Solar_Wind_Germany_Energiewende,Technology,2000,5.2,30.0,6.5,"0.05","Jacobson et al. 2017 Joule - renewable % of total generation",CC-BY-4.0,2025-11-15,"Pre-Energiewende baseline"
+Solar_Wind_Germany_Energiewende,Technology,2005,10.5,30.0,6.5,0.08,"Feed-in tariffs enacted",CC-BY-4.0,2025-11-15,"Solar PV costs declining"
+Solar_Wind_Germany_Energiewende,Technology,2010,18.2,30.0,6.5,0.15,"Fukushima - nuclear phaseout accelerates",CC-BY-4.0,2025-11-15,"Wind capacity expanding"
+Solar_Wind_Germany_Energiewende,Technology,2015,26.5,30.0,6.5,0.35,"Approaching threshold - grid stability challenges",CC-BY-4.0,2025-11-15,"Battery storage emerging"
+Solar_Wind_Germany_Energiewende,Technology,2020,32.8,30.0,6.5,0.62,"CROSSED - renewables dominate",CC-BY-4.0,2025-11-15,"Coal phaseout accelerating"
+Solar_Wind_Germany_Energiewende,Technology,2024,48.5,30.0,6.5,0.85,"Post-threshold - baseload fossil obsolete",CC-BY-4.0,2025-11-15,"Green hydrogen scaling"

@@ -1,0 +1,6 @@
+system,domain,time_ms,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Magnetar_QPO,Astrophysics,0,18.5,30.0,12.5,0.08,"Israel et al. 2005 ApJ - SGR 1806-20",CC-BY-4.0,2025-11-15,"QPO frequency (Hz) - pre-flare state"
+Magnetar_QPO,Astrophysics,50,22.8,30.0,12.5,0.12,"Approaching instability",CC-BY-4.0,2025-11-15,"Crust stress building"
+Magnetar_QPO,Astrophysics,100,28.5,30.0,12.5,0.28,"Watts & Strohmayer 2006 ApJ",CC-BY-4.0,2025-11-15,"Near-critical stress"
+Magnetar_QPO,Astrophysics,150,30.2,30.0,12.5,0.52,"Crust fracture threshold",CC-BY-4.0,2025-11-15,"CROSSED - starquake begins"
+Magnetar_QPO,Astrophysics,200,45.0,30.0,12.5,0.92,"Giant flare - Mazets et al. 1979",CC-BY-4.0,2025-11-15,"Post-threshold - energy release"

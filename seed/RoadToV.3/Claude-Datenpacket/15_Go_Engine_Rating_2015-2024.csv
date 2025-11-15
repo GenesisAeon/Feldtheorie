@@ -1,0 +1,8 @@
+system,domain,model,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Go_Engines,AI,Crazy_Stone,2900,3200,6.2,0.08,"Top traditional Go engine 2015",Proprietary,2025-11-15,"Elo rating (estimated) - strong amateur, below professional"
+Go_Engines,AI,AlphaGo_Lee,3600,3200,6.2,0.72,"DeepMind 2016, defeated Lee Sedol",DeepMind-Research,2025-11-15,"Crossed threshold - superhuman Go playing"
+Go_Engines,AI,AlphaGo_Master,3800,3200,6.2,0.85,"DeepMind 2017, 60-0 online",DeepMind-Research,2025-11-15,"Post-threshold - defeated world champion Ke Jie"
+Go_Engines,AI,AlphaGo_Zero,4000,3200,6.2,0.92,"DeepMind 2017, pure self-play",DeepMind-Research,2025-11-15,"Tabula rasa learning - emergent novel strategies"
+Go_Engines,AI,AlphaZero_Go,4100,3200,6.2,0.94,"DeepMind 2018, general game player",DeepMind-Research,2025-11-15,"Generalization emergent - Chess + Shogi + Go mastery"
+Go_Engines,AI,KataGo,4200,3200,6.2,0.95,"2020 open-source, efficient training",MIT,2025-11-15,"Open-source peak - democratized superhuman Go"
+Go_Engines,AI,Leela_Zero,4150,3200,6.2,0.94,"2019 open-source AlphaGo Zero",GPL-3.0,2025-11-15,"Community-trained - AlphaGo Zero emergent abilities replicated"

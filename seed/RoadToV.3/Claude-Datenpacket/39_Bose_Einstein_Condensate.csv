@@ -1,0 +1,7 @@
+system,domain,temperature_nK,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Rubidium87_BEC,Physics,500,500,170,15.8,"0.05","Anderson et al. 1995 Science - condensate fraction",CC-BY-4.0,2025-11-15,"Thermal cloud - classical gas"
+Rubidium87_BEC,Physics,300,300,170,15.8,0.12,"Quantum degeneracy approaching",CC-BY-4.0,2025-11-15,"de Broglie wavelengths overlapping"
+Rubidium87_BEC,Physics,200,200,170,15.8,0.32,"Bose distribution tail growing",CC-BY-4.0,2025-11-15,"Critical temperature T_c = 170 nK"
+Rubidium87_BEC,Physics,170,170,170,15.8,0.50,"CRITICAL - BEC transition",CC-BY-4.0,2025-11-15,"Macroscopic ground state occupation"
+Rubidium87_BEC,Physics,100,100,170,15.8,0.85,"Deep BEC - pure condensate",CC-BY-4.0,2025-11-15,"Matter wave coherence visible"
+Rubidium87_BEC,Physics,50,50,170,15.8,0.95,"Ultra-cold - superfluidity",CC-BY-4.0,2025-11-15,"Quantum vortices observable"

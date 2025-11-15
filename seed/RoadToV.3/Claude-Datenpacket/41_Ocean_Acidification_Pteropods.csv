@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Ocean_Acidification_Aragonite,Climate,1800,4.2,3.5,9.5,"0.05","Orr et al. 2005 Nature - aragonite saturation state Ω",CC-BY-4.0,2025-11-15,"Pre-industrial - healthy shell formation"
+Ocean_Acidification_Aragonite,Climate,1900,4.0,3.5,9.5,0.08,"Industrial CO2 uptake begins",CC-BY-4.0,2025-11-15,"pH 8.2 → 8.15"
+Ocean_Acidification_Aragonite,Climate,1980,3.8,3.5,9.5,0.18,"Feely et al. 2004 Science - Southern Ocean",CC-BY-4.0,2025-11-15,"Pteropod decline observed"
+Ocean_Acidification_Aragonite,Climate,2000,3.6,3.5,9.5,0.38,"Approaching threshold - shell dissolution",CC-BY-4.0,2025-11-15,"Cold water regions critical"
+Ocean_Acidification_Aragonite,Climate,2015,3.4,3.5,9.5,0.62,"Crossed threshold - undersaturation",CC-BY-4.0,2025-11-15,"Ω < 1 in Arctic waters"
+Ocean_Acidification_Aragonite,Climate,2024,3.2,3.5,9.5,0.78,"Post-threshold - food web impacts",CC-BY-4.0,2025-11-15,"Salmon, whale prey base collapsing"

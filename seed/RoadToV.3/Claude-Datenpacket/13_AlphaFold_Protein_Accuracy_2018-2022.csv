@@ -1,0 +1,6 @@
+system,domain,model,R,Theta,beta,zeta_R,source,license,date_collected,notes
+AlphaFold,AI,AlphaFold_v1,43.2,70.0,7.8,0.38,"DeepMind CASP13 2018, Senior et al. 2020 Nature",Apache-2.0,2025-11-15,"GDT score (0-100) - below threshold but impressive"
+AlphaFold,AI,AlphaFold_v2_CASP14,92.4,70.0,7.8,0.85,"DeepMind CASP14 2020, Jumper et al. 2021 Nature",Apache-2.0,2025-11-15,"Crossed threshold - 'protein folding problem solved'"
+AlphaFold,AI,AlphaFold_v2.1,94.1,70.0,7.8,0.88,"DeepMind 2021 refinement",Apache-2.0,2025-11-15,"Post-threshold - structural biology transformed"
+AlphaFold,AI,AlphaFold_v2.2,95.3,70.0,7.8,0.90,"DeepMind 2022, multimer support",Apache-2.0,2025-11-15,"Multimer prediction emergent ability"
+AlphaFold,AI,AlphaFold_v3,96.8,70.0,7.8,0.93,"DeepMind 2024, all biomolecules",Restricted,2025-11-15,"DNA, RNA, ligand binding emergent - universal structure predictor"

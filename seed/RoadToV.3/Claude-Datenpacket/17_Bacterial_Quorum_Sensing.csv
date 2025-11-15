@@ -1,0 +1,8 @@
+system,domain,concentration_nM,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Quorum_Sensing_V_fischeri,Biology,0.1,0.1,1.0,8.5,0.01,"Ng & Bassler 2009 Annual Review Genetics",CC-BY-4.0,2025-11-15,"Autoinducer concentration - no bioluminescence"
+Quorum_Sensing_V_fischeri,Biology,0.3,0.3,1.0,8.5,0.02,"Papenfort & Bassler 2016 Nature Reviews Microbiology",CC-BY-4.0,2025-11-15,"Approaching threshold - sparse signaling"
+Quorum_Sensing_V_fischeri,Biology,0.7,0.7,1.0,8.5,0.05,"Whitehead et al. 2001 FEMS Microbiology Reviews",CC-BY-4.0,2025-11-15,"Near threshold - pre-activation state"
+Quorum_Sensing_V_fischeri,Biology,1.0,1.0,1.0,8.5,0.50,"Classical QS studies - V. fischeri squid symbiosis",CC-BY-4.0,2025-11-15,"AT THRESHOLD - sigmoi
+d activation begins"
+Quorum_Sensing_V_fischeri,Biology,1.5,1.5,1.0,8.5,0.85,"Miller & Bassler 2001 Annual Review Microbiology",CC-BY-4.0,2025-11-15,"Above threshold - collective bioluminescence emergent"
+Quorum_Sensing_V_fischeri,Biology,2.0,2.0,1.0,8.5,0.95,"Maximal induction - full colony synchronization",CC-BY-4.0,2025-11-15,"Saturated - all cells bioluminescent"

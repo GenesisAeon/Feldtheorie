@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Electric_Vehicle_Market_Norway,Technology,2010,2.5,15.0,5.8,"0.05","IEA Global EV Outlook - market share %",CC-BY-4.0,2025-11-15,"Early adopters - Tesla Roadster era"
+Electric_Vehicle_Market_Norway,Technology,2013,5.8,15.0,5.8,0.12,"Nissan Leaf, incentives expand",CC-BY-4.0,2025-11-15,"Bus lane access, toll exemptions"
+Electric_Vehicle_Market_Norway,Technology,2015,10.2,15.0,5.8,0.22,"Rogers 2003 Diffusion - early majority begins",CC-BY-4.0,2025-11-15,"Charging infrastructure buildout"
+Electric_Vehicle_Market_Norway,Technology,2017,14.5,15.0,5.8,0.45,"Approaching tipping point",CC-BY-4.0,2025-11-15,"Social norm shifting"
+Electric_Vehicle_Market_Norway,Technology,2019,16.8,15.0,5.8,0.62,"CROSSED - EV becomes default",CC-BY-4.0,2025-11-15,"Used market established"
+Electric_Vehicle_Market_Norway,Technology,2024,35.2,15.0,5.8,0.92,"Post-threshold - 90% of new sales",CC-BY-4.0,2025-11-15,"Gas stations closing"

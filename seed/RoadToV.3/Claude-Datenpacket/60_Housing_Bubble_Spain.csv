@@ -1,0 +1,8 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Spanish_Housing_Bubble,Economics,2000,100,220,5.2,"0.05","Case-Shiller equivalent - house price index",CC-BY-4.0,2025-11-15,"Post-Euro adoption - low interest rates"
+Spanish_Housing_Bubble,Economics,2003,135,220,5.2,0.08,"Construction boom - coastal development",CC-BY-4.0,2025-11-15,"Foreign buyer demand - British retirees"
+Spanish_Housing_Bubble,Economics,2005,170,220,5.2,0.15,"Acceleration - speculation rampant",CC-BY-4.0,2025-11-15,"Empty developments - ghost estates"
+Spanish_Housing_Bubble,Economics,2007,210,220,5.2,0.38,"Approaching threshold - subprime contagion",CC-BY-4.0,2025-11-15,"Credit tightening begins"
+Spanish_Housing_Bubble,Economics,2008,225,220,5.2,0.58,"BUBBLE PEAK - crisis threshold",CC-BY-4.0,2025-11-15,"Lehman collapse - global freeze"
+Spanish_Housing_Bubble,Economics,2010,180,220,5.2,0.35,"Post-crash - price collapse 20%",CC-BY-4.0,2025-11-15,"Bank bailouts - sovereign debt crisis"
+Spanish_Housing_Bubble,Economics,2013,140,220,5.2,0.15,"Trough - 40% decline from peak",CC-BY-4.0,2025-11-15,"Youth unemployment >50% - lost generation"

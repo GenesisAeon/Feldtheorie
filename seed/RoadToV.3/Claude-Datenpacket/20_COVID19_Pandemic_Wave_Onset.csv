@@ -1,0 +1,7 @@
+system,domain,day,R,Theta,beta,zeta_R,source,license,date_collected,notes
+COVID19_First_Wave,Health,1,0.8,1.0,6.5,0.20,"WHO COVID-19 data, R_effective",CC-BY-4.0,2025-11-15,"R_effective (reproduction number) - sporadic cases, Wuhan Dec 2019"
+COVID19_First_Wave,Health,10,0.95,1.0,6.5,0.10,"Kucharski et al. 2020 Lancet Infectious Diseases",CC-BY-4.0,2025-11-15,"Approaching threshold - cluster transmission"
+COVID19_First_Wave,Health,20,1.02,1.0,6.5,0.52,"Li et al. 2020 NEJM - early epidemic China",CC-BY-4.0,2025-11-15,"Crossed threshold - exponential growth begins"
+COVID19_First_Wave,Health,30,1.5,1.0,6.5,0.82,"Peak R_eff - no interventions, Hubei Province",CC-BY-4.0,2025-11-15,"Supercritical - pandemic wave onset"
+COVID19_First_Wave,Health,45,2.2,1.0,6.5,0.95,"Pre-lockdown peak R - global spread",CC-BY-4.0,2025-11-15,"Maximum transmissibility - naive population"
+COVID19_First_Wave,Health,60,0.7,1.0,6.5,0.25,"Post-lockdown - Davies et al. 2020 Nature",CC-BY-4.0,2025-11-15,"Interventions drop R below threshold - wave declining"

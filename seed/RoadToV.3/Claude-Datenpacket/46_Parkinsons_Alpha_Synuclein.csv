@@ -1,0 +1,7 @@
+system,domain,age_years,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Parkinsons_Alpha_Synuclein_Aggregation,Neuroscience,35,2.5,15.0,7.8,"0.05","Polymeropoulos et al. 1997 Science - Lewy body density substantia nigra",CC-BY-4.0,2025-11-15,"Baseline - normal α-synuclein clearance"
+Parkinsons_Alpha_Synuclein_Aggregation,Neuroscience,45,6.2,15.0,7.8,0.10,"Presymptomatic - oligomers forming",CC-BY-4.0,2025-11-15,"Autophagy declining with age"
+Parkinsons_Alpha_Synuclein_Aggregation,Neuroscience,55,10.5,15.0,7.8,0.22,"Braak stage 3 - brainstem to midbrain",CC-BY-4.0,2025-11-15,"Dopaminergic neurons stressed"
+Parkinsons_Alpha_Synuclein_Aggregation,Neuroscience,60,14.2,15.0,7.8,0.45,"Approaching threshold - 50% neuron loss",CC-BY-4.0,2025-11-15,"Subtle motor signs emerging"
+Parkinsons_Alpha_Synuclein_Aggregation,Neuroscience,65,16.8,15.0,7.8,0.68,"CROSSED - clinical diagnosis",CC-BY-4.0,2025-11-15,"Tremor, rigidity, bradykinesia triad"
+Parkinsons_Alpha_Synuclein_Aggregation,Neuroscience,70,22.5,15.0,7.8,0.88,"Post-threshold - widespread pathology",CC-BY-4.0,2025-11-15,"Cortical Lewy bodies - dementia risk"

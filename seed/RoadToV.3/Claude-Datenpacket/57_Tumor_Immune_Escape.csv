@@ -1,0 +1,7 @@
+system,domain,months_from_initiation,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Melanoma_Immune_Evasion,Biology,0,0.5,5.0,6.5,"0.05","Dunn et al. 2002 Nat Rev Immunol - tumor size mm³",CC-BY-4.0,2025-11-15,"Initiation - immune surveillance active"
+Melanoma_Immune_Evasion,Biology,6,1.2,5.0,6.5,0.08,"Equilibrium phase - immune editing",CC-BY-4.0,2025-11-15,"T cells killing immunogenic variants"
+Melanoma_Immune_Evasion,Biology,12,2.5,5.0,6.5,0.15,"PD-L1 upregulation - checkpoint inhibition",CC-BY-4.0,2025-11-15,"Immune evasion strategies evolving"
+Melanoma_Immune_Evasion,Biology,18,4.2,5.0,6.5,0.38,"Approaching escape - Treg recruitment",CC-BY-4.0,2025-11-15,"Immunosuppressive microenvironment"
+Melanoma_Immune_Evasion,Biology,24,5.8,5.0,6.5,0.68,"IMMUNE ESCAPE THRESHOLD",CC-BY-4.0,2025-11-15,"Rapid growth - clinically detectable"
+Melanoma_Immune_Evasion,Biology,30,12.5,5.0,6.5,0.92,"Post-escape - metastasis risk",CC-BY-4.0,2025-11-15,"Checkpoint blockade therapeutic window"

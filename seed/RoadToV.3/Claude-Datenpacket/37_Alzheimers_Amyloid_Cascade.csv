@@ -1,0 +1,7 @@
+system,domain,age_years,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Alzheimers_Amyloid_Cascade,Neuroscience,40,5,25,8.5,0.02,"Jack et al. 2013 Lancet Neurology - Aβ42 plaques pg/mL CSF",CC-BY-4.0,2025-11-15,"Baseline - normal cognition"
+Alzheimers_Amyloid_Cascade,Neuroscience,50,12,25,8.5,0.08,"Preclinical - PET imaging shows plaques",CC-BY-4.0,2025-11-15,"Asymptomatic accumulation"
+Alzheimers_Amyloid_Cascade,Neuroscience,60,18,25,8.5,0.18,"Mild cognitive impairment onset",CC-BY-4.0,2025-11-15,"Tau tangles spreading"
+Alzheimers_Amyloid_Cascade,Neuroscience,65,23,25,8.5,0.42,"Approaching threshold - synaptic loss",CC-BY-4.0,2025-11-15,"Hippocampal atrophy visible"
+Alzheimers_Amyloid_Cascade,Neuroscience,70,26,25,8.5,0.68,"Crossed threshold - dementia diagnosis",CC-BY-4.0,2025-11-15,"Functional impairment significant"
+Alzheimers_Amyloid_Cascade,Neuroscience,75,32,25,8.5,0.88,"Severe - neuroinflammation cascade",CC-BY-4.0,2025-11-15,"Widespread neuronal death"

@@ -1,0 +1,7 @@
+system,domain,time_hours,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Biofilm_P_aeruginosa_Medical_Device,Biology,0,1e4,1e6,8.5,"0.05","Costerton et al. 1999 Science - cell density on surface cells/cm²",CC-BY-4.0,2025-11-15,"Initial attachment - reversible"
+Biofilm_P_aeruginosa_Medical_Device,Biology,2,5e4,1e6,8.5,0.08,"Flagella-mediated movement",CC-BY-4.0,2025-11-15,"Surface exploration"
+Biofilm_P_aeruginosa_Medical_Device,Biology,6,2e5,1e6,8.5,0.15,"Irreversible attachment - pili retraction",CC-BY-4.0,2025-11-15,"EPS production begins"
+Biofilm_P_aeruginosa_Medical_Device,Biology,12,6e5,1e6,8.5,0.32,"Microcolony formation",CC-BY-4.0,2025-11-15,"Quorum sensing activated"
+Biofilm_P_aeruginosa_Medical_Device,Biology,24,1.2e6,1e6,8.5,0.58,"MATURATION THRESHOLD",CC-BY-4.0,2025-11-15,"3D architecture - antibiotic resistance"
+Biofilm_P_aeruginosa_Medical_Device,Biology,48,4.5e6,1e6,8.5,0.88,"Mature biofilm - dispersion phase",CC-BY-4.0,2025-11-15,"Chronic infection established"

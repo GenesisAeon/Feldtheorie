@@ -1,0 +1,7 @@
+system,domain,temperature_C,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Iron_Ferromagnet_Curie_Transition,Physics,900,900,770,16.8,"0.15","Weiss 1907 - magnetization relative to T=0",CC-BY-4.0,2025-11-15,"Paramagnetic - thermal disorder dominates"
+Iron_Ferromagnet_Curie_Transition,Physics,850,850,770,16.8,0.25,"Approaching T_c - magnetic domains forming",CC-BY-4.0,2025-11-15,"Exchange interaction vs thermal energy"
+Iron_Ferromagnet_Curie_Transition,Physics,800,800,770,16.8,0.35,"Critical region - susceptibility diverging",CC-BY-4.0,2025-11-15,"Power-law behavior χ ∝ (T-T_c)^(-γ)"
+Iron_Ferromagnet_Curie_Transition,Physics,770,770,770,16.8,0.50,"CURIE POINT - spontaneous magnetization",CC-BY-4.0,2025-11-15,"Second-order phase transition"
+Iron_Ferromagnet_Curie_Transition,Physics,600,600,770,16.8,0.72,"Ferromagnetic - domain alignment",CC-BY-4.0,2025-11-15,"Permanent magnet behavior possible"
+Iron_Ferromagnet_Curie_Transition,Physics,25,25,770,16.8,0.95,"Room temperature - full magnetization",CC-BY-4.0,2025-11-15,"Technological applications - motors, storage"

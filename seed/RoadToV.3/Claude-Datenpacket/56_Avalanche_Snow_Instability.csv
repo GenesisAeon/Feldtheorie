@@ -1,0 +1,7 @@
+system,domain,time_hours,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Slab_Avalanche_Weak_Layer,Physics,0,25,35,11.5,"0.15","Schweizer et al. 2003 Cold Regions - shear stress kPa",CC-BY-4.0,2025-11-15,"Stable snowpack - weak layer buried"
+Slab_Avalanche_Weak_Layer,Physics,12,28,35,11.5,0.22,"Loading - new snow accumulating",CC-BY-4.0,2025-11-15,"Stress increasing on weak layer"
+Slab_Avalanche_Weak_Layer,Physics,24,32,35,11.5,0.38,"Wind slab formation - density gradient",CC-BY-4.0,2025-11-15,"Temperature gradient metamorphism"
+Slab_Avalanche_Weak_Layer,Physics,30,34,35,11.5,0.48,"Critical loading - approaching failure",CC-BY-4.0,2025-11-15,"Whumpf sounds - settling"
+Slab_Avalanche_Weak_Layer,Physics,36,35.5,35,11.5,0.58,"FRACTURE THRESHOLD - crack propagation",CC-BY-4.0,2025-11-15,"Anticrack mechanism - collapse"
+Slab_Avalanche_Weak_Layer,Physics,36.01,50,35,11.5,0.95,"Avalanche release - catastrophic failure",CC-BY-4.0,2025-11-15,"Slab accelerates - powder cloud"

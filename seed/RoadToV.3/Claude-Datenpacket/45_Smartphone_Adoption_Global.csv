@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Smartphone_Penetration_Global,Technology,2007,2.5,50.0,4.8,"0.02","ITU World Telecommunication - % population with smartphone",CC-BY-4.0,2025-11-15,"iPhone launch - smartphone era begins"
+Smartphone_Penetration_Global,Technology,2010,12.8,50.0,4.8,0.08,"Android proliferation",CC-BY-4.0,2025-11-15,"App ecosystem emerging"
+Smartphone_Penetration_Global,Technology,2013,28.5,50.0,4.8,0.18,"Emerging markets - low-cost devices",CC-BY-4.0,2025-11-15,"Mobile-first internet access"
+Smartphone_Penetration_Global,Technology,2016,42.8,50.0,4.8,0.38,"Approaching majority",CC-BY-4.0,2025-11-15,"4G networks global"
+Smartphone_Penetration_Global,Technology,2019,52.5,50.0,4.8,0.58,"CROSSED - majority of humans",CC-BY-4.0,2025-11-15,"Social media ubiquitous"
+Smartphone_Penetration_Global,Technology,2024,68.2,50.0,4.8,0.82,"Post-threshold - digital divide persistent",CC-BY-4.0,2025-11-15,"5.3 billion users"

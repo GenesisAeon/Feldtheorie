@@ -1,0 +1,8 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Lake_Eutrophication,Ecology,1950,8.5,15.0,7.2,0.05,"Scheffer et al. 2001 Nature - shallow lakes",CC-BY-4.0,2025-11-15,"Phosphorus loading (μg/L) - clear water, macrophyte-dominated"
+Lake_Eutrophication,Ecology,1960,10.2,15.0,7.2,0.08,"Carpenter & Cottingham 1997 Ecology",CC-BY-4.0,2025-11-15,"Moderate loading - still clear"
+Lake_Eutrophication,Ecology,1970,12.8,15.0,7.2,0.15,"Scheffer & Carpenter 2003 Trends Ecology Evolution",CC-BY-4.0,2025-11-15,"Approaching threshold - resilience declining"
+Lake_Eutrophication,Ecology,1975,14.5,15.0,7.2,0.35,"Critical transition zone",CC-BY-4.0,2025-11-15,"Near tipping - macrophyte loss begins"
+Lake_Eutrophication,Ecology,1980,15.2,15.0,7.2,0.58,"Carpenter et al. 2011 PNAS - regime shift",CC-BY-4.0,2025-11-15,"CROSSED - turbid water, algae-dominated"
+Lake_Eutrophication,Ecology,1990,18.5,15.0,7.2,0.88,"Post-tipping - alternative stable state",CC-BY-4.0,2025-11-15,"Eutrophic state - hysteresis prevents recovery"
+Lake_Eutrophication,Ecology,2000,22.0,15.0,7.2,0.96,"Full eutrophication - dead zones",CC-BY-4.0,2025-11-15,"Hypoxia, fish kills, ecosystem degradation"

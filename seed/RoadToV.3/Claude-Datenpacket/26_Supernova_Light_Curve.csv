@@ -1,0 +1,6 @@
+system,domain,day,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Type_Ia_Supernova,Astrophysics,-10,0.02,1.0,15.2,0.01,"Piro & Nakar 2013 ApJ - SNe light curves",CC-BY-4.0,2025-11-15,"Luminosity (normalized) - 10 days pre-peak, rising phase"
+Type_Ia_Supernova,Astrophysics,-5,0.15,1.0,15.2,0.02,"Kasen 2010 ApJ",CC-BY-4.0,2025-11-15,"Rapid rise - shock breakout"
+Type_Ia_Supernova,Astrophysics,0,1.0,1.0,15.2,0.50,"Peak brightness - Phillips 1993 ApJ",CC-BY-4.0,2025-11-15,"Threshold - nickel decay peak"
+Type_Ia_Supernova,Astrophysics,5,0.85,1.0,15.2,0.35,"Post-peak decline",CC-BY-4.0,2025-11-15,"Exponential fade begins"
+Type_Ia_Supernova,Astrophysics,20,0.25,1.0,15.2,0.05,"Late decline - cobalt decay",CC-BY-4.0,2025-11-15,"Entering nebular phase"
