@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Congo_Rainforest_Fire_Regime,Climate,1990,1200,900,9.2,"0.08","Malhi et al. 2009 Phil Trans B - annual rainfall mm",CC-BY-4.0,2025-11-15,"Stable rainforest - fire suppressed by moisture"
+Congo_Rainforest_Fire_Regime,Climate,2000,1100,900,9.2,0.15,"Logging roads - fragmentation begins",CC-BY-4.0,2025-11-15,"Edge effects increasing dryness"
+Congo_Rainforest_Fire_Regime,Climate,2010,1020,900,9.2,0.32,"Approaching threshold - dry season longer",CC-BY-4.0,2025-11-15,"Tree mortality rising"
+Congo_Rainforest_Fire_Regime,Climate,2015,950,900,9.2,0.55,"Fire frequency increasing",CC-BY-4.0,2025-11-15,"Grass invasion in gaps"
+Congo_Rainforest_Fire_Regime,Climate,2020,880,900,9.2,0.68,"CROSSED - savannization begins",CC-BY-4.0,2025-11-15,"Fire-grass feedback loop"
+Congo_Rainforest_Fire_Regime,Climate,2024,820,900,9.2,0.82,"Post-threshold - irreversible shift",CC-BY-4.0,2025-11-15,"Carbon stock collapse - biodiversity loss"

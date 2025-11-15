@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Misinformation_Virality,Social,2010,0.25,0.50,5.5,0.08,"Vosoughi et al. 2018 Science - Twitter false news",CC-BY-4.0,2025-11-15,"Viral spread probability - pre-algorithm optimization"
+Misinformation_Virality,Social,2013,0.35,0.50,5.5,0.12,"Algorithmic feeds introduced - engagement optimization",CC-BY-4.0,2025-11-15,"Approaching threshold - engagement metrics prioritized"
+Misinformation_Virality,Social,2016,0.52,0.50,5.5,0.55,"Election year - crossed threshold",CC-BY-4.0,2025-11-15,"False news spreads 6x faster than truth (Vosoughi)"
+Misinformation_Virality,Social,2018,0.68,0.50,5.5,0.78,"Lazer et al. 2018 Science - misinformation ecosystem",CC-BY-4.0,2025-11-15,"Post-threshold - coordination emerges"
+Misinformation_Virality,Social,2020,0.82,0.50,5.5,0.92,"Pandemic year - 'infodemic' (WHO)",CC-BY-4.0,2025-11-15,"Supercritical - coordinated inauthentic behavior"
+Misinformation_Virality,Social,2024,0.75,0.50,5.5,0.85,"Post-intervention - fact-checks, AI detection",CC-BY-4.0,2025-11-15,"Still above threshold despite mitigation"

@@ -1,0 +1,8 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+E_coli_Resistance,Biology,1980,5.2,20.0,7.8,0.02,"CDC NARMS, WHO GLASS - fluoroquinolone resistance %",CC-BY-4.0,2025-11-15,"Baseline - pre-widespread antibiotic use"
+E_coli_Resistance,Biology,1990,8.5,20.0,7.8,0.04,"Increasing outpatient prescriptions",CC-BY-4.0,2025-11-15,"Resistance emerging"
+E_coli_Resistance,Biology,2000,12.8,20.0,7.8,0.08,"Collignon et al. 2018 Lancet Infectious Diseases",CC-BY-4.0,2025-11-15,"Accelerating resistance"
+E_coli_Resistance,Biology,2010,18.5,20.0,7.8,0.28,"Approaching threshold - plasmid-mediated spread",CC-BY-4.0,2025-11-15,"Horizontal gene transfer critical"
+E_coli_Resistance,Biology,2015,20.8,20.0,7.8,0.58,"Crossed threshold - WHO declares crisis",CC-BY-4.0,2025-11-15,"Multi-drug resistant strains common"
+E_coli_Resistance,Biology,2020,26.5,20.0,7.8,0.82,"Post-threshold - carbapenem resistance",CC-BY-4.0,2025-11-15,"Last-resort antibiotics failing"
+E_coli_Resistance,Biology,2024,32.0,20.0,7.8,0.92,"Current - pan-resistant strains detected",CC-BY-4.0,2025-11-15,"Some infections untreatable"

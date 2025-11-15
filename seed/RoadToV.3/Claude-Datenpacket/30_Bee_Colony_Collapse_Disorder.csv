@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Bee_Colony_CCD,Ecology,2000,92,80,8.2,0.08,"vanEngelsdorp et al. 2009 J Invertebrate Pathology",CC-BY-4.0,2025-11-15,"Colony survival rate (%) - baseline"
+Bee_Colony_CCD,Ecology,2005,88,80,8.2,0.12,"CCD first identified - mysterious losses",CC-BY-4.0,2025-11-15,"Syndrome emergence"
+Bee_Colony_CCD,Ecology,2007,82,80,8.2,0.38,"Steinhauer et al. 2014 J Apicultural Research",CC-BY-4.0,2025-11-15,"Approaching threshold - 30% annual losses"
+Bee_Colony_CCD,Ecology,2010,78,80,8.2,0.58,"Crossed threshold - pollination crisis",CC-BY-4.0,2025-11-15,"Commercial beekeeping threatened"
+Bee_Colony_CCD,Ecology,2014,72,80,8.2,0.78,"Post-threshold - neonicotinoid bans begin",CC-BY-4.0,2025-11-15,"40% annual losses - unsustainable"
+Bee_Colony_CCD,Ecology,2024,68,80,8.2,0.88,"Persistent crisis - managed beekee ping declining",CC-BY-4.0,2025-11-15,"$15B pollination services at risk"

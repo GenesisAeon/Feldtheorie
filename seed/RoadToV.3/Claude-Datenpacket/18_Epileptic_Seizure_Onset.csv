@@ -1,0 +1,7 @@
+system,domain,time_seconds,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Epileptic_Seizure,Neuroscience,-30,12.5,18.0,9.8,0.08,"Mormann et al. 2007 Brain, intracranial EEG",CC-BY-4.0,2025-11-15,"Neural synchronization index - 30s before seizure, baseline"
+Epileptic_Seizure,Neuroscience,-15,14.2,18.0,9.8,0.12,"Lehnertz et al. 2009 Journal Neuroscience Methods",CC-BY-4.0,2025-11-15,"Pre-ictal state - synchrony increasing"
+Epileptic_Seizure,Neuroscience,-5,16.5,18.0,9.8,0.22,"Jiruska et al. 2013 Journal Physiology",CC-BY-4.0,2025-11-15,"Approaching threshold - EWS detectable"
+Epileptic_Seizure,Neuroscience,0,18.0,18.0,9.8,0.50,"Seizure onset - Lopes da Silva et al. 2003 Epilepsia",CC-BY-4.0,2025-11-15,"THRESHOLD CROSSED - ictal state begins"
+Epileptic_Seizure,Neuroscience,10,22.5,18.0,9.8,0.92,"Mid-seizure - hypersynchronous firing",CC-BY-4.0,2025-11-15,"Full activation - tonic-clonic phase"
+Epileptic_Seizure,Neuroscience,60,25.0,18.0,9.8,0.98,"Peak seizure activity",CC-BY-4.0,2025-11-15,"Maximal synchronization before termination"

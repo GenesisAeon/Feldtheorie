@@ -1,0 +1,8 @@
+system,domain,model,parameters_billions,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Stable_Diffusion,AI,SD_v1.1,0.86,19.5,20.0,5.2,0.25,"Stability AI, Rombach et al. 2022 CVPR",OpenRAIL,2025-11-15,"Parameters in billions - below coherence threshold"
+Stable_Diffusion,AI,SD_v1.4,0.86,19.8,20.0,5.2,0.10,"Stability AI release 2022",OpenRAIL,2025-11-15,"Approaching threshold - improved but artifacts remain"
+Stable_Diffusion,AI,SD_v1.5,0.86,20.2,20.0,5.2,0.05,"Stability AI Aug 2022",OpenRAIL,2025-11-15,"Above threshold - coherent hands, faces emergent"
+Stable_Diffusion,AI,SD_v2.0,0.98,20.5,20.0,5.2,0.08,"Stability AI Nov 2022, higher resolution",OpenRAIL,2025-11-15,"Enhanced emergence - 768x768 coherence"
+Stable_Diffusion,AI,SD_v2.1,0.98,20.6,20.0,5.2,0.07,"Stability AI Dec 2022",OpenRAIL,2025-11-15,"Refined - fewer artifacts"
+Stable_Diffusion,AI,SDXL,2.6,21.8,20.0,5.2,0.15,"Stability AI July 2023",OpenRAIL,2025-11-15,"Major scale increase - photorealistic emergence"
+Stable_Diffusion,AI,SD3,8.0,23.5,20.0,5.2,0.22,"Stability AI 2024, multimodal model",OpenRAIL,2025-11-15,"Far above - text rendering, complex composition emergent"

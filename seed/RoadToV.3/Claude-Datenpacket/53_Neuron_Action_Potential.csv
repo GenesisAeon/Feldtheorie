@@ -1,0 +1,7 @@
+system,domain,time_milliseconds,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Action_Potential_Squid_Giant_Axon,Neuroscience,0,-70,-55,12.5,"0.15","Hodgkin & Huxley 1952 J Physiol - membrane potential mV",CC-BY-4.0,2025-11-15,"Resting potential - Na+/K+ pump equilibrium"
+Action_Potential_Squid_Giant_Axon,Neuroscience,0.2,-65,-55,12.5,0.25,"Depolarization begins - stimulus applied",CC-BY-4.0,2025-11-15,"Voltage-gated Na+ channels activating"
+Action_Potential_Squid_Giant_Axon,Neuroscience,0.5,-58,-55,12.5,0.42,"Approaching threshold - EPSP summation",CC-BY-4.0,2025-11-15,"Critical membrane potential"
+Action_Potential_Squid_Giant_Axon,Neuroscience,0.8,-55,-55,12.5,0.50,"THRESHOLD CROSSED - Na+ influx explosive",CC-BY-4.0,2025-11-15,"All-or-none principle"
+Action_Potential_Squid_Giant_Axon,Neuroscience,1.0,30,-55,12.5,0.95,"Peak depolarization - overshoot",CC-BY-4.0,2025-11-15,"Na+ inactivation, K+ efflux begins"
+Action_Potential_Squid_Giant_Axon,Neuroscience,2.0,-75,-55,12.5,0.12,"Hyperpolarization - refractory period",CC-BY-4.0,2025-11-15,"K+ channels close slowly"

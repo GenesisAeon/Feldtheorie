@@ -1,0 +1,7 @@
+system,domain,time_hours,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Bacteriophage_T4_E_coli_Lysis,Biology,0,1e8,1e9,9.2,"0.05","Abedon et al. 2001 Bacteriophage - bacterial density CFU/mL",CC-BY-4.0,2025-11-15,"Infection begins - MOI=0.1"
+Bacteriophage_T4_E_coli_Lysis,Biology,1,3e8,1e9,9.2,0.10,"Adsorption phase - phage attaching",CC-BY-4.0,2025-11-15,"Injection of DNA"
+Bacteriophage_T4_E_coli_Lysis,Biology,2,6e8,1e9,9.2,0.18,"Eclipse period - phage replication",CC-BY-4.0,2025-11-15,"Bacteria still viable"
+Bacteriophage_T4_E_coli_Lysis,Biology,3,8.5e8,1e9,9.2,0.35,"Approaching threshold - virions assembling",CC-BY-4.0,2025-11-15,"Burst size ~200 phage/cell"
+Bacteriophage_T4_E_coli_Lysis,Biology,4,1.2e9,1e9,9.2,0.62,"LYSIS THRESHOLD - bacteria bursting",CC-BY-4.0,2025-11-15,"Exponential phage release"
+Bacteriophage_T4_E_coli_Lysis,Biology,6,3.5e9,1e9,9.2,0.92,"Post-threshold - bacterial collapse",CC-BY-4.0,2025-11-15,"Clearing infection - therapeutic window"

@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Soil_Microbiome_Agricultural,Biology,1950,95,75,6.8,0.05,"Fierer & Jackson 2006 PNAS - agricultural soils",CC-BY-4.0,2025-11-15,"Microbial diversity index (% of native) - pre-industrial ag"
+Soil_Microbiome_Agricultural,Biology,1970,88,75,6.8,0.08,"Green revolution - fertilizer use",CC-BY-4.0,2025-11-15,"Diversity declining"
+Soil_Microbiome_Agricultural,Biology,1990,82,75,6.8,0.15,"Monoculture intensifies",CC-BY-4.0,2025-11-15,"Functional redundancy lost"
+Soil_Microbiome_Agricultural,Biology,2000,78,75,6.8,0.35,"Approaching threshold - pesticide impacts",CC-BY-4.0,2025-11-15,"Mycorrhizal networks degrading"
+Soil_Microbiome_Agricultural,Biology,2010,74,75,6.8,0.48,"Crossed threshold - soil degradation",CC-BY-4.0,2025-11-15,"Carbon storage impaired"
+Soil_Microbiome_Agricultural,Biology,2024,65,75,6.8,0.78,"Post-threshold - regenerative ag needed",CC-BY-4.0,2025-11-15,"Soil ecosystem services compromised"

@@ -1,0 +1,8 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Political_Polarization_US_Congress,Social,1970,25,45,5.5,"0.08","Pew Research, DW-NOMINATE scores - ideological distance",CC-BY-4.0,2025-11-15,"Post-Civil Rights - bipartisan coalitions common"
+Political_Polarization_US_Congress,Social,1980,30,45,5.5,0.12,"Reagan era - conservative movement",CC-BY-4.0,2025-11-15,"Southern realignment begins"
+Political_Polarization_US_Congress,Social,1994,38,45,5.5,0.22,"Gingrich revolution - Contract with America",CC-BY-4.0,2025-11-15,"Partisan warfare escalates"
+Political_Polarization_US_Congress,Social,2000,42,45,5.5,0.38,"Bush v. Gore - Florida recount crisis",CC-BY-4.0,2025-11-15,"Cable news echo chambers"
+Political_Polarization_US_Congress,Social,2010,46,45,5.5,0.58,"Tea Party wave - approaching threshold",CC-BY-4.0,2025-11-15,"Social media filter bubbles"
+Political_Polarization_US_Congress,Social,2016,52,45,5.5,0.75,"CROSSED - Trump election",CC-BY-4.0,2025-11-15,"Affective polarization peak"
+Political_Polarization_US_Congress,Social,2024,58,45,5.5,0.85,"Post-threshold - democratic norms strained",CC-BY-4.0,2025-11-15,"Compromise nearly impossible"

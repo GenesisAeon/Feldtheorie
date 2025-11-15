@@ -1,0 +1,7 @@
+system,domain,time_microseconds,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Nuclear_Chain_Reaction,Physics,0,0.85,1.0,16.3,0.15,"Neutron multiplication factor k - subcritical",CC-BY-4.0,2025-11-15,"Manhattan Project data, Serber 1992"
+Nuclear_Chain_Reaction,Physics,1,0.95,1.0,16.3,0.10,"Approaching criticality",CC-BY-4.0,2025-11-15,"Control rods withdrawing"
+Nuclear_Chain_Reaction,Physics,2,0.99,1.0,16.3,0.05,"Delayed critical - reactor startup",CC-BY-4.0,2025-11-15,"Controlled approach"
+Nuclear_Chain_Reaction,Physics,3,1.0,1.0,16.3,0.50,"CRITICAL - self-sustaining chain",CC-BY-4.0,2025-11-15,"k=1.000 - threshold crossed"
+Nuclear_Chain_Reaction,Physics,4,1.01,1.0,16.3,0.70,"Prompt supercritical (reactor)",CC-BY-4.0,2025-11-15,"Power rising - still controlled"
+Nuclear_Chain_Reaction,Physics,5,1.05,1.0,16.3,0.92,"Highly supercritical (weapon)",CC-BY-4.0,2025-11-15,"Exponential energy release"

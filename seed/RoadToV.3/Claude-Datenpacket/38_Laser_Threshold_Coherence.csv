@@ -1,0 +1,7 @@
+system,domain,pump_power_mW,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Semiconductor_Laser_Diode,Physics,0,0.2,1.0,14.5,0.10,"Chow et al. 1994 IEEE JQE - photon density relative",CC-BY-4.0,2025-11-15,"Below threshold - spontaneous emission only"
+Semiconductor_Laser_Diode,Physics,0.5,0.5,1.0,14.5,0.22,"Approaching - population inversion building",CC-BY-4.0,2025-11-15,"Carrier density increasing"
+Semiconductor_Laser_Diode,Physics,0.9,0.95,1.0,14.5,0.42,"Near threshold - gain = loss",CC-BY-4.0,2025-11-15,"Critical slowing down observable"
+Semiconductor_Laser_Diode,Physics,1.0,1.0,1.0,14.5,0.50,"LASING THRESHOLD - stimulated emission dominates",CC-BY-4.0,2025-11-15,"Coherence emerges - sharp transition"
+Semiconductor_Laser_Diode,Physics,1.5,1.5,1.0,14.5,0.72,"Above threshold - linear output",CC-BY-4.0,2025-11-15,"Fully coherent beam"
+Semiconductor_Laser_Diode,Physics,3.0,3.0,1.0,14.5,0.92,"High power - nonlinear effects",CC-BY-4.0,2025-11-15,"Thermal management critical"

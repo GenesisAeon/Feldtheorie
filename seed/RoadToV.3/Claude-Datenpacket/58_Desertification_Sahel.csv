@@ -1,0 +1,8 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Sahel_Vegetation_Cover,Climate,1950,45,30,8.2,"0.05","Tucker et al. 1991 Ambio - vegetation % cover NDVI",CC-BY-4.0,2025-11-15,"Post-colonial - sustainable pastoralism"
+Sahel_Vegetation_Cover,Climate,1970,42,30,8.2,0.08,"Population pressure - overgrazing begins",CC-BY-4.0,2025-11-15,"Groundnut scheme expansion"
+Sahel_Vegetation_Cover,Climate,1980,38,30,8.2,0.18,"Drought cycle - 1968-1974 Sahel crisis",CC-BY-4.0,2025-11-15,"Famine, livestock die-off"
+Sahel_Vegetation_Cover,Climate,1990,33,30,8.2,0.38,"Approaching threshold - soil degradation",CC-BY-4.0,2025-11-15,"Wind erosion accelerating"
+Sahel_Vegetation_Cover,Climate,2000,28,30,8.2,0.65,"CROSSED - desertification irreversible",CC-BY-4.0,2025-11-15,"Albedo feedback - less rainfall"
+Sahel_Vegetation_Cover,Climate,2010,24,30,8.2,0.78,"Post-threshold - Great Green Wall initiative",CC-BY-4.0,2025-11-15,"Restoration efforts - mixed success"
+Sahel_Vegetation_Cover,Climate,2024,22,30,8.2,0.85,"Persistent degradation - climate migration",CC-BY-4.0,2025-11-15,"Boko Haram conflict nexus"

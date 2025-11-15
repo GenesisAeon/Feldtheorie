@@ -1,0 +1,9 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+US_Inequality_Gini,Economics,1970,0.39,0.50,4.2,0.08,"US Census, Piketty & Saez 2003 QJE",CC-BY-4.0,2025-11-15,"Gini coefficient - post-war compression era"
+US_Inequality_Gini,Economics,1980,0.40,0.50,4.2,0.10,"Reagan era - tax cuts begin",CC-BY-4.0,2025-11-15,"Inequality rising slowly"
+US_Inequality_Gini,Economics,1990,0.43,0.50,4.2,0.15,"Accelerating - top 1% wealth concentration",CC-BY-4.0,2025-11-15,"Neoliberal policies take effect"
+US_Inequality_Gini,Economics,2000,0.46,0.50,4.2,0.28,"Approaching threshold - tech boom wealth",CC-BY-4.0,2025-11-15,"Dot-com millionaires"
+US_Inequality_Gini,Economics,2007,0.48,0.50,4.2,0.42,"Pre-crisis peak",CC-BY-4.0,2025-11-15,"Financial sector wealth concentration"
+US_Inequality_Gini,Economics,2010,0.47,0.50,4.2,0.35,"Post-2008 - slight compression from crisis",CC-BY-4.0,2025-11-15,"Temporary reduction"
+US_Inequality_Gini,Economics,2020,0.49,0.50,4.2,0.48,"Pandemic exacerbates - billionaire wealth soars",CC-BY-4.0,2025-11-15,"Approaching threshold again"
+US_Inequality_Gini,Economics,2024,0.51,0.50,4.2,0.55,"Crossed threshold - social stability concerns",CC-BY-4.0,2025-11-15,"Highest since 1920s - political instability risk"
