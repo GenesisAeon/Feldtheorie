@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Indian_Summer_Monsoon,Climate,1950,950,800,8.8,"0.05","Gadgil & Gadgil 2006 Current Science - monsoon rainfall mm/season",CC-BY-4.0,2025-11-15,"Stable monsoon - agrarian calendar reliable"
+Indian_Summer_Monsoon,Climate,1970,920,800,8.8,0.08,"Green revolution dependency",CC-BY-4.0,2025-11-15,"Irrigation expansion begins"
+Indian_Summer_Monsoon,Climate,1990,880,800,8.8,0.15,"Variability increasing - ENSO teleconnections",CC-BY-4.0,2025-11-15,"Drought frequency rising"
+Indian_Summer_Monsoon,Climate,2000,850,800,8.8,0.28,"Approaching threshold - Himalayas warming",CC-BY-4.0,2025-11-15,"Glacial meltwater declining"
+Indian_Summer_Monsoon,Climate,2010,820,800,8.8,0.48,"Crossed threshold - delayed onset",CC-BY-4.0,2025-11-15,"Agricultural crisis emerging"
+Indian_Summer_Monsoon,Climate,2024,780,800,8.8,0.72,"Post-threshold - extreme variability",CC-BY-4.0,2025-11-15,"Cloudbursts + droughts in same season"

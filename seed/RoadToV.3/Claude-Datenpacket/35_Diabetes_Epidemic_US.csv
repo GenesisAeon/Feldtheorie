@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Type2_Diabetes_US,Health,1980,5.5,10.0,6.2,0.05,"CDC NHANES - prevalence %",CC-BY-4.0,2025-11-15,"Baseline - pre-obesity epidemic"
+Type2_Diabetes_US,Health,1990,6.8,10.0,6.2,0.08,"Rising - dietary shifts",CC-BY-4.0,2025-11-15,"Fast food proliferation"
+Type2_Diabetes_US,Health,2000,8.5,10.0,6.2,0.15,"Accelerating - childhood obesity",CC-BY-4.0,2025-11-15,"Type 2 in children emerges"
+Type2_Diabetes_US,Health,2010,10.2,10.0,6.2,0.52,"Crossed threshold - 'epidemic' declared",CC-BY-4.0,2025-11-15,"Healthcare system strain"
+Type2_Diabetes_US,Health,2015,12.8,10.0,6.2,0.75,"Post-threshold - complications surge",CC-BY-4.0,2025-11-15,"Amputations, blindness, kidney failure"
+Type2_Diabetes_US,Health,2024,15.5,10.0,6.2,0.88,"Current crisis - 1 in 6.5 adults",CC-BY-4.0,2025-11-15,"$327B annual costs"

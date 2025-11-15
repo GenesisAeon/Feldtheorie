@@ -1,0 +1,8 @@
+system,domain,model,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Chess_Engines,AI,Deep_Blue,2850,3000,4.5,0.15,"IBM 1997, Kasparov match",Proprietary,2025-11-15,"Elo rating - beat world champion but below superhuman threshold"
+Chess_Engines,AI,Rybka,3100,3000,4.5,0.52,"Top engine 2008",Proprietary,2025-11-15,"Crossed threshold - definitively superhuman"
+Chess_Engines,AI,Stockfish_8,3400,3000,4.5,0.82,"2016 version",GPL-3.0,2025-11-15,"Post-threshold - traditional programming peak"
+Chess_Engines,AI,AlphaZero,3500,3000,4.5,0.88,"DeepMind 2017, Silver et al. 2018 Science",DeepMind-Research,2025-11-15,"Self-play emergent strategy - defeated Stockfish"
+Chess_Engines,AI,Leela_Chess_Zero,3450,3000,4.5,0.86,"2019 open-source AlphaZero",GPL-3.0,2025-11-15,"Neural network self-play - human-like creativity emerges"
+Chess_Engines,AI,Stockfish_16_NNUE,3550,3000,4.5,0.91,"2023, neural network hybrid",GPL-3.0,2025-11-15,"Traditional + NN fusion - highest playing strength"
+Chess_Engines,AI,Stockfish_17,3600,3000,4.5,0.93,"2024 current",GPL-3.0,2025-11-15,"Peak performance - essentially perfect play"

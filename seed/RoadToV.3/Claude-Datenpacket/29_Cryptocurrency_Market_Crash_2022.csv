@@ -1,0 +1,7 @@
+system,domain,day,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Crypto_Crash_2022,Economics,1,69000,45000,5.8,0.15,"Bitcoin price (USD) - May 2022 peak",CC-BY-4.0,2025-11-15,"Pre-crash - Luna/UST stable"
+Cryptocurrency_Market_Crash,Economics,7,55000,45000,5.8,0.22,"Terra Luna depegs - cascade begins",CC-BY-4.0,2025-11-15,"Contagion starting"
+Cryptocurrency_Market_Crash,Economics,10,48000,45000,5.8,0.45,"Approaching threshold - liquidations",CC-BY-4.0,2025-11-15,"Margin calls trigger selling"
+Cryptocurrency_Market_Crash,Economics,14,42000,45000,5.8,0.58,"Crossed threshold - panic selling",CC-BY-4.0,2025-11-15,"Below $45K psychological level"
+Cryptocurrency_Market_Crash,Economics,21,28000,45000,5.8,0.85,"Post-threshold - Celsius, 3AC collapse",CC-BY-4.0,2025-11-15,"Contagion to CeFi"
+Cryptocurrency_Market_Crash,Economics,60,19000,45000,5.8,0.95,"Trough - 72% decline",CC-BY-4.0,2025-11-15,"Max drawdown - crypto winter"

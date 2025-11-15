@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Gut_Microbiome_Western_Diet,Biology,1950,95,70,7.2,0.08,"Turnbaugh et al. 2009 Nature - Firmicutes/Bacteroidetes ratio",CC-BY-4.0,2025-11-15,"Baseline - traditional diet diversity"
+Gut_Microbiome_Western_Diet,Biology,1970,88,70,7.2,0.12,"Processed food increase",CC-BY-4.0,2025-11-15,"Dietary fiber declining"
+Gut_Microbiome_Western_Diet,Biology,1990,82,70,7.2,0.22,"Antibiotic overuse begins",CC-BY-4.0,2025-11-15,"Diversity declining"
+Gut_Microbiome_Western_Diet,Biology,2000,75,70,7.2,0.42,"Approaching threshold - IBD rising",CC-BY-4.0,2025-11-15,"Inflammatory bowel disease epidemic"
+Gut_Microbiome_Western_Diet,Biology,2010,68,70,7.2,0.58,"Crossed threshold - dysbiosis common",CC-BY-4.0,2025-11-15,"Obesity, diabetes links established"
+Gut_Microbiome_Western_Diet,Biology,2024,62,70,7.2,0.78,"Post-threshold - probiotic interventions",CC-BY-4.0,2025-11-15,"Akkermansia, Faecalibacterium depletion"

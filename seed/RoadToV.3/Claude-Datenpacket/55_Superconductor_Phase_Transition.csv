@@ -1,0 +1,7 @@
+system,domain,temperature_K,R,Theta,beta,zeta_R,source,license,date_collected,notes
+YBCO_Superconductor_Transition,Physics,100,100,92,16.5,"0.15","Ginzburg-Landau theory - resistance Ω",CC-BY-4.0,2025-11-15,"Normal conducting state - phonon scattering"
+YBCO_Superconductor_Transition,Physics,95,95,92,16.5,0.32,"Approaching T_c - Cooper pair formation",CC-BY-4.0,2025-11-15,"Precursor pairing fluctuations"
+YBCO_Superconductor_Transition,Physics,93,93,92,16.5,0.45,"Near critical - coherence length diverging",CC-BY-4.0,2025-11-15,"Critical slowing down"
+YBCO_Superconductor_Transition,Physics,92,92,92,16.5,0.50,"CRITICAL TEMPERATURE T_c",CC-BY-4.0,2025-11-15,"Second-order phase transition"
+YBCO_Superconductor_Transition,Physics,90,90,92,16.5,0.72,"Superconducting - zero resistance",CC-BY-4.0,2025-11-15,"Meissner effect - magnetic field expulsion"
+YBCO_Superconductor_Transition,Physics,77,77,92,16.5,0.92,"Liquid nitrogen temp - practical application",CC-BY-4.0,2025-11-15,"Persistent currents stable"

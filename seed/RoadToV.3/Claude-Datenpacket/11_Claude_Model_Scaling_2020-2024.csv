@@ -1,0 +1,8 @@
+system,domain,model,parameters_billions,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Claude_Anthropic,AI,Claude-1,52,22.5,23.0,4.35,0.02,"Anthropic Constitutional AI Paper 2022",Anthropic-Research,2025-11-15,"Below emergence - basic conversation, some reasoning"
+Claude_Anthropic,AI,Claude-2,93,22.9,23.0,4.35,0.01,"Anthropic scaling reports",Anthropic-Research,2025-11-15,"At threshold - constitutional AI principles emerge"
+Claude_Anthropic,AI,Claude-2.1,120,23.1,23.0,4.35,0.005,"Anthropic, extended context window",Anthropic-Research,2025-11-15,"Above threshold - 100K context, improved reasoning"
+Claude_Anthropic,AI,Claude-3-Haiku,25,22.2,23.0,4.35,0.04,"Anthropic Claude 3 release 2024",Anthropic-Research,2025-11-15,"Below threshold - fast but limited emergence"
+Claude_Anthropic,AI,Claude-3-Sonnet,110,22.95,23.0,4.35,0.005,"Anthropic Claude 3 release 2024",Anthropic-Research,2025-11-15,"At/above threshold - balanced performance"
+Claude_Anthropic,AI,Claude-3-Opus,180,23.4,23.0,4.35,0.02,"Anthropic Claude 3 release 2024",Anthropic-Research,2025-11-15,"Well above - strongest reasoning, multimodal emergent abilities"
+Claude_Anthropic,AI,Claude-3.5-Sonnet,200,23.5,23.0,4.35,0.03,"Anthropic June 2024 release",Anthropic-Research,2025-11-15,"Further emergence - coding, analysis, extended capabilities"

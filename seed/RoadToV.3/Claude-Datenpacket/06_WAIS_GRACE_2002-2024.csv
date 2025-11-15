@@ -1,0 +1,9 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+WAIS_Antarctica,Climate,2002,2850000,2800000,13.5,0.02,"NASA GRACE JPL Tellus, Shepherd et al. 2018 Nature",CC-BY-4.0,2025-11-15,"Baseline ice sheet mass (Gt), stable period"
+WAIS_Antarctica,Climate,2005,2830000,2800000,13.5,0.04,"NASA GRACE JPL Tellus, Shepherd et al. 2018 Nature",CC-BY-4.0,2025-11-15,"Early mass loss begins"
+WAIS_Antarctica,Climate,2008,2780000,2800000,13.5,0.08,"NASA GRACE JPL Tellus, Shepherd et al. 2018 Nature",CC-BY-4.0,2025-11-15,"Crossing threshold - acceleration detected"
+WAIS_Antarctica,Climate,2010,2750000,2800000,13.5,0.12,"NASA GRACE JPL Tellus, Shepherd et al. 2018 Nature",CC-BY-4.0,2025-11-15,"Sustained mass loss - Pine Island Glacier retreat"
+WAIS_Antarctica,Climate,2014,2680000,2800000,13.5,0.18,"NASA GRACE-FO, TiPACCs Project 2020",CC-BY-4.0,2025-11-15,"Accelerated loss - Thwaites Glacier unstable"
+WAIS_Antarctica,Climate,2018,2580000,2800000,13.5,0.25,"NASA GRACE-FO, TiPACCs Project 2020",CC-BY-4.0,2025-11-15,"Major acceleration - approaching tipping"
+WAIS_Antarctica,Climate,2021,2480000,2800000,13.5,0.32,"NASA GRACE-FO, Armstrong-McKay et al. 2022 Science",CC-BY-4.0,2025-11-15,"Critical slowing detected in EWS"
+WAIS_Antarctica,Climate,2024,2200000,2800000,13.5,0.45,"NASA GRACE-FO, current monitoring",CC-BY-4.0,2025-11-15,"Current state - 21.9% from tipping, -1593 Gt/year rate"

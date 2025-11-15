@@ -1,0 +1,9 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Amazon_Rainforest,Climate,1980,92,80,8.2,0.15,"Lovejoy & Nobre 2018 Science Advances, ESA CCI Land Cover",CC-BY-4.0,2025-11-15,"Forest cover % - near-pristine baseline"
+Amazon_Rainforest,Climate,1990,88,80,8.2,0.18,"Lovejoy & Nobre 2018, INPE PRODES",CC-BY-4.0,2025-11-15,"Deforestation accelerates"
+Amazon_Rainforest,Climate,2000,85,80,8.2,0.22,"Lovejoy & Nobre 2018, Zemp et al. 2017 Nature",CC-BY-4.0,2025-11-15,"Drought events increase"
+Amazon_Rainforest,Climate,2005,83,80,8.2,0.25,"Malhi et al. 2008 Science, major droughts",CC-BY-4.0,2025-11-15,"2005 drought - massive tree mortality"
+Amazon_Rainforest,Climate,2010,81.5,80,8.2,0.28,"Davidson et al. 2012 Nature, 2010 drought",CC-BY-4.0,2025-11-15,"Second mega-drought in 5 years"
+Amazon_Rainforest,Climate,2015,80.8,80,8.2,0.32,"Gatti et al. 2021 Nature, carbon source",CC-BY-4.0,2025-11-15,"Amazon becomes net carbon SOURCE (southeastern)"
+Amazon_Rainforest,Climate,2019,80.2,80,8.2,0.38,"IPCC SR1.5 2019, Nobre et al.",CC-BY-4.0,2025-11-15,"Fire season catastrophic - 20-25% deforestation approaching"
+Amazon_Rainforest,Climate,2024,79.5,80,8.2,0.45,"Current monitoring INPE, Gatti et al. follow-up",CC-BY-4.0,2025-11-15,"0.5% from tipping threshold (20% deforestation = savannization)"

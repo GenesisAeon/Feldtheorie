@@ -1,0 +1,7 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Permafrost_Thaw,Climate,2000,-2.5,-1.0,9.5,0.08,"GTN-P Database, Romanovsky et al. 2010",CC-BY-4.0,2025-11-15,"Mean annual ground temp (°C) at 1m depth - baseline"
+Permafrost_Thaw,Climate,2005,-2.2,-1.0,9.5,0.12,"GTN-P, Schuur et al. 2015 Nature",CC-BY-4.0,2025-11-15,"Warming trend clear"
+Permafrost_Thaw,Climate,2010,-1.8,-1.0,9.5,0.18,"GTN-P, Turetsky et al. 2020 Nature Geoscience",CC-BY-4.0,2025-11-15,"Accelerating thaw - thermokarst formation"
+Permafrost_Thaw,Climate,2015,-1.4,-1.0,9.5,0.28,"GTN-P, abrupt thaw events",CC-BY-4.0,2025-11-15,"Rapid thaw in Alaska, Canada, Siberia"
+Permafrost_Thaw,Climate,2020,-1.1,-1.0,9.5,0.42,"GTN-P, Miner et al. 2022 PNAS",CC-BY-4.0,2025-11-15,"Approaching threshold - methane emissions spike"
+Permafrost_Thaw,Climate,2024,-0.9,-1.0,9.5,0.52,"GTN-P, current monitoring",CC-BY-4.0,2025-11-15,"0.1°C from tipping - carbon feedback accelerating"

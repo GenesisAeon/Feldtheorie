@@ -1,0 +1,7 @@
+system,domain,days_from_start,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Arab_Spring_Tunisia_2011,Social,0,0.5,3.5,6.2,"0.08","Tufekci 2017 Twitter & Tear Gas - participation % population",CC-BY-4.0,2025-11-15,"Bouazizi self-immolation - initial spark"
+Arab_Spring_Tunisia_2011,Social,5,1.2,3.5,6.2,0.15,"Local protests - Sidi Bouzid",CC-BY-4.0,2025-11-15,"Social media amplification begins"
+Arab_Spring_Tunisia_2011,Social,10,2.1,3.5,6.2,0.32,"Spreading to other cities",CC-BY-4.0,2025-11-15,"Police violence videos viral"
+Arab_Spring_Tunisia_2011,Social,15,3.0,3.5,6.2,0.48,"Approaching critical mass",CC-BY-4.0,2025-11-15,"General strike called"
+Arab_Spring_Tunisia_2011,Social,20,3.6,3.5,6.2,0.58,"CRITICAL MASS CROSSED",CC-BY-4.0,2025-11-15,"Nationwide protests - regime vulnerable"
+Arab_Spring_Tunisia_2011,Social,28,5.2,3.5,6.2,0.82,"Ben Ali flees - revolution succeeds",CC-BY-4.0,2025-11-15,"Cascade to Egypt, Libya, Syria"

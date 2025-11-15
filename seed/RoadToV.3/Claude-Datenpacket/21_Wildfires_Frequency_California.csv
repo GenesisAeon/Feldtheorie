@@ -1,0 +1,8 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+California_Megafires,Climate,1980,45000,100000,8.8,0.05,"CAL FIRE statistics, Westerling 2016 PNAS",CC-BY-4.0,2025-11-15,"Annual burned area (acres) - baseline"
+California_Megafires,Climate,1990,52000,100000,8.8,0.06,"Moderate fire seasons",CC-BY-4.0,2025-11-15,"Increasing but below threshold"
+California_Megafires,Climate,2000,68000,100000,8.8,0.08,"Drought + warming trend begins",CC-BY-4.0,2025-11-15,"Approaching threshold"
+California_Megafires,Climate,2007,95000,100000,8.8,0.22,"Major fire year - near threshold",CC-BY-4.0,2025-11-15,"Early megafire season"
+California_Megafires,Climate,2017,129000,100000,8.8,0.68,"Wine Country fires - crossed threshold",CC-BY-4.0,2025-11-15,"New normal - megafire regime"
+California_Megafires,Climate,2018,185000,100000,8.8,0.88,"Camp Fire - deadliest in CA history",CC-BY-4.0,2025-11-15,"Post-threshold - extreme events"
+California_Megafires,Climate,2020,420000,100000,8.8,0.98,"Record year - 4.2M acres, August Complex",CC-BY-4.0,2025-11-15,"Far beyond threshold - 'gigafire' era"

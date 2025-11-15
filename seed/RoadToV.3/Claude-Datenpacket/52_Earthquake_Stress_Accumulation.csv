@@ -1,0 +1,8 @@
+system,domain,years_from_last_quake,R,Theta,beta,zeta_R,source,license,date_collected,notes
+San_Andreas_Parkfield_Segment,Physics,0,5,50,8.2,"0.05","Bakun et al. 2005 BSSA - stress accumulation MPa",CC-BY-4.0,2025-11-15,"Post-quake - stress released M6.0"
+San_Andreas_Parkfield_Segment,Physics,5,12,50,8.2,0.08,"Tectonic loading - 3 cm/year slip deficit",CC-BY-4.0,2025-11-15,"Interseismic strain"
+San_Andreas_Parkfield_Segment,Physics,10,22,50,8.2,0.12,"Aseismic creep - partial stress release",CC-BY-4.0,2025-11-15,"Microseismicity increasing"
+San_Andreas_Parkfield_Segment,Physics,15,35,50,8.2,0.22,"Approaching criticality",CC-BY-4.0,2025-11-15,"Coulomb stress building"
+San_Andreas_Parkfield_Segment,Physics,20,46,50,8.2,0.45,"Near threshold - foreshocks possible",CC-BY-4.0,2025-11-15,"Earthquake swarms"
+San_Andreas_Parkfield_Segment,Physics,22,52,50,8.2,0.58,"RUPTURE THRESHOLD - mainshock",CC-BY-4.0,2025-11-15,"Cascading failure - M6+ event"
+San_Andreas_Parkfield_Segment,Physics,22.001,5,50,8.2,0.05,"Post-quake - cycle restarts",CC-BY-4.0,2025-11-15,"Energy released - ~22 year recurrence"

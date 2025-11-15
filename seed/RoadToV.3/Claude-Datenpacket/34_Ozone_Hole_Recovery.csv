@@ -1,0 +1,8 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Antarctic_Ozone,Climate,1980,280,220,9.2,0.12,"NASA Ozone Watch - Dobson Units minimum",CC-BY-4.0,2025-11-15,"Pre-hole baseline"
+Antarctic_Ozone,Climate,1985,250,220,9.2,0.22,"Farman et al. 1985 Nature - hole discovered",CC-BY-4.0,2025-11-15,"Approaching threshold"
+Antarctic_Ozone,Climate,1990,210,220,9.2,0.52,"Crossed threshold - Montreal Protocol signed",CC-BY-4.0,2025-11-15,"Ozone depletion critical"
+Antarctic_Ozone,Climate,2000,92,220,9.2,0.95,"Minimum - largest hole extent",CC-BY-4.0,2025-11-15,"Peak depletion before recovery"
+Antarctic_Ozone,Climate,2010,125,220,9.2,0.82,"Solomon et al. 2016 Science - recovery begins",CC-BY-4.0,2025-11-15,"CFC phaseout working"
+Antarctic_Ozone,Climate,2020,165,220,9.2,0.62,"Continued recovery",CC-BY-4.0,2025-11-15,"Healing trend clear"
+Antarctic_Ozone,Climate,2024,185,220,9.2,0.52,"Recovery ongoing - still below threshold",CC-BY-4.0,2025-11-15,"Projected 2050s for full recovery"

@@ -1,0 +1,8 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Greenland_Ice_Sheet,Climate,2002,2950000,2600000,11.8,0.10,"NASA GRACE, Mouginot et al. 2019 PNAS",CC-BY-4.0,2025-11-15,"Baseline mass (Gt), moderate loss already underway"
+Greenland_Ice_Sheet,Climate,2005,2920000,2600000,11.8,0.12,"NASA GRACE, Mouginot et al. 2019 PNAS",CC-BY-4.0,2025-11-15,"Increasing summer melt"
+Greenland_Ice_Sheet,Climate,2010,2870000,2600000,11.8,0.15,"NASA GRACE, Box et al. 2018 Nature",CC-BY-4.0,2025-11-15,"Record melt year 2010"
+Greenland_Ice_Sheet,Climate,2012,2830000,2600000,11.8,0.18,"NASA GRACE, Extraordinary melt event",CC-BY-4.0,2025-11-15,"97% surface melt in single week (July 2012)"
+Greenland_Ice_Sheet,Climate,2015,2780000,2600000,11.8,0.22,"NASA GRACE, Noël et al. 2017 GRL",CC-BY-4.0,2025-11-15,"Sustained high melt rates"
+Greenland_Ice_Sheet,Climate,2019,2720000,2600000,11.8,0.28,"NASA GRACE-FO, record melt",CC-BY-4.0,2025-11-15,"Second-highest melt on record"
+Greenland_Ice_Sheet,Climate,2024,2650000,2600000,11.8,0.38,"NASA GRACE-FO, current",CC-BY-4.0,2025-11-15,"Approaching threshold - 50 Gt remaining margin, accelerating"

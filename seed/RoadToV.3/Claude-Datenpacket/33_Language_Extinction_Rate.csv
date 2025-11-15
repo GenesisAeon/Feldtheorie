@@ -1,0 +1,8 @@
+system,domain,year,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Language_Extinction,Social,1950,7000,5000,5.2,0.08,"Ethnologue, Krauss 1992 Language - total languages",CC-BY-4.0,2025-11-15,"Baseline - high linguistic diversity"
+Language_Extinction,Social,1970,6800,5000,5.2,0.10,"Globalization begins",CC-BY-4.0,2025-11-15,"English, Spanish dominance growing"
+Language_Extinction,Social,1990,6500,5000,5.2,0.15,"Crystal 2000 Language Death",CC-BY-4.0,2025-11-15,"Accelerating loss"
+Language_Extinction,Social,2000,6200,5000,5.2,0.25,"Internet era - English dominance",CC-BY-4.0,2025-11-15,"Digital divide threatens minority languages"
+Language_Extinction,Social,2010,5800,5000,5.2,0.42,"Approaching threshold - UNESCO alarm",CC-BY-4.0,2025-11-15,"40% of languages endangered"
+Language_Extinction,Social,2020,5400,5000,5.2,0.62,"Crossed threshold - extinction cascade",CC-BY-4.0,2025-11-15,"1 language dies every 2 weeks"
+Language_Extinction,Social,2024,5200,5000,5.2,0.72,"Post-threshold - cultural knowledge loss",CC-BY-4.0,2025-11-15,"3000 languages critically endangered"

@@ -1,0 +1,7 @@
+system,domain,age_years,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Synaptic_Pruning_Prefrontal_Cortex,Neuroscience,5,125,85,6.8,"0.08","Huttenlocher & Dabholkar 1997 - synaptic density % of peak",CC-BY-4.0,2025-11-15,"Peak synaptic density - childhood plasticity"
+Synaptic_Pruning_Prefrontal_Cortex,Neuroscience,10,115,85,6.8,0.12,"Experience-dependent selection",CC-BY-4.0,2025-11-15,"Use it or lose it period"
+Synaptic_Pruning_Prefrontal_Cortex,Neuroscience,13,105,85,6.8,0.22,"Adolescence begins - hormonal changes",CC-BY-4.0,2025-11-15,"Gray matter volume declining"
+Synaptic_Pruning_Prefrontal_Cortex,Neuroscience,16,90,85,6.8,0.48,"Approaching maturity - myelination increasing",CC-BY-4.0,2025-11-15,"Executive function improving"
+Synaptic_Pruning_Prefrontal_Cortex,Neuroscience,20,84,85,6.8,0.58,"ADULT THRESHOLD - pruning slows",CC-BY-4.0,2025-11-15,"Critical period closing"
+Synaptic_Pruning_Prefrontal_Cortex,Neuroscience,25,80,85,6.8,0.68,"Post-threshold - mature connectivity",CC-BY-4.0,2025-11-15,"Stable adult brain architecture"
