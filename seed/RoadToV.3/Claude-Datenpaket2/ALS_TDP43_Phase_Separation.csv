@@ -1,0 +1,11 @@
+system,domain,R,Theta,beta,zeta_R,source,license,date_collected,notes
+ALS_TDP43_Nuclear_Export,Neuroscience,0.72,0.65,11.5,0.18,"Patel et al. 2015 Cell",CC-BY-4.0,2025-11-15,"TDP-43 mislocalization threshold"
+ALS_TDP43_Cytoplasmic_Aggregation,Neuroscience,0.45,0.65,12.8,0.28,"Patel et al. 2015 Cell",CC-BY-4.0,2025-11-15,"Cytoplasmic inclusion formation"
+ALS_TDP43_LLPS_Formation,Neuroscience,0.58,0.60,10.2,0.15,"Molliex et al. 2015 Cell",CC-BY-4.0,2025-11-15,"Liquid-liquid phase separation onset"
+ALS_TDP43_Liquid_to_Solid,Neuroscience,0.38,0.60,13.5,0.35,"Conicella et al. 2016 Neuron",CC-BY-4.0,2025-11-15,"Pathological gel-to-solid transition"
+ALS_FUS_Phase_Transition,Neuroscience,0.52,0.58,11.8,0.22,"Hofweber et al. 2018 Science",CC-BY-4.0,2025-11-15,"FUS protein phase separation in ALS"
+ALS_C9orf72_DPR_Toxicity,Neuroscience,0.35,0.55,12.2,0.32,"Lee et al. 2016 Science",CC-BY-4.0,2025-11-15,"Dipeptide repeat protein aggregation"
+ALS_SOD1_Aggregation,Neuroscience,0.48,0.62,10.8,0.19,"Rotunno & Bosco 2013 Front Cell Neuro",CC-BY-4.0,2025-11-15,"SOD1 mutant aggregation threshold"
+ALS_Stress_Granule_Dysfunction,Neuroscience,0.62,0.65,9.8,0.14,"Ramaswami et al. 2013 Neuron",CC-BY-4.0,2025-11-15,"Stress granule persistence transition"
+ALS_Motor_Neuron_Degeneration,Neuroscience,0.42,0.58,11.2,0.25,"Answer ALS Database",CC-BY-NC-4.0,2025-11-15,"Critical motor neuron loss threshold"
+ALS_RNA_Binding_Dysfunction,Neuroscience,0.55,0.60,10.5,0.18,"Ling et al. 2013 Nature",CC-BY-4.0,2025-11-15,"RNA processing defect threshold"

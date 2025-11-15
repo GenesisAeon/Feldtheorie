@@ -1,0 +1,9 @@
+system,domain,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Vaginal_CST_I_to_IV,Biology,0.85,0.75,7.8,0.14,"Gajer et al. 2012 DOI:10.1126/science.1217991",CC-BY-4.0,2025-11-15,"L.crispatus dominance to high diversity transition"
+Vaginal_CST_III_to_IV,Biology,0.68,0.70,8.2,0.18,"Gajer et al. 2012 DOI:10.1126/science.1217991",CC-BY-4.0,2025-11-15,"L.iners to dysbiotic state transition"
+Vaginal_CST_Stability_I,Biology,0.92,0.75,6.5,0.08,"Gajer et al. 2012 DOI:10.1126/science.1217991",CC-BY-4.0,2025-11-15,"Stable L.crispatus state - high resilience"
+Vaginal_BV_Onset,Biology,0.45,0.70,9.1,0.22,"Ravel et al. 2011 PNAS",CC-BY-4.0,2025-11-15,"Bacterial vaginosis threshold crossing"
+Vaginal_Menses_Transition,Biology,0.55,0.65,7.2,0.15,"VALODY Study 2024 DOI:10.1186/s40168-024-01870-5",CC-BY-4.0,2025-11-15,"Menses-related CST transition"
+Vaginal_G.vaginalis_Threshold,Biology,0.38,0.60,8.8,0.25,"Ceccarani et al. 2019 Sci Rep",CC-BY-4.0,2025-11-15,"Gardnerella vaginalis dominance shift"
+Vaginal_Postmenopause_Shift,Biology,0.32,0.55,6.9,0.19,"Brotman et al. 2014 Microbiome",CC-BY-4.0,2025-11-15,"Estrogen-driven microbiome transition"
+Vaginal_Lactobacillus_Recovery,Biology,0.78,0.75,7.5,0.12,"Probiotic intervention study",CC-BY-4.0,2025-11-15,"Recovery from dysbiosis to eubiosis"

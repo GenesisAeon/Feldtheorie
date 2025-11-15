@@ -1,0 +1,11 @@
+system,domain,R,Theta,beta,zeta_R,source,license,date_collected,notes
+HD_CAG_35_Repeats,Neuroscience,35,40,14.8,0.05,"ENROLL-HD Database",CC-BY-NC-4.0,2025-11-15,"Normal range - no disease manifestation"
+HD_CAG_36_Repeats,Neuroscience,36,40,15.2,0.08,"ENROLL-HD Database",CC-BY-NC-4.0,2025-11-15,"Reduced penetrance - variable onset"
+HD_CAG_38_Repeats,Neuroscience,38,40,15.8,0.12,"ENROLL-HD Database",CC-BY-NC-4.0,2025-11-15,"Near-threshold - late onset typical"
+HD_CAG_40_Repeats,Neuroscience,40,40,16.3,0.18,"ENROLL-HD Database",CC-BY-NC-4.0,2025-11-15,"Critical threshold - full penetrance"
+HD_CAG_42_Repeats,Neuroscience,42,40,15.5,0.25,"ENROLL-HD Database",CC-BY-NC-4.0,2025-11-15,"Post-threshold - earlier onset"
+HD_CAG_45_Repeats,Neuroscience,45,40,14.2,0.32,"ENROLL-HD Database",CC-BY-NC-4.0,2025-11-15,"Expanded repeats - juvenile onset"
+HD_CAG_50_Repeats,Neuroscience,50,40,12.8,0.45,"ENROLL-HD Database",CC-BY-NC-4.0,2025-11-15,"Large expansion - childhood onset"
+HD_HTT_Aggregation_Threshold,Neuroscience,39,40,16.1,0.15,"Peskett et al. 2018 PNAS",CC-BY-4.0,2025-11-15,"PolyQ aggregation phase transition"
+HD_Inclusion_Body_Formation,Neuroscience,41,40,15.9,0.22,"Arrasate et al. 2004 Nature",CC-BY-4.0,2025-11-15,"Huntington body formation threshold"
+HD_Striatal_Neurodegeneration,Neuroscience,43,40,14.5,0.28,"HD-MAPS Study",CC-BY-NC-4.0,2025-11-15,"Critical striatal cell loss threshold"

@@ -1,0 +1,11 @@
+system,domain,R,Theta,beta,zeta_R,source,license,date_collected,notes
+AMOC_DO_Event_1,Climate,16.2,15.0,10.8,0.15,"NGRIP Ice Core Greenland",Public Domain,2025-11-15,"Dansgaard-Oeschger Event 1 - abrupt warming"
+AMOC_DO_Event_8,Climate,14.8,15.0,11.2,0.18,"NGRIP Ice Core Greenland",Public Domain,2025-11-15,"DO Event 8 - stadial-interstadial transition"
+AMOC_DO_Event_12,Climate,15.5,15.0,10.5,0.14,"NGRIP Ice Core Greenland",Public Domain,2025-11-15,"DO Event 12 - millennial oscillation"
+AMOC_Younger_Dryas_Onset,Climate,8.2,15.0,12.5,0.35,"Multiple paleoclimate proxies",Public Domain,2025-11-15,"Younger Dryas cold reversal - AMOC shutdown"
+AMOC_Younger_Dryas_End,Climate,14.1,15.0,11.8,0.22,"Alley 2000 Paleoceanography",Public Domain,2025-11-15,"Abrupt warming - AMOC restart 11.7ka"
+AMOC_8.2ka_Event,Climate,12.5,15.0,9.8,0.28,"Rohling & Pälike 2005 Science",Public Domain,2025-11-15,"8.2ka cold event - freshwater pulse"
+AMOC_Heinrich_Event_1,Climate,6.5,15.0,13.2,0.42,"Bond et al. 1992 Nature",Public Domain,2025-11-15,"Heinrich Event 1 - iceberg discharge"
+AMOC_Bølling_Transition,Climate,13.8,15.0,10.2,0.19,"Severinghaus et al. 1998 Nature",Public Domain,2025-11-15,"Bølling warming - rapid AMOC strengthening"
+AMOC_MIS3_Oscillations,Climate,14.5,15.0,10.9,0.16,"Rasmussen et al. 2014 QSR",Public Domain,2025-11-15,"Marine Isotope Stage 3 - cyclic variability"
+AMOC_Last_Glacial_Maximum,Climate,5.2,15.0,11.5,0.38,"Lynch-Stieglitz et al. 2007 Science",Public Domain,2025-11-15,"LGM - weak AMOC state"

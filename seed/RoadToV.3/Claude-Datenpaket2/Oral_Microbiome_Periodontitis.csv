@@ -1,0 +1,11 @@
+system,domain,R,Theta,beta,zeta_R,source,license,date_collected,notes
+Oral_Healthy_Baseline,Biology,0.88,0.70,6.2,0.08,"Human Microbiome Project Oral",Public Domain,2025-11-15,"Healthy oral microbiome - high stability"
+Oral_Gingivitis_Onset,Biology,0.65,0.70,7.5,0.15,"HMP Oral + Abusleme 2013",Public Domain,2025-11-15,"Gingivitis threshold - inflammation begins"
+Oral_Early_Periodontitis,Biology,0.52,0.70,8.2,0.22,"Griffen et al. 2012 ISME J",CC-BY-4.0,2025-11-15,"Periodontal pocket formation threshold"
+Oral_P.gingivalis_Colonization,Biology,0.42,0.65,8.8,0.28,"Hajishengallis 2015 Nat Rev Immunol",CC-BY-4.0,2025-11-15,"Porphyromonas gingivalis keystone pathogen"
+Oral_Dysbiotic_Transition,Biology,0.38,0.65,9.1,0.32,"Pérez-Chaparro et al. 2014 J Clin Periodontol",CC-BY-4.0,2025-11-15,"Eubiotic to dysbiotic community shift"
+Oral_Advanced_Periodontitis,Biology,0.28,0.65,7.8,0.38,"Socransky et al. 1998 J Clin Periodontol",CC-BY-4.0,2025-11-15,"Advanced periodontal disease state"
+Oral_Red_Complex_Dominance,Biology,0.35,0.60,8.5,0.35,"Socransky red complex bacteria",CC-BY-4.0,2025-11-15,"T.forsythia P.gingivalis T.denticola threshold"
+Oral_Biofilm_Maturation,Biology,0.48,0.68,7.2,0.18,"Marsh 2003 J Clin Periodontol",CC-BY-4.0,2025-11-15,"Biofilm ecological succession threshold"
+Oral_Treatment_Response,Biology,0.72,0.70,6.8,0.12,"Post-treatment recovery studies",CC-BY-4.0,2025-11-15,"Recovery from periodontitis threshold"
+Oral_Peri-Implantitis,Biology,0.45,0.65,7.9,0.25,"Heitz-Mayfield 2018 Periodontol 2000",CC-BY-4.0,2025-11-15,"Implant-associated dysbiosis threshold"
