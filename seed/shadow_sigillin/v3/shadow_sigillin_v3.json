@@ -1,0 +1,678 @@
+{
+  "metadata": {
+    "framework": "UTAC V3 Real-World Systems",
+    "sigil": "shadow-v3-real-systems",
+    "version": "1.0.0",
+    "generated": "2025-11-14T00:00:00Z",
+    "updated": "2026-08-24T18:05:00Z",
+    "systems_count": 6,
+    "logistic": {
+      "R": 0.8,
+      "Theta": 0.66,
+      "beta": 4.8,
+      "zeta": "Damped when light/shadow sigils mirror recovery hooks within one sprint."
+    },
+    "coupling": {
+      "light_side": [
+        "seed/FraktaltagebuchV3/systems/v3_wais.yaml",
+        "seed/FraktaltagebuchV3/systems/v3_amoc.yaml",
+        "seed/FraktaltagebuchV3/systems/v3_coral.yaml",
+        "seed/FraktaltagebuchV3/systems/v3_measles.yaml",
+        "seed/FraktaltagebuchV3/systems/v3_finance.yaml",
+        "seed/FraktaltagebuchV3/systems/v3_cancer.yaml"
+      ],
+      "analysis_outputs": [
+        "scripts/analysis/results/beta_fits_v3.json",
+        "scripts/analysis/results/crep_metrics_v3.json",
+        "scripts/analysis/results/ews_analysis_v3.json"
+      ]
+    },
+    "risk_categories": [
+      "Data Quality & Availability",
+      "Model Limitations",
+      "β-Estimation Uncertainty",
+      "Threshold Ambiguity",
+      "False Positives & Negatives",
+      "Cascade Coupling",
+      "Ethical & Communication Risks"
+    ]
+  },
+  "WAIS": {
+    "system": "West Antarctic Ice Sheet",
+    "utac_type": "Type-2: Thermodynamic",
+    "beta": 13.5,
+    "status": "AT TIPPING POINT",
+    "failure_modes": {
+      "data_gaps": [
+        {
+          "risk": "GRACE data gap 2017-2018 (satellite transition)",
+          "impact": "Missing 11 months of mass balance",
+          "mitigation": "Interpolate using CryoSat-2 + IceSat-2 crossover",
+          "severity": "MEDIUM"
+        },
+        {
+          "risk": "Mock data in current implementation",
+          "impact": "β-fit underestimates true steepness (3.42 vs 13.5)",
+          "mitigation": "Replace with real GRACE JPL Tellus data",
+          "severity": "CRITICAL"
+        },
+        {
+          "risk": "No direct ocean temperature at ice shelf base",
+          "impact": "Proxy (OISST) may miss subglacial intrusions",
+          "mitigation": "Use Copernicus CMEMS reanalysis at depth",
+          "severity": "HIGH"
+        }
+      ],
+      "model_limits": [
+        {
+          "risk": "Sigmoid assumes smooth transition",
+          "impact": "Actual collapse may have multiple sub-thresholds (Pine Island, Thwaites separate)",
+          "mitigation": "Multi-component β-ensemble (per glacier)",
+          "severity": "MEDIUM"
+        },
+        {
+          "risk": "β-estimation relies on paleoclimate analogs",
+          "impact": "Boundary conditions differ (Last Glacial Max vs now)",
+          "mitigation": "Weight modern satellite data higher",
+          "severity": "MEDIUM"
+        },
+        {
+          "risk": "MICI physics not fully understood",
+          "impact": "β may be underestimated if MICI dominates",
+          "mitigation": "Track Thwaites grounding line retreat velocity",
+          "severity": "HIGH"
+        }
+      ],
+      "beta_uncertainty": [
+        {
+          "risk": "Wide 95% CI: [12.0, 15.0]",
+          "impact": "Tipping timeline uncertain by ±decades",
+          "mitigation": "Ensemble forecasts, scenario planning",
+          "severity": "MEDIUM"
+        },
+        {
+          "risk": "Feedback amplification method assumes independence",
+          "impact": "Non-linear coupling may alter β",
+          "mitigation": "Validate with coupled ice-ocean models (TiPACCs)",
+          "severity": "LOW"
+        }
+      ],
+      "threshold_ambiguity": [
+        {
+          "risk": "Θ=1.5°C is regional average",
+          "impact": "Local hotspots (Amundsen Sea) may tip first",
+          "mitigation": "Spatial β-map (heterogeneous thresholds)",
+          "severity": "HIGH"
+        },
+        {
+          "risk": "Hysteresis width unknown",
+          "impact": "Don't know if 1.4°C is reversible",
+          "mitigation": "Paleo constraints + CMIP6 reversibility tests",
+          "severity": "MEDIUM"
+        }
+      ],
+      "false_signals": [
+        {
+          "risk": "Natural variability (El Niño/La Niña) mimics EWS",
+          "impact": "AR(1) spike during ENSO doesn't mean tipping",
+          "mitigation": "Detrend + bandpass filter (>2-year timescales)",
+          "severity": "LOW"
+        },
+        {
+          "risk": "Variance increase could be measurement noise",
+          "impact": "False alarm if satellite precision degrades",
+          "mitigation": "Cross-validate GRACE with CryoSat-2",
+          "severity": "LOW"
+        }
+      ],
+      "cascade_coupling": [
+        {
+          "risk": "WAIS collapse triggers AMOC weakening (Southern Ocean freshwater)",
+          "impact": "Cascading tipping points",
+          "mitigation": "Monitor coupled EWS (WAIS + AMOC + Amazon)",
+          "severity": "CRITICAL"
+        },
+        {
+          "risk": "WAIS + Greenland synchronous collapse",
+          "impact": "Compound sea level rise >10m",
+          "mitigation": "Track correlation in ice loss acceleration",
+          "severity": "CRITICAL"
+        }
+      ],
+      "communication_hazards": [
+        {
+          "risk": "21.9% to tipping misinterpreted as 'plenty of time'",
+          "impact": "Public complacency",
+          "mitigation": "Frame as 'activation window closing rapidly'",
+          "severity": "HIGH"
+        },
+        {
+          "risk": "Poetic layer (ice forgets) perceived as alarmist",
+          "impact": "Science credibility undermined",
+          "mitigation": "Balance narrative with empirical grounding",
+          "severity": "MEDIUM"
+        }
+      ]
+    }
+  },
+  "AMOC": {
+    "system": "Atlantic Meridional Overturning Circulation",
+    "utac_type": "Type-2: Bistable Thermodynamic",
+    "beta": 10.2,
+    "status": "WEAKENING, APPROACHING TIPPING",
+    "failure_modes": {
+      "data_gaps": [
+        {
+          "risk": "RAPID array limited to 26°N",
+          "impact": "Misses AMOC variability at other latitudes",
+          "mitigation": "Integrate OSNAP (subpolar) + 34°S transport",
+          "severity": "MEDIUM"
+        },
+        {
+          "risk": "Only 20 years of direct AMOC data (2004-2024)",
+          "impact": "Baseline uncertainty for 'normal' variability",
+          "mitigation": "Use fingerprints (SST, salinity) back to 1900",
+          "severity": "HIGH"
+        },
+        {
+          "risk": "Freshwater flux (M_ov) has large error bars",
+          "impact": "van Westen threshold (0.46 Sv) ±0.05 Sv",
+          "mitigation": "Ensemble of freshwater estimates (GRACE + models)",
+          "severity": "MEDIUM"
+        }
+      ],
+      "model_limits": [
+        {
+          "risk": "Bistability assumes 2 stable states",
+          "impact": "May be multi-stable (intermediate regimes)",
+          "mitigation": "Check paleoclimate for stadial/interstadial modes",
+          "severity": "LOW"
+        },
+        {
+          "risk": "CMIP6 models disagree on AMOC tipping threshold",
+          "impact": "Range: 0.1-0.3 Sv freshwater forcing",
+          "mitigation": "Use physics-based EWS (van Westen) over model ensemble",
+          "severity": "HIGH"
+        },
+        {
+          "risk": "Rahmstorf (1996) criterion may be outdated",
+          "impact": "Threshold moved due to climate change",
+          "mitigation": "Recalibrate with modern salinity fields",
+          "severity": "MEDIUM"
+        }
+      ],
+      "beta_uncertainty": [
+        {
+          "risk": "D-O events had different forcings (icebergs vs gradual melt)",
+          "impact": "Paleo β may not apply to Anthropocene",
+          "mitigation": "Weight modern RAPID trends higher",
+          "severity": "MEDIUM"
+        },
+        {
+          "risk": "95% CI: [8.2, 12.2] spans factor of 1.5",
+          "impact": "Collapse timescale uncertain (10-100 years)",
+          "mitigation": "Scenario-based forecasting",
+          "severity": "MEDIUM"
+        }
+      ],
+      "threshold_ambiguity": [
+        {
+          "risk": "Bifurcation point may be hysteresis-dependent",
+          "impact": "Threshold differs for ON→OFF vs OFF→ON",
+          "mitigation": "Estimate both (upper/lower) thresholds",
+          "severity": "HIGH"
+        },
+        {
+          "risk": "Freshwater forcing non-monotonic (Greenland + Arctic)",
+          "impact": "Threshold may shift as forcing pattern changes",
+          "mitigation": "Track spatial distribution of freshwater",
+          "severity": "MEDIUM"
+        }
+      ],
+      "false_signals": [
+        {
+          "risk": "AMV (Atlantic Multidecadal Variability) mimics weakening",
+          "impact": "Natural 60-year cycle looks like trend",
+          "mitigation": "Detrend AMV, focus on residual",
+          "severity": "HIGH"
+        },
+        {
+          "risk": "AR(1) increase could be overfitting (short time series)",
+          "impact": "False critical slowing signal",
+          "mitigation": "Bootstrap CIs, require p<0.01",
+          "severity": "MEDIUM"
+        }
+      ],
+      "cascade_coupling": [
+        {
+          "risk": "AMOC collapse triggers Amazon dieback (monsoon failure)",
+          "impact": "Dual carbon feedback (ocean + forest)",
+          "mitigation": "Monitor Amazon EWS + AMOC EWS synchrony",
+          "severity": "CRITICAL"
+        },
+        {
+          "risk": "AMOC OFF → West African Sahel drought → famine",
+          "impact": "Humanitarian crisis (400M people)",
+          "mitigation": "Adaptive agriculture planning NOW",
+          "severity": "CRITICAL"
+        },
+        {
+          "risk": "AMOC collapse → Southern Ocean warming → WAIS acceleration",
+          "impact": "Heat diverted from North Atlantic to Antarctic",
+          "mitigation": "Coupled ice-ocean models (TiPACCs + AMOC)",
+          "severity": "CRITICAL"
+        }
+      ],
+      "communication_hazards": [
+        {
+          "risk": "Ditlevsen 2025-2095 window misread as 'will tip by 2025'",
+          "impact": "Panic vs 'window OPENS in 2025'",
+          "mitigation": "Clarify: 'earliest possible' vs 'most likely'",
+          "severity": "CRITICAL"
+        },
+        {
+          "risk": "'Bistability' jargon alienates non-experts",
+          "impact": "Public doesn't grasp irreversibility",
+          "mitigation": "Use 'light switch not dimmer' metaphor",
+          "severity": "MEDIUM"
+        },
+        {
+          "risk": "Europe-centric framing ignores African monsoon impacts",
+          "impact": "Equity/justice concerns",
+          "mitigation": "Highlight global cascade, not just European cooling",
+          "severity": "HIGH"
+        }
+      ]
+    }
+  },
+  "Coral": {
+    "system": "Coral Reef Bleaching",
+    "utac_type": "Type-2/3: Thermo + Electrochemical",
+    "beta": 7.5,
+    "status": "POST-TIPPING (84% bleached)",
+    "failure_modes": {
+      "data_gaps": [
+        {
+          "risk": "OISST resolution (0.25°) too coarse for reefs",
+          "impact": "Misses lagoon-scale temperature spikes",
+          "mitigation": "Use Coral Reef Watch 5km product",
+          "severity": "HIGH"
+        },
+        {
+          "risk": "Bleaching surveys biased toward accessible reefs",
+          "impact": "Deep/remote reefs undersampled",
+          "mitigation": "Satellite-based bleaching detection (AI/ML)",
+          "severity": "MEDIUM"
+        }
+      ],
+      "model_limits": [
+        {
+          "risk": "Adaptive capacity (resistant species) not in UTAC model",
+          "impact": "Overestimates collapse finality",
+          "mitigation": "Track coral genomics + heat tolerance evolution",
+          "severity": "MEDIUM"
+        },
+        {
+          "risk": "Symbiodinium shuffling can rescue some corals",
+          "impact": "β may be lower (more resilient than sigmoid predicts)",
+          "mitigation": "Species-specific β estimates",
+          "severity": "MEDIUM"
+        }
+      ],
+      "beta_uncertainty": [
+        {
+          "risk": "Wide species variation in heat tolerance",
+          "impact": "β=7.5 is community average, not universal",
+          "mitigation": "Reef-specific β maps",
+          "severity": "HIGH"
+        }
+      ],
+      "threshold_ambiguity": [
+        {
+          "risk": "DHW (Degree Heating Weeks) threshold varies by region",
+          "impact": "Caribbean Θ ≠ Indo-Pacific Θ",
+          "mitigation": "Regional threshold calibration",
+          "severity": "MEDIUM"
+        }
+      ],
+      "false_signals": [
+        {
+          "risk": "Seasonal bleaching (reversible) vs mass die-off",
+          "impact": "Not all bleaching = tipping",
+          "mitigation": "Track recovery rates (6-month lag)",
+          "severity": "MEDIUM"
+        }
+      ],
+      "cascade_coupling": [
+        {
+          "risk": "Coral loss → coastal erosion → tourism collapse",
+          "impact": "Economic feedback (1B people, $9.9T/year)",
+          "mitigation": "Already tipped—focus on mitigation NOW",
+          "severity": "CRITICAL"
+        }
+      ],
+      "communication_hazards": [
+        {
+          "risk": "'Post-tipping' sounds defeatist",
+          "impact": "Public assumes restoration futile",
+          "mitigation": "Frame as 'intervention urgency' not 'lost cause'",
+          "severity": "HIGH"
+        }
+      ]
+    }
+  },
+  "Measles": {
+    "system": "Measles Herd Immunity",
+    "utac_type": "Type-4: Informational",
+    "beta": 5.8,
+    "status": "ACTIVE OUTBREAK (Canada)",
+    "failure_modes": {
+      "data_gaps": [
+        {
+          "risk": "Vaccination coverage self-reported (biased)",
+          "impact": "True coverage may be lower",
+          "mitigation": "Cross-validate with serosurveys",
+          "severity": "HIGH"
+        },
+        {
+          "risk": "Asymptomatic/mild cases underreported",
+          "impact": "R₀ underestimated",
+          "mitigation": "Serological studies (antibody prevalence)",
+          "severity": "MEDIUM"
+        }
+      ],
+      "model_limits": [
+        {
+          "risk": "SIR model assumes homogeneous mixing",
+          "impact": "Clustering (anti-vax communities) creates pockets",
+          "mitigation": "Network-based β (heterogeneous)",
+          "severity": "HIGH"
+        },
+        {
+          "risk": "Vaccine efficacy wanes over time",
+          "impact": "Coverage >95% may not suffice if boosters needed",
+          "mitigation": "Track antibody titers over age cohorts",
+          "severity": "MEDIUM"
+        }
+      ],
+      "beta_uncertainty": [
+        {
+          "risk": "R₀ varies by population density",
+          "impact": "Urban β > Rural β",
+          "mitigation": "Spatial β maps",
+          "severity": "MEDIUM"
+        }
+      ],
+      "threshold_ambiguity": [
+        {
+          "risk": "Herd immunity threshold = 1 - 1/R₀ assumes R₀ constant",
+          "impact": "R₀ changes with behavior, seasons",
+          "mitigation": "Dynamic threshold (seasonally adjusted)",
+          "severity": "MEDIUM"
+        }
+      ],
+      "false_signals": [
+        {
+          "risk": "Outbreak ≠ elimination lost (may be transient)",
+          "impact": "False alarm if outbreak contained",
+          "mitigation": "Require sustained transmission (>6 months)",
+          "severity": "LOW"
+        }
+      ],
+      "cascade_coupling": [
+        {
+          "risk": "Measles outbreak → public health system overload → other diseases spread",
+          "impact": "Indirect mortality",
+          "mitigation": "Surge capacity planning",
+          "severity": "MEDIUM"
+        }
+      ],
+      "communication_hazards": [
+        {
+          "risk": "Vaccine hesitancy amplified by alarmist messaging",
+          "impact": "Backfire effect",
+          "mitigation": "Trusted messengers, community engagement",
+          "severity": "CRITICAL"
+        }
+      ]
+    }
+  },
+  "Finance": {
+    "system": "Financial Contagion (2008)",
+    "utac_type": "Type-4: Network",
+    "beta": 4.9,
+    "status": "POST-EVENT",
+    "failure_modes": {
+      "data_gaps": [
+        {
+          "risk": "Shadow banking opaque (no reporting requirements)",
+          "impact": "Interconnectedness underestimated",
+          "mitigation": "Regulatory transparency (Dodd-Frank, Basel III)",
+          "severity": "HIGH"
+        },
+        {
+          "risk": "Derivatives exposure hidden (off-balance-sheet)",
+          "impact": "Cascades faster than models predict",
+          "mitigation": "Central clearing (DTCC transparency)",
+          "severity": "HIGH"
+        }
+      ],
+      "model_limits": [
+        {
+          "risk": "Network topology changes rapidly",
+          "impact": "Static β misses dynamic rewiring",
+          "mitigation": "Real-time network mapping",
+          "severity": "HIGH"
+        },
+        {
+          "risk": "Contagion spreads via confidence, not just loans",
+          "impact": "Psychological β distinct from structural β",
+          "mitigation": "Sentiment indicators (VIX, credit spreads)",
+          "severity": "MEDIUM"
+        }
+      ],
+      "beta_uncertainty": [
+        {
+          "risk": "β=4.9 calibrated to 2008, may differ for future crises",
+          "impact": "Crypto/DeFi have different network structure",
+          "mitigation": "Recalibrate β for each financial innovation",
+          "severity": "HIGH"
+        }
+      ],
+      "threshold_ambiguity": [
+        {
+          "risk": "Threshold = Lehman collapse? Or Bear Stearns? Or subprime defaults?",
+          "impact": "Ambiguous trigger",
+          "mitigation": "Multi-threshold model (cascade stages)",
+          "severity": "MEDIUM"
+        }
+      ],
+      "false_signals": [
+        {
+          "risk": "Market volatility ≠ systemic crisis",
+          "impact": "False positives frequent (2011 debt ceiling, 2020 COVID flash crash)",
+          "mitigation": "Distinguish volatility from contagion (correlation analysis)",
+          "severity": "HIGH"
+        }
+      ],
+      "cascade_coupling": [
+        {
+          "risk": "Financial crisis → sovereign debt crisis → banking crisis (doom loop)",
+          "impact": "Multi-sector cascade",
+          "mitigation": "Break doom loop (ESM, TARP-style interventions)",
+          "severity": "CRITICAL"
+        }
+      ],
+      "communication_hazards": [
+        {
+          "risk": "Predicting crashes creates self-fulfilling prophecy",
+          "impact": "Panic selling",
+          "mitigation": "Communicate to regulators ONLY (not public)",
+          "severity": "CRITICAL"
+        }
+      ]
+    }
+  },
+  "Cancer": {
+    "system": "Cancer-Immune Threshold",
+    "utac_type": "Type-3: Electrochemical",
+    "beta": 3.5,
+    "status": "THERAPEUTIC (individual-level)",
+    "failure_modes": {
+      "data_gaps": [
+        {
+          "risk": "Individual heterogeneity (personalized medicine)",
+          "impact": "β varies by patient, tumor type, microenvironment",
+          "mitigation": "Precision oncology, genomic profiling",
+          "severity": "HIGH"
+        },
+        {
+          "risk": "Immune cell counts incomplete (only peripheral blood sampled)",
+          "impact": "Tumor-infiltrating lymphocytes (TILs) missed",
+          "mitigation": "Tumor biopsy + spatial transcriptomics",
+          "severity": "HIGH"
+        }
+      ],
+      "model_limits": [
+        {
+          "risk": "Immunoediting has 3 phases (elimination, equilibrium, escape)",
+          "impact": "Single β doesn't capture multi-phase dynamics",
+          "mitigation": "Phase-specific β (β_elim, β_escape)",
+          "severity": "MEDIUM"
+        },
+        {
+          "risk": "Checkpoint inhibitors alter β dynamically",
+          "impact": "Therapeutic intervention changes threshold",
+          "mitigation": "Track β evolution under treatment",
+          "severity": "MEDIUM"
+        }
+      ],
+      "beta_uncertainty": [
+        {
+          "risk": "β=3.5 is lowest in V3 systems (shallowest sigmoid)",
+          "impact": "Wide therapeutic window, but also slow response",
+          "mitigation": "Adaptive dosing, combination therapies",
+          "severity": "LOW"
+        }
+      ],
+      "threshold_ambiguity": [
+        {
+          "risk": "Threshold (10:1 immune:tumor ratio) empirical, not mechanistic",
+          "impact": "May vary by tumor mutation burden",
+          "mitigation": "Correlate with TMB, neoantigen load",
+          "severity": "MEDIUM"
+        }
+      ],
+      "false_signals": [
+        {
+          "risk": "Pseudo-progression (immune infiltration looks like tumor growth)",
+          "impact": "False negative (treatment working but imaging shows worse)",
+          "mitigation": "Wait 2-3 months before calling failure",
+          "severity": "MEDIUM"
+        }
+      ],
+      "cascade_coupling": [
+        {
+          "risk": "Systemic immune activation → autoimmunity",
+          "impact": "Therapeutic β-tipping has side effects",
+          "mitigation": "Titrate carefully, monitor organ function",
+          "severity": "MEDIUM"
+        }
+      ],
+      "communication_hazards": [
+        {
+          "risk": "Individual-level tipping ≠ population-level crisis",
+          "impact": "Mixing metaphors (climate vs health)",
+          "mitigation": "Clarify UTAC universality, not urgency equivalence",
+          "severity": "LOW"
+        }
+      ]
+    }
+  },
+  "cross_system": {
+    "methodological_limits": [
+      {
+        "risk": "UTAC assumes independence of systems",
+        "impact": "Cascade coupling violates assumption",
+        "mitigation": "Develop coupled UTAC (multi-system σ)",
+        "severity": "CRITICAL"
+      },
+      {
+        "risk": "Sigmoid may not fit all tipping types (see WAIS sub-thresholds)",
+        "impact": "Oversimplified dynamics",
+        "mitigation": "Multi-sigmoid ensembles",
+        "severity": "MEDIUM"
+      },
+      {
+        "risk": "β estimated from limited data (especially mock data!)",
+        "impact": "Confidence intervals wide",
+        "mitigation": "PRIORITIZE REAL DATA INTEGRATION",
+        "severity": "CRITICAL"
+      }
+    ],
+    "ethical_hazards": [
+      {
+        "risk": "Tipping point framing induces fatalism ('too late to act')",
+        "impact": "Climate action paralysis",
+        "mitigation": "Emphasize: tipping ≠ doom, mitigation still valuable",
+        "severity": "HIGH"
+      },
+      {
+        "risk": "Urgency hierarchy (WAIS > Cancer) ethically fraught",
+        "impact": "Devalues individual suffering",
+        "mitigation": "Clarify: scale ≠ moral weight",
+        "severity": "MEDIUM"
+      },
+      {
+        "risk": "EWS false positives cry wolf",
+        "impact": "Credibility erosion",
+        "mitigation": "Set high thresholds (p<0.01, ΔAIC>10)",
+        "severity": "HIGH"
+      }
+    ],
+    "implementation_risks": [
+      {
+        "risk": "Real-time monitoring requires sustained funding",
+        "impact": "System degrades if observational networks cut",
+        "mitigation": "Institutional commitment (ESA, NASA, NOAA)",
+        "severity": "HIGH"
+      },
+      {
+        "risk": "TypeScript → Python → Data pipeline fragile",
+        "impact": "Broken adapter = stale warnings",
+        "mitigation": "Robust error handling, fallbacks",
+        "severity": "MEDIUM"
+      },
+      {
+        "risk": "Dashboard overwhelm (too many warnings)",
+        "impact": "Alert fatigue",
+        "mitigation": "Prioritize by urgency × impact × confidence",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  "mitigation_priorities": {
+    "P1_CRITICAL": [
+      "Replace mock data with real GRACE, RAPID, OISST",
+      "Validate cascade coupling (WAIS + AMOC + Amazon)",
+      "Clarify Ditlevsen window in public communication",
+      "Implement multi-system coupled UTAC model"
+    ],
+    "P2_HIGH": [
+      "Bootstrap confidence intervals for all β-fits",
+      "Regional/spatial β-heterogeneity maps",
+      "Detrend AMV/ENSO/natural cycles before EWS detection",
+      "Ethical review of tipping point communication framing"
+    ],
+    "P3_MEDIUM": [
+      "Multi-sigmoid ensembles (WAIS sub-glaciers)",
+      "Phase-specific β for multi-stage systems (cancer)",
+      "Scenario planning for wide β uncertainty bands",
+      "Shadow-Sigillin updates as new failure modes discovered"
+    ]
+  },
+  "shadow_ethics": {
+    "statement": "Shadow-Sigillin exists because **uncertainty is not weakness—it's honesty**.\n\nEvery β-estimate has error bars. Every threshold has ambiguity.\nEvery early warning signal has false positive risk.\n\nWe document these not to undermine UTAC, but to **strengthen it**.\n\nScience advances by naming what it doesn't know.\nWarnings gain credibility by acknowledging limits.\n\nThe shadows are not enemies—they're guardrails.\n",
+    "final_reminder": "**Do not deploy V3 systems without:**\n1. Real data (not mock)\n2. Bootstrap CIs (not point estimates)\n3. Cascade coupling checks (not isolated systems)\n4. Communication protocols (not raw metrics)\n5. Shadow-Sigillin review (not blind confidence)\n\n**This is not alarmism. This is responsibility.**\n"
+  }
+}

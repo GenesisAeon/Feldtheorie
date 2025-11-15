@@ -2,8 +2,9 @@
 
 **Version:** 3.0.0
 **Created:** 2025-11-14
-**Total Documents:** 23 (active) + 1 (in progress)
+**Total Documents:** 26 (25 active, 1 in progress)
 **Scope:** V3.0 Real-World Systems Integration
+**Updated:** 2026-08-24T18:10:00Z
 
 ---
 
@@ -67,22 +68,23 @@
 | `v3-data-003` | `data/biology/coral_bleaching_global_mock.csv` | `v3-feat-p1-003` | ✅ active | `coral_bleaching_global_mock.metadata.json` |
 | `v3-data-004` | `data/derived/beta_estimates_v3.csv` | `v3-feat-p2-006` | 🟡 in progress | `beta_estimates_v3.metadata.json` |
 
-**Details:** WAIS (2002-2024, monatlich), AMOC (2004-2024, 10-Tage-Mittel), Coral (1980-2024, jährlich) + neues Aggregat `beta_estimates_v3.csv` (Bootstrap-CIs für die drei Mock-Systeme, Platzhalter für Measles/Finance/Cancer). σ(β(R̄-Θ)) = 0.441 nach Phase-2-Aktivierung.
+**Details:** WAIS (2002-2024, monatlich), AMOC (2004-2024, 10-Tage-Mittel), Coral (1980-2024, jährlich) + neues Aggregat `beta_estimates_v3.csv` (Bootstrap-CIs für die drei Mock-Systeme, Platzhalter für Measles/Finance/Cancer). σ(β(R̄-Θ)) = 0.606 nach Phase-3-Brücke (Shadow-Sigillin Trilayer offen).
 
 ---
 
-## 🔬 Analysis Results (Phase 2 Aktiv)
+## 🔬 Analysis Results (Phase 2 + 3 Aktiv)
 
 | ID | Path | Status | Highlights |
 |----|------|:------:|------------|
-| `v3-analysis-001` | `analysis/results/wais_beta_fit_v3.json` | ✅ active | β=3.42 (Mock), Θ=1.13°C, ΔAIC=+1.84 vs linear |
-| `v3-analysis-002` | `analysis/results/amoc_beta_fit_v3.json` | ✅ active | β=4.65, Θ=1.02°C, ΔAIC=+25.15 |
-| `v3-analysis-003` | `analysis/results/coral_beta_fit_v3.json` | ✅ active | β=5.81, Θ=0.95°C, post-tipping σ≈1 |
-| `v3-analysis-004` | `analysis/results/wais_ews_signals.json` | ✅ active | Varianz τ=0.29↑, AR(1) stabil, Spectral=13.15 |
-| `v3-analysis-005` | `analysis/results/amoc_ews_signals.json` | ✅ active | AR(1) τ=0.73↑, Varianz↓, FovS>0 |
-| `v3-analysis-006` | `analysis/results/coral_ews_signals.json` | ✅ active | Varianz +179%, AR(1) τ=0.75↑, Critical Slowing=🔴 |
-| `v3-analysis-007` | `analysis/results/v3_beta_fit_summary_20251114T181628Z.json` | ✅ active | Aggregierte β/Θ/ΔAIC Übersicht für Mock-Systeme |
-| `v3-analysis-008` | `analysis/results/v3_ews_summary_20251114T181634Z.json` | ✅ active | Sammelbericht EWS (WAIS/AMOC/Coral) |
+| `v3-analysis-001` | `scripts/analysis/results/wais_beta_fit_v3.json` | ✅ active | β=3.42 (Mock), Θ=1.13°C, ΔAIC=+1.84 vs linear |
+| `v3-analysis-002` | `scripts/analysis/results/amoc_beta_fit_v3.json` | ✅ active | β=4.65, Θ=1.02°C, ΔAIC=+25.15 |
+| `v3-analysis-003` | `scripts/analysis/results/coral_beta_fit_v3.json` | ✅ active | β=5.81, Θ=0.95°C, post-tipping σ≈1 |
+| `v3-analysis-004` | `scripts/analysis/results/wais_ews_signals.json` | ✅ active | Varianz τ=0.29↑, AR(1) stabil, Spectral=13.15 |
+| `v3-analysis-005` | `scripts/analysis/results/amoc_ews_signals.json` | ✅ active | AR(1) τ=0.73↑, Varianz↓, FovS>0 |
+| `v3-analysis-006` | `scripts/analysis/results/coral_ews_signals.json` | ✅ active | Varianz +179%, AR(1) τ=0.75↑, Critical Slowing=🔴 |
+| `v3-analysis-007` | `scripts/analysis/results/beta_fits_v3.json` | ✅ active | Aggregierte β/Θ/ΔAIC Übersicht (Mock Aggregat) |
+| `v3-analysis-008` | `scripts/analysis/results/ews_analysis_v3.json` | ✅ active | Sammelbericht EWS (WAIS/AMOC/Coral) |
+| `v3-analysis-009` | `scripts/analysis/results/crep_metrics_v3.json` | ✅ active | CREP Scores 6 Systeme (β 3.5→13.5) |
 
 ---
 
@@ -115,7 +117,7 @@
 2. seed/RoadToV.3/INTEGRATION_GUIDE.md
 3. seed/RoadToV.3/antarctic-ice-sheet.ts  (WAIS Code)
 4. seed/RoadToV.3/amoc-collapse.ts        (AMOC Code)
-5. analysis/results/wais_beta_fit_v3.json (Python → TS Bridge)
+5. scripts/analysis/results/wais_beta_fit_v3.json (Python → TS Bridge)
 ```
 
 ### Methodology (For Researchers)

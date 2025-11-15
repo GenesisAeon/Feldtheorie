@@ -31,6 +31,19 @@ Contains system properties hypothesized to influence β.
 - `Memory` (float): Memory/hysteresis measure [0-1]
 - `Theta_dot` (float): Rate of threshold change (adaptive dynamics)
 
+### `beta_estimates_v3.csv`
+
+Bootstrap summary for the six UTAC V3 real-world systems.
+
+- WAIS, AMOC, Coral rows capture 1000-sample bootstraps from mock adapters
+  (status: `mock-bootstrap`).
+- Measles, Finance, Cancer entries hold placeholders (`expected`) until live
+  data streams activate.
+- Columns mirror the main beta ledger while adding `bootstrap_iterations`,
+  `data_status`, and `notes` for readiness tracking.
+- Metadata lives in `beta_estimates_v3.metadata.json` with logistic quartet,
+  source pointers, and placeholder blockers.
+
 ## Template Generation
 
 To generate template files with example data:

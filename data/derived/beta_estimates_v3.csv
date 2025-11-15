@@ -1,0 +1,7 @@
+system_id,system_name,beta_estimate,beta_ci_lower,beta_ci_upper,theta_estimate,theta_ci_lower,theta_ci_upper,r_squared,delta_aic,bootstrap_iterations,data_status,notes,source
+wais,WAIS,3.422379,2.872201,4.007656,1.126875,1.099795,1.162031,0.424779,1.836331,1000,mock-bootstrap,Bootstrap aus V3 Mock-Daten; echte Beobachtungen ersetzen pending.,scripts/analysis/results/beta_fits_v3.json
+amoc,AMOC,4.653043,4.361286,4.96378,1.01981,1.010583,1.028271,0.634333,25.153295,1000,mock-bootstrap,Bootstrap aus V3 Mock-Daten; echte Beobachtungen ersetzen pending.,scripts/analysis/results/beta_fits_v3.json
+coral,Coral,5.810229,5.097149,6.770433,0.953504,0.918653,0.989316,0.927132,6.256645,1000,mock-bootstrap,Bootstrap aus V3 Mock-Daten; echte Beobachtungen ersetzen pending.,scripts/analysis/results/beta_fits_v3.json
+measles,Measles (Canada Herd Immunity),NA,NA,NA,NA,NA,NA,NA,NA,0,expected,"Public Health Agency of Canada vaccination + incidence, awaiting feed.",Pending
+finance,Global Finance Contagion (2008),NA,NA,NA,NA,NA,NA,NA,NA,0,expected,"BIS interbank stress + CDS spreads, requires cleaned dataset.",Pending
+cancer,Cancer-Immune Therapy,NA,NA,NA,NA,NA,NA,NA,NA,0,expected,"Clinical response curves (CAR-T), data access negotiation pending.",Pending

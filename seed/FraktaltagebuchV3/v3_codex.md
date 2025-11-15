@@ -3,7 +3,7 @@
 **Version:** 3.0.0
 **Created:** 2025-11-14
 **Scope:** V3.0 Real-World Tipping Points (6 Systems, β 3.5 → 13.5)
-**Total Entries:** 5
+**Total Entries:** 6
 
 ---
 
@@ -23,12 +23,12 @@ Dieser Codex dokumentiert alle PRs, Commits und Änderungen für **Fraktaltagebu
 
 ## 📊 Progress Tracking
 
-```
-R̄  = 0.61 / 0.66  (61% → Release Gate)
-σ  = 0.441        (Activation Level)
+``` 
+R̄  = 0.75 / 0.66  (75% → Release Gate)
+σ  = 0.606        (Activation Level)
 β  = 4.8
 
-Entries: 5 / ~18 (estimated)
+Entries: 6 / ~20 (estimated)
 ```
 
 ---
@@ -42,6 +42,7 @@ Entries: 5 / ~18 (estimated)
 | `v3-pr-0003` | 2026-08-23T12:55:00Z | System Meaning Map Sync | Phase 1 |
 | `v3-pr-0004` | 2026-08-24T10:30:00Z | Phase 1 Completion: Adapter Activation & Sync | Phase 1 |
 | `v3-pr-0005` | 2026-08-24T15:45:00Z | Phase 2 Activation: β-Fits + EWS Diagnostics | Phase 2 |
+| `v3-pr-0006` | 2026-08-24T16:45:00Z | Phase 3 Bridge: TypeScript Tests & CREP Sync | Phase 3 |
 
 ---
 
@@ -53,7 +54,7 @@ Entries: 5 / ~18 (estimated)
 |-------|------:|
 | Phase 1 (Foundation) | 4 |
 | Phase 2 (Integration) | 1 |
-| Phase 3 (Bridge) | 0 |
+| Phase 3 (Bridge) | 1 |
 | Phase 4 (Monitoring) | 0 |
 
 ### Entries by Type
@@ -63,8 +64,8 @@ Entries: 5 / ~18 (estimated)
 | `data` (Datensätze) | 4 |
 | `fit` (β-Fits) | 1 |
 | `docs` (Dokumentation) | 4 |
-| `bridge` (Python ↔ TS) | 0 |
-| `test` (Tests) | 0 |
+| `bridge` (Python ↔ TS) | 1 |
+| `test` (Tests) | 1 |
 | `feat` (Features) | 1 |
 | `fix` (Bugfixes) | 1 |
 
@@ -348,9 +349,9 @@ R̄  = 0.333  (6/18 features completed)
 ### Empirical Thread
 
 - CLI-Verifikation der Adapter (Mock-Daten als Pulsgeber):
-  - GRACE: 274 Monatswerte, AR(1) 0.720 (+33.6 %), Varianz +69 %, Export → `analysis/results/wais_adapter_output.json`.
-  - AMOC: 757 Dekadenpunkte, FovS>0, Schwächungsrate −0.145 Sv/Jahr, Export → `analysis/results/amoc_adapter_output.json`.
-  - Coral: 45 Jahreswerte, DHW 15.3, Distance-to-Tipping 0.0, Export → `analysis/results/coral_adapter_output.json`.
+- GRACE: 274 Monatswerte, AR(1) 0.720 (+33.6 %), Varianz +69 %, Export → `scripts/analysis/results/wais_adapter_output.json`.
+- AMOC: 757 Dekadenpunkte, FovS>0, Schwächungsrate −0.145 Sv/Jahr, Export → `scripts/analysis/results/amoc_adapter_output.json`.
+- Coral: 45 Jahreswerte, DHW 15.3, Distance-to-Tipping 0.0, Export → `scripts/analysis/results/coral_adapter_output.json`.
 - Index-Delta: Scripts nun aktiv gelistet, Datenabschnitt verweist auf σ=0.173 nach Adapter-Aktivierung.
 - Roadmap: Feature-Details ergänzt (CLI-Tests, JSON-Bridges, Nullmodell-Wächter).
 
@@ -370,9 +371,9 @@ die Korallen stehen im weißen Brand. σ steigt – die Membran vibriert, bereit
 - `seed/FraktaltagebuchV3/v3_codex.yaml`
 - `seed/FraktaltagebuchV3/v3_codex.json`
 - `seed/FraktaltagebuchV3/v3_codex.md`
-- `analysis/results/wais_adapter_output.json`
-- `analysis/results/amoc_adapter_output.json`
-- `analysis/results/coral_adapter_output.json`
+- `scripts/analysis/results/wais_adapter_output.json`
+- `scripts/analysis/results/amoc_adapter_output.json`
+- `scripts/analysis/results/coral_adapter_output.json`
 
 ### Related Systems
 
@@ -406,7 +407,7 @@ R̄  = 0.61  (11/18 features completed)
 
 ### Empirical Thread
 
-- Neue Dateien in `analysis/results/`: `wais_beta_fit_v3.json`, `amoc_beta_fit_v3.json`, `coral_beta_fit_v3.json`, jeweilige `*_ews_signals.json`, sowie Sammelreports `v3_beta_fit_summary_20251114T181628Z.json` und `v3_ews_summary_20251114T181634Z.json`.
+- Neue Dateien in `scripts/analysis/results/`: `wais_beta_fit_v3.json`, `amoc_beta_fit_v3.json`, `coral_beta_fit_v3.json`, jeweilige `*_ews_signals.json`, sowie Aggregate `beta_fits_v3.json` und `ews_analysis_v3.json`.
 - Kennzahlen: WAIS β=3.42 (ΔAIC=+1.84), AMOC β=4.65 (ΔAIC=+25.15), Coral β=5.81 (ΔAIC=+6.26); Bootstrap-CIs dokumentiert im Derived-Datensatz.
 - σ(β(R̄-Θ)) springt auf 0.441 → Integration halb aktiviert; verbleibende Bootstrap-Spalten als TODO markiert.
 - `data/derived/beta_estimates_v3.metadata.json` beschreibt Quellen, Placeholder-Strategie und Folgearbeit für Live-Daten.
@@ -421,14 +422,14 @@ Fünf Phase-2-Lampen leuchten, eine wartet noch auf echte Datenströme.  \
 
 ### Files
 
-- `analysis/results/wais_beta_fit_v3.json`
-- `analysis/results/amoc_beta_fit_v3.json`
-- `analysis/results/coral_beta_fit_v3.json`
-- `analysis/results/wais_ews_signals.json`
-- `analysis/results/amoc_ews_signals.json`
-- `analysis/results/coral_ews_signals.json`
-- `analysis/results/v3_beta_fit_summary_20251114T181628Z.json`
-- `analysis/results/v3_ews_summary_20251114T181634Z.json`
+- `scripts/analysis/results/wais_beta_fit_v3.json`
+- `scripts/analysis/results/amoc_beta_fit_v3.json`
+- `scripts/analysis/results/coral_beta_fit_v3.json`
+- `scripts/analysis/results/wais_ews_signals.json`
+- `scripts/analysis/results/amoc_ews_signals.json`
+- `scripts/analysis/results/coral_ews_signals.json`
+- `scripts/analysis/results/beta_fits_v3.json`
+- `scripts/analysis/results/ews_analysis_v3.json`
 - `data/derived/beta_estimates_v3.csv`
 - `data/derived/beta_estimates_v3.metadata.json`
 - `seed/FraktaltagebuchV3/v3_roadmap.{yaml,json,md}`
@@ -441,4 +442,138 @@ Fünf Phase-2-Lampen leuchten, eine wartet noch auf echte Datenströme.  \
 - `seed/RoadToV.3/amoc-collapse.ts`
 - `seed/RoadToV.3/additional-systems.ts`
 - `seed/RoadToV.3/activation_audit.{yaml,json,md}`
+
+---
+
+## 📝 v3-pr-0006: Phase 3 Bridge – TypeScript Tests & CREP Sync
+
+**Timestamp:** 2026-08-24T16:45:00Z  \\
+**Scope:** Phase 3 Bridge: TypeScript Tests, CREP Metrics & Trilayer Sync  \\
+**Contributors:** Johann Römer (Human), GPT-5 Codex (AI)
+
+### Parameters
+```
+R̄  = 0.75  (15/20 features completed)
+Θ  = 0.66
+β  = 4.8
+σ  = 0.606  (Bridge membrane engaged)
+```
+
+### Formal Thread
+
+- `seed/RoadToV.3/test-wais-integration.ts` nutzt jetzt einen relativen Resolver und lädt
+  `scripts/analysis/results/{wais_adapter_output.json,beta_fits_v3.json,ews_analysis_v3.json}` ohne
+  `/home/user`-Hardcode. Alle fünf Checks bleiben grün.
+- `seed/RoadToV.3/test-crep-all.ts` und `crep-showcase.ts` bestätigen, dass sämtliche Systeme
+  `generateCREPMetrics()` implementieren und nach β sortiert ausgegeben werden.
+- Trilayer-Dokumente für WAIS & AMOC leben in
+  `seed/FraktaltagebuchV3/systems/v3_{wais,amoc}.{yaml,json,md}`; Shadow-Sigillin liegt als YAML vor,
+  JSON/MD Spiegel bleiben TODO → `v3-feat-p3-005` bleibt in_progress.
+- CREP-JSON (`scripts/analysis/results/crep_metrics_v3.json`) koppelt Coherence/Resonance/Emergence/Poetics
+  an TypeScript-Modelle und liefert Kennzahlen für β 3.5→13.5.
+
+### Empirical Thread
+
+- Tests & Bridge: `seed/RoadToV.3/test-wais-integration.ts`, `seed/RoadToV.3/test-crep-all.ts`,
+  `seed/RoadToV.3/crep-showcase.ts`.
+- CREP-Ausgabe: `scripts/analysis/results/crep_metrics_v3.json` (WAIS Coherence 0.11, Coral Emergence 0.74).
+- Trilayer: `seed/FraktaltagebuchV3/systems/v3_wais.{yaml,json,md}`,
+  `seed/FraktaltagebuchV3/systems/v3_amoc.{yaml,json,md}`.
+- Risiken-Backlog: `seed/shadow_sigillin/v3/shadow_sigillin_v3.yaml` (damals YAML-only) markiert fehlende JSON/MD Spiegel.
+- Fortschritt: 4/5 Bridge-Features fertig → R̄=0.75, σ(β(R̄-Θ)) ≈ 0.606.
+
+### Poetic Thread
+
+Die Brücke leuchtet. TypeScript atmet JSON ohne starre Koordinaten,
+vier Laternen glühen im Bridge-Sektor. Die fünfte – das Schatten-Sigillin –
+wartet auf ihren Spiegel. CREP singt sechs Stimmen: das Eis flüstert,
+der Atlantik taumelt, die Korallen schreien weiter. σ=0.606 – der Hang
+ist steiler, doch die Membran hält noch.
+
+### Files
+
+- `seed/RoadToV.3/test-wais-integration.ts`
+- `seed/RoadToV.3/test-crep-all.ts`
+- `seed/RoadToV.3/crep-showcase.ts`
+- `scripts/analysis/results/crep_metrics_v3.json`
+- `seed/FraktaltagebuchV3/systems/v3_wais.{yaml,json,md}`
+- `seed/FraktaltagebuchV3/systems/v3_amoc.{yaml,json,md}`
+- `seed/shadow_sigillin/v3/shadow_sigillin_v3.yaml`
+
+### Related Systems
+
+- `seed/RoadToV.3/antarctic-ice-sheet.ts`
+- `seed/RoadToV.3/amoc-collapse.ts`
+- `seed/RoadToV.3/additional-systems.ts`
+- `seed/RoadToV.3/validate-v3-integration.js`
+
+---
+
+## 📝 v3-pr-0007: Shadow Trilayer Completion & Bootstrap Ledger Refresh
+
+**Timestamp:** 2026-08-24T18:15:00Z  \\
+**Scope:** Shadow Trilayer Completion & Bootstrap Ledger Refresh  \\
+**Contributors:** Johann Römer (Human), GPT-5 Codex (AI)
+
+### Parameters
+```
+R̄  = 0.80  (16/20 features completed)
+Θ  = 0.66
+β  = 4.8
+σ  = 0.662  (Bridge fully resonant)
+```
+
+### Formal Thread
+
+- Shadow-Sigillin V3 lebt jetzt als vollständiges Trilayer unter
+  `seed/shadow_sigillin/v3/shadow_sigillin_v3.{yaml,json,md}` inkl. logistischer
+  Meta (R̄=0.80) und Lichtpfad-Kopplungen zu allen sechs Systemlaternen.
+- `v3-feat-p3-005` auf completed gesetzt; Roadmap & Index aktualisiert → 16/20
+  Features, Phase-3 Bridge 5/5 Laternen.
+- Bootstrap-Ledger `data/derived/beta_estimates_v3.csv` + `.metadata.json`
+  aktiviert: drei Systeme mit 1000er Bootstrap (mock), drei als `expected`
+  Platzhalter mit klaren Blocking-Notizen.
+- Data-Index Trilayer (`data/data_index.{yaml,json,md}`) + README spiegeln die
+  neuen Dateien; Phase-4 Roadmap/Analyse verweisen auf das neue Schatten-Dreifach.
+
+### Empirical Thread
+
+- Shadow Trilayer: `seed/shadow_sigillin/v3/shadow_sigillin_v3.{yaml,json,md}`.
+- Bootstrap Ledger: `data/derived/beta_estimates_v3.csv`,
+  `data/derived/beta_estimates_v3.metadata.json`, `data/derived/README.md`.
+- Indizes & Navigation: `data/data_index.{yaml,json,md}`,
+  `seed/FraktaltagebuchV3/v3_roadmap.{yaml,json,md}`,
+  `seed/FraktaltagebuchV3/v3_index.{yaml,json,md}`.
+- Bridge-Referenzen: `seed/RoadToV.3/PHASE4_ROADMAP.md`,
+  `seed/RoadToV.3/V3_INTEGRATION_ANALYSIS.md`.
+- Kennzahlen: Phase-3 Bridge 5/5 Features → R̄=16/20=0.80; σ(β(R̄-Θ)) ≈ 0.662;
+  Bootstrap ledger: 3 Systeme (1000 Iterationen), 3 placeholders (`expected`).
+
+### Poetic Thread
+
+Die Schattenlaterne atmet jetzt dreistimmig. YAML hält die Struktur,
+JSON flackert für die Automata, Markdown erzählt den Rauch am Rand
+der Membran. σ steigt auf 0.662 – die Brücke schließt wie ein sanfter
+Riegel. Drei Systeme tanzen schon im Bootstrap-Kreisel, drei warten
+wie leere Nischen, bereit sobald echte Datenströme eintreffen. Das Feld
+summt ausgeglichener, doch Phase 2 mahnt: fülle die Lücken, bevor die
+Resonanz wieder kippt.
+
+### Files
+
+- `seed/shadow_sigillin/v3/shadow_sigillin_v3.{yaml,json,md}`
+- `data/derived/beta_estimates_v3.csv`
+- `data/derived/beta_estimates_v3.metadata.json`
+- `data/derived/README.md`
+- `data/data_index.{yaml,json,md}`
+- `seed/FraktaltagebuchV3/v3_roadmap.{yaml,json,md}`
+- `seed/FraktaltagebuchV3/v3_index.{yaml,json,md}`
+- `seed/RoadToV.3/PHASE4_ROADMAP.md`
+- `seed/RoadToV.3/V3_INTEGRATION_ANALYSIS.md`
+
+### Related Systems
+
+- `seed/shadow_sigillin/v3/`
+- `data/derived/`
+- `seed/RoadToV.3/`
 
