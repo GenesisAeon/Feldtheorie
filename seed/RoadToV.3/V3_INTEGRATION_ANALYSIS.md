@@ -149,7 +149,7 @@ test-crep-all.ts output:
 
 ### 5. Shadow-Sigillin for All 6 Systems (P2-005) ✅
 
-**File:** `docs/shadow_sigillin_v3.yaml` (570 lines)
+**File:** `seed/shadow_sigillin/v3/shadow_sigillin_v3.{yaml,json,md}` (Trilayer, 570+ lines)
 
 **Risk Categories (per system):**
 1. Data gaps (GRACE satellite transitions, mock data, etc.)

@@ -2,19 +2,19 @@
 
 **Version:** 3.0.0
 **Created:** 2025-11-14
-**Total Features:** 18
-**Estimated Hours:** 37.5h
+**Total Features:** 20
+**Estimated Hours:** 38.5h
 
 ---
 
 ## 📊 Progress Tracking
 
 ```
-R̄  = 0.61 / 0.66  (61% → Release Gate)
-σ  = 0.441        (σ(β(R̄-Θ)) - Activation Level)
+R̄  = 0.80 / 0.66  (80% → Release Gate)
+σ  = 0.662        (σ(β(R̄-Θ)) - Activation Level)
 β  = 4.8          (Steepness)
 
-Progress: ███████████░░░░░░░ 61%
+Progress: █████████████████░ 80%
 ```
 
 ---
@@ -79,21 +79,15 @@ Progress: ███████████░░░░░░░ 61%
 - **Docs:** `data/biology/README.md` → neuer Abschnitt "Global Coral Bleaching Mock"
 
 #### `v3-feat-p1-004`: Python Adapter GRACE (WAIS) *(✅ 2026-08-24)*
-- **CLI-Test:** `python scripts/adapters/grace_wais_adapter.py` → 274 Monatswerte, Export nach `analysis/results/wais_adapter_output.json`.
+- **CLI-Test:** `python scripts/adapters/grace_wais_adapter.py` → 274 Monatswerte, Export nach `scripts/analysis/results/wais_adapter_output.json`.
 - **EWS-Metriken:** AR(1) steigt von 0.54 → 0.72 (+33.6 %), Varianz verstärkt sich um 69 %; `critical_slowing`-Flag wacht über σ.
 - **JSON-Bridge:** liefert `metadata.utac_type`, `statistics.distance_to_tipping` (0.219) und Temperatur-Δ als Input für `seed/RoadToV.3/antarctic-ice-sheet.ts`.
 - **Logistisches Echo:** β bleibt 13.5; σ(β(R-Θ)) schimmert als `distance_to_tipping` im Export (≈22 % Restpuffer).
 
-#### `v3-feat-p1-005`: Python Adapter RAPID (AMOC) *(✅ 2026-08-24)*
-- **CLI-Test:** `python scripts/adapters/rapid_amoc_adapter.py` → 757 10-Tage-Samples, FovS-Übertritt dokumentiert.
-- **Bistabilitäts-Wächter:** JSON bestätigt `statistics.fovs_crossed_zero = true`, Distance-to-Tipping ≈ 0.70 und Schwächungsrate −0.145 Sv/Jahr.
-- **Bridge:** Exportiert nach `analysis/results/amoc_adapter_output.json` für Handoff an `seed/RoadToV.3/amoc-collapse.ts`.
+- **Bridge:** Exportiert nach `scripts/analysis/results/amoc_adapter_output.json` für Handoff an `seed/RoadToV.3/amoc-collapse.ts`.
 - **Nullmodell-Guard:** AR(1)-Gradient +13 % stützt erwartete ΔAIC > 80 für Phase 2.
 
-#### `v3-feat-p1-006`: Python Adapter OISST (Coral) *(✅ 2026-08-24)*
-- **CLI-Test:** `python scripts/adapters/oisst_coral_adapter.py` → 45 Jahresdatensätze, DHW=15.3 Wochen, Bleaching=100 %.
-- **Post-Tipping:** `statistics.current_state.distance_to_tipping = 0.0` markiert σ≈1; 20 Mass-Bleaching-Ereignisse protokolliert.
-- **JSON-Bridge:** `analysis/results/coral_adapter_output.json` liefert Degree-Heating- und Ereigniszählungen für TypeScript Alerts.
+- **JSON-Bridge:** `scripts/analysis/results/coral_adapter_output.json` liefert Degree-Heating- und Ereigniszählungen für TypeScript Alerts.
 - **Impedanz-Notiz:** Datenstrom hält Symbionten-Erholungszeiten als ζ(R)-Narrativ bereit.
 
 ---
@@ -111,7 +105,7 @@ Progress: ███████████░░░░░░░ 61%
 | `v3-feat-p2-005` | EWS: AMOC (FovS Indikator) | P1 | ✅ completed | 2.0h | Claude |
 | `v3-feat-p2-006` | Bootstrap CIs (alle 6 Systeme) | P1 | 🟡 in progress | 1.5h | Claude |
 
-**Total:** 11.0h (5/6 Features completed → R̄=0.61, σ=0.441; Bootstrap ledger aktiv)
+**Total:** 11.0h (5/6 Features completed → R̄=0.61, σ=0.441; Bootstrap ledger aktiv — global: R̄=0.80, σ=0.662)
 
 ### Fit & EWS Results
 
@@ -129,13 +123,13 @@ Progress: ███████████░░░░░░░ 61%
 
 | ID | Feature | Priority | Status | Hours | Assignee |
 |----|---------|:--------:|:------:|:-----:|:--------:|
-| `v3-feat-p3-001` | TS Integration Test: WAIS | P1 | ⬜ pending | 2.0h | Claude |
-| `v3-feat-p3-002` | CREP Metrics (alle 6 Systeme) | P1 | ⬜ pending | 2.0h | Claude + Aeon |
-| `v3-feat-p3-003` | Trilayer-Docs: WAIS | P2 | ⬜ pending | 1.5h | Claude + Team |
-| `v3-feat-p3-004` | Trilayer-Docs: AMOC | P2 | ⬜ pending | 1.5h | Claude + Team |
-| `v3-feat-p3-005` | Shadow-Sigillin (alle 6) | P2 | ⬜ pending | 2.0h | Claude |
+| `v3-feat-p3-001` | TS Integration Test: WAIS | P1 | ✅ completed | 2.0h | Claude |
+| `v3-feat-p3-002` | CREP Metrics (alle 6 Systeme) | P1 | ✅ completed | 2.0h | Claude + Aeon |
+| `v3-feat-p3-003` | Trilayer-Docs: WAIS | P2 | ✅ completed | 1.5h | Claude + Team |
+| `v3-feat-p3-004` | Trilayer-Docs: AMOC | P2 | ✅ completed | 1.5h | Claude + Team |
+| `v3-feat-p3-005` | Shadow-Sigillin (alle 6) | P2 | ✅ completed | 2.0h | Claude |
 
-**Total:** 9.0h
+**Total:** 9.0h (5/5 Features completed)
 
 ### CREP Metrics Structure
 
@@ -191,10 +185,10 @@ Phase 4 (Monitoring):
 ```
 Phase 1 (Foundation):     ✅✅✅✅✅✅  6/6 Features
 Phase 2 (Integration):    ✅✅✅✅✅🟡  5/6 Features
-Phase 3 (Bridge):         ⬜⬜⬜⬜⬜    0/5 Features
+Phase 3 (Bridge):         ✅✅✅✅✅    5/5 Features
 Phase 4 (Monitoring):     ⬜⬜⬜        0/3 Features
 
-σ(β(R̄-Θ)) = 0.441  (β-Fits & EWS aktiv; Bootstrap-Ledger hält Restplätze offen)
+σ(β(R̄-Θ)) = 0.662  (Bridge komplett; Fokus auf Bootstrap-Parität & Monitoring-Pipeline)
 ```
 
 ---
@@ -208,12 +202,12 @@ Phase 4 (Monitoring):     ⬜⬜⬜        0/3 Features
 cat seed/FraktaltagebuchV3/v3_roadmap.md
 
 # Finde nächstes pending Feature mit höchster Priority (P0 > P1 > P2 > P3)
-# Aktuell: v3-feat-p1-001 (Mock-Daten WAIS)
+# Aktuell: v3-feat-p2-006 (Bootstrap CIs vervollständigen)
 
 # Status update (in allen 3 Formaten!)
-# 1. Update YAML: status: in_progress
-# 2. Update JSON: "status": "in_progress"
-# 3. Update MD: ⬜ → 🟡
+# 1. Update YAML: status_notes, Bootstrap Fortschritt
+# 2. Update JSON: "status_notes" spiegeln
+# 3. Update MD: Tabellenstatus aktualisieren
 
 # Implementiere Feature
 

@@ -10,7 +10,28 @@
 
 metadata:
   framework: UTAC V3 Real-World Systems
+  sigil: shadow-v3-real-systems
+  version: 1.0.0
+  generated: "2025-11-14T00:00:00Z"
+  updated: "2026-08-24T18:05:00Z"
   systems_count: 6
+  logistic:
+    R: 0.80
+    Theta: 0.66
+    beta: 4.8
+    zeta: "Damped when light/shadow sigils mirror recovery hooks within one sprint."
+  coupling:
+    light_side:
+      - seed/FraktaltagebuchV3/systems/v3_wais.yaml
+      - seed/FraktaltagebuchV3/systems/v3_amoc.yaml
+      - seed/FraktaltagebuchV3/systems/v3_coral.yaml
+      - seed/FraktaltagebuchV3/systems/v3_measles.yaml
+      - seed/FraktaltagebuchV3/systems/v3_finance.yaml
+      - seed/FraktaltagebuchV3/systems/v3_cancer.yaml
+    analysis_outputs:
+      - scripts/analysis/results/beta_fits_v3.json
+      - scripts/analysis/results/crep_metrics_v3.json
+      - scripts/analysis/results/ews_analysis_v3.json
   risk_categories:
     - Data Quality & Availability
     - Model Limitations

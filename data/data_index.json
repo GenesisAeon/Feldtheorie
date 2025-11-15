@@ -7,9 +7,9 @@
     "version": "1.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "total_files": 68,
+    "total_files": 70,
     "domains": 12,
-    "updated": "2026-08-23T12:15:00Z"
+    "updated": "2026-08-24T18:10:00Z"
   },
   "domains": {
     "ai": {
@@ -188,7 +188,7 @@
         },
         {
           "name": "beta_estimates_v3.csv",
-          "description": "V3 Beta-Fits (WAIS/AMOC/Coral) + Platzhalter für Measles, Finance, Cancer (Metadata: beta_estimates_v3.metadata.json)",
+          "description": "V3 Beta-Fits (WAIS/AMOC/Coral) + Platzhalter für Measles, Finance, Cancer – CSV + metadata jetzt aktiv (beta_estimates_v3.metadata.json)",
           "keywords": [
             "v3",
             "beta",

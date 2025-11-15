@@ -953,7 +953,7 @@ Increase: +16% (real data + dashboard + monitoring)
 - Trilayer Documentation: `seed/RoadToV.3/docs/*.md` (6 systems)
 
 **Ethics:**
-- Shadow-Sigillin V3: `seed/RoadToV.3/docs/shadow_sigillin_v3.yaml`
+- Shadow-Sigillin V3: `seed/shadow_sigillin/v3/shadow_sigillin_v3.{yaml,json,md}`
 - Communication Ethics: `ETHICS.md`
 
 ---

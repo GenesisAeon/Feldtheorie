@@ -1,0 +1,44 @@
+{
+  "title": "UTAC V3 Beta Bootstrap Estimates",
+  "path": "data/derived/beta_estimates_v3.csv",
+  "category": "derived",
+  "description": "Bootstrap confidence intervals (1000 iterations) for the six UTAC V3 real-world systems. WAIS/AMOC/Coral reflect mock-bootstrap fits; Measles/Finance/Cancer remain expected pending data ingestion.",
+  "threshold_parameters": {
+    "R": "system activation fraction derived from bootstrap counts",
+    "Theta": 0.66,
+    "beta": 4.8,
+    "zeta": "Damped when live data replaces mocks within two sprints."
+  },
+  "bootstrap": {
+    "iterations": 1000,
+    "seed": 1337,
+    "status": "partial"
+  },
+  "sources": [
+    "scripts/analysis/results/beta_fits_v3.json",
+    "scripts/analysis/results/crep_metrics_v3.json"
+  ],
+  "placeholders": [
+    {
+      "system_id": "measles",
+      "status": "expected",
+      "blocking": "Awaiting PHAC vaccination + incidence data feed"
+    },
+    {
+      "system_id": "finance",
+      "status": "expected",
+      "blocking": "Need BIS cross-border stress dataset cleaning"
+    },
+    {
+      "system_id": "cancer",
+      "status": "expected",
+      "blocking": "Negotiating CAR-T response curve access"
+    }
+  ],
+  "temporal": {
+    "created": "2026-08-24T18:05:00Z",
+    "modified": "2026-08-24T18:05:00Z",
+    "version": "0.1.0",
+    "change_count": 0
+  }
+}

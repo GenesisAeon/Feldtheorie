@@ -7,16 +7,16 @@
 meta:
   version: "3.0.0"
   created: "2025-11-14T12:30:00Z"
-  last_updated: "2026-08-24T15:45:00Z"
-  total_features: 18
-  completed_features: 11
+  last_updated: "2026-08-24T18:10:00Z"
+  total_features: 20
+  completed_features: 16
 
   # Logistic activation tracking
   parameters:
-    R_bar: 0.61        # Mean progress (0-1)
+    R_bar: 0.80        # Mean progress (0-1)
     Theta: 0.66        # Release gate
     beta: 4.8          # Steepness
-    sigma: 0.441       # σ(β(R̄-Θ)) activation level
+    sigma: 0.662       # σ(β(R̄-Θ)) activation level
 
 # ============================================================================
 # PHASE 1: FOUNDATION (R = 0.00 → 0.30)
@@ -126,7 +126,7 @@ features_phase1_foundation:
     output:
       - scripts/adapters/grace_wais_adapter.py
     artifacts:
-      - analysis/results/wais_adapter_output.json
+      - scripts/analysis/results/wais_adapter_output.json
 
   - id: v3-feat-p1-005
     title: "Python Adapter: RAPID Mock (AMOC)"
@@ -154,7 +154,7 @@ features_phase1_foundation:
     output:
       - scripts/adapters/rapid_amoc_adapter.py
     artifacts:
-      - analysis/results/amoc_adapter_output.json
+      - scripts/analysis/results/amoc_adapter_output.json
 
   - id: v3-feat-p1-006
     title: "Python Adapter: OISST Mock (Coral)"
@@ -182,7 +182,7 @@ features_phase1_foundation:
     output:
       - scripts/adapters/oisst_coral_adapter.py
     artifacts:
-      - analysis/results/coral_adapter_output.json
+      - scripts/analysis/results/coral_adapter_output.json
 
 # ============================================================================
 # PHASE 2: DATA INTEGRATION (R = 0.30 → 0.60)
@@ -200,7 +200,7 @@ features_phase2_integration:
       - Export JSON für TypeScript
     status: completed
     completed_at: "2026-08-24T15:20:00Z"
-    status_notes: "β-fit export generiert (analysis/results/wais_beta_fit_v3.json) + Summary (v3_beta_fit_summary_20251114T181628Z.json); ΔAIC=+1.84 bestätigt schwache Präferenz, erwartete β bleibt offen."
+    status_notes: "β-fit export generiert (scripts/analysis/results/wais_beta_fit_v3.json) + Aggregat (scripts/analysis/results/beta_fits_v3.json); ΔAIC=+1.84 bestätigt schwache Präferenz, erwartete β bleibt offen."
     priority: P0
     assignee: Claude
     dependencies:
@@ -217,8 +217,8 @@ features_phase2_integration:
       r_squared: 0.94
       delta_aic_linear: 142
     output:
-      - analysis/results/wais_beta_fit_v3.json
-      - analysis/results/v3_beta_fit_summary_20251114T181628Z.json
+      - scripts/analysis/results/wais_beta_fit_v3.json
+      - scripts/analysis/results/beta_fits_v3.json
       - figures/wais_logistic_curve.png
 
   - id: v3-feat-p2-002
@@ -231,7 +231,7 @@ features_phase2_integration:
       - Export JSON
     status: completed
     completed_at: "2026-08-24T15:22:00Z"
-    status_notes: "AMOC β-Fit exportiert (analysis/results/amoc_beta_fit_v3.json) + Summary (v3_beta_fit_summary_20251114T181628Z.json); ΔAIC=+25 bestätigt logistische Dominanz, β liegt ~54% unter Erwartung (Mock-Daten)."
+    status_notes: "AMOC β-Fit exportiert (scripts/analysis/results/amoc_beta_fit_v3.json) + Aggregat (scripts/analysis/results/beta_fits_v3.json); ΔAIC=+25 bestätigt logistische Dominanz, β liegt ~54% unter Erwartung (Mock-Daten)."
     priority: P0
     assignee: Claude
     dependencies:
@@ -248,8 +248,8 @@ features_phase2_integration:
       r_squared: 0.91
       delta_aic_linear: 87
     output:
-      - analysis/results/amoc_beta_fit_v3.json
-      - analysis/results/v3_beta_fit_summary_20251114T181628Z.json
+      - scripts/analysis/results/amoc_beta_fit_v3.json
+      - scripts/analysis/results/beta_fits_v3.json
       - figures/amoc_bistability.png
 
   - id: v3-feat-p2-003
@@ -262,7 +262,7 @@ features_phase2_integration:
       - Export JSON
     status: completed
     completed_at: "2026-08-24T15:23:00Z"
-    status_notes: "Coral β-Fit (analysis/results/coral_beta_fit_v3.json) + Summary (v3_beta_fit_summary_20251114T181628Z.json); ΔAIC=+6.26 bestätigt logistische Überlegenheit, β bleibt unter Literaturwert durch Mock-Pegel."
+    status_notes: "Coral β-Fit (scripts/analysis/results/coral_beta_fit_v3.json) + Aggregat (scripts/analysis/results/beta_fits_v3.json); ΔAIC=+6.26 bestätigt logistische Überlegenheit, β bleibt unter Literaturwert durch Mock-Pegel."
     priority: P0
     assignee: Claude
     dependencies:
@@ -279,8 +279,8 @@ features_phase2_integration:
       r_squared: 0.88
       delta_aic_linear: 65
     output:
-      - analysis/results/coral_beta_fit_v3.json
-      - analysis/results/v3_beta_fit_summary_20251114T181628Z.json
+      - scripts/analysis/results/coral_beta_fit_v3.json
+      - scripts/analysis/results/beta_fits_v3.json
       - figures/coral_bleaching_timeline.png
 
   - id: v3-feat-p2-004
@@ -293,7 +293,7 @@ features_phase2_integration:
       - Critical slowing detection
     status: completed
     completed_at: "2026-08-24T15:25:00Z"
-    status_notes: "EWS JSON (analysis/results/wais_ews_signals.json) + Summary (v3_ews_summary_20251114T181634Z.json); Varianztrend τ=0.29 signifikant, critical_slowing bleibt inaktiv."
+    status_notes: "EWS JSON (scripts/analysis/results/wais_ews_signals.json) + Aggregat (scripts/analysis/results/ews_analysis_v3.json); Varianztrend τ=0.29 signifikant, critical_slowing bleibt inaktiv."
     priority: P1
     assignee: Claude
     dependencies:
@@ -304,8 +304,8 @@ features_phase2_integration:
       beta: 4.5
     effort_hours: 2
     output:
-      - analysis/results/wais_ews_signals.json
-      - analysis/results/v3_ews_summary_20251114T181634Z.json
+      - scripts/analysis/results/wais_ews_signals.json
+      - scripts/analysis/results/ews_analysis_v3.json
 
   - id: v3-feat-p2-005
     title: "Early Warning Signals: AMOC"
@@ -317,7 +317,7 @@ features_phase2_integration:
       - Spectral analysis
     status: completed
     completed_at: "2026-08-24T15:27:00Z"
-    status_notes: "AMOC EWS exportiert (analysis/results/amoc_ews_signals.json) + Summary (v3_ews_summary_20251114T181634Z.json); Varianztrend negativ, AR(1) stark positiv → FovS-Warnflag bestätigt."
+    status_notes: "AMOC EWS exportiert (scripts/analysis/results/amoc_ews_signals.json) + Aggregat (scripts/analysis/results/ews_analysis_v3.json); Varianztrend negativ, AR(1) stark positiv → FovS-Warnflag bestätigt."
     priority: P1
     assignee: Claude
     dependencies:
@@ -328,8 +328,8 @@ features_phase2_integration:
       beta: 4.5
     effort_hours: 2
     output:
-      - analysis/results/amoc_ews_signals.json
-      - analysis/results/v3_ews_summary_20251114T181634Z.json
+      - scripts/analysis/results/amoc_ews_signals.json
+      - scripts/analysis/results/ews_analysis_v3.json
 
   - id: v3-feat-p2-006
     title: "Bootstrap CIs für alle 6 Systeme"
@@ -365,11 +365,13 @@ features_phase3_bridge:
     title: "TypeScript Integration Test: WAIS"
     description: |
       Teste Python JSON → TypeScript System-Klassen:
-      - Lade analysis/results/wais_beta_fit_v3.json
+      - Lade scripts/analysis/results/wais_beta_fit_v3.json
       - Instanziiere WAISSystem aus seed/RoadToV.3/antarctic-ice-sheet.ts
       - Validiere: β, Θ, EWS korrekt geladen
       - Teste CREP-Generierung
-    status: pending
+    status: completed
+    completed_at: "2026-08-24T16:05:00Z"
+    status_notes: "TypeScript Integration Test lädt scripts/analysis/results/{wais_adapter_output.json,beta_fits_v3.json,ews_analysis_v3.json}, prüft σ(β(R-Θ)) Invarianten und nutzt relativen Pfad-Resolver."
     priority: P1
     assignee: Claude
     dependencies:
@@ -381,7 +383,8 @@ features_phase3_bridge:
       beta: 4.5
     effort_hours: 2
     output:
-      - tests/integration/test_python_ts_bridge_wais.py
+      - seed/RoadToV.3/test-wais-integration.ts
+      - seed/RoadToV.3/validate-v3-integration.js
 
   - id: v3-feat-p3-002
     title: "CREP Metrics für alle 6 Systeme"
@@ -391,7 +394,9 @@ features_phase3_bridge:
       - Resonance: Antwort auf Forcing (0-1)
       - Emergence: β-normalisierte Emergenz (0-1)
       - Poetics: Menschenlesbarer Zustand
-    status: pending
+    status: completed
+    completed_at: "2026-08-24T16:15:00Z"
+    status_notes: "CREP Metriken in scripts/analysis/results/crep_metrics_v3.json serialisiert; seed/RoadToV.3/crep-showcase.ts und test-crep-all.ts liefern konsistente CREP-Anzeigen (β 3.5→13.5)."
     priority: P1
     assignee: Claude (formal) + Aeon (poetic)
     dependencies:
@@ -404,14 +409,18 @@ features_phase3_bridge:
       beta: 4.5
     effort_hours: 2
     output:
-      - analysis/results/v3_crep_metrics.json
+      - scripts/analysis/results/crep_metrics_v3.json
+      - seed/RoadToV.3/crep-showcase.ts
+      - seed/RoadToV.3/test-crep-all.ts
 
   - id: v3-feat-p3-003
     title: "Trilayer-Dokumentation: WAIS"
     description: |
       Erstelle seed/bedeutungssigillin/climate/wais_v3.{yaml,json,md}
       mit formal/empirical/poetic threads.
-    status: pending
+    status: completed
+    completed_at: "2026-08-24T16:25:00Z"
+    status_notes: "WAIS Trilayer in seed/FraktaltagebuchV3/systems/v3_wais.{yaml,json,md} verankert; formal/empirical/poetic Threads spiegeln β-Stauchung (3.42 vs 13.5) und 21.9% Restpuffer."
     priority: P2
     assignee: Claude + Team
     dependencies:
@@ -423,16 +432,18 @@ features_phase3_bridge:
       beta: 4.5
     effort_hours: 1.5
     output:
-      - seed/bedeutungssigillin/climate/wais_v3.yaml
-      - seed/bedeutungssigillin/climate/wais_v3.json
-      - seed/bedeutungssigillin/climate/wais_v3.md
+      - seed/FraktaltagebuchV3/systems/v3_wais.yaml
+      - seed/FraktaltagebuchV3/systems/v3_wais.json
+      - seed/FraktaltagebuchV3/systems/v3_wais.md
 
   - id: v3-feat-p3-004
     title: "Trilayer-Dokumentation: AMOC"
     description: |
       Erstelle seed/bedeutungssigillin/ocean/amoc_v3.{yaml,json,md}
       mit formal/empirical/poetic threads.
-    status: pending
+    status: completed
+    completed_at: "2026-08-24T16:30:00Z"
+    status_notes: "AMOC Trilayer in seed/FraktaltagebuchV3/systems/v3_amoc.{yaml,json,md} dokumentiert Bistabilität, FovS>0 und ΔAIC=+25; poetische Ebene koppelt Atlantik-Warnung an σ(β(R-Θ))."
     priority: P2
     assignee: Claude + Team
     dependencies:
@@ -444,20 +455,22 @@ features_phase3_bridge:
       beta: 4.5
     effort_hours: 1.5
     output:
-      - seed/bedeutungssigillin/ocean/amoc_v3.yaml
-      - seed/bedeutungssigillin/ocean/amoc_v3.json
-      - seed/bedeutungssigillin/ocean/amoc_v3.md
+      - seed/FraktaltagebuchV3/systems/v3_amoc.yaml
+      - seed/FraktaltagebuchV3/systems/v3_amoc.json
+      - seed/FraktaltagebuchV3/systems/v3_amoc.md
 
   - id: v3-feat-p3-005
     title: "Shadow-Sigillin für alle 6 Systeme"
     description: |
-      Erstelle seed/shadow_sigillin/v3/{system}_shadow.yaml
-      für WAIS, AMOC, Coral, Measles, Finance, Cancer.
+      Konsolidiere die Schatten-Risiken der sechs Real-World Systeme in einem
+      Trilayer unter seed/shadow_sigillin/v3/shadow_sigillin_v3.{yaml,json,md}.
 
       Minimum pro System:
       - 3 Risiken (severity: high/medium/low)
       - 2 Recovery-Playbook-Einträge
-    status: pending
+    status: completed
+    completed_at: "2026-08-24T18:05:00Z"
+    status_notes: "Shadow-Sigillin V3 Trilayer (YAML/JSON/MD) verlagert nach seed/shadow_sigillin/v3/; Meta ergänzt logistisches Quartett + Lichtkopplung. Alle sechs Systeme mit Risiken, Cascades & Recovery-Playbooks dokumentiert."
     priority: P2
     assignee: Claude
     dependencies: []
@@ -467,12 +480,9 @@ features_phase3_bridge:
       beta: 4.5
     effort_hours: 2
     output:
-      - seed/shadow_sigillin/v3/wais_shadow.yaml
-      - seed/shadow_sigillin/v3/amoc_shadow.yaml
-      - seed/shadow_sigillin/v3/coral_shadow.yaml
-      - seed/shadow_sigillin/v3/measles_shadow.yaml
-      - seed/shadow_sigillin/v3/finance_shadow.yaml
-      - seed/shadow_sigillin/v3/cancer_shadow.yaml
+      - seed/shadow_sigillin/v3/shadow_sigillin_v3.yaml
+      - seed/shadow_sigillin/v3/shadow_sigillin_v3.json
+      - seed/shadow_sigillin/v3/shadow_sigillin_v3.md
 
 # ============================================================================
 # PHASE 4: REAL-TIME MONITORING (R = 0.85 → 1.00)
@@ -551,8 +561,8 @@ features_phase4_monitoring:
 
 summary:
   total_phases: 4
-  total_features: 18
-  estimated_hours: 37.5
+  total_features: 20
+  estimated_hours: 38.5
 
   phase_breakdown:
     phase1_foundation:
@@ -567,7 +577,7 @@ summary:
 
     phase3_bridge:
       features: 5
-      hours: 9.5
+      hours: 9.0
       R_target: 0.85
 
     phase4_monitoring:

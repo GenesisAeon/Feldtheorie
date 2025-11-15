@@ -16,7 +16,7 @@ data/
 ├── astrophysics/     (2 files)  🌌 QPO, Black Holes
 ├── biology/          (8 files)  🧬 Lenski, Synaptic, Honeybee, Coral
 ├── cognition/        (6 files)  🧠 Working Memory, Sleep
-├── derived/          (5 files)  ⭐ ZENTRAL! beta_estimates.csv
+├── derived/          (7 files)  ⭐ ZENTRAL! beta_estimates.csv
 ├── geophysics/       (4 files)  🌍 Cascadia, Seismik
 ├── socio_ecology/   (10 files)  🌿 Amazon, Urban Heat, AMOC
 ├── safety_delay/    (4 files)  🛡️ τ*-Controller ΔAIC Ledger
@@ -25,7 +25,7 @@ data/
 ├── neuro_ai/        (2 files)  🧠🤖 Hybrid Activation Staging + Metadata
 └── economy/         (2 files)  ⚡💶 Energy-Finance Threshold Staging + Metadata
 
-Total: 68 files
+Total: 70 files
 ```
 
 ---
@@ -100,7 +100,7 @@ Total: 68 files
 **Key Datasets:**
 - `beta_estimates.csv` - **ALLE β-Werte aus allen Domänen!**
 - `domain_covariates.csv` - **Kovariaten für UTAC v1.2!**
-- `beta_estimates_v3.csv` (+ `beta_estimates_v3.metadata.json`) - **V3 β-Fits (WAIS/AMOC/Coral) + TODO-Spalten für Measles/Finance/Cancer**
+- `beta_estimates_v3.csv` (+ `beta_estimates_v3.metadata.json`) - **V3 β-Fits (WAIS/AMOC/Coral) aktiv; Measles/Finance/Cancer stehen als placeholders (expected) bereit**
 
 **Wichtigkeit:** KRITISCH für Meta-Regression!
 
