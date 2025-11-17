@@ -1,9 +1,9 @@
 # UTAC Modular API Requirements
 
 # FastAPI Framework
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-pydantic==2.5.0
+fastapi==0.121.2
+uvicorn[standard]==0.38.0
+pydantic==2.12.4
 
 # Scientific Computing
 numpy>=1.24.0
