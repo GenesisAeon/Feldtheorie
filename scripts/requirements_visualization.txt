@@ -1,0 +1,7 @@
+# UTAC v2.0 Visualization Dependencies
+# Install with: pip install -r scripts/requirements_visualization.txt
+
+matplotlib>=3.7.0
+seaborn>=0.12.0
+pandas>=2.0.0
+numpy>=1.24.0
