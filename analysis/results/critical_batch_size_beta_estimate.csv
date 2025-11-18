@@ -1,0 +1,2 @@
+domain,beta,beta_ci_lower,beta_ci_upper,theta,r_squared,delta_aic,source,system,phi_attractor,phi_match_error_percent
+Informational,4.761904761904762,2.8466190299629046,19.99830886100164,12.449244066461077,0.9903140942305247,,Kaplan et al. 2020 - Critical Batch Size Scaling,Critical Batch Size (Deep Learning Training),Φ³,12.41332261894747
