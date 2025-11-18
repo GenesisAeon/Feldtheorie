@@ -1,0 +1,4 @@
+attractor,phi_value,formula,domain,beta_target,beta_empirical_mean,beta_empirical_sd,match_error_percent
+Phi^3,4.236000,Φ³,Informational/Geophysical,4.236000,4.500000,0.900000,6.232295
+Phi^4,6.854000,Φ⁴,Biological,6.854000,7.400000,0.900000,7.966151
+Phi^5,11.090000,Φ⁵,Climate,11.090000,11.000000,1.000000,0.811542

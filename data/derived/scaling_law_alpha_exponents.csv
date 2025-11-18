@@ -1,0 +1,6 @@
+parameter,alpha_value,description,formula,source,beta_inverse,beta_scaled
+alpha_N,0.076000,Loss scaling with model size (parameters),L(N) ∝ 1/N^α_N,Kaplan et al. 2020 (arXiv:2001.08361),13.157895,4.200000
+alpha_D,0.095000,Loss scaling with dataset size (tokens),L(D) ∝ 1/D^α_D,Kaplan et al. 2020,10.526316,3.360000
+alpha_C,0.057000,Loss scaling with compute (PF-days),L(C) ∝ 1/C^α_C,Kaplan et al. 2020,17.543860,5.600000
+alpha_B,0.210000,Critical batch size scaling,B_crit(L) = B*/L^α_B,Kaplan et al. 2020,4.761905,1.520000
+alpha_S,0.760000,Training steps scaling,S ∝ X^α_S,Kaplan et al. 2020,1.315789,0.420000
