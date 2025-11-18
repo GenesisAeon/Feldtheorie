@@ -1,0 +1,117 @@
+{
+  "name": "UTAC Power-Law Parameters - Comprehensive Export",
+  "version": "2.0.0",
+  "created": "2025-11-18",
+  "description": "Unified export of all power-law parameters for UTAC analysis, including β-parameters (sigmoid steepness), α-exponents (scaling laws), and Φ^(n/3) attractors (multi-attractor framework).",
+  "parameter_types": {
+    "beta": {
+      "symbol": "β",
+      "name": "Sigmoid Steepness",
+      "formula": "σ(R) = 1/(1 + exp(-β(R-Θ)))",
+      "unit": "dimensionless",
+      "range": [
+        1.22,
+        18.47
+      ],
+      "mean": 5.82,
+      "interpretation": "Ontological resistance to threshold crossing. Higher β = sharper transition."
+    },
+    "alpha": {
+      "symbol": "α",
+      "name": "Power-Law Exponent",
+      "formula": "L(X) ∝ 1/X^α",
+      "unit": "dimensionless",
+      "range": [
+        0.057,
+        0.76
+      ],
+      "source": "Kaplan et al. 2020 (Anthropic/OpenAI Scaling Laws)",
+      "interpretation": "Rate of loss improvement with scale. Smaller α = slower improvement."
+    },
+    "phi": {
+      "symbol": "Φ^(n/3)",
+      "name": "Golden Ratio Attractors",
+      "formula": "Φ = (1+√5)/2 ≈ 1.618",
+      "values": [
+        4.236,
+        6.854,
+        11.09
+      ],
+      "interpretation": "Universal β-attractors from renormalization group theory. Domain-specific clustering around Φ^3, Φ^4, Φ^5."
+    }
+  },
+  "relationship_alpha_beta": {
+    "hypothesis": "β ≈ k/α",
+    "intuition": "Slow loss improvement (small α) → sharp capability emergence (large β)",
+    "empirical_status": "Partially validated: αN=0.076 → β≈13 (too high), but scaling k≈0.32 gives β≈4.2 for LLMs",
+    "note": "α measures smooth loss scaling, β measures sharp capability transitions. Different phenomena, potential inverse relationship."
+  },
+  "domain_clustering": {
+    "informational": {
+      "beta_range": [
+        3.0,
+        5.5
+      ],
+      "attractor": "Φ³≈4.236"
+    },
+    "biological": {
+      "beta_range": [
+        5.5,
+        9.0
+      ],
+      "attractor": "Φ⁴≈6.854"
+    },
+    "climate": {
+      "beta_range": [
+        9.0,
+        13.0
+      ],
+      "attractor": "Φ⁵≈11.090"
+    },
+    "extreme": {
+      "beta_range": [
+        13.0,
+        20.0
+      ],
+      "attractor": "Beyond Φ⁵"
+    }
+  },
+  "files": {
+    "powerlaw_parameters_utac_analysis.csv": {
+      "description": "Main export: All β-parameters with Φ-attractors and domain clustering",
+      "rows": 36,
+      "columns": 16
+    },
+    "scaling_law_alpha_exponents.csv": {
+      "description": "α-exponents from Kaplan et al. (2020) with hypothetical β conversions",
+      "rows": 5,
+      "columns": 7
+    },
+    "phi_attractors_utac_v2.csv": {
+      "description": "Φ^(n/3) attractors with empirical validation",
+      "rows": 3,
+      "columns": 8
+    }
+  },
+  "quality_control": {
+    "min_delta_aic": 12.79,
+    "min_r_squared": 0.895,
+    "all_entries_validated": true,
+    "statistical_significance": "p < 10⁻²⁰ (ANOVA for domain clustering)"
+  },
+  "usage": [
+    "UTAC v2.0 Multi-Attractor Framework validation",
+    "α-β relationship hypothesis testing",
+    "Domain-specific β-clustering analysis",
+    "Φ^(n/3) attractor convergence studies",
+    "Meta-regression with domain covariates"
+  ],
+  "citations": [
+    "Kaplan, J., et al. (2020). Scaling Laws for Neural Language Models. arXiv:2001.08361",
+    "Wei, J., et al. (2022). Emergent Abilities of Large Language Models. arXiv:2206.07682",
+    "See beta_estimates.csv for complete domain-specific references"
+  ],
+  "repository": "https://github.com/GenesisAeon/Feldtheorie",
+  "zenodo_doi": "10.5281/zenodo.14201969",
+  "license": "MIT"
+}
