@@ -1,0 +1,180 @@
+{
+  "name": "UTAC Domain Covariates - System Property Predictors for β-Heterogeneity",
+  "dataset_name": "domain_covariates",
+  "domain": "meta_analysis",
+  "type": "derived_covariates",
+  "version": "1.2.0",
+  "created": "2025-11-18",
+  "updated": "2025-11-18",
+  "source": "Expert estimates based on system architecture and domain knowledge",
+  "license": "MIT",
+  "description": "System-level covariates hypothesized to predict β-parameter heterogeneity in UTAC framework. Used for meta-regression to test mechanistic theories of why different domains exhibit different β-attractors.",
+  "provenance": "Covariate values estimated from domain knowledge, literature review, and theoretical considerations. See docs/appendix_field_types.md for estimation methodology. Domain identifiers match beta_estimates.csv for paired analysis.",
+  "data_structure": {
+    "format": "CSV",
+    "rows": "variable (matches beta_estimates.csv domains)",
+    "columns": 6,
+    "primary_key": "domain"
+  },
+  "variables": [
+    {
+      "name": "domain",
+      "type": "categorical",
+      "unit": "string",
+      "description": "Domain identifier. Must match beta_estimates.csv exactly for meta-regression.",
+      "constraint": "foreign_key: beta_estimates.csv::domain"
+    },
+    {
+      "name": "C_eff",
+      "type": "covariate",
+      "unit": "dimensionless",
+      "description": "Effective coupling strength. Measures interaction intensity between system components.",
+      "range": [0.0, 1.0],
+      "estimation_method": "Expert assessment based on: network connectivity, interaction range, feedback strength",
+      "examples": {
+        "low": "Weakly coupled oscillators (C_eff ≈ 0.2)",
+        "medium": "Ecological networks (C_eff ≈ 0.5-0.7)",
+        "high": "Molecular systems with H-bonds (C_eff ≈ 0.9)"
+      },
+      "hypothesis": "Higher C_eff → Higher β (stronger resistance to threshold crossing)"
+    },
+    {
+      "name": "D_eff",
+      "type": "covariate",
+      "unit": "integer",
+      "description": "Effective dimensionality. Represents degrees of freedom or system complexity.",
+      "range": [2, 1000],
+      "estimation_method": "Based on: parameter count, network size, component diversity",
+      "examples": {
+        "low": "Simple bistable systems (D_eff ≈ 2-5)",
+        "medium": "Ecological/Neural networks (D_eff ≈ 10-100)",
+        "high": "LLMs (D_eff ≈ 10⁹-10¹²)"
+      },
+      "hypothesis": "Higher D_eff (d≥4) → β approaches mean-field RG fixed point (β≈4.2)"
+    },
+    {
+      "name": "SNR",
+      "type": "covariate",
+      "unit": "dimensionless",
+      "description": "Signal-to-noise ratio. Ratio of coherent forcing to stochastic fluctuations.",
+      "range": [0.1, 10.0],
+      "estimation_method": "Coherent forcing amplitude / thermal/environmental noise amplitude",
+      "examples": {
+        "low": "High-temperature thermal systems (SNR < 1)",
+        "medium": "Ecological systems (SNR ≈ 2-5)",
+        "high": "Deterministic/computational systems (SNR > 5)"
+      },
+      "hypothesis": "Higher SNR → Sharper transitions (higher β), lower noise → less smearing"
+    },
+    {
+      "name": "Memory",
+      "type": "covariate",
+      "unit": "dimensionless",
+      "description": "Memory/hysteresis measure. Quantifies path-dependence and irreversibility.",
+      "range": [0.0, 1.0],
+      "estimation_method": "Based on: hysteresis width, bistability strength, history dependence",
+      "examples": {
+        "low": "Reversible phase transitions (Memory ≈ 0.1)",
+        "medium": "Ecological state shifts (Memory ≈ 0.5)",
+        "high": "Irreversible molecular aggregation (Memory ≈ 0.9)"
+      },
+      "hypothesis": "Higher Memory → Associated with higher β in bistable systems"
+    },
+    {
+      "name": "Theta_dot",
+      "type": "covariate",
+      "unit": "dimensionless",
+      "description": "Rate of threshold change. Measures adaptive/evolutionary dynamics of Θ itself.",
+      "range": [0.0, 1.0],
+      "estimation_method": "dΘ/dt normalized by system timescale. Captures threshold adaptation.",
+      "examples": {
+        "low": "Fixed physical thresholds (Theta_dot ≈ 0.0)",
+        "medium": "Adaptive systems (Theta_dot ≈ 0.1-0.3)",
+        "high": "Rapidly evolving thresholds (Theta_dot ≈ 0.5+)"
+      },
+      "hypothesis": "Exploratory covariate; may capture moving-target dynamics"
+    }
+  ],
+  "theoretical_framework": {
+    "rg_derivation": {
+      "formula": "β ≈ 2(J/T)",
+      "J": "Coupling strength (related to C_eff)",
+      "T": "Effective temperature/noise (related to 1/SNR)",
+      "prediction": "β increases with C_eff and SNR",
+      "reference": "docs/utac_renormalization_group_foundation.md"
+    },
+    "mean_field_regime": {
+      "condition": "D_eff ≥ 4",
+      "prediction": "β converges to RG fixed point ≈ 4.21 (≈ Φ³)",
+      "observed": "Informational systems (LLMs, Markets) with high D_eff cluster at β ≈ 4.5",
+      "reference": "docs/utac_v2_synthesis.md section 'Information atmet leicht'"
+    },
+    "dimensionality_hypothesis": {
+      "low_d": "D_eff < 4 → β diverges from 4.2 (fluctuations matter)",
+      "high_d": "D_eff ≥ 4 → β ≈ 4.2 (mean-field universality)",
+      "reference": "docs/rg_flow_usage_guide.md"
+    }
+  },
+  "estimation_methodology": {
+    "sources": [
+      "Literature review of system properties",
+      "Domain expert consultation",
+      "Theoretical scaling arguments",
+      "Comparison with known systems"
+    ],
+    "validation": "Cross-check against empirical β-values in beta_estimates.csv",
+    "uncertainty": "Covariate estimates are inherently subjective. Meta-regression R² indicates explanatory power.",
+    "iterative_refinement": "Covariates may be refined as more systems are added and patterns emerge"
+  },
+  "meta_regression_usage": {
+    "dependent_variable": "beta (from beta_estimates.csv)",
+    "independent_variables": ["C_eff", "D_eff", "SNR", "Memory", "Theta_dot"],
+    "weighting": "Precision weights: 1 / beta_ci_width²",
+    "script": "analysis/beta_drivers_meta_regression.py",
+    "expected_output": "Coefficients, R², residual plots, covariate importance rankings"
+  },
+  "analysis_scripts": [
+    "analysis/beta_drivers_meta_regression.py",
+    "scripts/estimate_domain_covariates.py"
+  ],
+  "related_files": {
+    "beta_data": "data/derived/beta_estimates.csv",
+    "template": "data/derived/domain_covariates_template.csv",
+    "documentation": [
+      "data/derived/README.md",
+      "docs/appendix_field_types.md",
+      "docs/utac_theory_core.md",
+      "docs/utac_v2_synthesis.md"
+    ]
+  },
+  "usage_notes": [
+    "Covariates are ESTIMATES, not measured quantities",
+    "Domain identifiers must match beta_estimates.csv exactly",
+    "Missing covariates (NA) will be excluded from regression",
+    "See docs/appendix_field_types.md for covariate estimation guidance",
+    "Meta-regression tests mechanistic hypotheses (J/T, dimensionality, etc.)",
+    "Low meta-regression R² suggests missing covariates or complex interactions"
+  ],
+  "quality_control": {
+    "range_checks": "All covariates within specified ranges [0,1] or [2,1000]",
+    "domain_matching": "All domains in beta_estimates.csv have covariate entries",
+    "expert_review": "Covariate estimates reviewed by domain experts where possible"
+  },
+  "zenodo_doi": "10.5281/zenodo.14201969",
+  "github_repo": "https://github.com/GenesisAeon/Feldtheorie",
+  "citations": [
+    "See docs/appendix_field_types.md for methodology",
+    "See beta_estimates.csv metadata for system-specific references"
+  ],
+  "keywords": [
+    "UTAC",
+    "meta-regression",
+    "system covariates",
+    "coupling strength",
+    "dimensionality",
+    "signal-to-noise",
+    "hysteresis",
+    "adaptive dynamics",
+    "beta heterogeneity"
+  ]
+}

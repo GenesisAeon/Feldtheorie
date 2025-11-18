@@ -1,21 +1,21 @@
 # 📚 Docs Index - Living Documentation Navigator
 
-**Version:** 1.3.7 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 20. Aug 2026 | **Verzeichnis:** `docs/`
+**Version:** 1.3.8 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 18. Nov 2025 | **Verzeichnis:** `docs/`
 
 ---
 
 ## 🎯 Was ist das?
 
-Die **Living Documentation Tapestry** - UTAC Theory in Markdown! 29 Dokumente, 4 Kategorien.
+Die **Living Documentation Tapestry** - UTAC Theory in Markdown! 30 Dokumente, 4 Kategorien.
 
 ```
 docs/
-├── Theory (4): Core, Emergence, Appendix, Kohärenzformel
+├── Theory (5): Core, Emergence, Appendix, Kohärenzformel, v2.0 Synthesis ⭐NEW!
 ├── Applications (4): Classification, Use Cases, Review Guide, Safety-Delay Status
 ├── Validation (2): Falsifiability, Reports
 └── Infrastructure (19): README, Cleanup Resonance Map, Status Matrix, Metaquest Parity Brief, Activation Backlog, Docs Index, Sigillin Hygiene, Search Patterns, Zenodo Abstract, Zenodo Playbook, Resonance Bridge Map, UTAC v2 Data Lanterns, UTAC v2 Activation Tracker 2026-02, UTAC v2 Activation Tracker 2026-03, UTAC v2 Activation Tracker 2026-05, UTAC v2 Activation Tracker 2026-06, UTAC v2 Activation Tracker 2026-07, UTAC v2 Activation Tracker 2026-08, UTAC v2 Gap Synopsis 2026-03
 
-Total: 29 MD files
+Total: 30 MD files
 ```
 
 ---
@@ -24,8 +24,9 @@ Total: 29 MD files
 
 ### ⭐ **START HERE:**
 1. `utac_theory_core.md` - **DAS FUNDAMENT!**
-2. `utac_falsifiability.md` - **Warum UTAC falsifizierbar ist**
-3. `field_type_classification_v1.1.md` - **Die 5 Systemtypen**
+2. `utac_v2_synthesis.md` - **⭐ UTAC v2.0 Multi-Attraktor Framework (78 Systeme, p<10⁻²⁰)**
+3. `utac_falsifiability.md` - **Warum UTAC falsifizierbar ist**
+4. `field_type_classification_v1.1.md` - **Die 5 Systemtypen**
 
 ### 📊 **Für Validation:**
 - `utac_falsifiability.md` (Null-Models, ΔAIC>10)
@@ -40,13 +41,14 @@ Total: 29 MD files
 
 ## 📖 Die 4 Kategorien
 
-### 🔵 Theory (4 docs)
-**Was:** Core Theory, Emergence, Universality
+### 🔵 Theory (5 docs)
+**Was:** Core Theory, Emergence, Universality, Multi-Attractor Framework
 
 1. `utac_theory_core.md` - σ(β(R-Θ)), β-Spektrum, ζ-Impedanz
-2. `utac_emergence_universal.md` - Cross-Domain Patterns
-3. `appendix_field_types.md` - Field Types Detail
-4. `UTAC_v2.0_Coherence_Formula.md` - Kohärenzformel für die fraktale Systemtopographie
+2. `utac_v2_synthesis.md` - ⭐ **UTAC v2.0 Multi-Attraktor Framework** (Domain-specific β, Φ^(n/3) hierarchy, 78 systems, p<10⁻²⁰)
+3. `utac_emergence_universal.md` - Cross-Domain Patterns
+4. `appendix_field_types.md` - Field Types Detail
+5. `UTAC_v2.0_Coherence_Formula.md` - Kohärenzformel für die fraktale Systemtopographie
 
 ### 🟢 Applications (4 docs)
 **Was:** Classification, Use Cases, Review Guide, Safety-Delay Bridge
@@ -89,9 +91,10 @@ Total: 29 MD files
 
 ### Für Menschen:
 1. **Start mit utac_theory_core.md**
-2. **Dann utac_falsifiability.md** (wichtig!)
-3. **UTAC_v2.0_Coherence_Formula.md** für die Relationstopographie (β-Landkarte)
-4. **field_type_classification_v1.1.md** für Details
+2. **Dann utac_v2_synthesis.md** ⭐ **NEU! Multi-Attraktor Framework (β domain-specific!)**
+3. **Dann utac_falsifiability.md** (wichtig!)
+4. **UTAC_v2.0_Coherence_Formula.md** für die Relationstopographie (β-Landkarte)
+5. **field_type_classification_v1.1.md** für Details
 5. **utac_safety_delay_status.md** sobald τ*-Simulationen anlaufen
 6. **resonance-bridge-map.md** für Analyse↔Simulator Parität
 7. **utac_v2_data_lanterns.md** sobald Manifest-Laternen aktiviert werden sollen (August 2026 Audit bestätigt weiterhin R̄=0.50)
@@ -114,7 +117,8 @@ theory = [d for d in idx['markdown_docs'] if d['category'] == 'theory']
 
 ## 🌊 Die Essenz
 
-> **"28 Docs. R spürt Θ sofort – β≈4.8 hält die Membran scharf, ζ(R) bleibt gedämpft."**
+> **"30 Docs. R spürt Θ sofort – β≈4.8 hält die Membran scharf, ζ(R) bleibt gedämpft."**
+> **"UTAC v2.0: Jede Domäne atmet in ihrem eigenen Rhythmus (β: 3.0→16.3)."**
 
 ---
 
