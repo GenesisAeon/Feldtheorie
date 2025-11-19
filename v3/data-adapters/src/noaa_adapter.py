@@ -91,9 +91,41 @@ class NOAAAdapter(BaseAdapter):
 
         self.logger.info(f"Initialized NOAAAdapter for coral reefs (region: {region})")
 
-    def fetch_raw_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+    def fetch_raw_data(self, start_date: datetime, end_date: datetime, use_real_data: bool = False) -> Dict[str, Any]:
         """
         Fetch NOAA OISST SST data.
+
+        Args:
+            start_date: Start date
+            end_date: End date
+            use_real_data: If True, fetch real NOAA data; if False, use synthetic
+
+        Returns:
+            Dictionary with 'timestamps', 'sst_anomaly_c', 'dhw'
+        """
+        self.logger.info(f"Fetching NOAA OISST data: {start_date.date()} to {end_date.date()}")
+
+        if use_real_data:
+            try:
+                self.logger.info("Fetching REAL NOAA OISST data from NCEI API")
+                return self._fetch_real_noaa_data(start_date, end_date)
+            except Exception as e:
+                self.logger.warning(f"Failed to fetch real data: {e}. Falling back to synthetic.")
+                return self._generate_synthetic_data(start_date, end_date)
+        else:
+            self.logger.info("Using synthetic NOAA OISST data (based on real trends)")
+            return self._generate_synthetic_data(start_date, end_date)
+
+    def _fetch_real_noaa_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+        """
+        Fetch REAL NOAA OISST data from NCEI API.
+
+        Uses the NOAA NCEI Data Access Service:
+        https://www.ncei.noaa.gov/access/services/data/v1
+
+        Two methods:
+        1. CSV-based (station/bbox): Quick, regional data
+        2. NetCDF-based (gridded): Comprehensive, global data
 
         Args:
             start_date: Start date
@@ -102,14 +134,197 @@ class NOAAAdapter(BaseAdapter):
         Returns:
             Dictionary with 'timestamps', 'sst_anomaly_c', 'dhw'
         """
-        self.logger.info(f"Fetching NOAA OISST data: {start_date.date()} to {end_date.date()}")
+        # Try CSV method first (faster for testing)
+        try:
+            return self._fetch_csv_data(start_date, end_date)
+        except Exception as e:
+            self.logger.warning(f"CSV fetch failed: {e}")
 
-        # For Phase 4 prototype, use synthetic data based on real trends
-        # In production, this would fetch real NOAA OISST NetCDF files
-        # TODO: Implement real NOAA OISST data fetching
+        # Fallback to NetCDF method
+        try:
+            return self._fetch_netcdf_data(start_date, end_date)
+        except Exception as e:
+            self.logger.error(f"NetCDF fetch failed: {e}")
+            raise
 
-        self.logger.info("Using synthetic NOAA OISST data (based on real trends)")
-        return self._generate_synthetic_data(start_date, end_date)
+    def _fetch_csv_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+        """
+        Fetch SST data using NOAA NCEI CSV API.
+
+        API Documentation:
+        https://www.ncei.noaa.gov/support/access-data-service-api-user-documentation
+
+        Args:
+            start_date: Start date
+            end_date: End date
+
+        Returns:
+            Parsed data dictionary
+        """
+        # Get bounding box for region
+        if self.region == 'global':
+            # Global average (use multiple representative stations)
+            bbox = None  # Will aggregate multiple regions
+            stations = None  # Use global dataset
+        elif self.region in self.REEF_REGIONS:
+            region_def = self.REEF_REGIONS[self.region]
+            lat_min, lat_max = region_def['lat']
+            lon_min, lon_max = region_def['lon']
+            bbox = f"{lon_min},{lat_min},{lon_max},{lat_max}"
+            stations = None
+        else:
+            raise ValueError(f"Unknown region: {self.region}")
+
+        # Build API request
+        base_url = "https://www.ncei.noaa.gov/access/services/data/v1"
+
+        params = {
+            'dataset': 'global-marine',
+            'dataTypes': 'SST',  # Sea Surface Temperature
+            'startDate': start_date.strftime('%Y-%m-%d'),
+            'endDate': end_date.strftime('%Y-%m-%d'),
+            'format': 'csv',
+            'units': 'metric'
+        }
+
+        if bbox:
+            params['bbox'] = bbox
+        if stations:
+            params['stations'] = stations
+
+        self.logger.info(f"Fetching CSV data: {params}")
+
+        # Make request
+        response = requests.get(base_url, params=params, timeout=60)
+        response.raise_for_status()
+
+        # Parse CSV
+        from io import StringIO
+        df = pd.read_csv(StringIO(response.text))
+
+        self.logger.info(f"Fetched {len(df)} rows from NOAA CSV API")
+
+        # Process data
+        if 'DATE' in df.columns:
+            timestamps = pd.to_datetime(df['DATE'])
+        elif 'TIMESTAMP' in df.columns:
+            timestamps = pd.to_datetime(df['TIMESTAMP'])
+        else:
+            raise ValueError(f"No DATE column in CSV. Columns: {df.columns.tolist()}")
+
+        # Extract SST
+        if 'SST' in df.columns:
+            sst_values = df['SST'].values
+        elif 'SEA_SURFACE_TEMP' in df.columns:
+            sst_values = df['SEA_SURFACE_TEMP'].values
+        else:
+            raise ValueError(f"No SST column in CSV. Columns: {df.columns.tolist()}")
+
+        # Calculate SST anomaly (relative to baseline)
+        # Baseline: 1985-1993 average
+        baseline_mask = (timestamps >= f'{self.BASELINE_PERIOD[0]}-01-01') & \
+                        (timestamps < f'{self.BASELINE_PERIOD[1]+1}-01-01')
+
+        if baseline_mask.any():
+            baseline_mean = sst_values[baseline_mask].mean()
+        else:
+            # Fallback: use first year as baseline
+            baseline_mean = sst_values[:365].mean()
+            self.logger.warning(f"Using first year as baseline (no data in {self.BASELINE_PERIOD})")
+
+        sst_anomaly = sst_values - baseline_mean
+
+        # Calculate DHW (Degree Heating Weeks)
+        dhw = self._calculate_dhw(timestamps, sst_anomaly)
+
+        return {
+            'timestamps': timestamps.tolist(),
+            'sst_anomaly_c': sst_anomaly.tolist(),
+            'dhw': dhw.tolist(),
+            'metadata': {
+                'source': 'NOAA NCEI CSV API',
+                'baseline_period': f'{self.BASELINE_PERIOD[0]}-{self.BASELINE_PERIOD[1]}',
+                'baseline_mean_c': float(baseline_mean),
+                'region': self.region,
+                'n_observations': len(df)
+            }
+        }
+
+    def _fetch_netcdf_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+        """
+        Fetch SST data from NOAA OISST NetCDF files.
+
+        OISST v2.1 High Resolution Dataset:
+        https://psl.noaa.gov/data/gridded/data.noaa.oisst.v2.highres.html
+
+        Files: Daily 0.25° global SST (NetCDF)
+
+        Args:
+            start_date: Start date
+            end_date: End date
+
+        Returns:
+            Parsed data dictionary
+        """
+        self.logger.info("NetCDF fetch not yet implemented. Requires xarray + netCDF4.")
+        self.logger.info("Install with: pip install xarray netCDF4")
+
+        # TODO: Implement NetCDF fetching
+        # Example approach:
+        # import xarray as xr
+        #
+        # # OPeNDAP URL (remote access without download)
+        # base_url = "https://www.ncei.noaa.gov/thredds/dodsC/OisstBase/NetCDF/V2.1/AVHRR"
+        #
+        # # Open dataset
+        # ds = xr.open_dataset(f"{base_url}/sst.day.mean.{start_date.year}.nc")
+        #
+        # # Select region
+        # if self.region in self.REEF_REGIONS:
+        #     region_def = self.REEF_REGIONS[self.region]
+        #     ds_region = ds.sel(
+        #         lat=slice(region_def['lat'][0], region_def['lat'][1]),
+        #         lon=slice(region_def['lon'][0], region_def['lon'][1])
+        #     )
+        # else:
+        #     ds_region = ds  # Global
+        #
+        # # Extract SST and calculate anomalies
+        # sst = ds_region['sst']
+        # ...
+
+        raise NotImplementedError("NetCDF fetching requires xarray. Use CSV method or install: pip install xarray netCDF4")
+
+    def _calculate_dhw(self, timestamps: pd.DatetimeIndex, sst_anomaly: np.ndarray) -> np.ndarray:
+        """
+        Calculate Degree Heating Weeks (DHW) from SST anomaly.
+
+        DHW = Accumulated thermal stress over 12 weeks
+        - If SST anomaly > 1°C: accumulate (anomaly - 1) × (7 days / 7 days)
+        - Rolling 12-week window
+
+        Args:
+            timestamps: Timestamps
+            sst_anomaly: SST anomaly (°C)
+
+        Returns:
+            DHW array
+        """
+        dhw = np.zeros(len(timestamps))
+
+        for i in range(len(timestamps)):
+            # Look back 12 weeks (84 days)
+            lookback_days = 84
+            start_idx = max(0, i - lookback_days)
+
+            # Get recent anomalies
+            recent = sst_anomaly[start_idx:i+1]
+
+            # Accumulate stress above 1°C threshold
+            stress = np.maximum(recent - 1.0, 0)
+            dhw[i] = np.sum(stress) / 7  # Convert to weeks
+
+        return dhw
 
     def _generate_synthetic_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
         """
