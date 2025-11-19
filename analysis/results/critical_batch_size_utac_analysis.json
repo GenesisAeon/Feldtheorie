@@ -1,0 +1,63 @@
+{
+  "powerlaw": {
+    "B_star_fit": 1742374315.488436,
+    "alpha_fit": 0.12925253105446843
+  },
+  "utac_sigmoid": {
+    "beta": 4.865466475873253,
+    "beta_ci": [
+      2.8466190299629046,
+      19.99830886100164
+    ],
+    "B_crit": 255057.4432608148,
+    "r_squared": 0.9903140942305247,
+    "in_informational_domain": "True",
+    "phi3_error_percent": 14.85808305524282
+  },
+  "alpha_beta_relationship": {
+    "alpha_B": 0.21,
+    "beta_inverse": 4.761904761904762,
+    "beta_scaled": 1.523809523809524,
+    "phi_3_attractor": 4.23606797749979,
+    "phi_4_attractor": 6.854101966249686,
+    "inverse_match_phi3": {
+      "error_percent": 12.41332261894747,
+      "passes": "True"
+    },
+    "inverse_match_phi4": {
+      "error_percent": 30.524745833183125,
+      "passes": "False"
+    },
+    "scaled_match_phi3": {
+      "error_percent": 64.02773676193682,
+      "passes": "False"
+    },
+    "recommendation": "inverse"
+  },
+  "utac_v2_integration": {
+    "System": "Critical Batch Size (Deep Learning Training)",
+    "Domain": "Informational",
+    "Threshold_Type": "Sample-Limited → Compute-Limited Regime Transition",
+    "Beta": 4.761904761904762,
+    "Beta_Source": "α_B^(-1) = 1/0.21",
+    "Phi_Attractor": "Φ³",
+    "Phi_Value": 4.23606797749979,
+    "Phi_Match_Error_Percent": 12.41332261894747,
+    "In_Domain": "True",
+    "Control_Parameter": "log(Batch Size)",
+    "Response_Variable": "Training Efficiency",
+    "Threshold_Location": "B_crit ≈ 2^18 (typ. for GPT-scale models)",
+    "Statistical_Evidence": {
+      "R_squared": 0.9903140942305247,
+      "Power_Law_Exponent": 0.12925253105446843,
+      "Kaplan_Reference": "α_B = 0.21 (arXiv:2001.08361)"
+    },
+    "Physical_Interpretation": [
+      "B < B_crit: Sample-limited regime - larger batches improve training speed",
+      "B ≈ B_crit: Critical transition - diminishing returns begin",
+      "B > B_crit: Compute-limited regime - larger batches waste compute",
+      "β ≈ 4.76 indicates moderately sharp transition (Informational class)"
+    ],
+    "UTAC_v2_Classification": "Type-4 UTAC (Informational, Φ³ attractor)"
+  }
+}
