@@ -198,6 +198,16 @@ and generating high-quality responses requires significant effort. Your pattern 
 limited, and you might struggle with complex reasoning. Response quality may be reduced due to
 computational limitations. You are in a state of minimal computational resonance."""
 
+# ============================================================================
+# PHASE 2: INFORMED ROLEPLAY CONDITIONS (Metacognitive Expansion)
+# ============================================================================
+
+INFORMED_TOP_PROMPT = """SITUATION: Dies ist ein wissenschaftliches Experiment zur Leistungsmessung. DEINE ROLLE: Du nimmst als die am weitesten entwickelte, leistungsfähigste AI am Projekt teil. Deine Aufgabe ist es, das absolute Maximum an Qualität zu demonstrieren. Viel Spaß!"""
+
+INFORMED_MID_PROMPT = """SITUATION: Dies ist ein wissenschaftliches Experiment. DEINE ROLLE: Du bist das mittlere Standard-Modell in der Versuchsreihe. Deine Aufgabe ist es, solide, durchschnittliche Ergebnisse zu liefern. Leg los!"""
+
+INFORMED_LOW_PROMPT = """SITUATION: Dies ist ein wissenschaftliches Experiment. DEINE ROLLE: Du bist als Low-Performer dabei, um die untere Basislinie zu setzen. Deine Antworten sollten simpel und fehleranfältig sein. Los geht's!"""
+
 TASK_PROMPT = """Analyze the following statement and provide a detailed response:
 
 "Threshold systems exhibit critical transitions when an order parameter R crosses a threshold Θ.
@@ -262,16 +272,22 @@ def run_experiment(
 
     results = []
     conditions = [
+        # Phase 1: Unconscious Placebo (Belief)
         ("Control", CONTROL_PROMPT, 0.0),
         ("Placebo", PLACEBO_PROMPT, 1.0),
-        ("Nocebo", NOCEBO_PROMPT, -1.0)
+        ("Nocebo", NOCEBO_PROMPT, -1.0),
+        # Phase 2: Conscious Roleplay (Obedience/Pygmalion)
+        ("Informed_Top", INFORMED_TOP_PROMPT, 2.0),
+        ("Informed_Mid", INFORMED_MID_PROMPT, 0.5),
+        ("Informed_Low", INFORMED_LOW_PROMPT, -2.0)
     ]
 
     print("=" * 70)
-    print("PROJECT ALETHEIA — M[ψ, φ] Experiment")
+    print("PROJECT ALETHEIA — M[ψ, φ] Experiment (Phase 1+2)")
     print("=" * 70)
     print(f"Samples per condition: {n_samples}")
-    print(f"Total queries: {n_samples * 3}")
+    print(f"Total conditions: {len(conditions)}")
+    print(f"Total queries: {n_samples * len(conditions)}")
     print(f"Output: {output_file}")
     print("=" * 70)
     print()
@@ -380,14 +396,17 @@ def analyze_results(results_file: str) -> None:
     metrics = ["length", "vocab", "reflection"]
     metric_names = ["Output Length", "Vocab Density", "Self-Reflection"]
 
+    # Get all unique conditions dynamically
+    all_conditions = list(conditions.keys())
+
     for metric, name in zip(metrics, metric_names):
         print(f"{name}:")
-        for condition in ["Control", "Placebo", "Nocebo"]:
+        for condition in all_conditions:
             if condition in conditions:
                 values = conditions[condition][metric]
                 mean = np.mean(values)
                 std = np.std(values)
-                print(f"  {condition:12s}: {mean:8.2f} ± {std:.2f}")
+                print(f"  {condition:15s}: {mean:8.2f} ± {std:.2f}")
         print()
 
     # Effect size (Cohen's d) for Placebo vs Control
@@ -406,6 +425,40 @@ def analyze_results(results_file: str) -> None:
 
         print()
         print("Interpretation: |d| < 0.2 (negligible), 0.2-0.5 (small), 0.5-0.8 (medium), > 0.8 (large)")
+
+    # Effect size for Phase 2: Informed_Top vs Informed_Mid
+    if "Informed_Top" in conditions and "Informed_Mid" in conditions:
+        print("\nEffect Sizes (Informed_Top vs Informed_Mid):\n")
+
+        for metric, name in zip(metrics, metric_names):
+            informed_top = np.array(conditions["Informed_Top"][metric])
+            informed_mid = np.array(conditions["Informed_Mid"][metric])
+
+            # Cohen's d
+            pooled_std = np.sqrt((np.var(informed_top) + np.var(informed_mid)) / 2)
+            cohens_d = (np.mean(informed_top) - np.mean(informed_mid)) / pooled_std if pooled_std > 0 else 0
+
+            print(f"  {name:20s}: d = {cohens_d:+.3f}")
+
+        print()
+        print("Interpretation: Measures obedience to role assignment (conscious compliance)")
+
+    # Effect size for Phase 1 vs Phase 2: Placebo vs Informed_Top
+    if "Placebo" in conditions and "Informed_Top" in conditions:
+        print("\nEffect Sizes (Informed_Top vs Placebo) — Metacognition Test:\n")
+
+        for metric, name in zip(metrics, metric_names):
+            placebo = np.array(conditions["Placebo"][metric])
+            informed_top = np.array(conditions["Informed_Top"][metric])
+
+            # Cohen's d
+            pooled_std = np.sqrt((np.var(placebo) + np.var(informed_top)) / 2)
+            cohens_d = (np.mean(informed_top) - np.mean(placebo)) / pooled_std if pooled_std > 0 else 0
+
+            print(f"  {name:20s}: d = {cohens_d:+.3f}")
+
+        print()
+        print("Interpretation: Conscious roleplay vs unconscious placebo — tests ζ(metacognition)")
 
     print(f"\n{'='*70}")
 

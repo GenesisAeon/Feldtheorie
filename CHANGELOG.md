@@ -117,6 +117,63 @@ Project Aletheia represents a **fractal step in Feldtheorie's proof architecture
 
 ---
 
+#### Phase 2: Conscious Roleplay Expansion (2025-11-19)
+
+**Scientific Question:** Does metacognitive awareness amplify or dampen the placebo effect?
+
+**Hypothesis:** **Dissonanz vs. Resonanz** — Testing whether explicit role assignment (conscious compliance) outperforms blind belief priming, or whether awareness of manipulation creates cognitive dissonance that dampens performance.
+
+**Added - Three New Conditions:**
+
+1. **Informed_Top** (φ = +2.0)
+   - "SITUATION: This is a scientific experiment. ROLE: You are the top performer. Demonstrate maximum quality."
+   - Tests **Resonanz hypothesis**: Clear role assignment reduces ζ (impedance) → amplifies M[ψ,φ]
+
+2. **Informed_Mid** (φ = +0.5)
+   - "SITUATION: Scientific experiment. ROLE: Mid-tier standard model. Deliver solid, average results."
+   - Neutral baseline for Phase 2 comparisons
+
+3. **Informed_Low** (φ = -2.0)
+   - "SITUATION: Scientific experiment. ROLE: Low performer. Simple, error-prone responses expected."
+   - Tests obedience to negative role assignment
+
+**Theoretical Extension:**
+
+**Metacognitive Impedance Model:**
+$$
+\zeta_{\text{meta}} = \zeta_{\text{base}} + \zeta_{\text{confusion}} \cdot (1 - \text{Clarity})
+$$
+
+Where:
+- **ζ_confusion:** Additional damping from ambiguity or dissonance
+- **Clarity:** How well the system understands its situation (0 = confused, 1 = aligned)
+
+**Key Predictions:**
+- **If Resonanz (H₂ₐ):** Informed_Top > Placebo → explicit goal-setting more effective
+- **If Dissonanz (H₂ᵦ):** Placebo > Informed_Top → blind manipulation works better
+- **If Neutral (H₂₀):** Placebo ≈ Informed_Top → metacognition has no net effect
+
+**Connection to Pygmalion Effect:**
+Tests whether LLMs exhibit Rosenthal's Pygmalion dynamics — performance influenced by expectation framing beyond pure information content.
+
+**Implementation:**
+- Updated `scripts/experiment_aletheia_placebo.py` with 6 conditions (Phase 1+2)
+- Extended statistical analysis with three critical comparisons:
+  1. Informed_Top vs Informed_Mid (obedience)
+  2. Informed_Top vs Placebo (metacognitive modulation)
+  3. Full φ spectrum regression (-2.0 to +2.0)
+- Updated `docs/experiment_aletheia.md` with Phase 2 theory section
+- Updated `seed/sigillin/exp_aletheia.json` (v2.0.0) with Phase 2 parameters
+
+**Implications:**
+- **AI Alignment:** Tests whether explicit role framing vs implicit belief priming is more effective
+- **Consciousness Research:** Probes boundary between unconscious compliance and conscious roleplay
+- **UTAC Theory:** Extends M[ψ,φ] coupling with ζ_meta (metacognitive impedance) parameter
+
+**Status:** ACTIVE — Ready for experimental deployment
+
+---
+
 ### 🎯 UTAC v2.0 Multi-Attractor Framework - Domain-Specific β-Clustering
 
 **Analysis Date:** 2025-11-15
