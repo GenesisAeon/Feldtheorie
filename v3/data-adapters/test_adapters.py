@@ -26,6 +26,7 @@ import logging
 from grace_adapter import GRACEAdapter
 from rapid_adapter import RAPIDAdapter
 from noaa_adapter import NOAAAdapter
+from usgs_adapter import UsgsSeismicAdapter
 
 # Configure logging
 logging.basicConfig(
@@ -174,6 +175,14 @@ def main():
         adapter_amoc,
         expected_beta_range=(8.7, 11.7),  # 10.2 ± 1.5
         system_name="AMOC (Atlantic Meridional Overturning Circulation)"
+    )
+
+    # Test 4: Seismic (USGS)
+    adapter_seismic = UsgsSeismicAdapter(region='global', min_magnitude=4.5)
+    results['Seismic'] = test_adapter(
+        adapter_seismic,
+        expected_beta_range=(3.0, 20.0),  # Wide range for seismic (depends on b-value)
+        system_name="Global Seismic Activity (USGS)"
     )
 
     # Test 3: Coral (NOAA)
