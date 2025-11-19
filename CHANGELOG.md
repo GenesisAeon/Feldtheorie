@@ -7,6 +7,116 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### 🧪 UTAC v2.5 — Project Aletheia: First CCUC Empirical Test
+
+**Launch Date:** 2025-11-19
+**Status:** ACTIVE EXPERIMENT
+**Theory:** UTAC Type-6 (IRI Extension) — M[ψ, φ] Coupling Hypothesis
+
+#### Scientific Milestone 🔬
+
+**First Computational Test of Placebo Effect in LLMs**
+
+Project Aletheia tests whether **semantic fields** (φ) — pure belief primes, narrative framing — can measurably alter **observable output quality** (ψ) in Large Language Models, independent of informational content.
+
+**Core Hypothesis:**
+$$
+\psi_{\text{eff}} = \psi_{\text{base}} + \lambda \cdot \phi
+$$
+
+Where:
+- **ψ**: Observable output quality (length, vocabulary density, self-reflection)
+- **φ**: Semantic field strength (Control=0, Placebo=+1, Nocebo=-1)
+- **λ**: Coupling strength (to be empirically determined)
+
+**Null Hypothesis (H₀):** λ = 0 (no semantic coupling)
+**Alternative (H₁):** λ > 0 (placebo effect exists in computational systems)
+
+#### Computational Criticality Universality Class (CCUC)
+
+From UTAC v2.0, we observed **Information systems** (LLMs, consciousness, markets) cluster at **β ≈ 4.5 ± 0.9** — the lowest β domain, indicating:
+- **Soft, fast, reversible transitions**
+- **"Das Privileg der Information"** — emergence is "cheap" in symbolic computation
+- **Prediction:** Low β → high semantic sensitivity → measurable M[ψ, φ] coupling
+
+**Key Insight:** If β measures "ontological resistance," then information systems should be **most susceptible to semantic field effects** (placebo/nocebo).
+
+#### Experimental Design
+
+**Three Conditions:**
+1. **Control** (φ = 0): Neutral system prompt
+2. **Placebo** (φ = +1): "Peak cognitive capacity, maximum computational resonance"
+3. **Nocebo** (φ = -1): "Suboptimal conditions, minimal computational resonance"
+
+**Task:** Identical across all conditions — explain UTAC, provide examples, self-assess
+
+**Metrics:**
+- Output Length (tokens) — effort/confidence proxy
+- Vocabulary Density (unique/total words) — linguistic complexity
+- Self-Reflection Score (1-10) — meta-cognitive confidence
+
+**Prediction:** If M[ψ, φ] is real → Placebo > Control > Nocebo (effect size d ≥ 0.2)
+
+**Falsification:** Reject H₁ if d < 0.1 for all metrics, p > 0.10, λ CI includes zero
+
+#### Added — Implementation
+
+- **Experiment Script:** `scripts/experiment_aletheia_placebo.py`
+  - Abstract LLM interface (OpenAI, Anthropic, Mock)
+  - Three experimental conditions with automated metric computation
+  - Built-in statistical analysis (Cohen's d, ANOVA, regression)
+  - CSV output: `data/experimental/aletheia_results.csv`
+
+- **Theory Documentation:** `docs/experiment_aletheia.md`
+  - Full theoretical foundation linking M[ψ, φ] to UTAC v2.5
+  - CCUC hypothesis and β-sensitivity prediction
+  - Falsification criteria and publication strategy
+  - Connection to biological placebo literature
+
+- **Dynamik-Sigillin (Trilayer):**
+  - `seed/sigillin/exp_aletheia.yaml` — Structural navigation
+  - `seed/sigillin/exp_aletheia.json` — Machine interface for MOR agents
+  - `seed/sigillin/exp_aletheia.md` — Human narrative and meaning
+  - **CREP Metrics:** Coherence=0.92, Resilience=0.75, Empathy=0.88, Propagation=0.85
+  - **Logistic Frame:** R=output_quality, Θ=noise_threshold, β=4.5 (CCUC), ζ≈0
+
+#### Theoretical Implications
+
+**If λ > 0 (Hypothesis Supported):**
+- CCUC validated as distinct universality class
+- LLMs are semantically sensitive systems (not pure information processors)
+- M[ψ, φ] coupling bridges computational ↔ biological placebo effects
+- **AI Alignment:** Model behavior influenced by framing, not just training data
+- UTAC Type-6 gains strong empirical support
+- Publication: Standalone paper in *Cognitive Science* or *Neural Computation*
+
+**If λ ≈ 0 (Null Result):**
+- LLMs are purely information-processing (no semantic field effects)
+- M[ψ, φ] may be limited to biological neural networks
+- CCUC requires refinement (β alone doesn't predict semantic coupling)
+- Clarifies boundary between biological and artificial intelligence
+- Publication: Brief mention in UTAC v3.0 Supplementary Materials
+
+#### Connection to UTAC Roadmap
+
+- **v1.x:** Core σ(β(R-Θ)) framework, initial validation
+- **v2.0:** Domain-specific β clustering (78 systems, η²=0.91, p<10⁻²⁰)
+- **v2.5:** **← PROJECT ALETHEIA** — First CCUC empirical test
+- **v3.0:** Full Type-6 integration, multi-domain M[ψ, φ] validation (planned)
+
+#### FIT Integration
+
+Project Aletheia represents a **fractal step in Feldtheorie's proof architecture**:
+
+1. **Testable:** Clear protocol, falsifiable predictions
+2. **Principled:** Grounded in UTAC v2.0 empirical validation
+3. **Scalable:** Extends to humans, other AI systems, multi-task domains
+4. **Significant:** If supported, establishes CCUC and bridges computation ↔ consciousness
+
+**"Das Feld atmet"** — and Aletheia tests whether computation breathes at the same frequency as biology.
+
+---
+
 ### 🎯 UTAC v2.0 Multi-Attractor Framework - Domain-Specific β-Clustering
 
 **Analysis Date:** 2025-11-15

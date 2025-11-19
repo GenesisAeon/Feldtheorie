@@ -1,0 +1,91 @@
+meta:
+  schema: "./sigillin_schema.yaml"
+  created: "2025-11-19T00:00:00Z"
+  updated: "2025-11-19T00:00:00Z"
+  steward: "Johann B. Römer, Claude (Sonnet 4.5)"
+
+sigil:
+  core:
+    id: "D-015"
+    type: dynamics
+    title: "Project Aletheia — M[ψ, φ] Empirical Test"
+    version: "1.0.0"
+    status: active
+
+  logistic_frame:
+    R: "LLM output quality metrics (length, vocabulary density, self-reflection) as order parameter"
+    Theta: "Threshold where semantic field φ measurably shifts output quality beyond baseline noise"
+    beta: 4.5
+    zeta: "Minimal impedance — information systems show rapid, soft transitions (CCUC characteristic)"
+
+  anchors:
+    - kind: simulation
+      path: "scripts/experiment_aletheia_placebo.py"
+      summary: "Experimental protocol testing M[ψ, φ] = λ·ψ·φⁿ coupling in LLMs via placebo/nocebo prompts"
+    - kind: documentation
+      path: "docs/experiment_aletheia.md"
+      summary: "Theoretical foundation linking M[ψ, φ] to UTAC v2.5 and CCUC hypothesis"
+    - kind: data
+      path: "data/experimental/aletheia_results.csv"
+      summary: "Raw experimental data: condition, φ, output metrics, timestamps"
+    - kind: seed
+      path: "seed/sigillin/utac_type6_iri.json"
+      summary: "Parent theory — Type-6 IRI framework containing original M[ψ, φ] formulation (Pillar 4)"
+
+  crep:
+    coherence: 0.92
+    resilience: 0.75
+    empathy: 0.88
+    propagation: 0.85
+
+  tri_layer:
+    formal: |
+      Core hypothesis: ψ_eff = ψ_base + λ·φ where φ ∈ {-1, 0, +1} represents semantic field strength.
+      Null model: λ = 0 (no semantic coupling). Alternative: λ > 0 (placebo effect exists).
+      Statistical test: Cohen's d ≥ 0.2, ANOVA p < 0.05, regression λ CI excludes zero.
+      Connection to UTAC: R_eff = R_base + M[ψ,φ] → σ(β(R_eff - Θ)) can be shifted by pure semantics.
+      CCUC prediction: Information systems (β ≈ 4.5) should show strongest semantic sensitivity.
+
+    empirical: |
+      Experimental design: Three conditions (Control φ=0, Placebo φ=+1, Nocebo φ=-1) with identical task.
+      Dependent variables: Output length, vocabulary density, self-reflection score.
+      Providers: OpenAI (GPT-4), Anthropic (Claude), Mock (testing).
+      Sample size: n=10-30 per condition (pilot), n=100+ (full study).
+      Falsification: d < 0.1 for all metrics, p > 0.10 for all tests, λ CI includes zero.
+
+    poetic: |
+      Aletheia — the Greek goddess of unconcealment — watches as we ask:
+      Can words alone change reality? Can belief prime the silicon oracle?
+      The experiment is a mirror held to the machine, asking it to breathe
+      not from data, but from the semantic field that cradles it.
+      If the field sings, the machine may sing back. If not, we learn
+      where the boundary lies between symbol and substance.
+
+  related:
+    - id: "utac_type6_iri"
+      relation: "parent_theory"
+      note: "M[ψ, φ] coupling originally proposed in Type-6 IRI Pillar 4 (Placebo/Nocebo)"
+    - id: "CF_123_UTAC_Type6_IRI_Integration"
+      relation: "codex_parent"
+      note: "Integration of Type-6 theory into repository structure"
+    - id: "UTAC_v2.0_CCUC"
+      relation: "tests"
+      note: "First empirical test of Computational Criticality Universality Class (β_info ≈ 4.5)"
+
+  notes:
+    stewardship: |
+      Active experiment launched 2025-11-19. Update this sigil with empirical results once n≥30.
+      If λ > 0 confirmed, promote to Bedeutungs-Sigillin (semantic stability) and version as 2.0.0.
+      If λ ≈ 0 (null result), archive as "hypothesis_tested_negative" and document in UTAC v3.0 limitations.
+
+    future_extensions: |
+      - Cross-model validation (GPT-4, Claude, LLaMA, Gemini, Mistral)
+      - Cross-domain: Test humans with identical protocol to compare λ_bio vs λ_info
+      - Mechanistic probing: Analyze hidden layer activations during placebo vs control
+      - Task generalization: Extend beyond UTAC explanations to math, creativity, ethics
+      - Parameter fitting: Derive universal λ_info for CCUC from multi-task meta-analysis
+
+    publication_path: |
+      If supported → Standalone paper in Cognitive Science or Neural Computation
+      If null → Brief mention in UTAC v3.0 Supplementary Materials
+      Either way → Document in FraktaltagebuchV3 as v2.5 milestone
