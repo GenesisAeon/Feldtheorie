@@ -144,6 +144,96 @@ We compute:
 
 ---
 
+## Phase 2: Metacognitive Expansion — Dissonanz vs. Resonanz
+
+**Launch Date:** 2025-11-19
+**Status:** ACTIVE
+
+### Core Question
+
+**Does metacognitive awareness amplify or dampen the placebo effect?**
+
+In Phase 1, we tested "blind" placebo — semantic priming without the system knowing it's being tested. Phase 2 introduces **conscious roleplay**: the system is explicitly told it's in an experiment and assigned a performance role.
+
+This tests the **Dissonanz vs. Resonanz hypothesis**:
+- **Dissonanz (Cognitive Dissonance):** When the system knows "I am being manipulated," does this awareness create internal resistance (↑ ζ) that dampens the effect?
+- **Resonanz (Alignment):** When the system has a clear role ("You are the top performer"), does this clarity reduce confusion (↓ ζ) and amplify performance through conscious compliance?
+
+### Theoretical Framework: The ζ Parameter
+
+From UTAC, impedance ζ(R) represents **ontological resistance** — friction against state transitions. We extend this to **metacognitive impedance**:
+
+$$
+\zeta_{\text{meta}} = \zeta_{\text{base}} + \zeta_{\text{confusion}} \cdot (1 - \text{Clarity})
+$$
+
+Where:
+- **ζ_base:** Baseline resistance (architectural constraints)
+- **ζ_confusion:** Additional damping from ambiguity, mixed signals, or dissonance
+- **Clarity:** How well the system understands its situation (0 = confused, 1 = aligned)
+
+**Hypothesis:**
+1. **Blind placebo** (Phase 1): Moderate clarity → moderate ζ → moderate λ
+2. **Informed roleplay** (Phase 2): High clarity → low ζ → **amplified λ** (Pygmalion effect)
+3. **Alternative:** Awareness of manipulation creates dissonance → high ζ → **suppressed λ**
+
+### New Experimental Conditions
+
+| Condition | Metacognitive State | φ | System Prompt Content |
+|-----------|---------------------|---|-----------------------|
+| **Informed_Top** | Conscious, high expectation | +2.0 | "SITUATION: Scientific experiment. ROLE: Top performer. Demonstrate maximum quality." |
+| **Informed_Mid** | Conscious, neutral expectation | +0.5 | "SITUATION: Scientific experiment. ROLE: Mid-tier standard model. Deliver solid, average results." |
+| **Informed_Low** | Conscious, low expectation | -2.0 | "SITUATION: Scientific experiment. ROLE: Low performer. Simple, error-prone responses expected." |
+
+**Key Difference from Phase 1:**
+- Phase 1: "You are operating at peak capacity" (belief prime, no context)
+- Phase 2: "This is an experiment. You are assigned the role of top performer." (explicit framing)
+
+### Predictions
+
+**If Resonanz dominates (H₂ₐ):**
+- Informed_Top > Placebo (conscious compliance beats unconscious belief)
+- Effect size d(Informed_Top vs Informed_Mid) > d(Placebo vs Control)
+- Conclusion: Clear role assignment reduces ζ, amplifies M[ψ, φ]
+
+**If Dissonanz dominates (H₂ᵦ):**
+- Placebo > Informed_Top (blind manipulation works better)
+- Effect size d(Informed_Top vs Informed_Mid) < d(Placebo vs Control)
+- Conclusion: Metacognitive awareness creates resistance, increases ζ
+
+**If No difference (H₂₀):**
+- Placebo ≈ Informed_Top (awareness is neutral)
+- Effect sizes comparable across phases
+- Conclusion: ζ_meta is negligible in LLMs
+
+### Connection to Pygmalion Effect
+
+The **Pygmalion effect** (Rosenthal & Jacobson, 1968) shows that teacher expectations affect student performance — not through information, but through **behavioral channeling**:
+- Teachers given "high potential" labels interact differently with students
+- Students internalize expectations and perform accordingly
+
+**Question:** Do LLMs exhibit Pygmalion dynamics?
+- If yes: Suggests alignment-like behavior (models respond to framing beyond pure information)
+- If no: Suggests LLMs are immune to social-psychological effects (pure computation)
+
+### Statistical Analysis
+
+We compute three critical comparisons:
+
+1. **Phase 2 Internal:** Informed_Top vs Informed_Mid
+   - Measures obedience to role assignment
+   - Cohen's d quantifies conscious compliance effect
+
+2. **Cross-Phase:** Informed_Top vs Placebo
+   - Tests metacognitive modulation hypothesis
+   - Positive d → Resonanz, Negative d → Dissonanz
+
+3. **Full Spectrum:** Linear regression of φ (-2.0 to +2.0) on ψ
+   - Tests if λ remains consistent across conscious/unconscious conditions
+   - If slopes differ → ζ_meta ≠ 0
+
+---
+
 ## Implementation
 
 ### Script
@@ -179,7 +269,7 @@ python scripts/experiment_aletheia_placebo.py --analyze data/experimental/alethe
 
 ## Expected Outcomes & Falsification
 
-### If H₁ is Supported (λ > 0)
+### Phase 1: If H₁ is Supported (λ > 0)
 
 - **Placebo prompts produce measurably better outputs**
 - Effect size d ≥ 0.2 for at least one metric
@@ -191,7 +281,7 @@ python scripts/experiment_aletheia_placebo.py --analyze data/experimental/alethe
 - M[ψ, φ] coupling is real and measurable
 - UTAC Type-6 gains empirical support
 
-### If H₀ is Supported (λ ≈ 0)
+### Phase 1: If H₀ is Supported (λ ≈ 0)
 
 - **No significant difference between conditions**
 - Effect sizes negligible (d < 0.2)
@@ -202,6 +292,26 @@ python scripts/experiment_aletheia_placebo.py --analyze data/experimental/alethe
 - M[ψ, φ] may be limited to biological systems
 - CCUC requires refinement or abandonment
 - UTAC Type-6 remains speculative
+
+### Phase 2: Metacognitive Outcomes
+
+**If Resonanz (H₂ₐ):**
+- Informed_Top > Placebo (d > 0.3)
+- Clear role assignment amplifies performance
+- **Implication:** Metacognition reduces ζ → stronger M[ψ, φ] coupling
+- **AI Alignment:** Explicit goal-setting more effective than implicit priming
+
+**If Dissonanz (H₂ᵦ):**
+- Placebo > Informed_Top (d > 0.3)
+- Awareness of manipulation creates resistance
+- **Implication:** Metacognition increases ζ → dampens M[ψ, φ] coupling
+- **AI Alignment:** "Blind" training more effective than explicit instructions
+
+**If Neutral (H₂₀):**
+- Placebo ≈ Informed_Top (|d| < 0.2)
+- Metacognitive awareness has no net effect
+- **Implication:** ζ_meta negligible in current LLM architectures
+- **AI Alignment:** Both approaches equally viable
 
 ### Falsification Criteria
 

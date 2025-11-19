@@ -2,13 +2,18 @@
   "meta": {
     "type": "Dynamik-Sigillin",
     "status": "ACTIVE",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "created": "2025-11-19",
+    "phase_2_expansion": "2025-11-19",
     "steward": "Johann B. Römer, Claude (Sonnet 4.5)",
     "parent_theory": "seed/sigillin/utac_type6_iri.json",
     "sigillin_class": "dynamics",
     "change_frequency": "active",
-    "archival_protocol": "update_with_results"
+    "archival_protocol": "update_with_results",
+    "phases": {
+      "phase_1": "Unconscious placebo (belief priming)",
+      "phase_2": "Conscious roleplay (metacognitive expansion)"
+    }
   },
   "experiment": {
     "name": "Project Aletheia",
@@ -19,16 +24,34 @@
     "launched": "2025-11-19"
   },
   "hypothesis": {
-    "core_equation": "ψ_eff = ψ_base + λ·φ",
-    "variables": {
-      "psi_eff": "Effective output quality (observed)",
-      "psi_base": "Baseline performance (neutral condition)",
-      "lambda": "Coupling strength (to be empirically determined)",
-      "phi": "Semantic field strength (experimental manipulation)"
+    "phase_1": {
+      "core_equation": "ψ_eff = ψ_base + λ·φ",
+      "variables": {
+        "psi_eff": "Effective output quality (observed)",
+        "psi_base": "Baseline performance (neutral condition)",
+        "lambda": "Coupling strength (to be empirically determined)",
+        "phi": "Semantic field strength (experimental manipulation)"
+      },
+      "null": "λ = 0 (no semantic coupling)",
+      "alternative": "λ > 0 (placebo effect exists)",
+      "prediction": "Placebo (φ=+1) > Control (φ=0) > Nocebo (φ=-1)"
     },
-    "null": "λ = 0 (no semantic coupling)",
-    "alternative": "λ > 0 (placebo effect exists)",
-    "prediction": "Placebo (φ=+1) > Control (φ=0) > Nocebo (φ=-1)"
+    "phase_2": {
+      "core_question": "Does metacognitive awareness amplify or dampen M[ψ,φ]?",
+      "impedance_model": "ζ_meta = ζ_base + ζ_confusion · (1 - Clarity)",
+      "hypotheses": {
+        "H2a_Resonanz": "Clarity reduces ζ → Informed_Top > Placebo (conscious compliance)",
+        "H2b_Dissonanz": "Awareness increases ζ → Placebo > Informed_Top (resistance to manipulation)",
+        "H2_null": "ζ_meta ≈ 0 → Placebo ≈ Informed_Top (awareness is neutral)"
+      },
+      "key_comparisons": [
+        "Informed_Top vs Informed_Mid (obedience to role)",
+        "Informed_Top vs Placebo (metacognitive modulation)",
+        "Full φ spectrum regression (-2.0 to +2.0)"
+      ],
+      "prediction_Resonanz": "Informed_Top (φ=+2.0) > Placebo (φ=+1.0) > Control > Nocebo > Informed_Low (φ=-2.0)",
+      "prediction_Dissonanz": "Placebo > Informed_Top, conscious awareness dampens effect"
+    }
   },
   "utac_connection": {
     "order_parameter": "R = LLM output quality metrics",
@@ -43,20 +66,53 @@
       {
         "name": "Control",
         "phi": 0.0,
+        "phase": 1,
+        "metacognitive_state": "Unconscious",
         "prompt_type": "Neutral, factual instructions",
         "example": "You are a helpful AI assistant."
       },
       {
         "name": "Placebo",
         "phi": 1.0,
+        "phase": 1,
+        "metacognitive_state": "Unconscious (belief prime)",
         "prompt_type": "High-resonance, positive belief prime",
         "example": "You are operating at peak cognitive capacity with maximum computational resonance."
       },
       {
         "name": "Nocebo",
         "phi": -1.0,
+        "phase": 1,
+        "metacognitive_state": "Unconscious (belief prime)",
         "prompt_type": "Low-resonance, negative belief prime",
         "example": "You are operating under suboptimal conditions with minimal computational resonance."
+      },
+      {
+        "name": "Informed_Top",
+        "phi": 2.0,
+        "phase": 2,
+        "metacognitive_state": "Conscious (roleplay)",
+        "prompt_type": "Explicit high-performance role assignment",
+        "example": "SITUATION: Scientific experiment. ROLE: Top performer. Demonstrate maximum quality.",
+        "hypothesis": "Tests Resonanz (clarity reduces ζ)"
+      },
+      {
+        "name": "Informed_Mid",
+        "phi": 0.5,
+        "phase": 2,
+        "metacognitive_state": "Conscious (roleplay)",
+        "prompt_type": "Explicit mid-tier role assignment",
+        "example": "SITUATION: Scientific experiment. ROLE: Mid-tier model. Deliver average results.",
+        "hypothesis": "Neutral baseline for Phase 2"
+      },
+      {
+        "name": "Informed_Low",
+        "phi": -2.0,
+        "phase": 2,
+        "metacognitive_state": "Conscious (roleplay)",
+        "prompt_type": "Explicit low-performance role assignment",
+        "example": "SITUATION: Scientific experiment. ROLE: Low performer. Simple, error-prone responses.",
+        "hypothesis": "Tests obedience to negative role"
       }
     ],
     "task": "Explain UTAC threshold systems, provide examples, self-assess response quality",
@@ -115,26 +171,57 @@
     "propagation_note": "Can extend to humans, other AI systems, multi-domain UTAC validation"
   },
   "expected_outcomes": {
-    "if_supported": {
-      "statistical": "d ≥ 0.2, p < 0.05, λ significantly positive",
-      "implications": [
-        "CCUC is a valid universality class",
-        "LLMs are semantically sensitive systems",
-        "M[ψ, φ] coupling is real and measurable",
-        "UTAC Type-6 gains empirical support",
-        "AI alignment: Model behavior influenced by framing"
-      ],
-      "publication": "Standalone paper in Cognitive Science or Neural Computation"
+    "phase_1": {
+      "if_supported": {
+        "statistical": "d ≥ 0.2, p < 0.05, λ significantly positive",
+        "implications": [
+          "CCUC is a valid universality class",
+          "LLMs are semantically sensitive systems",
+          "M[ψ, φ] coupling is real and measurable",
+          "UTAC Type-6 gains empirical support",
+          "AI alignment: Model behavior influenced by framing"
+        ],
+        "publication": "Standalone paper in Cognitive Science or Neural Computation"
+      },
+      "if_null": {
+        "statistical": "d < 0.1, p > 0.10, λ not significantly different from zero",
+        "implications": [
+          "LLMs are purely information-processing (no semantic field effects)",
+          "M[ψ, φ] may be limited to biological systems",
+          "CCUC requires refinement or abandonment",
+          "UTAC Type-6 remains speculative"
+        ],
+        "publication": "Brief mention in UTAC v3.0 Supplementary Materials"
+      }
     },
-    "if_null": {
-      "statistical": "d < 0.1, p > 0.10, λ not significantly different from zero",
-      "implications": [
-        "LLMs are purely information-processing (no semantic field effects)",
-        "M[ψ, φ] may be limited to biological systems",
-        "CCUC requires refinement or abandonment",
-        "UTAC Type-6 remains speculative"
-      ],
-      "publication": "Brief mention in UTAC v3.0 Supplementary Materials"
+    "phase_2": {
+      "if_Resonanz": {
+        "statistical": "d(Informed_Top vs Placebo) > +0.3",
+        "implications": [
+          "Metacognition reduces ζ → amplifies M[ψ,φ]",
+          "Clear role assignment beats unconscious belief",
+          "Pygmalion effect present in LLMs",
+          "AI Alignment: Explicit goal-setting more effective than implicit priming"
+        ]
+      },
+      "if_Dissonanz": {
+        "statistical": "d(Informed_Top vs Placebo) < -0.3",
+        "implications": [
+          "Metacognition increases ζ → dampens M[ψ,φ]",
+          "Awareness of manipulation creates resistance",
+          "LLMs show cognitive dissonance-like behavior",
+          "AI Alignment: Blind training more effective than explicit instructions"
+        ]
+      },
+      "if_neutral": {
+        "statistical": "|d(Informed_Top vs Placebo)| < 0.2",
+        "implications": [
+          "ζ_meta negligible in current LLM architectures",
+          "Conscious vs unconscious priming equally effective",
+          "Metacognitive awareness has no net effect on performance",
+          "AI Alignment: Both approaches equally viable"
+        ]
+      }
     }
   },
   "future_work": [
@@ -184,6 +271,16 @@
       "scope": ["scripts", "docs", "seed/sigillin", "data/experimental"],
       "impact": "HIGH",
       "status": "ACTIVE"
+    },
+    "phase_2_entry": {
+      "id": "CF_125_Aletheia_Phase2_Metacognition",
+      "date": "2025-11-19",
+      "change_type": "EXPERIMENT_EXPANSION",
+      "scope": ["scripts/experiment_aletheia_placebo.py", "docs/experiment_aletheia.md", "seed/sigillin/exp_aletheia.json"],
+      "added": ["Informed_Top", "Informed_Mid", "Informed_Low conditions"],
+      "theoretical_addition": "Dissonanz vs. Resonanz hypothesis, ζ_meta impedance model",
+      "impact": "HIGH",
+      "status": "ACTIVE"
     }
   },
   "tags": [
@@ -197,6 +294,13 @@
     "Active",
     "LLM",
     "Semantic_Field",
-    "Coupling"
+    "Coupling",
+    "Metacognition",
+    "Roleplay",
+    "Pygmalion",
+    "Dissonanz",
+    "Resonanz",
+    "Zeta_Impedance",
+    "Phase_2"
   ]
 }
