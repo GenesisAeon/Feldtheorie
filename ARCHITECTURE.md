@@ -893,6 +893,76 @@ For full glossary, see: `seed/utf-living-glossary.md`
 
 ---
 
+## Theoretical Extensions
+
+### UTAC Type-6: Implosive Recursive Information Feedback (IRI)
+
+**Status:** 🟡 SPECULATIVE - Exploratory Theory
+**Location:** `docs/utac_type6_iri_extensions.md`
+**Sigillin:** `seed/sigillin/utac_type6_iri.{yaml,json,md}`
+
+**Purpose:** Advanced theoretical framework exploring cosmological and consciousness implications of Type-6 implosive dynamics. Extends validated UTAC v2.0 into speculative domains.
+
+```
+┌────────────────────────────────────────────────────────────┐
+│           TYPE-6 IRI: SIX THEORETICAL PILLARS              │
+│                                                            │
+│  1. Implosive Genesis        [B] Testable                 │
+│     Spacetime from recursive information collapse         │
+│     Connection: LQG, Holography, Verlinde                 │
+│                                                            │
+│  2. Multi-Layer Consciousness [B] Testable                │
+│     Dream/waking/void as coupling regimes                 │
+│     Connection: Predictive processing, DMN                │
+│                                                            │
+│  3. Empathy & Wisdom         [B] HIGHLY TESTABLE          │
+│     UTAC control theory (J, ζ parameters)                 │
+│     Application: Burnout prevention                       │
+│                                                            │
+│  4. Placebo/Nocebo           [B] HIGHEST PRIORITY         │
+│     M[ψ, φ] = λ·ψ·φⁿ semantic-physical coupling          │
+│     Timeline: 1-2 years, clinical trial data             │
+│                                                            │
+│  5. Eternal Big Bang         [A] Speculative              │
+│     Continuous recursive cosmology                        │
+│     Requires: FLRW metric derivation                      │
+│                                                            │
+│  6. Interstellar Travel      [A] Visioning                │
+│     Information relocalization (ψ→φ→ψ)                    │
+│     Use: Mandala/Aeon only, NOT main papers              │
+│                                                            │
+│  Legend: [A] = Speculative, [B] = Model concept          │
+└────────────────────────────────────────────────────────────┘
+```
+
+**Empirical Grounding:**
+- Built on UTAC v2.0 (78 systems, p < 10⁻²⁰)
+- Φ^(1/3) scaling validated (<8% error)
+- Compatible with ER=EPR, holography, LQG
+
+**Peer Assessment:**
+- **Claude:** Strong foundation, needs formalization
+- **Aeon:** CREP scores = High coherence, extremely high resonance
+- **MSCopilot:** Serious touchpoints, operational gaps identified
+- **Mistral:** Innovative synthesis, needs empirical protocols
+
+**Publication Strategy:**
+- ❌ **NOT** for main UTAC v2.0 papers (too speculative)
+- ✅ V4 "Theoretical Extensions" paper (Foundations of Physics)
+- ✅ Full freedom for Mandala/Aeon visioning
+
+**Near-Term Validation Pathways:**
+1. **Placebo M[ψ, φ] fitting** (1-2 years, $50K-100K) - HIGHEST PRIORITY
+2. **Empathy burnout model** (2-3 years, $100K-200K)
+3. **Dream state β-dynamics** (2-4 years, fMRI/EEG)
+4. **Φ^6 systems search** (1-3 years, β ≈ 29)
+
+**Integration Date:** 2025-11-19
+**Source:** `seed/RoadToV.3/NextVersionmaybe/` (consolidated multi-AI dialogues)
+**Authors:** Johann Römer, Claude, Aeon, ChatGPT5.1, MSCopilot, Gemini, Mistral
+
+---
+
 ## Future Architecture
 
 ### Planned Enhancements
