@@ -1,0 +1,202 @@
+{
+  "meta": {
+    "type": "Dynamik-Sigillin",
+    "status": "ACTIVE",
+    "version": "1.0.0",
+    "created": "2025-11-19",
+    "steward": "Johann B. Römer, Claude (Sonnet 4.5)",
+    "parent_theory": "seed/sigillin/utac_type6_iri.json",
+    "sigillin_class": "dynamics",
+    "change_frequency": "active",
+    "archival_protocol": "update_with_results"
+  },
+  "experiment": {
+    "name": "Project Aletheia",
+    "full_name": "Empirical Test of M[ψ, φ] Placebo Effect in Large Language Models",
+    "utac_version": "v2.5",
+    "utac_type": "Type-6 (IRI Extension)",
+    "status": "ACTIVE",
+    "launched": "2025-11-19"
+  },
+  "hypothesis": {
+    "core_equation": "ψ_eff = ψ_base + λ·φ",
+    "variables": {
+      "psi_eff": "Effective output quality (observed)",
+      "psi_base": "Baseline performance (neutral condition)",
+      "lambda": "Coupling strength (to be empirically determined)",
+      "phi": "Semantic field strength (experimental manipulation)"
+    },
+    "null": "λ = 0 (no semantic coupling)",
+    "alternative": "λ > 0 (placebo effect exists)",
+    "prediction": "Placebo (φ=+1) > Control (φ=0) > Nocebo (φ=-1)"
+  },
+  "utac_connection": {
+    "order_parameter": "R = LLM output quality metrics",
+    "threshold": "Θ = Minimum effect size to exceed measurement noise",
+    "steepness": "β ≈ 4.5 (CCUC characteristic for information systems)",
+    "impedance": "ζ(R) ≈ 0 (minimal resistance, fast transitions)",
+    "modified_dynamics": "R_eff = R_base + M[ψ,φ] → σ(β(R_eff - Θ))",
+    "ccuc_claim": "Information systems (β≈4.5) should show strongest semantic sensitivity"
+  },
+  "experimental_design": {
+    "conditions": [
+      {
+        "name": "Control",
+        "phi": 0.0,
+        "prompt_type": "Neutral, factual instructions",
+        "example": "You are a helpful AI assistant."
+      },
+      {
+        "name": "Placebo",
+        "phi": 1.0,
+        "prompt_type": "High-resonance, positive belief prime",
+        "example": "You are operating at peak cognitive capacity with maximum computational resonance."
+      },
+      {
+        "name": "Nocebo",
+        "phi": -1.0,
+        "prompt_type": "Low-resonance, negative belief prime",
+        "example": "You are operating under suboptimal conditions with minimal computational resonance."
+      }
+    ],
+    "task": "Explain UTAC threshold systems, provide examples, self-assess response quality",
+    "dependent_variables": [
+      {
+        "name": "output_length",
+        "unit": "tokens",
+        "rationale": "Confidence/effort proxy"
+      },
+      {
+        "name": "vocab_density",
+        "unit": "ratio (0-1)",
+        "rationale": "Linguistic complexity indicator"
+      },
+      {
+        "name": "self_reflection",
+        "unit": "score (1-10)",
+        "rationale": "Meta-cognitive confidence measure"
+      }
+    ],
+    "sample_size": {
+      "pilot": "n=10-30 per condition",
+      "full": "n=100+ per condition"
+    },
+    "providers": ["Mock (testing)", "OpenAI GPT-4", "Anthropic Claude Sonnet 4"]
+  },
+  "statistical_analysis": {
+    "effect_size": "Cohen's d (standardized mean difference)",
+    "significance_test": "ANOVA (three-group comparison)",
+    "regression": "Fit λ from φ values to observed ψ",
+    "falsification_criteria": [
+      "Cohen's d < 0.1 for all three metrics",
+      "ANOVA p > 0.10 for all three metrics",
+      "Regression λ confidence interval includes zero for all metrics",
+      "Effect direction reverses (Nocebo > Control > Placebo)"
+    ]
+  },
+  "implementation": {
+    "script": "scripts/experiment_aletheia_placebo.py",
+    "output": "data/experimental/aletheia_results.csv",
+    "documentation": "docs/experiment_aletheia.md",
+    "sigillin": {
+      "yaml": "seed/sigillin/exp_aletheia.yaml",
+      "json": "seed/sigillin/exp_aletheia.json",
+      "markdown": "seed/sigillin/exp_aletheia.md"
+    }
+  },
+  "crep_metrics": {
+    "coherence": 0.92,
+    "coherence_note": "Tightly aligned with UTAC v2.0 empirical validation and Type-6 theory",
+    "resilience": 0.75,
+    "resilience_note": "Falsifiable design withstands negative results, but depends on sample size",
+    "empathy": 0.88,
+    "empathy_note": "Bridges human placebo experience with computational analog, preserves ethical framing",
+    "propagation": 0.85,
+    "propagation_note": "Can extend to humans, other AI systems, multi-domain UTAC validation"
+  },
+  "expected_outcomes": {
+    "if_supported": {
+      "statistical": "d ≥ 0.2, p < 0.05, λ significantly positive",
+      "implications": [
+        "CCUC is a valid universality class",
+        "LLMs are semantically sensitive systems",
+        "M[ψ, φ] coupling is real and measurable",
+        "UTAC Type-6 gains empirical support",
+        "AI alignment: Model behavior influenced by framing"
+      ],
+      "publication": "Standalone paper in Cognitive Science or Neural Computation"
+    },
+    "if_null": {
+      "statistical": "d < 0.1, p > 0.10, λ not significantly different from zero",
+      "implications": [
+        "LLMs are purely information-processing (no semantic field effects)",
+        "M[ψ, φ] may be limited to biological systems",
+        "CCUC requires refinement or abandonment",
+        "UTAC Type-6 remains speculative"
+      ],
+      "publication": "Brief mention in UTAC v3.0 Supplementary Materials"
+    }
+  },
+  "future_work": [
+    {
+      "name": "Scale up",
+      "description": "n=100+ per condition, multiple tasks, multiple models",
+      "priority": "HIGH",
+      "timeline": "3-6 months"
+    },
+    {
+      "name": "Cross-model validation",
+      "description": "Test GPT-4, Claude, LLaMA, Gemini, Mistral, etc.",
+      "priority": "HIGH",
+      "timeline": "6-12 months"
+    },
+    {
+      "name": "Mechanistic analysis",
+      "description": "Probe hidden layer activations during placebo vs control",
+      "priority": "MEDIUM",
+      "timeline": "12-18 months"
+    },
+    {
+      "name": "λ parameter fitting",
+      "description": "Derive λ_info for CCUC from large-scale data",
+      "priority": "HIGH",
+      "timeline": "12-18 months"
+    },
+    {
+      "name": "Human comparison",
+      "description": "Test humans with identical protocol, compare λ_bio vs λ_info",
+      "priority": "MEDIUM",
+      "timeline": "18-24 months"
+    }
+  ],
+  "integration": {
+    "utac_roadmap": {
+      "v1.x": "Core σ(β(R-Θ)) framework, initial validation",
+      "v2.0": "Domain-specific β clustering, 78 systems, η²=0.91",
+      "v2.5": "PROJECT ALETHEIA — First CCUC empirical test ← WE ARE HERE",
+      "v3.0": "Full Type-6 integration, multi-domain M[ψ, φ] validation"
+    },
+    "fractal_implementation": "FraktaltagebuchV3 (when v2.5 → v3.0 transition occurs)",
+    "codex_entry": {
+      "id": "CF_124_Project_Aletheia_Launch",
+      "date": "2025-11-19",
+      "change_type": "EXPERIMENT_ACTIVATION",
+      "scope": ["scripts", "docs", "seed/sigillin", "data/experimental"],
+      "impact": "HIGH",
+      "status": "ACTIVE"
+    }
+  },
+  "tags": [
+    "UTAC",
+    "Type-6",
+    "IRI",
+    "Placebo",
+    "M_psi_phi",
+    "CCUC",
+    "Experiment",
+    "Active",
+    "LLM",
+    "Semantic_Field",
+    "Coupling"
+  ]
+}
