@@ -1,12 +1,12 @@
 {
   "model": "Weighted Least Squares Meta-Regression",
-  "n_observations": 15,
+  "n_observations": 36,
   "n_covariates": 5,
-  "r_squared": 0.3269330347294721,
-  "adj_r_squared": -0.04699305708748791,
-  "f_statistic": 0.8743252794712935,
-  "f_pvalue": 0.5344893056752331,
-  "aic": 84.74733091362238,
-  "bic": 88.99563212023564,
+  "r_squared": 0.5501736972666039,
+  "adj_r_squared": 0.47520264681103785,
+  "f_statistic": 7.338481906328388,
+  "f_pvalue": 0.00013543772425190693,
+  "aic": 182.51388328865983,
+  "bic": 192.01499691939648,
   "significant_predictors": []
 }

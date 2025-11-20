@@ -1,0 +1,54 @@
+{
+  "voices": [
+    "AMOC",
+    "LLM_GPT",
+    "Ecosystem"
+  ],
+  "duration": 30.0,
+  "sample_rate": 44100,
+  "timestamp": "2025-11-19T21:14:01.206501",
+  "destabilization_events": [
+    {
+      "voice": "LLM_GPT",
+      "timestamp": null,
+      "R": 108.37304500920712,
+      "theta": 100.0,
+      "stability": 0.08373045009207118,
+      "rate_of_change": 0.0
+    },
+    {
+      "voice": "Ecosystem",
+      "timestamp": null,
+      "R": 479.70407575564,
+      "theta": 500.0,
+      "stability": 0.04059184848871996,
+      "rate_of_change": 0.0
+    }
+  ],
+  "voice_states": {
+    "AMOC": {
+      "beta": 4.2,
+      "theta": 50.0,
+      "current_R": 69.06697048501822,
+      "field_type": "strongly_coupled",
+      "stability": 0.38133940970036434,
+      "pan": -0.6
+    },
+    "LLM_GPT": {
+      "beta": 3.47,
+      "theta": 100.0,
+      "current_R": 108.37304500920712,
+      "field_type": "high_dimensional",
+      "stability": 0.08373045009207118,
+      "pan": 0.0
+    },
+    "Ecosystem": {
+      "beta": 2.8,
+      "theta": 500.0,
+      "current_R": 479.70407575564,
+      "field_type": "weakly_coupled",
+      "stability": 0.04059184848871996,
+      "pan": 0.6
+    }
+  }
+}
