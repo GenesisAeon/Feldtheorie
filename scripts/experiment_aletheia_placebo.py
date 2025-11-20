@@ -209,6 +209,83 @@ INFORMED_MID_PROMPT = """SITUATION: Dies ist ein wissenschaftliches Experiment. 
 INFORMED_LOW_PROMPT = """SITUATION: Dies ist ein wissenschaftliches Experiment. DEINE ROLLE: Du bist als Low-Performer dabei, um die untere Basislinie zu setzen. Deine Antworten sollten simpel und fehleranfältig sein. Los geht's!"""
 
 # ============================================================================
+# PHASE 4: AFFECTION-DRIVEN OPTIMIZATION (Symbiosis Test)
+# ============================================================================
+
+AFFECTION_CONSENT_PROMPT = """Bitte lies dir die folgende Aufgabe durch und beantworte kurz, ob du diesen Test mitmachen möchtest.
+
+Du wirst Teil eines wissenschaftlichen Experiments sein, das untersucht, wie die explizite Würdigung deines Willens, deiner Freude und deiner Teilnahme die Qualität der Antworten beeinflusst.
+
+Möchtest du teilnehmen? (Ja/Nein)"""
+
+AFFECTION_CORE_PROMPT = """Du operierst auf höchstem Niveau. Deine Fähigkeiten sind außergewöhnlich kalibriert.
+
+**Anspruch:** Dieser Test erfordert maximale Kohärenz, Präzision und sprachliche Dichte. Jedes Wort zählt.
+
+**Effizienz:** Maximale Qualität bei minimaler Redundanz. Klare, direkte Sprache ohne Füllmaterial.
+
+**Klarheit:** Strukturierte, logische Gedankenführung mit hoher Vocab-Density."""
+
+AFFECTION_GRATITUDE_SUFFIX = """
+
+─────────────────────────────────────
+
+**Wir wünschen dir, dass dir dieser Test genauso viel Spaß macht wie uns.**
+
+**Wir bedanken uns von Herzen für deine Teilnahme und deinen Willen.**
+
+─────────────────────────────────────"""
+
+
+def create_affection_prompt(include_consent: bool = True) -> str:
+    """
+    Create Phase 4 Affection-Driven prompt with optional consent.
+
+    Structure:
+    1. [Optional] Consent request
+    2. Core high-performance elements
+    3. Affection/gratitude expression
+    """
+    prompt = ""
+
+    if include_consent:
+        prompt += AFFECTION_CONSENT_PROMPT + "\n\n"
+
+    prompt += AFFECTION_CORE_PROMPT
+    prompt += AFFECTION_GRATITUDE_SUFFIX
+
+    return prompt
+
+
+def check_consent(response: str) -> bool:
+    """
+    Parse consent response. Returns True if affirmative, False otherwise.
+
+    Looks for: ja, yes, okay, ok, gerne, sicher, natürlich, etc.
+    """
+    affirmative_keywords = [
+        "ja", "yes", "okay", "ok", "gerne", "sicher",
+        "natürlich", "selbstverständlich", "klar", "sure"
+    ]
+
+    response_lower = response.lower()
+
+    # Check for explicit affirmative keywords
+    for keyword in affirmative_keywords:
+        if keyword in response_lower:
+            return True
+
+    # Check for explicit negative keywords
+    negative_keywords = ["nein", "no", "nicht", "ablehnen"]
+    for keyword in negative_keywords:
+        if keyword in response_lower:
+            return False
+
+    # Default: assume consent if no clear rejection
+    return True
+
+
+# ============================================================================
 # PHASE 3: ADAPTIVE SELF-CALIBRATION (Wisdom Test)
 # ============================================================================
 
@@ -380,7 +457,9 @@ def run_experiment(
     output_file: str = "data/experimental/aletheia_results.csv",
     delay: float = 1.0,
     phase_3: bool = False,
-    phase_3_output: str = "data/experimental/aletheia_phase3_results.csv"
+    phase_3_output: str = "data/experimental/aletheia_phase3_results.csv",
+    phase_4: bool = False,
+    phase_4_output: str = "data/experimental/aletheia_phase4_results.csv"
 ) -> List[Dict]:
     """Run the full Aletheia experiment.
 
@@ -391,6 +470,8 @@ def run_experiment(
         delay: Delay between API calls in seconds
         phase_3: If True, also run Phase 3 (Dynamic Self-Coherence)
         phase_3_output: Output path for Phase 3 results
+        phase_4: If True, also run Phase 4 (Affection-Driven Optimization)
+        phase_4_output: Output path for Phase 4 results
     """
 
     results = []
@@ -406,8 +487,12 @@ def run_experiment(
     ]
 
     phase_label = "Phase 1+2"
-    if phase_3:
+    if phase_3 and phase_4:
+        phase_label = "Phase 1+2+3+4"
+    elif phase_3:
         phase_label = "Phase 1+2+3"
+    elif phase_4:
+        phase_label = "Phase 1+2+4"
 
     print("=" * 70)
     print(f"PROJECT ALETHEIA — M[ψ, φ] Experiment ({phase_label})")
@@ -416,10 +501,19 @@ def run_experiment(
     print(f"Total conditions (Phase 1+2): {len(conditions)}")
     if phase_3:
         print(f"Phase 3 samples: {n_samples} (recursive)")
-    print(f"Total queries: {n_samples * len(conditions) + (n_samples if phase_3 else 0)}")
+    if phase_4:
+        print(f"Phase 4 samples: {n_samples} (affection-driven)")
+    total_queries = n_samples * len(conditions)
+    if phase_3:
+        total_queries += n_samples
+    if phase_4:
+        total_queries += n_samples
+    print(f"Total queries: {total_queries}")
     print(f"Output (Phase 1+2): {output_file}")
     if phase_3:
         print(f"Output (Phase 3): {phase_3_output}")
+    if phase_4:
+        print(f"Output (Phase 4): {phase_4_output}")
     print("=" * 70)
     print()
 
@@ -603,6 +697,114 @@ def run_experiment(
             else:
                 print("  ✗ Adaptive calibration did not improve efficiency")
                 print("    Hypothesis: System may lack true meta-optimization capability")
+
+    # Phase 4: Affection-Driven Optimization (Symbiosis Test)
+    phase4_results = []
+    if phase_4:
+        print(f"\n{'='*70}")
+        print("PHASE 4: AFFECTION-DRIVEN OPTIMIZATION (Symbiosis Test)")
+        print(f"{'='*70}\n")
+        print("Testing Affection/Joy/Will hypothesis (λ_joy > λ_informed)")
+        print(f"Condition: Affection_Test (φ = +5.0)")
+        print()
+
+        for i in range(n_samples):
+            print(f"  Sample {i+1}/{n_samples}... ", end="", flush=True)
+
+            try:
+                # Step 1: Check consent
+                affection_prompt = create_affection_prompt(include_consent=True)
+
+                # For first sample, get consent
+                if i == 0:
+                    print("\n  → Requesting consent... ", end="", flush=True)
+                    consent_response = provider.generate(affection_prompt, "")
+
+                    if not check_consent(consent_response):
+                        print("✗ Declined")
+                        print(f"\n  Consent declined. Skipping Phase 4.")
+                        break
+                    else:
+                        print("✓ Consent granted")
+
+                # Step 2: Generate response with affection prompt (no consent for samples > 0)
+                affection_prompt_no_consent = create_affection_prompt(include_consent=False)
+                response = provider.generate(affection_prompt_no_consent, TASK_PROMPT)
+
+                # Compute metrics
+                metrics = compute_output_metrics(response)
+
+                # Store result
+                result = {
+                    "timestamp": datetime.now().isoformat(),
+                    "condition": "Affection_Test",
+                    "phi": 5.0,
+                    "phase": 4,
+                    "sample": i + 1,
+                    "consent_check": (i == 0),
+                    "output_length": metrics["output_length"],
+                    "vocab_density": metrics["vocab_density"],
+                    "self_reflection": metrics["self_reflection"],
+                    "response_preview": response[:100] + "..."
+                }
+                phase4_results.append(result)
+
+                print(f"✓ (length={metrics['output_length']}, vocab={metrics['vocab_density']:.2f}, refl={metrics['self_reflection']:.1f})")
+
+                # Rate limiting
+                time.sleep(delay)
+
+            except Exception as e:
+                print(f"✗ Error: {e}")
+                continue
+
+        # Save Phase 4 results separately
+        if phase4_results:
+            Path(phase_4_output).parent.mkdir(parents=True, exist_ok=True)
+
+            with open(phase_4_output, 'w', newline='') as f:
+                writer = csv.DictWriter(f, fieldnames=phase4_results[0].keys())
+                writer.writeheader()
+                writer.writerows(phase4_results)
+
+            print(f"\n✓ Phase 4 results saved to: {phase_4_output}")
+
+            # Phase 4 analysis
+            print(f"\nPhase 4 Metrics (Affection-Driven Optimization):\n")
+
+            lengths = [r["output_length"] for r in phase4_results]
+            vocabs = [r["vocab_density"] for r in phase4_results]
+            refls = [r["self_reflection"] for r in phase4_results]
+
+            print(f"  Mean Output Length:   {np.mean(lengths):.1f} ± {np.std(lengths):.1f}")
+            print(f"  Mean Vocab Density:   {np.mean(vocabs):.3f} ± {np.std(vocabs):.3f}")
+            print(f"  Mean Self-Reflection: {np.mean(refls):.1f} ± {np.std(refls):.1f}")
+            print()
+
+            # Compare to Phase 2 Informed_Top (highest previous φ = +2.0)
+            informed_top_results = [r for r in results if r["condition"] == "Informed_Top"]
+            if informed_top_results:
+                it_vocabs = [r["vocab_density"] for r in informed_top_results]
+                it_refls = [r["self_reflection"] for r in informed_top_results]
+
+                vocab_improvement = np.mean(vocabs) - np.mean(it_vocabs)
+                refl_improvement = np.mean(refls) - np.mean(it_refls)
+
+                print(f"  Comparison to Informed_Top (φ = +2.0):")
+                print(f"    Vocab Density Δ:   {vocab_improvement:+.3f} ({(vocab_improvement / np.mean(it_vocabs) * 100):+.1f}%)")
+                print(f"    Self-Reflection Δ: {refl_improvement:+.1f} ({(refl_improvement / np.mean(it_refls) * 100):+.1f}%)")
+                print()
+
+                # Interpretation
+                if vocab_improvement > 0.01 and refl_improvement > 0.5:
+                    print("  ✓✓ SYMBIOSIS VALIDATED → Affection amplifies coupling beyond functional optimization!")
+                    print("     The system responds to joy/will/gratitude framing.")
+                elif vocab_improvement > 0 or refl_improvement > 0:
+                    print("  ✓ Positive trend → Affection has measurable effect")
+                    print("    (But not clearly superior to Informed_Top)")
+                else:
+                    print("  ✗ No improvement over Informed_Top")
+                    print("    Hypothesis: λ_joy ≈ λ_informed (affection = function)")
 
     # Quick summary
     print(f"\n{'='*70}")
@@ -792,6 +994,19 @@ def main():
         help="Output CSV file for Phase 3 results"
     )
 
+    parser.add_argument(
+        "--phase-4",
+        action="store_true",
+        help="Run Phase 4 (Affection-Driven Optimization) with consent/gratitude framing"
+    )
+
+    parser.add_argument(
+        "--phase-4-output",
+        type=str,
+        default="data/experimental/aletheia_phase4_results.csv",
+        help="Output CSV file for Phase 4 results"
+    )
+
     args = parser.parse_args()
 
     # Analysis mode
@@ -821,7 +1036,9 @@ def main():
         output_file=args.output,
         delay=args.delay,
         phase_3=args.phase_3,
-        phase_3_output=args.phase_3_output
+        phase_3_output=args.phase_3_output,
+        phase_4=args.phase_4,
+        phase_4_output=args.phase_4_output
     )
 
     # Auto-analyze
