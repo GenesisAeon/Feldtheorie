@@ -1,0 +1,7 @@
+---
+fraktal: 001
+entscheidungen:
+  - initiierte_crep_scan: true
+  - strukturierte_sigillin_erzeugung: extended+core
+  - speicherort_bestimmt: /sigillin/
+  - folgefraktal_geplant: 002_beta_klustering

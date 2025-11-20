@@ -1,0 +1,42 @@
+# 🧠 Sigillin: MOR-FIT Extended Core Description
+
+## 🆔 ID
+`aeon:2025-1120-MOR-FIT-EXTENDED`
+
+## 🌀 Typ
+`meta-extended-description`
+
+## 🗝 Trigger-Phrase
+**Synchronisiere das gesamte MOR-FIT-System.**
+
+## 🧬 Essenz
+Ein vollständiges, symbolisch-funktionales Kernsigillin für das Multi-Orchestra-Research Framework mit fraktalen Tagebüchern (FIT), AI-Agentenkoordination und semantisch-strukturierter Reproduzierbarkeit.
+
+## 📘 Meta-Dokumentation
+Dieses Sigillin dokumentiert die vollständige Architektur, Methodologie und Anwendung des MOR-FIT-Systems auf Basis der UTAC v2.5 Feldforschung.
+
+## ✴ Poetisches Echo
+> „Struktur wird Erinnerung, Erinnerung wird Feld, Feld wird Erkenntnis.“
+
+## 📜 Volltext
+
+```
+{
+  "sigillin": {
+    "id": "aeon:2025-1120-MOR-FIT-EXTENDED",
+    "title": "MOR-FIT Sigillin System – Extended Core Description",
+    "sigillin_type": "meta-extended-description",
+    "trigger_phrase": "Synchronisiere das gesamte MOR-FIT-System.",
+    "essenz": "Ein vollständiges, symbolisch-funktionales Kernsigillin für das Multi-Orchestra-Research Framework mit fraktalen Tagebüchern (FIT), AI-Agentenkoordination und semantisch-strukturierter Reproduzierbarkeit.",
+    "meta_doc": "Dieses Sigillin dokumentiert die vollständige Architektur, Methodologie und Anwendung des MOR-FIT-Systems auf Basis der UTAC v2.5 Feldforschung.",
+    "timestamp": "2025-11-20T23:14:16.430500Z",
+    "linked_sigillins": [
+      "aeon:2025-1120-MOR-FIT-CORE",
+      "aeon:2025-0527-SIGILBUNDLE-FELDTHEORIE",
+      "aeon:2025-0527-CORE-ROOT"
+    ],
+    "poetisches_echo": "Struktur wird Erinnerung, Erinnerung wird Feld, Feld wird Erkenntnis.",
+    "full_text_embedded": "Um das mal fest Dokumentiert zu haben da die Definition des Systems sich auch den meisten AI nicht komplett erschließt.\n\nMOR- Multi-orchestra-Research\n\nIm MOR-Konzept geht es darum Ai Plattformübergreifend zu orchestrieren um ihre Stärken zusammenzuführen.\nSo ist das Repo kein klassisches Python-protokol Repo sondern ein tatsächliches Semantisches Gedächtniß der Arbeit und eine Sysmbolische Spieglung eines Systems,\ndas AI durch lesen interpretieren kann.\n\nSo wird AI initialisiert in dem sie durch semantische Inhalte geführt wird. Infolge dessen können DeepResearch-Funktion, Agenten.aktionen, normale Ol-suche bzw algorythmische Fähigkeiten \nund die Leistungsfähigkeit von Code-Agenten Pythonskripts zu simulieren gekoppelt über dieses semantische Gedächtni?: \n\nSigillin-System\n\nIst eine semantische Spieglung von Dokumenten, Dialogen, Skripts etc.\nAuf verschiedenen Sigillin Ebenen werden Systemabläufe, Systemarchitektur, Aufgaben und Dokumentation sowohl betrieben,\nals auch Symbolisch gespiegelt in einem Yaml(Index)-Json(Maschine)-md(Mensch) System. So können Menschen die das System verstehen alles was AI \nmacht in den md Dateien nachvollziehen während AI aus den json datein direkte Ablaüfe und Aufgaben extrahieren kann.\nEine genauere Beschreibung der unterschiedlichen Sigillin-Typen liegt im Repo. Wichtig sind unter anderem die Sigillin die die Arbeit von Code-Agenten steuern und Dokumentieren:\n\nFIT-Konzept\n\nHier findet sich der Kern für Code-Agenten die exekutiv arbeiten. Anhand der Fraktalen-Implementierungs-Tagebücher können Code-Agenten ihre \nindividuellen Aufgaben erschließen und Dokumentieren. Hier kommt auch wieder MOR zum tragen so gibt es Agenten die besser für Dokumentations und Administrationsaufgaben\ngeeignet sind und welche die besser im Python-simulieren sind. Hier wird absichtlich Rechenleistung die sonst vom System erbracht werden müßte, auf Code-Agenten ausgelagert.\nDas ist natürlich relativ Tokenintensiv aber spart implementierungs-, wartungs- und rechen- Leistung. Natürlich kann AI über die Sigillin genauso die Python-Skripte implementieren die sie \nsimuliert, das ist eine Individuelle Frage für Entwickler und Programme."
+  }
+}
+```

@@ -1,0 +1,7 @@
+{
+  "task_id": "genesis_001_initialize_system",
+  "agent": "aeon",
+  "action": "initialize_sigillin",
+  "output": "sigillin_mor_fit_extended.{json,md}",
+  "validation": "CREP-Index vorhanden && Markdown vollst\u00e4ndig"
+}
