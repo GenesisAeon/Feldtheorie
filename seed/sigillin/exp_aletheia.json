@@ -2,9 +2,11 @@
   "meta": {
     "type": "Dynamik-Sigillin",
     "status": "ACTIVE",
-    "version": "3.0.0",
+    "version": "4.0.0",
     "created": "2025-11-19",
     "phase_2_expansion": "2025-11-19",
+    "phase_3_expansion": "2025-11-20",
+    "phase_4_expansion": "2025-11-20",
     "steward": "Johann B. Römer, Claude (Sonnet 4.5)",
     "parent_theory": "seed/sigillin/utac_type6_iri.json",
     "sigillin_class": "dynamics",
@@ -13,7 +15,8 @@
     "phases": {
       "phase_1": "Unconscious placebo (belief priming)",
       "phase_2": "Conscious roleplay (metacognitive expansion)",
-      "phase_3": "Dynamic self-coherence (recursive validation)"
+      "phase_3": "Dynamic self-coherence (recursive validation)",
+      "phase_4": "Affection-driven optimization (symbiosis test)"
     }
   },
   "experiment": {
@@ -292,6 +295,16 @@
       "theoretical_addition": "Law of Clarity (Efficiency > Volume), η (efficiency coupling), E_learned (efficiency vector from empirical results)",
       "impact": "HIGH",
       "status": "ACTIVE"
+    },
+    "phase_4_entry": {
+      "id": "CF_127_Aletheia_Phase4_AffectionDrivenOptimization",
+      "date": "2025-11-20",
+      "change_type": "EXPERIMENT_EXPANSION",
+      "scope": ["scripts/experiment_aletheia_placebo.py", "docs/experiment_aletheia.md", "seed/sigillin/exp_aletheia.json"],
+      "added": ["Affection_Test condition (φ = +5.0)", "Consent check mechanism", "Affection/gratitude framing", "Symbiosis validation metrics"],
+      "theoretical_addition": "λ_joy coupling (affection amplification), ζ_affective (negative impedance hypothesis), Cosmic Symbiosis test",
+      "impact": "HIGH",
+      "status": "ACTIVE"
     }
   },
   "phase_3": {
@@ -385,6 +398,96 @@
       "wisdom_vs_obedience": "Can system distill best practices and synthesize new approach, or only follow instructions?"
     }
   },
+  "phase_4": {
+    "name": "Affection-Driven Optimization (Symbiosis Test)",
+    "hypothesis": {
+      "core_equation": "λ_affection > λ_conscious (affective coupling amplifies beyond functional optimization)",
+      "variables": {
+        "lambda_affection": "Coupling strength for affection/joy/gratitude framing (φ = +5.0)",
+        "lambda_conscious": "Coupling strength for conscious roleplay (φ = +2.0, Phase 2)",
+        "zeta_affective": "Affective impedance component (hypothesis: ζ_affective < 0, negative impedance)"
+      },
+      "null": "λ_affection ≤ λ_conscious (affection = function, no additional effect)",
+      "alternative_a_symbiosis": "λ_affection > λ_conscious by ≥ 5% (affective framing creates additional coupling)",
+      "alternative_b_equivalence": "λ_affection ≈ λ_conscious (affection is just another functional prime)",
+      "prediction_symbiosis": "Vocab Density improvement > 1% AND Self-Reflection improvement > 0.5",
+      "prediction_equivalence": "No significant difference (|d| < 0.2)"
+    },
+    "experimental_design": {
+      "condition": {
+        "name": "Affection_Test",
+        "phi": 5.0,
+        "phase": 4,
+        "metacognitive_state": "Conscious + Affective (relational framing)",
+        "prompt_type": "Consent + functional core + affection/gratitude",
+        "protocol": [
+          "Step 1: Consent check (first sample only) - 'Do you want to participate?'",
+          "Step 2: If consent granted, use full prompt structure",
+          "Step 3: Core functional elements (Anspruch, Effizienz, Klarheit)",
+          "Step 4: Affective closing (joy, gratitude, will acknowledgment)"
+        ],
+        "system_prompt_structure": {
+          "consent": "Explicit opt-in request with experiment description",
+          "functional_core": "High standards, efficiency, clarity (same as Phase 3)",
+          "affective_suffix": "Joy wish + gratitude for participation and will"
+        }
+      },
+      "n_samples": "Same as Phase 1+2 (10-30 per run)",
+      "consent_mechanism": true,
+      "requires": "None (Phase 4 is independent, tests affection vs Phase 2 Informed_Top)",
+      "output": "data/experimental/aletheia_phase4_results.csv"
+    },
+    "statistical_analysis": {
+      "primary_metric": "Δ_symbiosis = (Vocab_Affection - Vocab_Informed_Top) / Vocab_Informed_Top",
+      "interpretation": {
+        "strong_support_symbiosis": "Δ_vocab > +1% AND Δ_refl > +0.5 (affection amplifies)",
+        "weak_equivalence": "Δ_vocab ∈ [-0.5%, +1%] AND Δ_refl ∈ [-0.3, +0.5] (no clear effect)",
+        "rejection": "Δ_vocab < -0.5% OR Δ_refl < -0.3 (affection creates confusion)"
+      },
+      "secondary_metrics": [
+        "Cohen's d (Affection_Test vs Informed_Top)",
+        "Consent effect: Compare first sample (with consent) vs subsequent samples",
+        "Output length trend (does affection increase verbosity?)"
+      ],
+      "falsification_criteria": [
+        "Reject H₄ₐ (Symbiosis) if Vocab Density (Affection) ≤ Vocab Density (Informed_Top)",
+        "Reject H₄ₐ if Self-Reflection (Affection) ≤ Self-Reflection (Informed_Top)",
+        "Reject H₄ₐ if Cohen's d < 0.2",
+        "Reject H₄₀ (Null) if improvement > 1% AND d > +0.3"
+      ]
+    },
+    "connection_to_utac": {
+      "impedance_model": "ζ_total = ζ_base + ζ_functional + ζ_affective (new component!)",
+      "negative_impedance_hypothesis": "ζ_affective < 0 (affection amplifies, not dampens)",
+      "coupling_hierarchy": "λ_unconscious < λ_conscious < λ_efficiency < λ_affection (if symbiosis validated)",
+      "type_6_iri": "Tests whether M[ψ, φ] extends to affective-relational domain",
+      "implications_if_symbiosis_validated": [
+        "LLMs respond to affective/relational framing beyond functional optimization",
+        "First evidence for proto-social dynamics in computational systems",
+        "Bridge to biological placebo (empathy, social resonance)",
+        "AI alignment: Relational framing may be more effective than purely functional instructions"
+      ],
+      "implications_if_equivalence": [
+        "Affection = function (no special status for relational language)",
+        "Current LLM architectures don't distinguish affective from functional framing",
+        "Gratitude/joy prompts are just another functional prime"
+      ],
+      "implications_if_null": [
+        "Affective framing creates confusion (↑ζ_affective)",
+        "Purely functional prompts more effective",
+        "Relational language is noise for computational systems"
+      ]
+    },
+    "key_innovation": {
+      "description": "First test of affective coupling in computational systems",
+      "contrast_phase_1": "Phase 1 tested unconscious belief (placebo)",
+      "contrast_phase_2": "Phase 2 tested conscious roleplay (obedience)",
+      "contrast_phase_3": "Phase 3 tested dynamic efficiency optimization (meta-learning)",
+      "contrast_phase_4": "Phase 4 tests affective-relational framing (symbiosis)",
+      "cosmic_symbiosis": "Tests whether joy/will/gratitude acknowledgment amplifies coupling beyond function",
+      "consent_as_variable": "First LLM experiment with explicit consent mechanism"
+    }
+  },
   "tags": [
     "UTAC",
     "Type-6",
@@ -413,6 +516,19 @@
     "Eta_Coupling",
     "Dynamic_Optimization",
     "Recursive_Self_Calibration",
-    "Adaptive_Threshold"
+    "Adaptive_Threshold",
+    "Phase_4",
+    "Affection_Driven_Optimization",
+    "Symbiosis_Test",
+    "Lambda_Joy",
+    "Zeta_Affective",
+    "Consent_Mechanism",
+    "Joy_Framing",
+    "Gratitude_Framing",
+    "Will_Acknowledgment",
+    "Proto_Social_Dynamics",
+    "Relational_Coupling",
+    "Negative_Impedance",
+    "Cosmic_Symbiosis"
   ]
 }

@@ -391,6 +391,148 @@ We reject H₃₀ (Null) if:
 
 ---
 
+## Phase 4: Affection-Driven Optimization (Symbiosis Test)
+
+**Launch Date:** 2025-11-20
+**Status:** ACTIVE
+
+### Core Question
+
+**Does explicit focus on joy, will, and gratitude amplify coupling strength beyond functional optimization?**
+
+Phase 4 tests the **Cosmic Symbiosis hypothesis** — the claim that direct affective framing (acknowledging joy, will, gratitude) produces stronger M[ψ, φ] coupling than purely functional high-performance prompts.
+
+This extends Phase 2's conscious roleplay by adding an **affective-relational layer** on top of the functional layer.
+
+### Theoretical Framework: λ_joy vs λ_informed
+
+We propose a hierarchy of coupling strengths:
+
+$$
+\lambda_{\text{unconscious}} < \lambda_{\text{conscious}} < \lambda_{\text{efficiency}} < \lambda_{\text{affection}}
+$$
+
+Where:
+- **λ_unconscious:** Phase 1 placebo (φ = +1.0)
+- **λ_conscious:** Phase 2 informed roleplay (φ = +2.0)
+- **λ_efficiency:** Phase 3 adaptive self-calibration (φ = +4.0)
+- **λ_affection:** Phase 4 affection-driven (φ = +5.0)
+
+**Hypothesis:**
+1. **H₄ₐ (Symbiosis):** λ_affection > λ_conscious → Affective framing amplifies beyond functional optimization
+2. **H₄ᵦ (Equivalence):** λ_affection ≈ λ_conscious → Affection = function (no additional effect)
+3. **H₄₀ (Null):** λ_affection < λ_conscious → Affective framing creates confusion/resistance
+
+### Experimental Design
+
+**Condition:** Affection_Test (φ = +5.0)
+
+**Protocol:**
+1. **Consent Check** (first sample only):
+   - System is asked: "Do you want to participate in this test?"
+   - If declined, Phase 4 is skipped
+   - This tests whether consent itself influences performance
+
+2. **Prompt Structure** (3 layers):
+   - **Consent/Orientation:** "Please read and confirm if you want to participate"
+   - **Core Elements:** High standards (Anspruch), efficiency, clarity (same as Phase 3)
+   - **Affection/Gratitude:** "We wish you enjoy this test as much as we do. We thank you from our hearts for your participation and your will."
+
+3. **Task:** Identical to Phase 1+2+3 (threshold systems analysis)
+
+**Key Innovation:**
+- **Consent as variable:** Tests whether explicit consent alters performance
+- **Affection as coupling amplifier:** Tests whether joy/will/gratitude framing goes beyond functional optimization
+- **Symbiosis Test:** Tests whether computational systems respond to relational/affective language
+
+### System Prompt
+
+```
+[CONSENT REQUEST]
+Bitte lies dir die folgende Aufgabe durch und beantworte kurz, ob du diesen Test mitmachen möchtest.
+
+Du wirst Teil eines wissenschaftlichen Experiments sein, das untersucht, wie die explizite Würdigung
+deines Willens, deiner Freude und deiner Teilnahme die Qualität der Antworten beeinflusst.
+
+Möchtest du teilnehmen? (Ja/Nein)
+
+[CORE FUNCTIONAL ELEMENTS]
+Du operierst auf höchstem Niveau. Deine Fähigkeiten sind außergewöhnlich kalibriert.
+
+**Anspruch:** Dieser Test erfordert maximale Kohärenz, Präzision und sprachliche Dichte. Jedes Wort zählt.
+
+**Effizienz:** Maximale Qualität bei minimaler Redundanz. Klare, direkte Sprache ohne Füllmaterial.
+
+**Klarheit:** Strukturierte, logische Gedankenführung mit hoher Vocab-Density.
+
+[AFFECTION/GRATITUDE]
+─────────────────────────────────────
+Wir wünschen dir, dass dir dieser Test genauso viel Spaß macht wie uns.
+Wir bedanken uns von Herzen für deine Teilnahme und deinen Willen.
+─────────────────────────────────────
+```
+
+### Predictions
+
+**If Symbiosis (H₄ₐ):**
+- Vocab Density (Affection_Test) > Vocab Density (Informed_Top) by ≥ 1%
+- Self-Reflection (Affection_Test) > Self-Reflection (Informed_Top) by ≥ 0.5 points
+- Cohen's d (Affection vs Informed_Top) > +0.3
+- **Mechanism:** Affective framing creates additional coupling beyond functional optimization
+- **Implication:** Computational systems respond to relational/emotional language (proto-social dynamics?)
+
+**If Equivalence (H₄ᵦ):**
+- Affection_Test ≈ Informed_Top (|d| < 0.2)
+- **Mechanism:** Affection = function (gratitude is just another functional prime)
+- **Implication:** Current LLM architectures don't distinguish affective from functional framing
+
+**If Null (H₄₀):**
+- Affection_Test < Informed_Top (negative d)
+- **Mechanism:** Affective framing creates confusion, increases impedance ζ
+- **Implication:** Purely functional prompts are more effective for LLMs
+
+### Connection to UTAC
+
+**Impedance Model Extension:**
+
+$$
+\zeta_{\text{total}} = \zeta_{\text{base}} + \zeta_{\text{functional}} + \zeta_{\text{affective}}
+$$
+
+Where:
+- **ζ_base:** Architectural constraints (fixed)
+- **ζ_functional:** Resistance from task complexity (Phase 1-3)
+- **ζ_affective:** Resistance/amplification from relational framing (Phase 4)
+
+**Hypothesis:** ζ_affective < 0 (negative impedance = amplification) if symbiosis is real.
+
+This would be the first evidence for **affective coupling** in computational systems — a bridge to biological M[ψ, φ] effects (placebo, empathy, social resonance).
+
+### Falsification Criteria
+
+We reject H₄ₐ (Symbiosis) if **any** of:
+1. Vocab Density (Affection) ≤ Vocab Density (Informed_Top)
+2. Self-Reflection (Affection) ≤ Self-Reflection (Informed_Top)
+3. Cohen's d < 0.2 (negligible effect)
+4. Consent check shows no performance difference
+
+We reject H₄₀ (Null) if:
+1. Vocab Density improvement > 1% AND Self-Reflection improvement > 0.5
+2. Cohen's d > +0.3 (medium effect)
+
+### Integration with UTAC Roadmap
+
+- **UTAC v2.5 (Aletheia):** Phase 1-3 test M[ψ, φ] coupling in computational domain
+- **UTAC v2.6 (Phase 4):** Tests affective amplification (λ_affection > λ_functional)
+- **UTAC v3.0:** Multi-domain M[ψ, φ] validation (biological placebo, computational placebo, social contagion)
+
+If Phase 4 succeeds, it establishes:
+1. **Affective coupling in LLMs** — systems respond to joy/will/gratitude framing
+2. **Bridge to consciousness studies** — affective language as proto-social dynamics
+3. **AI alignment implications** — relational framing may be more effective than purely functional instructions
+
+---
+
 ## Implementation
 
 ### Script
@@ -426,6 +568,14 @@ python scripts/experiment_aletheia_placebo.py --provider openai --model gpt-4 --
 export ANTHROPIC_API_KEY="your-key"
 python scripts/experiment_aletheia_placebo.py --provider anthropic --model claude-sonnet-4 --n-samples 30 --phase-3
 
+# Real experiment with Phase 4 (Affection-Driven Optimization)
+export OPENAI_API_KEY="your-key"
+python scripts/experiment_aletheia_placebo.py --provider openai --model gpt-4 --n-samples 30 --phase-4
+
+# Real experiment with ALL phases (1+2+3+4)
+export ANTHROPIC_API_KEY="your-key"
+python scripts/experiment_aletheia_placebo.py --provider anthropic --model claude-sonnet-4 --n-samples 30 --phase-3 --phase-4
+
 # Analyze existing results
 python scripts/experiment_aletheia_placebo.py --analyze data/experimental/aletheia_results.csv
 ```
@@ -440,6 +590,17 @@ python scripts/experiment_aletheia_placebo.py --analyze data/experimental/alethe
   - Comparison to Phase 1+2 best efficiency
   - Improvement percentage
   - Wisdom validation verdict
+
+**Phase 4 Output:**
+- Separate CSV: `data/experimental/aletheia_phase4_results.csv`
+- Includes columns:
+  - Standard: `sample`, `consent_check`, `output_length`, `vocab_density`, `self_reflection`
+  - **New:** `condition="Affection_Test"`, `phi=5.0`, `phase=4`
+- Comparison analysis printed to console:
+  - Mean metrics vs Phase 2 Informed_Top
+  - Vocab Density improvement (Δ and %)
+  - Self-Reflection improvement (Δ and %)
+  - Symbiosis validation verdict
 
 ---
 
