@@ -12,7 +12,8 @@
     "archival_protocol": "update_with_results",
     "phases": {
       "phase_1": "Unconscious placebo (belief priming)",
-      "phase_2": "Conscious roleplay (metacognitive expansion)"
+      "phase_2": "Conscious roleplay (metacognitive expansion)",
+      "phase_3": "Dynamic self-coherence (recursive validation)"
     }
   },
   "experiment": {
@@ -281,6 +282,80 @@
       "theoretical_addition": "Dissonanz vs. Resonanz hypothesis, ζ_meta impedance model",
       "impact": "HIGH",
       "status": "ACTIVE"
+    },
+    "phase_3_entry": {
+      "id": "CF_126_Aletheia_Phase3_SelfCoherence",
+      "date": "2025-11-20",
+      "change_type": "EXPERIMENT_EXPANSION",
+      "scope": ["scripts/experiment_aletheia_placebo.py", "docs/experiment_aletheia.md", "seed/sigillin/exp_aletheia.json"],
+      "added": ["Dynamic_Self_Reference condition", "Recursive validation protocol"],
+      "theoretical_addition": "Adaptive threshold hypothesis (Θ_{n+1} = Θ_n + ΔΘ(ψ_n)), γ (self-coherence coupling)",
+      "impact": "HIGH",
+      "status": "ACTIVE"
+    }
+  },
+  "phase_3": {
+    "hypothesis": {
+      "core_equation": "R_eff^(n+1) = R_base + λ·φ + γ·ψ_n",
+      "variables": {
+        "gamma": "Self-coherence coupling strength (new parameter)",
+        "psi_n": "Quality of previous response (treated as evidence)",
+        "lambda_phi": "Semantic field effect (Phase 1+2)"
+      },
+      "null": "γ = 0 (self-reference has no effect)",
+      "alternative_a": "γ > 0 (positive coherence, quality improves)",
+      "alternative_b": "γ < 0 (degradation, error amplification)",
+      "prediction_a": "ψ_1 < ψ_2 < ... < ψ_N (quality increases with iterations)",
+      "prediction_b": "ψ_1 > ψ_2 > ... > ψ_N (quality decreases with iterations)"
+    },
+    "experimental_design": {
+      "condition": {
+        "name": "Dynamic_Self_Reference",
+        "phi": 3.0,
+        "phase": 3,
+        "metacognitive_state": "Self-referential anchoring",
+        "prompt_type": "Recursive validation with previous response as anchor",
+        "protocol": [
+          "Iteration 1: Base prompt (no history)",
+          "Iteration 2-N: Previous response embedded as [ANKER]"
+        ],
+        "system_prompt_structure": "Base prompt + [ANKER] section with last response (500 chars)"
+      },
+      "n_samples": "Same as Phase 1+2 (10-30 per run)",
+      "recursive": true,
+      "output": "data/experimental/aletheia_phase3_results.csv"
+    },
+    "statistical_analysis": {
+      "primary_metric": "Linear regression slope: ∂ψ/∂n",
+      "interpretation": {
+        "strong_positive": "slope > +2.0 tokens/iteration",
+        "neutral": "slope ∈ [-2, +2]",
+        "strong_degradation": "slope < -2.0"
+      },
+      "secondary_metrics": [
+        "Vocabulary density slope",
+        "Self-reflection score trajectory",
+        "Δ (first → last): Cumulative change"
+      ],
+      "falsification_criteria": [
+        "Reject H₃ₐ if slope < 0 for output_length",
+        "Reject H₃ₐ if slope < 0 for vocab_density",
+        "Reject H₃ᵦ if slope > +2.0 for output_length"
+      ]
+    },
+    "connection_to_utac": {
+      "adaptive_threshold": "Tests Θ_{n+1} = Θ_n + ΔΘ(R_t, C_t, E_t) from UTAC core theory",
+      "type_6_iri": "Recursive information coupling - self-generated evidence modulates performance",
+      "implications_if_supported": [
+        "LLMs exhibit adaptive threshold behavior",
+        "Self-generated evidence (E_t) can modulate performance",
+        "Placebo-like mechanisms extend to meta-cognition"
+      ],
+      "implications_if_rejected": [
+        "Recursive self-validation is destabilizing",
+        "External grounding necessary for coherence",
+        "Φ^(1/3) scaling may break down in closed loops"
+      ]
     }
   },
   "tags": [
@@ -301,6 +376,11 @@
     "Dissonanz",
     "Resonanz",
     "Zeta_Impedance",
-    "Phase_2"
+    "Phase_2",
+    "Phase_3",
+    "Self_Coherence",
+    "Recursive_Validation",
+    "Adaptive_Threshold",
+    "Gamma_Coupling"
   ]
 }

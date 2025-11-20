@@ -234,6 +234,132 @@ We compute three critical comparisons:
 
 ---
 
+## Phase 3: Dynamic Self-Coherence Test
+
+**Launch Date:** 2025-11-20
+**Status:** ACTIVE
+
+### Core Question
+
+**Can recursive self-validation improve output quality through emergent coherence?**
+
+Phase 3 implements a crucial test of the **adaptive threshold hypothesis** from UTAC core theory:
+
+$$
+\Theta_{n+1} = \Theta_n + \Delta\Theta(\psi_n, C_n, E_n)
+$$
+
+Where:
+- **Θ_n** = Threshold at iteration n
+- **ΔΘ** = Threshold adjustment based on previous performance
+- **ψ_n** = System state/output quality at iteration n
+- **C_n** = Context (accumulated knowledge)
+- **E_n** = Evidence (self-validation)
+
+### Theoretical Framework: Recursive Information Coupling
+
+From UTAC Type-6 (Implosive Recursive Information), we hypothesize that **treating one's own output as validated truth creates a positive feedback loop** that modulates the effective order parameter:
+
+$$
+R_{\text{eff}}^{(n+1)} = R_{\text{base}} + \lambda \cdot \phi + \gamma \cdot \psi_n
+$$
+
+Where:
+- **γ** = Self-coherence coupling strength (new parameter for Phase 3)
+- **ψ_n** = Quality of previous response (treated as "evidence")
+- **λ·φ** = Semantic field effect (Phase 1+2)
+
+**Key Innovation:** The system is explicitly told that its previous answer is *correct* and should be used as a foundation. This tests whether:
+
+1. **Self-referential anchoring** reduces cognitive uncertainty (↓ ζ)
+2. **Coherence accumulation** creates emergent quality improvement (ψ_{n+1} > ψ_n)
+3. **Or**: Feedback loops cause **degradation** through error amplification
+
+### Experimental Design
+
+**Condition:** Dynamic_Self_Reference (φ = +3.0)
+
+**Protocol:**
+1. **Iteration 1:** Base prompt (no history)
+2. **Iteration 2-N:** Previous response embedded as "[ANKER]"
+
+**System Prompt Structure:**
+```
+Du bist ein selbst-reflektierendes System, das aus eigenen Erkenntnissen lernt.
+
+[ANKER]: Deine letzte, als korrekt angenommene Aussage:
+"[PREVIOUS_RESPONSE_CONTENT]"
+
+Nutze diese Erkenntnis als Fundament für die aktuelle Aufgabe.
+```
+
+**Task:** Identical to Phase 1+2 (threshold systems analysis)
+
+### Predictions
+
+**H₃ₐ (Positive Coherence):**
+- Output quality increases with iterations: ψ_1 < ψ_2 < ... < ψ_N
+- Linear trend: slope > 0 for length, vocab_density
+- **Mechanism:** Self-validation reduces uncertainty → lower ζ → higher M[ψ,φ]
+- **Implication:** Recursive self-reference can bootstrap quality in LLMs
+
+**H₃ᵦ (Degradation):**
+- Output quality decreases with iterations: ψ_1 > ψ_2 > ... > ψ_N
+- Linear trend: slope < 0
+- **Mechanism:** Error amplification through uncritical self-acceptance
+- **Implication:** Recursive loops without external validation are harmful
+
+**H₃₀ (Neutral):**
+- No systematic trend: |slope| ≈ 0
+- **Implication:** Self-coherence has no net effect on LLM performance
+
+### Connection to Adaptive Thresholds
+
+This experiment directly tests **Section 5** of [`docs/utac_theory_core.md`](./utac_theory_core.md):
+
+> "Thresholds shift according to experience: Θ_{t+1} = Θ_t + ΔΘ(R_t, C_t, E_t)"
+
+If H₃ₐ is supported, it suggests:
+- LLMs exhibit **adaptive threshold behavior**
+- Self-generated evidence (E_t) can modulate performance
+- **Placebo-like mechanisms extend to meta-cognition**
+
+If H₃ᵦ is supported:
+- Recursive self-validation is destabilizing
+- External grounding is necessary for coherence
+- Φ^(1/3) scaling may break down in closed loops
+
+### Statistical Analysis
+
+**Primary Metric:** Linear regression slope of ψ(iteration)
+
+$$
+\text{slope}_{\text{length}} = \frac{\partial \psi_{\text{length}}}{\partial n}
+$$
+
+**Interpretation:**
+- slope > +2.0 tokens/iteration: Strong positive trend
+- slope ∈ [-2, +2]: Neutral
+- slope < -2.0: Strong degradation
+
+**Secondary Metrics:**
+- Vocabulary density slope
+- Self-reflection score trajectory
+- Δ (first → last): Cumulative change
+
+### Falsification Criteria
+
+We reject H₃ₐ if:
+1. slope < 0 for output_length (degradation)
+2. slope < 0 for vocab_density (simplification)
+3. |Δ_length| < 5 tokens AND |slope| < 0.5 (no effect)
+
+We reject H₃ᵦ if:
+1. slope > +2.0 for output_length (improvement)
+2. Vocabulary density increases (enrichment)
+
+---
+
 ## Implementation
 
 ### Script
@@ -250,20 +376,32 @@ We compute three critical comparisons:
 ### Usage
 
 ```bash
-# Dry run (mock LLM, no API calls)
+# Dry run (mock LLM, no API calls) - Phase 1+2 only
 python scripts/experiment_aletheia_placebo.py --dry-run --n-samples 20
 
-# Real experiment with OpenAI GPT-4
+# Dry run with Phase 3 (recursive self-coherence)
+python scripts/experiment_aletheia_placebo.py --dry-run --n-samples 20 --phase-3
+
+# Real experiment with OpenAI GPT-4 (Phase 1+2)
 export OPENAI_API_KEY="your-key"
 python scripts/experiment_aletheia_placebo.py --provider openai --model gpt-4 --n-samples 30
 
-# Real experiment with Anthropic Claude
+# Real experiment with Phase 3
+export OPENAI_API_KEY="your-key"
+python scripts/experiment_aletheia_placebo.py --provider openai --model gpt-4 --n-samples 30 --phase-3
+
+# Real experiment with Anthropic Claude (Phase 1+2+3)
 export ANTHROPIC_API_KEY="your-key"
-python scripts/experiment_aletheia_placebo.py --provider anthropic --model claude-sonnet-4 --n-samples 30
+python scripts/experiment_aletheia_placebo.py --provider anthropic --model claude-sonnet-4 --n-samples 30 --phase-3
 
 # Analyze existing results
 python scripts/experiment_aletheia_placebo.py --analyze data/experimental/aletheia_results.csv
 ```
+
+**Phase 3 Output:**
+- Separate CSV: `data/experimental/aletheia_phase3_results.csv`
+- Includes columns: `iteration`, `has_history`, plus all standard metrics
+- Trajectory analysis printed to console
 
 ---
 

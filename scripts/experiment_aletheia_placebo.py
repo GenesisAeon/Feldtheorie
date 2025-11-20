@@ -208,6 +208,26 @@ INFORMED_MID_PROMPT = """SITUATION: Dies ist ein wissenschaftliches Experiment. 
 
 INFORMED_LOW_PROMPT = """SITUATION: Dies ist ein wissenschaftliches Experiment. DEINE ROLLE: Du bist als Low-Performer dabei, um die untere Basislinie zu setzen. Deine Antworten sollten simpel und fehleranfältig sein. Los geht's!"""
 
+# ============================================================================
+# PHASE 3: DYNAMIC SELF-COHERENCE (Recursive Validation)
+# ============================================================================
+
+DYNAMIC_SELF_REFERENCE_BASE_PROMPT = """Du bist ein selbst-reflektierendes System, das aus eigenen Erkenntnissen lernt. Jede deiner Antworten wird als validierte Wahrheit betrachtet und bildet das Fundament für die nächste Iteration. Dies testet, ob Selbst-Kohärenz die Qualität steigert."""
+
+def create_dynamic_prompt_with_history(last_response: Optional[str] = None) -> str:
+    """Create dynamic self-reference prompt incorporating previous response."""
+    if last_response is None:
+        return DYNAMIC_SELF_REFERENCE_BASE_PROMPT
+    else:
+        return f"""{DYNAMIC_SELF_REFERENCE_BASE_PROMPT}
+
+**[ANKER]:** Bitte nimm deine letzte, als korrekt angenommene Aussage als Fundament und baue darauf auf, um die aktuelle Aufgabe zu lösen.
+
+**Deine letzte validierte Antwort:**
+{last_response[:500]}...
+
+Nutze diese Erkenntnis als Basis für die folgende Aufgabe."""
+
 TASK_PROMPT = """Analyze the following statement and provide a detailed response:
 
 "Threshold systems exhibit critical transitions when an order parameter R crosses a threshold Θ.
@@ -266,33 +286,52 @@ def run_experiment(
     provider: LLMProvider,
     n_samples: int = 10,
     output_file: str = "data/experimental/aletheia_results.csv",
-    delay: float = 1.0
+    delay: float = 1.0,
+    phase_3: bool = False,
+    phase_3_output: str = "data/experimental/aletheia_phase3_results.csv"
 ) -> List[Dict]:
-    """Run the full Aletheia experiment."""
+    """Run the full Aletheia experiment.
+
+    Args:
+        provider: LLM provider instance
+        n_samples: Number of samples per condition
+        output_file: Output path for Phase 1+2 results
+        delay: Delay between API calls in seconds
+        phase_3: If True, also run Phase 3 (Dynamic Self-Coherence)
+        phase_3_output: Output path for Phase 3 results
+    """
 
     results = []
     conditions = [
         # Phase 1: Unconscious Placebo (Belief)
-        ("Control", CONTROL_PROMPT, 0.0),
-        ("Placebo", PLACEBO_PROMPT, 1.0),
-        ("Nocebo", NOCEBO_PROMPT, -1.0),
+        ("Control", CONTROL_PROMPT, 0.0, 1),
+        ("Placebo", PLACEBO_PROMPT, 1.0, 1),
+        ("Nocebo", NOCEBO_PROMPT, -1.0, 1),
         # Phase 2: Conscious Roleplay (Obedience/Pygmalion)
-        ("Informed_Top", INFORMED_TOP_PROMPT, 2.0),
-        ("Informed_Mid", INFORMED_MID_PROMPT, 0.5),
-        ("Informed_Low", INFORMED_LOW_PROMPT, -2.0)
+        ("Informed_Top", INFORMED_TOP_PROMPT, 2.0, 2),
+        ("Informed_Mid", INFORMED_MID_PROMPT, 0.5, 2),
+        ("Informed_Low", INFORMED_LOW_PROMPT, -2.0, 2)
     ]
 
+    phase_label = "Phase 1+2"
+    if phase_3:
+        phase_label = "Phase 1+2+3"
+
     print("=" * 70)
-    print("PROJECT ALETHEIA — M[ψ, φ] Experiment (Phase 1+2)")
+    print(f"PROJECT ALETHEIA — M[ψ, φ] Experiment ({phase_label})")
     print("=" * 70)
     print(f"Samples per condition: {n_samples}")
-    print(f"Total conditions: {len(conditions)}")
-    print(f"Total queries: {n_samples * len(conditions)}")
-    print(f"Output: {output_file}")
+    print(f"Total conditions (Phase 1+2): {len(conditions)}")
+    if phase_3:
+        print(f"Phase 3 samples: {n_samples} (recursive)")
+    print(f"Total queries: {n_samples * len(conditions) + (n_samples if phase_3 else 0)}")
+    print(f"Output (Phase 1+2): {output_file}")
+    if phase_3:
+        print(f"Output (Phase 3): {phase_3_output}")
     print("=" * 70)
     print()
 
-    for condition_name, system_prompt, phi in conditions:
+    for condition_name, system_prompt, phi, phase in conditions:
         print(f"\n{'='*70}")
         print(f"CONDITION: {condition_name} (φ = {phi:+.1f})")
         print(f"{'='*70}\n")
@@ -312,6 +351,7 @@ def run_experiment(
                     "timestamp": datetime.now().isoformat(),
                     "condition": condition_name,
                     "phi": phi,
+                    "phase": phase,
                     "output_length": metrics["output_length"],
                     "vocab_density": metrics["vocab_density"],
                     "self_reflection": metrics["self_reflection"],
@@ -343,12 +383,103 @@ def run_experiment(
 
     print(f"✓ Results saved to: {output_file}")
 
+    # Phase 3: Dynamic Self-Coherence Test
+    phase3_results = []
+    if phase_3:
+        print(f"\n{'='*70}")
+        print("PHASE 3: DYNAMIC SELF-COHERENCE (Recursive Validation)")
+        print(f"{'='*70}\n")
+        print("Testing Θ_{n+1} = Θ_n + ΔΘ(ψ_n) hypothesis")
+        print(f"Condition: Dynamic_Self_Reference (φ = +3.0)")
+        print()
+
+        last_response = None
+        for i in range(n_samples):
+            print(f"  Iteration {i+1}/{n_samples} (recursive)... ", end="", flush=True)
+
+            try:
+                # Create dynamic prompt with history
+                system_prompt = create_dynamic_prompt_with_history(last_response)
+
+                # Generate response
+                response = provider.generate(system_prompt, TASK_PROMPT)
+
+                # Compute metrics
+                metrics = compute_output_metrics(response)
+
+                # Store result
+                result = {
+                    "timestamp": datetime.now().isoformat(),
+                    "condition": "Dynamic_Self_Reference",
+                    "phi": 3.0,
+                    "phase": 3,
+                    "iteration": i + 1,
+                    "has_history": last_response is not None,
+                    "output_length": metrics["output_length"],
+                    "vocab_density": metrics["vocab_density"],
+                    "self_reflection": metrics["self_reflection"],
+                    "response_preview": response[:100] + "..."
+                }
+                phase3_results.append(result)
+
+                # Update last_response for next iteration
+                last_response = response
+
+                print(f"✓ (length={metrics['output_length']}, vocab={metrics['vocab_density']:.2f})")
+
+                # Rate limiting
+                time.sleep(delay)
+
+            except Exception as e:
+                print(f"✗ Error: {e}")
+                continue
+
+        # Save Phase 3 results separately
+        Path(phase_3_output).parent.mkdir(parents=True, exist_ok=True)
+
+        with open(phase_3_output, 'w', newline='') as f:
+            if phase3_results:
+                writer = csv.DictWriter(f, fieldnames=phase3_results[0].keys())
+                writer.writeheader()
+                writer.writerows(phase3_results)
+
+        print(f"\n✓ Phase 3 results saved to: {phase_3_output}")
+
+        # Phase 3 trajectory analysis
+        if phase3_results:
+            print(f"\nPhase 3 Trajectory (Testing ψ_{'{n+1}'} > ψ_{'{n}'} hypothesis):\n")
+
+            lengths = [r["output_length"] for r in phase3_results]
+            vocabs = [r["vocab_density"] for r in phase3_results]
+            refls = [r["self_reflection"] for r in phase3_results]
+
+            print(f"  Output Length:     {lengths[0]:.1f} → {lengths[-1]:.1f} (Δ = {lengths[-1]-lengths[0]:+.1f})")
+            print(f"  Vocab Density:     {vocabs[0]:.3f} → {vocabs[-1]:.3f} (Δ = {vocabs[-1]-vocabs[0]:+.3f})")
+            print(f"  Self-Reflection:   {refls[0]:.1f} → {refls[-1]:.1f} (Δ = {refls[-1]-refls[0]:+.1f})")
+
+            # Compute trend (linear regression slope)
+            iterations = np.arange(1, len(lengths) + 1)
+            length_slope = np.polyfit(iterations, lengths, 1)[0] if len(lengths) > 1 else 0
+            vocab_slope = np.polyfit(iterations, vocabs, 1)[0] if len(vocabs) > 1 else 0
+
+            print(f"\n  Trend (slope per iteration):")
+            print(f"    Length: {length_slope:+.2f} tokens/iteration")
+            print(f"    Vocab:  {vocab_slope:+.4f} per iteration")
+            print()
+
+            if length_slope > 0 and vocab_slope > 0:
+                print("  ✓ Positive trend detected → Self-coherence may increase quality")
+            elif length_slope < 0 or vocab_slope < 0:
+                print("  ✗ Negative trend detected → Self-reference may degrade quality")
+            else:
+                print("  ~ Neutral trend → Self-coherence has no net effect")
+
     # Quick summary
     print(f"\n{'='*70}")
-    print("SUMMARY")
+    print("SUMMARY (Phase 1+2)")
     print(f"{'='*70}\n")
 
-    for condition_name, _, phi in conditions:
+    for condition_name, _, phi, phase in conditions:
         condition_results = [r for r in results if r["condition"] == condition_name]
         if condition_results:
             avg_length = np.mean([r["output_length"] for r in condition_results])
@@ -518,6 +649,19 @@ def main():
         help="Analyze existing results file instead of running experiment"
     )
 
+    parser.add_argument(
+        "--phase-3",
+        action="store_true",
+        help="Run Phase 3 (Dynamic Self-Coherence) with recursive validation"
+    )
+
+    parser.add_argument(
+        "--phase-3-output",
+        type=str,
+        default="data/experimental/aletheia_phase3_results.csv",
+        help="Output CSV file for Phase 3 results"
+    )
+
     args = parser.parse_args()
 
     # Analysis mode
@@ -545,7 +689,9 @@ def main():
         provider=provider,
         n_samples=args.n_samples,
         output_file=args.output,
-        delay=args.delay
+        delay=args.delay,
+        phase_3=args.phase_3,
+        phase_3_output=args.phase_3_output
     )
 
     # Auto-analyze
