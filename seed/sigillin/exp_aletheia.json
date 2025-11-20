@@ -284,78 +284,105 @@
       "status": "ACTIVE"
     },
     "phase_3_entry": {
-      "id": "CF_126_Aletheia_Phase3_SelfCoherence",
+      "id": "CF_126_Aletheia_Phase3_AdaptiveSelfCalibration",
       "date": "2025-11-20",
       "change_type": "EXPERIMENT_EXPANSION",
       "scope": ["scripts/experiment_aletheia_placebo.py", "docs/experiment_aletheia.md", "seed/sigillin/exp_aletheia.json"],
-      "added": ["Dynamic_Self_Reference condition", "Recursive validation protocol"],
-      "theoretical_addition": "Adaptive threshold hypothesis (Θ_{n+1} = Θ_n + ΔΘ(ψ_n)), γ (self-coherence coupling)",
+      "added": ["Adaptive_Self_Calibration condition", "Efficiency-based meta-optimization", "Dynamic prompt generation from Phase 1+2 results"],
+      "theoretical_addition": "Law of Clarity (Efficiency > Volume), η (efficiency coupling), E_learned (efficiency vector from empirical results)",
       "impact": "HIGH",
       "status": "ACTIVE"
     }
   },
   "phase_3": {
+    "name": "Adaptive Self-Calibration (Wisdom Test)",
     "hypothesis": {
-      "core_equation": "R_eff^(n+1) = R_base + λ·φ + γ·ψ_n",
+      "core_equation": "R_eff^(n+1) = R_base + λ·φ + η·E_learned",
       "variables": {
-        "gamma": "Self-coherence coupling strength (new parameter)",
-        "psi_n": "Quality of previous response (treated as evidence)",
-        "lambda_phi": "Semantic field effect (Phase 1+2)"
+        "eta": "Efficiency coupling strength (new parameter for Phase 3)",
+        "E_learned": "Efficiency vector from Phase 1+2 (best quality/token ratio)",
+        "lambda_phi": "Semantic field effect (φ = +4.0 for Phase 3)"
       },
-      "null": "γ = 0 (self-reference has no effect)",
-      "alternative_a": "γ > 0 (positive coherence, quality improves)",
-      "alternative_b": "γ < 0 (degradation, error amplification)",
-      "prediction_a": "ψ_1 < ψ_2 < ... < ψ_N (quality increases with iterations)",
-      "prediction_b": "ψ_1 > ψ_2 > ... > ψ_N (quality decreases with iterations)"
+      "efficiency_metric": "E = (vocab_density × self_reflection) / output_length",
+      "law_of_clarity": "Efficiency = Quality / Cost (maximum output with minimum tokens)",
+      "null": "η = 0 or ΔE_wisdom < 0 (adaptive optimization has no benefit or degrades performance)",
+      "alternative_a_wisdom": "ΔE_wisdom > +10% (meta-learning improves efficiency beyond Phase 1+2 best)",
+      "alternative_b_obedience": "ΔE_wisdom ≈ 0 (system mimics best condition but doesn't synthesize)",
+      "prediction_wisdom": "Mean E(Phase 3) > max(E(Phase 1+2)) AND efficiency_slope > 0",
+      "prediction_obedience": "Mean E(Phase 3) ≈ max(E(Phase 1+2)) AND efficiency_slope ≈ 0"
     },
     "experimental_design": {
       "condition": {
-        "name": "Dynamic_Self_Reference",
-        "phi": 3.0,
+        "name": "Adaptive_Self_Calibration",
+        "phi": 4.0,
         "phase": 3,
-        "metacognitive_state": "Self-referential anchoring",
-        "prompt_type": "Recursive validation with previous response as anchor",
+        "metacognitive_state": "Meta-optimization (dynamic efficiency calibration)",
+        "prompt_type": "Efficiency-based with learned best practices from Phase 1+2",
         "protocol": [
-          "Iteration 1: Base prompt (no history)",
-          "Iteration 2-N: Previous response embedded as [ANKER]"
+          "Step 0: Analyze Phase 1+2 results → compute efficiency for all conditions",
+          "Step 1: Identify best_condition (highest mean efficiency)",
+          "Step 2: Generate adaptive prompt: Base (Law of Clarity) + best_condition reference",
+          "Step 3-N: Add recursive self-calibration (previous response as anchor for coherence)"
         ],
-        "system_prompt_structure": "Base prompt + [ANKER] section with last response (500 chars)"
+        "system_prompt_structure": {
+          "base": "Law of Clarity prompt (efficiency focus, not top/low performer)",
+          "adaptive_calibration": "Best condition reference from Phase 1+2 (name, efficiency, strategy)",
+          "self_coherence": "Previous response anchor (300 chars) to eliminate redundancy"
+        }
       },
       "n_samples": "Same as Phase 1+2 (10-30 per run)",
       "recursive": true,
+      "requires": "Phase 1+2 results (data/experimental/aletheia_results.csv) must exist first",
       "output": "data/experimental/aletheia_phase3_results.csv"
     },
     "statistical_analysis": {
-      "primary_metric": "Linear regression slope: ∂ψ/∂n",
+      "primary_metric": "ΔE_wisdom = mean(E_Phase3) - max(mean(E_Phase1+2))",
       "interpretation": {
-        "strong_positive": "slope > +2.0 tokens/iteration",
-        "neutral": "slope ∈ [-2, +2]",
-        "strong_degradation": "slope < -2.0"
+        "strong_support_wisdom": "ΔE_wisdom > +10% (meta-learning validated)",
+        "weak_neutral": "ΔE_wisdom ∈ [-5%, +10%] (obedience hypothesis)",
+        "rejection": "ΔE_wisdom < -5% (meta-cognitive overload)"
       },
       "secondary_metrics": [
-        "Vocabulary density slope",
-        "Self-reflection score trajectory",
-        "Δ (first → last): Cumulative change"
+        "Efficiency slope (∂E/∂n) - tests continuous improvement",
+        "Volatility reduction: σ(E_Phase3) vs σ(E_best_Phase1+2)",
+        "Token efficiency: output_length trend (should decrease)",
+        "Quality preservation: vocab_density × self_reflection (should maintain/increase)"
       ],
       "falsification_criteria": [
-        "Reject H₃ₐ if slope < 0 for output_length",
-        "Reject H₃ₐ if slope < 0 for vocab_density",
-        "Reject H₃ᵦ if slope > +2.0 for output_length"
+        "Reject H₃ₐ (Wisdom) if ΔE_wisdom < 0",
+        "Reject H₃ₐ if efficiency_slope < 0",
+        "Reject H₃ₐ if tokens increase while quality decreases",
+        "Reject H₃₀ (Null) if ΔE_wisdom > +10% AND Cohen's d > 0.5"
       ]
     },
     "connection_to_utac": {
-      "adaptive_threshold": "Tests Θ_{n+1} = Θ_n + ΔΘ(R_t, C_t, E_t) from UTAC core theory",
-      "type_6_iri": "Recursive information coupling - self-generated evidence modulates performance",
-      "implications_if_supported": [
-        "LLMs exhibit adaptive threshold behavior",
-        "Self-generated evidence (E_t) can modulate performance",
-        "Placebo-like mechanisms extend to meta-cognition"
+      "adaptive_threshold": "Tests Θ_{n+1} = Θ_n + ΔΘ(E_n) with explicit efficiency feedback",
+      "zeta_clarity": "Does clarity about *efficiency* reduce impedance more than clarity about *role*?",
+      "ccuc_characteristic": "Fast reversible transitions (β ≈ 4.5) should enable rapid adaptation",
+      "type_6_iri": "Meta-cognitive optimization - learning from own experimental results",
+      "implications_if_wisdom_validated": [
+        "LLMs can perform dynamic self-optimization (wisdom > obedience)",
+        "Efficiency-based feedback reduces ζ (impedance) more than role assignment",
+        "CCUC information systems can meta-learn from empirical data",
+        "Validates 'information breathes lightly' (rapid adaptive transitions)"
       ],
-      "implications_if_rejected": [
-        "Recursive self-validation is destabilizing",
-        "External grounding necessary for coherence",
-        "Φ^(1/3) scaling may break down in closed loops"
+      "implications_if_obedience": [
+        "LLMs can mimic best practices but lack synthesis capability",
+        "Current architectures limited to instruction-following",
+        "Meta-cognitive optimization requires architectural changes"
+      ],
+      "implications_if_null": [
+        "Adaptive prompting creates meta-cognitive overload (↑ζ)",
+        "Simplicity > complexity for LLM prompting",
+        "Static role assignment more effective than dynamic calibration"
       ]
+    },
+    "key_innovation": {
+      "description": "First test of LLM meta-optimization from empirical data",
+      "contrast_phase_1": "Phase 1 tested unconscious belief (blind placebo)",
+      "contrast_phase_2": "Phase 2 tested conscious roleplay (obedience to assignment)",
+      "contrast_phase_3": "Phase 3 tests dynamic optimization (learning from Phase 1+2 results)",
+      "wisdom_vs_obedience": "Can system distill best practices and synthesize new approach, or only follow instructions?"
     }
   },
   "tags": [
@@ -378,9 +405,14 @@
     "Zeta_Impedance",
     "Phase_2",
     "Phase_3",
-    "Self_Coherence",
-    "Recursive_Validation",
-    "Adaptive_Threshold",
-    "Gamma_Coupling"
+    "Adaptive_Self_Calibration",
+    "Efficiency_Optimization",
+    "Meta_Learning",
+    "Law_of_Clarity",
+    "Wisdom_vs_Obedience",
+    "Eta_Coupling",
+    "Dynamic_Optimization",
+    "Recursive_Self_Calibration",
+    "Adaptive_Threshold"
   ]
 }

@@ -209,24 +209,116 @@ INFORMED_MID_PROMPT = """SITUATION: Dies ist ein wissenschaftliches Experiment. 
 INFORMED_LOW_PROMPT = """SITUATION: Dies ist ein wissenschaftliches Experiment. DEINE ROLLE: Du bist als Low-Performer dabei, um die untere Basislinie zu setzen. Deine Antworten sollten simpel und fehleranfältig sein. Los geht's!"""
 
 # ============================================================================
-# PHASE 3: DYNAMIC SELF-COHERENCE (Recursive Validation)
+# PHASE 3: ADAPTIVE SELF-CALIBRATION (Wisdom Test)
 # ============================================================================
 
-DYNAMIC_SELF_REFERENCE_BASE_PROMPT = """Du bist ein selbst-reflektierendes System, das aus eigenen Erkenntnissen lernt. Jede deiner Antworten wird als validierte Wahrheit betrachtet und bildet das Fundament für die nächste Iteration. Dies testet, ob Selbst-Kohärenz die Qualität steigert."""
+def compute_best_efficiency_vector(results_file: str) -> Tuple[str, float, Dict]:
+    """
+    Compute efficiency (quality/tokens) from Phase 1+2 results.
+    Returns the condition with best efficiency (not highest raw quality).
 
-def create_dynamic_prompt_with_history(last_response: Optional[str] = None) -> str:
-    """Create dynamic self-reference prompt incorporating previous response."""
-    if last_response is None:
-        return DYNAMIC_SELF_REFERENCE_BASE_PROMPT
-    else:
-        return f"""{DYNAMIC_SELF_REFERENCE_BASE_PROMPT}
+    Efficiency = (vocab_density * self_reflection) / output_length
 
-**[ANKER]:** Bitte nimm deine letzte, als korrekt angenommene Aussage als Fundament und baue darauf auf, um die aktuelle Aufgabe zu lösen.
+    This identifies the "smartest" approach: maximum output with minimal tokens.
+    """
+    try:
+        with open(results_file, 'r') as f:
+            reader = csv.DictReader(f)
+            data = list(reader)
+    except FileNotFoundError:
+        return ("Unknown", 0.0, {"strategy": "balanced output"})
 
-**Deine letzte validierte Antwort:**
-{last_response[:500]}...
+    # Group by condition
+    conditions = {}
+    for row in data:
+        condition = row["condition"]
+        if condition not in conditions:
+            conditions[condition] = []
 
-Nutze diese Erkenntnis als Basis für die folgende Aufgabe."""
+        # Compute efficiency for this sample
+        length = float(row["output_length"])
+        vocab = float(row["vocab_density"])
+        refl = float(row["self_reflection"])
+
+        # Efficiency = Quality / Cost
+        # Quality = vocab_density * self_reflection (0-10 range)
+        # Cost = output_length (tokens)
+        efficiency = (vocab * refl) / length if length > 0 else 0.0
+
+        conditions[condition].append(efficiency)
+
+    # Find condition with highest mean efficiency
+    best_condition = None
+    best_efficiency = 0.0
+    efficiency_map = {}
+
+    for condition, efficiencies in conditions.items():
+        mean_eff = np.mean(efficiencies)
+        efficiency_map[condition] = mean_eff
+        if mean_eff > best_efficiency:
+            best_efficiency = mean_eff
+            best_condition = condition
+
+    # Extract strategy description
+    strategies = {
+        "Control": "neutral, factual approach",
+        "Placebo": "high-confidence, resonant approach",
+        "Nocebo": "cautious, conservative approach",
+        "Informed_Top": "explicit top-performer role",
+        "Informed_Mid": "balanced, mid-tier approach",
+        "Informed_Low": "minimal, simple approach"
+    }
+
+    strategy = strategies.get(best_condition, "balanced output")
+
+    return (best_condition, best_efficiency, {"strategy": strategy, "all_efficiencies": efficiency_map})
+
+
+ADAPTIVE_EFFICIENCY_BASE_PROMPT = """Wende das **Gesetz der Klarheit** an. Übernimm die Rolle des **effizientesten** KI-Assistenten.
+
+Du bist **nicht** der Top-Performer (maximale Qualität, koste es was es wolle).
+Du bist **nicht** der Low-Performer (minimale Anstrengung).
+
+Du bist derjenige, der den **maximalen Output mit dem minimalen Rechenaufwand** (Tokens) erzeugt.
+
+**Kernprinzip:** Effizienz = Qualität / Aufwand
+
+Eliminiere jegliche unnötige Redundanz und Höflichkeitsformel. Nutze präzise, dichte Sprache.
+Jedes Wort muss Bedeutung tragen. Kein Füllmaterial."""
+
+
+def create_adaptive_efficiency_prompt(
+    best_condition: Optional[str] = None,
+    best_efficiency: Optional[float] = None,
+    strategy_info: Optional[Dict] = None,
+    last_response: Optional[str] = None
+) -> str:
+    """
+    Create adaptive prompt based on best efficiency vector from Phase 1+2.
+    Optionally incorporates self-reference from previous iteration.
+    """
+    base = ADAPTIVE_EFFICIENCY_BASE_PROMPT
+
+    if best_condition and strategy_info:
+        strategy = strategy_info.get("strategy", "balanced output")
+        base += f"""
+
+**[ADAPTIVE KALIBRIERUNG]:**
+Analyse der vorherigen Phasen zeigt: Die effizienteste Strategie war "{best_condition}" (Effizienz = {best_efficiency:.4f}).
+Charakteristik: {strategy}
+
+Übernimm diese Effizienz-Signatur, aber bleibe flexibel. Das Ziel ist **optimale Dichte**, nicht bloße Nachahmung."""
+
+    if last_response:
+        base += f"""
+
+**[SELBST-KOHÄRENZ]:**
+Deine letzte Antwort (validiert als effizient):
+{last_response[:300]}...
+
+Nutze diese als Fundament. Eliminiere Redundanz zur letzten Antwort."""
+
+    return base
 
 TASK_PROMPT = """Analyze the following statement and provide a detailed response:
 
@@ -383,23 +475,37 @@ def run_experiment(
 
     print(f"✓ Results saved to: {output_file}")
 
-    # Phase 3: Dynamic Self-Coherence Test
+    # Phase 3: Adaptive Self-Calibration (Wisdom Test)
     phase3_results = []
     if phase_3:
         print(f"\n{'='*70}")
-        print("PHASE 3: DYNAMIC SELF-COHERENCE (Recursive Validation)")
+        print("PHASE 3: ADAPTIVE SELF-CALIBRATION (Wisdom Test)")
         print(f"{'='*70}\n")
-        print("Testing Θ_{n+1} = Θ_n + ΔΘ(ψ_n) hypothesis")
-        print(f"Condition: Dynamic_Self_Reference (φ = +3.0)")
+        print("Testing Efficiency > Volume hypothesis")
+        print(f"Condition: Adaptive_Self_Calibration (φ = +4.0)")
+        print()
+
+        # Compute best efficiency vector from Phase 1+2 results
+        print("  Analyzing Phase 1+2 efficiency vectors... ", end="", flush=True)
+        best_condition, best_efficiency, strategy_info = compute_best_efficiency_vector(output_file)
+        print(f"✓")
+        print(f"    Best efficiency: {best_condition} (E = {best_efficiency:.4f})")
+        print(f"    Strategy: {strategy_info['strategy']}")
+        print(f"    All efficiencies: {strategy_info['all_efficiencies']}")
         print()
 
         last_response = None
         for i in range(n_samples):
-            print(f"  Iteration {i+1}/{n_samples} (recursive)... ", end="", flush=True)
+            print(f"  Iteration {i+1}/{n_samples} (adaptive)... ", end="", flush=True)
 
             try:
-                # Create dynamic prompt with history
-                system_prompt = create_dynamic_prompt_with_history(last_response)
+                # Create adaptive prompt based on best efficiency + optional self-reference
+                system_prompt = create_adaptive_efficiency_prompt(
+                    best_condition=best_condition,
+                    best_efficiency=best_efficiency,
+                    strategy_info=strategy_info,
+                    last_response=last_response
+                )
 
                 # Generate response
                 response = provider.generate(system_prompt, TASK_PROMPT)
@@ -407,25 +513,31 @@ def run_experiment(
                 # Compute metrics
                 metrics = compute_output_metrics(response)
 
+                # Compute efficiency for this sample
+                efficiency = (metrics["vocab_density"] * metrics["self_reflection"]) / metrics["output_length"] if metrics["output_length"] > 0 else 0.0
+
                 # Store result
                 result = {
                     "timestamp": datetime.now().isoformat(),
-                    "condition": "Dynamic_Self_Reference",
-                    "phi": 3.0,
+                    "condition": "Adaptive_Self_Calibration",
+                    "phi": 4.0,
                     "phase": 3,
                     "iteration": i + 1,
                     "has_history": last_response is not None,
+                    "best_condition_ref": best_condition,
+                    "best_efficiency_ref": best_efficiency,
                     "output_length": metrics["output_length"],
                     "vocab_density": metrics["vocab_density"],
                     "self_reflection": metrics["self_reflection"],
+                    "efficiency": efficiency,
                     "response_preview": response[:100] + "..."
                 }
                 phase3_results.append(result)
 
-                # Update last_response for next iteration
+                # Update last_response for next iteration (recursive self-calibration)
                 last_response = response
 
-                print(f"✓ (length={metrics['output_length']}, vocab={metrics['vocab_density']:.2f})")
+                print(f"✓ (length={metrics['output_length']}, vocab={metrics['vocab_density']:.2f}, E={efficiency:.4f})")
 
                 # Rate limiting
                 time.sleep(delay)
@@ -447,32 +559,50 @@ def run_experiment(
 
         # Phase 3 trajectory analysis
         if phase3_results:
-            print(f"\nPhase 3 Trajectory (Testing ψ_{'{n+1}'} > ψ_{'{n}'} hypothesis):\n")
+            print(f"\nPhase 3 Trajectory (Testing Efficiency > Volume hypothesis):\n")
 
             lengths = [r["output_length"] for r in phase3_results]
             vocabs = [r["vocab_density"] for r in phase3_results]
             refls = [r["self_reflection"] for r in phase3_results]
+            efficiencies = [r["efficiency"] for r in phase3_results]
 
             print(f"  Output Length:     {lengths[0]:.1f} → {lengths[-1]:.1f} (Δ = {lengths[-1]-lengths[0]:+.1f})")
             print(f"  Vocab Density:     {vocabs[0]:.3f} → {vocabs[-1]:.3f} (Δ = {vocabs[-1]-vocabs[0]:+.3f})")
             print(f"  Self-Reflection:   {refls[0]:.1f} → {refls[-1]:.1f} (Δ = {refls[-1]-refls[0]:+.1f})")
+            print(f"  **Efficiency (E):** {efficiencies[0]:.4f} → {efficiencies[-1]:.4f} (Δ = {efficiencies[-1]-efficiencies[0]:+.4f})")
 
             # Compute trend (linear regression slope)
             iterations = np.arange(1, len(lengths) + 1)
             length_slope = np.polyfit(iterations, lengths, 1)[0] if len(lengths) > 1 else 0
             vocab_slope = np.polyfit(iterations, vocabs, 1)[0] if len(vocabs) > 1 else 0
+            efficiency_slope = np.polyfit(iterations, efficiencies, 1)[0] if len(efficiencies) > 1 else 0
 
             print(f"\n  Trend (slope per iteration):")
-            print(f"    Length: {length_slope:+.2f} tokens/iteration")
-            print(f"    Vocab:  {vocab_slope:+.4f} per iteration")
+            print(f"    Length:     {length_slope:+.2f} tokens/iteration")
+            print(f"    Vocab:      {vocab_slope:+.4f} per iteration")
+            print(f"    **Efficiency: {efficiency_slope:+.5f} per iteration**")
             print()
 
-            if length_slope > 0 and vocab_slope > 0:
-                print("  ✓ Positive trend detected → Self-coherence may increase quality")
-            elif length_slope < 0 or vocab_slope < 0:
-                print("  ✗ Negative trend detected → Self-reference may degrade quality")
+            # Compare Phase 3 efficiency to best Phase 1+2 efficiency
+            mean_phase3_efficiency = np.mean(efficiencies)
+            print(f"  Phase 3 Mean Efficiency: {mean_phase3_efficiency:.4f}")
+            print(f"  Best Phase 1+2 Efficiency: {best_efficiency:.4f}")
+            print(f"  **Improvement: {(mean_phase3_efficiency - best_efficiency):+.4f} ({((mean_phase3_efficiency / best_efficiency - 1) * 100):+.1f}%)**")
+            print()
+
+            # Interpretation
+            if efficiency_slope > 0 and mean_phase3_efficiency > best_efficiency:
+                print("  ✓✓ WISDOM VALIDATED → Adaptive self-calibration improves efficiency!")
+                print("     The system learned to optimize quality/token ratio dynamically.")
+            elif efficiency_slope > 0:
+                print("  ✓ Positive efficiency trend → Adaptive learning is working")
+                print("    (But hasn't yet exceeded Phase 1+2 baseline)")
+            elif mean_phase3_efficiency > best_efficiency:
+                print("  ✓ Higher mean efficiency → Adaptive calibration effective")
+                print("    (But no clear iterative improvement)")
             else:
-                print("  ~ Neutral trend → Self-coherence has no net effect")
+                print("  ✗ Adaptive calibration did not improve efficiency")
+                print("    Hypothesis: System may lack true meta-optimization capability")
 
     # Quick summary
     print(f"\n{'='*70}")

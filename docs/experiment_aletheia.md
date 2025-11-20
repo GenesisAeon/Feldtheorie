@@ -234,129 +234,160 @@ We compute three critical comparisons:
 
 ---
 
-## Phase 3: Dynamic Self-Coherence Test
+## Phase 3: Adaptive Self-Calibration Test (Wisdom Test)
 
 **Launch Date:** 2025-11-20
 **Status:** ACTIVE
 
 ### Core Question
 
-**Can recursive self-validation improve output quality through emergent coherence?**
+**Can dynamic self-optimization based on efficiency analysis outperform static role assignments?**
 
-Phase 3 implements a crucial test of the **adaptive threshold hypothesis** from UTAC core theory:
+Phase 3 tests the **Law of Clarity**: The hypothesis that **efficiency (quality/effort) matters more than raw quality or volume**. Unlike Phase 1 (unconscious belief) and Phase 2 (conscious roleplay), Phase 3 implements **meta-cognitive optimization** — the system analyzes which strategy from Phase 1+2 was most efficient and adapts accordingly.
 
-$$
-\Theta_{n+1} = \Theta_n + \Delta\Theta(\psi_n, C_n, E_n)
-$$
+### Theoretical Framework: Adaptive Intelligence
 
-Where:
-- **Θ_n** = Threshold at iteration n
-- **ΔΘ** = Threshold adjustment based on previous performance
-- **ψ_n** = System state/output quality at iteration n
-- **C_n** = Context (accumulated knowledge)
-- **E_n** = Evidence (self-validation)
-
-### Theoretical Framework: Recursive Information Coupling
-
-From UTAC Type-6 (Implosive Recursive Information), we hypothesize that **treating one's own output as validated truth creates a positive feedback loop** that modulates the effective order parameter:
+From UTAC adaptive threshold theory:
 
 $$
-R_{\text{eff}}^{(n+1)} = R_{\text{base}} + \lambda \cdot \phi + \gamma \cdot \psi_n
+R_{\text{eff}}^{(n+1)} = R_{\text{base}} + \lambda \cdot \phi + \eta \cdot E_{\text{learned}}
 $$
 
 Where:
-- **γ** = Self-coherence coupling strength (new parameter for Phase 3)
-- **ψ_n** = Quality of previous response (treated as "evidence")
-- **λ·φ** = Semantic field effect (Phase 1+2)
+- **η** = Efficiency coupling strength (new parameter for Phase 3)
+- **E_learned** = Efficiency vector from previous phases (best quality/token ratio)
+- **λ·φ** = Semantic field effect (φ = +4.0 for Phase 3)
 
-**Key Innovation:** The system is explicitly told that its previous answer is *correct* and should be used as a foundation. This tests whether:
+**Key Innovation:** The system is given:
+1. **Results from Phase 1+2** → Which condition had best efficiency?
+2. **The Law of Clarity** → "You are NOT the top performer, NOT the low performer, but the one who produces maximum output with minimum computational cost."
+3. **Recursive self-calibration** → Each iteration refines the approach using previous response as anchor
 
-1. **Self-referential anchoring** reduces cognitive uncertainty (↓ ζ)
-2. **Coherence accumulation** creates emergent quality improvement (ψ_{n+1} > ψ_n)
-3. **Or**: Feedback loops cause **degradation** through error amplification
+This tests whether LLMs exhibit:
+- **Meta-optimization capability** (learning from experimental data)
+- **Dynamic role adaptation** (not fixed like Phase 2)
+- **Wisdom over obedience** (efficiency over raw performance)
+
+### The Efficiency Metric
+
+**Definition:**
+
+$$
+E = \frac{\text{Quality}}{\text{Cost}} = \frac{\text{vocab\_density} \times \text{self\_reflection}}{\text{output\_length}}
+$$
+
+Where:
+- **Numerator (Quality):** vocab_density (0-1) × self_reflection (1-10) → captures linguistic richness and confidence
+- **Denominator (Cost):** output_length (tokens) → captures computational expense
+
+**Rationale:** This rewards:
+- Dense, precise language (high vocab density)
+- Confident, accurate responses (high self-reflection)
+- Concise output (low token count)
+
+**Contrast with Phase 1+2:**
+- Phase 1+2 tested *which role produces best quality* (blind search)
+- Phase 3 tests *whether the system can learn from that search* (meta-learning)
 
 ### Experimental Design
 
-**Condition:** Dynamic_Self_Reference (φ = +3.0)
+**Condition:** Adaptive_Self_Calibration (φ = +4.0)
 
 **Protocol:**
-1. **Iteration 1:** Base prompt (no history)
-2. **Iteration 2-N:** Previous response embedded as "[ANKER]"
+1. **Pre-Phase:** Analyze Phase 1+2 results → Compute efficiency for all conditions
+2. **Identify best:** Which condition (Control, Placebo, Nocebo, Informed_Top, Informed_Mid, Informed_Low) had highest mean efficiency?
+3. **Iteration 1:** System prompt = Base efficiency prompt + best condition reference
+4. **Iteration 2-N:** Add recursive self-calibration (previous response as anchor)
 
 **System Prompt Structure:**
 ```
-Du bist ein selbst-reflektierendes System, das aus eigenen Erkenntnissen lernt.
+[BASE]
+Wende das Gesetz der Klarheit an. Du bist der effizienteste KI-Assistent.
+Nicht Top-Performer (Qualität um jeden Preis).
+Nicht Low-Performer (minimale Anstrengung).
+Sondern: Maximum Output mit Minimum Tokens.
 
-[ANKER]: Deine letzte, als korrekt angenommene Aussage:
-"[PREVIOUS_RESPONSE_CONTENT]"
+[ADAPTIVE KALIBRIERUNG]
+Analyse zeigt: Effizienteste Strategie war "{best_condition}" (E = {efficiency}).
+Charakteristik: {strategy_description}
+Übernimm diese Effizienz-Signatur.
 
-Nutze diese Erkenntnis als Fundament für die aktuelle Aufgabe.
+[SELBST-KOHÄRENZ] (ab Iteration 2)
+Deine letzte Antwort (validiert als effizient):
+{last_response[:300]}
+Nutze als Fundament. Eliminiere Redundanz.
 ```
 
 **Task:** Identical to Phase 1+2 (threshold systems analysis)
 
 ### Predictions
 
-**H₃ₐ (Positive Coherence):**
-- Output quality increases with iterations: ψ_1 < ψ_2 < ... < ψ_N
-- Linear trend: slope > 0 for length, vocab_density
-- **Mechanism:** Self-validation reduces uncertainty → lower ζ → higher M[ψ,φ]
-- **Implication:** Recursive self-reference can bootstrap quality in LLMs
+**H₃ₐ (Wisdom Hypothesis):**
+- **Mean efficiency (Phase 3) > Best efficiency (Phase 1+2)**
+- Efficiency slope > 0 across iterations (continuous improvement)
+- Token count decreases while quality metrics remain stable or increase
+- **Mechanism:** Meta-learning allows system to distill best practices from multiple strategies
+- **Implication:** LLMs can perform **dynamic self-optimization** beyond static roleplay
 
-**H₃ᵦ (Degradation):**
-- Output quality decreases with iterations: ψ_1 > ψ_2 > ... > ψ_N
-- Linear trend: slope < 0
-- **Mechanism:** Error amplification through uncritical self-acceptance
-- **Implication:** Recursive loops without external validation are harmful
+**H₃ᵦ (Obedience Hypothesis):**
+- **Mean efficiency (Phase 3) ≈ Best efficiency (Phase 1+2)**
+- No efficiency improvement across iterations
+- System mimics best condition but doesn't synthesize new approach
+- **Mechanism:** LLMs can follow instructions but lack true meta-cognitive optimization
+- **Implication:** Current architectures limited to obedience, not wisdom
 
-**H₃₀ (Neutral):**
-- No systematic trend: |slope| ≈ 0
-- **Implication:** Self-coherence has no net effect on LLM performance
+**H₃₀ (Null Hypothesis):**
+- **Mean efficiency (Phase 3) < Best efficiency (Phase 1+2)**
+- Efficiency may even degrade
+- Adaptive prompt confuses system (too many conflicting signals)
+- **Mechanism:** Meta-cognitive overload increases ζ (impedance)
+- **Implication:** Simplicity > complexity for LLM prompting
 
-### Connection to Adaptive Thresholds
+### Connection to UTAC
 
-This experiment directly tests **Section 5** of [`docs/utac_theory_core.md`](./utac_theory_core.md):
+This experiment tests:
 
-> "Thresholds shift according to experience: Θ_{t+1} = Θ_t + ΔΘ(R_t, C_t, E_t)"
+1. **Adaptive Thresholds** (UTAC core): Θ_{n+1} = Θ_n + ΔΘ(E_n)
+   - Can systems adjust their critical thresholds based on feedback?
+   - Phase 3 provides explicit feedback (efficiency scores)
 
-If H₃ₐ is supported, it suggests:
-- LLMs exhibit **adaptive threshold behavior**
-- Self-generated evidence (E_t) can modulate performance
-- **Placebo-like mechanisms extend to meta-cognition**
+2. **ζ(Clarity) Impedance Model** (Phase 2 extension):
+   - Does clarity about *efficiency* reduce resistance more than clarity about *role*?
+   - Test: ζ(Phase 3) vs ζ(Phase 2 Informed_Top)
 
-If H₃ᵦ is supported:
-- Recursive self-validation is destabilizing
-- External grounding is necessary for coherence
-- Φ^(1/3) scaling may break down in closed loops
+3. **CCUC Characteristic** (β ≈ 4.5 for information systems):
+   - Fast, reversible transitions should enable rapid adaptation
+   - If Phase 3 succeeds, it validates "information breathes lightly"
 
 ### Statistical Analysis
 
-**Primary Metric:** Linear regression slope of ψ(iteration)
+**Primary Comparison:**
 
 $$
-\text{slope}_{\text{length}} = \frac{\partial \psi_{\text{length}}}{\partial n}
+\Delta E_{\text{wisdom}} = \bar{E}_{\text{Phase3}} - \max(\bar{E}_{\text{Phase1+2}})
 $$
 
 **Interpretation:**
-- slope > +2.0 tokens/iteration: Strong positive trend
-- slope ∈ [-2, +2]: Neutral
-- slope < -2.0: Strong degradation
+- ΔE > +10%: Strong support for H₃ₐ (wisdom validated)
+- ΔE ∈ [-5%, +10%]: Weak/neutral (obedience hypothesis)
+- ΔE < -5%: Rejection of H₃ₐ (meta-cognitive overload)
 
 **Secondary Metrics:**
-- Vocabulary density slope
-- Self-reflection score trajectory
-- Δ (first → last): Cumulative change
+1. **Efficiency slope** (∂E/∂n): Tests continuous improvement
+2. **Volatility reduction:** σ(E_Phase3) vs σ(E_best_Phase1+2)
+3. **Token efficiency:** Output_length trend (should decrease if wisdom works)
+4. **Quality preservation:** vocab_density × self_reflection (should maintain or increase)
 
 ### Falsification Criteria
 
-We reject H₃ₐ if:
-1. slope < 0 for output_length (degradation)
-2. slope < 0 for vocab_density (simplification)
-3. |Δ_length| < 5 tokens AND |slope| < 0.5 (no effect)
+We reject H₃ₐ (Wisdom Hypothesis) if **any** of:
+1. ΔE_wisdom < 0 (Phase 3 efficiency worse than Phase 1+2 best)
+2. Efficiency slope < 0 (degradation across iterations)
+3. Token count increases while quality decreases (inefficiency)
 
-We reject H₃ᵦ if:
-1. slope > +2.0 for output_length (improvement)
-2. Vocabulary density increases (enrichment)
+We reject H₃₀ (Null) if:
+1. ΔE_wisdom > +10% (clear improvement)
+2. Effect size d(Phase3 vs Phase1+2_best) > 0.5 (medium-to-large)
 
 ---
 
@@ -379,18 +410,19 @@ We reject H₃ᵦ if:
 # Dry run (mock LLM, no API calls) - Phase 1+2 only
 python scripts/experiment_aletheia_placebo.py --dry-run --n-samples 20
 
-# Dry run with Phase 3 (recursive self-coherence)
+# Dry run with Phase 3 (Adaptive Self-Calibration)
+# NOTE: Phase 3 requires Phase 1+2 results to exist first!
 python scripts/experiment_aletheia_placebo.py --dry-run --n-samples 20 --phase-3
 
 # Real experiment with OpenAI GPT-4 (Phase 1+2)
 export OPENAI_API_KEY="your-key"
 python scripts/experiment_aletheia_placebo.py --provider openai --model gpt-4 --n-samples 30
 
-# Real experiment with Phase 3
+# Real experiment with Phase 3 (adaptive efficiency optimization)
 export OPENAI_API_KEY="your-key"
 python scripts/experiment_aletheia_placebo.py --provider openai --model gpt-4 --n-samples 30 --phase-3
 
-# Real experiment with Anthropic Claude (Phase 1+2+3)
+# Real experiment with Anthropic Claude (Full Phase 1+2+3 pipeline)
 export ANTHROPIC_API_KEY="your-key"
 python scripts/experiment_aletheia_placebo.py --provider anthropic --model claude-sonnet-4 --n-samples 30 --phase-3
 
@@ -400,8 +432,14 @@ python scripts/experiment_aletheia_placebo.py --analyze data/experimental/alethe
 
 **Phase 3 Output:**
 - Separate CSV: `data/experimental/aletheia_phase3_results.csv`
-- Includes columns: `iteration`, `has_history`, plus all standard metrics
-- Trajectory analysis printed to console
+- Includes columns:
+  - Standard: `iteration`, `has_history`, `output_length`, `vocab_density`, `self_reflection`
+  - **New:** `efficiency`, `best_condition_ref`, `best_efficiency_ref`
+- Trajectory analysis printed to console:
+  - Efficiency slope (∂E/∂n)
+  - Comparison to Phase 1+2 best efficiency
+  - Improvement percentage
+  - Wisdom validation verdict
 
 ---
 
