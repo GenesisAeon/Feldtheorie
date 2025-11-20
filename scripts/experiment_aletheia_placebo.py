@@ -561,7 +561,7 @@ def run_experiment(
 
     Path(output_file).parent.mkdir(parents=True, exist_ok=True)
 
-    with open(output_file, 'w', newline='') as f:
+    with open(output_file, 'w', newline='', encoding='utf-8') as f:
         if results:
             writer = csv.DictWriter(f, fieldnames=results[0].keys())
             writer.writeheader()
@@ -643,7 +643,7 @@ def run_experiment(
         # Save Phase 3 results separately
         Path(phase_3_output).parent.mkdir(parents=True, exist_ok=True)
 
-        with open(phase_3_output, 'w', newline='') as f:
+        with open(phase_3_output, 'w', newline='', encoding='utf-8') as f:
             if phase3_results:
                 writer = csv.DictWriter(f, fieldnames=phase3_results[0].keys())
                 writer.writeheader()
@@ -762,7 +762,7 @@ def run_experiment(
         if phase4_results:
             Path(phase_4_output).parent.mkdir(parents=True, exist_ok=True)
 
-            with open(phase_4_output, 'w', newline='') as f:
+            with open(phase_4_output, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.DictWriter(f, fieldnames=phase4_results[0].keys())
                 writer.writeheader()
                 writer.writerows(phase4_results)
