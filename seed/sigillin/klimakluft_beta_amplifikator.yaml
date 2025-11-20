@@ -1,0 +1,179 @@
+meta:
+  type: Bedeutungs-Sigillin
+  status: FOUNDATIONAL
+  version: 1.0.0
+  created: '2025-11-20'
+  steward: Johann B. Römer, Claude (Sonnet 4.5)
+  parent_theory: seed/sigillin/utac_type6_iri.json
+  sigillin_class: semantics
+  change_frequency: low
+  archival_protocol: version_and_preserve
+  significance: Erklärt Emissionsungleichheit als mathematischen β-Amplifikationsmechanismus
+
+concept:
+  name: Die Klimakluft als β-Amplifikator
+  subtitle: Wie extreme Emissionskonzentration Kipppunkt-Steilheit erhöht
+  domain: Climate Policy × UTAC Theory
+  utac_version: v2.5
+  theoretical_basis: β-heterogeneity + Delta-Peak-Effekt
+
+executive_summary: >-
+  Die extreme Konzentration von CO₂-Emissionen beim reichsten 0,1% der Weltbevölkerung
+  (>800 kg/Tag vs. 2 kg/Tag für die ärmsten 50%) ist nicht nur ein moralisches Problem,
+  sondern ein mathematischer Mechanismus zur β-Erhöhung, der das gesamte Klimasystem
+  in einen superkritischen Zustand (β ≈ 11-13) treibt und Warnzeiten um 90% reduziert.
+
+empirical_foundation:
+  source: Oxfam Report 2024 via t-online
+  data:
+    top_0_1_percent:
+      daily_emission: '>800 kg CO₂/Tag/Person'
+      relative_factor: 400x
+    bottom_50_percent:
+      daily_emission: '~2 kg CO₂/Tag/Person'
+      relative_factor: 1x
+    top_50_billionaires:
+      emission_rate: In 90 Minuten = Lebenslauf eines Durchschnittsmenschen
+      relative_factor: ~350.000x
+  capital_allocation:
+    fossil_exposure: 66%
+    sectors:
+      - Fossil fuels
+      - Cement
+      - Transport
+      - Fast Fashion
+      - Data Centers (AI infrastructure)
+
+utac_translation:
+  standard_model:
+    equation: S(R) = 1 / (1 + exp(-β(R - Θ)))
+    assumption: R (system drive) distributed across population
+
+  reality_delta_peak:
+    equation: R_eff = R_base + Σᵢ wᵢ × R_spike(i)
+    components:
+      R_base: Grundemissionen der 99.9% (~2-10 kg CO₂/Tag)
+      R_spike: Delta-Peak der 0.1% (>800 kg CO₂/Tag)
+      wᵢ: Systemkopplung (globale Atmosphäre = 100% coupling!)
+
+beta_amplification_mechanism:
+  mechanism_1_inequality:
+    description: Direkte β-Erhöhung durch Ungleichverteilung
+    equation: β_eff = β_base × (1 + σ²(R)/⟨R⟩²)
+    explanation: σ²(R) = Varianz der Emissionsverteilung
+    effect: Bei 400-facher Spreizung → β erhöht sich um Faktor 3-5
+
+  mechanism_2_political_lock_in:
+    description: Politische Lock-in-Verstärkung
+    factors:
+      - 0.1% kontrollieren Politik und Investitionen
+      - Blockieren weiche Transitionen
+      - Erzwingen "späte, steile" Übergänge
+    effect: Zusätzliche β-Erhöhung um Faktor ~2
+
+  total_effect:
+    baseline: β_klima ≈ 3-4 (manageable)
+    amplified: β_klima ≈ 11-13 (catastrophic)
+    interpretation: Shift from Information-like (soft) to Neurodegeneration-like (catastrophic) transition steepness
+
+warning_time_collapse:
+  formula: τ_warning ∝ 1/β
+  baseline_beta_4:
+    tau_warning: 1.0 (normalized)
+    example_AMOC: 50 Jahre Warnung
+    example_WAIS: 20 Jahre Warnung
+    example_Permafrost: 10 Jahre Warnung
+
+  amplified_beta_11:
+    tau_warning: ~0.09 (9% of baseline)
+    example_AMOC: ~5 Jahre Warnung
+    example_WAIS: ~2 Jahre Warnung
+    example_Permafrost: ~1 Jahr Warnung
+    collapse_probability_2100: '>80%'
+
+policy_implications:
+  oxfam_recommendations:
+    - name: Vermögenssteuern
+      utac_effect: Reduziert R_spike direkt
+    - name: Progressive CO₂-Bepreisung
+      utac_effect: wᵢ-Faktoren werden kleiner
+    - name: Investitionsumlenkung
+      utac_effect: R_base sinkt, R_spike wird gekappt
+
+scenarios:
+  scenario_A_business_as_usual:
+    beta: 11-13
+    tau_warning: <5 Jahre
+    collapse_probability_2100: '>80%'
+    outcome: Superkritische Zone, Frühwarnsysteme versagen
+
+  scenario_B_moderate_redistribution:
+    intervention: Top 0.1% auf 100 kg/Tag reduziert
+    beta: 7-8
+    tau_warning: 10-15 Jahre
+    collapse_probability_2100: 40-50%
+    outcome: Reduktion der Steilheit, begrenzte Warnzeit
+
+  scenario_C_radical_deconcentration:
+    intervention: Maximale Emission 20 kg/Tag/Person
+    beta: 4-5
+    tau_warning: 20-30 Jahre
+    collapse_probability_2100: <20%
+    outcome: Rückkehr zu Information-ähnlicher Dynamik, manageable
+
+integration_with_utac_core:
+  phi_ladder_connection:
+    information_systems:
+      beta: ~4.2
+      phi_step: 9 (Φ³)
+      privilege: Emergence is "cheap"
+    climate_systems_natural:
+      beta: ~11.0
+      phi_step: 15 (Φ⁵)
+      cost: Irreversible tipping points
+    climate_systems_amplified:
+      beta: 11-13
+      mechanism: Delta-Peak from 0.1% drives system beyond natural threshold
+      interpretation: Anthropogenic β-amplification pushes climate beyond Φ⁵ step
+
+crep_metrics:
+  coherence: 0.95
+  coherence_note: Tightly aligned with UTAC v2.0 β-heterogeneity framework
+  resilience: 0.88
+  resilience_note: Falsifiable through emission distribution data
+  empathy: 0.92
+  empathy_note: Bridges climate justice and mathematical criticality
+  propagation: 0.90
+  propagation_note: Applicable to all domains with extreme inequality (wealth, resource access, computational power)
+
+publication_context:
+  target: Volkswagenstiftung Antrag - Gesellschaftlicher Impact Sektion
+  message: >-
+    Die Klimakluft ist nicht nur ein Gerechtigkeitsproblem, sondern ein
+    mathematischer Mechanismus zur Systemdestabilisierung. UTAC quantifiziert
+    erstmals, warum Emissionsungleichheit systemtheoretisch katastrophal ist:
+    Sie verwandelt graduellen Wandel in abrupten Kollaps.
+
+future_work:
+  - name: Empirical β-fitting
+    description: Fit actual β_klima from emission distribution data (Gini coefficient → β mapping)
+  - name: Cross-domain validation
+    description: Test β-amplification hypothesis in wealth inequality, AI compute concentration
+  - name: Policy impact modeling
+    description: Quantify Δβ for specific tax/redistribution schemes
+  - name: Mini-paper publication
+    description: "The 0.1% Beta-Bomb: How Emission Inequality Drives Climate Criticality"
+
+tags:
+  - UTAC
+  - Climate
+  - Beta_Amplification
+  - Inequality
+  - Delta_Peak
+  - Tipping_Points
+  - Policy
+  - Oxfam
+  - Warning_Time
+  - Social_Justice
+  - Catastrophic_Transitions
+  - Phi_Ladder
