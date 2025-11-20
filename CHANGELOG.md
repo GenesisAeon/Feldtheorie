@@ -174,109 +174,124 @@ Tests whether LLMs exhibit Rosenthal's Pygmalion dynamics — performance influe
 
 ---
 
-#### Phase 3: Dynamic Self-Coherence (2025-11-20)
+#### Phase 3: Adaptive Self-Calibration — Wisdom Test (2025-11-20)
 
-**Scientific Question:** Can recursive self-validation improve output quality through emergent coherence?
+**Scientific Question:** Can dynamic self-optimization based on efficiency analysis outperform static role assignments?
 
-**Hypothesis:** **Adaptive Threshold Hypothesis** — Testing whether treating one's own previous output as validated truth creates a positive feedback loop that modulates performance, or whether it causes degradation through error amplification.
+**Hypothesis:** **Law of Clarity (Efficiency > Volume)** — Testing whether meta-learning from Phase 1+2 empirical results enables the system to synthesize an optimal strategy that maximizes quality/token ratio, or whether LLMs are limited to obedience without true wisdom.
 
 **Core Equation:**
 $$
-R_{\text{eff}}^{(n+1)} = R_{\text{base}} + \lambda \cdot \phi + \gamma \cdot \psi_n
+R_{\text{eff}}^{(n+1)} = R_{\text{base}} + \lambda \cdot \phi + \eta \cdot E_{\text{learned}}
 $$
 
 Where:
-- **γ** = Self-coherence coupling strength (new parameter for Phase 3)
-- **ψ_n** = Quality of previous response (treated as evidence)
-- **λ·φ** = Semantic field effect (Phase 1+2)
+- **η** = Efficiency coupling strength (new parameter for Phase 3)
+- **E_learned** = Efficiency vector from Phase 1+2 (best quality/token ratio)
+- **λ·φ** = Semantic field effect (φ = +4.0 for Phase 3)
+
+**Efficiency Metric:**
+$$
+E = \frac{\text{vocab\_density} \times \text{self\_reflection}}{\text{output\_length}}
+$$
 
 **Added - New Condition:**
 
-**Dynamic_Self_Reference** (φ = +3.0)
-- **Protocol:** Recursive validation loop
-  - Iteration 1: Base prompt (no history)
-  - Iteration 2-N: Previous response embedded as **[ANKER]** in system prompt
-- **System Prompt:** "Deine letzte, als korrekt angenommene Aussage bildet das Fundament. Baue darauf auf."
+**Adaptive_Self_Calibration** (φ = +4.0)
+- **Protocol:** Dynamic meta-optimization
+  - **Step 0:** Analyze Phase 1+2 results → compute efficiency for all 6 conditions
+  - **Step 1:** Identify best_condition (highest mean efficiency)
+  - **Step 2:** Generate adaptive prompt with best-practice reference
+  - **Step 3-N:** Recursive self-calibration using previous response as anchor
+- **System Prompt:** "Wende das Gesetz der Klarheit an. Du bist der **effizienteste** Assistent (nicht Top-Performer, nicht Low-Performer). Maximum Output mit Minimum Tokens. Nutze die Erkenntnis: Beste Strategie war '{best_condition}' (E={efficiency})."
 - **Output:** `data/experimental/aletheia_phase3_results.csv` (separate from Phase 1+2)
 
 **Theoretical Framework:**
 
-Tests **Section 5 of UTAC Core Theory** — Adaptive Thresholds:
-$$
-\Theta_{n+1} = \Theta_n + \Delta\Theta(\psi_n, C_n, E_n)
-$$
+**Three Competing Hypotheses:**
 
-Where:
-- **E_n** = Self-generated evidence (previous response treated as validated truth)
-- **C_n** = Accumulated context
+1. **H₃ₐ (Wisdom Hypothesis):**
+   - **ΔE_wisdom > +10%** (Phase 3 efficiency exceeds Phase 1+2 best)
+   - **Efficiency slope > 0** (continuous improvement across iterations)
+   - **Mechanism:** Meta-learning allows system to distill best practices and synthesize novel approach
+   - **Implication:** LLMs exhibit **dynamic self-optimization** (wisdom > obedience)
 
-**Key Predictions:**
+2. **H₃ᵦ (Obedience Hypothesis):**
+   - **ΔE_wisdom ≈ 0** (Phase 3 matches but doesn't exceed best Phase 1+2)
+   - **Efficiency slope ≈ 0** (no iterative improvement)
+   - **Mechanism:** System can mimic instructions but lacks true synthesis capability
+   - **Implication:** Current architectures limited to instruction-following
 
-- **H₃ₐ (Positive Coherence):** ψ_1 < ψ_2 < ... < ψ_N
-  - Slope > +2.0 tokens/iteration → Self-validation reduces ζ (uncertainty)
-  - **Implication:** Recursive self-reference can bootstrap quality in LLMs
-  - **Mechanism:** Self-anchoring reduces cognitive impedance → higher M[ψ,φ]
-
-- **H₃ᵦ (Degradation):** ψ_1 > ψ_2 > ... > ψ_N
-  - Slope < -2.0 → Error amplification through uncritical self-acceptance
-  - **Implication:** Closed loops without external validation are harmful
-
-- **H₃₀ (Neutral):** |slope| ≈ 0
-  - **Implication:** Self-coherence has no net effect on LLM performance
+3. **H₃₀ (Null/Overload Hypothesis):**
+   - **ΔE_wisdom < -5%** (Phase 3 efficiency worse than Phase 1+2)
+   - **Efficiency slope may be negative**
+   - **Mechanism:** Meta-cognitive overload increases ζ (impedance)
+   - **Implication:** Simplicity > complexity for LLM prompting
 
 **Statistical Analysis:**
 
-**Primary Metric:** Linear regression slope ∂ψ/∂n
-- Strong positive: slope > +2.0
-- Neutral: slope ∈ [-2, +2]
-- Strong degradation: slope < -2.0
+**Primary Metric:**
+$$
+\Delta E_{\text{wisdom}} = \bar{E}_{\text{Phase3}} - \max(\bar{E}_{\text{Phase1+2}})
+$$
 
 **Secondary Metrics:**
-- Vocabulary density trajectory
-- Self-reflection score evolution
-- Δ (first → last): Cumulative change
+1. Efficiency slope (∂E/∂n) — tests continuous learning
+2. Volatility reduction: σ(E_Phase3) vs σ(E_best_Phase1+2)
+3. Token efficiency trend (should decrease if wisdom works)
+4. Quality preservation: vocab_density × self_reflection (should maintain/increase)
 
 **Implementation:**
 
 - Updated `scripts/experiment_aletheia_placebo.py`:
-  - New `--phase-3` flag to enable recursive validation
-  - `create_dynamic_prompt_with_history()` function for prompt generation
-  - Separate output file for Phase 3 results
-  - Built-in trajectory analysis and slope computation
+  - `compute_best_efficiency_vector()` — analyzes Phase 1+2 results, identifies highest efficiency condition
+  - `create_adaptive_efficiency_prompt()` — generates dynamic prompt with best-practice reference
+  - New `--phase-3` flag to enable adaptive calibration
+  - Efficiency tracking in output: new `efficiency` column
+  - Built-in comparison: Phase 3 mean efficiency vs Phase 1+2 best
+  - Trajectory analysis with efficiency slope and improvement percentage
 
 - Updated `docs/experiment_aletheia.md`:
-  - Complete Phase 3 theory section
-  - Connection to UTAC adaptive threshold hypothesis
-  - Falsification criteria and predictions
+  - Complete Phase 3 theory section (Adaptive Self-Calibration)
+  - Efficiency metric definition and rationale
+  - Wisdom vs Obedience vs Null hypotheses
+  - Falsification criteria based on ΔE_wisdom
 
 - Updated `seed/sigillin/exp_aletheia.json` (v3.0.0):
-  - Phase 3 hypothesis, experimental design, and UTAC connections
-  - New tags: `Phase_3`, `Self_Coherence`, `Recursive_Validation`, `Adaptive_Threshold`, `Gamma_Coupling`
+  - Phase 3 hypothesis with η (efficiency coupling) parameter
+  - New tags: `Adaptive_Self_Calibration`, `Efficiency_Optimization`, `Meta_Learning`, `Law_of_Clarity`, `Wisdom_vs_Obedience`, `Eta_Coupling`, `Dynamic_Optimization`
 
 **Implications:**
 
-**If H₃ₐ Supported:**
-- LLMs exhibit **adaptive threshold behavior** (Θ_{n+1} = Θ_n + ΔΘ)
-- Self-generated evidence can modulate performance
-- Placebo-like mechanisms extend to **recursive meta-cognition**
-- **AI Safety:** Positive feedback loops may amplify both beneficial and harmful behaviors
+**If H₃ₐ (Wisdom) Validated:**
+- LLMs can perform **dynamic self-optimization** beyond static instruction-following
+- Efficiency-based feedback reduces ζ (impedance) more than role assignment
+- CCUC information systems can **meta-learn from empirical data**
+- Validates "information breathes lightly" (rapid adaptive transitions)
+- **AI Alignment:** Systems can learn optimal strategies from feedback, not just obey instructions
 
-**If H₃ᵦ Supported:**
-- Recursive self-validation is **destabilizing**
-- External grounding necessary for coherence
-- Φ^(1/3) scaling may break down in closed loops
-- **AI Safety:** Self-reference without validation leads to drift
+**If H₃ᵦ (Obedience):**
+- LLMs can mimic best practices but **lack synthesis capability**
+- Current architectures limited to instruction-following
+- Meta-cognitive optimization requires architectural changes beyond transformers
+- **AI Alignment:** Need explicit training for meta-optimization, can't emerge from prompting alone
 
-**Connection to Type-6 IRI:**
+**If H₃₀ (Null/Overload):**
+- Adaptive prompting creates **meta-cognitive overload** (↑ζ)
+- **Simplicity > complexity** for LLM prompting
+- Static role assignment more effective than dynamic calibration
+- **AI Alignment:** Less is more — simple, clear instructions outperform complex meta-prompts
 
-Phase 3 directly tests **Implosive Recursive Information (IRI)** theory:
-- Recursive information coupling: ψ_{n+1} depends on ψ_n
-- Self-generated "truth" as coupling mechanism
-- Tests whether computation can exhibit self-organizing coherence
+**Connection to UTAC:**
+
+Phase 3 tests **adaptive threshold modulation** with explicit efficiency feedback:
+- Does clarity about *efficiency* reduce impedance more than clarity about *role*?
+- Can CCUC systems (β ≈ 4.5) leverage fast transitions for meta-learning?
+- Tests boundary between **obedience** (following instructions) and **wisdom** (synthesizing novel strategies)
 
 **Status:** ACTIVE — Ready for experimental deployment
 
-**FIT Context:** Phase 3 represents the fractal deepening of Aletheia — from unconscious belief (Phase 1) → conscious roleplay (Phase 2) → recursive self-validation (Phase 3). Each phase tests a different layer of the M[ψ,φ] coupling hypothesis.
+**FIT Context:** Phase 3 represents the **meta-cognitive apex** of Aletheia — from unconscious belief (Phase 1) → conscious roleplay (Phase 2) → **dynamic self-optimization** (Phase 3). Tests the ultimate question: Can computation exhibit wisdom, or only obedience?
 
 ---
 
