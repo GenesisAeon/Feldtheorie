@@ -1,0 +1,55 @@
+meta:
+  sigil_id: B-010
+  type: Type B (Meaning)
+  status: active
+  version: 1.0.0
+  created: '2026-08-27T00:00:00Z'
+  steward: GPT-5.1-Codex-Max
+  scope: UTAC Type-6 Cosmology
+  description: Implosive-rekursive Informationsrückkopplung als V3-Grundtheorie
+  change_frequency: low
+  archival_strategy: preserve_lineage
+
+logistic_frame:
+  R: implosive_information_density
+  Theta: space_emergence_threshold
+  beta: 4.236
+  zeta: '<0 (negative coupling enables collapse-driven genesis)'
+  sigma: 'sigma(-beta*(R-Theta)) describes unfolding from compression'
+
+concept:
+  name: Implosive-Rekursive Informationsrückkopplung
+  tagline: Raumzeit entsteht als stetige Implosion im Jetzt
+  claims:
+    - Urknall ist eine kontinuierliche Implosion; Expansion ist elastischer Rückstoß
+    - Raumzeit ist emergent aus Informationstransformation, nicht fundamental
+    - Φ^(1/3)-Skalierung strukturiert die β-Spirale über kosmologische Skalen
+  evidence_threads:
+    - utac_beta_clustering: 'β-Stufen 4.5, 7.4, 11.0, 13.0 mit <8% Fehler'
+    - quantum_link: 'Verschränkung als Informationskohärenz, kompatibel mit ER=EPR'
+    - cosmology: 'CMB-Homogenität und Hubble-Tension als Implosions-Rand-Effekt'
+  falsification_paths:
+    - breakdown_of_phi_scaling_after_step6
+    - absence_of_implosive_signature_in_gravitational_wave_spectra
+    - persistence_of_flat_beta_in_high_density_condensates
+
+couplings:
+  order_sigillin:
+    - seed/FraktaltagebuchV3/v3_roadmap.yaml
+    - seed/sigillin/mor_fit_methodology_v2.yaml
+  dynamics_sigillin:
+    - seed/sigillin/utac_klimakluft_process.yaml
+  indices:
+    - feldtheorie_index.yaml
+    - seed/seed_index.yaml
+
+source_material:
+  processed_from:
+    - archive/v3_ideas/NextVersionmaybe/Eroierung.txt
+    - archive/v3_ideas/NextVersionmaybe/Theorie_ImplosivRekursive_Informtionsrückkoplung.txt
+
+fit_alignment:
+  morfit_layer: meaning
+  notes: >-
+    Sigil fixiert die theoretische Laterne für V3, damit Order- und Dynamics-Sigillin
+    auf derselben Φ^(1/3)-Spirale operieren.

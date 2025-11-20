@@ -7,16 +7,16 @@
 meta:
   version: "3.0.0"
   created: "2025-11-14T12:30:00Z"
-  last_updated: "2026-08-24T18:10:00Z"
-  total_features: 20
-  completed_features: 16
+  last_updated: "2026-08-27T00:15:00Z"
+  total_features: 21
+  completed_features: 17
 
   # Logistic activation tracking
   parameters:
-    R_bar: 0.80        # Mean progress (0-1)
+    R_bar: 0.81        # Mean progress (0-1)
     Theta: 0.66        # Release gate
     beta: 4.8          # Steepness
-    sigma: 0.662       # σ(β(R̄-Θ)) activation level
+    sigma: 0.674       # σ(β(R̄-Θ)) activation level
 
 # ============================================================================
 # PHASE 1: FOUNDATION (R = 0.00 → 0.30)
@@ -483,6 +483,31 @@ features_phase3_bridge:
       - seed/shadow_sigillin/v3/shadow_sigillin_v3.yaml
       - seed/shadow_sigillin/v3/shadow_sigillin_v3.json
       - seed/shadow_sigillin/v3/shadow_sigillin_v3.md
+
+  - id: v3-feat-p3-006
+    title: "Sigillin-Injektion aus NextVersionmaybe"
+    description: |
+      Klassifiziere die Rohkonzepte aus `seed/RoadToV.3/NextVersionmaybe` und
+      injiziere sie als Sigillin-Trilayer (B/D/O). Kopple die neuen Laternen an
+      das V3-Roadmap- und Codex-System und archiviere die Rohquelle.
+    status: completed
+    completed_at: "2026-08-27T00:12:00Z"
+    status_notes: "Tri-Layer erzeugt: implosive_recursive_feedback (Meaning), mor_fit_methodology_v2 (Order), utac_klimakluft_process (Dynamics); Rohordner nach archive/v3_ideas verschoben; MIGRATION-Notiz hinterlegt."
+    priority: P1
+    assignee: GPT-5.1-Codex-Max
+    dependencies:
+      - v3-feat-p2-004
+      - v3-feat-p3-005
+    parameters:
+      R: 0.00
+      Theta: 0.75
+      beta: 4.8
+    effort_hours: 2
+    output:
+      - seed/sigillin/implosive_recursive_feedback.{yaml,json,md}
+      - seed/sigillin/mor_fit_methodology_v2.{yaml,json,md}
+      - seed/sigillin/utac_klimakluft_process.{yaml,json,md}
+      - archive/v3_ideas/NextVersionmaybe
 
 # ============================================================================
 # PHASE 4: REAL-TIME MONITORING (R = 0.85 → 1.00)
