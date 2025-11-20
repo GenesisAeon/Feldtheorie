@@ -1,0 +1,48 @@
+meta:
+  sigil_id: D-022
+  type: Type D (Dynamics)
+  status: active
+  version: 1.0.0
+  created: '2026-08-27T00:10:00Z'
+  steward: GPT-5.1-Codex-Max
+  scope: UTAC Klimakluft Experimente
+  description: Delta-Peak-Mechanismus als Prozess-Sigillin für V3
+
+logistic_frame:
+  R: emission_drive_with_delta_peak
+  Theta: equitable_distribution_threshold
+  beta: 11.0
+  zeta: 'political_lock_in amplifies β via ζ(R) > 0'
+  sigma: '1 / (1 + exp(-beta * (R - Theta))) with τ_warning ∝ 1/beta'
+
+process:
+  experiment: Klimakluft Spike Simulation
+  drivers:
+    - emissions_inequality_factor: 400
+    - capital_lock_in: 0.66
+  methodology:
+    - derive β_eff = β_base × (1 + var(R)/mean(R)^2)
+    - model τ_warning = 1 / β_eff
+    - visualize spike via utac_klimakluft_visualization.py
+  outputs:
+    - plot: archive/v3_ideas/NextVersionmaybe/UTAC_Klimakluft_Infographic.png
+    - narrative: seed/sigillin/klimakluft_beta_amplifikator.md
+
+couplings:
+  meaning_sigillin:
+    - seed/sigillin/klimakluft_beta_amplifikator.yaml
+    - seed/sigillin/implosive_recursive_feedback.yaml
+  order_sigillin:
+    - seed/sigillin/mor_fit_methodology_v2.yaml
+    - seed/FraktaltagebuchV3/v3_roadmap.yaml
+
+source_material:
+  processed_from:
+    - archive/v3_ideas/NextVersionmaybe/UTAC_Klimakluft_Analyse.md
+    - archive/v3_ideas/NextVersionmaybe/utac_klimakluft_visualization.py
+
+fit_alignment:
+  morfit_layer: dynamics
+  notes: >-
+    Formalisiert den experimentellen Pfad, der die Emissions-Konzentration als β-Amplifikator
+    simuliert und die Warnzeit τ_warning dokumentiert.
