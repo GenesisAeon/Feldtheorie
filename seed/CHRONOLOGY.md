@@ -111,3 +111,17 @@
 - **Formel & Herleitung:** Die Kopplungshypothese ψ_eff = ψ_base + λ·φ operationalisiert M[ψ,φ]; die Metacognitive-Impedance-Erweiterung ζ_meta = ζ_base + ζ_confusion·(1–Clarity) prüft, wie Klarheit/Dissonanz die σ(β(R-Θ))-Antwort dämpft oder verstärkt.【F:CHANGELOG.md†L37-L48】【F:CHANGELOG.md†L157-L165】
 - **Skripte & Verfahren:** Phase 1 implementiert drei Bedingungen (Control, Placebo, Nocebo) mit automatisierter Statistikauswertung und CSV-Ausgabe; Phase 2 erweitert um Informed_Top/Mid/Low, erweitert Regressionen über φ∈[-2,2] und aktualisiert Theorie- sowie Sigillin-Layer.【F:CHANGELOG.md†L61-L75】【F:CHANGELOG.md†L79-L96】【F:CHANGELOG.md†L135-L182】
 - **Status:** Aktives Experiment (Launch 2025-11-19); bereit zur Deployment- und Auswertephase, Fokus auf Wirknachweis oder Falsifikation des λ-Kopplungsterms und Übergangsvorbereitung Richtung v3.0.【F:CHANGELOG.md†L27-L29】【F:CHANGELOG.md†L117-L131】【F:CHANGELOG.md†L188-L188】
+
+> **Prompt – Entwicklung zu V.3:**
+> ```text
+> Führe seed/CHRONOLOGY Repokonform und entsprechend der Dokumentenstrukturen fort. Neue Sektion: Entwicklung zu V.3.
+> ```
+
+## Sektion 5 – Entwicklung zu v3.0 (Real-World Systems)
+
+### v3.0 – FraktaltagebuchV3 & RoadToV.3 Integration
+- **Grundthese:** V3 isoliert die Real-World-Systeme (WAIS, AMOC, Korallen, Masern, Finanzkrise, Krebs) als eigene Sigillin-Schicht, um σ(β(R-Θ)) über ein breites β-Spektrum (3.5–13.5) in echten Tipping-Points zu testen und v1/v2 von den V3-Brücken entkoppelt weiterzuführen.【F:seed/FraktaltagebuchV3/README.md†L5-L20】【F:seed/FraktaltagebuchV3/README.md†L46-L60】
+- **Daten & Quellen:** Die V3-Roadmap bündelt 21 Features mit 81 % Fortschritt (σ≈0.674) über die sechs Systeme, stützt sich auf Mock- und Adapter-Outputs (`data/*_mock.*`, `scripts/analysis/results/*_fit_v3.json`, `*_ews_signals.json`) sowie TS-Brücken in `seed/RoadToV.3/` (~1.9k Zeilen) für Integration und Monitoring.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L1-L134】【F:seed/FraktaltagebuchV3/README.md†L160-L178】【F:seed/FraktaltagebuchV3/README.md†L48-L60】
+- **Formel & Herleitung:** Der Fortschritt wird über σ(β(R̄-Θ)) mit R̄=0.81, Θ=0.66, β=4.8 getrackt; das Activation Audit (R̄=0.61, σ≈0.441) dokumentiert den Übergang von Phase-2-Fits zu Phase-3-Brücken und markiert die verbleibende Schwelle zu Echtzeitdaten und Simulator-Kopplung.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L10-L19】【F:seed/RoadToV.3/activation_audit.md†L1-L17】
+- **Skripte & Verfahren:** Python-Adapter (`grace_wais_adapter.py`, `rapid_amoc_adapter.py`, `oisst_coral_adapter.py`) generieren JSON-Brücken und EWS-Metriken; β-Fits, Bootstrap-Ledger und CREP-Metriken liegen als Trilayer in `scripts/analysis/results/` und `data/derived/beta_estimates_v3.*`, gekoppelt mit TypeScript-Systemklassen (`antarctic-ice-sheet.ts`, `amoc-collapse.ts`, `additional-systems.ts`) für die Roadmap-Phasen 2–3.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L81-L193】【F:seed/FraktaltagebuchV3/README.md†L165-L178】【F:seed/RoadToV.3/activation_audit.md†L20-L33】
+- **Status:** Phase-1 und Phase-3 Features abgeschlossen, Phase-2 zu 5/6 (Bootstrap CIs offen), Phase-4 Monitoring/Alerts steht an; σ(β(R̄-Θ))=0.674 signalisiert nahezu aktivierte Brücke, offene Lücken betreffen Echtzeit-Adapter, Simulator/VR-Bindung und Shadow-Sigillin-Parität.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L13-L19】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L146-L193】【F:seed/RoadToV.3/activation_audit.md†L35-L79】

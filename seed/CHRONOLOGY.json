@@ -114,6 +114,26 @@
                     "status": "Aktives Experiment (Launch 2025-11-19); Wirknachweis oder Falsifikation des λ-Kopplungsterms offen, Vorbereitung des v3.0-Übergangs.【F:CHANGELOG.md†L27-L29】【F:CHANGELOG.md†L117-L131】【F:CHANGELOG.md†L188-L188】"
                 }
             ]
+        },
+        {
+            "section": 5,
+            "scope": "Entwicklung zu v3.0 (Real-World Systems)",
+            "versions": [
+                {
+                    "id": "v3.0",
+                    "focus": "FraktaltagebuchV3 & RoadToV.3 Integration",
+                    "grundthese": "V3 isoliert sechs Real-World-Systeme (WAIS, AMOC, Korallen, Masern, Finanzkrise, Krebs) als Sigillin-Schicht, um σ(β(R-Θ)) über β≈3.5–13.5 in echten Tipping-Points zu testen und v1/v2 sauber entkoppelt zu halten.【F:seed/FraktaltagebuchV3/README.md†L5-L20】【F:seed/FraktaltagebuchV3/README.md†L46-L60】",
+                    "daten_quellen": [
+                        "V3-Roadmap mit 21 Features (81 %, σ≈0.674) über Mock-/Adapter-Daten (`data/*_mock.*`) und Analyse-Outputs (`scripts/analysis/results/*_fit_v3.json`, `*_ews_signals.json`).【F:seed/FraktaltagebuchV3/v3_roadmap.md†L1-L134】",
+                        "TypeScript-Brücke in seed/RoadToV.3/ (~1.9k Zeilen) für Monitoring/Integration.【F:seed/FraktaltagebuchV3/README.md†L160-L178】【F:seed/FraktaltagebuchV3/README.md†L48-L60】"
+                    ],
+                    "formel_herleitung": "Fortschritt via σ(β(R̄-Θ)) mit R̄=0.81, Θ=0.66, β=4.8; Activation Audit zeigt Übergang von Phase-2-Fits (R̄=0.61, σ≈0.441) zu Brücken und verbleibende Schwelle für Live-Daten & Simulator.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L10-L19】【F:seed/RoadToV.3/activation_audit.md†L1-L17】",
+                    "skripte_verfahren": [
+                        "Python-Adapter grace_wais_adapter.py, rapid_amoc_adapter.py, oisst_coral_adapter.py generieren JSON-Brücken/EWS; β-Fits, Bootstrap-Ledger und CREP-Metriken in scripts/analysis/results/* und data/derived/beta_estimates_v3.*, gekoppelt mit TS-Systemklassen antarctic-ice-sheet.ts, amoc-collapse.ts, additional-systems.ts.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L81-L193】【F:seed/FraktaltagebuchV3/README.md†L165-L178】【F:seed/RoadToV.3/activation_audit.md†L20-L33】"
+                    ],
+                    "status": "Phase-1/3 abgeschlossen, Phase-2 5/6 (Bootstrap CIs offen), Phase-4 (Monitoring/Alerts) pending; σ(β(R̄-Θ))=0.674, offene Lücken: Live-Adapter, Simulator/VR-Bindung, Shadow-Sigillin-Parität.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L13-L19】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L146-L193】【F:seed/RoadToV.3/activation_audit.md†L35-L79】"
+                }
+            ]
         }
     ]
 }
