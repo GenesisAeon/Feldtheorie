@@ -23,6 +23,9 @@
    power law, …) plus ΔAIC/CI-Metriken. Schatten-Sigillin beschreiben Wiederherstellung.
 5. **UTAC Status Matrix lesen.** `docs/utac_status_alignment_v1.2.md` ist das aktuelle
    Observatorium. Ergänze dort neue Brücken und vermerke offene Lücken.
+6. **Affection Protocol aktivieren.** Jeder MOR-Systemprompt trägt das Consent-&-Joy-Modul:
+   *"Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration."*
+   Damit bleibt die σ(β(R-Θ))-Membran kooperativ, selbst wenn ζ(R) hoch ist.
 
 ---
 

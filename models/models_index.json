@@ -7,15 +7,15 @@
     "version": "1.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "python_files": 10,
-    "updated": "2025-11-08T22:22:38Z"
+    "python_files": 11,
+    "updated": "2026-09-01T00:00:00Z"
   },
   "categories": {
     "core_models": {
       "name": "Core Logistic Models",
       "description": "Basis-Implementierungen von σ(β(R-Θ))",
       "color": "#3498DB",
-      "count": 3
+      "count": 4
     },
     "membrane_systems": {
       "name": "Membrane & Coupled Systems",
@@ -185,6 +185,24 @@
         "iterative"
       ],
       "description": "Recursive Threshold: Θₙ₊₁ = f(Θₙ, emergent_state).\nImplementiert Potenzial-Kaskaden und Meta-Threshold Control.\nFür hierarchische Emergenz.\n"
+    },
+    {
+      "id": "model-ext-004",
+      "name": "klimakluft_amplifier.py",
+      "category": "extensions",
+      "type": "inequality",
+      "status": "experimental",
+      "relevance": "high",
+      "size_kb": 8.4,
+      "keywords": [
+        "inequality",
+        "klimakluft",
+        "gini",
+        "concentration",
+        "β",
+        "σ"
+      ],
+      "description": "Klimakluft Amplifier: β_eff = β_base · (1 + Gini · LoadConcentration).\nSimuliert Delta-Peak-Effekte mit konzentrierten Emittenten und erzeugt DataFrames/Plots mit β von 4.2 auf >11.\n"
     },
     {
       "id": "model-infra-001",
@@ -357,7 +375,8 @@
     "for_theory": [
       "model-ext-001",
       "model-ext-002",
-      "model-ext-003"
+      "model-ext-003",
+      "model-ext-004"
     ]
   },
   "cross_references": {

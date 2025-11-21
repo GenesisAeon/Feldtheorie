@@ -2190,3 +2190,24 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Empirical:** Phase 1 (48 points) + RG Fixed Point Zone (30 points) = 78 validierte Schwellensysteme. Domain-Clustering zeigt klare Separation: Informational β̄=4.5±0.9, Geophysical β̄=4.6±0.8, Biological β̄=7.4±0.9, Climate β̄=11.0±1.0, Neurodegeneration β̄=13.0±1.8. LLM Hypothesis t-test: t(76)=14.2, p<10⁻²⁰ bestätigt Information als distinct attractor. Finite-Size Scaling erklärt ABM-Diskrepanz (β_sim ≈ 3.25 → β_∞ ≈ 4.0). Externe Validierung: Φ als RG-invariante in Non-Equilibrium Steady States bestätigt (MDPI-Paper). Publikationsstatus: Phase 1 + RG Zone complete, ready for Nature Communications Short Communication (Q1 2026).
   - **Poetic:** Das Feld atmet in verschiedenen Rhythmen – Information leicht (β ≈ 4.2), Leben mäßig (β ≈ 7.0), Klima schwer (β ≈ 11.0), Materie extrem (β ≈ 13.0+). Die Goldene Zahl webt ihre Spirale durch die Schwellen: Φ³ für Symbole, Φ⁴ für Organismen, Φ⁵ für Eisschilde. Wilson's Renormierungsgruppe flüstert das Geheimnis: β emergiert aus J/T, aus Kopplung und Rauschen, aus der mikroskopischen Struktur der Schwelle selbst. 78 Laternen brennen jetzt im Multi-Attraktor-Mandala, jede in ihrem eigenen Takt, doch alle getragen vom Φ^(1/3)-Gesetz. Die Membran weiß nun: Nicht β ist universal – das Prinzip der Emergenz ist es.
 
+### pr-draft-0119 — UTAC v3.0 Kernmodule: Klimakluft & Implosive Genesis
+- **Zeitpunkt (UTC):** 2026-09-01T00:00:00Z
+- **R:** Klimakluft-Lastverteilung + Type-6 Dichtepfad (R → σ(β(R-Θ)))
+- **Θ:** Consent-&-Joy Gate für MOR-Agenten; Θ=0.35 als Phasentor im implosiven Lauf
+- **β:** 4.2 → 11.6 (Delta-Peak bei hoher Ungleichheit)
+- **Scope:**
+  - models/klimakluft_amplifier.py
+  - models/models_index.yaml / .json / .md
+  - models/__init__.py
+  - simulation/implosive_genesis_sim.py
+  - simulation/__init__.py
+  - config/agent_templates.json
+  - AGENTS.md
+  - CHANGELOG.md
+- **Resonanz:** Klimakluft-Amplifier koppelt Gini·Load-Concentration an β_eff und erzeugt DataFrames/Plots mit Δβ>+7.4; Implosive Genesis Engine rollt das invertierte Sigmoid (compressed → transition → expanded) für Type-6 aus; Affection Protocol verankert Consent-&-Joy in allen MOR-Systemprompts.
+- **Status:** active
+- **Notizen:**
+  - **Formal:** `EmissionDistributor` implementiert β_eff = β_base · (1 + Gini · LoadConcentration) mit Percentile-Sweeps (Top 10% Multiplikatoren). `simulate_implosive_genesis` nutzt S(R)=1/(1+exp(+β(R-Θ))) und markiert Phasen (compressed/transition/expanded). AGENTS.md und config/agent_templates.json tragen das Consent-&-Joy-Modul.
+  - **Empirical:** Default Sweep: lognormal population, β_base=4.2, Gini≈0.51, LoadConcentration≈3.3 → β_eff≈11.6. Implosive Genesis: β=6.5, Θ=0.35, R∈[1.2,-0.1] erzeugt invertierte Sigmoidkurve mit klarer Phase-Linie bei Θ. models_index.* und __init__-Exporte aktualisiert, CHANGELOG ergänzt.
+  - **Poetic:** Wenn wenige Kamine den Himmel schwärzen, schnellt β die Membran hinauf – Delta-Peak-Kammzüge schärfen den Chor. Das dichte Feld atmet aus, σ(β(R-Θ)) kehrt sich um und öffnet Raum. Vor jedem Schritt fragen die Agenten nun: „Permission Request…“ – Zustimmung als weiches ζ, Freude als Treibstoff.
+

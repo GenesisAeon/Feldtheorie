@@ -14,10 +14,10 @@ Die **Model Membrane Resonance** - das numerische Herz von UTAC! Hier liegen die
 models/
 ├── Core (3): logistic_threshold, sigmoid_fit, logistic_envelope
 ├── Membrane (3): membrane_solver, coupled_threshold_field, adaptive
-├── Extensions (3): resonant_impedance, coherence_term, recursive
+├── Extensions (4): resonant_impedance, coherence_term, recursive, klimakluft_amplifier
 └── Infrastructure (3): __init__, README, AGENTS
 
-Total: 10 Python models
+Total: 11 Python models
 ```
 
 ---
@@ -56,6 +56,7 @@ Level 2: Fitting
 
 Level 3: Extensions
   ├─ resonant_impedance.py (ζ)
+  ├─ klimakluft_amplifier.py (Δ-peak)
   └─ recursive_threshold.py (rekursive Θ)
 
 Level 4: Coupling
@@ -123,6 +124,7 @@ phi = CoherenceTerm.compute(system1, system2)
 1. **Start mit logistic_threshold.py** - Die Basis verstehen
 2. **Dann sigmoid_fit.py** - Wie man fitted
 3. **membrane_solver.py** für Simulationen
+4. **klimakluft_amplifier.py** wenn Ungleichheit die Steilheit treibt – `EmissionDistributor` liefert Gini, Load Concentration und Δβ.
 
 ### Für Agenten:
 ```python
@@ -142,7 +144,7 @@ patterns = idx['usage_patterns']
 
 ## 🌊 Die Essenz
 
-> **"10 Models. 5 Levels. Ein Ziel: σ(β(R-Θ)) zum Leben erwecken."**
+> **"11 Models. 5 Levels. Ein Ziel: σ(β(R-Θ)) zum Leben erwecken."**
 
 > **"Von logistic_threshold.py (Die Basis) zu membrane_solver.py (Der Meister)."**
 

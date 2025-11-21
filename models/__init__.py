@@ -33,6 +33,7 @@ from .coherence_term import (
     semantic_coupling_term,
     coherence_measure,
 )
+from .klimakluft_amplifier import EmissionDistributor
 from .recursive_threshold import CascadeState, PotenzialKaskade
 
 __all__ = [
@@ -61,4 +62,5 @@ __all__ = [
     "coherence_measure",
     "CascadeState",
     "PotenzialKaskade",
+    "EmissionDistributor",
 ]
