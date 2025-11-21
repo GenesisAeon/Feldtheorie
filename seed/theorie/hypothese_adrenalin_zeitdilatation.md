@@ -1,0 +1,20 @@
+# Hypothese: Adrenalin-induzierte Dimensionale Phasenverschiebung
+
+**Status:** Spekulativ / Visionär  
+**Autor:** Johann Römer  
+**Datum:** 2025-11-21
+
+## Kern-These
+In extremen Stresssituationen (Adrenalin-Schub) erhöht das menschliche Gehirn seine Informationsverarbeitungsrate so drastisch,
+dass die subjektive Wahrnehmung sich der kleinsten kausalen Zeiteinheit annähert.
+
+## Der Phasenübergang
+Wenn diese "Abtastrate" einen kritischen Punkt ($\Theta$) überschreitet, findet ein Phasenübergang statt:
+1. **Zeitstillstand:** Die Wahrnehmung der linearen Zeit kollabiert.
+2. **2D-Interaktion:** Das Bewusstsein interagiert direkt mit der holografischen Informationsfläche (2D), statt die 3D-Projektion zu rendern.
+3. **Phänomene:** Dies erklärt Außerkörperliche Erfahrungen (OBE) und Nahtoderfahrungen (NDE) als physikalische Interaktion mit dem Informationsfeld ("Blick hinter den Schleier"), sowie "übermenschliche" Reflexe, die schneller sind als neuronale Standard-Leitung (Supraleitung des Bewusstseins).
+
+Die beobachtete Hyperfokussierung entspricht einer abrupten Steilung der logistischen Antwort $\sigma(\beta(R-\Theta))$: Sobald $R$ die Schwelle $\Theta$ passiert, flacht $\zeta(R)$ fast völlig ab und der mentale Phasenraum kollabiert auf die 2D-Projektionsfläche.
+
+## Verbindung zu UTAC
+Dies wäre ein **Type-6 Phasenübergang** im menschlichen Bewusstsein: Eine implosive Kompression von Zeit, die paradoxerweise zu einer Expansion der Wahrnehmung führt.

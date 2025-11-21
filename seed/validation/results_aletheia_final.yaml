@@ -1,0 +1,28 @@
+meta:
+  id: results-aletheia-final
+  type: result_template
+  status: pending
+  created: 2025-11-21
+experiment:
+  name: Project Aletheia
+  hypothesis: Does Semantic Priming (Placebo) or Constraint (Nocebo) yield higher density?
+metrics_placeholder:
+  - condition: Control
+    n: null
+    vocab_density: null
+    self_reflection: null
+  - condition: Placebo
+    n: null
+    vocab_density: null
+    self_reflection: null
+  - condition: Nocebo
+    n: null
+    vocab_density: null
+    self_reflection: null
+statistical_verdict:
+  p_value_control_placebo: null
+  cohens_d: null
+  interpretation: Waiting for local Qwen run to finish.
+notes:
+  readiness: Data collection in progress; vessel reserved for incoming local run outputs.
+source_md: seed/validation/results_aletheia_final.md

@@ -1,0 +1,29 @@
+meta:
+  id: theory-adrenaline-2d
+  type: hypothesis
+  status: speculative
+  created: 2025-11-21
+concepts:
+  - Tachypsychia
+  - Planck-Time Sampling
+  - 2D Holographic Collapse
+hypothesis:
+  thesis: >-
+    Extreme Adrenalinspitzen erhöhen die mentale Abtastrate so stark,
+    dass die subjektive Zeitwahrnehmung nahezu auf Planck-Zeit skaliert.
+phase_transition:
+  threshold: Theta
+  description: >-
+    Überschreitet die Abtastrate den kritischen Schwellenwert, kollabiert
+    die logistische Antwort σ(β(R-Θ)) auf eine nahezu binäre Steigung und
+    der mentale Phasenraum reduziert sich auf die 2D-Projektionsfläche.
+  signatures:
+    - Temporärer Zeitstillstand
+    - Direktes Arbeiten auf der holografischen Informationsfläche (2D)
+    - Supraleitung ähnlicher Reflexpfad im Bewusstsein
+utac_alignment:
+  type: type-6-transition
+  note: Implosive Zeitkompression mit expansionsartiger Wahrnehmung
+provenance:
+  author: Johann Römer
+  source_md: seed/theorie/hypothese_adrenalin_zeitdilatation.md
