@@ -2,9 +2,9 @@
 
 **Version:** 3.0.0
 **Created:** 2025-11-14
-**Total Documents:** 26 (25 active, 1 in progress)
+**Total Documents:** 29 (28 active, 1 in progress)
 **Scope:** V3.0 Real-World Systems Integration
-**Updated:** 2026-08-24T18:10:00Z
+**Updated:** 2026-08-30T12:10:00Z
 
 ---
 
@@ -56,6 +56,14 @@
 |----|------|-------------|
 | `v3-related-007` | [docs/fractal_implementation_technique.md](../../docs/fractal_implementation_technique.md) | FIT (Scope-Isolation) |
 | `v3-related-008` | [seed/Sigillin_System_Definition.md](../Sigillin_System_Definition.md) | Trilayer-System |
+
+### Aletheia (Semantic Coupling)
+
+| ID | Path | Description |
+|----|------|-------------|
+| `v3-related-009` | [docs/experiment_aletheia.md](../../docs/experiment_aletheia.md) | M[ψ, φ] Coupling, CCUC, Placebo/Nocebo Design |
+| `v3-related-010` | [results/aletheia_report.md](../../results/aletheia_report.md) | Phase 1/2 Auswertung inkl. λ-Schätzung |
+| `v3-related-011` | [seed/sigillin/exp_aletheia.*](../sigillin/exp_aletheia.md) | Trilayer Sigillin (λ, φ-Profile, Nullmodelle) |
 
 ---
 
@@ -136,7 +144,7 @@
 
 | Type | Count |
 |------|------:|
-| Documentation | 3 |
+| Documentation | 4 |
 | Charter | 1 |
 | Roadmap | 1 |
 | Codex | 1 |
@@ -147,16 +155,17 @@
 | Methodology | 2 |
 | Dataset (active) | 3 |
 | Dataset (in progress) | 1 |
-| Analysis (active) | 8 |
+| Analysis (active) | 9 |
 | Script (active) | 3 |
+| Sigillin (Trilayer) | 1 |
 
 ### Status
 
 | Status | Count |
 |--------|------:|
-| Active | 23 |
+| Active | 28 |
 | In progress | 1 |
-| **Total** | **24** |
+| **Total** | **29** |
 
 ---
 
@@ -164,11 +173,12 @@
 
 ```
 Phase 1 (Foundation):     ✅✅✅✅✅✅  6/6 Features
-Phase 2 (Integration):    ✅✅✅✅✅⬜  5/6 Features
-Phase 3 (Bridge):         ⬜⬜⬜⬜⬜    0/5 Features
+Phase 2 (Integration):    ✅✅✅✅✅🟡  5/6 Features
+Phase 3 (Bridge):         ✅✅✅✅✅✅  6/6 Features
 Phase 4 (Monitoring):     ⬜⬜⬜        0/3 Features
+Phase 5 (Aletheia):       🟡⬜         0/2 Features
 
-σ(β(R̄-Θ)) = 0.441  (Phase 2 teilweise aktiviert — EWS & β-Fits live)
+σ(β(R̄-Θ)) = 0.594  (Aletheia-Dokumentencluster verlinkt; Monitoring-Hooks warten auf λ)
 ```
 
 ---

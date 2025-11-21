@@ -2,14 +2,14 @@
   "meta": {
     "version": "3.0.0",
     "created": "2025-11-14T12:30:00Z",
-    "last_updated": "2026-08-27T00:15:00Z",
-    "total_features": 21,
+    "last_updated": "2026-08-30T12:00:00Z",
+    "total_features": 23,
     "completed_features": 17,
     "parameters": {
-      "R_bar": 0.81,
+      "R_bar": 0.74,
       "Theta": 0.66,
       "beta": 4.8,
-      "sigma": 0.674
+      "sigma": 0.594
     }
   },
   "features_phase1_foundation": [
@@ -544,9 +544,9 @@
     }
   ],
   "summary": {
-    "total_phases": 4,
-    "total_features": 20,
-    "estimated_hours": 38.5,
+    "total_phases": 5,
+    "total_features": 23,
+    "estimated_hours": 41.5,
     "phase_breakdown": {
       "phase1_foundation": {
         "features": 6,
@@ -559,14 +559,19 @@
         "R_target": 0.6
       },
       "phase3_bridge": {
-        "features": 5,
-        "hours": 9.0,
+        "features": 6,
+        "hours": 11.0,
         "R_target": 0.85
       },
       "phase4_monitoring": {
         "features": 3,
         "hours": 9.0,
         "R_target": 1.0
+      },
+      "phase5_aletheia": {
+        "features": 2,
+        "hours": 3.0,
+        "R_target": 1.15
       }
     },
     "systems_covered": [
@@ -612,5 +617,51 @@
       "max": 13.5,
       "validation": "UTAC validated across full predicted spectrum!"
     }
-  }
+  },
+  "features_phase5_aletheia": [
+    {
+      "id": "v3-feat-p5-001",
+      "title": "Aletheia Dokumentenpaket + UTAC Mapping",
+      "description": "Sammle Aletheia-Quellen (Type-6 Placebo-Experiment) und verknüpfe sie\nmit der V3-Monitoring-Story, ohne CHRONOLOGY oder V.4-Grundlagen zu\nberühren. Extrahiere λ/σ-Formeln (M[ψ, φ] = λ ψ φ^n) und mappe sie\nauf bestehende R̄/Θ-Parameter.\n",
+      "status": "in_progress",
+      "status_notes": "Dokumente (experiment_aletheia.md, exp_aletheia.*, aletheia_report.md) katalogisiert; Sigma-Shift protokolliert.",
+      "priority": "P1",
+      "assignee": "GPT-5.1-Codex-Max",
+      "dependencies": [
+        "v3-feat-p4-002"
+      ],
+      "parameters": {
+        "R": 0.74,
+        "Theta": 0.66,
+        "beta": 4.8
+      },
+      "effort_hours": 1.5,
+      "datasources": [
+        "docs/experiment_aletheia.md",
+        "seed/sigillin/exp_aletheia.{md,yaml,json}",
+        "results/aletheia_report.md"
+      ],
+      "output": [
+        "seed/FraktaltagebuchV3/v3_index.* (Aletheia Cluster)",
+        "seed/FraktaltagebuchV3/v3_codex.* (v3-pr-0009)"
+      ]
+    },
+    {
+      "id": "v3-feat-p5-002",
+      "title": "λ-Mapping für Monitoring-Pipeline",
+      "description": "Leite aus M[ψ, φ]-Formel einen λ-Schätzer ab und plane Hook für\nPhase-4-EWS-Pipeline (σ- und CREP-Synthese). Kein Zugriff auf\nCHRONOLOGY oder V.4-Grundlagen.\n",
+      "status": "pending",
+      "priority": "P2",
+      "assignee": "Claude + Aeon",
+      "dependencies": [
+        "v3-feat-p5-001"
+      ],
+      "parameters": {
+        "R": 0.0,
+        "Theta": 0.95,
+        "beta": 4.2
+      },
+      "effort_hours": 1.5
+    }
+  ]
 }

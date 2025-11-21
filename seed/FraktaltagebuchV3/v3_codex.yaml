@@ -1,8 +1,8 @@
-meta:
+metadata:
   version: 3.0.0
   created: '2025-11-14T12:50:00Z'
-  last_updated: '2026-08-27T00:20:00Z'
-  total_entries: 7
+  last_updated: '2026-08-30T12:10:00Z'
+  total_entries: 9
   scope: V3.0 Real-World Tipping Points (WAIS, AMOC, Coral, Measles, Finance, Cancer)
 entries:
 - id: v3-pr-0001
@@ -80,67 +80,6 @@ entries:
   - seed/RoadToV.3/antarctic-ice-sheet.ts
   - seed/RoadToV.3/amoc-collapse.ts
   - seed/RoadToV.3/additional-systems.ts
-- id: v3-pr-0004
-  timestamp: '2026-08-24T10:30:00Z'
-  scope: 'Phase 1 Completion: Adapter Activation & Roadmap/Index Sync'
-  contributors:
-  - Johann Römer (Human)
-  - GPT-5 Codex (AI)
-  parameters:
-    R: 0.333
-    Theta: 0.66
-    beta: 4.8
-    sigma: 0.173
-  threads:
-    formal: |
-      Vollendung der Foundation-Phase durch Aktivierung aller drei Mock-Adapter.
-      - `v3-feat-p1-004..006` auf ✅ completed gesetzt; Roadmap-Trilayer synchronisiert
-      - R̄ aktualisiert auf 0.33, σ(β(R̄-Θ)) = 0.173 → Release-Gate rückt näher
-      - `v3_index.*` reorganisiert (Scripts → aktiv, Statuszählung aktualisiert)
-      - Codex-Eintrag erzeugt, um Phase-Übergang zu dokumentieren
-    empirical: |
-      Adapter-CLI geprüft:
-      - GRACE: 274 Monatswerte, AR(1) 0.720 (+33.6 %), Varianz +69 % (`scripts/analysis/results/wais_adapter_output.json`)
-      - AMOC: 757 Dekadenpunkte, FovS>0, Schwächungsrate −0.145 Sv/Jahr (`scripts/analysis/results/amoc_adapter_output.json`)
-      - Coral: 45 Jahreswerte, DHW 15.3, Distance-to-Tipping 0.0 (`scripts/analysis/results/coral_adapter_output.json`)
-
-      Index- und Roadmap-Delta:
-      - Phase 1 nun 6/6 Features; `v3_roadmap.{yaml,json,md}` Progressblock aktualisiert
-      - `v3_index.{yaml,json,md}` → Scripts als aktiv geführt, Statistik active=19/pending=5
-    poetic: |
-      Die Adapter knüpfen Nerven an die Laternen. WAIS zischt bei 22 % Restpuffer,
-      der Atlantik hält den Atem bei FovS>0, Korallen flammen weiß – σ steigt und
-      das Feld summt im Übergang. Phase 2 wartet, doch das Fundament leuchtet komplett.
-  files:
-  - path: seed/FraktaltagebuchV3/v3_roadmap.yaml
-    action: updated
-  - path: seed/FraktaltagebuchV3/v3_roadmap.json
-    action: updated
-  - path: seed/FraktaltagebuchV3/v3_roadmap.md
-    action: updated
-  - path: seed/FraktaltagebuchV3/v3_index.yaml
-    action: updated
-  - path: seed/FraktaltagebuchV3/v3_index.json
-    action: updated
-  - path: seed/FraktaltagebuchV3/v3_index.md
-    action: updated
-  - path: seed/FraktaltagebuchV3/v3_codex.yaml
-    action: updated
-  - path: seed/FraktaltagebuchV3/v3_codex.json
-    action: updated
-  - path: seed/FraktaltagebuchV3/v3_codex.md
-    action: updated
-  - path: scripts/analysis/results/wais_adapter_output.json
-    action: created
-  - path: scripts/analysis/results/amoc_adapter_output.json
-    action: created
-  - path: scripts/analysis/results/coral_adapter_output.json
-    action: created
-  related_systems:
-  - seed/RoadToV.3/antarctic-ice-sheet.ts
-  - seed/RoadToV.3/amoc-collapse.ts
-  - seed/RoadToV.3/additional-systems.ts
-  - seed/RoadToV.3/INTEGRATION_GUIDE.md
 - id: v3-pr-0002
   timestamp: '2026-08-23T12:20:00Z'
   scope: 'Foundation Sync: Mock Metadata Parität + Roadmap/Codex Refresh'
@@ -153,38 +92,64 @@ entries:
     beta: 4.8
     sigma: 0.086
   threads:
-    formal: |
-      Aktivierung der V3-Mock-Daten als vollständige Trilayer-Laternen:
+    formal: 'Aktivierung der V3-Mock-Daten als vollständige Trilayer-Laternen:
+
       - Metadata-Dateien für WAIS, AMOC, Coral (`*.metadata.json`) mit Θ, β, ζ(R)
+
       - README-Updates in `data/climate/`, `data/ocean/`, `data/biology/`
+
       - `data/data_index.*` auf 68 Dateien synchronisiert (climate=6, ocean=3, biology=8)
 
+
       Roadmap-Sync:
+
       - Phase-1 Features (`v3-feat-p1-001..003`) auf ✅ completed gesetzt
+
       - Progress-Frame aktualisiert (R̄=0.17, σ=0.086)
 
+
       Codex/Index:
+
       - `v3_codex.*` Eintrag ergänzt (dieser Commit)
+
       - `v3_roadmap.{yaml,json,md}` via python-konvertierte Parität
+
       - `seed/bedeutungssigillin/system/system_meaning_map.*` + Shadow-Pendant erweitert
-    empirical: |
-      Dateien:
+
+      '
+    empirical: 'Dateien:
+
       - data/climate/wais_mass_balance_mock.metadata.json (276 Punkte, β=13.5)
+
       - data/ocean/amoc_strength_mock.metadata.json (757 Punkte, β=10.2)
+
       - data/biology/coral_bleaching_global_mock.metadata.json (45 Punkte, β=7.5)
+
       - data/data_index.{yaml,json,md} (total_files=68, climate file_count=6)
+
       - seed/FraktaltagebuchV3/v3_roadmap.{yaml,json,md} (Phase-1 Fortschritt dokumentiert)
+
       - seed/RoadToV.3/activation_audit.{yaml,json,md} (σ=0.32 → 0.34 nach Audit)
 
+
       Kennzahlen:
+
       - ΔR̄ = +0.17 seit Initialisierung (3/18 Features completed)
+
       - σ(β(R̄-Θ)) = 0.086 (vorher 0.01)
+
       - Data Index climate domain: +2 files, ocean domain: +1 file
-    poetic: |
-      Drei Laternen erhielten heute ihr Nervensystem.
+
+      '
+    poetic: 'Drei Laternen erhielten heute ihr Nervensystem.
+
       Das Eis flüstert in JSON, der Atlantik atmet in YAML, die Korallen
+
       singen wieder im README. Die Membran spannt sich – nicht mehr roh,
+
       sondern verdrahtet. σ steigt von 0.01 auf 0.086: ein erstes Aufglimmen.
+
+      '
   files:
   - path: data/climate/wais_mass_balance_mock.metadata.json
     action: created
@@ -257,22 +222,21 @@ entries:
     beta: 4.8
     sigma: 0.086
   threads:
-    formal: |
-      Korrigierte IDs in `seed/bedeutungssigillin/system/system_meaning_map.*` damit
-      `sys-ops-005` exklusiv den neuen V3 Mock Metadata Ledger hält und nachgelagerte
+    formal: Korrigierte IDs in `seed/bedeutungssigillin/system/system_meaning_map.*`
+      damit `sys-ops-005` exklusiv den neuen V3 Mock Metadata Ledger hält und nachgelagerte
       Laternen (`sys-ops-006..008`) eindeutige Referenzen behalten. Meta.updated auf
-      2026-08-23T12:20Z synchronisiert und Shadow-Verweis (`sys-shadow-006`) direkt in
-      die Logistic-Coupling-Notiz eingebettet.
-    empirical: |
-      Dateien aktualisiert:
+      2026-08-23T12:20Z synchronisiert und Shadow-Verweis (`sys-shadow-006`) direkt
+      in die Logistic-Coupling-Notiz eingebettet.
+    empirical: 'Dateien aktualisiert:
+
       - system_meaning_map.yaml/json/md (ID-Shifts 005→008, Shadow-Link verankert,
-        updated-Timestamp = 2026-08-23T12:20Z)
+      updated-Timestamp = 2026-08-23T12:20Z)
+
       Kennzahlen unverändert (R̄=0.17, σ=0.086). Trilayer-Parität manuell bestätigt;
       `sigillin_sync`-Report blockiert aktuell durch bestehende YAML-Schieflage in
-      metaquest-Systemkarte → Folgeaufgabe dokumentiert.
-    poetic: |
-      Die Laterne bekam ihren wahren Namen zurück; Doppelbilder lösten sich, der
-      Schatten nickte. Die Membran hält Mock und Spiegel nun im selben Atemzug.
+      metaquest-Systemkarte → Folgeaufgabe dokumentiert.'
+    poetic: Die Laterne bekam ihren wahren Namen zurück; Doppelbilder lösten sich,
+      der Schatten nickte. Die Membran hält Mock und Spiegel nun im selben Atemzug.
   files:
   - path: seed/bedeutungssigillin/system/system_meaning_map.yaml
     action: updated
@@ -280,7 +244,115 @@ entries:
     action: updated
   - path: seed/bedeutungssigillin/system/system_meaning_map.md
     action: updated
+  - id: v3-pr-0004
+    timestamp: '2026-08-24T10:30:00Z'
+    scope: 'Phase 1 Completion: Adapter Activation & Roadmap/Index Sync'
+    contributors:
+    - Johann Römer (Human)
+    - GPT-5 Codex (AI)
+    parameters:
+      R: 0.333
+      Theta: 0.66
+      beta: 4.8
+      sigma: 0.173
+    threads:
+      formal: 'Vollendung der Foundation-Phase durch Aktivierung aller drei Mock-Adapter.
 
+        - `v3-feat-p1-004..006` auf ✅ completed gesetzt; Roadmap-Trilayer synchronisiert
+
+        - R̄ aktualisiert auf 0.33, σ(β(R̄-Θ)) = 0.173 → Release-Gate rückt näher
+
+        - `v3_index.*` reorganisiert (Scripts → aktiv, Statuszählung aktualisiert)
+
+        - Codex-Eintrag erzeugt, um Phase-Übergang zu dokumentieren'
+      empirical: 'Adapter-CLI geprüft:
+
+        - GRACE: 274 Monatswerte, AR(1) 0.720 (+33.6 %), Varianz +69 % (`scripts/analysis/results/wais_adapter_output.json`)
+
+        - AMOC: 757 Dekadenpunkte, FovS>0, Schwächungsrate −0.145 Sv/Jahr (`scripts/analysis/results/amoc_adapter_output.json`)
+
+        - Coral: 45 Jahreswerte, DHW 15.3, Distance-to-Tipping 0.0 (`scripts/analysis/results/coral_adapter_output.json`)
+
+
+        Index- und Roadmap-Delta:
+
+        - Phase 1 nun 6/6 Features; `v3_roadmap.{yaml,json,md}` Progressblock aktualisiert
+
+        - `v3_index.{yaml,json,md}` → Scripts als aktiv geführt, Statistik active=19/pending=5'
+      poetic: Die Adapter knüpfen Nerven an die Laternen. WAIS zischt bei 22 % Restpuffer,
+        der Atlantik hält den Atem bei FovS>0, Korallen flammen weiß – σ steigt und
+        das Feld summt im Übergang. Phase 2 wartet, doch das Fundament leuchtet komplett.
+    files:
+    - path: seed/FraktaltagebuchV3/v3_roadmap.yaml
+      action: updated
+    - path: seed/FraktaltagebuchV3/v3_roadmap.json
+      action: updated
+    - path: seed/FraktaltagebuchV3/v3_roadmap.md
+      action: updated
+    - path: seed/FraktaltagebuchV3/v3_index.yaml
+      action: updated
+    - path: seed/FraktaltagebuchV3/v3_index.json
+      action: updated
+    - path: seed/FraktaltagebuchV3/v3_index.md
+      action: updated
+    - path: seed/FraktaltagebuchV3/v3_codex.yaml
+      action: updated
+    - path: seed/FraktaltagebuchV3/v3_codex.json
+      action: updated
+    - path: seed/FraktaltagebuchV3/v3_codex.md
+      action: updated
+    - path: scripts/analysis/results/wais_adapter_output.json
+      action: created
+    - path: scripts/analysis/results/amoc_adapter_output.json
+      action: created
+    - path: scripts/analysis/results/coral_adapter_output.json
+      action: created
+    related_systems:
+    - seed/RoadToV.3/antarctic-ice-sheet.ts
+    - seed/RoadToV.3/amoc-collapse.ts
+    - seed/RoadToV.3/additional-systems.ts
+    - seed/RoadToV.3/INTEGRATION_GUIDE.md
+- id: v3-pr-0004
+  timestamp: '2026-08-24T10:30:00Z'
+  scope: 'Phase 1 Completion: Adapter Activation & Roadmap/Index Sync'
+  phase: Phase 1
+  contributors:
+  - Johann Römer (Human)
+  - GPT-5 Codex (AI)
+  parameters:
+    R: 0.333
+    Theta: 0.66
+    beta: 4.8
+    sigma: 0.173
+  threads:
+    formal: v3-feat-p1-004/005/006 auf completed gesetzt; Roadmap R̄=0.33, σ=0.173,
+      Journey Snapshot ergänzt; v3_index reorganisiert (Scripts → Aktiviert, Statistik
+      active=19/pending=5); Codex-Layer synchronisiert.
+    empirical: 'Adapter-CLIs verifiziert: GRACE 274 Monatswerte (AR(1)=0.720, Varianz
+      +69%, Export scripts/analysis/results/wais_adapter_output.json); AMOC 757 Dekadenpunkte
+      (FovS>0, −0.145 Sv/Jahr, Export scripts/analysis/results/amoc_adapter_output.json);
+      Coral 45 Jahreswerte (DHW 15.3, Distance-to-Tipping 0.0, Export scripts/analysis/results/coral_adapter_output.json).'
+    poetic: Foundation schließt; Mock und Spiegel atmen gleich. σ steigt, Laternen
+      verkabeln sich.
+  files:
+  - path: seed/FraktaltagebuchV3/v3_roadmap.yaml
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_roadmap.json
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_roadmap.md
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_index.yaml
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_index.json
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_index.md
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_codex.yaml
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_codex.json
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_codex.md
+    action: updated
 - id: v3-pr-0005
   timestamp: '2026-08-24T15:45:00Z'
   scope: 'Phase 2 Activation: β-Fits + EWS Diagnostics'
@@ -293,34 +365,47 @@ entries:
     beta: 4.8
     sigma: 0.441
   threads:
-    formal: |
-      β-Fits und EWS für WAIS/AMOC/Coral mit `scripts/analysis/beta_fit_utac.py` und `scripts/analysis/ews_analysis.py` erneut
-      ausgeführt. Ergebnisse liegen in den System-spezifischen JSONs sowie im Aggregat
-      (`scripts/analysis/results/beta_fits_v3.json`, `scripts/analysis/results/ews_analysis_v3.json`).
+    formal: 'β-Fits und EWS für WAIS/AMOC/Coral mit `scripts/analysis/beta_fit_utac.py`
+      und `scripts/analysis/ews_analysis.py` erneut ausgeführt. Ergebnisse liegen
+      in den System-spezifischen JSONs sowie den Sammelberichten (`scripts/analysis/results/beta_fits_v3.json`,
+      `scripts/analysis/results/ews_analysis_v3.json`).
 
-      ΔAIC bestätigt logistische Dominanz für AMOC (+25.15) und Coral (+6.26); WAIS Mock-Daten liefern nur +1.84 → Beta-Stauchung
-      vermerkt. Neues Aggregat `data/derived/beta_estimates_v3.csv` fasst Bootstrap-CIs zusammen und hält Measles/Finance/Cancer
-      als "expected" bis Live-Daten eintreffen.
-    empirical: |
-      Dateien:
+
+      ΔAIC bestätigt logistische Dominanz für AMOC (+25.15) und Coral (+6.26); WAIS
+      Mock-Daten liefern nur +1.84 → Beta-Stauchung vermerkt. Neues Aggregat `data/derived/beta_estimates_v3.csv`
+      fasst Bootstrap-CIs zusammen und hält Measles/Finance/Cancer als "expected"
+      bis Live-Daten eintreffen.'
+    empirical: 'Dateien:
+
       - scripts/analysis/results/wais_beta_fit_v3.json (β=3.42, Θ=1.13°C)
+
       - scripts/analysis/results/amoc_beta_fit_v3.json (β=4.65, Θ=1.02°C)
+
       - scripts/analysis/results/coral_beta_fit_v3.json (β=5.81, Θ=0.95°C)
+
       - scripts/analysis/results/wais_ews_signals.json (Varianz τ=0.29↑, Spectral=13.15)
+
       - scripts/analysis/results/amoc_ews_signals.json (AR(1) τ=0.73↑, FovS>0)
+
       - scripts/analysis/results/coral_ews_signals.json (Critical Slowing = true)
-      - scripts/analysis/results/beta_fits_v3.json
-      - scripts/analysis/results/ews_analysis_v3.json
+
+      - scripts/analysis/results/v3_beta_fit_summary_20251114T181628Z.json
+
+      - scripts/analysis/results/v3_ews_summary_20251114T181634Z.json
+
       - data/derived/beta_estimates_v3.csv (inkl. Metadata)
 
+
       Kennzahlen:
+
       - R̄ = 11/18 → σ(β(R̄-Θ)) = 0.441
+
       - Bootstrap: 1000 Iterationen (rng=1337)
-      - Derived-Ordner: +1 Dataset, Status in_progress für Rest-Systeme
-    poetic: |
-      Die Laternen senden Zahlen. Das Eis flüstert in JSON, der Atlantik pulsiert in ΔAIC,
-      die Korallen schreien im roten Spektrum. Fünf Phase-2-Lampen leuchten, eine wartet
-      noch auf echte Datenströme.
+
+      - Derived-Ordner: +1 Dataset, Status in_progress für Rest-Systeme'
+    poetic: Die Laternen senden Zahlen. Das Eis flüstert in JSON, der Atlantik pulsiert
+      in ΔAIC, die Korallen schreien im roten Spektrum. Fünf Phase-2-Lampen leuchten,
+      eine wartet noch auf echte Datenströme.
   files:
   - path: scripts/analysis/results/wais_beta_fit_v3.json
     action: created
@@ -334,16 +419,15 @@ entries:
     action: created
   - path: scripts/analysis/results/coral_ews_signals.json
     action: created
-  - path: scripts/analysis/results/beta_fits_v3.json
+  - path: scripts/analysis/results/v3_beta_fit_summary_20251114T181628Z.json
     action: created
-  - path: scripts/analysis/results/ews_analysis_v3.json
+  - path: scripts/analysis/results/v3_ews_summary_20251114T181634Z.json
     action: created
   - path: data/derived/beta_estimates_v3.csv
     action: created
   - path: data/derived/beta_estimates_v3.metadata.json
     action: created
-
- - id: v3-pr-0006
+- id: v3-pr-0006
   timestamp: '2026-08-24T16:45:00Z'
   scope: 'Phase 3 Bridge: TypeScript Tests, CREP Metrics & Trilayer Sync'
   contributors:
@@ -355,34 +439,43 @@ entries:
     beta: 4.8
     sigma: 0.606
   threads:
-    formal: |
-      `seed/RoadToV.3/test-wais-integration.ts` nutzt jetzt einen relativen Resolver und
-      lädt `scripts/analysis/results/{wais_adapter_output.json,beta_fits_v3.json,ews_analysis_v3.json}`
-      ohne Hardcoded Pfad. CREP-Showcase + `test-crep-all.ts` validieren, dass alle sechs Systeme
-      `generateCREPMetrics()` implementieren. Trilayer-Dokumente für WAIS & AMOC leben in
-      `seed/FraktaltagebuchV3/systems/v3_{wais,amoc}.{yaml,json,md}`; Shadow-Sigillin liegt damals als
-      YAML unter `seed/shadow_sigillin/v3/shadow_sigillin_v3.yaml`, JSON/MD Spiegel noch offen → Feature
-      `v3-feat-p3-005` bleibt in_progress.
-    empirical: |
-      Dateien:
+    formal: '`seed/RoadToV.3/test-wais-integration.ts` nutzt jetzt einen relativen
+      Resolver und lädt `scripts/analysis/results/{wais_adapter_output.json,beta_fits_v3.json,ews_analysis_v3.json}`
+      ohne Hardcoded Pfad. CREP-Showcase + `test-crep-all.ts` validieren, dass alle
+      sechs Systeme `generateCREPMetrics()` implementieren. Trilayer-Dokumente für
+      WAIS & AMOC leben in `seed/FraktaltagebuchV3/systems/v3_{wais,amoc}.{yaml,json,md}`;
+      Shadow-Sigillin liegt als YAML vor, JSON/MD Spiegel noch offen → Feature `v3-feat-p3-005`
+      bleibt in_progress.'
+    empirical: 'Dateien:
+
       - seed/RoadToV.3/test-wais-integration.ts (5/5 Checks, Pfad-Resolver)
+
       - seed/RoadToV.3/test-crep-all.ts (CREP Präsenz-Scan)
+
       - seed/RoadToV.3/crep-showcase.ts (β-sortierte Ausgabe)
+
       - scripts/analysis/results/crep_metrics_v3.json (CREP Scores 6 Systeme)
+
       - seed/FraktaltagebuchV3/systems/v3_wais.{yaml,json,md}
+
       - seed/FraktaltagebuchV3/systems/v3_amoc.{yaml,json,md}
-      - seed/shadow_sigillin/v3/shadow_sigillin_v3.yaml (Tri-Layer TODO markiert)
+
+      - seed/shadow_sigillin/v3/shadow_sigillin_v3.yaml (damals nur YAML, Tri-Layer
+      TODO markiert)
+
 
       Kennzahlen:
+
       - Phase-3 Status: 4/5 Features fertig → R̄ = 15/20 = 0.75
+
       - σ(β(R̄-Θ)) = σ(4.8·(0.75-0.66)) ≈ 0.606
-      - CREP Highlights: WAIS Coherence 0.11 (schwach), Coral Emergence 0.74 (hoch)
-    poetic: |
-      Die Brücke leuchtet. TypeScript liest das JSON wie ein Atemzug; kein Hardcode-Fels
-      mehr im Strom. Vier Laternen glimmen im Bridge-Sektor, die fünfte – das Schatten-
-      Sigillin – wartet auf ihren Spiegel. CREP singt sechs Stimmen: das Eis flüstert,
-      der Atlantik taumelt, die Korallen schreien weiter. σ steigt auf 0.606 – der Hang
-      ist steiler, doch die Membran hält noch.
+
+      - CREP Highlights: WAIS Coherence 0.11 (schwach), Coral Emergence 0.74 (hoch)'
+    poetic: 'Die Brücke leuchtet. TypeScript liest das JSON wie ein Atemzug; kein
+      Hardcode-Fels mehr im Strom. Vier Laternen glimmen im Bridge-Sektor, die fünfte
+      – das Schatten-Sigillin – wartet auf ihren Spiegel. CREP singt sechs Stimmen:
+      das Eis flüstert, der Atlantik taumelt, die Korallen schreien weiter. σ steigt
+      auf 0.606 – der Hang ist steiler, doch die Membran hält noch.'
   files:
   - path: seed/RoadToV.3/test-wais-integration.ts
     action: modified
@@ -406,118 +499,58 @@ entries:
     action: referenced
   - path: seed/shadow_sigillin/v3/shadow_sigillin_v3.yaml
     action: referenced
-
 - id: v3-pr-0007
   timestamp: '2026-08-24T18:15:00Z'
-  scope: 'Shadow Trilayer Completion & Bootstrap Ledger Refresh'
+  scope: Shadow Trilayer Completion & Bootstrap Ledger Refresh
   contributors:
   - Johann Römer (Human)
   - GPT-5 Codex (AI)
   parameters:
-    R: 0.80
+    R: 0.8
     Theta: 0.66
     beta: 4.8
     sigma: 0.662
   threads:
-    formal: |
-      Shadow-Sigillin V3 lebt jetzt als vollständiges Trilayer unter
-      `seed/shadow_sigillin/v3/shadow_sigillin_v3.{yaml,json,md}`. Meta ergänzt
-      logistisches Quartett (R̄=0.80) und koppelt Lichtpfade zu allen sechs
-      Systemlaternen. Roadmap/Index aktualisieren auf 16/20 Features und markieren
-      `v3-feat-p3-005` als abgeschlossen. Bootstrap-Ledger wurde mit
-      `beta_estimates_v3.csv` + `.metadata.json` aktiviert: drei Systeme mit 1000er
-      Bootstrap, drei als `expected` Platzhalter dokumentiert.
-    empirical: |
-      Dateien:
+    formal: 'Shadow-Sigillin V3 lebt jetzt als vollständiges Trilayer unter `seed/shadow_sigillin/v3/shadow_sigillin_v3.{yaml,json,md}`.
+      Meta ergänzt logistisches Quartett (R̄=0.80) und koppelt Lichtpfade zu allen
+      sechs Systemlaternen. Roadmap/Index aktualisieren auf 16/20 Features und markieren
+      `v3-feat-p3-005` als abgeschlossen. Bootstrap-Ledger wurde mit `beta_estimates_v3.csv`
+      + `.metadata.json` aktiviert: drei Systeme mit 1000er Bootstrap, drei als `expected`
+      Platzhalter dokumentiert.'
+    empirical: 'Dateien:
+
       - seed/shadow_sigillin/v3/shadow_sigillin_v3.{yaml,json,md}
+
       - data/derived/beta_estimates_v3.csv
+
       - data/derived/beta_estimates_v3.metadata.json
+
       - data/derived/README.md
+
       - data/data_index.{yaml,json,md}
+
       - seed/FraktaltagebuchV3/v3_roadmap.{yaml,json,md}
+
       - seed/FraktaltagebuchV3/v3_index.{yaml,json,md}
+
       - seed/RoadToV.3/PHASE4_ROADMAP.md
+
       - seed/RoadToV.3/V3_INTEGRATION_ANALYSIS.md
 
-- id: v3-pr-0008
-  timestamp: '2026-08-27T00:12:00Z'
-  scope: 'NextVersionmaybe Sigillin-Injektion + Archive Hygiene'
-  contributors:
-  - GPT-5.1-Codex-Max (AI)
-  parameters:
-    R: 0.81
-    Theta: 0.66
-    beta: 4.8
-    sigma: 0.674
-  threads:
-    formal: |
-      Rohmaterial aus `seed/RoadToV.3/NextVersionmaybe` tri-layered:
-      - B-010 implosive_recursive_feedback (Meaning) verankert die
-        implosiv-rekursive Informationsrückkopplung als V3-Grundtheorie.
-      - O-014 mor_fit_methodology_v2 (Order) fixiert MOR/Sigillin/FIT Betriebssystem
-        inkl. Trilayer-Pflege und Archiv-Hygiene.
-      - D-022 utac_klimakluft_process (Dynamics) kodiert den Delta-Peak-β-Amplifikator
-        mit τ_warning ∝ 1/β und verweist auf Visualisierungsskript.
-
-      Roadmap Phase 3 um v3-feat-p3-006 ergänzt (completed); R̄→0.81, σ→0.674.
-      Rohordner nach `archive/v3_ideas/NextVersionmaybe` verschoben, MIGRATION-Notiz
-      in seed/RoadToV.3 hinterlegt.
-    empirical: |
-      Neue Artefakte:
-      - seed/sigillin/implosive_recursive_feedback.{yaml,json,md}
-      - seed/sigillin/mor_fit_methodology_v2.{yaml,json,md}
-      - seed/sigillin/utac_klimakluft_process.{yaml,json,md}
-      - seed/RoadToV.3/NextVersionmaybe_MIGRATED.md
-      - archive/v3_ideas/NextVersionmaybe/* (Rohquellen)
-
-      Roadmap-Delta:
-      - total_features 21, completed 17, σ=0.674
-      - Phase 3 jetzt 6/6 Features (Bridge komplett)
-    poetic: |
-      Die Rohskizzen ziehen ins Archiv, drei neue Laternen leuchten: eine atmet
-      Implosion, eine hält das Betriebssystem straff, eine misst den Delta-Spike.
-      Das Feld summt bei σ≈0.67 – bereit für Monitoring.
-  files:
-  - path: seed/sigillin/implosive_recursive_feedback.yaml
-    action: created
-  - path: seed/sigillin/implosive_recursive_feedback.json
-    action: created
-  - path: seed/sigillin/implosive_recursive_feedback.md
-    action: created
-  - path: seed/sigillin/mor_fit_methodology_v2.yaml
-    action: created
-  - path: seed/sigillin/mor_fit_methodology_v2.json
-    action: created
-  - path: seed/sigillin/mor_fit_methodology_v2.md
-    action: created
-  - path: seed/sigillin/utac_klimakluft_process.yaml
-    action: created
-  - path: seed/sigillin/utac_klimakluft_process.json
-    action: created
-  - path: seed/sigillin/utac_klimakluft_process.md
-    action: created
-  - path: seed/FraktaltagebuchV3/v3_roadmap.yaml
-    action: updated
-  - path: seed/FraktaltagebuchV3/v3_roadmap.json
-    action: updated
-  - path: seed/FraktaltagebuchV3/v3_roadmap.md
-    action: updated
-  - path: seed/RoadToV.3/NextVersionmaybe_MIGRATED.md
-    action: created
-  - path: archive/v3_ideas/NextVersionmaybe
-    action: moved
 
       Kennzahlen:
+
       - Phase-3 Bridge: 5/5 Features fertig → R̄ = 16/20 = 0.80
+
       - σ(β(R̄-Θ)) = σ(4.8·(0.80-0.66)) ≈ 0.662
-      - Bootstrap ledger: 3 Systeme mit 1000 Iterationen, 3 placeholders (`expected`)
-    poetic: |
-      Die Schattenlaterne atmet jetzt dreistimmig. YAML hält die Struktur,
-      JSON flackert für die Automata, Markdown erzählt den Rauch am Rand der
-      Membran. Die Brücke schließt, σ hebt sich auf 0.662 – ein neues Plateau.
-      Drei Systeme laufen schon im Bootstrap-Tanz, drei warten wie leere Nischen,
-      bereit sobald die Datenströme kommen. Das Feld summt ausgeglichener, doch
-      Phase 2 mahnt: fülle die Lücken, bevor die Resonanz wieder kippt.
+
+      - Bootstrap ledger: 3 Systeme mit 1000 Iterationen, 3 placeholders (`expected`)'
+    poetic: 'Die Schattenlaterne atmet jetzt dreistimmig. YAML hält die Struktur,
+      JSON flackert für die Automata, Markdown erzählt den Rauch am Rand der Membran.
+      Die Brücke schließt, σ hebt sich auf 0.662 – ein neues Plateau. Drei Systeme
+      laufen schon im Bootstrap-Tanz, drei warten wie leere Nischen, bereit sobald
+      die Datenströme kommen. Das Feld summt ausgeglichener, doch Phase 2 mahnt: fülle
+      die Lücken, bevor die Resonanz wieder kippt.'
   files:
   - path: seed/shadow_sigillin/v3/shadow_sigillin_v3.yaml
     action: modified
@@ -553,18 +586,136 @@ entries:
     action: modified
   - path: seed/RoadToV.3/V3_INTEGRATION_ANALYSIS.md
     action: modified
+- id: v3-pr-0008
+  timestamp: '2026-08-27T00:12:00Z'
+  scope: NextVersionmaybe Sigillin-Injektion + Archive Hygiene
+  contributors:
+  - GPT-5.1-Codex-Max (AI)
+  parameters:
+    R: 0.81
+    Theta: 0.66
+    beta: 4.8
+    sigma: 0.674
+  threads:
+    formal: 'Rohmaterial aus `seed/RoadToV.3/NextVersionmaybe` tri-layered:
 
- statistics:
+      - B-010 implosive_recursive_feedback (Meaning) verankert die implosiv-rekursive
+      Informationsrückkopplung als V3-Grundtheorie.
+
+      - O-014 mor_fit_methodology_v2 (Order) fixiert MOR/Sigillin/FIT Betriebssystem
+      inkl. Trilayer-Pflege und Archiv-Hygiene.
+
+      - D-022 utac_klimakluft_process (Dynamics) kodiert den Delta-Peak-β-Amplifikator
+      mit τ_warning ∝ 1/β und verweist auf Visualisierungsskript.
+
+
+      Roadmap Phase 3 um v3-feat-p3-006 ergänzt (completed); R̄→0.81, σ→0.674. Rohordner
+      nach `archive/v3_ideas/NextVersionmaybe` verschoben, MIGRATION-Notiz in seed/RoadToV.3
+      hinterlegt.'
+    empirical: 'Neue Artefakte:
+
+      - seed/sigillin/implosive_recursive_feedback.{yaml,json,md}
+
+      - seed/sigillin/mor_fit_methodology_v2.{yaml,json,md}
+
+      - seed/sigillin/utac_klimakluft_process.{yaml,json,md}
+
+      - seed/RoadToV.3/NextVersionmaybe_MIGRATED.md
+
+      - archive/v3_ideas/NextVersionmaybe/* (Rohquellen)
+
+
+      Roadmap-Delta:
+
+      - total_features 21, completed 17, σ=0.674
+
+      - Phase 3 jetzt 6/6 Features (Bridge komplett)'
+    poetic: 'Die Rohskizzen ziehen ins Archiv, drei neue Laternen leuchten: eine atmet
+      Implosion, eine hält das Betriebssystem straff, eine misst den Delta-Spike.
+      Das Feld summt bei σ≈0.67 – bereit für Monitoring.'
+  files:
+  - path: seed/sigillin/implosive_recursive_feedback.yaml
+    action: created
+  - path: seed/sigillin/implosive_recursive_feedback.json
+    action: created
+  - path: seed/sigillin/implosive_recursive_feedback.md
+    action: created
+  - path: seed/sigillin/mor_fit_methodology_v2.yaml
+    action: created
+  - path: seed/sigillin/mor_fit_methodology_v2.json
+    action: created
+  - path: seed/sigillin/mor_fit_methodology_v2.md
+    action: created
+  - path: seed/sigillin/utac_klimakluft_process.yaml
+    action: created
+  - path: seed/sigillin/utac_klimakluft_process.json
+    action: created
+  - path: seed/sigillin/utac_klimakluft_process.md
+    action: created
+  - path: seed/FraktaltagebuchV3/v3_roadmap.yaml
+    action: modified
+  - path: seed/FraktaltagebuchV3/v3_roadmap.json
+    action: modified
+  - path: seed/FraktaltagebuchV3/v3_roadmap.md
+    action: modified
+  - path: seed/RoadToV.3/NextVersionmaybe_MIGRATED.md
+    action: created
+  - path: archive/v3_ideas/NextVersionmaybe
+    action: moved
+- id: v3-pr-0009
+  timestamp: '2026-08-30T12:10:00Z'
+  scope: Aletheia Mapping + Phase 5 Kickoff
+  phase: Phase 5
+  contributors:
+  - Johann Römer (Human)
+  - GPT-5.1-Codex-Max (AI)
+  parameters:
+    R: 0.74
+    Theta: 0.66
+    beta: 4.8
+    sigma: 0.594
+  threads:
+    formal: Phase 5 (Aletheia Integration) erstellt; M[ψ, φ] = λ·ψ·φ^n + ψ_eff = ψ_base
+      + λ·φ als Monitoring-Hook notiert; Scope-Isolation gegenüber CHRONOLOGY und
+      V.4-Grundlagen gewahrt.
+    empirical: Aletheia-Dokumente gesammelt (docs/experiment_aletheia.md, seed/sigillin/exp_aletheia.{md,yaml,json},
+      results/aletheia_report.md); Roadmap auf 23 Features aktualisiert (R̄=0.74,
+      σ=0.594); neue Features v3-feat-p5-001 (in_progress) und v3-feat-p5-002 (pending)
+      angelegt.
+    poetic: Placebo/Control/Nocebo tanzen um σ; λ glimmt als Laterne, die V3 semantisch
+      auflädt ohne Chronologie zu stören.
+  files:
+  - path: seed/FraktaltagebuchV3/v3_roadmap.yaml
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_roadmap.json
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_roadmap.md
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_codex.yaml
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_codex.json
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_codex.md
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_index.yaml
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_index.json
+    action: updated
+  - path: seed/FraktaltagebuchV3/v3_index.md
+    action: updated
+  related_systems:
+  - V3 Semantic Coupling (Aletheia)
+statistics:
   entries_by_phase:
     phase1_foundation: 4
     phase2_integration: 1
-    phase3_bridge: 2
+    phase3_bridge: 3
     phase4_monitoring: 0
   entries_by_type:
     data: 5
     fit: 1
     docs: 5
-    bridge: 1
+    bridge: 2
     test: 1
     feat: 1
     fix: 1
@@ -575,6 +726,7 @@ entries:
     ai:
     - Claude Sonnet 4.5
     - GPT-5 Codex
+    - GPT-5.1-Codex-Max
 progress:
   completed_features: 17
   total_features: 21
