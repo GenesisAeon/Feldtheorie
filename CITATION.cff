@@ -8,14 +8,15 @@ abstract: >-
   switch-like response σ(β(R-Θ)) that drives emergent order beyond critical
   thresholds. Version 3.0.0 adds inequality-aware Klimakluft amplification,
   inverted-sigmoid implosion trajectories, and empirical metacognition hooks to
-  stage visual overlays and ΔAIC benchmarking for UTAC fields.
+  stage visual overlays and ΔAIC benchmarking for UTAC fields, with Project
+  Aletheia anchoring the semantic-coupling proof-of-concept.
 authors:
   - family-names: "Römer"
     given-names: "Johann"
   - name: "Universal Threshold Field Contributors"
 version: 3.0.0
 doi: 10.5281/zenodo.17472834
-date-released: 2025-11-11
+date-released: 2025-11-20
 url: "https://github.com/GenesisAeon/Feldtheorie"
 keywords:
   - logistic resonance
