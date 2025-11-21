@@ -5001,3 +5001,18 @@ entries:
     empirical: 17 trilayers scanned
     poetic: Logistic membrane hums in phase with the Codex.
   created_at: '2025-11-21T03:57:35.867458+00:00'
+- id: V4-EVIDENCE-LOCK
+  title: Sigillin Sync Run
+  scope:
+  - scripts/sigillin_sync.py
+  parameters:
+    R: 17 trilayers inspected
+    Theta: Trilayer meta fields aligned
+    beta: 4.6
+  resonance: Replaced V3 speculation with V4 Oxfam-derived proof (89.1% reduction).
+  status: draft
+  notes:
+    formal: Telemetry sweep executed via sigillin_sync.py
+    empirical: 17 trilayers scanned
+    poetic: Logistic membrane hums in phase with the Codex.
+  created_at: '2025-11-21T05:00:48.309063+00:00'
