@@ -2236,3 +2236,11 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
 - **β:** 4.6
 - **ζ(R):** Logged in codex
 - **Notiz:** Injected Oxfam/Landauer sources and implemented amplification proof script.
+
+### V4-EVIDENCE-LOCK — Sigillin Sync Run
+- **Zeitpunkt (UTC):** 2025-11-21T05:00:48.309063+00:00
+- **R:** 17 Trilayer geprüft
+- **Θ:** Trilayer meta fields aligned
+- **β:** 4.6
+- **ζ(R):** Logged in codex
+- **Notiz:** Replaced V3 speculation with V4 Oxfam-derived proof (89.1% reduction).
