@@ -1,0 +1,24 @@
+# CHRONOLOGY
+
+## Sektion 1 – Entstehung (v1.0–v1.2)
+
+### v1.0.1 – UTF-Hypothese konsolidiert
+- **Grundthese:** Die UTF-Hypothese formulierte den Startpunkt: Emergenzphänomene folgen domänenübergreifend einer universellen logistischen Antwortfunktion sigma(beta(R-Theta)).【F:RELEASE_NOTES_v1.0.1.md†L11-L33】【F:RELEASE_NOTES_v1.0.1.md†L38-L48】
+- **Daten & Quellen:** Erste Evidenz stützte sich auf sechs belegte Domänen (LLM-Emergenz, planetare Kipppunkte, Honigbienen, Arbeitsgedächtnis, Urban Heat Islands, Subduktionszonen) mit vollständigen Parameter- und ΔAIC-Angaben sowie begleitende Grundlagen- und Governance-Dokumente (`utac_theory_core.md`, `utac_falsifiability.md`, `utac_applications.md`, `utac_review_considerations.md`, `AUTHORSHIP.md`, `REPRODUCE.md`, `METRICS.md`).【F:RELEASE_NOTES_v1.0.1.md†L23-L76】
+- **Formel & Herleitung:** Die Phase fixierte die logistische Membran-Gleichung sigma(R) = 1/(1+exp(-beta(R-Theta))) mit definierter Parameterdeutung und ΔAIC-basiertem Falsifikationsprotokoll (lineare, Potenz- und Exponential-Nullmodelle, ΔAIC>10, Bootstrap-CIs).【F:RELEASE_NOTES_v1.0.1.md†L38-L57】
+- **Skripte & Verfahren:** Kernartefakte umfassten die Solver (`membrane_solver.py`, `coherence_term.py`, `recursive_threshold.py`, `adaptive_logistic_membrane.py`, `resonant_impedance.py`), domänenspezifische Analysepipelines (`llm_beta_extractor.py`, `resonance_cohort_summary.py`, Nullguard `preset_alignment_guard.py`), 19 Tests sowie sechs datengetriebene Subverzeichnisse mit vollständigen Metadaten zu R, Theta, beta, zeta(R).【F:RELEASE_NOTES_v1.0.1.md†L79-L107】
+- **Status:** Querschnitts-Validierung abgeschlossen; beta konvergiert in den meisten Domänen auf ca. 4.2±0.6 und erfüllt ΔAIC-Guards, womit die Ausgangsthese bestätigt wurde (Geophysik als dokumentierter Ausreißer).【F:RELEASE_NOTES_v1.0.1.md†L32-L33】【F:RELEASE_NOTES_v1.0.1.md†L112-L119】
+
+### v1.1.0 – beta als diagnostischer Parameter
+- **Grundthese:** beta wurde von einer angenommenen Universalkonstante zu einem diagnostischen Parameter umgedeutet, der Systemarchitektur (Kopplung, Dimensionalität, Kohärenz) offenlegt; fünf Feldtypen erhielten vorhergesagte beta-Bänder.【F:RELEASE_NOTES_v1.1.0.md†L12-L34】
+- **Daten & Quellen:** Die Erweiterung stützte sich auf zwölf reale Datensätze mit zugeordneten Feldtypen sowie abgeleitete CSV-Dateien (`beta_estimates.csv`, `domain_covariates.csv`) für Kopplung, Dimensionalität, SNR, M und dTheta/dt.【F:RELEASE_NOTES_v1.1.0.md†L111-L133】
+- **Formel & Herleitung:** Ein explizites beta-Abhängigkeitsmodell beta ≈ beta0*[C_eff/(1+lambda*D_eff)]*[SNR/(1+SNR^-1)]*g(M,dTheta/dt) begründete die Mechanik der Heterogenität und wurde gegen Beobachtungswerte validiert (LLM, Black Hole QPO, Theta Plasticity).【F:RELEASE_NOTES_v1.1.0.md†L38-L59】
+- **Skripte & Verfahren:** Meta-Regression (`analysis/beta_drivers_meta_regression.py`) und Simulation (`simulation/threshold_sandbox.py`) quantifizierten beta-Varianz (ANOVA eta^2=0.68; 80-Simulations-Sweep) und lieferten reproduzierbare CLI-Aufrufe für Regression und Parameterstudien.【F:RELEASE_NOTES_v1.1.0.md†L62-L108】【F:RELEASE_NOTES_v1.1.0.md†L187-L198】
+- **Status:** Die Phase reklassifizierte den v1.0-Befund: Quasi-universelle beta-Bänder bleiben unterstützt, universelle beta=4.2 wurde zurückgenommen; Feldtypen erklärten 68% der Varianz, einzelne Kovariaten noch nicht signifikant (explorativ).【F:RELEASE_NOTES_v1.1.0.md†L136-L163】【F:RELEASE_NOTES_v1.1.0.md†L66-L84】
+
+### v1.2 (Zenodo-Release-Vorbereitung)
+- **Grundthese:** Keine neue Formel, sondern Release-Resonanz: Die logistische Quartett-Erzählung (R, Theta, beta, zeta(R)) muss formal (Status-Matrix), empirisch (ΔAIC-Ledger) und poetisch (Launch-Pledges) synchronisiert sein, bevor das v1.2-Archiv versiegelt wird.【F:README.md†L102-L120】
+- **Daten & Quellen:** Release-Hooks verlangen das mehrsprachige Abstract (`docs/zenodo_multilingual_abstract_v1.2.md`), das Release-Playbook (`docs/zenodo_release_playbook.md`) und Telemetrie (`docs/utac_activation_backlog.*`, `analysis/results/universal_beta_summary.json`), gekoppelt mit README/CITATION-Parität.【F:README.md†L102-L120】
+- **Formel & Herleitung:** Die Phase hält an sigma(beta(R-Theta)) fest und verschiebt die Herleitung in Governance- und Paritätsartefakte; wissenschaftliche Kernformeln bleiben unverändert, Fokus liegt auf Synchronisierung der bestehenden Ableitungen.【F:README.md†L102-L120】
+- **Skripte & Verfahren:** Umsetzung läuft über das Release-Playbook mit ΔAIC-Guards, CI-Ritualen und Codex-Checkpoints; Upload erfolgt nach `ZENODO_UPLOAD_GUIDE.md`, sobald alle Oberflächen resonant sind.【F:README.md†L102-L120】
+- **Status:** Offene Synchronisation (release-gap-002): Archivversiegelung steht aus, bis Formal-, Empirie- und Pledge-Artefakte gemeinsam R>Theta signalisieren und Codex-/Badge-Aktualisierungen vollzogen sind.【F:README.md†L102-L120】
