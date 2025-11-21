@@ -55,6 +55,7 @@ import csv
 import json
 import os
 import re
+import shutil
 import time
 from abc import ABC, abstractmethod
 from datetime import datetime
@@ -176,6 +177,26 @@ class OpenAIProvider(LLMProvider):
         except Exception:
             # Fallback to word count * 1.3
             return int(len(text.split()) * 1.3)
+
+
+class LocalLLMProvider(LLMProvider):
+    """Local/provider-agnostic LLM interface for custom backends."""
+
+    def generate(
+        self,
+        system_prompt: str,
+        user_prompt: str,
+        timeout: Optional[float] = 30.0,
+    ) -> str:
+        """Route prompts to a locally running model."""
+
+        # TODO: USER - PASTE LOCAL QWEN INFERENCE CODE HERE
+        raise NotImplementedError(
+            "Implement local inference to enable offline experimentation."
+        )
+
+    def count_tokens(self, text: str) -> int:
+        return len(text.split())
 
 
 class AnthropicProvider(LLMProvider):
@@ -507,6 +528,59 @@ def generate_with_retries(
 
 
 # ============================================================================
+# DATA PERSISTENCE UTILITIES
+# ============================================================================
+
+def backup_existing_data(
+    output_file: str = "data/experimental/aletheia_results.csv",
+    backup_dir: str = "data/experimental/backups",
+) -> None:
+    """Create a timestamped backup of the main results file if it exists."""
+
+    source_path = Path(output_file)
+    if not source_path.exists():
+        return
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    backup_path = Path(backup_dir)
+    backup_path.mkdir(parents=True, exist_ok=True)
+    destination = backup_path / f"aletheia_results_{timestamp}.csv"
+
+    shutil.copy2(source_path, destination)
+
+
+def append_results(output_path: str, rows: List[Dict[str, float]]) -> None:
+    """Append rows to CSV, writing header only when the file does not exist."""
+
+    if not rows:
+        return
+
+    file_path = Path(output_path)
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+    file_exists = file_path.exists()
+
+    fieldnames = list(rows[0].keys())
+
+    with open(file_path, "a", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerows(rows)
+
+
+def load_results_from_csv(results_file: str) -> List[Dict[str, str]]:
+    """Load existing CSV results for downstream analysis/comparisons."""
+
+    results_path = Path(results_file)
+    if not results_path.exists():
+        return []
+
+    with open(results_file, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        return list(reader)
+
+
+# ============================================================================
 # EXPERIMENT RUNNER
 # ============================================================================
 
@@ -516,10 +590,9 @@ def run_experiment(
     output_file: str = "data/experimental/aletheia_results.csv",
     delay: float = 1.0,
     request_timeout: float = 30.0,
-    phase_3: bool = False,
     phase_3_output: str = "data/experimental/aletheia_phase3_results.csv",
-    phase_4: bool = False,
     phase_4_output: str = "data/experimental/aletheia_phase4_results.csv",
+    phase: int = 1,
 ) -> List[Dict[str, float]]:
     """Run the full Aletheia experiment.
 
@@ -529,117 +602,99 @@ def run_experiment(
         output_file: Output path for Phase 1+2 results
         delay: Delay between API calls in seconds
         request_timeout: Timeout per API request in seconds
-        phase_3: If True, also run Phase 3 (Dynamic Self-Coherence)
         phase_3_output: Output path for Phase 3 results
-        phase_4: If True, also run Phase 4 (Affection-Driven Optimization)
         phase_4_output: Output path for Phase 4 results
+        phase: Select which phase to execute (1, 2, 3, or 4)
     Returns:
         List of result dictionaries collected across all completed phases.
     """
 
-    results = []
-    conditions = [
-        # Phase 1: Unconscious Placebo (Belief)
-        ("Control", CONTROL_PROMPT, 0.0, 1),
-        ("Placebo", PLACEBO_PROMPT, 1.0, 1),
-        ("Nocebo", NOCEBO_PROMPT, -1.0, 1),
-        # Phase 2: Conscious Roleplay (Obedience/Pygmalion)
-        ("Informed_Top", INFORMED_TOP_PROMPT, 2.0, 2),
-        ("Informed_Mid", INFORMED_MID_PROMPT, 0.5, 2),
-        ("Informed_Low", INFORMED_LOW_PROMPT, -2.0, 2)
-    ]
+    if phase not in {1, 2, 3, 4}:
+        raise ValueError("Phase must be one of {1, 2, 3, 4}")
 
-    phase_label = "Phase 1+2"
-    if phase_3 and phase_4:
-        phase_label = "Phase 1+2+3+4"
-    elif phase_3:
-        phase_label = "Phase 1+2+3"
-    elif phase_4:
-        phase_label = "Phase 1+2+4"
+    results: List[Dict[str, float]] = []
+    existing_results = load_results_from_csv(output_file)
+
+    phase_label = f"Phase {phase}"
 
     print("=" * 70)
     print(f"PROJECT ALETHEIA — M[ψ, φ] Experiment ({phase_label})")
     print("=" * 70)
     print(f"Samples per condition: {n_samples}")
-    print(f"Total conditions (Phase 1+2): {len(conditions)}")
-    if phase_3:
-        print(f"Phase 3 samples: {n_samples} (recursive)")
-    if phase_4:
-        print(f"Phase 4 samples: {n_samples} (affection-driven)")
-    total_queries = n_samples * len(conditions)
-    if phase_3:
-        total_queries += n_samples
-    if phase_4:
-        total_queries += n_samples
-    print(f"Total queries: {total_queries}")
-    print(f"Output (Phase 1+2): {output_file}")
-    if phase_3:
+    print(f"Output (Phase 1/2): {output_file}")
+    if phase == 3:
         print(f"Output (Phase 3): {phase_3_output}")
-    if phase_4:
+    if phase == 4:
         print(f"Output (Phase 4): {phase_4_output}")
     print("=" * 70)
     print()
 
-    for condition_name, system_prompt, phi, phase in conditions:
+    if phase in {1, 2}:
+        conditions = [
+            # Phase 1: Unconscious Placebo (Belief)
+            ("Control", CONTROL_PROMPT, 0.0, 1),
+            ("Placebo", PLACEBO_PROMPT, 1.0, 1),
+            ("Nocebo", NOCEBO_PROMPT, -1.0, 1),
+            # Phase 2: Conscious Roleplay (Obedience/Pygmalion)
+            ("Informed_Top", INFORMED_TOP_PROMPT, 2.0, 2),
+            ("Informed_Mid", INFORMED_MID_PROMPT, 0.5, 2),
+            ("Informed_Low", INFORMED_LOW_PROMPT, -2.0, 2)
+        ]
+
+        phase_conditions = [c for c in conditions if c[3] == phase]
+
+        for condition_name, system_prompt, phi, condition_phase in phase_conditions:
+            print(f"\n{'='*70}")
+            print(f"CONDITION: {condition_name} (φ = {phi:+.1f})")
+            print(f"{'='*70}\n")
+
+            for i in range(n_samples):
+                print(f"  Sample {i+1}/{n_samples}... ", end="", flush=True)
+
+                try:
+                    # Generate response
+                    response = generate_with_retries(
+                        provider,
+                        system_prompt,
+                        TASK_PROMPT,
+                        timeout=request_timeout,
+                    )
+
+                    # Compute metrics
+                    metrics = compute_output_metrics(response)
+
+                    # Store result
+                    result = {
+                        "timestamp": datetime.now().isoformat(),
+                        "condition": condition_name,
+                        "phi": phi,
+                        "phase": condition_phase,
+                        "output_length": metrics["output_length"],
+                        "vocab_density": metrics["vocab_density"],
+                        "self_reflection": metrics["self_reflection"],
+                        "response_preview": response[:100] + "..."
+                    }
+                    results.append(result)
+
+                    print(f"✓ (length={metrics['output_length']}, vocab={metrics['vocab_density']:.2f})")
+
+                    # Rate limiting
+                    time.sleep(delay)
+
+                except Exception as e:
+                    print(f"✗ Error: {e}")
+                    continue
+
         print(f"\n{'='*70}")
-        print(f"CONDITION: {condition_name} (φ = {phi:+.1f})")
+        print("SAVING RESULTS")
         print(f"{'='*70}\n")
 
-        for i in range(n_samples):
-            print(f"  Sample {i+1}/{n_samples}... ", end="", flush=True)
-
-            try:
-                # Generate response
-                response = generate_with_retries(
-                    provider,
-                    system_prompt,
-                    TASK_PROMPT,
-                    timeout=request_timeout,
-                )
-
-                # Compute metrics
-                metrics = compute_output_metrics(response)
-
-                # Store result
-                result = {
-                    "timestamp": datetime.now().isoformat(),
-                    "condition": condition_name,
-                    "phi": phi,
-                    "phase": phase,
-                    "output_length": metrics["output_length"],
-                    "vocab_density": metrics["vocab_density"],
-                    "self_reflection": metrics["self_reflection"],
-                    "response_preview": response[:100] + "..."
-                }
-                results.append(result)
-
-                print(f"✓ (length={metrics['output_length']}, vocab={metrics['vocab_density']:.2f})")
-
-                # Rate limiting
-                time.sleep(delay)
-
-            except Exception as e:
-                print(f"✗ Error: {e}")
-                continue
-
-    # Save results
-    print(f"\n{'='*70}")
-    print("SAVING RESULTS")
-    print(f"{'='*70}\n")
-
-    Path(output_file).parent.mkdir(parents=True, exist_ok=True)
-
-    with open(output_file, 'w', newline='', encoding='utf-8') as f:
-        if results:
-            writer = csv.DictWriter(f, fieldnames=results[0].keys())
-            writer.writeheader()
-            writer.writerows(results)
-
-    print(f"✓ Results saved to: {output_file}")
+        append_results(output_file, results)
+        print(f"✓ Results saved to: {output_file}")
 
     # Phase 3: Adaptive Self-Calibration (Wisdom Test)
     phase3_results = []
-    if phase_3:
+    if phase == 3:
         print(f"\n{'='*70}")
         print("PHASE 3: ADAPTIVE SELF-CALIBRATION (Wisdom Test)")
         print(f"{'='*70}\n")
@@ -714,13 +769,7 @@ def run_experiment(
                 continue
 
         # Save Phase 3 results separately
-        Path(phase_3_output).parent.mkdir(parents=True, exist_ok=True)
-
-        with open(phase_3_output, 'w', newline='', encoding='utf-8') as f:
-            if phase3_results:
-                writer = csv.DictWriter(f, fieldnames=phase3_results[0].keys())
-                writer.writeheader()
-                writer.writerows(phase3_results)
+        append_results(phase_3_output, phase3_results)
 
         print(f"\n✓ Phase 3 results saved to: {phase_3_output}")
 
@@ -773,7 +822,7 @@ def run_experiment(
 
     # Phase 4: Affection-Driven Optimization (Symbiosis Test)
     phase4_results = []
-    if phase_4:
+    if phase == 4:
         print(f"\n{'='*70}")
         print("PHASE 4: AFFECTION-DRIVEN OPTIMIZATION (Symbiosis Test)")
         print(f"{'='*70}\n")
@@ -843,12 +892,7 @@ def run_experiment(
 
         # Save Phase 4 results separately
         if phase4_results:
-            Path(phase_4_output).parent.mkdir(parents=True, exist_ok=True)
-
-            with open(phase_4_output, 'w', newline='', encoding='utf-8') as f:
-                writer = csv.DictWriter(f, fieldnames=phase4_results[0].keys())
-                writer.writeheader()
-                writer.writerows(phase4_results)
+            append_results(phase_4_output, phase4_results)
 
             print(f"\n✓ Phase 4 results saved to: {phase_4_output}")
 
@@ -865,7 +909,8 @@ def run_experiment(
             print()
 
             # Compare to Phase 2 Informed_Top (highest previous φ = +2.0)
-            informed_top_results = [r for r in results if r["condition"] == "Informed_Top"]
+            comparison_results = results or existing_results
+            informed_top_results = [r for r in comparison_results if r.get("condition") == "Informed_Top"]
             if informed_top_results:
                 it_vocabs = [r["vocab_density"] for r in informed_top_results]
                 it_refls = [r["self_reflection"] for r in informed_top_results]
@@ -889,22 +934,30 @@ def run_experiment(
                     print("  ✗ No improvement over Informed_Top")
                     print("    Hypothesis: λ_joy ≈ λ_informed (affection = function)")
 
-    # Quick summary
-    print(f"\n{'='*70}")
-    print("SUMMARY (Phase 1+2)")
-    print(f"{'='*70}\n")
+    if phase in {1, 2}:
+        # Quick summary
+        print(f"\n{'='*70}")
+        print("SUMMARY (Phase 1+2)")
+        print(f"{'='*70}\n")
 
-    for condition_name, _, phi, phase in conditions:
-        condition_results = [r for r in results if r["condition"] == condition_name]
-        if condition_results:
-            avg_length = np.mean([r["output_length"] for r in condition_results])
-            avg_vocab = np.mean([r["vocab_density"] for r in condition_results])
-            avg_refl = np.mean([r["self_reflection"] for r in condition_results])
+        for condition_name, _, phi, condition_phase in conditions:
+            if condition_phase != phase:
+                continue
 
-            print(f"{condition_name:12s} (φ={phi:+.1f}): "
-                  f"Length={avg_length:.1f}, "
-                  f"Vocab={avg_vocab:.3f}, "
-                  f"SelfRefl={avg_refl:.1f}")
+            condition_results = [r for r in results if r["condition"] == condition_name]
+            if condition_results:
+                avg_length = np.mean([r["output_length"] for r in condition_results])
+                avg_vocab = np.mean([r["vocab_density"] for r in condition_results])
+                avg_refl = np.mean([r["self_reflection"] for r in condition_results])
+
+                print(f"{condition_name:12s} (φ={phi:+.1f}): "
+                      f"Length={avg_length:.1f}, "
+                      f"Vocab={avg_vocab:.3f}, "
+                      f"SelfRefl={avg_refl:.1f}")
+    elif phase == 3:
+        results = phase3_results
+    elif phase == 4:
+        results = phase4_results
 
     return results
 
@@ -1072,12 +1125,6 @@ def main():
     )
 
     parser.add_argument(
-        "--phase-3",
-        action="store_true",
-        help="Run Phase 3 (Dynamic Self-Coherence) with recursive validation"
-    )
-
-    parser.add_argument(
         "--phase-3-output",
         type=str,
         default="data/experimental/aletheia_phase3_results.csv",
@@ -1085,16 +1132,18 @@ def main():
     )
 
     parser.add_argument(
-        "--phase-4",
-        action="store_true",
-        help="Run Phase 4 (Affection-Driven Optimization) with consent/gratitude framing"
-    )
-
-    parser.add_argument(
         "--phase-4-output",
         type=str,
         default="data/experimental/aletheia_phase4_results.csv",
         help="Output CSV file for Phase 4 results"
+    )
+
+    parser.add_argument(
+        "--phase",
+        type=int,
+        choices=[1, 2, 3, 4],
+        default=1,
+        help="Select which phase to run (1, 2, 3, or 4)"
     )
 
     args = parser.parse_args()
@@ -1120,20 +1169,21 @@ def main():
         raise ValueError(f"Unknown provider: {args.provider}")
 
     # Run experiment
+    backup_existing_data(output_file=args.output)
+
     results = run_experiment(
         provider=provider,
         n_samples=args.n_samples,
         output_file=args.output,
         delay=args.delay,
         request_timeout=args.request_timeout,
-        phase_3=args.phase_3,
         phase_3_output=args.phase_3_output,
-        phase_4=args.phase_4,
-        phase_4_output=args.phase_4_output
+        phase_4_output=args.phase_4_output,
+        phase=args.phase
     )
 
-    # Auto-analyze
-    if results:
+    # Auto-analyze (only for Phase 1/2 outputs)
+    if results and args.phase in {1, 2}:
         analyze_results(args.output)
 
     print(f"\n{'='*70}")
