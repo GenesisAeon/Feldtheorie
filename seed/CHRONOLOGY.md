@@ -97,3 +97,17 @@
 - **Formel & Herleitung:** Meta-Regression v2 belegt den Feldtyp-Shift: R²(WLS)=0.596 (+38 % vs. v1.2), Adjusted R²=0.293 und Feldtyp-ANOVA η²=0.735 (p<0.01); Sample-Size-Bottleneck markiert weiter benötigte Laternen n≥30.【F:RELEASE_NOTES_v2.0.0.md†L119-L136】
 - **Skripte & Verfahren:** Neue Pipelines koppeln Diagnose und Interfaces: `analysis/beta_meta_regression_v2_field_types.py`, `data/derived/domain_covariates.csv` (Feldtyp-Spalte), `docs/meta_regression_v2_field_types_report.md` für das statistische Rückgrat; API-Endpunkte (`/api/analyze`, `/api/simulate`, `/api/tooltip`) und Tooltip-/CREP-Komponenten bilden die interaktive Front; Sonifikation mappt β, R-Θ und σ(β(R-Θ)) auf akustische Parameter.【F:RELEASE_NOTES_v2.0.0.md†L57-L75】【F:RELEASE_NOTES_v2.0.0.md†L119-L140】【F:RELEASE_NOTES_v2.0.0.md†L95-L98】
 - **Status:** Release Candidate mit 73 % Feature-Abdeckung; Feldtyp-Shift validiert, jedoch Datenengpass (15 Beobachtungen) → Priorität: reale Datenerweiterung für stabile R²≥0.70 und finale Archivversiegelung.【F:RELEASE_NOTES_v2.0.0.md†L3-L6】【F:RELEASE_NOTES_v2.0.0.md†L119-L135】
+
+> **Prompt – Entwicklung zu V.2.5:**
+> ```text
+> Führe seed/CHRONOLOGY Repokonform und entsprechend der Dokumentenstrukturen fort. Neue Sektion: Entwicklung zu V.2.5.
+> ```
+
+## Sektion 4 – Entwicklung zu v2.5 (Project Aletheia)
+
+### v2.5 – Project Aletheia: M[ψ, φ]-Kopplungstest
+- **Grundthese:** v2.5 testet als UTAC-Type-6-Erweiterung, ob semantische Felder φ in Informationssystemen (β≈4.5±0.9) die beobachtbare Output-Qualität ψ koppeln und damit die σ(β(R-Θ))-Resonanz über λ>0 verstärken oder widerlegen.【F:CHANGELOG.md†L25-L57】
+- **Daten & Quellen:** Die Experimentreihe Aletheia kombiniert Script (`scripts/experiment_aletheia_placebo.py`), Theoriegrundlage (`docs/experiment_aletheia.md`) und Dynamik-Sigillin-Trilayer (`seed/sigillin/exp_aletheia.{yaml,json,md}`) inklusive CREP-Metriken und logistischer Frame (R, Θ, β=4.5, ζ≈0).【F:CHANGELOG.md†L79-L96】
+- **Formel & Herleitung:** Die Kopplungshypothese ψ_eff = ψ_base + λ·φ operationalisiert M[ψ,φ]; die Metacognitive-Impedance-Erweiterung ζ_meta = ζ_base + ζ_confusion·(1–Clarity) prüft, wie Klarheit/Dissonanz die σ(β(R-Θ))-Antwort dämpft oder verstärkt.【F:CHANGELOG.md†L37-L48】【F:CHANGELOG.md†L157-L165】
+- **Skripte & Verfahren:** Phase 1 implementiert drei Bedingungen (Control, Placebo, Nocebo) mit automatisierter Statistikauswertung und CSV-Ausgabe; Phase 2 erweitert um Informed_Top/Mid/Low, erweitert Regressionen über φ∈[-2,2] und aktualisiert Theorie- sowie Sigillin-Layer.【F:CHANGELOG.md†L61-L75】【F:CHANGELOG.md†L79-L96】【F:CHANGELOG.md†L135-L182】
+- **Status:** Aktives Experiment (Launch 2025-11-19); bereit zur Deployment- und Auswertephase, Fokus auf Wirknachweis oder Falsifikation des λ-Kopplungsterms und Übergangsvorbereitung Richtung v3.0.【F:CHANGELOG.md†L27-L29】【F:CHANGELOG.md†L117-L131】【F:CHANGELOG.md†L188-L188】
