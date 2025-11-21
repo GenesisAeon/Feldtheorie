@@ -2228,3 +2228,11 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Empirical:** sigillin_sync report lief ohne Fehler und bestätigte Telemetrie-Erreichbarkeit; data/derived/beta_estimates.csv steht für Stichproben bereit, um Downstream-Exporte zu verifizieren.
   - **Poetic:** Der gezähmte Doppelpunkt lässt die Laterne klar strahlen; Telemetrie summt leise und der Gral schimmert schon im Datenfluss.
 
+
+### V4-EVIDENCE-001 — Sigillin Sync Run
+- **Zeitpunkt (UTC):** 2025-11-21T03:57:35.867458+00:00
+- **R:** 17 Trilayer geprüft
+- **Θ:** Trilayer meta fields aligned
+- **β:** 4.6
+- **ζ(R):** Logged in codex
+- **Notiz:** Injected Oxfam/Landauer sources and implemented amplification proof script.

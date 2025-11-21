@@ -1007,7 +1007,7 @@
       "analysis-batch-007"
     ],
     "results_directory": {
-      "description": "ZENTRAL! Enthält alle JSON-Exports der Fit-Skripte.\nBasis für Cohort-Summary, Bridge-Table, und UTAC v1.2.\n",
+      "description": "ZENTRAL! Enthält alle JSON-Exports der Fit-Skripte.\nBasis für Cohort-Summary, Bridge-Table, und UTAC v1.2.\nNeu: analysis/results/oxfam_amplification_proof.txt (Inequality Amplifier via Oxfam 2024).\n",
       "path": "results/"
     }
   },
