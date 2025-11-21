@@ -9,6 +9,12 @@ from .safety_delay_field import (
     meta_resonance_analysis,
     simulate_safety_delay_field,
 )
+from .implosive_genesis_sim import (
+    ImplosiveGenesisResult,
+    inverted_sigmoid,
+    plot_implosive_genesis,
+    simulate_implosive_genesis,
+)
 
 __all__ = [
     "SafetyDelayResult",
@@ -18,6 +24,10 @@ __all__ = [
     "control_centrality",
     "crep_resonance",
     "meta_resonance_analysis",
+    "ImplosiveGenesisResult",
+    "inverted_sigmoid",
+    "plot_implosive_genesis",
+    "simulate_implosive_genesis",
 ]
 
 __version__ = "1.2.0"

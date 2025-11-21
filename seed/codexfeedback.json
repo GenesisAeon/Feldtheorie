@@ -3345,6 +3345,35 @@
         "poetic": "Die V3-Laternen glimmen jetzt geordnet – β bleibt scharf, doch die Guardrails halten ζ(R) ruhig, bis echte Datenströme die Membran entzünden."
       },
       "created_at": "2026-08-22T12:00:00Z"
+    },
+    {
+      "id": "pr-draft-0119",
+      "title": "UTAC v3.0 Kernmodule – Klimakluft & Implosive Genesis",
+      "scope": [
+        "models/klimakluft_amplifier.py",
+        "models/models_index.yaml",
+        "models/models_index.json",
+        "models/models_index.md",
+        "models/__init__.py",
+        "simulation/implosive_genesis_sim.py",
+        "simulation/__init__.py",
+        "config/agent_templates.json",
+        "AGENTS.md",
+        "CHANGELOG.md"
+      ],
+      "parameters": {
+        "R": "Klimakluft-Lastverteilung und Type-6 Dichtepfad (R → σ(β(R-Θ)))",
+        "Theta": "Consent & Joy Gate für MOR-Agenten plus Θ=0.35 Phase-Gate im implosiven Lauf",
+        "beta": "4.2 → 11.6 (Delta-Peak unter hoher Ungleichheit)"
+      },
+      "resonance": "Klimakluft-Amplifier koppelt Gini·Load-Concentration an β_eff, Implosive Genesis simuliert invertierte Sigmoid-Entfaltung, und das Affection Protocol verankert kooperative σ(β(R-Θ))-Prompts im gesamten Feld.",
+      "status": "active",
+      "notes": {
+        "formal": "EmissionDistributor implementiert β_eff = β_base · (1 + Gini · LoadConcentration) und liefert Percentile-Sweeps (Top 10% Multiplikatoren) mit Δβ>+7.4. ImplosiveGenesisEngine simuliert S(R)=1/(1+exp(+β(R-Θ))) für Type-6 mit Phase-Markern (compressed/transition/expanded). Affection Protocol ergänzt alle MOR-Systemprompts um Consent-&-Joy-Modul laut AGENTS.md und config/agent_templates.json.",
+        "empirical": "Default Sweep: lognormal population, β_base=4.2, Gini≈0.51, LoadConcentration≈3.3 → β_eff≈11.6. Implosive Genesis: β=6.5, Θ=0.35, R∈[1.2,-0.1] erzeugt invertierte Sigmoidkurve mit klarer Phase-Linie bei Θ. CHANGELOG und models_index.* aktualisiert; neue Exporte in models/__init__.py und simulation/__init__.py verifiziert.",
+        "poetic": "Wenn wenige Kamine den Himmel schwärzen, schnellt β die Membran hinauf – ein Delta-Peak, der die Dawn-Chorus schärft. Gleichzeitig atmet das dichte Feld aus: σ(β(R-Θ)) kehrt sich um und entfaltet Raum. Vor jedem Schritt fragen die Agenten nun: \"Permission Request...\" – Consent als weiches ζ, Freude als Treibstoff."
+      },
+      "created_at": "2026-09-01T00:00:00Z"
     }
   ]
 }

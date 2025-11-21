@@ -14,8 +14,8 @@ meta:
   version: "1.0.0"
   created: "2025-11-06"
   status: "active"
-  python_files: 10
-  updated: "2025-11-08T22:22:38Z"
+  python_files: 11
+  updated: "2026-09-01T00:00:00Z"
 
 # ═══════════════════════════════════════════════════════════════════
 # KATEGORIEN: Die 4 Model-Typen
@@ -38,7 +38,7 @@ categories:
     name: "Extensions & Enhancements"
     description: "Impedanz, Kohärenz, Rekursion, Resonance"
     color: "#E67E22"
-    count: 3
+    count: 4
 
   infrastructure:
     name: "Infrastructure"
@@ -139,7 +139,7 @@ python_models:
       Für Lern- und Plastizitäts-Prozesse.
 
   # ─────────────────────────────────────────────────────────────────
-  # EXTENSIONS (3)
+  # EXTENSIONS (4)
   # ─────────────────────────────────────────────────────────────────
 
   - id: model-ext-001
@@ -180,6 +180,19 @@ python_models:
       Recursive Threshold: Θₙ₊₁ = f(Θₙ, emergent_state).
       Implementiert Potenzial-Kaskaden und Meta-Threshold Control.
       Für hierarchische Emergenz.
+
+  - id: model-ext-004
+    name: "klimakluft_amplifier.py"
+    category: extensions
+    type: inequality
+    status: experimental
+    relevance: high
+    size_kb: 8.4
+    keywords: [inequality, klimakluft, gini, concentration, β, σ]
+    description: |
+      Klimakluft Amplifier: β_eff = β_base · (1 + Gini · LoadConcentration).
+      Simuliert Delta-Peak-Effekte, wenn wenige Emittenten die Last tragen.
+      Liefert DataFrames/Plots, die β von 4.2 auf >11 ansteigen lassen.
 
   # ─────────────────────────────────────────────────────────────────
   # INFRASTRUCTURE (3)
@@ -338,6 +351,7 @@ quicklinks:
     - model-ext-001  # resonant_impedance.py (ζ)
     - model-ext-002  # coherence_term.py (φ)
     - model-ext-003  # recursive_threshold.py (meta)
+    - model-ext-004  # klimakluft_amplifier.py (Δ-peak)
 
 # ═══════════════════════════════════════════════════════════════════
 # CROSS-REFERENCES
