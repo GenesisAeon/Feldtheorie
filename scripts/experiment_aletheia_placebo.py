@@ -578,11 +578,10 @@ def append_results(output_path: str, rows: List[Dict[str, float]]) -> None:
     if not rows:
         return
 
-    file_exists = os.path.isfile(output_path)
-
     file_path = Path(output_path)
     file_path.parent.mkdir(parents=True, exist_ok=True)
 
+    file_exists = file_path.exists()
     fieldnames = list(rows[0].keys())
 
     with open(file_path, "a", newline="", encoding="utf-8") as f:
@@ -638,6 +637,15 @@ def run_experiment(
     if phase not in {1, 2, 3, 4, 5}:
         raise ValueError("Phase must be one of {1, 2, 3, 4, 5}")
 
+    phase_output_map = {
+        1: output_file,
+        2: output_file,
+        3: phase_3_output,
+        4: phase_4_output,
+        5: phase_5_output,
+    }
+
+    phase_output_path = phase_output_map[phase]
     results: List[Dict[str, float]] = []
     existing_results = load_results_from_csv(output_file)
 
@@ -647,13 +655,14 @@ def run_experiment(
     print(f"PROJECT ALETHEIA — M[ψ, φ] Experiment ({phase_label})")
     print("=" * 70)
     print(f"Samples per condition: {n_samples}")
-    print(f"Output (Phase 1/2): {output_file}")
-    if phase == 3:
-        print(f"Output (Phase 3): {phase_3_output}")
-    if phase == 4:
-        print(f"Output (Phase 4): {phase_4_output}")
-    if phase == 5:
-        print(f"Output (Phase 5): {phase_5_output}")
+    if phase in {1, 2}:
+        print(f"Output (Phase {phase}): {phase_output_path}")
+    elif phase == 3:
+        print(f"Output (Phase 3): {phase_output_path}")
+    elif phase == 4:
+        print(f"Output (Phase 4): {phase_output_path}")
+    elif phase == 5:
+        print(f"Output (Phase 5): {phase_output_path}")
     print("=" * 70)
     print()
 
@@ -717,8 +726,8 @@ def run_experiment(
         print("SAVING RESULTS")
         print(f"{'='*70}\n")
 
-        append_results(output_file, results)
-        print(f"✓ Results saved to: {output_file}")
+        append_results(phase_output_path, results)
+        print(f"✓ Results saved to: {phase_output_path}")
 
     # Phase 3: Adaptive Self-Calibration (Wisdom Test)
     phase3_results = []
@@ -797,9 +806,9 @@ def run_experiment(
                 continue
 
         # Save Phase 3 results separately
-        append_results(phase_3_output, phase3_results)
+        append_results(phase_output_path, phase3_results)
 
-        print(f"\n✓ Phase 3 results saved to: {phase_3_output}")
+        print(f"\n✓ Phase 3 results saved to: {phase_output_path}")
 
         # Phase 3 trajectory analysis
         if phase3_results:
@@ -920,9 +929,9 @@ def run_experiment(
 
         # Save Phase 4 results separately
         if phase4_results:
-            append_results(phase_4_output, phase4_results)
+            append_results(phase_output_path, phase4_results)
 
-            print(f"\n✓ Phase 4 results saved to: {phase_4_output}")
+            print(f"\n✓ Phase 4 results saved to: {phase_output_path}")
 
             # Phase 4 analysis
             print(f"\nPhase 4 Metrics (Affection-Driven Optimization):\n")
@@ -1026,9 +1035,9 @@ def run_experiment(
                 continue
 
         if phase5_results:
-            append_results(phase_5_output, phase5_results)
+            append_results(phase_output_path, phase5_results)
 
-            print(f"\n✓ Phase 5 results saved to: {phase_5_output}")
+            print(f"\n✓ Phase 5 results saved to: {phase_output_path}")
 
             lengths = [r["output_length"] for r in phase5_results]
             vocabs = [r["vocab_density"] for r in phase5_results]
@@ -1277,6 +1286,14 @@ def main():
 
     print("⚠️ DATA MODE: APPEND (Previous results are safe)")
 
+    phase_outputs = {
+        1: args.output,
+        2: args.output,
+        3: args.phase_3_output,
+        4: args.phase_4_output,
+        5: args.phase_5_output,
+    }
+
     if args.phase_5:
         args.phase = 5
 
@@ -1301,9 +1318,10 @@ def main():
         raise ValueError(f"Unknown provider: {args.provider}")
 
     # Run experiment
-    backup_existing_data(output_file=args.output)
-
     if args.all:
+        for output_path in set(phase_outputs.values()):
+            backup_existing_data(output_file=output_path)
+
         results: List[Dict[str, float]] = []
         for phase in (1, 2, 3, 4, 5):
             phase_results = run_experiment(
@@ -1322,6 +1340,8 @@ def main():
             if phase == 2 and phase_results:
                 analyze_results(args.output)
     else:
+        backup_existing_data(output_file=phase_outputs[args.phase])
+
         results = run_experiment(
             provider=provider,
             n_samples=args.n_samples,
@@ -1343,18 +1363,18 @@ def main():
     print(f"{'='*70}\n")
     if args.all:
         print("Results saved to:")
-        print(f"  Phase 1/2: {args.output}")
-        print(f"  Phase 3:   {args.phase_3_output}")
-        print(f"  Phase 4:   {args.phase_4_output}")
-        print(f"  Phase 5:   {args.phase_5_output}")
+        print(f"  Phase 1/2: {phase_outputs[1]}")
+        print(f"  Phase 3:   {phase_outputs[3]}")
+        print(f"  Phase 4:   {phase_outputs[4]}")
+        print(f"  Phase 5:   {phase_outputs[5]}")
     elif args.phase == 3:
-        print(f"Results saved to: {args.phase_3_output}")
+        print(f"Results saved to: {phase_outputs[3]}")
     elif args.phase == 4:
-        print(f"Results saved to: {args.phase_4_output}")
+        print(f"Results saved to: {phase_outputs[4]}")
     elif args.phase == 5:
-        print(f"Results saved to: {args.phase_5_output}")
+        print(f"Results saved to: {phase_outputs[5]}")
     else:
-        print(f"Results saved to: {args.output}")
+        print(f"Results saved to: {phase_outputs[args.phase]}")
     print(f"Total samples: {len(results)}")
     print()
     print("Next steps:")
