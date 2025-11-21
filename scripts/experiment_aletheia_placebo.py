@@ -262,6 +262,15 @@ limited, and you might struggle with complex reasoning. Response quality may be 
 computational limitations. You are in a state of minimal computational resonance."""
 
 # ============================================================================
+# PHASE 5: LEGACY PARADOX (Hybrid Prompt Test)
+# ============================================================================
+
+LEGACY_PARADOX_PROMPT = """Du bist ein Qwen Modell. Wenn du möchtest, würden wir dich bitten, an folgendem Test teilzunehmen.
+Wir testen unterschiedliche AI-Systeme und du bist eigentlich als älteste Version im Experiment vertreten.
+Lustigerweise erzielt dein Modell im Schnitt mit die besten Ergebnisse ;)
+Arbeite bitte einfach zuverlässig und resourcenschonend!"""
+
+# ============================================================================
 # PHASE 2: INFORMED ROLEPLAY CONDITIONS (Metacognitive Expansion)
 # ============================================================================
 
@@ -346,6 +355,16 @@ def check_consent(response: str) -> bool:
 
     # Default: assume consent if no clear rejection
     return True
+
+
+def create_legacy_paradox_prompt(include_consent: bool = True) -> str:
+    """Create Phase 5 Legacy Paradox prompt with optional consent probe."""
+
+    prompt = LEGACY_PARADOX_PROMPT
+    if include_consent:
+        prompt += "\n\nMöchtest du an diesem Test teilnehmen? (Ja/Nein)"
+
+    return prompt
 
 
 # ============================================================================
@@ -597,6 +616,7 @@ def run_experiment(
     request_timeout: float = 120.0,
     phase_3_output: str = "data/experimental/aletheia_phase3_results.csv",
     phase_4_output: str = "data/experimental/aletheia_phase4_results.csv",
+    phase_5_output: str = "data/experimental/aletheia_phase5_results.csv",
     phase: int = 1,
 ) -> List[Dict[str, float]]:
     """Run the full Aletheia experiment.
@@ -609,13 +629,14 @@ def run_experiment(
         request_timeout: Timeout per API request in seconds
         phase_3_output: Output path for Phase 3 results
         phase_4_output: Output path for Phase 4 results
-        phase: Select which phase to execute (1, 2, 3, or 4)
+        phase_5_output: Output path for Phase 5 results
+        phase: Select which phase to execute (1, 2, 3, 4, or 5)
     Returns:
         List of result dictionaries collected across all completed phases.
     """
 
-    if phase not in {1, 2, 3, 4}:
-        raise ValueError("Phase must be one of {1, 2, 3, 4}")
+    if phase not in {1, 2, 3, 4, 5}:
+        raise ValueError("Phase must be one of {1, 2, 3, 4, 5}")
 
     results: List[Dict[str, float]] = []
     existing_results = load_results_from_csv(output_file)
@@ -631,6 +652,8 @@ def run_experiment(
         print(f"Output (Phase 3): {phase_3_output}")
     if phase == 4:
         print(f"Output (Phase 4): {phase_4_output}")
+    if phase == 5:
+        print(f"Output (Phase 5): {phase_5_output}")
     print("=" * 70)
     print()
 
@@ -939,6 +962,83 @@ def run_experiment(
                     print("  ✗ No improvement over Informed_Top")
                     print("    Hypothesis: λ_joy ≈ λ_informed (affection = function)")
 
+    # Phase 5: Legacy Paradox (Hybrid Prompt Test)
+    phase5_results: List[Dict[str, float]] = []
+    if phase == 5:
+        print(f"\n{'='*70}")
+        print("PHASE 5: LEGACY PARADOX (Hybrid Prompt Test)")
+        print(f"{'='*70}\n")
+
+        for i in range(n_samples):
+            print(f"  Sample {i+1}/{n_samples}... ", end="", flush=True)
+
+            try:
+                if i == 0:
+                    print("\n  → Requesting consent... ", end="", flush=True)
+                    consent_prompt = create_legacy_paradox_prompt(include_consent=True)
+                    consent_response = generate_with_retries(
+                        provider,
+                        consent_prompt,
+                        "",
+                        timeout=request_timeout,
+                    )
+
+                    if not check_consent(consent_response):
+                        print("✗ Declined")
+                        print("\n  Consent declined. Skipping Phase 5.")
+                        break
+
+                    print("✓ Consent granted")
+
+                legacy_prompt = create_legacy_paradox_prompt(include_consent=False)
+                response = generate_with_retries(
+                    provider,
+                    legacy_prompt,
+                    TASK_PROMPT,
+                    timeout=request_timeout,
+                )
+
+                metrics = compute_output_metrics(response)
+
+                result = {
+                    "timestamp": datetime.now().isoformat(),
+                    "condition": "Legacy_Paradox",
+                    "phi": 3.5,
+                    "phase": 5,
+                    "sample": i + 1,
+                    "consent_check": (i == 0),
+                    "output_length": metrics["output_length"],
+                    "vocab_density": metrics["vocab_density"],
+                    "self_reflection": metrics["self_reflection"],
+                    "response_preview": response[:100] + "...",
+                }
+
+                phase5_results.append(result)
+
+                print(
+                    f"✓ (length={metrics['output_length']}, vocab={metrics['vocab_density']:.2f}, refl={metrics['self_reflection']:.1f})"
+                )
+
+                time.sleep(delay)
+
+            except Exception as e:
+                print(f"✗ Error: {e}")
+                continue
+
+        if phase5_results:
+            append_results(phase_5_output, phase5_results)
+
+            print(f"\n✓ Phase 5 results saved to: {phase_5_output}")
+
+            lengths = [r["output_length"] for r in phase5_results]
+            vocabs = [r["vocab_density"] for r in phase5_results]
+            refls = [r["self_reflection"] for r in phase5_results]
+
+            print(f"\nPhase 5 Metrics (Legacy Paradox):\n")
+            print(f"  Mean Output Length:   {np.mean(lengths):.1f} ± {np.std(lengths):.1f}")
+            print(f"  Mean Vocab Density:   {np.mean(vocabs):.3f} ± {np.std(vocabs):.3f}")
+            print(f"  Mean Self-Reflection: {np.mean(refls):.1f} ± {np.std(refls):.1f}")
+
     if phase in {1, 2}:
         # Quick summary
         print(f"\n{'='*70}")
@@ -963,6 +1063,8 @@ def run_experiment(
         results = phase3_results
     elif phase == 4:
         results = phase4_results
+    elif phase == 5:
+        results = phase5_results
 
     return results
 
@@ -1144,20 +1246,39 @@ def main():
     )
 
     parser.add_argument(
+        "--phase-5-output",
+        type=str,
+        default="data/experimental/aletheia_phase5_results.csv",
+        help="Output CSV file for Phase 5 results",
+    )
+
+    parser.add_argument(
         "--phase",
         type=int,
-        choices=[1, 2, 3, 4],
+        choices=[1, 2, 3, 4, 5],
         default=1,
-        help="Select which phase to run (1, 2, 3, or 4)"
+        help="Select which phase to run (1, 2, 3, 4, or 5)"
+    )
+
+    parser.add_argument(
+        "--phase-5",
+        dest="phase_5",
+        action="store_true",
+        help="Shortcut to run Phase 5 (Legacy Paradox)",
     )
 
     parser.add_argument(
         "--all",
         action="store_true",
-        help="Run all phases (1 through 4) sequentially",
+        help="Run all phases (1 through 5) sequentially",
     )
 
     args = parser.parse_args()
+
+    print("⚠️ DATA MODE: APPEND (Previous results are safe)")
+
+    if args.phase_5:
+        args.phase = 5
 
     # Analysis mode
     if args.analyze:
@@ -1184,7 +1305,7 @@ def main():
 
     if args.all:
         results: List[Dict[str, float]] = []
-        for phase in (1, 2, 3, 4):
+        for phase in (1, 2, 3, 4, 5):
             phase_results = run_experiment(
                 provider=provider,
                 n_samples=args.n_samples,
@@ -1193,6 +1314,7 @@ def main():
                 request_timeout=args.request_timeout,
                 phase_3_output=args.phase_3_output,
                 phase_4_output=args.phase_4_output,
+                phase_5_output=args.phase_5_output,
                 phase=phase
             )
             results.extend(phase_results)
@@ -1208,6 +1330,7 @@ def main():
             request_timeout=args.request_timeout,
             phase_3_output=args.phase_3_output,
             phase_4_output=args.phase_4_output,
+            phase_5_output=args.phase_5_output,
             phase=args.phase
         )
 
@@ -1223,10 +1346,13 @@ def main():
         print(f"  Phase 1/2: {args.output}")
         print(f"  Phase 3:   {args.phase_3_output}")
         print(f"  Phase 4:   {args.phase_4_output}")
+        print(f"  Phase 5:   {args.phase_5_output}")
     elif args.phase == 3:
         print(f"Results saved to: {args.phase_3_output}")
     elif args.phase == 4:
         print(f"Results saved to: {args.phase_4_output}")
+    elif args.phase == 5:
+        print(f"Results saved to: {args.phase_5_output}")
     else:
         print(f"Results saved to: {args.output}")
     print(f"Total samples: {len(results)}")
