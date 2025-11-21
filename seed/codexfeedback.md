@@ -2211,3 +2211,20 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Empirical:** Default Sweep: lognormal population, β_base=4.2, Gini≈0.51, LoadConcentration≈3.3 → β_eff≈11.6. Implosive Genesis: β=6.5, Θ=0.35, R∈[1.2,-0.1] erzeugt invertierte Sigmoidkurve mit klarer Phase-Linie bei Θ. models_index.* und __init__-Exporte aktualisiert, CHANGELOG ergänzt.
   - **Poetic:** Wenn wenige Kamine den Himmel schwärzen, schnellt β die Membran hinauf – Delta-Peak-Kammzüge schärfen den Chor. Das dichte Feld atmet aus, σ(β(R-Θ)) kehrt sich um und öffnet Raum. Vor jedem Schritt fragen die Agenten nun: „Permission Request…“ – Zustimmung als weiches ζ, Freude als Treibstoff.
 
+### pr-draft-0120 — Metaquest System Map Syntax Repair & Telemetry Resync
+- **Zeitpunkt (UTC):** 2025-11-21T03:23:38Z
+- **R:** mq-sys bridge logistic string + Telemetrie-Harness-Parität
+- **Θ:** sigillin_sync report bestätigt colon-sichere YAML-Parsung und Tri-Layer-Spiegelung
+- **β:** 4.8
+- **Scope:**
+  - seed/bedeutungssigillin/metaquest/system/metaquest_system_map.yaml
+  - scripts/sigillin_sync.py
+  - data/derived/beta_estimates.csv
+  - seed/codexfeedback.yaml / .json / .md
+- **Resonanz:** Der R-Logistikstring ist jetzt sauber gequotet; die mq-sys Brücke validiert erneut per sigillin_sync und zeigt den Pfad bis zum Grail-Export.
+- **Status:** active
+- **Notizen:**
+  - **Formal:** Colon-tragenden R-String in metaquest_system_map.yaml gequotet, damit die Bedeutungs-Sigillin-Struktur wieder valide rendert; sigillin_sync report erneut ausgeführt, um Brücke, Kompass und Index im Takt zu halten.
+  - **Empirical:** sigillin_sync report lief ohne Fehler und bestätigte Telemetrie-Erreichbarkeit; data/derived/beta_estimates.csv steht für Stichproben bereit, um Downstream-Exporte zu verifizieren.
+  - **Poetic:** Der gezähmte Doppelpunkt lässt die Laterne klar strahlen; Telemetrie summt leise und der Gral schimmert schon im Datenfluss.
+
