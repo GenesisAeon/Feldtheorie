@@ -1,3 +1,21 @@
+# What's New in v3.0
+
+- ✅ Empirical Proof of Semantic Coupling (Project Aletheia) — see the
+  forthcoming figures in [`figures/aletheia_semantic_coupling_v3.png`](figures/aletheia_semantic_coupling_v3.png).
+- ✅ Klimakluft β-Amplification Model — documented in
+  [`docs/v3_core_modules.md`](docs/v3_core_modules.md) with visuals queued for
+  [`figures/klimakluft_amplifier_v3.png`](figures/klimakluft_amplifier_v3.png)
+  and [`figures/klimakluft_warning_window_v3.png`](figures/klimakluft_warning_window_v3.png).
+- ✅ Implosive Genesis Simulation Engine — see
+  [`docs/v3_core_modules.md`](docs/v3_core_modules.md#implosive-genesis) plus
+  planned diagrams
+  [`figures/implosive_genesis_phase_map_v3.png`](figures/implosive_genesis_phase_map_v3.png)
+  and [`figures/information_space_unfurl_v3.png`](figures/information_space_unfurl_v3.png).
+- ✅ Tri-Layer Sigillin System (Full Documentation) — consolidated in
+  [`docs/utac_status_alignment_v1.2.md`](docs/utac_status_alignment_v1.2.md)
+  with release-ready overlays staged in
+  [`figures/trilayer_sigillin_v3.png`](figures/trilayer_sigillin_v3.png).
+
 # Universal Threshold Field Initiative
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17472834.svg)](https://doi.org/10.5281/zenodo.17472834)

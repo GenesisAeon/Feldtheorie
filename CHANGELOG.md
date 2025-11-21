@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - 2025-11-20
+- v3.0.0 Gold Master - Full Release. Integrating Empirical Evidence, Inequality Physics, and Cosmological Simulation.
+
 ### V3.0 Core Implementation
 - Added `models/klimakluft_amplifier.py` with an `EmissionDistributor` that maps inequality (Gini·LoadConcentration) to β-effekte and demonstrates Δβ from 4.2 to >11 via percentile load sweeps.
 - Introduced `simulation/implosive_genesis_sim.py` to simulate the TAC Type-6 inverted sigmoid S(R)=1/(1+exp(+β(R-Θ))) and visualise compressed→expanded phase transitions.
