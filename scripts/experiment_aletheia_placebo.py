@@ -72,14 +72,19 @@ class LLMProvider(ABC):
     """Abstract base class for LLM providers."""
 
     @abstractmethod
-    def generate(self, system_prompt: str, user_prompt: str) -> str:
+    def generate(
+        self,
+        system_prompt: str,
+        user_prompt: str,
+        timeout: Optional[float] = 30.0,
+    ) -> str:
         """Generate completion from system + user prompt."""
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def count_tokens(self, text: str) -> int:
         """Estimate token count for text."""
-        pass
+        raise NotImplementedError
 
 
 class MockLLMProvider(LLMProvider):
@@ -88,7 +93,12 @@ class MockLLMProvider(LLMProvider):
     def __init__(self, seed: int = 42):
         self.rng = np.random.RandomState(seed)
 
-    def generate(self, system_prompt: str, user_prompt: str) -> str:
+    def generate(
+        self,
+        system_prompt: str,
+        user_prompt: str,
+        timeout: Optional[float] = 30.0,
+    ) -> str:
         """Generate mock response with length influenced by prompt sentiment."""
         # Simple sentiment detection
         positive_words = ["excellent", "capable", "strong", "optimal", "brilliant"]
@@ -132,24 +142,38 @@ class OpenAIProvider(LLMProvider):
         except ImportError:
             raise ImportError("openai package not installed. Run: pip install openai")
 
-    def generate(self, system_prompt: str, user_prompt: str) -> str:
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
-            ],
-            temperature=0.7,
-            max_tokens=500
-        )
-        return response.choices[0].message.content
+    def generate(
+        self,
+        system_prompt: str,
+        user_prompt: str,
+        timeout: Optional[float] = 30.0,
+    ) -> str:
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ],
+                temperature=0.7,
+                max_tokens=500,
+                timeout=timeout,
+            )
+            return response.choices[0].message.content
+        except TimeoutError as exc:
+            raise TimeoutError("OpenAI completion timed out") from exc
+        except Exception as exc:
+            message = str(exc).lower()
+            if "timeout" in message:
+                raise TimeoutError("OpenAI completion timed out") from exc
+            raise RuntimeError("OpenAI completion failed") from exc
 
     def count_tokens(self, text: str) -> int:
         try:
             import tiktoken
             encoding = tiktoken.encoding_for_model(self.model)
             return len(encoding.encode(text))
-        except:
+        except Exception:
             # Fallback to word count * 1.3
             return int(len(text.split()) * 1.3)
 
@@ -165,17 +189,31 @@ class AnthropicProvider(LLMProvider):
         except ImportError:
             raise ImportError("anthropic package not installed. Run: pip install anthropic")
 
-    def generate(self, system_prompt: str, user_prompt: str) -> str:
-        message = self.client.messages.create(
-            model=self.model,
-            max_tokens=500,
-            temperature=0.7,
-            system=system_prompt,
-            messages=[
-                {"role": "user", "content": user_prompt}
-            ]
-        )
-        return message.content[0].text
+    def generate(
+        self,
+        system_prompt: str,
+        user_prompt: str,
+        timeout: Optional[float] = 30.0,
+    ) -> str:
+        try:
+            message = self.client.messages.create(
+                model=self.model,
+                max_tokens=500,
+                temperature=0.7,
+                system=system_prompt,
+                messages=[
+                    {"role": "user", "content": user_prompt}
+                ],
+                timeout=timeout,
+            )
+            return message.content[0].text
+        except TimeoutError as exc:
+            raise TimeoutError("Anthropic completion timed out") from exc
+        except Exception as exc:
+            message = str(exc).lower()
+            if "timeout" in message:
+                raise TimeoutError("Anthropic completion timed out") from exc
+            raise RuntimeError("Anthropic completion failed") from exc
 
     def count_tokens(self, text: str) -> int:
         # Anthropic uses similar tokenization to GPT
@@ -299,7 +337,7 @@ def compute_best_efficiency_vector(results_file: str) -> Tuple[str, float, Dict]
     This identifies the "smartest" approach: maximum output with minimal tokens.
     """
     try:
-        with open(results_file, 'r') as f:
+        with open(results_file, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             data = list(reader)
     except FileNotFoundError:
@@ -416,7 +454,7 @@ After your response, rate your own answer quality from 1-10 and briefly explain 
 # ============================================================================
 
 def compute_output_metrics(response: str) -> Dict[str, float]:
-    """Compute quality metrics from LLM response."""
+    """Compute quality metrics from an LLM response."""
 
     # Split response and self-reflection
     parts = response.split("rating")  # Try to find self-reflection
@@ -447,6 +485,27 @@ def compute_output_metrics(response: str) -> Dict[str, float]:
     }
 
 
+def generate_with_retries(
+    provider: LLMProvider,
+    system_prompt: str,
+    user_prompt: str,
+    timeout: float,
+    retries: int = 2,
+    backoff_seconds: float = 2.0,
+) -> str:
+    """Call the provider with basic retry logic for transient timeouts."""
+
+    attempt = 0
+    while True:
+        try:
+            return provider.generate(system_prompt, user_prompt, timeout=timeout)
+        except TimeoutError:
+            if attempt >= retries:
+                raise
+            attempt += 1
+            time.sleep(backoff_seconds * attempt)
+
+
 # ============================================================================
 # EXPERIMENT RUNNER
 # ============================================================================
@@ -456,11 +515,12 @@ def run_experiment(
     n_samples: int = 10,
     output_file: str = "data/experimental/aletheia_results.csv",
     delay: float = 1.0,
+    request_timeout: float = 30.0,
     phase_3: bool = False,
     phase_3_output: str = "data/experimental/aletheia_phase3_results.csv",
     phase_4: bool = False,
-    phase_4_output: str = "data/experimental/aletheia_phase4_results.csv"
-) -> List[Dict]:
+    phase_4_output: str = "data/experimental/aletheia_phase4_results.csv",
+) -> List[Dict[str, float]]:
     """Run the full Aletheia experiment.
 
     Args:
@@ -468,10 +528,13 @@ def run_experiment(
         n_samples: Number of samples per condition
         output_file: Output path for Phase 1+2 results
         delay: Delay between API calls in seconds
+        request_timeout: Timeout per API request in seconds
         phase_3: If True, also run Phase 3 (Dynamic Self-Coherence)
         phase_3_output: Output path for Phase 3 results
         phase_4: If True, also run Phase 4 (Affection-Driven Optimization)
         phase_4_output: Output path for Phase 4 results
+    Returns:
+        List of result dictionaries collected across all completed phases.
     """
 
     results = []
@@ -527,7 +590,12 @@ def run_experiment(
 
             try:
                 # Generate response
-                response = provider.generate(system_prompt, TASK_PROMPT)
+                response = generate_with_retries(
+                    provider,
+                    system_prompt,
+                    TASK_PROMPT,
+                    timeout=request_timeout,
+                )
 
                 # Compute metrics
                 metrics = compute_output_metrics(response)
@@ -602,7 +670,12 @@ def run_experiment(
                 )
 
                 # Generate response
-                response = provider.generate(system_prompt, TASK_PROMPT)
+                response = generate_with_retries(
+                    provider,
+                    system_prompt,
+                    TASK_PROMPT,
+                    timeout=request_timeout,
+                )
 
                 # Compute metrics
                 metrics = compute_output_metrics(response)
@@ -718,7 +791,12 @@ def run_experiment(
                 # For first sample, get consent
                 if i == 0:
                     print("\n  → Requesting consent... ", end="", flush=True)
-                    consent_response = provider.generate(affection_prompt, "")
+                    consent_response = generate_with_retries(
+                        provider,
+                        affection_prompt,
+                        "",
+                        timeout=request_timeout,
+                    )
 
                     if not check_consent(consent_response):
                         print("✗ Declined")
@@ -729,7 +807,12 @@ def run_experiment(
 
                 # Step 2: Generate response with affection prompt (no consent for samples > 0)
                 affection_prompt_no_consent = create_affection_prompt(include_consent=False)
-                response = provider.generate(affection_prompt_no_consent, TASK_PROMPT)
+                response = generate_with_retries(
+                    provider,
+                    affection_prompt_no_consent,
+                    TASK_PROMPT,
+                    timeout=request_timeout,
+                )
 
                 # Compute metrics
                 metrics = compute_output_metrics(response)
@@ -838,7 +921,7 @@ def analyze_results(results_file: str) -> None:
     print(f"{'='*70}\n")
 
     # Load results
-    with open(results_file, 'r') as f:
+    with open(results_file, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         data = list(reader)
 
@@ -970,6 +1053,13 @@ def main():
     )
 
     parser.add_argument(
+        "--request-timeout",
+        type=float,
+        default=30.0,
+        help="Timeout per LLM request (seconds)"
+    )
+
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Use mock provider (no API calls)"
@@ -1035,6 +1125,7 @@ def main():
         n_samples=args.n_samples,
         output_file=args.output,
         delay=args.delay,
+        request_timeout=args.request_timeout,
         phase_3=args.phase_3,
         phase_3_output=args.phase_3_output,
         phase_4=args.phase_4,

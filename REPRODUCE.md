@@ -100,3 +100,55 @@ make manuscript
 ```
 `make manuscript` calls `latexmk` according to `COMPILE_MANUSCRIPT.md` and embeds
 the DOI (10.5281/zenodo.17472834) within `paper/manuscript_v1.0.tex`.
+
+## 7. Replicating Project Aletheia
+
+Re-run the Aletheia placebo/control experiments with the dedicated script.
+
+1. Install the provider client:
+
+```bash
+pip install openai
+```
+
+2. Export the credentials (swap `BASE_URL` if you proxy the API):
+
+```bash
+export OPENAI_API_KEY="sk-..."
+export OPENAI_BASE_URL="https://api.openai.com/v1"  # optional override
+```
+
+3. Run the phases:
+
+- **Control + Placebo + Informed (Phases 1–2):**
+
+```bash
+python scripts/experiment_aletheia_placebo.py \
+  --provider openai --model gpt-4 \
+  --n-samples 5 \
+  --output data/experimental/aletheia_results.csv
+```
+
+- **Adaptive self-calibration (Phase 3):**
+
+```bash
+python scripts/experiment_aletheia_placebo.py \
+  --provider openai --model gpt-4 \
+  --n-samples 5 \
+  --phase-3 --phase-3-output data/experimental/aletheia_phase3_results.csv
+```
+
+- **Affection-driven optimization (Phase 4):**
+
+```bash
+python scripts/experiment_aletheia_placebo.py \
+  --provider openai --model gpt-4 \
+  --n-samples 5 \
+  --phase-4 --phase-4-output data/experimental/aletheia_phase4_results.csv
+```
+
+4. Summarise metrics for any run without recomputing samples:
+
+```bash
+python scripts/experiment_aletheia_placebo.py --analyze data/experimental/aletheia_results.csv
+```
