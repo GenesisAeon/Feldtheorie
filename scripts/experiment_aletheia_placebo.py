@@ -609,7 +609,7 @@ def load_results_from_csv(results_file: str) -> List[Dict[str, str]]:
 
 def run_experiment(
     provider: LLMProvider,
-    n_samples: int = 10,
+    n_samples: int,
     output_file: str = "data/experimental/aletheia_results.csv",
     delay: float = 1.0,
     request_timeout: float = 120.0,
@@ -1203,8 +1203,7 @@ def main():
     parser.add_argument(
         "--n-samples",
         type=int,
-        default=10,
-        help="Number of samples per condition"
+        help="Number of samples per condition (required when running an experiment)"
     )
 
     parser.add_argument(
@@ -1269,19 +1268,6 @@ def main():
         help="Select which phase to run (1, 2, 3, 4, or 5)"
     )
 
-    parser.add_argument(
-        "--phase-5",
-        dest="phase_5",
-        action="store_true",
-        help="Shortcut to run Phase 5 (Legacy Paradox)",
-    )
-
-    parser.add_argument(
-        "--all",
-        action="store_true",
-        help="Run all phases (1 through 5) sequentially",
-    )
-
     args = parser.parse_args()
 
     print("⚠️ DATA MODE: APPEND (Previous results are safe)")
@@ -1294,13 +1280,13 @@ def main():
         5: args.phase_5_output,
     }
 
-    if args.phase_5:
-        args.phase = 5
-
     # Analysis mode
     if args.analyze:
         analyze_results(args.analyze)
         return
+
+    if args.n_samples is None:
+        raise SystemExit("--n-samples is required when running an experiment phase")
 
     # Select provider
     if args.dry_run or args.provider == "mock":
@@ -1317,57 +1303,28 @@ def main():
     else:
         raise ValueError(f"Unknown provider: {args.provider}")
 
-    # Run experiment
-    if args.all:
-        for output_path in set(phase_outputs.values()):
-            backup_existing_data(output_file=output_path)
+    backup_existing_data(output_file=phase_outputs[args.phase])
 
-        results: List[Dict[str, float]] = []
-        for phase in (1, 2, 3, 4, 5):
-            phase_results = run_experiment(
-                provider=provider,
-                n_samples=args.n_samples,
-                output_file=args.output,
-                delay=args.delay,
-                request_timeout=args.request_timeout,
-                phase_3_output=args.phase_3_output,
-                phase_4_output=args.phase_4_output,
-                phase_5_output=args.phase_5_output,
-                phase=phase
-            )
-            results.extend(phase_results)
+    results = run_experiment(
+        provider=provider,
+        n_samples=args.n_samples,
+        output_file=args.output,
+        delay=args.delay,
+        request_timeout=args.request_timeout,
+        phase_3_output=args.phase_3_output,
+        phase_4_output=args.phase_4_output,
+        phase_5_output=args.phase_5_output,
+        phase=args.phase
+    )
 
-            if phase == 2 and phase_results:
-                analyze_results(args.output)
-    else:
-        backup_existing_data(output_file=phase_outputs[args.phase])
-
-        results = run_experiment(
-            provider=provider,
-            n_samples=args.n_samples,
-            output_file=args.output,
-            delay=args.delay,
-            request_timeout=args.request_timeout,
-            phase_3_output=args.phase_3_output,
-            phase_4_output=args.phase_4_output,
-            phase_5_output=args.phase_5_output,
-            phase=args.phase
-        )
-
-        # Auto-analyze (only for Phase 1/2 outputs)
-        if results and args.phase in {1, 2}:
-            analyze_results(args.output)
+    # Auto-analyze (only for Phase 1/2 outputs)
+    if results and args.phase in {1, 2}:
+        analyze_results(args.output)
 
     print(f"\n{'='*70}")
     print("EXPERIMENT COMPLETE")
     print(f"{'='*70}\n")
-    if args.all:
-        print("Results saved to:")
-        print(f"  Phase 1/2: {phase_outputs[1]}")
-        print(f"  Phase 3:   {phase_outputs[3]}")
-        print(f"  Phase 4:   {phase_outputs[4]}")
-        print(f"  Phase 5:   {phase_outputs[5]}")
-    elif args.phase == 3:
+    if args.phase == 3:
         print(f"Results saved to: {phase_outputs[3]}")
     elif args.phase == 4:
         print(f"Results saved to: {phase_outputs[4]}")
