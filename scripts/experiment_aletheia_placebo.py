@@ -1190,14 +1190,14 @@ def main():
     parser.add_argument(
         "--provider",
         choices=["mock", "openai", "anthropic"],
-        default="mock",
+        default="openai",
         help="LLM provider to use"
     )
 
     parser.add_argument(
         "--model",
         type=str,
-        help="Model name (e.g., 'gpt-4', 'claude-sonnet-4')"
+        help="Model name (default: 'qwen2.5:7b' for OpenAI, 'claude-sonnet-4' for Anthropic)"
     )
 
     parser.add_argument(
@@ -1268,6 +1268,12 @@ def main():
         help="Select which phase to run (1, 2, 3, 4, or 5)"
     )
 
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Run all phases sequentially (1 → 5)",
+    )
+
     args = parser.parse_args()
 
     print("⚠️ DATA MODE: APPEND (Previous results are safe)")
@@ -1293,7 +1299,7 @@ def main():
         print("🔬 Running in MOCK mode (no API calls)\n")
         provider = MockLLMProvider()
     elif args.provider == "openai":
-        model = args.model or "gpt-4"
+        model = args.model or "qwen2.5:7b"
         print(f"🔬 Running with OpenAI ({model})\n")
         provider = OpenAIProvider(model=model)
     elif args.provider == "anthropic":
@@ -1303,43 +1309,45 @@ def main():
     else:
         raise ValueError(f"Unknown provider: {args.provider}")
 
-    backup_existing_data(output_file=phase_outputs[args.phase])
+    def summarize_completion(phase: int, results: List[Dict[str, float]]):
+        print(f"\n{'='*70}")
+        print("EXPERIMENT COMPLETE")
+        print(f"{'='*70}\n")
+        print(f"Results saved to: {phase_outputs[phase]}")
+        print(f"Total samples: {len(results)}")
+        print()
+        print("Next steps:")
+        print("  1. Review results in CSV file")
+        print("  2. Run statistical tests (t-test, ANOVA)")
+        print("  3. Fit λ parameter: ψ_eff = ψ_base + λ·φ")
+        print("  4. Update docs/experiment_aletheia.md with findings")
+        print()
 
-    results = run_experiment(
-        provider=provider,
-        n_samples=args.n_samples,
-        output_file=args.output,
-        delay=args.delay,
-        request_timeout=args.request_timeout,
-        phase_3_output=args.phase_3_output,
-        phase_4_output=args.phase_4_output,
-        phase_5_output=args.phase_5_output,
-        phase=args.phase
-    )
+    phases_to_run = [1, 2, 3, 4, 5] if args.all else [args.phase]
 
-    # Auto-analyze (only for Phase 1/2 outputs)
-    if results and args.phase in {1, 2}:
-        analyze_results(args.output)
+    if args.all:
+        print("🚀 Running all phases sequentially (1 → 5)\n")
 
-    print(f"\n{'='*70}")
-    print("EXPERIMENT COMPLETE")
-    print(f"{'='*70}\n")
-    if args.phase == 3:
-        print(f"Results saved to: {phase_outputs[3]}")
-    elif args.phase == 4:
-        print(f"Results saved to: {phase_outputs[4]}")
-    elif args.phase == 5:
-        print(f"Results saved to: {phase_outputs[5]}")
-    else:
-        print(f"Results saved to: {phase_outputs[args.phase]}")
-    print(f"Total samples: {len(results)}")
-    print()
-    print("Next steps:")
-    print("  1. Review results in CSV file")
-    print("  2. Run statistical tests (t-test, ANOVA)")
-    print("  3. Fit λ parameter: ψ_eff = ψ_base + λ·φ")
-    print("  4. Update docs/experiment_aletheia.md with findings")
-    print()
+    for phase in phases_to_run:
+        backup_existing_data(output_file=phase_outputs[phase])
+
+        results = run_experiment(
+            provider=provider,
+            n_samples=args.n_samples,
+            output_file=args.output,
+            delay=args.delay,
+            request_timeout=args.request_timeout,
+            phase_3_output=args.phase_3_output,
+            phase_4_output=args.phase_4_output,
+            phase_5_output=args.phase_5_output,
+            phase=phase
+        )
+
+        # Auto-analyze (only for Phase 1/2 outputs)
+        if results and phase in {1, 2}:
+            analyze_results(args.output)
+
+        summarize_completion(phase, results)
 
 
 if __name__ == "__main__":

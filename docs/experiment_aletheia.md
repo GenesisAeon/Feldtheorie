@@ -556,13 +556,13 @@ python scripts/experiment_aletheia_placebo.py --dry-run --n-samples 20
 # NOTE: Phase 3 requires Phase 1+2 results to exist first!
 python scripts/experiment_aletheia_placebo.py --dry-run --n-samples 20 --phase-3
 
-# Real experiment with OpenAI GPT-4 (Phase 1+2)
+# Real experiment with OpenAI defaults (Phase 1+2) — provider=openai, model=qwen2.5:7b
 export OPENAI_API_KEY="your-key"
-python scripts/experiment_aletheia_placebo.py --provider openai --model gpt-4 --n-samples 30
+python scripts/experiment_aletheia_placebo.py --n-samples 30
 
 # Real experiment with Phase 3 (adaptive efficiency optimization)
 export OPENAI_API_KEY="your-key"
-python scripts/experiment_aletheia_placebo.py --provider openai --model gpt-4 --n-samples 30 --phase-3
+python scripts/experiment_aletheia_placebo.py --n-samples 30 --phase-3
 
 # Real experiment with Anthropic Claude (Full Phase 1+2+3 pipeline)
 export ANTHROPIC_API_KEY="your-key"
@@ -570,11 +570,11 @@ python scripts/experiment_aletheia_placebo.py --provider anthropic --model claud
 
 # Real experiment with Phase 4 (Affection-Driven Optimization)
 export OPENAI_API_KEY="your-key"
-python scripts/experiment_aletheia_placebo.py --provider openai --model gpt-4 --n-samples 30 --phase-4
+python scripts/experiment_aletheia_placebo.py --n-samples 30 --phase-4
 
-# Real experiment with ALL phases (1+2+3+4)
-export ANTHROPIC_API_KEY="your-key"
-python scripts/experiment_aletheia_placebo.py --provider anthropic --model claude-sonnet-4 --n-samples 30 --phase-3 --phase-4
+# Real experiment with ALL phases (1→5)
+export OPENAI_API_KEY="your-key"
+python scripts/experiment_aletheia_placebo.py --n-samples 30 --all
 
 # Analyze existing results
 python scripts/experiment_aletheia_placebo.py --analyze data/experimental/aletheia_results.csv

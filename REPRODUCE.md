@@ -124,7 +124,6 @@ export OPENAI_BASE_URL="https://api.openai.com/v1"  # optional override
 
 ```bash
 python scripts/experiment_aletheia_placebo.py \
-  --provider openai --model gpt-4 \
   --n-samples 5 \
   --output data/experimental/aletheia_results.csv
 ```
@@ -133,7 +132,6 @@ python scripts/experiment_aletheia_placebo.py \
 
 ```bash
 python scripts/experiment_aletheia_placebo.py \
-  --provider openai --model gpt-4 \
   --n-samples 5 \
   --phase-3 --phase-3-output data/experimental/aletheia_phase3_results.csv
 ```
@@ -142,9 +140,14 @@ python scripts/experiment_aletheia_placebo.py \
 
 ```bash
 python scripts/experiment_aletheia_placebo.py \
-  --provider openai --model gpt-4 \
   --n-samples 5 \
   --phase-4 --phase-4-output data/experimental/aletheia_phase4_results.csv
+```
+
+- **Run all phases sequentially (1→5) with OpenAI defaults (provider=openai, model=qwen2.5:7b):**
+
+```bash
+python scripts/experiment_aletheia_placebo.py --n-samples 5 --all
 ```
 
 4. Summarise metrics for any run without recomputing samples:
