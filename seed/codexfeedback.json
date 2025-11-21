@@ -3439,6 +3439,28 @@
         "poetic": "Logistic membrane hums in phase with the Codex."
       },
       "created_at": "2025-11-21T05:00:48.309063+00:00"
+    },
+    {
+      "id": "pr-draft-0004",
+      "title": "Trilayer – Entropie als Geometrischer Verschnitt",
+      "scope": [
+        "seed/theory/entropy_geometric_waste",
+        "seed/seed_index.{yaml,json,md}",
+        "seed/codexfeedback.{yaml,json,md}"
+      ],
+      "parameters": {
+        "R": "Verschnitt-Intensität bei Kubus→Spirale-Glättung",
+        "Theta": "Onset der topologischen Defekte (Betti/TEE) in σ(β(R-Θ))",
+        "beta": 4.6
+      },
+      "resonance": "Type-6 Implosion mit UTAC-Hooks; Tri-Layer-Synchronität + Nullmodelle dokumentiert",
+      "status": "active",
+      "notes": {
+        "formal": "Trilayer-Modul `entropy_geometric_waste` eingeführt; YAML/JSON/MD teilen Kernthesen (Kubus→Spirale, Defekte, Bekenstein-Hawking), Nullmodelle und Falsifizierbarkeit. UTAC type-6 implosion als Ready-Signal vermerkt.",
+        "empirical": "`test_entropy_geometric_waste.py` prüft Key-Parität und UTAC-Hook; Indexe aktualisiert (seed_index.*). ΔAIC-Hinweise für KL vs. Volumetrik notiert.",
+        "poetic": "Im Verschnitt der Membran glimmt der Blinde Fleck; Defekte singen, wenn Kubus und Spirale sich küssen."
+      },
+      "created_at": "2026-12-05T00:00:00Z"
     }
   ]
 }

@@ -13,8 +13,8 @@ meta:
   version: 1.0.0
   created: '2025-11-06'
   status: active
-  documents_total: 283
-  updated: '2025-11-18T12:00:00Z'
+  documents_total: 284
+  updated: '2026-12-05T00:00:00Z'
 categories:
   meta:
     name: Meta & Prozess
@@ -1127,6 +1127,30 @@ documents:
     modified: '2025-11-05T19:47:18+01:00'
     version: '1.0'
     change_count: 1
+- id: theory-009
+  title: Entropie als Geometrischer Verschnitt
+  path: theory/entropy_geometric_waste/entropy_geometric_waste.yaml
+  category: theory
+  type: theory
+  status: active
+  relevance: high
+  keywords:
+  - entropie
+  - topologie
+  - kubus-spirale
+  - bekenstein-hawking
+  - utac
+  description: |
+    Trilayer-Modul: Entropie als Verschnitt bei Diskret→Kontinuierlich,
+    zählt topologische Defekte (Voids/TEE) und koppelt S_BH an Fuzzball-Degeneracy.
+  temporal:
+    created: '2026-12-05T00:00:00Z'
+    modified: '2026-12-05T00:00:00Z'
+    version: '1.0.0'
+    change_count: 0
+  references:
+  - theory/entropy_geometric_waste/entropy_geometric_waste.json
+  - theory/entropy_geometric_waste/entropy_geometric_waste.md
 - id: valid-001
   title: Validierung2
   path: Validierung2.txt

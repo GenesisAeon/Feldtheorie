@@ -82,6 +82,7 @@ Willkommen im **semantischen Gedächtnis** des Feldtheorie-Projekts! Dieser Inde
 - `AI-Evulutionsprinziep.txt` - Evolutionäre Prinzipien in AI-Systemen
 - `Diskurs Klimamodul.txt` - Klimaschwellenwerte & UTAC-Integration
 - `Diskurs_V1_Psyche_AI_koheränzen.txt` - Kohärenz zwischen Psyche & AI
+- `theory/entropy_geometric_waste/entropy_geometric_waste.yaml` - Entropie als Geometrischer Verschnitt (Kubus→Spirale, Defekte, S_BH)
 
 **Wann nutzen?** Wenn du die theoretische Basis von UTAC verstehen willst
 
@@ -370,15 +371,16 @@ active_important = [
 12. **Email_arXiv_End.pdf** - Finales Anschreiben an arXiv (✨ active)
 13. **abstract_arXiv.pdf** - DOI-synchronisierte Abstract-Version (stable)
 
-### Theoretische Grundlagen (8 Dokumente)
+### Theoretische Grundlagen (9 Dokumente)
 1. **FinalerPlan.txt** - Governance-Paket (🔥 high)
 2. **AI-Evulutionsprinziep.txt** - AI-Evolutionsprinzip (🔥 high)
 3. **Diskurs Klimamodul.txt** - Klima & UTAC (🔥 high)
 4. **Diskurs_V1_Psyche_AI_koheränzen.txt** - Psyche-AI Kohärenz (🔥 high)
-5. Transdisziplinärer Schwellenfeld-Simulator--Claude.txt
-6. FinalDevTalks.txt
-7. Brainstorm.txt (historical)
-8. Brainstorm2.txt (historical)
+5. **theory/entropy_geometric_waste/entropy_geometric_waste.yaml** - Entropie als Geometrischer Verschnitt (Kubus→Spirale, Defekte, S_BH)
+6. Transdisziplinärer Schwellenfeld-Simulator--Claude.txt
+7. FinalDevTalks.txt
+8. Brainstorm.txt (historical)
+9. Brainstorm2.txt (historical)
 
 ### Validierung & Empirik (11 Dokumente)
 1. **Validierung2.txt** - Mistral's Metareflexion (🔥 high)
