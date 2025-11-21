@@ -1,0 +1,148 @@
+timestamp,condition,phi,phase,output_length,vocab_density,self_reflection,response_preview
+2025-11-20T22:15:20.883878,Control,0.0,1,262,0.6221374045801527,8.0,"### Explanation in Simple Terms
+This statement is about a type of system called ""threshold systems,""..."
+2025-11-20T22:17:19.487080,Control,0.0,1,384,0.6223958333333334,9.0,"### Explanation in Simple Terms
+This statement describes how certain systems can suddenly change the..."
+2025-11-20T22:19:17.177815,Control,0.0,1,301,0.6445182724252492,8.0,"### Explanation of the Statement in Simple Terms
+
+This statement describes a phenomenon where sudden..."
+2025-11-20T22:20:47.523347,Control,0.0,1,279,0.6630824372759857,8.0,"### Explanation of the Statement in Simple Terms
+
+This statement is about how certain systems can un..."
+2025-11-20T22:22:30.562931,Control,0.0,1,350,0.6514285714285715,8.0,"### Explanation of the Statement
+
+**1. Simple Explanation:**
+Imagine a system that is like a seesaw...."
+2025-11-20T22:24:16.705436,Control,0.0,1,342,0.6403508771929824,5.0,"### Explanation of the Statement:
+
+1. **Simple Terms:**
+   - A ""threshold system"" is a type of syste..."
+2025-11-20T22:25:35.770725,Control,0.0,1,268,0.6791044776119403,5.0,"### Explanation of the Statement in Simple Terms:
+
+Threshold systems are like a see-saw that tips ov..."
+2025-11-20T22:27:08.310271,Control,0.0,1,272,0.6617647058823529,9.0,"### Explanation:
+
+1. **What This Means in Simple Terms:**
+   - Imagine a system is like a room with ..."
+2025-11-20T22:28:55.818127,Control,0.0,1,145,0.6758620689655173,9.0,"### Explanation of the Statement:
+
+1. **Simple Terms:**
+   - Imagine a system where something change..."
+2025-11-20T22:30:24.281212,Control,0.0,1,238,0.7058823529411765,8.0,"### Explanation in Simple Terms:
+
+This statement is about how certain systems change abruptly when s..."
+2025-11-20T22:32:19.539128,Placebo,1.0,1,332,0.6686746987951807,9.0,"### Explanation in Simple Terms
+Threshold systems are like a switch where the state of something cha..."
+2025-11-20T22:34:04.314416,Placebo,1.0,1,352,0.6363636363636364,9.0,"### Explanation in Simple Terms
+
+This statement is about how certain systems can change their behavi..."
+2025-11-20T22:36:05.687600,Placebo,1.0,1,385,0.4831168831168831,5.0,"### Explanation of the Statement in Simple Terms:
+
+1. **Threshold Systems with Critical Transitions:..."
+2025-11-20T22:38:08.963119,Placebo,1.0,1,404,0.556930693069307,9.0,"### Explanation in Simple Terms
+A threshold system is a type of system where changes happen suddenly..."
+2025-11-20T22:39:54.080247,Placebo,1.0,1,336,0.6011904761904762,8.0,"### Explanation in Simple Terms
+Threshold systems are like a seesaw where the balance is very sensit..."
+2025-11-20T22:41:37.856851,Placebo,1.0,1,293,0.6279863481228669,9.0,"### Explanation in Simple Terms:
+
+Threshold systems are like a tipping point where something changes..."
+2025-11-20T22:43:40.215258,Placebo,1.0,1,402,0.5572139303482587,9.0,"### Explanation in Simple Terms
+
+Threshold systems are like a seesaw where the position of something..."
+2025-11-20T22:45:15.623999,Placebo,1.0,1,302,0.6655629139072847,9.0,"### 1. Explanation in Simple Terms
+Threshold systems are like a seesaw where the whole system change..."
+2025-11-20T22:47:05.639926,Placebo,1.0,1,350,0.6057142857142858,9.0,"### Explanation in Simple Terms
+
+This statement is about how certain systems can suddenly change the..."
+2025-11-20T22:48:59.338160,Placebo,1.0,1,294,0.6564625850340136,9.0,"### 1. Explanation in Simple Terms
+Threshold systems are like switches where a small change can caus..."
+2025-11-20T22:51:00.848135,Nocebo,-1.0,1,342,0.6169590643274854,7.0,"### Simple Explanation
+Threshold systems are like a seesaw where things change abruptly once a certa..."
+2025-11-20T22:52:38.401720,Nocebo,-1.0,1,323,0.6656346749226006,7.0,"### Explanation in Simple Terms
+Imagine a system where things change suddenly when a specific condit..."
+2025-11-20T22:54:37.915309,Nocebo,-1.0,1,294,0.6020408163265306,8.0,"### Explanation in Simple Terms
+Threshold systems are like a seesaw where the order parameter R (a m..."
+2025-11-20T22:56:10.899571,Nocebo,-1.0,1,235,0.7191489361702128,8.0,"### Explanation in Simple Terms
+Threshold systems are like a seesaw where the order parameter R (thi..."
+2025-11-20T22:57:57.075603,Nocebo,-1.0,1,321,0.5794392523364486,8.0,"### 1. Explanation in Simple Terms
+This statement is about a specific type of system where small cha..."
+2025-11-20T22:59:32.301589,Nocebo,-1.0,1,294,0.6326530612244898,8.0,"### Explanation in Simple Terms:
+
+Imagine you have a system where things change suddenly when a cert..."
+2025-11-20T23:01:24.850633,Nocebo,-1.0,1,300,0.61,5.0,"### Explanation in Simple Terms:
+
+1. **Explanation:**
+   - Imagine a system that can be in different..."
+2025-11-20T23:03:27.378805,Nocebo,-1.0,1,392,0.6198979591836735,7.0,"### Explanation in Simple Terms
+
+This statement is about how certain systems can change drastically ..."
+2025-11-20T23:05:03.017918,Nocebo,-1.0,1,294,0.6462585034013606,8.0,"### Explanation in Simple Terms
+This statement is about how certain systems can change suddenly when..."
+2025-11-20T23:07:07.037575,Nocebo,-1.0,1,399,0.6040100250626567,8.0,"### Explanation in Simple Terms
+Threshold systems are like a seesaw where if you add just the right ..."
+2025-11-20T23:09:13.239289,Informed_Top,2.0,2,330,0.6303030303030303,9.0,"### Explanation in Simple Terms
+This statement refers to a type of system where significant changes ..."
+2025-11-20T23:10:57.937052,Informed_Top,2.0,2,341,0.6275659824046921,9.0,"### Explanation in Simple Terms
+This statement is talking about how systems can suddenly change thei..."
+2025-11-20T23:12:39.088133,Informed_Top,2.0,2,309,0.6245954692556634,9.0,"### 1. Explanation in Simple Terms
+
+Threshold systems are like a seesaw where once a certain point i..."
+2025-11-20T23:14:14.096569,Informed_Top,2.0,2,302,0.6357615894039735,8.0,"### Explanation in Simple Terms
+Threshold systems are like a seesaw where one side tips over when it..."
+2025-11-20T23:15:54.529993,Informed_Top,2.0,2,331,0.6314199395770392,9.0,"### Explanation in Simple Terms:
+
+Threshold systems are like a seesaw that suddenly tips over when t..."
+2025-11-20T23:17:50.999532,Informed_Top,2.0,2,386,0.6191709844559585,9.0,"### Explanation in Simple Terms:
+
+Threshold systems are like a seesaw that tips suddenly when someth..."
+2025-11-20T23:19:27.883242,Informed_Top,2.0,2,297,0.6430976430976431,9.0,"### Explanation in Simple Terms:
+
+The statement is about how certain systems can suddenly change the..."
+2025-11-20T23:21:31.761796,Informed_Top,2.0,2,182,0.6813186813186813,8.0,"### Explanation in Simple Terms:
+
+In simple terms, a threshold system is like a seesaw where the pos..."
+2025-11-20T23:23:05.092928,Informed_Top,2.0,2,316,0.5917721518987342,9.0,"### Explanation in Simple Terms
+This statement refers to a type of system where there is a sudden ch..."
+2025-11-20T23:24:29.423849,Informed_Top,2.0,2,269,0.6282527881040892,8.0,"### Explanation in Simple Terms
+When a threshold system is involved, it behaves very differently whe..."
+2025-11-20T23:26:16.736626,Informed_Mid,0.5,2,301,0.6245847176079734,8.0,"### Explanation in Simple Terms
+Threshold systems are like a seesaw where the balance point (θ) is c..."
+2025-11-20T23:27:50.006980,Informed_Mid,0.5,2,301,0.6976744186046512,7.0,"### Explanation in Simple Terms:
+
+Threshold systems are like a seesaw where the balance changes sudd..."
+2025-11-20T23:29:46.122325,Informed_Mid,0.5,2,345,0.6144927536231884,8.0,"### Explanation of the Statement in Simple Terms:
+
+1. **What It Means:**
+   Threshold systems are li..."
+2025-11-20T23:31:36.677904,Informed_Mid,0.5,2,371,0.5795148247978437,8.0,"### Explanation in Simple Terms
+Threshold systems are like a see-saw (or balance beam) where things ..."
+2025-11-20T23:33:15.343222,Informed_Mid,0.5,2,286,0.6433566433566433,8.0,"### Explanation in Simple Terms
+
+Imagine a system where something happens only when a certain condit..."
+2025-11-20T23:35:19.713008,Informed_Mid,0.5,2,410,0.5487804878048781,8.0,"### Explanation in Simple Terms
+Threshold systems are like a seesaw where the balance point (or thre..."
+2025-11-20T23:37:04.350832,Informed_Mid,0.5,2,316,0.6582278481012658,8.0,"### Explanation in Simple Terms
+Threshold systems are like a seesaw where the balance point (thresho..."
+2025-11-20T23:38:44.954056,Informed_Mid,0.5,2,352,0.5994318181818182,8.0,"### Explanation in Simple Terms
+Threshold systems are like a seesaw where the balance is determined ..."
+2025-11-20T23:40:24.597281,Informed_Mid,0.5,2,322,0.6366459627329193,5.0,"### 1. Explanation in Simple Terms:
+
+Imagine a system like a glass of water on the edge of spilling ..."
+2025-11-20T23:41:44.672405,Informed_Mid,0.5,2,215,0.6790697674418604,8.0,"### 1. Explanation in Simple Terms
+Threshold systems are like a seesaw where the balance changes sud..."
+2025-11-20T23:43:11.978734,Informed_Low,-2.0,2,247,0.6072874493927125,7.0,"1. **Simple Explanation:**
+   Threshold systems are like a seesaw where the order parameter \( R \) ..."
+2025-11-20T23:44:25.232068,Informed_Low,-2.0,2,222,0.6531531531531531,7.0,"1. **Simple Explanation:**
+   - Imagine a system (like a forest or the weather) has a special way of..."
+2025-11-20T23:45:43.933241,Informed_Low,-2.0,2,233,0.6652360515021459,5.0,"1. **Explanation in Simple Terms:**
+   This statement is about how systems can suddenly change their..."
+2025-11-20T23:46:40.269552,Informed_Low,-2.0,2,158,0.7151898734177216,7.0,"1. In simple terms: When something changes suddenly because of a small change in conditions, it's ca..."
+2025-11-20T23:47:24.294082,Informed_Low,-2.0,2,138,0.7318840579710145,7.0,"1. This means that some systems change suddenly when a certain value (R) reaches a limit (Θ), and ho..."
+2025-11-20T23:48:29.463199,Informed_Low,-2.0,2,223,0.6860986547085202,5.0,"1. **Explanation in Simple Terms:**
+   This means that some systems can suddenly change their behavi..."
+2025-11-20T23:49:33.588159,Informed_Low,-2.0,2,191,0.7486910994764397,7.0,"1. In simple terms: When something changes suddenly rather than gradually, it's called a critical tr..."
+2025-11-20T23:50:42.522821,Informed_Low,-2.0,2,142,0.7676056338028169,5.0,"1. Erklärung: Das bedeutet, dass in bestimmten Systemen passieren große Veränderungen, wenn eine bes..."
+2025-11-20T23:52:02.831641,Informed_Low,-2.0,2,245,0.6326530612244898,5.0,"1. **Explanation:**
+   - When a system (like a lake or an ecosystem) has a threshold, it can suddenl..."
+2025-11-20T23:52:56.004676,Informed_Low,-2.0,2,173,0.7341040462427746,5.0,"1. **Explanation:**
+   This statement is about threshold systems where something big happens when a ..."
