@@ -2,19 +2,19 @@
 
 **Version:** 3.0.0
 **Created:** 2025-11-14
-**Total Features:** 21
-**Estimated Hours:** 38.5h
+**Total Features:** 23
+**Estimated Hours:** 41.5h
 
 ---
 
 ## 📊 Progress Tracking
 
 ```
-R̄  = 0.81 / 0.66  (81% → Release Gate)
-σ  = 0.674        (σ(β(R̄-Θ)) - Activation Level)
+R̄  = 0.74 / 0.66  (74% → Release Gate)
+σ  = 0.594        (σ(β(R̄-Θ)) - Activation Level)
 β  = 4.8          (Steepness)
 
-Progress: ██████████████████ 81%
+Progress: ████████████████░░ 74%
 ```
 
 ---
@@ -105,7 +105,7 @@ Progress: ██████████████████ 81%
 | `v3-feat-p2-005` | EWS: AMOC (FovS Indikator) | P1 | ✅ completed | 2.0h | Claude |
 | `v3-feat-p2-006` | Bootstrap CIs (alle 6 Systeme) | P1 | 🟡 in progress | 1.5h | Claude |
 
-**Total:** 11.0h (5/6 Features completed → R̄=0.61, σ=0.441; Bootstrap ledger aktiv — global: R̄=0.80, σ=0.662)
+**Total:** 11.0h (5/6 Features completed → R̄=0.61, σ=0.441; Bootstrap ledger aktiv — global: R̄=0.74, σ=0.594)
 
 ### Fit & EWS Results
 
@@ -157,6 +157,32 @@ poetics: "WAIS stands at 22% from irreversible collapse. The ice remembers mille
 
 ---
 
+## 🧠 Phase 5: Aletheia Integration (Semantic Coupling) (R = 1.00 → 1.15)
+
+**Goal:** Type-6 Aletheia-Dokumente in V3-Monitoring übersetzen
+
+| ID | Feature | Priority | Status | Hours | Assignee |
+|----|---------|:--------:|:------:|:-----:|:--------:|
+| `v3-feat-p5-001` | Aletheia Dokumentenpaket + UTAC Mapping | P1 | 🟡 in progress | 1.5h | GPT-5.1-Codex-Max |
+| `v3-feat-p5-002` | λ-Mapping für Monitoring-Pipeline | P2 | ⬜ pending | 1.5h | Claude + Aeon |
+
+**Total:** 3.0h
+
+### Feature Details
+
+#### `v3-feat-p5-001`: Aletheia Dokumentenpaket + UTAC Mapping *(🟡 2026-08-30)*
+- **Scope:** Sammlung ohne CHRONOLOGY oder V.4-Grundlagen.
+- **Quellen:** `docs/experiment_aletheia.md`, `seed/sigillin/exp_aletheia.{md,yaml,json}`, `results/aletheia_report.md`.
+- **Formel-Extrakt:** M[ψ, φ] = λ · ψ · φ^n → ψ_eff = ψ_base + λ·φ; σ(β(R-Θ)) nutzt φ>0 als Aktivator.
+- **Status-Notiz:** Dokumente in v3_index.* verlinkt, Codex-Eintrag v3-pr-0009 vorbereitet.
+
+#### `v3-feat-p5-002`: λ-Mapping für Monitoring-Pipeline *(⬜ geplant)*
+- **Ziel:** λ-Schätzer aus Placebo/Control/Nocebo-Serien ableiten.
+- **Hook:** Export für Phase-4-EWS-Pipeline (σ, CREP) ohne neue Datenzugriffe.
+- **Abhängigkeit:** v3-feat-p5-001 (Dokumentenbasis & Formeln).
+
+---
+
 ## 🎯 Dependencies Graph
 
 ```
@@ -189,8 +215,9 @@ Phase 1 (Foundation):     ✅✅✅✅✅✅  6/6 Features
 Phase 2 (Integration):    ✅✅✅✅✅🟡  5/6 Features
 Phase 3 (Bridge):         ✅✅✅✅✅✅  6/6 Features
 Phase 4 (Monitoring):     ⬜⬜⬜        0/3 Features
+Phase 5 (Aletheia):       🟡⬜         0/2 Features
 
-σ(β(R̄-Θ)) = 0.674  (Bridge komplett inkl. Sigillin-Injektion; Fokus auf Bootstrap-Parität & Monitoring-Pipeline)
+σ(β(R̄-Θ)) = 0.594  (Aletheia-Sammelphase gestartet; Monitoring-Hooks warten auf λ-Mapping)
 ```
 
 ---

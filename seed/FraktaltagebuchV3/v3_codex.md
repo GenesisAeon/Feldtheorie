@@ -3,7 +3,7 @@
 **Version:** 3.0.0
 **Created:** 2025-11-14
 **Scope:** V3.0 Real-World Tipping Points (6 Systems, β 3.5 → 13.5)
-**Total Entries:** 7
+**Total Entries:** 9
 
 ---
 
@@ -23,12 +23,12 @@ Dieser Codex dokumentiert alle PRs, Commits und Änderungen für **Fraktaltagebu
 
 ## 📊 Progress Tracking
 
-``` 
-R̄  = 0.81 / 0.66  (81% → Release Gate)
-σ  = 0.674        (Activation Level)
+```
+R̄  = 0.74 / 0.66  (74% → Release Gate)
+σ  = 0.594        (Activation Level)
 β  = 4.8
 
-Entries: 7 / ~20 (estimated)
+Entries: 9 / ~20 (estimated)
 ```
 
 ---
@@ -45,6 +45,7 @@ Entries: 7 / ~20 (estimated)
 | `v3-pr-0006` | 2026-08-24T16:45:00Z | Phase 3 Bridge: TypeScript Tests & CREP Sync | Phase 3 |
 | `v3-pr-0007` | 2026-08-24T18:15:00Z | Shadow Trilayer Completion & Bootstrap Ledger | Phase 3 |
 | `v3-pr-0008` | 2026-08-27T00:12:00Z | NextVersionmaybe Sigillin-Injektion + Archive | Phase 3 |
+| `v3-pr-0009` | 2026-08-30T12:10:00Z | Aletheia Mapping + Phase 5 Kickoff | Phase 5 |
 
 ---
 
@@ -58,6 +59,7 @@ Entries: 7 / ~20 (estimated)
 | Phase 2 (Integration) | 1 |
 | Phase 3 (Bridge) | 3 |
 | Phase 4 (Monitoring) | 0 |
+| Phase 5 (Aletheia Integration) | 1 |
 
 ### Entries by Type
 
@@ -65,7 +67,7 @@ Entries: 7 / ~20 (estimated)
 |------|------:|
 | `data` (Datensätze) | 5 |
 | `fit` (β-Fits) | 1 |
-| `docs` (Dokumentation) | 5 |
+| `docs` (Dokumentation) | 6 |
 | `bridge` (Python ↔ TS) | 2 |
 | `test` (Tests) | 1 |
 | `feat` (Features) | 1 |
@@ -82,6 +84,7 @@ Entries: 7 / ~20 (estimated)
 **AI:**
 - Claude Sonnet 4.5
 - GPT-5 Codex
+- GPT-5.1-Codex-Max
 
 ---
 
@@ -621,3 +624,43 @@ bereit für Monitoring.
 - `seed/FraktaltagebuchV3/v3_roadmap.{yaml,json,md}`
 - `seed/RoadToV.3/NextVersionmaybe_MIGRATED.md`
 - `archive/v3_ideas/NextVersionmaybe`
+
+---
+
+## v3-pr-0009 — Aletheia Mapping + Phase 5 Kickoff (2026-08-30)
+
+### Parameters
+```
+R̄  = 0.74  (17/23 features completed)
+Θ  = 0.66
+β  = 4.8
+σ  = 0.594  (Semantic Coupling aktiviert)
+```
+
+### Formal Thread
+- Neue Phase 5 (Aletheia Integration) in Roadmap verankert, ohne CHRONOLOGY oder
+  V.4-Grundlagen zu berühren.
+- M[ψ, φ]-Formel (λ·ψ·φ^n) als Ergänzung zu σ(β(R-Θ)) dokumentiert; ψ_eff = ψ_base + λ·φ
+  wird als Hook für Monitoring-Pipeline vorbereitet.
+- Scope-Isolation gewahrt: Aletheia dient als Type-6 Resonanzmodul für die 6 V3-Systeme.
+
+### Empirical Thread
+- Dokumentenpaket katalogisiert: `docs/experiment_aletheia.md`,
+  `seed/sigillin/exp_aletheia.{md,yaml,json}`, `results/aletheia_report.md`.
+- Roadmap/meta aktualisiert (total_features 23, R̄=0.74, σ=0.594); neue Features
+  `v3-feat-p5-001` (in_progress) und `v3-feat-p5-002` (pending).
+- Codex- und Index-Trilayer referenzieren Aletheia-Cluster; Monitoring-Hooks behalten
+  EWS/CREP-Schnittstellen unverändert.
+
+### Poetic Thread
+Placebo, Control, Nocebo – drei Masken, ein Feld. φ>0 hebt ψ an, λ flackert wie
+eine Laterne über dem Meer aus Daten. σ sinkt leicht, weil neue Pfade gebaut
+werden. V3 atmet semantisch – ohne die Chronologie zu stören.
+
+### Files
+- `seed/FraktaltagebuchV3/v3_roadmap.{yaml,json,md}`
+- `seed/FraktaltagebuchV3/v3_codex.{yaml,json,md}`
+- `seed/FraktaltagebuchV3/v3_index.{yaml,json,md}`
+- `docs/experiment_aletheia.md`
+- `seed/sigillin/exp_aletheia.{md,yaml,json}`
+- `results/aletheia_report.md`

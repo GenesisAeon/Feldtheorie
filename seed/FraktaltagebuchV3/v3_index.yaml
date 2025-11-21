@@ -7,8 +7,8 @@
 meta:
   version: "3.0.0"
   created: "2025-11-14T12:55:00Z"
-  last_updated: "2026-08-24T18:10:00Z"
-  total_documents: 26
+  last_updated: "2026-08-30T12:10:00Z"
+  total_documents: 29
   scope: "V3.0 Real-World Systems Integration"
 
 # ============================================================================
@@ -131,6 +131,32 @@ related_documents:
     description: "Trilayer-System (YAML/JSON/MD), Ordnungs- vs Bedeutungs-Sigillin"
     created: "2025-11-06"
     status: "active"
+
+  # Aletheia (Semantic Coupling)
+  - id: v3-related-009
+    title: "docs/experiment_aletheia.md"
+    path: "docs/experiment_aletheia.md"
+    type: "documentation"
+    description: "Project Aletheia – M[ψ, φ] Coupling, CCUC, Placebo/Nocebo Design"
+    created: "2025-11-19"
+    status: "active"
+
+  - id: v3-related-010
+    title: "results/aletheia_report.md"
+    path: "results/aletheia_report.md"
+    type: "analysis"
+    description: "Aletheia Phase 1/2 Auswertung (Tokens, λ-Schätzung, Effekte)"
+    created: "2025-12-01"
+    status: "active"
+
+  - id: v3-related-011
+    title: "seed/sigillin/exp_aletheia.*"
+    path: "seed/sigillin/exp_aletheia.*"
+    type: "sigillin"
+    description: "Trilayer Sigillin für Aletheia (λ, φ-Profile, Nullmodelle)"
+    created: "2025-11-19"
+    status: "active"
+    trilayer: true
 
 # ============================================================================
 # ============================================================================
@@ -318,15 +344,15 @@ navigation_paths:
 # ============================================================================
 
 statistics:
-  total_documents: 24
+  total_documents: 29
   core_documents: 5
-  related_documents: 8
+  related_documents: 11
   data_sources_active: 3
   analysis_results_pending: 5
   scripts_active: 3
 
   by_type:
-    documentation: 3
+    documentation: 4
     charter: 1
     roadmap: 1
     codex: 1
@@ -336,9 +362,10 @@ statistics:
     code: 3
     methodology: 2
     dataset: 3
-    analysis: 5
+    analysis: 9
     script: 3
+    sigillin: 1
 
   by_status:
-    active: 19
-    pending: 5
+    active: 28
+    pending: 1
