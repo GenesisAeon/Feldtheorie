@@ -2244,3 +2244,16 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
 - **β:** 4.6
 - **ζ(R):** Logged in codex
 - **Notiz:** Replaced V3 speculation with V4 Oxfam-derived proof (89.1% reduction).
+
+### pr-draft-0004 — Trilayer – Entropie als Geometrischer Verschnitt
+- **Zeitpunkt (UTC):** 2026-12-05T00:00:00Z
+- **R:** Verschnitt-Intensität Kubus→Spirale
+- **Θ:** Auftreten topologischer Defekte (Betti/TEE) in σ(β(R-Θ))
+- **β:** 4.6
+- **Scope:** seed/theory/entropy_geometric_waste; seed_index.{yaml,json,md}; codexfeedback.{yaml,json,md}
+- **Resonanz:** Type-6 Implosion an UTAC geknüpft; Trilayer synchronisiert; Nullmodelle (Volumetrik vs. KL/TEE) dokumentiert.
+- **Status:** active
+- **Notizen:**
+  - **Formal:** Neues Theorie-Modul mit Kubus→Spirale-, Defekt- und Bekenstein-Hawking-Brücke; Falsifizierbarkeit via ΔAIC gegen Volumetrik und Flächengesetz festgehalten.
+  - **Empirical:** `test_entropy_geometric_waste.py` prüft Trilayer-Schlüssel & UTAC-Hook; seed_index.* aktualisiert.
+  - **Poetic:** Der Blinde Fleck flackert, wenn Kubus und Spirale sich berühren; Defekte zählen den Atem der Membran.
