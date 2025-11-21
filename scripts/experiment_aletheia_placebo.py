@@ -559,9 +559,10 @@ def append_results(output_path: str, rows: List[Dict[str, float]]) -> None:
     if not rows:
         return
 
+    file_exists = os.path.isfile(output_path)
+
     file_path = Path(output_path)
     file_path.parent.mkdir(parents=True, exist_ok=True)
-    file_exists = file_path.exists()
 
     fieldnames = list(rows[0].keys())
 
@@ -1150,6 +1151,12 @@ def main():
         help="Select which phase to run (1, 2, 3, or 4)"
     )
 
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Run all phases (1 through 4) sequentially",
+    )
+
     args = parser.parse_args()
 
     # Analysis mode
@@ -1175,25 +1182,53 @@ def main():
     # Run experiment
     backup_existing_data(output_file=args.output)
 
-    results = run_experiment(
-        provider=provider,
-        n_samples=args.n_samples,
-        output_file=args.output,
-        delay=args.delay,
-        request_timeout=args.request_timeout,
-        phase_3_output=args.phase_3_output,
-        phase_4_output=args.phase_4_output,
-        phase=args.phase
-    )
+    if args.all:
+        results: List[Dict[str, float]] = []
+        for phase in (1, 2, 3, 4):
+            phase_results = run_experiment(
+                provider=provider,
+                n_samples=args.n_samples,
+                output_file=args.output,
+                delay=args.delay,
+                request_timeout=args.request_timeout,
+                phase_3_output=args.phase_3_output,
+                phase_4_output=args.phase_4_output,
+                phase=phase
+            )
+            results.extend(phase_results)
 
-    # Auto-analyze (only for Phase 1/2 outputs)
-    if results and args.phase in {1, 2}:
-        analyze_results(args.output)
+            if phase == 2 and phase_results:
+                analyze_results(args.output)
+    else:
+        results = run_experiment(
+            provider=provider,
+            n_samples=args.n_samples,
+            output_file=args.output,
+            delay=args.delay,
+            request_timeout=args.request_timeout,
+            phase_3_output=args.phase_3_output,
+            phase_4_output=args.phase_4_output,
+            phase=args.phase
+        )
+
+        # Auto-analyze (only for Phase 1/2 outputs)
+        if results and args.phase in {1, 2}:
+            analyze_results(args.output)
 
     print(f"\n{'='*70}")
     print("EXPERIMENT COMPLETE")
     print(f"{'='*70}\n")
-    print(f"Results saved to: {args.output}")
+    if args.all:
+        print("Results saved to:")
+        print(f"  Phase 1/2: {args.output}")
+        print(f"  Phase 3:   {args.phase_3_output}")
+        print(f"  Phase 4:   {args.phase_4_output}")
+    elif args.phase == 3:
+        print(f"Results saved to: {args.phase_3_output}")
+    elif args.phase == 4:
+        print(f"Results saved to: {args.phase_4_output}")
+    else:
+        print(f"Results saved to: {args.output}")
     print(f"Total samples: {len(results)}")
     print()
     print("Next steps:")
