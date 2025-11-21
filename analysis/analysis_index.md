@@ -33,6 +33,7 @@ analysis/
 ├── reports/         (2 Summaries: QPO, UTAC v1.3 Gap)
 ├── sigillin_sync/   (Telemetry-Exports aus `scripts/sigillin_sync.py`)
 └── results/         ⭐ ZENTRAL! Alle Fit-Ergebnisse (JSON)
+    └── Neu: `analysis/results/oxfam_amplification_proof.txt` (Inequality Amplifier via Oxfam 2024)
 ```
 
 ### 🔥 Die wichtigsten Dateien:

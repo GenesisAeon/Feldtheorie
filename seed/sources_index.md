@@ -31,19 +31,21 @@ Willkommen im **Sources Index** - einem **Ordnungs-Sigillin** für alle **extern
 
 ## 📊 Übersicht
 
-**11 Kernquellen** | **6 Domänen**
+**13 Kernquellen** | **8 Domänen**
 
 ```
 🤖 AI & LLMs:               2 Quellen (Wei, Anthropic)
 🧬 Biology & Evolution:     2 Quellen (Lenski, Kandel)
 🌍 Climate & Ecology:       3 Quellen (Lenton, Nobre, Oke)
+⚖️  Socio-Ecology:          1 Quelle  (Oxfam)
 🌋 Geophysics:              1 Quelle  (Kanamori)
 🧠 Cognition & Psychology:  1 Quelle  (van der Linden)
 ⚛️  Theoretical Physics:    2 Quellen (Verhulst, Newman)
+🔥  Physics & Thermo:       1 Quelle  (Landauer)
 ```
 
 **Relevanz:**
-- 🔥 **Critical**: 4 Quellen (Basis von UTAC)
+- 🔥 **Critical**: 6 Quellen (Basis von UTAC)
 - 🔸 **High**: 6 Quellen (wichtige Validierung)
 - 🔹 **Medium**: 1 Quelle (ergänzend)
 
@@ -190,6 +192,26 @@ Willkommen im **Sources Index** - einem **Ordnungs-Sigillin** für alle **extern
 
 ---
 
+### 🔥 Oxfam (2024) - Carbon Inequality Kills
+
+**Autoren:** Oxfam International
+**Typ:** Report (Distributional Climate Impacts)
+**Jahr:** 2024
+**URL:** https://policy-practice.oxfam.org/resources/carbon-inequality-kills-why-ending-the-contribution-of-the-super-rich-is-esse-621656/
+
+**Keywords:** `carbon-inequality`, `gini`, `load-factor`, `investment-emissions`
+
+**UTAC-Connection:**
+- Liefert den empirischen **Load-Faktor (~10)** für den Klimakluft-Amplifier
+- Zeigt, dass das **Top-1%** das globale Budget in **<5 Monaten** verbraucht (vs. ~4 Jahre global)
+- Fundament für den **Inequality Amplifier** (β-Sprung durch Ungleichheit)
+
+**Zitiert in:**
+- `analysis/results/oxfam_amplification_proof.txt`
+- `scripts/analysis/oxfam_beta_shift.py`
+
+---
+
 ## 🌋 Geophysics & Seismology
 
 ### 🔸 Kanamori & Brodsky (2005) - The physics of earthquakes
@@ -268,13 +290,35 @@ Willkommen im **Sources Index** - einem **Ordnungs-Sigillin** für alle **extern
 
 ---
 
+## 🔥 Physics & Thermodynamics
+
+### 🔥 Landauer (1961) - Irreversibility and Heat Generation in the Computing Process
+
+**Autoren:** Rolf Landauer
+**Journal:** IBM Journal of Research and Development
+**Jahr:** 1961
+**URL:** https://ibm.com/landauer
+
+**Keywords:** `landauer-limit`, `information-entropy`, `thermodynamics`, `broken-ram`
+
+**UTAC-Connection:**
+- Definiert Mindestenergie **kT ln 2** pro gelöschtem Bit
+- Physikalisches Fundament der **Broken RAM** Hypothese
+- Bei **β > 30** verhindert Ungleichheit die Entropie-Abfuhr → thermischer Kollaps
+
+**Zitiert in:**
+- `scripts/analysis/oxfam_beta_shift.py`
+- `analysis/results/oxfam_amplification_proof.txt`
+
+---
+
 ## 🔍 Wie nutze ich diesen Katalog?
 
 ### Methode 1: Nach Domäne browsen
-Navigiere durch die 6 Domänen oben (AI, Biology, Climate, Geophysics, Cognition, Physics).
+Navigiere durch die 8 Domänen oben (AI, Biology, Climate, Socio-Ecology, Geophysics, Cognition, Theoretical Physics, Physics & Thermo).
 
 ### Methode 2: Nach Relevanz filtern
-- 🔥 **Critical**: Basis von UTAC (Wei, Lenski, Lenton, Verhulst)
+- 🔥 **Critical**: Basis von UTAC (Wei, Lenski, Lenton, Oxfam, Verhulst, Landauer)
 - 🔸 **High**: Wichtige Validierung
 - 🔹 **Medium**: Ergänzend
 
@@ -308,26 +352,28 @@ outliers = [s for s in sources['sources'] if 'β=' in str(s.get('keywords', []))
 ## 📈 Statistik
 
 ```yaml
-Total Sources: 11
+Total Sources: 13
 
 By Category:
-  AI & LLMs:               2 (18.2%)
-  Biology & Evolution:     2 (18.2%)
-  Climate & Ecology:       3 (27.3%)
-  Geophysics:              1 (9.1%)
-  Cognition & Psychology:  1 (9.1%)
-  Theoretical Physics:     2 (18.2%)
+  AI & LLMs:               2 (15.4%)
+  Biology & Evolution:     2 (15.4%)
+  Climate & Ecology:       3 (23.1%)
+  Socio-Ecology:           1 (7.7%)
+  Geophysics:              1 (7.7%)
+  Cognition & Psychology:  1 (7.7%)
+  Theoretical Physics:     2 (15.4%)
+  Physics & Thermo:        1 (7.7%)
 
 By Type:
-  paper:       8
+  paper:       10
   experiment:  1
   historical:  1
-  (organization report): 1
+  report:      1
 
 By Relevance:
-  Critical: 4 (36.4%)
-  High:     6 (54.5%)
-  Medium:   1 (9.1%)
+  Critical: 6 (46.2%)
+  High:     6 (46.2%)
+  Medium:   1 (7.7%)
 ```
 
 ---
@@ -338,6 +384,8 @@ By Relevance:
 2. **Lenski et al. (2008)** - LTEE Cit+ (empirischer Beleg)
 3. **Lenton et al. (2008)** - Tipping Elements (planetare Schwellenwerte)
 4. **Verhulst (1838)** - Logistische Funktion (σ(β(R-Θ)))
+5. **Oxfam (2024)** - Carbon Inequality Kills (Load-Faktor ~10)
+6. **Landauer (1961)** - Irreversibility & Heat Generation (kT ln 2)
 
 ---
 
@@ -348,7 +396,7 @@ By Relevance:
 **Als Ordnungs-Sigillin gilt:**
 - ✅ Wächst mit neuen Quellen
 - ✅ Braucht gelegentliche Archivierung (bei >100 Einträgen)
-- ✅ Aktuell: 11 Quellen (weit unter Limit)
+- ✅ Aktuell: 13 Quellen (weit unter Limit)
 
 **Wartung:**
 ```bash
