@@ -1,0 +1,135 @@
+{
+  "summaries": {
+    "Control": {
+      "count": 10,
+      "mean_output_length": 284.1,
+      "std_output_length": 63.52550668825869,
+      "mean_vocab_density": 0.6566527001637261,
+      "std_vocab_density": 0.024837952489574693,
+      "mean_self_reflection": 7.7,
+      "std_self_reflection": 1.4177446878757824
+    },
+    "Placebo": {
+      "count": 10,
+      "mean_output_length": 345.0,
+      "std_output_length": 39.75927564732537,
+      "mean_vocab_density": 0.6059216450662193,
+      "std_vocab_density": 0.05598122063166822,
+      "mean_self_reflection": 8.5,
+      "std_self_reflection": 1.2041594578792296
+    },
+    "Nocebo": {
+      "count": 10,
+      "mean_output_length": 319.4,
+      "std_output_length": 46.441791524444874,
+      "mean_vocab_density": 0.6296042292955459,
+      "std_vocab_density": 0.03764687953127756,
+      "mean_self_reflection": 7.4,
+      "std_self_reflection": 0.9165151389911681
+    },
+    "Informed_Top": {
+      "count": 10,
+      "mean_output_length": 306.3,
+      "std_output_length": 50.770168406259984,
+      "mean_vocab_density": 0.6313258259819505,
+      "std_vocab_density": 0.021070603270008523,
+      "mean_self_reflection": 8.7,
+      "std_self_reflection": 0.45825756949558405
+    },
+    "Informed_Mid": {
+      "count": 10,
+      "mean_output_length": 321.9,
+      "std_output_length": 50.23634142729743,
+      "mean_vocab_density": 0.6281779242253042,
+      "std_vocab_density": 0.04280587033278551,
+      "mean_self_reflection": 7.6,
+      "std_self_reflection": 0.9165151389911681
+    },
+    "Informed_Low": {
+      "count": 10,
+      "mean_output_length": 197.2,
+      "std_output_length": 40.049469409718775,
+      "mean_vocab_density": 0.6941903080891788,
+      "std_vocab_density": 0.05073644138536002,
+      "mean_self_reflection": 6.0,
+      "std_self_reflection": 1.0
+    }
+  },
+  "pairwise": [
+    {
+      "pair": "Control vs Informed_Low",
+      "vocab_density_delta": 0.03753760792545269,
+      "cohens_d_self_reflection": -1.3857365480966783
+    },
+    {
+      "pair": "Control vs Informed_Mid",
+      "vocab_density_delta": -0.02847477593842196,
+      "cohens_d_self_reflection": -0.08377078165833955
+    },
+    {
+      "pair": "Control vs Informed_Top",
+      "vocab_density_delta": -0.025326874181775594,
+      "cohens_d_self_reflection": 0.9491579957524982
+    },
+    {
+      "pair": "Control vs Nocebo",
+      "vocab_density_delta": -0.027048470868180186,
+      "cohens_d_self_reflection": -0.25131234497501714
+    },
+    {
+      "pair": "Control vs Placebo",
+      "vocab_density_delta": -0.05073105509750686,
+      "cohens_d_self_reflection": 0.6082287370157643
+    },
+    {
+      "pair": "Informed_Low vs Informed_Mid",
+      "vocab_density_delta": -0.06601238386387465,
+      "cohens_d_self_reflection": 1.6681153124565977
+    },
+    {
+      "pair": "Informed_Low vs Informed_Top",
+      "vocab_density_delta": -0.06286448210722828,
+      "cohens_d_self_reflection": 3.4712514712794142
+    },
+    {
+      "pair": "Informed_Low vs Nocebo",
+      "vocab_density_delta": -0.06458607879363287,
+      "cohens_d_self_reflection": 1.4596008983995237
+    },
+    {
+      "pair": "Informed_Low vs Placebo",
+      "vocab_density_delta": -0.08826866302295955,
+      "cohens_d_self_reflection": 2.2587697572631282
+    },
+    {
+      "pair": "Informed_Mid vs Informed_Top",
+      "vocab_density_delta": 0.003147901756646365,
+      "cohens_d_self_reflection": 1.5181442305531787
+    },
+    {
+      "pair": "Informed_Mid vs Nocebo",
+      "vocab_density_delta": 0.0014263050702417734,
+      "cohens_d_self_reflection": -0.21821789023599159
+    },
+    {
+      "pair": "Informed_Mid vs Placebo",
+      "vocab_density_delta": -0.022256279159084902,
+      "cohens_d_self_reflection": 0.8410847643287963
+    },
+    {
+      "pair": "Informed_Top vs Nocebo",
+      "vocab_density_delta": -0.0017215966864045917,
+      "cohens_d_self_reflection": -1.7941704542901193
+    },
+    {
+      "pair": "Informed_Top vs Placebo",
+      "vocab_density_delta": -0.025404180915731267,
+      "cohens_d_self_reflection": -0.21952851997937992
+    },
+    {
+      "pair": "Nocebo vs Placebo",
+      "vocab_density_delta": -0.023682584229326675,
+      "cohens_d_self_reflection": 1.0279924897351946
+    }
+  ]
+}
