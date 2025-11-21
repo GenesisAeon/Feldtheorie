@@ -6,16 +6,14 @@ abstract: >-
   cognitive, climatic, and synthetic intelligence data into a shared logistic
   resonance. Every contribution foregrounds the quartet (R, Θ, β, ζ(R)) and the
   switch-like response σ(β(R-Θ)) that drives emergent order beyond critical
-  thresholds. Version 2.0.0 introduces interactive visualizations (tooltip system),
-  REST API (OpenAPI 3.0), sonification ("The Sound of Criticality"), and validates
-  the paradigm shift from "β as universal constant" to "β as diagnostic of system
-  architecture" through Field Type Classification (ANOVA η²=0.735, p<0.01). Complete
-  with 402/402 passing tests, automation (CI Guards), and comprehensive documentation.
+  thresholds. Version 3.0.0 adds inequality-aware Klimakluft amplification,
+  inverted-sigmoid implosion trajectories, and empirical metacognition hooks to
+  stage visual overlays and ΔAIC benchmarking for UTAC fields.
 authors:
   - family-names: "Römer"
     given-names: "Johann"
   - name: "Universal Threshold Field Contributors"
-version: 2.0.0
+version: 3.0.0
 doi: 10.5281/zenodo.17472834
 date-released: 2025-11-11
 url: "https://github.com/GenesisAeon/Feldtheorie"

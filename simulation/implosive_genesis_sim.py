@@ -1,91 +1,52 @@
 """
-Implosive Genesis Engine — inverted sigmoid rollout for Type-6 TAC dynamics.
+Implosive Genesis Engine
 
-This module simulates a high-density start (R ≫ Θ) that unfolds through an
-inverted sigmoid S(R) = 1 / (1 + exp(+β(R - Θ))). The curve captures the
-implosive-to-expansive transition as the membrane relaxes and σ(β(R-Θ)) shifts
-from compression to resonance.
+Formal:
+    Provides an inverted sigmoid S(R) = 1 - 1 / (1 + exp(-β(R-Θ))) to model
+    implosive genesis where σ(β(R-Θ)) flips into contraction. Phase-space
+    trajectories combine S(R) with a damping term ζ(R)=ζ0·R to trace the
+    compressed→expanded transition without rendering figures.
+
+Empirical:
+    Returns numeric arrays so analysis notebooks can benchmark null baselines
+    (ζ0≈0, β small) against implosive regimes (ζ0>0, β large) and compute ΔAIC,
+    R², or time-to-threshold metrics.
+
+Poetic:
+    The field inhales — the inverted sigmoid bends resonance inward before the
+    membrane exhales back toward balance.
 """
-
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Tuple
-
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
+import math
+from typing import Iterable, List, Tuple
 
 
-def inverted_sigmoid(R: np.ndarray, beta: float, theta: float) -> np.ndarray:
-    """Compute the inverted sigmoid S(R) = 1 / (1 + exp(+β(R - Θ)))."""
+def inverted_sigmoid(r: Iterable[float], beta: float = 4.0, theta: float = 0.0) -> List[float]:
+    """Evaluate the inverted sigmoid S(R) = 1 - σ(β(R-Θ))."""
 
-    return 1.0 / (1.0 + np.exp(beta * (R - theta)))
-
-
-@dataclass
-class ImplosiveGenesisResult:
-    R: np.ndarray
-    S: np.ndarray
-    phases: np.ndarray
-
-    def to_frame(self) -> pd.DataFrame:
-        """Return the simulation as a tidy DataFrame."""
-
-        return pd.DataFrame({"R": self.R, "S": self.S, "phase": self.phases})
+    return [1.0 - 1.0 / (1.0 + math.exp(-beta * (value - theta))) for value in r]
 
 
-def simulate_implosive_genesis(
-    beta: float = 6.5,
-    theta: float = 0.35,
-    start: float = 1.2,
-    end: float = -0.1,
-    steps: int = 400,
-) -> ImplosiveGenesisResult:
-    """Run an implosive genesis sweep for TAC Type-6 dynamics.
+def phase_space_trajectory(
+    r_start: float,
+    r_end: float,
+    steps: int = 50,
+    beta: float = 4.0,
+    theta: float = 0.0,
+    damping: float = 0.05,
+) -> Tuple[List[float], List[float], List[float]]:
+    """Generate phase-space data for the implosive genesis curve.
 
-    Parameters
-    ----------
-    beta:
-        Steepness of the inverted sigmoid gate.
-    theta:
-        Threshold where compression flips to expansion.
-    start, end:
-        Bounds for the order parameter R; start>Θ models the compressed state.
-    steps:
-        Number of samples across the sweep.
+    Returns a tuple of (R values, inverted sigmoid S(R), velocity field) where
+    the velocity is modeled as v = -ζ0·R + S(R) to capture contraction balanced
+    by the inverted response.
     """
 
-    R = np.linspace(start, end, steps)
-    S = inverted_sigmoid(R, beta=beta, theta=theta)
+    if steps <= 1:
+        raise ValueError("steps must be greater than 1 to form a trajectory.")
 
-    phases = np.where(
-        R > theta,
-        "compressed",
-        np.where(R > theta - 0.1, "transition", "expanded"),
-    )
-
-    return ImplosiveGenesisResult(R=R, S=S, phases=phases)
-
-
-def plot_implosive_genesis(
-    beta: float = 6.5,
-    theta: float = 0.35,
-    start: float = 1.2,
-    end: float = -0.1,
-    steps: int = 400,
-    ax: plt.Axes | None = None,
-) -> Tuple[ImplosiveGenesisResult, plt.Axes]:
-    """Simulate and plot the implosive → expansive transition."""
-
-    result = simulate_implosive_genesis(beta=beta, theta=theta, start=start, end=end, steps=steps)
-    working_ax = ax or plt.subplots(figsize=(7, 4))[1]
-    frame = result.to_frame()
-    working_ax.plot(frame["R"], frame["S"], label="S(R) inverted")
-    working_ax.axvline(theta, color="red", linestyle="--", label="Θ (phase gate)")
-    working_ax.set_xlabel("R (density → expansion)")
-    working_ax.set_ylabel("S(R)")
-    working_ax.set_title("Implosive Genesis: inverted sigmoid unfolding")
-    working_ax.legend()
-    working_ax.grid(alpha=0.3)
-    return result, working_ax
+    r_values = [r_start + (r_end - r_start) * i / (steps - 1) for i in range(steps)]
+    s_values = inverted_sigmoid(r_values, beta=beta, theta=theta)
+    velocity = [-damping * r + s for r, s in zip(r_values, s_values)]
+    return r_values, s_values, velocity
