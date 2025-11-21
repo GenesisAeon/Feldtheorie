@@ -1,33 +1,59 @@
-section: 1
-scope: Entstehung (v1.0–v1.2)
-versions:
-  - id: v1.0.1
-    focus: UTF-Hypothese konsolidiert
-    grundthese: Emergenz folgt domänenübergreifend sigma(beta(R-Theta)).【F:RELEASE_NOTES_v1.0.1.md†L11-L33】【F:RELEASE_NOTES_v1.0.1.md†L38-L48】
-    daten_quellen:
-      - Sechs Domänen mit β, Θ und ΔAIC (LLM, Klima-Kipppunkte, Honigbienen, Arbeitsgedächtnis, Urban Heat Islands, Subduktionszonen).【F:RELEASE_NOTES_v1.0.1.md†L23-L33】
-      - Grundlagen- und Governance-Dokumente: utac_theory_core.md, utac_falsifiability.md, utac_applications.md, utac_review_considerations.md, AUTHORSHIP.md, REPRODUCE.md, METRICS.md.【F:RELEASE_NOTES_v1.0.1.md†L62-L76】
-    formel_herleitung: sigma(R)=1/(1+exp(-beta(R-Theta))) mit ΔAIC>10 als Nullmodell-Wächter und Bootstrap-CIs.【F:RELEASE_NOTES_v1.0.1.md†L38-L57】
-    skripte_verfahren:
-      - Solver: membrane_solver.py, coherence_term.py, recursive_threshold.py, adaptive_logistic_membrane.py, resonant_impedance.py.【F:RELEASE_NOTES_v1.0.1.md†L79-L87】
-      - Analysen: llm_beta_extractor.py, resonance_cohort_summary.py, preset_alignment_guard.py.【F:RELEASE_NOTES_v1.0.1.md†L88-L93】
-      - Tests und Daten: 19 Tests plus sechs Datenverzeichnisse mit Metadaten zu R, Theta, beta, zeta(R).【F:RELEASE_NOTES_v1.0.1.md†L94-L107】
-    status: Querschnitts-Validierung bestätigt β≈4.2±0.6 (Geophysik als Ausreißer).【F:RELEASE_NOTES_v1.0.1.md†L32-L33】【F:RELEASE_NOTES_v1.0.1.md†L112-L119】
-  - id: v1.1.0
-    focus: beta als diagnostischer Parameter
-    grundthese: beta diagnostiziert Systemarchitektur; fünf Feldtypen mit β-Bändern.【F:RELEASE_NOTES_v1.1.0.md†L12-L34】
-    daten_quellen:
-      - Zwölf Datensätze mit Feldtyp-Zuordnung und CSV-Exports beta_estimates.csv, domain_covariates.csv.【F:RELEASE_NOTES_v1.1.0.md†L111-L133】
-    formel_herleitung: beta-Abhängigkeitsmodell beta≈beta0*[C_eff/(1+lambda*D_eff)]*[SNR/(1+SNR^-1)]*g(M,dTheta/dt) mit Validierungen (LLM, Black Hole QPO, Theta Plasticity).【F:RELEASE_NOTES_v1.1.0.md†L38-L59】
-    skripte_verfahren:
-      - Meta-Regression und Simulation: analysis/beta_drivers_meta_regression.py, simulation/threshold_sandbox.py (ANOVA η²=0.68; 80 Simulationen).【F:RELEASE_NOTES_v1.1.0.md†L62-L108】
-      - Reproduzierbare CLI-Aufrufe für Regression und Sweep.【F:RELEASE_NOTES_v1.1.0.md†L187-L198】
-    status: Quasi-universelle β-Bänder bestätigt, universelle β=4.2 revidiert; Feldtypen erklären 68% Varianz, Kovariaten noch explorativ.【F:RELEASE_NOTES_v1.1.0.md†L136-L163】【F:RELEASE_NOTES_v1.1.0.md†L66-L84】
-  - id: v1.2-pre
-    focus: Zenodo-Release-Synchronisation
-    grundthese: Release-Resonanz der Quartettschichten (R, Theta, beta, zeta(R)) nötig vor Archivversiegelung.【F:README.md†L102-L120】
-    daten_quellen:
-      - docs/zenodo_multilingual_abstract_v1.2.md, docs/zenodo_release_playbook.md, docs/utac_activation_backlog.*, analysis/results/universal_beta_summary.json.【F:README.md†L102-L120】
-    formel_herleitung: Bestehende sigma(beta(R-Theta))-Ableitungen unverändert; Fokus auf Paritäts- und Governance-Sync.【F:README.md†L102-L120】
-    skripte_verfahren: Release-Playbook mit ΔAIC-Guards, CI-Ritualen, Codex-Checkpoints; Upload gemäß ZENODO_UPLOAD_GUIDE.md.【F:README.md†L102-L120】
-    status: Synchronisation offen (release-gap-002), Archivversiegelung steht aus.【F:README.md†L102-L120】
+sections:
+  - section: 1
+    scope: Entstehung (v1.0–v1.2)
+    versions:
+      - id: v1.0.1
+        focus: UTF-Hypothese konsolidiert
+        grundthese: Emergenz folgt domänenübergreifend sigma(beta(R-Theta)).【F:RELEASE_NOTES_v1.0.1.md†L11-L33】【F:RELEASE_NOTES_v1.0.1.md†L38-L48】
+        daten_quellen:
+          - Sechs Domänen mit β, Θ und ΔAIC (LLM, Klima-Kipppunkte, Honigbienen, Arbeitsgedächtnis, Urban Heat Islands, Subduktionszonen).【F:RELEASE_NOTES_v1.0.1.md†L23-L33】
+          - Grundlagen- und Governance-Dokumente: utac_theory_core.md, utac_falsifiability.md, utac_applications.md, utac_review_considerations.md, AUTHORSHIP.md, REPRODUCE.md, METRICS.md.【F:RELEASE_NOTES_v1.0.1.md†L62-L76】
+        formel_herleitung: sigma(R)=1/(1+exp(-beta(R-Theta))) mit ΔAIC>10 als Nullmodell-Wächter und Bootstrap-CIs.【F:RELEASE_NOTES_v1.0.1.md†L38-L57】
+        skripte_verfahren:
+          - Solver: membrane_solver.py, coherence_term.py, recursive_threshold.py, adaptive_logistic_membrane.py, resonant_impedance.py.【F:RELEASE_NOTES_v1.0.1.md†L79-L87】
+          - Analysen: llm_beta_extractor.py, resonance_cohort_summary.py, preset_alignment_guard.py.【F:RELEASE_NOTES_v1.0.1.md†L88-L93】
+          - Tests und Daten: 19 Tests plus sechs Datenverzeichnisse mit Metadaten zu R, Theta, beta, zeta(R).【F:RELEASE_NOTES_v1.0.1.md†L94-L107】
+        status: Querschnitts-Validierung bestätigt β≈4.2±0.6 (Geophysik als Ausreißer).【F:RELEASE_NOTES_v1.0.1.md†L32-L33】【F:RELEASE_NOTES_v1.0.1.md†L112-L119】
+      - id: v1.1.0
+        focus: beta als diagnostischer Parameter
+        grundthese: beta diagnostiziert Systemarchitektur; fünf Feldtypen mit β-Bändern.【F:RELEASE_NOTES_v1.1.0.md†L12-L34】
+        daten_quellen:
+          - Zwölf Datensätze mit Feldtyp-Zuordnung und CSV-Exports beta_estimates.csv, domain_covariates.csv.【F:RELEASE_NOTES_v1.1.0.md†L111-L133】
+        formel_herleitung: beta-Abhängigkeitsmodell beta≈beta0*[C_eff/(1+lambda*D_eff)]*[SNR/(1+SNR^-1)]*g(M,dTheta/dt) mit Validierungen (LLM, Black Hole QPO, Theta Plasticity).【F:RELEASE_NOTES_v1.1.0.md†L38-L59】
+        skripte_verfahren:
+          - Meta-Regression und Simulation: analysis/beta_drivers_meta_regression.py, simulation/threshold_sandbox.py (ANOVA η²=0.68; 80 Simulationen).【F:RELEASE_NOTES_v1.1.0.md†L62-L108】
+          - Reproduzierbare CLI-Aufrufe für Regression und Sweep.【F:RELEASE_NOTES_v1.1.0.md†L187-L198】
+        status: Quasi-universelle β-Bänder bestätigt, universelle β=4.2 revidiert; Feldtypen erklären 68% Varianz, Kovariaten noch explorativ.【F:RELEASE_NOTES_v1.1.0.md†L136-L163】【F:RELEASE_NOTES_v1.1.0.md†L66-L84】
+      - id: v1.2-pre
+        focus: Zenodo-Release-Synchronisation
+        grundthese: Release-Resonanz der Quartettschichten (R, Theta, beta, zeta(R)) nötig vor Archivversiegelung.【F:README.md†L102-L120】
+        daten_quellen:
+          - docs/zenodo_multilingual_abstract_v1.2.md, docs/zenodo_release_playbook.md, docs/utac_activation_backlog.*, analysis/results/universal_beta_summary.json.【F:README.md†L102-L120】
+        formel_herleitung: Bestehende sigma(beta(R-Theta))-Ableitungen unverändert; Fokus auf Paritäts- und Governance-Sync.【F:README.md†L102-L120】
+        skripte_verfahren: Release-Playbook mit ΔAIC-Guards, CI-Ritualen, Codex-Checkpoints; Upload gemäß ZENODO_UPLOAD_GUIDE.md.【F:README.md†L102-L120】
+        status: Synchronisation offen (release-gap-002), Archivversiegelung steht aus.【F:README.md†L102-L120】
+  - section: 2
+    scope: Expansion (v1.3)
+    versions:
+      - id: v1.3
+        focus: Data Expansion & Manifest Activation
+        grundthese: Mindestens zehn Domänen, ≥50 β-Schätzungen und Meta-Regression R²≥0.60 zur Ausweitung der σ(β(R-Θ))-Erzählung.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L6-L13】【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L28-L36】
+        daten_quellen:
+          - Tri-Layer aus Data Expansion Plan, Manifest (5 Laternen) und Gap Assessment mit 15 validierten β-Werten und fehlenden Real-Datasets.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L16-L52】【F:data/utac_v1_3_data_manifest.yaml†L19-L160】【F:analysis/reports/utac_v1_3_gap_assessment.md†L6-L29】
+        formel_herleitung: ΔAIC≥10, Bootstrap 1k und spline-Nulltests sichern β-Bandbreiten 2.5–16.0; feldtypspezifische ζ(R)-Proxies nötig.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L68-L93】【F:analysis/reports/utac_v1_3_gap_assessment.md†L6-L20】
+        skripte_verfahren:
+          - Neue Wächter/Loader: analysis/climate_beta_extractor.py, analysis/neuro_threshold_fitter.py, analysis/outlier_validator.py, analysis/utac_manifest.py; Manifest-Audit trackt fehlende Daten/Resultate pro Laterne.【F:analysis/reports/utac_v1_3_gap_assessment.md†L11-L25】【F:analysis/results/utac_v1_3_manifest_audit.yaml†L1-L115】
+        status: Aktivierungsgrad ~0.05, fünf Laternen mit Metadata-Stubs; v1.3 bleibt offen bis reale Daten/Resultate σ(β(R-Θ)) aktivieren und Codex/Shadow-Hooks synchron sind.【F:analysis/results/utac_v1_3_manifest_audit.yaml†L1-L115】【F:analysis/reports/utac_v1_3_gap_assessment.md†L23-L36】
+  - section: 3
+    scope: Entwicklung zu v2.0 (Field-Type-Paradigma)
+    versions:
+      - id: v2.0.0
+        focus: Interaktive Diagnostik & Feldtyp-Shift
+        grundthese: β wird als Feldtyp-Diagnostik (η²=0.735) validiert und moduliert σ(β(R-Θ)) domänenspezifisch statt universell.【F:RELEASE_NOTES_v2.0.0.md†L12-L16】【F:RELEASE_NOTES_v2.0.0.md†L119-L136】
+        daten_quellen:
+          - Release-Candidate (73 %, 11/15 Features) mit interaktiven Tooltips, Feldtyp-Klassifikator, CREP-Scoring, modularer UTAC-API und Sonifikationssuite mit σ(β(R-Θ))-Mapping.【F:RELEASE_NOTES_v2.0.0.md†L3-L6】【F:RELEASE_NOTES_v2.0.0.md†L22-L79】【F:RELEASE_NOTES_v2.0.0.md†L83-L109】【F:RELEASE_NOTES_v2.0.0.md†L94-L98】
+        formel_herleitung: Meta-Regression v2 liefert R²(WLS)=0.596, Adjusted R²=0.293 und Feldtyp-ANOVA η²=0.735 (p<0.01); Datenbottleneck markiert Bedarf n≥30 Systeme.【F:RELEASE_NOTES_v2.0.0.md†L119-L136】
+        skripte_verfahren:
+          - Statistisches Rückgrat: analysis/beta_meta_regression_v2_field_types.py, data/derived/domain_covariates.csv (Feldtyp-Spalte), docs/meta_regression_v2_field_types_report.md.【F:RELEASE_NOTES_v2.0.0.md†L119-L140】
+          - Interfaces: API-Endpunkte /api/analyze, /api/simulate, /api/tooltip plus Tooltip-/CREP-Komponenten; Sonifikation mappt β, R-Θ, σ(β(R-Θ)).【F:RELEASE_NOTES_v2.0.0.md†L57-L75】【F:RELEASE_NOTES_v2.0.0.md†L94-L98】
+        status: Release Candidate; Feldtyp-Shift validiert, aber Datenengpass (15 Beobachtungen) – Fokus auf Datenerweiterung für stabile R²≥0.70 und Archivversiegelung.【F:RELEASE_NOTES_v2.0.0.md†L3-L6】【F:RELEASE_NOTES_v2.0.0.md†L119-L135】
