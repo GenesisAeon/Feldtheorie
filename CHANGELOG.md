@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Infrastructure Hardening for Aletheia & V3 Prep
+- Added timeout-aware retries and explicit UTF-8 handling to `scripts/experiment_aletheia_placebo.py` to stabilise multi-phase runs.
+- Documented reproduction steps for Aletheia control/placebo/informed/affection phases in `REPRODUCE.md`.
+- Introduced `analysis/aletheia_evaluation.py` for automated Cohen's d and vocabulary-density deltas with Markdown/JSON outputs.
+- Captured the experimental "Broken RAM Hypothesis" as a post-V3.0 theoretical extension.
+
 ### 🧪 UTAC v2.5 — Project Aletheia: First CCUC Empirical Test
 
 **Launch Date:** 2025-11-19
