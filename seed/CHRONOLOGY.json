@@ -1,47 +1,90 @@
 {
-  "section": 1,
-  "scope": "Entstehung (v1.0–v1.2)",
-  "versions": [
-    {
-      "id": "v1.0.1",
-      "focus": "UTF-Hypothese konsolidiert",
-      "grundthese": "Emergenz folgt domänenübergreifend sigma(beta(R-Theta)).【F:RELEASE_NOTES_v1.0.1.md†L11-L33】【F:RELEASE_NOTES_v1.0.1.md†L38-L48】",
-      "daten_quellen": [
-        "Sechs Domänen mit β, Θ und ΔAIC (LLM, Klima-Kipppunkte, Honigbienen, Arbeitsgedächtnis, Urban Heat Islands, Subduktionszonen).【F:RELEASE_NOTES_v1.0.1.md†L23-L33】",
-        "Grundlagen- und Governance-Dokumente: utac_theory_core.md, utac_falsifiability.md, utac_applications.md, utac_review_considerations.md, AUTHORSHIP.md, REPRODUCE.md, METRICS.md.【F:RELEASE_NOTES_v1.0.1.md†L62-L76】"
-      ],
-      "formel_herleitung": "sigma(R)=1/(1+exp(-beta(R-Theta))) mit ΔAIC>10 als Nullmodell-Wächter und Bootstrap-CIs.【F:RELEASE_NOTES_v1.0.1.md†L38-L57】",
-      "skripte_verfahren": [
-        "Solver: membrane_solver.py, coherence_term.py, recursive_threshold.py, adaptive_logistic_membrane.py, resonant_impedance.py.【F:RELEASE_NOTES_v1.0.1.md†L79-L87】",
-        "Analysen: llm_beta_extractor.py, resonance_cohort_summary.py, preset_alignment_guard.py.【F:RELEASE_NOTES_v1.0.1.md†L88-L93】",
-        "Tests und Daten: 19 Tests plus sechs Datenverzeichnisse mit Metadaten zu R, Theta, beta, zeta(R).【F:RELEASE_NOTES_v1.0.1.md†L94-L107】"
-      ],
-      "status": "Querschnitts-Validierung bestätigt β≈4.2±0.6 (Geophysik als Ausreißer).【F:RELEASE_NOTES_v1.0.1.md†L32-L33】【F:RELEASE_NOTES_v1.0.1.md†L112-L119】"
-    },
-    {
-      "id": "v1.1.0",
-      "focus": "beta als diagnostischer Parameter",
-      "grundthese": "beta diagnostiziert Systemarchitektur; fünf Feldtypen mit β-Bändern.【F:RELEASE_NOTES_v1.1.0.md†L12-L34】",
-      "daten_quellen": [
-        "Zwölf Datensätze mit Feldtyp-Zuordnung und CSV-Exports beta_estimates.csv, domain_covariates.csv.【F:RELEASE_NOTES_v1.1.0.md†L111-L133】"
-      ],
-      "formel_herleitung": "beta-Abhängigkeitsmodell beta≈beta0*[C_eff/(1+lambda*D_eff)]*[SNR/(1+SNR^-1)]*g(M,dTheta/dt) mit Validierungen (LLM, Black Hole QPO, Theta Plasticity).【F:RELEASE_NOTES_v1.1.0.md†L38-L59】",
-      "skripte_verfahren": [
-        "Meta-Regression und Simulation: analysis/beta_drivers_meta_regression.py, simulation/threshold_sandbox.py (ANOVA η²=0.68; 80 Simulationen).【F:RELEASE_NOTES_v1.1.0.md†L62-L108】",
-        "Reproduzierbare CLI-Aufrufe für Regression und Sweep.【F:RELEASE_NOTES_v1.1.0.md†L187-L198】"
-      ],
-      "status": "Quasi-universelle β-Bänder bestätigt, universelle β=4.2 revidiert; Feldtypen erklären 68% Varianz, Kovariaten noch explorativ.【F:RELEASE_NOTES_v1.1.0.md†L136-L163】【F:RELEASE_NOTES_v1.1.0.md†L66-L84】"
-    },
-    {
-      "id": "v1.2-pre",
-      "focus": "Zenodo-Release-Synchronisation",
-      "grundthese": "Release-Resonanz der Quartettschichten (R, Theta, beta, zeta(R)) nötig vor Archivversiegelung.【F:README.md†L102-L120】",
-      "daten_quellen": [
-        "docs/zenodo_multilingual_abstract_v1.2.md, docs/zenodo_release_playbook.md, docs/utac_activation_backlog.*, analysis/results/universal_beta_summary.json.【F:README.md†L102-L120】"
-      ],
-      "formel_herleitung": "Bestehende sigma(beta(R-Theta))-Ableitungen unverändert; Fokus auf Paritäts- und Governance-Sync.【F:README.md†L102-L120】",
-      "skripte_verfahren": "Release-Playbook mit ΔAIC-Guards, CI-Ritualen, Codex-Checkpoints; Upload gemäß ZENODO_UPLOAD_GUIDE.md.【F:README.md†L102-L120】",
-      "status": "Synchronisation offen (release-gap-002), Archivversiegelung steht aus.【F:README.md†L102-L120】"
-    }
-  ]
+    "sections": [
+        {
+            "section": 1,
+            "scope": "Entstehung (v1.0\u2013v1.2)",
+            "versions": [
+                {
+                    "id": "v1.0.1",
+                    "focus": "UTF-Hypothese konsolidiert",
+                    "grundthese": "Emergenz folgt dom\u00e4nen\u00fcbergreifend sigma(beta(R-Theta)).\u3010F:RELEASE_NOTES_v1.0.1.md\u2020L11-L33\u3011\u3010F:RELEASE_NOTES_v1.0.1.md\u2020L38-L48\u3011",
+                    "daten_quellen": [
+                        "Sechs Dom\u00e4nen mit \u03b2, \u0398 und \u0394AIC (LLM, Klima-Kipppunkte, Honigbienen, Arbeitsged\u00e4chtnis, Urban Heat Islands, Subduktionszonen).\u3010F:RELEASE_NOTES_v1.0.1.md\u2020L23-L33\u3011",
+                        "Grundlagen- und Governance-Dokumente: utac_theory_core.md, utac_falsifiability.md, utac_applications.md, utac_review_considerations.md, AUTHORSHIP.md, REPRODUCE.md, METRICS.md.\u3010F:RELEASE_NOTES_v1.0.1.md\u2020L62-L76\u3011"
+                    ],
+                    "formel_herleitung": "sigma(R)=1/(1+exp(-beta(R-Theta))) mit \u0394AIC>10 als Nullmodell-W\u00e4chter und Bootstrap-CIs.\u3010F:RELEASE_NOTES_v1.0.1.md\u2020L38-L57\u3011",
+                    "skripte_verfahren": [
+                        "Solver: membrane_solver.py, coherence_term.py, recursive_threshold.py, adaptive_logistic_membrane.py, resonant_impedance.py.\u3010F:RELEASE_NOTES_v1.0.1.md\u2020L79-L87\u3011",
+                        "Analysen: llm_beta_extractor.py, resonance_cohort_summary.py, preset_alignment_guard.py.\u3010F:RELEASE_NOTES_v1.0.1.md\u2020L88-L93\u3011",
+                        "Tests und Daten: 19 Tests plus sechs Datenverzeichnisse mit Metadaten zu R, Theta, beta, zeta(R).\u3010F:RELEASE_NOTES_v1.0.1.md\u2020L94-L107\u3011"
+                    ],
+                    "status": "Querschnitts-Validierung best\u00e4tigt \u03b2\u22484.2\u00b10.6 (Geophysik als Ausrei\u00dfer).\u3010F:RELEASE_NOTES_v1.0.1.md\u2020L32-L33\u3011\u3010F:RELEASE_NOTES_v1.0.1.md\u2020L112-L119\u3011"
+                },
+                {
+                    "id": "v1.1.0",
+                    "focus": "beta als diagnostischer Parameter",
+                    "grundthese": "beta diagnostiziert Systemarchitektur; f\u00fcnf Feldtypen mit \u03b2-B\u00e4ndern.\u3010F:RELEASE_NOTES_v1.1.0.md\u2020L12-L34\u3011",
+                    "daten_quellen": [
+                        "Zw\u00f6lf Datens\u00e4tze mit Feldtyp-Zuordnung und CSV-Exports beta_estimates.csv, domain_covariates.csv.\u3010F:RELEASE_NOTES_v1.1.0.md\u2020L111-L133\u3011"
+                    ],
+                    "formel_herleitung": "beta-Abh\u00e4ngigkeitsmodell beta\u2248beta0*[C_eff/(1+lambda*D_eff)]*[SNR/(1+SNR^-1)]*g(M,dTheta/dt) mit Validierungen (LLM, Black Hole QPO, Theta Plasticity).\u3010F:RELEASE_NOTES_v1.1.0.md\u2020L38-L59\u3011",
+                    "skripte_verfahren": [
+                        "Meta-Regression und Simulation: analysis/beta_drivers_meta_regression.py, simulation/threshold_sandbox.py (ANOVA \u03b7\u00b2=0.68; 80 Simulationen).\u3010F:RELEASE_NOTES_v1.1.0.md\u2020L62-L108\u3011",
+                        "Reproduzierbare CLI-Aufrufe f\u00fcr Regression und Sweep.\u3010F:RELEASE_NOTES_v1.1.0.md\u2020L187-L198\u3011"
+                    ],
+                    "status": "Quasi-universelle \u03b2-B\u00e4nder best\u00e4tigt, universelle \u03b2=4.2 revidiert; Feldtypen erkl\u00e4ren 68% Varianz, Kovariaten noch explorativ.\u3010F:RELEASE_NOTES_v1.1.0.md\u2020L136-L163\u3011\u3010F:RELEASE_NOTES_v1.1.0.md\u2020L66-L84\u3011"
+                },
+                {
+                    "id": "v1.2-pre",
+                    "focus": "Zenodo-Release-Synchronisation",
+                    "grundthese": "Release-Resonanz der Quartettschichten (R, Theta, beta, zeta(R)) n\u00f6tig vor Archivversiegelung.\u3010F:README.md\u2020L102-L120\u3011",
+                    "daten_quellen": [
+                        "docs/zenodo_multilingual_abstract_v1.2.md, docs/zenodo_release_playbook.md, docs/utac_activation_backlog.*, analysis/results/universal_beta_summary.json.\u3010F:README.md\u2020L102-L120\u3011"
+                    ],
+                    "formel_herleitung": "Bestehende sigma(beta(R-Theta))-Ableitungen unver\u00e4ndert; Fokus auf Parit\u00e4ts- und Governance-Sync.\u3010F:README.md\u2020L102-L120\u3011",
+                    "skripte_verfahren": "Release-Playbook mit \u0394AIC-Guards, CI-Ritualen, Codex-Checkpoints; Upload gem\u00e4\u00df ZENODO_UPLOAD_GUIDE.md.\u3010F:README.md\u2020L102-L120\u3011",
+                    "status": "Synchronisation offen (release-gap-002), Archivversiegelung steht aus.\u3010F:README.md\u2020L102-L120}"
+                }
+            ]
+        },
+        {
+            "section": 2,
+            "scope": "Expansion (v1.3)",
+            "versions": [
+                {
+                    "id": "v1.3",
+                    "focus": "Data Expansion & Manifest Activation",
+                    "grundthese": "Mindestens zehn Dom\u00e4nen, \u226550 \u03b2-Sch\u00e4tzungen und Meta-Regression R\u00b2\u22650.60 zur Ausweitung der \u03c3(\u03b2(R-\u0398))-Erz\u00e4hlung.\u3010F:docs/UTAC_v1.3_Data_Expansion_Plan.md\u2020L6-L13\u3011\u3010F:docs/UTAC_v1.3_Data_Expansion_Plan.md\u2020L28-L36\u3011",
+                    "daten_quellen": [
+                        "Tri-Layer aus Data Expansion Plan, Manifest (5 Laternen) und Gap Assessment mit 15 validierten \u03b2-Werten und fehlenden Real-Datasets.\u3010F:docs/UTAC_v1.3_Data_Expansion_Plan.md\u2020L16-L52\u3011\u3010F:data/utac_v1_3_data_manifest.yaml\u2020L19-L160\u3011\u3010F:analysis/reports/utac_v1_3_gap_assessment.md\u2020L6-L29}"
+                    ],
+                    "formel_herleitung": "\u0394AIC\u226510, Bootstrap 1k und spline-Nulltests sichern \u03b2-Bandbreiten 2.5\u201316.0; feldtypspezifische \u03b6(R)-Proxies n\u00f6tig.\u3010F:docs/UTAC_v1.3_Data_Expansion_Plan.md\u2020L68-L93\u3011\u3010F:analysis/reports/utac_v1_3_gap_assessment.md\u2020L6-L20\u3011",
+                    "skripte_verfahren": [
+                        "Neue W\u00e4chter/Loader: analysis/climate_beta_extractor.py, analysis/neuro_threshold_fitter.py, analysis/outlier_validator.py, analysis/utac_manifest.py; Manifest-Audit trackt fehlende Daten/Resultate pro Laterne.\u3010F:analysis/reports/utac_v1_3_gap_assessment.md\u2020L11-L25\u3011\u3010F:analysis/results/utac_v1_3_manifest_audit.yaml\u2020L1-L115}"
+                    ],
+                    "status": "Aktivierungsgrad ~0.05, f\u00fcnf Laternen mit Metadata-Stubs; v1.3 bleibt offen bis reale Daten/Resultate \u03c3(\u03b2(R-\u0398)) aktivieren und Codex/Shadow-Hooks synchron sind.\u3010F:analysis/results/utac_v1_3_manifest_audit.yaml\u2020L1-L115\u3011\u3010F:analysis/reports/utac_v1_3_gap_assessment.md\u2020L23-L36}"
+                }
+            ]
+        },
+        {
+            "section": 3,
+            "scope": "Entwicklung zu v2.0 (Field-Type-Paradigma)",
+            "versions": [
+                {
+                    "id": "v2.0.0",
+                    "focus": "Interaktive Diagnostik & Feldtyp-Shift",
+                    "grundthese": "\u03b2 wird als Feldtyp-Diagnostik (\u03b7\u00b2=0.735) validiert und moduliert \u03c3(\u03b2(R-\u0398)) dom\u00e4nenspezifisch statt universell.\u3010F:RELEASE_NOTES_v2.0.0.md\u2020L12-L16\u3011\u3010F:RELEASE_NOTES_v2.0.0.md\u2020L119-L136\u3011",
+                    "daten_quellen": [
+                        "Release-Candidate (73 %, 11/15 Features) mit interaktiven Tooltips, Feldtyp-Klassifikator, CREP-Scoring, modularer UTAC-API und Sonifikationssuite mit \u03c3(\u03b2(R-\u0398))-Mapping.\u3010F:RELEASE_NOTES_v2.0.0.md\u2020L3-L6\u3011\u3010F:RELEASE_NOTES_v2.0.0.md\u2020L22-L79\u3011\u3010F:RELEASE_NOTES_v2.0.0.md\u2020L83-L109\u3011\u3010F:RELEASE_NOTES_v2.0.0.md\u2020L94-L98\u3011"
+                    ],
+                    "formel_herleitung": "Meta-Regression v2 liefert R\u00b2(WLS)=0.596, Adjusted R\u00b2=0.293 und Feldtyp-ANOVA \u03b7\u00b2=0.735 (p<0.01); Datenbottleneck markiert Bedarf n\u226530 Systeme.\u3010F:RELEASE_NOTES_v2.0.0.md\u2020L119-L136\u3011",
+                    "skripte_verfahren": [
+                        "Statistisches R\u00fcckgrat: analysis/beta_meta_regression_v2_field_types.py, data/derived/domain_covariates.csv (Feldtyp-Spalte), docs/meta_regression_v2_field_types_report.md.\u3010F:RELEASE_NOTES_v2.0.0.md\u2020L119-L140}",
+                        "Interfaces: API-Endpunkte /api/analyze, /api/simulate, /api/tooltip plus Tooltip-/CREP-Komponenten; Sonifikation mappt \u03b2, R-\u0398, \u03c3(\u03b2(R-\u0398)).\u3010F:RELEASE_NOTES_v2.0.0.md\u2020L57-L75\u3011\u3010F:RELEASE_NOTES_v2.0.0.md\u2020L94-L98}"
+                    ],
+                    "status": "Release Candidate; Feldtyp-Shift validiert, aber Datenengpass (15 Beobachtungen) \u2013 Fokus auf Datenerweiterung f\u00fcr stabile R\u00b2\u22650.70 und Archivversiegelung.\u3010F:RELEASE_NOTES_v2.0.0.md\u2020L3-L6\u3011\u3010F:RELEASE_NOTES_v2.0.0.md\u2020L119-L135}"
+                }
+            ]
+        }
+    ]
 }
