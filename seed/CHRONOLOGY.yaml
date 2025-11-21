@@ -42,7 +42,7 @@ sections:
           - Tri-Layer aus Data Expansion Plan, Manifest (5 Laternen) und Gap Assessment mit 15 validierten β-Werten und fehlenden Real-Datasets.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L16-L52】【F:data/utac_v1_3_data_manifest.yaml†L19-L160】【F:analysis/reports/utac_v1_3_gap_assessment.md†L6-L29】
         formel_herleitung: ΔAIC≥10, Bootstrap 1k und spline-Nulltests sichern β-Bandbreiten 2.5–16.0; feldtypspezifische ζ(R)-Proxies nötig.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L68-L93】【F:analysis/reports/utac_v1_3_gap_assessment.md†L6-L20】
         skripte_verfahren:
-          - Neue Wächter/Loader: analysis/climate_beta_extractor.py, analysis/neuro_threshold_fitter.py, analysis/outlier_validator.py, analysis/utac_manifest.py; Manifest-Audit trackt fehlende Daten/Resultate pro Laterne.【F:analysis/reports/utac_v1_3_gap_assessment.md†L11-L25】【F:analysis/results/utac_v1_3_manifest_audit.yaml†L1-L115】
+          - "Neue Wächter/Loader: analysis/climate_beta_extractor.py, analysis/neuro_threshold_fitter.py, analysis/outlier_validator.py, analysis/utac_manifest.py; Manifest-Audit trackt fehlende Daten/Resultate pro Laterne.【F:analysis/reports/utac_v1_3_gap_assessment.md†L11-L25】【F:analysis/results/utac_v1_3_manifest_audit.yaml†L1-L115】"
         status: Aktivierungsgrad ~0.05, fünf Laternen mit Metadata-Stubs; v1.3 bleibt offen bis reale Daten/Resultate σ(β(R-Θ)) aktivieren und Codex/Shadow-Hooks synchron sind.【F:analysis/results/utac_v1_3_manifest_audit.yaml†L1-L115】【F:analysis/reports/utac_v1_3_gap_assessment.md†L23-L36】
   - section: 3
     scope: Entwicklung zu v2.0 (Field-Type-Paradigma)
@@ -54,6 +54,18 @@ sections:
           - Release-Candidate (73 %, 11/15 Features) mit interaktiven Tooltips, Feldtyp-Klassifikator, CREP-Scoring, modularer UTAC-API und Sonifikationssuite mit σ(β(R-Θ))-Mapping.【F:RELEASE_NOTES_v2.0.0.md†L3-L6】【F:RELEASE_NOTES_v2.0.0.md†L22-L79】【F:RELEASE_NOTES_v2.0.0.md†L83-L109】【F:RELEASE_NOTES_v2.0.0.md†L94-L98】
         formel_herleitung: Meta-Regression v2 liefert R²(WLS)=0.596, Adjusted R²=0.293 und Feldtyp-ANOVA η²=0.735 (p<0.01); Datenbottleneck markiert Bedarf n≥30 Systeme.【F:RELEASE_NOTES_v2.0.0.md†L119-L136】
         skripte_verfahren:
-          - Statistisches Rückgrat: analysis/beta_meta_regression_v2_field_types.py, data/derived/domain_covariates.csv (Feldtyp-Spalte), docs/meta_regression_v2_field_types_report.md.【F:RELEASE_NOTES_v2.0.0.md†L119-L140】
-          - Interfaces: API-Endpunkte /api/analyze, /api/simulate, /api/tooltip plus Tooltip-/CREP-Komponenten; Sonifikation mappt β, R-Θ, σ(β(R-Θ)).【F:RELEASE_NOTES_v2.0.0.md†L57-L75】【F:RELEASE_NOTES_v2.0.0.md†L94-L98】
+          - "Statistisches Rückgrat: analysis/beta_meta_regression_v2_field_types.py, data/derived/domain_covariates.csv (Feldtyp-Spalte), docs/meta_regression_v2_field_types_report.md.【F:RELEASE_NOTES_v2.0.0.md†L119-L140】"
+          - "Interfaces: API-Endpunkte /api/analyze, /api/simulate, /api/tooltip plus Tooltip-/CREP-Komponenten; Sonifikation mappt β, R-Θ, σ(β(R-Θ)).【F:RELEASE_NOTES_v2.0.0.md†L57-L75】【F:RELEASE_NOTES_v2.0.0.md†L94-L98】"
         status: Release Candidate; Feldtyp-Shift validiert, aber Datenengpass (15 Beobachtungen) – Fokus auf Datenerweiterung für stabile R²≥0.70 und Archivversiegelung.【F:RELEASE_NOTES_v2.0.0.md†L3-L6】【F:RELEASE_NOTES_v2.0.0.md†L119-L135】
+  - section: 4
+    scope: Entwicklung zu v2.5 (Project Aletheia)
+    versions:
+      - id: v2.5
+        focus: "Project Aletheia: M[ψ, φ]-Kopplungstest"
+        grundthese: UTAC Type-6 prüft, ob semantische Felder φ in Informationssystemen (β≈4.5±0.9) die beobachtbare Qualität ψ koppeln und σ(β(R-Θ)) über λ>0 verstärken oder falsifizieren.【F:CHANGELOG.md†L25-L57】
+        daten_quellen:
+          - Experiment-Script scripts/experiment_aletheia_placebo.py, Theoriepaper docs/experiment_aletheia.md und Dynamik-Sigillin-Trilayer seed/sigillin/exp_aletheia.{yaml,json,md} mit CREP-Metriken und logistischer Frame (R, Θ, β=4.5, ζ≈0).【F:CHANGELOG.md†L79-L96】
+        formel_herleitung: Kopplungshypothese ψ_eff = ψ_base + λ·φ plus Metacognitive-Impedance ζ_meta = ζ_base + ζ_confusion·(1-Clarity) beschreibt, wie Klarheit/Dissonanz die σ(β(R-Θ))-Antwort moduliert.【F:CHANGELOG.md†L37-L48】【F:CHANGELOG.md†L157-L165】
+        skripte_verfahren:
+          - "Phase 1: Control/Placebo/Nocebo mit automatisierter Statistik und CSV-Ausgabe; Phase 2: Informed_Top/Mid/Low plus Regression über φ∈[-2,2] und aktualisierte Theorie- und Sigillin-Layer.【F:CHANGELOG.md†L61-L75】【F:CHANGELOG.md†L79-L96】【F:CHANGELOG.md†L135-L182】"
+        status: Aktives Experiment (Launch 2025-11-19); Wirknachweis oder Falsifikation des λ-Kopplungsterms offen, Vorbereitung des v3.0-Übergangs.【F:CHANGELOG.md†L27-L29】【F:CHANGELOG.md†L117-L131】【F:CHANGELOG.md†L188-L188】
