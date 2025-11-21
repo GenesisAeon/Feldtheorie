@@ -1,22 +1,22 @@
 # CHRONOLOGY
 
-**Initial-Befehl der rekursiven Historienerstellung (V1.0-1.2):**
-```text
-@Codex
-**Aufgabe:** Starte die `seed/CHRONOLOGY.md`.
-**Fokus:** Die Entstehung (Version 1.0 bis 1.2).
-
-Nutze deine Kenntnis des **MOR-FIT-Sigillin Systems** und scanne das `Fraktaltagebuch` sowie die `ArchivSuche`, um den Anfang des Projekts zu rekonstruieren.
-
-Erstelle **Sektion 1** der Chronik basierend auf folgenden offenen Punkten:
-1. **Grundthese:** Womit hat das Projekt begonnen? Was war der allererste Gedanke?
-2. **Daten & Quellen:** Welche Dokumente oder externen Referenzen waren in dieser Phase tatsächlich vorhanden?
-3. **Formel & Herleitung:** Gab es bereits eine mathematische Formulierung? Wenn ja, worauf basierte sie?
-4. **Skripte & Verfahren:** Existierte bereits Code zur Überprüfung?
-5. **Status:** Wie bewerten wir diese Phase rückblickend? (Bestätigt? Widerlegt? Offen?)
-
-**Anweisung:** Schreibe nur das, was du in den Artefakten findest. Keine Interpretation, reine Rekonstruktion.
-```
+> **Initial-Befehl der rekursiven Historienerstellung (V1.0-1.2):**
+> ```text
+> @Codex
+> **Aufgabe:** Starte die `seed/CHRONOLOGY.md`.
+> **Fokus:** Die Entstehung (Version 1.0 bis 1.2).
+>
+> Nutze deine Kenntnis des **MOR-FIT-Sigillin Systems** und scanne das `Fraktaltagebuch` sowie die `ArchivSuche`, um den Anfang des Projekts zu rekonstruieren.
+>
+> Erstelle **Sektion 1** der Chronik basierend auf folgenden offenen Punkten:
+> 1. **Grundthese:** Womit hat das Projekt begonnen? Was war der allererste Gedanke?
+> 2. **Daten & Quellen:** Welche Dokumente oder externen Referenzen waren in dieser Phase tatsächlich vorhanden?
+> 3. **Formel & Herleitung:** Gab es bereits eine mathematische Formulierung? Wenn ja, worauf basierte sie?
+> 4. **Skripte & Verfahren:** Existierte bereits Code zur Überprüfung?
+> 5. **Status:** Wie bewerten wir diese Phase rückblickend? (Bestätigt? Widerlegt? Offen?)
+>
+> **Anweisung:** Schreibe nur das, was du in den Artefakten findest. Keine Interpretation, reine Rekonstruktion.
+> ```
 
 ## Sektion 1 – Entstehung (v1.0–v1.2)
 
@@ -41,6 +41,37 @@ Erstelle **Sektion 1** der Chronik basierend auf folgenden offenen Punkten:
 - **Skripte & Verfahren:** Umsetzung läuft über das Release-Playbook mit ΔAIC-Guards, CI-Ritualen und Codex-Checkpoints; Upload erfolgt nach `ZENODO_UPLOAD_GUIDE.md`, sobald alle Oberflächen resonant sind.【F:README.md†L102-L120】
 - **Status:** Offene Synchronisation (release-gap-002): Archivversiegelung steht aus, bis Formal-, Empirie- und Pledge-Artefakte gemeinsam R>Theta signalisieren und Codex-/Badge-Aktualisierungen vollzogen sind.【F:README.md†L102-L120】
 
+> **Prompt – storyrun_complete_chain_pure (V1.3):**
+> ```text
+> @Codex /storyrun_complete_chain_pure
+> 
+> **System-Kontext:** MOR-FIT-Sigillin.
+> 
+> **Task 1: Insert Prompt (Sektion 1)**
+> Füge ganz oben in `seed/CHRONOLOGY.md` (vor "## Sektion 1") folgenden Block ein:
+> 
+> > **Initial-Befehl der rekursiven Historienerstellung (V1.0-1.2):**
+> > ```text
+> > @Codex
+> > **Aufgabe:** Starte die `seed/CHRONOLOGY.md`.
+> > **Fokus:** Die Entstehung (Version 1.0 bis 1.2).
+> >
+> > Nutze deine Kenntnis des **MOR-FIT-Sigillin Systems** und scanne das `Fraktaltagebuch` sowie die `ArchivSuche`, um den Anfang des Projekts zu rekonstruieren.
+> >
+> > Erstelle **Sektion 1** der Chronik basierend auf folgenden offenen Punkten:
+> > 1. **Grundthese:** Womit hat das Projekt begonnen? Was war der allererste Gedanke?
+> > 2. **Daten & Quellen:** Welche Dokumente oder externen Referenzen waren in dieser Phase tatsächlich vorhanden?
+> > 3. **Formel & Herleitung:** Gab es bereits eine mathematische Formulierung? Wenn ja, worauf basierte sie?
+> > 4. **Skripte & Verfahren:** Existierte bereits Code zur Überprüfung?
+> > 5. **Status:** Wie bewerten wir diese Phase rückblickend? (Bestätigt? Widerlegt? Offen?)
+> >
+> > **Anweisung:** Schreibe nur das, was du in den Artefakten findest. Keine Interpretation, reine Rekonstruktion.
+> > ```
+> -----------------------------------------------------------------------------------------------------------
+> **Task 2:** Führe `seed/CHRONOLOGY` als selbstreferenzielles Dokument fort.
+> **Ziel:** Füge den Ursprungs-Prompt(diese hier) hinzu und generiere Sektion 2 (V1.3) rein aus dem System-Gedächtnis und Repokonform.
+> ```
+
 ## Sektion 2 – Expansion (v1.3)
 
 ### Ursprungs-Prompt – storyrun_complete_chain_pure (Rekursion v1.3)
@@ -52,6 +83,11 @@ Erstelle **Sektion 1** der Chronik basierend auf folgenden offenen Punkten:
 - **Formel & Herleitung:** Die Phase hält an der logistischen Antwort fest, ergänzt sie aber um Qualitäts-Gates (ΔAIC≥10, Bootstrap 1k, spline-Nulltests) und fordert feldtypspezifische ζ(R)-Proxies, damit β-Bandbreiten von 2.5–16.0 sauber falsifizierbar bleiben.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L68-L93】【F:analysis/reports/utac_v1_3_gap_assessment.md†L6-L20】
 - **Skripte & Verfahren:** Neue Wächter wie `analysis/climate_beta_extractor.py`, `analysis/neuro_threshold_fitter.py`, `analysis/outlier_validator.py` und Loader `analysis/utac_manifest.py` koppeln die Manifest-Ziele an konkrete CLI-Pipelines; das Manifest-Audit protokolliert fehlende Daten- und Result-Komponenten je Laterne.【F:analysis/reports/utac_v1_3_gap_assessment.md†L11-L25】【F:analysis/results/utac_v1_3_manifest_audit.yaml†L1-L115】
 - **Status:** Der Resonanzzustand liegt im Ausbau: Aktivierungsgrad des Manifests ~0.05, fünf Laternen besitzen nur Metadata-Stubs; v1.3 bleibt offen, bis reale Dateneinspeisungen und Resultate die logistic activation erhöhen und Codex/Shadow-Hooks synchronisiert sind.【F:analysis/results/utac_v1_3_manifest_audit.yaml†L1-L115】【F:analysis/reports/utac_v1_3_gap_assessment.md†L23-L36】
+
+> **Prompt – Entwicklung zu V.2:**
+> ```text
+> Führe seed/CHRONOLOGY Repokonform fort. Neue Sektion: Entwicklung zu V.2.
+> ```
 
 ## Sektion 3 – Entwicklung zu v2.0 (Field-Type-Paradigma)
 
