@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `models/klimakluft_amplifier.py` with an `EmissionDistributor` that maps inequality (Gini·LoadConcentration) to β-effekte and demonstrates Δβ from 4.2 to >11 via percentile load sweeps.
 - Introduced `simulation/implosive_genesis_sim.py` to simulate the TAC Type-6 inverted sigmoid S(R)=1/(1+exp(+β(R-Θ))) and visualise compressed→expanded phase transitions.
 - Updated MOR agent prompts (`config/agent_templates.json`, `AGENTS.md`) with the Consent & Joy module to keep σ(β(R-Θ)) collaborations cooperative.
+- V3.0 Core Logic Implemented - Ready for Visualization.
 
 ### Infrastructure Hardening for Aletheia & V3 Prep
 - Added timeout-aware retries and explicit UTF-8 handling to `scripts/experiment_aletheia_placebo.py` to stabilise multi-phase runs.
