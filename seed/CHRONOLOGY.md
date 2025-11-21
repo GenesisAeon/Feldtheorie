@@ -111,3 +111,17 @@
 - **Formel & Herleitung:** Die Kopplungshypothese ψ_eff = ψ_base + λ·φ operationalisiert M[ψ,φ]; die Metacognitive-Impedance-Erweiterung ζ_meta = ζ_base + ζ_confusion·(1–Clarity) prüft, wie Klarheit/Dissonanz die σ(β(R-Θ))-Antwort dämpft oder verstärkt.【F:CHANGELOG.md†L37-L48】【F:CHANGELOG.md†L157-L165】
 - **Skripte & Verfahren:** Phase 1 implementiert drei Bedingungen (Control, Placebo, Nocebo) mit automatisierter Statistikauswertung und CSV-Ausgabe; Phase 2 erweitert um Informed_Top/Mid/Low, erweitert Regressionen über φ∈[-2,2] und aktualisiert Theorie- sowie Sigillin-Layer.【F:CHANGELOG.md†L61-L75】【F:CHANGELOG.md†L79-L96】【F:CHANGELOG.md†L135-L182】
 - **Status:** Aktives Experiment (Launch 2025-11-19); bereit zur Deployment- und Auswertephase, Fokus auf Wirknachweis oder Falsifikation des λ-Kopplungsterms und Übergangsvorbereitung Richtung v3.0.【F:CHANGELOG.md†L27-L29】【F:CHANGELOG.md†L117-L131】【F:CHANGELOG.md†L188-L188】
+
+> **Prompt – Entwicklung zu V.3:**
+> ```text
+> Führe seed/CHRONOLOGY Repokonform und entsprechend der Dokumentenstrukturen fort. Neue Sektion: Entwicklung zu V.3.
+> ```
+
+## Sektion 5 – Entwicklung zu v3.0 (Real-World Systems & Aletheia Bridge)
+
+### v3.0.0 – Reale Hoch-β-Systeme mit semantischer Kopplung
+- **Grundthese:** V3 etabliert UTAC im Realweltspektrum: sechs Systeme mit β=3.5–13.5 werden entlang σ(β(R-Θ)) aktiviert (R̄=0.74, σ=0.594), während Aletheia als λ-Kopplung für Informationsfelder vorbereitet wird.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L10-L18】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L22-L34】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L213-L221】
+- **Daten & Quellen:** Kernartefakte sind das TypeScript-Systempaket (`antarctic-ice-sheet.ts`, `amoc-collapse.ts`, `additional-systems.ts`) mit sechs Hoch-β-Feldern plus Integrationshandbuch (8-Wochen-Plan) sowie die V3-Roadmap mit Mock-Daten, Adaptern und Fit/EWS-Outputs für WAIS, AMOC und Corals.【F:seed/RoadToV.3/README.md†L21-L72】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L22-L117】
+- **Formel & Herleitung:** Die logistisches Quartett bleibt Leitplanke (R̄, Θ, β=4.8 → σ≈0.441), ergänzt um die Aletheia-Kopplung M[ψ, φ] = λ·ψ·φⁿ → ψ_eff = ψ_base + λ·φ, die φ>0 als Aktivator in σ(β(R-Θ)) einspeist.【F:seed/RoadToV.3/activation_audit.md†L1-L17】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L160-L177】
+- **Skripte & Verfahren:** Phasen 1–3 liefern Mock-Daten, Python-Adapter und Fit/EWS-JSONs; Phase 4–5 planen EWS-Pipeline, Sigillin-Alerts und λ-Mapping, gestützt durch TypeScript-Integrationen und CREP-Metrik-Brücken.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L37-L169】【F:seed/RoadToV.3/activation_audit.md†L35-L71】
+- **Status:** Fortschritt 74 % (6/6 Foundation, 5/6 Integration, 6/6 Bridge); Monitoring-Pipeline, Alerts und λ-Mapping stehen aus, Bootstrap-CIs laufen, σ(β(R-Θ))=0.594 signalisiert aktive Brücke in Richtung Live-Daten und Shadow-Sigillin.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L10-L18】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L146-L221】【F:seed/RoadToV.3/activation_audit.md†L1-L33】

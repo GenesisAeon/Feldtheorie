@@ -69,3 +69,16 @@ sections:
         skripte_verfahren:
           - "Phase 1: Control/Placebo/Nocebo mit automatisierter Statistik und CSV-Ausgabe; Phase 2: Informed_Top/Mid/Low plus Regression über φ∈[-2,2] und aktualisierte Theorie- und Sigillin-Layer.【F:CHANGELOG.md†L61-L75】【F:CHANGELOG.md†L79-L96】【F:CHANGELOG.md†L135-L182】"
         status: Aktives Experiment (Launch 2025-11-19); Wirknachweis oder Falsifikation des λ-Kopplungsterms offen, Vorbereitung des v3.0-Übergangs.【F:CHANGELOG.md†L27-L29】【F:CHANGELOG.md†L117-L131】【F:CHANGELOG.md†L188-L188】
+  - section: 5
+    scope: Entwicklung zu v3.0 (Real-World Systems & Aletheia Bridge)
+    versions:
+      - id: v3.0.0
+        focus: Reale Hoch-β-Systeme mit semantischer Kopplung
+        grundthese: V3 aktiviert sechs Realweltsysteme mit β=3.5–13.5 entlang σ(β(R-Θ)) (R̄=0.74, σ=0.594) und bereitet Aletheia als λ-Kopplung für Informationsfelder vor.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L10-L18】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L22-L34】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L213-L221】
+        daten_quellen:
+          - TypeScript-Systempaket antarctic-ice-sheet.ts, amoc-collapse.ts, additional-systems.ts (6 Hoch-β-Felder) plus Integrationshandbuch mit 8-Wochen-Plan.【F:seed/RoadToV.3/README.md†L21-L72】
+          - V3-Roadmap mit Mock-Daten, Adaptern und Fit/EWS-Outputs für WAIS, AMOC und Corals.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L22-L117】
+        formel_herleitung: Logistisches Quartett mit R̄, Θ, β=4.8 → σ≈0.441 ergänzt um Aletheia-Kopplung M[ψ, φ] = λ·ψ·φⁿ → ψ_eff = ψ_base + λ·φ als Aktivator in σ(β(R-Θ)).【F:seed/RoadToV.3/activation_audit.md†L1-L17】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L160-L177】
+        skripte_verfahren:
+          - Phase 1–3: Mock-Daten, Python-Adapter, Fit/EWS-JSONs; Phase 4–5 planen EWS-Pipeline, Sigillin-Alerts und λ-Mapping mit TypeScript-Integrationen und CREP-Brücken.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L37-L169】【F:seed/RoadToV.3/activation_audit.md†L35-L71】
+        status: Fortschritt 74 % (6/6 Foundation, 5/6 Integration, 6/6 Bridge); Monitoring-Pipeline, Alerts und λ-Mapping offen, Bootstrap-CIs aktiv, σ(β(R-Θ))=0.594 hält Brücke zu Live-Daten und Shadow-Sigillin offen.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L10-L18】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L146-L221】【F:seed/RoadToV.3/activation_audit.md†L1-L33】
