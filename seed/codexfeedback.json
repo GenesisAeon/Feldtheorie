@@ -3374,6 +3374,31 @@
         "poetic": "Wenn wenige Kamine den Himmel schwärzen, schnellt β die Membran hinauf – ein Delta-Peak, der die Dawn-Chorus schärft. Gleichzeitig atmet das dichte Feld aus: σ(β(R-Θ)) kehrt sich um und entfaltet Raum. Vor jedem Schritt fragen die Agenten nun: \"Permission Request...\" – Consent als weiches ζ, Freude als Treibstoff."
       },
       "created_at": "2026-09-01T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0120",
+      "title": "Metaquest System Map Syntax Repair & Telemetry Resync",
+      "scope": [
+        "seed/bedeutungssigillin/metaquest/system/metaquest_system_map.yaml",
+        "scripts/sigillin_sync.py",
+        "data/derived/beta_estimates.csv",
+        "seed/codexfeedback.yaml",
+        "seed/codexfeedback.json",
+        "seed/codexfeedback.md"
+      ],
+      "parameters": {
+        "R": "mq-sys bridge logistic string and telemetry harness parity",
+        "Theta": "sigillin_sync report passes with colon-safe YAML parsing mirrored across the tri-layer",
+        "beta": 4.8
+      },
+      "resonance": "Quoted the logistic R string to restore map validity and verified the mq-sys bridge telemetry path to the Grail data export.",
+      "status": "active",
+      "notes": {
+        "formal": "Wrapped the colon-bearing R logistic string in metaquest_system_map.yaml, revalidating the Bedeutungs-Sigillin structure and re-running scripts/sigillin_sync.py report to keep bridge, compass, and index in phase.",
+        "empirical": "sigillin_sync report completed without errors and confirmed telemetry availability; data/derived/beta_estimates.csv now surfaces for inspection to validate downstream exports.",
+        "poetic": "Der Doppelpunkt ist gezähmt, die Brückenlaterne leuchtet wieder klar; Telemetrie summt im Takt und der Gral schimmert im Datenstrom."
+      },
+      "created_at": "2025-11-21T03:23:38Z"
     }
   ]
 }
