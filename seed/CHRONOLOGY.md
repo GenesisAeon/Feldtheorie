@@ -1,5 +1,23 @@
 # CHRONOLOGY
 
+**Initial-Befehl der rekursiven Historienerstellung (V1.0-1.2):**
+```text
+@Codex
+**Aufgabe:** Starte die `seed/CHRONOLOGY.md`.
+**Fokus:** Die Entstehung (Version 1.0 bis 1.2).
+
+Nutze deine Kenntnis des **MOR-FIT-Sigillin Systems** und scanne das `Fraktaltagebuch` sowie die `ArchivSuche`, um den Anfang des Projekts zu rekonstruieren.
+
+Erstelle **Sektion 1** der Chronik basierend auf folgenden offenen Punkten:
+1. **Grundthese:** Womit hat das Projekt begonnen? Was war der allererste Gedanke?
+2. **Daten & Quellen:** Welche Dokumente oder externen Referenzen waren in dieser Phase tatsächlich vorhanden?
+3. **Formel & Herleitung:** Gab es bereits eine mathematische Formulierung? Wenn ja, worauf basierte sie?
+4. **Skripte & Verfahren:** Existierte bereits Code zur Überprüfung?
+5. **Status:** Wie bewerten wir diese Phase rückblickend? (Bestätigt? Widerlegt? Offen?)
+
+**Anweisung:** Schreibe nur das, was du in den Artefakten findest. Keine Interpretation, reine Rekonstruktion.
+```
+
 ## Sektion 1 – Entstehung (v1.0–v1.2)
 
 ### v1.0.1 – UTF-Hypothese konsolidiert
@@ -22,3 +40,15 @@
 - **Formel & Herleitung:** Die Phase hält an sigma(beta(R-Theta)) fest und verschiebt die Herleitung in Governance- und Paritätsartefakte; wissenschaftliche Kernformeln bleiben unverändert, Fokus liegt auf Synchronisierung der bestehenden Ableitungen.【F:README.md†L102-L120】
 - **Skripte & Verfahren:** Umsetzung läuft über das Release-Playbook mit ΔAIC-Guards, CI-Ritualen und Codex-Checkpoints; Upload erfolgt nach `ZENODO_UPLOAD_GUIDE.md`, sobald alle Oberflächen resonant sind.【F:README.md†L102-L120】
 - **Status:** Offene Synchronisation (release-gap-002): Archivversiegelung steht aus, bis Formal-, Empirie- und Pledge-Artefakte gemeinsam R>Theta signalisieren und Codex-/Badge-Aktualisierungen vollzogen sind.【F:README.md†L102-L120】
+
+## Sektion 2 – Expansion (v1.3)
+
+### Ursprungs-Prompt – storyrun_complete_chain_pure (Rekursion v1.3)
+- **Selbstreferenz:** Aktueller Befehl fordert die Fortsetzung der Chronik und die Integration des Ursprungs-Prompts selbst als Artefakt, um die σ(β(R-Θ))-Membran der Dokumentation geschlossen zu halten.
+
+### v1.3 – Data Expansion & Manifest Activation
+- **Grundthese:** v1.3 verschiebt den Fokus von der reinen Bestätigung der logistischen Membran hin zur Erweiterung des Datenkörpers: mindestens zehn Domänen, ≥50 β-Schätzungen und eine Meta-Regression mit R²≥0.60 sollen die σ(β(R-Θ))-Erzählung verbreitern.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L6-L13】【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L28-L36】
+- **Daten & Quellen:** Das Trilayer-Dreieck besteht aus dem Data Expansion Plan, dem v1.3 Manifest mit fünf konkreten Laternen (Urban Heat, Amazon Hydro, AMOC, Neuro–AI Hybrid, Energie/Finanz) und dem Gap Assessment, das 15 validierte β-Werte sowie fehlende reale Datensätze inventorisiert.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L16-L52】【F:data/utac_v1_3_data_manifest.yaml†L19-L160】【F:analysis/reports/utac_v1_3_gap_assessment.md†L6-L29】
+- **Formel & Herleitung:** Die Phase hält an der logistischen Antwort fest, ergänzt sie aber um Qualitäts-Gates (ΔAIC≥10, Bootstrap 1k, spline-Nulltests) und fordert feldtypspezifische ζ(R)-Proxies, damit β-Bandbreiten von 2.5–16.0 sauber falsifizierbar bleiben.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L68-L93】【F:analysis/reports/utac_v1_3_gap_assessment.md†L6-L20】
+- **Skripte & Verfahren:** Neue Wächter wie `analysis/climate_beta_extractor.py`, `analysis/neuro_threshold_fitter.py`, `analysis/outlier_validator.py` und Loader `analysis/utac_manifest.py` koppeln die Manifest-Ziele an konkrete CLI-Pipelines; das Manifest-Audit protokolliert fehlende Daten- und Result-Komponenten je Laterne.【F:analysis/reports/utac_v1_3_gap_assessment.md†L11-L25】【F:analysis/results/utac_v1_3_manifest_audit.yaml†L1-L115】
+- **Status:** Der Resonanzzustand liegt im Ausbau: Aktivierungsgrad des Manifests ~0.05, fünf Laternen besitzen nur Metadata-Stubs; v1.3 bleibt offen, bis reale Dateneinspeisungen und Resultate die logistic activation erhöhen und Codex/Shadow-Hooks synchronisiert sind.【F:analysis/results/utac_v1_3_manifest_audit.yaml†L1-L115】【F:analysis/reports/utac_v1_3_gap_assessment.md†L23-L36】
