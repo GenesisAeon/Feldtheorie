@@ -138,7 +138,11 @@ class OpenAIProvider(LLMProvider):
     def __init__(self, model: str = "gpt-4"):
         try:
             import openai
-            self.client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+            base_url = os.getenv("OPENAI_BASE_URL")
+            self.client = openai.OpenAI(
+                api_key=os.getenv("OPENAI_API_KEY"),
+                base_url=base_url,
+            )
             self.model = model
         except ImportError:
             raise ImportError("openai package not installed. Run: pip install openai")
@@ -167,7 +171,7 @@ class OpenAIProvider(LLMProvider):
             message = str(exc).lower()
             if "timeout" in message:
                 raise TimeoutError("OpenAI completion timed out") from exc
-            raise RuntimeError("OpenAI completion failed") from exc
+            raise RuntimeError(f"OpenAI Error: {exc}") from exc
 
     def count_tokens(self, text: str) -> int:
         try:
@@ -589,7 +593,7 @@ def run_experiment(
     n_samples: int = 10,
     output_file: str = "data/experimental/aletheia_results.csv",
     delay: float = 1.0,
-    request_timeout: float = 30.0,
+    request_timeout: float = 120.0,
     phase_3_output: str = "data/experimental/aletheia_phase3_results.csv",
     phase_4_output: str = "data/experimental/aletheia_phase4_results.csv",
     phase: int = 1,
@@ -1108,7 +1112,7 @@ def main():
     parser.add_argument(
         "--request-timeout",
         type=float,
-        default=30.0,
+        default=120.0,
         help="Timeout per LLM request (seconds)"
     )
 
