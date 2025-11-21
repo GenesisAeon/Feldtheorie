@@ -239,9 +239,29 @@ def print_report(stats_df, effect_sizes, regression, anova, interpretations):
 
 
 def main():
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description=(
+            "Analyze Project Aletheia Phase 1 results without triggering other phases."
+        )
+    )
+    parser.add_argument(
+        "input",
+        type=str,
+        help="CSV file with Phase 1 experiment outputs",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("analysis/results"),
+        help="Directory for saving regression and interpretation CSVs",
+    )
+
+    args = parser.parse_args()
+
     # Load data
-    filepath = "data/experimental/aletheia_results.csv"
-    df = load_results(filepath)
+    df = load_results(args.input)
 
     # Compute statistics
     stats_df = compute_descriptive_stats(df)
@@ -254,18 +274,21 @@ def main():
     print_report(stats_df, effect_sizes, regression, anova, interpretations)
 
     # Save results
-    output_dir = Path("analysis/results")
-    output_dir.mkdir(parents=True, exist_ok=True)
+    args.output_dir.mkdir(parents=True, exist_ok=True)
 
     # Save regression results
     regression_df = pd.DataFrame(regression).T
-    regression_df.to_csv(output_dir / "aletheia_phase1_regression.csv")
-    print(f"\n✓ Regression results saved to {output_dir}/aletheia_phase1_regression.csv")
+    regression_df.to_csv(args.output_dir / "aletheia_phase1_regression.csv")
+    print(
+        f"\n✓ Regression results saved to {args.output_dir}/aletheia_phase1_regression.csv"
+    )
 
     # Save interpretations
     interp_df = pd.DataFrame(interpretations).T
-    interp_df.to_csv(output_dir / "aletheia_phase1_interpretation.csv")
-    print(f"✓ Interpretations saved to {output_dir}/aletheia_phase1_interpretation.csv")
+    interp_df.to_csv(args.output_dir / "aletheia_phase1_interpretation.csv")
+    print(
+        f"✓ Interpretations saved to {args.output_dir}/aletheia_phase1_interpretation.csv"
+    )
 
 
 if __name__ == "__main__":
