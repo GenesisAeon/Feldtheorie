@@ -1,237 +1,228 @@
 #!/usr/bin/env python3
+"""RAPID AMOC adapter (functional version).
+
+This adapter fetches Atlantic Meridional Overturning Circulation (AMOC) strength
+data from the RAPID array if available and falls back to local staging data when
+offline. It computes a lag-1 autocorrelation early warning signal and
+translates it into a beta estimate consistent with the Sigillin format.
+
+Execution (default uses staged/mock data when offline)::
+
+    python scripts/adapters/rapid_amoc_adapter.py
+
+Environment overrides:
+- ``RAPID_DATA_URL``: custom CSV endpoint for RAPID transport data
+- ``RAPID_LOCAL_PATH``: preferred local CSV (e.g., real RAPID download)
 """
-RAPID AMOC Adapter (Mock Version)
-==================================
 
-Adapter for AMOC (Atlantic Meridional Overturning Circulation) strength data.
+from __future__ import annotations
 
-**Mock Version:** Reads generated CSV mock data
-**Production Version:** Would connect to RAPID-MOCHA/CMIP6 APIs
-
-Data Source: RAPID-MOCHA Array, van Westen (2024)
-Papers: van Westen et al. (2024) Science Advances, Ditlevsen & Ditlevsen (2023)
-
-Author: Claude Sonnet 4.5
-Date: 2025-11-14
-"""
-
-import json
 import csv
-from datetime import datetime
+import io
+import json
+import os
+from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
+from typing import Iterable, Optional, Tuple
+
 import numpy as np
+import requests
 
 
-class RAPIDAMOCAdapter:
-    """Mock adapter for RAPID AMOC data."""
+BASE_DIR = Path(__file__).resolve().parents[2]
+DATA_DIR = BASE_DIR / "data" / "ocean"
+DEFAULT_MOCK_PATH = DATA_DIR / "amoc_strength_mock.csv"
+DEFAULT_LOCAL_PATH = DATA_DIR / "amoc_transport.csv"
+DEFAULT_RAPID_URL = (
+    "https://rapid.ac.uk/rapidmoc/rapid_data/dataprod/AMOC_table.php?download=csv"
+)
 
-    def __init__(self, mock_data_path: str = None):
-        """Initialize adapter.
 
-        Args:
-            mock_data_path: Path to mock CSV file
-        """
-        if mock_data_path is None:
-            mock_data_path = Path(__file__).parent.parent.parent / "data" / "ocean" / "amoc_strength_mock.csv"
+@dataclass
+class AdapterResult:
+    """Structured adapter output."""
 
-        self.data_path = Path(mock_data_path)
+    timestamp: str
+    sensor: str
+    beta_estimate: float
+    ar1_score: float
+    status: str
+    mock_data: bool
+    source: str
 
-        if not self.data_path.exists():
-            raise FileNotFoundError(f"Mock data not found: {self.data_path}")
-
-    def load_data(self):
-        """Load AMOC strength data from CSV.
-
-        Returns:
-            dict: Parsed data with metadata
-        """
-        data = {
-            'dates': [],
-            'strength_Sv': [],
-            'fovs_indicator': [],
-            'cold_blob_sst_anomaly_C': [],
-            'greenland_meltwater_Sv': [],
-            'temp_anomaly_C': [],
-            'distance_to_tipping': [],
-            'ar1_coefficient': []
-        }
-
-        with open(self.data_path, 'r') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                data['dates'].append(row['date'])
-                data['strength_Sv'].append(float(row['strength_Sv']))
-                data['fovs_indicator'].append(float(row['fovs_indicator']))
-                data['cold_blob_sst_anomaly_C'].append(float(row['cold_blob_sst_anomaly_C']))
-                data['greenland_meltwater_Sv'].append(float(row['greenland_meltwater_Sv']))
-                data['temp_anomaly_C'].append(float(row['temp_anomaly_C']))
-                data['distance_to_tipping'].append(float(row['distance_to_tipping']))
-                data['ar1_coefficient'].append(float(row['ar1_coefficient']))
-
-        return data
-
-    def compute_statistics(self, data: dict) -> dict:
-        """Compute summary statistics for AMOC data.
-
-        Args:
-            data: Loaded data from load_data()
-
-        Returns:
-            dict: Statistics summary
-        """
-        strength = np.array(data['strength_Sv'])
-        fovs = np.array(data['fovs_indicator'])
-        cold_blob = np.array(data['cold_blob_sst_anomaly_C'])
-        meltwater = np.array(data['greenland_meltwater_Sv'])
-        temp = np.array(data['temp_anomaly_C'])
-        ar1 = np.array(data['ar1_coefficient'])
-
-        # Current values (most recent)
-        current_strength = strength[-1]
-        current_fovs = fovs[-1]
-        current_cold_blob = cold_blob[-1]
-        current_meltwater = meltwater[-1]
-        current_temp = temp[-1]
-        current_ar1 = ar1[-1]
-
-        # Trends
-        # Split into early (2004-2010) and late (2020-2024) periods
-        n_total = len(strength)
-        early_end = int(n_total * 0.30)  # ~6 years
-        late_start = int(n_total * 0.80)  # ~16 years
-
-        early_ar1 = np.mean(ar1[:early_end])
-        late_ar1 = np.mean(ar1[late_start:])
-        ar1_increase_percent = ((late_ar1 - early_ar1) / early_ar1) * 100
-
-        early_strength = np.mean(strength[:early_end])
-        late_strength = np.mean(strength[late_start:])
-        strength_decline_percent = ((late_strength - early_strength) / early_strength) * 100
-
-        # FovS crossing detection (critical tipping signal!)
-        fovs_crossings = np.where(np.diff(np.sign(fovs)))[0]
-        fovs_crossed_zero = bool(len(fovs_crossings) > 0 and fovs[-1] > 0)
-
-        # Weakening rate (linear trend)
-        years = np.arange(len(strength)) / 36.5  # ~36.5 datapoints per year (10-day intervals)
-        strength_trend = np.polyfit(years, strength, 1)[0]  # Sv per year
-
-        stats = {
-            'n_datapoints': len(strength),
-            'date_range': {
-                'start': data['dates'][0],
-                'end': data['dates'][-1]
+    def to_json(self) -> str:
+        return json.dumps(
+            {
+                "timestamp": self.timestamp,
+                "sensor": self.sensor,
+                "beta_estimate": round(self.beta_estimate, 3),
+                "ar1_score": round(self.ar1_score, 3),
+                "status": self.status,
+                "mock_data": self.mock_data,
+                "source": self.source,
             },
-            'current_state': {
-                'strength_Sv': float(current_strength),
-                'fovs_indicator': float(current_fovs),
-                'cold_blob_sst_anomaly_C': float(current_cold_blob),
-                'greenland_meltwater_Sv': float(current_meltwater),
-                'temperature_anomaly_C': float(current_temp),
-                'distance_to_tipping': float(data['distance_to_tipping'][-1]),
-                'ar1_coefficient': float(current_ar1)
-            },
-            'early_warning_signals': {
-                'ar1_early_period': float(early_ar1),
-                'ar1_late_period': float(late_ar1),
-                'ar1_increase_percent': float(ar1_increase_percent),
-                'fovs_crossed_zero': bool(fovs_crossed_zero),
-                'fovs_crossing_count': int(len(fovs_crossings)),
-                'critical_slowing': bool(late_ar1 > 0.70)  # AR(1) threshold
-            },
-            'trends': {
-                'strength_early_period_Sv': float(early_strength),
-                'strength_late_period_Sv': float(late_strength),
-                'strength_decline_percent': float(strength_decline_percent),
-                'weakening_rate_Sv_per_year': float(strength_trend),
-                'weakening_accelerating': bool(strength_trend < -0.05)  # Threshold: -0.05 Sv/year
-            },
-            'tipping_indicators': {
-                'fovs_positive': bool(current_fovs > 0),
-                'cold_blob_present': bool(current_cold_blob < -0.5),  # Cold blob = SST < -0.5°C
-                'high_meltwater': bool(current_meltwater > 0.08),  # Threshold from papers
-                'status': 'TIPPED' if fovs_crossed_zero else 'WEAKENING'
-            }
-        }
-
-        return stats
-
-    def export_json(self, output_path: str = None) -> str:
-        """Export data and statistics as JSON for TypeScript consumption.
-
-        Args:
-            output_path: Path for JSON output
-
-        Returns:
-            str: Path to exported JSON
-        """
-        if output_path is None:
-            output_path = Path(__file__).parent.parent / "analysis" / "results" / "amoc_adapter_output.json"
-
-        output_path = Path(output_path)
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-
-        data = self.load_data()
-        stats = self.compute_statistics(data)
-
-        export = {
-            'metadata': {
-                'system': 'AMOC',
-                'system_full_name': 'Atlantic Meridional Overturning Circulation',
-                'utac_type': 'Type-2: Thermodynamic (Bistable)',
-                'beta_expected': 10.2,
-                'theta_expected_C': 4.0,
-                'status': stats['tipping_indicators']['status'],
-                'data_source': 'Mock (RAPID-MOCHA based)',
-                'adapter_version': '1.0.0',
-                'generated': datetime.now().isoformat() + 'Z',
-                'papers': [
-                    'van Westen et al. (2024) Science Advances',
-                    'Ditlevsen & Ditlevsen (2023) Nature Communications'
-                ]
-            },
-            'data': data,
-            'statistics': stats
-        }
-
-        with open(output_path, 'w') as f:
-            json.dump(export, f, indent=2)
-
-        return str(output_path)
+            indent=2,
+        )
 
 
-def main():
-    """CLI entry point."""
-    import argparse
+def fetch_rapid_data(
+    rapid_url: str = DEFAULT_RAPID_URL,
+    local_path: Optional[Path] = None,
+    mock_path: Path = DEFAULT_MOCK_PATH,
+) -> Tuple[Iterable[dict], bool, str]:
+    """Load RAPID data from the web, a local CSV, or a mock CSV.
 
-    parser = argparse.ArgumentParser(description='RAPID AMOC Adapter (Mock)')
-    parser.add_argument('--input', type=str, help='Input CSV path (default: data/ocean/amoc_strength_mock.csv)')
-    parser.add_argument('--output', type=str, help='Output JSON path (default: analysis/results/amoc_adapter_output.json)')
+    Returns an iterable of row dicts, a flag indicating whether data are mock,
+    and a string describing the data source.
+    """
 
-    args = parser.parse_args()
+    # 1) Prefer explicitly provided local path
+    if local_path and Path(local_path).exists():
+        return _read_csv(Path(local_path)), False, f"local:{Path(local_path)}"
 
-    adapter = RAPIDAMOCAdapter(mock_data_path=args.input)
-    output_path = adapter.export_json(output_path=args.output)
+    # 2) Attempt live download
+    try:
+        response = requests.get(rapid_url, timeout=10)
+        response.raise_for_status()
+        content = response.content.decode("utf-8")
+        return _read_csv(io.StringIO(content)), False, f"remote:{rapid_url}"
+    except Exception:
+        pass
 
-    print(f"✅ RAPID AMOC Adapter: Data exported to {output_path}")
+    # 3) Fall back to staged real data if present
+    if DEFAULT_LOCAL_PATH.exists():
+        return _read_csv(DEFAULT_LOCAL_PATH), False, f"local:{DEFAULT_LOCAL_PATH}"
 
-    # Print summary
-    data = adapter.load_data()
-    stats = adapter.compute_statistics(data)
-
-    print(f"\n📊 Summary:")
-    print(f"   Datapoints: {stats['n_datapoints']}")
-    print(f"   Date Range: {stats['date_range']['start']} → {stats['date_range']['end']}")
-    print(f"   Current Strength: {stats['current_state']['strength_Sv']:.2f} Sv")
-    print(f"   Weakening Rate: {stats['trends']['weakening_rate_Sv_per_year']:.3f} Sv/year")
-    print(f"   FovS Indicator: {stats['current_state']['fovs_indicator']:.3f}")
-    print(f"   FovS Crossed Zero: {'🔴 YES' if stats['early_warning_signals']['fovs_crossed_zero'] else '🟢 NO'}")
-    print(f"   AR(1) Coefficient: {stats['current_state']['ar1_coefficient']:.3f}")
-    print(f"   AR(1) Increase: {stats['early_warning_signals']['ar1_increase_percent']:.1f}%")
-    print(f"   Critical Slowing: {'🔴 YES' if stats['early_warning_signals']['critical_slowing'] else '🟢 NO'}")
-    print(f"   Status: {stats['tipping_indicators']['status']}")
-    print(f"   Distance to Tipping: {stats['current_state']['distance_to_tipping']:.1%}")
+    # 4) Final fallback to mock data
+    return _read_csv(mock_path), True, f"mock:{mock_path}"
 
 
-if __name__ == '__main__':
+def _read_csv(path_or_buffer) -> Iterable[dict]:
+    if isinstance(path_or_buffer, (str, Path)):
+        with open(path_or_buffer, "r", newline="") as fh:
+            return list(csv.DictReader(fh))
+
+    return list(csv.DictReader(path_or_buffer))
+
+
+def _normalize_rows(rows: Iterable[dict]) -> Tuple[np.ndarray, np.ndarray]:
+    """Extract dates and AMOC strength (Sv) from heterogeneous sources."""
+
+    date_values = []
+    strength_values = []
+    for row in rows:
+        date_raw = row.get("date") or row.get("Date") or row.get("DATE")
+        if not date_raw:
+            continue
+
+        try:
+            date = datetime.fromisoformat(date_raw.replace("/", "-"))
+        except ValueError:
+            continue
+
+        strength_raw = (
+            row.get("strength_Sv")
+            or row.get("AMOC")
+            or row.get("transport")
+            or row.get("MOC")
+        )
+        try:
+            strength = float(strength_raw) if strength_raw is not None else None
+        except (TypeError, ValueError):
+            strength = None
+
+        if strength is None:
+            continue
+
+        date_values.append(date)
+        strength_values.append(strength)
+
+    order = np.argsort(date_values)
+    sorted_dates = np.array(date_values)[order]
+    sorted_strengths = np.array(strength_values)[order]
+    return sorted_dates, sorted_strengths
+
+
+def _resample_monthly(dates: np.ndarray, strengths: np.ndarray) -> np.ndarray:
+    """Average strength values per calendar month."""
+
+    monthly = {}
+    for date, value in zip(dates, strengths):
+        key = (date.year, date.month)
+        monthly.setdefault(key, []).append(value)
+
+    sorted_keys = sorted(monthly.keys())
+    return np.array([np.mean(monthly[k]) for k in sorted_keys])
+
+
+def _rolling_ar1(series: np.ndarray, window: int = 12) -> float:
+    if len(series) < window + 1:
+        return float("nan")
+
+    windowed = series[-window:]
+    x, y = windowed[:-1], windowed[1:]
+    x_centered = x - np.mean(x)
+    y_centered = y - np.mean(y)
+    denominator = np.sqrt(np.sum(x_centered**2) * np.sum(y_centered**2))
+    if denominator == 0:
+        return float("nan")
+    return float(np.sum(x_centered * y_centered) / denominator)
+
+
+def _beta_from_ar1(ar1: float) -> float:
+    if ar1 >= 1:
+        return float("inf")
+    return 1.0 / max(1e-6, (1 - ar1))
+
+
+def _status_from_ar1(ar1: float) -> str:
+    if ar1 >= 0.9:
+        return "lock_in"
+    if ar1 >= 0.7:
+        return "critical_slowing"
+    return "stable"
+
+
+def run_adapter() -> AdapterResult:
+    local_override = os.environ.get("RAPID_LOCAL_PATH")
+    rapid_url = os.environ.get("RAPID_DATA_URL", DEFAULT_RAPID_URL)
+
+    rows, mock_flag, source_label = fetch_rapid_data(
+        rapid_url=rapid_url,
+        local_path=Path(local_override) if local_override else None,
+    )
+
+    dates, strengths = _normalize_rows(rows)
+    if len(strengths) == 0 and not mock_flag:
+        rows = _read_csv(DEFAULT_MOCK_PATH)
+        mock_flag = True
+        source_label = f"mock:{DEFAULT_MOCK_PATH}"
+        dates, strengths = _normalize_rows(rows)
+
+    if len(strengths) == 0:
+        raise RuntimeError("No AMOC strength data could be parsed.")
+
+    monthly = _resample_monthly(dates, strengths)
+    ar1_score = float(_rolling_ar1(monthly, window=12))
+    beta_estimate = float(_beta_from_ar1(ar1_score))
+    status = _status_from_ar1(ar1_score)
+
+    return AdapterResult(
+        timestamp=datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        sensor="RAPID_AMOC_26N",
+        beta_estimate=beta_estimate,
+        ar1_score=ar1_score,
+        status=status,
+        mock_data=mock_flag,
+        source=source_label,
+    )
+
+
+def main() -> None:
+    result = run_adapter()
+    print(result.to_json())
+
+
+if __name__ == "__main__":
     main()
