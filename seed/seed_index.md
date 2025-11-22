@@ -83,6 +83,8 @@ Willkommen im **semantischen Gedächtnis** des Feldtheorie-Projekts! Dieser Inde
 - `Diskurs Klimamodul.txt` - Klimaschwellenwerte & UTAC-Integration
 - `Diskurs_V1_Psyche_AI_koheränzen.txt` - Kohärenz zwischen Psyche & AI
 - `theory/entropy_geometric_waste/entropy_geometric_waste.yaml` - Entropie als Geometrischer Verschnitt (Kubus→Spirale, Defekte, S_BH)
+- `theory/hypothese_morphological_computing/hypothese_morphological_computing.yaml` - Morph-FIT als regenerative Hardware (β=37.6, Broken-RAM-Avoidance)
+- `theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.yaml` - Superposition als Alias-Schatten (0D→1D→… Oszillation, Type-6)
 
 **Wann nutzen?** Wenn du die theoretische Basis von UTAC verstehen willst
 

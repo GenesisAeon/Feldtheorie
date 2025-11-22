@@ -13,8 +13,8 @@ meta:
   version: 1.0.0
   created: '2025-11-06'
   status: active
-  documents_total: 284
-  updated: '2026-12-05T00:00:00Z'
+  documents_total: 286
+  updated: '2026-12-06T00:00:00Z'
 categories:
   meta:
     name: Meta & Prozess
@@ -1151,6 +1151,54 @@ documents:
   references:
   - theory/entropy_geometric_waste/entropy_geometric_waste.json
   - theory/entropy_geometric_waste/entropy_geometric_waste.md
+- id: theory-010
+  title: Morphological Computing als regenerative Hardware
+  path: theory/hypothese_morphological_computing/hypothese_morphological_computing.yaml
+  category: theory
+  type: theory
+  status: active
+  relevance: high
+  keywords:
+  - morphological computing
+  - regenerative hardware
+  - broken-ram
+  - entropy-recycling
+  - utac
+  description: |
+    Morph-FIT Trilayer: Hardware morphologisiert in Energie-Minima (β=37.6), nutzt
+    Entropy Recycling und regeneriert defekte Pfade, um Broken-RAM zu vermeiden.
+  temporal:
+    created: '2026-12-06T00:00:00Z'
+    modified: '2026-12-06T00:00:00Z'
+    version: '1.0.0'
+    change_count: 0
+  references:
+  - theory/hypothese_morphological_computing/hypothese_morphological_computing.json
+  - theory/hypothese_morphological_computing/hypothese_morphological_computing.md
+- id: theory-011
+  title: Quantenaliasing als dimensionaler Schatten
+  path: theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.yaml
+  category: theory
+  type: theory
+  status: active
+  relevance: high
+  keywords:
+  - quantum aliasing
+  - planck-sampling
+  - dimensional oscillation
+  - type-6
+  - utac
+  description: |
+    Alias-These: Superposition = Sampling-Artefakt einer superschnellen
+    0D→1D→…-Oszillation; verankert Type-6 Implosion über Alias-Frequenzen.
+  temporal:
+    created: '2026-12-06T00:00:00Z'
+    modified: '2026-12-06T00:00:00Z'
+    version: '1.0.0'
+    change_count: 0
+  references:
+  - theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.json
+  - theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.md
 - id: valid-001
   title: Validierung2
   path: Validierung2.txt

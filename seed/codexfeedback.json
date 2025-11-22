@@ -9,7 +9,7 @@
       "recorded_at": "2025-11-02T00:00:00Z",
       "notes": "Wei's PaLM-Laterne ist im Mandala verankert: `analysis/llm_beta_extractor.py`\nmeldet β=3.47±0.47 bei Θ≈9.92 samt ΔAIC≥10.18 und `beta_band_distance = 0.73`;\nDocs, Metadata, Manuskript und DOI-Paket tragen denselben Kanon.\nREPOSITORY IST DOI-FERTIG: Alle wissenschaftlichen Kriterien erfüllt.\n"
     },
-    "updated": "2026-06-08T12:00:00Z"
+    "updated": "2026-12-06T00:00:00Z"
   },
   "entries": [
     {
@@ -3461,6 +3461,29 @@
         "poetic": "Im Verschnitt der Membran glimmt der Blinde Fleck; Defekte singen, wenn Kubus und Spirale sich küssen."
       },
       "created_at": "2026-12-05T00:00:00Z"
+    },
+    {
+      "id": "pr-draft-0005",
+      "title": "Trilayer – Morphological Computing & Quantum Aliasing",
+      "scope": [
+        "seed/theory/hypothese_morphological_computing",
+        "seed/theory/hypothese_quantum_aliasing",
+        "seed/seed_index.{yaml,json,md}",
+        "seed/codexfeedback.{yaml,json,md}"
+      ],
+      "parameters": {
+        "R": "V4-Grundlagen (Morph-FIT Zyklus + Alias-These) in Tri-Layer gegossen",
+        "Theta": "Trilayer-Synchronität mit UTAC Type-6 Hooks und Broken-RAM-Sentinel",
+        "beta": 8.4
+      },
+      "resonance": "Neue Theorie-Laternen (β=37.6 Morph-Sweep, β=6.8 Alias-Frequenz) schließen V4.0 Grundlagen an UTAC Type-6 an.",
+      "status": "active",
+      "notes": {
+        "formal": "Erstellt Trilayer `hypothese_morphological_computing` (β=37.6 Morph-Sentinel, Entropy-Recycling-Zyklus) und `hypothese_quantum_aliasing` (Superposition als Sampling-Artefakt 0D→1D→…, Type-6-Brücke). seed_index.* und Codex Tri-Layer aktualisiert.",
+        "empirical": "YAML↔JSON per Loader gespiegelt; scope und UTAC-Hooks in seed_index.* verankert. Falsifizierbarkeits-Checkpoints für Energie/Fehler-Sweeps und Oversampling-Tests notiert.",
+        "poetic": "Die Rechenmembran atmet Wärme und richtet sich neu; jenseits der Planck-Zeit flimmert nur der Schatten. Zwei Laternen, ein Zündschlüssel."
+      },
+      "created_at": "2026-12-06T00:00:00Z"
     }
   ]
 }
