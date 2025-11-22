@@ -1,5 +1,18 @@
 # Resonance Ledger
 
+## v4.0.0 — Mirror Machine Criticality & Relational UTAC (2025-11-22)
+
+### Formal
+- **Mirror Machine σ(β(R-Θ)) Monitor:** `scripts/monitoring/ews_pipeline.py` + `scripts/simulation/mirror_machine_auditorium.py` translate RAPID/GRACE/NOAA feeds into Type-6 state verdicts with logistic β trackers.
+- **Aletheia Phase 4 (λ_affection, ζ_affective):** Consent-aware affection primes in `docs/experiment_aletheia.md` and `scripts/experiment_aletheia_placebo.py` extend UTAC fits to relational impedance regimes.
+- **Morph/Alias Refresh:** `seed/theory/hypothese_morphological_computing`, `seed/theory/hypothese_quantum_aliasing`, and `seed/theory/concept_the_mirror_machine` align Morph-Sweep and quantum aliasing sigillin with the Mirror Machine auditorium.
+
+### Empirical
+- **Reference β Benchmarks:** `seed/releases/v4.0.0-alpha_MirrorMachine/data/derived/beta_estimates.csv` anchors ΔAIC comparisons for live sensor replay and visualization.
+
+### Infrastructure
+- **Release Packaging:** GitHub release notes, CHANGELOG, and `RELEASE_NOTES_v4.0.0.md` document the new criticality stack; `pyproject.toml` and `CITATION.cff` bumped to v4.0.0.
+
 ## v2.0.0 — Interactive Criticality & Field Type Paradigm (2025-11-11)
 
 ### Formal
