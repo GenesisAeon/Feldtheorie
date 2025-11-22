@@ -258,7 +258,7 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 ### **Outliers verstehen:**
 1. `data/socio_ecology/urban_heat_canopy.csv` (β=16.3)
 2. `analysis/urban_heat_canopy_fit.py`
-3. `seed/NextStep.txt` (Outlier-Analyse für v1.2)
+3. `archive/legacy_v1_v3/seed/notes/NextStep.txt` (Outlier-Analyse für v1.2)
 
 ### **Falsifizierbarkeit prüfen:**
 1. `docs/utac_falsifiability.md`

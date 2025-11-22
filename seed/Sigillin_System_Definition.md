@@ -219,7 +219,7 @@ agent_hints:
 
   outlier_analysis:
     primary: "data/socio_ecology/urban_heat_canopy.csv"
-    context: ["seed/NextStep.txt"]
+    context: ["archive/legacy_v1_v3/seed/notes/NextStep.txt"]
     question: "Warum β=16.3?"
 ```
 

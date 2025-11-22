@@ -1,7 +1,7 @@
 """Advanced meta-regression for UTAC v1.2 logistic resonance.
 
 This module refreshes the β meta-regression referenced in
-`seed/NextStep.txt` and `seed/Manuskriptfinalisierung und Kampagnenstart.pdf`.
+`archive/legacy_v1_v3/seed/notes/NextStep.txt` and `seed/Manuskriptfinalisierung und Kampagnenstart.pdf`.
 It quantifies how structural covariates (coupling efficiency, effective
 dimensionality, memory, Θ drift, signal-to-noise) explain the heterogeneity of
 logistic steepness across domains.

@@ -47,7 +47,7 @@ plotting dependencies.
 
 **100% Test Coverage**: 402/402 tests passing (exceeded 80% target by 139%). Automation: 4 CI Guards + Parser→Codex automation.
 
-**Documentation**: See [`RELEASE_NOTES_v2.0.0.md`](RELEASE_NOTES_v2.0.0.md), [`docs/tooltip_api.md`](docs/tooltip_api.md), and [`seed/FraktaltagebuchV2/`](seed/FraktaltagebuchV2/)
+**Documentation**: See [`RELEASE_NOTES_v2.0.0.md`](RELEASE_NOTES_v2.0.0.md), [`docs/tooltip_api.md`](docs/tooltip_api.md), and [`archive/legacy_v1_v3/seed/FraktaltagebuchV2/`](archive/legacy_v1_v3/seed/FraktaltagebuchV2/)
 
 ## Scientific Maturity
 
@@ -118,6 +118,26 @@ ledgers (`analysis/results/universal_beta_summary.json`), and poetic pledges
 
 When \(R>\Theta\) across these surfaces, run the playbook, log the codex entry,
 and ship the repository bundle via `ZENODO_UPLOAD_GUIDE.md`.
+
+## Legacy & History
+
+The v1–v3 trailheads now live under
+[`archive/legacy_v1_v3/`](archive/legacy_v1_v3/), keeping the v4.0 Mirror
+Machine focused while preserving full resonance:
+
+- **FraktaltagebuchV2** and **RoadToV.3** were relocated; lightweight symlinks in
+  `seed/` keep older cross-links alive while the canonical copies live in the
+  archive.
+- **Seed notes** (Brainstorm, Feinschliff, Gemini reaction drafts, etc.) moved to
+  `archive/legacy_v1_v3/seed/notes/` so the active grove tracks only current
+  lanterns.
+- **Data backups** from `data/experimental/backups/` shifted to
+  `archive/legacy_v1_v3/data/experimental/backups/`; only the golden-master CSVs
+  remain in `data/experimental/` for v4.0 σ(β(R−Θ)) fits.
+
+If you reactivate any legacy pathway, trace the logistic quartet
+\((R, \Theta, \beta, \zeta(R))\), refresh the relevant indices, and log the echo
+in the codex so entropy stays damped.
 
 ## Quick start: β & ΔAIC in under 10 minutes
 
