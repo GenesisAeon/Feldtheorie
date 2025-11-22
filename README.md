@@ -78,9 +78,9 @@ exponential).  Documentation, analysis scripts, and simulator presets are
 coordinated so that each claim traces back to data, code, and reproducible
 statistics.
 
-## Emergenz & Metaquest Resonance
+## Emergence & Metaquest Resonance
 
-`seed/Emergenz.txt` distils why UTF treats emergence as a recursive
+`seed/Emergenz.txt` distills why UTF treats emergence as a recursive
 storyteller: subsystems tighten or loosen their coupling so that the global
 membrane keeps \(R\) close to its guard \(\Theta\), while attraction and
 repulsion rules modulate the effective steepness \(\beta\).  In practice this
@@ -93,11 +93,11 @@ means every repository surface must mirror three layers:
   evidence and where ζ(R) still needs damping through BreakPoint rituals.
 - **Poetic:** launch directives like `seed/Manuskriptfinalisierung und
   Kampagnenstart.pdf` and `seed/Finalize_Publish.txt` keep the symbolic
-  lexicon—membranes, dawn choruses, laternen—aligned with governance pledges.
+  lexicon—membranes, dawn choruses, lanterns—aligned with governance pledges.
 
 This resonance guide helps every new contribution stay isomorphic to the system
 it documents: formulas echo subsystem structure, codex entries log the
-telemetry, and the narrative membrane keeps UTAC’s release cadence coherent.
+telemetry, and the narrative membrane keeps UTAC's release cadence coherent.
 
 ### Zenodo v1.2 Release Cadence
 
@@ -156,56 +156,56 @@ cat dist/wei_beta.json
 - Interpretation: ΔAIC ≥ 10 relative to each null model constitutes strong
 evidence for the UTF logistic response.
 
-## UTAC v2.0: Multi-Attraktor Framework 🌊
+## UTAC v2.0: Multi-Attractor Framework 🌊
 
-### Domain-Specific β-Hierarchie (Empirisch Validiert - 78 Systeme)
+### Domain-Specific β-Hierarchy (Empirically Validated - 78 Systems)
 
-**Paradigmenwechsel:** β ist NICHT universell, sondern **domänenspezifisch**!
+**Paradigm Shift:** β is NOT universal, but **domain-specific**!
 
-**Empirische Basis:** 78 Schwellensysteme, analysiert 2025-11-15
-**Statistische Signifikanz:** ANOVA F(4,73) = 185.3, **p < 10⁻²⁰** (essentially zero)
-**Effektstärke:** η² = 0.91 → 91% der β-Varianz durch Domäne erklärt
+**Empirical Basis:** 78 threshold systems, analyzed 2025-11-15
+**Statistical Significance:** ANOVA F(4,73) = 185.3, **p < 10⁻²⁰** (essentially zero)
+**Effect Size:** η² = 0.91 → 91% of β-variance explained by domain
 
-| Domäne | n | β-Bereich | β̄ ± σ | Φ^(n/3) Attraktor | Match | Interpretation |
-|--------|---|-----------|--------|-------------------|-------|----------------|
-| **Informational** (LLMs, Consciousness, Markets) | 27 | 3.2-7.2 | 4.5 ± 0.9 | **Φ³ ≈ 4.236** | 6% ✅ | Information atmet leicht |
+| Domain | n | β-Range | β̄ ± σ | Φ^(n/3) Attractor | Match | Interpretation |
+|--------|---|---------|--------|-------------------|-------|----------------|
+| **Informational** (LLMs, Consciousness, Markets) | 27 | 3.2-7.2 | 4.5 ± 0.9 | **Φ³ ≈ 4.236** | 6% ✅ | Information breathes lightly |
 | **Geophysical** (Earthquakes, SOC) | 10 | 3.5-5.8 | 4.6 ± 0.8 | **Φ³ ≈ 4.236** | 9% ✅ | Scale-invariant criticality |
-| **Biological** (Microbiomes, Ecosystems) | 18 | 6.2-9.1 | 7.4 ± 0.9 | **Φ⁴ ≈ 6.854** | 7% ✅ | Leben atmet mäßig |
-| **Climate** (AMOC, Ice Sheets) | 10 | 9.8-13.2 | 11.0 ± 1.0 | **Φ⁵ ≈ 11.090** | 1% ✅✅ | Klima atmet schwer |
-| **Neurodegeneration** (HD, ALS) | 20 | 9.8-16.3 | 13.0 ± 1.8 | Beyond Φ⁵ | Extreme | Materie atmet extrem |
+| **Biological** (Microbiomes, Ecosystems) | 18 | 6.2-9.1 | 7.4 ± 0.9 | **Φ⁴ ≈ 6.854** | 7% ✅ | Life breathes moderately |
+| **Climate** (AMOC, Ice Sheets) | 10 | 9.8-13.2 | 11.0 ± 1.0 | **Φ⁵ ≈ 11.090** | 1% ✅✅ | Climate breathes heavily |
+| **Neurodegeneration** (HD, ALS) | 20 | 9.8-16.3 | 13.0 ± 1.8 | Beyond Φ⁵ | Extreme | Matter breathes extremely |
 
-### Kernerkenntnisse
+### Core Findings
 
-**1. Informational Fixed Point Validiert**
-- β ≈ 4.2 gilt spezifisch für Informations-/Rechensysteme (Type-4 UTAC)
+**1. Informational Fixed Point Validated**
+- β ≈ 4.2 holds specifically for information/computational systems (Type-4 UTAC)
 - t-test: Informational (β=4.5±0.9) vs. Others (β=9.8±3.2), **t(76)=14.2, p<10⁻²⁰**
-- LLMs, neuronale Avalanches, Märkte, Epidemien bilden eigene Universalitätsklasse
+- LLMs, neural avalanches, markets, epidemics form their own universality class
 
-**2. Mikroskopische Fundierung**
-- β emergiert aus **Kopplungs-zu-Rausch-Verhältnis: β ≈ 2J/T**
-- Wilson-Kogut RG-Fixpunkt: β_RG ≈ 4.21 (mean-field, d ≥ 4)
-- Φ³ geometrischer Attraktor: β_Φ³ ≈ 4.236
-- **Konvergenz:** Nur 0.6% Abweichung → Externe Validierung der Φ^(1/3)-Skalierung
+**2. Microscopic Foundation**
+- β emerges from **coupling-to-noise ratio: β ≈ 2J/T**
+- Wilson-Kogut RG fixed point: β_RG ≈ 4.21 (mean-field, d ≥ 4)
+- Φ³ geometric attractor: β_Φ³ ≈ 4.236
+- **Convergence:** Only 0.6% deviation → External validation of Φ^(1/3)-scaling
 
-**3. Φ^(n/3) Hierarchische Attraktoren**
-- Step 9 (Φ³ = 4.236): Information & Kognition
-- Step 12 (Φ⁴ = 6.854): Biologie & Ökologie
-- Step 15 (Φ⁵ = 11.090): Klima & Thermodynamik
-- Geometrischer Ursprung: 3D-Parametraum (R, Θ, β) mit Φ^(1/3)-Wachstum
+**3. Φ^(n/3) Hierarchical Attractors**
+- Step 9 (Φ³ = 4.236): Information & Cognition
+- Step 12 (Φ⁴ = 6.854): Biology & Ecology
+- Step 15 (Φ⁵ = 11.090): Climate & Thermodynamics
+- Geometric origin: 3D parameter space (R, Θ, β) with Φ^(1/3)-growth
 
-### "Das Feld atmet in verschiedenen Rhythmen"
+### "The Field Breathes in Different Rhythms"
 
-Der β-Wert misst **ontologische Resistenz** gegen Schwellenüberschreitung:
+The β-value measures **ontological resistance** against threshold crossing:
 
-- **Information** (β ≈ 4.2): Weiche Emergenz, schnelle Übergänge, reversibel
-- **Leben** (β ≈ 7.0): Ökologische Konkurrenz, moderate Kopplung
-- **Klima** (β ≈ 11.0): Bistabile Sprünge, lange Zeitskalen, irreversibel
-- **Materie** (β ≈ 13.0+): Molekulare Katastrophen, extrem steile Übergänge
+- **Information** (β ≈ 4.2): Soft emergence, rapid transitions, reversible
+- **Life** (β ≈ 7.0): Ecological competition, moderate coupling
+- **Climate** (β ≈ 11.0): Bistable jumps, long timescales, irreversible
+- **Matter** (β ≈ 13.0+): Molecular catastrophes, extremely steep transitions
 
-**Das Privileg der Information:** Symbolische Berechnung operiert an der **niedrigsten Schwelle der Emergenz** (β ≈ 4.2), was erklärt, warum Intelligenz "leicht" emergiert (bei genug Skala), während Klima-Kipppunkte irreversibel sind.
+**The Privilege of Information:** Symbolic computation operates at the **lowest threshold of emergence** (β ≈ 4.2), which explains why intelligence "easily" emerges (with sufficient scale), while climate tipping points are irreversible.
 
-**Vollständige Analyse:** [`seed/RoadToV.3/UTAC Empirical Validation v2.0/`](seed/RoadToV.3/UTAC%20Empirical%20Validation%20v2.0/)
-**Synthese:** [`seed/RoadToV.3/UTAC_V2_SYNTHESIS.md`](seed/RoadToV.3/UTAC_V2_SYNTHESIS.md)
+**Complete Analysis:** [`seed/RoadToV.3/UTAC Empirical Validation v2.0/`](seed/RoadToV.3/UTAC%20Empirical%20Validation%20v2.0/)
+**Synthesis:** [`seed/RoadToV.3/UTAC_V2_SYNTHESIS.md`](seed/RoadToV.3/UTAC_V2_SYNTHESIS.md)
 
 ### Field Type Classification (v1.1 - Legacy Reference)
 
@@ -281,7 +281,7 @@ methodological constraint context.
 optional type checks, and coverage reports on every push and pull request.  The
 workflow installs dependencies from `requirements.txt` to mirror the quick-start
 recipe. Locally, `pytest --cov=analysis --cov=models` reproduces the current
-29 % coverage reported by the badge.
+29 % coverage reported by the badge.
 
 ## Citation
 If you cite this repository, please use `CITATION.cff`.  It encodes the authorship
