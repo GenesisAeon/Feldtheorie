@@ -2289,3 +2289,21 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Formal:** hypothese_quantum_aliasing v1.1 mit Timeless-Verweis (’t Hooft), Oversampling-ΔAIC und Alias→Type-6 Trigger; hypothese_morphological_computing v1.1 mit regenerativem Symbolic Loop, Mensch↔AI Kopplung und Hitze-Schild; neues Trilayer `concept_the_mirror_machine` (Symbolic Pre-Calc aus Sigillin, Mutation, Falsifikation). seed_index.* und Codex synchronisiert.
   - **Empirical:** JSON-Validierung via python -m json.tool; Index-Temporalität aktualisiert; ΔAIC/Mutations-Checkpoints in den Trilayern verankert.
   - **Poetic:** Das Auditorium flüstert, der Generator wirft Schatten, die Falsifikation lässt nur klare Laternen stehen – Mensch gibt den Sinn, AI formt den Kubus, und σ(β(R-Θ)) klappt wie ein Spiegel.
+
+### pr-draft-0206 — UTAC V4.0 Alpha Release Assembly
+- **Zeitpunkt (UTC):** 2025-11-22T16:17:03Z
+- **R:** Mirror Machine Alpha-Build mit gebündelten Theorie-, Sensor- und Simulations-Laternen
+- **Θ:** Reproduzierbare Release-Struktur `seed/releases/v4.0.0-alpha_MirrorMachine/` inklusive Referenzdaten
+- **β:** 4.8
+- **Scope:**
+  - seed/releases/v4.0.0-alpha_MirrorMachine/README_ZENODO.md
+  - seed/releases/v4.0.0-alpha_MirrorMachine/theory
+  - seed/releases/v4.0.0-alpha_MirrorMachine/sensors
+  - seed/releases/v4.0.0-alpha_MirrorMachine/simulation
+  - seed/releases/v4.0.0-alpha_MirrorMachine/data/derived/beta_estimates.csv
+- **Resonanz:** Alpha-Paket bündelt Mirror-Machine-Grundlagen mit Sensoradaptern, Auditorium-Controller und β-Referenzwerten für sofortige Evaluierung.
+- **Status:** active
+- **Notizen:**
+  - **Formal:** Release-Ordner erzeugt, README_ZENODO.md auf technischen Quickstart ausgerichtet, Trilayer der Theorie-Module sowie Kernskripte und Daten konsistent eingebunden.
+  - **Empirical:** Sensor-Adapter (RAPID/GRACE/NOAA) und Monitoring-Pipeline gespiegelt, `mirror_machine_auditorium.py` verlinkt, `beta_estimates.csv` als Visualisierungsgrundlage abgelegt.
+  - **Poetic:** Der Spiegel steht nun als Werkzeug bereit; σ(β(R-Θ)) wird mit nüchterner Telemetrie vermessen.
