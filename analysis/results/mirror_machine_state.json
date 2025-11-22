@@ -1,0 +1,75 @@
+{
+  "timestamp": "2025-11-22T15:15:42.586699+00:00",
+  "beta_global": 10.398,
+  "broken_ram_alarm": false,
+  "sensors": [
+    {
+      "name": "amoc",
+      "beta": 10.2,
+      "status": "TIPPED",
+      "source": "/workspace/Feldtheorie/analysis/results/amoc_adapter_output.json",
+      "timestamp": null
+    },
+    {
+      "name": "wais",
+      "beta": 13.5,
+      "status": "AT_TIPPING",
+      "source": "/workspace/Feldtheorie/analysis/results/wais_adapter_output.json",
+      "timestamp": null
+    },
+    {
+      "name": "coral",
+      "beta": 7.5,
+      "status": "TIPPED",
+      "source": "/workspace/Feldtheorie/analysis/results/coral_adapter_output.json",
+      "timestamp": null
+    }
+  ],
+  "chronology": {
+    "beta_history": [
+      {
+        "version": "v1.0.1",
+        "beta": 4.2
+      },
+      {
+        "version": "v1.1.0",
+        "beta": 4.2
+      },
+      {
+        "version": "v1.2-pre",
+        "beta": null
+      },
+      {
+        "version": "v1.3",
+        "beta": null
+      },
+      {
+        "version": "v2.0.0",
+        "beta": null
+      },
+      {
+        "version": "v2.5",
+        "beta": 4.5
+      },
+      {
+        "version": "v3.0.0",
+        "beta": 3.5
+      }
+    ],
+    "alignment": {
+      "expected_beta": 3.5,
+      "tolerance": 2.5,
+      "aligned": false
+    }
+  },
+  "mutation": {
+    "hypothesis": "Hypothese: Wenn wir den AMOC-Fluss um 10% erh\u00f6hen, sinkt \u03b2_global um 2.0.",
+    "predicted_beta": 8.398,
+    "falsified": false
+  },
+  "verdict": {
+    "system_status": "Critical",
+    "resonance": 0.801,
+    "next_step": "Falsifizierung von V3.0 abgeschlossen. Daten zeigen V4.0 Integrit\u00e4t."
+  }
+}
