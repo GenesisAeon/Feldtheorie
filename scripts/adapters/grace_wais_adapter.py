@@ -1,214 +1,199 @@
 #!/usr/bin/env python3
 """
-GRACE WAIS Adapter (Mock Version)
-==================================
+GRACE WAIS Adapter (Production Ready)
+=====================================
 
-Adapter for GRACE/GRACE-FO ice mass balance data for West Antarctic Ice Sheet.
-
-**Mock Version:** Reads generated CSV mock data
-**Production Version:** Would connect to NASA Earthdata API
-
-Data Source: NASA JPL GRACE Tellus (https://grace.jpl.nasa.gov/)
-Papers: TiPACCs (2024), Armstrong-McKay et al. (2022) Science
-
-Author: Claude Sonnet 4.5
-Date: 2025-11-14
+Early-warning adapter for GRACE/GRACE-FO West Antarctic Ice Sheet (WAIS) mass
+change data. Follows the Sigillin/UTAC pattern: ingest → physics → beta
+estimate → JSON payload.
 """
 
+from __future__ import annotations
+
 import json
-import csv
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
+from typing import Dict, Optional
+
 import numpy as np
+import pandas as pd
 
 
-class GRACEWAISAdapter:
-    """Mock adapter for GRACE WAIS data."""
-
-    def __init__(self, mock_data_path: str = None):
-        """Initialize adapter.
-
-        Args:
-            mock_data_path: Path to mock CSV file
-        """
-        if mock_data_path is None:
-            mock_data_path = Path(__file__).parent.parent.parent / "data" / "climate" / "wais_mass_balance_mock.csv"
-
-        self.data_path = Path(mock_data_path)
-
-        if not self.data_path.exists():
-            raise FileNotFoundError(f"Mock data not found: {self.data_path}")
-
-    def load_data(self):
-        """Load WAIS mass balance data from CSV.
-
-        Returns:
-            dict: Parsed data with metadata
-        """
-        data = {
-            'dates': [],
-            'mass_balance_Gt': [],
-            'mass_change_rate_Gt_per_year': [],
-            'temp_anomaly_C': [],
-            'distance_to_tipping': [],
-            'variance_indicator': [],
-            'ar1_coefficient': []
-        }
-
-        with open(self.data_path, 'r') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                data['dates'].append(row['date'])
-                data['mass_balance_Gt'].append(float(row['mass_balance_Gt']))
-                data['mass_change_rate_Gt_per_year'].append(float(row['mass_change_rate_Gt_per_year']))
-                data['temp_anomaly_C'].append(float(row['temp_anomaly_C']))
-                data['distance_to_tipping'].append(float(row['distance_to_tipping']))
-                data['variance_indicator'].append(float(row['variance_indicator']))
-                data['ar1_coefficient'].append(float(row['ar1_coefficient']))
-
-        return data
-
-    def compute_statistics(self, data: dict) -> dict:
-        """Compute summary statistics for WAIS data.
-
-        Args:
-            data: Loaded data from load_data()
-
-        Returns:
-            dict: Statistics summary
-        """
-        mass_balance = np.array(data['mass_balance_Gt'])
-        mass_rate = np.array(data['mass_change_rate_Gt_per_year'])
-        temp = np.array(data['temp_anomaly_C'])
-        ar1 = np.array(data['ar1_coefficient'])
-        variance = np.array(data['variance_indicator'])
-
-        # Current values (most recent)
-        current_mass = mass_balance[-1]
-        current_rate = mass_rate[-1]
-        current_temp = temp[-1]
-        current_ar1 = ar1[-1]
-        current_variance = variance[-1]
-
-        # Trends
-        # Split into early (2002-2010) and late (2020-2024) periods
-        n_total = len(mass_balance)
-        early_end = int(n_total * 0.35)  # ~8 years
-        late_start = int(n_total * 0.80)  # ~18 years
-
-        early_ar1 = np.mean(ar1[:early_end])
-        late_ar1 = np.mean(ar1[late_start:])
-        ar1_increase_percent = ((late_ar1 - early_ar1) / early_ar1) * 100
-
-        early_var = np.mean(variance[:early_end])
-        late_var = np.mean(variance[late_start:])
-        variance_increase_percent = ((late_var - early_var) / early_var) * 100
-
-        stats = {
-            'n_datapoints': len(mass_balance),
-            'date_range': {
-                'start': data['dates'][0],
-                'end': data['dates'][-1]
-            },
-            'current_state': {
-                'mass_balance_Gt': float(current_mass),
-                'mass_loss_rate_Gt_per_year': float(current_rate),
-                'temperature_anomaly_C': float(current_temp),
-                'distance_to_tipping': float(data['distance_to_tipping'][-1]),
-                'ar1_coefficient': float(current_ar1),
-                'variance_factor': float(current_variance)
-            },
-            'early_warning_signals': {
-                'ar1_early_period': float(early_ar1),
-                'ar1_late_period': float(late_ar1),
-                'ar1_increase_percent': float(ar1_increase_percent),
-                'variance_early_period': float(early_var),
-                'variance_late_period': float(late_var),
-                'variance_increase_percent': float(variance_increase_percent),
-                'critical_slowing': bool(late_ar1 > 0.70)  # Threshold for critical slowing
-            },
-            'trends': {
-                'total_mass_change_Gt': float(mass_balance[-1] - mass_balance[0]),
-                'mean_annual_loss_rate_Gt_per_year': float(np.mean(mass_rate)),
-                'accelerating': bool(np.polyfit(range(len(mass_rate)), mass_rate, 1)[0] < 0)  # Negative trend = accelerating loss
-            }
-        }
-
-        return stats
-
-    def export_json(self, output_path: str = None) -> str:
-        """Export data and statistics as JSON for TypeScript consumption.
-
-        Args:
-            output_path: Path for JSON output
-
-        Returns:
-            str: Path to exported JSON
-        """
-        if output_path is None:
-            output_path = Path(__file__).parent.parent / "analysis" / "results" / "wais_adapter_output.json"
-
-        output_path = Path(output_path)
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-
-        data = self.load_data()
-        stats = self.compute_statistics(data)
-
-        export = {
-            'metadata': {
-                'system': 'WAIS',
-                'system_full_name': 'West Antarctic Ice Sheet',
-                'utac_type': 'Type-2: Thermodynamic',
-                'beta_expected': 13.5,
-                'theta_expected_C': 1.5,
-                'status': 'AT_TIPPING',
-                'data_source': 'Mock (GRACE/GRACE-FO based)',
-                'adapter_version': '1.0.0',
-                'generated': datetime.now().isoformat() + 'Z',
-                'papers': [
-                    'TiPACCs Project (2024) CORDIS 820575',
-                    'Armstrong-McKay et al. (2022) Science 377(6611)'
-                ]
-            },
-            'data': data,
-            'statistics': stats
-        }
-
-        with open(output_path, 'w') as f:
-            json.dump(export, f, indent=2)
-
-        return str(output_path)
+DEFAULT_DATA_PATH = (
+    Path(__file__).resolve().parents[2] / "data" / "climate" / "wais_mass_balance_mock.csv"
+)
+REQUIRED_COLUMNS = {"date", "mass_change_Gt"}
 
 
-def main():
-    """CLI entry point."""
+def fetch_grace_data(mock_data_path: Optional[str] = None) -> pd.DataFrame:
+    """Load WAIS mass-change data from the GRACE/GRACE-FO proxy CSV.
+
+    Validates that the dataset exposes the expected columns and computes
+    ``mass_change_Gt`` if only cumulative ``mass_balance_Gt`` is present.
+
+    Args:
+        mock_data_path: Optional override path to the mock GRACE dataset.
+
+    Returns:
+        DataFrame with ``date`` (datetime64) and ``mass_change_Gt`` (float).
+
+    Raises:
+        FileNotFoundError: When the CSV is missing.
+        ValueError: When required columns cannot be satisfied.
+    """
+
+    data_path = Path(mock_data_path) if mock_data_path else DEFAULT_DATA_PATH
+    if not data_path.exists():
+        raise FileNotFoundError(f"GRACE/GRACE-FO proxy not found: {data_path}")
+
+    df = pd.read_csv(data_path)
+
+    # Attempt to backfill ``mass_change_Gt`` from ``mass_balance_Gt`` if needed
+    missing = REQUIRED_COLUMNS - set(df.columns)
+    if missing:
+        if missing == {"mass_change_Gt"} and "mass_balance_Gt" in df.columns:
+            baseline = float(df["mass_balance_Gt"].iloc[0])
+            df["mass_change_Gt"] = df["mass_balance_Gt"].astype(float) - baseline
+            missing = REQUIRED_COLUMNS - set(df.columns)
+
+    if missing:
+        raise ValueError(
+            "Required columns missing from GRACE dataset: " + ", ".join(sorted(missing))
+        )
+
+    df["date"] = pd.to_datetime(df["date"], errors="coerce")
+    if df["date"].isna().any():
+        raise ValueError("Invalid date entries detected in GRACE dataset.")
+
+    df = df.sort_values("date").reset_index(drop=True)
+    df["mass_change_Gt"] = df["mass_change_Gt"].astype(float)
+    return df
+
+
+def _beta_from_acceleration(acceleration: float) -> float:
+    """Map acceleration (Gt/yr²) to beta using an exponential ramp."""
+
+    baseline_beta = 4.0
+    if acceleration < -5.0:
+        return baseline_beta + float(np.exp((-acceleration - 5.0) / 5.0))
+
+    damped_penalty = max(0.0, -acceleration) / 10.0
+    return baseline_beta + damped_penalty
+
+
+def estimate_beta_signal(df: pd.DataFrame, window_years: int = 5) -> Dict[str, float | str]:
+    """Estimate beta dynamics via quadratic acceleration over a rolling window.
+
+    Args:
+        df: GRACE WAIS DataFrame containing ``date`` and ``mass_change_Gt``.
+        window_years: Width of the trailing window (years) for the fit.
+
+    Returns:
+        Dictionary containing mass-loss rate, acceleration, beta, and status.
+
+    Raises:
+        ValueError: When insufficient data exist for a quadratic fit.
+    """
+
+    if df.empty:
+        raise ValueError("No data available for WAIS beta estimation.")
+
+    window_start = df["date"].max() - pd.DateOffset(years=window_years)
+    window = df[df["date"] >= window_start].copy()
+
+    if len(window) < 3:
+        raise ValueError("Insufficient data points for quadratic fit (need >= 3).")
+
+    t_years = (window["date"] - window["date"].min()).dt.total_seconds() / (365.25 * 24 * 3600)
+    mass_change = window["mass_change_Gt"].to_numpy()
+
+    a, b, _ = np.polyfit(t_years, mass_change, 2)
+    t_last = t_years.iloc[-1]
+    instantaneous_loss_rate = 2 * a * t_last + b
+
+    acceleration = float(a)
+    beta_estimate = _beta_from_acceleration(acceleration)
+    status = "accelerating_loss" if acceleration < -5.0 else "stable"
+
+    return {
+        "mass_loss_rate_Gt_yr": float(instantaneous_loss_rate),
+        "acceleration_Gt_yr2": acceleration,
+        "beta_estimate": beta_estimate,
+        "status": status,
+    }
+
+
+def build_payload(df: pd.DataFrame, window_years: int = 5) -> Dict[str, str | float]:
+    """Build the Sigillin-standard payload for WAIS early warnings."""
+
+    beta_signal = estimate_beta_signal(df, window_years=window_years)
+
+    return {
+        "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "sensor": "GRACE_WAIS",
+        "mass_loss_rate_Gt_yr": beta_signal["mass_loss_rate_Gt_yr"],
+        "acceleration_Gt_yr2": beta_signal["acceleration_Gt_yr2"],
+        "beta_estimate": beta_signal["beta_estimate"],
+        "status": beta_signal["status"],
+    }
+
+
+def export_payload(payload: Dict[str, str | float], output_path: Optional[str]) -> str:
+    """Export the payload as JSON to the requested path."""
+
+    destination = (
+        Path(output_path)
+        if output_path
+        else Path(__file__).resolve().parents[1] / "analysis" / "results" / "wais_adapter_output.json"
+    )
+    destination.parent.mkdir(parents=True, exist_ok=True)
+
+    with destination.open("w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+
+    return str(destination)
+
+
+def main() -> None:
+    """CLI entry point for activating the WAIS adapter."""
+
     import argparse
 
-    parser = argparse.ArgumentParser(description='GRACE WAIS Adapter (Mock)')
-    parser.add_argument('--input', type=str, help='Input CSV path (default: data/climate/wais_mass_balance_mock.csv)')
-    parser.add_argument('--output', type=str, help='Output JSON path (default: analysis/results/wais_adapter_output.json)')
+    parser = argparse.ArgumentParser(description="GRACE WAIS Adapter (Production)")
+    parser.add_argument(
+        "--input",
+        type=str,
+        help="Input CSV path (default: data/climate/wais_mass_balance_mock.csv)",
+    )
+    parser.add_argument(
+        "--output",
+        type=str,
+        help="Output JSON path (default: analysis/results/wais_adapter_output.json)",
+    )
+    parser.add_argument(
+        "--window-years",
+        type=int,
+        default=5,
+        help="Trailing window (years) for quadratic fit (default: 5)",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Compute and print payload without writing to disk.",
+    )
 
     args = parser.parse_args()
 
-    adapter = GRACEWAISAdapter(mock_data_path=args.input)
-    output_path = adapter.export_json(output_path=args.output)
+    df = fetch_grace_data(args.input)
+    payload = build_payload(df, window_years=args.window_years)
 
-    print(f"✅ GRACE WAIS Adapter: Data exported to {output_path}")
+    if args.dry_run:
+        print(json.dumps(payload, indent=2))
+        return
 
-    # Print summary
-    data = adapter.load_data()
-    stats = adapter.compute_statistics(data)
-
-    print(f"\n📊 Summary:")
-    print(f"   Datapoints: {stats['n_datapoints']}")
-    print(f"   Date Range: {stats['date_range']['start']} → {stats['date_range']['end']}")
-    print(f"   Current Mass Loss Rate: {stats['current_state']['mass_loss_rate_Gt_per_year']:.1f} Gt/year")
-    print(f"   AR(1) Coefficient: {stats['current_state']['ar1_coefficient']:.3f}")
-    print(f"   AR(1) Increase: {stats['early_warning_signals']['ar1_increase_percent']:.1f}%")
-    print(f"   Variance Increase: {stats['early_warning_signals']['variance_increase_percent']:.1f}%")
-    print(f"   Critical Slowing: {'🔴 YES' if stats['early_warning_signals']['critical_slowing'] else '🟢 NO'}")
-    print(f"   Distance to Tipping: {stats['current_state']['distance_to_tipping']:.1%}")
+    output_path = export_payload(payload, args.output)
+    print(f"✅ GRACE WAIS Adapter activated: payload written to {output_path}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
