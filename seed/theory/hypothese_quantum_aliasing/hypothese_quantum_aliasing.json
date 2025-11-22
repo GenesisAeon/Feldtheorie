@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "id": "theory-011",
+    "title": "Quantenmechanik als dimensionales Aliasing",
+    "layer": "theory",
+    "status": "active",
+    "version": "1.0.0",
+    "created": "2026-12-08",
+    "logistics": {
+      "R": "Oszillierende Dimensionswechsel (0D→1D→…→nD) jenseits der Planck-Zeit",
+      "Theta": "Abtastrate des Messprozesses; unterschritten → Aliasing tritt auf",
+      "beta": 4.8,
+      "zeta": "Dämpfung der Oszillation durch Kopplung an Messapparate",
+      "sigma_note": "Wenn R (Oszillationsfrequenz) > Theta (Abtastrate), steigt σ(β(R-Θ)) und die beobachtete Superposition ist ein Alias-Schatten."
+    },
+    "utac_alignment": {
+      "type": "type-6-implosion",
+      "description": "Type-6 implodiert, wenn diskrete Messraster das dimensionale Flirren nicht auflösen; Aliasing erklärt die scheinbare Mehrwertigkeit.",
+      "readiness_hooks": [
+        "Kopple Oszillationsfrequenz an Simulator-Zeitschritt; prüfe Alias-Schatten in Telemetrie",
+        "Nutze Aliasing-These als physikalische Brücke für UTAC Type-6 Parametrisierung"
+      ]
+    }
+  },
+  "sources": [
+    "seed/V4-Grundlagen/Quantenmechanik als dimensionales Aliasing.pdf",
+    "seed/V4-Grundlagen/Suche.txt"
+  ],
+  "theses": {
+    "aliasing_not_superposition": {
+      "statement": "Superposition ist kein ontischer Zustand, sondern das Alias einer schnelleren dimensionalen Oszillation, die unterhalb der Mess-Abtastrate liegt.",
+      "falsifiability": {
+        "null_model": "Standard-Superpositionsmodell ohne Aliasing-Annahme",
+        "discriminator": "Phasenverschiebung der Interferenzmuster, wenn die Abtastrate experimentell erhöht wird (ΔAIC gegen Standardmodell)"
+      },
+      "resonance": {
+        "logistic_bridge": "σ(β(R-Θ)) steigt, sobald die Oszillation die Abtastrate überholt; sichtbare Schatten statt echter Zustandsvielfalt."
+      }
+    },
+    "higher_dimensional_order": {
+      "statement": "Die Oszillation tastet eine höherdimensionale Ordnung ab; beobachtbar sind nur projizierte Schatten (Alias) im Messraum.",
+      "falsifiability": {
+        "null_model": "Rein dreidimensionale Dynamik ohne hochdimensionale Ordnung",
+        "discriminator": "Skalenbruch in Spektren/Interferenz, wenn Messgeräte für höhere Samplingraten kalibriert werden"
+      },
+      "resonance": {
+        "logistic_bridge": "Der Projektionseffekt wird schwächer, sobald Messung die Nyquist-Bedingung erfüllt; σ(β(R-Θ)) flacht ab."
+      }
+    }
+  },
+  "bridges": {
+    "utac": {
+      "trigger": "Alias-Schatten signalisieren, dass Type-6 Implosion in den Simulator-Bändern erreicht ist.",
+      "simulator_hook": "Binde Nyquist-Abtastung an UTAC-Zeitschritt, protokolliere Aliasing-Resonanzen."
+    },
+    "sigillin": {
+      "ordnungs_sigillin": "seed/seed_index.{yaml,json,md}",
+      "bedeutungs_sigillin": "seed/codexfeedback.{yaml,json,md}",
+      "shadow_sigillin": "seed/shadow_sigillin/** (für Recovery bei Mess-Drift)"
+    }
+  },
+  "null_models": [
+    {
+      "name": "Standard-Superposition ohne Alias",
+      "description": "Superposition als echter Mehrzustand, keine schnellere Oszillation.",
+      "expected_delta_aic": "> 5 wenn erhöhte Abtastrate Interferenzverschiebungen erklärt"
+    },
+    {
+      "name": "Dreidimensionale Dynamik ohne höhere Ordnung",
+      "description": "Keine höherdimensionale Projektion; Messungen ändern sich nicht mit Samplingrate.",
+      "expected_delta_aic": "> 3 falls Spektren Skalenbruch bei erhöhter Abtastrate zeigen"
+    }
+  ],
+  "falsifiability": {
+    "checkpoints": [
+      "Erhöhe experimentelle Abtastrate und prüfe Verschiebungen in Interferenzmustern (Nyquist-Test)",
+      "Simuliere dimensionale Oszillation im UTAC-Simulator und vergleiche mit Standard-Superposition",
+      "Analysiere Spektren auf Skalenbrüche/aliasbedingte Peaks"
+    ],
+    "recovery": [
+      "Wenn keine Alias-Signale: Standardmodell behalten, Aliasing-Hypothese archivieren.",
+      "Bei Mess-Drift: Shadow-Sigillin aktivieren und Samplingkalibrierung dokumentieren."
+    ]
+  }
+}

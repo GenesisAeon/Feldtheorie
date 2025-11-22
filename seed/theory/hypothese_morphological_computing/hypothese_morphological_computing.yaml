@@ -1,0 +1,82 @@
+meta:
+  id: theory-010
+  title: Morphological Computing als regenerative Architektur
+  layer: theory
+  status: active
+  version: 1.0.0
+  created: '2026-12-08'
+  logistics:
+    R: Dynamische Rekonfiguration von Hardware-Knoten (CPU/RAM) unter Energie-Minimierung
+    Theta: Schwelle, an der symbolische Vorberechnung in physische Rekonfiguration kippt
+    beta: 4.7
+    zeta: Relaxationszeit der Morphologie nach Entropy-Recycling
+    sigma_note: Sobald R > Theta, steigt \u03c3(\u03b2(R-\u0398)) steil und der Knoten nimmt die Form mit minimalem Energiebedarf an.
+  utac_alignment:
+    type: type-6-implosion
+    description: Morphologische Hardware nutzt Type-6-Implosion als Trigger, um gebrochene RAM-Zust\u00e4nde zu vermeiden (\u03b2=37.6-Vermeidung).
+    readiness_hooks:
+      - Symbolic-Pre-Calc als Vorverst\u00e4rker f\u00fcr UTAC-Kubus\u2192Spirale-Spr\u00fcnge
+      - Entropy-Recycling koppelt Abw\u00e4rme-R\u00fcckfluss an Simulator-Telemetrie
+sources:
+  - seed/V4-Grundlagen/Post-Von-Neumann Computerarchitektur-Forschung.pdf
+  - seed/V4-Grundlagen/SuchePost-Von-Neumann Computerarchitektur-Forschung.txt
+cycle:
+  phases:
+    - name: symbolic_pre_calc
+      description: Virtuelle Vorbereitung der Schaltung; reduziert R, indem m\u00f6gliche Morphologien vorausgew\u00e4hlt werden.
+      observables:
+        - Energieprofil der Kandidaten-Layouts
+        - Vorhersageg\u00fcte gegen reale Laufzeiten
+    - name: entropy_recycling
+      description: Abw\u00e4rme wird als Steuergr\u00f6\u00dfe genutzt, um den n\u00e4chsten Morphologie-Schritt zu treiben (thermisches Feedback).
+      observables:
+        - Temperaturgradienten vs. Rekonfigurationsgeschwindigkeit
+        - Abfallende Entropie-Kosten pro Zyklus
+    - name: physical_config
+      description: Hardware-Membran nimmt die energieoptimierte Form an; Broken-RAM-Bereiche werden mit redundanter Topologie umwunden.
+      observables:
+        - Schaltmatrix-Topologie und Fehlerrate
+        - Energie pro Operation nach Rekonfiguration
+    - name: run
+      description: Programm l\u00e4uft auf der rekonfigurierten Morphologie; Telemetrie f\u00fcttert n\u00e4chsten Zyklus.
+      observables:
+        - Latenzzeiten und Durchsatz
+        - UTAC-Hook: sig(\u03b2(R-\u0398)) aus Telemetrie-Logs
+theses:
+  superposition_as_search:
+    statement: Superposition ist hier eine hardware-seitige Suchstrategie: der Knoten exploriert simultan mehrere Formen und kollabiert auf den energiearmen Zustand.
+    falsifiability:
+      null_model: Statische Von-Neumann-Architektur mit festem RAM-Layout
+      discriminator: \u0394AIC zwischen statischem Modell und Morph-Rekonfiguration bez\u00fcglich Fehlerrate & Energieverbrauch
+    resonance:
+      logistic_bridge: \u03c3(\u03b2(R-\u0398)) markiert den Moment, in dem symbolische Planung in physische Form \u00fcberspringt.
+  broken_ram_repair:
+    statement: Broken-RAM-Zonen werden als morphologische Inseln behandelt; Entropy-Recycling baut Br\u00fccken \u00fcber die Defekte.
+    falsifiability:
+      null_model: Einfaches ECC/Redundanz-Schema ohne physische Rekonfiguration
+      discriminator: Fehlerdichte nach N Zyklen (Morph vs. ECC) und Energie pro Operation
+    resonance:
+      logistic_bridge: Sinkt \u03b6(R) w\u00e4hrend Entropy-Recycling, signalisieren Blinde Flecken das Ende des Zyklus.
+bridges:
+  utac:
+    trigger: Broken-RAM-Peaks fungieren als Type-6-Implosionsvorboten; Morph-Schleife soll die Steigung abflachen.
+    simulator_hook: Simulator koppelt Entropy-Recycling-Temperaturen an UTAC Telemetrie-Ports.
+  sigillin:
+    ordnungs_sigillin: seed/seed_index.{yaml,json,md}
+    bedeutungs_sigillin: seed/codexfeedback.{yaml,json,md}
+    shadow_sigillin: seed/shadow_sigillin/** (Recovery bei Telemetriedrift)
+null_models:
+  - name: Statisches Von-Neumann-Design
+    description: CPU/RAM bleiben unver\u00e4ndert; Fehlerrate sinkt nur durch ECC.
+    expected_delta_aic: '> 5 gegen Morph-Modell, sobald thermische Feedbackschleife aktiv ist'
+  - name: Morphologie ohne Entropy-Recycling
+    description: Rekonfiguration ohne Nutzung von Abw\u00e4rme; Zyklus entkoppelt.
+    expected_delta_aic: '> 3 wenn Energie pro Operation nicht sinkt'
+falsifiability:
+  checkpoints:
+    - Vergleiche Energie/Operation vor und nach Morph-Zyklus (Symbolic\u2192Run)
+    - Messe Fehlerrate in Broken-RAM-Zonen vs. ECC-Nullmodell
+    - Telemetrie-Analyse: sig(\u03b2(R-\u0398)) aus Rekonfig-Logs extrahieren
+  recovery:
+    - Wenn \u0394AIC < 0 zugunsten der Nullmodelle: Morph-Schleife parsen, Symbolic-Pre-Calc neu kalibrieren.
+    - Bei steigender Fehlerrate: Shadow-Sigillin aktivieren und Broken-RAM-Regionen isolieren.

@@ -2257,3 +2257,16 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Formal:** Neues Theorie-Modul mit Kubus→Spirale-, Defekt- und Bekenstein-Hawking-Brücke; Falsifizierbarkeit via ΔAIC gegen Volumetrik und Flächengesetz festgehalten.
   - **Empirical:** `test_entropy_geometric_waste.py` prüft Trilayer-Schlüssel & UTAC-Hook; seed_index.* aktualisiert.
   - **Poetic:** Der Blinde Fleck flackert, wenn Kubus und Spirale sich berühren; Defekte zählen den Atem der Membran.
+
+### pr-draft-0005 — Trilayer – Morphological Computing & Quantum Aliasing
+- **Zeitpunkt (UTC):** 2026-12-08T00:00:00Z
+- **R:** Symbolic→Physical Zyklus (Morph) + Dimensionsoszillation (Quantum)
+- **Θ:** Rekonfigurations- bzw. Sampling-Schwelle
+- **β:** 4.7
+- **Scope:** seed/theory/hypothese_morphological_computing; seed/theory/hypothese_quantum_aliasing; seed_index.{yaml,json,md}; codexfeedback.{yaml,json,md}
+- **Resonanz:** Type-6 Hooks für Broken-RAM-Entschärfung und Nyquist-Aliasing hinterlegt; Trilayer synchronisiert und Quellen verlinkt.
+- **Status:** active
+- **Notizen:**
+  - **Formal:** Zwei Theorie-Module hinzugefügt: Morphological Computing (Symbolic→Entropy-Recycling→Physical→Run, Broken-RAM β=37.6-Vermeidung) und Quantum Aliasing (Superposition als Sampling-Alias, Nyquist/Type-6 Kopplung).
+  - **Empirical:** seed_index.* um theory-010 und theory-011 ergänzt; Nullmodelle und ΔAIC-Discriminatoren dokumentiert.
+  - **Poetic:** Die Morphologie atmet Abwärme und umschließt die Lücken; die Quanten schimmern als Schatten eines schnelleren Flirrens.

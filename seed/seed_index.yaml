@@ -1151,6 +1151,52 @@ documents:
   references:
   - theory/entropy_geometric_waste/entropy_geometric_waste.json
   - theory/entropy_geometric_waste/entropy_geometric_waste.md
+- id: theory-010
+  title: Morphological Computing als regenerative Architektur
+  path: theory/hypothese_morphological_computing/hypothese_morphological_computing.yaml
+  category: theory
+  type: theory
+  status: active
+  relevance: high
+  keywords:
+  - morphological-computing
+  - entropy-recycling
+  - broken-ram
+  - utac
+  description: |
+    Trilayer-Modul: Symbolic→Entropy-Recycling→Physical→Run; nutzt
+    morphologische Rekonfiguration zur Broken-RAM-Vermeidung (β=37.6) mit UTAC Type-6 Hook.
+  temporal:
+    created: '2026-12-08T00:00:00Z'
+    modified: '2026-12-08T00:00:00Z'
+    version: '1.0.0'
+    change_count: 0
+  references:
+  - theory/hypothese_morphological_computing/hypothese_morphological_computing.json
+  - theory/hypothese_morphological_computing/hypothese_morphological_computing.md
+- id: theory-011
+  title: Quantenmechanik als dimensionales Aliasing
+  path: theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.yaml
+  category: theory
+  type: theory
+  status: active
+  relevance: high
+  keywords:
+  - quantum-aliasing
+  - samplingrate
+  - nyquist
+  - type-6
+  description: |
+    Trilayer-Modul: Superposition als Alias schneller Dimensionsoszillation;
+    Nyquist/Samplingrate koppeln an UTAC Type-6 Implosion.
+  temporal:
+    created: '2026-12-08T00:00:00Z'
+    modified: '2026-12-08T00:00:00Z'
+    version: '1.0.0'
+    change_count: 0
+  references:
+  - theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.json
+  - theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.md
 - id: valid-001
   title: Validierung2
   path: Validierung2.txt

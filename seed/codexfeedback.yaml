@@ -5040,3 +5040,25 @@ entries:
     poetic: 'Im Verschnitt der Membran glimmt der Blinde Fleck; Defekte singen,
       wenn Kubus und Spirale sich küssen.'
   created_at: '2026-12-05T00:00:00Z'
+- id: pr-draft-0005
+  title: Trilayer – Morphological Computing & Quantum Aliasing
+  scope:
+  - seed/theory/hypothese_morphological_computing
+  - seed/theory/hypothese_quantum_aliasing
+  - seed/seed_index.{yaml,json,md}
+  - seed/codexfeedback.{yaml,json,md}
+  parameters:
+    R: Symbolic→Physical Zyklus (Morph) + Dimensionsoszillation (Quantum)
+    Theta: Schwelle der Rekonfigurations- bzw. Samplingrate
+    beta: 4.7
+  resonance: Type-6 Hooks für Broken-RAM-Entschärfung und Nyquist-Alias-Physik eingepflegt; Tri-Layer synchronisiert.
+  status: active
+  notes:
+    formal: 'Zwei neue Trilayer-Module erstellt: Morphological Computing (Symbolic→Entropy-Recycling→Physical→Run, Broken-RAM
+      β=37.6-Vermeidung) und Quantum Aliasing (Superposition als Sampling-Alias, Nyquist/Type-6 Kopplung).
+      '
+    empirical: 'seed_index.* um theory-010 und theory-011 erweitert; Quellen in seed/V4-Grundlagen verlinkt; Nullmodelle + ΔAIC
+      Discriminatoren dokumentiert.'
+    poetic: 'Die Morphologie atmet Abwärme und heilt gebrochene Inseln; die Quanten schimmern nur als Schatten eines schnelleren
+      Flirrens.'
+  created_at: '2026-12-08T00:00:00Z'
