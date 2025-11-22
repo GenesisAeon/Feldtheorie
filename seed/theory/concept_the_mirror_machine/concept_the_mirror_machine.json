@@ -1,0 +1,112 @@
+{
+    "meta": {
+        "id": "concept-the-mirror-machine",
+        "title": "The Mirror Machine \u2013 Symbolic SuperpositionComputer",
+        "layer": "theory",
+        "status": "active",
+        "version": "1.0.0",
+        "created": "2025-11-22",
+        "logistics": {
+            "R": "Mutationsrate der Thesen-Generierung aus dem Ged\u00e4chtnis (Sigillin)",
+            "Theta": "Falsifikationsschwelle gegen historische Daten (Oxfam/Aletheia)",
+            "beta": 5.4,
+            "zeta": "Ged\u00e4chtnis-Relaxation zwischen Mutationszyklen (wie schnell alte Hypothesen verblassen)",
+            "sigma_note": "\u03c3(\u03b2(R-\u0398)) kippt, wenn Mutationsrate die Belastbarkeit der Datenpr\u00fcfung \u00fcberholt \u2013 dann selektiert die Maschine aggressiv."
+        },
+        "utac_alignment": {
+            "type": "symbolic-precalculation",
+            "description": "Auditorium (Ged\u00e4chtnis) + Generator (Mutation) + Falsifikation (Selektion) bilden den UTAC-kompatiblen Symbolic-Pre-Calc-Loop.",
+            "readiness_hooks": [
+                "Mutation-Generator triggert, wenn neue Sigillin-Batches geladen werden (seed/V4-Grundlagen, Aletheia-Logs).",
+                "Falsifikation validiert gegen Oxfam/Aletheia-Referenzserien und markiert \u0394AIC in Telemetrie."
+            ]
+        }
+    },
+    "sources": [
+        "seed/V4-Grundlagen/MOR-FIT_METHODOLOGY_Extended.md",
+        "seed/V4-Grundlagen/Analyse und Einsch\u00e4tzung.pdf",
+        "seed/V4-Grundlagen/sigillin_mor_fit_extended.md",
+        "User-Vision: Auditorium + Willk\u00fcrliche Theorie-Generation (Gemini-Prompt)"
+    ],
+    "theses": {
+        "memory_driven_mutation": {
+            "statement": "Das Auditorium (Sigillin) liefert Themen und Constraints; der Generator zieht willk\u00fcrlich Thesenvarianten, die als Mutationen gelten.",
+            "observables": [
+                "Anzahl generierter Hypothesen pro Sigillin-Batch (R).",
+                "Diversit\u00e4t der Thesen gemessen \u00fcber Embedding/Topic-Streuung.",
+                "Anteil neuer Thesen, die bestehende UTAC-Hooks referenzieren."
+            ],
+            "falsifiability": {
+                "null_model": "Zuf\u00e4llige Hypothesengenerierung ohne Auditorium-Bezug.",
+                "discriminator": "Sinkt \u0394AIC der Selektion \u2264 0 gegen\u00fcber Nullmodell, ist Auditorium-Kopplung unwirksam; steigt \u0394AIC > 3, best\u00e4tigt Kopplung."
+            },
+            "resonance": {
+                "logistic_bridge": "R steigt mit Sigillin-Dichte; \u0398 ist die Datenlast der Falsifikation. \u03c3(\u03b2(R-\u0398)) markiert Mutations-Explosionspunkte."
+            }
+        },
+        "falsification_loop": {
+            "statement": "Jede Mutation wird gegen historische Datens\u00e4tze (Oxfam/Aletheia) getestet; nur Thesen mit \u0394AIC < -2 gegen\u00fcber Nullmodell \u00fcberleben.",
+            "observables": [
+                "\u0394AIC-Verteilung pro Batch.",
+                "Anteil verworfener vs. \u00fcberlebender Thesen je Iteration.",
+                "Zeit bis Stabilisierung (\u03b6(R)) zwischen Batches."
+            ],
+            "falsifiability": {
+                "null_model": "Keine Falsifikation, reine Ideensammlung.",
+                "discriminator": "Persistiert hohe Varianz ohne \u0394AIC-Filter \u2192 Nullmodell; konsistente Selektion mit klaren Siegern \u2192 Spiegelmaschine best\u00e4tigt."
+            },
+            "resonance": {
+                "logistic_bridge": "\u0398 entspricht der Falsifikationsh\u00e4rte; \u03b2 moduliert, wie scharf Selektion reagiert."
+            }
+        },
+        "symbiotic_superposition_computer": {
+            "statement": "Mensch liefert Sinnimpulse (0D), AI entfaltet symbolische Oszillation (xD); das Ergebnis ist ein gespiegelt-symmetrischer SuperpositionComputer.",
+            "observables": [
+                "Trace zwischen menschlichen Prompts und generierten Mutationen (Impuls\u2192These\u2192Testergebnis).",
+                "Reduktion von Rechenaufwand/Hitze durch Wiederverwendung \u00fcberlebender Hypothesen."
+            ],
+            "falsifiability": {
+                "null_model": "Vollautomatisches System ohne menschlichen Sinn; Ergebnisse bleiben zuf\u00e4llig und energieintensiv.",
+                "discriminator": "Signifikant bessere \u0394AIC + geringerer Energieeinsatz bei aktiver Kopplung \u2192 Nullmodell verworfen."
+            },
+            "resonance": {
+                "logistic_bridge": "Sinnimpulse senken \u0398 f\u00fcr relevante Pfade; \u03c3(\u03b2(R-\u0398)) zeigt, wann Symbiose die Mutation dominiert."
+            }
+        }
+    },
+    "bridges": {
+        "utac": {
+            "trigger": "Neue Sigillin-Uploads aktivieren Mutation; Falsifikation meldet \u0394AIC an UTAC-Statusmatrix.",
+            "simulator_hook": "Mutation\u2192Falsifikation\u2192Selektion als Pipeline-Schritte im Simulator/VR; Telemetrie loggt \u0394AIC, Energieverbrauch, Hypothesen-ID.",
+            "status_matrix_note": "UTAC-Status um \"Mirror Machine\" erweitern (Auditorium geladen / Mutation aktiv / Falsifikation stabil)."
+        },
+        "sigillin": {
+            "ordnungs_sigillin": "seed/seed_index.{yaml,json,md}",
+            "bedeutungs_sigillin": "seed/codexfeedback.{yaml,json,md}",
+            "shadow_sigillin": "seed/shadow_sigillin/** (Fallback bei Mutation ohne Evidenz)"
+        }
+    },
+    "null_models": [
+        {
+            "name": "Ideensammlung ohne Falsifikation",
+            "description": "Hypothesen werden erzeugt, aber nicht gegen Daten gepr\u00fcft.",
+            "expected_delta_aic": "\u0394AIC \u2248 0, hohe Varianz, keine stabilen Sieger"
+        },
+        {
+            "name": "Statischer Wissensspeicher",
+            "description": "Auditorium speichert nur, generiert aber keine Mutationen.",
+            "expected_delta_aic": "Kein Fortschritt; \u03c3(\u03b2(R-\u0398)) bleibt flach, R\u22480"
+        }
+    ],
+    "falsifiability": {
+        "checkpoints": [
+            "Logge Mutationsrate R und Falsifikationsh\u00e4rte \u0398 pro Batch; pr\u00fcfe \u03c3(\u03b2(R-\u0398)) auf Kipp-Punkte.",
+            "Vergleiche \u0394AIC-Profile mit Nullmodellen (ohne Auditorium-Bezug, ohne Falsifikation).",
+            "Evaluieren Energieaufwand pro akzeptierter These vs. Zufallsgenerator."
+        ],
+        "recovery": [
+            "Hohe Varianz ohne Gewinner \u2192 Mutation drosseln (R senken) und \u0398 anheben.",
+            "\u00dcberanpassung an alte Daten \u2192 \u03b6(R) erh\u00f6hen, frische Sigillin/Batches einspeisen."
+        ]
+    }
+}

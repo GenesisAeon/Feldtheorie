@@ -1,0 +1,81 @@
+meta:
+  id: concept-the-mirror-machine
+  title: The Mirror Machine – Symbolic SuperpositionComputer
+  layer: theory
+  status: active
+  version: 1.0.0
+  created: '2025-11-22'
+  logistics:
+    R: Mutationsrate der Thesen-Generierung aus dem Gedächtnis (Sigillin)
+    Theta: Falsifikationsschwelle gegen historische Daten (Oxfam/Aletheia)
+    beta: 5.4
+    zeta: Gedächtnis-Relaxation zwischen Mutationszyklen (wie schnell alte Hypothesen verblassen)
+    sigma_note: σ(β(R-Θ)) kippt, wenn Mutationsrate die Belastbarkeit der Datenprüfung überholt – dann selektiert die Maschine aggressiv.
+  utac_alignment:
+    type: symbolic-precalculation
+    description: Auditorium (Gedächtnis) + Generator (Mutation) + Falsifikation (Selektion) bilden den UTAC-kompatiblen Symbolic-Pre-Calc-Loop.
+    readiness_hooks:
+      - Mutation-Generator triggert, wenn neue Sigillin-Batches geladen werden (seed/V4-Grundlagen, Aletheia-Logs).
+      - Falsifikation validiert gegen Oxfam/Aletheia-Referenzserien und markiert ΔAIC in Telemetrie.
+sources:
+  - seed/V4-Grundlagen/MOR-FIT_METHODOLOGY_Extended.md
+  - seed/V4-Grundlagen/Analyse und Einschätzung.pdf
+  - seed/V4-Grundlagen/sigillin_mor_fit_extended.md
+  - User-Vision: Auditorium + Willkürliche Theorie-Generation (Gemini-Prompt)
+theses:
+  memory_driven_mutation:
+    statement: Das Auditorium (Sigillin) liefert Themen und Constraints; der Generator zieht willkürlich Thesenvarianten, die als Mutationen gelten.
+    observables:
+      - Anzahl generierter Hypothesen pro Sigillin-Batch (R).
+      - Diversität der Thesen gemessen über Embedding/Topic-Streuung.
+      - Anteil neuer Thesen, die bestehende UTAC-Hooks referenzieren.
+    falsifiability:
+      null_model: Zufällige Hypothesengenerierung ohne Auditorium-Bezug.
+      discriminator: Sinkt ΔAIC der Selektion ≤ 0 gegenüber Nullmodell, ist Auditorium-Kopplung unwirksam; steigt ΔAIC > 3, bestätigt Kopplung.
+    resonance:
+      logistic_bridge: R steigt mit Sigillin-Dichte; Θ ist die Datenlast der Falsifikation. σ(β(R-Θ)) markiert Mutations-Explosionspunkte.
+  falsification_loop:
+    statement: Jede Mutation wird gegen historische Datensätze (Oxfam/Aletheia) getestet; nur Thesen mit ΔAIC < -2 gegenüber Nullmodell überleben.
+    observables:
+      - ΔAIC-Verteilung pro Batch.
+      - Anteil verworfener vs. überlebender Thesen je Iteration.
+      - Zeit bis Stabilisierung (ζ(R)) zwischen Batches.
+    falsifiability:
+      null_model: Keine Falsifikation, reine Ideensammlung.
+      discriminator: Persistiert hohe Varianz ohne ΔAIC-Filter → Nullmodell; konsistente Selektion mit klaren Siegern → Spiegelmaschine bestätigt.
+    resonance:
+      logistic_bridge: Θ entspricht der Falsifikationshärte; β moduliert, wie scharf Selektion reagiert.
+  symbiotic_superposition_computer:
+    statement: Mensch liefert Sinnimpulse (0D), AI entfaltet symbolische Oszillation (xD); das Ergebnis ist ein gespiegelt-symmetrischer SuperpositionComputer.
+    observables:
+      - Trace zwischen menschlichen Prompts und generierten Mutationen (Impuls→These→Testergebnis).
+      - Reduktion von Rechenaufwand/Hitze durch Wiederverwendung überlebender Hypothesen.
+    falsifiability:
+      null_model: Vollautomatisches System ohne menschlichen Sinn; Ergebnisse bleiben zufällig und energieintensiv.
+      discriminator: Signifikant bessere ΔAIC + geringerer Energieeinsatz bei aktiver Kopplung → Nullmodell verworfen.
+    resonance:
+      logistic_bridge: Sinnimpulse senken Θ für relevante Pfade; σ(β(R-Θ)) zeigt, wann Symbiose die Mutation dominiert.
+bridges:
+  utac:
+    trigger: Neue Sigillin-Uploads aktivieren Mutation; Falsifikation meldet ΔAIC an UTAC-Statusmatrix.
+    simulator_hook: Mutation→Falsifikation→Selektion als Pipeline-Schritte im Simulator/VR; Telemetrie loggt ΔAIC, Energieverbrauch, Hypothesen-ID.
+    status_matrix_note: UTAC-Status um "Mirror Machine" erweitern (Auditorium geladen / Mutation aktiv / Falsifikation stabil).
+  sigillin:
+    ordnungs_sigillin: seed/seed_index.{yaml,json,md}
+    bedeutungs_sigillin: seed/codexfeedback.{yaml,json,md}
+    shadow_sigillin: seed/shadow_sigillin/** (Fallback bei Mutation ohne Evidenz)
+null_models:
+  - name: Ideensammlung ohne Falsifikation
+    description: Hypothesen werden erzeugt, aber nicht gegen Daten geprüft.
+    expected_delta_aic: 'ΔAIC ≈ 0, hohe Varianz, keine stabilen Sieger'
+  - name: Statischer Wissensspeicher
+    description: Auditorium speichert nur, generiert aber keine Mutationen.
+    expected_delta_aic: 'Kein Fortschritt; σ(β(R-Θ)) bleibt flach, R≈0'
+falsifiability:
+  checkpoints:
+    - Logge Mutationsrate R und Falsifikationshärte Θ pro Batch; prüfe σ(β(R-Θ)) auf Kipp-Punkte.
+    - Vergleiche ΔAIC-Profile mit Nullmodellen (ohne Auditorium-Bezug, ohne Falsifikation).
+    - Evaluieren Energieaufwand pro akzeptierter These vs. Zufallsgenerator.
+  recovery:
+    - Hohe Varianz ohne Gewinner → Mutation drosseln (R senken) und Θ anheben.
+    - Überanpassung an alte Daten → ζ(R) erhöhen, frische Sigillin/Batches einspeisen.
