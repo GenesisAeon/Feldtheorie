@@ -1,25 +1,41 @@
 #!/usr/bin/env python3
-"""
-OISST Coral Bleaching Adapter (Mock Version)
-============================================
+"""NOAA OISST coral bleaching adapter (mock).
 
-Adapter for global coral reef bleaching data.
-
-**Mock Version:** Reads generated CSV mock data
-**Production Version:** Would connect to NOAA Coral Reef Watch / OISST
-
-Data Source: NOAA Coral Reef Watch, OISST v2.1
-Papers: Lenton et al. (2025) Global Tipping Points Report, Hughes et al. (2018)
-
-Author: Claude Sonnet 4.5
-Date: 2025-11-14
+This adapter completes the AMOC/WAIS/Coral sensor triad by translating
+mocked Coral Reef Watch observations into Sigillin-standard telemetry.
+It operates on the pre-generated CSV located at ``data/biology/coral_bleaching_global_mock.csv``
+and returns a biologically grounded beta estimate based on Degree Heating
+Weeks (DHW) stress accumulation.
 """
 
-import json
 import csv
-from datetime import datetime
+import json
+from dataclasses import dataclass
 from pathlib import Path
+from typing import Dict, List
+
 import numpy as np
+
+
+@dataclass
+class CoralBleachingRecord:
+    """Typed record for a single coral bleaching observation."""
+
+    year: int
+    bleaching_percent: float
+    dhw_degree_heating_weeks: float
+    sst_anomaly_C: float
+    distance_to_tipping: float
+
+    @property
+    def timestamp(self) -> str:
+        """Return a date string for the observation year (end-of-year).
+
+        The mock dataset is annual, so we bind the reading to December 31st
+        of the corresponding year to produce an ISO-compatible date stamp.
+        """
+
+        return f"{self.year}-12-31"
 
 
 class OISSTCoralAdapter:
@@ -39,30 +55,40 @@ class OISSTCoralAdapter:
         if not self.data_path.exists():
             raise FileNotFoundError(f"Mock data not found: {self.data_path}")
 
-    def load_data(self):
-        """Load coral bleaching data from CSV.
+    def fetch_bleaching_data(self) -> List[CoralBleachingRecord]:
+        """Load mock coral bleaching observations from CSV.
 
         Returns:
-            dict: Parsed data with metadata
+            List[CoralBleachingRecord]: Parsed annual records ordered by year.
         """
-        data = {
-            'years': [],
-            'bleaching_percent': [],
-            'dhw_degree_heating_weeks': [],
-            'sst_anomaly_C': [],
-            'distance_to_tipping': []
-        }
 
-        with open(self.data_path, 'r') as f:
-            reader = csv.DictReader(f)
+        records: List[CoralBleachingRecord] = []
+        with open(self.data_path, "r", encoding="utf-8") as handle:
+            reader = csv.DictReader(handle)
             for row in reader:
-                data['years'].append(int(row['year']))
-                data['bleaching_percent'].append(float(row['bleaching_percent']))
-                data['dhw_degree_heating_weeks'].append(float(row['dhw_degree_heating_weeks']))
-                data['sst_anomaly_C'].append(float(row['sst_anomaly_C']))
-                data['distance_to_tipping'].append(float(row['distance_to_tipping']))
+                records.append(
+                    CoralBleachingRecord(
+                        year=int(row["year"]),
+                        bleaching_percent=float(row["bleaching_percent"]),
+                        dhw_degree_heating_weeks=float(row["dhw_degree_heating_weeks"]),
+                        sst_anomaly_C=float(row["sst_anomaly_C"]),
+                        distance_to_tipping=float(row["distance_to_tipping"]),
+                    )
+                )
 
-        return data
+        return records
+
+    def load_data(self) -> dict:
+        """Return legacy dictionary representation for downstream stats helpers."""
+
+        records = self.fetch_bleaching_data()
+        return {
+            "years": [record.year for record in records],
+            "bleaching_percent": [record.bleaching_percent for record in records],
+            "dhw_degree_heating_weeks": [record.dhw_degree_heating_weeks for record in records],
+            "sst_anomaly_C": [record.sst_anomaly_C for record in records],
+            "distance_to_tipping": [record.distance_to_tipping for record in records],
+        }
 
     def compute_statistics(self, data: dict) -> dict:
         """Compute summary statistics for coral bleaching data.
@@ -156,47 +182,79 @@ class OISSTCoralAdapter:
 
         return stats
 
+    def _bleaching_alert_level(self, dhw: float) -> str:
+        """Map Degree Heating Weeks to NOAA-style alert levels."""
+
+        if dhw >= 8.0:
+            return "Alert Level 2"
+        if dhw >= 4.0:
+            return "Alert Level 1"
+        if dhw >= 1.0:
+            return "Watch"
+        return "No Stress"
+
+    def _beta_estimate(self, dhw: float) -> float:
+        """Estimate beta coupling strength from DHW.
+
+        Piecewise scaling ensures DHW > 4 → beta > 8 and DHW > 8 → beta > 20,
+        aligning with the stress-accumulation guidance in the activation prompt.
+        """
+
+        if dhw <= 4.0:
+            return dhw * 2.0
+        if dhw <= 8.0:
+            # Interpolate from beta=8 at DHW=4 to beta=20 at DHW=8
+            return 8.0 + (dhw - 4.0) * 3.0
+        # Beyond severe bleaching, beta accelerates faster (steeper slope)
+        return 20.0 + (dhw - 8.0) * 4.0
+
+    def _status(self, dhw: float) -> str:
+        """Classify resilience status based on DHW stress."""
+
+        return "resilience_loss" if dhw >= 4.0 else "stable"
+
+    def latest_sensor_payload(self) -> Dict[str, object]:
+        """Return the latest observation in Sigillin-standard JSON shape."""
+
+        records = self.fetch_bleaching_data()
+        if not records:
+            raise ValueError("No coral bleaching records available")
+
+        latest = records[-1]
+        beta_estimate = self._beta_estimate(latest.dhw_degree_heating_weeks)
+        alert_level = self._bleaching_alert_level(latest.dhw_degree_heating_weeks)
+        status = self._status(latest.dhw_degree_heating_weeks)
+
+        return {
+            "timestamp": latest.timestamp,
+            "sensor": "NOAA_CORAL_REEF_WATCH",
+            "sst_anomaly_C": latest.sst_anomaly_C,
+            "degree_heating_weeks": latest.dhw_degree_heating_weeks,
+            "bleaching_alert_level": alert_level,
+            "beta_estimate": beta_estimate,
+            "status": status,
+        }
+
     def export_json(self, output_path: str = None) -> str:
-        """Export data and statistics as JSON for TypeScript consumption.
+        """Export Sigillin-standard coral telemetry as JSON.
 
         Args:
-            output_path: Path for JSON output
+            output_path: Destination JSON path.
 
         Returns:
-            str: Path to exported JSON
+            str: Path to exported JSON file.
         """
+
         if output_path is None:
             output_path = Path(__file__).parent.parent / "analysis" / "results" / "coral_adapter_output.json"
 
         output_path = Path(output_path)
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
-        data = self.load_data()
-        stats = self.compute_statistics(data)
+        payload = self.latest_sensor_payload()
 
-        export = {
-            'metadata': {
-                'system': 'Coral Reefs',
-                'system_full_name': 'Global Coral Reef Bleaching',
-                'utac_type': 'Type-2/3: Thermo/Electrochemical',
-                'beta_expected': 7.5,
-                'theta_expected_C': 1.0,
-                'status': stats['tipping_assessment']['status'],
-                'data_source': 'Mock (NOAA Coral Reef Watch based)',
-                'adapter_version': '1.0.0',
-                'generated': datetime.now().isoformat() + 'Z',
-                'papers': [
-                    'Lenton et al. (2025) Global Tipping Points Report',
-                    'Hughes et al. (2018) Nature',
-                    'NOAA Coral Reef Watch'
-                ]
-            },
-            'data': data,
-            'statistics': stats
-        }
-
-        with open(output_path, 'w') as f:
-            json.dump(export, f, indent=2)
+        with open(output_path, "w", encoding="utf-8") as handle:
+            json.dump(payload, handle, indent=2)
 
         return str(output_path)
 
@@ -205,32 +263,19 @@ def main():
     """CLI entry point."""
     import argparse
 
-    parser = argparse.ArgumentParser(description='OISST Coral Adapter (Mock)')
-    parser.add_argument('--input', type=str, help='Input CSV path (default: data/biology/coral_bleaching_global_mock.csv)')
-    parser.add_argument('--output', type=str, help='Output JSON path (default: analysis/results/coral_adapter_output.json)')
+    parser = argparse.ArgumentParser(description="OISST Coral Adapter (Mock)")
+    parser.add_argument("--input", type=str, help="Input CSV path (default: data/biology/coral_bleaching_global_mock.csv)")
+    parser.add_argument("--output", type=str, help="Output JSON path (default: analysis/results/coral_adapter_output.json)")
 
     args = parser.parse_args()
 
     adapter = OISSTCoralAdapter(mock_data_path=args.input)
     output_path = adapter.export_json(output_path=args.output)
 
+    payload = adapter.latest_sensor_payload()
     print(f"✅ OISST Coral Adapter: Data exported to {output_path}")
-
-    # Print summary
-    data = adapter.load_data()
-    stats = adapter.compute_statistics(data)
-
-    print(f"\n📊 Summary:")
-    print(f"   Datapoints: {stats['n_datapoints']}")
-    print(f"   Date Range: {stats['date_range']['start']} → {stats['date_range']['end']}")
-    print(f"   Current Bleaching: {stats['current_state']['bleaching_percent']:.1f}%")
-    print(f"   Bleaching Increase: {stats['historical_trends']['bleaching_increase_percent']:.1f}%")
-    print(f"   Mass Bleaching Events: {stats['mass_bleaching_events']['count']}")
-    print(f"   First Mass Event: {stats['mass_bleaching_events']['first_event']}")
-    print(f"   Current DHW: {stats['current_state']['dhw_degree_heating_weeks']:.1f} weeks")
-    print(f"   Status: {stats['tipping_assessment']['status']}")
-    print(f"   Tipped: {'🔴 YES' if stats['tipping_assessment']['tipped'] else '🟢 NO'}")
-    print(f"   Distance to Tipping: {stats['current_state']['distance_to_tipping']:.1%}")
+    print("\n📡 Coral Sensor Payload (latest):")
+    print(json.dumps(payload, indent=2))
 
 
 if __name__ == '__main__':
