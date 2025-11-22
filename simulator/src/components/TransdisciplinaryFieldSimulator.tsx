@@ -13,10 +13,15 @@ import {
 import { Pause, Play, RotateCcw, Sparkles } from 'lucide-react';
 import { DomainCard } from './DomainCard';
 import { UTACTooltip } from './UTACTooltip';
+import { PhasePortrait } from './PhasePortrait';
+import { FieldTypeDistribution } from './FieldTypeDistribution';
+import { CREPDashboard } from './CREPDashboard';
+import { LanguageToggle } from './LanguageToggle';
 import { FEATURED_PRESETS, PRESETS } from '../presets';
 import { DomainPreset, DomainState, TrajectoryPoint } from '../types';
 import { clamp, logistic } from '../utils/logistic';
 import { buildTooltipDataMap } from '../utils/tooltipDataBuilder';
+import { Language, getTranslation } from '../i18n/translations';
 
 const BASE_THETA = 5;
 const BASE_BETA = 4;
@@ -56,6 +61,10 @@ export const TransdisciplinaryFieldSimulator = () => {
   const [time, setTime] = useState(0);
   const [crossResonance, setCrossResonance] = useState(0);
   const [activePresetIds, setActivePresetIds] = useState<string[]>(() => FEATURED_PRESETS.map((preset) => preset.id));
+  const [currentLang, setCurrentLang] = useState<Language>('en');
+  const [activeTab, setActiveTab] = useState<'timeseries' | 'phase' | 'stats'>('timeseries');
+
+  const t = useMemo(() => getTranslation(currentLang), [currentLang]);
 
   const presetsById = useMemo(() => {
     const map = new Map<string, DomainPreset>();
@@ -321,16 +330,19 @@ export const TransdisciplinaryFieldSimulator = () => {
 
   return (
     <div className="card-surface" style={{ padding: '1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <header style={{ marginBottom: '1.5rem' }}>
-        <h1 className="glow-header" style={{ fontSize: '2.4rem', fontWeight: 700, margin: 0 }}>
-          Transdisziplinärer Schwellenfeld-Simulator
-        </h1>
-        <p style={{ color: 'rgba(226,232,255,0.75)', marginTop: '0.35rem' }}>
-          Universal Threshold Field · gekoppelte Membranen für Schwarze Löcher, Bienenschwärme und Sprachmodelle.
-        </p>
-        <p style={{ color: 'rgba(196,181,253,0.75)', fontSize: '0.85rem', marginTop: '0.25rem' }}>
-          Regler beeinflussen das universelle Quartett (R, Θ, β, ζ(R)). Nullmodelle und Datenpfade sind in jeder Karte verankert.
-        </p>
+      <header style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div>
+          <h1 className="glow-header" style={{ fontSize: '2.4rem', fontWeight: 700, margin: 0 }}>
+            {t.title}
+          </h1>
+          <p style={{ color: 'rgba(226,232,255,0.75)', marginTop: '0.35rem' }}>
+            {t.subtitle}
+          </p>
+          <p style={{ color: 'rgba(196,181,253,0.75)', fontSize: '0.85rem', marginTop: '0.25rem' }}>
+            {t.description}
+          </p>
+        </div>
+        <LanguageToggle currentLang={currentLang} onToggle={setCurrentLang} />
       </header>
 
       {poeticMessage && (
@@ -344,10 +356,10 @@ export const TransdisciplinaryFieldSimulator = () => {
 
       <section className="control-panel">
         <div className="card-surface" style={{ padding: '1rem', background: 'rgba(14,10,35,0.6)' }}>
-          <h2 className="section-title">Universal-Parameter</h2>
+          <h2 className="section-title">{t.universalParameters}</h2>
           <div className="parameter-row">
             <label>
-              Θ (kritischer Schwellenwert)
+              {t.criticalThreshold}
               <span>{controls.theta.toFixed(2)}</span>
             </label>
             <input
@@ -362,7 +374,7 @@ export const TransdisciplinaryFieldSimulator = () => {
           </div>
           <div className="parameter-row">
             <label>
-              β (Steilheit)
+              {t.steepness}
               <span>{controls.beta.toFixed(2)}</span>
             </label>
             <input
@@ -377,7 +389,7 @@ export const TransdisciplinaryFieldSimulator = () => {
           </div>
           <div className="parameter-row">
             <label>
-              Kopplung Γ
+              {t.coupling}
               <span>{controls.coupling.toFixed(2)}</span>
             </label>
             <input
@@ -392,7 +404,7 @@ export const TransdisciplinaryFieldSimulator = () => {
           </div>
           <div className="parameter-row">
             <label>
-              Rauschskalierung
+              {t.noiseScaling}
               <span>{controls.noiseScale.toFixed(2)}</span>
             </label>
             <input
@@ -408,26 +420,26 @@ export const TransdisciplinaryFieldSimulator = () => {
         </div>
 
         <div className="card-surface" style={{ padding: '1rem', background: 'rgba(14,10,35,0.6)' }}>
-          <h2 className="section-title">Steuerung</h2>
+          <h2 className="section-title">{t.controls}</h2>
           <div className="button-row">
             <button className="button primary" onClick={() => setIsRunning((prev) => !prev)}>
               {isRunning ? <Pause size={16} /> : <Play size={16} />}
-              {isRunning ? 'Pause' : 'Start'}
+              {isRunning ? t.pause : t.start}
             </button>
             <button className="button secondary" onClick={handleReset}>
               <RotateCcw size={16} />
-              Reset
+              {t.reset}
             </button>
             <button
               className={`button ghost ${poeticMode ? 'active' : ''}`}
               onClick={() => setPoeticMode((prev) => !prev)}
             >
-              <Sparkles size={16} /> Poetisch
+              <Sparkles size={16} /> {t.poetic}
             </button>
           </div>
           <div style={{ marginTop: '1rem', color: 'rgba(226,232,255,0.75)', fontSize: '0.9rem' }}>
-            <div>Zeit: {time.toFixed(1)} s</div>
-            <div>Cross-Resonanz: {crossResonance.toFixed(3)}</div>
+            <div>{t.time}: {time.toFixed(1)} s</div>
+            <div>{t.crossResonance}: {crossResonance.toFixed(3)}</div>
           </div>
         </div>
       </section>
@@ -453,36 +465,86 @@ export const TransdisciplinaryFieldSimulator = () => {
           const currentTheta = controls.theta + thetaOffset;
           const currentBeta = clamp(controls.beta * betaScale, 0.5, 12);
           return state ? (
-            <DomainCard key={preset.id} preset={preset} state={state} currentTheta={currentTheta} currentBeta={currentBeta} />
+            <DomainCard
+              key={preset.id}
+              preset={preset}
+              state={state}
+              currentTheta={currentTheta}
+              currentBeta={currentBeta}
+              lang={currentLang}
+            />
           ) : null;
         })}
       </section>
 
-      <section className="chart-wrapper">
-        <h2 className="section-title">Reservoir-Dynamik R(t)</h2>
-        <ResponsiveContainer width="100%" height={320}>
-          <LineChart margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="4 4" stroke="rgba(99,102,241,0.35)" />
-            <XAxis dataKey="time" stroke="rgba(209,213,255,0.65)" type="number" domain={['dataMin', 'dataMax']} />
-            <YAxis stroke="rgba(209,213,255,0.65)" domain={[0, 'auto']} />
-            <Tooltip
-              content={<UTACTooltip tooltipData={tooltipDataMap} showCREP={true} showFieldType={true} showNarrative={false} />}
-            />
-            <Legend />
-            <ReferenceLine y={controls.theta} stroke="#f87171" strokeDasharray="6 4" label="Θ" />
-            {chartLines}
-          </LineChart>
-        </ResponsiveContainer>
-        <p className="meta-footnote">
-          Linien zeigen den Verlauf des Ordnungsparameters R pro Domäne. Der rote Strich markiert die aktuelle Schwelle Θ; sobald
-          die Kurven darüber hinaussteigen, öffnet sich die Membran (σ(β(R-Θ)) → 1) und der Poetik-Modus meldet die Resonanz.
-        </p>
-      </section>
+      {/* Tabbed Visualization Section */}
+      <div style={{ marginTop: '2rem' }}>
+        <div className="button-row" style={{ marginBottom: '1rem' }}>
+          <button
+            className={`button ${activeTab === 'timeseries' ? 'primary' : 'ghost'}`}
+            onClick={() => setActiveTab('timeseries')}
+          >
+            {t.timeSeries}
+          </button>
+          <button
+            className={`button ${activeTab === 'phase' ? 'primary' : 'ghost'}`}
+            onClick={() => setActiveTab('phase')}
+          >
+            {t.phaseSpace}
+          </button>
+          <button
+            className={`button ${activeTab === 'stats' ? 'primary' : 'ghost'}`}
+            onClick={() => setActiveTab('stats')}
+          >
+            {t.statistics}
+          </button>
+        </div>
+
+        {activeTab === 'timeseries' && (
+          <section className="chart-wrapper">
+            <h2 className="section-title">{t.reservoirDynamics}</h2>
+            <ResponsiveContainer width="100%" height={320}>
+              <LineChart margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="4 4" stroke="rgba(99,102,241,0.35)" />
+                <XAxis dataKey="time" stroke="rgba(209,213,255,0.65)" type="number" domain={['dataMin', 'dataMax']} />
+                <YAxis stroke="rgba(209,213,255,0.65)" domain={[0, 'auto']} />
+                <Tooltip
+                  content={<UTACTooltip tooltipData={tooltipDataMap} showCREP={true} showFieldType={true} showNarrative={false} />}
+                />
+                <Legend />
+                <ReferenceLine y={controls.theta} stroke="#f87171" strokeDasharray="6 4" label="Θ" />
+                {chartLines}
+              </LineChart>
+            </ResponsiveContainer>
+            <p className="meta-footnote">{t.reservoirDescription}</p>
+          </section>
+        )}
+
+        {activeTab === 'phase' && (
+          <PhasePortrait
+            activePresets={activePresets}
+            domainStates={domainStates}
+            theta={controls.theta}
+            lang={currentLang}
+          />
+        )}
+
+        {activeTab === 'stats' && (
+          <>
+            <FieldTypeDistribution activePresets={activePresets} lang={currentLang} />
+            <div style={{ marginTop: '2rem' }}>
+              <CREPDashboard
+                activePresets={activePresets}
+                domainStates={domainStates}
+                lang={currentLang}
+              />
+            </div>
+          </>
+        )}
+      </div>
 
       <footer className="meta-footnote">
-        Simulator-Version verknüpft Analyse-Pfade aus `analysis/results/*.json` mit den hier angezeigten Karten. ΔAIC- und R²-Werte
-        stammen direkt aus den Falsifikationsroutinen; Anpassungen an den Reglern sollten immer gegen die Nullmodelle im Blick
-        behalten werden.
+        {t.footerNote}
       </footer>
     </div>
   );

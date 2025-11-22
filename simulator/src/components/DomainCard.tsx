@@ -1,12 +1,14 @@
 import { FC, useMemo } from 'react';
 import { Brain, Circle, Leaf, Network, Sparkles, Bug, Dna } from 'lucide-react';
 import { DomainPreset, DomainState } from '../types';
+import { Language } from '../i18n/translations';
 
 interface DomainCardProps {
   preset: DomainPreset;
   state: DomainState;
   currentTheta: number;
   currentBeta: number;
+  lang: Language;
 }
 
 const ICON_MAP = {
@@ -34,9 +36,29 @@ const formatDelta = (value: number | null | undefined, digits = 1): string => {
 
 const formatLabel = (value: string | null | undefined): string => value ?? '—';
 
-export const DomainCard: FC<DomainCardProps> = ({ preset, state, currentTheta, currentBeta }) => {
+export const DomainCard: FC<DomainCardProps> = ({ preset, state, currentTheta, currentBeta, lang }) => {
   const Icon = ICON_MAP[preset.icon] ?? Sparkles;
   const phiValue = useMemo(() => Math.abs(state.psi * state.phi) * 0.5, [state.psi, state.phi]);
+
+  const t = {
+    resonanceActive: lang === 'en' ? '⚡ Resonance Active' : '⚡ Resonanz aktiv',
+    membraneObserved: lang === 'en' ? '○ Membrane Observed' : '○ Membran beobachtet',
+    triLayerEchoes: lang === 'en' ? 'Tri-Layer Echoes' : 'Tri-Layer-Echos',
+    formal: lang === 'en' ? 'Formal' : 'Formal',
+    empirical: lang === 'en' ? 'Empirical' : 'Empirisch',
+    poetic: lang === 'en' ? 'Poetic' : 'Poetisch',
+    analysisTheta: lang === 'en' ? 'Analysis Θ' : 'Analyse Θ',
+    analysisBeta: lang === 'en' ? 'Analysis β' : 'Analyse β',
+    simulationTheta: lang === 'en' ? 'Simulation Θ' : 'Simulation Θ',
+    simulationBeta: lang === 'en' ? 'Simulation β' : 'Simulation β',
+    deltaAIC: lang === 'en' ? 'ΔAIC' : 'ΔAIC',
+    against: lang === 'en' ? 'against' : 'gegen',
+    impedance: lang === 'en' ? 'Impedance' : 'Impedanz',
+    controlParameter: lang === 'en' ? 'Control Parameter' : 'Kontrollparameter',
+    orderParameter: lang === 'en' ? 'Order Parameter' : 'Ordnungsparameter',
+    dataset: lang === 'en' ? 'Dataset' : 'Dataset',
+    analysisPath: lang === 'en' ? 'Analysis Path' : 'Analysepfad'
+  };
 
   return (
     <div className={`domain-card ${state.active ? 'active' : ''}`} style={{ borderColor: state.active ? preset.color : undefined }}>
@@ -45,7 +67,7 @@ export const DomainCard: FC<DomainCardProps> = ({ preset, state, currentTheta, c
         {preset.label}
       </h3>
       <div className="tag" style={{ background: `${preset.color}22`, color: preset.color }}>
-        {state.active ? '⚡ Resonanz aktiv' : '○ Membran beobachtet'}
+        {state.active ? t.resonanceActive : t.membraneObserved}
       </div>
       <div className="metrics-grid">
         <span>R</span>
@@ -62,53 +84,53 @@ export const DomainCard: FC<DomainCardProps> = ({ preset, state, currentTheta, c
         <span>{phiValue.toFixed(3)}</span>
       </div>
       <details>
-        <summary className="detail-summary">Tri-Layer-Echos</summary>
+        <summary className="detail-summary">{t.triLayerEchoes}</summary>
         <div className="narrative-block">
-          <strong>Formal</strong>
+          <strong>{t.formal}</strong>
           <span>{preset.narrative.formal}</span>
         </div>
         <div className="narrative-block">
-          <strong>Empirisch</strong>
+          <strong>{t.empirical}</strong>
           <span>{preset.narrative.empirical}</span>
         </div>
         <div className="narrative-block">
-          <strong>Poetisch</strong>
+          <strong>{t.poetic}</strong>
           <span>{preset.narrative.poetic}</span>
         </div>
       </details>
       <div className="domain-meta">
         <span>
-          <strong>Analyse Θ</strong>: {formatNumber(preset.analysis.theta)} (CI
+          <strong>{t.analysisTheta}</strong>: {formatNumber(preset.analysis.theta)} (CI
           {` ${formatInterval(preset.analysis.theta_ci)}`})
         </span>
         <span>
-          <strong>Analyse β</strong>: {formatNumber(preset.analysis.beta)} (CI
+          <strong>{t.analysisBeta}</strong>: {formatNumber(preset.analysis.beta)} (CI
           {` ${formatInterval(preset.analysis.beta_ci)}`})
         </span>
         <span>
-          <strong>Simulation Θ</strong>: {currentTheta.toFixed(2)} · <strong>Simulation β</strong>: {currentBeta.toFixed(2)}
+          <strong>{t.simulationTheta}</strong>: {currentTheta.toFixed(2)} · <strong>{t.simulationBeta}</strong>: {currentBeta.toFixed(2)}
         </span>
         <span>
-          <strong>ΔAIC</strong>: {formatDelta(preset.analysis.delta_aic_best_null)} gegen
+          <strong>{t.deltaAIC}</strong>: {formatDelta(preset.analysis.delta_aic_best_null)} {t.against}
           {` ${formatLabel(preset.analysis.best_null_model)}, `}
           R²={formatNumber(preset.analysis.logistic_r2)}
         </span>
         <span>
-          <strong>Impedanz</strong>: {preset.impedance.definition} (⟨ζ⟩={preset.impedance.mean.toFixed(3)})
+          <strong>{t.impedance}</strong>: {preset.impedance.definition} (⟨ζ⟩={preset.impedance.mean.toFixed(3)})
         </span>
         <span>
-          <strong>Kontrollparameter</strong>: {preset.control_parameter}
+          <strong>{t.controlParameter}</strong>: {preset.control_parameter}
         </span>
         <span>
-          <strong>Ordnungsparameter</strong>: {preset.order_parameter}
+          <strong>{t.orderParameter}</strong>: {preset.order_parameter}
         </span>
         {preset.references?.dataset ? (
           <span>
-            <strong>Dataset</strong>: <code>{preset.references.dataset}</code>
+            <strong>{t.dataset}</strong>: <code>{preset.references.dataset}</code>
           </span>
         ) : null}
         <span>
-          <strong>Analysepfad</strong>: <code>{preset.analysis.result_path}</code>
+          <strong>{t.analysisPath}</strong>: <code>{preset.analysis.result_path}</code>
         </span>
         {preset.references?.notes ? <span>{preset.references.notes}</span> : null}
       </div>
