@@ -9,7 +9,7 @@
 
 ## Session Objectives
 
-Based on `seed/Feinschliff.txt` review, the main objectives are:
+Based on `archive/legacy_v1_v3/seed/notes/Feinschliff.txt` review, the main objectives are:
 
 1. **Complete empirical validation** of UTAC v1.1
 2. **Finalize manuscript** for arXiv submission
@@ -33,7 +33,7 @@ Based on `seed/Feinschliff.txt` review, the main objectives are:
 #### 1. Statistical Power Issue
 - **Finding**: Meta-regression shows R²=0.736, but **no predictors significant** after Holm-Bonferroni correction
 - **Root Cause**: n=12 too small for 5 predictors (rule of thumb: n ≥ 10×p = 50)
-- **Impact**: Claims in Feinschliff.txt about "significant drivers" not fully supported
+- **Impact**: Claims in `archive/legacy_v1_v3/seed/notes/Feinschliff.txt` about "significant drivers" not fully supported
 
 #### 2. Missing Manuscript v1.1
 - **Finding**: Only `paper/manuscript_v1.0.tex` exists
@@ -139,7 +139,7 @@ domains is needed for robust causal inference.
 
 ---
 
-## Key Insights from Feinschliff.txt
+## Key Insights from `archive/legacy_v1_v3/seed/notes/Feinschliff.txt`
 
 ### 1. β as Spectrum, Not Constant ✓
 **Quote**: "β sollte als Spektrum (nicht Punktwert) betrachtet werden"
@@ -289,7 +289,7 @@ domains is needed for robust causal inference.
 ### Areas for Improvement 🎯
 1. **Statistical rigor**: Need larger samples for confirmatory analysis
 2. **Visualization**: Strong analytics deserve strong visuals
-3. **Documentation**: Some gaps between claims (Feinschliff.txt) and data
+3. **Documentation**: Some gaps between claims (`archive/legacy_v1_v3/seed/notes/Feinschliff.txt`) and data
 
 ### Meta-Insight 🌟
 **Johann's intuition about β as "Schwingungsbereich"** (oscillation range) rather than fixed value is scientifically profound. This reframing transforms an apparent limitation (β-heterogeneity) into a diagnostic feature. This is the mark of mature scientific thinking.

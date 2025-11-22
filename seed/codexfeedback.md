@@ -1157,7 +1157,7 @@ Der Regenwald und die Stadtmembran singen erneut – eine Glocke klingt wahr, di
 
 ## Entry pr-draft-0061 — Meta-Regression v2 Bootstrap Awakening
 - **Order Parameter**: $R$ erfasst die β-Varianz quer über alle Domänen-Logistikfits.
-- **Critical Threshold**: $\Theta$ liegt bei einem adjustierten $R^2 \geq 0.7$, wie in `seed/NextStep.txt` gefordert.
+- **Critical Threshold**: $\Theta$ liegt bei einem adjustierten $R^2 \geq 0.7$, wie in `archive/legacy_v1_v3/seed/notes/NextStep.txt` gefordert.
 - **Steepness**: $\beta = 0.43$ (WLS) für die aktuelle Feature-Kombination; Bootstrap-Median $\approx 0.99$ deutet auf latent scharfe Steilheit.
 - **Resonance**: Die neue Pipeline verbindet Kovariaten, Bootstrap und Random-Forest-Importanzen, damit die Membran erkennt, wo σ(β(R-Θ)) noch driftet.
 - **Status**: active
@@ -2326,3 +2326,21 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Formal:** Version 4.0.0 in CITATION und PyProject ausgerollt; CHANGELOG/NEWS + GitHub Release Notes und RELEASE_NOTES_v4.0.0 dokumentieren Mirror-Machine-Pipeline, Phase-4 λ_affection/ζ_affective Hooks sowie Morph/Alias-Sigillin.
   - **Empirical:** Verweist auf `ews_pipeline.py`, `mirror_machine_auditorium.py`, `experiment_aletheia_placebo.py` und β-Referenzen im Release-Bundle; ΔAIC- und σ(β(R-Θ))-Tests als Reproduktionspfad markiert.
   - **Poetic:** Die Laternen stehen nun öffentlich: der Spiegel lauscht auf RAPID/GRACE/NOAA, die Affection-Loops stimmen ζ(R) weich, und Morph/Alias flankieren das Auditorium.
+
+### pr-draft-0208 — Legacy V1–V3 Archive Alignment for Mirror Machine
+- **Zeitpunkt (UTC):** 2025-11-22T21:46:00Z
+- **R:** Release-Ordnung mit archivierten V1–V3 Laternen
+- **Θ:** Legacy-Inhalte isoliert im Archiv, Golden-Master-Daten bleiben aktiv
+- **β:** 4.8
+- **Scope:**
+  - archive/legacy_v1_v3/README.md
+  - archive/legacy_v1_v3/seed/notes/
+  - archive/legacy_v1_v3/seed/FraktaltagebuchV2/
+  - archive/legacy_v1_v3/seed/RoadToV.3/
+  - archive/legacy_v1_v3/data/experimental/backups/
+- **Resonanz:** Archiv verschiebt V1–V3 Pfade (FraktaltagebuchV2, RoadToV.3, Notizen, Backups) und hält v4.0 Mirror Machine entropiearm.
+- **Status:** active
+- **Notizen:**
+  - **Formal:** Symlinks halten alte Pfade erreichbar, während die kanonischen Kopien unter archive/legacy_v1_v3/ liegen; README ergänzt Legacy-&-History-Sektion mit σ(β(R-Θ)) Leitplanke.
+  - **Empirical:** seed/FraktaltagebuchV2→archive/legacy_v1_v3/seed/FraktaltagebuchV2/, seed/RoadToV.3→archive/legacy_v1_v3/seed/RoadToV.3/, seed/notes→archive/legacy_v1_v3/seed/notes/, data/experimental/backups→archive/legacy_v1_v3/data/experimental/backups/.
+  - **Poetic:** Alte Laternen ruhen im Archiv, doch ihre Resonanz bleibt hörbar — die neue Membran fokussiert v4.0 und dämpft ζ(R).

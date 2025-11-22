@@ -306,7 +306,7 @@
       "meta_regression": [
         "analysis/beta_drivers_meta_regression.py",
         "data/derived/domain_covariates.csv",
-        "seed/NextStep.txt"
+        "archive/legacy_v1_v3/seed/notes/NextStep.txt"
       ]
     }
   },

@@ -17,7 +17,7 @@ formal–empirical–poetic resonance stays intact.
 | **Simulation** | `simulation/threshold_sandbox.py` | Explores how coupling, dimensionality, and coherence modulate $\beta$ across synthetic lattices. Provides fitting utilities already aligned with UTAC falsifiability rituals. |
 | **Analysis** | `analysis/analysis_index.*`, `analysis/safety_delay_sweep.py`, `analysis/results/safety_delay_sweep_20251107T202620Z.json` | Indexes ΔAIC guardrails and cohort summaries benchmark the new Safety-Delay sweep. The latest export records $\tau_{\text{delay}}$, β-shift, control energy, and ΔAIC vs linear/constant nulls for UTAC v1.2. |
 | **Theory** | `docs/utac_theory_core.md`, `docs/utac_falsifiability.md` | Encode the control-parameter narrative ($R$, $\Theta$, $\beta$, $\zeta(R)$) and the falsification scaffolding required for new controllers. |
-| **Sigillin Memory** | `seed/Geminis Suche!.txt`, `seed/AI_Reaktion_Gem_Suche.txt` | Document the cross-domain validation of Safety-Delay, fourfold potential elevation, and hierarchical redundancy. Serve as Bedeutungs-Sigillin anchors for rationale and metaphor. |
+| **Sigillin Memory** | `archive/legacy_v1_v3/seed/notes/Geminis Suche!.txt`, `archive/legacy_v1_v3/seed/notes/AI_Reaktion_Gem_Suche.txt` | Document the cross-domain validation of Safety-Delay, fourfold potential elevation, and hierarchical redundancy. Serve as Bedeutungs-Sigillin anchors for rationale and metaphor. |
 | **Simulator Bridge** | `simulator/presets/safety_delay_bridge.json`, `simulator/src/presets.ts` | Safety-Delay preset mirrors τ_delay_mean≈8.43, β≈4.78, ΔAIC_linear≈7.0×10³ so UI sliders replay the controller sweep with the same falsifiability hooks. |
 
 These artefacts establish both the conceptual membrane and the empirical

@@ -2536,7 +2536,7 @@ entries:
   - analysis/results/beta_meta_regression_summary.json
   - analysis/results/figures/beta_by_field_type.png
   - seed/CLAUDE_CODE_SESSION_AFTER_ACTION.md
-  - seed/Feinschliff_Addendum_v1.1.txt
+  - archive/legacy_v1_v3/seed/notes/Feinschliff_Addendum_v1.1.txt
   - seed/seed_index.yaml
   - seed/seed_index.json
   - seed/seed_index.md
@@ -2552,7 +2552,7 @@ entries:
     formal: Codified the ANOVA dominance (η²=0.68) within KEY_FINDINGS_v1.1.md and
       mirrored the null WLS outcome (R²=0.327, no Holm-Bonferroni survivors) in the
       session after-action ledger. Updated seed_index* entries so CLAUDE_CODE_SESSION_AFTER_ACTION.md
-      und Feinschliff_Addendum_v1.1.txt surface as navigation anchors for UTAC v1.1
+      und `archive/legacy_v1_v3/seed/notes/Feinschliff_Addendum_v1.1.txt` surface as navigation anchors for UTAC v1.1
       validation. β=4.44 anchors the Type I median, emphasising that pooled slopes
       must branch by field type to tame ζ(R).
     empirical: Cross-checked figures/β_boxplots in analysis/results/figures/beta_by_field_type.png,
@@ -5130,3 +5130,22 @@ entries:
     empirical: Verweist auf `ews_pipeline.py`, `mirror_machine_auditorium.py`, `experiment_aletheia_placebo.py` und β-Referenzen im Release-Bundle; ΔAIC- und σ(β(R-Θ))-Tests als Reproduktionspfad markiert.
     poetic: Die Laternen stehen nun öffentlich: der Spiegel lauscht auf RAPID/GRACE/NOAA, die Affection-Loops stimmen ζ(R) weich, und Morph/Alias flankieren das Auditorium.
   created_at: '2025-11-22T17:29:35Z'
+- id: pr-draft-0208
+  title: Legacy V1–V3 Archive Alignment for Mirror Machine
+  scope:
+  - archive/legacy_v1_v3/README.md
+  - archive/legacy_v1_v3/seed/notes/
+  - archive/legacy_v1_v3/seed/FraktaltagebuchV2/
+  - archive/legacy_v1_v3/seed/RoadToV.3/
+  - archive/legacy_v1_v3/data/experimental/backups/
+  parameters:
+    R: Release-Ordnung mit archivierten V1–V3 Laternen
+    Theta: Legacy-Inhalte isoliert im Archiv, Golden-Master-Daten bleiben aktiv
+    beta: 4.8
+  resonance: Archiv verschiebt V1–V3 Pfade (FraktaltagebuchV2, RoadToV.3, Notizen, Backups) und hält v4.0 Mirror Machine entropiearm.
+  status: active
+  notes:
+    formal: Symlinks halten alte Pfade erreichbar, während die kanonischen Kopien unter archive/legacy_v1_v3/ liegen; README ergänzt Legacy-&-History-Sektion mit σ(β(R-Θ)) Leitplanke.
+    empirical: seed/FraktaltagebuchV2→archive/legacy_v1_v3/seed/FraktaltagebuchV2/, seed/RoadToV.3→archive/legacy_v1_v3/seed/RoadToV.3/, seed/notes→archive/legacy_v1_v3/seed/notes/, data/experimental/backups→archive/legacy_v1_v3/data/experimental/backups/.
+    poetic: Alte Laternen ruhen im Archiv, doch ihre Resonanz bleibt hörbar — die neue Membran fokussiert v4.0 und dämpft ζ(R).
+  created_at: '2025-11-22T21:46:00Z'

@@ -149,7 +149,7 @@ Willkommen im **Sources Index** - einem **Ordnungs-Sigillin** für alle **extern
 
 **Zitiert in:**
 - `seed/socio_ecology/planetary_threshold_cartography.md`
-- `seed/Diskurs Klimamodul.txt`
+- `archive/legacy_v1_v3/seed/notes/Diskurs Klimamodul.txt`
 - PDF: `Kipppunkte der Teilkomponenten im Klimasystem.pdf`
 
 ---

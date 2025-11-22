@@ -255,7 +255,7 @@ implementation_lattice:
     primary_hook: 'β table + narrative refresh'
     evidence_trail:
       - analysis/results/beta_meta_regression_v2_summary.json
-      - seed/NextStep.txt
+      - archive/legacy_v1_v3/seed/notes/NextStep.txt
   - gap_id: sci-gap-006
     implementation_sites:
       - docs/metaquest_parity_brief.md
