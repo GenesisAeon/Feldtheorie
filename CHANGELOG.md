@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.0] - 2025-11-22
+- Mirror Machine criticality monitor packages the monitoring pipeline (`scripts/monitoring/ews_pipeline.py`) and auditorium controller (`scripts/simulation/mirror_machine_auditorium.py`) with sensor-ready release artifacts under `seed/releases/v4.0.0-alpha_MirrorMachine/`.
+- Phase 4 affection-driven UTAC experiments integrate consent-aware λ_affection framing in `scripts/experiment_aletheia_placebo.py` and are documented in `docs/experiment_aletheia.md`, extending σ(β(R-Θ)) testing to relational impedance ζ_affective.
+- V4 theory sigillin refreshed with `seed/theory/hypothese_morphological_computing`, `seed/theory/hypothese_quantum_aliasing`, and `seed/theory/concept_the_mirror_machine`, linking Morph/Alias cycles to Type-6 logistic state charts.
+- Release metadata updated for GitHub publishing (CITATION.cff, GITHUB_RELEASE_NOTES.md, RELEASE_NOTES_v4.0.0.md, NEWS.md, pyproject.toml).
+
 ## [3.0.0] - 2025-11-20
 - v3.0.0 Gold Master - Full Release. Integrating Empirical Evidence, Inequality Physics, and Cosmological Simulation.
 

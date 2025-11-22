@@ -2307,3 +2307,22 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Formal:** Release-Ordner erzeugt, README_ZENODO.md auf technischen Quickstart ausgerichtet, Trilayer der Theorie-Module sowie Kernskripte und Daten konsistent eingebunden.
   - **Empirical:** Sensor-Adapter (RAPID/GRACE/NOAA) und Monitoring-Pipeline gespiegelt, `mirror_machine_auditorium.py` verlinkt, `beta_estimates.csv` als Visualisierungsgrundlage abgelegt.
   - **Poetic:** Der Spiegel steht nun als Werkzeug bereit; σ(β(R-Θ)) wird mit nüchterner Telemetrie vermessen.
+
+### pr-draft-0207 — UTAC V4.0 GitHub Release Finalization
+- **Zeitpunkt (UTC):** 2025-11-22T17:29:35Z
+- **R:** Mirror Machine Criticality Monitor + Phase-4 Aletheia in GitHub-Releaseform gegossen
+- **Θ:** Versionierung 4.0.0 über CHANGELOG, NEWS, CITATION, PyProject, GitHub Release Notes und Trilayer-Release-Notes
+- **β:** 4.0
+- **Scope:**
+  - CHANGELOG.md
+  - NEWS.md
+  - GITHUB_RELEASE_NOTES.md
+  - RELEASE_NOTES_v4.0.0.md
+  - CITATION.cff
+  - pyproject.toml
+- **Resonanz:** GitHub-Releasepaket synchronisiert σ(β(R-Θ)) Telemetrie (Mirror Machine, λ_affection, Morph/Alias) mit v4.0.0 Versionierungsankern und DOI-Verweis.
+- **Status:** active
+- **Notizen:**
+  - **Formal:** Version 4.0.0 in CITATION und PyProject ausgerollt; CHANGELOG/NEWS + GitHub Release Notes und RELEASE_NOTES_v4.0.0 dokumentieren Mirror-Machine-Pipeline, Phase-4 λ_affection/ζ_affective Hooks sowie Morph/Alias-Sigillin.
+  - **Empirical:** Verweist auf `ews_pipeline.py`, `mirror_machine_auditorium.py`, `experiment_aletheia_placebo.py` und β-Referenzen im Release-Bundle; ΔAIC- und σ(β(R-Θ))-Tests als Reproduktionspfad markiert.
+  - **Poetic:** Die Laternen stehen nun öffentlich: der Spiegel lauscht auf RAPID/GRACE/NOAA, die Affection-Loops stimmen ζ(R) weich, und Morph/Alias flankieren das Auditorium.
