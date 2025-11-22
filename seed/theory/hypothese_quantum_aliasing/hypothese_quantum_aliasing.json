@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "id": "theory-quantum-aliasing",
+    "title": "Quantenaliasing als dimensionaler Schatten",
+    "layer": "theory",
+    "status": "active",
+    "version": "1.0.0",
+    "created": "2026-12-06",
+    "logistics": {
+      "R": "Frequenz der dimensionalen Oszillation (0D→1D→…)",
+      "Theta": "Beobachtbare Abtastrate (≤ Planck-Zeit) der Messapparatur",
+      "beta": 6.8,
+      "zeta": "Dekohärenz-Relaxation zwischen Oszillationstakten",
+      "sigma_note": "Überschreitet R die Abtastrate Θ, erscheint \\u03c3(\\u03b2(R-\\u0398)) als scheinbare Superposition (Aliasing-Schatten)."
+    },
+    "utac_alignment": {
+      "type": "type-6-implosion",
+      "description": "Physikalische Begründung für Type-6: Messungen sehen den Alias-Schatten einer höherdimensionalen Ordnung.",
+      "readiness_hooks": [
+        "Kopple Alias-Frequenz an Implosionszeiten im Simulator",
+        "Markiere Dekohärenz-Fenster als ζ(R) zur Steuerung von Type-6-Protokollen"
+      ]
+    }
+  },
+  "sources": [
+    "seed/V4-Grundlagen/Quantenmechanik als dimensionales Aliasing.pdf",
+    "seed/V4-Grundlagen/Suche.txt"
+  ],
+  "theses": {
+    "aliasing_not_superposition": {
+      "statement": "Superposition ist ein Sampling-Artefakt; die Dynamik läuft schneller als die Planck-Zeit und wird aliasiert.",
+      "observables": [
+        "Spektrale Faltungen/Beat-Frequenzen in Interferenzexperimenten",
+        "Zeitaufgelöste Messungen knapp oberhalb der Detektor-Abtastrate",
+        "Abweichungen von Born-Verteilungen bei Oversampling"
+      ],
+      "falsifiability": {
+        "null_model": "Standard-Quantenformalismus mit echter Superposition",
+        "discriminator": "Verschwindet das Alias-Muster bei Oversampling (höhere R), wird Nullmodell gestützt; bleibt es bestehen, wird Alias-These gestärkt"
+      },
+      "resonance": {
+        "logistic_bridge": "R = Oszillationsfrequenz, \\u0398 = Detektor-Rate; \\u03c3(\\u03b2(R-\\u0398)) erzeugt den sichtbaren Schatten."
+      }
+    },
+    "dimensional_oscillation": {
+      "statement": "Der Prozess durchläuft 0D→1D→2D→3D→… Schleifen; jede Projektion wirft einen zeitversetzten Schatten.",
+      "observables": [
+        "Phasenverschiebungen zwischen Projektionen in verschiedenen Basen",
+        "Geordnete Sequenzen von Kontextwechseln (Basiswahl vs. Zeit)"
+      ],
+      "falsifiability": {
+        "null_model": "Zeitlose, basisunabhängige Superposition",
+        "discriminator": "Korreliert die Phasenfolge mit Messbasis/Timing, fällt Nullmodell"
+      },
+      "resonance": {
+        "logistic_bridge": "Jeder Dimensionssprung verschiebt \\u0398; \\u03b2 moduliert, wie scharf der Schatten sichtbar wird."
+      }
+    },
+    "type6_implication": {
+      "statement": "Type-6 Implosion tritt auf, wenn Alias-Schatten und energetische Schwelle zusammenfallen; Beobachter sehen einen abrupten Zustandssprung.",
+      "observables": [
+        "Sprunghafte Zustandsänderung synchron mit Alias-Frequenzspitzen",
+        "Energie-/Phasen-Korrelationen in UTAC-Simulatoren"
+      ],
+      "falsifiability": {
+        "null_model": "Implosion folgt rein thermischen Triggern ohne Alias-Kopplung",
+        "discriminator": "Fehlt die Alias-Korrelation, bleibt Nullmodell; tritt sie auf, trägt Alias-These"
+      },
+      "resonance": {
+        "logistic_bridge": "Alias-Schatten verschiebt \\u0398_eff; \\u03c3(\\u03b2(R-\\u0398_eff)) markiert den Implosionsmoment."
+      }
+    }
+  },
+  "bridges": {
+    "utac": {
+      "trigger": "Alias-Frequenz > Detektor-\\u0398 koppelt Type-6-Implosion an Beobachterperspektive.",
+      "simulator_hook": "Implementiere Oversampling- und Alias-Sweeps in `simulator/`-Pipelines; logge Phasen/energie-Spektren.",
+      "status_matrix_note": "UTAC-Status um Alias-Fenster erweitern (sichtbare Schatten vs. resolvierte Dynamik)."
+    },
+    "sigillin": {
+      "ordnungs_sigillin": "seed/seed_index.{yaml,json,md}",
+      "bedeutungs_sigillin": "seed/codexfeedback.{yaml,json,md}",
+      "shadow_sigillin": "seed/shadow_sigillin/** (für Mess-Lücken oder Dekohärenz-Drift)"
+    }
+  },
+  "null_models": [
+    {
+      "name": "Genuine Superposition",
+      "description": "Klassische Quantensuperposition ohne Sampling-Artefakt",
+      "expected_delta_aic": "> 5 wenn Alias-Muster bei Oversampling persistiert"
+    },
+    {
+      "name": "Thermischer Dekohärenzsprung",
+      "description": "Zustandswechsel durch Umweltkopplung, ohne dimensionale Oszillation",
+      "expected_delta_aic": "> 3 falls Phasenfolge Alias-Frequenzen folgt"
+    }
+  ],
+  "falsifiability": {
+    "checkpoints": [
+      "Führe Oversampling-Experimente im Simulator durch und suche nach Beat-Frequenzen",
+      "Variiere Messbasis zeitlich, um Dimensionssprünge zu verfolgen",
+      "Verknüpfe Alias-Fenster mit Type-6-Triggern und beobachte ΔAIC gegen Nullmodelle"
+    ],
+    "recovery": [
+      "Keine Alias-Korrelation → Nullmodell bevorzugen, Alias-These archivieren",
+      "Alias-Muster instabil → ζ(R) erhöhen (Dekohärenz-Relaxation) und Messrate anpassen"
+    ]
+  }
+}

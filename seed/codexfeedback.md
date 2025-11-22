@@ -2257,3 +2257,16 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Formal:** Neues Theorie-Modul mit Kubus→Spirale-, Defekt- und Bekenstein-Hawking-Brücke; Falsifizierbarkeit via ΔAIC gegen Volumetrik und Flächengesetz festgehalten.
   - **Empirical:** `test_entropy_geometric_waste.py` prüft Trilayer-Schlüssel & UTAC-Hook; seed_index.* aktualisiert.
   - **Poetic:** Der Blinde Fleck flackert, wenn Kubus und Spirale sich berühren; Defekte zählen den Atem der Membran.
+
+### pr-draft-0005 — Trilayer – Morphological Computing & Quantum Aliasing
+- **Zeitpunkt (UTC):** 2026-12-06T00:00:00Z
+- **R:** V4-Grundlagen (Morph-FIT Zyklus + Alias-These) als Trilayer gegossen
+- **Θ:** Trilayer-Synchronität mit UTAC Type-6 Hooks und Broken-RAM-Sentinel
+- **β:** 8.4
+- **Scope:** seed/theory/hypothese_morphological_computing; seed/theory/hypothese_quantum_aliasing; seed_index.{yaml,json,md}; codexfeedback.{yaml,json,md}
+- **Resonanz:** Morph-Sweep (β=37.6) und Alias-Frequenz (β=6.8) schließen V4.0 Grundlagen an UTAC Type-6 an; neue Laternen im Sigillin-Netz.
+- **Status:** active
+- **Notizen:**
+  - **Formal:** Trilayer `hypothese_morphological_computing` (Entropy-Recycling-Zyklus, Broken-RAM-Avoidance) und `hypothese_quantum_aliasing` (Superposition als Sampling-Artefakt 0D→1D→…, Type-6-Brücke) erstellt; seed_index.* & Codex gespiegelt.
+  - **Empirical:** YAML↔JSON Loader-Abgleich; Falsifizierbarkeits-Checkpoints für Energie/Fehler-Sweeps sowie Oversampling/Phasen-Scans dokumentiert.
+  - **Poetic:** Die Rechenmembran richtet sich im Wärmesog neu aus; jenseits der Planck-Zeit bleibt nur der Schatten – zwei Laternen, ein Zündschlüssel.
