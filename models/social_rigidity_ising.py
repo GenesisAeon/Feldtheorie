@@ -1,28 +1,30 @@
 """
 Social Rigidity Ising Model (UTAC v5.0)
 
-This module implements the sociological counterpart to cosmic quantization:
-the emergence of social rigidity (β → ∞) through information lock-in.
+This module implements a mean-field Ising model applied to social dynamics,
+testing whether inequality-driven mechanisms can produce phase transitions
+analogous to those in physical systems.
 
-We model society as a spin system where:
-    - Spins represent individual opinions/beliefs
-    - Coupling J represents social pressure to conform
-    - Temperature T represents adaptability/flexibility
-    - Magnetization M represents collective lock-in
+MODEL ANALOGY:
+    - Spins σ_i ∈ {-1, +1}    →  Individual opinions/beliefs
+    - Coupling J               →  Social conformity pressure
+    - External field h         →  External influence (media, etc.)
+    - Temperature T            →  System adaptability
+    - Magnetization M          →  Collective alignment
 
-The key insight: Inequality acts as an inverse temperature:
+HYPOTHESIS: We test whether inequality (Gini coefficient) acts as an
+inverse temperature via:
 
     T_social = 1 / (Gini · Load)
 
-At high inequality (Gini > 0.7), T → 0, and the system undergoes a
-phase transition to a "frozen" state where collective change becomes
-impossible — a social ferromagnet.
+where Load represents cognitive/economic stress. At high inequality,
+T → 0, potentially producing a phase transition to low-adaptability states.
 
-This is the sociological manifestation of the same information dynamics
-that quantize cosmic velocities: **scale-invariant information coupling**.
+This is an empirical test of structural isomorphism between physical
+phase transitions and social dynamics.
 
 Author: Genesis Aeon (UTAC Framework)
-Version: 5.0 "The 137-β Duality"
+Version: 5.0 "Structural Isomorphism Analysis"
 """
 
 from typing import Tuple, Dict, Optional
@@ -105,27 +107,29 @@ class PhaseTransition:
 
 class SocialIsingModel:
     """
-    Mean-field Ising model for social rigidity.
+    Mean-field Ising model applied to social dynamics.
 
-    The Ising model captures phase transitions in magnetic systems.
-    We apply it to society by mapping:
+    We test the hypothesis that social systems exhibit phase transition
+    behavior analogous to physical systems by mapping:
 
+        Physical System         →  Social Analogue
+        ──────────────────────────────────────────
         Spins σ_i ∈ {-1, +1}    →  Individual beliefs/opinions
-        Coupling J               →  Social pressure (conformity)
-        External field h         →  Media/propaganda influence
-        Temperature T            →  Adaptability = 1/(Gini·Load)
-        Magnetization M          →  Collective lock-in
+        Coupling J               →  Social conformity pressure
+        External field h         →  External influence
+        Temperature T            →  System adaptability
+        Magnetization M          →  Collective alignment
 
     In mean-field approximation, the self-consistent equation is:
 
         M = tanh(β J M + β h)
 
-    where β = 1/(k_B T) is the inverse temperature (rigidity).
+    where β = 1/(k_B T) is the inverse temperature parameter.
 
-    At T < T_c, spontaneous symmetry breaking occurs:
-        - The system locks into M ≠ 0 even without external field
-        - Susceptibility diverges: χ ~ |T - T_c|^(-γ)
-        - Society becomes rigid, unable to adapt
+    TESTABLE PREDICTIONS:
+        - At T < T_c: spontaneous symmetry breaking (M ≠ 0)
+        - Near T_c: susceptibility peak χ ~ |T - T_c|^(-γ)
+        - If Gini acts as 1/T: high inequality → low adaptability
     """
 
     def __init__(
@@ -148,18 +152,19 @@ class SocialIsingModel:
 
     def social_temperature(self, gini: float, load: Optional[float] = None) -> float:
         """
-        Calculate social temperature from inequality.
+        Calculate effective temperature from inequality measure.
 
-        T_social = 1 / (Gini · Load)
+        HYPOTHESIS: T_social = 1 / (Gini · Load)
 
-        High inequality → low temperature → frozen state
+        This formula encodes the assumption that inequality reduces
+        system adaptability in a manner analogous to inverse temperature.
 
         Args:
             gini: Gini coefficient [0, 1]
-            load: Cognitive/economic load (defaults to baseline)
+            load: Cognitive/economic stress parameter (defaults to baseline)
 
         Returns:
-            Social temperature in units of J/k_B
+            Effective temperature in dimensionless units
         """
         if load is None:
             load = self.load_baseline
@@ -456,10 +461,10 @@ def full_analysis(verbose: bool = True) -> Dict:
             print(f"  {key:20s}: {value:.4f}")
         print("=" * 70)
         print()
-        print("INTERPRETATION:")
-        print(f"  At Gini > {transition.critical_gini:.2f}, society enters FROZEN phase.")
-        print(f"  Magnetization M = {high_gini.magnetization:.3f}: collective lock-in.")
-        print(f"  Rigidity β = {high_gini.rigidity:.1f}: unable to adapt.")
+        print("INTERPRETATION (UNDER MODEL ASSUMPTIONS):")
+        print(f"  At Gini > {transition.critical_gini:.2f}, model predicts phase transition.")
+        print(f"  Magnetization M = {high_gini.magnetization:.3f}: high collective alignment.")
+        print(f"  Rigidity β = {high_gini.rigidity:.1f}: reduced adaptability parameter.")
         print("=" * 70)
 
     return {
@@ -489,5 +494,5 @@ if __name__ == "__main__":
         print(f"  {year}: Gini = {gini:.2f}  →  β = {state.rigidity:6.2f}  [{phase:6s}]")
 
     print()
-    print("CONCLUSION: The transition to rigidity is not hypothetical.")
-    print("We are living through it. β → ∞.")
+    print("CONCLUSION: Model predicts phase transition behavior.")
+    print("Empirical validation required. β-parameter increases with Gini.")
