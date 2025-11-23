@@ -1,0 +1,16 @@
+{
+  "target_velocity_km_s": 1370.0,
+  "target_uncertainty_km_s": 10.0,
+  "n_constants_tested": 20,
+  "n_pairs_tested": 120,
+  "top_match": {
+    "formula": "c / (alpha_inv \u00b7 phi)",
+    "v_pred": 1352.06755689621,
+    "deviation": 17.932443103790092
+  },
+  "alpha_phi_performance": {
+    "deviation_km_s": 17.932443103790092,
+    "percentile": 99.17355371900827,
+    "p_value": 0.008264462809917356
+  }
+}
