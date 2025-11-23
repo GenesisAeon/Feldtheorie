@@ -1,0 +1,24 @@
+{
+  "folder": "engines",
+  "indexed_at": "2025-11-23T17:19:45.244829Z",
+  "summary": "2 files, 0 subfolders",
+  "total_files": 2,
+  "total_subfolders": 0,
+  "aggregate_confidence": 1.0,
+  "min_confidence": 1.0,
+  "origins": {},
+  "keywords": [],
+  "has_violations": false,
+  "file_types": {
+    ".py": 2
+  },
+  "sigillin": {
+    "aggregate_score": 0.5264,
+    "components": {
+      "C": 1.0,
+      "R": 0.0,
+      "E": 1.1978,
+      "P": 0.0
+    }
+  }
+}

@@ -24,6 +24,17 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional
 from collections import defaultdict
 import re
+import sys
+
+# Add parent directory to path for engine import
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+try:
+    from engines.dynamic_crep import DynamicMetricEngine, format_metrics_for_display
+    SIGILLIN_ENGINE_AVAILABLE = True
+except ImportError as e:
+    print(f"⚠️  Warning: Dynamic Sigillin Engine not available: {e}")
+    SIGILLIN_ENGINE_AVAILABLE = False
 
 # =============================================================================
 # CONFIGURATION
@@ -221,7 +232,7 @@ def aggregate_folder_metadata(folder_path: Path) -> Dict[str, Any]:
 # OUTPUT GENERATION
 # =============================================================================
 
-def generate_yaml_index(aggregated: Dict[str, Any], output_path: Path):
+def generate_yaml_index(aggregated: Dict[str, Any], output_path: Path, sigillin_metrics: Optional[Dict[str, Any]] = None):
     """Generate machine-readable YAML index."""
     index = {
         'folder': aggregated['folder_name'],
@@ -246,13 +257,27 @@ def generate_yaml_index(aggregated: Dict[str, Any], output_path: Path):
         }
     }
 
+    # Add Sigillin metrics if available
+    if sigillin_metrics:
+        index['sigillin_metrics'] = {
+            'aggregate_score': sigillin_metrics['aggregate_score'],
+            'components': {
+                key: {
+                    'value': metric['value'],
+                    'label': metric['label'],
+                    'status': metric.get('threshold_status', 'unknown')
+                }
+                for key, metric in sigillin_metrics.get('metrics', {}).items()
+            }
+        }
+
     with open(output_path, 'w', encoding='utf-8') as f:
         yaml.dump(index, f, default_flow_style=False, sort_keys=False, allow_unicode=True)
 
     print(f"✅ Generated: {output_path}")
 
 
-def generate_markdown_readme(aggregated: Dict[str, Any], output_path: Path):
+def generate_markdown_readme(aggregated: Dict[str, Any], output_path: Path, sigillin_metrics: Optional[Dict[str, Any]] = None):
     """Generate human-readable Markdown README."""
     confidence = aggregated['aggregate_confidence']
 
@@ -274,6 +299,15 @@ def generate_markdown_readme(aggregated: Dict[str, Any], output_path: Path):
         f"**Confidence:** {confidence_indicator} ({confidence:.2%})",
         ""
     ]
+
+    # Add Sigillin metrics section if available
+    if sigillin_metrics:
+        lines.extend([
+            "## 📊 System Metrics (Dynamic Sigillin)",
+            "",
+            format_metrics_for_display(sigillin_metrics),
+            ""
+        ])
 
     # Warning for governance violations
     if aggregated['governance_violations']:
@@ -352,7 +386,7 @@ def generate_markdown_readme(aggregated: Dict[str, Any], output_path: Path):
     print(f"✅ Generated: {output_path}")
 
 
-def generate_context_json(aggregated: Dict[str, Any], output_path: Path):
+def generate_context_json(aggregated: Dict[str, Any], output_path: Path, sigillin_metrics: Optional[Dict[str, Any]] = None):
     """Generate context metadata for parent folder consumption."""
     # Create a lighter version for upward propagation
     context = {
@@ -368,6 +402,16 @@ def generate_context_json(aggregated: Dict[str, Any], output_path: Path):
         'has_violations': len(aggregated['governance_violations']) > 0,
         'file_types': aggregated['file_types']
     }
+
+    # Add Sigillin metrics (lightweight version for propagation)
+    if sigillin_metrics:
+        context['sigillin'] = {
+            'aggregate_score': sigillin_metrics['aggregate_score'],
+            'components': {
+                key: metric['value']
+                for key, metric in sigillin_metrics.get('metrics', {}).items()
+            }
+        }
 
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(context, f, indent=2, ensure_ascii=False)
@@ -392,6 +436,16 @@ def index_folder(folder_path: Path, dry_run: bool = False):
     # Aggregate data
     aggregated = aggregate_folder_metadata(folder_path)
 
+    # Calculate Dynamic Sigillin Metrics
+    sigillin_metrics = None
+    if SIGILLIN_ENGINE_AVAILABLE:
+        try:
+            engine = DynamicMetricEngine()
+            sigillin_metrics = engine.calculate_all_metrics(aggregated)
+            print(f"   📊 Sigillin Score: {sigillin_metrics['aggregate_score']:.3f}")
+        except Exception as e:
+            print(f"   ⚠️  Failed to calculate Sigillin metrics: {e}")
+
     # Show warnings
     if aggregated['aggregate_confidence'] < CONFIDENCE_THRESHOLD_WARNING:
         print(f"   ⚠️  Low confidence: {aggregated['aggregate_confidence']:.2%}")
@@ -403,10 +457,10 @@ def index_folder(folder_path: Path, dry_run: bool = False):
         print("   (Dry run - no files written)")
         return
 
-    # Generate outputs
-    generate_yaml_index(aggregated, folder_path / 'folder_index.yaml')
-    generate_markdown_readme(aggregated, folder_path / 'README.md')
-    generate_context_json(aggregated, folder_path / 'folder_context.json')
+    # Generate outputs (pass sigillin_metrics to each)
+    generate_yaml_index(aggregated, folder_path / 'folder_index.yaml', sigillin_metrics)
+    generate_markdown_readme(aggregated, folder_path / 'README.md', sigillin_metrics)
+    generate_context_json(aggregated, folder_path / 'folder_context.json', sigillin_metrics)
 
 
 def recursive_index(root_path: Path, dry_run: bool = False):
