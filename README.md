@@ -2,7 +2,8 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17472834.svg)](https://doi.org/10.5281/zenodo.17472834)
 [![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-blue)](https://github.com/GenesisAeon/Feldtheorie)
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Code License: GPLv3](https://img.shields.io/badge/Code%20License-GPLv3-blue.svg)](LICENSE)
+[![Content License: CC BY-NC 4.0](https://img.shields.io/badge/Content%20License-CC%20BY--NC%204.0-orange.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-5.0.0-green.svg)](#whats-new-in-v50)
 [![Tests](https://img.shields.io/badge/tests-402%2F402%20passing-brightgreen.svg)](#tests--quality)
 
@@ -112,15 +113,11 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for guidelines.
 
 ## License
 
-This work is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+- **Code:** Released under the GNU General Public License v3.0 (GPLv3, copyleft, open source).
+- **Content & Data:** Released under the Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0).
+- **Commercial use:** Any commercial exploitation requires explicit permission from the authors.
 
-You are free to:
-- **Share** — Copy and redistribute
-- **Adapt** — Transform and build upon
-
-Under the following terms:
-- **Attribution** — Cite using CITATION.cff
-- **No additional restrictions**
+You are free to share and adapt the material in line with the applicable license. Always provide attribution (see `CITATION.cff`) and respect the non-commercial clause for content and data. This dual-license model supersedes earlier CC BY 4.0 references in historical documents.
 
 ### The 137-β Duality: Structural Isomorphism Testing
 

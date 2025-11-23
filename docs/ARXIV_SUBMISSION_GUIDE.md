@@ -240,7 +240,7 @@ figure5_phi_scaling.pdf
 - [ ] GitHub repository public
 - [ ] Zenodo DOI functional
 - [ ] No typos in title/abstract
-- [ ] License specified (Creative Commons BY)
+- [ ] License specified (Code: GPLv3; Content & Data: CC BY-NC 4.0; commercial use requires author permission)
 
 ## 📧 Submission Email Template
 

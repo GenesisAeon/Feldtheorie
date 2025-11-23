@@ -75,8 +75,8 @@ empirical-validation, reproducible-research, 137-beta
 ```
 
 **License:**
-- Software: MIT License
-- Documentation: CC BY 4.0
+- Software: GPLv3 (copyleft)
+- Documentation: CC BY-NC 4.0 (non-commercial; commercial use requires author permission)
 - (Select "Other (Open)" and specify in description)
 
 **Related Identifiers:**
@@ -101,7 +101,7 @@ empirical-validation, reproducible-research, 137-beta
 ### Step 4: Access Rights
 
 - **Access:** Open Access
-- **License:** MIT (Software) / CC BY 4.0 (Docs)
+- **License:** GPLv3 (Software) / CC BY-NC 4.0 (Docs)
 - **Embargo:** None
 
 ### Step 5: Funding (Optional)
