@@ -8,6 +8,120 @@
 
 ## What's New in v5.0 🚀
 
+## 🚀 For Developers & Researchers: Repository as Product
+
+**Want to apply this self-organizing architecture to your own project?**
+
+This repository isn't just a research artifact—it's a **universal template** for building self-organizing knowledge systems. The structure (Diamond Architecture + Fractal Governance + Recursive Indexing) can be applied to **any domain**:
+
+- **Physics Research:** Track papers, simulations, datasets with emergent metrics
+- **Business Analytics:** Organize KPIs, revenue models, market analyses with ROI metrics
+- **Software Engineering:** Monitor code quality, test coverage, technical debt with QSTM metrics
+- **Creative Projects:** Index literature, music, art with custom aesthetic metrics
+
+### Universal Skeleton Builder
+
+The [`setup/`](setup/) directory contains a **production-ready builder script** that replicates the Feldtheorie architecture for arbitrary datasets:
+
+```bash
+# Create a new self-organizing repository
+python setup/universal_skeleton_builder.py ~/my-new-project \
+  --domain physics \
+  --metrics crep \
+  --verbose
+```
+
+**What you get:**
+- ✅ **Diamond Architecture**: `modules/artifacts/`, `modules/context/`, `modules/navigation/`
+- ✅ **Fractal Governance**: Self-similar rules that propagate through folder hierarchies
+- ✅ **Metric Templates**: Choose CREP (research), ROI (business), or KPI (engineering)
+- ✅ **Recursive Indexer**: Bottom-up aggregation engine (stub included, full version in this repo)
+- ✅ **Tri-Layer Documentation**: YAML (machine), JSON (API), Markdown (human)
+
+### Included Resources
+
+| File | Purpose |
+|------|---------|
+| [`setup/universal_skeleton_builder.py`](setup/universal_skeleton_builder.py) | Main builder script with robust error handling |
+| [`setup/THEORY_OF_STRUCTURE.md`](setup/THEORY_OF_STRUCTURE.md) | **"The Physics of Information"** — Why folders are states, not containers |
+| [`setup/AGENTS_BOOTSTRAP.md`](setup/AGENTS_BOOTSTRAP.md) | Instructions for AI agents (Claude, GPT-4, AutoGPT, LangChain) |
+
+### Theory: Why This Architecture?
+
+Traditional file systems fail at scale because they treat folders as **containers** (arbitrary boundaries).
+
+The UTAC approach treats folders as **states in a phase space**:
+
+- **Emergent Order:** Structure arises from bottom-up indexing (not manual curation)
+- **Entropy Minimization:** Aggregated indices compress information (reducing search uncertainty)
+- **Self-Similarity:** Every subfolder mirrors the root (fractal governance)
+- **Adaptive Metrics:** Top-down configuration defines what you measure (CREP, ROI, KPI, custom)
+
+**Read the full theory:** [`setup/THEORY_OF_STRUCTURE.md`](setup/THEORY_OF_STRUCTURE.md)
+
+### Use Cases
+
+**Example 1: Organize 200 research papers**
+```bash
+python setup/universal_skeleton_builder.py ~/research-archive --domain physics --metrics crep
+# Move PDFs to modules/artifacts/
+# Run indexer → Get queryable index with Emergence/Resonance scores
+```
+
+**Example 2: Track quarterly business KPIs**
+```bash
+python setup/universal_skeleton_builder.py ~/q1-2025 --domain business --metrics roi
+# Add CSV files → Indexer calculates Profit/Efficiency/Risk/Opportunity metrics
+```
+
+**Example 3: Monitor codebase health**
+```bash
+python setup/universal_skeleton_builder.py ~/my-app --domain engineering --metrics kpi
+# Indexer tracks Quality/Safety/Testability across modules
+```
+
+
+**This is "repository as product."**
+
+---
+
+## Citation
+
+If you cite this repository, please use [`CITATION.cff`](CITATION.cff):
+
+> Römer, J. et al. (2025). *Universal Threshold Field Model v5.0.0: The 137-β Duality*.
+> DOI: [10.5281/zenodo.17472834](https://doi.org/10.5281/zenodo.17472834)
+
+For v5.0 specifically:
+> Römer, J. et al. (2025). *Scale-Invariant Information Coupling: From Cosmic Velocities to Social Rigidity*.
+> UTAC Framework v5.0. DOI: 10.5281/zenodo.17472834
+
+---
+
+## Contributing
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for guidelines.
+
+**Key Principles:**
+- Falsifiability over speculation
+- Trilayer documentation (YAML/JSON/Markdown)
+- Test coverage for all new models
+- ΔAIC ≥ 10 evidence threshold
+
+---
+
+## License
+
+This work is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+You are free to:
+- **Share** — Copy and redistribute
+- **Adapt** — Transform and build upon
+
+Under the following terms:
+- **Attribution** — Cite using CITATION.cff
+- **No additional restrictions**
+
 ### The 137-β Duality: Structural Isomorphism Testing
 
 **Empirical Research Program:** We test whether mathematical structures (scaling laws, phase transitions) show predictive correlations across different domains. This is an investigation of **structural isomorphism**, not mystical unity.
@@ -474,128 +588,6 @@ utf-potential-cascade      # Cascade risk analysis
 utf-preset-guard           # Simulator parameter validation
 ```
 
----
-
-## 🚀 For Developers & Researchers: Repository as Product
-
-**Want to apply this self-organizing architecture to your own project?**
-
-This repository isn't just a research artifact—it's a **universal template** for building self-organizing knowledge systems. The structure (Diamond Architecture + Fractal Governance + Recursive Indexing) can be applied to **any domain**:
-
-- **Physics Research:** Track papers, simulations, datasets with emergent metrics
-- **Business Analytics:** Organize KPIs, revenue models, market analyses with ROI metrics
-- **Software Engineering:** Monitor code quality, test coverage, technical debt with QSTM metrics
-- **Creative Projects:** Index literature, music, art with custom aesthetic metrics
-
-### Universal Skeleton Builder
-
-The [`setup/`](setup/) directory contains a **production-ready builder script** that replicates the Feldtheorie architecture for arbitrary datasets:
-
-```bash
-# Create a new self-organizing repository
-python setup/universal_skeleton_builder.py ~/my-new-project \
-  --domain physics \
-  --metrics crep \
-  --verbose
-```
-
-**What you get:**
-- ✅ **Diamond Architecture**: `modules/artifacts/`, `modules/context/`, `modules/navigation/`
-- ✅ **Fractal Governance**: Self-similar rules that propagate through folder hierarchies
-- ✅ **Metric Templates**: Choose CREP (research), ROI (business), or KPI (engineering)
-- ✅ **Recursive Indexer**: Bottom-up aggregation engine (stub included, full version in this repo)
-- ✅ **Tri-Layer Documentation**: YAML (machine), JSON (API), Markdown (human)
-
-### Included Resources
-
-| File | Purpose |
-|------|---------|
-| [`setup/universal_skeleton_builder.py`](setup/universal_skeleton_builder.py) | Main builder script with robust error handling |
-| [`setup/THEORY_OF_STRUCTURE.md`](setup/THEORY_OF_STRUCTURE.md) | **"The Physics of Information"** — Why folders are states, not containers |
-| [`setup/AGENTS_BOOTSTRAP.md`](setup/AGENTS_BOOTSTRAP.md) | Instructions for AI agents (Claude, GPT-4, AutoGPT, LangChain) |
-
-### Theory: Why This Architecture?
-
-Traditional file systems fail at scale because they treat folders as **containers** (arbitrary boundaries).
-
-The UTAC approach treats folders as **states in a phase space**:
-
-- **Emergent Order:** Structure arises from bottom-up indexing (not manual curation)
-- **Entropy Minimization:** Aggregated indices compress information (reducing search uncertainty)
-- **Self-Similarity:** Every subfolder mirrors the root (fractal governance)
-- **Adaptive Metrics:** Top-down configuration defines what you measure (CREP, ROI, KPI, custom)
-
-**Read the full theory:** [`setup/THEORY_OF_STRUCTURE.md`](setup/THEORY_OF_STRUCTURE.md)
-
-### Use Cases
-
-**Example 1: Organize 200 research papers**
-```bash
-python setup/universal_skeleton_builder.py ~/research-archive --domain physics --metrics crep
-# Move PDFs to modules/artifacts/
-# Run indexer → Get queryable index with Emergence/Resonance scores
-```
-
-**Example 2: Track quarterly business KPIs**
-```bash
-python setup/universal_skeleton_builder.py ~/q1-2025 --domain business --metrics roi
-# Add CSV files → Indexer calculates Profit/Efficiency/Risk/Opportunity metrics
-```
-
-**Example 3: Monitor codebase health**
-```bash
-python setup/universal_skeleton_builder.py ~/my-app --domain engineering --metrics kpi
-# Indexer tracks Quality/Safety/Testability across modules
-```
-
-### The "Trojan Horse" Strategy
-
-By packaging the **structure** (the "physics" of self-organization) as a universal tool, the **UTAC theory** travels implicitly:
-
-- Users adopt it because it solves a real problem (file chaos)
-- They internalize the principles (emergence, entropy, self-similarity) through use
-- The theory propagates virally through utility, not evangelism
-
-**This is "repository as product."**
-
----
-
-## Citation
-
-If you cite this repository, please use [`CITATION.cff`](CITATION.cff):
-
-> Römer, J. et al. (2025). *Universal Threshold Field Model v5.0.0: The 137-β Duality*.
-> DOI: [10.5281/zenodo.17472834](https://doi.org/10.5281/zenodo.17472834)
-
-For v5.0 specifically:
-> Römer, J. et al. (2025). *Scale-Invariant Information Coupling: From Cosmic Velocities to Social Rigidity*.
-> UTAC Framework v5.0. DOI: 10.5281/zenodo.17472834
-
----
-
-## Contributing
-
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) for guidelines.
-
-**Key Principles:**
-- Falsifiability over speculation
-- Trilayer documentation (YAML/JSON/Markdown)
-- Test coverage for all new models
-- ΔAIC ≥ 10 evidence threshold
-
----
-
-## License
-
-This work is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
-You are free to:
-- **Share** — Copy and redistribute
-- **Adapt** — Transform and build upon
-
-Under the following terms:
-- **Attribution** — Cite using CITATION.cff
-- **No additional restrictions**
 
 ---
 
