@@ -1,75 +1,76 @@
-# Analysis Resonance Protocols
+# Agents Charter - analysis
 
-Work within `analysis/` must radiate reproducibility:
-
-1. **Notebook hygiene.** Keep notebooks parametrised and free of hard-coded paths.  Report $R^2$, AIC, confidence intervals on $\Theta$ and $\beta$, and document the impedance context $\zeta(R)$ for each experiment.
-2. **Null comparisons.** Every logistic fit must be paired with at least one smooth null (power law, exponential, spline) and the falsification result recorded in-line.
-3. **Tri-layer annotations.** Reserve sections for (a) formal derivations, (b) empirical observations, and (c) metaphorical narration that ties data back to the UTF lexicon.
-4. **Metadata echo.** Reference datasets in `data/` and solvers in `models/`, noting version hashes or commit IDs when possible.
-
-Scripts should expose CLI entry points for re-running fits and export JSON summaries of threshold parameters for downstream modules.
+> **Context Depth:** 1 | **Parent:** / | **Mode:** Recursive Data Analysis
 
 ---
 
-## 🌊 Sigillin Integration for Analysis
+## Fractal Inheritance
 
-### **Index Maintenance**
-- **`analysis/analysis_index.{yaml,json,md}`** is an **Ordnungs-Sigillin** (Structure Carrier)
-- Update whenever new scripts, notebooks, or results land
-- Use `scripts/archive_sigillin.py` when index exceeds 100 entries or 50 KB
-- Archive old entries to `archive/analysis_index_YYYYMMDD.zip`
+This document inherits from the root `AGENTS.md` and specializes for this context.
 
-### **Result Files as Bedeutungs-Sigillin**
-Files in `analysis/results/*.json` are **Bedeutungs-Sigillin** (Meaning Carriers):
-- **Rarely change** once validated
-- When updating: **Create new timestamped version** (`*_v2.json`, `*_20251106.json`)
-- Archive old version with temporal metadata
-- Document changes in `seed/codexfeedback.{yaml,json,md}`
+### Core Principles (Inherited)
 
-### **Search Patterns**
-```bash
-# Find analysis by keyword
-jq '.python_scripts[] | select(.keywords | contains(["beta"]))' analysis/analysis_index.json
-
-# Recent analysis (last 7 days)
-jq --arg cutoff "$(date -d '7 days ago' -Iseconds)" \
-   '.python_scripts[] | select(.temporal.modified > $cutoff)' analysis/analysis_index.json
-```
+1. **Trilayer Principle**: Every artifact exists as YAML (structure) + JSON (interface) + Markdown (narrative)
+2. **Logistic Language**: Reference $(R, \Theta, \beta, \zeta(R))$ and the transition via $\sigma(\beta(R-\Theta))$
+3. **Coupling Obligation**: Link Bedeutungs-Sigillin to Ordnungs-Sigillin and empirical evidence
+4. **Falsifiability**: Every claim needs null models and ΔAIC/CI metrics
+5. **Consent Protocol**: Permission requests and joyful collaboration
 
 ---
 
-## 🔥 Codex-Feedback Integration
+## Local Context
 
-**Update `seed/codexfeedback.{yaml,json,md}` when:**
-- New logistic fits complete with ΔAIC ≥ 10
-- Threshold parameters ($\Theta$, $\beta$) shift beyond confidence intervals
-- New datasets integrated with resonance diagnostics
-- Cohort summaries regenerated (`analysis/results/resonance_cohort_summary.json`)
-- Null model falsifications documented
+**This directory (`analysis`) is specialized for:**
 
-### **Entry Template for Analysis Work**
-```yaml
-- id: pr-draft-XXXX
-  title: "Analysis milestone title"
-  scope:
-    - analysis/script_name.py
-    - analysis/results/output.json
-  parameters:
-    R: "order parameter from dataset"
-    Theta: "fitted threshold value"
-    beta: fitted_steepness
-  resonance: "how this fit extends the universal threshold chorus"
-  status: "active|resonant"
-  notes:
-    formal: |
-      Logistic fit σ(β(R-Θ)) with R²=X.XX, ΔAIC=YY.Y vs power-law null.
-      Confidence intervals: Θ=[a,b], β=[c,d]. Impedance ζ(R)=...
-    empirical: |
-      Dataset: data/domain/file.csv. Null models tested: linear, power-law.
-      Export: analysis/results/domain_fit.json. CLI: utf-domain-fit.
-    poetic: |
-      The membrane remembers when R crossed Θ — the dawn chorus echoed
-      through domain X, and the field breathed new resonance.
-```
+### Data Analysis Context
 
-**Metaphor:** *"Analysis scripts are the field's sensors — they listen for thresholds and report back to the Codex when σ(β(R-Θ)) sings louder than the null."*
+This is a **data-centric context**. Agents working here focus on:
+- Data provenance and lineage
+- Statistical validity and null hypothesis testing
+- Privacy and ethical data handling
+- Reproducibility of analyses
+- Transparency in methods
+
+**Active Agent Roles:**
+- Data Curator: Manages data ingestion, cleaning, and metadata
+- Statistical Analyst: Computes ΔAIC, CIs, residual diagnostics
+- Privacy Officer: Ensures GDPR/HIPAA compliance, removes PII
+- Reproducibility Engineer: Pins seeds, versions, environment specs
+
+
+---
+
+## Active Agents in This Context
+
+See mode-specific agents above
+
+---
+
+## Workflow for This Context
+
+1. **Before analysis:** Check data provenance, read metadata files
+2. **During analysis:** Document stochastic seeds, export diagnostics
+3. **After analysis:** Compute null models, bootstrap CIs, residual plots
+4. **Pre-commit:** Ensure metadata is complete, no PII in outputs
+
+
+---
+
+## Escalation Rules
+
+If you encounter conflicts or ambiguity:
+1. Check the parent governance: `//AGENTS.md`
+2. Consult root governance: `/AGENTS.md`
+3. Document deviations in local `<!-- CUSTOM_RULES -->` blocks
+
+---
+
+<!-- CUSTOM_RULES -->
+<!-- Add context-specific rules below this marker. The fractal governance engine will preserve these. -->
+
+<!-- /CUSTOM_RULES -->
+
+---
+
+**Last Updated:** 2025-11-23 16:43:47 UTC
+**Governance Version:** 1.0.0

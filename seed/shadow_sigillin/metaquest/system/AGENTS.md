@@ -1,18 +1,76 @@
-# Metaquest System Shadow Compass Protocol
+# Agents Charter - seed/shadow_sigillin/metaquest/system
 
-This recess tracks system-side Metaquest failure modes and recovery
-rituals.
+> **Context Depth:** 4 | **Parent:** seed/shadow_sigillin/metaquest | **Mode:** Recursive Research
 
-- **Logistic guard.** $R$ = unattended automation drift, index lag, or
-  telemetry silence; $\Theta$ = parity brief + codex echo + status matrix
-  entries refreshed within 24h; $\beta \approx 5.2$ keeps alerts sharp;
-  $\zeta(R)$ spikes when BreakPoint rituals lapse.
-- **Tri-layer parity.** Always update YAML/JSON/MD together. Mirror the
-  light-side compass under
-  `../../../bedeutungssigillin/metaquest/system/`.
-- **Actionability.** Every risk must specify signals, remediation steps,
-  and escalation hooks (e.g. `scripts/sigillin_sync.py`, Makefile,
-  CI/nox runs).
-- **Codex discipline.** Log every alert or mitigation in
-  `seed/codexfeedback.{yaml,json,md}` with mq-sys-shadow ids, and ensure
-  indices surface the shadow artefact.
+---
+
+## Fractal Inheritance
+
+This document inherits from the root `AGENTS.md` and specializes for this context.
+
+### Core Principles (Inherited)
+
+1. **Trilayer Principle**: Every artifact exists as YAML (structure) + JSON (interface) + Markdown (narrative)
+2. **Logistic Language**: Reference $(R, \Theta, \beta, \zeta(R))$ and the transition via $\sigma(\beta(R-\Theta))$
+3. **Coupling Obligation**: Link Bedeutungs-Sigillin to Ordnungs-Sigillin and empirical evidence
+4. **Falsifiability**: Every claim needs null models and ΔAIC/CI metrics
+5. **Consent Protocol**: Permission requests and joyful collaboration
+
+---
+
+## Local Context
+
+**This directory (`seed/shadow_sigillin/metaquest/system`) is specialized for:**
+
+### Research Context
+
+This is a **research and documentation context**. Agents working here focus on:
+- Hypothesis formation and falsifiability
+- Citation integrity and attribution
+- Theoretical consistency
+- Knowledge preservation and archiving
+- Publication readiness
+
+**Active Agent Roles:**
+- Research Synthesizer: Integrates findings across domains
+- Documentation Curator: Maintains indices, cross-references
+- Citation Manager: Ensures proper attribution (BibTeX, DOI)
+- Archivist: Versions and preserves historical knowledge
+
+
+---
+
+## Active Agents in This Context
+
+See mode-specific agents above
+
+---
+
+## Workflow for This Context
+
+1. **Before writing:** Review existing documentation, check citations
+2. **During writing:** Link to evidence, cite sources, mark hypotheses
+3. **After writing:** Update indices, cross-link Sigillin, sync Trilayer
+4. **Pre-commit:** Ensure Trilayer sync (YAML/JSON/MD), citations complete
+
+
+---
+
+## Escalation Rules
+
+If you encounter conflicts or ambiguity:
+1. Check the parent governance: `seed/shadow_sigillin/metaquest/AGENTS.md`
+2. Consult root governance: `/AGENTS.md`
+3. Document deviations in local `<!-- CUSTOM_RULES -->` blocks
+
+---
+
+<!-- CUSTOM_RULES -->
+<!-- Add context-specific rules below this marker. The fractal governance engine will preserve these. -->
+
+<!-- /CUSTOM_RULES -->
+
+---
+
+**Last Updated:** 2025-11-23 16:43:47 UTC
+**Governance Version:** 1.0.0

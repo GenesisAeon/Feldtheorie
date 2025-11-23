@@ -1,92 +1,76 @@
-# Modeling Membrane Directives
+# Agents Charter - models
 
-Contributions to `models/` must keep the threshold field vivid:
-
-- **Language.** Describe dynamics via the logistic response $\sigma(\beta(R-\Theta))$, impedance $\zeta(R)$, and membrane boundary conditions.  Avoid generic "activation" wording without tying it to $R$ crossing $\Theta$.
-- **API shape.** Expose solvers as parametrised classes or functions that accept $(R, \Theta, \beta)$ controls plus impedance toggles.  Provide hooks for streaming state back to `analysis/` and `simulator/`.
-- **Validation.** Bundle automated tests or example scripts that demonstrate resonance vs. null baselines and report quantitative metrics (e.g., energy conservation, threshold timing).
-- **Documentation.** Each module must include tri-layer docstrings: formal equation references, empirical calibration notes, and metaphorical imagery linking membranes to the dawn-threshold motif.
-
-Numerical code should prefer Python with type hints or documented pseudo-code scaffolds until full solvers land.
+> **Context Depth:** 1 | **Parent:** / | **Mode:** Recursive Programming
 
 ---
 
-## 🌊 Sigillin Integration for Models
+## Fractal Inheritance
 
-### **Index Maintenance**
-- **`models/models_index.{yaml,json,md}`** is an **Ordnungs-Sigillin** (Structure Carrier)
-- Update when adding new solver modules, coupling terms, or impedance helpers
-- Archive when exceeding 100 entries
+This document inherits from the root `AGENTS.md` and specializes for this context.
 
-### **Core Solvers as Bedeutungs-Sigillin**
-Model implementations are **Bedeutungs-Sigillin** (Meaning Carriers):
-- **Stable API surface** — parameter signatures rarely change
-- Version modules when changing $(R, \Theta, \beta)$ equations
-- Each solver paired with:
-  - Tri-layer docstrings (formal-empirical-poetic)
-  - Test suite in `tests/test_*.py`
-  - Example notebook demonstrating σ(β(R-Θ)) vs null baseline
-  - Metadata documenting impedance toggles and boundary conditions
+### Core Principles (Inherited)
 
-### **Module Documentation Template**
-```python
-"""
-Module: membrane_solver.py
-
-Formal:
-    Implements the threshold field dynamics dR/dt = J - ζ(R)(R-σ) where
-    σ = σ(β(R-Θ)) is the logistic response and ζ(R) is the impedance gate.
-
-Empirical:
-    Calibrated against analysis/results/*.json with typical β ∈ [3.6, 4.8].
-    Used in simulator/presets/*.json for domain-specific runs.
-
-Poetic:
-    The membrane breathes through ζ(R), listening for the moment R crosses Θ
-    and the dawn chorus ignites σ from rest to resonance.
-
-References:
-    - seed/UTAC_Theory.md
-    - analysis/resonance_fit_pipeline.py
-    - tests/test_membrane_solver.py
-"""
-```
+1. **Trilayer Principle**: Every artifact exists as YAML (structure) + JSON (interface) + Markdown (narrative)
+2. **Logistic Language**: Reference $(R, \Theta, \beta, \zeta(R))$ and the transition via $\sigma(\beta(R-\Theta))$
+3. **Coupling Obligation**: Link Bedeutungs-Sigillin to Ordnungs-Sigillin and empirical evidence
+4. **Falsifiability**: Every claim needs null models and ΔAIC/CI metrics
+5. **Consent Protocol**: Permission requests and joyful collaboration
 
 ---
 
-## 🔥 Codex-Feedback Integration
+## Local Context
 
-**Update `seed/codexfeedback.{yaml,json,md}` when:**
-- New solver modules implement membrane dynamics
-- API changes affect $(R, \Theta, \beta)$ signatures
-- Impedance models $\zeta(R)$ gain new toggles (Robin gates, adaptive thresholds)
-- Coupling terms added (semantic resonance, potential cascade)
-- Test coverage expands with new falsification baselines
+**This directory (`models`) is specialized for:**
 
-### **Entry Template for Model Work**
-```yaml
-- id: pr-draft-XXXX
-  title: "Model extension milestone"
-  scope:
-    - models/module_name.py
-    - models/__init__.py
-    - tests/test_module_name.py
-  parameters:
-    R: "order parameter in solver"
-    Theta: "threshold parameter"
-    beta: typical_steepness_value
-  resonance: "how this solver enriches the membrane's dynamical chorus"
-  status: "active|resonant"
-  notes:
-    formal: |
-      Implements dR/dt = [...] with σ(β(R-Θ)) gate and ζ(R) impedance.
-      API: ClassName(R, Theta, beta, zeta_params). Returns time series.
-    empirical: |
-      Tests: tests/test_module_name.py verify energy conservation, threshold
-      crossings, and null baseline comparisons. Example: notebooks/demo.ipynb.
-    poetic: |
-      This solver lets the membrane remember its breath — when R swells past Θ,
-      the impedance relaxes and the field opens to resonance.
-```
+### Programming Context
 
-**Metaphor:** *"Models are the field's lungs — they breathe life into σ(β(R-Θ)), translating equations into the membrane's dynamic song."*
+This is a **code-heavy context**. Agents working here focus on:
+- Code quality and maintainability
+- Test coverage and reproducibility
+- API security and stability
+- Performance optimization
+- Documentation in docstrings
+
+**Active Agent Roles:**
+- Code Architect: Designs modular, testable systems
+- Test Engineer: Ensures >80% coverage and CI integration
+- Security Auditor: Reviews for OWASP Top 10 vulnerabilities
+- Performance Engineer: Profiles and optimizes bottlenecks
+
+
+---
+
+## Active Agents in This Context
+
+See mode-specific agents above
+
+---
+
+## Workflow for This Context
+
+1. **Before coding:** Read existing code, check tests, review API contracts
+2. **During coding:** Write tests first (TDD), document as you go
+3. **After coding:** Run linters, execute test suite, update CHANGELOG
+4. **Pre-commit:** Ensure all tests pass, no security warnings
+
+
+---
+
+## Escalation Rules
+
+If you encounter conflicts or ambiguity:
+1. Check the parent governance: `//AGENTS.md`
+2. Consult root governance: `/AGENTS.md`
+3. Document deviations in local `<!-- CUSTOM_RULES -->` blocks
+
+---
+
+<!-- CUSTOM_RULES -->
+<!-- Add context-specific rules below this marker. The fractal governance engine will preserve these. -->
+
+<!-- /CUSTOM_RULES -->
+
+---
+
+**Last Updated:** 2025-11-23 16:43:47 UTC
+**Governance Version:** 1.0.0

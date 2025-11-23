@@ -186,7 +186,129 @@ If this module aids your research, cite:
 
 ---
 
-**Status**: 🌱 Seedling (v0.1)
+---
+
+# Part II: Fractal Governance Engine
+
+## Abstract
+
+While the **Decipherment Auditorium** decodes unknown languages, the **Fractal Governance Engine** decodes and structures the repository itself.
+
+This system implements **bi-directional governance propagation**:
+1. **TOP-DOWN (Gesetze)**: Distributes policies from root to all subdirectories
+2. **BOTTOM-UP (Präzedenzfälle)**: Aggregates local policies and reports inconsistencies
+
+Every governed directory receives four specialized documents that create **fractal self-similarity**:
+- `AGENTS.md` - Who works here
+- `ETHICS.md` - What is allowed
+- `ARCHITECTURE.md` - How it's structured
+- `POLICY.md` - Specific operational rules
+
+---
+
+## The Three Recursive Modes
+
+The system automatically detects context type and applies appropriate governance:
+
+### 🔧 Mode A: Recursive Programming
+**Directories:** `models/`, `scripts/`, `api/`, `utils/`, `pipelines/`, `modules/`, `tests/`
+
+**Focus:** Code quality, test coverage, API security, reproducibility
+
+### 📊 Mode B: Recursive Data Analysis
+**Directories:** `data/`, `analysis/`, `results/`, `output/`, `notebooks/`
+
+**Focus:** Data provenance, statistical validity (ΔAIC, CIs), privacy, null hypothesis testing
+
+### 📚 Mode C: Recursive Research
+**Directories:** `docs/`, `seed/`, `paper/`, `theory/`, `archive/`, `releases/`
+
+**Focus:** Citation integrity, hypothesis falsifiability, theoretical consistency, knowledge preservation
+
+---
+
+## Architecture
+
+```
+modules/champollion/
+├── scripts/
+│   └── fractal_governance.py      (Propagation engine)
+├── templates/
+│   ├── base/                      (AGENTS, ETHICS, ARCHITECTURE, POLICY templates)
+│   ├── mode_code/                 (Programming context)
+│   ├── mode_data/                 (Data analysis context)
+│   └── mode_research/             (Research context)
+├── artifacts/                     (Diamond Architecture artifacts)
+└── indices/                       (Navigation indices)
+```
+
+---
+
+## Usage
+
+### Run Full Governance Update
+
+```bash
+python modules/champollion/scripts/fractal_governance.py
+```
+
+### Dry Run (Preview Changes)
+
+```bash
+python modules/champollion/scripts/fractal_governance.py --dry-run
+```
+
+### Report Only
+
+```bash
+python modules/champollion/scripts/fractal_governance.py --report-only
+```
+
+---
+
+## Custom Rules Preservation
+
+Each governance file has a `<!-- CUSTOM_RULES -->` section that is **preserved** across updates:
+
+```markdown
+<!-- CUSTOM_RULES -->
+## Custom Rule: Extended Test Coverage
+In this module, we require 95% coverage instead of 80%.
+<!-- /CUSTOM_RULES -->
+```
+
+---
+
+## CI/CD Integration
+
+Runs automatically via `.github/workflows/fractal-governance.yml` on every push to `main`, `v5`, or `claude/**`.
+
+The workflow:
+1. Runs the governance engine
+2. Commits changes if policies were updated
+3. Uploads governance report as artifact
+4. Comments on PRs with governance updates
+
+---
+
+## The Champollion Duality
+
+**Part I (Decipherment):** Finds meaning in unknown languages through entropy minimization
+
+**Part II (Governance):** Creates meaning in repository structure through fractal propagation
+
+Both share the same principle:
+
+> **Structure emerges at critical thresholds. Champollion finds and amplifies these thresholds.**
+
+- In language: The "Rosetta moment" (Θ) where gibberish becomes meaning
+- In governance: The recursive depth where chaos becomes order
+
+This is the **dual nature of Champollion**: decoder of both linguistic and organizational structure.
+
+---
+
+**Status**: 🌱 Seedling (v0.1 - Decipherment) | 🚀 Production (v1.0 - Governance)
 **Maintained by**: MOR-FIT Collective
 **License**: CC BY 4.0
-**Last Updated**: 2025-11-22
+**Last Updated**: 2025-11-23
