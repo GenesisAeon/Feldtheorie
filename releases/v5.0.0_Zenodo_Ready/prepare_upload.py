@@ -9,7 +9,7 @@ This script prepares the Feldtheorie V5.0.0 repository for Zenodo upload by:
 4. Producing a reproducibility-ready artifact
 
 Usage:
-    python prepare_upload.py [--output OUTPUT_DIR]
+    python prepare_upload.py [--output OUTPUT_DIR] [--profile {full,slim}]
 
 Output:
     - Feldtheorie_v5.0.0_Source.zip (Repository snapshot)
@@ -92,6 +92,19 @@ EXCLUSIONS = {
     "releases/v5.0.0_Zenodo_Ready",
 }
 
+# Additional exclusions for slimmed-down release bundles. These focus on
+# reproducibility-critical assets while omitting historical or exploratory
+# material that bloats the archive size.
+SLIM_EXCLUSIONS = {
+    "archive",
+    "output",
+    "results",
+    "seed",
+    "notebooks",
+    "dags",
+    "vr",
+}
+
 # File extensions to INCLUDE (whitelist approach for critical files)
 IMPORTANT_EXTENSIONS = {
     ".py", ".md", ".txt", ".yml", ".yaml", ".json", ".csv",
@@ -103,7 +116,18 @@ IMPORTANT_EXTENSIONS = {
 # UTILITY FUNCTIONS
 # ============================================================================
 
-def should_exclude(path: Path, repo_root: Path) -> bool:
+def build_exclusion_set(profile: str) -> Set[str]:
+    """Build the exclusion set based on the selected profile."""
+
+    exclusions = set(EXCLUSIONS)
+
+    if profile == "slim":
+        exclusions.update(SLIM_EXCLUSIONS)
+
+    return exclusions
+
+
+def should_exclude(path: Path, repo_root: Path, exclusions: Set[str]) -> bool:
     """
     Check if a path should be excluded from the ZIP.
 
@@ -118,7 +142,7 @@ def should_exclude(path: Path, repo_root: Path) -> bool:
     relative_str = str(relative)
 
     # Check against exclusion patterns
-    for exclusion in EXCLUSIONS:
+    for exclusion in exclusions:
         if exclusion.startswith("*."):
             # Pattern matching for file extensions
             if relative_str.endswith(exclusion[1:]):
@@ -152,7 +176,7 @@ def compute_file_hash(file_path: Path) -> str:
     return sha256.hexdigest()
 
 
-def get_all_files(repo_root: Path) -> List[Path]:
+def get_all_files(repo_root: Path, exclusions: Set[str]) -> List[Path]:
     """
     Get all files in repository that should be included.
 
@@ -168,12 +192,12 @@ def get_all_files(repo_root: Path) -> List[Path]:
         root_path = Path(root)
 
         # Remove excluded directories from traversal
-        dirs[:] = [d for d in dirs if not should_exclude(root_path / d, repo_root)]
+        dirs[:] = [d for d in dirs if not should_exclude(root_path / d, repo_root, exclusions)]
 
         for file in files:
             file_path = root_path / file
 
-            if not should_exclude(file_path, repo_root):
+            if not should_exclude(file_path, repo_root, exclusions):
                 all_files.append(file_path)
 
     return sorted(all_files)
@@ -210,7 +234,8 @@ def create_zip_archive(
 def create_manifest(
     repo_root: Path,
     output_path: Path,
-    files: List[Path]
+    files: List[Path],
+    profile: str,
 ) -> None:
     """
     Create MANIFEST.txt listing all files with metadata.
@@ -226,6 +251,7 @@ def create_manifest(
         f.write(f"# FELDTHEORIE V{VERSION} - SOURCE ARCHIVE MANIFEST\n")
         f.write(f"# Generated: {datetime.utcnow().isoformat()}Z\n")
         f.write(f"# Total files: {len(files)}\n")
+        f.write(f"# Profile: {profile}\n")
         f.write("#\n")
         f.write("# Format: <path> | <size_bytes> | <sha256_hash> | <modified_timestamp>\n")
         f.write("#" + "=" * 100 + "\n\n")
@@ -486,12 +512,20 @@ def main():
         action="store_true",
         help="Show what would be done without creating files"
     )
+    parser.add_argument(
+        "--profile",
+        choices=["full", "slim"],
+        default="full",
+        help="Choose between full repository snapshot or slimmed-down research bundle",
+    )
 
     args = parser.parse_args()
 
     # Determine paths
     script_dir = Path(__file__).parent
     repo_root = script_dir.parent.parent  # Go up to repo root
+
+    exclusions = build_exclusion_set(args.profile)
 
     if args.output:
         output_dir = args.output
@@ -506,11 +540,12 @@ def main():
     print(f"Repository root: {repo_root}")
     print(f"Output directory: {output_dir}")
     print(f"Dry run: {args.dry_run}")
+    print(f"Profile: {args.profile} (excludes: {len(exclusions)} patterns)")
     print()
 
     # Step 1: Collect files
     print("[1/4] Collecting files...")
-    files = get_all_files(repo_root)
+    files = get_all_files(repo_root, exclusions)
     print(f"✓ Found {len(files)} files to include")
     print()
 
@@ -530,7 +565,7 @@ def main():
     if not args.dry_run:
         print("[3/4] Creating manifest...")
         manifest_path = output_dir / "MANIFEST.txt"
-        create_manifest(repo_root, manifest_path, files)
+        create_manifest(repo_root, manifest_path, files, args.profile)
         print()
     else:
         print("[3/4] Skipping manifest creation (dry run)")
