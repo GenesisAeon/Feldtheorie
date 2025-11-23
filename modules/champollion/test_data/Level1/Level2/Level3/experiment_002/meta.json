@@ -1,0 +1,24 @@
+{
+  "experiment_id": "exp_002",
+  "title": "Synthetic Galaxy Formation - Dark Matter Halos",
+  "origin": "synthetic",
+  "confidence": 0.72,
+  "description": "Simulated galaxy cluster formation using N-body simulation with modified gravity parameters",
+  "keywords": ["cosmology", "dark-matter", "galaxy-formation", "n-body", "simulation"],
+  "parameters": {
+    "particle_count": 1000000,
+    "box_size_mpc": 100,
+    "redshift_range": [0, 10],
+    "gravity_model": "modified-newtonian"
+  },
+  "created_at": "2025-11-21T14:20:00Z",
+  "created_by": "claude-sonnet-4.5",
+  "data_files": ["halo_catalog.json", "density_field.npy"],
+  "provenance": {
+    "source": "generative_model/kosmos_v3",
+    "processing_script": "extract_halos.py",
+    "script_version": "1.5.2",
+    "model_checkpoint": "kosmos_v3_epoch_42"
+  },
+  "notes": "Confidence reduced due to untested gravity modifications. Requires empirical validation."
+}

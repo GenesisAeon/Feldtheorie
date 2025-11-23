@@ -1,0 +1,23 @@
+folder: analysis
+indexed_at: '2025-11-23T16:25:16.314286Z'
+statistics:
+  files: 1
+  subfolders: 0
+  metadata_sources: 1
+confidence:
+  aggregate: 0.88
+  min: 0.88
+  max: 0.88
+origins:
+  theoretical: 1
+file_types:
+  .json: 1
+keywords:
+- correlation-analysis
+- phase-transitions
+- structural-isomorphism
+- theoretical-physics
+subfolders: []
+governance:
+  violations_count: 0
+  has_violations: false

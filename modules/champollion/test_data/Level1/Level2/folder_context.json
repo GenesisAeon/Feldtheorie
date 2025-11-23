@@ -1,0 +1,24 @@
+{
+  "folder": "Level2",
+  "indexed_at": "2025-11-23T16:25:16.316861Z",
+  "summary": "0 files, 2 subfolders",
+  "total_files": 0,
+  "total_subfolders": 2,
+  "aggregate_confidence": 0.8574999999999999,
+  "min_confidence": 0.835,
+  "origins": {},
+  "keywords": [
+    "correlation-analysis",
+    "cosmology",
+    "critical-temperature",
+    "dark-matter",
+    "galaxy-formation",
+    "ising",
+    "monte-carlo",
+    "n-body",
+    "phase-transition",
+    "phase-transitions"
+  ],
+  "has_violations": false,
+  "file_types": {}
+}

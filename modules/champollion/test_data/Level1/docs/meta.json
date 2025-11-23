@@ -1,0 +1,18 @@
+{
+  "document_id": "doc_methodology",
+  "title": "Feldtheorie Methodology Overview",
+  "origin": "theoretical",
+  "confidence": 1.0,
+  "description": "Documentation of the Champollion Diamond Architecture and its application to field theory research",
+  "keywords": ["documentation", "methodology", "champollion", "diamond-architecture"],
+  "document_type": "methodology",
+  "created_at": "2025-11-23T08:00:00Z",
+  "created_by": "project-team",
+  "data_files": ["methodology.md", "architecture_diagram.svg"],
+  "provenance": {
+    "source": "internal_documentation",
+    "processing_script": null,
+    "script_version": null
+  },
+  "status": "published"
+}

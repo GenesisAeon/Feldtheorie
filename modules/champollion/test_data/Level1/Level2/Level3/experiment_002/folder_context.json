@@ -1,0 +1,23 @@
+{
+  "folder": "experiment_002",
+  "indexed_at": "2025-11-23T16:25:16.303921Z",
+  "summary": "1 files, 0 subfolders",
+  "total_files": 1,
+  "total_subfolders": 0,
+  "aggregate_confidence": 0.72,
+  "min_confidence": 0.72,
+  "origins": {
+    "synthetic": 1
+  },
+  "keywords": [
+    "cosmology",
+    "dark-matter",
+    "galaxy-formation",
+    "n-body",
+    "simulation"
+  ],
+  "has_violations": false,
+  "file_types": {
+    ".json": 1
+  }
+}

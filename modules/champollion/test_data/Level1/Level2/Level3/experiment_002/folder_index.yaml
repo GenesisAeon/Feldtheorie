@@ -1,0 +1,24 @@
+folder: experiment_002
+indexed_at: '2025-11-23T16:25:16.303921Z'
+statistics:
+  files: 1
+  subfolders: 0
+  metadata_sources: 1
+confidence:
+  aggregate: 0.72
+  min: 0.72
+  max: 0.72
+origins:
+  synthetic: 1
+file_types:
+  .json: 1
+keywords:
+- cosmology
+- dark-matter
+- galaxy-formation
+- n-body
+- simulation
+subfolders: []
+governance:
+  violations_count: 0
+  has_violations: false

@@ -1,0 +1,23 @@
+{
+  "folder": "experiment_001",
+  "indexed_at": "2025-11-23T16:25:16.307399Z",
+  "summary": "2 files, 0 subfolders",
+  "total_files": 2,
+  "total_subfolders": 0,
+  "aggregate_confidence": 0.95,
+  "min_confidence": 0.95,
+  "origins": {
+    "empirical": 1
+  },
+  "keywords": [
+    "critical-temperature",
+    "ising",
+    "monte-carlo",
+    "phase-transition"
+  ],
+  "has_violations": false,
+  "file_types": {
+    ".json": 1,
+    ".dat": 1
+  }
+}

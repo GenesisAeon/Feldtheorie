@@ -1,0 +1,22 @@
+{
+  "folder": "analysis",
+  "indexed_at": "2025-11-23T16:25:16.314286Z",
+  "summary": "1 files, 0 subfolders",
+  "total_files": 1,
+  "total_subfolders": 0,
+  "aggregate_confidence": 0.88,
+  "min_confidence": 0.88,
+  "origins": {
+    "theoretical": 1
+  },
+  "keywords": [
+    "correlation-analysis",
+    "phase-transitions",
+    "structural-isomorphism",
+    "theoretical-physics"
+  ],
+  "has_violations": false,
+  "file_types": {
+    ".json": 1
+  }
+}

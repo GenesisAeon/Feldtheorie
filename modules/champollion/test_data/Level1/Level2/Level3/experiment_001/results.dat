@@ -1,0 +1,9 @@
+# Ising Model Results - 2D Lattice
+# Temperature, Magnetization, Energy, Specific Heat
+2.00, 0.98, -1.89, 0.12
+2.10, 0.95, -1.85, 0.15
+2.20, 0.88, -1.78, 0.22
+2.269, 0.12, -1.41, 2.45  # Critical point
+2.30, 0.08, -1.35, 1.98
+2.40, 0.04, -1.28, 0.85
+2.50, 0.02, -1.22, 0.45
