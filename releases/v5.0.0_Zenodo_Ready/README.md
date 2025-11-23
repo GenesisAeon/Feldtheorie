@@ -186,6 +186,18 @@ After getting the DOI from Zenodo:
 
 ---
 
+## Review Actions from V5 Assessment
+
+The assessment PDF (`Analyse und EinschätzungreleaseV5.pdf`) highlighted several gaps to address before the public upload. We will:
+
+- **Empirical social-data validation:** Link any real Gini/Load datasets only after anonymization and document provenance; keep the social model labeled as unvalidated until results exist.
+- **Alternative constant comparisons:** Preserve Monte-Carlo comparisons against alternative constant pairs and report ΔAIC/Bayes factors alongside the 137-β framing.
+- **Concise navigation:** Keep this bundle as the entry point for Zenodo and reference detailed theory/method documents from here to reduce overload for new readers.
+
+These adjustments keep the governance/tooling claims reproducible while ensuring the hypothesis remains clearly marked as active research.
+
+---
+
 ## Verification
 
 **Before uploading, verify:**

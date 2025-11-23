@@ -23,6 +23,7 @@
   - [ ] Paper_2_Hypothesis_137_Beta.md (Theoretical)
 
 - [ ] **Abstract Ready:** ABSTRACT_ZENODO.md finalized
+- [ ] **Ethics Ready:** Confirm any social inequality/emissions datasets are anonymized or excluded and that alternate-constant ΔAIC/Bayes comparisons accompany 137-β claims
 
 ---
 

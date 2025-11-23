@@ -30,6 +30,8 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 - **Falsifiability**: Provide criteria for disproving hypotheses
 - **Version Control**: Never delete history; archive old theories
 - **Conflict of Interest**: Disclose any competing interpretations
+- **Social data privacy**: Anonymize and document provenance for any inequality/emissions datasets before inclusion in releases
+- **Alternative models**: When presenting 137-β results, include ΔAIC/Bayes comparisons against alternate constant pairs
 
 
 ---
