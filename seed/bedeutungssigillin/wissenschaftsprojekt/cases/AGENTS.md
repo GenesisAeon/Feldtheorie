@@ -1,19 +1,76 @@
-# Wissenschaftsprojekt Fall-Sigillin Leitfaden
+# Agents Charter - seed/bedeutungssigillin/wissenschaftsprojekt/cases
 
-Dieses Verzeichnis sammelt fallbezogene Bedeutungs-Sigillin, die reale
-Ereignisse mit dem UTAC-Forschungsprogramm verweben.
+> **Context Depth:** 4 | **Parent:** seed/bedeutungssigillin/wissenschaftsprojekt | **Mode:** Recursive Research
 
-- **Tri-Schichten Pflicht.** Jede Fallakte wird als YAML (Struktur), JSON
-  (Agentenschnittstelle) und Markdown (Narrativ) gepflegt – stets im selben
-  Commit.
-- **Logistisches Quartett.** Beschreibe klar, welches Feld als
-  Ordnungparameter $R$ dient, welches Schwellenereignis $\Theta$ definiert,
-  wie steil $\beta$ verläuft und wodurch $\zeta(R)$ gedämpft wird.
-- **Kopplungen.** Verweise auf die Haupt-Membran des Wissenschaftsprojekts,
-  auf relevante BreakPoint-Rituale sowie auf Daten- und Analysepfade, damit
-  Folge-Agent:innen sofort Anschluss finden.
-- **Archivlinie.** Bestehende Sigillin werden nicht überschrieben. Neue
-  Versionen mit Zeitstempel anlegen und Verschiebungen in
-  `seed/codexfeedback.*` dokumentieren.
-- **Schatten-Handshake.** Jede Fallakte nennt ihr Schatten-Pendant und
-  beschreibt, welche Risiken dort überwacht werden.
+---
+
+## Fractal Inheritance
+
+This document inherits from the root `AGENTS.md` and specializes for this context.
+
+### Core Principles (Inherited)
+
+1. **Trilayer Principle**: Every artifact exists as YAML (structure) + JSON (interface) + Markdown (narrative)
+2. **Logistic Language**: Reference $(R, \Theta, \beta, \zeta(R))$ and the transition via $\sigma(\beta(R-\Theta))$
+3. **Coupling Obligation**: Link Bedeutungs-Sigillin to Ordnungs-Sigillin and empirical evidence
+4. **Falsifiability**: Every claim needs null models and ΔAIC/CI metrics
+5. **Consent Protocol**: Permission requests and joyful collaboration
+
+---
+
+## Local Context
+
+**This directory (`seed/bedeutungssigillin/wissenschaftsprojekt/cases`) is specialized for:**
+
+### Research Context
+
+This is a **research and documentation context**. Agents working here focus on:
+- Hypothesis formation and falsifiability
+- Citation integrity and attribution
+- Theoretical consistency
+- Knowledge preservation and archiving
+- Publication readiness
+
+**Active Agent Roles:**
+- Research Synthesizer: Integrates findings across domains
+- Documentation Curator: Maintains indices, cross-references
+- Citation Manager: Ensures proper attribution (BibTeX, DOI)
+- Archivist: Versions and preserves historical knowledge
+
+
+---
+
+## Active Agents in This Context
+
+See mode-specific agents above
+
+---
+
+## Workflow for This Context
+
+1. **Before writing:** Review existing documentation, check citations
+2. **During writing:** Link to evidence, cite sources, mark hypotheses
+3. **After writing:** Update indices, cross-link Sigillin, sync Trilayer
+4. **Pre-commit:** Ensure Trilayer sync (YAML/JSON/MD), citations complete
+
+
+---
+
+## Escalation Rules
+
+If you encounter conflicts or ambiguity:
+1. Check the parent governance: `seed/bedeutungssigillin/wissenschaftsprojekt/AGENTS.md`
+2. Consult root governance: `/AGENTS.md`
+3. Document deviations in local `<!-- CUSTOM_RULES -->` blocks
+
+---
+
+<!-- CUSTOM_RULES -->
+<!-- Add context-specific rules below this marker. The fractal governance engine will preserve these. -->
+
+<!-- /CUSTOM_RULES -->
+
+---
+
+**Last Updated:** 2025-11-23 16:42:20 UTC
+**Governance Version:** 1.0.0

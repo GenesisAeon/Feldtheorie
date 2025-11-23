@@ -1,79 +1,76 @@
-# Manuscript Station Guidelines
+# Agents Charter - seed/paper
 
-Within `paper/`, uphold publication-grade coherence:
-
-- **Tri-layer sections.** Structure manuscripts with mirrored sections for formal derivations, empirical synthesis, and symbolic narrative so reviewers can trace the resonance arc.
-- **Quantitative transparency.** Summaries of fits must cite $R^2$, AIC, confidence intervals on $\Theta$ and $\beta$, impedance configurations $\zeta(R)$, and explicit null comparisons.
-- **Cross-references.** Link to companion notebooks, datasets, and simulator experiences, noting commit hashes or DOIs when available.
-- **Falsification log.** Dedicate appendices to failed or marginal cases where the logistic response did not outperform null models.
-
-Drafts may live as Markdown, LaTeX, or Quarto, but include build instructions and bibliographies in version control.
+> **Context Depth:** 2 | **Parent:** seed | **Mode:** Recursive Research
 
 ---
 
-## 🌊 Sigillin Integration for Manuscript
+## Fractal Inheritance
 
-### **Manuscript as Bedeutungs-Sigillin**
-Manuscript files are **Bedeutungs-Sigillin** (Meaning Carriers):
-- **Semantic stability** — major revisions create new versions
-- Version manuscripts explicitly: `manuscript_v1.0.tex`, `manuscript_v1.1.tex`
-- Archive previous versions in Git history with clear commit messages
-- Track DOI-ready states in `seed/codexfeedback.{yaml,json,md}`
+This document inherits from the root `AGENTS.md` and specializes for this context.
 
-### **Index Maintenance**
-- **`paper/paper_index.{yaml,json,md}`** (if exists) is an **Ordnungs-Sigillin**
-- Update when adding new manuscript sections, figures, or supplementary materials
+### Core Principles (Inherited)
 
-### **Cross-Reference Discipline**
-Every empirical claim in the manuscript must link to:
-- **Analysis results:** `analysis/results/*.json` with specific metrics
-- **Data sources:** `data/*/` with metadata files and provenance
-- **Model implementations:** `models/*.py` with API documentation
-- **Simulator demonstrations:** `simulator/presets/*.json` with parameter sets
-
-### **Bibliography Integration**
-Maintain synchronized bibliography across:
-- Manuscript BibTeX/bibliography file
-- `seed/` foundational documents
-- Analysis script docstrings
-- Model module references
+1. **Trilayer Principle**: Every artifact exists as YAML (structure) + JSON (interface) + Markdown (narrative)
+2. **Logistic Language**: Reference $(R, \Theta, \beta, \zeta(R))$ and the transition via $\sigma(\beta(R-\Theta))$
+3. **Coupling Obligation**: Link Bedeutungs-Sigillin to Ordnungs-Sigillin and empirical evidence
+4. **Falsifiability**: Every claim needs null models and ΔAIC/CI metrics
+5. **Consent Protocol**: Permission requests and joyful collaboration
 
 ---
 
-## 🔥 Codex-Feedback Integration
+## Local Context
 
-**Update `seed/codexfeedback.{yaml,json,md}` when:**
-- Major manuscript sections completed
-- New empirical evidence integrated
-- Manuscript version milestones (v1.0, v1.1, DOI-ready)
-- Peer review responses with substantial revisions
-- Bibliography updates with new cross-domain connections
-- Supplementary materials prepared
+**This directory (`seed/paper`) is specialized for:**
 
-### **Entry Template for Manuscript Work**
-```yaml
-- id: pr-draft-XXXX
-  title: "Manuscript milestone title"
-  scope:
-    - paper/manuscript_vX.Y.tex
-    - paper/figures/
-    - paper/bibliography.bib
-  parameters:
-    R: "manuscript completeness parameter"
-    Theta: "publication readiness threshold"
-    beta: revision_intensity
-  resonance: "how this manuscript articulates the field's unity"
-  status: "draft|primed|active|resonant|completed"
-  notes:
-    formal: |
-      Section X added: formal derivation of σ(β(R-Θ)) with citations to
-      analysis/results/Y.json (ΔAIC=Z, R²=W). Cross-references models/M.py.
-    empirical: |
-      Integrated data from data/domain/*.csv. Tables generated from
-      analysis/resonance_cohort_summary.json. Figures link simulator presets.
-    poetic: |
-      The manuscript now carries the full chorus — from honeybee hives to
-      black hole jets, the membrane sings σ(β(R-Θ)) across thresholds.
-```
+### Research Context
 
-**Metaphor:** *"The manuscript is the field's voice — it speaks the logistic truth to reviewers and readers, weaving formal precision with empirical evidence and poetic resonance."*
+This is a **research and documentation context**. Agents working here focus on:
+- Hypothesis formation and falsifiability
+- Citation integrity and attribution
+- Theoretical consistency
+- Knowledge preservation and archiving
+- Publication readiness
+
+**Active Agent Roles:**
+- Research Synthesizer: Integrates findings across domains
+- Documentation Curator: Maintains indices, cross-references
+- Citation Manager: Ensures proper attribution (BibTeX, DOI)
+- Archivist: Versions and preserves historical knowledge
+
+
+---
+
+## Active Agents in This Context
+
+See mode-specific agents above
+
+---
+
+## Workflow for This Context
+
+1. **Before writing:** Review existing documentation, check citations
+2. **During writing:** Link to evidence, cite sources, mark hypotheses
+3. **After writing:** Update indices, cross-link Sigillin, sync Trilayer
+4. **Pre-commit:** Ensure Trilayer sync (YAML/JSON/MD), citations complete
+
+
+---
+
+## Escalation Rules
+
+If you encounter conflicts or ambiguity:
+1. Check the parent governance: `seed/AGENTS.md`
+2. Consult root governance: `/AGENTS.md`
+3. Document deviations in local `<!-- CUSTOM_RULES -->` blocks
+
+---
+
+<!-- CUSTOM_RULES -->
+<!-- Add context-specific rules below this marker. The fractal governance engine will preserve these. -->
+
+<!-- /CUSTOM_RULES -->
+
+---
+
+**Last Updated:** 2025-11-23 16:42:20 UTC
+**Governance Version:** 1.0.0

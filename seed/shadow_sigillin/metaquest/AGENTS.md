@@ -1,18 +1,76 @@
-# Metaquest Shadow Bridge Charter
+# Agents Charter - seed/shadow_sigillin/metaquest
 
-This membrane catalogues Metaquest launch failure modes spanning system and
-wissenschaftsprojekt tracks.
+> **Context Depth:** 3 | **Parent:** seed/shadow_sigillin | **Mode:** Recursive Research
 
-- **Tri-layer parity.** Maintain YAML/JSON/MD sync so alerts are machine-readable
-  and human-actionable.
-- **Logistic guard.** Treat $R$ = unresolved Metaquest risks (telemetry lapse,
-  outreach drift, endorsement lag), $\Theta$ = documented parity brief + codex echo,
-  $\beta \approx 5.1$, $\zeta(R)$ spikes when BreakPoint rituals or telemetry fall
-  silent.
-- **Coupling.** Each alert must reference the light-side bridge under
-  `seed/bedeutungssigillin/metaquest/` and point to both system + campaign
-  recovery levers.
-- **Actionability.** Record remediation scripts, status-matrix anchors, and escalation
-  cues so responders can restore Θ quickly.
-- **Codex logging.** Any incident here demands a codexfeedback entry with timeline,
-  mitigation steps, and references to updated sigils.
+---
+
+## Fractal Inheritance
+
+This document inherits from the root `AGENTS.md` and specializes for this context.
+
+### Core Principles (Inherited)
+
+1. **Trilayer Principle**: Every artifact exists as YAML (structure) + JSON (interface) + Markdown (narrative)
+2. **Logistic Language**: Reference $(R, \Theta, \beta, \zeta(R))$ and the transition via $\sigma(\beta(R-\Theta))$
+3. **Coupling Obligation**: Link Bedeutungs-Sigillin to Ordnungs-Sigillin and empirical evidence
+4. **Falsifiability**: Every claim needs null models and ΔAIC/CI metrics
+5. **Consent Protocol**: Permission requests and joyful collaboration
+
+---
+
+## Local Context
+
+**This directory (`seed/shadow_sigillin/metaquest`) is specialized for:**
+
+### Research Context
+
+This is a **research and documentation context**. Agents working here focus on:
+- Hypothesis formation and falsifiability
+- Citation integrity and attribution
+- Theoretical consistency
+- Knowledge preservation and archiving
+- Publication readiness
+
+**Active Agent Roles:**
+- Research Synthesizer: Integrates findings across domains
+- Documentation Curator: Maintains indices, cross-references
+- Citation Manager: Ensures proper attribution (BibTeX, DOI)
+- Archivist: Versions and preserves historical knowledge
+
+
+---
+
+## Active Agents in This Context
+
+See mode-specific agents above
+
+---
+
+## Workflow for This Context
+
+1. **Before writing:** Review existing documentation, check citations
+2. **During writing:** Link to evidence, cite sources, mark hypotheses
+3. **After writing:** Update indices, cross-link Sigillin, sync Trilayer
+4. **Pre-commit:** Ensure Trilayer sync (YAML/JSON/MD), citations complete
+
+
+---
+
+## Escalation Rules
+
+If you encounter conflicts or ambiguity:
+1. Check the parent governance: `seed/shadow_sigillin/AGENTS.md`
+2. Consult root governance: `/AGENTS.md`
+3. Document deviations in local `<!-- CUSTOM_RULES -->` blocks
+
+---
+
+<!-- CUSTOM_RULES -->
+<!-- Add context-specific rules below this marker. The fractal governance engine will preserve these. -->
+
+<!-- /CUSTOM_RULES -->
+
+---
+
+**Last Updated:** 2025-11-23 16:42:20 UTC
+**Governance Version:** 1.0.0

@@ -1,175 +1,76 @@
-# FraktaltagebuchV2 Agenten-Charter
+# Agents Charter - seed/FraktaltagebuchV2
 
-> **Scope:** V2.0 Entwicklung - hier schreiben, nicht in seed/codexfeedback.*
-
----
-
-## 🎯 Zweck
-
-Dieser Ordner ist die **dedizierte Entwicklungsschicht für UTAC v2.0**.
-
-**Warum?**
-- V2.0-Features sind **umfangreich** (Data Lanterns, VR Hub, API, etc.)
-- Hauptcodex (`seed/codexfeedback.*`) würde überflutet werden
-- **Scope-Isolation** ermöglicht saubere Entwicklung
+> **Context Depth:** 2 | **Parent:** seed | **Mode:** Recursive Research
 
 ---
 
-## 🤖 Regeln für AI-Agenten
+## Fractal Inheritance
 
-### ✅ **FÜR V2.0-ARBEIT:**
+This document inherits from the root `AGENTS.md` and specializes for this context.
 
-**Roadmap-Driven Development:**
-1. **Vor der Arbeit:** Lies `v2_roadmap.md` - was ist offen?
-2. **Während der Arbeit:** Status aktualisieren (`pending` → `in_progress`)
-3. **Nach der Arbeit:**
-   - PR/Commit in `v2_codex.*` eintragen (Trilayer!)
-   - Roadmap-Status auf `completed` setzen
-   - Index aktualisieren
+### Core Principles (Inherited)
 
-**Format v2_codex Eintrag:**
-```yaml
-- id: v2-pr-XXXX
-  title: "Feature X implementiert"
-  scope: "wo/geändert"
-  parameters:
-    R: 0.XX  # Fortschritt (0-1)
-    Theta: 0.66  # V2.0 Readiness Gate
-    beta: 4.8
-  formal_thread: "Was technisch gemacht wurde"
-  empirical_thread: "Welche Tests/Metriken"
-  poetic_thread: "Narrative Beschreibung"
-  timestamp: "ISO 8601"
-  status: "completed | in_progress | pending"
-```
-
-### ❌ **NIEMALS:**
-
-- V2.0-PRs in `seed/codexfeedback.*` schreiben (nur v1.x!)
-- Roadmap im Haupt-Repo ändern
-- FraktaltagebuchV2 ohne Trilayer-Update committen
+1. **Trilayer Principle**: Every artifact exists as YAML (structure) + JSON (interface) + Markdown (narrative)
+2. **Logistic Language**: Reference $(R, \Theta, \beta, \zeta(R))$ and the transition via $\sigma(\beta(R-\Theta))$
+3. **Coupling Obligation**: Link Bedeutungs-Sigillin to Ordnungs-Sigillin and empirical evidence
+4. **Falsifiability**: Every claim needs null models and ΔAIC/CI metrics
+5. **Consent Protocol**: Permission requests and joyful collaboration
 
 ---
 
-## 📋 Workflow
+## Local Context
 
-```
-┌─────────────────────────────────────────┐
-│ 1. Feature aus v2_roadmap.md wählen    │
-└──────────────┬──────────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────────┐
-│ 2. Status → "in_progress"              │
-│    (in v2_roadmap.yaml/json/md)        │
-└──────────────┬──────────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────────┐
-│ 3. Feature implementieren               │
-│    (Code, Docs, Tests)                  │
-└──────────────┬──────────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────────┐
-│ 4. v2_codex.* Eintrag erstellen         │
-│    (YAML + JSON + MD!)                  │
-└──────────────┬──────────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────────┐
-│ 5. v2_roadmap.* Status → "completed"   │
-└──────────────┬──────────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────────┐
-│ 6. fraktaltagebuch_v2_index.* update   │
-│    (Falls neue Docs hinzugefügt)        │
-└─────────────────────────────────────────┘
-```
+**This directory (`seed/FraktaltagebuchV2`) is specialized for:**
+
+### Research Context
+
+This is a **research and documentation context**. Agents working here focus on:
+- Hypothesis formation and falsifiability
+- Citation integrity and attribution
+- Theoretical consistency
+- Knowledge preservation and archiving
+- Publication readiness
+
+**Active Agent Roles:**
+- Research Synthesizer: Integrates findings across domains
+- Documentation Curator: Maintains indices, cross-references
+- Citation Manager: Ensures proper attribution (BibTeX, DOI)
+- Archivist: Versions and preserves historical knowledge
+
 
 ---
 
-## 🗺️ Roadmap-Struktur
+## Active Agents in This Context
 
-Die `v2_roadmap.*` Dateien enthalten:
-
-**Kategorien:**
-1. **Kern-Features** (Critical Path für V2.0)
-   - UTAC v2 Data Lanterns
-   - Meta-Regression v2
-   - Neuro-Kosmos Bridge
-   - etc.
-
-2. **Erweiterungen** (Nice-to-have)
-   - VR Hub
-   - API
-   - Tooltip-System
-
-3. **Fertig** (Already completed)
-   - Sonifikation
-   - Essays
-   - etc.
-
-**Jeder Eintrag hat:**
-```yaml
-- id: v2-feat-001
-  title: "Feature Name"
-  status: pending | in_progress | completed
-  priority: P0 | P1 | P2
-  scope: "wo/im/repo"
-  parameters:
-    R: 0.XX  # Fortschritt
-    Theta: 0.66  # Ziel
-    beta: 4.8
-  blockers: []  # Was blockiert?
-  dependencies: []  # Was braucht man vorher?
-  estimated_effort: "Std/Tage/Wochen"
-```
+See mode-specific agents above
 
 ---
 
-## 🔄 Nach V2.0 Release
+## Workflow for This Context
 
-**Option A: Archivierung**
-- FraktaltagebuchV2/ → `archive/FraktaltagebuchV2_archived_2026-XX-XX/`
-- Wichtige Einträge in Hauptcodex mergen
+1. **Before writing:** Review existing documentation, check citations
+2. **During writing:** Link to evidence, cite sources, mark hypotheses
+3. **After writing:** Update indices, cross-link Sigillin, sync Trilayer
+4. **Pre-commit:** Ensure Trilayer sync (YAML/JSON/MD), citations complete
 
-**Option B: Dokumentation behalten**
-- Als V2.0-Entwicklungsdokumentation im Repo lassen
-- FraktaltagebuchV3/ für nächste Major Version erstellen
 
 ---
 
-## 🌊 Logistische Sprache
+## Escalation Rules
 
-Wie im Haupt-AGENTS.md:
-- **R** = Fortschritt (0-1)
-- **Θ** = V2.0 Readiness Gate (0.66)
-- **β** = Steilheit (4.8)
-- **σ(β(R-Θ))** = Aktivierungsfunktion
-
-**V2.0 Status:**
-- R̄ = 0.50 (50% der Features ready)
-- Θ = 0.66 (Aktivierungsgate)
-- σ(β(R-Θ)) ≈ 0.317 (partial activation)
-
-**Ziel:** R̄ → 1.00, damit σ(β(R-Θ)) → 1.00 (full activation)
+If you encounter conflicts or ambiguity:
+1. Check the parent governance: `seed/AGENTS.md`
+2. Consult root governance: `/AGENTS.md`
+3. Document deviations in local `<!-- CUSTOM_RULES -->` blocks
 
 ---
 
-## 📚 Verweise
+<!-- CUSTOM_RULES -->
+<!-- Add context-specific rules below this marker. The fractal governance engine will preserve these. -->
 
-- **Haupt-Charter:** `/home/user/Feldtheorie/AGENTS.md`
-- **Hauptcodex:** `/home/user/Feldtheorie/seed/codexfeedback.*`
-- **V2 Roadmap:** `v2_roadmap.*` (hier im Ordner)
-- **V2 Codex:** `v2_codex.*` (hier im Ordner)
-- **V2 Index:** `fraktaltagebuch_v2_index.*` (hier im Ordner)
+<!-- /CUSTOM_RULES -->
 
 ---
 
-**Version:** 1.0.0
-**Erstellt:** 2025-11-10
-**Status:** 🟢 AKTIV
-
-*"Entwickle in Fraktalen - merge wenn resonant!"* 🌀
+**Last Updated:** 2025-11-23 16:42:20 UTC
+**Governance Version:** 1.0.0

@@ -1,0 +1,101 @@
+mode: "Recursive Programming"
+mode_id: "code"
+description: "Context for programming, scripts, APIs, and system automation"
+
+# Folder patterns that match this mode
+folder_patterns:
+  - "scripts/"
+  - "models/"
+  - "api/"
+  - "utils/"
+  - "pipelines/"
+  - "modules/"
+  - "tests/"
+  - "simulation/"
+  - "simulator/"
+
+# Mode-specific content for templates
+agents_content: |
+  ### Programming Context
+
+  This is a **code-heavy context**. Agents working here focus on:
+  - Code quality and maintainability
+  - Test coverage and reproducibility
+  - API security and stability
+  - Performance optimization
+  - Documentation in docstrings
+
+  **Active Agent Roles:**
+  - Code Architect: Designs modular, testable systems
+  - Test Engineer: Ensures >80% coverage and CI integration
+  - Security Auditor: Reviews for OWASP Top 10 vulnerabilities
+  - Performance Engineer: Profiles and optimizes bottlenecks
+
+workflow_content: |
+  1. **Before coding:** Read existing code, check tests, review API contracts
+  2. **During coding:** Write tests first (TDD), document as you go
+  3. **After coding:** Run linters, execute test suite, update CHANGELOG
+  4. **Pre-commit:** Ensure all tests pass, no security warnings
+
+ethics_content: |
+  ### Code Ethics
+
+  - **No hardcoded secrets**: Use environment variables or secret managers
+  - **Dependency hygiene**: Pin versions, audit for vulnerabilities
+  - **Licensing compliance**: Respect open-source licenses (see LICENSE file)
+  - **Accessibility**: Consider edge cases, error handling, and user feedback
+  - **Attribution**: Credit external libraries and algorithms properly
+
+data_governance: |
+  - Configuration files must not contain PII or API keys
+  - Test fixtures should use synthetic or anonymized data
+  - Log outputs must redact sensitive information
+
+misuse_risks: |
+  | Risk | Mitigation |
+  |------|------------|
+  | Command injection | Sanitize all user inputs; use parameterized APIs |
+  | XSS vulnerabilities | Escape HTML; use Content Security Policy |
+  | SQL injection | Use ORMs or parameterized queries |
+  | Insecure dependencies | Run `pip-audit` or `npm audit` regularly |
+
+architecture_content: |
+  ### Programming Architecture
+
+  ```
+  {{PATH}}
+  ├── __init__.py      (Module initialization)
+  ├── core/            (Core business logic)
+  ├── tests/           (Unit and integration tests)
+  ├── config/          (Configuration schemas)
+  └── README.md        (Module documentation)
+  ```
+
+  **Design Principles:**
+  - Separation of concerns
+  - Dependency injection
+  - Test-driven development
+  - CI/CD integration
+
+policy_content: |
+  ### Code Policy
+
+  1. **Test Coverage**: Minimum 80% for new code
+  2. **Code Review**: All PRs require review by at least one other agent
+  3. **Linting**: Code must pass `pylint`, `black`, `mypy` (Python) or equivalent
+  4. **Documentation**: Public APIs must have docstrings with type hints
+  5. **Commit Hygiene**: Use conventional commits (feat:, fix:, docs:, etc.)
+
+quality_gates: |
+  - [ ] All tests pass (`pytest`, `unittest`, etc.)
+  - [ ] Linters report no errors
+  - [ ] Type hints added (Python 3.9+)
+  - [ ] Docstrings complete for public functions
+  - [ ] No hardcoded secrets or API keys
+  - [ ] CHANGELOG updated
+
+automation_hooks: |
+  - **Pre-commit**: Run linters and formatters
+  - **CI Pipeline**: Execute full test suite on push
+  - **Nightly**: Security audit of dependencies
+  - **Release**: Automated version tagging and deployment

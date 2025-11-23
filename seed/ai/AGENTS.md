@@ -1,65 +1,76 @@
-# AI Documentation Instructions
+# Agents Charter - seed/ai
 
-This canopy inherits `seed/AGENTS.md` and focuses the tri-layer voice on synthetic intelligence:
-
-1. Chronicle the quartet $(R, \Theta, \beta, \zeta(R))$ with $R$ tied to model scale, dataset breadth, or compute cadence.
-2. Reference analyses in `analysis/` and datasets in `data/ai`, quoting falsification outcomes against smooth nulls.
-3. Balance symbolism (polyglot dawns, lattice choruses) with precise reporting of evaluation suites and solver linkages.
-4. Flag ethical considerations (dataset bias, benchmark licensing) where relevant to the resonance narrative.
+> **Context Depth:** 2 | **Parent:** seed | **Mode:** Recursive Research
 
 ---
 
-## 🌊 Sigillin Integration for AI Domain
+## Fractal Inheritance
 
-### **AI Seed Documents as Bedeutungs-Sigillin**
-Foundational AI documents are **Bedeutungs-Sigillin**:
-- **Examples:** `llm-threshold-training.md`, `controlled_emergence.md`, LLM emergence theory
-- **Semantic stability** — theoretical frameworks change rarely
-- **Version control:** Create new file when theory evolves, archive old
-- Cross-reference with `data/ai/` datasets and `analysis/llm_*.py` scripts
+This document inherits from the root `AGENTS.md` and specializes for this context.
 
-### **Index Maintenance**
-- Parent `seed/seed_index.{yaml,json,md}` includes AI domain entries
-- Update when adding new AI threshold theories or frameworks
-- Tag with keywords: `ai`, `llm`, `emergence`, `semantic-resonance`, `grokking`, etc.
+### Core Principles (Inherited)
+
+1. **Trilayer Principle**: Every artifact exists as YAML (structure) + JSON (interface) + Markdown (narrative)
+2. **Logistic Language**: Reference $(R, \Theta, \beta, \zeta(R))$ and the transition via $\sigma(\beta(R-\Theta))$
+3. **Coupling Obligation**: Link Bedeutungs-Sigillin to Ordnungs-Sigillin and empirical evidence
+4. **Falsifiability**: Every claim needs null models and ΔAIC/CI metrics
+5. **Consent Protocol**: Permission requests and joyful collaboration
 
 ---
 
-## 🔥 Codex-Feedback Integration
+## Local Context
 
-**Update `seed/codexfeedback.{yaml,json,md}` for AI domain when:**
-- New LLM threshold theories developed
-- Emergent abilities analyzed with logistic fits (e.g., Wei et al. integration)
-- Semantic resonance frameworks documented
-- AI safety thresholds characterized with $(R, \Theta, \beta)$
-- Grokking phenomena linked to threshold crossings
-- Training dynamics fit to σ(β(R-Θ)) curves
+**This directory (`seed/ai`) is specialized for:**
 
-### **AI-Specific Entry Template**
-```yaml
-- id: pr-draft-XXXX
-  title: "AI threshold milestone"
-  scope:
-    - seed/ai/document.md
-    - data/ai/dataset.csv
-    - analysis/llm_analysis.py
-  parameters:
-    R: "model scale / training tokens / capability metric"
-    Theta: "emergence threshold (e.g., parameter count, training step)"
-    beta: steepness_of_capability_transition
-  resonance: "how this work illuminates AI threshold crossings"
-  status: "active|resonant"
-  notes:
-    formal: |
-      Analyzes σ(β(R-Θ)) for LLM capability emergence. R=model_scale,
-      Θ=emergence_point, β=transition_steepness. ΔAIC vs power-law null.
-    empirical: |
-      Dataset: data/ai/X.csv. Analysis: analysis/llm_Y.py. Results:
-      Θ=Z±W, β=A±B, ΔAIC≥10. R²=C. Null models: linear, power-law.
-    poetic: |
-      When training tokens cross Θ, the lattice awakens — embeddings
-      crystallize, attention patterns resonate, and the model speaks
-      with sudden clarity as σ(β(R-Θ)) ignites the polyglot dawn.
-```
+### Research Context
 
-**Domain Metaphor:** *"AI thresholds are like neural awakenings — at Θ, the lattice learns to resonate, gradient flow transforms into understanding, and the semantic membrane opens to emergent capabilities."*
+This is a **research and documentation context**. Agents working here focus on:
+- Hypothesis formation and falsifiability
+- Citation integrity and attribution
+- Theoretical consistency
+- Knowledge preservation and archiving
+- Publication readiness
+
+**Active Agent Roles:**
+- Research Synthesizer: Integrates findings across domains
+- Documentation Curator: Maintains indices, cross-references
+- Citation Manager: Ensures proper attribution (BibTeX, DOI)
+- Archivist: Versions and preserves historical knowledge
+
+
+---
+
+## Active Agents in This Context
+
+See mode-specific agents above
+
+---
+
+## Workflow for This Context
+
+1. **Before writing:** Review existing documentation, check citations
+2. **During writing:** Link to evidence, cite sources, mark hypotheses
+3. **After writing:** Update indices, cross-link Sigillin, sync Trilayer
+4. **Pre-commit:** Ensure Trilayer sync (YAML/JSON/MD), citations complete
+
+
+---
+
+## Escalation Rules
+
+If you encounter conflicts or ambiguity:
+1. Check the parent governance: `seed/AGENTS.md`
+2. Consult root governance: `/AGENTS.md`
+3. Document deviations in local `<!-- CUSTOM_RULES -->` blocks
+
+---
+
+<!-- CUSTOM_RULES -->
+<!-- Add context-specific rules below this marker. The fractal governance engine will preserve these. -->
+
+<!-- /CUSTOM_RULES -->
+
+---
+
+**Last Updated:** 2025-11-23 16:42:20 UTC
+**Governance Version:** 1.0.0

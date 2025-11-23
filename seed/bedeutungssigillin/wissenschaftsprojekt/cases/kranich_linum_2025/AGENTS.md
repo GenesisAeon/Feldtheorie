@@ -1,13 +1,76 @@
-# Kranich Linum 2025 Bedeutungs-Sigillin Protokoll
+# Agents Charter - seed/bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025
 
-- **Fokus:** Massives Kranichsterben im Linumer Teichland (Brandenburg,
-  Frühjahr 2025) als Sentinel-Fall für ökologische Schwellen.
-- **Datenbindung:** Verknüpfe Beobachtungsquellen (Behördenmeldungen,
-  Naturschutzberichte) mit geplanten UTAC-Analysen. Halte Pfade zu
-  Datenspeichern oder Notebooks fest, sobald diese entstehen.
-- **Resonanzbeschreibung:** Erkläre, wie der Fall neue Kontrollparameter,
-  Risikoindikatoren oder Resonanzpfade für Kampagnenarbeit eröffnet.
-- **Tri-Schicht Parallelismus:** YAML/JSON/MD werden gemeinsam gepflegt und
-  enthalten Spiegelinformationen (IDs, Zeitstempel, Kopplungen).
-- **Shadow-Link:** Referenziere das korrespondierende Shadow-Sigillin und
-  benenne Eskalationsbedingungen, die dort überwacht werden.
+> **Context Depth:** 5 | **Parent:** seed/bedeutungssigillin/wissenschaftsprojekt/cases | **Mode:** Recursive Research
+
+---
+
+## Fractal Inheritance
+
+This document inherits from the root `AGENTS.md` and specializes for this context.
+
+### Core Principles (Inherited)
+
+1. **Trilayer Principle**: Every artifact exists as YAML (structure) + JSON (interface) + Markdown (narrative)
+2. **Logistic Language**: Reference $(R, \Theta, \beta, \zeta(R))$ and the transition via $\sigma(\beta(R-\Theta))$
+3. **Coupling Obligation**: Link Bedeutungs-Sigillin to Ordnungs-Sigillin and empirical evidence
+4. **Falsifiability**: Every claim needs null models and ΔAIC/CI metrics
+5. **Consent Protocol**: Permission requests and joyful collaboration
+
+---
+
+## Local Context
+
+**This directory (`seed/bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025`) is specialized for:**
+
+### Research Context
+
+This is a **research and documentation context**. Agents working here focus on:
+- Hypothesis formation and falsifiability
+- Citation integrity and attribution
+- Theoretical consistency
+- Knowledge preservation and archiving
+- Publication readiness
+
+**Active Agent Roles:**
+- Research Synthesizer: Integrates findings across domains
+- Documentation Curator: Maintains indices, cross-references
+- Citation Manager: Ensures proper attribution (BibTeX, DOI)
+- Archivist: Versions and preserves historical knowledge
+
+
+---
+
+## Active Agents in This Context
+
+See mode-specific agents above
+
+---
+
+## Workflow for This Context
+
+1. **Before writing:** Review existing documentation, check citations
+2. **During writing:** Link to evidence, cite sources, mark hypotheses
+3. **After writing:** Update indices, cross-link Sigillin, sync Trilayer
+4. **Pre-commit:** Ensure Trilayer sync (YAML/JSON/MD), citations complete
+
+
+---
+
+## Escalation Rules
+
+If you encounter conflicts or ambiguity:
+1. Check the parent governance: `seed/bedeutungssigillin/wissenschaftsprojekt/cases/AGENTS.md`
+2. Consult root governance: `/AGENTS.md`
+3. Document deviations in local `<!-- CUSTOM_RULES -->` blocks
+
+---
+
+<!-- CUSTOM_RULES -->
+<!-- Add context-specific rules below this marker. The fractal governance engine will preserve these. -->
+
+<!-- /CUSTOM_RULES -->
+
+---
+
+**Last Updated:** 2025-11-23 16:42:20 UTC
+**Governance Version:** 1.0.0

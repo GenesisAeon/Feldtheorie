@@ -1,15 +1,76 @@
-# Wissenschaftsprojekt Schatten-Fälle Leitlinie
+# Agents Charter - seed/shadow_sigillin/wissenschaftsprojekt/cases
 
-Diese Zone katalogisiert Schatten-Sigillin für wissenschaftliche Fallakten.
+> **Context Depth:** 4 | **Parent:** seed/shadow_sigillin/wissenschaftsprojekt | **Mode:** Recursive Research
 
-- **Alarmfunktion zuerst.** Jede Datei benennt explizite Schwellen, bei deren
-  Überschreitung Intervention nötig wird.
-- **Tri-Schichten Pflicht.** YAML, JSON und Markdown müssen spiegelbildlich
-  gepflegt werden.
-- **Logistikquartett.** Dokumentiere $R$ (Risikodruck), $\Theta$ (tolerierbare
-  Schwelle), $\beta$ (Eskaltionsschärfe) und $\zeta(R)$ (Dämpfung durch
-  Rituale/Telemetry).
-- **Kopplung.** Verweise auf das Licht-Sigillin sowie BreakPoint- oder
-  Governance-Hebel.
-- **Archivierung.** Bestehende Warnungen niemals löschen – neue Versionen
-  anhängen und in `seed/codexfeedback.*` notieren.
+---
+
+## Fractal Inheritance
+
+This document inherits from the root `AGENTS.md` and specializes for this context.
+
+### Core Principles (Inherited)
+
+1. **Trilayer Principle**: Every artifact exists as YAML (structure) + JSON (interface) + Markdown (narrative)
+2. **Logistic Language**: Reference $(R, \Theta, \beta, \zeta(R))$ and the transition via $\sigma(\beta(R-\Theta))$
+3. **Coupling Obligation**: Link Bedeutungs-Sigillin to Ordnungs-Sigillin and empirical evidence
+4. **Falsifiability**: Every claim needs null models and ΔAIC/CI metrics
+5. **Consent Protocol**: Permission requests and joyful collaboration
+
+---
+
+## Local Context
+
+**This directory (`seed/shadow_sigillin/wissenschaftsprojekt/cases`) is specialized for:**
+
+### Research Context
+
+This is a **research and documentation context**. Agents working here focus on:
+- Hypothesis formation and falsifiability
+- Citation integrity and attribution
+- Theoretical consistency
+- Knowledge preservation and archiving
+- Publication readiness
+
+**Active Agent Roles:**
+- Research Synthesizer: Integrates findings across domains
+- Documentation Curator: Maintains indices, cross-references
+- Citation Manager: Ensures proper attribution (BibTeX, DOI)
+- Archivist: Versions and preserves historical knowledge
+
+
+---
+
+## Active Agents in This Context
+
+See mode-specific agents above
+
+---
+
+## Workflow for This Context
+
+1. **Before writing:** Review existing documentation, check citations
+2. **During writing:** Link to evidence, cite sources, mark hypotheses
+3. **After writing:** Update indices, cross-link Sigillin, sync Trilayer
+4. **Pre-commit:** Ensure Trilayer sync (YAML/JSON/MD), citations complete
+
+
+---
+
+## Escalation Rules
+
+If you encounter conflicts or ambiguity:
+1. Check the parent governance: `seed/shadow_sigillin/wissenschaftsprojekt/AGENTS.md`
+2. Consult root governance: `/AGENTS.md`
+3. Document deviations in local `<!-- CUSTOM_RULES -->` blocks
+
+---
+
+<!-- CUSTOM_RULES -->
+<!-- Add context-specific rules below this marker. The fractal governance engine will preserve these. -->
+
+<!-- /CUSTOM_RULES -->
+
+---
+
+**Last Updated:** 2025-11-23 16:42:20 UTC
+**Governance Version:** 1.0.0

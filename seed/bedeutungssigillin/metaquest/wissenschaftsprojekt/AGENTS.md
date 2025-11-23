@@ -1,21 +1,76 @@
-# Metaquest Campaign Compass Protocol
+# Agents Charter - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt
 
-This chamber guides the wissenschaftsprojekt view of the Metaquest
-launch.
+> **Context Depth:** 4 | **Parent:** seed/bedeutungssigillin/metaquest | **Mode:** Recursive Research
 
-- **Logistic quartet.** Let $R$ be the campaign backlog (manuscript,
-  outreach, endorsements), $\Theta$ the checkpoints recorded in
-  `seed/Manuskriptfinalisierung und Kampagnenstart.pdf` +
-  `docs/utac_status_alignment_v1.2.md`, with $\beta \approx 4.85$ and
-  $\zeta(R)$ soothed by BreakPoint rituals.
-- **Tri-layer synchrony.** Always update YAML/JSON/MD together. Reference
-  the bridge index (`../metaquest_meaning_index.*`) and the parent
-  wissenschaftsprojekt Metaquest map under
-  `../../wissenschaftsprojekt/metaquest/`.
-- **Coupling + falsifiability.** Cite manuscripts, simulator demos,
-  outreach drafts, and ΔAIC/null scenarios so resonance remains
-  testable. Pair every light-side note with its shadow counterpart in
-  `../../../shadow_sigillin/metaquest/wissenschaftsprojekt/`.
-- **Codex + indices.** Record mq-sci gap ids in the codex and mirror new
-  assets in `seed/seed_index.*` and `feldtheorie_index.*` when updating
-  this compass.
+---
+
+## Fractal Inheritance
+
+This document inherits from the root `AGENTS.md` and specializes for this context.
+
+### Core Principles (Inherited)
+
+1. **Trilayer Principle**: Every artifact exists as YAML (structure) + JSON (interface) + Markdown (narrative)
+2. **Logistic Language**: Reference $(R, \Theta, \beta, \zeta(R))$ and the transition via $\sigma(\beta(R-\Theta))$
+3. **Coupling Obligation**: Link Bedeutungs-Sigillin to Ordnungs-Sigillin and empirical evidence
+4. **Falsifiability**: Every claim needs null models and ΔAIC/CI metrics
+5. **Consent Protocol**: Permission requests and joyful collaboration
+
+---
+
+## Local Context
+
+**This directory (`seed/bedeutungssigillin/metaquest/wissenschaftsprojekt`) is specialized for:**
+
+### Research Context
+
+This is a **research and documentation context**. Agents working here focus on:
+- Hypothesis formation and falsifiability
+- Citation integrity and attribution
+- Theoretical consistency
+- Knowledge preservation and archiving
+- Publication readiness
+
+**Active Agent Roles:**
+- Research Synthesizer: Integrates findings across domains
+- Documentation Curator: Maintains indices, cross-references
+- Citation Manager: Ensures proper attribution (BibTeX, DOI)
+- Archivist: Versions and preserves historical knowledge
+
+
+---
+
+## Active Agents in This Context
+
+See mode-specific agents above
+
+---
+
+## Workflow for This Context
+
+1. **Before writing:** Review existing documentation, check citations
+2. **During writing:** Link to evidence, cite sources, mark hypotheses
+3. **After writing:** Update indices, cross-link Sigillin, sync Trilayer
+4. **Pre-commit:** Ensure Trilayer sync (YAML/JSON/MD), citations complete
+
+
+---
+
+## Escalation Rules
+
+If you encounter conflicts or ambiguity:
+1. Check the parent governance: `seed/bedeutungssigillin/metaquest/AGENTS.md`
+2. Consult root governance: `/AGENTS.md`
+3. Document deviations in local `<!-- CUSTOM_RULES -->` blocks
+
+---
+
+<!-- CUSTOM_RULES -->
+<!-- Add context-specific rules below this marker. The fractal governance engine will preserve these. -->
+
+<!-- /CUSTOM_RULES -->
+
+---
+
+**Last Updated:** 2025-11-23 16:42:20 UTC
+**Governance Version:** 1.0.0

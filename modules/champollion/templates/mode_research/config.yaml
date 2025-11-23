@@ -1,0 +1,102 @@
+mode: "Recursive Research"
+mode_id: "research"
+description: "Context for documentation, theory, manuscripts, and knowledge synthesis"
+
+# Folder patterns that match this mode
+folder_patterns:
+  - "docs/"
+  - "seed/"
+  - "paper/"
+  - "theory/"
+  - "archive/"
+  - "releases/"
+
+# Mode-specific content for templates
+agents_content: |
+  ### Research Context
+
+  This is a **research and documentation context**. Agents working here focus on:
+  - Hypothesis formation and falsifiability
+  - Citation integrity and attribution
+  - Theoretical consistency
+  - Knowledge preservation and archiving
+  - Publication readiness
+
+  **Active Agent Roles:**
+  - Research Synthesizer: Integrates findings across domains
+  - Documentation Curator: Maintains indices, cross-references
+  - Citation Manager: Ensures proper attribution (BibTeX, DOI)
+  - Archivist: Versions and preserves historical knowledge
+
+workflow_content: |
+  1. **Before writing:** Review existing documentation, check citations
+  2. **During writing:** Link to evidence, cite sources, mark hypotheses
+  3. **After writing:** Update indices, cross-link Sigillin, sync Trilayer
+  4. **Pre-commit:** Ensure Trilayer sync (YAML/JSON/MD), citations complete
+
+ethics_content: |
+  ### Research Ethics
+
+  - **Citation Integrity**: Always credit original authors with DOI/URL
+  - **Hypothesis Transparency**: Mark speculative claims clearly
+  - **Falsifiability**: Provide criteria for disproving hypotheses
+  - **Version Control**: Never delete history; archive old theories
+  - **Conflict of Interest**: Disclose any competing interpretations
+
+data_governance: |
+  - Cite all data sources used in manuscripts
+  - Include BibTeX entries for every reference
+  - Archive drafts with semantic versions (v1.0, v1.1, etc.)
+  - Preserve rejected hypotheses in `archive/`
+
+misuse_risks: |
+  | Risk | Mitigation |
+  |------|------------|
+  | Plagiarism | Check all text through originality tools |
+  | Cherry-picking citations | Include contradictory evidence |
+  | Unfalsifiable claims | Define clear disconfirmation criteria |
+  | Overclaiming universality | Specify scope and limitations explicitly |
+
+architecture_content: |
+  ### Research Architecture
+
+  ```
+  {{PATH}}
+  ├── manuscripts/         (Papers, preprints)
+  ├── references/          (BibTeX, PDFs)
+  ├── hypotheses/          (Testable claims)
+  ├── theories/            (Formal models)
+  ├── indices/             (Navigation, cross-links)
+  └── README.md            (Knowledge map)
+  ```
+
+  **Documentation Flow:**
+  1. Hypothesis → hypotheses/
+  2. Evidence → data/, analysis/
+  3. Synthesis → manuscripts/
+  4. Review → releases/
+  5. Archive → archive/
+
+policy_content: |
+  ### Research Policy
+
+  1. **Trilayer Sync**: All major docs exist in YAML/JSON/MD
+  2. **Citation Required**: Every claim backed by reference or data
+  3. **Hypothesis Registry**: Testable claims logged in `hypotheses/`
+  4. **Peer Review**: Pre-publication review by independent agent
+  5. **Archival**: Old versions preserved in `archive/` with timestamps
+
+quality_gates: |
+  - [ ] Citations complete (DOI/URL for every reference)
+  - [ ] BibTeX entries formatted correctly
+  - [ ] Hypotheses marked as testable/speculative
+  - [ ] Trilayer documents synchronized
+  - [ ] Indices updated (seed_index, docs_index, etc.)
+  - [ ] Cross-references validated
+  - [ ] No broken links
+
+automation_hooks: |
+  - **Pre-commit**: Check for broken links and missing citations
+  - **CI Pipeline**: Validate Trilayer synchronization
+  - **Weekly**: Re-index all documentation
+  - **Release**: Generate DOI, archive with Zenodo
