@@ -1,0 +1,243 @@
+# =============================================================================
+# SIGILLIN CORE DEFINITION - Dynamic Metric Constitution
+# =============================================================================
+#
+# This file defines the "heartbeat" of the repository's quality measurement.
+# It implements the principle: "Define Top-Down, Measure Bottom-Up."
+#
+# PURPOSE:
+#   - Centralize metric definitions (what do we value?)
+#   - Enable dynamic adaptation (change metrics without changing code)
+#   - Support fractal evaluation (same metrics apply at all scales)
+#
+# PHILOSOPHY:
+#   For Feldtheorie: We measure CREP (Coherence, Resonance, Emergence, Potential)
+#   For your project: Adapt these to ROI, Efficiency, Quality, etc.
+#
+# USAGE:
+#   1. Define your metrics below under "active_metrics"
+#   2. Specify algorithms (Python functions in dynamic_crep.py)
+#   3. Set weights to prioritize what matters to your project
+#   4. Run the indexer - metrics are calculated automatically
+#
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# PROJECT METADATA
+# -----------------------------------------------------------------------------
+project_meta:
+  name: "Feldtheorie V5"
+  version: "5.0.0"
+  ontology: "Tri-Layer Sigillin (Machine/Logic/Narrative)"
+  description: |
+    A fractal knowledge system measuring the phase transition between
+    deterministic and chaotic information states.
+
+# -----------------------------------------------------------------------------
+# ACTIVE METRICS (CREP Framework)
+# -----------------------------------------------------------------------------
+#
+# Each metric requires:
+#   - label: Human-readable name
+#   - weight: Relative importance (multiplier in aggregate calculation)
+#   - description: What this metric captures
+#   - algorithm: Python function name in dynamic_crep.py
+#   - enabled: Boolean to toggle metrics on/off
+#
+# The default CREP framework:
+#   C = Coherence (internal consistency)
+#   R = Resonance (external connectivity)
+#   E = Emergence (novelty/phase transition)
+#   P = Potential (future capacity)
+#
+# ADAPTATION EXAMPLES:
+#   - Business: Replace E with "Efficiency", P with "Profit"
+#   - Poetry: Replace C with "Clarity", R with "Rhythm"
+#   - Engineering: Add S for "Safety", T for "Testability"
+# -----------------------------------------------------------------------------
+
+active_metrics:
+
+  C:
+    label: "Coherence"
+    weight: 1.2
+    description: |
+      Measures internal consistency between code, documentation, and metadata.
+      High coherence = low variance in confidence scores, aligned keywords.
+    algorithm: "calculate_coherence"
+    enabled: true
+    thresholds:
+      excellent: 0.9
+      good: 0.7
+      warning: 0.5
+      critical: 0.3
+
+  R:
+    label: "Resonance"
+    weight: 1.0
+    description: |
+      Measures connectivity: how often this artifact is referenced by others.
+      Based on link density, keyword overlap, and subfolder interdependence.
+    algorithm: "calculate_resonance"
+    enabled: true
+    thresholds:
+      excellent: 0.8
+      good: 0.6
+      warning: 0.4
+      critical: 0.2
+
+  E:
+    label: "Emergence"
+    weight: 0.8
+    description: |
+      Measures novelty and phase transition indicators.
+      For Feldtheorie: Detects beta (β) in Ising models, entropy spikes.
+      For general use: Stub returns normalized variance or complexity score.
+    algorithm: "calculate_emergence"
+    enabled: true
+    thresholds:
+      excellent: 1.5  # High emergence = phase transition
+      good: 1.0
+      warning: 0.5
+      critical: 0.2
+    notes: |
+      This is where the "magic" happens. In full implementation, this would
+      analyze time-series data for criticality indicators. For now, we use
+      a stub that estimates emergence from file diversity and metadata entropy.
+
+  P:
+    label: "Potential"
+    weight: 1.1
+    description: |
+      Measures future capacity: open TODOs, draft content, experimental markers.
+      High potential = many opportunities for growth.
+    algorithm: "calculate_potential"
+    enabled: true
+    thresholds:
+      excellent: 0.9
+      good: 0.7
+      warning: 0.5
+      critical: 0.3
+    markers:
+      - "TODO"
+      - "FIXME"
+      - "DRAFT"
+      - "EXPERIMENTAL"
+      - "WIP"
+
+# -----------------------------------------------------------------------------
+# AGGREGATE CALCULATION
+# -----------------------------------------------------------------------------
+#
+# How to combine individual metrics into a single "Sigillin Score"
+# Options: "weighted_average", "geometric_mean", "harmonic_mean", "custom"
+# -----------------------------------------------------------------------------
+
+aggregation:
+  method: "weighted_average"  # Standard approach
+  normalize: true  # Scale final score to [0, 1]
+  include_disabled: false  # Ignore metrics with enabled=false
+
+# -----------------------------------------------------------------------------
+# GOVERNANCE INTEGRATION
+# -----------------------------------------------------------------------------
+#
+# Define actions when metrics fall below thresholds
+# -----------------------------------------------------------------------------
+
+governance:
+  min_coherence_threshold: 0.7
+  min_resonance_threshold: 0.4
+
+  actions_on_threshold_violation:
+    - type: "flag_in_report"
+      severity: "warning"
+      message: "Metric below threshold - review recommended"
+
+    - type: "log_to_governance"
+      enabled: false  # Set true to write violations to governance log
+
+    # Future: Could add "block_merge" for CI/CD integration
+    # - type: "block_merge"
+    #   enabled: false
+
+  violation_report_path: "docs/governance/metric_violations.md"
+
+# -----------------------------------------------------------------------------
+# ALGORITHM CONFIGURATION
+# -----------------------------------------------------------------------------
+#
+# Parameters for specific calculation algorithms
+# -----------------------------------------------------------------------------
+
+algorithm_params:
+
+  # Coherence calculation
+  coherence:
+    use_confidence_variance: true  # Low variance = high coherence
+    use_keyword_alignment: true    # Keyword consistency across subfolders
+    use_origin_diversity: true     # Mixed origins = lower coherence
+
+  # Resonance calculation
+  resonance:
+    count_internal_links: true     # How many files reference each other
+    count_keyword_overlap: true    # Shared keywords = connection
+    decay_factor: 0.5              # Discount distant connections
+
+  # Emergence calculation (STUB mode for now)
+  emergence:
+    mode: "stub"  # Options: "stub", "entropy", "beta_ising"
+    stub_randomness: 0.3  # Add noise to simulate real variance
+    entropy_base: 2  # For Shannon entropy calculations
+
+  # Potential calculation
+  potential:
+    scan_file_contents: true   # Search for TODO markers
+    max_files_to_scan: 100     # Performance limit
+    keyword_density_weight: 0.6  # Balance between TODOs and keywords
+
+# -----------------------------------------------------------------------------
+# OUTPUT CONFIGURATION
+# -----------------------------------------------------------------------------
+
+output:
+  include_in_yaml_index: true      # Add metrics to folder_index.yaml
+  include_in_readme: true          # Add metrics section to README.md
+  include_in_context_json: true   # Add metrics to folder_context.json
+
+  readme_section_title: "📊 System Metrics (Dynamic Sigillin)"
+  readme_format: "compact"  # Options: "compact", "detailed", "minimal"
+
+  # Visualization hints (for future dashboard integration)
+  visualization:
+    enabled: false
+    chart_type: "radar"  # CREP as 4-axis radar chart
+    color_scheme: "viridis"
+
+# -----------------------------------------------------------------------------
+# EXTENSION POINTS
+# -----------------------------------------------------------------------------
+#
+# Hooks for custom metrics (advanced usage)
+# -----------------------------------------------------------------------------
+
+extensions:
+  custom_metrics: []
+  # Example:
+  # - name: "Security"
+  #   algorithm: "scan_for_vulnerabilities"
+  #   weight: 2.0
+
+  plugin_path: "modules/champollion/plugins/"  # For loading external calculators
+
+# -----------------------------------------------------------------------------
+# METADATA
+# -----------------------------------------------------------------------------
+
+meta:
+  config_version: "1.0.0"
+  created: "2025-11-23"
+  author: "Feldtheorie Governance Engine"
+  license: "MIT"
+  adaptable: true
+  documentation: "docs/customizing_metrics.md"

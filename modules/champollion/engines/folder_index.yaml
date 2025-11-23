@@ -1,0 +1,37 @@
+folder: engines
+indexed_at: '2025-11-23T17:19:45.244829Z'
+statistics:
+  files: 2
+  subfolders: 0
+  metadata_sources: 0
+confidence:
+  aggregate: 1.0
+  min: 1.0
+  max: 1.0
+origins: {}
+file_types:
+  .py: 2
+keywords: []
+subfolders: []
+governance:
+  violations_count: 0
+  has_violations: false
+sigillin_metrics:
+  aggregate_score: 0.5264
+  components:
+    C:
+      value: 1.0
+      label: Coherence
+      status: excellent
+    R:
+      value: 0.0
+      label: Resonance
+      status: critical
+    E:
+      value: 1.1978
+      label: Emergence
+      status: good
+    P:
+      value: 0.0
+      label: Potential
+      status: critical

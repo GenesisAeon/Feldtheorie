@@ -81,5 +81,5 @@ Before committing work in `archive/legacy_v1_v3/data`:
 
 ---
 
-**Last Updated:** 2025-11-23 16:46:11 UTC
+**Last Updated:** 2025-11-23 17:21:06 UTC
 **Governance Version:** 1.0.0
