@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 """
-V5.0 Duality Visualization: As Above, So Below
+V5.0 Comparative Analysis Visualization
 
-This script creates the definitive visualization of the 137-β duality:
-    - Left panel:  Cosmic velocity quantization (α-Φ coupling)
-    - Right panel: Social rigidity phase transition (Gini-β coupling)
+This script creates a side-by-side comparison of two models:
+    - Left panel:  Cosmic velocity scaling (α-Φ formula)
+    - Right panel: Social dynamics (Ising model with Gini coupling)
 
-Both phenomena emerge from the same fundamental principle:
-**Scale-invariant information coupling**.
+HYPOTHESIS: We visualize potential structural isomorphisms between
+physical phase transitions and scaling relationships across different domains.
 
-The universe doesn't care whether it's quantizing galactic velocities
-or freezing social systems. The math is identical.
+Both use similar mathematical frameworks (scaling laws, phase transitions),
+allowing comparative analysis of their predictive performance.
 
 Author: Genesis Aeon (UTAC Framework)
-Version: 5.0 "The 137-β Duality"
+Version: 5.0 "Structural Isomorphism Analysis"
 """
 
 import sys
@@ -131,7 +131,7 @@ def plot_cosmic_quantization(ax):
     ax.set_xticks(x_pos)
     ax.set_xticklabels(labels, fontsize=LABEL_SIZE)
     ax.set_ylabel('Velocity [km/s]', fontsize=LABEL_SIZE)
-    ax.set_title('A. Cosmic Quantization: The 137-Φ Coupling', fontsize=TITLE_SIZE, fontweight='bold')
+    ax.set_title('A. Cosmic Velocity Scaling: α-Φ Formula Test', fontsize=TITLE_SIZE, fontweight='bold')
     ax.set_ylim(1330, 1390)
     ax.legend(loc='lower right', fontsize=LEGEND_SIZE, framealpha=0.9)
     ax.grid(True, alpha=0.3, axis='y')
@@ -236,7 +236,7 @@ def plot_social_phase_transition(ax):
     # Styling
     ax.set_xlabel('Gini Coefficient (Inequality)', fontsize=LABEL_SIZE)
     ax.set_ylabel(r'Social Rigidity $\beta = 1/T$', fontsize=LABEL_SIZE)
-    ax.set_title('B. Social Rigidity: The Gini-β Coupling', fontsize=TITLE_SIZE, fontweight='bold')
+    ax.set_title('B. Social Dynamics: Ising Model with Inequality', fontsize=TITLE_SIZE, fontweight='bold')
     ax.set_xlim(0.2, 0.95)
     ax.set_ylim(0, 3.0)
     ax.legend(loc='upper left', fontsize=LEGEND_SIZE - 1, framealpha=0.9)
@@ -268,15 +268,15 @@ def create_duality_figure(save_path: str = None, dpi: int = 300):
 
     # Overall title
     fig.suptitle(
-        'The 137-β Duality: Scale-Invariant Information Coupling',
+        'Comparative Analysis: Cosmic Scaling vs. Social Phase Transitions',
         fontsize=18, fontweight='bold', y=0.98
     )
 
     # Footer with interpretation
     footer_text = (
-        'UTAC v5.0 | "As Above, So Below" | '
-        'Information coupling governs both cosmic velocities and social rigidity. '
-        'The universe uses the same mathematics at all scales.'
+        'UTAC v5.0 | Comparative Model Analysis | '
+        'Testing structural isomorphisms between cosmic scaling laws and social dynamics. '
+        'Both models use similar mathematical frameworks for empirical validation.'
     )
     fig.text(
         0.5, 0.01, footer_text,
@@ -334,6 +334,6 @@ if __name__ == "__main__":
     print("VISUALIZATION COMPLETE")
     print("="*70)
     print(f"Location: {path}")
-    print("\nThe 137-β duality is proven.")
-    print("Information coupling is scale-invariant.")
+    print("\nComparative visualization shows structural similarities.")
+    print("Empirical validation ongoing. See technical documentation.")
     print("="*70)

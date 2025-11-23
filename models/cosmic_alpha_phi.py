@@ -1,27 +1,32 @@
 """
-Cosmic Velocity Quantization via the 137-β Duality (UTAC v5.0)
+Cosmic Velocity Scaling Analysis (UTAC v5.0)
 
-This module implements the mathematical prediction that the solar system's velocity
-through the cosmic microwave background (CMB) is quantized by fundamental constants:
+This module implements a mathematical analysis of the solar system's velocity
+through the cosmic microwave background (CMB) using fundamental constants:
 
-    v_RIG = c / (α^-1 · Φ)
+    v_test = c / (α^-1 · Φ)
 
 where:
     - c = speed of light (exact: 299792.458 km/s)
     - α = fine-structure constant (~1/137.036)
     - Φ = golden ratio = (1 + √5) / 2
 
-The prediction yields v_RIG ≈ 1352 km/s, remarkably close to the Bielefeld
-measurement (Böhme et al.) of 1370 ± 10 km/s.
+The formula yields v_test ≈ 1352 km/s. The Bielefeld measurement
+(Böhme et al.) reports 1370 ± 10 km/s.
+
+HYPOTHESIS: We test whether fundamental constants show correlation with
+observed cosmic velocities, using null hypothesis testing to assess
+statistical significance.
 
 This module provides:
-    - High-precision calculation of v_RIG
+    - High-precision calculation of v_test
     - Statistical comparison with observational data
     - Monte Carlo uncertainty propagation
+    - Null hypothesis testing (random constant replacement)
     - Quantification of statistical significance
 
 Author: Genesis Aeon (UTAC Framework)
-Version: 5.0 "The 137-β Duality"
+Version: 5.0 "Scale-Invariant Analysis"
 """
 
 from typing import Dict, Tuple, Optional
@@ -108,21 +113,23 @@ class MonteCarloResult:
 
 class CosmicQuantization:
     """
-    Implements the cosmic velocity quantization hypothesis.
+    Implements empirical testing of cosmic velocity scaling hypothesis.
 
-    The fundamental prediction is that information coupling between
-    quantum and cosmic scales manifests as:
+    We test whether the formula:
 
-        v_RIG = c / (α^-1 · Φ)
+        v_test = c / (α^-1 · Φ)
 
-    This represents a "Rigidity-Induced Gauge" velocity, where the
-    fine-structure constant α acts as a quantum information bottleneck
-    and the golden ratio Φ emerges from optimal information packing.
+    shows statistically significant correlation with observed velocities.
+
+    The fine-structure constant α and golden ratio Φ are chosen based on
+    prior theoretical considerations. We compare this prediction against
+    null models using random constants to assess significance.
 
     Methods:
-        predict_velocity: Calculate v_RIG from constants
+        predict_velocity: Calculate v_test from constants
         compare_boehme: Statistical comparison with observations
         monte_carlo_uncertainty: Propagate measurement uncertainties
+        null_hypothesis_test: Test against random constant models
     """
 
     def __init__(
@@ -148,19 +155,19 @@ class CosmicQuantization:
 
     def predict_velocity(self) -> float:
         """
-        Calculate the predicted RIG velocity.
+        Calculate the test velocity from fundamental constants.
 
         Returns:
-            v_RIG in km/s
+            v_test in km/s
 
-        Mathematical derivation:
-            v_RIG = c / (α^-1 · Φ)
-                  = c · α / Φ
-                  ≈ 299792.458 · 0.0072973525693 / 1.618033988749895
-                  ≈ 1352.3 km/s
+        Mathematical formula:
+            v_test = c / (α^-1 · Φ)
+                   = c · α / Φ
+                   ≈ 299792.458 · 0.0072973525693 / 1.618033988749895
+                   ≈ 1352.3 km/s
         """
-        v_rig = (self.c * self.alpha) / self.phi
-        return v_rig
+        v_test = (self.c * self.alpha) / self.phi
+        return v_test
 
     def compare_boehme(
         self,
@@ -247,6 +254,60 @@ class CosmicQuantization:
             samples=v_samples
         )
 
+    def null_hypothesis_test(
+        self,
+        n_random_trials: int = 10_000,
+        alpha_range: Tuple[float, float] = (0.001, 0.02),
+        phi_range: Tuple[float, float] = (1.3, 2.0),
+        seed: Optional[int] = 42
+    ) -> Dict[str, float]:
+        """
+        Test null hypothesis: random constants vs. α and Φ.
+
+        This tests whether α and Φ produce significantly better predictions
+        than randomly chosen constants in similar ranges.
+
+        Args:
+            n_random_trials: Number of random constant pairs to test
+            alpha_range: Range for random α values
+            phi_range: Range for random Φ values
+            seed: Random seed for reproducibility
+
+        Returns:
+            Dictionary with null hypothesis test results
+        """
+        if seed is not None:
+            np.random.seed(seed)
+
+        # Our prediction
+        our_prediction = self.predict_velocity()
+        our_deviation = abs(BOEHME_VELOCITY_KM_S - our_prediction)
+
+        # Generate random alternative predictions
+        random_alphas = np.random.uniform(alpha_range[0], alpha_range[1], n_random_trials)
+        random_phis = np.random.uniform(phi_range[0], phi_range[1], n_random_trials)
+
+        random_predictions = (self.c * random_alphas) / random_phis
+        random_deviations = np.abs(BOEHME_VELOCITY_KM_S - random_predictions)
+
+        # How many random models are better?
+        better_than_ours = np.sum(random_deviations < our_deviation)
+        p_value_null = (better_than_ours + 1) / (n_random_trials + 1)
+
+        # Statistics of random models
+        mean_random_deviation = np.mean(random_deviations)
+        std_random_deviation = np.std(random_deviations, ddof=1)
+
+        return {
+            'our_deviation_km_s': our_deviation,
+            'mean_random_deviation_km_s': mean_random_deviation,
+            'std_random_deviation_km_s': std_random_deviation,
+            'p_value_null': p_value_null,
+            'n_random_better': better_than_ours,
+            'n_trials': n_random_trials,
+            'improvement_factor': mean_random_deviation / our_deviation if our_deviation > 0 else np.inf
+        }
+
     def significance_analysis(self) -> Dict[str, float]:
         """
         Comprehensive statistical significance analysis.
@@ -298,7 +359,7 @@ def quick_prediction() -> float:
 
 def full_analysis(verbose: bool = True) -> Dict:
     """
-    Run complete analysis: prediction, comparison, and Monte Carlo.
+    Run complete analysis: prediction, comparison, Monte Carlo, and null test.
 
     Args:
         verbose: Print results to stdout
@@ -317,17 +378,28 @@ def full_analysis(verbose: bool = True) -> Dict:
     # Monte Carlo uncertainty
     mc_result = model.monte_carlo_uncertainty(n_samples=100_000)
 
+    # Null hypothesis test
+    null_test = model.null_hypothesis_test(n_random_trials=10_000)
+
     # Significance metrics
     significance = model.significance_analysis()
 
     if verbose:
         print("=" * 70)
-        print("COSMIC VELOCITY QUANTIZATION ANALYSIS (UTAC v5.0)")
+        print("COSMIC VELOCITY SCALING ANALYSIS (UTAC v5.0)")
         print("=" * 70)
         print()
         print(comparison)
         print()
         print(mc_result)
+        print()
+        print("NULL HYPOTHESIS TEST:")
+        print(f"  Our deviation:          {null_test['our_deviation_km_s']:8.2f} km/s")
+        print(f"  Random mean deviation:  {null_test['mean_random_deviation_km_s']:8.2f} km/s")
+        print(f"  Random std deviation:   {null_test['std_random_deviation_km_s']:8.2f} km/s")
+        print(f"  p-value (null):         {null_test['p_value_null']:.6f}")
+        print(f"  Improvement factor:     {null_test['improvement_factor']:8.2f}x")
+        print(f"  Random models better:   {null_test['n_random_better']}/{null_test['n_trials']}")
         print()
         print("SIGNIFICANCE METRICS:")
         for key, value in significance.items():
@@ -343,6 +415,7 @@ def full_analysis(verbose: bool = True) -> Dict:
         'prediction': v_pred,
         'comparison': comparison,
         'monte_carlo': mc_result,
+        'null_hypothesis': null_test,
         'significance': significance
     }
 
@@ -366,5 +439,5 @@ if __name__ == "__main__":
         print(f"  Φ = {phi_test:.6f}  →  v_RIG = {v:7.2f} km/s")
 
     print()
-    print("CONCLUSION: The 137-Φ coupling predicts cosmic velocity to ~1.3% accuracy.")
-    print("This is far beyond coincidence (p << 0.001).")
+    print("CONCLUSION: α-Φ formula shows correlation with measured velocity.")
+    print(f"Statistical significance assessed via null hypothesis testing.")
