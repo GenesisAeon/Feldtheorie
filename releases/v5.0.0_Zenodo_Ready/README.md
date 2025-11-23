@@ -77,6 +77,29 @@ python prepare_upload.py --dry-run
 python prepare_upload.py
 ```
 
+To recreate the Python environment used for the release scripts and analyses, install the pinned dependencies in this directory:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+## V5 Scientific Reference Links
+
+- **docs/v5_hypothesis_isomorphism.md** – canonical description of the 137‑β structural isomorphism question and its falsification paths.
+- **docs/v5_validation_session_2025-11-23.md** – summary of Monte‑Carlo and look‑elsewhere scans (Operation Budget Burner), including the 0.8 % quantile placement of the preferred constant pair.
+- **docs/v5_fit_mor_sigillin_review.md** – code review and MOR‑FIT compliance notes for the new cosmic and social models.
+
+These references keep the Zenodo bundle anchored to the latest V5 validation results and make the empirical caveats discoverable from the release entry point.
+
+## Packaging Profiles
+
+- `--profile full` (default): archives the entire repository minus standard exclusions.
+- `--profile slim`: excludes historical and heavy paths (`archive/`, `output/`, `results/`, `seed/`, `notebooks/`, `dags/`, `vr/`) to produce a reproducibility‑focused bundle for Zenodo while keeping code, papers, and core data intact.
+
+The active profile is recorded inside `MANIFEST.txt` for provenance. Use the slim profile when Zenodo readers need a lean archive without losing the validated pipelines.
+
 ---
 
 ## The Strategy: "Repo as Proof"
@@ -169,6 +192,14 @@ See UPLOAD_CHECKLIST.md for complete metadata template.
 
 ---
 
+## Data Availability & Licensing Notes
+
+- **Open datasets only:** Include public or pseudonymized datasets in the Zenodo bundle. Omit sensitive social datasets; if needed, provide access instructions instead of raw records.
+- **Default licenses:** Code remains MIT; documentation and shared data default to CC BY 4.0. Ensure any added datasets are license-compatible and cite provenance in `MANIFEST.txt` entries.
+- **User-supplied data hooks:** Social rigidity notebooks and `data/grounding` loaders accept external CSV inputs—document any custom files in the upload description so reviewers understand how to reproduce results safely.
+
+---
+
 ## Post-Upload TODO
 
 After getting the DOI from Zenodo:
@@ -192,6 +223,7 @@ The assessment PDF (`Analyse und EinschätzungreleaseV5.pdf`) highlighted severa
 
 - **Empirical social-data validation:** Link any real Gini/Load datasets only after anonymization and document provenance; keep the social model labeled as unvalidated until results exist.
 - **Alternative constant comparisons:** Preserve Monte-Carlo comparisons against alternative constant pairs and report ΔAIC/Bayes factors alongside the 137-β framing.
+- **Look-elsewhere transparency:** Surface the Operation Budget Burner scans and validation-session quantiles (see reference links above) so readers understand the preferred constant pair is notable but not unique.
 - **Concise navigation:** Keep this bundle as the entry point for Zenodo and reference detailed theory/method documents from here to reduce overload for new readers.
 
 These adjustments keep the governance/tooling claims reproducible while ensuring the hypothesis remains clearly marked as active research.
@@ -208,7 +240,7 @@ unzip -t Feldtheorie_v5.0.0_Source.zip
 
 # Count files
 unzip -l Feldtheorie_v5.0.0_Source.zip | wc -l
-# Should show ~2173 files
+# Should show ~2173 files (full profile) or fewer when using --profile slim
 
 # Check archive size
 ls -lh Feldtheorie_v5.0.0_Source.zip
