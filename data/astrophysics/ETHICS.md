@@ -81,5 +81,5 @@ Before committing work in `data/astrophysics`:
 
 ---
 
-**Last Updated:** 2025-11-23 18:36:31 UTC
+**Last Updated:** 2025-11-23 19:04:20 UTC
 **Governance Version:** 1.0.0
