@@ -1,0 +1,28 @@
+{
+  "category": "low_coherence",
+  "artifact_count": 3,
+  "search_hints": [
+    "Baseline",
+    "baseline",
+    "entropy",
+    "noise"
+  ],
+  "avoidance_protocols": [
+    "High noise level - verify signal authenticity",
+    "Near baseline - may be random noise"
+  ],
+  "access_frequency": {
+    "read_count": 0,
+    "last_accessed": null
+  },
+  "statistics": {
+    "avg_signal_strength": 0.314,
+    "min_signal_strength": 0.287,
+    "max_signal_strength": 0.342
+  },
+  "artifact_ids": [
+    "0001",
+    "0002",
+    "0010"
+  ]
+}

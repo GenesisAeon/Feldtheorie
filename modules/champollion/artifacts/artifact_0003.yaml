@@ -1,0 +1,7 @@
+artifact_id: '0003'
+category: high_coherence
+signal_strength: 0.618
+metadata:
+  created: '2025-11-23'
+  source: mock_rosetta.csv
+  type: symbol_sequence

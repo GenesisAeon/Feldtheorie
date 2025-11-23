@@ -1,0 +1,16 @@
+{
+  "artifact_id": "0003",
+  "symbol_sequence": "10412790ZVXMKLQP",
+  "signal_strength": 0.618,
+  "category": "high_coherence",
+  "search_hints": [
+    "row 3301",
+    "signature",
+    "detected",
+    "Cicada"
+  ],
+  "warnings": [
+    "ATTENTION: Cicada signature - hidden pattern marker"
+  ],
+  "entropy_estimate": 3.75
+}

@@ -1,0 +1,11 @@
+{
+  "artifact_id": "0008",
+  "symbol_sequence": "ASDF5GHJK3POIU7Y",
+  "signal_strength": 0.524,
+  "category": "high_coherence",
+  "search_hints": [
+    "emergence"
+  ],
+  "warnings": [],
+  "entropy_estimate": 4.0
+}
