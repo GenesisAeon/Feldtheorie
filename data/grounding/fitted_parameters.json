@@ -1,0 +1,30 @@
+{
+  "crisis_optimized": {
+    "J": 0.1682361960452532,
+    "h": -0.9175784704057124,
+    "objective_value": 0.38466098062541093,
+    "success": true,
+    "message": "Optimization terminated successfully.",
+    "n_iterations": 21,
+    "crisis_correlation": 0.11533901937458906,
+    "crisis_p_value": 0.05388056188865627,
+    "stability_correlation": 0.28872894361776186,
+    "stability_p_value": 8.886581464996957e-07,
+    "critical_gini": 0.487965867755412,
+    "max_susceptibility": 0.4715143693387685
+  },
+  "stability_optimized": {
+    "J": 0.10000263694163625,
+    "h": 0.5034294935081012,
+    "objective_value": -0.706540895711904,
+    "success": true,
+    "message": "Optimization terminated successfully.",
+    "n_iterations": 38,
+    "crisis_correlation": 0.07811319830659999,
+    "crisis_p_value": 0.1924966932055041,
+    "stability_correlation": 0.706540895711904,
+    "stability_p_value": 1.208323937291464e-43,
+    "critical_gini": 0.6884033833317924,
+    "max_susceptibility": 0.857098474908398
+  }
+}
