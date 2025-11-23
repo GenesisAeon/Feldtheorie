@@ -30,8 +30,6 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 - **Falsifiability**: Provide criteria for disproving hypotheses
 - **Version Control**: Never delete history; archive old theories
 - **Conflict of Interest**: Disclose any competing interpretations
-- **Social data privacy**: Anonymize and document provenance for any inequality/emissions datasets before inclusion in releases
-- **Alternative models**: When presenting 137-β results, include ΔAIC/Bayes comparisons against alternate constant pairs
 
 
 ---
@@ -78,5 +76,5 @@ Before committing work in `releases/v5.0.0_Zenodo_Ready`:
 
 ---
 
-**Last Updated:** 2025-11-23 19:04:20 UTC
+**Last Updated:** 2025-11-23 19:50:49 UTC
 **Governance Version:** 1.0.0
