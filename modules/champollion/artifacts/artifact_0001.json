@@ -1,0 +1,15 @@
+{
+  "artifact_id": "0001",
+  "symbol_sequence": "XJKL3M9Z2QWFP8R",
+  "signal_strength": 0.342,
+  "category": "low_coherence",
+  "search_hints": [
+    "noise",
+    "Baseline"
+  ],
+  "warnings": [
+    "High noise level - verify signal authenticity",
+    "Near baseline - may be random noise"
+  ],
+  "entropy_estimate": 3.906890595608518
+}

@@ -1,0 +1,78 @@
+champollion_version: '5.0'
+architecture: Diamond (Trilayer with Context Middleware)
+description: Master index for Champollion artifact system
+last_updated: '2025-11-23'
+categories:
+  medium_coherence:
+    artifact_count: 4
+    context_layer:
+      json_ref: context/medium_coherence_meta.json
+      yaml_ref: context/medium_coherence_nav.yaml
+      md_ref: context/medium_coherence_narrative.md
+    statistics:
+      avg_signal_strength: 0.411
+      min_signal_strength: 0.376
+      max_signal_strength: 0.453
+    artifacts:
+    - id: '0004'
+      yaml_ref: artifacts/artifact_0004.yaml
+      json_ref: artifacts/artifact_0004.json
+      md_ref: artifacts/artifact_0004.md
+    - id: '0006'
+      yaml_ref: artifacts/artifact_0006.yaml
+      json_ref: artifacts/artifact_0006.json
+      md_ref: artifacts/artifact_0006.md
+    - id: '0007'
+      yaml_ref: artifacts/artifact_0007.yaml
+      json_ref: artifacts/artifact_0007.json
+      md_ref: artifacts/artifact_0007.md
+    - id: 0009
+      yaml_ref: artifacts/artifact_0009.yaml
+      json_ref: artifacts/artifact_0009.json
+      md_ref: artifacts/artifact_0009.md
+  low_coherence:
+    artifact_count: 3
+    context_layer:
+      json_ref: context/low_coherence_meta.json
+      yaml_ref: context/low_coherence_nav.yaml
+      md_ref: context/low_coherence_narrative.md
+    statistics:
+      avg_signal_strength: 0.314
+      min_signal_strength: 0.287
+      max_signal_strength: 0.342
+    artifacts:
+    - id: '0001'
+      yaml_ref: artifacts/artifact_0001.yaml
+      json_ref: artifacts/artifact_0001.json
+      md_ref: artifacts/artifact_0001.md
+    - id: '0002'
+      yaml_ref: artifacts/artifact_0002.yaml
+      json_ref: artifacts/artifact_0002.json
+      md_ref: artifacts/artifact_0002.md
+    - id: '0010'
+      yaml_ref: artifacts/artifact_0010.yaml
+      json_ref: artifacts/artifact_0010.json
+      md_ref: artifacts/artifact_0010.md
+  high_coherence:
+    artifact_count: 3
+    context_layer:
+      json_ref: context/high_coherence_meta.json
+      yaml_ref: context/high_coherence_nav.yaml
+      md_ref: context/high_coherence_narrative.md
+    statistics:
+      avg_signal_strength: 0.548
+      min_signal_strength: 0.501
+      max_signal_strength: 0.618
+    artifacts:
+    - id: '0003'
+      yaml_ref: artifacts/artifact_0003.yaml
+      json_ref: artifacts/artifact_0003.json
+      md_ref: artifacts/artifact_0003.md
+    - id: '0005'
+      yaml_ref: artifacts/artifact_0005.yaml
+      json_ref: artifacts/artifact_0005.json
+      md_ref: artifacts/artifact_0005.md
+    - id: 0008
+      yaml_ref: artifacts/artifact_0008.yaml
+      json_ref: artifacts/artifact_0008.json
+      md_ref: artifacts/artifact_0008.md

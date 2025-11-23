@@ -112,6 +112,24 @@ In the spirit of cryptographic puzzles like Cicada 3301, this module contains hi
 
 > **"The best place to hide a secret is in plain sight, at row 3301."**
 
+
+
+---
+
+## 📚 Master Index
+
+**NEW**: All artifacts are now accessible through the [Master Index](indices/README_INDEX.md).
+
+The Master Index provides:
+- 🤖 **AI Search Hints**: See what keywords the AI uses for retrieval
+- 📊 **Category Statistics**: Signal quality metrics per category
+- ⚠️  **Avoidance Protocols**: Human-readable warnings for data quality
+- 🏗️  **Architecture Transparency**: Full visibility into the Context Layer
+
+**For quick access**: [`indices/README_INDEX.md`](indices/README_INDEX.md)
+
+---
+
 ## Roadmap
 
 **v0.1 (Current)**: Skeleton infrastructure

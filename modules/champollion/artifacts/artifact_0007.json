@@ -1,0 +1,11 @@
+{
+  "artifact_id": "0007",
+  "symbol_sequence": "ZXCV8BNM4LKJH2QW",
+  "signal_strength": 0.453,
+  "category": "medium_coherence",
+  "search_hints": [
+    "coupling"
+  ],
+  "warnings": [],
+  "entropy_estimate": 4.0
+}

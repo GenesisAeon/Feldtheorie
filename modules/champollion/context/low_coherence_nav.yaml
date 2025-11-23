@@ -1,0 +1,15 @@
+category: low_coherence
+artifact_count: 3
+artifacts:
+- id: '0001'
+  yaml_ref: artifacts/artifact_0001.yaml
+  json_ref: artifacts/artifact_0001.json
+  md_ref: artifacts/artifact_0001.md
+- id: '0002'
+  yaml_ref: artifacts/artifact_0002.yaml
+  json_ref: artifacts/artifact_0002.json
+  md_ref: artifacts/artifact_0002.md
+- id: '0010'
+  yaml_ref: artifacts/artifact_0010.yaml
+  json_ref: artifacts/artifact_0010.json
+  md_ref: artifacts/artifact_0010.md

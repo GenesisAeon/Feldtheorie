@@ -1,0 +1,13 @@
+{
+  "artifact_id": "0009",
+  "symbol_sequence": "QWER9TYUI6OPAS3D",
+  "signal_strength": 0.396,
+  "category": "medium_coherence",
+  "search_hints": [
+    "Noise"
+  ],
+  "warnings": [
+    "High noise level - verify signal authenticity"
+  ],
+  "entropy_estimate": 4.0
+}

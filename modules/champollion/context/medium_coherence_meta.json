@@ -1,0 +1,30 @@
+{
+  "category": "medium_coherence",
+  "artifact_count": 4,
+  "search_hints": [
+    "Coherence",
+    "Noise",
+    "Pattern",
+    "coupling",
+    "drift"
+  ],
+  "avoidance_protocols": [
+    "Coherence drift detected - unstable pattern",
+    "High noise level - verify signal authenticity"
+  ],
+  "access_frequency": {
+    "read_count": 0,
+    "last_accessed": null
+  },
+  "statistics": {
+    "avg_signal_strength": 0.411,
+    "min_signal_strength": 0.376,
+    "max_signal_strength": 0.453
+  },
+  "artifact_ids": [
+    "0004",
+    "0006",
+    "0007",
+    "0009"
+  ]
+}

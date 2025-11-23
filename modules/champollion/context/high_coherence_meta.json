@@ -1,0 +1,30 @@
+{
+  "category": "high_coherence",
+  "artifact_count": 3,
+  "search_hints": [
+    "Cicada",
+    "Threshold",
+    "approach",
+    "detected",
+    "emergence",
+    "row 3301",
+    "signature"
+  ],
+  "avoidance_protocols": [
+    "ATTENTION: Cicada signature - hidden pattern marker"
+  ],
+  "access_frequency": {
+    "read_count": 0,
+    "last_accessed": null
+  },
+  "statistics": {
+    "avg_signal_strength": 0.548,
+    "min_signal_strength": 0.501,
+    "max_signal_strength": 0.618
+  },
+  "artifact_ids": [
+    "0003",
+    "0005",
+    "0008"
+  ]
+}

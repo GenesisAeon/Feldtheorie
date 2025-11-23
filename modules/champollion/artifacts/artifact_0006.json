@@ -1,0 +1,14 @@
+{
+  "artifact_id": "0006",
+  "symbol_sequence": "PLOK9IUJY7HTGRF6",
+  "signal_strength": 0.376,
+  "category": "medium_coherence",
+  "search_hints": [
+    "Coherence",
+    "drift"
+  ],
+  "warnings": [
+    "Coherence drift detected - unstable pattern"
+  ],
+  "entropy_estimate": 4.0
+}
