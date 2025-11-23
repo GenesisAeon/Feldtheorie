@@ -75,5 +75,5 @@ Before committing work in `pipelines/transform`:
 
 ---
 
-**Last Updated:** 2025-11-23 20:59:17 UTC
+**Last Updated:** 2025-11-23 21:24:46 UTC
 **Governance Version:** 1.0.0
