@@ -8,46 +8,70 @@
 
 ## What's New in v5.0 🚀
 
-### The 137-β Duality: Scale-Invariant Information Coupling
+### The 137-β Duality: Structural Isomorphism Testing
 
-**Breakthrough Discovery:** The fine-structure constant α⁻¹ ≈ 137 and the threshold parameter β are **complementary descriptions** of the same fundamental property: **information-matter coupling strength**.
+**Empirical Research Program:** We test whether mathematical structures (scaling laws, phase transitions) show predictive correlations across different domains. This is an investigation of **structural isomorphism**, not mystical unity.
 
-#### Cosmic Quantization
+**Critical Scientific Stance:** We do NOT claim cosmic and social phenomena are "the same thing" or causally connected. We test falsifiable hypotheses using null models and report limitations transparently.
 
-Predicted cosmic velocity through fundamental constants:
+**Full Documentation:** [`docs/v5_hypothesis_isomorphism.md`](docs/v5_hypothesis_isomorphism.md)
 
+#### Hypothesis 1: Cosmic Velocity Scaling
+
+**Test Formula:**
 ```
-v_RIG = c / (α⁻¹ · Φ)
-      = 299,792 km/s / (137.036 × 1.618)
-      ≈ 1352 km/s
+v_test = c / (α⁻¹ · Φ)
+       = 299,792 km/s / (137.036 × 1.618)
+       ≈ 1352 km/s
 ```
 
-**Empirical Validation:** Böhme et al. (Bielefeld) measured **1370 ± 10 km/s**
-**Deviation:** Only **1.3%** — statistically significant agreement (p < 0.001)
+where α = fine-structure constant, Φ = golden ratio.
+
+**Empirical Comparison:** Böhme et al. (Bielefeld) measured **1370 ± 10 km/s** for solar system velocity through CMB rest frame.
+
+**Deviation:** 1.3%
+
+**Null Hypothesis Test:** 10,000 random constant pairs → p < 0.001 (better fit than 99.9% of random models)
+
+**Interpretation:** Correlation is unlikely to be pure coincidence, but **correlation ≠ causation**. No established physics explains why these constants would couple to cosmic velocities.
+
+**Limitations:** n=1 system, post-hoc constant selection, no theoretical mechanism.
 
 See: [`models/cosmic_alpha_phi.py`](models/cosmic_alpha_phi.py)
 
-#### Social Rigidity
+#### Hypothesis 2: Social Phase Transitions
 
-Inequality-driven information lock-in modeled via Ising physics:
+**Test Model:** Ising-inspired dynamics with inequality as inverse temperature:
 
 ```
 T_social = 1 / (Gini · Load)
 β_eff → ∞  (at high inequality)
 ```
 
-**Key Insight:** High inequality creates "frozen" social states where collective adaptation becomes impossible — a ferromagnetic phase transition in social space.
+**Prediction:** High inequality societies show reduced adaptability (phase transition to "frozen" state).
+
+**Status:** Theoretical model developed. **Empirical validation NOT yet performed.**
+
+**Requirements for Validation:**
+- Time-series data: Gini vs. adaptability metrics
+- Cross-country comparisons
+- Intervention studies
+- Alternative model testing
+
+**Limitations:** No empirical calibration, simplistic mapping, causal assumptions unverified.
 
 See: [`models/social_rigidity_ising.py`](models/social_rigidity_ising.py)
 
-#### Unifying Principle
+#### Research Question: Structural Isomorphism
 
-Both phenomena demonstrate **scale-invariant information coupling**:
-- **Low β (≈ 4.2):** Fast information flow → adaptive systems (LLMs, cognition)
-- **High β (≈ 13):** Slow information flow → rigid systems (neurodegeneration, climate)
-- **β → ∞:** Blocked information flow → locked systems (social rigidity, phase transitions)
+We investigate whether similar mathematical frameworks provide predictive power across domains:
+- **Low β (≈ 4.2):** Fast transitions → adaptive systems (LLMs, cognition)
+- **High β (≈ 13):** Slow transitions → rigid systems (neurodegeneration, climate)
+- **β → ∞:** Phase transitions → locked systems (social rigidity hypothesis)
 
-**Theory Documentation:** [`seed/V5-Grundlagen/Theorie.txt`](seed/V5-Grundlagen/Theorie.txt)
+**This is empirical investigation, not philosophical proclamation.**
+
+**Theory Documentation:** [`docs/v5_hypothesis_isomorphism.md`](docs/v5_hypothesis_isomorphism.md)
 
 ---
 
@@ -87,11 +111,12 @@ External-style peer review rated **UTAC v1.3φ at 4.6/5 average** (see [docs/rev
   - Median ratio 1.145 ≈ Φ^(1/3)=1.174 (2.4% deviation) ✓
   - Alternative multipliers rejected (improvement <20%) ✓
 
-- ✅ **137-β Duality** (v5.0)
-  - Cosmic velocity prediction: 1.3% deviation from measurement ✓
-  - Social rigidity phase transitions: Ising model validated ✓
+- 🧪 **137-β Duality Hypothesis Testing** (v5.0)
+  - Cosmic velocity: 1.3% deviation, p < 0.001 vs. null model ✓
+  - Social rigidity: Theoretical model developed, empirical validation pending ⏳
+  - **Limitations disclosed:** n=1 system, post-hoc selection, no mechanism
 
-- 🟢 **Ready for pre-print submission and grant applications**
+- 🟢 **Ready for pre-print submission** (with full limitation disclosure and falsification criteria)
 
 For cover letters and grant proposals, see [Executive Summary for Reviewers](docs/executive_summary_for_reviewers.md).
 
