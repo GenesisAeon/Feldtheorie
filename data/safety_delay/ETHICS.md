@@ -81,5 +81,5 @@ Before committing work in `data/safety_delay`:
 
 ---
 
-**Last Updated:** 2025-11-23 16:43:47 UTC
+**Last Updated:** 2025-11-23 16:46:11 UTC
 **Governance Version:** 1.0.0
