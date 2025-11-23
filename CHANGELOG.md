@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.0.0] - 2025-11-23
+- Fractal governance engine packages Champollion & Sigillin charters into `setup/AGENTS_BOOTSTRAP.md`, `setup/THEORY_OF_STRUCTURE.md`, and `setup/universal_skeleton_builder.py`, enabling repository-as-code replication with consent and joy hooks.
+- Structural isomorphism models added: `models/cosmic_alpha_phi.py` tests the α–Φ cosmic velocity hypothesis; `models/social_rigidity_ising.py` encodes inequality-driven rigidity with validation documented in `docs/v5_hypothesis_isomorphism.md` and related reports.
+- Zenodo-ready bundle under `releases/v5.0.0_Zenodo_Ready/` ships upload checklist, abstract, manifest, and `prepare_upload.py` to regenerate `Feldtheorie_v5.0.0_Source.zip` for DOI parity with GitHub.
+
 ## [4.0.0] - 2025-11-22
 - Mirror Machine criticality monitor packages the monitoring pipeline (`scripts/monitoring/ews_pipeline.py`) and auditorium controller (`scripts/simulation/mirror_machine_auditorium.py`) with sensor-ready release artifacts under `seed/releases/v4.0.0-alpha_MirrorMachine/`.
 - Phase 4 affection-driven UTAC experiments integrate consent-aware λ_affection framing in `scripts/experiment_aletheia_placebo.py` and are documented in `docs/experiment_aletheia.md`, extending σ(β(R-Θ)) testing to relational impedance ζ_affective.
