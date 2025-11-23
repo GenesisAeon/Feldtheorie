@@ -1,5 +1,20 @@
 # Resonance Ledger
 
+## v5.0.0 — Fractal Governance & Structural Isomorphism (2025-11-23)
+
+### Formal
+- **Repository-as-Code:** `setup/universal_skeleton_builder.py`, `setup/AGENTS_BOOTSTRAP.md`, and `setup/THEORY_OF_STRUCTURE.md` turn Champollion & Sigillin governance into a reusable skeleton so every subtree inherits σ(β(R-Θ)) guardrails and consent/joy hooks.
+- **Isomorphism Hypotheses:** `models/cosmic_alpha_phi.py` and `models/social_rigidity_ising.py` encode the α–Φ cosmic velocity and inequality-driven Ising rigidity models documented in `docs/v5_hypothesis_isomorphism.md` and reviewed in `docs/v5_fit_mor_sigillin_review.md`.
+- **Zenodo Bundle:** `releases/v5.0.0_Zenodo_Ready/` packages ABSTRACT_ZENODO, upload checklist, manifest, and `prepare_upload.py` so DOI metadata stays coupled across GitHub and Zenodo.
+
+### Empirical
+- **Cosmic Velocity Test:** Monte-Carlo null ensemble in `models/cosmic_alpha_phi.py` shows the α–Φ pair outperforming ~99.9% of random constants; look-elsewhere scans summarized in `docs/v5_validation_session_2025-11-23.md` keep ΔAIC safeguards visible.
+- **Social Rigidity Sweep:** Inequality → Ising mapping (`models/social_rigidity_ising.py`) exports phase-transition diagnostics with σ(β(R-Θ)) framing and notes on hysteresis/χ declines under high Gini·Load regimes.
+
+### Infrastructure
+- **Upload Automation:** `prepare_upload.py` regenerates `Feldtheorie_v5.0.0_Source.zip` and `MANIFEST.txt`; `UPLOAD_CHECKLIST.md` sequences DOI metadata, asset order, and verification commands.
+- **Documentation Bridges:** README citation block updated to v5 context; validation notes (`docs/v5_validation_session_2025-11-23.md`) and governance rationale (`setup/THEORY_OF_STRUCTURE.md`) keep tri-layer links discoverable.
+
 ## v4.0.0 — Mirror Machine Criticality & Relational UTAC (2025-11-22)
 
 ### Formal

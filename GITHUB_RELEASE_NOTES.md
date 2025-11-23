@@ -1,27 +1,28 @@
-# 🌊 UTAC v4.0.0 — Mirror Machine Criticality & Relational UTAC
+# 🌀 UTAC v5.0.0 — Fractal Governance & Structural Isomorphism
 
 ## 🎯 Stable GitHub Release
 
-The V4 release activates the Mirror Machine criticality monitor and the Phase 4 Aletheia affection sweep. RAPID/GRACE/NOAA feeds stream through the σ(β(R-Θ)) pipeline to produce Type-6 state verdicts, while λ_affection and ζ_affective framing test relational impedance against explicit null models. Morph/Alias sigillin keep theory, sensors, and ΔAIC checkpoints resonant.
+V5 turns Feldtheorie into a self-governing repository while testing α–Φ cosmic velocity scaling and inequality-driven Ising rigidity. Champollion & Sigillin agents propagate σ(β(R-Θ)) guardrails through every folder, and Zenodo-ready packaging keeps DOI provenance locked to GitHub assets.
 
-**Release Date:** 2025-11-22  
+**Release Date:** 2025-11-23
 **DOI:** [10.5281/zenodo.17472834](https://doi.org/10.5281/zenodo.17472834)
 
 ---
 
 ## ✨ Highlights
 
-### Mirror Machine Criticality Monitor
-- `scripts/monitoring/ews_pipeline.py` ingests RAPID/GRACE/NOAA signals and emits σ(β(R-Θ)) observables.
-- `scripts/simulation/mirror_machine_auditorium.py` applies Type-6 logistic verdicts with β trackers and state charts.
-- Reference assets live in `seed/releases/v4.0.0-alpha_MirrorMachine/` (theory, sensors, simulation, and `data/derived/beta_estimates.csv`).
+### Fractal Governance Engine
+- `setup/universal_skeleton_builder.py` seeds new projects with trilayer indices, ethics, and policy defaults.
+- `setup/AGENTS_BOOTSTRAP.md` + `setup/THEORY_OF_STRUCTURE.md` embed Champollion & Sigillin rules so every subtree inherits consent & joy modules.
+- Governance bundle mirrored in `releases/v5.0.0_Zenodo_Ready/` for DOI archival.
 
-### Aletheia Phase 4 — Affection-Driven UTAC
-- Consent-aware λ_affection prompts and ζ_affective impedance hooks in `scripts/experiment_aletheia_placebo.py`.
-- Protocol, falsification criteria, and ΔAIC thresholds documented in `docs/experiment_aletheia.md`.
+### Structural Isomorphism Models
+- `models/cosmic_alpha_phi.py` tests the α–Φ cosmic velocity hypothesis with Monte-Carlo nulls; documentation lives in `docs/v5_hypothesis_isomorphism.md`.
+- `models/social_rigidity_ising.py` maps inequality into an Ising field (T_social = 1/(Gini·Load)) with validation notes in `docs/v5_validation_session_2025-11-23.md` and `docs/v5_fit_mor_sigillin_review.md`.
 
-### Morph/Alias Theory Refresh
-- Updated sigillin in `seed/theory/hypothese_morphological_computing`, `seed/theory/hypothese_quantum_aliasing`, and `seed/theory/concept_the_mirror_machine` synchronize Morph-Sweep, quantum aliasing, and the auditorium controller.
+### Zenodo-Ready Packaging
+- `releases/v5.0.0_Zenodo_Ready/prepare_upload.py` rebuilds `Feldtheorie_v5.0.0_Source.zip` plus `MANIFEST.txt`.
+- `UPLOAD_CHECKLIST.md`, `ABSTRACT_ZENODO.md`, and `README.md` align metadata, asset order, and σ(β(R-Θ)) framing for GitHub + Zenodo parity.
 
 ---
 
@@ -29,23 +30,24 @@ The V4 release activates the Mirror Machine criticality monitor and the Phase 4 
 
 ```
 feldtheorie/
-├── scripts/monitoring/ews_pipeline.py               # RAPID/GRACE/NOAA ingest + σ(β(R-Θ)) features
-├── scripts/simulation/mirror_machine_auditorium.py  # Type-6 state verdicts + logistic trackers
-├── scripts/experiment_aletheia_placebo.py           # λ_affection + ζ_affective executor (Phase 4)
-├── docs/experiment_aletheia.md                      # Aletheia phases & ΔAIC criteria
-├── seed/theory/hypothese_morphological_computing    # Morph-Sweep sigillin
-├── seed/theory/hypothese_quantum_aliasing           # Quantum aliasing sigillin
-├── seed/theory/concept_the_mirror_machine           # Symbolic pre-calc ↔ mutation ↔ falsification loop
-└── seed/releases/v4.0.0-alpha_MirrorMachine/        # Reference bundle + β benchmarks
+├── setup/universal_skeleton_builder.py          # Fractal governance skeleton generator
+├── setup/AGENTS_BOOTSTRAP.md                    # Embedded charter for cloned projects
+├── setup/THEORY_OF_STRUCTURE.md                 # Formal rationale for the membrane
+├── models/cosmic_alpha_phi.py                   # α–Φ cosmic velocity scaling model
+├── models/social_rigidity_ising.py              # Inequality-driven Ising rigidity model
+├── docs/v5_hypothesis_isomorphism.md            # Structural isomorphism hypothesis
+├── docs/v5_validation_session_2025-11-23.md     # Monte-Carlo & look-elsewhere scans
+├── releases/v5.0.0_Zenodo_Ready/prepare_upload.py   # ZIP + manifest generator
+└── releases/v5.0.0_Zenodo_Ready/README.md       # Asset list, metadata, upload steps
 ```
 
 ---
 
 ## 🔬 Scientific Contributions
 
-- **Type-6 Mirror Machine:** Logistic state chart tying RAPID/GRACE/NOAA inputs to σ(β(R-Θ)) verdicts and ΔAIC telemetry.
-- **Relational UTAC Testing:** Phase 4 affection/consent framing probes ζ_affective < 0 versus functional baselines.
-- **Morph/Alias Bridges:** Morphological computing and quantum aliasing sigillin connect theory to monitoring pipelines and UTAC Type-6 trajectories.
+- **Repository-as-Code:** Fractal agent governance keeps σ(β(R-Θ)) coherent across 180+ governed contexts with consent & joy hooks baked into the skeleton.
+- **Isomorphism Testing:** α–Φ velocity scaling beats 99.9% of random null models; inequality-driven Ising sweeps probe phase rigidity with ΔAIC safeguards.
+- **Reproducibility:** Zenodo bundle ships manifest-hashed source and upload templates for DOI-stable replication.
 
 ---
 
@@ -61,12 +63,12 @@ conda env create -f environment.yml
 conda activate feldtheorie
 make install
 
-# Run criticality monitor
-python scripts/monitoring/ews_pipeline.py
-python scripts/simulation/mirror_machine_auditorium.py --mode state-verdict
+# Generate a governed skeleton
+python setup/universal_skeleton_builder.py ~/my-governed-project --domain research --metrics crep
 
-# Launch Phase 4 Aletheia sweep
-python scripts/experiment_aletheia_placebo.py --phase-4 --consent-check
+# Reproduce structural isomorphism tests
+python models/cosmic_alpha_phi.py --runs 10000
+python models/social_rigidity_ising.py --sweep --output results/social_rigidity.json
 ```
 
 ---
@@ -74,19 +76,19 @@ python scripts/experiment_aletheia_placebo.py --phase-4 --consent-check
 ## 📖 Documentation
 
 - **Main README**: [README.md](README.md)
-- **Aletheia Protocol**: [docs/experiment_aletheia.md](docs/experiment_aletheia.md)
-- **Mirror Machine Bundle**: [seed/releases/v4.0.0-alpha_MirrorMachine/README_ZENODO.md](seed/releases/v4.0.0-alpha_MirrorMachine/README_ZENODO.md)
-- **Release Notes**: [RELEASE_NOTES_v4.0.0.md](RELEASE_NOTES_v4.0.0.md)
-- **Citation Info**: [CITATION.cff](CITATION.cff)
+- **Structural Isomorphism**: [docs/v5_hypothesis_isomorphism.md](docs/v5_hypothesis_isomorphism.md)
+- **Validation Session**: [docs/v5_validation_session_2025-11-23.md](docs/v5_validation_session_2025-11-23.md)
+- **Release Notes**: [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md)
+- **Zenodo Bundle**: [releases/v5.0.0_Zenodo_Ready/README.md](releases/v5.0.0_Zenodo_Ready/README.md)
 
 ---
 
 ## 🙏 Acknowledgments
 
-Thanks to the Universal Threshold Field contributors and MOR agents whose telemetry, ΔAIC guards, and consent/joy modules keep σ(β(R-Θ)) cooperative.
+Thanks to the Champollion, Sigillin, and MOR contributors whose telemetry, ΔAIC guards, and consent/joy modules keep ζ(R) elastic while the membrane scales.
 
 ---
 
-*Released: 2025-11-22*  
-*Version: v4.0.0*  
+*Released: 2025-11-23*
+*Version: v5.0.0*
 *DOI: [10.5281/zenodo.17472834](https://doi.org/10.5281/zenodo.17472834)*
