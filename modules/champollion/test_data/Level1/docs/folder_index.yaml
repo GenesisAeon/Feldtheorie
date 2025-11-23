@@ -1,0 +1,24 @@
+folder: docs
+indexed_at: '2025-11-23T16:25:16.299157Z'
+statistics:
+  files: 2
+  subfolders: 0
+  metadata_sources: 1
+confidence:
+  aggregate: 1.0
+  min: 1.0
+  max: 1.0
+origins:
+  theoretical: 1
+file_types:
+  .json: 1
+  .md: 1
+keywords:
+- champollion
+- diamond-architecture
+- documentation
+- methodology
+subfolders: []
+governance:
+  violations_count: 0
+  has_violations: false

@@ -1,0 +1,24 @@
+{
+  "folder": "Level1",
+  "indexed_at": "2025-11-23T16:25:16.320878Z",
+  "summary": "0 files, 2 subfolders",
+  "total_files": 0,
+  "total_subfolders": 2,
+  "aggregate_confidence": 0.92875,
+  "min_confidence": 0.8574999999999999,
+  "origins": {},
+  "keywords": [
+    "champollion",
+    "correlation-analysis",
+    "cosmology",
+    "critical-temperature",
+    "dark-matter",
+    "diamond-architecture",
+    "documentation",
+    "galaxy-formation",
+    "ising",
+    "methodology"
+  ],
+  "has_violations": false,
+  "file_types": {}
+}

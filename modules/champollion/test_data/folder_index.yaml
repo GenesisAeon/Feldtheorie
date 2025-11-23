@@ -1,0 +1,28 @@
+folder: test_data
+indexed_at: '2025-11-23T16:25:16.324310Z'
+statistics:
+  files: 0
+  subfolders: 1
+  metadata_sources: 0
+confidence:
+  aggregate: 0.929
+  min: 0.929
+  max: 0.929
+origins: {}
+file_types: {}
+keywords:
+- champollion
+- correlation-analysis
+- cosmology
+- critical-temperature
+- dark-matter
+- diamond-architecture
+- documentation
+- galaxy-formation
+- ising
+- methodology
+subfolders:
+- Level1
+governance:
+  violations_count: 0
+  has_violations: false

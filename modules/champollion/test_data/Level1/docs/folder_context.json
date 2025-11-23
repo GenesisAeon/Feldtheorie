@@ -1,0 +1,23 @@
+{
+  "folder": "docs",
+  "indexed_at": "2025-11-23T16:25:16.299157Z",
+  "summary": "2 files, 0 subfolders",
+  "total_files": 2,
+  "total_subfolders": 0,
+  "aggregate_confidence": 1.0,
+  "min_confidence": 1.0,
+  "origins": {
+    "theoretical": 1
+  },
+  "keywords": [
+    "champollion",
+    "diamond-architecture",
+    "documentation",
+    "methodology"
+  ],
+  "has_violations": false,
+  "file_types": {
+    ".json": 1,
+    ".md": 1
+  }
+}

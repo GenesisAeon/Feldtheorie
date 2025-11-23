@@ -1,0 +1,22 @@
+{
+  "experiment_id": "exp_001",
+  "title": "Ising Model Phase Transition - 2D Lattice",
+  "origin": "empirical",
+  "confidence": 0.95,
+  "description": "Critical temperature measurement for 2D Ising model using Monte Carlo simulation with Metropolis algorithm",
+  "keywords": ["ising", "phase-transition", "critical-temperature", "monte-carlo"],
+  "parameters": {
+    "lattice_size": "128x128",
+    "temperature_range": [1.5, 3.5],
+    "beta_critical": 0.4407,
+    "error_margin": 0.0012
+  },
+  "created_at": "2025-11-20T10:30:00Z",
+  "created_by": "researcher-alpha",
+  "data_files": ["results.dat", "magnetization.csv"],
+  "provenance": {
+    "source": "raw_simulations/run_2025-11-20",
+    "processing_script": "aggregate_phase_data.py",
+    "script_version": "2.1.0"
+  }
+}

@@ -1,0 +1,24 @@
+folder: experiment_001
+indexed_at: '2025-11-23T16:25:16.307399Z'
+statistics:
+  files: 2
+  subfolders: 0
+  metadata_sources: 1
+confidence:
+  aggregate: 0.95
+  min: 0.95
+  max: 0.95
+origins:
+  empirical: 1
+file_types:
+  .json: 1
+  .dat: 1
+keywords:
+- critical-temperature
+- ising
+- monte-carlo
+- phase-transition
+subfolders: []
+governance:
+  violations_count: 0
+  has_violations: false

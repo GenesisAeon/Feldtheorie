@@ -1,0 +1,28 @@
+folder: Level3
+indexed_at: '2025-11-23T16:25:16.310516Z'
+statistics:
+  files: 0
+  subfolders: 2
+  metadata_sources: 0
+confidence:
+  aggregate: 0.835
+  min: 0.72
+  max: 0.95
+origins: {}
+file_types: {}
+keywords:
+- cosmology
+- critical-temperature
+- dark-matter
+- galaxy-formation
+- ising
+- monte-carlo
+- n-body
+- phase-transition
+- simulation
+subfolders:
+- experiment_002
+- experiment_001
+governance:
+  violations_count: 0
+  has_violations: false

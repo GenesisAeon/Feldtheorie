@@ -1,0 +1,33 @@
+folder: Level1
+indexed_at: '2025-11-23T16:25:16.320878Z'
+statistics:
+  files: 0
+  subfolders: 2
+  metadata_sources: 0
+confidence:
+  aggregate: 0.929
+  min: 0.857
+  max: 1.0
+origins: {}
+file_types: {}
+keywords:
+- champollion
+- correlation-analysis
+- cosmology
+- critical-temperature
+- dark-matter
+- diamond-architecture
+- documentation
+- galaxy-formation
+- ising
+- methodology
+- monte-carlo
+- n-body
+- phase-transition
+- phase-transitions
+subfolders:
+- docs
+- Level2
+governance:
+  violations_count: 0
+  has_violations: false
