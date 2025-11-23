@@ -239,4 +239,4 @@ This typology provides a **mechanistic framework** for understanding β-heteroge
 ---
 
 *© 2025 Johann Römer et al. — Universal Threshold Field Initiative*
-*DOI: 10.5281/zenodo.17472834 • CC BY 4.0 License*
+*DOI: 10.5281/zenodo.17472834 • Code: GPLv3 | Content & Data: CC BY-NC 4.0 (commercial use requires author permission)*

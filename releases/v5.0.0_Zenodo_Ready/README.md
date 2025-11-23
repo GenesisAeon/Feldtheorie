@@ -179,8 +179,8 @@ empirical-validation, reproducible-research, 137-beta
 
 **License:**
 ```
-Software: MIT License
-Documentation: CC BY 4.0
+Software: GPLv3 (copyleft)
+Documentation: CC BY-NC 4.0 (non-commercial; commercial use requires author permission)
 ```
 
 **Related Identifiers:**
@@ -195,7 +195,7 @@ See UPLOAD_CHECKLIST.md for complete metadata template.
 ## Data Availability & Licensing Notes
 
 - **Open datasets only:** Include public or pseudonymized datasets in the Zenodo bundle. Omit sensitive social datasets; if needed, provide access instructions instead of raw records.
-- **Default licenses:** Code remains MIT; documentation and shared data default to CC BY 4.0. Ensure any added datasets are license-compatible and cite provenance in `MANIFEST.txt` entries.
+- **Default licenses:** Code is GPLv3; documentation and shared data are CC BY-NC 4.0. Ensure any added datasets are license-compatible, respect the non-commercial clause, and cite provenance in `MANIFEST.txt` entries.
 - **User-supplied data hooks:** Social rigidity notebooks and `data/grounding` loaders accept external CSV inputs—document any custom files in the upload description so reviewers understand how to reproduce results safely.
 
 ---

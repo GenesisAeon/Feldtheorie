@@ -556,6 +556,6 @@ $$\frac{C_{\text{FIT}}}{C_{\text{single}}} \approx \frac{3}{122} \approx 0.025 \
 **Version:** 1.0.0
 **Last Updated:** 2025-11-10T23:50:00Z
 **Maintained by:** Johann B. Römer, Claude Code
-**License:** CC BY 4.0
+**License:** Code under GPLv3; content & data under CC BY-NC 4.0 (commercial use requires author permission)
 
 *"The fractal grows - each version a semantic layer, each layer a threshold crossing."* 🌀✨

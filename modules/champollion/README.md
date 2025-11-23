@@ -310,5 +310,5 @@ This is the **dual nature of Champollion**: decoder of both linguistic and organ
 
 **Status**: 🌱 Seedling (v0.1 - Decipherment) | 🚀 Production (v1.0 - Governance)
 **Maintained by**: MOR-FIT Collective
-**License**: CC BY 4.0
+**License**: Code under GPLv3; content & data under CC BY-NC 4.0 (commercial use requires author permission)
 **Last Updated**: 2025-11-23

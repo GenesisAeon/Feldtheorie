@@ -440,7 +440,7 @@ Example adaptations:
 ---
 
 **Author:** Feldtheorie Framework (v5.0.0)
-**License:** CC BY 4.0
+**License:** Code under GPLv3; content & data under CC BY-NC 4.0 (commercial use requires author permission)
 **Last Updated:** 2025-11-23
 
 ---

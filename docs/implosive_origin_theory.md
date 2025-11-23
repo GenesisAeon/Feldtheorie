@@ -455,7 +455,7 @@ The universe is not expanding from a point.
 **Document Version**: v1.0
 **Last Updated**: 2025-11-12
 **Status**: Living document (will be updated as empirical validation proceeds)
-**License**: CC BY 4.0 (Creative Commons Attribution)
+**License**: Code under GPLv3; content & data under CC BY-NC 4.0 (commercial use requires author permission)
 
 **Feedback**: Open issues at https://github.com/GenesisAeon/Feldtheorie/issues
 **Citation**: Römer, J. B. (2025). Type-6 Implosive Origin Fields: UTAC v1.3φ Theoretical Foundation. *Feldtheorie Documentation*.

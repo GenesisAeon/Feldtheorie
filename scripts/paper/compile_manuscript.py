@@ -162,7 +162,7 @@ def step_generate_metadata():
         "date": datetime.now().strftime("%Y-%m-%d"),
         "doi": "10.5281/zenodo.17472834",
         "repository": "https://github.com/GenesisAeon/Feldtheorie",
-        "license": "CC BY 4.0",
+        "license": "GPLv3 (code) / CC BY-NC 4.0 (content & data); commercial use requires author permission",
         "abstract": (
             "We investigate structural isomorphism across cosmic and social domains, "
             "testing (1) cosmic velocity scaling via fundamental constants and "

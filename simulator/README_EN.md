@@ -283,7 +283,7 @@ npm run test
 
 ## License
 
-CC BY 4.0 - Attribution required
+Code licensed under GPLv3; content & data licensed under CC BY-NC 4.0 (non-commercial). Commercial use requires author permission.
 
 ## Citation
 

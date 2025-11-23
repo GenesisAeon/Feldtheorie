@@ -912,4 +912,4 @@ ulimit -m 4194304  # 4GB
 
 ## License
 
-CC BY 4.0 - See [LICENSE](LICENSE)
+Code: GPLv3 | Content & Data: CC BY-NC 4.0 (non-commercial). Commercial use requires explicit permission. See [LICENSE](LICENSE).
