@@ -81,5 +81,5 @@ Before committing work in `analysis/batch_runs`:
 
 ---
 
-**Last Updated:** 2025-11-23 17:23:43 UTC
+**Last Updated:** 2025-11-23 18:13:08 UTC
 **Governance Version:** 1.0.0
