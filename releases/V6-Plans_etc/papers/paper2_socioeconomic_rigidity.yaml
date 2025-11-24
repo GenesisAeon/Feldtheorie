@@ -1,0 +1,39 @@
+id: paper2-socioeconomic-rigidity
+title: "Paper 2: Socioeconomic Rigidity"
+mode: research
+status: draft
+R: "Sozioökonomische Systeme zeigen β-Clustering (β≈11–∞) unter Ungleichheit, doch σ(β(R-Θ)) ist nicht als Frühwarn-Operator etabliert."
+Theta: "Ein operationaler Schwellenparameter Θ für Lock-in, der mit Gini×Load gekoppelt ist und empirisch auf Panel- und Policy-Daten geprüft wird."
+beta: "β steigt mit Ungleichheit und Systemlast; wir fokussieren β≈11–∞ als kritischer Bereich."
+zeta: "ζ(R) modelliert soziale Dämpfung durch Umverteilung, Regulierung oder Resilienzprogramme."
+sigma_transition: "σ(β(R-Θ)) quantifiziert, wann Anpassungsfähigkeit in Rigidität kippt."
+hypotheses:
+  - id: H1
+    statement: "β_eff = β_base × (1 + Gini × Load) approximiert den beobachteten Anstieg der Antwortschärfe in nationalen Paneldaten."
+    null_model: "β_eff konstant unabhängig von Gini oder Systemlast."
+    falsifiability: "Ablehnung, wenn der Interaktionsterm Gini×Load p>0.05 oder ΔAIC < 0 zugunsten des Nullmodells."
+    metrics: ["ΔAIC", "p_interaction", "R²", "elasticity_β"]
+  - id: H2
+    statement: "σ(β(R-Θ)) mit endlichem β liefert bessere Frühwarnungen (lead time Δt > 0) als stufenförmige Trigger β→∞."
+    null_model: "Keine Vorwarnzeit; Rigidität tritt ohne glatte Anstiege auf."
+    falsifiability: "Ablehnung, wenn Δt ≤ 0 oder wenn ROC-AUC des Frühwarnsignals ≤ Nullmodell-AUC."
+    metrics: ["ROC-AUC", "LeadTime", "Precision@k", "FalseAlarmRate"]
+data_sources:
+  - "World Inequality Database"
+  - "IMF/WB Macro Panels (load proxies)"
+  - "Climate damage datasets (stress shocks)"
+  - "UTAC interne: Bedeutungs- und Schatten-Sigillin Verweise"
+analysis_plan:
+  steps:
+    - "Konstruiere β_eff aus Gini×Load; schätze logistisches Modell σ(β(R-Θ))."
+    - "Vergleiche mit Nullmodell via ΔAIC/BIC; führe Sensitivität über ζ(R)-Policy-Dämpfung."
+    - "Evaluiere Frühwarnzeit Δt und ROC-AUC; bootstrappe Unsicherheiten."
+    - "Dokumentiere Kopplungen zu UTAC Status Matrix und shadow_sigillin." 
+artifacts:
+  - "Markdown-Narrativ (dieses Trilayer)"
+  - "Notebook (analysis/results oder docs/empirical_evidence)"
+  - "Policy-Szenario-Tableau (docs/outreach oder figures/)"
+milestones:
+  - "Daten-Pipeline + Feature-Engineering (T+4 Tage)"
+  - "Frühwarn-Metriken + CI (T+9 Tage)"
+  - "Draft-Policy-Note mit Sigillin-Links (T+15 Tage)"

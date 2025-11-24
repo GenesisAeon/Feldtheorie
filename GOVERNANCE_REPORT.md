@@ -1,23 +1,23 @@
 # Fractal Governance Report
 
-**Generated:** 2025-11-24 08:45:58 UTC
+**Generated:** 2025-11-24 09:56:26 UTC
 **Governance Version:** 1.0.0
 
 ---
 
 ## Summary
 
-- **Total Governed Contexts:** 181
+- **Total Governed Contexts:** 183
 - **Contexts by Mode:**
   - code: 27
   - data: 38
-  - research: 116
+  - research: 118
 
-- **Total Agents:** 181
+- **Total Agents:** 183
 - **Agents by Mode:**
   - code: 27
   - data: 38
-  - research: 116
+  - research: 118
 
 ---
 
@@ -307,6 +307,10 @@
 - `releases/ETHICS.md`
 - `releases/ARCHITECTURE.md`
 - `releases/POLICY.md`
+- `releases/V6-Plans_etc/AGENTS.md`
+- `releases/V6-Plans_etc/ETHICS.md`
+- `releases/V6-Plans_etc/ARCHITECTURE.md`
+- `releases/V6-Plans_etc/POLICY.md`
 - `releases/v4.0.0-alpha_MirrorMachine/AGENTS.md`
 - `releases/v4.0.0-alpha_MirrorMachine/ETHICS.md`
 - `releases/v4.0.0-alpha_MirrorMachine/ARCHITECTURE.md`
