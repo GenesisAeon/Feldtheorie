@@ -16,3 +16,6 @@ dist/
 *.log
 coverage.json
 .venv/
+
+# Generated outputs
+outputs/
