@@ -44,7 +44,7 @@
 ├─ analysis/             ← Python analyses & β-fits
 ├─ models/               ← Numerical solvers
 ├─ data/                 ← Datasets (6 domains)
-└─ tests/                ← 290 tests (pytest)
+└─ tests/                ← 430 tests (full pytest suite)
 ```
 
 ---
@@ -86,7 +86,7 @@ cat dist/wei_beta.json
 
 # 4. (Optional) Run all tests
 pytest tests/ -v
-# → 290 passed ✅
+# → 430 passed ✅
 ```
 
 **Expectation:** β should be in [3.0, 4.0], ΔAIC > 10 (vs power-law).
@@ -179,7 +179,7 @@ python scripts/sigillin_sync.py report --roots seed/
 - [`REPRODUCE.md`](REPRODUCE.md) — Reproduction guide
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — How to contribute?
 - [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — CI pipeline
-- [`tests/`](tests/) — 290 tests (Pytest)
+- [`tests/`](tests/) — 430 tests (full pytest suite)
 
 ### For Methodologists
 
