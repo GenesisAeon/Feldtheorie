@@ -75,5 +75,5 @@ Before committing work in `scripts/simulation`:
 
 ---
 
-**Last Updated:** 2025-11-24 14:03:13 UTC
+**Last Updated:** 2025-11-24 14:16:09 UTC
 **Governance Version:** 1.0.0
