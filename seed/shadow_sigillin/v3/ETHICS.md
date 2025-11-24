@@ -76,5 +76,5 @@ Before committing work in `seed/shadow_sigillin/v3`:
 
 ---
 
-**Last Updated:** 2025-11-24 06:27:50 UTC
+**Last Updated:** 2025-11-24 06:32:21 UTC
 **Governance Version:** 1.0.0
