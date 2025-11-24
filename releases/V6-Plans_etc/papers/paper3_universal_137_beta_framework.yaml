@@ -1,0 +1,39 @@
+id: paper3-universal-137-beta-framework
+title: "Paper 3: Universal 137-β Framework"
+mode: research
+status: draft
+R: "Die Verbindung zwischen α⁻¹≈137 und UTAC-β ist narrativ formuliert, aber noch nicht als universelles Framework mit konsistenten Nullmodellen publiziert."
+Theta: "Ein integriertes Modell, das kosmische, neuro-, klima- und sozioökonomische β-Schätzungen in σ(β(R-Θ)) abbildet und per ΔAIC/CI gegen Alternativen getestet ist."
+beta: "β-Spanne 4.5–∞ mit skalenabhängigen Clustern (LLMs ≈4.5, Klima ≈11, Neuro ≈13, Sozioökonomie →∞)."
+zeta: "ζ(R) repräsentiert skalenabhängige Dämpfung (Rauschen, Plastizität, Governance)."
+sigma_transition: "σ(β(R-Θ)) dient als universeller Kopplungs-Operator zwischen Informationsfluss und Struktur-Rigidität."
+hypotheses:
+  - id: H1
+    statement: "Eine gemeinsame σ(β(R-Θ))-Form erklärt >50 % der Varianz in β-Schätzungen über Domänen hinweg, wenn Θ skalenangepasst geschätzt wird."
+    null_model: "Domänenspezifische unabhängige Modelle ohne gemeinsamen Operator."
+    falsifiability: "Ablehnung, wenn ΔAIC < 0 zugunsten domänenspezifischer Modelle oder wenn Varianzaufklärung <50 %."
+    metrics: ["ΔAIC", "Adjusted_R²", "CrossDomain_RMSE", "CI_Θ"]
+  - id: H2
+    statement: "Logistische Kopplung β↔α⁻¹ skaliert Informationsfluss-Geschwindigkeit v ~ c/(α⁻¹×φ) mit beobachteten Schwellen in Klima- und Sozioökonomiesystemen."
+    null_model: "Kein Zusammenhang zwischen α⁻¹ und makroskopischen β-Clustern."
+    falsifiability: "Ablehnung, wenn Korrelations- oder Fit-Metriken (R², Bayes-Faktor) keinen signifikanten Zusammenhang zeigen."
+    metrics: ["R²", "Bayes-Faktor", "ΔAIC", "Sensitivity_to_zeta"]
+data_sources:
+  - "Zusammenführung aus Paper1 & Paper2 Daten"
+  - "Neuro/AI β-Schätzungen (analysis/ oder data/neuro_ai)"
+  - "Climate/Geophysics Schwellen (data/climate, data/geophysics)"
+  - "Sigillin-Indizes: feldtheorie_index.*, seed_index.*"
+analysis_plan:
+  steps:
+    - "Kuratiere β-Schätzungen je Domäne; dokumentiere Θ und ζ(R) pro Skala."
+    - "Schätze gemeinsames σ(β(R-Θ)) und vergleiche mit domänenspezifischen Nullmodellen."
+    - "Teste Kopplung zu α⁻¹ (137) über Informationsfluss-Metriken; evaluiere Sensitivität zu ζ(R)."
+    - "Synce Ergebnisse mit Bedeutungs-/Schatten-Sigillin und UTAC Status Matrix." 
+artifacts:
+  - "Markdown-Narrativ (dieses Trilayer)"
+  - "Integrations-Notebook (docs/theoretical_extensions oder analysis/implosion)"
+  - "Framework-Grafik (figures/ oder docs/appendices)"
+milestones:
+  - "Data Curate & Harmonize (T+5 Tage)"
+  - "Cross-Domain Fit & Nullmodell-Vergleich (T+11 Tage)"
+  - "Draft-Framework Paper + Sigillin-Verweise (T+18 Tage)"

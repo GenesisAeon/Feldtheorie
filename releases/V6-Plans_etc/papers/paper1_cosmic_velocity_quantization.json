@@ -1,0 +1,50 @@
+{
+  "id": "paper1-cosmic-velocity-quantization",
+  "title": "Paper 1: Cosmic Velocity Quantization",
+  "mode": "research",
+  "status": "draft",
+  "R": "Baryzentrische Geschwindigkeiten des Sonnensystems wirken clusterartig bei v≈1.370 km/s (≈10×α⁻¹), sind aber noch nicht als σ(β(R-Θ))-Übergang modelliert.",
+  "Theta": "Formalisierung einer Quantisierungshypothese, die α⁻¹ mit UTAC-β koppelt und reproduzierbar auf NASA/ESA-Ephemeriden getestet wird.",
+  "beta": "β≈4.5–11 als Kopplungsband zwischen informationsgetriebener und kosmischer Skala; Schwellenlage Θ wird als solarer Eigenimpuls geschätzt.",
+  "zeta": "ζ(R) steht für Messrauschen und Bahnexzentrizität; muss im Modell als Dämpfung dokumentiert werden.",
+  "sigma_transition": "σ(β(R-Θ)) beschreibt die Wahrscheinlichkeit, dass ein Geschwindigkeitscluster als quantisierte Ebene erkannt wird.",
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Die gemittelte baryzentrische Geschwindigkeit des Sonnensystems zeigt Plateaus bei ganzzahligen Vielfachen von α⁻¹×137 km/s.",
+      "null_model": "Uniforme oder lineare Geschwindigkeitsverteilung ohne diskrete Plateaus.",
+      "falsifiability": "Ablehnung, wenn ΔAIC < 0 zugunsten des Nullmodells oder wenn Bootstraps die Plateau-Signifikanz <95 % zeigen.",
+      "metrics": ["ΔAIC", "BIC", "Bayes-Faktor", "Bootstrap-p"]
+    },
+    {
+      "id": "H2",
+      "statement": "Ein logistischer Fit σ(β(R-Θ)) mit β im Bereich 4–11 reduziert die Residuen der Plateau-Detektion signifikant gegenüber β→∞.",
+      "null_model": "Stufenfunktion (β→∞) ohne glatte Übergänge.",
+      "falsifiability": "Ablehnung, wenn der Residuenunterschied |ΔR²| < 0.02 oder wenn CI der β-Schätzung Θ überschneidet.",
+      "metrics": ["R²", "RMSE", "CI_β", "CI_Θ"]
+    }
+  ],
+  "data_sources": [
+    "NASA JPL Horizons: baryzentrische Ephemeriden",
+    "Gaia DR3: baryzentrische Parameter",
+    "UTAC interne: feldtheorie_index.* für Kopplungsverweise"
+  ],
+  "analysis_plan": {
+    "steps": [
+      "Extrahiere v(t) aus Horizons; glätte mit ζ(R)-bewusstem Filter.",
+      "Passe σ(β(R-Θ)) und diskrete Plateau-Modelle; vergleiche mit Nullmodell.",
+      "Reporte ΔAIC/BIC, CI für β und Θ, plus Sensitivitätsanalyse der Dämpfung.",
+      "Verknüpfe Ergebnisse mit Bedeutungs-Sigillin und UTAC Status Matrix."
+    ]
+  },
+  "artifacts": [
+    "Markdown-Narrativ (dieses Trillayer)",
+    "Jupyter-Notebook in analysis/implosion oder docs/theoretical_extensions",
+    "Figure-Skizze der Plateaus (figures/ oder docs/appendices)"
+  ],
+  "milestones": [
+    "Scoping-Notebook mit ersten Fits (T+3 Tage)",
+    "Nullmodell-Vergleich und CI-Report (T+7 Tage)",
+    "Draft-Manuskript mit Sigillin-Verweisen (T+14 Tage)"
+  ]
+}
