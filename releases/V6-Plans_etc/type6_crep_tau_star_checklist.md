@@ -32,6 +32,7 @@
    - Hook meldet Trilayer-Drift (YAML/JSON/MD) und leitet Reviewer für Level 2/3 weiter.
    - Reviewer-Routing (maintainers) für Level-2/3 Fälle hinterlegen.
    - Checkliste in CI/Hooks referenzieren (pre-commit, nox, Makefile `validate-trilayer`).
+   - Beispiel-Hook (Pseudo): `python -m tools.crep_guard --threshold 0.7 --tau-default 0.1 --trilayer V6_ToDoListe.* releases/V6-Plans_etc/Chronik/chronik_v6_release.*` blockt Merge bei CREP ≥ 0.7 oder fehlendem τ*-Default und loggt Reviewer-Need.
 
 5. **Reviewer-Slot dokumentieren (required)**
    - Für CREP ≥ 0.7 verbindlichen Reviewer aus `MAINTAINERS.md` auswählen.
