@@ -35,6 +35,12 @@ from matplotlib.figure import Figure
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 from simulation.genesis_cube import GenesisCube, GenesisCubeConfig
+from simulation.genesis_loader import (
+    BetaPreset,
+    list_available_presets,
+    load_beta_presets,
+    resolve_beta_preset,
+)
 
 FRAMES = 300
 FPS = 20
@@ -222,6 +228,24 @@ def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
         )
     )
     parser.add_argument(
+        "--preset",
+        type=str,
+        help=(
+            "Name eines β-Presets aus data/derived/beta_estimates.csv, um die "
+            "Simulation mit realen Parametern zu speisen."
+        ),
+    )
+    parser.add_argument(
+        "--list-presets",
+        action="store_true",
+        help="Verfügbare β-Presets auflisten und beenden.",
+    )
+    parser.add_argument(
+        "--beta",
+        type=float,
+        help="β manuell setzen (überschreibt Default, wird von --preset verdrängt).",
+    )
+    parser.add_argument(
         "--output",
         type=Path,
         default=Path("genesis_visualization.gif"),
@@ -258,7 +282,29 @@ def main(cli_args: Sequence[str] | None = None) -> None:
     args = parse_args(cli_args)
     phase_cutoffs = PhaseCutoffs.from_total_frames(args.frames)
 
-    config = GenesisCubeConfig(beta=5.5, damping=0.08, slice_count=40)
+    if args.list_presets:
+        presets = load_beta_presets()
+        print("Verfügbare β-Presets (domain → β, θ):")
+        for preset in list_available_presets(presets):
+            theta_label = f"θ={preset.theta}" if preset.theta is not None else "θ=default"
+            print(f" - {preset.domain}: β={preset.beta:.3f} | {theta_label}")
+        return
+
+    base_config = GenesisCubeConfig(beta=5.5, damping=0.08, slice_count=40)
+    if args.beta is not None:
+        base_config.beta = args.beta
+
+    selected_preset: BetaPreset | None = None
+    if args.preset:
+        config, selected_preset = resolve_beta_preset(args.preset, base_config=base_config)
+        print(
+            "Preset geladen → "
+            f"{selected_preset.domain}: β={selected_preset.beta:.3f}, "
+            f"θ={selected_preset.theta if selected_preset.theta is not None else base_config.theta}"
+        )
+    else:
+        config = base_config
+
     genesis = GenesisCube(config)
 
     fig = plt.figure(figsize=(10, 8), facecolor="black")
@@ -281,6 +327,9 @@ def main(cli_args: Sequence[str] | None = None) -> None:
     writer = "pillow" if output_path.suffix.lower() == ".gif" else "ffmpeg"
 
     print(f"Generiere Animation... '{output_path}'")
+    if selected_preset:
+        source_label = selected_preset.source or "ohne Quellenangabe"
+        print(f" • Daten-Preset: {selected_preset.domain} ({source_label})")
     try:
         ani.save(output_path, writer=writer, fps=args.fps)
         print(f"✅ Animation gespeichert: {output_path}")

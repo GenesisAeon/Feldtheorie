@@ -33,6 +33,11 @@ Creates the breathing GenesisCube animation along σ(β(R-Θ)):
 
 Defaults target headless environments by selecting the Agg backend when none is set and using the Pillow writer for GIF export.
 
+**Data Injection:**
+- `--preset <domain>` pulls β/Θ directly from `data/derived/beta_estimates.csv`.
+- `--beta <value>` overrides the default without using a preset.
+- `--list-presets` prints all available domains with β and θ.
+
 ## Installation
 
 ### Option 1: Install visualization dependencies only
@@ -85,6 +90,9 @@ python scripts/visualize_genesis.py
 ```
 
 **Options:**
+- `--list-presets` – print all β/θ presets and exit
+- `--preset climate_amoc` – run with β/θ sampled from derived estimates
+- `--beta 5.1` – manual β override when no preset is selected
 - `--output genesis_visualization.gif` – target path (extension selects writer)
 - `--frames 300` – total frames; phase boundaries scale proportionally
 - `--fps 20` – playback speed for saved animation
