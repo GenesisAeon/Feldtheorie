@@ -1,6 +1,6 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.6.5
+- **Version:** v6-chronik-0.6.6
 - **Scope:** releases/V6-Plans_etc/Chronik
 - **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.9,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
 - **Quellen:** `V6_ToDoListe.{md,yaml,json}`
@@ -66,6 +66,10 @@
 
 ### Δ-Update 2025-12-04 – CREP Guard Make-Hook
 - **v6-governance-ethics:** Makefile-Targets `crep-guard`/`crep-guard-strict` auf tools.crep_guard ausgerichtet (τ*-Default 0.1, warnings-as-errors für strict); nächster Schritt: Hook in pre-commit/nox spiegeln und Index-Referenzen ergänzen.
+
+### Δ-Update 2025-12-05 – CI/Index-Brücke
+- **v6-governance-ethics:** Blueprint für pre-commit/nox-Integration (`python -m tools.crep_guard --check-type6-trilayer`) und Index-Spiegel (feldtheorie_index.*, docs_index.*) fixiert; nächster Schritt: CI/Hook-Eintrag.
+- **v6-todo-trilayer:** TriLayer-Versionierung (R/Θ/β/ζ) mit Chronik abgeglichen; Validator-Hook soll die neuen Index-Pfade prüfen.
 
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)

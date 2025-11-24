@@ -1,5 +1,5 @@
 metadata:
-  version: v6-chronik-0.6.5
+  version: v6-chronik-0.6.6
   generated_at: '2025-12-02T10:00:00Z'
   scope: releases/V6-Plans_etc/Chronik
   logistic_frame:
@@ -144,6 +144,19 @@ delta_updates:
     (τ*-Default 0.1, warnings-as-errors im strict Pfad).
   - 'Nächster Schritt: Guard in pre-commit/nox spiegeln und Index-Hinweise (feldtheorie_index.*,
     docs_index.*) ergänzen.'
+
+- date: '2025-12-05'
+  label: ci-index-bridge
+  summary: Blueprint für pre-commit/nox-Integration und Index-Spiegel fixiert; CI/Hook-Eintrag
+    steht an.
+  todo_links:
+  - v6-governance-ethics
+  - v6-todo-trilayer
+  actions:
+  - 'Blueprint für pre-commit/nox-Aufruf (`python -m tools.crep_guard --check-type6-trilayer`)
+    plus Index-Spiegel (feldtheorie_index.*, docs_index.*) dokumentiert.'
+  - 'TriLayer-Versionierung (R/Θ/β/ζ) mit Chronik abgeglichen; Validator-Hook soll neue
+    Index-Pfade prüfen.'
 overview:
 - '1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen
   → Artefakt: Chronik-TriLayer.'
