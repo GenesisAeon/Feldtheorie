@@ -1,4 +1,4 @@
-"""Animate the GenesisCube formation from vacuum fluctuations to block-universe slices.
+r"""Animate the GenesisCube formation from vacuum fluctuations to block-universe slices.
 
 This script stages four phases that mirror the logistic activation described in
 ``simulation.genesis_cube``:
@@ -13,9 +13,17 @@ Run from the repository root to generate ``genesis_visualization.gif``.
 
 from __future__ import annotations
 
+import argparse
 import os
 import sys
+from dataclasses import dataclass
+from pathlib import Path
 from typing import Iterable, List, Sequence, Tuple
+
+import matplotlib
+
+if os.environ.get("MPLBACKEND") is None:
+    matplotlib.use("Agg")
 
 import matplotlib.animation as animation
 import matplotlib.pyplot as plt
@@ -29,19 +37,39 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from simulation.genesis_cube import GenesisCube, GenesisCubeConfig
 
 FRAMES = 300
+FPS = 20
 INTERVAL_MS = 50
-PHASE_1_VOID = 60
-PHASE_2_IMPLOSION = 90
-PHASE_3_CUBE = 150
+PHASE_1_RATIO = 0.2
+PHASE_2_RATIO = 0.3
+PHASE_3_RATIO = 0.5
+
+
+@dataclass(frozen=True)
+class PhaseCutoffs:
+    """Frame indices that delimit the four breathing phases."""
+
+    phase_1: int
+    phase_2: int
+    phase_3: int
+
+    @classmethod
+    def from_total_frames(cls, total_frames: int) -> "PhaseCutoffs":
+        phase_1 = max(1, int(total_frames * PHASE_1_RATIO))
+        phase_2 = max(phase_1 + 1, int(total_frames * PHASE_2_RATIO))
+        phase_3 = max(phase_2 + 1, int(total_frames * PHASE_3_RATIO))
+        return cls(phase_1=phase_1, phase_2=phase_2, phase_3=phase_3)
 
 
 class GenesisVisualizer:
     """Visualize the breathing of the GenesisCube across four phases."""
 
-    def __init__(self, figure: Figure, axes: Axes, cube: GenesisCube) -> None:
+    def __init__(
+        self, figure: Figure, axes: Axes, cube: GenesisCube, phase_cutoffs: PhaseCutoffs
+    ) -> None:
         self.figure = figure
         self.axes = axes
         self.cube = cube
+        self.phase_cutoffs = phase_cutoffs
         self.scatter_void = axes.scatter([], [], [], c="white", s=2, alpha=0.6)
         self.lines_strings = [
             axes.plot([], [], [], color="cyan", lw=2, alpha=0.8)[0] for _ in range(3)
@@ -117,7 +145,9 @@ class GenesisVisualizer:
 
     def _phase_implosion(self, frame: int) -> Iterable:
         self.status_text.set_text("PHASE 2: IMPLOSIVE GENESIS\nR → 0")
-        progress = (frame - PHASE_1_VOID) / (PHASE_2_IMPLOSION - PHASE_1_VOID)
+        progress = (frame - self.phase_cutoffs.phase_1) / max(
+            1, self.phase_cutoffs.phase_2 - self.phase_cutoffs.phase_1
+        )
         current_scale = 2.0 * (1.0 - progress)
         noise = (np.random.rand(50, 3) - 0.5) * current_scale
         self.scatter_void._offsets3d = (noise[:, 0], noise[:, 1], noise[:, 2])
@@ -132,7 +162,9 @@ class GenesisVisualizer:
 
     def _phase_cube_extrusion(self, frame: int) -> Iterable:
         self.status_text.set_text("PHASE 3: DIMENSIONALE ENTFALTUNG\nDer Kubus auf der Ecke")
-        progress = (frame - PHASE_2_IMPLOSION) / (PHASE_3_CUBE - PHASE_2_IMPLOSION)
+        progress = (frame - self.phase_cutoffs.phase_2) / max(
+            1, self.phase_cutoffs.phase_3 - self.phase_cutoffs.phase_2
+        )
         scale = progress * 1.5
         vertices = self.cube.cube_vertices(scale=scale)
         edges = self._cube_edges(vertices)
@@ -149,7 +181,7 @@ class GenesisVisualizer:
     def _phase_slice_traversal(self, frame: int) -> Iterable:
         self.status_text.set_text("PHASE 4: BLOCK-UNIVERSUM SCHNITTE\n2D-Projektion (Hexagon)")
         slices = self.cube.block_universe_slices()
-        slice_idx = (frame - PHASE_3_CUBE) % len(slices)
+        slice_idx = (frame - self.phase_cutoffs.phase_3) % len(slices)
         current_slice = slices[slice_idx]
 
         sigma_val = current_slice["sigma"]
@@ -173,16 +205,59 @@ class GenesisVisualizer:
     def update(self, frame: int) -> Iterable:
         self.axes.view_init(elev=30 + 10 * np.sin(frame / 100), azim=frame * 0.5)
 
-        if frame < PHASE_1_VOID:
+        if frame < self.phase_cutoffs.phase_1:
             return self._phase_void(frame)
-        if frame < PHASE_2_IMPLOSION:
+        if frame < self.phase_cutoffs.phase_2:
             return self._phase_implosion(frame)
-        if frame < PHASE_3_CUBE:
+        if frame < self.phase_cutoffs.phase_3:
             return self._phase_cube_extrusion(frame)
         return self._phase_slice_traversal(frame)
 
 
-def main() -> None:
+def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Visualisiert die GenesisCube-Aktivierung mit σ(β(R-Θ))-Pulse. "
+            "Standardmäßig wird genesis_visualization.gif erzeugt."
+        )
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path("genesis_visualization.gif"),
+        help="Zielpfad für die Animation (Dateiendung bestimmt Writer).",
+    )
+    parser.add_argument(
+        "--frames",
+        type=int,
+        default=FRAMES,
+        help="Gesamtanzahl der Frames (Phasen werden proportional skaliert).",
+    )
+    parser.add_argument(
+        "--fps",
+        type=int,
+        default=FPS,
+        help="Bildrate beim Speichern der Animation.",
+    )
+    parser.add_argument(
+        "--interval-ms",
+        type=int,
+        default=INTERVAL_MS,
+        dest="interval_ms",
+        help="Intervall zwischen Frames während der Generierung.",
+    )
+    parser.add_argument(
+        "--show",
+        action="store_true",
+        help="Zeige die Animation nach dem Speichern an (erfordert GUI-Backend).",
+    )
+    return parser.parse_args(args)
+
+
+def main(cli_args: Sequence[str] | None = None) -> None:
+    args = parse_args(cli_args)
+    phase_cutoffs = PhaseCutoffs.from_total_frames(args.frames)
+
     config = GenesisCubeConfig(beta=5.5, damping=0.08, slice_count=40)
     genesis = GenesisCube(config)
 
@@ -191,24 +266,30 @@ def main() -> None:
     ax.set_axis_off()
     ax.grid(False)
 
-    visualizer = GenesisVisualizer(fig, ax, genesis)
+    visualizer = GenesisVisualizer(fig, ax, genesis, phase_cutoffs)
     ani = animation.FuncAnimation(
         fig,
         visualizer.update,
-        frames=FRAMES,
+        frames=args.frames,
         init_func=visualizer.init_scene,
-        interval=INTERVAL_MS,
+        interval=args.interval_ms,
         blit=False,
     )
 
-    print("Generiere Animation... 'genesis_visualization.gif'")
+    output_path = args.output
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    writer = "pillow" if output_path.suffix.lower() == ".gif" else "ffmpeg"
+
+    print(f"Generiere Animation... '{output_path}'")
     try:
-        ani.save("genesis_visualization.gif", writer="pillow", fps=20)
-        print("✅ Animation gespeichert: genesis_visualization.gif")
+        ani.save(output_path, writer=writer, fps=args.fps)
+        print(f"✅ Animation gespeichert: {output_path}")
         print("   Öffne die Datei, um den Atem des Feldes zu sehen.")
     except Exception as exc:  # pragma: no cover - depends on environment codecs
         print(f"⚠️ Speichern fehlgeschlagen (ffmpeg/imagemagick fehlt?): {exc}")
-        plt.show()
+    finally:
+        if args.show:
+            plt.show()
 
 
 if __name__ == "__main__":
