@@ -5,6 +5,7 @@ import pytest
 from simulation.genesis_cube import GenesisCubeConfig
 from simulation.genesis_loader import (
     GenesisPreset,
+    GenesisLoader,
     index_presets,
     load_beta_presets,
     resolve_preset,
@@ -63,3 +64,25 @@ def test_apply_to_config_overrides_beta_and_theta() -> None:
     assert updated.theta == pytest.approx(0.2)
     # other fields remain untouched
     assert updated.damping == pytest.approx(0.05)
+
+
+def test_list_domains_loads_presets_when_empty(tmp_path: Path) -> None:
+    csv_path = tmp_path / "beta.csv"
+    csv_path.write_text(
+        "\n".join(
+            [
+                "domain,beta,beta_ci_lower,beta_ci_upper,beta_ci_width,theta,r_squared,delta_aic,source",
+                "information,4.2,3.9,4.5,0.6,0.12,0.98,12.1,lab",
+                "climate,10.1,9.8,10.4,0.6,,0.99,42.0,field",
+            ]
+        )
+    )
+
+    loader = GenesisLoader(csv_path)
+    assert loader.presets == {}
+
+    domains = loader.list_domains()
+
+    assert domains == ["climate", "information"]
+    # ensure presets were cached after the lazy load
+    assert len(loader.presets) == 2
