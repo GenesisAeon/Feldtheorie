@@ -13,28 +13,30 @@ authors = [
 ]
 keywords = ["logistic", "threshold-field", "resonance", "climate", "membrane"]
 dependencies = [
-  "numpy>=1.26",
-  "scipy>=1.11",
-  "pandas>=2.1",
-  "statsmodels>=0.14",
-  "matplotlib>=3.8",
-  "pyyaml>=6.0",
-  "typer>=0.12",
-  "rich>=13.7",
+  "numpy>=1.26,<2.3",
+  "scipy>=1.11,<1.14",
+  "pandas>=2.1,<2.3",
+  "statsmodels>=0.14,<0.15",
+  "matplotlib>=3.8,<3.11",
+  "scikit-learn>=1.4,<1.6",
+  "pyyaml>=6.0,<7",
+  "jsonschema>=4.20,<5",
+  "typer>=0.12,<1",
+  "rich>=13.7,<14",
 ]
 
 [project.optional-dependencies]
 dev = [
-  "black>=24.4",
-  "mypy>=1.10",
-  "nox>=2024.4.15",
-  "pytest>=8.2",
-  "pytest-cov>=4.1",
-  "ruff>=0.5.0",
+  "black>=24.4,<25",
+  "mypy>=1.10,<1.12",
+  "nox>=2024.4.15,<2025.1",
+  "pytest>=8.2,<9",
+  "pytest-cov>=4.1,<7",
+  "ruff>=0.5.0,<0.7",
 ]
 docs = [
-  "myst-parser>=2.0",
-  "sphinx>=7.3",
+  "myst-parser>=2.0,<3",
+  "sphinx>=7.3,<8",
 ]
 
 [project.scripts]

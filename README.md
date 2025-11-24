@@ -463,11 +463,15 @@ See: [`docs/tooltip_api.md`](docs/tooltip_api.md)
 
 ## Reproduction Workflow
 
-1. **Install dependencies:**
+1. **Install dependencies:** Use the pinned constraints to keep tools and runtimes in a
+   compatible window.
    ```bash
-   pip install -r requirements.txt
+   pip install -r requirements.txt            # installs feldtheorie with dev extras
    # or
-   conda env create -f environment.yml
+   pip install -c constraints.txt .[dev]      # equivalent without reading requirements.txt
+   # or
+   uv pip install -r requirements.txt         # fast resolver; honours constraints.txt
+   # (conda) conda env create -f environment.yml
    ```
 
 2. **Run statistical harness:**
