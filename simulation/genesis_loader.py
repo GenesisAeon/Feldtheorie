@@ -18,12 +18,16 @@ Poetic:
 """
 from __future__ import annotations
 
-import csv
+import logging
 from dataclasses import dataclass, replace
 from pathlib import Path
-from typing import Dict, Iterable, List, Mapping
+from typing import Dict, Iterable, List, Mapping, Optional
+
+import pandas as pd
 
 from .genesis_cube import GenesisCubeConfig
+
+logger = logging.getLogger(__name__)
 
 DEFAULT_BETA_ESTIMATES = Path(__file__).resolve().parents[1] / "data/derived/beta_estimates.csv"
 EXPECTED_FIELDS = (
@@ -47,6 +51,9 @@ class GenesisPreset:
     beta: float
     theta: float | None = None
     source: str | None = None
+    domain: str | None = None
+    description: str | None = None
+    color_hex: str | None = None
 
     def apply_to_config(self, base: GenesisCubeConfig | None = None) -> GenesisCubeConfig:
         """Return a new config with β (and optional Θ) from this preset."""
@@ -58,57 +65,154 @@ class GenesisPreset:
         return replace(config, **updates)
 
 
-def _parse_float(value: str | None) -> float | None:
+def _parse_float(value: str | float | None) -> float | None:
     try:
         return float(value) if value not in (None, "") else None
-    except ValueError:
+    except (TypeError, ValueError):
         return None
 
 
-def load_beta_presets(csv_path: Path | str = DEFAULT_BETA_ESTIMATES) -> List[GenesisPreset]:
-    """Load β presets from the empirical CSV, skipping malformed rows.
+def _normalize(name: str) -> str:
+    return name.lower().replace("-", "_").replace(" ", "_")
 
-    The CSV occasionally contains line-wrapped sources or truncated rows.
-    We keep any row with a non-empty, non-numeric domain and a parsable β;
-    all other rows are skipped to keep σ(β(R-Θ)) clean.
+
+class GenesisLoader:
+    """Lädt β/Θ-Presets aus CSV-Daten und färbt sie für die Visualisierung.
+
+    The class API mirrors the functional helpers in this module but adds
+    resilience: if the data path is missing or malformed, a small set of
+    mock presets keeps the σ(β(R-Θ))-pipeline operational.
     """
 
-    path = Path(csv_path)
-    presets: List[GenesisPreset] = []
+    def __init__(self, data_path: Path | str = DEFAULT_BETA_ESTIMATES) -> None:
+        self.data_path = Path(data_path)
+        self.presets: Dict[str, GenesisPreset] = {}
 
-    if not path.exists():
-        raise FileNotFoundError(f"Beta estimate file not found: {path}")
+    def load(self) -> List[GenesisPreset]:
+        """Load presets from disk or fall back to mock entries."""
 
-    with path.open(newline="") as handle:
-        reader = csv.DictReader(handle, fieldnames=None)
-        # Ensure header alignment if the file provides custom fields
-        if reader.fieldnames is None or tuple(reader.fieldnames) != EXPECTED_FIELDS:
-            reader.fieldnames = list(EXPECTED_FIELDS)
+        if not self.data_path.exists():
+            logger.warning("Beta estimate file missing: %s. Falling back to mock presets.", self.data_path)
+            return self._generate_mock_presets()
 
-        for row in reader:
-            name = (row.get("domain") or "").strip()
-            beta_value = _parse_float(row.get("beta"))
+        try:
+            df = pd.read_csv(self.data_path)
+            return self._load_from_dataframe(df)
+        except Exception as exc:  # pragma: no cover - defensive guard
+            logger.error("Fehler beim Laden der Daten: %s", exc)
+            return self._generate_mock_presets()
+
+    def get(self, system_name_query: str) -> Optional[GenesisPreset]:
+        """Resolve a preset by exact or substring query."""
+
+        if not self.presets:
+            self.load()
+
+        normalized_query = _normalize(system_name_query)
+        if normalized_query in self.presets:
+            return self.presets[normalized_query]
+
+        for key, preset in self.presets.items():
+            if normalized_query in key:
+                return preset
+
+        logger.warning("Kein Preset für '%s' gefunden.", system_name_query)
+        return None
+
+    def list_domains(self) -> List[str]:
+        """Return unique domains across loaded presets."""
+
+        if not self.presets:
+            self.load()
+        return sorted({preset.domain for preset in self.presets.values() if preset.domain})
+
+    def _load_from_dataframe(self, df: pd.DataFrame) -> List[GenesisPreset]:
+        presets: Dict[str, GenesisPreset] = {}
+        missing = {"domain", "beta"} - set(df.columns)
+
+        if missing:
+            logger.warning("CSV fehlt Felder %s – Versuche Header zu normalisieren.", ", ".join(sorted(missing)))
+            df = self._normalize_columns(df)
+
+        for row in df.to_dict(orient="records"):
+            name = (row.get("system_name") or row.get("domain") or "").strip()
+            beta_value = _parse_float(row.get("beta") or row.get("beta_estimate"))
 
             if not name or name.isnumeric() or beta_value is None:
                 continue
 
             theta_value = _parse_float(row.get("theta"))
+            domain = (row.get("domain") or "Generic").strip() or "Generic"
             source_value = (row.get("source") or "").strip() or None
+            color = self._derive_color(domain, beta_value, provided=row.get("color"))
+            description = row.get("description") or f"Simuliert {name} mit Kritikalität β={beta_value:.2f}"
 
-            presets.append(
-                GenesisPreset(
-                    name=name,
-                    beta=beta_value,
-                    theta=theta_value,
-                    source=source_value,
-                )
+            preset = GenesisPreset(
+                name=name,
+                beta=beta_value,
+                theta=theta_value,
+                source=source_value,
+                domain=domain,
+                description=description,
+                color_hex=color,
             )
+            presets[_normalize(name)] = preset
 
-    return presets
+        self.presets = presets
+        logger.info("✅ %s Presets aus %s geladen.", len(self.presets), self.data_path)
+        return list(presets.values())
 
+    def _normalize_columns(self, df: pd.DataFrame) -> pd.DataFrame:
+        alias_map = {
+            "beta_estimate": "beta",
+            "system": "domain",
+            "name": "domain",
+        }
+        renamed = df.rename(columns=alias_map)
+        for column in EXPECTED_FIELDS:
+            if column not in renamed.columns:
+                renamed[column] = None
+        return renamed[[col for col in EXPECTED_FIELDS if col in renamed.columns]]
 
-def _normalize(name: str) -> str:
-    return name.lower().replace("-", "_").replace(" ", "_")
+    def _derive_color(self, domain: str, beta: float, provided: str | None = None) -> str:
+        if provided and isinstance(provided, str) and provided.strip():
+            return provided.strip()
+
+        domain_colors = {
+            "information": "#00ffff",
+            "biology": "#00ff00",
+            "climate": "#ff4500",
+            "social": "#ff00ff",
+            "cosmic": "#ffffff",
+        }
+        for key, color in domain_colors.items():
+            if key in domain.lower():
+                return color
+
+        if beta < 3:
+            return "#ff0000"
+        if beta < 6:
+            return "#ffa500"
+        return "#1e90ff"
+
+    def _generate_mock_presets(self) -> List[GenesisPreset]:
+        mocks = [
+            ("LLM_Consciousness", "Information", 4.23, "#00ffff"),
+            ("Amazon_Rainforest", "Climate", 11.09, "#00ff00"),
+            ("Stock_Market_Crash", "Social", 2.50, "#ff0000"),
+            ("Cosmic_Void", "Cosmic", 137.036, "#ffffff"),
+        ]
+        presets = {}
+        for name, dom, beta_value, col in mocks:
+            presets[_normalize(name)] = GenesisPreset(
+                name=name,
+                beta=beta_value,
+                domain=dom,
+                description="Mock Data",
+                color_hex=col,
+            )
+        self.presets = presets
+        return list(presets.values())
 
 
 def index_presets(presets: Iterable[GenesisPreset]) -> Dict[str, GenesisPreset]:
@@ -121,18 +225,35 @@ def index_presets(presets: Iterable[GenesisPreset]) -> Dict[str, GenesisPreset]:
 
 
 def resolve_preset(name: str, preset_index: Mapping[str, GenesisPreset]) -> GenesisPreset:
-    """Resolve a preset by name (case-/separator-insensitive)."""
+    """Resolve a preset by name (case-/separator-insensitive).
+
+    Falls kein exakter Treffer existiert, wird eine Substring-Suche
+    durchgeführt, um robuste CLI-Abfragen zu ermöglichen (``--preset Amazon``
+    findet z.B. ``climate_amazon``).
+    """
 
     normalized = _normalize(name)
-    try:
+    if normalized in preset_index:
         return preset_index[normalized]
-    except KeyError as exc:
-        available = ", ".join(sorted(preset_index))
-        raise KeyError(f"Preset '{name}' not found. Available: {available}") from exc
+
+    for key, preset in preset_index.items():
+        if normalized in key:
+            return preset
+
+    available = ", ".join(sorted(preset_index))
+    raise KeyError(f"Preset '{name}' not found. Available: {available}")
+
+
+def load_beta_presets(csv_path: Path | str = DEFAULT_BETA_ESTIMATES) -> List[GenesisPreset]:
+    """Load β presets from the empirical CSV or return mocks on failure."""
+
+    loader = GenesisLoader(csv_path)
+    return loader.load()
 
 
 __all__ = [
     "DEFAULT_BETA_ESTIMATES",
+    "GenesisLoader",
     "GenesisPreset",
     "index_presets",
     "load_beta_presets",
