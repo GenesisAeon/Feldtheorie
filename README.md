@@ -20,6 +20,16 @@ This repository isn't just a research artifact—it's a **universal template** f
 - **Software Engineering:** Monitor code quality, test coverage, technical debt with QSTM metrics
 - **Creative Projects:** Index literature, music, art with custom aesthetic metrics
 
+> ### Getting Started
+> Ready to run Feldtheorie locally? See the [QUICKSTART.md](QUICKSTART.md) for full details. The fastest path:
+>
+> ```bash
+> python -m venv .venv
+> source .venv/bin/activate  # or .venv\Scripts\activate on Windows
+> pip install -r requirements.txt
+> pytest  # optional smoke check
+> ```
+
 ### Universal Skeleton Builder
 
 The [`setup/`](setup/) directory contains a **production-ready builder script** that replicates the Feldtheorie architecture for arbitrary datasets:
