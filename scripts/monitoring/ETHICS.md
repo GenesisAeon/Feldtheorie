@@ -75,5 +75,5 @@ Before committing work in `scripts/monitoring`:
 
 ---
 
-**Last Updated:** 2025-11-24 12:23:03 UTC
+**Last Updated:** 2025-11-24 12:29:54 UTC
 **Governance Version:** 1.0.0

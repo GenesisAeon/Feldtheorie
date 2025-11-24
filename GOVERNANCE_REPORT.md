@@ -1,23 +1,23 @@
 # Fractal Governance Report
 
-**Generated:** 2025-11-24 12:23:03 UTC
+**Generated:** 2025-11-24 12:29:54 UTC
 **Governance Version:** 1.0.0
 
 ---
 
 ## Summary
 
-- **Total Governed Contexts:** 183
+- **Total Governed Contexts:** 184
 - **Contexts by Mode:**
   - code: 27
   - data: 38
-  - research: 118
+  - research: 119
 
-- **Total Agents:** 183
+- **Total Agents:** 184
 - **Agents by Mode:**
   - code: 27
   - data: 38
-  - research: 118
+  - research: 119
 
 ---
 
