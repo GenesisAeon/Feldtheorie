@@ -1,8 +1,8 @@
 # V6 ToDoListe – TriLayer Übersicht
 
-- **Version:** v6-todo-0.7
+- **Version:** v6-todo-0.7.1
 - **Scope:** releases/V6-Plans_etc
-- **Generated:** 2025-11-26T09:00:00Z
+- **Generated:** 2025-11-27T09:00:00Z
 - **Logistische Membran:** R→"Navigierbare V6-Release-Landkarte", Θ→"Aktivierungs-Lücken geschlossen & Governance aktualisiert", β≈4.8, ζ-Risiko: negativ falls Safety-Delay-Feld fehlt.
 - **Priorisierung:** Sprint Δ (2025-11-24 → 2025-11-30) startet mit TriLayer-Spiegelung, greift dann Governance/Safety, danach Aktivierung und Type‑VI-Integration.
 
@@ -12,7 +12,7 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | v6-todo-trilayer | 0 | Chronik-Kopplung | ToDo-TriLayer konsolidieren & Chronik koppeln | in-progress | Chronik-Update mit TriLayer-Kopplung angestoßen; ToDo-Reflexe in Chronik/ToDo-Liste jetzt gespiegelt, Automations-/Validator-Pfad steht noch aus. | IDs spiegeln · Chronik-Achse fixieren · Validator/Index-Haken ergänzen | chronik_v6_release.md L1-L78 |
 | v6-governance-ethics | 1 | ζ<0 Escalation + Provenienz | Governance, AGENTS & ETHICS an implosive Szenarien anpassen | open | Anpassungsbedarf benannt, kein Update verzeichnet; Ethik- und Policy-Erweiterungen offen. | Escalation-Regeln für ζ<0 ergänzen · ETHICS.md um implosive Risiken & Provenienz stärken | FinalyzeVorschlägeChatGPT5.1Agent.txt L80-L90 |
-| v6-activation-gaps | 2 | τ*-Prototyp + Regression | Activation Gaps schließen (Safety-Delay, Meta-Regression, Sigillin-Automation) | open | Plan beschrieben, Umsetzung nicht dokumentiert; Prototypen, Regression-Refresh, Parser/Validator, Index-Automation, Outlier-Diagnostics und Data-Lantern-Dashboard fehlen noch. | Safety-Delay-Prototyp bauen · beta_meta_regression_v2.py mit neuen Daten/φ^(n/3) auffrischen · Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics erweitern · Telemetrie-Dashboard skizzieren | FinalyzeVorschlägeChatGPT5.1Agent.txt L53-L64 |
+| v6-activation-gaps | 2 | τ*-Prototyp + Regression | Activation Gaps schließen (Safety-Delay, Meta-Regression, Sigillin-Automation) | open | τ*-FIT-Stub mit RK4-Warnpfad abgelegt; Regression-Refresh, Validator/Index-Automation, Outlier-Diagnostics und Data-Lantern-Dashboard stehen weiterhin aus. | FIT-Stub in pipelines verdrahten · beta_meta_regression_v2.py mit neuen Daten/φ^(n/3) auffrischen · Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics erweitern · Telemetrie-Dashboard skizzieren | FinalyzeVorschlägeChatGPT5.1Agent.txt L53-L64; activation_gaps_tau_star.md L1-L36 |
 | v6-type6-integration | 3 | CREP-Pfad skizzieren | Type‑6 Implosionsmodelle offiziell integrieren | open | Theorie und Paper vorhanden, aber Klassifikation, CREP-Indizes und Showcase-Simulation fehlen. | Type‑VI Klassifikation + Guidelines · CREP-Indizes in METRICS.md · cubic-root-jump Simulation (z.B. Klima-Kaskade) | FinalyzeVorschlägeChatGPT5.1Agent.txt L65-L76 |
 | v6-trilayer-enforcement | 4 | Validator & Audit anstoßen | Trilayer-Metareflexion & Sigillin-Strenge umsetzen | open | Tri-Layer-Pflicht betont, aber keine Automations-/Auditspuren im Plans-Ordner dokumentiert. | Trilayer-Parser/Validator + Index-Automation aktivieren · Archiv-/Sigillin-Audits protokollieren | FinalyzeVorschlägeChatGPT5.1Agent.txt L80-L82 |
 | v6-release-onboarding | 5 | Playbook + CI/CD | Release-Playbook & Onboarding für V6 aktualisieren | open | V6-spezifische Checkliste, CI/CD-Checks und README/QUICKSTART-Updates sind vorgeschlagen, aber nicht hinterlegt. | V6-Checkliste & Pflichttests ins Release-Playbook · CI/CD Hooks für Sigillin-Checks/Regression · README/QUICKSTART um Type‑6-Einstieg erweitern | FinalyzeVorschlägeChatGPT5.1Agent.txt L104-L107 |
@@ -36,6 +36,10 @@
 - **v6-governance-ethics:** Mini-Schritte für ζ<0-Absicherung: (1) AGENTS/POLICY-Addendum mit τ*-Pflicht + CREP-Schwellen entwerfen, (2) ETHICS-Provenienzblock mit Dual-Use-Hinweis einfügen, (3) Review-Slot mit Maintainer terminieren.
 - **v6-activation-gaps:** Ausführbare Stubs: (1) τ*-Pseudocode-Snippet (RK4-kompatibel) in analysis/notes ablegen, (2) β-Regression-Refresh mit Phase-2/3 Daten als eigenständiges Notebook-Delta planen, (3) Sigillin-Validator-Aufruf als Makefile-Target skizzieren.
 - **v6-type6-integration:** Kleinschrittiger CREP-Pfad: (1) Tabellen-Template für Type‑VI-Parameter in METRICS.md verlinken, (2) Mini-Simulation-Outline (cubic-root jump) in simulation/notes ergänzen, (3) ΔAIC/CI-Checkliste als JSON-Snippet vorbereiten.
+
+## Δ-Update 2025-11-27 – τ*-Stub Drop
+- **Rationale:** FIT-Schritt umgesetzt, um ζ<0-Safety-Delay ohne Euler in den Aktivierungsstrom einzufädeln.
+- **v6-activation-gaps:** τ*-Safety-Delay FIT-Stub (RK4-kompatibel) als eigenständiges Artefakt abgelegt; nächste Schritte: in Pipelines verdrahten, Regression-Refresh anstoßen, Sigillin-Validator-Haken setzen.
 
 ## Navigationshinweise
 - Alle Einträge spiegeln die logistisches Feld (R, Θ, β, ζ) wider und bleiben Trilayer-synchron (YAML/JSON/MD).
