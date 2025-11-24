@@ -4,7 +4,9 @@
 # GitHub official funding file
 # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository
 
-# Ethereum (Primary)
+# Cryptocurrency Funding
 custom:
   - "https://etherscan.io/address/0xbcfdd442c9d92d491afef1dd3181c27c1f547b1b"
   - "ETH: 0xbcfdd442c9d92d491afef1dd3181c27c1f547b1b"
+  - "BTC: bc1qujx302cs0767gcnjqcyl0fnwvwkxge2cdh90eq"
+  - "https://doi.org/10.5281/zenodo.17693039"
