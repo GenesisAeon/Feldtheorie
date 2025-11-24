@@ -81,5 +81,5 @@ Before committing work in `data/experimental`:
 
 ---
 
-**Last Updated:** 2025-11-24 08:45:58 UTC
+**Last Updated:** 2025-11-24 09:32:14 UTC
 **Governance Version:** 1.0.0

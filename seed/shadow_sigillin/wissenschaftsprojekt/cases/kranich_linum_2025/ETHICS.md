@@ -76,5 +76,5 @@ Before committing work in `seed/shadow_sigillin/wissenschaftsprojekt/cases/krani
 
 ---
 
-**Last Updated:** 2025-11-24 08:45:58 UTC
+**Last Updated:** 2025-11-24 09:32:14 UTC
 **Governance Version:** 1.0.0
