@@ -1,6 +1,6 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.5
+- **Version:** v6-chronik-0.6
 - **Scope:** releases/V6-Plans_etc/Chronik
 - **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.9,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
 - **Quellen:** `V6_ToDoListe.{md,yaml,json}`
@@ -39,6 +39,12 @@
 - **Governance/Ethics (v6-governance-ethics):** Escalation-Checkliste vorbereitet (τ*-Pflicht, CREP-Schwellen) → Ziel: AGENTS/POLICY/ETHICS mit Provenienzblöcken patchen.
 - **Activation Gaps (v6-activation-gaps):** Safety-Delay-Stub (τ* = 0.1·|Θ−R|) im Sprint verankert; Regression-Refresh + Sigillin-Validator als nächste Artefakte markiert.
 - **Type‑6 Integration (v6-type6-integration):** CREP-Pfad (ΔAIC/CI, Energie/Unitarität) in METRICS-Kapitel vorgesehen; Showcase-Simulation bleibt offen.
+
+### Δ-Update 2025-11-26 – FIT-Microtasks
+- **Rationale:** FIT-Ansatz aktiviert, um Sprint-Δ ressourcenschonend in überprüfbare Microsteps zu zerlegen.
+- **v6-governance-ethics:** AGENTS/POLICY-Addendum mit τ*-Pflicht + CREP-Schwellen, ETHICS-Provenienzblock inkl. Dual-Use-Hinweis sowie Reviewer-Slot als kompaktes Patch-Paket planen.
+- **v6-activation-gaps:** τ*-Pseudocode (RK4-kompatibel) als Stub in analysis/notes platzieren, β-Regression-Refresh als Notebook-Delta strukturieren, Makefile-Target für Sigillin-Validator skizzieren.
+- **v6-type6-integration:** METRICS-Tabellen-Template für Type‑VI-Parameter, cubic-root Mini-Simulation-Outline in simulation/notes und ΔAIC/CI-Checkliste als JSON-Snippet vorbereiten.
 
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)

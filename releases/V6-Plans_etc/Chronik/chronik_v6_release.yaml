@@ -1,6 +1,6 @@
 metadata:
-  version: v6-chronik-0.5
-  generated_at: "2025-11-25T10:40:00Z"
+  version: v6-chronik-0.6
+  generated_at: "2025-11-26T09:00:00Z"
   scope: "releases/V6-Plans_etc/Chronik"
   logistic_frame:
     R_goal: "Schrittweise Aktivierung des V6-Release-Pfads"
@@ -54,6 +54,17 @@ delta_updates:
       - Governance-Checkliste mit τ*-Pflicht und CREP-Schwellen vorbereitet (AGENTS/POLICY/ETHICS Patch geplant).
       - Safety-Delay-Stub (τ* = 0.1·|Θ−R|) als Sprint-Aufgabe fixiert; Regression-Refresh + Sigillin-Validator priorisiert.
       - CREP-Pfad (ΔAIC/CI, Energie/Unitarität) für Type‑VI in METRICS/Classification vorgemerkt, Showcase-Sim bleibt offen.
+  - date: 2025-11-26
+    label: fit-microtasks
+    summary: FIT-Aufteilung aktiviert; priorisierte Aufgaben in kleine, überprüfbare Schritte geschnitten.
+    todo_links:
+      - v6-governance-ethics
+      - v6-activation-gaps
+      - v6-type6-integration
+    actions:
+      - Micro-Paket für Governance/Ethics: AGENTS/POLICY-Addendum mit τ*-Pflicht + CREP-Schwellen und ETHICS-Provenienzblock samt Dual-Use-Hinweis planen; Reviewer-Slot setzen.
+      - Activation Gaps in Stubs zerlegt: τ*-Pseudocode (RK4-kompatibel) in analysis/notes, β-Regression-Notebook-Delta vorbereiten, Makefile-Target für Sigillin-Validator skizzieren.
+      - Type‑VI Integration modularisieren: METRICS-Tabellen-Template, simulation/notes Outline für cubic-root Mini-Simulation und ΔAIC/CI-Checkliste als JSON-Snippet vormerken.
 
 overview:
   - "1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen → Artefakt: Chronik-TriLayer."

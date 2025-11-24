@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "v6-todo-0.6",
-    "generated_at": "2025-11-25T10:45:00Z",
+    "version": "v6-todo-0.7",
+    "generated_at": "2025-11-26T09:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft",
     "logistic_frame": {
@@ -477,16 +477,26 @@
       "sprint_focus": "Ψ-Feldgleichung anlegen"
     }
   ],
-  "delta_updates": [
-    {
-      "date": "2025-11-25",
-      "label": "sprint-delta-sync",
-      "highlights": [
-        "v6-todo-trilayer: Chronik/ToDo-Spiegel aktiviert, logistisches Raster übernommen; Validator- und Index-Haken stehen an.",
-        "v6-governance-ethics: Escalation-Checkliste (τ*-Pflicht, CREP-Schwellen) vorbereitet; Provenienz-Patches geplant.",
-        "v6-activation-gaps: Safety-Delay-Stub (τ* = 0.1·|Θ−R|) im Sprint verankert; Regression-Refresh + Sigillin-Validator folgen.",
-        "v6-type6-integration: CREP-Pfad (ΔAIC/CI, Energie/Unitarität) vorgesehen; Showcase-Simulation offen."
-      ]
-    }
-  ]
-}
+    "delta_updates": [
+      {
+        "date": "2025-11-25",
+        "label": "sprint-delta-sync",
+        "highlights": [
+          "v6-todo-trilayer: Chronik/ToDo-Spiegel aktiviert, logistisches Raster übernommen; Validator- und Index-Haken stehen an.",
+          "v6-governance-ethics: Escalation-Checkliste (τ*-Pflicht, CREP-Schwellen) vorbereitet; Provenienz-Patches geplant.",
+          "v6-activation-gaps: Safety-Delay-Stub (τ* = 0.1·|Θ−R|) im Sprint verankert; Regression-Refresh + Sigillin-Validator folgen.",
+          "v6-type6-integration: CREP-Pfad (ΔAIC/CI, Energie/Unitarität) vorgesehen; Showcase-Simulation offen."
+        ]
+      },
+      {
+        "date": "2025-11-26",
+        "label": "fit-microtasks",
+        "highlights": [
+          "FIT-Aufteilung aktiviert: große Aufgaben in kleine, überprüfbare Schritte zerlegt.",
+          "v6-governance-ethics: AGENTS/POLICY-Addendum (τ*-Pflicht + CREP-Schwellen) und ETHICS-Provenienzblock als Microtasks definiert; Reviewer-Slot anzusetzen.",
+          "v6-activation-gaps: τ*-Pseudocode (RK4-kompatibel) als Stub, Notebook-Delta für β-Regression und Makefile-Target für Sigillin-Validator geplant.",
+          "v6-type6-integration: METRICS-Tabellen-Template, simulation/notes Outline und ΔAIC/CI-Checkliste als kleine Artefakte vorbereitet."
+        ]
+      }
+    ]
+  }

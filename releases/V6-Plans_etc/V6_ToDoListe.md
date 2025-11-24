@@ -1,8 +1,8 @@
 # V6 ToDoListe – TriLayer Übersicht
 
-- **Version:** v6-todo-0.6
+- **Version:** v6-todo-0.7
 - **Scope:** releases/V6-Plans_etc
-- **Generated:** 2025-11-25T10:45:00Z
+- **Generated:** 2025-11-26T09:00:00Z
 - **Logistische Membran:** R→"Navigierbare V6-Release-Landkarte", Θ→"Aktivierungs-Lücken geschlossen & Governance aktualisiert", β≈4.8, ζ-Risiko: negativ falls Safety-Delay-Feld fehlt.
 - **Priorisierung:** Sprint Δ (2025-11-24 → 2025-11-30) startet mit TriLayer-Spiegelung, greift dann Governance/Safety, danach Aktivierung und Type‑VI-Integration.
 
@@ -30,6 +30,12 @@
 - **v6-governance-ethics:** Escalation-Checkliste (τ*-Pflicht, CREP-Schwellen) vorbereitet; Patch-Pfade für AGENTS/POLICY/ETHICS mit Provenienzblöcken skizziert.
 - **v6-activation-gaps:** Safety-Delay-Stub (τ* = 0.1·|Θ−R|) als Sprint-Aufgabe markiert; Regression-Refresh und Sigillin-Validator bleiben unmittelbar anstehend.
 - **v6-type6-integration:** CREP-Pfad (ΔAIC/CI, Energie/Unitarität) in METRICS/Classification vorgesehen; Showcase-Simulation weiterhin offen.
+
+## Δ-Update 2025-11-26 – FIT-Microtasks
+- **Rationale:** FIT-Aufteilung für Ressourcenschonung – große Aufgaben werden in minimale, überprüfbare Schritte zerlegt.
+- **v6-governance-ethics:** Mini-Schritte für ζ<0-Absicherung: (1) AGENTS/POLICY-Addendum mit τ*-Pflicht + CREP-Schwellen entwerfen, (2) ETHICS-Provenienzblock mit Dual-Use-Hinweis einfügen, (3) Review-Slot mit Maintainer terminieren.
+- **v6-activation-gaps:** Ausführbare Stubs: (1) τ*-Pseudocode-Snippet (RK4-kompatibel) in analysis/notes ablegen, (2) β-Regression-Refresh mit Phase-2/3 Daten als eigenständiges Notebook-Delta planen, (3) Sigillin-Validator-Aufruf als Makefile-Target skizzieren.
+- **v6-type6-integration:** Kleinschrittiger CREP-Pfad: (1) Tabellen-Template für Type‑VI-Parameter in METRICS.md verlinken, (2) Mini-Simulation-Outline (cubic-root jump) in simulation/notes ergänzen, (3) ΔAIC/CI-Checkliste als JSON-Snippet vorbereiten.
 
 ## Navigationshinweise
 - Alle Einträge spiegeln die logistisches Feld (R, Θ, β, ζ) wider und bleiben Trilayer-synchron (YAML/JSON/MD).
