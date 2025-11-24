@@ -1,5 +1,5 @@
 metadata:
-  version: v6-chronik-0.6.6
+  version: v6-chronik-0.6.7
   generated_at: '2025-12-02T10:00:00Z'
   scope: releases/V6-Plans_etc/Chronik
   logistic_frame:
@@ -95,13 +95,14 @@ delta_updates:
       Telemetrie-Protokoll (β-Drift, τ*) über metrics/beta_evolution.csv skizzieren.
 - date: 2025-11-30
   label: crep-tau-checklist
-  summary: Type-VI CREP/τ*-Checkliste als Trilayer abgelegt; Reviewer- und Index-Kopplung noch offen.
+  summary: Type-VI CREP/τ*-Checkliste als Trilayer abgelegt; Reviewer- und Index-Kopplung
+    noch offen.
   todo_links:
   - v6-governance-ethics
   actions:
   - Type-VI CREP/τ*-Checkliste als Trilayer (MD/JSON/YAML) dokumentiert (`type6_crep_tau_star_checklist.*`).
-  - Kopplungshinweis: CI/Pre-Commit-Hooks sollen CREP≥0.7 markieren, τ*-Default prüfen und Trilayer-Drift melden.
-
+  - Kopplungshinweis: CI/Pre-Commit-Hooks sollen CREP≥0.7 markieren, τ*-Default prüfen
+      und Trilayer-Drift melden.
 - date: 2025-12-01
   label: crep-review-routing
   summary: CREP/τ* Checkliste um Reviewer-Slot- und Index/CI-Hinweise ergänzt; Rollout-Schritte
@@ -126,13 +127,14 @@ delta_updates:
       ergänzen.
 - date: '2025-12-03'
   label: crep-guard-fit-check
-  summary: Ausführbarer CREP Guard prüft Trilayer-Version, τ*-Default und Schwelle; CI/Index-Verdrahtung bleibt offen.
+  summary: Ausführbarer CREP Guard prüft Trilayer-Version, τ*-Default und Schwelle;
+    CI/Index-Verdrahtung bleibt offen.
   todo_links:
   - v6-governance-ethics
   actions:
-  - tools.crep_guard als ausführbarer Check (`python -m tools.crep_guard --check-type6-trilayer`) getestet.
+  - tools.crep_guard als ausführbarer Check (`python -m tools.crep_guard --check-type6-trilayer`)
+    getestet.
   - Nächste Schritte: CI-Verdrahtung und Index-Referenzen ergänzen.
-
 - date: '2025-12-04'
   label: crep-guard-make-hook
   summary: Makefile-Guards rufen tools.crep_guard mit τ*-Default und warnings-as-errors
@@ -144,7 +146,6 @@ delta_updates:
     (τ*-Default 0.1, warnings-as-errors im strict Pfad).
   - 'Nächster Schritt: Guard in pre-commit/nox spiegeln und Index-Hinweise (feldtheorie_index.*,
     docs_index.*) ergänzen.'
-
 - date: '2025-12-05'
   label: ci-index-bridge
   summary: Blueprint für pre-commit/nox-Integration und Index-Spiegel fixiert; CI/Hook-Eintrag
@@ -153,10 +154,26 @@ delta_updates:
   - v6-governance-ethics
   - v6-todo-trilayer
   actions:
-  - 'Blueprint für pre-commit/nox-Aufruf (`python -m tools.crep_guard --check-type6-trilayer`)
-    plus Index-Spiegel (feldtheorie_index.*, docs_index.*) dokumentiert.'
-  - 'TriLayer-Versionierung (R/Θ/β/ζ) mit Chronik abgeglichen; Validator-Hook soll neue
-    Index-Pfade prüfen.'
+  - Blueprint für pre-commit/nox-Aufruf (`python -m tools.crep_guard --check-type6-trilayer`)
+    plus Index-Spiegel (feldtheorie_index.*, docs_index.*) dokumentiert.
+  - TriLayer-Versionierung (R/Θ/β/ζ) mit Chronik abgeglichen; Validator-Hook soll
+    neue Index-Pfade prüfen.
+- date: '2025-12-06'
+  label: pre-commit-drift-probe
+  summary: FIT-Hook für crep_guard konkretisiert; ToDo↔Chronik IDs neu abgeglichen;
+    τ*-Stub-Weiterleitung skizziert.
+  todo_links:
+  - v6-governance-ethics
+  - v6-todo-trilayer
+  - v6-activation-gaps
+  actions:
+  - Pre-commit/nox-Verdrahtung als FIT-Pfad fixiert (`python -m tools.crep_guard --check-type6-trilayer`,
+    CREP≥0.7, τ*=0.1); Index-Spiegel in feldtheorie_index.* und docs_index.* bleibt
+    folgender Schritt.
+  - ID-Paare ToDo↔Chronik erneut abgeglichen; validate-trilayer Hook soll R/Θ/β/ζ-Drift
+    und Index-Pfade prüfen.
+  - τ*-Stub-Anschluss an pipelines/fit_tau_star als Mini-Aufgabe skizziert; Telemetrie-Anker
+    (β-Drift, τ*) für metrics/beta_evolution.csv präzisiert.
 overview:
 - '1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen
   → Artefakt: Chronik-TriLayer.'

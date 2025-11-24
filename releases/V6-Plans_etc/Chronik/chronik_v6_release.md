@@ -1,6 +1,6 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.6.6
+- **Version:** v6-chronik-0.6.7
 - **Scope:** releases/V6-Plans_etc/Chronik
 - **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.9,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
 - **Quellen:** `V6_ToDoListe.{md,yaml,json}`
@@ -70,6 +70,11 @@
 ### Δ-Update 2025-12-05 – CI/Index-Brücke
 - **v6-governance-ethics:** Blueprint für pre-commit/nox-Integration (`python -m tools.crep_guard --check-type6-trilayer`) und Index-Spiegel (feldtheorie_index.*, docs_index.*) fixiert; nächster Schritt: CI/Hook-Eintrag.
 - **v6-todo-trilayer:** TriLayer-Versionierung (R/Θ/β/ζ) mit Chronik abgeglichen; Validator-Hook soll die neuen Index-Pfade prüfen.
+
+### Δ-Update 2025-12-06 – Pre-Commit Drift-Probe
+- **v6-governance-ethics:** Pre-commit/nox-Verdrahtung als FIT-Pfad konkretisiert (Hook `python -m tools.crep_guard --check-type6-trilayer` mit CREP≥0.7 und τ*=0.1); Index-Spiegel in feldtheorie_index.* und docs_index.* bleibt als nächster Schritt markiert.
+- **v6-todo-trilayer:** ID-Paare ToDo↔Chronik erneut abgeglichen; `validate-trilayer`-Hook soll R/Θ/β/ζ-Drift loggen und Index-Pfade in die Prüfung aufnehmen.
+- **v6-activation-gaps:** τ*-Stub-Weiterleitung zu pipelines/fit_tau_star als FIT-Mini-Aufgabe skizziert; Telemetrie-Anker (β-Drift, τ*) für metrics/beta_evolution.csv präzisiert.
 
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)
