@@ -9,6 +9,12 @@
 
 ## What's New in v5.0 🚀
 
+- **Fractal Governance Engine:** Champollion & Sigillin rules are now packaged for reuse via `setup/universal_skeleton_builder.py`, with embedded charters and theory docs to keep trilayer governance intact. See [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md).
+- **Repository-as-Product Toolkit:** The Zenodo-ready bundle in `releases/v5.0.0_Zenodo_Ready/` ships manifests, upload checklists, and DOI metadata so any clone can be published without manual wiring. See [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md).
+- **Structural Isomorphism Models:** New α–Φ cosmic velocity scaling (`models/cosmic_alpha_phi.py`) and inequality-driven Ising rigidity (`models/social_rigidity_ising.py`) include Monte Carlo null ensembles and validation logs. See [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md).
+- **Hypothesis & Validation Docs:** Expanded write-ups in `docs/v5_hypothesis_isomorphism.md` and `docs/v5_validation_session_2025-11-23.md` trace assumptions, guardrails, and fit reviews for the new models. See [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md).
+- **Automation & Packaging:** `prepare_upload.py` now generates hashed manifests and source archives to lock σ(β(R-Θ)) framing to its artifacts, keeping GitHub and Zenodo synchronized. See [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md).
+
 ## 🚀 For Developers & Researchers: Repository as Product
 
 **Want to apply this self-organizing architecture to your own project?**
