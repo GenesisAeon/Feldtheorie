@@ -11,7 +11,7 @@
 | ID | Priorität | Sprint Δ Fokus | Titel | Status | Vollständigkeit | Nächste Schritte | Referenz |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | v6-todo-trilayer | 0 | Chronik-Kopplung | ToDo-TriLayer konsolidieren & Chronik koppeln | in-progress | Chronik-Update mit TriLayer-Kopplung angestoßen; ToDo-Reflexe in Chronik/ToDo-Liste jetzt gespiegelt, Automations-/Validator-Pfad steht noch aus. | IDs spiegeln · Chronik-Achse fixieren · Validator/Index-Haken ergänzen | chronik_v6_release.md L1-L78 |
-| v6-governance-ethics | 1 | ζ<0 Escalation + Provenienz | Governance, AGENTS & ETHICS an implosive Szenarien anpassen | open | Anpassungsbedarf benannt, kein Update verzeichnet; Ethik- und Policy-Erweiterungen offen. | Escalation-Regeln für ζ<0 ergänzen · ETHICS.md um implosive Risiken & Provenienz stärken | FinalyzeVorschlägeChatGPT5.1Agent.txt L80-L90 |
+| v6-governance-ethics | 1 | ζ<0 Escalation + Provenienz | Governance, AGENTS & ETHICS an implosive Szenarien anpassen | in-progress | Type-VI Safety Addendum in POLICY.md und Provenienz-/Dual-Use-Block in ETHICS.md verankert; Reviewer- und Index-Kopplung steht noch aus. | Reviewer-Slot terminieren · Provenienzblöcke in Indizes/CI-Checks aufnehmen · ζ<0-Eskalation in weiteren Governance-Dateien spiegeln | FinalyzeVorschlägeChatGPT5.1Agent.txt L80-L90 |
 | v6-activation-gaps | 2 | τ*-Prototyp + Regression | Activation Gaps schließen (Safety-Delay, Meta-Regression, Sigillin-Automation) | open | τ*-FIT-Stub mit RK4-Warnpfad abgelegt; Regression-Refresh, Validator/Index-Automation, Outlier-Diagnostics und Data-Lantern-Dashboard stehen weiterhin aus. | FIT-Stub in pipelines verdrahten · beta_meta_regression_v2.py mit neuen Daten/φ^(n/3) auffrischen · Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics erweitern · Telemetrie-Dashboard skizzieren | FinalyzeVorschlägeChatGPT5.1Agent.txt L53-L64; activation_gaps_tau_star.md L1-L36 |
 | v6-type6-integration | 3 | CREP-Pfad skizzieren | Type‑6 Implosionsmodelle offiziell integrieren | open | Theorie und Paper vorhanden, aber Klassifikation, CREP-Indizes und Showcase-Simulation fehlen. | Type‑VI Klassifikation + Guidelines · CREP-Indizes in METRICS.md · cubic-root-jump Simulation (z.B. Klima-Kaskade) | FinalyzeVorschlägeChatGPT5.1Agent.txt L65-L76 |
 | v6-trilayer-enforcement | 4 | Validator & Audit anstoßen | Trilayer-Metareflexion & Sigillin-Strenge umsetzen | open | Tri-Layer-Pflicht betont, aber keine Automations-/Auditspuren im Plans-Ordner dokumentiert. | Trilayer-Parser/Validator + Index-Automation aktivieren · Archiv-/Sigillin-Audits protokollieren | FinalyzeVorschlägeChatGPT5.1Agent.txt L80-L82 |
@@ -40,6 +40,10 @@
 ## Δ-Update 2025-11-27 – τ*-Stub Drop
 - **Rationale:** FIT-Schritt umgesetzt, um ζ<0-Safety-Delay ohne Euler in den Aktivierungsstrom einzufädeln.
 - **v6-activation-gaps:** τ*-Safety-Delay FIT-Stub (RK4-kompatibel) als eigenständiges Artefakt abgelegt; nächste Schritte: in Pipelines verdrahten, Regression-Refresh anstoßen, Sigillin-Validator-Haken setzen.
+
+## Δ-Update 2025-11-28 – Governance τ*-Addendum
+- **v6-governance-ethics:** Type-VI Safety Addendum in POLICY.md mit τ*-Pflicht, CREP-Gating und FIT-Splits hinterlegt; ETHICS.md erhielt Provenienz-/Dual-Use-Block für ζ<0-Modelle.
+- **Statusshift:** Task auf in-progress gesetzt; nächste Schritte: Reviewer-Slot fixieren, Provenienz in Indizes/CI verdrahten, weitere Governance-Dateien spiegeln.
 
 ## Navigationshinweise
 - Alle Einträge spiegeln die logistisches Feld (R, Θ, β, ζ) wider und bleiben Trilayer-synchron (YAML/JSON/MD).

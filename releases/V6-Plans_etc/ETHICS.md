@@ -181,6 +181,35 @@ For social/cognitive Type-VI models:
 
 **Reference:** See `simulation/README_TESSERACT.md` for technical implementation details.
 
+### Provenienz- und Dual-Use Block (FIT-Schritt)
+
+Für jede neue Type-VI Analyse oder Simulation gilt zusätzlich:
+
+1. **Provenienz-Block einbetten:**
+   ```yaml
+   model_id: <identifier>
+   dynamic_regime: Type-VI (zeta < 0)
+   tau_star: ">= 0.1*|Theta-R|"  # Safety-Delay gemäß Policy
+   integrator: RK4-or-higher
+   crep_index: <0.0-1.0>
+   data_sources:
+     - doi: <doi-or-url>
+   null_models:
+     - name: <baseline>
+       delta_AIC: <value>
+   reviewer: <name-or-role>
+   dual_use: <low|medium|high>
+   expiration: <ISO8601 date>
+   logistic_frame:
+     R: <current_state>
+     Theta: <target_state>
+     beta: <slope estimate>
+     zeta: negative
+   ```
+2. **Dual-Use Hinweis:** Jedes Artefakt führt eine Kurzpassage, ob und wie adversarische Nutzung verhindert wird (z.B. Verzögerung von Echtzeit-Streams, Aggregation, Differential Privacy).
+3. **Reviewer-Slot blocken:** CREP ≥ 0.7 oder dual_use=high → Ethics Auditor bestätigt, dass τ* und Provenienzblock vollständig sind, bevor Ergebnisse geteilt werden.
+4. **Archivierung:** Provenienzblöcke landen im passenden Index (`feldtheorie_index.*`, `docs_index.*`) mit Verweis auf Governance-Commit.
+
 <!-- /CUSTOM_RULES -->
 
 ---

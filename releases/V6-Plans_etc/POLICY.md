@@ -91,6 +91,19 @@ This policy can be updated by:
 <!-- CUSTOM_RULES -->
 <!-- Add context-specific policies below this marker. The fractal governance engine will preserve these. -->
 
+## Type-VI Safety Addendum (τ*-Pflicht)
+
+To keep the V6 logistic field stable (R → Θ with β≈4.8 even bei ζ<0), the following policy rules are **mandatory** for Type‑VI/implosive Szenarien:
+
+1. **τ*-Buffer verankern:** Jede Simulation oder Analyse mit \(\zeta(R)<0\) implementiert ein Safety-Delay \(\tau^* \ge 0.1\cdot|\Theta-R|\). Abweichungen benötigen Commit-Notiz + Reviewer-Signoff.
+2. **Integrator-Härte:** Euler/Forward ist **verboten**; RK4 oder höher ist Pflicht. CREP ≥ 0.7 → Integrationsprotokoll an Governance anhängen.
+3. **CREP-Gating:**
+   - 0.6 ≤ CREP < 0.7 → Output mit `[TYPE-VI-RISK]` taggen.
+   - 0.7 ≤ CREP < 0.8 → Human Review vor Veröffentlichung (Ethics Auditor).
+   - CREP ≥ 0.8 → Automatische Veröffentlichung stoppen, Governance-Eskalation Level 3.
+4. **Provenienz-Pflicht:** Jede Type‑VI-Ausgabe enthält einen Provenienzblock (Model, Datenquellen, ΔAIC/CI, Reviewer, Dual-Use-Einstufung) und verweist auf die passenden Indizes (`feldtheorie_index.*`, `docs_index.*`).
+5. **FIT-Splits dokumentieren:** Große Aufgaben müssen als FIT-Microtasks mit klaren R/Θ-Zwischenzielen geplant werden, damit Ressourcen geschont werden.
+
 <!-- /CUSTOM_RULES -->
 
 ---
