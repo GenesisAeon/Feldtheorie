@@ -34,6 +34,8 @@ from dataclasses import dataclass, field
 from typing import Dict, Iterable, List, Sequence, Tuple, Optional
 import numpy as np
 
+from models.utac_type6_implosive import cubic_root_jump, inverted_sigmoid, tau_star
+
 
 # Physical constants for entropic wavefunction
 ALPHA_INV = 137.036  # Fine structure constant α⁻¹
@@ -74,7 +76,9 @@ class GenesisCube:
     def sigma(self, r: float) -> float:
         """Compute σ(β(R-Θ)) for a given field coordinate R."""
 
-        return 1.0 / (1.0 + math.exp(-self.config.beta * (r - self.config.theta)))
+        theta = self.config.theta if self.config.theta != 0 else 1e-6
+        beta = cubic_root_jump(r, theta, beta_base=self.config.beta, k=6.5)
+        return float(inverted_sigmoid(r, theta, beta))
 
     def _normalized(self, vector: Sequence[float]) -> Tuple[float, float, float]:
         x, y, z = vector
@@ -132,13 +136,18 @@ class GenesisCube:
 
         slices: List[Dict[str, object]] = []
         for idx, r in enumerate(r_values):
-            coupling = self.sigma(r)
+            theta = self.config.theta if self.config.theta != 0 else 1e-6
+            beta = cubic_root_jump(r, theta, beta_base=self.config.beta, k=6.5)
+            coupling = float(inverted_sigmoid(r, theta, beta))
+            delay = float(tau_star(r, theta, beta))
             damping = (1.0 - self.config.damping) ** idx
             scale = damping * (1.0 + coupling * self.config.expansion_rate)
             slices.append(
                 {
                     "R": r,
                     "sigma": coupling,
+                    "beta": beta,
+                    "tau_star": delay,
                     "zeta": damping,
                     "scale": scale,
                     "hexagon": self.project_hexagon(scale=scale),
