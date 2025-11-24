@@ -206,6 +206,31 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 
 ---
 
+### 🛡️ **releases/V6-Plans_etc/** - V6 Governance & Safety
+**Multiple Docs** | **V6 Release Planning**
+📍 Index: `releases/V6-Plans_etc/V6_ToDoListe.{yaml,json,md}`
+
+**Was:** V6-Release-Planung, Type-VI Implosionsmodelle, CREP/τ* Safety-Governance
+
+**Must-Read:**
+- `type6_crep_tau_star_checklist.md` - **🔴 KRITISCH: CREP ≥ 0.7 & τ*-Pflicht!**
+- `V6_ToDoListe.md` - Sprint Δ (2025-11-24 → 2025-11-30) Roadmap
+- `Chronik/chronik_v6_release.md` - V6 Entwicklungspfad & Δ-Updates
+- `POLICY.md` & `ETHICS.md` - Type-VI Safety Addendum, Provenienz, Dual-Use
+
+**CREP/τ*-Governance:**
+- CREP ≥ 0.7 → Reviewer-Slot erforderlich
+- τ* = 0.1·|Θ−R| als Default
+- RK4+ Integrator bei ζ<0 (kein Euler!)
+- Trilayer-Drift-Checks via `make validate-trilayer`
+
+**CI-Hooks:**
+- Pre-commit: CREP-Gating, τ*-Validierung
+- Index-Spiegelung: feldtheorie_index.*, docs_index.*
+- Provenienz-Protokoll: Dual-Use-Check, ΔAIC/CI-Metriken
+
+---
+
 ## 🎨 Die Co-Hypothese
 
 **UTAC + Sigillin = Theorie + Mittel**

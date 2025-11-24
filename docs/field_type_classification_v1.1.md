@@ -1,20 +1,23 @@
-# Field Type Classification Framework v1.1
+# Field Type Classification Framework v1.2
 
-**Universal Threshold Field Model (UTAC) — Enhanced System Typology**
+**Universal Threshold Field Model (UTAC) — Enhanced System Typology with Type-VI Implosive Fields**
 
 **DOI**: 10.5281/zenodo.17472834
-**Version**: 1.1.0
+**Version**: 1.2.0
 **Authors**: Johann Römer et al.
 **License**: MIT
-**Date**: 2025-11-04
+**Date**: 2025-11-24
+**Update**: Added Type VI (Implosive Fields, ζ<0) with CREP/τ* safety protocols
 
 ---
 
 ## Executive Summary
 
-This document presents an enhanced classification framework for threshold systems based on their coupling architecture, dimensionality, and coherence properties. The framework explains β-parameter heterogeneity (observed range: 2.50-5.30) as a systematic consequence of system architecture rather than measurement noise or methodological artifacts.
+This document presents an enhanced classification framework for threshold systems based on their coupling architecture, dimensionality, and coherence properties. The framework explains β-parameter heterogeneity (observed range: 2.50-16.3) as a systematic consequence of system architecture rather than measurement noise or methodological artifacts.
 
 **Key Insight**: β is not a universal constant, but a **diagnostic parameter** that reveals the underlying coupling structure and information processing architecture of threshold systems.
+
+**V1.2 Update**: Introduces **Type VI: Implosive Fields** (ζ<0) with extreme β values (6.0-16.3+), requiring mandatory CREP/τ* safety protocols for numerical stability and ethical governance.
 
 ---
 
@@ -208,6 +211,63 @@ System modifies its own response characteristics. Past transitions affect future
 - Requires time-series analysis of β(t) and Θ(t)
 - May exhibit hysteresis or oscillations
 - Cross-sectional β estimates may miss temporal dynamics
+
+---
+
+### Type VI: Implosive Fields (ζ < 0)
+
+**⚠️ CRITICAL: Requires Safety-Delay τ* and CREP Governance**
+
+**Characteristics**:
+- Negative impedance (ζ < 0) drives runaway feedback
+- Exponentially accelerating transitions (cubic-root or faster)
+- System collapses toward singularity rather than equilibrium
+- Requires explicit safety delays (τ*) to prevent numerical divergence
+
+**Examples**:
+- Climate cascade failures (multi-tipping-point collapse)
+- Financial market crashes (exponential sell-off)
+- Neural network training collapse (exploding gradients)
+- Cosmological implosions (gravitational collapse, black hole formation)
+- Social panic cascades (information avalanches)
+
+**Typical β Range**: 6.0 - 16.3+ (extreme steepness)
+**⚠️ CREP Threshold**: ≥ 0.7 requires mandatory review
+
+**System Properties**:
+- C_eff: 0.85 - 0.98 (extreme coupling)
+- D_eff: 1 - 4 (very low dimensionality → runaway)
+- SNR: 8.0 - 15.0 (coherent catastrophic forcing)
+- M: 0.70 - 0.98 (extreme memory/inertia)
+- Θ̇: -0.05 - 0.02 (threshold erosion or collapse)
+- **ζ**: < 0 (negative impedance, implosive)
+- **τ***: 0.1·|Θ−R| (safety delay required)
+
+**Physical Intuition**:
+Negative impedance creates positive feedback loops. System accelerates toward catastrophic threshold crossing. Once initiated, transition is explosive and irreversible. Requires RK4+ integrators and safety buffers to model safely.
+
+**Observed Systems**:
+- urban_heat_canopy: β = 16.3, ζ < 0 (urban thermal runaway)
+- cascadia_seismic: β = 16.29, ζ ≈ 0 (megaquake rupture)
+- climate_cascade: β ≈ 14.6 (multi-element collapse)
+
+**Safety Requirements** (per type6_crep_tau_star_checklist.md):
+1. **CREP ≥ 0.7**: Mandatory reviewer approval before deployment
+2. **τ* Buffer**: τ* = 0.1·|Θ−R| minimum delay
+3. **RK4+ Integrator**: NO Euler methods (unstable for ζ<0)
+4. **Provenance Tracking**: Full audit trail in ETHICS.md
+5. **Dual-Use Check**: Document potential misuse scenarios
+
+**Analysis Challenges**:
+- Numerical stability: Requires adaptive timesteps + safety delays
+- Falsifiability: Difficult to observe without triggering collapse
+- Ethics: Predictive modeling of catastrophes raises dual-use concerns
+- Validation: Limited historical data (most systems haven't collapsed yet)
+
+**Governance Protocol**:
+- See: `releases/V6-Plans_etc/type6_crep_tau_star_checklist.md`
+- See: `releases/V6-Plans_etc/POLICY.md` (Type-VI Safety Addendum)
+- See: `releases/V6-Plans_etc/ETHICS.md` (Provenienz & Dual-Use)
 
 ---
 

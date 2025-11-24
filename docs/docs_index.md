@@ -58,6 +58,15 @@ Total: 30 MD files
 3. `utac_review_considerations.md` - Selbst-Kritik für Reviewer
 4. `utac_safety_delay_status.md` - τ*-Brücke mit Θ_delay, β, ΔAIC-Hooks
 
+### 🛡️ Governance (V6 Safety) - *siehe auch: releases/V6-Plans_etc/*
+**Was:** Type-VI Implosionsmodelle, CREP/τ* Safety-Protokolle
+
+**Critical Reference:**
+- `../releases/V6-Plans_etc/type6_crep_tau_star_checklist.md` - **🔴 CREP ≥ 0.7 & τ*-Pflicht!**
+- `../releases/V6-Plans_etc/POLICY.md` - Type-VI Safety Addendum
+- `../releases/V6-Plans_etc/ETHICS.md` - Provenienz & Dual-Use-Hinweise
+- Trilayer-Validation: `make validate-trilayer`
+
 ### 🟠 Validation (2 docs)
 **Was:** Falsifiability, Validation Reports
 
