@@ -261,6 +261,10 @@ navigation:
     - releases/V6-Plans_etc/type6_crep_tau_star_checklist.json
     - releases/V6-Plans_etc/POLICY.md (Type-VI Safety Addendum)
     - releases/V6-Plans_etc/ETHICS.md (Provenienz & Dual-Use Block)
+    - tools/crep_guard.py (CREP≥0.7 & τ*=0.1 validator for Type-VI governance artifacts)
+    - .pre-commit-config.yaml (CREP Guard pre-commit hook for Type-VI trilayer)
+    - noxfile.py (CREP Guard nox session for CI/CD integration)
+    - Makefile (crep-guard & crep-guard-strict targets)
     - pipelines/fit_tau_star/ (τ* safety delay implementation)
     metaquest_parity:
     - docs/metaquest_parity_brief.md

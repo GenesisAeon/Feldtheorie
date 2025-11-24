@@ -4,6 +4,13 @@
 
 Dieses Projekt entwickelt ein transdisziplinäres Feldtheorie-Framework zur Modellierung kritischer Übergänge in komplexen Systemen - von Quantenphysik bis Sozioökonomie.
 
+### 📚 Zenodo Archive
+
+**UTAC V5 (Zenodo DOI):**
+- **DOI:** [10.5281/zenodo.17693039](https://doi.org/10.5281/zenodo.17693039)
+- **Version:** V5 UTAC Framework (β-Spektrum 2.5-16.3)
+- **Citation:** Römer, J. (2025). Universal Threshold Adaptive Criticality (UTAC) Framework V5. Zenodo. https://doi.org/10.5281/zenodo.17693039
+
 ### 🌟 Warum Funding?
 
 Die Feldtheorie V6 vereint:
@@ -23,6 +30,16 @@ Die Feldtheorie V6 vereint:
 
 **Etherscan:**
 https://etherscan.io/address/0xbcfdd442c9d92d491afef1dd3181c27c1f547b1b
+
+#### Bitcoin
+
+**Wallet-Adresse:**
+```
+bc1qujx302cs0767gcnjqcyl0fnwvwkxge2cdh90eq
+```
+
+**Bitcoin Explorer:**
+https://blockchair.com/bitcoin/address/bc1qujx302cs0767gcnjqcyl0fnwvwkxge2cdh90eq
 
 **QR-Code:**
 ```
