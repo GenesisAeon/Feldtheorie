@@ -1,5 +1,10 @@
 # Resonance Ledger
 
+## What's New in v5.0 🚀
+- Fractal governance engine ships a universal skeleton (`setup/AGENTS_BOOTSTRAP.md`, `setup/THEORY_OF_STRUCTURE.md`, `setup/universal_skeleton_builder.py`) so consent/joy guardrails replicate across subtrees. See [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md) and [CHANGELOG.md](CHANGELOG.md#500--2025-11-23).
+- Structural isomorphism suite adds α–Φ cosmic velocity and social Ising rigidity models with Monte-Carlo null ensembles and validation notes (`models/cosmic_alpha_phi.py`, `models/social_rigidity_ising.py`, `docs/v5_hypothesis_isomorphism.md`). Evidence summarized in [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md#-major-features) and [CHANGELOG.md](CHANGELOG.md#500--2025-11-23).
+- Zenodo-ready bundle (`releases/v5.0.0_Zenodo_Ready/prepare_upload.py`, `MANIFEST.txt`, `UPLOAD_CHECKLIST.md`) regenerates `Feldtheorie_v5.0.0_Source.zip` for DOI parity between GitHub and Zenodo as documented in [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md#3-%EF%B8%8F-zenodo-ready-packaging) and [CHANGELOG.md](CHANGELOG.md#500--2025-11-23).
+
 ## v5.0.0 — Fractal Governance & Structural Isomorphism (2025-11-23)
 
 ### Formal
