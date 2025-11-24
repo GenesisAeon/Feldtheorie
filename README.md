@@ -5,7 +5,7 @@
 [![Code License: GPLv3](https://img.shields.io/badge/Code%20License-GPLv3-blue.svg)](LICENSE)
 [![Content License: CC BY-NC 4.0](https://img.shields.io/badge/Content%20License-CC%20BY--NC%204.0-orange.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-5.0.0-green.svg)](#whats-new-in-v50)
-[![Tests](https://img.shields.io/badge/tests-402%2F402%20passing-brightgreen.svg)](#tests--quality)
+[![Tests](https://img.shields.io/badge/tests-430%2F430%20passing-brightgreen.svg)](#tests--quality)
 
 ## What's New in v5.0 🚀
 
@@ -191,7 +191,7 @@ We investigate whether similar mathematical frameworks provide predictive power 
 - ✅ **Mirror Machine Criticality Monitor** — Real-time sensor ingestion (RAPID/GRACE/NOAA)
 - ✅ **Project Aletheia Phase 4** — Affection-Driven UTAC Testing (placebo effects in LLMs)
 - ✅ **Type-6 State Verdicts** — Logistic state tracking with β-monitoring
-- ✅ **100% Test Coverage** — 402/402 tests passing (up from 29%)
+- ✅ **100% Test Coverage** — 430/430 tests passing (up from 29%)
 
 See: [`CHANGELOG.md`](CHANGELOG.md) for full v4.0 details
 
@@ -352,7 +352,7 @@ See [`METHODS.md`](METHODS.md) for fitting details and [`REPRODUCE.md`](REPRODUC
 │   └── releases/v4.0.0-alpha_MirrorMachine/
 │
 ├── 🧪 tests/                      ← 30 test modules
-│   └── 402/402 passing ✅
+│   └── 430/430 passing ✅
 │
 ├── 🧬 modules/champollion/        ← Translation module (EN/DE)
 ├── 🎼 sonification/               ← "Sound of Criticality"
@@ -392,7 +392,7 @@ See: [`ARCHITECTURE.md`](ARCHITECTURE.md)
 
 ### 2. 100% Test Coverage
 
-- **402/402 tests passing** (pytest suite)
+- **430/430 tests passing** (full pytest suite)
 - Coverage: Models, analysis, simulators, data loaders
 - CI/CD: 7 GitHub Actions workflows
   - Main tests, ΔAIC guards, sigillin health, codex integrity
@@ -525,7 +525,7 @@ Concise references:
 
 ### Test Suite
 - **30 test modules** in `/tests/`
-- **402/402 tests passing** (100% success rate)
+- **430/430 tests passing** (100% success rate, full pytest suite)
 - **Coverage:** pytest-cov with branch coverage
 - **Run:** `pytest -q` or `make test`
 
