@@ -1,8 +1,8 @@
 # V6 ToDoListe – TriLayer Übersicht
 
-- **Version:** v6-todo-0.5
+- **Version:** v6-todo-0.6
 - **Scope:** releases/V6-Plans_etc
-- **Generated:** 2025-11-24T15:20:24Z
+- **Generated:** 2025-11-25T10:45:00Z
 - **Logistische Membran:** R→"Navigierbare V6-Release-Landkarte", Θ→"Aktivierungs-Lücken geschlossen & Governance aktualisiert", β≈4.8, ζ-Risiko: negativ falls Safety-Delay-Feld fehlt.
 - **Priorisierung:** Sprint Δ (2025-11-24 → 2025-11-30) startet mit TriLayer-Spiegelung, greift dann Governance/Safety, danach Aktivierung und Type‑VI-Integration.
 
@@ -10,7 +10,7 @@
 
 | ID | Priorität | Sprint Δ Fokus | Titel | Status | Vollständigkeit | Nächste Schritte | Referenz |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| v6-todo-trilayer | 0 | Chronik-Kopplung | ToDo-TriLayer konsolidieren & Chronik koppeln | open | Chronik verweist auf ToDo-Liste, ToDo-Eintrag selbst fehlt; TriLayer-Verankerung im Plans-Ordner unvollständig. | IDs spiegeln · Chronik-Achse fixieren · Quell-Referenzen zwischen V6_ToDoListe.* und Chronik herstellen | chronik_v6_release.md L1-L46 |
+| v6-todo-trilayer | 0 | Chronik-Kopplung | ToDo-TriLayer konsolidieren & Chronik koppeln | in-progress | Chronik-Update mit TriLayer-Kopplung angestoßen; ToDo-Reflexe in Chronik/ToDo-Liste jetzt gespiegelt, Automations-/Validator-Pfad steht noch aus. | IDs spiegeln · Chronik-Achse fixieren · Validator/Index-Haken ergänzen | chronik_v6_release.md L1-L78 |
 | v6-governance-ethics | 1 | ζ<0 Escalation + Provenienz | Governance, AGENTS & ETHICS an implosive Szenarien anpassen | open | Anpassungsbedarf benannt, kein Update verzeichnet; Ethik- und Policy-Erweiterungen offen. | Escalation-Regeln für ζ<0 ergänzen · ETHICS.md um implosive Risiken & Provenienz stärken | FinalyzeVorschlägeChatGPT5.1Agent.txt L80-L90 |
 | v6-activation-gaps | 2 | τ*-Prototyp + Regression | Activation Gaps schließen (Safety-Delay, Meta-Regression, Sigillin-Automation) | open | Plan beschrieben, Umsetzung nicht dokumentiert; Prototypen, Regression-Refresh, Parser/Validator, Index-Automation, Outlier-Diagnostics und Data-Lantern-Dashboard fehlen noch. | Safety-Delay-Prototyp bauen · beta_meta_regression_v2.py mit neuen Daten/φ^(n/3) auffrischen · Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics erweitern · Telemetrie-Dashboard skizzieren | FinalyzeVorschlägeChatGPT5.1Agent.txt L53-L64 |
 | v6-type6-integration | 3 | CREP-Pfad skizzieren | Type‑6 Implosionsmodelle offiziell integrieren | open | Theorie und Paper vorhanden, aber Klassifikation, CREP-Indizes und Showcase-Simulation fehlen. | Type‑VI Klassifikation + Guidelines · CREP-Indizes in METRICS.md · cubic-root-jump Simulation (z.B. Klima-Kaskade) | FinalyzeVorschlägeChatGPT5.1Agent.txt L65-L76 |
@@ -24,6 +24,12 @@
 | v6-beta-bayes | 11 | Bayes + VIF anschließen | Hierarchische β-Analyse & Multikollinearitätsprüfung | open | WLS/OLS-Auswertung ohne signifikante Prädiktoren; Bayes/VIF nicht umgesetzt. | PyMC/Stan-Hierarchie für β nach Domänen aufsetzen · VIF-Checks in Analyse-Skripten ergänzen | FinalyzeVorschlägeGemini.txt L78-L120 |
 | v6-137-beta-duality | 12 | Dualitäts-Dossier skizzieren | 137-β Dualität in Kosmos & Sozioökonomie integrieren | open | Verbindung beschrieben, aber kein Kapitel/Release-Plan dokumentiert. | Kapitel zur 137-β Dualität (Kosmos↔Sozioökonomie) anlegen · Outreach/Publikationspfad definieren | Claude.txt L1-L116 |
 | v6-wavefunction-integration | 13 | Ψ-Feldgleichung anlegen | Entropische Wellenfunktion in Genesis-/Simulator-Kette verankern | open | Konzept in Zusatznote skizziert; keine Feldgleichung, kein RK4-Lauf, keine Visualisierung dokumentiert. | Ψ-Feldgleichung für entropische Gravitation festlegen · genesis_cube.py mit Ψ(r,θ,φ,t) Kern anlegen · Simulator-Ausgabe (|Ψ|², ΔS) an UTAC/Visualisierung koppeln | Zusatz_bitte_integrieren!.txt L1-L140 |
+
+## Δ-Update 2025-11-25 – Sprint Δ Sync
+- **v6-todo-trilayer:** Chronik/ToDo-Spiegel aktiviert, logistisches Raster übernommen; Validator- und Index-Haken stehen als nächste Schritte fest.
+- **v6-governance-ethics:** Escalation-Checkliste (τ*-Pflicht, CREP-Schwellen) vorbereitet; Patch-Pfade für AGENTS/POLICY/ETHICS mit Provenienzblöcken skizziert.
+- **v6-activation-gaps:** Safety-Delay-Stub (τ* = 0.1·|Θ−R|) als Sprint-Aufgabe markiert; Regression-Refresh und Sigillin-Validator bleiben unmittelbar anstehend.
+- **v6-type6-integration:** CREP-Pfad (ΔAIC/CI, Energie/Unitarität) in METRICS/Classification vorgesehen; Showcase-Simulation weiterhin offen.
 
 ## Navigationshinweise
 - Alle Einträge spiegeln die logistisches Feld (R, Θ, β, ζ) wider und bleiben Trilayer-synchron (YAML/JSON/MD).

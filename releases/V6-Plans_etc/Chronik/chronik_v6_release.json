@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "v6-chronik-0.4",
-    "generated_at": "2025-11-24T14:39:28Z",
+    "version": "v6-chronik-0.5",
+    "generated_at": "2025-11-25T10:40:00Z",
     "scope": "releases/V6-Plans_etc/Chronik",
     "logistic_frame": {
       "R_goal": "Schrittweise Aktivierung des V6-Release-Pfads",
@@ -10,6 +10,25 @@
       "zeta_risk": "negativ, falls Safety-Delay- und Governance-Pfade offen bleiben"
     }
   },
+  "delta_updates": [
+    {
+      "date": "2025-11-25",
+      "label": "sprint-delta-sync",
+      "summary": "TriLayer/ζ<0-Sync eingetragen; Validator/Index-Haken folgen.",
+      "todo_links": [
+        "v6-todo-trilayer",
+        "v6-governance-ethics",
+        "v6-activation-gaps",
+        "v6-type6-integration"
+      ],
+      "actions": [
+        "TriLayer-Kopplung zwischen Chronik und V6_ToDoListe markiert; Raster (R/Θ/β/ζ) übernommen.",
+        "Governance-Checkliste mit τ*-Pflicht und CREP-Schwellen vorbereitet (AGENTS/POLICY/ETHICS Patch geplant).",
+        "Safety-Delay-Stub (τ* = 0.1·|Θ−R|) als Sprint-Aufgabe fixiert; Regression-Refresh + Sigillin-Validator priorisiert.",
+        "CREP-Pfad (ΔAIC/CI, Energie/Unitarität) für Type‑VI in METRICS/Classification vorgemerkt, Showcase-Sim bleibt offen."
+      ]
+    }
+  ],
   "overview": [
     "1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen → Artefakt: Chronik-TriLayer.",
     "2️⃣ v6-activation-gaps – Safety-Delay · Regression-Refresh · Sigillin-Automation · Telemetrie-Skizze → Artefakt: Prototyp + Skripte.",
@@ -25,6 +44,54 @@
     "1️⃣2️⃣ v6-beta-bayes – PyMC/Stan Hierarchie · VIF-Checks → Artefakt: Analyse-Report.",
     "1️⃣3️⃣ v6-137-beta-duality – Kapitel + Outreach-Pfade → Artefakt: Dualitäts-Dossier."
   ],
+  "current_sprint": {
+    "label": "Sprint-Delta",
+    "window": "2025-11-24 → 2025-11-30",
+    "logistic_frame": {
+      "R_path": "Sicherheits- und Governance-Baseline aktiv",
+      "Theta_ready": "kritische ζ<0-Pfade abgestützt",
+      "beta_drive": 4.9,
+      "zeta_guard": "τ*-Delay + Escalation gekoppelt"
+    },
+    "priorities": [
+      {
+        "todo_id": "v6-governance-ethics",
+        "focus": "ζ<0 Escalation + Provenienz",
+        "actions": [
+          "Escalation-Matrix und ETHICS-Passagen für implosive Szenarien konkretisieren (Provenienz-Blocks, Dual-Use-Hinweise).",
+          "Policy/AGENTS-Hinweise auf τ*-Pflicht und CREP-Schwellen ergänzen."
+        ],
+        "deliverables": [
+          "Governance-Addendum mit CREP/τ* Kopplung",
+          "ETHICS-Update mit Provenienz-Checkliste"
+        ]
+      },
+      {
+        "todo_id": "v6-activation-gaps",
+        "focus": "τ*-Prototyp + Regression",
+        "actions": [
+          "Safety-Delay-Baustein skizzieren (RK4-kompatibel, τ* = 0.1·|Θ−R|) und an Analysis/Simulator andocken.",
+          "analysis/beta_meta_regression_v2.py um Phase-2/3 Daten + φ^(n/3)-Tests für β-Drift erweitern."
+        ],
+        "deliverables": [
+          "τ*-Prototype-Notiz + Hook-Beschreibung",
+          "Regression-Refresh mit β-Drift-Protokoll"
+        ]
+      },
+      {
+        "todo_id": "v6-type6-integration",
+        "focus": "CREP-Indizes verankern",
+        "actions": [
+          "CREP-Berechnungspfad mit Energie-/Unitaritäts-Checks und ΔAIC/CI definieren.",
+          "METRICS-/Classification-Hinweise für Type‑VI vorbereiten."
+        ],
+        "deliverables": [
+          "CREP-Snippet + Validierungs-Notiz",
+          "Draft für Type‑VI Guideline-Abschnitt"
+        ]
+      }
+    ]
+  },
   "chronik": [
     {
       "step": 1,
@@ -427,53 +494,5 @@
         }
       ]
     }
-  ],
-  "current_sprint": {
-    "label": "Sprint-Delta",
-    "window": "2025-11-24 → 2025-11-30",
-    "logistic_frame": {
-      "R_path": "Sicherheits- und Governance-Baseline aktiv",
-      "Theta_ready": "kritische ζ<0-Pfade abgestützt",
-      "beta_drive": 4.9,
-      "zeta_guard": "τ*-Delay + Escalation gekoppelt"
-    },
-    "priorities": [
-      {
-        "todo_id": "v6-governance-ethics",
-        "focus": "ζ<0 Escalation + Provenienz",
-        "actions": [
-          "Escalation-Matrix und ETHICS-Passagen für implosive Szenarien konkretisieren (Provenienz-Blocks, Dual-Use-Hinweise).",
-          "Policy/AGENTS-Hinweise auf τ*-Pflicht und CREP-Schwellen ergänzen."
-        ],
-        "deliverables": [
-          "Governance-Addendum mit CREP/τ* Kopplung",
-          "ETHICS-Update mit Provenienz-Checkliste"
-        ]
-      },
-      {
-        "todo_id": "v6-activation-gaps",
-        "focus": "τ*-Prototyp + Regression",
-        "actions": [
-          "Safety-Delay-Baustein skizzieren (RK4-kompatibel, τ* = 0.1·|Θ−R|) und an Analysis/Simulator andocken.",
-          "analysis/beta_meta_regression_v2.py um Phase-2/3 Daten + φ^(n/3)-Tests für β-Drift erweitern."
-        ],
-        "deliverables": [
-          "τ*-Prototype-Notiz + Hook-Beschreibung",
-          "Regression-Refresh mit β-Drift-Protokoll"
-        ]
-      },
-      {
-        "todo_id": "v6-type6-integration",
-        "focus": "CREP-Indizes verankern",
-        "actions": [
-          "CREP-Berechnungspfad mit Energie-/Unitaritäts-Checks und ΔAIC/CI definieren.",
-          "METRICS-/Classification-Hinweise für Type‑VI vorbereiten."
-        ],
-        "deliverables": [
-          "CREP-Snippet + Validierungs-Notiz",
-          "Draft für Type‑VI Guideline-Abschnitt"
-        ]
-      }
-    ]
-  }
+  ]
 }

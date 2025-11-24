@@ -1,6 +1,6 @@
 metadata:
-  version: v6-chronik-0.4
-  generated_at: "2025-11-24T14:39:28Z"
+  version: v6-chronik-0.5
+  generated_at: "2025-11-25T10:40:00Z"
   scope: "releases/V6-Plans_etc/Chronik"
   logistic_frame:
     R_goal: "Schrittweise Aktivierung des V6-Release-Pfads"
@@ -40,6 +40,21 @@ current_sprint:
       deliverables:
         - "CREP-Snippet + Validierungs-Notiz"
         - "Draft für Type‑VI Guideline-Abschnitt"
+delta_updates:
+  - date: 2025-11-25
+    label: sprint-delta-sync
+    summary: TriLayer/ζ<0-Sync eingetragen; Validator/Index-Haken folgen.
+    todo_links:
+      - v6-todo-trilayer
+      - v6-governance-ethics
+      - v6-activation-gaps
+      - v6-type6-integration
+    actions:
+      - TriLayer-Kopplung zwischen Chronik und V6_ToDoListe markiert; Raster (R/Θ/β/ζ) übernommen.
+      - Governance-Checkliste mit τ*-Pflicht und CREP-Schwellen vorbereitet (AGENTS/POLICY/ETHICS Patch geplant).
+      - Safety-Delay-Stub (τ* = 0.1·|Θ−R|) als Sprint-Aufgabe fixiert; Regression-Refresh + Sigillin-Validator priorisiert.
+      - CREP-Pfad (ΔAIC/CI, Energie/Unitarität) für Type‑VI in METRICS/Classification vorgemerkt, Showcase-Sim bleibt offen.
+
 overview:
   - "1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen → Artefakt: Chronik-TriLayer."
   - "2️⃣ v6-activation-gaps – Safety-Delay · Regression-Refresh · Sigillin-Automation · Telemetrie-Skizze → Artefakt: Prototyp + Skripte."

@@ -1,6 +1,6 @@
 metadata:
-  version: v6-todo-0.5
-  generated_at: '2025-11-24T15:20:24Z'
+  version: v6-todo-0.6
+  generated_at: '2025-11-25T10:45:00Z'
   scope: releases/V6-Plans_etc
   description: TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft
   logistic_frame:
@@ -20,9 +20,9 @@ metadata:
 tasks:
 - id: v6-todo-trilayer
   title: ToDo-TriLayer konsolidieren & Chronik koppeln
-  status: open
-  completeness: Chronik referenziert die ToDo-Liste, aber der spiegelnde ToDo-Eintrag
-    fehlt noch; TriLayer-Verankerung im Plans-Ordner unvollständig.
+  status: in-progress
+  completeness: Chronik-Update mit TriLayer-Kopplung angestoßen; ToDo/Chronik spiegeln
+    sich, Automations- und Validator-Pfade stehen noch aus.
   scope:
   - documentation
   - governance
@@ -32,14 +32,14 @@ tasks:
     beta_estimate: 4.8
     zeta_risk: neutral nach Kopplung
   next_steps:
-  - IDs zwischen V6_ToDoListe.* und Chronik spiegeln.
-  - Chronik-Achse und logistisches Raster (R/Θ/β/ζ) übernehmen.
-  - Quell-Referenzen im Plans-Ordner verankern.
+  - IDs zwischen V6_ToDoListe.* und Chronik final spiegeln.
+  - Chronik-Achse und logistisches Raster (R/Θ/β/ζ) überprüfen.
+  - Validator/Index-Haken für automatisierte Trilayer-Prüfung ergänzen.
   references:
   - path: releases/V6-Plans_etc/Chronik/chronik_v6_release.md
     lines:
     - 1
-    - 46
+    - 78
   priority: 0
   sprint_focus: Chronik-Kopplung
 - id: v6-activation-gaps
@@ -363,3 +363,15 @@ tasks:
     - 140
   priority: 13
   sprint_focus: Ψ-Feldgleichung anlegen
+delta_updates:
+- date: '2025-11-25'
+  label: sprint-delta-sync
+  highlights:
+  - 'v6-todo-trilayer: Chronik/ToDo-Spiegel aktiviert, logistisches Raster übernommen;
+    Validator- und Index-Haken stehen an.'
+  - 'v6-governance-ethics: Escalation-Checkliste (τ*-Pflicht, CREP-Schwellen) vorbereitet;
+    Provenienz-Patches geplant.'
+  - 'v6-activation-gaps: Safety-Delay-Stub (τ* = 0.1·|Θ−R|) im Sprint verankert; Regression-Refresh
+    + Sigillin-Validator folgen.'
+  - 'v6-type6-integration: CREP-Pfad (ΔAIC/CI, Energie/Unitarität) vorgesehen; Showcase-Simulation
+    offen.'
