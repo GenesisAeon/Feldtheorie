@@ -22,6 +22,17 @@ Creates publication-ready visualizations of β-parameter distribution:
 - Individual plot exports for flexible use
 - Summary statistics report
 
+### `visualize_genesis.py`
+
+Creates the breathing GenesisCube animation along σ(β(R-Θ)):
+
+1. Vacuum fluctuations (σ → 0) with sparse white noise
+2. Implosive convergence along the seed vectors
+3. Edge-on cube unfolding on the logistic ridge
+4. Block-universe slice traversal with ζ(R) damping
+
+Defaults target headless environments by selecting the Agg backend when none is set and using the Pillow writer for GIF export.
+
 ## Installation
 
 ### Option 1: Install visualization dependencies only
@@ -38,7 +49,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Basic usage (default: SVG output):
+### β-distribution suite (default: SVG output):
 
 ```bash
 python scripts/visualize_beta_distribution.py
@@ -66,6 +77,19 @@ python scripts/visualize_beta_distribution.py \
     --output-dir figures/custom/ \
     --format svg
 ```
+
+### Genesis breathing animation:
+
+```bash
+python scripts/visualize_genesis.py
+```
+
+**Options:**
+- `--output genesis_visualization.gif` – target path (extension selects writer)
+- `--frames 300` – total frames; phase boundaries scale proportionally
+- `--fps 20` – playback speed for saved animation
+- `--interval-ms 50` – frame interval during generation
+- `--show` – open the animation after saving (requires GUI backend)
 
 ## Output Files
 
@@ -141,25 +165,11 @@ paper/figures/ (for manuscript)
 docs/utac_v2_synthesis.md (inline references)
 ```
 
-## Citation
+Genesis animation is independent of the dataset pipeline and can be run as:
 
-If you use these visualizations in publications, please cite:
-
-```bibtex
-@software{utac_v2_2025,
-  author = {Römer, Johann B. and Multi-AI-Team},
-  title = {UTAC v2.0 Multi-Attractor Framework},
-  year = {2025},
-  doi = {10.5281/zenodo.14201969},
-  url = {https://github.com/GenesisAeon/Feldtheorie}
-}
 ```
-
-## Related Documentation
-
-- [UTAC v2.0 Synthesis](../docs/utac_v2_synthesis.md) - Theoretical framework
-- [Data Index](../data/data_index.md) - Dataset catalog
-- [Beta Estimates Metadata](../data/derived/beta_estimates.metadata.json) - Full data documentation
+python scripts/visualize_genesis.py --output genesis_visualization.gif
+```
 
 ## Troubleshooting
 
@@ -200,4 +210,4 @@ python scripts/visualize_beta_distribution.py --input /full/path/to/beta_estimat
 
 **Status:** ✅ Production-ready
 **Tested with:** Python 3.11, matplotlib 3.7, seaborn 0.12
-**Last updated:** 2025-11-18
+**Last updated:** 2025-11-24
