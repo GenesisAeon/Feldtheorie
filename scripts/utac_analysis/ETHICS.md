@@ -75,5 +75,5 @@ Before committing work in `scripts/utac_analysis`:
 
 ---
 
-**Last Updated:** 2025-11-24 06:36:13 UTC
+**Last Updated:** 2025-11-24 06:41:39 UTC
 **Governance Version:** 1.0.0
