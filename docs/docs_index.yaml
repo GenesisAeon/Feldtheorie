@@ -580,6 +580,31 @@ markdown_docs:
   - manifest
   description: August 2026 Gap Scan (σ≈0.317) hält Manifest-Telemetrie 20260820T000000Z
     fest, priorisiert Daten-/Export-Hooks und koppelt Codex pr-draft-0110.
+- id: docs-val-003
+  name: type6_crep_tau_star_checklist.md
+  category: validation
+  type: governance-checklist
+  status: active
+  relevance: critical
+  size_kb: 2.7
+  path: ../releases/V6-Plans_etc/type6_crep_tau_star_checklist.md
+  keywords:
+  - type-vi
+  - crep
+  - τ*
+  - governance
+  - ζ<0
+  - implosive
+  - safety-protocol
+  description: '⚠️ CREP/τ*-Governance Checklist für Type-VI Implosionsfelder!
+
+    Definiert CREP≥0.7 Schwellen, τ*-Buffer-Pflicht (RK4+), Provenienz-Protokoll,
+
+    CI-Hook-Blueprint und Reviewer-Routing für ζ<0 Szenarien.
+
+    Mandatory für v6-governance-ethics Sprint Δ.
+
+    '
 triggers:
   core_concepts:
   - σ(β(R-Θ))
