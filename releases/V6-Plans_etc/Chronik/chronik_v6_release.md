@@ -1,8 +1,8 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.3
+- **Version:** v6-chronik-0.4
 - **Scope:** releases/V6-Plans_etc/Chronik
-- **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.8,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
+- **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.9,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
 - **Quellen:** `V6_ToDoListe.{md,yaml,json}`
 
 ## Schnellüberblick (Stichpunkte)
@@ -19,6 +19,19 @@
 - 1️⃣1️⃣ v6-simulator-experience: Web-Audio · CSV-Drop · AI-Context → Artefakt: UX-Paket.
 - 1️⃣2️⃣ v6-beta-bayes: PyMC/Stan Hierarchie · VIF-Checks → Artefakt: Analyse-Report.
 - 1️⃣3️⃣ v6-137-beta-duality: Kapitel + Outreach-Pfade → Artefakt: Dualitäts-Dossier.
+
+## Aktuelle Handlungsschleife (Sprint Δ)
+- **Zeitraum:** 2025-11-24 → 2025-11-30
+- **Membran:** R → "Sicherheits- und Governance-Baseline aktiv", Θ → "kritische ζ<0-Pfade abgestützt", β ≈ 4.9, ζ-Schutz: τ*-Delay+Escalation gekoppelt.
+- **Prioritäten:**
+  1. **v6-governance-ethics** – ζ<0 Escalation + Provenienz festziehen:
+     - Escalation-Matrix und ETHICS-Passagen für implosive Szenarien konkretisieren (Provenienz-Blocks, Dual-Use-Hinweise).
+     - Policy/AGENTS-Hinweise auf τ*-Pflicht und CREP-Schwellen ergänzen.
+  2. **v6-activation-gaps** – τ*-Prototyp und Regression anstoßen:
+     - Safety-Delay-Baustein skizzieren (RK4-Kompatibilität, τ* = 0.1·|Θ−R|) und an Analysis/Simulator andocken.
+     - `analysis/beta_meta_regression_v2.py` um Phase-2/3 Daten + φ^(n/3)-Tests für β-Drift erweitern.
+  3. **v6-type6-integration** – CREP-Indizes verankern:
+     - CREP-Berechnungspfad definieren (Energie-/Unitaritäts-Checks, ΔAIC/CI) und METRICS-/Classification-Hinweise vorbereiten.
 
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)
