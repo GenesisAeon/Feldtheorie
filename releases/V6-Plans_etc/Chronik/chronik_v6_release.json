@@ -1,0 +1,149 @@
+{
+  "metadata": {
+    "version": "v6-chronik-0.1",
+    "generated_at": "2025-11-24T00:00:00Z",
+    "scope": "releases/V6-Plans_etc/Chronik",
+    "logistic_frame": {
+      "R_goal": "Schrittweise Aktivierung des V6-Release-Pfads",
+      "Theta_threshold": "Alle V6 ToDo-Kerne sind in konkrete Etappen überführt",
+      "beta_drive": 4.8,
+      "zeta_risk": "negativ, falls Safety-Delay- und Governance-Pfade offen bleiben"
+    }
+  },
+  "chronik": [
+    {
+      "step": 1,
+      "title": "ToDo-TriLayer konsolidieren",
+      "todo_id": "v6-todo-trilayer",
+      "focus": "Alle V6 ToDo-Listen (MD/YAML/JSON) spiegeln und referenzieren",
+      "actions": [
+        "TriLayer-Dateien laden und gemeinsame IDs (v6-*) bestätigen.",
+        "Chronik-Ordner anlegen und ToDo-Quellen als Referenzknoten markieren.",
+        "Logistisches Rahmenwerk (R, Θ, β, ζ) aus der ToDo-Liste übernehmen."
+      ],
+      "expected_artifacts": [
+        "Chronik/chronik_v6_release.{md,yaml,json}",
+        "Quellenverweise auf V6_ToDoListe.*"
+      ],
+      "derived_from": [
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [1, 18]},
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [1, 13]}
+      ]
+    },
+    {
+      "step": 2,
+      "title": "Activation Gaps schließen",
+      "todo_id": "v6-activation-gaps",
+      "focus": "Safety-Delay-Prototyp, Meta-Regression-Refresh, Sigillin-Automation",
+      "actions": [
+        "Safety-Delay-Feld für ζ<0 prototypisieren.",
+        "analysis/beta_meta_regression_v2.py mit Phase-2/3 Daten und φ^(n/3) Tests aktualisieren.",
+        "Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics implementieren.",
+        "Telemetrie-Dashboard für R, Θ, β, ζ skizzieren."
+      ],
+      "expected_artifacts": [
+        "Safety-Delay-Prototyp im Simulation/Analysis Stack",
+        "Aktualisiertes Regression-Skript + Testdaten",
+        "Sigillin-Automationsskripte und Dashboard-Entwürfe"
+      ],
+      "derived_from": [
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [10, 14]},
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [13, 38]}
+      ]
+    },
+    {
+      "step": 3,
+      "title": "Type‑6 Implosionsmodelle integrieren",
+      "todo_id": "v6-type6-integration",
+      "focus": "Klassifikation, CREP-Indizes, cubic-root Simulation",
+      "actions": [
+        "Type‑VI Parameter und Beispiele in Feldtyp-Kanon aufnehmen.",
+        "CREP-Stabilitätsindizes in METRICS.md ergänzen.",
+        "Cubic-root-jump Showcase-Simulation (z. B. Klima-Kaskade) bauen."
+      ],
+      "expected_artifacts": [
+        "Aktualisierte Klassifikationsdokumente",
+        "Neue CREP-Metriken",
+        "Simulationsergebnisse und Plots"
+      ],
+      "derived_from": [
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [14, 17]},
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [39, 64]}
+      ]
+    },
+    {
+      "step": 4,
+      "title": "Governance & Ethics für ζ<0 anpassen",
+      "todo_id": "v6-governance-ethics",
+      "focus": "Escalation-Regeln, Policy- und Ethics-Addenda",
+      "actions": [
+        "AGENTS/POLICY Escalation-Regeln für implosive Tests ergänzen.",
+        "ETHICS.md um Risiken (negatives ζ, spekulative Kosmologie) und Provenienz-Stärkung erweitern."
+      ],
+      "expected_artifacts": [
+        "Governance-Addendum mit ζ<0 Szenarien",
+        "Erweiterte ETHICS.md und Policy-Hinweise"
+      ],
+      "derived_from": [
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [17, 20]},
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [65, 86]}
+      ]
+    },
+    {
+      "step": 5,
+      "title": "Trilayer-Strenge sichern",
+      "todo_id": "v6-trilayer-enforcement",
+      "focus": "Parser/Validator und Archiv-/Sigillin-Audits",
+      "actions": [
+        "Automatisierte Trilayer-Konsistenzprüfungen einführen (Parser + Index).",
+        "Archiv-/Sigillin-Audits für V6-Pläne protokollieren."
+      ],
+      "expected_artifacts": [
+        "Trilayer-Validatoren und Index-Reports",
+        "Audit-Log für Sigillin/Archiv"
+      ],
+      "derived_from": [
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [20, 22]},
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [87, 104]}
+      ]
+    },
+    {
+      "step": 6,
+      "title": "Release-Onboarding aktualisieren",
+      "todo_id": "v6-release-onboarding",
+      "focus": "Checkliste, CI/CD Hooks, README/QUICKSTART Ergänzungen",
+      "actions": [
+        "docs/zenodo_release_playbook.md um V6-Checkliste und Pflichttests erweitern.",
+        "CI/CD-Pipeline für Sigillin-Checks und Regressionen skizzieren.",
+        "README/QUICKSTART um Type‑6-Einstieg und Contributing-Template ergänzen."
+      ],
+      "expected_artifacts": [
+        "Aktualisiertes Release-Playbook",
+        "CI/CD-Hook-Skizzen",
+        "Onboarding-Texte für V6"
+      ],
+      "derived_from": [
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [22, 25]},
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [105, 134]}
+      ]
+    },
+    {
+      "step": 7,
+      "title": "Daten-Expansion und Quanten/Gravity-Submodul",
+      "todo_id": "v6-data-expansion",
+      "focus": "Neue Domains einspeisen, quantum_lensing Submodul prüfen",
+      "actions": [
+        "Zusätzliche Domains (Finanz, Verkehr, große LLMs) einspeisen und β-Cluster validieren.",
+        "quantum_lensing Submodul für ER=EPR/Holographie/entropic gravity Review anlegen."
+      ],
+      "expected_artifacts": [
+        "Neue Datendomänen und Validierungsprotokolle",
+        "Submodul-Blueprint für quantum_lensing"
+      ],
+      "derived_from": [
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [25, 27]},
+        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [135, 156]}
+      ]
+    }
+  ]
+}
