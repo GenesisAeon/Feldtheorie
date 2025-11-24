@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "v6-todo-0.3",
-    "generated_at": "2025-11-24T14:17:13Z",
+    "version": "v6-todo-0.4",
+    "generated_at": "2025-11-24T15:04:41Z",
     "scope": "releases/V6-Plans_etc",
     "description": "TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft",
     "logistic_frame": {
@@ -9,6 +9,15 @@
       "Theta_threshold": "Aktivierungs-Lücken geschlossen und Governance aktualisiert",
       "beta_drive": 4.8,
       "zeta_risk": "negativ, falls Safety-Delay-Feld aussteht"
+    },
+    "sprint_delta": {
+      "window": "2025-11-24 → 2025-11-30",
+      "priority_order": [
+        "v6-governance-ethics",
+        "v6-activation-gaps",
+        "v6-type6-integration"
+      ],
+      "note": "Governance/Safety zuerst, dann Aktivierung und Type-VI-Integration"
     }
   },
   "tasks": [
@@ -42,7 +51,9 @@
             64
           ]
         }
-      ]
+      ],
+      "priority": 2,
+      "sprint_focus": "τ*-Prototyp + Regression"
     },
     {
       "id": "v6-type6-integration",
@@ -74,7 +85,9 @@
             76
           ]
         }
-      ]
+      ],
+      "priority": 3,
+      "sprint_focus": "CREP-Pfad skizzieren"
     },
     {
       "id": "v6-governance-ethics",
@@ -103,7 +116,9 @@
             90
           ]
         }
-      ]
+      ],
+      "priority": 1,
+      "sprint_focus": "ζ<0 Escalation + Provenienz"
     },
     {
       "id": "v6-trilayer-enforcement",
@@ -132,7 +147,9 @@
             82
           ]
         }
-      ]
+      ],
+      "priority": 4,
+      "sprint_focus": "Validator & Audit anstoßen"
     },
     {
       "id": "v6-release-onboarding",
@@ -163,7 +180,9 @@
             107
           ]
         }
-      ]
+      ],
+      "priority": 5,
+      "sprint_focus": "Playbook + CI/CD"
     },
     {
       "id": "v6-data-expansion",
@@ -193,7 +212,9 @@
             99
           ]
         }
-      ]
+      ],
+      "priority": 6,
+      "sprint_focus": "neue Domains listen"
     },
     {
       "id": "v6-pyramid-cosmic",
@@ -224,7 +245,9 @@
             122
           ]
         }
-      ]
+      ],
+      "priority": 7,
+      "sprint_focus": "Konstanten-Kopplung skizzieren"
     },
     {
       "id": "v6-genesis-cube-sim",
@@ -255,7 +278,9 @@
             140
           ]
         }
-      ]
+      ],
+      "priority": 8,
+      "sprint_focus": "Ablaufpfad präzisieren"
     },
     {
       "id": "v6-simulator-stability",
@@ -285,7 +310,9 @@
             78
           ]
         }
-      ]
+      ],
+      "priority": 9,
+      "sprint_focus": "RK4 + τ* einbinden"
     },
     {
       "id": "v6-simulator-experience",
@@ -316,7 +343,9 @@
             161
           ]
         }
-      ]
+      ],
+      "priority": 10,
+      "sprint_focus": "UX-Paket bündeln"
     },
     {
       "id": "v6-beta-bayes",
@@ -345,7 +374,9 @@
             120
           ]
         }
-      ]
+      ],
+      "priority": 11,
+      "sprint_focus": "Bayes + VIF anschließen"
     },
     {
       "id": "v6-137-beta-duality",
@@ -375,7 +406,9 @@
             116
           ]
         }
-      ]
+      ],
+      "priority": 12,
+      "sprint_focus": "Dualitäts-Dossier skizzieren"
     },
     {
       "id": "v6-wavefunction-integration",
@@ -406,7 +439,9 @@
             140
           ]
         }
-      ]
+      ],
+      "priority": 13,
+      "sprint_focus": "Ψ-Feldgleichung anlegen"
     }
   ]
 }
