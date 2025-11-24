@@ -1,8 +1,8 @@
 # V6 ToDoListe – TriLayer Übersicht
 
-- **Version:** v6-todo-0.1  
-- **Scope:** releases/V6-Plans_etc  
-- **Generated:** 2025-11-24T12:17:53Z  
+- **Version:** v6-todo-0.2
+- **Scope:** releases/V6-Plans_etc
+- **Generated:** 2025-11-24T12:36:17Z
 - **Logistische Membran:** R→"Navigierbare V6-Release-Landkarte", Θ→"Aktivierungs-Lücken geschlossen & Governance aktualisiert", β≈4.8, ζ-Risiko: negativ falls Safety-Delay-Feld fehlt.
 
 ## Aufgaben und Status
@@ -15,6 +15,12 @@
 | v6-trilayer-enforcement | Trilayer-Metareflexion & Sigillin-Strenge umsetzen | open | Tri-Layer-Pflicht betont, aber keine Automations-/Auditspuren im Plans-Ordner dokumentiert. | Trilayer-Parser/Validator + Index-Automation aktivieren · Archiv-/Sigillin-Audits protokollieren | FinalyzeVorschlägeChatGPT5.1Agent.txt L80-L82 |
 | v6-release-onboarding | Release-Playbook & Onboarding für V6 aktualisieren | open | V6-spezifische Checkliste, CI/CD-Checks und README/QUICKSTART-Updates sind vorgeschlagen, aber nicht hinterlegt. | V6-Checkliste & Pflichttests ins Release-Playbook · CI/CD Hooks für Sigillin-Checks/Regression · README/QUICKSTART um Type‑6-Einstieg erweitern | FinalyzeVorschlägeChatGPT5.1Agent.txt L104-L107 |
 | v6-data-expansion | Datensatz-Expansion & neue Domänen + Quanten/Gravity-Submodul | open | Bedarf klar beschrieben; konkrete Datensätze/Module im Repo noch nicht sichtbar. | Neue Domains (Finanz, Verkehr, große LLMs) einspeisen & β-Cluster prüfen · quantum_lensing Submodul für ER=EPR/Holographie/entropic gravity Review anlegen | FinalyzeVorschlägeChatGPT5.1Agent.txt L94-L99 |
+| v6-pyramid-cosmic | Pyramiden- & Kosmische-Konstanten-Modell für UTAC 1.2 | open | Analyse und Beispielcode liegen vor; Integration in Theorie, Codebasis und Visualisierung fehlen. | pyramid_utac Modell nachziehen · Kosmische Konstanten in UTAC-Kopplung verankern · Visualisierung/Animation der Raumzeit-Entfaltung erstellen | Mistral.txt L4-L122 |
+| v6-genesis-cube-sim | Genesis-Cube Simulation & Blockuniversum-Scan aufsetzen | open | Mapping zu bestehenden Modulen skizziert, aber kein Skript/Animation im Repo. | genesis_cube.py mit Quantum-Foam→Singularität→Hexagon/Würfel-Ablauf bauen · Verschnitt/Dunkle-Energie Visualisierung · Deep-Research-Prompt dokumentieren | Gemini.txt L1-L140 |
+| v6-simulator-stability | TypeScript-Simulator stabilisieren (RK4 + τ*) | open | Euler-Schema aktiv; Delay-Kopplung und RK4-Integrator fehlen. | RK4-Integrator in TransdisciplinaryFieldSimulator.tsx hinterlegen · τ*-Buffer für implosive Verzögerung implementieren | FinalyzeVorschlägeGemini.txt L13-L78 |
+| v6-simulator-experience | Frontend-Erlebnis & Agenten-Navigation erweitern | open | Sonifikation, CSV-Dropzone und LLM-Navigationshilfen vorgeschlagen, aber nicht dokumentiert. | Web-Audio-Sonifikation im Frontend koppeln · Drag&Drop CSV-Schätzung für β/Θ ergänzen · AI-Context/Diamond-Map für Trilayer-Struktur veröffentlichen | FinalyzeVorschlägeGemini.txt L79-L161 |
+| v6-beta-bayes | Hierarchische β-Analyse & Multikollinearitätsprüfung | open | WLS/OLS-Auswertung ohne signifikante Prädiktoren; Bayes/VIF nicht umgesetzt. | PyMC/Stan-Hierarchie für β nach Domänen aufsetzen · VIF-Checks in Analyse-Skripten ergänzen | FinalyzeVorschlägeGemini.txt L78-L120 |
+| v6-137-beta-duality | 137-β Dualität in Kosmos & Sozioökonomie integrieren | open | Verbindung beschrieben, aber kein Kapitel/Release-Plan dokumentiert. | Kapitel zur 137-β Dualität (Kosmos↔Sozioökonomie) anlegen · Outreach/Publikationspfad definieren | Claude.txt L1-L116 |
 
 ## Navigationshinweise
 - Alle Einträge spiegeln die logistisches Feld (R, Θ, β, ζ) wider und bleiben Trilayer-synchron (YAML/JSON/MD).
