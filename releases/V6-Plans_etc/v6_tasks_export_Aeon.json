@@ -1,0 +1,492 @@
+{
+  "metadata": {
+    "version": "v6-todo-0.6",
+    "generated_at": "2025-11-25T10:45:00Z",
+    "scope": "releases/V6-Plans_etc",
+    "description": "TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft",
+    "logistic_frame": {
+      "R_goal": "Navigierbare V6-Release-Landkarte",
+      "Theta_threshold": "Aktivierungs-Lücken geschlossen und Governance aktualisiert",
+      "beta_drive": 4.8,
+      "zeta_risk": "negativ, falls Safety-Delay-Feld aussteht"
+    },
+    "sprint_delta": {
+      "window": "2025-11-24 → 2025-11-30",
+      "priority_order": [
+        "v6-todo-trilayer",
+        "v6-governance-ethics",
+        "v6-activation-gaps",
+        "v6-type6-integration"
+      ],
+      "note": "TriLayer-Spiegelung zuerst, dann Governance/Safety, danach Aktivierung und Type-VI-Integration"
+    }
+  },
+  "tasks": [
+    {
+      "id": "v6-todo-trilayer",
+      "title": "ToDo-TriLayer konsolidieren & Chronik koppeln",
+      "status": "in-progress",
+      "completeness": "Chronik-Update mit TriLayer-Kopplung angestoßen; ToDo/Chronik spiegeln sich, Automations- und Validator-Pfade stehen noch aus.",
+      "scope": [
+        "documentation",
+        "governance"
+      ],
+      "logistic_profile": {
+        "R_target": "TriLayer-Spiegel aktiv",
+        "Theta_condition": "IDs und Quellen zwischen ToDo-Liste und Chronik synchronisiert",
+        "beta_estimate": 4.8,
+        "zeta_risk": "neutral nach Kopplung"
+      },
+      "next_steps": [
+        "IDs zwischen V6_ToDoListe.* und Chronik final spiegeln.",
+        "Chronik-Achse und logistisches Raster (R/Θ/β/ζ) überprüfen.",
+        "Validator/Index-Haken für automatisierte Trilayer-Prüfung ergänzen."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Chronik/chronik_v6_release.md",
+          "lines": [
+            1,
+            78
+          ]
+        }
+      ],
+      "priority": 0,
+      "sprint_focus": "Chronik-Kopplung"
+    },
+    {
+      "id": "v6-activation-gaps",
+      "title": "Activation Gaps schließen (Safety-Delay, Meta-Regression, Sigillin-Automation)",
+      "status": "open",
+      "completeness": "Plan beschrieben, Umsetzung nicht dokumentiert; Prototypen, Regression-Refresh, Parser/Validator, Index-Automation, Outlier-Diagnostics und Data-Lantern-Dashboard fehlen noch.",
+      "scope": [
+        "simulation",
+        "analysis",
+        "automation"
+      ],
+      "logistic_profile": {
+        "R_target": "resonante Aktivierung",
+        "Theta_condition": "Safety-Delay-Prototyp + Regression-Refresh + Sigillin-Automation live",
+        "beta_estimate": 5.0,
+        "zeta_risk": "negativ bei implosiven Tests"
+      },
+      "next_steps": [
+        "Safety-Delay-Feld-Prototyp für ζ<0 Szenarien implementieren.",
+        "analysis/beta_meta_regression_v2.py mit Phase-2/3 Daten und φ^(n/3)-Tests aktualisieren.",
+        "Sigillin-Parser + Schema-Validator + Index-Updater aufsetzen; Outlier-Diagnostics (ΔAIC/CI) erweitern.",
+        "Data-Laternen/Telemetrie-Dashboard für R, Θ, β, ζ skizzieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt",
+          "lines": [
+            53,
+            64
+          ]
+        }
+      ],
+      "priority": 2,
+      "sprint_focus": "τ*-Prototyp + Regression"
+    },
+    {
+      "id": "v6-type6-integration",
+      "title": "Type‑6 Implosionsmodelle offiziell integrieren",
+      "status": "open",
+      "completeness": "Theorie und Paper vorhanden, aber Klassifikation, CREP-Indizes und Showcase-Simulation fehlen.",
+      "scope": [
+        "theory",
+        "classification",
+        "metrics",
+        "simulation"
+      ],
+      "logistic_profile": {
+        "R_target": "Type‑VI in Feldtyp-Kanon",
+        "Theta_condition": "Klassifikation + CREP-Metriken + cubic-root-Testfall veröffentlicht",
+        "beta_estimate": 6.2,
+        "zeta_risk": "kann negativ werden; Safety-Governance nötig"
+      },
+      "next_steps": [
+        "Type‑VI in Feldtyp-Klassifikation aufnehmen (Parameter, Beispiele, Guidelines).",
+        "CREP-Stabilitätsindizes für implosive Felder definieren und in METRICS.md spiegeln.",
+        "Cubic-root-jump Simulation (z.B. Klima-Kaskade) implementieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt",
+          "lines": [
+            65,
+            76
+          ]
+        }
+      ],
+      "priority": 3,
+      "sprint_focus": "CREP-Pfad skizzieren"
+    },
+    {
+      "id": "v6-governance-ethics",
+      "title": "Governance, AGENTS & ETHICS an implosive Szenarien anpassen",
+      "status": "open",
+      "completeness": "Anpassungsbedarf benannt, kein Update verzeichnet; Ethik- und Policy-Erweiterungen offen.",
+      "scope": [
+        "governance",
+        "ethics"
+      ],
+      "logistic_profile": {
+        "R_target": "sichere Kopplung bei ζ<0",
+        "Theta_condition": "angepasste Escalation-Matrix + Policy/Ethik-Addenda veröffentlicht",
+        "beta_estimate": 4.2,
+        "zeta_risk": "hoch ohne Safety-Protokolle"
+      },
+      "next_steps": [
+        "AGENTS/POLICY Escalation-Regeln für implosive Tests ergänzen.",
+        "ETHICS.md um Risiken (negatives ζ, spekulative Kosmologie) und Daten-Provenienz stärken."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt",
+          "lines": [
+            80,
+            90
+          ]
+        }
+      ],
+      "priority": 1,
+      "sprint_focus": "ζ<0 Escalation + Provenienz"
+    },
+    {
+      "id": "v6-trilayer-enforcement",
+      "title": "Trilayer-Metareflexion & Sigillin-Strenge umsetzen",
+      "status": "open",
+      "completeness": "Tri-Layer-Pflicht betont, aber keine Automations-/Auditspuren im Plans-Ordner dokumentiert.",
+      "scope": [
+        "documentation",
+        "automation"
+      ],
+      "logistic_profile": {
+        "R_target": "vollständige YAML/JSON/MD Spiegelung",
+        "Theta_condition": "Parser/Validator aktiv + Archivhygiene sichtbar",
+        "beta_estimate": 4.8,
+        "zeta_risk": "moderate bei manueller Pflege"
+      },
+      "next_steps": [
+        "Automatisierte Trilayer-Konsistenzprüfungen einführen (Parser + Index).",
+        "Archiv-/Sigillin-Audits für V6-Pläne protokollieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt",
+          "lines": [
+            80,
+            82
+          ]
+        }
+      ],
+      "priority": 4,
+      "sprint_focus": "Validator & Audit anstoßen"
+    },
+    {
+      "id": "v6-release-onboarding",
+      "title": "Release-Playbook & Onboarding für V6 aktualisieren",
+      "status": "open",
+      "completeness": "V6-spezifische Checkliste, CI/CD-Checks und README/QUICKSTART-Updates sind vorgeschlagen, aber nicht hinterlegt.",
+      "scope": [
+        "release",
+        "documentation",
+        "ci"
+      ],
+      "logistic_profile": {
+        "R_target": "prüfbares V6-Playbook",
+        "Theta_condition": "Checkliste + CI/CD Hooks + Onboarding-Texte live",
+        "beta_estimate": 4.5,
+        "zeta_risk": "gering, solange Tests definiert werden"
+      },
+      "next_steps": [
+        "docs/zenodo_release_playbook.md um V6-Checkliste und Pflichttests erweitern.",
+        "CI/CD-Pipeline für Sigillin-Checks und Regressionen skizzieren.",
+        "README/QUICKSTART um Type‑6-Einstieg und Contributing-Template ergänzen."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt",
+          "lines": [
+            104,
+            107
+          ]
+        }
+      ],
+      "priority": 5,
+      "sprint_focus": "Playbook + CI/CD"
+    },
+    {
+      "id": "v6-data-expansion",
+      "title": "Datensatz-Expansion & neue Domänen + Quanten/Gravity-Submodul",
+      "status": "open",
+      "completeness": "Bedarf klar beschrieben; konkrete Datensätze/Module im Repo noch nicht sichtbar.",
+      "scope": [
+        "data",
+        "research",
+        "analysis"
+      ],
+      "logistic_profile": {
+        "R_target": ">150 Datensätze mit neuen Domänen",
+        "Theta_condition": "neue Domains integriert + Beta-Cluster geprüft",
+        "beta_estimate": 5.3,
+        "zeta_risk": "neutral"
+      },
+      "next_steps": [
+        "Zusätzliche Domains (Finanz, Verkehr, große LLMs) einspeisen und β-Cluster validieren.",
+        "quantum_lensing Submodul für ER=EPR/Holographie/entropic gravity Review anlegen."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt",
+          "lines": [
+            94,
+            99
+          ]
+        }
+      ],
+      "priority": 6,
+      "sprint_focus": "neue Domains listen"
+    },
+    {
+      "id": "v6-pyramid-cosmic",
+      "title": "Pyramiden- & Kosmische-Konstanten-Modell für UTAC 1.2",
+      "status": "open",
+      "completeness": "Analyse und Beispielcode liegen vor; Integration in Theorie, Codebasis und Visualisierung fehlen.",
+      "scope": [
+        "theory",
+        "simulation",
+        "visualization"
+      ],
+      "logistic_profile": {
+        "R_target": "UTAC 1.2 geometrisch/konstantenbasiert integriert",
+        "Theta_condition": "pyramid_utac Modell + Konstanten-Kopplung + Visualisierung publiziert",
+        "beta_estimate": 5.1,
+        "zeta_risk": "neutral"
+      },
+      "next_steps": [
+        "pyramid_utac Modell in Code und Theorie konsolidieren.",
+        "Kosmische Konstanten (c, G, h) als Kopplungsgrenzen in UTAC verankern.",
+        "Visualisierung/Animation der Raumzeit-Entfaltung inkl. Hexagon-Projektion erstellen."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Mistral.txt",
+          "lines": [
+            4,
+            122
+          ]
+        }
+      ],
+      "priority": 7,
+      "sprint_focus": "Konstanten-Kopplung skizzieren"
+    },
+    {
+      "id": "v6-genesis-cube-sim",
+      "title": "Genesis-Cube Simulation & Blockuniversum-Scan aufsetzen",
+      "status": "open",
+      "completeness": "Mapping zu bestehenden Modulen skizziert, aber kein Skript/Animation im Repo.",
+      "scope": [
+        "simulation",
+        "visualization",
+        "research"
+      ],
+      "logistic_profile": {
+        "R_target": "Genesis-Cube Demonstrator",
+        "Theta_condition": "genesis_cube.py + Blockuniversum-Animation + Prompt-Doku verfügbar",
+        "beta_estimate": 5.6,
+        "zeta_risk": "moderate"
+      },
+      "next_steps": [
+        "genesis_cube.py mit Quantum-Foam → Singularity → Hexagon/Würfel Ablauf implementieren.",
+        "Geometrischen Verschnitt als Dunkle-Energie Visualisierung ausspielen.",
+        "Deep-Research-Prompt und Mapping zu bestehenden Modulen dokumentieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Gemini.txt",
+          "lines": [
+            1,
+            140
+          ]
+        }
+      ],
+      "priority": 8,
+      "sprint_focus": "Ablaufpfad präzisieren"
+    },
+    {
+      "id": "v6-simulator-stability",
+      "title": "TypeScript-Simulator stabilisieren (RK4 + τ*)",
+      "status": "open",
+      "completeness": "Euler-Schema aktiv; Delay-Kopplung und RK4-Integrator fehlen.",
+      "scope": [
+        "frontend",
+        "simulation",
+        "numerics"
+      ],
+      "logistic_profile": {
+        "R_target": "stabile Type-6 Visualisierung",
+        "Theta_condition": "RK4-Integrator + τ* Verzögerung im Simulator live",
+        "beta_estimate": 5.4,
+        "zeta_risk": "niedrig"
+      },
+      "next_steps": [
+        "RK4-Integrator in TransdisciplinaryFieldSimulator.tsx integrieren.",
+        "τ*-Buffer/Delay-Kopplung für implosive Szenarien implementieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/FinalyzeVorschlägeGemini.txt",
+          "lines": [
+            13,
+            78
+          ]
+        }
+      ],
+      "priority": 9,
+      "sprint_focus": "RK4 + τ* einbinden"
+    },
+    {
+      "id": "v6-simulator-experience",
+      "title": "Frontend-Erlebnis & Agenten-Navigation erweitern",
+      "status": "open",
+      "completeness": "Sonifikation, CSV-Dropzone und LLM-Navigationshilfen vorgeschlagen, aber nicht dokumentiert.",
+      "scope": [
+        "frontend",
+        "ux",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "agentenfreundlicher Simulator",
+        "Theta_condition": "Web-Audio + CSV-Dropzone + AI-Context/Diamond-Map veröffentlicht",
+        "beta_estimate": 4.9,
+        "zeta_risk": "neutral"
+      },
+      "next_steps": [
+        "Web-Audio-Sonifikation für Kopplungs-/Instabilitätsfeedback im Frontend anbinden.",
+        "Drag&Drop CSV-Schätzung für β/Θ im Simulator ergänzen.",
+        "AI-Context/llms.txt und Diamond-Architecture-Map als Navigationshilfen bereitstellen."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/FinalyzeVorschlägeGemini.txt",
+          "lines": [
+            79,
+            161
+          ]
+        }
+      ],
+      "priority": 10,
+      "sprint_focus": "UX-Paket bündeln"
+    },
+    {
+      "id": "v6-beta-bayes",
+      "title": "Hierarchische β-Analyse & Multikollinearitätsprüfung",
+      "status": "open",
+      "completeness": "WLS/OLS-Auswertung ohne signifikante Prädiktoren; Bayes/VIF nicht umgesetzt.",
+      "scope": [
+        "analysis",
+        "statistics"
+      ],
+      "logistic_profile": {
+        "R_target": "robustere β-Schätzungen",
+        "Theta_condition": "hierarchisches Modell + VIF-Checks dokumentiert",
+        "beta_estimate": 4.6,
+        "zeta_risk": "niedrig"
+      },
+      "next_steps": [
+        "PyMC/Stan Hierarchie für β nach Domänen modellieren.",
+        "VIF-Checks in Analyse-Skripten ergänzen und dokumentieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/FinalyzeVorschlägeGemini.txt",
+          "lines": [
+            78,
+            120
+          ]
+        }
+      ],
+      "priority": 11,
+      "sprint_focus": "Bayes + VIF anschließen"
+    },
+    {
+      "id": "v6-137-beta-duality",
+      "title": "137-β Dualität in Kosmos & Sozioökonomie integrieren",
+      "status": "open",
+      "completeness": "Verbindung beschrieben, aber kein Kapitel/Release-Plan dokumentiert.",
+      "scope": [
+        "theory",
+        "publication",
+        "outreach"
+      ],
+      "logistic_profile": {
+        "R_target": "137-β Kapitel veröffentlicht",
+        "Theta_condition": "Dualitätskapitel + Outreach-/Publikationspfad definiert",
+        "beta_estimate": 5.0,
+        "zeta_risk": "neutral"
+      },
+      "next_steps": [
+        "Kapitel zur 137-β Dualität (Kosmos ↔ Sozioökonomie) in UTAC-Dokumentation anlegen.",
+        "Publikations- und Outreach-Pfade (Papers/Partner) für die Dualität skizzieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Claude.txt",
+          "lines": [
+            1,
+            116
+          ]
+        }
+      ],
+      "priority": 12,
+      "sprint_focus": "Dualitäts-Dossier skizzieren"
+    },
+    {
+      "id": "v6-wavefunction-integration",
+      "title": "Entropische Wellenfunktion in Genesis-/Simulator-Kette verankern",
+      "status": "open",
+      "completeness": "Konzept in Zusatznote skizziert; keine Feldgleichung, kein RK4-Lauf, keine Visualisierung dokumentiert.",
+      "scope": [
+        "theory",
+        "simulation",
+        "visualization"
+      ],
+      "logistic_profile": {
+        "R_target": "Ψ-gestützte UTAC-Pipeline",
+        "Theta_condition": "Feldgleichung + genesis_cube Ψ-Kern + Simulator-Output gekoppelt",
+        "beta_estimate": 5.2,
+        "zeta_risk": "moderate"
+      },
+      "next_steps": [
+        "Ψ-Feldgleichung für entropische Gravitation definieren (inkl. β, τ* Kopplung).",
+        "genesis_cube.py mit compute_wavefunction und Visualisierung des Kollapses implementieren.",
+        "Simulator-Ausgabe (|Ψ|², ΔS) an UTAC-Statusmatrix und Raumzeit-Visualisierung anbinden."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt",
+          "lines": [
+            1,
+            140
+          ]
+        }
+      ],
+      "priority": 13,
+      "sprint_focus": "Ψ-Feldgleichung anlegen"
+    }
+  ],
+  "delta_updates": [
+    {
+      "date": "2025-11-25",
+      "label": "sprint-delta-sync",
+      "highlights": [
+        "v6-todo-trilayer: Chronik/ToDo-Spiegel aktiviert, logistisches Raster übernommen; Validator- und Index-Haken stehen an.",
+        "v6-governance-ethics: Escalation-Checkliste (τ*-Pflicht, CREP-Schwellen) vorbereitet; Provenienz-Patches geplant.",
+        "v6-activation-gaps: Safety-Delay-Stub (τ* = 0.1·|Θ−R|) im Sprint verankert; Regression-Refresh + Sigillin-Validator folgen.",
+        "v6-type6-integration: CREP-Pfad (ΔAIC/CI, Energie/Unitarität) vorgesehen; Showcase-Simulation offen."
+      ]
+    }
+  ]
+}
