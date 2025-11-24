@@ -1,6 +1,6 @@
 # Fractal Governance Report
 
-**Generated:** 2025-11-24 06:41:39 UTC
+**Generated:** 2025-11-24 08:36:10 UTC
 **Governance Version:** 1.0.0
 
 ---
