@@ -8,7 +8,7 @@ import nox
 
 DEFAULT_PYTHON = "3.11"
 
-nox.options.sessions = ["lint", "tests"]
+nox.options.sessions = ["lint", "tests", "crep_guard"]
 
 
 def _install(session: nox.Session, *packages: str) -> None:
@@ -62,6 +62,20 @@ def typecheck(session: nox.Session) -> None:
     _install(session, "mypy>=1.10")
     session.install(".")
     session.run("mypy", "analysis", "models")
+
+
+@nox.session(python=DEFAULT_PYTHON)
+def crep_guard(session: nox.Session) -> None:
+    """Run CREP/τ* Safety Guard for Type-VI governance artifacts."""
+
+    _reuse_virtualenv(session)
+    session.install("pyyaml>=6.0")
+    session.run(
+        "python", "-m", "tools.crep_guard",
+        "--check-type6-trilayer",
+        "--threshold", "0.7",
+        "--tau-default", "0.1"
+    )
 
 
 @nox.session(python=DEFAULT_PYTHON)

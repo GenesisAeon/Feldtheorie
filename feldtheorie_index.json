@@ -307,6 +307,19 @@
         "analysis/beta_drivers_meta_regression.py",
         "data/derived/domain_covariates.csv",
         "archive/legacy_v1_v3/seed/notes/NextStep.txt"
+      ],
+      "type_vi_governance": [
+        "METRICS.md (Section 8: Type-VI Implosive Dynamics)",
+        "releases/V6-Plans_etc/type6_crep_tau_star_checklist.md",
+        "releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml",
+        "releases/V6-Plans_etc/type6_crep_tau_star_checklist.json",
+        "releases/V6-Plans_etc/POLICY.md (Type-VI Safety Addendum)",
+        "releases/V6-Plans_etc/ETHICS.md (Provenienz & Dual-Use Block)",
+        "tools/crep_guard.py (CREP≥0.7 & τ*=0.1 validator for Type-VI governance artifacts)",
+        ".pre-commit-config.yaml (CREP Guard pre-commit hook for Type-VI trilayer)",
+        "noxfile.py (CREP Guard nox session for CI/CD integration)",
+        "Makefile (crep-guard & crep-guard-strict targets)",
+        "pipelines/fit_tau_star/ (τ* safety delay implementation)"
       ]
     }
   },
