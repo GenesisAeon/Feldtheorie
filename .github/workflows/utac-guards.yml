@@ -24,7 +24,7 @@ jobs:
     name: Preset Alignment Guard
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -75,7 +75,7 @@ jobs:
     name: UTAC v2.0 Manifest Gap Scan
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Set up Python
       uses: actions/setup-python@v5

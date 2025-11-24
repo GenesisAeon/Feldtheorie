@@ -24,7 +24,7 @@ jobs:
     name: TriLayer Drift Validator
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -73,7 +73,7 @@ jobs:
     name: CREP/τ* Safety Gate
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Set up Python
       uses: actions/setup-python@v5
