@@ -118,6 +118,7 @@ When simulating systems with \(\zeta(R) < 0\):
 - **REQUIRED:** RK4 (Runge-Kutta 4th order) or higher
 - **Validation:** Compare against analytical solutions when available
 - **Monitoring:** Track energy conservation and unitarity violations
+- **Reference Implementation:** See `simulation/genesis_cube.py::rk4_step()` and `simulation/tesseract_timeslices.py`
 
 #### Meta-Regression Tracking
 - **Monitor β-drift:** Track \(\beta\) parameter across domains
@@ -148,6 +149,12 @@ When simulating systems with \(\zeta(R) < 0\):
    - Activates when CREP ≥ 0.8 in real-time contexts
    - Drafts stakeholder notifications
    - Coordinates with external governance bodies
+
+5. **Tesseract Monitor (V6.0)**
+   - Tracks entropy gradients ∇S from wavefunction evolution
+   - Computes 4D CREP index with geometric coupling
+   - Monitors consciousness integral I_C for observer-dependent effects
+   - Validates photon propagation stability through timeslices
 
 ### Workflow Modifications for Type-VI
 
