@@ -19,12 +19,21 @@ import { CREPDashboard } from './CREPDashboard';
 import { LanguageToggle } from './LanguageToggle';
 import { FEATURED_PRESETS, PRESETS } from '../presets';
 import { DomainPreset, DomainState, TrajectoryPoint } from '../types';
-import { clamp, logistic } from '../utils/logistic';
+import { clamp, cubicRootJump, invertedSigmoid, tauStar } from '../utils/logistic';
 import { buildTooltipDataMap } from '../utils/tooltipDataBuilder';
 import { Language, getTranslation } from '../i18n/translations';
 
 const BASE_THETA = 5;
 const BASE_BETA = 4;
+const TIME_STEP = 0.08;
+
+const computeImplosiveGate = (R: number, theta: number, betaBase: number) => {
+  const amplifiedBeta = clamp(cubicRootJump(R, theta, betaBase), 0.5, 18);
+  const gate = invertedSigmoid(R, theta, amplifiedBeta);
+  const delaySteps = Math.max(1, Math.round(Math.abs(tauStar(R, theta, amplifiedBeta)) / TIME_STEP));
+
+  return { gate, beta: amplifiedBeta, delaySteps };
+};
 
 const computeStimulus = (time: number, preset: DomainPreset, noiseScale: number): number => {
   const { base, amplitude, frequency, noise, modulation } = preset.simulation.stimulus;
@@ -77,6 +86,11 @@ export const TransdisciplinaryFieldSimulator = () => {
     activePresetIds.forEach((id) => {
       const preset = presetsById.get(id);
       if (preset) {
+        const thetaOffset = preset.simulation.theta - BASE_THETA;
+        const betaScale = preset.simulation.beta / BASE_BETA;
+        const effectiveTheta = controls.theta + thetaOffset;
+        const effectiveBeta = clamp(controls.beta * betaScale, 0.5, 12);
+        const { gate, beta } = computeImplosiveGate(preset.simulation.initial_R, effectiveTheta, effectiveBeta);
         initial[id] = {
           id,
           label: preset.label,
@@ -84,9 +98,9 @@ export const TransdisciplinaryFieldSimulator = () => {
           psi: preset.simulation.initial_psi,
           phi: preset.simulation.initial_phi,
           zeta: preset.impedance.closed,
-          gate: logistic(preset.simulation.initial_R, controls.theta, controls.beta),
-          theta: controls.theta,
-          beta: controls.beta,
+          gate,
+          theta: effectiveTheta,
+          beta,
           active: false
         };
       }
@@ -108,25 +122,49 @@ export const TransdisciplinaryFieldSimulator = () => {
   const crossResonanceRef = useRef<number>(0);
   const stateRef = useRef<Record<string, DomainState>>(domainStates);
   const trajectoryRef = useRef<Record<string, TrajectoryPoint[]>>(trajectories);
+  const tauBufferRef = useRef<Record<string, number[]>>({});
 
   const createStateFromPreset = useCallback(
-    (preset: DomainPreset): DomainState => ({
-      id: preset.id,
-      label: preset.label,
-      R: preset.simulation.initial_R,
-      psi: preset.simulation.initial_psi,
-      phi: preset.simulation.initial_phi,
-      zeta: preset.impedance.closed,
-      gate: logistic(preset.simulation.initial_R, controls.theta, controls.beta),
-      theta: controls.theta,
-      beta: controls.beta,
-      active: false
-    }),
+    (preset: DomainPreset): DomainState => {
+      const thetaOffset = preset.simulation.theta - BASE_THETA;
+      const betaScale = preset.simulation.beta / BASE_BETA;
+      const effectiveTheta = controls.theta + thetaOffset;
+      const effectiveBeta = clamp(controls.beta * betaScale, 0.5, 12);
+      const { gate, beta, delaySteps } = computeImplosiveGate(preset.simulation.initial_R, effectiveTheta, effectiveBeta);
+
+      tauBufferRef.current[preset.id] = Array(delaySteps).fill(gate);
+
+      return {
+        id: preset.id,
+        label: preset.label,
+        R: preset.simulation.initial_R,
+        psi: preset.simulation.initial_psi,
+        phi: preset.simulation.initial_phi,
+        zeta: preset.impedance.closed,
+        gate,
+        theta: effectiveTheta,
+        beta,
+        active: false
+      };
+    },
     [controls.beta, controls.theta]
   );
 
   useEffect(() => {
     stateRef.current = domainStates;
+  }, [domainStates]);
+
+  useEffect(() => {
+    const nextBuffers: Record<string, number[]> = { ...tauBufferRef.current };
+
+    Object.values(domainStates).forEach((state) => {
+      if (!nextBuffers[state.id] || nextBuffers[state.id].length === 0) {
+        const { delaySteps } = computeImplosiveGate(state.R, state.theta, state.beta);
+        nextBuffers[state.id] = Array(delaySteps).fill(state.gate);
+      }
+    });
+
+    tauBufferRef.current = nextBuffers;
   }, [domainStates]);
 
   useEffect(() => {
@@ -136,6 +174,7 @@ export const TransdisciplinaryFieldSimulator = () => {
   const resetSimulation = () => {
     timeRef.current = 0;
     crossResonanceRef.current = 0;
+    tauBufferRef.current = {};
     setTime(0);
     setCrossResonance(0);
     const resetStates: Record<string, DomainState> = {};
@@ -174,7 +213,7 @@ export const TransdisciplinaryFieldSimulator = () => {
     }
 
     const step = () => {
-      const dt = 0.08;
+      const dt = TIME_STEP;
       const currentStates = stateRef.current;
       const nextStates: Record<string, DomainState> = {};
       const trajectoriesCopy: Record<string, TrajectoryPoint[]> = { ...trajectoryRef.current };
@@ -194,16 +233,46 @@ export const TransdisciplinaryFieldSimulator = () => {
         const betaScale = preset.simulation.beta / BASE_BETA;
         const effectiveTheta = controls.theta + thetaOffset;
         const effectiveBeta = clamp(controls.beta * betaScale, 0.5, 12);
-        const gate = logistic(previousState.R, effectiveTheta, effectiveBeta);
         const stimulus = computeStimulus(timeRef.current, preset, controls.noiseScale);
         const crossTerm = crossResonanceRef.current * controls.coupling * 0.12;
 
-        const dR = (stimulus + crossTerm) * dt - gate * previousState.R * 0.32 * dt;
-        const newR = Math.max(0, previousState.R + dR);
-        const dPsi = (-0.22 * previousState.psi + 0.48 * gate * newR + 0.28 * previousState.phi * newR) * dt;
-        const newPsi = previousState.psi + dPsi + 0.08 * controls.noiseScale * (Math.random() - 0.5);
-        const dPhi = (0.14 * newPsi - 0.18 * previousState.phi + 0.26 * gate) * dt;
-        const newPhi = Math.max(0, previousState.phi + dPhi);
+        const { gate: gateInstant, beta: amplifiedBeta, delaySteps } = computeImplosiveGate(
+          previousState.R,
+          effectiveTheta,
+          effectiveBeta
+        );
+
+        const gateBuffer = tauBufferRef.current[id] ?? Array(delaySteps).fill(gateInstant);
+        gateBuffer.push(gateInstant);
+        const gate = gateBuffer.length > delaySteps ? gateBuffer.shift() ?? gateInstant : gateBuffer[0] ?? gateInstant;
+        tauBufferRef.current[id] = gateBuffer.slice(-Math.max(delaySteps, 1));
+
+        const derivatives = (state: Pick<DomainState, 'R' | 'psi' | 'phi'>) => ({
+          dR: stimulus + crossTerm - gate * state.R * 0.32,
+          dPsi: -0.22 * state.psi + 0.48 * gate * state.R + 0.28 * state.phi * state.R,
+          dPhi: 0.14 * state.psi - 0.18 * state.phi + 0.26 * gate
+        });
+
+        const addScaled = (
+          state: Pick<DomainState, 'R' | 'psi' | 'phi'>,
+          delta: { dR: number; dPsi: number; dPhi: number },
+          scale: number
+        ) => ({
+          R: state.R + delta.dR * scale,
+          psi: state.psi + delta.dPsi * scale,
+          phi: state.phi + delta.dPhi * scale
+        });
+
+        const k1 = derivatives(previousState);
+        const k2 = derivatives(addScaled(previousState, k1, dt / 2));
+        const k3 = derivatives(addScaled(previousState, k2, dt / 2));
+        const k4 = derivatives(addScaled(previousState, k3, dt));
+
+        const newR = Math.max(0, previousState.R + (dt / 6) * (k1.dR + 2 * k2.dR + 2 * k3.dR + k4.dR));
+        const newPsiDeterministic =
+          previousState.psi + (dt / 6) * (k1.dPsi + 2 * k2.dPsi + 2 * k3.dPsi + k4.dPsi);
+        const newPsi = newPsiDeterministic + 0.08 * controls.noiseScale * (Math.random() - 0.5);
+        const newPhi = Math.max(0, previousState.phi + (dt / 6) * (k1.dPhi + 2 * k2.dPhi + 2 * k3.dPhi + k4.dPhi));
         const zeta = preset.impedance.closed - (preset.impedance.closed - preset.impedance.open) * gate;
         const crossed = previousState.R < effectiveTheta && newR >= effectiveTheta;
 
@@ -228,7 +297,7 @@ export const TransdisciplinaryFieldSimulator = () => {
           zeta,
           gate,
           theta: effectiveTheta,
-          beta: effectiveBeta,
+          beta: amplifiedBeta,
           active: gate > 0.52
         };
 
