@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "v6-todo-0.2",
-    "generated_at": "2025-11-24T12:36:17Z",
+    "version": "v6-todo-0.3",
+    "generated_at": "2025-11-24T14:17:13Z",
     "scope": "releases/V6-Plans_etc",
     "description": "TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft",
     "logistic_frame": {
@@ -373,6 +373,37 @@
           "lines": [
             1,
             116
+          ]
+        }
+      ]
+    },
+    {
+      "id": "v6-wavefunction-integration",
+      "title": "Entropische Wellenfunktion in Genesis-/Simulator-Kette verankern",
+      "status": "open",
+      "completeness": "Konzept in Zusatznote skizziert; keine Feldgleichung, kein RK4-Lauf, keine Visualisierung dokumentiert.",
+      "scope": [
+        "theory",
+        "simulation",
+        "visualization"
+      ],
+      "logistic_profile": {
+        "R_target": "Ψ-gestützte UTAC-Pipeline",
+        "Theta_condition": "Feldgleichung + genesis_cube Ψ-Kern + Simulator-Output gekoppelt",
+        "beta_estimate": 5.2,
+        "zeta_risk": "moderate"
+      },
+      "next_steps": [
+        "Ψ-Feldgleichung für entropische Gravitation definieren (inkl. β, τ* Kopplung).",
+        "genesis_cube.py mit compute_wavefunction und Visualisierung des Kollapses implementieren.",
+        "Simulator-Ausgabe (|Ψ|², ΔS) an UTAC-Statusmatrix und Raumzeit-Visualisierung anbinden."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt",
+          "lines": [
+            1,
+            140
           ]
         }
       ]
