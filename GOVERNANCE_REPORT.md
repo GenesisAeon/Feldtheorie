@@ -1,6 +1,6 @@
 # Fractal Governance Report
 
-**Generated:** 2025-11-24 09:56:26 UTC
+**Generated:** 2025-11-24 10:03:54 UTC
 **Governance Version:** 1.0.0
 
 ---
@@ -311,6 +311,10 @@
 - `releases/V6-Plans_etc/ETHICS.md`
 - `releases/V6-Plans_etc/ARCHITECTURE.md`
 - `releases/V6-Plans_etc/POLICY.md`
+- `releases/V6-Plans_etc/papers/AGENTS.md`
+- `releases/V6-Plans_etc/papers/ETHICS.md`
+- `releases/V6-Plans_etc/papers/ARCHITECTURE.md`
+- `releases/V6-Plans_etc/papers/POLICY.md`
 - `releases/v4.0.0-alpha_MirrorMachine/AGENTS.md`
 - `releases/v4.0.0-alpha_MirrorMachine/ETHICS.md`
 - `releases/v4.0.0-alpha_MirrorMachine/ARCHITECTURE.md`
