@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "v6-chronik-0.2",
-    "generated_at": "2025-11-24T12:36:17Z",
+    "version": "v6-chronik-0.3",
+    "generated_at": "2025-11-24T12:47:56Z",
     "scope": "releases/V6-Plans_etc/Chronik",
     "logistic_frame": {
       "R_goal": "Schrittweise Aktivierung des V6-Release-Pfads",
@@ -10,35 +10,44 @@
       "zeta_risk": "negativ, falls Safety-Delay- und Governance-Pfade offen bleiben"
     }
   },
+  "overview": [
+    "1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen → Artefakt: Chronik-TriLayer.",
+    "2️⃣ v6-activation-gaps – Safety-Delay · Regression-Refresh · Sigillin-Automation · Telemetrie-Skizze → Artefakt: Prototyp + Skripte.",
+    "3️⃣ v6-type6-integration – Type‑VI Klassifikation · CREP-Indizes · cubic-root Showcase → Artefakt: Doku + Plots.",
+    "4️⃣ v6-governance-ethics – ζ<0 Escalation · ETHICS/Policy Addenda → Artefakt: Governance-Update.",
+    "5️⃣ v6-trilayer-enforcement – Parser/Validator · Archiv-/Sigillin-Audit → Artefakt: Audit-Log + Reports.",
+    "6️⃣ v6-release-onboarding – V6-Checkliste · CI/CD-Hooks · README/QUICKSTART Patch → Artefakt: Playbook + Templates.",
+    "7️⃣ v6-data-expansion – neue Domains · quantum_lensing Blueprint → Artefakt: Datensatzliste + Submodul-Entwurf.",
+    "8️⃣ v6-pyramid-cosmic – pyramid_utac + Konstanten-Kopplung · Visualisierung → Artefakt: Modellupdate + Animation.",
+    "9️⃣ v6-genesis-cube-sim – genesis_cube Pfad · Dunkle-Energie-Verschnitt → Artefakt: Simulation + Prompt-Doku.",
+    "🔟 v6-simulator-stability – RK4 + τ*-Delay → Artefakt: stabiler Build.",
+    "1️⃣1️⃣ v6-simulator-experience – Web-Audio · CSV-Drop · AI-Context → Artefakt: UX-Paket.",
+    "1️⃣2️⃣ v6-beta-bayes – PyMC/Stan Hierarchie · VIF-Checks → Artefakt: Analyse-Report.",
+    "1️⃣3️⃣ v6-137-beta-duality – Kapitel + Outreach-Pfade → Artefakt: Dualitäts-Dossier."
+  ],
   "chronik": [
     {
       "step": 1,
       "title": "ToDo-TriLayer konsolidieren",
       "todo_id": "v6-todo-trilayer",
-      "focus": "Alle V6 ToDo-Listen (MD/YAML/JSON) spiegeln und referenzieren",
+      "focus": "ToDo-Quellen koppeln",
       "actions": [
-        "TriLayer-Dateien laden und gemeinsame IDs (v6-*) bestätigen.",
-        "Chronik-Ordner anlegen und ToDo-Quellen als Referenzknoten markieren.",
-        "Logistisches Rahmenwerk (R, Θ, β, ζ) aus der ToDo-Liste übernehmen."
+        "IDs spiegeln und R/Θ/β/ζ-Raster übernehmen",
+        "Chronik-Ordner verankern",
+        "Quellenknoten auf V6_ToDoListe verweisen"
       ],
       "expected_artifacts": [
-        "Chronik/chronik_v6_release.{md,yaml,json}",
-        "Quellenverweise auf V6_ToDoListe.*"
+        "chronik_v6_release.{md,yaml,json}",
+        "Quell-Referenzen auf V6_ToDoListe.*"
       ],
       "derived_from": [
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
-          "lines": [
-            1,
-            18
-          ]
+          "lines": [1, 18]
         },
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
-          "lines": [
-            1,
-            13
-          ]
+          "lines": [1, 13]
         }
       ]
     },
@@ -46,32 +55,26 @@
       "step": 2,
       "title": "Activation Gaps schließen",
       "todo_id": "v6-activation-gaps",
-      "focus": "Safety-Delay-Prototyp, Meta-Regression-Refresh, Sigillin-Automation",
+      "focus": "Safety-Delay + Regression-Refresh + Sigillin-Automation",
       "actions": [
-        "Safety-Delay-Feld für ζ<0 prototypisieren.",
-        "analysis/beta_meta_regression_v2.py mit Phase-2/3 Daten und φ^(n/3) Tests aktualisieren.",
-        "Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics implementieren.",
-        "Telemetrie-Dashboard für R, Θ, β, ζ skizzieren."
+        "Safety-Delay-Feld für ζ<0 prototypisieren",
+        "analysis/beta_meta_regression_v2.py Phase-2/3 + φ^(n/3) Refresh",
+        "Sigillin Parser/Validator/Index + Outlier-Diagnostics",
+        "Telemetrie-Skizze für R/Θ/β/ζ"
       ],
       "expected_artifacts": [
-        "Safety-Delay-Prototyp im Simulation/Analysis Stack",
-        "Aktualisiertes Regression-Skript + Testdaten",
-        "Sigillin-Automationsskripte und Dashboard-Entwürfe"
+        "Safety-Delay-Prototyp",
+        "Aktualisierte Regression",
+        "Sigillin-Automation + Dashboard-Mock"
       ],
       "derived_from": [
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
-          "lines": [
-            10,
-            14
-          ]
+          "lines": [10, 14]
         },
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
-          "lines": [
-            13,
-            38
-          ]
+          "lines": [13, 38]
         }
       ]
     },
@@ -79,31 +82,25 @@
       "step": 3,
       "title": "Type‑6 Implosionsmodelle integrieren",
       "todo_id": "v6-type6-integration",
-      "focus": "Klassifikation, CREP-Indizes, cubic-root Simulation",
+      "focus": "Klassifikation + CREP + Showcase",
       "actions": [
-        "Type‑VI Parameter und Beispiele in Feldtyp-Kanon aufnehmen.",
-        "CREP-Stabilitätsindizes in METRICS.md ergänzen.",
-        "Cubic-root-jump Showcase-Simulation (z. B. Klima-Kaskade) bauen."
+        "Type‑VI Parameter/Guidelines einpflegen",
+        "CREP-Indizes in METRICS.md",
+        "cubic-root-jump Simulation"
       ],
       "expected_artifacts": [
-        "Aktualisierte Klassifikationsdokumente",
-        "Neue CREP-Metriken",
-        "Simulationsergebnisse und Plots"
+        "Klassifikations-Update",
+        "CREP-Metriken",
+        "Showcase-Plots"
       ],
       "derived_from": [
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
-          "lines": [
-            14,
-            17
-          ]
+          "lines": [14, 17]
         },
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
-          "lines": [
-            39,
-            64
-          ]
+          "lines": [39, 64]
         }
       ]
     },
@@ -111,29 +108,23 @@
       "step": 4,
       "title": "Governance & Ethics für ζ<0 anpassen",
       "todo_id": "v6-governance-ethics",
-      "focus": "Escalation-Regeln, Policy- und Ethics-Addenda",
+      "focus": "Escalation-Regeln + ETHICS/Policy",
       "actions": [
-        "AGENTS/POLICY Escalation-Regeln für implosive Tests ergänzen.",
-        "ETHICS.md um Risiken (negatives ζ, spekulative Kosmologie) und Provenienz-Stärkung erweitern."
+        "ζ<0 Escalation in AGENTS/POLICY ergänzen",
+        "ETHICS Provenienz + spekulative Risiken dokumentieren"
       ],
       "expected_artifacts": [
-        "Governance-Addendum mit ζ<0 Szenarien",
-        "Erweiterte ETHICS.md und Policy-Hinweise"
+        "Governance-Addendum",
+        "ETHICS/Policy-Update"
       ],
       "derived_from": [
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
-          "lines": [
-            17,
-            20
-          ]
+          "lines": [17, 20]
         },
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
-          "lines": [
-            65,
-            86
-          ]
+          "lines": [65, 86]
         }
       ]
     },
@@ -141,29 +132,23 @@
       "step": 5,
       "title": "Trilayer-Strenge sichern",
       "todo_id": "v6-trilayer-enforcement",
-      "focus": "Parser/Validator und Archiv-/Sigillin-Audits",
+      "focus": "Parser/Validator + Audit",
       "actions": [
-        "Automatisierte Trilayer-Konsistenzprüfungen einführen (Parser + Index).",
-        "Archiv-/Sigillin-Audits für V6-Pläne protokollieren."
+        "Trilayer-Konsistenzprüfungen aktivieren",
+        "Archiv-/Sigillin-Audit notieren"
       ],
       "expected_artifacts": [
-        "Trilayer-Validatoren und Index-Reports",
-        "Audit-Log für Sigillin/Archiv"
+        "Validator-Reports",
+        "Audit-Log"
       ],
       "derived_from": [
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
-          "lines": [
-            20,
-            22
-          ]
+          "lines": [20, 22]
         },
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
-          "lines": [
-            87,
-            104
-          ]
+          "lines": [87, 104]
         }
       ]
     },
@@ -171,31 +156,25 @@
       "step": 6,
       "title": "Release-Onboarding aktualisieren",
       "todo_id": "v6-release-onboarding",
-      "focus": "Checkliste, CI/CD Hooks, README/QUICKSTART Ergänzungen",
+      "focus": "Playbook + CI/CD + Onboarding",
       "actions": [
-        "docs/zenodo_release_playbook.md um V6-Checkliste und Pflichttests erweitern.",
-        "CI/CD-Pipeline für Sigillin-Checks und Regressionen skizzieren.",
-        "README/QUICKSTART um Type‑6-Einstieg und Contributing-Template ergänzen."
+        "docs/zenodo_release_playbook.md um V6-Checkliste ergänzen",
+        "CI/CD Hooks für Sigillin/Regression skizzieren",
+        "README/QUICKSTART mit Type‑6 Einstieg"
       ],
       "expected_artifacts": [
-        "Aktualisiertes Release-Playbook",
-        "CI/CD-Hook-Skizzen",
-        "Onboarding-Texte für V6"
+        "Playbook-Patch",
+        "Hook-Skizzen",
+        "Onboarding-Texte"
       ],
       "derived_from": [
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
-          "lines": [
-            22,
-            25
-          ]
+          "lines": [22, 25]
         },
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
-          "lines": [
-            105,
-            134
-          ]
+          "lines": [105, 134]
         }
       ]
     },
@@ -203,29 +182,24 @@
       "step": 7,
       "title": "Daten-Expansion und Quanten/Gravity-Submodul",
       "todo_id": "v6-data-expansion",
-      "focus": "Neue Domains einspeisen, quantum_lensing Submodul prüfen",
+      "focus": "neue Domains + quantum_lensing",
       "actions": [
-        "Zusätzliche Domains (Finanz, Verkehr, große LLMs) einspeisen und β-Cluster validieren.",
-        "quantum_lensing Submodul für ER=EPR/Holographie/entropic gravity Review anlegen."
+        "Finanz/Verkehr/LLM-Daten einspeisen",
+        "β-Cluster validieren",
+        "quantum_lensing Blueprint skizzieren"
       ],
       "expected_artifacts": [
-        "Neue Datendomänen und Validierungsprotokolle",
-        "Submodul-Blueprint für quantum_lensing"
+        "Datendomänenliste",
+        "Submodul-Entwurf"
       ],
       "derived_from": [
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
-          "lines": [
-            25,
-            27
-          ]
+          "lines": [25, 27]
         },
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
-          "lines": [
-            135,
-            156
-          ]
+          "lines": [135, 156]
         }
       ]
     },
@@ -233,30 +207,24 @@
       "step": 8,
       "title": "Pyramiden-/Konstanten-Integration",
       "todo_id": "v6-pyramid-cosmic",
-      "focus": "pyramid_utac + Konstanten koppeln",
+      "focus": "pyramid_utac + Konstanten",
       "actions": [
-        "pyramid_utac Modell in Code und Theorie konsolidieren.",
-        "Kosmische Konstanten (c, G, h) als Kopplungsgrenzen verankern.",
-        "Visualisierung/Animation der Raumzeit-Entfaltung (Hexagon/Würfel) erstellen."
+        "pyramid_utac Modell konsolidieren",
+        "c/G/h Kopplungen setzen",
+        "Raumzeit-Visualisierung (Hexagon/Würfel) skizzieren"
       ],
       "expected_artifacts": [
-        "Aktualisierte UTAC-Theorie und Modellcode",
-        "Visual-Assets/Animation"
+        "UTAC-Update",
+        "Visual-Assets"
       ],
       "derived_from": [
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
-          "lines": [
-            13,
-            17
-          ]
+          "lines": [13, 17]
         },
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
-          "lines": [
-            57,
-            77
-          ]
+          "lines": [57, 77]
         }
       ]
     },
@@ -264,30 +232,24 @@
       "step": 9,
       "title": "Genesis-Cube Simulation",
       "todo_id": "v6-genesis-cube-sim",
-      "focus": "genesis_cube.py + Blockuniversum-Scan",
+      "focus": "genesis_cube Ablauf + Blockuniversum",
       "actions": [
-        "genesis_cube.py mit Quantum-Foam → Singularity → Hexagon/Würfel Ablauf implementieren.",
-        "Geometrischen Verschnitt als Dunkle-Energie Visualisierung ausspielen.",
-        "Deep-Research-Prompt und Mapping zu bestehenden Modulen dokumentieren."
+        "Quantum-Foam → Singularity → Hexagon/Würfel Pfad coden",
+        "Dunkle-Energie-Verschnitt visualisieren",
+        "Prompt/Mapping dokumentieren"
       ],
       "expected_artifacts": [
-        "Simulation + Animation",
-        "Prompt-Dokumentation"
+        "Simulation/Animation",
+        "Prompt-Doku"
       ],
       "derived_from": [
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
-          "lines": [
-            17,
-            20
-          ]
+          "lines": [17, 20]
         },
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
-          "lines": [
-            78,
-            103
-          ]
+          "lines": [78, 103]
         }
       ]
     },
@@ -295,10 +257,10 @@
       "step": 10,
       "title": "Frontend-Stabilität",
       "todo_id": "v6-simulator-stability",
-      "focus": "RK4 + τ* im Simulator",
+      "focus": "RK4 + τ*",
       "actions": [
-        "RK4-Integrator in TransdisciplinaryFieldSimulator.tsx integrieren.",
-        "τ*-Buffer/Delay-Kopplung für implosive Szenarien implementieren."
+        "RK4 in TransdisciplinaryFieldSimulator.tsx",
+        "τ*-Buffer/Delay-Kopplung"
       ],
       "expected_artifacts": [
         "Stabiler Simulator-Build"
@@ -306,17 +268,11 @@
       "derived_from": [
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
-          "lines": [
-            20,
-            23
-          ]
+          "lines": [20, 23]
         },
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
-          "lines": [
-            104,
-            126
-          ]
+          "lines": [104, 126]
         }
       ]
     },
@@ -324,30 +280,24 @@
       "step": 11,
       "title": "Frontend/Navigation erweitern",
       "todo_id": "v6-simulator-experience",
-      "focus": "UX + AI-Context/Diamond-Map",
+      "focus": "UX + Navigation",
       "actions": [
-        "Web-Audio-Sonifikation für Kopplungs-/Instabilitätsfeedback anbinden.",
-        "Drag&Drop CSV-Schätzung für β/Θ ergänzen.",
-        "AI-Context/llms.txt und Diamond-Architecture-Map bereitstellen."
+        "Web-Audio-Sonifikation",
+        "CSV-Dropzone für β/Θ",
+        "AI-Context/Diamond-Map veröffentlichen"
       ],
       "expected_artifacts": [
-        "UX-Features und Sonifikation",
-        "Navigationshilfen"
+        "UX-Features",
+        "Navigationsdokumente"
       ],
       "derived_from": [
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
-          "lines": [
-            23,
-            26
-          ]
+          "lines": [23, 26]
         },
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
-          "lines": [
-            126,
-            152
-          ]
+          "lines": [126, 152]
         }
       ]
     },
@@ -357,8 +307,8 @@
       "todo_id": "v6-beta-bayes",
       "focus": "Bayes + VIF",
       "actions": [
-        "PyMC/Stan Hierarchie für β nach Domänen modellieren.",
-        "VIF-Checks in Analyse-Skripten ergänzen und dokumentieren."
+        "PyMC/Stan Hierarchie modellieren",
+        "VIF-Checks dokumentieren"
       ],
       "expected_artifacts": [
         "Bayes-Modelle",
@@ -367,17 +317,11 @@
       "derived_from": [
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
-          "lines": [
-            26,
-            28
-          ]
+          "lines": [26, 28]
         },
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
-          "lines": [
-            152,
-            173
-          ]
+          "lines": [152, 173]
         }
       ]
     },
@@ -385,29 +329,23 @@
       "step": 13,
       "title": "137-β Dualität integrieren",
       "todo_id": "v6-137-beta-duality",
-      "focus": "Dualitätskapitel + Outreach",
+      "focus": "Kapitel + Outreach",
       "actions": [
-        "Kapitel zur 137-β Dualität (Kosmos ↔ Sozioökonomie) anlegen.",
-        "Publikations- und Outreach-Pfade skizzieren."
+        "Dualitäts-Kapitel anlegen",
+        "Publikations-/Partnerpfade skizzieren"
       ],
       "expected_artifacts": [
-        "Dualitätskapitel",
-        "Partner-/Outreach-Notizen"
+        "Dualitäts-Dossier",
+        "Partnerliste"
       ],
       "derived_from": [
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
-          "lines": [
-            28,
-            30
-          ]
+          "lines": [28, 30]
         },
         {
           "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
-          "lines": [
-            173,
-            193
-          ]
+          "lines": [173, 193]
         }
       ]
     }

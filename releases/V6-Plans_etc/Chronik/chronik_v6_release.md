@@ -1,78 +1,87 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.2
-- **Scope:** releases/V6-Plans_etc/Chronik  
-- **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.8, ζ-Risiko: negativ, falls Safety-Delay/ Governance offen bleiben.  
-- **Quellen:** `V6_ToDoListe.md`, `V6_ToDoListe.yaml`, `V6_ToDoListe.json`
+- **Version:** v6-chronik-0.3
+- **Scope:** releases/V6-Plans_etc/Chronik
+- **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.8,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
+- **Quellen:** `V6_ToDoListe.{md,yaml,json}`
 
-## Übersicht
-Die Chronik destilliert die offenen ToDo-Kerne in aufeinander aufbauende Schritte. Jeder Schritt koppelt an R/Θ/β/ζ, benennt erwartete Artefakte und verweist auf die ursprünglichen ToDo-Quellen.
+## Schnellüberblick (Stichpunkte)
+- 1️⃣ v6-todo-trilayer: IDs spiegeln · Chronik-Achse fixieren · logistisches Raster übernehmen → Artefakt: Chronik-TriLayer.
+- 2️⃣ v6-activation-gaps: Safety-Delay · Regression-Refresh · Sigillin-Automation · Telemetrie-Skizze → Artefakt: Prototyp + Skripte.
+- 3️⃣ v6-type6-integration: Type‑VI Klassifikation · CREP-Indizes · cubic-root Showcase → Artefakt: Doku + Plots.
+- 4️⃣ v6-governance-ethics: ζ<0 Escalation · ETHICS/Policy Addenda → Artefakt: Governance-Update.
+- 5️⃣ v6-trilayer-enforcement: Parser/Validator · Archiv-/Sigillin-Audit → Artefakt: Audit-Log + Reports.
+- 6️⃣ v6-release-onboarding: V6-Checkliste · CI/CD-Hooks · README/QUICKSTART Patch → Artefakt: Playbook + Templates.
+- 7️⃣ v6-data-expansion: neue Domains · quantum_lensing Blueprint → Artefakt: Datensatzliste + Submodul-Entwurf.
+- 8️⃣ v6-pyramid-cosmic: pyramid_utac + Konstanten-Kopplung · Visualisierung → Artefakt: Modellupdate + Animation.
+- 9️⃣ v6-genesis-cube-sim: genesis_cube Pfad · Dunkle-Energie-Verschnitt → Artefakt: Simulation + Prompt-Doku.
+- 🔟 v6-simulator-stability: RK4 + τ*-Delay → Artefakt: stabiler Build.
+- 1️⃣1️⃣ v6-simulator-experience: Web-Audio · CSV-Drop · AI-Context → Artefakt: UX-Paket.
+- 1️⃣2️⃣ v6-beta-bayes: PyMC/Stan Hierarchie · VIF-Checks → Artefakt: Analyse-Report.
+- 1️⃣3️⃣ v6-137-beta-duality: Kapitel + Outreach-Pfade → Artefakt: Dualitäts-Dossier.
 
-| Schritt | ToDo-ID | Fokus | Nächste Aktionen | Erwartete Artefakte |
-| --- | --- | --- | --- | --- |
-| 1 | v6-todo-trilayer | ToDo-TriLayer konsolidieren | TriLayer laden · Chronik anlegen · logistisches Rahmenwerk übernehmen | Chronik-TriLayer · Quellenknoten |
-| 2 | v6-activation-gaps | Safety-Delay, Meta-Regression, Sigillin-Automation | Safety-Delay-Prototyp · Regression-Refresh · Sigillin-Parser/Validator · Telemetrie-Dashboard | Prototyp + Skripte + Dashboard-Skizze |
-| 3 | v6-type6-integration | Type‑VI Klassifikation & CREP | Klassifikations-Update · CREP-Indizes · cubic-root Simulation | Dokumentation · Metriken · Plots |
-| 4 | v6-governance-ethics | ζ<0 Governance & Ethics | Escalation-Regeln ergänzen · ETHICS/Policy ausbauen | Governance-Addendum · ETHICS-Update |
-| 5 | v6-trilayer-enforcement | Trilayer-Strenge & Audits | Parser/Validator + Index · Archiv-/Sigillin-Audits | Validator-Reports · Audit-Log |
-| 6 | v6-release-onboarding | Release-Playbook & Onboarding | V6-Checkliste · CI/CD Hooks · README/QUICKSTART Update | Playbook · Hook-Skizzen · Texte |
-| 7 | v6-data-expansion | Daten-Expansion & quantum_lensing | Neue Domains einspeisen · Submodul-Blueprint erstellen | Datendomänen · Submodul-Entwurf |
-| 8 | v6-pyramid-cosmic | Pyramiden-/Konstanten-Integration | pyramid_utac + Konstanten koppeln · Visualisierung/Animation bauen | Modell-Update · Visual Assets |
-| 9 | v6-genesis-cube-sim | Genesis-Cube Simulation | genesis_cube.py mit Quantum-Foam→Hexagon/Würfel · Blockuniversum-Scan | Simulation + Prompt-Doku |
-| 10 | v6-simulator-stability | RK4 + τ* im Frontend | RK4-Integrator · τ*-Delay implementieren | Stabiler Simulator-Build |
-| 11 | v6-simulator-experience | Frontend/Navigation erweitern | Web-Audio Sonifikation · CSV-Drop · AI-Context/Diamond-Map | UX-Features + Navigationshilfen |
-| 12 | v6-beta-bayes | Hierarchische β-Analyse | PyMC/Stan Hierarchie · VIF-Checks | Analyseskripte + Report |
-| 13 | v6-137-beta-duality | 137-β Dualität integrieren | Kapitel & Outreach-Pfade definieren | Dualitätskapitel · Partnerliste |
-
-## Detail-Etappen
+## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)
-- **Aktionen:** TriLayer-Dateien laden und IDs prüfen · Chronik-Ordner aufsetzen · logistisches Rahmenwerk (R, Θ, β, ζ) übernehmen.
-- **Artefakte:** `chronik_v6_release.{md,yaml,json}` mit Verweisen auf alle ToDo-Quellen.
+- **Fokus:** ToDo-Quellen koppeln.
+- **Aktionen:** IDs prüfen · Chronik-Ordner verankern · logistisches Raster (R/Θ/β/ζ) übernehmen.
+- **Artefakte:** `chronik_v6_release.{md,yaml,json}` mit Quellverweisen.
 
 ### 2. Activation Gaps schließen (v6-activation-gaps)
-- **Aktionen:** Safety-Delay-Feld für ζ<0 prototypisieren · `analysis/beta_meta_regression_v2.py` mit Phase-2/3 Daten & φ^(n/3) Tests auffrischen · Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics bauen · Telemetrie-Dashboard für R/Θ/β/ζ skizzieren.
-- **Artefakte:** Safety-Delay-Prototyp · aktualisierte Regression · Sigillin-Automation · Dashboard-Entwurf.
+- **Fokus:** Safety-Delay + Regression-Refresh + Sigillin-Automation.
+- **Aktionen:** Safety-Delay-Prototyp · `analysis/beta_meta_regression_v2.py` Refresh · Sigillin Parser/Validator/Index + Outlier-Diag · Telemetrie-Skizze.
+- **Artefakte:** Safety-Delay-Prototyp · aktualisierte Regression · Automationsskripte · Dashboard-Mock.
 
 ### 3. Type‑6 Implosionsmodelle integrieren (v6-type6-integration)
-- **Aktionen:** Type‑VI Parameter und Beispiele in den Feldtyp-Kanon übernehmen · CREP-Stabilitätsindizes in `METRICS.md` ergänzen · cubic-root-jump Showcase-Simulation (z. B. Klima-Kaskade) bauen.
-- **Artefakte:** aktualisierte Klassifikationsdokumente · neue CREP-Metriken · Simulationsergebnisse/Plots.
+- **Fokus:** Klassifikation + CREP + Showcase.
+- **Aktionen:** Type‑VI Parameter einpflegen · CREP-Indizes in `METRICS.md` · cubic-root-jump Simulation.
+- **Artefakte:** Klassifikations-Update · CREP-Metriken · Plots.
 
 ### 4. Governance & Ethics für ζ<0 anpassen (v6-governance-ethics)
-- **Aktionen:** AGENTS/POLICY Escalation-Regeln für implosive Tests ergänzen · `ETHICS.md` um ζ<0-Risiken, spekulative Kosmologie und Daten-Provenienz stärken.
-- **Artefakte:** Governance-Addendum · erweitertes ETHICS-/Policy-Material.
+- **Fokus:** Escalation-Regeln + ETHICS/Policy.
+- **Aktionen:** ζ<0 Escalation ergänzen · ETHICS Provenienz + spekulative Risiken dokumentieren.
+- **Artefakte:** Governance-Addendum · ETHICS/Policy-Update.
 
 ### 5. Trilayer-Strenge sichern (v6-trilayer-enforcement)
-- **Aktionen:** Automatisierte Trilayer-Konsistenzprüfungen (Parser + Index) einführen · Archiv-/Sigillin-Audits für V6-Pläne protokollieren.
-- **Artefakte:** Validatoren/Index-Reports · Audit-Log.
+- **Fokus:** Parser/Validator + Audit.
+- **Aktionen:** Trilayer-Konsistenzprüfungen aktivieren · Archiv-/Sigillin-Audit notieren.
+- **Artefakte:** Validator-Reports · Audit-Log.
 
 ### 6. Release-Onboarding aktualisieren (v6-release-onboarding)
-- **Aktionen:** `docs/zenodo_release_playbook.md` um V6-Checkliste & Pflichttests erweitern · CI/CD-Pipeline für Sigillin-Checks und Regressionen skizzieren · README/QUICKSTART um Type‑6-Einstieg & Contributing-Template ergänzen.
-- **Artefakte:** aktualisiertes Release-Playbook · CI/CD-Hook-Skizzen · Onboarding-Texte.
+- **Fokus:** Playbook + CI/CD + Onboarding.
+- **Aktionen:** `docs/zenodo_release_playbook.md` mit V6-Checkliste ergänzen · CI/CD Hooks für Sigillin/Regression skizzieren · README/QUICKSTART um Type‑6 Einstieg erweitern.
+- **Artefakte:** Playbook-Patch · Hook-Skizzen · Onboarding-Texte.
 
 ### 7. Daten-Expansion und Quanten/Gravity-Submodul (v6-data-expansion)
-- **Aktionen:** Zusätzliche Domains (Finanz, Verkehr, große LLMs) einspeisen und β-Cluster validieren · `quantum_lensing` Submodul für ER=EPR/Holographie/entropic gravity Review anlegen.
-- **Artefakte:** neue Datendomänen mit Validierungen · Submodul-Blueprint.
+- **Fokus:** neue Domains + quantum_lensing.
+- **Aktionen:** Finanz/Verkehr/LLM-Daten einspeisen · β-Cluster prüfen · `quantum_lensing` Blueprint erstellen.
+- **Artefakte:** Datendomänenliste · Submodul-Entwurf.
 
 ### 8. Pyramiden-/Konstanten-Integration (v6-pyramid-cosmic)
-- **Aktionen:** pyramid_utac Modell in Code und Theorie konsolidieren · Kosmische Konstanten (c, G, h) als Kopplungsgrenzen verankern · Visualisierung/Animation der Raumzeit-Entfaltung inkl. Hexagon-Projektion erstellen.
-- **Artefakte:** aktualisierte UTAC-Theorie + Modellcode · Visual-Assets/Animation.
+- **Fokus:** `pyramid_utac` + Konstanten.
+- **Aktionen:** Modell konsolidieren · c/G/h Kopplungen setzen · Raumzeit-Visualisierung (Hexagon/Würfel) skizzieren.
+- **Artefakte:** UTAC-Update · Visual-Assets.
 
 ### 9. Genesis-Cube Simulation (v6-genesis-cube-sim)
-- **Aktionen:** genesis_cube.py mit Quantum-Foam → Singularity → Hexagon/Würfel Ablauf implementieren · geometrischen Verschnitt als Dunkle-Energie-Visualisierung ausspielen · Deep-Research-Prompt und Mapping zu bestehenden Modulen dokumentieren.
-- **Artefakte:** Simulation + Animation · Prompt-Dokumentation.
+- **Fokus:** genesis_cube Ablauf + Blockuniversum.
+- **Aktionen:** Quantum-Foam → Singularity → Hexagon/Würfel Pfad coden · Dunkle-Energie-Verschnitt visualisieren · Prompt/Mapping dokumentieren.
+- **Artefakte:** Simulation · Animation · Prompt-Doku.
 
 ### 10. Frontend-Stabilität (v6-simulator-stability)
-- **Aktionen:** RK4-Integrator in TransdisciplinaryFieldSimulator.tsx integrieren · τ*-Buffer/Delay-Kopplung für implosive Szenarien implementieren.
-- **Artefakte:** stabiler Simulator-Build mit RK4 + Delay-Profilen.
+- **Fokus:** RK4 + τ*-Delay.
+- **Aktionen:** RK4 in `TransdisciplinaryFieldSimulator.tsx` · τ*-Buffer/Delay-Kopplung.
+- **Artefakte:** stabiler Simulator-Build.
 
 ### 11. Frontend/Navigation erweitern (v6-simulator-experience)
-- **Aktionen:** Web-Audio-Sonifikation für Kopplungs-/Instabilitätsfeedback anbinden · Drag&Drop CSV-Schätzung für β/Θ ergänzen · AI-Context/llms.txt und Diamond-Architecture-Map als Navigationshilfen bereitstellen.
-- **Artefakte:** UX-Features, Sonifikation, Navigationsdokumente.
+- **Fokus:** UX + Navigation.
+- **Aktionen:** Web-Audio-Sonifikation · CSV-Dropzone für β/Θ · AI-Context/Diamond-Map veröffentlichen.
+- **Artefakte:** UX-Features · Navigationsdokumente.
 
 ### 12. Hierarchische β-Analyse (v6-beta-bayes)
-- **Aktionen:** PyMC/Stan Hierarchie für β nach Domänen modellieren · VIF-Checks in Analyse-Skripten ergänzen und dokumentieren.
-- **Artefakte:** Bayes-Modelle + Multikollinearitäts-Report.
+- **Fokus:** Bayes + VIF.
+- **Aktionen:** PyMC/Stan Hierarchie · VIF-Checks dokumentieren.
+- **Artefakte:** Bayes-Modelle · Multikollinearitäts-Report.
 
 ### 13. 137-β Dualität integrieren (v6-137-beta-duality)
-- **Aktionen:** Kapitel zur 137-β Dualität (Kosmos ↔ Sozioökonomie) in UTAC-Dokumentation anlegen · Publikations- und Outreach-Pfade (Papers/Partner) skizzieren.
-- **Artefakte:** Dualitätskapitel · Partner-/Outreach-Notizen.
+- **Fokus:** Kapitel + Outreach.
+- **Aktionen:** Dualitäts-Kapitel anlegen · Publikations-/Partnerpfade skizzieren.
+- **Artefakte:** Dualitäts-Dossier · Partnerliste.
