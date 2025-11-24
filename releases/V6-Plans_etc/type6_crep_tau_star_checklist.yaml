@@ -1,8 +1,8 @@
 metadata:
   id: type6-crep-tau-checklist
-  version: v1.0.0
+  version: v1.1.0
   scope: releases/V6-Plans_etc
-  generated_at: '2025-11-30T09:00:00Z'
+  generated_at: '2025-12-01T10:00:00Z'
   logistic_frame:
     R_target: Type-VI Governance Gate aktiv
     Theta_condition: CREP/τ*-Safeguards in Docs und CI verankert
@@ -54,3 +54,18 @@ checklist:
   - Hook entwerfen, der CREP >= 0.7 markiert und τ*-Default validiert.
   - Hook soll Trilayer-Drift (YAML/JSON/MD) melden.
   - Reviewer-Routing (maintainers) für Level-2/3 Fälle hinterlegen.
+  - Checkliste in CI/Hooks referenzieren (pre-commit, nox, Makefile `validate-trilayer`).
+- id: reviewer-slot
+  title: Reviewer-Slot dokumentieren
+  status: required
+  actions:
+  - Für CREP >= 0.7 verbindlichen Reviewer aus `MAINTAINERS.md` auswählen.
+  - Slot/Timestamp in Chronik (`chronik_v6_release.*`) und Audit-Trail notieren.
+  - Freigabe-Status vor Merge/Release bestätigen (Level 2/3 Escalation beachten).
+- id: index-ci-mirror
+  title: Index-Spiegelung & Provenienz-Hooks
+  status: recommended
+  actions:
+  - Verweis auf diese Checkliste in `feldtheorie_index.*` und `docs_index.*` ergänzen.
+  - Provenienz- und CREP/τ*-Hinweise in Governance-Indizes (POLICY/ETHICS) spiegeln.
+  - CI-Snippet vorbereiten, das fehlende Index-Referenzen als Warnung markiert.

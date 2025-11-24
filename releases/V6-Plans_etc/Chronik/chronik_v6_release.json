@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "v6-chronik-0.6.1",
-    "generated_at": "2025-11-29T09:00:00Z",
+    "version": "v6-chronik-0.6.2",
+    "generated_at": "2025-12-01T10:00:00Z",
     "scope": "releases/V6-Plans_etc/Chronik",
     "logistic_frame": {
       "R_goal": "Schrittweise Aktivierung des V6-Release-Pfads",
@@ -56,6 +56,18 @@
         "Validator-Hook skizzieren: Makefile-Target `validate-trilayer` soll YAML/JSON/MD-Drift für ToDo/Chronik melden und R/Θ/β/ζ-Drift hervorheben.",
         "Governance: Reviewer-Slot für CREP>0.7 vormerken, Provenienz/ζ<0-Hinweise in feldtheorie_index.* und docs_index.* spiegeln, CI-Snippet für CREP/τ* vorbereiten.",
         "Activation Gaps: τ*-Stub via pipelines/fit_tau_star an analysis/notes koppeln, Telemetrie-Protokoll (β-Drift, τ*) über metrics/beta_evolution.csv skizzieren."
+      ]
+    },
+    {
+      "date": "2025-12-01",
+      "label": "crep-review-routing",
+      "summary": "CREP/τ* Checkliste um Reviewer-Slot- und Index/CI-Hinweise ergänzt; Rollout-Schritte markiert.",
+      "todo_links": [
+        "v6-governance-ethics"
+      ],
+      "actions": [
+        "Reviewer-Slot-Dokumentation und Index/CI-Spiegel-Hinweis in type6_crep_tau_star_checklist.* ergänzt.",
+        "Nächste Schritte: Verweis in feldtheorie_index.* und docs_index.* eintragen und CI-Snippet für CREP/τ* + Trilayer-Drift vorbereiten."
       ]
     }
   ],

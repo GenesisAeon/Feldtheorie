@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "v6-todo-0.7.3",
-    "generated_at": "2025-11-30T09:00:00Z",
+    "version": "v6-todo-0.7.4",
+    "generated_at": "2025-12-01T10:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft",
     "logistic_frame": {
@@ -135,7 +135,7 @@
       "id": "v6-governance-ethics",
       "title": "Governance, AGENTS & ETHICS an implosive Szenarien anpassen",
       "status": "in-progress",
-      "completeness": "Type-VI Safety Addendum in POLICY.md, Provenienz-/Dual-Use-Block in ETHICS.md und CREP/τ*-Checkliste (type6_crep_tau_star_checklist.*) verankert; Reviewer- und Index-Kopplung steht noch aus.",
+      "completeness": "Type-VI Safety Addendum in POLICY.md, Provenienz-/Dual-Use-Block in ETHICS.md und CREP/τ*-Checkliste (type6_crep_tau_star_checklist.*) verankert; Reviewer-Routing in Checkliste ergänzt, Index-/CI-Kopplung steht noch aus.",
       "scope": [
         "governance",
         "ethics"
@@ -147,10 +147,9 @@
         "zeta_risk": "hoch ohne Safety-Protokolle"
       },
       "next_steps": [
-        "Reviewer-Slot terminieren und CREP>0.7 Freigaben bestätigen.",
         "Checkliste in Indizes und CI-Checks (feldtheorie_index.*, docs_index.*) spiegeln.",
-        "ζ<0-Eskalation in weiteren Governance-Dateien spiegeln.",
-        "CI-Snippet für CREP-Gating/τ* Review (pre-commit oder nox) fertigstellen."
+        "CI-Snippet für CREP-Gating/τ* Review und Trilayer-Drift (pre-commit, nox oder Makefile) konkretisieren.",
+        "ζ<0-Eskalation in weiteren Governance-Dateien spiegeln."
       ],
       "references": [
         {
@@ -540,6 +539,13 @@
       "highlights": [
         "v6-governance-ethics: Type-VI CREP/τ*-Checkliste als Trilayer (MD/JSON/YAML) abgelegt (`type6_crep_tau_star_checklist.*`); Reviewer- und Index-Kopplung als nächste Schritte markiert.",
         "Kopplungshinweis: Checkliste soll CI/Pre-Commit-Hooks CREP≥0.7 markieren, τ*-Default validieren und Trilayer-Drift melden."
+      ]
+    },
+    {
+      "date": "2025-12-01",
+      "label": "crep-review-routing",
+      "highlights": [
+        "v6-governance-ethics: Checkliste um Reviewer-Slot-Dokumentation und Index/CI-Spiegel-Hinweis erweitert; nächste Schritte sind Index-Einträge (feldtheorie_index.*, docs_index.*) und CI-Snippet für CREP/τ* + Trilayer-Drift."
       ]
     }
   ]
