@@ -1,9 +1,9 @@
 # Type-VI CREP/τ*-Checklist (FIT Microstep)
 
 - **ID:** type6-crep-tau-checklist
-- **Version:** v1.0.0
+- **Version:** v1.1.0
 - **Scope:** releases/V6-Plans_etc
-- **Generated:** 2025-11-30T09:00:00Z
+- **Generated:** 2025-12-01T10:00:00Z
 - **Logistische Membran:** R→"Type-VI Governance Gate aktiv", Θ→"CREP/τ*-Safeguards in Docs und CI verankert", β≈4.6, ζ-Risiko neutralisiert, wenn Schritte erfüllt sind.
 - **Kopplung:** POLICY.md · ETHICS.md · V6_ToDoListe.* (FIT-Microstep für v6-governance-ethics; Fokus CREP>0.7 + τ*-Pflicht vor Merge/Release)
 
@@ -31,3 +31,14 @@
    - Hook entwerfen, der CREP ≥ 0.7 markiert und τ*-Default validiert.
    - Hook meldet Trilayer-Drift (YAML/JSON/MD) und leitet Reviewer für Level 2/3 weiter.
    - Reviewer-Routing (maintainers) für Level-2/3 Fälle hinterlegen.
+   - Checkliste in CI/Hooks referenzieren (pre-commit, nox, Makefile `validate-trilayer`).
+
+5. **Reviewer-Slot dokumentieren (required)**
+   - Für CREP ≥ 0.7 verbindlichen Reviewer aus `MAINTAINERS.md` auswählen.
+   - Slot/Timestamp in Chronik (`chronik_v6_release.*`) und Audit-Trail notieren.
+   - Freigabe-Status vor Merge/Release bestätigen (Level 2/3 Escalation beachten).
+
+6. **Index-Spiegelung & Provenienz-Hooks (recommended)**
+   - Verweis auf diese Checkliste in `feldtheorie_index.*` und `docs_index.*` ergänzen.
+   - Provenienz- und CREP/τ*-Hinweise in Governance-Indizes (POLICY/ETHICS) spiegeln.
+   - CI-Snippet vorbereiten, das fehlende Index-Referenzen als Warnung markiert.
