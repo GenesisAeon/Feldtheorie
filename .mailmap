@@ -1,0 +1,6 @@
+# Git mailmap for Feldtheorie project
+# Maps commit emails to canonical identities
+
+# Johann Römer
+Johann Römer <jbroemer@web.de> <johann@genesisaeon.de>
+Johann Römer <jbroemer@web.de> Johann B. Römer <johann@genesisaeon.de>

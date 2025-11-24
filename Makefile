@@ -138,8 +138,8 @@ validate-trilayer:
 	@echo "✅ validate-trilayer complete"
 
 crep-guard:
-	@echo "🛡️  Running CREP/τ* Safety Guard..."
-	@$(PYTHON) -m tools.crep_guard --threshold 0.7 --tau-default 0.1
+	@echo "🛡️  Running CREP/τ* Safety Guard (Type-VI Trilayer)..."
+	@$(PYTHON) -m tools.crep_guard --check-type6-trilayer --threshold 0.7 --tau-default 0.1
 	@echo "✅ crep-guard complete"
 
 crep-guard-strict:

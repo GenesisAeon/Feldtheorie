@@ -50,7 +50,16 @@ from numpy.random import default_rng
 from sklearn.ensemble import RandomForestRegressor
 from statsmodels.stats.outliers_influence import OLSInfluence
 
-CANONICAL_BETA = 4.2
+# Import Type-6 constants for φ^(n/3) ladder integration
+try:
+    from models.utac_type6_implosive import PHI, PHI_CBRT, BETA_FIXPOINT_PHI3
+    CANONICAL_BETA = float(BETA_FIXPOINT_PHI3)  # Φ³ ≈ 4.236
+except ImportError:
+    # Fallback if models not in path
+    PHI = 1.618034
+    PHI_CBRT = 1.174070  # Φ^(1/3)
+    CANONICAL_BETA = 4.236  # Φ³
+
 CANONICAL_BAND = (3.6, 4.8)
 
 
@@ -110,6 +119,16 @@ def load_and_prepare(beta_path: Path, covar_path: Path) -> pd.DataFrame:
     df["zeta_proxy"] = df["C_eff"] / (1.0 + df["SNR"].replace(0, np.nan))
     df["zeta_proxy"] = df["zeta_proxy"].fillna(df["C_eff"] * 0.5)
 
+    # φ^(n/3) Golden Ratio Scaling (V6 Type-6 Integration)
+    # Maps β to nearest step on Φ^(1/3) ladder for discrete resonance analysis
+    df["phi_cbrt_step"] = np.round(np.log(df["beta"]) / np.log(PHI_CBRT))
+    df["beta_phi_theoretical"] = PHI ** (df["phi_cbrt_step"] / 3.0)
+    df["beta_phi_deviation"] = (df["beta"] - df["beta_phi_theoretical"]) / df["beta_phi_theoretical"]
+
+    # Cubic root proximity feature (Type-6 cubic-root jump mechanism)
+    # Amplifies features near criticality: |β - Φ³|^(1/3)
+    df["cubic_root_proximity"] = np.cbrt(np.abs(df["beta"] - CANONICAL_BETA))
+
     return df
 
 
@@ -127,6 +146,8 @@ def build_design_matrix(df: pd.DataFrame) -> Tuple[pd.Series, pd.DataFrame, pd.S
         "log_theta",
         "coupling_sq",
         "coupling_memory",
+        "beta_phi_deviation",  # φ^(n/3) deviation from theoretical ladder
+        "cubic_root_proximity",  # Type-6 cubic-root proximity to Φ³
     ]
 
     X = df[feature_cols].apply(pd.to_numeric, errors="coerce")

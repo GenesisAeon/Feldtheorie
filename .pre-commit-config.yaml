@@ -1,0 +1,55 @@
+# Pre-commit hooks for Feldtheorie V6
+# FIT-Microstep: CREP/τ* governance guard for Type-VI implosive fields
+# Reference: releases/V6-Plans_etc/type6_crep_tau_star_checklist.*
+
+repos:
+  # CREP/τ* Governance Guard - Type-VI Safety Check
+  - repo: local
+    hooks:
+      - id: crep-guard-type6
+        name: CREP/τ* Guard (Type-VI Trilayer)
+        entry: python -m tools.crep_guard --check-type6-trilayer --threshold 0.7 --tau-default 0.1
+        language: system
+        pass_filenames: false
+        always_run: false
+        files: ^releases/V6-Plans_etc/(type6_crep_tau_star_checklist\.(yaml|json|md)|V6_ToDoListe\.(yaml|json|md)|POLICY\.md|ETHICS\.md)$
+        description: |
+          Validates CREP threshold (≥0.7), τ* default (0.1·|Θ-R|), and trilayer version sync.
+          Blocks merge if Type-VI governance artifacts drift or violate safety thresholds.
+          Escalation: CREP ≥0.7 → Level 2, CREP ≥0.8 → Level 3 (see MAINTAINERS.md)
+
+  # Standard Python code quality checks
+  - repo: https://github.com/psf/black
+    rev: 24.4.2
+    hooks:
+      - id: black
+        name: black (Python formatter)
+        language_version: python3.10
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.0
+    hooks:
+      - id: ruff
+        name: ruff (Python linter)
+        args: [--fix, --exit-non-zero-on-fix]
+
+  # YAML validation
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-yaml
+        name: Check YAML syntax
+        args: [--safe]
+      - id: end-of-file-fixer
+        name: Fix end of files
+      - id: trailing-whitespace
+        name: Trim trailing whitespace
+
+# Configuration
+default_language_version:
+  python: python3.10
+
+# CI behavior
+ci:
+  autofix_prs: true
+  autoupdate_schedule: monthly

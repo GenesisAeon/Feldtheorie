@@ -1,0 +1,5 @@
+timestamp,domain,beta,beta_phi_theoretical,beta_phi_deviation,phi_cbrt_step,tau_star,zeta_risk,R,Theta,crep_flag,notes
+# V6 β-Drift & τ* Telemetry Log
+# Format: UTC timestamps, β values, φ^(n/3) alignment, τ* delays, ζ-risk flags
+# Usage: Append rows during simulations/analysis for tracking Type-6 implosive dynamics
+# Reference: releases/V6-Plans_etc/V6_ToDoListe.yaml (v6-activation-gaps, Priority 2)
