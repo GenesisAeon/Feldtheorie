@@ -1,9 +1,9 @@
 # Type-VI CREP/τ*-Checklist (FIT Microstep)
 
 - **ID:** type6-crep-tau-checklist
-- **Version:** v1.1.0
+- **Version:** v1.2.0
 - **Scope:** releases/V6-Plans_etc
-- **Generated:** 2025-12-01T10:00:00Z
+- **Generated:** 2025-12-03T09:30:00Z
 - **Logistische Membran:** R→"Type-VI Governance Gate aktiv", Θ→"CREP/τ*-Safeguards in Docs und CI verankert", β≈4.6, ζ-Risiko neutralisiert, wenn Schritte erfüllt sind.
 - **Kopplung:** POLICY.md · ETHICS.md · V6_ToDoListe.* (FIT-Microstep für v6-governance-ethics; Fokus CREP>0.7 + τ*-Pflicht vor Merge/Release)
 
@@ -32,7 +32,8 @@
    - Hook meldet Trilayer-Drift (YAML/JSON/MD) und leitet Reviewer für Level 2/3 weiter.
    - Reviewer-Routing (maintainers) für Level-2/3 Fälle hinterlegen.
    - Checkliste in CI/Hooks referenzieren (pre-commit, nox, Makefile `validate-trilayer`).
-   - Beispiel-Hook (Pseudo): `python -m tools.crep_guard --threshold 0.7 --tau-default 0.1 --trilayer V6_ToDoListe.* releases/V6-Plans_etc/Chronik/chronik_v6_release.*` blockt Merge bei CREP ≥ 0.7 oder fehlendem τ*-Default und loggt Reviewer-Need.
+   - Beispiel-Hook (Pseudo): `python -m tools.crep_guard --threshold 0.7 --tau-default 0.1 --check-type6-trilayer` blockt Merge bei CREP ≥ 0.7 oder fehlendem τ*-Default und loggt Reviewer-Need.
+   - Guard-Strecke ausführbar: `python -m tools.crep_guard --threshold 0.7 --tau-default 0.1 --check-type6-trilayer` prüft Version, CREP-Schwelle und τ*-Default im Trilayer und liefert FIT-taugliche Exit-Codes.
 
 5. **Reviewer-Slot dokumentieren (required)**
    - Für CREP ≥ 0.7 verbindlichen Reviewer aus `MAINTAINERS.md` auswählen.

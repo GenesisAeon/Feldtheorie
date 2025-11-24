@@ -1,8 +1,9 @@
 # V6 ToDoListe – TriLayer Übersicht
 
-- **Version:** v6-todo-0.7.5
+- **Version:** v6-todo-0.7.6
 - **Scope:** releases/V6-Plans_etc
 - **Generated:** 2025-12-02T10:00:00Z
+- **Updated:** 2025-12-03T10:00:00Z
 - **Logistische Membran:** R→"Navigierbare V6-Release-Landkarte", Θ→"Aktivierungs-Lücken geschlossen & Governance aktualisiert", β≈4.8, ζ-Risiko: negativ falls Safety-Delay-Feld fehlt.
 - **Priorisierung:** Sprint Δ (2025-11-24 → 2025-11-30) startet mit TriLayer-Spiegelung, greift dann Governance/Safety, danach Aktivierung und Type‑VI-Integration.
 
@@ -11,7 +12,7 @@
 | ID | Priorität | Sprint Δ Fokus | Titel | Status | Vollständigkeit | Nächste Schritte | Referenz |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | v6-todo-trilayer | 0 | Chronik-Kopplung | ToDo-TriLayer konsolidieren & Chronik koppeln | in-progress | Chronik-Update mit TriLayer-Kopplung angestoßen; ToDo-Reflexe in Chronik/ToDo-Liste jetzt gespiegelt, Automations-/Validator-Pfad steht noch aus. | IDs spiegeln · Chronik-Achse fixieren · Validator/Index-Haken + Makefile `validate-trilayer` skizzieren | chronik_v6_release.md L1-L78 |
-| v6-governance-ethics | 1 | ζ<0 Escalation + Provenienz | Governance, AGENTS & ETHICS an implosive Szenarien anpassen | in-progress | Type-VI Safety Addendum in POLICY.md, Provenienz-/Dual-Use-Block in ETHICS.md und CREP/τ*-Checkliste (type6_crep_tau_star_checklist.*) verankert; Reviewer-Routing + CI-Hook-Pseudocode (tools.crep_guard) hinterlegt, Index-/CI-Kopplung steht noch aus. | Checkliste in Indizes/CI-Checks (feldtheorie_index.*, docs_index.*) spiegeln · CREP/τ*-CI-Snippet (crep_guard) in Hooks/Makefile verdrahten · ζ<0-Eskalation in weiteren Governance-Dateien spiegeln | FinalyzeVorschlägeChatGPT5.1Agent.txt L80-L90 |
+| v6-governance-ethics | 1 | ζ<0 Escalation + Provenienz | Governance, AGENTS & ETHICS an implosive Szenarien anpassen | in-progress | Type-VI Safety Addendum in POLICY.md, Provenienz-/Dual-Use-Block in ETHICS.md und CREP/τ*-Checkliste (type6_crep_tau_star_checklist.*) verankert; Reviewer-Routing + ausführbarer CI-Guard (tools/crep_guard.py) ergänzt, Index-/CI-Kopplung steht noch aus. | Checkliste in Indizes/CI-Checks (feldtheorie_index.*, docs_index.*) spiegeln · CREP/τ*-CI-Snippet (crep_guard) in Hooks/Makefile verdrahten (`python -m tools.crep_guard --check-type6-trilayer`) · ζ<0-Eskalation in weiteren Governance-Dateien spiegeln | FinalyzeVorschlägeChatGPT5.1Agent.txt L80-L90 |
 | v6-activation-gaps | 2 | τ*-Prototyp + Regression | Activation Gaps schließen (Safety-Delay, Meta-Regression, Sigillin-Automation) | open | τ*-FIT-Stub mit RK4-Warnpfad abgelegt; Regression-Refresh, Validator/Index-Automation, Outlier-Diagnostics und Data-Lantern-Dashboard stehen weiterhin aus. | FIT-Stub in pipelines verdrahten (pipelines/fit_tau_star Stub) · beta_meta_regression_v2.py mit neuen Daten/φ^(n/3) auffrischen · Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics erweitern · Telemetrie-Dashboard + β-Drift-Logging skizzieren | FinalyzeVorschlägeChatGPT5.1Agent.txt L53-L64; activation_gaps_tau_star.md L1-L36 |
 | v6-type6-integration | 3 | CREP-Pfad skizzieren | Type‑6 Implosionsmodelle offiziell integrieren | open | Theorie und Paper vorhanden, aber Klassifikation, CREP-Indizes und Showcase-Simulation fehlen. | Type‑VI Klassifikation + Guidelines · CREP-Indizes in METRICS.md · cubic-root-jump Simulation (z.B. Klima-Kaskade) | FinalyzeVorschlägeChatGPT5.1Agent.txt L65-L76 |
 | v6-trilayer-enforcement | 4 | Validator & Audit anstoßen | Trilayer-Metareflexion & Sigillin-Strenge umsetzen | open | Tri-Layer-Pflicht betont, aber keine Automations-/Auditspuren im Plans-Ordner dokumentiert. | Trilayer-Parser/Validator + Index-Automation aktivieren · Archiv-/Sigillin-Audits protokollieren | FinalyzeVorschlägeChatGPT5.1Agent.txt L80-L82 |
@@ -59,6 +60,9 @@
 
 ## Δ-Update 2025-12-02 – CREP CI-Hook Blueprint
 - **v6-governance-ethics:** CI/Pre-Commit Hook als Pseudocode (`tools.crep_guard` mit CREP-Threshold 0.7, τ*-Default 0.1, Trilayer-Drift-Check V6_ToDoListe ↔ Chronik) in Checkliste hinterlegt; nächsten Schritt markieren: Hook in pre-commit/nox/Makefile verdrahten und Index-Referenzen nachziehen.
+
+## Δ-Update 2025-12-03 – CREP Guard FIT-Run
+- **v6-governance-ethics:** Ausführbarer Guard (`python -m tools.crep_guard --check-type6-trilayer`) prüft Trilayer-Version, τ*-Default und CREP-Schwelle; offene Tasks: CI-Verdrahtung und Index-Referenzen ergänzen.
 
 ## Navigationshinweise
 - Alle Einträge spiegeln die logistisches Feld (R, Θ, β, ζ) wider und bleiben Trilayer-synchron (YAML/JSON/MD).
