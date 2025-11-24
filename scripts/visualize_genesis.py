@@ -68,18 +68,28 @@ class GenesisVisualizer:
     """Visualize the breathing of the GenesisCube across four phases."""
 
     def __init__(
-        self, figure: Figure, axes: Axes, cube: GenesisCube, phase_cutoffs: PhaseCutoffs
+        self,
+        figure: Figure,
+        axes: Axes,
+        cube: GenesisCube,
+        phase_cutoffs: PhaseCutoffs,
+        preset_label: str | None = None,
+        preset_color: str | None = None,
     ) -> None:
         self.figure = figure
         self.axes = axes
         self.cube = cube
         self.phase_cutoffs = phase_cutoffs
+        self.preset_label = preset_label
+        self.preset_color = preset_color
         self.scatter_void = axes.scatter([], [], [], c="white", s=2, alpha=0.6)
         self.lines_strings = [
-            axes.plot([], [], [], color="cyan", lw=2, alpha=0.8)[0] for _ in range(3)
+            axes.plot([], [], [], color=self.preset_color or "cyan", lw=2, alpha=0.8)[0]
+            for _ in range(3)
         ]
         self.cube_lines = [
-            axes.plot([], [], [], color="magenta", lw=1, alpha=0.5)[0] for _ in range(12)
+            axes.plot([], [], [], color=self.preset_color or "magenta", lw=1, alpha=0.5)[0]
+            for _ in range(12)
         ]
         self.status_text = axes.text2D(
             0.5,
@@ -144,7 +154,7 @@ class GenesisVisualizer:
         noise = (np.random.rand(100, 3) - 0.5) * 4
         mask = np.random.rand(100) > 0.9
         self.scatter_void._offsets3d = (noise[mask, 0], noise[mask, 1], noise[mask, 2])
-        self.meta_text.set_text("σ(β) = 0.0 (Latenz)")
+        self.meta_text.set_text(self._meta("σ(β) = 0.0 (Latenz)"))
         return (self.scatter_void,)
 
     def _phase_implosion(self, frame: int) -> Iterable:
@@ -161,7 +171,7 @@ class GenesisVisualizer:
             line.set_data([0, vectors[i][0] * progress * 1.5], [0, vectors[i][1] * progress * 1.5])
             line.set_3d_properties([0, vectors[i][2] * progress * 1.5])
 
-        self.meta_text.set_text(f"Kritikalität steigt: {progress:.2f}")
+        self.meta_text.set_text(self._meta(f"Kritikalität steigt: {progress:.2f}"))
         return (self.scatter_void, *self.lines_strings)
 
     def _phase_cube_extrusion(self, frame: int) -> Iterable:
@@ -179,7 +189,7 @@ class GenesisVisualizer:
                 self.cube_lines[i].set_3d_properties(zs)
 
         self.scatter_void._offsets3d = ([], [], [])
-        self.meta_text.set_text(f"Expansion ζ(R): {scale:.2f}")
+        self.meta_text.set_text(self._meta(f"Expansion ζ(R): {scale:.2f}"))
         return (*self.cube_lines, *self.lines_strings)
 
     def _phase_slice_traversal(self, frame: int) -> Iterable:
@@ -202,9 +212,14 @@ class GenesisVisualizer:
                 self.cube_lines[i].set_linewidth(2 * sigma_val + 0.5)
 
         self.meta_text.set_text(
-            f"Slice R={current_slice['R']:.2f} | σ(β(R-Θ))={sigma_val:.2f}"
+            self._meta(f"Slice R={current_slice['R']:.2f} | σ(β(R-Θ))={sigma_val:.2f}")
         )
         return tuple(self.cube_lines)
+
+    def _meta(self, base: str) -> str:
+        if self.preset_label:
+            return f"{base} • Preset: {self.preset_label}"
+        return base
 
     def update(self, frame: int) -> Iterable:
         self.axes.view_init(elev=30 + 10 * np.sin(frame / 100), azim=frame * 0.5)
@@ -306,7 +321,12 @@ def main(cli_args: Sequence[str] | None = None) -> None:
         for preset in sorted(presets, key=lambda p: p.name):
             theta_str = f", Θ={preset.theta:.3f}" if preset.theta is not None else ""
             source_str = f" | Quelle: {preset.source}" if preset.source else ""
-            print(f"  - {preset.name}: β={preset.beta:.3f}{theta_str}{source_str}")
+            domain_str = f" | Domäne: {preset.domain}" if getattr(preset, "domain", None) else ""
+            color_str = f" | Farbe: {preset.color_hex}" if getattr(preset, "color_hex", None) else ""
+            description = f" | {preset.description}" if getattr(preset, "description", None) else ""
+            print(
+                f"  - {preset.name}: β={preset.beta:.3f}{theta_str}{source_str}{domain_str}{color_str}{description}"
+            )
         return
 
     phase_cutoffs = PhaseCutoffs.from_total_frames(args.frames)
@@ -315,10 +335,14 @@ def main(cli_args: Sequence[str] | None = None) -> None:
     if args.theta is not None:
         config.theta = args.theta
 
+    preset_label = None
+    preset_color = None
     if args.preset:
         preset_index = index_presets(presets)
         preset = resolve_preset(args.preset, preset_index)
         config = preset.apply_to_config(config)
+        preset_label = f"{preset.name} ({preset.domain})" if preset.domain else preset.name
+        preset_color = preset.color_hex
 
     genesis = GenesisCube(config)
 
@@ -327,7 +351,9 @@ def main(cli_args: Sequence[str] | None = None) -> None:
     ax.set_axis_off()
     ax.grid(False)
 
-    visualizer = GenesisVisualizer(fig, ax, genesis, phase_cutoffs)
+    visualizer = GenesisVisualizer(
+        fig, ax, genesis, phase_cutoffs, preset_label=preset_label, preset_color=preset_color
+    )
     ani = animation.FuncAnimation(
         fig,
         visualizer.update,
