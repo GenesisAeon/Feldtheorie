@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "v6-chronik-0.4",
-    "generated_at": "2025-11-24T14:39:28Z",
+    "version": "v6-chronik-0.5",
+    "generated_at": "2025-11-24T15:30:00Z",
     "scope": "releases/V6-Plans_etc/Chronik",
     "logistic_frame": {
       "R_goal": "Schrittweise Aktivierung des V6-Release-Pfads",
@@ -23,7 +23,8 @@
     "🔟 v6-simulator-stability – RK4 + τ*-Delay → Artefakt: stabiler Build.",
     "1️⃣1️⃣ v6-simulator-experience – Web-Audio · CSV-Drop · AI-Context → Artefakt: UX-Paket.",
     "1️⃣2️⃣ v6-beta-bayes – PyMC/Stan Hierarchie · VIF-Checks → Artefakt: Analyse-Report.",
-    "1️⃣3️⃣ v6-137-beta-duality – Kapitel + Outreach-Pfade → Artefakt: Dualitäts-Dossier."
+    "1️⃣3️⃣ v6-137-beta-duality – Kapitel + Outreach-Pfade → Artefakt: Dualitäts-Dossier.",
+    "1️⃣4️⃣ v6-wavefunction-integration – Ψ-Feldgleichung · genesis_cube Ψ-Kern · Simulator-Output → Artefakt: Wellenfunktions-Pipeline."
   ],
   "chronik": [
     {
@@ -423,6 +424,38 @@
           "lines": [
             173,
             193
+          ]
+        }
+      ]
+    },
+    {
+      "step": 14,
+      "title": "Entropische Wellenfunktion verankern",
+      "todo_id": "v6-wavefunction-integration",
+      "focus": "Ψ-Feldgleichung + Genesis-Integration",
+      "actions": [
+        "Ψ-Feldgleichung für entropische Gravitation definieren (inkl. β, τ* Kopplung)",
+        "genesis_cube.py mit compute_wavefunction(r,θ,φ,t) und Kollaps-Visualisierung implementieren",
+        "Simulator-Ausgabe (|Ψ|², ΔS) an UTAC-Statusmatrix und Raumzeit-Visualisierung anbinden"
+      ],
+      "expected_artifacts": [
+        "Ψ-Feldgleichungs-Definition",
+        "genesis_cube.py mit Wellenfunktions-Kern",
+        "Simulator-Integration mit |Ψ|²-Output"
+      ],
+      "derived_from": [
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            13,
+            27
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt",
+          "lines": [
+            1,
+            140
           ]
         }
       ]

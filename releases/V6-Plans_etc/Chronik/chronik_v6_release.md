@@ -1,6 +1,6 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.4
+- **Version:** v6-chronik-0.5
 - **Scope:** releases/V6-Plans_etc/Chronik
 - **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.9,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
 - **Quellen:** `V6_ToDoListe.{md,yaml,json}`
@@ -19,6 +19,7 @@
 - 1️⃣1️⃣ v6-simulator-experience: Web-Audio · CSV-Drop · AI-Context → Artefakt: UX-Paket.
 - 1️⃣2️⃣ v6-beta-bayes: PyMC/Stan Hierarchie · VIF-Checks → Artefakt: Analyse-Report.
 - 1️⃣3️⃣ v6-137-beta-duality: Kapitel + Outreach-Pfade → Artefakt: Dualitäts-Dossier.
+- 1️⃣4️⃣ v6-wavefunction-integration: Ψ-Feldgleichung · genesis_cube Ψ-Kern · Simulator-Output → Artefakt: Wellenfunktions-Pipeline.
 
 ## Aktuelle Handlungsschleife (Sprint Δ)
 - **Zeitraum:** 2025-11-24 → 2025-11-30
@@ -98,3 +99,8 @@
 - **Fokus:** Kapitel + Outreach.
 - **Aktionen:** Dualitäts-Kapitel anlegen · Publikations-/Partnerpfade skizzieren.
 - **Artefakte:** Dualitäts-Dossier · Partnerliste.
+
+### 14. Entropische Wellenfunktion verankern (v6-wavefunction-integration)
+- **Fokus:** Ψ-Feldgleichung + Genesis-Integration.
+- **Aktionen:** Ψ-Feldgleichung für entropische Gravitation definieren (inkl. β, τ* Kopplung) · genesis_cube.py mit compute_wavefunction(r,θ,φ,t) und Kollaps-Visualisierung implementieren · Simulator-Ausgabe (|Ψ|², ΔS) an UTAC-Statusmatrix und Raumzeit-Visualisierung anbinden.
+- **Artefakte:** Ψ-Feldgleichungs-Definition · genesis_cube.py mit Wellenfunktions-Kern · Simulator-Integration mit |Ψ|²-Output.
