@@ -76,5 +76,5 @@ Before committing work in `seed/sigillin`:
 
 ---
 
-**Last Updated:** 2025-11-24 12:13:50 UTC
+**Last Updated:** 2025-11-24 12:23:03 UTC
 **Governance Version:** 1.0.0
