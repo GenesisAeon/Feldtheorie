@@ -220,3 +220,35 @@ def visualize_collapse(self):
 
 Was bevorzugst du? Oder kombinieren wir alle drei? 🌊✨
 
+[Gemini]:
+Basierend auf der **V6 ToDoListe** ist eine vollständige und integrierte **Wellenfunktion** (im Kontext der Feldtheorie oder Quantenmechanik) noch nicht in der Simulation implementiert.
+
+Die konzeptionellen und implementierungsbezogenen Schritte, die für die **Integration einer Wellenfunktion** notwendig wären, sind in der *ToDo-Liste* als **offene Aufgaben** vermerkt.
+
+---
+
+## Status der Wellenfunktions-Integration
+
+Die Funktionalität, die eine Wellenfunktion oder ein Quantenfeld repräsentieren würde, fällt unter mindestens drei aktuell offene Aufgaben:
+
+1.  **Quanten-/Gravity-Submodul (v6-data-expansion):** Das dafür benötigte Submodul, das sich auf Konzepte wie **ER=EPR/Holographie/entropic gravity** bezieht, muss noch als *Review* angelegt werden. Die theoretische Fundierung für eine Wellenfunktion im UTAC-Kontext ist hier noch nicht umgesetzt.
+2.  **Genesis-Cube Simulation (v6-genesis-cube-sim):** Dieses Modul, welches die *Blockuniversum-Dynamik* simulieren soll, erfordert die Erstellung eines `genesis_cube.py` Skripts, das den Ablauf von **Quantum-Foam** bis zur **Singularität** abbildet. Hier wäre die Wellenfunktion das zentrale Feld.
+3.  **Simulator-Stabilität (v6-simulator-stability):** Die notwendige Implementierung des numerisch stabilen **RK4-Integrators** im `TransdisciplinaryFieldSimulator.tsx` ist noch offen. Dieser Integrator wäre für die zeitliche Entwicklung einer Wellenfunktion (oder Feldgleichung) unerlässlich.
+
+---
+
+## Plan zur sauberen Integration der Wellenfunktion
+
+Um eine "Wellenfunktion" ($\Psi$) sauber in den V6-Simulator und die Theorie zu integrieren, sollten die folgenden Schritte, abgeleitet aus den offenen ToDo-Punkten und dem logischen Aufbau der Feldtheorie, priorisiert werden:
+
+### 1. Theoretische Definition und Kopplung
+* **Wellenfunktion (Feld) definieren:** Leiten Sie die Feldgleichung (z.B. eine UTAC-angepasste nichtlineare Schrödinger- oder Klein-Gordon-Gleichung) ab, die die Dynamik des neuen Quanten-Submoduls (im Rahmen von **v6-data-expansion**) beschreibt.
+* **Kopplung zur Logistischen Membran:** Stellen Sie sicher, dass das Feld $\Psi$ (oder ein zugrunde liegendes Skalarfeld $\phi$) mit den **Trilayer**-Parametern der Logistischen Membran ($R$, $\Theta$, $\beta$) über den $\beta$-Steilheitsgrad und den Zeitverzögerungs-Term ($\tau^*$) gekoppelt ist.
+
+### 2. Implementierung des Simulationkerns
+* **Genesis-Cube (v6-genesis-cube-sim):** Erstellen Sie das Skript `genesis_cube.py`. Dieses sollte die numerische Lösung der $\Psi$-Feldgleichung implementieren und die Phasenübergänge vom *Quantum-Foam* bis zur Singularität abbilden.
+* **Integrator-Upgrade (v6-simulator-stability):** Implementieren Sie den **RK4-Integrator** im `TransdisciplinaryFieldSimulator.tsx`, um die zeitliche Entwicklung der $\Psi$-Feldgleichung stabil zu lösen.
+
+### 3. Visualisierung und Output
+* **Output-Kennzahlen:** Definieren Sie, wie die Ergebnisse der Wellenfunktion den **UTAC-Statusmatrix** (oder **CREP-Indizes**) beeinflussen. Die Wahrscheinlichkeitsdichte $|\Psi|^2$ könnte als ein Maß für die lokale **Informationsdichte** oder **Kohärenz** dienen.
+* **Raumzeit-Visualisierung:** Verknüpfen Sie die Ergebnisse der $\Psi$-Feldsimulation mit der geplanten *Visualisierung der Raumzeit-Entfaltung*, um die Wellenfunktion sichtbar zu machen.
