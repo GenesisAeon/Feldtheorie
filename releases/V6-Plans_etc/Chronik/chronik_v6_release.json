@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "version": "v6-chronik-0.6.3",
+    "version": "v6-chronik-0.6.4",
     "generated_at": "2025-12-02T10:00:00Z",
     "scope": "releases/V6-Plans_etc/Chronik",
     "logistic_frame": {
@@ -80,6 +80,18 @@
       "actions": [
         "tools.crep_guard Pseudocode in type6_crep_tau_star_checklist.* ergänzt (Threshold 0.7, τ*-Default 0.1, Trilayer V6_ToDoListe ↔ Chronik).",
         "Nächster Schritt: Hook in pre-commit/nox/Makefile verdrahten und Index-Verweise ergänzen."
+      ]
+    },
+    {
+      "date": "2025-12-04",
+      "label": "crep-guard-make-hook",
+      "summary": "Makefile-Guards rufen tools.crep_guard mit τ*-Default und warnings-as-errors auf; Hook-Spiegelung in pre-commit/nox und Index-Referenzen bleibt offen.",
+      "todo_links": [
+        "v6-governance-ethics"
+      ],
+      "actions": [
+        "Makefile-Targets `crep-guard`/`crep-guard-strict` auf tools.crep_guard ausgerichtet (τ*-Default 0.1, warnings-as-errors im strict Pfad).",
+        "Nächster Schritt: Guard in pre-commit/nox spiegeln und Index-Hinweise (feldtheorie_index.*, docs_index.*) ergänzen."
       ]
     }
   ],
