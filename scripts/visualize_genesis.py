@@ -37,8 +37,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from simulation.genesis_cube import GenesisCube, GenesisCubeConfig
 from simulation.genesis_loader import (
     DEFAULT_BETA_ESTIMATES,
+    GenesisLoader,
     index_presets,
-    load_beta_presets,
     resolve_preset,
 )
 
@@ -259,6 +259,11 @@ def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
         help="Zeige verfügbare Presets aus den empirischen β-Schätzungen und beende das Programm.",
     )
     parser.add_argument(
+        "--list-domains",
+        action="store_true",
+        help="Zeige verfügbare Domänen aus den Presets und beende das Programm.",
+    )
+    parser.add_argument(
         "--beta-csv",
         type=Path,
         default=DEFAULT_BETA_ESTIMATES,
@@ -329,7 +334,14 @@ def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
 def main(cli_args: Sequence[str] | None = None) -> None:
     args = parse_args(cli_args)
 
-    presets = load_beta_presets(args.beta_csv)
+    loader = GenesisLoader(args.beta_csv)
+    presets = loader.load()
+    if args.list_domains:
+        print("Verfügbare Domänen aus data/derived/beta_estimates.csv:")
+        for domain in loader.list_domains():
+            print(f"  - {domain}")
+        return
+
     if args.list_presets:
         print("Verfügbare Presets aus data/derived/beta_estimates.csv:")
         for preset in sorted(presets, key=lambda p: p.name):

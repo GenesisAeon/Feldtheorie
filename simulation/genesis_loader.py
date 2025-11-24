@@ -76,6 +76,16 @@ def _normalize(name: str) -> str:
     return name.lower().replace("-", "_").replace(" ", "_")
 
 
+def _safe_strip(value: object) -> str | None:
+    if value is None:
+        return None
+    if isinstance(value, float) and pd.isna(value):
+        return None
+    if hasattr(value, "strip"):
+        return str(value).strip()
+    return str(value).strip()
+
+
 class GenesisLoader:
     """Lädt β/Θ-Presets aus CSV-Daten und färbt sie für die Visualisierung.
 
@@ -135,17 +145,17 @@ class GenesisLoader:
             df = self._normalize_columns(df)
 
         for row in df.to_dict(orient="records"):
-            name = (row.get("system_name") or row.get("domain") or "").strip()
+            name = _safe_strip(row.get("system_name")) or _safe_strip(row.get("domain")) or ""
             beta_value = _parse_float(row.get("beta") or row.get("beta_estimate"))
 
             if not name or name.isnumeric() or beta_value is None:
                 continue
 
             theta_value = _parse_float(row.get("theta"))
-            domain = (row.get("domain") or "Generic").strip() or "Generic"
-            source_value = (row.get("source") or "").strip() or None
+            domain = _safe_strip(row.get("domain")) or "Generic"
+            source_value = _safe_strip(row.get("source"))
             color = self._derive_color(domain, beta_value, provided=row.get("color"))
-            description = row.get("description") or f"Simuliert {name} mit Kritikalität β={beta_value:.2f}"
+            description = _safe_strip(row.get("description")) or f"Simuliert {name} mit Kritikalität β={beta_value:.2f}"
 
             preset = GenesisPreset(
                 name=name,
