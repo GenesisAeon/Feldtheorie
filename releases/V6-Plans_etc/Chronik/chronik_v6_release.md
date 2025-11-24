@@ -1,6 +1,6 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.6.2
+- **Version:** v6-chronik-0.6.3
 - **Scope:** releases/V6-Plans_etc/Chronik
 - **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.9,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
 - **Quellen:** `V6_ToDoListe.{md,yaml,json}`
@@ -53,6 +53,9 @@
 
 ### Δ-Update 2025-12-01 – CREP Reviewer Routing
 - **v6-governance-ethics:** CREP/τ* Checkliste um Reviewer-Slot-Dokumentation und Index/CI-Spiegel-Hinweis ergänzt; nächste Schritte: Index-Einträge (feldtheorie_index.*, docs_index.*) und CI-Snippet für CREP/τ* + Trilayer-Drift ausrollen.
+
+### Δ-Update 2025-12-02 – CREP CI-Hook Blueprint
+- **v6-governance-ethics:** CI/Pre-Commit Hook als Pseudocode (`tools.crep_guard` mit CREP-Threshold 0.7, τ*-Default 0.1, Trilayer-Drift-Check V6_ToDoListe ↔ Chronik) in type6_crep_tau_star_checklist.* eingetragen; nächster Schritt: Hook in pre-commit/nox/Makefile verdrahten und Index-Verweise ergänzen.
 
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)

@@ -1,6 +1,6 @@
 metadata:
-  version: v6-chronik-0.6.2
-  generated_at: "2025-12-01T10:00:00Z"
+  version: v6-chronik-0.6.3
+  generated_at: "2025-12-02T10:00:00Z"
   scope: "releases/V6-Plans_etc/Chronik"
   logistic_frame:
     R_goal: "Schrittweise Aktivierung des V6-Release-Pfads"
@@ -84,6 +84,14 @@ delta_updates:
     actions:
       - Reviewer-Slot-Dokumentation und Index/CI-Spiegel-Hinweis in type6_crep_tau_star_checklist.* ergänzt.
       - Nächste Schritte: Verweis in feldtheorie_index.* und docs_index.* eintragen und CI-Snippet für CREP/τ* + Trilayer-Drift vorbereiten.
+  - date: 2025-12-02
+    label: crep-ci-hook-blueprint
+    summary: CI/Pre-Commit Hook als Pseudocode (CREP-Gating, τ*-Default, Trilayer-Drift) in Checkliste verankert; Verdrahtung in Hooks markiert.
+    todo_links:
+      - v6-governance-ethics
+    actions:
+      - tools.crep_guard Pseudocode in type6_crep_tau_star_checklist.* ergänzt (Threshold 0.7, τ*-Default 0.1, Trilayer V6_ToDoListe ↔ Chronik).
+      - Nächster Schritt: Hook in pre-commit/nox/Makefile verdrahten und Index-Verweise ergänzen.
 
 overview:
   - "1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen → Artefakt: Chronik-TriLayer."
