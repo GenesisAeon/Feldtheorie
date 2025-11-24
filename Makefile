@@ -136,3 +136,13 @@ validate-trilayer:
 	@echo "🔍 Validating TriLayer consistency (YAML/JSON/MD)..."
 	@$(PYTHON) scripts/validate_trilayer.py
 	@echo "✅ validate-trilayer complete"
+
+crep-guard:
+	@echo "🛡️  Running CREP/τ* Safety Guard..."
+	@$(PYTHON) -m tools.crep_guard --threshold 0.7 --tau-default 0.1
+	@echo "✅ crep-guard complete"
+
+crep-guard-strict:
+	@echo "🛡️  Running CREP/τ* Safety Guard (strict mode)..."
+	@$(PYTHON) -m tools.crep_guard --threshold 0.7 --tau-default 0.1 --fail-on-high-crep
+	@echo "✅ crep-guard-strict complete"
