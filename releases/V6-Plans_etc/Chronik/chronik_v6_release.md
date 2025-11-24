@@ -1,6 +1,6 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.4
+- **Version:** v6-chronik-0.5
 - **Scope:** releases/V6-Plans_etc/Chronik
 - **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.9,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
 - **Quellen:** `V6_ToDoListe.{md,yaml,json}`
@@ -32,6 +32,13 @@
      - `analysis/beta_meta_regression_v2.py` um Phase-2/3 Daten + φ^(n/3)-Tests für β-Drift erweitern.
   3. **v6-type6-integration** – CREP-Indizes verankern:
      - CREP-Berechnungspfad definieren (Energie-/Unitaritäts-Checks, ΔAIC/CI) und METRICS-/Classification-Hinweise vorbereiten.
+
+
+### Δ-Update 2025-11-25 – Sprint Δ Sync
+- **TriLayer-Kopplung (v6-todo-trilayer):** Chronik/ToDo-Spiegel aktiviert und logistisches Raster übernommen; Validator-/Index-Haken noch offen.
+- **Governance/Ethics (v6-governance-ethics):** Escalation-Checkliste vorbereitet (τ*-Pflicht, CREP-Schwellen) → Ziel: AGENTS/POLICY/ETHICS mit Provenienzblöcken patchen.
+- **Activation Gaps (v6-activation-gaps):** Safety-Delay-Stub (τ* = 0.1·|Θ−R|) im Sprint verankert; Regression-Refresh + Sigillin-Validator als nächste Artefakte markiert.
+- **Type‑6 Integration (v6-type6-integration):** CREP-Pfad (ΔAIC/CI, Energie/Unitarität) in METRICS-Kapitel vorgesehen; Showcase-Simulation bleibt offen.
 
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)
