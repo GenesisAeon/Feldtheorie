@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "v6-chronik-0.1",
-    "generated_at": "2025-11-24T00:00:00Z",
+    "version": "v6-chronik-0.2",
+    "generated_at": "2025-11-24T12:36:17Z",
     "scope": "releases/V6-Plans_etc/Chronik",
     "logistic_frame": {
       "R_goal": "Schrittweise Aktivierung des V6-Release-Pfads",
@@ -26,8 +26,20 @@
         "Quellenverweise auf V6_ToDoListe.*"
       ],
       "derived_from": [
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [1, 18]},
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [1, 13]}
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            1,
+            18
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
+          "lines": [
+            1,
+            13
+          ]
+        }
       ]
     },
     {
@@ -47,8 +59,20 @@
         "Sigillin-Automationsskripte und Dashboard-Entwürfe"
       ],
       "derived_from": [
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [10, 14]},
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [13, 38]}
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            10,
+            14
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
+          "lines": [
+            13,
+            38
+          ]
+        }
       ]
     },
     {
@@ -67,8 +91,20 @@
         "Simulationsergebnisse und Plots"
       ],
       "derived_from": [
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [14, 17]},
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [39, 64]}
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            14,
+            17
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
+          "lines": [
+            39,
+            64
+          ]
+        }
       ]
     },
     {
@@ -85,8 +121,20 @@
         "Erweiterte ETHICS.md und Policy-Hinweise"
       ],
       "derived_from": [
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [17, 20]},
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [65, 86]}
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            17,
+            20
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
+          "lines": [
+            65,
+            86
+          ]
+        }
       ]
     },
     {
@@ -103,8 +151,20 @@
         "Audit-Log für Sigillin/Archiv"
       ],
       "derived_from": [
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [20, 22]},
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [87, 104]}
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            20,
+            22
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
+          "lines": [
+            87,
+            104
+          ]
+        }
       ]
     },
     {
@@ -123,8 +183,20 @@
         "Onboarding-Texte für V6"
       ],
       "derived_from": [
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [22, 25]},
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [105, 134]}
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            22,
+            25
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
+          "lines": [
+            105,
+            134
+          ]
+        }
       ]
     },
     {
@@ -141,8 +213,202 @@
         "Submodul-Blueprint für quantum_lensing"
       ],
       "derived_from": [
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.md", "lines": [25, 27]},
-        {"path": "releases/V6-Plans_etc/V6_ToDoListe.yaml", "lines": [135, 156]}
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            25,
+            27
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
+          "lines": [
+            135,
+            156
+          ]
+        }
+      ]
+    },
+    {
+      "step": 8,
+      "title": "Pyramiden-/Konstanten-Integration",
+      "todo_id": "v6-pyramid-cosmic",
+      "focus": "pyramid_utac + Konstanten koppeln",
+      "actions": [
+        "pyramid_utac Modell in Code und Theorie konsolidieren.",
+        "Kosmische Konstanten (c, G, h) als Kopplungsgrenzen verankern.",
+        "Visualisierung/Animation der Raumzeit-Entfaltung (Hexagon/Würfel) erstellen."
+      ],
+      "expected_artifacts": [
+        "Aktualisierte UTAC-Theorie und Modellcode",
+        "Visual-Assets/Animation"
+      ],
+      "derived_from": [
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            13,
+            17
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
+          "lines": [
+            57,
+            77
+          ]
+        }
+      ]
+    },
+    {
+      "step": 9,
+      "title": "Genesis-Cube Simulation",
+      "todo_id": "v6-genesis-cube-sim",
+      "focus": "genesis_cube.py + Blockuniversum-Scan",
+      "actions": [
+        "genesis_cube.py mit Quantum-Foam → Singularity → Hexagon/Würfel Ablauf implementieren.",
+        "Geometrischen Verschnitt als Dunkle-Energie Visualisierung ausspielen.",
+        "Deep-Research-Prompt und Mapping zu bestehenden Modulen dokumentieren."
+      ],
+      "expected_artifacts": [
+        "Simulation + Animation",
+        "Prompt-Dokumentation"
+      ],
+      "derived_from": [
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            17,
+            20
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
+          "lines": [
+            78,
+            103
+          ]
+        }
+      ]
+    },
+    {
+      "step": 10,
+      "title": "Frontend-Stabilität",
+      "todo_id": "v6-simulator-stability",
+      "focus": "RK4 + τ* im Simulator",
+      "actions": [
+        "RK4-Integrator in TransdisciplinaryFieldSimulator.tsx integrieren.",
+        "τ*-Buffer/Delay-Kopplung für implosive Szenarien implementieren."
+      ],
+      "expected_artifacts": [
+        "Stabiler Simulator-Build"
+      ],
+      "derived_from": [
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            20,
+            23
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
+          "lines": [
+            104,
+            126
+          ]
+        }
+      ]
+    },
+    {
+      "step": 11,
+      "title": "Frontend/Navigation erweitern",
+      "todo_id": "v6-simulator-experience",
+      "focus": "UX + AI-Context/Diamond-Map",
+      "actions": [
+        "Web-Audio-Sonifikation für Kopplungs-/Instabilitätsfeedback anbinden.",
+        "Drag&Drop CSV-Schätzung für β/Θ ergänzen.",
+        "AI-Context/llms.txt und Diamond-Architecture-Map bereitstellen."
+      ],
+      "expected_artifacts": [
+        "UX-Features und Sonifikation",
+        "Navigationshilfen"
+      ],
+      "derived_from": [
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            23,
+            26
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
+          "lines": [
+            126,
+            152
+          ]
+        }
+      ]
+    },
+    {
+      "step": 12,
+      "title": "Hierarchische β-Analyse",
+      "todo_id": "v6-beta-bayes",
+      "focus": "Bayes + VIF",
+      "actions": [
+        "PyMC/Stan Hierarchie für β nach Domänen modellieren.",
+        "VIF-Checks in Analyse-Skripten ergänzen und dokumentieren."
+      ],
+      "expected_artifacts": [
+        "Bayes-Modelle",
+        "Multikollinearitäts-Report"
+      ],
+      "derived_from": [
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            26,
+            28
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
+          "lines": [
+            152,
+            173
+          ]
+        }
+      ]
+    },
+    {
+      "step": 13,
+      "title": "137-β Dualität integrieren",
+      "todo_id": "v6-137-beta-duality",
+      "focus": "Dualitätskapitel + Outreach",
+      "actions": [
+        "Kapitel zur 137-β Dualität (Kosmos ↔ Sozioökonomie) anlegen.",
+        "Publikations- und Outreach-Pfade skizzieren."
+      ],
+      "expected_artifacts": [
+        "Dualitätskapitel",
+        "Partner-/Outreach-Notizen"
+      ],
+      "derived_from": [
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.md",
+          "lines": [
+            28,
+            30
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_ToDoListe.yaml",
+          "lines": [
+            173,
+            193
+          ]
+        }
       ]
     }
   ]

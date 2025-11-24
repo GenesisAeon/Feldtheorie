@@ -1,6 +1,6 @@
 metadata:
-  version: v6-todo-0.1
-  generated_at: "2025-11-24T12:17:53Z"
+  version: v6-todo-0.2
+  generated_at: "2025-11-24T12:36:17Z"
   scope: "releases/V6-Plans_etc"
   description: "TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft"
   logistic_frame:
@@ -109,3 +109,102 @@ tasks:
     references:
       - path: releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt
         lines: [94, 99]
+  - id: v6-pyramid-cosmic
+    title: "Pyramiden- & Kosmische-Konstanten-Modell für UTAC 1.2"
+    status: "open"
+    completeness: "Analyse und Beispielcode liegen vor; Integration in Theorie, Codebasis und Visualisierung fehlen."
+    scope: ["theory", "simulation", "visualization"]
+    logistic_profile:
+      R_target: "UTAC 1.2 geometrisch/konstantenbasiert integriert"
+      Theta_condition: "pyramid_utac Modell + Konstanten-Kopplung + Visualisierung publiziert"
+      beta_estimate: 5.1
+      zeta_risk: "neutral"
+    next_steps:
+      - "pyramid_utac Modell in Code und Theorie konsolidieren."
+      - "Kosmische Konstanten (c, G, h) als Kopplungsgrenzen in UTAC verankern."
+      - "Visualisierung/Animation der Raumzeit-Entfaltung inkl. Hexagon-Projektion erstellen."
+    references:
+      - path: releases/V6-Plans_etc/Mistral.txt
+        lines: [4, 122]
+  - id: v6-genesis-cube-sim
+    title: "Genesis-Cube Simulation & Blockuniversum-Scan aufsetzen"
+    status: "open"
+    completeness: "Mapping zu bestehenden Modulen skizziert, aber kein Skript/Animation im Repo."
+    scope: ["simulation", "visualization", "research"]
+    logistic_profile:
+      R_target: "Genesis-Cube Demonstrator"
+      Theta_condition: "genesis_cube.py + Blockuniversum-Animation + Prompt-Doku verfügbar"
+      beta_estimate: 5.6
+      zeta_risk: "moderate"
+    next_steps:
+      - "genesis_cube.py mit Quantum-Foam → Singularity → Hexagon/Würfel Ablauf implementieren."
+      - "Geometrischen Verschnitt als Dunkle-Energie Visualisierung ausspielen."
+      - "Deep-Research-Prompt und Mapping zu bestehenden Modulen dokumentieren."
+    references:
+      - path: releases/V6-Plans_etc/Gemini.txt
+        lines: [1, 140]
+  - id: v6-simulator-stability
+    title: "TypeScript-Simulator stabilisieren (RK4 + τ*)"
+    status: "open"
+    completeness: "Euler-Schema aktiv; Delay-Kopplung und RK4-Integrator fehlen."
+    scope: ["frontend", "simulation", "numerics"]
+    logistic_profile:
+      R_target: "stabile Type-6 Visualisierung"
+      Theta_condition: "RK4-Integrator + τ* Verzögerung im Simulator live"
+      beta_estimate: 5.4
+      zeta_risk: "niedrig"
+    next_steps:
+      - "RK4-Integrator in TransdisciplinaryFieldSimulator.tsx integrieren."
+      - "τ*-Buffer/Delay-Kopplung für implosive Szenarien implementieren."
+    references:
+      - path: releases/V6-Plans_etc/FinalyzeVorschlägeGemini.txt
+        lines: [13, 78]
+  - id: v6-simulator-experience
+    title: "Frontend-Erlebnis & Agenten-Navigation erweitern"
+    status: "open"
+    completeness: "Sonifikation, CSV-Dropzone und LLM-Navigationshilfen vorgeschlagen, aber nicht dokumentiert."
+    scope: ["frontend", "ux", "documentation"]
+    logistic_profile:
+      R_target: "agentenfreundlicher Simulator"
+      Theta_condition: "Web-Audio + CSV-Dropzone + AI-Context/Diamond-Map veröffentlicht"
+      beta_estimate: 4.9
+      zeta_risk: "neutral"
+    next_steps:
+      - "Web-Audio-Sonifikation für Kopplungs-/Instabilitätsfeedback im Frontend anbinden."
+      - "Drag&Drop CSV-Schätzung für β/Θ im Simulator ergänzen."
+      - "AI-Context/llms.txt und Diamond-Architecture-Map als Navigationshilfen bereitstellen."
+    references:
+      - path: releases/V6-Plans_etc/FinalyzeVorschlägeGemini.txt
+        lines: [79, 161]
+  - id: v6-beta-bayes
+    title: "Hierarchische β-Analyse & Multikollinearitätsprüfung"
+    status: "open"
+    completeness: "WLS/OLS-Auswertung ohne signifikante Prädiktoren; Bayes/VIF nicht umgesetzt."
+    scope: ["analysis", "statistics"]
+    logistic_profile:
+      R_target: "robustere β-Schätzungen"
+      Theta_condition: "hierarchisches Modell + VIF-Checks dokumentiert"
+      beta_estimate: 4.6
+      zeta_risk: "niedrig"
+    next_steps:
+      - "PyMC/Stan Hierarchie für β nach Domänen modellieren."
+      - "VIF-Checks in Analyse-Skripten ergänzen und dokumentieren."
+    references:
+      - path: releases/V6-Plans_etc/FinalyzeVorschlägeGemini.txt
+        lines: [78, 120]
+  - id: v6-137-beta-duality
+    title: "137-β Dualität in Kosmos & Sozioökonomie integrieren"
+    status: "open"
+    completeness: "Verbindung beschrieben, aber kein Kapitel/Release-Plan dokumentiert."
+    scope: ["theory", "publication", "outreach"]
+    logistic_profile:
+      R_target: "137-β Kapitel veröffentlicht"
+      Theta_condition: "Dualitätskapitel + Outreach-/Publikationspfad definiert"
+      beta_estimate: 5.0
+      zeta_risk: "neutral"
+    next_steps:
+      - "Kapitel zur 137-β Dualität (Kosmos ↔ Sozioökonomie) in UTAC-Dokumentation anlegen."
+      - "Publikations- und Outreach-Pfade (Papers/Partner) für die Dualität skizzieren."
+    references:
+      - path: releases/V6-Plans_etc/Claude.txt
+        lines: [1, 116]
