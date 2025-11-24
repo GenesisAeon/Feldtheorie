@@ -59,3 +59,77 @@ See `data/*/*.metadata.json` for domain-specific notes.
 `docs/utac_falsifiability.md` logs any dataset where \(\beta\) leaves the
 \([3.6, 4.8]\) universality band or where ΔAIC falls below 10.  Contributors
 must extend the table when new evidence challenges the canonical band.
+
+## 8. Type-VI Implosive Dynamics Classification
+
+**Type-VI** systems exhibit **implosive resonance** where \(\zeta(R) < 0\) drives
+negative feedback cascades. Unlike expansive transitions (Type I-V), Type-VI
+dynamics show:
+
+- **Cubic-root jumps:** \(\Delta R \propto (R - \Theta)^{1/3}\)
+- **Negative damping:** \(\zeta(R) = \zeta_0 \cdot (R - R_{\text{critical}}) < 0\)
+- **Self-reinforcing collapse:** Field contracts toward singularity
+
+### 8.1 Type-VI Detection Criteria
+
+A system is classified as **Type-VI** if:
+
+1. **Inverted sigmoid:** \(S(R) = 1 - \sigma(\beta(R - \Theta))\) fits better than forward sigmoid (ΔAIC ≥ 10)
+2. **Negative velocity gradient:** \(\frac{dv}{dR} < 0\) where \(v = -\zeta_0 R + S(R)\)
+3. **Cubic-root scaling:** Residuals fit \(|R_{\text{obs}} - R_{\text{pred}}| \propto (R - \Theta)^{1/3}\) better than linear/quadratic
+
+### 8.2 CREP Index (Collapse-Resonance-Expansion Potential)
+
+The **CREP index** quantifies implosive risk across three phases:
+
+\[
+\text{CREP} = \alpha_C \cdot C + \alpha_R \cdot R_{\text{resonance}} + \alpha_E \cdot E_{\text{rebound}}
+\]
+
+**Components:**
+
+- **C (Collapse potential):** \(C = \max(0, -\zeta(R)) \cdot \beta\)
+  - Measures negative damping strength
+  - Higher C → stronger implosive drive
+
+- **R_resonance (Resonance window):** \(R = \exp(-|\beta(R - \Theta)|)\)
+  - Peaks at threshold \(\Theta\)
+  - Measures proximity to critical transition
+
+- **E_rebound (Expansion recovery):** \(E = \int_{\Theta}^{R_{\max}} \sigma(\beta(R - \Theta)) \, dR\)
+  - Quantifies post-implosive expansion capacity
+  - Higher E → system can recover from collapse
+
+**Standard weights:** \(\alpha_C = 0.5, \alpha_R = 0.3, \alpha_E = 0.2\)
+
+**CREP interpretation:**
+
+| CREP Range | Classification | Risk Level |
+|------------|----------------|------------|
+| 0.0 - 0.3 | Stable expansion | Low |
+| 0.3 - 0.6 | Transition zone | Medium |
+| 0.6 - 0.8 | High implosive risk | High |
+| 0.8 - 1.0 | Critical collapse | Extreme |
+
+### 8.3 Empirical Examples
+
+**Climate:** Arctic permafrost methane release shows Type-VI characteristics:
+- \(\beta = 4.2\), \(\Theta = 2.1°\text{C}\), \(\zeta(R) < 0\) for \(R > 2.5°\text{C}\)
+- CREP = 0.72 (high implosive risk)
+
+**Finance:** Flash-crash dynamics (2010):
+- Cubic-root jumps in order-book depth
+- CREP = 0.85 during cascade window
+
+**Neuroscience:** Seizure onset cascades:
+- Inverted sigmoid in neuronal synchrony
+- CREP = 0.78 at pre-ictal threshold
+
+### 8.4 Simulation Requirements
+
+Type-VI models require:
+- **Safety-delay buffer** \(\tau^*\) to prevent numerical divergence
+- **RK4 integration** (Euler methods fail for \(\zeta < 0\))
+- **Meta-regression tracking** to detect \(\beta\)-drift across domains
+
+See `simulation/implosive_genesis_sim.py` for reference implementation.

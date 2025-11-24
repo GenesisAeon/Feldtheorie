@@ -72,9 +72,92 @@ Before committing work in `releases/V6-Plans_etc`:
 <!-- CUSTOM_RULES -->
 <!-- Add context-specific ethical rules below this marker. The fractal governance engine will preserve these. -->
 
+## V6-Specific Ethics: Implosive Risk Management
+
+### Type-VI Implosive Scenarios
+
+**Special ethical considerations for systems exhibiting negative damping (\(\zeta(R) < 0\)):**
+
+#### 1. Risk Communication
+
+When analyzing Type-VI systems (implosive dynamics):
+- **MUST** clearly flag CREP ≥ 0.6 as "high implosive risk"
+- **MUST** provide uncertainty bounds on collapse timing estimates
+- **MUST NOT** present implosive models without mitigation pathways
+- **MUST** distinguish between:
+  - *Retrospective analysis* (describing past collapses)
+  - *Predictive modeling* (forecasting future collapses)
+  - *Prescriptive intervention* (recommending preventive actions)
+
+#### 2. Dual-Use Mitigation
+
+Type-VI models have dual-use potential (constructive analysis vs. weaponized prediction):
+
+| Use Case | Ethical Status | Requirements |
+|----------|----------------|--------------|
+| Climate tipping point early warning | **Encouraged** | Public disclosure, peer review |
+| Financial stability monitoring | **Encouraged** | Regulatory transparency |
+| Social collapse prediction for intervention | **Conditional** | Consent, privacy protection |
+| Adversarial market manipulation | **Prohibited** | Report to governance |
+| Targeted destabilization campaigns | **Prohibited** | Immediate escalation |
+
+#### 3. Provenance Tracking for Implosive Models
+
+All Type-VI analyses MUST include:
+
+- **Model Provenance Block:**
+  ```yaml
+  model_type: Type-VI Implosive
+  beta: [value ± CI]
+  theta: [value ± CI]
+  zeta_sign: negative
+  CREP_index: [0.0-1.0]
+  training_data_sources: [DOI/URL list]
+  null_model_comparison: [ΔAIC values]
+  ethical_review: [date, reviewer]
+  dual_use_assessment: [low/medium/high]
+  ```
+
+- **Data Lineage:**
+  - Original sources with DOI/URL
+  - Preprocessing transformations documented
+  - Aggregation methods disclosed
+  - Privacy protection measures applied
+
+- **Falsification Criteria:**
+  - Define conditions under which model is invalidated
+  - Specify monitoring metrics for real-time validation
+  - Commit to model withdrawal if falsified
+
+#### 4. Intervention Obligations
+
+Researchers detecting CREP ≥ 0.8 (critical collapse risk) in **real-time monitoring** contexts have ethical obligations:
+
+1. **Notify relevant stakeholders** (regulatory bodies, affected communities)
+2. **Provide uncertainty quantification** (do not overstate confidence)
+3. **Suggest intervention pathways** (if feasible)
+4. **Document limitations** (what the model cannot predict)
+5. **Enable reproducibility** (share code/data when safe)
+
+**Exception:** Do NOT disclose vulnerabilities that enable adversarial exploitation until mitigations exist.
+
+#### 5. Consent and Agency
+
+For social/cognitive Type-VI models:
+- **MUST** obtain consent from affected populations when feasible
+- **MUST** preserve human agency in interpretation (no deterministic framing)
+- **MUST** acknowledge systemic factors beyond individual control
+- **MUST NOT** use models to justify discriminatory policies
+
+#### 6. Archival and Sunset Clauses
+
+- Type-VI models MUST include **expiration dates** after which revalidation is required
+- Archive deprecated models with timestamps and invalidation rationale
+- Never delete negative results (failed predictions inform future work)
+
 <!-- /CUSTOM_RULES -->
 
 ---
 
-**Last Updated:** 2025-11-24 14:03:13 UTC
+**Last Updated:** 2025-11-24 14:22:03 UTC
 **Governance Version:** 1.0.0

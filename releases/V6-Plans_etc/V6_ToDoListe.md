@@ -1,8 +1,8 @@
 # V6 ToDoListe – TriLayer Übersicht
 
-- **Version:** v6-todo-0.2
+- **Version:** v6-todo-0.3
 - **Scope:** releases/V6-Plans_etc
-- **Generated:** 2025-11-24T12:36:17Z
+- **Generated:** 2025-11-24T14:17:13Z
 - **Logistische Membran:** R→"Navigierbare V6-Release-Landkarte", Θ→"Aktivierungs-Lücken geschlossen & Governance aktualisiert", β≈4.8, ζ-Risiko: negativ falls Safety-Delay-Feld fehlt.
 
 ## Aufgaben und Status
@@ -21,6 +21,7 @@
 | v6-simulator-experience | Frontend-Erlebnis & Agenten-Navigation erweitern | open | Sonifikation, CSV-Dropzone und LLM-Navigationshilfen vorgeschlagen, aber nicht dokumentiert. | Web-Audio-Sonifikation im Frontend koppeln · Drag&Drop CSV-Schätzung für β/Θ ergänzen · AI-Context/Diamond-Map für Trilayer-Struktur veröffentlichen | FinalyzeVorschlägeGemini.txt L79-L161 |
 | v6-beta-bayes | Hierarchische β-Analyse & Multikollinearitätsprüfung | open | WLS/OLS-Auswertung ohne signifikante Prädiktoren; Bayes/VIF nicht umgesetzt. | PyMC/Stan-Hierarchie für β nach Domänen aufsetzen · VIF-Checks in Analyse-Skripten ergänzen | FinalyzeVorschlägeGemini.txt L78-L120 |
 | v6-137-beta-duality | 137-β Dualität in Kosmos & Sozioökonomie integrieren | open | Verbindung beschrieben, aber kein Kapitel/Release-Plan dokumentiert. | Kapitel zur 137-β Dualität (Kosmos↔Sozioökonomie) anlegen · Outreach/Publikationspfad definieren | Claude.txt L1-L116 |
+| v6-wavefunction-integration | Entropische Wellenfunktion in Genesis-/Simulator-Kette verankern | open | Konzept in Zusatznote skizziert; keine Feldgleichung, kein RK4-Lauf, keine Visualisierung dokumentiert. | Ψ-Feldgleichung für entropische Gravitation festlegen · genesis_cube.py mit Ψ(r,θ,φ,t) Kern anlegen · Simulator-Ausgabe (|Ψ|², ΔS) an UTAC/Visualisierung koppeln | Zusatz_bitte_integrieren!.txt L1-L140 |
 
 ## Navigationshinweise
 - Alle Einträge spiegeln die logistisches Feld (R, Θ, β, ζ) wider und bleiben Trilayer-synchron (YAML/JSON/MD).
