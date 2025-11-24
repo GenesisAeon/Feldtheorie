@@ -1,6 +1,6 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.6.4
+- **Version:** v6-chronik-0.6.5
 - **Scope:** releases/V6-Plans_etc/Chronik
 - **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.9,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
 - **Quellen:** `V6_ToDoListe.{md,yaml,json}`
@@ -51,11 +51,18 @@
 - **v6-governance-ethics:** Reviewer-Slot für CREP>0.7 vormarkiert; Provenienz/ζ<0-Hinweise werden in feldtheorie_index.* und docs_index.* gespiegelt, CI-Snippet für CREP/τ* vorbereitet.
 - **v6-activation-gaps:** τ*-Stub wird via pipelines/fit_tau_star an analysis/notes gekoppelt; Telemetrie-Protokoll (β-Drift, τ*) in metrics/beta_evolution.csv skizziert.
 
+### Δ-Update 2025-11-30 – CREP/τ*-Checkliste
+- **v6-governance-ethics:** Type-VI CREP/τ*-Checkliste als Trilayer (MD/JSON/YAML) abgelegt (`type6_crep_tau_star_checklist.*`); Reviewer- und Index-Kopplung bleibt als nächster Schritt offen.
+- **Kopplungshinweis:** Checkliste soll in CI/Pre-Commit-Hooks CREP≥0.7 markieren, τ*-Default validieren und Trilayer-Drift melden.
+
 ### Δ-Update 2025-12-01 – CREP Reviewer Routing
 - **v6-governance-ethics:** CREP/τ* Checkliste um Reviewer-Slot-Dokumentation und Index/CI-Spiegel-Hinweis ergänzt; nächste Schritte: Index-Einträge (feldtheorie_index.*, docs_index.*) und CI-Snippet für CREP/τ* + Trilayer-Drift ausrollen.
 
 ### Δ-Update 2025-12-02 – CREP CI-Hook Blueprint
 - **v6-governance-ethics:** CI/Pre-Commit Hook als Pseudocode (`tools.crep_guard` mit CREP-Threshold 0.7, τ*-Default 0.1, Trilayer-Drift-Check V6_ToDoListe ↔ Chronik) in type6_crep_tau_star_checklist.* eingetragen; nächster Schritt: Hook in pre-commit/nox/Makefile verdrahten und Index-Verweise ergänzen.
+
+### Δ-Update 2025-12-03 – CREP Guard FIT-Run
+- **v6-governance-ethics:** Ausführbarer Guard (`python -m tools.crep_guard --check-type6-trilayer`) prüft CREP-Schwelle, τ*-Default und Trilayer-Version; offene Tasks: CI-Verdrahtung und Index-Referenzen ergänzen.
 
 ### Δ-Update 2025-12-04 – CREP Guard Make-Hook
 - **v6-governance-ethics:** Makefile-Targets `crep-guard`/`crep-guard-strict` auf tools.crep_guard ausgerichtet (τ*-Default 0.1, warnings-as-errors für strict); nächster Schritt: Hook in pre-commit/nox spiegeln und Index-Referenzen ergänzen.
