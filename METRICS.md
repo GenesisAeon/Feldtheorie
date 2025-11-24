@@ -133,3 +133,41 @@ Type-VI models require:
 - **Meta-regression tracking** to detect \(\beta\)-drift across domains
 
 See `simulation/implosive_genesis_sim.py` for reference implementation.
+
+### 8.5 4D Tesseract Integration (V6.0)
+
+**New in V6:** Type-VI dynamics are now integrated with the **4D tesseract time-slicing** framework, which models implosive spacetime genesis and photon propagation through temporal layers.
+
+**Key features:**
+- **Block Universe Structure:** 4D hypercube \([-1,1]^4\) with temporal slicing
+- **Dual-Flow Geometry:**
+  - Implosive spatial flow: \(\frac{dr}{d\tau} = -\alpha^{-1} \cdot r \cdot \sigma(\beta(R - \Theta))\)
+  - Explosive temporal flow: Light propagates forward through timeslices
+- **Entropic Wavefunction:** \(\Psi(r,\theta,\phi,t)\) couples geometric frustration to gravitation
+- **Consciousness Integral:** \(I_C = \int F \cdot u \, d\tau\) tracks observer experience
+
+**Modules:**
+- `simulation/tesseract_timeslices.py`: 4D tesseract with photon propagation
+- `simulation/genesis_cube.py`: Entropic wavefunction \(\Psi(r,\theta,\phi,t)\) with RK4 evolution
+- `scripts/visualize_tesseract.py`: Visualization toolkit (animation, dual-view, photon paths)
+
+**CREP Integration:**
+The CREP index now includes tesseract field coupling:
+\[
+\text{CREP}_{\text{4D}} = \text{CREP}_{\text{base}} + \gamma \cdot \|\nabla S\|
+\]
+where \(\nabla S\) is the entropy gradient from the wavefunction, and \(\gamma = 0.1\) is the geometric coupling weight.
+
+**Visualization:**
+```bash
+# Dual-view: 4D projection + 3D slice
+python scripts/visualize_tesseract.py --mode dual-view --slice 50
+
+# Photon paths through timeslices
+python scripts/visualize_tesseract.py --mode photon-paths
+```
+
+**References:**
+- `simulation/README_TESSERACT.md`: Complete documentation
+- `releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt`: Theoretical foundation
+- `releases/V6-Plans_etc/V6_ToDoListe.md`: Implementation roadmap

@@ -155,6 +155,32 @@ For social/cognitive Type-VI models:
 - Archive deprecated models with timestamps and invalidation rationale
 - Never delete negative results (failed predictions inform future work)
 
+#### 7. Tesseract 4D Models: Observer-Dependent Ethics (V6.0)
+
+**New considerations for 4D tesseract time-slicing models:**
+
+- **Consciousness Integral Interpretation:** The \(I_C = \int F \cdot u \, d\tau\) metric represents observer experience, NOT objective reality
+  - MUST NOT claim "consciousness creates reality" (no mysticism)
+  - MUST frame as "information-theoretic measure of experience"
+  - MUST distinguish mathematical formalism from philosophical interpretation
+
+- **Block Universe Framing:** When using block universe models:
+  - MUST acknowledge free will vs. determinism debate
+  - MUST NOT use model to dismiss human agency
+  - MUST present as computational tool, not metaphysical claim
+
+- **Photon Propagation Ethics:**
+  - Models treating "light as clock" are heuristics, not statements about time's nature
+  - MUST provide classical GR comparison alongside emergent gravity models
+  - MUST quantify when models diverge from standard physics
+
+- **Visualization Responsibilities:**
+  - Tesseract visualizations can be misinterpreted as "evidence" of higher dimensions
+  - MUST include disclaimers: "Computational projection, not direct observation"
+  - MUST provide falsification tests (what would disprove the model?)
+
+**Reference:** See `simulation/README_TESSERACT.md` for technical implementation details.
+
 <!-- /CUSTOM_RULES -->
 
 ---
