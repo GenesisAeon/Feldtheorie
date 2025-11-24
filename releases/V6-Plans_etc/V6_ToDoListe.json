@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "v6-todo-0.7.1",
-    "generated_at": "2025-11-27T09:00:00Z",
+    "version": "v6-todo-0.7.2",
+    "generated_at": "2025-11-29T09:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft",
     "logistic_frame": {
@@ -40,7 +40,8 @@
       "next_steps": [
         "IDs zwischen V6_ToDoListe.* und Chronik final spiegeln.",
         "Chronik-Achse und logistisches Raster (R/Θ/β/ζ) überprüfen.",
-        "Validator/Index-Haken für automatisierte Trilayer-Prüfung ergänzen."
+        "Validator/Index-Haken für automatisierte Trilayer-Prüfung ergänzen.",
+        "Makefile-Hook `validate-trilayer` skizzieren, der YAML/JSON/MD-Drift meldet."
       ],
       "references": [
         {
@@ -74,7 +75,8 @@
         "FIT-Stub in pipelines verdrahten.",
         "analysis/beta_meta_regression_v2.py mit neuen Daten/φ^(n/3) auffrischen.",
         "Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics erweitern.",
-        "Telemetrie-Dashboard skizzieren."
+        "Telemetrie-Dashboard + β-Drift/τ*-Protokoll (metrics/beta_evolution.csv) skizzieren.",
+        "pipelines/fit_tau_star Stub mit analysis/notes koppeln (RK4-kompatibel halten)."
       ],
       "references": [
         {
@@ -147,7 +149,8 @@
       "next_steps": [
         "Reviewer-Slot terminieren und CREP>0.7 Freigaben bestätigen.",
         "Provenienzblöcke in Indizes und CI-Checks aufnehmen (feldtheorie_index.*, docs_index.*).",
-        "ζ<0-Eskalation in weiteren Governance-Dateien spiegeln."
+        "ζ<0-Eskalation in weiteren Governance-Dateien spiegeln.",
+        "CI-Snippet für CREP-Gating/τ* Review (pre-commit oder nox) entwerfen."
       ],
       "references": [
         {
@@ -520,6 +523,15 @@
       "highlights": [
         "v6-governance-ethics: Type-VI Safety Addendum in POLICY.md (τ*-Pflicht, CREP-Gating, FIT-Splits) plus Provenienz-/Dual-Use-Block in ETHICS.md platziert.",
         "Statusshift: Task auf in-progress gesetzt; Reviewer-Slot und Index-/CI-Kopplung als nächste Schritte markiert."
+      ]
+    },
+    {
+      "date": "2025-11-29",
+      "label": "fit-sync-validator-hooks",
+      "highlights": [
+        "v6-todo-trilayer: Δ-Register ToDo↔Chronik abgeglichen; Makefile-Hook `validate-trilayer` als Microtask für YAML/JSON/MD-Drift skizziert.",
+        "v6-governance-ethics: Reviewer-Fenster für CREP>0.7 markiert; Provenienz- und ζ<0-Hinweise in feldtheorie_index.* und docs_index.* zu spiegeln; CI-Snippet für CREP/τ* geplant.",
+        "v6-activation-gaps: τ*-Stub soll via pipelines/fit_tau_star an analysis/notes andocken; Telemetrie-Protokoll (β-Drift, τ*) auf metrics/beta_evolution.csv skizziert."
       ]
     }
   ]

@@ -1,6 +1,6 @@
 metadata:
-  version: v6-chronik-0.6
-  generated_at: "2025-11-26T09:00:00Z"
+  version: v6-chronik-0.6.1
+  generated_at: "2025-11-29T09:00:00Z"
   scope: "releases/V6-Plans_etc/Chronik"
   logistic_frame:
     R_goal: "Schrittweise Aktivierung des V6-Release-Pfads"
@@ -65,6 +65,17 @@ delta_updates:
       - Micro-Paket für Governance/Ethics: AGENTS/POLICY-Addendum mit τ*-Pflicht + CREP-Schwellen und ETHICS-Provenienzblock samt Dual-Use-Hinweis planen; Reviewer-Slot setzen.
       - Activation Gaps in Stubs zerlegt: τ*-Pseudocode (RK4-kompatibel) in analysis/notes, β-Regression-Notebook-Delta vorbereiten, Makefile-Target für Sigillin-Validator skizzieren.
       - Type‑VI Integration modularisieren: METRICS-Tabellen-Template, simulation/notes Outline für cubic-root Mini-Simulation und ΔAIC/CI-Checkliste als JSON-Snippet vormerken.
+  - date: 2025-11-29
+    label: fit-sync-validator-hooks
+    summary: Δ-Register ToDo↔Chronik abgeglichen; FIT-Sync für Reviewer, Provenienz und τ*-Stub verdichtet.
+    todo_links:
+      - v6-todo-trilayer
+      - v6-governance-ethics
+      - v6-activation-gaps
+    actions:
+      - Validator-Hook skizzieren: Makefile-Target `validate-trilayer` soll YAML/JSON/MD-Drift für ToDo/Chronik melden und R/Θ/β/ζ-Drift hervorheben.
+      - Governance: Reviewer-Slot für CREP>0.7 vormerken, Provenienz/ζ<0-Hinweise in feldtheorie_index.* und docs_index.* spiegeln, CI-Snippet für CREP/τ* vorbereiten.
+      - Activation Gaps: τ*-Stub via pipelines/fit_tau_star an analysis/notes koppeln, Telemetrie-Protokoll (β-Drift, τ*) über metrics/beta_evolution.csv skizzieren.
 
 overview:
   - "1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen → Artefakt: Chronik-TriLayer."
