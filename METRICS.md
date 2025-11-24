@@ -104,12 +104,19 @@ The **CREP index** quantifies implosive risk across three phases:
 
 **CREP interpretation:**
 
-| CREP Range | Classification | Risk Level |
-|------------|----------------|------------|
-| 0.0 - 0.3 | Stable expansion | Low |
-| 0.3 - 0.6 | Transition zone | Medium |
-| 0.6 - 0.8 | High implosive risk | High |
-| 0.8 - 1.0 | Critical collapse | Extreme |
+| CREP Range | Classification | Risk Level | Governance |
+|------------|----------------|------------|------------|
+| 0.0 - 0.3 | Stable expansion | Low | Standard review |
+| 0.3 - 0.6 | Transition zone | Medium | Enhanced monitoring |
+| 0.6 - 0.8 | High implosive risk | High | **⚠️ Mandatory reviewer** |
+| 0.8 - 1.0 | Critical collapse | Extreme | **🔴 Level 3 escalation** |
+
+**⚠️ CREP ≥ 0.7 Safety Protocol:**
+- **Mandatory Review**: See `releases/V6-Plans_etc/type6_crep_tau_star_checklist.md`
+- **τ* Buffer**: τ* = 0.1·|Θ−R| minimum
+- **RK4+ Integrator**: NO Euler methods
+- **Provenance**: Full audit trail in `releases/V6-Plans_etc/ETHICS.md`
+- **CI Gate**: Automated check via `.github/workflows/v6-governance.yml`
 
 ### 8.3 Empirical Examples
 
