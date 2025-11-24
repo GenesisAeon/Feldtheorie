@@ -1,6 +1,6 @@
 metadata:
-  version: v6-todo-0.4
-  generated_at: '2025-11-24T15:04:41Z'
+  version: v6-todo-0.5
+  generated_at: '2025-11-24T15:20:24Z'
   scope: releases/V6-Plans_etc
   description: TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft
   logistic_frame:
@@ -11,11 +11,37 @@ metadata:
   sprint_delta:
     window: 2025-11-24 → 2025-11-30
     priority_order:
+    - v6-todo-trilayer
     - v6-governance-ethics
     - v6-activation-gaps
     - v6-type6-integration
-    note: Governance/Safety zuerst, dann Aktivierung und Type-VI-Integration
+    note: TriLayer-Spiegelung zuerst, dann Governance/Safety, danach Aktivierung und
+      Type-VI-Integration
 tasks:
+- id: v6-todo-trilayer
+  title: ToDo-TriLayer konsolidieren & Chronik koppeln
+  status: open
+  completeness: Chronik referenziert die ToDo-Liste, aber der spiegelnde ToDo-Eintrag
+    fehlt noch; TriLayer-Verankerung im Plans-Ordner unvollständig.
+  scope:
+  - documentation
+  - governance
+  logistic_profile:
+    R_target: TriLayer-Spiegel aktiv
+    Theta_condition: IDs und Quellen zwischen ToDo-Liste und Chronik synchronisiert
+    beta_estimate: 4.8
+    zeta_risk: neutral nach Kopplung
+  next_steps:
+  - IDs zwischen V6_ToDoListe.* und Chronik spiegeln.
+  - Chronik-Achse und logistisches Raster (R/Θ/β/ζ) übernehmen.
+  - Quell-Referenzen im Plans-Ordner verankern.
+  references:
+  - path: releases/V6-Plans_etc/Chronik/chronik_v6_release.md
+    lines:
+    - 1
+    - 46
+  priority: 0
+  sprint_focus: Chronik-Kopplung
 - id: v6-activation-gaps
   title: Activation Gaps schließen (Safety-Delay, Meta-Regression, Sigillin-Automation)
   status: open

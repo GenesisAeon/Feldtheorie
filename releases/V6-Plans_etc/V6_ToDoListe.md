@@ -1,15 +1,16 @@
 # V6 ToDoListe – TriLayer Übersicht
 
-- **Version:** v6-todo-0.4
+- **Version:** v6-todo-0.5
 - **Scope:** releases/V6-Plans_etc
-- **Generated:** 2025-11-24T15:04:41Z
+- **Generated:** 2025-11-24T15:20:24Z
 - **Logistische Membran:** R→"Navigierbare V6-Release-Landkarte", Θ→"Aktivierungs-Lücken geschlossen & Governance aktualisiert", β≈4.8, ζ-Risiko: negativ falls Safety-Delay-Feld fehlt.
-- **Priorisierung:** Sprint Δ (2025-11-24 → 2025-11-30) greift Governance/Safety zuerst, dann Aktivierung und Type‑VI-Integration.
+- **Priorisierung:** Sprint Δ (2025-11-24 → 2025-11-30) startet mit TriLayer-Spiegelung, greift dann Governance/Safety, danach Aktivierung und Type‑VI-Integration.
 
 ## Aufgaben und Status
 
 | ID | Priorität | Sprint Δ Fokus | Titel | Status | Vollständigkeit | Nächste Schritte | Referenz |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| v6-todo-trilayer | 0 | Chronik-Kopplung | ToDo-TriLayer konsolidieren & Chronik koppeln | open | Chronik verweist auf ToDo-Liste, ToDo-Eintrag selbst fehlt; TriLayer-Verankerung im Plans-Ordner unvollständig. | IDs spiegeln · Chronik-Achse fixieren · Quell-Referenzen zwischen V6_ToDoListe.* und Chronik herstellen | chronik_v6_release.md L1-L46 |
 | v6-governance-ethics | 1 | ζ<0 Escalation + Provenienz | Governance, AGENTS & ETHICS an implosive Szenarien anpassen | open | Anpassungsbedarf benannt, kein Update verzeichnet; Ethik- und Policy-Erweiterungen offen. | Escalation-Regeln für ζ<0 ergänzen · ETHICS.md um implosive Risiken & Provenienz stärken | FinalyzeVorschlägeChatGPT5.1Agent.txt L80-L90 |
 | v6-activation-gaps | 2 | τ*-Prototyp + Regression | Activation Gaps schließen (Safety-Delay, Meta-Regression, Sigillin-Automation) | open | Plan beschrieben, Umsetzung nicht dokumentiert; Prototypen, Regression-Refresh, Parser/Validator, Index-Automation, Outlier-Diagnostics und Data-Lantern-Dashboard fehlen noch. | Safety-Delay-Prototyp bauen · beta_meta_regression_v2.py mit neuen Daten/φ^(n/3) auffrischen · Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics erweitern · Telemetrie-Dashboard skizzieren | FinalyzeVorschlägeChatGPT5.1Agent.txt L53-L64 |
 | v6-type6-integration | 3 | CREP-Pfad skizzieren | Type‑6 Implosionsmodelle offiziell integrieren | open | Theorie und Paper vorhanden, aber Klassifikation, CREP-Indizes und Showcase-Simulation fehlen. | Type‑VI Klassifikation + Guidelines · CREP-Indizes in METRICS.md · cubic-root-jump Simulation (z.B. Klima-Kaskade) | FinalyzeVorschlägeChatGPT5.1Agent.txt L65-L76 |
