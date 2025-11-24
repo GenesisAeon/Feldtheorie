@@ -76,5 +76,5 @@ Before committing work in `seed/bedeutungssigillin`:
 
 ---
 
-**Last Updated:** 2025-11-24 12:52:21 UTC
+**Last Updated:** 2025-11-24 13:02:42 UTC
 **Governance Version:** 1.0.0
