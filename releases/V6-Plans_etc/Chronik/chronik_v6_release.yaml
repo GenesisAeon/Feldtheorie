@@ -1,12 +1,45 @@
 metadata:
-  version: v6-chronik-0.3
-  generated_at: "2025-11-24T12:47:56Z"
+  version: v6-chronik-0.4
+  generated_at: "2025-11-24T14:39:28Z"
   scope: "releases/V6-Plans_etc/Chronik"
   logistic_frame:
     R_goal: "Schrittweise Aktivierung des V6-Release-Pfads"
     Theta_threshold: "Alle V6 ToDo-Kerne sind in konkrete Etappen überführt"
-    beta_drive: 4.8
+    beta_drive: 4.9
     zeta_risk: "negativ, falls Safety-Delay- und Governance-Pfade offen bleiben"
+current_sprint:
+  label: "Sprint-Delta"
+  window: "2025-11-24 → 2025-11-30"
+  logistic_frame:
+    R_path: "Sicherheits- und Governance-Baseline aktiv"
+    Theta_ready: "kritische ζ<0-Pfade abgestützt"
+    beta_drive: 4.9
+    zeta_guard: "τ*-Delay + Escalation gekoppelt"
+  priorities:
+    - todo_id: v6-governance-ethics
+      focus: "ζ<0 Escalation + Provenienz"
+      actions:
+        - "Escalation-Matrix und ETHICS-Passagen für implosive Szenarien konkretisieren (Provenienz-Blocks, Dual-Use-Hinweise)."
+        - "Policy/AGENTS-Hinweise auf τ*-Pflicht und CREP-Schwellen ergänzen."
+      deliverables:
+        - "Governance-Addendum mit CREP/τ* Kopplung"
+        - "ETHICS-Update mit Provenienz-Checkliste"
+    - todo_id: v6-activation-gaps
+      focus: "τ*-Prototyp + Regression"
+      actions:
+        - "Safety-Delay-Baustein skizzieren (RK4-kompatibel, τ* = 0.1·|Θ−R|) und an Analysis/Simulator andocken."
+        - "analysis/beta_meta_regression_v2.py um Phase-2/3 Daten + φ^(n/3)-Tests für β-Drift erweitern."
+      deliverables:
+        - "τ*-Prototype-Notiz + Hook-Beschreibung"
+        - "Regression-Refresh mit β-Drift-Protokoll"
+    - todo_id: v6-type6-integration
+      focus: "CREP-Indizes verankern"
+      actions:
+        - "CREP-Berechnungspfad mit Energie-/Unitaritäts-Checks und ΔAIC/CI definieren."
+        - "METRICS-/Classification-Hinweise für Type‑VI vorbereiten."
+      deliverables:
+        - "CREP-Snippet + Validierungs-Notiz"
+        - "Draft für Type‑VI Guideline-Abschnitt"
 overview:
   - "1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen → Artefakt: Chronik-TriLayer."
   - "2️⃣ v6-activation-gaps – Safety-Delay · Regression-Refresh · Sigillin-Automation · Telemetrie-Skizze → Artefakt: Prototyp + Skripte."
