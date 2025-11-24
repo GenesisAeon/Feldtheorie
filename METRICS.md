@@ -128,11 +128,38 @@ The **CREP index** quantifies implosive risk across three phases:
 ### 8.4 Simulation Requirements
 
 Type-VI models require:
-- **Safety-delay buffer** \(\tau^*\) to prevent numerical divergence
+- **Safety-delay buffer** \(\tau^*\) to prevent numerical divergence (see `pipelines/fit_tau_star/`)
 - **RK4 integration** (Euler methods fail for \(\zeta < 0\))
 - **Meta-regression tracking** to detect \(\beta\)-drift across domains
 
-See `simulation/implosive_genesis_sim.py` for reference implementation.
+**τ* Implementation (V6 Sprint Δ):**
+
+The τ* safety delay is implemented in `pipelines/fit_tau_star/` with RK4-compatible functions:
+
+```python
+from pipelines.fit_tau_star import compute_tau_star, apply_safety_delay
+
+# Compute delay for CREP>0.7 scenarios
+tau_star = compute_tau_star(R=0.3, Theta=0.5, beta=4.8)  # τ* = 0.02
+
+# Apply in RK4 loop
+R_delayed = apply_safety_delay(R_next, R_prev, tau_star, dt, mode="exponential")
+```
+
+**CREP-τ* Coupling:**
+
+Systems with CREP > 0.7 **must** use τ* delay:
+
+```python
+from pipelines.fit_tau_star import compute_zeta_risk
+
+zeta = compute_zeta_risk(R, Theta, beta)
+if zeta < 0:  # Implosive regime
+    tau_star = compute_tau_star(R, Theta, beta)
+    # Apply delay in integration
+```
+
+See `simulation/implosive_genesis_sim.py` and `analysis/notes/tau_star_safety_delay_integration.md` for reference implementations.
 
 ### 8.5 4D Tesseract Integration (V6.0)
 
