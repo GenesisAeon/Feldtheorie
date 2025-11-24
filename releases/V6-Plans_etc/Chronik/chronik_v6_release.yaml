@@ -1,316 +1,410 @@
 metadata:
-  version: v6-chronik-0.6.3
-  generated_at: "2025-12-02T10:00:00Z"
-  scope: "releases/V6-Plans_etc/Chronik"
+  version: v6-chronik-0.6.4
+  generated_at: '2025-12-02T10:00:00Z'
+  scope: releases/V6-Plans_etc/Chronik
   logistic_frame:
-    R_goal: "Schrittweise Aktivierung des V6-Release-Pfads"
-    Theta_threshold: "Alle V6 ToDo-Kerne sind in konkrete Etappen überführt"
+    R_goal: Schrittweise Aktivierung des V6-Release-Pfads
+    Theta_threshold: Alle V6 ToDo-Kerne sind in konkrete Etappen überführt
     beta_drive: 4.9
-    zeta_risk: "negativ, falls Safety-Delay- und Governance-Pfade offen bleiben"
+    zeta_risk: negativ, falls Safety-Delay- und Governance-Pfade offen bleiben
 current_sprint:
-  label: "Sprint-Delta"
-  window: "2025-11-24 → 2025-11-30"
+  label: Sprint-Delta
+  window: 2025-11-24 → 2025-11-30
   logistic_frame:
-    R_path: "Sicherheits- und Governance-Baseline aktiv"
-    Theta_ready: "kritische ζ<0-Pfade abgestützt"
+    R_path: Sicherheits- und Governance-Baseline aktiv
+    Theta_ready: kritische ζ<0-Pfade abgestützt
     beta_drive: 4.9
-    zeta_guard: "τ*-Delay + Escalation gekoppelt"
+    zeta_guard: τ*-Delay + Escalation gekoppelt
   priorities:
-    - todo_id: v6-governance-ethics
-      focus: "ζ<0 Escalation + Provenienz"
-      actions:
-        - "Escalation-Matrix und ETHICS-Passagen für implosive Szenarien konkretisieren (Provenienz-Blocks, Dual-Use-Hinweise)."
-        - "Policy/AGENTS-Hinweise auf τ*-Pflicht und CREP-Schwellen ergänzen."
-      deliverables:
-        - "Governance-Addendum mit CREP/τ* Kopplung"
-        - "ETHICS-Update mit Provenienz-Checkliste"
-    - todo_id: v6-activation-gaps
-      focus: "τ*-Prototyp + Regression"
-      actions:
-        - "Safety-Delay-Baustein skizzieren (RK4-kompatibel, τ* = 0.1·|Θ−R|) und an Analysis/Simulator andocken."
-        - "analysis/beta_meta_regression_v2.py um Phase-2/3 Daten + φ^(n/3)-Tests für β-Drift erweitern."
-      deliverables:
-        - "τ*-Prototype-Notiz + Hook-Beschreibung"
-        - "Regression-Refresh mit β-Drift-Protokoll"
-    - todo_id: v6-type6-integration
-      focus: "CREP-Indizes verankern"
-      actions:
-        - "CREP-Berechnungspfad mit Energie-/Unitaritäts-Checks und ΔAIC/CI definieren."
-        - "METRICS-/Classification-Hinweise für Type‑VI vorbereiten."
-      deliverables:
-        - "CREP-Snippet + Validierungs-Notiz"
-        - "Draft für Type‑VI Guideline-Abschnitt"
+  - todo_id: v6-governance-ethics
+    focus: ζ<0 Escalation + Provenienz
+    actions:
+    - Escalation-Matrix und ETHICS-Passagen für implosive Szenarien konkretisieren
+      (Provenienz-Blocks, Dual-Use-Hinweise).
+    - Policy/AGENTS-Hinweise auf τ*-Pflicht und CREP-Schwellen ergänzen.
+    deliverables:
+    - Governance-Addendum mit CREP/τ* Kopplung
+    - ETHICS-Update mit Provenienz-Checkliste
+  - todo_id: v6-activation-gaps
+    focus: τ*-Prototyp + Regression
+    actions:
+    - Safety-Delay-Baustein skizzieren (RK4-kompatibel, τ* = 0.1·|Θ−R|) und an Analysis/Simulator
+      andocken.
+    - analysis/beta_meta_regression_v2.py um Phase-2/3 Daten + φ^(n/3)-Tests für β-Drift
+      erweitern.
+    deliverables:
+    - τ*-Prototype-Notiz + Hook-Beschreibung
+    - Regression-Refresh mit β-Drift-Protokoll
+  - todo_id: v6-type6-integration
+    focus: CREP-Indizes verankern
+    actions:
+    - CREP-Berechnungspfad mit Energie-/Unitaritäts-Checks und ΔAIC/CI definieren.
+    - METRICS-/Classification-Hinweise für Type‑VI vorbereiten.
+    deliverables:
+    - CREP-Snippet + Validierungs-Notiz
+    - Draft für Type‑VI Guideline-Abschnitt
 delta_updates:
-  - date: 2025-11-25
-    label: sprint-delta-sync
-    summary: TriLayer/ζ<0-Sync eingetragen; Validator/Index-Haken folgen.
-    todo_links:
-      - v6-todo-trilayer
-      - v6-governance-ethics
-      - v6-activation-gaps
-      - v6-type6-integration
-    actions:
-      - TriLayer-Kopplung zwischen Chronik und V6_ToDoListe markiert; Raster (R/Θ/β/ζ) übernommen.
-      - Governance-Checkliste mit τ*-Pflicht und CREP-Schwellen vorbereitet (AGENTS/POLICY/ETHICS Patch geplant).
-      - Safety-Delay-Stub (τ* = 0.1·|Θ−R|) als Sprint-Aufgabe fixiert; Regression-Refresh + Sigillin-Validator priorisiert.
-      - CREP-Pfad (ΔAIC/CI, Energie/Unitarität) für Type‑VI in METRICS/Classification vorgemerkt, Showcase-Sim bleibt offen.
-  - date: 2025-11-26
-    label: fit-microtasks
-    summary: FIT-Aufteilung aktiviert; priorisierte Aufgaben in kleine, überprüfbare Schritte geschnitten.
-    todo_links:
-      - v6-governance-ethics
-      - v6-activation-gaps
-      - v6-type6-integration
-    actions:
-      - Micro-Paket für Governance/Ethics: AGENTS/POLICY-Addendum mit τ*-Pflicht + CREP-Schwellen und ETHICS-Provenienzblock samt Dual-Use-Hinweis planen; Reviewer-Slot setzen.
-      - Activation Gaps in Stubs zerlegt: τ*-Pseudocode (RK4-kompatibel) in analysis/notes, β-Regression-Notebook-Delta vorbereiten, Makefile-Target für Sigillin-Validator skizzieren.
-      - Type‑VI Integration modularisieren: METRICS-Tabellen-Template, simulation/notes Outline für cubic-root Mini-Simulation und ΔAIC/CI-Checkliste als JSON-Snippet vormerken.
-  - date: 2025-11-29
-    label: fit-sync-validator-hooks
-    summary: Δ-Register ToDo↔Chronik abgeglichen; FIT-Sync für Reviewer, Provenienz und τ*-Stub verdichtet.
-    todo_links:
-      - v6-todo-trilayer
-      - v6-governance-ethics
-      - v6-activation-gaps
-    actions:
-      - Validator-Hook skizzieren: Makefile-Target `validate-trilayer` soll YAML/JSON/MD-Drift für ToDo/Chronik melden und R/Θ/β/ζ-Drift hervorheben.
-      - Governance: Reviewer-Slot für CREP>0.7 vormerken, Provenienz/ζ<0-Hinweise in feldtheorie_index.* und docs_index.* spiegeln, CI-Snippet für CREP/τ* vorbereiten.
-      - Activation Gaps: τ*-Stub via pipelines/fit_tau_star an analysis/notes koppeln, Telemetrie-Protokoll (β-Drift, τ*) über metrics/beta_evolution.csv skizzieren.
-  - date: 2025-12-01
-    label: crep-review-routing
-    summary: CREP/τ* Checkliste um Reviewer-Slot- und Index/CI-Hinweise ergänzt; Rollout-Schritte markiert.
-    todo_links:
-      - v6-governance-ethics
-    actions:
-      - Reviewer-Slot-Dokumentation und Index/CI-Spiegel-Hinweis in type6_crep_tau_star_checklist.* ergänzt.
-      - Nächste Schritte: Verweis in feldtheorie_index.* und docs_index.* eintragen und CI-Snippet für CREP/τ* + Trilayer-Drift vorbereiten.
-  - date: 2025-12-02
-    label: crep-ci-hook-blueprint
-    summary: CI/Pre-Commit Hook als Pseudocode (CREP-Gating, τ*-Default, Trilayer-Drift) in Checkliste verankert; Verdrahtung in Hooks markiert.
-    todo_links:
-      - v6-governance-ethics
-    actions:
-      - tools.crep_guard Pseudocode in type6_crep_tau_star_checklist.* ergänzt (Threshold 0.7, τ*-Default 0.1, Trilayer V6_ToDoListe ↔ Chronik).
-      - Nächster Schritt: Hook in pre-commit/nox/Makefile verdrahten und Index-Verweise ergänzen.
-
+- date: 2025-11-25
+  label: sprint-delta-sync
+  summary: TriLayer/ζ<0-Sync eingetragen; Validator/Index-Haken folgen.
+  todo_links:
+  - v6-todo-trilayer
+  - v6-governance-ethics
+  - v6-activation-gaps
+  - v6-type6-integration
+  actions:
+  - TriLayer-Kopplung zwischen Chronik und V6_ToDoListe markiert; Raster (R/Θ/β/ζ)
+    übernommen.
+  - Governance-Checkliste mit τ*-Pflicht und CREP-Schwellen vorbereitet (AGENTS/POLICY/ETHICS
+    Patch geplant).
+  - Safety-Delay-Stub (τ* = 0.1·|Θ−R|) als Sprint-Aufgabe fixiert; Regression-Refresh
+    + Sigillin-Validator priorisiert.
+  - CREP-Pfad (ΔAIC/CI, Energie/Unitarität) für Type‑VI in METRICS/Classification
+    vorgemerkt, Showcase-Sim bleibt offen.
+- date: 2025-11-26
+  label: fit-microtasks
+  summary: FIT-Aufteilung aktiviert; priorisierte Aufgaben in kleine, überprüfbare
+    Schritte geschnitten.
+  todo_links:
+  - v6-governance-ethics
+  - v6-activation-gaps
+  - v6-type6-integration
+  actions:
+  - Micro-Paket für Governance/Ethics: AGENTS/POLICY-Addendum mit τ*-Pflicht + CREP-Schwellen
+      und ETHICS-Provenienzblock samt Dual-Use-Hinweis planen; Reviewer-Slot setzen.
+  - Activation Gaps in Stubs zerlegt: τ*-Pseudocode (RK4-kompatibel) in analysis/notes,
+      β-Regression-Notebook-Delta vorbereiten, Makefile-Target für Sigillin-Validator
+      skizzieren.
+  - Type‑VI Integration modularisieren: METRICS-Tabellen-Template, simulation/notes
+      Outline für cubic-root Mini-Simulation und ΔAIC/CI-Checkliste als JSON-Snippet
+      vormerken.
+- date: 2025-11-29
+  label: fit-sync-validator-hooks
+  summary: Δ-Register ToDo↔Chronik abgeglichen; FIT-Sync für Reviewer, Provenienz
+    und τ*-Stub verdichtet.
+  todo_links:
+  - v6-todo-trilayer
+  - v6-governance-ethics
+  - v6-activation-gaps
+  actions:
+  - Validator-Hook skizzieren: Makefile-Target `validate-trilayer` soll YAML/JSON/MD-Drift
+      für ToDo/Chronik melden und R/Θ/β/ζ-Drift hervorheben.
+  - Governance: Reviewer-Slot für CREP>0.7 vormerken, Provenienz/ζ<0-Hinweise in feldtheorie_index.*
+      und docs_index.* spiegeln, CI-Snippet für CREP/τ* vorbereiten.
+  - Activation Gaps: τ*-Stub via pipelines/fit_tau_star an analysis/notes koppeln,
+      Telemetrie-Protokoll (β-Drift, τ*) über metrics/beta_evolution.csv skizzieren.
+- date: 2025-12-01
+  label: crep-review-routing
+  summary: CREP/τ* Checkliste um Reviewer-Slot- und Index/CI-Hinweise ergänzt; Rollout-Schritte
+    markiert.
+  todo_links:
+  - v6-governance-ethics
+  actions:
+  - Reviewer-Slot-Dokumentation und Index/CI-Spiegel-Hinweis in type6_crep_tau_star_checklist.*
+    ergänzt.
+  - Nächste Schritte: Verweis in feldtheorie_index.* und docs_index.* eintragen und
+      CI-Snippet für CREP/τ* + Trilayer-Drift vorbereiten.
+- date: 2025-12-02
+  label: crep-ci-hook-blueprint
+  summary: CI/Pre-Commit Hook als Pseudocode (CREP-Gating, τ*-Default, Trilayer-Drift)
+    in Checkliste verankert; Verdrahtung in Hooks markiert.
+  todo_links:
+  - v6-governance-ethics
+  actions:
+  - tools.crep_guard Pseudocode in type6_crep_tau_star_checklist.* ergänzt (Threshold
+    0.7, τ*-Default 0.1, Trilayer V6_ToDoListe ↔ Chronik).
+  - Nächster Schritt: Hook in pre-commit/nox/Makefile verdrahten und Index-Verweise
+      ergänzen.
+- date: '2025-12-04'
+  label: crep-guard-make-hook
+  summary: Makefile-Guards rufen tools.crep_guard mit τ*-Default und warnings-as-errors
+    auf; Hook-Spiegelung in pre-commit/nox und Index-Referenzen bleibt offen.
+  todo_links:
+  - v6-governance-ethics
+  actions:
+  - Makefile-Targets `crep-guard`/`crep-guard-strict` auf tools.crep_guard ausgerichtet
+    (τ*-Default 0.1, warnings-as-errors im strict Pfad).
+  - 'Nächster Schritt: Guard in pre-commit/nox spiegeln und Index-Hinweise (feldtheorie_index.*,
+    docs_index.*) ergänzen.'
 overview:
-  - "1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen → Artefakt: Chronik-TriLayer."
-  - "2️⃣ v6-activation-gaps – Safety-Delay · Regression-Refresh · Sigillin-Automation · Telemetrie-Skizze → Artefakt: Prototyp + Skripte."
-  - "3️⃣ v6-type6-integration – Type‑VI Klassifikation · CREP-Indizes · cubic-root Showcase → Artefakt: Doku + Plots."
-  - "4️⃣ v6-governance-ethics – ζ<0 Escalation · ETHICS/Policy Addenda → Artefakt: Governance-Update."
-  - "5️⃣ v6-trilayer-enforcement – Parser/Validator · Archiv-/Sigillin-Audit → Artefakt: Audit-Log + Reports."
-  - "6️⃣ v6-release-onboarding – V6-Checkliste · CI/CD-Hooks · README/QUICKSTART Patch → Artefakt: Playbook + Templates."
-  - "7️⃣ v6-data-expansion – neue Domains · quantum_lensing Blueprint → Artefakt: Datensatzliste + Submodul-Entwurf."
-  - "8️⃣ v6-pyramid-cosmic – pyramid_utac + Konstanten-Kopplung · Visualisierung → Artefakt: Modellupdate + Animation."
-  - "9️⃣ v6-genesis-cube-sim – genesis_cube Pfad · Dunkle-Energie-Verschnitt → Artefakt: Simulation + Prompt-Doku."
-  - "🔟 v6-simulator-stability – RK4 + τ*-Delay → Artefakt: stabiler Build."
-  - "1️⃣1️⃣ v6-simulator-experience – Web-Audio · CSV-Drop · AI-Context → Artefakt: UX-Paket."
-  - "1️⃣2️⃣ v6-beta-bayes – PyMC/Stan Hierarchie · VIF-Checks → Artefakt: Analyse-Report."
-  - "1️⃣3️⃣ v6-137-beta-duality – Kapitel + Outreach-Pfade → Artefakt: Dualitäts-Dossier."
+- '1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen
+  → Artefakt: Chronik-TriLayer.'
+- '2️⃣ v6-activation-gaps – Safety-Delay · Regression-Refresh · Sigillin-Automation
+  · Telemetrie-Skizze → Artefakt: Prototyp + Skripte.'
+- '3️⃣ v6-type6-integration – Type‑VI Klassifikation · CREP-Indizes · cubic-root Showcase
+  → Artefakt: Doku + Plots.'
+- '4️⃣ v6-governance-ethics – ζ<0 Escalation · ETHICS/Policy Addenda → Artefakt: Governance-Update.'
+- '5️⃣ v6-trilayer-enforcement – Parser/Validator · Archiv-/Sigillin-Audit → Artefakt:
+  Audit-Log + Reports.'
+- '6️⃣ v6-release-onboarding – V6-Checkliste · CI/CD-Hooks · README/QUICKSTART Patch
+  → Artefakt: Playbook + Templates.'
+- '7️⃣ v6-data-expansion – neue Domains · quantum_lensing Blueprint → Artefakt: Datensatzliste
+  + Submodul-Entwurf.'
+- '8️⃣ v6-pyramid-cosmic – pyramid_utac + Konstanten-Kopplung · Visualisierung → Artefakt:
+  Modellupdate + Animation.'
+- '9️⃣ v6-genesis-cube-sim – genesis_cube Pfad · Dunkle-Energie-Verschnitt → Artefakt:
+  Simulation + Prompt-Doku.'
+- '🔟 v6-simulator-stability – RK4 + τ*-Delay → Artefakt: stabiler Build.'
+- '1️⃣1️⃣ v6-simulator-experience – Web-Audio · CSV-Drop · AI-Context → Artefakt:
+  UX-Paket.'
+- '1️⃣2️⃣ v6-beta-bayes – PyMC/Stan Hierarchie · VIF-Checks → Artefakt: Analyse-Report.'
+- '1️⃣3️⃣ v6-137-beta-duality – Kapitel + Outreach-Pfade → Artefakt: Dualitäts-Dossier.'
 chronik:
-  - step: 1
-    title: "ToDo-TriLayer konsolidieren"
-    todo_id: "v6-todo-trilayer"
-    focus: "ToDo-Quellen koppeln"
-    actions:
-      - "IDs spiegeln und R/Θ/β/ζ-Raster übernehmen"
-      - "Chronik-Ordner verankern"
-      - "Quellenknoten auf V6_ToDoListe verweisen"
-    expected_artifacts:
-      - "chronik_v6_release.{md,yaml,json}"
-      - "Quell-Referenzen auf V6_ToDoListe.*"
-    derived_from:
-      - path: releases/V6-Plans_etc/V6_ToDoListe.md
-        lines: [1, 18]
-      - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
-        lines: [1, 13]
-  - step: 2
-    title: "Activation Gaps schließen"
-    todo_id: "v6-activation-gaps"
-    focus: "Safety-Delay + Regression-Refresh + Sigillin-Automation"
-    actions:
-      - "Safety-Delay-Feld für ζ<0 prototypisieren"
-      - "analysis/beta_meta_regression_v2.py Phase-2/3 + φ^(n/3) Refresh"
-      - "Sigillin Parser/Validator/Index + Outlier-Diagnostics"
-      - "Telemetrie-Skizze für R/Θ/β/ζ"
-    expected_artifacts:
-      - "Safety-Delay-Prototyp"
-      - "Aktualisierte Regression"
-      - "Sigillin-Automation + Dashboard-Mock"
-    derived_from:
-      - path: releases/V6-Plans_etc/V6_ToDoListe.md
-        lines: [10, 14]
-      - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
-        lines: [13, 38]
-  - step: 3
-    title: "Type‑6 Implosionsmodelle integrieren"
-    todo_id: "v6-type6-integration"
-    focus: "Klassifikation + CREP + Showcase"
-    actions:
-      - "Type‑VI Parameter/Guidelines einpflegen"
-      - "CREP-Indizes in METRICS.md"
-      - "cubic-root-jump Simulation"
-    expected_artifacts:
-      - "Klassifikations-Update"
-      - "CREP-Metriken"
-      - "Showcase-Plots"
-    derived_from:
-      - path: releases/V6-Plans_etc/V6_ToDoListe.md
-        lines: [14, 17]
-      - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
-        lines: [39, 64]
-  - step: 4
-    title: "Governance & Ethics für ζ<0 anpassen"
-    todo_id: "v6-governance-ethics"
-    focus: "Escalation-Regeln + ETHICS/Policy"
-    actions:
-      - "ζ<0 Escalation in AGENTS/POLICY ergänzen"
-      - "ETHICS Provenienz + spekulative Risiken dokumentieren"
-    expected_artifacts:
-      - "Governance-Addendum"
-      - "ETHICS/Policy-Update"
-    derived_from:
-      - path: releases/V6-Plans_etc/V6_ToDoListe.md
-        lines: [17, 20]
-      - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
-        lines: [65, 86]
-  - step: 5
-    title: "Trilayer-Strenge sichern"
-    todo_id: "v6-trilayer-enforcement"
-    focus: "Parser/Validator + Audit"
-    actions:
-      - "Trilayer-Konsistenzprüfungen aktivieren"
-      - "Archiv-/Sigillin-Audit notieren"
-    expected_artifacts:
-      - "Validator-Reports"
-      - "Audit-Log"
-    derived_from:
-      - path: releases/V6-Plans_etc/V6_ToDoListe.md
-        lines: [20, 22]
-      - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
-        lines: [87, 104]
-  - step: 6
-    title: "Release-Onboarding aktualisieren"
-    todo_id: "v6-release-onboarding"
-    focus: "Playbook + CI/CD + Onboarding"
-    actions:
-      - "docs/zenodo_release_playbook.md um V6-Checkliste ergänzen"
-      - "CI/CD Hooks für Sigillin/Regression skizzieren"
-      - "README/QUICKSTART mit Type‑6 Einstieg"
-    expected_artifacts:
-      - "Playbook-Patch"
-      - "Hook-Skizzen"
-      - "Onboarding-Texte"
-    derived_from:
-      - path: releases/V6-Plans_etc/V6_ToDoListe.md
-        lines: [22, 25]
-      - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
-        lines: [105, 134]
-  - step: 7
-    title: "Daten-Expansion und Quanten/Gravity-Submodul"
-    todo_id: "v6-data-expansion"
-    focus: "neue Domains + quantum_lensing"
-    actions:
-      - "Finanz/Verkehr/LLM-Daten einspeisen"
-      - "β-Cluster validieren"
-      - "quantum_lensing Blueprint skizzieren"
-    expected_artifacts:
-      - "Datendomänenliste"
-      - "Submodul-Entwurf"
-    derived_from:
-      - path: releases/V6-Plans_etc/V6_ToDoListe.md
-        lines: [25, 27]
-      - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
-        lines: [135, 156]
-  - step: 8
-    title: "Pyramiden-/Konstanten-Integration"
-    todo_id: "v6-pyramid-cosmic"
-    focus: "pyramid_utac + Konstanten"
-    actions:
-      - "pyramid_utac Modell konsolidieren"
-      - "c/G/h Kopplungen setzen"
-      - "Raumzeit-Visualisierung (Hexagon/Würfel) skizzieren"
-    expected_artifacts:
-      - "UTAC-Update"
-      - "Visual-Assets"
-    derived_from:
-      - path: releases/V6-Plans_etc/V6_ToDoListe.md
-        lines: [13, 17]
-      - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
-        lines: [57, 77]
-  - step: 9
-    title: "Genesis-Cube Simulation"
-    todo_id: "v6-genesis-cube-sim"
-    focus: "genesis_cube Ablauf + Blockuniversum"
-    actions:
-      - "Quantum-Foam → Singularity → Hexagon/Würfel Pfad coden"
-      - "Dunkle-Energie-Verschnitt visualisieren"
-      - "Prompt/Mapping dokumentieren"
-    expected_artifacts:
-      - "Simulation/Animation"
-      - "Prompt-Doku"
-    derived_from:
-      - path: releases/V6-Plans_etc/V6_ToDoListe.md
-        lines: [17, 20]
-      - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
-        lines: [78, 103]
-  - step: 10
-    title: "Frontend-Stabilität"
-    todo_id: "v6-simulator-stability"
-    focus: "RK4 + τ*"
-    actions:
-      - "RK4 in TransdisciplinaryFieldSimulator.tsx"
-      - "τ*-Buffer/Delay-Kopplung"
-    expected_artifacts:
-      - "Stabiler Simulator-Build"
-    derived_from:
-      - path: releases/V6-Plans_etc/V6_ToDoListe.md
-        lines: [20, 23]
-      - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
-        lines: [104, 126]
-  - step: 11
-    title: "Frontend/Navigation erweitern"
-    todo_id: "v6-simulator-experience"
-    focus: "UX + Navigation"
-    actions:
-      - "Web-Audio-Sonifikation"
-      - "CSV-Dropzone für β/Θ"
-      - "AI-Context/Diamond-Map veröffentlichen"
-    expected_artifacts:
-      - "UX-Features"
-      - "Navigationsdokumente"
-    derived_from:
-      - path: releases/V6-Plans_etc/V6_ToDoListe.md
-        lines: [23, 26]
-      - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
-        lines: [126, 152]
-  - step: 12
-    title: "Hierarchische β-Analyse"
-    todo_id: "v6-beta-bayes"
-    focus: "Bayes + VIF"
-    actions:
-      - "PyMC/Stan Hierarchie modellieren"
-      - "VIF-Checks dokumentieren"
-    expected_artifacts:
-      - "Bayes-Modelle"
-      - "Multikollinearitäts-Report"
-    derived_from:
-      - path: releases/V6-Plans_etc/V6_ToDoListe.md
-        lines: [26, 28]
-      - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
-        lines: [152, 173]
-  - step: 13
-    title: "137-β Dualität integrieren"
-    todo_id: "v6-137-beta-duality"
-    focus: "Kapitel + Outreach"
-    actions:
-      - "Dualitäts-Kapitel anlegen"
-      - "Publikations-/Partnerpfade skizzieren"
-    expected_artifacts:
-      - "Dualitäts-Dossier"
-      - "Partnerliste"
-    derived_from:
-      - path: releases/V6-Plans_etc/V6_ToDoListe.md
-        lines: [28, 30]
-      - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
-        lines: [173, 193]
+- step: 1
+  title: ToDo-TriLayer konsolidieren
+  todo_id: v6-todo-trilayer
+  focus: ToDo-Quellen koppeln
+  actions:
+  - IDs spiegeln und R/Θ/β/ζ-Raster übernehmen
+  - Chronik-Ordner verankern
+  - Quellenknoten auf V6_ToDoListe verweisen
+  expected_artifacts:
+  - chronik_v6_release.{md,yaml,json}
+  - Quell-Referenzen auf V6_ToDoListe.*
+  derived_from:
+  - path: releases/V6-Plans_etc/V6_ToDoListe.md
+    lines:
+    - 1
+    - 18
+  - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
+    lines:
+    - 1
+    - 13
+- step: 2
+  title: Activation Gaps schließen
+  todo_id: v6-activation-gaps
+  focus: Safety-Delay + Regression-Refresh + Sigillin-Automation
+  actions:
+  - Safety-Delay-Feld für ζ<0 prototypisieren
+  - analysis/beta_meta_regression_v2.py Phase-2/3 + φ^(n/3) Refresh
+  - Sigillin Parser/Validator/Index + Outlier-Diagnostics
+  - Telemetrie-Skizze für R/Θ/β/ζ
+  expected_artifacts:
+  - Safety-Delay-Prototyp
+  - Aktualisierte Regression
+  - Sigillin-Automation + Dashboard-Mock
+  derived_from:
+  - path: releases/V6-Plans_etc/V6_ToDoListe.md
+    lines:
+    - 10
+    - 14
+  - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
+    lines:
+    - 13
+    - 38
+- step: 3
+  title: Type‑6 Implosionsmodelle integrieren
+  todo_id: v6-type6-integration
+  focus: Klassifikation + CREP + Showcase
+  actions:
+  - Type‑VI Parameter/Guidelines einpflegen
+  - CREP-Indizes in METRICS.md
+  - cubic-root-jump Simulation
+  expected_artifacts:
+  - Klassifikations-Update
+  - CREP-Metriken
+  - Showcase-Plots
+  derived_from:
+  - path: releases/V6-Plans_etc/V6_ToDoListe.md
+    lines:
+    - 14
+    - 17
+  - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
+    lines:
+    - 39
+    - 64
+- step: 4
+  title: Governance & Ethics für ζ<0 anpassen
+  todo_id: v6-governance-ethics
+  focus: Escalation-Regeln + ETHICS/Policy
+  actions:
+  - ζ<0 Escalation in AGENTS/POLICY ergänzen
+  - ETHICS Provenienz + spekulative Risiken dokumentieren
+  expected_artifacts:
+  - Governance-Addendum
+  - ETHICS/Policy-Update
+  derived_from:
+  - path: releases/V6-Plans_etc/V6_ToDoListe.md
+    lines:
+    - 17
+    - 20
+  - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
+    lines:
+    - 65
+    - 86
+- step: 5
+  title: Trilayer-Strenge sichern
+  todo_id: v6-trilayer-enforcement
+  focus: Parser/Validator + Audit
+  actions:
+  - Trilayer-Konsistenzprüfungen aktivieren
+  - Archiv-/Sigillin-Audit notieren
+  expected_artifacts:
+  - Validator-Reports
+  - Audit-Log
+  derived_from:
+  - path: releases/V6-Plans_etc/V6_ToDoListe.md
+    lines:
+    - 20
+    - 22
+  - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
+    lines:
+    - 87
+    - 104
+- step: 6
+  title: Release-Onboarding aktualisieren
+  todo_id: v6-release-onboarding
+  focus: Playbook + CI/CD + Onboarding
+  actions:
+  - docs/zenodo_release_playbook.md um V6-Checkliste ergänzen
+  - CI/CD Hooks für Sigillin/Regression skizzieren
+  - README/QUICKSTART mit Type‑6 Einstieg
+  expected_artifacts:
+  - Playbook-Patch
+  - Hook-Skizzen
+  - Onboarding-Texte
+  derived_from:
+  - path: releases/V6-Plans_etc/V6_ToDoListe.md
+    lines:
+    - 22
+    - 25
+  - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
+    lines:
+    - 105
+    - 134
+- step: 7
+  title: Daten-Expansion und Quanten/Gravity-Submodul
+  todo_id: v6-data-expansion
+  focus: neue Domains + quantum_lensing
+  actions:
+  - Finanz/Verkehr/LLM-Daten einspeisen
+  - β-Cluster validieren
+  - quantum_lensing Blueprint skizzieren
+  expected_artifacts:
+  - Datendomänenliste
+  - Submodul-Entwurf
+  derived_from:
+  - path: releases/V6-Plans_etc/V6_ToDoListe.md
+    lines:
+    - 25
+    - 27
+  - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
+    lines:
+    - 135
+    - 156
+- step: 8
+  title: Pyramiden-/Konstanten-Integration
+  todo_id: v6-pyramid-cosmic
+  focus: pyramid_utac + Konstanten
+  actions:
+  - pyramid_utac Modell konsolidieren
+  - c/G/h Kopplungen setzen
+  - Raumzeit-Visualisierung (Hexagon/Würfel) skizzieren
+  expected_artifacts:
+  - UTAC-Update
+  - Visual-Assets
+  derived_from:
+  - path: releases/V6-Plans_etc/V6_ToDoListe.md
+    lines:
+    - 13
+    - 17
+  - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
+    lines:
+    - 57
+    - 77
+- step: 9
+  title: Genesis-Cube Simulation
+  todo_id: v6-genesis-cube-sim
+  focus: genesis_cube Ablauf + Blockuniversum
+  actions:
+  - Quantum-Foam → Singularity → Hexagon/Würfel Pfad coden
+  - Dunkle-Energie-Verschnitt visualisieren
+  - Prompt/Mapping dokumentieren
+  expected_artifacts:
+  - Simulation/Animation
+  - Prompt-Doku
+  derived_from:
+  - path: releases/V6-Plans_etc/V6_ToDoListe.md
+    lines:
+    - 17
+    - 20
+  - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
+    lines:
+    - 78
+    - 103
+- step: 10
+  title: Frontend-Stabilität
+  todo_id: v6-simulator-stability
+  focus: RK4 + τ*
+  actions:
+  - RK4 in TransdisciplinaryFieldSimulator.tsx
+  - τ*-Buffer/Delay-Kopplung
+  expected_artifacts:
+  - Stabiler Simulator-Build
+  derived_from:
+  - path: releases/V6-Plans_etc/V6_ToDoListe.md
+    lines:
+    - 20
+    - 23
+  - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
+    lines:
+    - 104
+    - 126
+- step: 11
+  title: Frontend/Navigation erweitern
+  todo_id: v6-simulator-experience
+  focus: UX + Navigation
+  actions:
+  - Web-Audio-Sonifikation
+  - CSV-Dropzone für β/Θ
+  - AI-Context/Diamond-Map veröffentlichen
+  expected_artifacts:
+  - UX-Features
+  - Navigationsdokumente
+  derived_from:
+  - path: releases/V6-Plans_etc/V6_ToDoListe.md
+    lines:
+    - 23
+    - 26
+  - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
+    lines:
+    - 126
+    - 152
+- step: 12
+  title: Hierarchische β-Analyse
+  todo_id: v6-beta-bayes
+  focus: Bayes + VIF
+  actions:
+  - PyMC/Stan Hierarchie modellieren
+  - VIF-Checks dokumentieren
+  expected_artifacts:
+  - Bayes-Modelle
+  - Multikollinearitäts-Report
+  derived_from:
+  - path: releases/V6-Plans_etc/V6_ToDoListe.md
+    lines:
+    - 26
+    - 28
+  - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
+    lines:
+    - 152
+    - 173
+- step: 13
+  title: 137-β Dualität integrieren
+  todo_id: v6-137-beta-duality
+  focus: Kapitel + Outreach
+  actions:
+  - Dualitäts-Kapitel anlegen
+  - Publikations-/Partnerpfade skizzieren
+  expected_artifacts:
+  - Dualitäts-Dossier
+  - Partnerliste
+  derived_from:
+  - path: releases/V6-Plans_etc/V6_ToDoListe.md
+    lines:
+    - 28
+    - 30
+  - path: releases/V6-Plans_etc/V6_ToDoListe.yaml
+    lines:
+    - 173
+    - 193

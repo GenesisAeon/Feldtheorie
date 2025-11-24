@@ -119,11 +119,11 @@ aggregate:
 plots:
 	@echo "📈 Generating validation plots..."
 	@$(PYTHON) - <<'PY'
-from analysis.plots.rg_flow_plots import plot_overview
-plot_overview(save="analysis/results/plots")
-PY
+	from analysis.plots.rg_flow_plots import plot_overview
+	plot_overview(save="analysis/results/plots")
+	PY
 	@echo "✅ Plots saved to analysis/results/plots/"
-
+	
 reproduce: validate aggregate plots
 	@echo "🎉 Reproduce complete: analysis/results/*"
 
@@ -144,5 +144,5 @@ crep-guard:
 
 crep-guard-strict:
 	@echo "🛡️  Running CREP/τ* Safety Guard (strict mode)..."
-	@$(PYTHON) -m tools.crep_guard --threshold 0.7 --tau-default 0.1 --fail-on-high-crep
+	@PYTHONWARNINGS=error $(PYTHON) -m tools.crep_guard --check-type6-trilayer --threshold 0.7 --tau-default 0.1
 	@echo "✅ crep-guard-strict complete"
