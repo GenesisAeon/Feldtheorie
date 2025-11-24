@@ -35,7 +35,12 @@ from matplotlib.figure import Figure
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 from simulation.genesis_cube import GenesisCube, GenesisCubeConfig
-from simulation.genesis_loader import index_presets, load_beta_presets, resolve_preset
+from simulation.genesis_loader import (
+    DEFAULT_BETA_ESTIMATES,
+    index_presets,
+    load_beta_presets,
+    resolve_preset,
+)
 
 FRAMES = 300
 FPS = 20
@@ -254,6 +259,15 @@ def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
         help="Zeige verfügbare Presets aus den empirischen β-Schätzungen und beende das Programm.",
     )
     parser.add_argument(
+        "--beta-csv",
+        type=Path,
+        default=DEFAULT_BETA_ESTIMATES,
+        help=(
+            "Pfad zur CSV-Datei mit β/Θ-Schätzungen. "
+            "Standard ist data/derived/beta_estimates.csv, Mock-Presets bei Abwesenheit."
+        ),
+    )
+    parser.add_argument(
         "--beta",
         type=float,
         default=DEFAULT_BETA,
@@ -315,7 +329,7 @@ def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
 def main(cli_args: Sequence[str] | None = None) -> None:
     args = parse_args(cli_args)
 
-    presets = load_beta_presets()
+    presets = load_beta_presets(args.beta_csv)
     if args.list_presets:
         print("Verfügbare Presets aus data/derived/beta_estimates.csv:")
         for preset in sorted(presets, key=lambda p: p.name):
