@@ -35,6 +35,7 @@ from matplotlib.figure import Figure
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 from simulation.genesis_cube import GenesisCube, GenesisCubeConfig
+from simulation.genesis_loader import index_presets, load_beta_presets, resolve_preset
 
 FRAMES = 300
 FPS = 20
@@ -42,6 +43,9 @@ INTERVAL_MS = 50
 PHASE_1_RATIO = 0.2
 PHASE_2_RATIO = 0.3
 PHASE_3_RATIO = 0.5
+DEFAULT_BETA = 5.5
+DEFAULT_DAMPING = 0.08
+DEFAULT_SLICES = 40
 
 
 @dataclass(frozen=True)
@@ -222,6 +226,45 @@ def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
         )
     )
     parser.add_argument(
+        "--preset",
+        type=str,
+        help=(
+            "Name eines β/Θ-Presets aus data/derived/beta_estimates.csv, "
+            "z.B. climate_amoc oder llm_emergent."
+        ),
+    )
+    parser.add_argument(
+        "--list-presets",
+        action="store_true",
+        help="Zeige verfügbare Presets aus den empirischen β-Schätzungen und beende das Programm.",
+    )
+    parser.add_argument(
+        "--beta",
+        type=float,
+        default=DEFAULT_BETA,
+        help="Manuelle β-Vorgabe, falls kein Preset genutzt wird.",
+    )
+    parser.add_argument(
+        "--theta",
+        type=float,
+        help="Optionaler Θ-Offset (überschreibt Wert aus Preset, falls gesetzt).",
+    )
+    parser.add_argument(
+        "--damping",
+        type=float,
+        default=DEFAULT_DAMPING,
+        help="ζ(R) Dämpfungsfaktor für die Scheiben." \
+             " Standard: %(default)s",
+    )
+    parser.add_argument(
+        "--slices",
+        type=int,
+        default=DEFAULT_SLICES,
+        dest="slice_count",
+        help="Anzahl der Block-Universum-Schnitte." \
+             " Standard: %(default)s",
+    )
+    parser.add_argument(
         "--output",
         type=Path,
         default=Path("genesis_visualization.gif"),
@@ -256,9 +299,27 @@ def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
 
 def main(cli_args: Sequence[str] | None = None) -> None:
     args = parse_args(cli_args)
+
+    presets = load_beta_presets()
+    if args.list_presets:
+        print("Verfügbare Presets aus data/derived/beta_estimates.csv:")
+        for preset in sorted(presets, key=lambda p: p.name):
+            theta_str = f", Θ={preset.theta:.3f}" if preset.theta is not None else ""
+            source_str = f" | Quelle: {preset.source}" if preset.source else ""
+            print(f"  - {preset.name}: β={preset.beta:.3f}{theta_str}{source_str}")
+        return
+
     phase_cutoffs = PhaseCutoffs.from_total_frames(args.frames)
 
-    config = GenesisCubeConfig(beta=5.5, damping=0.08, slice_count=40)
+    config = GenesisCubeConfig(beta=args.beta, damping=args.damping, slice_count=args.slice_count)
+    if args.theta is not None:
+        config.theta = args.theta
+
+    if args.preset:
+        preset_index = index_presets(presets)
+        preset = resolve_preset(args.preset, preset_index)
+        config = preset.apply_to_config(config)
+
     genesis = GenesisCube(config)
 
     fig = plt.figure(figsize=(10, 8), facecolor="black")
