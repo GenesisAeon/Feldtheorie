@@ -1,9 +1,9 @@
 # V6 ToDoListe – TriLayer Übersicht
 
-- **Version:** v6-todo-0.7.7
+- **Version:** v6-todo-0.7.8
 - **Scope:** releases/V6-Plans_etc
 - **Generated:** 2025-12-02T10:00:00Z
-- **Updated:** 2025-12-04T10:00:00Z
+- **Updated:** 2025-12-05T10:00:00Z
 - **Logistische Membran:** R→"Navigierbare V6-Release-Landkarte", Θ→"Aktivierungs-Lücken geschlossen & Governance aktualisiert", β≈4.8, ζ-Risiko: negativ falls Safety-Delay-Feld fehlt.
 - **Priorisierung:** Sprint Δ (2025-11-24 → 2025-11-30) startet mit TriLayer-Spiegelung, greift dann Governance/Safety, danach Aktivierung und Type‑VI-Integration.
 
@@ -66,25 +66,6 @@
 
 ## Δ-Update 2025-12-04 – CREP Guard Make-Hook
 - **v6-governance-ethics:** Makefile-Targets `crep-guard`/`crep-guard-strict` binden tools.crep_guard jetzt mit CREP/τ*-Check und warnings-as-errors ein; nächster Schritt: Hook in pre-commit/nox spiegeln und Index-Referenzen ergänzen.
-
-## Δ-Update 2025-11-24 – V6 Governance & Implementation Verification
-- **v6-governance-ethics:** CREP-Guard vollständig in CI/CD integriert:
-  - ✅ `.pre-commit-config.yaml`: CREP Guard hook für Type-VI trilayer aktiv
-  - ✅ `noxfile.py`: CREP Guard session (`nox -s crep_guard`) in default sessions
-  - ✅ Index-Referenzen: `feldtheorie_index.{yaml,json}` und `docs_index.yaml` aktualisiert mit tools/crep_guard.py, .pre-commit-config.yaml, noxfile.py, Makefile
-  - ✅ Status: **completed** – Governance-Integration abgeschlossen
-- **v6-simulator-stability:** Verifizierung bestehender Implementierungen:
-  - ✅ RK4-Integrator: Bereits in `TransdisciplinaryFieldSimulator.tsx` (Zeilen 266-275) implementiert mit k1/k2/k3/k4 und (dt/6)*(k1+2k2+2k3+k4) Gewichtung
-  - ✅ τ*-Buffer: Bereits implementiert (Zeilen 125, 135, 245-248) mit dynamischer delay-Berechnung via `tauStar()`
-  - ✅ Status: **completed** – Keine weiteren Änderungen erforderlich
-- **v6-wavefunction-integration:** Verifizierung genesis_cube.py:
-  - ✅ Ψ(r,θ,φ,t) Wellenfunktion: Vollständig implementiert mit radialer Komponente exp(-α⁻¹·r²), tetraedrischen Harmonics Y_tetra(θ,φ), Zeit-Evolution exp(-iΦ·E_P·t/ℏ)
-  - ✅ |Ψ|² Wahrscheinlichkeitsdichte: `compute_probability_density()` (Zeilen 237-256)
-  - ✅ ∇S Entropie-Gradient: `compute_entropy_gradient()` für entropische Gravitation (Zeilen 258-292)
-  - ✅ RK4-Integration: Wheeler-DeWitt Evolution mit `rk4_step()` (Zeilen 294-344)
-  - ✅ Zeit-Evolution: `evolve_wavefunction()` mit Snapshots (Zeilen 346-405)
-  - ✅ Status: **completed** – Alle V6-Konzepte implementiert
-- **Logistische Membran:** R→"V6 Core Features verifiziert & dokumentiert", Θ→"Governance CI/CD aktiv", β≈5.2, ζ-Risiko minimiert durch vollständige Integration.
 
 ## Navigationshinweise
 - Alle Einträge spiegeln die logistisches Feld (R, Θ, β, ζ) wider und bleiben Trilayer-synchron (YAML/JSON/MD).
