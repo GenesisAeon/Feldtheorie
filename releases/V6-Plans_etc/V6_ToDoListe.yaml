@@ -1,6 +1,6 @@
 metadata:
-  version: v6-todo-0.7
-  generated_at: '2025-11-26T09:00:00Z'
+  version: v6-todo-0.7.1
+  generated_at: '2025-11-27T09:00:00Z'
   scope: releases/V6-Plans_etc
   description: TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft
   logistic_frame:
@@ -45,9 +45,8 @@ tasks:
 - id: v6-activation-gaps
   title: Activation Gaps schließen (Safety-Delay, Meta-Regression, Sigillin-Automation)
   status: open
-  completeness: Plan beschrieben, Umsetzung nicht dokumentiert; Prototypen, Regression-Refresh,
-    Parser/Validator, Index-Automation, Outlier-Diagnostics und Data-Lantern-Dashboard
-    fehlen noch.
+  completeness: τ*-FIT-Stub mit RK4-Warnpfad abgelegt; Regression-Refresh, Validator/Index-Automation,
+    Outlier-Diagnostics und Data-Lantern-Dashboard stehen weiterhin aus.
   scope:
   - simulation
   - analysis
@@ -59,16 +58,19 @@ tasks:
     beta_estimate: 5.0
     zeta_risk: negativ bei implosiven Tests
   next_steps:
-  - Safety-Delay-Feld-Prototyp für ζ<0 Szenarien implementieren.
-  - analysis/beta_meta_regression_v2.py mit Phase-2/3 Daten und φ^(n/3)-Tests aktualisieren.
-  - Sigillin-Parser + Schema-Validator + Index-Updater aufsetzen; Outlier-Diagnostics
-    (ΔAIC/CI) erweitern.
-  - Data-Laternen/Telemetrie-Dashboard für R, Θ, β, ζ skizzieren.
+  - FIT-Stub in pipelines verdrahten.
+  - analysis/beta_meta_regression_v2.py mit neuen Daten/φ^(n/3) auffrischen.
+  - Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics erweitern.
+  - Telemetrie-Dashboard skizzieren.
   references:
   - path: releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt
     lines:
     - 53
     - 64
+  - path: releases/V6-Plans_etc/activation_gaps_tau_star.md
+    lines:
+    - 1
+    - 36
   priority: 2
   sprint_focus: τ*-Prototyp + Regression
 - id: v6-type6-integration
@@ -379,9 +381,16 @@ delta_updates:
   label: fit-microtasks
   highlights:
   - 'FIT-Aufteilung aktiviert: große Aufgaben in kleine, überprüfbare Schritte zerlegt.'
-  - 'v6-governance-ethics: AGENTS/POLICY-Addendum (τ*-Pflicht + CREP-Schwellen) und ETHICS-Provenienzblock
-    als Microtasks definiert; Reviewer-Slot anzusetzen.'
-  - 'v6-activation-gaps: τ*-Pseudocode (RK4-kompatibel) als Stub, Notebook-Delta für β-Regression und
-    Makefile-Target für Sigillin-Validator geplant.'
-  - 'v6-type6-integration: METRICS-Tabellen-Template, simulation/notes Outline und ΔAIC/CI-Checkliste
-    als kleine Artefakte vorbereitet.'
+  - 'v6-governance-ethics: AGENTS/POLICY-Addendum (τ*-Pflicht + CREP-Schwellen) und
+    ETHICS-Provenienzblock als Microtasks definiert; Reviewer-Slot anzusetzen.'
+  - 'v6-activation-gaps: τ*-Pseudocode (RK4-kompatibel) als Stub, Notebook-Delta für
+    β-Regression und Makefile-Target für Sigillin-Validator geplant.'
+  - 'v6-type6-integration: METRICS-Tabellen-Template, simulation/notes Outline und
+    ΔAIC/CI-Checkliste als kleine Artefakte vorbereitet.'
+- date: '2025-11-27'
+  label: tau-star-stub-drop
+  highlights:
+  - 'FIT-Schritt umgesetzt: τ*-Safety-Delay Stub (RK4-kompatibel) abgelegt, um ζ<0-Simulationen
+    abzusichern.'
+  - 'Nächste Schritte: Stub in Pipelines verdrahten, Regression-Refresh anstoßen,
+    Sigillin-Validator-Haken setzen.'
