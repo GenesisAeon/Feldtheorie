@@ -76,5 +76,5 @@ Before committing work in `paper/v5_manuscript`:
 
 ---
 
-**Last Updated:** 2025-11-24 06:21:19 UTC
+**Last Updated:** 2025-11-24 06:23:51 UTC
 **Governance Version:** 1.0.0
