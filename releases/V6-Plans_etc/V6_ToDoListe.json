@@ -132,8 +132,8 @@
     {
       "id": "v6-governance-ethics",
       "title": "Governance, AGENTS & ETHICS an implosive Szenarien anpassen",
-      "status": "open",
-      "completeness": "Anpassungsbedarf benannt, kein Update verzeichnet; Ethik- und Policy-Erweiterungen offen.",
+      "status": "in-progress",
+      "completeness": "Type-VI Safety Addendum in POLICY.md und Provenienz-/Dual-Use-Block in ETHICS.md verankert; Reviewer- und Index-Kopplung steht noch aus.",
       "scope": [
         "governance",
         "ethics"
@@ -145,8 +145,9 @@
         "zeta_risk": "hoch ohne Safety-Protokolle"
       },
       "next_steps": [
-        "AGENTS/POLICY Escalation-Regeln für implosive Tests ergänzen.",
-        "ETHICS.md um Risiken (negatives ζ, spekulative Kosmologie) und Daten-Provenienz stärken."
+        "Reviewer-Slot terminieren und CREP>0.7 Freigaben bestätigen.",
+        "Provenienzblöcke in Indizes und CI-Checks aufnehmen (feldtheorie_index.*, docs_index.*).",
+        "ζ<0-Eskalation in weiteren Governance-Dateien spiegeln."
       ],
       "references": [
         {
@@ -511,6 +512,14 @@
       "highlights": [
         "FIT-Schritt umgesetzt: τ*-Safety-Delay Stub (RK4-kompatibel) abgelegt, um ζ<0-Simulationen abzusichern.",
         "Nächste Schritte: Stub in Pipelines verdrahten, Regression-Refresh anstoßen, Sigillin-Validator-Haken setzen."
+      ]
+    },
+    {
+      "date": "2025-11-28",
+      "label": "governance-tau-addendum",
+      "highlights": [
+        "v6-governance-ethics: Type-VI Safety Addendum in POLICY.md (τ*-Pflicht, CREP-Gating, FIT-Splits) plus Provenienz-/Dual-Use-Block in ETHICS.md platziert.",
+        "Statusshift: Task auf in-progress gesetzt; Reviewer-Slot und Index-/CI-Kopplung als nächste Schritte markiert."
       ]
     }
   ]
