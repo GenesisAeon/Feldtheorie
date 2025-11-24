@@ -6,15 +6,16 @@ abstract: >-
   cognitive, climatic, and synthetic intelligence data into a shared logistic
   resonance. Every contribution foregrounds the quartet (R, Θ, β, ζ(R)) and the
   switch-like response σ(β(R-Θ)) that drives emergent order beyond critical
-  thresholds. Version 4.0.0 links the Mirror Machine criticality monitor
-  (RAPID/GRACE/NOAA ingest + `mirror_machine_auditorium.py`) with Phase 4
-  affection-driven UTAC experiments and refreshed Morph/Alias sigillin, tying
-  real-time ΔAIC verdicts to Type-6 logistic state charts.
+  thresholds. Version 5.0.0 turns the repository into a fractal governance
+  skeleton (`setup/AGENTS_BOOTSTRAP.md`, `setup/THEORY_OF_STRUCTURE.md`,
+  `setup/universal_skeleton_builder.py`), adds structural isomorphism models
+  (`models/cosmic_alpha_phi.py`, `models/social_rigidity_ising.py`), and ships a
+  Zenodo-ready release bundle to keep DOI and GitHub assets in lockstep.
 authors:
   - family-names: "Römer"
     given-names: "Johann"
   - name: "Universal Threshold Field Contributors"
-version: 4.0.0
+version: 5.0.0
 doi: 10.5281/zenodo.17472834
 date-released: 2025-11-22
 url: "https://github.com/GenesisAeon/Feldtheorie"
