@@ -126,3 +126,13 @@ PY
 
 reproduce: validate aggregate plots
 	@echo "🎉 Reproduce complete: analysis/results/*"
+
+# ============================================================================
+# V6 TriLayer Validation (added 2025-11-24)
+# Validates consistency between YAML/JSON/MD ToDo representations
+# ============================================================================
+
+validate-trilayer:
+	@echo "🔍 Validating TriLayer consistency (YAML/JSON/MD)..."
+	@$(PYTHON) scripts/validate_trilayer.py
+	@echo "✅ validate-trilayer complete"
