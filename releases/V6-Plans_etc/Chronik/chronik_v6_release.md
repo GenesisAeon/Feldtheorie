@@ -1,6 +1,6 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.6.7
+- **Version:** v6-chronik-0.6.8
 - **Scope:** releases/V6-Plans_etc/Chronik
 - **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.9,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
 - **Quellen:** `V6_ToDoListe.{md,yaml,json}`
@@ -75,6 +75,11 @@
 - **v6-governance-ethics:** Pre-commit/nox-Verdrahtung als FIT-Pfad konkretisiert (Hook `python -m tools.crep_guard --check-type6-trilayer` mit CREP≥0.7 und τ*=0.1); Index-Spiegel in feldtheorie_index.* und docs_index.* bleibt als nächster Schritt markiert.
 - **v6-todo-trilayer:** ID-Paare ToDo↔Chronik erneut abgeglichen; `validate-trilayer`-Hook soll R/Θ/β/ζ-Drift loggen und Index-Pfade in die Prüfung aufnehmen.
 - **v6-activation-gaps:** τ*-Stub-Weiterleitung zu pipelines/fit_tau_star als FIT-Mini-Aufgabe skizziert; Telemetrie-Anker (β-Drift, τ*) für metrics/beta_evolution.csv präzisiert.
+
+### Δ-Update 2025-12-07 – CI/Index Drift-Gates
+- **v6-governance-ethics:** Index-Spiegel und CI-Hooks verfeinert; FIT-Mikroschritte setzen pre-commit/nox-Snippet (`python -m tools.crep_guard --check-type6-trilayer`) plus Index-Verweise (feldtheorie_index.*, docs_index.*) auf die Agenda.
+- **v6-todo-trilayer:** `validate-trilayer` soll R/Θ/β/ζ-Drift inkl. Index-Pfaden (ToDo ↔ Chronik ↔ Indizes) protokollieren; Driftlog als Guard-Ausgabe vorgesehen.
+- **v6-activation-gaps:** τ*/CREP-Protokollierung in metrics/beta_evolution.csv als FIT-Logbuch eingeplant, um pipelines/fit_tau_star Anschluss messbar zu machen.
 
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)

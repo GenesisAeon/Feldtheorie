@@ -1,5 +1,5 @@
 metadata:
-  version: v6-chronik-0.6.7
+  version: v6-chronik-0.6.8
   generated_at: '2025-12-02T10:00:00Z'
   scope: releases/V6-Plans_etc/Chronik
   logistic_frame:
@@ -174,6 +174,21 @@ delta_updates:
     und Index-Pfade prüfen.
   - τ*-Stub-Anschluss an pipelines/fit_tau_star als Mini-Aufgabe skizziert; Telemetrie-Anker
     (β-Drift, τ*) für metrics/beta_evolution.csv präzisiert.
+- date: '2025-12-07'
+  label: ci-index-drift-gates
+  summary: Index-Spiegel + CI-Hooks als FIT-Mikroschritte präzisiert; Driftlogging für
+    ToDo↔Chronik↔Index und τ*/CREP protokolliert.
+  todo_links:
+  - v6-governance-ethics
+  - v6-todo-trilayer
+  - v6-activation-gaps
+  actions:
+  - Index-Verweise (feldtheorie_index.*, docs_index.*) und pre-commit/nox-Snippet mit
+    `python -m tools.crep_guard --check-type6-trilayer` als nächste CI-Hooks markiert.
+  - validate-trilayer soll R/Θ/β/ζ-Drift inkl. Index-Pfade (ToDo ↔ Chronik ↔ Indizes)
+    loggen; Guard-Ausgabe um Driftlog ergänzen.
+  - τ*/CREP-Logbuch in metrics/beta_evolution.csv als FIT-Aufgabe vorgesehen, um
+    pipelines/fit_tau_star Anschluss messbar zu machen.
 overview:
 - '1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen
   → Artefakt: Chronik-TriLayer.'
