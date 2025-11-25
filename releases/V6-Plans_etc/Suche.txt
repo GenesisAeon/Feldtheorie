@@ -1,0 +1,202 @@
+Validierung des implosiven 0D→1D→2D Evolutionsmodells pro Zeitscheibe
+ChatGPT
+
+Ich schaue mir die Zitierungen und Quellenverweise an, um sicherzustellen, dass sie korrekt und vollständig sind.
+Searched for Martyushev Seleznev maximum entropy production principle
+ChatGPT
+
+Ich schaue nach einer anderen Forschungsplattform wie ResearchGate.
+
+researchgate.net gelesen
+ChatGPT
+
+Ich schaue mir die Referenzen am Ende des Kommentars an, um sicherzustellen, dass Martyushev & Seleznev aufgeführt sind.
+
+Mehr von researchgate.net gelesen
+ChatGPT
+
+Ich schaue mir die Absätze 19-22 im Artikel von Martyushev und Seleznev an, um relevante Informationen für meine Arbeit zu finden.
+
+scirp.org gelesen
+ChatGPT
+
+Laut dem MEP-Prinzip werden offene Systeme, die weit vom Gleichgewicht entfernt sind, stabilisiert, wenn die Entropieproduktion maximiert wird. Dadurch entstehen dissipative Strukturen mit niedriger Entropie, wie das baumförmige Netzwerk.
+Searched for dissipative structure and maximum entropy
+ChatGPT
+
+Ich schaue mir die Ressource an und denke darüber nach, wie gut sie zur Anfrage passt.
+
+Es scheint ein PMC-Artikel zu sein, aber "Forbidden" könnte blockiert sein. Versuch es mit arXiv (Suchergebnis #1).
+
+arxiv.org gelesen
+ChatGPT
+
+Ich schaue mir den Text in [8] nahe L178 an, da er mit dem angegebenen Inhalt gematcht wird.
+
+Mehr von arxiv.org gelesen
+ChatGPT
+
+Je passe en revue les travaux historiques et la déclaration centrale de Martyushev 2006 sur le fondement théorique des MEP.
+Searched for Causal Dynamical Triangulations phase diagram
+ChatGPT
+
+Ich öffne die Seite, um eine mögliche Abbildung zu finden.
+
+Suchen auf ResearchGate
+Searched for CDT phase C de Sitter figure
+ChatGPT
+
+Ich schaue mir Malkus (58) und Fluidturbulenz von Ozawa et al 2001 an. Vielleicht brauche ich eine Referenz für Paltridge oder Ozawa bezüglich der maximalen Entropieproduktion des Erdsystems.
+Searched for Ozawa Lorenz 2003 entropy production climate
+ChatGPT
+
+Ich schaue mir das PDF bei [5] an, es könnte das Ozawa-Papier sein.
+
+research-collection.ethz.ch gelesen
+ChatGPT
+
+Ich bin dabei, im Dokument nach "0.90" oder "mW m-2" zu suchen.
+
+Mehr von research-collection.ethz.ch gelesen
+ChatGPT
+
+0,90 W/m² K scheint eine vereinfachte Maßzahl zu sein, die die Entropieproduktion pro Quadratmeter und Kelvin angibt.
+
+arxiv.org gelesen
+ChatGPT
+
+Ich denke darüber nach, wie sich die Hauptquellen auf den Ursprung des Lebens, MEPP und die 3/4-Macht-Skala beziehen könnten.
+Searched for Kleiber 1932 3/4 exponent
+ChatGPT
+
+Ich überprüfe die Wikipedia-Seite, um detaillierte Informationen über die logarithmische Rechenschieber zu erhalten.
+
+en.wikipedia.org gelesen
+ChatGPT
+
+Ich überprüfe die Berechnung der BMR anhand von Kleiber's Formel: a=70M3/4a=70M3/4 kcal/Tag.
+
+mdpi.com gelesen
+ChatGPT
+
+Ich analysiere den WBE-Modell und den Thermodynamik-Modell. Die Annahme eines linearen Zusammenhangs wird übernommen, um berechnet werden zu können.
+Searched for Scientific Reports 2018 metabolic rate efficiency model
+ChatGPT
+
+Ich schaue mir den Link von Capellan-Perez et al. bei Nature an.
+
+nature.com gelesen
+ChatGPT
+
+"Ich schaue in [22] nach '0,42' und entdecke interessante Details zu 'f'"
+
+Mehr von nature.com gelesen
+ChatGPT
+
+Klicken Sie hier, um meine Ideen zu erkunden.
+
+Mehr von nature.com gelesen
+ChatGPT
+
+Es ist faszinierend zu sehen, wie nur etwa 42% der in Glukose gespeicherten Energie in ATP umgewandelt werden. Nur etwa 50% dieser Energie wird tatsächlich verwendet, während der Rest als Wärme verloren geht.
+Searched for Bekenstein-Hawking entropy formula
+ChatGPT
+
+Er geht durch die Bekinstein-Hawking-Entropie und die Einbeziehung von Planck-Einheiten. Es scheint, dass nur Flächeninhalt und Planck-Länge berücksichtigt werden.
+Searched for maximum entropy scales with area
+ChatGPT
+
+Ich schaue mir die Berechnung an, die besagt, dass maximale Entropie proportional zur Oberfläche eines Volumens ist. Das lässt mich darüber nachdenken, wie genau diese Beziehung gemessen und interpretiert werden kann.
+Searched for 3-4 Joules per token LLM V100 Samsi 2023
+ChatGPT
+
+Ich schaue mir jetzt das Bild an. Hm, lass mich sehn.
+
+Bei einer Länge von 512 benötigt ein Ausgabe-Token ungefähr 3-4 Joules. Ich schaue mir die genauen Werte an, kann aber diese Zeilen nicht vollständig sehen.
+
+Überprüfe die Effektivität von Energieverbrauch von Sprachmodellen.
+
+cacm.acm.org gelesen
+Searched for 0.39 Joules per token Llama3 H100 FP8 2025
+
+introl.com gelesen
+ChatGPT
+
+Ich schaue in Quelle 32 nach "0.39 J" um die passende Zeile zu finden.
+
+Mehr von introl.com gelesen
+ChatGPT
+
+Ich schaue mir an, wie moderne H100-Systeme mit vLLM eine Effizienz von 0,39 J/token für Llama-3.3-70B FP8 erreichen. Dies zeigt eine etwa 120-fache Verbesserung im Vergleich zu den oft zitierten Schätzungen von ChatGPT【33†L1-L4】. Dies verdeutlicht signifikante Fortschritte in dieser Technologie.
+Searched for Barbour time memory evidence
+ChatGPT
+
+Ich schaue mir den Artikel an, um die neuesten wissenschaftlichen Entwicklungen zu verstehen.
+
+popsci.com gelesen
+ChatGPT
+
+Erwähnt, wie Erinnerungen und Fossilien als bleibende Strukturen die Erdgeschichte aufzeigen.
+Searched for timelike edges direction
+ChatGPT
+
+Ich schaue mir Forschungsarbeiten und Diskussionen zu CDT (Causal Dynamical Triangulations) an und frage mich, wie Slices und Edges zu diesem Thema passen könnten.
+Searched for timelike edges Causal Dynamical Triangulations
+ChatGPT
+
+Ich schaue mir das Arxiv PDF [0] an, möglicherweise handelt es sich um eine Übersicht mit Definitionen.
+
+Global hyperbolicity beschreibt eine Struktur ohne geschlossene Zeitloops, was impliziert, dass alle timelike Kanten in dieselbe Richtung zeigen müssen, um geschlossene Zeitloops zu vermeiden.
+
+Phasen A und B entsprechen verzweigtem Polymer bzw. zerknittertem Zustand, interessiert hat Phase C_dS.Überprüfen der Phasen
+Searched for Cassini time delay Shapiro 2003
+ChatGPT
+
+Die Genauigkeit von Cassini-Tests beträgt etwa 2 Teile pro Million, was fast der angegebene Genauigkeit von 0,001% entspricht.
+Searched for Hooft cellular automaton ontological states
+ChatGPT
+
+Ich schaue mir die Medium-Site an. Vielleicht erklärt sie die Linien von 't Hooft einfacher.
+
+medium.com gelesen
+ChatGPT
+
+Ich denke darüber nach, wie ich Superdeterminismus concis und präzise formulieren kann, möglicherweise unter Bezugnahme auf Hossenfelder & Palmer 2020.
+Searched for superdeterminism P(λ|a,b) ≠ P(λ)
+ChatGPT
+
+Superdeterminismus verletzt die statistische Unabhängigkeit und die freie Wahl. Untersuche Wikipedia zur weiteren Klärung.
+
+en.wikipedia.org gelesen
+ChatGPT
+
+Ah, das Quantum Sampling. Es verwendet Ingenieurmethoden, um das eigene Verhalten und das Verhalten von anderen zuverlässig nachzuvollziehen. Dinge wie Nyquist-Shannon und Heisenberg tauchen dabei auf.
+Searched for Bewusstseins-Kino-Hypothese 10^42 slices per second
+ChatGPT
+
+Ich schaue mir den Bezug von [9†L176-L184] an, während der von [4†L103-L110] auch wichtig ist. Faktoren wie Klimawandel und biologische Prozesse sind erwogen.
+
+nature.com gelesen
+ChatGPT
+
+Ich sehe mir spezifische Modellierungen und Parameter des WBE an und schaue, ob diese als Referenzen dienen können.
+Searched for Landauer's principle k_B T ln 2
+ChatGPT
+
+Ich schaue mir Wikipedia an, um mehr Kontext zu gewinnen.
+
+Ich denke darüber nach, wie die Entropie von Chips durch Transistoren und 3D-Integration beeinflusst wird.
+Searched for Verlinde entropic force
+
+en.wikipedia.org gelesen
+ChatGPT
+
+Ich visualisiere die Formeln für Temperatur, Entropieänderung und Kraft. Es scheint interessant zu sehen, wie diese Zusammenhänge in wissenschaftlichen Modellen genutzt werden.
+
+Mehr von en.wikipedia.org gelesen
+Searched for Verlinde ΔS entropic force equation
+ChatGPT
+
+Ich betrachte die Benutzerreferenzen, verwende jedoch unsere eigenen Quellen für die Zitate. Die Strukturierung der Abschnitte und Unterabschnitte wird ebenfalls überprüft.
+ChatGPT
+Denkvorgang läuft…
