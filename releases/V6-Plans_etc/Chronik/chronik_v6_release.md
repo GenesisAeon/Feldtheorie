@@ -81,6 +81,14 @@
 - **v6-todo-trilayer:** `validate-trilayer` soll R/Θ/β/ζ-Drift inkl. Index-Pfaden (ToDo ↔ Chronik ↔ Indizes) protokollieren; Driftlog als Guard-Ausgabe vorgesehen.
 - **v6-activation-gaps:** τ*/CREP-Protokollierung in metrics/beta_evolution.csv als FIT-Logbuch eingeplant, um pipelines/fit_tau_star Anschluss messbar zu machen.
 
+### Δ-Update 2025-12-08 – TriLayer Index Guard
+- **v6-todo-trilayer:** `validate-trilayer` prüft MD-Metadaten und meldet fehlende Index-Verweise (feldtheorie_index.*, docs_index.*) direkt im Driftlog, damit R/Θ/β/ζ-Abweichungen schneller auffallen.
+- **v6-governance-ethics:** Guard-Ausgaben markieren fehlende Brücken zu den Indizes; CI-/Hook-Spiegelung bleibt als nächster FIT-Schritt notiert.
+
+### Δ-Update 2025-12-09 – τ* Pytest Anchor
+- **v6-activation-gaps:** pytest-Suite deckt compute_tau_star/apply_safety_delay/ζ-Risiko und RK4-Delay ab; Pipeline-Hook + metrics/beta_evolution.csv Logging werden vorbereitet, damit ζ<0-Drift sichtbar bleibt.
+- **v6-todo-trilayer:** Δ-Register vermerkt neuen FIT-Schritt; CI-Hook und Telemetrie-Verknüpfung bleiben offen, um R/Θ/β/ζ-Drift transparent zu halten.
+
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)
 - **Fokus:** ToDo-Quellen koppeln.
