@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "version": "v6-todo-0.7.13",
+    "version": "v6-todo-0.7.14",
     "generated_at": "2025-12-02T10:00:00Z",
-    "updated_at": "2025-12-09T10:00:00Z",
+    "updated_at": "2025-12-10T10:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft",
     "logistic_frame": {
@@ -27,7 +27,7 @@
       "id": "v6-todo-trilayer",
       "title": "ToDo-TriLayer konsolidieren & Chronik koppeln",
       "status": "in-progress",
-      "completeness": "Chronik-Update mit TriLayer-Kopplung angestoßen; ID-Paare ToDo↔Chronik frisch verifiziert, Automations- und Validator-Pfade stehen noch aus.",
+      "completeness": "Chronik-Update mit TriLayer-Kopplung angestoßen; ID-Paare ToDo↔Chronik frisch verifiziert, Automations-/Validator-Pfad steht noch aus.",
       "scope": [
         "documentation",
         "governance"
@@ -121,7 +121,8 @@
       "next_steps": [
         "Type‑VI in Feldtyp-Klassifikation aufnehmen (Parameter, Beispiele, Guidelines).",
         "CREP-Stabilitätsindizes für implosive Felder definieren und in METRICS.md spiegeln.",
-        "Cubic-root-jump Simulation (z.B. Klima-Kaskade) implementieren."
+        "Cubic-root-jump Simulation (z.B. Klima-Kaskade) implementieren.",
+        "Zeitscheiben/Δt_Q Evidenz aus Theorie.txt + SucheCOMPREHENSIVE EMPIRICAL VALIDATION RESEARCH (inkl. PDF) in Type‑VI Guideline und METRICS-Parameter einbinden."
       ],
       "references": [
         {
@@ -129,6 +130,20 @@
           "lines": [
             65,
             76
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Theorie.txt",
+          "lines": [
+            1,
+            80
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/SucheCOMPREHENSIVE EMPIRICAL VALIDATION RESEARCH.txt",
+          "lines": [
+            1,
+            120
           ]
         }
       ],
@@ -283,7 +298,8 @@
       "next_steps": [
         "pyramid_utac Modell in Code und Theorie konsolidieren.",
         "Kosmische Konstanten (c, G, h) als Kopplungsgrenzen in UTAC verankern.",
-        "Visualisierung/Animation der Raumzeit-Entfaltung inkl. Hexagon-Projektion erstellen."
+        "Visualisierung/Animation der Raumzeit-Entfaltung inkl. Hexagon-Projektion erstellen.",
+        "Neue Pyramiden-/Konstanten-Analysen aus 'Pyramiden-Geometrie und Kosmische Konstanten.pdf' in UTAC-Kopplung und Visualisierung referenzieren."
       ],
       "references": [
         {
@@ -291,6 +307,13 @@
           "lines": [
             4,
             122
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Pyramiden-Geometrie und Kosmische Konstanten.pdf",
+          "lines": [
+            1,
+            1
           ]
         }
       ],
@@ -477,7 +500,8 @@
       "next_steps": [
         "Ψ-Feldgleichung für entropische Gravitation definieren (inkl. β, τ* Kopplung).",
         "genesis_cube.py mit compute_wavefunction und Visualisierung des Kollapses implementieren.",
-        "Simulator-Ausgabe (|Ψ|², ΔS) an UTAC-Statusmatrix und Raumzeit-Visualisierung anbinden."
+        "Simulator-Ausgabe (|Ψ|², ΔS) an UTAC-Statusmatrix und Raumzeit-Visualisierung anbinden.",
+        "Kino-/Zeitscheiben-Modell (Theorie.txt) + Δt_Q Empirie aus SucheCOMPREHENSIVE in Ψ(r,θ,φ,t) Pipeline und Simulator-Mapping spiegeln."
       ],
       "references": [
         {
@@ -485,6 +509,20 @@
           "lines": [
             1,
             140
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Theorie.txt",
+          "lines": [
+            1,
+            80
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/SucheCOMPREHENSIVE EMPIRICAL VALIDATION RESEARCH.txt",
+          "lines": [
+            1,
+            120
           ]
         }
       ],
@@ -535,7 +573,7 @@
       "highlights": [
         "v6-todo-trilayer: Δ-Register ToDo↔Chronik abgeglichen; Makefile-Hook `validate-trilayer` als Microtask für YAML/JSON/MD-Drift skizziert.",
         "v6-governance-ethics: Reviewer-Fenster für CREP>0.7 markiert; Provenienz- und ζ<0-Hinweise in feldtheorie_index.* und docs_index.* zu spiegeln; CI-Snippet für CREP/τ* geplant.",
-        "v6-activation-gaps: τ*-Stub soll via pipelines/fit_tau_star an analysis/notes andocken; Telemetrie-Protokoll (β-Drift, τ*) auf metrics/beta_evolution.csv skizziert."
+        "v6-activation-gaps: τ*-Stub soll via pipelines/fit_tau_star an analysis/notes andocken; Telemetrie- Protokoll (β-Drift, τ*) auf metrics/beta_evolution.csv skizziert."
       ]
     },
     {
@@ -614,6 +652,14 @@
       "highlights": [
         "v6-activation-gaps: pytest-Suite deckt compute_tau_star/apply_safety_delay/ζ-Risiko und RK4-Delay ab; nächste Schritte: Pipeline-Hook + metrics/beta_evolution.csv Logging vorbereiten.",
         "v6-todo-trilayer: Δ-Register vermerkt neuen FIT-Schritt; CI-Hook und Telemetrie-Verknüpfung bleiben offen, damit R/Θ/β/ζ-Drift sichtbar bleibt."
+      ]
+    },
+    {
+      "date": "2025-12-10",
+      "label": "theorie-search-intake",
+      "highlights": [
+        "v6-type6-integration & v6-wavefunction-integration: Zeitscheiben-/Δt_Q-Evidenz aus Theorie.txt und SucheCOMPREHENSIVE (inkl. PDF) als Leitplanken für Type‑VI Guideline, METRICS-Kopplung und Ψ(r,θ,φ,t)-Pipeline markiert.",
+        "v6-pyramid-cosmic: Hinweise aus \"Pyramiden-Geometrie und Kosmische Konstanten.pdf\" als Referenz für UTAC-Kopplung und Visualisierung verankert."
       ]
     }
   ]

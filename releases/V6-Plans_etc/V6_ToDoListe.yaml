@@ -1,7 +1,7 @@
 metadata:
-  version: v6-todo-0.7.13
+  version: v6-todo-0.7.14
   generated_at: '2025-12-02T10:00:00Z'
-  updated_at: '2025-12-09T10:00:00Z'
+  updated_at: '2025-12-10T10:00:00Z'
   scope: releases/V6-Plans_etc
   description: TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft
   logistic_frame:
@@ -22,8 +22,8 @@ tasks:
 - id: v6-todo-trilayer
   title: ToDo-TriLayer konsolidieren & Chronik koppeln
   status: in-progress
-  completeness: Chronik-Update mit TriLayer-Kopplung angestoßen; ToDo/Chronik spiegeln
-    sich, Automations- und Validator-Pfade stehen noch aus.
+  completeness: Chronik-Update mit TriLayer-Kopplung angestoßen; ID-Paare ToDo↔Chronik
+    frisch verifiziert, Automations-/Validator-Pfad steht noch aus.
   scope:
   - documentation
   - governance
@@ -48,10 +48,9 @@ tasks:
 - id: v6-activation-gaps
   title: Activation Gaps schließen (Safety-Delay, Meta-Regression, Sigillin-Automation)
   status: open
-  completeness: τ*-FIT-Stub mit RK4-Warnpfad abgelegt; pytest-Checks für
-    compute_tau_star/apply_safety_delay/ζ-Risiko aktiv; Regression-Refresh,
-    Validator/Index-Automation, Outlier-Diagnostics und Data-Lantern-Dashboard
-    stehen weiterhin aus.
+  completeness: τ*-FIT-Stub mit RK4-Warnpfad abgelegt; pytest-Checks für compute_tau_star/apply_safety_delay/ζ-Risiko
+    aktiv; Regression-Refresh, Validator/Index-Automation, Outlier-Diagnostics und
+    Data-Lantern-Dashboard stehen weiterhin aus.
   scope:
   - simulation
   - analysis
@@ -63,8 +62,7 @@ tasks:
     beta_estimate: 5.0
     zeta_risk: negativ bei implosiven Tests
   next_steps:
-  - FIT-Stub + pytest-Drift-Checks in pipelines/fit_tau_star verdrahten (CI-Hook
-    vorbereiten).
+  - FIT-Stub + pytest-Drift-Checks in pipelines/fit_tau_star verdrahten (CI-Hook vorbereiten).
   - analysis/beta_meta_regression_v2.py mit neuen Daten/φ^(n/3) auffrischen.
   - Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics erweitern.
   - Telemetrie-Dashboard + β-Drift/τ*-Protokoll (metrics/beta_evolution.csv) skizzieren.
@@ -101,11 +99,21 @@ tasks:
   - Type‑VI in Feldtyp-Klassifikation aufnehmen (Parameter, Beispiele, Guidelines).
   - CREP-Stabilitätsindizes für implosive Felder definieren und in METRICS.md spiegeln.
   - Cubic-root-jump Simulation (z.B. Klima-Kaskade) implementieren.
+  - Zeitscheiben/Δt_Q Evidenz aus Theorie.txt + SucheCOMPREHENSIVE EMPIRICAL VALIDATION
+    RESEARCH (inkl. PDF) in Type‑VI Guideline und METRICS-Parameter einbinden.
   references:
   - path: releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt
     lines:
     - 65
     - 76
+  - path: releases/V6-Plans_etc/Theorie.txt
+    lines:
+    - 1
+    - 80
+  - path: releases/V6-Plans_etc/SucheCOMPREHENSIVE EMPIRICAL VALIDATION RESEARCH.txt
+    lines:
+    - 1
+    - 120
   priority: 3
   sprint_focus: CREP-Pfad skizzieren
 - id: v6-governance-ethics
@@ -228,11 +236,17 @@ tasks:
   - pyramid_utac Modell in Code und Theorie konsolidieren.
   - Kosmische Konstanten (c, G, h) als Kopplungsgrenzen in UTAC verankern.
   - Visualisierung/Animation der Raumzeit-Entfaltung inkl. Hexagon-Projektion erstellen.
+  - Neue Pyramiden-/Konstanten-Analysen aus 'Pyramiden-Geometrie und Kosmische Konstanten.pdf'
+    in UTAC-Kopplung und Visualisierung referenzieren.
   references:
   - path: releases/V6-Plans_etc/Mistral.txt
     lines:
     - 4
     - 122
+  - path: releases/V6-Plans_etc/Pyramiden-Geometrie und Kosmische Konstanten.pdf
+    lines:
+    - 1
+    - 1
   priority: 7
   sprint_focus: Konstanten-Kopplung skizzieren
 - id: v6-genesis-cube-sim
@@ -373,11 +387,21 @@ tasks:
   - genesis_cube.py mit compute_wavefunction und Visualisierung des Kollapses implementieren.
   - Simulator-Ausgabe (|Ψ|², ΔS) an UTAC-Statusmatrix und Raumzeit-Visualisierung
     anbinden.
+  - Kino-/Zeitscheiben-Modell (Theorie.txt) + Δt_Q Empirie aus SucheCOMPREHENSIVE
+    in Ψ(r,θ,φ,t) Pipeline und Simulator-Mapping spiegeln.
   references:
   - path: releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt
     lines:
     - 1
     - 140
+  - path: releases/V6-Plans_etc/Theorie.txt
+    lines:
+    - 1
+    - 80
+  - path: releases/V6-Plans_etc/SucheCOMPREHENSIVE EMPIRICAL VALIDATION RESEARCH.txt
+    lines:
+    - 1
+    - 120
   priority: 13
   sprint_focus: Ψ-Feldgleichung anlegen
 delta_updates:
@@ -480,16 +504,34 @@ delta_updates:
 - date: '2025-12-07'
   label: ci-index-drift-gates
   highlights:
-  - 'v6-governance-ethics: Index-Spiegel und CI-Hooks verfeinert; FIT-Mikroschritte für pre-commit/nox-Snippet (`python -m tools.crep_guard --check-type6-trilayer`) plus Index-Verweise (feldtheorie_index.*, docs_index.*).'
-  - 'v6-todo-trilayer: validate-trilayer soll R/Θ/β/ζ-Drift inkl. Index-Pfaden (ToDo ↔ Chronik ↔ Indizes) protokollieren; Driftlog als Guard-Ausgabe vorgesehen.'
-  - 'v6-activation-gaps: τ*/CREP-Protokollierung in metrics/beta_evolution.csv als FIT-Logbuch eingeplant, um pipelines/fit_tau_star Anschluss messbar zu machen.'
+  - 'v6-governance-ethics: Index-Spiegel und CI-Hooks verfeinert; FIT-Mikroschritte
+    für pre-commit/nox-Snippet (`python -m tools.crep_guard --check-type6-trilayer`)
+    plus Index-Verweise (feldtheorie_index.*, docs_index.*).'
+  - 'v6-todo-trilayer: validate-trilayer soll R/Θ/β/ζ-Drift inkl. Index-Pfaden (ToDo
+    ↔ Chronik ↔ Indizes) protokollieren; Driftlog als Guard-Ausgabe vorgesehen.'
+  - 'v6-activation-gaps: τ*/CREP-Protokollierung in metrics/beta_evolution.csv als
+    FIT-Logbuch eingeplant, um pipelines/fit_tau_star Anschluss messbar zu machen.'
 - date: '2025-12-08'
   label: trilayer-index-guard
   highlights:
-  - 'v6-todo-trilayer: validate-trilayer prüft jetzt MD-Metadaten und meldet Index-Verweise (feldtheorie_index.*, docs_index.*) direkt im Driftlog, um R/Θ/β/ζ-Abweichungen schneller aufzuspüren.'
-  - 'v6-governance-ethics: Guard-Ausgaben dokumentieren fehlende Index-Brücken; CI/Hook-Spiegelung bleibt als Folgeschritt gekennzeichnet.'
+  - 'v6-todo-trilayer: validate-trilayer prüft jetzt MD-Metadaten und meldet Index-Verweise
+    (feldtheorie_index.*, docs_index.*) direkt im Driftlog, um R/Θ/β/ζ-Abweichungen
+    schneller aufzuspüren.'
+  - 'v6-governance-ethics: Guard-Ausgaben dokumentieren fehlende Index-Brücken; CI/Hook-Spiegelung
+    bleibt als Folgeschritt gekennzeichnet.'
 - date: '2025-12-09'
   label: tau-star-pytest-anchor
   highlights:
-  - 'v6-activation-gaps: pytest-Suite deckt compute_tau_star/apply_safety_delay/ζ-Risiko und RK4-Delay ab; nächste Schritte: Pipeline-Hook + metrics/beta_evolution.csv Logging vorbereiten.'
-  - 'v6-todo-trilayer: Δ-Register vermerkt neuen FIT-Schritt; CI-Hook und Telemetrie-Verknüpfung bleiben offen, damit R/Θ/β/ζ-Drift sichtbar bleibt.'
+  - 'v6-activation-gaps: pytest-Suite deckt compute_tau_star/apply_safety_delay/ζ-Risiko
+    und RK4-Delay ab; nächste Schritte: Pipeline-Hook + metrics/beta_evolution.csv
+    Logging vorbereiten.'
+  - 'v6-todo-trilayer: Δ-Register vermerkt neuen FIT-Schritt; CI-Hook und Telemetrie-Verknüpfung
+    bleiben offen, damit R/Θ/β/ζ-Drift sichtbar bleibt.'
+- date: '2025-12-10'
+  label: theorie-search-intake
+  highlights:
+  - 'v6-type6-integration & v6-wavefunction-integration: Zeitscheiben-/Δt_Q-Evidenz
+    aus Theorie.txt und SucheCOMPREHENSIVE (inkl. PDF) als Leitplanken für Type‑VI
+    Guideline, METRICS-Kopplung und Ψ(r,θ,φ,t)-Pipeline markiert.'
+  - 'v6-pyramid-cosmic: Hinweise aus "Pyramiden-Geometrie und Kosmische Konstanten.pdf"
+    als Referenz für UTAC-Kopplung und Visualisierung verankert.'
