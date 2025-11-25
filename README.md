@@ -6,6 +6,7 @@
 [![Content License: CC BY-NC 4.0](https://img.shields.io/badge/Content%20License-CC%20BY--NC%204.0-orange.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-5.0.0-green.svg)](#whats-new-in-v50)
 [![Tests](https://img.shields.io/badge/tests-430%2F430%20passing-brightgreen.svg)](#tests--quality)
+[![Funding](https://img.shields.io/badge/💎_Support-ETH_|_BTC-yellow.svg)](FUNDING.md)
 [![Project History](https://img.shields.io/badge/📅_Project_History-2025--11--20-lightgrey.svg)](CHANGELOG.md)
 
 ## What's New in v5.0 🚀
