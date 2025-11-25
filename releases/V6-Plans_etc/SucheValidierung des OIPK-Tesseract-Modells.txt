@@ -1,0 +1,259 @@
+Validierung des OIPK-Tesseract-Modells mit Entropy Governance Dualität
+ChatGPT
+
+Ich recherchiere spezifische wissenschaftliche Arbeiten und Zitate, um als Quellen für die Schlüsselthemen des Forschungspapiers zu dienen.
+Searched for Martyushev Seleznev 2006 Entropy Production
+ChatGPT
+
+Ich schaue mir verschiedene Ergebnisse an, darunter eine PDF von Paul Chefurka, einen Blog, der MEP zusammenfasst, oder einen NIH PMCID, um mehr über MEP zu erfahren.
+
+Es sieht so aus, als hätte NIH abgesagt, vermutlich wegen Einschränkungen für Cloud-Umgebungen.
+
+tomate.wordpress.com gelesen
+ChatGPT
+
+Es scheint, dass ich an einem kritischeren Artikel arbeite, der sich mit dem MEP-Prinzip beschäftigt.
+
+Mehr von tomate.wordpress.com gelesen
+ChatGPT
+
+Ich überlege, den PDF-Link mit spezifischen Methoden zu öffnen oder den Inhalt durch Snippets zu durchsuchen, falls dies notwendig ist.
+Searched for Martyushev entropy production far from equilibrium
+ChatGPT
+
+Ich schaue mir NIH-Daten an.
+
+Vorschlag: MDPI (möglicherweise offen).
+
+Ich denke darüber nach, wie ich "Martyushev 2006 maximum entropy"-Zitate anders finden kann, statt den Chefurka-Artikel zu verwenden.
+Searched for Martyushev dissipative structure stabilization
+ChatGPT
+
+Ich bewege mich durch den Bezug und schaue mir [0] an, um den genauen Wortlaut des Benutzers zu überprüfen.
+
+arxiv.org gelesen
+ChatGPT
+
+Aha, in einem lokalen physiko-chemischen System wird eine dynamische Struktur namens dissipative Struktur stabilisiert. Sie produziert maximale Entropie und hält sich selbst im Gleichgewicht.
+Searched for atmospheric entropy production 900 mW/m2
+ChatGPT
+
+Ich schaue mir an, wie das globale Klimasystem etwa 900 mW/m2 Entropie produziert. Dies könnte auf eine Entropieproduktion von etwa 0,9 W/m2K hinweisen. Denke daran, dass weitere Daten aus [9] nötig sind, um dies zu bestätigen.
+
+Es scheint, dass dieses Papier von Kleidon stammt, möglicherweise für die Royal Society eingereicht, aber nicht direkt die Klimentropenziffer liefert. Es handelt sich um ein umfangreiches PDF.
+Searched for entropy production 900 mW climate
+
+skepticalscience.com gelesen
+ChatGPT
+
+Ich schaue mir zwei Schätzungen der Entropieproduktionsrate an: eine von Kleidon & Lorenz (2004) mit 900 mW/m²K und eine von Wei Wu & Yangang Liu mit 1279 ± 7 mW/m²K, beide pro K.
+Searched for Vallino 2010 entropy production growth
+
+esd.copernicus.org gelesen
+ChatGPT
+
+Ich schaue mir gerade die Webseite von Copernicus an und finde, dass sie Probleme bereitet. Es ist wichtig, dafür Lösungen zu finden.
+Searched for Vallino entropy production ecosystems molecular machines
+
+pubmed.ncbi.nlm.nih.gov gelesen
+ChatGPT
+
+Ich erkläre, wie Ökosysteme als selbstorganisierende molekulare Maschinen fungieren, die darauf abzielen, die Entropieproduktion auf Systemebene zu maximieren. This perspective enhances our understanding of the dynamics of ecological systems.
+Searched for photosynthesis entropy production productivity
+ChatGPT
+
+Kein Zugriff
+
+Ich schaue mir den Unterschied zwischen MEP (Maximum Entropy Production) und Mandelbrotmengengerüsten an, die laut Haken von ihm geprägt wurden.
+Searched for Brusselator maximum entropy production Shimizu 1983
+ChatGPT
+
+Okay, ich schaue mir an, ob die Erwähnung "Brusselator [12,83]" wirklich auf Originalwerke verweist und ob das in Kapitel [10] oder [11] behandelt wird.
+
+arxiv.org gelesen
+ChatGPT
+
+Ich schaue mir verschiedene Strukturen an, die metastabil sind. Der Zustand mit maximaler Entropieproduktion zeigt sich als der stabilste, besonders bei Rauschen.
+
+Mehr von arxiv.org gelesen
+Searched for critical polymer concentration origin of life entropy
+ChatGPT
+
+Die UTAC-Parameter messen die Schwellenkritikalität, mit Werten von etwa 11 für kosmische und 4,5-7,4 für biologische Entitäten.
+Searched for LLaMA 65B inference energy
+
+llm-tracker.info gelesen
+ChatGPT
+
+Die effiziente Leistung der GGustavo-Klausur-Veranstaltungen 2023 in Frankfurt beträgt 0,008 kWh pro Teilnehmer, was den niedrigen Energieverbrauch von über 90% der Veranstaltungen bestätigt.
+
+cacm.acm.org gelesen
+ChatGPT
+
+Ich schaue mir die Energieeffizienz des Trainings von Llama 65B und GPT-3 an, um die Fortschritte zu verdeutlichen.
+
+gist.github.com gelesen
+ChatGPT
+
+Ich schaue mir die Effizienzverbesserungen und Vergleiche mit Landauer's Prinzip an, um präzise Daten zu finden.
+Searched for Landauer energy per bit 300K
+ChatGPT
+
+Ich schaue mir gerade einen Open Access-Artikel auf arXiv an und stelle fest, dass er nicht direkt mit Landauer zu tun hat.
+
+en.wikipedia.org gelesen
+ChatGPT
+
+Landauer Grenze scheint Konsumraten zu beeinflussen. Aktuelle PCs verbrauchen etwa 10^9-fach mehr pro Operation. Genauer Bezug wird hergestellt.
+Searched for Bekenstein Hawking formula S = A/(4 Lp^2)
+ChatGPT
+
+Ich schaue mir die Tragik eines Unfalls an, wobei ein Monster ein Auto rammt und ein Mädchen ins Krankenhaus kommt.
+
+Mehr von en.wikipedia.org gelesen
+ChatGPT
+
+Ich denke darüber nach, wie das Prinzip der Holographie, Kleibers Gesetz und metabolische Skalierung zusammenhängen könnten.
+Searched for Kleiber 1932 basal metabolic rate
+ChatGPT
+
+Ich schaue mir Scribd an.
+Searched for Kleiber 1932 mass^3/4 basal metabolic rate
+
+Mehr von en.wikipedia.org gelesen
+ChatGPT
+
+Mir fällt auf, dass das BMR-Gesetz die Ruheenergieumsatz mit M^(3/4) kcal/Tag beschreibt und die WBE-Theorie möglicherweise einen räumlich füllenden fraktalen Netzwerkbegriff enthält.
+
+Mehr von en.wikipedia.org gelesen
+ChatGPT
+
+"%n Interessiert mich, wie ich WBE-Papiere finden kann." Antwort: "%n Nach WBE-Papers suchen."
+Searched for West Brown Enquist 1997 scaling fractal network
+ChatGPT
+
+Consultando prestadores.
+
+santafe.edu gelesen
+ChatGPT
+
+Der Abschnitt beschreibt, wie fraktale Netzwerke die vierte Dimension beeinflussen und durch natürliche Selektion zur Optimierung von Austauschflächen und Transportwegen führen. Dabei spielen Designprinzipien eine wichtige Rolle, die jeweils unabhängig von Details sind.
+Searched for Kleiber efficiency 2018 thermodynamic model ATP
+ChatGPT
+
+Ich schaue mir den Sci Rep-Link an.
+
+nature.com gelesen
+ChatGPT
+
+Ich schaue in Liste 51 nach "Effizienz 0,42" und merke mir die relevanten Einträge. Es ist spannend zu sehen, welche Informationen ich finde.
+
+Mehr von nature.com gelesen
+ChatGPT
+
+Ich schaue mir an, wie etwa 42% der Energie in ATP verwandelt werden, der Rest bleibt als Wärme.
+Searched for Barbour memory time capsule
+
+goodreads.com gelesen
+ChatGPT
+
+Ich denke darüber nach, wie gestern vor heute kommt, und wie ich Zeit als gespeichertes Pattern sehe, das Bewegung codiert.
+
+cambridge.org gelesen
+ChatGPT
+
+Barbour beschreibt den Zustand der Welt als Teilaufzeichnung der Vergangenheit, womit die Struktur einer 'Zeitkapsel' entsteht.
+Searched for Barbour Wheeler-DeWitt static wavefunction
+
+x.com gelesen
+
+en.wikipedia.org gelesen
+Searched for CDT phases crumpled branched polymer de Sitter 4d
+
+ruj.uj.edu.pl gelesen
+ChatGPT
+
+Ich analysiere die drei Phasen: A beschreibt den Zerfall des Universums, B zeigt fast alle Simplizes in einer Raumebene, und C präsentiert ein typisches bell-förmiges 4D-Mannifold.
+
+Mehr von ruj.uj.edu.pl gelesen
+ChatGPT
+
+Ich spreche über die Übergänge zwischen Phasen A, B, und C, wobei die Hausdorff-Dimension bei Phasen A und B unendlich hoch sein könnte und bei Phase C bei etwa 4 bleibt.
+
+Mehr von ruj.uj.edu.pl gelesen
+ChatGPT
+
+Fortschrittliche Ideen zur Dimension und Propagation durch CDT und Bohrs Ansatz. Erkenntnisse aus erhebenden Quellen wie Verlinde für endliche Gravitation.
+Searched for Verlinde entropic gravity Newton holographic
+
+en.wikipedia.org gelesen
+
+arxiv.org gelesen
+ChatGPT
+
+Ich schaue mir an, wie Entropie die Schwerkraft beeinflusst.
+Searched for Verlinde entropic force F = ma
+ChatGPT
+
+Es ist bereichernd, Verlinde's Arbeit auf arXiv zu verwenden.
+
+Mehr von arxiv.org gelesen
+ChatGPT
+
+Ich schaue mir an, wie schwer es ist. Vielleicht besucht man den Blog von John Baez.
+
+johncarlosbaez.wordpress.com gelesen
+ChatGPT
+
+Ich bin dabei, die Arbeit von Baez nach "holographic" zu durchkämmen, denn das könnte auf die Formel "F = T ΔS / Δx" hinweisen.
+
+Mehr von johncarlosbaez.wordpress.com gelesen
+ChatGPT
+
+Ich schaue auf Wikipedia nach, insbesondere nach dem Begriff "holographischer Bildschirm".
+
+en.wikipedia.org gelesen
+ChatGPT
+
+Ich schaue mir die statistischen Verhaltensweisen der Freiheitsgrade auf holografischen Bildschirmen an, um Gravitationsphänomene zu erforschen.
+
+Mehr von en.wikipedia.org gelesen
+ChatGPT
+
+Ich schaue mir Verlindes Ableitungen an, Bernoulli-Gleichung und kompakte Systeme. Es ist ein komplexes Feld, das sich rundherum entfaltet.
+
+Mehr von en.wikipedia.org gelesen
+ChatGPT
+
+Betrachten, wie Entropie die Kraft F=ma beeinflusst, führt dabei zu einem neuen Verständnis von mechanischen Kräften.
+
+Mehr von en.wikipedia.org gelesen
+ChatGPT
+
+Ich schaue mir an, wie die Entropiegravitation als entropische Kraft aus informativen Holographischen Bildschirminformationen entsteht, und erwähne Kugelbildschirm und Bits. Auch zitiere ich qualitative F-Steps und Shapiro 1964.
+Searched for Shapiro time delay Cassini 200 microsecond
+ChatGPT
+
+Ich schaue mir Wikipedia an, um Informationen zu einem Thema zu finden.
+
+Mehr von en.wikipedia.org gelesen
+ChatGPT
+
+Ich schaue mir Zeitveränderungen durch Gravitationspotential an. Pulsdurchgänge nahe der Sonne zeigen eine Größenordnung von etwa 2×10^-4 s.
+Searched for superdeterminism measurement settings hidden variable
+ChatGPT
+
+Ich speichere Dropbox Apps für iOS mit Einzelbehandlungen und landwirtschaftlichen Maschinen im Blick.
+
+Mehr von en.wikipedia.org gelesen
+ChatGPT
+
+Ich habe den Text erneut durchgesehen und dabei die Vorstellung des Raum-Zeit-Netzwerk-Tests skizziert, um Quantenmechanik zu verstehen.
+Searched for conscious integration time brain 0.1 second
+
+wikidocs.net gelesen
+ChatGPT
+
+Ich organisiere die Informationen mit Überschriften und Aufzählungspunkten, einschließlich relevanter Zitate. Dies hilft, den Überblick zu behalten.
+ChatGPT
+Denkvorgang läuft…
