@@ -4,10 +4,36 @@
 [![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-blue)](https://github.com/GenesisAeon/Feldtheorie)
 [![Code License: GPLv3](https://img.shields.io/badge/Code%20License-GPLv3-blue.svg)](LICENSE)
 [![Content License: CC BY-NC 4.0](https://img.shields.io/badge/Content%20License-CC%20BY--NC%204.0-orange.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-5.0.0-green.svg)](#whats-new-in-v50)
+[![Version](https://img.shields.io/badge/Version-6.0.0--alpha-green.svg)](#whats-new-in-v60-alpha-)
 [![Tests](https://img.shields.io/badge/tests-430%2F430%20passing-brightgreen.svg)](#tests--quality)
 [![Funding](https://img.shields.io/badge/💎_Support-ETH_|_BTC-yellow.svg)](FUNDING.md)
 [![Project History](https://img.shields.io/badge/📅_Project_History-2025--11--20-lightgrey.svg)](CHANGELOG.md)
+
+## What's New in v6.0 (Alpha) 🌌
+
+**Version 6.0** introduces revolutionary theoretical extensions that bridge entropy physics, cosmology, and consciousness:
+
+### 🔥 Part I: Entropy Governance Duality
+- **Two Entropy Regimes:** S∝A (surface, cosmic containers, β≈11) ↔ S∝V (volume, life/computation, β≈2-7)
+- **β-Reduction Mechanism:** β_eff = β_global / (1 + σ_local/σ_critical) explains adaptive vs. catastrophic systems
+- **Origin of Life:** Phase transition from S∝A to S∝V governance via Maximum Entropy Production
+- **LLM-as-Organisms:** Modern LLMs (~0.39 J/token) show S∝V scaling like biological metabolism
+
+### 🔥 Part II: Tesseract-Zeitscheiben-Physik (OIPK)
+- **Dual-Flow Spacetime:** Orthogonal time axes (τ-implosion ⊥ t-photon) solve Wheeler-DeWitt problem
+- **Emergent Gravity:** Arises from geometric "verschnitt" (packing frustration) in discrete slices
+- **Consciousness Integration:** Δt_Q ≈ 150ms as evolutionary Pareto optimum (spatial coherence ↔ temporal resolution ↔ metabolic cost)
+- **Testable CMB Prediction:** 12-fold symmetry from tesseract cube geometry (falsifiable with Planck data)
+
+### 🎯 Unified Constant: v_RIG = c/(α⁻¹·Φ) ≈ 1,352 km/s
+- **Regime Transition Rate:** Information flow between S∝A ↔ S∝V governance
+- **Consciousness Integration Speed:** ~10^42 slices/second creating subjective "now"
+- **Empirically Validated:** Solar circulation velocity match (1.3% error)
+
+**📄 Full Documentation:** [`docs/v6_entropy_governance_tesseract_physics.md`](docs/v6_entropy_governance_tesseract_physics.md)
+**📄 Source PDF:** [`releases/V6-Plans_etc/DEEP RESEARCH_ Entropy Governance Duality & Tesseract-Zeitscheiben-Physik-1.pdf`](releases/V6-Plans_etc/DEEP%20RESEARCH_%20Entropy%20Governance%20Duality%20%26%20Tesseract-Zeitscheiben-Physik-1.pdf)
+
+---
 
 ## What's New in v5.0 🚀
 
