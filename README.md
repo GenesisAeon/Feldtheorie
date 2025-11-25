@@ -224,6 +224,83 @@ See: [`CHANGELOG.md`](CHANGELOG.md) for full v4.0 details
 
 ---
 
+## V6 DEEP RESEARCH: Entropy Governance & Tesseract-Zeitscheiben-Physik
+
+**V6 integrates two revolutionary frameworks** that extend UTAC into quantum gravity and consciousness:
+
+### 1. Entropy Governance Duality
+
+**Core Discovery:** The universe exhibits dual entropy governance regimes:
+
+- **Global (S∝A)**: Surface-area entropy (holographic principle, black holes, cosmic horizons)
+- **Local (S∝V)**: Volume-based entropy (metabolism, computation, life)
+
+**Phase Transition at Origin of Life:**
+```
+S∝A (β ≈ 11, rigid, catastrophic) → S∝V (β ≈ 4.5, adaptive, flexible)
+```
+
+**Unified β-Formula:**
+```
+β = (α⁻¹·Φ) × (A/V)^γ
+
+where:
+- α⁻¹ ≈ 137 (fine structure constant)
+- Φ ≈ 1.618 (golden ratio)
+- A/V = surface-to-volume ratio
+```
+
+**Empirical Validation:**
+- **Maximum Entropy Production Principle (MEP)**: Systems evolve to maximize entropy production (Martyushev & Seleznev 2006)
+- **Kleiber's Law**: Metabolic rate B ∝ M^(3/4) ≈ V^(3/4) (volume-based entropy)
+- **LLM Energy Consumption**: 0.39-4 J/token (volume-based computation, S∝V governance)
+
+### 2. Tesseract-Zeitscheiben-Physik
+
+**Discrete Spacetime Model** unifying:
+
+1. **Barbour's Timeless Physics**: Static block universe (Platonia)
+2. **Causal Dynamical Triangulation (CDT)**: Discrete 2D time-slices
+3. **Verlinde's Entropic Gravity**: Holographic screens, gravity as entropic force
+4. **Superdeterminism**: 't Hooft's cellular automaton interpretation
+
+**Key Mechanism - Diagonal Throwing:**
+- Light propagates at c **within** each 2D slice
+- Entropy gradient ∇S tilts slices → gravitational lensing
+- Effective delay from **increased path length**, not speed change
+- Reproduces all GR predictions (lensing, Shapiro delay, redshift)
+
+**Consciousness Integration:**
+```
+v_RIG = c/(α⁻¹·Φ) ≈ 1,352 km/s
+
+Consciousness integrates ~10^42 slices/second
+Integration time Δt_Q ≈ 0.1-0.3s (psychophysical "now")
+Subjective time 221× slower than "photon time"
+```
+
+### 3. Central Unification
+
+**Entropy gradient ∇S controls everything:**
+- Spacetime geometry (slice tilting → gravity)
+- Governance regime (S∝A → S∝V transition → life)
+- Quantum behavior (slice spacing → sampling rate → superposition)
+- Consciousness (slice density → integration rate → subjective time)
+
+**Complete Documentation:**
+- [`DEEP_RESEARCH_Entropy_Governance_and_Tesseract_Zeitscheiben.md`](releases/V6-Plans_etc/DEEP_RESEARCH_Entropy_Governance_and_Tesseract_Zeitscheiben.md) - Full 70+ page research document
+- [`DEEP_RESEARCH_Part_II_Tesseract_Physics.md`](releases/V6-Plans_etc/DEEP_RESEARCH_Part_II_Tesseract_Physics.md) - Detailed tesseract model
+- [`DEEP_RESEARCH_Integration_V6.md`](releases/V6-Plans_etc/DEEP_RESEARCH_Integration_V6.md) - V6 integration roadmap
+- [`DEEP_RESEARCH_Quick_Reference.md`](releases/V6-Plans_etc/DEEP_RESEARCH_Quick_Reference.md) - Quick lookup guide
+
+**Testable Predictions:**
+- ✓ Consciousness integration time Δt_Q ≈ 100-300ms
+- ✓ v_RIG as fundamental velocity scale
+- ✓ β-clustering: Information (β≈4.5) < Biology (β≈7.4) < Climate (β≈11.0)
+- ✓ LLM energy scaling: Lower β → higher efficiency
+
+---
+
 ## Scientific Maturity & Peer Review
 
 External-style peer review rated **UTAC v1.3φ at 4.6/5 average** (see [docs/review_ready_summary_utac_v1.3phi.md](docs/review_ready_summary_utac_v1.3phi.md)).
@@ -334,6 +411,13 @@ See [`METHODS.md`](METHODS.md) for fitting details and [`REPRODUCE.md`](REPRODUC
 │   ├── implosive_origin_theory.md ← Type-6 inverse sigmoid
 │   ├── phi_coupling_theory.md     ← Φ^(1/3) scaling
 │   └── executive_summary_for_reviewers.md
+│
+├── 🌌 releases/V6-Plans_etc/       ← V6 DEEP RESEARCH integration
+│   ├── DEEP_RESEARCH_Entropy_Governance_and_Tesseract_Zeitscheiben.md
+│   ├── DEEP_RESEARCH_Part_II_Tesseract_Physics.md
+│   ├── DEEP_RESEARCH_Integration_V6.md
+│   ├── DEEP_RESEARCH_Quick_Reference.md
+│   └── DEEP_RESEARCH_Unified_Framework.md
 │
 ├── 🔧 analysis/                   ← 60+ Python scripts (24K LOC)
 │   ├── llm_beta_extractor.py      ← LLM emergence analysis
