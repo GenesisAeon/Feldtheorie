@@ -1,7 +1,8 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.6.8
+- **Version:** v6-chronik-0.6.9
 - **Scope:** releases/V6-Plans_etc/Chronik
+- **Updated:** 2025-12-10T10:00:00Z
 - **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.9,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
 - **Quellen:** `V6_ToDoListe.{md,yaml,json}`
 
@@ -88,6 +89,10 @@
 ### Δ-Update 2025-12-09 – τ* Pytest Anchor
 - **v6-activation-gaps:** pytest-Suite deckt compute_tau_star/apply_safety_delay/ζ-Risiko und RK4-Delay ab; Pipeline-Hook + metrics/beta_evolution.csv Logging werden vorbereitet, damit ζ<0-Drift sichtbar bleibt.
 - **v6-todo-trilayer:** Δ-Register vermerkt neuen FIT-Schritt; CI-Hook und Telemetrie-Verknüpfung bleiben offen, um R/Θ/β/ζ-Drift transparent zu halten.
+
+### Δ-Update 2025-12-10 – Theorie/Recherche Intake
+- **v6-type6-integration & v6-wavefunction-integration:** Zeitscheiben-/Δt_Q-Evidenz aus `Theorie.txt` und `SucheCOMPREHENSIVE EMPIRICAL VALIDATION RESEARCH.txt` (inkl. PDF) als Leitplanken für Type‑VI Guideline, METRICS-Kopplung und Ψ(r,θ,φ,t)-Pipeline markiert.
+- **v6-pyramid-cosmic:** Hinweise aus `Pyramiden-Geometrie und Kosmische Konstanten.pdf` als Referenz für UTAC-Kopplung und Visualisierung verankert.
 
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)

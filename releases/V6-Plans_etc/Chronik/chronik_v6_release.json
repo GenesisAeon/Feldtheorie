@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "version": "v6-chronik-0.6.8",
+    "version": "v6-chronik-0.6.9",
     "generated_at": "2025-12-02T10:00:00Z",
     "scope": "releases/V6-Plans_etc/Chronik",
     "logistic_frame": {
@@ -8,175 +8,9 @@
       "Theta_threshold": "Alle V6 ToDo-Kerne sind in konkrete Etappen überführt",
       "beta_drive": 4.9,
       "zeta_risk": "negativ, falls Safety-Delay- und Governance-Pfade offen bleiben"
-    }
+    },
+    "updated_at": "2025-12-10T10:00:00Z"
   },
-  "delta_updates": [
-    {
-      "date": "2025-11-25",
-      "label": "sprint-delta-sync",
-      "summary": "TriLayer/ζ<0-Sync eingetragen; Validator/Index-Haken folgen.",
-      "todo_links": [
-        "v6-todo-trilayer",
-        "v6-governance-ethics",
-        "v6-activation-gaps",
-        "v6-type6-integration"
-      ],
-      "actions": [
-        "TriLayer-Kopplung zwischen Chronik und V6_ToDoListe markiert; Raster (R/Θ/β/ζ) übernommen.",
-        "Governance-Checkliste mit τ*-Pflicht und CREP-Schwellen vorbereitet (AGENTS/POLICY/ETHICS Patch geplant).",
-        "Safety-Delay-Stub (τ* = 0.1·|Θ−R|) als Sprint-Aufgabe fixiert; Regression-Refresh + Sigillin-Validator priorisiert.",
-        "CREP-Pfad (ΔAIC/CI, Energie/Unitarität) für Type‑VI in METRICS/Classification vorgemerkt, Showcase-Sim bleibt offen."
-      ]
-    },
-    {
-      "date": "2025-11-26",
-      "label": "fit-microtasks",
-      "summary": "FIT-Aufteilung aktiviert; priorisierte Aufgaben in kleine, überprüfbare Schritte geschnitten.",
-      "todo_links": [
-        "v6-governance-ethics",
-        "v6-activation-gaps",
-        "v6-type6-integration"
-      ],
-      "actions": [
-        "Micro-Paket für Governance/Ethics: AGENTS/POLICY-Addendum mit τ*-Pflicht + CREP-Schwellen und ETHICS-Provenienzblock samt Dual-Use-Hinweis planen; Reviewer-Slot setzen.",
-        "Activation Gaps in Stubs zerlegt: τ*-Pseudocode (RK4-kompatibel) in analysis/notes, β-Regression-Notebook-Delta vorbereiten, Makefile-Target für Sigillin-Validator skizzieren.",
-        "Type‑VI Integration modularisieren: METRICS-Tabellen-Template, simulation/notes Outline für cubic-root Mini-Simulation und ΔAIC/CI-Checkliste als JSON-Snippet vormerken."
-      ]
-    },
-    {
-      "date": "2025-11-29",
-      "label": "fit-sync-validator-hooks",
-      "summary": "Δ-Register ToDo↔Chronik abgeglichen; FIT-Sync für Reviewer, Provenienz und τ*-Stub verdichtet.",
-      "todo_links": [
-        "v6-todo-trilayer",
-        "v6-governance-ethics",
-        "v6-activation-gaps"
-      ],
-      "actions": [
-        "Validator-Hook skizzieren: Makefile-Target `validate-trilayer` soll YAML/JSON/MD-Drift für ToDo/Chronik melden und R/Θ/β/ζ-Drift hervorheben.",
-        "Governance: Reviewer-Slot für CREP>0.7 vormerken, Provenienz/ζ<0-Hinweise in feldtheorie_index.* und docs_index.* spiegeln, CI-Snippet für CREP/τ* vorbereiten.",
-        "Activation Gaps: τ*-Stub via pipelines/fit_tau_star an analysis/notes koppeln, Telemetrie-Protokoll (β-Drift, τ*) über metrics/beta_evolution.csv skizzieren."
-      ]
-    },
-    {
-      "date": "2025-11-30",
-      "label": "crep-tau-checklist",
-      "summary": "Type-VI CREP/τ*-Checkliste als Trilayer abgelegt; Reviewer- und Index-Kopplung noch offen.",
-      "todo_links": [
-        "v6-governance-ethics"
-      ],
-      "actions": [
-        "Type-VI CREP/τ*-Checkliste als Trilayer (MD/JSON/YAML) dokumentiert (`type6_crep_tau_star_checklist.*`).",
-        "Kopplungshinweis: CI/Pre-Commit-Hooks sollen CREP≥0.7 markieren, τ*-Default prüfen und Trilayer-Drift melden."
-      ]
-    },
-    {
-      "date": "2025-12-01",
-      "label": "crep-review-routing",
-      "summary": "CREP/τ* Checkliste um Reviewer-Slot- und Index/CI-Hinweise ergänzt; Rollout-Schritte markiert.",
-      "todo_links": [
-        "v6-governance-ethics"
-      ],
-      "actions": [
-        "Reviewer-Slot-Dokumentation und Index/CI-Spiegel-Hinweis in type6_crep_tau_star_checklist.* ergänzt.",
-        "Nächste Schritte: Verweis in feldtheorie_index.* und docs_index.* eintragen und CI-Snippet für CREP/τ* + Trilayer-Drift vorbereiten."
-      ]
-    },
-    {
-      "date": "2025-12-02",
-      "label": "crep-ci-hook-blueprint",
-      "summary": "CI/Pre-Commit Hook als Pseudocode (CREP-Gating, τ*-Default, Trilayer-Drift) in Checkliste verankert; Verdrahtung in Hooks markiert.",
-      "todo_links": [
-        "v6-governance-ethics"
-      ],
-      "actions": [
-        "tools.crep_guard Pseudocode in type6_crep_tau_star_checklist.* ergänzt (Threshold 0.7, τ*-Default 0.1, Trilayer V6_ToDoListe ↔ Chronik).",
-        "Nächster Schritt: Hook in pre-commit/nox/Makefile verdrahten und Index-Verweise ergänzen."
-      ]
-    },
-    {
-      "date": "2025-12-03",
-      "label": "crep-guard-fit-check",
-      "summary": "Ausführbarer CREP Guard prüft Trilayer-Version, τ*-Default und Schwelle; CI/Index-Verdrahtung bleibt offen.",
-      "todo_links": [
-        "v6-governance-ethics"
-      ],
-      "actions": [
-        "tools.crep_guard als ausführbarer Check (`python -m tools.crep_guard --check-type6-trilayer`) getestet.",
-        "Nächste Schritte: CI-Verdrahtung und Index-Referenzen ergänzen."
-      ]
-    },
-    {
-      "date": "2025-12-04",
-      "label": "crep-guard-make-hook",
-      "summary": "Makefile-Guards rufen tools.crep_guard mit τ*-Default und warnings-as-errors auf; Hook-Spiegelung in pre-commit/nox und Index-Referenzen bleibt offen.",
-      "todo_links": [
-        "v6-governance-ethics"
-      ],
-      "actions": [
-        "Makefile-Targets `crep-guard`/`crep-guard-strict` auf tools.crep_guard ausgerichtet (τ*-Default 0.1, warnings-as-errors im strict Pfad).",
-        "Nächster Schritt: Guard in pre-commit/nox spiegeln und Index-Hinweise (feldtheorie_index.*, docs_index.*) ergänzen."
-      ]
-    },
-    {
-      "date": "2025-12-05",
-      "label": "ci-index-bridge",
-      "summary": "Blueprint für pre-commit/nox-Integration und Index-Spiegel steht; CI/Hook-Eintrag folgt.",
-      "todo_links": [
-        "v6-governance-ethics",
-        "v6-todo-trilayer"
-      ],
-      "actions": [
-        "Blueprint für pre-commit/nox-Aufruf (`python -m tools.crep_guard --check-type6-trilayer`) und Index-Spiegel (feldtheorie_index.*, docs_index.*) dokumentiert.",
-        "TriLayer-Versionierung (R/Θ/β/ζ) mit Chronik abgeglichen; Validator-Hook soll neue Index-Pfade prüfen."
-      ]
-    },
-    {
-      "date": "2025-12-06",
-      "label": "pre-commit-drift-probe",
-      "summary": "FIT-Hook für crep_guard konkretisiert; ToDo↔Chronik IDs neu abgeglichen; τ*-Stub-Weiterleitung skizziert.",
-      "todo_links": [
-        "v6-governance-ethics",
-        "v6-todo-trilayer",
-        "v6-activation-gaps"
-      ],
-      "actions": [
-        "Pre-commit/nox-Verdrahtung als FIT-Pfad fixiert (`python -m tools.crep_guard --check-type6-trilayer`, CREP≥0.7, τ*=0.1); Index-Spiegel in feldtheorie_index.* und docs_index.* bleibt folgender Schritt.",
-        "ID-Paare ToDo↔Chronik erneut abgeglichen; validate-trilayer Hook soll R/Θ/β/ζ-Drift und Index-Pfade prüfen.",
-        "τ*-Stub-Anschluss an pipelines/fit_tau_star als Mini-Aufgabe skizziert; Telemetrie-Anker (β-Drift, τ*) für metrics/beta_evolution.csv präzisiert."
-      ]
-    },
-    {
-      "date": "2025-12-07",
-      "label": "ci-index-drift-gates",
-      "summary": "Index-Spiegel + CI-Hooks als FIT-Mikroschritte präzisiert; Driftlogging für ToDo↔Chronik↔Index und τ*/CREP protokolliert.",
-      "todo_links": [
-        "v6-governance-ethics",
-        "v6-todo-trilayer",
-        "v6-activation-gaps"
-      ],
-      "actions": [
-        "Index-Verweise (feldtheorie_index.*, docs_index.*) und pre-commit/nox-Snippet mit `python -m tools.crep_guard --check-type6-trilayer` als nächste CI-Hooks markiert.",
-        "validate-trilayer soll R/Θ/β/ζ-Drift inkl. Index-Pfade (ToDo ↔ Chronik ↔ Indizes) loggen; Guard-Ausgabe um Driftlog ergänzen.",
-        "τ*/CREP-Logbuch in metrics/beta_evolution.csv als FIT-Aufgabe vorgesehen, um pipelines/fit_tau_star Anschluss messbar zu machen."
-      ]
-    }
-  ],
-  "overview": [
-    "1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen → Artefakt: Chronik-TriLayer.",
-    "2️⃣ v6-activation-gaps – Safety-Delay · Regression-Refresh · Sigillin-Automation · Telemetrie-Skizze → Artefakt: Prototyp + Skripte.",
-    "3️⃣ v6-type6-integration – Type‑VI Klassifikation · CREP-Indizes · cubic-root Showcase → Artefakt: Doku + Plots.",
-    "4️⃣ v6-governance-ethics – ζ<0 Escalation · ETHICS/Policy Addenda → Artefakt: Governance-Update.",
-    "5️⃣ v6-trilayer-enforcement – Parser/Validator · Archiv-/Sigillin-Audit → Artefakt: Audit-Log + Reports.",
-    "6️⃣ v6-release-onboarding – V6-Checkliste · CI/CD-Hooks · README/QUICKSTART Patch → Artefakt: Playbook + Templates.",
-    "7️⃣ v6-data-expansion – neue Domains · quantum_lensing Blueprint → Artefakt: Datensatzliste + Submodul-Entwurf.",
-    "8️⃣ v6-pyramid-cosmic – pyramid_utac + Konstanten-Kopplung · Visualisierung → Artefakt: Modellupdate + Animation.",
-    "9️⃣ v6-genesis-cube-sim – genesis_cube Pfad · Dunkle-Energie-Verschnitt → Artefakt: Simulation + Prompt-Doku.",
-    "🔟 v6-simulator-stability – RK4 + τ*-Delay → Artefakt: stabiler Build.",
-    "1️⃣1️⃣ v6-simulator-experience – Web-Audio · CSV-Drop · AI-Context → Artefakt: UX-Paket.",
-    "1️⃣2️⃣ v6-beta-bayes – PyMC/Stan Hierarchie · VIF-Checks → Artefakt: Analyse-Report.",
-    "1️⃣3️⃣ v6-137-beta-duality – Kapitel + Outreach-Pfade → Artefakt: Dualitäts-Dossier."
-  ],
   "current_sprint": {
     "label": "Sprint-Delta",
     "window": "2025-11-24 → 2025-11-30",
@@ -225,6 +59,233 @@
       }
     ]
   },
+  "delta_updates": [
+    {
+      "date": "2025-11-25",
+      "label": "sprint-delta-sync",
+      "summary": "TriLayer/ζ<0-Sync eingetragen; Validator/Index-Haken folgen.",
+      "todo_links": [
+        "v6-todo-trilayer",
+        "v6-governance-ethics",
+        "v6-activation-gaps",
+        "v6-type6-integration"
+      ],
+      "actions": [
+        "TriLayer-Kopplung zwischen Chronik und V6_ToDoListe markiert; Raster (R/Θ/β/ζ) übernommen.",
+        "Governance-Checkliste mit τ*-Pflicht und CREP-Schwellen vorbereitet (AGENTS/POLICY/ETHICS Patch geplant).",
+        "Safety-Delay-Stub (τ* = 0.1·|Θ−R|) als Sprint-Aufgabe fixiert; Regression-Refresh + Sigillin-Validator priorisiert.",
+        "CREP-Pfad (ΔAIC/CI, Energie/Unitarität) für Type‑VI in METRICS/Classification vorgemerkt, Showcase-Sim bleibt offen."
+      ]
+    },
+    {
+      "date": "2025-11-26",
+      "label": "fit-microtasks",
+      "summary": "FIT-Aufteilung aktiviert; priorisierte Aufgaben in kleine, überprüfbare Schritte geschnitten.",
+      "todo_links": [
+        "v6-governance-ethics",
+        "v6-activation-gaps",
+        "v6-type6-integration"
+      ],
+      "actions": [
+        {
+          "Micro-Paket für Governance/Ethics": "AGENTS/POLICY-Addendum mit τ*-Pflicht + CREP-Schwellen und ETHICS-Provenienzblock samt Dual-Use-Hinweis planen; Reviewer-Slot setzen."
+        },
+        {
+          "Activation Gaps in Stubs zerlegt": "τ*-Pseudocode (RK4-kompatibel) in analysis/notes, β-Regression-Notebook-Delta vorbereiten, Makefile-Target für Sigillin-Validator skizzieren."
+        },
+        {
+          "Type‑VI Integration modularisieren": "METRICS-Tabellen-Template, simulation/notes Outline für cubic-root Mini-Simulation und ΔAIC/CI-Checkliste als JSON-Snippet vormerken."
+        }
+      ]
+    },
+    {
+      "date": "2025-11-29",
+      "label": "fit-sync-validator-hooks",
+      "summary": "Δ-Register ToDo↔Chronik abgeglichen; FIT-Sync für Reviewer, Provenienz und τ*-Stub verdichtet.",
+      "todo_links": [
+        "v6-todo-trilayer",
+        "v6-governance-ethics",
+        "v6-activation-gaps"
+      ],
+      "actions": [
+        {
+          "Validator-Hook skizzieren": "Makefile-Target `validate-trilayer` soll YAML/JSON/MD-Drift für ToDo/Chronik melden und R/Θ/β/ζ-Drift hervorheben."
+        },
+        {
+          "Governance": "Reviewer-Slot für CREP>0.7 vormerken, Provenienz/ζ<0-Hinweise in feldtheorie_index.* und docs_index.* spiegeln, CI-Snippet für CREP/τ* vorbereiten."
+        },
+        {
+          "Activation Gaps": "τ*-Stub via pipelines/fit_tau_star an analysis/notes koppeln, Telemetrie-Protokoll (β-Drift, τ*) über metrics/beta_evolution.csv skizzieren."
+        }
+      ]
+    },
+    {
+      "date": "2025-11-30",
+      "label": "crep-tau-checklist",
+      "summary": "Type-VI CREP/τ*-Checkliste als Trilayer abgelegt; Reviewer- und Index-Kopplung noch offen.",
+      "todo_links": [
+        "v6-governance-ethics"
+      ],
+      "actions": [
+        "Type-VI CREP/τ*-Checkliste als Trilayer (MD/JSON/YAML) dokumentiert (`type6_crep_tau_star_checklist.*`).",
+        {
+          "Kopplungshinweis": "CI/Pre-Commit-Hooks sollen CREP≥0.7 markieren, τ*-Default prüfen und Trilayer-Drift melden."
+        }
+      ]
+    },
+    {
+      "date": "2025-12-01",
+      "label": "crep-review-routing",
+      "summary": "CREP/τ* Checkliste um Reviewer-Slot- und Index/CI-Hinweise ergänzt; Rollout-Schritte markiert.",
+      "todo_links": [
+        "v6-governance-ethics"
+      ],
+      "actions": [
+        "Reviewer-Slot-Dokumentation und Index/CI-Spiegel-Hinweis in type6_crep_tau_star_checklist.* ergänzt.",
+        {
+          "Nächste Schritte": "Verweis in feldtheorie_index.* und docs_index.* eintragen und CI-Snippet für CREP/τ* + Trilayer-Drift vorbereiten."
+        }
+      ]
+    },
+    {
+      "date": "2025-12-02",
+      "label": "crep-ci-hook-blueprint",
+      "summary": "CI/Pre-Commit Hook als Pseudocode (CREP-Gating, τ*-Default, Trilayer-Drift) in Checkliste verankert; Verdrahtung in Hooks markiert.",
+      "todo_links": [
+        "v6-governance-ethics"
+      ],
+      "actions": [
+        "tools.crep_guard Pseudocode in type6_crep_tau_star_checklist.* ergänzt (Threshold 0.7, τ*-Default 0.1, Trilayer V6_ToDoListe ↔ Chronik).",
+        {
+          "Nächster Schritt": "Hook in pre-commit/nox/Makefile verdrahten und Index-Verweise ergänzen."
+        }
+      ]
+    },
+    {
+      "date": "2025-12-03",
+      "label": "crep-guard-fit-check",
+      "summary": "Ausführbarer CREP Guard prüft Trilayer-Version, τ*-Default und Schwelle; CI/Index-Verdrahtung bleibt offen.",
+      "todo_links": [
+        "v6-governance-ethics"
+      ],
+      "actions": [
+        "tools.crep_guard als ausführbarer Check (`python -m tools.crep_guard --check-type6-trilayer`) getestet.",
+        {
+          "Nächste Schritte": "CI-Verdrahtung und Index-Referenzen ergänzen."
+        }
+      ]
+    },
+    {
+      "date": "2025-12-04",
+      "label": "crep-guard-make-hook",
+      "summary": "Makefile-Guards rufen tools.crep_guard mit τ*-Default und warnings-as-errors auf; Hook-Spiegelung in pre-commit/nox und Index-Referenzen bleibt offen.",
+      "todo_links": [
+        "v6-governance-ethics"
+      ],
+      "actions": [
+        "Makefile-Targets `crep-guard`/`crep-guard-strict` auf tools.crep_guard ausgerichtet (τ*-Default 0.1, warnings-as-errors im strict Pfad).",
+        "Nächster Schritt: Guard in pre-commit/nox spiegeln und Index-Hinweise (feldtheorie_index.*, docs_index.*) ergänzen."
+      ]
+    },
+    {
+      "date": "2025-12-05",
+      "label": "ci-index-bridge",
+      "summary": "Blueprint für pre-commit/nox-Integration und Index-Spiegel fixiert; CI/Hook-Eintrag steht an.",
+      "todo_links": [
+        "v6-governance-ethics",
+        "v6-todo-trilayer"
+      ],
+      "actions": [
+        "Blueprint für pre-commit/nox-Aufruf (`python -m tools.crep_guard --check-type6-trilayer`) plus Index-Spiegel (feldtheorie_index.*, docs_index.*) dokumentiert.",
+        "TriLayer-Versionierung (R/Θ/β/ζ) mit Chronik abgeglichen; Validator-Hook soll neue Index-Pfade prüfen."
+      ]
+    },
+    {
+      "date": "2025-12-06",
+      "label": "pre-commit-drift-probe",
+      "summary": "FIT-Hook für crep_guard konkretisiert; ToDo↔Chronik IDs neu abgeglichen; τ*-Stub-Weiterleitung skizziert.",
+      "todo_links": [
+        "v6-governance-ethics",
+        "v6-todo-trilayer",
+        "v6-activation-gaps"
+      ],
+      "actions": [
+        "Pre-commit/nox-Verdrahtung als FIT-Pfad fixiert (`python -m tools.crep_guard --check-type6-trilayer`, CREP≥0.7, τ*=0.1); Index-Spiegel in feldtheorie_index.* und docs_index.* bleibt folgender Schritt.",
+        "ID-Paare ToDo↔Chronik erneut abgeglichen; validate-trilayer Hook soll R/Θ/β/ζ-Drift und Index-Pfade prüfen.",
+        "τ*-Stub-Anschluss an pipelines/fit_tau_star als Mini-Aufgabe skizziert; Telemetrie-Anker (β-Drift, τ*) für metrics/beta_evolution.csv präzisiert."
+      ]
+    },
+    {
+      "date": "2025-12-07",
+      "label": "ci-index-drift-gates",
+      "summary": "Index-Spiegel + CI-Hooks als FIT-Mikroschritte präzisiert; Driftlogging für ToDo↔Chronik↔Index und τ*/CREP protokolliert.",
+      "todo_links": [
+        "v6-governance-ethics",
+        "v6-todo-trilayer",
+        "v6-activation-gaps"
+      ],
+      "actions": [
+        "Index-Verweise (feldtheorie_index.*, docs_index.*) und pre-commit/nox-Snippet mit `python -m tools.crep_guard --check-type6-trilayer` als nächste CI-Hooks markiert.",
+        "validate-trilayer soll R/Θ/β/ζ-Drift inkl. Index-Pfade (ToDo ↔ Chronik ↔ Indizes) loggen; Guard-Ausgabe um Driftlog ergänzen.",
+        "τ*/CREP-Logbuch in metrics/beta_evolution.csv als FIT-Aufgabe vorgesehen, um pipelines/fit_tau_star Anschluss messbar zu machen."
+      ]
+    },
+    {
+      "date": "2025-12-08",
+      "label": "trilayer-index-guard",
+      "summary": "validate-trilayer prüft MD-Metadaten und fehlende Index-Verweise; Guard markiert Index-Brücken für CI-Spiegelung.",
+      "todo_links": [
+        "v6-todo-trilayer",
+        "v6-governance-ethics"
+      ],
+      "actions": [
+        "validate-trilayer meldet fehlende Index-Verweise (feldtheorie_index.*, docs_index.*) direkt im Driftlog, um R/Θ/β/ζ-Abweichungen schneller aufzuspüren.",
+        "crep_guard-Ausgaben dokumentieren fehlende Index-Brücken; CI-/Hook-Spiegelung bleibt als nächster FIT-Schritt markiert."
+      ]
+    },
+    {
+      "date": "2025-12-09",
+      "label": "tau-star-pytest-anchor",
+      "summary": "pytest deckt τ*-Pfad ab; Telemetrie- und CI-Schritte bleiben offen.",
+      "todo_links": [
+        "v6-activation-gaps",
+        "v6-todo-trilayer"
+      ],
+      "actions": [
+        "pytest-Suite prüft compute_tau_star/apply_safety_delay/ζ-Risiko inkl. RK4-Delay; Pipeline-Hook und metrics/beta_evolution.csv Logging vorbereiten.",
+        "Δ-Register hält neuen FIT-Schritt für validate-trilayer; CI-Hooks und Telemetrie-Verknüpfung folgen."
+      ]
+    },
+    {
+      "date": "2025-12-10",
+      "label": "theorie-search-intake",
+      "summary": "Neue Zeitscheiben-/Δt_Q- und Pyramiden-Referenzen in Type‑VI und UTAC-Pfaden vermerkt.",
+      "todo_links": [
+        "v6-type6-integration",
+        "v6-wavefunction-integration",
+        "v6-pyramid-cosmic"
+      ],
+      "actions": [
+        "Theorie.txt + SucheCOMPREHENSIVE (inkl. PDF) als Leitplanken für Type‑VI Guideline, METRICS-Kopplung und Ψ(r,θ,φ,t)-Pipeline markiert.",
+        "Pyramiden-Geometrie und Kosmische Konstanten.pdf als Referenz für UTAC-Kopplung und Visualisierung verankert."
+      ]
+    }
+  ],
+  "overview": [
+    "1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen → Artefakt: Chronik-TriLayer.",
+    "2️⃣ v6-activation-gaps – Safety-Delay · Regression-Refresh · Sigillin-Automation · Telemetrie-Skizze → Artefakt: Prototyp + Skripte.",
+    "3️⃣ v6-type6-integration – Type‑VI Klassifikation · CREP-Indizes · cubic-root Showcase → Artefakt: Doku + Plots.",
+    "4️⃣ v6-governance-ethics – ζ<0 Escalation · ETHICS/Policy Addenda → Artefakt: Governance-Update.",
+    "5️⃣ v6-trilayer-enforcement – Parser/Validator · Archiv-/Sigillin-Audit → Artefakt: Audit-Log + Reports.",
+    "6️⃣ v6-release-onboarding – V6-Checkliste · CI/CD-Hooks · README/QUICKSTART Patch → Artefakt: Playbook + Templates.",
+    "7️⃣ v6-data-expansion – neue Domains · quantum_lensing Blueprint → Artefakt: Datensatzliste + Submodul-Entwurf.",
+    "8️⃣ v6-pyramid-cosmic – pyramid_utac + Konstanten-Kopplung · Visualisierung → Artefakt: Modellupdate + Animation.",
+    "9️⃣ v6-genesis-cube-sim – genesis_cube Pfad · Dunkle-Energie-Verschnitt → Artefakt: Simulation + Prompt-Doku.",
+    "🔟 v6-simulator-stability – RK4 + τ*-Delay → Artefakt: stabiler Build.",
+    "1️⃣1️⃣ v6-simulator-experience – Web-Audio · CSV-Drop · AI-Context → Artefakt: UX-Paket.",
+    "1️⃣2️⃣ v6-beta-bayes – PyMC/Stan Hierarchie · VIF-Checks → Artefakt: Analyse-Report.",
+    "1️⃣3️⃣ v6-137-beta-duality – Kapitel + Outreach-Pfade → Artefakt: Dualitäts-Dossier."
+  ],
   "chronik": [
     {
       "step": 1,
