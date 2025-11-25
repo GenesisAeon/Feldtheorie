@@ -23,6 +23,16 @@ References:
 from __future__ import annotations
 
 __version__ = "0.1.0"
-__all__ = ["compute_tau_star", "apply_safety_delay"]
+__all__ = [
+    "compute_tau_star",
+    "apply_safety_delay",
+    "compute_zeta_risk",
+    "rk4_step_with_tau_star",
+]
 
-from .tau_star_delay import compute_tau_star, apply_safety_delay
+from .tau_star_delay import (
+    apply_safety_delay,
+    compute_tau_star,
+    compute_zeta_risk,
+    rk4_step_with_tau_star,
+)
