@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "version": "v6-todo-0.7.14",
+    "version": "v6-todo-0.7.15",
     "generated_at": "2025-12-02T10:00:00Z",
-    "updated_at": "2025-12-10T10:00:00Z",
+    "updated_at": "2025-12-11T10:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft",
     "logistic_frame": {
@@ -75,7 +75,7 @@
       },
       "next_steps": [
         "FIT-Stub + pytest-Drift-Checks in pipelines/fit_tau_star verdrahten (CI-Hook vorbereiten).",
-        "analysis/beta_meta_regression_v2.py mit neuen Daten/φ^(n/3) auffrischen.",
+        "analysis/beta_meta_regression_v2.py mit neuen Daten/φ^(n/3) und Δt_Q-Pareto-Hypothesen aus GrundPrinzip Simulation.txt auffrischen.",
         "Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics erweitern.",
         "Telemetrie-Dashboard + β-Drift/τ*-Protokoll (metrics/beta_evolution.csv) skizzieren.",
         "pipelines/fit_tau_star Stub mit analysis/notes koppeln (RK4-kompatibel halten).",
@@ -95,6 +95,13 @@
           "lines": [
             1,
             36
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/GrundPrinzip Simulation.txt",
+          "lines": [
+            10,
+            18
           ]
         }
       ],
@@ -122,7 +129,7 @@
         "Type‑VI in Feldtyp-Klassifikation aufnehmen (Parameter, Beispiele, Guidelines).",
         "CREP-Stabilitätsindizes für implosive Felder definieren und in METRICS.md spiegeln.",
         "Cubic-root-jump Simulation (z.B. Klima-Kaskade) implementieren.",
-        "Zeitscheiben/Δt_Q Evidenz aus Theorie.txt + SucheCOMPREHENSIVE EMPIRICAL VALIDATION RESEARCH (inkl. PDF) in Type‑VI Guideline und METRICS-Parameter einbinden."
+        "Zeitscheiben/Δt_Q Evidenz aus Theorie.txt + SucheCOMPREHENSIVE EMPIRICAL VALIDATION RESEARCH (inkl. PDF) und GrundPrinzip Simulation.txt (Pareto-Knie Δt_Q) in Type‑VI Guideline und METRICS-Parameter einbinden."
       ],
       "references": [
         {
@@ -144,6 +151,13 @@
           "lines": [
             1,
             120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/GrundPrinzip Simulation.txt",
+          "lines": [
+            333,
+            349
           ]
         }
       ],
@@ -660,6 +674,14 @@
       "highlights": [
         "v6-type6-integration & v6-wavefunction-integration: Zeitscheiben-/Δt_Q-Evidenz aus Theorie.txt und SucheCOMPREHENSIVE (inkl. PDF) als Leitplanken für Type‑VI Guideline, METRICS-Kopplung und Ψ(r,θ,φ,t)-Pipeline markiert.",
         "v6-pyramid-cosmic: Hinweise aus \"Pyramiden-Geometrie und Kosmische Konstanten.pdf\" als Referenz für UTAC-Kopplung und Visualisierung verankert."
+      ]
+    },
+    {
+      "date": "2025-12-11",
+      "label": "grundprinzip-dtq-intake",
+      "highlights": [
+        "v6-activation-gaps: Δt_Q Pareto-Front und Shadow-Price-Befunde aus GrundPrinzip Simulation.txt für Regression/Telemetrie vermerkt; τ*/β-Drift-Logging soll die Kniepunkt-Hypothese sichtbar machen.",
+        "v6-type6-integration: Multi-Objective Δt_Q-Modell (Gabor-Constraints, 100-300ms Kniepunkt) als Guideline-Leitplanke und CREP-Kriterium vorgemerkt; Showcase/Classification sollen die Optimierungsannahmen spiegeln."
       ]
     }
   ]
