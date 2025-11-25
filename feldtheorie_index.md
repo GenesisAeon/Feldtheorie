@@ -209,25 +209,40 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 ### 🛡️ **releases/V6-Plans_etc/** - V6 Governance & Safety
 **Multiple Docs** | **V6 Release Planning**
 📍 Index: `releases/V6-Plans_etc/V6_ToDoListe.{yaml,json,md}`
+📍 Status: **Infrastruktur validiert (2025-11-25)**
 
 **Was:** V6-Release-Planung, Type-VI Implosionsmodelle, CREP/τ* Safety-Governance
 
 **Must-Read:**
 - `type6_crep_tau_star_checklist.md` - **🔴 KRITISCH: CREP ≥ 0.7 & τ*-Pflicht!**
-- `V6_ToDoListe.md` - Sprint Δ (2025-11-24 → 2025-11-30) Roadmap
-- `Chronik/chronik_v6_release.md` - V6 Entwicklungspfad & Δ-Updates
+- `V6_ToDoListe.md` - Sprint Δ (2025-11-24 → 2025-11-30) Roadmap (v6-todo-0.7.15)
+- `Chronik/chronik_v6_release.md` - V6 Entwicklungspfad & Δ-Updates (v6-chronik-0.7.0)
 - `POLICY.md` & `ETHICS.md` - Type-VI Safety Addendum, Provenienz, Dual-Use
 
 **CREP/τ*-Governance:**
 - CREP ≥ 0.7 → Reviewer-Slot erforderlich
 - τ* = 0.1·|Θ−R| als Default
 - RK4+ Integrator bei ζ<0 (kein Euler!)
-- Trilayer-Drift-Checks via `make validate-trilayer`
+- Trilayer-Drift-Checks via `make validate-trilayer` ✅ **VALIDIERT**
 
 **CI-Hooks:**
-- Pre-commit: CREP-Gating, τ*-Validierung
-- Index-Spiegelung: feldtheorie_index.*, docs_index.*
+- `make crep-guard` / `make crep-guard-strict` → tools/crep_guard.py ✅ **OPERATIONAL**
+- `make validate-trilayer` → scripts/validate_trilayer.py ✅ **OPERATIONAL**
+- Index-Spiegelung: feldtheorie_index.*, docs_index.* ✅ **SYNCHRONIZED**
 - Provenienz-Protokoll: Dual-Use-Check, ΔAIC/CI-Metriken
+
+**Implementierte Module:**
+- `pipelines/fit_tau_star/` - τ* Safety-Delay Pipeline (RK4-kompatibel) ✅
+  - compute_tau_star(), apply_safety_delay(), compute_zeta_risk()
+  - rk4_step_with_tau_star() für implosive Feldintegration
+- `tests/test_tau_star_delay.py` - Pytest-Abdeckung für τ*-Funktionen ✅
+
+**Trilayer-Status (v6-todo-0.7.15):**
+- 14 Tasks katalogisiert (v6-todo-trilayer bis v6-wavefunction-integration)
+- β-drive: 4.8 (aligned across YAML/JSON/MD)
+- ζ-Risiko: negativ, falls Safety-Delay-Feld aussteht
+- R-goal: "Navigierbare V6-Release-Landkarte" ✅
+- Θ-threshold: "Aktivierungs-Lücken geschlossen und Governance aktualisiert" 🔄
 
 ---
 
