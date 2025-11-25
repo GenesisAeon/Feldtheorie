@@ -10,12 +10,13 @@ Die **Living Documentation Tapestry** - UTAC Theory in Markdown! 30 Dokumente, 4
 
 ```
 docs/
-├── Theory (5): Core, Emergence, Appendix, Kohärenzformel, v2.0 Synthesis ⭐NEW!
+├── Theory (5): Core, Emergence, Appendix, Kohärenzformel, v2.0 Synthesis
+├── V6 Extensions (3): Entropy Governance & Tesseract-Physics, OIPK Summary, Tesseract Geometry ⭐NEW!
 ├── Applications (4): Classification, Use Cases, Review Guide, Safety-Delay Status
 ├── Validation (2): Falsifiability, Reports
 └── Infrastructure (19): README, Cleanup Resonance Map, Status Matrix, Metaquest Parity Brief, Activation Backlog, Docs Index, Sigillin Hygiene, Search Patterns, Zenodo Abstract, Zenodo Playbook, Resonance Bridge Map, UTAC v2 Data Lanterns, UTAC v2 Activation Tracker 2026-02, UTAC v2 Activation Tracker 2026-03, UTAC v2 Activation Tracker 2026-05, UTAC v2 Activation Tracker 2026-06, UTAC v2 Activation Tracker 2026-07, UTAC v2 Activation Tracker 2026-08, UTAC v2 Gap Synopsis 2026-03
 
-Total: 30 MD files
+Total: 33 MD files
 ```
 
 ---
@@ -25,8 +26,9 @@ Total: 30 MD files
 ### ⭐ **START HERE:**
 1. `utac_theory_core.md` - **DAS FUNDAMENT!**
 2. `utac_v2_synthesis.md` - **⭐ UTAC v2.0 Multi-Attraktor Framework (78 Systeme, p<10⁻²⁰)**
-3. `utac_falsifiability.md` - **Warum UTAC falsifizierbar ist**
-4. `field_type_classification_v1.1.md` - **Die 5 Systemtypen**
+3. **`v6_entropy_governance_tesseract_physics.md`** - **⭐⭐ V6: S∝A ↔ S∝V Duality & Tesseract-Physics (COMPLETE)**
+4. `utac_falsifiability.md` - **Warum UTAC falsifizierbar ist**
+5. `field_type_classification_v1.1.md` - **Die 5 Systemtypen**
 
 ### 📊 **Für Validation:**
 - `utac_falsifiability.md` (Null-Models, ΔAIC>10)
@@ -50,6 +52,16 @@ Total: 30 MD files
 4. `appendix_field_types.md` - Field Types Detail
 5. `UTAC_v2.0_Coherence_Formula.md` - Kohärenzformel für die fraktale Systemtopographie
 
+### 🌌 V6 Extensions (3 docs)
+**Was:** Entropy Governance Duality, Tesseract-Zeitscheiben-Physik, OIPK Framework
+
+1. **`v6_entropy_governance_tesseract_physics.md`** - ⭐⭐ **VOLLSTÄNDIGE V6-THEORIE!**
+   - Teil I: Entropy Governance (S∝A ↔ S∝V, MEP, Kleiber, Origin of Life, LLMs)
+   - Teil II: Tesseract-Physics (OIPK, Dual-Flow Spacetime, Bewusstsein Δt_Q)
+   - Integration Matrix, Falsifikation, Empirische Validation Roadmap
+2. `v6_oipk_integration_summary.md` - OIPK/Tesseract Summary & Code Integration
+3. `tesseract_timeslice_geometry.md` - 4D Block Universe mit entropischer Gravitation
+
 ### 🟢 Applications (4 docs)
 **Was:** Classification, Use Cases, Review Guide, Safety-Delay Bridge
 
@@ -57,6 +69,27 @@ Total: 30 MD files
 2. `utac_applications.md` - Praktische Anwendungen
 3. `utac_review_considerations.md` - Selbst-Kritik für Reviewer
 4. `utac_safety_delay_status.md` - τ*-Brücke mit Θ_delay, β, ΔAIC-Hooks
+
+### 🌌 V6: Entropy Governance & Tesseract-Physics - **NEW!**
+**Was:** Entropy Governance Duality (S∝A ↔ S∝V) & Tesseract-Zeitscheiben-Physik (OIPK)
+
+**🔥 Main Document:**
+- **`v6_entropy_governance_tesseract_physics.md`** - ⭐ **VOLLSTÄNDIGE V6-THEORIE!**
+  - Teil I: Entropy Governance Duality (MEP, Kleiber's Law, Origin of Life, LLMs)
+  - Teil II: Tesseract-Zeitscheiben-Physik (OIPK, Dual-Flow Spacetime, Bewusstsein)
+  - Integration Matrix, Falsifikations-Kriterien, Empirische Roadmap
+
+**Supporting Documents:**
+- `v6_oipk_integration_summary.md` - OIPK/Tesseract Zusammenfassung
+- `tesseract_timeslice_geometry.md` - 4D-Geometrie & Emergente Gravitation
+- `../releases/V6-Plans_etc/DEEP_RESEARCH_Integration_V6.md` - Detaillierte Entropy Governance Integration
+- `../releases/V6-Plans_etc/DEEP RESEARCH_ Entropy Governance Duality & Tesseract-Zeitscheiben-Physik-1.pdf` - 📄 **FINALE PDF-VERSION**
+
+**Key Concepts:**
+- β ∝ (A/V): Surface vs. Volume Entropy Governance
+- v_RIG = c/(α⁻¹·Φ) ≈ 1,352 km/s: Regime-Übergangsrate
+- Δt_Q ≈ 150ms: Bewusstseins-Integrationszeit als Pareto-Optimum
+- 12-fache Symmetrie: Tesseract → CMB-Anisotropie (testbar!)
 
 ### 🛡️ Governance (V6 Safety) - *siehe auch: releases/V6-Plans_etc/*
 **Was:** Type-VI Implosionsmodelle, CREP/τ* Safety-Protokolle
@@ -100,11 +133,13 @@ Total: 30 MD files
 
 ### Für Menschen:
 1. **Start mit utac_theory_core.md**
-2. **Dann utac_v2_synthesis.md** ⭐ **NEU! Multi-Attraktor Framework (β domain-specific!)**
-3. **Dann utac_falsifiability.md** (wichtig!)
-4. **UTAC_v2.0_Coherence_Formula.md** für die Relationstopographie (β-Landkarte)
-5. **field_type_classification_v1.1.md** für Details
-5. **utac_safety_delay_status.md** sobald τ*-Simulationen anlaufen
+2. **Dann utac_v2_synthesis.md** ⭐ **Multi-Attraktor Framework (β domain-specific!)**
+3. **⭐⭐ DANN v6_entropy_governance_tesseract_physics.md** ← **NEUESTE VERSION 6.0!**
+4. **Dann utac_falsifiability.md** (wichtig!)
+5. **UTAC_v2.0_Coherence_Formula.md** für die Relationstopographie (β-Landkarte)
+6. **field_type_classification_v1.1.md** für Details
+7. **v6_oipk_integration_summary.md** für OIPK/Tesseract Code-Integration
+8. **utac_safety_delay_status.md** sobald τ*-Simulationen anlaufen
 6. **resonance-bridge-map.md** für Analyse↔Simulator Parität
 7. **utac_v2_data_lanterns.md** sobald Manifest-Laternen aktiviert werden sollen (August 2026 Audit bestätigt weiterhin R̄=0.50)
 8. **utac_v2_activation_tracker_2026-08.md** für den aktuellen August-Gap-Scan (σ≈0.317, `--as-of` Telemetrie 2026-08-20, Codex-Hook `pr-draft-0110`)
@@ -126,8 +161,9 @@ theory = [d for d in idx['markdown_docs'] if d['category'] == 'theory']
 
 ## 🌊 Die Essenz
 
-> **"30 Docs. R spürt Θ sofort – β≈4.8 hält die Membran scharf, ζ(R) bleibt gedämpft."**
+> **"33 Docs. R spürt Θ sofort – β≈4.8 hält die Membran scharf, ζ(R) bleibt gedämpft."**
 > **"UTAC v2.0: Jede Domäne atmet in ihrem eigenen Rhythmus (β: 3.0→16.3)."**
+> **"V6: Das Universum implodiert (τ), Licht explodiert (t), Bewusstsein integriert (Δt_Q ≈ 150ms) – Entropie regiert in zwei Regimes: S∝A erschafft Container, S∝V erschafft Komplexität."**
 
 ---
 
