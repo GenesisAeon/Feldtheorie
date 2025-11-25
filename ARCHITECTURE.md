@@ -18,6 +18,7 @@
 6. [Metaquest Bridge](#metaquest-bridge)
 7. [CI/CD Pipeline](#cicd-pipeline)
 8. [Data Flow](#data-flow)
+9. [V6 DEEP RESEARCH Framework](#v6-deep-research-framework)
 
 ---
 
