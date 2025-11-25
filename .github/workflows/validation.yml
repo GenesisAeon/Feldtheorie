@@ -38,7 +38,7 @@ jobs:
           python scripts/validate_phase2.py --seeds ${{ matrix.seed }} --lattice 64 128 256 --noise gaussian laplace poisson --J_over_T 0.5 1.0 1.5 2.0 --tag "seed_${{ matrix.seed }}"
 
       - name: Upload partial CSV
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: partial-${{ matrix.seed }}
           path: analysis/results/rg_phase2_microscopic_validation.csv
@@ -78,7 +78,7 @@ jobs:
           PY
 
       - name: Upload aggregated results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: rg-phase2-results
           path: |
