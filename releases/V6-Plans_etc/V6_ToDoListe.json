@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "version": "v6-todo-0.7.10",
+    "version": "v6-todo-0.7.11",
     "generated_at": "2025-12-02T10:00:00Z",
-    "updated_at": "2025-12-06T18:00:00Z",
+    "updated_at": "2025-12-07T10:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "TriLayer ToDo-Liste für V6, status- und vollständigkeitsgeprüft",
     "logistic_frame": {
@@ -42,7 +42,8 @@
         "IDs zwischen V6_ToDoListe.* und Chronik final spiegeln.",
         "Chronik-Achse und logistisches Raster (R/Θ/β/ζ) überprüfen.",
         "Validator/Index-Haken für automatisierte Trilayer-Prüfung ergänzen.",
-        "Makefile-Hook `validate-trilayer` skizzieren, der YAML/JSON/MD-Drift meldet."
+        "Makefile-Hook `validate-trilayer` skizzieren, der YAML/JSON/MD-Drift meldet.",
+        "Drift-Logik mit feldtheorie_index.* und docs_index.* in den Guard-Ausgaben verankern."
       ],
       "references": [
         {
@@ -77,7 +78,8 @@
         "analysis/beta_meta_regression_v2.py mit neuen Daten/φ^(n/3) auffrischen.",
         "Sigillin-Parser/Validator/Index-Updater + Outlier-Diagnostics erweitern.",
         "Telemetrie-Dashboard + β-Drift/τ*-Protokoll (metrics/beta_evolution.csv) skizzieren.",
-        "pipelines/fit_tau_star Stub mit analysis/notes koppeln (RK4-kompatibel halten)."
+        "pipelines/fit_tau_star Stub mit analysis/notes koppeln (RK4-kompatibel halten).",
+        "τ*/CREP-Logbuch in metrics/beta_evolution.csv anlegen."
       ],
       "references": [
         {
@@ -150,7 +152,8 @@
       "next_steps": [
         "Checkliste in Indizes/CI-Checks (feldtheorie_index.*, docs_index.*) spiegeln.",
         "Guard in pre-commit/nox verdrahten und Reviewer-Slot in Chronik/ToDo festhalten (inkl. `python -m tools.crep_guard --check-type6-trilayer`).",
-        "ζ<0-Eskalation in weiteren Governance-Dateien spiegeln."
+        "ζ<0-Eskalation in weiteren Governance-Dateien spiegeln.",
+        "Beispiel-Pre-Commit-Snippet und Index-Verweise als FIT-Mikroschritt dokumentieren."
       ],
       "references": [
         {
@@ -585,6 +588,15 @@
         "v6-governance-ethics: pre-commit/nox-Verdrahtung als FIT-Pfad konkretisiert (Hook `python -m tools.crep_guard --check-type6-trilayer` mit CREP≥0.7, τ*=0.1); Index-Spiegel in feldtheorie_index.* und docs_index.* folgt.",
         "v6-todo-trilayer: ID-Paare ToDo↔Chronik erneut abgeglichen; validate-trilayer Hook soll R/Θ/β/ζ-Drift und Index-Pfade prüfen.",
         "v6-activation-gaps: τ*-Stub-Anschluss an pipelines/fit_tau_star als FIT-Mini-Aufgabe skizziert; Telemetrie-Anker (β-Drift, τ*) für metrics/beta_evolution.csv präzisiert."
+      ]
+    },
+    {
+      "date": "2025-12-07",
+      "label": "ci-index-drift-gates",
+      "highlights": [
+        "v6-governance-ethics: Index-Spiegel und CI-Hooks verfeinert; FIT-Mikroschritte für pre-commit/nox-Snippet (`python -m tools.crep_guard --check-type6-trilayer`) plus Index-Verweise (feldtheorie_index.*, docs_index.*).",
+        "v6-todo-trilayer: validate-trilayer soll R/Θ/β/ζ-Drift inkl. Index-Pfaden (ToDo ↔ Chronik ↔ Indizes) protokollieren; Driftlog als Guard-Ausgabe vorgesehen.",
+        "v6-activation-gaps: τ*/CREP-Protokollierung in metrics/beta_evolution.csv als FIT-Logbuch eingeplant, um pipelines/fit_tau_star Anschluss messbar zu machen."
       ]
     }
   ]
