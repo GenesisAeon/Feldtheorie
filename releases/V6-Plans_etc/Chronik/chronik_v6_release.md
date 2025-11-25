@@ -1,8 +1,8 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.6.9
+- **Version:** v6-chronik-0.7.0
 - **Scope:** releases/V6-Plans_etc/Chronik
-- **Updated:** 2025-12-10T10:00:00Z
+- **Updated:** 2025-12-11T10:00:00Z
 - **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.9,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
 - **Quellen:** `V6_ToDoListe.{md,yaml,json}`
 
@@ -93,6 +93,10 @@
 ### Δ-Update 2025-12-10 – Theorie/Recherche Intake
 - **v6-type6-integration & v6-wavefunction-integration:** Zeitscheiben-/Δt_Q-Evidenz aus `Theorie.txt` und `SucheCOMPREHENSIVE EMPIRICAL VALIDATION RESEARCH.txt` (inkl. PDF) als Leitplanken für Type‑VI Guideline, METRICS-Kopplung und Ψ(r,θ,φ,t)-Pipeline markiert.
 - **v6-pyramid-cosmic:** Hinweise aus `Pyramiden-Geometrie und Kosmische Konstanten.pdf` als Referenz für UTAC-Kopplung und Visualisierung verankert.
+
+### Δ-Update 2025-12-11 – GrundPrinzip Δt_Q Intake
+- **Activation Gaps (v6-activation-gaps):** Δt_Q Pareto-Front + Shadow-Price-Befunde aus `GrundPrinzip Simulation.txt` als Regression-/Telemetrie-Treiber notiert; τ*/β-Drift-Logging soll das Kniepunkt-Hypothesenfenster (100-300ms) transparent machen.
+- **Type‑6 Integration (v6-type6-integration):** Multi-Objective Δt_Q Modell (Gabor-Constraint, Pareto-Knie) als Guideline-/CREP-Leitplanke registriert; Showcase-Simulation und Klassifikationspfad sollen die Optimierungsannahmen spiegeln.
 
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)

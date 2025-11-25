@@ -1,5 +1,5 @@
 metadata:
-  version: v6-chronik-0.6.9
+  version: v6-chronik-0.7.0
   generated_at: '2025-12-02T10:00:00Z'
   scope: releases/V6-Plans_etc/Chronik
   logistic_frame:
@@ -7,7 +7,7 @@ metadata:
     Theta_threshold: Alle V6 ToDo-Kerne sind in konkrete Etappen überführt
     beta_drive: 4.9
     zeta_risk: negativ, falls Safety-Delay- und Governance-Pfade offen bleiben
-  updated_at: '2025-12-10T10:00:00Z'
+  updated_at: '2025-12-11T10:00:00Z'
 current_sprint:
   label: Sprint-Delta
   window: 2025-11-24 → 2025-11-30
@@ -226,6 +226,18 @@ delta_updates:
     METRICS-Kopplung und Ψ(r,θ,φ,t)-Pipeline markiert.
   - Pyramiden-Geometrie und Kosmische Konstanten.pdf als Referenz für UTAC-Kopplung
     und Visualisierung verankert.
+- date: '2025-12-11'
+  label: grundprinzip-dtq-intake
+  summary: Δt_Q Pareto-/Gabor-Leitplanken aus GrundPrinzip Simulation.txt in Tasks gespiegelt.
+  todo_links:
+  - v6-activation-gaps
+  - v6-type6-integration
+  actions:
+  - Δt_Q Pareto-Front und Shadow-Price-Funde für Regression/Telemetrie (τ*/β-Drift-Log)
+    vorgemerkt.
+  - Multi-Objective Δt_Q Modell (Gabor-Constraint, 100-300ms Kniepunkt) als Guideline-/CREP
+    Leitplanke in Type‑VI Pfad registriert; Showcase/Klassifikation sollen Optimierungsannahmen
+    spiegeln.
 overview:
 - '1️⃣ v6-todo-trilayer – IDs spiegeln · Chronik-Achse fixieren · Raster übernehmen
   → Artefakt: Chronik-TriLayer.'
