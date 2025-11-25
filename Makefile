@@ -1,7 +1,8 @@
 # Logistic resonance build choreography
 
 .PHONY: install lint format test typecheck build batch planetary preset-guard release dist-zenodo clean \
-        install-ocf ingest-icon ingest-radar test-pipelines clean-cache run-meta-regression run-sonification
+        install-ocf ingest-icon ingest-radar test-pipelines clean-cache run-meta-regression run-sonification \
+        validate aggregate plots reproduce validate-trilayer crep-guard crep-guard-strict
 
 install:
 	python -m pip install --upgrade pip
