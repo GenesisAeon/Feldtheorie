@@ -1,10 +1,10 @@
 # V6 ToDoListe – TriLayer Übersicht
 
-- **Version:** v6-todo-0.7.11
+- **Version:** v6-todo-0.7.12
 - **Scope:** releases/V6-Plans_etc
 - **Generated:** 2025-12-02T10:00:00Z
-- **Updated:** 2025-12-07T10:00:00Z
-- **Logistische Membran:** R→"Navigierbare V6-Release-Landkarte", Θ→"Aktivierungs-Lücken geschlossen & Governance aktualisiert", β≈4.8, ζ-Risiko: negativ falls Safety-Delay-Feld fehlt.
+- **Updated:** 2025-12-08T10:00:00Z
+- **Logistische Membran:** R→"Navigierbare V6-Release-Landkarte", Θ→"Aktivierungs-Lücken geschlossen und Governance aktualisiert", β≈4.8, ζ-Risiko: negativ, falls Safety-Delay-Feld aussteht.
 - **Priorisierung:** Sprint Δ (2025-11-24 → 2025-11-30) startet mit TriLayer-Spiegelung, greift dann Governance/Safety, danach Aktivierung und Type‑VI-Integration.
 
 ## Aufgaben und Status
@@ -80,6 +80,10 @@
 - **v6-governance-ethics:** Index-Spiegel und CI-Hooks weiter konkretisiert: FIT-Mikroschritte setzen pre-commit/nox-Snippet (`python -m tools.crep_guard --check-type6-trilayer`) plus Index-Verweise (feldtheorie_index.*, docs_index.*) auf die Agenda.
 - **v6-todo-trilayer:** `validate-trilayer` soll R/Θ/β/ζ-Drift inkl. Index-Pfaden (ToDo ↔ Chronik ↔ Indizes) protokollieren; Driftlog als Guard-Ausgabe vorgesehen.
 - **v6-activation-gaps:** τ*/CREP-Protokollierung nach metrics/beta_evolution.csv als FIT-Logbuch eingeplant, um Pipeline-Anschluss (pipelines/fit_tau_star) messbar zu machen.
+
+## Δ-Update 2025-12-08 – TriLayer Index Guard
+- **v6-todo-trilayer:** `validate-trilayer` prüft jetzt MD-Metadaten und meldet fehlende Index-Verweise (feldtheorie_index.*, docs_index.*) direkt im Driftlog, damit R/Θ/β/ζ-Abweichungen schneller auffallen.
+- **v6-governance-ethics:** Guard-Ausgaben markieren fehlende Brücken zu den Indizes; CI-/Hook-Spiegelung bleibt als nächster FIT-Schritt notiert.
 
 ## Navigationshinweise
 - Alle Einträge spiegeln die logistisches Feld (R, Θ, β, ζ) wider und bleiben Trilayer-synchron (YAML/JSON/MD).
