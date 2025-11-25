@@ -65,7 +65,7 @@ Total: 30 MD files
 - `../releases/V6-Plans_etc/type6_crep_tau_star_checklist.md` - **🔴 CREP ≥ 0.7 & τ*-Pflicht!**
 - `../releases/V6-Plans_etc/POLICY.md` - Type-VI Safety Addendum
 - `../releases/V6-Plans_etc/ETHICS.md` - Provenienz & Dual-Use-Hinweise
-- Trilayer-Validation: `make validate-trilayer`
+- Trilayer-Validation: `make validate-trilayer` (prüft `V6_ToDoListe.{md,yaml,json}` auf Drift)
 
 ### 🟠 Validation (2 docs)
 **Was:** Falsifiability, Validation Reports

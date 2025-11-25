@@ -11,6 +11,7 @@ Usage:
     make validate-trilayer
 """
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -19,6 +20,81 @@ try:
 except ImportError:
     print("⚠️  PyYAML not installed. Install with: pip install pyyaml")
     sys.exit(1)
+
+
+def _parse_md_metadata(md_content: str) -> dict:
+    """Extract metadata fields from the Markdown TriLayer view."""
+
+    def _search(pattern: str) -> str | None:
+        match = re.search(pattern, md_content)
+        return match.group(1).strip() if match else None
+
+    md_meta: dict[str, object] = {}
+    md_meta["version"] = _search(r"\*\*Version:\*\*\s*([^\n]+)")
+    md_meta["scope"] = _search(r"\*\*Scope:\*\*\s*([^\n]+)")
+    md_meta["generated_at"] = _search(r"\*\*Generated:\*\*\s*([^\n]+)")
+    md_meta["updated_at"] = _search(r"\*\*Updated:\*\*\s*([^\n]+)")
+
+    logistic_match = re.search(
+        r"Logistische Membran:\*\* R→\"(?P<R>.+?)\", Θ→\"(?P<Theta>.+?)\", β≈(?P<beta>[0-9.]+), ζ-Risiko: (?P<zeta>[^.]+)",
+        md_content,
+    )
+    if logistic_match:
+        md_meta["R_goal"] = logistic_match.group("R")
+        md_meta["Theta_threshold"] = logistic_match.group("Theta")
+        md_meta["beta_drive"] = float(logistic_match.group("beta"))
+        md_meta["zeta_risk"] = logistic_match.group("zeta").strip()
+
+    return md_meta
+
+
+def _check_metadata_sync(json_data: dict, yaml_data: dict, md_meta: dict) -> bool:
+    """Validate that version, timestamps, and scope align across the TriLayer."""
+
+    drift_detected = False
+    json_meta = json_data.get("metadata", {})
+    yaml_meta = yaml_data.get("metadata", {})
+
+    for label, j_val, y_val, m_val in [
+        ("version", json_meta.get("version"), yaml_meta.get("version"), md_meta.get("version")),
+        ("generated_at", json_meta.get("generated_at"), yaml_meta.get("generated_at"), md_meta.get("generated_at")),
+        ("updated_at", json_meta.get("updated_at"), yaml_meta.get("updated_at"), md_meta.get("updated_at")),
+        ("scope", json_meta.get("scope"), yaml_meta.get("scope"), md_meta.get("scope")),
+    ]:
+        print(f"🧭 {label}: JSON='{j_val}', YAML='{y_val}', MD='{m_val}'")
+        if len({j_val, y_val, m_val}) > 1:
+            print(f"⚠️  DRIFT: {label} mismatch across TriLayer")
+            drift_detected = True
+        else:
+            print(f"✅ {label} aligned")
+
+    return drift_detected
+
+
+def _check_index_bridges() -> bool:
+    """Ensure index files acknowledge the TriLayer validator hooks."""
+
+    drift_detected = False
+    index_targets = [
+        (Path("feldtheorie_index.md"), ["validate-trilayer", "V6_ToDoListe"]),
+        (Path("docs/docs_index.md"), ["validate-trilayer", "V6_ToDoListe"]),
+    ]
+
+    for path, tokens in index_targets:
+        if not path.exists():
+            print(f"⚠️  DRIFT: Index file missing → {path}")
+            drift_detected = True
+            continue
+
+        text = path.read_text(encoding="utf-8").lower()
+        missing_tokens = [t for t in tokens if t.lower() not in text]
+        if missing_tokens:
+            print(f"⚠️  DRIFT: {path} lacks references to {missing_tokens}")
+            drift_detected = True
+        else:
+            print(f"✅ Index bridge OK: {path}")
+
+    return drift_detected
 
 
 def validate_trilayer(base_path: str = "releases/V6-Plans_etc") -> int:
@@ -36,6 +112,8 @@ def validate_trilayer(base_path: str = "releases/V6-Plans_etc") -> int:
             json_data = json.load(f)
         with open(base / "V6_ToDoListe.yaml") as f:
             yaml_data = yaml.safe_load(f)
+        md_path = base / "V6_ToDoListe.md"
+        md_content = md_path.read_text(encoding="utf-8")
     except FileNotFoundError as e:
         print(f"❌ File not found: {e}")
         return 1
@@ -59,13 +137,15 @@ def validate_trilayer(base_path: str = "releases/V6-Plans_etc") -> int:
     # Extract logistic parameters from metadata
     json_meta = json_data.get("metadata", {}).get("logistic_frame", {})
     yaml_meta = yaml_data.get("metadata", {}).get("logistic_frame", {})
+    md_meta = _parse_md_metadata(md_content)
 
     # β-drive validation
     json_beta = json_meta.get("beta_drive", 0.0)
     yaml_beta = yaml_meta.get("beta_drive", 0.0)
+    md_beta = md_meta.get("beta_drive")
 
-    print(f"📐 β-drive: JSON={json_beta}, YAML={yaml_beta}")
-    if abs(json_beta - yaml_beta) > 0.01:
+    print(f"📐 β-drive: JSON={json_beta}, YAML={yaml_beta}, MD={md_beta}")
+    if abs(json_beta - yaml_beta) > 0.01 or (md_beta is not None and abs(json_beta - md_beta) > 0.01):
         print("⚠️  DRIFT: β-drive mismatch!")
         drift_detected = True
     else:
@@ -74,9 +154,10 @@ def validate_trilayer(base_path: str = "releases/V6-Plans_etc") -> int:
     # ζ-risk validation
     json_zeta = json_meta.get("zeta_risk", "unknown")
     yaml_zeta = yaml_meta.get("zeta_risk", "unknown")
+    md_zeta = md_meta.get("zeta_risk")
 
-    print(f"🌀 ζ-risk: JSON={json_zeta}, YAML={yaml_zeta}")
-    if json_zeta != yaml_zeta:
+    print(f"🌀 ζ-risk: JSON={json_zeta}, YAML={yaml_zeta}, MD={md_zeta}")
+    if len({json_zeta, yaml_zeta, md_zeta}) > 1:
         print("⚠️  DRIFT: ζ-risk mismatch!")
         drift_detected = True
     else:
@@ -101,22 +182,27 @@ def validate_trilayer(base_path: str = "releases/V6-Plans_etc") -> int:
     # R/Θ validation (from metadata)
     json_R = json_meta.get("R_goal", "")
     yaml_R = yaml_meta.get("R_goal", "")
+    md_R = md_meta.get("R_goal", "")
     json_Theta = json_meta.get("Theta_threshold", "")
     yaml_Theta = yaml_meta.get("Theta_threshold", "")
+    md_Theta = md_meta.get("Theta_threshold", "")
 
-    print(f"🎯 R-goal: JSON='{json_R}', YAML='{yaml_R}'")
-    if json_R != yaml_R:
+    print(f"🎯 R-goal: JSON='{json_R}', YAML='{yaml_R}', MD='{md_R}'")
+    if len({json_R, yaml_R, md_R}) > 1:
         print("⚠️  DRIFT: R-goal mismatch!")
         drift_detected = True
     else:
         print("✅ R-goal aligned")
 
-    print(f"🎯 Θ-threshold: JSON='{json_Theta}', YAML='{yaml_Theta}'")
-    if json_Theta != yaml_Theta:
+    print(f"🎯 Θ-threshold: JSON='{json_Theta}', YAML='{yaml_Theta}', MD='{md_Theta}'")
+    if len({json_Theta, yaml_Theta, md_Theta}) > 1:
         print("⚠️  DRIFT: Θ-threshold mismatch!")
         drift_detected = True
     else:
         print("✅ Θ-threshold aligned")
+
+    drift_detected |= _check_metadata_sync(json_data, yaml_data, md_meta)
+    drift_detected |= _check_index_bridges()
 
     print("\n🎯 TriLayer validation complete")
 
