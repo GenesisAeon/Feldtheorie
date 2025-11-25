@@ -2344,3 +2344,11 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Formal:** Symlinks halten alte Pfade erreichbar, während die kanonischen Kopien unter archive/legacy_v1_v3/ liegen; README ergänzt Legacy-&-History-Sektion mit σ(β(R-Θ)) Leitplanke.
   - **Empirical:** seed/FraktaltagebuchV2→archive/legacy_v1_v3/seed/FraktaltagebuchV2/, seed/RoadToV.3→archive/legacy_v1_v3/seed/RoadToV.3/, seed/notes→archive/legacy_v1_v3/seed/notes/, data/experimental/backups→archive/legacy_v1_v3/data/experimental/backups/.
   - **Poetic:** Alte Laternen ruhen im Archiv, doch ihre Resonanz bleibt hörbar — die neue Membran fokussiert v4.0 und dämpft ζ(R).
+
+### v6-simulation-oipk-vrig — Sigillin Sync Run
+- **Zeitpunkt (UTC):** 2025-11-25T19:26:06.453215+00:00
+- **R:** 17 Trilayer geprüft
+- **Θ:** Trilayer meta fields aligned
+- **β:** 4.6
+- **ζ(R):** Logged in codex
+- **Notiz:** Implement V6 Simulation (OIPK + v_RIG) — Ready for Review
