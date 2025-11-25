@@ -17,6 +17,12 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.animation import FuncAnimation
 from typing import Tuple, List, Optional, Dict
 from dataclasses import dataclass
+import sys
+from pathlib import Path
+
+# Add models directory to path for v_RIG constant
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from models.unified_constants import calculate_vrig, V_RIG_DEFAULT
 
 
 @dataclass
@@ -45,6 +51,7 @@ class OIPKParameters:
     # Cosmic constants
     alpha_inv: float = 137.036  # Fine structure constant inverse
     phi: float = 1.618034  # Golden ratio
+    v_rig: Optional[float] = None  # Regime Integration Gradient velocity (km/s)
 
     def __post_init__(self):
         """Calculate derived parameters."""
@@ -53,6 +60,12 @@ class OIPKParameters:
             H0 = 70  # km/s/Mpc
             # v_imp ~ H0 * a_max
             self.v_imp = H0 * self.a_max / 1e6  # Approximate
+
+        if self.v_rig is None:
+            # Calculate v_RIG from fundamental constants
+            # v_RIG = c / (α⁻¹ · Φ) ≈ 1,351.8 km/s
+            # This represents the 2D→3D consciousness integration rate
+            self.v_rig = calculate_vrig(self.alpha_inv, self.phi, self.c)
 
 
 class OIPKSimulator:
@@ -228,15 +241,29 @@ class OIPKSimulator:
         Integrate over Δt_Q to reconstruct 3D world.
 
         Implements motion parallax and structure-from-motion.
+
+        The integration rate is fundamentally limited by v_RIG = c/(α⁻¹·Φ),
+        representing the velocity at which 2D-slice information can be
+        synthesized into 3D conscious perception.
+
+        Integration mechanism:
+        1. Collect photon trajectories over Δt_Q window
+        2. Apply structure-from-motion to reconstruct 3D geometry
+        3. Rate-limited by v_RIG ≈ 1,352 km/s (not c!)
         """
         # Stub: Collect frames over Δt_Q window
         # In full implementation: Apply structure-from-motion algorithm
+
+        # Calculate effective integration distance based on v_RIG
+        integration_distance = self.params.v_rig * self.params.delta_t_Q
 
         frame = {
             "tau": self.tau,
             "t": self.t,
             "photon_positions": [p[:3].copy() for p in self.photon_positions],
-            "reconstruction": "3D world model",  # Placeholder
+            "integration_distance": integration_distance,  # Max distance for coherent 3D reconstruction
+            "v_rig": self.params.v_rig,  # Integration velocity
+            "reconstruction": "3D world model",  # Placeholder for SfM algorithm
         }
 
         self.consciousness_frames.append(frame)

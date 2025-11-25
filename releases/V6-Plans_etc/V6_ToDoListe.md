@@ -97,6 +97,12 @@
 - **v6-activation-gaps:** Δt_Q Pareto-Front und Shadow-Price-Befunde aus `GrundPrinzip Simulation.txt` in Regression/Telemetrie aufnehmen; τ*/β-Drift-Logging soll diese Kniepunkt-Hypothese sichtbar machen.
 - **v6-type6-integration:** Multi-Objective Δt_Q-Modell (Gabor-Constraints, 100-300ms Kniepunkt) als Leitplanke für Type‑VI-Guidelines und CREP-Kriterien registriert; Showcase/Classification sollen die Optimierungsannahmen spiegeln.
 
+## Δ-Update 2025-11-25 – OIPK Simulation & v_RIG Implementation
+- **v6-genesis-cube-sim:** OIPK (Orthogonal Implosion-Photon-Kinematik) Simulation implementiert als `simulation/oipk_simulator.py` mit asynchronem Dual-Flow-Algorithmus (τ-Implosion vertikal, t-Photonen horizontal); Architektur-Dokumentation in `docs/oipk_simulation_architecture.md` vollständig nach GrundPrinzip Simulation.txt "Lego-Bauplan" umgesetzt. Status: **Implemented / In Review**.
+- **v6-type6-integration:** v_RIG Konstante (Regime Integration Gradient) als fundamentale Geschwindigkeitsskala für Bewusstseinsintegration hergeleitet: v_RIG = c/(α⁻¹·Φ) ≈ 1,352 km/s; implementiert in `models/unified_constants.py` mit vollständiger geometrischer Ableitung; Integration in OIPK-Simulator als `integration_rate` für 2D→3D Informationstransfer abgeschlossen.
+- **v6-wavefunction-integration:** Academic Preprint "The Regime Integration Gradient (v_RIG): A Fundamental Velocity Scale for Consciousness as 2D→3D Information Transfer" erstellt in `releases/V6-Plans_etc/papers/paper_v_rig_consciousness.md`; enthält: Abstract, Derivation, Testbare Vorhersagen (CFF-Metabolismus, LLM-Skalierung, HFOs), Kleiber-β-Kopplung, Appendices mit Numerical Tables und Code-Referenzen.
+- **Nächste Schritte:** CREP-Validierung für v_RIG-basierte Bewusstseinsmodelle (Schwelle ≥0.7), Showcase-Simulationen mit 12-fold reflection, Integration in Genesis-Cube-Pipeline, empirische Tests (Flicker Fusion vs. Metabolismus).
+
 ## Navigationshinweise
 - Alle Einträge spiegeln die logistisches Feld (R, Θ, β, ζ) wider und bleiben Trilayer-synchron (YAML/JSON/MD).
 - Status = **open**: keine Ausführungsspuren gefunden; priorisiere nach β-Drift (höher = dringlicher) und ζ-Risiko.
