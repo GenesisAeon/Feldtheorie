@@ -52,8 +52,8 @@ Total: 33 MD files
 4. `appendix_field_types.md` - Field Types Detail
 5. `UTAC_v2.0_Coherence_Formula.md` - Kohärenzformel für die fraktale Systemtopographie
 
-### 🌌 V6 Extensions (3 docs)
-**Was:** Entropy Governance Duality, Tesseract-Zeitscheiben-Physik, OIPK Framework
+### 🌌 V6 Extensions (6 docs)
+**Was:** Entropy Governance Duality, Tesseract-Zeitscheiben-Physik, OIPK Framework, v_RIG Konstante
 
 1. **`v6_entropy_governance_tesseract_physics.md`** - ⭐⭐ **VOLLSTÄNDIGE V6-THEORIE!**
    - Teil I: Entropy Governance (S∝A ↔ S∝V, MEP, Kleiber, Origin of Life, LLMs)
@@ -61,6 +61,20 @@ Total: 33 MD files
    - Integration Matrix, Falsifikation, Empirische Validation Roadmap
 2. `v6_oipk_integration_summary.md` - OIPK/Tesseract Summary & Code Integration
 3. `tesseract_timeslice_geometry.md` - 4D Block Universe mit entropischer Gravitation
+4. **`oipk_simulation_architecture.md`** - ⭐ **OIPK-Simulator Architektur ("Lego-Bauplan")**
+   - Diamant/Oktahedron-Geometrie (White Hole → Maximum Expansion → Black Hole)
+   - Dual-Flow: τ-Implosion (vertikal) ⊥ t-Photonen (horizontal, c)
+   - 12-fold reflection, Consciousness integration (Δt_Q ≈ 100-300ms)
+   - Wheeler-DeWitt Problem: Zeit als emergente Eigenschaft
+5. **`../releases/V6-Plans_etc/papers/paper_v_rig_consciousness.md`** - ⭐⭐ **ACADEMIC PAPER**
+   - "The Regime Integration Gradient (v_RIG): A Fundamental Velocity Scale for Consciousness"
+   - v_RIG = c/(α⁻¹·Φ) ≈ 1,351.8 km/s (2D→3D Information Transfer)
+   - Testbare Vorhersagen: CFF-Metabolismus, LLM-Skalierung, HFOs
+   - 689 Zeilen, 20 Referenzen, Appendices (Derivation Details, Numerical Tables)
+6. **`METRICS.md §8`** - **Type-VI Implosive Dynamics Classification**
+   - Type-VI Detection Criteria (ζ < 0, β > 4.5, cubic-root-jump)
+   - CREP Index (Collapse-Resonance-Expansion Potential)
+   - Integration mit 4D-Tesseract Framework
 
 ### 🟢 Applications (4 docs)
 **Was:** Classification, Use Cases, Review Guide, Safety-Delay Bridge

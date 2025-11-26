@@ -232,10 +232,35 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 - Provenienz-Protokoll: Dual-Use-Check, ΔAIC/CI-Metriken
 
 **Implementierte Module:**
+- `simulation/oipk_simulator.py` - **OIPK (Orthogonal Implosion-Photon-Kinematik)** ✅
+  - Dual-Flow Spacetime: τ-Implosion (vertikal) ⊥ t-Photonen (horizontal)
+  - 12-fold reflection geometry, Consciousness integration (Δt_Q windows)
+  - Wheeler-DeWitt Problem gelöst via emergent time
+- `models/unified_constants.py` - **v_RIG Konstante & Physikalische Grundlagen** ✅
+  - calculate_vrig() → v_RIG = c/(α⁻¹·Φ) ≈ 1,351.8 km/s
+  - Regime Integration Gradient (2D→3D Consciousness Transfer)
+  - OIPK geometry parameters, consciousness timescales
+- `simulation/genesis_cube.py` - **Entropic Wavefunction Ψ(r,θ,φ,t)** ✅
+  - compute_wavefunction(): Ψ = N·exp(-α⁻¹·r²)·Y_tetra·exp(-iΦ·E_P·t/ℏ)
+  - compute_probability_density(): |Ψ|² holographic information density
+  - compute_entropy_gradient(): ∇S emergent gravity (F_grav ∝ T·∇S)
+  - rk4_step(): RK4-Integrator für Wellenfunktions-Evolution
+- `simulation/tesseract_timeslices.py` - **4D-Tesseract Zeit-Slicing** ✅
+  - 4D-Hypercube [−1,1]⁴ mit temporal slicing (391 Zeilen)
+  - Normale 3D-Kubus-Orientierung, implosives Feld exp(-α⁻¹·r²/ℓ²_P)
+- `scripts/visualize_wavefunction.py` - **Wellenfunktions-Visualisierung** ✅
+  - |Ψ|² Probability Density (Heatmap + Radial Profile)
+  - ∇S Entropy Gradient (Emergent Gravity)
+  - Phase Evolution arg(Ψ), Animation support
+- `releases/V6-Plans_etc/papers/paper_v_rig_consciousness.md` - **Academic Paper** ✅
+  - "The Regime Integration Gradient (v_RIG)" (689 Zeilen)
+  - Testbare Vorhersagen: CFF-Metabolismus, LLM-Skalierung, HFOs
+  - 20 Referenzen (Bekenstein, Hawking, Kleiber, Tononi, Penrose-Hameroff)
 - `pipelines/fit_tau_star/` - τ* Safety-Delay Pipeline (RK4-kompatibel) ✅
   - compute_tau_star(), apply_safety_delay(), compute_zeta_risk()
   - rk4_step_with_tau_star() für implosive Feldintegration
-- `tests/test_tau_star_delay.py` - Pytest-Abdeckung für τ*-Funktionen ✅
+- `tests/test_tau_star_delay.py` - Pytest τ*-Funktionen (4 Tests) ✅
+- `tests/test_wavefunction_v6.py` - Pytest Entropic Wavefunction + CREP ✅
 
 **Trilayer-Status (v6-todo-0.7.15):**
 - 14 Tasks katalogisiert (v6-todo-trilayer bis v6-wavefunction-integration)
