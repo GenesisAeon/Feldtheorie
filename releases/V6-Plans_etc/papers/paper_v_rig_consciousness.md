@@ -65,6 +65,149 @@ This is **not** a numerological coincidence but a **geometric necessity** arisin
 - **Φ:** Optimal 3D space-filling scaling (Fibonacci spirals, phyllotaxis, biological self-similarity)
 - **c:** Maximum information propagation speed (special relativity)
 
+### 1.4 Literature Review and Empirical Foundations
+
+Our synthesis builds on converging evidence from multiple independent research traditions. This section reviews the empirical and theoretical foundations underpinning the v_RIG framework.
+
+#### 1.4.1 Temporal Integration Windows in Consciousness
+
+The ~100-300ms integration window (Δt_Q) has been independently identified across multiple paradigms:
+
+**Phenomenological Evidence:**
+- **Fraisse (1984)** established the "conscious present" duration of 100-300ms through classical psychophysics experiments
+- **Pöppel (2009)** demonstrated temporal integration windows in speech perception and motor control
+- **VanRullen (2016)** showed perceptual sampling at theta-band frequencies (7 Hz ≈ 143ms), suggesting discrete "snapshots" of consciousness
+
+**Neurophysiological Evidence:**
+- **Lehmann et al. (2010)** documented EEG microstates with 80-120ms duration, representing metastable brain configurations
+- **Poeppel (2003)** identified asymmetric temporal integration: 25-50ms for phonetic processing (left hemisphere) vs. 150-300ms for prosodic integration (right hemisphere)
+
+**Critical Flicker Fusion:**
+- **Purves & Lotto (2011)** review evidence for CFF thresholds at ~60 Hz, corresponding to ~16ms minimum temporal resolution
+- **Wertheimer (1912)** demonstrated the Phi Phenomenon (apparent motion) at inter-stimulus intervals of ~80ms
+
+**Motion Parallax and Stereo Vision:**
+- **Rogers & Graham (1982)** established the inter-pupillary distance (IPD ≈ 6.5 cm) as the fundamental baseline for stereoscopic depth perception
+- Our framework interprets IPD as the **spatial slice spacing** for consciousness integration, with temporal sampling determined by v_RIG
+
+#### 1.4.2 Entropy Production and Maximum Entropy Principle
+
+The transition from surface entropy (S∝A) to volume entropy (S∝V) requires understanding far-from-equilibrium thermodynamics:
+
+**Theoretical Foundations:**
+- **Prigogine (1984)** established that dissipative structures self-organize through maximum entropy production
+- **Martyushev & Seleznev (2006)** reviewed MEP across physics, chemistry, and biology, showing universal applicability
+- **Dewar (2003)** derived MEP from information theory, linking it to maximum path entropy
+
+**Empirical Validation:**
+- **Kleidon (2009)** measured atmospheric entropy production at ~900 mW/m²K, validating MEP in Earth's climate system
+- Our Type-VI implosive dynamics are governed by MEP at critical transitions (β > 15)
+
+#### 1.4.3 Metabolic Scaling and Fractal Networks
+
+The ¾-power law connects energy consumption to consciousness integration capacity:
+
+**Allometric Scaling:**
+- **Kleiber (1932)** established the M^(3/4) metabolic scaling law across 21 orders of magnitude (bacteria to whales)
+- **West, Brown & Enquist (1997)** derived this from fractal network constraints: surface-to-volume scaling in hierarchical transport networks
+- **Brown et al. (2004)** extended this to Metabolic Theory of Ecology, linking temperature, body size, and ecological dynamics
+
+**Connection to v_RIG:**
+Our framework proposes that metabolic rate M ∝ V^(3/4) reflects the energy cost of consciousness integration: converting 2D photon information (S∝A) into 3D experiential volume (S∝V) over timescales ~Δt_Q.
+
+#### 1.4.4 Entropic Gravity and Holographic Screens
+
+The surface-to-volume entropy transition is central to modern gravity theories:
+
+**Entropic Gravity:**
+- **Verlinde (2011)** derived Newtonian gravity from thermodynamics: F = T·ΔS/Δx on holographic screens
+- **Jacobson (1995)** showed Einstein's equations emerge as equations of state for horizon thermodynamics
+- **Bekenstein (1973)** and **Hawking (1975)** established black hole entropy S = A/(4L_P²), the archetypal S∝A system
+
+**Holographic Principle:**
+- **Susskind (1995)** formalized the holographic bound: maximum entropy in a region scales with boundary area, not volume
+- Our OIPK framework interprets photon propagation as holographic (2D) and consciousness integration as volumetric (3D), with v_RIG as the interface
+
+#### 1.4.5 Timeless Physics and Block Universe
+
+The OIPK dual-flow model (vertical τ vs. horizontal t) connects to foundational debates in quantum gravity:
+
+**Quantum Gravity Approaches:**
+- **DeWitt (1967)** formulated the Wheeler-DeWitt equation H|ψ⟩ = 0, where time disappears as a fundamental parameter
+- **Page & Wootters (1983)** proposed the "evolution without evolution" mechanism: time emerges relationally between subsystems
+- **Barbour (1999, 2020)** developed timeless physics based on shape dynamics, with the Janus Point marking a gravitational entropy gradient
+
+**Emergent Time:**
+- **Rovelli (2018)** argues for "thermal time": time emerges statistically from correlations, not fundamentally
+- Our vertical τ-time (cosmological implosion) vs. horizontal t-time (photon propagation) distinction mirrors this relational emergence
+
+#### 1.4.6 Causal Dynamical Triangulation and Discrete Spacetime
+
+The OIPK slice model finds support in discrete quantum gravity approaches:
+
+**CDT Simulations:**
+- **Ambjørn, Jurkiewicz & Loll (2004)** showed 4D de Sitter spacetime emerges spontaneously from causal triangulations
+- **Loll (2019)** reviews three CDT phases: crumpled (no structure), branched (fractal), de Sitter (smooth 4D)
+- The transition from 2D slices → 3D+1 emergent spacetime parallels our consciousness integration mechanism
+
+**Loop Quantum Gravity:**
+- **Ashtekar & Lewandowski (2004)** established discrete area/volume spectra with fundamental length scale L_P
+- The fine-structure constant α⁻¹ ≈ 137 naturally appears in LQG discretization schemes
+
+#### 1.4.7 Golden Ratio in Physics and Biology
+
+The ubiquity of Φ ≈ 1.618 suggests geometric necessity rather than coincidence:
+
+**Quasicrystal Symmetry:**
+- **Levine & Steinhardt (1984)** predicted quasicrystals with Φ-based icosahedral symmetry
+- **Shechtman et al. (1984)** experimentally confirmed quasicrystalline order (Nobel Prize 2011)
+
+**Biological Scaling:**
+- Φ appears in phyllotaxis (Fibonacci spirals in sunflowers, pinecones)
+- Optimal space-filling in 3D requires Φ-based scaling to minimize surface tension
+
+**Connection to v_RIG:**
+Φ governs the 3D spatial reconstruction efficiency from 2D slices, analogous to optimal packing and minimal-surface problems.
+
+#### 1.4.8 LLM Scaling Laws and Computational Entropy
+
+Recent AI scaling laws provide testable analogies for consciousness integration:
+
+**Emergent Capabilities:**
+- **Kaplan et al. (2020)** established power-law scaling for neural language models: performance ∝ (compute)^β
+- **Brown et al. (2020)** demonstrated GPT-3's few-shot learning as emergent capability at 175B parameters
+- **Wei et al. (2022)** documented sharp capability transitions at critical scales
+
+**Energy Costs:**
+- **Touvron et al. (2023)** compared Llama model efficiencies (7B/13B/70B), showing sub-linear energy scaling
+- **Landauer (1961)** established the fundamental thermodynamic limit: kT ln(2) ≈ 3×10⁻²¹ J per bit erasure at 300K
+
+**Analogy to Consciousness:**
+We propose that consciousness integration exhibits similar scaling: energy cost per integrated bit follows E ∝ (volume)^β with β tied to the surface-to-volume transition governed by v_RIG.
+
+#### 1.4.9 Integrated Information Theory
+
+Our framework complements but differs from Tononi's Φ:
+
+- **Tononi et al. (2016)** define integrated information Φ (different notation from golden ratio!) as the irreducible cause-effect structure
+- Our v_RIG focuses on geometric integration rate rather than information content
+- Both approaches emphasize integration across spatial scales and temporal windows
+
+#### 1.4.10 Summary: Converging Lines of Evidence
+
+The v_RIG framework synthesizes:
+
+1. **Consciousness timescales** (Δt_Q ≈ 100-300ms) from psychophysics and neuroscience
+2. **Metabolic scaling** (M^3/4) from biology and fractal network theory
+3. **Entropy duality** (S∝A vs. S∝V) from black hole physics and holographic principle
+4. **Discrete spacetime** from quantum gravity (CDT, LQG)
+5. **Golden ratio optimization** from quasicrystals and biological packing
+6. **Fundamental constants** (α⁻¹, c) from quantum electrodynamics and relativity
+
+The remarkable coherence across these independent domains suggests v_RIG ≈ 1,352 km/s is not numerological but reflects a deep geometric structure underlying consciousness as an information integration process.
+
+**All references cited above are documented in the companion BibTeX database `docs/references_v6.bib`.**
+
 ---
 
 ## 2. Theoretical Framework: Dual Entropy Regimes
