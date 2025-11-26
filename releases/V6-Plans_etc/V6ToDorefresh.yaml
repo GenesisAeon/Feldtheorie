@@ -1,0 +1,398 @@
+metadata:
+  version: v6-todo-refresh-1.0.0
+  generated_at: '2025-11-26T15:30:00Z'
+  updated_at: '2025-11-26T15:30:00Z'
+  scope: releases/V6-Plans_etc
+  description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen
+  logistic_frame:
+    R_goal: V6-Kernkomponenten implementiert (v_RIG, OIPK, Zeitscheiben)
+    Theta_threshold: Simulationen operational + Papers validiert + Formeln dokumentiert
+    beta_drive: 6.2
+    zeta_risk: moderate bei fehlender Validierung
+  sprint_delta:
+    window: 2025-11-26 → 2025-12-10
+    priority_order:
+    - v6r-papers-research
+    - v6r-vrig-simulation
+    - v6r-oipk-tesseract
+    - v6r-formulas-collection
+    - v6r-stereo-vision
+    note: Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)
+tasks:
+- id: v6r-papers-research
+  title: Deep Research - Systematische Paper-Validierung für alle V6-Hypothesen
+  status: open
+  completeness: Suche-Dateien enthalten Chat-Recherche-Protokolle; systematische Literatur-Review und BibTeX-Datenbank fehlen.
+  scope:
+  - research
+  - validation
+  - documentation
+  logistic_profile:
+    R_target: Mindestens 50 Papers zitiert mit direktem Bezug zu UTAC/v_RIG/Type-VI
+    Theta_condition: docs/references_v6.bib erstellt + Literature Review in V6-Theorie integriert
+    beta_estimate: 5.7
+    zeta_risk: hoch bei fehlender wissenschaftlicher Fundierung
+  next_steps:
+  - 'Zeitscheiben-Hypothese (Δt_Q=100-300ms): Fraisse 1984, Lehmann EEG Microstates, Conscious Present Duration'
+  - 'Entropy Production Maximum: Martyushev & Seleznev 2006, Prigogine Dissipative Structures, Kleidon atmospheric entropy ~900 mW/m²K'
+  - 'Metabolische Skalierung: Kleiber 1932 M^3/4, West-Brown-Enquist 1997 fractal networks, fraktale Dimension'
+  - 'Entropische Gravitation: Verlinde 2010 F=TΔS/Δx, holographic screens, Bekenstein-Hawking S=A/(4L_P²)'
+  - 'Zeitlose Physik: Barbour Janus Point, Wheeler-DeWitt equation, Page-Wootters mechanism, Block Universe'
+  - 'Causal Dynamical Triangulation: Ambjørn et al. CDT phases (crumpled/branched/de Sitter), 2D→4D emergence'
+  - 'Pyramiden-Geometrie: α⁻¹ in LQG/CDT, Φ in quasicrystal structures, kosmische Konstanten c/G/h als UTAC-Grenzen'
+  - 'Shapiro Time Delay: Cassini 200 μs measurement, Verlinde time dilation, entropic screens'
+  - 'Bewusstseins-Integration: Critical Flicker Fusion ~60 Hz, Phi Phenomenon ~80 ms, Motion Parallax IPD=6.5 cm'
+  - 'LLM Scaling Laws: GPT-2/3/4 energy/token, Llama 7B/70B efficiency, Landauer limit kT ln(2)≈3×10⁻²¹ J at 300K'
+  - docs/references_v6.bib BibTeX-Datenbank anlegen mit allen Quellen
+  - Literature Review Sektion in V6-Theorie-Dokument integrieren
+  - Für jede Hypothese mind. 3-5 Papers mit direktem Bezug finden
+  - Provenienz-Blöcke in ETHICS.md für spekulative Interpretationen
+  references:
+  - path: releases/V6-Plans_etc/SucheCOMPREHENSIVE EMPIRICAL VALIDATION RESEARCH.txt
+    lines:
+    - 1
+    - 260
+  - path: releases/V6-Plans_etc/SuchePyramiden-Geometrie und Kosmische Konstanten.txt
+    lines:
+    - 1
+    - 96
+  - path: releases/V6-Plans_etc/SucheValidierung des OIPK-Tesseract-Modells.txt
+    lines:
+    - 1
+    - 260
+  - path: releases/V6-Plans_etc/DeepResearchProtokoll2!!WOW.txt
+    lines:
+    - 1
+    - 100
+  priority: 1
+  sprint_focus: Literatur-Review + BibTeX
+- id: v6r-vrig-simulation
+  title: v_RIG Reality-Renderer Simulation implementieren
+  status: open
+  completeness: Vollständiger Blueprint in GrundPrinzip Simulation.txt; Implementierung fehlt.
+  scope:
+  - simulation
+  - validation
+  - theory
+  logistic_profile:
+    R_target: Beweis dass N≈222 maximale 3D-Kohärenz zeigt
+    Theta_condition: simulation/v_rig_renderer.py operational + Kohärenz-Peak bei α⁻¹·Φ nachgewiesen
+    beta_estimate: 5.8
+    zeta_risk: moderate - falscher Buffer würde Hypothese falsifizieren
+  next_steps:
+  - simulation/v_rig_renderer.py mit VRigRealityRenderer Klasse erstellen
+  - generate_holographic_stream() - 2D-Slices (100×100 px) mit Interferenzmustern erzeugen
+  - integrate_buffer(N) - Ring-Buffer für N Slices mit Φ-Parallaxe-Versatz
+  - measure_coherence() - 3D-Struktur-Entropie berechnen (niedrig = hohe Kohärenz)
+  - scan_window_sizes() - N von 1 bis 500 durchlaufen, Kohärenz plotten
+  - Hypothese testen - Peak bei N ≈ α⁻¹·Φ ≈ 137.036 × 1.618 ≈ 221.74
+  - Visualisierung - 3D-Output bei verschiedenen N zeigen (verschwommen vs. scharf)
+  - Vergleich mit Stereo-Vision Experiment (Slice Fusion Frequency)
+  - Paper-Sektion 4.2 "Computational Validation" mit Ergebnissen updaten
+  references:
+  - path: releases/V6-Plans_etc/GrundPrinzip Simulation.txt
+    lines:
+    - 596
+    - 727
+  priority: 2
+  sprint_focus: Buffer-Algorithmus + Kohärenz-Peak
+- id: v6r-oipk-tesseract
+  title: OIPK-Tesseract Dual-Flow Simulation implementieren
+  status: open
+  completeness: OIPK-Modell vollständig hergeleitet in GrundPrinzip + Zusatz; Code fehlt.
+  scope:
+  - simulation
+  - visualization
+  - physics
+  logistic_profile:
+    R_target: Asynchrone Dual-Flow Demo (Implosion ⊥ Photonen)
+    Theta_condition: simulation/tesseract_timeslices.py + Animation zeigt entkoppelte Flows
+    beta_estimate: 6.4
+    zeta_risk: hoch bei Synchronisationsproblemen zwischen τ und t
+  next_steps:
+  - simulation/tesseract_timeslices.py mit TesseractTimeSlices Klasse
+  - __init__(resolution=50, num_slices=100, implosion_alpha=137.036)
+  - initialize_implosive_field() - ψ(x,y,z,t) = exp(-α⁻¹·r²/(1+10t)) im 4D-Block
+  - extract_timeslice(t_index) - 3D-Kubus bei festem t extrahieren
+  - render_normal_cube() - aufrechte Orientierung (nicht Pyramide auf Spitze)
+  - propagate_photons() - horizontale Propagation mit c durch Slices
+  - reflect_12fold() - Spiegelung an 12 Kubus-Kanten (rekursive Symmetrie)
+  - integrate_consciousness(dt_Q=0.15) - Motion Parallax über 100-300ms
+  - animate_dual_flow() - Split-Screen (4D-Block + extrahierter 3D-Slice)
+  - Vertical Implosion (τ, langsam) vs. Horizontal Light (t, schnell) visualisieren
+  - Validierung - Bewusstsein "läuft mit Licht", merkt Implosion nicht
+  references:
+  - path: releases/V6-Plans_etc/GrundPrinzip Simulation.txt
+    lines:
+    - 1
+    - 309
+  - path: releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt
+    lines:
+    - 561
+    - 899
+  - path: releases/V6-Plans_etc/Theorie.txt
+    lines:
+    - 1
+    - 150
+  priority: 3
+  sprint_focus: Tesseract-Slicing + Dual-Flow Animation
+- id: v6r-formulas-collection
+  title: Zentrale Formel-Sammlung für alle V6-Kernformeln
+  status: open
+  completeness: Formeln verstreut in Theorie.txt, Zusatz, GrundPrinzip; zentrale Referenz fehlt.
+  scope:
+  - documentation
+  - theory
+  logistic_profile:
+    R_target: Vollständige Formelreferenz mit Herleitungen
+    Theta_condition: docs/v6_formulas.md mit allen Formeln + Quellen + Einheiten + Gültigkeitsbereichen
+    beta_estimate: 4.1
+    zeta_risk: niedrig
+  next_steps:
+  - 'v_RIG = c/(α⁻¹·Φ) = 299792 km/s / (137.036 × 1.618) ≈ 1351.8 km/s - Regime Integration Gradient'
+  - 'τ* = (1/β)·ln(|R-Θ|/ε) - Safety-Delay-Formel für Type-VI Implosion'
+  - 'ψ_genesis(r,θ,φ,t) = N·exp(-α⁻¹·r²/ℓ²_P)·Y_tetra(θ,φ)·exp(-iΦ·E_P·t/ℏ) - Entropische Wellenfunktion'
+  - 'V_pyr(R,Θ) = V_0·[1-tanh(β(R-Θ))]·cos⁴(3arctan(√2)) - Pyramidenpotential mit tetraedrischem Faktor'
+  - 'CREP-Indizes: Cohärenz C=1-σ(β)/⟨β⟩, Resonanz R=Δψ/Δt, Emergenz E=∂S/∂t, Persistenz P=τ*/τ_system'
+  - 'Δt_Q Pareto-Front: Multi-Objective (Gabor Uncertainty, Metabolic Cost, Survival Window) → 100-300ms Kniepunkt'
+  - 'Slice Fusion Frequency: SFF = c/(2·IPD·tan(θ/2)) mit IPD≈6.5 cm, Metabolismus-Korrelation'
+  - '12-fold Modulation: A₁₂ = ⟨T(θ,φ)·Y₁₂(θ,φ)⟩ für CMB-Test (Falsifikation wenn A₁₂<10⁻⁵)'
+  - 'Lorentz-Verletzung: ξ = (t_observed - t_GR)/t_GR aus Photonen-Ankunftszeiten'
+  - Jede Formel mit vollständiger Herleitung, Quellen, Dimensionsanalyse
+  - LaTeX-Formatierung für Paper-Integration
+  references:
+  - path: releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt
+    lines:
+    - 311
+    - 560
+  - path: releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md
+    lines:
+    - 20
+    - 73
+  - path: releases/V6-Plans_etc/GrundPrinzip Simulation.txt
+    lines:
+    - 218
+    - 247
+  priority: 4
+  sprint_focus: Formel-Doku + Herleitungen
+- id: v6r-stereo-vision
+  title: Stereo-Vision Slice-Experiment Modul (Psychophysik + Citizen Science)
+  status: open
+  completeness: Phänomenologie dokumentiert in Wichtig!_neue_Erkenntiss; Code fehlt.
+  scope:
+  - models
+  - experiments
+  - documentation
+  logistic_profile:
+    R_target: Experimentelles Protokoll für Citizen Science
+    Theta_condition: models/psychophysics.py + experiments/citizen_science_stereo_vision.md + Paper-Update
+    beta_estimate: 4.3
+    zeta_risk: niedrig - rein phänomenologisches Experiment
+  next_steps:
+  - models/psychophysics.py mit StereoVisionModel Klasse
+  - calculate_slice_fusion_frequency(IPD=0.065, object_distance, angle) - SFF berechnen
+  - predict_metabolic_correlation() - Hypothesis dass SFF ∝ 1/Metabolismus
+  - experiments/citizen_science_stereo_vision.md Protokoll erstellen
+  - 'Experiment 1: Linkes/Rechtes Auge abwechselnd schließen, "Sprung" wahrnehmen'
+  - 'Experiment 2: Objekt-Distanz variieren (10 cm bis 10 m), SFF-Änderung messen'
+  - 'Experiment 3: Metabolismus variieren (Sport, Fasten, Koffein), SFF-Korrelation testen'
+  - paper_v_rig_consciousness.md Sektion 5.5 "Stereo-Vision Slice Fusion" erweitern
+  - Vergleich mit Motion Parallax und Δt_Q-Zeitfenster
+  - IPD=6.5 cm als biologische Konstante für Slice-Abstand interpretieren
+  references:
+  - path: releases/V6-Plans_etc/Wichtig!_neue_Erkenntiss_bitte_integrieren.txt
+    lines:
+    - 1
+    - 472
+  - path: releases/V6-Plans_etc/DeepResearchProtokoll2!!WOW.txt
+    lines:
+    - 1
+    - 100
+  priority: 5
+  sprint_focus: Psychophysik-Modul + Citizen Science Protokoll
+- id: v6r-utac-crit
+  title: UTAC-Crit Benchmark (Antwort auf "AI fails Physics" CritPt)
+  status: open
+  completeness: Konzept vollständig in FinalyzeVorschlägeChatGPT5.1Agent; Implementation fehlt.
+  scope:
+  - benchmarks
+  - validation
+  - outreach
+  logistic_profile:
+    R_target: 5-10 komplexe Physik-Aufgaben auf PhD-Level mit UTAC-Framework
+    Theta_condition: benchmarks/utac_crit/ mit Tasks + Checkpoints + CREP-Bewertung + MOR-FIT Workflow
+    beta_estimate: 6.1
+    zeta_risk: moderate - schlecht definierte Bewertung würde Benchmark wertlos machen
+  next_steps:
+  - benchmarks/utac_crit/README.md mit Konzept (vs. CritPt Ansatz)
+  - 'Task 1: UTAC β als kritische Exponenten (Klima-Vorläufer, LLM-Emergenz)'
+  - 'Task 2: Type-VI Implosion + entropische Gravitation (Verlinde + ζ<0 Safety)'
+  - 'Task 3: Interstellare Reise als Information (ER=EPR + Holographisches Prinzip)'
+  - 'Task 4: Placebo/Nocebo M[ψ,φ]=λψφⁿ mit Stabilitätsbedingungen'
+  - 'Task 5: Klima-Kaskade & Reichtums-Asymmetrie (0.1% Peak → β-Governance)'
+  - Jede Task in Checkpoints (C1-Annahmen, C2-Gleichungen, C3-Szenarien, C4-Falsifikation, C5-CREP)
+  - MOR-FIT-Sigillin Workflow dokumentieren (Beweis dass "Bedienung > Modell")
+  - CREP-Bewertungsraster für jede Task (Coherence/Resonance/Emergence/Persistence)
+  - Vergleich mit CritPt Ergebnissen (4-10% solo vs. MOR-FIT orchestriert)
+  references:
+  - path: releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt
+    lines:
+    - 183
+    - 323
+  priority: 6
+  sprint_focus: Benchmark-Tasks + CREP-Raster
+- id: v6r-cmb-analysis
+  title: CMB-Analyse Pipeline für 12-fache Kubus-Symmetrie
+  status: open
+  completeness: 12-fache Reflexion theoretisch hergeleitet; CMB-Daten-Test fehlt.
+  scope:
+  - analysis
+  - validation
+  - cosmology
+  logistic_profile:
+    R_target: Falsifizierbarer Test der 12-fold Hypothese
+    Theta_condition: scripts/analyze_cmb_12fold.py + Vergleich mit Planck-Daten + Null-Hypothese
+    beta_estimate: 6.8
+    zeta_risk: sehr hoch - Nicht-Detektion würde OIPK-Modell falsifizieren
+  next_steps:
+  - Planck CMB Temperature Map herunterladen (FITS format)
+  - scripts/analyze_cmb_12fold.py erstellen
+  - Kugelflächenfunktionen-Zerlegung T(θ,φ) = Σ a_lm Y_lm(θ,φ)
+  - 12-fache Modulation A₁₂ extrahieren (Kubus-Kanten-Symmetrie)
+  - χ²-Test gegen isotrope Null-Hypothese
+  - Lorentz-Verletzung ξ aus Photonen-Ankunftszeiten (Fermi LAT Daten?)
+  - Shapiro-Delay in Tesseract-Geometrie vs. Cassini-Messung (200 μs)
+  - 'Falsifikationskriterium: A₁₂ < 10⁻⁵ → OIPK widerlegt'
+  - Visualisierung - Mollweide-Projektion mit 12-fold Muster hervorheben
+  references:
+  - path: releases/V6-Plans_etc/GrundPrinzip Simulation.txt
+    lines:
+    - 249
+    - 275
+  priority: 7
+  sprint_focus: CMB-Daten + 12-fold Test
+- id: v6r-wavefunction-pipeline
+  title: Ψ-Wellenfunktions-Pipeline in Genesis/Simulator integrieren
+  status: open
+  completeness: Konzept in V6_Wellenfunktions_Integrationsplan.md; Implementation fehlt.
+  scope:
+  - theory
+  - simulation
+  - visualization
+  logistic_profile:
+    R_target: Ψ-gestützte UTAC-Pipeline operational
+    Theta_condition: pipelines/wavefunction/psi_field.py + genesis_cube.py Integration + Simulator-Output
+    beta_estimate: 5.2
+    zeta_risk: moderate bei Inkonsistenz mit UTAC-Framework
+  next_steps:
+  - docs/v6_wavefunction_theory.md - vollständige Herleitung dokumentieren
+  - pipelines/wavefunction/psi_field.py mit PsiField Klasse
+  - compute_wavefunction(r, theta, phi, t, alpha_inv, Phi) - ψ_genesis berechnen
+  - collapse_to_utac(psi) - |ψ|² → P(R) Mapping
+  - genesis_cube.py Integration - compute_wavefunction() aufrufen
+  - Visualisierung - |ψ|² Wahrscheinlichkeitsdichte als Tesseract-Slicing
+  - Simulator-Output (|ψ|², ΔS) an metrics/beta_evolution.csv anbinden
+  - Kino-Modell (Theorie.txt) + Δt_Q Empirie in Ψ(r,θ,φ,t) Pipeline spiegeln
+  - tests/test_psi_field.py - Normierung, Einheiten, Grenzfälle testen
+  references:
+  - path: releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md
+    lines:
+    - 1
+    - 138
+  - path: releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt
+    lines:
+    - 1
+    - 140
+  priority: 8
+  sprint_focus: Ψ-Feldgleichung + Pipeline
+- id: v6r-rk4-simulator
+  title: RK4-Integrator + τ*-Delay in TypeScript Simulator
+  status: open
+  completeness: Euler-Schema aktiv in TransdisciplinaryFieldSimulator.tsx; RK4 fehlt.
+  scope:
+  - frontend
+  - simulation
+  - numerics
+  logistic_profile:
+    R_target: Numerisch stabile Type-VI Visualisierung
+    Theta_condition: RK4-Integrator + τ*-Buffer für steife Gleichungen (β>15)
+    beta_estimate: 5.4
+    zeta_risk: niedrig - nur numerische Stabilität
+  next_steps:
+  - src/utils/physicsIntegrator.ts mit rk4Step() Funktion
+  - computeDerivatives(state, t, params) - dR/dt, dψ/dt, dφ/dt berechnen
+  - 'RK4 4-Stufen: k1, k2 (midpoint), k3 (midpoint), k4 (endpoint)'
+  - Gewichteter Durchschnitt (k1 + 2k2 + 2k3 + k4)/6
+  - τ*-Buffer für Safety-Delay bei ζ<0 (implosive Szenarien)
+  - TransdisciplinaryFieldSimulator.tsx auf rk4Step() umstellen
+  - Visualisierung - Type-6 Implosion mit Spiral-Kollaps bei R>Θ
+  - Performance-Vergleich Euler vs. RK4 bei hohem β
+  references:
+  - path: releases/V6-Plans_etc/FinalyzeVorschlägeGemini.txt
+    lines:
+    - 60
+    - 181
+  priority: 9
+  sprint_focus: RK4 + τ*-Buffer
+- id: v6r-simulator-ux
+  title: Simulator UX-Paket (Web Audio + CSV Drag&Drop + AI-Navigation)
+  status: open
+  completeness: Konzept in FinalyzeVorschlägeGemini; Implementation fehlt.
+  scope:
+  - frontend
+  - ux
+  - documentation
+  logistic_profile:
+    R_target: Agentenfreundlicher, interaktiver Simulator
+    Theta_condition: Web Audio Sonification + CSV Drag&Drop + llms.txt + Diamond-Map
+    beta_estimate: 4.9
+    zeta_risk: niedrig - reine UX-Verbesserung
+  next_steps:
+  - Web Audio API Sonification (Vibrato bei Instabilität, Frequenz ∝ rate_of_change)
+  - Drag&Drop CSV-Import (β/Θ-Schätzung via JS-Regression direkt im Browser)
+  - llms.txt oder ai_context.md für LLM-Crawler (Trilayer-Navigation)
+  - Diamond-Architecture SVG-Map (models → simulation → sonification → docs)
+  - Implosion-Gravity-Modus für PhasePortrait (Partikel implodieren statt explodieren)
+  - Type-VI Toggle im Simulator (invertierte Sigmoid visualisieren)
+  references:
+  - path: releases/V6-Plans_etc/FinalyzeVorschlägeGemini.txt
+    lines:
+    - 79
+    - 161
+  priority: 10
+  sprint_focus: UX-Paket
+- id: v6r-beta-bayes
+  title: Hierarchisches Bayesianisches Modell für β-Meta-Regression
+  status: open
+  completeness: WLS/OLS ohne signifikante Prädiktoren; Bayesian Hierarchie fehlt.
+  scope:
+  - analysis
+  - statistics
+  logistic_profile:
+    R_target: Robustere β-Schätzungen mit Domain-Clustering
+    Theta_condition: PyMC/Stan Hierarchie + VIF-Checks + Konfidenzintervalle
+    beta_estimate: 4.6
+    zeta_risk: niedrig
+  next_steps:
+  - analysis/beta_meta_regression_bayes.py mit PyMC Hierarchical Model
+  - Domain-Level Random Effects (Bio ~7, Klima ~11, Info ~4.5)
+  - Information Borrowing zwischen Domains mit wenigen Datenpunkten
+  - VIF (Variance Inflation Factor) Checks für Multikollinearität
+  - Posterior Predictive Checks für Modell-Validierung
+  - Konfidenzintervalle für β-Schätzungen
+  - Δt_Q Pareto-Hypothese testen (φ^(n/3) Skalierung)
+  references:
+  - path: releases/V6-Plans_etc/FinalyzeVorschlägeGemini.txt
+    lines:
+    - 36
+    - 39
+  priority: 11
+  sprint_focus: Bayes-Hierarchie + VIF
+delta_updates:
+- date: '2025-11-26'
+  label: v6-refresh-initialization
+  highlights:
+  - 'Neue TODO-Liste basierend auf Promt_für_Agenten.txt Analyse erstellt'
+  - 'Fokus: Papers (Priority 1), Simulationen (2-3), Formeln (4), Experimente (5-7)'
+  - '11 Tasks definiert mit vollständigen logistic_profiles und next_steps'
+  - 'Alle Referenzen zu Quell-Dokumenten in V6-Plans_etc verlinkt'

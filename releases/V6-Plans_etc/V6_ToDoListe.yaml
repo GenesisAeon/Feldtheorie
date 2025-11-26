@@ -414,6 +414,222 @@ tasks:
     - 120
   priority: 13
   sprint_focus: Ψ-Feldgleichung anlegen
+- id: v6-vrig-simulation
+  title: v_RIG Reality-Renderer Simulation implementieren
+  status: open
+  completeness: Konzept in GrundPrinzip Simulation.txt skizziert; Implementierung fehlt.
+  scope:
+  - simulation
+  - validation
+  - theory
+  logistic_profile:
+    R_target: v_RIG-Buffer-Simulation operational
+    Theta_condition: Integration-Fenster N≈222 zeigt maximale Kohärenz
+    beta_estimate: 5.8
+    zeta_risk: moderate bei falscher Buffer-Größe
+  next_steps:
+  - Blueprint aus GrundPrinzip Simulation.txt in Python/TypeScript umsetzen.
+  - Holographischer Stream (2D-Slices) generieren mit Interferenzmustern.
+  - Ring-Buffer für N=1 bis N=500 implementieren, Kohärenz messen.
+  - Φ-Versatz für Parallaxe zwischen Slices anwenden (Stereo-Vision Prinzip).
+  - Entropie-Messung für 3D-Output bei verschiedenen N-Werten durchführen.
+  - Validierung gegen Hypothese - maximale Struktur bei N≈α⁻¹·Φ≈222.
+  references:
+  - path: releases/V6-Plans_etc/GrundPrinzip Simulation.txt
+    lines:
+    - 596
+    - 807
+  priority: 14
+  sprint_focus: Buffer-Algorithmus + Kohärenz-Metrik
+- id: v6-oipk-tesseract
+  title: OIPK-Tesseract Dual-Flow Simulation implementieren
+  status: open
+  completeness: OIPK-Modell theoretisch hergeleitet; Simulation fehlt noch.
+  scope:
+  - simulation
+  - visualization
+  - physics
+  logistic_profile:
+    R_target: Asynchrone Dual-Flow Demo operational
+    Theta_condition: Implosion (τ, vertikal) + Photonen (t, horizontal) entkoppelt
+    beta_estimate: 6.4
+    zeta_risk: hoch bei Synchronisationsproblemen
+  next_steps:
+  - TesseractTimeSlices Klasse mit 4D-Block implementieren (resolution=50, num_slices=100).
+  - Implosives Feld im 4D-Block initialisieren (exp(-α⁻¹·r²/(1+10T))).
+  - extract_timeslice() für 3D-Kubus bei festem t implementieren.
+  - render_normal_cube() für aufrecht stehende Kubus-Orientierung (keine Pyramide).
+  - Photonen-Propagation zwischen Slices mit 12-facher Kubus-Kanten-Reflexion.
+  - Dual-View Animation (4D-Projektion + extrahierter 3D-Slice).
+  - Bewusstseins-Integrator für Δt_Q Motion Parallax (100-300ms).
+  references:
+  - path: releases/V6-Plans_etc/GrundPrinzip Simulation.txt
+    lines:
+    - 1
+    - 309
+  - path: releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt
+    lines:
+    - 561
+    - 899
+  priority: 15
+  sprint_focus: Tesseract-Slicing + Dual-Flow
+- id: v6-stereo-vision
+  title: Stereo-Vision Slice-Experiment Modul implementieren
+  status: open
+  completeness: Konzept in Wichtig!_neue_Erkenntiss dokumentiert; Code fehlt.
+  scope:
+  - models
+  - experiments
+  - documentation
+  logistic_profile:
+    R_target: Citizen Science Experiment veröffentlicht
+    Theta_condition: models/psychophysics.py + experiment docs + Paper-Update
+    beta_estimate: 4.3
+    zeta_risk: niedrig
+  next_steps:
+  - models/psychophysics.py mit StereoVisionModel Klasse erstellen.
+  - calculate_slice_fusion_frequency() Methode für SFF implementieren.
+  - IPD (6.5 cm) und object_distance Parameter integrieren.
+  - experiments/citizen_science_stereo_vision.md Protokoll dokumentieren.
+  - Linkes/Rechtes Auge Wechsel-Test beschreiben (phänomenologischer Zugang).
+  - paper_v_rig_consciousness.md Abschnitt 5.5 mit Stereo-Vision erweitern.
+  - Metabolismus-SFF Korrelation als testbare Vorhersage formulieren.
+  references:
+  - path: releases/V6-Plans_etc/Wichtig!_neue_Erkenntiss_bitte_integrieren.txt
+    lines:
+    - 1
+    - 472
+  - path: releases/V6-Plans_etc/papers/paper_v_rig_consciousness.md
+    lines:
+    - 1
+    - 1
+  priority: 16
+  sprint_focus: Psychophysik-Modul + Citizen Science
+- id: v6-deep-research-papers
+  title: Deep Research - Paper-Validierung für alle Hypothesen
+  status: open
+  completeness: Suche-Dateien enthalten Recherche-Protokolle; systematische Literatur-Review fehlt.
+  scope:
+  - research
+  - validation
+  - documentation
+  logistic_profile:
+    R_target: Literatur-Review für V6-Kernhypothesen
+    Theta_condition: Mind. 50 Papers zitiert mit Bezug zu UTAC/v_RIG/Type-VI
+    beta_estimate: 5.7
+    zeta_risk: moderate bei fehlender Validierung
+  next_steps:
+  - SucheCOMPREHENSIVE - Δt_Q=100-300ms Zeitscheiben validieren (Fraisse 1984, Lehmann Microstates).
+  - SuchePyramiden - α⁻¹, Φ in CDT/LQG Papers suchen (Causal Dynamical Triangulation).
+  - SucheValidierung - OIPK/Tesseract mit Verlinde Entropic Gravity verknüpfen.
+  - MEP (Maximum Entropy Production, Prigogine) und Dissipative Strukturen recherchieren.
+  - Kleiber's Law (M^3/4) und WBE-Theorie (West-Brown-Enquist) für β-Kopplung.
+  - Barbour Janus Point und Block-Universum für Zeitscheiben-Modell.
+  - CDT 2D→4D Kollaps (Ambjørn et al.) für holographisches Prinzip.
+  - Literatur-Datenbank in docs/references_v6.bib anlegen (BibTeX).
+  references:
+  - path: releases/V6-Plans_etc/SucheCOMPREHENSIVE EMPIRICAL VALIDATION RESEARCH.txt
+    lines:
+    - 1
+    - 153
+  - path: releases/V6-Plans_etc/SuchePyramiden-Geometrie und Kosmische Konstanten.txt
+    lines:
+    - 1
+    - 96
+  - path: releases/V6-Plans_etc/SucheValidierung des OIPK-Tesseract-Modells.txt
+    lines:
+    - 1
+    - 260
+  priority: 17
+  sprint_focus: Literatur-Review + Citations
+- id: v6-formula-collection
+  title: Formular-Sammlung für alle V6-Formeln erstellen
+  status: open
+  completeness: Formeln verstreut in verschiedenen Dokumenten; zentrale Sammlung fehlt.
+  scope:
+  - documentation
+  - theory
+  logistic_profile:
+    R_target: Vollständige Formelreferenz
+    Theta_condition: docs/v6_formulas.md mit allen Kernformeln + Herleitung
+    beta_estimate: 4.1
+    zeta_risk: niedrig
+  next_steps:
+  - v_RIG = c/(α⁻¹·Φ) ≈ 1351.8 km/s - Ableitung dokumentieren.
+  - τ* = (1/β)·ln(|R-Θ|/ε) - Safety-Delay-Formel.
+  - ψ_genesis(r,θ,φ,t) = N·exp(-α⁻¹·r²/ℓ²_P)·Y_tetra(θ,φ)·exp(-iΦ·E_P·t/ℏ).
+  - V_pyr(R,Θ) = V_0·[1-tanh(β(R-Θ))]·cos⁴(3arctan(√2)) - Pyramidenpotential.
+  - CREP-Indizes (Cohärenz, Resonanz, Emergenz, Persistenz) für Type-VI.
+  - Δt_Q Pareto-Front - Multi-Objective Optimierung (Gabor-Constraints).
+  - Alle Formeln mit Quellen, Einheiten, Gültigkeitsbereichen annotieren.
+  references:
+  - path: releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt
+    lines:
+    - 311
+    - 560
+  - path: releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md
+    lines:
+    - 20
+    - 73
+  priority: 18
+  sprint_focus: Zentrale Formelreferenz
+- id: v6-utac-crit
+  title: UTAC-Crit Benchmark als Antwort auf CritPt erstellen
+  status: open
+  completeness: Konzept in FinalyzeVorschlägeChatGPT5.1Agent skizziert; Implementation fehlt.
+  scope:
+  - benchmarks
+  - validation
+  - outreach
+  logistic_profile:
+    R_target: 5-10 komplexe UTAC-Aufgaben auf PhD-Level
+    Theta_condition: benchmarks/utac_crit/ mit Tasks + Checkpoints + CREP-Bewertung
+    beta_estimate: 6.1
+    zeta_risk: moderate bei unklarer Bewertung
+  next_steps:
+  - benchmarks/utac_crit/README.md mit Konzept erstellen.
+  - Task 1 - UTAC β als kritische Exponenten interpretieren (Klima/LLM Vorläufer-Signale).
+  - Task 2 - Type-VI Implosion & entropische Gravitation (Verlinde + ζ<0).
+  - Task 3 - Interstellare Reise als Informations-Transport (ER=EPR + Holographisches Prinzip).
+  - Task 4 - Placebo/Nocebo-Field M[ψ,φ]=λψφⁿ mit Stabilitätsbedingungen.
+  - Task 5 - Klima-Kaskade & Reichtums-Asymmetrie (0.1% Peak, β-Steuerung).
+  - Jede Task in Checkpoints zerlegen (C1-Modellannahmen, C2-Gleichungen, C3-Szenarien, C4-Falsifikation, C5-CREP).
+  - MOR-FIT-Sigillin Workflow dokumentieren als Gegenbeweis zu "AI fails Physics".
+  references:
+  - path: releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt
+    lines:
+    - 183
+    - 323
+  priority: 19
+  sprint_focus: Benchmark-Tasks + CREP-Rastern
+- id: v6-cmb-analysis
+  title: CMB-Analyse Pipeline für 12-fache Modulation erstellen
+  status: open
+  completeness: 12-fache Symmetrie theoretisch hergeleitet; CMB-Test fehlt.
+  scope:
+  - analysis
+  - validation
+  - cosmology
+  logistic_profile:
+    R_target: CMB-Daten mit 12-fold reflection testen
+    Theta_condition: scripts/analyze_cmb_12fold.py + Vergleich mit Planck-Daten
+    beta_estimate: 6.8
+    zeta_risk: hoch bei Nicht-Detektion
+  next_steps:
+  - Planck CMB Temperature Map (T(θ,φ)) herunterladen und laden.
+  - Fourier-Zerlegung nach Kugelflächenfunktionen (Y_lm).
+  - 12-fache Modulation A₁₂ extrahieren (Kubus-Kanten-Symmetrie).
+  - Vergleich mit isotroper Null-Hypothese (χ²-Test).
+  - Lorentz-Verletzungs-Parameter ξ aus Photonen-Ankunftszeiten ableiten.
+  - Shapiro-Delay in Tesseract-Geometrie berechnen und mit Cassini-Daten vergleichen.
+  - Falsifikationskriterium - A₁₂ < 10⁻⁵ würde 12-fold Model widerlegen.
+  references:
+  - path: releases/V6-Plans_etc/GrundPrinzip Simulation.txt
+    lines:
+    - 249
+    - 275
+  priority: 20
+  sprint_focus: CMB-Daten + 12-fold Test
 delta_updates:
 - date: '2025-11-25'
   label: sprint-delta-sync
