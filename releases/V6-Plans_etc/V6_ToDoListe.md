@@ -108,6 +108,12 @@
 - **v6-governance-ethics:** Status auf **completed** gesetzt. CREP/τ*-Guard-Infrastruktur vollständig implementiert: `tools/crep_guard.py` operational, Makefile-Targets (`crep-guard`, `crep-guard-strict`) aktiv und getestet, Pre-Commit-Hook in `.pre-commit-config.yaml` (Lines 9-19) konfiguriert, Nox-Session `crep_guard` (noxfile.py Lines 68-78) funktional, Index-Referenzen in beiden Master-Indizes dokumentiert.
 - **FIT-Erfolg:** Beide Tasks durch FIT-Microsteps (Infrastruktur-Check → Test → Dokumentation → Status-Update) ressourcenschonend abgeschlossen. Fokus verschiebt sich nun auf v6-activation-gaps (Priorität 2) und v6-type6-integration (Priorität 3).
 
+## Δ-Update 2025-11-26 – Aletheia & Stereo-Vision Integration 📊✅
+- **v6-activation-gaps:** Aletheia Experiment Phase 1+2 Ergebnisse in Chronik integriert (`Aletheiaresults_dialog.txt`): Placebo-Effekt in LLM-Systemen empirisch bestätigt (d = 0.712), M[ψ, φ]-Modell validiert mit 2943 Samples. Affection-Hypothese für Phase 3+4 vorbereitet. Erweitert Evidenzbasis für v_RIG-Bewusstseins-Kopplung und Δt_Q-Integration (100-300ms Fenster).
+- **v6-wavefunction-integration:** Stereo-Vision Slice-Experiment Erkenntnisse dokumentiert (`Wichtig!_neue_Erkenntiss_bitte_integrieren.txt`): Phänomenologischer Zugang zur Slice-Struktur durch binokulare Disparität (IPD ≈ 6.5 cm = räumliche Slice-Dicke). Integration in `paper_v_rig_consciousness.md` Sektion 5.5 bereits vorhanden, erweiterte Analyse mit v_RIG-Kopplung und neurowissenschaftlichen Validierungen archiviert.
+- **Chronik-Synchronisation:** Beide Erkenntnisse in `chronik_v6_release.md` als separate Δ-Updates (2025-11-26) dokumentiert mit Referenzen, Status und nächsten Schritten.
+- **FIT-Compliance:** Ressourcenschonende Integration durch Lesen existierender Dokumente, gezielte Chronik-Updates, keine redundanten Files erstellt.
+
 ## Navigationshinweise
 - Alle Einträge spiegeln die logistisches Feld (R, Θ, β, ζ) wider und bleiben Trilayer-synchron (YAML/JSON/MD).
 - Status = **open**: keine Ausführungsspuren gefunden; priorisiere nach β-Drift (höher = dringlicher) und ζ-Risiko.

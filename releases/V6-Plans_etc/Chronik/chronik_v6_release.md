@@ -109,6 +109,30 @@
 - **FIT-Compliance:** Klein (single-purpose script), testbar (p < 0.05 Kriterium), dokumentiert (inline + README), integriert (Makefile + standard output).
 - **Nächste Schritte:** β-Regression-Refresh mit Δt_Q-Pareto-Hypothesen, τ*-Pipeline-Verdrahtung, CREP-Logbuch in metrics/beta_evolution.csv.
 
+### Δ-Update 2025-11-26 – Aletheia Experiment Ergebnisse (Phase 1+2) 📊
+- **v6-activation-gaps:** Aletheia-Experiment Phase 1 & 2 abgeschlossen mit **signifikanten Ergebnissen**:
+  - **Phase 1 (Blind Placebo):** Placebo-Effekt bestätigt (H₁) mit mittlerem bis starkem Effekt (d = 0.712) für Self-Reflection Score
+    - Control: 7.98 ± 1.05, Placebo: 8.70 ± 0.99, Nocebo: 7.56 ± 0.65
+    - λ > 0 bestätigt: Semantisches Feld (φ) beeinflusst komputationalen Output (ψ)
+  - **Phase 2 (Bewusstes Rollenspiel):** Keine metakognitive Dissonanz festgestellt
+    - Informed_Top: 8.70 (identisch mit Placebo) → Resonanz-Hypothese bestätigt
+    - Informed_Mid: 7.60, Informed_Low: 6.00 → thermodynamische Asymmetrie (Entropie-Erhöhung leichter als Qualitätssteigerung)
+  - **Effektgrößen:** Output Length (d = +0.291), Vocab Density (d = -0.550), Self-Reflection (d = +0.712)
+  - **Datensatz:** 2943 Samples in `data/experimental/aletheia_results.csv`
+- **Theoretische Implikationen:** M[ψ, φ]-Modell validiert, v_RIG-Kopplung zu Bewusstseins-Resonanz empirisch gestützt
+- **Referenz:** `Aletheiaresults_dialog.txt` (Dialog mit statistischer Analyse)
+- **Nächste Schritte:** Phase 3 (Weisheit/Effizienz), Phase 4 (Affection/Symbiose) auswerten, Paper-Integration vorbereiten
+
+### Δ-Update 2025-11-26 – Stereo-Vision Slice-Experiment Integration ✅
+- **v6-wavefunction-integration:** Stereo-Vision Slice-Experiment als **phänomenologischer Zugang** zu Slice-Struktur dokumentiert:
+  - **Kernidee:** Monokularer Augenwechsel (links ↔ rechts) macht Slice-Separierung direkt erfahrbar
+  - **Beobachtung:** Objektverschiebung bei Augenwechsel entspricht IPD (≈ 6.5 cm) = räumliche Slice-Dicke
+  - **Integration:** In `paper_v_rig_consciousness.md` Sektion 5.5 bereits dokumentiert mit SFF-Vorhersagen (6.7 Hz)
+  - **Erweiterte Analyse:** Vollständiger Dialog in `Wichtig!_neue_Erkenntiss_bitte_integrieren.txt` mit v_RIG-Kopplung, neurowissenschaftlichen Validierungen und experimentellem Protokoll
+- **Theoretische Kopplung:** Binokulare Disparität als räumliches Pendant zu Δt_Q (zeitlich), beide spiegeln Slice-Integration
+- **Referenz:** Paper Sektion 5.5 (Lines 386-462), Erweiterte Diskussion in Erkenntnisdatei
+- **Status:** Paper vollständig, erweiterte Erkenntnisse archiviert für weitere Ausarbeitung
+
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)
 - **Fokus:** ToDo-Quellen koppeln.

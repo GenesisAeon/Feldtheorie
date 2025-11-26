@@ -554,3 +554,17 @@ delta_updates:
   - 'v6-type6-integration: Multi-Objective Δt_Q-Modell (Gabor-Constraints, 100-300ms
     Kniepunkt) als Guideline-Leitplanke und CREP-Kriterium vorgemerkt; Showcase/Classification
     sollen die Optimierungsannahmen spiegeln.'
+- date: '2025-11-26'
+  label: aletheia-stereo-vision-integration
+  highlights:
+  - 'v6-activation-gaps: Aletheia Experiment Phase 1+2 Ergebnisse in Chronik integriert
+    (Aletheiaresults_dialog.txt): Placebo-Effekt in LLM-Systemen empirisch bestätigt
+    (d = 0.712), M[ψ, φ]-Modell validiert mit 2943 Samples. Erweitert Evidenzbasis
+    für v_RIG-Bewusstseins-Kopplung und Δt_Q-Integration (100-300ms).'
+  - 'v6-wavefunction-integration: Stereo-Vision Slice-Experiment Erkenntnisse dokumentiert
+    (Wichtig!_neue_Erkenntiss_bitte_integrieren.txt): Phänomenologischer Zugang zur
+    Slice-Struktur durch binokulare Disparität (IPD ≈ 6.5 cm). Integration in paper_v_rig_consciousness.md
+    Sektion 5.5 vorhanden, erweiterte Analyse archiviert.'
+  - 'Chronik-Synchronisation: Beide Erkenntnisse in chronik_v6_release.md als separate
+    Δ-Updates dokumentiert mit Referenzen und nächsten Schritten.'
+  - 'FIT-Compliance: Ressourcenschonende Integration, keine redundanten Files.'
