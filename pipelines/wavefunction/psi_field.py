@@ -26,7 +26,10 @@ import math
 from typing import Dict, Tuple, Optional, Callable
 from dataclasses import dataclass, field
 import numpy as np
-from scipy.special import sph_harm
+try:
+    from scipy.special import sph_harm_y as sph_harm
+except ImportError:
+    from scipy.special import sph_harm
 
 # Import V6 constants
 try:
@@ -260,13 +263,13 @@ class PsiField:
         radial_dist = r_grid**2 * prob_density
 
         # Normalize radial distribution
-        norm = np.trapz(radial_dist, r_grid)
+        norm = np.trapezoid(radial_dist, r_grid)
         if norm > 0:
             radial_dist = radial_dist / norm
 
         # Expectation values
-        mean_r = np.trapz(r_grid * radial_dist, r_grid)
-        mean_r2 = np.trapz(r_grid**2 * radial_dist, r_grid)
+        mean_r = np.trapezoid(r_grid * radial_dist, r_grid)
+        mean_r2 = np.trapezoid(r_grid**2 * radial_dist, r_grid)
         delta_r = np.sqrt(mean_r2 - mean_r**2)
 
         return {
