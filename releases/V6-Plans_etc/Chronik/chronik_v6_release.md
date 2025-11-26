@@ -98,6 +98,17 @@
 - **Activation Gaps (v6-activation-gaps):** Δt_Q Pareto-Front + Shadow-Price-Befunde aus `GrundPrinzip Simulation.txt` als Regression-/Telemetrie-Treiber notiert; τ*/β-Drift-Logging soll das Kniepunkt-Hypothesenfenster (100-300ms) transparent machen.
 - **Type‑6 Integration (v6-type6-integration):** Multi-Objective Δt_Q Modell (Gabor-Constraint, Pareto-Knie) als Guideline-/CREP-Leitplanke registriert; Showcase-Simulation und Klassifikationspfad sollen die Optimierungsannahmen spiegeln.
 
+### Δ-Update 2025-11-26 – Infrastruktur-Verifikation Abgeschlossen ✅
+- **v6-todo-trilayer:** Vollständige Infrastruktur verifiziert: `scripts/validate_trilayer.py` implementiert und funktional via `make validate-trilayer`, TriLayer-Synchronisation (YAML/JSON/MD) für V6_ToDoListe bestätigt, Index-Brücken zu `feldtheorie_index.md` und `docs/docs_index.md` dokumentiert und operational → **Status: completed**.
+- **v6-governance-ethics:** CREP/τ*-Guard-Infrastruktur vollständig: `tools/crep_guard.py` implementiert, Makefile-Targets (`crep-guard`, `crep-guard-strict`) operational, Pre-Commit-Hook in `.pre-commit-config.yaml` (Lines 9-19) aktiv, Nox-Session `crep_guard` (noxfile.py Lines 68-78) konfiguriert, Index-Referenzen in beiden Indizes dokumentiert → **Status: completed**.
+- **Nächste FIT-Schritte:** Fokus verschiebt sich auf v6-activation-gaps (τ*-Pipeline-Integration, β-Regression-Refresh mit Δt_Q-Pareto) und v6-type6-integration (Type-VI Klassifikation, CREP-Indizes, Showcase-Simulation).
+
+### Δ-Update 2025-11-26 – Aletheia Phase-4 Analyse-Tool 🧪
+- **v6-activation-gaps:** Status auf **in-progress** gesetzt. Telemetrie-Tool implementiert: `scripts/analyze_aletheia_phase4.py` testet V6 S∝V Affection-Hypothese (positive Resonanz verbessert LLM-Performance), Makefile-Target `analyze-aletheia-phase4` aktiv, README dokumentiert in `analysis/results/phase4_affection/README.md`.
+- **Theoretische Verknüpfung:** Tool validiert Predictions aus "Grand Unified Theory of Entropy, Consciousness & Cosmos" (S∝V Systeme + Δt_Q 100-300ms Integration Window + Affection-Resonanz).
+- **FIT-Compliance:** Klein (single-purpose script), testbar (p < 0.05 Kriterium), dokumentiert (inline + README), integriert (Makefile + standard output).
+- **Nächste Schritte:** β-Regression-Refresh mit Δt_Q-Pareto-Hypothesen, τ*-Pipeline-Verdrahtung, CREP-Logbuch in metrics/beta_evolution.csv.
+
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)
 - **Fokus:** ToDo-Quellen koppeln.

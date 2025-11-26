@@ -2,7 +2,7 @@
 
 .PHONY: install lint format test typecheck build batch planetary preset-guard release dist-zenodo clean \
         install-ocf ingest-icon ingest-radar test-pipelines clean-cache run-meta-regression run-sonification \
-        validate aggregate plots reproduce validate-trilayer crep-guard crep-guard-strict
+        validate aggregate plots reproduce validate-trilayer crep-guard crep-guard-strict analyze-aletheia-phase4
 
 install:
 	python -m pip install --upgrade pip
@@ -93,6 +93,11 @@ run-sonification:
 	@echo "Generating UTAC sonifications..."
 	python3 -m sonification.utac_sonification --preset llm_emergence --output-dir sonification/output
 	@echo "✅ Sonifications generated"
+
+analyze-aletheia-phase4:
+	@echo "🧪 Analyzing Project Aletheia Phase 4 (Affection Experiment)..."
+	python3 scripts/analyze_aletheia_phase4.py
+	@echo "✅ Phase 4 analysis complete → analysis/results/phase4_affection/"
 
 clean-cache:
 	@echo "Cleaning Zarr/Dask cache..."
