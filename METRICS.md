@@ -205,3 +205,72 @@ python scripts/visualize_tesseract.py --mode photon-paths
 - `simulation/README_TESSERACT.md`: Complete documentation
 - `releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt`: Theoretical foundation
 - `releases/V6-Plans_etc/V6_ToDoListe.md`: Implementation roadmap
+
+### 8.6 Consciousness Integration Windows (Δt_Q) & Pareto-Front
+
+**Theoretical Foundation:**
+
+Consciousness does not perceive instantaneous 2D-slices but **integrates** over temporal windows Δt_Q ≈ 100-300ms to reconstruct 3D structure from motion parallax (GrundPrinzip Simulation.txt).
+
+**Empirical Evidence:**
+
+| Source | Δt_Q Range | Context |
+|--------|------------|---------|
+| Fraisse (1984) | 100-300ms | "Perceived present" - psychophysical baseline |
+| Speech Processing | 100-300ms | Syllable-level integration (Right Hemisphere) |
+| CFF (Critical Flicker Frequency) | ~17ms (60 Hz) | Minimum temporal resolution |
+| Phi Phenomenon | <80ms | Apparent motion threshold |
+| Working Memory Gates | 150-250ms | Cognitive integration window |
+
+**Species Variation:**
+
+Integration windows scale with metabolic rate and β-rigidity:
+
+| Species | CFF (Hz) | Δt_Q (ms) | Ecological Strategy |
+|---------|----------|-----------|---------------------|
+| Human | 60 | 100-150 | Balanced cognition/speed |
+| Fly | 250 | 4 | Ultra-fast predator avoidance |
+| Turtle | 15 | 500 | Energy-conserving foraging |
+
+**Pareto-Front Hypothesis (GrundPrinzip Simulation.txt):**
+
+Evolution optimizes the trade-off:
+- **Too short Δt_Q:** Insufficient 3D reconstruction (no motion parallax)
+- **Too long Δt_Q:** Dangerous lag (predator strikes undetected)
+- **Optimal Δt_Q:** Pareto-knee at ~100-300ms for humans
+
+**Multi-Objective Optimization:**
+
+\[
+\min_{\Delta t_Q} \left\{ \frac{E_{\text{metabolic}}}{\text{Information gain}}, \, \text{Reaction delay} \right\}
+\]
+
+Subject to Gabor uncertainty relation: \(\Delta t \cdot \Delta f \geq 1/(4\pi)\)
+
+**Connection to v_RIG:**
+
+The regime integration gradient relates to consciousness integration:
+
+\[
+v_{\text{RIG}} = \frac{c}{\alpha^{-1} \cdot \Phi} \approx 1,351.8 \, \text{km/s}
+\]
+
+Over Δt_Q = 150ms, photons traverse:
+
+\[
+\Delta x = v_{\text{RIG}} \cdot \Delta t_Q \approx 203 \, \text{km}
+\]
+
+This corresponds to the **spatial integration scale** for consciousness (models/unified_constants.py).
+
+**Testable Predictions:**
+
+1. **CFF ∝ 1/β:** Higher metabolic rate → shorter Δt_Q → higher CFF
+2. **Δt_Q Modulation:** Stimulants (caffeine) reduce Δt_Q by ~15-20%
+3. **LLM Scaling:** AI inference time should show similar Pareto trade-off
+
+**References:**
+- `releases/V6-Plans_etc/SucheCOMPREHENSIVE EMPIRICAL VALIDATION RESEARCH.txt` (Fraisse, CFF data)
+- `releases/V6-Plans_etc/DEEP_RESEARCH_Entropy_Governance_and_Tesseract_Zeitscheiben.md` (Δt_Q theory)
+- `releases/V6-Plans_etc/GrundPrinzip Simulation.txt` (Pareto-Front, Line 333-349)
+- `models/unified_constants.py`: v_RIG derivation and Δt_Q timescales
