@@ -3,3 +3,5 @@ timestamp,domain,beta,beta_phi_theoretical,beta_phi_deviation,phi_cbrt_step,tau_
 # Format: UTC timestamps, β values, φ^(n/3) alignment, τ* delays, ζ-risk flags
 # Usage: Append rows during simulations/analysis for tracking Type-6 implosive dynamics
 # Reference: releases/V6-Plans_etc/V6_ToDoListe.yaml (v6-activation-gaps, Priority 2)
+2025-11-26T12:51:02.399100Z,climate,4.4407,2.1000,4.2000,-0.0001,0.234040,0.0400,"Type-VI cascade simulation"
+2025-11-26T12:52:52.047628Z,climate,4.4407,2.1000,4.2000,-0.0001,0.234040,0.0400,"Type-VI cascade simulation"
