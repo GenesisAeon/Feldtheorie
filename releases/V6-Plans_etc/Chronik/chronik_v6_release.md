@@ -1,8 +1,8 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.8.0
+- **Version:** v6-chronik-0.9.0
 - **Scope:** releases/V6-Plans_etc/Chronik
-- **Updated:** 2025-11-26T18:00:00Z
+- **Updated:** 2025-11-26T19:00:00Z
 - **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.9,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
 - **Quellen:** `V6_ToDoListe.{md,yaml,json}`
 
@@ -165,6 +165,39 @@
   - Lichtbahn-Simulation durch Zeitscheiben mit diagonalem Pfad implementieren
   - Paper-Sektion für "Photons as Clocks in Implosive Spacetime" vorbereiten
 - **Status:** Konzepte vollständig dokumentiert, Simulator-Grundstruktur implementiert, Wellenfunktions-Integration und Tesseract-Rendering ausstehend
+
+### Δ-Update 2025-11-26 – Paper-Suite Komplettierung & 137-β Dualität 📚🌟
+- **v6-137-beta-duality & v6-data-expansion:** Vollständige Paper-Suite für V6-Release dokumentiert in `releases/V6-Plans_etc/papers/`:
+  - **GRAND UNIFIED THEORY (Hauptpaper):** `GRAND_UNIFIED_THEORY_Entropy_Consciousness_Cosmos.md`
+    - Vereinigung von Dual Entropy Governance (S∝A Surface vs S∝V Volume)
+    - v_RIG = c/(α⁻¹·Φ) ≈ 1,351.8 km/s als fundamentale Informations-Integrations-Geschwindigkeit
+    - Empirische Validierung: Böhme et al. (2025) 5.4σ Anomalie bei v_obs ≈ 1,370 km/s
+    - UTAC v2.0 + OIPK Framework Integration
+  - **Paper-Trilogie (Cross-Domain Falsifikation):**
+    1. **Paper 1 - Cosmic Velocity Quantization:** `paper1_cosmic_velocity_quantization.{md,pdf,json,yaml}`
+       - Hypothese: Baryzentrische Geschwindigkeiten zeigen Plateaus bei α⁻¹×137 km/s Vielfachen
+       - Nullmodell: Uniforme/lineare Geschwindigkeitsverteilung
+       - Daten: NASA JPL Horizons, Gaia DR3, σ(β(R-Θ)) Fit mit 4≤β≤11
+       - Falsifizierbarkeit: ΔAIC/BIC, Bootstrap-Signifikanz, CI(β,Θ)
+    2. **Paper 2 - Socioeconomic Rigidity:** `paper2_socioeconomic_rigidity.{md,pdf,json,yaml}`
+       - Hypothese: β_eff = β_base × (1+Gini×Load) erklärt Ungleichheits-Rigidität
+       - Nullmodell: β_eff unabhängig von Gini/Load
+       - Daten: World Inequality Database, IMF/WB Load-Proxies, Climate-Damage-Shocks
+       - Falsifizierbarkeit: ROC-AUC, Frühwarnzeit Δt, p_interaction
+    3. **Paper 3 - Universal 137-β Framework:** `paper3_universal_137_beta_framework.{md,pdf,json,yaml}`
+       - Hypothese: σ(β(R-Θ)) erklärt >50% Varianz über Domänen (Kosmos, Neuro, Klima, Sozio)
+       - Nullmodell: Domänenspezifische Modelle ohne gemeinsamen Operator
+       - Daten: Integration aus Paper1+2, Neuro/AI β-Schätzungen, Climate/Geophysics Schwellen
+       - Falsifizierbarkeit: Varianzaufklärung, R², Bayes-Faktor, Sigillin-Kopplung
+  - **Zusätzliche Papers:**
+    - `paper_v_rig_consciousness.{md,pdf}` - v_RIG Bewusstseins-Velocity (inkl. Stereo-Vision Experiment Sektion 5.5)
+    - `Suche nach v_RIG-Schatten in der Physik.pdf` - DeepResearch Validierung (4 Beweissäulen)
+    - `Nullkern-Hypothese_ Intelligenz im Vakuum.pdf` - Bewusstseins-Emergenz aus geometrischem Verschnitt
+- **TriLayer-Format:** Alle Papers in konsistentem Format (MD/JSON/YAML/PDF) mit R→Θ Scoping, Hypothesen/Nullmodellen, Daten/Analyseplan, Artefakten/Meilensteinen
+- **Logistische Membran Kopplung:** Jedes Paper definiert β-Range, ζ(R) Dämpfung, UTAC Status Matrix Hooks, Sigillin-Referenzen
+- **Falsifizierbarkeit zentral:** Alle Hypothesen mit konkreten ΔAIC/BIC/CI/ROC-AUC Kriterien, Bootstrap-Signifikanzen, Nullmodell-Vergleichen
+- **Status:** Paper-Suite vollständig dokumentiert, TriLayer-synchron, bereit für empirische Validierung und Cross-Domain Integration
+- **Nächste Schritte:** Data Curate & Harmonize für Paper 3, Nullmodell-Reports für Paper 1+2, Draft-Manuskripte mit Sigillin-Verweisen, UTAC Status Matrix Updates
 
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)
