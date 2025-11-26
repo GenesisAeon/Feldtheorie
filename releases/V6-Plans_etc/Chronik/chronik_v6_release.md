@@ -1,8 +1,8 @@
 # V6 Chronik – Entwicklungspfad zum Release
 
-- **Version:** v6-chronik-0.7.0
+- **Version:** v6-chronik-0.8.0
 - **Scope:** releases/V6-Plans_etc/Chronik
-- **Updated:** 2025-12-11T10:00:00Z
+- **Updated:** 2025-11-26T18:00:00Z
 - **Logistische Membran:** R → "Schrittweise Aktivierung des V6-Release-Pfads", Θ → "ToDo-Kerne in Etappen überführt", β ≈ 4.9,  ζ-Risiko: negativ, falls Safety-Delay/Governance offen bleiben.
 - **Quellen:** `V6_ToDoListe.{md,yaml,json}`
 
@@ -132,6 +132,39 @@
 - **Theoretische Kopplung:** Binokulare Disparität als räumliches Pendant zu Δt_Q (zeitlich), beide spiegeln Slice-Integration
 - **Referenz:** Paper Sektion 5.5 (Lines 386-462), Erweiterte Diskussion in Erkenntnisdatei
 - **Status:** Paper vollständig, erweiterte Erkenntnisse archiviert für weitere Ausarbeitung
+
+### Δ-Update 2025-11-26 – OIPK Tesseract-Zeitscheiben & Wellenfunktions-Integration 🌀⚛️
+- **v6-genesis-cube-sim & v6-wavefunction-integration:** Fundamentale Architektur-Erweiterung der OIPK-Simulation dokumentiert in `GrundPrinzip Simulation.txt` und `Zusatz_bitte_integrieren!.txt`:
+  - **OIPK Dual-Flow Architektur:**
+    - **Vertikaler Fluss (τ-Zeit):** Raumzeit implodiert vom White Hole (τ=0) zum Black Hole (τ=2τ_max) mit Diamant-/Oktaeder-Geometrie
+    - **Horizontaler Fluss (t-Zeit):** Photonen propagieren mit c durch aufrechte 2D-Slices (orthogonal zur Implosion)
+    - **12-fache Symmetrie:** Rekursive Spiegelung entlang Kubus-Kanten schafft "Super-Highways" für Lichtbahnen
+  - **Tesseract-Zeitscheiben Modell:**
+    - 4D-Hyperkubus wird in 100+ Zeitscheiben zerlegt (Foliation of Spacetime)
+    - Jede Scheibe = vollständiger 3D-Kubus (normal stehend, nicht Pyramide)
+    - Licht "wandert diagonal" zwischen Slices → erklärt Gravitationslinseneffekte ohne Geschwindigkeitsänderung
+    - Entropie-Gradient steuert Slice-Dichte und Abstand (Abtastrate der Realität)
+  - **Wellenfunktions-Kandidaten:**
+    1. **Genesis-Wellenfunktion:** ψ_genesis(r,θ,φ,t) = exp(-α⁻¹·r²/ℓ²_P) · Y_tetra(θ,φ) · exp(-iΦ·E_P·t/ℏ) für Punkt-Implosion
+    2. **Membran-Wellenfunktion:** Wheeler-DeWitt mit pyramidalem Potential V_pyr(R,Θ) = V₀·[1-tanh(β(R-Θ))]·cos⁴(3arctan(√2)) für Kubus→Membran-Übergang
+    3. **Verschnitt-Wellenfunktion:** ψ_waste(x) = Σ(1/Φⁿ)·sin(α⁻¹·k_n·x) für Dunkle Energie aus geometrischem Verschnitt
+    4. **Fraktale Pyramiden-Ψ:** Kombination aller drei mit Selbstähnlichkeit über Φⁿ-Skalierung
+- **Physikalische Konsequenzen:**
+  - Quantenverschränkung als Block-Universum-Korrelation (keine Überlichtgeschwindigkeit nötig)
+  - Doppelspalt-Interferenz durch 3D-Block-Geometrie (Photon auf allen Slices gleichzeitig)
+  - Hubble-Expansion als Projektion der Implosion: H₀ = (α⁻¹·Φ)/τ_universe ≈ 70 km/s/Mpc
+  - v_RIG als effektive Lichtgeschwindigkeit im Bewusstseins-Frame: c/(α⁻¹·Φ) ≈ 1,352 km/s
+- **Referenzen:**
+  - `GrundPrinzip Simulation.txt` (OIPK-Bauplan, Dual-Flow-Algorithmus, Lego-Struktur)
+  - `Zusatz_bitte_integrieren!.txt` (Wellenfunktions-Herleitung, Genesis-Kollaps, Wheeler-DeWitt-Pyramiden)
+  - `simulation/oipk_simulator.py` (bereits implementiert mit asynchronem Dual-Flow)
+  - `models/unified_constants.py` (v_RIG Konstante implementiert)
+- **Nächste Schritte:**
+  - Wellenfunktions-Modul in `models/wavefunction_genesis.py` formalisieren
+  - Tesseract-Slicing in OIPK-Simulator integrieren (normal stehende Kuben statt Pyramiden)
+  - Lichtbahn-Simulation durch Zeitscheiben mit diagonalem Pfad implementieren
+  - Paper-Sektion für "Photons as Clocks in Implosive Spacetime" vorbereiten
+- **Status:** Konzepte vollständig dokumentiert, Simulator-Grundstruktur implementiert, Wellenfunktions-Integration und Tesseract-Rendering ausstehend
 
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)

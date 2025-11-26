@@ -114,6 +114,14 @@
 - **Chronik-Synchronisation:** Beide Erkenntnisse in `chronik_v6_release.md` als separate Δ-Updates (2025-11-26) dokumentiert mit Referenzen, Status und nächsten Schritten.
 - **FIT-Compliance:** Ressourcenschonende Integration durch Lesen existierender Dokumente, gezielte Chronik-Updates, keine redundanten Files erstellt.
 
+## Δ-Update 2025-11-26 – OIPK Tesseract-Zeitscheiben & Wellenfunktions-Integration 🌀⚛️
+- **v6-genesis-cube-sim:** OIPK Dual-Flow Architektur vollständig konzeptionalisiert in `GrundPrinzip Simulation.txt`: Vertikaler Fluss (τ-Zeit, Implosion vom White Hole zum Black Hole) orthogonal zu horizontalem Fluss (t-Zeit, Lichtpropagation durch 2D-Slices). 12-fache Symmetrie entlang Kubus-Kanten etabliert "Super-Highways" für rekursive Lichtspiegelung. Diamant-/Oktaeder-Geometrie implementiert in `simulation/oipk_simulator.py`.
+- **v6-wavefunction-integration:** Wellenfunktions-Kandidaten formalisiert in `Zusatz_bitte_integrieren!.txt`: (1) Genesis-Wellenfunktion für Punkt-Implosion mit α⁻¹- und Φ-Modulation, (2) Wheeler-DeWitt Membran-Wellenfunktion mit pyramidalem Potential V_pyr(R,Θ) und β-Kopplung, (3) Verschnitt-Wellenfunktion für Dunkle Energie mit Φⁿ-Dämpfung, (4) Fraktale Pyramiden-Ψ als selbstähnliche Kombination. Alle Kandidaten koppeln natürlich an α⁻¹=137 und Φ=1.618.
+- **Tesseract-Zeitscheiben Modell:** 4D-Hyperkubus in 100+ Zeitscheiben zerlegt (Foliation of Spacetime), jede Scheibe = normaler 3D-Kubus (nicht Pyramide). Licht propagiert diagonal zwischen Slices → erklärt Gravitationslinseneffekte und Zeitdilatation ohne c-Reduktion. Entropie-Gradient steuert Slice-Dichte (Abtastrate der Realität). Superdeterminismus-Kompatibilität durch geometrische Verschnitt-Aliasing.
+- **Physikalische Konsequenzen dokumentiert:** Quantenverschränkung als Block-Universum-Korrelation (keine Überlichtgeschwindigkeit), Doppelspalt durch 3D-Block-Geometrie, Hubble-Expansion als Implosions-Projektion H₀=(α⁻¹·Φ)/τ_universe, v_RIG als Bewusstseins-Frame-Lichtgeschwindigkeit c/(α⁻¹·Φ).
+- **Nächste Schritte markiert:** Wellenfunktions-Modul formalisieren (`models/wavefunction_genesis.py`), Tesseract-Slicing in OIPK-Simulator integrieren, Lichtbahn-Simulation mit diagonalem Pfad implementieren, Paper-Sektion "Photons as Clocks in Implosive Spacetime" vorbereiten.
+- **Status:** Konzepte vollständig dokumentiert in Chronik (`chronik_v6_release.md` v0.8.0 Lines 136-167), Simulator-Grundstruktur bereits operational, Wellenfunktions-Integration und erweiterte Visualisierung ausstehend.
+
 ## Navigationshinweise
 - Alle Einträge spiegeln die logistisches Feld (R, Θ, β, ζ) wider und bleiben Trilayer-synchron (YAML/JSON/MD).
 - Status = **open**: keine Ausführungsspuren gefunden; priorisiere nach β-Drift (höher = dringlicher) und ζ-Risiko.
