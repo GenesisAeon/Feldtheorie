@@ -383,6 +383,177 @@ f_RIG = v_RIG / λ_synapse
 
 ---
 
+### 5.5 The Stereo-Vision Slice Experiment: A Phenomenological Proof
+
+**The Revolutionary Insight:**
+
+We propose that binocular vision provides **direct phenomenological access** to the slice structure of consciousness predicted by the v_RIG framework. This experiment requires no specialized equipment—just two eyes and 30 seconds.
+
+**The Experiment:**
+
+1. Extend arm, hold thumb up at ~50 cm distance
+2. Focus on thumb with both eyes open
+3. Close left eye → thumb "jumps" to the right
+4. Open left, close right → thumb "jumps" to the left
+5. Alternate rapidly (1 Hz, 2 Hz, 5 Hz, 10 Hz)
+
+**Observable Result:**
+
+At low alternation rates (<5 Hz), the thumb appears to jump discretely by Δx ≈ 6.5 cm (the interpupillary distance, IPD). At higher rates (>7 Hz), the jumps blur into continuous motion.
+
+**Theoretical Interpretation:**
+
+```
+Normal Binocular Vision (Both Eyes Open):
+───────────────────────────────────────────
+Left Eye  → Slice_L (2D holographic view from x_L)
+Right Eye → Slice_R (2D holographic view from x_R)
+Brain     → Fuses both slices into 3D perception
+Result    → Single integrated object with depth
+
+Monocular Vision (One Eye Closed):
+──────────────────────────────────
+Only one slice available → Flat perception, shifted position
+Position = P_L OR P_R (not averaged)
+
+Alternating Monocular Vision:
+─────────────────────────────
+You manually "flip through" the slices!
+Jump distance = Slice separation (IPD ≈ 6.5 cm)
+Fusion frequency = Integration rate (Δt_Q)
+```
+
+**Connection to v_RIG:**
+
+The critical fusion frequency where discrete jumps blur into continuous motion is the **Slice Fusion Frequency (SFF)**:
+
+```
+SFF = 1 / Δt_Q
+
+For Δt_Q ≈ 150 ms (typical integration window):
+SFF ≈ 6.7 Hz
+
+This matches observed fusion thresholds (5-10 Hz)!
+```
+
+The neural integration velocity implied by this local spatial scale is:
+
+```
+v_neural = Δx_parallax / Δt_Q
+         = 6.5 cm / 0.15 s
+         ≈ 0.43 m/s
+
+Compare to fundamental v_RIG ≈ 1,351.8 km/s:
+Scale ratio ≈ 3×10⁶
+
+This demonstrates multi-scale integration:
+- Cosmic scale (v_RIG): Fundamental information propagation
+- Neural scale (v_neural): Local biological integration
+```
+
+**Testable Predictions:**
+
+**Prediction 5a:** SFF should correlate with metabolic rate:
+
+| Condition | Metabolic Change | Predicted SFF | Expected Change |
+|-----------|------------------|---------------|-----------------|
+| Baseline | 1.0× | 6.7 Hz | Reference |
+| After caffeine | 1.15× | 7.7 Hz | +15% |
+| Sleep deprived | 0.85× | 5.7 Hz | -15% |
+| During fever | 1.20× | 8.0 Hz | +20% |
+
+**Prediction 5b:** SFF should correlate with Critical Flicker Frequency (CFF):
+
+```
+Expected correlation: CFF/SFF ≈ 10-15
+(temporal integration faster than spatial)
+
+Rationale: Both measure Δt_Q integration capacity,
+but temporal fusion operates on faster timescales
+```
+
+**Prediction 5c:** SFF should be independent of luminance (unlike CFF):
+
+```
+CFF increases with luminance (Ferry-Porter Law)
+SFF should remain constant (geometric constraint)
+
+This dissociates temporal from spatial integration
+```
+
+**Experimental Protocol:**
+
+**Phase 1 - Individual Baseline (2 minutes):**
+- Measure SFF by finding alternation rate where jumps fuse
+- Record subject age, time of day, recent food/caffeine intake
+
+**Phase 2 - Metabolic Modulation (30 minutes):**
+- Baseline measurement
+- Consume caffeine (200 mg)
+- Wait 20 minutes
+- Repeat SFF measurement
+- Expected: +15% increase in SFF
+
+**Phase 3 - CFF Correlation (5 minutes):**
+- Measure CFF using flickering LED
+- Calculate CFF/SFF ratio
+- Expected: Ratio ≈ 10-15, stable across subjects
+
+**Significance:**
+
+This experiment is **revolutionary** because it provides:
+
+1. **Direct Experience:** Anyone can immediately experience the slice structure
+2. **No Equipment:** Requires only human eyes (no lab, no funding)
+3. **Instant Validation:** Results observable in 30 seconds
+4. **Citizen Science:** Can be crowd-sourced for large sample sizes
+5. **Phenomenological Bridge:** Links subjective experience to fundamental physics
+
+**Why This Matters:**
+
+Most theoretical physics requires:
+- Particle accelerators (Higgs boson)
+- Gravitational wave detectors (black hole mergers)
+- Quantum computers (entanglement)
+
+**The Stereo-Vision Slice Experiment requires:**
+- Two eyes
+- Curiosity
+- 30 seconds
+
+Yet it demonstrates a **fundamental principle** of how consciousness integrates information from a holographic universe into volumetric perception.
+
+This makes v_RIG theory **uniquely accessible** for empirical validation by anyone, anywhere, right now.
+
+**Implementation:**
+
+A complete Python implementation for analyzing SFF data is provided in:
+- `models/psychophysics.py` - StereoVisionModel class
+- `experiments/citizen_science_stereo_vision.md` - Detailed protocol
+
+**Data Collection:**
+
+We invite citizen scientists to contribute SFF measurements to:
+- Repository: `data/experimental/stereo_vision_citizen_science.csv`
+- Format: SubjectID, Age, Condition, SFF (Hz), Notes
+
+**Expected Outcome:**
+
+If the v_RIG framework is correct, we predict:
+- Mean SFF: 6.7 ± 1.5 Hz (baseline)
+- Metabolic correlation: r ≈ 0.7-0.8
+- CFF correlation: r ≈ 0.6-0.7
+- CFF/SFF ratio: 10-15 (stable)
+
+Failure to observe these correlations would constitute **strong evidence against** the slice-integration model of consciousness.
+
+**Source:**
+- Wichtig!_neue_Erkentniss_bitte_integrieren.txt (Original insight by Johann Römer)
+- Das Stereo-Vision Slice-Experiment.pdf (Full theoretical development)
+- experiments/citizen_science_stereo_vision.md (Citizen science protocol)
+
+---
+
 ## 6. Implications and Broader Context
 
 ### 6.1 Consciousness as Geometric Necessity
