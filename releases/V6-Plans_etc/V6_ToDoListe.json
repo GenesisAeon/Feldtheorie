@@ -60,8 +60,8 @@
     {
       "id": "v6-activation-gaps",
       "title": "Activation Gaps schließen (Safety-Delay, Meta-Regression, Sigillin-Automation)",
-      "status": "open",
-      "completeness": "τ*-FIT-Stub mit RK4-Warnpfad abgelegt; pytest-Checks für compute_tau_star/apply_safety_delay/ζ-Risiko aktiv; Regression-Refresh, Validator/Index-Automation, Outlier-Diagnostics und Data-Lantern-Dashboard stehen weiterhin aus.",
+      "status": "in-progress",
+      "completeness": "τ*-FIT-Stub mit RK4-Warnpfad abgelegt; pytest-Checks für compute_tau_star/apply_safety_delay/ζ-Risiko aktiv; Aletheia Phase-4 Analyse-Tool (scripts/analyze_aletheia_phase4.py) implementiert mit Makefile-Target, testet V6 S∝V Affection-Hypothese; Regression-Refresh, Validator/Index-Automation und CREP-Logbuch stehen weiterhin aus.",
       "scope": [
         "simulation",
         "analysis",

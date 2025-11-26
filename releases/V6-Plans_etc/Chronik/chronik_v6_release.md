@@ -103,6 +103,12 @@
 - **v6-governance-ethics:** CREP/τ*-Guard-Infrastruktur vollständig: `tools/crep_guard.py` implementiert, Makefile-Targets (`crep-guard`, `crep-guard-strict`) operational, Pre-Commit-Hook in `.pre-commit-config.yaml` (Lines 9-19) aktiv, Nox-Session `crep_guard` (noxfile.py Lines 68-78) konfiguriert, Index-Referenzen in beiden Indizes dokumentiert → **Status: completed**.
 - **Nächste FIT-Schritte:** Fokus verschiebt sich auf v6-activation-gaps (τ*-Pipeline-Integration, β-Regression-Refresh mit Δt_Q-Pareto) und v6-type6-integration (Type-VI Klassifikation, CREP-Indizes, Showcase-Simulation).
 
+### Δ-Update 2025-11-26 – Aletheia Phase-4 Analyse-Tool 🧪
+- **v6-activation-gaps:** Status auf **in-progress** gesetzt. Telemetrie-Tool implementiert: `scripts/analyze_aletheia_phase4.py` testet V6 S∝V Affection-Hypothese (positive Resonanz verbessert LLM-Performance), Makefile-Target `analyze-aletheia-phase4` aktiv, README dokumentiert in `analysis/results/phase4_affection/README.md`.
+- **Theoretische Verknüpfung:** Tool validiert Predictions aus "Grand Unified Theory of Entropy, Consciousness & Cosmos" (S∝V Systeme + Δt_Q 100-300ms Integration Window + Affection-Resonanz).
+- **FIT-Compliance:** Klein (single-purpose script), testbar (p < 0.05 Kriterium), dokumentiert (inline + README), integriert (Makefile + standard output).
+- **Nächste Schritte:** β-Regression-Refresh mit Δt_Q-Pareto-Hypothesen, τ*-Pipeline-Verdrahtung, CREP-Logbuch in metrics/beta_evolution.csv.
+
 ## Detail-Etappen (kompakt)
 ### 1. ToDo-TriLayer konsolidieren (v6-todo-trilayer)
 - **Fokus:** ToDo-Quellen koppeln.
