@@ -52,6 +52,7 @@ License: AGPL-3.0
 
 from __future__ import annotations
 
+import warnings
 from dataclasses import dataclass
 
 import numpy as np
@@ -288,9 +289,11 @@ def extract_emergent_beta(
         )
         beta_fit, theta_fit = popt
         sigma_pred = logistic(R_values, beta_fit, theta_fit)
-        r_squared = float(1 - np.sum((sigma_values - sigma_pred) ** 2) / np.sum(
-            (sigma_values - np.mean(sigma_values)) ** 2
-        ))
+        # Calculate R² with protection against divide by zero (constant sigma values)
+        ss_tot = np.sum((sigma_values - np.mean(sigma_values)) ** 2)
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message="divide by zero encountered")
+            r_squared = float(1 - np.sum((sigma_values - sigma_pred) ** 2) / ss_tot) if ss_tot != 0 else 0.0
         fit_info = {
             "beta": float(beta_fit),
             "theta": float(theta_fit),
