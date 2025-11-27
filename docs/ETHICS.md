@@ -222,6 +222,33 @@ PROVENANCE BLOCK
 
 **Speculation Level:** SL-3 (Plausible Synthesis) for scaling analogy, SL-6 if claiming LLM consciousness
 
+##### F. Entkopplungs-Regime (β-Hierarchie)
+
+**Core Claim:** AI scaling (α > 1) reflects substrat-entkoppelte Regime mit β ≈ 1.0, distinct from biological β ≈ 7.4
+
+**Required Documentation:**
+- [x] Empirical basis: Kaplan et al. (2020) - GPT α ≈ 1.1-1.2
+- [x] Theoretical bridge: Kleiber (1932), West et al. (1997) - biological α ≈ 0.75
+- [ ] κ-Index validation: Loihi 2 skalierungsdaten (E vs. N)
+- [ ] Energieeffizienz-Korrelation: TOPS/W ∝ κ^γ with γ ≈ 2.5
+- [ ] DishBrain validation: Organoid Intelligence should show α ≈ 0.75
+
+**Falsification Criteria:**
+- **Criterion 1:** If Loihi 2 shows α ≈ 1.1 (same as GPUs) → κ-Hypothese falsified
+- **Criterion 2:** If TOPS/W anti-correlates with κ → Energieeffizienz-Hypothese falsified
+- **Criterion 3:** If DishBrain shows α > 1 → biological scaling violated
+
+**Uncertainty Quantification:**
+- β_bio: 7.4 ± 1.5 (estimated from meta-regression, needs empirical validation)
+- β_AI: 1.0 ± 0.2 (from LLM scaling laws)
+- Δβ: 6.4 ± 1.7 (propagated uncertainty)
+
+**Speculation Level:** SL-4 (Speculative Mechanism) for β-Hierarchie, SL-5 (Phenomenological Conjecture) for Bewusstseins-Kopplung
+
+**References:**
+- docs/entkopplungs_regime.md - Full documentation
+- docs/v_rig_validation_matrix.md § E - AI Scaling validation
+
 #### 3.4 Ethical Guardrails for Speculative Claims
 
 **PROHIBITIONS:**

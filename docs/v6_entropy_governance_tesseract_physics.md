@@ -604,10 +604,12 @@ CMB Spherical Harmonics: A₁₂ > 0
 ## Documentation Cross-References
 
 ### Related V6 Documents:
+- **[V6_Literature_Review.md](../releases/V6-Plans_etc/V6_Literature_Review.md)** — Vollständige theoretische Grundlagen & Referenzen
 - **[DEEP_RESEARCH_Integration_V6.md](../releases/V6-Plans_etc/DEEP_RESEARCH_Integration_V6.md)** — Teil I Details (Entropy Governance)
 - **[v6_oipk_integration_summary.md](v6_oipk_integration_summary.md)** — Teil II Details (OIPK/Tesseract)
 - **[tesseract_timeslice_geometry.md](tesseract_timeslice_geometry.md)** — Geometrie & Gravitation
 - **[V6_ToDoListe.md](../releases/V6-Plans_etc/V6_ToDoListe.md)** — Vollständige Integration-Roadmap
+- **[references_v6.bib](references_v6.bib)** — BibTeX-Datenbank aller V6-Referenzen
 
 ### Core UTAC Theory:
 - **[utac_theory_core.md](utac_theory_core.md)** — σ(β(R-Θ)) Fundamentals
