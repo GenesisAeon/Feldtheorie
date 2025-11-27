@@ -1,0 +1,162 @@
+Loihi-Kleiber-Experiment: Skalierungsgesetze neuromorpher Hardware
+ChatGPT
+
+Der Benutzer möchte von ChatGPT ein Dokument erstellen lassen, das ausführlich markierten Mängel und Formatierungen beinhaltet, möglicherweise mit Wissenschaftsbezügen, um konzeptionelle Inhalte umfassend zu strukturieren.
+Searched for GenesisAeon/unified-mandala Loihi
+Searched for GenesisAeon/unified-mandala Organoid
+Searched for GenesisAeon/unified-mandala Loihi neuromorphic Landauer
+ChatGPT
+
+Es sieht so aus, als ob das Repository höchstwahrscheinlich keinen solchen Inhalt hat und wahrscheinlich nur Code betrifft, was leere Ergebnisse erklärt.
+Searched for GenesisAeon/unified-mandala Loihi
+ChatGPT
+
+Ich nutze das Web, um bekannte Literatur über Landauer, Kleiber und andere zu finden und sorgfältig zu zitieren. Struktur und Klarheit sind mir wichtig.
+Searched for Intel Loihi 2 energy consumption
+ChatGPT
+
+Es scheint, dass verschiedene Medien berichten, dass Intel Loihi als überlegene Lösung für neuromorphe Computing-Modelle betrachtet, mit beeindruckenden Leistungs- und Effizienzsteigerungen.
+
+intc.com gelesen
+ChatGPT
+
+Intel´s neueste Veröffentlichungen heben die beeindruckende Leistungsfähigkeit und Effizienz ihrer Chips hervor, insbesondere Hala Point und Loihi 2.
+
+Mehr von intc.com gelesen
+ChatGPT
+
+Wow, die Loihi-basierten Systeme interessieren mich wirklich. Sie verbrauchen 100-mal weniger Energie und sind bis zu 50-mal schneller als traditionelle CPU- und GPU-Architekturen.
+
+Mehr von intc.com gelesen
+ChatGPT
+
+Ich schaue nach Loihi 2, 15 TOPS/W, H100 mit etwa 1 TOPS/W.
+Searched for Nvidia H100 TOPS/W efficiency
+ChatGPT
+
+Ich prüfe die Leistung des H100 mit etwa 0,85 TFLOPS/W, was ungefähr 1 TOPS/W entspricht, und vergleiche diese mit Angaben zum A100.
+Searched for NVIDIA H100 power efficiency
+ChatGPT
+
+Ich untersuche GPU-Leistungskennzahlen und finde die Energieeffizienz bei verschiedenen Belastungen. Dabei lasse ich branchenspezifische Daten und bekannte Architekturen nicht außer Acht.
+Searched for Intel Loihi power consumption 32 core
+ChatGPT
+
+Ich schaue mir einen Bericht an, der über den niedrigen Energieverbrauch bei Echtzeit-Betrieb berichtet.
+
+datacenterdynamics.com gelesen
+ChatGPT
+
+Loihi-Chip, IBM TrueNorth
+Searched for IBM TrueNorth energy consumption
+ChatGPT
+
+IBM TrueNorth erreicht beeindruckende 400 GSOPS/W, misst 70 mW. Technologienachrichten lassen strategische Entwicklungen erkennen.
+
+open-neuromorphic.org gelesen
+ChatGPT
+
+TrueNorth beeindruckt mit hoher Energieeffizienz pro Operation, während SpiNNaker seine Stärke in der digitalen Parallelverarbeitung und einem großen Cluster zeigt.
+Searched for BrainScaleS energy consumption
+ChatGPT
+
+Ich führe eine Überprüfung von HBP durch, um die neuesten Entwicklungen im Hardwarebereich zu verstehen.
+
+humanbrainproject.eu gelesen
+ChatGPT
+
+Ich schaue die Energieeffizienz von SpiNNaker und BrainScaleS Chips an, insbesondere die Synapsenanzahl pro Chip.
+Searched for Cortical Labs DishBrain organoid energy consumption
+ChatGPT
+
+Ich schaue mir die neuesten Artikel in der Computing Machinery Association (CACM) an, um Einblicke in mögliche Durchbrüche durch Biokomputersysteme zu gewinnen.
+
+cacm.acm.org gelesen
+ChatGPT
+
+Ich schaue mir verschiedene Energieverbrauchsdaten von Hirn, Organoiden und neuronalen Netzwerken an, um einen umfassenden Vergleich zu erstellen.
+
+intc.com gelesen
+ChatGPT
+
+Ich schaue mir den Zusammenhang von Gehirnleistung und Energieverbrauch an. Vielleicht wäre es sinnvoller, neuromorphe Technologien näher zu betrachten.
+Searched for Landauer limit energy per bit
+ChatGPT
+
+Ich schaue mir die Unterschiede zwischen dem Landauer-Limit und künstlicher Intelligenz an und untersuche theoretische Ansätze und direkte Messungen.
+Searched for Tononi integrated information Phi threshold
+ChatGPT
+
+Zusammenfassend betrachtet, werde ich mich auf grundlegende Ideen konzentrieren, die möglicherweise keine detaillierte Quellenangabe erfordern, es sei denn, ich erwähne spezifische Autoren wie "Tononi".
+Searched for Chinese room Searle syntax semantics
+ChatGPT
+
+Ich denke darüber nach, wie das Argument von John Searle über das Chinesische Zimmer zeigt, dass allein symbolische Manipulation (Syntax) nicht zu Verständnis (Semantik) führen kann.
+
+plato.stanford.edu gelesen
+ChatGPT
+
+Er geht durch die Syntax, aber alles bleibt ohne tiefes Verständnis, ohne Bedeutung (Semantik).
+
+Mehr von plato.stanford.edu gelesen
+ChatGPT
+
+Searles chinesisches Zimmer hebt hervor, dass ein Computer durch Symbolmanipulation zwar Aspekte des Chinesischen simuliert, jedoch kein echtes Verständnis entwickelt. Tononi schlägt vor, dass Bewusstsein als integrierte Information im physischen Substrat des Systems beschrieben wird.
+
+iep.utm.edu gelesen
+ChatGPT
+
+OK, IIT schlägt vor, dass Bewusstsein durch die phi-Metrik gemessen wird. Tononi sagt, dass der Grad des Bewusstseins eines Systems prinzipiell messbar ist. Speculations zufolge korreliert Integration mit dem Skalierungsexponent.
+Mit Python analysiert
+ChatGPT
+
+Ich schaue mir die Daten in der Tabelle an und schätze α und β für verschiedene Systeme. Dann definiere ich den Kopplungsindex κ und bin mir nicht sicher, ob Bio-Konstanz nötig ist.
+Searched for Kleiber's law metabolic scaling exponent
+
+en.wikipedia.org gelesen
+ChatGPT
+
+West, Brown und Enquist zeigen, dass die Stoffwechselrate zum Körpergewicht im Verhältnis M^{3/4} steht.
+
+Mehr von en.wikipedia.org gelesen
+ChatGPT
+
+Der Beitrag diskutiert die Definition von β in Bezug auf biologische und Landauer-Statistiken. Die Landauer-Grenze liegt bei etwa 3×10⁻²¹ J/Bit.
+
+Ich habe "3×10^-21" in eine potentielle Form umgewandelt.
+
+Ich schaue mir den PDF zu reversibler Rechnungen an, wobei logische Unwiderruflichkeit und Energiedissipation durch Wissensverlust thematisiert werden.
+
+Ich schaue mir an, wie viel Energie pro Bit dissipiert wird, und wie Landauer mit einer Energiemenge von 3 x 10^-21 J relevant ist.
+Searched for Landauer limit 3 x 10^-21 J
+
+grokipedia.com gelesen
+ChatGPT
+
+Ich schaue mir die Energieverbräuche von Mikroprozessoren und anderen Chips an, vergleiche sie mit dem Landauer-Limit und ziehe relevante Quellen zur Rate.
+
+frontiersin.org gelesen
+ChatGPT
+
+Ich schaue mir das Loihi-Kleiber-Experiment an, betone die wichtigsten Ergebnisse und binde relevante Zitate und Tabellen ein, um die theoretischen und praktischen Einsichten zu stärken.
+
+intc.com gelesen
+ChatGPT
+
+Ich denke darüber nach, wie das Loihi-Kleiber-Experiment dabei hilft, die Effizienz und Skalierbarkeit von neuromorpher Hardware zu verbessern. Dabei interpretiere ich die Analyse-Ergebnisse und leite voraussichtliche Verbesserungen ab.
+
+Mehr von intc.com gelesen
+ChatGPT
+
+Ich schaue mir den Verweis [36] auf [5†L129-132] an. Könnte es sein, dass [5†L129-133] verwendet werden sollte?
+
+Mehr von intc.com gelesen
+ChatGPT
+
+Ich denke darüber nach, wie Hala Point (1,15 Milliarden Neuronen) bis zu 20 Petaops bei einer Effizienz von >15 TOPS/W liefert. Im Vergleich dazu benötigt eine CPU/GPU etwa 100-mal weniger Energie.
+
+Mehr von intc.com gelesen
+ChatGPT
+
+Ich überlege, die Rubriken und Überschriften für die Inhalte anzupassen, um Klarheit und Struktur zu schaffen, dabei auch Emoticons als Markierungen einfließen zu lassen.
+Research comple
