@@ -29,11 +29,10 @@ Author: Genesis Aeon (UTAC Framework)
 Version: 5.0 "Scale-Invariant Analysis"
 """
 
-from typing import Dict, Tuple, Optional
-import numpy as np
-from scipy import constants, stats
 from dataclasses import dataclass
 
+import numpy as np
+from scipy import constants, stats
 
 # ============================================================================
 # FUNDAMENTAL CONSTANTS (High Precision)
@@ -93,7 +92,7 @@ class MonteCarloResult:
     percentile_95: float  # 95th percentile
     samples: np.ndarray  # Full distribution
 
-    def confidence_interval_90(self) -> Tuple[float, float]:
+    def confidence_interval_90(self) -> tuple[float, float]:
         """Return 90% confidence interval."""
         return (self.percentile_5, self.percentile_95)
 
@@ -205,7 +204,7 @@ class CosmicQuantization:
         self,
         n_samples: int = 100_000,
         alpha_rel_uncertainty: float = ALPHA_UNCERTAINTY,
-        seed: Optional[int] = 42
+        seed: int | None = 42
     ) -> MonteCarloResult:
         """
         Propagate uncertainties via Monte Carlo sampling.
@@ -257,10 +256,10 @@ class CosmicQuantization:
     def null_hypothesis_test(
         self,
         n_random_trials: int = 10_000,
-        alpha_range: Tuple[float, float] = (0.001, 0.02),
-        phi_range: Tuple[float, float] = (1.3, 2.0),
-        seed: Optional[int] = 42
-    ) -> Dict[str, float]:
+        alpha_range: tuple[float, float] = (0.001, 0.02),
+        phi_range: tuple[float, float] = (1.3, 2.0),
+        seed: int | None = 42
+    ) -> dict[str, float]:
         """
         Test null hypothesis: random constants vs. α and Φ.
 
@@ -308,7 +307,7 @@ class CosmicQuantization:
             'improvement_factor': mean_random_deviation / our_deviation if our_deviation > 0 else np.inf
         }
 
-    def significance_analysis(self) -> Dict[str, float]:
+    def significance_analysis(self) -> dict[str, float]:
         """
         Comprehensive statistical significance analysis.
 
@@ -357,7 +356,7 @@ def quick_prediction() -> float:
     return model.predict_velocity()
 
 
-def full_analysis(verbose: bool = True) -> Dict:
+def full_analysis(verbose: bool = True) -> dict:
     """
     Run complete analysis: prediction, comparison, Monte Carlo, and null test.
 
@@ -440,4 +439,4 @@ if __name__ == "__main__":
 
     print()
     print("CONCLUSION: α-Φ formula shows correlation with measured velocity.")
-    print(f"Statistical significance assessed via null hypothesis testing.")
+    print("Statistical significance assessed via null hypothesis testing.")

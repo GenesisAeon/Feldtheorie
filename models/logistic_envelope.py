@@ -24,13 +24,13 @@ Metaphorical layer:
 from __future__ import annotations
 
 import random
+from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Dict, List, Sequence
 
 from .membrane_solver import logistic_response
 
 
-def _linspace(start: float, stop: float, num: int) -> List[float]:
+def _linspace(start: float, stop: float, num: int) -> list[float]:
     """Generate an inclusive linear sweep without importing numpy."""
 
     if num <= 1:
@@ -64,7 +64,7 @@ class LogisticFieldEnvelope:
     damped_gain: float = 1.3
     impedance_width: float = 0.5
 
-    def control_sweep(self, *, span: float, points: int) -> List[float]:
+    def control_sweep(self, *, span: float, points: int) -> list[float]:
         r"""Create an order-parameter sweep straddling the threshold membrane."""
 
         start = self.theta - span
@@ -100,7 +100,7 @@ class LogisticFieldEnvelope:
         points: int = 50,
         noise: float = 0.0,
         random_seed: int | None = None,
-    ) -> Dict[str, List[float]]:
+    ) -> dict[str, list[float]]:
         r"""Generate a synthetic threshold sweep and return analysis-ready traces.
 
         The sweep records arrays for time index `t`, order parameter `R`, logistic
@@ -115,10 +115,10 @@ class LogisticFieldEnvelope:
             control = [float(value) for value in control]
         rng = random.Random(random_seed)
 
-        sigma_series: List[float] = []
-        zeta_series: List[float] = []
-        flux_series: List[float] = []
-        noisy_sigma: List[float] = []
+        sigma_series: list[float] = []
+        zeta_series: list[float] = []
+        flux_series: list[float] = []
+        noisy_sigma: list[float] = []
 
         for R in control:
             sigma = self.response(R)
@@ -143,7 +143,7 @@ class LogisticFieldEnvelope:
             "flux": flux_series,
         }
 
-    def export_metadata(self) -> Dict[str, float]:
+    def export_metadata(self) -> dict[str, float]:
         """Return a concise metadata dictionary for JSON ledgers."""
 
         return {

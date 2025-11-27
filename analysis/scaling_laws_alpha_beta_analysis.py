@@ -37,12 +37,12 @@ Date: 2025-11-19
 Version: 1.0.0
 """
 
+import json
+from pathlib import Path
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from scipy import stats, optimize
-from pathlib import Path
-import json
 
 # Repository paths
 REPO_ROOT = Path("/home/user/Feldtheorie")
@@ -106,11 +106,11 @@ def calculate_k_optimal(alpha_N=0.076, beta_LLM=4.2):
     print(f"\n{'='*70}")
     print("OPTIMAL k CALIBRATION")
     print(f"{'='*70}")
-    print(f"Using LLM calibration point:")
+    print("Using LLM calibration point:")
     print(f"  α_N = {alpha_N:.6f} (model size scaling)")
     print(f"  β_LLM = {beta_LLM:.6f} (informational domain, ≈ Φ³)")
     print(f"\nOptimal k = β × α = {k:.6f}")
-    print(f"\nComparison:")
+    print("\nComparison:")
     print(f"  k = 1/3 = {1/3:.6f} (3D space hypothesis)")
     print(f"  k_empirical = {k:.6f} (LLM calibration)")
     print(f"  Ratio: k_empirical / (1/3) = {k / (1/3):.3f}")
@@ -219,7 +219,7 @@ def analyze_seismic_b_value_to_beta():
     k_seismic_mean = k_values.mean()
     k_seismic_std = k_values.std()
 
-    print(f"Calibration points:")
+    print("Calibration points:")
     for _, row in df_calib.iterrows():
         k = row['beta_empirical'] * row['b_value']
         print(f"  b={row['b_value']:.2f} → β={row['beta_empirical']:.2f} "
@@ -295,7 +295,7 @@ def visualize_alpha_beta_relationship(k_empirical=0.32, k_cubic=1/3):
     ax1.plot(alpha_range, beta_empirical, 'b-', linewidth=2,
              label=f'β = {k_empirical:.3f}/α (empirical)')
     ax1.plot(alpha_range, beta_cubic, 'r--', linewidth=2,
-             label=f'β = (1/3)/α (cubic hypothesis)')
+             label='β = (1/3)/α (cubic hypothesis)')
 
     # Plot calibration points
     for _, row in alphas.iterrows():
@@ -489,21 +489,21 @@ def create_unified_theory_summary():
     print(f"\n{'='*70}")
     print("KEY FINDINGS")
     print(f"{'='*70}")
-    print(f"\n1. α → β Relationship:")
+    print("\n1. α → β Relationship:")
     print(f"   β ≈ {k_empirical:.3f} / α")
-    print(f"   (Cubic hypothesis: β ≈ (1/3) / α)")
-    print(f"\n2. b-value → β Relationship (Seismic):")
+    print("   (Cubic hypothesis: β ≈ (1/3) / α)")
+    print("\n2. b-value → β Relationship (Seismic):")
     print(f"   β ≈ {k_seismic:.2f} / b")
-    print(f"\n3. Universal Constant:")
+    print("\n3. Universal Constant:")
     print(f"   k_empirical ≈ {k_empirical:.3f} ≈ 1/3 = {k_cubic:.3f}")
     print(f"   Ratio: {k_empirical / k_cubic:.3f} (close to 1!)")
-    print(f"\n4. Φ-Attractors:")
+    print("\n4. Φ-Attractors:")
     print(f"   Φ³ ≈ {PHI**3:.3f} (Informational domain)")
     print(f"   Φ⁴ ≈ {PHI**4:.3f} (Biological domain)")
     print(f"   Φ⁵ ≈ {PHI**5:.3f} (Climate domain)")
-    print(f"\n5. Implication for LLMs:")
+    print("\n5. Implication for LLMs:")
     print(f"   α_N = 0.076 → β ≈ {k_empirical / 0.076:.2f} ≈ Φ³")
-    print(f"   Matches empirical LLM emergence!")
+    print("   Matches empirical LLM emergence!")
     print(f"\n{'='*70}\n")
 
     return output_path
@@ -531,10 +531,10 @@ if __name__ == "__main__":
 
     print("\n🎯 ANALYSIS COMPLETE!")
     print(f"\nOutput directory: {OUTPUT_DIR}")
-    print(f"\nGenerated files:")
-    print(f"  • alpha_beta_predictions.csv")
-    print(f"  • b_value_to_beta_calibration.csv")
-    print(f"  • b_value_to_beta_predictions.csv")
-    print(f"  • alpha_beta_relationship_visualization.png")
-    print(f"  • alpha_beta_unified_theory.json")
+    print("\nGenerated files:")
+    print("  • alpha_beta_predictions.csv")
+    print("  • b_value_to_beta_calibration.csv")
+    print("  • b_value_to_beta_predictions.csv")
+    print("  • alpha_beta_relationship_visualization.png")
+    print("  • alpha_beta_unified_theory.json")
     print()

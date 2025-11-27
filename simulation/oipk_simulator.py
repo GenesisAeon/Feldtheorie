@@ -11,18 +11,16 @@ Source: releases/V6-Plans_etc/GrundPrinzip Simulation.txt
 Authors: Johann Benjamin Römer, MOR Framework
 """
 
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from matplotlib.animation import FuncAnimation
-from typing import Tuple, List, Optional, Dict
-from dataclasses import dataclass
 import sys
+from dataclasses import dataclass
 from pathlib import Path
+
+import matplotlib.pyplot as plt
+import numpy as np
 
 # Add models directory to path for v_RIG constant
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from models.unified_constants import calculate_vrig, V_RIG_DEFAULT
+from models.unified_constants import calculate_vrig
 
 
 @dataclass
@@ -36,7 +34,7 @@ class OIPKParameters:
 
     # Physics
     c: float = 299792.0  # km/s, speed of light
-    v_imp: Optional[float] = None  # Implosion velocity (to be determined!)
+    v_imp: float | None = None  # Implosion velocity (to be determined!)
     xi: float = 0.01  # Lorentz-violation parameter
 
     # Time steps
@@ -51,7 +49,7 @@ class OIPKParameters:
     # Cosmic constants
     alpha_inv: float = 137.036  # Fine structure constant inverse
     phi: float = 1.618034  # Golden ratio
-    v_rig: Optional[float] = None  # Regime Integration Gradient velocity (km/s)
+    v_rig: float | None = None  # Regime Integration Gradient velocity (km/s)
 
     def __post_init__(self):
         """Calculate derived parameters."""
@@ -79,7 +77,7 @@ class OIPKSimulator:
     4. Consciousness integration: Samples every Δt_Q
     """
 
-    def __init__(self, params: Optional[OIPKParameters] = None):
+    def __init__(self, params: OIPKParameters | None = None):
         """Initialize OIPK simulator."""
         self.params = params or OIPKParameters()
         self.tau = 0.0  # Current implosion time
@@ -278,7 +276,7 @@ class OIPKSimulator:
             num_tau_steps: Number of implosion steps
             num_t_steps_per_tau: Number of photon steps per implosion step
         """
-        print(f"🎬 Starting OIPK simulation...")
+        print("🎬 Starting OIPK simulation...")
         print(f"   Implosion steps: {num_tau_steps}")
         print(f"   Photon steps per τ: {num_t_steps_per_tau}")
 

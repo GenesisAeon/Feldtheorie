@@ -19,8 +19,8 @@ Poetic:
 """
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
-from typing import Iterable, List
 
 
 @dataclass
@@ -52,7 +52,7 @@ class EmissionDistributor:
 
         return self.beta_base * (1 + self.gini * self.load)
 
-    def amplify(self, emissions: Iterable[float]) -> List[float]:
+    def amplify(self, emissions: Iterable[float]) -> list[float]:
         """Scale emissions by the effective β to mimic accelerated thresholding.
 
         Parameters

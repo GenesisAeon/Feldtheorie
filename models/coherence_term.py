@@ -20,13 +20,12 @@ Metaphorical layer:
 from __future__ import annotations
 
 import math
+from collections.abc import Sequence
 from dataclasses import dataclass
 from statistics import mean
-from typing import Dict, Sequence
 
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
-
 
 
 @dataclass
@@ -38,7 +37,7 @@ class MandalaCoherence:
     gate: float
     zeta: float
 
-    def to_dict(self) -> Dict[str, float]:
+    def to_dict(self) -> dict[str, float]:
         """Return a JSON-friendly representation of the coherence braid."""
 
         return {

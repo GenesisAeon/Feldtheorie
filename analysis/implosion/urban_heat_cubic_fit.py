@@ -33,16 +33,13 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy import optimize, stats
+from scipy import optimize
 
 # Add models to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from models.utac_type6_implosive import (
     BETA_FIXPOINT_PHI3,
-    PHI_CBRT,
-    cubic_root_jump,
-    inverted_sigmoid,
 )
 
 # Optional plotting
@@ -426,7 +423,7 @@ def main():
     if not np.isnan(cubic_fit['p_fit']):
         print(f"  Best-fit exponent: p = {cubic_fit['p_fit']:.4f}")
         print(f"  95% CI: [{cubic_fit['p_ci_lower']:.4f}, {cubic_fit['p_ci_upper']:.4f}]")
-        print(f"  Theoretical: p = 1/3 ≈ 0.3333")
+        print("  Theoretical: p = 1/3 ≈ 0.3333")
         print(f"  R² = {cubic_fit['r_squared']:.4f}")
         print(f"  Amplification: k = {cubic_fit['k_fit']:.2f}")
         print()
@@ -506,7 +503,7 @@ def main():
     falsified_count = sum(1 for t in tests if t.get('falsified') == True)
     validated_count = sum(1 for t in tests if t.get('falsified') == False)
 
-    print(f"  Tests run: 4")
+    print("  Tests run: 4")
     print(f"  Validated: {validated_count}")
     print(f"  Falsified: {falsified_count}")
     print(f"  Inconclusive: {4 - validated_count - falsified_count}")

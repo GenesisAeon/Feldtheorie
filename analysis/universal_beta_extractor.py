@@ -25,11 +25,12 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections.abc import Mapping, Sequence
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean, median, pstdev
-from typing import Any, Dict, List, Mapping, Optional, Sequence
+from typing import Any
 
 
 @dataclass
@@ -37,19 +38,19 @@ class BetaRecord:
     """Canonical summary for one analysis result file."""
 
     result_path: str
-    dataset: Optional[str]
-    domain: Optional[str]
-    beta: Optional[float]
-    beta_ci: Optional[List[Optional[float]]]
-    theta: Optional[float]
-    theta_ci: Optional[List[Optional[float]]]
-    logistic_r2: Optional[float]
-    logistic_aic: Optional[float]
-    delta_aic_min: Optional[float]
-    falsification_pass: Optional[bool]
-    within_canonical_band: Optional[bool]
+    dataset: str | None
+    domain: str | None
+    beta: float | None
+    beta_ci: list[float | None] | None
+    theta: float | None
+    theta_ci: list[float | None] | None
+    logistic_r2: float | None
+    logistic_aic: float | None
+    delta_aic_min: float | None
+    falsification_pass: bool | None
+    within_canonical_band: bool | None
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
 
@@ -58,27 +59,27 @@ class BetaSummary:
     """Aggregate resonance diagnostics."""
 
     count: int
-    beta_mean: Optional[float]
-    beta_median: Optional[float]
-    beta_std: Optional[float]
-    beta_min: Optional[float]
-    beta_max: Optional[float]
-    theta_mean: Optional[float]
-    theta_median: Optional[float]
-    delta_aic_min: Optional[float]
-    delta_aic_median: Optional[float]
-    logistic_r2_median: Optional[float]
-    within_canonical_fraction: Optional[float]
+    beta_mean: float | None
+    beta_median: float | None
+    beta_std: float | None
+    beta_min: float | None
+    beta_max: float | None
+    theta_mean: float | None
+    theta_median: float | None
+    delta_aic_min: float | None
+    delta_aic_median: float | None
+    logistic_r2_median: float | None
+    within_canonical_fraction: float | None
     canonical_beta: float
     canonical_band: Sequence[float]
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         payload = asdict(self)
         payload["canonical_band"] = list(self.canonical_band)
         return payload
 
 
-def _safe_float(value: Any) -> Optional[float]:
+def _safe_float(value: Any) -> float | None:
     if isinstance(value, (float, int)):
         return float(value)
     if isinstance(value, str) and value.strip():
@@ -89,7 +90,7 @@ def _safe_float(value: Any) -> Optional[float]:
     return None
 
 
-def _ci_pair(entry: Mapping[str, Any]) -> Optional[List[Optional[float]]]:
+def _ci_pair(entry: Mapping[str, Any]) -> list[float | None] | None:
     ci = entry.get("ci95")
     if isinstance(ci, (list, tuple)) and len(ci) >= 2:
         return [_safe_float(ci[0]), _safe_float(ci[1])]
@@ -99,7 +100,7 @@ def _ci_pair(entry: Mapping[str, Any]) -> Optional[List[Optional[float]]]:
     return None
 
 
-def _domain_from_path(dataset: Optional[str], result_path: Path) -> Optional[str]:
+def _domain_from_path(dataset: str | None, result_path: Path) -> str | None:
     if dataset:
         parts = Path(dataset).parts
         if len(parts) >= 2 and parts[0] == "data":
@@ -110,11 +111,11 @@ def _domain_from_path(dataset: Optional[str], result_path: Path) -> Optional[str
     return None
 
 
-def _extract_from_tasks(tasks: Sequence[Mapping[str, Any]]) -> Dict[str, Any]:
-    betas: List[float] = []
-    thetas: List[float] = []
-    r2_values: List[float] = []
-    delta_aic: List[float] = []
+def _extract_from_tasks(tasks: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+    betas: list[float] = []
+    thetas: list[float] = []
+    r2_values: list[float] = []
+    delta_aic: list[float] = []
     for task in tasks:
         logistic = task.get("logistic")
         if isinstance(logistic, Mapping):
@@ -143,9 +144,9 @@ def _extract_from_tasks(tasks: Sequence[Mapping[str, Any]]) -> Dict[str, Any]:
     }
 
 
-def _extract_delta_aic(payload: Mapping[str, Any]) -> Optional[float]:
+def _extract_delta_aic(payload: Mapping[str, Any]) -> float | None:
     falsification = payload.get("falsification")
-    delta_values: List[float] = []
+    delta_values: list[float] = []
     if isinstance(falsification, Mapping):
         direct = falsification.get("delta_aic")
         if direct is not None:
@@ -179,7 +180,7 @@ def _extract_delta_aic(payload: Mapping[str, Any]) -> Optional[float]:
     return None
 
 
-def _extract_dataset(payload: Mapping[str, Any]) -> Optional[str]:
+def _extract_dataset(payload: Mapping[str, Any]) -> str | None:
     dataset = payload.get("dataset")
     if isinstance(dataset, str):
         return dataset
@@ -193,7 +194,7 @@ def _extract_dataset(payload: Mapping[str, Any]) -> Optional[str]:
     return None
 
 
-def _extract_beta_theta(payload: Mapping[str, Any]) -> Dict[str, Any]:
+def _extract_beta_theta(payload: Mapping[str, Any]) -> dict[str, Any]:
     beta = None
     theta = None
     beta_ci = None
@@ -255,7 +256,7 @@ def _extract_beta_theta(payload: Mapping[str, Any]) -> Dict[str, Any]:
     }
 
 
-def parse_result(result_path: Path, canonical_band: Sequence[float]) -> Optional[BetaRecord]:
+def parse_result(result_path: Path, canonical_band: Sequence[float]) -> BetaRecord | None:
     with result_path.open("r", encoding="utf-8") as handle:
         payload = json.load(handle)
 
@@ -270,7 +271,7 @@ def parse_result(result_path: Path, canonical_band: Sequence[float]) -> Optional
     dataset = _extract_dataset(payload)
     domain = _domain_from_path(dataset, result_path)
     falsification = payload.get("falsification")
-    falsification_pass: Optional[bool] = None
+    falsification_pass: bool | None = None
     if isinstance(falsification, Mapping):
         pass_val = falsification.get("passes") or falsification.get("logistic_beats_all_nulls")
         if isinstance(pass_val, bool):
@@ -297,8 +298,8 @@ def parse_result(result_path: Path, canonical_band: Sequence[float]) -> Optional
     )
 
 
-def collect_records(results_dir: Path, canonical_band: Sequence[float]) -> List[BetaRecord]:
-    records: List[BetaRecord] = []
+def collect_records(results_dir: Path, canonical_band: Sequence[float]) -> list[BetaRecord]:
+    records: list[BetaRecord] = []
     for path in sorted(results_dir.glob("*.json")):
         try:
             record = parse_result(path, canonical_band)
@@ -309,7 +310,7 @@ def collect_records(results_dir: Path, canonical_band: Sequence[float]) -> List[
     return records
 
 
-def _safe_stats(values: Sequence[float]) -> Dict[str, Optional[float]]:
+def _safe_stats(values: Sequence[float]) -> dict[str, float | None]:
     if not values:
         return {"mean": None, "median": None, "std": None, "min": None, "max": None}
     if len(values) == 1:
@@ -360,10 +361,10 @@ def summarise(records: Sequence[BetaRecord], canonical_beta: float, canonical_ba
     )
 
 
-def validate(summary: BetaSummary, records: Sequence[BetaRecord], delta_guard: float, r2_guard: float) -> Dict[str, Any]:
+def validate(summary: BetaSummary, records: Sequence[BetaRecord], delta_guard: float, r2_guard: float) -> dict[str, Any]:
     delta_pass = summary.delta_aic_min is not None and summary.delta_aic_min >= delta_guard
     r2_pass = summary.logistic_r2_median is not None and summary.logistic_r2_median >= r2_guard
-    failing_records: List[str] = []
+    failing_records: list[str] = []
     for rec in records:
         if rec.delta_aic_min is not None and rec.delta_aic_min < delta_guard:
             failing_records.append(rec.result_path)
@@ -382,9 +383,9 @@ def validate(summary: BetaSummary, records: Sequence[BetaRecord], delta_guard: f
 def build_payload(
     summary: BetaSummary,
     records: Sequence[BetaRecord],
-    validation: Optional[Dict[str, Any]],
-) -> Dict[str, Any]:
-    payload: Dict[str, Any] = {
+    validation: dict[str, Any] | None,
+) -> dict[str, Any]:
+    payload: dict[str, Any] = {
         "generated_at": datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat(),
         "summary": summary.to_dict(),
         "records": [record.to_dict() for record in records],
@@ -394,12 +395,7 @@ def build_payload(
                 "validation recorded for governance."
             ),
             "empirical": (
-                "Records cover {} files; β_mean={}, ΔAIC_min={}, R²_median={}.".format(
-                    summary.count,
-                    round(summary.beta_mean, 3) if summary.beta_mean is not None else None,
-                    round(summary.delta_aic_min, 2) if summary.delta_aic_min is not None else None,
-                    round(summary.logistic_r2_median, 4) if summary.logistic_r2_median is not None else None,
-                )
+                f"Records cover {summary.count} files; β_mean={round(summary.beta_mean, 3) if summary.beta_mean is not None else None}, ΔAIC_min={round(summary.delta_aic_min, 2) if summary.delta_aic_min is not None else None}, R²_median={round(summary.logistic_r2_median, 4) if summary.logistic_r2_median is not None else None}."
             ),
             "metaphorical": (
                 "Every membrane lantern now sings in one ledger; the canonical band hums to remind the field "
@@ -412,7 +408,7 @@ def build_payload(
     return payload
 
 
-def print_report(summary: BetaSummary, validation: Optional[Dict[str, Any]]) -> None:
+def print_report(summary: BetaSummary, validation: dict[str, Any] | None) -> None:
     canonical_range = f"[{summary.canonical_band[0]:.2f}, {summary.canonical_band[1]:.2f}]"
     print("Universal β Extractor")
     print("======================")
@@ -434,7 +430,7 @@ def print_report(summary: BetaSummary, validation: Optional[Dict[str, Any]]) -> 
                 print(f"    - {path}")
 
 
-def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
+def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Aggregate β, Θ, and ΔAIC evidence from analysis result sigils.",
     )
@@ -482,7 +478,7 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:
+def main(argv: Sequence[str] | None = None) -> int:
     args = parse_args(argv)
     results_dir: Path = args.results_dir
     if not results_dir.exists():
@@ -491,7 +487,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     canonical_band = (args.canonical_beta - args.band_half_width, args.canonical_beta + args.band_half_width)
     records = collect_records(results_dir, canonical_band)
     summary = summarise(records, args.canonical_beta, canonical_band)
-    validation: Optional[Dict[str, Any]] = None
+    validation: dict[str, Any] | None = None
     if args.mode == "validate":
         validation = validate(summary, records, args.delta_aic_guard, args.r2_guard)
     payload = build_payload(summary, records, validation)

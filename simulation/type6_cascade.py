@@ -18,7 +18,6 @@ from __future__ import annotations
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Tuple, Callable, Optional
 
 import numpy as np
 
@@ -26,8 +25,8 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from pipelines.fit_tau_star import (
-    compute_tau_star,
     apply_safety_delay,
+    compute_tau_star,
     compute_zeta_risk,
 )
 
@@ -241,7 +240,7 @@ def rk4_step(
 def simulate_type6_cascade(
     params: Type6Parameters,
     verbose: bool = True,
-) -> List[SimulationState]:
+) -> list[SimulationState]:
     """Simulate Type-VI implosive cascade with τ* safety delay.
 
     Args:
@@ -274,7 +273,7 @@ def simulate_type6_cascade(
     R = params.R_init
     R_prev = params.R_init
     t = 0.0
-    history: List[SimulationState] = []
+    history: list[SimulationState] = []
 
     # Initial state
     zeta = compute_zeta_risk(R, params.Theta, params.beta)
@@ -349,7 +348,7 @@ def simulate_type6_cascade(
 
     if verbose:
         final = history[-1]
-        print(f"\n✅ Simulation complete")
+        print("\n✅ Simulation complete")
         print(f"   Final time: t={final.t:.2f}")
         print(f"   Final R: {final.R:.3f}")
         print(f"   Final CREP: {final.crep_index:.3f}")
@@ -375,7 +374,7 @@ ARCTIC_METHANE_PARAMS = Type6Parameters(
 )
 
 
-def run_arctic_methane_simulation(verbose: bool = True) -> List[SimulationState]:
+def run_arctic_methane_simulation(verbose: bool = True) -> list[SimulationState]:
     """Run Arctic methane release cascade simulation.
 
     This is the canonical Type-VI example from METRICS.md Section 8.3.
@@ -458,4 +457,4 @@ if __name__ == "__main__":
 
     print(f"\n📝 Logged to {logfile}")
     print("\n🎯 Next: Run visualization with:")
-    print(f"   python scripts/plot_type6_cascade.py")
+    print("   python scripts/plot_type6_cascade.py")

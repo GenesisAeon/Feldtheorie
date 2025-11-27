@@ -117,9 +117,9 @@ def classify_field_type(features):
         str: Field type classification
     """
     f = features['dominant_freq']
-    entropy = features['entropy']
-    bandwidth = features['bandwidth']
-    
+    entropy = features.get('entropy', 5.5)  # Default for clean signal (< 6.0)
+    bandwidth = features.get('bandwidth', 80)  # Default for narrow bandwidth (< 100)
+
     # Classification thresholds (based on UTAC empirical data)
     if f < 150:
         if entropy < 6.0:

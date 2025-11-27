@@ -47,23 +47,17 @@ License: AGPL-3.0
 
 from __future__ import annotations
 
-import math
+from collections.abc import Callable
 from dataclasses import dataclass
 from enum import Enum
-from typing import Callable, Optional, Union
 
 import numpy as np
-from scipy.integrate import odeint, solve_ivp
+from scipy.integrate import solve_ivp
 
 # Import golden ratio constants from Type-6 module
 from models.utac_type6_implosive import (
-    PHI,
-    BETA_FIXPOINT_PHI,
-    BETA_FIXPOINT_PHI2,
-    BETA_FIXPOINT_PHI3,
     BETA_STEPS,
 )
-
 
 # ═══════════════════════════════════════════════════════════════
 # RG FLOW VARIANTS (ENUM)
@@ -88,7 +82,7 @@ class FlowVariant(Enum):
 def linear_phi_attractor(
     beta: float,
     alpha: float = 0.5,
-    fixpoint: Optional[float] = None,
+    fixpoint: float | None = None,
 ) -> float:
     """Linear flow toward nearest Φⁿ fixpoint.
 
@@ -119,7 +113,7 @@ def linear_phi_attractor(
 def polynomial_flow(
     beta: float,
     gamma: float = 0.1,
-    fixpoint: Optional[float] = None,
+    fixpoint: float | None = None,
     exponent: int = 3,
 ) -> float:
     """Polynomial flow (Landau-Ginzburg style).
@@ -152,7 +146,7 @@ def polynomial_flow(
 
 def multi_basin_flow(
     beta: float,
-    weights: Optional[np.ndarray] = None,
+    weights: np.ndarray | None = None,
     alpha: float = 0.5,
 ) -> float:
     """Multi-basin flow with all Φⁿ attractors competing.
@@ -194,7 +188,7 @@ def context_dependent_flow(
     R_over_Theta: float = 1.0,
     zeta: float = 0.0,
     alpha: float = 0.5,
-    fixpoint: Optional[float] = None,
+    fixpoint: float | None = None,
 ) -> float:
     """Context-dependent flow modulated by R/Θ and ζ.
 
@@ -298,7 +292,7 @@ class RGFlowConfig:
     beta_base: float = 4.236  # Baseline β (Φ³)
     R_over_Theta: float = 1.0  # Context parameter
     zeta: float = 0.0  # Impedance
-    fixpoint: Optional[float] = None  # Target fixpoint (None = nearest)
+    fixpoint: float | None = None  # Target fixpoint (None = nearest)
 
 
 class RGFlowSimulator:
@@ -325,7 +319,7 @@ class RGFlowSimulator:
         Compute basin of attraction for given fixpoint
     """
 
-    def __init__(self, config: Optional[RGFlowConfig] = None):
+    def __init__(self, config: RGFlowConfig | None = None):
         """Initialize RG flow simulator.
 
         Parameters

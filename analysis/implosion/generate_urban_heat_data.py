@@ -9,6 +9,7 @@ Creates realistic city-season data following Type-6 implosive patterns:
 
 import sys
 from pathlib import Path
+
 import numpy as np
 
 # Add models to path
@@ -16,8 +17,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from models.utac_type6_implosive import (
     BETA_FIXPOINT_PHI3,
-    PHI_CBRT,
-    cubic_root_jump,
 )
 
 # Set random seed for reproducibility

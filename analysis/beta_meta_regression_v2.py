@@ -41,7 +41,6 @@ import json
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -52,7 +51,7 @@ from statsmodels.stats.outliers_influence import OLSInfluence
 
 # Import Type-6 constants for φ^(n/3) ladder integration
 try:
-    from models.utac_type6_implosive import PHI, PHI_CBRT, BETA_FIXPOINT_PHI3
+    from models.utac_type6_implosive import BETA_FIXPOINT_PHI3, PHI, PHI_CBRT
     CANONICAL_BETA = float(BETA_FIXPOINT_PHI3)  # Φ³ ≈ 4.236
 except ImportError:
     # Fallback if models not in path
@@ -74,17 +73,17 @@ class RegressionSummary:
     bic: float
     rmse: float
     canonical_beta: float
-    canonical_band: Tuple[float, float]
+    canonical_band: tuple[float, float]
     beta_mean: float
     beta_std: float
     beta_band_fraction: float
     delta_aic_guard_min: float
     bootstrap_r2_median: float
-    bootstrap_r2_interval: Tuple[float, float]
-    random_forest_oob_r2: Optional[float]
-    random_forest_bootstrap_interval: Optional[Tuple[float, float]]
+    bootstrap_r2_interval: tuple[float, float]
+    random_forest_oob_r2: float | None
+    random_forest_bootstrap_interval: tuple[float, float] | None
 
-    def to_dict(self) -> Dict[str, object]:
+    def to_dict(self) -> dict[str, object]:
         payload = asdict(self)
         payload["canonical_band"] = list(self.canonical_band)
         payload["bootstrap_r2_interval"] = list(self.bootstrap_r2_interval)
@@ -132,7 +131,7 @@ def load_and_prepare(beta_path: Path, covar_path: Path) -> pd.DataFrame:
     return df
 
 
-def build_design_matrix(df: pd.DataFrame) -> Tuple[pd.Series, pd.DataFrame, pd.Series, pd.DataFrame]:
+def build_design_matrix(df: pd.DataFrame) -> tuple[pd.Series, pd.DataFrame, pd.Series, pd.DataFrame]:
     """Construct dependent variable, design matrix, weights, and augmented table."""
 
     y = df["beta"]
@@ -180,13 +179,13 @@ def bootstrap_wls(
     X_design: pd.DataFrame,
     weights: pd.Series,
     n_bootstrap: int,
-    seed: Optional[int] = None,
-) -> Tuple[Dict[str, Dict[str, float]], Dict[str, float]]:
+    seed: int | None = None,
+) -> tuple[dict[str, dict[str, float]], dict[str, float]]:
     """Bootstrap coefficient and R² envelopes for the WLS model."""
 
     rng = default_rng(seed)
-    params_samples: List[pd.Series] = []
-    r2_samples: List[float] = []
+    params_samples: list[pd.Series] = []
+    r2_samples: list[float] = []
 
     for _ in range(n_bootstrap):
         indices = rng.integers(0, len(y), len(y))
@@ -198,7 +197,7 @@ def bootstrap_wls(
         r2_samples.append(float(result.rsquared))
 
     params_df = pd.DataFrame(params_samples)
-    bootstrap_summary: Dict[str, Dict[str, float]] = {}
+    bootstrap_summary: dict[str, dict[str, float]] = {}
     for column in params_df.columns:
         series = params_df[column].dropna()
         bootstrap_summary[column] = {
@@ -226,8 +225,8 @@ def random_forest_diagnostics(
     weights: pd.Series,
     n_estimators: int,
     n_bootstrap: int,
-    seed: Optional[int] = None,
-) -> Tuple[Optional[float], Dict[str, float], Dict[str, float]]:
+    seed: int | None = None,
+) -> tuple[float | None, dict[str, float], dict[str, float]]:
     """Train a Random Forest regressor and derive bootstrap OOB envelopes."""
 
     if X.empty:
@@ -249,7 +248,7 @@ def random_forest_diagnostics(
     }
 
     rng = default_rng(seed)
-    bootstrap_scores: List[float] = []
+    bootstrap_scores: list[float] = []
     for _ in range(max(0, n_bootstrap)):
         indices = rng.integers(0, len(y), len(y))
         X_sample = X.iloc[indices]
@@ -288,14 +287,14 @@ def domain_diagnostics(
     predictions: np.ndarray,
     weights: pd.Series,
     result: sm.regression.linear_model.RegressionResultsWrapper,
-) -> Dict[str, Dict[str, float]]:
+) -> dict[str, dict[str, float]]:
     """Assemble per-domain diagnostics, including Cook's distance."""
 
     influence = OLSInfluence(result)
     cooks_d = influence.cooks_distance[0]
     pred_series = pd.Series(predictions, index=y.index)
 
-    diagnostics: Dict[str, Dict[str, float]] = {}
+    diagnostics: dict[str, dict[str, float]] = {}
 
     for idx, row in df.iterrows():
         diagnostics[row["domain"]] = {
@@ -358,7 +357,7 @@ def run_pipeline(
     n_bootstrap: int,
     rf_trees: int,
     rf_bootstrap: int,
-    seed: Optional[int],
+    seed: int | None,
 ) -> None:
     """Execute the refreshed meta-regression workflow and persist artefacts."""
 

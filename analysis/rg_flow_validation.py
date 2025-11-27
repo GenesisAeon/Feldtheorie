@@ -28,16 +28,15 @@ Version: 1.0.0
 
 import argparse
 import json
+
+# Import RG simulator
+import sys
 from pathlib import Path
-from typing import Optional
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from scipy.stats import pearsonr
 
-# Import RG simulator
-import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from models.rg_flow_simulator import (
@@ -47,8 +46,7 @@ from models.rg_flow_simulator import (
     compare_to_phi_ladder,
     phi_convergence_score,
 )
-from models.utac_type6_implosive import PHI, BETA_FIXPOINT_PHI3, BETA_STEPS
-
+from models.utac_type6_implosive import BETA_FIXPOINT_PHI3
 
 # ═══════════════════════════════════════════════════════════════
 # DATA LOADING
@@ -102,7 +100,7 @@ def fit_rg_flow(
     empirical_beta: np.ndarray,
     empirical_epochs: np.ndarray,
     variant: FlowVariant,
-    config_overrides: Optional[dict] = None,
+    config_overrides: dict | None = None,
 ) -> dict:
     """Fit RG flow to empirical β trajectory.
 
@@ -252,7 +250,7 @@ def plot_variant_comparison(
     trajectories: dict[str, pd.DataFrame],
     results: dict,
     variant: FlowVariant,
-    output_path: Optional[Path] = None,
+    output_path: Path | None = None,
 ):
     """Plot RG flow vs. empirical trajectories for given variant.
 
@@ -344,7 +342,7 @@ def plot_variant_comparison(
 
 def plot_summary_metrics(
     results: dict,
-    output_path: Optional[Path] = None,
+    output_path: Path | None = None,
 ):
     """Plot summary metrics across all variants.
 

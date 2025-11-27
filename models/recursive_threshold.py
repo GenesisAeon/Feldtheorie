@@ -16,8 +16,9 @@ Metaphorical layer:
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass, field
-from typing import Dict, List, Sequence, Union
+from typing import Union
 
 from .coherence_term import MandalaCoherence
 from .membrane_solver import logistic_impedance_gate, logistic_response
@@ -39,7 +40,7 @@ class CascadeState:
     theta_shift: float
     beta_shift: float
 
-    def to_dict(self) -> Dict[str, float]:
+    def to_dict(self) -> dict[str, float]:
         """Serialise the state for JSON exports."""
 
         return {
@@ -82,7 +83,7 @@ class PotenzialKaskade:
     logistic_beta: float = 4.2
     zeta_closed: float = 1.3
     zeta_open: float = 0.6
-    history: List[CascadeState] = field(default_factory=list, init=False)
+    history: list[CascadeState] = field(default_factory=list, init=False)
     baseline_theta: float = field(init=False)
     baseline_beta: float = field(init=False)
 
@@ -148,7 +149,7 @@ class PotenzialKaskade:
         *,
         condition_trace: Sequence[float] | None = None,
         dt: float = 1.0,
-    ) -> List[CascadeState]:
+    ) -> list[CascadeState]:
         r"""Iterate the cascade across sequences of potentials and coherences."""
 
         if len(potentials) != len(coherences):
@@ -156,7 +157,7 @@ class PotenzialKaskade:
         if condition_trace is not None and len(condition_trace) != len(potentials):
             raise ValueError("condition_trace must match the length of potentials")
 
-        results: List[CascadeState] = []
+        results: list[CascadeState] = []
         for idx, (potential, coherence) in enumerate(zip(potentials, coherences)):
             condition = None if condition_trace is None else condition_trace[idx]
             results.append(self.step(potential=float(potential), coherence=coherence, condition=condition, dt=dt))
@@ -169,7 +170,7 @@ class PotenzialKaskade:
         self.beta = float(self.baseline_beta)
         self.history.clear()
 
-    def summary(self) -> Dict[str, List[float]]:
+    def summary(self) -> dict[str, list[float]]:
         r"""Return arrays of Θ, β, gates, and impedance across the history."""
 
         return {

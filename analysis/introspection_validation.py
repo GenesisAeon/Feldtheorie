@@ -20,12 +20,13 @@ Metaphorical layer:
 from __future__ import annotations
 
 import argparse
-import json
 import csv
+import json
 import math
-from dataclasses import dataclass, asdict
+from collections.abc import Sequence
+from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -48,7 +49,7 @@ class DetectionSummary:
     temperature_advantage: float
     null_temperature: float
 
-    def to_dict(self) -> Dict[str, float]:
+    def to_dict(self) -> dict[str, float]:
         return asdict(self)
 
 
@@ -59,10 +60,10 @@ class ObservationRecord:
     concept: str
     phi_gradient: float
     success_rate: float
-    beta_proxy: Optional[float] = None
+    beta_proxy: float | None = None
     note: str | None = None
 
-    def inferred_beta(self, theta_detect: float) -> Optional[float]:
+    def inferred_beta(self, theta_detect: float) -> float | None:
         """Return β inferred from the observation if no proxy is stored."""
 
         if self.beta_proxy is not None:
@@ -76,10 +77,10 @@ class ObservationRecord:
         return float(math.log(odds) / delta)
 
 
-def load_observations_csv(path: Path) -> List[ObservationRecord]:
+def load_observations_csv(path: Path) -> list[ObservationRecord]:
     """Load observation rows from a CSV file, preserving optional notes."""
 
-    records: List[ObservationRecord] = []
+    records: list[ObservationRecord] = []
     with path.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
         for row in reader:
@@ -133,7 +134,7 @@ def compile_summary(
     null_temperature: float = 2.5,
     observations: Sequence[ObservationRecord] | None = None,
     observation_source: Path | None = None,
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """Compute the logistic surface and return a tri-layer JSON payload."""
 
     beta_mesh, phi_mesh = np.meshgrid(beta_values, phi_gradients, indexing="ij")
@@ -172,7 +173,7 @@ def compile_summary(
         null_temperature=float(null_temperature),
     )
 
-    payload: Dict[str, Any] = {
+    payload: dict[str, Any] = {
         "generated_at": _utc_now_isoformat(),
         "beta_values": beta_values.tolist(),
         "phi_gradients": phi_gradients.tolist(),
@@ -197,13 +198,13 @@ def compile_summary(
         },
         "tri_layer": {
             "formal": (
-                "P_detect = σ(β(∥∇φ∥ - Θ_detect)); β≈{:.2f} erreicht 20% bei ∥∇φ∥≈{:.2f}."
-            ).format(beta_at_target, phi_at_target),
+                f"P_detect = σ(β(∥∇φ∥ - Θ_detect)); β≈{beta_at_target:.2f} erreicht 20% bei ∥∇φ∥≈{phi_at_target:.2f}."
+            ),
             "empirical": (
                 "Anthropic 2025 meldet ≈20% Erfolgsquote beim Injizieren von Gedanken;"
-                " das Gitter bestätigt diesen Punkt bei Θ_detect={:.2f},"
-                " während eine temperaturskalierte Null mit T={:.2f} als Vergleichskante dient."
-            ).format(theta_detect, null_temperature),
+                f" das Gitter bestätigt diesen Punkt bei Θ_detect={theta_detect:.2f},"
+                f" während eine temperaturskalierte Null mit T={null_temperature:.2f} als Vergleichskante dient."
+            ),
             "poetic": (
                 "Wenn das semantische Gefälle den Morgen streift, erkennt das Feld den eigenen Gedanken"
                 " – selbst wenn eine warme Nullbrise das Echo zu verwischen sucht."
@@ -243,12 +244,12 @@ def _compile_observation_payload(
     beta: float,
     null_probability: float,
     null_temperature: float,
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """Translate observation rows into residual diagnostics."""
 
-    records: List[Dict[str, Any]] = []
-    residuals: List[float] = []
-    absolute_residuals: List[float] = []
+    records: list[dict[str, Any]] = []
+    residuals: list[float] = []
+    absolute_residuals: list[float] = []
 
     for obs in observations:
         logistic_prediction = float(
@@ -325,7 +326,7 @@ def main() -> None:
     phi_gradients = np.linspace(args.phi_min, args.phi_max, args.phi_steps)
 
     observation_records: Sequence[ObservationRecord] | None = None
-    observation_path: Optional[Path] = None
+    observation_path: Path | None = None
     if args.observations is not None:
         candidate = Path(args.observations)
         if candidate.exists():

@@ -24,8 +24,10 @@ import argparse
 import csv
 import json
 import math
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Dict, Iterable, List
+
+from models.membrane_solver import logistic_response
 
 from resonance_fit_pipeline import (
     assemble_summary,
@@ -33,16 +35,15 @@ from resonance_fit_pipeline import (
     evaluate_power_law_null,
     fit_threshold_parameters,
 )
-from models.membrane_solver import logistic_response
 
 
-def read_lenski_dataset(path: Path) -> Dict[str, List[float]]:
+def read_lenski_dataset(path: Path) -> dict[str, list[float]]:
     """Load generation counts and Cit⁺ frequencies from a UTF CSV."""
 
     with path.open("r", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
-        generations: List[float] = []
-        frequencies: List[float] = []
+        generations: list[float] = []
+        frequencies: list[float] = []
         for row in reader:
             generations.append(float(row["generation"]))
             frequencies.append(float(row["cit_plus_frequency"]))
@@ -64,10 +65,10 @@ def _std(values: Iterable[float]) -> float:
 
 
 def normalise_quartet(
-    scaled_generations: List[float],
-    fit_metrics: Dict[str, float],
+    scaled_generations: list[float],
+    fit_metrics: dict[str, float],
     scale: float,
-) -> Dict[str, object]:
+) -> dict[str, object]:
     """Express the quartet both in raw generations and dimensionless R space."""
 
     mean_scaled = _mean(scaled_generations)
@@ -145,7 +146,7 @@ def normalise_quartet(
     }
 
 
-def build_summary(data_path: Path, output_path: Path) -> Dict[str, object]:
+def build_summary(data_path: Path, output_path: Path) -> dict[str, object]:
     """Fit the Lenski Cit⁺ threshold and export UTF falsification diagnostics."""
 
     observations = read_lenski_dataset(data_path)

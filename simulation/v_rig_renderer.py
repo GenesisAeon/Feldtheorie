@@ -18,12 +18,12 @@ Date: 2025-11-26
 License: MIT
 """
 
-import numpy as np
+import warnings
+
 import matplotlib.pyplot as plt
+import numpy as np
 from scipy.ndimage import gaussian_filter
 from scipy.stats import entropy
-from typing import Tuple, List
-import warnings
 
 warnings.filterwarnings('ignore')
 
@@ -63,7 +63,7 @@ class VRigRealityRenderer:
         self.buffer = []
         self.max_buffer_size = 500
 
-    def generate_holographic_stream(self, n_slices: int = 100) -> List[np.ndarray]:
+    def generate_holographic_stream(self, n_slices: int = 100) -> list[np.ndarray]:
         """
         Generate a stream of 2D holographic slices with interference patterns.
 
@@ -121,7 +121,7 @@ class VRigRealityRenderer:
 
         return slices
 
-    def integrate_buffer(self, slices: List[np.ndarray], N: int) -> np.ndarray:
+    def integrate_buffer(self, slices: list[np.ndarray], N: int) -> np.ndarray:
         """
         Integrate N consecutive slices into a 3D volume using ring buffer.
 
@@ -205,9 +205,9 @@ class VRigRealityRenderer:
         return coherence
 
     def scan_window_sizes(self,
-                          N_range: Tuple[int, int] = (1, 500),
+                          N_range: tuple[int, int] = (1, 500),
                           n_slices: int = 500,
-                          step: int = 1) -> Tuple[np.ndarray, np.ndarray]:
+                          step: int = 1) -> tuple[np.ndarray, np.ndarray]:
         """
         Scan buffer sizes from N_min to N_max and measure coherence at each.
 
@@ -247,8 +247,8 @@ class VRigRealityRenderer:
         return N_values, np.array(coherence_scores)
 
     def visualize_reconstruction(self,
-                                 slices: List[np.ndarray],
-                                 N_values: List[int] = None,
+                                 slices: list[np.ndarray],
+                                 N_values: list[int] = None,
                                  save_path: str = None):
         """
         Visualize 3D reconstruction at different buffer sizes.
@@ -356,7 +356,7 @@ def main():
     print("v_RIG Reality Renderer Simulation")
     print("=" * 70)
     print(f"Testing hypothesis: Maximum 3D coherence at N ≈ α⁻¹·Φ ≈ {N_OPTIMAL:.2f}")
-    print(f"Physical constants:")
+    print("Physical constants:")
     print(f"  α⁻¹ = {ALPHA_INV:.6f} (fine-structure constant inverse)")
     print(f"  Φ   = {PHI:.6f} (golden ratio)")
     print(f"  c   = {C_LIGHT:.3f} km/s")
@@ -421,7 +421,7 @@ def main():
     )
 
     print("\nSimulation complete!")
-    print(f"\nInterpretation:")
+    print("\nInterpretation:")
     if abs(N_peak_fine - N_OPTIMAL) / N_OPTIMAL < 0.1:  # Within 10%
         print("✓ HYPOTHESIS SUPPORTED: Peak coherence occurs near N ≈ α⁻¹·Φ")
         print("  This suggests consciousness integration may follow v_RIG scaling.")

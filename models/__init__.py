@@ -11,30 +11,35 @@ Metaphorical layer:
     who arrive via `import models`.
 """
 
+from .adaptive_logistic_membrane import AdaptiveLogisticMembrane
+from .coherence_term import (
+    MandalaCoherence,
+    coherence_measure,
+    mandala_coherence,
+    semantic_coupling_term,
+)
+from .coupled_threshold_field import CoupledThresholdField, logistic_semantic_kernel, ramp_driver
+from .klimakluft_amplifier import EmissionDistributor
+from .logistic_envelope import LogisticFieldEnvelope
 from .membrane_solver import (
     AdaptiveThresholdController,
     DynamicRobinBoundary,
     ThresholdFieldSolver,
-    logistic_response,
     logistic_impedance_gate,
-    update_impedance,
+    logistic_response,
     semantic_resonance_kernel,
     smooth_impedance_profile,
     threshold_crossing_diagnostics,
+    update_impedance,
 )
-from .adaptive_logistic_membrane import AdaptiveLogisticMembrane
-from .logistic_envelope import LogisticFieldEnvelope
-from .coupled_threshold_field import CoupledThresholdField, logistic_semantic_kernel, ramp_driver
-from .resonant_impedance import ResonantImpedance
-from .sigmoid_fit import SigmoidFitResult, fit_sigmoid_with_fallbacks, linear_fit_aic, power_law_fit_aic
-from .coherence_term import (
-    MandalaCoherence,
-    mandala_coherence,
-    semantic_coupling_term,
-    coherence_measure,
-)
-from .klimakluft_amplifier import EmissionDistributor
 from .recursive_threshold import CascadeState, PotenzialKaskade
+from .resonant_impedance import ResonantImpedance
+from .sigmoid_fit import (
+    SigmoidFitResult,
+    fit_sigmoid_with_fallbacks,
+    linear_fit_aic,
+    power_law_fit_aic,
+)
 
 __all__ = [
     "ThresholdFieldSolver",

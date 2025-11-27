@@ -31,19 +31,17 @@ lantern lets every domain remember how the gate sighed when resonance bloomed.
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
+import sys
+import types
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from math import sin, tau
 from pathlib import Path
 from random import Random
 from statistics import mean
-from typing import Dict, Iterable, Mapping, Sequence
-
-import importlib.util
-import sys
-import types
-
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -66,7 +64,7 @@ def _ensure_membrane_solver() -> None:
     module = importlib.util.module_from_spec(spec)
     sys.modules[module_name] = module
     spec.loader.exec_module(module)
-    setattr(package, "membrane_solver", module)
+    package.membrane_solver = module
 
 
 _ensure_membrane_solver()
@@ -114,7 +112,7 @@ except Exception:  # pragma: no cover - executed only in minimal environments wi
         def _logistic(sample: float, *, theta: float, beta: float) -> float:
             return 1.0 / (1.0 + exp(-beta * (sample - theta)))
 
-        def trace(self, r: Sequence[float], *, dt: float = 1.0) -> Dict[str, list[float]]:
+        def trace(self, r: Sequence[float], *, dt: float = 1.0) -> dict[str, list[float]]:
             zeta_path: list[float] = []
             gate_path: list[float] = []
             relief_path: list[float] = []
@@ -156,9 +154,9 @@ except Exception:  # pragma: no cover - executed only in minimal environments wi
             }
 
         def summarise(
-            self, history: Mapping[str, Sequence[float]], store: Dict[str, float] | None = None
-        ) -> Dict[str, float]:
-            target: Dict[str, float] = {} if store is None else store
+            self, history: Mapping[str, Sequence[float]], store: dict[str, float] | None = None
+        ) -> dict[str, float]:
+            target: dict[str, float] = {} if store is None else store
             R = [float(value) for value in history["R"]]
             zeta = [float(value) for value in history["zeta"]]
             gate = [float(value) for value in history["gate"]]
@@ -273,7 +271,7 @@ def run_impedance_trace(
     baseline: float,
     floor: float,
     ceiling: float,
-) -> Dict[str, object]:
+) -> dict[str, object]:
     """Propagate the resonant impedance motif and summarise diagnostics."""
 
     motif = ResonantImpedance(

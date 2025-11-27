@@ -30,8 +30,8 @@ impedance winds keep the tune grounded.
 
 from __future__ import annotations
 
+from collections.abc import Callable, Iterable, Mapping, MutableMapping
 from dataclasses import dataclass, field
-from typing import Callable, Iterable, Mapping, MutableMapping
 
 import numpy as np
 
@@ -191,8 +191,8 @@ class AdaptiveLogisticMembrane:
         baseline_beta = float(np.asarray(history["beta_baseline"], dtype=float)[0])
 
         if R.size >= 2:
-            logistic_area = float(np.trapz(sigma, R))
-            response_area = float(np.trapz(response, R))
+            logistic_area = float(np.trapezoid(sigma, R))
+            response_area = float(np.trapezoid(response, R))
         else:
             logistic_area = float(np.sum(sigma))
             response_area = float(np.sum(response))

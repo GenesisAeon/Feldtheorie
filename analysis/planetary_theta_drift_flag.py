@@ -37,12 +37,12 @@ from __future__ import annotations
 import argparse
 import json
 import math
+from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean
-from typing import Any, Dict, Iterable, List, Optional
-
+from typing import Any
 
 DEFAULT_INPUT = Path("analysis/results/planetary_tipping_elements.json")
 DEFAULT_OUTPUT = Path("analysis/results/planetary_theta_drift_flags.json")
@@ -64,9 +64,9 @@ class DriftSignal:
     element_id: str
     label: str
     theta: float
-    theta_ci95: List[float]
+    theta_ci95: list[float]
     beta: float
-    beta_ci95: List[float]
+    beta_ci95: list[float]
     logistic_r2: float
     theta_width_norm: float
     beta_width_norm: float
@@ -76,7 +76,7 @@ class DriftSignal:
     needs_adaptive_theta: bool
     needs_beta_precision: bool
 
-    def to_payload(self) -> Dict[str, Any]:
+    def to_payload(self) -> dict[str, Any]:
         return {
             "id": self.element_id,
             "label": self.label,
@@ -108,19 +108,19 @@ def _utc_now() -> str:
     )
 
 
-def load_input(path: Path) -> Dict[str, Any]:
+def load_input(path: Path) -> dict[str, Any]:
     if not path.exists():
         raise FileNotFoundError(f"Input summary not found: {path}")
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def evaluate_drift(summary: Dict[str, Any]) -> Dict[str, Any]:
+def evaluate_drift(summary: dict[str, Any]) -> dict[str, Any]:
     aggregate = summary.get("aggregate", {})
     elements = summary.get("elements", [])
 
-    signals: List[DriftSignal] = []
-    theta_widths: List[float] = []
-    beta_widths: List[float] = []
+    signals: list[DriftSignal] = []
+    theta_widths: list[float] = []
+    beta_widths: list[float] = []
 
     for element in elements:
         theta = float(element["theta"])
@@ -164,7 +164,7 @@ def evaluate_drift(summary: Dict[str, Any]) -> Dict[str, Any]:
     flagged_theta = [signal for signal in signals if signal.needs_adaptive_theta]
     flagged_beta = [signal for signal in signals if signal.needs_beta_precision]
 
-    def _mean(values: List[float]) -> Optional[float]:
+    def _mean(values: list[float]) -> float | None:
         return float(mean(values)) if values else None
 
     overview = {
@@ -185,14 +185,10 @@ def evaluate_drift(summary: Dict[str, Any]) -> Dict[str, Any]:
 
     tri_layer = {
         "formal": (
-            "Θ-Bänder mit σ(β(R-Θ)) vergleichen: normalisierte Breite ≥ {thr:.2f} löst adaptive Θ-Aufgaben aus."
-        ).format(thr=THETA_WIDTH_THRESHOLD),
+            f"Θ-Bänder mit σ(β(R-Θ)) vergleichen: normalisierte Breite ≥ {THETA_WIDTH_THRESHOLD:.2f} löst adaptive Θ-Aufgaben aus."
+        ),
         "empirical": (
-            "Basierend auf {count} Elementen (ΔAIC_linear={delta_linear}, ΔAIC_power={delta_power})."
-        ).format(
-            count=len(signals),
-            delta_linear=delta_aic_linear,
-            delta_power=delta_aic_power,
+            f"Basierend auf {len(signals)} Elementen (ΔAIC_linear={delta_aic_linear}, ΔAIC_power={delta_aic_power})."
         ),
         "poetic": (
             "Wenn Θ zu breit atmet, flackert die planetare Laterne – diese Liste markiert die Membranstellen, an denen"
@@ -200,7 +196,7 @@ def evaluate_drift(summary: Dict[str, Any]) -> Dict[str, Any]:
         ),
     }
 
-    guidance: List[Dict[str, Any]] = []
+    guidance: list[dict[str, Any]] = []
     for signal in flagged_theta:
         guidance.append(
             {

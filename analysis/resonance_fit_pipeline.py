@@ -23,8 +23,8 @@ import argparse
 import json
 import math
 import sys
+from collections.abc import Iterable, Mapping
 from pathlib import Path
-from typing import Dict, Iterable, List, Mapping
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -39,7 +39,7 @@ from models.membrane_solver import (
 )
 
 
-def logit(probabilities: Iterable[float]) -> List[float]:
+def logit(probabilities: Iterable[float]) -> list[float]:
     """Compute the logit transform with clipping for numerical stability."""
 
     values = []
@@ -59,7 +59,7 @@ def _variance(values: Iterable[float], mean_value: float) -> float:
     return sum((value - mean_value) ** 2 for value in data)
 
 
-def fit_threshold_parameters(R: Iterable[float], sigma: Iterable[float]) -> Dict[str, float]:
+def fit_threshold_parameters(R: Iterable[float], sigma: Iterable[float]) -> dict[str, float]:
     """Estimate Theta and beta via linear regression on the logit domain.
 
     Formal:
@@ -142,7 +142,7 @@ def fit_threshold_parameters(R: Iterable[float], sigma: Iterable[float]) -> Dict
     }
 
 
-def evaluate_null_model(R: Iterable[float], sigma: Iterable[float]) -> Dict[str, float]:
+def evaluate_null_model(R: Iterable[float], sigma: Iterable[float]) -> dict[str, float]:
     """Fit a smooth linear null mapping and report diagnostics.
 
     Formal:
@@ -183,7 +183,7 @@ def evaluate_null_model(R: Iterable[float], sigma: Iterable[float]) -> Dict[str,
     }
 
 
-def evaluate_power_law_null(R: Iterable[float], sigma: Iterable[float]) -> Dict[str, float]:
+def evaluate_power_law_null(R: Iterable[float], sigma: Iterable[float]) -> dict[str, float]:
     """Calibrate a smooth power-law null sigma = A * R^k for falsification.
 
     Formal:
@@ -238,10 +238,10 @@ def evaluate_power_law_null(R: Iterable[float], sigma: Iterable[float]) -> Dict[
 
 
 def assemble_summary(
-    results: Mapping[str, List[float]],
+    results: Mapping[str, list[float]],
     fit_metrics: Mapping[str, float],
     null_metrics: Mapping[str, Mapping[str, float]],
-) -> Dict[str, object]:
+) -> dict[str, object]:
     """Bundle solver traces, fit diagnostics, and falsification verdicts.
 
     Formal:
@@ -262,7 +262,7 @@ def assemble_summary(
             for value in results["R"]
         ]
 
-    comparisons: Dict[str, Dict[str, float]] = {}
+    comparisons: dict[str, dict[str, float]] = {}
     falsified = True
     for name, metrics in null_metrics.items():
         delta_aic = (
@@ -325,7 +325,7 @@ def assemble_summary(
         float(beta_series[0]) if beta_series else fit_metrics.get("beta", float("nan"))
     )
 
-    residuals: List[float] = []
+    residuals: list[float] = []
     if sigma_fit is not None:
         residuals = [
             float(observed) - float(predicted)
@@ -352,7 +352,7 @@ def assemble_summary(
             "note": f"threshold diagnostics unavailable: {exc}",
         }
 
-    summary: Dict[str, object] = {
+    summary: dict[str, object] = {
         "theta_estimate": {
             "value": fit_metrics["theta"],
             "ci95": [fit_metrics["theta_ci_lower"], fit_metrics["theta_ci_upper"]],
@@ -426,7 +426,7 @@ def simulate_series(
     boundary_logistic_weight: float,
     boundary_driver_weight: float,
 
-) -> Mapping[str, List[float]]:
+) -> Mapping[str, list[float]]:
     r"""Generate a driver sequence and simulate the membrane response.
 
     Formal:
@@ -473,7 +473,7 @@ def simulate_series(
     return solver.simulate(drivers, R0=R0)
 
 
-def load_series(path: Path) -> Mapping[str, List[float]]:
+def load_series(path: Path) -> Mapping[str, list[float]]:
     """Load a JSON file containing arrays exported by the solver.
 
     Formal:
@@ -487,7 +487,7 @@ def load_series(path: Path) -> Mapping[str, List[float]]:
 
     with path.open("r", encoding="utf-8") as handle:
         payload = json.load(handle)
-    series: Dict[str, List[float]] = {}
+    series: dict[str, list[float]] = {}
     for key, value in payload.items():
         if isinstance(value, list):
             series[key] = [float(item) for item in value]

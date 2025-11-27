@@ -19,9 +19,9 @@ Poetic:
 from __future__ import annotations
 
 import logging
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, replace
 from pathlib import Path
-from typing import Dict, Iterable, List, Mapping, Optional
 
 import pandas as pd
 
@@ -96,9 +96,9 @@ class GenesisLoader:
 
     def __init__(self, data_path: Path | str = DEFAULT_BETA_ESTIMATES) -> None:
         self.data_path = Path(data_path)
-        self.presets: Dict[str, GenesisPreset] = {}
+        self.presets: dict[str, GenesisPreset] = {}
 
-    def load(self) -> List[GenesisPreset]:
+    def load(self) -> list[GenesisPreset]:
         """Load presets from disk or fall back to mock entries."""
 
         if not self.data_path.exists():
@@ -112,7 +112,7 @@ class GenesisLoader:
             logger.error("Fehler beim Laden der Daten: %s", exc)
             return self._generate_mock_presets()
 
-    def get(self, system_name_query: str) -> Optional[GenesisPreset]:
+    def get(self, system_name_query: str) -> GenesisPreset | None:
         """Resolve a preset by exact or substring query."""
 
         if not self.presets:
@@ -129,15 +129,15 @@ class GenesisLoader:
         logger.warning("Kein Preset für '%s' gefunden.", system_name_query)
         return None
 
-    def list_domains(self) -> List[str]:
+    def list_domains(self) -> list[str]:
         """Return unique domains across loaded presets."""
 
         if not self.presets:
             self.load()
         return sorted({preset.domain for preset in self.presets.values() if preset.domain})
 
-    def _load_from_dataframe(self, df: pd.DataFrame) -> List[GenesisPreset]:
-        presets: Dict[str, GenesisPreset] = {}
+    def _load_from_dataframe(self, df: pd.DataFrame) -> list[GenesisPreset]:
+        presets: dict[str, GenesisPreset] = {}
         missing = {"domain", "beta"} - set(df.columns)
 
         if missing:
@@ -205,7 +205,7 @@ class GenesisLoader:
             return "#ffa500"
         return "#1e90ff"
 
-    def _generate_mock_presets(self) -> List[GenesisPreset]:
+    def _generate_mock_presets(self) -> list[GenesisPreset]:
         mocks = [
             ("LLM_Consciousness", "Information", 4.23, "#00ffff"),
             ("Amazon_Rainforest", "Climate", 11.09, "#00ff00"),
@@ -225,10 +225,10 @@ class GenesisLoader:
         return list(presets.values())
 
 
-def index_presets(presets: Iterable[GenesisPreset]) -> Dict[str, GenesisPreset]:
+def index_presets(presets: Iterable[GenesisPreset]) -> dict[str, GenesisPreset]:
     """Create a normalized lookup table for presets."""
 
-    indexed: Dict[str, GenesisPreset] = {}
+    indexed: dict[str, GenesisPreset] = {}
     for preset in presets:
         indexed[_normalize(preset.name)] = preset
     return indexed
@@ -254,7 +254,7 @@ def resolve_preset(name: str, preset_index: Mapping[str, GenesisPreset]) -> Gene
     raise KeyError(f"Preset '{name}' not found. Available: {available}")
 
 
-def load_beta_presets(csv_path: Path | str = DEFAULT_BETA_ESTIMATES) -> List[GenesisPreset]:
+def load_beta_presets(csv_path: Path | str = DEFAULT_BETA_ESTIMATES) -> list[GenesisPreset]:
     """Load β presets from the empirical CSV or return mocks on failure."""
 
     loader = GenesisLoader(csv_path)

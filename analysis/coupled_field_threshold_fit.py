@@ -32,7 +32,6 @@ import json
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Tuple
 
 import numpy as np
 
@@ -48,15 +47,15 @@ RESULT_PATH = Path(__file__).resolve().parent / "results" / "coupled_field_thres
 @dataclass
 class LogisticFitResult:
     theta: float
-    theta_ci: Tuple[float, float]
+    theta_ci: tuple[float, float]
     beta: float
-    beta_ci: Tuple[float, float]
+    beta_ci: tuple[float, float]
     sigma_hat: np.ndarray
     residuals: np.ndarray
-    metrics: Dict[str, float]
+    metrics: dict[str, float]
 
 
-def generate_coupled_run(seed: int = 314159, steps: int = 360) -> Dict[str, np.ndarray]:
+def generate_coupled_run(seed: int = 314159, steps: int = 360) -> dict[str, np.ndarray]:
     rng = np.random.default_rng(seed)
     kernel = logistic_semantic_kernel(theta=0.52, beta=5.4, resonance_bias=0.65, driver_weight=0.3)
     model = CoupledThresholdField(
@@ -152,7 +151,7 @@ def fit_logistic(R: np.ndarray, sigma: np.ndarray) -> LogisticFitResult:
     )
 
 
-def cubic_null_model(R: np.ndarray, sigma: np.ndarray) -> Dict[str, float]:
+def cubic_null_model(R: np.ndarray, sigma: np.ndarray) -> dict[str, float]:
     coeffs = np.polyfit(R, sigma, deg=3)
     sigma_hat = np.polyval(coeffs, R)
     sigma_hat = np.clip(sigma_hat, 0.0, 1.0)
@@ -172,7 +171,7 @@ def cubic_null_model(R: np.ndarray, sigma: np.ndarray) -> Dict[str, float]:
     }
 
 
-def assemble_payload(run: Dict[str, np.ndarray], fit: LogisticFitResult, null: Dict[str, float]) -> Dict[str, object]:
+def assemble_payload(run: dict[str, np.ndarray], fit: LogisticFitResult, null: dict[str, float]) -> dict[str, object]:
     model: CoupledThresholdField = run["model"]
     observables = model.export_observables(
         {

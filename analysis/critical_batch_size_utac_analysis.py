@@ -33,13 +33,13 @@ Date: 2025-11-18
 Session: claude/analyze-batch-size-utac-01NebefD6S8W7MvnzTh9aRjW
 """
 
+import json
+from pathlib import Path
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
-from scipy.stats import bootstrap, pearsonr
-from pathlib import Path
-import json
 
 # Konstanten
 PHI = (1 + np.sqrt(5)) / 2  # Golden Ratio
@@ -561,7 +561,7 @@ def run_full_analysis():
         error_phi3 = abs(beta - phi_3) / phi_3 * 100
         in_info_domain = 3.0 <= beta <= 5.5
 
-        print(f"\n  Domain Classification:")
+        print("\n  Domain Classification:")
         print(f"    β = {beta:.2f}")
         print(f"    Φ³ Attractor = {phi_3:.2f}")
         print(f"    Error = {error_phi3:.1f}%")
@@ -690,7 +690,7 @@ def run_full_analysis():
         f.write("**validierter UTAC-Übergang** im Informational-Regime:\n\n")
 
         f.write(f"- **β = {utac_v2_summary['Beta']:.2f}** ")
-        f.write(f"(von α_B = 0.21 via β = 1/α)\n")
+        f.write("(von α_B = 0.21 via β = 1/α)\n")
         f.write(f"- **Φ³-Attraktor Match:** {utac_v2_summary['Phi_Match_Error_Percent']:.1f}% Fehler ")
         f.write("(✅ < 15% Toleranz)\n")
         f.write(f"- **Domain:** {utac_v2_summary['Domain']} (Type-4 UTAC)\n")
@@ -770,6 +770,6 @@ if __name__ == "__main__":
     results = run_full_analysis()
 
     print("\n🎯 Kernergebnis:")
-    print(f"   Critical Batch Size ist ein Type-4 UTAC (Informational, Φ³)")
+    print("   Critical Batch Size ist ein Type-4 UTAC (Informational, Φ³)")
     print(f"   β ≈ {results['alpha_beta_relationship']['beta_inverse']:.2f}")
     print(f"   Match zu Φ³: {results['alpha_beta_relationship']['inverse_match_phi3']['error_percent']:.1f}% Fehler")

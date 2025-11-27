@@ -4,19 +4,19 @@
 import argparse
 import csv
 import json
+from collections.abc import Iterable
 from itertools import combinations
 from pathlib import Path
-from typing import Dict, Iterable, List
 
 import numpy as np
 
 
-def load_results(csv_path: Path) -> List[Dict[str, float]]:
+def load_results(csv_path: Path) -> list[dict[str, float]]:
     """Load Aletheia experiment results from CSV."""
 
     with csv_path.open("r", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
-        rows: List[Dict[str, float]] = []
+        rows: list[dict[str, float]] = []
         for row in reader:
             rows.append(
                 {
@@ -29,16 +29,16 @@ def load_results(csv_path: Path) -> List[Dict[str, float]]:
     return rows
 
 
-def group_by_condition(rows: Iterable[Dict[str, float]]) -> Dict[str, List[Dict[str, float]]]:
+def group_by_condition(rows: Iterable[dict[str, float]]) -> dict[str, list[dict[str, float]]]:
     """Group rows by the `condition` column."""
 
-    grouped: Dict[str, List[Dict[str, float]]] = {}
+    grouped: dict[str, list[dict[str, float]]] = {}
     for row in rows:
         grouped.setdefault(row["condition"], []).append(row)
     return grouped
 
 
-def compute_summary(group: List[Dict[str, float]]) -> Dict[str, float]:
+def compute_summary(group: list[dict[str, float]]) -> dict[str, float]:
     """Compute summary metrics for a group."""
 
     lengths = np.array([row["output_length"] for row in group])
@@ -66,10 +66,10 @@ def cohen_d(values_a: np.ndarray, values_b: np.ndarray) -> float:
     return float((np.mean(values_a) - np.mean(values_b)) / pooled_std)
 
 
-def summarize_pairs(grouped: Dict[str, List[Dict[str, float]]]) -> List[Dict[str, float]]:
+def summarize_pairs(grouped: dict[str, list[dict[str, float]]]) -> list[dict[str, float]]:
     """Compute pairwise deltas and effect sizes."""
 
-    pairs: List[Dict[str, float]] = []
+    pairs: list[dict[str, float]] = []
     for cond_a, cond_b in combinations(sorted(grouped.keys()), 2):
         a_rows = grouped[cond_a]
         b_rows = grouped[cond_b]
@@ -90,8 +90,8 @@ def summarize_pairs(grouped: Dict[str, List[Dict[str, float]]]) -> List[Dict[str
 
 
 def render_report(
-    summaries: Dict[str, Dict[str, float]],
-    pairs: List[Dict[str, float]],
+    summaries: dict[str, dict[str, float]],
+    pairs: list[dict[str, float]],
     output_path: Path,
 ) -> None:
     """Write a Markdown report with group summaries and pairwise comparisons."""
@@ -137,8 +137,8 @@ def render_report(
 
 
 def write_json_summary(
-    summaries: Dict[str, Dict[str, float]],
-    pairs: List[Dict[str, float]],
+    summaries: dict[str, dict[str, float]],
+    pairs: list[dict[str, float]],
     json_path: Path,
 ) -> None:
     """Persist numerical results to JSON for downstream analysis."""
