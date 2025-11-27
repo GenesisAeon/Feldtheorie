@@ -36,6 +36,13 @@ import numpy as np
 
 from models.utac_type6_implosive import cubic_root_jump, inverted_sigmoid, tau_star
 
+# Import PsiFieldPipeline for advanced wavefunction computation
+try:
+    from pipelines.wavefunction.psi_field import PsiFieldPipeline, PsiFieldConfig
+    PSIFIELD_AVAILABLE = True
+except ImportError:
+    PSIFIELD_AVAILABLE = False
+
 
 # Physical constants for entropic wavefunction
 ALPHA_INV = 137.036  # Fine structure constant α⁻¹
@@ -60,6 +67,8 @@ class GenesisCubeConfig:
     wavefunction_resolution: int = 32  # Grid resolution for Ψ computation
     time_steps: int = 100  # RK4 integration steps
     dt: float = 1e-44  # Time step in Planck units
+    # Integration with PsiFieldPipeline
+    use_psifield_pipeline: bool = False  # Use advanced PsiFieldPipeline if True
     notes: List[str] = field(default_factory=lambda: [
         "σ(β(R-Θ)) steuert die Aktivierungsschärfe",
         "ζ(R) dämpft die implosiv→expansive Übergangskurve",
@@ -72,6 +81,19 @@ class GenesisCube:
 
     def __init__(self, config: GenesisCubeConfig | None = None) -> None:
         self.config = config or GenesisCubeConfig()
+
+        # Initialize PsiFieldPipeline if requested and available
+        self.psi_pipeline = None
+        if self.config.use_psifield_pipeline and PSIFIELD_AVAILABLE:
+            psi_config = PsiFieldConfig(
+                alpha_inv=ALPHA_INV,
+                phi=PHI_GOLDEN,
+                l_planck=L_PLANCK,
+                e_planck=E_PLANCK,
+                use_tetrahedral=True,
+                normalize=True,
+            )
+            self.psi_pipeline = PsiFieldPipeline(psi_config)
 
     def sigma(self, r: float) -> float:
         """Compute σ(β(R-Θ)) for a given field coordinate R."""
@@ -403,6 +425,127 @@ class GenesisCube:
                 })
 
         return snapshots
+
+    def compute_psifield_analysis(
+        self,
+        r_max: float = 10.0,
+        n_points: int = 100,
+        theta_phi_res: int = 20,
+        t: float = 0.0,
+    ) -> Optional[Dict[str, object]]:
+        """
+        Compute advanced wavefunction analysis using PsiFieldPipeline.
+
+        This method integrates the PsiFieldPipeline (psi_field.py) with GenesisCube
+        to provide:
+        - Full 3D wavefunction ψ(r,θ,φ,t)
+        - UTAC collapse mapping |ψ|² → P(R)
+        - von Neumann entropy
+        - Radial distribution statistics
+
+        Args:
+            r_max: Maximum radial coordinate (in Planck lengths)
+            n_points: Number of radial grid points
+            theta_phi_res: Angular resolution
+            t: Time point (in Planck times)
+
+        Returns:
+            Dict with PsiFieldPipeline results, or None if pipeline not available
+
+        Example:
+            >>> config = GenesisCubeConfig(use_psifield_pipeline=True)
+            >>> cube = GenesisCube(config)
+            >>> results = cube.compute_psifield_analysis(r_max=5.0)
+            >>> print(f"Entropy: {results['entropy']}")
+            >>> print(f"Mean radius: {results['mean_r']} ℓ_P")
+        """
+        if self.psi_pipeline is None:
+            if not PSIFIELD_AVAILABLE:
+                print("Warning: PsiFieldPipeline not available (import failed)")
+            else:
+                print("Warning: PsiFieldPipeline not enabled (set use_psifield_pipeline=True)")
+            return None
+
+        # Run PsiFieldPipeline
+        results = self.psi_pipeline.run(
+            r_max=r_max,
+            n_points=n_points,
+            theta_phi_res=theta_phi_res,
+            t=t,
+        )
+
+        # Add UTAC coupling via current GenesisCube state
+        # Map mean_r to R coordinate for σ(β(R-Θ)) coupling
+        mean_r = results['mean_r']
+        delta_r = results['delta_r']
+
+        # Convert Planck lengths to UTAC R parameter (normalized)
+        # This is where quantum (Planck scale) meets classical (UTAC)
+        r_normalized = mean_r / r_max  # Normalize to [0, 1]
+
+        # Compute UTAC coupling at this R
+        sigma_coupling = self.sigma(r_normalized)
+
+        # Extend results with UTAC integration
+        results['utac_coupling'] = {
+            'R': r_normalized,
+            'sigma': sigma_coupling,
+            'mean_r_planck': mean_r,
+            'delta_r_planck': delta_r,
+            'beta': self.config.beta,
+            'theta': self.config.theta,
+        }
+
+        return results
+
+    def hybrid_evolution(
+        self,
+        r_max: float = 10.0,
+        n_points: int = 50,
+    ) -> Dict[str, object]:
+        """
+        Hybrid evolution combining:
+        1. GenesisCube geometric slicing (block universe)
+        2. PsiFieldPipeline quantum wavefunction (ψ_genesis)
+
+        This represents the full V6 integration: Tesseract slicing + entropische Wellenfunktion.
+
+        Args:
+            r_max: Maximum radial extent
+            n_points: Resolution
+
+        Returns:
+            Dict containing both geometric and quantum outputs
+        """
+        # 1. Geometric evolution (GenesisCube slices)
+        r_values = np.linspace(0, 1, n_points)
+        slices = self.block_universe_slices(r_values)
+
+        # 2. Quantum evolution (PsiFieldPipeline)
+        psi_results = None
+        if self.psi_pipeline is not None:
+            psi_results = self.psi_pipeline.run(
+                r_max=r_max,
+                n_points=n_points,
+                theta_phi_res=16,
+                t=0.0,
+            )
+
+        # 3. Combine outputs
+        return {
+            'geometric': {
+                'slices': slices,
+                'slice_count': len(slices),
+                'config': self.config,
+            },
+            'quantum': psi_results,
+            'integration': {
+                'description': 'V6 Hybrid: Tesseract slicing + ψ_genesis wavefunction',
+                'psifield_enabled': psi_results is not None,
+                'r_max': r_max,
+                'n_points': n_points,
+            }
+        }
 
 
 __all__ = ["GenesisCube", "GenesisCubeConfig"]
