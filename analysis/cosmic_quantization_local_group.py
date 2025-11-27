@@ -40,14 +40,13 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 from scipy import stats
 
 # Import CosmicQuantization base class
 sys.path.insert(0, str(Path(__file__).parents[1]))
-from models.cosmic_alpha_phi import C_KM_S, ALPHA, PHI, CosmicQuantization
+from models.cosmic_alpha_phi import ALPHA, C_KM_S, PHI, CosmicQuantization
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 
@@ -77,7 +76,7 @@ class VelocityObservation:
         """Compute relative error: |observed - predicted| / observed."""
         return abs(self.observed_velocity - predicted_velocity) / self.observed_velocity
 
-    def to_dict(self) -> Dict[str, object]:
+    def to_dict(self) -> dict[str, object]:
         return {
             "system_name": self.system_name,
             "description": self.description,
@@ -149,17 +148,17 @@ class MultiSystemResult:
     """Results from testing v_test across multiple systems."""
 
     predicted_velocity: float  # km/s (v_test = c/(α⁻¹·Φ))
-    observations: List[VelocityObservation]
-    deviations: List[float]  # observed - predicted (km/s)
-    z_scores: List[float]
-    relative_errors: List[float]
+    observations: list[VelocityObservation]
+    deviations: list[float]  # observed - predicted (km/s)
+    z_scores: list[float]
+    relative_errors: list[float]
     chi_squared: float
     p_value_chi_squared: float
     mean_relative_error: float
     systems_within_3_sigma: int
     total_systems: int
 
-    def to_dict(self) -> Dict[str, object]:
+    def to_dict(self) -> dict[str, object]:
         return {
             "predicted_velocity": self.predicted_velocity,
             "observations": [obs.to_dict() for obs in self.observations],
@@ -178,7 +177,7 @@ class MultiSystemResult:
 
 
 def analyze_local_group(
-    observations: List[VelocityObservation],
+    observations: list[VelocityObservation],
 ) -> MultiSystemResult:
     """Test v_test = c/(α⁻¹·Φ) across multiple Local Group systems.
 
@@ -239,7 +238,7 @@ def analyze_local_group(
 
     mean_rel_error = np.mean(relative_errors)
 
-    print(f"\n📊 Statistical Summary:", file=sys.stderr)
+    print("\n📊 Statistical Summary:", file=sys.stderr)
     print(f"   χ² = {chi_squared:.2f} (dof={dof})", file=sys.stderr)
     print(f"   p-value = {p_value:.4f}", file=sys.stderr)
     print(f"   Mean relative error = {mean_rel_error:.1%}", file=sys.stderr)
@@ -260,8 +259,8 @@ def analyze_local_group(
 
 
 def null_model_comparison(
-    observations: List[VelocityObservation], n_trials: int = 10000
-) -> Tuple[float, float]:
+    observations: list[VelocityObservation], n_trials: int = 10000
+) -> tuple[float, float]:
     """Test whether α and Φ outperform random constants.
 
     Args:
@@ -361,7 +360,7 @@ def export_results(result: MultiSystemResult, null_p_value: float, output_path: 
     print(f"\n✅ Results exported to {output_path}", file=sys.stderr)
 
 
-def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Test cosmic quantization hypothesis across Local Group systems"
     )
@@ -381,7 +380,7 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def main(argv: Optional[List[str]] = None) -> int:
+def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
 
     print("=" * 80, file=sys.stderr)

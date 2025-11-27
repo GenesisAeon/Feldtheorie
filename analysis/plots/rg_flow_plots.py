@@ -15,9 +15,13 @@ Output:
     Matplotlib figures (display or save to disk)
 """
 from __future__ import annotations
-import json, pathlib
-import numpy as np, pandas as pd
+
+import json
+import pathlib
+
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
 RESULTS_DIR = pathlib.Path("analysis/results")
 

@@ -20,7 +20,6 @@ import argparse
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Tuple
 
 import numpy as np
 from scipy import stats
@@ -58,9 +57,9 @@ class BetaEstimate:
 
 
 def weighted_chi_square_test(
-    estimates: List[BetaEstimate],
+    estimates: list[BetaEstimate],
     null_beta: float = 4.2
-) -> Tuple[float, float, int]:
+) -> tuple[float, float, int]:
     """Perform weighted chi-square test for homogeneity.
 
     Tests whether all β estimates are consistent with a common value β₀.
@@ -92,7 +91,7 @@ def weighted_chi_square_test(
     return float(chi2_stat), float(p_value), df
 
 
-def cochran_q_test(estimates: List[BetaEstimate]) -> Tuple[float, float, int]:
+def cochran_q_test(estimates: list[BetaEstimate]) -> tuple[float, float, int]:
     """Cochran's Q test for heterogeneity in β estimates.
 
     Tests whether β values are more variable than expected by chance.
@@ -140,8 +139,8 @@ def i_squared_statistic(Q: float, df: int) -> float:
 
 
 def random_effects_meta_analysis(
-    estimates: List[BetaEstimate]
-) -> Tuple[float, float, float, float]:
+    estimates: list[BetaEstimate]
+) -> tuple[float, float, float, float]:
     """DerSimonian-Laird random-effects meta-analysis.
 
     Estimates a common β while accounting for between-domain heterogeneity.
@@ -192,14 +191,14 @@ def random_effects_meta_analysis(
     )
 
 
-def load_estimates_from_cohort_summary() -> List[BetaEstimate]:
+def load_estimates_from_cohort_summary() -> list[BetaEstimate]:
     """Load β estimates from resonance cohort summary."""
     cohort_path = RESULTS_DIR / "resonance_cohort_summary_validated.json"
 
     if not cohort_path.exists():
         cohort_path = RESULTS_DIR / "resonance_cohort_summary.json"
 
-    with open(cohort_path, "r", encoding="utf-8") as f:
+    with open(cohort_path, encoding="utf-8") as f:
         data = json.load(f)
 
     estimates = []

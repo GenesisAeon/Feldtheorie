@@ -10,14 +10,14 @@ License: MIT
 DOI: 10.5281/zenodo.17472834
 """
 
+import argparse
+import json
+from pathlib import Path
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from scipy.optimize import curve_fit
-import matplotlib.pyplot as plt
-from pathlib import Path
-import json
-from typing import Tuple, Dict, List
-import argparse
 
 
 def logistic(x: np.ndarray, beta: float, theta: float) -> np.ndarray:
@@ -48,7 +48,7 @@ def simulate_system(
     SNR: float = 5.0,
     noise: float = 0.05,
     seed: int = 1337
-) -> Tuple[np.ndarray, np.ndarray, float]:
+) -> tuple[np.ndarray, np.ndarray, float]:
     """
     Simulate a threshold system with specified coupling and coherence parameters.
 
@@ -98,7 +98,7 @@ def simulate_system(
     return R, field, beta_true
 
 
-def estimate_beta(R: np.ndarray, field: np.ndarray) -> Tuple[float, float, float]:
+def estimate_beta(R: np.ndarray, field: np.ndarray) -> tuple[float, float, float]:
     """
     Estimate β and θ from simulated data.
 
@@ -314,7 +314,7 @@ def main():
     print("\n" + "="*60)
     print("SIMULATION COMPLETE")
     print("="*60)
-    print(f"\nβ statistics:")
+    print("\nβ statistics:")
     print(f"  Mean:   {df['beta_est'].mean():.3f}")
     print(f"  Median: {df['beta_est'].median():.3f}")
     print(f"  Std:    {df['beta_est'].std():.3f}")

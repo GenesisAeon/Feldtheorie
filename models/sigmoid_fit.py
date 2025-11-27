@@ -23,8 +23,8 @@ from __future__ import annotations
 import importlib
 import importlib.util
 import math
+from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import List, Optional, Sequence, Tuple
 
 import numpy as np
 
@@ -46,14 +46,14 @@ def logistic(r: np.ndarray, L: float, beta: float, theta: float, baseline: float
 class SigmoidFitResult:
     """Encapsulate a logistic fit with metadata for resonance exports."""
 
-    beta: Optional[float]
-    params: Optional[Tuple[float, float, float, float]]
-    ci_width: Optional[float]
+    beta: float | None
+    params: tuple[float, float, float, float] | None
+    ci_width: float | None
     aic: float
     ok: bool
     method: str
     message: str
-    history: List[str]
+    history: list[str]
 
 
 def fit_sigmoid_with_fallbacks(x: Sequence[float], y: Sequence[float]) -> SigmoidFitResult:
@@ -67,7 +67,7 @@ def fit_sigmoid_with_fallbacks(x: Sequence[float], y: Sequence[float]) -> Sigmoi
 
     r = np.asarray(list(x), dtype=float)
     response = np.asarray(list(y), dtype=float)
-    history: List[str] = []
+    history: list[str] = []
 
     if r.size != response.size or r.size == 0:
         return SigmoidFitResult(
@@ -233,7 +233,7 @@ def _aic(y_true: np.ndarray, y_pred: np.ndarray, *, n_params: int) -> float:
     return 2.0 * n_params + 2.0 * nll
 
 
-def _steepness_ci_width_from_covariance(covariance: np.ndarray, *, index: int) -> Optional[float]:
+def _steepness_ci_width_from_covariance(covariance: np.ndarray, *, index: int) -> float | None:
     if covariance.ndim != 2 or index >= covariance.shape[0]:
         return None
     variance = covariance[index, index]
@@ -243,7 +243,7 @@ def _steepness_ci_width_from_covariance(covariance: np.ndarray, *, index: int) -
     return 3.92 * standard_error  # ≈ 95 % (±1.96)
 
 
-def _steepness_ci_width_from_linear(design: np.ndarray, target: np.ndarray, coeffs: np.ndarray) -> Optional[float]:
+def _steepness_ci_width_from_linear(design: np.ndarray, target: np.ndarray, coeffs: np.ndarray) -> float | None:
     residuals = target - design @ coeffs
     n = design.shape[0]
     p = design.shape[1]
@@ -260,7 +260,7 @@ def _steepness_ci_width_from_linear(design: np.ndarray, target: np.ndarray, coef
     return 3.92 * math.sqrt(variance)
 
 
-def _normalise_response(response: np.ndarray) -> Tuple[np.ndarray, float, float]:
+def _normalise_response(response: np.ndarray) -> tuple[np.ndarray, float, float]:
     minimum = float(response.min())
     maximum = float(response.max())
     scale = maximum - minimum

@@ -13,13 +13,14 @@ Date: 2025-11-11
 Version: 1.0
 """
 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy import stats
-import json
 import argparse
+import json
 from pathlib import Path
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from scipy import stats
 
 # Known mathematical constants for comparison
 CONSTANTS = {
@@ -115,7 +116,7 @@ def analyze_field_type_clusters(df):
 
     if len(groups) > 1:
         f_stat, p_val = stats.f_oneway(*groups.values())
-        print(f"\n--- ANOVA: Field Type Effect on Growth Factor ---")
+        print("\n--- ANOVA: Field Type Effect on Growth Factor ---")
         print(f"F-statistic: {f_stat:.3f}")
         print(f"p-value: {p_val:.4f}")
 
@@ -170,7 +171,7 @@ def analyze_dimensionality_correlation(df):
             direction = "positive" if r > 0 else "negative"
             print(f"  ✅ SIGNIFICANT {direction} correlation!")
         else:
-            print(f"  ❌ No significant correlation")
+            print("  ❌ No significant correlation")
 
         results[cov] = {
             'pearson_r': float(r),
@@ -193,16 +194,16 @@ def analyze_dimensionality_correlation(df):
 
         slope, intercept, r_value, p_val, stderr = stats.linregress(log_x, log_y)
 
-        print(f"\n--- Log-Log Analysis: log(β) ~ log(D_eff) ---")
+        print("\n--- Log-Log Analysis: log(β) ~ log(D_eff) ---")
         print(f"  Power law: β ∝ D_eff^{slope:.3f}")
         print(f"  R² = {r_value**2:.3f}, p={p_val:.4f}")
 
         if abs(slope) < 0.1:
-            print(f"  → β is approximately INDEPENDENT of D_eff (exponent ≈ 0)")
+            print("  → β is approximately INDEPENDENT of D_eff (exponent ≈ 0)")
         elif slope < 0:
-            print(f"  → β DECREASES with D_eff (inverse scaling)")
+            print("  → β DECREASES with D_eff (inverse scaling)")
         else:
-            print(f"  → β INCREASES with D_eff (direct scaling)")
+            print("  → β INCREASES with D_eff (direct scaling)")
 
         results['log_log_D_eff'] = {
             'exponent': float(slope),

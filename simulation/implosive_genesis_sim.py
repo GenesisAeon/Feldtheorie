@@ -19,10 +19,10 @@ Poetic:
 from __future__ import annotations
 
 import math
-from typing import Iterable, List, Tuple
+from collections.abc import Iterable
 
 
-def inverted_sigmoid(r: Iterable[float], beta: float = 4.0, theta: float = 0.0) -> List[float]:
+def inverted_sigmoid(r: Iterable[float], beta: float = 4.0, theta: float = 0.0) -> list[float]:
     """Evaluate the inverted sigmoid S(R) = 1 - σ(β(R-Θ))."""
 
     return [1.0 - 1.0 / (1.0 + math.exp(-beta * (value - theta))) for value in r]
@@ -37,7 +37,7 @@ def phase_space_trajectory(
     damping: float = 0.05,
     enable_safety_delay: bool = True,
     tau_star_factor: float = 0.1,
-) -> Tuple[List[float], List[float], List[float], List[float]]:
+) -> tuple[list[float], list[float], list[float], list[float]]:
     """Generate phase-space data for the implosive genesis curve.
 
     Returns a tuple of (R values, inverted sigmoid S(R), velocity field, τ* delays)

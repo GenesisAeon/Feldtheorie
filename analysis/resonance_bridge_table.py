@@ -29,10 +29,11 @@ from __future__ import annotations
 import argparse
 import json
 from collections import Counter
+from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Mapping, Sequence
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS_DIR = ROOT / "analysis" / "results"
@@ -58,7 +59,7 @@ class BridgeEntry:
     zeta_mean: float | None
     falsification_flag: bool | None
 
-    def as_dict(self) -> Dict[str, Any]:
+    def as_dict(self) -> dict[str, Any]:
         """Return a JSON-friendly representation of the entry."""
 
         return {
@@ -194,8 +195,8 @@ def parse_result(path: Path) -> BridgeEntry | None:
     )
 
 
-def collect_entries(results_dir: Path) -> List[BridgeEntry]:
-    entries: List[BridgeEntry] = []
+def collect_entries(results_dir: Path) -> list[BridgeEntry]:
+    entries: list[BridgeEntry] = []
     for path in sorted(results_dir.glob("*.json")):
         if path.name.endswith("resonance_bridge_table.json"):
             continue
@@ -205,7 +206,7 @@ def collect_entries(results_dir: Path) -> List[BridgeEntry]:
     return entries
 
 
-def build_summary(entries: Sequence[BridgeEntry]) -> Dict[str, Any]:
+def build_summary(entries: Sequence[BridgeEntry]) -> dict[str, Any]:
     domain_counter = Counter(entry.domain for entry in entries)
     delta_aic_values = [entry.delta_aic for entry in entries if entry.delta_aic is not None]
     r2_values = [entry.logistic_r2 for entry in entries if entry.logistic_r2 is not None]
@@ -253,7 +254,7 @@ def write_json(entries: Sequence[BridgeEntry], aggregate: Mapping[str, Any], out
 
 
 def write_markdown(entries: Sequence[BridgeEntry], aggregate: Mapping[str, Any], output_path: Path) -> None:
-    lines: List[str] = []
+    lines: list[str] = []
     lines.append("# Resonance Bridge Table")
     lines.append("")
     lines.append("## Formal")

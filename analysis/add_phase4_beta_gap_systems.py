@@ -17,9 +17,10 @@ Date: 2025-11-13
 Session: claude/fractal-diary-v2-011CV5UiHRTHJjjrYCk9SKtp
 """
 
-import pandas as pd
-import numpy as np
 from pathlib import Path
+
+import pandas as pd
+
 
 def add_phase4_systems():
     """Add 5 beta-gap filling systems to domain_covariates.csv"""
@@ -100,9 +101,9 @@ def add_phase4_systems():
     print(f"   Path: {csv_path}")
 
     # Summary
-    print(f"\n📊 Dataset Summary:")
+    print("\n📊 Dataset Summary:")
     print(f"   Total systems: {len(df_updated)}")
-    print(f"   Field type distribution:")
+    print("   Field type distribution:")
     for ft, count in df_updated['field_type'].value_counts().items():
         print(f"     - {ft}: {count}")
 

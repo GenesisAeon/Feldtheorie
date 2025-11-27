@@ -33,10 +33,10 @@ import argparse
 import json
 import math
 import sys
+from collections.abc import Iterable, Mapping, MutableMapping, Sequence
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Iterable, List, Mapping, MutableMapping, Sequence
 
 import numpy as np
 
@@ -123,7 +123,7 @@ def _impedance_tilt(theta: float, beta: float, relief: float, floor: float, ceil
     return _profile
 
 
-def _decimate(series: Sequence[float], *, max_points: int) -> List[float]:
+def _decimate(series: Sequence[float], *, max_points: int) -> list[float]:
     """Down-sample ``series`` for concise JSON exports."""
 
     arr = np.asarray(series, dtype=float)
@@ -133,7 +133,7 @@ def _decimate(series: Sequence[float], *, max_points: int) -> List[float]:
     return arr[idx].astype(float).tolist()
 
 
-def _scenario_catalogue(seed: int) -> List[Scenario]:
+def _scenario_catalogue(seed: int) -> list[Scenario]:
     """Return the scenario line-up for the phase scan."""
 
     base_kwargs = {
@@ -185,7 +185,7 @@ def _summarise_history(
     baseline_zeta: np.ndarray,
     baseline_sigma: np.ndarray,
     max_points: int,
-) -> MutableMapping[str, float | List[float] | str]:
+) -> MutableMapping[str, float | list[float] | str]:
     """Compose a JSON-ready bundle for the scenario history."""
 
     summary_store: MutableMapping[str, float] = {}
@@ -195,12 +195,12 @@ def _summarise_history(
     sigma = np.asarray(history["sigma"], dtype=float)
     response = np.asarray(history["response"], dtype=float)
 
-    logistic_area = float(np.trapz(sigma, R)) if R.size >= 2 else float(np.sum(sigma))
-    response_area = float(np.trapz(response, R)) if R.size >= 2 else float(np.sum(response))
+    logistic_area = float(np.trapezoid(sigma, R)) if R.size >= 2 else float(np.sum(sigma))
+    response_area = float(np.trapezoid(response, R)) if R.size >= 2 else float(np.sum(response))
     baseline_response = baseline_sigma * baseline_zeta
-    baseline_area = float(np.trapz(baseline_sigma, R)) if R.size >= 2 else float(np.sum(baseline_sigma))
+    baseline_area = float(np.trapezoid(baseline_sigma, R)) if R.size >= 2 else float(np.sum(baseline_sigma))
     baseline_response_area = (
-        float(np.trapz(baseline_response, R)) if R.size >= 2 else float(np.sum(baseline_response))
+        float(np.trapezoid(baseline_response, R)) if R.size >= 2 else float(np.sum(baseline_response))
     )
     baseline_resonance_gain = (
         baseline_response_area / baseline_area if abs(baseline_area) > 1e-9 else float("nan")
@@ -238,19 +238,19 @@ def _summarise_history(
     }
 
 
-def run_scan(*, seed: int = 23, max_points: int = 96) -> Dict[str, object]:
+def run_scan(*, seed: int = 23, max_points: int = 96) -> dict[str, object]:
     """Execute the adaptive membrane phase scan and return the payload."""
 
     rng = np.random.default_rng(seed)
     scenarios = _scenario_catalogue(seed)
 
-    scenario_payloads: List[Dict[str, object]] = []
-    resonance_gains: List[float] = []
-    gate_means: List[float] = []
-    theta_shifts: List[float] = []
-    beta_shifts: List[float] = []
-    resonance_deltas: List[float] = []
-    sigma_halves: List[float] = []
+    scenario_payloads: list[dict[str, object]] = []
+    resonance_gains: list[float] = []
+    gate_means: list[float] = []
+    theta_shifts: list[float] = []
+    beta_shifts: list[float] = []
+    resonance_deltas: list[float] = []
+    sigma_halves: list[float] = []
 
     for scenario in scenarios:
         # Generate the driver trace and propagate the membrane.
@@ -294,7 +294,7 @@ def run_scan(*, seed: int = 23, max_points: int = 96) -> Dict[str, object]:
         beta_shifts.append(float(summary.get("beta_shift", 0.0)))
         sigma_halves.append(float(summary.get("sigma_fraction_above_half", 0.0)))
 
-    def _finite(values: Iterable[float]) -> List[float]:
+    def _finite(values: Iterable[float]) -> list[float]:
         return [value for value in values if math.isfinite(value)]
 
     gain_values = _finite(resonance_gains)

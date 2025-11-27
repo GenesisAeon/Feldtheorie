@@ -22,9 +22,9 @@ import argparse
 import datetime as _dt
 import json
 import math
+from collections.abc import Iterable, Mapping, Sequence
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Mapping, MutableMapping, Sequence
-
+from typing import Any
 
 DEFAULT_MANIFEST = Path("analysis/reports/utac_v2_readiness.json")
 RESULT_DIRECTORY = Path("analysis/results")
@@ -44,10 +44,10 @@ def _ensure_exists(path: Path) -> bool:
 
 def _collect_missing_components(
     components: Sequence[Mapping[str, Any]]
-) -> List[Dict[str, Any]]:
+) -> list[dict[str, Any]]:
     """Return metadata for components that do not exist on disk."""
 
-    missing: List[Dict[str, Any]] = []
+    missing: list[dict[str, Any]] = []
     for comp in components:
         path = Path(comp.get("path", ""))
         exists = _ensure_exists(path)
@@ -62,10 +62,10 @@ def _collect_missing_components(
     return missing
 
 
-def _collect_target_gaps(targets: Iterable[Mapping[str, Any]]) -> List[Dict[str, Any]]:
+def _collect_target_gaps(targets: Iterable[Mapping[str, Any]]) -> list[dict[str, Any]]:
     """Return a list with every missing target and expected output."""
 
-    gaps: List[Dict[str, Any]] = []
+    gaps: list[dict[str, Any]] = []
     for target in targets:
         path = Path(target.get("path", ""))
         description = target.get("description")
@@ -97,7 +97,7 @@ def _collect_target_gaps(targets: Iterable[Mapping[str, Any]]) -> List[Dict[str,
 
 def scan_manifest(
     manifest_path: Path, *, generated_at: _dt.datetime | None = None
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """Generate a gap summary for the provided manifest file."""
 
     manifest_data = json.loads(manifest_path.read_text())
@@ -108,7 +108,7 @@ def scan_manifest(
     readiness = float(logistic_meta.get("mean_readiness", 0.0))
     sigma = _logistic(beta, readiness, theta)
 
-    dataset_entries: List[Dict[str, Any]] = []
+    dataset_entries: list[dict[str, Any]] = []
     total_missing_components = 0
 
     for dataset in manifest_data.get("datasets", []):
@@ -145,7 +145,7 @@ def scan_manifest(
     else:
         generated_at = generated_at.astimezone(_dt.timezone.utc)
 
-    summary: Dict[str, Any] = {
+    summary: dict[str, Any] = {
         "generated_at": generated_at.isoformat().replace("+00:00", "Z"),
         "source_manifest": str(manifest_path),
         "logistic": {
@@ -250,15 +250,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         datasets_pending = summary["summary"]["datasets_pending"]
 
         print(
-            "σ(β(R-Θ))={sigma:.3f} (β={beta:.2f}, R={readiness:.2f}, Θ={theta:.2f}) → "
-            "{pending} datasets pending, {missing} components missing".format(
-                sigma=sigma,
-                beta=beta,
-                readiness=readiness,
-                theta=theta,
-                pending=datasets_pending,
-                missing=missing,
-            )
+            f"σ(β(R-Θ))={sigma:.3f} (β={beta:.2f}, R={readiness:.2f}, Θ={theta:.2f}) → "
+            f"{datasets_pending} datasets pending, {missing} components missing"
         )
 
     return 0

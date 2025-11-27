@@ -20,7 +20,6 @@ from __future__ import annotations
 import csv
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List
 
 
 @dataclass
@@ -295,19 +294,19 @@ NEW_COVARIATES = [
 def add_systems_to_csv(
     beta_csv: Path,
     covariates_csv: Path,
-    beta_systems: List[BetaEstimate],
-    covariate_systems: List[DomainCovariate],
+    beta_systems: list[BetaEstimate],
+    covariate_systems: list[DomainCovariate],
 ) -> None:
     """Add new systems to beta_estimates.csv and domain_covariates.csv."""
 
     # Read existing data
     existing_beta_domains = set()
-    with open(beta_csv, 'r') as f:
+    with open(beta_csv) as f:
         reader = csv.DictReader(f)
         existing_beta_domains = {row['domain'] for row in reader}
 
     existing_cov_domains = set()
-    with open(covariates_csv, 'r') as f:
+    with open(covariates_csv) as f:
         reader = csv.DictReader(f)
         existing_cov_domains = {row['domain'] for row in reader}
 
@@ -369,7 +368,7 @@ def main() -> None:
     all_beta = EXTREME_LOW_BETA + EXTREME_HIGH_BETA + COSMOLOGY_SYSTEMS
     all_cov = NEW_COVARIATES
 
-    print(f"\n📊 Systems to add:")
+    print("\n📊 Systems to add:")
     print(f"   • Extreme Low-β:  {len(EXTREME_LOW_BETA)} systems (β ≈ 1.2-1.5)")
     print(f"   • Extreme High-β: {len(EXTREME_HIGH_BETA)} systems (β ≈ 12-18.5)")
     print(f"   • Cosmology:      {len(COSMOLOGY_SYSTEMS)} systems (β ≈ 3.8-6.5)")
@@ -380,9 +379,9 @@ def main() -> None:
 
     # Summary
     print("\n✅ Phase 3a diversity expansion complete!")
-    print(f"   Expected: n = 21 → 31 (+48%)")
-    print(f"   β-range: 1.22 - 18.47 (15x expansion from phase 2!)")
-    print(f"   Field Types: weakly_coupled +3, physically_constrained +5, meta_adaptive +1")
+    print("   Expected: n = 21 → 31 (+48%)")
+    print("   β-range: 1.22 - 18.47 (15x expansion from phase 2!)")
+    print("   Field Types: weakly_coupled +3, physically_constrained +5, meta_adaptive +1")
     print("\n🎯 Next: Run meta-regression with n=31")
     print("   → python3 analysis/beta_meta_regression_v2_field_types.py")
 

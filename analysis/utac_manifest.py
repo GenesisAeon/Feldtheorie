@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, List, Optional, Sequence
 
 import yaml
 
@@ -18,9 +18,9 @@ class ManifestDataset:
     identifier: str
     path: Path
     domain: str
-    expected_outputs: List[Path]
-    theta_estimate: Optional[float]
-    beta_target: Optional[float]
+    expected_outputs: list[Path]
+    theta_estimate: float | None
+    beta_target: float | None
     resonance_status: str
 
     @property
@@ -28,11 +28,11 @@ class ManifestDataset:
         return (ROOT / self.path).with_suffix(".metadata.json")
 
 
-def load_manifest(manifest_path: Path) -> List[ManifestDataset]:
+def load_manifest(manifest_path: Path) -> list[ManifestDataset]:
     with manifest_path.open("r", encoding="utf-8") as handle:
         payload = yaml.safe_load(handle)
 
-    datasets: List[ManifestDataset] = []
+    datasets: list[ManifestDataset] = []
     for entry in payload.get("datasets", []):
         expected = [ROOT / Path(item) for item in entry.get("expected_outputs", [])]
         datasets.append(
@@ -51,13 +51,13 @@ def load_manifest(manifest_path: Path) -> List[ManifestDataset]:
 
 def filter_datasets(
     datasets: Sequence[ManifestDataset],
-    domains: Optional[Iterable[str]] = None,
-    identifiers: Optional[Iterable[str]] = None,
-) -> List[ManifestDataset]:
+    domains: Iterable[str] | None = None,
+    identifiers: Iterable[str] | None = None,
+) -> list[ManifestDataset]:
     domains_norm = {domain.lower() for domain in domains} if domains else None
     identifiers_norm = {item.lower() for item in identifiers} if identifiers else None
 
-    filtered: List[ManifestDataset] = []
+    filtered: list[ManifestDataset] = []
     for dataset in datasets:
         if domains_norm and dataset.domain.lower() not in domains_norm:
             continue

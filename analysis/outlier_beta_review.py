@@ -24,9 +24,11 @@ from __future__ import annotations
 import argparse
 import json
 import math
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Iterable, List
+
+from models.membrane_solver import logistic_response
 
 from .resonance_fit_pipeline import (
     assemble_summary,
@@ -34,7 +36,6 @@ from .resonance_fit_pipeline import (
     evaluate_power_law_null,
     fit_threshold_parameters,
 )
-from models.membrane_solver import logistic_response
 
 
 @dataclass
@@ -50,22 +51,22 @@ class DatasetSpec:
     narrative: str
 
 
-def read_csv(path: Path, control_column: str, response_column: str) -> Dict[str, List[float]]:
+def read_csv(path: Path, control_column: str, response_column: str) -> dict[str, list[float]]:
     """Read control and response columns from a CSV file."""
 
     import csv
 
     with path.open("r", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
-        control: List[float] = []
-        response: List[float] = []
+        control: list[float] = []
+        response: list[float] = []
         for row in reader:
             control.append(float(row[control_column]))
             response.append(float(row[response_column]))
     return {"R": control, "sigma": response}
 
 
-def logistic_predictions(R: Iterable[float], theta: float, beta: float) -> List[float]:
+def logistic_predictions(R: Iterable[float], theta: float, beta: float) -> list[float]:
     """Return σ(β(R-Θ)) evaluations for convenience."""
 
     return [float(logistic_response(value, theta, beta)) for value in R]
@@ -89,7 +90,7 @@ def _is_finite(value: float) -> bool:
     return math.isfinite(value)
 
 
-def analyse_dataset(spec: DatasetSpec) -> Dict[str, object]:
+def analyse_dataset(spec: DatasetSpec) -> dict[str, object]:
     """Fit logistic and null models for the supplied dataset."""
 
     observations = read_csv(spec.path, spec.control_column, spec.response_column)
@@ -167,7 +168,7 @@ def analyse_dataset(spec: DatasetSpec) -> Dict[str, object]:
     return summary
 
 
-def default_specs(base_path: Path) -> List[DatasetSpec]:
+def default_specs(base_path: Path) -> list[DatasetSpec]:
     """Return default dataset specifications for outlier review."""
 
     return [

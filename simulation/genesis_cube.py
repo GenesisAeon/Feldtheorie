@@ -29,16 +29,15 @@ Poetic:
 from __future__ import annotations
 
 import math
-import cmath
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass, field
-from typing import Dict, Iterable, List, Sequence, Tuple, Optional
-import numpy as np
 
+import numpy as np
 from models.utac_type6_implosive import cubic_root_jump, inverted_sigmoid, tau_star
 
 # Import PsiFieldPipeline for advanced wavefunction computation
 try:
-    from pipelines.wavefunction.psi_field import PsiFieldPipeline, PsiFieldConfig
+    from pipelines.wavefunction.psi_field import PsiFieldConfig, PsiFieldPipeline
     PSIFIELD_AVAILABLE = True
 except ImportError:
     PSIFIELD_AVAILABLE = False
@@ -69,7 +68,7 @@ class GenesisCubeConfig:
     dt: float = 1e-44  # Time step in Planck units
     # Integration with PsiFieldPipeline
     use_psifield_pipeline: bool = False  # Use advanced PsiFieldPipeline if True
-    notes: List[str] = field(default_factory=lambda: [
+    notes: list[str] = field(default_factory=lambda: [
         "σ(β(R-Θ)) steuert die Aktivierungsschärfe",
         "ζ(R) dämpft die implosiv→expansive Übergangskurve",
         "Ψ(r,θ,φ,t) koppelt Entropie an Gravitation via holographisches Prinzip",
@@ -102,14 +101,14 @@ class GenesisCube:
         beta = cubic_root_jump(r, theta, beta_base=self.config.beta, k=6.5)
         return float(inverted_sigmoid(r, theta, beta))
 
-    def _normalized(self, vector: Sequence[float]) -> Tuple[float, float, float]:
+    def _normalized(self, vector: Sequence[float]) -> tuple[float, float, float]:
         x, y, z = vector
         norm = math.sqrt(x * x + y * y + z * z)
         if norm == 0:
             return 0.0, 0.0, 0.0
         return x / norm, y / norm, z / norm
 
-    def seed_vectors(self, fluctuation_phase: float | None = None) -> List[Tuple[float, float, float]]:
+    def seed_vectors(self, fluctuation_phase: float | None = None) -> list[tuple[float, float, float]]:
         """Create three orthogonal-ish vectors from a fluctuation seed."""
 
         phase = fluctuation_phase if fluctuation_phase is not None else self.config.fluctuation_phase
@@ -120,11 +119,11 @@ class GenesisCube:
         ]
         return [self._normalized(vec) for vec in base_vectors]
 
-    def cube_vertices(self, scale: float = 1.0, fluctuation_phase: float | None = None) -> List[Tuple[float, float, float]]:
+    def cube_vertices(self, scale: float = 1.0, fluctuation_phase: float | None = None) -> list[tuple[float, float, float]]:
         """Construct cube vertices using seeded vectors."""
 
         axes = self.seed_vectors(fluctuation_phase)
-        vertices: List[Tuple[float, float, float]] = []
+        vertices: list[tuple[float, float, float]] = []
         for sx in (-1.0, 1.0):
             for sy in (-1.0, 1.0):
                 for sz in (-1.0, 1.0):
@@ -134,7 +133,7 @@ class GenesisCube:
                     vertices.append((scale * vx, scale * vy, scale * vz))
         return vertices
 
-    def project_hexagon(self, scale: float = 1.0, fluctuation_phase: float | None = None) -> List[Tuple[float, float]]:
+    def project_hexagon(self, scale: float = 1.0, fluctuation_phase: float | None = None) -> list[tuple[float, float]]:
         """Project cube vertices to a hexagon-like footprint on the mid-membrane."""
 
         vertices = self.cube_vertices(scale=scale, fluctuation_phase=fluctuation_phase)
@@ -150,13 +149,13 @@ class GenesisCube:
         # Select first 6 unique vertices to sketch a hexagon outline
         return unique[:6]
 
-    def block_universe_slices(self, r_values: Iterable[float] | None = None) -> List[Dict[str, object]]:
+    def block_universe_slices(self, r_values: Iterable[float] | None = None) -> list[dict[str, object]]:
         """Generate slice-wise states across R with σ(β(R-Θ)) and ζ(R) damping."""
 
         if r_values is None:
             r_values = [i / max(1, self.config.slice_count - 1) for i in range(self.config.slice_count)]
 
-        slices: List[Dict[str, object]] = []
+        slices: list[dict[str, object]] = []
         for idx, r in enumerate(r_values):
             theta = self.config.theta if self.config.theta != 0 else 1e-6
             beta = cubic_root_jump(r, theta, beta_base=self.config.beta, k=6.5)
@@ -177,7 +176,7 @@ class GenesisCube:
             )
         return slices
 
-    def as_dict(self) -> Dict[str, object]:
+    def as_dict(self) -> dict[str, object]:
         """Expose a configuration snapshot suitable for JSON/Trilayer exports."""
 
         return {
@@ -369,7 +368,7 @@ class GenesisCube:
         self,
         r_max: float = 10.0,
         save_every: int = 10,
-    ) -> List[Dict[str, object]]:
+    ) -> list[dict[str, object]]:
         """
         Evolve wavefunction Ψ(r,θ,φ,t) using RK4 integration.
 
@@ -432,7 +431,7 @@ class GenesisCube:
         n_points: int = 100,
         theta_phi_res: int = 20,
         t: float = 0.0,
-    ) -> Optional[Dict[str, object]]:
+    ) -> dict[str, object] | None:
         """
         Compute advanced wavefunction analysis using PsiFieldPipeline.
 
@@ -502,7 +501,7 @@ class GenesisCube:
         self,
         r_max: float = 10.0,
         n_points: int = 50,
-    ) -> Dict[str, object]:
+    ) -> dict[str, object]:
         """
         Hybrid evolution combining:
         1. GenesisCube geometric slicing (block universe)

@@ -18,18 +18,11 @@ Authors: Johann Benjamin Römer, MOR Framework
 from __future__ import annotations
 
 import math
-from typing import Dict, Tuple, Optional
 from dataclasses import dataclass
 
 from .unified_constants import (
     V_RIG_DEFAULT,
-    C_LIGHT_M_S,
-    ALPHA_INV,
-    PHI,
-    calculate_vrig,
-    get_consciousness_timescales,
 )
-
 
 # Typical human binocular parameters
 INTEROCULAR_DISTANCE_CM = 6.5  # Standard interpupillary distance (IPD)
@@ -106,7 +99,7 @@ class StereoVisionModel:
     .. [3] Pöppel (2009): Pre-semantically defined temporal windows
     """
 
-    def __init__(self, params: Optional[StereoVisionParameters] = None):
+    def __init__(self, params: StereoVisionParameters | None = None):
         """Initialize the stereo vision model.
 
         Parameters
@@ -117,7 +110,7 @@ class StereoVisionModel:
         self.params = params or StereoVisionParameters()
         self.v_rig = V_RIG_DEFAULT * 1000 * 100  # Convert km/s to cm/s
 
-    def calculate_binocular_parallax(self) -> Dict[str, float]:
+    def calculate_binocular_parallax(self) -> dict[str, float]:
         """Calculate binocular parallax parameters.
 
         The parallax is the apparent displacement of an object when viewed
@@ -222,7 +215,7 @@ class StereoVisionModel:
         parallax = self.calculate_binocular_parallax()
         return parallax['parallax_distance_cm'] / self.params.integration_window
 
-    def analyze_stereo_integration(self) -> Dict[str, float]:
+    def analyze_stereo_integration(self) -> dict[str, float]:
         """Perform complete stereo-vision slice integration analysis.
 
         This method computes all relevant quantities for understanding how
@@ -267,7 +260,7 @@ class StereoVisionModel:
         self,
         baseline_metabolic_rate: float = 1.0,
         perturbed_metabolic_rate: float = 1.15
-    ) -> Dict[str, float]:
+    ) -> dict[str, float]:
         """Predict how SFF varies with metabolic rate.
 
         Hypothesis: SFF ∝ metabolic_rate (higher metabolism → faster integration)
@@ -350,7 +343,7 @@ class CriticalFlickerFrequency:
         return cff
 
     @staticmethod
-    def correlate_cff_with_sff(cff_hz: float, sff_hz: float) -> Dict[str, float]:
+    def correlate_cff_with_sff(cff_hz: float, sff_hz: float) -> dict[str, float]:
         """Analyze correlation between CFF and SFF.
 
         Hypothesis: CFF and SFF should correlate because both measure
@@ -424,7 +417,7 @@ def demonstrate_stereo_vision_experiment():
     print("-" * 70)
     print(f"Thumb 'Jump' Distance:             {results['parallax_distance_cm']:.2f} cm")
     print(f"Retinal Displacement:              {results['retinal_displacement_mm']:.2f} mm")
-    print(f"→ This is what you SEE when alternating eyes!")
+    print("→ This is what you SEE when alternating eyes!")
     print()
 
     print("-" * 70)

@@ -43,9 +43,11 @@ import json
 import math
 import random
 import statistics
+from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Iterable, List, Mapping, Sequence
+
+from models.membrane_solver import logistic_response
 
 from resonance_fit_pipeline import (
     assemble_summary,
@@ -53,7 +55,6 @@ from resonance_fit_pipeline import (
     evaluate_power_law_null,
     fit_threshold_parameters,
 )
-from models.membrane_solver import logistic_response
 
 
 @dataclass(frozen=True)
@@ -166,10 +167,10 @@ def simulate_scenario(
     r_values: Sequence[float],
     nights: int,
     rng: random.Random,
-) -> List[Dict[str, float]]:
+) -> list[dict[str, float]]:
     """Run the stochastic energy-balance model for a single scenario."""
 
-    results: List[Dict[str, float]] = []
+    results: list[dict[str, float]] = []
     for R in r_values:
         safe_nights = 0
         for _ in range(nights):
@@ -194,10 +195,10 @@ def impedance_trace(
     r_values: Iterable[float],
     theta: float,
     beta: float,
-) -> Dict[str, object]:
+) -> dict[str, object]:
     """Compute ζ(R) for reporting, mirroring logistic impedance hooks."""
 
-    samples: List[Dict[str, float]] = []
+    samples: list[dict[str, float]] = []
     for value in r_values:
         sigma = float(logistic_response(value, theta, beta))
         zeta = 1.0 - 0.42 * sigma
@@ -215,7 +216,7 @@ def impedance_trace(
 def evaluate_scenario(
     scenario: Scenario,
     simulated: Sequence[Mapping[str, float]],
-) -> Dict[str, object]:
+) -> dict[str, object]:
     """Fit σ(β(R-Θ)) and package falsification metrics for one scenario."""
 
     R = [row["R"] for row in simulated]
@@ -277,7 +278,7 @@ def scenario_dataset_rows(
     scenario: Scenario,
     simulated: Sequence[Mapping[str, float]],
     summary: Mapping[str, object],
-) -> Dict[str, object]:
+) -> dict[str, object]:
     """Collect CSV-ready aggregate statistics for one scenario."""
 
     theta_est = summary["theta_estimate"]["value"]
@@ -310,7 +311,7 @@ def scenario_dataset_rows(
     }
 
 
-def correlation_summary(beta_values: Sequence[float], storage_values: Sequence[float]) -> Dict[str, float]:
+def correlation_summary(beta_values: Sequence[float], storage_values: Sequence[float]) -> dict[str, float]:
     """Compute linear regression diagnostics between β and storage."""
 
     if len(beta_values) != len(storage_values):
@@ -408,8 +409,8 @@ def main() -> None:
     args = parse_args()
     rng = random.Random(args.seed)
 
-    scenario_summaries: List[Dict[str, object]] = []
-    dataset_rows: List[Dict[str, object]] = []
+    scenario_summaries: list[dict[str, object]] = []
+    dataset_rows: list[dict[str, object]] = []
 
     for scenario in DEFAULT_SCENARIOS:
         simulated = simulate_scenario(scenario, R_VALUES, args.nights, rng)

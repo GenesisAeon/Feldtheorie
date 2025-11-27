@@ -21,20 +21,21 @@ from __future__ import annotations
 
 import argparse
 import json
-from copy import deepcopy
 import math
+from collections.abc import Sequence
+from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean, median, quantiles
-from typing import Any, Dict, List, Optional, Sequence, Tuple
+from typing import Any
 
 DATA_PATH = Path("data/socio_ecology/planetary_tipping_elements.json")
 META_PATH = Path("data/socio_ecology/planetary_tipping_elements.metadata.json")
 OUTPUT_PATH = Path("analysis/results/planetary_tipping_elements.json")
 
 
-HYPOTHESIS_NOTES: List[Dict[str, Any]] = [
+HYPOTHESIS_NOTES: list[dict[str, Any]] = [
     {
         "id": "beta_universality",
         "title": "Sigmoid-Steigung konsistent mit β≈4.2",
@@ -118,11 +119,11 @@ class LogisticElement:
     label: str
     theta: float
     beta: float
-    theta_ci95: List[float]
-    beta_ci95: List[float]
+    theta_ci95: list[float]
+    beta_ci95: list[float]
     logistic_r2: float
     impedance: str
-    null_deltas: Dict[str, Dict[str, float]]
+    null_deltas: dict[str, dict[str, float]]
 
     @property
     def steepness_band(self) -> float:
@@ -135,14 +136,14 @@ class LogisticElement:
 class AggregateLogistic:
     theta: float
     beta: float
-    theta_ci95: List[float]
-    beta_ci95: List[float]
+    theta_ci95: list[float]
+    beta_ci95: list[float]
     r2: float
     aic: float
     ss_res: float
     impedance_mean: float
     impedance_std: float
-    null_models: Dict[str, Dict[str, float]]
+    null_models: dict[str, dict[str, float]]
 
 
 @dataclass
@@ -150,35 +151,35 @@ class BetaStatistics:
     """Bundle β statistics so the mean and CI width never blur."""
 
     count: int
-    mean: Optional[float]
-    median: Optional[float]
-    std: Optional[float]
-    sem: Optional[float]
-    sem_ci95: Optional[Tuple[float, float]]
-    ci_width_mean: Optional[float]
-    ci_width_std: Optional[float]
-    canonical: Optional[float]
-    iqr: Optional[float]
+    mean: float | None
+    median: float | None
+    std: float | None
+    sem: float | None
+    sem_ci95: tuple[float, float] | None
+    ci_width_mean: float | None
+    ci_width_std: float | None
+    canonical: float | None
+    iqr: float | None
 
 
-def _mean(values: Sequence[float]) -> Optional[float]:
+def _mean(values: Sequence[float]) -> float | None:
     return float(mean(values)) if values else None
 
 
-def _median(values: Sequence[float]) -> Optional[float]:
+def _median(values: Sequence[float]) -> float | None:
     if not values:
         return None
     return float(median(values))
 
 
-def _iqr(values: Sequence[float]) -> Optional[float]:
+def _iqr(values: Sequence[float]) -> float | None:
     if len(values) < 2:
         return None
     quartiles = quantiles(values, n=4, method="inclusive")
     return float(quartiles[2] - quartiles[0])
 
 
-def _sample_std(values: Sequence[float], centre: float) -> Optional[float]:
+def _sample_std(values: Sequence[float], centre: float) -> float | None:
     if len(values) < 2:
         return None
     variance = sum((value - centre) ** 2 for value in values) / (len(values) - 1)
@@ -188,7 +189,7 @@ def _sample_std(values: Sequence[float], centre: float) -> Optional[float]:
 def compute_beta_statistics(
     elements: Sequence[LogisticElement],
     *,
-    aggregate_beta: Optional[float] = None,
+    aggregate_beta: float | None = None,
 ) -> BetaStatistics:
     """Return μβ, dispersion, and CI width diagnostics."""
 
@@ -238,8 +239,8 @@ def compute_beta_statistics(
 def calculate_universal_beta_evidence(
     elements: Sequence[LogisticElement],
     *,
-    aggregate_beta: Optional[float] = None,
-) -> Dict[str, Any]:
+    aggregate_beta: float | None = None,
+) -> dict[str, Any]:
     r"""Return β evidence diagnostics for the universality ledger.
 
     Formal layer:
@@ -261,7 +262,7 @@ def calculate_universal_beta_evidence(
 
     stats = compute_beta_statistics(elements, aggregate_beta=aggregate_beta)
 
-    def _coerce(value: Optional[float]) -> Optional[float]:
+    def _coerce(value: float | None) -> float | None:
         return float(value) if value is not None else None
 
     if stats.mean is not None:
@@ -284,7 +285,7 @@ def calculate_universal_beta_evidence(
     }
 
 
-def load_elements() -> List[LogisticElement]:
+def load_elements() -> list[LogisticElement]:
     payload = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     elements = []
     for entry in payload["elements"]:
@@ -320,11 +321,11 @@ def load_aggregate() -> AggregateLogistic:
     )
 
 
-def build_logistic_curve(theta: float, beta: float) -> List[Dict[str, float]]:
+def build_logistic_curve(theta: float, beta: float) -> list[dict[str, float]]:
     """Return representative sigma values for documentation overlays."""
 
     r_values = [theta + offset for offset in (-0.6, -0.3, -0.15, 0.0, 0.15, 0.3, 0.6)]
-    curve: List[Dict[str, float]] = []
+    curve: list[dict[str, float]] = []
     for r in r_values:
         sigma = 1.0 / (1.0 + pow(2.718281828459045, -beta * (r - theta)))
         curve.append({"R": r, "sigma": sigma})
@@ -332,25 +333,21 @@ def build_logistic_curve(theta: float, beta: float) -> List[Dict[str, float]]:
 
 
 def _format_formal_beta_statement(
-    beta_values: List[float],
-    beta_mean: Optional[float],
-    beta_canonical: Optional[float],
+    beta_values: list[float],
+    beta_mean: float | None,
+    beta_canonical: float | None,
 ) -> str:
     """Generate the formal-layer beta summary with graceful fallbacks."""
 
     if beta_values and beta_mean is not None:
         beta_min = min(beta_values)
         beta_max = max(beta_values)
-        return "σ(β(R-Θ)) koppelt lokale Felder via g_ij; β liegt zwischen {:.2f} und {:.2f} (μ≈{:.2f}).".format(
-            beta_min,
-            beta_max,
-            beta_mean,
-        )
+        return f"σ(β(R-Θ)) koppelt lokale Felder via g_ij; β liegt zwischen {beta_min:.2f} und {beta_max:.2f} (μ≈{beta_mean:.2f})."
 
     if beta_canonical is not None:
         return (
-            "σ(β(R-Θ)) koppelt lokale Felder via g_ij; der kanonische Fit bestätigt β≈{:.2f}."
-        ).format(beta_canonical)
+            f"σ(β(R-Θ)) koppelt lokale Felder via g_ij; der kanonische Fit bestätigt β≈{beta_canonical:.2f}."
+        )
 
     return "σ(β(R-Θ)) koppelt lokale Felder via g_ij; neue Messungen müssen das β-Band noch füllen."
 
@@ -363,11 +360,11 @@ def _utc_now_isoformat() -> str:
 
 
 def compile_summary(
-    elements: List[LogisticElement],
+    elements: list[LogisticElement],
     aggregate: AggregateLogistic,
     *,
-    generated_at: Optional[str] = None,
-) -> Dict[str, Any]:
+    generated_at: str | None = None,
+) -> dict[str, Any]:
     beta_values = [e.beta for e in elements if getattr(e, "beta", None) is not None]
     stats = compute_beta_statistics(elements, aggregate_beta=aggregate.beta)
     beta_evidence = calculate_universal_beta_evidence(
@@ -388,7 +385,7 @@ def compile_summary(
     if generated_at is None:
         generated_at = _utc_now_isoformat()
 
-    hypotheses: List[Dict[str, Any]] = []
+    hypotheses: list[dict[str, Any]] = []
     for base in HYPOTHESIS_NOTES:
         note = deepcopy(base)
         if note["id"] == "beta_universality":
@@ -447,7 +444,7 @@ def compile_summary(
             note["evidence"]["theta_span"] = theta_span
         hypotheses.append(note)
 
-    payload: Dict[str, Any] = {
+    payload: dict[str, Any] = {
         "generated_at": generated_at,
         "dataset": str(DATA_PATH),
         "metadata": str(META_PATH),

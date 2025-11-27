@@ -25,9 +25,10 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from collections.abc import Iterable, Mapping, MutableMapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Mapping, MutableMapping, Optional, Sequence, Tuple
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -43,7 +44,6 @@ from analysis.resonance_fit_pipeline import (  # noqa: E402
     simulate_series,
 )
 
-
 DEFAULT_CONFIG = ROOT / "analysis" / "batch_configs" / "resonance_runs.json"
 
 
@@ -51,10 +51,10 @@ class ConfigurationError(RuntimeError):
     """Raised when the batch configuration cannot be interpreted."""
 
 
-def _as_float_list(values: Iterable[Any]) -> List[float]:
+def _as_float_list(values: Iterable[Any]) -> list[float]:
     """Convert *values* into a list of floats, skipping ``None`` entries."""
 
-    floats: List[float] = []
+    floats: list[float] = []
     for value in values:
         if value is None:
             continue
@@ -91,12 +91,12 @@ class BatchRun:
     mode: str
     output: Path
     simulation_params: Mapping[str, Any]
-    input_path: Optional[Path] = None
-    metadata: Optional[Mapping[str, Any]] = None
-    notes: Optional[Mapping[str, Any]] = None
+    input_path: Path | None = None
+    metadata: Mapping[str, Any] | None = None
+    notes: Mapping[str, Any] | None = None
 
 
-def parse_configuration(path: Path) -> Tuple[Mapping[str, Any], List[BatchRun]]:
+def parse_configuration(path: Path) -> tuple[Mapping[str, Any], list[BatchRun]]:
     """Parse the batch configuration at *path* into defaults and runs."""
 
     payload = _load_json(path)
@@ -115,7 +115,7 @@ def parse_configuration(path: Path) -> Tuple[Mapping[str, Any], List[BatchRun]]:
     if not isinstance(runs_payload, list) or not runs_payload:
         raise ConfigurationError("Configuration must include a non-empty 'runs' array")
 
-    runs: List[BatchRun] = []
+    runs: list[BatchRun] = []
     for entry in runs_payload:
         if not isinstance(entry, Mapping):
             raise ConfigurationError("Each run entry must be an object")
@@ -132,7 +132,7 @@ def parse_configuration(path: Path) -> Tuple[Mapping[str, Any], List[BatchRun]]:
         else:
             output_path = resolve_path(Path(str(output_value)))
 
-        simulation_params: Dict[str, Any] = dict(simulation_defaults)
+        simulation_params: dict[str, Any] = dict(simulation_defaults)
         entry_params = entry.get("params") or entry.get("simulation")
         if entry_params is not None:
             if not isinstance(entry_params, Mapping):
@@ -165,12 +165,12 @@ def parse_configuration(path: Path) -> Tuple[Mapping[str, Any], List[BatchRun]]:
     return defaults, runs
 
 
-def _ingest_series(path: Path) -> Tuple[Dict[str, List[float]], Dict[str, Any]]:
+def _ingest_series(path: Path) -> tuple[dict[str, list[float]], dict[str, Any]]:
     """Load measurement series suitable for fitting from *path*."""
 
     payload = _load_json(path)
-    series: Dict[str, List[float]] = {}
-    metadata: Dict[str, Any] = {}
+    series: dict[str, list[float]] = {}
+    metadata: dict[str, Any] = {}
 
     for key in (
         "R",
@@ -195,8 +195,8 @@ def _ingest_series(path: Path) -> Tuple[Dict[str, List[float]], Dict[str, Any]]:
             metadata.setdefault("dataset", dataset)
             measurements = dataset.get("measurements")
             if isinstance(measurements, list):
-                R_values: List[float] = []
-                sigma_values: List[float] = []
+                R_values: list[float] = []
+                sigma_values: list[float] = []
                 for item in measurements:
                     if not isinstance(item, Mapping):
                         continue
@@ -226,13 +226,13 @@ def _ingest_series(path: Path) -> Tuple[Dict[str, List[float]], Dict[str, Any]]:
     return series, metadata
 
 
-def _sigma_fit(R: Iterable[float], theta: float, beta: float) -> List[float]:
+def _sigma_fit(R: Iterable[float], theta: float, beta: float) -> list[float]:
     """Return the logistic fit values for *R* given ``theta`` and ``beta``."""
 
     return [float(logistic_response(value, theta, beta)) for value in R]
 
 
-def execute_run(run: BatchRun, *, dry_run: bool, config_path: Path) -> Optional[Dict[str, Any]]:
+def execute_run(run: BatchRun, *, dry_run: bool, config_path: Path) -> dict[str, Any] | None:
     """Execute a configured batch run and return the summary when written."""
 
     if run.mode == "simulate":
@@ -257,7 +257,7 @@ def execute_run(run: BatchRun, *, dry_run: bool, config_path: Path) -> Optional[
             boundary_logistic_weight=float(run.simulation_params.get("boundary_logistic_weight", 0.35)),
             boundary_driver_weight=float(run.simulation_params.get("boundary_driver_weight", 0.15)),
         )
-        metadata: Dict[str, Any] = {}
+        metadata: dict[str, Any] = {}
     else:
         if run.input_path is None:
             raise ConfigurationError(f"Run {run.identifier!r} requires an input file in ingest mode")
@@ -275,7 +275,7 @@ def execute_run(run: BatchRun, *, dry_run: bool, config_path: Path) -> Optional[
 
     summary = assemble_summary(results, fit_metrics, null_metrics)
 
-    dataset_block: Dict[str, Any] = {}
+    dataset_block: dict[str, Any] = {}
     if run.metadata:
         dataset_block.update(run.metadata)
     if metadata.get("dataset") and "dataset" not in dataset_block:
@@ -323,7 +323,7 @@ def execute_run(run: BatchRun, *, dry_run: bool, config_path: Path) -> Optional[
     return summary
 
 
-def parse_arguments(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
+def parse_arguments(argv: Sequence[str] | None = None) -> argparse.Namespace:
     """Configure CLI arguments."""
 
     parser = argparse.ArgumentParser(
@@ -354,7 +354,7 @@ def parse_arguments(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:
+def main(argv: Sequence[str] | None = None) -> int:
     """CLI entry point."""
 
     args = parse_arguments(argv)

@@ -31,11 +31,12 @@ from __future__ import annotations
 import argparse
 import json
 import math
-from dataclasses import dataclass, asdict
+from collections.abc import Iterable, Mapping, MutableMapping, Sequence
+from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean, median
-from typing import Any, Dict, Iterable, List, Mapping, MutableMapping, Optional, Sequence
+from typing import Any
 
 
 @dataclass
@@ -44,66 +45,66 @@ class CohortRecord:
 
     result_path: str
     domain: str
-    dataset_path: Optional[str]
-    theta: Optional[float]
-    theta_ci: Optional[List[Optional[float]]]
-    beta: Optional[float]
-    beta_ci: Optional[List[Optional[float]]]
-    beta_ci_width: Optional[float]
-    logistic_r2: Optional[float]
-    logistic_aic: Optional[float]
-    best_null_model: Optional[str]
-    best_null_aic: Optional[float]
-    delta_aic: Optional[float]
-    delta_r2: Optional[float]
-    logistic_minus_best_r2: Optional[float]
-    zeta_mean: Optional[float]
-    threshold_crossed: Optional[bool]
-    crossing_time: Optional[float]
-    crossing_R: Optional[float]
-    crossing_sigma: Optional[float]
-    overshoot: Optional[float]
-    zeta_at_crossing: Optional[float]
-    sigma_fraction_above_half: Optional[float]
-    meta_gate_fraction_above_half: Optional[float]
-    meta_gate_mean: Optional[float]
-    theta_drift_total: Optional[float]
-    beta_drift_total: Optional[float]
-    gate_area: Optional[float]
-    impedance_area: Optional[float]
-    relief_area: Optional[float]
-    recovery_area: Optional[float]
-    hysteresis_area: Optional[float]
-    relief_recovery_balance: Optional[float]
-    relief_recovery_ratio: Optional[float]
-    relief_recovery_symmetry: Optional[float]
-    hysteresis_bias: Optional[float]
-    relief_peak: Optional[float]
-    recovery_peak: Optional[float]
-    hysteresis_peak: Optional[float]
-    relief_mean: Optional[float]
-    recovery_mean: Optional[float]
-    hysteresis_mean: Optional[float]
-    relief_min: Optional[float]
-    recovery_min: Optional[float]
-    hysteresis_min: Optional[float]
-    final_impedance: Optional[float]
-    baseline_impedance: Optional[float]
-    boundary_flux_mean: Optional[float]
-    boundary_flux_std: Optional[float]
-    boundary_flux_peak: Optional[float]
-    boundary_flux_valley: Optional[float]
-    boundary_gate_mean: Optional[float]
-    boundary_gate_peak: Optional[float]
-    boundary_gate_valley: Optional[float]
+    dataset_path: str | None
+    theta: float | None
+    theta_ci: list[float | None] | None
+    beta: float | None
+    beta_ci: list[float | None] | None
+    beta_ci_width: float | None
+    logistic_r2: float | None
+    logistic_aic: float | None
+    best_null_model: str | None
+    best_null_aic: float | None
+    delta_aic: float | None
+    delta_r2: float | None
+    logistic_minus_best_r2: float | None
+    zeta_mean: float | None
+    threshold_crossed: bool | None
+    crossing_time: float | None
+    crossing_R: float | None
+    crossing_sigma: float | None
+    overshoot: float | None
+    zeta_at_crossing: float | None
+    sigma_fraction_above_half: float | None
+    meta_gate_fraction_above_half: float | None
+    meta_gate_mean: float | None
+    theta_drift_total: float | None
+    beta_drift_total: float | None
+    gate_area: float | None
+    impedance_area: float | None
+    relief_area: float | None
+    recovery_area: float | None
+    hysteresis_area: float | None
+    relief_recovery_balance: float | None
+    relief_recovery_ratio: float | None
+    relief_recovery_symmetry: float | None
+    hysteresis_bias: float | None
+    relief_peak: float | None
+    recovery_peak: float | None
+    hysteresis_peak: float | None
+    relief_mean: float | None
+    recovery_mean: float | None
+    hysteresis_mean: float | None
+    relief_min: float | None
+    recovery_min: float | None
+    hysteresis_min: float | None
+    final_impedance: float | None
+    baseline_impedance: float | None
+    boundary_flux_mean: float | None
+    boundary_flux_std: float | None
+    boundary_flux_peak: float | None
+    boundary_flux_valley: float | None
+    boundary_gate_mean: float | None
+    boundary_gate_peak: float | None
+    boundary_gate_valley: float | None
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Return a JSON-serialisable representation."""
 
         return asdict(self)
 
 
-def _safe_float(value: Any) -> Optional[float]:
+def _safe_float(value: Any) -> float | None:
     """Convert ``value`` to float when possible, else return ``None``."""
 
     if value is None:
@@ -118,7 +119,7 @@ def _safe_float(value: Any) -> Optional[float]:
     return None
 
 
-def _domain_from_dataset(dataset_path: Optional[str], fallback: str) -> str:
+def _domain_from_dataset(dataset_path: str | None, fallback: str) -> str:
     """Infer the domain label from a dataset path or fallback name."""
 
     if dataset_path:
@@ -132,7 +133,7 @@ def _domain_from_dataset(dataset_path: Optional[str], fallback: str) -> str:
     return token or "unscoped"
 
 
-def _ci_pair(entry: Mapping[str, Any]) -> Optional[List[Optional[float]]]:
+def _ci_pair(entry: Mapping[str, Any]) -> list[float | None] | None:
     """Return a two-element list for a 95% confidence interval."""
 
     ci = entry.get("ci95")
@@ -187,9 +188,9 @@ def parse_result(result_path: Path) -> CohortRecord:
     else:
         meta_gate_info = {}
 
-    best_null_model: Optional[str] = None
-    best_delta_aic: Optional[float] = None
-    best_delta_r2: Optional[float] = None
+    best_null_model: str | None = None
+    best_delta_aic: float | None = None
+    best_delta_r2: float | None = None
     for name, comp in comparisons.items():
         if not isinstance(comp, Mapping):
             continue
@@ -201,8 +202,8 @@ def parse_result(result_path: Path) -> CohortRecord:
             best_null_model = name
             best_delta_r2 = _safe_float(comp.get("delta_r2"))
 
-    best_null_aic: Optional[float] = None
-    best_null_r2: Optional[float] = None
+    best_null_aic: float | None = None
+    best_null_r2: float | None = None
     if best_null_model and isinstance(null_models.get(best_null_model), Mapping):
         candidate = null_models[best_null_model]
         best_null_aic = _safe_float(candidate.get("aic"))
@@ -214,7 +215,7 @@ def parse_result(result_path: Path) -> CohortRecord:
     if logistic_r2 is not None and best_null_r2 is not None:
         logistic_minus_best_r2 = logistic_r2 - best_null_r2
 
-    threshold_crossed: Optional[bool] = None
+    threshold_crossed: bool | None = None
     if isinstance(crossing_info, Mapping):
         crossed_value = crossing_info.get("crossed")
         if isinstance(crossed_value, bool):
@@ -222,7 +223,7 @@ def parse_result(result_path: Path) -> CohortRecord:
         elif crossed_value in (0, 1):
             threshold_crossed = bool(crossed_value)
 
-    def _fraction_above_half(series: Any) -> Optional[float]:
+    def _fraction_above_half(series: Any) -> float | None:
         if not isinstance(series, Sequence) or isinstance(series, (str, bytes)):
             return None
         values = []
@@ -336,10 +337,10 @@ def parse_result(result_path: Path) -> CohortRecord:
     )
 
 
-def _flatten_sequences(records: Iterable[Optional[float]]) -> List[float]:
+def _flatten_sequences(records: Iterable[float | None]) -> list[float]:
     """Collect finite floats from an iterable, ignoring missing values."""
 
-    values: List[float] = []
+    values: list[float] = []
     for value in records:
         if value is None:
             continue
@@ -350,7 +351,7 @@ def _flatten_sequences(records: Iterable[Optional[float]]) -> List[float]:
     return values
 
 
-def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
+def summarise_records(records: Sequence[CohortRecord]) -> dict[str, Any]:
     """Compute aggregate statistics across the cohort."""
 
     theta_values = _flatten_sequences(record.theta for record in records)
@@ -399,7 +400,7 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
     boundary_gate_peak_values = _flatten_sequences(record.boundary_gate_peak for record in records)
     boundary_gate_valley_values = _flatten_sequences(record.boundary_gate_valley for record in records)
 
-    def stats(series: List[float]) -> Optional[Dict[str, float]]:
+    def stats(series: list[float]) -> dict[str, float] | None:
         if not series:
             return None
         return {
@@ -409,11 +410,11 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
             "max": max(series),
         }
 
-    domain_map: MutableMapping[str, List[CohortRecord]] = {}
+    domain_map: MutableMapping[str, list[CohortRecord]] = {}
     for record in records:
         domain_map.setdefault(record.domain, []).append(record)
 
-    def crossing_stats(domain_records: Sequence[CohortRecord]) -> Dict[str, Any]:
+    def crossing_stats(domain_records: Sequence[CohortRecord]) -> dict[str, Any]:
         reporting = [
             r
             for r in domain_records
@@ -437,7 +438,7 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
             "zeta": stats(_flatten_sequences(r.zeta_at_crossing for r in reporting)),
         }
 
-    domain_stats: Dict[str, Any] = {}
+    domain_stats: dict[str, Any] = {}
     for domain, domain_records in domain_map.items():
         domain_stats[domain] = {
             "count": len(domain_records),
@@ -591,10 +592,10 @@ def summarise_records(records: Sequence[CohortRecord]) -> Dict[str, Any]:
     }
 
 
-def iter_result_files(sources: Sequence[Path]) -> List[Path]:
+def iter_result_files(sources: Sequence[Path]) -> list[Path]:
     """Return sorted JSON files from the supplied source directories."""
 
-    files: List[Path] = []
+    files: list[Path] = []
     for source in sources:
         if source.is_file() and source.suffix == ".json":
             files.append(source)
@@ -604,7 +605,7 @@ def iter_result_files(sources: Sequence[Path]) -> List[Path]:
         for path in sorted(source.rglob("*.json")):
             files.append(path)
     # Deduplicate while preserving order
-    seen: Dict[Path, None] = {}
+    seen: dict[Path, None] = {}
     for path in files:
         seen.setdefault(path, None)
     return list(seen.keys())
@@ -681,7 +682,7 @@ def render_console_report(records: Sequence[CohortRecord]) -> None:
     print()
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:
+def main(argv: Sequence[str] | None = None) -> int:
     """Entry point for the resonance cohort summariser."""
 
     parser = argparse.ArgumentParser(

@@ -22,7 +22,6 @@ import argparse
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Tuple
 
 import numpy as np
 from scipy import stats
@@ -216,14 +215,14 @@ def corrected_aic_threshold(
     return float(delta_aic_threshold)
 
 
-def load_comparisons_from_cohort() -> List[ModelComparison]:
+def load_comparisons_from_cohort() -> list[ModelComparison]:
     """Load model comparisons from cohort summary."""
     cohort_path = RESULTS_DIR / "resonance_cohort_summary_validated.json"
 
     if not cohort_path.exists():
         cohort_path = RESULTS_DIR / "resonance_cohort_summary.json"
 
-    with open(cohort_path, "r", encoding="utf-8") as f:
+    with open(cohort_path, encoding="utf-8") as f:
         data = json.load(f)
 
     comparisons = []
@@ -255,11 +254,11 @@ def load_comparisons_from_cohort() -> List[ModelComparison]:
 
 
 def interpret_corrections(
-    comparisons: List[ModelComparison],
+    comparisons: list[ModelComparison],
     bonferroni_reject: np.ndarray,
     bh_reject: np.ndarray,
     holm_reject: np.ndarray,
-    corrected_thresholds: Dict[str, float],
+    corrected_thresholds: dict[str, float],
 ) -> str:
     """Generate interpretation of multiple testing corrections."""
 

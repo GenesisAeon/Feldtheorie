@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 beta_phi_scaling_test.py — GenesisAeon / Feldtheorie
 Autor: Johann Benjamin Römer et al.
@@ -20,13 +19,15 @@ Empirischer Test:
     4. Log-Regression: log(β) ~ n → Steigung ≈ log(Φ) = 0.481
 """
 
-import numpy as np
-import pandas as pd
 import argparse
 import json
 import os
-from scipy import stats
+
 import matplotlib
+import numpy as np
+import pandas as pd
+from scipy import stats
+
 matplotlib.use('Agg')  # Non-interactive backend
 import matplotlib.pyplot as plt
 
@@ -111,22 +112,22 @@ def main():
     print(f"\nDataset: {args.input}")
     print(f"N = {result['n']} β-values")
     print(f"\nβ Range: {result['beta_range']['min']:.2f} → {result['beta_range']['max']:.2f} (span: {result['beta_range']['span']:.2f})")
-    print(f"\n--- Ratio Analysis ---")
+    print("\n--- Ratio Analysis ---")
     print(f"Mean Ratio:        {result['ratios']['mean']:.4f}")
     print(f"Φ (Golden Ratio):  {result['phi_constant']:.4f}")
     print(f"Difference:        {abs(result['ratios']['mean'] - result['phi_constant']):.4f}")
     print(f"Std Dev:           {result['ratios']['std']:.4f}")
-    print(f"\n--- Hypothesis Test (mean = Φ?) ---")
+    print("\n--- Hypothesis Test (mean = Φ?) ---")
     print(f"t-statistic:       {result['hypothesis_test']['t_statistic']:.4f}")
     print(f"p-value:           {result['hypothesis_test']['p_value']:.6f}")
     print(f"Significant (α=0.05): {'YES ✅' if result['hypothesis_test']['significant'] else 'NO ❌'}")
-    print(f"\n--- Log-Regression Analysis ---")
+    print("\n--- Log-Regression Analysis ---")
     print(f"Slope (observed):  {result['log_regression']['slope']:.4f}")
     print(f"Slope (expected):  {result['log_regression']['expected_slope_log_phi']:.4f}")
     print(f"Difference:        {result['log_regression']['slope_difference']:.4f}")
     print(f"R²:                {result['log_regression']['r_squared']:.4f}")
     print(f"p-value:           {result['log_regression']['p_value']:.6f}")
-    print(f"\n--- CONCLUSION ---")
+    print("\n--- CONCLUSION ---")
     print(f"Φ-Scaling Detected: {'YES ✅' if result['conclusion']['phi_scaling_detected'] else 'NO ❌'}")
     print(f"  - Mean ratio ≈ Φ: {'YES ✅' if result['conclusion']['mean_ratio_close_to_phi'] else 'NO ❌'}")
     print(f"  - Strong log-regression: {'YES ✅' if result['conclusion']['log_regression_strong'] else 'NO ❌'}")

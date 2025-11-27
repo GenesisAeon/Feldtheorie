@@ -24,8 +24,10 @@ import argparse
 import csv
 import json
 import math
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Dict, Iterable, List
+
+from models.membrane_solver import logistic_response
 
 from resonance_fit_pipeline import (
     assemble_summary,
@@ -33,23 +35,22 @@ from resonance_fit_pipeline import (
     evaluate_power_law_null,
     fit_threshold_parameters,
 )
-from models.membrane_solver import logistic_response
 
 
-def read_dataset(path: Path) -> Dict[str, List[float]]:
+def read_dataset(path: Path) -> dict[str, list[float]]:
     """Read dopamine burst amplitudes and success probabilities from CSV."""
 
     with path.open("r", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
-        R_values: List[float] = []
-        sigma_values: List[float] = []
+        R_values: list[float] = []
+        sigma_values: list[float] = []
         for row in reader:
             R_values.append(float(row["R"]))
             sigma_values.append(float(row["sigma"]))
     return {"R": R_values, "sigma": sigma_values}
 
 
-def impedance_profile(R: Iterable[float], theta: float, beta: float) -> Dict[str, float]:
+def impedance_profile(R: Iterable[float], theta: float, beta: float) -> dict[str, float]:
     """Compute a cognitive impedance sketch tied to logistic resonance."""
 
     samples = []
@@ -67,7 +68,7 @@ def impedance_profile(R: Iterable[float], theta: float, beta: float) -> Dict[str
     }
 
 
-def build_summary(data_path: Path, output_path: Path) -> Dict[str, object]:
+def build_summary(data_path: Path, output_path: Path) -> dict[str, object]:
     """Load dataset, fit logistic and null models, and export UTF diagnostics."""
 
     observations = read_dataset(data_path)

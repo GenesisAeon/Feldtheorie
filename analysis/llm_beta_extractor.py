@@ -25,10 +25,10 @@ import argparse
 import csv
 import json
 import math
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Iterable, List, Sequence
 
 import numpy as np
 
@@ -60,7 +60,7 @@ class LogisticFit:
     aic: float
     sse: float
 
-    def to_dict(self) -> Dict[str, float]:
+    def to_dict(self) -> dict[str, float]:
         return {
             "beta": self.beta,
             "theta": self.theta,
@@ -77,13 +77,13 @@ class NullFit:
     """Container for smooth null model diagnostics."""
 
     model: str
-    parameters: Dict[str, float]
+    parameters: dict[str, float]
     r_squared: float
     aic: float
     sse: float
 
-    def to_dict(self) -> Dict[str, object]:
-        payload: Dict[str, object] = {
+    def to_dict(self) -> dict[str, object]:
+        payload: dict[str, object] = {
             "model": self.model,
             "parameters": self.parameters,
             "r_squared": self.r_squared,
@@ -102,10 +102,10 @@ class TaskSummary:
     null_power_law: NullFit
     cross_entropy_drop: float
     falsification_pass: bool
-    tri_layer: Dict[str, str]
+    tri_layer: dict[str, str]
     delta_aic: float
 
-    def to_dict(self) -> Dict[str, object]:
+    def to_dict(self) -> dict[str, object]:
         return {
             "task": self.task,
             "logistic": self.logistic.to_dict(),
@@ -121,10 +121,10 @@ def _utc_now_iso() -> str:
     return datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat()
 
 
-def load_samples(path: Path) -> List[AbilitySample]:
+def load_samples(path: Path) -> list[AbilitySample]:
     """Read Wei-inspired ability samples from a CSV file."""
 
-    samples: List[AbilitySample] = []
+    samples: list[AbilitySample] = []
     with path.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
         for row in reader:
@@ -305,14 +305,14 @@ def summarise_task(task: str, samples: Sequence[AbilitySample]) -> TaskSummary:
     )
 
 
-def group_by_task(samples: Iterable[AbilitySample]) -> Dict[str, List[AbilitySample]]:
-    grouped: Dict[str, List[AbilitySample]] = {}
+def group_by_task(samples: Iterable[AbilitySample]) -> dict[str, list[AbilitySample]]:
+    grouped: dict[str, list[AbilitySample]] = {}
     for sample in samples:
         grouped.setdefault(sample.task, []).append(sample)
     return grouped
 
 
-def aggregate_summary(task_summaries: Sequence[TaskSummary]) -> Dict[str, object]:
+def aggregate_summary(task_summaries: Sequence[TaskSummary]) -> dict[str, object]:
     betas = np.array([summary.logistic.beta for summary in task_summaries], dtype=float)
     theta_values = np.array([summary.logistic.theta for summary in task_summaries], dtype=float)
     falsifications = [summary.falsification_pass for summary in task_summaries]
@@ -334,7 +334,7 @@ def run_analysis(
     tasks: Sequence[str] | None = None,
     canonical_beta: float = 4.2,
     band_half_width: float = 0.6,
-) -> Dict[str, object]:
+) -> dict[str, object]:
     """Execute the logistic vs null analysis for the provided dataset."""
 
     samples = load_samples(input_path)

@@ -24,8 +24,10 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Dict, Iterable, Tuple
+
+from models import LogisticFieldEnvelope, logistic_response
 
 from resonance_fit_pipeline import (
     assemble_summary,
@@ -34,10 +36,8 @@ from resonance_fit_pipeline import (
     fit_threshold_parameters,
 )
 
-from models import LogisticFieldEnvelope, logistic_response
 
-
-def write_csv(path: Path, traces: Dict[str, Iterable[float]]) -> None:
+def write_csv(path: Path, traces: dict[str, Iterable[float]]) -> None:
     r"""Persist the sweep traces to CSV for reproducibility."""
 
     fieldnames = ["t", "R", "sigma", "sigma_clean", "zeta", "flux"]
@@ -58,7 +58,7 @@ def write_csv(path: Path, traces: Dict[str, Iterable[float]]) -> None:
 
 
 
-def build_summary(args: argparse.Namespace) -> Tuple[Dict[str, object], Dict[str, Iterable[float]]]:
+def build_summary(args: argparse.Namespace) -> tuple[dict[str, object], dict[str, Iterable[float]]]:
     r"""Generate a synthetic sweep, fit logistics, and package diagnostics."""
 
     envelope = LogisticFieldEnvelope(

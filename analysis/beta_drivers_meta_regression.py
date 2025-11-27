@@ -10,15 +10,15 @@ License: MIT
 DOI: 10.5281/zenodo.17472834
 """
 
-import pandas as pd
+import argparse
+import json
+import warnings
+from pathlib import Path
+
 import numpy as np
+import pandas as pd
 import statsmodels.api as sm
 from statsmodels.stats.multitest import multipletests
-from pathlib import Path
-import json
-import argparse
-from typing import Tuple, Dict
-import warnings
 
 
 def load_data(
@@ -61,7 +61,7 @@ def load_data(
         raise
 
 
-def prepare_regression_data(df: pd.DataFrame) -> Tuple[pd.Series, pd.DataFrame, pd.Series]:
+def prepare_regression_data(df: pd.DataFrame) -> tuple[pd.Series, pd.DataFrame, pd.Series]:
     """
     Prepare data for weighted least squares regression.
 
@@ -113,7 +113,7 @@ def meta_regression(
     y: pd.Series,
     X: pd.DataFrame,
     weights: pd.Series
-) -> Tuple[pd.DataFrame, sm.regression.linear_model.RegressionResultsWrapper]:
+) -> tuple[pd.DataFrame, sm.regression.linear_model.RegressionResultsWrapper]:
     """
     Perform weighted least squares meta-regression.
 
@@ -169,7 +169,7 @@ def generate_report(
     df_results: pd.DataFrame,
     model_result,
     output_dir: str = "analysis/results"
-) -> Dict:
+) -> dict:
     """
     Generate comprehensive regression report.
 
@@ -223,7 +223,7 @@ def generate_report(
     return summary_dict
 
 
-def print_results(df_results: pd.DataFrame, summary: Dict):
+def print_results(df_results: pd.DataFrame, summary: dict):
     """Print formatted results to console."""
     print("\n" + "="*70)
     print("META-REGRESSION RESULTS: β-DRIVER ANALYSIS")
@@ -293,7 +293,7 @@ def main():
     y, X, weights = prepare_regression_data(df)
 
     # Run meta-regression
-    print(f"\nRunning weighted least squares regression...")
+    print("\nRunning weighted least squares regression...")
     print(f"  Predictors: {', '.join(X.columns)}")
     df_results, model_result = meta_regression(y, X, weights)
 

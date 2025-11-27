@@ -16,8 +16,6 @@ Authors: Johann Benjamin Römer, MOR Framework
 from __future__ import annotations
 
 import math
-from typing import Dict, Tuple
-
 
 # Universal constants
 C_LIGHT_KM_S = 299792.458  # Speed of light in km/s (exact)
@@ -110,7 +108,7 @@ def calculate_vrig(
     return c_light / (alpha_inv * phi)
 
 
-def get_consciousness_timescales() -> Dict[str, float]:
+def get_consciousness_timescales() -> dict[str, float]:
     """Return characteristic timescales for consciousness integration.
 
     Based on the OIPK framework's Δt_Q windows and v_RIG propagation.
@@ -147,7 +145,7 @@ def get_consciousness_timescales() -> Dict[str, float]:
     }
 
 
-def get_oipk_geometry_params() -> Dict[str, float]:
+def get_oipk_geometry_params() -> dict[str, float]:
     """Return geometric parameters for OIPK diamond/octahedron structure.
 
     Returns
@@ -169,7 +167,7 @@ def get_oipk_geometry_params() -> Dict[str, float]:
     }
 
 
-def get_vrig_analysis() -> Dict[str, float]:
+def get_vrig_analysis() -> dict[str, float]:
     """Compute detailed v_RIG analysis with derived quantities.
 
     Returns
@@ -208,7 +206,7 @@ if __name__ == '__main__':
     v_rig = calculate_vrig()
     print(f"\nv_RIG = {v_rig:.4f} km/s")
     print(f"      = {v_rig / C_LIGHT_KM_S:.6f} c")
-    print(f"      = c / (α⁻¹ · Φ)")
+    print("      = c / (α⁻¹ · Φ)")
     print(f"      = {C_LIGHT_KM_S:.3f} / ({ALPHA_INV:.6f} · {PHI:.10f})")
     print(f"      = {C_LIGHT_KM_S:.3f} / {ALPHA_INV * PHI:.6f}")
 

@@ -24,11 +24,12 @@ import argparse
 import json
 import math
 import sys
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean
-from typing import Any, Dict, List, Mapping, Sequence, Tuple
+from typing import Any
 
 try:
     import yaml
@@ -53,7 +54,7 @@ from models.coherence_term import mandala_coherence
 
 DEFAULT_OUTPUT = Path("analysis/results/potential_cascade_lab.json")
 
-DEFAULT_PARAMETERS: Dict[str, float | int] = {
+DEFAULT_PARAMETERS: dict[str, float | int] = {
     "steps": 64,
     "theta": 1.0,
     "beta": 3.8,
@@ -83,17 +84,17 @@ CONFIG_PARSER.add_argument(
 class CascadeDiagnostics:
     """Structured record of a Potenzial-Kaskade simulation."""
 
-    potentials: List[float]
-    psi_series: List[float]
-    phi_series: List[float]
-    states: List[CascadeState]
-    coherences: List[MandalaCoherence]
-    aggregate: Dict[str, float]
-    coherence_summary: Dict[str, float]
-    null_reference: Dict[str, List[float] | float]
-    parameters: Dict[str, Any]
+    potentials: list[float]
+    psi_series: list[float]
+    phi_series: list[float]
+    states: list[CascadeState]
+    coherences: list[MandalaCoherence]
+    aggregate: dict[str, float]
+    coherence_summary: dict[str, float]
+    null_reference: dict[str, list[float] | float]
+    parameters: dict[str, Any]
 
-    def to_payload(self, *, generated_at: str | None = None) -> Dict[str, object]:
+    def to_payload(self, *, generated_at: str | None = None) -> dict[str, object]:
         if generated_at is None:
             timestamp = datetime.now(timezone.utc).replace(microsecond=0)
             generated_at = timestamp.isoformat().replace("+00:00", "Z")
@@ -130,7 +131,7 @@ class CascadeDiagnostics:
         }
 
 
-SECTION_KEY_MAP: Dict[Tuple[str, str], str] = {
+SECTION_KEY_MAP: dict[tuple[str, str], str] = {
     ("potential", "baseline"): "potential_baseline",
     ("potential", "surge"): "potential_surge",
     ("potential", "modulation"): "potential_modulation",
@@ -156,10 +157,10 @@ def _coerce_parameter(key: str, value: Any) -> float | int:
         raise ValueError(f"Configuration value for {key!r} must be numerisch") from exc
 
 
-def _flatten_config(data: Mapping[str, Any]) -> Dict[str, Any]:
+def _flatten_config(data: Mapping[str, Any]) -> dict[str, Any]:
     """Map nested configuration dictionaries onto known parameter keys."""
 
-    overrides: Dict[str, Any] = {}
+    overrides: dict[str, Any] = {}
     for key, raw_value in data.items():
         if key == "meta":
             continue
@@ -183,7 +184,7 @@ def _flatten_config(data: Mapping[str, Any]) -> Dict[str, Any]:
     return overrides
 
 
-def load_configuration(path: Path) -> Tuple[Dict[str, float | int], Dict[str, Any]]:
+def load_configuration(path: Path) -> tuple[dict[str, float | int], dict[str, Any]]:
     """Load parameter overrides and metadata from a YAML or JSON file."""
 
     if not path.exists():
@@ -206,7 +207,7 @@ def load_configuration(path: Path) -> Tuple[Dict[str, float | int], Dict[str, An
         raise ValueError("Die Konfigurationsdatei muss ein Mapping definieren")
 
     overrides_raw = _flatten_config(data)
-    overrides: Dict[str, float | int] = {}
+    overrides: dict[str, float | int] = {}
     for key, raw_value in overrides_raw.items():
         if raw_value is None:
             continue
@@ -215,7 +216,7 @@ def load_configuration(path: Path) -> Tuple[Dict[str, float | int], Dict[str, An
         overrides[key] = _coerce_parameter(key, raw_value)
 
     meta_raw = data.get("meta") if isinstance(data.get("meta"), Mapping) else {}
-    meta: Dict[str, Any] = {}
+    meta: dict[str, Any] = {}
     if isinstance(meta_raw, Mapping):
         for meta_key, meta_value in meta_raw.items():
             if isinstance(meta_value, (str, int, float, bool)):
@@ -348,13 +349,13 @@ def generate_potential_series(
     surge: float = 1.2,
     modulation: float = 0.08,
     drift: float = 7.5,
-) -> List[float]:
+) -> list[float]:
     """Sculpt a potential trace that crosses Θ and lingers in resonance."""
 
     if steps <= 0:
         raise ValueError("steps must be positive")
 
-    potentials: List[float] = []
+    potentials: list[float] = []
     for idx in range(steps):
         t = idx / max(steps - 1, 1)
         logistic_term = baseline + surge / (1.0 + math.exp(-drift * (t - 0.45)))
@@ -370,11 +371,11 @@ def generate_semantic_fields(
     beta: float,
     lag_amplitude: float = 0.12,
     harmonic_frequency: float = 2.0,
-) -> tuple[List[float], List[float]]:
+) -> tuple[list[float], list[float]]:
     """Derive ψ/φ fields that will braid into Mandala coherence."""
 
-    psi_series: List[float] = []
-    phi_series: List[float] = []
+    psi_series: list[float] = []
+    phi_series: list[float] = []
     n = len(potentials)
     for idx, potential in enumerate(potentials):
         psi_series.append(float(logistic_response(potential, theta, beta)))
@@ -391,7 +392,7 @@ def build_coherence_trace(
     window: int = 5,
     theta: float = 0.35,
     beta: float = 4.2,
-) -> List[MandalaCoherence]:
+) -> list[MandalaCoherence]:
     """Compute Mandala coherence over a sliding window."""
 
     if len(psi_series) != len(phi_series):
@@ -399,7 +400,7 @@ def build_coherence_trace(
     if window <= 0:
         raise ValueError("window must be positive")
 
-    coherences: List[MandalaCoherence] = []
+    coherences: list[MandalaCoherence] = []
     for idx in range(len(psi_series)):
         start = max(0, idx - window + 1)
         coherence = mandala_coherence(
@@ -420,7 +421,7 @@ def compute_null_reference(
     logistic_beta: float,
     zeta_closed: float,
     zeta_open: float,
-) -> Dict[str, object]:
+) -> dict[str, object]:
     """Return static Θ/β gate and impedance traces as the falsification null."""
 
     gates = [float(logistic_response(potential, theta, logistic_beta)) for potential in potentials]
@@ -451,8 +452,8 @@ def summarise_states(
     *,
     baseline_theta: float,
     baseline_beta: float,
-    null_reference: Dict[str, object],
-) -> Dict[str, float]:
+    null_reference: dict[str, object],
+) -> dict[str, float]:
     """Aggregate Θ/β drift, gate uplift, and impedance breathing."""
 
     if not states:
@@ -499,7 +500,7 @@ def summarise_states(
     }
 
 
-def summarise_coherence(coherences: Sequence[MandalaCoherence]) -> Dict[str, float]:
+def summarise_coherence(coherences: Sequence[MandalaCoherence]) -> dict[str, float]:
     """Return mean and extremal Mandala metrics."""
 
     if not coherences:
@@ -616,7 +617,7 @@ def simulate_cascade(
     )
 
 
-def compile_payload(diagnostics: CascadeDiagnostics, *, generated_at: str | None = None) -> Dict[str, object]:
+def compile_payload(diagnostics: CascadeDiagnostics, *, generated_at: str | None = None) -> dict[str, object]:
     """Convert diagnostics into the JSON schema used by Docs and notebooks."""
 
     payload = diagnostics.to_payload(generated_at=generated_at)
@@ -631,8 +632,8 @@ def compile_payload(diagnostics: CascadeDiagnostics, *, generated_at: str | None
 
 def main() -> None:
     config_args, remaining = CONFIG_PARSER.parse_known_args()
-    config_overrides: Dict[str, float | int] = {}
-    config_meta: Dict[str, Any] = {}
+    config_overrides: dict[str, float | int] = {}
+    config_meta: dict[str, Any] = {}
     if config_args.config is not None:
         config_overrides, config_meta = load_configuration(config_args.config)
 

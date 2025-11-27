@@ -53,12 +53,10 @@ License: AGPL-3.0
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Callable, Optional, Tuple
 
 import numpy as np
-from scipy.optimize import curve_fit
 from scipy.ndimage import uniform_filter
-
+from scipy.optimize import curve_fit
 
 # ═══════════════════════════════════════════════════════════════
 # MICROSCOPIC ABM
@@ -251,7 +249,7 @@ def extract_emergent_beta(
     R_values: np.ndarray,
     sigma_values: np.ndarray,
     theta: float = 0.5,
-) -> Tuple[float, float, dict]:
+) -> tuple[float, float, dict]:
     """Extract emergent β from coarse-grained σ(R) data.
 
     Fits: σ(R) = 1/(1 + exp(-β(R - Θ)))
@@ -326,7 +324,7 @@ class EmergentBetaSimulator:
 
     def scan_resource_range(
         self, R_min: float = -2.0, R_max: float = 2.0, n_points: int = 20
-    ) -> Tuple[np.ndarray, np.ndarray]:
+    ) -> tuple[np.ndarray, np.ndarray]:
         """Scan external field (R-proxy) and measure σ̄.
 
         Parameters

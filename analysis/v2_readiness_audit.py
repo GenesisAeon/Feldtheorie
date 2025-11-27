@@ -16,8 +16,8 @@ import dataclasses
 import datetime as dt
 import json
 import math
+from collections.abc import Sequence
 from pathlib import Path
-from typing import List, Sequence
 
 import yaml
 
@@ -52,7 +52,7 @@ class DatasetStatus:
     theta_estimate: float | None
     beta_target: float | None
     declared_readiness_ratio: float | None
-    components: List[ComponentStatus]
+    components: list[ComponentStatus]
 
     def actual_readiness_ratio(self) -> float:
         if not self.components:
@@ -60,7 +60,7 @@ class DatasetStatus:
         ready = sum(1 for c in self.components if c.actual_exists)
         return ready / len(self.components)
 
-    def missing_components(self) -> List[ComponentStatus]:
+    def missing_components(self) -> list[ComponentStatus]:
         return [c for c in self.components if not c.actual_exists]
 
     def to_dict(self) -> dict:
@@ -120,10 +120,10 @@ def load_manifest(path: Path) -> dict | None:
         return yaml.safe_load(handle)
 
 
-def parse_dataset_status(manifest: dict) -> List[DatasetStatus]:
-    datasets: List[DatasetStatus] = []
+def parse_dataset_status(manifest: dict) -> list[DatasetStatus]:
+    datasets: list[DatasetStatus] = []
     for entry in manifest.get("datasets", []):
-        components: List[ComponentStatus] = []
+        components: list[ComponentStatus] = []
         raw_components = entry.get("components")
         if raw_components:
             for component in raw_components:
@@ -215,8 +215,8 @@ def build_action_items(
     docs: Sequence[TargetStatus],
     simulator_targets: Sequence[TargetStatus],
     sigillin_targets: Sequence[TargetStatus],
-) -> List[dict]:
-    actions: List[dict] = []
+) -> list[dict]:
+    actions: list[dict] = []
     counter = 1
 
     def next_id(prefix: str) -> str:
@@ -356,7 +356,7 @@ def build_targets() -> tuple[list[TargetStatus], list[TargetStatus], list[Target
     return analysis_targets, doc_targets, simulator_targets, sigillin_targets
 
 
-def summarise_targets(targets: Sequence[TargetStatus]) -> List[dict]:
+def summarise_targets(targets: Sequence[TargetStatus]) -> list[dict]:
     return [target.to_dict() for target in targets]
 
 
@@ -375,7 +375,7 @@ def write_markdown(path: Path, payload: dict, datasets: Sequence[DatasetStatus],
     logistic_info = payload["meta"]["logistic"]
     dataset_summary_info = payload["data_summary"]
 
-    lines: List[str] = []
+    lines: list[str] = []
     lines.append("# UTAC v2.0 Readiness Audit – σ(β(R-Θ)) Compass")
     lines.append("")
     lines.append(
@@ -412,14 +412,7 @@ def write_markdown(path: Path, payload: dict, datasets: Sequence[DatasetStatus],
         readiness_pct = int(round(ds.actual_readiness_ratio() * 100))
         next_step = "Complete manifest tri-layer" if missing_names != "—" else "Run updated analysis"
         lines.append(
-            "| {id} | {domain} | {status} | {ready}% | {missing} | {next_step} |".format(
-                id=ds.identifier,
-                domain=ds.domain,
-                status=ds.resonance_status,
-                ready=readiness_pct,
-                missing=missing_names,
-                next_step=next_step,
-            )
+            f"| {ds.identifier} | {ds.domain} | {ds.resonance_status} | {readiness_pct}% | {missing_names} | {next_step} |"
         )
     lines.append("")
     lines.append("## 3. Implementation Map — Priority Actions")
