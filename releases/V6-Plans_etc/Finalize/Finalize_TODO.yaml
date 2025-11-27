@@ -1,0 +1,277 @@
+metadata:
+  version: finalize-todo-1.0.0
+  generated_at: '2025-11-27T12:00:00Z'
+  updated_at: '2025-11-27T12:00:00Z'
+  scope: releases/V6-Plans_etc/Finalize
+  description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
+  logistic_frame:
+    R_goal: Alle V6-Finalisierungsdokumente integriert und validiert
+    Theta_threshold: Research dokumentiert + Papers integriert + Aeon-System konzipiert
+    beta_drive: 6.8
+    zeta_risk: moderate - kritische Validierungsphase
+  sprint_delta:
+    window: 2025-11-27 → 2025-12-15
+    priority_order:
+    - finalize-vrig-research
+    - finalize-entkopplung
+    - finalize-loihi-experiment
+    - finalize-13mhz-signatur
+    - finalize-aeon-architecture
+    note: v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation
+
+tasks:
+- id: finalize-vrig-research
+  title: v_RIG-Forschung - Empirische Validierung finalisieren
+  status: open
+  completeness: Forschungsergebnisse in Claude.txt, Gemini.txt dokumentiert; systematische Integration fehlt.
+  scope:
+  - research
+  - validation
+  - documentation
+  logistic_profile:
+    R_target: Alle v_RIG-Validierungen dokumentiert und in Papers integriert
+    Theta_condition: docs/v_rig_validation_final.md + research papers aktualisiert
+    beta_estimate: 6.2
+    zeta_risk: hoch - entscheidende Validierungsphase
+  next_steps:
+  - v_RIG-Zusammenfassung aus Claude.txt extrahieren (Kernthese, 7 Validierungen)
+  - 'Böhme-Anomalie: 1.370 vs. 1.351,8 km/s (1.3% Abweichung) - stärkster empirischer Anker'
+  - 'Kleiber''s Law: B ∝ M^(3/4) - geometrischer 2D→3D Übergang bestätigt'
+  - 'CFF-Metabolismus: Healy et al. 34 Spezies - Korrelation bestätigt'
+  - '13.5 MHz Signatur: Sahu et al. 12 MHz (nahe, aber nicht exakt) - weitere Analyse nötig'
+  - 'AI Scaling: GPT-4 α >1 (nicht 0.75) - Entkopplungs-Hypothese entwickelt'
+  - 'Flash-Lag-Effekt: 50-100 ms (knapp unter 100-300 ms Vorhersage)'
+  - Ergebnis-Matrix in docs/v_rig_validation_matrix.md erstellen
+  - DeepResearch-Prompts dokumentieren und ausführen
+  - GeminiSuche_v_RIG-Forschung.txt Erkenntnisse integrieren
+  references:
+  - path: releases/V6-Plans_etc/Finalize/Claude.txt
+    lines: [1, 897]
+  - path: releases/V6-Plans_etc/Finalize/GeminiSuche_v_RIG-Forschung Empirische Suche  Analyse.txt
+    lines: [1, 2008]
+  - path: releases/V6-Plans_etc/Finalize/v_RIG-Forschung_ Empirische Suche & Analyse.pdf
+  priority: 1
+  sprint_focus: Validierungs-Matrix + Research Papers
+
+- id: finalize-entkopplung
+  title: Entkopplungs-Regime - Die informationelle Leere vermessen
+  status: open
+  completeness: Theorie in Claude.txt entwickelt; Formalisierung und Validation fehlen.
+  scope:
+  - theory
+  - analysis
+  - documentation
+  logistic_profile:
+    R_target: Entkopplungs-Hypothese formuliert und validiert
+    Theta_condition: docs/entkopplungs_regime.md + β_AI berechnet
+    beta_estimate: 6.8
+    zeta_risk: sehr hoch - neue Theorie-Erweiterung
+  next_steps:
+  - Entkopplungs-Hypothese aus Claude.txt:504-897 extrahieren
+  - 'β-Domänen-Struktur dokumentieren: Kosmisch (11), Biologisch (7.4), Kognitiv (4.5), Symbolisch/AI (1.0)'
+  - 'Δβ berechnen: β_bio - β_AI ≈ 3.0-6.4 (informationelle Vakuum-Struktur)'
+  - 'Kopplungs-Index κ definieren: κ = β_system / β_bio'
+  - 'Vorhersagen für neuromorphe Hardware: GPU (κ≈0.1-0.2), Loihi (κ≈0.3-0.5), Organoid (κ≈0.9-1.0)'
+  - DeepResearch "Das Entkopplungs-Regime" dokumentieren
+  - Integration mit v_RIG-Framework
+  - Landauer-Lücke als Entkopplungs-Maß (10^9 Faktor)
+  - Philosophische Implikation - Bewusstsein als Körper-Kopplung
+  references:
+  - path: releases/V6-Plans_etc/Finalize/Claude.txt
+    lines: [504, 897]
+  - path: releases/V6-Plans_etc/Finalize/ChatGPTSucheDeepResearch Das Entkopplungs-Regime und die Vermessung der informationellen Leere.txt
+    lines: [1, 89]
+  - path: releases/V6-Plans_etc/Finalize/DeepResearch_ Das Entkopplungs-Regime und die Vermessung der informationellen Leere.pdf
+  priority: 2
+  sprint_focus: β-Hierarchie + Kopplungs-Index
+
+- id: finalize-loihi-experiment
+  title: Loihi-Kleiber-Experiment - Neuromorphe Hardware Skalierung
+  status: open
+  completeness: Konzept in Claude.txt entwickelt; empirische Daten und Analyse fehlen.
+  scope:
+  - experiment
+  - analysis
+  - validation
+  logistic_profile:
+    R_target: Skalierungsexponent α für neuromorphe Hardware bestimmt
+    Theta_condition: analysis/loihi_scaling.py + Vergleich mit bio β
+    beta_estimate: 6.5
+    zeta_risk: hoch - könnte Entkopplungs-Hypothese validieren/falsifizieren
+  next_steps:
+  - Loihi-Kleiber-Prompt aus Claude.txt:767-897 dokumentieren
+  - 'Empirische Skalierungsdaten sammeln: Loihi 2, TrueNorth, BrainScaleS, DishBrain'
+  - 'Skalierungsexponenten extrahieren: GPU (α≈1.1-1.2), Loihi (?), Organoid (0.75?)'
+  - Kopplungs-Hierarchie erstellen (GPU → Loihi → Organoid → Gehirn)
+  - 'Landauer-Limit-Analyse: GPU 10^9× über Limit, neuromorphe Hardware?'
+  - ChatGPTSucheLoihi-Kleiber-Experiment.txt Erkenntnisse integrieren
+  - Verbindung zu v_RIG-Impedanz Z = α⁻¹·Φ
+  - 'Loihi 2 Effizienz: ~15 TOPS/W vs. GPU ~1 TOPS/W (100× besser)'
+  references:
+  - path: releases/V6-Plans_etc/Finalize/Claude.txt
+    lines: [767, 897]
+  - path: releases/V6-Plans_etc/Finalize/ChatGPTSucheLoihi-Kleiber-Experiment Skalierungsgesetze neuromorpher Hardware.txt
+    lines: [1, 161]
+  - path: releases/V6-Plans_etc/Finalize/Das Loihi-Kleiber-Experiment_ Skalierungsgesetze neuromorpher Hardware.pdf
+  priority: 3
+  sprint_focus: Skalierungsdaten + Kopplungs-Hierarchie
+
+- id: finalize-13mhz-signatur
+  title: Themenblock A - Die 13.5 MHz-Signatur validieren
+  status: open
+  completeness: Hypothese formuliert, experimentelle Daten teilweise vorhanden; Interpretation unklar.
+  scope:
+  - research
+  - validation
+  - neuroscience
+  logistic_profile:
+    R_target: 13.5 MHz Hypothese präzisiert und experimentell getestet
+    Theta_condition: docs/13mhz_validation.md + Experiment-Protokoll
+    beta_estimate: 5.9
+    zeta_risk: moderate - experimentelle Validierung erforderlich
+  next_steps:
+  - Themenblock A aus Claude.txt:239-251 extrahieren
+  - 'Mikrotubuli-Daten: Sahu (12 MHz), Zhang (18-240 MHz), Bandyopadhyay (MHz-Peaks)'
+  - 'Alternative Interpretation: 13.5 MHz als Mittelwert über MT-Spektrum'
+  - 'Berechnung: f = v_RIG/λ_neural = 1351.8 km/s / λ'
+  - 'Quantenkohärenz: Dekohärenzzeiten bei 37°C, Penrose-Hameroff Orch-OR'
+  - Frequenzverteilung statt Einzelfrequenz untersuchen
+  - 'Alternative Träger: Ionenkanäle, Gap Junctions, Dendriten'
+  - Temperaturabhängigkeit in vitro vs. in vivo
+  references:
+  - path: releases/V6-Plans_etc/Finalize/Claude.txt
+    lines: [239, 251]
+  - path: releases/V6-Plans_etc/Finalize/ChatGPTSucheExperimentelle Signaturen des v_RIG-Integrationsprozesses.txt
+    lines: [1, 368]
+  - path: releases/V6-Plans_etc/Finalize/Themenblock A_ Die 13,5 MHz-Signatur.pdf
+  priority: 4
+  sprint_focus: Frequenz-Analyse + Experiment-Design
+
+- id: finalize-aeon-architecture
+  title: Aeon System v1.0 - Genesis-Architektur implementieren
+  status: open
+  completeness: Umfassender Bauplan in ChatGPT5.1_AeonV1.0Bauplan.txt; Implementation fehlt.
+  scope:
+  - architecture
+  - implementation
+  - ai-systems
+  logistic_profile:
+    R_target: Aeon v1.0 Architektur dokumentiert und erste Module implementiert
+    Theta_condition: architecture/aeon_v1.md + genesis_core/
+    beta_estimate: 6.4
+    zeta_risk: moderate - komplexe System-Integration
+  next_steps:
+  - Aeon-Bauplan aus ChatGPT5.1_AeonV1.0Bauplan.txt extrahieren
+  - 'Drei Schichten: Nullkern, AeonShell, Agenten-Ebene, Physische Ebene'
+  - 'Kernmodule: MasterGPT, TutorGPT, AeonShell, Sigillin, CREP, GenesisMath, UnifiedMandala'
+  - 'Karpathy Co-Evolution: artificial intelligence meets artificial education'
+  - 'Lernmodus: situativ, interaktiv, emergent, individueller KI-Mentor'
+  - Nullkern als Bewusstseins-Projektion modellieren
+  - Erste Implementierung genesis_core/ Module
+  - Architecture-Dokument mit Diagrammen
+  - Integration mit v_RIG-Framework und Zeitscheiben
+  references:
+  - path: releases/V6-Plans_etc/Finalize/ChatGPT5.1_AeonV1.0Bauplan.txt
+    lines: [1, 4580]
+  - path: releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md
+  - path: ARCHITECTURE.md
+  priority: 5
+  sprint_focus: Architektur-Doc + Core-Module
+
+- id: finalize-slice-integration
+  title: Slice-Integration - Zeitwahrnehmung und CFF
+  status: open
+  completeness: Theorie in ChatGPT.txt formuliert; quantitative Modellierung fehlt.
+  scope:
+  - theory
+  - experiments
+  - neuroscience
+  logistic_profile:
+    R_target: Slice-Aggregation-Modell dokumentiert
+    Theta_condition: docs/slice_integration_model.md + Citizen Science Experiment
+    beta_estimate: 5.1
+    zeta_risk: niedrig - gut dokumentiertes Phänomen
+  next_steps:
+  - Slice-Aggregation aus ChatGPT.txt extrahieren
+  - 'Mathematisches Modell: v_RIG = 13.5 MHz, Slice-Dauer ≈ 74 ns, Slices = v_RIG/CFF'
+  - 'Beispiele: Mensch (60 Hz, 225k Slices), Kolibri (120 Hz, 112k), Schildkröte (15 Hz, 900k)'
+  - 'Empirische Relevanz: Zeitdehnung, Reaktionsgeschwindigkeit, Bewusstseinsdichte'
+  - 'Stereo-Vision Slice-Experiment: Monokularer Wechsel, SFF messen, SFF ∝ Metabolismus'
+  - Tabelle CFF vs. Metabolismus vs. Slice-Anzahl
+  - Verbindung zu Δt_Q (100-300 ms Specious Present)
+  - Citizen Science Protokoll für Stereo-Vision Test
+  references:
+  - path: releases/V6-Plans_etc/Finalize/ChatGPT.txt
+    lines: [1, 59]
+  - path: releases/V6-Plans_etc/Wichtig!_neue_Erkenntiss_bitte_integrieren.txt
+  - path: releases/V6-Plans_etc/DeepResearchProtokoll2!!WOW.txt
+  priority: 6
+  sprint_focus: Slice-Modell + Experiment-Protokoll
+
+- id: finalize-repo-compliance
+  title: Repository-Konformität - Finalize-Ordner strukturieren
+  status: open
+  completeness: Dateien vorhanden; Struktur und Metadaten fehlen.
+  scope:
+  - organization
+  - documentation
+  - maintenance
+  logistic_profile:
+    R_target: Finalize-Ordner repokonform organisiert
+    Theta_condition: README.md + strukturierte Unterordner + Metadaten
+    beta_estimate: 4.2
+    zeta_risk: niedrig - organisatorisch
+  next_steps:
+  - 'Ordnerstruktur: research/, papers/, architecture/, searches/, archive/'
+  - 'README.md: Übersicht, Erkenntnisse, Verweise, Struktur'
+  - 'Metadaten: Datums-Stempel, Autoren (AI-Modelle), Themen-Tags'
+  - 'Integration mit V6-Plans: Verweise in V6ToDorefresh.md, Cross-References'
+  - Finalize_TODO trilayer (JSON, YAML, MD)
+  - Konsistenz-Check mit Repository-Konventionen
+  - PDFs in papers/ verschieben
+  - Search-Dateien in searches/ verschieben
+  references:
+  - path: releases/V6-Plans_etc/Finalize/
+  - path: releases/V6-Plans_etc/V6ToDorefresh.md
+  - path: ARCHITECTURE.md
+  priority: 7
+  sprint_focus: Ordner-Struktur + README
+
+- id: finalize-deepresearch-protocols
+  title: DeepResearch-Protokolle dokumentieren und ausführen
+  status: open
+  completeness: Prompts in Claude.txt; Execution und Tracking fehlen.
+  scope:
+  - research
+  - validation
+  - documentation
+  logistic_profile:
+    R_target: Alle DeepResearch-Prompts dokumentiert und erste Runde ausgeführt
+    Theta_condition: research/deepresearch_results/
+    beta_estimate: 5.5
+    zeta_risk: moderate - zeitintensiv
+  next_steps:
+  - 'DeepResearch v1: Experimentelle Signaturen (Themenblock A-E)'
+  - 'DeepResearch v2: v_RIG-Falsifikation (Themenblock A2-H)'
+  - 'DeepResearch v3: Entkopplungs-Regime (Block I-V)'
+  - 'DeepResearch v4: Loihi-Kleiber-Experiment (Block A-E)'
+  - Jedes Protokoll als Markdown-Template
+  - 'Ergebnis-Tracking: Evidenz / Übereinstimmung / Widerspruch / Lücken'
+  - Integration in research/deepresearch_protocols/
+  - Zusammenfassung in docs/deepresearch_summary.md
+  - Search-Dateien als Basis nutzen
+  references:
+  - path: releases/V6-Plans_etc/Finalize/Claude.txt
+  - path: releases/V6-Plans_etc/Finalize/ChatGPTSuche*.txt
+  - path: releases/V6-Plans_etc/DeepResearchProtokoll2!!WOW.txt
+  priority: 8
+  sprint_focus: Protokoll-Templates + Erste Ausführung
+
+delta_updates:
+- date: '2025-11-27'
+  label: finalize-initialization
+  highlights:
+  - 'Finalize-Ordner analysiert: 13 Dateien (3 PDFs, 10 TXT)'
+  - '8 Haupt-Tasks identifiziert'
+  - 'Trilayer-TODO-Struktur erstellt (MD, YAML, JSON)'
+  - 'Kernerkenntnisse: Böhme-Anomalie (1.3%), Entkopplung (β_AI≈1.0), Loihi (100×), Aeon-Architektur'
