@@ -15,7 +15,7 @@ OpenAPI Docs:
 
 from fastapi import FastAPI, HTTPException, Response
 from fastapi.responses import JSONResponse, StreamingResponse
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 from typing import List, Optional, Dict, Any
 import io
 import base64
@@ -97,7 +97,8 @@ class SonifyRequest(BaseModel):
     sample_rate: int = Field(44100, description="Sample rate (Hz)")
     preset: Optional[str] = Field(None, description="Optional preset name")
 
-    @validator('field_type')
+    @field_validator('field_type')
+    @classmethod
     def validate_field_type(cls, v):
         valid_types = ['weakly_coupled', 'high_dimensional', 'strongly_coupled',
                       'physically_constrained', 'meta_adaptive']
@@ -105,7 +106,8 @@ class SonifyRequest(BaseModel):
             raise ValueError(f"field_type must be one of {valid_types}")
         return v
 
-    @validator('sample_rate')
+    @field_validator('sample_rate')
+    @classmethod
     def validate_sample_rate(cls, v):
         if v not in [22050, 44100, 48000]:
             raise ValueError("sample_rate must be 22050, 44100, or 48000")
@@ -118,25 +120,26 @@ class SonifyResponse(BaseModel):
 
 
 class AnalyzeRequest(BaseModel):
-    R: List[float] = Field(..., min_items=5, description="Control parameter values")
-    sigma: List[float] = Field(..., min_items=5, description="Order parameter values")
+    R: List[float] = Field(..., min_length=5, description="Control parameter values")
+    sigma: List[float] = Field(..., min_length=5, description="Order parameter values")
     bootstrap_iterations: int = Field(1000, ge=100, le=10000)
     null_models: List[str] = Field(
         ["linear", "exponential", "power_law"],
         description="Null models to compare"
     )
 
-    @validator('sigma')
+    @field_validator('sigma')
+    @classmethod
     def validate_sigma(cls, v):
         if any(s < 0 or s > 1 for s in v):
             raise ValueError("sigma values must be between 0 and 1")
         return v
 
-    @validator('R', 'sigma')
-    def validate_lengths_match(cls, v, values):
-        if 'R' in values and len(values['R']) != len(v):
+    @model_validator(mode='after')
+    def validate_lengths_match(self):
+        if len(self.R) != len(self.sigma):
             raise ValueError("R and sigma must have same length")
-        return v
+        return self
 
 
 class AnalyzeResponse(BaseModel):
@@ -654,7 +657,7 @@ class FieldTypeInfo(BaseModel):
     """Field type classification with β-range"""
     type: str = Field(..., description="Field type name")
     description: str = Field(..., description="Human-readable description")
-    beta_range: List[float] = Field(..., min_items=2, max_items=2, description="[min, max] β range")
+    beta_range: List[float] = Field(..., min_length=2, max_length=2, description="[min, max] β range")
     color: str = Field(..., description="Hex color code")
 
 

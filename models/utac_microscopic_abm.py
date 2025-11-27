@@ -52,13 +52,12 @@ License: AGPL-3.0
 
 from __future__ import annotations
 
+import warnings
 from dataclasses import dataclass
-from typing import Callable, Optional, Tuple
 
 import numpy as np
-from scipy.optimize import curve_fit
 from scipy.ndimage import uniform_filter
-
+from scipy.optimize import curve_fit
 
 # ═══════════════════════════════════════════════════════════════
 # MICROSCOPIC ABM
@@ -251,7 +250,7 @@ def extract_emergent_beta(
     R_values: np.ndarray,
     sigma_values: np.ndarray,
     theta: float = 0.5,
-) -> Tuple[float, float, dict]:
+) -> tuple[float, float, dict]:
     """Extract emergent β from coarse-grained σ(R) data.
 
     Fits: σ(R) = 1/(1 + exp(-β(R - Θ)))
@@ -290,9 +289,11 @@ def extract_emergent_beta(
         )
         beta_fit, theta_fit = popt
         sigma_pred = logistic(R_values, beta_fit, theta_fit)
-        r_squared = float(1 - np.sum((sigma_values - sigma_pred) ** 2) / np.sum(
-            (sigma_values - np.mean(sigma_values)) ** 2
-        ))
+        # Calculate R² with protection against divide by zero (constant sigma values)
+        ss_tot = np.sum((sigma_values - np.mean(sigma_values)) ** 2)
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message="divide by zero encountered")
+            r_squared = float(1 - np.sum((sigma_values - sigma_pred) ** 2) / ss_tot) if ss_tot != 0 else 0.0
         fit_info = {
             "beta": float(beta_fit),
             "theta": float(theta_fit),
@@ -326,7 +327,7 @@ class EmergentBetaSimulator:
 
     def scan_resource_range(
         self, R_min: float = -2.0, R_max: float = 2.0, n_points: int = 20
-    ) -> Tuple[np.ndarray, np.ndarray]:
+    ) -> tuple[np.ndarray, np.ndarray]:
         """Scan external field (R-proxy) and measure σ̄.
 
         Parameters

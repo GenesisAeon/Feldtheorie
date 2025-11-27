@@ -28,24 +28,24 @@ import argparse
 import json
 import math
 import random
+from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Sequence
 
 
 @dataclass
 class ContextSeries:
     """Container for adaptive-threshold traces."""
 
-    R: List[float]
-    theta: List[float]
-    sigma_observed: List[float]
-    sigma_dynamic: List[float]
-    sigma_static: List[float]
-    S_system: List[float]
-    C_sub: List[float]
-    E_context: List[float]
-    delta_trace: List[float]
+    R: list[float]
+    theta: list[float]
+    sigma_observed: list[float]
+    sigma_dynamic: list[float]
+    sigma_static: list[float]
+    S_system: list[float]
+    C_sub: list[float]
+    E_context: list[float]
+    delta_trace: list[float]
 
 
 @dataclass
@@ -61,13 +61,13 @@ class AdaptiveScenario:
     delta_magnitude: float
     noise: float
 
-    def _profiles(self, steps: int) -> Dict[str, List[float]]:
+    def _profiles(self, steps: int) -> dict[str, list[float]]:
         """Generate complexity traces tailored to the scenario."""
 
-        S: List[float] = []
-        C: List[float] = []
-        E: List[float] = []
-        delta_events: List[float] = []
+        S: list[float] = []
+        C: list[float] = []
+        E: list[float] = []
+        delta_events: list[float] = []
         phase_advance = {
             "biosphere": 0.0,
             "cognition": 0.25,
@@ -100,11 +100,11 @@ class AdaptiveScenario:
 
         rng = random.Random(seed)
         traces = self._profiles(steps)
-        R_values: List[float] = []
-        theta_values: List[float] = []
-        sigma_obs: List[float] = []
-        sigma_dyn: List[float] = []
-        sigma_static: List[float] = []
+        R_values: list[float] = []
+        theta_values: list[float] = []
+        sigma_obs: list[float] = []
+        sigma_dyn: list[float] = []
+        sigma_static: list[float] = []
 
         for idx in range(steps):
             tau = idx / (steps - 1)
@@ -152,7 +152,7 @@ def _aic(ss_res: float, n: int, k: int) -> float:
     return n * math.log(ss_res / n) + 2 * k
 
 
-def _summary_stats(values: Sequence[float]) -> Dict[str, float]:
+def _summary_stats(values: Sequence[float]) -> dict[str, float]:
     if not values:
         return {"min": 0.0, "max": 0.0, "mean": 0.0}
     return {
@@ -162,7 +162,7 @@ def _summary_stats(values: Sequence[float]) -> Dict[str, float]:
     }
 
 
-def _residual_metrics(observed: Sequence[float], predicted: Sequence[float], k: int) -> Dict[str, float]:
+def _residual_metrics(observed: Sequence[float], predicted: Sequence[float], k: int) -> dict[str, float]:
     residuals = [obs - pred for obs, pred in zip(observed, predicted)]
     ss_res = sum(value**2 for value in residuals)
     mean_obs = sum(observed) / len(observed)
@@ -171,7 +171,7 @@ def _residual_metrics(observed: Sequence[float], predicted: Sequence[float], k: 
     return {"ss_res": ss_res, "r2": r2, "aic": _aic(ss_res, len(observed), k)}
 
 
-def evaluate_null_model(R: Sequence[float], sigma: Sequence[float]) -> Dict[str, float]:
+def evaluate_null_model(R: Sequence[float], sigma: Sequence[float]) -> dict[str, float]:
     """Fit a smooth linear null sigma = m R + b for falsification."""
 
     mean_R = sum(R) / len(R)
@@ -186,7 +186,7 @@ def evaluate_null_model(R: Sequence[float], sigma: Sequence[float]) -> Dict[str,
     return metrics
 
 
-def evaluate_power_law_null(R: Sequence[float], sigma: Sequence[float]) -> Dict[str, float]:
+def evaluate_power_law_null(R: Sequence[float], sigma: Sequence[float]) -> dict[str, float]:
     """Calibrate sigma = A * R^k as a smooth alternative baseline."""
 
     clipped = [min(max(value, 1e-3), 1.0 - 1e-3) for value in sigma]
@@ -204,7 +204,7 @@ def evaluate_power_law_null(R: Sequence[float], sigma: Sequence[float]) -> Dict[
     return metrics
 
 
-def fit_threshold_parameters(R: Sequence[float], sigma: Sequence[float]) -> Dict[str, float]:
+def fit_threshold_parameters(R: Sequence[float], sigma: Sequence[float]) -> dict[str, float]:
     """Estimate Theta and beta via logit-linear regression."""
 
     def logit(prob: float) -> float:
@@ -266,7 +266,7 @@ def fit_threshold_parameters(R: Sequence[float], sigma: Sequence[float]) -> Dict
     }
 
 
-def evaluate_scenario(scenario: AdaptiveScenario, steps: int = 64) -> Dict[str, object]:
+def evaluate_scenario(scenario: AdaptiveScenario, steps: int = 64) -> dict[str, object]:
     """Run the adaptive-threshold experiment and collect diagnostics."""
 
     series = scenario.generate(steps=steps)
@@ -322,7 +322,7 @@ def evaluate_scenario(scenario: AdaptiveScenario, steps: int = 64) -> Dict[str, 
     }
 
 
-def build_scenarios() -> List[AdaptiveScenario]:
+def build_scenarios() -> list[AdaptiveScenario]:
     """Define the adaptive-threshold typology cohort."""
 
     return [
@@ -359,7 +359,7 @@ def build_scenarios() -> List[AdaptiveScenario]:
     ]
 
 
-def build_summary(steps: int = 64) -> Dict[str, object]:
+def build_summary(steps: int = 64) -> dict[str, object]:
     """Evaluate all scenarios and compose a JSON-ready summary."""
 
     scenarios = build_scenarios()

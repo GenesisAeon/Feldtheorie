@@ -30,15 +30,15 @@ Date: 2025-11-12
 Version: 1.0.0
 """
 
+import json
+import warnings
+from pathlib import Path
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from scipy import stats
-from scipy.optimize import curve_fit, minimize
-import json
-from pathlib import Path
-from typing import Dict, Tuple, Callable, Optional
-import warnings
+from scipy.optimize import curve_fit
 
 warnings.filterwarnings('ignore', category=RuntimeWarning)
 
@@ -69,7 +69,7 @@ class HubbleReboundTest:
         # In production: Load from compilation (Riess, DES, BAO, etc.)
         self.z_bins, self.H_z_obs, self.H_z_err = self._generate_hz_data()
 
-    def _generate_hz_data(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    def _generate_hz_data(self) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         """Generate synthetic H(z) measurements.
 
         In production: Load from H₀ compilation (Riess, DES, SHOES, BAO, etc.)
@@ -140,7 +140,7 @@ class HubbleReboundTest:
         H_z = H0 * (1 + alpha * z - delta * z**2)
         return np.maximum(H_z, 0)  # No negative H(z)
 
-    def fit_lambda_cdm(self) -> Dict:
+    def fit_lambda_cdm(self) -> dict:
         """Fit ΛCDM model to H(z) data."""
         # Initial guess
         p0 = [70.0, 0.3]  # [H0, Omega_m]
@@ -186,7 +186,7 @@ class HubbleReboundTest:
             'n_params': n_params
         }
 
-    def fit_type6_rebound(self) -> Dict:
+    def fit_type6_rebound(self) -> dict:
         """Fit Type-6 Rebound model to H(z) data."""
         # Initial guess
         p0 = [70.0, 0.8, 0.15]  # [H0, alpha, delta]
@@ -240,7 +240,7 @@ class HubbleReboundTest:
             'n_params': n_params
         }
 
-    def model_comparison(self, lcdm_result: Dict, type6_result: Dict) -> Dict:
+    def model_comparison(self, lcdm_result: dict, type6_result: dict) -> dict:
         """Compare ΛCDM vs Type-6 Rebound models."""
         # ΔAIC
         delta_aic = type6_result['aic'] - lcdm_result['aic']
@@ -289,7 +289,7 @@ class HubbleReboundTest:
         else:
             return "ΛCDM overwhelmingly preferred (ΔAIC > 10)"
 
-    def hubble_tension_test(self, lcdm_result: Dict, type6_result: Dict) -> Dict:
+    def hubble_tension_test(self, lcdm_result: dict, type6_result: dict) -> dict:
         """Test whether models resolve Hubble tension."""
         # Compare fitted H₀ to observations
         lcdm_tension = abs(lcdm_result['H0'] - self.H0_local) / self.H0_local_err
@@ -313,14 +313,14 @@ class HubbleReboundTest:
             'type6_resolves_tension': type6_resolves
         }
 
-    def run_full_analysis(self) -> Dict:
+    def run_full_analysis(self) -> dict:
         """Run complete Hubble parameter evolution analysis."""
         print("=" * 70)
         print("Hubble Parameter Evolution Test: Type-6 Rebound vs ΛCDM")
         print("=" * 70)
 
         # Initial Hubble tension
-        print(f"\nHubble Tension:")
+        print("\nHubble Tension:")
         print(f"  Local H₀ (SH0ES):  {self.H0_local:.1f} ± {self.H0_local_err:.1f} km/s/Mpc")
         print(f"  CMB H₀ (Planck):   {self.H0_cmb:.1f} ± {self.H0_cmb_err:.1f} km/s/Mpc")
         print(f"  Tension: {self.tension_sigma:.1f}σ")
@@ -394,7 +394,7 @@ class HubbleReboundTest:
 
         return results
 
-    def plot_results(self, results: Dict, output_path: str = "paper/figures/h0_rebound_fit.png"):
+    def plot_results(self, results: dict, output_path: str = "paper/figures/h0_rebound_fit.png"):
         """Create comprehensive visualization of H(z) analysis."""
         fig, axes = plt.subplots(2, 2, figsize=(14, 10))
         fig.suptitle('Hubble Parameter Evolution: Type-6 Rebound vs ΛCDM',
@@ -540,7 +540,7 @@ def main():
     test.plot_results(results)
 
     print("\n✓ Hubble Parameter Evolution Test complete!")
-    print(f"  Budget: ~2-3K tokens (~$0.50-1.00)")
+    print("  Budget: ~2-3K tokens (~$0.50-1.00)")
 
     return results
 

@@ -17,12 +17,12 @@ Date: November 2025
 License: AGPL-3.0
 """
 
-import numpy as np
+import argparse
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Tuple
-import argparse
+
+import numpy as np
 
 # Golden ratio
 PHI = (1 + np.sqrt(5)) / 2
@@ -110,7 +110,7 @@ def simulate_membrane_dynamics(
     dt: float = 0.01,
     R0: float = -2.0,
     random_seed: int = 1337
-) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
     Simulate membrane equation with negative coupling.
 
@@ -174,7 +174,7 @@ def driver_stochastic(t: float, mean: float = 0.5, noise_std: float = 0.1) -> fl
     return mean + np.random.normal(0, noise_std)
 
 
-def run_full_simulation(config: Dict) -> Dict:
+def run_full_simulation(config: dict) -> dict:
     """
     Run complete implosive field simulation suite.
 
@@ -285,7 +285,7 @@ def run_full_simulation(config: Dict) -> Dict:
     return results
 
 
-def save_results(results: Dict, output_path: Path):
+def save_results(results: dict, output_path: Path):
     """Save simulation results to JSON file."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -295,24 +295,24 @@ def save_results(results: Dict, output_path: Path):
     print(f"✓ Results saved to: {output_path}")
 
 
-def print_summary(results: Dict):
+def print_summary(results: dict):
     """Print simulation summary."""
     print("\n" + "=" * 70)
     print("UTAC v1.3φ - Type-6 Implosive Field Simulation")
     print("=" * 70)
 
-    print(f"\n📊 Φ-Scaling Parameters:")
+    print("\n📊 Φ-Scaling Parameters:")
     print(f"   Φ = {results['phi']:.6f}")
     print(f"   Φ^(1/3) = {results['phi_third']:.6f}")
     print(f"   β₀ = {results['beta_0']:.3f}")
 
-    print(f"\n🌀 β-Sequence (9 steps):")
+    print("\n🌀 β-Sequence (9 steps):")
     for i, beta in enumerate(results['beta_sequence']):
         marker = " ← Φ³ attractor" if i == 9 else ""
         print(f"   Step {i}: β = {beta:.4f}{marker}")
 
     conv = results['convergence']
-    print(f"\n✓ Convergence:")
+    print("\n✓ Convergence:")
     print(f"   Φ³ (theoretical) = {conv['phi3_theoretical']:.6f}")
     print(f"   β₉ (simulated) = {conv['beta9_simulated']:.6f}")
     print(f"   Relative error = {conv['relative_error']*100:.2f}%")

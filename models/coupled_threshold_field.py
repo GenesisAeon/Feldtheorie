@@ -37,8 +37,8 @@ ignites; the Robin impedance decides whether the chorus whispers or roars.  The
 from __future__ import annotations
 
 import math
+from collections.abc import Callable, Iterable, Mapping, MutableMapping
 from dataclasses import dataclass, field
-from typing import Callable, Dict, Iterable, Mapping, MutableMapping
 
 import numpy as np
 
@@ -151,7 +151,7 @@ class CoupledThresholdField:
         self,
         state: Mapping[str, float],
         driver: float,
-    ) -> Dict[str, float]:
+    ) -> dict[str, float]:
         r"""Advance the coupled membrane by one Euler beat.
 
         Formal thread
@@ -212,7 +212,7 @@ class CoupledThresholdField:
         R0: float = 0.0,
         psi0: float = 0.0,
         phi0: float = 0.0,
-    ) -> Dict[str, list[float]]:
+    ) -> dict[str, list[float]]:
         """Run the coupled membrane across a driver sequence.
 
         Returns lists for time, order parameter, fields, logistic response,

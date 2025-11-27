@@ -24,7 +24,7 @@ import json
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -33,12 +33,13 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from models.membrane_solver import logistic_response
+
 from .resonance_fit_pipeline import (
     evaluate_null_model,
     evaluate_power_law_null,
     fit_threshold_parameters,
 )
-from models.membrane_solver import logistic_response
 
 
 @dataclass
@@ -63,15 +64,15 @@ class DatasetMetadata:
     control_column: str
     response_column: str
     data_format: str
-    theta: Optional[float]
-    beta: Optional[float]
-    zeta_notes: Optional[str]
-    delta_aic_guard: Optional[float]
-    null_models: List[str]
-    preprocessing_steps: List[str]
-    provenance: Dict[str, Any]
-    temporal: Dict[str, Any]
-    simulation_hint: Optional[SimulationHint]
+    theta: float | None
+    beta: float | None
+    zeta_notes: str | None
+    delta_aic_guard: float | None
+    null_models: list[str]
+    preprocessing_steps: list[str]
+    provenance: dict[str, Any]
+    temporal: dict[str, Any]
+    simulation_hint: SimulationHint | None
     metadata_path: Path
 
 
@@ -89,17 +90,17 @@ class FitResult:
     control_column: str
     response_column: str
     theta: float
-    theta_ci: Tuple[float, float]
+    theta_ci: tuple[float, float]
     beta: float
-    beta_ci: Tuple[float, float]
+    beta_ci: tuple[float, float]
     r_squared: float
     aic: float
     delta_aic_best: float
-    null_models: Dict[str, Dict[str, Any]]
+    null_models: dict[str, dict[str, Any]]
     sample_size: int
 
-    def to_dict(self) -> Dict[str, Any]:
-        payload: Dict[str, Any] = {
+    def to_dict(self) -> dict[str, Any]:
+        payload: dict[str, Any] = {
             "dataset_id": self.dataset_id,
             "dataset_name": self.dataset_name,
             "domain": self.domain,
@@ -122,10 +123,10 @@ class FitResult:
         return payload
 
 
-def _normalise_null_payload(payload: Dict[str, Any]) -> Dict[str, Any]:
+def _normalise_null_payload(payload: dict[str, Any]) -> dict[str, Any]:
     """Cast numeric entries to floats while preserving descriptive fields."""
 
-    normalised: Dict[str, Any] = {}
+    normalised: dict[str, Any] = {}
     for key, value in payload.items():
         if isinstance(value, (int, float)):
             normalised[key] = float(value)
@@ -137,7 +138,7 @@ def _normalise_null_payload(payload: Dict[str, Any]) -> Dict[str, Any]:
     return normalised
 
 
-def _coerce_simulation_hint(raw: Optional[Dict[str, Any]]) -> Optional[SimulationHint]:
+def _coerce_simulation_hint(raw: dict[str, Any] | None) -> SimulationHint | None:
     if not raw:
         return None
     return SimulationHint(
@@ -191,8 +192,8 @@ def load_metadata(metadata_path: Path) -> DatasetMetadata:
 def load_dataset(
     metadata: DatasetMetadata,
     simulate_missing: bool = False,
-    seed: Optional[int] = None,
-) -> Tuple[pd.DataFrame, str]:
+    seed: int | None = None,
+) -> tuple[pd.DataFrame, str]:
     """Load a dataset as a DataFrame, optionally simulating values if absent."""
 
     if metadata.path.exists():

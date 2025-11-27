@@ -22,14 +22,10 @@ Date: 2025-11-13
 
 import json
 from pathlib import Path
-from typing import Dict, List
-
-import numpy as np
 
 from models.utac_microscopic_abm import (
     ABMParams,
     EmergentBetaSimulator,
-    microscopic_to_beta_map,
 )
 
 
@@ -40,7 +36,7 @@ def validate_system(
     T: float,
     lattice_size: int = 64,
     verbose: bool = True,
-) -> Dict:
+) -> dict:
     """Validate emergent β for single system.
 
     Parameters
@@ -98,7 +94,7 @@ def validate_system(
     }
 
 
-def run_full_validation() -> Dict:
+def run_full_validation() -> dict:
     """Run validation across all system types.
 
     Returns
@@ -136,10 +132,10 @@ def run_full_validation() -> Dict:
     pass_rate = n_passed / n_total * 100
 
     print(f"\n{'=' * 60}")
-    print(f"📊 Validation Summary")
+    print("📊 Validation Summary")
     print(f"   Systems tested: {n_total}")
     print(f"   Passed: {n_passed}/{n_total} ({pass_rate:.0f}%)")
-    print(f"   Criteria: R² ≥ 0.85, Deviation ≤ 15%")
+    print("   Criteria: R² ≥ 0.85, Deviation ≤ 15%")
 
     if pass_rate >= 80:
         print(f"\n✅ VALIDATION PASSED! ({pass_rate:.0f}% ≥ 80%)")

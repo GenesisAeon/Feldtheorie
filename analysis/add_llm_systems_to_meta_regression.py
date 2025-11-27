@@ -26,7 +26,6 @@ Date: 2025-11-12
 import argparse
 import csv
 from pathlib import Path
-from typing import Dict, List
 
 # ═══════════════════════════════════════════════════════════════
 # LLM SYSTEM DEFINITIONS
@@ -160,13 +159,13 @@ LLM_SYSTEMS = [
 # CSV UPDATE FUNCTIONS
 # ═══════════════════════════════════════════════════════════════
 
-def load_csv(filepath: Path) -> List[Dict]:
+def load_csv(filepath: Path) -> list[dict]:
     """Load CSV as list of dicts."""
-    with open(filepath, 'r') as f:
+    with open(filepath) as f:
         return list(csv.DictReader(f))
 
 
-def write_csv(filepath: Path, rows: List[Dict], fieldnames: List[str]):
+def write_csv(filepath: Path, rows: list[dict], fieldnames: list[str]):
     """Write list of dicts to CSV."""
     with open(filepath, 'w', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -174,7 +173,7 @@ def write_csv(filepath: Path, rows: List[Dict], fieldnames: List[str]):
         writer.writerows(rows)
 
 
-def add_to_beta_estimates(systems: List[Dict], beta_csv: Path, dry_run: bool = False):
+def add_to_beta_estimates(systems: list[dict], beta_csv: Path, dry_run: bool = False):
     """Add LLM systems to beta_estimates.csv."""
     # Load existing
     existing = load_csv(beta_csv)
@@ -217,7 +216,7 @@ def add_to_beta_estimates(systems: List[Dict], beta_csv: Path, dry_run: bool = F
         print(f"   n: {len(existing)} → {len(all_rows)} (+{len(new_rows)})")
 
 
-def add_to_domain_covariates(systems: List[Dict], covar_csv: Path, dry_run: bool = False):
+def add_to_domain_covariates(systems: list[dict], covar_csv: Path, dry_run: bool = False):
     """Add LLM systems to domain_covariates.csv."""
     # Load existing
     existing = load_csv(covar_csv)
@@ -273,11 +272,11 @@ def main():
     print("=" * 70)
     print("ADDING 6 LLM SYSTEMS TO META-REGRESSION DATASET")
     print("=" * 70)
-    print(f"Systems: 6 LLM models (GPT-125M → Claude-52B)")
-    print(f"β range: 4.20 - 4.35 (all converge to Φ³ = 4.236)")
-    print(f"Field types: 5× high_dimensional, 1× meta_adaptive")
-    print(f"Domain diversity: AI/ML 3 → 9 systems (+200%)")
-    print(f"Dataset expansion: n=15 → n=21 (+40%)")
+    print("Systems: 6 LLM models (GPT-125M → Claude-52B)")
+    print("β range: 4.20 - 4.35 (all converge to Φ³ = 4.236)")
+    print("Field types: 5× high_dimensional, 1× meta_adaptive")
+    print("Domain diversity: AI/ML 3 → 9 systems (+200%)")
+    print("Dataset expansion: n=15 → n=21 (+40%)")
     print("=" * 70)
 
     # Add to beta_estimates.csv

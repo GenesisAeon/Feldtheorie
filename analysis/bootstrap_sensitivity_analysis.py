@@ -20,20 +20,16 @@ License: AGPL-3.0
 
 import argparse
 import json
-import sys
-from pathlib import Path
-from typing import Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
-from scipy import stats
 
 # Set random seed for reproducibility
 np.random.seed(42)
 
 
 def bootstrap_beta_estimates(beta: np.ndarray, beta_ci_lower: np.ndarray, beta_ci_upper: np.ndarray,
-                              n_iterations: int = 1000) -> Dict:
+                              n_iterations: int = 1000) -> dict:
     """Bootstrap resampling of β estimates.
 
     Args:
@@ -82,7 +78,7 @@ def bootstrap_beta_estimates(beta: np.ndarray, beta_ci_lower: np.ndarray, beta_c
     }
 
 
-def jackknife_analysis(beta: np.ndarray, domains: List[str]) -> Dict:
+def jackknife_analysis(beta: np.ndarray, domains: list[str]) -> dict:
     """Jackknife leave-one-out analysis.
 
     Args:
@@ -139,7 +135,7 @@ def jackknife_analysis(beta: np.ndarray, domains: List[str]) -> Dict:
     }
 
 
-def field_type_stability(beta: np.ndarray, field_types: List[str]) -> Dict:
+def field_type_stability(beta: np.ndarray, field_types: list[str]) -> dict:
     """Test stability of β estimates within field types.
 
     Args:
@@ -182,7 +178,7 @@ def field_type_stability(beta: np.ndarray, field_types: List[str]) -> Dict:
     }
 
 
-def coefficient_stability_test(beta: np.ndarray, n_subsamples: int = 100, subsample_fraction: float = 0.8) -> Dict:
+def coefficient_stability_test(beta: np.ndarray, n_subsamples: int = 100, subsample_fraction: float = 0.8) -> dict:
     """Test coefficient stability under random subsampling.
 
     Args:

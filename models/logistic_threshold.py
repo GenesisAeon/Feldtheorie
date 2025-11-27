@@ -21,8 +21,8 @@ beyond it the logistic bloom ignites, modulated by the impedance chorus.
 
 from __future__ import annotations
 
+from collections.abc import Callable, Iterable, Mapping, MutableMapping
 from dataclasses import dataclass, field
-from typing import Callable, Iterable, Mapping, MutableMapping
 
 import numpy as np
 
@@ -100,7 +100,7 @@ class ThresholdMembrane:
         r_arr = np.asarray(list(r), dtype=float)
         logistic = self.response(r_arr)
         null = self.null_baseline(r_arr)
-        gain = float(np.trapz(logistic, r_arr) / np.trapz(null, r_arr))
+        gain = float(np.trapezoid(logistic, r_arr) / np.trapezoid(null, r_arr))
         half_max = 0.5 * np.max(logistic)
         onset_idx = int(np.argmax(logistic >= half_max))
         return {

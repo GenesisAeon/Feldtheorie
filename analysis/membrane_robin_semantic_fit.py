@@ -24,16 +24,15 @@ Metaphorical layer:
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import math
+import sys
+import types
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-import sys
 from statistics import mean, pstdev
-from typing import Dict, Iterable, List
-
-import importlib.util
-import types
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -55,7 +54,7 @@ def _load_membrane_solver() -> types.ModuleType:
     sys.modules.setdefault("models", package)
     sys.modules[module_name] = module
     spec.loader.exec_module(module)
-    setattr(package, "membrane_solver", module)
+    package.membrane_solver = module
     return module
 
 
@@ -86,7 +85,7 @@ def _load_resonance_pipeline() -> types.ModuleType:
     sys.modules.setdefault("analysis", parent)
     sys.modules[module_name] = module
     spec.loader.exec_module(module)
-    setattr(parent, "resonance_fit_pipeline", module)
+    parent.resonance_fit_pipeline = module
     return module
 
 
@@ -118,13 +117,13 @@ def _gaussian_bump(time: float, center: float, width: float) -> float:
     return math.exp(exponent)
 
 
-def build_driver(config: DriverConfig, steps: int, dt: float) -> List[float]:
+def build_driver(config: DriverConfig, steps: int, dt: float) -> list[float]:
     r"""Sculpt the driver sequence that coaxes R toward \Theta."""
 
     import random
 
     rng = random.Random(config.seed)
-    drivers: List[float] = []
+    drivers: list[float] = []
     for idx in range(steps):
         t = idx * dt
         burst = config.burst_amplitude * _gaussian_bump(t, config.burst_center, config.burst_width)
@@ -134,7 +133,7 @@ def build_driver(config: DriverConfig, steps: int, dt: float) -> List[float]:
     return drivers
 
 
-def summarise_residuals(observed: Iterable[float], predicted: Iterable[float]) -> Dict[str, float]:
+def summarise_residuals(observed: Iterable[float], predicted: Iterable[float]) -> dict[str, float]:
     """Compute residual diagnostics for the logistic fit."""
 
     obs = list(observed)
@@ -146,7 +145,7 @@ def summarise_residuals(observed: Iterable[float], predicted: Iterable[float]) -
     }
 
 
-def tri_layer_story(theta: float, beta: float, delta_aic_linear: float, delta_aic_power: float) -> Dict[str, str]:
+def tri_layer_story(theta: float, beta: float, delta_aic_linear: float, delta_aic_power: float) -> dict[str, str]:
     """Compose the tri-layer cadence for the exported JSON payload."""
 
     return {
@@ -175,7 +174,7 @@ def simulate_robin_semantic(
     steps: int,
     driver_config: DriverConfig,
     robin: DynamicRobinBoundary,
-) -> Dict[str, List[float]]:
+) -> dict[str, list[float]]:
     """Run the ThresholdFieldSolver with semantic coupling and Robin boundary."""
 
     impedance = smooth_impedance_profile(theta, resonant_gain=0.72, damped_gain=1.42, switch_width=0.55)
@@ -200,7 +199,7 @@ def package_output(
     dt: float,
     driver_config: DriverConfig,
     robin: DynamicRobinBoundary,
-    results: Dict[str, List[float]],
+    results: dict[str, list[float]],
     output_path: Path,
 ) -> None:
     """Fit the logistic response, evaluate nulls, and emit JSON."""

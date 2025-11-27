@@ -26,9 +26,10 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence
+from typing import Any
 
 DEFAULT_REL_TOL = 1e-3
 ABS_FLOOR = 1e-6
@@ -55,9 +56,9 @@ def _relative_close(expected: float, actual: float, rel_tol: float) -> bool:
     return abs(expected - actual) <= max(rel_tol * scale, ABS_FLOOR)
 
 
-def _extract_sequence(value: Any) -> Optional[List[float]]:
+def _extract_sequence(value: Any) -> list[float] | None:
     if isinstance(value, Iterable) and not isinstance(value, (str, bytes, dict)):
-        result: List[float] = []
+        result: list[float] = []
         for item in value:
             if isinstance(item, (int, float)):
                 result.append(float(item))
@@ -67,7 +68,7 @@ def _extract_sequence(value: Any) -> Optional[List[float]]:
     return None
 
 
-def _meta_logistic(payload: Mapping[str, Any]) -> Optional[Mapping[str, Any]]:
+def _meta_logistic(payload: Mapping[str, Any]) -> Mapping[str, Any] | None:
     meta_block = payload.get("meta")
     if isinstance(meta_block, Mapping):
         logistic = meta_block.get("logistic")
@@ -81,7 +82,7 @@ def _load_json(path: Path) -> Mapping[str, Any]:
         return json.load(handle)
 
 
-def _extract_theta(payload: Mapping[str, Any]) -> tuple[Optional[float], Optional[List[float]]]:
+def _extract_theta(payload: Mapping[str, Any]) -> tuple[float | None, list[float] | None]:
     meta_logistic = _meta_logistic(payload)
     if isinstance(meta_logistic, Mapping):
         value = meta_logistic.get("theta")
@@ -111,7 +112,7 @@ def _extract_theta(payload: Mapping[str, Any]) -> tuple[Optional[float], Optiona
     return (None, None)
 
 
-def _extract_beta(payload: Mapping[str, Any]) -> tuple[Optional[float], Optional[List[float]]]:
+def _extract_beta(payload: Mapping[str, Any]) -> tuple[float | None, list[float] | None]:
     meta_logistic = _meta_logistic(payload)
     if isinstance(meta_logistic, Mapping):
         value = meta_logistic.get("beta")
@@ -141,7 +142,7 @@ def _extract_beta(payload: Mapping[str, Any]) -> tuple[Optional[float], Optional
     return (None, None)
 
 
-def _extract_logistic_r2(payload: Mapping[str, Any]) -> Optional[float]:
+def _extract_logistic_r2(payload: Mapping[str, Any]) -> float | None:
     meta_logistic = _meta_logistic(payload)
     if isinstance(meta_logistic, Mapping):
         value = meta_logistic.get("r2")
@@ -156,8 +157,8 @@ def _extract_logistic_r2(payload: Mapping[str, Any]) -> Optional[float]:
     return None
 
 
-def _extract_best_null(payload: Mapping[str, Any]) -> tuple[Optional[str], Optional[float], Optional[float]]:
-    comparisons: Dict[str, Mapping[str, Any]] = {}
+def _extract_best_null(payload: Mapping[str, Any]) -> tuple[str | None, float | None, float | None]:
+    comparisons: dict[str, Mapping[str, Any]] = {}
     falsification = payload.get("falsification")
     if isinstance(falsification, Mapping):
         comps = falsification.get("comparisons")
@@ -169,9 +170,9 @@ def _extract_best_null(payload: Mapping[str, Any]) -> tuple[Optional[str], Optio
         if isinstance(nulls, Mapping):
             comparisons.update({k: v for k, v in nulls.items() if isinstance(v, Mapping)})
 
-    best_name: Optional[str] = None
-    best_delta_aic: Optional[float] = None
-    best_delta_r2: Optional[float] = None
+    best_name: str | None = None
+    best_delta_aic: float | None = None
+    best_delta_r2: float | None = None
     for name, metrics in comparisons.items():
         delta_aic = metrics.get("delta_aic")
         if not isinstance(delta_aic, (int, float)):
@@ -186,16 +187,16 @@ def _extract_best_null(payload: Mapping[str, Any]) -> tuple[Optional[str], Optio
 
 
 def validate_presets(
-    root: Optional[Path] = None,
+    root: Path | None = None,
     *,
-    presets_dir: Optional[Path] = None,
+    presets_dir: Path | None = None,
     rel_tol: float = DEFAULT_REL_TOL,
-) -> List[PresetIssue]:
+) -> list[PresetIssue]:
     """Validate every simulator preset against its analysis source."""
 
     base_root = root or Path(__file__).resolve().parents[1]
     directory = presets_dir or base_root / "simulator" / "presets"
-    issues: List[PresetIssue] = []
+    issues: list[PresetIssue] = []
 
     for preset_path in sorted(directory.glob("*.json")):
         preset_data = _load_json(preset_path)
@@ -335,7 +336,7 @@ def build_argument_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:
+def main(argv: Sequence[str] | None = None) -> int:
     """Entry point for ``utf-preset-guard``."""
 
     parser = build_argument_parser()

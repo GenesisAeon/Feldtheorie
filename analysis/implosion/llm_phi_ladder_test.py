@@ -29,7 +29,6 @@ import sys
 from pathlib import Path
 
 import numpy as np
-from scipy import stats
 
 # Add models to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -274,7 +273,7 @@ def create_validation_plot(beta_sequence: np.ndarray, ladder_result: dict, outpu
     # Overlay theoretical Φ^(n/3) steps
     ax.plot(range(len(BETA_STEPS[:len(sorted_beta)])), BETA_STEPS[:len(sorted_beta)],
             's--', markersize=8, linewidth=1.5, color='orange', alpha=0.7,
-            label=f'Theoretical Φ^(n/3) ladder')
+            label='Theoretical Φ^(n/3) ladder')
 
     ax.axhline(BETA_FIXPOINT_PHI3, color='red', linestyle=':', linewidth=2,
                label=f'Φ³ fixpoint ({BETA_FIXPOINT_PHI3:.2f})')
@@ -415,7 +414,7 @@ def main():
     alt_result = test_alternative_multipliers(beta_sequence, verbose=True)
 
     if alt_result['falsified'] == False:
-        print(f"  ✓ VALIDATED: Φ^(1/3) preferred (improvement < 20%)")
+        print("  ✓ VALIDATED: Φ^(1/3) preferred (improvement < 20%)")
     elif alt_result['falsified'] == True:
         print(f"  ⚠️  FALSIFIED: Alternative {alt_result['best_multiplier']:.4f} "
               f"improves by {alt_result['improvement']:.1%}")
@@ -433,7 +432,7 @@ def main():
     validated_count = sum(1 for t in tests if t.get('falsified') == False)
     falsified_count = sum(1 for t in tests if t.get('falsified') == True)
 
-    print(f"  Tests run: 3")
+    print("  Tests run: 3")
     print(f"  Validated: {validated_count}")
     print(f"  Falsified: {falsified_count}")
     print(f"  Inconclusive: {3 - validated_count - falsified_count}")

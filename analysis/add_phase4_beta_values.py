@@ -13,8 +13,10 @@ Author: Claude Code
 Date: 2025-11-13
 """
 
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
+
 
 def add_phase4_beta_values():
     """Add 5 empirical β-values to beta_estimates.csv"""

@@ -31,7 +31,6 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -45,8 +44,6 @@ except ImportError:
 
 # Import UTAC models
 sys.path.insert(0, str(Path(__file__).parents[1]))
-from models.logistic_threshold import ThresholdMembrane
-from models.social_rigidity_ising import IsingRigidityModel
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 
@@ -67,7 +64,7 @@ class RigidityFitResult:
     theta_ci_upper: float
     model_type: str = "social_rigidity_logistic"
 
-    def to_dict(self) -> Dict[str, object]:
+    def to_dict(self) -> dict[str, object]:
         return {
             "country_code": self.country_code,
             "country_name": self.country_name,
@@ -97,7 +94,7 @@ def compute_r_squared(y_true: np.ndarray, y_pred: np.ndarray) -> float:
 
 def fit_rigidity_logistic(
     gini_values: np.ndarray, rigidity_proxy: np.ndarray
-) -> Tuple[float, float, float]:
+) -> tuple[float, float, float]:
     """Fit logistic function to Gini → Rigidity data.
 
     Args:
@@ -135,7 +132,7 @@ def fit_rigidity_logistic(
 
 def bootstrap_confidence_intervals(
     gini_values: np.ndarray, rigidity_proxy: np.ndarray, n_bootstrap: int = 1000
-) -> Tuple[float, float, float, float]:
+) -> tuple[float, float, float, float]:
     """Compute bootstrap confidence intervals for β and Θ.
 
     Args:
@@ -200,7 +197,7 @@ def compute_rigidity_proxy(df: pd.DataFrame, country_code: str) -> np.ndarray:
     return rigidity
 
 
-def analyze_country(df: pd.DataFrame, country_code: str) -> Optional[RigidityFitResult]:
+def analyze_country(df: pd.DataFrame, country_code: str) -> RigidityFitResult | None:
     """Analyze a single country's Gini → Rigidity transition.
 
     Args:
@@ -250,7 +247,7 @@ def analyze_country(df: pd.DataFrame, country_code: str) -> Optional[RigidityFit
     )
 
 
-def export_results(results: List[RigidityFitResult], output_path: Path) -> None:
+def export_results(results: list[RigidityFitResult], output_path: Path) -> None:
     """Export analysis results to JSON.
 
     Args:
@@ -296,7 +293,7 @@ def export_results(results: List[RigidityFitResult], output_path: Path) -> None:
     print(f"\n✅ Results exported to {output_path}", file=sys.stderr)
 
 
-def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Analyze social rigidity from Gini data")
     parser.add_argument(
         "--input",
@@ -314,7 +311,7 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def main(argv: Optional[List[str]] = None) -> int:
+def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
 
     input_path = args.input if args.input.is_absolute() else BASE_DIR / args.input
@@ -346,8 +343,8 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     print("\n🎯 Validation Status:", file=sys.stderr)
     print(f"  ✅ Analyzed {len(results)} countries", file=sys.stderr)
-    print(f"  ⏳ NEXT: Compare β values with inequality levels", file=sys.stderr)
-    print(f"  ⏳ NEXT: Test hypothesis: High Gini → High β", file=sys.stderr)
+    print("  ⏳ NEXT: Compare β values with inequality levels", file=sys.stderr)
+    print("  ⏳ NEXT: Test hypothesis: High Gini → High β", file=sys.stderr)
 
     return 0
 

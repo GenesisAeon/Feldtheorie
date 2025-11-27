@@ -30,10 +30,10 @@ import math
 import random
 import sys
 import types
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 from pathlib import Path
 from statistics import mean, pstdev
-from typing import Dict, Iterable, List, Mapping
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -57,7 +57,7 @@ def _load_membrane_solver() -> types.ModuleType:
     sys.modules.setdefault("models", package)
     sys.modules[module_name] = module
     spec.loader.exec_module(module)
-    setattr(package, "membrane_solver", module)
+    package.membrane_solver = module
     return module
 
 
@@ -98,11 +98,11 @@ def _logistic_bloom(time: float, center: float, steepness: float) -> float:
     return 1.0 / (1.0 + math.exp(-steepness * (time - center)))
 
 
-def craft_driver(shape: DriverShape, steps: int, dt: float) -> List[float]:
+def craft_driver(shape: DriverShape, steps: int, dt: float) -> list[float]:
     r"""Generate the driver sequence nudging R across \(\Theta\)."""
 
     rng = random.Random(shape.seed)
-    drivers: List[float] = []
+    drivers: list[float] = []
     for index in range(steps):
         t = index * dt
         bloom = shape.logistic_height * _logistic_bloom(
@@ -121,7 +121,7 @@ def simulate_meta_threshold(
     dt: float,
     duration: float,
     driver_shape: DriverShape,
-) -> Mapping[str, List[float]]:
+) -> Mapping[str, list[float]]:
     """Run the adaptive-threshold membrane rehearsal."""
 
     steps = max(int(duration / dt), 1)
@@ -164,7 +164,7 @@ def simulate_meta_threshold(
     return solver.simulate(drivers, R0=theta - 0.24)
 
 
-def _series_stats(values: Iterable[float]) -> Dict[str, float]:
+def _series_stats(values: Iterable[float]) -> dict[str, float]:
     data = [float(v) for v in values]
     if not data:
         return {"mean": float("nan"), "std": float("nan"), "min": float("nan"), "max": float("nan")}
@@ -176,7 +176,7 @@ def _series_stats(values: Iterable[float]) -> Dict[str, float]:
     }
 
 
-def summarise_meta_drift(results: Mapping[str, List[float]], baseline_theta: float, baseline_beta: float) -> Dict[str, object]:
+def summarise_meta_drift(results: Mapping[str, list[float]], baseline_theta: float, baseline_beta: float) -> dict[str, object]:
     """Capture meta-gate fractions and theta/beta drift metrics."""
 
     theta_series = [float(value) for value in results.get("theta", [])]
@@ -193,7 +193,7 @@ def summarise_meta_drift(results: Mapping[str, List[float]], baseline_theta: flo
     cumulative_theta_shift = sum(theta_shift_series)
     cumulative_beta_shift = sum(beta_shift_series)
 
-    meta_summary: Dict[str, object] = {
+    meta_summary: dict[str, object] = {
         "theta_baseline": baseline_theta,
         "beta_baseline": baseline_beta,
         "theta_series": theta_series,
@@ -214,7 +214,7 @@ def summarise_meta_drift(results: Mapping[str, List[float]], baseline_theta: flo
 
 
 def enrich_summary(
-    results: Mapping[str, List[float]],
+    results: Mapping[str, list[float]],
     fit_metrics: Mapping[str, float],
     null_metrics: Mapping[str, Mapping[str, float]],
     *,
@@ -223,7 +223,7 @@ def enrich_summary(
     dt: float,
     duration: float,
     driver_shape: DriverShape,
-) -> Dict[str, object]:
+) -> dict[str, object]:
     """Combine assemble_summary output with adaptive diagnostics."""
 
     copied_results = {key: list(value) for key, value in results.items()}
@@ -277,7 +277,7 @@ def enrich_summary(
     return summary
 
 
-def build_summary(duration: float, dt: float, output_path: Path) -> Dict[str, object]:
+def build_summary(duration: float, dt: float, output_path: Path) -> dict[str, object]:
     """Simulate the adaptive membrane and export the resonance ledger."""
 
     theta = 0.57

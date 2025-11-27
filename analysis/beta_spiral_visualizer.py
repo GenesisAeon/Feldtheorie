@@ -16,13 +16,12 @@ Date: November 2025
 License: AGPL-3.0
 """
 
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+import argparse
 import json
 from pathlib import Path
-import argparse
-from typing import Dict
+
+import matplotlib.pyplot as plt
+import numpy as np
 
 # Golden ratio
 PHI = (1 + np.sqrt(5)) / 2
@@ -68,7 +67,7 @@ def plot_sigmoid_comparison(output_dir: Path):
 
         ax.set_xlabel('System Drive R')
         ax.set_ylabel('Response σ')
-        ax.set_title(f'β = {beta:.3f}' + (f' (Φ³ attractor)' if np.isclose(beta, PHI**3, rtol=0.01) else ''))
+        ax.set_title(f'β = {beta:.3f}' + (' (Φ³ attractor)' if np.isclose(beta, PHI**3, rtol=0.01) else ''))
         ax.legend(loc='best')
         ax.grid(True, alpha=0.3)
         ax.set_ylim([-0.05, 1.05])
@@ -194,7 +193,7 @@ def plot_energy_release(beta_values: list, output_dir: Path):
     plt.close()
 
 
-def plot_trajectory_comparison(results: Dict, output_dir: Path):
+def plot_trajectory_comparison(results: dict, output_dir: Path):
     """
     Plot time-domain trajectories from simulation results.
     """
@@ -250,7 +249,7 @@ def plot_trajectory_comparison(results: Dict, output_dir: Path):
     plt.close()
 
 
-def generate_summary_figure(results: Dict, output_dir: Path):
+def generate_summary_figure(results: dict, output_dir: Path):
     """
     Generate comprehensive summary figure combining key visualizations.
     """
@@ -366,7 +365,7 @@ def main():
     # Load results
     input_path = Path(args.input)
     if input_path.exists():
-        with open(input_path, 'r') as f:
+        with open(input_path) as f:
             results = json.load(f)
         print(f"✓ Loaded results from: {input_path}")
     else:

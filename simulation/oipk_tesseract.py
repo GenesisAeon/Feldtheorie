@@ -12,12 +12,10 @@ Source: releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt
 Authors: Johann Benjamin Römer, MOR Framework
 """
 
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from matplotlib.animation import FuncAnimation
-from typing import Tuple, List, Optional, Dict
 from dataclasses import dataclass
+
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 @dataclass
@@ -48,7 +46,7 @@ class TesseractTimeSlices:
     - Each cube stands NORMAL on base (not tilted pyramid!)
     """
 
-    def __init__(self, params: Optional[TesseractParameters] = None):
+    def __init__(self, params: TesseractParameters | None = None):
         """Initialize tesseract simulator."""
         self.params = params or TesseractParameters()
 
@@ -109,7 +107,7 @@ class TesseractTimeSlices:
         """
         return self.block_4d[:, :, :, t_index]
 
-    def compute_entropy_gradient(self, t_index: int) -> Tuple[np.ndarray, ...]:
+    def compute_entropy_gradient(self, t_index: int) -> tuple[np.ndarray, ...]:
         """
         Compute entropy gradient ∇S at given timeslice.
 
@@ -311,7 +309,7 @@ class PhotonBetweenSlices:
         self.tesseract = tesseract
 
     def propagate_photon(
-        self, start_xyz: Tuple[int, int, int], start_t: int
+        self, start_xyz: tuple[int, int, int], start_t: int
     ) -> np.ndarray:
         """
         Propagate photon from start position through slices.
@@ -358,7 +356,7 @@ class PhotonBetweenSlices:
         return np.array(path_4d) if path_4d else np.array([])
 
     def visualize_light_path(
-        self, start_positions: List[Tuple[int, int, int]], start_t: int = 0
+        self, start_positions: list[tuple[int, int, int]], start_t: int = 0
     ):
         """
         Visualize multiple photon paths through slices.
@@ -518,7 +516,7 @@ def main():
     print("   2. Photon paths: Diagonal through slices")
     print("   3. Gravity: Emergent from ∇S (entropy gradient)")
     print(
-        f"   4. Slice spacing varies with entropy: Δz ∝ 1/√S (testable with Shapiro delay)"
+        "   4. Slice spacing varies with entropy: Δz ∝ 1/√S (testable with Shapiro delay)"
     )
 
     plt.show()

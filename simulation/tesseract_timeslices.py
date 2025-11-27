@@ -23,14 +23,21 @@ Reference:
 """
 from __future__ import annotations
 
-import math
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple
+
 import numpy as np
 
 # Import from genesis_cube for wavefunction integration
 try:
-    from .genesis_cube import GenesisCube, GenesisCubeConfig, ALPHA_INV, PHI_GOLDEN, L_PLANCK, E_PLANCK, HBAR
+    from .genesis_cube import (
+        ALPHA_INV,
+        E_PLANCK,
+        HBAR,
+        L_PLANCK,
+        PHI_GOLDEN,
+        GenesisCube,
+        GenesisCubeConfig,
+    )
 except ImportError:
     # Fallback if running as standalone
     ALPHA_INV = 137.036
@@ -61,7 +68,7 @@ class TesseractConfig:
     enable_wireframe: bool = True
     isosurface_threshold: float = 0.5
 
-    notes: List[str] = field(default_factory=lambda: [
+    notes: list[str] = field(default_factory=lambda: [
         "4D-Tesseract [−1,1]⁴ sliced into temporal layers",
         "Each slice: normal 3D cube (not inverted pyramid)",
         "Light propagates orthogonally through t-axis",
@@ -132,7 +139,7 @@ class TesseractTimeSlices:
 
         return self.block_4d[:, :, :, t_index]
 
-    def get_cube_wireframe_edges(self) -> List[Tuple[np.ndarray, np.ndarray]]:
+    def get_cube_wireframe_edges(self) -> list[tuple[np.ndarray, np.ndarray]]:
         """
         Get edges of a cube for wireframe rendering.
 
@@ -157,7 +164,7 @@ class TesseractTimeSlices:
         edges = [(corners[i], corners[j]) for i, j in edge_indices]
         return edges
 
-    def compute_isosurface(self, cube_3d: np.ndarray, threshold: float | None = None) -> Tuple[np.ndarray, np.ndarray]:
+    def compute_isosurface(self, cube_3d: np.ndarray, threshold: float | None = None) -> tuple[np.ndarray, np.ndarray]:
         """
         Compute isosurface of 3D cube using marching cubes.
 
@@ -181,7 +188,7 @@ class TesseractTimeSlices:
 
         return verts, faces
 
-    def slice_summary(self, t_index: int) -> Dict[str, object]:
+    def slice_summary(self, t_index: int) -> dict[str, object]:
         """
         Get summary statistics for a timeslice.
 
@@ -212,7 +219,7 @@ class TesseractTimeSlices:
             "entropy": entropy,
         }
 
-    def all_slices_summary(self) -> List[Dict[str, object]]:
+    def all_slices_summary(self) -> list[dict[str, object]]:
         """Get summary for all timeslices."""
         return [self.slice_summary(i) for i in range(self.config.num_slices)]
 
@@ -270,7 +277,7 @@ class TesseractTimeSlices:
 
         return reflected
 
-    def render_normal_cube(self, cube_3d: np.ndarray) -> Dict[str, object]:
+    def render_normal_cube(self, cube_3d: np.ndarray) -> dict[str, object]:
         """
         Render 3D cube in normal upright orientation (not inverted pyramid).
 
@@ -329,9 +336,9 @@ class PhotonPropagator:
 
     def propagate_photon(
         self,
-        start_xyz: Tuple[float, float, float],
+        start_xyz: tuple[float, float, float],
         start_t_index: int,
-        k_direction: Tuple[float, float, float] = (0.1, 0.1, 0.0),
+        k_direction: tuple[float, float, float] = (0.1, 0.1, 0.0),
         num_steps: int | None = None,
     ) -> np.ndarray:
         """
@@ -399,7 +406,7 @@ class PhotonPropagator:
 
         return np.array(path_4d)
 
-    def compute_consciousness_integral(self, photon_paths: List[np.ndarray]) -> float:
+    def compute_consciousness_integral(self, photon_paths: list[np.ndarray]) -> float:
         """
         Compute consciousness integral: I_C = ∫ F·u dτ over all photon paths.
 
@@ -448,10 +455,10 @@ class PhotonPropagator:
 
     def integrate_consciousness(
         self,
-        photon_paths: List[np.ndarray],
+        photon_paths: list[np.ndarray],
         dt_Q: float = 0.15,
         IPD: float = 0.065,
-    ) -> Dict[str, object]:
+    ) -> dict[str, object]:
         """
         Integrate consciousness over temporal window Δt_Q with motion parallax.
 
@@ -554,7 +561,7 @@ class PhotonPropagator:
 
 def animate_dual_flow(
     tesseract: TesseractTimeSlices,
-    photon_paths: List[np.ndarray],
+    photon_paths: list[np.ndarray],
     save_path: str = "results/dual_flow_animation.gif",
     n_frames: int = 50,
 ) -> None:
@@ -660,7 +667,7 @@ def demo_tesseract_slicing() -> None:
     print(f"   Entropy: {summary['entropy']:.6f}")
 
     # Photon propagation
-    print(f"\n🌊 Propagating photon through timeslices...")
+    print("\n🌊 Propagating photon through timeslices...")
     propagator = PhotonPropagator(tesseract)
 
     start_pos = (16.0, 16.0, 16.0)  # Center of grid

@@ -20,13 +20,12 @@ Metaphorical layer:
 from __future__ import annotations
 
 import math
+from collections.abc import Sequence
 from dataclasses import dataclass
 from statistics import mean
-from typing import Dict, Sequence
 
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
-
 
 
 @dataclass
@@ -38,7 +37,7 @@ class MandalaCoherence:
     gate: float
     zeta: float
 
-    def to_dict(self) -> Dict[str, float]:
+    def to_dict(self) -> dict[str, float]:
         """Return a JSON-friendly representation of the coherence braid."""
 
         return {
@@ -112,7 +111,7 @@ def _broadcast_fields(
         return psi_array.astype(float), phi_array.astype(float)
 
     if phi_array.size == 1:
-        broadcast_phi = np.full_like(psi_array, float(phi_array))
+        broadcast_phi = np.full_like(psi_array, phi_array.item())
         return psi_array.astype(float), broadcast_phi.astype(float)
 
     try:

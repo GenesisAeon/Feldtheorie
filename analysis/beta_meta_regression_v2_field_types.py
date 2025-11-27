@@ -32,14 +32,12 @@ import json
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 from numpy.random import default_rng
 from sklearn.ensemble import RandomForestRegressor
-from statsmodels.stats.outliers_influence import OLSInfluence
 
 CANONICAL_BETA = 4.2
 CANONICAL_BAND = (3.6, 4.8)
@@ -57,19 +55,19 @@ class RegressionSummary:
     bic: float
     rmse: float
     canonical_beta: float
-    canonical_band: Tuple[float, float]
+    canonical_band: tuple[float, float]
     beta_mean: float
     beta_std: float
     beta_band_fraction: float
     delta_aic_guard_min: float
     bootstrap_r2_median: float
-    bootstrap_r2_interval: Tuple[float, float]
-    random_forest_oob_r2: Optional[float]
-    field_type_anova_eta_squared: Optional[float]
-    field_type_anova_p_value: Optional[float]
-    top_features: List[str]
+    bootstrap_r2_interval: tuple[float, float]
+    random_forest_oob_r2: float | None
+    field_type_anova_eta_squared: float | None
+    field_type_anova_p_value: float | None
+    top_features: list[str]
 
-    def to_dict(self) -> Dict[str, object]:
+    def to_dict(self) -> dict[str, object]:
         payload = asdict(self)
         payload["canonical_band"] = list(self.canonical_band)
         payload["bootstrap_r2_interval"] = list(self.bootstrap_r2_interval)
@@ -112,7 +110,7 @@ def load_and_prepare(beta_path: Path, covar_path: Path) -> pd.DataFrame:
     return df
 
 
-def field_type_anova(df: pd.DataFrame) -> Tuple[float, float]:
+def field_type_anova(df: pd.DataFrame) -> tuple[float, float]:
     """Compute one-way ANOVA for Field Type effect on β."""
     from scipy import stats
 
@@ -140,8 +138,8 @@ def select_top_features(
     weights: pd.Series,
     n_estimators: int,
     top_k: int,
-    seed: Optional[int] = None,
-) -> List[str]:
+    seed: int | None = None,
+) -> list[str]:
     """Use Random Forest to select top-k most important continuous features."""
 
     if X.empty:
@@ -165,8 +163,8 @@ def select_top_features(
 
 def build_design_matrix(
     df: pd.DataFrame,
-    selected_continuous: List[str],
-) -> Tuple[pd.Series, pd.DataFrame, pd.Series]:
+    selected_continuous: list[str],
+) -> tuple[pd.Series, pd.DataFrame, pd.Series]:
     """Construct design matrix with Field Type dummies + selected continuous features."""
 
     y = df["beta"].astype(float)
@@ -219,12 +217,12 @@ def bootstrap_wls(
     X_design: pd.DataFrame,
     weights: pd.Series,
     n_bootstrap: int,
-    seed: Optional[int] = None,
-) -> Tuple[Dict[str, Dict[str, float]], Dict[str, float]]:
+    seed: int | None = None,
+) -> tuple[dict[str, dict[str, float]], dict[str, float]]:
     """Bootstrap R² envelopes for the WLS model."""
 
     rng = default_rng(seed)
-    r2_samples: List[float] = []
+    r2_samples: list[float] = []
 
     for _ in range(n_bootstrap):
         indices = rng.integers(0, len(y), len(y))
@@ -251,8 +249,8 @@ def random_forest_diagnostics(
     y: pd.Series,
     weights: pd.Series,
     n_estimators: int,
-    seed: Optional[int] = None,
-) -> Tuple[Optional[float], Dict[str, float]]:
+    seed: int | None = None,
+) -> tuple[float | None, dict[str, float]]:
     """Train a Random Forest regressor for feature importance."""
 
     if X.empty:
@@ -309,7 +307,7 @@ def run_pipeline(
     n_bootstrap: int,
     rf_trees: int,
     top_features: int,
-    seed: Optional[int],
+    seed: int | None,
 ) -> None:
     """Execute Field Type enhanced meta-regression workflow."""
 
@@ -376,7 +374,7 @@ def run_pipeline(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # Write outputs
-    summary_path = output_dir / f"beta_meta_regression_v2_latest.json"
+    summary_path = output_dir / "beta_meta_regression_v2_latest.json"
     summary_path.write_text(
         json.dumps(summary.to_dict(), indent=2) + "\n", encoding="utf-8"
     )
@@ -397,7 +395,7 @@ def run_pipeline(
         json.dumps(diagnostics_payload, indent=2) + "\n", encoding="utf-8"
     )
 
-    print(f"\n✅ Meta-regression v2 (Field Types) completed!")
+    print("\n✅ Meta-regression v2 (Field Types) completed!")
     print(f"   Model: Field Types + Top-{top_features} continuous features")
     print(f"   WLS R² = {result.rsquared:.3f}, adj. R² = {result.rsquared_adj:.3f}")
     print(f"   Field Type ANOVA: η²={eta_squared:.3f}, p={anova_p:.4f}")

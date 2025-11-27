@@ -22,7 +22,6 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from typing import Dict, Iterable, List, Optional
 
 from .threshold_dataset_loader import (
     describe_result,
@@ -45,8 +44,8 @@ RESULTS_ROOT = ROOT / "analysis" / "results"
 def process_dataset(
     dataset: ManifestDataset,
     simulate_missing: bool,
-    seed: Optional[int],
-) -> Dict[str, object]:
+    seed: int | None,
+) -> dict[str, object]:
     metadata = load_metadata(dataset.metadata_path)
     frame, origin = load_dataset(metadata, simulate_missing=simulate_missing, seed=seed)
     result = evaluate_logistic_fit(dataset.identifier, metadata, frame, origin)
@@ -68,14 +67,14 @@ def process_dataset(
     return payload
 
 
-def write_json(path: Path, payload: Dict[str, object]) -> None:
+def write_json(path: Path, payload: dict[str, object]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as handle:
         json.dump(payload, handle, indent=2, sort_keys=True)
         handle.write("\n")
 
 
-def aggregate_summary(results: List[Dict[str, object]]) -> Dict[str, object]:
+def aggregate_summary(results: list[dict[str, object]]) -> dict[str, object]:
     return {
         "generated_at": "pending-runtime",
         "datasets": results,
@@ -91,7 +90,7 @@ def run_cli(args: argparse.Namespace) -> None:
     if not targets:
         raise SystemExit("No datasets matched the selection filters.")
 
-    results: List[Dict[str, object]] = []
+    results: list[dict[str, object]] = []
     for dataset in targets:
         payload = process_dataset(dataset, simulate_missing=args.simulate_missing, seed=args.seed)
         results.append(payload)

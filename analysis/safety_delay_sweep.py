@@ -24,20 +24,19 @@ from __future__ import annotations
 
 import argparse
 import json
-from dataclasses import dataclass, asdict
+from collections.abc import Iterable, Sequence
+from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Sequence, Tuple
+from typing import Any
 
 import numpy as np
-
 from simulation.safety_delay_field import (
     SafetyDelayResult,
     logistic_response,
     meta_resonance_analysis,
     simulate_safety_delay_field,
 )
-
 
 # ---------------------------------------------------------------------------
 # Configuration dataclasses
@@ -75,14 +74,14 @@ def _aic_from_rss(rss: float, n: int, k: int) -> float:
     return float(n * np.log(rss / max(n, 1)) + 2 * k)
 
 
-def _linear_null_fit(x: np.ndarray, y: np.ndarray) -> Tuple[np.ndarray, float]:
+def _linear_null_fit(x: np.ndarray, y: np.ndarray) -> tuple[np.ndarray, float]:
     coeffs = np.polyfit(x, y, deg=1)
     fitted = np.polyval(coeffs, x)
     rss = float(np.sum((y - fitted) ** 2))
     return fitted, rss
 
 
-def _constant_null_fit(y: np.ndarray) -> Tuple[np.ndarray, float]:
+def _constant_null_fit(y: np.ndarray) -> tuple[np.ndarray, float]:
     mean_val = float(np.mean(y))
     fitted = np.full_like(y, mean_val)
     rss = float(np.sum((y - fitted) ** 2))
@@ -102,7 +101,7 @@ def _build_adjacency(control_strength: float, beta_gain: float) -> np.ndarray:
     return adjacency
 
 
-def _summarise_runs(runs: List[Dict[str, Any]]) -> Dict[str, Any]:
+def _summarise_runs(runs: list[dict[str, Any]]) -> dict[str, Any]:
     if not runs:
         return {
             "count": 0,
@@ -137,7 +136,7 @@ def _summarise_runs(runs: List[Dict[str, Any]]) -> Dict[str, Any]:
     def _nan_stat(arr: np.ndarray, fn) -> float:
         return float(fn(arr)) if arr.size else float("nan")
 
-    def _ci95(arr: np.ndarray) -> List[float] | None:
+    def _ci95(arr: np.ndarray) -> list[float] | None:
         if not arr.size:
             return None
         lower, upper = np.nanpercentile(arr, [2.5, 97.5])
@@ -224,7 +223,7 @@ def _run_single(
     config: SweepConfig,
     seed: int,
     replicate_index: int,
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     rng = np.random.default_rng(seed)
     result: SafetyDelayResult = simulate_safety_delay_field(
         t_max=config.t_max,
@@ -303,8 +302,8 @@ def _run_single(
     }
 
 
-def run_sweep(config: SweepConfig) -> Dict[str, Any]:
-    runs: List[Dict[str, Any]] = []
+def run_sweep(config: SweepConfig) -> dict[str, Any]:
+    runs: list[dict[str, Any]] = []
     seed_offset = 0
     for c_strength in config.control_strengths:
         for drift in config.drift_rates:
@@ -373,7 +372,7 @@ def run_sweep(config: SweepConfig) -> Dict[str, Any]:
         "best_delta_r2": _clean_float(summary["delta_r2_best_null"]),
     }
 
-    payload: Dict[str, Any] = {
+    payload: dict[str, Any] = {
         "metadata": {
             "generated_at": timestamp,
             "module": "analysis.safety_delay_sweep",
@@ -416,7 +415,7 @@ def run_sweep(config: SweepConfig) -> Dict[str, Any]:
 # ---------------------------------------------------------------------------
 
 
-def _parse_float_list(values: Iterable[str] | None, default: Sequence[float]) -> List[float]:
+def _parse_float_list(values: Iterable[str] | None, default: Sequence[float]) -> list[float]:
     if values is None:
         return [float(v) for v in default]
     return [float(v) for v in values]

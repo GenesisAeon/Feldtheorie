@@ -31,15 +31,15 @@ Date: 2025-11-12
 Version: 1.0.0
 """
 
+import json
+import warnings
+from pathlib import Path
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from scipy import stats
 from scipy.optimize import curve_fit
-import json
-from pathlib import Path
-from typing import Dict, Tuple, Optional
-import warnings
 
 warnings.filterwarnings('ignore', category=RuntimeWarning)
 
@@ -107,7 +107,7 @@ class EarlyGalaxySpeedTest:
         mass = rate_0 * (1 - np.exp(-(age_gyr / tau)**acceleration))
         return np.maximum(mass, 0)
 
-    def fit_lambda_cdm(self) -> Dict:
+    def fit_lambda_cdm(self) -> dict:
         """Fit ΛCDM hierarchical assembly to early galaxies."""
         # Extract data
         age = self.early_systems['age_gyr'].values
@@ -176,7 +176,7 @@ class EarlyGalaxySpeedTest:
             'fit_success': fit_success
         }
 
-    def fit_type6_accelerated(self) -> Dict:
+    def fit_type6_accelerated(self) -> dict:
         """Fit Type-6 Accelerated Collapse to early galaxies."""
         # Extract data
         age = self.early_systems['age_gyr'].values
@@ -254,7 +254,7 @@ class EarlyGalaxySpeedTest:
             'fit_success': fit_success
         }
 
-    def model_comparison(self, lcdm_result: Dict, type6_result: Dict) -> Dict:
+    def model_comparison(self, lcdm_result: dict, type6_result: dict) -> dict:
         """Compare ΛCDM vs Type-6 models."""
         if np.isnan(lcdm_result['aic']) or np.isnan(type6_result['aic']):
             return {
@@ -306,7 +306,7 @@ class EarlyGalaxySpeedTest:
         else:
             return "ΛCDM overwhelmingly preferred (ΔAIC > 10)"
 
-    def gn_z11_metallicity_test(self) -> Dict:
+    def gn_z11_metallicity_test(self) -> dict:
         """Test GN-z11 oxygen detection (cosmo_001).
 
         Type-6: Rapid enrichment from accelerated collapse
@@ -338,7 +338,7 @@ class EarlyGalaxySpeedTest:
             'interpretation': f"Type-6 is {prob_type6/prob_lcdm:.2f}x more likely to produce O III at {age_myr:.0f} Myr"
         }
 
-    def run_full_analysis(self) -> Dict:
+    def run_full_analysis(self) -> dict:
         """Run complete early galaxy formation analysis."""
         print("=" * 70)
         print("Early Galaxy Formation Speed Test: Type-6 vs ΛCDM")
@@ -356,7 +356,7 @@ class EarlyGalaxySpeedTest:
             print(f"  χ²/dof = {lcdm_result['reduced_chi2']:.2f}")
             print(f"  AIC = {lcdm_result['aic']:.1f}")
         else:
-            print(f"  Fit failed!")
+            print("  Fit failed!")
 
         print("\n[2/4] Fitting Type-6 accelerated collapse...")
         type6_result = self.fit_type6_accelerated()
@@ -367,7 +367,7 @@ class EarlyGalaxySpeedTest:
             print(f"  χ²/dof = {type6_result['reduced_chi2']:.2f}")
             print(f"  AIC = {type6_result['aic']:.1f}")
         else:
-            print(f"  Fit failed!")
+            print("  Fit failed!")
 
         # Model comparison
         print("\n[3/4] Comparing models...")
@@ -428,7 +428,7 @@ class EarlyGalaxySpeedTest:
 
         return results
 
-    def plot_results(self, results: Dict, output_path: str = "paper/figures/early_galaxy_speed_test.png"):
+    def plot_results(self, results: dict, output_path: str = "paper/figures/early_galaxy_speed_test.png"):
         """Create comprehensive visualization."""
         fig, axes = plt.subplots(2, 2, figsize=(14, 10))
         fig.suptitle('Early Galaxy Formation Speed: Type-6 vs ΛCDM',
@@ -573,7 +573,7 @@ def main():
     test.plot_results(results)
 
     print("\n✓ Early Galaxy Formation Speed Test complete!")
-    print(f"  Budget: ~2-3K tokens (~$0.50-1.00)")
+    print("  Budget: ~2-3K tokens (~$0.50-1.00)")
 
     return results
 

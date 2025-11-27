@@ -20,7 +20,6 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from typing import Dict, List, Optional
 
 from .outlier_beta_review import instrumentation_heuristic
 from .threshold_dataset_loader import (
@@ -45,8 +44,8 @@ def is_outlier_candidate(dataset: ManifestDataset, beta_threshold: float) -> boo
 def analyse_dataset(
     dataset: ManifestDataset,
     simulate_missing: bool,
-    seed: Optional[int],
-) -> Dict[str, object]:
+    seed: int | None,
+) -> dict[str, object]:
     metadata = load_metadata(dataset.metadata_path)
     frame, origin = load_dataset(metadata, simulate_missing=simulate_missing, seed=seed)
     result = evaluate_logistic_fit(dataset.identifier, metadata, frame, origin)
@@ -75,7 +74,7 @@ def run_cli(args: argparse.Namespace) -> None:
     datasets = load_manifest(manifest_path)
     filtered = filter_datasets(datasets, domains=args.domain, identifiers=args.dataset)
 
-    candidates: List[ManifestDataset] = [
+    candidates: list[ManifestDataset] = [
         dataset
         for dataset in filtered
         if is_outlier_candidate(dataset, args.beta_threshold)
@@ -84,7 +83,7 @@ def run_cli(args: argparse.Namespace) -> None:
     if not candidates:
         raise SystemExit("No datasets exceeded the β threshold. Adjust filters if needed.")
 
-    results: List[Dict[str, object]] = []
+    results: list[dict[str, object]] = []
     for dataset in candidates:
         payload = analyse_dataset(dataset, simulate_missing=args.simulate_missing, seed=args.seed)
         results.append(payload)

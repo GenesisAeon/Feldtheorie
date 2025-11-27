@@ -25,15 +25,14 @@ Date: 2025-11-12
 Version: 1.0.0
 """
 
+import json
+import warnings
+from pathlib import Path
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from scipy import stats
-from scipy.optimize import curve_fit
-import json
-from pathlib import Path
-from typing import Dict, Tuple, Optional
-import warnings
 
 # Suppress unnecessary warnings
 warnings.filterwarnings('ignore', category=RuntimeWarning)
@@ -91,7 +90,7 @@ class CMBAxesTest:
 
         return C_ell
 
-    def quadrupole_deficit_test(self) -> Dict:
+    def quadrupole_deficit_test(self) -> dict:
         """Test for quadrupole (ℓ=2) power deficit.
 
         Type-6 predicts: C_2 suppressed relative to ΛCDM
@@ -120,7 +119,7 @@ class CMBAxesTest:
             'significant': p_value < 0.05
         }
 
-    def axis_alignment_test(self, n_simulations: int = 10000) -> Dict:
+    def axis_alignment_test(self, n_simulations: int = 10000) -> dict:
         """Test quadrupole-octopole alignment ("Axis of Evil").
 
         Type-6 predicts: Preferred direction = implosive origin axis
@@ -186,7 +185,7 @@ class CMBAxesTest:
 
         return angle_deg
 
-    def low_ell_spectrum_test(self) -> Dict:
+    def low_ell_spectrum_test(self) -> dict:
         """Test entire low-ℓ spectrum (ℓ=2-10) for Type-6 signature.
 
         Type-6 predicts: Systematic power deficit at low-ℓ
@@ -228,7 +227,7 @@ class CMBAxesTest:
             'systematic_deficit': p_value_deficit < 0.05
         }
 
-    def implosive_axis_direction(self) -> Dict:
+    def implosive_axis_direction(self) -> dict:
         """Estimate implosive origin axis direction from CMB data.
 
         Type-6: Axis of Evil = Implosive Origin Direction
@@ -260,7 +259,7 @@ class CMBAxesTest:
             'reference': 'Land & Magueijo (2005)'
         }
 
-    def run_full_analysis(self) -> Dict:
+    def run_full_analysis(self) -> dict:
         """Run complete CMB anomaly analysis."""
         print("=" * 70)
         print("CMB Low-ℓ Anomaly Test for UTAC Type-6")
@@ -330,7 +329,7 @@ class CMBAxesTest:
 
         return results
 
-    def plot_results(self, results: Dict, output_path: str = "paper/figures/cmb_axis_test.png"):
+    def plot_results(self, results: dict, output_path: str = "paper/figures/cmb_axis_test.png"):
         """Create comprehensive visualization of CMB analysis."""
         fig, axes = plt.subplots(2, 2, figsize=(14, 10))
         fig.suptitle('CMB Low-ℓ Anomaly Test - Type-6 Implosive Origin',
@@ -453,7 +452,7 @@ def main():
     test.plot_results(results)
 
     print("\n✓ CMB Low-ℓ Anomaly Test complete!")
-    print(f"  Budget: ~2-3K tokens (~$0.50-1.00)")
+    print("  Budget: ~2-3K tokens (~$0.50-1.00)")
 
     return results
 

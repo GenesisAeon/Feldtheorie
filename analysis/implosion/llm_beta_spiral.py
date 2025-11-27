@@ -30,7 +30,6 @@ License: AGPL-3.0
 import argparse
 import sys
 from pathlib import Path
-from typing import Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
@@ -41,20 +40,13 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from models.utac_type6_implosive import (
     BETA_FIXPOINT_PHI3,
-    BETA_STEPS,
-    PHI,
-    PHI_CBRT,
-    beta_step_ratios,
-    nearest_beta_step,
-    tau_star,
 )
 
 # Optional plotting
 try:
     import matplotlib.pyplot as plt
     from matplotlib.patches import FancyArrowPatch
-    from mpl_toolkits.mplot3d import Axes3D
-    from mpl_toolkits.mplot3d import proj3d
+    from mpl_toolkits.mplot3d import Axes3D, proj3d
     HAS_MATPLOTLIB = True
 except ImportError:
     HAS_MATPLOTLIB = False
@@ -102,7 +94,7 @@ def load_llm_data(filepath: str) -> pd.DataFrame:
 def test_spiral_coherence(
     df: pd.DataFrame,
     verbose: bool = True
-) -> Dict:
+) -> dict:
     """Test whether β trajectories exhibit spiral structure.
 
     Spiral structure implies:
@@ -195,7 +187,7 @@ def test_spiral_coherence(
 def test_grokking_beta_jumps(
     df: pd.DataFrame,
     verbose: bool = True
-) -> Dict:
+) -> dict:
     """Test whether grokking events correlate with β-jumps.
 
     Prediction: Grokking (sudden capability emergence) should coincide
@@ -294,7 +286,7 @@ def test_grokking_beta_jumps(
 def test_fixpoint_convergence(
     df: pd.DataFrame,
     verbose: bool = True
-) -> Dict:
+) -> dict:
     """Test whether β converges to Φ³ fixpoint over training.
 
     Prediction: β should approach Φ³ ≈ 4.236 as training progresses.
@@ -378,7 +370,7 @@ def test_implosive_delay(
     df: pd.DataFrame,
     verbose: bool = True,
     n_bootstrap: int = 1000
-) -> Dict:
+) -> dict:
     """Test whether grokking delay follows τ* = a/β + b·log(|R-Θ|) + c.
 
     Prediction: Time to grokking should be inversely proportional to β
@@ -537,7 +529,7 @@ def test_implosive_delay(
         falsified = falsified_aic or falsified_coef_a or falsified_r2
 
         if verbose:
-            print(f"  Full model: τ* = a/β + b·log(|R-Θ|) + c")
+            print("  Full model: τ* = a/β + b·log(|R-Θ|) + c")
             print(f"    a (1/β coef): {a_fit:.3f} [{bootstrap_ci['a'][0]:.3f}, {bootstrap_ci['a'][1]:.3f}]")
             print(f"    b (log coef): {b_fit:.3f} [{bootstrap_ci['b'][0]:.3f}, {bootstrap_ci['b'][1]:.3f}]")
             print(f"    c (intercept): {c_fit:.3f} [{bootstrap_ci['c'][0]:.3f}, {bootstrap_ci['c'][1]:.3f}]")
@@ -548,7 +540,7 @@ def test_implosive_delay(
             if falsified_aic:
                 print(f"    ⚠️  ΔAIC={delta_aic:.1f} < 4 (no improvement over null)")
             if falsified_coef_a:
-                print(f"    ⚠️  Coefficient 'a' CI includes zero (1/β term not significant)")
+                print("    ⚠️  Coefficient 'a' CI includes zero (1/β term not significant)")
             if falsified_r2:
                 print(f"    ⚠️  R²={r_squared:.3f} < 0.3 (poor fit)")
             print()
@@ -592,7 +584,7 @@ def cross_validate_tests(
     df: pd.DataFrame,
     k_folds: int = 5,
     verbose: bool = True
-) -> Dict:
+) -> dict:
     """Perform k-fold cross-validation on all 4 tests.
 
     Validates robustness of findings by splitting data into k folds
@@ -718,8 +710,8 @@ def cross_validate_tests(
 
 def create_spiral_plots(
     df: pd.DataFrame,
-    spiral_result: Dict,
-    grokking_result: Dict,
+    spiral_result: dict,
+    grokking_result: dict,
     output_path: str
 ):
     """Generate 4-panel validation figure."""
@@ -917,7 +909,7 @@ def main():
     if fixpoint_result['falsified'] == False:
         print(f"  ✓ VALIDATED: Final β={fixpoint_result['final_mean_beta']:.3f} ∈ [3.5, 5.0]")
     elif fixpoint_result['falsified'] == True:
-        print(f"  ⚠️  FALSIFIED: Final β outside target range or variance increased")
+        print("  ⚠️  FALSIFIED: Final β outside target range or variance increased")
     else:
         print(f"  ○ INCONCLUSIVE: {fixpoint_result['message']}")
     print()
@@ -934,9 +926,9 @@ def main():
         print(f"  ⚠️  FALSIFIED: {delay_result['message']}")
         if 'falsification_details' in delay_result:
             details = delay_result['falsification_details']
-            if details.get('aic'): print(f"      - Poor model fit (ΔAIC < 4)")
-            if details.get('coef_a'): print(f"      - 1/β coefficient not significant")
-            if details.get('r2'): print(f"      - R² < 0.3")
+            if details.get('aic'): print("      - Poor model fit (ΔAIC < 4)")
+            if details.get('coef_a'): print("      - 1/β coefficient not significant")
+            if details.get('r2'): print("      - R² < 0.3")
     else:
         print(f"  ○ INCONCLUSIVE: {delay_result['message']}")
     print()
@@ -960,7 +952,7 @@ def main():
     validated_count = sum(1 for t in tests if t.get('falsified') == False)
     falsified_count = sum(1 for t in tests if t.get('falsified') == True)
 
-    print(f"  Tests run: 4")
+    print("  Tests run: 4")
     print(f"  Validated: {validated_count}")
     print(f"  Falsified: {falsified_count}")
     print(f"  Inconclusive: {4 - validated_count - falsified_count}")

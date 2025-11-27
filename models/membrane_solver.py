@@ -23,8 +23,8 @@ Metaphorical layer:
 from __future__ import annotations
 
 import math
+from collections.abc import Callable, Iterable, Mapping
 from dataclasses import dataclass, field
-from typing import Callable, Dict, Iterable, Mapping, Tuple
 
 from .coherence_term import semantic_coupling_term
 
@@ -193,7 +193,7 @@ class DynamicRobinBoundary:
             self.logistic_weight * logistic_gap + self.driver_weight * driver_gap
         )
 
-    def snapshot(self, R: float, sigma: float, driver: float) -> Dict[str, float]:
+    def snapshot(self, R: float, sigma: float, driver: float) -> dict[str, float]:
         """Summarise gate, impedance, and flux terms for diagnostics."""
 
         gate = self.gate(R)
@@ -264,7 +264,7 @@ class AdaptiveThresholdController:
         driver: float,
         impedance: float,
         dt: float,
-    ) -> Dict[str, float]:
+    ) -> dict[str, float]:
         """Advance the adaptive parameters one Euler step and surface diagnostics."""
 
         gate = self.meta_gate(R)
@@ -298,7 +298,7 @@ class AdaptiveThresholdController:
             "beta": float(self.beta),
         }
 
-    def snapshot(self, R: float, driver: float, impedance: float) -> Dict[str, float]:
+    def snapshot(self, R: float, driver: float, impedance: float) -> dict[str, float]:
         """Capture the current adaptive state for logging and visualisation."""
 
         gate = self.meta_gate(R)
@@ -317,7 +317,7 @@ class AdaptiveThresholdController:
         self.beta = float(self.beta_baseline)
 
 
-MeaningKernel = Callable[[float, float, float, float, float, float, float], Tuple[float, float]]
+MeaningKernel = Callable[[float, float, float, float, float, float, float], tuple[float, float]]
 
 
 def semantic_resonance_kernel(
@@ -361,7 +361,7 @@ def semantic_resonance_kernel(
         impedance: float,
         time: float,
         dt: float,
-    ) -> Tuple[float, float]:
+    ) -> tuple[float, float]:
         gate = float(logistic_response(R, theta, beta))
         semantic_alignment = sigma - meaning
         driver_pull = driver - meaning
@@ -399,7 +399,7 @@ def threshold_crossing_diagnostics(
     theta: float,
     beta: float,
     threshold_R: float | None = None,
-) -> Dict[str, float | bool | int | None]:
+) -> dict[str, float | bool | int | None]:
     r"""Extract when the order parameter first trespasses the threshold membrane.
 
     Formal:
@@ -656,7 +656,7 @@ class ThresholdFieldSolver:
             self.theta = float(self.threshold_controller.theta)
             self.beta = float(self.threshold_controller.beta)
 
-    def step(self, R: float, driver: float, *, coupling: float = 0.0) -> Dict[str, float]:
+    def step(self, R: float, driver: float, *, coupling: float = 0.0) -> dict[str, float]:
         """Advance the field one timestep and record resonance diagnostics.
 
         Formal:
@@ -882,7 +882,7 @@ class ThresholdFieldSolver:
             ),
         }
 
-    def export_summary(self, results: Mapping[str, list[float]]) -> Dict[str, float]:
+    def export_summary(self, results: Mapping[str, list[float]]) -> dict[str, float]:
         """Summarise resonance diagnostics for downstream modules.
 
         Formal:
@@ -1031,7 +1031,7 @@ class ThresholdFieldSolver:
 
     def threshold_crossing_diagnostics(
         self, results: Mapping[str, list[float]], *, threshold_R: float | None = None
-    ) -> Dict[str, float | bool | int | None]:
+    ) -> dict[str, float | bool | int | None]:
         r"""Annotate when the solver's trajectory breaches the threshold membrane.
 
         Formal:

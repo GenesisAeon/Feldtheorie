@@ -12,8 +12,8 @@ can plug directly into the Sigillin-Netz resonance ledger.
 r"""
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable, Dict, Optional, Tuple
 
 import numpy as np
 from numpy.typing import ArrayLike
@@ -46,7 +46,7 @@ def logistic_response(R: ArrayLike, beta: ArrayLike, theta: float) -> np.ndarray
     return 1.0 / (1.0 + np.exp(-beta * (R - theta)))
 
 
-def estimate_logistic_parameters(R: np.ndarray, field: np.ndarray) -> Tuple[float, float, float]:
+def estimate_logistic_parameters(R: np.ndarray, field: np.ndarray) -> tuple[float, float, float]:
     """Estimate ``beta`` and ``theta`` via non-linear least squares.
 
     The routine mirrors the analysis layer by fitting ``sigma(beta(R-Theta))``
@@ -102,7 +102,7 @@ class SafetyDelayResult:
     tau_delay: float
     control_energy: float
     beta_shift: float
-    diagnostics: Dict[str, float]
+    diagnostics: dict[str, float]
 
 
 def simulate_safety_delay_field(
@@ -111,13 +111,13 @@ def simulate_safety_delay_field(
     mu0: float = 0.9,
     drift_rate: float = 0.01,
     control_strength: float = 0.35,
-    control_schedule: Optional[Callable[[ArrayLike], ArrayLike]] = None,
+    control_schedule: Callable[[ArrayLike], ArrayLike] | None = None,
     beta_base: float = 4.2,
     beta_gain: float = 1.1,
     theta: float = 0.0,
     noise_std: float = 0.01,
-    initial_state: Optional[float] = None,
-    random_state: Optional[np.random.Generator] = None,
+    initial_state: float | None = None,
+    random_state: np.random.Generator | None = None,
 ) -> SafetyDelayResult:
     """Simulate the UTAC safety-delay controller.
 
@@ -225,7 +225,7 @@ def crep_resonance(field_response: np.ndarray) -> float:
     return float(np.std(field_response) / mean_level)
 
 
-def meta_resonance_analysis(adjacency: np.ndarray, field_response: np.ndarray) -> Dict[str, float]:
+def meta_resonance_analysis(adjacency: np.ndarray, field_response: np.ndarray) -> dict[str, float]:
     """Combine control centrality and CREP-resonance for ledger ingestion."""
 
     cc = control_centrality(adjacency)

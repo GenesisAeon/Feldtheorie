@@ -27,12 +27,10 @@ Author: Genesis Aeon (UTAC Framework)
 Version: 5.0 "Structural Isomorphism Analysis"
 """
 
-from typing import Tuple, Dict, Optional
-import numpy as np
-from scipy.special import erf
-from dataclasses import dataclass
 import warnings
+from dataclasses import dataclass
 
+import numpy as np
 
 # ============================================================================
 # MODEL PARAMETERS
@@ -150,7 +148,7 @@ class SocialIsingModel:
         self.h = external_field
         self.load_baseline = load_baseline
 
-    def social_temperature(self, gini: float, load: Optional[float] = None) -> float:
+    def social_temperature(self, gini: float, load: float | None = None) -> float:
         """
         Calculate effective temperature from inequality measure.
 
@@ -252,7 +250,7 @@ class SocialIsingModel:
         chi = beta * (1.0 - magnetization**2) / denominator
         return chi
 
-    def compute_state(self, gini: float, load: Optional[float] = None) -> SocialState:
+    def compute_state(self, gini: float, load: float | None = None) -> SocialState:
         """
         Compute complete social state for given Gini coefficient.
 
@@ -279,9 +277,9 @@ class SocialIsingModel:
 
     def phase_transition_scan(
         self,
-        gini_range: Tuple[float, float] = (0.2, 0.95),
+        gini_range: tuple[float, float] = (0.2, 0.95),
         n_points: int = 100,
-        load: Optional[float] = None
+        load: float | None = None
     ) -> PhaseTransition:
         """
         Scan Gini coefficient to map out phase transition.
@@ -336,8 +334,8 @@ class SocialIsingModel:
         self,
         gini_critical: float = 0.71,
         epsilon: float = 0.01,
-        load: Optional[float] = None
-    ) -> Dict[str, float]:
+        load: float | None = None
+    ) -> dict[str, float]:
         """
         Estimate critical exponents near phase transition.
 
@@ -417,7 +415,7 @@ def is_society_frozen(gini: float, load: float = 1.0) -> bool:
     return state.is_frozen
 
 
-def full_analysis(verbose: bool = True) -> Dict:
+def full_analysis(verbose: bool = True) -> dict:
     """
     Run complete phase transition analysis.
 

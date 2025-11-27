@@ -21,7 +21,6 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from typing import Dict, List, Optional
 
 import numpy as np
 
@@ -45,7 +44,7 @@ RESULTS_ROOT = ROOT / "analysis" / "results"
 DEFAULT_ID = "utac-v1_3-ds-004"
 
 
-def select_dataset(manifest_path: Path, dataset_id: Optional[str]) -> ManifestDataset:
+def select_dataset(manifest_path: Path, dataset_id: str | None) -> ManifestDataset:
     datasets = load_manifest(manifest_path)
     targets = filter_datasets(datasets, identifiers=[dataset_id] if dataset_id else [DEFAULT_ID])
     if not targets:
@@ -58,12 +57,12 @@ def bootstrap_summary(
     control_column: str,
     response_column: str,
     iterations: int,
-    seed: Optional[int],
-) -> Dict[str, object]:
+    seed: int | None,
+) -> dict[str, object]:
     rng = np.random.default_rng(seed)
-    betas: List[float] = []
-    thetas: List[float] = []
-    r2_scores: List[float] = []
+    betas: list[float] = []
+    thetas: list[float] = []
+    r2_scores: list[float] = []
 
     control = frame[control_column].to_numpy()
     response = frame[response_column].to_numpy()
@@ -78,7 +77,7 @@ def bootstrap_summary(
         thetas.append(float(metrics["theta"]))
         r2_scores.append(float(metrics["r2"]))
 
-    def _interval(values: List[float]) -> Dict[str, float]:
+    def _interval(values: list[float]) -> dict[str, float]:
         array = np.array(values)
         return {
             "median": float(np.median(array)),

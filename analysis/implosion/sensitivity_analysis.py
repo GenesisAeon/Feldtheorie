@@ -28,18 +28,15 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
-from scipy import stats
-from scipy.optimize import curve_fit
 from scipy.ndimage import uniform_filter1d
+from scipy.optimize import curve_fit
 
 # Add models to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from models.utac_field_v1_2 import logistic_utac
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -78,7 +75,7 @@ def apply_normalization(data: np.ndarray, method: str) -> np.ndarray:
         raise ValueError(f"Unknown normalization method: {method}")
 
 
-def remove_outliers(data: np.ndarray, epochs: np.ndarray, threshold: float) -> Tuple[np.ndarray, np.ndarray]:
+def remove_outliers(data: np.ndarray, epochs: np.ndarray, threshold: float) -> tuple[np.ndarray, np.ndarray]:
     """Remove outliers based on z-score threshold.
 
     Returns filtered data and epochs.
@@ -91,7 +88,7 @@ def remove_outliers(data: np.ndarray, epochs: np.ndarray, threshold: float) -> T
     return data[mask], epochs[mask]
 
 
-def downsample_data(data: np.ndarray, epochs: np.ndarray, factor: int) -> Tuple[np.ndarray, np.ndarray]:
+def downsample_data(data: np.ndarray, epochs: np.ndarray, factor: int) -> tuple[np.ndarray, np.ndarray]:
     """Downsample by taking every nth point."""
     if factor <= 1:
         return data, epochs
@@ -109,7 +106,7 @@ def estimate_beta_with_preprocessing(
     norm_method: str = 'minmax',
     outlier_threshold: float = 0,
     downsample_factor: int = 1
-) -> Dict:
+) -> dict:
     """Estimate β with specific preprocessing pipeline.
 
     Returns:
@@ -219,7 +216,7 @@ def run_sensitivity_analysis(
     df: pd.DataFrame,
     run_id: str,
     verbose: bool = True
-) -> Dict:
+) -> dict:
     """Run sensitivity analysis on a single LLM run.
 
     Tests combinations of:

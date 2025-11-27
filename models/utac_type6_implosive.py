@@ -41,7 +41,6 @@ License: AGPL-3.0
 from __future__ import annotations
 
 import math
-from typing import Union
 
 import numpy as np
 
@@ -51,12 +50,12 @@ import numpy as np
 
 
 def inverted_sigmoid(
-    R: Union[float, np.ndarray],
+    R: float | np.ndarray,
     Theta: float,
     beta: float,
     L: float = 1.0,
     baseline: float = 0.0,
-) -> Union[float, np.ndarray]:
+) -> float | np.ndarray:
     r"""Inverted sigmoid activation for implosive dynamics.
 
     σ(-β(R-Θ)) = L / (1 + exp(+β(R-Θ))) + baseline
@@ -107,12 +106,12 @@ def inverted_sigmoid(
 
 
 def cubic_root_jump(
-    R: Union[float, np.ndarray],
+    R: float | np.ndarray,
     Theta: float,
     beta_base: float = 4.236,
     k: float = 10.0,
     epsilon: float = 1e-9,
-) -> Union[float, np.ndarray]:
+) -> float | np.ndarray:
     r"""Cubic-root amplification mechanism for β outliers near R≈Θ.
 
     β(R) = k · ∛max(R/Θ - 1, 0) + β_base
@@ -173,11 +172,11 @@ def cubic_root_jump(
 
 
 def tau_star(
-    R: Union[float, np.ndarray],
+    R: float | np.ndarray,
     Theta: float,
     beta: float,
     epsilon: float = 1e-6,
-) -> Union[float, np.ndarray]:
+) -> float | np.ndarray:
     r"""Implosive delay time for Type-6 transitions.
 
     τ* = (1/β) · log(|R-Θ|/ε)
@@ -311,13 +310,13 @@ def beta_step_ratios(beta_sequence: np.ndarray) -> np.ndarray:
 
 
 def type6_activation(
-    R: Union[float, np.ndarray],
+    R: float | np.ndarray,
     Theta: float,
     beta_far: float = 4.236,
     k_jump: float = 10.0,
     L: float = 1.0,
     baseline: float = 0.0,
-) -> tuple[Union[float, np.ndarray], Union[float, np.ndarray]]:
+) -> tuple[float | np.ndarray, float | np.ndarray]:
     """Combined Type-6 model: inverted sigmoid with cubic-root β amplification.
 
     Computes both the effective β(R) via cubic-root jump and the
