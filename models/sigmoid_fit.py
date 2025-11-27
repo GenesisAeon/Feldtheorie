@@ -23,6 +23,7 @@ from __future__ import annotations
 import importlib
 import importlib.util
 import math
+import warnings
 from collections.abc import Sequence
 from dataclasses import dataclass
 
@@ -87,13 +88,15 @@ def fit_sigmoid_with_fallbacks(x: Sequence[float], y: Sequence[float]) -> Sigmoi
             beta0 = 4.0
             theta0 = float(np.median(r))
             baseline0 = float(response.min())
-            popt, pcov = _SCIPY_OPTIMIZE.curve_fit(
-                logistic,
-                r,
-                response,
-                p0=(L0, beta0, theta0, baseline0),
-                maxfev=10000,
-            )
+            with warnings.catch_warnings():
+                warnings.filterwarnings("ignore", message="Covariance of the parameters could not be estimated")
+                popt, pcov = _SCIPY_OPTIMIZE.curve_fit(
+                    logistic,
+                    r,
+                    response,
+                    p0=(L0, beta0, theta0, baseline0),
+                    maxfev=10000,
+                )
             L_hat, beta_hat, theta_hat, baseline_hat = popt
             ci_width = _steepness_ci_width_from_covariance(pcov, index=1)
             aic = _aic(response, logistic(r, *popt), n_params=4)

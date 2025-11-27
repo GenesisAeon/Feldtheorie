@@ -111,7 +111,7 @@ def _broadcast_fields(
         return psi_array.astype(float), phi_array.astype(float)
 
     if phi_array.size == 1:
-        broadcast_phi = np.full_like(psi_array, float(phi_array))
+        broadcast_phi = np.full_like(psi_array, phi_array.item())
         return psi_array.astype(float), broadcast_phi.astype(float)
 
     try:
