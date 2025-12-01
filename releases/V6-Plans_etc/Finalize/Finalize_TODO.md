@@ -18,6 +18,8 @@
 2. Entkopplungs-Regime Documentation (Theorie)
 3. Aeon System Architecture (Implementation)
 4. Repository Compliance (Organisation)
+5. Ψ-Wellenfunktions-Pipeline (Integration + Tests)
+6. Zenodo/Compliance (Release-Readiness)
 
 ---
 
@@ -346,6 +348,30 @@ V6-Onboarding + Reproduzierbarkeit auf Reviewer-Niveau → Portal-Seite + Prereg
 
 ---
 
+### [Priority 10] finalize-wavefunction-pipeline
+**Ψ-Wellenfunktions-Pipeline in Finalize-Layer verankern**
+
+**Status:** 🔴 Open
+**Beta:** 5.3 | **Zeta Risk:** Moderat – Inkonsistenz zwischen Simulator und Governance möglich
+
+**Scope:** theory, simulation, documentation
+
+**R → Θ:**
+Ψ-Pipeline (pipelines/wavefunction + genesis_cube) an Finalize-Anforderungen angepasst → Integrationsplan gespiegelt, Tests/Zenodo-Checkliste referenziert, Chronik-Link für FIT-Abfolge gesetzt
+
+**Next Steps:**
+- 📝 Kernschritte aus `V6_Wellenfunktions_Integrationsplan.md` in Finalize-Trilayer übernehmen (Ψ_genesis, collapse_to_utac, Tesseract-Slicing).
+- 🔧 V6ToDorefresh-Task `v6r-wavefunction-pipeline` spiegeln und Abhängigkeiten zu `pytest tests/test_wavefunction_v6.py`/`pipelines/wavefunction/psi_field.py` notieren.
+- 🔗 Zenodo-Checkliste um Ψ-spezifische Test- und Coverage-Nachweise ergänzen; Chronik-Eintrag für FIT-Reihenfolge vorbereiten.
+
+**References:**
+- `../V6_Wellenfunktions_Integrationsplan.md:1-120`
+- `../V6ToDorefresh.md:270-330`
+
+**Sprint Focus:** Ψ-Pipeline + FIT-Sync
+
+---
+
 ### [Priority 4] finalize-literature-review-sync
 **V6 Literature Review finalisieren und mit Finalize-Dokumenten spiegeln**
 
@@ -371,7 +397,7 @@ Kernaussagen der V6-Literature-Review in Finalize-Schiene integriert → V6_Lite
 
 ---
 
-### [Priority 10] finalize-zenodo-checklist
+### [Priority 11] finalize-zenodo-checklist
 **Zenodo-Upload-Readiness absichern**
 
 **Status:** 🔴 Open
@@ -395,7 +421,7 @@ Pre-Release-Anforderungen aus der Zenodo-Checkliste abgearbeitet → pytest/Lint
 
 ---
 
-### [Priority 11] finalize-tau-star-guardrails
+### [Priority 12] finalize-tau-star-guardrails
 **τ*-Guardrails & CREP-Telemetrie im Finalize-Layer verankern**
 
 **Status:** 🔴 Open
@@ -420,7 +446,7 @@ Pre-Release-Anforderungen aus der Zenodo-Checkliste abgearbeitet → pytest/Lint
 
 ---
 
-### [Priority 12] finalize-type6-governance
+### [Priority 13] finalize-type6-governance
 **Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten**
 
 **Status:** 🔴 Open
@@ -444,7 +470,7 @@ Type-VI Merge-Gate aktiv → POLICY/ETHICS referenzieren CREP/τ*, CI/Pre-Commit
 
 ---
 
-### [Priority 13] finalize-fit-sync
+### [Priority 14] finalize-fit-sync
 **FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks**
 
 **Status:** 🔴 Open
@@ -470,6 +496,13 @@ FIT-Microsteps aus `Promt_für_Agenten.txt` in beiden ToDo-Trilayern gespiegelt 
 ---
 
 ## Delta Updates
+
+### 2025-12-18 | finalize-wavefunction-sync
+
+✅ **Highlights:**
+- Neuer Task `finalize-wavefunction-pipeline` ergänzt, um Ψ-Integrationsplan im Finalize-Trilayer zu spiegeln
+- Priority/Sprint-Liste um Ψ-Pipeline erweitert und Zenodo-Testpfade gekoppelt
+- FIT-Kette (ToDorefresh → Chronik) für Ψ-Pipeline vorbereitet
 
 ### 2025-12-13 | finalize-tau-star-bridge
 

@@ -1,7 +1,7 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2025-12-13T00:00:00Z'
+  updated_at: '2025-12-18T00:00:00Z'
   scope: releases/V6-Plans_etc
   description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen
   logistic_frame:
@@ -587,6 +587,7 @@ tasks:
   - Prioritätenliste mit Finalize_TODO.* abgleichen und fehlende Tasks (z.B. τ*-Guardrails, Zenodo-Prep-Follow-up) als Finalize-Einträge markieren
   - Querverweise in beiden Trilayern ergänzen (IDs, Referenzen, R/Θ/β/ζ) und in Chronik/Delta-Updates dokumentieren
   - Prüfen, ob neue Artefakte in V6-Plans_etc (activation_gaps_tau_star.md, type6_crep_tau_star_checklist.*) bereits im Finalize-Layer verankert sind; falls nicht, FIT-Microsteps aufnehmen
+  - Neues Finalize-Item finalize-wavefunction-pipeline mit v6r-wavefunction-pipeline spiegeln und Chronik-Link für FIT-Sequenz setzen
   references:
   - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
     lines:
@@ -607,6 +608,12 @@ tasks:
   priority: 16
   sprint_focus: FIT-Reihenfolge sichern & Trilayer-Parität
 delta_updates:
+- date: '2025-12-18'
+  label: v6-refresh-wavefunction-bridge
+  highlights:
+  - Neues Finalize-Item finalize-wavefunction-pipeline ergänzt und mit v6r-wavefunction-pipeline verknüpft
+  - Priority-Order aktualisiert, um Ψ-Pipeline in FIT-Abfolge (ToDorefresh → Finalize) aufzunehmen
+  - Hinweis für Chronik-Linkage und Zenodo-Testpfade in v6r-finalize-bridge Next Steps dokumentiert
 - date: '2025-12-13'
   label: v6-refresh-fit-bridge
   highlights:

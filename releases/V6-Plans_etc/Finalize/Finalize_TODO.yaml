@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2025-12-13T00:00:00Z'
+  updated_at: '2025-12-18T00:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -22,6 +22,7 @@ metadata:
     - finalize-repo-compliance
     - finalize-deepresearch-protocols
     - finalize-mscopilot-actions
+    - finalize-wavefunction-pipeline
     - finalize-zenodo-checklist
     - finalize-tau-star-guardrails
     - finalize-type6-governance
@@ -363,6 +364,38 @@ tasks:
     - 120
   priority: 9
   sprint_focus: Portal + Prereg + Provenienz-Ledger
+- id: finalize-wavefunction-pipeline
+  title: Ψ-Wellenfunktions-Pipeline in Finalize-Layer verankern
+  status: open
+  completeness: Integrationsplan liegt vor; Finalize-Reflexion und Zenodo/Chronik-
+    Verknüpfungen fehlen.
+  scope:
+  - theory
+  - simulation
+  - documentation
+  logistic_profile:
+    R_target: Ψ-Pipeline finalisiert und mit FIT/Zenodo-Anforderungen gekoppelt
+    Theta_condition: Integrationsplan gespiegelt, Tests referenziert, Chronik-Link gesetzt
+    beta_estimate: 5.3
+    zeta_risk: moderat – Inkonsistenz zwischen Simulator und Governance möglich
+  next_steps:
+  - Kernschritte aus `V6_Wellenfunktions_Integrationsplan.md` in Finalize-Trilayer
+    übernehmen (Ψ_genesis, collapse_to_utac, Tesseract-Slicing)
+  - V6ToDorefresh-Task `v6r-wavefunction-pipeline` spiegeln und Abhängigkeiten zu `pytest
+    tests/test_wavefunction_v6.py`/`pipelines/wavefunction/psi_field.py` dokumentieren
+  - Zenodo-Checkliste um Ψ-spezifische Test- und Coverage-Nachweise ergänzen; Chronik-
+    Eintrag für FIT-Reihenfolge vorbereiten
+  references:
+  - path: releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/V6ToDorefresh.md
+    lines:
+    - 270
+    - 330
+  priority: 10
+  sprint_focus: Ψ-Pipeline + FIT-Sync
 - id: finalize-zenodo-checklist
   title: Zenodo-Upload-Readiness absichern
   status: open
@@ -387,7 +420,7 @@ tasks:
     lines:
     - 1
     - 60
-  priority: 10
+  priority: 11
   sprint_focus: Test- und Compliance-Belege vor Zenodo-DOI
   - id: finalize-tau-star-guardrails
     title: τ*-Guardrails & CREP-Telemetrie im Finalize-Layer verankern
@@ -419,7 +452,7 @@ tasks:
       lines:
       - 320
       - 420
-    priority: 11
+    priority: 12
     sprint_focus: τ*-Delay & CREP-Telemetrie für Finalize fixieren
   - id: finalize-type6-governance
     title: Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten
@@ -447,7 +480,7 @@ tasks:
     lines:
     - 1
     - 33
-    priority: 12
+    priority: 13
     sprint_focus: Governance-Gate + CI-Hook
   - id: finalize-fit-sync
     title: FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks
@@ -472,17 +505,23 @@ tasks:
       lines:
       - 1
       - 5
-    - path: releases/V6-Plans_etc/V6ToDorefresh.md
-      lines:
-      - 360
-      - 460
-    priority: 13
+  - path: releases/V6-Plans_etc/V6ToDorefresh.md
+    lines:
+    - 360
+    - 460
+    priority: 14
     sprint_focus: FIT-Synchronisation & Trilayer-Parität
   delta_updates:
-- date: '2025-12-13'
-  label: finalize-tau-star-bridge
-  highlights:
-  - Neuer τ*-Guardrail-Task für Finalize angelegt und mit ToDorefresh v6r-tau-star-guardrails verknüpft
+  - date: '2025-12-18'
+    label: finalize-wavefunction-sync
+    highlights:
+    - Neuer finalize-wavefunction-pipeline Task ergänzt, um Ψ-Integrationsplan im Finalize-Trilayer zu spiegeln
+    - Priority-Order um Ψ-Pipeline erweitert und Zenodo-Testpfade verknüpft
+    - FIT-Kette (ToDorefresh → Chronik) für Ψ-Pipeline notiert
+  - date: '2025-12-13'
+    label: finalize-tau-star-bridge
+    highlights:
+    - Neuer τ*-Guardrail-Task für Finalize angelegt und mit ToDorefresh v6r-tau-star-guardrails verknüpft
   - CREP/τ*-Checkliste als Reviewer-Pflicht im Finalize-Layer markiert
   - FIT-Sync-Pfad für τ*-Hooks (CI, Chronik, Analysis) vorbereitet
 - date: '2025-12-01'
