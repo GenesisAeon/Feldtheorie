@@ -14,6 +14,7 @@
     "sprint_delta": {
       "window": "2025-11-26 → 2025-12-10",
       "priority_order": [
+        "v6r-trilayer-sync",
         "v6r-papers-research",
         "v6r-vrig-simulation",
         "v6r-oipk-tesseract",
@@ -26,12 +27,52 @@
         "v6r-simulator-ux",
         "v6r-beta-bayes",
         "v6r-tau-star-guardrails",
+        "v6r-type6-governance",
         "v6r-psi-integration-plan"
       ],
       "note": "Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)"
     }
   },
   "tasks": [
+    {
+      "id": "v6r-trilayer-sync",
+      "title": "TriLayer-Spiegel zwischen ToDo-Listen und Chronik schließen",
+      "status": "in-progress",
+      "completeness": "Chronik-Update angestoßen; IDs/Quellen noch nicht vollständig gespiegelt und Validator-Haken fehlen.",
+      "scope": [
+        "documentation",
+        "governance"
+      ],
+      "logistic_profile": {
+        "R_target": "TriLayer-Spiegel aktiv",
+        "Theta_condition": "IDs und Quellen zwischen ToDo-Liste und Chronik synchronisiert",
+        "beta_estimate": 4.8,
+        "zeta_risk": "neutral nach Kopplung"
+      },
+      "next_steps": [
+        "IDs zwischen V6_ToDoListe.* und Chronik final spiegeln",
+        "Chronik-Achse und logistisches Raster (R/Θ/β/ζ) überprüfen",
+        "Validator/Index-Haken für automatisierte Trilayer-Prüfung ergänzen"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/v6_tasks_export_Aeon.json",
+          "lines": [
+            10,
+            43
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Chronik/chronik_v6_release.md",
+          "lines": [
+            1,
+            80
+          ]
+        }
+      ],
+      "priority": 0,
+      "sprint_focus": "Chronik-Kopplung"
+    },
     {
       "id": "v6r-papers-research",
       "title": "Deep Research - Systematische Paper-Validierung für alle V6-Hypothesen",
@@ -608,6 +649,46 @@
       ],
       "priority": 13,
       "sprint_focus": "Ψ-Gleichung in Pipeline + RK4/τ* Guardrails"
+    },
+    {
+      "id": "v6r-type6-governance",
+      "title": "Type-VI CREP/τ*-Governance in Policies und CI verankern",
+      "status": "open",
+      "completeness": "Checkliste existiert, aber POLICY/ETHICS und CI-Hooks spiegeln CREP/τ* noch nicht.",
+      "scope": [
+        "governance",
+        "compliance",
+        "simulation"
+      ],
+      "logistic_profile": {
+        "R_target": "Type-VI Checkliste als Merge-Gate aktiv",
+        "Theta_condition": "CREP/τ*-Referenzen in POLICY/ETHICS + CI-Guard für τ*=0.1·|Θ−R| gesetzt",
+        "beta_estimate": 4.6,
+        "zeta_risk": "neutralisiert bei erfüllter Checkliste"
+      },
+      "next_steps": [
+        "Type-VI CREP/τ*-Checkliste in POLICY.md und ETHICS.md verlinken",
+        "CI/Pre-Commit-Guard für τ* Default (=0.1·|Θ−R|) + CREP ≥0.7 Warnpfad skizzieren",
+        "Reviewer-Slot und Audit-Trail-Eintrag bei CREP ≥0.7 in Chronik hinterlegen"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.md",
+          "lines": [
+            1,
+            49
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/activation_gaps_tau_star.md",
+          "lines": [
+            1,
+            33
+          ]
+        }
+      ],
+      "priority": 14,
+      "sprint_focus": "CREP/τ*-Hooks in Governance"
     }
   ],
   "delta_updates": [

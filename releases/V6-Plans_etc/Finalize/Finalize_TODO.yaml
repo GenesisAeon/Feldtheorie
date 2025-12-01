@@ -22,6 +22,7 @@ metadata:
     - finalize-deepresearch-protocols
     - finalize-mscopilot-actions
     - finalize-zenodo-checklist
+    - finalize-type6-governance
     note: v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation
 tasks:
 - id: finalize-vrig-research
@@ -356,6 +357,34 @@ tasks:
     - 60
   priority: 10
   sprint_focus: Test- und Compliance-Belege vor Zenodo-DOI
+- id: finalize-type6-governance
+  title: Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten
+  status: open
+  completeness: Checkliste liegt vor; Governance-Referenzen und blockende CI/Pre-Commit-Hooks fehlen.
+  scope:
+  - governance
+  - compliance
+  - automation
+  logistic_profile:
+    R_target: Type-VI Merge-Gate aktiv
+    Theta_condition: POLICY/ETHICS verlinken CREP/τ* + CI-Guard blockt fehlende τ*-Defaults
+    beta_estimate: 4.6
+    zeta_risk: neutralisiert durch τ*-Pflicht + Reviewer-Gate
+  next_steps:
+  - Type-VI CREP/τ*-Checkliste in POLICY.md und ETHICS.md verlinken
+  - CI/Pre-Commit-Guard für τ*=0.1·|Θ−R| + CREP ≥0.7 Warnpfad skizzieren (pre-merge blockend)
+  - Reviewer-Slot und Audit-Trail-Eintrag bei CREP ≥0.7 in Chronik/Finalize-Notizen dokumentieren
+  references:
+  - path: releases/V6-Plans_etc/type6_crep_tau_star_checklist.md
+    lines:
+    - 1
+    - 49
+  - path: releases/V6-Plans_etc/activation_gaps_tau_star.md
+    lines:
+    - 1
+    - 33
+  priority: 11
+  sprint_focus: Governance-Gate + CI-Hook
 delta_updates:
 - date: '2025-12-01'
   label: finalize-mscopilot-fit
