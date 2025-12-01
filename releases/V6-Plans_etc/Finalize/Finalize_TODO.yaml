@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2025-12-18T00:00:00Z'
+  updated_at: '2025-12-20T00:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -496,22 +496,29 @@ tasks:
       beta_estimate: 4.4
       zeta_risk: niedrig
     next_steps:
-    - Prioritätenreihenfolge zwischen V6ToDorefresh und Finalize prüfen und synchronisieren
-    - Neue FIT-Microsteps (Promt_für_Agenten.txt, v6r-zenodo-prep) als Finalize-Aufgaben referenzieren
-    - Querverweise zwischen V6ToDorefresh.* und Finalize_TODO.* ergänzen, Trilayer-Drift dokumentieren
-    - Delta-Update-Eintrag hinzufügen, sobald Synchronisation erfolgt
+      - Prioritätenreihenfolge zwischen V6ToDorefresh und Finalize prüfen und synchronisieren
+      - Neue FIT-Microsteps (Promt_für_Agenten.txt, v6r-zenodo-prep) als Finalize-Aufgaben referenzieren
+      - Querverweise zwischen V6ToDorefresh.* und Finalize_TODO.* ergänzen, Trilayer-Drift dokumentieren
+      - Delta-Update-Eintrag hinzufügen, sobald Synchronisation erfolgt
+      - Mapping-Tabelle der Prioritäten/IDs (v6r-* ↔ finalize-*) erstellen und als Handoff-Hinweis für Chronik/Delta markieren
     references:
-    - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
-      lines:
-      - 1
-      - 5
-  - path: releases/V6-Plans_etc/V6ToDorefresh.md
-    lines:
-    - 360
-    - 460
+      - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
+        lines:
+        - 1
+        - 5
+      - path: releases/V6-Plans_etc/V6ToDorefresh.md
+        lines:
+        - 360
+        - 460
     priority: 14
     sprint_focus: FIT-Synchronisation & Trilayer-Parität
-  delta_updates:
+delta_updates:
+  - date: '2025-12-20'
+    label: finalize-fit-handoff
+    highlights:
+    - FIT-Handoff-Mapping zwischen finalize-fit-sync und v6r-finalize-bridge vorbereitet
+    - Zenodo- und τ*-Microsteps in beiden Trilayern referenziert und als Chronik-Hinweis markiert
+    - Prioritätenlisten abgeglichen; Mapping-Tabelle als nächsten Dokumentationsschritt eingeplant
   - date: '2025-12-18'
     label: finalize-wavefunction-sync
     highlights:
@@ -522,20 +529,18 @@ tasks:
     label: finalize-tau-star-bridge
     highlights:
     - Neuer τ*-Guardrail-Task für Finalize angelegt und mit ToDorefresh v6r-tau-star-guardrails verknüpft
-  - CREP/τ*-Checkliste als Reviewer-Pflicht im Finalize-Layer markiert
-  - FIT-Sync-Pfad für τ*-Hooks (CI, Chronik, Analysis) vorbereitet
-- date: '2025-12-01'
-  label: finalize-mscopilot-fit
-  highlights:
-  - MSCopilot-Empfehlungen als eigener Task aufgenommen (Portal, Prereg, Robustheit,
-    Provenienz)
-  - CI/Onboarding-Hooks explizit in Finalize-ToDo verankert
-  - Figure-Zero/Prereg/Provenienz als FIT-Microsteps fokussiert
-- date: '2025-11-27'
-  label: finalize-initialization
-  highlights:
-  - 'Finalize-Ordner analysiert: 13 Dateien (3 PDFs, 10 TXT)'
-  - 8 Haupt-Tasks identifiziert
-  - Trilayer-TODO-Struktur erstellt (MD, YAML, JSON)
-  - 'Kernerkenntnisse: Böhme-Anomalie (1.3%), Entkopplung (β_AI≈1.0), Loihi (100×),
-    Aeon-Architektur'
+    - CREP/τ*-Checkliste als Reviewer-Pflicht im Finalize-Layer markiert
+    - FIT-Sync-Pfad für τ*-Hooks (CI, Chronik, Analysis) vorbereitet
+  - date: '2025-12-01'
+    label: finalize-mscopilot-fit
+    highlights:
+    - MSCopilot-Empfehlungen als eigener Task aufgenommen (Portal, Prereg, Robustheit, Provenienz)
+    - CI/Onboarding-Hooks explizit in Finalize-ToDo verankert
+    - Figure-Zero/Prereg/Provenienz als FIT-Microsteps fokussiert
+  - date: '2025-11-27'
+    label: finalize-initialization
+    highlights:
+    - 'Finalize-Ordner analysiert: 13 Dateien (3 PDFs, 10 TXT)'
+    - 8 Haupt-Tasks identifiziert
+    - Trilayer-TODO-Struktur erstellt (MD, YAML, JSON)
+    - 'Kernerkenntnisse: Böhme-Anomalie (1.3%), Entkopplung (β_AI≈1.0), Loihi (100×), Aeon-Architektur'

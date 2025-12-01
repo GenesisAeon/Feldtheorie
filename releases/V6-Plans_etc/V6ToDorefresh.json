@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2025-12-18T00:00:00Z",
+    "updated_at": "2025-12-20T00:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -785,12 +785,13 @@
         "beta_estimate": 4.5,
         "zeta_risk": "niedrig – Governance-Drift möglich"
       },
-      "next_steps": [
-        "Prioritätenliste mit Finalize_TODO.* abgleichen und fehlende Tasks (z.B. τ*-Guardrails, Zenodo-Prep-Follow-up) als Finalize-Einträge markieren",
-        "Querverweise in beiden Trilayern ergänzen (IDs, Referenzen, R/Θ/β/ζ) und in Chronik/Delta-Updates dokumentieren",
-        "Prüfen, ob neue Artefakte in V6-Plans_etc (activation_gaps_tau_star.md, type6_crep_tau_star_checklist.*) bereits im Finalize-Layer verankert sind; falls nicht, FIT-Microsteps aufnehmen",
-        "Neues Finalize-Item finalize-wavefunction-pipeline mit v6r-wavefunction-pipeline spiegeln und Chronik-Link für FIT-Sequenz setzen"
-      ],
+        "next_steps": [
+          "Prioritätenliste mit Finalize_TODO.* abgleichen und fehlende Tasks (z.B. τ*-Guardrails, Zenodo-Prep-Follow-up) als Finalize-Einträge markieren",
+          "Querverweise in beiden Trilayern ergänzen (IDs, Referenzen, R/Θ/β/ζ) und in Chronik/Delta-Updates dokumentieren",
+          "Prüfen, ob neue Artefakte in V6-Plans_etc (activation_gaps_tau_star.md, type6_crep_tau_star_checklist.*) bereits im Finalize-Layer verankert sind; falls nicht, FIT-Microsteps aufnehmen",
+          "Neues Finalize-Item finalize-wavefunction-pipeline mit v6r-wavefunction-pipeline spiegeln und Chronik-Link für FIT-Sequenz setzen",
+          "Mapping-Tabelle ToDorefresh ↔ Finalize (IDs/Prioritäten) erstellen und als Handoff-Hinweis im Chronik-Update vormerken"
+        ],
       "references": [
         {
           "path": "releases/V6-Plans_etc/Promt_für_Agenten.txt",
@@ -826,6 +827,15 @@
     }
   ],
   "delta_updates": [
+    {
+      "date": "2025-12-20",
+      "label": "v6-refresh-fit-handoff",
+      "highlights": [
+        "Handoff-Mapping zwischen v6r-finalize-bridge und finalize-fit-sync als gemeinsamen FIT-Schritt ergänzt",
+        "τ*- und Zenodo-Microsteps in beiden Trilayern gespiegelt und mit Chronik-Update zur Übergabe markiert",
+        "Prioritätenliste mit Finalize-Reihenfolge abgeglichen und Mapping-Tabelle als nächsten Chronik-Hook notiert"
+      ]
+    },
     {
       "date": "2025-12-18",
       "label": "v6-refresh-wavefunction-bridge",

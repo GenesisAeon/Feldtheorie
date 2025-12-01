@@ -515,6 +515,7 @@ Synchronisationspfad zwischen V6ToDorefresh und Finalize-TODO aktiv → neue FIT
 - 🔗 Querverweise in beiden Trilayern ergänzen (IDs, Referenzen, R/Θ/β/ζ) und in Chronik/Delta-Updates dokumentieren
 - 🧭 Prüfen, ob neue Artefakte in V6-Plans_etc (activation_gaps_tau_star.md, type6_crep_tau_star_checklist.*) bereits im Finalize-Layer verankert sind; falls nicht, FIT-Microsteps aufnehmen
 - 🔗 Neues Finalize-Item `finalize-wavefunction-pipeline` mit `v6r-wavefunction-pipeline` spiegeln und FIT-Kette (Chronik) notieren
+- 🗺️ Mapping-Tabelle ToDorefresh ↔ Finalize (IDs/Prioritäten) erstellen und als Handoff-Hinweis im Chronik-Update vormerken
 
 **References:**
 - `Promt_für_Agenten.txt:1-5`
@@ -552,6 +553,13 @@ Literature-Review-Kernthesen (UTAC/v_RIG/Type-VI) in docs- und BibTeX-Layer gesp
 ---
 
 ## Delta Updates
+
+### 2025-12-20 | v6-refresh-fit-handoff
+
+✅ **Highlights:**
+- Handoff-Mapping zwischen `v6r-finalize-bridge` und `finalize-fit-sync` als gemeinsamen FIT-Schritt ergänzt
+- τ*- und Zenodo-Microsteps in beiden Trilayern gespiegelt und mit Chronik-Update zur Übergabe markiert
+- Prioritätenliste mit Finalize-Reihenfolge abgeglichen und Mapping-Tabelle als nächsten Chronik-Hook notiert
 
 ### 2025-12-18 | v6-refresh-wavefunction-bridge
 
