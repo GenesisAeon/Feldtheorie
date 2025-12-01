@@ -496,6 +496,32 @@ FIT-Microsteps aus `Promt_für_Agenten.txt` in beiden ToDo-Trilayern gespiegelt 
 
 ---
 
+### [Priority 15] finalize-crep-guard-ci
+**CREP/τ*-Guard-Skript im Finalize-Layer testen & loggen**
+
+**Status:** 🔴 Open
+**Beta:** 4.7 | **Zeta Risk:** Moderat – Release-Gate fehlt
+
+**Scope:** governance, compliance, automation
+
+**R → Θ:**
+type6_CREP/τ*-Guard blockt Finalize-Releases automatisch → `tools/crep_guard.py` Hook läuft in Finalize-CI/pre-commit, schreibt nach `logs/type_vi_detections.jsonl` und Chronik/Finalize-Notizen
+
+**Next Steps:**
+- 🔧 Guard-Implementierung aus `v6r-crep-guard-ci` übernehmen und in Finalize-CI/pre-commit spiegeln.
+- 🧪 Audit-Trail `logs/type_vi_detections.jsonl` anlegen und Chronik-Eintrag/Reviewer-Slot bei CREP ≥0.7 dokumentieren.
+- 🗺️ FIT-Mapping in `finalize-fit-sync` aktualisieren und POLICY/ETHICS-Referenzen auf `type6_crep_tau_star_checklist.*` prüfen.
+
+**References:**
+- `type6_crep_tau_star_checklist.md:1-49`
+- `activation_gaps_tau_star.md:1-36`
+- `../Promt_für_Agenten.txt:1-5`
+- `../V6ToDorefresh.md:500-555`
+
+**Sprint Focus:** CREP/τ*-Guardrail als Release-Gate + Audit-Trail verankern
+
+---
+
 ## FIT Mapping ToDorefresh ↔ Finalize
 
 | ToDorefresh ID | Finalize ID | Bridge Focus | Status |
@@ -506,10 +532,18 @@ FIT-Microsteps aus `Promt_für_Agenten.txt` in beiden ToDo-Trilayern gespiegelt 
 | v6r-wavefunction-pipeline | finalize-wavefunction-pipeline | Ψ-Pipeline FIT-Kette (Tests, Zenodo) | IDs gespiegelt, Testlauf pending |
 | v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | Bullet-Refactor geplant |
 | v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | Checklisten verlinkt, Merge-Gate fehlt |
+| v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Guard-Prototyp geplant |
 
 ---
 
 ## Delta Updates
+
+### 2025-12-23 | finalize-crep-guard
+
+✅ **Highlights:**
+- Neues Finalize-Task `finalize-crep-guard-ci` angelegt, um type6_CREP/τ*-Guard in CI/Pre-Commit zu verankern (Promt_für_Agenten.txt → neue ToDos).
+- FIT-Mapping um `v6r-crep-guard-ci` ↔ `finalize-crep-guard-ci` erweitert; Chronik/Audit-Log als Folgepunkte markiert.
+- Guard-Hook (`tools/crep_guard.py`) + `logs/type_vi_detections.jsonl` als nächste Schritte im Finalize-Layer definiert.
 
 ### 2025-12-22 | finalize-fit-map
 

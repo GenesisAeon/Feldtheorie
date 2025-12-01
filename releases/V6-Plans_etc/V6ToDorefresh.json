@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2025-12-22T00:00:00Z",
+    "updated_at": "2025-12-23T00:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -31,7 +31,8 @@
         "v6r-type6-governance",
         "v6r-psi-integration-plan",
         "v6r-zenodo-prep",
-        "v6r-finalize-bridge"
+        "v6r-finalize-bridge",
+        "v6r-crep-guard-ci"
       ],
       "note": "Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)"
     }
@@ -694,9 +695,9 @@
       "priority": 13,
       "sprint_focus": "Ψ-Gleichung in Pipeline + RK4/τ* Guardrails"
     },
-      {
-        "id": "v6r-type6-governance",
-        "title": "Type-VI CREP/τ*-Governance in Policies und CI verankern",
+    {
+      "id": "v6r-type6-governance",
+      "title": "Type-VI CREP/τ*-Governance in Policies und CI verankern",
       "status": "open",
       "completeness": "Checkliste existiert, aber POLICY/ETHICS und CI-Hooks spiegeln CREP/τ* noch nicht.",
       "scope": [
@@ -731,41 +732,41 @@
           ]
         }
       ],
-        "priority": 14,
-        "sprint_focus": "CREP/τ*-Hooks in Governance"
-      },
+      "priority": 14,
+      "sprint_focus": "CREP/τ*-Hooks in Governance"
+    },
     {
       "id": "v6r-zenodo-prep",
-        "title": "Zenodo-Upload-Readiness in V6-Scope vorbereiten",
-        "status": "open",
-        "completeness": "Checkliste vorhanden, aber Tests/Linting/Provenienz nicht als Release-Gate dokumentiert.",
-        "scope": [
-          "compliance",
-          "testing",
-          "documentation",
-          "release"
-        ],
-        "logistic_profile": {
-          "R_target": "Zenodo-Checkliste auf ✅",
-          "Theta_condition": "Kern-Tests+Coverage+Linting protokolliert, Provenienz/Ethik verlinkt",
-          "beta_estimate": 5.5,
-          "zeta_risk": "hoch ohne Release-Gates"
-        },
-        "next_steps": [
-          "Kern-Testlauf gemäß Checkliste anstoßen (pytest targets) und Logs im Finalize-Ordner sichern",
-          "Coverage-Lauf pytest --cov=pipelines/wavefunction --cov-report=html dokumentieren (≥80%)",
-          "Linting/Typing (flake8, black --check, mypy) ausführen und Statusblock ergänzen",
-          "Provenienz/Ethik-Verweise (ETHICS.md, POLICY.md) in Zenodo_Upload_Checklist.md aktualisieren"
-        ],
-        "references": [
-          {
-            "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
-            "lines": [
-              1,
-              80
-            ]
-          }
-        ],
+      "title": "Zenodo-Upload-Readiness in V6-Scope vorbereiten",
+      "status": "open",
+      "completeness": "Checkliste vorhanden, aber Tests/Linting/Provenienz nicht als Release-Gate dokumentiert.",
+      "scope": [
+        "compliance",
+        "testing",
+        "documentation",
+        "release"
+      ],
+      "logistic_profile": {
+        "R_target": "Zenodo-Checkliste auf ✅",
+        "Theta_condition": "Kern-Tests+Coverage+Linting protokolliert, Provenienz/Ethik verlinkt",
+        "beta_estimate": 5.5,
+        "zeta_risk": "hoch ohne Release-Gates"
+      },
+      "next_steps": [
+        "Kern-Testlauf gemäß Checkliste anstoßen (pytest targets) und Logs im Finalize-Ordner sichern",
+        "Coverage-Lauf pytest --cov=pipelines/wavefunction --cov-report=html dokumentieren (≥80%)",
+        "Linting/Typing (flake8, black --check, mypy) ausführen und Statusblock ergänzen",
+        "Provenienz/Ethik-Verweise (ETHICS.md, POLICY.md) in Zenodo_Upload_Checklist.md aktualisieren"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
+          "lines": [
+            1,
+            80
+          ]
+        }
+      ],
       "priority": 15,
       "sprint_focus": "Test- und Compliance-Belege vor DOI-Request"
     },
@@ -785,13 +786,13 @@
         "beta_estimate": 4.5,
         "zeta_risk": "niedrig – Governance-Drift möglich"
       },
-        "next_steps": [
-          "Prioritätenliste mit Finalize_TODO.* abgleichen und fehlende Tasks (z.B. τ*-Guardrails, Zenodo-Prep-Follow-up) als Finalize-Einträge markieren",
-          "Querverweise in beiden Trilayern ergänzen (IDs, Referenzen, R/Θ/β/ζ) und in Chronik/Delta-Updates dokumentieren",
-          "Prüfen, ob neue Artefakte in V6-Plans_etc (activation_gaps_tau_star.md, type6_crep_tau_star_checklist.*) bereits im Finalize-Layer verankert sind; falls nicht, FIT-Microsteps aufnehmen",
-          "Neues Finalize-Item finalize-wavefunction-pipeline mit v6r-wavefunction-pipeline spiegeln und Chronik-Link für FIT-Sequenz setzen",
-          "Mapping-Tabelle ToDorefresh ↔ Finalize (IDs/Prioritäten) pflegen und in Chronik-Update verlinken (erster Entwurf erstellt)"
-        ],
+      "next_steps": [
+        "Prioritätenliste mit Finalize_TODO.* abgleichen und fehlende Tasks (z.B. τ*-Guardrails, Zenodo-Prep-Follow-up) als Finalize-Einträge markieren",
+        "Querverweise in beiden Trilayern ergänzen (IDs, Referenzen, R/Θ/β/ζ) und in Chronik/Delta-Updates dokumentieren",
+        "Prüfen, ob neue Artefakte in V6-Plans_etc (activation_gaps_tau_star.md, type6_crep_tau_star_checklist.*) bereits im Finalize-Layer verankert sind; falls nicht, FIT-Microsteps aufnehmen",
+        "Neues Finalize-Item finalize-wavefunction-pipeline mit v6r-wavefunction-pipeline spiegeln und Chronik-Link für FIT-Sequenz setzen",
+        "Mapping-Tabelle ToDorefresh ↔ Finalize (IDs/Prioritäten) pflegen und in Chronik-Update verlinken (erster Entwurf erstellt)"
+      ],
       "references": [
         {
           "path": "releases/V6-Plans_etc/Promt_für_Agenten.txt",
@@ -824,6 +825,53 @@
       ],
       "priority": 16,
       "sprint_focus": "FIT-Reihenfolge sichern & Trilayer-Parität"
+    },
+    {
+      "id": "v6r-crep-guard-ci",
+      "title": "CREP/τ*-Guard-Skript + Logging in CI/Pre-Commit verankern",
+      "status": "open",
+      "completeness": "type6_CREP/τ*-Checkliste vorhanden; Guard-Skript und CI/Chronik-Hooks fehlen.",
+      "scope": [
+        "governance",
+        "automation",
+        "compliance"
+      ],
+      "logistic_profile": {
+        "R_target": "type6_CREP/τ*-Checkliste als automatischer Guard aktiv",
+        "Theta_condition": "tools/crep_guard.py prüft τ*-Default + CREP ≥0.7 Reviewer-Pflicht, Logs in logs/type_vi_detections.jsonl",
+        "beta_estimate": 4.7,
+        "zeta_risk": "moderat – Merge-Gate fehlt"
+      },
+      "next_steps": [
+        "Guard-Prototyp tools/crep_guard.py --threshold 0.7 --tau-default 0.1 basierend auf activation_gaps_tau_star.md + type6_crep_tau_star_checklist.* bauen",
+        "Hook in make validate-trilayer / pre-commit integrieren; Fail wenn τ*-Default fehlt oder CREP ≥0.7 ohne Reviewer-Slot; Logs nach logs/type_vi_detections.jsonl schreiben",
+        "Chronik/Chronik_v6_release.md + FIT-Mapping auf finalize-crep-guard-ci ergänzen"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/activation_gaps_tau_star.md",
+          "lines": [
+            1,
+            36
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.md",
+          "lines": [
+            1,
+            49
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Promt_für_Agenten.txt",
+          "lines": [
+            1,
+            5
+          ]
+        }
+      ],
+      "priority": 17,
+      "sprint_focus": "CREP/τ*-Merge-Gate + Audit-Log aktivieren"
     }
   ],
   "fit_mapping": [
@@ -862,9 +910,24 @@
       "finalize_id": "finalize-type6-governance",
       "bridge_focus": "Type-VI Governance + CI-Hook",
       "status": "checklists-linked"
+    },
+    {
+      "todo_id": "v6r-crep-guard-ci",
+      "finalize_id": "finalize-crep-guard-ci",
+      "bridge_focus": "CREP/τ*-CI-Guard",
+      "status": "planned"
     }
   ],
   "delta_updates": [
+    {
+      "date": "2025-12-23",
+      "label": "v6-refresh-crep-guard",
+      "highlights": [
+        "Task v6r-crep-guard-ci ergänzt, um type6_CREP/τ*-Checkliste als CI-Guard abzubilden",
+        "FIT-Mapping um finalize-crep-guard-ci erweitert; Chronik/Log-Anker als Folgearbeit festgelegt",
+        "Guard-Prototyp für tools/crep_guard.py + logs/type_vi_detections.jsonl als nächste Schritte beschrieben"
+      ]
+    },
     {
       "date": "2025-12-22",
       "label": "v6-refresh-fit-map",
