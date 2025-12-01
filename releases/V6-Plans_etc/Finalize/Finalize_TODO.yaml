@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2025-12-09T00:00:00Z'
+  updated_at: '2025-12-12T00:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -15,6 +15,7 @@ metadata:
     - finalize-vrig-research
     - finalize-entkopplung
     - finalize-loihi-experiment
+    - finalize-literature-review-sync
     - finalize-13mhz-signatur
     - finalize-aeon-architecture
     - finalize-slice-integration
@@ -140,6 +141,35 @@ tasks:
       neuromorpher Hardware.pdf
   priority: 3
   sprint_focus: Skalierungsdaten + Kopplungs-Hierarchie
+- id: finalize-literature-review-sync
+  title: V6 Literature Review finalisieren und mit Finalize-Dokumenten spiegeln
+  status: open
+  completeness: Literature-Review liegt vor, aber Spiegelung zu Finalize/Papers/BibTeX fehlt.
+  scope:
+  - documentation
+  - research
+  - governance
+  logistic_profile:
+    R_target: Literature-Review-Kernthesen gespiegelt
+    Theta_condition: V6_Literature_Review.md verlinkt Finalize_TODO.* + docs/references_v6.bib + Chronik
+    beta_estimate: 5.1
+    zeta_risk: moderat – Referenz-Drift blockiert DOI-Readiness
+  next_steps:
+  - Bulletpoints aus `V6_Literature_Review.md` (UTAC, Entropie, Zeitscheiben, v_RIG) extrahieren und mit Finalize-Tasks mappen.
+  - BibTeX-Sync mit `docs/references_v6.bib` und offenen Citations aus Finalize-Papieren (z.B. `Finale`/`papers` Ordner) herstellen.
+  - FIT-Reihenfolge abbilden: ToDorefresh-Eintrag `v6r-literature-review-sync` spiegeln und Chronik-Notiz ergänzen.
+  - Provenienz-Block (R/Θ/β/ζ) für Literature Review in Finalize_TODO.* und Zenodo-Checkliste referenzieren.
+  references:
+  - path: releases/V6-Plans_etc/V6_Literature_Review.md
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/V6ToDorefresh.md
+    lines:
+    - 360
+    - 460
+  priority: 4
+  sprint_focus: Literatur-Sync & DOI-Vorbereitung
 - id: finalize-13mhz-signatur
   title: Themenblock A - Die 13.5 MHz-Signatur validieren
   status: open

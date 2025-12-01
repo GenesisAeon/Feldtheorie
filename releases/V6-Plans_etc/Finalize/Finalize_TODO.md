@@ -346,6 +346,31 @@ V6-Onboarding + Reproduzierbarkeit auf Reviewer-Niveau → Portal-Seite + Prereg
 
 ---
 
+### [Priority 4] finalize-literature-review-sync
+**V6 Literature Review finalisieren und mit Finalize-Dokumenten spiegeln**
+
+**Status:** 🔴 Open
+**Beta:** 5.1 | **Zeta Risk:** Moderat – Referenz-Drift blockiert DOI-Readiness
+
+**Scope:** documentation, research, governance
+
+**R → Θ:**
+Kernaussagen der V6-Literature-Review in Finalize-Schiene integriert → V6_Literature_Review.md verlinkt Finalize_TODO.* + docs/references_v6.bib + Chronik
+
+**Next Steps:**
+- 📝 Bulletpoints aus `V6_Literature_Review.md` (UTAC, Entropie, Zeitscheiben, v_RIG) extrahieren und mit Finalize-Tasks mappen.
+- 🔗 BibTeX-Sync mit `docs/references_v6.bib` und offenen Citations aus Finalize-Papieren (z.B. `Finale`/`papers` Ordner) herstellen.
+- 🧭 FIT-Reihenfolge abbilden: ToDorefresh-Eintrag `v6r-literature-review-sync` spiegeln und Chronik-Notiz ergänzen.
+- ✅ Provenienz-Block (R/Θ/β/ζ) für Literature Review in Finalize_TODO.* und Zenodo-Checkliste referenzieren.
+
+**References:**
+- `../V6_Literature_Review.md:1-120`
+- `../V6ToDorefresh.md:360-460`
+
+**Sprint Focus:** Literatur-Sync & DOI-Vorbereitung
+
+---
+
 ### [Priority 10] finalize-zenodo-checklist
 **Zenodo-Upload-Readiness absichern**
 
