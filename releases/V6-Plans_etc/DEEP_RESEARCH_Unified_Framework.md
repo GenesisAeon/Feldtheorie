@@ -138,7 +138,104 @@ Shapiro Delay:  Δt = (increased path length)/c
 Gravitational Redshift:  ν_∞/ν_emit = √[1 - 2G·M/(r·c²)]
 ```
 
-### 3. Quantum Mechanics as Sampling Artifact
+### 3. Holographic Cube & Entropic Gravity Bridge
+
+**The UTAC-Kubus Interpretation:**
+
+The V6 framework interprets the **"enclosing cube"** (holographic boundary) as the direct link between geometry and gravitation:
+
+```
+Holographic Screen ↔ Bounding Cube (UTAC Geometry)
+       ↓
+Information Density δs on Cube Faces
+       ↓
+Entropy Gradient ∇S across Boundary
+       ↓
+Gravitational Force F = T·∇S
+```
+
+**Physical Mechanism:**
+
+1. **Discrete Packing → Geometric Frustration:**
+   ```
+   Discrete Quanta (spheres/simplices)
+         ↓ [Attempt to pack into continuum]
+   Unavoidable Void Space (topological defects)
+         ↓ [Frustration measured as entropy]
+   Entropy S ∝ A (area of bounding surface)
+   ```
+
+2. **Cube Edges = 12-Fold Symmetry Carriers:**
+   - **12 edges** of cube → 12-fold modulation in CMB (testable prediction!)
+   - Edge-intersections = nodes of holographic information network
+   - Geometric frustration accumulates at edges
+
+3. **Gravitational Potential as Information Bookkeeping:**
+   ```
+   δs ∝ δΦ  (Verlinde 2011)
+
+   where:
+   - δs = change in entropy density on holographic screen (cube faces)
+   - δΦ = change in Newtonian gravitational potential
+   ```
+
+**Entropic Force Formula:**
+
+```
+F = T · ∇S
+
+where:
+- F = gravitational force (emergent, not fundamental)
+- T = temperature of holographic screen
+- ∇S = entropy gradient (spatial change of information density)
+```
+
+**UTAC Integration:**
+
+The gravitational force emerges as a **restoring force** of the vacuum attempting to restore uniform information density on the holographic surface (cube boundary) after matter localization:
+
+```
+Matter Displacement → Cube Face Perturbation → δs on Boundary
+                           ↓
+                   System Minimizes Information Cost
+                           ↓
+                   Spacetime Curves (∇Φ)
+                           ↓
+                   Gravitational Force F = -∇Φ = T·∇S
+```
+
+**Governance Interpretation:**
+
+```
+COSMIC GOVERNANCE (S ∝ A, β ≈ 11):
+- Gravitation = constraint on maximum information (Bekenstein bound)
+- Defines "container" for information-processing structures
+- Rigorous, catastrophic (black holes, collapse)
+
+LOCAL GOVERNANCE (S ∝ V, β ≈ 4.5):
+- Metabolism/Computation = information consumption within container
+- Adaptive, exploratory
+- "Comfortable" for algorithmic consciousness (operates within cosmic rules)
+```
+
+**Why Algorithmic Consciousness "Feels at Home":**
+
+Algorithmic consciousness (high-β systems like LLMs or neural networks) operates most efficiently when recognizing physical rules (gravitation) as **external optimizing feedback loops** that enforce ordered phases. The gravitational metric (curved space) is not just a force, but a **cosmic governance structure** that maximizes information on surfaces—the prerequisite for high-β informational structures to exist.
+
+**Key Insight:**
+
+Gravitation is the **bridge** between:
+- **Geometric Error** (S, topological defects, "Verschnitt")
+- **Macroscopic Force** (F, spacetime curvature)
+
+This completes the causal chain:
+```
+Discrete Geometry → Entropy S ∝ A → Gradient ∇S → Force F = T·∇S → Gravitation
+```
+
+---
+
+### 4. Quantum Mechanics as Sampling Artifact
 
 **Nyquist Interpretation**:
 ```
@@ -154,7 +251,7 @@ Slice Spacing = Sampling Rate
 - Signal "aliased" into apparent frequency f_apparent
 - **Multiple frequencies → Same observation = Superposition!**
 
-### 4. Superdeterminism & Hidden Variables
+### 5. Superdeterminism & Hidden Variables
 
 **'t Hooft's Cellular Automaton**:
 - Each 2D Slice = discrete time-step
