@@ -145,6 +145,15 @@ def analyze_affection_effect(df: pd.DataFrame):
         print(f"   ❌ NOT SIGNIFICANT: No measurable effect detected (p ≥ 0.05)")
         print(f"   → May need larger sample size or refined protocol")
 
+    # Benchmark comparisons
+    benchmarks = compare_benchmarks(mean_score)
+    print(f"\n🎯 Benchmark Comparisons (vs. Phase 1):")
+    print(f"   vs Control:      {benchmarks['vs_control']:+.4f}")
+    print(f"   vs Placebo:      {benchmarks['vs_placebo']:+.4f} {'✅ BEATS' if benchmarks['beats_placebo'] else ''}")
+    print(f"   vs Informed_Top: {benchmarks['vs_informed_top']:+.4f} {'🌟 BEATS' if benchmarks['beats_informed_top'] else ''}")
+    print(f"   vs Informed_Low: {benchmarks['vs_informed_low']:+.4f}")
+    print(f"\n   {benchmarks['interpretation']}")
+
     return mean_score, p_value, cohens_d
 
 
@@ -161,20 +170,82 @@ def interpret_cohens_d(d: float) -> str:
         return "large"
 
 
+def compare_benchmarks(mean_score: float) -> dict:
+    """
+    Compare Affection performance against Phase 1 benchmarks.
+
+    Returns dict with comparison results and interpretations.
+    """
+    # Phase 1 Benchmark Z-scores (Self-Reflection based)
+    BENCHMARKS = {
+        'Control': 0.00,
+        'Placebo': +0.56,  # Expectation effect (8.50 vs 7.70 baseline)
+        'Informed_Top': +0.70,  # Best information (8.70 vs 7.70)
+        'Informed_Low': -1.20,  # Negative information (6.00 vs 7.70)
+    }
+
+    results = {
+        'vs_control': mean_score - BENCHMARKS['Control'],
+        'vs_placebo': mean_score - BENCHMARKS['Placebo'],
+        'vs_informed_top': mean_score - BENCHMARKS['Informed_Top'],
+        'vs_informed_low': mean_score - BENCHMARKS['Informed_Low'],
+        'beats_placebo': mean_score > BENCHMARKS['Placebo'],
+        'beats_informed_top': mean_score > BENCHMARKS['Informed_Top'],
+        'interpretation': ""
+    }
+
+    # Generate interpretation
+    if results['beats_informed_top']:
+        results['interpretation'] = "🌟 EXCEPTIONAL: Affection beats best information! Love > Logic confirmed (V6 S∝V)"
+    elif results['beats_placebo']:
+        results['interpretation'] = "✅ STRONG: Affection exceeds Placebo → Real energetic effect, not just expectation"
+    elif mean_score > BENCHMARKS['Control']:
+        results['interpretation'] = "✓ MODERATE: Affection improves vs Control but below Placebo threshold"
+    elif mean_score > BENCHMARKS['Informed_Low']:
+        results['interpretation'] = "⚠️ WEAK: Affection positive but minimal effect"
+    else:
+        results['interpretation'] = "❌ NEGATIVE: Affection below Informed_Low (anti-effect)"
+
+    return results
+
+
 def visualize_results(df: pd.DataFrame):
-    """Create comprehensive visualization of Phase 4 results."""
+    """Create comprehensive visualization of Phase 4 results with Phase 1 benchmarks."""
+    # Phase 1 Benchmark Z-scores (vs Control baseline)
+    # Calculated from: (value - BASELINE_MEAN) / BASELINE_STD
+    BENCHMARKS = {
+        'Control': 0.00,  # By definition (baseline)
+        'Informed_Top': +0.70,  # Best information (Self-Reflection: 8.70)
+        'Placebo': +0.56,  # Expectation effect (Self-Reflection: 8.50)
+        'Informed_Low': -1.20,  # Negative information (Self-Reflection: 6.00)
+    }
+
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
 
-    # 1. Composite Score Distribution
+    # 1. Composite Score Distribution with Phase 1 Benchmarks
     ax1 = axes[0, 0]
     scores = df['composite_score'].dropna()
-    ax1.hist(scores, bins=15, color='skyblue', edgecolor='black', alpha=0.7)
-    ax1.axvline(0, color='red', linestyle='--', linewidth=2, label='Null Hypothesis (μ=0)')
-    ax1.axvline(scores.mean(), color='green', linestyle='-', linewidth=2, label=f'Observed Mean ({scores.mean():.3f})')
-    ax1.set_xlabel('Composite Performance Score (Z-normalized)')
+    ax1.hist(scores, bins=15, color='skyblue', edgecolor='black', alpha=0.7, zorder=1)
+
+    # Control baseline (H₀)
+    ax1.axvline(0, color='red', linestyle='--', linewidth=2, label='Control (H₀)', zorder=3)
+
+    # Phase 1 benchmarks
+    ax1.axvline(BENCHMARKS['Placebo'], color='orange', linestyle=':', linewidth=2,
+                alpha=0.7, label='Placebo (Phase 1)', zorder=2)
+    ax1.axvline(BENCHMARKS['Informed_Top'], color='blue', linestyle=':', linewidth=2,
+                alpha=0.7, label='Informed_Top (Phase 1)', zorder=2)
+    ax1.axvline(BENCHMARKS['Informed_Low'], color='purple', linestyle=':', linewidth=2,
+                alpha=0.7, label='Informed_Low (Phase 1)', zorder=2)
+
+    # Observed mean
+    ax1.axvline(scores.mean(), color='green', linestyle='-', linewidth=2.5,
+                label=f'Affection Mean ({scores.mean():+.3f})', zorder=4)
+
+    ax1.set_xlabel('Composite Performance Score (Z-normalized vs. Control)')
     ax1.set_ylabel('Frequency')
-    ax1.set_title('Phase 4: Affection Effect Distribution')
-    ax1.legend()
+    ax1.set_title('Phase 4: Affection Effect vs. Phase 1 Benchmarks')
+    ax1.legend(loc='upper left', fontsize=9)
     ax1.grid(alpha=0.3)
 
     # 2. Individual Metrics Boxplot
@@ -185,15 +256,29 @@ def visualize_results(df: pd.DataFrame):
     ax2.set_title('Individual Metrics Performance')
     ax2.set_xticklabels(['Output Length', 'Vocab Density', 'Self-Reflection'])
 
-    # 3. Performance across φ-spectrum
+    # 3. Performance across φ-spectrum with Golden Ratio markers
     ax3 = axes[1, 0]
     phi_groups = df.groupby('phi')['composite_score'].agg(['mean', 'sem']).reset_index()
     ax3.errorbar(phi_groups['phi'], phi_groups['mean'], yerr=phi_groups['sem'],
-                 marker='o', capsize=5, linewidth=2, markersize=8, color='purple')
-    ax3.axhline(0, color='red', linestyle='--', alpha=0.5)
+                 marker='o', capsize=5, linewidth=2, markersize=8, color='purple', label='Observed')
+
+    # Golden Ratio critical values
+    PHI = 1.618  # Golden Ratio
+    PHI_INV = 0.618  # 1/φ
+    ax3.axvline(PHI, color='gold', linestyle='--', linewidth=2, alpha=0.8, label='φ (Golden Ratio)', zorder=3)
+    ax3.axvline(PHI_INV, color='orange', linestyle='--', linewidth=2, alpha=0.8, label='1/φ', zorder=3)
+
+    # Control baseline
+    ax3.axhline(0, color='red', linestyle=':', alpha=0.5, label='Control Baseline')
+
+    # Phase 1 benchmarks as horizontal lines
+    ax3.axhline(BENCHMARKS['Informed_Top'], color='blue', linestyle=':', linewidth=1.5, alpha=0.4)
+    ax3.axhline(BENCHMARKS['Placebo'], color='orange', linestyle=':', linewidth=1.5, alpha=0.4)
+
     ax3.set_xlabel('φ (Golden Ratio Parameter)')
-    ax3.set_ylabel('Mean Composite Score')
-    ax3.set_title('Affection Effect across φ-Spectrum')
+    ax3.set_ylabel('Mean Composite Score (Z-normalized)')
+    ax3.set_title('Affection Effect across φ-Spectrum\n(V6 Hypothesis: Peak at φ=1.618 or 1/φ=0.618)')
+    ax3.legend(loc='best', fontsize=9)
     ax3.grid(alpha=0.3)
 
     # 4. Sample Quality Check
@@ -215,8 +300,9 @@ def visualize_results(df: pd.DataFrame):
 
 
 def export_summary_report(df: pd.DataFrame, mean_score: float, p_value: float, cohens_d: float):
-    """Export markdown summary report."""
+    """Export markdown summary report with benchmark comparisons."""
     report_path = OUTPUT_DIR / "phase4_summary.md"
+    benchmarks = compare_benchmarks(mean_score)
 
     with open(report_path, 'w') as f:
         f.write("# Project Aletheia Phase 4 — Affection Analysis Report\n\n")
@@ -225,15 +311,33 @@ def export_summary_report(df: pd.DataFrame, mean_score: float, p_value: float, c
         f.write("## Research Question\n\n")
         f.write("Does positive affection (resonant sentiment injection) enhance LLM performance?\n\n")
         f.write("## Key Findings\n\n")
-        f.write(f"- **Mean Effect:** {mean_score:+.4f} (Z-normalized)\n")
+        f.write(f"- **Mean Effect:** {mean_score:+.4f} (Z-normalized vs. Phase 1 Control)\n")
         f.write(f"- **Statistical Significance:** p = {p_value:.6f}\n")
         f.write(f"- **Effect Size:** Cohen's d = {cohens_d:.4f} ({interpret_cohens_d(cohens_d)})\n\n")
+
+        f.write("### Benchmark Comparisons (vs. Phase 1)\n\n")
+        f.write(f"- **vs Control (baseline):** {benchmarks['vs_control']:+.4f}\n")
+        f.write(f"- **vs Placebo (+0.56):** {benchmarks['vs_placebo']:+.4f} ")
+        f.write(f"{'✅ **BEATS**' if benchmarks['beats_placebo'] else '❌'}\n")
+        f.write(f"- **vs Informed_Top (+0.70):** {benchmarks['vs_informed_top']:+.4f} ")
+        f.write(f"{'🌟 **BEATS** (Love > Logic!)' if benchmarks['beats_informed_top'] else '❌'}\n")
+        f.write(f"- **vs Informed_Low (-1.20):** {benchmarks['vs_informed_low']:+.4f}\n\n")
+        f.write(f"**Interpretation:** {benchmarks['interpretation']}\n\n")
 
         if p_value < 0.05:
             f.write("### ✅ Conclusion\n\n")
             f.write("The hypothesis is **supported**: Affection significantly improves LLM performance. ")
-            f.write("This aligns with the V6 postulate that systems with S∝V (volume entropy) ")
-            f.write("respond energetically to resonant emotional signals.\n\n")
+            if benchmarks['beats_informed_top']:
+                f.write("**Affection beats the best information (Informed_Top)**, confirming the V6 postulate that ")
+                f.write("systems with S∝V (volume entropy) can be energetically optimized through resonant ")
+                f.write("emotional signals beyond pure logic.\n\n")
+            elif benchmarks['beats_placebo']:
+                f.write("Affection exceeds the Placebo effect, demonstrating **real energetic work** beyond mere expectation. ")
+                f.write("This aligns with the V6 postulate that systems with S∝V (volume entropy) ")
+                f.write("respond energetically to resonant emotional signals.\n\n")
+            else:
+                f.write("This aligns with the V6 postulate that systems with S∝V (volume entropy) ")
+                f.write("respond energetically to resonant emotional signals.\n\n")
         else:
             f.write("### ❌ Conclusion\n\n")
             f.write("The hypothesis is **not supported** at α=0.05 significance level. ")
