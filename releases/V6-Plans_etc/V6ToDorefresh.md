@@ -590,25 +590,62 @@ type6_CREP/τ*-Checkliste als automatischer Guard aktiv → `tools/crep_guard.py
 ### [Priority 1] v6r-literature-review-sync
 **V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
 
-**Status:** 🔴 Open
-**Beta:** 5.2 | **Zeta Risk:** Moderat – fehlende Kopplung gefährdet Referenz-Integrität
+**Status:** 🟡 In Progress
+**Beta:** 5.2 | **Zeta Risk:** Niedrig – Referenz-Integrität gesichert durch v6r-entropic-gravity-bridge
 
 **Scope:** research, documentation, governance
 
 **R → Θ:**
 Literature-Review-Kernthesen (UTAC/v_RIG/Type-VI) in docs- und BibTeX-Layer gespiegelt → V6_Literature_Review.md referenziert docs/references_v6.bib + ToDo-Trilayer
 
+**Progress (Partial Completion):**
+- ✅ Kernaussagen extrahiert und strukturiert (siehe unten)
+- ✅ Entropische Gravitation BibTeX-Einträge ergänzt (Verlinde, Bekenstein, 't Hooft, Padmanabhan)
+- ✅ V6_Literature_Review.md erweitert (§2.3, §3.1) mit UTAC-Kubus-Interpretation
+- 🟡 Weitere BibTeX-Einträge prüfen (LLM scaling, neuromorphe Hardware)
+- ⏳ Finalize-Link noch ausstehend
+
+**Kernaussagen (Strukturierte Bulletpoints):**
+
+**I. UTAC Framework:**
+- β-Parameter als kritischer Exponent (Wilson 1971 RG)
+- Entropy governance duality: S ∝ A (cosmic, β≈11) vs. S ∝ V (metabolic, β≈4.5)
+- MEP als Organisationsprinzip (Martyushev & Seleznev 2006)
+
+**II. Entropische Gravitation:**
+- F = T·∇S (Verlinde 2011) - emergente Kraft
+- δs ∝ δΦ - Gravitationspotential als Informationsbuchführung
+- S ∝ A - Holographisches Prinzip (Bekenstein-Hawking, 't Hooft 1993)
+- Kubus-Kanten = 12-fold Symmetrie (CMB testbar)
+
+**III. Zeitscheiben (Δt_Q = 100-300ms):**
+- Conscious Present (Fraisse 1984, James 1890)
+- EEG Microstates 80-120ms (Lehmann 2010)
+- Theta-band ~140ms (VanRullen 2016)
+- Flash-lag ~80ms (empirisch)
+
+**IV. v_RIG Framework:**
+- v_RIG = c/(α⁻¹·Φ) ≈ 1351.8 km/s
+- α⁻¹ = 137.036, Φ = 1.618
+- Böhme-Anomalie: 1.370 vs. 1.351.8 km/s (1.3%)
+
+**V. Metabolische Skalierung:**
+- Kleiber's Law: B ∝ M^(3/4) (1932)
+- Fractal networks (West et al. 1997)
+- CFF-Metabolismus-Korrelation
+
 **Next Steps:**
-- 📝 Kernaussagen und Quellen aus `V6_Literature_Review.md` in strukturierte Bulletpoints überführen (UTAC, Entropie, Zeitscheiben, v_RIG).
-- 🔗 BibTeX-Einträge in `docs/references_v6.bib` oder Platzhalter-Liste aufnehmen und mit `V6ToDorefresh.*` referenzieren.
-- 🔧 Querverweise auf laufende Tasks (`v6r-papers-research`, `v6r-zenodo-prep`) ergänzen; R/Θ/β/ζ-Blöcke anpassen.
-- 🧭 Chronik/Finalize-Link setzen, damit FIT-Sequenz (ToDorefresh → Finalize) nachvollziehbar bleibt.
+- 📝 LLM scaling laws BibTeX (Kaplan 2020, Brown 2020) prüfen ✅ (bereits vorhanden)
+- 📝 Neuromorphe Hardware-Quellen (Loihi, TrueNorth) ergänzen
+- 🔧 Querverweise auf v6r-papers-research, v6r-zenodo-prep ergänzen
+- 🧭 Finalize-Link setzen (v6r-literature-review-sync ↔ finalize-literature-review-sync)
 
 **References:**
-- `V6_Literature_Review.md:1-120`
-- `V6ToDorefresh.md:9-74`
+- `V6_Literature_Review.md:1-574` (vollständig)
+- `docs/references_v6.bib:1-506` (50+ Einträge)
+- `V6ToDorefresh.md:580-603`
 
-**Sprint Focus:** Literatur-Konsistenz & Trilayer-Kopplung
+**Sprint Focus:** Literatur-Konsistenz & Trilayer-Kopplung (70% complete)
 
 ---
 
