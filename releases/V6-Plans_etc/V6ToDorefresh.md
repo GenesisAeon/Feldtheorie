@@ -475,6 +475,30 @@ Type-VI Checkliste als Merge-Gate aktiv → POLICY/ETHICS referenzieren CREP/τ*
 
 ---
 
+### [Priority 15] v6r-zenodo-prep
+**Zenodo-Upload-Readiness in V6-Scope vorbereiten**
+
+**Status:** 🔴 Open
+**Beta:** 5.5 | **Zeta Risk:** Hoch – DOI-Release blockiert ohne Nachweise
+
+**Scope:** compliance, testing, documentation, release
+
+**R → Θ:**
+Zenodo-Checkliste auf ✅ bringen → Kern-Tests laufen, Coverage/Linting protokolliert, Provenienz- & Ethik-Blöcke im Repo verlinkt
+
+**Next Steps:**
+- ✅ Kern-Testlauf gemäß Checkliste anstoßen (`pytest tests/test_psi_field.py`, `pytest tests/test_genesis_psifield_integration.py`, `pytest tests/test_wavefunction_v6.py`, Gesamtsuite) und Logs für Finalize-Ordner ablegen.
+- 📊 Coverage-Lauf `pytest --cov=pipelines/wavefunction --cov-report=html` dokumentieren und 80%-Schwelle als Gate festhalten.
+- 🧹 Linting/Typing ausführen (`flake8 pipelines/wavefunction/`, `black --check .`, `mypy pipelines/wavefunction/psi_field.py` + `simulation/genesis_cube.py`) und Resultate in Zenodo-Statusblock notieren.
+- 📝 Provenienz/Ethik-Block im Repository verlinken (ETHICS.md, POLICY.md) und Status in `Zenodo_Upload_Checklist.md` aktualisieren.
+
+**References:**
+- `Zenodo_Upload_Checklist.md:1-80`
+
+**Sprint Focus:** Test- und Compliance-Belege vor DOI-Request
+
+---
+
 ## Delta Updates
 
 ### 2025-12-01 | v6-refresh-governance-hook

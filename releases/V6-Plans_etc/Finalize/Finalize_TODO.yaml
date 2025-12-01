@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2025-12-05T00:00:00Z'
+  updated_at: '2025-12-09T00:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -23,6 +23,7 @@ metadata:
     - finalize-mscopilot-actions
     - finalize-zenodo-checklist
     - finalize-type6-governance
+    - finalize-fit-sync
     note: v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation
 tasks:
 - id: finalize-vrig-research
@@ -357,9 +358,9 @@ tasks:
     - 60
   priority: 10
   sprint_focus: Test- und Compliance-Belege vor Zenodo-DOI
-- id: finalize-type6-governance
-  title: Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten
-  status: open
+  - id: finalize-type6-governance
+    title: Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten
+    status: open
   completeness: Checkliste liegt vor; Governance-Referenzen und blockende CI/Pre-Commit-Hooks fehlen.
   scope:
   - governance
@@ -385,7 +386,36 @@ tasks:
     - 33
   priority: 11
   sprint_focus: Governance-Gate + CI-Hook
-delta_updates:
+  - id: finalize-fit-sync
+    title: FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks
+    status: open
+    completeness: FIT-Vorgaben notiert, aber Prioritäten/Tasks nicht zwischen Trilayern abgeglichen.
+    scope:
+    - governance
+    - organization
+    - documentation
+    logistic_profile:
+      R_target: FIT-Microsteps gespiegelt
+      Theta_condition: Priority-Listen und neue Tasks (z.B. Zenodo-Prep) in beiden Trilayern verlinkt
+      beta_estimate: 4.4
+      zeta_risk: niedrig
+    next_steps:
+    - Prioritätenreihenfolge zwischen V6ToDorefresh und Finalize prüfen und synchronisieren
+    - Neue FIT-Microsteps (Promt_für_Agenten.txt, v6r-zenodo-prep) als Finalize-Aufgaben referenzieren
+    - Querverweise zwischen V6ToDorefresh.* und Finalize_TODO.* ergänzen, Trilayer-Drift dokumentieren
+    - Delta-Update-Eintrag hinzufügen, sobald Synchronisation erfolgt
+    references:
+    - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
+      lines:
+      - 1
+      - 5
+    - path: releases/V6-Plans_etc/V6ToDorefresh.md
+      lines:
+      - 360
+      - 460
+    priority: 12
+    sprint_focus: FIT-Synchronisation & Trilayer-Parität
+  delta_updates:
 - date: '2025-12-01'
   label: finalize-mscopilot-fit
   highlights:
