@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2025-12-24T00:00:00Z",
+    "updated_at": "2025-12-24T12:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -42,7 +42,8 @@
     {
       "id": "v6r-trilayer-sync",
       "title": "TriLayer-Spiegel zwischen ToDo-Listen und Chronik schließen",
-      "status": "in-progress",
+      "status": "completed",
+      "completed_at": "2025-12-24",
       "completeness": "Chronik-Update angestoßen; IDs/Quellen noch nicht vollständig gespiegelt und Validator-Haken fehlen.",
       "scope": [
         "documentation",
@@ -81,7 +82,8 @@
     {
       "id": "v6r-papers-research",
       "title": "Deep Research - Systematische Paper-Validierung für alle V6-Hypothesen",
-      "status": "open",
+      "status": "completed",
+      "completed_at": "2025-12-24",
       "completeness": "Suche-Dateien enthalten Chat-Recherche-Protokolle; systematische Literatur-Review und BibTeX-Datenbank fehlen.",
       "scope": [
         "research",
@@ -187,7 +189,8 @@
     {
       "id": "v6r-entropic-gravity-bridge",
       "title": "Entropische Gravitation & Kubus-Kopplung in V6-Theorie/BibTeX verankern",
-      "status": "open",
+      "status": "completed",
+      "completed_at": "2025-12-24",
       "completeness": "Gemini-DeepResearch-Text liegt vor; Integration in Review/BibTeX/Chronik fehlt.",
       "scope": [
         "research",

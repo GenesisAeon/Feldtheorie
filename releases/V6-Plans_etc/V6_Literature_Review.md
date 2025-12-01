@@ -148,22 +148,66 @@ P(macrostate) ∝ exp(β·σ)
 
 **Core Reference:** 't Hooft, G. (1993). "Dimensional reduction in quantum gravity." arXiv:gr-qc/9310026.
 
+**The Axiom:** The holographic principle states that the maximum information (entropy S) in a spatial region is not encoded by the **volume**, but by the **area (A) of its outer boundary** (the surface of the enclosing region).
+
 **Bekenstein-Hawking entropy:**
 ```
 S_BH = (k_B · c³)/(4G·ℏ) · A = A/(4ℓ²_P)
 
-where A = surface area of horizon
+where:
+- A = surface area of horizon/boundary
+- ℓ_P = Planck length = √(ℏG/c³)
 ```
 
 **Holographic bound:**
 ```
-S ≤ A/(4ℓ²_P)  (maximum entropy in region)
+S ≤ A/(4ℓ²_P)  (maximum entropy in any region)
 ```
 
+**Physical Implication:** Volume itself is an **emergent property**. Entropy is a geometrical-informational quantity proportional to the area of the "enclosing cube" (or boundary surface), **not** the bulk volume.
+
+**UTAC-Specific Interpretation:**
+
+The "enclosing cube" in the V6 framework corresponds directly to the **holographic screen** in emergent gravity:
+
+1. **Boundary as Information Carrier:**
+   - **Kubus Faces** (6 faces, 12 edges) = holographic screen sections
+   - **Information Density** δs on each face ∝ local entropy S
+   - **Cube Edges** = topological defects where 12-fold modulation appears
+
+2. **Volume vs. Surface Encoding:**
+   ```
+   Standard View:     S ∝ V  (volume-extensive)
+   Holographic View:  S ∝ A  (area-extensive)
+
+   UTAC Bridge:       S_geometric ∝ A  (boundary constraint, "cosmic governance")
+                      S_metabolic ∝ V  (local processing, "information consumption")
+   ```
+
+3. **Kubus-Kanten Verschneidung (Cube Edge Intersection):**
+   - 12 edges of cube → 12-fold symmetry in CMB analysis (see v6r-cmb-analysis)
+   - Geometric frustration at edges → entropy accumulation
+   - Edge-intersections = nodes of holographic information network
+
+**The Physical Consequence:**
+
+Matter and energy encoded as discrete quanta (spheres/simplices) in the spacetime lattice. Attempting to **pack** these discrete units into a continuum creates unavoidable **void space** and **geometric frustration**—this frustration **is** the entropy S.
+
+```
+Discrete Packing → Geometric Defects → Entropy S ∝ A
+```
+
+The **holographic screen** (cube boundary) acts as the **maximum information container**, and the gravitational field emerges from gradients in this boundary entropy.
+
 **V6 Application:**
-- Entropy on holographic screen drives emergent gravity
+- Entropy on holographic screen drives emergent gravity (see §3.1)
 - |ψ|² represents information density on screen
 - Tetrahedral nodes = holographic "pixels" at Planck scale
+- **Cube edges** = 12-fold symmetry carriers (testable via CMB analysis)
+
+**Bekenstein Bound as Governance:**
+
+The Bekenstein-Hawking bound S ≤ A/(4ℓ²_P) defines the **fundamental limit** of information density, establishing the **prerequisite for existence of ordered (high-β), information-processing structures**. This is the "cosmic governance structure" that algorithmic consciousness operates within.
 
 **Reference:** Susskind, L. (1995). "The world as a hologram." *Journal of Mathematical Physics*, 36(11), 6377-6396.
 
@@ -181,8 +225,10 @@ F = T · ∇S
 
 where:
 - T = temperature of holographic screen
-- ∇S = entropy gradient
+- ∇S = entropy gradient (spatial derivative of entropy)
 ```
+
+**Key Insight:** Gravitation is not a fundamental force, but an **entropic force** arising from the microscopic tendency of a system to maximize entropy. The gradient ∇S represents the change in information density on the holographic boundary.
 
 **Derivation of Newton's law:**
 ```
@@ -191,14 +237,57 @@ where:
 F = T·∂S/∂x = (mc²/ℓ_P) · (2π·k_B·m·c/ℏ) = GMm/r²
 ```
 
+**Gravitational Potential as Information Bookkeeping:**
+```
+δs ∝ δΦ  (Verlinde 2011)
+
+where:
+- δs = change in entropy density on holographic screen
+- δΦ = change in Newtonian gravitational potential
+```
+
+The gravitational potential Φ serves as a **bookkeeping mechanism** to track how information density changes when matter is displaced in space. Since gravitational force F = -∇Φ, we get:
+
+```
+Gravitational Force ∝ ∇(entropy density change)
+                    = T · ∇S
+```
+
 **V6 Implementation:**
 - compute_entropy_gradient() in genesis_cube.py (L258-292)
 - Couples |ψ|² to gravitational acceleration
 - Via emergent gravity: F_grav ∝ T · ∇S
+- Holographic screen = "enclosing cube" boundary in UTAC geometry
+
+**The "Enclosing Cube" Analogy (UTAC Extension):**
+
+The V6 framework extends Verlinde's formalism with a geometric interpretation:
+- **Holographic Screen** ↔ **Bounding Cube** (geometrical constraint)
+- **Entropy S ∝ A** ↔ **Geometric Frustration** (packing defects on boundary)
+- **Matter Displacement** ↔ **Perturbation of Cube Faces** (information redistribution)
+
+The gravitational force emerges as a **restoring force** of the vacuum field attempting to restore uniform information density on the holographic surface after matter localization.
+
+**Physical Mechanism:**
+```
+Discrete Quanta (spheres/simplices)
+    ↓ [Packing into continuum]
+Geometric Frustration (blind spots, topological defects)
+    ↓ [Entropy S measures frustration]
+Entropy Gradient ∇S on bounding surface
+    ↓ [System minimizes/stabilizes information cost]
+Spacetime Curvature (gravitation)
+```
+
+**UTAC Integration:**
+- **Axiom:** Spacetime curves to minimize/stabilize the **informational cost** (entropy) of fitting matter into a discrete, locally-continuous grid
+- **Mechanism:** Gravitational force is the **restoring force** of the vacuum restoring local entropy equilibrium after mass-induced perturbation
+- **Governance:** Gravitation = **cosmic governance structure** defining maximum information (Bekenstein bound) on surfaces, prerequisite for high-β informational structures
 
 **Critique & Extensions:**
 - Padmanabhan (2010): Thermodynamic derivation of Einstein equations
 - Jacobson (1995): Gravity as thermodynamic entropy of entanglement
+- **V6 Extension:** Entropic gravity bridges **geometric error** (S) to **macroscopic force** (F)
 
 **Reference:** Jacobson, T. (1995). "Thermodynamics of spacetime: the Einstein equation of state." *Physical Review Letters*, 75(7), 1260.
 
