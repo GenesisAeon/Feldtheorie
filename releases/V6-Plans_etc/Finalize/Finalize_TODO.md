@@ -395,7 +395,32 @@ Pre-Release-Anforderungen aus der Zenodo-Checkliste abgearbeitet → pytest/Lint
 
 ---
 
-### [Priority 11] finalize-type6-governance
+### [Priority 11] finalize-tau-star-guardrails
+**τ*-Guardrails & CREP-Telemetrie im Finalize-Layer verankern**
+
+**Status:** 🔴 Open
+**Beta:** 4.9 | **Zeta Risk:** Moderat – Governance-Drift möglich
+
+**Scope:** simulation, governance, compliance
+
+**R → Θ:**
+τ*-Default (0.1·|Θ−R|) und CREP-Warnpfad finalisiert → activation_gaps_tau_star.md in Finalize-Trilayer gespiegelt, Reviewer-Slots bei CREP ≥0.7 hinterlegt und CI/Chronik-Verweise vorbereitet
+
+**Next Steps:**
+- 🔧 τ*-Helper/CREP-Logging aus `activation_gaps_tau_star.md` als Finalize-Microstep einplanen (analysis/beta_meta_regression_v2.py + Simulator-RK4 Hook)
+- 🛡️ Finalize-Referenzen auf `type6_crep_tau_star_checklist.*` ergänzen und Reviewer-Slots in Chronik notieren
+- 🧭 FIT-Sync: prüfen, ob ToDorefresh-Task `v6r-tau-star-guardrails` vollständig gespiegelt ist; fehlende Artefakte nachtragen
+
+**References:**
+- `../activation_gaps_tau_star.md:1-33`
+- `../type6_crep_tau_star_checklist.md:1-49`
+- `../V6ToDorefresh.md:320-420`
+
+**Sprint Focus:** τ*-Delay & CREP-Telemetrie für Finalize fixieren
+
+---
+
+### [Priority 12] finalize-type6-governance
 **Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten**
 
 **Status:** 🔴 Open
@@ -419,7 +444,7 @@ Type-VI Merge-Gate aktiv → POLICY/ETHICS referenzieren CREP/τ*, CI/Pre-Commit
 
 ---
 
-### [Priority 12] finalize-fit-sync
+### [Priority 13] finalize-fit-sync
 **FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks**
 
 **Status:** 🔴 Open
@@ -445,6 +470,13 @@ FIT-Microsteps aus `Promt_für_Agenten.txt` in beiden ToDo-Trilayern gespiegelt 
 ---
 
 ## Delta Updates
+
+### 2025-12-13 | finalize-tau-star-bridge
+
+✅ **Highlights:**
+- Neuer Task `finalize-tau-star-guardrails` ergänzt und mit ToDorefresh `v6r-tau-star-guardrails` verknüpft
+- CREP/τ*-Checkliste als Reviewer-Pflicht im Finalize-Layer markiert
+- FIT-Sync-Pfad für τ*-Hooks (CI, Chronik, Analysis) vorbereitet
 
 ### 2025-12-01 | finalize-mscopilot-fit
 

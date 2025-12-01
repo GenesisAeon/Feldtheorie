@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2025-12-12T00:00:00Z'
+  updated_at: '2025-12-13T00:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -23,6 +23,7 @@ metadata:
     - finalize-deepresearch-protocols
     - finalize-mscopilot-actions
     - finalize-zenodo-checklist
+    - finalize-tau-star-guardrails
     - finalize-type6-governance
     - finalize-fit-sync
     note: v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation
@@ -388,6 +389,38 @@ tasks:
     - 60
   priority: 10
   sprint_focus: Test- und Compliance-Belege vor Zenodo-DOI
+  - id: finalize-tau-star-guardrails
+    title: τ*-Guardrails & CREP-Telemetrie im Finalize-Layer verankern
+    status: open
+    completeness: τ*-Default ist im ToDorefresh-Layer erfasst; Finalize-Trilayer und Chronik/CI-Verknüpfungen fehlen.
+    scope:
+    - simulation
+    - governance
+    - compliance
+    logistic_profile:
+      R_target: τ*-Default + CREP-Warnpfad finalisiert
+      Theta_condition: activation_gaps_tau_star.md gespiegelt, Reviewer-Slots und CI/Chronik-Verweise hinterlegt
+      beta_estimate: 4.9
+      zeta_risk: moderat – Governance-Drift möglich
+    next_steps:
+    - τ*-Helper/CREP-Logging aus activation_gaps_tau_star.md als Finalize-Microstep einplanen (analysis/beta_meta_regression_v2.py + Simulator-RK4 Hook)
+    - Finalize-Referenzen auf type6_crep_tau_star_checklist.* ergänzen und Reviewer-Slots in Chronik notieren
+    - FIT-Sync prüfen: ToDorefresh-Task v6r-tau-star-guardrails spiegeln und fehlende Artefakte nachtragen
+    references:
+    - path: releases/V6-Plans_etc/activation_gaps_tau_star.md
+      lines:
+      - 1
+      - 33
+    - path: releases/V6-Plans_etc/type6_crep_tau_star_checklist.md
+      lines:
+      - 1
+      - 49
+    - path: releases/V6-Plans_etc/V6ToDorefresh.md
+      lines:
+      - 320
+      - 420
+    priority: 11
+    sprint_focus: τ*-Delay & CREP-Telemetrie für Finalize fixieren
   - id: finalize-type6-governance
     title: Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten
     status: open
@@ -414,8 +447,8 @@ tasks:
     lines:
     - 1
     - 33
-  priority: 11
-  sprint_focus: Governance-Gate + CI-Hook
+    priority: 12
+    sprint_focus: Governance-Gate + CI-Hook
   - id: finalize-fit-sync
     title: FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks
     status: open
@@ -443,9 +476,15 @@ tasks:
       lines:
       - 360
       - 460
-    priority: 12
+    priority: 13
     sprint_focus: FIT-Synchronisation & Trilayer-Parität
   delta_updates:
+- date: '2025-12-13'
+  label: finalize-tau-star-bridge
+  highlights:
+  - Neuer τ*-Guardrail-Task für Finalize angelegt und mit ToDorefresh v6r-tau-star-guardrails verknüpft
+  - CREP/τ*-Checkliste als Reviewer-Pflicht im Finalize-Layer markiert
+  - FIT-Sync-Pfad für τ*-Hooks (CI, Chronik, Analysis) vorbereitet
 - date: '2025-12-01'
   label: finalize-mscopilot-fit
   highlights:

@@ -499,6 +499,32 @@ Zenodo-Checkliste auf ✅ bringen → Kern-Tests laufen, Coverage/Linting protok
 
 ---
 
+### [Priority 16] v6r-finalize-bridge
+**FIT-Brücke: ToDorefresh → Finalize-Aufgaben spiegeln**
+
+**Status:** 🔴 Open
+**Beta:** 4.5 | **Zeta Risk:** Niedrig – Governance-Drift möglich
+
+**Scope:** governance, organization, documentation
+
+**R → Θ:**
+Synchronisationspfad zwischen V6ToDorefresh und Finalize-TODO aktiv → neue FIT-Microsteps (τ*-Guardrails, Zenodo-Prep, Literature Review) in beiden Trilayern gespiegelt und mit Chronik verlinkt
+
+**Next Steps:**
+- 🔍 Prioritätenliste mit Finalize_TODO.* abgleichen und fehlende Tasks (z.B. τ*-Guardrails, Zenodo-Prep-Follow-up) als Finalize-Einträge markieren
+- 🔗 Querverweise in beiden Trilayern ergänzen (IDs, Referenzen, R/Θ/β/ζ) und in Chronik/Delta-Updates dokumentieren
+- 🧭 Prüfen, ob neue Artefakte in V6-Plans_etc (activation_gaps_tau_star.md, type6_crep_tau_star_checklist.*) bereits im Finalize-Layer verankert sind; falls nicht, FIT-Microsteps aufnehmen
+
+**References:**
+- `Promt_für_Agenten.txt:1-5`
+- `Finalize/Finalize_TODO.md:1-220`
+- `activation_gaps_tau_star.md:1-33`
+- `type6_crep_tau_star_checklist.md:1-49`
+
+**Sprint Focus:** FIT-Reihenfolge sichern & Trilayer-Parität
+
+---
+
 ### [Priority 1] v6r-literature-review-sync
 **V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
 
@@ -525,6 +551,13 @@ Literature-Review-Kernthesen (UTAC/v_RIG/Type-VI) in docs- und BibTeX-Layer gesp
 ---
 
 ## Delta Updates
+
+### 2025-12-13 | v6-refresh-fit-bridge
+
+✅ **Highlights:**
+- Neuer Task `v6r-finalize-bridge` ergänzt, um FIT-Reihenfolge ToDorefresh → Finalize zu sichern
+- Querverweise auf τ*-Guardrails und Type-VI-Checkliste als Finalize-Follow-up markiert
+- Chronik-/Delta-Dokumentation als nächsten Schritt für Trilayer-Parität festgelegt
 
 ### 2025-12-01 | v6-refresh-governance-hook
 
