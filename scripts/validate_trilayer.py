@@ -32,9 +32,11 @@ def _parse_md_metadata(md_content: str) -> dict:
     md_meta: dict[str, object] = {}
     md_meta["version"] = _search(r"\*\*Version:\*\*\s*([^\n]+)")
     md_meta["scope"] = _search(r"\*\*Scope:\*\*\s*([^\n]+)")
-    md_meta["generated_at"] = _search(r"\*\*Generated:\*\*\s*([^\n]+)")
+    # Support both "Generated:" and "Generiert:"
+    md_meta["generated_at"] = _search(r"\*\*(?:Generated|Generiert):\*\*\s*([^\n]+)")
     md_meta["updated_at"] = _search(r"\*\*Updated:\*\*\s*([^\n]+)")
 
+    # Try old format first (Logistische Membran)
     logistic_match = re.search(
         r"Logistische Membran:\*\* R→\"(?P<R>.+?)\", Θ→\"(?P<Theta>.+?)\", β≈(?P<beta>[0-9.]+), ζ-Risiko: (?P<zeta>[^.]+)",
         md_content,
@@ -44,6 +46,14 @@ def _parse_md_metadata(md_content: str) -> dict:
         md_meta["Theta_threshold"] = logistic_match.group("Theta")
         md_meta["beta_drive"] = float(logistic_match.group("beta"))
         md_meta["zeta_risk"] = logistic_match.group("zeta").strip()
+    else:
+        # Try new format (Logistic Frame section)
+        md_meta["R_goal"] = _search(r"\*\*R_goal:\*\*\s*([^\n]+)")
+        md_meta["Theta_threshold"] = _search(r"\*\*Theta_threshold:\*\*\s*([^\n]+)")
+        beta_str = _search(r"\*\*beta_drive:\*\*\s*([0-9.]+)")
+        if beta_str:
+            md_meta["beta_drive"] = float(beta_str)
+        md_meta["zeta_risk"] = _search(r"\*\*zeta_risk:\*\*\s*([^\n]+)")
 
     return md_meta
 
@@ -97,9 +107,13 @@ def _check_index_bridges() -> bool:
     return drift_detected
 
 
-def validate_trilayer(base_path: str = "releases/V6-Plans_etc") -> int:
+def validate_trilayer(base_path: str = "releases/V6-Plans_etc", todo_name: str = "V6ToDorefresh") -> int:
     """
     Validate TriLayer consistency between YAML/JSON/MD.
+
+    Args:
+        base_path: Base directory containing trilayer files
+        todo_name: Name prefix for trilayer files (V6_ToDoListe or V6ToDorefresh)
 
     Returns:
         0 if all checks pass, 1 if drift detected
@@ -108,11 +122,11 @@ def validate_trilayer(base_path: str = "releases/V6-Plans_etc") -> int:
 
     # Load TriLayer sources
     try:
-        with open(base / "V6_ToDoListe.json") as f:
+        with open(base / f"{todo_name}.json") as f:
             json_data = json.load(f)
-        with open(base / "V6_ToDoListe.yaml") as f:
+        with open(base / f"{todo_name}.yaml") as f:
             yaml_data = yaml.safe_load(f)
-        md_path = base / "V6_ToDoListe.md"
+        md_path = base / f"{todo_name}.md"
         md_content = md_path.read_text(encoding="utf-8")
     except FileNotFoundError as e:
         print(f"❌ File not found: {e}")
@@ -215,4 +229,13 @@ def validate_trilayer(base_path: str = "releases/V6-Plans_etc") -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(validate_trilayer())
+    # Support both V6_ToDoListe and V6ToDorefresh trilayers
+    import argparse
+    parser = argparse.ArgumentParser(description="Validate TriLayer consistency")
+    parser.add_argument("--name", default="V6ToDorefresh",
+                        help="Trilayer name prefix (default: V6ToDorefresh)")
+    parser.add_argument("--path", default="releases/V6-Plans_etc",
+                        help="Base path (default: releases/V6-Plans_etc)")
+    args = parser.parse_args()
+
+    sys.exit(validate_trilayer(base_path=args.path, todo_name=args.name))
