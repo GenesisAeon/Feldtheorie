@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2025-11-27T12:00:00Z'
+  updated_at: '2025-12-01T05:54:30Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -17,13 +17,17 @@ metadata:
     - finalize-loihi-experiment
     - finalize-13mhz-signatur
     - finalize-aeon-architecture
+    - finalize-slice-integration
+    - finalize-repo-compliance
+    - finalize-deepresearch-protocols
+    - finalize-mscopilot-actions
     note: v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation
-
 tasks:
 - id: finalize-vrig-research
   title: v_RIG-Forschung - Empirische Validierung finalisieren
   status: open
-  completeness: Forschungsergebnisse in Claude.txt, Gemini.txt dokumentiert; systematische Integration fehlt.
+  completeness: Forschungsergebnisse in Claude.txt, Gemini.txt dokumentiert; systematische
+    Integration fehlt.
   scope:
   - research
   - validation
@@ -35,10 +39,12 @@ tasks:
     zeta_risk: hoch - entscheidende Validierungsphase
   next_steps:
   - v_RIG-Zusammenfassung aus Claude.txt extrahieren (Kernthese, 7 Validierungen)
-  - 'Böhme-Anomalie: 1.370 vs. 1.351,8 km/s (1.3% Abweichung) - stärkster empirischer Anker'
+  - 'Böhme-Anomalie: 1.370 vs. 1.351,8 km/s (1.3% Abweichung) - stärkster empirischer
+    Anker'
   - 'Kleiber''s Law: B ∝ M^(3/4) - geometrischer 2D→3D Übergang bestätigt'
   - 'CFF-Metabolismus: Healy et al. 34 Spezies - Korrelation bestätigt'
-  - '13.5 MHz Signatur: Sahu et al. 12 MHz (nahe, aber nicht exakt) - weitere Analyse nötig'
+  - '13.5 MHz Signatur: Sahu et al. 12 MHz (nahe, aber nicht exakt) - weitere Analyse
+    nötig'
   - 'AI Scaling: GPT-4 α >1 (nicht 0.75) - Entkopplungs-Hypothese entwickelt'
   - 'Flash-Lag-Effekt: 50-100 ms (knapp unter 100-300 ms Vorhersage)'
   - Ergebnis-Matrix in docs/v_rig_validation_matrix.md erstellen
@@ -46,13 +52,16 @@ tasks:
   - GeminiSuche_v_RIG-Forschung.txt Erkenntnisse integrieren
   references:
   - path: releases/V6-Plans_etc/Finalize/Claude.txt
-    lines: [1, 897]
+    lines:
+    - 1
+    - 897
   - path: releases/V6-Plans_etc/Finalize/GeminiSuche_v_RIG-Forschung Empirische Suche  Analyse.txt
-    lines: [1, 2008]
+    lines:
+    - 1
+    - 2008
   - path: releases/V6-Plans_etc/Finalize/v_RIG-Forschung_ Empirische Suche & Analyse.pdf
   priority: 1
   sprint_focus: Validierungs-Matrix + Research Papers
-
 - id: finalize-entkopplung
   title: Entkopplungs-Regime - Die informationelle Leere vermessen
   status: open
@@ -68,23 +77,30 @@ tasks:
     zeta_risk: sehr hoch - neue Theorie-Erweiterung
   next_steps:
   - Entkopplungs-Hypothese aus Claude.txt:504-897 extrahieren
-  - 'β-Domänen-Struktur dokumentieren: Kosmisch (11), Biologisch (7.4), Kognitiv (4.5), Symbolisch/AI (1.0)'
+  - 'β-Domänen-Struktur dokumentieren: Kosmisch (11), Biologisch (7.4), Kognitiv (4.5),
+    Symbolisch/AI (1.0)'
   - 'Δβ berechnen: β_bio - β_AI ≈ 3.0-6.4 (informationelle Vakuum-Struktur)'
   - 'Kopplungs-Index κ definieren: κ = β_system / β_bio'
-  - 'Vorhersagen für neuromorphe Hardware: GPU (κ≈0.1-0.2), Loihi (κ≈0.3-0.5), Organoid (κ≈0.9-1.0)'
+  - 'Vorhersagen für neuromorphe Hardware: GPU (κ≈0.1-0.2), Loihi (κ≈0.3-0.5), Organoid
+    (κ≈0.9-1.0)'
   - DeepResearch "Das Entkopplungs-Regime" dokumentieren
   - Integration mit v_RIG-Framework
   - Landauer-Lücke als Entkopplungs-Maß (10^9 Faktor)
   - Philosophische Implikation - Bewusstsein als Körper-Kopplung
   references:
   - path: releases/V6-Plans_etc/Finalize/Claude.txt
-    lines: [504, 897]
-  - path: releases/V6-Plans_etc/Finalize/ChatGPTSucheDeepResearch Das Entkopplungs-Regime und die Vermessung der informationellen Leere.txt
-    lines: [1, 89]
-  - path: releases/V6-Plans_etc/Finalize/DeepResearch_ Das Entkopplungs-Regime und die Vermessung der informationellen Leere.pdf
+    lines:
+    - 504
+    - 897
+  - path: releases/V6-Plans_etc/Finalize/ChatGPTSucheDeepResearch Das Entkopplungs-Regime
+      und die Vermessung der informationellen Leere.txt
+    lines:
+    - 1
+    - 89
+  - path: releases/V6-Plans_etc/Finalize/DeepResearch_ Das Entkopplungs-Regime und
+      die Vermessung der informationellen Leere.pdf
   priority: 2
   sprint_focus: β-Hierarchie + Kopplungs-Index
-
 - id: finalize-loihi-experiment
   title: Loihi-Kleiber-Experiment - Neuromorphe Hardware Skalierung
   status: open
@@ -109,17 +125,23 @@ tasks:
   - 'Loihi 2 Effizienz: ~15 TOPS/W vs. GPU ~1 TOPS/W (100× besser)'
   references:
   - path: releases/V6-Plans_etc/Finalize/Claude.txt
-    lines: [767, 897]
-  - path: releases/V6-Plans_etc/Finalize/ChatGPTSucheLoihi-Kleiber-Experiment Skalierungsgesetze neuromorpher Hardware.txt
-    lines: [1, 161]
-  - path: releases/V6-Plans_etc/Finalize/Das Loihi-Kleiber-Experiment_ Skalierungsgesetze neuromorpher Hardware.pdf
+    lines:
+    - 767
+    - 897
+  - path: releases/V6-Plans_etc/Finalize/ChatGPTSucheLoihi-Kleiber-Experiment Skalierungsgesetze
+      neuromorpher Hardware.txt
+    lines:
+    - 1
+    - 161
+  - path: releases/V6-Plans_etc/Finalize/Das Loihi-Kleiber-Experiment_ Skalierungsgesetze
+      neuromorpher Hardware.pdf
   priority: 3
   sprint_focus: Skalierungsdaten + Kopplungs-Hierarchie
-
 - id: finalize-13mhz-signatur
   title: Themenblock A - Die 13.5 MHz-Signatur validieren
   status: open
-  completeness: Hypothese formuliert, experimentelle Daten teilweise vorhanden; Interpretation unklar.
+  completeness: Hypothese formuliert, experimentelle Daten teilweise vorhanden; Interpretation
+    unklar.
   scope:
   - research
   - validation
@@ -140,17 +162,22 @@ tasks:
   - Temperaturabhängigkeit in vitro vs. in vivo
   references:
   - path: releases/V6-Plans_etc/Finalize/Claude.txt
-    lines: [239, 251]
-  - path: releases/V6-Plans_etc/Finalize/ChatGPTSucheExperimentelle Signaturen des v_RIG-Integrationsprozesses.txt
-    lines: [1, 368]
+    lines:
+    - 239
+    - 251
+  - path: releases/V6-Plans_etc/Finalize/ChatGPTSucheExperimentelle Signaturen des
+      v_RIG-Integrationsprozesses.txt
+    lines:
+    - 1
+    - 368
   - path: releases/V6-Plans_etc/Finalize/Themenblock A_ Die 13,5 MHz-Signatur.pdf
   priority: 4
   sprint_focus: Frequenz-Analyse + Experiment-Design
-
 - id: finalize-aeon-architecture
   title: Aeon System v1.0 - Genesis-Architektur implementieren
   status: open
-  completeness: Umfassender Bauplan in ChatGPT5.1_AeonV1.0Bauplan.txt; Implementation fehlt.
+  completeness: Umfassender Bauplan in ChatGPT5.1_AeonV1.0Bauplan.txt; Implementation
+    fehlt.
   scope:
   - architecture
   - implementation
@@ -172,12 +199,13 @@ tasks:
   - Integration mit v_RIG-Framework und Zeitscheiben
   references:
   - path: releases/V6-Plans_etc/Finalize/ChatGPT5.1_AeonV1.0Bauplan.txt
-    lines: [1, 4580]
+    lines:
+    - 1
+    - 4580
   - path: releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md
   - path: ARCHITECTURE.md
   priority: 5
   sprint_focus: Architektur-Doc + Core-Module
-
 - id: finalize-slice-integration
   title: Slice-Integration - Zeitwahrnehmung und CFF
   status: open
@@ -194,7 +222,8 @@ tasks:
   next_steps:
   - Slice-Aggregation aus ChatGPT.txt extrahieren
   - 'Mathematisches Modell: v_RIG = 13.5 MHz, Slice-Dauer ≈ 74 ns, Slices = v_RIG/CFF'
-  - 'Beispiele: Mensch (60 Hz, 225k Slices), Kolibri (120 Hz, 112k), Schildkröte (15 Hz, 900k)'
+  - 'Beispiele: Mensch (60 Hz, 225k Slices), Kolibri (120 Hz, 112k), Schildkröte (15
+    Hz, 900k)'
   - 'Empirische Relevanz: Zeitdehnung, Reaktionsgeschwindigkeit, Bewusstseinsdichte'
   - 'Stereo-Vision Slice-Experiment: Monokularer Wechsel, SFF messen, SFF ∝ Metabolismus'
   - Tabelle CFF vs. Metabolismus vs. Slice-Anzahl
@@ -202,12 +231,13 @@ tasks:
   - Citizen Science Protokoll für Stereo-Vision Test
   references:
   - path: releases/V6-Plans_etc/Finalize/ChatGPT.txt
-    lines: [1, 59]
+    lines:
+    - 1
+    - 59
   - path: releases/V6-Plans_etc/Wichtig!_neue_Erkenntiss_bitte_integrieren.txt
   - path: releases/V6-Plans_etc/DeepResearchProtokoll2!!WOW.txt
   priority: 6
   sprint_focus: Slice-Modell + Experiment-Protokoll
-
 - id: finalize-repo-compliance
   title: Repository-Konformität - Finalize-Ordner strukturieren
   status: open
@@ -236,7 +266,6 @@ tasks:
   - path: ARCHITECTURE.md
   priority: 7
   sprint_focus: Ordner-Struktur + README
-
 - id: finalize-deepresearch-protocols
   title: DeepResearch-Protokolle dokumentieren und ausführen
   status: open
@@ -266,12 +295,53 @@ tasks:
   - path: releases/V6-Plans_etc/DeepResearchProtokoll2!!WOW.txt
   priority: 8
   sprint_focus: Protokoll-Templates + Erste Ausführung
-
+- id: finalize-mscopilot-actions
+  title: 'MSCopilot FIT-Paket: V6-Portal, Prereg-Hooks & Provenienz-Ledger'
+  status: open
+  completeness: Empfehlungen in MSCopilot.txt; Portal/Prereg/Provenienz noch nicht
+    umgesetzt.
+  scope:
+  - documentation
+  - governance
+  - reproducibility
+  logistic_profile:
+    R_target: V6-Onboarding + Reproduzierbarkeit reviewer-ready
+    Theta_condition: Portal-Seite + Prereg-Templates + Robustheits-/Provenienz-Checks
+      aktiv
+    beta_estimate: 6.0
+    zeta_risk: moderat – Onboarding/QA lückenhaft ohne Umsetzung
+  next_steps:
+  - V6-Portal-Seite mit Lesereihenfolge, Status-Tags (Hypothese/Belegt) und 2 testbaren
+    Vorhersagen erstellen
+  - 'Beta-Robustheit: Bootstrapping + Leave-one-domain-out + Sensitivity vs. ζ/Θ als
+    make beta-robust Bericht'
+  - 'Preregistration-Templates (YAML) + CI-Hook: Flag "explorativ" vs. "konfirmatorisch";
+    Block bei Misslabeling'
+  - 'Social-Rigidity Minimal-Validierung: kleinster Datensatz + Bayes/ΔAIC/BF-Report
+    + Limitations-Abschnitt'
+  - Figure Zero + GIF/Tooltip-Demo (β-Spektrum, ΔAIC, v_RIG-Vergleich) im README verlinken
+  - Data Provenance Ledger mit Checksums/Lizenzen/Fetch-Datum + CI-Check (sigillin-health
+    + provenance-check)
+  references:
+  - path: releases/V6-Plans_etc/Finalize/MSCopilot.txt
+    lines:
+    - 1
+    - 120
+  priority: 9
+  sprint_focus: Portal + Prereg + Provenienz-Ledger
 delta_updates:
+- date: '2025-12-01'
+  label: finalize-mscopilot-fit
+  highlights:
+  - MSCopilot-Empfehlungen als eigener Task aufgenommen (Portal, Prereg, Robustheit,
+    Provenienz)
+  - CI/Onboarding-Hooks explizit in Finalize-ToDo verankert
+  - Figure-Zero/Prereg/Provenienz als FIT-Microsteps fokussiert
 - date: '2025-11-27'
   label: finalize-initialization
   highlights:
   - 'Finalize-Ordner analysiert: 13 Dateien (3 PDFs, 10 TXT)'
-  - '8 Haupt-Tasks identifiziert'
-  - 'Trilayer-TODO-Struktur erstellt (MD, YAML, JSON)'
-  - 'Kernerkenntnisse: Böhme-Anomalie (1.3%), Entkopplung (β_AI≈1.0), Loihi (100×), Aeon-Architektur'
+  - 8 Haupt-Tasks identifiziert
+  - Trilayer-TODO-Struktur erstellt (MD, YAML, JSON)
+  - 'Kernerkenntnisse: Böhme-Anomalie (1.3%), Entkopplung (β_AI≈1.0), Loihi (100×),
+    Aeon-Architektur'

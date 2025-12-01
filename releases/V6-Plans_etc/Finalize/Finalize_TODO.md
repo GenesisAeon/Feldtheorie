@@ -320,7 +320,42 @@ Alle DeepResearch-Prompts dokumentiert und erste Runde ausgeführt → research/
 
 ---
 
+### [Priority 9] finalize-mscopilot-actions
+**MSCopilot FIT-Paket: V6-Portal, Prereg-Hooks & Provenienz-Ledger**
+
+**Status:** 🔴 Open
+**Beta:** 6.0 | **Zeta Risk:** Moderat – Repro/Lesbarkeit ohne Onboarding schwach
+
+**Scope:** documentation, governance, reproducibility
+
+**R → Θ:**
+V6-Onboarding + Reproduzierbarkeit auf Reviewer-Niveau → Portal-Seite + Prereg-Templates + Robustheits-/Provenienz-Checks live
+
+**Next Steps:**
+- 🗺️ V6-Portal-Seite mit Lesereihenfolge, Status-Tags (Hypothese/Belegt) und 2 testbaren Vorhersagen erstellen.
+- 📈 Beta-Robustheit: Bootstrapping + Leave-one-domain-out + Sensitivity vs. ζ/Θ als `make beta-robust` Bericht.
+- 🧾 Preregistration-Templates (YAML) + CI-Hook: Flag "explorativ" vs. "konfirmatorisch"; Block bei Misslabeling.
+- 🌐 Social-Rigidity Minimal-Validierung: kleinster Datensatz + Bayes/ΔAIC/BF-Report + Limitations-Abschnitt.
+- 🖼️ Figure Zero + GIF/Tooltip-Demo (β-Spektrum, ΔAIC, v_RIG-Vergleich) im README verlinken.
+- 🧮 Data Provenance Ledger mit Checksums/Lizenzen/Fetch-Datum + CI-Check (sigillin-health + provenance-check).
+
+**References:**
+- `Finalize/MSCopilot.txt:1-120`
+
+**Sprint Focus:** Portal-Seite + Prereg-Guard + Provenienz-Check
+
+---
+
 ## Delta Updates
+
+### 2025-12-01 | finalize-mscopilot-fit
+
+✅ **Highlights:**
+- MSCopilot-Empfehlungen als eigener Task aufgenommen (Portal, Prereg, Robustheit, Provenienz)
+- CI/Onboarding-Hooks explizit in Finalize-ToDo verankert
+- Fokus auf Reviewer-lesbare Figure-Zero + Prereg-Template als FIT-Microsteps
+
+---
 
 ### 2025-11-27 | finalize-initialization
 

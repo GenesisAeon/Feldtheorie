@@ -381,7 +381,41 @@ Robustere β-Schätzungen mit Domain-Clustering → PyMC/Stan Hierarchie + VIF-C
 
 ---
 
+### [Priority 12] v6r-tau-star-guardrails
+**τ*-Safety-Delay + CREP-Governance für Type-VI-Szenarien verankern**
+
+**Status:** 🔴 Open
+**Beta:** 5.0 | **Zeta Risk:** Hoch bei ζ<0 ohne τ*-Puffer
+
+**Scope:** simulation, validation, governance
+
+**R → Θ:**
+Type-VI-Simulationen und Analysen laufen mit τ*-Default + RK4-Garantie → Guardrail-Snippets in Simulator & Analysis wiederverwendet + CREP/Audit-Log aktiv
+
+**Next Steps:**
+- 🔧 τ*-Helper + CREP-Logging aus `activation_gaps_tau_star.md` in `analysis/beta_meta_regression_v2.py` und Simulator-RK4 integrieren.
+- 🧪 Makefile/CI-Validator skizzieren, der τ* Default (=0.1·|Θ−R|) und CREP-Protokolle prüft (`type6_crep_tau_star_checklist.*`).
+- 📈 Telemetrie erweitern: β-Drift (>10%) + CREP ≥0.7 in Metrics/Audit spiegeln (z.B. `metrics/beta_evolution.csv`, Logs).
+- 🔗 Governance-Kopplung: Checklist-Referenzen in POLICY/ETHICS-Indizes ergänzen und Type-VI-Provenienzblock vor Merge erzwingen.
+
+**References:**
+- `activation_gaps_tau_star.md:1-36`
+- `type6_crep_tau_star_checklist.md:1-49`
+
+**Sprint Focus:** τ*-Delay + CREP-Hooks in FIT-Microsteps
+
+---
+
 ## Delta Updates
+
+### 2025-12-01 | v6-refresh-governance-hook
+
+✅ **Highlights:**
+- τ*-Safety-Delay + CREP-Governance als eigener Task erfasst (Simulator + Analysis + CI)
+- FIT-Microsteps aus `activation_gaps_tau_star.md` an ToDo-Liste angebunden
+- Type-VI Checkliste (`type6_crep_tau_star_checklist.*`) als Governance-Kopplung verankert
+
+---
 
 ### 2025-11-26 | v6-refresh-initialization
 
