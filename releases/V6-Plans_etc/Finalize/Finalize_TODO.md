@@ -397,6 +397,31 @@ Kernaussagen der V6-Literature-Review in Finalize-Schiene integriert → V6_Lite
 
 ---
 
+### [Priority 5] finalize-entropic-gravity-bridge
+**Entropische Gravitation/Holographischer Kubus in Finalize-Schiene verankern**
+
+**Status:** 🔴 Open
+**Beta:** 5.4 | **Zeta Risk:** Moderat – fehlende Kubus-/∇S-Referenzen schwächen UTAC-Grundlage
+
+**Scope:** research, documentation, governance
+
+**R → Θ:**
+Entropie-Gradient/Kubus-Argument aus Gemini-DeepResearch in Finalize-Dokumentation integriert → V6_Literature_Review.md/DEEP_RESEARCH_Unified_Framework.md verlinken, BibTeX-Platzhalter in docs/references_v6.bib spiegeln, Chronik/Finalize-Handoff dokumentiert
+
+**Next Steps:**
+- 📝 Kernpassagen aus `Zusatz_bitte_integrieren!.txt` (Holographisches Prinzip, F=T∇S, Bekenstein-Hawking) in Finalize-Kommentare zu `V6_Literature_Review.md` und `DEEP_RESEARCH_Unified_Framework.md` referenzieren.
+- 🔗 BibTeX-Platzhalter (Verlinde 2010, Holographie, Bekenstein-Hawking) in `docs/references_v6.bib` hinzufügen und im Finalize-Trilayer mit ToDo-IDs verknüpfen.
+- 🧭 Chronik-Eintrag in `Chronik/chronik_v6_release.*` für die Kubus-Brücke setzen und FIT-Mapping (`v6r-entropic-gravity-bridge` ↔ `finalize-entropic-gravity-bridge`) nachziehen.
+
+**References:**
+- `../Zusatz_bitte_integrieren!.txt:1-140`
+- `../DEEP_RESEARCH_Unified_Framework.md:1-160`
+- `../V6_Literature_Review.md:1-120`
+
+**Sprint Focus:** Kubus/Entropie-Brücke + Chronik-Handoff
+
+---
+
 ### [Priority 11] finalize-zenodo-checklist
 **Zenodo-Upload-Readiness absichern**
 
@@ -531,12 +556,20 @@ type6_CREP/τ*-Guard blockt Finalize-Releases automatisch → `tools/crep_guard.
 | v6r-tau-star-guardrails | finalize-tau-star-guardrails | τ*-Safety + CREP-Reviewer-Gate | Artefakte gespiegelt, CI-Guard offen |
 | v6r-wavefunction-pipeline | finalize-wavefunction-pipeline | Ψ-Pipeline FIT-Kette (Tests, Zenodo) | IDs gespiegelt, Testlauf pending |
 | v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | Bullet-Refactor geplant |
+| v6r-entropic-gravity-bridge | finalize-entropic-gravity-bridge | Entropische Gravitation/Holographischer Kubus in Review + BibTeX | Bridge angelegt, Quellenmapping offen |
 | v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | Checklisten verlinkt, Merge-Gate fehlt |
 | v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Guard-Prototyp geplant |
 
 ---
 
 ## Delta Updates
+
+### 2025-12-24 | finalize-entropic-gravity-bridge
+
+✅ **Highlights:**
+- Neues Finalize-Task `finalize-entropic-gravity-bridge` ergänzt, um Gemini-DeepResearch-Kubus/∇S-Argument in Finalize-Doku + BibTeX zu spiegeln (Promt_für_Agenten.txt: neue ToDos anlegen).
+- FIT-Mapping um `v6r-entropic-gravity-bridge` ↔ `finalize-entropic-gravity-bridge` erweitert; Chronik-Hinweis geplant.
+- Kubus/Entropie-Handoff in Sprint-Fokus aufgenommen (Review-Platzhalter + Chronik-Link).
 
 ### 2025-12-23 | finalize-crep-guard
 

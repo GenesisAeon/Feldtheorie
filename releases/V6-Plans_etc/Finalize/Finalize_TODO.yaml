@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2025-12-23T00:00:00Z'
+  updated_at: '2025-12-24T00:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -16,6 +16,7 @@ metadata:
     - finalize-entkopplung
     - finalize-loihi-experiment
     - finalize-literature-review-sync
+    - finalize-entropic-gravity-bridge
     - finalize-13mhz-signatur
     - finalize-aeon-architecture
     - finalize-slice-integration
@@ -179,6 +180,44 @@ tasks:
     - 460
   priority: 4
   sprint_focus: Literatur-Sync & DOI-Vorbereitung
+- id: finalize-entropic-gravity-bridge
+  title: Entropische Gravitation/Holographischer Kubus in Finalize-Schiene verankern
+  status: open
+  completeness: Gemini-DeepResearch-Kubus/∇S-Argument vorhanden; Finalize-Spiegelung/BibTeX/Chronik
+    fehlt.
+  scope:
+  - research
+  - documentation
+  - governance
+  logistic_profile:
+    R_target: Kubus/∇S-Argument im Finalize-Layer verankert
+    Theta_condition: V6_Literature_Review.md + DEEP_RESEARCH_Unified_Framework.md referenzieren
+      Entropie-Gradient & holographischen Kubus mit BibTeX-Platzhaltern
+    beta_estimate: 5.4
+    zeta_risk: moderat – Quellenkopplung fehlt
+  next_steps:
+  - Kernpassagen aus Zusatz_bitte_integrieren!.txt (Holographisches Prinzip, F=T∇S,
+    Bekenstein-Hawking) in Finalize-Kommentare zu V6_Literature_Review.md und DEEP_RESEARCH_Unified_Framework.md
+    referenzieren
+  - BibTeX-Platzhalter (Verlinde 2010, Holographie, Bekenstein-Hawking) in docs/references_v6.bib
+    hinzufügen und mit Finalize-Trilayer-IDs verlinken
+  - Chronik-Eintrag in Chronik/chronik_v6_release.* für Kubus-Brücke setzen und FIT-Mapping
+    v6r-entropic-gravity-bridge ↔ finalize-entropic-gravity-bridge dokumentieren
+  references:
+  - path: releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt
+    lines:
+    - 1
+    - 140
+  - path: releases/V6-Plans_etc/DEEP_RESEARCH_Unified_Framework.md
+    lines:
+    - 1
+    - 160
+  - path: releases/V6-Plans_etc/V6_Literature_Review.md
+    lines:
+    - 1
+    - 120
+  priority: 5
+  sprint_focus: Kubus/Entropie-Brücke + Chronik-Handoff
 - id: finalize-13mhz-signatur
   title: 'Themenblock A: Die 13.5 MHz-Signatur validieren'
   status: open
@@ -602,6 +641,10 @@ fit_mapping:
   finalize_id: finalize-literature-review-sync
   bridge_focus: Literatur/BibTeX-Parität (UTAC/v_RIG)
   status: refactor-planned
+- todo_id: v6r-entropic-gravity-bridge
+  finalize_id: finalize-entropic-gravity-bridge
+  bridge_focus: Entropische Gravitation/Holographischer Kubus in Review + BibTeX
+  status: bridge-planned
 - todo_id: v6r-type6-governance
   finalize_id: finalize-type6-governance
   bridge_focus: Type-VI Governance + CI-Hook
@@ -611,6 +654,13 @@ fit_mapping:
   bridge_focus: CREP/τ*-CI-Guard
   status: planned
 delta_updates:
+- date: '2025-12-24'
+  label: finalize-entropic-gravity-bridge
+  highlights:
+  - Task finalize-entropic-gravity-bridge ergänzt, um Gemini-DeepResearch-Kubus/∇S-Argument
+    in Finalize-Doku + BibTeX zu spiegeln
+  - FIT-Mapping mit v6r-entropic-gravity-bridge hergestellt; Chronik-Hinweis geplant
+  - Kubus/Entropie-Handoff als Sprint-Fokus (Review-Platzhalter + Chronik-Link) markiert
 - date: '2025-12-23'
   label: finalize-crep-guard
   highlights:
