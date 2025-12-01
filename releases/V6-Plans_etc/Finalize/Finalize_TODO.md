@@ -486,6 +486,7 @@ FIT-Microsteps aus `Promt_für_Agenten.txt` in beiden ToDo-Trilayern gespiegelt 
 - 📝 Neue FIT-Microsteps aus `Promt_für_Agenten.txt` und V6ToDorefresh (z.B. v6r-zenodo-prep) als Finalize-Tasks übernehmen oder referenzieren.
 - 🔗 Querverweise zwischen V6ToDorefresh.* und Finalize_TODO.* ergänzen, um Trilayer-Drift zu vermeiden.
 - ✅ Delta-Update-Abschnitt ergänzen, sobald Synchronisation erfolgt ist (inkl. Datum/Stichpunkte).
+- 🗺️ Mapping-Tabelle der Prioritäten/IDs (v6r-* ↔ finalize-*) erstellen und als Handoff-Hinweis für Chronik/Delta markieren.
 
 **References:**
 - `../Promt_für_Agenten.txt:1-5`
@@ -496,6 +497,13 @@ FIT-Microsteps aus `Promt_für_Agenten.txt` in beiden ToDo-Trilayern gespiegelt 
 ---
 
 ## Delta Updates
+
+### 2025-12-20 | finalize-fit-handoff
+
+✅ **Highlights:**
+- FIT-Handoff-Mapping zwischen `finalize-fit-sync` und `v6r-finalize-bridge` vorbereitet
+- Zenodo- und τ*-Microsteps in beiden Trilayern referenziert und als Chronik-Hinweis markiert
+- Prioritätenlisten abgeglichen; Mapping-Tabelle als nächsten Dokumentationsschritt eingeplant
 
 ### 2025-12-18 | finalize-wavefunction-sync
 

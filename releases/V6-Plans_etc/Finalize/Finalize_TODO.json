@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2025-12-18T00:00:00Z",
+    "updated_at": "2025-12-20T00:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -658,7 +658,8 @@
           "Prioritätenreihenfolge zwischen V6ToDorefresh und Finalize prüfen und synchronisieren",
           "Neue FIT-Microsteps (Promt_für_Agenten.txt, v6r-zenodo-prep) als Finalize-Aufgaben referenzieren",
           "Querverweise zwischen V6ToDorefresh.* und Finalize_TODO.* ergänzen, Trilayer-Drift dokumentieren",
-          "Delta-Update-Eintrag hinzufügen, sobald Synchronisation erfolgt"
+          "Delta-Update-Eintrag hinzufügen, sobald Synchronisation erfolgt",
+          "Mapping-Tabelle der Prioritäten/IDs (v6r-* ↔ finalize-*) erstellen und als Handoff-Hinweis für Chronik/Delta markieren"
         ],
         "references": [
           {
@@ -681,6 +682,15 @@
     }
   ],
   "delta_updates": [
+    {
+      "date": "2025-12-20",
+      "label": "finalize-fit-handoff",
+      "highlights": [
+        "FIT-Handoff-Mapping zwischen finalize-fit-sync und v6r-finalize-bridge vorbereitet",
+        "Zenodo- und τ*-Microsteps in beiden Trilayern referenziert und als Chronik-Hinweis markiert",
+        "Prioritätenlisten abgeglichen; Mapping-Tabelle als nächsten Dokumentationsschritt eingeplant"
+      ]
+    },
     {
       "date": "2025-12-18",
       "label": "finalize-wavefunction-sync",
