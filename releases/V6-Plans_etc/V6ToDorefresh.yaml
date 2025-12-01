@@ -1,7 +1,7 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2025-12-12T00:00:00Z'
+  updated_at: '2025-12-13T00:00:00Z'
   scope: releases/V6-Plans_etc
   description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen
   logistic_frame:
@@ -29,6 +29,7 @@ metadata:
     - v6r-type6-governance
     - v6r-psi-integration-plan
     - v6r-zenodo-prep
+    - v6r-finalize-bridge
     note: Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)
 tasks:
 - id: v6r-trilayer-sync
@@ -569,7 +570,49 @@ tasks:
     - 80
   priority: 15
   sprint_focus: Test- und Compliance-Belege vor DOI-Request
+- id: v6r-finalize-bridge
+  title: FIT-Brücke: ToDorefresh → Finalize-Aufgaben spiegeln
+  status: open
+  completeness: FIT-Reihenfolge notiert, aber Finalize-Trilayer noch nicht vollständig mit neuen Microsteps gespiegelt.
+  scope:
+  - governance
+  - organization
+  - documentation
+  logistic_profile:
+    R_target: Synchronisationspfad ToDorefresh → Finalize aktiv
+    Theta_condition: FIT-Microsteps (τ*-Guardrails, Zenodo-Prep, Literature Review) in beiden Trilayern verlinkt und Chronik-reflektiert
+    beta_estimate: 4.5
+    zeta_risk: niedrig – Governance-Drift möglich
+  next_steps:
+  - Prioritätenliste mit Finalize_TODO.* abgleichen und fehlende Tasks (z.B. τ*-Guardrails, Zenodo-Prep-Follow-up) als Finalize-Einträge markieren
+  - Querverweise in beiden Trilayern ergänzen (IDs, Referenzen, R/Θ/β/ζ) und in Chronik/Delta-Updates dokumentieren
+  - Prüfen, ob neue Artefakte in V6-Plans_etc (activation_gaps_tau_star.md, type6_crep_tau_star_checklist.*) bereits im Finalize-Layer verankert sind; falls nicht, FIT-Microsteps aufnehmen
+  references:
+  - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
+    lines:
+    - 1
+    - 5
+  - path: releases/V6-Plans_etc/Finalize/Finalize_TODO.md
+    lines:
+    - 1
+    - 220
+  - path: releases/V6-Plans_etc/activation_gaps_tau_star.md
+    lines:
+    - 1
+    - 33
+  - path: releases/V6-Plans_etc/type6_crep_tau_star_checklist.md
+    lines:
+    - 1
+    - 49
+  priority: 16
+  sprint_focus: FIT-Reihenfolge sichern & Trilayer-Parität
 delta_updates:
+- date: '2025-12-13'
+  label: v6-refresh-fit-bridge
+  highlights:
+  - Neuer Task v6r-finalize-bridge ergänzt, um FIT-Reihenfolge ToDorefresh → Finalize zu sichern
+  - Querverweise auf τ*-Guardrails und Type-VI-Checkliste als Finalize-Follow-up markiert
+  - Chronik-/Delta-Dokumentation als nächsten Schritt für Trilayer-Parität festgelegt
 - date: '2025-12-01'
   label: v6-refresh-governance-hook
   highlights:
