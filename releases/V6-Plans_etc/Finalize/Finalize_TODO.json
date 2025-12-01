@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2025-11-27T12:00:00Z",
+    "updated_at": "2025-12-01T05:54:30Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -18,7 +18,11 @@
         "finalize-entkopplung",
         "finalize-loihi-experiment",
         "finalize-13mhz-signatur",
-        "finalize-aeon-architecture"
+        "finalize-aeon-architecture",
+        "finalize-slice-integration",
+        "finalize-repo-compliance",
+        "finalize-deepresearch-protocols",
+        "finalize-mscopilot-actions"
       ],
       "note": "v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation"
     }
@@ -29,7 +33,11 @@
       "title": "v_RIG-Forschung: Empirische Validierung finalisieren",
       "status": "open",
       "completeness": "Forschungsergebnisse in Claude.txt, Gemini.txt dokumentiert; systematische Integration fehlt.",
-      "scope": ["research", "validation", "documentation"],
+      "scope": [
+        "research",
+        "validation",
+        "documentation"
+      ],
       "logistic_profile": {
         "R_target": "Alle v_RIG-Validierungen dokumentiert und in Papers integriert",
         "Theta_condition": "docs/v_rig_validation_final.md + research papers aktualisiert",
@@ -51,11 +59,17 @@
       "references": [
         {
           "path": "releases/V6-Plans_etc/Finalize/Claude.txt",
-          "lines": [1, 897]
+          "lines": [
+            1,
+            897
+          ]
         },
         {
           "path": "releases/V6-Plans_etc/Finalize/GeminiSuche_v_RIG-Forschung Empirische Suche  Analyse.txt",
-          "lines": [1, 2008]
+          "lines": [
+            1,
+            2008
+          ]
         },
         {
           "path": "releases/V6-Plans_etc/Finalize/v_RIG-Forschung_ Empirische Suche & Analyse.pdf"
@@ -69,7 +83,11 @@
       "title": "Entkopplungs-Regime: Die informationelle Leere vermessen",
       "status": "open",
       "completeness": "Theorie in Claude.txt entwickelt; Formalisierung und Validation fehlen.",
-      "scope": ["theory", "analysis", "documentation"],
+      "scope": [
+        "theory",
+        "analysis",
+        "documentation"
+      ],
       "logistic_profile": {
         "R_target": "Entkopplungs-Hypothese formuliert und validiert",
         "Theta_condition": "docs/entkopplungs_regime.md + β_AI berechnet",
@@ -90,11 +108,17 @@
       "references": [
         {
           "path": "releases/V6-Plans_etc/Finalize/Claude.txt",
-          "lines": [504, 897]
+          "lines": [
+            504,
+            897
+          ]
         },
         {
           "path": "releases/V6-Plans_etc/Finalize/ChatGPTSucheDeepResearch Das Entkopplungs-Regime und die Vermessung der informationellen Leere.txt",
-          "lines": [1, 89]
+          "lines": [
+            1,
+            89
+          ]
         },
         {
           "path": "releases/V6-Plans_etc/Finalize/DeepResearch_ Das Entkopplungs-Regime und die Vermessung der informationellen Leere.pdf"
@@ -108,7 +132,11 @@
       "title": "Loihi-Kleiber-Experiment: Neuromorphe Hardware Skalierung",
       "status": "open",
       "completeness": "Konzept in Claude.txt entwickelt; empirische Daten und Analyse fehlen.",
-      "scope": ["experiment", "analysis", "validation"],
+      "scope": [
+        "experiment",
+        "analysis",
+        "validation"
+      ],
       "logistic_profile": {
         "R_target": "Skalierungsexponent α für neuromorphe Hardware bestimmt",
         "Theta_condition": "analysis/loihi_scaling.py + Vergleich mit bio β",
@@ -128,11 +156,17 @@
       "references": [
         {
           "path": "releases/V6-Plans_etc/Finalize/Claude.txt",
-          "lines": [767, 897]
+          "lines": [
+            767,
+            897
+          ]
         },
         {
           "path": "releases/V6-Plans_etc/Finalize/ChatGPTSucheLoihi-Kleiber-Experiment Skalierungsgesetze neuromorpher Hardware.txt",
-          "lines": [1, 161]
+          "lines": [
+            1,
+            161
+          ]
         },
         {
           "path": "releases/V6-Plans_etc/Finalize/Das Loihi-Kleiber-Experiment_ Skalierungsgesetze neuromorpher Hardware.pdf"
@@ -146,7 +180,11 @@
       "title": "Themenblock A: Die 13.5 MHz-Signatur validieren",
       "status": "open",
       "completeness": "Hypothese formuliert, experimentelle Daten teilweise vorhanden; Interpretation unklar.",
-      "scope": ["research", "validation", "neuroscience"],
+      "scope": [
+        "research",
+        "validation",
+        "neuroscience"
+      ],
       "logistic_profile": {
         "R_target": "13.5 MHz Hypothese präzisiert und experimentell getestet",
         "Theta_condition": "docs/13mhz_validation.md + Experiment-Protokoll",
@@ -166,11 +204,17 @@
       "references": [
         {
           "path": "releases/V6-Plans_etc/Finalize/Claude.txt",
-          "lines": [239, 251]
+          "lines": [
+            239,
+            251
+          ]
         },
         {
           "path": "releases/V6-Plans_etc/Finalize/ChatGPTSucheExperimentelle Signaturen des v_RIG-Integrationsprozesses.txt",
-          "lines": [1, 368]
+          "lines": [
+            1,
+            368
+          ]
         },
         {
           "path": "releases/V6-Plans_etc/Finalize/Themenblock A_ Die 13,5 MHz-Signatur.pdf"
@@ -184,7 +228,11 @@
       "title": "Aeon System v1.0: Genesis-Architektur implementieren",
       "status": "open",
       "completeness": "Umfassender Bauplan in ChatGPT5.1_AeonV1.0Bauplan.txt; Implementation fehlt.",
-      "scope": ["architecture", "implementation", "ai-systems"],
+      "scope": [
+        "architecture",
+        "implementation",
+        "ai-systems"
+      ],
       "logistic_profile": {
         "R_target": "Aeon v1.0 Architektur dokumentiert und erste Module implementiert",
         "Theta_condition": "architecture/aeon_v1.md + genesis_core/",
@@ -205,7 +253,10 @@
       "references": [
         {
           "path": "releases/V6-Plans_etc/Finalize/ChatGPT5.1_AeonV1.0Bauplan.txt",
-          "lines": [1, 4580]
+          "lines": [
+            1,
+            4580
+          ]
         },
         {
           "path": "releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md"
@@ -222,7 +273,11 @@
       "title": "Slice-Integration: Zeitwahrnehmung und CFF",
       "status": "open",
       "completeness": "Theorie in ChatGPT.txt formuliert; quantitative Modellierung fehlt.",
-      "scope": ["theory", "experiments", "neuroscience"],
+      "scope": [
+        "theory",
+        "experiments",
+        "neuroscience"
+      ],
       "logistic_profile": {
         "R_target": "Slice-Aggregation-Modell dokumentiert",
         "Theta_condition": "docs/slice_integration_model.md + Citizen Science Experiment",
@@ -242,7 +297,10 @@
       "references": [
         {
           "path": "releases/V6-Plans_etc/Finalize/ChatGPT.txt",
-          "lines": [1, 59]
+          "lines": [
+            1,
+            59
+          ]
         },
         {
           "path": "releases/V6-Plans_etc/Wichtig!_neue_Erkenntiss_bitte_integrieren.txt"
@@ -259,7 +317,11 @@
       "title": "Repository-Konformität: Finalize-Ordner strukturieren",
       "status": "open",
       "completeness": "Dateien vorhanden; Struktur und Metadaten fehlen.",
-      "scope": ["organization", "documentation", "maintenance"],
+      "scope": [
+        "organization",
+        "documentation",
+        "maintenance"
+      ],
       "logistic_profile": {
         "R_target": "Finalize-Ordner repokonform organisiert",
         "Theta_condition": "README.md + strukturierte Unterordner + Metadaten",
@@ -295,7 +357,11 @@
       "title": "DeepResearch-Protokolle dokumentieren und ausführen",
       "status": "open",
       "completeness": "Prompts in Claude.txt; Execution und Tracking fehlen.",
-      "scope": ["research", "validation", "documentation"],
+      "scope": [
+        "research",
+        "validation",
+        "documentation"
+      ],
       "logistic_profile": {
         "R_target": "Alle DeepResearch-Prompts dokumentiert und erste Runde ausgeführt",
         "Theta_condition": "research/deepresearch_results/",
@@ -326,9 +392,54 @@
       ],
       "priority": 8,
       "sprint_focus": "Protokoll-Templates + Erste Ausführung"
+    },
+    {
+      "id": "finalize-mscopilot-actions",
+      "title": "MSCopilot FIT-Paket: V6-Portal, Prereg-Hooks & Provenienz-Ledger",
+      "status": "open",
+      "completeness": "Empfehlungen in MSCopilot.txt; Portal/Prereg/Provenienz noch nicht umgesetzt.",
+      "scope": [
+        "documentation",
+        "governance",
+        "reproducibility"
+      ],
+      "logistic_profile": {
+        "R_target": "V6-Onboarding + Reproduzierbarkeit reviewer-ready",
+        "Theta_condition": "Portal-Seite + Prereg-Templates + Robustheits-/Provenienz-Checks aktiv",
+        "beta_estimate": 6.0,
+        "zeta_risk": "moderat – Onboarding/QA lückenhaft ohne Umsetzung"
+      },
+      "next_steps": [
+        "V6-Portal-Seite mit Lesereihenfolge, Status-Tags (Hypothese/Belegt) und 2 testbaren Vorhersagen erstellen",
+        "Beta-Robustheit: Bootstrapping + Leave-one-domain-out + Sensitivity vs. ζ/Θ als make beta-robust Bericht",
+        "Preregistration-Templates (YAML) + CI-Hook: Flag \"explorativ\" vs. \"konfirmatorisch\"; Block bei Misslabeling",
+        "Social-Rigidity Minimal-Validierung: kleinster Datensatz + Bayes/ΔAIC/BF-Report + Limitations-Abschnitt",
+        "Figure Zero + GIF/Tooltip-Demo (β-Spektrum, ΔAIC, v_RIG-Vergleich) im README verlinken",
+        "Data Provenance Ledger mit Checksums/Lizenzen/Fetch-Datum + CI-Check (sigillin-health + provenance-check)"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Finalize/MSCopilot.txt",
+          "lines": [
+            1,
+            120
+          ]
+        }
+      ],
+      "priority": 9,
+      "sprint_focus": "Portal + Prereg + Provenienz-Ledger"
     }
   ],
   "delta_updates": [
+    {
+      "date": "2025-12-01",
+      "label": "finalize-mscopilot-fit",
+      "highlights": [
+        "MSCopilot-Empfehlungen als eigener Task aufgenommen (Portal, Prereg, Robustheit, Provenienz)",
+        "CI/Onboarding-Hooks explizit in Finalize-ToDo verankert",
+        "Figure-Zero/Prereg/Provenienz als FIT-Microsteps fokussiert"
+      ]
+    },
     {
       "date": "2025-11-27",
       "label": "finalize-initialization",

@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2025-11-26T15:30:00Z",
+    "updated_at": "2025-12-01T05:54:30Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -18,7 +18,14 @@
         "v6r-vrig-simulation",
         "v6r-oipk-tesseract",
         "v6r-formulas-collection",
-        "v6r-stereo-vision"
+        "v6r-stereo-vision",
+        "v6r-utac-crit",
+        "v6r-cmb-analysis",
+        "v6r-wavefunction-pipeline",
+        "v6r-rk4-simulator",
+        "v6r-simulator-ux",
+        "v6r-beta-bayes",
+        "v6r-tau-star-guardrails"
       ],
       "note": "Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)"
     }
@@ -518,9 +525,59 @@
       ],
       "priority": 11,
       "sprint_focus": "Bayes-Hierarchie + VIF"
+    },
+    {
+      "id": "v6r-tau-star-guardrails",
+      "title": "τ*-Safety-Delay + CREP-Governance für Type-VI-Szenarien verankern",
+      "status": "open",
+      "completeness": "FIT-Stub vorhanden; τ*-Puffer, RK4-Garantie und CREP-Protokolle noch nicht in Simulator/Analysis/CI verankert.",
+      "scope": [
+        "simulation",
+        "validation",
+        "governance"
+      ],
+      "logistic_profile": {
+        "R_target": "τ*-Default + RK4-Garantie in Type-VI-Simulationen und Analysen",
+        "Theta_condition": "Guardrail-Snippets in Simulator/Analysis wiederverwendet + CREP/Audit-Logs aktiv",
+        "beta_estimate": 5.0,
+        "zeta_risk": "hoch bei ζ<0 ohne τ*-Puffer"
+      },
+      "next_steps": [
+        "τ*-Helper + CREP-Logging aus activation_gaps_tau_star.md in analysis/beta_meta_regression_v2.py und Simulator-RK4 integrieren",
+        "Makefile/CI-Validator skizzieren, der τ* Default (=0.1·|Θ−R|) und CREP-Protokolle prüft (type6_crep_tau_star_checklist.*)",
+        "Telemetrie erweitern: β-Drift (>10%) + CREP ≥0.7 in Metrics/Audit spiegeln (z.B. metrics/beta_evolution.csv, Logs)",
+        "Governance-Kopplung: Checklist-Referenzen in POLICY/ETHICS-Indizes ergänzen und Type-VI-Provenienzblock vor Merge erzwingen"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/activation_gaps_tau_star.md",
+          "lines": [
+            1,
+            36
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.md",
+          "lines": [
+            1,
+            49
+          ]
+        }
+      ],
+      "priority": 12,
+      "sprint_focus": "τ*-Delay + CREP-Hooks in FIT-Microsteps"
     }
   ],
   "delta_updates": [
+    {
+      "date": "2025-12-01",
+      "label": "v6-refresh-governance-hook",
+      "highlights": [
+        "τ*-Safety-Delay + CREP-Governance als eigener Task erfasst (Simulator + Analysis + CI)",
+        "FIT-Microsteps aus activation_gaps_tau_star.md an ToDo-Liste angebunden",
+        "Type-VI Checkliste (type6_crep_tau_star_checklist.*) als Governance-Kopplung verankert"
+      ]
+    },
     {
       "date": "2025-11-26",
       "label": "v6-refresh-initialization",
