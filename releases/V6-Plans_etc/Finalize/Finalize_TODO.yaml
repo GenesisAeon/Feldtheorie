@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2025-12-20T00:00:00Z'
+  updated_at: '2025-12-22T00:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -485,7 +485,7 @@ tasks:
   - id: finalize-fit-sync
     title: FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks
     status: open
-    completeness: FIT-Vorgaben notiert, aber Prioritäten/Tasks nicht zwischen Trilayern abgeglichen.
+    completeness: FIT-Vorgaben notiert; Mapping-Entwurf mit ToDorefresh erstellt, Chronik-Link steht aus.
     scope:
     - governance
     - organization
@@ -500,7 +500,7 @@ tasks:
       - Neue FIT-Microsteps (Promt_für_Agenten.txt, v6r-zenodo-prep) als Finalize-Aufgaben referenzieren
       - Querverweise zwischen V6ToDorefresh.* und Finalize_TODO.* ergänzen, Trilayer-Drift dokumentieren
       - Delta-Update-Eintrag hinzufügen, sobald Synchronisation erfolgt
-      - Mapping-Tabelle der Prioritäten/IDs (v6r-* ↔ finalize-*) erstellen und als Handoff-Hinweis für Chronik/Delta markieren
+      - Mapping-Tabelle der Prioritäten/IDs (v6r-* ↔ finalize-*) pflegen und als Handoff-Hinweis für Chronik/Delta verlinken (Entwurf vorhanden)
     references:
       - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
         lines:
@@ -512,7 +512,38 @@ tasks:
         - 460
     priority: 14
     sprint_focus: FIT-Synchronisation & Trilayer-Parität
+fit_mapping:
+- todo_id: v6r-finalize-bridge
+  finalize_id: finalize-fit-sync
+  bridge_focus: FIT-Governance-Sync (Prioritäten + Chronik-Link)
+  status: draft-mapping
+- todo_id: v6r-zenodo-prep
+  finalize_id: finalize-zenodo-checklist
+  bridge_focus: Zenodo/DOI-Readiness + Checklisten-Kopplung
+  status: open
+- todo_id: v6r-tau-star-guardrails
+  finalize_id: finalize-tau-star-guardrails
+  bridge_focus: τ*-Safety + CREP-Reviewer-Gate
+  status: artifacts-mirrored
+- todo_id: v6r-wavefunction-pipeline
+  finalize_id: finalize-wavefunction-pipeline
+  bridge_focus: Ψ-Pipeline FIT-Kette (Tests, Zenodo)
+  status: ids-linked
+- todo_id: v6r-literature-review-sync
+  finalize_id: finalize-literature-review-sync
+  bridge_focus: Literatur/BibTeX-Parität (UTAC/v_RIG)
+  status: refactor-planned
+- todo_id: v6r-type6-governance
+  finalize_id: finalize-type6-governance
+  bridge_focus: Type-VI Governance + CI-Hook
+  status: checklists-linked
 delta_updates:
+  - date: '2025-12-22'
+    label: finalize-fit-map
+    highlights:
+    - FIT-Mapping-Tabelle ToDorefresh ↔ Finalize ergänzt (Promt_für_Agenten.txt Follow-up)
+    - finalize-fit-sync Next Steps um Mapping-Pflege + Chronik-Link erweitert
+    - Zenodo-, τ*- und Type-VI-Microsteps gebündelt, um Handoff in Chronik/Delta zu erleichtern
   - date: '2025-12-20'
     label: finalize-fit-handoff
     highlights:

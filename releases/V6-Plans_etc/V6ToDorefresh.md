@@ -515,7 +515,7 @@ Synchronisationspfad zwischen V6ToDorefresh und Finalize-TODO aktiv → neue FIT
 - 🔗 Querverweise in beiden Trilayern ergänzen (IDs, Referenzen, R/Θ/β/ζ) und in Chronik/Delta-Updates dokumentieren
 - 🧭 Prüfen, ob neue Artefakte in V6-Plans_etc (activation_gaps_tau_star.md, type6_crep_tau_star_checklist.*) bereits im Finalize-Layer verankert sind; falls nicht, FIT-Microsteps aufnehmen
 - 🔗 Neues Finalize-Item `finalize-wavefunction-pipeline` mit `v6r-wavefunction-pipeline` spiegeln und FIT-Kette (Chronik) notieren
-- 🗺️ Mapping-Tabelle ToDorefresh ↔ Finalize (IDs/Prioritäten) erstellen und als Handoff-Hinweis im Chronik-Update vormerken
+- 🗺️ Mapping-Tabelle ToDorefresh ↔ Finalize (IDs/Prioritäten) pflegen und in Chronik-Update verlinken (erster Entwurf erstellt)
 
 **References:**
 - `Promt_für_Agenten.txt:1-5`
@@ -552,7 +552,27 @@ Literature-Review-Kernthesen (UTAC/v_RIG/Type-VI) in docs- und BibTeX-Layer gesp
 
 ---
 
+## FIT Mapping ToDorefresh ↔ Finalize
+
+| ToDorefresh ID | Finalize ID | Bridge Focus | Status |
+| --- | --- | --- | --- |
+| v6r-finalize-bridge | finalize-fit-sync | FIT-Governance-Sync (Prioritäten + Chronik-Link) | Draft mapping erstellt |
+| v6r-zenodo-prep | finalize-zenodo-checklist | Zenodo/DOI-Readiness + Checklisten-Kopplung | Referenzen verknüpft, Status offen |
+| v6r-tau-star-guardrails | finalize-tau-star-guardrails | τ*-Safety + CREP-Reviewer-Gate | Artefakte gespiegelt, CI/Chronik offen |
+| v6r-wavefunction-pipeline | finalize-wavefunction-pipeline | Ψ-Pipeline FIT-Kette (Tests, Zenodo) | IDs gespiegelt, Testergebnisse ausstehend |
+| v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | Bullet-Refactor geplant |
+| v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | Checklisten verlinkt, Merge-Gate fehlt |
+
+---
+
 ## Delta Updates
+
+### 2025-12-22 | v6-refresh-fit-map
+
+✅ **Highlights:**
+- Erste FIT-Mapping-Tabelle zwischen ToDorefresh- und Finalize-Trilayer eingetragen (Promt_für_Agenten.txt Vorgabe)
+- v6r-finalize-bridge Next Steps um Mapping-Pflege + Chronik-Link ergänzt
+- Querverweise auf Zenodo-, τ*- und Type-VI-FIT-Microsteps gebündelt, um Finalize-Hand-off vorzubereiten
 
 ### 2025-12-20 | v6-refresh-fit-handoff
 

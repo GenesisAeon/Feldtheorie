@@ -486,7 +486,7 @@ FIT-Microsteps aus `Promt_für_Agenten.txt` in beiden ToDo-Trilayern gespiegelt 
 - 📝 Neue FIT-Microsteps aus `Promt_für_Agenten.txt` und V6ToDorefresh (z.B. v6r-zenodo-prep) als Finalize-Tasks übernehmen oder referenzieren.
 - 🔗 Querverweise zwischen V6ToDorefresh.* und Finalize_TODO.* ergänzen, um Trilayer-Drift zu vermeiden.
 - ✅ Delta-Update-Abschnitt ergänzen, sobald Synchronisation erfolgt ist (inkl. Datum/Stichpunkte).
-- 🗺️ Mapping-Tabelle der Prioritäten/IDs (v6r-* ↔ finalize-*) erstellen und als Handoff-Hinweis für Chronik/Delta markieren.
+- 🗺️ Mapping-Tabelle der Prioritäten/IDs (v6r-* ↔ finalize-*) pflegen und als Handoff-Hinweis für Chronik/Delta verlinken (Entwurf vorhanden).
 
 **References:**
 - `../Promt_für_Agenten.txt:1-5`
@@ -496,7 +496,27 @@ FIT-Microsteps aus `Promt_für_Agenten.txt` in beiden ToDo-Trilayern gespiegelt 
 
 ---
 
+## FIT Mapping ToDorefresh ↔ Finalize
+
+| ToDorefresh ID | Finalize ID | Bridge Focus | Status |
+| --- | --- | --- | --- |
+| v6r-finalize-bridge | finalize-fit-sync | FIT-Governance-Sync (Prioritäten + Chronik-Link) | Draft mapping eingetragen |
+| v6r-zenodo-prep | finalize-zenodo-checklist | Zenodo/DOI-Readiness + Checklisten-Kopplung | Referenzen verknüpft, Tasks offen |
+| v6r-tau-star-guardrails | finalize-tau-star-guardrails | τ*-Safety + CREP-Reviewer-Gate | Artefakte gespiegelt, CI-Guard offen |
+| v6r-wavefunction-pipeline | finalize-wavefunction-pipeline | Ψ-Pipeline FIT-Kette (Tests, Zenodo) | IDs gespiegelt, Testlauf pending |
+| v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | Bullet-Refactor geplant |
+| v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | Checklisten verlinkt, Merge-Gate fehlt |
+
+---
+
 ## Delta Updates
+
+### 2025-12-22 | finalize-fit-map
+
+✅ **Highlights:**
+- FIT-Mapping-Tabelle ToDorefresh ↔ Finalize ergänzt (Promt_für_Agenten.txt Follow-up)
+- finalize-fit-sync Next Steps auf Mapping-Pflege + Chronik-Link erweitert
+- Zenodo-, τ*- und Type-VI-Microsteps gebündelt, um Handoff in Chronik/Delta zu erleichtern
 
 ### 2025-12-20 | finalize-fit-handoff
 
