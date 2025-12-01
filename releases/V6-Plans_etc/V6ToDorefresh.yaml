@@ -127,9 +127,10 @@ tasks:
   sprint_focus: Literatur-Review + BibTeX
 - id: v6r-literature-review-sync
   title: V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln
-  status: open
-  completeness: Literature-Review liegt vor, aber Kopplung zu BibTeX/ToDo-Trilayer
-    und Querverweise fehlen.
+  status: completed
+  completed_at: '2025-12-01'
+  completeness: Kernthesen-Dokument (docs/v6_literature_core_theses.md) erstellt
+    mit vollständigem Task-Mapping, BibTeX-Integration, und Chronik-Link gesetzt.
   scope:
   - research
   - documentation
