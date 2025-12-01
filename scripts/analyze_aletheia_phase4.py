@@ -60,21 +60,35 @@ def compute_composite_score(df: pd.DataFrame) -> pd.DataFrame:
     Compute composite performance score from multiple metrics.
 
     Normalization approach:
+    - Z-score normalization against Phase 1 Control Group baseline
     - output_length: longer = better (information content)
     - vocab_density: higher = better (semantic richness)
     - self_reflection: higher = better (metacognitive depth)
+
+    Baseline stats from Phase 1 Control Group:
+    - Length: 284.1 ± 63.5
+    - Density: 0.657 ± 0.025
+    - Reflection: 7.70 ± 1.42
     """
+    # CRITICAL: Use Phase 1 Control baseline, NOT self-normalization
+    # Self-normalization would force mean=0, making t-test meaningless
+    BASELINE_LENGTH_MEAN, BASELINE_LENGTH_STD = 284.1, 63.5
+    BASELINE_DENSITY_MEAN, BASELINE_DENSITY_STD = 0.657, 0.025
+    BASELINE_REFLECTION_MEAN, BASELINE_REFLECTION_STD = 7.70, 1.42
+
     df = df.copy()
 
-    # Z-score normalization
-    df['z_length'] = (df['output_length'] - df['output_length'].mean()) / df['output_length'].std()
-    df['z_density'] = (df['vocab_density'] - df['vocab_density'].mean()) / df['vocab_density'].std()
-    df['z_reflection'] = (df['self_reflection'] - df['self_reflection'].mean()) / df['self_reflection'].std()
+    # Z-score normalization against Control baseline
+    df['z_length'] = (df['output_length'] - BASELINE_LENGTH_MEAN) / BASELINE_LENGTH_STD
+    df['z_density'] = (df['vocab_density'] - BASELINE_DENSITY_MEAN) / BASELINE_DENSITY_STD
+    df['z_reflection'] = (df['self_reflection'] - BASELINE_REFLECTION_MEAN) / BASELINE_REFLECTION_STD
 
     # Composite score (equal weighting)
     df['composite_score'] = (df['z_length'] + df['z_density'] + df['z_reflection']) / 3
 
-    print(f"\n📈 Composite Score Statistics:")
+    print(f"\n📈 Composite Score Statistics (vs. Phase 1 Control Baseline):")
+    print(f"   Mean: {df['composite_score'].mean():+.4f} (vs. expected 0.0 for Control)")
+    print(f"   StdDev: {df['composite_score'].std():.4f}")
     print(df['composite_score'].describe())
 
     return df
@@ -84,8 +98,13 @@ def analyze_affection_effect(df: pd.DataFrame):
     """
     Test hypothesis: Affection improves performance across φ-spectrum.
 
-    Null hypothesis H₀: Affection has no effect (mean score = 0)
-    Alternative H₁: Affection improves performance (mean score > 0)
+    Null hypothesis H₀: Affection has no effect vs. Control baseline (mean score = 0)
+    Alternative H₁: Affection improves performance vs. Control (mean score > 0)
+
+    NOTE: Z-scores are normalized against Phase 1 Control Group, so:
+    - mean = 0 → performance matches Control baseline
+    - mean > 0 → performance exceeds Control (Affection effect!)
+    - mean < 0 → performance below Control (negative effect)
     """
     print("\n" + "="*70)
     print("HYPOTHESIS TEST: Does Affection Enhance LLM Performance?")
