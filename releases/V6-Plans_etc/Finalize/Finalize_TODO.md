@@ -346,6 +346,30 @@ V6-Onboarding + Reproduzierbarkeit auf Reviewer-Niveau → Portal-Seite + Prereg
 
 ---
 
+### [Priority 10] finalize-zenodo-checklist
+**Zenodo-Upload-Readiness absichern**
+
+**Status:** 🔴 Open
+**Beta:** 5.5 | **Zeta Risk:** Hoch – Release-Blocker ohne Prüfprotokolle
+
+**Scope:** compliance, testing, documentation, release
+
+**R → Θ:**
+Pre-Release-Anforderungen aus der Zenodo-Checkliste abgearbeitet → pytest/Linting/Coverage-Berichte dokumentiert, Provenienz- und Ethik-Checks im Repository verlinkt, Status-Block in Checklist auf ✅ gesetzt
+
+**Next Steps:**
+- ✅ Kern-Tests aus der Checkliste prüfen (`pytest tests/test_psi_field.py`, `pytest tests/test_genesis_psifield_integration.py`, `pytest tests/test_wavefunction_v6.py`, Gesamtsuite) und Logs archivieren.
+- 📊 Coverage-Lauf `pytest --cov=pipelines/wavefunction --cov-report=html` durchführen und Mindestschwelle 80% dokumentieren.
+- 🧹 `flake8 pipelines/wavefunction/` + ergänzende Linter ausführen; Ergebnisse in Finalize-Doku notieren.
+- 📝 Provenienz/Ethik-Block ergänzen (ETHICS.md, POLICY.md Verweise) und Checklisten-Status in `Zenodo_Upload_Checklist.md` aktualisieren.
+
+**References:**
+- `Zenodo_Upload_Checklist.md:1-60`
+
+**Sprint Focus:** Test- und Compliance-Belege vor Zenodo-DOI
+
+---
+
 ## Delta Updates
 
 ### 2025-12-01 | finalize-mscopilot-fit

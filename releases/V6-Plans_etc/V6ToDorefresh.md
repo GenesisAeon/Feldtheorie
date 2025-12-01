@@ -406,6 +406,31 @@ Type-VI-Simulationen und Analysen laufen mit τ*-Default + RK4-Garantie → Guar
 
 ---
 
+### [Priority 13] v6r-psi-integration-plan
+**Ψ-Integrationsplan aus dem Wellenfunktions-Integrationsdokument operationalisieren**
+
+**Status:** 🔴 Open
+**Beta:** 5.9 | **Zeta Risk:** Moderat – ζ<0-Pfade brauchen τ*-Buffer
+
+**Scope:** theory, simulation, documentation
+
+**R → Θ:**
+Ψ-Feldgleichung gemäß V6-Wellenfunktions-Integrationsplan in Genesis-Cube + Simulator verdrahtet → psi_field.py + genesis_cube.py + tesseract_timeslices.py nutzen RK4 mit τ*-Default und liefern Dual-Flow-Visualisierung
+
+**Next Steps:**
+- 🔧 `pipelines/wavefunction/psi_field.py` um ψ_genesis, V_pyr und ψ_waste aus dem Integrationsplan ergänzen (klarer Parameter-Block für α⁻¹, Φ, τ*).
+- 🔧 `simulation/genesis_cube.py` auf RK4-Evolution mit τ*=0.1·|Θ−R| für ζ<0 setzen und ψ-Ausgabe an existing slices koppeln.
+- 🔗 `simulation/tesseract_timeslices.py` Dual-Flow-Schnittstelle (implosiver Block vs. Photonenfluss) hinzufügen, Split-Screen-Animation vorbereiten.
+- 📝 `docs/v6_wavefunction_theory.md` aktualisieren: Herleitung + Nullmodelle dokumentieren, Bezug auf Wellenfunktions-Integrationsplan & Zusatznotizen herstellen.
+
+**References:**
+- `V6_Wellenfunktions_Integrationsplan.md:1-120`
+- `Zusatz_bitte_integrieren!.txt:1-120`
+
+**Sprint Focus:** Ψ-Gleichung in Pipeline + RK4/τ* Guardrails
+
+---
+
 ## Delta Updates
 
 ### 2025-12-01 | v6-refresh-governance-hook
