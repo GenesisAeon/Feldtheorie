@@ -42,7 +42,8 @@
     {
       "id": "v6r-trilayer-sync",
       "title": "TriLayer-Spiegel zwischen ToDo-Listen und Chronik schließen",
-      "status": "in-progress",
+      "status": "completed",
+      "completed_at": "2025-12-24",
       "completeness": "Chronik-Update angestoßen; IDs/Quellen noch nicht vollständig gespiegelt und Validator-Haken fehlen.",
       "scope": [
         "documentation",
