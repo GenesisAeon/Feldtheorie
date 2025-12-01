@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2025-12-01T05:54:30Z'
+  updated_at: '2025-12-05T00:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -21,6 +21,7 @@ metadata:
     - finalize-repo-compliance
     - finalize-deepresearch-protocols
     - finalize-mscopilot-actions
+    - finalize-zenodo-checklist
     note: v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation
 tasks:
 - id: finalize-vrig-research
@@ -329,6 +330,32 @@ tasks:
     - 120
   priority: 9
   sprint_focus: Portal + Prereg + Provenienz-Ledger
+- id: finalize-zenodo-checklist
+  title: Zenodo-Upload-Readiness absichern
+  status: open
+  completeness: Zenodo-Checkliste vorhanden; Prüfprotokolle (Tests/Lint/Coverage) und Provenienz-Updates fehlen.
+  scope:
+  - compliance
+  - testing
+  - documentation
+  - release
+  logistic_profile:
+    R_target: Zenodo-Pre-Release-Anforderungen abgearbeitet und dokumentiert
+    Theta_condition: Tests/Lint/Coverage ≥80% protokolliert + Provenienz/Ethik-Verweise in Checklist aktualisiert
+    beta_estimate: 5.5
+    zeta_risk: hoch – DOI-Release blockiert ohne Nachweise
+  next_steps:
+  - pytest tests/test_psi_field.py, tests/test_genesis_psifield_integration.py, tests/test_wavefunction_v6.py und Gesamtsuite ausführen; Logs/Artefakte archivieren
+  - pytest --cov=pipelines/wavefunction --cov-report=html laufen lassen und Coverage ≥80% notieren
+  - flake8 pipelines/wavefunction/ + ergänzende Linter ausführen; Ergebnisse im Finalize-Doku-Ordner ablegen
+  - Provenienz/Ethik-Block ergänzen und Checklisten-Status in Zenodo_Upload_Checklist.md auf ✅ setzen
+  references:
+  - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
+    lines:
+    - 1
+    - 60
+  priority: 10
+  sprint_focus: Test- und Compliance-Belege vor Zenodo-DOI
 delta_updates:
 - date: '2025-12-01'
   label: finalize-mscopilot-fit

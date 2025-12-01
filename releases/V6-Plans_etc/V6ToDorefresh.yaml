@@ -1,7 +1,7 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2025-12-01T05:54:30Z'
+  updated_at: '2025-12-05T00:00:00Z'
   scope: releases/V6-Plans_etc
   description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen
   logistic_frame:
@@ -24,6 +24,7 @@ metadata:
     - v6r-simulator-ux
     - v6r-beta-bayes
     - v6r-tau-star-guardrails
+    - v6r-psi-integration-plan
     note: Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)
 tasks:
 - id: v6r-papers-research
@@ -424,6 +425,35 @@ tasks:
     - 49
   priority: 12
   sprint_focus: τ*-Delay + CREP-Hooks in FIT-Microsteps
+- id: v6r-psi-integration-plan
+  title: Ψ-Integrationsplan aus dem Wellenfunktions-Integrationsdokument operationalisieren
+  status: open
+  completeness: Wellenfunktionsplan dokumentiert; Implementierung in Pipeline/Simulator mit RK4+τ* fehlt.
+  scope:
+  - theory
+  - simulation
+  - documentation
+  logistic_profile:
+    R_target: Ψ-Feldgleichung in Genesis-Cube und Simulator verdrahtet mit Dual-Flow-Visualisierung
+    Theta_condition: psi_field.py + genesis_cube.py + tesseract_timeslices.py nutzen RK4 mit τ*=0.1·|Θ−R| und liefern exportierbare Animationsartefakte
+    beta_estimate: 5.9
+    zeta_risk: moderat bei ζ<0 ohne τ*-Buffer
+  next_steps:
+  - pipelines/wavefunction/psi_field.py um ψ_genesis, V_pyr und ψ_waste ergänzen (Parameter-Block für α⁻¹, Φ, τ* definieren)
+  - simulation/genesis_cube.py auf RK4-Evolution mit τ*=0.1·|Θ−R| für ζ<0 setzen und ψ-Ausgabe an bestehende Slices koppeln
+  - simulation/tesseract_timeslices.py Dual-Flow-Schnittstelle (implosiver Block vs. Photonenfluss) hinzufügen, Split-Screen-Animation vorbereiten
+  - docs/v6_wavefunction_theory.md: Herleitung + Nullmodelle dokumentieren, Verweis auf Integrationsplan und Zusatznotizen ergänzen
+  references:
+  - path: releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt
+    lines:
+    - 1
+    - 120
+  priority: 13
+  sprint_focus: Ψ-Gleichung in Pipeline + RK4/τ* Guardrails
 delta_updates:
 - date: '2025-12-01'
   label: v6-refresh-governance-hook
