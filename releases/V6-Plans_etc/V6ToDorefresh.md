@@ -22,6 +22,28 @@
 
 ## Tasks
 
+### [Priority 0] v6r-trilayer-sync
+**TriLayer-Spiegel zwischen ToDo-Listen und Chronik schließen**
+
+**Status:** 🟡 In Progress
+**Beta:** 4.8 | **Zeta Risk:** Neutral nach Kopplung
+
+**Scope:** documentation, governance
+
+**R → Θ:**
+IDs und Quellen zwischen V6-ToDo-Trilayer und Chronik synchronisiert → Validierungs- und Index-Haken geplant
+
+**Next Steps:**
+- 🔧 IDs zwischen V6_ToDoListe.* und Chronik final spiegeln
+- 🔧 Chronik-Achse und logistisches Raster (R/Θ/β/ζ) überprüfen
+- 🧪 Validator/Index-Haken für automatisierte Trilayer-Prüfung ergänzen
+
+**References:**
+- `v6_tasks_export_Aeon.json:10-43`
+- `Chronik/chronik_v6_release.md:1-80`
+
+---
+
 ### [Priority 1] v6r-papers-research
 **Deep Research - Systematische Paper-Validierung für alle V6-Hypothesen**
 
@@ -428,6 +450,28 @@ Type-VI-Simulationen und Analysen laufen mit τ*-Default + RK4-Garantie → Guar
 - `Zusatz_bitte_integrieren!.txt:1-120`
 
 **Sprint Focus:** Ψ-Gleichung in Pipeline + RK4/τ* Guardrails
+
+---
+
+### [Priority 14] v6r-type6-governance
+**Type-VI CREP/τ*-Governance in Policies und CI verankern**
+
+**Status:** 🔴 Open
+**Beta:** 4.6 | **Zeta Risk:** Neutralisiert bei erfüllter Checkliste
+
+**Scope:** governance, compliance, simulation
+
+**R → Θ:**
+Type-VI Checkliste als Merge-Gate aktiv → POLICY/ETHICS referenzieren CREP/τ* und CI-Hooks blocken Verstöße
+
+**Next Steps:**
+- 📝 Type-VI CREP/τ*-Checkliste in POLICY.md und ETHICS.md verlinken
+- 🔧 CI/Pre-Commit-Guard für τ* Default (=0.1·|Θ−R|) + CREP ≥0.7 Warnpfad skizzieren
+- 🗓️ Reviewer-Slot und Audit-Trail-Eintrag bei CREP ≥0.7 in Chronik hinterlegen
+
+**References:**
+- `type6_crep_tau_star_checklist.md:1-49`
+- `activation_gaps_tau_star.md:1-33`
 
 ---
 

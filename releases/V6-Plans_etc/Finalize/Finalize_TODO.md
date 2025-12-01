@@ -370,6 +370,30 @@ Pre-Release-Anforderungen aus der Zenodo-Checkliste abgearbeitet → pytest/Lint
 
 ---
 
+### [Priority 11] finalize-type6-governance
+**Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten**
+
+**Status:** 🔴 Open
+**Beta:** 4.6 | **Zeta Risk:** Neutralisiert durch τ*-Pflicht + Reviewer-Gate
+
+**Scope:** governance, compliance, automation
+
+**R → Θ:**
+Type-VI Merge-Gate aktiv → POLICY/ETHICS referenzieren CREP/τ*, CI/Pre-Commit blockt fehlende τ*-Defaults und Chronik enthält Reviewer-Slots
+
+**Next Steps:**
+- 📝 Type-VI CREP/τ*-Checkliste in POLICY.md und ETHICS.md verlinken
+- 🔧 CI/Pre-Commit-Guard für τ*=0.1·|Θ−R| + CREP ≥0.7 Warnpfad skizzieren (pre-merge blockend)
+- 🗓️ Reviewer-Slot und Audit-Trail-Eintrag bei CREP ≥0.7 in Chronik/Finalize-Notizen dokumentieren
+
+**References:**
+- `type6_crep_tau_star_checklist.md:1-49`
+- `activation_gaps_tau_star.md:1-33`
+
+**Sprint Focus:** Governance-Gate + CI-Hook
+
+---
+
 ## Delta Updates
 
 ### 2025-12-01 | finalize-mscopilot-fit
