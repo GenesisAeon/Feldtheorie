@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2025-12-23T00:00:00Z",
+    "updated_at": "2025-12-24T00:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -17,6 +17,7 @@
         "v6r-trilayer-sync",
         "v6r-papers-research",
         "v6r-literature-review-sync",
+        "v6r-entropic-gravity-bridge",
         "v6r-vrig-simulation",
         "v6r-oipk-tesseract",
         "v6r-formulas-collection",
@@ -182,6 +183,53 @@
       ],
       "priority": 1,
       "sprint_focus": "Literatur-Konsistenz & Trilayer-Kopplung"
+    },
+    {
+      "id": "v6r-entropic-gravity-bridge",
+      "title": "Entropische Gravitation & Kubus-Kopplung in V6-Theorie/BibTeX verankern",
+      "status": "open",
+      "completeness": "Gemini-DeepResearch-Text liegt vor; Integration in Review/BibTeX/Chronik fehlt.",
+      "scope": [
+        "research",
+        "documentation",
+        "theory"
+      ],
+      "logistic_profile": {
+        "R_target": "Entropische Gravitation im Review + BibTeX gespiegelt",
+        "Theta_condition": "Holographischer Kubus/∇S→F=T∇S in V6_Literature_Review.md + DEEP_RESEARCH_Unified_Framework.md dokumentiert und in docs/references_v6.bib verlinkt",
+        "beta_estimate": 5.4,
+        "zeta_risk": "moderat – Quellenkopplung fehlt"
+      },
+      "next_steps": [
+        "Kernaussagen aus Zusatz_bitte_integrieren!.txt extrahieren (Holographisches Prinzip, Entropiegradient, Bekenstein-Hawking) und als Bullet-Kerne in V6_Literature_Review.md ergänzen",
+        "BibTeX-Platzhalter für Verlinde 2010 + Holographie/Bekenstein-Hawking in docs/references_v6.bib anlegen und in Review-Dokument referenzieren",
+        "DEEP_RESEARCH_Unified_Framework.md um UTAC-Kubus/Kanten-Verschneidung erweitern und Chronik (chronik_v6_release.*) auf neuen Bridge-Task verweisen"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt",
+          "lines": [
+            1,
+            140
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/DEEP_RESEARCH_Unified_Framework.md",
+          "lines": [
+            1,
+            160
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_Literature_Review.md",
+          "lines": [
+            1,
+            120
+          ]
+        }
+      ],
+      "priority": 1,
+      "sprint_focus": "Entropische Gravitation + UTAC-Kubus-Kopplung"
     },
     {
       "id": "v6r-vrig-simulation",
@@ -906,6 +954,12 @@
       "status": "refactor-planned"
     },
     {
+      "todo_id": "v6r-entropic-gravity-bridge",
+      "finalize_id": "finalize-entropic-gravity-bridge",
+      "bridge_focus": "Entropische Gravitation/Holographischer Kubus in Review + BibTeX",
+      "status": "bridge-planned"
+    },
+    {
       "todo_id": "v6r-type6-governance",
       "finalize_id": "finalize-type6-governance",
       "bridge_focus": "Type-VI Governance + CI-Hook",
@@ -919,6 +973,15 @@
     }
   ],
   "delta_updates": [
+    {
+      "date": "2025-12-24",
+      "label": "v6-refresh-entropic-gravity",
+      "highlights": [
+        "Neuer Task v6r-entropic-gravity-bridge angelegt, um Gemini-DeepResearch-Entropie/Kubus-Argument in Review/BibTeX zu spiegeln",
+        "FIT-Mapping um finalize-entropic-gravity-bridge erweitert; Chronik-Hinweis geplant",
+        "Sprint-Fokus auf holographische Kubus-Kopplung + BibTeX-Platzhalter gesetzt"
+      ]
+    },
     {
       "date": "2025-12-23",
       "label": "v6-refresh-crep-guard",

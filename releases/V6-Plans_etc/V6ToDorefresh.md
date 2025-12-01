@@ -44,6 +44,31 @@ IDs und Quellen zwischen V6-ToDo-Trilayer und Chronik synchronisiert → Validie
 
 ---
 
+### [Priority 1] v6r-entropic-gravity-bridge
+**Entropische Gravitation & Kubus-Kopplung in V6-Theorie/BibTeX verankern**
+
+**Status:** 🔴 Open
+**Beta:** 5.4 | **Zeta Risk:** Moderat – fehlende Quellenkopplung verzerrt UTAC-Grundlage
+
+**Scope:** research, documentation, theory
+
+**R → Θ:**
+Holographische Kubus-/Entropie-Argumentation aus Gemini-DeepResearch in V6_Literature_Review.md und DEEP_RESEARCH_Unified_Framework.md gespiegelt → BibTeX-Einträge (Verlinde/Holographie/Bekenstein-Hawking) in docs/references_v6.bib vorbereitet; Chronik- und Finalize-Link gesetzt
+
+**Next Steps:**
+- 📝 Kernaussagen aus `Zusatz_bitte_integrieren!.txt` zu Entropischer Gravitation/Holographischem Kubus extrahieren und als Bullet-Kerne in `V6_Literature_Review.md` einpflegen (inkl. ΔS → ∇S → F=T∇S Hinweis)
+- 🔗 BibTeX-Platzhalter für Verlinde 2010, Bekenstein-Hawking (S=A/4L_P²) und holographische Screens in `docs/references_v6.bib` anlegen; Referenzen im Review-Dokument verlinken
+- 🧭 DEEP_RESEARCH_Unified_Framework.md Abschnitt zur UTAC-Grundlage um Kubus/Kanten-Verschneidung ergänzen und Chronik-Eintrag (`chronik_v6_release.*`) auf neuen Bridge-Task verweisen
+
+**References:**
+- `Zusatz_bitte_integrieren!.txt:1-140`
+- `DEEP_RESEARCH_Unified_Framework.md:1-160`
+- `V6_Literature_Review.md:1-120`
+
+**Sprint Focus:** Entropische Gravitation + UTAC-Kubus-Kopplung
+
+---
+
 ### [Priority 1] v6r-papers-research
 **Deep Research - Systematische Paper-Validierung für alle V6-Hypothesen**
 
@@ -586,12 +611,20 @@ Literature-Review-Kernthesen (UTAC/v_RIG/Type-VI) in docs- und BibTeX-Layer gesp
 | v6r-tau-star-guardrails | finalize-tau-star-guardrails | τ*-Safety + CREP-Reviewer-Gate | Artefakte gespiegelt, CI/Chronik offen |
 | v6r-wavefunction-pipeline | finalize-wavefunction-pipeline | Ψ-Pipeline FIT-Kette (Tests, Zenodo) | IDs gespiegelt, Testergebnisse ausstehend |
 | v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | Bullet-Refactor geplant |
+| v6r-entropic-gravity-bridge | finalize-entropic-gravity-bridge | Entropische Gravitation/Holographischer Kubus in Review + BibTeX | Bridge angelegt, Inhalte noch zu spiegeln |
 | v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | Checklisten verlinkt, Merge-Gate fehlt |
 | v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Guard-Prototyp geplant |
 
 ---
 
 ## Delta Updates
+
+### 2025-12-24 | v6-refresh-entropic-gravity
+
+✅ **Highlights:**
+- Neuer Task `v6r-entropic-gravity-bridge` ergänzt, um Gemini-DeepResearch-Argument zu entropischer Gravitation in Review/BibTeX zu spiegeln (FIT-Vorgabe: neue ToDos anlegen).
+- FIT-Mapping um `finalize-entropic-gravity-bridge` erweitert; Chronik-Link als Bridge-Hinweis geplant.
+- Literatur-/UTAC-Kubus-Kopplung als Sprint-Fokus markiert, inkl. BibTeX-Platzhalter und Chronik-Verweis.
 
 ### 2025-12-23 | v6-refresh-crep-guard
 
