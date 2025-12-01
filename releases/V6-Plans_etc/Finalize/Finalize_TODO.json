@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2025-12-22T00:00:00Z",
+    "updated_at": "2025-12-23T00:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -28,7 +28,8 @@
         "finalize-zenodo-checklist",
         "finalize-tau-star-guardrails",
         "finalize-type6-governance",
-        "finalize-fit-sync"
+        "finalize-fit-sync",
+        "finalize-crep-guard-ci"
       ],
       "note": "v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation"
     }
@@ -600,7 +601,7 @@
     },
     {
       "id": "finalize-type6-governance",
-        "title": "Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten",
+      "title": "Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten",
       "status": "open",
       "completeness": "Checkliste liegt vor; Governance-Referenzen und blockende CI/Pre-Commit-Hooks fehlen.",
       "scope": [
@@ -619,9 +620,9 @@
         "CI/Pre-Commit-Guard für τ*=0.1·|Θ−R| + CREP ≥0.7 Warnpfad skizzieren (pre-merge blockend)",
         "Reviewer-Slot und Audit-Trail-Eintrag bei CREP ≥0.7 in Chronik/Finalize-Notizen dokumentieren"
       ],
-        "references": [
-          {
-            "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.md",
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.md",
           "lines": [
             1,
             49
@@ -634,51 +635,105 @@
             33
           ]
         }
-        ],
+      ],
       "priority": 13,
       "sprint_focus": "Governance-Gate + CI-Hook"
     },
     {
       "id": "finalize-fit-sync",
-        "title": "FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks",
-        "status": "open",
-        "completeness": "FIT-Vorgaben notiert; Mapping-Entwurf mit ToDorefresh erstellt, Chronik-Link steht aus.",
-        "scope": [
-          "governance",
-          "organization",
-          "documentation"
-        ],
-        "logistic_profile": {
-          "R_target": "FIT-Microsteps gespiegelt",
-          "Theta_condition": "Priority-Listen und neue Tasks (z.B. Zenodo-Prep) in beiden Trilayern verlinkt",
-          "beta_estimate": 4.4,
-          "zeta_risk": "niedrig"
+      "title": "FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks",
+      "status": "open",
+      "completeness": "FIT-Vorgaben notiert; Mapping-Entwurf mit ToDorefresh erstellt, Chronik-Link steht aus.",
+      "scope": [
+        "governance",
+        "organization",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "FIT-Microsteps gespiegelt",
+        "Theta_condition": "Priority-Listen und neue Tasks (z.B. Zenodo-Prep) in beiden Trilayern verlinkt",
+        "beta_estimate": 4.4,
+        "zeta_risk": "niedrig"
+      },
+      "next_steps": [
+        "Prioritätenreihenfolge zwischen V6ToDorefresh und Finalize prüfen und synchronisieren",
+        "Neue FIT-Microsteps (Promt_für_Agenten.txt, v6r-zenodo-prep) als Finalize-Aufgaben referenzieren",
+        "Querverweise zwischen V6ToDorefresh.* und Finalize_TODO.* ergänzen, Trilayer-Drift dokumentieren",
+        "Delta-Update-Eintrag hinzufügen, sobald Synchronisation erfolgt",
+        "Mapping-Tabelle der Prioritäten/IDs (v6r-* ↔ finalize-*) pflegen und als Handoff-Hinweis für Chronik/Delta verlinken (Entwurf vorhanden)"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Promt_für_Agenten.txt",
+          "lines": [
+            1,
+            5
+          ]
         },
-        "next_steps": [
-          "Prioritätenreihenfolge zwischen V6ToDorefresh und Finalize prüfen und synchronisieren",
-          "Neue FIT-Microsteps (Promt_für_Agenten.txt, v6r-zenodo-prep) als Finalize-Aufgaben referenzieren",
-          "Querverweise zwischen V6ToDorefresh.* und Finalize_TODO.* ergänzen, Trilayer-Drift dokumentieren",
-          "Delta-Update-Eintrag hinzufügen, sobald Synchronisation erfolgt",
-          "Mapping-Tabelle der Prioritäten/IDs (v6r-* ↔ finalize-*) pflegen und als Handoff-Hinweis für Chronik/Delta verlinken (Entwurf vorhanden)"
-        ],
-        "references": [
-          {
-            "path": "releases/V6-Plans_etc/Promt_für_Agenten.txt",
-            "lines": [
-              1,
-              5
-            ]
-          },
-          {
-            "path": "releases/V6-Plans_etc/V6ToDorefresh.md",
-            "lines": [
-              360,
-              460
-            ]
-          }
-        ],
+        {
+          "path": "releases/V6-Plans_etc/V6ToDorefresh.md",
+          "lines": [
+            360,
+            460
+          ]
+        }
+      ],
       "priority": 14,
       "sprint_focus": "FIT-Synchronisation & Trilayer-Parität"
+    },
+    {
+      "id": "finalize-crep-guard-ci",
+      "title": "CREP/τ*-Guard-Skript im Finalize-Layer testen & loggen",
+      "status": "open",
+      "completeness": "type6_CREP/τ*-Checkliste verlinkt; CI/Pre-Commit-Guard und Chronik-Protokollierung fehlen im Finalize-Layer.",
+      "scope": [
+        "governance",
+        "compliance",
+        "automation"
+      ],
+      "logistic_profile": {
+        "R_target": "CREP/τ*-Guard blockt Releases bei fehlendem τ*-Default oder fehlendem Reviewer-Slot",
+        "Theta_condition": "tools/crep_guard.py Hook läuft in Finalize-CI, schreibt logs/type_vi_detections.jsonl und Chronik-Eintrag",
+        "beta_estimate": 4.7,
+        "zeta_risk": "moderat – Merge/Release-Gate noch offen"
+      },
+      "next_steps": [
+        "Guard-Implementierung aus v6r-crep-guard-ci übernehmen und in Finalize-CI/pre-commit spiegeln",
+        "logs/type_vi_detections.jsonl als Audit-Trail anlegen und Chronik/Finalize-Notizen um Guard-Status ergänzen",
+        "FIT-Mapping in finalize-fit-sync aktualisieren und POLICY/ETHICS-Referenzen auf type6_crep_tau_star_checklist.* prüfen"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.md",
+          "lines": [
+            1,
+            49
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/activation_gaps_tau_star.md",
+          "lines": [
+            1,
+            36
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Promt_für_Agenten.txt",
+          "lines": [
+            1,
+            5
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6ToDorefresh.md",
+          "lines": [
+            500,
+            555
+          ]
+        }
+      ],
+      "priority": 15,
+      "sprint_focus": "CREP/τ*-Guardrail als Release-Gate + Audit-Trail verankern"
     }
   ],
   "fit_mapping": [
@@ -717,9 +772,24 @@
       "finalize_id": "finalize-type6-governance",
       "bridge_focus": "Type-VI Governance + CI-Hook",
       "status": "checklists-linked"
+    },
+    {
+      "todo_id": "v6r-crep-guard-ci",
+      "finalize_id": "finalize-crep-guard-ci",
+      "bridge_focus": "CREP/τ*-CI-Guard",
+      "status": "planned"
     }
   ],
   "delta_updates": [
+    {
+      "date": "2025-12-23",
+      "label": "finalize-crep-guard",
+      "highlights": [
+        "Neuer Task finalize-crep-guard-ci ergänzt, um type6_CREP/τ*-Guard in Finalize-CI zu verankern",
+        "FIT-Mapping mit v6r-crep-guard-ci hergestellt; Chronik/Audit-Log als Folgepunkte markiert",
+        "Promt_für_Agenten.txt Vorgabe umgesetzt: neues ToDo für Guardrail-Deployment angelegt"
+      ]
+    },
     {
       "date": "2025-12-22",
       "label": "finalize-fit-map",

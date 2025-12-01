@@ -527,6 +527,31 @@ Synchronisationspfad zwischen V6ToDorefresh und Finalize-TODO aktiv → neue FIT
 
 ---
 
+### [Priority 17] v6r-crep-guard-ci
+**CREP/τ*-Guard-Skript + Logging in CI/Pre-Commit verankern**
+
+**Status:** 🔴 Open
+**Beta:** 4.7 | **Zeta Risk:** Moderat – Merge-Gate fehlt
+
+**Scope:** governance, automation, compliance
+
+**R → Θ:**
+type6_CREP/τ*-Checkliste als automatischer Guard aktiv → `tools/crep_guard.py` prüft τ*-Default (0.1·|Θ−R|) + CREP ≥0.7 Reviewer-Pflicht, CI/Pre-Commit loggt nach `logs/type_vi_detections.jsonl`
+
+**Next Steps:**
+- 🔧 Guard-Prototyp `tools/crep_guard.py --threshold 0.7 --tau-default 0.1` aufsetzen und Kriterien aus `activation_gaps_tau_star.md` + `type6_crep_tau_star_checklist.*` übernehmen.
+- 🧪 Hook in `make validate-trilayer`/pre-commit integrieren: Fail bei fehlendem τ*-Default oder CREP ≥0.7 ohne Reviewer-Slot; Log-Ausgabe nach `logs/type_vi_detections.jsonl` spiegeln.
+- 🧭 Chronik/FIT-Kopplung ergänzen: Guard-Status in `Chronik/chronik_v6_release.md` notieren und Mapping zu `finalize-crep-guard-ci` in der FIT-Tabelle pflegen.
+
+**References:**
+- `activation_gaps_tau_star.md:1-36`
+- `type6_crep_tau_star_checklist.md:1-49`
+- `Promt_für_Agenten.txt:1-5`
+
+**Sprint Focus:** CREP/τ*-Merge-Gate + Audit-Log aktivieren
+
+---
+
 ### [Priority 1] v6r-literature-review-sync
 **V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
 
@@ -562,10 +587,18 @@ Literature-Review-Kernthesen (UTAC/v_RIG/Type-VI) in docs- und BibTeX-Layer gesp
 | v6r-wavefunction-pipeline | finalize-wavefunction-pipeline | Ψ-Pipeline FIT-Kette (Tests, Zenodo) | IDs gespiegelt, Testergebnisse ausstehend |
 | v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | Bullet-Refactor geplant |
 | v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | Checklisten verlinkt, Merge-Gate fehlt |
+| v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Guard-Prototyp geplant |
 
 ---
 
 ## Delta Updates
+
+### 2025-12-23 | v6-refresh-crep-guard
+
+✅ **Highlights:**
+- Neuer Task `v6r-crep-guard-ci` ergänzt, um type6_CREP/τ*-Checkliste als CI-Guard abzubilden (Promt_für_Agenten.txt Vorgabe "ToDos anlegen").
+- FIT-Mapping um `finalize-crep-guard-ci` erweitert; Guard-Status soll in Chronik/Logs dokumentiert werden.
+- Guard-Prototyp in `tools/crep_guard.py` + `logs/type_vi_detections.jsonl` als nächste Schritte definiert.
 
 ### 2025-12-22 | v6-refresh-fit-map
 
