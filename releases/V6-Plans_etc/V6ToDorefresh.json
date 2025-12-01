@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2025-12-09T00:00:00Z",
+    "updated_at": "2025-12-12T00:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -16,6 +16,7 @@
       "priority_order": [
         "v6r-trilayer-sync",
         "v6r-papers-research",
+        "v6r-literature-review-sync",
         "v6r-vrig-simulation",
         "v6r-oipk-tesseract",
         "v6r-formulas-collection",
@@ -138,6 +139,47 @@
       ],
       "priority": 1,
       "sprint_focus": "Literatur-Review + BibTeX"
+    },
+    {
+      "id": "v6r-literature-review-sync",
+      "title": "V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln",
+      "status": "open",
+      "completeness": "Literature-Review liegt vor, aber Kopplung zu BibTeX/ToDo-Trilayer und Querverweise fehlen.",
+      "scope": [
+        "research",
+        "documentation",
+        "governance"
+      ],
+      "logistic_profile": {
+        "R_target": "Literature-Review-Kernthesen gespiegelt",
+        "Theta_condition": "V6_Literature_Review.md referenziert docs/references_v6.bib + ToDo-Trilayer",
+        "beta_estimate": 5.2,
+        "zeta_risk": "moderat – Referenz-Drift möglich"
+      },
+      "next_steps": [
+        "Kernaussagen und Quellen aus V6_Literature_Review.md in strukturierte Bulletpoints überführen (UTAC, Entropie, Zeitscheiben, v_RIG)",
+        "BibTeX-Einträge in docs/references_v6.bib oder Platzhalter-Liste aufnehmen und mit V6ToDorefresh.* referenzieren",
+        "Querverweise auf laufende Tasks (v6r-papers-research, v6r-zenodo-prep) ergänzen und R/Θ/β/ζ-Blöcke anpassen",
+        "Chronik/Finalize-Link setzen, damit FIT-Sequenz (ToDorefresh → Finalize) nachvollziehbar bleibt"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/V6_Literature_Review.md",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6ToDorefresh.md",
+          "lines": [
+            9,
+            74
+          ]
+        }
+      ],
+      "priority": 1,
+      "sprint_focus": "Literatur-Konsistenz & Trilayer-Kopplung"
     },
     {
       "id": "v6r-vrig-simulation",

@@ -499,6 +499,31 @@ Zenodo-Checkliste auf ✅ bringen → Kern-Tests laufen, Coverage/Linting protok
 
 ---
 
+### [Priority 1] v6r-literature-review-sync
+**V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
+
+**Status:** 🔴 Open
+**Beta:** 5.2 | **Zeta Risk:** Moderat – fehlende Kopplung gefährdet Referenz-Integrität
+
+**Scope:** research, documentation, governance
+
+**R → Θ:**
+Literature-Review-Kernthesen (UTAC/v_RIG/Type-VI) in docs- und BibTeX-Layer gespiegelt → V6_Literature_Review.md referenziert docs/references_v6.bib + ToDo-Trilayer
+
+**Next Steps:**
+- 📝 Kernaussagen und Quellen aus `V6_Literature_Review.md` in strukturierte Bulletpoints überführen (UTAC, Entropie, Zeitscheiben, v_RIG).
+- 🔗 BibTeX-Einträge in `docs/references_v6.bib` oder Platzhalter-Liste aufnehmen und mit `V6ToDorefresh.*` referenzieren.
+- 🔧 Querverweise auf laufende Tasks (`v6r-papers-research`, `v6r-zenodo-prep`) ergänzen; R/Θ/β/ζ-Blöcke anpassen.
+- 🧭 Chronik/Finalize-Link setzen, damit FIT-Sequenz (ToDorefresh → Finalize) nachvollziehbar bleibt.
+
+**References:**
+- `V6_Literature_Review.md:1-120`
+- `V6ToDorefresh.md:9-74`
+
+**Sprint Focus:** Literatur-Konsistenz & Trilayer-Kopplung
+
+---
+
 ## Delta Updates
 
 ### 2025-12-01 | v6-refresh-governance-hook
