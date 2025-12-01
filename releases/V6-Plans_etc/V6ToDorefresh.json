@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2025-12-05T00:00:00Z",
+    "updated_at": "2025-12-09T00:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -28,7 +28,8 @@
         "v6r-beta-bayes",
         "v6r-tau-star-guardrails",
         "v6r-type6-governance",
-        "v6r-psi-integration-plan"
+        "v6r-psi-integration-plan",
+        "v6r-zenodo-prep"
       ],
       "note": "Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)"
     }
@@ -650,9 +651,9 @@
       "priority": 13,
       "sprint_focus": "Ψ-Gleichung in Pipeline + RK4/τ* Guardrails"
     },
-    {
-      "id": "v6r-type6-governance",
-      "title": "Type-VI CREP/τ*-Governance in Policies und CI verankern",
+      {
+        "id": "v6r-type6-governance",
+        "title": "Type-VI CREP/τ*-Governance in Policies und CI verankern",
       "status": "open",
       "completeness": "Checkliste existiert, aber POLICY/ETHICS und CI-Hooks spiegeln CREP/τ* noch nicht.",
       "scope": [
@@ -687,10 +688,45 @@
           ]
         }
       ],
-      "priority": 14,
-      "sprint_focus": "CREP/τ*-Hooks in Governance"
-    }
-  ],
+        "priority": 14,
+        "sprint_focus": "CREP/τ*-Hooks in Governance"
+      },
+      {
+        "id": "v6r-zenodo-prep",
+        "title": "Zenodo-Upload-Readiness in V6-Scope vorbereiten",
+        "status": "open",
+        "completeness": "Checkliste vorhanden, aber Tests/Linting/Provenienz nicht als Release-Gate dokumentiert.",
+        "scope": [
+          "compliance",
+          "testing",
+          "documentation",
+          "release"
+        ],
+        "logistic_profile": {
+          "R_target": "Zenodo-Checkliste auf ✅",
+          "Theta_condition": "Kern-Tests+Coverage+Linting protokolliert, Provenienz/Ethik verlinkt",
+          "beta_estimate": 5.5,
+          "zeta_risk": "hoch ohne Release-Gates"
+        },
+        "next_steps": [
+          "Kern-Testlauf gemäß Checkliste anstoßen (pytest targets) und Logs im Finalize-Ordner sichern",
+          "Coverage-Lauf pytest --cov=pipelines/wavefunction --cov-report=html dokumentieren (≥80%)",
+          "Linting/Typing (flake8, black --check, mypy) ausführen und Statusblock ergänzen",
+          "Provenienz/Ethik-Verweise (ETHICS.md, POLICY.md) in Zenodo_Upload_Checklist.md aktualisieren"
+        ],
+        "references": [
+          {
+            "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
+            "lines": [
+              1,
+              80
+            ]
+          }
+        ],
+        "priority": 15,
+        "sprint_focus": "Test- und Compliance-Belege vor DOI-Request"
+      }
+    ],
   "delta_updates": [
     {
       "date": "2025-12-01",

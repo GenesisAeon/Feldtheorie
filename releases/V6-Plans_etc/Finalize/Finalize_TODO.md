@@ -394,6 +394,31 @@ Type-VI Merge-Gate aktiv → POLICY/ETHICS referenzieren CREP/τ*, CI/Pre-Commit
 
 ---
 
+### [Priority 12] finalize-fit-sync
+**FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks**
+
+**Status:** 🔴 Open
+**Beta:** 4.4 | **Zeta Risk:** Niedrig – aber TriLayer-Drift gefährdet Compliance
+
+**Scope:** governance, organization, documentation
+
+**R → Θ:**
+FIT-Microsteps aus `Promt_für_Agenten.txt` in beiden ToDo-Trilayern gespiegelt → Prioritätenreihenfolge abgeglichen, neue Tasks (z.B. Zenodo-Prep) in Finalize übernommen
+
+**Next Steps:**
+- 🔍 Reihenfolge „ToDorefresh → Finalize“ prüfen und Priority-Listen synchronisieren (IDs/Status spiegeln).
+- 📝 Neue FIT-Microsteps aus `Promt_für_Agenten.txt` und V6ToDorefresh (z.B. v6r-zenodo-prep) als Finalize-Tasks übernehmen oder referenzieren.
+- 🔗 Querverweise zwischen V6ToDorefresh.* und Finalize_TODO.* ergänzen, um Trilayer-Drift zu vermeiden.
+- ✅ Delta-Update-Abschnitt ergänzen, sobald Synchronisation erfolgt ist (inkl. Datum/Stichpunkte).
+
+**References:**
+- `../Promt_für_Agenten.txt:1-5`
+- `../V6ToDorefresh.md:360-460`
+
+**Sprint Focus:** FIT-Synchronisation & Trilayer-Parität
+
+---
+
 ## Delta Updates
 
 ### 2025-12-01 | finalize-mscopilot-fit
