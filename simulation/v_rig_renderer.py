@@ -177,6 +177,12 @@ class VRigRealityRenderer:
         Returns:
             Coherence score (normalized, higher = better)
         """
+        # Handle edge case: volume too small for 3D gradient
+        if volume.shape[0] < 3:
+            # For very small volumes, return low coherence score
+            # (cannot properly measure 3D structure with <3 slices)
+            return 0.01  # Baseline low score
+
         # Extract intensity
         intensity = np.abs(volume) ** 2
 
