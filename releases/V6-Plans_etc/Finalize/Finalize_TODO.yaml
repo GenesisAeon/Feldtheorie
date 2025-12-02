@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2025-12-24T00:00:00Z'
+  updated_at: '2025-12-27T00:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -29,6 +29,8 @@ metadata:
     - finalize-type6-governance
     - finalize-fit-sync
     - finalize-crep-guard-ci
+    - finalize-zenodo-evidence
+    - finalize-crep-audit-log
     note: v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation
 tasks:
 - id: finalize-vrig-research
@@ -620,6 +622,73 @@ tasks:
     - 555
   priority: 15
   sprint_focus: CREP/τ*-Guardrail als Release-Gate + Audit-Trail verankern
+- id: finalize-zenodo-evidence
+  title: Zenodo-Checklist-Belege & Provenienzpfad im Finalize-Layer hinterlegen
+  status: open
+  completeness: Zenodo_Upload_Checklist.md im Pre-Release-Status; Test-/Lint-/Mypy-/Coverage-Belege
+    und Provenienzlinks fehlen im Finalize-Ordner.
+  scope:
+  - compliance
+  - testing
+  - documentation
+  logistic_profile:
+    R_target: Zenodo_Upload_Checklist.md (Abschnitt I–III) mit realen Logs verlinkt und im Finalize-Layer abgelegt
+    Theta_condition: Artefakte/Logs referenziert, Provenienz-/Ethik-Block aktualisiert, FIT-Handoff dokumentiert
+    beta_estimate: 5.6
+    zeta_risk: moderat – DOI-Freigabe ohne Logs blockiert
+  next_steps:
+  - Pytest- und Coverage-Läufe inkl. HTML-Reports unter Finalize/output/zenodo_checks/ referenzieren
+  - Linting/Mypy-Resultate dokumentieren und Status in Zenodo_Upload_Checklist.md spiegeln; FIT-Sync mit v6r-zenodo-evidence
+    notieren
+  - Provenienz- und ETHICS/POLICY-Links ergänzen; Reviewer-Slot für Zenodo-Freigabe in Chronik/Finalize-Deltas markieren
+  references:
+  - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
+    lines:
+    - 1
+    - 5
+  - path: releases/V6-Plans_etc/V6ToDorefresh.md
+    lines:
+    - 600
+    - 690
+  priority: 16
+  sprint_focus: Zenodo-DOI-Belege + Provenienzpfad sichern
+- id: finalize-crep-audit-log
+  title: Type-VI Audit-Log & Reviewer-Routing im Finalize-Layer aktivieren
+  status: open
+  completeness: Type-VI Checkliste vorhanden; Audit-Log-Stubs und Reviewer-Routing noch nicht in CI/Chronik verankert.
+  scope:
+  - governance
+  - compliance
+  - automation
+  logistic_profile:
+    R_target: logs/type_vi_detections.jsonl mit CREP/τ*-Feldern + Reviewer-Slot aktiv
+    Theta_condition: Guard/CI schreibt Einträge, Chronik/Finalize-Deltas verlinken Escalation-Level (1–3)
+    beta_estimate: 4.8
+    zeta_risk: moderat – Escalation-Trace fehlt
+  next_steps:
+  - Audit-Log-Schema aus type6_crep_tau_star_checklist.* übernehmen, Stub-Datei anlegen und im Finalize-Layer verlinken
+  - tools/crep_guard.py Hook für Finalize-CI/Pre-Commit konfigurieren (CREP ≥0.7 → Log + Reviewer aus MAINTAINERS.md); FIT-Sync
+    mit v6r-crep-audit-log dokumentieren
+  - Chronik/Finalize-Deltas um Escalation-Level, τ*-Default 0.1·|Θ−R| und Reviewer-Slot ergänzen; ETHICS/POLICY-Referenzen updaten
+  references:
+  - path: releases/V6-Plans_etc/type6_crep_tau_star_checklist.md
+    lines:
+    - 1
+    - 49
+  - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
+    lines:
+    - 1
+    - 5
+  - path: releases/V6-Plans_etc/V6ToDorefresh.md
+    lines:
+    - 700
+    - 760
+  priority: 17
+  sprint_focus: Escalation-Trace & Reviewer-Gate in Finalize verankern
 fit_mapping:
 - todo_id: v6r-finalize-bridge
   finalize_id: finalize-fit-sync
@@ -653,7 +722,21 @@ fit_mapping:
   finalize_id: finalize-crep-guard-ci
   bridge_focus: CREP/τ*-CI-Guard
   status: planned
+- todo_id: v6r-zenodo-evidence
+  finalize_id: finalize-zenodo-evidence
+  bridge_focus: Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links
+  status: new
+- todo_id: v6r-crep-audit-log
+  finalize_id: finalize-crep-audit-log
+  bridge_focus: Type-VI Audit-Log + Reviewer-Routing
+  status: new
 delta_updates:
+- date: '2025-12-27'
+  label: finalize-zenodo-audit
+  highlights:
+  - Finalize-Tasks finalize-zenodo-evidence und finalize-crep-audit-log ergänzt, um Zenodo-Belege und Type-VI-Audit-Logs als FIT-Handoff aus ToDorefresh zu spiegeln.
+  - FIT-Mapping um Zenodo-/Audit-Log-Brücken erweitert; Reviewer-Routing und Log-Stubs als nächste Schritte markiert.
+  - Compliance-Fokus (Provenienz/ETHICS/POLICY, CI-Logging) als Sprint-Schwerpunkt gesetzt.
 - date: '2025-12-24'
   label: finalize-entropic-gravity-bridge
   highlights:
