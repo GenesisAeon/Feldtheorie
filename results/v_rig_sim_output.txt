@@ -1,0 +1,45 @@
+======================================================================
+v_RIG Reality Renderer Simulation
+======================================================================
+Testing hypothesis: Maximum 3D coherence at N ≈ α⁻¹·Φ ≈ 221.73
+Physical constants:
+  α⁻¹ = 137.036000 (fine-structure constant inverse)
+  Φ   = 1.618034 (golden ratio)
+  c   = 299792.458 km/s
+  v_RIG = c/(α⁻¹·Φ) = 1352.07 km/s
+======================================================================
+
+Phase 1: Coarse scan (step=5)
+Generating 500 holographic slices...
+Scanning buffer sizes N = 1 to 500 (step=5)...
+  N =   1: coherence = 0.010000
+  N = 221: coherence = 0.126520
+  N = 246: coherence = 0.125562
+  N = 496: coherence = 0.119729
+
+Coarse peak found at N = 6
+
+Phase 2: Fine scan around N = 6 (step=1)
+Generating 500 holographic slices...
+Scanning buffer sizes N = 1 to 36 (step=1)...
+  N =   1: coherence = 0.010000
+  N =  36: coherence = 0.144422
+
+======================================================================
+RESULTS
+======================================================================
+Theoretical prediction: N = 221.73
+Empirical peak:         N = 3
+Peak coherence:         0.179546
+Deviation:              218.73 (98.6%)
+======================================================================
+
+Generating visualizations...
+Saved coherence plot to results/v_rig_coherence_scan.png
+Saved visualization to results/v_rig_3d_reconstruction.png
+
+Simulation complete!
+
+Interpretation:
+✗ HYPOTHESIS CHALLENGED: Peak deviates significantly from prediction
+  This requires revision of the v_RIG framework.
