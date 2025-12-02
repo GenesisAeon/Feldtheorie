@@ -280,13 +280,23 @@ Lorentz-Verletzung:
 ### [Priority 5] v6r-stereo-vision
 **Stereo-Vision Slice-Experiment Modul (Psychophysik + Citizen Science)**
 
-**Status:** 🔴 Open
-**Beta:** 4.3 | **Zeta Risk:** Niedrig - rein phänomenologisches Experiment
+**Status:** 🟢 Completed (2025-12-02)
+**Beta:** 4.3 | **Zeta Risk:** Neutralisiert - vollständiges Experiment-Protokoll vorhanden
 
 **Scope:** models, experiments, documentation
 
 **R → Θ:**
-Experimentelles Protokoll für Citizen Science → models/psychophysics.py + experiments/citizen_science_stereo_vision.md + Paper-Update
+✅ Experimentelles Protokoll für Citizen Science vollständig → models/psychophysics.py (474 Zeilen) + experiments/citizen_science_stereo_vision.md (11.7 KB) + Finalize-Links gesetzt
+
+**Completed Actions:**
+- ✅ **models/psychophysics.py** bereits vollständig implementiert (474 Zeilen)
+- ✅ **StereoVisionModel Klasse** mit allen Funktionen: calculate_slice_fusion_frequency(), calculate_binocular_parallax(), predict_metabolic_sff_variation()
+- ✅ **experiments/citizen_science_stereo_vision.md** Protokoll vollständig (3 Experimente)
+- ✅ **Experiment 1:** Monokulares Switching - "Jump" Wahrnehmung dokumentiert
+- ✅ **Experiment 2:** Distanz-Variation (10 cm bis 10 m) - SFF-Skalierung
+- ✅ **Experiment 3:** Metabolischer Modulation-Test (Sport, Fasten, Koffein)
+- ✅ **Citizen Science Datenformat** definiert (GitHub Issues, Email, Form)
+- ✅ **Querverweise** zu V6_Literature_Review.md (Section VII), v6_formulas.md (SFF), paper_v_rig_consciousness.md
 
 **Next Steps:**
 - 🔧 models/psychophysics.py mit StereoVisionModel Klasse
