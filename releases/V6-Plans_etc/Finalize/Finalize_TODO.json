@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2025-12-29T10:00:00Z",
+    "updated_at": "2025-12-30T10:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -1054,9 +1054,29 @@
       "finalize_id": "finalize-beta-telemetry",
       "bridge_focus": "β-Drift/CREP Telemetrie → Deltas/Indices",
       "status": "planned"
+    },
+    {
+      "todo_id": "v6r-aeon-architecture",
+      "finalize_id": "finalize-aeon-architecture",
+      "bridge_focus": "Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten)",
+      "status": "mapping-added"
+    },
+    {
+      "todo_id": "v6r-slice-integration",
+      "finalize_id": "finalize-slice-integration",
+      "bridge_focus": "Slice/CFF-Modell + Stereo-Vision-Experiment",
+      "status": "handoff-planned"
     }
   ],
   "delta_updates": [
+    {
+      "date": "2025-12-30",
+      "label": "finalize-aeon-slice-bridge",
+      "highlights": [
+        "FIT-Mapping um v6r-aeon-architecture und v6r-slice-integration ergänzt, damit Aeon/Slice-Handoffs aus ToDorefresh sichtbar werden.",
+        "Bauplan-Extrakt (ChatGPT5.1_AeonV1.0Bauplan.txt) und Slice-Formeln/Tabellen als nächste Schritte markiert; Updatedatum auf 2025-12-30 gesetzt."
+      ]
+    },
     {
       "date": "2025-12-29",
       "label": "finalize-ci-telemetry-bridge",

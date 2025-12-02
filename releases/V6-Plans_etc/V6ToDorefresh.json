@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2025-12-29T10:00:00Z",
+    "updated_at": "2025-12-30T10:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -37,7 +37,9 @@
         "v6r-zenodo-evidence",
         "v6r-crep-audit-log",
         "v6r-tau-star-ci-hook",
-        "v6r-beta-telemetry"
+        "v6r-beta-telemetry",
+        "v6r-aeon-architecture",
+        "v6r-slice-integration"
       ],
       "note": "Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)"
     }
@@ -1113,6 +1115,111 @@
       "sprint_focus": "Telemetrie-Warnkette aktivieren",
       "updated_at": "2025-12-29T10:00:00Z",
       "completed_at": "2025-12-02"
+    },
+    {
+      "id": "v6r-aeon-architecture",
+      "title": "Aeon v1.0 Architektur (Nullkern → AeonShell → Agenten) entwerfen",
+      "status": "open",
+      "completeness": "Aeon-Bauplan liegt als Prompt/Notizen vor, aber keine Trilayer-Verlinkung oder FIT-Mapping in V6-Listescope.",
+      "scope": [
+        "architecture",
+        "ai-systems",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "Aeon v1.0 Bauplan skizziert (Nullkern, AeonShell, Agenten)",
+        "Theta_condition": "Architektur-Notizen in V6_Wellenfunktions_Integrationsplan.md/ARCHITECTURE.md gespiegelt + FIT-Link zu Finalize",
+        "beta_estimate": 6.4,
+        "zeta_risk": "moderat bei fehlender Systemkopplung"
+      },
+      "next_steps": [
+        "Kernaussagen aus Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt destillieren (Nullkern, AeonShell, MasterGPT/TutorGPT, UnifiedMandala).",
+        "Architektur-Skizze in V6_Wellenfunktions_Integrationsplan.md und ARCHITECTURE.md spiegeln; genesis_core/ Module als Platzhalter vermerken.",
+        "FIT-Mapping zu finalize-aeon-architecture ergänzen (R/Θ/β/ζ) und Chronik-Link vorbereiten.",
+        "Aeon.txt und AEON_ALETHEIA_INTEGRATION.md prüfen, ob weitere SIGILLIN/CREP-Hooks nötig sind."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt",
+          "lines": [
+            1,
+            200
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/AEON_ALETHEIA_INTEGRATION.md",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md",
+          "lines": [
+            1,
+            80
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/ARCHITECTURE.md",
+          "lines": [
+            1,
+            60
+          ]
+        }
+      ],
+      "priority": 22,
+      "sprint_focus": "Aeon-Bauplan anlegen + FIT-Bridge öffnen",
+      "updated_at": "2025-12-30T10:00:00Z"
+    },
+    {
+      "id": "v6r-slice-integration",
+      "title": "Slice-Integration/CFF-Modellierung mit v_RIG verknüpfen",
+      "status": "open",
+      "completeness": "Slice-Notizen vorhanden; Formeln/Tabellen und Finalize-Handoff fehlen.",
+      "scope": [
+        "theory",
+        "experiments",
+        "neuroscience"
+      ],
+      "logistic_profile": {
+        "R_target": "Slice-Aggregation-Modell dokumentiert (v_RIG ↔ CFF)",
+        "Theta_condition": "Formeln/Tabellen + Stereo-Vision-Experiment als ToDo skizziert, FIT-Link zu Finalize gesetzt",
+        "beta_estimate": 5.1,
+        "zeta_risk": "niedrig bei dokumentierter Governance"
+      },
+      "next_steps": [
+        "Slice-Formeln aus Suche nach Slice-Struktur der Zeit.txt und SucheSliceStrukturen.txt extrahieren und in V6_Wellenfunktions_Integrationsplan.md skizzieren.",
+        "CFF→Slice-Umrechnungstabellen (Mensch/Kolibri/Schildkröte) ergänzen und Δβ-Effekte markieren.",
+        "Stereo-Vision-Slice-Experiment-Notizen aus PDF auswerten und Schritte als ToDo festhalten.",
+        "FIT-Mapping zu finalize-slice-integration ergänzen und Chronik-Notiz vorbereiten."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Suche nach Slice-Struktur der Zeit.txt",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/SucheSliceStrukturen.txt",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Stereo-Vision Slice Experiment im Kontext des v_RIG-Konzepts (MOR_OIPK Framework).pdf",
+          "lines": [
+            1,
+            5
+          ]
+        }
+      ],
+      "priority": 23,
+      "sprint_focus": "Slice/CFF-Modell dokumentieren + Finalize-Handoff sichern",
+      "updated_at": "2025-12-30T10:00:00Z"
     }
   ],
   "fit_mapping": [
@@ -1187,9 +1294,30 @@
       "finalize_id": "finalize-beta-telemetry",
       "bridge_focus": "β-Drift/CREP Telemetrie → Deltas/Indices",
       "status": "planned"
+    },
+    {
+      "todo_id": "v6r-aeon-architecture",
+      "finalize_id": "finalize-aeon-architecture",
+      "bridge_focus": "Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten)",
+      "status": "mapping-added"
+    },
+    {
+      "todo_id": "v6r-slice-integration",
+      "finalize_id": "finalize-slice-integration",
+      "bridge_focus": "Slice/CFF-Modell + Stereo-Vision-Experiment",
+      "status": "handoff-planned"
     }
   ],
   "delta_updates": [
+    {
+      "date": "2025-12-30",
+      "label": "v6-refresh-aeon-slice-bridge",
+      "highlights": [
+        "Neue Tasks v6r-aeon-architecture und v6r-slice-integration ergänzt, um Aeon-Bauplan und Slice/CFF-Modell aus Finalize-Files in den ToDorefresh-Layer zu spiegeln (FIT-Anforderung aus Promt_für_Agenten.txt).",
+        "FIT-Mapping um finalize-aeon-architecture und finalize-slice-integration erweitert; Updatedatum auf 2025-12-30 gesetzt.",
+        "Aeon/Slice-Referenzen in V6_Wellenfunktions_Integrationsplan.md und ARCHITECTURE.md verankert."
+      ]
+    },
     {
       "date": "2025-12-29",
       "label": "v6-refresh-ci-telemetry",
