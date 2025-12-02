@@ -6,16 +6,16 @@ bridging quantum mechanics and entropic governance.
 Main Components:
 ----------------
 - PsiField: Core wavefunction ψ_genesis(r,θ,φ,t) computation
+- PsiFieldConfig: Configuration for ψ-field parameters
 - PsiFieldPipeline: Complete workflow for UTAC integration
 - compute_psi_genesis: Convenience function for quick access
 
 Usage:
 ------
->>> from pipelines.wavefunction import compute_psi_genesis, PsiFieldPipeline
+>>> from pipelines.wavefunction import PsiField, compute_psi_genesis
 >>>
 >>> # Quick computation
->>> r = np.linspace(0, 10, 100)
->>> psi = compute_psi_genesis(r, theta=np.pi/2, phi=0)
+>>> psi = compute_psi_genesis(r=1.0, theta=np.pi/2, phi=0)
 >>>
 >>> # Full pipeline
 >>> pipeline = PsiFieldPipeline()
@@ -25,27 +25,31 @@ Version: v6.0.0-alpha
 """
 
 from .psi_field import (
+    ALPHA_INV,
+    E_PLANCK,  # Legacy alias
+    HBAR,
+    L_PLANCK,  # Legacy alias
+    PHI,
+    PLANCK_ENERGY,
+    PLANCK_LENGTH,
     PsiField,
     PsiFieldConfig,
     PsiFieldPipeline,
     compute_psi_genesis,
-    ALPHA_INV,
-    PHI,
-    L_PLANCK,
-    E_PLANCK,
-    HBAR,
 )
 
 __all__ = [
-    'PsiField',
-    'PsiFieldConfig',
-    'PsiFieldPipeline',
-    'compute_psi_genesis',
-    'ALPHA_INV',
-    'PHI',
-    'L_PLANCK',
-    'E_PLANCK',
-    'HBAR',
+    "PsiField",
+    "PsiFieldConfig",
+    "PsiFieldPipeline",
+    "compute_psi_genesis",
+    "ALPHA_INV",
+    "PHI",
+    "PLANCK_LENGTH",
+    "PLANCK_ENERGY",
+    "HBAR",
+    "L_PLANCK",
+    "E_PLANCK",
 ]
 
-__version__ = 'v6.0.0-alpha'
+__version__ = "v6.0.0-alpha"
