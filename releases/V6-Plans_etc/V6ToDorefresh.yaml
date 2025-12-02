@@ -1,10 +1,9 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2025-12-27T12:00:00Z'
+  updated_at: '2025-12-28T10:00:00Z'
   scope: releases/V6-Plans_etc
-  description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse -
-    Papers, Formeln, Simulationen
+  description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen
   logistic_frame:
     R_goal: V6-Kernkomponenten implementiert (v_RIG, OIPK, Zeitscheiben)
     Theta_threshold: Simulationen operational + Papers validiert + Formeln dokumentiert
@@ -35,15 +34,13 @@ metadata:
     - v6r-crep-guard-ci
     - v6r-zenodo-evidence
     - v6r-crep-audit-log
-    note: Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation
-      (Veröffentlichung)
+    note: Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)
 tasks:
 - id: v6r-trilayer-sync
   title: TriLayer-Spiegel zwischen ToDo-Listen und Chronik schließen
   status: completed
   completed_at: '2025-12-24'
-  completeness: Chronik-Update angestoßen; IDs/Quellen noch nicht vollständig gespiegelt
-    und Validator-Haken fehlen.
+  completeness: Chronik-Update angestoßen; IDs/Quellen noch nicht vollständig gespiegelt und Validator-Haken fehlen.
   scope:
   - documentation
   - governance
@@ -71,39 +68,28 @@ tasks:
   title: Deep Research - Systematische Paper-Validierung für alle V6-Hypothesen
   status: completed
   completed_at: '2025-12-24'
-  completeness: Suche-Dateien enthalten Chat-Recherche-Protokolle; systematische Literatur-Review
-    und BibTeX-Datenbank fehlen.
+  completeness: Suche-Dateien enthalten Chat-Recherche-Protokolle; systematische Literatur-Review und BibTeX-Datenbank fehlen.
   scope:
   - research
   - validation
   - documentation
   logistic_profile:
     R_target: Mindestens 50 Papers zitiert mit direktem Bezug zu UTAC/v_RIG/Type-VI
-    Theta_condition: docs/references_v6.bib erstellt + Literature Review in V6-Theorie
-      integriert
+    Theta_condition: docs/references_v6.bib erstellt + Literature Review in V6-Theorie integriert
     beta_estimate: 5.7
     zeta_risk: hoch bei fehlender wissenschaftlicher Fundierung
   next_steps:
-  - 'Zeitscheiben-Hypothese (Δt_Q=100-300ms): Fraisse 1984, Lehmann EEG Microstates,
-    Conscious Present Duration'
-  - 'Entropy Production Maximum: Martyushev & Seleznev 2006, Prigogine Dissipative
-    Structures, Kleidon atmospheric entropy ~900 mW/m²K'
-  - 'Metabolische Skalierung: Kleiber 1932 M^3/4, West-Brown-Enquist 1997 fractal
-    networks, fraktale Dimension'
-  - 'Entropische Gravitation: Verlinde 2010 F=TΔS/Δx, holographic screens, Bekenstein-Hawking
-    S=A/(4L_P²)'
-  - 'Zeitlose Physik: Barbour Janus Point, Wheeler-DeWitt equation, Page-Wootters
-    mechanism, Block Universe'
-  - 'Causal Dynamical Triangulation: Ambjørn et al. CDT phases (crumpled/branched/de
-    Sitter), 2D→4D emergence'
-  - 'Pyramiden-Geometrie: α⁻¹ in LQG/CDT, Φ in quasicrystal structures, kosmische
-    Konstanten c/G/h als UTAC-Grenzen'
-  - 'Shapiro Time Delay: Cassini 200 μs measurement, Verlinde time dilation, entropic
-    screens'
-  - 'Bewusstseins-Integration: Critical Flicker Fusion ~60 Hz, Phi Phenomenon ~80
-    ms, Motion Parallax IPD=6.5 cm'
-  - 'LLM Scaling Laws: GPT-2/3/4 energy/token, Llama 7B/70B efficiency, Landauer limit
-    kT ln(2)≈3×10⁻²¹ J at 300K'
+  - 'Zeitscheiben-Hypothese (Δt_Q=100-300ms): Fraisse 1984, Lehmann EEG Microstates, Conscious Present Duration'
+  - 'Entropy Production Maximum: Martyushev & Seleznev 2006, Prigogine Dissipative Structures, Kleidon atmospheric entropy
+    ~900 mW/m²K'
+  - 'Metabolische Skalierung: Kleiber 1932 M^3/4, West-Brown-Enquist 1997 fractal networks, fraktale Dimension'
+  - 'Entropische Gravitation: Verlinde 2010 F=TΔS/Δx, holographic screens, Bekenstein-Hawking S=A/(4L_P²)'
+  - 'Zeitlose Physik: Barbour Janus Point, Wheeler-DeWitt equation, Page-Wootters mechanism, Block Universe'
+  - 'Causal Dynamical Triangulation: Ambjørn et al. CDT phases (crumpled/branched/de Sitter), 2D→4D emergence'
+  - 'Pyramiden-Geometrie: α⁻¹ in LQG/CDT, Φ in quasicrystal structures, kosmische Konstanten c/G/h als UTAC-Grenzen'
+  - 'Shapiro Time Delay: Cassini 200 μs measurement, Verlinde time dilation, entropic screens'
+  - 'Bewusstseins-Integration: Critical Flicker Fusion ~60 Hz, Phi Phenomenon ~80 ms, Motion Parallax IPD=6.5 cm'
+  - 'LLM Scaling Laws: GPT-2/3/4 energy/token, Llama 7B/70B efficiency, Landauer limit kT ln(2)≈3×10⁻²¹ J at 300K'
   - docs/references_v6.bib BibTeX-Datenbank anlegen mit allen Quellen
   - Literature Review Sektion in V6-Theorie-Dokument integrieren
   - Für jede Hypothese mind. 3-5 Papers mit direktem Bezug finden
@@ -131,7 +117,9 @@ tasks:
   title: V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln
   status: completed
   completed_at: '2025-12-02'
-  completeness: V6_Literature_Review.md vollständig erweitert (Section 7.3 Neuromorphic Hardware), 6 neue BibTeX-Einträge (Loihi, TrueNorth, SpiNNaker, BrainScaleS, DishBrain), Finalize-Links gesetzt, Querverweise zu v6r-papers-research/v6r-zenodo-prep ergänzt.
+  completeness: V6_Literature_Review.md vollständig erweitert (Section 7.3 Neuromorphic Hardware), 6 neue BibTeX-Einträge
+    (Loihi, TrueNorth, SpiNNaker, BrainScaleS, DishBrain), Finalize-Links gesetzt, Querverweise zu v6r-papers-research/v6r-zenodo-prep
+    ergänzt.
   scope:
   - research
   - documentation
@@ -142,14 +130,11 @@ tasks:
     beta_estimate: 5.2
     zeta_risk: neutralisiert – Referenz-Integrität vollständig gesichert
   next_steps:
-  - Kernaussagen und Quellen aus V6_Literature_Review.md in strukturierte Bulletpoints
-    überführen (UTAC, Entropie, Zeitscheiben, v_RIG)
-  - BibTeX-Einträge in docs/references_v6.bib oder Platzhalter-Liste aufnehmen und
-    mit V6ToDorefresh.* referenzieren
-  - Querverweise auf laufende Tasks (v6r-papers-research, v6r-zenodo-prep) ergänzen
-    und R/Θ/β/ζ-Blöcke anpassen
-  - Chronik/Finalize-Link setzen, damit FIT-Sequenz (ToDorefresh → Finalize) nachvollziehbar
-    bleibt
+  - Kernaussagen und Quellen aus V6_Literature_Review.md in strukturierte Bulletpoints überführen (UTAC, Entropie, Zeitscheiben,
+    v_RIG)
+  - BibTeX-Einträge in docs/references_v6.bib oder Platzhalter-Liste aufnehmen und mit V6ToDorefresh.* referenzieren
+  - Querverweise auf laufende Tasks (v6r-papers-research, v6r-zenodo-prep) ergänzen und R/Θ/β/ζ-Blöcke anpassen
+  - Chronik/Finalize-Link setzen, damit FIT-Sequenz (ToDorefresh → Finalize) nachvollziehbar bleibt
   references:
   - path: releases/V6-Plans_etc/V6_Literature_Review.md
     lines:
@@ -165,27 +150,24 @@ tasks:
   title: Entropische Gravitation & Kubus-Kopplung in V6-Theorie/BibTeX verankern
   status: completed
   completed_at: '2025-12-24'
-  completeness: Gemini-DeepResearch-Text liegt vor; Integration in Review/BibTeX/Chronik
-    fehlt.
+  completeness: Gemini-DeepResearch-Text liegt vor; Integration in Review/BibTeX/Chronik fehlt.
   scope:
   - research
   - documentation
   - theory
   logistic_profile:
     R_target: Entropische Gravitation im Review + BibTeX gespiegelt
-    Theta_condition: Holographischer Kubus/∇S→F=T∇S in V6_Literature_Review.md +
-      DEEP_RESEARCH_Unified_Framework.md dokumentiert und in docs/references_v6.bib
-      verlinkt
+    Theta_condition: Holographischer Kubus/∇S→F=T∇S in V6_Literature_Review.md + DEEP_RESEARCH_Unified_Framework.md dokumentiert
+      und in docs/references_v6.bib verlinkt
     beta_estimate: 5.4
     zeta_risk: moderat – Quellenkopplung fehlt
   next_steps:
-  - Kernaussagen aus Zusatz_bitte_integrieren!.txt extrahieren (Holographisches
-    Prinzip, Entropiegradient, Bekenstein-Hawking) und als Bullet-Kerne in V6_Literature_Review.md
-    ergänzen
-  - BibTeX-Platzhalter für Verlinde 2010 + Holographie/Bekenstein-Hawking in docs/references_v6.bib
-    anlegen und in Review-Dokument referenzieren
-  - DEEP_RESEARCH_Unified_Framework.md um UTAC-Kubus/Kanten-Verschneidung erweitern
-    und Chronik (chronik_v6_release.*) auf neuen Bridge-Task verweisen
+  - Kernaussagen aus Zusatz_bitte_integrieren!.txt extrahieren (Holographisches Prinzip, Entropiegradient, Bekenstein-Hawking)
+    und als Bullet-Kerne in V6_Literature_Review.md ergänzen
+  - BibTeX-Platzhalter für Verlinde 2010 + Holographie/Bekenstein-Hawking in docs/references_v6.bib anlegen und in Review-Dokument
+    referenzieren
+  - DEEP_RESEARCH_Unified_Framework.md um UTAC-Kubus/Kanten-Verschneidung erweitern und Chronik (chronik_v6_release.*) auf
+    neuen Bridge-Task verweisen
   references:
   - path: releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt
     lines:
@@ -204,22 +186,19 @@ tasks:
 - id: v6r-vrig-simulation
   title: v_RIG Reality-Renderer Simulation implementieren
   status: open
-  completeness: Vollständiger Blueprint in GrundPrinzip Simulation.txt; Implementierung
-    fehlt.
+  completeness: Vollständiger Blueprint in GrundPrinzip Simulation.txt; Implementierung fehlt.
   scope:
   - simulation
   - validation
   - theory
   logistic_profile:
     R_target: Beweis dass N≈222 maximale 3D-Kohärenz zeigt
-    Theta_condition: simulation/v_rig_renderer.py operational + Kohärenz-Peak bei
-      α⁻¹·Φ nachgewiesen
+    Theta_condition: simulation/v_rig_renderer.py operational + Kohärenz-Peak bei α⁻¹·Φ nachgewiesen
     beta_estimate: 5.8
     zeta_risk: moderate - falscher Buffer würde Hypothese falsifizieren
   next_steps:
   - simulation/v_rig_renderer.py mit VRigRealityRenderer Klasse erstellen
-  - generate_holographic_stream() - 2D-Slices (100×100 px) mit Interferenzmustern
-    erzeugen
+  - generate_holographic_stream() - 2D-Slices (100×100 px) mit Interferenzmustern erzeugen
   - integrate_buffer(N) - Ring-Buffer für N Slices mit Φ-Parallaxe-Versatz
   - measure_coherence() - 3D-Struktur-Entropie berechnen (niedrig = hohe Kohärenz)
   - scan_window_sizes() - N von 1 bis 500 durchlaufen, Kohärenz plotten
@@ -237,16 +216,14 @@ tasks:
 - id: v6r-oipk-tesseract
   title: OIPK-Tesseract Dual-Flow Simulation implementieren
   status: open
-  completeness: OIPK-Modell vollständig hergeleitet in GrundPrinzip + Zusatz; Code
-    fehlt.
+  completeness: OIPK-Modell vollständig hergeleitet in GrundPrinzip + Zusatz; Code fehlt.
   scope:
   - simulation
   - visualization
   - physics
   logistic_profile:
     R_target: Asynchrone Dual-Flow Demo (Implosion ⊥ Photonen)
-    Theta_condition: simulation/tesseract_timeslices.py + Animation zeigt entkoppelte
-      Flows
+    Theta_condition: simulation/tesseract_timeslices.py + Animation zeigt entkoppelte Flows
     beta_estimate: 6.4
     zeta_risk: hoch bei Synchronisationsproblemen zwischen τ und t
   next_steps:
@@ -279,32 +256,24 @@ tasks:
 - id: v6r-formulas-collection
   title: Zentrale Formel-Sammlung für alle V6-Kernformeln
   status: open
-  completeness: Formeln verstreut in Theorie.txt, Zusatz, GrundPrinzip; zentrale Referenz
-    fehlt.
+  completeness: Formeln verstreut in Theorie.txt, Zusatz, GrundPrinzip; zentrale Referenz fehlt.
   scope:
   - documentation
   - theory
   logistic_profile:
     R_target: Vollständige Formelreferenz mit Herleitungen
-    Theta_condition: docs/v6_formulas.md mit allen Formeln + Quellen + Einheiten +
-      Gültigkeitsbereichen
+    Theta_condition: docs/v6_formulas.md mit allen Formeln + Quellen + Einheiten + Gültigkeitsbereichen
     beta_estimate: 4.1
     zeta_risk: niedrig
   next_steps:
-  - v_RIG = c/(α⁻¹·Φ) = 299792 km/s / (137.036 × 1.618) ≈ 1351.8 km/s - Regime Integration
-    Gradient
+  - v_RIG = c/(α⁻¹·Φ) = 299792 km/s / (137.036 × 1.618) ≈ 1351.8 km/s - Regime Integration Gradient
   - τ* = (1/β)·ln(|R-Θ|/ε) - Safety-Delay-Formel für Type-VI Implosion
-  - ψ_genesis(r,θ,φ,t) = N·exp(-α⁻¹·r²/ℓ²_P)·Y_tetra(θ,φ)·exp(-iΦ·E_P·t/ℏ) - Entropische
-    Wellenfunktion
-  - V_pyr(R,Θ) = V_0·[1-tanh(β(R-Θ))]·cos⁴(3arctan(√2)) - Pyramidenpotential mit tetraedrischem
-    Faktor
-  - 'CREP-Indizes: Cohärenz C=1-σ(β)/⟨β⟩, Resonanz R=Δψ/Δt, Emergenz E=∂S/∂t, Persistenz
-    P=τ*/τ_system'
-  - 'Δt_Q Pareto-Front: Multi-Objective (Gabor Uncertainty, Metabolic Cost, Survival
-    Window) → 100-300ms Kniepunkt'
+  - ψ_genesis(r,θ,φ,t) = N·exp(-α⁻¹·r²/ℓ²_P)·Y_tetra(θ,φ)·exp(-iΦ·E_P·t/ℏ) - Entropische Wellenfunktion
+  - V_pyr(R,Θ) = V_0·[1-tanh(β(R-Θ))]·cos⁴(3arctan(√2)) - Pyramidenpotential mit tetraedrischem Faktor
+  - 'CREP-Indizes: Cohärenz C=1-σ(β)/⟨β⟩, Resonanz R=Δψ/Δt, Emergenz E=∂S/∂t, Persistenz P=τ*/τ_system'
+  - 'Δt_Q Pareto-Front: Multi-Objective (Gabor Uncertainty, Metabolic Cost, Survival Window) → 100-300ms Kniepunkt'
   - 'Slice Fusion Frequency: SFF = c/(2·IPD·tan(θ/2)) mit IPD≈6.5 cm, Metabolismus-Korrelation'
-  - '12-fold Modulation: A₁₂ = ⟨T(θ,φ)·Y₁₂(θ,φ)⟩ für CMB-Test (Falsifikation wenn
-    A₁₂<10⁻⁵)'
+  - '12-fold Modulation: A₁₂ = ⟨T(θ,φ)·Y₁₂(θ,φ)⟩ für CMB-Test (Falsifikation wenn A₁₂<10⁻⁵)'
   - 'Lorentz-Verletzung: ξ = (t_observed - t_GR)/t_GR aus Photonen-Ankunftszeiten'
   - Jede Formel mit vollständiger Herleitung, Quellen, Dimensionsanalyse
   - LaTeX-Formatierung für Paper-Integration
@@ -333,8 +302,7 @@ tasks:
   - documentation
   logistic_profile:
     R_target: Experimentelles Protokoll für Citizen Science
-    Theta_condition: models/psychophysics.py + experiments/citizen_science_stereo_vision.md
-      + Paper-Update
+    Theta_condition: models/psychophysics.py + experiments/citizen_science_stereo_vision.md + Paper-Update
     beta_estimate: 4.3
     zeta_risk: niedrig - rein phänomenologisches Experiment
   next_steps:
@@ -344,8 +312,7 @@ tasks:
   - experiments/citizen_science_stereo_vision.md Protokoll erstellen
   - 'Experiment 1: Linkes/Rechtes Auge abwechselnd schließen, "Sprung" wahrnehmen'
   - 'Experiment 2: Objekt-Distanz variieren (10 cm bis 10 m), SFF-Änderung messen'
-  - 'Experiment 3: Metabolismus variieren (Sport, Fasten, Koffein), SFF-Korrelation
-    testen'
+  - 'Experiment 3: Metabolismus variieren (Sport, Fasten, Koffein), SFF-Korrelation testen'
   - paper_v_rig_consciousness.md Sektion 5.5 "Stereo-Vision Slice Fusion" erweitern
   - Vergleich mit Motion Parallax und Δt_Q-Zeitfenster
   - IPD=6.5 cm als biologische Konstante für Slice-Abstand interpretieren
@@ -363,16 +330,14 @@ tasks:
 - id: v6r-utac-crit
   title: UTAC-Crit Benchmark (Antwort auf "AI fails Physics" CritPt)
   status: open
-  completeness: Konzept vollständig in FinalyzeVorschlägeChatGPT5.1Agent; Implementation
-    fehlt.
+  completeness: Konzept vollständig in FinalyzeVorschlägeChatGPT5.1Agent; Implementation fehlt.
   scope:
   - benchmarks
   - validation
   - outreach
   logistic_profile:
     R_target: 5-10 komplexe Physik-Aufgaben auf PhD-Level mit UTAC-Framework
-    Theta_condition: benchmarks/utac_crit/ mit Tasks + Checkpoints + CREP-Bewertung
-      + MOR-FIT Workflow
+    Theta_condition: benchmarks/utac_crit/ mit Tasks + Checkpoints + CREP-Bewertung + MOR-FIT Workflow
     beta_estimate: 6.1
     zeta_risk: moderate - schlecht definierte Bewertung würde Benchmark wertlos machen
   next_steps:
@@ -382,8 +347,7 @@ tasks:
   - 'Task 3: Interstellare Reise als Information (ER=EPR + Holographisches Prinzip)'
   - 'Task 4: Placebo/Nocebo M[ψ,φ]=λψφⁿ mit Stabilitätsbedingungen'
   - 'Task 5: Klima-Kaskade & Reichtums-Asymmetrie (0.1% Peak → β-Governance)'
-  - Jede Task in Checkpoints (C1-Annahmen, C2-Gleichungen, C3-Szenarien, C4-Falsifikation,
-    C5-CREP)
+  - Jede Task in Checkpoints (C1-Annahmen, C2-Gleichungen, C3-Szenarien, C4-Falsifikation, C5-CREP)
   - MOR-FIT-Sigillin Workflow dokumentieren (Beweis dass "Bedienung > Modell")
   - CREP-Bewertungsraster für jede Task (Coherence/Resonance/Emergence/Persistence)
   - Vergleich mit CritPt Ergebnissen (4-10% solo vs. MOR-FIT orchestriert)
@@ -404,8 +368,7 @@ tasks:
   - cosmology
   logistic_profile:
     R_target: Falsifizierbarer Test der 12-fold Hypothese
-    Theta_condition: scripts/analyze_cmb_12fold.py + Vergleich mit Planck-Daten +
-      Null-Hypothese
+    Theta_condition: scripts/analyze_cmb_12fold.py + Vergleich mit Planck-Daten + Null-Hypothese
     beta_estimate: 6.8
     zeta_risk: sehr hoch - Nicht-Detektion würde OIPK-Modell falsifizieren
   next_steps:
@@ -428,16 +391,14 @@ tasks:
 - id: v6r-wavefunction-pipeline
   title: Ψ-Wellenfunktions-Pipeline in Genesis/Simulator integrieren
   status: open
-  completeness: Konzept in V6_Wellenfunktions_Integrationsplan.md; Implementation
-    fehlt.
+  completeness: Konzept in V6_Wellenfunktions_Integrationsplan.md; Implementation fehlt.
   scope:
   - theory
   - simulation
   - visualization
   logistic_profile:
     R_target: Ψ-gestützte UTAC-Pipeline operational
-    Theta_condition: pipelines/wavefunction/psi_field.py + genesis_cube.py Integration
-      + Simulator-Output
+    Theta_condition: pipelines/wavefunction/psi_field.py + genesis_cube.py Integration + Simulator-Output
     beta_estimate: 5.2
     zeta_risk: moderate bei Inkonsistenz mit UTAC-Framework
   next_steps:
@@ -547,27 +508,21 @@ tasks:
 - id: v6r-tau-star-guardrails
   title: τ*-Safety-Delay + CREP-Governance für Type-VI-Szenarien verankern
   status: open
-  completeness: FIT-Stub vorhanden; τ*-Puffer, RK4-Garantie und CREP-Protokolle noch
-    nicht in Simulator/Analysis/CI verankert.
+  completeness: FIT-Stub vorhanden; τ*-Puffer, RK4-Garantie und CREP-Protokolle noch nicht in Simulator/Analysis/CI verankert.
   scope:
   - simulation
   - validation
   - governance
   logistic_profile:
     R_target: τ*-Default + RK4-Garantie in Type-VI-Simulationen und Analysen
-    Theta_condition: Guardrail-Snippets in Simulator/Analysis wiederverwendet + CREP/Audit-Logs
-      aktiv
+    Theta_condition: Guardrail-Snippets in Simulator/Analysis wiederverwendet + CREP/Audit-Logs aktiv
     beta_estimate: 5.0
     zeta_risk: hoch bei ζ<0 ohne τ*-Puffer
   next_steps:
-  - τ*-Helper + CREP-Logging aus activation_gaps_tau_star.md in analysis/beta_meta_regression_v2.py
-    und Simulator-RK4 integrieren
-  - Makefile/CI-Validator skizzieren, der τ* Default (=0.1·|Θ−R|) und CREP-Protokolle
-    prüft (type6_crep_tau_star_checklist.*)
-  - 'Telemetrie erweitern: β-Drift (>10%) + CREP ≥0.7 in Metrics/Audit spiegeln (z.B.
-    metrics/beta_evolution.csv, Logs)'
-  - 'Governance-Kopplung: Checklist-Referenzen in POLICY/ETHICS-Indizes ergänzen und
-    Type-VI-Provenienzblock vor Merge erzwingen'
+  - τ*-Helper + CREP-Logging aus activation_gaps_tau_star.md in analysis/beta_meta_regression_v2.py und Simulator-RK4 integrieren
+  - Makefile/CI-Validator skizzieren, der τ* Default (=0.1·|Θ−R|) und CREP-Protokolle prüft (type6_crep_tau_star_checklist.*)
+  - 'Telemetrie erweitern: β-Drift (>10%) + CREP ≥0.7 in Metrics/Audit spiegeln (z.B. metrics/beta_evolution.csv, Logs)'
+  - 'Governance-Kopplung: Checklist-Referenzen in POLICY/ETHICS-Indizes ergänzen und Type-VI-Provenienzblock vor Merge erzwingen'
   references:
   - path: releases/V6-Plans_etc/activation_gaps_tau_star.md
     lines:
@@ -582,27 +537,24 @@ tasks:
 - id: v6r-psi-integration-plan
   title: Ψ-Integrationsplan aus dem Wellenfunktions-Integrationsdokument operationalisieren
   status: open
-  completeness: Wellenfunktionsplan dokumentiert; Implementierung in Pipeline/Simulator
-    mit RK4+τ* fehlt.
+  completeness: Wellenfunktionsplan dokumentiert; Implementierung in Pipeline/Simulator mit RK4+τ* fehlt.
   scope:
   - theory
   - simulation
   - documentation
   logistic_profile:
     R_target: Ψ-Feldgleichung in Genesis-Cube und Simulator verdrahtet mit Dual-Flow-Visualisierung
-    Theta_condition: psi_field.py + genesis_cube.py + tesseract_timeslices.py nutzen
-      RK4 mit τ*=0.1·|Θ−R| und liefern exportierbare Animationsartefakte
+    Theta_condition: psi_field.py + genesis_cube.py + tesseract_timeslices.py nutzen RK4 mit τ*=0.1·|Θ−R| und liefern exportierbare
+      Animationsartefakte
     beta_estimate: 5.9
     zeta_risk: moderat bei ζ<0 ohne τ*-Buffer
   next_steps:
-  - pipelines/wavefunction/psi_field.py um ψ_genesis, V_pyr und ψ_waste ergänzen (Parameter-Block
-    für α⁻¹, Φ, τ* definieren)
-  - simulation/genesis_cube.py auf RK4-Evolution mit τ*=0.1·|Θ−R| für ζ<0 setzen und
-    ψ-Ausgabe an bestehende Slices koppeln
-  - simulation/tesseract_timeslices.py Dual-Flow-Schnittstelle (implosiver Block vs.
-    Photonenfluss) hinzufügen, Split-Screen-Animation vorbereiten
-  - 'docs/v6_wavefunction_theory.md: Herleitung + Nullmodelle dokumentieren, Verweis
-    auf Integrationsplan und Zusatznotizen ergänzen'
+  - pipelines/wavefunction/psi_field.py um ψ_genesis, V_pyr und ψ_waste ergänzen (Parameter-Block für α⁻¹, Φ, τ* definieren)
+  - simulation/genesis_cube.py auf RK4-Evolution mit τ*=0.1·|Θ−R| für ζ<0 setzen und ψ-Ausgabe an bestehende Slices koppeln
+  - simulation/tesseract_timeslices.py Dual-Flow-Schnittstelle (implosiver Block vs. Photonenfluss) hinzufügen, Split-Screen-Animation
+    vorbereiten
+  - 'docs/v6_wavefunction_theory.md: Herleitung + Nullmodelle dokumentieren, Verweis auf Integrationsplan und Zusatznotizen
+    ergänzen'
   references:
   - path: releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md
     lines:
@@ -617,16 +569,14 @@ tasks:
 - id: v6r-type6-governance
   title: Type-VI CREP/τ*-Governance in Policies und CI verankern
   status: open
-  completeness: Checkliste existiert, aber POLICY/ETHICS und CI-Hooks spiegeln CREP/τ*
-    noch nicht.
+  completeness: Checkliste existiert, aber POLICY/ETHICS und CI-Hooks spiegeln CREP/τ* noch nicht.
   scope:
   - governance
   - compliance
   - simulation
   logistic_profile:
     R_target: Type-VI Checkliste als Merge-Gate aktiv
-    Theta_condition: CREP/τ*-Referenzen in POLICY/ETHICS + CI-Guard für τ*=0.1·|Θ−R|
-      gesetzt
+    Theta_condition: CREP/τ*-Referenzen in POLICY/ETHICS + CI-Guard für τ*=0.1·|Θ−R| gesetzt
     beta_estimate: 4.6
     zeta_risk: neutralisiert bei erfüllter Checkliste
   next_steps:
@@ -647,8 +597,7 @@ tasks:
 - id: v6r-zenodo-prep
   title: Zenodo-Upload-Readiness in V6-Scope vorbereiten
   status: open
-  completeness: Checkliste vorhanden, aber Tests/Linting/Provenienz nicht als Release-Gate
-    dokumentiert.
+  completeness: Checkliste vorhanden, aber Tests/Linting/Provenienz nicht als Release-Gate dokumentiert.
   scope:
   - compliance
   - testing
@@ -660,13 +609,10 @@ tasks:
     beta_estimate: 5.5
     zeta_risk: hoch ohne Release-Gates
   next_steps:
-  - Kern-Testlauf gemäß Checkliste anstoßen (pytest targets) und Logs im Finalize-Ordner
-    sichern
-  - Coverage-Lauf pytest --cov=pipelines/wavefunction --cov-report=html dokumentieren
-    (≥80%)
+  - Kern-Testlauf gemäß Checkliste anstoßen (pytest targets) und Logs im Finalize-Ordner sichern
+  - Coverage-Lauf pytest --cov=pipelines/wavefunction --cov-report=html dokumentieren (≥80%)
   - Linting/Typing (flake8, black --check, mypy) ausführen und Statusblock ergänzen
-  - Provenienz/Ethik-Verweise (ETHICS.md, POLICY.md) in Zenodo_Upload_Checklist.md
-    aktualisieren
+  - Provenienz/Ethik-Verweise (ETHICS.md, POLICY.md) in Zenodo_Upload_Checklist.md aktualisieren
   references:
   - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
     lines:
@@ -677,29 +623,25 @@ tasks:
 - id: v6r-finalize-bridge
   title: 'FIT-Brücke: ToDorefresh → Finalize-Aufgaben spiegeln'
   status: open
-  completeness: FIT-Reihenfolge notiert; erster Mapping-Entwurf mit Finalize-Trilayer
-    angelegt, Chronik-Link noch offen.
+  completeness: FIT-Reihenfolge notiert; erster Mapping-Entwurf mit Finalize-Trilayer angelegt, Chronik-Link noch offen.
   scope:
   - governance
   - organization
   - documentation
   logistic_profile:
     R_target: Synchronisationspfad ToDorefresh → Finalize aktiv
-    Theta_condition: FIT-Microsteps (τ*-Guardrails, Zenodo-Prep, Literature Review)
-      in beiden Trilayern verlinkt und Chronik-reflektiert
+    Theta_condition: FIT-Microsteps (τ*-Guardrails, Zenodo-Prep, Literature Review) in beiden Trilayern verlinkt und Chronik-reflektiert
     beta_estimate: 4.5
     zeta_risk: niedrig – Governance-Drift möglich
   next_steps:
-  - Prioritätenliste mit Finalize_TODO.* abgleichen und fehlende Tasks (z.B. τ*-Guardrails,
-    Zenodo-Prep-Follow-up) als Finalize-Einträge markieren
-  - Querverweise in beiden Trilayern ergänzen (IDs, Referenzen, R/Θ/β/ζ) und in Chronik/Delta-Updates
-    dokumentieren
-  - Prüfen, ob neue Artefakte in V6-Plans_etc (activation_gaps_tau_star.md, type6_crep_tau_star_checklist.*)
-    bereits im Finalize-Layer verankert sind; falls nicht, FIT-Microsteps aufnehmen
-  - Neues Finalize-Item finalize-wavefunction-pipeline mit v6r-wavefunction-pipeline
-    spiegeln und Chronik-Link für FIT-Sequenz setzen
-  - Mapping-Tabelle ToDorefresh ↔ Finalize (IDs/Prioritäten) pflegen und in Chronik-Update
-    verlinken (erster Entwurf erstellt)
+  - Prioritätenliste mit Finalize_TODO.* abgleichen und fehlende Tasks (z.B. τ*-Guardrails, Zenodo-Prep-Follow-up) als Finalize-Einträge
+    markieren
+  - Querverweise in beiden Trilayern ergänzen (IDs, Referenzen, R/Θ/β/ζ) und in Chronik/Delta-Updates dokumentieren
+  - Prüfen, ob neue Artefakte in V6-Plans_etc (activation_gaps_tau_star.md, type6_crep_tau_star_checklist.*) bereits im Finalize-Layer
+    verankert sind; falls nicht, FIT-Microsteps aufnehmen
+  - Neues Finalize-Item finalize-wavefunction-pipeline mit v6r-wavefunction-pipeline spiegeln und Chronik-Link für FIT-Sequenz
+    setzen
+  - Mapping-Tabelle ToDorefresh ↔ Finalize (IDs/Prioritäten) pflegen und in Chronik-Update verlinken (erster Entwurf erstellt)
   references:
   - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
     lines:
@@ -721,26 +663,23 @@ tasks:
   sprint_focus: FIT-Reihenfolge sichern & Trilayer-Parität
 - id: v6r-crep-guard-ci
   title: CREP/τ*-Guard-Skript + Logging in CI/Pre-Commit verankern
-  status: open
-  completeness: type6_CREP/τ*-Checkliste vorhanden; Guard-Skript und CI/Chronik-Hooks
-    fehlen.
+  status: in_progress
+  completeness: type6_CREP/τ*-Checkliste vorhanden; Guard-Skript loggt jetzt Audit-Trail, CI/Chronik-Hooks fehlen noch.
   scope:
   - governance
   - automation
   - compliance
   logistic_profile:
     R_target: type6_CREP/τ*-Checkliste als automatischer Guard aktiv
-    Theta_condition: tools/crep_guard.py prüft τ*-Default + CREP ≥0.7 Reviewer-Pflicht,
-      Logs in logs/type_vi_detections.jsonl
+    Theta_condition: tools/crep_guard.py prüft τ*-Default + CREP ≥0.7 Reviewer-Pflicht, Logs in logs/type_vi_detections.jsonl
     beta_estimate: 4.7
     zeta_risk: moderat – Merge-Gate fehlt
   next_steps:
-  - Guard-Prototyp tools/crep_guard.py --threshold 0.7 --tau-default 0.1 basierend
-    auf activation_gaps_tau_star.md + type6_crep_tau_star_checklist.* bauen
-  - Hook in make validate-trilayer / pre-commit integrieren; Fail wenn τ*-Default
-    fehlt oder CREP ≥0.7 ohne Reviewer-Slot; Logs nach logs/type_vi_detections.jsonl
-    schreiben
-  - Chronik/Chronik_v6_release.md + FIT-Mapping auf finalize-crep-guard-ci ergänzen
+  - Guard-Prototyp in tools/crep_guard.py um Audit-Log-Writer erweitert (--log-detection, auto Eskalation 0–3, Reviewer/Notes,
+    Default-Pfad logs/type_vi_detections.jsonl).
+  - Hook in make validate-trilayer / pre-commit integrieren; Fail wenn τ*-Default fehlt oder CREP ≥0.7 ohne Reviewer-Slot;
+    Logs nach logs/type_vi_detections.jsonl schreiben.
+  - Chronik/Chronik_v6_release.md + FIT-Mapping auf finalize-crep-guard-ci ergänzen.
   references:
   - path: releases/V6-Plans_etc/activation_gaps_tau_star.md
     lines:
@@ -756,11 +695,11 @@ tasks:
     - 5
   priority: 17
   sprint_focus: CREP/τ*-Merge-Gate + Audit-Log aktivieren
+  updated_at: '2025-12-28T10:00:00Z'
 - id: v6r-zenodo-evidence
   title: Zenodo-Checkliste mit Test-/Lint-Belegen und Provenienz-Logs füllen
   status: open
-  completeness: Zenodo_Upload_Checklist.md auf PRE-RELEASE; Test-/Lint-Belege und
-    Provenienzverweise noch nicht abgelegt.
+  completeness: Zenodo_Upload_Checklist.md auf PRE-RELEASE; Test-/Lint-Belege und Provenienzverweise fehlen noch.
   scope:
   - compliance
   - testing
@@ -771,12 +710,10 @@ tasks:
     beta_estimate: 5.6
     zeta_risk: moderat – DOI-Release blockiert ohne Nachweise
   next_steps:
-  - Checklisten-Status (Abschnitt I–III) gegen reale Test-/Lint-Läufe prüfen und fehlende
-    Kästchen samt Logpfaden markieren
-  - Letzte Pytest-/Coverage-/Lint-/Mypy-Läufe als Artefakte (z.B. output/zenodo_checks/)
-    verlinken, damit Finalize/Zenodo-Track Belege referenzieren kann
-  - Provenienz- und Ethik-Verweise (ETHICS.md, POLICY.md) aktualisieren und in Finalize-ToDo
-    finalize-zenodo-evidence spiegeln
+  - Checklisten-Status (Abschnitt I–III) gegen reale Test-/Lint-Läufe prüfen und fehlende Kästchen samt Logpfaden markieren
+  - Letzte Pytest-/Coverage-/Lint-/Mypy-Läufe als Artefakte (z.B. output/zenodo_checks/) verlinken, damit Finalize/Zenodo-Track
+    Belege referenzieren kann
+  - Provenienz- und Ethik-Verweise (ETHICS.md, POLICY.md) aktualisieren und in Finalize-ToDo finalize-zenodo-evidence spiegeln
   references:
   - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
     lines:
@@ -790,9 +727,9 @@ tasks:
   sprint_focus: Belegsammlung für Zenodo-DOI + FIT-Handoff
 - id: v6r-crep-audit-log
   title: Type-VI Audit-Log + Reviewer-Routing initialisieren (logs/type_vi_detections.jsonl)
-  status: open
-  completeness: Type-VI Checklisten vorhanden; Audit-Log-Schema und Reviewer-Routing noch
-    nicht im Repo verankert.
+  status: in_progress
+  completeness: Type-VI Checklisten vorhanden; Audit-Log-Schema liegt als JSONL-Starter vor, Reviewer-Routing/Chronik-Link
+    fehlt noch.
   scope:
   - governance
   - automation
@@ -803,12 +740,12 @@ tasks:
     beta_estimate: 4.8
     zeta_risk: moderat – Escalation-Trace fehlt
   next_steps:
-  - Log-Schema definieren (timestamp, task_id, crep_value, tau_star, escalation_level,
-    reviewer, notes) und Stub in logs/type_vi_detections.jsonl ablegen
-  - tools/crep_guard.py + FIT-Hooks auf Log-Schreiben trimmen (Level 1–3, τ*-Default
-    0.1·|Θ−R|) und Mapping zu finalize-crep-audit-log dokumentieren
-  - Chronik/FIT-Referenz ergänzen: Audit-Trail-Link in Chronik/chronik_v6_release.md +
-    Reviewer-Routing aus MAINTAINERS.md hinterlegen
+  - Log-Schema (timestamp, task_id, crep_value, tau_star, escalation_level, reviewer, notes) als Stub in logs/type_vi_detections.jsonl
+    ablegen. ✅
+  - tools/crep_guard.py + FIT-Hooks auf Log-Schreiben trimmen (Level 1–3, τ*-Default 0.1·|Θ−R|) und Mapping zu finalize-crep-audit-log
+    dokumentieren (CLI `--log-detection` aktiv).
+  - 'Chronik/FIT-Referenz ergänzen: Audit-Trail-Link in Chronik/chronik_v6_release.md + Reviewer-Routing aus MAINTAINERS.md
+    hinterlegen.'
   references:
   - path: releases/V6-Plans_etc/type6_crep_tau_star_checklist.md
     lines:
@@ -820,6 +757,7 @@ tasks:
     - 5
   priority: 19
   sprint_focus: Escalation-Trace & Reviewer-Gate aktivieren
+  updated_at: '2025-12-28T10:00:00Z'
 fit_mapping:
 - todo_id: v6r-finalize-bridge
   finalize_id: finalize-fit-sync
@@ -852,7 +790,7 @@ fit_mapping:
 - todo_id: v6r-crep-guard-ci
   finalize_id: finalize-crep-guard-ci
   bridge_focus: CREP/τ*-CI-Guard
-  status: planned
+  status: log-writer-active
 - todo_id: v6r-zenodo-evidence
   finalize_id: finalize-zenodo-evidence
   bridge_focus: Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links
@@ -860,29 +798,36 @@ fit_mapping:
 - todo_id: v6r-crep-audit-log
   finalize_id: finalize-crep-audit-log
   bridge_focus: Type-VI Audit-Log + Reviewer-Routing
-  status: new
+  status: log-starter-ready
 delta_updates:
+- date: '2025-12-28'
+  label: v6-refresh-crep-audit-log
+  highlights:
+  - tools/crep_guard.py mit Audit-Log-Writer (--log-detection, Eskalation 0–3, Reviewer/Notes, Default logs/type_vi_detections.jsonl)
+    erweitert.
+  - logs/type_vi_detections.jsonl als JSONL-Starter mit Schema (timestamp, task_id, crep_value, tau_star, escalation_level,
+    reviewer, notes) hinzugefügt.
+  - Tasks v6r-crep-guard-ci und v6r-crep-audit-log auf in_progress gesetzt; CI/Chronik-Hooks stehen weiterhin aus.
 - date: '2025-12-27'
   label: v6-refresh-zenodo-logs
   highlights:
-  - Neue Tasks v6r-zenodo-evidence und v6r-crep-audit-log angelegt, um Zenodo-Checkliste und Type-VI-Audit-Trace als FIT-Microsteps abzubilden (Promt_für_Agenten.txt Vorgabe).
-  - FIT-Mapping um Zenodo-/Audit-Log-Handoffs zum Finalize-Layer erweitert; Reviewer-Routing + Log-Schema als nächste Schritte markiert.
+  - Neue Tasks v6r-zenodo-evidence und v6r-crep-audit-log ergänzt, um Zenodo-Checkliste und Type-VI-Audit-Trace als FIT-Microsteps
+    abzubilden (Promt_für_Agenten.txt).
+  - FIT-Mapping um Zenodo-/Audit-Log-Handoffs zum Finalize-Layer erweitert; Reviewer-Routing + Log-Schema als nächste Schritte
+    markiert.
   - Updatedatum auf 2025-12-27 gesetzt, um neuen Compliance-Fokus zu spiegeln.
 - date: '2025-12-24'
   label: v6-refresh-entropic-gravity
   highlights:
-  - Task v6r-entropic-gravity-bridge ergänzt, um Gemini-DeepResearch-Entropie/Kubus-Argument
-    in Review/BibTeX zu spiegeln
+  - Neuer Task v6r-entropic-gravity-bridge angelegt, um Gemini-DeepResearch-Entropie/Kubus-Argument in Review/BibTeX zu spiegeln
   - FIT-Mapping um finalize-entropic-gravity-bridge erweitert; Chronik-Hinweis geplant
   - Sprint-Fokus auf holographische Kubus-Kopplung + BibTeX-Platzhalter gesetzt
 - date: '2025-12-23'
   label: v6-refresh-crep-guard
   highlights:
   - Task v6r-crep-guard-ci ergänzt, um type6_CREP/τ*-Checkliste als CI-Guard abzubilden
-  - FIT-Mapping um finalize-crep-guard-ci erweitert; Chronik/Log-Anker als Folgearbeit
-    festgelegt
-  - Guard-Prototyp für tools/crep_guard.py + logs/type_vi_detections.jsonl als nächste
-    Schritte beschrieben
+  - FIT-Mapping um finalize-crep-guard-ci erweitert; Chronik/Log-Anker als Folgearbeit festgelegt
+  - Guard-Prototyp für tools/crep_guard.py + logs/type_vi_detections.jsonl als nächste Schritte beschrieben
 - date: '2025-12-22'
   label: v6-refresh-fit-map
   highlights:
@@ -892,32 +837,25 @@ delta_updates:
 - date: '2025-12-20'
   label: v6-refresh-fit-handoff
   highlights:
-  - Handoff-Mapping zwischen v6r-finalize-bridge und finalize-fit-sync als gemeinsamen
-    FIT-Schritt ergänzt
-  - τ*- und Zenodo-Microsteps in beiden Trilayern gespiegelt und mit Chronik-Update
-    zur Übergabe markiert
-  - Prioritätenliste mit Finalize-Reihenfolge abgeglichen und Mapping-Tabelle als
-    nächsten Chronik-Hook notiert
+  - Handoff-Mapping zwischen v6r-finalize-bridge und finalize-fit-sync als gemeinsamen FIT-Schritt ergänzt
+  - τ*- und Zenodo-Microsteps in beiden Trilayern gespiegelt und mit Chronik-Update zur Übergabe markiert
+  - Prioritätenliste mit Finalize-Reihenfolge abgeglichen und Mapping-Tabelle als nächsten Chronik-Hook notiert
 - date: '2025-12-18'
   label: v6-refresh-wavefunction-bridge
   highlights:
-  - Neues Finalize-Item finalize-wavefunction-pipeline ergänzt und mit v6r-wavefunction-pipeline
-    verknüpft
-  - Priority-Order aktualisiert, um Ψ-Pipeline in FIT-Abfolge (ToDorefresh → Finalize)
-    aufzunehmen
+  - Neues Finalize-Item finalize-wavefunction-pipeline ergänzt und mit v6r-wavefunction-pipeline verknüpft
+  - Priority-Order aktualisiert, um Ψ-Pipeline in FIT-Abfolge (ToDorefresh → Finalize) aufzunehmen
   - Chronik-/Zenodo-Hinweise für Ψ-Pipeline in v6r-finalize-bridge Next Steps dokumentiert
 - date: '2025-12-13'
   label: v6-refresh-fit-bridge
   highlights:
-  - Neuer Task v6r-finalize-bridge ergänzt, um FIT-Reihenfolge ToDorefresh → Finalize
-    zu sichern
+  - Neuer Task v6r-finalize-bridge ergänzt, um FIT-Reihenfolge ToDorefresh → Finalize zu sichern
   - Querverweise auf τ*-Guardrails und Type-VI-Checkliste als Finalize-Follow-up markiert
   - Chronik-/Delta-Dokumentation als nächsten Schritt für Trilayer-Parität festgelegt
 - date: '2025-12-01'
   label: v6-refresh-governance-hook
   highlights:
-  - τ*-Safety-Delay + CREP-Governance als eigener Task erfasst (Simulator + Analysis
-    + CI)
+  - τ*-Safety-Delay + CREP-Governance als eigener Task erfasst (Simulator + Analysis + CI)
   - FIT-Microsteps aus activation_gaps_tau_star.md an ToDo-Liste angebunden
   - Type-VI Checkliste (type6_crep_tau_star_checklist.*) als Governance-Kopplung verankert
 - date: '2025-11-26'

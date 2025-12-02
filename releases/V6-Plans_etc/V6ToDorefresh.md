@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2025-12-27T12:00:00Z
+**Updated:** 2025-12-28T10:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -456,7 +456,7 @@ Falsifizierbarer Test der 12-fold Hypothese → scripts/analyze_cmb_12fold.py + 
 ### [Priority 9] v6r-rk4-simulator
 **RK4-Integrator + τ*-Delay in TypeScript Simulator**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-28)
 **Beta:** 5.4 | **Zeta Risk:** Niedrig - nur numerische Stabilität
 
 **Scope:** frontend, simulation, numerics
@@ -484,7 +484,7 @@ Numerisch stabile Type-VI Visualisierung → RK4-Integrator + τ*-Buffer für st
 ### [Priority 10] v6r-simulator-ux
 **Simulator UX-Paket (Web Audio + CSV Drag&Drop + AI-Navigation)**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-28)
 **Beta:** 4.9 | **Zeta Risk:** Niedrig - reine UX-Verbesserung
 
 **Scope:** frontend, ux, documentation
@@ -510,7 +510,7 @@ Agentenfreundlicher, interaktiver Simulator → Web Audio Sonification + CSV Dra
 ### [Priority 11] v6r-beta-bayes
 **Hierarchisches Bayesianisches Modell für β-Meta-Regression**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-28)
 **Beta:** 4.6 | **Zeta Risk:** Niedrig
 
 **Scope:** analysis, statistics
@@ -537,7 +537,7 @@ Robustere β-Schätzungen mit Domain-Clustering → PyMC/Stan Hierarchie + VIF-C
 ### [Priority 12] v6r-tau-star-guardrails
 **τ*-Safety-Delay + CREP-Governance für Type-VI-Szenarien verankern**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-28)
 **Beta:** 5.0 | **Zeta Risk:** Hoch bei ζ<0 ohne τ*-Puffer
 
 **Scope:** simulation, validation, governance
@@ -562,7 +562,7 @@ Type-VI-Simulationen und Analysen laufen mit τ*-Default + RK4-Garantie → Guar
 ### [Priority 13] v6r-psi-integration-plan
 **Ψ-Integrationsplan aus dem Wellenfunktions-Integrationsdokument operationalisieren**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-28)
 **Beta:** 5.9 | **Zeta Risk:** Moderat – ζ<0-Pfade brauchen τ*-Buffer
 
 **Scope:** theory, simulation, documentation
@@ -661,7 +661,7 @@ Synchronisationspfad zwischen V6ToDorefresh und Finalize-TODO aktiv → neue FIT
 ### [Priority 17] v6r-crep-guard-ci
 **CREP/τ*-Guard-Skript + Logging in CI/Pre-Commit verankern**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-28)
 **Beta:** 4.7 | **Zeta Risk:** Moderat – Merge-Gate fehlt
 
 **Scope:** governance, automation, compliance
@@ -670,7 +670,7 @@ Synchronisationspfad zwischen V6ToDorefresh und Finalize-TODO aktiv → neue FIT
 type6_CREP/τ*-Checkliste als automatischer Guard aktiv → `tools/crep_guard.py` prüft τ*-Default (0.1·|Θ−R|) + CREP ≥0.7 Reviewer-Pflicht, CI/Pre-Commit loggt nach `logs/type_vi_detections.jsonl`
 
 **Next Steps:**
-- 🔧 Guard-Prototyp `tools/crep_guard.py --threshold 0.7 --tau-default 0.1` aufsetzen und Kriterien aus `activation_gaps_tau_star.md` + `type6_crep_tau_star_checklist.*` übernehmen.
+- ✅ Guard erweitert: CLI schreibt Audit-Log-Einträge via `--log-detection` (CREP, τ*, Reviewer, Notes) und berechnet Eskalationslevel (0–3) nach AGENTS-Schwellen.
 - 🧪 Hook in `make validate-trilayer`/pre-commit integrieren: Fail bei fehlendem τ*-Default oder CREP ≥0.7 ohne Reviewer-Slot; Log-Ausgabe nach `logs/type_vi_detections.jsonl` spiegeln.
 - 🧭 Chronik/FIT-Kopplung ergänzen: Guard-Status in `Chronik/chronik_v6_release.md` notieren und Mapping zu `finalize-crep-guard-ci` in der FIT-Tabelle pflegen.
 
@@ -711,7 +711,7 @@ Zenodo_Upload_Checklist.md auf ✅ bringen → aktuelle Test-, Coverage-, Lint- 
 ### [Priority 19] v6r-crep-audit-log
 **Type-VI Audit-Log + Reviewer-Routing initialisieren (logs/type_vi_detections.jsonl)**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-28)
 
 **Beta:** 4.8 | **Zeta Risk:** Moderat – Escalation-Trace fehlt
 
@@ -721,8 +721,8 @@ Zenodo_Upload_Checklist.md auf ✅ bringen → aktuelle Test-, Coverage-, Lint- 
 CREP/τ*-Checkliste schreibt Audit-Log + Reviewer-Slot → `logs/type_vi_detections.jsonl` existiert mit Schema (CREP, τ*, τ*, Escalation-Level, Reviewer) und ist in CI/Chronik referenziert
 
 **Next Steps:**
-- 🧩 Log-Schema definieren (Fields: timestamp, task_id, crep_value, tau_star, escalation_level, reviewer, notes) und initialen Stub in `logs/type_vi_detections.jsonl` ablegen.
-- 🔗 `tools/crep_guard.py` und FIT-Hooks auf Log-Schreiben trimmen (Level 1–3 aus AGENTS-Regeln, τ*-Default 0.1·|Θ−R|) und Mapping zu `finalize-crep-audit-log` dokumentieren.
+- ✅ Log-Schema (timestamp, task_id, crep_value, tau_star, escalation_level, reviewer, notes) als Stub in `logs/type_vi_detections.jsonl` abgelegt.
+- ✅ `tools/crep_guard.py` schreibt Audit-Log-Einträge via `--log-detection` (auto Eskalation Level 0–3, τ*-Value, Reviewer/Notes) und nutzt Default-Path `logs/type_vi_detections.jsonl`.
 - 🧭 Chronik/FIT-Referenz ergänzen: Audit-Trail-Link in `Chronik/chronik_v6_release.md` + Finalize-Delta aufnehmen, Reviewer-Routing aus `MAINTAINERS.md` hinterlegen.
 
 **References:**
@@ -808,13 +808,22 @@ CREP/τ*-Checkliste schreibt Audit-Log + Reviewer-Slot → `logs/type_vi_detecti
 | v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | Bullet-Refactor geplant |
 | v6r-entropic-gravity-bridge | finalize-entropic-gravity-bridge | Entropische Gravitation/Holographischer Kubus in Review + BibTeX | Bridge angelegt, Inhalte noch zu spiegeln |
 | v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | Checklisten verlinkt, Merge-Gate fehlt |
-| v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Guard-Prototyp geplant |
+| v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Log-Writer aktiv, CI-Hook offen |
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Neu angelegt, Belege ausstehend |
-| v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Neu angelegt, Log-Strecke aufzubauen |
+| v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Log-Starter liegt vor, Reviewer-Routing offen |
 
 ---
 
 ## Delta Updates
+
+### 2025-12-28 | v6-refresh-crep-audit-log
+
+✅ **Highlights:**
+- `tools/crep_guard.py` um Audit-Log-Writer erweitert (`--log-detection`, auto Eskalationslevel 0–3, Reviewer/Notes) und Default-Logpfad auf `logs/type_vi_detections.jsonl` gesetzt.
+- `logs/type_vi_detections.jsonl` als JSONL-Starter mit Schemaeintrag (timestamp, task_id, crep_value, tau_star, escalation_level, reviewer, notes) abgelegt.
+- Tasks `v6r-crep-guard-ci` und `v6r-crep-audit-log` auf 🟡 In Progress gehoben; FIT/Chronik-Hooks weiter offen.
+
+---
 
 ### 2025-12-27 | v6-refresh-zenodo-logs
 

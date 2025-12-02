@@ -28,7 +28,7 @@
 ### [Priority 1] finalize-vrig-research
 **v_RIG-Forschung: Empirische Validierung finalisieren**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-28)
 **Beta:** 6.2 | **Zeta Risk:** Hoch - entscheidende Validierungsphase
 
 **Scope:** research, validation, documentation
@@ -60,7 +60,7 @@ Alle v_RIG-Validierungen dokumentiert und in Papers integriert → docs/v_rig_va
 ### [Priority 2] finalize-entkopplung
 **Entkopplungs-Regime: Die informationelle Leere vermessen**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-28)
 **Beta:** 6.8 | **Zeta Risk:** Sehr hoch - neue Theorie-Erweiterung
 
 **Scope:** theory, analysis, documentation
@@ -96,7 +96,7 @@ Entkopplungs-Hypothese formuliert und validiert → docs/entkopplungs_regime.md 
 ### [Priority 3] finalize-loihi-experiment
 **Loihi-Kleiber-Experiment: Neuromorphe Hardware Skalierung**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-28)
 **Beta:** 6.5 | **Zeta Risk:** Hoch - könnte Entkopplungs-Hypothese validieren/falsifizieren
 
 **Scope:** experiment, analysis, validation
@@ -132,7 +132,7 @@ Skalierungsexponent α für neuromorphe Hardware bestimmt → analysis/loihi_sca
 ### [Priority 4] finalize-13mhz-signatur
 **Themenblock A: Die 13.5 MHz-Signatur validieren**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-28)
 **Beta:** 5.9 | **Zeta Risk:** Moderate - experimentelle Validierung erforderlich
 
 **Scope:** research, validation, neuroscience
@@ -524,7 +524,7 @@ FIT-Microsteps aus `Promt_für_Agenten.txt` in beiden ToDo-Trilayern gespiegelt 
 ### [Priority 15] finalize-crep-guard-ci
 **CREP/τ*-Guard-Skript im Finalize-Layer testen & loggen**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-28)
 **Beta:** 4.7 | **Zeta Risk:** Moderat – Release-Gate fehlt
 
 **Scope:** governance, compliance, automation
@@ -533,8 +533,8 @@ FIT-Microsteps aus `Promt_für_Agenten.txt` in beiden ToDo-Trilayern gespiegelt 
 type6_CREP/τ*-Guard blockt Finalize-Releases automatisch → `tools/crep_guard.py` Hook läuft in Finalize-CI/pre-commit, schreibt nach `logs/type_vi_detections.jsonl` und Chronik/Finalize-Notizen
 
 **Next Steps:**
-- 🔧 Guard-Implementierung aus `v6r-crep-guard-ci` übernehmen und in Finalize-CI/pre-commit spiegeln.
-- 🧪 Audit-Trail `logs/type_vi_detections.jsonl` anlegen und Chronik-Eintrag/Reviewer-Slot bei CREP ≥0.7 dokumentieren.
+- ✅ Guard-Implementierung aus `v6r-crep-guard-ci` übernehmen: `--log-detection` schreibt Audit-Log (Eskalation 0–3, Reviewer/Notes) nach `logs/type_vi_detections.jsonl`.
+- 🧪 Finalize-CI/pre-commit auf `crep_guard.py` Hook trimmen; Fail bei τ*-Default-Drift oder CREP ≥0.7 ohne Reviewer-Slot und Log-Eintrag.
 - 🗺️ FIT-Mapping in `finalize-fit-sync` aktualisieren und POLICY/ETHICS-Referenzen auf `type6_crep_tau_star_checklist.*` prüfen.
 
 **References:**
@@ -576,7 +576,7 @@ Zenodo_Upload_Checklist.md (Abschnitt I–III) mit realen Test-/Lint-/Mypy-/Cove
 ### [Priority 17] finalize-crep-audit-log
 **Type-VI Audit-Log & Reviewer-Routing im Finalize-Layer aktivieren**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-28)
 
 **Beta:** 4.8 | **Zeta Risk:** Moderat – Escalation-Trace fehlt
 
@@ -586,7 +586,7 @@ Zenodo_Upload_Checklist.md (Abschnitt I–III) mit realen Test-/Lint-/Mypy-/Cove
 `logs/type_vi_detections.jsonl` existiert mit CREP/τ*-Feldern + Reviewer-Slot → Guard/CI schreibt Einträge, Chronik/Finalize-Deltas verlinken Escalation-Level (1–3)
 
 **Next Steps:**
-- 🧩 Audit-Log-Schema aus `type6_crep_tau_star_checklist.*` übernehmen, Stub-Datei anlegen und in Finalize-Doku verlinken.
+- ✅ Audit-Log-Schema als JSONL-Starter in `logs/type_vi_detections.jsonl` abgelegt; via `tools/crep_guard.py --log-detection` nutzbar.
 - 🔗 `tools/crep_guard.py` Hook so konfigurieren, dass Finalize-CI/Pre-Commit bei CREP ≥0.7 loggt und Reviewer aus `MAINTAINERS.md` zuweist; FIT-Sync mit `v6r-crep-audit-log` festhalten.
 - 🧭 Chronik/Finalize-Deltas ergänzen (Escalation-Level, τ*-Default 0.1·|Θ−R|, Reviewer-Slot) und Governance-Referenzen (ETHICS/POLICY) updaten.
 
@@ -610,13 +610,22 @@ Zenodo_Upload_Checklist.md (Abschnitt I–III) mit realen Test-/Lint-/Mypy-/Cove
 | v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | Bullet-Refactor geplant |
 | v6r-entropic-gravity-bridge | finalize-entropic-gravity-bridge | Entropische Gravitation/Holographischer Kubus in Review + BibTeX | Bridge angelegt, Quellenmapping offen |
 | v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | Checklisten verlinkt, Merge-Gate fehlt |
-| v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Guard-Prototyp geplant |
+| v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Log-Writer aktiv, CI-Hook offen |
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Neu angelegt, Belege ausstehend |
-| v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Neu angelegt, Log-Strecke aufzubauen |
+| v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Log-Starter liegt vor, Reviewer-Routing offen |
 
 ---
 
 ## Delta Updates
+
+### 2025-12-28 | finalize-crep-audit-log
+
+✅ **Highlights:**
+- `logs/type_vi_detections.jsonl` als Audit-Log-Starter abgelegt und mit `tools/crep_guard.py --log-detection` koppelbar (Eskalation 0–3, Reviewer/Notes).
+- Tasks `finalize-crep-guard-ci` und `finalize-crep-audit-log` auf 🟡 In Progress gesetzt; Guard schreibt JSONL, CI/Reviewer-Routing weiterhin offen.
+- FIT-Mapping aktualisiert (Log-Writer aktiv, Reviewer-Slot offen) und Chronik/Reviewer-Hooks als nächste Schritte markiert.
+
+---
 
 ### 2025-12-27 | finalize-zenodo-audit
 

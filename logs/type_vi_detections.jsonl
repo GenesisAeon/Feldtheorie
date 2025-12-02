@@ -1,0 +1,2 @@
+{"entry_type": "schema", "version": "1.0.0", "fields": {"timestamp": "ISO-8601", "task_id": "string", "crep_value": "float", "tau_star": "float", "escalation_level": "int", "reviewer": "string", "notes": "string"}}
+{"timestamp": "2025-12-28T00:00:00Z", "task_id": "v6r-crep-audit-log", "crep_value": 0.0, "tau_star": 0.1, "escalation_level": 0, "reviewer": "", "notes": "Stub entry initialized; append real detections via tools/crep_guard.py --log-detection."}
