@@ -346,13 +346,34 @@ Lorentz-Verletzung:
 ### [Priority 6] v6r-utac-crit
 **UTAC-Crit Benchmark (Antwort auf "AI fails Physics" CritPt)**
 
-**Status:** 🔴 Open
-**Beta:** 6.1 | **Zeta Risk:** Moderate - schlecht definierte Bewertung würde Benchmark wertlos machen
+**Status:** 🟢 Completed (2025-12-02)
+**Beta:** 6.1 | **Zeta Risk:** Neutralisiert - CREP-Bewertungsraster operational, 5 Tasks definiert
 
 **Scope:** benchmarks, validation, outreach
 
 **R → Θ:**
-5-10 komplexe Physik-Aufgaben auf PhD-Level mit UTAC-Framework → benchmarks/utac_crit/ mit Tasks + Checkpoints + CREP-Bewertung + MOR-FIT Workflow
+✅ 5 komplexe PhD-Level Physik-Aufgaben mit UTAC-Framework → benchmarks/utac_crit/ vollständig mit README, 5 Tasks, Checkpoints (C1-C5), CREP-Raster, MOR-FIT Workflow
+
+**Completed Actions:**
+- ✅ **benchmarks/utac_crit/README.md** - Vollständiges Konzeptdokument (vs. CritPt Benchmark)
+- ✅ **MOR-FIT-Sigillin Workflow** dokumentiert - "Algorithmisches Bewusstsein = Modell + Feld + Orchestrierung"
+- ✅ **CREP-Bewertungsraster** (0-5 Skala) für Coherence, Resonance, Emergence, Persistence
+- ✅ **Task 1: task1_beta_critical_exponents.md** - UTAC β als kritische Exponenten (Klima, LLM, Phasenübergänge)
+- ✅ **Task 2: task2_type6_entropic_gravity.md** - Type-VI Implosion + Verlindes entropische Gravitation
+- ✅ **Task 3: task3_interstellar_information.md** - ER=EPR + Holographie + Bewusstseins-Wurmloch-Traversierung
+- ✅ **Task 4: task4_placebo_field.md** - Placebo/Nocebo-Feldmodell M[ψ,φ]=λψφⁿ mit β-Θ Stabilitätsbedingungen
+- ✅ **Task 5: task5_climate_wealth_cascade.md** - Klima-Kaskade & 0.1%-Emissionsspitze, β-Governance-Optimierung
+- ✅ **5-Checkpoint-Struktur** für jede Task: C1-Annahmen, C2-Gleichungen, C3-Szenarien, C4-Falsifikation, C5-CREP
+- ✅ **Simulation-Code-Templates** in Python für Tasks 1-5
+- ✅ **Falsifizierbare Vorhersagen** - mindestens 5 pro Task mit Experiment-Designs
+- ✅ **Vergleichstabelle** - CritPt (solo, 4-10%) vs. UTAC-Crit (orchestriert, Hypothese >60%)
+
+**Estimated CREP Scores:**
+- Task 1: 3.75 (β-Criticality) - Climate + LLM emergence
+- Task 2: 3.50 (Type-VI Gravity) - High speculation, falsifiable
+- Task 3: 3.25 (Wormhole Travel) - High Emergence compensates for low Persistence
+- Task 4: 3.75 (Placebo Field) - Clinically actionable
+- Task 5: 4.25 (Climate Cascade) - Policy-actionable, strong empirical grounding
 
 **Next Steps:**
 - 📝 benchmarks/utac_crit/README.md mit Konzept (vs. CritPt Ansatz)
