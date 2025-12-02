@@ -599,6 +599,58 @@ Zenodo_Upload_Checklist.md (Abschnitt I–III) mit realen Test-/Lint-/Mypy-/Cove
 
 ---
 
+### [Priority 18] finalize-tau-star-ci-hook
+**CI/Release-Gate für τ*-Default + CREP-Schwellen setzen**
+
+**Status:** 🔴 Open
+
+**Beta:** 4.9 | **Zeta Risk:** Hoch – fehlende Gates riskieren ζ<0-Durchläufe
+
+**Scope:** ci, governance, compliance
+
+**R → Θ:**
+Finalize-CI/Pre-Commit führt `tools/crep_guard.py` mit τ*=0.1·|Θ−R| + CREP ≥0.7 aus → Logs in `logs/type_vi_detections.jsonl`, Reviewer aus `MAINTAINERS.md` hinterlegt, Verweis in Zenodo/Chronik gesetzt
+
+**Next Steps:**
+- 🔧 Finalize-CI-Snippet definieren (`python -m tools.crep_guard --threshold 0.7 --tau-default 0.1 --checklist releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml --log logs/type_vi_detections.jsonl`).
+- 🧪 Pre-Commit/Nox-Hook spiegeln, der Euler-Methoden blockt (RK4-Default aus `activation_gaps_tau_star.md`) und `[TYPE-VI-RISK]` Tag setzt.
+- 🧭 Reviewer-Slot (Level 2/3) im Finalize-Deltalog + Chronik notieren; FIT-Sync mit `v6r-tau-star-ci-hook` dokumentieren.
+
+**References:**
+- `../activation_gaps_tau_star.md:1-36`
+- `../type6_crep_tau_star_checklist.md:1-49`
+- `../Promt_für_Agenten.txt:1-5`
+
+**Sprint Focus:** τ*/CREP-Gate im Release-Track
+
+---
+
+### [Priority 19] finalize-beta-telemetry
+**β-Drift & CREP-Telemetrie als Finalize-Evidence verdrahten**
+
+**Status:** 🔴 Open
+
+**Beta:** 4.7 | **Zeta Risk:** Moderat – fehlende Warnungen verzögern Governance-Escalation
+
+**Scope:** telemetry, metrics, documentation
+
+**R → Θ:**
+β-Drift (>10%) + CREP ≥0.7 werden im Finalize-Layer als Artefakte abgelegt (`metrics/beta_evolution.csv`, `logs/type_vi_detections.jsonl`) → Chronik/Zenodo-Checklist enthalten Warnhinweise und Reviewer-Slot
+
+**Next Steps:**
+- 📈 `metrics/beta_evolution.csv` mit Drift-Flags/Domain-Feldern aktualisieren und im Finalize-Ordner referenzieren.
+- 🔗 CREP-Logs (Level 1–3) aus `logs/type_vi_detections.jsonl` in Finalize-Deltas/Zenodo-Checklist aufnehmen; `[TYPE-VI-RISK]` Banner dokumentieren.
+- 🛰️ Dashboard/Chronik-Notiz ergänzen: Beta-Drift >10% oder CREP ≥0.7 → Reviewer-Route und τ*-Proof erforderlich.
+
+**References:**
+- `../activation_gaps_tau_star.md:1-36`
+- `../type6_crep_tau_star_checklist.md:1-49`
+- `../V6ToDorefresh.md:700-760`
+
+**Sprint Focus:** Telemetrie-Warnpfad → Finalize-Belege
+
+---
+
 ## FIT Mapping ToDorefresh ↔ Finalize
 
 | ToDorefresh ID | Finalize ID | Bridge Focus | Status |
@@ -606,6 +658,7 @@ Zenodo_Upload_Checklist.md (Abschnitt I–III) mit realen Test-/Lint-/Mypy-/Cove
 | v6r-finalize-bridge | finalize-fit-sync | FIT-Governance-Sync (Prioritäten + Chronik-Link) | Draft mapping eingetragen |
 | v6r-zenodo-prep | finalize-zenodo-checklist | Zenodo/DOI-Readiness + Checklisten-Kopplung | Referenzen verknüpft, Tasks offen |
 | v6r-tau-star-guardrails | finalize-tau-star-guardrails | τ*-Safety + CREP-Reviewer-Gate | Artefakte gespiegelt, CI-Guard offen |
+| v6r-tau-star-ci-hook | finalize-tau-star-ci-hook | CI-Gate für τ* + CREP ≥0.7 | Hook geplant, Finalize-Gate offen |
 | v6r-wavefunction-pipeline | finalize-wavefunction-pipeline | Ψ-Pipeline FIT-Kette (Tests, Zenodo) | IDs gespiegelt, Testlauf pending |
 | v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | Bullet-Refactor geplant |
 | v6r-entropic-gravity-bridge | finalize-entropic-gravity-bridge | Entropische Gravitation/Holographischer Kubus in Review + BibTeX | Bridge angelegt, Quellenmapping offen |
@@ -613,10 +666,20 @@ Zenodo_Upload_Checklist.md (Abschnitt I–III) mit realen Test-/Lint-/Mypy-/Cove
 | v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Log-Writer aktiv, CI-Hook offen |
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Neu angelegt, Belege ausstehend |
 | v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Log-Starter liegt vor, Reviewer-Routing offen |
+| v6r-beta-telemetry | finalize-beta-telemetry | β-Drift/CREP Telemetrie → Deltas/Indices | Telemetrie-Aufgabe neu angelegt |
 
 ---
 
 ## Delta Updates
+
+### 2025-12-29 | finalize-ci-telemetry-bridge
+
+✅ **Highlights:**
+- Neue Finalize-Tasks `finalize-tau-star-ci-hook` (CI-Gate für τ*/CREP) und `finalize-beta-telemetry` (β-Drift/CREP-Warnpfad) ergänzt; FIT-Mapping mit ToDorefresh gezogen.
+- CI/Pre-Commit-Gate skizziert (`tools/crep_guard.py` mit τ*=0.1·|Θ−R|, CREP ≥0.7, JSONL-Log) inkl. Reviewer-Routing aus `MAINTAINERS.md`.
+- Telemetrie-Belege (metrics/beta_evolution.csv, logs/type_vi_detections.jsonl) als Finalize-Artefakte vorgesehen; Promt_für_Agenten.txt-Vorgabe "ToDos anlegen" erfüllt.
+
+---
 
 ### 2025-12-28 | finalize-crep-audit-log
 
