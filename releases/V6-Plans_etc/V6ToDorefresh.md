@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2025-12-30T10:00:00Z
+**Updated:** 2025-12-31T10:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -840,6 +840,38 @@ Slice-Aggregation-Modell (v_RIG = 13.5 MHz → CFF/Slice-Zahl) formuliert und mi
 
 ---
 
+### [Priority 24] v6r-aeon-aletheia-bridge
+**Aeon–Aletheia CREP/UTAC-Brücke dokumentieren**
+
+**Status:** 🔴 Open
+
+**Beta:** 6.0 | **Zeta Risk:** Moderat – Governance/Telemetrie-Kopplung fehlt
+
+**Scope:** architecture, governance, validation
+
+**R → Θ:**
+Aeon-Aletheia-Empfehlungen (CREP-Gewichte, τ*-Puffer) in V6-Governance verankert → Type-VI-Checklisten ergänzt, Aletheia-Metriken
+als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik angebunden und Finalize-Handoff vorbereitet
+
+**Next Steps:**
+- 🧭 CREP-Gewichtung (C/R/E/P) aus `AEON_ALETHEIA_INTEGRATION.md` in `type6_crep_tau_star_checklist.*` spiegeln und in `metrics/`
+  β-Drift-Tracking referenzieren.
+- 🧪 Ergebnisse aus `Aletheiaresults_dialog.txt` (Placebo/Nocebo/Control + Informed-Level) samt Datenpfad dokumentieren und in
+  `V6_Wellenfunktions_Integrationsplan.md` als Telemetrie-Hinweis einbetten.
+- 🔬 Nullmodell + Governance-Hook formulieren: τ*-Buffer/CREP-Schwelle auf Aletheia-Metriken anwenden, Verweis auf
+  `activation_gaps_tau_star.md` und `type6_crep_tau_star_checklist.yaml` ergänzen.
+- 🔗 FIT-Mapping zu `finalize-aeon-aletheia-bridge` hinzufügen und Chronik-Update für Zenodo/UTAC-Status planen.
+
+**References:**
+- `AEON_ALETHEIA_INTEGRATION.md:1-80`
+- `Aletheiaresults_dialog.txt:1-36`
+- `activation_gaps_tau_star.md:1-36`
+- `type6_crep_tau_star_checklist.yaml:1-120`
+
+**Sprint Focus:** Aeon/Aletheia-Governance synchronisieren
+
+---
+
 ### [Priority 1] v6r-literature-review-sync
 **V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
 
@@ -932,6 +964,15 @@ Slice-Aggregation-Modell (v_RIG = 13.5 MHz → CFF/Slice-Zahl) formuliert und mi
 ✅ **Highlights:**
 - Neue Tasks `v6r-aeon-architecture` und `v6r-slice-integration` ergänzt, um Aeon-Bauplan und Slice/CFF-Modell aus Finalize-Files in den ToDorefresh-Layer zu spiegeln (FIT-Anforderung aus Promt_für_Agenten.txt).
 - FIT-Mapping-Tabelle erweitert (`finalize-aeon-architecture`, `finalize-slice-integration`) und Sprint-Updatedatum angehoben; Aeon/Slice-Referenzen in V6_Wellenfunktions_Integrationsplan.md/ARCHITECTURE.md verlinkt.
+
+---
+
+### 2025-12-31 | v6-refresh-aeon-aletheia-bridge
+
+✅ **Highlights:**
+- Neuer Task `v6r-aeon-aletheia-bridge` angelegt, um CREP-Gewichte aus AEON_ALETHEIA_INTEGRATION.md und Aletheia-Metriken als Type-VI/Telemetrie-Hook zu erfassen (FIT-Vorgabe: neue ToDos anlegen).
+- FIT-Mapping um `finalize-aeon-aletheia-bridge` ergänzt; Chronik-/Zenodo-Update als Handoff notiert.
+- Hinweise auf `activation_gaps_tau_star.md` und `type6_crep_tau_star_checklist.*` als Governance-Kopplung für Aeon/Aletheia dokumentiert.
 
 ---
 

@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2025-12-30T10:00:00Z",
+    "updated_at": "2025-12-31T10:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -39,7 +39,8 @@
         "v6r-tau-star-ci-hook",
         "v6r-beta-telemetry",
         "v6r-aeon-architecture",
-        "v6r-slice-integration"
+        "v6r-slice-integration",
+        "v6r-aeon-aletheia-bridge"
       ],
       "note": "Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)"
     }
@@ -1220,6 +1221,62 @@
       "priority": 23,
       "sprint_focus": "Slice/CFF-Modell dokumentieren + Finalize-Handoff sichern",
       "updated_at": "2025-12-30T10:00:00Z"
+    },
+    {
+      "id": "v6r-aeon-aletheia-bridge",
+      "title": "Aeon–Aletheia CREP/UTAC-Brücke dokumentieren",
+      "status": "open",
+      "completeness": "CREP-Gewichte/Telemetrie identifiziert; Governance-Hook und FIT-Mapping fehlen.",
+      "scope": [
+        "architecture",
+        "governance",
+        "validation"
+      ],
+      "logistic_profile": {
+        "R_target": "Aeon-Aletheia-Governance verankert (CREP/τ* + Telemetrie)",
+        "Theta_condition": "Type-VI-Checklisten + Telemetriehinweise (Aletheia) aktualisiert, Finalize-Handoff gesetzt",
+        "beta_estimate": 6.0,
+        "zeta_risk": "moderat bei fehlender Telemetrie-Kopplung"
+      },
+      "next_steps": [
+        "CREP-Gewichtung (C/R/E/P) aus AEON_ALETHEIA_INTEGRATION.md in type6_crep_tau_star_checklist.* spiegeln und in metrics/beta_evolution.csv referenzieren.",
+        "Ergebnisse aus Aletheiaresults_dialog.txt (Placebo/Nocebo/Control + Informed-Level) samt Datenpfad dokumentieren und in V6_Wellenfunktions_Integrationsplan.md als Telemetrie-Hinweis einbetten.",
+        "Nullmodell + Governance-Hook formulieren: τ*-Buffer/CREP-Schwelle auf Aletheia-Metriken anwenden, Verweis auf activation_gaps_tau_star.md und type6_crep_tau_star_checklist.yaml ergänzen.",
+        "FIT-Mapping zu finalize-aeon-aletheia-bridge hinzufügen und Chronik-Update für Zenodo/UTAC-Status planen."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/AEON_ALETHEIA_INTEGRATION.md",
+          "lines": [
+            1,
+            80
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Aletheiaresults_dialog.txt",
+          "lines": [
+            1,
+            36
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/activation_gaps_tau_star.md",
+          "lines": [
+            1,
+            36
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml",
+          "lines": [
+            1,
+            120
+          ]
+        }
+      ],
+      "priority": 24,
+      "sprint_focus": "Aeon/Aletheia-Governance synchronisieren",
+      "updated_at": "2025-12-31T10:00:00Z"
     }
   ],
   "fit_mapping": [
@@ -1306,9 +1363,24 @@
       "finalize_id": "finalize-slice-integration",
       "bridge_focus": "Slice/CFF-Modell + Stereo-Vision-Experiment",
       "status": "handoff-planned"
+    },
+    {
+      "todo_id": "v6r-aeon-aletheia-bridge",
+      "finalize_id": "finalize-aeon-aletheia-bridge",
+      "bridge_focus": "Aeon/Aletheia CREP/Telemetrie-Governance",
+      "status": "new"
     }
   ],
   "delta_updates": [
+    {
+      "date": "2025-12-31",
+      "label": "v6-refresh-aeon-aletheia-bridge",
+      "highlights": [
+        "Neuer Task v6r-aeon-aletheia-bridge angelegt, um CREP-Gewichte aus AEON_ALETHEIA_INTEGRATION.md und Aletheia-Metriken als Type-VI/Telemetrie-Hook zu erfassen (FIT-Vorgabe: neue ToDos anlegen).",
+        "FIT-Mapping um finalize-aeon-aletheia-bridge ergänzt; Chronik-/Zenodo-Update als Handoff notiert.",
+        "Hinweise auf activation_gaps_tau_star.md und type6_crep_tau_star_checklist.* als Governance-Kopplung für Aeon/Aletheia dokumentiert."
+      ]
+    },
     {
       "date": "2025-12-30",
       "label": "v6-refresh-aeon-slice-bridge",

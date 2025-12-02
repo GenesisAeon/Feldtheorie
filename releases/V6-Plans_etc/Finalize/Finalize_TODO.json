@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2025-12-30T10:00:00Z",
+    "updated_at": "2025-12-31T10:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -34,7 +34,8 @@
         "finalize-zenodo-evidence",
         "finalize-crep-audit-log",
         "finalize-tau-star-ci-hook",
-        "finalize-beta-telemetry"
+        "finalize-beta-telemetry",
+        "finalize-aeon-aletheia-bridge"
       ],
       "note": "v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation"
     }
@@ -980,6 +981,62 @@
       "priority": 19,
       "sprint_focus": "Telemetrie-Warnpfad → Finalize-Belege",
       "updated_at": "2025-12-29T10:00:00Z"
+    },
+    {
+      "id": "finalize-aeon-aletheia-bridge",
+      "title": "Aeon–Aletheia CREP/Telemetrie-Kopplung finalisieren",
+      "status": "open",
+      "completeness": "CREP/Tau*-Empfehlungen vorhanden; Finalize-Governance-Referenzen fehlen.",
+      "scope": [
+        "governance",
+        "documentation",
+        "compliance"
+      ],
+      "logistic_profile": {
+        "R_target": "AEON_ALETHEIA-Governance im Finalize-Track verankert (Checklisten + Zenodo)",
+        "Theta_condition": "Type-VI-Checklisten/Zenodo-Readiness verweisen auf Aletheia-Metriken und τ*-Nullmodelle",
+        "beta_estimate": 6.0,
+        "zeta_risk": "moderat bei fehlender Governance-Kopplung"
+      },
+      "next_steps": [
+        "CREP-Gewichtung (C/R/E/P) aus AEON_ALETHEIA_INTEGRATION.md in Finalize-Checklisten/Zenodo-Readiness spiegeln (type6_crep_tau_star_checklist.* referenzieren).",
+        "Aletheia-Resultate aus Aletheiaresults_dialog.txt (Control/Placebo/Nocebo + Informed-Level) zusammenfassen und Datenpfad (data/experimental/aletheia_results.csv) in Finalize-Deltas/Chronik notieren.",
+        "Nullmodell/τ*-Hook ergänzen: Verbindung zu activation_gaps_tau_star.md herstellen und Reviewer-Routing (Type-VI Level 1–3) eintragen.",
+        "FIT-Mapping mit v6r-aeon-aletheia-bridge festziehen und Zenodo/UTAC-Hinweis für Governance-Metriken vorbereiten."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/AEON_ALETHEIA_INTEGRATION.md",
+          "lines": [
+            1,
+            80
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Aletheiaresults_dialog.txt",
+          "lines": [
+            1,
+            36
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/activation_gaps_tau_star.md",
+          "lines": [
+            1,
+            36
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml",
+          "lines": [
+            1,
+            120
+          ]
+        }
+      ],
+      "priority": 20,
+      "sprint_focus": "Aeon/Aletheia-Governance-Parität im Finalize-Layer",
+      "updated_at": "2025-12-31T10:00:00Z"
     }
   ],
   "fit_mapping": [
@@ -1066,9 +1123,24 @@
       "finalize_id": "finalize-slice-integration",
       "bridge_focus": "Slice/CFF-Modell + Stereo-Vision-Experiment",
       "status": "handoff-planned"
+    },
+    {
+      "todo_id": "v6r-aeon-aletheia-bridge",
+      "finalize_id": "finalize-aeon-aletheia-bridge",
+      "bridge_focus": "Aeon/Aletheia CREP/Telemetrie-Governance",
+      "status": "new"
     }
   ],
   "delta_updates": [
+    {
+      "date": "2025-12-31",
+      "label": "finalize-aeon-aletheia-bridge",
+      "highlights": [
+        "Neuer Task finalize-aeon-aletheia-bridge ergänzt, um AEON_ALETHEIA-Governance (CREP-Gewichte, τ*-Buffer) in Finalize-Checklisten/Zenodo-Readiness zu spiegeln.",
+        "FIT-Mapping mit v6r-aeon-aletheia-bridge ergänzt; Chronik-/Zenodo-Hinweis als Handoff markiert.",
+        "Verweise auf activation_gaps_tau_star.md und type6_crep_tau_star_checklist.* als Governance-Hook dokumentiert."
+      ]
+    },
     {
       "date": "2025-12-30",
       "label": "finalize-aeon-slice-bridge",

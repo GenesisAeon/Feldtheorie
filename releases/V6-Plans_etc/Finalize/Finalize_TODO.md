@@ -651,6 +651,37 @@ Finalize-CI/Pre-Commit führt `tools/crep_guard.py` mit τ*=0.1·|Θ−R| + CREP
 
 ---
 
+### [Priority 20] finalize-aeon-aletheia-bridge
+**Aeon–Aletheia CREP/Telemetrie-Kopplung finalisieren**
+
+**Status:** 🔴 Open
+
+**Beta:** 6.0 | **Zeta Risk:** Moderat – Governance/Zenodo-Kopplung offen
+
+**Scope:** governance, documentation, compliance
+
+**R → Θ:**
+AEON_ALETHEIA-Governance (CREP-Gewichte, τ*-Buffer) in Finalize-Track integriert → Type-VI-Checklisten/Zenodo-Checklists referenzieren Aletheia-Metriken (data/experimental/aletheia_results.csv) + Nullmodelle dokumentiert
+
+**Next Steps:**
+- 🧭 CREP-Gewichtung (C/R/E/P) aus `AEON_ALETHEIA_INTEGRATION.md` in Finalize-Checklisten/Zenodo-Readiness spiegeln (Verweis auf
+  `type6_crep_tau_star_checklist.*`).
+- 🧪 Aletheia-Resultate aus `Aletheiaresults_dialog.txt` (Control/Placebo/Nocebo + Informed-Level) zusammenfassen und Datenpfad
+  (`data/experimental/aletheia_results.csv`) in Finalize-Deltas/Chronik notieren.
+- 🔬 Nullmodell/τ*-Hook ergänzen: Verbindung zu `activation_gaps_tau_star.md` herstellen und Reviewer-Routing (Type-VI Level 1–3)
+  eintragen.
+- 🔗 FIT-Mapping mit `v6r-aeon-aletheia-bridge` festziehen und Zenodo/UTAC-Hinweis für Governance-Metriken vorbereiten.
+
+**References:**
+- `../AEON_ALETHEIA_INTEGRATION.md:1-80`
+- `../Aletheiaresults_dialog.txt:1-36`
+- `../activation_gaps_tau_star.md:1-36`
+- `../type6_crep_tau_star_checklist.yaml:1-120`
+
+**Sprint Focus:** Aeon/Aletheia-Governance-Parität im Finalize-Layer
+
+---
+
 ## FIT Mapping ToDorefresh ↔ Finalize
 
 | ToDorefresh ID | Finalize ID | Bridge Focus | Status |
@@ -669,10 +700,20 @@ Finalize-CI/Pre-Commit führt `tools/crep_guard.py` mit τ*=0.1·|Θ−R| + CREP
 | v6r-beta-telemetry | finalize-beta-telemetry | β-Drift/CREP Telemetrie → Deltas/Indices | Telemetrie-Aufgabe neu angelegt |
 | v6r-aeon-architecture | finalize-aeon-architecture | Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten) | Mapping ergänzt, Bauplanextrakt offen |
 | v6r-slice-integration | finalize-slice-integration | Slice/CFF-Modell + Stereo-Vision-Experiment | Handoff geplant, Formeln/Tabellen offen |
+| v6r-aeon-aletheia-bridge | finalize-aeon-aletheia-bridge | Aeon/Aletheia CREP/Telemetrie-Governance | Neu angelegt, Governance-Mapping offen |
 
 ---
 
 ## Delta Updates
+
+### 2025-12-31 | finalize-aeon-aletheia-bridge
+
+✅ **Highlights:**
+- Neuer Task `finalize-aeon-aletheia-bridge` ergänzt, um AEON_ALETHEIA-Governance (CREP-Gewichte, τ*-Buffer) im Finalize-Layer/Zenodo-Readiness zu verankern.
+- FIT-Mapping mit `v6r-aeon-aletheia-bridge` hinzugefügt; Chronik-/Zenodo-Handoff vorgemerkt.
+- Governance-Hinweise auf `activation_gaps_tau_star.md` und `type6_crep_tau_star_checklist.*` als Reviewer-/τ*-Hook dokumentiert.
+
+---
 
 ### 2025-12-30 | finalize-aeon-slice-bridge
 
