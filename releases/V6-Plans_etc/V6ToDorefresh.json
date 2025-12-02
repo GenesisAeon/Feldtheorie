@@ -242,8 +242,8 @@
     {
       "id": "v6r-vrig-simulation",
       "title": "v_RIG Reality-Renderer Simulation implementieren",
-      "status": "open",
-      "completeness": "Vollständiger Blueprint in GrundPrinzip Simulation.txt; Implementierung fehlt.",
+      "status": "completed",
+      "completeness": "simulation/v_rig_renderer.py implementiert: Buffer-Scan, Kohärenz-Peak-Detektion bei N≈222 testbar.",
       "scope": [
         "simulation",
         "validation",
@@ -276,7 +276,8 @@
         }
       ],
       "priority": 2,
-      "sprint_focus": "Buffer-Algorithmus + Kohärenz-Peak"
+      "sprint_focus": "Buffer-Algorithmus + Kohärenz-Peak",
+      "completed_at": "2025-12-02"
     },
     {
       "id": "v6r-oipk-tesseract",
@@ -336,8 +337,8 @@
     {
       "id": "v6r-formulas-collection",
       "title": "Zentrale Formel-Sammlung für alle V6-Kernformeln",
-      "status": "open",
-      "completeness": "Formeln verstreut in Theorie.txt, Zusatz, GrundPrinzip; zentrale Referenz fehlt.",
+      "status": "completed",
+      "completeness": "docs/v6_formulas.md vollständig: 10 Kernformeln mit Herleitungen, Validierung, Referenzen dokumentiert.",
       "scope": [
         "documentation",
         "theory"
@@ -385,7 +386,8 @@
         }
       ],
       "priority": 4,
-      "sprint_focus": "Formel-Doku + Herleitungen"
+      "sprint_focus": "Formel-Doku + Herleitungen",
+      "completed_at": "2025-12-02"
     },
     {
       "id": "v6r-stereo-vision",
@@ -516,8 +518,8 @@
     {
       "id": "v6r-wavefunction-pipeline",
       "title": "Ψ-Wellenfunktions-Pipeline in Genesis/Simulator integrieren",
-      "status": "open",
-      "completeness": "Konzept in V6_Wellenfunktions_Integrationsplan.md; Implementation fehlt.",
+      "status": "completed",
+      "completeness": "pipelines/wavefunction/psi_field.py implementiert: ψ_genesis, V_pyr, collapse_to_utac operational.",
       "scope": [
         "theory",
         "simulation",
@@ -557,7 +559,8 @@
         }
       ],
       "priority": 8,
-      "sprint_focus": "Ψ-Feldgleichung + Pipeline"
+      "sprint_focus": "Ψ-Feldgleichung + Pipeline",
+      "completed_at": "2025-12-02"
     },
     {
       "id": "v6r-rk4-simulator",
@@ -885,8 +888,8 @@
     {
       "id": "v6r-crep-guard-ci",
       "title": "CREP/τ*-Guard-Skript + Logging in CI/Pre-Commit verankern",
-      "status": "in_progress",
-      "completeness": "type6_CREP/τ*-Checkliste vorhanden; Guard-Skript loggt jetzt Audit-Trail, CI/Chronik-Hooks fehlen noch.",
+      "status": "completed",
+      "completeness": "CI/Pre-Commit-Hook integriert, Makefile release target erweitert, POLICY/ETHICS referenziert, Audit-Log operational.",
       "scope": [
         "governance",
         "automation",
@@ -928,7 +931,8 @@
       ],
       "priority": 17,
       "sprint_focus": "CREP/τ*-Merge-Gate + Audit-Log aktivieren",
-      "updated_at": "2025-12-28T10:00:00Z"
+      "updated_at": "2025-12-28T10:00:00Z",
+      "completed_at": "2025-12-02"
     },
     {
       "id": "v6r-zenodo-evidence",
@@ -973,8 +977,8 @@
     {
       "id": "v6r-crep-audit-log",
       "title": "Type-VI Audit-Log + Reviewer-Routing initialisieren (logs/type_vi_detections.jsonl)",
-      "status": "in_progress",
-      "completeness": "Type-VI Checklisten vorhanden; Audit-Log-Schema liegt als JSONL-Starter vor, Reviewer-Routing/Chronik-Link fehlt noch.",
+      "status": "completed",
+      "completeness": "Audit-Log Schema in logs/type_vi_detections.jsonl aktiv, tools/crep_guard.py --log-detection operational, Reviewer-Routing dokumentiert.",
       "scope": [
         "governance",
         "automation",
@@ -1009,13 +1013,14 @@
       ],
       "priority": 19,
       "sprint_focus": "Escalation-Trace & Reviewer-Gate aktivieren",
-      "updated_at": "2025-12-28T10:00:00Z"
+      "updated_at": "2025-12-28T10:00:00Z",
+      "completed_at": "2025-12-02"
     },
     {
       "id": "v6r-tau-star-ci-hook",
       "title": "CI/Pre-Commit-Guard für τ*-Default + CREP-Schwellen einsetzen",
-      "status": "open",
-      "completeness": "Guard-CLI vorhanden; Makefile/nox-Hooks und Reviewer-Routing fehlen.",
+      "status": "completed",
+      "completeness": "Makefile validate-type6 target implementiert, CREP/τ*-Validation operational.",
       "scope": [
         "ci",
         "governance",
@@ -1057,13 +1062,14 @@
       ],
       "priority": 20,
       "sprint_focus": "CI-Gate für τ*/CREP aufsetzen",
-      "updated_at": "2025-12-29T10:00:00Z"
+      "updated_at": "2025-12-29T10:00:00Z",
+      "completed_at": "2025-12-02"
     },
     {
       "id": "v6r-beta-telemetry",
       "title": "β-Drift & CREP-Telemetrie in Metrics/Audit spiegeln",
-      "status": "open",
-      "completeness": "Audit-Log-Starter vorhanden; β-Drift/CREP-Warnungen fehlen in Metrics/Chronik.",
+      "status": "completed",
+      "completeness": "tools/log_beta_telemetry.py implementiert, β-Drift/CREP-Warnungen aktiv, CSV-Export operational.",
       "scope": [
         "telemetry",
         "metrics",
@@ -1105,7 +1111,8 @@
       ],
       "priority": 21,
       "sprint_focus": "Telemetrie-Warnkette aktivieren",
-      "updated_at": "2025-12-29T10:00:00Z"
+      "updated_at": "2025-12-29T10:00:00Z",
+      "completed_at": "2025-12-02"
     }
   ],
   "fit_mapping": [

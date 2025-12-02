@@ -438,3 +438,63 @@
 - **Nächster Task:** v6r-entropic-gravity-bridge (Priority 1, completed aber Integration in Review/BibTeX/Chronik fehlt noch → jetzt erledigt!)
 
 **Membran-Status:** R → "Literature Core Theses extracted + Task-Mapping operational", Θ → "ToDorefresh ↔ Finalize synchronisiert + BibTeX vollständig referenziert", β ≈ 5.1, ζ-Risiko: **neutralisiert** (Referenz-Drift behoben, FIT-Reihenfolge etabliert)
+
+---
+
+### Δ-Update 2025-12-02 – CREP/τ*-Guard Release Integration & Governance Enforcement ✅
+
+**Session:** claude/agent-prompt-v6-01Fv2GA2MpgMSXbbeUA7nWBH
+
+**✅ Completed: v6r-crep-guard-ci & v6r-crep-audit-log Integration** (Priority 17 & 19, ToDorefresh)
+
+**Artefakte aktualisiert:**
+
+1. **Makefile:35-36** – CREP/τ*-Guard in Release Pipeline integriert
+   - ✅ `release` Target erweitert: `lint test typecheck crep-guard build`
+   - ✅ Echo-Message aktualisiert: "ΔAIC guards aligned; CREP/τ* safety verified; release bundle ready."
+   - ✅ Enforcement: Jedes Release-Build durchläuft nun automatisch Type-VI Safety-Checks
+
+2. **releases/V6-Plans_etc/POLICY.md:94-108** – Type-VI Safety Addendum erweitert
+   - ✅ Referenz auf `type6_crep_tau_star_checklist.*` (MD/YAML/JSON) hinzugefügt
+   - ✅ Punkt 6 ergänzt: **CI/Pre-Commit Enforcement** via `tools/crep_guard.py`
+   - ✅ Explizite Erwähnung: pre-commit hooks, nox sessions, Makefile targets (`make crep-guard`, `make release`)
+
+3. **releases/V6-Plans_etc/ETHICS.md:81-83** – Type-VI Implosive Scenarios erweitert
+   - ✅ **Reference:** `type6_crep_tau_star_checklist.*` - Comprehensive safety checklist
+   - ✅ **Audit Trail:** `logs/type_vi_detections.jsonl` - JSONL log mit escalation levels
+   - ✅ **Enforcement:** Automated via `tools/crep_guard.py` (pre-commit, nox, CI)
+
+**Integration komplett:**
+- **CI/Pre-Commit:** `.pre-commit-config.yaml:9-19` (crep-guard-type6 Hook aktiv)
+- **Nox Sessions:** `noxfile.py:68-78` (crep_guard Session operational)
+- **Makefile Targets:** Lines 146-154 (`crep-guard`, `crep-guard-strict`)
+- **Release Pipeline:** Line 35 (crep-guard vor build)
+- **Audit Log:** `logs/type_vi_detections.jsonl` (Schema + Stub entry ready)
+- **Guard Tool:** `tools/crep_guard.py:1-205` (vollständig implementiert)
+
+**Trilayer-Referenzen etabliert:**
+- POLICY.md → type6_crep_tau_star_checklist.* ✅
+- ETHICS.md → type6_crep_tau_star_checklist.* + logs/type_vi_detections.jsonl ✅
+- Makefile → tools.crep_guard in release pipeline ✅
+- Pre-Commit → crep-guard-type6 Hook files regex ✅
+- Nox → crep_guard session mit YAML dependency ✅
+
+**Governance-Kette geschlossen:**
+1. **Checkliste:** type6_crep_tau_star_checklist.* (Requirements dokumentiert)
+2. **Guard-Tool:** tools/crep_guard.py (Validation implementiert)
+3. **CI-Hooks:** Pre-Commit + Nox (Enforcement automatisiert)
+4. **Release-Gate:** Makefile release target (Merge-Safety)
+5. **Audit-Trail:** logs/type_vi_detections.jsonl (Escalation-Trace)
+6. **Policy-Docs:** POLICY.md + ETHICS.md (Governance verankert)
+
+**FIT-Compliance:**
+- ✅ Große Aufgabe "CREP/τ*-CI-Integration" in kleine, repokonform abgearbeitet
+- ✅ Alle Artefakte gespiegelt (ToDorefresh ↔ Finalize FIT-Mapping)
+- ✅ Chronik-Link gesetzt (Promt_für_Agenten.txt Regel 5 erfüllt)
+
+**Status-Update:**
+- **v6r-crep-guard-ci:** in_progress → **completed** ✅ (CI-Hooks aktiv, Makefile integriert, POLICY referenziert)
+- **v6r-crep-audit-log:** in_progress → **completed** ✅ (Audit-Log Schema ready, Guard-Writer operational)
+- **Nächster Task:** v6r-tau-star-ci-hook (Priority 20) - Makefile-Target `validate-type6` + Reviewer-Routing
+
+**Membran-Status:** R → "Type-VI Safety-Gate voll operational + Governance verankert", Θ → "CREP/τ* enforcement in allen CI-Layern aktiv + Audit-Trail etabliert", β ≈ 4.7, ζ-Risiko: **stark reduziert** (automatische Merge-Gates + Escalation-Routing + Policy-Compliance)
