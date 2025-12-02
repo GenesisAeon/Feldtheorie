@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2025-12-29T10:00:00Z
+**Updated:** 2025-12-30T10:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -785,6 +785,61 @@ Makefile/nox-Hook ruft `tools/crep_guard.py` mit τ*=0.1·|Θ−R| + CREP ≥0.7
 
 ---
 
+### [Priority 22] v6r-aeon-architecture
+**Aeon v1.0 Architektur (Nullkern → AeonShell → Agenten) entwerfen und mit V6-FIT koppeln**
+
+**Status:** 🔴 Open
+
+**Beta:** 6.4 | **Zeta Risk:** Moderate – Systemintegration ohne Referenz-Artefakte
+
+**Scope:** architecture, ai-systems, documentation
+
+**R → Θ:**
+Aeon v1.0 Bauplan aus ChatGPT5.1_AeonV1.0Bauplan.txt extrahiert → Nullkern/AeonShell/Agenten-Schicht als Module skizziert, Architektur-Doc in V6ToDorefresh verlinkt und FIT-Bridge zu Finalize vorbereitet
+
+**Next Steps:**
+- 📝 Kernaussagen aus `Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt` destillieren (Nullkern, AeonShell, MasterGPT/TutorGPT, UnifiedMandala)
+- 🏗️ Architektur-Skizze in `V6_Wellenfunktions_Integrationsplan.md` und `ARCHITECTURE.md` spiegeln; Aeon-Module als Platzhalter (genesis_core/) vermerken
+- 🔗 FIT-Mapping zu `finalize-aeon-architecture` ergänzen (R/Θ/β/ζ) und Chronik-Link einplanen
+- 🧭 Prüfen, ob Aeon-Artefakte in Aeon.txt/AEON_ALETHEIA_INTEGRATION.md weitere Tasks triggern (SIGILLIN/CREP Hooks)
+
+**References:**
+- `Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt:1-200`
+- `AEON_ALETHEIA_INTEGRATION.md:1-120`
+- `V6_Wellenfunktions_Integrationsplan.md:1-80`
+- `ARCHITECTURE.md:1-60`
+
+**Sprint Focus:** Aeon-Bauplan anlegen + FIT-Bridge öffnen
+
+---
+
+### [Priority 23] v6r-slice-integration
+**Slice-Integration/CFF-Modellierung mit v_RIG verknüpfen**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.1 | **Zeta Risk:** Niedrig – gut dokumentiertes Phänomen, aber Governance-Kopplung fehlt
+
+**Scope:** theory, experiments, neuroscience
+
+**R → Θ:**
+Slice-Aggregation-Modell (v_RIG = 13.5 MHz → CFF/Slice-Zahl) formuliert und mit Stereo-Vision/Slice-Experiment verknüpft → Docs-Abschnitt + Finalize-Handoff
+
+**Next Steps:**
+- 📝 Slice-Formeln aus `Suche nach Slice-Struktur der Zeit.txt` und `SucheSliceStrukturen.txt` extrahieren und in `V6_Wellenfunktions_Integrationsplan.md` skizzieren
+- 🧮 CFF→Slice-Umrechnungstabellen für Mensch/Kolibri/Schildkröte ergänzen; Δβ-Effekte markieren
+- 🧪 Stereo-Vision-Slice-Experiment-Notizen in `Stereo-Vision Slice Experiment im Kontext des v_RIG-Konzepts (MOR_OIPK Framework).pdf` prüfen und ToDo-Schritte formulieren
+- 🔗 FIT-Mapping zu `finalize-slice-integration` aufnehmen und Chronik-Notiz vorbereiten
+
+**References:**
+- `Suche nach Slice-Struktur der Zeit.txt:1-120`
+- `SucheSliceStrukturen.txt:1-120`
+- `Stereo-Vision Slice Experiment im Kontext des v_RIG-Konzepts (MOR_OIPK Framework).pdf`
+
+**Sprint Focus:** Slice/CFF-Modell dokumentieren + Finalize-Handoff sichern
+
+---
+
 ### [Priority 1] v6r-literature-review-sync
 **V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
 
@@ -865,10 +920,20 @@ Makefile/nox-Hook ruft `tools/crep_guard.py` mit τ*=0.1·|Θ−R| + CREP ≥0.7
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Neu angelegt, Belege ausstehend |
 | v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Log-Starter liegt vor, Reviewer-Routing offen |
 | v6r-beta-telemetry | finalize-beta-telemetry | β-Drift/CREP Telemetrie → Deltas/Indices | Telemetrie-Aufgabe neu angelegt |
+| v6r-aeon-architecture | finalize-aeon-architecture | Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten) | Mapping ergänzt, Inhalte zu extrahieren |
+| v6r-slice-integration | finalize-slice-integration | Slice/CFF-Modell + Stereo-Vision-Experiment | Handoff geplant, Formeln/Tabellen offen |
 
 ---
 
 ## Delta Updates
+
+### 2025-12-30 | v6-refresh-aeon-slice-bridge
+
+✅ **Highlights:**
+- Neue Tasks `v6r-aeon-architecture` und `v6r-slice-integration` ergänzt, um Aeon-Bauplan und Slice/CFF-Modell aus Finalize-Files in den ToDorefresh-Layer zu spiegeln (FIT-Anforderung aus Promt_für_Agenten.txt).
+- FIT-Mapping-Tabelle erweitert (`finalize-aeon-architecture`, `finalize-slice-integration`) und Sprint-Updatedatum angehoben; Aeon/Slice-Referenzen in V6_Wellenfunktions_Integrationsplan.md/ARCHITECTURE.md verlinkt.
+
+---
 
 ### 2025-12-29 | v6-refresh-ci-telemetry
 

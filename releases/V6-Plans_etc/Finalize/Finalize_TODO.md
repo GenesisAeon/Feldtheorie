@@ -667,10 +667,20 @@ Finalize-CI/Pre-Commit führt `tools/crep_guard.py` mit τ*=0.1·|Θ−R| + CREP
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Neu angelegt, Belege ausstehend |
 | v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Log-Starter liegt vor, Reviewer-Routing offen |
 | v6r-beta-telemetry | finalize-beta-telemetry | β-Drift/CREP Telemetrie → Deltas/Indices | Telemetrie-Aufgabe neu angelegt |
+| v6r-aeon-architecture | finalize-aeon-architecture | Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten) | Mapping ergänzt, Bauplanextrakt offen |
+| v6r-slice-integration | finalize-slice-integration | Slice/CFF-Modell + Stereo-Vision-Experiment | Handoff geplant, Formeln/Tabellen offen |
 
 ---
 
 ## Delta Updates
+
+### 2025-12-30 | finalize-aeon-slice-bridge
+
+✅ **Highlights:**
+- FIT-Mapping um `v6r-aeon-architecture` und `v6r-slice-integration` ergänzt, damit Aeon-Bauplan/Slice-CFF-Modelle aus ToDorefresh im Finalize-Layer landen.
+- Hinweis aufgenommen, Bauplan-Extrakt aus ChatGPT5.1_AeonV1.0Bauplan.txt und Slice-Formeln/Tabellen (CFF → Slice) zu spiegeln; Updatedatum auf 2025-12-30 angehoben.
+
+---
 
 ### 2025-12-29 | finalize-ci-telemetry-bridge
 
