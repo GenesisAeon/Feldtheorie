@@ -128,19 +128,17 @@ tasks:
 - id: v6r-literature-review-sync
   title: V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln
   status: completed
-  completed_at: '2025-12-01'
-  completeness: Kernthesen-Dokument (docs/v6_literature_core_theses.md) erstellt
-    mit vollständigem Task-Mapping, BibTeX-Integration, und Chronik-Link gesetzt.
+  completed_at: '2025-12-02'
+  completeness: V6_Literature_Review.md vollständig erweitert (Section 7.3 Neuromorphic Hardware), 6 neue BibTeX-Einträge (Loihi, TrueNorth, SpiNNaker, BrainScaleS, DishBrain), Finalize-Links gesetzt, Querverweise zu v6r-papers-research/v6r-zenodo-prep ergänzt.
   scope:
   - research
   - documentation
   - governance
   logistic_profile:
-    R_target: Literature-Review-Kernthesen gespiegelt
-    Theta_condition: V6_Literature_Review.md referenziert docs/references_v6.bib +
-      ToDo-Trilayer
+    R_target: Literature-Review-Kernthesen vollständig gespiegelt
+    Theta_condition: V6_Literature_Review.md referenziert docs/references_v6.bib + Finalize-Layer + ToDo-Trilayer
     beta_estimate: 5.2
-    zeta_risk: moderat – Referenz-Drift möglich
+    zeta_risk: neutralisiert – Referenz-Integrität vollständig gesichert
   next_steps:
   - Kernaussagen und Quellen aus V6_Literature_Review.md in strukturierte Bulletpoints
     überführen (UTAC, Entropie, Zeitscheiben, v_RIG)
