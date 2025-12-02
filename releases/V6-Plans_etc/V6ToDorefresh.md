@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2025-12-24T12:00:00Z
+**Updated:** 2025-12-27T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -683,6 +683,56 @@ type6_CREP/τ*-Checkliste als automatischer Guard aktiv → `tools/crep_guard.py
 
 ---
 
+### [Priority 18] v6r-zenodo-evidence
+**Zenodo-Checkliste mit Test-/Lint-Belegen und Provenienz-Logs füllen**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.6 | **Zeta Risk:** Moderat – DOI-Release blockiert ohne Nachweise
+
+**Scope:** compliance, testing, documentation
+
+**R → Θ:**
+Zenodo_Upload_Checklist.md auf ✅ bringen → aktuelle Test-, Coverage-, Lint- und Mypy-Logs abgelegt, Provenienz-/Ethik-Block verlinkt und in Finalize/Zenodo-Track gespiegelt
+
+**Next Steps:**
+- ✅ Checklisten-Status in `Zenodo_Upload_Checklist.md` (Abschnitt I–III) gegen reale Test-/Lint-Läufe prüfen und fehlende Kästchen samt Logpfaden markieren.
+- 🧪 Letzte Pytest-/Coverage-/Lint-/Mypy-Läufe als Artefakte im Repo verlinken (z.B. `output/zenodo_checks/`), damit Finalize/Zenodo-Track Belege referenzieren kann.
+- 📝 Provenienz- und Ethik-Verweise (ETHICS.md, POLICY.md) im Zenodo-Checklist-Statusblock aktualisieren und in Finalize-ToDo spiegeln (`finalize-zenodo-evidence`).
+
+**References:**
+- `Zenodo_Upload_Checklist.md:1-120`
+- `Promt_für_Agenten.txt:1-5`
+
+**Sprint Focus:** Belegsammlung für Zenodo-DOI + FIT-Handoff
+
+---
+
+### [Priority 19] v6r-crep-audit-log
+**Type-VI Audit-Log + Reviewer-Routing initialisieren (logs/type_vi_detections.jsonl)**
+
+**Status:** 🔴 Open
+
+**Beta:** 4.8 | **Zeta Risk:** Moderat – Escalation-Trace fehlt
+
+**Scope:** governance, automation, compliance
+
+**R → Θ:**
+CREP/τ*-Checkliste schreibt Audit-Log + Reviewer-Slot → `logs/type_vi_detections.jsonl` existiert mit Schema (CREP, τ*, τ*, Escalation-Level, Reviewer) und ist in CI/Chronik referenziert
+
+**Next Steps:**
+- 🧩 Log-Schema definieren (Fields: timestamp, task_id, crep_value, tau_star, escalation_level, reviewer, notes) und initialen Stub in `logs/type_vi_detections.jsonl` ablegen.
+- 🔗 `tools/crep_guard.py` und FIT-Hooks auf Log-Schreiben trimmen (Level 1–3 aus AGENTS-Regeln, τ*-Default 0.1·|Θ−R|) und Mapping zu `finalize-crep-audit-log` dokumentieren.
+- 🧭 Chronik/FIT-Referenz ergänzen: Audit-Trail-Link in `Chronik/chronik_v6_release.md` + Finalize-Delta aufnehmen, Reviewer-Routing aus `MAINTAINERS.md` hinterlegen.
+
+**References:**
+- `type6_crep_tau_star_checklist.md:1-49`
+- `Promt_für_Agenten.txt:1-5`
+
+**Sprint Focus:** Escalation-Trace & Reviewer-Gate aktivieren
+
+---
+
 ### [Priority 1] v6r-literature-review-sync
 **V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
 
@@ -759,10 +809,21 @@ type6_CREP/τ*-Checkliste als automatischer Guard aktiv → `tools/crep_guard.py
 | v6r-entropic-gravity-bridge | finalize-entropic-gravity-bridge | Entropische Gravitation/Holographischer Kubus in Review + BibTeX | Bridge angelegt, Inhalte noch zu spiegeln |
 | v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | Checklisten verlinkt, Merge-Gate fehlt |
 | v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Guard-Prototyp geplant |
+| v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Neu angelegt, Belege ausstehend |
+| v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Neu angelegt, Log-Strecke aufzubauen |
 
 ---
 
 ## Delta Updates
+
+### 2025-12-27 | v6-refresh-zenodo-logs
+
+✅ **Highlights:**
+- Neue Tasks `v6r-zenodo-evidence` und `v6r-crep-audit-log` ergänzt, um Zenodo-Checklist-Belege und Type-VI-Audit-Trail als FIT-Microsteps aufzunehmen (Promt_für_Agenten.txt → neue ToDos).
+- FIT-Mapping um Zenodo-/Audit-Log-Handoffs zum Finalize-Layer erweitert; Reviewer-Routing und Log-Schema als nächste Schritte markiert.
+- Sprint-Updatedatum auf 2025-12-27 gehoben, um neuen Compliance-Fokus zu reflektieren.
+
+---
 
 ### 2025-12-24 | v6-refresh-entropic-gravity
 
