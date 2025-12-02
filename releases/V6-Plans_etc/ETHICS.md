@@ -78,6 +78,10 @@ Before committing work in `releases/V6-Plans_etc`:
 
 **Special ethical considerations for systems exhibiting negative damping (\(\zeta(R) < 0\)):**
 
+**Reference:** `type6_crep_tau_star_checklist.*` (MD/YAML/JSON) - Comprehensive safety checklist for Type-VI implosive dynamics
+**Audit Trail:** `logs/type_vi_detections.jsonl` - JSONL log of all Type-VI detections with escalation levels
+**Enforcement:** Automated via `tools/crep_guard.py` (pre-commit, nox, CI)
+
 #### 1. Risk Communication
 
 When analyzing Type-VI systems (implosive dynamics):

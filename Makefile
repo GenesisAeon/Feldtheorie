@@ -32,8 +32,8 @@ planetary:
 preset-guard:
 	utf-preset-guard
 
-release: lint test typecheck build
-	@echo "ΔAIC guards aligned; release bundle ready."
+release: lint test typecheck crep-guard build
+	@echo "ΔAIC guards aligned; CREP/τ* safety verified; release bundle ready."
 
 VERSION ?= $(shell python scripts/zenodo_version.py)
 DIST_ZENODO_DIR = dist/zenodo

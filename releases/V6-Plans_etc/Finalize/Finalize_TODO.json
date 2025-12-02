@@ -736,8 +736,8 @@
     {
       "id": "finalize-crep-guard-ci",
       "title": "CREP/τ*-Guard-Skript im Finalize-Layer testen & loggen",
-      "status": "in_progress",
-      "completeness": "type6_CREP/τ*-Checkliste gespiegelt; Guard-Skript loggt Audit-Trail, Finalize-CI/Chronik-Hooks fehlen noch.",
+      "status": "completed",
+      "completeness": "CI/Pre-Commit-Hook integriert, Makefile release target erweitert, POLICY/ETHICS referenziert, Audit-Log operational.",
       "scope": [
         "governance",
         "compliance",
@@ -786,7 +786,8 @@
       ],
       "priority": 15,
       "sprint_focus": "CREP/τ*-Guardrail als Release-Gate + Audit-Trail verankern",
-      "updated_at": "2025-12-28T10:00:00Z"
+      "updated_at": "2025-12-28T10:00:00Z",
+      "completed_at": "2025-12-02"
     },
     {
       "id": "finalize-zenodo-evidence",
@@ -838,8 +839,8 @@
     {
       "id": "finalize-crep-audit-log",
       "title": "Type-VI Audit-Log & Reviewer-Routing im Finalize-Layer aktivieren",
-      "status": "in_progress",
-      "completeness": "Type-VI Audit-Log-Starter vorhanden; Reviewer-Routing/Chronik-Referenz und CI-Schreibpfad offen.",
+      "status": "completed",
+      "completeness": "Audit-Log Schema in logs/type_vi_detections.jsonl aktiv, tools/crep_guard.py --log-detection operational, Reviewer-Routing dokumentiert.",
       "scope": [
         "governance",
         "compliance",
@@ -881,7 +882,8 @@
       ],
       "priority": 17,
       "sprint_focus": "Escalation-Trace & Reviewer-Gate in Finalize verankern",
-      "updated_at": "2025-12-28T10:00:00Z"
+      "updated_at": "2025-12-28T10:00:00Z",
+      "completed_at": "2025-12-02"
     },
     {
       "id": "finalize-tau-star-ci-hook",
