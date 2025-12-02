@@ -152,3 +152,8 @@ crep-guard-strict:
 	@echo "🛡️  Running CREP/τ* Safety Guard (strict mode)..."
 	@PYTHONWARNINGS=error $(PYTHON) -m tools.crep_guard --check-type6-trilayer --threshold 0.7 --tau-default 0.1
 	@echo "✅ crep-guard-strict complete"
+
+validate-type6:
+	@echo "🔍 Validating Type-VI governance artifacts..."
+	@$(PYTHON) -m tools.crep_guard --check-type6-trilayer --threshold 0.7 --tau-default 0.1
+	@echo "✅ Type-VI validation complete (CREP threshold 0.7, τ*=0.1·|Θ-R|)"
