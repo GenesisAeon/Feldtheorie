@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2025-12-31T10:00:00Z",
+    "updated_at": "2026-01-05T12:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -40,7 +40,11 @@
         "v6r-beta-telemetry",
         "v6r-aeon-architecture",
         "v6r-slice-integration",
-        "v6r-aeon-aletheia-bridge"
+        "v6r-aeon-aletheia-bridge",
+        "v6r-sigillin-parser",
+        "v6r-metrics-outlier",
+        "v6r-data-lantern-dashboard",
+        "v6r-type6-classification"
       ],
       "note": "Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)"
     }
@@ -1277,6 +1281,170 @@
       "priority": 24,
       "sprint_focus": "Aeon/Aletheia-Governance synchronisieren",
       "updated_at": "2025-12-31T10:00:00Z"
+    },
+    {
+      "id": "v6r-sigillin-parser",
+      "title": "Sigillin-Parser & Index-Automation für Trilayer",
+      "status": "open",
+      "completeness": "Activation Gap aus utac_status_alignment_v1.2.md; Parser/Index-Refresh fehlt.",
+      "scope": [
+        "governance",
+        "automation",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "Automatischer Sigillin-Parser speist Trilayer-Indizes",
+        "Theta_condition": "YAML/JSON/MD Validator + Index-Refresh laufen in CI/Make",
+        "beta_estimate": 5.9,
+        "zeta_risk": "moderat bei fehlender Schema-Validierung"
+      },
+      "next_steps": [
+        "Schemafelder aus Metareflexion/AGENTS extrahieren und Parser-Blueprint definieren (ID, codex_ref, evidence hooks)",
+        "CLI/CI-Hook skizzieren, der YAML/JSON/MD parst, Denormalisierung erkennt und docs_index/feldtheorie_index aktualisiert",
+        "Δindex/CREP-Warnungen in Chronik/Logs verlinken (type_vi_detections oder neues Ledger)"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt",
+          "lines": [
+            43,
+            60
+          ]
+        },
+        {
+          "path": "docs/utac_status_alignment_v1.2.md",
+          "lines": [
+            35,
+            120
+          ]
+        }
+      ],
+      "priority": 25,
+      "sprint_focus": "Sigillin-Schema automatisieren",
+      "updated_at": "2026-01-05T12:00:00Z"
+    },
+    {
+      "id": "v6r-metrics-outlier",
+      "title": "Outlier-Diagnostics & CREP-Stabilitätsmetriken in METRICS.md",
+      "status": "open",
+      "completeness": "ΔAIC/CI-Standards fehlen in METRICS.md; CREP-Stabilität für Type-VI noch nicht beschrieben.",
+      "scope": [
+        "metrics",
+        "analysis",
+        "governance"
+      ],
+      "logistic_profile": {
+        "R_target": "METRICS.md enthält Bootstrap/ΔAIC-Standard + CREP-Stabilitätsraster",
+        "Theta_condition": "Nullmodelle + CI/ΔAIC-Tabelle für β-Schätzungen dokumentiert, CREP-Kapitel referenziert Type-VI",
+        "beta_estimate": 5.4,
+        "zeta_risk": "moderat bei fehlender Robustheit"
+      },
+      "next_steps": [
+        "Bootstrap/ΔAIC-Pipeline aus analysis/outlier_beta_review.py in METRICS.md verankern (Standard-Nullmodelle + CI-Formate)",
+        "CREP-Stabilitätsindizes (C/R/E/P) für implosive Felder definieren und mit Type-VI Parametern verknüpfen",
+        "Status-Reports-Checkliste erweitern: CI/ΔAIC Pflichtfelder + Outlier-Warnbanner dokumentieren"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt",
+          "lines": [
+            61,
+            74
+          ]
+        },
+        {
+          "path": "docs/utac_status_alignment_v1.2.md",
+          "lines": [
+            41,
+            120
+          ]
+        }
+      ],
+      "priority": 26,
+      "sprint_focus": "Robustheitsmetriken ergänzen",
+      "updated_at": "2026-01-05T12:00:00Z"
+    },
+    {
+      "id": "v6r-data-lantern-dashboard",
+      "title": "Data-Lantern Telemetrie-Dashboard entwerfen",
+      "status": "open",
+      "completeness": "Data-Lantern Manifest vorhanden; Dashboard/Alert-Pfade fehlen.",
+      "scope": [
+        "telemetry",
+        "visualization",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "Live-Dashboard für R/Θ/β/ζ der Kernfelder",
+        "Theta_condition": "Data-Lantern-Schema + Grafana/Panel-Blueprint mit Alerts in Docs verankert",
+        "beta_estimate": 5.6,
+        "zeta_risk": "moderat bei fehlender Monitoring-Dämpfung"
+      },
+      "next_steps": [
+        "Manifest/Schema aus docs/utac_v2_data_lanterns.* und utac_status_alignment_v1.2.md konsolidieren (Felder, ΔAIC, CREP)",
+        "Dashboard-Prototyp (Grafana/Panel) skizzieren inkl. Alerts bei β-Drift >10% oder CREP ≥0.7",
+        "Docs-Hook ergänzen (zenodo_release_playbook.md / VISUALIZATION_INDEX.md) und Chronik-Warnbanner planen"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt",
+          "lines": [
+            63,
+            76
+          ]
+        },
+        {
+          "path": "docs/utac_status_alignment_v1.2.md",
+          "lines": [
+            41,
+            83
+          ]
+        }
+      ],
+      "priority": 27,
+      "sprint_focus": "Telemetrie-Dashboard entwerfen",
+      "updated_at": "2026-01-05T12:00:00Z"
+    },
+    {
+      "id": "v6r-type6-classification",
+      "title": "Type-VI Klassifikation + cubic-root-Testfall integrieren",
+      "status": "open",
+      "completeness": "Feldtyp-Tabelle v1.1 ohne Type-VI; CREP/Stabilitäts- und cubic-root-Beispiel fehlen.",
+      "scope": [
+        "theory",
+        "simulation",
+        "governance"
+      ],
+      "logistic_profile": {
+        "R_target": "Type-VI Feldtyp mit Parametertabelle + CREP-Raster dokumentiert",
+        "Theta_condition": "Klassifikationstabellen erweitert, cubic-root jump Testfall beschrieben, METRICS/ETHICS referenziert",
+        "beta_estimate": 6.1,
+        "zeta_risk": "hoch bei fehlender Validierung"
+      },
+      "next_steps": [
+        "Feldtyp-Tabelle (β-Range, ζ<0, invertierte Sigmoid) in docs/field_type_classification_v1.1.md und METRICS.md ergänzen",
+        "CREP-Stabilitätsindizes für Type-VI + cubic-root jump Simulation (Klima-Kaskade) als Beispiel im simulation/Ordner skizzieren",
+        "Governance-Hook setzen (POLICY.md/ETHICS.md) inkl. Escalation-Level aus AGENTS Level 2/3"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt",
+          "lines": [
+            65,
+            76
+          ]
+        },
+        {
+          "path": "docs/utac_status_alignment_v1.2.md",
+          "lines": [
+            35,
+            120
+          ]
+        }
+      ],
+      "priority": 28,
+      "sprint_focus": "Type-VI Klassifikation erweitern",
+      "updated_at": "2026-01-05T12:00:00Z"
     }
   ],
   "fit_mapping": [
@@ -1369,9 +1537,42 @@
       "finalize_id": "finalize-aeon-aletheia-bridge",
       "bridge_focus": "Aeon/Aletheia CREP/Telemetrie-Governance",
       "status": "new"
+    },
+    {
+      "todo_id": "v6r-sigillin-parser",
+      "finalize_id": "finalize-sigillin-parser",
+      "bridge_focus": "Sigillin-Parser/Index-Automation FIT",
+      "status": "new"
+    },
+    {
+      "todo_id": "v6r-metrics-outlier",
+      "finalize_id": "finalize-metrics-outlier",
+      "bridge_focus": "CREP/ΔAIC Robustheitsmetriken",
+      "status": "new"
+    },
+    {
+      "todo_id": "v6r-data-lantern-dashboard",
+      "finalize_id": "finalize-data-lantern-dashboard",
+      "bridge_focus": "Telemetrie-Dashboard + Alerts",
+      "status": "new"
+    },
+    {
+      "todo_id": "v6r-type6-classification",
+      "finalize_id": "finalize-type6-classification",
+      "bridge_focus": "Type-VI Klassifikation + cubic-root Demo",
+      "status": "new"
     }
   ],
   "delta_updates": [
+    {
+      "date": "2026-01-05",
+      "label": "v6-refresh-activation-gaps-telemetry",
+      "highlights": [
+        "Neue Tasks v6r-sigillin-parser, v6r-metrics-outlier, v6r-data-lantern-dashboard und v6r-type6-classification aus FinalyzeVorschlägeChatGPT5.1Agent.txt übernommen (FIT-Splitting).",
+        "FIT-Mapping um finale Gegenstücke ergänzt und priority_order aktualisiert.",
+        "Updatedatum auf 2026-01-05 gesetzt, Fokus auf Sigillin-Automation, CREP/ΔAIC-Robustheit und Data-Lantern-Dashboard."
+      ]
+    },
     {
       "date": "2025-12-31",
       "label": "v6-refresh-aeon-aletheia-bridge",
