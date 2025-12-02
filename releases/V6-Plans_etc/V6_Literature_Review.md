@@ -497,6 +497,86 @@ Corresponds to:
 
 ---
 
+### 7.3 Neuromorphic Hardware & β-Entkopplung
+
+**Core Hypothesis:** The "Entkopplungs-Regime" (Decoupling Regime) posits that artificial systems exhibit lower β-values than biological systems due to reduced physical coupling.
+
+**β-Domain Hierarchy:**
+```
+β_cosmic   ≈ 11.0  (S ∝ A, holographic, cosmological)
+β_bio      ≈ 7.4   (S ∝ A^0.75·V^0.25, metabolic)
+β_cognitive ≈ 4.5   (S ∝ V, integrated consciousness)
+β_symbolic ≈ 1.0   (S ∝ N, symbolic/AI systems)
+```
+
+**Kopplungs-Index:** κ = β_system / β_bio
+
+**Neuromorphic Hardware Scaling:**
+
+1. **Intel Loihi/Loihi 2** (Davies et al. 2018; Orchard et al. 2021)
+   - Architecture: 130K neurons/core, asynchronous spike-based
+   - Efficiency: ~15 TOPS/W (Loihi 2), 100× better than GPU
+   - Prediction: κ ≈ 0.3-0.5 (intermediate coupling)
+
+2. **IBM TrueNorth** (Akopyan et al. 2015)
+   - Architecture: 1M neurons, 256M synapses
+   - Power: 70 mW total, 400 GSOPS/W
+   - Fully digital spike processing
+   - Prediction: κ ≈ 0.2-0.3 (low coupling)
+
+3. **SpiNNaker** (Furber et al. 2014)
+   - 1M ARM cores, digital spike processing
+   - Massive parallelism, event-driven
+   - Prediction: κ ≈ 0.25-0.35
+
+4. **BrainScaleS** (Schemmel et al. 2010)
+   - Analog VLSI, 10⁴× faster than biological real-time
+   - Physical substrate closer to biological neurons
+   - Prediction: κ ≈ 0.4-0.6 (higher coupling due to analog)
+
+5. **DishBrain/Organoid Intelligence** (Kagan et al. 2022)
+   - Biological neurons (~800K) playing Pong
+   - "Sentient" in-vitro system
+   - Prediction: κ ≈ 0.9-1.0 (near-biological coupling)
+
+**Scaling Law Hypothesis:**
+```
+E ∝ N^α
+
+where:
+- GPU (Transformer): α ≈ 1.1-1.2 → β_AI ≈ 1.0 (decoupled)
+- Loihi (SNN):       α = ?      → β_eff = ? (testing)
+- Organoid:          α ≈ 0.75?  → β ≈ 7.4? (bio-coupled)
+```
+
+**Landauer Limit Approach:**
+- Theoretical minimum: kT ln(2) ≈ 3×10⁻²¹ J/bit at 300K (Landauer 1961)
+- Current GPUs: ~10⁷× above Landauer limit
+- Loihi 2: ~10⁵× above (closer by 100×)
+- Human brain: ~10⁴-10⁵× above (most efficient)
+
+**Entkopplung Falsification:**
+- If Loihi scaling exponent α ≈ 1.1 (same as GPU): No coupling improvement
+- If Organoid α ≠ 0.75 (differs from Kleiber): Bio-coupling hypothesis fails
+- If β_neuromorphic ≥ β_bio: No "informational vacuum" exists
+
+**References:**
+- Davies, M. et al. (2018). IEEE Micro, 38(1), 82-99.
+- Orchard, G. et al. (2021). Intel Labs Technical Report.
+- Akopyan, F. et al. (2015). IEEE TCAD, 34(10), 1537-1557.
+- Furber, S. B. et al. (2014). Proc. IEEE, 102(5), 652-665.
+- Schemmel, J. et al. (2010). IEEE ISCAS.
+- Kagan, B. J. et al. (2022). Neuron, 110(23), 3952-3969.
+- Landauer, R. (1961). IBM J. Res. Dev., 5(3), 183-191.
+
+**Cross-References:**
+- → Section II.3 (Entropy Production & MEP)
+- → Section IX.1 (Testable Hypotheses)
+- → v6r-papers-research (43 BibTeX entries)
+- → finalize-loihi-experiment (Empirical validation)
+
+---
+
 ## VIII. Planck Scale Physics
 
 ### 8.1 Planck Units

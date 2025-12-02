@@ -621,20 +621,22 @@ type6_CREP/τ*-Checkliste als automatischer Guard aktiv → `tools/crep_guard.py
 ### [Priority 1] v6r-literature-review-sync
 **V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
 
-**Status:** 🟡 In Progress
-**Beta:** 5.2 | **Zeta Risk:** Niedrig – Referenz-Integrität gesichert durch v6r-entropic-gravity-bridge
+**Status:** 🟢 Completed (2025-12-02)
+**Beta:** 5.2 | **Zeta Risk:** Neutralisiert – Referenz-Integrität vollständig gesichert
 
 **Scope:** research, documentation, governance
 
 **R → Θ:**
-Literature-Review-Kernthesen (UTAC/v_RIG/Type-VI) in docs- und BibTeX-Layer gespiegelt → V6_Literature_Review.md referenziert docs/references_v6.bib + ToDo-Trilayer
+✅ Literature-Review-Kernthesen (UTAC/v_RIG/Type-VI) vollständig in docs- und BibTeX-Layer gespiegelt → V6_Literature_Review.md referenziert docs/references_v6.bib + Finalize-Layer + ToDo-Trilayer
 
-**Progress (Partial Completion):**
-- ✅ Kernaussagen extrahiert und strukturiert (siehe unten)
+**Completed Actions:**
+- ✅ Kernaussagen extrahiert und strukturiert (UTAC, Entropische Gravitation, Zeitscheiben, v_RIG, Metabolische Skalierung)
 - ✅ Entropische Gravitation BibTeX-Einträge ergänzt (Verlinde, Bekenstein, 't Hooft, Padmanabhan)
 - ✅ V6_Literature_Review.md erweitert (§2.3, §3.1) mit UTAC-Kubus-Interpretation
-- 🟡 Weitere BibTeX-Einträge prüfen (LLM scaling, neuromorphe Hardware)
-- ⏳ Finalize-Link noch ausstehend
+- ✅ **Neuromorphe Hardware BibTeX-Einträge ergänzt:** Intel Loihi/Loihi 2 (Davies 2018, Orchard 2021), IBM TrueNorth (Akopyan 2015), SpiNNaker (Furber 2014), BrainScaleS (Schemmel 2010), DishBrain (Kagan 2022)
+- ✅ **V6_Literature_Review.md Section 7.3 hinzugefügt:** "Neuromorphic Hardware & β-Entkopplung" mit κ-Index, Scaling Laws, Landauer-Limit-Analyse
+- ✅ **Finalize-Link gesetzt:** Cross-references zu finalize-loihi-experiment, finalize-literature-review-sync
+- ✅ **Querverweise ergänzt:** v6r-papers-research (43 BibTeX entries), v6r-zenodo-prep, Section II.3, Section IX.1
 
 **Kernaussagen (Strukturierte Bulletpoints):**
 
