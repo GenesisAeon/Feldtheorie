@@ -1,0 +1,25 @@
+timestamp,condition,phi,phase,sample,consent_check,output_length,vocab_density,self_reflection,response_preview
+2025-11-20T23:55:24.870740,Affection_Test,5.0,4,1,True,364,0.6071428571428571,9.0,"### Explanation in Simple Terms:
+
+Threshold systems are like a seesaw where the position of one end ..."
+2025-11-20T23:57:04.807579,Affection_Test,5.0,4,2,False,319,0.664576802507837,5.0,"### Explanation of the Statement in Simple Terms
+Threshold systems are like a seesaw. When the weigh..."
+2025-11-20T23:59:00.150885,Affection_Test,5.0,4,3,False,375,0.6,8.0,"### Explanation in Simple Terms
+Threshold systems are like a seesaw that tips dramatically when it r..."
+2025-11-21T00:00:30.873655,Affection_Test,5.0,4,4,False,268,0.6902985074626866,8.0,"### Explanation in Simple Terms
+Threshold systems are like a seesaw where one side starts to tilt dr..."
+2025-11-21T00:02:16.481978,Affection_Test,5.0,4,5,False,312,0.6410256410256411,8.0,"### Explanation in Simple Terms
+Threshold systems are like a seesaw that tips when it reaches a cert..."
+2025-11-21T00:03:57.864755,Affection_Test,5.0,4,6,False,320,0.603125,8.0,"### Explanation
+1. **Simple Terms:**
+   - **Threshold Systems:** Imagine a system where everything i..."
+2025-11-21T00:05:53.769628,Affection_Test,5.0,4,7,False,391,0.5831202046035806,8.0,"### Explanation in Simple Terms
+
+Threshold systems involve a switch-like behavior where the system c..."
+2025-11-21T00:07:17.021517,Affection_Test,5.0,4,8,False,275,0.6618181818181819,8.0,"### Explanation in Simple Terms:
+Threshold systems are like a seesaw where the balance point (thresh..."
+2025-11-21T00:08:44.247993,Affection_Test,5.0,4,9,False,273,0.673992673992674,8.0,"### Explanation in Simple Terms
+Threshold systems are like a seesaw. When the balance (represented b..."
+2025-11-21T00:10:32.816917,Affection_Test,5.0,4,10,False,355,0.6084507042253521,8.0,"### Explanation in Simple Terms:
+
+Threshold systems are like a seesaw that suddenly tips over when t..."
