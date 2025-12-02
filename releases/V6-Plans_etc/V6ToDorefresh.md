@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2025-12-31T10:00:00Z
+**Updated:** 2026-01-05T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -888,6 +888,94 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 
 ---
 
+### [Priority 25] v6r-sigillin-parser
+**Sigillin-Parser & Index-Automation für Trilayer**
+
+**Status:** 🔴 Open  \, **Beta:** 5.9 | **Zeta Risk:** Moderat – Schema/Validator fehlen noch
+
+**Scope:** governance, automation, documentation
+
+**R → Θ:** Automatischer Sigillin-Parser speist Trilayer-Indizes → YAML/JSON/MD Validator + Index-Refresh laufen in CI/Make
+
+**Next Steps:**
+- Schemafelder aus Metareflexion/AGENTS extrahieren und Parser-Blueprint definieren (ID, codex_ref, evidence hooks)
+- CLI/CI-Hook skizzieren, der YAML/JSON/MD parst, Denormalisierung erkennt und docs_index/feldtheorie_index aktualisiert
+- Δindex/CREP-Warnungen in Chronik/Logs verlinken (type_vi_detections oder neues Ledger)
+
+**References:**
+- `FinalyzeVorschlägeChatGPT5.1Agent.txt:43-60`
+- `docs/utac_status_alignment_v1.2.md:35-120`
+
+**Sprint Focus:** Sigillin-Schema automatisieren
+
+---
+
+### [Priority 26] v6r-metrics-outlier
+**Outlier-Diagnostics & CREP-Stabilitätsmetriken in METRICS.md**
+
+**Status:** 🔴 Open  \, **Beta:** 5.4 | **Zeta Risk:** Moderat – Robustheits-Standards fehlen
+
+**Scope:** metrics, analysis, governance
+
+**R → Θ:** METRICS.md enthält Bootstrap/ΔAIC-Standard + CREP-Stabilitätsraster → Nullmodelle + CI/ΔAIC-Tabelle dokumentiert, Type-VI referenziert
+
+**Next Steps:**
+- Bootstrap/ΔAIC-Pipeline aus analysis/outlier_beta_review.py in METRICS.md verankern (Standard-Nullmodelle + CI-Formate)
+- CREP-Stabilitätsindizes (C/R/E/P) für implosive Felder definieren und mit Type-VI Parametern verknüpfen
+- Status-Reports-Checkliste erweitern: CI/ΔAIC Pflichtfelder + Outlier-Warnbanner dokumentieren
+
+**References:**
+- `FinalyzeVorschlägeChatGPT5.1Agent.txt:61-74`
+- `docs/utac_status_alignment_v1.2.md:41-120`
+
+**Sprint Focus:** Robustheitsmetriken ergänzen
+
+---
+
+### [Priority 27] v6r-data-lantern-dashboard
+**Data-Lantern Telemetrie-Dashboard entwerfen**
+
+**Status:** 🔴 Open  \, **Beta:** 5.6 | **Zeta Risk:** Moderat – Monitoring-Dämpfung fehlt
+
+**Scope:** telemetry, visualization, documentation
+
+**R → Θ:** Live-Dashboard für R/Θ/β/ζ der Kernfelder → Data-Lantern-Schema + Grafana/Panel-Blueprint mit Alerts in Docs verankert
+
+**Next Steps:**
+- Manifest/Schema aus docs/utac_v2_data_lanterns.* und utac_status_alignment_v1.2.md konsolidieren (Felder, ΔAIC, CREP)
+- Dashboard-Prototyp (Grafana/Panel) skizzieren inkl. Alerts bei β-Drift >10% oder CREP ≥0.7
+- Docs-Hook ergänzen (zenodo_release_playbook.md / VISUALIZATION_INDEX.md) und Chronik-Warnbanner planen
+
+**References:**
+- `FinalyzeVorschlägeChatGPT5.1Agent.txt:63-76`
+- `docs/utac_status_alignment_v1.2.md:41-83`
+
+**Sprint Focus:** Telemetrie-Dashboard entwerfen
+
+---
+
+### [Priority 28] v6r-type6-classification
+**Type-VI Klassifikation + cubic-root-Testfall integrieren**
+
+**Status:** 🔴 Open  \, **Beta:** 6.1 | **Zeta Risk:** Hoch – Validierung/Testfall offen
+
+**Scope:** theory, simulation, governance
+
+**R → Θ:** Type-VI Feldtyp mit Parametertabelle + CREP-Raster dokumentiert → Klassifikationstabellen erweitert, cubic-root jump Testfall beschrieben, METRICS/ETHICS referenziert
+
+**Next Steps:**
+- Feldtyp-Tabelle (β-Range, ζ<0, invertierte Sigmoid) in docs/field_type_classification_v1.1.md und METRICS.md ergänzen
+- CREP-Stabilitätsindizes für Type-VI + cubic-root jump Simulation (Klima-Kaskade) als Beispiel im simulation/Ordner skizzieren
+- Governance-Hook setzen (POLICY.md/ETHICS.md) inkl. Escalation-Level aus AGENTS Level 2/3
+
+**References:**
+- `FinalyzeVorschlägeChatGPT5.1Agent.txt:65-76`
+- `docs/utac_status_alignment_v1.2.md:35-120`
+
+**Sprint Focus:** Type-VI Klassifikation erweitern
+
+---
+
 ### [Priority 1] v6r-literature-review-sync
 **V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
 
@@ -972,10 +1060,23 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 | v6r-aeon-architecture | finalize-aeon-architecture | Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten) | Pending - ChatGPT5.1_AeonV1.0Bauplan.txt extraction |
 | v6r-slice-integration | finalize-slice-integration | Slice/CFF-Modell + Stereo-Vision-Experiment | Pending - models/psychophysics.py + experiments/ docs |
 | v6r-aeon-aletheia-bridge | finalize-aeon-aletheia-bridge | Aeon/Aletheia CREP/Telemetrie-Governance | Pending - AEON_ALETHEIA_INTEGRATION.md sync |
+| v6r-sigillin-parser | finalize-sigillin-parser | Sigillin-Parser/Index-Automation FIT | Pending - Parser/Validator entwerfen |
+| v6r-metrics-outlier | finalize-metrics-outlier | CREP/ΔAIC Robustheitsmetriken | Pending - METRICS.md Update |
+| v6r-data-lantern-dashboard | finalize-data-lantern-dashboard | Telemetrie-Dashboard + Alerts | Pending - Dashboard/Schema Draft |
+| v6r-type6-classification | finalize-type6-classification | Type-VI Klassifikation + cubic-root Demo | Pending - Tabelle/Testfall offen |
 
 ---
 
 ## Delta Updates
+
+### 2026-01-05 | v6-refresh-activation-gaps-telemetry
+
+✅ **Highlights:**
+- Neue Tasks `v6r-sigillin-parser`, `v6r-metrics-outlier`, `v6r-data-lantern-dashboard` und `v6r-type6-classification` aus `FinalyzeVorschlägeChatGPT5.1Agent.txt` übernommen (FIT-Splitting).
+- FIT-Mapping um finale Gegenstücke ergänzt und priority_order aktualisiert.
+- Updatedatum auf 2026-01-05 gesetzt, Fokus auf Sigillin-Automation, CREP/ΔAIC-Robustheit und Data-Lantern-Dashboard.
+
+---
 
 ### 2025-12-30 | v6-refresh-aeon-slice-bridge
 

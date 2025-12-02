@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2025-12-31T10:00:00Z'
+  updated_at: '2026-01-05T12:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -34,6 +34,10 @@ metadata:
     - finalize-tau-star-ci-hook
     - finalize-beta-telemetry
     - finalize-aeon-aletheia-bridge
+    - finalize-sigillin-parser
+    - finalize-metrics-outlier
+    - finalize-data-lantern-dashboard
+    - finalize-type6-classification
     note: v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation
 tasks:
 - id: finalize-vrig-research
@@ -813,6 +817,122 @@ tasks:
   priority: 20
   sprint_focus: Aeon/Aletheia-Governance-Parität im Finalize-Layer
   updated_at: '2025-12-31T10:00:00Z'
+- id: finalize-sigillin-parser
+  title: Sigillin-Parser & Index-Automation ausrollen (Finalize)
+  status: open
+  completeness: Parser/Validator als Activation Gap bekannt; Finalize-Deltas/CI-Gate fehlen.
+  scope:
+  - governance
+  - automation
+  - compliance
+  logistic_profile:
+    R_target: Sigillin-Parser/Index-Refresh läuft in Finalize-CI
+    Theta_condition: YAML/JSON/MD Validator + Δindex-Log in Chronik/Zenodo-Readiness verankert
+    beta_estimate: 5.9
+    zeta_risk: moderat bei fehlender Schema-Validierung
+  next_steps:
+  - Parser-Blueprint aus Metareflexion/AGENTS in Finalize-Validator übertragen (docs_index/feldtheorie_index refresh + Δindex-Log)
+  - CI/Makefile-Hook dokumentieren, der Parser + Index-Recount ausführt und Ergebnis in Finalize-Deltas/Chronik schreibt
+  - Reviewer-/Escalation-Pfad ergänzen, falls Parser Denormalisierung oder fehlende Trilayer erkennt
+  references:
+  - path: releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt
+    lines:
+    - 43
+    - 60
+  - path: docs/utac_status_alignment_v1.2.md
+    lines:
+    - 35
+    - 120
+  priority: 21
+  sprint_focus: Sigillin-Validator in Finalize-CI verankern
+  updated_at: '2026-01-05T12:00:00Z'
+- id: finalize-metrics-outlier
+  title: METRICS.md um CREP/ΔAIC-Robustheit finalisieren
+  status: open
+  completeness: ΔAIC/CI-Standards und CREP-Stabilität nicht in Finalize-Dokumentation verankert.
+  scope:
+  - metrics
+  - documentation
+  - governance
+  logistic_profile:
+    R_target: METRICS.md enthält Bootstrap/ΔAIC/CREP-Stabilitätsabschnitt
+    Theta_condition: Nullmodelle + CI/ΔAIC Pflichtfelder und Type-VI CREP-Raster in Finalize-Deltas referenziert
+    beta_estimate: 5.4
+    zeta_risk: moderat bei fehlender Robustheit
+  next_steps:
+  - Bootstrap/ΔAIC-Standards aus analysis/outlier_beta_review.py in METRICS.md + Finalize-Checklisten einpflegen
+  - CREP-Stabilitätsindizes (C/R/E/P) für implosive Felder formulieren und auf Type-VI-Kapitel verlinken
+  - Status-/Release-Reports um CI/ΔAIC Pflichtangaben und Outlier-Warnbanner erweitern
+  references:
+  - path: releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt
+    lines:
+    - 61
+    - 74
+  - path: docs/utac_status_alignment_v1.2.md
+    lines:
+    - 41
+    - 120
+  priority: 22
+  sprint_focus: Robustheits-Kriterien abschließen
+  updated_at: '2026-01-05T12:00:00Z'
+- id: finalize-data-lantern-dashboard
+  title: Data-Lantern Telemetrie-Dashboard finalisieren
+  status: open
+  completeness: Data-Lantern-Manifest vorhanden; Dashboard/Alert-Dokumentation fehlt im Finalize-Layer.
+  scope:
+  - telemetry
+  - visualization
+  - compliance
+  logistic_profile:
+    R_target: Live-Dashboard/Config dokumentiert + Alert-Schwellen definiert
+    Theta_condition: Data-Lantern-Schema + Dashboard-Blueprint in Finalize-Deltas/Zenodo-Playbook verlinkt
+    beta_estimate: 5.6
+    zeta_risk: moderat bei fehlender Monitoring-Dämpfung
+  next_steps:
+  - Schema/Manifest aus docs/utac_v2_data_lanterns.* und utac_status_alignment_v1.2.md zusammenführen (Felder, ΔAIC, CREP)
+  - Dashboard/Alert-Blueprint (Grafana/Panel) dokumentieren inkl. β-Drift >10% und CREP ≥0.7 Schwellen
+  - VISUALIZATION_INDEX.md / zenodo_release_playbook.md um Dashboard-Hand-off erweitern, Chronik-Warnbanner planen
+  references:
+  - path: releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt
+    lines:
+    - 63
+    - 76
+  - path: docs/utac_status_alignment_v1.2.md
+    lines:
+    - 41
+    - 83
+  priority: 23
+  sprint_focus: Telemetrie-Dashboard release-ready machen
+  updated_at: '2026-01-05T12:00:00Z'
+- id: finalize-type6-classification
+  title: Type-VI Klassifikation + cubic-root-Demo in Finalize spiegeln
+  status: open
+  completeness: Type-VI Feldtyp fehlt in Finalize-Docs; cubic-root-Testfall nicht dokumentiert.
+  scope:
+  - theory
+  - simulation
+  - governance
+  logistic_profile:
+    R_target: Type-VI Feldtyp + CREP-Raster in Finalize-Dokumentation verankert
+    Theta_condition: field_type_classification_v1.1.md/METRICS.md ergänzt, cubic-root jump Beispiel benannt, Governance-Links gesetzt
+    beta_estimate: 6.1
+    zeta_risk: hoch bei fehlender Validierung
+  next_steps:
+  - Type-VI Zeile (β-Range, ζ<0, invertierte Sigmoid) in field_type_classification_v1.1.md und METRICS.md ergänzen
+  - cubic-root jump Testfall (z.B. Klima-Kaskade) für simulation/-Ordner definieren und in Finalize-Deltas referenzieren
+  - POLICY/ETHICS mit Escalation-Leveln aus AGENTS Level 2/3 verknüpfen
+  references:
+  - path: releases/V6-Plans_etc/FinalyzeVorschlägeChatGPT5.1Agent.txt
+    lines:
+    - 65
+    - 76
+  - path: docs/utac_status_alignment_v1.2.md
+    lines:
+    - 35
+    - 120
+  priority: 24
+  sprint_focus: Type-VI Klassifikation release-ready machen
+  updated_at: '2026-01-05T12:00:00Z'
 fit_mapping:
 - todo_id: v6r-finalize-bridge
   finalize_id: finalize-fit-sync
@@ -858,6 +978,22 @@ fit_mapping:
   finalize_id: finalize-tau-star-ci-hook
   bridge_focus: CI-Gate für τ* + CREP ≥0.7
   status: planned
+- todo_id: v6r-sigillin-parser
+  finalize_id: finalize-sigillin-parser
+  bridge_focus: Sigillin-Parser/Index-Automation FIT
+  status: new
+- todo_id: v6r-metrics-outlier
+  finalize_id: finalize-metrics-outlier
+  bridge_focus: CREP/ΔAIC Robustheitsmetriken
+  status: new
+- todo_id: v6r-data-lantern-dashboard
+  finalize_id: finalize-data-lantern-dashboard
+  bridge_focus: Telemetrie-Dashboard + Alerts
+  status: new
+- todo_id: v6r-type6-classification
+  finalize_id: finalize-type6-classification
+  bridge_focus: Type-VI Klassifikation + cubic-root Demo
+  status: new
 - todo_id: v6r-beta-telemetry
   finalize_id: finalize-beta-telemetry
   bridge_focus: β-Drift/CREP Telemetrie → Deltas/Indices
@@ -875,6 +1011,12 @@ fit_mapping:
   bridge_focus: Aeon/Aletheia CREP/Telemetrie-Governance
   status: new
 delta_updates:
+- date: '2026-01-05'
+  label: finalize-activation-gaps-telemetry
+  highlights:
+  - Neue Finalize-Tasks (finalize-sigillin-parser, finalize-metrics-outlier, finalize-data-lantern-dashboard, finalize-type6-classification) aus FinalyzeVorschlägeChatGPT5.1Agent.txt übernommen.
+  - FIT-Mapping um Sigillin/CREP/Telemetrie/Type-VI Gegenstücke ergänzt; priority_order aktualisiert.
+  - Updatedatum auf 2026-01-05 gesetzt, Fokus auf Parser/Robustheit/Dashboard/Type-VI Klassifikation.
 - date: '2025-12-31'
   label: finalize-aeon-aletheia-bridge
   highlights:

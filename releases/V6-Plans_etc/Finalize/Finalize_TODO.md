@@ -2,6 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
+**Updated:** 2026-01-05T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -682,6 +683,94 @@ AEON_ALETHEIA-Governance (CREP-Gewichte, τ*-Buffer) in Finalize-Track integrier
 
 ---
 
+### [Priority 21] finalize-sigillin-parser
+**Sigillin-Parser & Index-Automation ausrollen (Finalize)**
+
+**Status:** 🔴 Open  \, **Beta:** 5.9 | **Zeta Risk:** Moderat – Schema/CI-Gate fehlen
+
+**Scope:** governance, automation, compliance
+
+**R → Θ:** Sigillin-Parser/Index-Refresh läuft in Finalize-CI → YAML/JSON/MD Validator + Δindex-Log in Chronik/Zenodo-Readiness verankert
+
+**Next Steps:**
+- Parser-Blueprint aus Metareflexion/AGENTS in Finalize-Validator übertragen (docs_index/feldtheorie_index refresh + Δindex-Log)
+- CI/Makefile-Hook dokumentieren, der Parser + Index-Recount ausführt und Ergebnis in Finalize-Deltas/Chronik schreibt
+- Reviewer-/Escalation-Pfad ergänzen, falls Parser Denormalisierung oder fehlende Trilayer erkennt
+
+**References:**
+- `FinalyzeVorschlägeChatGPT5.1Agent.txt:43-60`
+- `docs/utac_status_alignment_v1.2.md:35-120`
+
+**Sprint Focus:** Sigillin-Validator in Finalize-CI verankern
+
+---
+
+### [Priority 22] finalize-metrics-outlier
+**METRICS.md um CREP/ΔAIC-Robustheit finalisieren**
+
+**Status:** 🔴 Open  \, **Beta:** 5.4 | **Zeta Risk:** Moderat – Robustheits-Standards fehlen
+
+**Scope:** metrics, documentation, governance
+
+**R → Θ:** METRICS.md enthält Bootstrap/ΔAIC/CREP-Stabilitätsabschnitt → Nullmodelle + CI/ΔAIC Pflichtfelder und Type-VI CREP-Raster in Finalize-Deltas referenziert
+
+**Next Steps:**
+- Bootstrap/ΔAIC-Standards aus analysis/outlier_beta_review.py in METRICS.md + Finalize-Checklisten einpflegen
+- CREP-Stabilitätsindizes (C/R/E/P) für implosive Felder formulieren und auf Type-VI-Kapitel verlinken
+- Status-/Release-Reports um CI/ΔAIC Pflichtangaben und Outlier-Warnbanner erweitern
+
+**References:**
+- `FinalyzeVorschlägeChatGPT5.1Agent.txt:61-74`
+- `docs/utac_status_alignment_v1.2.md:41-120`
+
+**Sprint Focus:** Robustheits-Kriterien abschließen
+
+---
+
+### [Priority 23] finalize-data-lantern-dashboard
+**Data-Lantern Telemetrie-Dashboard finalisieren**
+
+**Status:** 🔴 Open  \, **Beta:** 5.6 | **Zeta Risk:** Moderat – Monitoring-Dämpfung fehlt
+
+**Scope:** telemetry, visualization, compliance
+
+**R → Θ:** Live-Dashboard/Config dokumentiert + Alert-Schwellen definiert → Data-Lantern-Schema + Dashboard-Blueprint in Finalize-Deltas/Zenodo-Playbook verlinkt
+
+**Next Steps:**
+- Schema/Manifest aus docs/utac_v2_data_lanterns.* und utac_status_alignment_v1.2.md zusammenführen (Felder, ΔAIC, CREP)
+- Dashboard/Alert-Blueprint (Grafana/Panel) dokumentieren inkl. β-Drift >10% und CREP ≥0.7 Schwellen
+- VISUALIZATION_INDEX.md / zenodo_release_playbook.md um Dashboard-Hand-off erweitern, Chronik-Warnbanner planen
+
+**References:**
+- `FinalyzeVorschlägeChatGPT5.1Agent.txt:63-76`
+- `docs/utac_status_alignment_v1.2.md:41-83`
+
+**Sprint Focus:** Telemetrie-Dashboard release-ready machen
+
+---
+
+### [Priority 24] finalize-type6-classification
+**Type-VI Klassifikation + cubic-root-Demo in Finalize spiegeln**
+
+**Status:** 🔴 Open  \, **Beta:** 6.1 | **Zeta Risk:** Hoch – Validierung/Testfall offen
+
+**Scope:** theory, simulation, governance
+
+**R → Θ:** Type-VI Feldtyp + CREP-Raster in Finalize-Dokumentation verankert → field_type_classification_v1.1.md/METRICS.md ergänzt, cubic-root jump Beispiel benannt, Governance-Links gesetzt
+
+**Next Steps:**
+- Type-VI Zeile (β-Range, ζ<0, invertierte Sigmoid) in field_type_classification_v1.1.md und METRICS.md ergänzen
+- cubic-root jump Testfall (z.B. Klima-Kaskade) für simulation/-Ordner definieren und in Finalize-Deltas referenzieren
+- POLICY/ETHICS mit Escalation-Leveln aus AGENTS Level 2/3 verknüpfen
+
+**References:**
+- `FinalyzeVorschlägeChatGPT5.1Agent.txt:65-76`
+- `docs/utac_status_alignment_v1.2.md:35-120`
+
+**Sprint Focus:** Type-VI Klassifikation release-ready machen
+
+---
+
 ## FIT Mapping ToDorefresh ↔ Finalize
 
 | ToDorefresh ID | Finalize ID | Bridge Focus | Status |
@@ -701,10 +790,23 @@ AEON_ALETHEIA-Governance (CREP-Gewichte, τ*-Buffer) in Finalize-Track integrier
 | v6r-aeon-architecture | finalize-aeon-architecture | Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten) | Mapping ergänzt, Bauplanextrakt offen |
 | v6r-slice-integration | finalize-slice-integration | Slice/CFF-Modell + Stereo-Vision-Experiment | Handoff geplant, Formeln/Tabellen offen |
 | v6r-aeon-aletheia-bridge | finalize-aeon-aletheia-bridge | Aeon/Aletheia CREP/Telemetrie-Governance | Neu angelegt, Governance-Mapping offen |
+| v6r-sigillin-parser | finalize-sigillin-parser | Sigillin-Parser/Index-Automation FIT | Pending - Parser/CI-Gate dokumentieren |
+| v6r-metrics-outlier | finalize-metrics-outlier | CREP/ΔAIC Robustheitsmetriken | Pending - METRICS/Checkliste aktualisieren |
+| v6r-data-lantern-dashboard | finalize-data-lantern-dashboard | Telemetrie-Dashboard + Alerts | Pending - Blueprint/Docs fehlen |
+| v6r-type6-classification | finalize-type6-classification | Type-VI Klassifikation + cubic-root Demo | Pending - Tabelle/Testfall offen |
 
 ---
 
 ## Delta Updates
+
+### 2026-01-05 | finalize-activation-gaps-telemetry
+
+✅ **Highlights:**
+- Neue Finalize-Tasks `finalize-sigillin-parser`, `finalize-metrics-outlier`, `finalize-data-lantern-dashboard` und `finalize-type6-classification` aus `FinalyzeVorschlägeChatGPT5.1Agent.txt` übernommen.
+- FIT-Mapping um Sigillin/CREP/Telemetrie/Type-VI Gegenstücke ergänzt; priority_order aktualisiert.
+- Updatedatum auf 2026-01-05 gesetzt, Fokus auf Parser/Robustheit/Dashboard/Type-VI Klassifikation.
+
+---
 
 ### 2025-12-31 | finalize-aeon-aletheia-bridge
 
