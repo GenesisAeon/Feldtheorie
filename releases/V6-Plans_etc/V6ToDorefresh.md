@@ -209,15 +209,24 @@ Asynchrone Dual-Flow Demo (Implosion ⊥ Photonen) → simulation/tesseract_time
 ### [Priority 4] v6r-formulas-collection
 **Zentrale Formel-Sammlung für alle V6-Kernformeln**
 
-**Status:** 🔴 Open
-**Beta:** 4.1 | **Zeta Risk:** Niedrig
+**Status:** 🟢 Completed (2025-12-02)
+**Beta:** 4.1 | **Zeta Risk:** Neutralisiert – Formel-Dokumentation vollständig
 
 **Scope:** documentation, theory
 
 **R → Θ:**
-Vollständige Formelreferenz mit Herleitungen → docs/v6_formulas.md mit allen Formeln + Quellen + Einheiten + Gültigkeitsbereichen
+✅ Vollständige Formelreferenz mit Herleitungen → docs/v6_formulas.md mit allen Formeln + Quellen + Einheiten + Gültigkeitsbereichen + Speculation Levels
 
-**Next Steps - Kernformeln:**
+**Completed Actions:**
+- ✅ **10 Kernformeln dokumentiert:** v_RIG, τ*, ψ_genesis, V_pyr, CREP-Indizes, Δt_Q, SFF, A₁₂, ξ, UTAC Logistic Response
+- ✅ **Vollständige Herleitungen** mit Dimensionsanalyse und physikalischer Interpretation
+- ✅ **Speculation Levels (SL-1 bis SL-5)** für jede Formel dokumentiert
+- ✅ **Falsifikationskriterien** definiert (A₁₂<10⁻⁵, ξ>10⁻¹⁵, Metabolic Test)
+- ✅ **Empirische Validierung** referenziert (Böhme Anomaly 1.3%, EEG Microstates, Flash-lag)
+- ✅ **715 Zeilen** umfassende Dokumentation mit Zusammenfassungstabelle
+- ✅ **Querverweise** zu V6_Literature_Review.md, references_v6.bib, V6_Wellenfunktions_Integrationsplan.md
+
+**Original Next Steps - Kernformeln:**
 
 ```
 v_RIG = c/(α⁻¹·Φ) = 299792 km/s / (137.036 × 1.618) ≈ 1351.8 km/s
