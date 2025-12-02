@@ -1,7 +1,7 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2025-12-28T10:00:00Z'
+  updated_at: '2025-12-29T10:00:00Z'
   scope: releases/V6-Plans_etc
   description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen
   logistic_frame:
@@ -34,6 +34,8 @@ metadata:
     - v6r-crep-guard-ci
     - v6r-zenodo-evidence
     - v6r-crep-audit-log
+    - v6r-tau-star-ci-hook
+    - v6r-beta-telemetry
     note: Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)
 tasks:
 - id: v6r-trilayer-sync
@@ -757,6 +759,70 @@ tasks:
     - 5
   priority: 19
   sprint_focus: Escalation-Trace & Reviewer-Gate aktivieren
+- id: v6r-tau-star-ci-hook
+  title: CI/Pre-Commit-Guard für τ*-Default + CREP-Schwellen einsetzen
+  status: open
+  completeness: Guard-CLI vorhanden; Makefile/nox-Hooks und Reviewer-Routing fehlen.
+  scope:
+  - ci
+  - governance
+  - validation
+  logistic_profile:
+    R_target: τ*-Default + CREP-Gates laufen in CI/Pre-Commit
+    Theta_condition: tools.crep_guard.py mit checklist + log aktiviert; Reviewer-Slot gesetzt
+    beta_estimate: 4.9
+    zeta_risk: hoch ohne Gate bei ζ<0
+  next_steps:
+  - Makefile-Target validate-type6 anlegen (`python -m tools.crep_guard --threshold 0.7 --tau-default 0.1 --checklist releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml --log logs/type_vi_detections.jsonl`).
+  - Nox/pre-commit-Eintrag ergänzen, der RK4/τ*-Pfad prüft und Euler-Methoden blockiert (activation_gaps_tau_star.md als Referenz).
+  - Reviewer-Routing (Level 2/3) aus MAINTAINERS.md dokumentieren und Chronik/Finalize-Deltas verlinken.
+  references:
+  - path: releases/V6-Plans_etc/activation_gaps_tau_star.md
+    lines:
+    - 1
+    - 36
+  - path: releases/V6-Plans_etc/type6_crep_tau_star_checklist.md
+    lines:
+    - 1
+    - 49
+  - path: tools/crep_guard.py
+    lines:
+    - 1
+    - 120
+  priority: 20
+  sprint_focus: CI-Gate für τ*/CREP aufsetzen
+- id: v6r-beta-telemetry
+  title: β-Drift & CREP-Telemetrie in Metrics/Audit spiegeln
+  status: open
+  completeness: Audit-Log-Starter vorhanden; β-Drift/CREP-Warnungen fehlen in Metrics/Chronik.
+  scope:
+  - telemetry
+  - metrics
+  - governance
+  logistic_profile:
+    R_target: β-Drift (>10%) + CREP ≥0.7 mit Warnbanner in Metrics/Chronik
+    Theta_condition: metrics/beta_evolution.csv + logs/type_vi_detections.jsonl führen Drift/CREP-Felder, Chronik verweist
+    beta_estimate: 4.7
+    zeta_risk: moderat ohne Telemetrie-Alarm
+  next_steps:
+  - Schema für metrics/beta_evolution.csv um beta_estimate, drift_flag, domain, timestamp und type6_tag ergänzen.
+  - CREP/τ*-Detections via tools.crep_guard.py --log-detection nach logs/type_vi_detections.jsonl routen und im Chronik-Delta referenzieren.
+  - Dashboard/Chronik-Hinweis vorbereiten: Level-1 Warnung bei CREP ≥0.7 oder β-Drift >10% (Mapping zu type6_crep_tau_star_checklist.md).
+  references:
+  - path: releases/V6-Plans_etc/activation_gaps_tau_star.md
+    lines:
+    - 1
+    - 36
+  - path: metrics/beta_evolution.csv
+    lines:
+    - 1
+    - 50
+  - path: logs/type_vi_detections.jsonl
+    lines:
+    - 1
+    - 5
+  priority: 21
+  sprint_focus: Telemetrie-Warnkette aktivieren
   updated_at: '2025-12-28T10:00:00Z'
 fit_mapping:
 - todo_id: v6r-finalize-bridge
@@ -799,7 +865,21 @@ fit_mapping:
   finalize_id: finalize-crep-audit-log
   bridge_focus: Type-VI Audit-Log + Reviewer-Routing
   status: log-starter-ready
+- todo_id: v6r-tau-star-ci-hook
+  finalize_id: finalize-tau-star-ci-hook
+  bridge_focus: CI-Gate für τ* + CREP ≥0.7
+  status: planned
+- todo_id: v6r-beta-telemetry
+  finalize_id: finalize-beta-telemetry
+  bridge_focus: β-Drift/CREP Telemetrie → Deltas/Indices
+  status: planned
 delta_updates:
+- date: '2025-12-29'
+  label: v6-refresh-ci-telemetry
+  highlights:
+  - Neue Tasks v6r-tau-star-ci-hook und v6r-beta-telemetry ergänzt (CI-Gate + β/CREP-Telemetrie) inkl. FIT-Mapping zu Finalize.
+  - Priority-Order/Updatedatum angepasst; Bezug auf activation_gaps_tau_star.md und type6_crep_tau_star_checklist.* dokumentiert.
+  - Telemetrie/Audit-Log-Verknüpfung zu logs/type_vi_detections.jsonl als ToDo erfasst (Promt_für_Agenten.txt Vorgabe).
 - date: '2025-12-28'
   label: v6-refresh-crep-audit-log
   highlights:
