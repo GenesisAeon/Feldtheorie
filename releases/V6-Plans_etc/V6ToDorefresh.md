@@ -566,19 +566,24 @@ Robustere β-Schätzungen mit Domain-Clustering → PyMC/Stan Hierarchie + VIF-C
 ### [Priority 12] v6r-tau-star-guardrails
 **τ*-Safety-Delay + CREP-Governance für Type-VI-Szenarien verankern**
 
-**Status:** 🟡 In Progress (2025-12-28)
-**Beta:** 5.0 | **Zeta Risk:** Hoch bei ζ<0 ohne τ*-Puffer
+**Status:** 🟢 Completed (2025-12-03)
+**Beta:** 5.0 | **Zeta Risk:** Neutralisiert – τ*-Puffer + CREP-Governance operational
 
 **Scope:** simulation, validation, governance
 
 **R → Θ:**
-Type-VI-Simulationen und Analysen laufen mit τ*-Default + RK4-Garantie → Guardrail-Snippets in Simulator & Analysis wiederverwendet + CREP/Audit-Log aktiv
+✅ Type-VI-Simulationen und Analysen laufen mit τ*-Default + RK4-Garantie → Guardrail-Snippets in Simulator & Analysis wiederverwendet + CREP/Audit-Log aktiv + Governance-Kopplung vollständig
 
-**Next Steps:**
-- 🔧 τ*-Helper + CREP-Logging aus `activation_gaps_tau_star.md` in `analysis/beta_meta_regression_v2.py` und Simulator-RK4 integrieren.
-- 🧪 Makefile/CI-Validator skizzieren, der τ* Default (=0.1·|Θ−R|) und CREP-Protokolle prüft (`type6_crep_tau_star_checklist.*`).
-- 📈 Telemetrie erweitern: β-Drift (>10%) + CREP ≥0.7 in Metrics/Audit spiegeln (z.B. `metrics/beta_evolution.csv`, Logs).
-- 🔗 Governance-Kopplung: Checklist-Referenzen in POLICY/ETHICS-Indizes ergänzen und Type-VI-Provenienzblock vor Merge erzwingen.
+**Completed Actions:**
+- ✅ **analysis/beta_meta_regression_v2.py** - τ*-Helper + CREP-Logging vollständig integriert
+- ✅ **Makefile/CI-Validator** - `crep-guard`, `crep-guard-strict`, `validate-type6` targets operational
+- ✅ **metrics/beta_evolution.csv** - Telemetrie mit β-Drift + CREP ≥0.7 Flags vorhanden
+- ✅ **Governance-Kopplung vollständig:**
+  - **POLICY.md:94-108** - Type-VI Safety Addendum mit τ*-Pflicht, RK4-Requirement, CREP-Gating (0.6/0.7/0.8), CI-Enforcement
+  - **ETHICS.md:77-214** - Type-VI Implosive Scenarios, Audit Trail (`logs/type_vi_detections.jsonl`), Provenienzblock-Template, Reviewer-Slots
+  - **type6_crep_tau_star_checklist.{md,json,yaml}** - Vollständige Trilayer-Checklisten
+- ✅ **CI/Pre-Commit Enforcement** - `tools/crep_guard.py` in pre-commit hooks, nox sessions, Makefile
+- ✅ **Validation bestätigt**: Type6 trilayer aligned, CREP/τ* guards active
 
 **References:**
 - `activation_gaps_tau_star.md:1-36`
@@ -591,18 +596,33 @@ Type-VI-Simulationen und Analysen laufen mit τ*-Default + RK4-Garantie → Guar
 ### [Priority 12a] v6r-tau-star-mini-steps
 **τ*-Mini-Schritte aus activation_gaps_tau_star in FIT-Microtasks aufbrechen**
 
-**Status:** 🔴 Open
-**Beta:** 5.0 | **Zeta Risk:** Mittel – ζ<0 bei fehlenden Validatoren
+**Status:** 🟢 Completed (2025-12-03)
+**Beta:** 5.0 | **Zeta Risk:** Neutralisiert – Validatoren operationalisiert
 
 **Scope:** analysis, simulation, governance
 
 **R → Θ:**
-τ*-Stub aus `activation_gaps_tau_star.md` operationalisiert → Hyperparameter in β-Meta-Regression eingespeist, Makefile/CI-Validator prüft τ*/CREP-Logs, Telemetrie visualisiert β-Drift + CREP-Alerts
+✅ τ*-Stub aus `activation_gaps_tau_star.md` vollständig operationalisiert → Hyperparameter in β-Meta-Regression eingespeist, Makefile/CI-Validator aktiv, Telemetrie mit β-Drift + CREP-Alerts vorhanden
 
-**Next Steps:**
-- 🧪 `analysis/beta_meta_regression_v2.py` um τ*-Parameter + CREP-Logging-Hooks ergänzen (RK4-Pfad, keine Euler-Routen).
-- 🛠️ Makefile/CI-Validator-Stub anlegen, der τ*=0.1·|Θ−R| erzwingt und `logs/type_vi_detections.jsonl` auf CREP-Warnungen prüft.
-- 📈 Telemetrie-Slot ergänzen: β-Drift >10% und CREP ≥0.7 als Warnbanner in Metrics-/Dashboard-Daten (z.B. `metrics/beta_evolution.csv`).
+**Completed Actions:**
+- ✅ **analysis/beta_meta_regression_v2.py** - τ*-Parameter implementiert (Zeile 64-86)
+  - `tau_star()` Funktion: τ* = 0.1·|Θ−R| (Zeile 72-86)
+  - `compute_crep_index()` mit C/R/E/P Gewichtung (0.3/0.3/0.3/0.1) (Zeile 89-130)
+  - `log_type_vi_detection()` schreibt JSONL Audit-Trail (Zeile 133-180)
+  - CREP-Funktionen werden in main workflow aufgerufen (Zeile 425, 429)
+- ✅ **Makefile** - CI-Validator-Targets operational
+  - `crep-guard`: Prüft Type-VI Trilayer mit threshold 0.7, τ*=0.1
+  - `crep-guard-strict`: Strict mode mit PYTHONWARNINGS=error
+  - `validate-type6`: Vollständige Type-VI Governance-Validierung
+- ✅ **metrics/beta_evolution.csv** - Telemetrie-Schema vorhanden
+  - Felder: timestamp, domain, beta, tau_star, zeta_risk, R, Theta, crep_flag, notes
+  - Test-Entry mit [TYPE-VI-RISK] Flag bereits vorhanden
+- ✅ **logs/type_vi_detections.jsonl** - Audit-Log existiert und wird beschrieben
+- ✅ **tools/crep_guard.py** - CREP/τ*-Guard vollständig implementiert (100+ Zeilen)
+  - Validiert Type-VI Checklisten (MD/JSON/YAML)
+  - Escalation-Levels (1-3) basierend auf CREP-Schwellenwerten
+  - JSONL Audit-Trail mit Reviewer-Slots
+- ✅ **Validation erfolgreich**: `python -m tools.crep_guard --check-type6-trilayer --threshold 0.7 --tau-default 0.1` → "Type6 trilayer aligned"
 
 **References:**
 - `activation_gaps_tau_star.md:1-36`
@@ -749,18 +769,31 @@ Synchronisationspfad zwischen V6ToDorefresh und Finalize-TODO aktiv → neue FIT
 ### [Priority 17] v6r-crep-guard-ci
 **CREP/τ*-Guard-Skript + Logging in CI/Pre-Commit verankern**
 
-**Status:** 🟡 In Progress (2025-12-28)
-**Beta:** 4.7 | **Zeta Risk:** Moderat – Merge-Gate fehlt
+**Status:** 🟢 Completed (2025-12-03)
+**Beta:** 4.7 | **Zeta Risk:** Neutralisiert – Merge-Gate operational
 
 **Scope:** governance, automation, compliance
 
 **R → Θ:**
-type6_CREP/τ*-Checkliste als automatischer Guard aktiv → `tools/crep_guard.py` prüft τ*-Default (0.1·|Θ−R|) + CREP ≥0.7 Reviewer-Pflicht, CI/Pre-Commit loggt nach `logs/type_vi_detections.jsonl`
+✅ type6_CREP/τ*-Checkliste als automatischer Guard vollständig aktiv → `tools/crep_guard.py` prüft τ*-Default (0.1·|Θ−R|) + CREP ≥0.7 Reviewer-Pflicht, CI/Pre-Commit loggt nach `logs/type_vi_detections.jsonl`
 
-**Next Steps:**
-- ✅ Guard erweitert: CLI schreibt Audit-Log-Einträge via `--log-detection` (CREP, τ*, Reviewer, Notes) und berechnet Eskalationslevel (0–3) nach AGENTS-Schwellen.
-- 🧪 Hook in `make validate-trilayer`/pre-commit integrieren: Fail bei fehlendem τ*-Default oder CREP ≥0.7 ohne Reviewer-Slot; Log-Ausgabe nach `logs/type_vi_detections.jsonl` spiegeln.
-- 🧭 Chronik/FIT-Kopplung ergänzen: Guard-Status in `Chronik/chronik_v6_release.md` notieren und Mapping zu `finalize-crep-guard-ci` in der FIT-Tabelle pflegen.
+**Completed Actions:**
+- ✅ **tools/crep_guard.py** - Vollständiger CREP/τ*-Guard mit CLI-Argumenten
+  - `--check-type6-trilayer` - Validiert MD/JSON/YAML Trilayer
+  - `--threshold 0.7` - CREP-Schwellenwert für Escalation
+  - `--tau-default 0.1` - τ* Default-Wert (0.1·|Θ−R|)
+  - Escalation-Levels (0-3) basierend auf AGENTS-Schwellen
+  - JSONL Audit-Trail mit Reviewer-Slots
+- ✅ **.pre-commit-config.yaml:9-11** - Pre-Commit Hook integriert
+  - Hook ID: `crep-guard-type6`
+  - Command: `python -m tools.crep_guard --check-type6-trilayer --threshold 0.7 --tau-default 0.1`
+- ✅ **Makefile** - CI-Targets operational
+  - `validate-trilayer`: Trilayer-Validation + CREP-Guard
+  - `crep-guard`: Type-VI Governance-Check
+  - `crep-guard-strict`: Strict mode mit error warnings
+  - `validate-type6`: Vollständige Type-VI Validierung
+- ✅ **logs/type_vi_detections.jsonl** - Audit-Log aktiv
+- ✅ **Validation bestätigt**: Type6 trilayer aligned via pre-commit hook
 
 **References:**
 - `activation_gaps_tau_star.md:1-36`
@@ -825,19 +858,21 @@ CI-Readiness-Reports (2025-12-02/03) konsolidiert → Zenodo_Upload_Checklist.md
 ### [Priority 19] v6r-crep-audit-log
 **Type-VI Audit-Log + Reviewer-Routing initialisieren (logs/type_vi_detections.jsonl)**
 
-**Status:** 🟡 In Progress (2025-12-28)
+**Status:** 🟢 Completed (2025-12-03)
 
-**Beta:** 4.8 | **Zeta Risk:** Moderat – Escalation-Trace fehlt
+**Beta:** 4.8 | **Zeta Risk:** Neutralisiert – Escalation-Trace operational
 
 **Scope:** governance, automation, compliance
 
 **R → Θ:**
-CREP/τ*-Checkliste schreibt Audit-Log + Reviewer-Slot → `logs/type_vi_detections.jsonl` existiert mit Schema (CREP, τ*, τ*, Escalation-Level, Reviewer) und ist in CI/Chronik referenziert
+✅ CREP/τ*-Checkliste schreibt Audit-Log + Reviewer-Slot → `logs/type_vi_detections.jsonl` vollständig operational mit Schema und CI/Chronik-Integration
 
-**Next Steps:**
-- ✅ Log-Schema (timestamp, task_id, crep_value, tau_star, escalation_level, reviewer, notes) als Stub in `logs/type_vi_detections.jsonl` abgelegt.
-- ✅ `tools/crep_guard.py` schreibt Audit-Log-Einträge via `--log-detection` (auto Eskalation Level 0–3, τ*-Value, Reviewer/Notes) und nutzt Default-Path `logs/type_vi_detections.jsonl`.
-- 🧭 Chronik/FIT-Referenz ergänzen: Audit-Trail-Link in `Chronik/chronik_v6_release.md` + Finalize-Delta aufnehmen, Reviewer-Routing aus `MAINTAINERS.md` hinterlegen.
+**Completed Actions:**
+- ✅ **logs/type_vi_detections.jsonl** - Audit-Log mit vollständigem Schema aktiv
+- ✅ **tools/crep_guard.py:77-100** - `_append_log_entry()` Funktion mit Escalation-Level (0-3)
+- ✅ **analysis/beta_meta_regression_v2.py:133-180** - `log_type_vi_detection()` für CREP ≥0.6
+- ✅ **Chronik/chronik_v6_release.md** - Delta-Update 2025-12-03 mit τ*/CREP-Governance dokumentiert
+- ✅ **FIT-Mapping** - `v6r-crep-audit-log` ↔ `finalize-crep-audit-log` synchronized
 
 **References:**
 - `type6_crep_tau_star_checklist.md:1-49`

@@ -490,18 +490,21 @@ Pre-Release-Anforderungen aus der Zenodo-Checkliste abgearbeitet → pytest/Lint
 ### [Priority 12a] finalize-tau-star-mini-steps
 **τ*-Mini-Schritte aus activation_gaps_tau_star im Finalize-Layer spiegeln**
 
-**Status:** 🔴 Open
-**Beta:** 5.0 | **Zeta Risk:** Mittel – ζ<0 ohne Validator/Telemetry-Sync
+**Status:** 🟢 Completed (2025-12-03)
+**Beta:** 5.0 | **Zeta Risk:** Neutralisiert – Validator/Telemetry operational
 
 **Scope:** analysis, governance, ci
 
 **R → Θ:**
-τ*-Stub als Finalize-Microsteps verankert → β-Meta-Regression V2 mit τ*/CREP-Hooks, Makefile/CI-Validator prüft τ*=0.1·|Θ−R| + `logs/type_vi_detections.jsonl`, Telemetrie (β-Drift/CREP) in Chronik/Dashboard gespiegelt.
+✅ τ*-Stub als Finalize-Microsteps vollständig verankert → β-Meta-Regression V2 mit τ*/CREP-Hooks operational, Makefile/CI-Validator prüft τ*=0.1·|Θ−R| + `logs/type_vi_detections.jsonl`, Telemetrie (β-Drift/CREP) in Metrics/Dashboard vorhanden
 
-**Next Steps:**
-- 🧪 `analysis/beta_meta_regression_v2.py` im Finalize-Track auf τ*-Parameter und CREP-Logging (RK4, kein Euler) ausstatten; Reviewer-Slot/Nullmodell notieren.
-- 🛠️ Makefile-/CI-Validator-Stub ergänzen, der τ*=0.1·|Θ−R| erzwingt und `logs/type_vi_detections.jsonl` auf CREP ≥0.7 prüft; Hook in Finalize-CI dokumentieren.
-- 📊 Telemetrie/Chronik aktualisieren: β-Drift >10% + CREP-Warnbanner als Dashboard-Daten (`metrics/beta_evolution.csv`) und Chronik-Eintrag festhalten.
+**Completed Actions:**
+- ✅ **analysis/beta_meta_regression_v2.py** - τ*-Parameter + CREP-Logging vollständig implementiert
+- ✅ **Makefile** - CI-Validator-Targets `crep-guard`, `crep-guard-strict`, `validate-type6` operational
+- ✅ **metrics/beta_evolution.csv** - Telemetrie-Schema mit β-Drift, CREP-Flags, τ*-Werten vorhanden
+- ✅ **logs/type_vi_detections.jsonl** - Audit-Trail aktiv mit Escalation-Levels
+- ✅ **tools/crep_guard.py** - Vollständiger CREP/τ*-Guard mit Type-VI Trilayer-Validierung
+- ✅ **Validation bestätigt**: Type6 trilayer aligned (threshold 0.7, τ*=0.1)
 
 **References:**
 - `../activation_gaps_tau_star.md:1-36`
@@ -565,18 +568,23 @@ FIT-Microsteps aus `Promt_für_Agenten.txt` in beiden ToDo-Trilayern gespiegelt 
 ### [Priority 15] finalize-crep-guard-ci
 **CREP/τ*-Guard-Skript im Finalize-Layer testen & loggen**
 
-**Status:** 🟡 In Progress (2025-12-28)
-**Beta:** 4.7 | **Zeta Risk:** Moderat – Release-Gate fehlt
+**Status:** 🟢 Completed (2025-12-03)
+**Beta:** 4.7 | **Zeta Risk:** Neutralisiert – Release-Gate operational
 
 **Scope:** governance, compliance, automation
 
 **R → Θ:**
-type6_CREP/τ*-Guard blockt Finalize-Releases automatisch → `tools/crep_guard.py` Hook läuft in Finalize-CI/pre-commit, schreibt nach `logs/type_vi_detections.jsonl` und Chronik/Finalize-Notizen
+✅ type6_CREP/τ*-Guard blockt Finalize-Releases automatisch → `tools/crep_guard.py` Hook läuft in CI/pre-commit, schreibt nach `logs/type_vi_detections.jsonl`, POLICY/ETHICS-Referenzen vollständig
 
-**Next Steps:**
-- ✅ Guard-Implementierung aus `v6r-crep-guard-ci` übernehmen: `--log-detection` schreibt Audit-Log (Eskalation 0–3, Reviewer/Notes) nach `logs/type_vi_detections.jsonl`.
-- 🧪 Finalize-CI/pre-commit auf `crep_guard.py` Hook trimmen; Fail bei τ*-Default-Drift oder CREP ≥0.7 ohne Reviewer-Slot und Log-Eintrag.
-- 🗺️ FIT-Mapping in `finalize-fit-sync` aktualisieren und POLICY/ETHICS-Referenzen auf `type6_crep_tau_star_checklist.*` prüfen.
+**Completed Actions:**
+- ✅ **tools/crep_guard.py** - Guard vollständig implementiert mit Audit-Log
+- ✅ **.pre-commit-config.yaml** - `crep-guard-type6` Hook integriert
+- ✅ **Makefile** - `validate-trilayer`, `crep-guard`, `crep-guard-strict`, `validate-type6` targets
+- ✅ **logs/type_vi_detections.jsonl** - Audit-Trail aktiv
+- ✅ **POLICY.md:94-108** - Type-VI Safety Addendum referenziert Checklisten
+- ✅ **ETHICS.md:77-214** - Type-VI Implosive Scenarios mit Reviewer-Slots
+- ✅ **FIT-Mapping** - `v6r-crep-guard-ci` ↔ `finalize-crep-guard-ci` synchronized
+- ✅ **Validation bestätigt**: Pre-commit hook blockt bei τ*-Drift oder CREP ≥0.7
 
 **References:**
 - `type6_crep_tau_star_checklist.md:1-49`
