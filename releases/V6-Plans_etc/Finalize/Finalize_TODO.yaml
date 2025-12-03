@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2026-01-05T12:00:00Z'
+  updated_at: '2026-01-06T12:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -30,6 +30,7 @@ metadata:
     - finalize-fit-sync
     - finalize-crep-guard-ci
     - finalize-zenodo-evidence
+    - finalize-zenodo-ci-sync
     - finalize-crep-audit-log
     - finalize-tau-star-ci-hook
     - finalize-beta-telemetry
@@ -667,6 +668,40 @@ tasks:
     - 690
   priority: 16
   sprint_focus: Zenodo-DOI-Belege + Provenienzpfad sichern
+- id: finalize-zenodo-ci-sync
+  title: ZENODO_CI_STATUS-Reports (Conditional→Full GO) in Finalize/Checklist/Chronik verankern
+  status: open
+  completeness: CI-Statusberichte liegen vor, Finalize/Checklist/Chronik spiegeln Full-Go-Daten (42/42 Tests, 87% Coverage) noch nicht.
+  scope:
+  - compliance
+  - documentation
+  - testing
+  logistic_profile:
+    R_target: CI-Readiness-Daten im Finalize-Layer verlinkt
+    Theta_condition: Zenodo_Upload_Checklist.md + Chronik enthalten Statusblock mit Coverage/Testzahlen und Artefaktpfaden
+    beta_estimate: 5.9
+    zeta_risk: moderat – fehlende Provenienz
+  next_steps:
+  - Kerndaten aus ZENODO_CI_STATUS_2025-12-02.md und ZENODO_CI_STATUS_2025-12-03.md extrahieren und in Zenodo_Upload_Checklist.md
+    + Finalize-README/Chronik einbetten
+  - FIT-Sync zu v6r-zenodo-ci-sync setzen, Δ-Update in Chronik und ZENODO_READINESS_REPORT.md mit Full-Go Hinweis ergänzen
+  - Log-/Artefaktpfade (z.B. make validate-type6 Output, Coverage 87%) dokumentieren und Zenodo-Upload vorbereiten
+  references:
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-02.md
+    lines:
+    - 1
+    - 20
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
+    lines:
+    - 1
+    - 26
+  - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
+    lines:
+    - 1
+    - 120
+  priority: 25
+  sprint_focus: CI-Provenienz für Zenodo/Chronik sichern
+  updated_at: '2026-01-06T12:00:00Z'
 - id: finalize-crep-audit-log
   title: Type-VI Audit-Log & Reviewer-Routing im Finalize-Layer aktivieren
   status: in_progress
@@ -970,6 +1005,10 @@ fit_mapping:
   finalize_id: finalize-zenodo-evidence
   bridge_focus: Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links
   status: new
+- todo_id: v6r-zenodo-ci-sync
+  finalize_id: finalize-zenodo-ci-sync
+  bridge_focus: Zenodo CI-Statusberichte → Checklist/Chronik/Finalize
+  status: planned
 - todo_id: v6r-crep-audit-log
   finalize_id: finalize-crep-audit-log
   bridge_focus: Type-VI Audit-Log + Reviewer-Routing

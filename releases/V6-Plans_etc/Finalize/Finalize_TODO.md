@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-01-05T12:00:00Z
+**Updated:** 2026-01-06T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -589,6 +589,32 @@ Zenodo_Upload_Checklist.md (Abschnitt I–III) mit realen Test-/Lint-/Mypy-/Cove
 
 ---
 
+### [Priority 25] finalize-zenodo-ci-sync
+**ZENODO_CI_STATUS-Reports (Conditional→Full GO) in Finalize/Checklist/Chronik verankern**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.9 | **Zeta Risk:** Moderat – Release-Provenienz ohne CI-Daten unvollständig
+
+**Scope:** compliance, documentation, testing
+
+**R → Θ:**
+CI-Readiness-Daten (42/42 Tests, 87% Coverage, Full GO) aus 2025-12-02/03 in Zenodo_Upload_Checklist.md und Chronik einbetten → Finalize-Layer referenziert Status + Artefaktpfade
+
+**Next Steps:**
+- 📝 Kerndaten aus `ZENODO_CI_STATUS_2025-12-02.md` und `ZENODO_CI_STATUS_2025-12-03.md` extrahieren und als Statusblock in `Zenodo_Upload_Checklist.md` + Finalize-README/Chronik aufnehmen.
+- 🔗 FIT-Sync mit `v6r-zenodo-ci-sync`: Mapping ergänzen, Δ-Update in Chronik setzen und Full-Go Hinweis in `ZENODO_READINESS_REPORT.md` spiegeln.
+- 📦 Log-/Artefaktpfade (z.B. `make validate-type6` Output, Coverage 87%) dokumentieren und für Zenodo-Upload vorbereiten.
+
+**References:**
+- `../ZENODO_CI_STATUS_2025-12-02.md:1-20`
+- `../ZENODO_CI_STATUS_2025-12-03.md:1-26`
+- `../Zenodo_Upload_Checklist.md:1-120`
+
+**Sprint Focus:** CI-Provenienz für Zenodo/Chronik sichern
+
+---
+
 ### [Priority 17] finalize-crep-audit-log
 **Type-VI Audit-Log & Reviewer-Routing im Finalize-Layer aktivieren**
 
@@ -800,6 +826,7 @@ AEON_ALETHEIA-Governance (CREP-Gewichte, τ*-Buffer) in Finalize-Track integrier
 | v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | Checklisten verlinkt, Merge-Gate fehlt |
 | v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Log-Writer aktiv, CI-Hook offen |
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Neu angelegt, Belege ausstehend |
+| v6r-zenodo-ci-sync | finalize-zenodo-ci-sync | Zenodo CI-Status (Conditional→Full GO) → Checklist/Chronik | Neu angelegt, CI-Daten noch zu spiegeln |
 | v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Log-Starter liegt vor, Reviewer-Routing offen |
 | v6r-beta-telemetry | finalize-beta-telemetry | β-Drift/CREP Telemetrie → Deltas/Indices | Telemetrie-Aufgabe neu angelegt |
 | v6r-aeon-architecture | finalize-aeon-architecture | Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten) | Mapping ergänzt, Bauplanextrakt offen |
@@ -813,6 +840,14 @@ AEON_ALETHEIA-Governance (CREP-Gewichte, τ*-Buffer) in Finalize-Track integrier
 ---
 
 ## Delta Updates
+
+### 2026-01-06 | finalize-zenodo-ci-sync
+
+✅ **Highlights:**
+- Neuer Finalize-Task `finalize-zenodo-ci-sync` ergänzt, um CI-Statusberichte (Conditional→Full GO, 42/42 Tests, 87% Coverage) in Zenodo_Upload_Checklist.md und Chronik zu spiegeln.
+- FIT-Mapping um `v6r-zenodo-ci-sync ↔ finalize-zenodo-ci-sync` erweitert; Trilayer-Updatedatum auf 2026-01-06T12:00:00Z angehoben.
+
+---
 
 ### 2026-01-05 | finalize-activation-gaps-telemetry
 
