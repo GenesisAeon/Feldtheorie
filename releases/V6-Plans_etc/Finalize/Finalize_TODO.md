@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-01-06T12:00:00Z
+**Updated:** 2026-01-07T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -812,6 +812,77 @@ AEON_ALETHEIA-Governance (CREP-Gewichte, τ*-Buffer) in Finalize-Track integrier
 
 ---
 
+### [Priority 25] finalize-psi-test-execution
+**Ψ-Pipeline Tests & Coverage im Finalize-Track verankern**
+
+**Status:** 🔴 Open  , **Beta:** 5.2 | **Zeta Risk:** Moderat – Coverage-Gap und τ*/CREP-Log noch offen
+
+**Scope:** testing, ci, documentation
+
+**R → Θ:** Coverage ≥80% für psi_field/genesis_cube dokumentiert (Zenodo/Chronik) und τ*/CREP-Logs in Finalize-Checklisten verlinkt.
+
+**Next Steps:**
+- 🧪 `pytest tests/test_psi_field.py tests/test_genesis_psifield_integration.py --maxfail=1 --disable-warnings --cov=pipelines/wavefunction/psi_field.py --cov=simulation/genesis_cube.py` ausführen und Coverage-Werte in ZENODO_CI_STATUS_2025-12-0{2,3}.md spiegeln.
+- 🛡️ τ*/CREP-Hook (tools/crep_guard.py --log-detection) in Finalize-Testbefehl aufnehmen und Logpfad `logs/type_vi_detections.jsonl` im Zenodo_Upload_Checklist.md referenzieren.
+- 📄 Finalize_TODO.{json,yaml} mit Coverage-/Log-Einträgen synchronisieren und Chronik-Hinweis ergänzen.
+
+**References:**
+- `tests/test_psi_field.py`
+- `tests/test_genesis_psifield_integration.py`
+- `releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md`
+- `logs/type_vi_detections.jsonl`
+
+**Sprint Focus:** Coverage/Logs für Release fixieren
+
+---
+
+### [Priority 26] finalize-psi-visualization
+**Ψ-Visual-Artefakte (|ψ|², Tesseract) für Finalize/Zenodo bereitstellen**
+
+**Status:** 🔴 Open  , **Beta:** 5.0 | **Zeta Risk:** Niedrig – fehlende Artefakte blockieren Kommunikation
+
+**Scope:** visualization, documentation, compliance
+
+**R → Θ:** Visual-Set (|ψ|² Heatmaps, Tesseract-Animation, Type-VI Overlay) liegt in `visualization/psi_field/` und ist in VISUALIZATION_INDEX.md/Zenodo-Uploader referenziert.
+
+**Next Steps:**
+- 📊 |ψ|²-Plots aus pipelines/wavefunction/psi_field.py erzeugen und im Finalize-Ordner/visualization verlinken.
+- 🎥 Hybrid-Evolution aus simulation/genesis_cube.py als Animation exportieren, Type-VI Toggle sichtbar machen, Dateipfade in VISUALIZATION_INDEX.md ergänzen.
+- 🔗 Zenodo_Upload_Checklist.md um Artefakt-IDs/Hashes ergänzen und Chronik-Eintrag vormerken.
+
+**References:**
+- `pipelines/wavefunction/psi_field.py`
+- `simulation/genesis_cube.py`
+- `VISUALIZATION_INDEX.md`
+- `releases/V6-Plans_etc/ZENODO_READINESS_REPORT.md`
+
+**Sprint Focus:** Artefakt-Referenzen herstellen
+
+---
+
+### [Priority 27] finalize-psi-tutorials
+**Ψ-Tutorial-Notebooks für Release bündeln**
+
+**Status:** 🔴 Open  , **Beta:** 4.9 | **Zeta Risk:** Niedrig – fehlende Lernpfade
+
+**Scope:** documentation, education, notebooks
+
+**R → Θ:** Notebooks `01_psi_field_tutorial.ipynb` + `02_genesis_cube_integration.ipynb` im Finalize-Layer abgelegt, README/VISUALIZATION_INDEX/Zenodo-Checklist referenzieren die Assets.
+
+**Next Steps:**
+- 📝 Notebook 01 (PsiField Basics, Parameter-Sweeps, |ψ|² Plots, Δt_Q) erstellen und mit Lizenz/Metadata (Zenodo) versehen.
+- 🧮 Notebook 02 (Genesis-Cube Integration, collapse_to_utac, τ*-Buffer, CREP-Signale) inkl. Export-Hooks (JSON/CSV) vorbereiten.
+- 🔗 README/VISUALIZATION_INDEX.md und Zenodo_Upload_Checklist.md um Notebook-Links/Hashes erweitern; Chronik-Update notieren.
+
+**References:**
+- `docs/v6_wavefunction_theory.md`
+- `notebooks/README.md`
+- `releases/V6-Plans_etc/ZENODO_READINESS_REPORT.md`
+
+**Sprint Focus:** Lernpfade release-ready machen
+
+---
+
 ## FIT Mapping ToDorefresh ↔ Finalize
 
 | ToDorefresh ID | Finalize ID | Bridge Focus | Status |
@@ -836,10 +907,22 @@ AEON_ALETHEIA-Governance (CREP-Gewichte, τ*-Buffer) in Finalize-Track integrier
 | v6r-metrics-outlier | finalize-metrics-outlier | CREP/ΔAIC Robustheitsmetriken | Pending - METRICS/Checkliste aktualisieren |
 | v6r-data-lantern-dashboard | finalize-data-lantern-dashboard | Telemetrie-Dashboard + Alerts | Pending - Blueprint/Docs fehlen |
 | v6r-type6-classification | finalize-type6-classification | Type-VI Klassifikation + cubic-root Demo | Pending - Tabelle/Testfall offen |
+| v6r-psi-test-execution | finalize-psi-test-execution | Ψ-Test-Suite Coverage (≥80%) + τ*/CREP-Gate | Neu – Coverage/Logs in Finalize/Zenodo verankern |
+| v6r-psi-visualization | finalize-psi-visualization | Ψ-Visuals (|ψ|², Tesseract) → VISUALIZATION_INDEX/Zenodo | Neu – Artefakte/Dateipfade erzeugen |
+| v6r-psi-tutorials | finalize-psi-tutorials | Ψ-Notebooks + FIT-Lernpfade | Neu – Tutorials/Checklist-Links setzen |
 
 ---
 
 ## Delta Updates
+
+### 2026-01-07 | finalize-psi-followups
+
+✅ **Highlights:**
+- Neue Finalize-Tasks `finalize-psi-test-execution`, `finalize-psi-visualization` und `finalize-psi-tutorials` aufgenommen, um die Ψ-Pipeline-Follow-ups (Tests/Artefakte/Notebooks) release- und Zenodo-ready zu machen.
+- FIT-Mapping um die drei Ψ-Brücken ergänzt; Updatedatum auf 2026-01-07T12:00:00Z angehoben.
+- Zenodo-/VISUALIZATION_INDEX-Verknüpfungen als Pflicht-Hooks markiert (Coverage-Logs, Artefakt-Pfade, Notebook-Hashes).
+
+---
 
 ### 2026-01-06 | finalize-zenodo-ci-sync
 
