@@ -247,7 +247,7 @@ Slice-Aggregation-Modell dokumentiert → docs/slice_integration_model.md + Citi
 ### [Priority 7] finalize-repo-compliance
 **Repository-Konformität: Finalize-Ordner strukturieren**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2025-12-03)
 **Beta:** 4.2 | **Zeta Risk:** Niedrig - organisatorisch
 
 **Scope:** organization, documentation, maintenance
@@ -391,7 +391,7 @@ V6-Onboarding + Reproduzierbarkeit auf Reviewer-Niveau → Portal-Seite + Prereg
 ### [Priority 4] finalize-literature-review-sync
 **V6 Literature Review finalisieren und mit Finalize-Dokumenten spiegeln**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2025-12-03)
 **Beta:** 5.1 | **Zeta Risk:** Moderat – Referenz-Drift blockiert DOI-Readiness
 
 **Scope:** documentation, research, governance
@@ -416,7 +416,7 @@ Kernaussagen der V6-Literature-Review in Finalize-Schiene integriert → V6_Lite
 ### [Priority 5] finalize-entropic-gravity-bridge
 **Entropische Gravitation/Holographischer Kubus in Finalize-Schiene verankern**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2025-12-03)
 **Beta:** 5.4 | **Zeta Risk:** Moderat – fehlende Kubus-/∇S-Referenzen schwächen UTAC-Grundlage
 
 **Scope:** research, documentation, governance
@@ -441,7 +441,7 @@ Entropie-Gradient/Kubus-Argument aus Gemini-DeepResearch in Finalize-Dokumentati
 ### [Priority 11] finalize-zenodo-checklist
 **Zenodo-Upload-Readiness absichern**
 
-**Status:** 🔴 Open
+**Status:** 🟡 In Progress (2025-12-03)
 **Beta:** 5.5 | **Zeta Risk:** Hoch – Release-Blocker ohne Prüfprotokolle
 
 **Scope:** compliance, testing, documentation, release
@@ -465,7 +465,7 @@ Pre-Release-Anforderungen aus der Zenodo-Checkliste abgearbeitet → pytest/Lint
 ### [Priority 12] finalize-tau-star-guardrails
 **τ*-Guardrails & CREP-Telemetrie im Finalize-Layer verankern**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2025-12-03)
 **Beta:** 4.9 | **Zeta Risk:** Moderat – Governance-Drift möglich
 
 **Scope:** simulation, governance, compliance
@@ -490,7 +490,7 @@ Pre-Release-Anforderungen aus der Zenodo-Checkliste abgearbeitet → pytest/Lint
 ### [Priority 13] finalize-type6-governance
 **Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2025-12-03)
 **Beta:** 4.6 | **Zeta Risk:** Neutralisiert durch τ*-Pflicht + Reviewer-Gate
 
 **Scope:** governance, compliance, automation
@@ -514,7 +514,7 @@ Type-VI Merge-Gate aktiv → POLICY/ETHICS referenzieren CREP/τ*, CI/Pre-Commit
 ### [Priority 14] finalize-fit-sync
 **FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2025-12-03)
 **Beta:** 4.4 | **Zeta Risk:** Niedrig – aber TriLayer-Drift gefährdet Compliance
 
 **Scope:** governance, organization, documentation
@@ -644,7 +644,7 @@ CI-Readiness-Daten (42/42 Tests, 87% Coverage, Full GO) aus 2025-12-02/03 in Zen
 ### [Priority 18] finalize-tau-star-ci-hook
 **CI/Release-Gate für τ*-Default + CREP-Schwellen setzen**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2025-12-03)
 
 **Beta:** 4.9 | **Zeta Risk:** Hoch – fehlende Gates riskieren ζ<0-Durchläufe
 
