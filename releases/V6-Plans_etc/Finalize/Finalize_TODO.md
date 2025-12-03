@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-01-09T18:00:00Z
+**Updated:** 2026-01-10T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -947,6 +947,52 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 
 ---
 
+### [Priority 28] finalize-psi-coverage-boost
+**Coverage 87% → 95%+ für Ψ-Pipeline dokumentieren (Finalize/Zenodo)**
+
+**Status:** 🔴 Open  , **Beta:** 5.5 | **Zeta Risk:** Moderat – Edge-Branches ohne Tests
+
+**Scope:** testing, ci, documentation
+
+**R → Θ:** Edge-Case-Tests (entropy/radial_distribution/τ*) erhöhen Coverage auf ≥95% und werden in ZENODO_CI_STATUS + Zenodo_Upload_Checklist gespiegelt.
+
+**Next Steps:**
+- 🧪 Tests für entropy shape inference, radial_distribution normalization und τ*-Branch in `tests/test_psi_field.py` & `tests/test_genesis_psifield_integration.py` erweitern; Coverage-Report exportieren.
+- 📈 Coverage-Werte in `ZENODO_CI_STATUS_2025-12-03.md` + `Zenodo_Upload_Checklist.md` nachtragen; Chronik/Finalize-Delta mit CREP/ΔAIC-Hinweis ergänzen.
+- 🔗 FIT-Mapping mit `v6r-psi-coverage-boost` prüfen und Logpfade (`logs/type_vi_detections.jsonl`) als Belege festhalten.
+
+**References:**
+- `releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md:18-88`
+- `tests/test_psi_field.py`
+- `tests/test_genesis_psifield_integration.py`
+
+**Sprint Focus:** Edge-Coverage + Doku-Parität sichern
+
+---
+
+### [Priority 29] finalize-lint-cleanup
+**Ruff/Black Lint-Schulden (≈550 Fälle) für Release abbauen und dokumentieren**
+
+**Status:** 🔴 Open  , **Beta:** 4.4 | **Zeta Risk:** Erhöht – Lint-Schulden blockieren Go/No-Go
+
+**Scope:** ci, maintenance, documentation
+
+**R → Θ:** Ruff-Baseline/Ignore-Liste erstellt, erste Fix-Welle (pipelines/wavefunction, simulation) umgesetzt, Belege in Zenodo/Finalize-Checklisten eingetragen.
+
+**Next Steps:**
+- 📋 `ruff --statistics` ausführen, Fehlerklassen clustern und in `Zenodo_Upload_Checklist.md` dokumentieren; Baseline/Ignore-Datei im Repo verankern.
+- 🔧 Black/Ruff-Fixes für high-churn Module einchecken, verbleibende Verstöße als TODO-Liste anhängen; CI/Pre-Commit/Nox Lint-Gate aktivieren.
+- 🔗 FIT-Mapping zu `v6r-lint-baseline-cleanup` aktualisieren und ZENODO_CI_STATUS um Lint-Fortschritt ergänzen.
+
+**References:**
+- `releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md:70-156`
+- `releases/V6-Plans_etc/Zenodo_Upload_Checklist.md`
+- `pyproject.toml`
+
+**Sprint Focus:** Lint-Debt abbauen & Release-Gates sichern
+
+---
+
 ## FIT Mapping ToDorefresh ↔ Finalize
 
 | ToDorefresh ID | Finalize ID | Bridge Focus | Status |
@@ -975,12 +1021,23 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 | v6r-psi-test-execution | finalize-psi-test-execution | Ψ-Test-Suite Coverage (≥80%) + τ*/CREP-Gate | Neu – Coverage/Logs in Finalize/Zenodo verankern |
 | v6r-psi-visualization | finalize-psi-visualization | Ψ-Visuals (|ψ|², Tesseract) → VISUALIZATION_INDEX/Zenodo | Neu – Artefakte/Dateipfade erzeugen |
 | v6r-psi-tutorials | finalize-psi-tutorials | Ψ-Notebooks + FIT-Lernpfade | Neu – Tutorials/Checklist-Links setzen |
+| v6r-psi-coverage-boost | finalize-psi-coverage-boost | Ψ-Coverage ≥95% + Edge-Branch Tests → Zenodo/Chronik | Neu – Edge-Tests & Coverage-Logs fixieren |
+| v6r-lint-baseline-cleanup | finalize-lint-cleanup | Ruff-Baseline + Lint-Fixes dokumentieren (Zenodo/CI) | Neu – Lint-Schulden clustern/abbauen |
 
 *Hinweis:* `v6r-cmb-analysis` ist in ToDorefresh als ✅ Completed (2025-12-02) archiviert und bleibt als Referenzmapping dokumentiert.
 
 ---
 
 ## Delta Updates
+
+### 2026-01-10 | finalize-ci-lint-coverage
+
+✅ **Highlights:**
+- Neue Tasks `finalize-psi-coverage-boost` (Coverage 95%+) und `finalize-lint-cleanup` (≈550 Ruff-Fälle) hinzugefügt, abgeleitet aus `ZENODO_CI_STATUS_2025-12-03.md`.
+- FIT-Mapping mit `v6r-psi-coverage-boost` / `v6r-lint-baseline-cleanup` ergänzt; Updatedatum auf 2026-01-10T12:00:00Z angehoben.
+- Dokumentationspfade (`ZENODO_CI_STATUS_2025-12-03.md`, `Zenodo_Upload_Checklist.md`, `logs/type_vi_detections.jsonl`) als Release-Belege markiert.
+
+---
 
 ### 2026-01-08 | finalize-type6-checklists
 

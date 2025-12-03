@@ -1,7 +1,7 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2026-01-09T18:00:00Z'
+  updated_at: '2026-01-10T12:00:00Z'
   scope: releases/V6-Plans_etc
   description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse -
     Papers, Formeln, Simulationen
@@ -50,6 +50,8 @@ metadata:
     - v6r-psi-test-execution
     - v6r-psi-visualization
     - v6r-psi-tutorials
+    - v6r-psi-coverage-boost
+    - v6r-lint-baseline-cleanup
     note: Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation
       (Veröffentlichung)
 tasks:
@@ -1426,6 +1428,80 @@ tasks:
   priority: 31
   sprint_focus: Lernpfade & Reproduzierbarkeit sicherstellen
   updated_at: '2026-01-07T12:00:00Z'
+- id: v6r-psi-coverage-boost
+  title: Ψ-Pipeline Coverage von 87% → 95%+ heben (Edge-Branches schließen)
+  status: open
+  completeness: Coverage 87% laut ZENODO_CI_STATUS; Edge-Branches (entropy, radial_distribution, τ*) ungetestet.
+  scope:
+  - testing
+  - ci
+  - documentation
+  logistic_profile:
+    R_target: Tests für entropy/radial_distribution/Type-VI Branches liefern ≥95% Coverage
+      in psi_field.py/genesis_cube.py
+    Theta_condition: Coverage-Report dokumentiert (ZENODO_CI_STATUS + Chronik/Checklist)
+    beta_estimate: 5.5
+    zeta_risk: moderat (fehlende Edge-Case-Absicherung)
+  next_steps:
+  - Edge-Case-Tests (entropy shape inference, radial_distribution normalization, τ*-Branch)
+    in tests/test_psi_field.py und tests/test_genesis_psifield_integration.py ergänzen.
+  - Coverage-Report ≥95% erzeugen und in ZENODO_CI_STATUS_2025-12-03.md + Zenodo_Upload_Checklist.md
+    spiegeln.
+  - FIT-Mapping zu finalize-psi-coverage-boost setzen und CREP/ΔAIC-Logs
+    (logs/type_vi_detections.jsonl) als Belege anhängen.
+  references:
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
+    lines:
+    - 18
+    - 156
+  - path: tests/test_psi_field.py
+    lines:
+    - 1
+    - 400
+  - path: tests/test_genesis_psifield_integration.py
+    lines:
+    - 1
+    - 280
+  priority: 32
+  sprint_focus: Coverage-Gap schließen & Dokumentation spiegeln
+  updated_at: '2026-01-10T12:00:00Z'
+- id: v6r-lint-baseline-cleanup
+  title: Ruff/Black-Baseline für Legacy-Code (550 Lint-Fehler) aufbauen und abbauen
+  status: open
+  completeness: Lint-Schulden laut ZENODO_CI_STATUS (≈550 Fehler) noch nicht geclustert oder gefixt.
+  scope:
+  - ci
+  - maintenance
+  - documentation
+  logistic_profile:
+    R_target: Ruff-Baseline + erste Fix-Welle reduziert Lint-Fehler signifikant
+    Theta_condition: Fehlerklassen/Ignore-Liste dokumentiert, Fixes in high-churn Modulen
+      umgesetzt
+    beta_estimate: 4.4
+    zeta_risk: erhöht (Release-Gate blockiert)
+  next_steps:
+  - Ruff --statistics laufen lassen, Fehlerkategorien clustern und in Zenodo_Upload_Checklist.md
+    dokumentieren.
+  - Erste Fix-Welle (pipelines/wavefunction, simulation/) mit Black/Ruff anwenden; übrige
+    Verstöße als TODO erfassen.
+  - FIT-Mapping zu finalize-lint-cleanup setzen und CI-Hooks (pre-commit, nox) um Lint-Gate
+    erweitern.
+  references:
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
+    lines:
+    - 70
+    - 156
+  - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
+    lines:
+    - 1
+    - 220
+  - path: pyproject.toml
+    lines:
+    - 1
+    - 200
+  priority: 33
+  sprint_focus: Lint-Debt abbauen & CI-Gates vorbereiten
+  updated_at: '2026-01-10T12:00:00Z'
 fit_mapping:
 - todo_id: v6r-finalize-bridge
   finalize_id: finalize-fit-sync
@@ -1523,7 +1599,24 @@ fit_mapping:
   finalize_id: finalize-psi-tutorials
   bridge_focus: Ψ-Notebooks + FIT-Lernpfade
   status: new
+- todo_id: v6r-psi-coverage-boost
+  finalize_id: finalize-psi-coverage-boost
+  bridge_focus: Ψ-Coverage ≥95% + Edge-Branch Tests → Zenodo/Chronik
+  status: new
+- todo_id: v6r-lint-baseline-cleanup
+  finalize_id: finalize-lint-cleanup
+  bridge_focus: Ruff-Baseline + Lint-Fixes dokumentieren (Zenodo/CI)
+  status: new
 delta_updates:
+- date: '2026-01-10'
+  label: v6-refresh-ci-lint-coverage
+  highlights:
+  - Neue Tasks v6r-psi-coverage-boost (Coverage 95%+) und v6r-lint-baseline-cleanup (≈550 Ruff-Fälle) ergänzt,
+    um ZENODO_CI_STATUS_2025-12-03 Lücken FIT-konform abzubauen.
+  - FIT-Mapping zu finalize-psi-coverage-boost/finalize-lint-cleanup hinzugefügt; priority_order und updated_at
+    auf 2026-01-10T12:00:00Z angehoben.
+  - Dokumentations-/Belegpfade (ZENODO_CI_STATUS_2025-12-03.md, Zenodo_Upload_Checklist.md, logs/type_vi_detections.jsonl)
+    als Referenzen für CI/Release-Gates notiert.
 - date: '2026-01-07'
   label: v6-refresh-psi-followups
   highlights:

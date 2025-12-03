@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2026-01-09T18:00:00Z'
+  updated_at: '2026-01-10T12:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -44,6 +44,8 @@ metadata:
     - finalize-psi-test-execution
     - finalize-psi-visualization
     - finalize-psi-tutorials
+    - finalize-psi-coverage-boost
+    - finalize-lint-cleanup
     note: v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation
 tasks:
 - id: finalize-vrig-research
@@ -1217,6 +1219,76 @@ tasks:
   priority: 27
   sprint_focus: Lernpfade release-ready machen
   updated_at: '2026-01-07T12:00:00Z'
+- id: finalize-psi-coverage-boost
+  title: Coverage 87% → 95%+ für Ψ-Pipeline dokumentieren (Finalize/Zenodo)
+  status: open
+  completeness: Coverage 87% laut ZENODO_CI_STATUS; Edge-Branches (entropy/radial_distribution/τ*) ohne Tests.
+  scope:
+  - testing
+  - ci
+  - documentation
+  logistic_profile:
+    R_target: Edge-Case-Tests heben Coverage auf ≥95% in psi_field.py/genesis_cube.py
+    Theta_condition: Coverage-Report in ZENODO_CI_STATUS + Zenodo_Upload_Checklist dokumentiert
+    beta_estimate: 5.5
+    zeta_risk: moderat (fehlende Edge-Absicherung)
+  next_steps:
+  - Edge-Tests für entropy shape inference, radial_distribution normalization und τ*-Branch in
+    tests/test_psi_field.py & tests/test_genesis_psifield_integration.py ergänzen; Coverage-Report exportieren.
+  - Coverage-Werte in ZENODO_CI_STATUS_2025-12-03.md + Zenodo_Upload_Checklist.md eintragen; Chronik/Finalize-Delta
+    mit CREP/ΔAIC-Hinweis ergänzen.
+  - FIT-Mapping mit v6r-psi-coverage-boost synchronisieren und Logpfade (logs/type_vi_detections.jsonl)
+    als Belege festhalten.
+  references:
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
+    lines:
+    - 18
+    - 88
+  - path: tests/test_psi_field.py
+    lines:
+    - 1
+    - 400
+  - path: tests/test_genesis_psifield_integration.py
+    lines:
+    - 1
+    - 280
+  priority: 28
+  sprint_focus: Edge-Coverage + Doku-Parität sichern
+  updated_at: '2026-01-10T12:00:00Z'
+- id: finalize-lint-cleanup
+  title: Ruff/Black Lint-Schulden (≈550 Fälle) für Release abbauen und dokumentieren
+  status: open
+  completeness: Lint-Schulden aus ZENODO_CI_STATUS (≈550 Fälle) noch nicht geclustert; keine Baseline/Ignore-Datei.
+  scope:
+  - ci
+  - maintenance
+  - documentation
+  logistic_profile:
+    R_target: Ruff-Baseline/Ignore-Liste erstellt, erste Fix-Welle (pipelines/wavefunction, simulation) umgesetzt
+    Theta_condition: Lint-Fortschritt in Zenodo_Upload_Checklist + ZENODO_CI_STATUS dokumentiert, CI-Gate aktiv
+    beta_estimate: 4.4
+    zeta_risk: erhöht (Release-Gate blockiert)
+  next_steps:
+  - ruff --statistics ausführen, Fehlerklassen clustern und in Zenodo_Upload_Checklist.md dokumentieren; Baseline/Ignore-Datei
+    hinzufügen.
+  - Black/Ruff-Fixes für high-churn Module anwenden; restliche Verstöße als TODO erfassen; CI/Pre-Commit/Nox Lint-Gate aktivieren.
+  - FIT-Mapping zu v6r-lint-baseline-cleanup updaten und ZENODO_CI_STATUS um Lint-Fortschritt ergänzen.
+  references:
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
+    lines:
+    - 70
+    - 156
+  - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
+    lines:
+    - 1
+    - 220
+  - path: pyproject.toml
+    lines:
+    - 1
+    - 200
+  priority: 29
+  sprint_focus: Lint-Debt abbauen & Release-Gates sichern
+  updated_at: '2026-01-10T12:00:00Z'
 fit_mapping:
 - todo_id: v6r-finalize-bridge
   finalize_id: finalize-fit-sync
@@ -1314,7 +1386,21 @@ fit_mapping:
   finalize_id: finalize-psi-tutorials
   bridge_focus: Ψ-Notebooks + FIT-Lernpfade
   status: new
+- todo_id: v6r-psi-coverage-boost
+  finalize_id: finalize-psi-coverage-boost
+  bridge_focus: Ψ-Coverage ≥95% + Edge-Branch Tests → Zenodo/Chronik
+  status: new
+- todo_id: v6r-lint-baseline-cleanup
+  finalize_id: finalize-lint-cleanup
+  bridge_focus: Ruff-Baseline + Lint-Fixes dokumentieren (Zenodo/CI)
+  status: new
 delta_updates:
+- date: '2026-01-10'
+  label: finalize-ci-lint-coverage
+  highlights:
+  - Neue Tasks finalize-psi-coverage-boost (Coverage 95%+) und finalize-lint-cleanup (≈550 Ruff-Fälle) aus ZENODO_CI_STATUS_2025-12-03 abgeleitet und in priority_order aufgenommen.
+  - FIT-Mapping zu v6r-psi-coverage-boost/v6r-lint-baseline-cleanup ergänzt; Updatedatum auf 2026-01-10T12:00:00Z angehoben.
+  - Belegpfade (ZENODO_CI_STATUS_2025-12-03.md, Zenodo_Upload_Checklist.md, logs/type_vi_detections.jsonl) als Release-Gates markiert.
 - date: '2026-01-07'
   label: finalize-psi-followups
   highlights:
