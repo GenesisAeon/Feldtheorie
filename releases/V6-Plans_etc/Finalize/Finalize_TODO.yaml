@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2026-01-07T12:00:00Z'
+  updated_at: '2026-01-08T12:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -27,6 +27,7 @@ metadata:
     - finalize-zenodo-checklist
     - finalize-tau-star-guardrails
     - finalize-type6-governance
+    - finalize-type6-checklist-rollout
     - finalize-fit-sync
     - finalize-crep-guard-ci
     - finalize-zenodo-evidence
@@ -556,6 +557,51 @@ tasks:
     - 33
   priority: 13
   sprint_focus: Governance-Gate + CI-Hook
+- id: finalize-type6-checklist-rollout
+  title: Type-VI Checklisten mit Governance/Zenodo/CI synchronisieren
+  status: open
+  completeness: ''
+  scope:
+  - governance
+  - compliance
+  - documentation
+  logistic_profile:
+    R_target: Checklist-Trilayer gespiegelt
+    Theta_condition: POLICY/ETHICS + Zenodo_Checklist + ZENODO_CI_STATUS verlinken τ*-Default/CREP-Level/Audit-Log
+    beta_estimate: 5.4
+    zeta_risk: Moderat – fehlende Spiegelung blockiert Reviewer-Gates
+  next_steps:
+  - Konsistenz-Check über alle type6_crep_tau_star_checklist.* Dateien (IDs, Schwellen, τ*-Formel) durchführen und in POLICY.md/ETHICS.md verlinken.
+  - Zenodo_Upload_Checklist.md sowie ZENODO_CI_STATUS_2025-12-03.md um CREP/τ*-Abschnitte ergänzen; Reviewer-Slot (Level 2/3) dokumentieren.
+  - activation_gaps_tau_star.md als Nullmodell/Begründung in Checklist-Referenzen aufnehmen; ΔAIC/CI-Platzhalter ergänzen.
+  - FIT-Sync zu v6r-type6-checklist-rollout und finalize-fit-sync notieren, damit Zenodo/Chronik den Handoff nachvollziehen.
+  references:
+  - path: releases/V6-Plans_etc/type6_crep_tau_star_checklist.md
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/type6_crep_tau_star_checklist.json
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml
+    lines:
+    - 1
+    - 160
+  - path: releases/V6-Plans_etc/activation_gaps_tau_star.md
+    lines:
+    - 1
+    - 36
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
+    lines:
+    - 1
+    - 120
+  priority: 31
+  sprint_focus: Checklist-Trilayer ↔ Governance/Zenodo koppeln
 - id: finalize-fit-sync
   title: FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks
   status: open

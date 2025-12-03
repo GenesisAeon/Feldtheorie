@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-01-07T12:00:00Z
+**Updated:** 2026-01-08T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -635,6 +635,41 @@ Type-VI Checkliste als Merge-Gate aktiv → POLICY/ETHICS referenzieren CREP/τ*
 
 ---
 
+### [Priority 34] v6r-type6-checklist-rollout
+**Type-VI Checklisten (τ*, CREP, Audit-Log) über alle Artefakte spiegeln**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.3 | **Zeta Risk:** Moderat – fehlende Spiegelung blockiert Reviewer-Gates
+
+**Scope:** governance, compliance, documentation
+
+**R → Θ:**
+type6_crep_tau_star_checklist als vollwertige Trilayer-Referenz (MD/JSON/YAML) im Repo verankert → POLICY/ETHICS/Zenodo-Checklisten
+mit τ*-Default, CREP ≥0.7 Reviewer-Pflicht und Audit-Log-Verweis ausgestattet; activation_gaps_tau_star.md als Nullmodell/τ*-Begründu
+ng referenziert
+
+**Next Steps:**
+- 🧭 type6_crep_tau_star_checklist.{md,json,yaml} auf Konsistenz (IDs, CREP-Schwellen, τ*-Formel) prüfen und in POLICY.md/ETHICS.md
+  verlinken.
+- 📄 Zenodo_Upload_Checklist.md + ZENODO_CI_STATUS_2025-12-03.md um Verweise auf τ*-Default (=0.1·|Θ−R|) und CREP-Level 0.6/0.7/0.8
+  ergänzen; Reviewer-Slot definieren.
+- 🔬 activation_gaps_tau_star.md als Nullmodell/Begründung in type6_crep_tau_star_checklist.md und Finalize-TODO referenzieren; ΔAIC/CI
+  Platzhalter setzen.
+- 🔗 FIT-Mapping in v6r-finalize-bridge aktualisieren, damit finalize-type6-checklist-rollout den Handoff (Policies ↔ Zenodo ↔ Chronik)
+  übernimmt.
+
+**References:**
+- `type6_crep_tau_star_checklist.md:1-120`
+- `type6_crep_tau_star_checklist.json:1-200`
+- `type6_crep_tau_star_checklist.yaml:1-160`
+- `activation_gaps_tau_star.md:1-36`
+- `ZENODO_CI_STATUS_2025-12-03.md:1-120`
+
+**Sprint Focus:** Checklist-Trilayer ↔ Governance/Zenodo koppeln
+
+---
+
 ### [Priority 15] v6r-zenodo-prep
 **Zenodo-Upload-Readiness in V6-Scope vorbereiten**
 
@@ -1161,6 +1196,7 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 | v6r-tau-star-ci-hook | finalize-tau-star-ci-hook | CI-Gate für τ* + CREP ≥0.7 | ✅ Completed - Makefile, noxfile.py, pre-commit operational |
 | v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | ✅ Completed - V6_Literature_Review.md (574 lines, 43 refs) |
 | v6r-entropic-gravity-bridge | finalize-entropic-gravity-bridge | Entropische Gravitation/Holographischer Kubus in Review + BibTeX | ✅ Completed - DEEP_RESEARCH_Unified_Framework.md + BibTeX entries |
+| v6r-type6-checklist-rollout | finalize-type6-checklist-rollout | Type-VI Checklisten ↔ POLICY/ETHICS/Zenodo | Pending – Trilayer-Checkliste noch nicht mit Governance/CI gespiegelt |
 | v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | ✅ Completed - tools/crep_guard.py operational + CI hooks |
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Belege pending (execution environment needed) |
 | v6r-zenodo-ci-sync | finalize-zenodo-ci-sync | Zenodo CI-Status (Conditional/Full GO) → Checklist/Chronik | Pending – Statusberichte noch nicht gespiegelt |
@@ -1180,6 +1216,15 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 ---
 
 ## Delta Updates
+
+### 2026-01-08 | v6-refresh-type6-checklists
+
+✅ **Highlights:**
+- Neuer Task `v6r-type6-checklist-rollout` ergänzt, um type6_crep_tau_star_checklist Trilayer → POLICY/ETHICS/Zenodo zu spiegeln.
+- FIT-Mapping mit `finalize-type6-checklist-rollout` aufgesetzt; Handoff für τ*-Default, CREP-Level und Audit-Log notiert.
+- Updatedatum auf 2026-01-08T12:00:00Z erhöht, um neuen Governance-Schwerpunkt zu markieren.
+
+---
 
 ### 2026-01-07 | v6-refresh-psi-followups
 
