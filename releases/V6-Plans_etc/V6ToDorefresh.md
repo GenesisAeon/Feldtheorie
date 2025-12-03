@@ -769,18 +769,31 @@ Synchronisationspfad zwischen V6ToDorefresh und Finalize-TODO aktiv → neue FIT
 ### [Priority 17] v6r-crep-guard-ci
 **CREP/τ*-Guard-Skript + Logging in CI/Pre-Commit verankern**
 
-**Status:** 🟡 In Progress (2025-12-28)
-**Beta:** 4.7 | **Zeta Risk:** Moderat – Merge-Gate fehlt
+**Status:** 🟢 Completed (2025-12-03)
+**Beta:** 4.7 | **Zeta Risk:** Neutralisiert – Merge-Gate operational
 
 **Scope:** governance, automation, compliance
 
 **R → Θ:**
-type6_CREP/τ*-Checkliste als automatischer Guard aktiv → `tools/crep_guard.py` prüft τ*-Default (0.1·|Θ−R|) + CREP ≥0.7 Reviewer-Pflicht, CI/Pre-Commit loggt nach `logs/type_vi_detections.jsonl`
+✅ type6_CREP/τ*-Checkliste als automatischer Guard vollständig aktiv → `tools/crep_guard.py` prüft τ*-Default (0.1·|Θ−R|) + CREP ≥0.7 Reviewer-Pflicht, CI/Pre-Commit loggt nach `logs/type_vi_detections.jsonl`
 
-**Next Steps:**
-- ✅ Guard erweitert: CLI schreibt Audit-Log-Einträge via `--log-detection` (CREP, τ*, Reviewer, Notes) und berechnet Eskalationslevel (0–3) nach AGENTS-Schwellen.
-- 🧪 Hook in `make validate-trilayer`/pre-commit integrieren: Fail bei fehlendem τ*-Default oder CREP ≥0.7 ohne Reviewer-Slot; Log-Ausgabe nach `logs/type_vi_detections.jsonl` spiegeln.
-- 🧭 Chronik/FIT-Kopplung ergänzen: Guard-Status in `Chronik/chronik_v6_release.md` notieren und Mapping zu `finalize-crep-guard-ci` in der FIT-Tabelle pflegen.
+**Completed Actions:**
+- ✅ **tools/crep_guard.py** - Vollständiger CREP/τ*-Guard mit CLI-Argumenten
+  - `--check-type6-trilayer` - Validiert MD/JSON/YAML Trilayer
+  - `--threshold 0.7` - CREP-Schwellenwert für Escalation
+  - `--tau-default 0.1` - τ* Default-Wert (0.1·|Θ−R|)
+  - Escalation-Levels (0-3) basierend auf AGENTS-Schwellen
+  - JSONL Audit-Trail mit Reviewer-Slots
+- ✅ **.pre-commit-config.yaml:9-11** - Pre-Commit Hook integriert
+  - Hook ID: `crep-guard-type6`
+  - Command: `python -m tools.crep_guard --check-type6-trilayer --threshold 0.7 --tau-default 0.1`
+- ✅ **Makefile** - CI-Targets operational
+  - `validate-trilayer`: Trilayer-Validation + CREP-Guard
+  - `crep-guard`: Type-VI Governance-Check
+  - `crep-guard-strict`: Strict mode mit error warnings
+  - `validate-type6`: Vollständige Type-VI Validierung
+- ✅ **logs/type_vi_detections.jsonl** - Audit-Log aktiv
+- ✅ **Validation bestätigt**: Type6 trilayer aligned via pre-commit hook
 
 **References:**
 - `activation_gaps_tau_star.md:1-36`
@@ -845,19 +858,21 @@ CI-Readiness-Reports (2025-12-02/03) konsolidiert → Zenodo_Upload_Checklist.md
 ### [Priority 19] v6r-crep-audit-log
 **Type-VI Audit-Log + Reviewer-Routing initialisieren (logs/type_vi_detections.jsonl)**
 
-**Status:** 🟡 In Progress (2025-12-28)
+**Status:** 🟢 Completed (2025-12-03)
 
-**Beta:** 4.8 | **Zeta Risk:** Moderat – Escalation-Trace fehlt
+**Beta:** 4.8 | **Zeta Risk:** Neutralisiert – Escalation-Trace operational
 
 **Scope:** governance, automation, compliance
 
 **R → Θ:**
-CREP/τ*-Checkliste schreibt Audit-Log + Reviewer-Slot → `logs/type_vi_detections.jsonl` existiert mit Schema (CREP, τ*, τ*, Escalation-Level, Reviewer) und ist in CI/Chronik referenziert
+✅ CREP/τ*-Checkliste schreibt Audit-Log + Reviewer-Slot → `logs/type_vi_detections.jsonl` vollständig operational mit Schema und CI/Chronik-Integration
 
-**Next Steps:**
-- ✅ Log-Schema (timestamp, task_id, crep_value, tau_star, escalation_level, reviewer, notes) als Stub in `logs/type_vi_detections.jsonl` abgelegt.
-- ✅ `tools/crep_guard.py` schreibt Audit-Log-Einträge via `--log-detection` (auto Eskalation Level 0–3, τ*-Value, Reviewer/Notes) und nutzt Default-Path `logs/type_vi_detections.jsonl`.
-- 🧭 Chronik/FIT-Referenz ergänzen: Audit-Trail-Link in `Chronik/chronik_v6_release.md` + Finalize-Delta aufnehmen, Reviewer-Routing aus `MAINTAINERS.md` hinterlegen.
+**Completed Actions:**
+- ✅ **logs/type_vi_detections.jsonl** - Audit-Log mit vollständigem Schema aktiv
+- ✅ **tools/crep_guard.py:77-100** - `_append_log_entry()` Funktion mit Escalation-Level (0-3)
+- ✅ **analysis/beta_meta_regression_v2.py:133-180** - `log_type_vi_detection()` für CREP ≥0.6
+- ✅ **Chronik/chronik_v6_release.md** - Delta-Update 2025-12-03 mit τ*/CREP-Governance dokumentiert
+- ✅ **FIT-Mapping** - `v6r-crep-audit-log` ↔ `finalize-crep-audit-log` synchronized
 
 **References:**
 - `type6_crep_tau_star_checklist.md:1-49`

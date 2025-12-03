@@ -568,18 +568,23 @@ FIT-Microsteps aus `Promt_für_Agenten.txt` in beiden ToDo-Trilayern gespiegelt 
 ### [Priority 15] finalize-crep-guard-ci
 **CREP/τ*-Guard-Skript im Finalize-Layer testen & loggen**
 
-**Status:** 🟡 In Progress (2025-12-28)
-**Beta:** 4.7 | **Zeta Risk:** Moderat – Release-Gate fehlt
+**Status:** 🟢 Completed (2025-12-03)
+**Beta:** 4.7 | **Zeta Risk:** Neutralisiert – Release-Gate operational
 
 **Scope:** governance, compliance, automation
 
 **R → Θ:**
-type6_CREP/τ*-Guard blockt Finalize-Releases automatisch → `tools/crep_guard.py` Hook läuft in Finalize-CI/pre-commit, schreibt nach `logs/type_vi_detections.jsonl` und Chronik/Finalize-Notizen
+✅ type6_CREP/τ*-Guard blockt Finalize-Releases automatisch → `tools/crep_guard.py` Hook läuft in CI/pre-commit, schreibt nach `logs/type_vi_detections.jsonl`, POLICY/ETHICS-Referenzen vollständig
 
-**Next Steps:**
-- ✅ Guard-Implementierung aus `v6r-crep-guard-ci` übernehmen: `--log-detection` schreibt Audit-Log (Eskalation 0–3, Reviewer/Notes) nach `logs/type_vi_detections.jsonl`.
-- 🧪 Finalize-CI/pre-commit auf `crep_guard.py` Hook trimmen; Fail bei τ*-Default-Drift oder CREP ≥0.7 ohne Reviewer-Slot und Log-Eintrag.
-- 🗺️ FIT-Mapping in `finalize-fit-sync` aktualisieren und POLICY/ETHICS-Referenzen auf `type6_crep_tau_star_checklist.*` prüfen.
+**Completed Actions:**
+- ✅ **tools/crep_guard.py** - Guard vollständig implementiert mit Audit-Log
+- ✅ **.pre-commit-config.yaml** - `crep-guard-type6` Hook integriert
+- ✅ **Makefile** - `validate-trilayer`, `crep-guard`, `crep-guard-strict`, `validate-type6` targets
+- ✅ **logs/type_vi_detections.jsonl** - Audit-Trail aktiv
+- ✅ **POLICY.md:94-108** - Type-VI Safety Addendum referenziert Checklisten
+- ✅ **ETHICS.md:77-214** - Type-VI Implosive Scenarios mit Reviewer-Slots
+- ✅ **FIT-Mapping** - `v6r-crep-guard-ci` ↔ `finalize-crep-guard-ci` synchronized
+- ✅ **Validation bestätigt**: Pre-commit hook blockt bei τ*-Drift oder CREP ≥0.7
 
 **References:**
 - `type6_crep_tau_star_checklist.md:1-49`
