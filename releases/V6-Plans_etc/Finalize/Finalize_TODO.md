@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-01-10T12:00:00Z
+**Updated:** 2026-01-11T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -202,6 +202,33 @@ Aeon v1.0 Architektur dokumentiert und erste Module implementiert → architectu
 - `ARCHITECTURE.md`
 
 **Sprint Focus:** Architektur-Doc + Core-Module
+
+---
+
+### [Priority 33] finalize-aeon-architecture-brief
+**Kurzbriefing zu Nullkern/AeonShell als Draft in Architekturdokumente einspeisen**
+
+**Status:** 🔴 Open
+
+**Beta:** 6.2 | **Zeta Risk:** Moderat – fehlende Draft-Abschnitte verzögern FIT-Handoff
+
+**Scope:** architecture, documentation, ai-systems
+
+**R → Θ:**
+Zwei Draft-Absätze zu Nullkern und AeonShell liegen in `ARCHITECTURE.md` + `V6_Wellenfunktions_Integrationsplan.md` und referenzieren Aeon-Alethiea-Governance → FIT-Link zu ToDorefresh gelegt
+
+**Next Steps:**
+- 📝 Kernaussagen aus `Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt` destillieren (Nullkern, AeonShell, MasterGPT/TutorGPT, UnifiedMandala) und als Draft-Blöcke markieren.
+- 🔗 Drafts mit `[FIT-HANDOFF]` Tag versehen und auf `AEON_ALETHEIA_INTEGRATION.md` verweisen (CREP/τ*-Kontext notieren).
+- 🧭 Mapping zu `v6r-aeon-architecture-notes` bestätigen und Chronik-Hinweis vorbereiten.
+
+**References:**
+- `architecture/ChatGPT5.1_AeonV1.0Bauplan.txt:1-120`
+- `../ARCHITECTURE.md:1-80`
+- `../V6_Wellenfunktions_Integrationsplan.md:1-80`
+- `../AEON_ALETHEIA_INTEGRATION.md:1-80`
+
+**Sprint Focus:** Aeon-Draft-Blöcke platzieren
 
 ---
 
@@ -739,6 +766,32 @@ Finalize-CI/Pre-Commit führt `tools/crep_guard.py` mit τ*=0.1·|Θ−R| + CREP
 - `../V6ToDorefresh.md:700-760`
 
 **Sprint Focus:** Telemetrie-Warnpfad → Finalize-Belege
+
+---
+
+### [Priority 32] finalize-beta-telemetry-sync
+**Schema-Sync für β-Drift/CREP zwischen Metrics/Logs und Finalize-Deltas**
+
+**Status:** 🔴 Open
+
+**Beta:** 4.8 | **Zeta Risk:** Moderat – fehlende Schemafelder bremsen Zenodo/Chronik-Hand-off
+
+**Scope:** telemetry, governance, compliance
+
+**R → Θ:**
+Schemafelder für β-Drift (>10%), CREP-Level und τ*-Default (=0.1·|Θ−R|) sind in `metrics/beta_evolution.csv` + `logs/type_vi_detections.jsonl` dokumentiert und im Finalize-Deltalog verlinkt → Zenodo_Checklist/Chronik haben Reviewer-Slot
+
+**Next Steps:**
+- 🧮 Kopfzeile/Schema aus `V6ToDorefresh` übernehmen und in Finalize-Deltalog notieren (timestamp, domain, beta_estimate, drift_flag, tau_star, crep_value, escalation_level, reviewer, notes).
+- 🔗 `[TYPE-VI-RISK]` Beispielzeile in Finalize-Ordner referenzieren; Verweis auf `tools/crep_guard.py --log-detection` ergänzen.
+- 🗓️ FIT-Handoff: Mapping zu `v6r-beta-telemetry-schema` dokumentieren und Zenodo/UTAC-Indices aktualisieren.
+
+**References:**
+- `../V6ToDorefresh.md:880-1045`
+- `../V6ToDorefresh.yaml:100-180`
+- `../type6_crep_tau_star_checklist.md:1-49`
+
+**Sprint Focus:** FIT-Schema-Sync für Telemetrie
 
 ---
 

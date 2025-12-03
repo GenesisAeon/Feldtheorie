@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-01-10T12:00:00Z
+**Updated:** 2026-01-11T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -945,6 +945,33 @@ Makefile/nox-Hook ruft `tools/crep_guard.py` mit τ*=0.1·|Θ−R| + CREP ≥0.7
 
 ---
 
+### [Priority 35] v6r-beta-telemetry-schema
+**Schema-Update für β-Drift/CREP-Logs vorbereiten (FIT-Microstep)**
+
+**Status:** 🔴 Open
+
+**Beta:** 4.7 | **Zeta Risk:** Moderat – fehlende Schemafelder bremsen CREP-Warnkette
+
+**Scope:** telemetry, metrics, governance
+
+**R → Θ:**
+`metrics/beta_evolution.csv` und `logs/type_vi_detections.jsonl` besitzen konsistente Felder für β-Drift (>10%) und CREP ≥0.7 → τ*-Default (=0.1·|Θ−R|) und Reviewer-Slot aus `type6_crep_tau_star_checklist` sind dokumentiert
+
+**Next Steps:**
+- 🧮 Schema-Entwurf notieren: `timestamp, domain, beta_estimate, drift_flag, tau_star, crep_value, escalation_level, reviewer, notes`.
+- 🧭 Feldbeschreibungen in `metrics/beta_evolution.csv` Kopfzeile ergänzen und Beispielzeile mit `[TYPE-VI-RISK]` Tag vorbereiten.
+- 🔗 Log-Spiegelung festhalten: `tools/crep_guard.py --log-detection` → `logs/type_vi_detections.jsonl` inkl. τ*-Default und Reviewer-Routing (Level 2/3 → `MAINTAINERS.md`).
+
+**References:**
+- `metrics/beta_evolution.csv`
+- `logs/type_vi_detections.jsonl`
+- `type6_crep_tau_star_checklist.md:1-49`
+- `activation_gaps_tau_star.md:1-36`
+
+**Sprint Focus:** FIT-Microstep für Telemetrie-Schema
+
+---
+
 ### [Priority 22] v6r-aeon-architecture
 **Aeon v1.0 Architektur (Nullkern → AeonShell → Agenten) entwerfen und mit V6-FIT koppeln**
 
@@ -970,6 +997,33 @@ Aeon v1.0 Bauplan aus ChatGPT5.1_AeonV1.0Bauplan.txt extrahiert → Nullkern/Aeo
 - `ARCHITECTURE.md:1-60`
 
 **Sprint Focus:** Aeon-Bauplan anlegen + FIT-Bridge öffnen
+
+---
+
+### [Priority 36] v6r-aeon-architecture-notes
+**Aeon-Bauplan-Notizen konsolidieren und Architekturdokumente verlinken (FIT-Microstep)**
+
+**Status:** 🔴 Open
+
+**Beta:** 6.2 | **Zeta Risk:** Moderat – fehlende Nullkern-Notizen blockieren Architekturraster
+
+**Scope:** architecture, documentation, ai-systems
+
+**R → Θ:**
+Nullkern/AeonShell/MasterGPT-Stichpunkte aus Bauplan-Quellen extrahiert → Kurzabschnitt in `ARCHITECTURE.md` + Platzhalter in `V6_Wellenfunktions_Integrationsplan.md` gesetzt, FIT-Link zu Finalize vermerkt
+
+**Next Steps:**
+- 📝 Zwei Absätze "Aeon Nullkern" + "AeonShell" aus `Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt` destillieren und in `ARCHITECTURE.md` als Draft markieren.
+- 🔗 gleichen Textblock als TODO-Hook in `V6_Wellenfunktions_Integrationsplan.md` spiegeln (Referenz auf Ψ/τ*-Kopplung).
+- 🧭 FIT-Vermerk ergänzen: Handoff → `finalize-aeon-architecture-brief`, Chronik/AEON_ALETHEIA_INTEGRATION.md als Evidenz angeben.
+
+**References:**
+- `Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt:1-120`
+- `ARCHITECTURE.md:1-80`
+- `V6_Wellenfunktions_Integrationsplan.md:1-80`
+- `AEON_ALETHEIA_INTEGRATION.md:1-80`
+
+**Sprint Focus:** Aeon-Bauplan-Notizen verankern
 
 ---
 
