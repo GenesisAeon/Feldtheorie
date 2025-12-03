@@ -588,6 +588,30 @@ Type-VI-Simulationen und Analysen laufen mit τ*-Default + RK4-Garantie → Guar
 
 ---
 
+### [Priority 12a] v6r-tau-star-mini-steps
+**τ*-Mini-Schritte aus activation_gaps_tau_star in FIT-Microtasks aufbrechen**
+
+**Status:** 🔴 Open
+**Beta:** 5.0 | **Zeta Risk:** Mittel – ζ<0 bei fehlenden Validatoren
+
+**Scope:** analysis, simulation, governance
+
+**R → Θ:**
+τ*-Stub aus `activation_gaps_tau_star.md` operationalisiert → Hyperparameter in β-Meta-Regression eingespeist, Makefile/CI-Validator prüft τ*/CREP-Logs, Telemetrie visualisiert β-Drift + CREP-Alerts
+
+**Next Steps:**
+- 🧪 `analysis/beta_meta_regression_v2.py` um τ*-Parameter + CREP-Logging-Hooks ergänzen (RK4-Pfad, keine Euler-Routen).
+- 🛠️ Makefile/CI-Validator-Stub anlegen, der τ*=0.1·|Θ−R| erzwingt und `logs/type_vi_detections.jsonl` auf CREP-Warnungen prüft.
+- 📈 Telemetrie-Slot ergänzen: β-Drift >10% und CREP ≥0.7 als Warnbanner in Metrics-/Dashboard-Daten (z.B. `metrics/beta_evolution.csv`).
+
+**References:**
+- `activation_gaps_tau_star.md:1-36`
+- `type6_crep_tau_star_checklist.md:1-49`
+
+**Sprint Focus:** τ*-Stub in Analysis/CI/Telemetrie verankern
+
+---
+
 ### [Priority 13] v6r-psi-integration-plan
 **Ψ-Integrationsplan aus dem Wellenfunktions-Integrationsdokument operationalisieren**
 
@@ -1249,6 +1273,15 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 - Neue Tasks `v6r-sigillin-parser`, `v6r-metrics-outlier`, `v6r-data-lantern-dashboard` und `v6r-type6-classification` aus `FinalyzeVorschlägeChatGPT5.1Agent.txt` übernommen (FIT-Splitting).
 - FIT-Mapping um finale Gegenstücke ergänzt und priority_order aktualisiert.
 - Updatedatum auf 2026-01-05 gesetzt, Fokus auf Sigillin-Automation, CREP/ΔAIC-Robustheit und Data-Lantern-Dashboard.
+
+---
+
+### 2026-01-09 | v6-refresh-tau-star-mini-steps
+
+✅ **Highlights:**
+- Neuer Task `v6r-tau-star-mini-steps` ergänzt, der die offenen Mini-Schritte aus `activation_gaps_tau_star.md` als FIT-Tasks (Analysis/CI/Telemetrie) abbildet.
+- τ*-Hyperparameter/CREP-Logging in `analysis/beta_meta_regression_v2.py`, Validator-Stub (τ*=0.1·|Θ−R|, CREP ≥0.7) und Telemetrie-Warnbanner (β-Drift, CREP) als konkrete Next Steps notiert.
+- FIT-Mapping-Hinweis vorbereitet: Finalize-Gegenstück `finalize-tau-star-mini-steps` anzulegen und in Validator-/Chronik-Hooks zu spiegeln.
 
 ---
 
