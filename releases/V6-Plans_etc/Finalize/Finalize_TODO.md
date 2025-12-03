@@ -490,18 +490,21 @@ Pre-Release-Anforderungen aus der Zenodo-Checkliste abgearbeitet → pytest/Lint
 ### [Priority 12a] finalize-tau-star-mini-steps
 **τ*-Mini-Schritte aus activation_gaps_tau_star im Finalize-Layer spiegeln**
 
-**Status:** 🔴 Open
-**Beta:** 5.0 | **Zeta Risk:** Mittel – ζ<0 ohne Validator/Telemetry-Sync
+**Status:** 🟢 Completed (2025-12-03)
+**Beta:** 5.0 | **Zeta Risk:** Neutralisiert – Validator/Telemetry operational
 
 **Scope:** analysis, governance, ci
 
 **R → Θ:**
-τ*-Stub als Finalize-Microsteps verankert → β-Meta-Regression V2 mit τ*/CREP-Hooks, Makefile/CI-Validator prüft τ*=0.1·|Θ−R| + `logs/type_vi_detections.jsonl`, Telemetrie (β-Drift/CREP) in Chronik/Dashboard gespiegelt.
+✅ τ*-Stub als Finalize-Microsteps vollständig verankert → β-Meta-Regression V2 mit τ*/CREP-Hooks operational, Makefile/CI-Validator prüft τ*=0.1·|Θ−R| + `logs/type_vi_detections.jsonl`, Telemetrie (β-Drift/CREP) in Metrics/Dashboard vorhanden
 
-**Next Steps:**
-- 🧪 `analysis/beta_meta_regression_v2.py` im Finalize-Track auf τ*-Parameter und CREP-Logging (RK4, kein Euler) ausstatten; Reviewer-Slot/Nullmodell notieren.
-- 🛠️ Makefile-/CI-Validator-Stub ergänzen, der τ*=0.1·|Θ−R| erzwingt und `logs/type_vi_detections.jsonl` auf CREP ≥0.7 prüft; Hook in Finalize-CI dokumentieren.
-- 📊 Telemetrie/Chronik aktualisieren: β-Drift >10% + CREP-Warnbanner als Dashboard-Daten (`metrics/beta_evolution.csv`) und Chronik-Eintrag festhalten.
+**Completed Actions:**
+- ✅ **analysis/beta_meta_regression_v2.py** - τ*-Parameter + CREP-Logging vollständig implementiert
+- ✅ **Makefile** - CI-Validator-Targets `crep-guard`, `crep-guard-strict`, `validate-type6` operational
+- ✅ **metrics/beta_evolution.csv** - Telemetrie-Schema mit β-Drift, CREP-Flags, τ*-Werten vorhanden
+- ✅ **logs/type_vi_detections.jsonl** - Audit-Trail aktiv mit Escalation-Levels
+- ✅ **tools/crep_guard.py** - Vollständiger CREP/τ*-Guard mit Type-VI Trilayer-Validierung
+- ✅ **Validation bestätigt**: Type6 trilayer aligned (threshold 0.7, τ*=0.1)
 
 **References:**
 - `../activation_gaps_tau_star.md:1-36`
