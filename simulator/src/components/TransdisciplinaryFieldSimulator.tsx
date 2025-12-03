@@ -22,6 +22,7 @@ import { DomainPreset, DomainState, TrajectoryPoint } from '../types';
 import { clamp, cubicRootJump, invertedSigmoid, tauStar } from '../utils/logistic';
 import { buildTooltipDataMap } from '../utils/tooltipDataBuilder';
 import { Language, getTranslation } from '../i18n/translations';
+import { rk4Step, SimulationState, SimulationParams } from '../utils/physicsIntegrator';
 
 const BASE_THETA = 5;
 const BASE_BETA = 4;
@@ -247,32 +248,28 @@ export const TransdisciplinaryFieldSimulator = () => {
         const gate = gateBuffer.length > delaySteps ? gateBuffer.shift() ?? gateInstant : gateBuffer[0] ?? gateInstant;
         tauBufferRef.current[id] = gateBuffer.slice(-Math.max(delaySteps, 1));
 
-        const derivatives = (state: Pick<DomainState, 'R' | 'psi' | 'phi'>) => ({
-          dR: stimulus + crossTerm - gate * state.R * 0.32,
-          dPsi: -0.22 * state.psi + 0.48 * gate * state.R + 0.28 * state.phi * state.R,
-          dPhi: 0.14 * state.psi - 0.18 * state.phi + 0.26 * gate
-        });
+        // Use RK4 integrator with τ*-safety buffer
+        const simState: SimulationState = {
+          R: previousState.R,
+          psi: previousState.psi,
+          phi: previousState.phi,
+          t: timeRef.current
+        };
 
-        const addScaled = (
-          state: Pick<DomainState, 'R' | 'psi' | 'phi'>,
-          delta: { dR: number; dPsi: number; dPhi: number },
-          scale: number
-        ) => ({
-          R: state.R + delta.dR * scale,
-          psi: state.psi + delta.dPsi * scale,
-          phi: state.phi + delta.dPhi * scale
-        });
+        const simParams: SimulationParams = {
+          theta: effectiveTheta,
+          beta: effectiveBeta,
+          coupling: controls.coupling,
+          stimulus: stimulus + crossTerm,
+          zeta: preset.impedance.closed,
+          useTypeVI: previousState.R > effectiveTheta // Enable Type-VI for implosive scenarios
+        };
 
-        const k1 = derivatives(previousState);
-        const k2 = derivatives(addScaled(previousState, k1, dt / 2));
-        const k3 = derivatives(addScaled(previousState, k2, dt / 2));
-        const k4 = derivatives(addScaled(previousState, k3, dt));
+        const newState = rk4Step(simState, dt, simParams);
 
-        const newR = Math.max(0, previousState.R + (dt / 6) * (k1.dR + 2 * k2.dR + 2 * k3.dR + k4.dR));
-        const newPsiDeterministic =
-          previousState.psi + (dt / 6) * (k1.dPsi + 2 * k2.dPsi + 2 * k3.dPsi + k4.dPsi);
-        const newPsi = newPsiDeterministic + 0.08 * controls.noiseScale * (Math.random() - 0.5);
-        const newPhi = Math.max(0, previousState.phi + (dt / 6) * (k1.dPhi + 2 * k2.dPhi + 2 * k3.dPhi + k4.dPhi));
+        const newR = Math.max(0, newState.R);
+        const newPsi = newState.psi + 0.08 * controls.noiseScale * (Math.random() - 0.5);
+        const newPhi = Math.max(0, newState.phi);
         const zeta = preset.impedance.closed - (preset.impedance.closed - preset.impedance.open) * gate;
         const crossed = previousState.R < effectiveTheta && newR >= effectiveTheta;
 

@@ -61,6 +61,124 @@ except ImportError:
 
 CANONICAL_BAND = (3.6, 4.8)
 
+# τ*-Safety-Delay and CREP governance constants
+# Reference: activation_gaps_tau_star.md
+BASE_THETA = 5.0  # Default threshold value
+TAU_STAR_DEFAULT = 0.1  # τ* = 0.1·|Θ−R|
+CREP_THRESHOLD_LEVEL1 = 0.7  # Level-1 warning
+CREP_THRESHOLD_LEVEL2 = 0.8  # Level-2 escalation (human-in-loop)
+
+
+def tau_star(theta: float, R: float) -> float:
+    """
+    τ*-Safety-Delay for Type-VI implosive scenarios.
+
+    Args:
+        theta: Threshold Θ
+        R: Resource/Reality level
+
+    Returns:
+        τ* = 0.1·|Θ−R| safety delay
+
+    Reference:
+        activation_gaps_tau_star.md:12-14
+    """
+    return TAU_STAR_DEFAULT * abs(theta - R)
+
+
+def compute_crep_index(beta: float, theta: float, R: float, zeta: float | None = None) -> float:
+    """
+    Compute CREP (Complexity-Risk-Escalation-Provenance) index.
+
+    CREP combines:
+    - C: Complexity (β magnitude)
+    - R: Resource proximity to threshold
+    - E: Escalation potential (β deviation from canonical band)
+    - P: Provenance (data quality, here simplified as zeta)
+
+    Args:
+        beta: Logistic steepness
+        theta: Threshold
+        R: Resource level
+        zeta: Impedance (optional)
+
+    Returns:
+        CREP index ∈ [0, 1], higher = more risk
+
+    Reference:
+        type6_crep_tau_star_checklist.md
+    """
+    # Complexity: normalized β distance from canonical
+    beta_normalized = (beta - CANONICAL_BETA) / (CANONICAL_BAND[1] - CANONICAL_BAND[0])
+    complexity = min(1.0, abs(beta_normalized))
+
+    # Resource proximity (R >> Θ triggers Type-VI)
+    resource_risk = min(1.0, max(0.0, (R - theta) / max(theta, 1.0)))
+
+    # Escalation: β outside canonical band
+    if CANONICAL_BAND[0] <= beta <= CANONICAL_BAND[1]:
+        escalation = 0.0
+    else:
+        escalation = min(1.0, abs(beta - CANONICAL_BETA) / 10.0)
+
+    # Provenance: simplified as impedance proxy
+    provenance = 0.5 if zeta is None else min(1.0, abs(zeta) / 2.0)
+
+    # Weighted CREP: C=0.3, R=0.3, E=0.3, P=0.1
+    crep = 0.3 * complexity + 0.3 * resource_risk + 0.3 * escalation + 0.1 * provenance
+
+    return min(1.0, max(0.0, crep))
+
+
+def log_type_vi_detection(
+    domain: str,
+    beta: float,
+    theta: float,
+    R: float,
+    crep: float,
+    log_path: Path | None = None
+) -> None:
+    """
+    Log Type-VI risk detection for audit trail.
+
+    Args:
+        domain: Domain name
+        beta: Logistic steepness
+        theta: Threshold
+        R: Resource level
+        crep: CREP index
+        log_path: Path to JSONL log file
+
+    Reference:
+        activation_gaps_tau_star.md:21-24
+        logs/type_vi_detections.jsonl
+    """
+    if log_path is None:
+        log_path = Path("logs/type_vi_detections.jsonl")
+
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+
+    escalation_level = 0
+    if crep >= CREP_THRESHOLD_LEVEL2:
+        escalation_level = 2
+    elif crep >= CREP_THRESHOLD_LEVEL1:
+        escalation_level = 1
+
+    entry = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "domain": domain,
+        "beta": float(beta),
+        "theta": float(theta),
+        "R": float(R),
+        "crep": float(crep),
+        "escalation_level": escalation_level,
+        "tag": "[TYPE-VI-RISK]" if escalation_level > 0 else "[TYPE-VI-NOMINAL]",
+        "tau_star": float(tau_star(theta, R))
+    }
+
+    with log_path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(entry) + "\n")
+
 
 @dataclass
 class RegressionSummary:
@@ -287,8 +405,9 @@ def domain_diagnostics(
     predictions: np.ndarray,
     weights: pd.Series,
     result: sm.regression.linear_model.RegressionResultsWrapper,
+    enable_crep_logging: bool = True,
 ) -> dict[str, dict[str, float]]:
-    """Assemble per-domain diagnostics, including Cook's distance."""
+    """Assemble per-domain diagnostics, including Cook's distance and CREP monitoring."""
 
     influence = OLSInfluence(result)
     cooks_d = influence.cooks_distance[0]
@@ -297,8 +416,26 @@ def domain_diagnostics(
     diagnostics: dict[str, dict[str, float]] = {}
 
     for idx, row in df.iterrows():
+        beta_obs = float(y.loc[idx])
+        theta = row.get("theta", BASE_THETA) if "theta" in row else 5.0
+        R = row.get("R", theta * 1.2) if "R" in row else theta * 1.2
+        zeta = row.get("zeta", None) if "zeta" in row else None
+
+        # Compute CREP index for Type-VI risk monitoring
+        crep = compute_crep_index(beta_obs, theta, R, zeta)
+
+        # Log Type-VI detection if CREP exceeds threshold
+        if enable_crep_logging and crep >= CREP_THRESHOLD_LEVEL1:
+            log_type_vi_detection(
+                domain=str(row["domain"]),
+                beta=beta_obs,
+                theta=theta,
+                R=R,
+                crep=crep
+            )
+
         diagnostics[row["domain"]] = {
-            "beta_observed": float(y.loc[idx]),
+            "beta_observed": beta_obs,
             "beta_predicted": float(pred_series.loc[idx]),
             "residual": float(y.loc[idx] - pred_series.loc[idx]),
             "abs_residual": float(abs(y.loc[idx] - pred_series.loc[idx])),
@@ -306,6 +443,8 @@ def domain_diagnostics(
             "delta_aic": float(row.get("delta_aic_guard", np.nan)),
             "within_canonical_band": bool(row["within_canonical_band"]),
             "cooks_distance": float(cooks_d[idx]),
+            "crep_index": float(crep),
+            "tau_star": float(tau_star(theta, R)),
         }
 
     return diagnostics
