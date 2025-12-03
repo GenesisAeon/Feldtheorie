@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2026-01-10T12:00:00Z'
+  updated_at: '2026-01-11T12:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -36,7 +36,9 @@ metadata:
     - finalize-crep-audit-log
     - finalize-tau-star-ci-hook
     - finalize-beta-telemetry
+    - finalize-beta-telemetry-sync
     - finalize-aeon-aletheia-bridge
+    - finalize-aeon-architecture-brief
     - finalize-sigillin-parser
     - finalize-metrics-outlier
     - finalize-data-lantern-dashboard
@@ -304,6 +306,46 @@ tasks:
   - path: ARCHITECTURE.md
   priority: 5
   sprint_focus: Architektur-Doc + Core-Module
+- id: finalize-aeon-architecture-brief
+  title: Kurzbriefing zu Nullkern/AeonShell als Draft in Architekturdokumente einspeisen
+  status: open
+  completeness: Draft-Abschnitte in ARCHITECTURE.md und V6_Wellenfunktions_Integrationsplan.md
+    fehlen; FIT-Handoff nicht markiert.
+  scope:
+  - architecture
+  - documentation
+  - ai-systems
+  logistic_profile:
+    R_target: Draft-Blöcke für Nullkern/AeonShell vorhanden
+    Theta_condition: ARCHITECTURE.md + V6_Wellenfunktions_Integrationsplan.md mit FIT-Handoff
+      auf ToDorefresh verweisen
+    beta_estimate: 6.2
+    zeta_risk: moderat
+  next_steps:
+  - Kernaussagen aus Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt destillieren
+    und als Draft-Blöcke markieren.
+  - Drafts mit [FIT-HANDOFF] Tag versehen und auf AEON_ALETHEIA_INTEGRATION.md verweisen
+    (CREP/τ*-Kontext notieren).
+  - Mapping zu v6r-aeon-architecture-notes bestätigen und Chronik-Hinweis vorbereiten.
+  references:
+  - path: releases/V6-Plans_etc/Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/ARCHITECTURE.md
+    lines:
+    - 1
+    - 80
+  - path: releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md
+    lines:
+    - 1
+    - 80
+  - path: releases/V6-Plans_etc/AEON_ALETHEIA_INTEGRATION.md
+    lines:
+    - 1
+    - 80
+  priority: 33
+  sprint_focus: Aeon-Draft-Blöcke platzieren
 - id: finalize-slice-integration
   title: 'Slice-Integration: Zeitwahrnehmung und CFF'
   status: open
@@ -919,6 +961,44 @@ tasks:
   priority: 19
   sprint_focus: Telemetrie-Warnpfad → Finalize-Belege
   updated_at: '2025-12-29T10:00:00Z'
+- id: finalize-beta-telemetry-sync
+  title: Schema-Sync für β-Drift/CREP zwischen Metrics/Logs und Finalize-Deltas
+  status: open
+  completeness: Schemafelder für Drift/CREP/τ* noch nicht im Finalize-Deltalog vermerkt;
+    FIT-Handoff offen.
+  scope:
+  - telemetry
+  - governance
+  - compliance
+  logistic_profile:
+    R_target: Schema für β-Drift/CREP-Logs dokumentiert
+    Theta_condition: Finalize-Deltalog/Zenodo-Checklist referenzieren Schema + Example
+      Row mit Reviewer-Slot
+    beta_estimate: 4.8
+    zeta_risk: moderat
+  next_steps:
+  - Kopfzeile/Schema aus V6ToDorefresh übernehmen (timestamp, domain, beta_estimate,
+    drift_flag, tau_star, crep_value, escalation_level, reviewer, notes) und im Finalize-Deltalog
+    dokumentieren.
+  - `[TYPE-VI-RISK]` Beispielzeile in Finalize-Ordner referenzieren; Verweis auf
+    tools/crep_guard.py --log-detection ergänzen.
+  - FIT-Handoff dokumentieren (Mapping → v6r-beta-telemetry-schema) und Zenodo/UTAC-Indices
+    aktualisieren.
+  references:
+  - path: releases/V6-Plans_etc/V6ToDorefresh.md
+    lines:
+    - 880
+    - 1045
+  - path: releases/V6-Plans_etc/V6ToDorefresh.yaml
+    lines:
+    - 100
+    - 180
+  - path: releases/V6-Plans_etc/type6_crep_tau_star_checklist.md
+    lines:
+    - 1
+    - 49
+  priority: 32
+  sprint_focus: FIT-Schema-Sync für Telemetrie
 - id: finalize-aeon-aletheia-bridge
   title: Aeon–Aletheia CREP/Telemetrie-Kopplung finalisieren
   status: open
@@ -1334,6 +1414,14 @@ fit_mapping:
   finalize_id: finalize-zenodo-ci-sync
   bridge_focus: Zenodo CI-Statusberichte → Checklist/Chronik/Finalize
   status: planned
+- todo_id: v6r-beta-telemetry-schema
+  finalize_id: finalize-beta-telemetry-sync
+  bridge_focus: Schema-Spiegel für β-Drift/CREP zwischen Metrics/Logs ↔ Finalize-Deltas
+  status: new
+- todo_id: v6r-aeon-architecture-notes
+  finalize_id: finalize-aeon-architecture-brief
+  bridge_focus: Aeon-Bauplan-Notizen (Nullkern/AeonShell) → Architekturdrafts/FIT-Handoff
+  status: new
 - todo_id: v6r-crep-audit-log
   finalize_id: finalize-crep-audit-log
   bridge_focus: Type-VI Audit-Log + Reviewer-Routing
