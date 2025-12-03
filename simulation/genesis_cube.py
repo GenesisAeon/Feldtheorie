@@ -26,6 +26,7 @@ Poetic:
     trägt die Entropie des Verschnitts und gebiert Gravitation aus dem geometrischen
     Zwang.
 """
+
 from __future__ import annotations
 
 import math
@@ -38,6 +39,7 @@ from models.utac_type6_implosive import cubic_root_jump, inverted_sigmoid, tau_s
 # Import PsiFieldPipeline for advanced wavefunction computation
 try:
     from pipelines.wavefunction.psi_field import PsiFieldConfig, PsiFieldPipeline
+
     PSIFIELD_AVAILABLE = True
 except ImportError:
     PSIFIELD_AVAILABLE = False
@@ -68,11 +70,13 @@ class GenesisCubeConfig:
     dt: float = 1e-44  # Time step in Planck units
     # Integration with PsiFieldPipeline
     use_psifield_pipeline: bool = False  # Use advanced PsiFieldPipeline if True
-    notes: list[str] = field(default_factory=lambda: [
-        "σ(β(R-Θ)) steuert die Aktivierungsschärfe",
-        "ζ(R) dämpft die implosiv→expansive Übergangskurve",
-        "Ψ(r,θ,φ,t) koppelt Entropie an Gravitation via holographisches Prinzip",
-    ])
+    notes: list[str] = field(
+        default_factory=lambda: [
+            "σ(β(R-Θ)) steuert die Aktivierungsschärfe",
+            "ζ(R) dämpft die implosiv→expansive Übergangskurve",
+            "Ψ(r,θ,φ,t) koppelt Entropie an Gravitation via holographisches Prinzip",
+        ]
+    )
 
 
 class GenesisCube:
@@ -108,10 +112,14 @@ class GenesisCube:
             return 0.0, 0.0, 0.0
         return x / norm, y / norm, z / norm
 
-    def seed_vectors(self, fluctuation_phase: float | None = None) -> list[tuple[float, float, float]]:
+    def seed_vectors(
+        self, fluctuation_phase: float | None = None
+    ) -> list[tuple[float, float, float]]:
         """Create three orthogonal-ish vectors from a fluctuation seed."""
 
-        phase = fluctuation_phase if fluctuation_phase is not None else self.config.fluctuation_phase
+        phase = (
+            fluctuation_phase if fluctuation_phase is not None else self.config.fluctuation_phase
+        )
         base_vectors = [
             (math.sin(phase), math.cos(phase), 1.0),
             (math.cos(phase * 2.0), 1.0, -math.sin(phase * 2.0)),
@@ -119,7 +127,9 @@ class GenesisCube:
         ]
         return [self._normalized(vec) for vec in base_vectors]
 
-    def cube_vertices(self, scale: float = 1.0, fluctuation_phase: float | None = None) -> list[tuple[float, float, float]]:
+    def cube_vertices(
+        self, scale: float = 1.0, fluctuation_phase: float | None = None
+    ) -> list[tuple[float, float, float]]:
         """Construct cube vertices using seeded vectors."""
 
         axes = self.seed_vectors(fluctuation_phase)
@@ -133,7 +143,9 @@ class GenesisCube:
                     vertices.append((scale * vx, scale * vy, scale * vz))
         return vertices
 
-    def project_hexagon(self, scale: float = 1.0, fluctuation_phase: float | None = None) -> list[tuple[float, float]]:
+    def project_hexagon(
+        self, scale: float = 1.0, fluctuation_phase: float | None = None
+    ) -> list[tuple[float, float]]:
         """Project cube vertices to a hexagon-like footprint on the mid-membrane."""
 
         vertices = self.cube_vertices(scale=scale, fluctuation_phase=fluctuation_phase)
@@ -142,18 +154,22 @@ class GenesisCube:
             u = vx - vz
             v = vy - vz
             footprint.append((u, v))
-        unique = []
+        unique: list[tuple[float, float]] = []
         for u, v in footprint:
             if all(abs(u - a) > 1e-6 or abs(v - b) > 1e-6 for a, b in unique):
                 unique.append((u, v))
         # Select first 6 unique vertices to sketch a hexagon outline
         return unique[:6]
 
-    def block_universe_slices(self, r_values: Iterable[float] | None = None) -> list[dict[str, object]]:
+    def block_universe_slices(
+        self, r_values: Iterable[float] | None = None
+    ) -> list[dict[str, object]]:
         """Generate slice-wise states across R with σ(β(R-Θ)) and ζ(R) damping."""
 
         if r_values is None:
-            r_values = [i / max(1, self.config.slice_count - 1) for i in range(self.config.slice_count)]
+            r_values = [
+                i / max(1, self.config.slice_count - 1) for i in range(self.config.slice_count)
+            ]
 
         slices: list[dict[str, object]] = []
         for idx, r in enumerate(r_values):
@@ -188,7 +204,9 @@ class GenesisCube:
 
     # ========== Entropic Wavefunction Extension ==========
 
-    def compute_tetrahedral_harmonics(self, theta: float | np.ndarray, phi: float | np.ndarray) -> complex | np.ndarray:
+    def compute_tetrahedral_harmonics(
+        self, theta: float | np.ndarray, phi: float | np.ndarray
+    ) -> complex | np.ndarray:
         """
         Tetrahedral angular harmonics Y_tetra(θ,φ).
 
@@ -208,9 +226,11 @@ class GenesisCube:
         sin_theta = np.sin(theta)
 
         # Three-fold rotational symmetry in φ (for 3 strings)
-        y_tetra = (cos_theta**2 * np.sin(3 * phi) +
-                   sin_theta**2 * np.cos(3 * phi) +
-                   1j * sin_theta * cos_theta * np.exp(1j * phi))
+        y_tetra = (
+            cos_theta**2 * np.sin(3 * phi)
+            + sin_theta**2 * np.cos(3 * phi)
+            + 1j * sin_theta * cos_theta * np.exp(1j * phi)
+        )
 
         return y_tetra
 
@@ -251,7 +271,7 @@ class GenesisCube:
         psi_time = np.exp(-1j * omega * t)
 
         # Normalization factor (approximate)
-        N = (ALPHA_INV / np.pi)**(3/4)
+        N = (ALPHA_INV / np.pi) ** (3 / 4)
 
         return N * psi_radial * psi_angular * psi_time
 
@@ -274,7 +294,7 @@ class GenesisCube:
             Real probability density |Ψ|²
         """
         psi = self.compute_wavefunction(r, theta, phi, t)
-        return np.abs(psi)**2
+        return np.abs(psi) ** 2
 
     def compute_entropy_gradient(
         self,
@@ -336,6 +356,7 @@ class GenesisCube:
         Returns:
             Updated wavefunction after one RK4 step
         """
+
         def dpsi_dt(psi_current: np.ndarray, time: float) -> np.ndarray:
             """Compute time derivative of wavefunction."""
             # Pyramidal potential: V_pyr = V_0 · [1 - tanh(β(R-Θ))]
@@ -360,7 +381,7 @@ class GenesisCube:
         k4 = dpsi_dt(psi + dt * k3, t + dt)
 
         # RK4 update
-        psi_next = psi + (dt / 6.0) * (k1 + 2*k2 + 2*k3 + k4)
+        psi_next = psi + (dt / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4)
 
         return psi_next
 
@@ -387,13 +408,13 @@ class GenesisCube:
         # Create spatial grid
         n = self.config.wavefunction_resolution
         r_1d = np.linspace(0, r_max, n)
-        theta_1d = np.linspace(0, np.pi, n)
-        phi_1d = np.linspace(0, 2*np.pi, n)
+        _theta_1d = np.linspace(0, np.pi, n)  # noqa: F841 - Reserved for future 3D expansion
+        _phi_1d = np.linspace(0, 2 * np.pi, n)  # noqa: F841 - Reserved for future 3D expansion
 
         # Use 1D arrays for efficiency (full 3D would be r×theta×phi)
         # Here we track radial profile for each slice
         r_grid = r_1d
-        theta_grid = np.full_like(r_1d, np.pi/4)  # Fixed slice
+        theta_grid = np.full_like(r_1d, np.pi / 4)  # Fixed slice
         phi_grid = np.full_like(r_1d, 0.0)  # Fixed slice
 
         # Initialize wavefunction
@@ -411,17 +432,25 @@ class GenesisCube:
 
             # Save snapshot
             if step % save_every == 0:
-                rho = np.abs(psi)**2
+                rho = np.abs(psi) ** 2
                 grad_S = self.compute_entropy_gradient(r_grid, theta_grid, phi_grid, t)
                 phase = np.angle(psi)
 
-                snapshots.append({
-                    "t": t,
-                    "r": r_grid.tolist() if hasattr(r_grid, 'tolist') else list(r_grid),
-                    "probability_density": rho.tolist() if hasattr(rho, 'tolist') else list(rho),
-                    "entropy_gradient": grad_S.tolist() if hasattr(grad_S, 'tolist') else list(grad_S),
-                    "phase": phase.tolist() if hasattr(phase, 'tolist') else list(phase),
-                })
+                snapshots.append(
+                    {
+                        "t": t,
+                        "r": r_grid.tolist() if hasattr(r_grid, "tolist") else list(r_grid),
+                        "probability_density": (
+                            rho.tolist() if hasattr(rho, "tolist") else list(rho)
+                        ),
+                        "entropy_gradient": (
+                            grad_S.tolist()
+                            if hasattr(grad_S, "tolist")
+                            else [grad_S] if isinstance(grad_S, (int, float)) else list(grad_S)
+                        ),
+                        "phase": phase.tolist() if hasattr(phase, "tolist") else list(phase),
+                    }
+                )
 
         return snapshots
 
@@ -475,8 +504,8 @@ class GenesisCube:
 
         # Add UTAC coupling via current GenesisCube state
         # Map mean_r to R coordinate for σ(β(R-Θ)) coupling
-        mean_r = results['mean_r']
-        delta_r = results['delta_r']
+        mean_r = results["mean_r"]
+        delta_r = results["delta_r"]
 
         # Convert Planck lengths to UTAC R parameter (normalized)
         # This is where quantum (Planck scale) meets classical (UTAC)
@@ -486,13 +515,13 @@ class GenesisCube:
         sigma_coupling = self.sigma(r_normalized)
 
         # Extend results with UTAC integration
-        results['utac_coupling'] = {
-            'R': r_normalized,
-            'sigma': sigma_coupling,
-            'mean_r_planck': mean_r,
-            'delta_r_planck': delta_r,
-            'beta': self.config.beta,
-            'theta': self.config.theta,
+        results["utac_coupling"] = {
+            "R": r_normalized,
+            "sigma": sigma_coupling,
+            "mean_r_planck": mean_r,
+            "delta_r_planck": delta_r,
+            "beta": self.config.beta,
+            "theta": self.config.theta,
         }
 
         return results
@@ -532,18 +561,18 @@ class GenesisCube:
 
         # 3. Combine outputs
         return {
-            'geometric': {
-                'slices': slices,
-                'slice_count': len(slices),
-                'config': self.config,
+            "geometric": {
+                "slices": slices,
+                "slice_count": len(slices),
+                "config": self.config,
             },
-            'quantum': psi_results,
-            'integration': {
-                'description': 'V6 Hybrid: Tesseract slicing + ψ_genesis wavefunction',
-                'psifield_enabled': psi_results is not None,
-                'r_max': r_max,
-                'n_points': n_points,
-            }
+            "quantum": psi_results,
+            "integration": {
+                "description": "V6 Hybrid: Tesseract slicing + ψ_genesis wavefunction",
+                "psifield_enabled": psi_results is not None,
+                "r_max": r_max,
+                "n_points": n_points,
+            },
         }
 
 

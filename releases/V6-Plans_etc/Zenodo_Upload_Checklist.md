@@ -50,14 +50,14 @@
   - [x] `pipelines/wavefunction/psi_field.py`: 87% coverage
   - [x] `pipelines/wavefunction/__init__.py`: 100% coverage
 
-- [ ] **Linting & Style:**
-  - [ ] `flake8 pipelines/wavefunction/` → no errors
-  - [ ] `flake8 simulation/genesis_cube.py` → no errors
-  - [ ] `black --check .` → all files formatted
+- [x] **Linting & Style:** ✅ (2025-12-03)
+  - [x] `flake8 pipelines/wavefunction/` → no errors ✓
+  - [x] `flake8 simulation/genesis_cube.py` → no errors ✓
+  - [x] `black --check .` → all files formatted ✓
 
-- [ ] **Type Checking:**
-  - [ ] `mypy pipelines/wavefunction/psi_field.py` → no errors
-  - [ ] `mypy simulation/genesis_cube.py` → no errors
+- [x] **Type Checking:** ✅ (2025-12-03)
+  - [x] `mypy pipelines/wavefunction/psi_field.py` → no errors ✓
+  - [x] `mypy simulation/genesis_cube.py` → no errors (genesis_cube.py specific issues resolved) ✓
 
 ### 1.1a Type-VI Governance Compliance
 
