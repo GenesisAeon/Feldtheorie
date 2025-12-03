@@ -41,6 +41,35 @@ content is reviewed by human maintainers, and `AUTHORSHIP.md` explains the
 responsibility split.  Automated tools must not be listed as co-authors in
 external publications.
 
+## Type-VI CREP/τ* Governance
+**Escalation Level for High-Risk Scenarios:**
+
+When analyzing Type-VI regime transitions (implosive dynamics with ζ < 0,
+high CREP ≥ 0.7, or cubic-root jump behavior), additional governance safeguards
+apply to prevent misuse and ensure responsible interpretation:
+
+### Mandatory Requirements
+1. **CREP Threshold Check:** If CREP (Critique-Response Epistemic Provenance) ≥ 0.7,
+   a mandatory reviewer slot must be documented in the audit trail before merge/release.
+2. **τ*-Safety Buffer:** All Type-VI simulations must include τ* = 0.1·|Θ−R| delay
+   buffer (or justify deviations) and use RK4 or higher-order integrators (no Euler).
+3. **Provenance & Dual-Use Protocol:** Document data sources, preprocessing steps,
+   null models, and conduct explicit dual-use check for potentially destabilizing
+   applications (e.g., financial cascades, ecological collapse scenarios).
+
+### Implementation
+- **Checklist:** See `releases/V6-Plans_etc/type6_crep_tau_star_checklist.md`
+- **CI Integration:** Pre-commit hooks validate CREP thresholds and τ*-defaults via
+  `python -m tools.crep_guard --threshold 0.7 --tau-default 0.1`
+- **Reviewer Routing:** Level 2 (CREP ≥ 0.7) and Level 3 (CREP ≥ 0.8) escalations
+  route to maintainers documented in `MAINTAINERS.md`
+
+**Rationale:** Type-VI scenarios involve destabilizing feedback loops (implosion,
+runaway collapse). Explicit governance prevents accidental harm from premature
+deployment of models predicting tipping points in socio-ecological systems.
+
+---
+
 ## Invitation for scrutiny
 We invite independent replication.  Issues or pull requests that identify
 statistical weaknesses, ethical concerns, or data provenance gaps will be
