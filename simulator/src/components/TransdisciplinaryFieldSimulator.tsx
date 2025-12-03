@@ -10,18 +10,22 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
-import { Pause, Play, RotateCcw, Sparkles } from 'lucide-react';
+import { Pause, Play, RotateCcw, Sparkles, Volume2, VolumeX, Upload } from 'lucide-react';
 import { DomainCard } from './DomainCard';
 import { UTACTooltip } from './UTACTooltip';
 import { PhasePortrait } from './PhasePortrait';
 import { FieldTypeDistribution } from './FieldTypeDistribution';
 import { CREPDashboard } from './CREPDashboard';
 import { LanguageToggle } from './LanguageToggle';
+import { CSVDropZone } from './CSVDropZone';
 import { FEATURED_PRESETS, PRESETS } from '../presets';
 import { DomainPreset, DomainState, TrajectoryPoint } from '../types';
 import { clamp, cubicRootJump, invertedSigmoid, tauStar } from '../utils/logistic';
 import { buildTooltipDataMap } from '../utils/tooltipDataBuilder';
 import { Language, getTranslation } from '../i18n/translations';
+import { rk4Step, SimulationState, SimulationParams } from '../utils/physicsIntegrator';
+import { useAudioSonification } from '../hooks/useAudioSonification';
+import { RegressionResult } from '../utils/csvRegression';
 
 const BASE_THETA = 5;
 const BASE_BETA = 4;
@@ -72,6 +76,10 @@ export const TransdisciplinaryFieldSimulator = () => {
   const [activePresetIds, setActivePresetIds] = useState<string[]>(() => FEATURED_PRESETS.map((preset) => preset.id));
   const [currentLang, setCurrentLang] = useState<Language>('en');
   const [activeTab, setActiveTab] = useState<'timeseries' | 'phase' | 'stats'>('timeseries');
+  const [showCSVZone, setShowCSVZone] = useState(false);
+
+  // Audio sonification hook
+  const audioSonification = useAudioSonification();
 
   const t = useMemo(() => getTranslation(currentLang), [currentLang]);
 
@@ -247,32 +255,28 @@ export const TransdisciplinaryFieldSimulator = () => {
         const gate = gateBuffer.length > delaySteps ? gateBuffer.shift() ?? gateInstant : gateBuffer[0] ?? gateInstant;
         tauBufferRef.current[id] = gateBuffer.slice(-Math.max(delaySteps, 1));
 
-        const derivatives = (state: Pick<DomainState, 'R' | 'psi' | 'phi'>) => ({
-          dR: stimulus + crossTerm - gate * state.R * 0.32,
-          dPsi: -0.22 * state.psi + 0.48 * gate * state.R + 0.28 * state.phi * state.R,
-          dPhi: 0.14 * state.psi - 0.18 * state.phi + 0.26 * gate
-        });
+        // Use RK4 integrator with τ*-safety buffer
+        const simState: SimulationState = {
+          R: previousState.R,
+          psi: previousState.psi,
+          phi: previousState.phi,
+          t: timeRef.current
+        };
 
-        const addScaled = (
-          state: Pick<DomainState, 'R' | 'psi' | 'phi'>,
-          delta: { dR: number; dPsi: number; dPhi: number },
-          scale: number
-        ) => ({
-          R: state.R + delta.dR * scale,
-          psi: state.psi + delta.dPsi * scale,
-          phi: state.phi + delta.dPhi * scale
-        });
+        const simParams: SimulationParams = {
+          theta: effectiveTheta,
+          beta: effectiveBeta,
+          coupling: controls.coupling,
+          stimulus: stimulus + crossTerm,
+          zeta: preset.impedance.closed,
+          useTypeVI: previousState.R > effectiveTheta // Enable Type-VI for implosive scenarios
+        };
 
-        const k1 = derivatives(previousState);
-        const k2 = derivatives(addScaled(previousState, k1, dt / 2));
-        const k3 = derivatives(addScaled(previousState, k2, dt / 2));
-        const k4 = derivatives(addScaled(previousState, k3, dt));
+        const newState = rk4Step(simState, dt, simParams);
 
-        const newR = Math.max(0, previousState.R + (dt / 6) * (k1.dR + 2 * k2.dR + 2 * k3.dR + k4.dR));
-        const newPsiDeterministic =
-          previousState.psi + (dt / 6) * (k1.dPsi + 2 * k2.dPsi + 2 * k3.dPsi + k4.dPsi);
-        const newPsi = newPsiDeterministic + 0.08 * controls.noiseScale * (Math.random() - 0.5);
-        const newPhi = Math.max(0, previousState.phi + (dt / 6) * (k1.dPhi + 2 * k2.dPhi + 2 * k3.dPhi + k4.dPhi));
+        const newR = Math.max(0, newState.R);
+        const newPsi = newState.psi + 0.08 * controls.noiseScale * (Math.random() - 0.5);
+        const newPhi = Math.max(0, newState.phi);
         const zeta = preset.impedance.closed - (preset.impedance.closed - preset.impedance.open) * gate;
         const crossed = previousState.R < effectiveTheta && newR >= effectiveTheta;
 
@@ -325,6 +329,28 @@ export const TransdisciplinaryFieldSimulator = () => {
       timeRef.current = newTime;
       setTime(newTime);
 
+      // Update audio sonification
+      if (audioSonification.enabled && activeCount > 0) {
+        const avgGate = gateSum / activeCount;
+        const avgBeta = Object.values(nextStates).reduce((sum, s) => sum + s.beta, 0) / activeCount;
+        const avgRateOfChange = activeCount > 0
+          ? Object.values(nextStates).reduce((sum, s, idx) => {
+              const prev = Object.values(stateRef.current)[idx];
+              return sum + (prev ? Math.abs(s.R - prev.R) / dt : 0);
+            }, 0) / activeCount
+          : 0;
+
+        // Estimate CREP (simplified for sonification)
+        const avgCREP = avgBeta > 6 ? 0.7 + (avgBeta - 6) / 20 : 0.3;
+
+        audioSonification.updateSonification({
+          baseFrequency: 220,
+          rateOfChange: avgRateOfChange,
+          gate: avgGate,
+          crep: avgCREP
+        });
+      }
+
       animationRef.current = requestAnimationFrame(step);
     };
 
@@ -335,7 +361,7 @@ export const TransdisciplinaryFieldSimulator = () => {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isRunning, controls, activePresetIds, createStateFromPreset, poeticMode, presetsById]);
+  }, [isRunning, controls, activePresetIds, createStateFromPreset, poeticMode, presetsById, audioSonification]);
 
   useEffect(() => {
     setDomainStates((prev) => {
@@ -372,6 +398,18 @@ export const TransdisciplinaryFieldSimulator = () => {
       return [...prev, id];
     });
   };
+
+  const handleCSVData = useCallback((result: RegressionResult) => {
+    // Apply estimated parameters to controls
+    setControls((prev) => ({
+      ...prev,
+      beta: result.beta,
+      theta: result.theta
+    }));
+
+    // Close CSV zone after processing
+    setShowCSVZone(false);
+  }, []);
 
   const activePresets = useMemo(
     () => activePresetIds.map((id) => presetsById.get(id)).filter((preset): preset is DomainPreset => Boolean(preset)),
@@ -505,6 +543,21 @@ export const TransdisciplinaryFieldSimulator = () => {
             >
               <Sparkles size={16} /> {t.poetic}
             </button>
+            <button
+              className={`button ghost ${audioSonification.enabled ? 'active' : ''}`}
+              onClick={audioSonification.toggle}
+              title={audioSonification.enabled ? 'Disable audio sonification' : 'Enable audio sonification'}
+            >
+              {audioSonification.enabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
+              Audio
+            </button>
+            <button
+              className={`button ghost ${showCSVZone ? 'active' : ''}`}
+              onClick={() => setShowCSVZone((prev) => !prev)}
+              title="Import CSV data for β/Θ estimation"
+            >
+              <Upload size={16} /> CSV
+            </button>
           </div>
           <div style={{ marginTop: '1rem', color: 'rgba(226,232,255,0.75)', fontSize: '0.9rem' }}>
             <div>{t.time}: {time.toFixed(1)} s</div>
@@ -512,6 +565,12 @@ export const TransdisciplinaryFieldSimulator = () => {
           </div>
         </div>
       </section>
+
+      {showCSVZone && (
+        <section style={{ marginTop: '1rem' }}>
+          <CSVDropZone onDataProcessed={handleCSVData} language={currentLang} />
+        </section>
+      )}
 
       <section className="domain-controls">
         {PRESETS.map((preset) => (
