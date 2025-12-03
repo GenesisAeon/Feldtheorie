@@ -50,6 +50,11 @@ Before committing changes in this context:
 - [ ] Indices updated (seed_index, docs_index, etc.)
 - [ ] Cross-references validated
 - [ ] No broken links
+- [ ] **Type-VI CREP/τ* Check** (if applicable):
+  - [ ] CREP ≥ 0.7 → Reviewer slot documented
+  - [ ] τ* = 0.1·|Θ−R| validated (or deviations justified)
+  - [ ] Provenance block complete (data sources, null models, dual-use check)
+  - [ ] See: `releases/V6-Plans_etc/type6_crep_tau_star_checklist.md`
 
 
 ---
