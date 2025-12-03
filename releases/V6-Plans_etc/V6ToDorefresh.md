@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-01-09T18:00:00Z
+**Updated:** 2026-01-10T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -1178,6 +1178,52 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 
 ---
 
+### [Priority 32] v6r-psi-coverage-boost
+**Ψ-Pipeline Coverage von 87% → 95%+ heben (Edge-Branches schließen)**
+
+**Status:** 🔴 Open  , **Beta:** 5.5 | **Zeta Risk:** Moderat – fehlende Edge-Case-Absicherung
+
+**Scope:** testing, ci, documentation
+
+**R → Θ:** Zusätzliche Tests für entropy/radial_distribution/Type-VI Branches liefern ≥95% Coverage in `psi_field.py`/`genesis_cube.py` und spiegeln Ergebnisse in ZENODO_CI_STATUS.
+
+**Next Steps:**
+- 🧪 Edge-Case-Tests ergänzen (entropy shape inference, radial_distribution normalization, τ*-Branch) in `tests/test_psi_field.py` und `tests/test_genesis_psifield_integration.py`.
+- 📈 Coverage-Report (ziel ≥95%) generieren und in `ZENODO_CI_STATUS_2025-12-03.md` + Chronik/Zenodo-Checklist nachtragen.
+- 🔗 FIT-Mapping zu `finalize-psi-coverage-boost` herstellen; ΔAIC/CREP-Logs (`logs/type_vi_detections.jsonl`) als Belege anhängen.
+
+**References:**
+- `releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md:18-88`
+- `tests/test_psi_field.py`
+- `tests/test_genesis_psifield_integration.py`
+
+**Sprint Focus:** Coverage-Gap schließen & Dokumentation spiegeln
+
+---
+
+### [Priority 33] v6r-lint-baseline-cleanup
+**Ruff/Black-Baseline für Legacy-Code (550 Lint-Fehler) aufbauen und abbauen**
+
+**Status:** 🔴 Open  , **Beta:** 4.4 | **Zeta Risk:** Erhöht – Lint-Schulden blockieren Release-Gates
+
+**Scope:** ci, maintenance, documentation
+
+**R → Θ:** Lint-Schulden aus ZENODO_CI_STATUS (≈550 Fehler) in Batch-Fixes zerlegen → Ruff-Baseline/Ignore-Liste erstellen, erste Module säubern, Belege in Zenodo/Finalize spiegeln.
+
+**Next Steps:**
+- 📋 Ruff-Baseline laufen lassen (`ruff --statistics`) und Fehlerklassen clustern; Ergebnis in `Zenodo_Upload_Checklist.md` und ZENODO_CI_STATUS eintragen.
+- 🔧 Erste Fix-Welle für high-churn Module (pipelines/wavefunction, simulation/) mit Black/Ruff anwenden; restliche Verstöße in TODO-Liste aufnehmen.
+- 🔗 FIT-Mapping zu `finalize-lint-cleanup` setzen und Reviewer/CI-Hooks (pre-commit, nox) um Lint-Gate ergänzen.
+
+**References:**
+- `releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md:70-156`
+- `Zenodo_Upload_Checklist.md`
+- `pyproject.toml`
+
+**Sprint Focus:** Lint-Debt abbauen & CI-Gates vorbereiten
+
+---
+
 ### [Priority 1] v6r-literature-review-sync
 **V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
 
@@ -1271,10 +1317,21 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 | v6r-psi-test-execution | finalize-psi-test-execution | Ψ-Test-Suite Coverage (≥80%) + τ*/CREP-Gate | Neu – Coverage-Gap schließen, CI/Chronik koppeln |
 | v6r-psi-visualization | finalize-psi-visualization | Ψ-Visuals (|ψ|², Tesseract) → VISUALIZATION_INDEX | Neu – Artefakte/Dateipfade erzeugen |
 | v6r-psi-tutorials | finalize-psi-tutorials | Ψ-Notebooks + FIT-Lernpfade | Neu – Tutorials/README-Hooks anlegen |
+| v6r-psi-coverage-boost | finalize-psi-coverage-boost | Ψ-Coverage ≥95% + Edge-Branch Tests → Zenodo/Chronik | Neu – Edge-Tests ergänzen, Coverage-Log spiegeln |
+| v6r-lint-baseline-cleanup | finalize-lint-cleanup | Ruff-Baseline + Lint-Fixes dokumentieren (Zenodo/CI) | Neu – Lint-Schulden clustern und Fix-Wellen planen |
 
 ---
 
 ## Delta Updates
+
+### 2026-01-10 | v6-refresh-ci-lint-coverage
+
+✅ **Highlights:**
+- Neue Tasks `v6r-psi-coverage-boost` (Coverage 95%+) und `v6r-lint-baseline-cleanup` (≈550 Ruff-Fälle) aus `ZENODO_CI_STATUS_2025-12-03.md` abgeleitet und in priority_order aufgenommen.
+- FIT-Mapping um `finalize-psi-coverage-boost` / `finalize-lint-cleanup` ergänzt; Updatedatum auf 2026-01-10T12:00:00Z gesetzt.
+- Referenzpfade (`ZENODO_CI_STATUS_2025-12-03.md`, `Zenodo_Upload_Checklist.md`, `logs/type_vi_detections.jsonl`) als Beleg für CI/Release-Gates markiert.
+
+---
 
 ### 2026-01-08 | v6-refresh-type6-checklists
 
