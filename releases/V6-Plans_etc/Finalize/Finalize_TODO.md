@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-01-08T12:00:00Z
+**Updated:** 2026-01-09T18:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -247,7 +247,7 @@ Slice-Aggregation-Modell dokumentiert → docs/slice_integration_model.md + Citi
 ### [Priority 7] finalize-repo-compliance
 **Repository-Konformität: Finalize-Ordner strukturieren**
 
-**Status:** 🟢 Completed (2025-12-03)
+**Status:** 🟢 Completed (2026-01-09)
 **Beta:** 4.2 | **Zeta Risk:** Niedrig - organisatorisch
 
 **Scope:** organization, documentation, maintenance
@@ -391,7 +391,7 @@ V6-Onboarding + Reproduzierbarkeit auf Reviewer-Niveau → Portal-Seite + Prereg
 ### [Priority 4] finalize-literature-review-sync
 **V6 Literature Review finalisieren und mit Finalize-Dokumenten spiegeln**
 
-**Status:** 🟢 Completed (2025-12-03)
+**Status:** 🟢 Completed (2026-01-09)
 **Beta:** 5.1 | **Zeta Risk:** Moderat – Referenz-Drift blockiert DOI-Readiness
 
 **Scope:** documentation, research, governance
@@ -416,7 +416,7 @@ Kernaussagen der V6-Literature-Review in Finalize-Schiene integriert → V6_Lite
 ### [Priority 5] finalize-entropic-gravity-bridge
 **Entropische Gravitation/Holographischer Kubus in Finalize-Schiene verankern**
 
-**Status:** 🟢 Completed (2025-12-03)
+**Status:** 🟢 Completed (2026-01-09)
 **Beta:** 5.4 | **Zeta Risk:** Moderat – fehlende Kubus-/∇S-Referenzen schwächen UTAC-Grundlage
 
 **Scope:** research, documentation, governance
@@ -465,7 +465,7 @@ Pre-Release-Anforderungen aus der Zenodo-Checkliste abgearbeitet → pytest/Lint
 ### [Priority 12] finalize-tau-star-guardrails
 **τ*-Guardrails & CREP-Telemetrie im Finalize-Layer verankern**
 
-**Status:** 🟢 Completed (2025-12-03)
+**Status:** 🟢 Completed (2026-01-09)
 **Beta:** 4.9 | **Zeta Risk:** Moderat – Governance-Drift möglich
 
 **Scope:** simulation, governance, compliance
@@ -951,14 +951,14 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 
 | ToDorefresh ID | Finalize ID | Bridge Focus | Status |
 | --- | --- | --- | --- |
-| v6r-finalize-bridge | finalize-fit-sync | FIT-Governance-Sync (Prioritäten + Chronik-Link) | Draft mapping eingetragen |
+| v6r-finalize-bridge | finalize-fit-sync | FIT-Governance-Sync (Prioritäten + Chronik-Link) | ✅ Completed (2026-01-09) – Mapping, Chronik-Draft und Delta aktualisiert |
 | v6r-zenodo-prep | finalize-zenodo-checklist | Zenodo/DOI-Readiness + Checklisten-Kopplung | Referenzen verknüpft, Tasks offen |
-| v6r-tau-star-guardrails | finalize-tau-star-guardrails | τ*-Safety + CREP-Reviewer-Gate | Artefakte gespiegelt, CI-Guard offen |
-| v6r-tau-star-ci-hook | finalize-tau-star-ci-hook | CI-Gate für τ* + CREP ≥0.7 | Hook geplant, Finalize-Gate offen |
+| v6r-tau-star-guardrails | finalize-tau-star-guardrails | τ*-Safety + CREP-Reviewer-Gate | ✅ Completed (2026-01-09) – τ*-Default/CREP in CI & Chronik verankert |
+| v6r-tau-star-ci-hook | finalize-tau-star-ci-hook | CI-Gate für τ* + CREP ≥0.7 | ✅ Completed (2026-01-09) – crep_guard Makefile/nox/pre-commit aktiv |
 | v6r-wavefunction-pipeline | finalize-wavefunction-pipeline | Ψ-Pipeline FIT-Kette (Tests, Zenodo) | ✅ Completed (2025-12-02), Pipeline+Tests+Docs operational (docs/v6_wavefunction_theory.md 800+ lines) |
-| v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | Bullet-Refactor geplant |
-| v6r-entropic-gravity-bridge | finalize-entropic-gravity-bridge | Entropische Gravitation/Holographischer Kubus in Review + BibTeX | Bridge angelegt, Quellenmapping offen |
-| v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | Checklisten verlinkt, Merge-Gate fehlt |
+| v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | ✅ Completed (2026-01-09) – 43 BibTeX-Einträge/574 Zeilen gespiegelt |
+| v6r-entropic-gravity-bridge | finalize-entropic-gravity-bridge | Entropische Gravitation/Holographischer Kubus in Review + BibTeX | ✅ Completed (2026-01-09) – Kubus/Holographie in Finalize-Doku verlinkt |
+| v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | ✅ Completed (2026-01-09) – Checkliste + CI/Pre-Commit blockend |
 | v6r-type6-checklist-rollout | finalize-type6-checklist-rollout | Type-VI Checklisten ↔ POLICY/ETHICS/Zenodo | Neu angelegt, Trilayer-Checkliste noch zu spiegeln |
 | v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Log-Writer aktiv, CI-Hook offen |
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Neu angelegt, Belege ausstehend |
@@ -975,6 +975,8 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 | v6r-psi-test-execution | finalize-psi-test-execution | Ψ-Test-Suite Coverage (≥80%) + τ*/CREP-Gate | Neu – Coverage/Logs in Finalize/Zenodo verankern |
 | v6r-psi-visualization | finalize-psi-visualization | Ψ-Visuals (|ψ|², Tesseract) → VISUALIZATION_INDEX/Zenodo | Neu – Artefakte/Dateipfade erzeugen |
 | v6r-psi-tutorials | finalize-psi-tutorials | Ψ-Notebooks + FIT-Lernpfade | Neu – Tutorials/Checklist-Links setzen |
+
+*Hinweis:* `v6r-cmb-analysis` ist in ToDorefresh als ✅ Completed (2025-12-02) archiviert und bleibt als Referenzmapping dokumentiert.
 
 ---
 
@@ -1116,6 +1118,13 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 - MSCopilot-Empfehlungen als eigener Task aufgenommen (Portal, Prereg, Robustheit, Provenienz)
 - CI/Onboarding-Hooks explizit in Finalize-ToDo verankert
 - Fokus auf Reviewer-lesbare Figure-Zero + Prereg-Template als FIT-Microsteps
+
+### 2026-01-09 | finalize-fit-parität
+
+✅ **Highlights:**
+- τ*/CREP-FIT-Tasks (`finalize-type6-governance`, `finalize-tau-star-guardrails`, `finalize-tau-star-ci-hook`) und Literatur-/Entropie-Brücken (`finalize-literature-review-sync`, `finalize-entropic-gravity-bridge`) auf 🟢 Completed synchronisiert.
+- FIT-Mapping (`v6r-finalize-bridge` ↔ `finalize-fit-sync`) auf completed-sync angehoben; Delta-Update + Updated-Timestamp (2026-01-09T18:00:00Z) dokumentiert.
+- Hinweis auf archiviertes `v6r-cmb-analysis` Mapping ergänzt; YAML/JSON Trilayer regeneriert für Validierungs-Parser.
 
 ---
 

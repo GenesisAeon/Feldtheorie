@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-01-08T12:00:00Z
+**Updated:** 2026-01-09T18:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -660,7 +660,7 @@ Robustere β-Schätzungen mit Domain-Clustering → PyMC/Stan Hierarchie + VIF-C
 ### [Priority 14] v6r-type6-governance
 **Type-VI CREP/τ*-Governance in Policies und CI verankern**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2026-01-09)
 **Beta:** 4.6 | **Zeta Risk:** Neutralisiert bei erfüllter Checkliste
 
 **Scope:** governance, compliance, simulation
@@ -682,7 +682,7 @@ Type-VI Checkliste als Merge-Gate aktiv → POLICY/ETHICS referenzieren CREP/τ*
 ### [Priority 34] v6r-type6-checklist-rollout
 **Type-VI Checklisten (τ*, CREP, Audit-Log) über alle Artefakte spiegeln**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2026-01-09)
 
 **Beta:** 5.3 | **Zeta Risk:** Moderat – fehlende Spiegelung blockiert Reviewer-Gates
 
@@ -717,7 +717,7 @@ ng referenziert
 ### [Priority 15] v6r-zenodo-prep
 **Zenodo-Upload-Readiness in V6-Scope vorbereiten**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2026-01-09)
 **Beta:** 5.5 | **Zeta Risk:** Hoch – DOI-Release blockiert ohne Nachweise
 
 **Scope:** compliance, testing, documentation, release
@@ -741,7 +741,7 @@ Zenodo-Checkliste auf ✅ bringen → Kern-Tests laufen, Coverage/Linting protok
 ### [Priority 16] v6r-finalize-bridge
 **FIT-Brücke: ToDorefresh → Finalize-Aufgaben spiegeln**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2026-01-09)
 **Beta:** 4.5 | **Zeta Risk:** Niedrig – Governance-Drift möglich
 
 **Scope:** governance, organization, documentation
@@ -807,7 +807,7 @@ Synchronisationspfad zwischen V6ToDorefresh und Finalize-TODO aktiv → neue FIT
 ### [Priority 18] v6r-zenodo-evidence
 **Zenodo-Checkliste mit Test-/Lint-Belegen und Provenienz-Logs füllen**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2026-01-09)
 
 **Beta:** 5.6 | **Zeta Risk:** Moderat – DOI-Release blockiert ohne Nachweise
 
@@ -1248,9 +1248,9 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 | --- | --- | --- | --- |
 | v6r-cmb-analysis | finalize-cmb-analysis | 12-fold Kubus-Symmetrie Analyse + Falsifikationstest | ✅ Completed (2025-12-02), scripts/analyze_cmb_12fold.py operational |
 | v6r-wavefunction-pipeline | finalize-wavefunction-pipeline | Ψ-Pipeline FIT-Kette (Tests, Zenodo) | ✅ Completed (2025-12-02), Pipeline+Tests+Docs operational (docs/v6_wavefunction_theory.md 800+ lines) |
-| v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | ✅ Completed (2025-12-02), POLICY/ETHICS + crep_guard CI-integrated |
+| v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | ✅ Completed (2026-01-09), POLICY/ETHICS + crep_guard CI-integrated |
 | v6r-zenodo-prep | finalize-zenodo-checklist | Zenodo/DOI-Readiness + Checklisten-Kopplung | ✅ Readiness Report created (~65%), Test execution pending |
-| v6r-finalize-bridge | finalize-fit-sync | FIT-Governance-Sync (Prioritäten + Chronik-Link) | ✅ In Progress - Mapping aktualisiert (2025-12-02) |
+| v6r-finalize-bridge | finalize-fit-sync | FIT-Governance-Sync (Prioritäten + Chronik-Link) | ✅ Completed (2026-01-09) - Mapping aktualisiert & Delta geloggt |
 | v6r-tau-star-guardrails | finalize-tau-star-guardrails | τ*-Safety + CREP-Reviewer-Gate | ✅ Completed - CI-integrated via crep_guard.py |
 | v6r-tau-star-ci-hook | finalize-tau-star-ci-hook | CI-Gate für τ* + CREP ≥0.7 | ✅ Completed - Makefile, noxfile.py, pre-commit operational |
 | v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | ✅ Completed - V6_Literature_Review.md (574 lines, 43 refs) |
@@ -1334,6 +1334,13 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 - Neuer Task `v6r-aeon-aletheia-bridge` angelegt, um CREP-Gewichte aus AEON_ALETHEIA_INTEGRATION.md und Aletheia-Metriken als Type-VI/Telemetrie-Hook zu erfassen (FIT-Vorgabe: neue ToDos anlegen).
 - FIT-Mapping um `finalize-aeon-aletheia-bridge` ergänzt; Chronik-/Zenodo-Update als Handoff notiert.
 - Hinweise auf `activation_gaps_tau_star.md` und `type6_crep_tau_star_checklist.*` als Governance-Kopplung für Aeon/Aletheia dokumentiert.
+
+### 2026-01-09 | v6-refresh-fit-parität
+
+✅ **Highlights:**
+- Status-Sync für τ*/CREP-FIT-Tasks (`v6r-type6-governance`, `v6r-tau-star-guardrails`, `v6r-tau-star-ci-hook`) auf 🟢 Completed und mit Finalize-Trilayer verknüpft.
+- FIT-Brücke `v6r-finalize-bridge` abgeschlossen; Mapping-Status auf completed-sync, Delta-Eintrag vorbereitet.
+- Aktualisierte Updated-Timestamps (2026-01-09T18:00:00Z) und JSON/YAML Trilayer regeneriert.
 
 ---
 
