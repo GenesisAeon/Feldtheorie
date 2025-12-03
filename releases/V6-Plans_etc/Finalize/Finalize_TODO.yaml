@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2026-01-06T12:00:00Z'
+  updated_at: '2026-01-07T12:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -39,6 +39,9 @@ metadata:
     - finalize-metrics-outlier
     - finalize-data-lantern-dashboard
     - finalize-type6-classification
+    - finalize-psi-test-execution
+    - finalize-psi-visualization
+    - finalize-psi-tutorials
     note: v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation
 tasks:
 - id: finalize-vrig-research
@@ -968,6 +971,113 @@ tasks:
   priority: 24
   sprint_focus: Type-VI Klassifikation release-ready machen
   updated_at: '2026-01-05T12:00:00Z'
+- id: finalize-psi-test-execution
+  title: "Ψ-Pipeline Tests & Coverage im Finalize-Track verankern"
+  status: open
+  completeness: Coverage-Gap (psi_field/genesis_cube <80%) und τ*/CREP-Log nicht in Checklisten verlinkt.
+  scope:
+  - testing
+  - ci
+  - documentation
+  logistic_profile:
+    R_target: Coverage ≥80% dokumentiert (Zenodo/Chronik) + τ*/CREP-Logs referenziert
+    Theta_condition: Zenodo_CI_Status + Zenodo_Upload_Checklist verweisen auf Tests, Coverage und logs/type_vi_detections.jsonl
+    beta_estimate: 5.2
+    zeta_risk: moderat bei fehlender τ*-Abdeckung
+  next_steps:
+  - pytest tests/test_psi_field.py tests/test_genesis_psifield_integration.py --maxfail=1 --disable-warnings --cov=pipelines/wavefunction/psi_field.py --cov=simulation/genesis_cube.py ausführen und Coverage-Werte in ZENODO_CI_STATUS_2025-12-0{2,3}.md eintragen.
+  - tools/crep_guard.py --log-detection an pytest-Command anhängen und Logpfad logs/type_vi_detections.jsonl in Zenodo_Upload_Checklist.md referenzieren.
+  - Finalize_TODO.{json,yaml} und Chronik um Coverage-/Log-Notizen aktualisieren.
+  references:
+  - path: tests/test_psi_field.py
+    lines:
+    - 1
+    - 120
+  - path: tests/test_genesis_psifield_integration.py
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
+    lines:
+    - 1
+    - 120
+  - path: logs/type_vi_detections.jsonl
+    lines:
+    - 1
+    - 5
+  priority: 25
+  sprint_focus: Coverage/Logs für Release fixieren
+  updated_at: '2026-01-07T12:00:00Z'
+- id: finalize-psi-visualization
+  title: Ψ-Visual-Artefakte (|ψ|^2, Tesseract) für Finalize/Zenodo bereitstellen
+  status: open
+  completeness: Visual-Set nicht erzeugt; VISUALIZATION_INDEX/Zenodo ohne Ψ-Referenzen.
+  scope:
+  - visualization
+  - documentation
+  - compliance
+  logistic_profile:
+    R_target: Visual-Set liegt in visualization/psi_field/ und ist in VISUALIZATION_INDEX/Zenodo-Checkliste verlinkt
+    Theta_condition: |\u03c8|^2-Plots + Tesseract-Animation referenziert mit Pfaden/Hashes; Type-VI Overlay kenntlich
+    beta_estimate: 5.0
+    zeta_risk: niedrig (Kommunikationslücke)
+  next_steps:
+  - |\u03c8|^2-Plots aus pipelines/wavefunction/psi_field.py rendern und Artefakte in VISUALIZATION_INDEX.md aufführen.
+  - Hybrid-Evolution/Animation aus simulation/genesis_cube.py exportieren, Type-VI Toggle (\u03b6<0, \u03c4*) sichtbar machen, Pfade in Zenodo_Upload_Checklist.md notieren.
+  - ZENODO_READINESS_REPORT.md um Artefakt-IDs/Hashes ergänzen und Chronik-Hinweis setzen.
+  references:
+  - path: pipelines/wavefunction/psi_field.py
+    lines:
+    - 1
+    - 220
+  - path: simulation/genesis_cube.py
+    lines:
+    - 180
+    - 420
+  - path: VISUALIZATION_INDEX.md
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/ZENODO_READINESS_REPORT.md
+    lines:
+    - 1
+    - 120
+  priority: 26
+  sprint_focus: Artefakt-Referenzen herstellen
+  updated_at: '2026-01-07T12:00:00Z'
+- id: finalize-psi-tutorials
+  title: Ψ-Tutorial-Notebooks für Release bündeln
+  status: open
+  completeness: Notebooks fehlen; README/VISUALIZATION_INDEX/Zenodo-Links nicht gesetzt.
+  scope:
+  - documentation
+  - education
+  - notebooks
+  logistic_profile:
+    R_target: 01_psi_field_tutorial.ipynb + 02_genesis_cube_integration.ipynb im Finalize-Layer mit Referenzen
+    Theta_condition: README/VISUALIZATION_INDEX + Zenodo_Checklist enthalten Notebook-Pfade/Hashes
+    beta_estimate: 4.9
+    zeta_risk: niedrig (Lernpfad-Lücke)
+  next_steps:
+  - Notebook 01 (PsiField Basics, Parameter-Sweeps, |\u03c8|^2, \u0394t_Q) erstellen und Meta/License für Zenodo pflegen.
+  - Notebook 02 (Genesis-Cube Integration, collapse_to_utac, \u03c4*-Buffer, CREP) mit Export-Hooks (JSON/CSV) vorbereiten.
+  - README/VISUALIZATION_INDEX.md + Zenodo_Upload_Checklist.md um Notebook-Pfade/Hashes erweitern; Chronik-Update vormerken.
+  references:
+  - path: docs/v6_wavefunction_theory.md
+    lines:
+    - 1
+    - 200
+  - path: notebooks/README.md
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/ZENODO_READINESS_REPORT.md
+    lines:
+    - 1
+    - 120
+  priority: 27
+  sprint_focus: Lernpfade release-ready machen
+  updated_at: '2026-01-07T12:00:00Z'
 fit_mapping:
 - todo_id: v6r-finalize-bridge
   finalize_id: finalize-fit-sync
@@ -1049,7 +1159,25 @@ fit_mapping:
   finalize_id: finalize-aeon-aletheia-bridge
   bridge_focus: Aeon/Aletheia CREP/Telemetrie-Governance
   status: new
+- todo_id: v6r-psi-test-execution
+  finalize_id: finalize-psi-test-execution
+  bridge_focus: Ψ-Test-Suite Coverage (≥80%) + τ*/CREP-Gate
+  status: new
+- todo_id: v6r-psi-visualization
+  finalize_id: finalize-psi-visualization
+  bridge_focus: Ψ-Visuals (|ψ|^2, Tesseract) → VISUALIZATION_INDEX/Zenodo
+  status: new
+- todo_id: v6r-psi-tutorials
+  finalize_id: finalize-psi-tutorials
+  bridge_focus: Ψ-Notebooks + FIT-Lernpfade
+  status: new
 delta_updates:
+- date: '2026-01-07'
+  label: finalize-psi-followups
+  highlights:
+  - Neue Finalize-Tasks (finalize-psi-test-execution, finalize-psi-visualization, finalize-psi-tutorials) für Ψ-Follow-ups (Tests/Artefakte/Notebooks) ergänzt.
+  - FIT-Mapping um drei Ψ-Brücken erweitert; Updatedatum auf 2026-01-07T12:00:00Z angehoben.
+  - VISUALIZATION_INDEX/Zenodo-Checklisten als Pflicht-Hooks für Coverage-Logs, Artefakte und Notebook-Hashes markiert.
 - date: '2026-01-05'
   label: finalize-activation-gaps-telemetry
   highlights:

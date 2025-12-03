@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-01-06T12:00:00Z
+**Updated:** 2026-01-07T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -1015,6 +1015,75 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 
 ---
 
+### [Priority 29] v6r-psi-test-execution
+**Ψ-Pipeline Test-Suite auf 80%+ Coverage bringen**
+
+**Status:** 🔴 Open  , **Beta:** 5.2 | **Zeta Risk:** Moderat – Coverage-Gap bei Type-VI-Pfaden
+
+**Scope:** testing, ci, simulation
+
+**R → Θ:** Pytest-Suite für psi_field/genesis_cube erreicht ≥80% Coverage und validiert τ*/CREP-Pfade → CI/Hooks spiegeln Ergebnisse in Logs/Chronik.
+
+**Next Steps:**
+- 🧪 `pytest tests/test_psi_field.py tests/test_genesis_psifield_integration.py --maxfail=1 --disable-warnings` mit Coverage-Report für `pipelines/wavefunction/psi_field.py` und `simulation/genesis_cube.py` ausführen.
+- 🔧 Fixtures für τ*-Branch (ζ<0) ergänzen, inkl. CREP-Warnpfad in `logs/type_vi_detections.jsonl`.
+- 🛡️ Makefile/noxfile pytest-Kommandos mit CREP/τ*-Guard (`tools/crep_guard.py --log-detection`) koppeln und in Chronik verlinken.
+
+**References:**
+- `tests/test_psi_field.py`
+- `tests/test_genesis_psifield_integration.py`
+- `logs/type_vi_detections.jsonl`
+
+**Sprint Focus:** Coverage + CI-Gates schließen
+
+---
+
+### [Priority 30] v6r-psi-visualization
+**Wavefunction Visualisierungen (|ψ|² Plots + Tesseract-Slices) generieren**
+
+**Status:** 🔴 Open  , **Beta:** 5.0 | **Zeta Risk:** Niedrig – fehlende Artefakte blockieren Kommunikation
+
+**Scope:** visualization, documentation, simulation
+
+**R → Θ:** Visualisierungs-Set für Ψ-Pipeline produziert (|ψ|² Heatmaps, Tesseract-Zeitscheiben, UTAC-Regime-Overlays) und in VISUALIZATION_INDEX.md/Chronik referenziert.
+
+**Next Steps:**
+- 📊 |ψ|²-Gitter für Sample-Parameter aus `pipelines/wavefunction/psi_field.py` rendern und unter `visualization/psi_field/` ablegen.
+- 🎥 Hybrid-Evolution (`genesis_cube.py`) als Tesseract-Animation exportieren; Type-VI Toggle hervorheben (ζ<0, τ* Buffer sichtbar).
+- 🔗 VISUALIZATION_INDEX.md + V6_Wellenfunktions_Integrationsplan.md um neue Artefakte/Dateipfade ergänzen (inkl. CREP/β-Annotierung).
+
+**References:**
+- `pipelines/wavefunction/psi_field.py`
+- `simulation/genesis_cube.py`
+- `V6_Wellenfunktions_Integrationsplan.md`
+
+**Sprint Focus:** Ψ-Visualisierungen bereitstellen
+
+---
+
+### [Priority 31] v6r-psi-tutorials
+**Tutorial-Notebooks für Ψ-Pipeline veröffentlichen**
+
+**Status:** 🔴 Open  , **Beta:** 4.9 | **Zeta Risk:** Niedrig – fehlende Lernpfade
+
+**Scope:** documentation, education, notebooks
+
+**R → Θ:** Notebooks `01_psi_field_tutorial.ipynb` + `02_genesis_cube_integration.ipynb` verfügbar mit reproduzierbaren Beispielen (Type-I/Type-VI Szenarien) und ΔAIC/CREP-Auswertung.
+
+**Next Steps:**
+- 📝 Notebook 01: PsiField Basics (Parameter-Sweeps, |ψ|² Plots, Δt_Q) mit Verweisen auf `docs/v6_wavefunction_theory.md` erstellen.
+- 🧮 Notebook 02: Genesis-Cube Integration (collapse_to_utac, τ*-Buffer, CREP-Signale) inkl. Export nach JSON/CSV für Tests.
+- 🧭 README-Hooks ergänzen (notebooks/README.md, VISUALIZATION_INDEX.md) und FIT-Mapping zu Finalize-Track setzen.
+
+**References:**
+- `docs/v6_wavefunction_theory.md`
+- `V6_Wellenfunktions_Integrationsplan.md`
+- `notebooks/README.md`
+
+**Sprint Focus:** Lernpfade & Reproduzierbarkeit sicherstellen
+
+---
+
 ### [Priority 1] v6r-literature-review-sync
 **V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
 
@@ -1104,10 +1173,22 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 | v6r-metrics-outlier | finalize-metrics-outlier | CREP/ΔAIC Robustheitsmetriken | Pending - METRICS.md Update |
 | v6r-data-lantern-dashboard | finalize-data-lantern-dashboard | Telemetrie-Dashboard + Alerts | Pending - Dashboard/Schema Draft |
 | v6r-type6-classification | finalize-type6-classification | Type-VI Klassifikation + cubic-root Demo | Pending - Tabelle/Testfall offen |
+| v6r-psi-test-execution | finalize-psi-test-execution | Ψ-Test-Suite Coverage (≥80%) + τ*/CREP-Gate | Neu – Coverage-Gap schließen, CI/Chronik koppeln |
+| v6r-psi-visualization | finalize-psi-visualization | Ψ-Visuals (|ψ|², Tesseract) → VISUALIZATION_INDEX | Neu – Artefakte/Dateipfade erzeugen |
+| v6r-psi-tutorials | finalize-psi-tutorials | Ψ-Notebooks + FIT-Lernpfade | Neu – Tutorials/README-Hooks anlegen |
 
 ---
 
 ## Delta Updates
+
+### 2026-01-07 | v6-refresh-psi-followups
+
+✅ **Highlights:**
+- Neue Tasks `v6r-psi-test-execution`, `v6r-psi-visualization` und `v6r-psi-tutorials` ergänzt, um die in der Chronik markierten Ψ-Pipeline-Follow-ups (Tests/Visuals/Notebooks) FIT-konform aufzuteilen.
+- Priority-Order und FIT-Mapping um die drei Follow-up-Brücken erweitert; Updatedatum auf 2026-01-07T12:00:00Z gesetzt.
+- References/Scopes auf ψ_field + genesis_cube + VISUALIZATION_INDEX.md ausgerichtet, damit Zenodo/Chronik den Output verlinken können.
+
+---
 
 ### 2026-01-06 | v6-refresh-zenodo-ci-sync
 

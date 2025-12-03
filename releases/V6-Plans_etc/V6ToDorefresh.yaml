@@ -1,7 +1,7 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2026-01-06T12:00:00Z'
+  updated_at: '2026-01-07T12:00:00Z'
   scope: releases/V6-Plans_etc
   description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen
   logistic_frame:
@@ -44,6 +44,9 @@ metadata:
     - v6r-metrics-outlier
     - v6r-data-lantern-dashboard
     - v6r-type6-classification
+    - v6r-psi-test-execution
+    - v6r-psi-visualization
+    - v6r-psi-tutorials
     note: Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)
 tasks:
 - id: v6r-trilayer-sync
@@ -1095,6 +1098,105 @@ tasks:
   priority: 28
   sprint_focus: Type-VI Klassifikation erweitern
   updated_at: '2026-01-05T12:00:00Z'
+- id: v6r-psi-test-execution
+  title: "Ψ-Pipeline Test-Suite auf 80%+ Coverage bringen"
+  status: open
+  completeness: Coverage <80% und τ*/CREP-Logs nicht im CI verankert.
+  scope:
+  - testing
+  - ci
+  - simulation
+  logistic_profile:
+    R_target: Pytest-Suite erreicht ≥80% Coverage (psi_field + genesis_cube) inkl. τ*/CREP-Pfade
+    Theta_condition: Coverage-Report + CREP/τ*-Logging in CI/Chronik verankert
+    beta_estimate: 5.2
+    zeta_risk: moderat bei offenen τ*-Pfaden
+  next_steps:
+  - pytest tests/test_psi_field.py tests/test_genesis_psifield_integration.py --maxfail=1 --disable-warnings --cov=pipelines/wavefunction/psi_field.py --cov=simulation/genesis_cube.py ausführen; Ergebnis loggen.
+  - Fixtures für ζ<0/τ* ergänzen und CREP-Hook nach logs/type_vi_detections.jsonl schreiben.
+  - Makefile/noxfile pytest-Target mit tools/crep_guard.py --log-detection koppeln und Chronik-Hinweis setzen.
+  references:
+  - path: tests/test_psi_field.py
+    lines:
+    - 1
+    - 120
+  - path: tests/test_genesis_psifield_integration.py
+    lines:
+    - 1
+    - 120
+  - path: logs/type_vi_detections.jsonl
+    lines:
+    - 1
+    - 5
+  priority: 29
+  sprint_focus: Coverage + CI-Gates schließen
+  updated_at: '2026-01-07T12:00:00Z'
+- id: v6r-psi-visualization
+  title: Wavefunction Visualisierungen (|ψ|^2 Plots + Tesseract-Slices) generieren
+  status: open
+  completeness: Visual-Artefakte fehlen; VISUALIZATION_INDEX.md/Chronik noch ohne Ψ-Set.
+  scope:
+  - visualization
+  - documentation
+  - simulation
+  logistic_profile:
+    R_target: Visual-Set (|ψ|^2, Tesseract, CREP-Overlay) in visualization/psi_field/ abgelegt
+    Theta_condition: Heatmaps/Animationen referenziert in VISUALIZATION_INDEX.md + V6_Wellenfunktions_Integrationsplan.md
+    beta_estimate: 5.0
+    zeta_risk: niedrig (Kommunikationslücke)
+  next_steps:
+  - |\u03c8|^2-Gitter aus pipelines/wavefunction/psi_field.py rendern und unter visualization/psi_field/ speichern (PNG/JSON).
+  - Hybrid-Evolution aus simulation/genesis_cube.py als Animation exportieren; Type-VI Toggle (\u03b6<0, \u03c4*) hervorheben.
+  - VISUALIZATION_INDEX.md und V6_Wellenfunktions_Integrationsplan.md um Artefakt-Pfade + CREP/\u03b2-Annotierung erweitern.
+  references:
+  - path: pipelines/wavefunction/psi_field.py
+    lines:
+    - 1
+    - 220
+  - path: simulation/genesis_cube.py
+    lines:
+    - 180
+    - 420
+  - path: releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md
+    lines:
+    - 1
+    - 140
+  priority: 30
+  sprint_focus: Ψ-Visualisierungen bereitstellen
+  updated_at: '2026-01-07T12:00:00Z'
+- id: v6r-psi-tutorials
+  title: Tutorial-Notebooks für Ψ-Pipeline veröffentlichen
+  status: open
+  completeness: Notebooks fehlen; README-/FIT-Hooks nicht gesetzt.
+  scope:
+  - documentation
+  - education
+  - notebooks
+  logistic_profile:
+    R_target: Notebooks 01_psi_field_tutorial.ipynb + 02_genesis_cube_integration.ipynb mit reproduzierbaren Beispielen
+    Theta_condition: Tutorials referenzieren docs/v6_wavefunction_theory.md + FIT/README-Hooks eingerichtet
+    beta_estimate: 4.9
+    zeta_risk: niedrig (Lernpfad-Lücke)
+  next_steps:
+  - Notebook 01 (PsiField Basics, Parameter-Sweeps, |\u03c8|^2 Plots, \u0394t_Q) entwerfen und in notebooks/ einchecken.
+  - Notebook 02 (Genesis-Cube Integration, collapse_to_utac, \u03c4*-Buffer, CREP-Signale) mit Export nach JSON/CSV vorbereiten.
+  - README-/VISUALIZATION_INDEX.md-Hooks setzen und FIT-Mapping zum Finalize-Track notieren.
+  references:
+  - path: docs/v6_wavefunction_theory.md
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md
+    lines:
+    - 1
+    - 140
+  - path: notebooks/README.md
+    lines:
+    - 1
+    - 120
+  priority: 31
+  sprint_focus: Lernpfade & Reproduzierbarkeit sicherstellen
+  updated_at: '2026-01-07T12:00:00Z'
 fit_mapping:
 - todo_id: v6r-finalize-bridge
   finalize_id: finalize-fit-sync
