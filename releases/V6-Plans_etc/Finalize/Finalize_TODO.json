@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2026-01-08T12:00:00Z",
+    "updated_at": "2026-01-09T12:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -28,9 +28,10 @@
         "finalize-wavefunction-pipeline",
         "finalize-zenodo-checklist",
         "finalize-tau-star-guardrails",
-      "finalize-type6-governance",
-      "finalize-type6-checklist-rollout",
-      "finalize-fit-sync",
+        "finalize-tau-star-mini-steps",
+        "finalize-type6-governance",
+        "finalize-type6-checklist-rollout",
+        "finalize-fit-sync",
         "finalize-crep-guard-ci",
         "finalize-zenodo-evidence",
         "finalize-zenodo-ci-sync",
@@ -662,6 +663,54 @@
       "sprint_focus": "τ*-Delay & CREP-Telemetrie für Finalize fixieren"
     },
     {
+      "id": "finalize-tau-star-mini-steps",
+      "title": "τ*-Mini-Schritte aus activation_gaps_tau_star im Finalize-Layer spiegeln",
+      "status": "open",
+      "completeness": "τ*-Stub liegt vor; Hyperparameter/Validator/Telemetry noch nicht als Finalize-Microsteps dokumentiert.",
+      "scope": [
+        "analysis",
+        "governance",
+        "ci"
+      ],
+      "logistic_profile": {
+        "R_target": "τ*-Stub in Finalize-Analysis + Validator + Telemetrie gespiegelt",
+        "Theta_condition": "τ*=0.1·|Θ−R| + CREP-Logging in analysis/beta_meta_regression_v2.py, Makefile/CI-Check und Chronik-Warnbanner aktiv",
+        "beta_estimate": 5.0,
+        "zeta_risk": "mittel – ζ<0 ohne Validator/Telemetry-Sync"
+      },
+      "next_steps": [
+        "analysis/beta_meta_regression_v2.py im Finalize-Track auf τ*-Parameter + CREP-Logging (RK4, kein Euler) ergänzen",
+        "Makefile-/CI-Validator-Stub hinzufügen, der τ*=0.1·|Θ−R| prüft und logs/type_vi_detections.jsonl auf CREP ≥0.7 scannt",
+        "Telemetrie/Chronik-Update: β-Drift >10% + CREP-Warnbanner als Dashboard-Daten (metrics/beta_evolution.csv) und Chronik-Note"
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/activation_gaps_tau_star.md",
+          "lines": [
+            1,
+            36
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.md",
+          "lines": [
+            1,
+            49
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/FIT_MAPPING_SYNC_STATUS.md",
+          "lines": [
+            90,
+            139
+          ]
+        }
+      ],
+      "priority": 12.5,
+      "sprint_focus": "τ*-Stub in Finalize-Validator + Telemetrie spiegeln",
+      "updated_at": "2026-01-09T12:00:00Z"
+    },
+    {
       "id": "finalize-type6-governance",
       "title": "Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten",
       "status": "open",
@@ -699,77 +748,77 @@
         }
       ],
       "priority": 13,
-  "sprint_focus": "Governance-Gate + CI-Hook"
-},
-{
-  "id": "finalize-type6-checklist-rollout",
-  "title": "Type-VI Checklisten mit Governance/Zenodo/CI synchronisieren",
-  "status": "open",
-  "completeness": "",
-  "scope": [
-    "governance",
-    "compliance",
-    "documentation"
-  ],
-  "logistic_profile": {
-    "R_target": "Checklist-Trilayer gespiegelt",
-    "Theta_condition": "POLICY/ETHICS + Zenodo_Checklist + ZENODO_CI_STATUS verlinken τ*-Default/CREP-Level/Audit-Log",
-    "beta_estimate": 5.4,
-    "zeta_risk": "Moderat – fehlende Spiegelung blockiert Reviewer-Gates"
-  },
-  "next_steps": [
-    "Konsistenz-Check über alle type6_crep_tau_star_checklist.* Dateien (IDs, Schwellen, τ*-Formel) durchführen und in POLICY.md/ETHICS.md verlinken.",
-    "Zenodo_Upload_Checklist.md sowie ZENODO_CI_STATUS_2025-12-03.md um CREP/τ*-Abschnitte ergänzen; Reviewer-Slot (Level 2/3) dokumentieren.",
-    "activation_gaps_tau_star.md als Nullmodell/Begründung in Checklist-Referenzen aufnehmen; ΔAIC/CI-Platzhalter ergänzen.",
-    "FIT-Sync zu v6r-type6-checklist-rollout und finalize-fit-sync notieren, damit Zenodo/Chronik den Handoff nachvollziehen."
-  ],
-  "references": [
-    {
-      "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.md",
-      "lines": [
-        1,
-        120
-      ]
+      "sprint_focus": "Governance-Gate + CI-Hook"
     },
     {
-      "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.json",
-      "lines": [
-        1,
-        200
-      ]
+      "id": "finalize-type6-checklist-rollout",
+      "title": "Type-VI Checklisten mit Governance/Zenodo/CI synchronisieren",
+      "status": "open",
+      "completeness": "",
+      "scope": [
+        "governance",
+        "compliance",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "Checklist-Trilayer gespiegelt",
+        "Theta_condition": "POLICY/ETHICS + Zenodo_Checklist + ZENODO_CI_STATUS verlinken τ*-Default/CREP-Level/Audit-Log",
+        "beta_estimate": 5.4,
+        "zeta_risk": "Moderat – fehlende Spiegelung blockiert Reviewer-Gates"
+      },
+      "next_steps": [
+        "Konsistenz-Check über alle type6_crep_tau_star_checklist.* Dateien (IDs, Schwellen, τ*-Formel) durchführen und in POLICY.md/ETHICS.md verlinken.",
+        "Zenodo_Upload_Checklist.md sowie ZENODO_CI_STATUS_2025-12-03.md um CREP/τ*-Abschnitte ergänzen; Reviewer-Slot (Level 2/3) dokumentieren.",
+        "activation_gaps_tau_star.md als Nullmodell/Begründung in Checklist-Referenzen aufnehmen; ΔAIC/CI-Platzhalter ergänzen.",
+        "FIT-Sync zu v6r-type6-checklist-rollout und finalize-fit-sync notieren, damit Zenodo/Chronik den Handoff nachvollziehen."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.md",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.json",
+          "lines": [
+            1,
+            200
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml",
+          "lines": [
+            1,
+            160
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/activation_gaps_tau_star.md",
+          "lines": [
+            1,
+            36
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
+          "lines": [
+            1,
+            120
+          ]
+        }
+      ],
+      "priority": 31,
+      "sprint_focus": "Checklist-Trilayer ↔ Governance/Zenodo koppeln"
     },
-    {
-      "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml",
-      "lines": [
-        1,
-        160
-      ]
-    },
-    {
-      "path": "releases/V6-Plans_etc/activation_gaps_tau_star.md",
-      "lines": [
-        1,
-        36
-      ]
-    },
-    {
-      "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md",
-      "lines": [
-        1,
-        120
-      ]
-    },
-    {
-      "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
-      "lines": [
-        1,
-        120
-      ]
-    }
-  ],
-  "priority": 31,
-  "sprint_focus": "Checklist-Trilayer ↔ Governance/Zenodo koppeln"
-},
     {
       "id": "finalize-fit-sync",
       "title": "FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks",
@@ -1505,6 +1554,12 @@
       "finalize_id": "finalize-tau-star-guardrails",
       "bridge_focus": "τ*-Safety + CREP-Reviewer-Gate",
       "status": "artifacts-mirrored"
+    },
+    {
+      "todo_id": "v6r-tau-star-mini-steps",
+      "finalize_id": "finalize-tau-star-mini-steps",
+      "bridge_focus": "τ*-Mini-Schritte (Analysis/CI/Telemetry) → Finalize-Validator/Chronik",
+      "status": "mapping-added"
     },
     {
       "todo_id": "v6r-wavefunction-pipeline",

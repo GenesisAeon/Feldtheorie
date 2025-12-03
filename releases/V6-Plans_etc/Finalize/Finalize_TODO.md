@@ -487,6 +487,31 @@ Pre-Release-Anforderungen aus der Zenodo-Checkliste abgearbeitet → pytest/Lint
 
 ---
 
+### [Priority 12a] finalize-tau-star-mini-steps
+**τ*-Mini-Schritte aus activation_gaps_tau_star im Finalize-Layer spiegeln**
+
+**Status:** 🔴 Open
+**Beta:** 5.0 | **Zeta Risk:** Mittel – ζ<0 ohne Validator/Telemetry-Sync
+
+**Scope:** analysis, governance, ci
+
+**R → Θ:**
+τ*-Stub als Finalize-Microsteps verankert → β-Meta-Regression V2 mit τ*/CREP-Hooks, Makefile/CI-Validator prüft τ*=0.1·|Θ−R| + `logs/type_vi_detections.jsonl`, Telemetrie (β-Drift/CREP) in Chronik/Dashboard gespiegelt.
+
+**Next Steps:**
+- 🧪 `analysis/beta_meta_regression_v2.py` im Finalize-Track auf τ*-Parameter und CREP-Logging (RK4, kein Euler) ausstatten; Reviewer-Slot/Nullmodell notieren.
+- 🛠️ Makefile-/CI-Validator-Stub ergänzen, der τ*=0.1·|Θ−R| erzwingt und `logs/type_vi_detections.jsonl` auf CREP ≥0.7 prüft; Hook in Finalize-CI dokumentieren.
+- 📊 Telemetrie/Chronik aktualisieren: β-Drift >10% + CREP-Warnbanner als Dashboard-Daten (`metrics/beta_evolution.csv`) und Chronik-Eintrag festhalten.
+
+**References:**
+- `../activation_gaps_tau_star.md:1-36`
+- `../type6_crep_tau_star_checklist.md:1-49`
+- `../FIT_MAPPING_SYNC_STATUS.md:90-139`
+
+**Sprint Focus:** τ*-Stub in Finalize-Validator + Telemetrie spiegeln
+
+---
+
 ### [Priority 13] finalize-type6-governance
 **Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten**
 
@@ -962,6 +987,15 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 - Neue Finalize-Tasks `finalize-psi-test-execution`, `finalize-psi-visualization` und `finalize-psi-tutorials` aufgenommen, um die Ψ-Pipeline-Follow-ups (Tests/Artefakte/Notebooks) release- und Zenodo-ready zu machen.
 - FIT-Mapping um die drei Ψ-Brücken ergänzt; Updatedatum auf 2026-01-07T12:00:00Z angehoben.
 - Zenodo-/VISUALIZATION_INDEX-Verknüpfungen als Pflicht-Hooks markiert (Coverage-Logs, Artefakt-Pfade, Notebook-Hashes).
+
+---
+
+### 2026-01-09 | finalize-tau-star-mini-steps
+
+✅ **Highlights:**
+- Neuer Task `finalize-tau-star-mini-steps` ergänzt, der τ*-Stub-Microsteps (β-Meta-Regression, CI-Validator, Telemetrie) aus `activation_gaps_tau_star.md` in den Finalize-Layer spiegelt.
+- FIT-Mapping-Hinweis auf `v6r-tau-star-mini-steps` gesetzt; Validator-Stub (τ*=0.1·|Θ−R|, CREP ≥0.7) und Telemetrie-Warnbanner (`metrics/beta_evolution.csv`, `logs/type_vi_detections.jsonl`) als Next Steps markiert.
+- Chronik-/Dashboard-Verlinkung vorbereitet, damit β-Drift/CREP-Warnungen im Finalize-Handoff dokumentiert werden.
 
 ---
 

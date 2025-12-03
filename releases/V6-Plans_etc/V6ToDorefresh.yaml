@@ -1,7 +1,7 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2026-01-08T12:00:00Z'
+  updated_at: '2026-01-09T12:00:00Z'
   scope: releases/V6-Plans_etc
   description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen
   logistic_frame:
@@ -27,6 +27,7 @@ metadata:
     - v6r-simulator-ux
     - v6r-beta-bayes
     - v6r-tau-star-guardrails
+    - v6r-tau-star-mini-steps
     - v6r-type6-governance
     - v6r-type6-checklist-rollout
     - v6r-psi-integration-plan
@@ -548,6 +549,35 @@ tasks:
     - 49
   priority: 12
   sprint_focus: τ*-Delay + CREP-Hooks in FIT-Microsteps
+- id: v6r-tau-star-mini-steps
+  title: τ*-Mini-Schritte aus activation_gaps_tau_star in FIT-Microtasks aufbrechen
+  status: open
+  completeness: τ*-Stub vorhanden; Hyperparameter/Validator/Telemetrie noch nicht als eigenständige FIT-Schritte umgesetzt.
+  scope:
+  - analysis
+  - simulation
+  - governance
+  logistic_profile:
+    R_target: τ*-Stub in Analysis (β-Meta-Regression) + CI/Validator + Telemetrie verankert
+    Theta_condition: τ*=0.1·|Θ−R| + CREP-Logging in analysis/beta_meta_regression_v2.py, Makefile-Check, Dashboard-Warnungen aktiv
+    beta_estimate: 5.0
+    zeta_risk: mittel – ζ<0 bei fehlenden Validierungs-Hooks
+  next_steps:
+  - analysis/beta_meta_regression_v2.py um τ*-Parameter + CREP-Logging-Hooks ergänzen (RK4, keine Euler-Pfade)
+  - Makefile/CI-Validator-Stub anlegen, der τ*=0.1·|Θ−R| erzwingt und logs/type_vi_detections.jsonl auf CREP-Warnungen prüft
+  - 'Telemetrie-Slot ergänzen: β-Drift >10% und CREP ≥0.7 als Warnbanner in Metrics-/Dashboard-Daten (z.B. metrics/beta_evolution.csv)'
+  references:
+  - path: releases/V6-Plans_etc/activation_gaps_tau_star.md
+    lines:
+    - 1
+    - 36
+  - path: releases/V6-Plans_etc/type6_crep_tau_star_checklist.md
+    lines:
+    - 1
+    - 49
+  priority: 12.5
+  sprint_focus: τ*-Stub in Analysis/CI/Telemetrie verankern
+  updated_at: '2026-01-09T12:00:00Z'
 - id: v6r-psi-integration-plan
   title: Ψ-Integrationsplan aus dem Wellenfunktions-Integrationsdokument operationalisieren
   status: open
@@ -1252,6 +1282,10 @@ fit_mapping:
   finalize_id: finalize-tau-star-guardrails
   bridge_focus: τ*-Safety + CREP-Reviewer-Gate
   status: artifacts-mirrored
+- todo_id: v6r-tau-star-mini-steps
+  finalize_id: finalize-tau-star-mini-steps
+  bridge_focus: τ*-Mini-Schritte (Analysis/CI/Telemetry) → Finalize-Validator/Chronik
+  status: mapping-added
 - todo_id: v6r-wavefunction-pipeline
   finalize_id: finalize-wavefunction-pipeline
   bridge_focus: Ψ-Pipeline FIT-Kette (Tests, Zenodo)
