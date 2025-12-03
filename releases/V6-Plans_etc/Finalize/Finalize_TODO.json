@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2026-01-09T12:00:00Z",
+    "updated_at": "2026-01-09T18:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -201,8 +201,8 @@
     {
       "id": "finalize-literature-review-sync",
       "title": "V6 Literature Review finalisieren und mit Finalize-Dokumenten spiegeln",
-      "status": "open",
-      "completeness": "Literature-Review liegt vor, aber Spiegelung zu Finalize/Papers/BibTeX fehlt.",
+      "status": "completed",
+      "completeness": "Literatur/BibTeX-Parität (43 Referenzen, 574 Zeilen) in Finalize gespiegelt",
       "scope": [
         "documentation",
         "research",
@@ -237,13 +237,14 @@
         }
       ],
       "priority": 4,
-      "sprint_focus": "Literatur-Sync & DOI-Vorbereitung"
+      "sprint_focus": "Literatur-Sync & DOI-Vorbereitung",
+      "status_date": "2026-01-09"
     },
     {
       "id": "finalize-entropic-gravity-bridge",
       "title": "Entropische Gravitation/Holographischer Kubus in Finalize-Schiene verankern",
-      "status": "open",
-      "completeness": "Gemini-DeepResearch-Kubus/∇S-Argument vorhanden; Finalize-Spiegelung/BibTeX/Chronik fehlt.",
+      "status": "completed",
+      "completeness": "Entropische Gravitation/Holographischer Kubus in Finalize-Docs integriert",
       "scope": [
         "research",
         "documentation",
@@ -284,7 +285,8 @@
         }
       ],
       "priority": 5,
-      "sprint_focus": "Kubus/Entropie-Brücke + Chronik-Handoff"
+      "sprint_focus": "Kubus/Entropie-Brücke + Chronik-Handoff",
+      "status_date": "2026-01-09"
     },
     {
       "id": "finalize-13mhz-signatur",
@@ -618,8 +620,8 @@
     {
       "id": "finalize-tau-star-guardrails",
       "title": "τ*-Guardrails & CREP-Telemetrie im Finalize-Layer verankern",
-      "status": "open",
-      "completeness": "τ*-Default ist im ToDorefresh-Layer erfasst; Finalize-Trilayer und Chronik/CI-Verknüpfungen fehlen.",
+      "status": "completed",
+      "completeness": "τ*-Default 0.1·|Θ−R| und CREP-Governance in Finalize-Trilayer verankert",
       "scope": [
         "simulation",
         "governance",
@@ -660,7 +662,8 @@
         }
       ],
       "priority": 12,
-      "sprint_focus": "τ*-Delay & CREP-Telemetrie für Finalize fixieren"
+      "sprint_focus": "τ*-Delay & CREP-Telemetrie für Finalize fixieren",
+      "status_date": "2026-01-09"
     },
     {
       "id": "finalize-tau-star-mini-steps",
@@ -713,8 +716,8 @@
     {
       "id": "finalize-type6-governance",
       "title": "Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten",
-      "status": "open",
-      "completeness": "Checkliste liegt vor; Governance-Referenzen und blockende CI/Pre-Commit-Hooks fehlen.",
+      "status": "completed",
+      "completeness": "POLICY/ETHICS referenzieren τ*/CREP; CI/Pre-Commit Guard blockt fehlende Defaults",
       "scope": [
         "governance",
         "compliance",
@@ -748,7 +751,8 @@
         }
       ],
       "priority": 13,
-      "sprint_focus": "Governance-Gate + CI-Hook"
+      "sprint_focus": "Governance-Gate + CI-Hook",
+      "status_date": "2026-01-09"
     },
     {
       "id": "finalize-type6-checklist-rollout",
@@ -822,8 +826,8 @@
     {
       "id": "finalize-fit-sync",
       "title": "FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks",
-      "status": "open",
-      "completeness": "FIT-Vorgaben notiert; Mapping-Entwurf mit ToDorefresh erstellt, Chronik-Link steht aus.",
+      "status": "completed",
+      "completeness": "FIT-Reihenfolge ToDorefresh ↔ Finalize abgeglichen; Mapping-Tabelle aktualisiert",
       "scope": [
         "governance",
         "organization",
@@ -859,7 +863,8 @@
         }
       ],
       "priority": 14,
-      "sprint_focus": "FIT-Synchronisation & Trilayer-Parität"
+      "sprint_focus": "FIT-Synchronisation & Trilayer-Parität",
+      "status_date": "2026-01-09"
     },
     {
       "id": "finalize-crep-guard-ci",
@@ -1064,8 +1069,8 @@
     {
       "id": "finalize-tau-star-ci-hook",
       "title": "CI/Release-Gate für τ*-Default + CREP-Schwellen setzen",
-      "status": "open",
-      "completeness": "CI/Pre-Commit Gate fehlt; CREP/τ* Guard nur als Stub vorhanden.",
+      "status": "completed",
+      "completeness": "Finalize-CI ruft crep_guard mit τ*/CREP-Schwellen auf und loggt nach logs/type_vi_detections.jsonl",
       "scope": [
         "ci",
         "governance",
@@ -1107,7 +1112,8 @@
       ],
       "priority": 18,
       "sprint_focus": "τ*/CREP-Gate im Release-Track",
-      "updated_at": "2025-12-29T10:00:00Z"
+      "updated_at": "2025-12-29T10:00:00Z",
+      "status_date": "2026-01-09"
     },
     {
       "id": "finalize-beta-telemetry",
@@ -1541,7 +1547,7 @@
       "todo_id": "v6r-finalize-bridge",
       "finalize_id": "finalize-fit-sync",
       "bridge_focus": "FIT-Governance-Sync (Prioritäten + Chronik-Link)",
-      "status": "draft-mapping"
+      "status": "completed-sync"
     },
     {
       "todo_id": "v6r-zenodo-prep",
@@ -1553,7 +1559,7 @@
       "todo_id": "v6r-tau-star-guardrails",
       "finalize_id": "finalize-tau-star-guardrails",
       "bridge_focus": "τ*-Safety + CREP-Reviewer-Gate",
-      "status": "artifacts-mirrored"
+      "status": "completed-sync"
     },
     {
       "todo_id": "v6r-tau-star-mini-steps",
@@ -1571,19 +1577,19 @@
       "todo_id": "v6r-literature-review-sync",
       "finalize_id": "finalize-literature-review-sync",
       "bridge_focus": "Literatur/BibTeX-Parität (UTAC/v_RIG)",
-      "status": "refactor-planned"
+      "status": "completed-sync"
     },
     {
       "todo_id": "v6r-entropic-gravity-bridge",
       "finalize_id": "finalize-entropic-gravity-bridge",
       "bridge_focus": "Entropische Gravitation/Holographischer Kubus in Review + BibTeX",
-      "status": "bridge-planned"
+      "status": "completed-sync"
     },
     {
       "todo_id": "v6r-type6-governance",
       "finalize_id": "finalize-type6-governance",
       "bridge_focus": "Type-VI Governance + CI-Hook",
-      "status": "checklists-linked"
+      "status": "completed-sync"
     },
     {
       "todo_id": "v6r-crep-guard-ci",
@@ -1613,7 +1619,7 @@
       "todo_id": "v6r-tau-star-ci-hook",
       "finalize_id": "finalize-tau-star-ci-hook",
       "bridge_focus": "CI-Gate für τ* + CREP ≥0.7",
-      "status": "planned"
+      "status": "completed-sync"
     },
     {
       "todo_id": "v6r-beta-telemetry",
@@ -1816,6 +1822,14 @@
         "8 Haupt-Tasks identifiziert",
         "Trilayer-TODO-Struktur erstellt (MD, YAML, JSON)",
         "Kernerkenntnisse: Böhme-Anomalie (1.3%), Entkopplung (β_AI≈1.0), Loihi (100×), Aeon-Architektur"
+      ]
+    },
+    {
+      "date": "2026-01-09",
+      "highlights": [
+        "Status-Mismatches zu ToDorefresh behoben (τ*/CREP, Literatur, Entropische Gravitation, FIT-Sync)",
+        "FIT-Mapping-Status auf completed-sync angehoben inkl. v6r-finalize-bridge",
+        "CMB-Mapping-Hinweis für archived Task wird in Markdown ergänzt"
       ]
     }
   ]
