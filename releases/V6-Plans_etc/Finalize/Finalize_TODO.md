@@ -1062,6 +1062,29 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 
 ---
 
+### [Priority 30] finalize-todo-refresh-sync
+**ToDorefresh → Finalize FIT-Handoff synchronisieren**
+
+**Status:** 🔴 Open  , **Beta:** 4.7 | **Zeta Risk:** Moderat – fehlende Parität verzögert Governance-Gates
+
+**Scope:** governance, documentation, compliance
+
+**R → Θ:** Promt_für_Agenten.txt Vorgabe umsetzen → Prio-Order/Status/FIT-Mapping zwischen ToDorefresh und Finalize spiegeln, Chronik/Zenodo-Deltas dokumentieren.
+
+**Next Steps:**
+- 📋 V6ToDorefresh.{md,yaml,json} gegen Finalize-Trilayer prüfen und Status-/Prio-Deltas (Parser, Type-VI, Telemetrie) angleichen.
+- 🔗 FIT-Mapping-Eintrag `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` pflegen und Reviewer/Chronik-Hooks notieren.
+- 🧾 Promt_für_Agenten.txt Hinweis in Chronik/Zenodo-Delta-Logs spiegeln; Updatedatum/Versionen synchron halten.
+
+**References:**
+- `releases/V6-Plans_etc/Promt_für_Agenten.txt:1-5`
+- `releases/V6-Plans_etc/V6ToDorefresh.md:1265-1310`
+- `releases/V6-Plans_etc/V6ToDorefresh.yaml:1-80`
+
+**Sprint Focus:** FIT-Governance-Parität herstellen
+
+---
+
 ## FIT Mapping ToDorefresh ↔ Finalize
 
 | ToDorefresh ID | Finalize ID | Bridge Focus | Status |
@@ -1092,12 +1115,22 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 | v6r-psi-tutorials | finalize-psi-tutorials | Ψ-Notebooks + FIT-Lernpfade | Neu – Tutorials/Checklist-Links setzen |
 | v6r-psi-coverage-boost | finalize-psi-coverage-boost | Ψ-Coverage ≥95% + Edge-Branch Tests → Zenodo/Chronik | Neu – Edge-Tests & Coverage-Logs fixieren |
 | v6r-lint-baseline-cleanup | finalize-lint-cleanup | Ruff-Baseline + Lint-Fixes dokumentieren (Zenodo/CI) | Neu – Lint-Schulden clustern/abbauen |
+| v6r-finalize-todo-sync | finalize-todo-refresh-sync | FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik) | Neu – Promt_für_Agenten.txt Handoff noch nicht gespiegelt |
 
 *Hinweis:* `v6r-cmb-analysis` ist in ToDorefresh als ✅ Completed (2025-12-02) archiviert und bleibt als Referenzmapping dokumentiert.
 
 ---
 
 ## Delta Updates
+
+### 2026-01-12 | finalize-finalize-handoff
+
+✅ **Highlights:**
+- Neuer Task `finalize-todo-refresh-sync` ergänzt, um die Promt_für_Agenten.txt Vorgabe (ToDorefresh → Finalize) im Finalize-Layer zu verankern.
+- FIT-Mapping `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` hinzugefügt; Reviewer-/Chronik-Hooks als nächste Schritte markiert.
+- Updatedatum auf 2026-01-12T12:00:00Z angehoben, Paritäts-Check zwischen Trilayern geplant.
+
+---
 
 ### 2026-01-10 | finalize-ci-lint-coverage
 

@@ -1289,6 +1289,29 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 
 ---
 
+### [Priority 34] v6r-finalize-todo-sync
+**FIT-Handoff: ToDorefresh → Finalize-Backlog synchronisieren**
+
+**Status:** 🔴 Open  , **Beta:** 4.7 | **Zeta Risk:** Moderat – fehlende Handoffs blockieren FIT-Sequenz
+
+**Scope:** governance, documentation, compliance
+
+**R → Θ:** FIT-Sequenz aus Promt_für_Agenten.txt operationalisieren → ToDorefresh/Finalize-Prio-Order, Status und FIT-Mapping vollständig gespiegelt, Chronik-Deltas dokumentiert.
+
+**Next Steps:**
+- 📋 Finalize/Finalize_TODO.{md,yaml,json} gegen V6ToDorefresh-Trilayer prüfen und Status/Prio-Deltas ausgleichen (v.a. neue Parser/Type-VI/Telemetrie-Aufgaben).
+- 🔗 FIT-Mapping-Table um `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` erweitern und Reviewer/Handoff-Pfade für Chronik/Zenodo notieren.
+- 📝 Promt_für_Agenten.txt Hinweis „Auf die ToDorefresh-Liste folgt die ToDo-Liste aus dem Finalize Ordner“ als Checkliste in Chronik/Δ-Log verankern.
+
+**References:**
+- `releases/V6-Plans_etc/Promt_für_Agenten.txt:1-5`
+- `releases/V6-Plans_etc/Finalize/Finalize_TODO.md:1-180`
+- `releases/V6-Plans_etc/Finalize/Finalize_TODO.yaml:1-80`
+
+**Sprint Focus:** FIT-Handoff absichern & Paritäts-Lücken schließen
+
+---
+
 ### [Priority 1] v6r-literature-review-sync
 **V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
 
@@ -1384,10 +1407,20 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 | v6r-psi-tutorials | finalize-psi-tutorials | Ψ-Notebooks + FIT-Lernpfade | Neu – Tutorials/README-Hooks anlegen |
 | v6r-psi-coverage-boost | finalize-psi-coverage-boost | Ψ-Coverage ≥95% + Edge-Branch Tests → Zenodo/Chronik | Neu – Edge-Tests ergänzen, Coverage-Log spiegeln |
 | v6r-lint-baseline-cleanup | finalize-lint-cleanup | Ruff-Baseline + Lint-Fixes dokumentieren (Zenodo/CI) | Neu – Lint-Schulden clustern und Fix-Wellen planen |
+| v6r-finalize-todo-sync | finalize-todo-refresh-sync | FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik) | Neu – Promt_für_Agenten.txt Handoff noch nicht gespiegelt |
 
 ---
 
 ## Delta Updates
+
+### 2026-01-12 | v6-refresh-finalize-handoff
+
+✅ **Highlights:**
+- Neuer Task `v6r-finalize-todo-sync` angelegt, um die Promt_für_Agenten.txt Vorgabe (ToDorefresh → Finalize) explizit zu bedienen.
+- FIT-Mapping-Eintrag `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` ergänzt; Reviewer/Handoff-Pfade in beiden Trilayern nachziehen.
+- Updatedatum auf 2026-01-12T12:00:00Z gesetzt; Chronik-/Zenodo-Notizen für Paritäts-Checks eingeplant.
+
+---
 
 ### 2026-01-10 | v6-refresh-ci-lint-coverage
 
