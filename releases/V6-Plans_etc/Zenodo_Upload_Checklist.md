@@ -17,8 +17,11 @@
 - ✅ Paper-Drafts finalisiert
 - ✅ Ethik-Review bestanden (ETHICS.md compliance)
 - ✅ Provenienz dokumentiert
+- ✅ **Type-VI Governance:** CREP/τ* Guard passes (`make validate-type6`)
+- ✅ **Safety Protocols:** RK4 integrator + τ*-Buffer für ζ<0 Szenarien
 
 **Status-Check:** ❌ NICHT BEREIT (Stand: 2025-11-26)
+**Type-VI Compliance:** ✅ OPERATIONAL (CREP Guard functional, siehe ZENODO_CI_STATUS_2025-12-03.md)
 
 ---
 
@@ -44,6 +47,33 @@
 - [ ] **Type Checking:**
   - [ ] `mypy pipelines/wavefunction/psi_field.py` → no errors
   - [ ] `mypy simulation/genesis_cube.py` → no errors
+
+### 1.1a Type-VI Governance Compliance
+
+**Reference:** `type6_crep_tau_star_checklist.*` (MD/YAML/JSON)
+
+- [ ] **CREP Guard Validation:**
+  - [ ] `make validate-type6` → passes ✓
+  - [ ] CREP-Threshold: 0.7 (warning level)
+  - [ ] τ*-Default: 0.1·|Θ-R| verified
+  - [ ] Audit log: `logs/type_vi_detections.jsonl` (if applicable)
+
+- [ ] **Type-VI Safety Protocols:**
+  - [ ] RK4 integrator used for ζ<0 scenarios (no Euler)
+  - [ ] τ*-Buffer implemented in implosive simulations
+  - [ ] CREP ≥ 0.7 cases: Reviewer-Slot documented
+  - [ ] Provenance blocks for Type-VI fields complete
+
+- [ ] **Governance Documentation:**
+  - [ ] POLICY.md Type-VI Addendum verified
+  - [ ] ETHICS.md Type-VI Risk Management verified
+  - [ ] activation_gaps_tau_star.md referenced as nullmodel
+  - [ ] ZENODO_CI_STATUS reports include CREP/τ* metrics
+
+- [ ] **CI/Pre-Commit Hooks:**
+  - [ ] `.pre-commit-config.yaml` includes crep_guard hook
+  - [ ] `noxfile.py` crep_guard session functional
+  - [ ] Makefile targets: `crep-guard`, `crep-guard-strict` operational
 
 ### 1.2 Documentation Completeness
 
