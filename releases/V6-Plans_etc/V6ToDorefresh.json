@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2026-01-11T12:00:00Z",
+    "updated_at": "2026-01-12T12:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -54,7 +54,8 @@
         "v6r-psi-visualization",
         "v6r-psi-tutorials",
         "v6r-psi-coverage-boost",
-        "v6r-lint-baseline-cleanup"
+        "v6r-lint-baseline-cleanup",
+        "v6r-finalize-todo-sync"
       ],
       "note": "Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)"
     }
@@ -1958,6 +1959,54 @@
       "priority": 33,
       "sprint_focus": "Lint-Debt abbauen & CI-Gates vorbereiten",
       "updated_at": "2026-01-10T12:00:00Z"
+    },
+    {
+      "id": "v6r-finalize-todo-sync",
+      "title": "FIT-Handoff: ToDorefresh → Finalize-Backlog synchronisieren",
+      "status": "open",
+      "completeness": "Promt_für_Agenten.txt fordert Finalize-Follow-up; Handoffs zwischen Trilayern noch nicht dokumentiert.",
+      "scope": [
+        "governance",
+        "documentation",
+        "compliance"
+      ],
+      "logistic_profile": {
+        "R_target": "FIT-Sequenz ToDorefresh → Finalize operational",
+        "Theta_condition": "Prio-Order, Status und FIT-Mapping beider Trilayer spiegeln + Chronik-Δ notiert",
+        "beta_estimate": 4.7,
+        "zeta_risk": "moderat – fehlende Parität kann FIT-Kette blockieren"
+      },
+      "next_steps": [
+        "Finalize/Finalize_TODO.{md,yaml,json} gegen V6ToDorefresh-Trilayer abgleichen (Parser/Type-VI/Telemetrie/Handoff Tasks) und Deltas dokumentieren.",
+        "FIT-Mapping-Eintrag `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` ergänzen inkl. Reviewer/Chronik/Zenodo-Hooks.",
+        "Promt_für_Agenten.txt Hinweis in Chronik/Delta-Log referenzieren und Prioritätensync vermerken."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Promt_für_Agenten.txt",
+          "lines": [
+            1,
+            5
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/Finalize_TODO.md",
+          "lines": [
+            1,
+            180
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/Finalize_TODO.yaml",
+          "lines": [
+            1,
+            80
+          ]
+        }
+      ],
+      "priority": 34,
+      "sprint_focus": "FIT-Handoff absichern & Paritäts-Lücken schließen",
+      "updated_at": "2026-01-12T12:00:00Z"
     }
   ],
   "fit_mapping": [
@@ -2118,6 +2167,12 @@
       "status": "new"
     },
     {
+      "todo_id": "v6r-finalize-todo-sync",
+      "finalize_id": "finalize-todo-refresh-sync",
+      "bridge_focus": "FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik)",
+      "status": "mapping-added"
+    },
+    {
       "todo_id": "v6r-beta-telemetry-schema",
       "finalize_id": "finalize-beta-telemetry-sync",
       "bridge_focus": "Schema-Spiegel für β-Drift/CREP zwischen Metrics/Logs ↔ Finalize-Checks",
@@ -2138,6 +2193,15 @@
         "Neue Tasks v6r-psi-coverage-boost (Coverage 95%+) und v6r-lint-baseline-cleanup (≈550 Ruff-Fälle) aus ZENODO_CI_STATUS_2025-12-03 abgeleitet und in priority_order aufgenommen.",
         "FIT-Mapping mit finalize-psi-coverage-boost/finalize-lint-cleanup ergänzt; updated_at auf 2026-01-10T12:00:00Z gesetzt.",
         "Belegpfade (ZENODO_CI_STATUS_2025-12-03.md, Zenodo_Upload_Checklist.md, logs/type_vi_detections.jsonl) für CI/Release-Gates referenziert."
+      ]
+    },
+    {
+      "date": "2026-01-12",
+      "label": "v6-refresh-finalize-handoff",
+      "highlights": [
+        "Neuer Task v6r-finalize-todo-sync hinzugefügt, um Promt_für_Agenten.txt Vorgabe (ToDorefresh → Finalize) als FIT-Handoff abzubilden.",
+        "FIT-Mapping `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` ergänzt; Handoff-Deltas für Parser/Type-VI/Telemetrie dokumentiert.",
+        "Updated_at auf 2026-01-12T12:00:00Z gesetzt, Chronik/Zenodo-Hinweise für Paritäts-Check notiert."
       ]
     },
     {

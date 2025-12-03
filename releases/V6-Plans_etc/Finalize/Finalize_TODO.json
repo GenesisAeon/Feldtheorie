@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2026-01-11T12:00:00Z",
+    "updated_at": "2026-01-12T12:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -49,7 +49,8 @@
         "finalize-psi-visualization",
         "finalize-psi-tutorials",
         "finalize-psi-coverage-boost",
-        "finalize-lint-cleanup"
+        "finalize-lint-cleanup",
+        "finalize-todo-refresh-sync"
       ],
       "note": "v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation"
     }
@@ -1741,6 +1742,54 @@
       "priority": 29,
       "sprint_focus": "Lint-Debt abbauen & Release-Gates sichern",
       "updated_at": "2026-01-10T12:00:00Z"
+    },
+    {
+      "id": "finalize-todo-refresh-sync",
+      "title": "ToDorefresh → Finalize FIT-Handoff synchronisieren",
+      "status": "open",
+      "completeness": "Promt_für_Agenten.txt fordert Finalize-Follow-up; Parität zwischen Trilayern noch nicht dokumentiert.",
+      "scope": [
+        "governance",
+        "documentation",
+        "compliance"
+      ],
+      "logistic_profile": {
+        "R_target": "Promt_für_Agenten.txt Vorgabe umgesetzt (ToDorefresh → Finalize Handoff)",
+        "Theta_condition": "Prio/Status/FIT-Mapping gespiegelt + Chronik/Zenodo-Deltas notiert",
+        "beta_estimate": 4.7,
+        "zeta_risk": "moderat – fehlende Parität verzögert Governance-Gates"
+      },
+      "next_steps": [
+        "V6ToDorefresh.{md,yaml,json} gegen Finalize-Trilayer prüfen (Parser/Type-VI/Telemetrie) und Status-/Prio-Deltas ausgleichen.",
+        "FIT-Mapping-Eintrag `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` pflegen; Reviewer/Chronik-Hooks ergänzen.",
+        "Promt_für_Agenten.txt Hinweis in Chronik/Zenodo-Delta-Logs referenzieren und updated_at synchron halten."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Promt_für_Agenten.txt",
+          "lines": [
+            1,
+            5
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6ToDorefresh.md",
+          "lines": [
+            1265,
+            1310
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6ToDorefresh.yaml",
+          "lines": [
+            1,
+            80
+          ]
+        }
+      ],
+      "priority": 30,
+      "sprint_focus": "FIT-Governance-Parität herstellen",
+      "updated_at": "2026-01-12T12:00:00Z"
     }
   ],
   "fit_mapping": [
@@ -1901,6 +1950,12 @@
       "status": "new"
     },
     {
+      "todo_id": "v6r-finalize-todo-sync",
+      "finalize_id": "finalize-todo-refresh-sync",
+      "bridge_focus": "FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik)",
+      "status": "mapping-added"
+    },
+    {
       "todo_id": "v6r-beta-telemetry-schema",
       "finalize_id": "finalize-beta-telemetry-sync",
       "bridge_focus": "Schema-Spiegel für β-Drift/CREP zwischen Metrics/Logs ↔ Finalize-Deltas",
@@ -1914,6 +1969,15 @@
     }
   ],
   "delta_updates": [
+    {
+      "date": "2026-01-12",
+      "label": "finalize-finalize-handoff",
+      "highlights": [
+        "Neuer Task finalize-todo-refresh-sync ergänzt, um Promt_für_Agenten.txt Vorgabe (ToDorefresh → Finalize) im Finalize-Layer zu verankern.",
+        "FIT-Mapping `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` hinzugefügt; Reviewer-/Chronik-Hooks als nächste Schritte markiert.",
+        "Updatedatum auf 2026-01-12T12:00:00Z angehoben; Paritäts-Check zwischen Trilayern geplant."
+      ]
+    },
     {
       "date": "2026-01-10",
       "label": "finalize-ci-lint-coverage",
