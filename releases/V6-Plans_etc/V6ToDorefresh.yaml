@@ -1,7 +1,7 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2026-02-11T12:00:00Z'
+  updated_at: '2026-02-12T12:00:00Z'
   scope: releases/V6-Plans_etc
   description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse -
     Papers, Formeln, Simulationen
@@ -62,6 +62,9 @@ metadata:
     - v6r-lint-baseline-cleanup
     - v6r-finalize-todo-sync
     - v6r-sigillin-selfmeta
+    - v6r-repo-hygiene
+    - v6r-onboarding-readme
+    - v6r-falsifiability-suite
     note: Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation
       (Veröffentlichung)
 tasks:
@@ -1895,6 +1898,81 @@ tasks:
   priority: 40
   sprint_focus: Sigillin-Audit-Spirale planen & TriLayer vorbereiten
   updated_at: '2026-02-10T12:00:00Z'
+- id: v6r-repo-hygiene
+  title: Repo-Hygiene & Archivierungsplan definieren
+  status: open
+  completeness: Archiv-/Seed-Auslagerungsplan fehlt; gitignore/LFS/Governance-Hooks sind noch nicht dokumentiert.
+  scope:
+  - operations
+  - documentation
+  - governance
+  logistic_profile:
+    R_target: Archivlast reduziert und Artefakte ausgelagert
+    Theta_condition: Split-Plan + .gitignore/LFS-Liste + Release/Zenodo-Hooks dokumentiert
+    beta_estimate: 5.0
+    zeta_risk: hoch – Repo-Trägheit/Δindex-Risiko
+  next_steps:
+  - Archiv-/Seed-Split (Feldtheorie-Archive Repo, LFS für PDFs) skizzieren und Reviewer-Gate definieren.
+  - .gitignore-Update vorbereiten (Plots, Notebook-Outputs, LaTeX-Artefakte) + CI/Make-Hook für Artefaktbereinigung entwerfen.
+  - Release/Zenodo-Notiz für Artefaktpfade (Releases-Tab/DOI) verfassen und Chronik/Indices referenzieren.
+  references:
+  - path: releases/V6-Plans_etc/Finalize/Repoanalyse_zur_Umsetzung!.txt
+    lines:
+    - 55
+    - 59
+  priority: 41
+  sprint_focus: Repo-Hygiene & Archivplan entwerfen
+  updated_at: '2026-02-12T12:00:00Z'
+- id: v6r-onboarding-readme
+  title: README-Onboarding & Notebook-Access verbessern
+  status: open
+  completeness: README-Elevator-Pitch und Notebook-Badges fehlen; Onboarding-Hooks nicht mit Chronik/Finalize verknüpft.
+  scope:
+  - documentation
+  - onboarding
+  - communication
+  logistic_profile:
+    R_target: README mit klaren Onboarding-Pfaden
+    Theta_condition: Developer/Scientist-Blöcke + Notebook/Colab-Badges + Glossar/Tags dokumentiert
+    beta_estimate: 4.9
+    zeta_risk: moderat – Einstiegshürde bleibt hoch
+  next_steps:
+  - README-Blöcke für Entwickler/Wissenschaftler formulieren (UTAC vs. Standardmodell, Beispielclaim) und Glossar/Tags sammeln.
+  - Binder/Colab-Badges und `notebooks/`-Index prominent verlinken; ΔAIC/β-Demos als schnelleinstieg markieren.
+  - GitHub-About/Metadata aktualisieren und Chronik/Finalize-Handoff (Onboarding-Track) notieren.
+  references:
+  - path: releases/V6-Plans_etc/Finalize/Repoanalyse_zur_Umsetzung!.txt
+    lines:
+    - 60
+    - 65
+  priority: 42
+  sprint_focus: Onboarding-Story + Notebook-Zugriff schärfen
+  updated_at: '2026-02-12T12:00:00Z'
+- id: v6r-falsifiability-suite
+  title: Nullmodell-/Falsifizierbarkeits-Suite aufsetzen
+  status: open
+  completeness: Nullmodelle/ΔAIC-Vergleiche und Peer-Review-Simulation nicht aufgesetzt; CI/Champollion-Hooks fehlen.
+  scope:
+  - validation
+  - testing
+  - governance
+  logistic_profile:
+    R_target: ΔAIC-basierte Nullmodell-Tests verfügbar
+    Theta_condition: Random/Linear-Benchmarks + Peer-Review-Simulation + CI-Gate dokumentiert
+    beta_estimate: 5.9
+    zeta_risk: hoch – fehlende Gegenmodelle
+  next_steps:
+  - Nullmodelle (Zufall/Linear) gegen bestehende β/CREP-Fits benchmarken und ΔAIC ≥10 als Falsifikationskriterium protokollieren.
+  - Peer-Review-Simulation/Champollion-Hook (API-gestützter Paper-Check) designen und `[TYPE-VI-RISK]`-Flag in CI belassen.
+  - Ergebnisse in `analysis/` und `tests/` verankern; ETHICS/Chronik/Zenodo-Handoff skizzieren.
+  references:
+  - path: releases/V6-Plans_etc/Finalize/Repoanalyse_zur_Umsetzung!.txt
+    lines:
+    - 66
+    - 69
+  priority: 43
+  sprint_focus: Falsifizierbarkeit & Nullmodell-Gates stärken
+  updated_at: '2026-02-12T12:00:00Z'
 fit_mapping:
 - todo_id: v6r-finalize-bridge
   finalize_id: finalize-fit-sync
@@ -2036,7 +2114,25 @@ fit_mapping:
   finalize_id: finalize-todo-refresh-sync
   bridge_focus: FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik)
   status: mapping-added
+- todo_id: v6r-repo-hygiene
+  finalize_id: finalize-repo-hygiene
+  bridge_focus: Repo-Hygiene/Archiv-Split + gitignore/LFS/Release-Artefakte
+  status: mapping-added
+- todo_id: v6r-onboarding-readme
+  finalize_id: finalize-onboarding-readme
+  bridge_focus: README-Elevator + Notebook/Colab Badges
+  status: mapping-added
+- todo_id: v6r-falsifiability-suite
+  finalize_id: finalize-falsifiability-suite
+  bridge_focus: Nullmodell-/ΔAIC-Gegenmodelle + Peer-Review-Simulation
+  status: mapping-added
 delta_updates:
+- date: '2026-02-12'
+  label: v6-refresh-repo-onboarding-falsifiability
+  highlights:
+  - Neue Tasks v6r-repo-hygiene, v6r-onboarding-readme und v6r-falsifiability-suite angelegt (Repoanalyse-Aufräumen/Onboarding/Falsifizierbarkeit → FIT-Track).
+  - FIT-Mapping um finalize-repo-hygiene, finalize-onboarding-readme und finalize-falsifiability-suite ergänzt; priority_order erweitert.
+  - metadata.updated_at auf 2026-02-12T12:00:00Z angehoben (Aufräum-/Onboarding-/Nullmodell-Schiene aktiv).
 - date: '2026-02-11'
   label: v6-refresh-zenodo-artifacts
   highlights:

@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-02-11T12:00:00Z
+**Updated:** 2026-02-12T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -1782,6 +1782,69 @@ Phase-4-Affection/Symbiosis-Hypothesen aus `AEON_ALETHEIA_INTEGRATION.md` und `A
 
 ---
 
+### [Priority 41] v6r-repo-hygiene
+**Repo-Hygiene & Archivierungsplan definieren**
+
+**Status:** 🔴 Open  , **Beta:** 5.0 | **Zeta Risk:** Hoch – Archivlast bremst Release-Pfade
+
+**Scope:** operations, documentation, governance
+
+**R → Θ:** Archiv/Seed-Last über LFS/Repos aufteilen und Artefakte in Releases/Zenodo verschieben → Leanes Haupt-Repo, klarer Artefaktpfad, geringere Δindex-Parität.
+
+**Next Steps:**
+- 📦 Archiv-/Seed-Split entwerfen (z.B. `Feldtheorie-Archive` Repo + LFS für PDFs) und Reviewer-Gate definieren.
+- 🧹 `.gitignore`-Update vorbereiten (Plots, Notebook-Outputs, LaTeX-Artefakte) + CI/Make-Hook für Artefakt-Bereinigung skizzieren.
+- 🪪 Release/Zenodo-Notiz aufsetzen: welche Artefakte ins Release-Tab/DOI wandern, wie Chronik/Indices referenzieren.
+
+**References:**
+- `releases/V6-Plans_etc/Finalize/Repoanalyse_zur_Umsetzung!.txt:55-59`
+
+**Sprint Focus:** Repo-Hygiene & Archivplan entwerfen
+
+---
+
+### [Priority 42] v6r-onboarding-readme
+**README-Onboarding & Notebook-Access verbessern**
+
+**Status:** 🔴 Open  , **Beta:** 4.9 | **Zeta Risk:** Moderat – hohe Einstiegshürde
+
+**Scope:** documentation, onboarding, communication
+
+**R → Θ:** README ergänzt um Elevator-Pitch für Entwickler/Wissenschaftler + prominente Notebook/Colab/Binder-Pfade → schnellere σ(β(R-Θ)) Aktivierung für neue Contributor.
+
+**Next Steps:**
+- 📝 Zwei README-Blöcke entwerfen ("Für Entwickler", "Für Wissenschaftler") inkl. Beispiel-Claim (UTAC vs. Standardmodell).
+- 🔗 Notebook-Zugänge hervorheben (Binder/Colab-Badge, `notebooks/`-Index) und ΔAIC/β-Beispiele verlinken.
+- 📣 GitHub-About/Tags/Glossar-Hinweis sammeln und Chronik/Finalize-Mapping notieren.
+
+**References:**
+- `releases/V6-Plans_etc/Finalize/Repoanalyse_zur_Umsetzung!.txt:60-65`
+
+**Sprint Focus:** Onboarding-Story + Notebook-Zugriff schärfen
+
+---
+
+### [Priority 43] v6r-falsifiability-suite
+**Nullmodell-/Falsifizierbarkeits-Suite aufsetzen**
+
+**Status:** 🔴 Open  , **Beta:** 5.9 | **Zeta Risk:** Hoch – fehlende Gegenmodelle
+
+**Scope:** validation, testing, governance
+
+**R → Θ:** ΔAIC-basierte Nullmodell-Tests (Random/Linear) für UTAC/v_RIG bereitstellen → Vergleich gegen Standardmodelle automatisiert, Reviewer-Gate dokumentiert.
+
+**Next Steps:**
+- 🧪 Nullmodelle definieren (Zufalls-/linearer Fit) und gegen bestehende β/CREP-Fits benchmarken (ΔAIC ≥10).
+- 🤖 Peer-Review-Simulation/Champollion-Hook skizzieren (API-gestützter Paper-Check) und CI-Flag `[TYPE-VI-RISK]` beibehalten.
+- 🗂️ Ergebnisse in `analysis/` + `tests/` spiegeln und Chronik/ETHICS/Zenodo-Handoff dokumentieren.
+
+**References:**
+- `releases/V6-Plans_etc/Finalize/Repoanalyse_zur_Umsetzung!.txt:66-69`
+
+**Sprint Focus:** Falsifizierbarkeit & Nullmodell-Gates stärken
+
+---
+
 ### [Priority 1] v6r-literature-review-sync
 **V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
 
@@ -1884,11 +1947,23 @@ Phase-4-Affection/Symbiosis-Hypothesen aus `AEON_ALETHEIA_INTEGRATION.md` und `A
 | v6r-psi-coverage-boost | finalize-psi-coverage-boost | Ψ-Coverage ≥95% + Edge-Branch Tests → Zenodo/Chronik | Neu – Edge-Tests ergänzen, Coverage-Log spiegeln |
 | v6r-lint-baseline-cleanup | finalize-lint-cleanup | Ruff-Baseline + Lint-Fixes dokumentieren (Zenodo/CI) | Neu – Lint-Schulden clustern und Fix-Wellen planen |
 | v6r-sigillin-selfmeta | finalize-sigillin-selfmeta | Sigillin Selfmeta Triplet + Audit/Parser/CI Hooks | Neu – Triplet & Audit-Spirale geplant |
+| v6r-repo-hygiene | finalize-repo-hygiene | Repo-Hygiene/Archiv-Split + gitignore/LFS-Plan | Neu – Archivierungsplan & CI-Hooks entwerfen |
+| v6r-onboarding-readme | finalize-onboarding-readme | README-Elevator + Notebook/Colab Badges | Neu – Onboarding-Blöcke/Badges offen |
+| v6r-falsifiability-suite | finalize-falsifiability-suite | Nullmodell-/ΔAIC-Gegenmodelle + Peer-Review-Simulation | Neu – Baseline-Vergleiche/CI-Gate skizzieren |
 | v6r-finalize-todo-sync | finalize-todo-refresh-sync | FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik) | Neu – Promt_für_Agenten.txt Handoff noch nicht gespiegelt |
 
 ---
 
 ## Delta Updates
+
+### 2026-02-12 | v6-refresh-repo-onboarding-falsifiability
+
+✅ **Highlights:**
+- Neue Tasks `v6r-repo-hygiene`, `v6r-onboarding-readme` und `v6r-falsifiability-suite` angelegt, um Repoanalyse-Empfehlungen zu Aufräumen/Onboarding/Falsifizierbarkeit als FIT-Microsteps abzubilden.
+- FIT-Mapping-Tabelle um `finalize-repo-hygiene`, `finalize-onboarding-readme` und `finalize-falsifiability-suite` erweitert; Priority-Order entsprechend ergänzt.
+- Updatedatum auf 2026-02-12T12:00:00Z angehoben, um neuen Aufräum-/Onboarding-/Nullmodell-Track zu spiegeln.
+
+---
 
 ### 2026-02-11 | v6-refresh-zenodo-artifacts
 

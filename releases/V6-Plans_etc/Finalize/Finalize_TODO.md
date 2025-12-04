@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-02-11T12:00:00Z
+**Updated:** 2026-02-12T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -1030,6 +1030,75 @@ Affection/Symbiosis-Hypothesen (λ_affection > λ_conscious) in Finalize-Deltas 
 
 ---
 
+### [Priority 42] finalize-repo-hygiene
+**Repo-Hygiene & Archivierungsplan für Release/Zenodo fixieren**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.0 | **Zeta Risk:** Hoch – Archivlast/Δindex bremst Release-Ready-Status
+
+**Scope:** compliance, operations, documentation
+
+**R → Θ:** Archiv-/Seed-Split + `.gitignore`/LFS-Liste + Release/Zenodo-Artefaktpfade dokumentiert → Leaner Haupt-Repo, klare Artefaktbrücken für Zenodo/Chronik.
+
+**Next Steps:**
+- 📦 Archivierungsplan ausarbeiten (z.B. `Feldtheorie-Archive` Repo, LFS für PDFs) und Reviewer-Gate definieren; Chronik-Notiz vorbereiten.
+- 🧹 `.gitignore`/gitattributes-Update für Plot-/Notebook-/LaTeX-Artefakte entwerfen und CI/Make-Bereinigungshook skizzieren.
+- 🪪 Release-/Zenodo-Artefaktpfade bestimmen (Releases-Tab, output/zenodo_checks/) und in ZENODO_CI_STATUS/Checklists referenzieren.
+
+**References:**
+- `../Repoanalyse_zur_Umsetzung!.txt:55-59`
+
+**Sprint Focus:** Repo-Hygiene & Artefaktpfade finalisieren
+
+---
+
+### [Priority 43] finalize-onboarding-readme
+**README-Elevator + Notebook-Zugänge im Finalize-Layer verankern**
+
+**Status:** 🔴 Open
+
+**Beta:** 4.9 | **Zeta Risk:** Moderat – hohe Einstiegshürde für Reviewer/Zenodo-Audit
+
+**Scope:** documentation, onboarding, communication
+
+**R → Θ:** README enthält Entwickler-/Wissenschaftler-Blöcke, Glossar/Tags und Binder/Colab-Badges → Onboarding in Chronik/Zenodo referenzierbar.
+
+**Next Steps:**
+- 📝 Elevator-Pitch-Doppel (Dev/Science) formulieren und README-Platzierung definieren; Glossar/Tags/ABOUT ergänzen.
+- 🔗 Binder/Colab-Badges + `notebooks/`-Index prominenter verlinken; ΔAIC/β-Demo-Notebooks für Quickstart markieren.
+- 📣 Finalize-Handoff notieren (Chronik/Zenodo-Referenzen), damit Onboarding-Änderungen auditierbar bleiben.
+
+**References:**
+- `../Repoanalyse_zur_Umsetzung!.txt:60-65`
+
+**Sprint Focus:** Onboarding-Story & Notebook-Badges abschließen
+
+---
+
+### [Priority 44] finalize-falsifiability-suite
+**Nullmodell-/Falsifizierbarkeits-Suite für Finalize dokumentieren**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.9 | **Zeta Risk:** Hoch – fehlende Gegenmodelle im Finalize-Handoff
+
+**Scope:** validation, testing, governance
+
+**R → Θ:** ΔAIC-Vergleiche gegen Random/Linear-Nullmodelle + Peer-Review-Simulation im Finalize-Dokumentationspfad verankert → Reviewer-Gate für UTAC/v_RIG.
+
+**Next Steps:**
+- 🧪 Nullmodelle (Random/Linear) als Benchmark in analysis/tests integrieren; ΔAIC ≥10 als Falsifikationskriterium dokumentieren.
+- 🤖 Peer-Review-Simulation (Champollion/API) skizzieren und `[TYPE-VI-RISK]`-Flag/τ*-Default für CI/ETHICS notieren.
+- 🗂️ Ergebnisse in ETHICS.md/Chronik/Zenodo_Checklist referenzieren; FIT-Mapping zu v6r-falsifiability-suite pflegen.
+
+**References:**
+- `../Repoanalyse_zur_Umsetzung!.txt:66-69`
+
+**Sprint Focus:** Falsifizierbarkeit & Reviewer-Gates stärken
+
+---
+
 ### [Priority 31] finalize-type6-checklist-rollout
 **Type-VI Checklisten mit Governance/Zenodo/CI synchronisieren**
 
@@ -1327,12 +1396,24 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 | v6r-lint-baseline-cleanup | finalize-lint-cleanup | Ruff-Baseline + Lint-Fixes dokumentieren (Zenodo/CI) | Neu – Lint-Schulden clustern/abbauen |
 | v6r-sigillin-selfmeta | finalize-sigillin-selfmeta | Sigillin Selfmeta Triplet + Audit/Parser/CI Hooks | Neu – Triplet/Auditpfad planen |
 | v6r-finalize-todo-sync | finalize-todo-refresh-sync | FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik) | Neu – Promt_für_Agenten.txt Handoff noch nicht gespiegelt |
+| v6r-repo-hygiene | finalize-repo-hygiene | Repo-Hygiene/Archiv-Split + gitignore/LFS-Plan | Neu – Archivierungsplan & CI-Hooks entwerfen |
+| v6r-onboarding-readme | finalize-onboarding-readme | README-Elevator + Notebook/Colab Badges | Neu – Onboarding-Blöcke/Badges offen |
+| v6r-falsifiability-suite | finalize-falsifiability-suite | Nullmodell-/ΔAIC-Gegenmodelle + Peer-Review-Simulation | Neu – Baseline-Vergleiche/CI-Gate skizzieren |
 
 *Hinweis:* `v6r-cmb-analysis` ist in ToDorefresh als ✅ Completed (2025-12-02) archiviert und bleibt als Referenzmapping dokumentiert.
 
 ---
 
 ## Delta Updates
+
+### 2026-02-12 | finalize-repo-onboarding-falsifiability
+
+✅ **Highlights:**
+- Neue Finalize-Tasks `finalize-repo-hygiene`, `finalize-onboarding-readme` und `finalize-falsifiability-suite` angelegt, um Repoanalyse-Aufräumen/Onboarding/Falsifizierbarkeit als Release/Zenodo-Handoff abzubilden.
+- FIT-Mapping um `v6r-repo-hygiene`, `v6r-onboarding-readme` und `v6r-falsifiability-suite` ergänzt; Priority-Order erweitert.
+- Updatedatum auf 2026-02-12T12:00:00Z angehoben, damit Onboarding-/Hygiene-/Nullmodell-Track auditierbar bleibt.
+
+---
 
 ### 2026-02-11 | finalize-zenodo-artifacts
 
