@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-01-12T18:00:00Z
+**Updated:** 2026-01-15T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -726,6 +726,34 @@ Release-Package fertiggestellt → `v6.0.0-beta` Tag gesetzt, CHANGELOG/GITHUB_R
 
 ---
 
+### [Priority 38] finalize-zenodo-readiness-report
+**ZENODO_READINESS_REPORT in Finalize-Checklist/Chronik verankern**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.6 | **Zeta Risk:** Moderat – Readiness-Gaps blockieren DOI/Release-Freigabe
+
+**Scope:** compliance, documentation, governance
+
+**R → Θ:**
+Readiness-Assessment aus ZENODO_READINESS_REPORT.md in Finalize-Layer gespiegelt → Zenodo_Upload_Checklist.md um Readiness-Block erweitert, Chronik/Delta-Update mit CI-Status (2025-12-02/03) und τ*/CREP-Hinweisen versehen
+
+**Next Steps:**
+- 📝 Readiness-Gaps in Checklist-Form übertragen (Tests, Coverage, Provenienz, Ethics) und ΔAIC/CI-Passagen aus CI-Reports referenzieren.
+- 🔗 "Readiness Report"-Abschnitt in Zenodo_Upload_Checklist.md anlegen (Reviewer-Slot, τ*/CREP-Link) und mit ZENODO_CI_STATUS_2025-12-03.md verknüpfen.
+- 🧭 Chronik/Delta-Log ergänzen (finalize-zenodo-readiness-report ↔ v6r-zenodo-readiness-report) inkl. FIT-Handoff-Hinweis.
+
+**References:**
+- `../ZENODO_READINESS_REPORT.md:1-120`
+- `../Zenodo_Upload_Checklist.md:1-120`
+- `../ZENODO_CI_STATUS_2025-12-03.md:1-140`
+- `../Promt_für_Agenten.txt:1-5`
+- `../V6ToDorefresh.md:800-910`
+
+**Sprint Focus:** Readiness-Report → Checklist/Chronik spiegeln
+
+---
+
 ### [Priority 17] finalize-crep-audit-log
 **Type-VI Audit-Log & Reviewer-Routing im Finalize-Layer aktivieren**
 
@@ -1137,6 +1165,7 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Neu angelegt, Belege ausstehend |
 | v6r-zenodo-release-packaging | finalize-zenodo-release-packaging | Tag/Changelog/DOI für v6.0.0-beta | Neu – Release-Bundle/DOI noch offen |
 | v6r-zenodo-ci-sync | finalize-zenodo-ci-sync | Zenodo CI-Status (Conditional→Full GO) → Checklist/Chronik | ✅ Completed (2025-12-03) – CI-Daten vollständig gespiegelt |
+| v6r-zenodo-readiness-report | finalize-zenodo-readiness-report | Readiness Report → Checklist/Chronik/CI Sync | Neu – Readiness-Blöcke noch nicht gespiegelt |
 | v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Log-Starter liegt vor, Reviewer-Routing offen |
 | v6r-beta-telemetry | finalize-beta-telemetry | β-Drift/CREP Telemetrie → Deltas/Indices | Telemetrie-Aufgabe neu angelegt |
 | v6r-aeon-architecture | finalize-aeon-architecture | Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten) | Mapping ergänzt, Bauplanextrakt offen |
@@ -1158,6 +1187,15 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 ---
 
 ## Delta Updates
+
+### 2026-01-15 | finalize-zenodo-readiness
+
+✅ **Highlights:**
+- Neuer Task **finalize-zenodo-readiness-report** angelegt, um ZENODO_READINESS_REPORT.md im Finalize-Layer (Checklist + Chronik) zu spiegeln.
+- FIT-Mapping um `v6r-zenodo-readiness-report ↔ finalize-zenodo-readiness-report` ergänzt; Readiness-Blöcke (CI 2025-12-02/03, τ*/CREP-Hinweise) als Handoff notiert.
+- Updatedatum auf 2026-01-15T12:00:00Z angehoben.
+
+---
 
 ### 2026-01-12 | finalize-finalize-handoff
 
