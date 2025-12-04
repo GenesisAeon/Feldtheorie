@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2026-01-30T12:00:00Z",
+    "updated_at": "2026-02-10T12:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -53,6 +53,7 @@
         "finalize-psi-coverage-boost",
         "finalize-lint-cleanup",
         "finalize-todo-refresh-sync",
+        "finalize-sigillin-selfmeta",
         "finalize-aeon-aletheia-telemetry",
         "finalize-aletheia-phase3-calibration",
         "finalize-aletheia-affection-symbiosis"
@@ -1591,6 +1592,47 @@
       "updated_at": "2026-01-30T12:00:00Z"
     },
     {
+      "id": "finalize-sigillin-selfmeta",
+      "title": "Sigillin Selfmeta Triplet + Audit-Loop im Finalize-Layer verankern",
+      "status": "open",
+      "completeness": "Sigillin-Selfmeta-Triplet noch nicht angelegt; Champollion-/CI-/UI-Hooks fehlen im Finalize-Handoff.",
+      "scope": [
+        "governance",
+        "documentation",
+        "automation"
+      ],
+      "logistic_profile": {
+        "R_target": "Sigillin Selfmeta Triplet in docs/meta/ + Audit/Parser/CI-Handoff dokumentiert",
+        "Theta_condition": "Parser, Simulator-Panel und SIGILLIN_AUDIT.md Starter mit Reviewer-Slot und τ*/CREP-Hinweis geplant",
+        "beta_estimate": 5.5,
+        "zeta_risk": "moderat – fehlende Audit-Schleife"
+      },
+      "next_steps": [
+        "Triplet-Spezifikation aus Repoanalyse_zur_Umsetzung!.txt (β-Fenster [6.2–6.8], CREP=0.91, linked_files) übernehmen und Ablage in docs/meta/ vorsehen.",
+        "Champollion-/CI-Plan skizzieren: Parser für *.selfmeta.sigil.json, Workflow sigillin_selfmeta_check mit [TYPE-VI-RISK]-Warnbanner und τ*-Default; Reviewer-Slot definieren.",
+        "UI/Audit-Handoff vorbereiten (Simulator-Panel, SIGILLIN_AUDIT.md Starter mit Genesis-Orbit Entry 0001) und FIT-Mapping zu finalize-sigillin-parser/zenodo-readiness-report notieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Finalize/Repoanalyse_zur_Umsetzung!.txt",
+          "lines": [
+            262,
+            400
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/Sigillin Selfmeta.pdf",
+          "lines": [
+            1,
+            5
+          ]
+        }
+      ],
+      "priority": 41,
+      "sprint_focus": "Selfmeta-Auditpfad für Zenodo/Chronik vorbereiten",
+      "updated_at": "2026-02-10T12:00:00Z"
+    },
+    {
       "id": "finalize-sigillin-parser",
       "title": "Sigillin-Parser & Index-Automation ausrollen (Finalize)",
       "status": "open",
@@ -2239,6 +2281,12 @@
       "status": "new"
     },
     {
+      "todo_id": "v6r-sigillin-selfmeta",
+      "finalize_id": "finalize-sigillin-selfmeta",
+      "bridge_focus": "Sigillin Selfmeta Triplet + Audit/Parser/CI Hooks",
+      "status": "mapping-added"
+    },
+    {
       "todo_id": "v6r-finalize-todo-sync",
       "finalize_id": "finalize-todo-refresh-sync",
       "bridge_focus": "FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik)",
@@ -2258,6 +2306,15 @@
     }
   ],
   "delta_updates": [
+    {
+      "date": "2026-02-10",
+      "label": "finalize-sigillin-selfmeta",
+      "highlights": [
+        "Neuer Task finalize-sigillin-selfmeta ergänzt, um Sigillin-Selfmeta-Triplet (JSON/YAML/MD) und Audit-Hooks aus Repoanalyse_zur_Umsetzung!.txt in Chronik/Zenodo vorzubereiten.",
+        "FIT-Mapping v6r-sigillin-selfmeta ↔ finalize-sigillin-selfmeta hinzugefügt; Parser-, Simulator-Panel und CI-Workflow (sigillin_selfmeta_check) als Handoff markiert.",
+        "updated_at auf 2026-02-10T12:00:00Z angehoben, Promt_für_Agenten-Vorgabe ToDos → Finalize erfüllt."
+      ]
+    },
     {
       "date": "2026-01-30",
       "label": "finalize-aletheia-phase3-4",

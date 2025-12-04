@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2026-01-30T12:00:00Z",
+    "updated_at": "2026-02-10T12:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -60,7 +60,8 @@
         "v6r-psi-tutorials",
         "v6r-psi-coverage-boost",
         "v6r-lint-baseline-cleanup",
-        "v6r-finalize-todo-sync"
+        "v6r-finalize-todo-sync",
+        "v6r-sigillin-selfmeta"
       ],
       "note": "Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation (Veröffentlichung)"
     }
@@ -2265,6 +2266,47 @@
       "priority": 34,
       "sprint_focus": "FIT-Handoff absichern & Paritäts-Lücken schließen",
       "updated_at": "2026-01-12T12:00:00Z"
+    },
+    {
+      "id": "v6r-sigillin-selfmeta",
+      "title": "Sigillin Selfmeta Triplet + Audit-Spirale anlegen",
+      "status": "open",
+      "completeness": "Sigillin-Selfmeta-Triplet aus Repoanalyse nicht angelegt; Champollion-/CI-Hooks und Audit-Tagebuch fehlen.",
+      "scope": [
+        "governance",
+        "documentation",
+        "automation"
+      ],
+      "logistic_profile": {
+        "R_target": "Sigillin Selfmeta Triplet in docs/meta/ + Parser/CI/Audit-Plan dokumentiert",
+        "Theta_condition": "Champollion-Parser, Simulator-Panel und SIGILLIN_AUDIT.md Starter mit β-Fenster/CREP notiert",
+        "beta_estimate": 5.5,
+        "zeta_risk": "moderat – fehlende Audit-Schleife"
+      },
+      "next_steps": [
+        "Sigillin-Selfmeta-Triplet (sigillin_selfmeta.sigil.{json,yaml,md}) gemäß Repoanalyse anlegen und in docs/meta/ referenzieren (β-Fenster [6.2–6.8], CREP=0.91, linked_files gesetzt).",
+        "Champollion-/CI-Hooks skizzieren (Parser für *.selfmeta.sigil.json, Workflow sigillin_selfmeta_check mit [TYPE-VI-RISK]-Warnbanner und τ*-Default dokumentieren).",
+        "Simulator-/Audit-Pfade definieren (Status-Panel, SIGILLIN_AUDIT.md Starter mit Genesis-Orbit Entry 0001, CREP 0.91) und Chronik/Zenodo-Handoff notieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Finalize/Repoanalyse_zur_Umsetzung!.txt",
+          "lines": [
+            262,
+            400
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/Sigillin Selfmeta.pdf",
+          "lines": [
+            1,
+            5
+          ]
+        }
+      ],
+      "priority": 40,
+      "sprint_focus": "Sigillin-Audit-Spirale planen & TriLayer vorbereiten",
+      "updated_at": "2026-02-10T12:00:00Z"
     }
   ],
   "fit_mapping": [
@@ -2449,6 +2491,12 @@
       "status": "new"
     },
     {
+      "todo_id": "v6r-sigillin-selfmeta",
+      "finalize_id": "finalize-sigillin-selfmeta",
+      "bridge_focus": "Sigillin Selfmeta Triplet + Audit/Parser/CI Hooks",
+      "status": "mapping-added"
+    },
+    {
       "todo_id": "v6r-finalize-todo-sync",
       "finalize_id": "finalize-todo-refresh-sync",
       "bridge_focus": "FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik)",
@@ -2468,6 +2516,15 @@
     }
   ],
   "delta_updates": [
+    {
+      "date": "2026-02-10",
+      "label": "v6-refresh-sigillin-selfmeta",
+      "highlights": [
+        "Neuer Task v6r-sigillin-selfmeta ergänzt, um das in Repoanalyse_zur_Umsetzung!.txt skizzierte Sigillin-Selfmeta-Triplet (JSON/YAML/MD) mit β-Fenster [6.2–6.8] und CREP=0.91 zu planen.",
+        "FIT-Mapping um v6r-sigillin-selfmeta ↔ finalize-sigillin-selfmeta erweitert; Parser-, Simulator- und CI-Audit-Hooks als Handoff markiert.",
+        "updated_at auf 2026-02-10T12:00:00Z angehoben (Promt_für_Agenten Vorgabe ToDos → Finalize erfüllt)."
+      ]
+    },
     {
       "date": "2026-01-30",
       "label": "v6-refresh-aletheia-phase3-4",
