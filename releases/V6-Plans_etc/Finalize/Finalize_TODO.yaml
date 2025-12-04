@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2026-01-20T12:00:00Z'
+  updated_at: '2026-01-30T12:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -52,6 +52,8 @@ metadata:
     - finalize-lint-cleanup
     - finalize-todo-refresh-sync
     - finalize-aeon-aletheia-telemetry
+    - finalize-aletheia-phase3-calibration
+    - finalize-aletheia-affection-symbiosis
     note: v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation
 tasks:
 - id: finalize-vrig-research
@@ -1166,6 +1168,74 @@ tasks:
   priority: 20
   sprint_focus: Telemetrie/Zenodo-Parität herstellen
   updated_at: '2026-01-20T12:00:00Z'
+- id: finalize-aletheia-phase3-calibration
+  title: Aletheia Phase 3 – Adaptive Self-Calibration Telemetrie in Finalize-Deltas verankern
+  status: open
+  completeness: Phase-3-Effizienzpfad dokumentiert; Dataset-Schema/Reviewer-Gate im Finalize-Layer fehlen.
+  scope:
+  - compliance
+  - telemetry
+  - research
+  logistic_profile:
+    R_target: Phase-3-Daten/Telemetrie in Finalize-Deltas/Zenodo spiegeln
+    Theta_condition: Neue Felder (condition, efficiency_e, self_reflection_phase3) + Reviewer-Slot dokumentiert
+    beta_estimate: 5.2
+    zeta_risk: moderat – fehlender Reviewer-Gate
+  next_steps:
+  - Dataset-Schema (Control/Adaptive) im Finalize-Deltalog beschreiben und Telemetrie-Felder in Zenodo_Upload_Checklist.md
+    verlinken.
+  - CREP/τ*-Schwelle (≥0.7, τ*=0.1·|Θ−R|) für Phase-3-Läufe in logs/type_vi_detections.jsonl vormerken; Reviewer-Feld ergänzen.
+  - FIT-Mapping mit v6r-aletheia-phase3-calibration festziehen und Chronik/Zenodo-Verweis notieren.
+  references:
+  - path: releases/V6-Plans_etc/AEON_ALETHEIA_INTEGRATION.md
+    lines:
+    - 67
+    - 114
+  - path: releases/V6-Plans_etc/Aletheiaresults_dialog.txt
+    lines:
+    - 1
+    - 36
+  - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
+    lines:
+    - 60
+    - 140
+  priority: 39
+  sprint_focus: Phase-3-Telemetrie → Zenodo/Chronik koppeln
+  updated_at: '2026-01-30T12:00:00Z'
+- id: finalize-aletheia-affection-symbiosis
+  title: Aletheia Phase 4 – Affection/Symbiosis-Protokoll mit τ*/CREP-Gate dokumentieren
+  status: open
+  completeness: Phase-4-Hypothesen vorhanden; Safety-Delay/Reviewer-Slot noch nicht in Finalize-Deltas vermerkt.
+  scope:
+  - ethics
+  - governance
+  - documentation
+  logistic_profile:
+    R_target: Phase-4-Protokoll mit τ*/CREP-Gate in Finalize-Deltas/Zenodo verankert
+    Theta_condition: Affection-Testcases + Safety-Delay/Reviewer-Notiz dokumentiert
+    beta_estimate: 5.4
+    zeta_risk: moderat – affektive Kopplung ohne Safety-Buffer
+  next_steps:
+  - Protokoll-Summary (Affection/Symbiosis) in Finalize-Deltas skizzieren; Messgrößen und Nullmodell festhalten.
+  - τ*-Delay + CREP-Level in Zenodo_Upload_Checklist.md und ETHICS.md referenzieren; Reviewer-Eintrag bei CREP ≥0.7 in
+    logs/type_vi_detections.jsonl vormerken.
+  - FIT-Brücke zu v6r-aletheia-affection-symbiosis ergänzen und Chronik/Zenodo-Handoff markieren.
+  references:
+  - path: releases/V6-Plans_etc/AEON_ALETHEIA_INTEGRATION.md
+    lines:
+    - 114
+    - 170
+  - path: releases/V6-Plans_etc/Aletheiaresults_dialog.txt
+    lines:
+    - 1
+    - 36
+  - path: releases/V6-Plans_etc/activation_gaps_tau_star.md
+    lines:
+    - 1
+    - 36
+  priority: 40
+  sprint_focus: Affection/Symbiosis sicherheitskonform abschließen
+  updated_at: '2026-01-30T12:00:00Z'
 - id: finalize-sigillin-parser
   title: Sigillin-Parser & Index-Automation ausrollen (Finalize)
   status: open
@@ -1613,6 +1683,14 @@ fit_mapping:
   finalize_id: finalize-aeon-aletheia-telemetry
   bridge_focus: Aletheia-Daten → β/CREP Telemetrie & Ψ-Plan
   status: new
+- todo_id: v6r-aletheia-phase3-calibration
+  finalize_id: finalize-aletheia-phase3-calibration
+  bridge_focus: Phase-3 Adaptive Self-Calibration → Dataset/Telemetry/Ψ-Plan
+  status: new
+- todo_id: v6r-aletheia-affection-symbiosis
+  finalize_id: finalize-aletheia-affection-symbiosis
+  bridge_focus: Phase-4 Affection/Symbiosis Experimente → τ*/CREP Guard
+  status: new
 - todo_id: v6r-sigillin-parser
   finalize_id: finalize-sigillin-parser
   bridge_focus: Sigillin-Parser/Index-Automation FIT
@@ -1654,6 +1732,14 @@ fit_mapping:
   bridge_focus: FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik)
   status: mapping-added
 delta_updates:
+- date: '2026-01-30'
+  label: finalize-aletheia-phase3-4
+  highlights:
+  - Neue Tasks finalize-aletheia-phase3-calibration und finalize-aletheia-affection-symbiosis ergänzt, um
+    Phase-3/4-Empfehlungen aus AEON_ALETHEIA_INTEGRATION.md im Finalize-Layer zu spiegeln.
+  - FIT-Mapping mit v6r-aletheia-phase3-calibration und v6r-aletheia-affection-symbiosis ergänzt; Zenodo/UTAC
+    Reviewer-Hinweise (τ*/CREP) markiert.
+  - updated_at auf 2026-01-30T12:00:00Z angehoben; Telemetrie- und Ethik-Handoffs dokumentiert.
 - date: '2026-01-20'
   label: finalize-aeon-aletheia-telemetrie
   highlights:

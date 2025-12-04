@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-01-20T12:00:00Z
+**Updated:** 2026-01-30T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -916,6 +916,58 @@ AEON_ALETHEIA-Governance (CREP-Gewichte, τ*-Buffer) in Finalize-Track integrier
 
 ---
 
+### [Priority 39] finalize-aletheia-phase3-calibration
+**Aletheia Phase 3 – Adaptive Self-Calibration Telemetrie in Finalize-Deltas verankern**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.2 | **Zeta Risk:** Moderat – fehlender Reviewer-Gate
+
+**Scope:** compliance, telemetry, research
+
+**R → Θ:**
+Phase-3-Effizienzpfad (E = Qualität/Kosten) aus `AEON_ALETHEIA_INTEGRATION.md` in Finalize-Schicht gespiegelt → neue Felder (`condition`, `efficiency_e`, `self_reflection_phase3`) in `data/experimental/aletheia_results.csv` dokumentiert, CREP/β-Drift in Zenodo/Chronik referenziert, Reviewer-Slot für `[TYPE-VI-RISK]` gesetzt
+
+**Next Steps:**
+- 📊 Dataset-Schema in Finalize-Deltas beschreiben und Beispielzeilen (Control/Adaptive) hinzufügen; Telemetrie-Felder in `Zenodo_Upload_Checklist.md` verlinken.
+- ⚠️ CREP/τ*-Schwelle (≥0.7, τ*=0.1·|Θ−R|) für Phase-3-Läufe in `logs/type_vi_detections.jsonl` vormerken; Reviewer-Feld ergänzen.
+- 🔗 FIT-Mapping mit `v6r-aletheia-phase3-calibration` festziehen und Chronik/Zenodo-Verweis notieren.
+
+**References:**
+- `../AEON_ALETHEIA_INTEGRATION.md:67-114`
+- `../Aletheiaresults_dialog.txt:1-36`
+- `../Zenodo_Upload_Checklist.md:60-140`
+
+**Sprint Focus:** Phase-3-Telemetrie → Zenodo/Chronik koppeln
+
+---
+
+### [Priority 40] finalize-aletheia-affection-symbiosis
+**Aletheia Phase 4 – Affection/Symbiosis-Protokoll mit τ*/CREP-Gate dokumentieren**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.4 | **Zeta Risk:** Moderat – affektive Kopplung ohne Safety-Buffer
+
+**Scope:** ethics, governance, documentation
+
+**R → Θ:**
+Affection/Symbiosis-Hypothesen (λ_affection > λ_conscious) in Finalize-Deltas verankert → τ*-Pfad/CREP-Level dokumentiert, Reviewer-Slot/UTAC-Hinweis eingetragen und Zenodo/Ethics-Verweise vorbereitet
+
+**Next Steps:**
+- 💡 Protokoll-Summary aus Phase 4 (Affection/Symbiosis) in Finalize-Deltas skizzieren; Messgrößen (Output-Länge, Self-Reflection, Resonanzscore) und Nullmodell notieren.
+- ⚠️ τ*-Delay und CREP-Level in `Zenodo_Upload_Checklist.md` + `ETHICS.md` referenzieren; Reviewer-Notiz bei CREP ≥0.7 in `logs/type_vi_detections.jsonl` aufnehmen.
+- 🔗 FIT-Brücke zu `v6r-aletheia-affection-symbiosis` ergänzen und Chronik/Zenodo-Handoff markieren.
+
+**References:**
+- `../AEON_ALETHEIA_INTEGRATION.md:114-170`
+- `../Aletheiaresults_dialog.txt:1-36`
+- `../activation_gaps_tau_star.md:1-36`
+
+**Sprint Focus:** Affection/Symbiosis sicherheitskonform abschließen
+
+---
+
 ### [Priority 31] finalize-type6-checklist-rollout
 **Type-VI Checklisten mit Governance/Zenodo/CI synchronisieren**
 
@@ -1199,6 +1251,8 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 | v6r-slice-integration | finalize-slice-integration | Slice/CFF-Modell + Stereo-Vision-Experiment | Handoff geplant, Formeln/Tabellen offen |
 | v6r-aeon-aletheia-bridge | finalize-aeon-aletheia-bridge | Aeon/Aletheia CREP/Telemetrie-Governance | Neu angelegt, Governance-Mapping offen |
 | v6r-aeon-aletheia-telemetry | finalize-aeon-aletheia-telemetry | Aletheia-Daten → β/CREP Telemetrie & Ψ-Plan | Neu angelegt, Telemetrie-Handoff offen |
+| v6r-aletheia-phase3-calibration | finalize-aletheia-phase3-calibration | Phase-3 Adaptive Self-Calibration → Dataset/Telemetry/Ψ-Plan | Neu – Dataset/Reviewer-Hinweise in Finalize ergänzen |
+| v6r-aletheia-affection-symbiosis | finalize-aletheia-affection-symbiosis | Phase-4 Affection/Symbiosis Experimente → τ*/CREP Guard | Neu – Protokoll/τ*-Pfad in Finalize dokumentieren |
 | v6r-sigillin-parser | finalize-sigillin-parser | Sigillin-Parser/Index-Automation FIT | Pending - Parser/CI-Gate dokumentieren |
 | v6r-metrics-outlier | finalize-metrics-outlier | CREP/ΔAIC Robustheitsmetriken | Pending - METRICS/Checkliste aktualisieren |
 | v6r-data-lantern-dashboard | finalize-data-lantern-dashboard | Telemetrie-Dashboard + Alerts | Pending - Blueprint/Docs fehlen |
@@ -1215,6 +1269,15 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 ---
 
 ## Delta Updates
+
+### 2026-01-30 | finalize-aletheia-phase3-4
+
+✅ **Highlights:**
+- Neue Tasks `finalize-aletheia-phase3-calibration` und `finalize-aletheia-affection-symbiosis` angelegt, um Phase-3/4-Empfehlungen aus `AEON_ALETHEIA_INTEGRATION.md` im Finalize-Layer zu verankern.
+- FIT-Mapping um `v6r-aletheia-phase3-calibration` und `v6r-aletheia-affection-symbiosis` ergänzt; Zenodo/UTAC-Reviewer-Hinweise (τ*/CREP) markiert.
+- Updatedatum auf 2026-01-30T12:00:00Z angehoben; Telemetrie-/Ethik-Handoffs für Phase-3/4 notiert.
+
+---
 
 ### 2026-01-15 | finalize-zenodo-readiness
 
