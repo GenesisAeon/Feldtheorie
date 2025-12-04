@@ -176,6 +176,42 @@ class PsiField:
         logistic_term = 1.0 - np.tanh(beta * (R - Theta))
         return V0 * logistic_term * geometric_factor
 
+    def compute_waste_wavefunction(
+        self, x: float | np.ndarray, n_modes: int = 10
+    ) -> float | np.ndarray:
+        """Compute ψ_waste(x) = Σ_n (1/Φⁿ) · sin(α⁻¹ · k_n · x).
+
+        This describes quantum fluctuations in the Verschnitt (waste) volume between
+        spheres, providing a geometric origin for dark energy.
+
+        Args:
+            x: Spatial coordinate (or array)
+            n_modes: Number of Fourier modes to include (default: 10)
+
+        Returns:
+            Waste wavefunction value(s)
+
+        Physical interpretation:
+        - Fourier series with Φ-damping: each "octave" damped by golden ratio
+        - k_n ~ α⁻¹: Wave numbers scaled by fine structure constant
+        - sin(...): Standing waves in "void" between spheres
+        - Zero-point energy = Dark energy
+        - Φ-damping prevents UV catastrophe
+        """
+        psi_waste = np.zeros_like(x, dtype=float)
+
+        for n in range(1, n_modes + 1):
+            # Wave number: k_n ~ α⁻¹ (scaled by mode number)
+            k_n = self.config.alpha_inv * n
+
+            # Φ-damping factor: 1/Φⁿ
+            phi_damping = 1.0 / (self.config.phi**n)
+
+            # Add Fourier mode
+            psi_waste += phi_damping * np.sin(k_n * x)
+
+        return psi_waste
+
 
 # Legacy aliases for backward compatibility
 L_PLANCK = PLANCK_LENGTH
