@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2026-01-12T12:00:00Z",
+    "updated_at": "2026-01-12T18:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -37,6 +37,7 @@
         "v6r-finalize-bridge",
         "v6r-crep-guard-ci",
         "v6r-zenodo-evidence",
+        "v6r-zenodo-release-packaging",
         "v6r-zenodo-ci-sync",
         "v6r-crep-audit-log",
         "v6r-tau-star-ci-hook",
@@ -1097,6 +1098,54 @@
       ],
       "priority": 18,
       "sprint_focus": "Belegsammlung für Zenodo-DOI + FIT-Handoff"
+    },
+    {
+      "id": "v6r-zenodo-release-packaging",
+      "title": "v6.0.0-beta Release-Package (Tag/DOI/Archive) abschließen",
+      "status": "open",
+      "completeness": "CI/Provenienz-Status vorhanden; Tag/Changelog/DOI-Handoff fehlt und muss im Zenodo/Finalize-Track verankert werden.",
+      "scope": [
+        "release",
+        "compliance",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "Release-Bundle v6.0.0-beta fertig (Tag + DOI + Archiv)",
+        "Theta_condition": "Tag gesetzt, Changelog/Release Notes aktualisiert, Zenodo-DOI beantragt, Artefakte im releases/V6-Plans_etc Ordner dokumentiert",
+        "beta_estimate": 5.3,
+        "zeta_risk": "moderat – DOI/Tag fehlen"
+      },
+      "next_steps": [
+        "Annotated Git-Tag \"v6.0.0-beta\" erstellen und in ZENODO_CI_STATUS referenzieren (42/42 Tests, 87% Coverage).",
+        "CHANGELOG.md + GITHUB_RELEASE_NOTES.md um CI-Verbesserungen und Type-VI Guards ergänzen; Zenodo_Upload_Checklist.md verlinken.",
+        "Zenodo-Depositions/DOI-Request mit Reviewer-Slot (CREP ≥0.7) anstoßen; Provenienzblock aus ETHICS/POLICY referenzieren.",
+        "Release-Bundle (ZENODO_READINESS_REPORT, ZENODO_CI_STATUS_2025-12-03.md, Checklist) im Ordner releases/V6-Plans_etc archivieren und in Chronik/Finalize vermerken."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md",
+          "lines": [
+            84,
+            164
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
+          "lines": [
+            23,
+            87
+          ]
+        },
+        {
+          "path": "CHANGELOG.md",
+          "lines": [
+            1,
+            120
+          ]
+        }
+      ],
+      "priority": 35,
+      "sprint_focus": "Zenodo-Release-Handoff (Tag + DOI + Archiv)"
     },
     {
       "id": "v6r-zenodo-ci-sync",
