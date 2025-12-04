@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-01-30T12:00:00Z
+**Updated:** 2026-02-10T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -968,6 +968,30 @@ Affection/Symbiosis-Hypothesen (λ_affection > λ_conscious) in Finalize-Deltas 
 
 ---
 
+### [Priority 41] finalize-sigillin-selfmeta
+**Sigillin Selfmeta Triplet + Audit-Loop im Finalize-Layer verankern**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.5 | **Zeta Risk:** Moderat – Selfmeta-Audit noch nicht implementiert
+
+**Scope:** governance, documentation, automation
+
+**R → Θ:** Sigillin Selfmeta Triplet (JSON/YAML/MD) in `docs/meta/` abgelegt, Champollion-Parser/Simulator-Panel definiert und `SIGILLIN_AUDIT.md` Starter + CI-Workflow (`sigillin_selfmeta_check`) im Finalize-Handoff dokumentiert.
+
+**Next Steps:**
+- 📝 Triplet-Spezifikation aus `Repoanalyse_zur_Umsetzung!.txt` übernehmen (β-Fenster [6.2–6.8], CREP=0.91, linked_files) und Finalize-Hooks zu Chronik/Zenodo notieren.
+- 🔧 Champollion-/CI-Plan skizzieren: Parser für `*.selfmeta.sigil.json`, Audit-Workflow mit `[TYPE-VI-RISK]`-Warnbanner und τ*-Default als Gate; Reviewer-Slot festlegen.
+- 🎛️ UI/Audit-Handoff: Simulator-Panel „Sigillin Selfmeta Status“ + `SIGILLIN_AUDIT.md` Starter (Genesis-Orbit Entry 0001) vorbereiten und mit `finalize-sigillin-parser`/`finalize-zenodo-readiness-report` verknüpfen.
+
+**References:**
+- `../Repoanalyse_zur_Umsetzung!.txt:262-400`
+- `../Sigillin Selfmeta.pdf:1-5`
+
+**Sprint Focus:** Selfmeta-Auditpfad für Zenodo/Chronik vorbereiten
+
+---
+
 ### [Priority 31] finalize-type6-checklist-rollout
 **Type-VI Checklisten mit Governance/Zenodo/CI synchronisieren**
 
@@ -1262,6 +1286,7 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 | v6r-psi-tutorials | finalize-psi-tutorials | Ψ-Notebooks + FIT-Lernpfade | Neu – Tutorials/Checklist-Links setzen |
 | v6r-psi-coverage-boost | finalize-psi-coverage-boost | Ψ-Coverage ≥95% + Edge-Branch Tests → Zenodo/Chronik | Neu – Edge-Tests & Coverage-Logs fixieren |
 | v6r-lint-baseline-cleanup | finalize-lint-cleanup | Ruff-Baseline + Lint-Fixes dokumentieren (Zenodo/CI) | Neu – Lint-Schulden clustern/abbauen |
+| v6r-sigillin-selfmeta | finalize-sigillin-selfmeta | Sigillin Selfmeta Triplet + Audit/Parser/CI Hooks | Neu – Triplet/Auditpfad planen |
 | v6r-finalize-todo-sync | finalize-todo-refresh-sync | FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik) | Neu – Promt_für_Agenten.txt Handoff noch nicht gespiegelt |
 
 *Hinweis:* `v6r-cmb-analysis` ist in ToDorefresh als ✅ Completed (2025-12-02) archiviert und bleibt als Referenzmapping dokumentiert.
@@ -1269,6 +1294,15 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 ---
 
 ## Delta Updates
+
+### 2026-02-10 | finalize-sigillin-selfmeta
+
+✅ **Highlights:**
+- Neuer Finalize-Task `finalize-sigillin-selfmeta` ergänzt, um das Sigillin-Selfmeta-Triplet (JSON/YAML/MD) und Audit-Hooks aus `Repoanalyse_zur_Umsetzung!.txt` in Chronik/Zenodo vorzubereiten.
+- FIT-Mapping um `v6r-sigillin-selfmeta ↔ finalize-sigillin-selfmeta` erweitert; Champollion-Parser, Simulator-Panel und CI-Workflow (`sigillin_selfmeta_check`) als Handoff markiert.
+- Updatedatum auf 2026-02-10T12:00:00Z angehoben, damit Promt_für_Agenten-Vorgabe „ToDos anlegen“ auch für Selfmeta/Audit erfüllt wird.
+
+---
 
 ### 2026-01-30 | finalize-aletheia-phase3-4
 
