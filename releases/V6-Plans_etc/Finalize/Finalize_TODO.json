@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2026-01-12T12:00:00Z",
+    "updated_at": "2026-01-12T18:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -27,6 +27,7 @@
         "finalize-mscopilot-actions",
         "finalize-wavefunction-pipeline",
         "finalize-zenodo-checklist",
+        "finalize-zenodo-release-packaging",
         "finalize-tau-star-guardrails",
         "finalize-tau-star-mini-steps",
         "finalize-type6-governance",
@@ -1027,6 +1028,54 @@
       ],
       "priority": 16,
       "sprint_focus": "Zenodo-DOI-Belege + Provenienzpfad sichern"
+    },
+    {
+      "id": "finalize-zenodo-release-packaging",
+      "title": "v6.0.0-beta Tag/Changelog/DOI im Finalize-Track abschließen",
+      "status": "open",
+      "completeness": "CI/Provenienz-Status dokumentiert; Tag/Changelog/DOI-Handoff fehlt und muss mit ToDorefresh synchronisiert werden.",
+      "scope": [
+        "release",
+        "compliance",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "Release-Package v6.0.0-beta fertig (Tag + DOI + Archiv)",
+        "Theta_condition": "Tag gesetzt, CHANGELOG/GITHUB_RELEASE_NOTES aktualisiert, Zenodo-DOI beantragt, Release-Bundle im Finalize-Ordner verlinkt",
+        "beta_estimate": 5.3,
+        "zeta_risk": "moderat – DOI/Tag fehlen"
+      },
+      "next_steps": [
+        "Annotated Tag \"v6.0.0-beta\" erstellen und in ZENODO_CI_STATUS_2025-12-03.md eintragen.",
+        "CHANGELOG.md + GITHUB_RELEASE_NOTES.md mit CI/Type-VI-Governance Fortschritten ergänzen; Zenodo_Upload_Checklist.md Querverweis setzen.",
+        "Zenodo-Deposition/DOI-Request anstoßen, Reviewer-Slot (CREP ≥0.7) dokumentieren und Provenienzblöcke aus ETHICS/POLICY referenzieren.",
+        "Release-Bundle (ZENODO_READINESS_REPORT, Checklist, CI-Status) im Finalize-Ordner/Chronik referenzieren und mit ToDorefresh Handoff markieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md",
+          "lines": [
+            84,
+            164
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
+          "lines": [
+            23,
+            87
+          ]
+        },
+        {
+          "path": "CHANGELOG.md",
+          "lines": [
+            1,
+            120
+          ]
+        }
+      ],
+      "priority": 31,
+      "sprint_focus": "Zenodo-Release-Handoff dokumentieren"
     },
     {
       "id": "finalize-zenodo-ci-sync",

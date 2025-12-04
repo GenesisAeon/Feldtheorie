@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-01-11T12:00:00Z
+**Updated:** 2026-01-12T18:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -837,6 +837,31 @@ Zenodo_Upload_Checklist.md auf ✅ bringen → aktuelle Test-, Coverage-, Lint- 
 
 ---
 
+### [Priority 35] v6r-zenodo-release-packaging
+**v6.0.0-beta Release-Package (Tag/DOI/Archive) abschließen**
+
+**Status:** 🔴 Open  , **Beta:** 5.3 | **Zeta Risk:** Moderat – DOI/Tag fehlen
+
+**Scope:** release, compliance, documentation
+
+**R → Θ:**
+Release-Bundle abgeschlossen → Tag `v6.0.0-beta` gesetzt, CHANGELOG/Release Notes aktualisiert, Zenodo-DOI beantragt und Artefakte in `releases/V6-Plans_etc/` dokumentiert (inkl. ZENODO_CI_STATUS_2025-12-03.md Referenz)
+
+**Next Steps:**
+- 🏷️ Annotated Git-Tag `v6.0.0-beta` erstellen und in ZENODO_CI_STATUS referenzieren (42/42 Tests, 87% Coverage).
+- 📝 CHANGELOG.md + GITHUB_RELEASE_NOTES.md um CI-Verbesserungen und Type-VI Guards ergänzen; Zenodo_Upload_Checklist.md verlinken.
+- 🔗 Zenodo-Depositions/DOI-Request mit Reviewer-Slot (CREP ≥0.7) anstoßen; Provenienzblock aus ETHICS/POLICY referenzieren.
+- 🗂️ Release-Bundle (ZENODO_READINESS_REPORT, ZENODO_CI_STATUS_2025-12-03.md, Checklist) im Ordner `releases/V6-Plans_etc/` archivieren und in Chronik/Finalize vermerken.
+
+**References:**
+- `releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md:84-164`
+- `releases/V6-Plans_etc/Zenodo_Upload_Checklist.md:23-87`
+- `CHANGELOG.md:1-120`
+
+**Sprint Focus:** Zenodo-Release-Handoff (Tag + DOI + Archiv)
+
+---
+
 ### [Priority 29] v6r-zenodo-ci-sync
 **ZENODO_CI_STATUS-Reports in Checklist + Chronik spiegeln (Full-Go Artefakte sichern)**
 
@@ -1400,6 +1425,7 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 | v6r-type6-checklist-rollout | finalize-type6-checklist-rollout | Type-VI Checklisten ↔ POLICY/ETHICS/Zenodo | Pending – Trilayer-Checkliste noch nicht mit Governance/CI gespiegelt |
 | v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | ✅ Completed - tools/crep_guard.py operational + CI hooks |
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Belege pending (execution environment needed) |
+| v6r-zenodo-release-packaging | finalize-zenodo-release-packaging | Tag/Changelog/DOI für v6.0.0-beta | Neu – Release-Bundle/DOI noch offen |
 | v6r-zenodo-ci-sync | finalize-zenodo-ci-sync | Zenodo CI-Status (Conditional/Full GO) → Checklist/Chronik | ✅ Completed (2025-12-03) – CI-Daten vollständig gespiegelt (42/42 tests, 87% coverage) |
 | v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Log-Schema ready, JSONL writer operational |
 | v6r-beta-telemetry | finalize-beta-telemetry | β-Drift/CREP Telemetrie → Deltas/Indices | Pending - schema design needed |
@@ -1424,9 +1450,10 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 ### 2026-01-12 | v6-refresh-finalize-handoff
 
 ✅ **Highlights:**
+- Neuer Task **v6r-zenodo-release-packaging** angelegt, um Release-Tagging, Changelog-Updates und DOI-Antrag aus `ZENODO_CI_STATUS_2025-12-03.md` zu tracken; FIT-Mapping zu Finalize ergänzt.
 - Neuer Task `v6r-finalize-todo-sync` angelegt, um die Promt_für_Agenten.txt Vorgabe (ToDorefresh → Finalize) explizit zu bedienen.
 - FIT-Mapping-Eintrag `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` ergänzt; Reviewer/Handoff-Pfade in beiden Trilayern nachziehen.
-- Updatedatum auf 2026-01-12T12:00:00Z gesetzt; Chronik-/Zenodo-Notizen für Paritäts-Checks eingeplant.
+- Updatedatum auf 2026-01-12T18:00:00Z gesetzt; Chronik-/Zenodo-Notizen für Paritäts-Checks eingeplant.
 
 ---
 
