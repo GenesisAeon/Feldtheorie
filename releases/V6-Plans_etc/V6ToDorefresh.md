@@ -1027,53 +1027,152 @@ python -m tools.crep_guard --check-type6-trilayer --threshold 0.7 --tau-default 
 ### [Priority 21] v6r-beta-telemetry
 **β-Drift & CREP-Telemetrie in Metrics/Audit spiegeln**
 
-**Status:** 🔴 Open
-
-**Beta:** 4.7 | **Zeta Risk:** Moderat – fehlende Driftwarnungen verzögern Eskalation
+**Status:** 🟢 Completed (2025-12-04)
+**Beta:** 4.7 | **Zeta Risk:** Neutralisiert – Telemetrie-Warnkette vollständig operational
 
 **Scope:** telemetry, metrics, governance
 
 **R → Θ:**
-β-Drift (>10%) und CREP ≥0.7 werden in `metrics/beta_evolution.csv` und `logs/type_vi_detections.jsonl` getrackt → Chronik/Indices führen Warnbanner `[TYPE-VI-RISK]`
+✅ β-Drift (>10%) und CREP ≥0.7 werden in `metrics/beta_evolution.csv` und `logs/type_vi_detections.jsonl` getrackt → Chronik/Indices mit Warnbanner `[TYPE-VI-RISK]` dokumentiert
 
-**Next Steps:**
-- 📈 Schema für `metrics/beta_evolution.csv` um `beta_estimate`, `drift_flag`, `domain`, `timestamp` erweitern und Type-VI-Läufe markieren.
-- 🔗 CREP/τ*-Detections aus `tools/crep_guard.py --log-detection` nach `logs/type_vi_detections.jsonl` routen und im Chronik-Delta verlinken.
-- 🛰️ Dashboard/Chronik-Hinweis vorbereiten: Level-1 Warnung bei CREP ≥0.7 oder β-Drift >10% (Mapping zu `type6_crep_tau_star_checklist.md`).
+**Completed Actions:**
+- ✅ **CSV-Schema erweitert** (`metrics/beta_evolution.csv`):
+  - Neues Feld `drift_flag` hinzugefügt (0=normal, 1=>10% drift, 2=>20% critical)
+  - Umfassende Feld-Dokumentation in Header-Kommentaren (13 Felder dokumentiert)
+  - CREP flag levels dokumentiert: 0=none, 1=≥0.6, 2=≥0.7 (reviewer), 3=≥0.8 (critical)
+  - Beispiel-Einträge mit `[TYPE-VI-RISK]` Tags aktualisiert
+  - Neuer realistischer Entry: Climate cascade β>11, CREP≥0.7, drift>10%
+- ✅ **CREP/τ* Logging getestet und verifiziert**:
+  - `python -m tools.crep_guard --log-detection` funktioniert ✅
+  - Test-Entry geschrieben: CREP=0.75, τ*=0.15, escalation_level=2
+  - JSONL format korrekt: timestamp, task_id, crep_value, tau_star, escalation_level, reviewer, notes
+  - Audit-Trail in `logs/type_vi_detections.jsonl` operational
+- ✅ **Telemetrie-Dokumentation erstellt** (`metrics/README_TELEMETRY.md`, 400+ Zeilen):
+  - **Kapitel 1-2**: Overview & File Formats (CSV + JSONL schemas)
+  - **Kapitel 3**: Automated Logging Workflow (CI/pre-commit + manual)
+  - **Kapitel 4**: Warning Banners & Escalation (`[TYPE-VI-RISK]` tag usage)
+  - **Kapitel 5**: Integration with Governance (CREP thresholds, τ* safety)
+  - **Kapitel 6**: Monitoring & Dashboards (bash + Python examples)
+  - **Kapitel 7**: Chronik Integration (Delta-update templates)
+  - **Kapitel 8**: Troubleshooting (common issues)
+  - **Kapitel 9**: References & Version History
+- ✅ **Escalation Levels dokumentiert:**
+  - Level 0: Informational (CREP < 0.6)
+  - Level 1: Warning (CREP ≥ 0.6) - logged only
+  - Level 2: Reviewer required (CREP ≥ 0.7) - **blocks merge without approval**
+  - Level 3: Critical (CREP ≥ 0.8) - **immediate maintainer escalation**
+- ✅ **Drift Warning Thresholds:**
+  - drift_flag=0: Normal (<10%)
+  - drift_flag=1: Warning (>10%) - monitor closely
+  - drift_flag=2: Critical (>20%) - immediate investigation
+
+**Testing & Validation:**
+```bash
+# Test CREP logging
+python -m tools.crep_guard --log-detection \
+  --task-id "v6r-beta-telemetry-test" \
+  --crep-value 0.75 --tau-star 0.15 \
+  --notes "Test entry for telemetry validation"
+# Result: ✅ logged CREP=0.75 τ*=0.15 escalation=2
+
+# Verify JSONL entry
+tail -1 logs/type_vi_detections.jsonl | jq .
+# Result: ✅ {"timestamp": "2025-12-04T09:58:45.898944Z", "crep_value": 0.75, ...}
+```
+
+**Monitoring Examples:**
+```bash
+# Check Type-VI risks
+grep "\[TYPE-VI-RISK\]" metrics/beta_evolution.csv
+
+# Count CREP escalations
+awk -F',' '{print $11}' metrics/beta_evolution.csv | sort | uniq -c
+
+# Filter CREP≥0.7 detections
+jq 'select(.crep_value >= 0.7)' logs/type_vi_detections.jsonl
+```
 
 **References:**
-- `activation_gaps_tau_star.md:1-36`
-- `metrics/beta_evolution.csv`
-- `logs/type_vi_detections.jsonl`
+- `metrics/beta_evolution.csv` (13-field schema with drift_flag)
+- `metrics/README_TELEMETRY.md` (comprehensive 9-chapter documentation)
+- `logs/type_vi_detections.jsonl` (JSONL audit trail, 2 entries)
+- `tools/crep_guard.py:77-100` (_append_log_entry function)
+- `activation_gaps_tau_star.md:1-36` (τ*-nullmodel)
+- `type6_crep_tau_star_checklist.md:1-49` (CREP thresholds)
 
-**Sprint Focus:** Telemetrie-Warnkette aktivieren
+**Sprint Focus:** ✅ Telemetrie-Warnkette OPERATIONAL
 
 ---
 
 ### [Priority 35] v6r-beta-telemetry-schema
 **Schema-Update für β-Drift/CREP-Logs vorbereiten (FIT-Microstep)**
 
-**Status:** 🔴 Open
-
-**Beta:** 4.7 | **Zeta Risk:** Moderat – fehlende Schemafelder bremsen CREP-Warnkette
+**Status:** 🟢 Completed (2025-12-04)
+**Beta:** 4.7 | **Zeta Risk:** Neutralisiert – Schema vollständig dokumentiert
 
 **Scope:** telemetry, metrics, governance
 
 **R → Θ:**
-`metrics/beta_evolution.csv` und `logs/type_vi_detections.jsonl` besitzen konsistente Felder für β-Drift (>10%) und CREP ≥0.7 → τ*-Default (=0.1·|Θ−R|) und Reviewer-Slot aus `type6_crep_tau_star_checklist` sind dokumentiert
+✅ `metrics/beta_evolution.csv` und `logs/type_vi_detections.jsonl` besitzen konsistente Felder für β-Drift (>10%) und CREP ≥0.7 → τ*-Default (=0.1·|Θ−R|) und Reviewer-Slot dokumentiert, FIT-Microstep als Teil von v6r-beta-telemetry completed
 
-**Next Steps:**
-- 🧮 Schema-Entwurf notieren: `timestamp, domain, beta_estimate, drift_flag, tau_star, crep_value, escalation_level, reviewer, notes`.
-- 🧭 Feldbeschreibungen in `metrics/beta_evolution.csv` Kopfzeile ergänzen und Beispielzeile mit `[TYPE-VI-RISK]` Tag vorbereiten.
-- 🔗 Log-Spiegelung festhalten: `tools/crep_guard.py --log-detection` → `logs/type_vi_detections.jsonl` inkl. τ*-Default und Reviewer-Routing (Level 2/3 → `MAINTAINERS.md`).
+**Completed Actions:**
+- ✅ **CSV-Schema erweitert** (`metrics/beta_evolution.csv`):
+  - Header aktualisiert: 13 Felder (vorher 12, neu: +drift_flag)
+  - Vollständige Feldbeschreibungen in Kommentaren:
+    - `timestamp`: UTC ISO 8601 format
+    - `domain`: System domain (climate, bio, info, cosmic)
+    - `beta`: β-estimate (current value)
+    - `beta_phi_theoretical`: Theoretical β from φ^(n/3) scaling
+    - `beta_phi_deviation`: Deviation from theoretical
+    - `phi_cbrt_step`: φ^(n/3) step alignment
+    - `tau_star`: τ* safety delay = 0.1·|Θ-R|
+    - `zeta_risk`: ζ-risk value (negative = Type-VI implosive)
+    - `R`: Current state position
+    - `Theta`: Threshold position
+    - `crep_flag`: CREP-Level (0-3)
+    - **`drift_flag`**: β-Drift warning (0=normal, 1=>10%, 2=>20% critical) **[NEW]**
+    - `notes`: Free-text with `[TYPE-VI-RISK]` tag support
+- ✅ **JSONL-Schema validiert** (`logs/type_vi_detections.jsonl`):
+  - 7 Felder: timestamp, task_id, crep_value, tau_star, escalation_level, reviewer, notes
+  - Escalation-Level mapping: 0-3 (entspricht CREP thresholds)
+  - Reviewer-Routing dokumentiert (Level 2 → maintainer approval, Level 3 → immediate)
+- ✅ **Beispiel-Einträge aktualisiert:**
+  - Alle CSV-Zeilen mit drift_flag=0 aktualisiert (backward compatibility)
+  - Neuer realistischer Entry mit CREP=2, drift_flag=1, `[TYPE-VI-RISK]` tag
+  - JSONL test entry mit escalation_level=2 (CREP=0.75)
+- ✅ **Dokumentation umfassend** (`metrics/README_TELEMETRY.md`):
+  - Tabelle mit allen 13 CSV-Feldern + Beschreibungen
+  - CREP flag levels (0-3) mit Actions dokumentiert
+  - Drift flag levels (0-2) mit Thresholds dokumentiert
+  - Usage examples (bash + Python)
+  - Integration mit type6_crep_tau_star_checklist.md referenziert
+
+**Schema-Konsistenz:**
+| File | Fields | Format | Status |
+|------|--------|--------|--------|
+| `beta_evolution.csv` | 13 (with drift_flag) | CSV | ✅ Documented |
+| `type_vi_detections.jsonl` | 7 | JSONL | ✅ Validated |
+| `README_TELEMETRY.md` | Documentation | Markdown | ✅ Complete |
+
+**Validation:**
+```bash
+# Verify CSV header (13 fields)
+head -1 metrics/beta_evolution.csv | awk -F',' '{print NF}'
+# Result: 13 ✅
+
+# Check JSONL format
+tail -1 logs/type_vi_detections.jsonl | jq keys
+# Result: ["crep_value", "escalation_level", "notes", "reviewer", "task_id", "tau_star", "timestamp"] ✅
+```
 
 **References:**
-- `metrics/beta_evolution.csv`
-- `logs/type_vi_detections.jsonl`
-- `type6_crep_tau_star_checklist.md:1-49`
-- `activation_gaps_tau_star.md:1-36`
+- `metrics/beta_evolution.csv:1-19` (13-field schema with documentation)
+- `logs/type_vi_detections.jsonl` (JSONL format, 2 entries)
+- `metrics/README_TELEMETRY.md:20-80` (Field descriptions table)
+- `type6_crep_tau_star_checklist.md:1-49` (CREP thresholds)
+- `activation_gaps_tau_star.md:1-36` (τ*=0.1·|Θ-R| formula)
 
-**Sprint Focus:** FIT-Microstep für Telemetrie-Schema
+**Sprint Focus:** ✅ FIT-Microstep COMPLETED (Teil von v6r-beta-telemetry)
 
 ---
 
