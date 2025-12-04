@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2026-01-15T12:00:00Z",
+    "updated_at": "2026-01-20T12:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -48,6 +48,7 @@
         "v6r-aeon-architecture-notes",
         "v6r-slice-integration",
         "v6r-aeon-aletheia-bridge",
+        "v6r-aeon-aletheia-telemetry",
         "v6r-sigillin-parser",
         "v6r-metrics-outlier",
         "v6r-data-lantern-dashboard",
@@ -1661,6 +1662,61 @@
       "updated_at": "2025-12-31T10:00:00Z"
     },
     {
+      "id": "v6r-aeon-aletheia-telemetry",
+      "title": "Aletheia-Telemetriepfad in Metrics/Ψ-Pipeline verankern",
+      "status": "open",
+      "completeness": "Datenpfad identifiziert; Telemetrie-Anbindung an Ψ-Plan/β-Tracking fehlt.",
+      "scope": [
+        "validation",
+        "metrics",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "Aletheia-Daten in CREP/β-Telemetrie gespiegelt",
+        "Theta_condition": "metrics/beta_evolution.csv + V6_Wellenfunktions_Integrationsplan.md referenzieren Datenpfad",
+        "beta_estimate": 6.0,
+        "zeta_risk": "moderat – Telemetrie-Handoff offen"
+      },
+      "next_steps": [
+        "Ergebnisse aus Aletheiaresults_dialog.txt (Control/Placebo/Nocebo + Informed-Level) extrahieren und Datenpfad data/experimental/aletheia_results.csv in V6_Wellenfunktions_Integrationsplan.md referenzieren.",
+        "CREP-Gewichte aus AEON_ALETHEIA_INTEGRATION.md als Telemetrie-Quellen in metrics/beta_evolution.csv dokumentieren und mit type6_crep_tau_star_checklist.* verlinken.",
+        "FIT-Brücke zu finalize-aeon-aletheia-telemetry ergänzen und Chronik-Hinweis für Zenodo/UTAC-Status notieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/AEON_ALETHEIA_INTEGRATION.md",
+          "lines": [
+            1,
+            80
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Aletheiaresults_dialog.txt",
+          "lines": [
+            1,
+            36
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml",
+          "lines": [
+            1,
+            120
+          ]
+        }
+      ],
+      "priority": 24,
+      "sprint_focus": "Telemetriepfad + Ψ-Plan koppeln",
+      "updated_at": "2026-01-20T12:00:00Z"
+    },
+    {
       "id": "v6r-sigillin-parser",
       "title": "Sigillin-Parser & Index-Automation für Trilayer",
       "status": "open",
@@ -2223,6 +2279,12 @@
       "status": "new"
     },
     {
+      "todo_id": "v6r-aeon-aletheia-telemetry",
+      "finalize_id": "finalize-aeon-aletheia-telemetry",
+      "bridge_focus": "Aletheia-Daten → β/CREP Telemetrie & Ψ-Plan",
+      "status": "new"
+    },
+    {
       "todo_id": "v6r-sigillin-parser",
       "finalize_id": "finalize-sigillin-parser",
       "bridge_focus": "Sigillin-Parser/Index-Automation FIT",
@@ -2303,6 +2365,15 @@
         "Neuer Task v6r-zenodo-readiness-report erfasst, um ZENODO_READINESS_REPORT.md in Zenodo_Upload_Checklist.md und Chronik zu spiegeln (FIT-Vorgabe Promt_für_Agenten).",
         "FIT-Mapping v6r-zenodo-readiness-report ↔ finalize-zenodo-readiness-report ergänzt; Readiness-Blöcke für CI 2025-12-02/03 notiert.",
         "updated_at auf 2026-01-15T12:00:00Z angehoben."
+      ]
+    },
+    {
+      "date": "2026-01-20",
+      "label": "v6-refresh-aeon-aletheia-telemetrie",
+      "highlights": [
+        "Neuer Task v6r-aeon-aletheia-telemetry ergänzt, um Aletheia-Datenpfad in β/CREP-Telemetrie + Ψ-Plan zu spiegeln.",
+        "FIT-Mapping um finalize-aeon-aletheia-telemetry erweitert; Telemetrie-Handoff und Chronik-Hinweis notiert.",
+        "updated_at auf 2026-01-20T12:00:00Z in Trilayer übernommen."
       ]
     },
     {
