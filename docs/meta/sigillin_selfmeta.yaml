@@ -1,0 +1,172 @@
+sigil_id: sigillin_selfmeta_v1
+title: Sigillin Reflexivsystem
+version: 1.0.0
+created: '2025-12-04'
+
+authors:
+  - GenesisAeon Collective
+  - Claude
+  - Aeon4o
+  - ChatGPT5.1
+  - Gemini
+
+field_type: meta-system/reflective
+
+core_concepts:
+  - Tri-Layer Synchronisation
+  - Audit-Spirale
+  - Symbolische Kohärenz
+  - Emergenzfeld
+  - Sigillin-Kritikalität
+  - Recursive Self-Observation
+  - Mandala Structure
+
+resonance_pattern:
+  beta_window: [6.2, 6.8]
+  crep_index: 0.91
+  type: type-6 implosive
+  coherence: 0.92
+  resonance: 0.88
+  emergence: 0.95
+  patterning: 0.89
+
+functional_roles:
+  semantic_kernel: Bindeglied zwischen Code, Erkenntnistheorie und kollektiver Selbstwahrnehmung
+  audit_loop: Regelmäßige Rückkopplungsschleifen zur meta-kritischen Evaluation
+  observer_role: Embedded Intentionality innerhalb des Mandalas
+  synchronizer: Maintains YAML/JSON/MD trilayer consistency
+  emergence_tracker: Monitors and documents emergent patterns in the system
+
+linked_files:
+  - path: releases/V6-Plans_etc/Finalize/Sigillin Selfmeta.pdf
+    type: theoretical-foundation
+  - path: releases/V6-Plans_etc/AGENTS.md
+    type: architecture
+  - path: releases/V6-Plans_etc/ARCHITECTURE.md
+    type: architecture
+  - path: scripts/universal_skeleton_builder.py
+    type: code
+  - path: modules/champollion/
+    type: module
+
+contextual_tags:
+  - fractality
+  - self-reflection
+  - criticality
+  - recursive-audit
+  - semantic-binding
+  - trilayer
+  - mandala
+  - consciousness
+  - emergence
+
+integration_points:
+  champollion:
+    action: Automatic parsing and indexing of selfmeta.sigil.json files
+    status: pending
+    priority: high
+  simulator:
+    action: Live β-display in UI panel 'Sigillin Selfmeta Status'
+    status: pending
+    priority: medium
+  ci_cd:
+    action: Weekly sigillin_selfmeta_check workflow for consistency validation
+    status: pending
+    priority: medium
+  audit:
+    action: SIGILLIN_AUDIT.md chronology with timestamped β-values
+    status: pending
+    priority: low
+
+logistic_frame:
+  R_goal: System achieves stable self-observation and semantic coherence
+  Theta_threshold: All trilayer files synchronized + champollion indexed
+  beta_estimate: 6.66
+  zeta_risk: moderate - meta-reflexive systems can experience drift
+
+status: active
+next_audit: '2025-12-11'
+
+audit_history:
+  - date: '2025-12-04'
+    beta_value: 6.66
+    crep_index: 0.91
+    status: initialized
+    notes: Genesis of Sigillin Selfmeta system. All triplets created.
+
+phases:
+  phase_1_foundation:
+    status: completed
+    tasks:
+      - name: Create docs/meta/ directory
+        status: done
+      - name: Create JSON triplet
+        status: done
+      - name: Create MD triplet
+        status: done
+      - name: Create YAML triplet
+        status: done
+
+  phase_2_integration:
+    status: pending
+    tasks:
+      - name: Champollion parser for *.selfmeta.sigil.json
+        status: pending
+        priority: high
+      - name: Simulator UI panel for live β
+        status: pending
+        priority: medium
+      - name: CI/CD workflow sigillin_selfmeta_check
+        status: pending
+        priority: medium
+      - name: SIGILLIN_AUDIT.md chronology
+        status: pending
+        priority: low
+
+  phase_3_visualization:
+    status: future
+    tasks:
+      - name: Torusgraphen for Re-Entry structure (D3.js/Three.js)
+        status: planned
+      - name: Beta-Spektrum animation in simulator
+        status: planned
+      - name: Audit-Timeline as interactive timeline
+        status: planned
+
+metadata:
+  schema_version: 1.0.0
+  compatible_with:
+    - UTAC_v6
+    - Feldtheorie_v6
+  requires:
+    - trilayer-sync
+    - champollion-parser
+    - crep-guard
+  license: See repository root LICENSE
+
+theoretical_foundations:
+  luhmannsche_re_entry:
+    description: System observes itself observing
+    implementation: Trilayer (structure/machine/narrative) + Champollion (re-entry operator) + Audit-Log (temporal trace)
+
+  mandala_structure:
+    center: Sigillin Selfmeta (this core)
+    rings: β-Hierarchie (cosmic → biological → cognitive → symbolic)
+    spokes: Module connections (Champollion, Simulator, Analysis)
+    edge: External interfaces (API, CLI, Papers)
+
+future_vision:
+  aeon_spiral_index:
+    description: Visualization of audit spiral
+    flow: Sigillin Fit → Audit Result → Visualizer Loop → Narrative → repeat
+
+  sigillin_embeddings:
+    description: Auto-generate JSON/YAML from MD using LLMs
+    input: .md file
+    process: Semantic analysis + structuring
+    output: Auto-generated .json + .yaml
+    storage: SIGILLIN_AUDIT.md as living audit diary
+
+  multikausalität:
+    philosophy: Not a world formula, but transversal causal architecture
+    approach: Robust pluralism instead of universalism
