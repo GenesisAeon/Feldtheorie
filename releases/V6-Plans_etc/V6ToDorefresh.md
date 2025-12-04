@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-01-12T18:00:00Z
+**Updated:** 2026-01-15T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -837,6 +837,33 @@ Zenodo_Upload_Checklist.md auf ✅ bringen → aktuelle Test-, Coverage-, Lint- 
 
 ---
 
+### [Priority 37] v6r-zenodo-readiness-report
+**ZENODO_READINESS_REPORT in Checklisten/Chronik spiegeln**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.6 | **Zeta Risk:** Moderat – Readiness-Gaps blockieren DOI-Freigabe
+
+**Scope:** compliance, documentation, governance
+
+**R → Θ:**
+Readiness-Assessment (ZENODO_READINESS_REPORT.md) extrahiert und in Zenodo_Upload_Checklist.md + Chronik gespiegelt → Statusblöcke synchron mit CI-Reports (Conditional/Full GO) und Promt_für_Agenten-FIT-Vorgabe erfüllt
+
+**Next Steps:**
+- 📝 Readiness-Gaps aus `ZENODO_READINESS_REPORT.md` in strukturierte Punkte überführen (Tests, Coverage, Provenienz, Ethics) und ΔAIC/CI-Metriken aus CI-Status referenzieren.
+- 🔗 Zenodo_Upload_Checklist.md um "Readiness Report"-Block ergänzen (CI-Daten 2025-12-02/03, Reviewer-Slot, τ*-/CREP-Hinweise) und auf ZENODO_CI_STATUS_2025-12-03.md verlinken.
+- 🧭 Chronik/Delta-Update anlegen (ToDorefresh ↔ Finalize) mit FIT-Handoff-Hinweis; Mapping zu `finalize-zenodo-readiness-report` notieren.
+
+**References:**
+- `ZENODO_READINESS_REPORT.md:1-120`
+- `Zenodo_Upload_Checklist.md:1-120`
+- `ZENODO_CI_STATUS_2025-12-03.md:1-140`
+- `Promt_für_Agenten.txt:1-5`
+
+**Sprint Focus:** Readiness-Report ↔ Checklist/Chronik koppeln
+
+---
+
 ### [Priority 35] v6r-zenodo-release-packaging
 **v6.0.0-beta Release-Package (Tag/DOI/Archive) abschließen**
 
@@ -1620,6 +1647,7 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 | v6r-tau-star-ci-hook | finalize-tau-star-ci-hook | CI-Gate für τ* + CREP ≥0.7 | ✅ Completed - Makefile, noxfile.py, pre-commit operational |
 | v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | ✅ Completed - V6_Literature_Review.md (574 lines, 43 refs) |
 | v6r-entropic-gravity-bridge | finalize-entropic-gravity-bridge | Entropische Gravitation/Holographischer Kubus in Review + BibTeX | ✅ Completed - DEEP_RESEARCH_Unified_Framework.md + BibTeX entries |
+| v6r-zenodo-readiness-report | finalize-zenodo-readiness-report | Readiness Report → Checklist/Chronik/CI Sync | Neu – Readiness-Blöcke noch nicht gespiegelt |
 | v6r-type6-checklist-rollout | finalize-type6-checklist-rollout | Type-VI Checklisten ↔ POLICY/ETHICS/Zenodo | Pending – Trilayer-Checkliste noch nicht mit Governance/CI gespiegelt |
 | v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | ✅ Completed - tools/crep_guard.py operational + CI hooks |
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Belege pending (execution environment needed) |
@@ -1644,6 +1672,15 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 ---
 
 ## Delta Updates
+
+### 2026-01-15 | v6-refresh-zenodo-readiness
+
+✅ **Highlights:**
+- Neuer Task **v6r-zenodo-readiness-report** angelegt, um ZENODO_READINESS_REPORT.md in Zenodo_Upload_Checklist.md und Chronik zu spiegeln (FIT-Vorgabe aus Promt_für_Agenten.txt).
+- FIT-Mapping um `v6r-zenodo-readiness-report ↔ finalize-zenodo-readiness-report` ergänzt; Handoff für Readiness-Blöcke (CI 2025-12-02/03) notiert.
+- Updatedatum auf 2026-01-15T12:00:00Z gesetzt.
+
+---
 
 ### 2026-01-12 | v6-refresh-finalize-handoff
 

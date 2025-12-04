@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2026-01-12T18:00:00Z",
+    "updated_at": "2026-01-15T12:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -39,6 +39,7 @@
         "v6r-zenodo-evidence",
         "v6r-zenodo-release-packaging",
         "v6r-zenodo-ci-sync",
+        "v6r-zenodo-readiness-report",
         "v6r-crep-audit-log",
         "v6r-tau-star-ci-hook",
         "v6r-beta-telemetry",
@@ -1100,6 +1101,60 @@
       "sprint_focus": "Belegsammlung für Zenodo-DOI + FIT-Handoff"
     },
     {
+      "id": "v6r-zenodo-readiness-report",
+      "title": "ZENODO_READINESS_REPORT in Checklist/Chronik spiegeln",
+      "status": "open",
+      "completeness": "Readiness-Report vorhanden, Spiegelung in Checklist/Chronik/CI-Deltas fehlt.",
+      "scope": [
+        "compliance",
+        "documentation",
+        "governance"
+      ],
+      "logistic_profile": {
+        "R_target": "Readiness-Assessment in Zenodo_Upload_Checklist + Chronik gespiegelt",
+        "Theta_condition": "CI-Status (2025-12-02/03) + τ*/CREP-Hinweise mit Reviewer-Slot dokumentiert",
+        "beta_estimate": 5.6,
+        "zeta_risk": "moderat – DOI-Freigabe blockiert ohne Readiness-Sync"
+      },
+      "next_steps": [
+        "Readiness-Gaps aus ZENODO_READINESS_REPORT.md in strukturierte Punkte überführen (Tests, Coverage, Provenienz, Ethics) und ΔAIC/CI-Metriken aus CI-Status referenzieren.",
+        "Zenodo_Upload_Checklist.md um \"Readiness Report\"-Block ergänzen (CI-Daten 2025-12-02/03, Reviewer-Slot, τ*/CREP-Hinweise) und auf ZENODO_CI_STATUS_2025-12-03.md verlinken.",
+        "Chronik/Delta-Update (ToDorefresh ↔ Finalize) anlegen und Mapping zu finalize-zenodo-readiness-report notieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_READINESS_REPORT.md",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md",
+          "lines": [
+            1,
+            140
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Promt_für_Agenten.txt",
+          "lines": [
+            1,
+            5
+          ]
+        }
+      ],
+      "priority": 37,
+      "sprint_focus": "Readiness-Report ↔ Checklist/Chronik koppeln"
+    },
+    {
       "id": "v6r-zenodo-release-packaging",
       "title": "v6.0.0-beta Release-Package (Tag/DOI/Archive) abschließen",
       "status": "open",
@@ -2102,6 +2157,12 @@
       "status": "bridge-planned"
     },
     {
+      "todo_id": "v6r-zenodo-readiness-report",
+      "finalize_id": "finalize-zenodo-readiness-report",
+      "bridge_focus": "Readiness Report → Checklist/Chronik/CI Sync",
+      "status": "mapping-added"
+    },
+    {
       "todo_id": "v6r-type6-governance",
       "finalize_id": "finalize-type6-governance",
       "bridge_focus": "Type-VI Governance + CI-Hook",
@@ -2235,6 +2296,15 @@
     }
   ],
   "delta_updates": [
+    {
+      "date": "2026-01-15",
+      "label": "v6-refresh-zenodo-readiness",
+      "highlights": [
+        "Neuer Task v6r-zenodo-readiness-report erfasst, um ZENODO_READINESS_REPORT.md in Zenodo_Upload_Checklist.md und Chronik zu spiegeln (FIT-Vorgabe Promt_für_Agenten).",
+        "FIT-Mapping v6r-zenodo-readiness-report ↔ finalize-zenodo-readiness-report ergänzt; Readiness-Blöcke für CI 2025-12-02/03 notiert.",
+        "updated_at auf 2026-01-15T12:00:00Z angehoben."
+      ]
+    },
     {
       "date": "2026-01-10",
       "label": "v6-refresh-ci-lint-coverage",
