@@ -27,6 +27,14 @@ checklist:
   metrics:
     threshold: 0.7
     escalation: Level 2 bei CREP >= 0.7, Level 3 bei CREP >= 0.8
+    weights:
+      emergence: 1.5  # Dominiert in v_RIG/Type-VI (Aeon-Aletheia)
+      resonance: 1.2  # Wichtig für Kohärenz
+      coherence: 1.0  # Standard-Baseline
+      persistence: 0.8  # Safety-Buffer
+    calculation: |
+      CREP = (C*1.0 + R*1.2 + E*1.5 + P*0.8) / (1.0+1.2+1.5+0.8)
+           = (C + 1.2*R + 1.5*E + 0.8*P) / 4.5
 - id: tau-star-safety
   title: τ*-Buffer verankern
   status: required
@@ -44,9 +52,16 @@ checklist:
   - Datenquellen, Vorverarbeitung und Nullmodelle im Provenienzblock aufführen.
   - ΔAIC/CI-Metriken dokumentieren und Schatten-Sigillin referenzieren.
   - Dual-Use-Check durchführen und Ergebnis vermerken.
+  - Aletheia-Telemetrie: M[ψ,φ] Placebo-Effekte (d=0.712) referenzieren wenn relevant.
   outputs:
   - provenance_block
   - dual_use_note
+  telemetry_reference:
+    source: releases/V6-Plans_etc/Aletheiaresults_dialog.txt
+    metrics:
+      placebo_effect_size: 0.712  # medium-strong (Cohen's d)
+      self_reflection_delta: +0.72  # Placebo (8.70) vs Control (7.98)
+      informed_parity: true  # Informed_Top = Placebo (no metacognitive friction)
 - id: ci-hook
   title: CI/Pre-Commit Hook setzen
   status: recommended
