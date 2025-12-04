@@ -1,0 +1,132 @@
+# UTAC Field Theory Simulator - LLM Navigation Guide
+
+## Overview
+Interactive web-based simulator for the Universal Threshold Activation Coupling (UTAC) framework, implementing transdisciplinary field dynamics with Type-VI implosive regime support.
+
+## Project Structure
+
+### Core Implementation
+- `/src/main.tsx` - Application entry point (React + TypeScript)
+- `/src/App.tsx` - Main application component
+- `/src/components/TransdisciplinaryFieldSimulator.tsx` - Primary simulator interface
+
+### Physics Engine
+- `/src/utils/physicsIntegrator.ts` - RK4 numerical integrator for stiff equations
+- `/src/utils/logistic.ts` - UTAC logistic activation function σ(β(R-Θ))
+- `/src/utils/fieldTypeClassifier.ts` - Type-I to Type-VI regime classification
+
+### UX Components
+- `/src/components/PhasePortrait.tsx` - Real-time phase space visualization (R vs. Ψ)
+- `/src/components/CSVDropZone.tsx` - Drag&drop CSV import with JS-based β/Θ regression
+- `/src/components/DomainCard.tsx` - Individual field domain card (Cosmic/Bio/Cognitive/Symbolic)
+- `/src/components/CREPDashboard.tsx` - CREP stability monitoring dashboard
+- `/src/hooks/useAudioSonification.ts` - Web Audio API sonification (vibrato on instability, frequency ∝ rate_of_change)
+
+### Data & Presets
+- `/src/presets.ts` - Predefined parameter sets (Cosmic, Biological, Cognitive, Symbolic)
+- `/simulator/presets/` - JSON configuration files
+
+### Documentation
+- `/simulator/README.md` - User guide (German primary, English available)
+- `/simulator/docs/` - Detailed technical documentation
+- `/simulator/ARCHITECTURE.md` - System architecture overview
+- `/simulator/ETHICS.md` - Ethical guidelines for UTAC applications
+- `/simulator/POLICY.md` - Usage policies and governance
+
+## Key Features
+
+### ✅ Implemented
+1. **Web Audio Sonification** (`useAudioSonification.ts`)
+   - Vibrato on instability (ζ<0 or CREP>0.7)
+   - Frequency modulation by rate_of_change
+   - Volume scaling by gate activation magnitude
+
+2. **CSV Drag&Drop Import** (`CSVDropZone.tsx`, `csvRegression.ts`)
+   - Browser-based β/Θ parameter estimation
+   - JS regression without backend dependencies
+   - Real-time data visualization
+
+3. **RK4 Numerical Integration** (`physicsIntegrator.ts`)
+   - Stable solver for high-β stiff equations
+   - Adaptive time-stepping
+   - Multi-domain coupling
+
+4. **Interactive Phase Portrait** (`PhasePortrait.tsx`)
+   - Real-time trajectory plotting (R vs. Ψ)
+   - Zoom/pan controls
+   - Regime boundary visualization
+
+5. **Multi-Language Support** (`/src/i18n/translations.ts`)
+   - German (primary)
+   - English
+   - Language toggle component
+
+### ⏳ Pending Implementation
+1. **Implosion-Gravity Mode for PhasePortrait**
+   - Particles implode toward attractor instead of exploding
+   - Visualizes Type-VI implosive regime
+   - Reference: `releases/V6-Plans_etc/V6ToDorefresh.md:537`
+
+2. **Type-VI Toggle in Simulator**
+   - UI switch to enable inverted sigmoid (ζ<0 regime)
+   - Visual indicator for Type-VI dynamics
+   - CREP/τ* guardrails activation
+
+3. **Diamond Architecture SVG Map**
+   - Interactive architectural diagram
+   - Flow: models → simulation → sonification → docs
+   - Clickable navigation between modules
+
+## Quick Start for LLMs
+
+### Running the Simulator
+```bash
+cd /home/user/Feldtheorie/simulator
+npm install
+npm run dev
+```
+
+### Key Parameters
+- **β (beta)**: Logistic steepness (range: 0.1 - 20)
+- **Θ (theta)**: Activation threshold (range: 0 - 2)
+- **R**: Resource/Energy field variable
+- **Ψ (psi)**: Structure/Order field variable
+- **Φ (phi)**: Meaning/Semantics field variable
+- **CREP**: Criticality-Readiness-Entropy-Pressure indicator
+- **τ* (tau-star)**: Safety delay for Type-VI regimes
+
+### UTAC Equation
+```
+dR/dt = Input + Coupling - Gate * R * 0.32
+dΨ/dt = -0.22*Ψ + 0.48*σ(R)*R + 0.28*Φ*R
+dΦ/dt = 0.14*Ψ - 0.18*Φ + 0.26*σ(R)
+```
+
+Where: `σ(R) = 1 / (1 + exp(-β(R-Θ)))`
+
+### Regime Classification
+- **Type-I**: Growth (R<Θ, ζ>0)
+- **Type-II**: Saturation (R≈Θ, ζ≈0)
+- **Type-III**: Oscillation (R>Θ, ζ<0 mild)
+- **Type-IV**: Decay (R>>Θ, ζ<<0)
+- **Type-V**: Chaos (CREP>0.8)
+- **Type-VI**: Implosion (ζ<-1, CREP>0.9, requires τ*-buffer)
+
+## Related Implementations
+- Python backend: `/simulation/` (genesis_cube.py, tesseract_timeslices.py)
+- Ψ-field pipeline: `/pipelines/wavefunction/psi_field.py`
+- UTAC models: `/models/utac_type6_implosive.py`
+
+## References
+- V6ToDorefresh.md Priority 10: Simulator-UX
+- FinalyzeVorschlägeGemini.txt:79-161 (UX Sonification)
+- V6_Wellenfunktions_Integrationsplan.md (RK4 integration)
+- docs/v6_wavefunction_theory.md (Theoretical foundation)
+
+## Contact & Contribution
+See `/simulator/README.md` for contribution guidelines and governance policies.
+
+---
+**Version:** 1.0.0
+**Last Updated:** 2025-12-04
+**Maintainer:** Feldtheorie V6 Integration Team

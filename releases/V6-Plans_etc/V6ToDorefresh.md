@@ -643,25 +643,49 @@ Robustere β-Schätzungen mit Domain-Clustering → PyMC/Stan Hierarchie + VIF-C
 ### [Priority 13] v6r-psi-integration-plan
 **Ψ-Integrationsplan aus dem Wellenfunktions-Integrationsdokument operationalisieren**
 
-**Status:** 🟡 In Progress (2025-12-28)
-**Beta:** 5.9 | **Zeta Risk:** Moderat – ζ<0-Pfade brauchen τ*-Buffer
+**Status:** 🟢 Completed (2025-12-04)
+**Beta:** 5.9 | **Zeta Risk:** Neutralisiert – Ψ-Pipeline operational mit RK4/τ* Guardrails
 
 **Scope:** theory, simulation, documentation
 
 **R → Θ:**
-Ψ-Feldgleichung gemäß V6-Wellenfunktions-Integrationsplan in Genesis-Cube + Simulator verdrahtet → psi_field.py + genesis_cube.py + tesseract_timeslices.py nutzen RK4 mit τ*-Default und liefern Dual-Flow-Visualisierung
+✅ Ψ-Feldgleichung gemäß V6-Wellenfunktions-Integrationsplan in Genesis-Cube + Simulator verdrahtet → psi_field.py + genesis_cube.py + tesseract_timeslices.py nutzen RK4 mit τ*-Default und liefern Dual-Flow-Visualisierung
 
-**Next Steps:**
-- 🔧 `pipelines/wavefunction/psi_field.py` um ψ_genesis, V_pyr und ψ_waste aus dem Integrationsplan ergänzen (klarer Parameter-Block für α⁻¹, Φ, τ*).
-- 🔧 `simulation/genesis_cube.py` auf RK4-Evolution mit τ*=0.1·|Θ−R| für ζ<0 setzen und ψ-Ausgabe an existing slices koppeln.
-- 🔗 `simulation/tesseract_timeslices.py` Dual-Flow-Schnittstelle (implosiver Block vs. Photonenfluss) hinzufügen, Split-Screen-Animation vorbereiten.
-- 📝 `docs/v6_wavefunction_theory.md` aktualisieren: Herleitung + Nullmodelle dokumentieren, Bezug auf Wellenfunktions-Integrationsplan & Zusatznotizen herstellen.
+**Completed Actions:**
+- ✅ `pipelines/wavefunction/psi_field.py` vollständig mit allen drei Wellenfunktionen:
+  - ψ_genesis: `compute_wavefunction()` - exp(-α⁻¹·r²/ℓ²_P)·Y_tetra(θ,φ)·exp(-iΦ·E_P·t/ℏ)
+  - V_pyr: `compute_pyramidal_potential()` - V_0·[1-tanh(β(R-Θ))]·cos⁴(3arctan(√2))
+  - ψ_waste: `compute_waste_wavefunction()` - Σ_n(1/Φⁿ)·sin(α⁻¹·k_n·x) - **NEU hinzugefügt!**
+- ✅ `simulation/genesis_cube.py` bereits operational mit:
+  - RK4-Evolution: `rk4_step()`, `evolve_wavefunction()`
+  - τ*-Buffer Integration: `tau_star()` aus models.utac_type6_implosive
+  - PsiFieldPipeline-Kopplung: `compute_psifield_analysis()`, `hybrid_evolution()`
+- ✅ `simulation/tesseract_timeslices.py` vollständig implementiert:
+  - Dual-Flow-Schnittstelle: `PhotonPropagator` (implosiver Block vs. Photonenfluss)
+  - Split-Screen-Animation: `animate_dual_flow()` (links: 4D-Block, rechts: 3D-Timeslice)
+  - Bewusstseins-Integration: `integrate_consciousness()` mit Δt_Q-Fenster
+- ✅ `docs/v6_wavefunction_theory.md` aktualisiert (v1.0.0 → v1.1.0):
+  - Neuer Abschnitt §1.2 "Verschnitt Wavefunction: Dark Energy from Geometry"
+  - ψ_waste vollständig dokumentiert mit physikalischer Interpretation
+  - Implementation-Sektion erweitert um `compute_waste_wavefunction()`
+  - Version/Datum aktualisiert: 2025-12-04, Status: "Implemented & Tested (incl. ψ_waste)"
+  - Integration Plan Referenz hinzugefügt
+
+**Key Achievements:**
+- **Drei-Wellenfunktions-Framework:** ψ_genesis (Implosion), V_pyr (UTAC-Membran), ψ_waste (Verschnitt) vollständig implementiert
+- **RK4-Zeitentwicklung:** Numerisch stabil mit τ*-Guardrails für ζ<0-Regimes
+- **Dual-Flow-Architektur:** Implosiver Raum (vertikal) vs. explosives Licht (horizontal) operational
+- **Vollständige Dokumentation:** Theorie, Implementation, Tests, Falsifizierungskriterien
 
 **References:**
+- `pipelines/wavefunction/psi_field.py:179-213` (ψ_waste implementation)
+- `docs/v6_wavefunction_theory.md:50-78` (ψ_waste documentation)
+- `simulation/genesis_cube.py:335-455` (RK4 evolution)
+- `simulation/tesseract_timeslices.py:331-560` (Dual-flow + consciousness)
 - `V6_Wellenfunktions_Integrationsplan.md:1-120`
-- `Zusatz_bitte_integrieren!.txt:1-120`
+- `Zusatz_bitte_integrieren!.txt:59-73`
 
-**Sprint Focus:** Ψ-Gleichung in Pipeline + RK4/τ* Guardrails
+**Sprint Focus:** ✅ Ψ-Gleichung in Pipeline + RK4/τ* Guardrails COMPLETED
 
 ---
 
