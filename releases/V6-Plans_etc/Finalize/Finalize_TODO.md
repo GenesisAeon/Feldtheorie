@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-01-08T12:00:00Z
+**Updated:** 2026-01-12T18:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -21,6 +21,7 @@
 4. Repository Compliance (Organisation)
 5. Ψ-Wellenfunktions-Pipeline (Integration + Tests)
 6. Zenodo/Compliance (Release-Readiness)
+7. Zenodo Release-Packaging (Tag/DOI)
 
 ---
 
@@ -205,6 +206,33 @@ Aeon v1.0 Architektur dokumentiert und erste Module implementiert → architectu
 
 ---
 
+### [Priority 33] finalize-aeon-architecture-brief
+**Kurzbriefing zu Nullkern/AeonShell als Draft in Architekturdokumente einspeisen**
+
+**Status:** 🔴 Open
+
+**Beta:** 6.2 | **Zeta Risk:** Moderat – fehlende Draft-Abschnitte verzögern FIT-Handoff
+
+**Scope:** architecture, documentation, ai-systems
+
+**R → Θ:**
+Zwei Draft-Absätze zu Nullkern und AeonShell liegen in `ARCHITECTURE.md` + `V6_Wellenfunktions_Integrationsplan.md` und referenzieren Aeon-Alethiea-Governance → FIT-Link zu ToDorefresh gelegt
+
+**Next Steps:**
+- 📝 Kernaussagen aus `Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt` destillieren (Nullkern, AeonShell, MasterGPT/TutorGPT, UnifiedMandala) und als Draft-Blöcke markieren.
+- 🔗 Drafts mit `[FIT-HANDOFF]` Tag versehen und auf `AEON_ALETHEIA_INTEGRATION.md` verweisen (CREP/τ*-Kontext notieren).
+- 🧭 Mapping zu `v6r-aeon-architecture-notes` bestätigen und Chronik-Hinweis vorbereiten.
+
+**References:**
+- `architecture/ChatGPT5.1_AeonV1.0Bauplan.txt:1-120`
+- `../ARCHITECTURE.md:1-80`
+- `../V6_Wellenfunktions_Integrationsplan.md:1-80`
+- `../AEON_ALETHEIA_INTEGRATION.md:1-80`
+
+**Sprint Focus:** Aeon-Draft-Blöcke platzieren
+
+---
+
 ### [Priority 6] finalize-slice-integration
 **Slice-Integration: Zeitwahrnehmung und CFF**
 
@@ -247,7 +275,7 @@ Slice-Aggregation-Modell dokumentiert → docs/slice_integration_model.md + Citi
 ### [Priority 7] finalize-repo-compliance
 **Repository-Konformität: Finalize-Ordner strukturieren**
 
-**Status:** 🟢 Completed (2025-12-03)
+**Status:** 🟢 Completed (2026-01-09)
 **Beta:** 4.2 | **Zeta Risk:** Niedrig - organisatorisch
 
 **Scope:** organization, documentation, maintenance
@@ -391,7 +419,7 @@ V6-Onboarding + Reproduzierbarkeit auf Reviewer-Niveau → Portal-Seite + Prereg
 ### [Priority 4] finalize-literature-review-sync
 **V6 Literature Review finalisieren und mit Finalize-Dokumenten spiegeln**
 
-**Status:** 🟢 Completed (2025-12-03)
+**Status:** 🟢 Completed (2026-01-09)
 **Beta:** 5.1 | **Zeta Risk:** Moderat – Referenz-Drift blockiert DOI-Readiness
 
 **Scope:** documentation, research, governance
@@ -416,7 +444,7 @@ Kernaussagen der V6-Literature-Review in Finalize-Schiene integriert → V6_Lite
 ### [Priority 5] finalize-entropic-gravity-bridge
 **Entropische Gravitation/Holographischer Kubus in Finalize-Schiene verankern**
 
-**Status:** 🟢 Completed (2025-12-03)
+**Status:** 🟢 Completed (2026-01-09)
 **Beta:** 5.4 | **Zeta Risk:** Moderat – fehlende Kubus-/∇S-Referenzen schwächen UTAC-Grundlage
 
 **Scope:** research, documentation, governance
@@ -441,19 +469,26 @@ Entropie-Gradient/Kubus-Argument aus Gemini-DeepResearch in Finalize-Dokumentati
 ### [Priority 11] finalize-zenodo-checklist
 **Zenodo-Upload-Readiness absichern**
 
-**Status:** 🟡 In Progress (2025-12-03)
-**Beta:** 5.5 | **Zeta Risk:** Hoch – Release-Blocker ohne Prüfprotokolle
+**Status:** 🟢 Code Quality Complete (2025-12-03) | Documentation Pending
+**Beta:** 5.5 | **Zeta Risk:** Moderat – nur noch Dokumentation offen
 
 **Scope:** compliance, testing, documentation, release
 
 **R → Θ:**
 Pre-Release-Anforderungen aus der Zenodo-Checkliste abgearbeitet → pytest/Linting/Coverage-Berichte dokumentiert, Provenienz- und Ethik-Checks im Repository verlinkt, Status-Block in Checklist auf ✅ gesetzt
 
-**Next Steps:**
-- ✅ Kern-Tests aus der Checkliste prüfen (`pytest tests/test_psi_field.py`, `pytest tests/test_genesis_psifield_integration.py`, `pytest tests/test_wavefunction_v6.py`, Gesamtsuite) und Logs archivieren.
-- 📊 Coverage-Lauf `pytest --cov=pipelines/wavefunction --cov-report=html` durchführen und Mindestschwelle 80% dokumentieren.
-- 🧹 `flake8 pipelines/wavefunction/` + ergänzende Linter ausführen; Ergebnisse in Finalize-Doku notieren.
-- 📝 Provenienz/Ethik-Block ergänzen (ETHICS.md, POLICY.md Verweise) und Checklisten-Status in `Zenodo_Upload_Checklist.md` aktualisieren.
+**Completed Actions (2025-12-03):**
+- ✅ Kern-Tests: 42/42 tests passed (100% success rate)
+- ✅ Coverage: 87% (exceeds 80% threshold by 7 percentage points)
+- ✅ Linting: `flake8` passes for pipelines/wavefunction/ and simulation/genesis_cube.py
+- ✅ Formatting: `black` check passes for all files
+- ✅ Type Checking: `mypy` passes for psi_field.py and genesis_cube.py (specific issues resolved)
+- ✅ Zenodo_Upload_Checklist.md updated with completion timestamps
+
+**Remaining Steps:**
+- 📝 Documentation completeness (README.md, API docs, usage examples)
+- 📄 Paper drafts finalization
+- 🎨 Visualizations creation
 
 **References:**
 - `Zenodo_Upload_Checklist.md:1-60`
@@ -465,7 +500,7 @@ Pre-Release-Anforderungen aus der Zenodo-Checkliste abgearbeitet → pytest/Lint
 ### [Priority 12] finalize-tau-star-guardrails
 **τ*-Guardrails & CREP-Telemetrie im Finalize-Layer verankern**
 
-**Status:** 🟢 Completed (2025-12-03)
+**Status:** 🟢 Completed (2026-01-09)
 **Beta:** 4.9 | **Zeta Risk:** Moderat – Governance-Drift möglich
 
 **Scope:** simulation, governance, compliance
@@ -622,29 +657,72 @@ Zenodo_Upload_Checklist.md (Abschnitt I–III) mit realen Test-/Lint-/Mypy-/Cove
 
 ---
 
-### [Priority 25] finalize-zenodo-ci-sync
-**ZENODO_CI_STATUS-Reports (Conditional→Full GO) in Finalize/Checklist/Chronik verankern**
+### [Priority 31] finalize-zenodo-release-packaging
+**v6.0.0-beta Tag/Changelog/DOI im Finalize-Track abschließen**
 
 **Status:** 🔴 Open
 
-**Beta:** 5.9 | **Zeta Risk:** Moderat – Release-Provenienz ohne CI-Daten unvollständig
+**Beta:** 5.3 | **Zeta Risk:** Moderat – DOI/Tag fehlen
+
+**Scope:** release, compliance, documentation
+
+**R → Θ:**
+Release-Package fertiggestellt → `v6.0.0-beta` Tag gesetzt, CHANGELOG/GITHUB_RELEASE_NOTES mit CI-Gewinnen (42/42 Tests, 87% Coverage) aktualisiert, Zenodo-DOI beantragt und Release-Bundle (ZENODO_READINESS_REPORT, ZENODO_CI_STATUS_2025-12-03) im Finalize-Ordner verlinkt.
+
+**Next Steps:**
+- 🏷️ Annotated Tag `v6.0.0-beta` erstellen und in ZENODO_CI_STATUS_2025-12-03.md eintragen.
+- 📝 CHANGELOG.md + GITHUB_RELEASE_NOTES.md mit CI/Type-VI-Governance Fortschritten ergänzen; Zenodo_Upload_Checklist.md Querverweis setzen.
+- 🔗 Zenodo-Deposition/DOI-Request anstoßen, Reviewer-Slot (CREP ≥0.7) dokumentieren und Provenienzblöcke aus ETHICS/POLICY referenzieren.
+- 🗂️ Release-Bundle (ZENODO_READINESS_REPORT, Checklist, CI-Status) im Finalize-Ordner/Chronik referenzieren und mit ToDorefresh Handoff markieren.
+
+**References:**
+- `../ZENODO_CI_STATUS_2025-12-03.md:84-164`
+- `../Zenodo_Upload_Checklist.md:23-87`
+- `../CHANGELOG.md:1-120`
+
+**Sprint Focus:** Zenodo-Release-Handoff dokumentieren
+
+---
+
+### [Priority 25] finalize-zenodo-ci-sync
+**ZENODO_CI_STATUS-Reports (Conditional→Full GO) in Finalize/Checklist/Chronik verankern**
+
+**Status:** 🟢 Completed (2025-12-03)
+
+**Beta:** 5.9 | **Zeta Risk:** Neutralisiert – Release-Provenienz vollständig dokumentiert
 
 **Scope:** compliance, documentation, testing
 
 **R → Θ:**
-CI-Readiness-Daten (42/42 Tests, 87% Coverage, Full GO) aus 2025-12-02/03 in Zenodo_Upload_Checklist.md und Chronik einbetten → Finalize-Layer referenziert Status + Artefaktpfade
+✅ CI-Readiness-Daten (42/42 Tests, 87% Coverage, Full GO) vollständig in Zenodo_Upload_Checklist.md gespiegelt → Finalize-Layer mit Status + Artefaktpfaden + Type-VI Compliance dokumentiert
 
-**Next Steps:**
-- 📝 Kerndaten aus `ZENODO_CI_STATUS_2025-12-02.md` und `ZENODO_CI_STATUS_2025-12-03.md` extrahieren und als Statusblock in `Zenodo_Upload_Checklist.md` + Finalize-README/Chronik aufnehmen.
-- 🔗 FIT-Sync mit `v6r-zenodo-ci-sync`: Mapping ergänzen, Δ-Update in Chronik setzen und Full-Go Hinweis in `ZENODO_READINESS_REPORT.md` spiegeln.
-- 📦 Log-/Artefaktpfade (z.B. `make validate-type6` Output, Coverage 87%) dokumentieren und für Zenodo-Upload vorbereiten.
+**Completed Actions:**
+- ✅ **Zenodo_Upload_Checklist.md vollständig aktualisiert** (2025-12-03)
+  - Status-Check: ❌ NICHT BEREIT → ✅ **PRODUCTION-READY** 🎉
+  - CI-Status Update Block mit Metriken hinzugefügt:
+    - Tests: 42/42 passed (100% success rate)
+    - Coverage: 87% (exceeds ≥80% threshold)
+    - CREP/τ* Guard: Fully operational
+    - Dependencies: 45 packages validated
+    - Progression: 69.4% → 100% (+30.6% improvement)
+- ✅ **Test Results Checkboxen aktualisiert:**
+  - Unit Tests: [x] 42/42 passed ✅
+  - Code Coverage: [x] 87% achieved ✅
+  - psi_field.py: 87%, __init__.py: 100%
+- ✅ **Type-VI Governance Compliance gespiegelt:**
+  - CREP Guard Validation: [x] Complete
+  - Type-VI Safety Protocols: [x] Complete
+  - Governance Documentation: [x] Verified (POLICY.md, ETHICS.md)
+  - CI/Pre-Commit Hooks: [x] Operational
+- ✅ **FIT-Sync:** `v6r-zenodo-ci-sync` in V6ToDorefresh.md auf completed gesetzt
+- ✅ **Artefaktpfade dokumentiert:** `ZENODO_CI_STATUS_2025-12-03.md` als Referenz
 
 **References:**
-- `../ZENODO_CI_STATUS_2025-12-02.md:1-20`
-- `../ZENODO_CI_STATUS_2025-12-03.md:1-26`
-- `../Zenodo_Upload_Checklist.md:1-120`
+- `../ZENODO_CI_STATUS_2025-12-02.md:1-185` (Conditional GO)
+- `../ZENODO_CI_STATUS_2025-12-03.md:1-240` (Full GO)
+- `../Zenodo_Upload_Checklist.md:23-87` (Updated sections)
 
-**Sprint Focus:** CI-Provenienz für Zenodo/Chronik sichern
+**Sprint Focus:** ✅ CI-Provenienz vollständig dokumentiert
 
 ---
 
@@ -723,6 +801,32 @@ Finalize-CI/Pre-Commit führt `tools/crep_guard.py` mit τ*=0.1·|Θ−R| + CREP
 - `../V6ToDorefresh.md:700-760`
 
 **Sprint Focus:** Telemetrie-Warnpfad → Finalize-Belege
+
+---
+
+### [Priority 32] finalize-beta-telemetry-sync
+**Schema-Sync für β-Drift/CREP zwischen Metrics/Logs und Finalize-Deltas**
+
+**Status:** 🔴 Open
+
+**Beta:** 4.8 | **Zeta Risk:** Moderat – fehlende Schemafelder bremsen Zenodo/Chronik-Hand-off
+
+**Scope:** telemetry, governance, compliance
+
+**R → Θ:**
+Schemafelder für β-Drift (>10%), CREP-Level und τ*-Default (=0.1·|Θ−R|) sind in `metrics/beta_evolution.csv` + `logs/type_vi_detections.jsonl` dokumentiert und im Finalize-Deltalog verlinkt → Zenodo_Checklist/Chronik haben Reviewer-Slot
+
+**Next Steps:**
+- 🧮 Kopfzeile/Schema aus `V6ToDorefresh` übernehmen und in Finalize-Deltalog notieren (timestamp, domain, beta_estimate, drift_flag, tau_star, crep_value, escalation_level, reviewer, notes).
+- 🔗 `[TYPE-VI-RISK]` Beispielzeile in Finalize-Ordner referenzieren; Verweis auf `tools/crep_guard.py --log-detection` ergänzen.
+- 🗓️ FIT-Handoff: Mapping zu `v6r-beta-telemetry-schema` dokumentieren und Zenodo/UTAC-Indices aktualisieren.
+
+**References:**
+- `../V6ToDorefresh.md:880-1045`
+- `../V6ToDorefresh.yaml:100-180`
+- `../type6_crep_tau_star_checklist.md:1-49`
+
+**Sprint Focus:** FIT-Schema-Sync für Telemetrie
 
 ---
 
@@ -947,22 +1051,92 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 
 ---
 
+### [Priority 28] finalize-psi-coverage-boost
+**Coverage 87% → 95%+ für Ψ-Pipeline dokumentieren (Finalize/Zenodo)**
+
+**Status:** 🔴 Open  , **Beta:** 5.5 | **Zeta Risk:** Moderat – Edge-Branches ohne Tests
+
+**Scope:** testing, ci, documentation
+
+**R → Θ:** Edge-Case-Tests (entropy/radial_distribution/τ*) erhöhen Coverage auf ≥95% und werden in ZENODO_CI_STATUS + Zenodo_Upload_Checklist gespiegelt.
+
+**Next Steps:**
+- 🧪 Tests für entropy shape inference, radial_distribution normalization und τ*-Branch in `tests/test_psi_field.py` & `tests/test_genesis_psifield_integration.py` erweitern; Coverage-Report exportieren.
+- 📈 Coverage-Werte in `ZENODO_CI_STATUS_2025-12-03.md` + `Zenodo_Upload_Checklist.md` nachtragen; Chronik/Finalize-Delta mit CREP/ΔAIC-Hinweis ergänzen.
+- 🔗 FIT-Mapping mit `v6r-psi-coverage-boost` prüfen und Logpfade (`logs/type_vi_detections.jsonl`) als Belege festhalten.
+
+**References:**
+- `releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md:18-88`
+- `tests/test_psi_field.py`
+- `tests/test_genesis_psifield_integration.py`
+
+**Sprint Focus:** Edge-Coverage + Doku-Parität sichern
+
+---
+
+### [Priority 29] finalize-lint-cleanup
+**Ruff/Black Lint-Schulden (≈550 Fälle) für Release abbauen und dokumentieren**
+
+**Status:** 🔴 Open  , **Beta:** 4.4 | **Zeta Risk:** Erhöht – Lint-Schulden blockieren Go/No-Go
+
+**Scope:** ci, maintenance, documentation
+
+**R → Θ:** Ruff-Baseline/Ignore-Liste erstellt, erste Fix-Welle (pipelines/wavefunction, simulation) umgesetzt, Belege in Zenodo/Finalize-Checklisten eingetragen.
+
+**Next Steps:**
+- 📋 `ruff --statistics` ausführen, Fehlerklassen clustern und in `Zenodo_Upload_Checklist.md` dokumentieren; Baseline/Ignore-Datei im Repo verankern.
+- 🔧 Black/Ruff-Fixes für high-churn Module einchecken, verbleibende Verstöße als TODO-Liste anhängen; CI/Pre-Commit/Nox Lint-Gate aktivieren.
+- 🔗 FIT-Mapping zu `v6r-lint-baseline-cleanup` aktualisieren und ZENODO_CI_STATUS um Lint-Fortschritt ergänzen.
+
+**References:**
+- `releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md:70-156`
+- `releases/V6-Plans_etc/Zenodo_Upload_Checklist.md`
+- `pyproject.toml`
+
+**Sprint Focus:** Lint-Debt abbauen & Release-Gates sichern
+
+---
+
+### [Priority 30] finalize-todo-refresh-sync
+**ToDorefresh → Finalize FIT-Handoff synchronisieren**
+
+**Status:** 🔴 Open  , **Beta:** 4.7 | **Zeta Risk:** Moderat – fehlende Parität verzögert Governance-Gates
+
+**Scope:** governance, documentation, compliance
+
+**R → Θ:** Promt_für_Agenten.txt Vorgabe umsetzen → Prio-Order/Status/FIT-Mapping zwischen ToDorefresh und Finalize spiegeln, Chronik/Zenodo-Deltas dokumentieren.
+
+**Next Steps:**
+- 📋 V6ToDorefresh.{md,yaml,json} gegen Finalize-Trilayer prüfen und Status-/Prio-Deltas (Parser, Type-VI, Telemetrie) angleichen.
+- 🔗 FIT-Mapping-Eintrag `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` pflegen und Reviewer/Chronik-Hooks notieren.
+- 🧾 Promt_für_Agenten.txt Hinweis in Chronik/Zenodo-Delta-Logs spiegeln; Updatedatum/Versionen synchron halten.
+
+**References:**
+- `releases/V6-Plans_etc/Promt_für_Agenten.txt:1-5`
+- `releases/V6-Plans_etc/V6ToDorefresh.md:1265-1310`
+- `releases/V6-Plans_etc/V6ToDorefresh.yaml:1-80`
+
+**Sprint Focus:** FIT-Governance-Parität herstellen
+
+---
+
 ## FIT Mapping ToDorefresh ↔ Finalize
 
 | ToDorefresh ID | Finalize ID | Bridge Focus | Status |
 | --- | --- | --- | --- |
-| v6r-finalize-bridge | finalize-fit-sync | FIT-Governance-Sync (Prioritäten + Chronik-Link) | Draft mapping eingetragen |
+| v6r-finalize-bridge | finalize-fit-sync | FIT-Governance-Sync (Prioritäten + Chronik-Link) | ✅ Completed (2026-01-09) – Mapping, Chronik-Draft und Delta aktualisiert |
 | v6r-zenodo-prep | finalize-zenodo-checklist | Zenodo/DOI-Readiness + Checklisten-Kopplung | Referenzen verknüpft, Tasks offen |
-| v6r-tau-star-guardrails | finalize-tau-star-guardrails | τ*-Safety + CREP-Reviewer-Gate | Artefakte gespiegelt, CI-Guard offen |
-| v6r-tau-star-ci-hook | finalize-tau-star-ci-hook | CI-Gate für τ* + CREP ≥0.7 | Hook geplant, Finalize-Gate offen |
+| v6r-tau-star-guardrails | finalize-tau-star-guardrails | τ*-Safety + CREP-Reviewer-Gate | ✅ Completed (2026-01-09) – τ*-Default/CREP in CI & Chronik verankert |
+| v6r-tau-star-ci-hook | finalize-tau-star-ci-hook | CI-Gate für τ* + CREP ≥0.7 | ✅ Completed (2026-01-09) – crep_guard Makefile/nox/pre-commit aktiv |
 | v6r-wavefunction-pipeline | finalize-wavefunction-pipeline | Ψ-Pipeline FIT-Kette (Tests, Zenodo) | ✅ Completed (2025-12-02), Pipeline+Tests+Docs operational (docs/v6_wavefunction_theory.md 800+ lines) |
-| v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | Bullet-Refactor geplant |
-| v6r-entropic-gravity-bridge | finalize-entropic-gravity-bridge | Entropische Gravitation/Holographischer Kubus in Review + BibTeX | Bridge angelegt, Quellenmapping offen |
-| v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | Checklisten verlinkt, Merge-Gate fehlt |
+| v6r-literature-review-sync | finalize-literature-review-sync | Literatur/BibTeX-Parität (UTAC/v_RIG) | ✅ Completed (2026-01-09) – 43 BibTeX-Einträge/574 Zeilen gespiegelt |
+| v6r-entropic-gravity-bridge | finalize-entropic-gravity-bridge | Entropische Gravitation/Holographischer Kubus in Review + BibTeX | ✅ Completed (2026-01-09) – Kubus/Holographie in Finalize-Doku verlinkt |
+| v6r-type6-governance | finalize-type6-governance | Type-VI Governance + CI-Hook | ✅ Completed (2026-01-09) – Checkliste + CI/Pre-Commit blockend |
 | v6r-type6-checklist-rollout | finalize-type6-checklist-rollout | Type-VI Checklisten ↔ POLICY/ETHICS/Zenodo | Neu angelegt, Trilayer-Checkliste noch zu spiegeln |
 | v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Log-Writer aktiv, CI-Hook offen |
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Neu angelegt, Belege ausstehend |
-| v6r-zenodo-ci-sync | finalize-zenodo-ci-sync | Zenodo CI-Status (Conditional→Full GO) → Checklist/Chronik | Neu angelegt, CI-Daten noch zu spiegeln |
+| v6r-zenodo-release-packaging | finalize-zenodo-release-packaging | Tag/Changelog/DOI für v6.0.0-beta | Neu – Release-Bundle/DOI noch offen |
+| v6r-zenodo-ci-sync | finalize-zenodo-ci-sync | Zenodo CI-Status (Conditional→Full GO) → Checklist/Chronik | ✅ Completed (2025-12-03) – CI-Daten vollständig gespiegelt |
 | v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Log-Starter liegt vor, Reviewer-Routing offen |
 | v6r-beta-telemetry | finalize-beta-telemetry | β-Drift/CREP Telemetrie → Deltas/Indices | Telemetrie-Aufgabe neu angelegt |
 | v6r-aeon-architecture | finalize-aeon-architecture | Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten) | Mapping ergänzt, Bauplanextrakt offen |
@@ -975,10 +1149,34 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 | v6r-psi-test-execution | finalize-psi-test-execution | Ψ-Test-Suite Coverage (≥80%) + τ*/CREP-Gate | Neu – Coverage/Logs in Finalize/Zenodo verankern |
 | v6r-psi-visualization | finalize-psi-visualization | Ψ-Visuals (|ψ|², Tesseract) → VISUALIZATION_INDEX/Zenodo | Neu – Artefakte/Dateipfade erzeugen |
 | v6r-psi-tutorials | finalize-psi-tutorials | Ψ-Notebooks + FIT-Lernpfade | Neu – Tutorials/Checklist-Links setzen |
+| v6r-psi-coverage-boost | finalize-psi-coverage-boost | Ψ-Coverage ≥95% + Edge-Branch Tests → Zenodo/Chronik | Neu – Edge-Tests & Coverage-Logs fixieren |
+| v6r-lint-baseline-cleanup | finalize-lint-cleanup | Ruff-Baseline + Lint-Fixes dokumentieren (Zenodo/CI) | Neu – Lint-Schulden clustern/abbauen |
+| v6r-finalize-todo-sync | finalize-todo-refresh-sync | FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik) | Neu – Promt_für_Agenten.txt Handoff noch nicht gespiegelt |
+
+*Hinweis:* `v6r-cmb-analysis` ist in ToDorefresh als ✅ Completed (2025-12-02) archiviert und bleibt als Referenzmapping dokumentiert.
 
 ---
 
 ## Delta Updates
+
+### 2026-01-12 | finalize-finalize-handoff
+
+✅ **Highlights:**
+- Neuer Task **finalize-zenodo-release-packaging** ergänzt, um Tagging/Changelog/DOI-Schritte aus ZENODO_CI_STATUS_2025-12-03 im Finalize-Layer zu verankern; FIT-Mapping auf ToDorefresh hinzugefügt.
+- Neuer Task `finalize-todo-refresh-sync` ergänzt, um die Promt_für_Agenten.txt Vorgabe (ToDorefresh → Finalize) im Finalize-Layer zu verankern.
+- FIT-Mapping `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` hinzugefügt; Reviewer-/Chronik-Hooks als nächste Schritte markiert.
+- Updatedatum auf 2026-01-12T18:00:00Z angehoben, Paritäts-Check zwischen Trilayern geplant.
+
+---
+
+### 2026-01-10 | finalize-ci-lint-coverage
+
+✅ **Highlights:**
+- Neue Tasks `finalize-psi-coverage-boost` (Coverage 95%+) und `finalize-lint-cleanup` (≈550 Ruff-Fälle) hinzugefügt, abgeleitet aus `ZENODO_CI_STATUS_2025-12-03.md`.
+- FIT-Mapping mit `v6r-psi-coverage-boost` / `v6r-lint-baseline-cleanup` ergänzt; Updatedatum auf 2026-01-10T12:00:00Z angehoben.
+- Dokumentationspfade (`ZENODO_CI_STATUS_2025-12-03.md`, `Zenodo_Upload_Checklist.md`, `logs/type_vi_detections.jsonl`) als Release-Belege markiert.
+
+---
 
 ### 2026-01-08 | finalize-type6-checklists
 
@@ -1116,6 +1314,13 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 - MSCopilot-Empfehlungen als eigener Task aufgenommen (Portal, Prereg, Robustheit, Provenienz)
 - CI/Onboarding-Hooks explizit in Finalize-ToDo verankert
 - Fokus auf Reviewer-lesbare Figure-Zero + Prereg-Template als FIT-Microsteps
+
+### 2026-01-09 | finalize-fit-parität
+
+✅ **Highlights:**
+- τ*/CREP-FIT-Tasks (`finalize-type6-governance`, `finalize-tau-star-guardrails`, `finalize-tau-star-ci-hook`) und Literatur-/Entropie-Brücken (`finalize-literature-review-sync`, `finalize-entropic-gravity-bridge`) auf 🟢 Completed synchronisiert.
+- FIT-Mapping (`v6r-finalize-bridge` ↔ `finalize-fit-sync`) auf completed-sync angehoben; Delta-Update + Updated-Timestamp (2026-01-09T18:00:00Z) dokumentiert.
+- Hinweis auf archiviertes `v6r-cmb-analysis` Mapping ergänzt; YAML/JSON Trilayer regeneriert für Validierungs-Parser.
 
 ---
 

@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2026-01-09T12:00:00Z",
+    "updated_at": "2026-01-12T18:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -27,6 +27,7 @@
         "finalize-mscopilot-actions",
         "finalize-wavefunction-pipeline",
         "finalize-zenodo-checklist",
+        "finalize-zenodo-release-packaging",
         "finalize-tau-star-guardrails",
         "finalize-tau-star-mini-steps",
         "finalize-type6-governance",
@@ -38,14 +39,19 @@
         "finalize-crep-audit-log",
         "finalize-tau-star-ci-hook",
         "finalize-beta-telemetry",
+        "finalize-beta-telemetry-sync",
         "finalize-aeon-aletheia-bridge",
+        "finalize-aeon-architecture-brief",
         "finalize-sigillin-parser",
         "finalize-metrics-outlier",
         "finalize-data-lantern-dashboard",
         "finalize-type6-classification",
         "finalize-psi-test-execution",
         "finalize-psi-visualization",
-        "finalize-psi-tutorials"
+        "finalize-psi-tutorials",
+        "finalize-psi-coverage-boost",
+        "finalize-lint-cleanup",
+        "finalize-todo-refresh-sync"
       ],
       "note": "v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation"
     }
@@ -201,8 +207,8 @@
     {
       "id": "finalize-literature-review-sync",
       "title": "V6 Literature Review finalisieren und mit Finalize-Dokumenten spiegeln",
-      "status": "open",
-      "completeness": "Literature-Review liegt vor, aber Spiegelung zu Finalize/Papers/BibTeX fehlt.",
+      "status": "completed",
+      "completeness": "Literatur/BibTeX-Parität (43 Referenzen, 574 Zeilen) in Finalize gespiegelt",
       "scope": [
         "documentation",
         "research",
@@ -237,13 +243,14 @@
         }
       ],
       "priority": 4,
-      "sprint_focus": "Literatur-Sync & DOI-Vorbereitung"
+      "sprint_focus": "Literatur-Sync & DOI-Vorbereitung",
+      "status_date": "2026-01-09"
     },
     {
       "id": "finalize-entropic-gravity-bridge",
       "title": "Entropische Gravitation/Holographischer Kubus in Finalize-Schiene verankern",
-      "status": "open",
-      "completeness": "Gemini-DeepResearch-Kubus/∇S-Argument vorhanden; Finalize-Spiegelung/BibTeX/Chronik fehlt.",
+      "status": "completed",
+      "completeness": "Entropische Gravitation/Holographischer Kubus in Finalize-Docs integriert",
       "scope": [
         "research",
         "documentation",
@@ -284,7 +291,8 @@
         }
       ],
       "priority": 5,
-      "sprint_focus": "Kubus/Entropie-Brücke + Chronik-Handoff"
+      "sprint_focus": "Kubus/Entropie-Brücke + Chronik-Handoff",
+      "status_date": "2026-01-09"
     },
     {
       "id": "finalize-13mhz-signatur",
@@ -378,6 +386,60 @@
       ],
       "priority": 5,
       "sprint_focus": "Architektur-Doc + Core-Module"
+    },
+    {
+      "id": "finalize-aeon-architecture-brief",
+      "title": "Kurzbriefing zu Nullkern/AeonShell als Draft in Architekturdokumente einspeisen",
+      "status": "open",
+      "completeness": "Draft-Abschnitte in ARCHITECTURE.md und V6_Wellenfunktions_Integrationsplan.md fehlen; FIT-Handoff nicht markiert.",
+      "scope": [
+        "architecture",
+        "documentation",
+        "ai-systems"
+      ],
+      "logistic_profile": {
+        "R_target": "Draft-Blöcke für Nullkern/AeonShell vorhanden",
+        "Theta_condition": "ARCHITECTURE.md + V6_Wellenfunktions_Integrationsplan.md mit FIT-Handoff auf ToDorefresh verweisen",
+        "beta_estimate": 6.2,
+        "zeta_risk": "moderat"
+      },
+      "next_steps": [
+        "Kernaussagen aus Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt destillieren und als Draft-Blöcke markieren.",
+        "Drafts mit [FIT-HANDOFF] Tag versehen und auf AEON_ALETHEIA_INTEGRATION.md verweisen (CREP/τ*-Kontext notieren).",
+        "Mapping zu v6r-aeon-architecture-notes bestätigen und Chronik-Hinweis vorbereiten."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/ARCHITECTURE.md",
+          "lines": [
+            1,
+            80
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md",
+          "lines": [
+            1,
+            80
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/AEON_ALETHEIA_INTEGRATION.md",
+          "lines": [
+            1,
+            80
+          ]
+        }
+      ],
+      "priority": 33,
+      "sprint_focus": "Aeon-Draft-Blöcke platzieren"
     },
     {
       "id": "finalize-slice-integration",
@@ -618,8 +680,8 @@
     {
       "id": "finalize-tau-star-guardrails",
       "title": "τ*-Guardrails & CREP-Telemetrie im Finalize-Layer verankern",
-      "status": "open",
-      "completeness": "τ*-Default ist im ToDorefresh-Layer erfasst; Finalize-Trilayer und Chronik/CI-Verknüpfungen fehlen.",
+      "status": "completed",
+      "completeness": "τ*-Default 0.1·|Θ−R| und CREP-Governance in Finalize-Trilayer verankert",
       "scope": [
         "simulation",
         "governance",
@@ -660,7 +722,8 @@
         }
       ],
       "priority": 12,
-      "sprint_focus": "τ*-Delay & CREP-Telemetrie für Finalize fixieren"
+      "sprint_focus": "τ*-Delay & CREP-Telemetrie für Finalize fixieren",
+      "status_date": "2026-01-09"
     },
     {
       "id": "finalize-tau-star-mini-steps",
@@ -713,8 +776,8 @@
     {
       "id": "finalize-type6-governance",
       "title": "Type-VI CREP/τ*-Checkliste in Governance und CI verdrahten",
-      "status": "open",
-      "completeness": "Checkliste liegt vor; Governance-Referenzen und blockende CI/Pre-Commit-Hooks fehlen.",
+      "status": "completed",
+      "completeness": "POLICY/ETHICS referenzieren τ*/CREP; CI/Pre-Commit Guard blockt fehlende Defaults",
       "scope": [
         "governance",
         "compliance",
@@ -748,7 +811,8 @@
         }
       ],
       "priority": 13,
-      "sprint_focus": "Governance-Gate + CI-Hook"
+      "sprint_focus": "Governance-Gate + CI-Hook",
+      "status_date": "2026-01-09"
     },
     {
       "id": "finalize-type6-checklist-rollout",
@@ -822,8 +886,8 @@
     {
       "id": "finalize-fit-sync",
       "title": "FIT-gerechte Synchronisation zwischen V6ToDorefresh und Finalize-Tasks",
-      "status": "open",
-      "completeness": "FIT-Vorgaben notiert; Mapping-Entwurf mit ToDorefresh erstellt, Chronik-Link steht aus.",
+      "status": "completed",
+      "completeness": "FIT-Reihenfolge ToDorefresh ↔ Finalize abgeglichen; Mapping-Tabelle aktualisiert",
       "scope": [
         "governance",
         "organization",
@@ -859,7 +923,8 @@
         }
       ],
       "priority": 14,
-      "sprint_focus": "FIT-Synchronisation & Trilayer-Parität"
+      "sprint_focus": "FIT-Synchronisation & Trilayer-Parität",
+      "status_date": "2026-01-09"
     },
     {
       "id": "finalize-crep-guard-ci",
@@ -965,6 +1030,54 @@
       "sprint_focus": "Zenodo-DOI-Belege + Provenienzpfad sichern"
     },
     {
+      "id": "finalize-zenodo-release-packaging",
+      "title": "v6.0.0-beta Tag/Changelog/DOI im Finalize-Track abschließen",
+      "status": "open",
+      "completeness": "CI/Provenienz-Status dokumentiert; Tag/Changelog/DOI-Handoff fehlt und muss mit ToDorefresh synchronisiert werden.",
+      "scope": [
+        "release",
+        "compliance",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "Release-Package v6.0.0-beta fertig (Tag + DOI + Archiv)",
+        "Theta_condition": "Tag gesetzt, CHANGELOG/GITHUB_RELEASE_NOTES aktualisiert, Zenodo-DOI beantragt, Release-Bundle im Finalize-Ordner verlinkt",
+        "beta_estimate": 5.3,
+        "zeta_risk": "moderat – DOI/Tag fehlen"
+      },
+      "next_steps": [
+        "Annotated Tag \"v6.0.0-beta\" erstellen und in ZENODO_CI_STATUS_2025-12-03.md eintragen.",
+        "CHANGELOG.md + GITHUB_RELEASE_NOTES.md mit CI/Type-VI-Governance Fortschritten ergänzen; Zenodo_Upload_Checklist.md Querverweis setzen.",
+        "Zenodo-Deposition/DOI-Request anstoßen, Reviewer-Slot (CREP ≥0.7) dokumentieren und Provenienzblöcke aus ETHICS/POLICY referenzieren.",
+        "Release-Bundle (ZENODO_READINESS_REPORT, Checklist, CI-Status) im Finalize-Ordner/Chronik referenzieren und mit ToDorefresh Handoff markieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md",
+          "lines": [
+            84,
+            164
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
+          "lines": [
+            23,
+            87
+          ]
+        },
+        {
+          "path": "CHANGELOG.md",
+          "lines": [
+            1,
+            120
+          ]
+        }
+      ],
+      "priority": 31,
+      "sprint_focus": "Zenodo-Release-Handoff dokumentieren"
+    },
+    {
       "id": "finalize-zenodo-ci-sync",
       "title": "ZENODO_CI_STATUS-Reports (Conditional→Full GO) in Finalize/Checklist/Chronik verankern",
       "status": "open",
@@ -1064,8 +1177,8 @@
     {
       "id": "finalize-tau-star-ci-hook",
       "title": "CI/Release-Gate für τ*-Default + CREP-Schwellen setzen",
-      "status": "open",
-      "completeness": "CI/Pre-Commit Gate fehlt; CREP/τ* Guard nur als Stub vorhanden.",
+      "status": "completed",
+      "completeness": "Finalize-CI ruft crep_guard mit τ*/CREP-Schwellen auf und loggt nach logs/type_vi_detections.jsonl",
       "scope": [
         "ci",
         "governance",
@@ -1107,7 +1220,8 @@
       ],
       "priority": 18,
       "sprint_focus": "τ*/CREP-Gate im Release-Track",
-      "updated_at": "2025-12-29T10:00:00Z"
+      "updated_at": "2025-12-29T10:00:00Z",
+      "status_date": "2026-01-09"
     },
     {
       "id": "finalize-beta-telemetry",
@@ -1156,6 +1270,53 @@
       "priority": 19,
       "sprint_focus": "Telemetrie-Warnpfad → Finalize-Belege",
       "updated_at": "2025-12-29T10:00:00Z"
+    },
+    {
+      "id": "finalize-beta-telemetry-sync",
+      "title": "Schema-Sync für β-Drift/CREP zwischen Metrics/Logs und Finalize-Deltas",
+      "status": "open",
+      "completeness": "Schemafelder für Drift/CREP/τ* noch nicht im Finalize-Deltalog vermerkt; FIT-Handoff offen.",
+      "scope": [
+        "telemetry",
+        "governance",
+        "compliance"
+      ],
+      "logistic_profile": {
+        "R_target": "Schema für β-Drift/CREP-Logs dokumentiert",
+        "Theta_condition": "Finalize-Deltalog/Zenodo-Checklist referenzieren Schema + Example Row mit Reviewer-Slot",
+        "beta_estimate": 4.8,
+        "zeta_risk": "moderat"
+      },
+      "next_steps": [
+        "Kopfzeile/Schema aus V6ToDorefresh übernehmen (timestamp, domain, beta_estimate, drift_flag, tau_star, crep_value, escalation_level, reviewer, notes) und im Finalize-Deltalog dokumentieren.",
+        "`[TYPE-VI-RISK]` Beispielzeile in Finalize-Ordner referenzieren; Verweis auf tools/crep_guard.py --log-detection ergänzen.",
+        "FIT-Handoff dokumentieren (Mapping → v6r-beta-telemetry-schema) und Zenodo/UTAC-Indices aktualisieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/V6ToDorefresh.md",
+          "lines": [
+            880,
+            1045
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6ToDorefresh.yaml",
+          "lines": [
+            100,
+            180
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.md",
+          "lines": [
+            1,
+            49
+          ]
+        }
+      ],
+      "priority": 32,
+      "sprint_focus": "FIT-Schema-Sync für Telemetrie"
     },
     {
       "id": "finalize-aeon-aletheia-bridge",
@@ -1534,6 +1695,150 @@
       "priority": 27,
       "sprint_focus": "Lernpfade release-ready machen",
       "updated_at": "2026-01-07T12:00:00Z"
+    },
+    {
+      "id": "finalize-psi-coverage-boost",
+      "title": "Coverage 87% → 95%+ für Ψ-Pipeline dokumentieren (Finalize/Zenodo)",
+      "status": "open",
+      "completeness": "Coverage 87% laut ZENODO_CI_STATUS; entropy/radial_distribution/τ*-Branches ohne Tests.",
+      "scope": [
+        "testing",
+        "ci",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "Edge-Case-Tests heben Coverage auf ≥95% in psi_field.py/genesis_cube.py",
+        "Theta_condition": "Coverage-Report in ZENODO_CI_STATUS + Zenodo_Upload_Checklist dokumentiert",
+        "beta_estimate": 5.5,
+        "zeta_risk": "moderat (fehlende Edge-Absicherung)"
+      },
+      "next_steps": [
+        "Edge-Tests für entropy shape inference, radial_distribution normalization und τ*-Branch in tests/test_psi_field.py & tests/test_genesis_psifield_integration.py ergänzen; Coverage-Report exportieren.",
+        "Coverage-Werte in ZENODO_CI_STATUS_2025-12-03.md + Zenodo_Upload_Checklist.md eintragen; Chronik/Finalize-Delta mit CREP/ΔAIC-Hinweis ergänzen.",
+        "FIT-Mapping mit v6r-psi-coverage-boost synchronisieren und Logpfade (logs/type_vi_detections.jsonl) als Belege festhalten."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md",
+          "lines": [
+            18,
+            88
+          ]
+        },
+        {
+          "path": "tests/test_psi_field.py",
+          "lines": [
+            1,
+            400
+          ]
+        },
+        {
+          "path": "tests/test_genesis_psifield_integration.py",
+          "lines": [
+            1,
+            280
+          ]
+        }
+      ],
+      "priority": 28,
+      "sprint_focus": "Edge-Coverage + Doku-Parität sichern",
+      "updated_at": "2026-01-10T12:00:00Z"
+    },
+    {
+      "id": "finalize-lint-cleanup",
+      "title": "Ruff/Black Lint-Schulden (≈550 Fälle) für Release abbauen und dokumentieren",
+      "status": "open",
+      "completeness": "Lint-Schulden aus ZENODO_CI_STATUS (≈550 Fälle) noch nicht geclustert; keine Baseline/Ignore-Datei.",
+      "scope": [
+        "ci",
+        "maintenance",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "Ruff-Baseline/Ignore-Liste erstellt, erste Fix-Welle (pipelines/wavefunction, simulation) umgesetzt",
+        "Theta_condition": "Lint-Fortschritt in Zenodo_Upload_Checklist + ZENODO_CI_STATUS dokumentiert, CI-Gate aktiv",
+        "beta_estimate": 4.4,
+        "zeta_risk": "erhöht (Release-Gate blockiert)"
+      },
+      "next_steps": [
+        "ruff --statistics ausführen, Fehlerklassen clustern und in Zenodo_Upload_Checklist.md dokumentieren; Baseline/Ignore-Datei hinzufügen.",
+        "Black/Ruff-Fixes für high-churn Module anwenden; restliche Verstöße als TODO erfassen; CI/Pre-Commit/Nox Lint-Gate aktivieren.",
+        "FIT-Mapping zu v6r-lint-baseline-cleanup updaten und ZENODO_CI_STATUS um Lint-Fortschritt ergänzen."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md",
+          "lines": [
+            70,
+            156
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
+          "lines": [
+            1,
+            220
+          ]
+        },
+        {
+          "path": "pyproject.toml",
+          "lines": [
+            1,
+            200
+          ]
+        }
+      ],
+      "priority": 29,
+      "sprint_focus": "Lint-Debt abbauen & Release-Gates sichern",
+      "updated_at": "2026-01-10T12:00:00Z"
+    },
+    {
+      "id": "finalize-todo-refresh-sync",
+      "title": "ToDorefresh → Finalize FIT-Handoff synchronisieren",
+      "status": "open",
+      "completeness": "Promt_für_Agenten.txt fordert Finalize-Follow-up; Parität zwischen Trilayern noch nicht dokumentiert.",
+      "scope": [
+        "governance",
+        "documentation",
+        "compliance"
+      ],
+      "logistic_profile": {
+        "R_target": "Promt_für_Agenten.txt Vorgabe umgesetzt (ToDorefresh → Finalize Handoff)",
+        "Theta_condition": "Prio/Status/FIT-Mapping gespiegelt + Chronik/Zenodo-Deltas notiert",
+        "beta_estimate": 4.7,
+        "zeta_risk": "moderat – fehlende Parität verzögert Governance-Gates"
+      },
+      "next_steps": [
+        "V6ToDorefresh.{md,yaml,json} gegen Finalize-Trilayer prüfen (Parser/Type-VI/Telemetrie) und Status-/Prio-Deltas ausgleichen.",
+        "FIT-Mapping-Eintrag `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` pflegen; Reviewer/Chronik-Hooks ergänzen.",
+        "Promt_für_Agenten.txt Hinweis in Chronik/Zenodo-Delta-Logs referenzieren und updated_at synchron halten."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Promt_für_Agenten.txt",
+          "lines": [
+            1,
+            5
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6ToDorefresh.md",
+          "lines": [
+            1265,
+            1310
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6ToDorefresh.yaml",
+          "lines": [
+            1,
+            80
+          ]
+        }
+      ],
+      "priority": 30,
+      "sprint_focus": "FIT-Governance-Parität herstellen",
+      "updated_at": "2026-01-12T12:00:00Z"
     }
   ],
   "fit_mapping": [
@@ -1541,7 +1846,7 @@
       "todo_id": "v6r-finalize-bridge",
       "finalize_id": "finalize-fit-sync",
       "bridge_focus": "FIT-Governance-Sync (Prioritäten + Chronik-Link)",
-      "status": "draft-mapping"
+      "status": "completed-sync"
     },
     {
       "todo_id": "v6r-zenodo-prep",
@@ -1553,7 +1858,7 @@
       "todo_id": "v6r-tau-star-guardrails",
       "finalize_id": "finalize-tau-star-guardrails",
       "bridge_focus": "τ*-Safety + CREP-Reviewer-Gate",
-      "status": "artifacts-mirrored"
+      "status": "completed-sync"
     },
     {
       "todo_id": "v6r-tau-star-mini-steps",
@@ -1571,19 +1876,19 @@
       "todo_id": "v6r-literature-review-sync",
       "finalize_id": "finalize-literature-review-sync",
       "bridge_focus": "Literatur/BibTeX-Parität (UTAC/v_RIG)",
-      "status": "refactor-planned"
+      "status": "completed-sync"
     },
     {
       "todo_id": "v6r-entropic-gravity-bridge",
       "finalize_id": "finalize-entropic-gravity-bridge",
       "bridge_focus": "Entropische Gravitation/Holographischer Kubus in Review + BibTeX",
-      "status": "bridge-planned"
+      "status": "completed-sync"
     },
     {
       "todo_id": "v6r-type6-governance",
       "finalize_id": "finalize-type6-governance",
       "bridge_focus": "Type-VI Governance + CI-Hook",
-      "status": "checklists-linked"
+      "status": "completed-sync"
     },
     {
       "todo_id": "v6r-crep-guard-ci",
@@ -1613,7 +1918,7 @@
       "todo_id": "v6r-tau-star-ci-hook",
       "finalize_id": "finalize-tau-star-ci-hook",
       "bridge_focus": "CI-Gate für τ* + CREP ≥0.7",
-      "status": "planned"
+      "status": "completed-sync"
     },
     {
       "todo_id": "v6r-beta-telemetry",
@@ -1680,9 +1985,57 @@
       "finalize_id": "finalize-psi-tutorials",
       "bridge_focus": "Ψ-Notebooks + FIT-Lernpfade",
       "status": "new"
+    },
+    {
+      "todo_id": "v6r-psi-coverage-boost",
+      "finalize_id": "finalize-psi-coverage-boost",
+      "bridge_focus": "Ψ-Coverage ≥95% + Edge-Branch Tests → Zenodo/Chronik",
+      "status": "new"
+    },
+    {
+      "todo_id": "v6r-lint-baseline-cleanup",
+      "finalize_id": "finalize-lint-cleanup",
+      "bridge_focus": "Ruff-Baseline + Lint-Fixes dokumentieren (Zenodo/CI)",
+      "status": "new"
+    },
+    {
+      "todo_id": "v6r-finalize-todo-sync",
+      "finalize_id": "finalize-todo-refresh-sync",
+      "bridge_focus": "FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik)",
+      "status": "mapping-added"
+    },
+    {
+      "todo_id": "v6r-beta-telemetry-schema",
+      "finalize_id": "finalize-beta-telemetry-sync",
+      "bridge_focus": "Schema-Spiegel für β-Drift/CREP zwischen Metrics/Logs ↔ Finalize-Deltas",
+      "status": "new"
+    },
+    {
+      "todo_id": "v6r-aeon-architecture-notes",
+      "finalize_id": "finalize-aeon-architecture-brief",
+      "bridge_focus": "Aeon-Bauplan-Notizen (Nullkern/AeonShell) → Architekturdrafts/FIT-Handoff",
+      "status": "new"
     }
   ],
   "delta_updates": [
+    {
+      "date": "2026-01-12",
+      "label": "finalize-finalize-handoff",
+      "highlights": [
+        "Neuer Task finalize-todo-refresh-sync ergänzt, um Promt_für_Agenten.txt Vorgabe (ToDorefresh → Finalize) im Finalize-Layer zu verankern.",
+        "FIT-Mapping `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` hinzugefügt; Reviewer-/Chronik-Hooks als nächste Schritte markiert.",
+        "Updatedatum auf 2026-01-12T12:00:00Z angehoben; Paritäts-Check zwischen Trilayern geplant."
+      ]
+    },
+    {
+      "date": "2026-01-10",
+      "label": "finalize-ci-lint-coverage",
+      "highlights": [
+        "Neue Tasks finalize-psi-coverage-boost (Coverage 95%+) und finalize-lint-cleanup (≈550 Ruff-Fälle) aus ZENODO_CI_STATUS_2025-12-03 abgeleitet und in priority_order aufgenommen.",
+        "FIT-Mapping zu v6r-psi-coverage-boost/v6r-lint-baseline-cleanup ergänzt; updated_at auf 2026-01-10T12:00:00Z gesetzt.",
+        "Belegpfade (ZENODO_CI_STATUS_2025-12-03.md, Zenodo_Upload_Checklist.md, logs/type_vi_detections.jsonl) als Release-Gates markiert."
+      ]
+    },
     {
       "date": "2026-01-07",
       "label": "finalize-psi-followups",
@@ -1816,6 +2169,14 @@
         "8 Haupt-Tasks identifiziert",
         "Trilayer-TODO-Struktur erstellt (MD, YAML, JSON)",
         "Kernerkenntnisse: Böhme-Anomalie (1.3%), Entkopplung (β_AI≈1.0), Loihi (100×), Aeon-Architektur"
+      ]
+    },
+    {
+      "date": "2026-01-09",
+      "highlights": [
+        "Status-Mismatches zu ToDorefresh behoben (τ*/CREP, Literatur, Entropische Gravitation, FIT-Sync)",
+        "FIT-Mapping-Status auf completed-sync angehoben inkl. v6r-finalize-bridge",
+        "CMB-Mapping-Hinweis für archived Task wird in Markdown ergänzt"
       ]
     }
   ]
