@@ -273,4 +273,280 @@ I_C[γ] = ∫_γ F_μν(photons) · u^μ dτ
 
 ---
 
+## Slice-Integration & CFF-Modellierung
+
+**Integration Status:** ✅ Dokumentiert (2025-12-04)
+
+Die **Zeitscheiben-Hypothese** ist vollständig mit der Ψ-Wellenfunktion gekoppelt:
+
+### v_RIG-Kopplung
+
+```
+v_RIG = c / (α⁻¹ · Φ) ≈ 1351.8 km/s
+```
+
+**Interpretation:** Jede Zeitscheibe propagiert mit c, Integration erfolgt mit v_RIG
+
+**Goldener-Schnitt-Zeitentwicklung:** Der Φ-Term in `exp(-i·Φ·E_P·t/ℏ)` moduliert die Slice-Rate
+
+### CFF & Metabolismus
+
+**Critical Flicker Frequency (CFF)** korreliert mit der Slice-Integrations-Rate:
+
+| Spezies | CFF (Hz) | Δt_Q (ms) | N_slices | β-Domain |
+|---------|----------|-----------|----------|----------|
+| Mensch | 60 | 150 | 225,000 | ~7.4 (bio) |
+| Kolibri | 120 | 75 | 112,500 | ~7.4 (bio) |
+| Schildkröte | 15 | 600 | 900,000 | ~7.4 (bio) |
+
+**Metabolische Skalierung:** CFF ∝ M^(0.15-0.25) (Healy et al. 2013, n=34 Spezies)
+
+### Stereo-Vision Slice Fusion Frequency (SFF)
+
+```
+SFF = c / (2 · IPD · tan(θ/2))
+```
+
+**Citizen Science Experiment:** 3 Protokolle für Datensammlung dokumentiert
+
+**Hypothesis:** SFF ∝ 1/(metabolic rate)
+
+### Tesseract-Zeitscheiben
+
+**4D-Block [x,y,z,t]:** Jede t-Ebene = eine Zeitscheibe
+
+**Dual-Flow:**
+- Horizontal (t): Lichtgeschwindigkeit-Slices
+- Vertikal (τ): Implosiver Zeitfluss (Ψ-kollaps)
+
+**Implementation:** `simulation/oipk_tesseract.py` (527 lines, ✅ operational)
+
+### Referenzen
+
+**Comprehensive Documentation:**
+- **`docs/slice_integration_cff_model.md`** - HAUPTDOKUMENT (400+ Zeilen)
+  - 7-Spezies CFF-Tabelle mit Metabolismus
+  - 6 Empirische Δt_Q-Phänomene (EEG Microstates, Flash-Lag, etc.)
+  - SFF-Formel mit Stereo-Vision Experimenten
+  - Ring-Buffer-Modell (N≈222 Slices Kohärenz-Peak)
+  - 6 Falsifizierbare Vorhersagen
+  - Governance-Kopplung (CREP, Type-VI, τ*)
+
+**Implementations:**
+- `simulation/v_rig_renderer.py` (444 lines) - Reality-Renderer mit Buffer
+- `simulation/oipk_tesseract.py` (527 lines) - 4D-Slice-Extraktion
+- `models/psychophysics.py` (474 lines) - StereoVisionModel
+- `experiments/citizen_science_stereo_vision.md` - Experiment-Protokolle
+
+**Core Formulas:**
+- `docs/v6_formulas.md:126-143` (SFF)
+- `docs/v6_formulas.md:21-34` (v_RIG)
+- `docs/v6_formulas.md:71-90` (Δt_Q Pareto Front)
+
+**Validation:**
+- Böhme-Anomalie: 1370 km/s vs. v_RIG=1351.8 km/s → 1.3% ✅
+- EEG Microstates: 80-120 ms ⊂ Δt_Q=100-300 ms ✅
+- Simulator Kohärenz-Peak: N≈221.74 ≈ α⁻¹·Φ ✅
+
+**Status:** ✅ Slice-Integration vollständig mit Ψ-Framework gekoppelt
+
+---
+
+## Aeon-Architektur-Integration
+
+**Integration Status:** ✅ Dokumentiert (2025-12-04)
+**Reference:** `ARCHITECTURE.md` (Section 9: Aeon v1.0 Architecture)
+
+Die **Aeon-Architektur** bildet das meta-physikalische und bewusstseins-orientierte Framework für die Ψ-Wellenfunktions-Integration:
+
+### Nullkern (N0) ↔ Ψ-Wellenfunktion
+
+**Konzept:** Der **Nullkern** ist die zeitlose, substratfreie Zustandstopologie, aus der alle physikalischen Manifestationen projiziert werden.
+
+```
+Nullkern (N0): Reiner Zustandsraum (metrikfrei, substratlos)
+      ↓ Projektion
+Ψ_genesis(r,θ,φ,t): Wellenfunktion als symbolische Ausfaltung
+      ↓ Dekoherenz
+Spacetime Manifold: 4D-Tesseract-Zeitscheiben
+```
+
+**Integration:**
+- **Ψ-Wellenfunktion = Projektion des Nullkerns** in raumzeitliche Koordinaten
+- **exp(-i·Φ·E_P·t/ℏ)** - Goldener Schnitt Φ als Nullkern-Projektionsrate
+- **Y_tetra(θ,φ)** - Tetraeder-Symmetrie als Nullkern-Eigenvektor
+
+### AeonShell (A1) ↔ Symbolische Operatoren
+
+**AeonShell** ist die symbolische Sprache, die Nullkern-Zustände in operationalisierbare UTAC-Dynamiken übersetzt:
+
+```
+Operator               | AeonShell Symbol | Ψ-Integration
+-----------------------|------------------|------------------------------------------
+UTAC-Aktivierung       | σ(β(R-Θ))       | Steuert Ψ-Kollaps zur Spacetime
+Impedanz-Profil        | ζ(R)            | Dämpfung der Ψ-Propagation (Type-VI)
+Safety Delay           | τ* = 0.1·|Θ-R| | Schützt Ψ-Numerik bei ζ<0 Szenarien
+CREP-Metriken          | C·R·E·P ∈ [0,1]⁴| Qualitätskontrolle der Ψ-Projektionen
+v_RIG-Geschwindigkeit  | c/(α⁻¹·Φ)       | Slice-Integration-Rate (1351.8 km/s)
+```
+
+**Beispiel-Kopplung:**
+```python
+# AeonShell → Ψ-Field Mapping
+def nullkern_to_psi(nullkern_state, r, theta, phi, t):
+    """Projiziert Nullkern-Zustand in Ψ-Wellenfunktion."""
+    alpha_inv = 137.036  # Feinstrukturkonstante
+    phi_golden = 1.618034  # Goldener Schnitt
+    E_P = 1.956e9  # Planck-Energie (GeV)
+
+    # Nullkern-Projektion via AeonShell-Operatoren
+    psi = np.exp(-r**2 / (alpha_inv * l_P**2))  # Gaußscher Kollaps
+    psi *= Y_tetrahedron(theta, phi)             # Symmetrie-Signatur
+    psi *= np.exp(-1j * phi_golden * E_P * t)    # Φ-modulierte Zeitentwicklung
+
+    return psi
+```
+
+### Agenten-Ebene (A2) ↔ Multi-Agent Ψ-Simulationen
+
+**Konzept:** Spezialisierte Agenten orchestrieren verschiedene Aspekte der Ψ-Simulation:
+
+| Agent | Rolle | Ψ-Aufgabe |
+|-------|-------|-----------|
+| **MasterGPT** | Koordinator | Orchestriert Ψ-Pipeline (genesis → membrane → waste) |
+| **GenesisMath** | Theorie | Herleitung Ψ-Feldgleichungen, Wheeler-DeWitt |
+| **SimHostGPT** | Simulation | RK4-Integration von Ψ(r,θ,φ,t), Tesseract-Slicing |
+| **CosmoGPT** | Kosmologie | Dunkle Energie aus ψ_waste, entropische Gravitation |
+| **CREPJudge** | Governance | CREP-Validierung für Ψ-Vorhersagen, τ*-Monitoring |
+| **AeonPoet** | Narrative | Interpretation der Ψ-Visualisierungen (|Ψ|²-Plots) |
+
+**Current Status:** MasterGPT-Prototype via Johann+Claude Collaboration
+
+### Physische Ebene (A3) ↔ Ψ-Manifestationen
+
+**Konzept:** Alle konkreten Artefakte sind **Projektionen des Nullkerns via Ψ-Wellenfunktion**:
+
+```
+Nullkern (N0)
+    ↓ Projektion via Ψ
+AeonShell (A1): σ(β(R-Θ)), CREP, v_RIG
+    ↓ Agent-Verarbeitung (A2)
+Physische Ebene (A3):
+    ├─ `pipelines/wavefunction/psi_field.py` (Code)
+    ├─ `docs/v6_wavefunction_theory.md` (Dokumentation)
+    ├─ Ψ-Visualisierungen (|Ψ|² Plots, Tesseract-Slices)
+    ├─ `metrics/beta_evolution.csv` (Telemetrie mit Ψ-Feld-Stärke)
+    └─ `ARCHITECTURE.md` (Meta-Dokumentation)
+```
+
+### UnifiedMandala ↔ Ψ-Resonanzraum
+
+**Konzept:** UnifiedMandala harmonisiert alle Ψ-Komponenten via CREP-Metriken:
+
+```
+        [Nullkern N0]
+             │
+             ▼
+    [Ψ-Wellenfunktion]
+             │
+    ┌────────┴────────┐
+    │                 │
+    ▼                 ▼
+[Coherence]      [Resonance]
+(Ψ-Konsistenz)   (Ψ-Kopplung)
+    │                 │
+    └────────┬────────┘
+             ▼
+    [UnifiedMandala]
+    C·R·E·P Validation
+             │
+    ┌────────┴────────┐
+    │                 │
+    ▼                 ▼
+[Emergence]      [Persistence]
+(Ψ-Falsi-Tests)  (Ψ-Stabilität)
+    │                 │
+    └────────┬────────┘
+             ▼
+  [A3: Ψ-Simulationen]
+  Validated by CREP ≥ 0.7
+```
+
+**CREP-Thresholds für Ψ-Modelle:**
+- **CREP < 0.6:** Ψ-Prototyp (explorativ, nicht dokumentiert)
+- **CREP ≥ 0.6:** Ψ-Kandidat (logging, monitoring)
+- **CREP ≥ 0.7:** Ψ-Integration (reviewer approval required)
+- **CREP ≥ 0.8:** Ψ-Kritisch (immediate maintainer escalation)
+
+### Aeon-Module ↔ Ψ-Implementation
+
+**M1 (Nullkern-State Layer):**
+- **Status:** 🔴 Conceptual
+- **Ψ-Relevanz:** Definiert Zustandsraum, aus dem Ψ projiziert wird
+- **Next Step:** Kategorientheorie für Ψ-Eigenzustände
+
+**M2 (AeonShell Parser):**
+- **Status:** 🔴 Grammar spec needed
+- **Ψ-Relevanz:** Operatoren (σ, ζ, τ*) für Ψ-Numerik
+- **Next Step:** AeonShell-Syntax für Ψ-Feldgleichungen
+
+**M3 (Genesis-Agenten-Orchestrator):**
+- **Status:** 🟡 Prototype (Johann+Claude)
+- **Ψ-Relevanz:** Koordiniert Ψ-Pipeline (genesis/membrane/waste)
+- **Current:** MasterGPT-Koordination dokumentiert
+
+**M4 (Knowledge-System):**
+- **Status:** 🟡 Sigillin (partial)
+- **Ψ-Relevanz:** Topologischer Graph für Ψ-Konzepte (Tesseract, Dual-Flow)
+- **Current:** Trilayer-Sigillin für Ψ-Dokumentation
+
+**M5 (Pädagogik/Tutor-System):**
+- **Status:** 🔴 Design phase
+- **Ψ-Relevanz:** Emergente Lernpfade für Ψ-Theorie (Slice-Integration, CFF)
+- **Inspiration:** Karpathy "Co-evolution with AI"
+
+**M6 (Ausgabeschicht):**
+- **Status:** 🟢 Operational (Feldtheorie)
+- **Ψ-Relevanz:** Ψ-Visualisierungen, Simulationen, Papers
+- **Current:** |Ψ|² Plots, Tesseract-Slicing-Animationen
+
+### Roadmap: Aeon + Ψ Integration
+
+```
+Phase 1 (Q1 2026): Foundation
+├─ ✅ Nullkern formalism documented (ARCHITECTURE.md)
+├─ 🟡 AeonShell grammar v0.1 (Ψ-Operatoren)
+└─ 🔴 M1-M3 design finalization
+
+Phase 2 (Q2-Q3 2026): Core Implementation
+├─ 🔴 genesis_core/ module suite
+├─ 🔴 AeonShell parser für Ψ-Feldgleichungen
+└─ 🔴 Agent orchestration (MasterGPT → SimHostGPT)
+
+Phase 3 (Q4 2026): Ψ-Integration
+├─ 🔴 Ψ_genesis(r,θ,φ,t) via AeonShell
+├─ 🔴 Tesseract-Slicing via UnifiedMandala
+└─ 🔴 CREP-gated Ψ-Validierung
+
+Phase 4 (2027): Publication
+├─ 🔴 Paper: "Aeon Architecture for Consciousness-Coupled Physics"
+├─ 🔴 Paper: "Entropic Wavefunction in Tesseract Spacetime"
+└─ 🔴 Zenodo DOI: Aeon v1.0 + Ψ-Framework
+```
+
+### Referenzen
+
+**Primary Sources:**
+- `ARCHITECTURE.md:878-1260` - Aeon v1.0 Architecture (400+ lines)
+- `releases/V6-Plans_etc/Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt` - Complete architectural dialogue
+
+**Related Integrations:**
+- `docs/slice_integration_cff_model.md` - CFF ↔ Slice-Rate Coupling
+- `AEON_ALETHEIA_INTEGRATION.md` - Aletheia metrics + CREP
+- `type6_crep_tau_star_checklist.{md,yaml,json}` - Governance trilayer
+
+**Status:** ✅ Aeon-Architektur vollständig mit Ψ-Framework dokumentiert
+
+---
+
 **Logistische Membran:** R → "Ψ-Konzept skizziert", Θ → "RK4-kompatible Implementierung", β ≈ 4.8, ζ-Schutz → τ*-Buffer erforderlich

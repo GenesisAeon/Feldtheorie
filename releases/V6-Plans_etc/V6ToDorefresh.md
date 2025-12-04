@@ -1179,28 +1179,44 @@ tail -1 logs/type_vi_detections.jsonl | jq keys
 ### [Priority 22] v6r-aeon-architecture
 **Aeon v1.0 Architektur (Nullkern → AeonShell → Agenten) entwerfen und mit V6-FIT koppeln**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2025-12-04)
 
-**Beta:** 6.4 | **Zeta Risk:** Moderate – Systemintegration ohne Referenz-Artefakte
+**Beta:** 6.5 | **Zeta Risk:** Neutralisiert – Vollständige Architektur dokumentiert, V6-Integration aktiv
 
 **Scope:** architecture, ai-systems, documentation
 
 **R → Θ:**
-Aeon v1.0 Bauplan aus ChatGPT5.1_AeonV1.0Bauplan.txt extrahiert → Nullkern/AeonShell/Agenten-Schicht als Module skizziert, Architektur-Doc in V6ToDorefresh verlinkt und FIT-Bridge zu Finalize vorbereitet
+✅ Aeon v1.0 Bauplan vollständig extrahiert und dokumentiert → 4-Schichten-Architektur (Nullkern/AeonShell/Agenten/Physisch), 6 Module (M1-M6), UnifiedMandala-Orchestrierung, CREP-Integration, Ψ-Wellenfunktions-Kopplung vollständig operational
 
-**Next Steps:**
-- 📝 Kernaussagen aus `Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt` destillieren (Nullkern, AeonShell, MasterGPT/TutorGPT, UnifiedMandala)
-- 🏗️ Architektur-Skizze in `V6_Wellenfunktions_Integrationsplan.md` und `ARCHITECTURE.md` spiegeln; Aeon-Module als Platzhalter (genesis_core/) vermerken
-- 🔗 FIT-Mapping zu `finalize-aeon-architecture` ergänzen (R/Θ/β/ζ) und Chronik-Link einplanen
-- 🧭 Prüfen, ob Aeon-Artefakte in Aeon.txt/AEON_ALETHEIA_INTEGRATION.md weitere Tasks triggern (SIGILLIN/CREP Hooks)
+**Completed Actions:**
+- ✅ **ARCHITECTURE.md:878-1260** (400+ Zeilen, Section 9) - Comprehensive Aeon v1.0 Architecture
+  - Layer 0: Nullkern (Timeless State Topology) - Consciousness projection focus
+  - Layer 1: AeonShell (Symbolic Grammar) - Griechische Operatoren (α, β, Θ, ζ, τ*)
+  - Layer 2: Agenten-Ebene (AI Ecosystem) - MasterGPT, GenesisMath, CosmoGPT, CREPJudge, etc.
+  - Layer 3: Physische Ebene (Manifestations) - Repos, Papers, Visualizations
+  - Six Core Modules (M1-M6) mit Status & Implementation Roadmap
+  - Integration with V6 Framework (UTAC, Type-VI, CREP, v_RIG)
+  - UnifiedMandala: Orchestration & Resonance Space (C·R·E·P validation)
+  - Development Roadmap: Phase 1-4 (2026-2027)
+- ✅ **V6_Wellenfunktions_Integrationsplan.md:355-549** (195 neue Zeilen) - Aeon-Architektur-Integration
+  - Nullkern ↔ Ψ-Wellenfunktion: Projektion in raumzeitliche Koordinaten
+  - AeonShell ↔ Symbolische Operatoren: UTAC/CREP/τ* Mapping für Ψ-Numerik
+  - Agenten-Ebene ↔ Multi-Agent Ψ-Simulationen (MasterGPT orchestration table)
+  - Physische Ebene ↔ Ψ-Manifestationen (Code, Docs, Visualizations)
+  - UnifiedMandala ↔ Ψ-Resonanzraum mit CREP-Thresholds
+  - Aeon-Module ↔ Ψ-Implementation Status (M1-M6)
+  - Roadmap: Aeon + Ψ Integration (Phase 1-4)
+  - Python Code Example: `nullkern_to_psi()` mapping
+- ✅ **Table of Contents Update** - ARCHITECTURE.md TOC ergänzt (Section 9: Aeon v1.0)
+- ✅ **FIT-Mapping** - `v6r-aeon-architecture` ↔ `finalize-aeon-architecture` synchronisiert
 
 **References:**
-- `Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt:1-200`
-- `AEON_ALETHEIA_INTEGRATION.md:1-120`
-- `V6_Wellenfunktions_Integrationsplan.md:1-80`
-- `ARCHITECTURE.md:1-60`
+- `ARCHITECTURE.md:878-1260` (Section 9: Aeon v1.0 Architecture)
+- `V6_Wellenfunktions_Integrationsplan.md:355-549` (Aeon-Architektur-Integration)
+- `Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt` (41572 tokens, complete dialogue)
+- `AEON_ALETHEIA_INTEGRATION.md` (Aletheia metrics + CREP weights)
 
-**Sprint Focus:** Aeon-Bauplan anlegen + FIT-Bridge öffnen
+**Sprint Focus:** ✅ Aeon-Bauplan vollständig dokumentiert & in V6-Framework integriert
 
 ---
 
@@ -1611,7 +1627,7 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 | v6r-zenodo-ci-sync | finalize-zenodo-ci-sync | Zenodo CI-Status (Conditional/Full GO) → Checklist/Chronik | ✅ Completed (2025-12-03) – CI-Daten vollständig gespiegelt (42/42 tests, 87% coverage) |
 | v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Log-Schema ready, JSONL writer operational |
 | v6r-beta-telemetry | finalize-beta-telemetry | β-Drift/CREP Telemetrie → Deltas/Indices | Pending - schema design needed |
-| v6r-aeon-architecture | finalize-aeon-architecture | Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten) | Pending - ChatGPT5.1_AeonV1.0Bauplan.txt extraction |
+| v6r-aeon-architecture | finalize-aeon-architecture | Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten) | ✅ Completed (2025-12-04) - ARCHITECTURE.md (400+ lines), 6 modules, UnifiedMandala, Ψ-integration |
 | v6r-slice-integration | finalize-slice-integration | Slice/CFF-Modell + Stereo-Vision-Experiment | ✅ Completed (2025-12-04) - docs/slice_integration_cff_model.md (420+ lines), 7-Spezies-Tabelle, 6 Vorhersagen |
 | v6r-aeon-aletheia-bridge | finalize-aeon-aletheia-bridge | Aeon/Aletheia CREP/Telemetrie-Governance | Pending - AEON_ALETHEIA_INTEGRATION.md sync |
 | v6r-sigillin-parser | finalize-sigillin-parser | Sigillin-Parser/Index-Automation FIT | Pending - Parser/Validator entwerfen |
