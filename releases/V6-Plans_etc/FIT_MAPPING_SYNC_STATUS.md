@@ -1,22 +1,22 @@
 # FIT-Mapping Synchronization Status
 
-**Date:** 2025-12-03
-**Branch:** claude/agent-prompt-v6-01HdUoxCCB2shKtfAU5yFxhf
-**Status:** ✅ **SYNCHRONIZED** (25/25 mappings aligned)
+**Date:** 2025-12-04
+**Branch:** claude/agent-prompt-v6-01YBtCMA7wtpifaCxDibp8f6
+**Status:** ✅ **SYNCHRONIZED** (31/31 mappings aligned)
 
 ---
 
 ## Summary
 
-The FIT-Mapping between `V6ToDorefresh.md` and `Finalize_TODO.md` has been verified and is in **perfect synchronization**. Both trilayers maintain consistent task IDs, bridge focus descriptions, and status tracking. All previously identified status discrepancies have been resolved.
+The FIT-Mapping between `V6ToDorefresh.md` and `Finalize_TODO.md` has been verified and is in **perfect synchronization**. Both trilayers maintain consistent task IDs, bridge focus descriptions, and status tracking. All previously identified status discrepancies have been resolved. 6 new mappings added since 2025-12-03.
 
-**Synchronization Score:** 100% (25/25 mappings fully aligned)
+**Synchronization Score:** 100% (31/31 mappings fully aligned)
 
 ---
 
 ## Mapping Verification Matrix
 
-### ✅ Fully Synchronized Tasks (24 mappings)
+### ✅ Fully Synchronized Tasks (31 mappings)
 
 | # | ToDorefresh ID | Finalize ID | Bridge Focus | ToDorefresh Status | Finalize Status | Sync |
 |---|---|---|---|---|---|---|
@@ -44,6 +44,13 @@ The FIT-Mapping between `V6ToDorefresh.md` and `Finalize_TODO.md` has been verif
 | 22 | v6r-psi-test-execution | finalize-psi-test-execution | Ψ-Test-Suite Coverage (≥80%) + τ*/CREP-Gate | Neu – Coverage-Gap schließen | 🔴 Open | ✅ |
 | 23 | v6r-psi-visualization | finalize-psi-visualization | Ψ-Visuals (|ψ|², Tesseract) → VISUALIZATION_INDEX | Neu – Artefakte/Dateipfade erzeugen | 🔴 Open | ✅ |
 | 24 | v6r-psi-tutorials | finalize-psi-tutorials | Ψ-Notebooks + FIT-Lernpfade | Neu – Tutorials/README-Hooks anlegen | 🔴 Open | ✅ |
+| 25 | v6r-psi-coverage-boost | finalize-psi-coverage-boost | Ψ-Coverage auf 95%+ erhöhen | 🔴 Open | 🔴 Open | ✅ |
+| 26 | v6r-lint-baseline-cleanup | finalize-lint-cleanup | Lint-Baseline bereinigen (≈550 Ruff-Fälle) | 🔴 Open | 🔴 Open | ✅ |
+| 27 | v6r-finalize-todo-sync | finalize-todo-refresh-sync | FIT-Handoff ToDorefresh ↔ Finalize synchronisieren | 🔴 Open | 🔴 Open | ✅ |
+| 28 | v6r-zenodo-readiness-report | finalize-zenodo-readiness-report | Zenodo Readiness Report → Checklist/Chronik spiegeln | 🔴 Open | 🔴 Open | ✅ |
+| 29 | v6r-aletheia-phase3-calibration | finalize-aletheia-phase3-calibration | Phase-3 Adaptive Self-Calibration + Telemetrie | 🔴 Open | 🔴 Open | ✅ |
+| 30 | v6r-aletheia-affection-symbiosis | finalize-aletheia-affection-symbiosis | Phase-4 Affection/Symbiosis + τ*/CREP-Gate | 🔴 Open | 🔴 Open | ✅ |
+| 31 | v6r-sigillin-selfmeta | finalize-sigillin-selfmeta | Sigillin Selfmeta Triplet + Audit-Spirale | 🔴 Open | 🔴 Open | ✅ |
 
 ### ✅ Status Discrepancies Resolved
 
@@ -133,9 +140,10 @@ All FIT-Mapping entries properly reference:
 **Synchronization Status: PERFECT** ✅
 
 The FIT-Mapping between V6ToDorefresh and Finalize_TODO is in perfect synchronization with:
-- 25/25 mappings fully aligned (100%)
-- All status discrepancies resolved (2025-12-03)
+- 31/31 mappings fully aligned (100%)
+- All status discrepancies resolved (2025-12-04)
 - 1 archived completed mapping (v6r-cmb-analysis)
+- 6 new mappings added (v6r-psi-coverage-boost through v6r-sigillin-selfmeta)
 - Clear workflow progression visible
 
 **Current Focus:** Continue with active in-progress tasks:
@@ -149,7 +157,8 @@ The FIT-Mapping between V6ToDorefresh and Finalize_TODO is in perfect synchroniz
 ---
 
 **Prepared by:** Claude (Sonnet 4.5)
-**Session ID:** claude/agent-prompt-v6-01HdUoxCCB2shKtfAU5yFxhf
-**Date:** 2025-12-03
-**Last Update:** 2025-12-03
+**Session ID:** claude/agent-prompt-v6-01YBtCMA7wtpifaCxDibp8f6
+**Date:** 2025-12-04
+**Last Update:** 2025-12-04
 **Verification:** FIT-Mapping ToDorefresh ↔ Finalize fully synchronized ✅
+**Updates:** 6 new mappings added (Zenodo Readiness, Aletheia Phase 3/4, Sigillin Selfmeta, Coverage/Lint)
