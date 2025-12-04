@@ -1,0 +1,61 @@
+{
+  "generated_at": "2025-12-04",
+  "total_triplets": 3,
+  "total_errors": 8,
+  "total_warnings": 2,
+  "triplets": [
+    {
+      "sigil_id": "unknown",
+      "title": "untitled",
+      "version": "unknown",
+      "status": "unknown",
+      "json_path": "archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_core.sigil.json",
+      "yaml_path": null,
+      "md_path": "archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_core.md",
+      "field_type": "unknown",
+      "beta_window": null,
+      "crep_index": null
+    },
+    {
+      "sigil_id": "unknown",
+      "title": "untitled",
+      "version": "unknown",
+      "status": "unknown",
+      "json_path": "archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_extended.sigil.json",
+      "yaml_path": null,
+      "md_path": "archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_extended.md",
+      "field_type": "unknown",
+      "beta_window": null,
+      "crep_index": null
+    },
+    {
+      "sigil_id": "sigillin_selfmeta_v1",
+      "title": "Sigillin Reflexivsystem",
+      "version": "1.0.0",
+      "status": "active",
+      "json_path": "docs/meta/sigillin_selfmeta.sigil.json",
+      "yaml_path": "docs/meta/sigillin_selfmeta.yaml",
+      "md_path": "docs/meta/sigillin_selfmeta.md",
+      "field_type": "meta-system/reflective",
+      "beta_window": [
+        6.2,
+        6.8
+      ],
+      "crep_index": 0.91
+    }
+  ],
+  "errors": [
+    "archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_core.sigil.json: Missing required field 'sigil_id'",
+    "archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_core.sigil.json: Missing required field 'title'",
+    "archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_core.sigil.json: Missing required field 'version'",
+    "archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_core.sigil.json: Missing required field 'status'",
+    "archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_extended.sigil.json: Missing required field 'sigil_id'",
+    "archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_extended.sigil.json: Missing required field 'title'",
+    "archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_extended.sigil.json: Missing required field 'version'",
+    "archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_extended.sigil.json: Missing required field 'status'"
+  ],
+  "warnings": [
+    "Missing YAML companion for archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_core.sigil.json",
+    "Missing YAML companion for archive/v3_ideas/NextVersionmaybe/Aeon-Packet/sigillin_mor_fit_extended.sigil.json"
+  ]
+}

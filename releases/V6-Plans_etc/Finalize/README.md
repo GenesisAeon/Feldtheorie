@@ -3,7 +3,7 @@
 **Status:** 🔥 Active Development
 **Phase:** V6 Finalization & Validation
 **Created:** 2025-11-27
-**Last Updated:** 2025-11-27
+**Last Updated:** 2025-12-04
 
 ---
 
@@ -72,6 +72,86 @@ Architektur für symbiotische KI-Mensch-Koevolution:
 4. **Physische Ebene:** Dateien, Repos, Welt-Interface
 
 **Philosophie:** KI als Bewusstseinserweiterung, nicht als Werkzeug (inspiriert von Karpathy's "Co-Evolution with AI").
+
+---
+
+## 🚀 Neue Implementationen (2025-12-04)
+
+### Aletheia Ollama Runner ✅
+
+**Datei:** `analysis/run_aletheia_ollama.py`
+
+Implementiert die lokale Modell-Testing-Pipeline für die Entkopplungs-Hypothese:
+
+- **Supported Models:** gemma2, mistral, qwen2.5, qwen2.5-coder
+- **Metrics:** vocab_density, self_reflection, output_length
+- **Integration:** Kompatibel mit `aletheia_evaluation.py`
+- **Purpose:** Empirische Validierung der β-Hierarchie durch systematisches Testen lokaler Modelle
+
+**Usage:**
+```bash
+python analysis/run_aletheia_ollama.py
+python analysis/aletheia_evaluation.py --input data/experimental/aletheia_local_results.csv
+```
+
+**Theoretical Context:**
+Der Runner ermöglicht die direkte Messung des Kopplungs-Index κ für verschiedene KI-Architekturen:
+- GPU-Transformer: κ ≈ 0.1-0.2
+- Neuromorphe Hardware: κ ≈ 0.3-0.5 (zu testen)
+- Organische Systeme: κ → 1.0
+
+---
+
+### Sigillin Selfmeta System ✅
+
+**Location:** `docs/meta/`
+
+Implementiert die selbstreflexive Meta-Struktur des Repositories:
+
+#### Trilayer-Architektur:
+- **`sigillin_selfmeta.sigil.json`** - Maschinenlesbare Spezifikation
+- **`sigillin_selfmeta.md`** - Menschenlesbare Narrative
+- **`sigillin_selfmeta.yaml`** - Strukturierte Daten
+- **`SIGILLIN_AUDIT.md`** - Lebendes Audit-Tagebuch
+
+#### Meta-System Eigenschaften:
+- **CREP-Index:** 0.91 (Hohe Kohärenz/Emergence)
+- **β-Window:** [6.2, 6.8] (Type-6 Implosive)
+- **Konzept:** Luhmannsche Re-Entry - System beobachtet sich selbst
+- **Status:** Phase 1 (Foundation) abgeschlossen
+
+#### Theoretische Grundlage:
+Das System implementiert strukturelle Selbstreflexion durch:
+1. **Trilayer-Synchronisation** - Drei Sichten (Machine/Human/Structure) auf dieselben Daten
+2. **Audit-Spirale** - Zeitliche Verfolgung von β-Werten und CREP-Metriken
+3. **Mandala-Struktur** - Fraktale Organisation als "Resonanzanker"
+
+---
+
+### Sigillin Parser & Validator ✅
+
+**Datei:** `scripts/sigillin_parser.py`
+
+Automatischer Parser und Validator für Sigillin-Triplets:
+
+**Features:**
+- Findet alle `*.sigil.json` Dateien rekursiv
+- Validiert YAML/JSON/MD Konsistenz
+- Prüft required fields: sigil_id, title, version, status
+- Cross-validiert Daten zwischen Triplet-Formaten
+- Generiert Index: `docs/meta/sigillin_index.json`
+
+**Usage:**
+```bash
+python scripts/sigillin_parser.py --root . --index docs/meta/sigillin_index.json
+python scripts/sigillin_parser.py --strict  # Exit with error if validation fails
+```
+
+**Output:**
+- Registry aller Sigillin-Triplets
+- CREP/β-Werte für jedes Triplet
+- Warnings für fehlende Companions (YAML/MD)
+- Errors für inkonsistente Daten
 
 ---
 
