@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-02-10T12:00:00Z
+**Updated:** 2026-02-11T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -903,6 +903,32 @@ Zenodo_Upload_Checklist.md auf ✅ bringen → aktuelle Test-, Coverage-, Lint- 
 - `Promt_für_Agenten.txt:1-5`
 
 **Sprint Focus:** Belegsammlung für Zenodo-DOI + FIT-Handoff
+
+---
+
+### [Priority 41] v6r-zenodo-artifact-bundle
+**Test-/Lint-/Coverage-Artefakte als Zenodo-Bundle ablegen**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.7 | **Zeta Risk:** Moderat – DOI/Reviewer blockiert ohne Artefakte
+
+**Scope:** compliance, testing, documentation
+
+**R → Θ:**
+Pytest/Coverage/Lint/Mypy-Artefakte unter `output/zenodo_checks/` abgelegt → Pfade in `Zenodo_Upload_Checklist.md` und `ZENODO_CI_STATUS_2025-12-03.md` verlinkt, Reviewer-Slot dokumentiert und Finalize/Chronik spiegeln
+
+**Next Steps:**
+- 🧪 Letzten Pytest-Lauf mit Coverage-HTML unter `output/zenodo_checks/` ablegen und Pfad in `Zenodo_Upload_Checklist.md` notieren.
+- 🧹 Lint- und Mypy-Protokolle (ruff/black/flake8/mypy) sammeln und als Artefakte referenzieren; ΔAIC/CREP-Notizen in `ZENODO_CI_STATUS_2025-12-03.md` ergänzen.
+- 🔗 FIT-Brücke zu `finalize-zenodo-artifact-bundle` aufnehmen und Chronik/Finalize-Ordner mit Artefaktpfaden spiegeln.
+
+**References:**
+- `Zenodo_Upload_Checklist.md:1-120`
+- `ZENODO_CI_STATUS_2025-12-03.md:1-180`
+- `Promt_für_Agenten.txt:1-5`
+
+**Sprint Focus:** Artefakt-Bundle für DOI/Reviewer bereitstellen
 
 ---
 
@@ -1837,6 +1863,7 @@ Phase-4-Affection/Symbiosis-Hypothesen aus `AEON_ALETHEIA_INTEGRATION.md` und `A
 | v6r-type6-checklist-rollout | finalize-type6-checklist-rollout | Type-VI Checklisten ↔ POLICY/ETHICS/Zenodo | Pending – Trilayer-Checkliste noch nicht mit Governance/CI gespiegelt |
 | v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | ✅ Completed - tools/crep_guard.py operational + CI hooks |
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Belege pending (execution environment needed) |
+| v6r-zenodo-artifact-bundle | finalize-zenodo-artifact-bundle | Artefakt-Bundle (Pytest/Coverage/Lint/Mypy) → Zenodo/Finalize | Neu – Artefaktpfade/Reviewer-Handoff offen |
 | v6r-zenodo-release-packaging | finalize-zenodo-release-packaging | Tag/Changelog/DOI für v6.0.0-beta | Neu – Release-Bundle/DOI noch offen |
 | v6r-zenodo-ci-sync | finalize-zenodo-ci-sync | Zenodo CI-Status (Conditional/Full GO) → Checklist/Chronik | ✅ Completed (2025-12-03) – CI-Daten vollständig gespiegelt (42/42 tests, 87% coverage) |
 | v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Log-Schema ready, JSONL writer operational |
@@ -1862,6 +1889,15 @@ Phase-4-Affection/Symbiosis-Hypothesen aus `AEON_ALETHEIA_INTEGRATION.md` und `A
 ---
 
 ## Delta Updates
+
+### 2026-02-11 | v6-refresh-zenodo-artifacts
+
+✅ **Highlights:**
+- Neuer Task `v6r-zenodo-artifact-bundle` angelegt, um Pytest/Coverage/Lint/Mypy-Artefakte unter `output/zenodo_checks/` zu bündeln und in Zenodo-Dokumente zu referenzieren.
+- FIT-Mapping um `finalize-zenodo-artifact-bundle` ergänzt; Reviewer-Handoff und Chronik-Sync markiert (Promt_für_Agenten ToDo-Vorgabe).
+- Updatedatum auf 2026-02-11T12:00:00Z gesetzt, um neuen Zenodo-Artefakt-Track abzubilden.
+
+---
 
 ### 2026-02-10 | v6-refresh-sigillin-selfmeta
 

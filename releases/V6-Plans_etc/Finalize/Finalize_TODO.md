@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-02-10T12:00:00Z
+**Updated:** 2026-02-11T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -657,6 +657,32 @@ Zenodo_Upload_Checklist.md (Abschnitt I–III) mit realen Test-/Lint-/Mypy-/Cove
 
 ---
 
+### [Priority 41] finalize-zenodo-artifact-bundle
+**Test-/Lint-/Coverage-Artefakte im Finalize-Layer bündeln**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.7 | **Zeta Risk:** Moderat – DOI/Reviewer blockiert ohne Artefakte
+
+**Scope:** compliance, testing, documentation
+
+**R → Θ:**
+`output/zenodo_checks/` enthält Pytest/Coverage/Lint/Mypy-Artefakte → Pfade in `Zenodo_Upload_Checklist.md` und `ZENODO_CI_STATUS_2025-12-03.md` verlinkt, Reviewer-Slot im Finalize-Delta dokumentiert
+
+**Next Steps:**
+- 🧪 Pytest- und Coverage-HTML-Reports unter `output/zenodo_checks/` ablegen und in `Zenodo_Upload_Checklist.md` referenzieren.
+- 🧹 Lint/Mypy-Protokolle (ruff/black/flake8/mypy) dokumentieren; ΔAIC/CREP-Notizen in `ZENODO_CI_STATUS_2025-12-03.md` ergänzen.
+- 🔗 FIT-Handoff zu `v6r-zenodo-artifact-bundle`/Chronik eintragen und Reviewer-Slot im Finalize-Delta markieren.
+
+**References:**
+- `../Zenodo_Upload_Checklist.md:1-120`
+- `../ZENODO_CI_STATUS_2025-12-03.md:1-180`
+- `../V6ToDorefresh.md:880-940`
+
+**Sprint Focus:** Artefakt-Bundle im Finalize-Track verankern
+
+---
+
 ### [Priority 31] finalize-zenodo-release-packaging
 **v6.0.0-beta Tag/Changelog/DOI im Finalize-Track abschließen**
 
@@ -1278,6 +1304,7 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 | v6r-type6-checklist-rollout | finalize-type6-checklist-rollout | Type-VI Checklisten ↔ POLICY/ETHICS/Zenodo | Neu angelegt, Trilayer-Checkliste noch zu spiegeln |
 | v6r-crep-guard-ci | finalize-crep-guard-ci | CREP/τ*-CI-Guard | Log-Writer aktiv, CI-Hook offen |
 | v6r-zenodo-evidence | finalize-zenodo-evidence | Zenodo-Checkliste mit Test-/Lint-Belegen + Provenienz-Links | Neu angelegt, Belege ausstehend |
+| v6r-zenodo-artifact-bundle | finalize-zenodo-artifact-bundle | Artefakt-Bundle (Pytest/Coverage/Lint/Mypy) → Zenodo/Finalize | Neu – Artefaktpfade/Reviewer-Handoff offen |
 | v6r-zenodo-release-packaging | finalize-zenodo-release-packaging | Tag/Changelog/DOI für v6.0.0-beta | Neu – Release-Bundle/DOI noch offen |
 | v6r-zenodo-ci-sync | finalize-zenodo-ci-sync | Zenodo CI-Status (Conditional→Full GO) → Checklist/Chronik | ✅ Completed (2025-12-03) – CI-Daten vollständig gespiegelt |
 | v6r-zenodo-readiness-report | finalize-zenodo-readiness-report | Readiness Report → Checklist/Chronik/CI Sync | Neu – Readiness-Blöcke noch nicht gespiegelt |
@@ -1306,6 +1333,15 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 ---
 
 ## Delta Updates
+
+### 2026-02-11 | finalize-zenodo-artifacts
+
+✅ **Highlights:**
+- Neuer Task `finalize-zenodo-artifact-bundle` ergänzt, um Pytest/Coverage/Lint/Mypy-Artefakte unter `output/zenodo_checks/` zu bündeln und in Zenodo-Dokumenten zu referenzieren.
+- FIT-Mapping `v6r-zenodo-artifact-bundle ↔ finalize-zenodo-artifact-bundle` hinzugefügt; Reviewer-Handoff und Chronik-Sync markiert.
+- Updatedatum auf 2026-02-11T12:00:00Z angehoben, damit neuer Artefakt-Track reflektiert wird.
+
+---
 
 ### 2026-02-10 | finalize-sigillin-selfmeta
 

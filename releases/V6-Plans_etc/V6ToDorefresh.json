@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2026-02-10T12:00:00Z",
+    "updated_at": "2026-02-11T12:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -37,6 +37,7 @@
         "v6r-finalize-bridge",
         "v6r-crep-guard-ci",
         "v6r-zenodo-evidence",
+        "v6r-zenodo-artifact-bundle",
         "v6r-zenodo-release-packaging",
         "v6r-zenodo-ci-sync",
         "v6r-zenodo-readiness-report",
@@ -1103,6 +1104,53 @@
       ],
       "priority": 18,
       "sprint_focus": "Belegsammlung für Zenodo-DOI + FIT-Handoff"
+    },
+    {
+      "id": "v6r-zenodo-artifact-bundle",
+      "title": "Test-/Lint-/Coverage-Artefakte als Zenodo-Bundle ablegen",
+      "status": "open",
+      "completeness": "CI-Metriken vorhanden; Artefaktpfade und Reviewer-Handoff fehlen für DOI/Finalize.",
+      "scope": [
+        "compliance",
+        "testing",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "Alle Pytest/Coverage/Lint/Mypy-Artefakte liegen unter output/zenodo_checks/ mit Referenzen in Zenodo-Docs",
+        "Theta_condition": "Zenodo_Upload_Checklist.md + ZENODO_CI_STATUS_2025-12-03.md verlinken Artefaktpfade; Reviewer-Slot dokumentiert",
+        "beta_estimate": 5.7,
+        "zeta_risk": "moderat – DOI/Reviewer blockiert ohne Artefakte"
+      },
+      "next_steps": [
+        "Letzten Pytest-Lauf mit Coverage-HTML unter output/zenodo_checks/ ablegen und Pfad in Zenodo_Upload_Checklist.md notieren.",
+        "Lint- und Mypy-Protokolle sammeln (ruff/black/flake8/mypy) und als Artefakte referenzieren; ΔAIC/CREP-Notizen in ZENODO_CI_STATUS_2025-12-03.md ergänzen.",
+        "FIT-Brücke zu finalize-zenodo-artifact-bundle aufnehmen und Chronik/Finalize-Ordner mit Artefaktpfaden spiegeln."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md",
+          "lines": [
+            1,
+            180
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Promt_für_Agenten.txt",
+          "lines": [
+            1,
+            5
+          ]
+        }
+      ],
+      "priority": 41,
+      "sprint_focus": "Artefakt-Bundle für DOI/Reviewer bereitstellen"
     },
     {
       "id": "v6r-zenodo-readiness-report",
@@ -2323,6 +2371,12 @@
       "status": "open"
     },
     {
+      "todo_id": "v6r-zenodo-artifact-bundle",
+      "finalize_id": "finalize-zenodo-artifact-bundle",
+      "bridge_focus": "Test/Lint/Coverage-Artefakte → Zenodo/Finalize spiegeln",
+      "status": "mapping-added"
+    },
+    {
       "todo_id": "v6r-tau-star-guardrails",
       "finalize_id": "finalize-tau-star-guardrails",
       "bridge_focus": "τ*-Safety + CREP-Reviewer-Gate",
@@ -2516,6 +2570,15 @@
     }
   ],
   "delta_updates": [
+    {
+      "date": "2026-02-11",
+      "label": "v6-refresh-zenodo-artifacts",
+      "highlights": [
+        "Neuer Task v6r-zenodo-artifact-bundle angelegt, um Pytest/Coverage/Lint/Mypy-Artefakte unter output/zenodo_checks/ zu bündeln und in Zenodo-Dokumente zu referenzieren.",
+        "FIT-Mapping um finalize-zenodo-artifact-bundle ergänzt; Reviewer-Handoff und Chronik-Sync markiert (Promt_für_Agenten ToDo-Vorgabe).",
+        "metadata.updated_at auf 2026-02-11T12:00:00Z gesetzt, um neuen Zenodo-Artefakt-Track widerzuspiegeln."
+      ]
+    },
     {
       "date": "2026-02-10",
       "label": "v6-refresh-sigillin-selfmeta",
