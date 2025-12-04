@@ -958,26 +958,69 @@ Zenodo_Upload_Checklist.md auf ✅ bringen → aktuelle Test-, Coverage-, Lint- 
 ### [Priority 20] v6r-tau-star-ci-hook
 **CI/Pre-Commit-Guard für τ*-Default + CREP-Schwellen einsetzen**
 
-**Status:** 🔴 Open
-
-**Beta:** 4.9 | **Zeta Risk:** Hoch – fehlende Gates lassen ζ<0-Läufe durchrutschen
+**Status:** 🟢 Completed (2025-12-04)
+**Beta:** 4.9 | **Zeta Risk:** Neutralisiert – CI/Pre-Commit Gates vollständig operational
 
 **Scope:** ci, governance, validation
 
 **R → Θ:**
-Makefile/nox-Hook ruft `tools/crep_guard.py` mit τ*=0.1·|Θ−R| + CREP ≥0.7 Schwellen auf → Logs landen in `logs/type_vi_detections.jsonl`, Reviewer-Slot aus `MAINTAINERS.md` wird gesetzt
+✅ Makefile/nox/pre-commit-Hook ruft `tools/crep_guard.py` mit τ*=0.1·|Θ−R| + CREP ≥0.7 Schwellen auf → Logs landen in `logs/type_vi_detections.jsonl`, Governance-Kopplung vollständig aktiv
 
-**Next Steps:**
-- 🔧 Makefile-Target `validate-type6` skizzieren: `python -m tools.crep_guard --threshold 0.7 --tau-default 0.1 --checklist releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml --log logs/type_vi_detections.jsonl`.
-- 🧪 Nox/pre-commit-Eintrag ergänzen, der RK4/τ*-Pfad aus `activation_gaps_tau_star.md` prüft und Euler-Methoden blockt.
-- 🧭 Reviewer-Routing dokumentieren (Level 2/3 → `MAINTAINERS.md`), Chronik/Finalize-Deltas auf neuen Hook verweisen.
+**Completed Actions:**
+- ✅ **Makefile-Target `validate-type6`** vollständig operational (Zeile 156)
+  - Test bestätigt: `make validate-type6` → "✅ Type-VI validation complete (CREP threshold 0.7, τ*=0.1·|Θ-R|)"
+  - Ruft `python -m tools.crep_guard --check-type6-trilayer --threshold 0.7 --tau-default 0.1` auf
+  - Audit-Log: `logs/type_vi_detections.jsonl` wird geschrieben
+- ✅ **Pre-Commit Hook `crep-guard-type6`** in `.pre-commit-config.yaml` aktiv
+  - Entry: `python -m tools.crep_guard --check-type6-trilayer --threshold 0.7 --tau-default 0.1`
+  - Language: system, pass_filenames: false
+  - Files pattern: `^releases/V6-Plans_etc/(type6_crep_tau_star_checklist.*|POLICY\.md|ETHICS\.md)$`
+  - Triggert bei Änderungen an Type-VI Governance-Dateien
+- ✅ **tools/crep_guard.py** vollständig implementiert (7775 bytes, executable)
+  - `--check-type6-trilayer`: Validiert MD/JSON/YAML Trilayer-Konsistenz
+  - `--threshold 0.7`: CREP-Schwellenwert für Escalation
+  - `--tau-default 0.1`: τ*-Default (0.1·|Θ-R|) Validierung
+  - Escalation-Levels: 0-3 basierend auf CREP-Werten
+  - JSONL Audit-Trail mit Reviewer-Slots
+- ✅ **Nox Session `crep_guard`** in noxfile.py konfiguriert
+  - Session ruft Makefile-Target auf
+  - Integration mit CI-Pipeline
+- ✅ **Governance-Kopplung dokumentiert:**
+  - POLICY.md Type-VI Safety Addendum (lines 94-108) referenziert τ*-Pflicht
+  - ETHICS.md Type-VI Risk Management (lines 77-214) referenziert Audit-Log
+  - type6_crep_tau_star_checklist.{md,yaml,json} aligned (trilayer validated)
+  - activation_gaps_tau_star.md als Nullmodell/τ*-Begründung verlinkt
+- ✅ **Validation bestätigt:**
+  - Test-Run: `make validate-type6` → ✅ passing
+  - Pre-commit hook tested: Files pattern match verified
+  - Audit-Log: `logs/type_vi_detections.jsonl` existiert und ist beschreibbar
+  - ZENODO_CI_STATUS_2025-12-03.md dokumentiert Full GO status
+
+**CI/Pre-Commit Infrastructure:**
+```bash
+# Makefile Target
+make validate-type6
+# Output: ✅ Type-VI validation complete (CREP threshold 0.7, τ*=0.1·|Θ-R|)
+
+# Pre-Commit Hook (auto-triggers on relevant file changes)
+git commit -m "Update Type-VI governance"
+# Triggers: crep-guard-type6 hook validates trilayer consistency
+
+# Manual Tool Invocation
+python -m tools.crep_guard --check-type6-trilayer --threshold 0.7 --tau-default 0.1
+# Validates Type-VI checklists, logs to logs/type_vi_detections.jsonl
+```
 
 **References:**
-- `activation_gaps_tau_star.md:1-36`
-- `type6_crep_tau_star_checklist.md:1-49`
-- `../tools/crep_guard.py`
+- `Makefile:156` (validate-type6 target)
+- `.pre-commit-config.yaml` (crep-guard-type6 hook)
+- `tools/crep_guard.py` (7775 bytes, executable)
+- `activation_gaps_tau_star.md:1-36` (Nullmodell/τ*-Begründung)
+- `type6_crep_tau_star_checklist.md:1-49` (Trilayer reference)
+- `ZENODO_CI_STATUS_2025-12-03.md:21-31` (CREP/τ* Guard operational)
+- `Zenodo_Upload_Checklist.md:66-87` (Type-VI Governance Compliance ✅)
 
-**Sprint Focus:** τ*-Guard als CI-Gate vorbereiten
+**Sprint Focus:** ✅ τ*-Guard als CI-Gate OPERATIONAL
 
 ---
 
