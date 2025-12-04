@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-01-15T12:00:00Z
+**Updated:** 2026-01-20T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -1344,6 +1344,33 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 
 ---
 
+### [Priority 24b] v6r-aeon-aletheia-telemetry
+**Aletheia-Telemetriepfad in Metrics/Ψ-Pipeline verankern**
+
+**Status:** 🔴 Open
+
+**Beta:** 6.0 | **Zeta Risk:** Moderat – Telemetrie-Handoff fehlt
+
+**Scope:** validation, metrics, documentation
+
+**R → Θ:**
+Datensatz `data/experimental/aletheia_results.csv` und Dialog-Ergebnisse als CREP/β-Telemetrie in `metrics/beta_evolution.csv` und `V6_Wellenfunktions_Integrationsplan.md` verankert → AEON_ALETHEIA-Gewichte fließen in Type-VI Checks
+
+**Next Steps:**
+- 🧪 Aletheia-Resultate (Control/Placebo/Nocebo + Informed-Level) aus `Aletheiaresults_dialog.txt` extrahieren und Datenpfad `data/experimental/aletheia_results.csv` in `V6_Wellenfunktions_Integrationsplan.md` referenzieren.
+- 📊 CREP-Gewichte aus `AEON_ALETHEIA_INTEGRATION.md` als Telemetrie-Quellen in `metrics/beta_evolution.csv` dokumentieren und mit `type6_crep_tau_star_checklist.*` verlinken.
+- 🔗 FIT-Brücke zu `finalize-aeon-aletheia-telemetry` erfassen; Chronik-Notiz für Zenodo/UTAC-Status vorbereiten.
+
+**References:**
+- `AEON_ALETHEIA_INTEGRATION.md:1-80`
+- `Aletheiaresults_dialog.txt:1-36`
+- `V6_Wellenfunktions_Integrationsplan.md:1-120`
+- `type6_crep_tau_star_checklist.yaml:1-120`
+
+**Sprint Focus:** Telemetriepfad + Ψ-Plan koppeln
+
+---
+
 ### [Priority 25] v6r-sigillin-parser
 **Sigillin-Parser & Index-Automation für Trilayer**
 
@@ -1658,6 +1685,7 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 | v6r-aeon-architecture | finalize-aeon-architecture | Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten) | ✅ Completed (2025-12-04) - ARCHITECTURE.md (400+ lines), 6 modules, UnifiedMandala, Ψ-integration |
 | v6r-slice-integration | finalize-slice-integration | Slice/CFF-Modell + Stereo-Vision-Experiment | ✅ Completed (2025-12-04) - docs/slice_integration_cff_model.md (420+ lines), 7-Spezies-Tabelle, 6 Vorhersagen |
 | v6r-aeon-aletheia-bridge | finalize-aeon-aletheia-bridge | Aeon/Aletheia CREP/Telemetrie-Governance | Pending - AEON_ALETHEIA_INTEGRATION.md sync |
+| v6r-aeon-aletheia-telemetry | finalize-aeon-aletheia-telemetry | Aletheia-Daten → β/CREP Telemetrie & Ψ-Plan | Neu angelegt, Telemetrie-Handoff offen |
 | v6r-sigillin-parser | finalize-sigillin-parser | Sigillin-Parser/Index-Automation FIT | Pending - Parser/Validator entwerfen |
 | v6r-metrics-outlier | finalize-metrics-outlier | CREP/ΔAIC Robustheitsmetriken | Pending - METRICS.md Update |
 | v6r-data-lantern-dashboard | finalize-data-lantern-dashboard | Telemetrie-Dashboard + Alerts | Pending - Dashboard/Schema Draft |
@@ -1766,6 +1794,15 @@ als Telemetriequelle (data/experimental/aletheia_results.csv) an UTAC/Chronik an
 - Status-Sync für τ*/CREP-FIT-Tasks (`v6r-type6-governance`, `v6r-tau-star-guardrails`, `v6r-tau-star-ci-hook`) auf 🟢 Completed und mit Finalize-Trilayer verknüpft.
 - FIT-Brücke `v6r-finalize-bridge` abgeschlossen; Mapping-Status auf completed-sync, Delta-Eintrag vorbereitet.
 - Aktualisierte Updated-Timestamps (2026-01-09T18:00:00Z) und JSON/YAML Trilayer regeneriert.
+
+---
+
+### 2026-01-20 | v6-refresh-aeon-aletheia-telemetrie
+
+✅ **Highlights:**
+- Neuer Task `v6r-aeon-aletheia-telemetry` ergänzt, um Aletheia-Datenpfad (`data/experimental/aletheia_results.csv`) in β/CREP-Telemetrie und Ψ-Plan zu spiegeln.
+- FIT-Mapping um `finalize-aeon-aletheia-telemetry` erweitert; Chronik-Handoff für Zenodo/UTAC notiert.
+- Updated-Timestamps (2026-01-20T12:00:00Z) in Trilayer übernommen, Telemetrie-Scope präzisiert.
 
 ---
 

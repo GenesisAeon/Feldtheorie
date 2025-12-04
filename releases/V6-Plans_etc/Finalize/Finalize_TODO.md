@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-01-15T12:00:00Z
+**Updated:** 2026-01-20T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -889,6 +889,33 @@ AEON_ALETHEIA-Governance (CREP-Gewichte, τ*-Buffer) in Finalize-Track integrier
 
 ---
 
+### [Priority 20b] finalize-aeon-aletheia-telemetry
+**Aletheia-Datenpfad in Finalize-Telemetrie & Zenodo-Checks spiegeln**
+
+**Status:** 🔴 Open
+
+**Beta:** 6.0 | **Zeta Risk:** Moderat – Telemetrie/Ψ-Hand-off offen
+
+**Scope:** compliance, metrics, documentation
+
+**R → Θ:**
+`data/experimental/aletheia_results.csv` und Dialog-Summary in Finalize-Deltas verankert → Zenodo/Type-VI Checklisten referenzieren Aletheia-Metriken als β/CREP-Telemetriequelle, Ψ-Plan aktualisiert
+
+**Next Steps:**
+- 🧪 Aletheia-Ergebnisse (Control/Placebo/Nocebo + Informed-Level) aus `../Aletheiaresults_dialog.txt` zusammenfassen und Datenpfad `data/experimental/aletheia_results.csv` in Finalize-Deltas/Chronik notieren.
+- 📊 CREP-Gewichte aus `../AEON_ALETHEIA_INTEGRATION.md` als Telemetrie-Hinweis in `type6_crep_tau_star_checklist.*` und `Zenodo_Upload_Checklist.md` spiegeln.
+- 🔗 FIT-Mapping zu `v6r-aeon-aletheia-telemetry` ergänzen; Zenodo/UTAC-Governance-Hinweis für Ψ/β-Tracking eintragen.
+
+**References:**
+- `../Aletheiaresults_dialog.txt:1-36`
+- `../AEON_ALETHEIA_INTEGRATION.md:1-80`
+- `Zenodo_Upload_Checklist.md:1-120`
+- `../type6_crep_tau_star_checklist.yaml:1-120`
+
+**Sprint Focus:** Telemetrie/Zenodo-Parität herstellen
+
+---
+
 ### [Priority 31] finalize-type6-checklist-rollout
 **Type-VI Checklisten mit Governance/Zenodo/CI synchronisieren**
 
@@ -1171,6 +1198,7 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 | v6r-aeon-architecture | finalize-aeon-architecture | Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten) | Mapping ergänzt, Bauplanextrakt offen |
 | v6r-slice-integration | finalize-slice-integration | Slice/CFF-Modell + Stereo-Vision-Experiment | Handoff geplant, Formeln/Tabellen offen |
 | v6r-aeon-aletheia-bridge | finalize-aeon-aletheia-bridge | Aeon/Aletheia CREP/Telemetrie-Governance | Neu angelegt, Governance-Mapping offen |
+| v6r-aeon-aletheia-telemetry | finalize-aeon-aletheia-telemetry | Aletheia-Daten → β/CREP Telemetrie & Ψ-Plan | Neu angelegt, Telemetrie-Handoff offen |
 | v6r-sigillin-parser | finalize-sigillin-parser | Sigillin-Parser/Index-Automation FIT | Pending - Parser/CI-Gate dokumentieren |
 | v6r-metrics-outlier | finalize-metrics-outlier | CREP/ΔAIC Robustheitsmetriken | Pending - METRICS/Checkliste aktualisieren |
 | v6r-data-lantern-dashboard | finalize-data-lantern-dashboard | Telemetrie-Dashboard + Alerts | Pending - Blueprint/Docs fehlen |
@@ -1194,6 +1222,15 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 - Neuer Task **finalize-zenodo-readiness-report** angelegt, um ZENODO_READINESS_REPORT.md im Finalize-Layer (Checklist + Chronik) zu spiegeln.
 - FIT-Mapping um `v6r-zenodo-readiness-report ↔ finalize-zenodo-readiness-report` ergänzt; Readiness-Blöcke (CI 2025-12-02/03, τ*/CREP-Hinweise) als Handoff notiert.
 - Updatedatum auf 2026-01-15T12:00:00Z angehoben.
+
+---
+
+### 2026-01-20 | finalize-aeon-aletheia-telemetrie
+
+✅ **Highlights:**
+- Neuer Task `finalize-aeon-aletheia-telemetry` ergänzt, um Aletheia-Datenpfad (`data/experimental/aletheia_results.csv`) in Finalize-Deltas/Zenodo-Checks zu spiegeln.
+- FIT-Mapping um `v6r-aeon-aletheia-telemetry` erweitert; Ψ/β-Telemetrie-Handoff und UTAC/Zenodo-Hinweise vermerkt.
+- Updatedatum auf 2026-01-20T12:00:00Z angehoben; Telemetrie-Scope im Trilayer präzisiert.
 
 ---
 

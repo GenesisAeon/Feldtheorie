@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2026-01-15T12:00:00Z",
+    "updated_at": "2026-01-20T12:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -52,7 +52,8 @@
         "finalize-psi-tutorials",
         "finalize-psi-coverage-boost",
         "finalize-lint-cleanup",
-        "finalize-todo-refresh-sync"
+        "finalize-todo-refresh-sync",
+        "finalize-aeon-aletheia-telemetry"
       ],
       "note": "v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation"
     }
@@ -1437,6 +1438,61 @@
       "updated_at": "2025-12-31T10:00:00Z"
     },
     {
+      "id": "finalize-aeon-aletheia-telemetry",
+      "title": "Aletheia-Datenpfad in Finalize-Telemetrie & Zenodo-Checks spiegeln",
+      "status": "open",
+      "completeness": "Aletheia-Datensatz vorhanden; Telemetrie-/Zenodo-Handoffs fehlen.",
+      "scope": [
+        "compliance",
+        "metrics",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "Aletheia-Daten in Finalize-Deltas & Zenodo-Checks gespiegelt",
+        "Theta_condition": "Zenodo/Type-VI Checklisten referenzieren Aletheia-Metriken (β/CREP)",
+        "beta_estimate": 6.0,
+        "zeta_risk": "moderat – Telemetrie/Ψ-Hand-off offen"
+      },
+      "next_steps": [
+        "Aletheia-Ergebnisse (Control/Placebo/Nocebo + Informed-Level) aus ../Aletheiaresults_dialog.txt zusammenfassen und Datenpfad data/experimental/aletheia_results.csv in Finalize-Deltas/Chronik notieren.",
+        "CREP-Gewichte aus ../AEON_ALETHEIA_INTEGRATION.md als Telemetrie-Hinweis in type6_crep_tau_star_checklist.* und Zenodo_Upload_Checklist.md spiegeln.",
+        "FIT-Mapping zu v6r-aeon-aletheia-telemetry ergänzen; Zenodo/UTAC-Governance-Hinweis für Ψ/β-Tracking eintragen."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Aletheiaresults_dialog.txt",
+          "lines": [
+            1,
+            36
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/AEON_ALETHEIA_INTEGRATION.md",
+          "lines": [
+            1,
+            80
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
+          "lines": [
+            1,
+            120
+          ]
+        }
+      ],
+      "priority": 20,
+      "sprint_focus": "Telemetrie/Zenodo-Parität herstellen",
+      "updated_at": "2026-01-20T12:00:00Z"
+    },
+    {
       "id": "finalize-sigillin-parser",
       "title": "Sigillin-Parser & Index-Automation ausrollen (Finalize)",
       "status": "open",
@@ -2013,6 +2069,12 @@
       "status": "new"
     },
     {
+      "todo_id": "v6r-aeon-aletheia-telemetry",
+      "finalize_id": "finalize-aeon-aletheia-telemetry",
+      "bridge_focus": "Aletheia-Daten → β/CREP Telemetrie & Ψ-Plan",
+      "status": "new"
+    },
+    {
       "todo_id": "v6r-sigillin-parser",
       "finalize_id": "finalize-sigillin-parser",
       "bridge_focus": "Sigillin-Parser/Index-Automation FIT",
@@ -2086,6 +2148,15 @@
     }
   ],
   "delta_updates": [
+    {
+      "date": "2026-01-20",
+      "label": "finalize-aeon-aletheia-telemetrie",
+      "highlights": [
+        "Neuer Task finalize-aeon-aletheia-telemetry ergänzt, um Aletheia-Datenpfad in Finalize-Deltas/Zenodo-Checks zu spiegeln.",
+        "FIT-Mapping um v6r-aeon-aletheia-telemetry erweitert; Ψ/β-Telemetrie-Handoff und UTAC/Zenodo-Hinweise vermerkt.",
+        "updated_at auf 2026-01-20T12:00:00Z gesetzt, Telemetrie-Scope präzisiert."
+      ]
+    },
     {
       "date": "2026-01-15",
       "label": "finalize-zenodo-readiness",
