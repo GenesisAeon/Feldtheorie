@@ -2,7 +2,7 @@
   "metadata": {
     "version": "v6-todo-refresh-1.0.0",
     "generated_at": "2025-11-26T15:30:00Z",
-    "updated_at": "2026-02-25T12:00:00Z",
+    "updated_at": "2026-02-26T12:00:00Z",
     "scope": "releases/V6-Plans_etc",
     "description": "Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse - Papers, Formeln, Simulationen",
     "logistic_frame": {
@@ -24,6 +24,7 @@
         "v6r-formulas-collection",
         "v6r-stereo-vision",
         "v6r-stereo-phenomenology",
+        "v6r-deepresearch-lebendigkeits",
         "v6r-utac-crit",
         "v6r-cmb-analysis",
         "v6r-wavefunction-pipeline",
@@ -2641,6 +2642,46 @@
       "priority": 45,
       "sprint_focus": "Stereo-Phänomenologie ↔ Ψ/Telemetrie koppeln",
       "updated_at": "2026-02-24T12:00:00Z"
+    },
+    {
+      "id": "v6r-deepresearch-lebendigkeits",
+      "title": "DeepResearch-Cluster „Lebendigkeits-Kriterium“ (Stereo-Vision & Mikro-Sakkaden) integrieren",
+      "status": "open",
+      "completeness": "DeepResearch-Update (Cluster 6) nur im Dialog notiert; Protokoll- und FIT-Verankerung fehlen.",
+      "scope": [
+        "research",
+        "validation",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "DeepResearch-Update (Cluster 6) in Protokoll-Templates dokumentiert",
+        "Theta_condition": "Suchbegriffe/Nullmodell in DeepResearch-Protokollen + FIT-Mapping reflektiert",
+        "beta_estimate": 5.3,
+        "zeta_risk": "moderat – fehlende Dokumentation/FIT-Hook"
+      },
+      "next_steps": [
+        "DeepResearch-Update (Cluster 6) in `DeepResearchProtokol.txt`/`DeepResearchProtokoll2!!WOW.txt` spiegeln und Abschnitt „Lebendigkeits-Kriterium" mit Hypothese + Suchbegriffen ergänzen.",
+        "Suchbegriffe als Checklist in Protokoll/README (Temporal integration window, Micro-saccades reality testing, Qualia of presence vs representation, Flatness cues) und Nullmodell notieren.",
+        "FIT-Handoff dokumentieren: Mapping zu `finalize-deepresearch-lebendigkeits` im fit_mapping-Block und in `FIT_MAPPING_SYNC_STATUS.md` ergänzen."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Wichtig!_neue_Erkentniss_bitte_integrieren.txt",
+          "lines": [
+            549,
+            566
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/DeepResearchProtokol.txt"
+        },
+        {
+          "path": "releases/V6-Plans_etc/DeepResearchProtokoll2!!WOW.txt"
+        }
+      ],
+      "priority": 46,
+      "sprint_focus": "DeepResearch-Prompt-Parität sichern (ToDorefresh ↔ Finalize)",
+      "updated_at": "2026-02-26T12:00:00Z"
     }
   ],
   "fit_mapping": [
@@ -2763,6 +2804,12 @@
       "finalize_id": "finalize-aeon-aletheia-telemetry",
       "bridge_focus": "Aletheia-Daten → β/CREP Telemetrie & Ψ-Plan",
       "status": "new"
+    },
+    {
+      "todo_id": "v6r-deepresearch-lebendigkeits",
+      "finalize_id": "finalize-deepresearch-lebendigkeits",
+      "bridge_focus": "DeepResearch-Update Cluster 6 (Lebendigkeits-Kriterium) → Finalize-Protokolle/Chronik",
+      "status": "mapping-added"
     },
     {
       "todo_id": "v6r-aletheia-phase3-calibration",
