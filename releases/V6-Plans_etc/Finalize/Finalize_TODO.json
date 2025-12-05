@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2026-02-12T12:00:00Z",
+    "updated_at": "2026-02-13T12:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -60,7 +60,8 @@
         "finalize-aletheia-affection-symbiosis",
         "finalize-repo-hygiene",
         "finalize-onboarding-readme",
-        "finalize-falsifiability-suite"
+        "finalize-falsifiability-suite",
+        "finalize-api-docs-parity"
       ],
       "note": "v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation"
     }
@@ -2250,6 +2251,47 @@
       "priority": 30,
       "sprint_focus": "FIT-Governance-Parität herstellen",
       "updated_at": "2026-01-12T12:00:00Z"
+    },
+    {
+      "id": "finalize-api-docs-parity",
+      "title": "Ψ-API/Docstrings mit Zenodo-Checklisten synchronisieren",
+      "status": "open",
+      "completeness": "API-Doku/Docstrings spiegeln Minor-Items aus Zenodo-Statusberichten nicht; Zenodo_Upload_Checklist-Flag fehlt.",
+      "scope": [
+        "documentation",
+        "api",
+        "onboarding"
+      ],
+      "logistic_profile": {
+        "R_target": "API-Doku und Docstrings in Zenodo_Upload_Checklist gespiegelt",
+        "Theta_condition": "psi_field/genesis_cube dokumentiert + API-Quickstart + FIT-Mapping gesetzt",
+        "beta_estimate": 4.7,
+        "zeta_risk": "moderat – Reproduzierbarkeit blockiert"
+      },
+      "next_steps": [
+        "Docstrings/README-Blöcke für `pipelines/wavefunction/psi_field.py` und `simulation/genesis_cube.py` aktualisieren (Parameter, CREP/τ*-Hinweise) und mit `docs/v6_wavefunction_theory.md` verlinken.",
+        "Abschnitt „Ψ-API Quickstart" in `notebooks/README.md` oder `docs/` ergänzen; Minor-Items aus `ZENODO_CI_STATUS_2025-12-03.md` abhaken.",
+        "Zenodo_Upload_Checklist.md um API-Doku/Tutorial-Flag erweitern und FIT-Mapping zu `v6r-api-docs-parity` dokumentieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md",
+          "lines": [
+            12,
+            32
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_READINESS_REPORT.md",
+          "lines": [
+            14,
+            30
+          ]
+        }
+      ],
+      "priority": 31,
+      "sprint_focus": "API-Doku-Minor-Items schließen & Zenodo-Checklisten updaten",
+      "updated_at": "2026-02-13T12:00:00Z"
     }
   ],
   "fit_mapping": [
@@ -2498,9 +2540,24 @@
       "finalize_id": "finalize-falsifiability-suite",
       "bridge_focus": "Nullmodell-/ΔAIC-Gegenmodelle + Peer-Review-Simulation",
       "status": "mapping-added"
+    },
+    {
+      "todo_id": "v6r-api-docs-parity",
+      "finalize_id": "finalize-api-docs-parity",
+      "bridge_focus": "Ψ-API-Doku/Docstrings ↔ Zenodo Minor-Items",
+      "status": "mapping-added"
     }
   ],
   "delta_updates": [
+    {
+      "date": "2026-02-13",
+      "label": "finalize-api-docs-parity",
+      "highlights": [
+        "Neuer Task finalize-api-docs-parity ergänzt, um API-Doku/Docstring-Minuspositionen aus ZENODO_CI_STATUS_2025-12-03.md zu schließen.",
+        "FIT-Mapping um v6r-api-docs-parity erweitert; Zenodo_Upload_Checklist soll API/Tutorial-Flags abbilden.",
+        "metadata.updated_at auf 2026-02-13T12:00:00Z angehoben (API-Doku-Track sichtbar)."
+      ]
+    },
     {
       "date": "2026-02-12",
       "label": "finalize-repo-onboarding-falsifiability",
