@@ -1091,6 +1091,33 @@ Pytest/Coverage/Lint/Mypy-Artefakte unter `output/zenodo_checks/` abgelegt → P
 
 ---
 
+### [Priority 52] v6r-zenodo-ci-status-delta
+**CI-Status-Deltas (2025-12-02 → 2025-12-03) als FIT-Hook dokumentieren**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.2 | **Zeta Risk:** Moderat – Reviewer-Hinweise fehlen im Zenodo-Track
+
+**Scope:** compliance, documentation, governance
+
+**R → Θ:**
+Delta aus ZENODO_CI_STATUS_2025-12-02.md (Conditional GO, 69.4% Ready) und ZENODO_CI_STATUS_2025-12-03.md (Full GO, 100% Ready) in Zenodo_Upload_Checklist.md + FIT_MAPPING_SYNC_STATUS.md gespiegelt → Delta-Block enthält Progression, Type-VI Hook (CREP ≥0.7) und Reviewer-Slot, Finalize-Handoff notiert
+
+**Next Steps:**
+- 📝 Δ (Tests 42/42, Coverage 87%, Status 69.4% → 100%) als Abschnitt in `Zenodo_Upload_Checklist.md` eintragen und `[TYPE-VI-RISK]` Banner/Reviewer-Slot markieren.
+- 🔗 FIT_MAPPING_SYNC_STATUS um Mapping `v6r-zenodo-ci-status-delta` ↔ `finalize-zenodo-ci-status-delta` ergänzen; Chronik/Delta-Eintrag setzen.
+- 📁 Artefaktpfade (`output/zenodo_checks/`) und Log-Quellen referenzieren, damit Finalize/Zenodo-Track das Delta nachziehen kann.
+
+**References:**
+- `ZENODO_CI_STATUS_2025-12-02.md:1-160`
+- `ZENODO_CI_STATUS_2025-12-03.md:1-200`
+- `Zenodo_Upload_Checklist.md:23-120`
+- `FIT_MAPPING_SYNC_STATUS.md:1-140`
+
+**Sprint Focus:** Zenodo CI-Delta + FIT-Handoff dokumentieren
+
+---
+
 ### [Priority 19] v6r-crep-audit-log
 **Type-VI Audit-Log + Reviewer-Routing initialisieren (logs/type_vi_detections.jsonl)**
 

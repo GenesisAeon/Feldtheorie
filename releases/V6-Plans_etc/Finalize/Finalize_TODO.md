@@ -777,6 +777,33 @@ Release-Package fertiggestellt → `v6.0.0-beta` Tag gesetzt, CHANGELOG/GITHUB_R
 
 ---
 
+### [Priority 52] finalize-zenodo-ci-status-delta
+**CI-Status-Deltas (2025-12-02 → 2025-12-03) in Finalize-Deltas spiegeln**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.3 | **Zeta Risk:** Moderat – Governance-Kopplung fehlt
+
+**Scope:** compliance, documentation, governance
+
+**R → Θ:**
+Zenodo_Upload_Checklist + Finalize-Deltas spiegeln den CI-Sprung (69.4% → 100%, Coverage 87%, 42/42 Tests) inklusive `[TYPE-VI-RISK]` Banner, Reviewer-Slot und τ*-Default (=0.1·|Θ−R|) → FIT-Mapping zu v6r-zenodo-ci-status-delta aktiv
+
+**Next Steps:**
+- 📝 CI-Delta aus `ZENODO_CI_STATUS_2025-12-02.md`/`ZENODO_CI_STATUS_2025-12-03.md` in Finalize-Deltalog eintragen (Progression + CREP/τ*-Hinweis).
+- 🔗 `Zenodo_Upload_Checklist.md` + `ZENODO_CI_STATUS_2025-12-03.md` im Finalize-Ordner referenzieren; Reviewer/τ*-Slot markieren.
+- 🧭 FIT_MAPPING_SYNC_STATUS um Mapping `finalize-zenodo-ci-status-delta` ↔ `v6r-zenodo-ci-status-delta` ergänzen und Chronik/Zenodo-Checklists updaten.
+
+**References:**
+- `ZENODO_CI_STATUS_2025-12-02.md:1-160`
+- `ZENODO_CI_STATUS_2025-12-03.md:1-200`
+- `Zenodo_Upload_Checklist.md:23-120`
+- `FIT_MAPPING_SYNC_STATUS.md:1-140`
+
+**Sprint Focus:** CI-Delta/Reviewer-Pfad im Finalize-Layer verankern
+
+---
+
 ### [Priority 38] finalize-zenodo-readiness-report
 **ZENODO_READINESS_REPORT in Finalize-Checklist/Chronik verankern**
 

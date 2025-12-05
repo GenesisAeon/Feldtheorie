@@ -1,7 +1,7 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2026-02-24T12:30:00Z'
+  updated_at: '2026-02-25T12:00:00Z'
   scope: releases/V6-Plans_etc
   description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse -
     Papers, Formeln, Simulationen
@@ -38,10 +38,11 @@ metadata:
     - v6r-finalize-bridge
     - v6r-crep-guard-ci
     - v6r-zenodo-evidence
-    - v6r-zenodo-artifact-bundle
-    - v6r-zenodo-release-packaging
-    - v6r-zenodo-ci-sync
-    - v6r-zenodo-readiness-report
+  - v6r-zenodo-artifact-bundle
+  - v6r-zenodo-release-packaging
+  - v6r-zenodo-ci-sync
+  - v6r-zenodo-ci-status-delta
+  - v6r-zenodo-readiness-report
     - v6r-crep-audit-log
     - v6r-tau-star-ci-hook
     - v6r-beta-telemetry
@@ -1099,6 +1100,49 @@ tasks:
   priority: 29
   sprint_focus: CI-Provenienz in Zenodo/Finalize spiegeln
   updated_at: '2026-01-06T12:00:00Z'
+- id: v6r-zenodo-ci-status-delta
+  title: CI-Status-Deltas (2025-12-02 → 2025-12-03) als FIT-Hook dokumentieren
+  status: open
+  completeness: CI-Status-Reports dokumentieren den Sprung von Conditional GO → Full
+    GO, aber Delta/Reviewer-Hinweise fehlen im Zenodo-Track und FIT-Mapping.
+  scope:
+  - compliance
+  - documentation
+  - governance
+  logistic_profile:
+    R_target: CI-Delta (69.4% → 100%, Coverage 87%, 42/42 Tests) in Zenodo_Upload_Checklist.md
+      + FIT_MAPPING_SYNC_STATUS.md verankert
+    Theta_condition: Delta-Block + Reviewer-Route in Checklist/Chronik hinterlegt und
+      Finalize-Handoff dokumentiert
+    beta_estimate: 5.2
+    zeta_risk: moderat – fehlende Provenienz/Reviewer-Slot
+  next_steps:
+  - Δ aus ZENODO_CI_STATUS_2025-12-02.md (Conditional GO) und ZENODO_CI_STATUS_2025-12-03.md
+    (Full GO) extrahieren und als Delta-Abschnitt in Zenodo_Upload_Checklist.md ergänzen
+    (Progression + Type-VI Hook).
+  - FIT_MAPPING_SYNC_STATUS.md um Mapping v6r-zenodo-ci-status-delta ↔ finalize-zenodo-ci-status-delta
+    erweitern und Chronik/Delta-Notiz setzen.
+  - Reviewer-/Escalation-Slot (CREP ≥0.7) im Delta-Block markieren und Pfade zu Artefakten/Logs
+    referenzieren (z.B. output/zenodo_checks/).
+  references:
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-02.md
+    lines:
+    - 1
+    - 160
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
+    lines:
+    - 23
+    - 120
+  - path: releases/V6-Plans_etc/FIT_MAPPING_SYNC_STATUS.md
+    lines:
+    - 1
+    - 140
+  priority: 52
+  sprint_focus: Zenodo CI-Delta + FIT-Handoff dokumentieren
 - id: v6r-crep-audit-log
   title: Type-VI Audit-Log + Reviewer-Routing initialisieren (logs/type_vi_detections.jsonl)
   status: completed

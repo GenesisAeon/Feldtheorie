@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2026-02-24T12:30:00Z",
+    "updated_at": "2026-02-25T12:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -38,6 +38,7 @@
         "finalize-zenodo-evidence",
         "finalize-zenodo-artifact-bundle",
         "finalize-zenodo-ci-sync",
+        "finalize-zenodo-ci-status-delta",
         "finalize-zenodo-readiness-report",
         "finalize-crep-audit-log",
         "finalize-tau-star-ci-hook",
@@ -1223,6 +1224,60 @@
       "priority": 25,
       "sprint_focus": "CI-Provenienz für Zenodo/Chronik sichern",
       "updated_at": "2026-01-06T12:00:00Z"
+    },
+    {
+      "id": "finalize-zenodo-ci-status-delta",
+      "title": "CI-Status-Deltas (2025-12-02 → 2025-12-03) in Finalize-Deltas spiegeln",
+      "status": "open",
+      "completeness": "CI-Status-Deltas (Conditional → Full GO) sind dokumentiert, aber im Finalize-Track fehlt ein Delta-Block mit Reviewer/τ*-Hook.",
+      "scope": [
+        "compliance",
+        "documentation",
+        "governance"
+      ],
+      "logistic_profile": {
+        "R_target": "Zenodo_Upload_Checklist + Finalize-Deltas enthalten CI-Delta (69.4% → 100%, Coverage 87%, 42/42 Tests) inkl. Reviewer-Slot",
+        "Theta_condition": "Delta/Progression + `[TYPE-VI-RISK]` Banner in Finalize-Ordner verlinkt und FIT-Mapping aktiv",
+        "beta_estimate": 5.3,
+        "zeta_risk": "moderat – fehlende Governance-Kopplung"
+      },
+      "next_steps": [
+        "CI-Delta aus ZENODO_CI_STATUS_2025-12-02/03 in Finalize-Deltalog aufnehmen (Progression, Coverage 87%, 42/42 Tests, CREP/τ*-Hinweis).",
+        "Zenodo_Upload_Checklist.md und ZENODO_CI_STATUS_2025-12-03.md im Finalize-Ordner referenzieren; Reviewer-Slot + τ*-Default (=0.1·|Θ−R|) markieren.",
+        "FIT_MAPPING_SYNC_STATUS um finalize-zenodo-ci-status-delta ↔ v6r-zenodo-ci-status-delta ergänzen und Chronik/Zenodo-Checklists updaten."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-02.md",
+          "lines": [
+            1,
+            160
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md",
+          "lines": [
+            1,
+            200
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
+          "lines": [
+            23,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/FIT_MAPPING_SYNC_STATUS.md",
+          "lines": [
+            1,
+            140
+          ]
+        }
+      ],
+      "priority": 52,
+      "sprint_focus": "CI-Delta/Reviewer-Pfad im Finalize-Layer verankern"
     },
     {
       "id": "finalize-zenodo-readiness-report",
