@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2026-02-26T12:00:00Z'
+  updated_at: '2026-02-27T12:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -36,9 +36,10 @@ metadata:
     - finalize-zenodo-evidence
   - finalize-zenodo-artifact-bundle
   - finalize-zenodo-ci-sync
-    - finalize-zenodo-ci-status-delta
-    - finalize-zenodo-readiness-report
-    - finalize-crep-audit-log
+  - finalize-zenodo-ci-status-delta
+  - finalize-psi-ci-handoff
+  - finalize-zenodo-readiness-report
+  - finalize-crep-audit-log
     - finalize-tau-star-ci-hook
     - finalize-stereo-phenomenology
     - finalize-deepresearch-lebendigkeits
@@ -1011,6 +1012,50 @@ tasks:
     - 140
   priority: 52
   sprint_focus: CI-Delta/Reviewer-Pfad im Finalize-Layer verankern
+- id: finalize-psi-ci-handoff
+  title: Ψ-Pipeline CI/Zenodo-Deltas mit `[TYPE-VI-RISK]`-Governance koppeln
+  status: open
+  completeness: CI-Report (Full GO 2025-12-03) dokumentiert ψ_genesis-Updates, aber
+    Finalize-Layer enthält keinen Reviewer-/τ*-Slot.
+  scope:
+  - psi
+  - ci
+  - documentation
+  - governance
+  logistic_profile:
+    R_target: Ψ-CI Delta (42/42 Tests, 87% Coverage) als Finalize-Kasten in Zenodo_Upload_Checklist.md
+      + V6_Wellenfunktions_Integrationsplan.md verankert
+    Theta_condition: "[TYPE-VI-RISK] Banner + Reviewer-Slot (CREP ≥0.7) hinterlegt, FIT-Mapping ↔ v6r-psi-ci-handoff"
+      aktiv
+    beta_estimate: 5.9
+    zeta_risk: moderat – Governance-Handoff fehlt
+  next_steps:
+  - CI-Delta (42/42 Tests, 87% Coverage) als Finalize-Kasten in Zenodo_Upload_Checklist.md ergänzen;
+    [TYPE-VI-RISK] Banner + τ*=0.1·|Θ−R| notieren.
+  - Abschnitt "Ψ-Pipeline CI Full GO (2025-12-03)" in V6_Wellenfunktions_Integrationsplan.md einfügen,
+    inkl. ψ_genesis/n_tetra_modes und CREP-Governance-Verweis.
+  - FIT_MAPPING_SYNC_STATUS.md um Mapping finalize-psi-ci-handoff ↔ v6r-psi-ci-handoff erweitern;
+    Chronik-/Zenodo-Hinweis mit Reviewer-Slot ergänzen.
+  references:
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
+    lines:
+    - 9
+    - 46
+  - path: pipelines/wavefunction/psi_field.py
+    lines:
+    - 1
+    - 220
+  - path: releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md
+    lines:
+    - 1
+    - 140
+  - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
+    lines:
+    - 60
+    - 120
+  priority: 53
+  sprint_focus: Ψ-CI Full GO Delta im Finalize-Layer verankern
+  updated_at: '2026-02-27T12:00:00Z'
 - id: finalize-zenodo-readiness-report
   title: ZENODO_READINESS_REPORT in Finalize-Checklist/Chronik verankern
   status: open
