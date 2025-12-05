@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-02-27T12:00:00Z
+**Updated:** 2026-02-28T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -30,7 +30,7 @@
 ### [Priority 0] finalize-fit-prompt-bridge
 **FIT-Prompt-Handoff: ToDorefresh → Finalize Reihenfolge absichern**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2026-02-28)
 
 **Beta:** 4.6 | **Zeta Risk:** Moderat – FIT-Fluss nicht dokumentiert
 
@@ -39,10 +39,10 @@
 **R → Θ:**
 Promt_für_Agenten.txt Anweisung (zuerst ToDorefresh, dann Finalize) in Finalize-Trilayer verankert → FIT_MAPPING_SYNC_STATUS.md enthält Bridge-ID, Querverweis auf V6ToDorefresh-ToDo gesetzt.
 
-**Next Steps:**
-- 📝 Promt_für_Agenten.txt kurz zitieren und als Hinweis im Finalize-Trilayer referenzieren.
-- 🔗 FIT_MAPPING_SYNC_STATUS.md um finalize-fit-prompt-bridge ↔ v6r-fit-prompt-bridge erweitern.
-- 📌 V6ToDorefresh.* referenzieren, damit FIT-Fluss für Folgeaufgaben klar bleibt.
+**Completed Actions:**
+- 📝 Promt_für_Agenten.txt Handoff (ToDorefresh → Finalize; Tasks splitten; neue ToDos in bestehenden Listen) als Hinweis im Finalize-Trilayer referenziert.
+- 🔗 FIT_MAPPING_SYNC_STATUS.md um finalize-fit-prompt-bridge ↔ v6r-fit-prompt-bridge ergänzt und Synchronstatus dokumentiert.
+- 📌 V6ToDorefresh.* verlinkt, damit der FIT-Fluss für Folgeaufgaben klar bleibt.
 
 **References:**
 - `../Promt_für_Agenten.txt:1-5`

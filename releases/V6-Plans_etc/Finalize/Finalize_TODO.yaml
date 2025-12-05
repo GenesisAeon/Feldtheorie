@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2026-02-27T12:00:00Z'
+  updated_at: '2026-02-28T12:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -69,9 +69,10 @@ metadata:
 tasks:
 - id: finalize-fit-prompt-bridge
   title: FIT-Prompt-Handoff: ToDorefresh → Finalize Reihenfolge absichern
-  status: open
-  completeness: Promt_für_Agenten.txt fordert ToDorefresh → Finalize Sequenz, aber
-    kein Handoff im Finalize-Trilayer oder FIT-Mapping.
+  status: completed
+  completed_at: '2026-02-28T12:00:00Z'
+  completeness: FIT-Handoff verankert: Promt_für_Agenten.txt (erst ToDorefresh, dann Finalize; Tasks splitten; neue ToDos in Listen)
+    referenziert; FIT_MAPPING_SYNC_STATUS.md + V6ToDorefresh.* verlinkt.
   scope:
   - governance
   - documentation
@@ -83,10 +84,9 @@ tasks:
     beta_estimate: 4.6
     zeta_risk: moderat bei fehlender Dokumentation
   next_steps:
-  - Promt_für_Agenten.txt kurz zitieren und als Hinweis im Finalize-Trilayer referenzieren.
-  - FIT_MAPPING_SYNC_STATUS.md um finalize-fit-prompt-bridge ↔ v6r-fit-prompt-bridge
-    erweitern.
-  - V6ToDorefresh.* referenzieren, damit FIT-Fluss klar bleibt.
+  - Promt_für_Agenten.txt Handoff-Hinweis (ToDorefresh → Finalize, FIT-Splitting, ToDo-Erfassung) im Finalize-Trilayer hinterlegt.
+  - FIT_MAPPING_SYNC_STATUS.md um finalize-fit-prompt-bridge ↔ v6r-fit-prompt-bridge ergänzt; Synchronstatus dokumentiert.
+  - V6ToDorefresh.* verlinkt, damit der FIT-Fluss klar bleibt.
   references:
   - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
     lines:
