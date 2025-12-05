@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-02-26T12:00:00Z
+**Updated:** 2026-02-27T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -804,6 +804,33 @@ Zenodo_Upload_Checklist + Finalize-Deltas spiegeln den CI-Sprung (69.4% → 100%
 
 ---
 
+### [Priority 53] finalize-psi-ci-handoff
+**Ψ-Pipeline CI/Zenodo-Deltas mit `[TYPE-VI-RISK]`-Governance koppeln**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.9 | **Zeta Risk:** Moderat – Ψ-Deltas ohne Reviewer/τ*-Slot im Finalize-Layer
+
+**Scope:** psi, ci, documentation, governance
+
+**R → Θ:**
+Ψ-Pipeline-Updates (ψ_genesis, n_tetra_modes, entropy-check) aus `ZENODO_CI_STATUS_2025-12-03.md` werden als Full-GO Delta in `Zenodo_Upload_Checklist.md` und `V6_Wellenfunktions_Integrationsplan.md` gespiegelt → `[TYPE-VI-RISK]` Banner + Reviewer-Slot (CREP ≥0.7) dokumentiert, FIT-Mapping zu `v6r-psi-ci-handoff` aktiv
+
+**Next Steps:**
+- 🧭 CI-Delta (42/42 Tests, 87% Coverage) als Finalize-Kasten in `Zenodo_Upload_Checklist.md` ergänzen; `[TYPE-VI-RISK]` Banner + τ*=0.1·|Θ−R| notieren.
+- 📌 Abschnitt „Ψ-Pipeline CI Full GO (2025-12-03)“ in `V6_Wellenfunktions_Integrationsplan.md` einfügen, inkl. ψ_genesis/n_tetra_modes und CREP-Governance-Verweis.
+- 🔗 `FIT_MAPPING_SYNC_STATUS.md` um Mapping `finalize-psi-ci-handoff ↔ v6r-psi-ci-handoff` erweitern; Chronik-/Zenodo-Hinweis mit Reviewer-Slot ergänzen.
+
+**References:**
+- `../ZENODO_CI_STATUS_2025-12-03.md:9-46`
+- `../pipelines/wavefunction/psi_field.py:1-220`
+- `../V6_Wellenfunktions_Integrationsplan.md:1-140`
+- `../Zenodo_Upload_Checklist.md:60-120`
+
+**Sprint Focus:** Ψ-CI Full GO Delta im Finalize-Layer verankern
+
+---
+
 ### [Priority 38] finalize-zenodo-readiness-report
 **ZENODO_READINESS_REPORT in Finalize-Checklist/Chronik verankern**
 
@@ -1586,6 +1613,15 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 - Neuer Task `finalize-aeon-aletheia-telemetry` ergänzt, um Aletheia-Datenpfad (`data/experimental/aletheia_results.csv`) in Finalize-Deltas/Zenodo-Checks zu spiegeln.
 - FIT-Mapping um `v6r-aeon-aletheia-telemetry` erweitert; Ψ/β-Telemetrie-Handoff und UTAC/Zenodo-Hinweise vermerkt.
 - Updatedatum auf 2026-01-20T12:00:00Z angehoben; Telemetrie-Scope im Trilayer präzisiert.
+
+---
+
+### 2026-02-27 | finalize-psi-ci-handoff
+
+✅ **Highlights:**
+- Neuer Task `finalize-psi-ci-handoff` ergänzt, um Ψ-Pipeline-CI-Deltas (Full GO 2025-12-03, 42/42 Tests, 87% Coverage) im Finalize-Layer mit `[TYPE-VI-RISK]`-Banner und τ*-Default zu dokumentieren.
+- FIT-Mapping um `finalize-psi-ci-handoff ↔ v6r-psi-ci-handoff` ergänzt; Chronik-/Reviewer-Slot (CREP ≥0.7) eingeplant.
+- Updatedatum des Finalize-Trilayers auf 2026-02-27T12:00:00Z angehoben, Promt_für_Agenten.txt-Vorgabe „ToDos anlegen“ umgesetzt.
 
 ---
 

@@ -1,7 +1,7 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2026-02-26T12:00:00Z'
+  updated_at: '2026-02-27T12:00:00Z'
   scope: releases/V6-Plans_etc
   description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse -
     Papers, Formeln, Simulationen
@@ -43,8 +43,9 @@ metadata:
   - v6r-zenodo-release-packaging
   - v6r-zenodo-ci-sync
   - v6r-zenodo-ci-status-delta
+  - v6r-psi-ci-handoff
   - v6r-zenodo-readiness-report
-    - v6r-crep-audit-log
+  - v6r-crep-audit-log
     - v6r-tau-star-ci-hook
     - v6r-beta-telemetry
     - v6r-beta-telemetry-schema
@@ -1144,6 +1145,51 @@ tasks:
     - 140
   priority: 52
   sprint_focus: Zenodo CI-Delta + FIT-Handoff dokumentieren
+- id: v6r-psi-ci-handoff
+  title: Ψ-Pipeline CI/Zenodo-Deltas mit Type-VI-Governance koppeln
+  status: open
+  completeness: Full GO ψ_genesis Δ sind im CI-Report dokumentiert, aber Zenodo/Ψ-Plan
+    enthalten noch keinen Reviewer-/τ*-Hinweis.
+  scope:
+  - psi
+  - ci
+  - documentation
+  - governance
+  logistic_profile:
+    R_target: Ψ-CI-Delta (42/42 Tests, 87% Coverage, ψ_genesis/n_tetra_modes) in Zenodo_Upload_Checklist.md
+      und V6_Wellenfunktions_Integrationsplan.md verankert
+    Theta_condition: "[TYPE-VI-RISK]-Banner + Reviewer-Slot dokumentiert, FIT-Mapping ↔ finalize-psi-ci-handoff"
+      aktiv
+    beta_estimate: 5.8
+    zeta_risk: moderat – Governance-Handoff fehlt
+  next_steps:
+  - Δ aus ZENODO_CI_STATUS_2025-12-03.md (ψ_genesis, n_tetra_modes, entropy-check) extrahieren
+    und als CI/Ψ-Kasten in V6_Wellenfunktions_Integrationsplan.md ergänzen (inkl. CREP/τ*
+    Hinweis).
+  - Zenodo_Upload_Checklist um Abschnitt "Ψ-Pipeline CI Full GO (2025-12-03)" erweitern;
+    [TYPE-VI-RISK] Banner + Reviewer-Slot (CREP ≥0.7) hinterlegen.
+  - FIT_MAPPING_SYNC_STATUS um Mapping v6r-psi-ci-handoff ↔ finalize-psi-ci-handoff ergänzen;
+    Chronik-Notiz setzen und Status auf 🔴 Open eintragen.
+  references:
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
+    lines:
+    - 9
+    - 46
+  - path: pipelines/wavefunction/psi_field.py
+    lines:
+    - 1
+    - 220
+  - path: releases/V6-Plans_etc/V6_Wellenfunktions_Integrationsplan.md
+    lines:
+    - 1
+    - 140
+  - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
+    lines:
+    - 60
+    - 120
+  priority: 53
+  sprint_focus: Ψ-CI Delta → Dokumentation + Governance koppeln
+  updated_at: '2026-02-27T12:00:00Z'
 - id: v6r-crep-audit-log
   title: Type-VI Audit-Log + Reviewer-Routing initialisieren (logs/type_vi_detections.jsonl)
   status: completed
