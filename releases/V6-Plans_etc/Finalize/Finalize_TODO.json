@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2026-02-25T12:00:00Z",
+    "updated_at": "2026-02-26T12:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -43,6 +43,7 @@
         "finalize-crep-audit-log",
         "finalize-tau-star-ci-hook",
         "finalize-stereo-phenomenology",
+        "finalize-deepresearch-lebendigkeits",
         "finalize-beta-telemetry",
         "finalize-beta-telemetry-sync",
         "finalize-aeon-aletheia-bridge",
@@ -1915,6 +1916,46 @@
       "updated_at": "2026-02-24T12:00:00Z"
     },
     {
+      "id": "finalize-deepresearch-lebendigkeits",
+      "title": "DeepResearch-Update „Lebendigkeits-Kriterium“ im Finalize-Protokoll verankern",
+      "status": "open",
+      "completeness": "DeepResearch-Cluster 6 nur im Dialog dokumentiert; Finalize-Protokoll/FIT-Hook fehlen.",
+      "scope": [
+        "research",
+        "documentation",
+        "governance"
+      ],
+      "logistic_profile": {
+        "R_target": "Cluster-6-Update in Finalize-Protokollen gespiegelt",
+        "Theta_condition": "Suchbegriffe/Nullmodell dokumentiert + FIT-Mapping/Chronik-Hinweis gesetzt",
+        "beta_estimate": 5.3,
+        "zeta_risk": "moderat – fehlender Finalize-Handoff"
+      },
+      "next_steps": [
+        "Abschnitt „Lebendigkeits-Kriterium" in `Finalize/README.md` oder `research/deepresearch_protocols/` ergänzen (Hypothese, Suchbegriffe, Nullmodell ohne zeitliche Integration).",
+        "Suchbegriffe (Temporal integration window depth perception, Micro-saccades reality testing, Qualia of presence vs representation, Flatness cues) als Checklist in Protokoll aufnehmen; Referenz auf `DeepResearchProtokol.txt` setzen.",
+        "FIT-Mapping zu `v6r-deepresearch-lebendigkeits` in fit_mapping + `FIT_MAPPING_SYNC_STATUS.md` ergänzen; Chronik/Zenodo-Deltapunkt vorbereiten."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Wichtig!_neue_Erkentniss_bitte_integrieren.txt",
+          "lines": [
+            549,
+            566
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/DeepResearchProtokol.txt"
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/README.md"
+        }
+      ],
+      "priority": 46,
+      "sprint_focus": "DeepResearch-Protokoll/Chronik-Parität herstellen (Finalize ↔ ToDorefresh)",
+      "updated_at": "2026-02-26T12:00:00Z"
+    },
+    {
       "id": "finalize-sigillin-parser",
       "title": "Sigillin-Parser & Index-Automation ausrollen (Finalize)",
       "status": "open",
@@ -2554,6 +2595,12 @@
       "finalize_id": "finalize-aeon-aletheia-telemetry",
       "bridge_focus": "Aletheia-Daten → β/CREP Telemetrie & Ψ-Plan",
       "status": "new"
+    },
+    {
+      "todo_id": "v6r-deepresearch-lebendigkeits",
+      "finalize_id": "finalize-deepresearch-lebendigkeits",
+      "bridge_focus": "DeepResearch-Cluster 6 (Lebendigkeits-Kriterium) → Finalize-Protokolle/Chronik",
+      "status": "mapping-added"
     },
     {
       "todo_id": "v6r-aletheia-phase3-calibration",

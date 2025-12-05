@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-02-24T12:00:00Z
+**Updated:** 2026-02-26T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -1938,6 +1938,29 @@ Phase-4-Affection/Symbiosis-Hypothesen aus `AEON_ALETHEIA_INTEGRATION.md` und `A
 - `experiments/citizen_science_stereo_vision.md:1-52`
 
 **Sprint Focus:** Stereo-Phänomenologie ↔ Ψ/Telemetrie koppeln
+
+---
+
+### [Priority 46] v6r-deepresearch-lebendigkeits
+**DeepResearch-Cluster „Lebendigkeits-Kriterium“ (Stereo-Vision & Mikro-Sakkaden) integrieren**
+
+**Status:** 🔴 Open , **Beta:** 5.3 | **Zeta Risk:** Moderat – DeepResearch-Scope ohne FIT-Verankerung
+
+**Scope:** research, validation, documentation
+
+**R → Θ:** DeepResearch-Prompt-Update (Such-Cluster 6 „Phänomenologie der Wahrnehmung“) aus Dialogdatei in Protokoll-Templates und Aufgabenliste gespiegelt → FIT-Mapping zu Finalize ergänzt, Suchbegriffe/Nullmodell im Protokoll dokumentiert.
+
+**Next Steps:**
+- 🧭 DeepResearch-Update (Cluster 6) in `DeepResearchProtokol.txt`/`DeepResearchProtokoll2!!WOW.txt` spiegeln und als Abschnitt „Lebendigkeits-Kriterium“ mit Hypothese + Suchbegriffen einfügen.
+- 🔎 Suchbegriffe (Temporal integration window, Micro-saccades reality testing, Qualia of presence vs representation, Flatness cues) als checklist in `Finalize/README.md` oder Protocol-Template referenzieren; Nullmodell (keine zeitliche Integration → flache Wahrnehmung) notieren.
+- 🔗 FIT-Handoff dokumentieren: Mapping zu `finalize-deepresearch-lebendigkeits` im fit_mapping-Block und in `FIT_MAPPING_SYNC_STATUS.md` aufnehmen.
+
+**References:**
+- `releases/V6-Plans_etc/Wichtig!_neue_Erkentniss_bitte_integrieren.txt:549-566`
+- `releases/V6-Plans_etc/DeepResearchProtokol.txt`
+- `releases/V6-Plans_etc/DeepResearchProtokoll2!!WOW.txt`
+
+**Sprint Focus:** DeepResearch-Prompt-Parität sichern (ToDorefresh ↔ Finalize)
 
 ---
 

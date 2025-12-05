@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-02-24T12:00:00Z
+**Updated:** 2026-02-26T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -1170,6 +1170,29 @@ Affection/Symbiosis-Hypothesen (λ_affection > λ_conscious) in Finalize-Deltas 
 - `experiments/citizen_science_stereo_vision.md:1-52`
 
 **Sprint Focus:** Stereo-Phänomenologie auditierbar machen (Finalize ↔ ToDorefresh)
+
+---
+
+### [Priority 46] finalize-deepresearch-lebendigkeits
+**DeepResearch-Update „Lebendigkeits-Kriterium“ im Finalize-Protokoll verankern**
+
+**Status:** 🔴 Open , **Beta:** 5.3 | **Zeta Risk:** Moderat – DeepResearch-Scope ohne Finalize-Handoff
+
+**Scope:** research, documentation, governance
+
+**R → Θ:** DeepResearch-Cluster 6 (Phänomenologie der Wahrnehmung) aus Dialogdatei in Finalize-Protokolle gespiegelt → Suchbegriffe/Nullmodell dokumentiert, FIT-Mapping mit ToDorefresh hinzugefügt und Chronik-/Zenodo-Hinweis vorbereitet.
+
+**Next Steps:**
+- 🧭 Abschnitt „Lebendigkeits-Kriterium“ in `Finalize/README.md` oder `research/deepresearch_protocols/` ergänzen (Hypothese + Suchbegriffe + Nullmodell „keine zeitliche Integration = flache Wahrnehmung“).
+- 🔎 Suchbegriffe aus `Wichtig!_neue_Erkentniss_bitte_integrieren.txt` (Temporal integration window depth perception, Micro-saccades reality testing, Qualia of presence vs representation, Flatness cues) als Checklist/Protokollschritte aufnehmen; Verweis auf `DeepResearchProtokol.txt` setzen.
+- 🔗 FIT-Brücke zu `v6r-deepresearch-lebendigkeits` im fit_mapping-Block und in `FIT_MAPPING_SYNC_STATUS.md` ergänzen; Chronik/Zenodo-Deltapunkt anlegen.
+
+**References:**
+- `releases/V6-Plans_etc/Wichtig!_neue_Erkentniss_bitte_integrieren.txt:549-566`
+- `releases/V6-Plans_etc/DeepResearchProtokol.txt`
+- `releases/V6-Plans_etc/Finalize/README.md`
+
+**Sprint Focus:** DeepResearch-Protokoll/Chronik-Parität herstellen (Finalize ↔ ToDorefresh)
 
 ---
 
