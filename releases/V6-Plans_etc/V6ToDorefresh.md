@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-02-13T12:00:00Z
+**Updated:** 2026-02-24T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -1864,6 +1864,28 @@ Phase-4-Affection/Symbiosis-Hypothesen aus `AEON_ALETHEIA_INTEGRATION.md` und `A
 - `releases/V6-Plans_etc/ZENODO_READINESS_REPORT.md:14-30`
 
 **Sprint Focus:** API-Doku-Minor-Items schließen & Zenodo-Checklisten spiegeln
+
+---
+
+### [Priority 45] v6r-stereo-phenomenology
+**Stereo-Phänomenologie (Δx_slice) in Ψ/Telemetrie spiegeln**
+
+**Status:** 🔴 Open , **Beta:** 5.5 | **Zeta Risk:** Moderat – Phänomenologie nicht falsifizierbar dokumentiert
+
+**Scope:** research, documentation, experiments
+
+**R → Θ:** Δx_slice-Phänomenologie (IPD ≈ 6.5 cm → Bewusstseinsmoment) aus Dialogdatei in Citizen-Science-Protokoll und Ψ-Plan gespiegelt → Telemetrie/Falsifikations-Hooks für SFF/Δx_slice hinterlegt.
+
+**Next Steps:**
+- 🧭 Δx_slice-Argument und Bewusstseinsmoment-Hinweis aus `Wichtig!_neue_Erkentniss_bitte_integrieren.txt` als Phase-0-Phänomenologie + Messformel Δx_slice/Δt in `experiments/citizen_science_stereo_vision.md` ergänzen.
+- 📡 Ψ-Plan/Telemetrie-Hook setzen: Δx_slice und erwartete SFF-Bänder in `V6_Wellenfunktions_Integrationsplan.md`/`metrics/beta_evolution.csv` verankern (Validierungsblock + ΔAIC/Nullmodell Notiz).
+- 🧪 Falsifikationspfad notieren (kein Sprung bei IPD-Abdeckung → Nullmodell) und FIT-Handoff zu Finalize markieren.
+
+**References:**
+- `releases/V6-Plans_etc/Wichtig!_neue_Erkentniss_bitte_integrieren.txt:1-80`
+- `experiments/citizen_science_stereo_vision.md:1-52`
+
+**Sprint Focus:** Stereo-Phänomenologie ↔ Ψ/Telemetrie koppeln
 
 ---
 

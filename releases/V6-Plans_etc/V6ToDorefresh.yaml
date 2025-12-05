@@ -1,7 +1,7 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2026-02-13T12:00:00Z'
+  updated_at: '2026-02-24T12:00:00Z'
   scope: releases/V6-Plans_etc
   description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse -
     Papers, Formeln, Simulationen
@@ -21,6 +21,7 @@ metadata:
     - v6r-oipk-tesseract
     - v6r-formulas-collection
     - v6r-stereo-vision
+    - v6r-stereo-phenomenology
     - v6r-utac-crit
     - v6r-cmb-analysis
     - v6r-wavefunction-pipeline
@@ -66,6 +67,7 @@ metadata:
     - v6r-onboarding-readme
     - v6r-falsifiability-suite
     - v6r-api-docs-parity
+    - v6r-stereo-phenomenology
     note: Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation
       (Veröffentlichung)
 tasks:
@@ -2003,6 +2005,36 @@ tasks:
   priority: 44
   sprint_focus: API-Doku-Minor-Items schließen & Zenodo-Checklisten spiegeln
   updated_at: '2026-02-13T12:00:00Z'
+- id: v6r-stereo-phenomenology
+  title: Stereo-Phänomenologie (Δx_slice) in Ψ/Telemetrie spiegeln
+  status: open
+  completeness: Binokulare Δx_slice-Insights nur im Dialog erfasst; Telemetrie/Falsifikations-Hooks in Experiment- und Ψ-Plan-Doks fehlen.
+  scope:
+  - research
+  - documentation
+  - experiments
+  logistic_profile:
+    R_target: Δx_slice-Phänomenologie als Governance-Hinweis dokumentiert
+    Theta_condition: Citizen-Science-Protokoll + Δx_slice → v_RIG Kopplung im Ψ-Plan verankert
+    beta_estimate: 5.5
+    zeta_risk: moderat – fehlende Falsifizierung des Stereo-Hinweises
+  next_steps:
+  - Δx_slice-Argument (IPD ≈ 6.5 cm) und Bewusstseinsmoment-Hinweis aus `Wichtig!_neue_Erkentniss_bitte_integrieren.txt` in experiments/citizen_science_stereo_vision.md spiegeln (Phase-0 Phänomenologie + Messformel Δx_slice/Δt).
+  - Ψ-Plan/telemetrie-hook ergänzen: Δx_slice und erwartete SFF-Bereiche als Validierungsblöcke in `V6_Wellenfunktions_Integrationsplan.md`/`metrics/beta_evolution.csv` referenzieren.
+  - Falsifikationspfad notieren (kein Sprung bei IPD-Abdeckung → Nullmodell) und FIT-Mapping zu Finalize/Handoff eintragen.
+  references:
+  - path: releases/V6-Plans_etc/Wichtig!_neue_Erkentniss_bitte_integrieren.txt
+    lines:
+    - 1
+    - 24
+    - 54
+  - path: experiments/citizen_science_stereo_vision.md
+    lines:
+    - 1
+    - 52
+  priority: 45
+  sprint_focus: Stereo-Phänomenologie ↔ Ψ/Telemetrie koppeln
+  updated_at: '2026-02-24T12:00:00Z'
 fit_mapping:
 - todo_id: v6r-finalize-bridge
   finalize_id: finalize-fit-sync

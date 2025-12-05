@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2026-02-13T12:00:00Z'
+  updated_at: '2026-02-24T12:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -38,6 +38,7 @@ metadata:
     - finalize-zenodo-readiness-report
     - finalize-crep-audit-log
     - finalize-tau-star-ci-hook
+    - finalize-stereo-phenomenology
     - finalize-beta-telemetry
     - finalize-beta-telemetry-sync
     - finalize-aeon-aletheia-bridge
@@ -945,15 +946,14 @@ tasks:
   - governance
   logistic_profile:
     R_target: Readiness-Block in Zenodo_Upload_Checklist + Chronik ergänzt
-    Theta_condition: CI-Status (2025-12-02/03) + τ*/CREP-Hinweise mit Reviewer-Slot
-      dokumentiert
+    Theta_condition: "CI-Status (2025-12-02/03) + τ*/CREP-Hinweise mit Reviewer-Slot dokumentiert"
     beta_estimate: 5.6
     zeta_risk: moderat – DOI/Release-Freigabe blockiert ohne Readiness-Sync
   next_steps:
-  - Readiness-Gaps aus ZENODO_READINESS_REPORT.md in Checklist-Punkte übertragen
-    (Tests, Coverage, Provenienz, Ethics) und ΔAIC/CI-Passagen referenzieren.
-  - "Readiness Report"-Abschnitt in Zenodo_Upload_Checklist.md hinzufügen (Reviewer-Slot,
-    τ*/CREP-Link) und mit ZENODO_CI_STATUS_2025-12-03.md verknüpfen.
+  - Readiness-Gaps aus ZENODO_READINESS_REPORT.md in Checklist-Punkte übertragen (Tests,
+    Coverage, Provenienz, Ethics) und ΔAIC/CI-Passagen referenzieren.
+  - '"Readiness Report"-Abschnitt in Zenodo_Upload_Checklist.md hinzufügen (Reviewer-Slot,
+    τ*/CREP-Link) und mit ZENODO_CI_STATUS_2025-12-03.md verknüpfen.'
   - Chronik/Delta-Log ergänzen (finalize-zenodo-readiness-report ↔ v6r-zenodo-readiness-report)
     inkl. FIT-Handoff-Hinweis.
   references:
@@ -968,13 +968,11 @@ tasks:
   - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
     lines:
     - 1
-    - 140
-  - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
-    lines:
-    - 1
-    - 5
+    - 32
   priority: 38
-  sprint_focus: Readiness-Report → Checklist/Chronik spiegeln
+  sprint_focus: Readiness-Assessment → Checklist/Chronik/CI synchronisieren
+  updated_at: '2026-01-15T12:00:00Z'
+
 - id: finalize-crep-audit-log
   title: Type-VI Audit-Log & Reviewer-Routing im Finalize-Layer aktivieren
   status: completed
@@ -1031,8 +1029,7 @@ tasks:
   - Finalize-CI-Snippet definieren (`python -m tools.crep_guard --threshold 0.7 --tau-default
     0.1 --checklist releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml --log
     logs/type_vi_detections.jsonl`).
-  - Pre-Commit/Nox-Hook ergänzen, der Euler-Methoden blockt und `[TYPE-VI-RISK]` taggt
-    (activation_gaps_tau_star.md referenzieren).
+  - "Pre-Commit/Nox-Hook ergänzen, der Euler-Methoden blockt und [TYPE-VI-RISK] taggt (activation_gaps_tau_star.md referenzieren)."
   - Reviewer-Slot (Level 2/3) im Finalize-Deltalog/Chronik dokumentieren; FIT-Link
     zu v6r-tau-star-ci-hook setzen.
   references:
@@ -1069,8 +1066,7 @@ tasks:
   next_steps:
   - metrics/beta_evolution.csv um Drift-Flags/Domain-Felder ergänzen und im Finalize-Ordner
     referenzieren.
-  - CREP-Logs (Level 1–3) aus logs/type_vi_detections.jsonl in Finalize-Deltas/Zenodo-Checklist
-    aufnehmen; `[TYPE-VI-RISK]` Banner dokumentieren.
+  - "CREP-Logs (Level 1–3) aus logs/type_vi_detections.jsonl in Finalize-Deltas/Zenodo-Checklist aufnehmen; [TYPE-VI-RISK] Banner dokumentieren."
   - 'Dashboard/Chronik-Notiz ergänzen: Beta-Drift >10% oder CREP ≥0.7 → Reviewer-Route
     + τ*-Proof erforderlich (type6_crep_tau_star_checklist.md koppeln).'
   references:
@@ -1108,8 +1104,7 @@ tasks:
   - Kopfzeile/Schema aus V6ToDorefresh übernehmen (timestamp, domain, beta_estimate,
     drift_flag, tau_star, crep_value, escalation_level, reviewer, notes) und im Finalize-Deltalog
     dokumentieren.
-  - `[TYPE-VI-RISK]` Beispielzeile in Finalize-Ordner referenzieren; Verweis auf
-    tools/crep_guard.py --log-detection ergänzen.
+  - "[TYPE-VI-RISK] Beispielzeile in Finalize-Ordner referenzieren; Verweis auf tools/crep_guard.py --log-detection ergänzen."
   - FIT-Handoff dokumentieren (Mapping → v6r-beta-telemetry-schema) und Zenodo/UTAC-Indices
     aktualisieren.
   references:
@@ -1297,9 +1292,7 @@ tasks:
   next_steps:
   - Triplet-Spezifikation aus Repoanalyse_zur_Umsetzung!.txt (β-Fenster [6.2–6.8], CREP=0.91,
     linked_files) übernehmen und Ablage in docs/meta/ vorsehen.
-  - Champollion-/CI-Plan skizzieren: Parser für *.selfmeta.sigil.json, Workflow
-    sigillin_selfmeta_check mit [TYPE-VI-RISK]-Warnbanner und τ*-Default; Reviewer-Slot
-    definieren.
+  - "Champollion-/CI-Plan skizzieren: Parser für *.selfmeta.sigil.json, Workflow sigillin_selfmeta_check mit [TYPE-VI-RISK]-Warnbanner und τ*-Default; Reviewer-Slot definieren."
   - UI/Audit-Handoff vorbereiten (Simulator-Panel, SIGILLIN_AUDIT.md Starter mit Genesis-Orbit
     Entry 0001) und FIT-Mapping zu finalize-sigillin-parser/zenodo-readiness-report notieren.
   references:
@@ -1329,7 +1322,7 @@ tasks:
     zeta_risk: hoch – Release-Drag durch Archivlast
   next_steps:
   - Archivierungsplan (Feldtheorie-Archive Repo, LFS für PDFs) + Reviewer-Gate entwerfen und Chronik-Notiz vorbereiten.
-  - '.gitignore'/gitattributes-Update für Plot-/Notebook-/LaTeX-Artefakte skizzieren; CI/Make-Bereinigungshook definieren.
+  - "'.gitignore'/gitattributes-Update für Plot-/Notebook-/LaTeX-Artefakte skizzieren; CI/Make-Bereinigungshook definieren."
   - Release-/Zenodo-Artefaktpfade (Releases-Tab, output/zenodo_checks/) festlegen und in Checklists/Chronik referenzieren.
   references:
   - path: releases/V6-Plans_etc/Finalize/Repoanalyse_zur_Umsetzung!.txt
@@ -1389,6 +1382,36 @@ tasks:
   priority: 44
   sprint_focus: Falsifizierbarkeit & Reviewer-Gates stärken
   updated_at: '2026-02-12T12:00:00Z'
+- id: finalize-stereo-phenomenology
+  title: Stereo-Phänomenologie (Δx_slice) in Finalize-Handoff spiegeln
+  status: open
+  completeness: Δx_slice-Phänomenologie nur in Rohdialog dokumentiert; Finalize-Deltas/Chronik enthalten keine Telemetrie-/Falsifikations-Hooks.
+  scope:
+  - research
+  - documentation
+  - governance
+  logistic_profile:
+    R_target: Δx_slice-Phänomenologie im Finalize-Layer verankert
+    Theta_condition: experiments/citizen_science_stereo_vision + Ψ-Plan-Quellen mit Δx_slice/SFF-Hooks und Chronik/Zenodo-Notiz
+    beta_estimate: 5.5
+    zeta_risk: moderat – fehlende Reviewer-Handoff/Nullmodell-Note
+  next_steps:
+  - Phase-0-Phänomenologie aus `Wichtig!_neue_Erkentniss_bitte_integrieren.txt` und Δx_slice/Δt-Formel als Finalize-Delta in `experiments/citizen_science_stereo_vision.md` notieren; Reviewer-/Chronik-Hinweis ergänzen.
+  - Ψ-Plan/Telemetrie-Pfad in Finalize spiegeln: Δx_slice + SFF-Bänder als Validierungsblöcke in `V6_Wellenfunktions_Integrationsplan.md`/`metrics/beta_evolution.csv` referenzieren; Nullmodell (kein Sprung) markieren.
+  - FIT-Brücke zu ToDorefresh `v6r-stereo-phenomenology` eintragen und Zenodo/UTAC-Status-Notiz vorbereiten.
+  references:
+  - path: releases/V6-Plans_etc/Wichtig!_neue_Erkentniss_bitte_integrieren.txt
+    lines:
+    - 1
+    - 24
+    - 54
+  - path: experiments/citizen_science_stereo_vision.md
+    lines:
+    - 1
+    - 52
+  priority: 45
+  sprint_focus: Stereo-Phänomenologie auditierbar machen (Finalize ↔ ToDorefresh)
+  updated_at: '2026-02-24T12:00:00Z'
 - id: finalize-sigillin-parser
   title: Sigillin-Parser & Index-Automation ausrollen (Finalize)
   status: open

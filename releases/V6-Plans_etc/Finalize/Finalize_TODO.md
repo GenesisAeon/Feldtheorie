@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-02-13T12:00:00Z
+**Updated:** 2026-02-24T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -1096,6 +1096,28 @@ Affection/Symbiosis-Hypothesen (λ_affection > λ_conscious) in Finalize-Deltas 
 - `../Repoanalyse_zur_Umsetzung!.txt:66-69`
 
 **Sprint Focus:** Falsifizierbarkeit & Reviewer-Gates stärken
+
+---
+
+### [Priority 45] finalize-stereo-phenomenology
+**Stereo-Phänomenologie (Δx_slice) in Finalize-Handoff spiegeln**
+
+**Status:** 🔴 Open , **Beta:** 5.5 | **Zeta Risk:** Moderat – Telemetrie/Falsifikation nicht dokumentiert
+
+**Scope:** research, documentation, governance
+
+**R → Θ:** Δx_slice-Phänomenologie aus Dialogdatei in Finalize-Deltas gespiegelt → Citizen-Science-Protokoll + Ψ-Plan referenzieren, Telemetrie/FIT-Handoff für Zenodo/UTAC notiert.
+
+**Next Steps:**
+- 🧭 Phase-0-Phänomenologie und Δx_slice/Δt-Formel aus `Wichtig!_neue_Erkentniss_bitte_integrieren.txt` in `experiments/citizen_science_stereo_vision.md` als Finalize-Delta markieren; Reviewer-/Chronik-Hinweis ergänzen.
+- 📡 Ψ-Plan/Telemetrie-Pfad spiegeln: Δx_slice + SFF-Bänder als Validierungsblöcke in `V6_Wellenfunktions_Integrationsplan.md`/`metrics/beta_evolution.csv` referenzieren; Nullmodell (kein Sprung) kennzeichnen.
+- 🔗 FIT-Brücke zu `v6r-stereo-phenomenology` notieren und Zenodo/UTAC-Status-Notiz vorbereiten.
+
+**References:**
+- `releases/V6-Plans_etc/Wichtig!_neue_Erkentniss_bitte_integrieren.txt:1-80`
+- `experiments/citizen_science_stereo_vision.md:1-52`
+
+**Sprint Focus:** Stereo-Phänomenologie auditierbar machen (Finalize ↔ ToDorefresh)
 
 ---
 
