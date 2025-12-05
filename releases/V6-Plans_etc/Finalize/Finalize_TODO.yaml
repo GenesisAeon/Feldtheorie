@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2026-02-24T12:00:00Z'
+  updated_at: '2026-02-24T12:30:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -12,6 +12,7 @@ metadata:
   sprint_delta:
     window: 2025-11-27 → 2025-12-15
     priority_order:
+    - finalize-fit-prompt-bridge
     - finalize-vrig-research
     - finalize-entkopplung
     - finalize-loihi-experiment
@@ -63,6 +64,37 @@ metadata:
     - finalize-falsifiability-suite
     note: v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation
 tasks:
+- id: finalize-fit-prompt-bridge
+  title: FIT-Prompt-Handoff: ToDorefresh → Finalize Reihenfolge absichern
+  status: open
+  completeness: Promt_für_Agenten.txt fordert ToDorefresh → Finalize Sequenz, aber
+    kein Handoff im Finalize-Trilayer oder FIT-Mapping.
+  scope:
+  - governance
+  - documentation
+  - planning
+  logistic_profile:
+    R_target: FIT-Abfolge sichtbar in Finalize-Trilayer hinterlegt
+    Theta_condition: Bridge-ID in FIT_MAPPING_SYNC_STATUS.md und Verweis auf V6ToDorefresh
+      ergänzt
+    beta_estimate: 4.6
+    zeta_risk: moderat bei fehlender Dokumentation
+  next_steps:
+  - Promt_für_Agenten.txt kurz zitieren und als Hinweis im Finalize-Trilayer referenzieren.
+  - FIT_MAPPING_SYNC_STATUS.md um finalize-fit-prompt-bridge ↔ v6r-fit-prompt-bridge
+    erweitern.
+  - V6ToDorefresh.* referenzieren, damit FIT-Fluss klar bleibt.
+  references:
+  - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
+    lines:
+    - 1
+    - 5
+  - path: releases/V6-Plans_etc/FIT_MAPPING_SYNC_STATUS.md
+    lines:
+    - 1
+    - 120
+  priority: 0
+  sprint_focus: FIT-Fluss sichtbar machen & Handoff sichern
 - id: finalize-vrig-research
   title: 'v_RIG-Forschung: Empirische Validierung finalisieren'
   status: open

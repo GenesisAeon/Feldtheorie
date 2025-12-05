@@ -27,6 +27,31 @@
 
 ## Tasks
 
+### [Priority 0] finalize-fit-prompt-bridge
+**FIT-Prompt-Handoff: ToDorefresh → Finalize Reihenfolge absichern**
+
+**Status:** 🔴 Open
+
+**Beta:** 4.6 | **Zeta Risk:** Moderat – FIT-Fluss nicht dokumentiert
+
+**Scope:** governance, documentation, planning
+
+**R → Θ:**
+Promt_für_Agenten.txt Anweisung (zuerst ToDorefresh, dann Finalize) in Finalize-Trilayer verankert → FIT_MAPPING_SYNC_STATUS.md enthält Bridge-ID, Querverweis auf V6ToDorefresh-ToDo gesetzt.
+
+**Next Steps:**
+- 📝 Promt_für_Agenten.txt kurz zitieren und als Hinweis im Finalize-Trilayer referenzieren.
+- 🔗 FIT_MAPPING_SYNC_STATUS.md um finalize-fit-prompt-bridge ↔ v6r-fit-prompt-bridge erweitern.
+- 📌 V6ToDorefresh.* referenzieren, damit FIT-Fluss für Folgeaufgaben klar bleibt.
+
+**References:**
+- `../Promt_für_Agenten.txt:1-5`
+- `../FIT_MAPPING_SYNC_STATUS.md:1-120`
+
+**Sprint Focus:** FIT-Fluss sichtbar machen & Handoff sichern
+
+---
+
 ### [Priority 1] finalize-vrig-research
 **v_RIG-Forschung: Empirische Validierung finalisieren**
 

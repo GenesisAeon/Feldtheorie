@@ -23,6 +23,31 @@
 
 ## Tasks
 
+### [Priority 0] v6r-fit-prompt-bridge
+**FIT-Prompt-Brücke zwischen ToDorefresh → Finalize sichern**
+
+**Status:** 🔴 Open
+
+**Beta:** 4.6 | **Zeta Risk:** Moderat – FIT-Abfolge unklar, falls nicht dokumentiert
+
+**Scope:** governance, documentation, planning
+
+**R → Θ:**
+ToDo-Fluss aus `Promt_für_Agenten.txt` (erst ToDorefresh, dann Finalize) formal verankert → FIT_MAPPING_SYNC_STATUS.md aktualisiert, Handoff-Notiz in Finalize-TODO-Trilayer gespiegelt, neue IDs in beiden Listen referenziert.
+
+**Next Steps:**
+- 📝 Promt_für_Agenten.txt zusammenfassen (ToDorefresh → Finalize Reihenfolge, FIT-Hinweis) und als Handoff-Kommentar in beiden Trilayern verlinken.
+- 🔗 FIT_MAPPING_SYNC_STATUS.md um Eintrag für v6r-fit-prompt-bridge ↔ finalize-fit-prompt-bridge ergänzen.
+- 📌 Finalize_TODO.* Referenz setzen, damit Folgearbeiten aus Finalize-Ordner sofort sichtbar werden.
+
+**References:**
+- `Promt_für_Agenten.txt:1-5`
+- `FIT_MAPPING_SYNC_STATUS.md:1-120`
+
+**Sprint Focus:** FIT-Handoff dokumentieren & ToDo-Reihenfolge fixieren
+
+---
+
 ### [Priority 0] v6r-trilayer-sync
 **TriLayer-Spiegel zwischen ToDo-Listen und Chronik schließen**
 

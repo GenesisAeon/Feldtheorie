@@ -1,7 +1,7 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2026-02-24T12:00:00Z'
+  updated_at: '2026-02-24T12:30:00Z'
   scope: releases/V6-Plans_etc
   description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse -
     Papers, Formeln, Simulationen
@@ -13,6 +13,7 @@ metadata:
   sprint_delta:
     window: 2025-11-26 → 2025-12-10
     priority_order:
+    - v6r-fit-prompt-bridge
     - v6r-trilayer-sync
     - v6r-papers-research
     - v6r-literature-review-sync
@@ -71,6 +72,37 @@ metadata:
     note: Deep Research zuerst (Validierung), dann Simulationen (Beweis), dann Dokumentation
       (Veröffentlichung)
 tasks:
+- id: v6r-fit-prompt-bridge
+  title: FIT-Prompt-Brücke zwischen ToDorefresh → Finalize sichern
+  status: open
+  completeness: Promt_für_Agenten.txt nennt die FIT-Abfolge (ToDorefresh → Finalize),
+    aber kein Trilayer- oder FIT-Mapping-Hinweis ist hinterlegt.
+  scope:
+  - governance
+  - documentation
+  - planning
+  logistic_profile:
+    R_target: FIT-Abfolge dokumentiert und in beiden ToDo-Trilayern verlinkt
+    Theta_condition: FIT_MAPPING_SYNC_STATUS.md + Finalize_TODO.* referenzieren Handoff
+    beta_estimate: 4.6
+    zeta_risk: moderat bei fehlender Abfolge-Dokumentation
+  next_steps:
+  - Promt_für_Agenten.txt kurz extrahieren (Reihenfolge + FIT-Hinweis) und als
+    Kommentar in ToDo-Listen verlinken.
+  - FIT_MAPPING_SYNC_STATUS.md mit neuer Bridge-ID v6r-fit-prompt-bridge ↔
+    finalize-fit-prompt-bridge ergänzen.
+  - Finalize_TODO.* im Handoff referenzieren, damit Folgeaufgaben sichtbar sind.
+  references:
+  - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
+    lines:
+    - 1
+    - 5
+  - path: releases/V6-Plans_etc/FIT_MAPPING_SYNC_STATUS.md
+    lines:
+    - 1
+    - 120
+  priority: 0
+  sprint_focus: FIT-Handoff und ToDo-Reihenfolge sichern
 - id: v6r-trilayer-sync
   title: TriLayer-Spiegel zwischen ToDo-Listen und Chronik schließen
   status: completed
