@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-02-12T12:00:00Z
+**Updated:** 2026-02-13T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -1845,6 +1845,28 @@ Phase-4-Affection/Symbiosis-Hypothesen aus `AEON_ALETHEIA_INTEGRATION.md` und `A
 
 ---
 
+### [Priority 44] v6r-api-docs-parity
+**Ψ/API-Dokumentation & Docstrings Zenodo-konform ergänzen**
+
+**Status:** 🔴 Open  , **Beta:** 4.7 | **Zeta Risk:** Moderat – fehlende API-Hooks bremsen Reproduzierbarkeit
+
+**Scope:** documentation, api, onboarding
+
+**R → Θ:** API/Docstring-Parität für Ψ-Pipeline hergestellt (psi_field, genesis_cube) → ZENODO_CI_STATUS und Zenodo_Upload_Checklist spiegeln offene Minor-Items (Notebooks/API-Doku) vollständig wider.
+
+**Next Steps:**
+- 📝 Docstrings/README-Blöcke für `pipelines/wavefunction/psi_field.py` + `simulation/genesis_cube.py` ergänzen (Parameter, ΔAIC/CREP-Hooks) und gegen `docs/v6_wavefunction_theory.md` verlinken.
+- 📚 API-Übersicht in `docs/` oder `notebooks/README.md` um Abschnitt „Ψ-API Quickstart" erweitern; Minor-Items aus `ZENODO_CI_STATUS_2025-12-03.md` als Checklist abhaken.
+- 🔗 Zenodo_Upload_Checklist.md aktualisieren (API-Doku + Tutorial-Notebook-Hinweis) und FIT-Mapping zu `finalize-api-docs-parity` notieren.
+
+**References:**
+- `releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md:12-32`
+- `releases/V6-Plans_etc/ZENODO_READINESS_REPORT.md:14-30`
+
+**Sprint Focus:** API-Doku-Minor-Items schließen & Zenodo-Checklisten spiegeln
+
+---
+
 ### [Priority 1] v6r-literature-review-sync
 **V6 Literature Review konsolidieren und mit BibTeX-Datenbank koppeln**
 
@@ -1950,11 +1972,21 @@ Phase-4-Affection/Symbiosis-Hypothesen aus `AEON_ALETHEIA_INTEGRATION.md` und `A
 | v6r-repo-hygiene | finalize-repo-hygiene | Repo-Hygiene/Archiv-Split + gitignore/LFS-Plan | Neu – Archivierungsplan & CI-Hooks entwerfen |
 | v6r-onboarding-readme | finalize-onboarding-readme | README-Elevator + Notebook/Colab Badges | Neu – Onboarding-Blöcke/Badges offen |
 | v6r-falsifiability-suite | finalize-falsifiability-suite | Nullmodell-/ΔAIC-Gegenmodelle + Peer-Review-Simulation | Neu – Baseline-Vergleiche/CI-Gate skizzieren |
+| v6r-api-docs-parity | finalize-api-docs-parity | Ψ-API-Doku/Docstrings ↔ Zenodo Minor-Items | Neu – Docstrings/API-Guide in Zenodo-Checklisten spiegeln |
 | v6r-finalize-todo-sync | finalize-todo-refresh-sync | FIT-Handoff ToDorefresh → Finalize (Prio/Status/Chronik) | Neu – Promt_für_Agenten.txt Handoff noch nicht gespiegelt |
 
 ---
 
 ## Delta Updates
+
+### 2026-02-13 | v6-refresh-api-docs-parity
+
+✅ **Highlights:**
+- Neuer Task `v6r-api-docs-parity` ergänzt, um die in `ZENODO_CI_STATUS_2025-12-03.md` verbleibenden Minor-Items (API-Doku, Tutorial-Hinweise) als FIT-Microstep zu tracken.
+- FIT-Mapping um `finalize-api-docs-parity` erweitert; Ziel: Docstrings/README-Blöcke in Zenodo_Upload_Checklist spiegeln.
+- Updatedatum auf 2026-02-13T12:00:00Z angehoben, um neuen API-Doku-Track abzubilden.
+
+---
 
 ### 2026-02-12 | v6-refresh-repo-onboarding-falsifiability
 
