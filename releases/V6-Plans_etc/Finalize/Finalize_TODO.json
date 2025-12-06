@@ -44,6 +44,7 @@
         "finalize-crep-audit-log",
         "finalize-tau-star-ci-hook",
         "finalize-stereo-phenomenology",
+        "finalize-stereo-vision-dataset",
         "finalize-deepresearch-lebendigkeits",
         "finalize-beta-telemetry",
         "finalize-beta-telemetry-sync",
@@ -1971,7 +1972,56 @@
       ],
       "priority": 45,
       "sprint_focus": "Stereo-Phänomenologie auditierbar machen (Finalize ↔ ToDorefresh)",
-      "updated_at": "2026-02-24T12:00:00Z"
+      "updated_at": "2026-03-01T12:00:00Z"
+    },
+    {
+      "id": "finalize-stereo-vision-dataset",
+      "title": "Stereo-Vision-Datensatz & Δx_slice-Telemetrie in Finalize verankern",
+      "status": "open",
+      "completeness": "Datensatz-Schema/Logpfad fehlen im Finalize-Track; Citizen-Science-Pilotläufe nicht referenziert.",
+      "scope": [
+        "data",
+        "telemetry",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "Finalize-Deltas referenzieren Δx_slice/SFF-Datensatz + Logpfad",
+        "Theta_condition": "data/experimental/stereo_slice_trials.csv + logs/type_vi_detections.jsonl mit Beispielzeilen verlinkt",
+        "beta_estimate": 4.4,
+        "zeta_risk": "moderat ohne Nullmodell/Reviewer-Gate"
+      },
+      "next_steps": [
+        "Datensatz-Schema aus ToDorefresh übernehmen (`data/experimental/stereo_slice_trials.csv`) und Beispielzeile in Finalize-Deltas dokumentieren.",
+        "`experiments/citizen_science_stereo_vision.md` Referenz im Finalize-Ordner notieren; Nullmodell \"kein Sprung\" + Δx_slice = IPD hervorheben.",
+        "`[TYPE-VI-RISK]`-Hinweis ergänzen: SFF/Δx_slice als Beta-/CREP-Telemetriepfad in `metrics/beta_evolution.csv` markieren; Reviewer-Slot in Zenodo/Chronik vermerken.",
+        "FIT-Mapping mit `v6r-stereo-vision-dataset` ergänzen; Sync-Status in `FIT_MAPPING_SYNC_STATUS.md` und fit_mapping-Block aktualisieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Wichtig!_neue_Erkentniss_bitte_integrieren.txt",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/V6ToDorefresh.md",
+          "lines": [
+            330,
+            378
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/FIT_MAPPING_SYNC_STATUS.md",
+          "lines": [
+            1,
+            120
+          ]
+        }
+      ],
+      "priority": 45.5,
+      "sprint_focus": "Δx_slice-Datensatz + Telemetrie-Belege in Finalize sichtbar machen",
+      "updated_at": "2026-03-01T12:00:00Z"
     },
     {
       "id": "finalize-deepresearch-lebendigkeits",
@@ -2533,6 +2583,12 @@
       "finalize_id": "finalize-zenodo-checklist",
       "bridge_focus": "Zenodo/DOI-Readiness + Checklisten-Kopplung",
       "status": "open"
+    },
+    {
+      "todo_id": "v6r-stereo-vision-dataset",
+      "finalize_id": "finalize-stereo-vision-dataset",
+      "bridge_focus": "Δx_slice-Datensatz/Logpfad in Finalize-Deltas spiegeln",
+      "status": "mapping-added"
     },
     {
       "todo_id": "v6r-zenodo-artifact-bundle",

@@ -1200,6 +1200,31 @@ Affection/Symbiosis-Hypothesen (λ_affection > λ_conscious) in Finalize-Deltas 
 
 ---
 
+### [Priority 45.5] finalize-stereo-vision-dataset
+**Stereo-Vision-Datensatz & Δx_slice-Telemetrie in Finalize verankern**
+
+**Status:** 🔴 Open , **Beta:** 4.4 | **Zeta Risk:** Moderat – Datensatz/Logpfad fehlen
+
+**Scope:** data, telemetry, documentation
+
+**R → Θ:** Finalize-Deltas referenzieren Δx_slice/SFF-Datensatz + Logpfad → `data/experimental/stereo_slice_trials.csv` + `logs/type_vi_detections.jsonl` mit Beispielzeilen verlinkt, FIT-Mapping zu ToDorefresh dokumentiert.
+
+**Next Steps:**
+- 📂 Datensatz-Schema aus ToDorefresh übernehmen (`data/experimental/stereo_slice_trials.csv`) und Beispielzeile in Finalize-Deltas dokumentieren.
+- 🧭 `experiments/citizen_science_stereo_vision.md` Referenz im Finalize-Ordner notieren; Nullmodell "kein Sprung" + Δx_slice = IPD hervorheben.
+- 📊 `[TYPE-VI-RISK]`-Hinweis ergänzen: SFF/Δx_slice als Beta-/CREP-Telemetriepfad in `metrics/beta_evolution.csv` markieren; Reviewer-Slot in Zenodo/Chronik vermerken.
+- 🔗 FIT-Mapping mit `v6r-stereo-vision-dataset` ergänzen; Sync-Status in `FIT_MAPPING_SYNC_STATUS.md` und fit_mapping-Block aktualisieren.
+
+**References:**
+- `Wichtig!_neue_Erkentniss_bitte_integrieren.txt:1-120`
+- `V6ToDorefresh.md:330-378`
+- `FIT_MAPPING_SYNC_STATUS.md:1-120`
+
+**Sprint Focus:** Δx_slice-Datensatz + Telemetrie-Belege in Finalize sichtbar machen
+**Updated:** 2026-03-01T12:00:00Z
+
+---
+
 ### [Priority 46] finalize-deepresearch-lebendigkeits
 **DeepResearch-Update „Lebendigkeits-Kriterium“ im Finalize-Protokoll verankern**
 
