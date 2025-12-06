@@ -1,8 +1,8 @@
 # FIT-Mapping Synchronization Status
 
-**Date:** 2026-02-28
+**Date:** 2026-03-01
 **Branch:** claude/agent-prompt-v6-01YBtCMA7wtpifaCxDibp8f6
-**Status:** ✅ **SYNCHRONIZED** (34/34 mappings aligned)
+**Status:** ✅ **SYNCHRONIZED** (35/35 mappings aligned)
 
 ---
 
@@ -10,7 +10,7 @@
 
 The FIT-Mapping between `V6ToDorefresh.md` and `Finalize_TODO.md` has been verified and is in **perfect synchronization**. Both trilayers maintain consistent task IDs, bridge focus descriptions, and status tracking. All previously identified status discrepancies have been resolved. 9 new mappings added since 2025-12-03, inklusive der Prompt-Handoff-Brücke (`v6r-fit-prompt-bridge` ↔ `finalize-fit-prompt-bridge`) aus `Promt_für_Agenten.txt`.
 
-**Synchronization Score:** 100% (34/34 mappings fully aligned)
+**Synchronization Score:** 100% (35/35 mappings fully aligned)
 
 ---
 
@@ -54,6 +54,7 @@ The FIT-Mapping between `V6ToDorefresh.md` and `Finalize_TODO.md` has been verif
 | 32 | v6r-sigillin-selfmeta | finalize-sigillin-selfmeta | Sigillin Selfmeta Triplet + Audit-Spirale | 🔴 Open | 🔴 Open | ✅ |
 | 33 | v6r-deepresearch-lebendigkeits | finalize-deepresearch-lebendigkeits | DeepResearch Cluster 6 (Lebendigkeits-Kriterium) | 🔴 Open | 🔴 Open | ✅ |
 | 34 | v6r-psi-ci-handoff | finalize-psi-ci-handoff | Ψ-Pipeline CI Delta → Zenodo/Ψ-Plan mit `[TYPE-VI-RISK]` Banner | 🔴 Open | 🔴 Open | ✅ |
+| 35 | v6r-stereo-vision-dataset | finalize-stereo-vision-dataset | Δx_slice-Datensatz/Logpfad Finalize-Handoff | 🔴 Open | 🔴 Open | ✅ |
 
 ### ✅ Status Discrepancies Resolved
 

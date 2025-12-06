@@ -368,6 +368,31 @@ Lorentz-Verletzung:
 
 ---
 
+### [Priority 5.5] v6r-stereo-vision-dataset
+**Stereo-Vision-Datensatz & Δx_slice-Telemetrie vorbereiten**
+
+**Status:** 🔴 Open
+
+**Beta:** 4.4 | **Zeta Risk:** Moderat – Telemetrie/Nullmodell fehlen
+
+**Scope:** data, telemetry, documentation
+
+**R → Θ:** Datensatz + Logik für Δx_slice/SFF-Messungen existiert → `data/experimental/stereo_slice_trials.csv` + `logs/type_vi_detections.jsonl` referenzieren Pilotläufe, FIT-Handoff zu Finalize dokumentiert.
+
+**Next Steps:**
+- 🧮 `data/experimental/stereo_slice_trials.csv` Schema anlegen (timestamp, participant_id, eye_order, object_distance_m, ipd_m, perceived_jump_cm, sff_hz, notes).
+- 📝 `experiments/citizen_science_stereo_vision.md` um Datenerhebungsablauf + Nullmodell "kein Sprung" ergänzen; Δx_slice = IPD dokumentieren.
+- 📊 `metrics/beta_evolution.csv` Telemetrie-Hinweis ergänzen: Δx_slice + SFF-Bänder als optionaler Kanal für β-Drift markieren.
+- 🔗 FIT-Handoff zu Finalize: Mapping zu `finalize-stereo-vision-dataset` im fit_mapping-Block und in `FIT_MAPPING_SYNC_STATUS.md` ergänzen.
+
+**References:**
+- `Wichtig!_neue_Erkentniss_bitte_integrieren.txt:1-120`
+- `Aletheiaresults_dialog.txt:1-36`
+
+**Sprint Focus:** Datensatz-Struktur + Telemetrie-Pfad für Stereo-Vision
+
+---
+
 ### [Priority 6] v6r-utac-crit
 **UTAC-Crit Benchmark (Antwort auf "AI fails Physics" CritPt)**
 

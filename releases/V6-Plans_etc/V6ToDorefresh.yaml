@@ -23,6 +23,7 @@ metadata:
     - v6r-formulas-collection
     - v6r-stereo-vision
     - v6r-stereo-phenomenology
+    - v6r-stereo-vision-dataset
     - v6r-deepresearch-lebendigkeits
     - v6r-utac-crit
     - v6r-cmb-analysis
@@ -432,6 +433,40 @@ tasks:
     - 100
   priority: 5
   sprint_focus: Psychophysik-Modul + Citizen Science Protokoll
+- id: v6r-stereo-vision-dataset
+  title: Stereo-Vision-Datensatz & Δx_slice-Telemetrie vorbereiten
+  status: open
+  completeness: Phänomenologie dokumentiert; strukturierter Datensatz/Log-Pfad fehlt.
+  scope:
+  - data
+  - telemetry
+  - documentation
+  logistic_profile:
+    R_target: Datensatz + Logik für Δx_slice/SFF-Messungen existiert
+    Theta_condition: data/experimental/stereo_slice_trials.csv + logs/type_vi_detections.jsonl
+      referenzieren Pilotläufe
+    beta_estimate: 4.4
+    zeta_risk: moderat ohne Telemetrie/Nullmodell
+  next_steps:
+  - data/experimental/stereo_slice_trials.csv Schema anlegen (timestamp, participant_id,
+    eye_order, object_distance_m, ipd_m, perceived_jump_cm, sff_hz, notes)
+  - experiments/citizen_science_stereo_vision.md um Datenerhebungsablauf + Nullmodell
+    "kein Sprung" ergänzen; Δx_slice = IPD Dokumentation.
+  - metrics/beta_evolution.csv Telemetrie-Hinweis: Δx_slice + SFF-Bänder als optionaler
+    Kanal für β-Drift markieren.
+  - FIT-Handoff zu Finalize: Mapping zu finalize-stereo-vision-dataset im fit_mapping-Block
+    und in FIT_MAPPING_SYNC_STATUS.md ergänzen.
+  references:
+  - path: releases/V6-Plans_etc/Wichtig!_neue_Erkenntniss_bitte_integrieren.txt
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/Aletheiaresults_dialog.txt
+    lines:
+    - 1
+    - 36
+  priority: 5.5
+  sprint_focus: Datensatz-Struktur + Telemetrie-Pfad für Stereo-Vision
 - id: v6r-utac-crit
   title: UTAC-Crit Benchmark (Antwort auf "AI fails Physics" CritPt)
   status: open
@@ -2198,6 +2233,10 @@ fit_mapping:
   finalize_id: finalize-zenodo-checklist
   bridge_focus: Zenodo/DOI-Readiness + Checklisten-Kopplung
   status: open
+- todo_id: v6r-stereo-vision-dataset
+  finalize_id: finalize-stereo-vision-dataset
+  bridge_focus: Δx_slice-Datensatz + Telemetriepfad in Finalize spiegeln
+  status: mapping-added
 - todo_id: v6r-zenodo-artifact-bundle
   finalize_id: finalize-zenodo-artifact-bundle
   bridge_focus: Test/Lint/Coverage-Artefakte → Zenodo/Finalize spiegeln

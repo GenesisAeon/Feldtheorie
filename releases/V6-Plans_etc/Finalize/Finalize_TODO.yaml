@@ -42,6 +42,7 @@ metadata:
   - finalize-crep-audit-log
     - finalize-tau-star-ci-hook
     - finalize-stereo-phenomenology
+    - finalize-stereo-vision-dataset
     - finalize-deepresearch-lebendigkeits
     - finalize-beta-telemetry
     - finalize-beta-telemetry-sync
@@ -1532,7 +1533,7 @@ tasks:
     - 52
   priority: 45
   sprint_focus: Stereo-Phänomenologie auditierbar machen (Finalize ↔ ToDorefresh)
-  updated_at: '2026-02-24T12:00:00Z'
+  updated_at: '2026-03-01T12:00:00Z'
 - id: finalize-deepresearch-lebendigkeits
   title: 'DeepResearch-Update „Lebendigkeits-Kriterium“ im Finalize-Protokoll verankern'
   status: open
@@ -1965,6 +1966,10 @@ fit_mapping:
   finalize_id: finalize-zenodo-checklist
   bridge_focus: Zenodo/DOI-Readiness + Checklisten-Kopplung
   status: open
+- todo_id: v6r-stereo-vision-dataset
+  finalize_id: finalize-stereo-vision-dataset
+  bridge_focus: Δx_slice-Datensatz/Logpfad in Finalize-Deltas spiegeln
+  status: mapping-added
 - todo_id: v6r-zenodo-artifact-bundle
   finalize_id: finalize-zenodo-artifact-bundle
   bridge_focus: Test/Lint/Coverage-Artefakte → Zenodo/Finalize spiegeln
