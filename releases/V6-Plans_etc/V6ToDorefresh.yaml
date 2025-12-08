@@ -435,8 +435,9 @@ tasks:
   sprint_focus: Psychophysik-Modul + Citizen Science Protokoll
 - id: v6r-stereo-vision-dataset
   title: Stereo-Vision-Datensatz & Δx_slice-Telemetrie vorbereiten
-  status: open
-  completeness: Phänomenologie dokumentiert; strukturierter Datensatz/Log-Pfad fehlt.
+  status: completed
+  completed_at: '2025-12-08T12:00:00Z'
+  completeness: data/experimental/stereo_slice_trials.csv Schema erstellt, experiments/citizen_science_stereo_vision.md um Nullmodell + Δx_slice=IPD erweitert, metrics/beta_evolution.csv Telemetrie-Kanäle dokumentiert, FIT-Handoff zu Finalize referenziert.
   scope:
   - data
   - telemetry
@@ -627,8 +628,9 @@ tasks:
   sprint_focus: UX-Paket
 - id: v6r-beta-bayes
   title: Hierarchisches Bayesianisches Modell für β-Meta-Regression
-  status: open
-  completeness: WLS/OLS ohne signifikante Prädiktoren; Bayesian Hierarchie fehlt.
+  status: completed
+  completed_at: '2025-12-08T12:00:00Z'
+  completeness: analysis/beta_meta_regression_bayes.py vollständig implementiert mit PyMC Hierarchical Model (3-Level), Domain-Level Random Effects, Information Borrowing/Shrinkage, VIF Checks, Posterior Predictive Checks, 94% HDI Konfidenzintervalle; BAYES_README.md dokumentiert.
   scope:
   - analysis
   - statistics

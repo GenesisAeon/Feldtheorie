@@ -1,8 +1,9 @@
 # Das Entkopplungs-Regime: Vermessung der informationellen Leere
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 **Erstellt:** 2025-11-27
-**Status:** Theorie-Erweiterung (Post-v_RIG-Validierung)
+**Updated:** 2025-12-08
+**Status:** ✅ Theory Extension Complete
 **Scope:** β-Hierarchie von kosmisch bis symbolisch/AI
 
 ---
@@ -548,6 +549,7 @@ $$
 
 ---
 
-**Version:** 1.0.0 | **Erstellt:** 2025-11-27
+**Version:** 1.1.0 | **Erstellt:** 2025-11-27 | **Updated:** 2025-12-08
 **Nächstes Update:** Nach Loihi-Skalierungsdaten oder DishBrain-Experiment
 **Speculation Level:** SL-4 (β-Hierarchie), SL-5 (Bewusstseins-Hypothese)
+**Research Status:** ✅ Theory Complete - Awaiting Empirical Validation (Loihi/DishBrain)

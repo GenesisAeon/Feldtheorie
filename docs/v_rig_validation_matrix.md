@@ -1,8 +1,9 @@
 # v_RIG Validation Matrix - Empirische Evidenz
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 **Erstellt:** 2025-11-27
-**Status:** Active Validation Phase
+**Updated:** 2025-12-08
+**Status:** ✅ Research Consolidation Complete
 **Scope:** Systematische Bewertung aller empirischen Tests der v_RIG-Hypothese
 
 ---
@@ -31,7 +32,7 @@ Diese Matrix evaluiert **7 unabhängige empirische Tests** mit unterschiedlichen
 | **D** | **13.5 MHz Signatur** | 🟡 Teilweise | 🟡 **Moderat** | nahe (12 MHz) | Sahu et al.: 12 MHz (11% Abweichung) |
 | **E** | **AI Scaling (α > 1)** | 🔴 Widerspruch | 🔴 **Konflikt** | >1.0 | GPT-4: α ≈ 1.1–1.2 → **Entkopplungs-Regime** |
 | **F** | **Flash-Lag-Effekt** | 🟡 Teilweise | 🟡 **Moderat** | 50-100 ms | Knapp unter Δt_Q = 100-300 ms |
-| **G** | **Stereo-Vision SFF** | ⚪ Offen | ⚪ **Nicht getestet** | TBD | Citizen Science Experiment geplant |
+| **G** | **Stereo-Vision SFF** | 🟡 In Progress | 🟡 **Teilweise** | Dataset ready | CSV-Schema + Nullmodell dokumentiert, Citizen Science aktiv |
 
 ---
 
@@ -282,11 +283,23 @@ $$
 
 **Vorhersage:** SFF ∝ 1/M (inverser Metabolismus)
 
-**Status:** ⚪ **Nicht getestet** (Citizen Science Experiment in Planung)
+**Status:** 🟡 **In Progress** (Datensatz-Schema erstellt, Citizen Science Protokoll aktiv)
+
+**Completed Actions (2025-12-08):**
+- ✅ CSV-Schema erstellt: `data/experimental/stereo_slice_trials.csv`
+- ✅ Nullmodell & Falsifikationskriterien dokumentiert in `experiments/citizen_science_stereo_vision.md`
+- ✅ H₀ vs H₁ Hypothesen mit 4 Falsifikationstests
+- ✅ Δx_slice = IPD Beziehung explizit dokumentiert
+- ✅ Telemetrie-Kanäle in `metrics/beta_evolution.csv` ergänzt (delta_x_slice, sff_hz, sff_band)
+
+**Next Steps:**
+- Collect n=50-100 SFF measurements (baseline + post-caffeine)
+- Correlate with CFF (expected r > 0.5)
+- Metabolic modulation test (caffeine +15-20%)
 
 **Referenzen:**
-- Finalize/ChatGPT.txt:1-59 (Slice-Aggregation)
-- V6ToDorefresh.md:184-211 (Stereo-Vision Task)
+- experiments/citizen_science_stereo_vision.md:1-398 (full protocol with null model)
+- data/experimental/stereo_slice_trials.csv (schema + 2 pilot entries)
 - Wichtig!_neue_Erkentniss_bitte_integrieren.txt:1-472
 
 ---
@@ -380,9 +393,9 @@ $$
 | **13.5 MHz Signatur** | 🟡 Moderat | Frequenzverteilung untersuchen |
 | **AI Scaling** | 🟢 Erweitert | Entkopplungs-Hypothese ausarbeiten |
 | **Flash-Lag** | 🟡 Moderat | Δt_Q-Substrukturen untersuchen |
-| **SFF Experiment** | 📋 Geplant | Citizen Science Protokoll starten |
+| **SFF Experiment** | 🟡 In Progress | Datensammlung n=50-100 starten |
 
 ---
 
-**Version:** 1.0.0 | **Erstellt:** 2025-11-27
-**Nächstes Update:** Nach Böhme-Replikation oder SFF-Experiment
+**Version:** 1.1.0 | **Erstellt:** 2025-11-27 | **Updated:** 2025-12-08
+**Nächstes Update:** Nach Böhme-Replikation oder SFF-Citizen-Science-Auswertung (n≥50)

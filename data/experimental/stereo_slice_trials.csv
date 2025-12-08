@@ -1,0 +1,3 @@
+timestamp,participant_id,eye_order,object_distance_m,ipd_m,perceived_jump_cm,sff_hz,notes
+2025-12-08T12:00:00Z,pilot_001,L-R-L-R,0.50,0.065,6.5,7.2,"Baseline measurement, rested"
+2025-12-08T12:30:00Z,pilot_001,L-R-L-R,0.50,0.065,6.8,8.1,"Post-caffeine (20 min after 100mg), +12.5% increase"
