@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2026-02-28T12:00:00Z",
+    "updated_at": "2026-03-01T12:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -39,6 +39,7 @@
         "finalize-zenodo-artifact-bundle",
         "finalize-zenodo-ci-sync",
         "finalize-zenodo-ci-status-delta",
+        "finalize-zenodo-ci-readiness-sync",
         "finalize-psi-ci-handoff",
         "finalize-zenodo-readiness-report",
         "finalize-crep-audit-log",
@@ -1386,6 +1387,74 @@
       "priority": 38,
       "sprint_focus": "Readiness-Assessment → Checklist/Chronik/CI synchronisieren",
       "updated_at": "2026-01-15T12:00:00Z"
+    },
+    {
+      "id": "finalize-zenodo-ci-readiness-sync",
+      "title": "CI-Status + Readiness-Delta mit Type-VI-Log an Finalize koppeln",
+      "status": "open",
+      "completeness": "Zenodo-Checkliste enthält CI-Deltas; Readiness-Block/Logpfad und Reviewer-Slot fehlen im Finalize-Layer.",
+      "scope": [
+        "compliance",
+        "governance",
+        "documentation"
+      ],
+      "logistic_profile": {
+        "R_target": "CI-Status 2025-12-02/03 + Readiness-Report als Δ-Block im Finalize-Deltalog dokumentiert (Reviewer, τ*, CREP, Logpfad)",
+        "Theta_condition": "Zenodo_Upload_Checklist.md, ZENODO_READINESS_REPORT.md und logs/type_vi_detections.jsonl referenziert; FIT-Mapping aktiv",
+        "beta_estimate": 5.9,
+        "zeta_risk": "moderat – Zenodo/Reviewer blockiert ohne Readiness-Handoff"
+      },
+      "next_steps": [
+        "Δ-Block (69.4% → 100% Ready, Tests 42/42, Coverage 87%) mit `[TYPE-VI-RISK]` in Finalize-Deltalog/Zenodo_Upload_Checklist.md eintragen; Reviewer-Feld setzen.",
+        "ZENODO_READINESS_REPORT.md im Finalize-Kontext referenzieren und Logpfad `logs/type_vi_detections.jsonl` aufnehmen.",
+        "FIT_MAPPING_SYNC_STATUS um finalize-zenodo-ci-readiness-sync ↔ v6r-zenodo-ci-readiness-sync erweitern; Chronik-Handoff notieren."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-02.md",
+          "lines": [
+            1,
+            185
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md",
+          "lines": [
+            1,
+            240
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/ZENODO_READINESS_REPORT.md",
+          "lines": [
+            1,
+            200
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
+          "lines": [
+            1,
+            140
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/type6_crep_tau_star_checklist.md",
+          "lines": [
+            1,
+            49
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Promt_für_Agenten.txt",
+          "lines": [
+            1,
+            5
+          ]
+        }
+      ],
+      "priority": 39,
+      "sprint_focus": "Readiness-/CI-Delta mit Type-VI-Logpfad im Finalize-Layer verankern"
     },
     {
       "id": "finalize-crep-audit-log",

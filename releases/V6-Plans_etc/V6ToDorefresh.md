@@ -1155,6 +1155,34 @@ Delta aus ZENODO_CI_STATUS_2025-12-02.md (Conditional GO, 69.4% Ready) und ZENOD
 
 ---
 
+### [Priority 52c] v6r-zenodo-ci-readiness-sync
+**ZENODO_CI_STATUS + Readiness Report als Finalize-Handoff spiegeln**
+
+**Status:** 🔴 Open
+
+**Beta:** 6.0 | **Zeta Risk:** Moderat – Reviewer-Slot/Type-VI-Log fehlen im Readiness-Track
+
+**Scope:** compliance, governance, documentation
+
+**R → Θ:**
+Readiness-Report und CI-Status (2025-12-02/03) in Zenodo_Upload_Checklist + ZENODO_READINESS_REPORT.md gespiegelt → Delta-Block dokumentiert (Tests 42/42, Coverage 87%, 69.4% → 100% Ready) mit `[TYPE-VI-RISK]`-Banner, τ*-Default (0.1·|Θ−R|) und Logpfad `logs/type_vi_detections.jsonl`; FIT-Mapping zu Finalize gesetzt
+
+**Next Steps:**
+- 📝 Δ-Abschnitt in `Zenodo_Upload_Checklist.md` ergänzen (Statussprung, CREP/τ*, Reviewer-Slot) und auf `logs/type_vi_detections.jsonl` verweisen.
+- 🔗 `ZENODO_READINESS_REPORT.md` um CI/Readiness-Kerne (Conditional→Full GO) erweitern; Referenzen auf `ZENODO_CI_STATUS_2025-12-02/03.md` aufnehmen.
+- 🧭 FIT_MAPPING_SYNC_STATUS um Mapping `v6r-zenodo-ci-readiness-sync` ↔ `finalize-zenodo-ci-readiness-sync` ergänzen; Chronik/Finalize-Handoff notieren.
+
+**References:**
+- `ZENODO_CI_STATUS_2025-12-02.md:1-185`
+- `ZENODO_CI_STATUS_2025-12-03.md:1-240`
+- `Zenodo_Upload_Checklist.md:1-140`
+- `ZENODO_READINESS_REPORT.md:1-200`
+- `type6_crep_tau_star_checklist.md:1-49`
+
+**Sprint Focus:** Readiness- und CI-Deltas sauber in Zenodo/Finalize spiegeln
+
+---
+
 ### [Priority 53] v6r-psi-ci-handoff
 **Ψ-Pipeline CI/Zenodo-Deltas mit Type-VI-Governance koppeln**
 
@@ -2112,6 +2140,7 @@ Phase-4-Affection/Symbiosis-Hypothesen aus `AEON_ALETHEIA_INTEGRATION.md` und `A
 | v6r-zenodo-artifact-bundle | finalize-zenodo-artifact-bundle | Artefakt-Bundle (Pytest/Coverage/Lint/Mypy) → Zenodo/Finalize | Neu – Artefaktpfade/Reviewer-Handoff offen |
 | v6r-zenodo-release-packaging | finalize-zenodo-release-packaging | Tag/Changelog/DOI für v6.0.0-beta | Neu – Release-Bundle/DOI noch offen |
 | v6r-zenodo-ci-sync | finalize-zenodo-ci-sync | Zenodo CI-Status (Conditional/Full GO) → Checklist/Chronik | ✅ Completed (2025-12-03) – CI-Daten vollständig gespiegelt (42/42 tests, 87% coverage) |
+| v6r-zenodo-ci-readiness-sync | finalize-zenodo-ci-readiness-sync | CI-Deltas + Readiness-Report (69.4% → 100%) mit τ*/CREP/Reviewer in Checklist/Chronik spiegeln | Neu – Delta-Block/Logpfad noch in Finalize dokumentieren |
 | v6r-crep-audit-log | finalize-crep-audit-log | Type-VI Audit-Log + Reviewer-Routing | Log-Schema ready, JSONL writer operational |
 | v6r-beta-telemetry | finalize-beta-telemetry | β-Drift/CREP Telemetrie → Deltas/Indices | Pending - schema design needed |
 | v6r-aeon-architecture | finalize-aeon-architecture | Aeon v1.0 Bauplan (Nullkern/AeonShell/Agenten) | ✅ Completed (2025-12-04) - ARCHITECTURE.md (400+ lines), 6 modules, UnifiedMandala, Ψ-integration |

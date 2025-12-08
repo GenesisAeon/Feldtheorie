@@ -1,7 +1,7 @@
 metadata:
   version: v6-todo-refresh-1.0.0
   generated_at: '2025-11-26T15:30:00Z'
-  updated_at: '2026-02-28T12:00:00Z'
+  updated_at: '2026-03-01T12:00:00Z'
   scope: releases/V6-Plans_etc
   description: Frische V6-TODO-Liste basierend auf Promt_für_Agenten.txt Analyse -
     Papers, Formeln, Simulationen
@@ -43,10 +43,11 @@ metadata:
   - v6r-zenodo-artifact-bundle
   - v6r-zenodo-release-packaging
   - v6r-zenodo-ci-sync
-  - v6r-zenodo-ci-status-delta
-  - v6r-psi-ci-handoff
-  - v6r-zenodo-readiness-report
-  - v6r-crep-audit-log
+    - v6r-zenodo-ci-status-delta
+    - v6r-zenodo-ci-readiness-sync
+    - v6r-psi-ci-handoff
+    - v6r-zenodo-readiness-report
+    - v6r-crep-audit-log
     - v6r-tau-star-ci-hook
     - v6r-beta-telemetry
     - v6r-beta-telemetry-schema
@@ -1061,6 +1062,56 @@ tasks:
     - 5
   priority: 37
   sprint_focus: Readiness-Report ↔ Checklist/Chronik koppeln
+- id: v6r-zenodo-ci-readiness-sync
+  title: CI-Status + Readiness-Report gemeinsam als FIT-Handoff spiegeln
+  status: open
+  completeness: CI-Deltas dokumentiert; Readiness-Abschnitt und Type-VI-Logpfad
+    fehlen in Checklist/Chronik.
+  scope:
+  - compliance
+  - governance
+  - documentation
+  logistic_profile:
+    R_target: Readiness-Report und CI-Status (2025-12-02/03) in Zenodo_Checklist + Chronik
+      mit Reviewer/τ*/CREP verankert
+    Theta_condition: Δ-Block (69.4% → 100% Ready, Tests 42/42, Coverage 87%) plus
+      `[TYPE-VI-RISK]`-Hinweis und Logpfad dokumentiert
+    beta_estimate: 5.9
+    zeta_risk: moderat – Finalize/Reviewer ohne Delta-/Log-Hinweis blockiert
+  next_steps:
+  - Δ-Block (CI-Status + Readiness) in Zenodo_Upload_Checklist.md hinzufügen, inkl.
+    Reviewer-Slot und τ* = 0.1·|Θ−R|.
+  - ZENODO_READINESS_REPORT.md mit Verweisen auf ZENODO_CI_STATUS_2025-12-02/03.md
+    und `logs/type_vi_detections.jsonl` ergänzen.
+  - FIT_MAPPING_SYNC_STATUS um Mapping zu finalize-zenodo-ci-readiness-sync erweitern
+    und Chronik-Delta vorbereiten.
+  references:
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-02.md
+    lines:
+    - 1
+    - 180
+  - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/ZENODO_READINESS_REPORT.md
+    lines:
+    - 1
+    - 180
+  - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
+    lines:
+    - 1
+    - 140
+  - path: releases/V6-Plans_etc/type6_crep_tau_star_checklist.md
+    lines:
+    - 1
+    - 49
+  - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
+    lines:
+    - 1
+    - 5
+  priority: 38
+  sprint_focus: CI-Deltas + Readiness-Report → Zenodo/Finalize koppeln
 - id: v6r-zenodo-release-packaging
   title: v6.0.0-beta Release-Package (Tag/DOI/Archive) abschließen
   status: open
