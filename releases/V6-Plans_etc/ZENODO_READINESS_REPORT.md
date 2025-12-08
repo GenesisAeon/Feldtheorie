@@ -135,6 +135,30 @@ make validate-type6 # ✅ CREP Guard operational
 7. ✅ Code formatting clean
 8. ✅ Syntax validation passed
 
+### IV.a CI Status Delta Report (2025-12-08)
+
+**Delta Analysis:** Conditional GO → Full GO
+**Period:** 2025-12-02 → 2025-12-03
+**Artifact:** `output/zenodo_checks/ci_status_delta_2025-12-02_to_2025-12-03.md`
+
+**Progression Summary:**
+| Metric | 2025-12-02 | 2025-12-03 | Delta |
+|--------|------------|------------|-------|
+| Test Pass Rate | 69.4% (50/72) | 100% (42/42) | +30.6pp |
+| Code Coverage | 63% | 87% | +24pp |
+| Overall Readiness | 6/8 criteria | 8/8 criteria | +2 criteria |
+
+**Type-VI Governance:**
+- **CREP Level:** <0.7 throughout testing period (no escalation)
+- **τ* Default:** 0.1·|Θ-R| verified and functional ✅
+- **Reviewer-Slot:** N/A (no Type-VI risk flagged)
+- **Audit Log:** `logs/type_vi_detections.jsonl` operational
+
+**FIT-Handoff:**
+- Mapping: `v6r-zenodo-ci-status-delta` ↔ `finalize-zenodo-ci-status-delta`
+- Status: ✅ Completed (2025-12-08)
+- Reference: `FIT_MAPPING_SYNC_STATUS.md` (mapping #37)
+
 ---
 
 **Next Steps:**

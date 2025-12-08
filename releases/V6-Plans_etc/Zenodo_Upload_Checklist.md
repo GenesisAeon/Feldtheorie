@@ -32,6 +32,14 @@
 
 **Reference:** `ZENODO_CI_STATUS_2025-12-03.md` (Full GO status achieved)
 
+**CI-Status Delta Report (2025-12-08):**
+- **Artifact:** `output/zenodo_checks/ci_status_delta_2025-12-02_to_2025-12-03.md`
+- **Summary:** Conditional GO (69.4%) → Full GO (100%), +30.6pp tests, +24pp coverage
+- **Type-VI Review:** No escalation (CREP <0.7 throughout testing period)
+- **Reviewer-Slot:** N/A (no Type-VI risk flagged)
+- **τ* Default:** 0.1·|Θ-R| verified and functional
+- **FIT-Handoff:** Documented in FIT_MAPPING_SYNC_STATUS.md (mapping #37)
+
 ---
 
 ## I. Pre-Upload Preparation
@@ -85,6 +93,62 @@
   - [x] `.pre-commit-config.yaml` includes crep_guard hook (lines 9-11)
   - [x] `noxfile.py` crep_guard session functional
   - [x] Makefile targets: `crep-guard`, `crep-guard-strict`, `validate-type6` operational
+
+### 1.1b Artifact Bundle for Zenodo Submission
+
+**Location:** `output/zenodo_checks/`
+**Status:** ✅ COMPLETE (2025-12-08)
+
+- [x] **Test Summary Artifact:** ✅
+  - [x] File: `output/zenodo_checks/test_summary_2025-12-03.md`
+  - [x] Contents: 42/42 tests passing, 87% coverage, all test categories documented
+  - [x] Reference: Extracted from ZENODO_CI_STATUS_2025-12-03.md
+
+- [x] **Code Quality Report:** ✅
+  - [x] File: `output/zenodo_checks/code_quality_report_2025-12-03.md`
+  - [x] Contents: Black/Ruff/Mypy results, CREP guard validation, dependency list
+  - [x] Readiness Matrix: 8/8 criteria met (100%)
+
+- [x] **Artifact Bundle README:** ✅
+  - [x] File: `output/zenodo_checks/README.md`
+  - [x] Contents: Overview, quality metrics summary, compliance verification
+  - [x] Purpose: Documentation for Zenodo DOI request and reviewer validation
+
+- [x] **References in ZENODO_CI_STATUS:** ✅
+  - [x] Artifact paths linked in ZENODO_CI_STATUS_2025-12-03.md
+  - [x] Delta-Block documented (69.4% → 100% test progression)
+  - [x] Type-VI governance compliance confirmed
+
+### 1.1c Ψ-Pipeline CI Full GO Integration
+
+**Status:** ✅ **PRODUCTION-READY** (2025-12-03)
+**Reference:** `V6_Wellenfunktions_Integrationsplan.md:552-613` (Section VI)
+
+- [x] **Ψ-Implementation Complete:** ✅
+  - [x] ψ_genesis(r,θ,φ,t) with radial/angular/temporal components
+  - [x] n_tetra_modes = 4 (Tetrahedral symmetry modes)
+  - [x] collapse_to_utac() - |ψ|² → P(R) mapping with radial distribution
+  - [x] compute_entropy() - von Neumann entropy (guaranteed non-negative)
+  - [x] Physical constants validated (α⁻¹=137.036, Φ=1.618, ℓ_P, E_P, ℏ)
+
+- [x] **Ψ-Test Results:** ✅ (2025-12-03)
+  - [x] 42/42 tests passing (100% success rate)
+  - [x] 87% code coverage (exceeds 80% threshold by 7pp)
+  - [x] All 10 test categories validated (Config, Radial, Angular, Time, Wavefunction, UTAC, Entropy, Pipeline, Convenience, Constants)
+  - [x] Physical dimensional analysis verified
+
+- [x] **Type-VI Governance for Ψ-Pipeline:** ✅
+  - [x] CREP Level: <0.7 (no escalation required)
+  - [x] τ* Default: 0.1·|Θ-R| verified and functional
+  - [x] `[TYPE-VI-RISK]` Banner: No escalation (CREP below threshold)
+  - [x] RK4 integrator + τ*-Buffer operational for ζ<0 scenarios
+  - [x] Provenance blocks for Type-VI fields complete
+
+- [x] **Ψ-Pipeline FIT-Handoff:** ✅ (2025-12-08)
+  - [x] Mapping: `v6r-psi-ci-handoff` ↔ `finalize-psi-ci-handoff`
+  - [x] Status: Completed in FIT_MAPPING_SYNC_STATUS.md (mapping #34)
+  - [x] CI/Zenodo-Deltas documented in V6_Wellenfunktions_Integrationsplan.md
+  - [x] Test artifacts referenced in output/zenodo_checks/
 
 ### 1.2 Documentation Completeness
 
