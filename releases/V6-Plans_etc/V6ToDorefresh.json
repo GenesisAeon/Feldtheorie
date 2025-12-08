@@ -515,8 +515,9 @@
     {
       "id": "v6r-stereo-vision-dataset",
       "title": "Stereo-Vision-Datensatz & Δx_slice-Telemetrie vorbereiten",
-      "status": "open",
-      "completeness": "Phänomenologie dokumentiert; strukturierter Datensatz/Log-Pfad fehlt.",
+      "status": "completed",
+      "completed_at": "2025-12-08T12:00:00Z",
+      "completeness": "data/experimental/stereo_slice_trials.csv Schema erstellt, experiments/citizen_science_stereo_vision.md um Nullmodell + Δx_slice=IPD erweitert, metrics/beta_evolution.csv Telemetrie-Kanäle dokumentiert, FIT-Handoff zu Finalize referenziert.",
       "scope": [
         "data",
         "telemetry",
@@ -526,7 +527,7 @@
         "R_target": "Datensatz + Logik für Δx_slice/SFF-Messungen existiert",
         "Theta_condition": "data/experimental/stereo_slice_trials.csv + logs/type_vi_detections.jsonl referenzieren Pilotläufe",
         "beta_estimate": 4.4,
-        "zeta_risk": "moderat ohne Telemetrie/Nullmodell"
+        "zeta_risk": "neutralisiert"
       },
       "next_steps": [
         "data/experimental/stereo_slice_trials.csv Schema anlegen (timestamp, participant_id, eye_order, object_distance_m, ipd_m, perceived_jump_cm, sff_hz, notes)",
@@ -756,8 +757,9 @@
     {
       "id": "v6r-beta-bayes",
       "title": "Hierarchisches Bayesianisches Modell für β-Meta-Regression",
-      "status": "open",
-      "completeness": "WLS/OLS ohne signifikante Prädiktoren; Bayesian Hierarchie fehlt.",
+      "status": "completed",
+      "completed_at": "2025-12-08T12:00:00Z",
+      "completeness": "analysis/beta_meta_regression_bayes.py vollständig implementiert mit PyMC Hierarchical Model (3-Level), Domain-Level Random Effects, Information Borrowing/Shrinkage, VIF Checks, Posterior Predictive Checks, 94% HDI Konfidenzintervalle; BAYES_README.md dokumentiert.",
       "scope": [
         "analysis",
         "statistics"
@@ -766,7 +768,7 @@
         "R_target": "Robustere β-Schätzungen mit Domain-Clustering",
         "Theta_condition": "PyMC/Stan Hierarchie + VIF-Checks + Konfidenzintervalle",
         "beta_estimate": 4.6,
-        "zeta_risk": "niedrig"
+        "zeta_risk": "neutralisiert"
       },
       "next_steps": [
         "analysis/beta_meta_regression_bayes.py mit PyMC Hierarchical Model",

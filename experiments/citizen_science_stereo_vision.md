@@ -126,6 +126,67 @@ This is **much slower** than the fundamental v_RIG ≈ 1,351.8 km/s, but that's 
 
 ---
 
+## 🎯 Null Model & Falsification
+
+### The Null Hypothesis
+
+**H₀:** The perceived jump is **NOT** related to consciousness time slices, but is purely an artifact of binocular parallax geometry.
+
+**Expected under H₀:**
+- Jump distance = **IPD (Interpupillary Distance) ≈ 6.5 cm** at arm's length
+- No variation with metabolic state (caffeine, sleep deprivation)
+- No correlation with SFF (Slice Fusion Frequency)
+- No correlation with CFF (Critical Flicker Frequency)
+
+### The v_RIG Prediction
+
+**H₁:** The perceived jump **IS** the spatial signature of Δx_slice, and represents the slice separation that consciousness integrates.
+
+**Expected under H₁:**
+- Jump distance Δx_slice ≈ IPD (confirmed by geometry)
+- **Δx_slice = IPD** at all distances (geometric constant)
+- SFF varies with metabolic rate (±15-20% with caffeine)
+- SFF correlates with CFF (both reflect integration rate)
+- Fusion threshold (SFF) reflects consciousness integration window Δt_Q
+
+### Falsification Criteria
+
+The v_RIG framework would be **falsified** if:
+
+1. **No metabolic modulation:** SFF does NOT change with caffeine/sleep deprivation (expected ±15-20%)
+2. **No CFF correlation:** SFF and CFF are completely uncorrelated (expected r > 0.5)
+3. **Distance dependence:** Jump distance does NOT scale with IPD·(arm_length/object_distance)
+4. **No fusion:** Alternation never fuses, even at very high frequencies (>20 Hz)
+
+### Key Distinction
+
+**What the null model explains:**
+- The **geometric jump distance** (Δx = IPD, purely optical)
+
+**What the v_RIG model explains:**
+- The **fusion frequency** (SFF ≈ 5-10 Hz, consciousness integration rate)
+- The **metabolic modulation** (SFF ∝ β ∝ metabolic rate)
+- The **phenomenological unity** (why we normally see ONE object, not two)
+
+### Critical Test
+
+**The Δx_slice = IPD Relationship:**
+
+At any object distance d, the perceived jump should be:
+```
+Δx_slice = IPD · (arm_length / d)
+
+For d = 0.5 m (arm's length): Δx_slice ≈ 6.5 cm
+For d = 1.0 m (distant):       Δx_slice ≈ 3.25 cm
+For d = 0.25 m (close):         Δx_slice ≈ 13 cm
+```
+
+**This is PURE GEOMETRY** and serves as a calibration check.
+
+The **v_RIG signature** is in the **fusion dynamics** (SFF), not the jump magnitude.
+
+---
+
 ## 📊 The Measurements
 
 ### Geometric Parameters

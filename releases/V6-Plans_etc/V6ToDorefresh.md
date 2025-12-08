@@ -371,19 +371,26 @@ Lorentz-Verletzung:
 ### [Priority 5.5] v6r-stereo-vision-dataset
 **Stereo-Vision-Datensatz & Δx_slice-Telemetrie vorbereiten**
 
-**Status:** 🔴 Open
-
-**Beta:** 4.4 | **Zeta Risk:** Moderat – Telemetrie/Nullmodell fehlen
+**Status:** 🟢 Completed (2025-12-08)
+**Beta:** 4.4 | **Zeta Risk:** Neutralisiert – Telemetrie + Nullmodell dokumentiert
 
 **Scope:** data, telemetry, documentation
 
-**R → Θ:** Datensatz + Logik für Δx_slice/SFF-Messungen existiert → `data/experimental/stereo_slice_trials.csv` + `logs/type_vi_detections.jsonl` referenzieren Pilotläufe, FIT-Handoff zu Finalize dokumentiert.
+**R → Θ:**
+✅ Datensatz + Logik für Δx_slice/SFF-Messungen vollständig dokumentiert → `data/experimental/stereo_slice_trials.csv` mit Schema erstellt, Nullmodell + Falsifikation in citizen_science_stereo_vision.md ergänzt, Telemetrie-Kanäle in beta_evolution.csv referenziert, FIT-Handoff zu Finalize dokumentiert.
 
-**Next Steps:**
-- 🧮 `data/experimental/stereo_slice_trials.csv` Schema anlegen (timestamp, participant_id, eye_order, object_distance_m, ipd_m, perceived_jump_cm, sff_hz, notes).
-- 📝 `experiments/citizen_science_stereo_vision.md` um Datenerhebungsablauf + Nullmodell "kein Sprung" ergänzen; Δx_slice = IPD dokumentieren.
-- 📊 `metrics/beta_evolution.csv` Telemetrie-Hinweis ergänzen: Δx_slice + SFF-Bänder als optionaler Kanal für β-Drift markieren.
-- 🔗 FIT-Handoff zu Finalize: Mapping zu `finalize-stereo-vision-dataset` im fit_mapping-Block und in `FIT_MAPPING_SYNC_STATUS.md` ergänzen.
+**Completed Actions:**
+- ✅ `data/experimental/stereo_slice_trials.csv` Schema erstellt (timestamp, participant_id, eye_order, object_distance_m, ipd_m, perceived_jump_cm, sff_hz, notes) mit 2 Piloteinträgen
+- ✅ `experiments/citizen_science_stereo_vision.md` um Nullmodell-Abschnitt erweitert (59 Zeilen):
+  - Null-Hypothese H₀ (reine binokulare Parallax-Geometrie)
+  - v_RIG-Prediction H₁ (Bewusstseins-Slice-Integration)
+  - Falsifikationskriterien (4 Tests)
+  - Δx_slice = IPD Beziehung explizit dokumentiert
+  - Kritische Tests für metabolische Modulation
+- ✅ `metrics/beta_evolution.csv` Telemetrie-Hinweise ergänzt:
+  - Optional channels: delta_x_slice, sff_hz, sff_band
+  - Referenz auf stereo_slice_trials.csv und citizen_science_stereo_vision.md
+- ✅ FIT-Handoff dokumentiert: Mapping zu `finalize-stereo-vision-dataset` existiert bereits in `FIT_MAPPING_SYNC_STATUS.md:57`
 
 **References:**
 - `Wichtig!_neue_Erkentniss_bitte_integrieren.txt:1-120`
@@ -642,27 +649,32 @@ Numerisch stabile Type-VI Visualisierung → RK4-Integrator + τ*-Buffer für st
 ### [Priority 11] v6r-beta-bayes
 **Hierarchisches Bayesianisches Modell für β-Meta-Regression**
 
-**Status:** 🟡 In Progress (2025-12-28)
-**Beta:** 4.6 | **Zeta Risk:** Niedrig
+**Status:** 🟢 Completed (2025-12-08)
+**Beta:** 4.6 | **Zeta Risk:** Neutralisiert – Hierarchisches Bayesian Model operational
 
 **Scope:** analysis, statistics
 
 **R → Θ:**
-Robustere β-Schätzungen mit Domain-Clustering → PyMC/Stan Hierarchie + VIF-Checks + Konfidenzintervalle
+✅ Robustere β-Schätzungen mit Domain-Clustering → PyMC Hierarchical Model (3-Level) + VIF-Checks + Konfidenzintervalle vollständig implementiert
 
-**Next Steps:**
-- 🔧 analysis/beta_meta_regression_bayes.py mit PyMC Hierarchical Model
-- 📊 Domain-Level Random Effects (Bio ~7, Klima ~11, Info ~4.5)
-- 🔗 Information Borrowing zwischen Domains mit wenigen Datenpunkten
-- 📈 VIF (Variance Inflation Factor) Checks für Multikollinearität
-- ✅ Posterior Predictive Checks für Modell-Validierung
-- 📊 Konfidenzintervalle für β-Schätzungen
-- 🔬 Δt_Q Pareto-Hypothese testen (φ^(n/3) Skalierung)
+**Completed Actions:**
+- ✅ analysis/beta_meta_regression_bayes.py vollständig implementiert (690 Zeilen)
+- ✅ PyMC Hierarchical Model mit 3 Levels (Global → Domain → Observation)
+- ✅ Domain-Level Random Effects mit Priors (Bio ~7.4, Klima ~11.0, Cognition ~4.5, AI ~1.0)
+- ✅ Information Borrowing/Shrinkage computation (hierarchical pooling)
+- ✅ VIF (Variance Inflation Factor) Checks für Multikollinearität
+- ✅ Posterior Predictive Checks (PPC p-value, RMSE)
+- ✅ 94% HDI Konfidenzintervalle (Highest Density Intervals)
+- ✅ NUTS Sampler (No U-Turn) mit diagnostics (R-hat, ESS bulk/tail, divergences)
+- ✅ Visualizations (trace plots, forest plots, PPC plots)
+- ✅ analysis/BAYES_README.md vollständig dokumentiert (254 Zeilen)
 
 **References:**
+- `analysis/beta_meta_regression_bayes.py:1-690`
+- `analysis/BAYES_README.md:1-254`
 - `FinalyzeVorschlägeGemini.txt:36-39`
 
-**Sprint Focus:** Bayes-Hierarchie + VIF
+**Sprint Focus:** ✅ Bayes-Hierarchie + VIF COMPLETED
 
 ---
 
