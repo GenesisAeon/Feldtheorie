@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2026-02-28T12:00:00Z
+**Updated:** 2025-12-09T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame
@@ -1181,19 +1181,27 @@ Zenodo_Upload_Checklist.md auf ✅ bringen → aktuelle Test-, Coverage-, Lint- 
 ### [Priority 52c] v6r-zenodo-ci-readiness-sync
 **ZENODO_CI_STATUS + Readiness Report als Finalize-Handoff spiegeln**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2025-12-09)
 
-**Beta:** 6.0 | **Zeta Risk:** Moderat – Reviewer-Slot/Type-VI-Log fehlen im Readiness-Track
+**Beta:** 6.0 | **Zeta Risk:** Neutralisiert – Readiness-Deltas vollständig dokumentiert
 
 **Scope:** compliance, governance, documentation
 
 **R → Θ:**
-Readiness-Report und CI-Status (2025-12-02/03) in Zenodo_Upload_Checklist + ZENODO_READINESS_REPORT.md gespiegelt → Delta-Block dokumentiert (Tests 42/42, Coverage 87%, 69.4% → 100% Ready) mit `[TYPE-VI-RISK]`-Banner, τ*-Default (0.1·|Θ−R|) und Logpfad `logs/type_vi_detections.jsonl`; FIT-Mapping zu Finalize gesetzt
+✅ Readiness-Report und CI-Status (2025-12-02/03) in Zenodo_Upload_Checklist + ZENODO_READINESS_REPORT.md gespiegelt → Delta-Block dokumentiert (Tests 42/42, Coverage 87%, 69.4% → 100% Ready) mit `[TYPE-VI-RISK: LOW]`-Banner, τ*-Default (0.1·|Θ−R|) und Logpfad `logs/type_vi_detections.jsonl`; FIT-Mapping #38 zu Finalize gesetzt
 
-**Next Steps:**
-- 📝 Δ-Abschnitt in `Zenodo_Upload_Checklist.md` ergänzen (Statussprung, CREP/τ*, Reviewer-Slot) und auf `logs/type_vi_detections.jsonl` verweisen.
-- 🔗 `ZENODO_READINESS_REPORT.md` um CI/Readiness-Kerne (Conditional→Full GO) erweitern; Referenzen auf `ZENODO_CI_STATUS_2025-12-02/03.md` aufnehmen.
-- 🧭 FIT_MAPPING_SYNC_STATUS um Mapping `v6r-zenodo-ci-readiness-sync` ↔ `finalize-zenodo-ci-readiness-sync` ergänzen; Chronik/Finalize-Handoff notieren.
+**Completed Actions:**
+- ✅ `ZENODO_READINESS_REPORT.md` erweitert (Section IV.a):
+  - [TYPE-VI-RISK]: LOW Banner hinzugefügt (CREP <0.7, kein Escalation)
+  - CI Status Delta Report: Conditional GO → Full GO dokumentiert
+  - Referenzen auf ZENODO_CI_STATUS_2025-12-02.md und 2025-12-03.md hinzugefügt
+  - Type-VI Governance Details: CREP, τ*, Reviewer-Slot, Audit Log, Escalation Level
+  - Version aktualisiert: v6-readiness-2.0.0 → v6-readiness-2.1.0
+- ✅ `FIT_MAPPING_SYNC_STATUS.md` erweitert:
+  - Mapping #38 hinzugefügt: v6r-zenodo-ci-readiness-sync ↔ finalize-zenodo-ci-readiness-sync
+  - Synchronization Score aktualisiert: 37/37 → 38/38 (100%)
+  - Branch und Date aktualisiert (2025-12-09)
+- ✅ Zenodo_Upload_Checklist.md bereits vorhanden mit CI-Status Delta Report (2025-12-08)
 
 **References:**
 - `ZENODO_CI_STATUS_2025-12-02.md:1-185`

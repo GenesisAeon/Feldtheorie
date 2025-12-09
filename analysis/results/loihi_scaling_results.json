@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "created": "2025-12-09",
+  "beta_bio_reference": 7.4,
+  "systems": [
+    {
+      "name": "GPU (Transformer)",
+      "alpha": 1.1500000000000021,
+      "beta_eff": 0.5,
+      "kappa": 0.06756756756756756,
+      "source": "Kaplan et al. 2020 (\u03b1 \u2248 1.15)"
+    },
+    {
+      "name": "Loihi 2 (SNN)",
+      "alpha": 0.9000000000000007,
+      "beta_eff": 3.5599999999999827,
+      "kappa": 0.4810810810810787,
+      "source": "Davies et al. 2021 (\u03b1 \u2248 0.90 gesch\u00e4tzt)"
+    },
+    {
+      "name": "BrainScaleS (analog)",
+      "alpha": 0.8499999999999996,
+      "beta_eff": 4.840000000000009,
+      "kappa": 0.6540540540540553,
+      "source": "Furber et al. 2014 (\u03b1 \u2248 0.85 gesch\u00e4tzt)"
+    },
+    {
+      "name": "IBM TrueNorth",
+      "alpha": 0.950000000000001,
+      "beta_eff": 2.2799999999999754,
+      "kappa": 0.30810810810810474,
+      "source": "Merolla et al. 2014 (\u03b1 \u2248 0.95 gesch\u00e4tzt)"
+    },
+    {
+      "name": "Organoid (DishBrain)",
+      "alpha": 0.7499999999999974,
+      "beta_eff": 7.400000000000066,
+      "kappa": 1.0000000000000089,
+      "source": "Kagan et al. 2022 (\u03b1 = 0.75 Hypothese)"
+    },
+    {
+      "name": "Biologisches Gehirn",
+      "alpha": 0.7499999999999983,
+      "beta_eff": 7.400000000000043,
+      "kappa": 1.0000000000000058,
+      "source": "Kleiber 1932 (\u03b1 = 0.75)"
+    }
+  ]
+}
