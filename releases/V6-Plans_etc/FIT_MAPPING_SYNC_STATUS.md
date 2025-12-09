@@ -1,22 +1,22 @@
 # FIT-Mapping Synchronization Status
 
-**Date:** 2025-12-08
-**Branch:** claude/agent-prompt-v6-01PAtZ6JkjQSyemfqjVCMYV3
-**Status:** ✅ **SYNCHRONIZED** (37/37 mappings aligned)
+**Date:** 2025-12-09
+**Branch:** claude/agent-prompt-v6-012Jpc5EHof3KqnHCRaWfZoH
+**Status:** ✅ **SYNCHRONIZED** (38/38 mappings aligned)
 
 ---
 
 ## Summary
 
-The FIT-Mapping between `V6ToDorefresh.md` and `Finalize_TODO.md` has been verified and is in **perfect synchronization**. Both trilayers maintain consistent task IDs, bridge focus descriptions, and status tracking. All previously identified status discrepancies have been resolved. 11 new mappings added since 2025-12-03, inklusive der Prompt-Handoff-Brücke (`v6r-fit-prompt-bridge` ↔ `finalize-fit-prompt-bridge`) aus `Promt_für_Agenten.txt`, sowie Zenodo-Artefakt-Bundle und CI-Status-Deltas (2025-12-08).
+The FIT-Mapping between `V6ToDorefresh.md` and `Finalize_TODO.md` has been verified and is in **perfect synchronization**. Both trilayers maintain consistent task IDs, bridge focus descriptions, and status tracking. All previously identified status discrepancies have been resolved. 12 new mappings added since 2025-12-03, inklusive der Prompt-Handoff-Brücke (`v6r-fit-prompt-bridge` ↔ `finalize-fit-prompt-bridge`) aus `Promt_für_Agenten.txt`, sowie Zenodo-Artefakt-Bundle, CI-Status-Deltas, und Zenodo CI Readiness-Sync (2025-12-09).
 
-**Synchronization Score:** 100% (37/37 mappings fully aligned)
+**Synchronization Score:** 100% (38/38 mappings fully aligned)
 
 ---
 
 ## Mapping Verification Matrix
 
-### ✅ Fully Synchronized Tasks (34 mappings)
+### ✅ Fully Synchronized Tasks (38 mappings)
 
 | # | ToDorefresh ID | Finalize ID | Bridge Focus | ToDorefresh Status | Finalize Status | Sync |
 |---|---|---|---|---|---|---|
@@ -57,6 +57,7 @@ The FIT-Mapping between `V6ToDorefresh.md` and `Finalize_TODO.md` has been verif
 | 35 | v6r-stereo-vision-dataset | finalize-stereo-vision-dataset | Δx_slice-Datensatz/Logpfad Finalize-Handoff | 🔴 Open | 🔴 Open | ✅ |
 | 36 | v6r-zenodo-artifact-bundle | finalize-zenodo-artifact-bundle | Test-/Lint-/Coverage-Artefakte unter output/zenodo_checks/ + Pfade in Checklisten | ✅ Completed (2025-12-08) | ✅ Completed (2025-12-08) | ✅ |
 | 37 | v6r-zenodo-ci-status-delta | finalize-zenodo-ci-status-delta | CI-Status-Deltas 2025-12-02→2025-12-03 + FIT-Handoff Dokumentation | ✅ Completed (2025-12-08) | ✅ Completed (2025-12-08) | ✅ |
+| 38 | v6r-zenodo-ci-readiness-sync | finalize-zenodo-ci-readiness-sync | ZENODO_CI_STATUS + Readiness Report Finalize-Handoff mit [TYPE-VI-RISK] Banner | ✅ Completed (2025-12-09) | ✅ Completed (2025-12-09) | ✅ |
 
 ### ✅ Status Discrepancies Resolved
 
