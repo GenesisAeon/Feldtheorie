@@ -36,13 +36,10 @@ from datetime import datetime
 
 # Your local Ollama models (adjust to match `ollama list` output)
 MODELS = [
-    "gemma2",           # Baseline (gemma3 not available yet, use gemma2)
-    "mistral",          # General purpose
-    "qwen2.5",          # Previous generation (control)
-    "qwen2.5-coder",    # Specialist (high density expected)
-    # Add these when available on your system:
-    # "qwen3",          # New flagship
-    # "gpt-oss",        # Your OSS model
+    "gemma3:27b",       # Baseline (Google's latest, 27B parameters)
+    "qwen2.5:7b",       # Previous generation (control, 7B parameters)
+    "qwen3-coder",      # Specialist (high density expected - CODE OPTIMIZED)
+    "gpt-oss:120b",     # Custom OSS model (120B parameters - ULTRA HIGH CAPACITY)
 ]
 
 OLLAMA_API = "http://localhost:11434/api/generate"
