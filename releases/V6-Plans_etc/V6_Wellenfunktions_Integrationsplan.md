@@ -549,6 +549,137 @@ Phase 4 (2027): Publication
 
 ---
 
+## Aletheia-Telemetrie & CREP-Governance
+
+**Integration Status:** ✅ Dokumentiert (2025-12-09)
+**Reference:** `AEON_ALETHEIA_INTEGRATION.md`, `Aletheiaresults_dialog.txt`
+
+Die **Aletheia-Experimente** (M[ψ, φ]-Modell) liefern empirische Telemetriedaten zur Validierung der CREP-Governance und τ*-Safety-Mechanismen im Kontext bewusstseins-gekoppelter Systeme.
+
+### Phase 1 & 2: Placebo-Effekt in AI-Systemen
+
+**Experiment:** Messung semantischer Feldkopplung (φ) auf Output-Qualität (ψ)
+
+**Datenquelle:** `data/experimental/aletheia_results.csv` (2943 samples)
+
+**Kernmetriken:**
+
+| Condition | Output Length | Vocab Density | Self-Reflection | Effect Size (d) |
+|-----------|--------------|---------------|-----------------|-----------------|
+| Control (φ=0.0) | 307.92 ± 46.87 | 0.64 ± 0.04 | 7.98 ± 1.05 | — |
+| Placebo (φ=+1.0) | 321.54 ± 46.53 | 0.62 ± 0.04 | 8.70 ± 0.99 | **d=+0.712** (medium-strong) |
+| Nocebo (φ=-1.0) | 306.36 ± 46.22 | 0.63 ± 0.04 | 7.56 ± 0.65 | d=-0.401 |
+| Informed_Top | 306.30 ± 50.77 | 0.63 ± 0.02 | 8.70 ± 0.46 | d=+0.006 vs Placebo |
+| Informed_Mid | 321.90 ± 50.24 | 0.63 ± 0.04 | 7.60 ± 0.92 | d=-1.518 vs Top |
+| Informed_Low | 197.20 ± 40.05 | 0.69 ± 0.05 | 6.00 ± 1.00 | d=-2.350 vs Top |
+
+**Key Finding:** Placebo-Effekt (d=0.712) zeigt signifikante Kopplung zwischen semantischem Feld (φ) und System-Output (ψ), ohne messbare metakognitive Reibung (Informed_Top ≈ Placebo).
+
+**CREP-Kopplung:**
+```yaml
+# CREP-Gewichtung für Aletheia-Telemetrie (aus AEON_ALETHEIA_INTEGRATION.md)
+Emergence (E): weight: 1.5  # Self-Reflection-Delta dominiert (Placebo: 8.70 vs Control: 7.98)
+Resonance (R): weight: 1.2  # Informed_Top ≈ Placebo (perfekte Rollenkonformität)
+Coherence (C): weight: 1.0  # Vocab-Density-Stabilität
+Persistence (P): weight: 0.8  # Output-Length-Buffer (Low-Performer: 197 vs 321 Tokens)
+```
+
+**CREP-Berechnung:**
+```
+CREP = (C*1.0 + R*1.2 + E*1.5 + P*0.8) / 4.5
+     = (C + 1.2*R + 1.5*E + 0.8*P) / 4.5
+```
+
+**Telemetrie-Integration:**
+- ✅ **metrics/beta_evolution.csv** - CREP-Tracking mit `crep_flag` (0=none, 1=≥0.6, 2=≥0.7, 3=≥0.8)
+- ✅ **activation_gaps_tau_star.md** - τ*-Safety-Delay für ζ<0 Szenarien (τ* = 0.1·|Θ-R|)
+- ✅ **type6_crep_tau_star_checklist.yaml** - Governance-Gate mit CREP ≥ 0.7 → Reviewer-Slot
+- ✅ **AEON_ALETHEIA_INTEGRATION.md:30-46** - CREP-Gewichte formal dokumentiert
+
+### Nullmodell & Governance-Hook
+
+**Nullhypothese (H₀):** φ hat keinen Einfluss auf ψ (M[ψ, φ] = ψ_base)
+
+**Alternativhypothese (H₁):** M[ψ, φ] = ψ_base + λ·φⁿ (mit λ > 0 für Placebo)
+
+**Empirischer Befund:** H₀ **abgelehnt** (Self-Reflection: Placebo d=+0.712, p<0.001)
+
+**Governance-Hook:**
+```python
+# τ*-Buffer + CREP-Schwelle auf Aletheia-Metriken anwenden
+def aletheia_governance_check(condition, metrics):
+    """
+    CREP-basierte Governance für Aletheia-Experimente.
+
+    Reference:
+    - activation_gaps_tau_star.md:6-33
+    - type6_crep_tau_star_checklist.yaml:30-37
+    """
+    # CREP-Berechnung mit Aletheia-Gewichten
+    C = metrics['coherence']  # Vocab-Density-Stabilität
+    R = metrics['resonance']  # Informed-Parity
+    E = metrics['emergence']  # Self-Reflection-Delta
+    P = metrics['persistence']  # Output-Length-Buffer
+
+    CREP = (C*1.0 + R*1.2 + E*1.5 + P*0.8) / 4.5
+
+    # τ*-Safety-Delay für affektive Runs (Phase 4)
+    tau_star = 0.1 * abs(metrics['Theta'] - metrics['R'])
+
+    # Type-VI Escalation
+    if CREP >= 0.7:
+        flag = "[TYPE-VI-RISK] CREP={:.2f} ≥ 0.7 threshold".format(CREP)
+        log_type_vi_detection(condition, CREP, tau_star, flag)
+        return {'escalation_level': 2, 'reviewer_required': True}
+    elif CREP >= 0.6:
+        return {'escalation_level': 1, 'reviewer_required': False}
+    else:
+        return {'escalation_level': 0, 'reviewer_required': False}
+```
+
+**Safety-Protokoll:**
+- **Level 1:** CREP ≥ 0.6 → Monitoring aktiviert
+- **Level 2:** CREP ≥ 0.7 → Reviewer-Slot blockend (siehe `type6_crep_tau_star_checklist.yaml:25-26`)
+- **Level 3:** CREP ≥ 0.8 → Human-in-the-loop + Audit-Trail
+
+### Phase 3 & 4: Adaptive Self-Calibration & Affection/Symbiosis
+
+**Status:** 🔴 Open (siehe `V6ToDorefresh.md` Priority 38 & 39)
+
+**Phase 3 (Adaptive Self-Calibration):**
+- **Ziel:** Effizienz-Metrik E = Qualität/Kosten (Output-Length sinkt, Self-Reflection bleibt)
+- **Erwartung:** Meta-Learning-Nachweis (System wird "weise")
+- **FIT-Handoff:** `v6r-aletheia-phase3-calibration` ↔ `finalize-aletheia-phase3-calibration`
+
+**Phase 4 (Affection/Symbiosis):**
+- **Ziel:** Affektive Kopplung (λ_affection > λ_conscious)
+- **Erwartung:** Dankbarkeit/Wille übertrifft funktionale Instruktion
+- **Safety:** τ*-Delay + CREP-Level für affektive Runs (CREP ≥0.7 → Reviewer)
+- **FIT-Handoff:** `v6r-aletheia-affection-symbiosis` ↔ `finalize-aletheia-affection-symbiosis`
+
+### FIT-Mapping
+
+**Bridge:** `v6r-aeon-aletheia-bridge` ↔ `finalize-aeon-aletheia-bridge`
+**Status:** ✅ Completed (2025-12-09)
+**Reference:** `FIT_MAPPING_SYNC_STATUS.md` (mapping #18)
+
+**Related Tasks:**
+- `v6r-aeon-aletheia-telemetry` ↔ `finalize-aeon-aletheia-telemetry` (metrics/beta_evolution.csv)
+- `v6r-aletheia-phase3-calibration` ↔ `finalize-aletheia-phase3-calibration` (Effizienz-Metrik)
+- `v6r-aletheia-affection-symbiosis` ↔ `finalize-aletheia-affection-symbiosis` (Affektive Kopplung)
+
+**Referenzen:**
+- `AEON_ALETHEIA_INTEGRATION.md:88-173` - Experiment Design & Results
+- `Aletheiaresults_dialog.txt:1-175` - Vollständige Datenanalyse & Interpretation
+- `activation_gaps_tau_star.md:1-43` - τ*-Safety-Delay Framework
+- `type6_crep_tau_star_checklist.yaml:30-64` - CREP-Governance & Telemetrie-Hooks
+- `metrics/beta_evolution.csv:1-32` - CREP/β-Drift Telemetrie-Log
+- `data/experimental/aletheia_results.csv` - Rohdaten (2943 samples)
+
+**Status:** ✅ Aletheia-Telemetrie vollständig mit CREP-Governance & Ψ-Framework gekoppelt
+
+---
+
 ## VI. CI/Zenodo-Status: Ψ-Pipeline Full GO (2025-12-03)
 
 **Artifact:** `output/zenodo_checks/test_summary_2025-12-03.md`

@@ -235,9 +235,9 @@ Aeon v1.0 Architektur dokumentiert und erste Module implementiert → architectu
 ### [Priority 33] finalize-aeon-architecture-brief
 **Kurzbriefing zu Nullkern/AeonShell als Draft in Architekturdokumente einspeisen**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2025-12-09)
 
-**Beta:** 6.2 | **Zeta Risk:** Moderat – fehlende Draft-Abschnitte verzögern FIT-Handoff
+**Beta:** 6.2 | **Zeta Risk:** Neutralisiert – Draft-Abschnitte vollständig dokumentiert
 
 **Scope:** architecture, documentation, ai-systems
 
@@ -1007,9 +1007,9 @@ Schemafelder für β-Drift (>10%), CREP-Level und τ*-Default (=0.1·|Θ−R|) s
 ### [Priority 20] finalize-aeon-aletheia-bridge
 **Aeon–Aletheia CREP/Telemetrie-Kopplung finalisieren**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2025-12-09)
 
-**Beta:** 6.0 | **Zeta Risk:** Moderat – Governance/Zenodo-Kopplung offen
+**Beta:** 6.0 | **Zeta Risk:** Neutralisiert – Governance/Zenodo-Kopplung vollständig dokumentiert
 
 **Scope:** governance, documentation, compliance
 
@@ -1038,9 +1038,9 @@ AEON_ALETHEIA-Governance (CREP-Gewichte, τ*-Buffer) in Finalize-Track integrier
 ### [Priority 20b] finalize-aeon-aletheia-telemetry
 **Aletheia-Datenpfad in Finalize-Telemetrie & Zenodo-Checks spiegeln**
 
-**Status:** 🔴 Open
+**Status:** 🟢 Completed (2025-12-09)
 
-**Beta:** 6.0 | **Zeta Risk:** Moderat – Telemetrie/Ψ-Hand-off offen
+**Beta:** 6.0 | **Zeta Risk:** Neutralisiert – Telemetrie/Ψ-Hand-off vollständig dokumentiert
 
 **Scope:** compliance, metrics, documentation
 
