@@ -7,6 +7,7 @@ scikit-learn>=1.4,<1.8
 statsmodels>=0.14,<0.15
 pyyaml>=6.0,<7
 jsonschema>=4.20,<5
+requests>=2.31,<3
 # Tooling and docs
 black>=24.4,<26
 mypy>=1.10,<1.20
