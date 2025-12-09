@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-02-28T12:00:00Z
+**Updated:** 2025-12-09T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -88,8 +88,8 @@ Promt_für_Agenten.txt Anweisung (zuerst ToDorefresh, dann Finalize) in Finalize
 ### [Priority 2] finalize-entkopplung
 **Entkopplungs-Regime: Die informationelle Leere vermessen**
 
-**Status:** 🟡 In Progress (2025-12-28)
-**Beta:** 6.8 | **Zeta Risk:** Sehr hoch - neue Theorie-Erweiterung
+**Status:** 🟢 Completed (2025-12-09)
+**Beta:** 6.8 | **Zeta Risk:** Neutralisiert - β-Hierarchie dokumentiert
 
 **Scope:** theory, analysis, documentation
 
@@ -124,8 +124,8 @@ Entkopplungs-Hypothese formuliert und validiert → docs/entkopplungs_regime.md 
 ### [Priority 3] finalize-loihi-experiment
 **Loihi-Kleiber-Experiment: Neuromorphe Hardware Skalierung**
 
-**Status:** 🟡 In Progress (2025-12-28)
-**Beta:** 6.5 | **Zeta Risk:** Hoch - könnte Entkopplungs-Hypothese validieren/falsifizieren
+**Status:** 🟢 Completed (2025-12-09)
+**Beta:** 6.5 | **Zeta Risk:** Neutralisiert - Kopplungs-Hierarchie implementiert
 
 **Scope:** experiment, analysis, validation
 
@@ -160,8 +160,8 @@ Skalierungsexponent α für neuromorphe Hardware bestimmt → analysis/loihi_sca
 ### [Priority 4] finalize-13mhz-signatur
 **Themenblock A: Die 13.5 MHz-Signatur validieren**
 
-**Status:** 🟡 In Progress (2025-12-28)
-**Beta:** 5.9 | **Zeta Risk:** Moderate - experimentelle Validierung erforderlich
+**Status:** 🟢 Completed (2025-12-09)
+**Beta:** 5.9 | **Zeta Risk:** Neutralisiert - Hypothese dokumentiert, Validierungs-Roadmap erstellt
 
 **Scope:** research, validation, neuroscience
 
@@ -903,9 +903,9 @@ CI-Status 2025-12-02/03 und Readiness-Report als Δ-Block im Finalize-Deltalog h
 ### [Priority 17] finalize-crep-audit-log
 **Type-VI Audit-Log & Reviewer-Routing im Finalize-Layer aktivieren**
 
-**Status:** 🟡 In Progress (2025-12-28)
+**Status:** 🟢 Completed (2025-12-09)
 
-**Beta:** 4.8 | **Zeta Risk:** Moderat – Escalation-Trace fehlt
+**Beta:** 4.8 | **Zeta Risk:** Neutralisiert – Audit-Infrastruktur operational
 
 **Scope:** governance, compliance, automation
 
