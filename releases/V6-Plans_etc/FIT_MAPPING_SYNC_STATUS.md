@@ -49,8 +49,8 @@ The FIT-Mapping between `V6ToDorefresh.md` and `Finalize_TODO.md` has been verif
 | 27 | v6r-lint-baseline-cleanup | finalize-lint-cleanup | Lint-Baseline bereinigen (≈550 Ruff-Fälle) | 🔴 Open | 🔴 Open | ✅ |
 | 28 | v6r-finalize-todo-sync | finalize-todo-refresh-sync | FIT-Handoff ToDorefresh ↔ Finalize synchronisieren | 🔴 Open | 🔴 Open | ✅ |
 | 29 | v6r-zenodo-readiness-report | finalize-zenodo-readiness-report | Zenodo Readiness Report → Checklist/Chronik spiegeln | 🔴 Open | 🔴 Open | ✅ |
-| 30 | v6r-aletheia-phase3-calibration | finalize-aletheia-phase3-calibration | Phase-3 Adaptive Self-Calibration + Telemetrie | 🔴 Open | 🔴 Open | ✅ |
-| 31 | v6r-aletheia-affection-symbiosis | finalize-aletheia-affection-symbiosis | Phase-4 Affection/Symbiosis + τ*/CREP-Gate | 🔴 Open | 🔴 Open | ✅ |
+| 30 | v6r-aletheia-phase3-calibration | finalize-aletheia-phase3-calibration | Phase-3 Adaptive Self-Calibration + Telemetrie | ✅ Completed (2025-12-09) | ✅ Completed (2025-12-09) | ✅ |
+| 31 | v6r-aletheia-affection-symbiosis | finalize-aletheia-affection-symbiosis | Phase-4 Affection/Symbiosis + τ*/CREP-Gate | ✅ Completed (2025-12-09) | ✅ Completed (2025-12-09) | ✅ |
 | 32 | v6r-sigillin-selfmeta | finalize-sigillin-selfmeta | Sigillin Selfmeta Triplet + Audit-Spirale | 🔴 Open | 🔴 Open | ✅ |
 | 33 | v6r-deepresearch-lebendigkeits | finalize-deepresearch-lebendigkeits | DeepResearch Cluster 6 (Lebendigkeits-Kriterium) | 🔴 Open | 🔴 Open | ✅ |
 | 34 | v6r-psi-ci-handoff | finalize-psi-ci-handoff | Ψ-Pipeline CI Delta → Zenodo/Ψ-Plan mit `[TYPE-VI-RISK]` Banner | 🔴 Open | 🔴 Open | ✅ |
@@ -58,7 +58,7 @@ The FIT-Mapping between `V6ToDorefresh.md` and `Finalize_TODO.md` has been verif
 | 36 | v6r-zenodo-artifact-bundle | finalize-zenodo-artifact-bundle | Test-/Lint-/Coverage-Artefakte unter output/zenodo_checks/ + Pfade in Checklisten | ✅ Completed (2025-12-08) | ✅ Completed (2025-12-08) | ✅ |
 | 37 | v6r-zenodo-ci-status-delta | finalize-zenodo-ci-status-delta | CI-Status-Deltas 2025-12-02→2025-12-03 + FIT-Handoff Dokumentation | ✅ Completed (2025-12-08) | ✅ Completed (2025-12-08) | ✅ |
 | 38 | v6r-zenodo-ci-readiness-sync | finalize-zenodo-ci-readiness-sync | ZENODO_CI_STATUS + Readiness Report Finalize-Handoff mit [TYPE-VI-RISK] Banner | ✅ Completed (2025-12-09) | ✅ Completed (2025-12-09) | ✅ |
-| 39 | v6r-aeon-aletheia-telemetry | finalize-aeon-aletheia-telemetry | Aletheia-Telemetriepfad (metrics/beta_evolution.csv) + Ψ-Pipeline-Integration | ✅ Completed (2025-12-09) | 🔴 Open | ⚠️ Status mismatch |
+| 39 | v6r-aeon-aletheia-telemetry | finalize-aeon-aletheia-telemetry | Aletheia-Telemetriepfad (metrics/beta_evolution.csv) + Ψ-Pipeline-Integration | ✅ Completed (2025-12-09) | ✅ Completed (2025-12-09) | ✅ |
 
 ### ✅ Status Discrepancies Resolved
 
