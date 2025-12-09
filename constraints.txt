@@ -9,7 +9,7 @@ pyyaml>=6.0,<7
 jsonschema>=4.20,<5
 # Tooling and docs
 black>=24.4,<26
-mypy>=1.10,<1.19
+mypy>=1.10,<1.20
 nox>=2024.4.15,<2025.12
 pytest>=8.2,<10
 pytest-cov>=4.1,<8
