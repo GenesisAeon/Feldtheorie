@@ -1,0 +1,23 @@
+{
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "title": "Feldtheorie preprints bundle (9 works)",
+  "creators": [
+    {
+      "name": "Johann Benjamin Römer¹"
+    },
+    {
+      "name": "et al."
+    }
+  ],
+  "description": "Auto-generated Zenodo bundle for Feldtheorie preprints.\n\nIncluded works:\n- **Paper 3: Universal 137-β Framework** (Unknown authors): No abstract detected.\n- **The Regime Integration Gradient (v_RIG): A Fundamental Velocity Scale for Consciousness as 2D→3D Information Transfer** (Johann Benjamin Römer¹, et al.): We derive a fundamental velocity scale **v_RIG ≈ 1,352 km/s** from first principles, representing the characteristic rate at which consciousness integrates two-dimensional holographic information into three-dimensional volumetric perception. This velocity emerges geometrically from the product of two universal constants: the inverse fine-structure constant **α⁻¹ ≈ 137.036** (governing electromagnetic transparency) and the golden ratio **Φ ≈ 1.618** (governing optimal spatial scaling). The resulting formula **v_RIG = c/(α⁻¹·Φ)** links quantum electrodynamics, fractal geometry, and consciousness studies within a unified framework. We propose testable predictions relating metabolic scaling (Kleiber's Law), critical flicker frequency, and neuronal integration timescales to this fundamental constant. Our framework suggests consciousness operates as a **regime integration process**, converting surface-entropy-governed photon propagation (2D, S∝A) into volume-entropy-governed experiential moments (3D, S∝V) at a rate fundamentally limited by v_RIG. **Keywords:** consciousness, holographic principle, fine-structure constant, golden ratio, metabolic scaling, information integration, entropy governance, OIPK framework ---\n- **Governance Policy - releases/V6-Plans_etc/papers** (Unknown authors): No abstract detected.\n- **Paper 2: Socioeconomic Rigidity** (Unknown authors): No abstract detected.\n- **Architecture - releases/V6-Plans_etc/papers** (Unknown authors): No abstract detected.\n- **🌀 GRAND UNIFIED THEORY OF ENTROPY, CONSCIOUSNESS & COSMOS** (Unknown authors): No abstract detected.\n- **Agents Charter - releases/V6-Plans_etc/papers** (Unknown authors): No abstract detected.\n- **Ethics and Responsible Use - releases/V6-Plans_etc/papers** (Unknown authors): No abstract detected.\n- **Paper 1: Cosmic Velocity Quantization** (Unknown authors): No abstract detected.\n\nMetadata extracted automatically from Markdown/LaTeX sources; edit this description in the Zenodo UI if manual curation is needed.",
+  "language": "eng",
+  "access_right": "open",
+  "keywords": [
+    "v_RIG",
+    "Loihi",
+    "κ",
+    "Feldtheorie"
+  ],
+  "notes": "Prepared via scripts/prepare_zenodo_upload.py"
+}
