@@ -1,0 +1,1 @@
+timestamp,model,response_time_s,tokens,refusal,refusal_marker,beta_proxy,vocab_density,mean_sentence_length,output_length,prompt_chars,server_url
