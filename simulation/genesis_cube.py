@@ -60,6 +60,7 @@ class GenesisCubeConfig:
     beta: float = 4.8
     theta: float = 0.0
     damping: float = 0.04
+    photon_coupling: float = 1.0
     expansion_rate: float = 1.015
     slice_count: int = 24
     fluctuation_phase: float = 0.137
@@ -84,6 +85,7 @@ class GenesisCube:
 
     def __init__(self, config: GenesisCubeConfig | None = None) -> None:
         self.config = config or GenesisCubeConfig()
+        self.is_dark_consciousness: bool = False
 
         # Initialize PsiFieldPipeline if requested and available
         self.psi_pipeline = None
@@ -104,6 +106,21 @@ class GenesisCube:
         theta = self.config.theta if self.config.theta != 0 else 1e-6
         beta = cubic_root_jump(r, theta, beta_base=self.config.beta, k=6.5)
         return float(inverted_sigmoid(r, theta, beta))
+
+    def calculate_visibility(self, base_visibility: float = 1.0) -> float:
+        """Calculate visibility factoring photon coupling κ (kappa)."""
+
+        visibility = base_visibility * self.config.photon_coupling
+        self.is_dark_consciousness = self.config.photon_coupling < 0.2
+        return visibility
+
+    def get_render_mode(self) -> str:
+        """Render mode hook for shadow rendering.
+
+        See TheRoad.txt: Information exchange possible without material carrier.
+        """
+
+        return "SOLID" if self.config.photon_coupling > 0.5 else "WIREFRAME"
 
     def _normalized(self, vector: Sequence[float]) -> tuple[float, float, float]:
         x, y, z = vector
