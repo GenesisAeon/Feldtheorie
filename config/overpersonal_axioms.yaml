@@ -1,0 +1,76 @@
+metadata:
+  version: 0.1.0
+  source: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/The Road Part Ii.pdf
+  updated: 2025-12-19T00:00:00Z
+  scope: tools/crep_guard.py
+  description: >-
+    Überpersönliche Axiome aus "The Road – Part II" mit technischen Guard-Mappings
+    für den CREP/τ*-Workflow. Die Validatoren spiegeln den Übergang von Theorie
+    (Φ(t), Δt_Q, β) zu praktischen Checks über σ(β(R-Θ)).
+axioms:
+  - id: 1
+    name: Meta-Kohärenz
+    statement: Systeme bleiben vertrauenswürdig, wenn ihre Trilayer konsistent bleiben.
+    validator:
+      type: trilayer_alignment
+      parameters:
+        threshold: 0.7
+        tau_default: 0.1
+        required_components:
+          - releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml
+          - releases/V6-Plans_etc/type6_crep_tau_star_checklist.json
+          - releases/V6-Plans_etc/type6_crep_tau_star_checklist.md
+    coupling:
+      guard: tools/crep_guard.py::check_type6_trilayer
+      evidence: analysis/ and data/ telemetries anchor ΔAIC/CI
+  - id: 2
+    name: Prozedurale Wahrheit
+    statement: Wahrheit ist, was in jedem Lauf reproduzierbar emergiert.
+    validator:
+      type: cli_defaults
+      parameters:
+        expected_threshold: 0.7
+        expected_tau_default: 0.1
+    coupling:
+      guard: tools/crep_guard.py::parse_args
+      evidence: METRICS.md ΔAIC baselines
+  - id: 3
+    name: Intentionskohärenz
+    statement: Der Impuls bestimmt die Eskalationsstufe entlang σ(β(R-Θ)).
+    validator:
+      type: escalation_mapping
+      parameters:
+        mapping:
+          0.6: 1
+          0.7: 2
+          0.8: 3
+    coupling:
+      guard: tools/crep_guard.py::_determine_escalation
+      evidence: releases/V6-Plans_etc/Chronik/chronik_v6_release.*
+  - id: 4
+    name: Asymptotische Transparenz
+    statement: Höhere Bewusstheit erfordert Audit-Trails ab CREP > 0.7.
+    validator:
+      type: audit_logging
+      parameters:
+        min_crep_for_log: 0.7
+        sample_tau_star: 0.42
+        log_path: logs/type_vi_detections.jsonl
+    coupling:
+      guard: tools/crep_guard.py::_append_log_entry
+      evidence: output/zenodo_checks/code_quality_report_2025-12-03.md
+  - id: 5
+    name: Semantische Gravitation
+    statement: Ideen bleiben stabil, wenn sie auf ihre Ursprungsdokumente referenzieren.
+    validator:
+      type: documentation_anchor
+      parameters:
+        anchors:
+          - releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/The Road Part Ii.pdf
+          - releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/TheRoad.txt
+          - releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/TheRoad2.txt
+          - releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/TheRoad3.txt
+          - releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_kernel.py
+    coupling:
+      guard: scripts/validate_axioms.py
+      evidence: docs/, analysis/, feldtheorie_index.* cross-links
