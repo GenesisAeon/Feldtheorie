@@ -13,10 +13,14 @@ OpenAPI Docs:
     http://localhost:8000/redoc (ReDoc)
 """
 
-from fastapi import FastAPI, HTTPException, Response
+import asyncio
+import json
+import re
+import uuid
+from fastapi import FastAPI, HTTPException, Response, WebSocket, WebSocketDisconnect
 from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field, field_validator, model_validator
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Set
 import io
 import base64
 import numpy as np
@@ -153,6 +157,14 @@ class AnalyzeResponse(BaseModel):
     field_type: str
 
 
+class LiveAnalyzeRequest(BaseModel):
+    samples: int = Field(1, ge=1, le=25, description="Number of runs per model")
+    run_id: Optional[str] = Field(
+        None,
+        description="Client-specified run identifier for telemetry correlation"
+    )
+
+
 class SimulateRequest(BaseModel):
     theta: float = Field(..., description="Threshold value Θ")
     beta: float = Field(..., description="Steepness parameter β")
@@ -196,6 +208,148 @@ class ErrorResponse(BaseModel):
     details: Optional[Dict[str, Any]] = None
 
 
+class TelemetryManager:
+    """Manage telemetry WebSocket subscribers and broadcast events."""
+
+    def __init__(self) -> None:
+        self.connections: Set[WebSocket] = set()
+        self._lock = asyncio.Lock()
+
+    async def connect(self, websocket: WebSocket) -> None:
+        await websocket.accept()
+        async with self._lock:
+            self.connections.add(websocket)
+
+    async def disconnect(self, websocket: WebSocket) -> None:
+        async with self._lock:
+            self.connections.discard(websocket)
+
+    async def broadcast(self, message: Dict[str, Any]) -> None:
+        payload = json.dumps(message)
+        async with self._lock:
+            connections = list(self.connections)
+
+        for websocket in connections:
+            try:
+                await websocket.send_text(payload)
+            except WebSocketDisconnect:
+                await self.disconnect(websocket)
+            except RuntimeError:
+                # Ignore failures from closed event loops or cancelled tasks
+                await self.disconnect(websocket)
+
+
+telemetry_manager = TelemetryManager()
+
+
+# ============================================================================
+# Live Analysis Helpers
+# ============================================================================
+
+async def _stream_subprocess_output(run_id: str, process: asyncio.subprocess.Process) -> None:
+    """Forward subprocess stdout/stderr to telemetry clients with basic parsing."""
+
+    beta_pattern = re.compile(r"β.*?:\s*([0-9]+(?:\.[0-9]+)?)")
+    progress_pattern = re.compile(r"\[(\d+)/(\d+)\]")
+
+    async def forward(stream: asyncio.StreamReader, source: str) -> None:
+        while True:
+            line = await stream.readline()
+            if not line:
+                break
+
+            text = line.decode(errors="replace").strip()
+            if not text:
+                continue
+
+            await telemetry_manager.broadcast(
+                {
+                    "type": "log",
+                    "run_id": run_id,
+                    "source": source,
+                    "message": text,
+                }
+            )
+
+            if match := beta_pattern.search(text):
+                await telemetry_manager.broadcast(
+                    {
+                        "type": "beta_estimate",
+                        "run_id": run_id,
+                        "beta": float(match.group(1)),
+                    }
+                )
+
+            if match := progress_pattern.search(text):
+                await telemetry_manager.broadcast(
+                    {
+                        "type": "progress",
+                        "run_id": run_id,
+                        "current": int(match.group(1)),
+                        "total": int(match.group(2)),
+                    }
+                )
+
+    await asyncio.gather(
+        forward(process.stdout, "stdout"),
+        forward(process.stderr, "stderr"),
+    )
+
+
+async def run_live_analysis(run_id: str, samples: int) -> None:
+    """Launch the analysis script and stream telemetry to WebSocket clients."""
+
+    script_path = PROJECT_ROOT / "analysis" / "run_aletheia_local_v6.py"
+    if not script_path.exists():
+        await telemetry_manager.broadcast(
+            {
+                "type": "error",
+                "run_id": run_id,
+                "message": f"Script not found at {script_path}",
+            }
+        )
+        return
+
+    await telemetry_manager.broadcast(
+        {
+            "type": "start",
+            "run_id": run_id,
+            "samples": samples,
+            "script": str(script_path),
+        }
+    )
+
+    try:
+        process = await asyncio.create_subprocess_exec(
+            sys.executable,
+            str(script_path),
+            "--samples",
+            str(samples),
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+        )
+    except Exception as exc:
+        await telemetry_manager.broadcast(
+            {
+                "type": "error",
+                "run_id": run_id,
+                "message": f"Failed to start analysis: {exc}",
+            }
+        )
+        return
+
+    await _stream_subprocess_output(run_id, process)
+    return_code = await process.wait()
+
+    await telemetry_manager.broadcast(
+        {
+            "type": "complete",
+            "run_id": run_id,
+            "return_code": return_code,
+        }
+    )
+
+
 # ============================================================================
 # Endpoints
 # ============================================================================
@@ -209,6 +363,34 @@ async def root():
         "docs": "/docs",
         "openapi": "/openapi.json"
     }
+
+
+@app.post("/api/analyze/live", tags=["analysis"])
+async def analyze_live(request: LiveAnalyzeRequest):
+    """Launch live analysis run and stream telemetry via WebSocket."""
+
+    run_id = request.run_id or str(uuid.uuid4())
+    asyncio.create_task(run_live_analysis(run_id, request.samples))
+
+    return {
+        "run_id": run_id,
+        "status": "started",
+        "samples": request.samples
+    }
+
+
+@app.websocket("/ws/telemetry")
+async def telemetry(websocket: WebSocket):
+    """WebSocket endpoint for live telemetry (progress + β-estimates)."""
+
+    await telemetry_manager.connect(websocket)
+
+    try:
+        while True:
+            # Keep the connection alive while broadcasts are sent from tasks
+            await asyncio.sleep(30)
+    except WebSocketDisconnect:
+        await telemetry_manager.disconnect(websocket)
 
 
 @app.post("/api/sonify", response_model=SonifyResponse, tags=["sonification"])
