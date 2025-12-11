@@ -17,11 +17,10 @@ Author: Genesis Aeon (UTAC Framework)
 Version: 5.0 "Empirical Grounding"
 """
 
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
-from pathlib import Path
-from typing import Dict, List
-import warnings
 
 # ============================================================================
 # CONFIGURATION
@@ -39,7 +38,7 @@ FOCUS_COUNTRIES = [
     "Brazil",
     "South Africa",
     "Russia",
-    "India"
+    "India",
 ]
 
 # Time range
@@ -50,6 +49,7 @@ END_YEAR = 2024
 # ============================================================================
 # SYNTHETIC DATA GENERATION (Placeholder for Real API Integration)
 # ============================================================================
+
 
 def generate_synthetic_gini_data() -> pd.DataFrame:
     """
@@ -76,7 +76,7 @@ def generate_synthetic_gini_data() -> pd.DataFrame:
         "Brazil": {"base": 0.53, "trend": -0.002, "volatility": 0.025},
         "South Africa": {"base": 0.63, "trend": 0.001, "volatility": 0.02},
         "Russia": {"base": 0.40, "trend": 0.002, "volatility": 0.03},
-        "India": {"base": 0.35, "trend": 0.003, "volatility": 0.02}
+        "India": {"base": 0.35, "trend": 0.003, "volatility": 0.02},
     }
 
     for country in FOCUS_COUNTRIES:
@@ -86,20 +86,12 @@ def generate_synthetic_gini_data() -> pd.DataFrame:
             t = year - START_YEAR
 
             # Trend + noise
-            gini = (
-                params["base"] +
-                params["trend"] * t +
-                np.random.normal(0, params["volatility"])
-            )
+            gini = params["base"] + params["trend"] * t + np.random.normal(0, params["volatility"])
 
             # Clamp to valid range
             gini = np.clip(gini, 0.20, 0.70)
 
-            data.append({
-                "Country": country,
-                "Year": year,
-                "Gini": gini
-            })
+            data.append({"Country": country, "Year": year, "Gini": gini})
 
     return pd.DataFrame(data)
 
@@ -131,7 +123,7 @@ def generate_synthetic_stability_data() -> pd.DataFrame:
         "Brazil": {"base": 65, "volatility": 6},
         "South Africa": {"base": 55, "volatility": 8},
         "Russia": {"base": 60, "volatility": 7},
-        "India": {"base": 70, "volatility": 5}
+        "India": {"base": 70, "volatility": 5},
     }
 
     for country in FOCUS_COUNTRIES:
@@ -147,19 +139,11 @@ def generate_synthetic_stability_data() -> pd.DataFrame:
             elif country == "Brazil" and year in [2015, 2016]:
                 shock = -8  # Political crisis
 
-            stability = (
-                params["base"] +
-                shock +
-                np.random.normal(0, params["volatility"])
-            )
+            stability = params["base"] + shock + np.random.normal(0, params["volatility"])
 
             stability = np.clip(stability, 0, 100)
 
-            data.append({
-                "Country": country,
-                "Year": year,
-                "Stability_Score": stability
-            })
+            data.append({"Country": country, "Year": year, "Stability_Score": stability})
 
     return pd.DataFrame(data)
 
@@ -193,6 +177,7 @@ def compute_load_proxy(gini_df: pd.DataFrame) -> pd.DataFrame:
 # MAIN HARMONIZATION
 # ============================================================================
 
+
 def harmonize_data() -> pd.DataFrame:
     """
     Combine all data sources into unified panel.
@@ -208,12 +193,7 @@ def harmonize_data() -> pd.DataFrame:
     gini_df = compute_load_proxy(gini_df)
 
     # Merge
-    panel = pd.merge(
-        gini_df,
-        stability_df,
-        on=["Country", "Year"],
-        how="inner"
-    )
+    panel = pd.merge(gini_df, stability_df, on=["Country", "Year"], how="inner")
 
     # Sort
     panel = panel.sort_values(["Country", "Year"]).reset_index(drop=True)
@@ -246,7 +226,7 @@ def annotate_crisis_events(panel: pd.DataFrame) -> pd.DataFrame:
         ("South Africa", 2008, "Political transition"),
         ("United States", 2008, "Financial crisis"),
         ("United States", 2020, "Political crisis"),
-        ("Russia", 2022, "War initiation")
+        ("Russia", 2022, "War initiation"),
     ]
 
     for country, year, description in crisis_markers:
@@ -263,6 +243,7 @@ def annotate_crisis_events(panel: pd.DataFrame) -> pd.DataFrame:
 # ============================================================================
 # MAIN EXECUTION
 # ============================================================================
+
 
 def main():
     """Ingest and harmonize all historical data."""

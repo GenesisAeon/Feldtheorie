@@ -99,7 +99,9 @@ def render_report(
     lines = ["# Project Aletheia Evaluation", ""]
     lines.append("## Group Summaries")
     lines.append("")
-    lines.append("| Condition | N | Output Length (mean±sd) | Vocab Density (mean±sd) | Self-Reflection (mean±sd) |")
+    lines.append(
+        "| Condition | N | Output Length (mean±sd) | Vocab Density (mean±sd) | Self-Reflection (mean±sd) |"
+    )
     lines.append("| --- | --- | --- | --- | --- |")
 
     for condition, stats in sorted(summaries.items()):

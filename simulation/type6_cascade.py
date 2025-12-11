@@ -60,9 +60,7 @@ class Type6Parameters:
     def __post_init__(self):
         """Validate parameters."""
         if self.zeta_0 >= 0:
-            raise ValueError(
-                f"Type-VI requires negative damping: zeta_0={self.zeta_0} >= 0"
-            )
+            raise ValueError(f"Type-VI requires negative damping: zeta_0={self.zeta_0} >= 0")
         if self.beta <= 0:
             raise ValueError(f"beta must be positive: beta={self.beta}")
         if self.gamma < 0:
@@ -108,9 +106,7 @@ def sigmoid_inverted(beta: float, R: float, Theta: float) -> float:
     return 1.0 - sigmoid
 
 
-def compute_crep_index(
-    R: float, Theta: float, beta: float, zeta: float
-) -> float:
+def compute_crep_index(R: float, Theta: float, beta: float, zeta: float) -> float:
     """Compute CREP (Collapse-Resonance-Expansion Potential) index.
 
     CREP = α_C·C + α_R·R_resonance + α_E·E_rebound
@@ -221,6 +217,7 @@ def rk4_step(
     Returns:
         Updated field value R_next
     """
+
     # Define velocity function
     def f(r):
         return field_velocity(r, params.Theta, params.beta, params.zeta_0, params.gamma)
@@ -307,9 +304,7 @@ def simulate_type6_cascade(
 
         # Apply τ* safety delay for ζ < 0
         if zeta < 0:
-            R_next = apply_safety_delay(
-                R_next, R_prev, tau_star, params.dt, mode="exponential"
-            )
+            R_next = apply_safety_delay(R_next, R_prev, tau_star, params.dt, mode="exponential")
 
         # Compute velocity
         dR_dt = field_velocity(R_next, params.Theta, params.beta, params.zeta_0, params.gamma)
@@ -393,23 +388,17 @@ def run_arctic_methane_simulation(verbose: bool = True) -> list[SimulationState]
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="Type-VI Implosive Cascade Simulator"
-    )
+    parser = argparse.ArgumentParser(description="Type-VI Implosive Cascade Simulator")
     parser.add_argument(
         "--domain",
         type=str,
         default="climate",
         help="System domain (climate, finance, neuro, etc.)",
     )
-    parser.add_argument(
-        "--R-init", type=float, default=1.8, help="Initial field coordinate"
-    )
+    parser.add_argument("--R-init", type=float, default=1.8, help="Initial field coordinate")
     parser.add_argument("--Theta", type=float, default=2.1, help="Activation threshold")
     parser.add_argument("--beta", type=float, default=4.2, help="Logistic steepness")
-    parser.add_argument(
-        "--zeta-0", type=float, default=-0.15, help="Negative damping coefficient"
-    )
+    parser.add_argument("--zeta-0", type=float, default=-0.15, help="Negative damping coefficient")
     parser.add_argument("--gamma", type=float, default=0.5, help="Cubic-jump strength")
     parser.add_argument("--dt", type=float, default=0.01, help="Time step")
     parser.add_argument("--T-max", type=float, default=50.0, help="Maximum time")
@@ -450,8 +439,8 @@ if __name__ == "__main__":
     with open(logfile, "a") as f:
         # Check if we need to write data (not just comments)
         f.write(
-            f'{timestamp},{params.domain},{final.R:.4f},{params.Theta:.4f},'
-            f'{params.beta:.4f},{final.zeta:.4f},{final.tau_star:.6f},'
+            f"{timestamp},{params.domain},{final.R:.4f},{params.Theta:.4f},"
+            f"{params.beta:.4f},{final.zeta:.4f},{final.tau_star:.6f},"
             f'{final.crep_index:.4f},"Type-VI cascade simulation"\n'
         )
 

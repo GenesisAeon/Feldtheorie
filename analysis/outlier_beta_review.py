@@ -234,7 +234,11 @@ def main() -> None:
     with args.output.open("w", encoding="utf-8") as handle:
         json.dump(payload, handle, indent=2)
 
-    print(json.dumps({item["identifier"]: item["instrumentation_flag"] for item in summaries}, indent=2))
+    print(
+        json.dumps(
+            {item["identifier"]: item["instrumentation_flag"] for item in summaries}, indent=2
+        )
+    )
 
 
 if __name__ == "__main__":

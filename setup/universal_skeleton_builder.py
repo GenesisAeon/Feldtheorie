@@ -49,23 +49,24 @@ AUTHOR: Feldtheorie Framework (adapted from v5.0.0)
 import argparse
 import json
 import logging
-import os
 import sys
 from pathlib import Path
-from typing import Dict, Optional
 
 # Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(levelname)s: %(message)s'
-)
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
 
 
 class UniversalSkeletonBuilder:
     """Builds a self-organizing repository skeleton based on UTAC principles."""
 
-    def __init__(self, target_path: Path, domain: str = "general", metrics: str = "crep", verbose: bool = False):
+    def __init__(
+        self,
+        target_path: Path,
+        domain: str = "general",
+        metrics: str = "crep",
+        verbose: bool = False,
+    ):
         self.target = target_path
         self.domain = domain
         self.metrics = metrics
@@ -100,7 +101,7 @@ class UniversalSkeletonBuilder:
         if self.target.exists():
             if any(self.target.iterdir()):
                 response = input(f"⚠️  Directory {self.target} is not empty. Continue? [y/N]: ")
-                if response.lower() != 'y':
+                if response.lower() != "y":
                     logger.info("Build cancelled.")
                     sys.exit(0)
         else:
@@ -510,13 +511,13 @@ meta:
             "metadata": {
                 "created": "2025-11-23",
                 "domain": self.domain,
-                "tags": ["example", "template", "delete-me"]
+                "tags": ["example", "template", "delete-me"],
             },
             "data": {
                 "x": [1, 2, 3, 4, 5],
                 "y": [2, 4, 6, 8, 10],
-                "note": "This is sample data. Delete when you add real artifacts."
-            }
+                "note": "This is sample data. Delete when you add real artifacts.",
+            },
         }
 
         json_path = self.target / "modules" / "artifacts" / "example_01.json"
@@ -807,20 +808,16 @@ Theory:
 
 Source:
   https://github.com/GenesisAeon/Feldtheorie
-        """
+        """,
     )
 
-    parser.add_argument(
-        "target",
-        type=Path,
-        help="Target directory for the new skeleton"
-    )
+    parser.add_argument("target", type=Path, help="Target directory for the new skeleton")
 
     parser.add_argument(
         "--domain",
         type=str,
         default="general",
-        help="Project domain (physics, business, literature, etc.)"
+        help="Project domain (physics, business, literature, etc.)",
     )
 
     parser.add_argument(
@@ -828,23 +825,16 @@ Source:
         type=str,
         default="crep",
         choices=["crep", "roi", "kpi"],
-        help="Metric system to use (crep=research, roi=business, kpi=engineering)"
+        help="Metric system to use (crep=research, roi=business, kpi=engineering)",
     )
 
-    parser.add_argument(
-        "--verbose",
-        action="store_true",
-        help="Show detailed output"
-    )
+    parser.add_argument("--verbose", action="store_true", help="Show detailed output")
 
     args = parser.parse_args()
 
     # Build the skeleton
     builder = UniversalSkeletonBuilder(
-        target_path=args.target,
-        domain=args.domain,
-        metrics=args.metrics,
-        verbose=args.verbose
+        target_path=args.target, domain=args.domain, metrics=args.metrics, verbose=args.verbose
     )
 
     builder.build()

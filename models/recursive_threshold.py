@@ -160,7 +160,11 @@ class PotenzialKaskade:
         results: list[CascadeState] = []
         for idx, (potential, coherence) in enumerate(zip(potentials, coherences)):
             condition = None if condition_trace is None else condition_trace[idx]
-            results.append(self.step(potential=float(potential), coherence=coherence, condition=condition, dt=dt))
+            results.append(
+                self.step(
+                    potential=float(potential), coherence=coherence, condition=condition, dt=dt
+                )
+            )
         return results
 
     def reset(self) -> None:

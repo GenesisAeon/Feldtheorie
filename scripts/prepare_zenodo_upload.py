@@ -10,9 +10,9 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, List
 
 
 @dataclass
@@ -21,7 +21,7 @@ class PreprintMetadata:
 
     path: Path
     title: str
-    authors: List[str]
+    authors: list[str]
     abstract: str
 
 
@@ -78,8 +78,8 @@ def extract_markdown_metadata(path: Path) -> PreprintMetadata | None:
 
     lines = path.read_text(encoding="utf-8").splitlines()
     title = None
-    authors: List[str] = []
-    abstract_lines: List[str] = []
+    authors: list[str] = []
+    abstract_lines: list[str] = []
 
     for line in lines:
         if title is None:
@@ -127,7 +127,7 @@ def extract_latex_metadata(path: Path) -> PreprintMetadata | None:
     if not title_match:
         return None
 
-    authors: List[str] = []
+    authors: list[str] = []
     if author_match:
         raw_authors = re.split(r"\\and|\\\\", author_match.group("authors"))
         authors = [clean_author(author) for author in raw_authors if clean_author(author)]
@@ -204,10 +204,10 @@ def build_description(preprints: list[PreprintMetadata]) -> str:
 def main() -> None:
     args = parse_args()
 
-    inputs = (
-        args.inputs
-        or ["releases/V6-Plans_etc/Finalize/papers", "releases/V6-Plans_etc/papers"]
-    )
+    inputs = args.inputs or [
+        "releases/V6-Plans_etc/Finalize/papers",
+        "releases/V6-Plans_etc/papers",
+    ]
 
     sources = list(iter_source_files(inputs))
     preprints: list[PreprintMetadata] = []
@@ -235,7 +235,9 @@ def main() -> None:
 
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    output_path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     print(f"Wrote Zenodo metadata for {len(preprints)} preprints to {output_path}")
 
 

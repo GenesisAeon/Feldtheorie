@@ -15,10 +15,11 @@ Date: 2025-11-12
 Version: 1.0.0
 """
 
+import argparse
 import asyncio
 import json
-import argparse
 from datetime import datetime
+
 import websockets
 
 
@@ -34,20 +35,20 @@ async def test_client(server_url: str, system_ids: list):
 
     try:
         async with websockets.connect(server_url) as websocket:
-            print(f"✅ Connected to WebSocket server")
+            print("✅ Connected to WebSocket server")
 
             # Send subscribe message
             subscribe_msg = {
                 "type": "subscribe",
                 "system_ids": system_ids,
-                "timestamp": datetime.utcnow().isoformat() + "Z"
+                "timestamp": datetime.utcnow().isoformat() + "Z",
             }
 
             print(f"📤 Subscribing to {len(system_ids)} systems: {system_ids}")
             await websocket.send(json.dumps(subscribe_msg))
 
             # Listen for messages
-            print(f"📥 Listening for messages (Press Ctrl+C to stop)...\n")
+            print("📥 Listening for messages (Press Ctrl+C to stop)...\n")
 
             message_count = 0
             async for message in websocket:
@@ -96,10 +97,10 @@ async def test_client(server_url: str, system_ids: list):
 
     except websockets.exceptions.ConnectionRefused:
         print(f"❌ Connection refused. Is the server running at {server_url}?")
-        print(f"   Start server: python3 bridge_server.py --test-mode")
+        print("   Start server: python3 bridge_server.py --test-mode")
 
     except KeyboardInterrupt:
-        print(f"\n🛑 Stopped by user")
+        print("\n🛑 Stopped by user")
 
     except Exception as e:
         print(f"❌ Error: {e}")
@@ -115,7 +116,7 @@ async def interactive_test(server_url: str):
     print(f"🔗 Connecting to {server_url}...")
 
     async with websockets.connect(server_url) as websocket:
-        print(f"✅ Connected\n")
+        print("✅ Connected\n")
 
         while True:
             print("=" * 50)
@@ -138,7 +139,7 @@ async def interactive_test(server_url: str):
                 msg = {
                     "type": "subscribe",
                     "system_ids": system_ids,
-                    "timestamp": datetime.utcnow().isoformat() + "Z"
+                    "timestamp": datetime.utcnow().isoformat() + "Z",
                 }
                 await websocket.send(json.dumps(msg))
                 print(f"✅ Subscribed to {len(system_ids)} systems")
@@ -155,19 +156,13 @@ async def interactive_test(server_url: str):
                 system_ids = input("Enter system IDs (comma-separated): ").strip().split(",")
                 system_ids = [s.strip() for s in system_ids if s.strip()]
 
-                msg = {
-                    "type": "unsubscribe",
-                    "system_ids": system_ids
-                }
+                msg = {"type": "unsubscribe", "system_ids": system_ids}
                 await websocket.send(json.dumps(msg))
                 print(f"✅ Unsubscribed from {len(system_ids)} systems")
 
             elif choice == "3":
                 # Ping
-                msg = {
-                    "type": "ping",
-                    "timestamp": datetime.utcnow().isoformat() + "Z"
-                }
+                msg = {"type": "ping", "timestamp": datetime.utcnow().isoformat() + "Z"}
                 await websocket.send(json.dumps(msg))
                 print("✅ Ping sent")
 
@@ -188,7 +183,9 @@ async def interactive_test(server_url: str):
                     systems = data["systems"]
                     print(f"\n{len(systems)} systems available:")
                     for system in systems:
-                        print(f"   - {system['id']:20s} β={system['beta']:6.2f}  {system['field_type']}")
+                        print(
+                            f"   - {system['id']:20s} β={system['beta']:6.2f}  {system['field_type']}"
+                        )
 
             elif choice == "5":
                 # Exit
@@ -206,19 +203,15 @@ if __name__ == "__main__":
     parser.add_argument(
         "--server",
         default="ws://localhost:8765",
-        help="WebSocket server URL (default: ws://localhost:8765)"
+        help="WebSocket server URL (default: ws://localhost:8765)",
     )
     parser.add_argument(
         "--systems",
         nargs="+",
         default=["amoc", "urban_heat"],
-        help="System IDs to subscribe to (default: amoc urban_heat)"
+        help="System IDs to subscribe to (default: amoc urban_heat)",
     )
-    parser.add_argument(
-        "--interactive",
-        action="store_true",
-        help="Interactive mode with menu"
-    )
+    parser.add_argument("--interactive", action="store_true", help="Interactive mode with menu")
 
     args = parser.parse_args()
 

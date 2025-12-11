@@ -34,6 +34,7 @@ Outputs (timestamped in UTC):
       and impedance proxies.
     • `*_bootstrap_YYYYMMDDTHHMMSSZ.json` – WLS + Random Forest bootstrap envelopes.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -52,6 +53,7 @@ from statsmodels.stats.outliers_influence import OLSInfluence
 # Import Type-6 constants for φ^(n/3) ladder integration
 try:
     from models.utac_type6_implosive import BETA_FIXPOINT_PHI3, PHI, PHI_CBRT
+
     CANONICAL_BETA = float(BETA_FIXPOINT_PHI3)  # Φ³ ≈ 4.236
 except ImportError:
     # Fallback if models not in path
@@ -131,12 +133,7 @@ def compute_crep_index(beta: float, theta: float, R: float, zeta: float | None =
 
 
 def log_type_vi_detection(
-    domain: str,
-    beta: float,
-    theta: float,
-    R: float,
-    crep: float,
-    log_path: Path | None = None
+    domain: str, beta: float, theta: float, R: float, crep: float, log_path: Path | None = None
 ) -> None:
     """
     Log Type-VI risk detection for audit trail.
@@ -173,7 +170,7 @@ def log_type_vi_detection(
         "crep": float(crep),
         "escalation_level": escalation_level,
         "tag": "[TYPE-VI-RISK]" if escalation_level > 0 else "[TYPE-VI-NOMINAL]",
-        "tau_star": float(tau_star(theta, R))
+        "tau_star": float(tau_star(theta, R)),
     }
 
     with log_path.open("a", encoding="utf-8") as f:
@@ -224,8 +221,8 @@ def load_and_prepare(beta_path: Path, covar_path: Path) -> pd.DataFrame:
 
     df["domain_family"] = df["domain"].str.split("_").str[0]
     df["beta_band_distance"] = df["beta"] - CANONICAL_BETA
-    df["within_canonical_band"] = (
-        (df["beta"] >= CANONICAL_BAND[0]) & (df["beta"] <= CANONICAL_BAND[1])
+    df["within_canonical_band"] = (df["beta"] >= CANONICAL_BAND[0]) & (
+        df["beta"] <= CANONICAL_BAND[1]
     )
     df["delta_aic_guard"] = df.get("delta_aic", np.nan)
     df["log_theta"] = np.log1p(df["theta"].clip(lower=1e-9))
@@ -240,7 +237,9 @@ def load_and_prepare(beta_path: Path, covar_path: Path) -> pd.DataFrame:
     # Maps β to nearest step on Φ^(1/3) ladder for discrete resonance analysis
     df["phi_cbrt_step"] = np.round(np.log(df["beta"]) / np.log(PHI_CBRT))
     df["beta_phi_theoretical"] = PHI ** (df["phi_cbrt_step"] / 3.0)
-    df["beta_phi_deviation"] = (df["beta"] - df["beta_phi_theoretical"]) / df["beta_phi_theoretical"]
+    df["beta_phi_deviation"] = (df["beta"] - df["beta_phi_theoretical"]) / df[
+        "beta_phi_theoretical"
+    ]
 
     # Cubic root proximity feature (Type-6 cubic-root jump mechanism)
     # Amplifies features near criticality: |β - Φ³|^(1/3)
@@ -249,7 +248,9 @@ def load_and_prepare(beta_path: Path, covar_path: Path) -> pd.DataFrame:
     return df
 
 
-def build_design_matrix(df: pd.DataFrame) -> tuple[pd.Series, pd.DataFrame, pd.Series, pd.DataFrame]:
+def build_design_matrix(
+    df: pd.DataFrame,
+) -> tuple[pd.Series, pd.DataFrame, pd.Series, pd.DataFrame]:
     """Construct dependent variable, design matrix, weights, and augmented table."""
 
     y = df["beta"]
@@ -274,7 +275,7 @@ def build_design_matrix(df: pd.DataFrame) -> tuple[pd.Series, pd.DataFrame, pd.S
     weights = pd.Series(np.ones(len(df)), index=df.index, dtype=float)
     if "beta_ci_width" in df.columns:
         safe_width = df["beta_ci_width"].replace({0.0: np.nan})
-        inv_var = 1.0 / (safe_width ** 2)
+        inv_var = 1.0 / (safe_width**2)
         inv_var.replace([np.inf, -np.inf], np.nan, inplace=True)
         if inv_var.notna().any():
             weights = inv_var.fillna(inv_var.median())
@@ -285,7 +286,9 @@ def build_design_matrix(df: pd.DataFrame) -> tuple[pd.Series, pd.DataFrame, pd.S
     return y, X_design, weights, X
 
 
-def run_wls(y: pd.Series, X_design: pd.DataFrame, weights: pd.Series) -> sm.regression.linear_model.RegressionResultsWrapper:
+def run_wls(
+    y: pd.Series, X_design: pd.DataFrame, weights: pd.Series
+) -> sm.regression.linear_model.RegressionResultsWrapper:
     """Fit weighted least squares meta-regression."""
 
     model = sm.WLS(y, X_design, weights=weights)
@@ -427,11 +430,7 @@ def domain_diagnostics(
         # Log Type-VI detection if CREP exceeds threshold
         if enable_crep_logging and crep >= CREP_THRESHOLD_LEVEL1:
             log_type_vi_detection(
-                domain=str(row["domain"]),
-                beta=beta_obs,
-                theta=theta,
-                R=R,
-                crep=crep
+                domain=str(row["domain"]), beta=beta_obs, theta=theta, R=R, crep=crep
             )
 
         diagnostics[row["domain"]] = {
@@ -537,11 +536,13 @@ def run_pipeline(
         bootstrap_r2_interval=(float(r2_summary["p05"]), float(r2_summary["p95"])),
         random_forest_oob_r2=rf_oob,
         random_forest_bootstrap_interval=(
-            float(rf_bootstrap_summary["p05"]),
-            float(rf_bootstrap_summary["p95"]),
-        )
-        if rf_bootstrap_summary
-        else None,
+            (
+                float(rf_bootstrap_summary["p05"]),
+                float(rf_bootstrap_summary["p95"]),
+            )
+            if rf_bootstrap_summary
+            else None
+        ),
     )
 
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -550,18 +551,14 @@ def run_pipeline(
     coeff_path.write_text(coefficient_table.to_csv(index=False), encoding="utf-8")
 
     summary_path = output_dir / f"beta_meta_regression_v2_summary_{timestamp}.json"
-    summary_path.write_text(
-        json.dumps(summary.to_dict(), indent=2) + "\n", encoding="utf-8"
-    )
+    summary_path.write_text(json.dumps(summary.to_dict(), indent=2) + "\n", encoding="utf-8")
 
     diagnostics_path = output_dir / f"beta_meta_regression_v2_diagnostics_{timestamp}.json"
     diagnostics_payload = {
         "domains": diagnostics,
         "feature_importances": rf_importances,
     }
-    diagnostics_path.write_text(
-        json.dumps(diagnostics_payload, indent=2) + "\n", encoding="utf-8"
-    )
+    diagnostics_path.write_text(json.dumps(diagnostics_payload, indent=2) + "\n", encoding="utf-8")
 
     bootstrap_path = output_dir / f"beta_meta_regression_v2_bootstrap_{timestamp}.json"
     bootstrap_payload = {
@@ -575,9 +572,7 @@ def run_pipeline(
             "seed": seed,
         },
     }
-    bootstrap_path.write_text(
-        json.dumps(bootstrap_payload, indent=2) + "\n", encoding="utf-8"
-    )
+    bootstrap_path.write_text(json.dumps(bootstrap_payload, indent=2) + "\n", encoding="utf-8")
 
     print("✅ Meta-regression v2 completed")
     print(f"   WLS R² = {result.rsquared:.3f}, adj. R² = {result.rsquared_adj:.3f}")

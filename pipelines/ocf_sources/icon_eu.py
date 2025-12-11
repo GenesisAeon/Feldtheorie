@@ -9,19 +9,22 @@ Function: load_icon_eu_zarr(url, rename_map, drop_missing, chunks)
 - Subsets/renames variables to Feldtheorie FieldCube standard
 - Returns xarray.Dataset (lazy, dask-chunked)
 """
+
 from __future__ import annotations
+
 import contextlib
-from typing import Dict, Iterable, Optional
-import xarray as xr
+from collections.abc import Iterable
+
 import fsspec
+import xarray as xr
 
 
 def load_icon_eu_zarr(
     store_url: str,
     *,
-    rename_map: Optional[Dict[str, str]] = None,
-    keep: Optional[Iterable[str]] = None,
-    chunks: Optional[Dict[str, int]] = None,
+    rename_map: dict[str, str] | None = None,
+    keep: Iterable[str] | None = None,
+    chunks: dict[str, int] | None = None,
     consolidated: bool = True,
     drop_missing: bool = True,
 ) -> xr.Dataset:

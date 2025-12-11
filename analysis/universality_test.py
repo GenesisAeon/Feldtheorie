@@ -48,7 +48,7 @@ class BetaEstimate:
     @property
     def variance(self) -> float:
         """Variance of β estimate."""
-        return self.se ** 2
+        return self.se**2
 
     @property
     def weight(self) -> float:
@@ -57,8 +57,7 @@ class BetaEstimate:
 
 
 def weighted_chi_square_test(
-    estimates: list[BetaEstimate],
-    null_beta: float = 4.2
+    estimates: list[BetaEstimate], null_beta: float = 4.2
 ) -> tuple[float, float, int]:
     """Perform weighted chi-square test for homogeneity.
 
@@ -139,7 +138,7 @@ def i_squared_statistic(Q: float, df: int) -> float:
 
 
 def random_effects_meta_analysis(
-    estimates: list[BetaEstimate]
+    estimates: list[BetaEstimate],
 ) -> tuple[float, float, float, float]:
     """DerSimonian-Laird random-effects meta-analysis.
 
@@ -168,7 +167,7 @@ def random_effects_meta_analysis(
     df = len(estimates) - 1
 
     # Between-domain variance (tau²)
-    C = np.sum(weights) - np.sum(weights ** 2) / np.sum(weights)
+    C = np.sum(weights) - np.sum(weights**2) / np.sum(weights)
     tau_squared = max(0.0, (Q - df) / C)
 
     # Random-effects weights
@@ -179,7 +178,7 @@ def random_effects_meta_analysis(
     pooled_se = np.sqrt(1.0 / np.sum(re_weights))
 
     # 95% prediction interval
-    pred_se = np.sqrt(pooled_se ** 2 + tau_squared)
+    pred_se = np.sqrt(pooled_se**2 + tau_squared)
     pred_lower = pooled_beta - 1.96 * pred_se
     pred_upper = pooled_beta + 1.96 * pred_se
 
@@ -243,21 +242,15 @@ def interpret_results(
 
     # Chi-square test interpretation
     if chi2_p < 0.001:
-        lines.append(
-            f"Chi-square test: REJECT universality (p < 0.001, χ² = {chi2_stat:.2f})"
-        )
-        lines.append(
-            "  β values deviate significantly from hypothesized universal β = 4.2"
-        )
+        lines.append(f"Chi-square test: REJECT universality (p < 0.001, χ² = {chi2_stat:.2f})")
+        lines.append("  β values deviate significantly from hypothesized universal β = 4.2")
     elif chi2_p < 0.05:
         lines.append(
             f"Chi-square test: REJECT universality (p = {chi2_p:.4f}, χ² = {chi2_stat:.2f})"
         )
         lines.append("  β values show significant heterogeneity")
     else:
-        lines.append(
-            f"Chi-square test: Fail to reject (p = {chi2_p:.4f}, χ² = {chi2_stat:.2f})"
-        )
+        lines.append(f"Chi-square test: Fail to reject (p = {chi2_p:.4f}, χ² = {chi2_stat:.2f})")
         lines.append("  β values consistent with universal value")
 
     lines.append("")
@@ -289,31 +282,19 @@ def interpret_results(
     # Overall conclusion
     lines.append("CONCLUSION:")
     if chi2_p < 0.05 or i_squared > 50:
-        lines.append(
-            "  Data are INCONSISTENT with strict universality of β = 4.2."
-        )
-        lines.append(
-            "  Observed β heterogeneity suggests domain-specific mechanisms."
-        )
-        lines.append(
-            f"  Recommend reporting β clustering around {pooled_beta:.2f} rather than"
-        )
+        lines.append("  Data are INCONSISTENT with strict universality of β = 4.2.")
+        lines.append("  Observed β heterogeneity suggests domain-specific mechanisms.")
+        lines.append(f"  Recommend reporting β clustering around {pooled_beta:.2f} rather than")
         lines.append("  claiming a universal constant.")
     else:
-        lines.append(
-            "  Data are CONSISTENT with a common β value across domains."
-        )
-        lines.append(
-            "  However, limited sample sizes warrant cautious interpretation."
-        )
+        lines.append("  Data are CONSISTENT with a common β value across domains.")
+        lines.append("  However, limited sample sizes warrant cautious interpretation.")
 
     return "\n".join(lines)
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Test β universality hypothesis across domains"
-    )
+    parser = argparse.ArgumentParser(description="Test β universality hypothesis across domains")
     parser.add_argument(
         "--null-beta",
         type=float,
@@ -343,9 +324,7 @@ def main():
     chi2_stat, chi2_p, chi2_df = weighted_chi_square_test(estimates, args.null_beta)
     Q, Q_p, Q_df = cochran_q_test(estimates)
     i_squared = i_squared_statistic(Q, Q_df)
-    pooled_beta, pooled_se, tau_squared, pred_interval = random_effects_meta_analysis(
-        estimates
-    )
+    pooled_beta, pooled_se, tau_squared, pred_interval = random_effects_meta_analysis(estimates)
 
     # Build output
     output = {
@@ -411,4 +390,5 @@ def main():
 
 if __name__ == "__main__":
     import sys
+
     sys.exit(main())

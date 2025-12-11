@@ -16,6 +16,7 @@ Poetic:
     The field inhales — the inverted sigmoid bends resonance inward before the
     membrane exhales back toward balance.
 """
+
 from __future__ import annotations
 
 import math

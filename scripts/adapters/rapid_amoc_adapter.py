@@ -21,22 +21,19 @@ import csv
 import io
 import json
 import os
+from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterable, Optional, Tuple
 
 import numpy as np
 import requests
-
 
 BASE_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = BASE_DIR / "data" / "ocean"
 DEFAULT_MOCK_PATH = DATA_DIR / "amoc_strength_mock.csv"
 DEFAULT_LOCAL_PATH = DATA_DIR / "amoc_transport.csv"
-DEFAULT_RAPID_URL = (
-    "https://rapid.ac.uk/rapidmoc/rapid_data/dataprod/AMOC_table.php?download=csv"
-)
+DEFAULT_RAPID_URL = "https://rapid.ac.uk/rapidmoc/rapid_data/dataprod/AMOC_table.php?download=csv"
 
 
 @dataclass
@@ -68,9 +65,9 @@ class AdapterResult:
 
 def fetch_rapid_data(
     rapid_url: str = DEFAULT_RAPID_URL,
-    local_path: Optional[Path] = None,
+    local_path: Path | None = None,
     mock_path: Path = DEFAULT_MOCK_PATH,
-) -> Tuple[Iterable[dict], bool, str]:
+) -> tuple[Iterable[dict], bool, str]:
     """Load RAPID data from the web, a local CSV, or a mock CSV.
 
     Returns an iterable of row dicts, a flag indicating whether data are mock,
@@ -100,13 +97,13 @@ def fetch_rapid_data(
 
 def _read_csv(path_or_buffer) -> Iterable[dict]:
     if isinstance(path_or_buffer, (str, Path)):
-        with open(path_or_buffer, "r", newline="") as fh:
+        with open(path_or_buffer, newline="") as fh:
             return list(csv.DictReader(fh))
 
     return list(csv.DictReader(path_or_buffer))
 
 
-def _normalize_rows(rows: Iterable[dict]) -> Tuple[np.ndarray, np.ndarray]:
+def _normalize_rows(rows: Iterable[dict]) -> tuple[np.ndarray, np.ndarray]:
     """Extract dates and AMOC strength (Sv) from heterogeneous sources."""
 
     date_values = []
@@ -122,10 +119,7 @@ def _normalize_rows(rows: Iterable[dict]) -> Tuple[np.ndarray, np.ndarray]:
             continue
 
         strength_raw = (
-            row.get("strength_Sv")
-            or row.get("AMOC")
-            or row.get("transport")
-            or row.get("MOC")
+            row.get("strength_Sv") or row.get("AMOC") or row.get("transport") or row.get("MOC")
         )
         try:
             strength = float(strength_raw) if strength_raw is not None else None

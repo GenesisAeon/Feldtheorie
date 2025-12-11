@@ -45,6 +45,7 @@ from models.utac_type6_implosive import (
 # Optional plotting
 try:
     import matplotlib.pyplot as plt
+
     HAS_MATPLOTLIB = True
 except ImportError:
     HAS_MATPLOTLIB = False
@@ -73,13 +74,13 @@ def test_ladder_hypothesis(beta_sequence: np.ndarray, verbose: bool = True) -> d
     """
     if len(beta_sequence) < 2:
         return {
-            'median_ratio': np.nan,
-            'ratio_std': np.nan,
-            'theoretical': PHI_CBRT,
-            'deviation': np.nan,
-            'falsified': None,
-            'consistency_score': np.nan,
-            'message': 'Insufficient data (need ≥2 values)',
+            "median_ratio": np.nan,
+            "ratio_std": np.nan,
+            "theoretical": PHI_CBRT,
+            "deviation": np.nan,
+            "falsified": None,
+            "consistency_score": np.nan,
+            "message": "Insufficient data (need ≥2 values)",
         }
 
     # Compute adjacent ratios
@@ -87,13 +88,13 @@ def test_ladder_hypothesis(beta_sequence: np.ndarray, verbose: bool = True) -> d
 
     if len(ratios) == 0:
         return {
-            'median_ratio': np.nan,
-            'ratio_std': np.nan,
-            'theoretical': PHI_CBRT,
-            'deviation': np.nan,
-            'falsified': None,
-            'consistency_score': np.nan,
-            'message': 'Cannot compute ratios',
+            "median_ratio": np.nan,
+            "ratio_std": np.nan,
+            "theoretical": PHI_CBRT,
+            "deviation": np.nan,
+            "falsified": None,
+            "consistency_score": np.nan,
+            "message": "Cannot compute ratios",
         }
 
     median_ratio = np.median(ratios)
@@ -119,14 +120,14 @@ def test_ladder_hypothesis(beta_sequence: np.ndarray, verbose: bool = True) -> d
         print()
 
     return {
-        'median_ratio': median_ratio,
-        'ratio_std': ratio_std,
-        'theoretical': PHI_CBRT,
-        'deviation': deviation,
-        'falsified': falsified,
-        'consistency_score': consistency_score,
-        'message': 'FALSIFIED' if falsified else 'VALIDATED',
-        'ratios': ratios,
+        "median_ratio": median_ratio,
+        "ratio_std": ratio_std,
+        "theoretical": PHI_CBRT,
+        "deviation": deviation,
+        "falsified": falsified,
+        "consistency_score": consistency_score,
+        "message": "FALSIFIED" if falsified else "VALIDATED",
+        "ratios": ratios,
     }
 
 
@@ -152,13 +153,13 @@ def test_fixpoint_convergence(beta_sequence: np.ndarray, verbose: bool = True) -
     """
     if len(beta_sequence) == 0:
         return {
-            'mean_beta': np.nan,
-            'std_beta': np.nan,
-            'fixpoint': BETA_FIXPOINT_PHI3,
-            'deviation': np.nan,
-            'falsified': None,
-            'in_tolerance_fraction': np.nan,
-            'message': 'No data',
+            "mean_beta": np.nan,
+            "std_beta": np.nan,
+            "fixpoint": BETA_FIXPOINT_PHI3,
+            "deviation": np.nan,
+            "falsified": None,
+            "in_tolerance_fraction": np.nan,
+            "message": "No data",
         }
 
     mean_beta = np.mean(beta_sequence)
@@ -184,13 +185,13 @@ def test_fixpoint_convergence(beta_sequence: np.ndarray, verbose: bool = True) -
         print()
 
     return {
-        'mean_beta': mean_beta,
-        'std_beta': std_beta,
-        'fixpoint': BETA_FIXPOINT_PHI3,
-        'deviation': deviation,
-        'falsified': falsified,
-        'in_tolerance_fraction': in_tolerance_fraction,
-        'message': 'FALSIFIED' if falsified else 'VALIDATED',
+        "mean_beta": mean_beta,
+        "std_beta": std_beta,
+        "fixpoint": BETA_FIXPOINT_PHI3,
+        "deviation": deviation,
+        "falsified": falsified,
+        "in_tolerance_fraction": in_tolerance_fraction,
+        "message": "FALSIFIED" if falsified else "VALIDATED",
     }
 
 
@@ -215,12 +216,12 @@ def test_alternative_multipliers(beta_sequence: np.ndarray, verbose: bool = True
     """
     if len(beta_sequence) < 2:
         return {
-            'best_multiplier': np.nan,
-            'phi_cbrt_sse': np.nan,
-            'best_sse': np.nan,
-            'improvement': np.nan,
-            'falsified': None,
-            'message': 'Insufficient data',
+            "best_multiplier": np.nan,
+            "phi_cbrt_sse": np.nan,
+            "best_sse": np.nan,
+            "improvement": np.nan,
+            "falsified": None,
+            "message": "Insufficient data",
         }
 
     ratios = beta_step_ratios(beta_sequence)
@@ -247,12 +248,12 @@ def test_alternative_multipliers(beta_sequence: np.ndarray, verbose: bool = True
         print()
 
     return {
-        'best_multiplier': best_multiplier,
-        'phi_cbrt_sse': phi_cbrt_sse,
-        'best_sse': best_sse,
-        'improvement': improvement,
-        'falsified': falsified,
-        'message': 'FALSIFIED' if falsified else 'VALIDATED',
+        "best_multiplier": best_multiplier,
+        "phi_cbrt_sse": phi_cbrt_sse,
+        "best_sse": best_sse,
+        "improvement": improvement,
+        "falsified": falsified,
+        "message": "FALSIFIED" if falsified else "VALIDATED",
     }
 
 
@@ -267,82 +268,136 @@ def create_validation_plot(beta_sequence: np.ndarray, ladder_result: dict, outpu
     # Panel A: β sequence with theoretical ladder
     ax = axes[0, 0]
     sorted_beta = np.sort(beta_sequence)
-    ax.plot(range(len(sorted_beta)), sorted_beta, 'o-', markersize=10, linewidth=2,
-            color='steelblue', label='Observed β')
+    ax.plot(
+        range(len(sorted_beta)),
+        sorted_beta,
+        "o-",
+        markersize=10,
+        linewidth=2,
+        color="steelblue",
+        label="Observed β",
+    )
 
     # Overlay theoretical Φ^(n/3) steps
-    ax.plot(range(len(BETA_STEPS[:len(sorted_beta)])), BETA_STEPS[:len(sorted_beta)],
-            's--', markersize=8, linewidth=1.5, color='orange', alpha=0.7,
-            label='Theoretical Φ^(n/3) ladder')
+    ax.plot(
+        range(len(BETA_STEPS[: len(sorted_beta)])),
+        BETA_STEPS[: len(sorted_beta)],
+        "s--",
+        markersize=8,
+        linewidth=1.5,
+        color="orange",
+        alpha=0.7,
+        label="Theoretical Φ^(n/3) ladder",
+    )
 
-    ax.axhline(BETA_FIXPOINT_PHI3, color='red', linestyle=':', linewidth=2,
-               label=f'Φ³ fixpoint ({BETA_FIXPOINT_PHI3:.2f})')
-    ax.set_xlabel('Step Index', fontsize=11)
-    ax.set_ylabel('β (Steepness)', fontsize=11)
-    ax.set_title('A: β Sequence vs. Theoretical Ladder', fontsize=12, fontweight='bold')
+    ax.axhline(
+        BETA_FIXPOINT_PHI3,
+        color="red",
+        linestyle=":",
+        linewidth=2,
+        label=f"Φ³ fixpoint ({BETA_FIXPOINT_PHI3:.2f})",
+    )
+    ax.set_xlabel("Step Index", fontsize=11)
+    ax.set_ylabel("β (Steepness)", fontsize=11)
+    ax.set_title("A: β Sequence vs. Theoretical Ladder", fontsize=12, fontweight="bold")
     ax.legend(fontsize=9)
     ax.grid(True, alpha=0.3)
 
     # Panel B: Adjacent ratios histogram
     ax = axes[0, 1]
-    ratios = ladder_result.get('ratios', [])
+    ratios = ladder_result.get("ratios", [])
     if len(ratios) > 0:
-        ax.hist(ratios, bins=15, color='steelblue', alpha=0.7, edgecolor='black')
-        ax.axvline(PHI_CBRT, color='red', linestyle='--', linewidth=2,
-                   label=f'Φ^(1/3) = {PHI_CBRT:.3f}')
-        ax.axvline(PHI_CBRT - 0.05, color='orange', linestyle=':', linewidth=1.5, alpha=0.7,
-                   label='Tolerance ±0.05')
-        ax.axvline(PHI_CBRT + 0.05, color='orange', linestyle=':', linewidth=1.5, alpha=0.7)
-        ax.set_xlabel('Adjacent β Ratio', fontsize=11)
-        ax.set_ylabel('Count', fontsize=11)
-        ax.set_title('B: Distribution of β_{n+1}/β_n', fontsize=12, fontweight='bold')
+        ax.hist(ratios, bins=15, color="steelblue", alpha=0.7, edgecolor="black")
+        ax.axvline(
+            PHI_CBRT, color="red", linestyle="--", linewidth=2, label=f"Φ^(1/3) = {PHI_CBRT:.3f}"
+        )
+        ax.axvline(
+            PHI_CBRT - 0.05,
+            color="orange",
+            linestyle=":",
+            linewidth=1.5,
+            alpha=0.7,
+            label="Tolerance ±0.05",
+        )
+        ax.axvline(PHI_CBRT + 0.05, color="orange", linestyle=":", linewidth=1.5, alpha=0.7)
+        ax.set_xlabel("Adjacent β Ratio", fontsize=11)
+        ax.set_ylabel("Count", fontsize=11)
+        ax.set_title("B: Distribution of β_{n+1}/β_n", fontsize=12, fontweight="bold")
         ax.legend(fontsize=9)
-        ax.grid(True, alpha=0.3, axis='y')
+        ax.grid(True, alpha=0.3, axis="y")
 
     # Panel C: Step mapping to theoretical ladder
     ax = axes[1, 0]
     for i, beta in enumerate(sorted_beta):
         step, beta_th, dev = nearest_beta_step(beta)
-        ax.scatter(step, beta, s=100, c='steelblue', alpha=0.7, zorder=3)
-        ax.plot([step, step], [beta_th, beta], 'k--', alpha=0.3, linewidth=1)
+        ax.scatter(step, beta, s=100, c="steelblue", alpha=0.7, zorder=3)
+        ax.plot([step, step], [beta_th, beta], "k--", alpha=0.3, linewidth=1)
 
-    ax.plot(range(len(BETA_STEPS)), BETA_STEPS, 'o-', color='orange', markersize=8,
-            linewidth=2, alpha=0.7, label='Theoretical ladder', zorder=2)
-    ax.set_xlabel('Ladder Step n', fontsize=11)
-    ax.set_ylabel('β Value', fontsize=11)
-    ax.set_title('C: Observed β Mapped to Ladder Steps', fontsize=12, fontweight='bold')
+    ax.plot(
+        range(len(BETA_STEPS)),
+        BETA_STEPS,
+        "o-",
+        color="orange",
+        markersize=8,
+        linewidth=2,
+        alpha=0.7,
+        label="Theoretical ladder",
+        zorder=2,
+    )
+    ax.set_xlabel("Ladder Step n", fontsize=11)
+    ax.set_ylabel("β Value", fontsize=11)
+    ax.set_title("C: Observed β Mapped to Ladder Steps", fontsize=12, fontweight="bold")
     ax.legend(fontsize=9)
     ax.grid(True, alpha=0.3)
 
     # Panel D: Cumulative convergence to fixpoint
     ax = axes[1, 1]
     cumulative_mean = np.cumsum(sorted_beta) / np.arange(1, len(sorted_beta) + 1)
-    ax.plot(range(1, len(sorted_beta) + 1), cumulative_mean, 'o-', markersize=8,
-            linewidth=2, color='steelblue', label='Cumulative mean')
-    ax.axhline(BETA_FIXPOINT_PHI3, color='red', linestyle='--', linewidth=2,
-               label=f'Φ³ fixpoint ({BETA_FIXPOINT_PHI3:.2f})')
-    ax.fill_between(range(1, len(sorted_beta) + 1),
-                     BETA_FIXPOINT_PHI3 - 0.8, BETA_FIXPOINT_PHI3 + 0.8,
-                     alpha=0.2, color='red', label='Tolerance ±0.8')
-    ax.set_xlabel('Number of Observations', fontsize=11)
-    ax.set_ylabel('Cumulative Mean β', fontsize=11)
-    ax.set_title('D: Convergence to Φ³ Fixpoint', fontsize=12, fontweight='bold')
+    ax.plot(
+        range(1, len(sorted_beta) + 1),
+        cumulative_mean,
+        "o-",
+        markersize=8,
+        linewidth=2,
+        color="steelblue",
+        label="Cumulative mean",
+    )
+    ax.axhline(
+        BETA_FIXPOINT_PHI3,
+        color="red",
+        linestyle="--",
+        linewidth=2,
+        label=f"Φ³ fixpoint ({BETA_FIXPOINT_PHI3:.2f})",
+    )
+    ax.fill_between(
+        range(1, len(sorted_beta) + 1),
+        BETA_FIXPOINT_PHI3 - 0.8,
+        BETA_FIXPOINT_PHI3 + 0.8,
+        alpha=0.2,
+        color="red",
+        label="Tolerance ±0.8",
+    )
+    ax.set_xlabel("Number of Observations", fontsize=11)
+    ax.set_ylabel("Cumulative Mean β", fontsize=11)
+    ax.set_title("D: Convergence to Φ³ Fixpoint", fontsize=12, fontweight="bold")
     ax.legend(fontsize=9)
     ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
     print(f"✓ Saved validation plot: {output_path}")
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description='LLM β-Spiral: Φ^(1/3) Ladder Test (UTAC Type-6 Experiment B)'
+        description="LLM β-Spiral: Φ^(1/3) Ladder Test (UTAC Type-6 Experiment B)"
     )
-    parser.add_argument('--demo', action='store_true',
-                        help='Run with synthetic demo data')
-    parser.add_argument('--out', default='paper/figures/phi_ladder_llm.png',
-                        help='Output path for validation figure')
+    parser.add_argument("--demo", action="store_true", help="Run with synthetic demo data")
+    parser.add_argument(
+        "--out",
+        default="paper/figures/phi_ladder_llm.png",
+        help="Output path for validation figure",
+    )
 
     args = parser.parse_args()
 
@@ -361,10 +416,12 @@ def main():
         beta_base = 1.0
         noise_level = 0.08  # 8% noise
 
-        beta_sequence = np.array([
-            beta_base * (PHI ** (n / 3.0)) * np.random.normal(1.0, noise_level)
-            for n in range(n_steps)
-        ])
+        beta_sequence = np.array(
+            [
+                beta_base * (PHI ** (n / 3.0)) * np.random.normal(1.0, noise_level)
+                for n in range(n_steps)
+            ]
+        )
 
         print(f"  → {len(beta_sequence)} synthetic β values generated")
         print(f"  → β range: [{beta_sequence.min():.2f}, {beta_sequence.max():.2f}]")
@@ -379,12 +436,16 @@ def main():
     print("─" * 70)
     ladder_result = test_ladder_hypothesis(beta_sequence, verbose=True)
 
-    if ladder_result['falsified'] == False:
-        print(f"  ✓ VALIDATED: Median ratio {ladder_result['median_ratio']:.4f} "
-              f"within Φ^(1/3) ± 0.05")
-    elif ladder_result['falsified'] == True:
-        print(f"  ⚠️  FALSIFIED: Median ratio {ladder_result['median_ratio']:.4f} "
-              f"outside tolerance")
+    if ladder_result["falsified"] == False:
+        print(
+            f"  ✓ VALIDATED: Median ratio {ladder_result['median_ratio']:.4f} "
+            f"within Φ^(1/3) ± 0.05"
+        )
+    elif ladder_result["falsified"] == True:
+        print(
+            f"  ⚠️  FALSIFIED: Median ratio {ladder_result['median_ratio']:.4f} "
+            f"outside tolerance"
+        )
     else:
         print(f"  ○ INCONCLUSIVE: {ladder_result['message']}")
 
@@ -396,12 +457,13 @@ def main():
     print("─" * 70)
     fixpoint_result = test_fixpoint_convergence(beta_sequence, verbose=True)
 
-    if fixpoint_result['falsified'] == False:
-        print(f"  ✓ VALIDATED: Mean β = {fixpoint_result['mean_beta']:.3f} "
-              f"near Φ³ = {BETA_FIXPOINT_PHI3:.3f}")
-    elif fixpoint_result['falsified'] == True:
-        print(f"  ⚠️  FALSIFIED: Mean β = {fixpoint_result['mean_beta']:.3f} "
-              f"outside [3.3, 5.0]")
+    if fixpoint_result["falsified"] == False:
+        print(
+            f"  ✓ VALIDATED: Mean β = {fixpoint_result['mean_beta']:.3f} "
+            f"near Φ³ = {BETA_FIXPOINT_PHI3:.3f}"
+        )
+    elif fixpoint_result["falsified"] == True:
+        print(f"  ⚠️  FALSIFIED: Mean β = {fixpoint_result['mean_beta']:.3f} " f"outside [3.3, 5.0]")
     else:
         print(f"  ○ INCONCLUSIVE: {fixpoint_result['message']}")
 
@@ -413,11 +475,13 @@ def main():
     print("─" * 70)
     alt_result = test_alternative_multipliers(beta_sequence, verbose=True)
 
-    if alt_result['falsified'] == False:
+    if alt_result["falsified"] == False:
         print("  ✓ VALIDATED: Φ^(1/3) preferred (improvement < 20%)")
-    elif alt_result['falsified'] == True:
-        print(f"  ⚠️  FALSIFIED: Alternative {alt_result['best_multiplier']:.4f} "
-              f"improves by {alt_result['improvement']:.1%}")
+    elif alt_result["falsified"] == True:
+        print(
+            f"  ⚠️  FALSIFIED: Alternative {alt_result['best_multiplier']:.4f} "
+            f"improves by {alt_result['improvement']:.1%}"
+        )
     else:
         print(f"  ○ INCONCLUSIVE: {alt_result['message']}")
 
@@ -429,8 +493,8 @@ def main():
     print("═" * 70)
 
     tests = [ladder_result, fixpoint_result, alt_result]
-    validated_count = sum(1 for t in tests if t.get('falsified') == False)
-    falsified_count = sum(1 for t in tests if t.get('falsified') == True)
+    validated_count = sum(1 for t in tests if t.get("falsified") == False)
+    falsified_count = sum(1 for t in tests if t.get("falsified") == True)
 
     print("  Tests run: 3")
     print(f"  Validated: {validated_count}")
@@ -461,5 +525,5 @@ def main():
     print("═" * 70)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

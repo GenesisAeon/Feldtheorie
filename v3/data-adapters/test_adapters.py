@@ -18,20 +18,19 @@ import sys
 from pathlib import Path
 
 # Add src to path
-sys.path.insert(0, str(Path(__file__).parent / 'src'))
+sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from datetime import datetime, timedelta
 import logging
+from datetime import datetime, timedelta
 
 from grace_adapter import GRACEAdapter
-from rapid_adapter import RAPIDAdapter
 from noaa_adapter import NOAAAdapter
+from rapid_adapter import RAPIDAdapter
 from usgs_adapter import UsgsSeismicAdapter
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 
 logger = logging.getLogger(__name__)
@@ -62,8 +61,9 @@ def test_adapter(adapter, expected_beta_range, system_name):
 
         # Validate β
         beta_min, beta_max = expected_beta_range
-        assert beta_min <= state.beta <= beta_max, \
-            f"β out of expected range: {state.beta:.2f} (expected {beta_min}-{beta_max})"
+        assert (
+            beta_min <= state.beta <= beta_max
+        ), f"β out of expected range: {state.beta:.2f} (expected {beta_min}-{beta_max})"
 
         # Print results
         print(f"\n{system_name} Results:")
@@ -76,21 +76,23 @@ def test_adapter(adapter, expected_beta_range, system_name):
         print(f"  Observations: {state.metadata['n_observations']}")
 
         # EWS signals
-        ews = state.metadata['ews']
-        print(f"\n  Early Warning Signals:")
+        ews = state.metadata["ews"]
+        print("\n  Early Warning Signals:")
         print(f"    Variance: {ews['variance']:.4f}")
         print(f"    AR(1): {ews['ar1']:.4f}")
         print(f"    Spectral reddening: {ews['spectral_reddening']:.4f}")
-        print(f"    Critical slowing down: {ews['p_value_variance'] < 0.05 and ews['p_value_ar1'] < 0.05}")
+        print(
+            f"    Critical slowing down: {ews['p_value_variance'] < 0.05 and ews['p_value_ar1'] < 0.05}"
+        )
 
         # Get additional metrics
         end_date = datetime.now()
-        start_date = end_date - timedelta(days=365*3)
+        start_date = end_date - timedelta(days=365 * 3)
         raw_data = adapter.fetch_raw_data(start_date, end_date)
         ts = adapter.transform_to_timeseries(raw_data)
         metrics = adapter.get_additional_metrics(ts)
 
-        print(f"\n  System-Specific Metrics:")
+        print("\n  System-Specific Metrics:")
         for key, value in metrics.items():
             if isinstance(value, float):
                 if abs(value) > 1000:
@@ -108,6 +110,7 @@ def test_adapter(adapter, expected_beta_range, system_name):
     except Exception as e:
         logger.error(f"✗ {system_name} test FAILED: {e}")
         import traceback
+
         traceback.print_exc()
         return False
 
@@ -129,13 +132,13 @@ def validate_wais_transition():
     adapter = GRACEAdapter()
     state = adapter.get_current_state()
     beta_new = state.beta
-    beta_std = state.metadata['beta_std']
+    beta_std = state.metadata["beta_std"]
 
     # Expected range: 13.5 ± 1.5 → [12.0, 15.0]
     beta_expected = 13.5
     beta_expected_std = 1.5
 
-    print(f"\nβ Transition Validation:")
+    print("\nβ Transition Validation:")
     print(f"  Old (placeholder): {beta_old:.2f}")
     print(f"  New (real data):   {beta_new:.2f} ± {beta_std:.2f}")
     print(f"  Expected:          {beta_expected:.2f} ± {beta_expected_std:.2f}")
@@ -143,63 +146,63 @@ def validate_wais_transition():
 
     # Validation
     if 12.0 <= beta_new <= 15.0:
-        print(f"  ✓ β within expected range")
+        print("  ✓ β within expected range")
         logger.info("✓ WAIS β transition VALIDATED")
         return True
     else:
-        print(f"  ✗ β outside expected range")
+        print("  ✗ β outside expected range")
         logger.warning("✗ WAIS β transition OUT OF RANGE")
         return False
 
 
 def main():
     """Run all tests."""
-    print("\n" + "="*80)
+    print("\n" + "=" * 80)
     print("UTAC V3 Data Adapters - Test Suite")
     print("Phase 4, Week 1-2: Real Data Integration")
-    print("="*80)
+    print("=" * 80)
 
     results = {}
 
     # Test 1: WAIS (GRACE)
     adapter_wais = GRACEAdapter()
-    results['WAIS'] = test_adapter(
+    results["WAIS"] = test_adapter(
         adapter_wais,
         expected_beta_range=(12.0, 15.0),
-        system_name="WAIS (West Antarctic Ice Sheet)"
+        system_name="WAIS (West Antarctic Ice Sheet)",
     )
 
     # Test 2: AMOC (RAPID)
     adapter_amoc = RAPIDAdapter()
-    results['AMOC'] = test_adapter(
+    results["AMOC"] = test_adapter(
         adapter_amoc,
         expected_beta_range=(8.7, 11.7),  # 10.2 ± 1.5
-        system_name="AMOC (Atlantic Meridional Overturning Circulation)"
+        system_name="AMOC (Atlantic Meridional Overturning Circulation)",
     )
 
     # Test 4: Seismic (USGS)
-    adapter_seismic = UsgsSeismicAdapter(region='global', min_magnitude=4.5)
-    results['Seismic'] = test_adapter(
+    adapter_seismic = UsgsSeismicAdapter(region="global", min_magnitude=4.5)
+    results["Seismic"] = test_adapter(
         adapter_seismic,
         expected_beta_range=(3.0, 20.0),  # Wide range for seismic (depends on b-value)
-        system_name="Global Seismic Activity (USGS)"
+        system_name="Global Seismic Activity (USGS)",
     )
 
     # Test 3: Coral (NOAA)
     adapter_coral = NOAAAdapter()
-    results['Coral'] = test_adapter(
+    results["Coral"] = test_adapter(
         adapter_coral,
         expected_beta_range=(6.0, 9.0),  # 7.5 ± 1.5
-        system_name="Coral Reefs (Global)"
+        system_name="Coral Reefs (Global)",
     )
 
     # Test 4: WAIS β transition validation
-    results['WAIS_β_transition'] = validate_wais_transition()
+    results["WAIS_β_transition"] = validate_wais_transition()
 
     # Summary
-    print("\n" + "="*80)
+    print("\n" + "=" * 80)
     print("Test Summary")
-    print("="*80)
+    print("=" * 80)
 
     total = len(results)
     passed_count = sum(1 for v in results.values() if v)

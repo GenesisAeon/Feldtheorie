@@ -20,12 +20,12 @@ Date: 2025-11-18
 import argparse
 import sys
 from pathlib import Path
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-from matplotlib import gridspec
 import seaborn as sns
+from matplotlib import gridspec
 
 # Golden ratio for aesthetic figures
 PHI = (1 + np.sqrt(5)) / 2
@@ -87,9 +87,7 @@ def load_beta_data(csv_path: Path) -> pd.DataFrame:
     df["cluster"] = df["domain"].apply(classify_domain)
 
     # Add color mapping
-    df["color"] = df["cluster"].map(
-        lambda c: DOMAIN_CLUSTERS.get(c, {}).get("color", "#95a5a6")
-    )
+    df["color"] = df["cluster"].map(lambda c: DOMAIN_CLUSTERS.get(c, {}).get("color", "#95a5a6"))
 
     return df
 
@@ -98,14 +96,7 @@ def plot_beta_histogram_with_phi_ladder(df: pd.DataFrame, ax: plt.Axes):
     """Plot β-distribution histogram with Φ^(n/3) attractor markers."""
 
     # Histogram
-    ax.hist(
-        df["beta"],
-        bins=20,
-        alpha=0.6,
-        color="#34495e",
-        edgecolor="black",
-        label="Observed β"
-    )
+    ax.hist(df["beta"], bins=20, alpha=0.6, color="#34495e", edgecolor="black", label="Observed β")
 
     # Φ^(n/3) attractor lines
     colors = ["#3498db", "#2ecc71", "#e74c3c"]
@@ -116,12 +107,14 @@ def plot_beta_histogram_with_phi_ladder(df: pd.DataFrame, ax: plt.Axes):
             linestyle="--",
             linewidth=2,
             alpha=0.8,
-            label=f"{label} ({phi_value:.2f})"
+            label=f"{label} ({phi_value:.2f})",
         )
 
     ax.set_xlabel("β (Steepness Parameter)", fontsize=12, fontweight="bold")
     ax.set_ylabel("Count", fontsize=12, fontweight="bold")
-    ax.set_title("UTAC v2.0: β-Distribution with Φ^(n/3) Attractors", fontsize=14, fontweight="bold")
+    ax.set_title(
+        "UTAC v2.0: β-Distribution with Φ^(n/3) Attractors", fontsize=14, fontweight="bold"
+    )
     ax.legend(loc="upper right", fontsize=9)
     ax.grid(alpha=0.3, linestyle=":")
 
@@ -130,9 +123,7 @@ def plot_domain_heatmap(df: pd.DataFrame, ax: plt.Axes):
     """Plot domain clustering heatmap."""
 
     # Aggregate by cluster
-    cluster_stats = df.groupby("cluster").agg({
-        "beta": ["mean", "std", "count"]
-    }).round(2)
+    cluster_stats = df.groupby("cluster").agg({"beta": ["mean", "std", "count"]}).round(2)
     cluster_stats.columns = ["β_mean", "β_sd", "n"]
     cluster_stats = cluster_stats.sort_values("β_mean")
 
@@ -149,7 +140,7 @@ def plot_domain_heatmap(df: pd.DataFrame, ax: plt.Axes):
         linewidths=0.5,
         ax=ax,
         vmin=4,
-        vmax=14
+        vmax=14,
     )
 
     ax.set_title("Domain Clustering: β_mean Heatmap", fontsize=14, fontweight="bold")
@@ -168,26 +159,18 @@ def plot_beta_by_domain_with_ci(df: pd.DataFrame, ax: plt.Axes):
         ax.errorbar(
             i,
             row["beta"],
-            yerr=[[row["beta"] - row["beta_ci_lower"]],
-                  [row["beta_ci_upper"] - row["beta"]]],
+            yerr=[[row["beta"] - row["beta_ci_lower"]], [row["beta_ci_upper"] - row["beta"]]],
             fmt="o",
             color=row["color"],
             markersize=6,
             capsize=3,
-            alpha=0.7
+            alpha=0.7,
         )
 
     # Add Φ^(n/3) horizontal lines
     colors = ["#3498db", "#2ecc71", "#e74c3c"]
     for (label, phi_value), color in zip(PHI_ATTRACTORS.items(), colors):
-        ax.axhline(
-            phi_value,
-            color=color,
-            linestyle="--",
-            linewidth=1.5,
-            alpha=0.6,
-            label=label
-        )
+        ax.axhline(phi_value, color=color, linestyle="--", linewidth=1.5, alpha=0.6, label=label)
 
     ax.set_xlabel("System Index (sorted by β)", fontsize=12, fontweight="bold")
     ax.set_ylabel("β (with 95% CI)", fontsize=12, fontweight="bold")
@@ -215,7 +198,7 @@ def plot_phi_ladder_logscale(df: pd.DataFrame, ax: plt.Axes):
                 s=60,
                 alpha=0.7,
                 edgecolors="black",
-                linewidths=0.5
+                linewidths=0.5,
             )
 
     # Φ^(n/3) ladder with step annotations
@@ -226,13 +209,7 @@ def plot_phi_ladder_logscale(df: pd.DataFrame, ax: plt.Axes):
     ]
 
     for step, value, label, color in phi_steps:
-        ax.axhline(
-            value,
-            color=color,
-            linestyle="--",
-            linewidth=2,
-            alpha=0.7
-        )
+        ax.axhline(value, color=color, linestyle="--", linewidth=2, alpha=0.7)
         ax.text(
             len(df) + 1,
             value,
@@ -241,7 +218,7 @@ def plot_phi_ladder_logscale(df: pd.DataFrame, ax: plt.Axes):
             va="center",
             ha="left",
             color=color,
-            fontweight="bold"
+            fontweight="bold",
         )
 
     ax.set_yscale("log")
@@ -253,11 +230,7 @@ def plot_phi_ladder_logscale(df: pd.DataFrame, ax: plt.Axes):
     ax.set_ylim([1, 20])
 
 
-def create_beta_visualization_suite(
-    csv_path: Path,
-    output_dir: Path,
-    output_format: str = "svg"
-):
+def create_beta_visualization_suite(csv_path: Path, output_dir: Path, output_format: str = "svg"):
     """Create complete β-visualization suite."""
 
     # Load data
@@ -286,7 +259,7 @@ def create_beta_visualization_suite(
         "UTAC v2.0 Multi-Attractor Framework: β-Distribution Analysis (n=36 systems)",
         fontsize=16,
         fontweight="bold",
-        y=0.995
+        y=0.995,
     )
 
     # Save
@@ -294,13 +267,7 @@ def create_beta_visualization_suite(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"💾 Saving to {output_path}...")
-    fig.savefig(
-        output_path,
-        format=output_format,
-        dpi=300,
-        bbox_inches="tight",
-        facecolor="white"
-    )
+    fig.savefig(output_path, format=output_format, dpi=300, bbox_inches="tight", facecolor="white")
 
     print(f"✅ Visualization saved: {output_path}")
 
@@ -308,12 +275,14 @@ def create_beta_visualization_suite(
     individual_dir = output_dir / "individual"
     individual_dir.mkdir(exist_ok=True)
 
-    for i, (ax, name) in enumerate([
-        (ax1, "histogram_phi_ladder"),
-        (ax2, "domain_heatmap"),
-        (ax3, "beta_with_ci"),
-        (ax4, "phi_ladder_logscale")
-    ]):
+    for i, (ax, name) in enumerate(
+        [
+            (ax1, "histogram_phi_ladder"),
+            (ax2, "domain_heatmap"),
+            (ax3, "beta_with_ci"),
+            (ax4, "phi_ladder_logscale"),
+        ]
+    ):
         individual_fig = ax.get_figure()
         individual_path = individual_dir / f"utac_v2_{name}.{output_format}"
 
@@ -331,11 +300,7 @@ def create_beta_visualization_suite(
             plot_phi_ladder_logscale(df, new_ax)
 
         new_fig.savefig(
-            individual_path,
-            format=output_format,
-            dpi=300,
-            bbox_inches="tight",
-            facecolor="white"
+            individual_path, format=output_format, dpi=300, bbox_inches="tight", facecolor="white"
         )
         plt.close(new_fig)
 
@@ -348,33 +313,33 @@ def create_beta_visualization_suite(
     print(f"   β range: {df['beta'].min():.2f} → {df['beta'].max():.2f}")
     print(f"   β mean: {df['beta'].mean():.2f} ± {df['beta'].std():.2f}")
     print(f"   β median: {df['beta'].median():.2f}")
-    print(f"\n   Cluster breakdown:")
-    for cluster in sorted(df['cluster'].unique()):
-        cluster_df = df[df['cluster'] == cluster]
-        print(f"   - {cluster}: n={len(cluster_df)}, β={cluster_df['beta'].mean():.2f}±{cluster_df['beta'].std():.2f}")
+    print("\n   Cluster breakdown:")
+    for cluster in sorted(df["cluster"].unique()):
+        cluster_df = df[df["cluster"] == cluster]
+        print(
+            f"   - {cluster}: n={len(cluster_df)}, β={cluster_df['beta'].mean():.2f}±{cluster_df['beta'].std():.2f}"
+        )
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="UTAC v2.0 Beta Distribution Visualization Suite"
-    )
+    parser = argparse.ArgumentParser(description="UTAC v2.0 Beta Distribution Visualization Suite")
     parser.add_argument(
         "--input",
         type=Path,
         default=Path("data/derived/beta_estimates.csv"),
-        help="Path to beta_estimates.csv (default: data/derived/beta_estimates.csv)"
+        help="Path to beta_estimates.csv (default: data/derived/beta_estimates.csv)",
     )
     parser.add_argument(
         "--output-dir",
         type=Path,
         default=Path("figures/utac_v2"),
-        help="Output directory for figures (default: figures/utac_v2/)"
+        help="Output directory for figures (default: figures/utac_v2/)",
     )
     parser.add_argument(
         "--format",
         choices=["svg", "png", "pdf"],
         default="svg",
-        help="Output format (default: svg)"
+        help="Output format (default: svg)",
     )
 
     args = parser.parse_args()
@@ -386,9 +351,7 @@ def main():
 
     # Create visualizations
     create_beta_visualization_suite(
-        csv_path=args.input,
-        output_dir=args.output_dir,
-        output_format=args.format
+        csv_path=args.input, output_dir=args.output_dir, output_format=args.format
     )
 
     print("\n✨ UTAC v2.0 Visualization Suite Complete!")

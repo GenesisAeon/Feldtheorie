@@ -7,7 +7,6 @@ from pathlib import Path
 
 import pytest
 import yaml
-
 from scripts import sigillin_sync
 
 
@@ -195,7 +194,9 @@ def test_inspect_trilayer_detects_version_mismatch(tmp_path):
     md_path = base.with_suffix(".md")
 
     yaml_data = {"meta": {"sigil": "test", "version": "1.0", "updated": "2025-01-01T00:00:00Z"}}
-    json_data = {"meta": {"version": "2.0", "updated": "2025-01-01T00:00:00Z"}}  # Different version!
+    json_data = {
+        "meta": {"version": "2.0", "updated": "2025-01-01T00:00:00Z"}
+    }  # Different version!
 
     yaml_path.write_text(yaml.dump(yaml_data), encoding="utf-8")
     json_path.write_text(json.dumps(json_data), encoding="utf-8")
@@ -220,7 +221,9 @@ def test_inspect_trilayer_detects_updated_mismatch(tmp_path):
     md_path = base.with_suffix(".md")
 
     yaml_data = {"meta": {"sigil": "test", "version": "1.0", "updated": "2025-01-01T00:00:00Z"}}
-    json_data = {"meta": {"version": "1.0", "updated": "2025-01-02T00:00:00Z"}}  # Different timestamp!
+    json_data = {
+        "meta": {"version": "1.0", "updated": "2025-01-02T00:00:00Z"}
+    }  # Different timestamp!
 
     yaml_path.write_text(yaml.dump(yaml_data), encoding="utf-8")
     json_path.write_text(json.dumps(json_data), encoding="utf-8")
@@ -395,7 +398,9 @@ def test_parse_args_stamp_command():
 
 def test_parse_args_stamp_dry_run():
     """Test that parse_args handles dry-run flag."""
-    args = sigillin_sync.parse_args(["stamp", "--codex-id", "test-001", "--note", "Test", "--dry-run"])
+    args = sigillin_sync.parse_args(
+        ["stamp", "--codex-id", "test-001", "--note", "Test", "--dry-run"]
+    )
 
     assert args.dry_run is True
 

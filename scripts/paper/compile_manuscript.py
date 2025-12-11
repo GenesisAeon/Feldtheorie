@@ -11,11 +11,11 @@ Author: Genesis Aeon (UTAC Framework)
 Version: 5.0 "Automated Manuscript Generation"
 """
 
-import subprocess
-from pathlib import Path
 import shutil
+import subprocess
 import sys
 from datetime import datetime
+from pathlib import Path
 
 # ============================================================================
 # CONFIGURATION
@@ -35,6 +35,7 @@ OUTPUT_PDF = PAPER_DIR / "manuscript_v5.pdf"
 # PIPELINE FUNCTIONS
 # ============================================================================
 
+
 def step_generate_tables():
     """Step 1: Generate LaTeX tables from data."""
     print("STEP 1: Generating LaTeX tables...")
@@ -46,11 +47,7 @@ def step_generate_tables():
         print(f"ERROR: Script not found: {table_script}")
         return False
 
-    result = subprocess.run(
-        [sys.executable, str(table_script)],
-        capture_output=True,
-        text=True
-    )
+    result = subprocess.run([sys.executable, str(table_script)], capture_output=True, text=True)
 
     if result.returncode != 0:
         print("ERROR: Table generation failed:")
@@ -71,7 +68,7 @@ def step_check_figures():
     required_figures = [
         "time_series_comparison.png",
         "phase_diagram.png",
-        "correlation_scatter.png"
+        "correlation_scatter.png",
     ]
 
     missing = []
@@ -102,11 +99,7 @@ def step_compile_latex():
 
     # Check if pdflatex is available
     try:
-        subprocess.run(
-            ["pdflatex", "--version"],
-            capture_output=True,
-            check=True
-        )
+        subprocess.run(["pdflatex", "--version"], capture_output=True, check=True)
     except (subprocess.CalledProcessError, FileNotFoundError):
         print("WARNING: pdflatex not found. Skipping PDF compilation.")
         print("  Install LaTeX distribution (TeX Live, MiKTeX) to compile PDF.")
@@ -129,7 +122,7 @@ def step_compile_latex():
             ["pdflatex", "-interaction=nonstopmode", OUTPUT_TEX.name],
             cwd=PAPER_DIR,
             capture_output=True,
-            text=True
+            text=True,
         )
 
         if result.returncode != 0:
@@ -168,13 +161,14 @@ def step_generate_metadata():
             "testing (1) cosmic velocity scaling via fundamental constants and "
             "(2) social phase transitions via Ising dynamics. Both hypotheses show "
             "statistical significance (p<0.01) but acknowledge critical limitations."
-        )
+        ),
     }
 
     metadata_file = PAPER_DIR / "manuscript_metadata.json"
 
     import json
-    with open(metadata_file, 'w') as f:
+
+    with open(metadata_file, "w") as f:
         json.dump(metadata, f, indent=2)
 
     print(f"  ✓ Saved metadata: {metadata_file.name}")
@@ -207,6 +201,7 @@ def step_cleanup():
 # MAIN EXECUTION
 # ============================================================================
 
+
 def main():
     """Run complete manuscript compilation pipeline."""
 
@@ -227,7 +222,7 @@ def main():
         ("Check Figures", step_check_figures),
         ("Compile LaTeX", step_compile_latex),
         ("Generate Metadata", step_generate_metadata),
-        ("Cleanup", step_cleanup)
+        ("Cleanup", step_cleanup),
     ]
 
     for step_name, step_func in steps:

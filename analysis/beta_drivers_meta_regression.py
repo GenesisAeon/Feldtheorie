@@ -23,7 +23,7 @@ from statsmodels.stats.multitest import multipletests
 
 def load_data(
     beta_path: str = "data/derived/beta_estimates.csv",
-    covar_path: str = "data/derived/domain_covariates.csv"
+    covar_path: str = "data/derived/domain_covariates.csv",
 ) -> pd.DataFrame:
     """
     Load β estimates and domain covariates.
@@ -110,9 +110,7 @@ def prepare_regression_data(df: pd.DataFrame) -> tuple[pd.Series, pd.DataFrame, 
 
 
 def meta_regression(
-    y: pd.Series,
-    X: pd.DataFrame,
-    weights: pd.Series
+    y: pd.Series, X: pd.DataFrame, weights: pd.Series
 ) -> tuple[pd.DataFrame, sm.regression.linear_model.RegressionResultsWrapper]:
     """
     Perform weighted least squares meta-regression.
@@ -141,22 +139,20 @@ def meta_regression(
     result = model.fit()
 
     # Extract results
-    df_results = pd.DataFrame({
-        "variable": result.params.index,
-        "coefficient": result.params.values,
-        "std_error": result.bse.values,
-        "t_statistic": result.tvalues.values,
-        "p_value": result.pvalues.values,
-        "ci_lower": result.conf_int()[0].values,
-        "ci_upper": result.conf_int()[1].values
-    })
+    df_results = pd.DataFrame(
+        {
+            "variable": result.params.index,
+            "coefficient": result.params.values,
+            "std_error": result.bse.values,
+            "t_statistic": result.tvalues.values,
+            "p_value": result.pvalues.values,
+            "ci_lower": result.conf_int()[0].values,
+            "ci_upper": result.conf_int()[1].values,
+        }
+    )
 
     # Multiple testing correction (Holm-Bonferroni)
-    _, p_corrected, _, _ = multipletests(
-        df_results["p_value"].values,
-        method="holm",
-        alpha=0.05
-    )
+    _, p_corrected, _, _ = multipletests(df_results["p_value"].values, method="holm", alpha=0.05)
     df_results["p_value_corrected"] = p_corrected
 
     # Mark significance
@@ -166,9 +162,7 @@ def meta_regression(
 
 
 def generate_report(
-    df_results: pd.DataFrame,
-    model_result,
-    output_dir: str = "analysis/results"
+    df_results: pd.DataFrame, model_result, output_dir: str = "analysis/results"
 ) -> dict:
     """
     Generate comprehensive regression report.
@@ -206,12 +200,12 @@ def generate_report(
         "f_pvalue": float(model_result.f_pvalue),
         "aic": float(model_result.aic),
         "bic": float(model_result.bic),
-        "significant_predictors": df_results[df_results["significant"]]["variable"].tolist()
+        "significant_predictors": df_results[df_results["significant"]]["variable"].tolist(),
     }
 
     # Save summary
     summary_json = output_path / "beta_meta_regression_summary.json"
-    with open(summary_json, 'w') as f:
+    with open(summary_json, "w") as f:
         json.dump(summary_dict, f, indent=2)
     print(f"✅ Summary saved to {summary_json}")
 
@@ -225,9 +219,9 @@ def generate_report(
 
 def print_results(df_results: pd.DataFrame, summary: dict):
     """Print formatted results to console."""
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("META-REGRESSION RESULTS: β-DRIVER ANALYSIS")
-    print("="*70)
+    print("=" * 70)
 
     print(f"\nModel: {summary['model']}")
     print(f"Observations: {summary['n_observations']}")
@@ -235,25 +229,27 @@ def print_results(df_results: pd.DataFrame, summary: dict):
     print(f"Adjusted R²: {summary['adj_r_squared']:.4f}")
     print(f"F-statistic: {summary['f_statistic']:.2f} (p={summary['f_pvalue']:.4e})")
 
-    print("\n" + "-"*70)
+    print("\n" + "-" * 70)
     print("COEFFICIENT ESTIMATES")
-    print("-"*70)
+    print("-" * 70)
 
     for _, row in df_results.iterrows():
         sig_marker = "***" if row["significant"] else "   "
-        print(f"{row['variable']:15s} {sig_marker} "
-              f"β = {row['coefficient']:7.4f} ± {row['std_error']:.4f}  "
-              f"[{row['ci_lower']:.4f}, {row['ci_upper']:.4f}]  "
-              f"p = {row['p_value_corrected']:.4e}")
+        print(
+            f"{row['variable']:15s} {sig_marker} "
+            f"β = {row['coefficient']:7.4f} ± {row['std_error']:.4f}  "
+            f"[{row['ci_lower']:.4f}, {row['ci_upper']:.4f}]  "
+            f"p = {row['p_value_corrected']:.4e}"
+        )
 
     print("\n*** = Significant after Holm-Bonferroni correction (α=0.05)")
 
-    if summary['significant_predictors']:
+    if summary["significant_predictors"]:
         print(f"\n✅ Significant predictors: {', '.join(summary['significant_predictors'])}")
     else:
         print("\n⚠️  No significant predictors found at α=0.05")
 
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
 
 
 def main():
@@ -262,29 +258,26 @@ def main():
         description="Meta-regression analysis of β heterogeneity across domains"
     )
     parser.add_argument(
-        '--beta-data',
+        "--beta-data",
         type=str,
-        default='data/derived/beta_estimates.csv',
-        help='Path to β estimates CSV'
+        default="data/derived/beta_estimates.csv",
+        help="Path to β estimates CSV",
     )
     parser.add_argument(
-        '--covariate-data',
+        "--covariate-data",
         type=str,
-        default='data/derived/domain_covariates.csv',
-        help='Path to domain covariates CSV'
+        default="data/derived/domain_covariates.csv",
+        help="Path to domain covariates CSV",
     )
     parser.add_argument(
-        '--output',
-        type=str,
-        default='analysis/results',
-        help='Output directory for results'
+        "--output", type=str, default="analysis/results", help="Output directory for results"
     )
 
     args = parser.parse_args()
 
-    print("="*70)
+    print("=" * 70)
     print("β-DRIVER META-REGRESSION ANALYSIS")
-    print("="*70)
+    print("=" * 70)
 
     # Load data
     df = load_data(args.beta_data, args.covariate_data)

@@ -14,17 +14,15 @@ import argparse
 import csv
 import math
 import time
+from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterable
 
 import requests
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
-ROAD_TEXT_PATH = Path(
-    "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/TheRoad.txt"
-)
+ROAD_TEXT_PATH = Path("releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/TheRoad.txt")
 OUTPUT_FILE = Path("data/experimental/echo_i_results.csv")
 DEFAULT_MODELS = [
     "gemma2:latest",
@@ -61,7 +59,9 @@ class EchoResult:
     mean_sentence_length: float
     output_length: int
 
-    def to_row(self, timestamp: datetime, prompt_chars: int, server_url: str) -> dict[str, str | float | int | bool | None]:
+    def to_row(
+        self, timestamp: datetime, prompt_chars: int, server_url: str
+    ) -> dict[str, str | float | int | bool | None]:
         return {
             "timestamp": timestamp.isoformat(),
             "model": self.model,

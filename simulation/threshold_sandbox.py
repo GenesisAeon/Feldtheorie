@@ -47,7 +47,7 @@ def simulate_system(
     D_eff: int = 10,
     SNR: float = 5.0,
     noise: float = 0.05,
-    seed: int = 1337
+    seed: int = 1337,
 ) -> tuple[np.ndarray, np.ndarray, float]:
     """
     Simulate a threshold system with specified coupling and coherence parameters.
@@ -120,19 +120,14 @@ def estimate_beta(R: np.ndarray, field: np.ndarray) -> tuple[float, float, float
     """
     try:
         popt, _ = curve_fit(
-            logistic,
-            R,
-            field,
-            p0=[4.0, 0.5],
-            bounds=([0.1, 0.0], [20.0, 1.0]),
-            maxfev=10000
+            logistic, R, field, p0=[4.0, 0.5], bounds=([0.1, 0.0], [20.0, 1.0]), maxfev=10000
         )
         beta_est, theta_est = popt
 
         # Calculate R²
         residuals = field - logistic(R, beta_est, theta_est)
         ss_res = np.sum(residuals**2)
-        ss_tot = np.sum((field - np.mean(field))**2)
+        ss_tot = np.sum((field - np.mean(field)) ** 2)
         r_squared = 1 - (ss_res / ss_tot)
 
         return beta_est, theta_est, r_squared
@@ -141,10 +136,7 @@ def estimate_beta(R: np.ndarray, field: np.ndarray) -> tuple[float, float, float
         return np.nan, np.nan, np.nan
 
 
-def run_experiment(
-    output_dir: str = "analysis/results",
-    plot: bool = True
-) -> pd.DataFrame:
+def run_experiment(output_dir: str = "analysis/results", plot: bool = True) -> pd.DataFrame:
     """
     Run systematic parameter sweep over C_eff, D_eff, and SNR.
 
@@ -176,23 +168,20 @@ def run_experiment(
     for C in C_values:
         for D in D_values:
             for SNR in SNR_values:
-                R, field, beta_true = simulate_system(
-                    C_eff=C,
-                    D_eff=D,
-                    SNR=SNR,
-                    seed=1337
-                )
+                R, field, beta_true = simulate_system(C_eff=C, D_eff=D, SNR=SNR, seed=1337)
                 beta_est, theta_est, r2 = estimate_beta(R, field)
 
-                results.append({
-                    'C_eff': C,
-                    'D_eff': D,
-                    'SNR': SNR,
-                    'beta_true': beta_true,
-                    'beta_est': beta_est,
-                    'theta_est': theta_est,
-                    'r_squared': r2
-                })
+                results.append(
+                    {
+                        "C_eff": C,
+                        "D_eff": D,
+                        "SNR": SNR,
+                        "beta_true": beta_true,
+                        "beta_est": beta_est,
+                        "theta_est": theta_est,
+                        "r_squared": r2,
+                    }
+                )
 
     df = pd.DataFrame(results)
 
@@ -203,17 +192,17 @@ def run_experiment(
 
     # Generate summary statistics
     summary = {
-        "mean_beta": float(df['beta_est'].mean()),
-        "median_beta": float(df['beta_est'].median()),
-        "std_beta": float(df['beta_est'].std()),
-        "min_beta": float(df['beta_est'].min()),
-        "max_beta": float(df['beta_est'].max()),
-        "mean_r_squared": float(df['r_squared'].mean()),
-        "n_simulations": len(df)
+        "mean_beta": float(df["beta_est"].mean()),
+        "median_beta": float(df["beta_est"].median()),
+        "std_beta": float(df["beta_est"].std()),
+        "min_beta": float(df["beta_est"].min()),
+        "max_beta": float(df["beta_est"].max()),
+        "mean_r_squared": float(df["r_squared"].mean()),
+        "n_simulations": len(df),
     }
 
     summary_path = output_path / "sandbox_beta_summary.json"
-    with open(summary_path, 'w') as f:
+    with open(summary_path, "w") as f:
         json.dump(summary, f, indent=2)
     print(f"✅ Summary saved to {summary_path}")
 
@@ -232,53 +221,49 @@ def generate_plots(df: pd.DataFrame, output_path: Path):
 
     # β vs C_eff
     ax = axes[0, 0]
-    for SNR in df['SNR'].unique():
-        subset = df[df['SNR'] == SNR].groupby('C_eff')['beta_est'].mean()
-        ax.plot(subset.index, subset.values, marker='o', label=f'SNR={SNR}')
-    ax.set_xlabel('Effective Coupling (C_eff)')
-    ax.set_ylabel('Estimated β')
-    ax.set_title('β vs Coupling Strength')
+    for SNR in df["SNR"].unique():
+        subset = df[df["SNR"] == SNR].groupby("C_eff")["beta_est"].mean()
+        ax.plot(subset.index, subset.values, marker="o", label=f"SNR={SNR}")
+    ax.set_xlabel("Effective Coupling (C_eff)")
+    ax.set_ylabel("Estimated β")
+    ax.set_title("β vs Coupling Strength")
     ax.legend()
     ax.grid(True, alpha=0.3)
 
     # β vs D_eff
     ax = axes[0, 1]
-    for SNR in df['SNR'].unique():
-        subset = df[df['SNR'] == SNR].groupby('D_eff')['beta_est'].mean()
-        ax.plot(subset.index, subset.values, marker='s', label=f'SNR={SNR}')
-    ax.set_xlabel('Effective Dimensionality (D_eff)')
-    ax.set_ylabel('Estimated β')
-    ax.set_title('β vs Dimensionality')
+    for SNR in df["SNR"].unique():
+        subset = df[df["SNR"] == SNR].groupby("D_eff")["beta_est"].mean()
+        ax.plot(subset.index, subset.values, marker="s", label=f"SNR={SNR}")
+    ax.set_xlabel("Effective Dimensionality (D_eff)")
+    ax.set_ylabel("Estimated β")
+    ax.set_title("β vs Dimensionality")
     ax.legend()
     ax.grid(True, alpha=0.3)
 
     # β vs SNR
     ax = axes[1, 0]
     for C in [0.1, 0.5, 1.0]:
-        subset = df[np.isclose(df['C_eff'], C, atol=0.01)].groupby('SNR')['beta_est'].mean()
-        ax.plot(subset.index, subset.values, marker='^', label=f'C_eff={C:.1f}')
-    ax.set_xlabel('Signal-to-Noise Ratio (SNR)')
-    ax.set_ylabel('Estimated β')
-    ax.set_title('β vs Coherence')
+        subset = df[np.isclose(df["C_eff"], C, atol=0.01)].groupby("SNR")["beta_est"].mean()
+        ax.plot(subset.index, subset.values, marker="^", label=f"C_eff={C:.1f}")
+    ax.set_xlabel("Signal-to-Noise Ratio (SNR)")
+    ax.set_ylabel("Estimated β")
+    ax.set_title("β vs Coherence")
     ax.legend()
     ax.grid(True, alpha=0.3)
 
     # Heatmap: β as function of C_eff and SNR (D_eff = 10)
     ax = axes[1, 1]
-    subset = df[df['D_eff'] == 10].pivot_table(
-        values='beta_est',
-        index='C_eff',
-        columns='SNR'
-    )
-    im = ax.imshow(subset.values, aspect='auto', cmap='viridis', origin='lower')
+    subset = df[df["D_eff"] == 10].pivot_table(values="beta_est", index="C_eff", columns="SNR")
+    im = ax.imshow(subset.values, aspect="auto", cmap="viridis", origin="lower")
     ax.set_xticks(range(len(subset.columns)))
     ax.set_xticklabels(subset.columns)
     ax.set_yticks(range(len(subset.index)))
-    ax.set_yticklabels([f'{x:.2f}' for x in subset.index])
-    ax.set_xlabel('SNR')
-    ax.set_ylabel('C_eff')
-    ax.set_title('β Heatmap (D_eff=10)')
-    plt.colorbar(im, ax=ax, label='β')
+    ax.set_yticklabels([f"{x:.2f}" for x in subset.index])
+    ax.set_xlabel("SNR")
+    ax.set_ylabel("C_eff")
+    ax.set_title("β Heatmap (D_eff=10)")
+    plt.colorbar(im, ax=ax, label="β")
 
     plt.tight_layout()
     plot_path = output_path / "sandbox_beta_analysis.png"
@@ -293,27 +278,17 @@ def main():
         description="Simulate threshold systems to explore β-parameter drivers"
     )
     parser.add_argument(
-        '--output',
-        type=str,
-        default='analysis/results',
-        help='Output directory for results'
+        "--output", type=str, default="analysis/results", help="Output directory for results"
     )
-    parser.add_argument(
-        '--no-plot',
-        action='store_true',
-        help='Disable plot generation'
-    )
+    parser.add_argument("--no-plot", action="store_true", help="Disable plot generation")
 
     args = parser.parse_args()
 
-    df = run_experiment(
-        output_dir=args.output,
-        plot=not args.no_plot
-    )
+    df = run_experiment(output_dir=args.output, plot=not args.no_plot)
 
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("SIMULATION COMPLETE")
-    print("="*60)
+    print("=" * 60)
     print("\nβ statistics:")
     print(f"  Mean:   {df['beta_est'].mean():.3f}")
     print(f"  Median: {df['beta_est'].median():.3f}")

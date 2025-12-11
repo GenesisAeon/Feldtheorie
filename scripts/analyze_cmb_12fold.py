@@ -14,17 +14,18 @@ References:
 - DEEP_RESEARCH_Unified_Framework.md (Holographic Cube section)
 """
 
-import numpy as np
-import matplotlib.pyplot as plt
-from pathlib import Path
-from typing import Tuple, Dict, Optional
 import json
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from datetime import datetime
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+import numpy as np
 
 # Optional dependencies (install via pip if needed)
 try:
     from astropy.io import fits
+
     FITS_AVAILABLE = True
 except ImportError:
     FITS_AVAILABLE = False
@@ -32,6 +33,7 @@ except ImportError:
 
 try:
     import healpy as hp
+
     HEALPY_AVAILABLE = True
 except ImportError:
     HEALPY_AVAILABLE = False
@@ -41,15 +43,16 @@ except ImportError:
 @dataclass
 class CMBAnalysisResult:
     """Results from CMB 12-fold analysis"""
+
     A_12: float  # 12-fold modulation amplitude
     A_12_error: float  # Statistical error
     chi_squared: float  # χ² test statistic
     p_value: float  # p-value against null hypothesis
     falsified: bool  # True if A₁₂ < 10⁻⁵
-    lorentz_violation_xi: Optional[float]  # Lorentz violation parameter
-    shapiro_delay_ms: Optional[float]  # Shapiro delay in milliseconds
+    lorentz_violation_xi: float | None  # Lorentz violation parameter
+    shapiro_delay_ms: float | None  # Shapiro delay in milliseconds
     timestamp: str
-    metadata: Dict
+    metadata: dict
 
 
 class CMB12FoldAnalyzer:
@@ -95,9 +98,9 @@ class CMB12FoldAnalyzer:
         print(f"✓ Loaded CMB map: {len(cmb_map)} pixels, NSIDE={hp.npix2nside(len(cmb_map))}")
         return cmb_map
 
-    def generate_synthetic_map(self, nside: int = 256,
-                               A_12: float = 1e-4,
-                               seed: int = 42) -> np.ndarray:
+    def generate_synthetic_map(
+        self, nside: int = 256, A_12: float = 1e-4, seed: int = 42
+    ) -> np.ndarray:
         """
         Generate synthetic CMB map with 12-fold modulation for testing
 
@@ -126,15 +129,16 @@ class CMB12FoldAnalyzer:
         # 12-fold modulation pattern (cube edges projected onto sphere)
         # Using spherical harmonics l=3, m=0 (tetrahedral symmetry) as approximation
         # Full treatment would use cube group representation
-        modulation = A_12 * 100 * np.cos(12 * phi) * np.sin(theta)**3
+        modulation = A_12 * 100 * np.cos(12 * phi) * np.sin(theta) ** 3
 
         synthetic_map = base_map + modulation
 
         print(f"✓ Generated synthetic map: NSIDE={nside}, A₁₂={A_12:.2e}")
         return synthetic_map
 
-    def spherical_harmonic_decomposition(self, cmb_map: np.ndarray,
-                                        lmax: int = 30) -> Tuple[np.ndarray, np.ndarray]:
+    def spherical_harmonic_decomposition(
+        self, cmb_map: np.ndarray, lmax: int = 30
+    ) -> tuple[np.ndarray, np.ndarray]:
         """
         Decompose CMB map into spherical harmonics
 
@@ -160,7 +164,7 @@ class CMB12FoldAnalyzer:
         print(f"✓ Spherical harmonic decomposition: lmax={lmax}")
         return alm, cl
 
-    def extract_12fold_amplitude(self, cmb_map: np.ndarray) -> Tuple[float, float]:
+    def extract_12fold_amplitude(self, cmb_map: np.ndarray) -> tuple[float, float]:
         """
         Extract 12-fold modulation amplitude A₁₂
 
@@ -186,7 +190,7 @@ class CMB12FoldAnalyzer:
 
         # Construct 12-fold symmetry pattern
         # Simplified: cos(12φ) modulation with tetrahedral weighting
-        Y_12 = np.cos(12 * phi) * np.sin(theta)**3
+        Y_12 = np.cos(12 * phi) * np.sin(theta) ** 3
 
         # Normalize
         Y_12 /= np.sqrt(np.mean(Y_12**2))
@@ -202,8 +206,7 @@ class CMB12FoldAnalyzer:
 
         return A_12, A_12_error
 
-    def chi_squared_test(self, cmb_map: np.ndarray,
-                        A_12: float) -> Tuple[float, float]:
+    def chi_squared_test(self, cmb_map: np.ndarray, A_12: float) -> tuple[float, float]:
         """
         χ² test against isotropic null hypothesis
 
@@ -229,7 +232,7 @@ class CMB12FoldAnalyzer:
 
         # Observed vs. expected
         # Simplified χ² calculation
-        chi_squared = (A_12 / sigma_expected)**2 * npix
+        chi_squared = (A_12 / sigma_expected) ** 2 * npix
 
         # Degrees of freedom (approximation)
         dof = npix - 1
@@ -242,8 +245,11 @@ class CMB12FoldAnalyzer:
 
         return chi_squared, p_value
 
-    def compute_lorentz_violation(self, photon_arrival_times: Optional[np.ndarray] = None,
-                                  photon_energies: Optional[np.ndarray] = None) -> float:
+    def compute_lorentz_violation(
+        self,
+        photon_arrival_times: np.ndarray | None = None,
+        photon_energies: np.ndarray | None = None,
+    ) -> float:
         """
         Compute Lorentz violation parameter ξ from photon arrival times
 
@@ -306,9 +312,7 @@ class CMB12FoldAnalyzer:
         print(f"✓ Shapiro delay: {delay_ms:.6f} ms (correction factor: {correction:.6f})")
         return delay_ms
 
-    def visualize_results(self, cmb_map: np.ndarray,
-                         result: CMBAnalysisResult,
-                         show: bool = False):
+    def visualize_results(self, cmb_map: np.ndarray, result: CMBAnalysisResult, show: bool = False):
         """
         Create visualization of CMB analysis results
 
@@ -325,33 +329,37 @@ class CMB12FoldAnalyzer:
 
         # 1. Mollweide projection of CMB
         ax1 = fig.add_subplot(221)
-        hp.mollview(cmb_map, title="CMB Temperature Map",
-                   sub=(2, 2, 1), hold=True, cmap='RdBu_r')
+        hp.mollview(cmb_map, title="CMB Temperature Map", sub=(2, 2, 1), hold=True, cmap="RdBu_r")
 
         # 2. 12-fold pattern overlay
         nside = hp.npix2nside(len(cmb_map))
         npix = len(cmb_map)
         theta, phi = hp.pix2ang(nside, np.arange(npix))
-        pattern_12 = np.cos(12 * phi) * np.sin(theta)**3
+        pattern_12 = np.cos(12 * phi) * np.sin(theta) ** 3
 
-        hp.mollview(pattern_12, title="12-fold Cube Symmetry Pattern",
-                   sub=(2, 2, 2), hold=True, cmap='seismic')
+        hp.mollview(
+            pattern_12,
+            title="12-fold Cube Symmetry Pattern",
+            sub=(2, 2, 2),
+            hold=True,
+            cmap="seismic",
+        )
 
         # 3. Angular power spectrum
         alm, cl = self.spherical_harmonic_decomposition(cmb_map)
         ax3 = fig.add_subplot(223)
         ell = np.arange(len(cl))
-        ax3.plot(ell, ell * (ell + 1) * cl / (2 * np.pi), 'b-', linewidth=1.5)
-        ax3.set_xlabel('Multipole moment ℓ', fontsize=12)
-        ax3.set_ylabel('ℓ(ℓ+1)Cℓ / 2π [μK²]', fontsize=12)
-        ax3.set_title('Angular Power Spectrum', fontsize=14)
+        ax3.plot(ell, ell * (ell + 1) * cl / (2 * np.pi), "b-", linewidth=1.5)
+        ax3.set_xlabel("Multipole moment ℓ", fontsize=12)
+        ax3.set_ylabel("ℓ(ℓ+1)Cℓ / 2π [μK²]", fontsize=12)
+        ax3.set_title("Angular Power Spectrum", fontsize=14)
         ax3.set_xlim(2, len(cl))
         ax3.grid(True, alpha=0.3)
-        ax3.set_yscale('log')
+        ax3.set_yscale("log")
 
         # 4. Analysis summary
         ax4 = fig.add_subplot(224)
-        ax4.axis('off')
+        ax4.axis("off")
 
         summary_text = f"""
         CMB 12-fold Symmetry Analysis
@@ -377,14 +385,15 @@ class CMB12FoldAnalyzer:
         Timestamp: {result.timestamp}
         """
 
-        ax4.text(0.1, 0.5, summary_text, fontsize=11, family='monospace',
-                verticalalignment='center')
+        ax4.text(
+            0.1, 0.5, summary_text, fontsize=11, family="monospace", verticalalignment="center"
+        )
 
         plt.tight_layout()
 
         # Save
         output_path = self.output_dir / "cmb_12fold_analysis.png"
-        plt.savefig(output_path, dpi=150, bbox_inches='tight')
+        plt.savefig(output_path, dpi=150, bbox_inches="tight")
         print(f"✓ Saved visualization: {output_path}")
 
         if show:
@@ -392,10 +401,12 @@ class CMB12FoldAnalyzer:
         else:
             plt.close()
 
-    def run_full_analysis(self,
-                         fits_path: Optional[str] = None,
-                         use_synthetic: bool = True,
-                         synthetic_A12: float = 1e-4) -> CMBAnalysisResult:
+    def run_full_analysis(
+        self,
+        fits_path: str | None = None,
+        use_synthetic: bool = True,
+        synthetic_A12: float = 1e-4,
+    ) -> CMBAnalysisResult:
         """
         Run complete CMB 12-fold analysis pipeline
 
@@ -407,9 +418,9 @@ class CMB12FoldAnalyzer:
         Returns:
             CMBAnalysisResult with all findings
         """
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("CMB 12-FOLD CUBE SYMMETRY ANALYSIS")
-        print("="*60 + "\n")
+        print("=" * 60 + "\n")
 
         # Load or generate CMB map
         if fits_path and not use_synthetic:
@@ -442,19 +453,19 @@ class CMB12FoldAnalyzer:
             shapiro_delay_ms=shapiro_delay,
             timestamp=datetime.now().isoformat(),
             metadata={
-                'nside': hp.npix2nside(len(cmb_map)) if HEALPY_AVAILABLE else None,
-                'npix': len(cmb_map),
-                'alpha_inv': self.alpha_inv,
-                'phi': self.phi,
-                'threshold': self.A_12_threshold,
-                'synthetic': use_synthetic
-            }
+                "nside": hp.npix2nside(len(cmb_map)) if HEALPY_AVAILABLE else None,
+                "npix": len(cmb_map),
+                "alpha_inv": self.alpha_inv,
+                "phi": self.phi,
+                "threshold": self.A_12_threshold,
+                "synthetic": use_synthetic,
+            },
         )
 
         # Print summary
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("RESULTS")
-        print("="*60)
+        print("=" * 60)
         print(f"A₁₂ = {result.A_12:.6e} ± {result.A_12_error:.6e} μK")
         print(f"χ² = {result.chi_squared:.2f}, p-value = {result.p_value:.6f}")
         print(f"Threshold: A₁₂ < {self.A_12_threshold:.0e} μK")
@@ -466,7 +477,7 @@ class CMB12FoldAnalyzer:
             print("\n✓ OIPK MODEL NOT FALSIFIED")
             print("   12-fold signature detected above threshold")
 
-        print("="*60 + "\n")
+        print("=" * 60 + "\n")
 
         # Save results
         self.save_results(result)
@@ -480,7 +491,7 @@ class CMB12FoldAnalyzer:
         """Save analysis results to JSON"""
         output_path = self.output_dir / "cmb_12fold_results.json"
 
-        with open(output_path, 'w') as f:
+        with open(output_path, "w") as f:
             json.dump(asdict(result), f, indent=2)
 
         print(f"✓ Saved results: {output_path}")
@@ -503,18 +514,20 @@ Examples:
 
   # Show plots interactively
   python analyze_cmb_12fold.py --synthetic --show
-        """
+        """,
     )
 
-    parser.add_argument('--fits', type=str, help='Path to Planck FITS file')
-    parser.add_argument('--synthetic', action='store_true',
-                       help='Use synthetic CMB map for testing')
-    parser.add_argument('--A12', type=float, default=1e-4,
-                       help='Amplitude for synthetic 12-fold modulation')
-    parser.add_argument('--show', action='store_true',
-                       help='Display plots interactively')
-    parser.add_argument('--output', type=str, default='output/cmb_analysis',
-                       help='Output directory for results')
+    parser.add_argument("--fits", type=str, help="Path to Planck FITS file")
+    parser.add_argument(
+        "--synthetic", action="store_true", help="Use synthetic CMB map for testing"
+    )
+    parser.add_argument(
+        "--A12", type=float, default=1e-4, help="Amplitude for synthetic 12-fold modulation"
+    )
+    parser.add_argument("--show", action="store_true", help="Display plots interactively")
+    parser.add_argument(
+        "--output", type=str, default="output/cmb_analysis", help="Output directory for results"
+    )
 
     args = parser.parse_args()
 
@@ -530,7 +543,7 @@ Examples:
     result = analyzer.run_full_analysis(
         fits_path=args.fits,
         use_synthetic=args.synthetic or (args.fits is None),
-        synthetic_A12=args.A12
+        synthetic_A12=args.A12,
     )
 
     print(f"\n✓ Analysis complete! Results saved to {args.output}/")

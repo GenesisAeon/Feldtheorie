@@ -16,6 +16,7 @@ Poetic:
     ihr eigenes β, das σ(β(R-Θ)) schärft, während ζ(R) die Membran dämpft.
     Selbst wenn die Quelle über Zeilen ausfranst, bleibt der Atem kohärent.
 """
+
 from __future__ import annotations
 
 import logging
@@ -102,7 +103,9 @@ class GenesisLoader:
         """Load presets from disk or fall back to mock entries."""
 
         if not self.data_path.exists():
-            logger.warning("Beta estimate file missing: %s. Falling back to mock presets.", self.data_path)
+            logger.warning(
+                "Beta estimate file missing: %s. Falling back to mock presets.", self.data_path
+            )
             return self._generate_mock_presets()
 
         try:
@@ -141,7 +144,10 @@ class GenesisLoader:
         missing = {"domain", "beta"} - set(df.columns)
 
         if missing:
-            logger.warning("CSV fehlt Felder %s – Versuche Header zu normalisieren.", ", ".join(sorted(missing)))
+            logger.warning(
+                "CSV fehlt Felder %s – Versuche Header zu normalisieren.",
+                ", ".join(sorted(missing)),
+            )
             df = self._normalize_columns(df)
 
         for row in df.to_dict(orient="records"):
@@ -155,7 +161,10 @@ class GenesisLoader:
             domain = _safe_strip(row.get("domain")) or "Generic"
             source_value = _safe_strip(row.get("source"))
             color = self._derive_color(domain, beta_value, provided=row.get("color"))
-            description = _safe_strip(row.get("description")) or f"Simuliert {name} mit Kritikalität β={beta_value:.2f}"
+            description = (
+                _safe_strip(row.get("description"))
+                or f"Simuliert {name} mit Kritikalität β={beta_value:.2f}"
+            )
 
             preset = GenesisPreset(
                 name=name,

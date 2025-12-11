@@ -104,7 +104,9 @@ def load_observations_csv(path: Path) -> list[ObservationRecord]:
     return records
 
 
-def logistic_detection(beta_grid: np.ndarray, phi_grid: np.ndarray, theta_detect: float) -> np.ndarray:
+def logistic_detection(
+    beta_grid: np.ndarray, phi_grid: np.ndarray, theta_detect: float
+) -> np.ndarray:
     """Return σ(β(∥∇φ∥ − Θ_detect)) for each grid sample."""
 
     return 1.0 / (1.0 + np.exp(-beta_grid * (phi_grid - theta_detect)))
@@ -256,8 +258,7 @@ def _compile_observation_payload(
             1.0 / (1.0 + math.exp(-beta * (obs.phi_gradient - theta_detect)))
         )
         temperature_probability = float(
-            1.0
-            / (1.0 + math.exp(-(beta / null_temperature) * (obs.phi_gradient - theta_detect)))
+            1.0 / (1.0 + math.exp(-(beta / null_temperature) * (obs.phi_gradient - theta_detect)))
         )
         residual = float(obs.success_rate - logistic_prediction)
         residuals.append(residual)
@@ -298,16 +299,30 @@ def _compile_observation_payload(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Synthesize Anthropic introspection logistic validation")
-    parser.add_argument("--output", type=Path, default=OUTPUT_PATH, help="Pfad für die Ergebnis-JSON")
-    parser.add_argument("--theta-detect", type=float, default=1.33, help="Schwelle Θ_detect der Studie")
-    parser.add_argument("--target", type=float, default=0.2, help="Ziel-Erkennungswahrscheinlichkeit")
+    parser = argparse.ArgumentParser(
+        description="Synthesize Anthropic introspection logistic validation"
+    )
+    parser.add_argument(
+        "--output", type=Path, default=OUTPUT_PATH, help="Pfad für die Ergebnis-JSON"
+    )
+    parser.add_argument(
+        "--theta-detect", type=float, default=1.33, help="Schwelle Θ_detect der Studie"
+    )
+    parser.add_argument(
+        "--target", type=float, default=0.2, help="Ziel-Erkennungswahrscheinlichkeit"
+    )
     parser.add_argument("--beta-min", type=float, default=2.5, help="Untergrenze des β-Sweeps")
     parser.add_argument("--beta-max", type=float, default=5.0, help="Obergrenze des β-Sweeps")
     parser.add_argument("--beta-steps", type=int, default=51, help="Anzahl der β-Stützstellen")
-    parser.add_argument("--phi-min", type=float, default=0.2, help="Untergrenze des Semantik-Gradienten")
-    parser.add_argument("--phi-max", type=float, default=1.8, help="Obergrenze des Semantik-Gradienten")
-    parser.add_argument("--phi-steps", type=int, default=81, help="Anzahl der Gradient-Stützstellen")
+    parser.add_argument(
+        "--phi-min", type=float, default=0.2, help="Untergrenze des Semantik-Gradienten"
+    )
+    parser.add_argument(
+        "--phi-max", type=float, default=1.8, help="Obergrenze des Semantik-Gradienten"
+    )
+    parser.add_argument(
+        "--phi-steps", type=int, default=81, help="Anzahl der Gradient-Stützstellen"
+    )
     parser.add_argument(
         "--null-temperature",
         type=float,

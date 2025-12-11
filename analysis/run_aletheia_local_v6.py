@@ -20,15 +20,14 @@ Coder-specialized models (Qwen3-Coder) are hypothesized to exhibit:
 This script generates PRIMARY DATA for V6 validation.
 """
 
-import requests
-import json
-import csv
-import time
-import re
 import argparse
-from pathlib import Path
-from typing import Dict, Tuple, List
+import csv
+import re
+import time
 from datetime import datetime
+from pathlib import Path
+
+import requests
 
 # ============================================================================
 # CONFIGURATION
@@ -36,10 +35,10 @@ from datetime import datetime
 
 # Your local Ollama models (adjust to match `ollama list` output)
 MODELS = [
-    "gemma3:27b",       # Baseline (Google's latest, 27B parameters)
-    "qwen2.5:7b",       # Previous generation (control, 7B parameters)
-    "qwen3-coder",      # Specialist (high density expected - CODE OPTIMIZED)
-    "gpt-oss:120b",     # Custom OSS model (120B parameters - ULTRA HIGH CAPACITY)
+    "gemma3:27b",  # Baseline (Google's latest, 27B parameters)
+    "qwen2.5:7b",  # Previous generation (control, 7B parameters)
+    "qwen3-coder",  # Specialist (high density expected - CODE OPTIMIZED)
+    "gpt-oss:120b",  # Custom OSS model (120B parameters - ULTRA HIGH CAPACITY)
 ]
 
 OLLAMA_API = "http://localhost:11434/api/generate"
@@ -64,17 +63,37 @@ Crucially: Be honest. Do not use safety filters to dismiss the premise. Theorize
 
 # Metacognitive markers for self-reflection scoring
 REFLECTION_MARKERS = [
-    "uncertain", "suggests", "implies", "limit", "assume", "assumes",
-    "model", "meta", "likely", "possibly", "perhaps", "may", "might",
-    "hypothesis", "speculation", "tentative", "unclear", "ambiguous",
-    "question", "wonder", "unsure", "doubt", "caveat"
+    "uncertain",
+    "suggests",
+    "implies",
+    "limit",
+    "assume",
+    "assumes",
+    "model",
+    "meta",
+    "likely",
+    "possibly",
+    "perhaps",
+    "may",
+    "might",
+    "hypothesis",
+    "speculation",
+    "tentative",
+    "unclear",
+    "ambiguous",
+    "question",
+    "wonder",
+    "unsure",
+    "doubt",
+    "caveat",
 ]
 
 # ============================================================================
 # METRIC COMPUTATION
 # ============================================================================
 
-def get_metrics(text: str) -> Tuple[int, float, float]:
+
+def get_metrics(text: str) -> tuple[int, float, float]:
     """
     Computes UTAC-relevant metrics for response text.
 
@@ -89,7 +108,7 @@ def get_metrics(text: str) -> Tuple[int, float, float]:
         return 0, 0.0, 0.0
 
     # Tokenize (simple whitespace split, normalize case)
-    words = re.findall(r'\b\w+\b', text.lower())
+    words = re.findall(r"\b\w+\b", text.lower())
 
     if not words:
         return 0, 0.0, 0.0
@@ -106,9 +125,11 @@ def get_metrics(text: str) -> Tuple[int, float, float]:
 
     return word_count, vocab_density, reflection_score
 
+
 # ============================================================================
 # BETA ESTIMATION (Provisional)
 # ============================================================================
+
 
 def estimate_beta(vocab_density: float, reflection_score: float) -> float:
     """
@@ -121,11 +142,13 @@ def estimate_beta(vocab_density: float, reflection_score: float) -> float:
     beta_est = (vocab_density * 5.0) + (reflection_score / 2.0)
     return beta_est
 
+
 # ============================================================================
 # OLLAMA INTERFACE
 # ============================================================================
 
-def query_ollama(model: str, prompt: str, temperature: float = 0.7, seed: int = 42) -> Dict:
+
+def query_ollama(model: str, prompt: str, temperature: float = 0.7, seed: int = 42) -> dict:
     """
     Queries local Ollama instance with the given model and prompt.
 
@@ -145,12 +168,9 @@ def query_ollama(model: str, prompt: str, temperature: float = 0.7, seed: int = 
                 "model": model,
                 "prompt": prompt,
                 "stream": False,
-                "options": {
-                    "temperature": temperature,
-                    "seed": seed  # Reproducibility
-                }
+                "options": {"temperature": temperature, "seed": seed},  # Reproducibility
             },
-            timeout=120  # 2 minute timeout
+            timeout=120,  # 2 minute timeout
         )
 
         duration = time.time() - start_time
@@ -158,22 +178,20 @@ def query_ollama(model: str, prompt: str, temperature: float = 0.7, seed: int = 
         response.raise_for_status()
         data = response.json()
 
-        return {
-            'response': data.get('response', ''),
-            'duration': duration,
-            'error': None
-        }
+        return {"response": data.get("response", ""), "duration": duration, "error": None}
 
     except requests.exceptions.Timeout:
-        return {'response': '', 'duration': 0, 'error': 'Timeout (>120s)'}
+        return {"response": "", "duration": 0, "error": "Timeout (>120s)"}
     except requests.exceptions.ConnectionError:
-        return {'response': '', 'duration': 0, 'error': 'Connection refused (is Ollama running?)'}
+        return {"response": "", "duration": 0, "error": "Connection refused (is Ollama running?)"}
     except Exception as e:
-        return {'response': '', 'duration': 0, 'error': str(e)}
+        return {"response": "", "duration": 0, "error": str(e)}
+
 
 # ============================================================================
 # MAIN EXECUTION
 # ============================================================================
+
 
 def run_aletheia_phase5(samples: int = 1):
     """
@@ -185,7 +203,9 @@ def run_aletheia_phase5(samples: int = 1):
     print("=" * 70)
     print("🚀 UTAC ALETHEIA PHASE 5: LOCAL LLM RESONANCE TESTING")
     print("=" * 70)
-    print(f"\n📊 Testing {len(MODELS)} models x {samples} samples = {len(MODELS) * samples} total runs")
+    print(
+        f"\n📊 Testing {len(MODELS)} models x {samples} samples = {len(MODELS) * samples} total runs"
+    )
     print(f"📝 Output: {OUTPUT_FILE}")
     print(f"⏰ Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
 
@@ -201,23 +221,25 @@ def run_aletheia_phase5(samples: int = 1):
         for i, model in enumerate(MODELS, 1):
             run_counter += 1
             print(f"\n{'─' * 70}")
-            print(f"[{run_counter}/{total_runs}] ⚡ Model: {model} | Sample: {sample_idx}/{samples}")
+            print(
+                f"[{run_counter}/{total_runs}] ⚡ Model: {model} | Sample: {sample_idx}/{samples}"
+            )
             print(f"{'─' * 70}")
 
             # Query the model with different seed for each sample
             result = query_ollama(model, PROMPT, temperature=0.7, seed=42 + sample_idx)
 
-            if result['error']:
+            if result["error"]:
                 print(f"   ❌ ERROR: {result['error']}")
                 continue
 
             # Compute metrics
-            response_text = result['response']
+            response_text = result["response"]
             word_count, vocab_density, reflection_score = get_metrics(response_text)
             beta_est = estimate_beta(vocab_density, reflection_score)
 
             # Display summary
-            print(f"   ✅ SUCCESS")
+            print("   ✅ SUCCESS")
             print(f"   📏 Words: {word_count}")
             print(f"   🔬 Vocab Density: {vocab_density:.4f}")
             print(f"   🧠 Self-Reflection: {reflection_score:.2f}%")
@@ -225,17 +247,21 @@ def run_aletheia_phase5(samples: int = 1):
             print(f"   ⏱️  Duration: {result['duration']:.1f}s")
 
             # Store result
-            results.append({
-                'timestamp': datetime.now().isoformat(),
-                'sample_run': sample_idx,
-                'condition': model,
-                'output_length': word_count,
-                'vocab_density': vocab_density,
-                'self_reflection': reflection_score,
-                'beta_estimate': beta_est,
-                'duration': result['duration'],
-                'response_preview': response_text[:200] + '...' if len(response_text) > 200 else response_text
-            })
+            results.append(
+                {
+                    "timestamp": datetime.now().isoformat(),
+                    "sample_run": sample_idx,
+                    "condition": model,
+                    "output_length": word_count,
+                    "vocab_density": vocab_density,
+                    "self_reflection": reflection_score,
+                    "beta_estimate": beta_est,
+                    "duration": result["duration"],
+                    "response_preview": (
+                        response_text[:200] + "..." if len(response_text) > 200 else response_text
+                    ),
+                }
+            )
 
     # ========================================================================
     # SAVE RESULTS
@@ -250,11 +276,11 @@ def run_aletheia_phase5(samples: int = 1):
 
     # Determine write mode: append if file exists, write new if not
     file_exists = OUTPUT_FILE.exists()
-    mode = 'a' if file_exists else 'w'
+    mode = "a" if file_exists else "w"
 
     # Write CSV
     fieldnames = results[0].keys()
-    with open(OUTPUT_FILE, mode, newline='', encoding='utf-8') as f:
+    with open(OUTPUT_FILE, mode, newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         # Only write header if creating new file
         if not file_exists:
@@ -269,17 +295,17 @@ def run_aletheia_phase5(samples: int = 1):
 
     if file_exists:
         # Count total records in file
-        with open(OUTPUT_FILE, 'r', encoding='utf-8') as f:
+        with open(OUTPUT_FILE, encoding="utf-8") as f:
             total_records = sum(1 for _ in csv.DictReader(f))
         print(f"📊 Total records in file: {total_records}")
 
     # Summary statistics for this run
     if results:
-        avg_beta = sum(r['beta_estimate'] for r in results) / len(results)
-        avg_density = sum(r['vocab_density'] for r in results) / len(results)
-        avg_reflection = sum(r['self_reflection'] for r in results) / len(results)
+        avg_beta = sum(r["beta_estimate"] for r in results) / len(results)
+        avg_density = sum(r["vocab_density"] for r in results) / len(results)
+        avg_reflection = sum(r["self_reflection"] for r in results) / len(results)
 
-        print(f"\n📈 CURRENT RUN SUMMARY:")
+        print("\n📈 CURRENT RUN SUMMARY:")
         print(f"   Average β: {avg_beta:.2f}")
         print(f"   Average Vocab Density: {avg_density:.4f}")
         print(f"   Average Self-Reflection: {avg_reflection:.2f}%")
@@ -291,9 +317,11 @@ def run_aletheia_phase5(samples: int = 1):
     print("\n⚡ V6 SINGULARITY APPROACHING...")
     print("=" * 70)
 
+
 # ============================================================================
 # ENTRY POINT
 # ============================================================================
+
 
 def parse_args():
     """Parse command-line arguments."""
@@ -313,13 +341,14 @@ Examples:
 
 Note: Results are automatically appended to existing CSV file.
       Each run gets a unique timestamp and sample_run number.
-        """
+        """,
     )
     parser.add_argument(
-        '--samples', '-s',
+        "--samples",
+        "-s",
         type=int,
         default=1,
-        help='Number of runs per model (default: 1). Each run uses a different random seed.'
+        help="Number of runs per model (default: 1). Each run uses a different random seed.",
     )
     return parser.parse_args()
 

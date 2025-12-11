@@ -1,7 +1,6 @@
 """Regression tests for the planetary tipping logistic summary export."""
 
 import pytest
-
 from analysis.planetary_tipping_elements_fit import (
     AggregateLogistic,
     LogisticElement,

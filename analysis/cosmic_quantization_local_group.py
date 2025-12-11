@@ -191,7 +191,9 @@ def analyze_local_group(
     v_test = quant.predict_velocity()
 
     print(f"\n📐 Predicted velocity: v_test = {v_test:.2f} km/s", file=sys.stderr)
-    print(f"   Formula: c / (α⁻¹ · Φ) = {C_KM_S:.3f} / ({1/ALPHA:.3f} × {PHI:.6f})\n", file=sys.stderr)
+    print(
+        f"   Formula: c / (α⁻¹ · Φ) = {C_KM_S:.3f} / ({1/ALPHA:.3f} × {PHI:.6f})\n", file=sys.stderr
+    )
 
     deviations = []
     z_scores = []
@@ -394,7 +396,9 @@ def main(argv: list[str] | None = None) -> int:
     _, null_p_value = null_model_comparison(LOCAL_GROUP_VELOCITIES, n_trials=args.null_trials)
 
     # Export
-    export_results(result, null_p_value, args.output if args.output.is_absolute() else BASE_DIR / args.output)
+    export_results(
+        result, null_p_value, args.output if args.output.is_absolute() else BASE_DIR / args.output
+    )
 
     # Verdict
     print("\n" + "=" * 80, file=sys.stderr)
@@ -403,13 +407,19 @@ def main(argv: list[str] | None = None) -> int:
 
     if result.mean_relative_error < 0.30 and result.systems_within_3_sigma >= 3:
         print("✅ HYPOTHESIS STRENGTHENED:", file=sys.stderr)
-        print(f"   • {result.systems_within_3_sigma}/{result.total_systems} systems within 3σ", file=sys.stderr)
+        print(
+            f"   • {result.systems_within_3_sigma}/{result.total_systems} systems within 3σ",
+            file=sys.stderr,
+        )
         print(f"   • Mean relative error = {result.mean_relative_error:.1%}", file=sys.stderr)
         print(f"   • χ² p-value = {result.p_value_chi_squared:.4f}", file=sys.stderr)
         print("   • Extension to n>1 systems SUPPORTS hypothesis", file=sys.stderr)
     else:
         print("⚠️  HYPOTHESIS WEAKENED:", file=sys.stderr)
-        print(f"   • Only {result.systems_within_3_sigma}/{result.total_systems} systems within 3σ", file=sys.stderr)
+        print(
+            f"   • Only {result.systems_within_3_sigma}/{result.total_systems} systems within 3σ",
+            file=sys.stderr,
+        )
         print(f"   • Mean relative error = {result.mean_relative_error:.1%}", file=sys.stderr)
         print("   • Extension to n>1 systems reveals limitations", file=sys.stderr)
 

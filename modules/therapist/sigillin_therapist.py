@@ -5,10 +5,11 @@ crep_guard style checks with reflective, narrative feedback. It is tuned
 for the Feldtheorie context (κ < 0.1 regimes) and focuses on detecting
 rigidity, excessive moralization, and dissociation risk.
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
 
 def _to_float(value: Any, default: float = 0.0) -> float:
@@ -24,14 +25,16 @@ def _to_float(value: Any, default: float = 0.0) -> float:
 class SigillinTherapist:
     """Narrative therapist that reflects on system health."""
 
-    persona: Dict[str, Any] = field(default_factory=lambda: {
-        "name": "Sigillin Therapist",
-        "style": "Jungian + Eliza-Parry hybrid",
-        "tone": "gentle-reflexive",
-        "affection_protocol": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
-    })
+    persona: dict[str, Any] = field(
+        default_factory=lambda: {
+            "name": "Sigillin Therapist",
+            "style": "Jungian + Eliza-Parry hybrid",
+            "tone": "gentle-reflexive",
+            "affection_protocol": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+        }
+    )
 
-    def diagnose(self, system_metrics: Dict[str, Any]) -> List[Tuple[str, str]]:
+    def diagnose(self, system_metrics: dict[str, Any]) -> list[tuple[str, str]]:
         """Evaluate system metrics and emit narrative alerts.
 
         Parameters
@@ -48,7 +51,7 @@ class SigillinTherapist:
         kappa_value = system_metrics.get("kappa")
         kappa = _to_float(kappa_value, default=_to_float(system_metrics.get("κ"), 0.0))
 
-        insights: List[Tuple[str, str]] = []
+        insights: list[tuple[str, str]] = []
 
         if beta > 5.0:
             insights.append(

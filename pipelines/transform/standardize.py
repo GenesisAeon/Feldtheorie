@@ -6,8 +6,9 @@ to_fieldcube(ds, attrs, enforce_cf=True):
 - Enforces CF-like metadata, sets global attributes
 - Normalizes unit fields (attribute-level only; hard conversion with pint-xarray can be added later)
 """
+
 from __future__ import annotations
-from typing import Dict, Optional
+
 import xarray as xr
 
 _CF_LAT_NAMES = ("latitude", "lat", "y", "rlat")
@@ -51,19 +52,11 @@ def _coerce_axes(ds: xr.Dataset) -> xr.Dataset:
 def _ensure_cf_attrs(ds: xr.Dataset) -> xr.Dataset:
     """Add CF-compliant attributes to coordinates."""
     if "lat" in ds.coords:
-        ds["lat"] = ds["lat"].assign_attrs({
-            "standard_name": "latitude",
-            "units": "degrees_north"
-        })
+        ds["lat"] = ds["lat"].assign_attrs({"standard_name": "latitude", "units": "degrees_north"})
     if "lon" in ds.coords:
-        ds["lon"] = ds["lon"].assign_attrs({
-            "standard_name": "longitude",
-            "units": "degrees_east"
-        })
+        ds["lon"] = ds["lon"].assign_attrs({"standard_name": "longitude", "units": "degrees_east"})
     if "time" in ds.coords:
-        ds["time"] = ds["time"].assign_attrs({
-            "standard_name": "time"
-        })
+        ds["time"] = ds["time"].assign_attrs({"standard_name": "time"})
 
     return ds
 
@@ -71,7 +64,7 @@ def _ensure_cf_attrs(ds: xr.Dataset) -> xr.Dataset:
 def to_fieldcube(
     ds: xr.Dataset,
     *,
-    global_attrs: Optional[Dict[str, str]] = None,
+    global_attrs: dict[str, str] | None = None,
     enforce_cf: bool = True,
 ) -> xr.Dataset:
     """Convert dataset to Feldtheorie FieldCube standard.

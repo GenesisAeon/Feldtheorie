@@ -144,7 +144,9 @@ def audit_manifest(manifest_path: Path) -> dict[str, object]:
         audits.append(dataset_audit)
 
         activation_total += logistic_activation
-        status_counter[dataset.resonance_status] = status_counter.get(dataset.resonance_status, 0) + 1
+        status_counter[dataset.resonance_status] = (
+            status_counter.get(dataset.resonance_status, 0) + 1
+        )
 
     summary = {
         "datasets_total": len(audits),
@@ -184,14 +186,10 @@ def format_markdown(report: dict[str, object]) -> str:
     lines.append("")
     lines.append("## Formal Layer – Logistic Diagnostics")
     lines.append(
-        "- Laternen im Manifest: {datasets_total}".format(
-            datasets_total=summary["datasets_total"]
-        )
+        "- Laternen im Manifest: {datasets_total}".format(datasets_total=summary["datasets_total"])
     )
     lines.append(
-        "- Mittlere Aktivierung σ: {activation:.3f}".format(
-            activation=summary["activation_mean"]
-        )
+        "- Mittlere Aktivierung σ: {activation:.3f}".format(activation=summary["activation_mean"])
     )
     status_items = ", ".join(
         f"{status}={count}" for status, count in sorted(summary["status_counter"].items())
@@ -228,9 +226,7 @@ def format_markdown(report: dict[str, object]) -> str:
         "Raster, Strömungen und ökonomische Pulsdaten, um den Chor vollständig zu entfachen."
     )
     lines.append("")
-    lines.append(
-        "*Generated at {}*".format(summary["generated_at"])
-    )
+    lines.append("*Generated at {}*".format(summary["generated_at"]))
     return "\n".join(lines)
 
 

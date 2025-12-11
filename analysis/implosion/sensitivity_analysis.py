@@ -38,16 +38,16 @@ from scipy.optimize import curve_fit
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 
-
 # ═══════════════════════════════════════════════════════════════
 # PREPROCESSING VARIANTS
 # ═══════════════════════════════════════════════════════════════
+
 
 def apply_smoothing(data: np.ndarray, window_size: int) -> np.ndarray:
     """Apply moving average smoothing."""
     if window_size <= 1:
         return data
-    return uniform_filter1d(data, size=window_size, mode='nearest')
+    return uniform_filter1d(data, size=window_size, mode="nearest")
 
 
 def apply_normalization(data: np.ndarray, method: str) -> np.ndarray:
@@ -59,15 +59,15 @@ def apply_normalization(data: np.ndarray, method: str) -> np.ndarray:
     - 'robust': Use median/IQR for outlier-resistant scaling
     - 'none': No normalization
     """
-    if method == 'none':
+    if method == "none":
         return data
-    elif method == 'minmax':
+    elif method == "minmax":
         return 100 * (data - np.min(data)) / (np.max(data) - np.min(data) + 1e-9)
-    elif method == 'zscore':
+    elif method == "zscore":
         z = (data - np.mean(data)) / (np.std(data) + 1e-9)
         # Rescale to [0, 100] for comparability
         return 50 + 20 * z
-    elif method == 'robust':
+    elif method == "robust":
         median = np.median(data)
         iqr = np.percentile(data, 75) - np.percentile(data, 25)
         return 50 + 30 * (data - median) / (iqr + 1e-9)
@@ -75,7 +75,9 @@ def apply_normalization(data: np.ndarray, method: str) -> np.ndarray:
         raise ValueError(f"Unknown normalization method: {method}")
 
 
-def remove_outliers(data: np.ndarray, epochs: np.ndarray, threshold: float) -> tuple[np.ndarray, np.ndarray]:
+def remove_outliers(
+    data: np.ndarray, epochs: np.ndarray, threshold: float
+) -> tuple[np.ndarray, np.ndarray]:
     """Remove outliers based on z-score threshold.
 
     Returns filtered data and epochs.
@@ -88,7 +90,9 @@ def remove_outliers(data: np.ndarray, epochs: np.ndarray, threshold: float) -> t
     return data[mask], epochs[mask]
 
 
-def downsample_data(data: np.ndarray, epochs: np.ndarray, factor: int) -> tuple[np.ndarray, np.ndarray]:
+def downsample_data(
+    data: np.ndarray, epochs: np.ndarray, factor: int
+) -> tuple[np.ndarray, np.ndarray]:
     """Downsample by taking every nth point."""
     if factor <= 1:
         return data, epochs
@@ -99,13 +103,14 @@ def downsample_data(data: np.ndarray, epochs: np.ndarray, factor: int) -> tuple[
 # β ESTIMATION WITH PREPROCESSING
 # ═══════════════════════════════════════════════════════════════
 
+
 def estimate_beta_with_preprocessing(
     data: np.ndarray,
     epochs: np.ndarray,
     smooth_window: int = 1,
-    norm_method: str = 'minmax',
+    norm_method: str = "minmax",
     outlier_threshold: float = 0,
-    downsample_factor: int = 1
+    downsample_factor: int = 1,
 ) -> dict:
     """Estimate β with specific preprocessing pipeline.
 
@@ -138,16 +143,16 @@ def estimate_beta_with_preprocessing(
     # Estimate β via logistic fit
     if len(processed_data) < 5:
         return {
-            'beta': np.nan,
-            'Theta': np.nan,
-            'R_squared': np.nan,
-            'n_points': len(processed_data),
-            'preprocessing': {
-                'smooth_window': smooth_window,
-                'norm_method': norm_method,
-                'outlier_threshold': outlier_threshold,
-                'downsample_factor': downsample_factor,
-            }
+            "beta": np.nan,
+            "Theta": np.nan,
+            "R_squared": np.nan,
+            "n_points": len(processed_data),
+            "preprocessing": {
+                "smooth_window": smooth_window,
+                "norm_method": norm_method,
+                "outlier_threshold": outlier_threshold,
+                "downsample_factor": downsample_factor,
+            },
         }
 
     try:
@@ -168,7 +173,7 @@ def estimate_beta_with_preprocessing(
             processed_data,
             p0=[Theta_init, beta_init],
             maxfev=5000,
-            bounds=([0, 0.1], [1.0, 20.0])
+            bounds=([0, 0.1], [1.0, 20.0]),
         )
 
         Theta_fit, beta_fit = popt
@@ -180,31 +185,31 @@ def estimate_beta_with_preprocessing(
         r_squared = 1 - (ss_res / ss_tot) if ss_tot > 0 else 0.0
 
         return {
-            'beta': beta_fit,
-            'Theta': Theta_fit,
-            'R_squared': r_squared,
-            'n_points': len(processed_data),
-            'preprocessing': {
-                'smooth_window': smooth_window,
-                'norm_method': norm_method,
-                'outlier_threshold': outlier_threshold,
-                'downsample_factor': downsample_factor,
-            }
+            "beta": beta_fit,
+            "Theta": Theta_fit,
+            "R_squared": r_squared,
+            "n_points": len(processed_data),
+            "preprocessing": {
+                "smooth_window": smooth_window,
+                "norm_method": norm_method,
+                "outlier_threshold": outlier_threshold,
+                "downsample_factor": downsample_factor,
+            },
         }
 
     except Exception as e:
         return {
-            'beta': np.nan,
-            'Theta': np.nan,
-            'R_squared': np.nan,
-            'n_points': len(processed_data),
-            'error': str(e),
-            'preprocessing': {
-                'smooth_window': smooth_window,
-                'norm_method': norm_method,
-                'outlier_threshold': outlier_threshold,
-                'downsample_factor': downsample_factor,
-            }
+            "beta": np.nan,
+            "Theta": np.nan,
+            "R_squared": np.nan,
+            "n_points": len(processed_data),
+            "error": str(e),
+            "preprocessing": {
+                "smooth_window": smooth_window,
+                "norm_method": norm_method,
+                "outlier_threshold": outlier_threshold,
+                "downsample_factor": downsample_factor,
+            },
         }
 
 
@@ -212,11 +217,8 @@ def estimate_beta_with_preprocessing(
 # SENSITIVITY GRID SEARCH
 # ═══════════════════════════════════════════════════════════════
 
-def run_sensitivity_analysis(
-    df: pd.DataFrame,
-    run_id: str,
-    verbose: bool = True
-) -> dict:
+
+def run_sensitivity_analysis(df: pd.DataFrame, run_id: str, verbose: bool = True) -> dict:
     """Run sensitivity analysis on a single LLM run.
 
     Tests combinations of:
@@ -230,20 +232,16 @@ def run_sensitivity_analysis(
     Returns:
         dict with β statistics (mean, std, CV, range)
     """
-    run_data = df[df['run_id'] == run_id].sort_values('epoch')
-    epochs = run_data['epoch'].values
-    capability = run_data['capability_score'].values
+    run_data = df[df["run_id"] == run_id].sort_values("epoch")
+    epochs = run_data["epoch"].values
+    capability = run_data["capability_score"].values
 
     if len(epochs) < 10:
-        return {
-            'run_id': run_id,
-            'n_points': len(epochs),
-            'message': 'Insufficient data points'
-        }
+        return {"run_id": run_id, "n_points": len(epochs), "message": "Insufficient data points"}
 
     # Grid search parameters
     smooth_windows = [1, 3, 5, 10]
-    norm_methods = ['minmax', 'zscore', 'robust']
+    norm_methods = ["minmax", "zscore", "robust"]
     outlier_thresholds = [0, 2.5, 3.0]
     downsample_factors = [1, 2, 5]
 
@@ -254,24 +252,25 @@ def run_sensitivity_analysis(
             for outlier in outlier_thresholds:
                 for downsample in downsample_factors:
                     result = estimate_beta_with_preprocessing(
-                        capability, epochs,
+                        capability,
+                        epochs,
                         smooth_window=smooth,
                         norm_method=norm,
                         outlier_threshold=outlier,
-                        downsample_factor=downsample
+                        downsample_factor=downsample,
                     )
                     results.append(result)
 
     # Extract β estimates (ignore NaN)
-    betas = [r['beta'] for r in results if not np.isnan(r['beta'])]
-    r_squareds = [r['R_squared'] for r in results if not np.isnan(r['R_squared'])]
+    betas = [r["beta"] for r in results if not np.isnan(r["beta"])]
+    r_squareds = [r["R_squared"] for r in results if not np.isnan(r["R_squared"])]
 
     if len(betas) == 0:
         return {
-            'run_id': run_id,
-            'n_combinations': len(results),
-            'n_successful': 0,
-            'message': 'No successful fits'
+            "run_id": run_id,
+            "n_combinations": len(results),
+            "n_successful": 0,
+            "message": "No successful fits",
         }
 
     # Statistics
@@ -293,19 +292,19 @@ def run_sensitivity_analysis(
         print()
 
     return {
-        'run_id': run_id,
-        'n_combinations': len(results),
-        'n_successful': len(betas),
-        'beta_mean': beta_mean,
-        'beta_std': beta_std,
-        'beta_cv': beta_cv,
-        'beta_range': beta_range,
-        'beta_iqr': beta_iqr,
-        'beta_min': np.min(betas),
-        'beta_max': np.max(betas),
-        'r2_mean': r2_mean,
-        'r2_std': r2_std,
-        'all_results': results,
+        "run_id": run_id,
+        "n_combinations": len(results),
+        "n_successful": len(betas),
+        "beta_mean": beta_mean,
+        "beta_std": beta_std,
+        "beta_cv": beta_cv,
+        "beta_range": beta_range,
+        "beta_iqr": beta_iqr,
+        "beta_min": np.min(betas),
+        "beta_max": np.max(betas),
+        "r2_mean": r2_mean,
+        "r2_std": r2_std,
+        "all_results": results,
     }
 
 
@@ -313,16 +312,20 @@ def run_sensitivity_analysis(
 # MAIN ANALYSIS
 # ═══════════════════════════════════════════════════════════════
 
+
 def main():
     parser = argparse.ArgumentParser(
-        description='Sensitivity Analysis: Preprocessing Effects on β-Estimation'
+        description="Sensitivity Analysis: Preprocessing Effects on β-Estimation"
     )
-    parser.add_argument('--input', default='data/implosion/llm_runs_beta.csv',
-                        help='Path to LLM training data CSV')
-    parser.add_argument('--out', default='analysis/results/sensitivity_analysis.json',
-                        help='Output path for sensitivity report (JSON)')
-    parser.add_argument('--verbose', action='store_true',
-                        help='Print detailed results')
+    parser.add_argument(
+        "--input", default="data/implosion/llm_runs_beta.csv", help="Path to LLM training data CSV"
+    )
+    parser.add_argument(
+        "--out",
+        default="analysis/results/sensitivity_analysis.json",
+        help="Output path for sensitivity report (JSON)",
+    )
+    parser.add_argument("--verbose", action="store_true", help="Print detailed results")
 
     args = parser.parse_args()
 
@@ -335,14 +338,14 @@ def main():
     # Load data
     print(f"Loading data from: {args.input}")
     try:
-        df = pd.read_csv(args.input, comment='#')
-        df = df.dropna(how='all')
+        df = pd.read_csv(args.input, comment="#")
+        df = df.dropna(how="all")
 
         # Map column names
         column_mapping = {
-            'training_step': 'epoch',
-            'beta_estimate': 'beta',
-            'grokking_detected': 'grokking_event'
+            "training_step": "epoch",
+            "beta_estimate": "beta",
+            "grokking_detected": "grokking_event",
         }
         for old_col, new_col in column_mapping.items():
             if old_col in df.columns and new_col not in df.columns:
@@ -363,9 +366,9 @@ def main():
 
     all_run_results = []
 
-    for run_id in df['run_id'].unique():
+    for run_id in df["run_id"].unique():
         result = run_sensitivity_analysis(df, run_id, verbose=args.verbose)
-        if 'beta_mean' in result:
+        if "beta_mean" in result:
             all_run_results.append(result)
 
     if len(all_run_results) == 0:
@@ -377,9 +380,9 @@ def main():
     print("AGGREGATE SENSITIVITY STATISTICS")
     print("═" * 70)
 
-    mean_cv = np.mean([r['beta_cv'] for r in all_run_results])
-    mean_range = np.mean([r['beta_range'] for r in all_run_results])
-    mean_iqr = np.mean([r['beta_iqr'] for r in all_run_results])
+    mean_cv = np.mean([r["beta_cv"] for r in all_run_results])
+    mean_range = np.mean([r["beta_range"] for r in all_run_results])
+    mean_iqr = np.mean([r["beta_iqr"] for r in all_run_results])
 
     print(f"  Mean β CV across runs: {mean_cv:.3f}")
     print(f"  Mean β range across runs: {mean_range:.3f}")
@@ -418,31 +421,33 @@ def main():
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     summary = {
-        'metadata': {
-            'input_file': args.input,
-            'n_runs': len(all_run_results),
-            'n_combinations_per_run': 108,
-            'analysis_date': pd.Timestamp.now().isoformat(),
+        "metadata": {
+            "input_file": args.input,
+            "n_runs": len(all_run_results),
+            "n_combinations_per_run": 108,
+            "analysis_date": pd.Timestamp.now().isoformat(),
         },
-        'aggregate_statistics': {
-            'mean_beta_cv': mean_cv,
-            'mean_beta_range': mean_range,
-            'mean_beta_iqr': mean_iqr,
+        "aggregate_statistics": {
+            "mean_beta_cv": mean_cv,
+            "mean_beta_range": mean_range,
+            "mean_beta_iqr": mean_iqr,
         },
-        'interpretation': {
-            'robustness': 'high' if mean_cv < 0.1 else ('moderate' if mean_cv < 0.2 else 'low'),
-            'recommendation': (
-                'Results are robust to preprocessing choices'
-                if mean_cv < 0.1 else
-                'Standardize preprocessing pipeline'
-                if mean_cv < 0.2 else
-                'Use robust estimation methods or report sensitivity'
+        "interpretation": {
+            "robustness": "high" if mean_cv < 0.1 else ("moderate" if mean_cv < 0.2 else "low"),
+            "recommendation": (
+                "Results are robust to preprocessing choices"
+                if mean_cv < 0.1
+                else (
+                    "Standardize preprocessing pipeline"
+                    if mean_cv < 0.2
+                    else "Use robust estimation methods or report sensitivity"
+                )
             ),
         },
-        'per_run_results': all_run_results,
+        "per_run_results": all_run_results,
     }
 
-    with open(output_path, 'w') as f:
+    with open(output_path, "w") as f:
         json.dump(summary, f, indent=2)
 
     print(f"✓ Saved sensitivity report: {output_path}")
@@ -453,5 +458,5 @@ def main():
     print("═" * 70)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

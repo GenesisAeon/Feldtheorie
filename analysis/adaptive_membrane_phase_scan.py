@@ -68,7 +68,9 @@ class Scenario:
 class AuroralRamp(Scenario):
     """Smooth logistic swell with gentle harmonic shimmer."""
 
-    def driver(self, rng: np.random.Generator) -> np.ndarray:  # pragma: no cover - deterministic math
+    def driver(
+        self, rng: np.random.Generator
+    ) -> np.ndarray:  # pragma: no cover - deterministic math
         time = np.linspace(-4.0, 4.0, self.steps)
         logistic = 0.26 + 0.82 / (1.0 + np.exp(-1.7 * time))
         harmonic = 0.035 * np.sin(2.0 * math.pi * np.linspace(0.0, 1.0, self.steps))
@@ -80,7 +82,9 @@ class AuroralRamp(Scenario):
 class PulsedGate(Scenario):
     """Threshold rehearsal driven by resonant pulses."""
 
-    def driver(self, rng: np.random.Generator) -> np.ndarray:  # pragma: no cover - deterministic math
+    def driver(
+        self, rng: np.random.Generator
+    ) -> np.ndarray:  # pragma: no cover - deterministic math
         time = np.linspace(0.0, 3.0 * math.pi, self.steps)
         base = 0.28 + 0.12 * np.cos(time * 0.7)
         pulses = 0.42 * np.maximum(0.0, np.sin(time))
@@ -92,7 +96,9 @@ class PulsedGate(Scenario):
 class MemoryRelaxation(Scenario):
     """Rise above the threshold before guided relaxation."""
 
-    def driver(self, rng: np.random.Generator) -> np.ndarray:  # pragma: no cover - deterministic math
+    def driver(
+        self, rng: np.random.Generator
+    ) -> np.ndarray:  # pragma: no cover - deterministic math
         ascent_time = np.linspace(-3.5, 1.5, self.steps)
         ascent = 0.24 + 0.78 / (1.0 + np.exp(-2.1 * ascent_time))
         relax = np.linspace(0.0, 0.32, self.steps)
@@ -198,9 +204,13 @@ def _summarise_history(
     logistic_area = float(np.trapezoid(sigma, R)) if R.size >= 2 else float(np.sum(sigma))
     response_area = float(np.trapezoid(response, R)) if R.size >= 2 else float(np.sum(response))
     baseline_response = baseline_sigma * baseline_zeta
-    baseline_area = float(np.trapezoid(baseline_sigma, R)) if R.size >= 2 else float(np.sum(baseline_sigma))
+    baseline_area = (
+        float(np.trapezoid(baseline_sigma, R)) if R.size >= 2 else float(np.sum(baseline_sigma))
+    )
     baseline_response_area = (
-        float(np.trapezoid(baseline_response, R)) if R.size >= 2 else float(np.sum(baseline_response))
+        float(np.trapezoid(baseline_response, R))
+        if R.size >= 2
+        else float(np.sum(baseline_response))
     )
     baseline_resonance_gain = (
         baseline_response_area / baseline_area if abs(baseline_area) > 1e-9 else float("nan")
@@ -217,7 +227,8 @@ def _summarise_history(
             "sigma_mean": float(np.mean(sigma)) if sigma.size else 0.0,
             "response_mean": float(np.mean(response)) if response.size else 0.0,
             "baseline_resonance_gain": baseline_resonance_gain,
-            "resonance_gain_delta": summary.get("resonance_gain", float("nan")) - baseline_resonance_gain,
+            "resonance_gain_delta": summary.get("resonance_gain", float("nan"))
+            - baseline_resonance_gain,
             "sigma_fraction_above_half": float(np.mean(sigma >= 0.5)) if sigma.size else 0.0,
         }
     )
@@ -273,7 +284,9 @@ def run_scan(*, seed: int = 23, max_points: int = 96) -> dict[str, object]:
         )
         history = membrane.propagate(r_trace, dt=scenario.dt)
 
-        baseline_sigma = _logistic(np.asarray(history["R"], dtype=float), scenario.theta, scenario.beta)
+        baseline_sigma = _logistic(
+            np.asarray(history["R"], dtype=float), scenario.theta, scenario.beta
+        )
         baseline_zeta = impedance(np.asarray(history["R"], dtype=float))
 
         payload = _summarise_history(
@@ -307,7 +320,9 @@ def run_scan(*, seed: int = 23, max_points: int = 96) -> dict[str, object]:
         "resonance_gain_max": float(np.max(gain_values)) if gain_values else float("nan"),
         "resonance_gain_delta_mean": float(np.mean(delta_values)) if delta_values else float("nan"),
         "gate_mean": float(np.mean(gate_means)) if gate_means else float("nan"),
-        "sigma_fraction_above_half_mean": float(np.mean(sigma_halves)) if sigma_halves else float("nan"),
+        "sigma_fraction_above_half_mean": (
+            float(np.mean(sigma_halves)) if sigma_halves else float("nan")
+        ),
         "theta_shift_mean": float(np.mean(theta_shifts)) if theta_shifts else float("nan"),
         "beta_shift_mean": float(np.mean(beta_shifts)) if beta_shifts else float("nan"),
     }

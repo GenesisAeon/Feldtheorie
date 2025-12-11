@@ -12,35 +12,26 @@ Author: Genesis Aeon (UTAC Framework)
 Version: 5.0 "Multi-Agent Ready"
 """
 
+import json
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
-import json
 
 # Add models directory to path
-sys.path.insert(0, str(Path(__file__).parent.parent / 'models'))
+sys.path.insert(0, str(Path(__file__).parent.parent / "models"))
 
 from cosmic_alpha_phi import (
-    CosmicQuantization,
-    quick_prediction,
+    BOEHME_UNCERTAINTY_KM_S,
     BOEHME_VELOCITY_KM_S,
-    BOEHME_UNCERTAINTY_KM_S
+    CosmicQuantization,
 )
-from social_rigidity_ising import (
-    SocialIsingModel,
-    quick_rigidity,
-    is_society_frozen
-)
-
+from social_rigidity_ising import SocialIsingModel
 
 # ============================================================================
 # COSMIC VELOCITY INTERFACE
 # ============================================================================
 
-def cosmic_velocity_predict(
-    alpha: Optional[float] = None,
-    phi: Optional[float] = None
-) -> Dict:
+
+def cosmic_velocity_predict(alpha: float | None = None, phi: float | None = None) -> dict:
     """
     AI Agent Interface: Predict cosmic velocity from fundamental constants.
 
@@ -61,34 +52,30 @@ def cosmic_velocity_predict(
     else:
         model = CosmicQuantization(
             alpha=alpha if alpha is not None else model.alpha,
-            phi=phi if phi is not None else model.phi
+            phi=phi if phi is not None else model.phi,
         )
 
     prediction = model.predict_velocity()
     comparison = model.compare_boehme()
 
     return {
-        'prediction_km_s': prediction,
-        'measured_km_s': BOEHME_VELOCITY_KM_S,
-        'uncertainty_km_s': BOEHME_UNCERTAINTY_KM_S,
-        'deviation_km_s': comparison.deviation,
-        'relative_error': comparison.relative_error,
-        'p_value': comparison.p_value,
-        'z_score': comparison.z_score,
-        'constants': {
-            'alpha': model.alpha,
-            'phi': model.phi,
-            'alpha_inverse': 1.0 / model.alpha
-        }
+        "prediction_km_s": prediction,
+        "measured_km_s": BOEHME_VELOCITY_KM_S,
+        "uncertainty_km_s": BOEHME_UNCERTAINTY_KM_S,
+        "deviation_km_s": comparison.deviation,
+        "relative_error": comparison.relative_error,
+        "p_value": comparison.p_value,
+        "z_score": comparison.z_score,
+        "constants": {"alpha": model.alpha, "phi": model.phi, "alpha_inverse": 1.0 / model.alpha},
     }
 
 
 def cosmic_null_hypothesis_test(
     n_trials: int = 10000,
-    alpha_range: Optional[Tuple[float, float]] = None,
-    phi_range: Optional[Tuple[float, float]] = None,
-    seed: int = 42
-) -> Dict:
+    alpha_range: tuple[float, float] | None = None,
+    phi_range: tuple[float, float] | None = None,
+    seed: int = 42,
+) -> dict:
     """
     AI Agent Interface: Test null hypothesis with random constants.
 
@@ -114,24 +101,18 @@ def cosmic_null_hypothesis_test(
         phi_range = (1.3, 2.0)
 
     null_test = model.null_hypothesis_test(
-        n_random_trials=n_trials,
-        alpha_range=alpha_range,
-        phi_range=phi_range,
-        seed=seed
+        n_random_trials=n_trials, alpha_range=alpha_range, phi_range=phi_range, seed=seed
     )
 
     return {
-        'n_trials': n_trials,
-        'p_value_null': null_test['p_value_null'],
-        'our_deviation_km_s': null_test['our_deviation_km_s'],
-        'mean_random_deviation_km_s': null_test['mean_random_deviation_km_s'],
-        'std_random_deviation_km_s': null_test['std_random_deviation_km_s'],
-        'improvement_factor': null_test['improvement_factor'],
-        'n_random_better': null_test['n_random_better'],
-        'ranges': {
-            'alpha': list(alpha_range),
-            'phi': list(phi_range)
-        }
+        "n_trials": n_trials,
+        "p_value_null": null_test["p_value_null"],
+        "our_deviation_km_s": null_test["our_deviation_km_s"],
+        "mean_random_deviation_km_s": null_test["mean_random_deviation_km_s"],
+        "std_random_deviation_km_s": null_test["std_random_deviation_km_s"],
+        "improvement_factor": null_test["improvement_factor"],
+        "n_random_better": null_test["n_random_better"],
+        "ranges": {"alpha": list(alpha_range), "phi": list(phi_range)},
     }
 
 
@@ -139,10 +120,8 @@ def cosmic_null_hypothesis_test(
 # SOCIAL RIGIDITY INTERFACE
 # ============================================================================
 
-def social_rigidity_predict(
-    gini: float,
-    load: float = 1.0
-) -> Dict:
+
+def social_rigidity_predict(gini: float, load: float = 1.0) -> dict:
     """
     AI Agent Interface: Predict social rigidity from inequality.
 
@@ -162,24 +141,21 @@ def social_rigidity_predict(
     state = model.compute_state(gini, load)
 
     return {
-        'gini': gini,
-        'load': load,
-        'temperature': state.temperature,
-        'rigidity_beta': state.rigidity,
-        'magnetization': state.magnetization,
-        'susceptibility': state.susceptibility,
-        'adaptability': state.adaptability,
-        'is_frozen': state.is_frozen,
-        'phase': 'FROZEN (ferromagnetic)' if state.is_frozen else 'FLUID (paramagnetic)'
+        "gini": gini,
+        "load": load,
+        "temperature": state.temperature,
+        "rigidity_beta": state.rigidity,
+        "magnetization": state.magnetization,
+        "susceptibility": state.susceptibility,
+        "adaptability": state.adaptability,
+        "is_frozen": state.is_frozen,
+        "phase": "FROZEN (ferromagnetic)" if state.is_frozen else "FLUID (paramagnetic)",
     }
 
 
 def social_phase_transition_scan(
-    gini_min: float = 0.2,
-    gini_max: float = 0.95,
-    n_points: int = 100,
-    load: float = 1.0
-) -> Dict:
+    gini_min: float = 0.2, gini_max: float = 0.95, n_points: int = 100, load: float = 1.0
+) -> dict:
     """
     AI Agent Interface: Scan for phase transitions across Gini range.
 
@@ -198,21 +174,18 @@ def social_phase_transition_scan(
         0.95
     """
     model = SocialIsingModel(load_baseline=load)
-    transition = model.phase_transition_scan(
-        gini_range=(gini_min, gini_max),
-        n_points=n_points
-    )
+    transition = model.phase_transition_scan(gini_range=(gini_min, gini_max), n_points=n_points)
 
     return {
-        'critical_gini': transition.critical_gini,
-        'transition_width': transition.transition_sharpness,
-        'gini_range': [gini_min, gini_max],
-        'n_points': n_points,
-        'load': load,
-        'gini_values': transition.gini_values.tolist(),
-        'temperatures': transition.temperatures.tolist(),
-        'magnetizations': transition.magnetizations.tolist(),
-        'susceptibilities': transition.susceptibilities.tolist()
+        "critical_gini": transition.critical_gini,
+        "transition_width": transition.transition_sharpness,
+        "gini_range": [gini_min, gini_max],
+        "n_points": n_points,
+        "load": load,
+        "gini_values": transition.gini_values.tolist(),
+        "temperatures": transition.temperatures.tolist(),
+        "magnetizations": transition.magnetizations.tolist(),
+        "susceptibilities": transition.susceptibilities.tolist(),
     }
 
 
@@ -220,11 +193,10 @@ def social_phase_transition_scan(
 # COMBINED ANALYSIS INTERFACE
 # ============================================================================
 
+
 def v5_full_analysis(
-    cosmic_trials: int = 10000,
-    social_gini: float = 0.73,
-    social_load: float = 1.0
-) -> Dict:
+    cosmic_trials: int = 10000, social_gini: float = 0.73, social_load: float = 1.0
+) -> dict:
     """
     AI Agent Interface: Run complete v5.0 analysis (both models).
 
@@ -250,24 +222,18 @@ def v5_full_analysis(
     social_transition = social_phase_transition_scan(n_points=50, load=social_load)
 
     return {
-        'version': '5.0',
-        'timestamp': '2025-11-23',
-        'cosmic': {
-            'prediction': cosmic_prediction,
-            'null_hypothesis': cosmic_null
+        "version": "5.0",
+        "timestamp": "2025-11-23",
+        "cosmic": {"prediction": cosmic_prediction, "null_hypothesis": cosmic_null},
+        "social": {"state": social_state, "transition": social_transition},
+        "meta": {
+            "hypothesis": "structural_isomorphism",
+            "status": "empirical_testing",
+            "limitations": [
+                "Cosmic: n=1 system, post-hoc selection, no mechanism",
+                "Social: theoretical model, empirical validation pending",
+            ],
         },
-        'social': {
-            'state': social_state,
-            'transition': social_transition
-        },
-        'meta': {
-            'hypothesis': 'structural_isomorphism',
-            'status': 'empirical_testing',
-            'limitations': [
-                'Cosmic: n=1 system, post-hoc selection, no mechanism',
-                'Social: theoretical model, empirical validation pending'
-            ]
-        }
     }
 
 
@@ -275,9 +241,8 @@ def v5_full_analysis(
 # BATCH PROCESSING INTERFACE (for MOR agents)
 # ============================================================================
 
-def batch_cosmic_predictions(
-    parameter_sets: List[Dict]
-) -> List[Dict]:
+
+def batch_cosmic_predictions(parameter_sets: list[dict]) -> list[dict]:
     """
     AI Agent Interface: Batch process multiple cosmic predictions.
 
@@ -296,19 +261,13 @@ def batch_cosmic_predictions(
     """
     results = []
     for params in parameter_sets:
-        result = cosmic_velocity_predict(
-            alpha=params.get('alpha'),
-            phi=params.get('phi')
-        )
-        result['input_params'] = params
+        result = cosmic_velocity_predict(alpha=params.get("alpha"), phi=params.get("phi"))
+        result["input_params"] = params
         results.append(result)
     return results
 
 
-def batch_social_predictions(
-    gini_values: List[float],
-    load: float = 1.0
-) -> List[Dict]:
+def batch_social_predictions(gini_values: list[float], load: float = 1.0) -> list[dict]:
     """
     AI Agent Interface: Batch process multiple social predictions.
 
@@ -334,10 +293,8 @@ def batch_social_predictions(
 # JSON I/O UTILITIES
 # ============================================================================
 
-def save_analysis_json(
-    analysis: Dict,
-    filepath: str
-) -> None:
+
+def save_analysis_json(analysis: dict, filepath: str) -> None:
     """
     Save analysis results to JSON file.
 
@@ -353,6 +310,7 @@ def save_analysis_json(
 
     class NumpyEncoder(json.JSONEncoder):
         """Handle NumPy types for JSON serialization."""
+
         def default(self, obj):
             if isinstance(obj, (np.integer, np.int64)):
                 return int(obj)
@@ -362,12 +320,12 @@ def save_analysis_json(
                 return obj.tolist()
             return super().default(obj)
 
-    with open(filepath, 'w') as f:
+    with open(filepath, "w") as f:
         json.dump(analysis, f, indent=2, cls=NumpyEncoder)
     print(f"✓ Analysis saved: {filepath}")
 
 
-def load_analysis_json(filepath: str) -> Dict:
+def load_analysis_json(filepath: str) -> dict:
     """
     Load analysis results from JSON file.
 
@@ -380,7 +338,7 @@ def load_analysis_json(filepath: str) -> Dict:
     Example:
         >>> result = load_analysis_json('v5_analysis.json')
     """
-    with open(filepath, 'r') as f:
+    with open(filepath) as f:
         return json.load(f)
 
 
@@ -414,7 +372,7 @@ if __name__ == "__main__":
     print()
 
     # Demo 4: Save to JSON
-    output_path = Path(__file__).parent.parent / 'data' / 'derived' / 'v5_demo_analysis.json'
+    output_path = Path(__file__).parent.parent / "data" / "derived" / "v5_demo_analysis.json"
     save_analysis_json(full, str(output_path))
 
     print("=" * 70)

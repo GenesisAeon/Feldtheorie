@@ -210,7 +210,9 @@ except Exception:  # pragma: no cover - executed only in minimal environments wi
                     "hysteresis_bias": hysteresis_bias,
                     "relief_peak": max(relief) if relief else 0.0,
                     "recovery_peak": max(recovery) if recovery else 0.0,
-                    "hysteresis_peak": max(abs(value) for value in hysteresis) if hysteresis else 0.0,
+                    "hysteresis_peak": (
+                        max(abs(value) for value in hysteresis) if hysteresis else 0.0
+                    ),
                     "final_impedance": zeta[-1] if zeta else self.baseline,
                     "baseline_impedance": self.baseline,
                 }
@@ -372,11 +374,24 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Generate resonant impedance diagnostics and logistic falsification summaries.",
     )
-    parser.add_argument("--samples", type=int, default=512, help="Number of control samples across the sweep (default: 512).")
-    parser.add_argument("--r-min", type=float, default=0.0, help="Minimum control-parameter value (default: 0.0).")
-    parser.add_argument("--r-max", type=float, default=1.5, help="Maximum control-parameter value (default: 1.5).")
-    parser.add_argument("--theta", type=float, default=0.62, help="Impedance gate threshold Θ (default: 0.62).")
-    parser.add_argument("--beta", type=float, default=9.5, help="Impedance gate steepness β (default: 9.5).")
+    parser.add_argument(
+        "--samples",
+        type=int,
+        default=512,
+        help="Number of control samples across the sweep (default: 512).",
+    )
+    parser.add_argument(
+        "--r-min", type=float, default=0.0, help="Minimum control-parameter value (default: 0.0)."
+    )
+    parser.add_argument(
+        "--r-max", type=float, default=1.5, help="Maximum control-parameter value (default: 1.5)."
+    )
+    parser.add_argument(
+        "--theta", type=float, default=0.62, help="Impedance gate threshold Θ (default: 0.62)."
+    )
+    parser.add_argument(
+        "--beta", type=float, default=9.5, help="Impedance gate steepness β (default: 9.5)."
+    )
     parser.add_argument(
         "--relief-gain",
         type=float,
@@ -395,9 +410,21 @@ def parse_args() -> argparse.Namespace:
         default=0.28,
         help="Hysteresis braid weighting gate changes for smooth opening/closing (default: 0.28).",
     )
-    parser.add_argument("--baseline", type=float, default=0.84, help="Baseline impedance when the membrane rests (default: 0.84).")
-    parser.add_argument("--floor", type=float, default=0.18, help="Impedance floor reached at full relief (default: 0.18).")
-    parser.add_argument("--ceiling", type=float, default=1.06, help="Maximum impedance ceiling (default: 1.06).")
+    parser.add_argument(
+        "--baseline",
+        type=float,
+        default=0.84,
+        help="Baseline impedance when the membrane rests (default: 0.84).",
+    )
+    parser.add_argument(
+        "--floor",
+        type=float,
+        default=0.18,
+        help="Impedance floor reached at full relief (default: 0.18).",
+    )
+    parser.add_argument(
+        "--ceiling", type=float, default=1.06, help="Maximum impedance ceiling (default: 1.06)."
+    )
     parser.add_argument(
         "--harmonic-gain",
         type=float,
@@ -416,7 +443,12 @@ def parse_args() -> argparse.Namespace:
         default=0.015,
         help="Standard deviation of Gaussian noise added to the control sweep (default: 0.015).",
     )
-    parser.add_argument("--seed", type=int, default=42, help="Random seed for the harmonic noise generator (default: 42).")
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Random seed for the harmonic noise generator (default: 42).",
+    )
     parser.add_argument(
         "--output",
         type=Path,
@@ -463,4 +495,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

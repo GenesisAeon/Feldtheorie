@@ -26,18 +26,14 @@ Date: 2025-11-14
 Version: 0.1.0
 """
 
+import os
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Dict, List, Optional, Any, Tuple
-import json
-import os
+from typing import Any
 
 import numpy as np
 import pandas as pd
-from scipy import stats, signal
-import requests
-
-from base_adapter import BaseAdapter, UTACState
+from base_adapter import BaseAdapter
 
 
 class GRACEAdapter(BaseAdapter):
@@ -59,12 +55,7 @@ class GRACEAdapter(BaseAdapter):
     # Current baseline (relative to 2002-01-01)
     BASELINE_YEAR = 2002
 
-    def __init__(
-        self,
-        api_token: Optional[str] = None,
-        cache_dir: Optional[Path] = None,
-        **kwargs
-    ):
+    def __init__(self, api_token: str | None = None, cache_dir: Path | None = None, **kwargs):
         """
         Initialize GRACE adapter.
 
@@ -73,18 +64,20 @@ class GRACEAdapter(BaseAdapter):
             cache_dir: Cache directory
             **kwargs: Additional BaseAdapter arguments
         """
-        super().__init__(system_id='wais', cache_dir=cache_dir, **kwargs)
+        super().__init__(system_id="wais", cache_dir=cache_dir, **kwargs)
 
-        self.api_token = api_token or os.getenv('NASA_EARTHDATA_TOKEN')
+        self.api_token = api_token or os.getenv("NASA_EARTHDATA_TOKEN")
         if not self.api_token:
-            self.logger.warning("No NASA Earthdata token provided. Set NASA_EARTHDATA_TOKEN or pass api_token.")
+            self.logger.warning(
+                "No NASA Earthdata token provided. Set NASA_EARTHDATA_TOKEN or pass api_token."
+            )
 
         # GRACE Tellus API endpoints
         self.api_base = "https://grace.jpl.nasa.gov/api/v1"
 
         self.logger.info("Initialized GRACEAdapter for WAIS")
 
-    def fetch_raw_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+    def fetch_raw_data(self, start_date: datetime, end_date: datetime) -> dict[str, Any]:
         """
         Fetch GRACE mass grids from JPL Tellus.
 
@@ -110,7 +103,7 @@ class GRACEAdapter(BaseAdapter):
             self.logger.info("Using synthetic GRACE data (based on real trends)")
             return self._generate_synthetic_data(start_date, end_date)
 
-    def _generate_synthetic_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+    def _generate_synthetic_data(self, start_date: datetime, end_date: datetime) -> dict[str, Any]:
         """
         Generate synthetic GRACE data based on real WAIS trends.
 
@@ -127,19 +120,20 @@ class GRACEAdapter(BaseAdapter):
             Synthetic data dictionary
         """
         # Generate monthly timestamps
-        timestamps = pd.date_range(start=start_date, end=end_date, freq='MS')
+        timestamps = pd.date_range(start=start_date, end=end_date, freq="MS")
 
         # Base trend: -219 Gt/yr with 0.047 Gt/yr² acceleration
         # (from wais_trilayer.md)
-        years_since_baseline = (timestamps - pd.Timestamp(f'{self.BASELINE_YEAR}-01-01')).days / 365.25
+        years_since_baseline = (
+            timestamps - pd.Timestamp(f"{self.BASELINE_YEAR}-01-01")
+        ).days / 365.25
 
         # Cumulative loss model
         base_rate = -219  # Gt/yr
         acceleration = -0.047  # Gt/yr²
 
         cumulative_loss = (
-            base_rate * years_since_baseline +
-            0.5 * acceleration * years_since_baseline**2
+            base_rate * years_since_baseline + 0.5 * acceleration * years_since_baseline**2
         )
 
         # Add realistic noise (seasonal + interannual variability)
@@ -152,18 +146,18 @@ class GRACEAdapter(BaseAdapter):
         uncertainty = 25 * np.ones(len(timestamps))
 
         return {
-            'timestamps': timestamps.tolist(),
-            'mass_change_gt': mass_change.tolist(),
-            'uncertainty_gt': uncertainty.tolist(),
-            'metadata': {
-                'source': 'synthetic',
-                'base_rate_gt_per_yr': base_rate,
-                'acceleration_gt_per_yr2': acceleration,
-                'baseline_year': self.BASELINE_YEAR
-            }
+            "timestamps": timestamps.tolist(),
+            "mass_change_gt": mass_change.tolist(),
+            "uncertainty_gt": uncertainty.tolist(),
+            "metadata": {
+                "source": "synthetic",
+                "base_rate_gt_per_yr": base_rate,
+                "acceleration_gt_per_yr2": acceleration,
+                "baseline_year": self.BASELINE_YEAR,
+            },
         }
 
-    def transform_to_timeseries(self, raw_data: Dict[str, Any]) -> pd.DataFrame:
+    def transform_to_timeseries(self, raw_data: dict[str, Any]) -> pd.DataFrame:
         """
         Transform raw GRACE data to standardized time series.
 
@@ -173,19 +167,21 @@ class GRACEAdapter(BaseAdapter):
         Returns:
             DataFrame with columns: ['timestamp', 'value', 'uncertainty', 'metadata']
         """
-        df = pd.DataFrame({
-            'timestamp': pd.to_datetime(raw_data['timestamps']),
-            'value': raw_data['mass_change_gt'],
-            'uncertainty': raw_data['uncertainty_gt']
-        })
+        df = pd.DataFrame(
+            {
+                "timestamp": pd.to_datetime(raw_data["timestamps"]),
+                "value": raw_data["mass_change_gt"],
+                "uncertainty": raw_data["uncertainty_gt"],
+            }
+        )
 
-        df = df.set_index('timestamp').sort_index()
+        df = df.set_index("timestamp").sort_index()
 
         self.logger.info(f"Transformed {len(df)} GRACE observations")
 
         return df.reset_index()
 
-    def estimate_beta(self, timeseries: pd.DataFrame) -> Tuple[float, float]:
+    def estimate_beta(self, timeseries: pd.DataFrame) -> tuple[float, float]:
         """
         Estimate β from GRACE time series.
 
@@ -200,7 +196,7 @@ class GRACEAdapter(BaseAdapter):
         Returns:
             (beta_mean, beta_std)
         """
-        ts = timeseries.set_index('timestamp')['value']
+        ts = timeseries.set_index("timestamp")["value"]
 
         # Method 1: Ice Loss Acceleration
         # β from acceleration rate: β ≈ |d²M/dt²| / |dM/dt| × scaling_factor
@@ -218,7 +214,9 @@ class GRACEAdapter(BaseAdapter):
 
         # Convert to β estimate (empirical scaling)
         # From wais_trilayer.md: -0.047 Gt/yr² → β ≈ 13.2
-        beta_acceleration = abs(acceleration) / abs(current_velocity) * 1000 if current_velocity != 0 else 13.2
+        beta_acceleration = (
+            abs(acceleration) / abs(current_velocity) * 1000 if current_velocity != 0 else 13.2
+        )
         beta_acceleration = np.clip(beta_acceleration, 5, 20)  # Reasonable bounds
 
         self.logger.debug(f"β (acceleration): {beta_acceleration:.2f}")
@@ -292,7 +290,7 @@ class GRACEAdapter(BaseAdapter):
 
         return R
 
-    def get_additional_metrics(self, timeseries: pd.DataFrame) -> Dict[str, Any]:
+    def get_additional_metrics(self, timeseries: pd.DataFrame) -> dict[str, Any]:
         """
         Calculate additional WAIS-specific metrics.
 
@@ -303,10 +301,10 @@ class GRACEAdapter(BaseAdapter):
             - years_to_threshold: Estimated years to MISI threshold
             - grounding_line_retreat_rate: Estimated retreat rate (km/yr)
         """
-        ts = timeseries.set_index('timestamp')['value']
+        ts = timeseries.set_index("timestamp")["value"]
 
         # Calculate current rate (linear fit over last 5 years)
-        recent = ts.last('5Y')
+        recent = ts.last("5Y")
         x = np.arange(len(recent))
         slope, _ = np.polyfit(x, recent.values, 1)
         current_rate = slope * 12  # Convert months to years
@@ -326,10 +324,10 @@ class GRACEAdapter(BaseAdapter):
             a = 0.5 * acceleration
             b = current_rate
             c = -remaining_loss
-            discriminant = b**2 - 4*a*c
+            discriminant = b**2 - 4 * a * c
             if discriminant >= 0:
-                t1 = (-b + np.sqrt(discriminant)) / (2*a)
-                t2 = (-b - np.sqrt(discriminant)) / (2*a)
+                t1 = (-b + np.sqrt(discriminant)) / (2 * a)
+                t2 = (-b - np.sqrt(discriminant)) / (2 * a)
                 years_to_threshold = max(t1, t2) if max(t1, t2) > 0 else np.inf
             else:
                 years_to_threshold = np.inf
@@ -341,17 +339,18 @@ class GRACEAdapter(BaseAdapter):
         grounding_line_retreat_rate = abs(current_rate) * 0.8 / 100
 
         return {
-            'current_rate_gt_per_yr': current_rate,
-            'acceleration_gt_per_yr2': acceleration,
-            'years_to_threshold': years_to_threshold,
-            'grounding_line_retreat_rate_km_per_yr': grounding_line_retreat_rate,
-            'threshold_gt': self.THETA_CUMULATIVE_LOSS_GT
+            "current_rate_gt_per_yr": current_rate,
+            "acceleration_gt_per_yr2": acceleration,
+            "years_to_threshold": years_to_threshold,
+            "grounding_line_retreat_rate_km_per_yr": grounding_line_retreat_rate,
+            "threshold_gt": self.THETA_CUMULATIVE_LOSS_GT,
         }
 
 
 if __name__ == "__main__":
     """Test GRACE adapter with synthetic data."""
     import logging
+
     logging.basicConfig(level=logging.INFO)
 
     adapter = GRACEAdapter()
@@ -359,9 +358,9 @@ if __name__ == "__main__":
     # Get current state
     state = adapter.get_current_state()
 
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("WAIS (West Antarctic Ice Sheet) - GRACE/GRACE-FO")
-    print("="*60)
+    print("=" * 60)
     print(f"System ID: {state.system_id}")
     print(f"Timestamp: {state.timestamp}")
     print(f"R (normalized state): {state.R:.4f}")
@@ -369,15 +368,15 @@ if __name__ == "__main__":
     print(f"β (steepness): {state.beta:.2f}")
     print(f"σ (sigmoid): {state.sigma:.4f}")
     print(f"Status: {state.status}")
-    print(f"\nMetadata:")
+    print("\nMetadata:")
     print(f"  β uncertainty: ±{state.metadata['beta_std']:.2f}")
     print(f"  Raw cumulative loss: {state.metadata['raw_value']:.1f} Gt")
     print(f"  Observations: {state.metadata['n_observations']}")
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
 
     # Additional metrics
     end_date = datetime.now()
-    start_date = end_date - timedelta(days=365*3)
+    start_date = end_date - timedelta(days=365 * 3)
     raw_data = adapter.fetch_raw_data(start_date, end_date)
     ts = adapter.transform_to_timeseries(raw_data)
     metrics = adapter.get_additional_metrics(ts)

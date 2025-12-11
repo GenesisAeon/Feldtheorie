@@ -196,7 +196,9 @@ class AdaptiveLogisticMembrane:
         else:
             logistic_area = float(np.sum(sigma))
             response_area = float(np.sum(response))
-        resonance_gain = response_area / logistic_area if abs(logistic_area) > 1e-9 else float("nan")
+        resonance_gain = (
+            response_area / logistic_area if abs(logistic_area) > 1e-9 else float("nan")
+        )
 
         half_max = 0.5
         above_half = np.where(sigma >= half_max)[0]

@@ -25,6 +25,7 @@ python analysis/beta_meta_regression_v2_field_types.py \
     --covariates-csv data/derived/domain_covariates.csv \
     --output-dir analysis/results
 """
+
 from __future__ import annotations
 
 import argparse
@@ -86,9 +87,7 @@ def load_and_prepare(beta_path: Path, covar_path: Path) -> pd.DataFrame:
 
     # Ensure field_type column exists
     if "field_type" not in df.columns:
-        raise ValueError(
-            "field_type column missing! Run with updated domain_covariates.csv"
-        )
+        raise ValueError("field_type column missing! Run with updated domain_covariates.csv")
 
     # Create Field Type dummies (one-hot encoding)
     field_type_dummies = pd.get_dummies(df["field_type"], prefix="FT", drop_first=False)
@@ -97,8 +96,8 @@ def load_and_prepare(beta_path: Path, covar_path: Path) -> pd.DataFrame:
     # Derived features
     df["domain_family"] = df["domain"].str.split("_").str[0]
     df["beta_band_distance"] = df["beta"] - CANONICAL_BETA
-    df["within_canonical_band"] = (
-        (df["beta"] >= CANONICAL_BAND[0]) & (df["beta"] <= CANONICAL_BAND[1])
+    df["within_canonical_band"] = (df["beta"] >= CANONICAL_BAND[0]) & (
+        df["beta"] <= CANONICAL_BAND[1]
     )
     df["delta_aic_guard"] = df.get("delta_aic", np.nan)
     df["log_theta"] = np.log1p(df["theta"].clip(lower=1e-9))
@@ -123,7 +122,8 @@ def field_type_anova(df: pd.DataFrame) -> tuple[float, float]:
     # Effect size (eta-squared)
     grand_mean = df["beta"].mean()
     ss_between = sum(
-        len(df[df["field_type"] == ft]) * (df[df["field_type"] == ft]["beta"].mean() - grand_mean) ** 2
+        len(df[df["field_type"] == ft])
+        * (df[df["field_type"] == ft]["beta"].mean() - grand_mean) ** 2
         for ft in field_types
     )
     ss_total = sum((df["beta"] - grand_mean) ** 2)
@@ -154,9 +154,7 @@ def select_top_features(
     )
     rf.fit(X, y, sample_weight=weights)
 
-    importances = pd.Series(rf.feature_importances_, index=X.columns).sort_values(
-        ascending=False
-    )
+    importances = pd.Series(rf.feature_importances_, index=X.columns).sort_values(ascending=False)
 
     return importances.head(top_k).index.tolist()
 
@@ -191,7 +189,7 @@ def build_design_matrix(
     weights = pd.Series(np.ones(len(df)), index=df.index, dtype=float)
     if "beta_ci_width" in df.columns:
         safe_width = df["beta_ci_width"].replace({0.0: np.nan})
-        inv_var = 1.0 / (safe_width ** 2)
+        inv_var = 1.0 / (safe_width**2)
         inv_var.replace([np.inf, -np.inf], np.nan, inplace=True)
         if inv_var.notna().any():
             weights = inv_var.fillna(inv_var.median())
@@ -318,7 +316,16 @@ def run_pipeline(
     print(f"✅ Field Type ANOVA: η²={eta_squared:.3f}, p={anova_p:.4f}")
 
     # Feature selection on continuous features only
-    continuous_features = ["C_eff", "D_eff", "SNR", "Memory", "Theta_dot", "log_theta", "coupling_sq", "coupling_memory"]
+    continuous_features = [
+        "C_eff",
+        "D_eff",
+        "SNR",
+        "Memory",
+        "Theta_dot",
+        "log_theta",
+        "coupling_sq",
+        "coupling_memory",
+    ]
     X_continuous = df[continuous_features].apply(pd.to_numeric, errors="coerce").fillna(0.0)
     y = df["beta"]
     weights = pd.Series(np.ones(len(df)), index=df.index, dtype=float)
@@ -340,7 +347,9 @@ def run_pipeline(
 
     # Random Forest on full feature set (Field Types + continuous)
     X_full = X_design.drop(columns=["const"])
-    rf_oob, rf_importances = random_forest_diagnostics(X_full, y, weights, n_estimators=rf_trees, seed=seed)
+    rf_oob, rf_importances = random_forest_diagnostics(
+        X_full, y, weights, n_estimators=rf_trees, seed=seed
+    )
     if rf_oob:
         print(f"✅ Random Forest OOB R²={rf_oob:.3f}")
 
@@ -375,9 +384,7 @@ def run_pipeline(
 
     # Write outputs
     summary_path = output_dir / "beta_meta_regression_v2_latest.json"
-    summary_path.write_text(
-        json.dumps(summary.to_dict(), indent=2) + "\n", encoding="utf-8"
-    )
+    summary_path.write_text(json.dumps(summary.to_dict(), indent=2) + "\n", encoding="utf-8")
 
     coeff_path = output_dir / f"beta_meta_regression_v2_coefficients_{timestamp}.csv"
     coeff_path.write_text(coefficient_table.to_csv(index=False), encoding="utf-8")
@@ -391,9 +398,7 @@ def run_pipeline(
         "feature_importances": rf_importances,
         "selected_features": selected_features,
     }
-    diagnostics_path.write_text(
-        json.dumps(diagnostics_payload, indent=2) + "\n", encoding="utf-8"
-    )
+    diagnostics_path.write_text(json.dumps(diagnostics_payload, indent=2) + "\n", encoding="utf-8")
 
     print("\n✅ Meta-regression v2 (Field Types) completed!")
     print(f"   Model: Field Types + Top-{top_features} continuous features")
@@ -406,12 +411,8 @@ def run_pipeline(
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="UTAC meta-regression v2 with Field Types"
-    )
-    parser.add_argument(
-        "--beta-csv", type=Path, default=Path("data/derived/beta_estimates.csv")
-    )
+    parser = argparse.ArgumentParser(description="UTAC meta-regression v2 with Field Types")
+    parser.add_argument("--beta-csv", type=Path, default=Path("data/derived/beta_estimates.csv"))
     parser.add_argument(
         "--covariates-csv", type=Path, default=Path("data/derived/domain_covariates.csv")
     )

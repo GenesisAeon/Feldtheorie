@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """verify_release.py - Verify all components are ready for v1.0.1 release"""
 
-import os
 import json
+import os
 import sys
 from pathlib import Path
 
 # DOI that should be present everywhere
 EXPECTED_DOI = "10.5281/zenodo.17472834"
+
 
 def check_file_exists(path: str, description: str) -> bool:
     """Check if a file exists"""
@@ -15,6 +16,7 @@ def check_file_exists(path: str, description: str) -> bool:
     icon = "✅" if exists else "❌"
     print(f"{icon} {description}: {path}")
     return exists
+
 
 def check_doi_in_file(path: str, description: str) -> bool:
     """Check if DOI appears in file"""
@@ -32,6 +34,7 @@ def check_doi_in_file(path: str, description: str) -> bool:
         print(f"❌ {description}: Error reading {path} - {e}")
         return False
 
+
 def check_git_tag() -> bool:
     """Check if git tag v1.0.1 exists"""
     try:
@@ -43,6 +46,7 @@ def check_git_tag() -> bool:
     except Exception as e:
         print(f"❌ Git tag check failed: {e}")
         return False
+
 
 def check_beta_convergence() -> tuple[bool, str]:
     """Verify β values are within expected range"""
@@ -89,6 +93,7 @@ def check_beta_convergence() -> tuple[bool, str]:
     except Exception as e:
         return False, f"Error: {e}"
 
+
 def main():
     print("=" * 70)
     print("🎯 UTAC v1.0.1 Release Verification")
@@ -101,54 +106,36 @@ def main():
     print("📄 Phase 1: Manuscript")
     print("-" * 70)
     checks["manuscript_tex"] = check_file_exists(
-        "paper/manuscript_v1.0.tex",
-        "Manuscript .tex exists"
+        "paper/manuscript_v1.0.tex", "Manuscript .tex exists"
     )
     checks["manuscript_doi"] = check_doi_in_file(
-        "paper/manuscript_v1.0.tex",
-        "DOI in manuscript .tex"
+        "paper/manuscript_v1.0.tex", "DOI in manuscript .tex"
     )
     checks["manuscript_pdf"] = check_file_exists(
-        "paper/manuscript_v1.0.pdf",
-        "Manuscript PDF exists (compile if missing)"
+        "paper/manuscript_v1.0.pdf", "Manuscript PDF exists (compile if missing)"
     )
     print()
 
     # Phase 2: Repository Updates
     print("📦 Phase 3: Repository Updates")
     print("-" * 70)
-    checks["readme_doi"] = check_doi_in_file(
-        "README.md",
-        "DOI in README"
-    )
-    checks["citation_doi"] = check_doi_in_file(
-        "CITATION.cff",
-        "DOI in CITATION.cff"
-    )
-    checks["zenodo_json"] = check_doi_in_file(
-        ".zenodo.json",
-        "DOI in .zenodo.json"
-    )
+    checks["readme_doi"] = check_doi_in_file("README.md", "DOI in README")
+    checks["citation_doi"] = check_doi_in_file("CITATION.cff", "DOI in CITATION.cff")
+    checks["zenodo_json"] = check_doi_in_file(".zenodo.json", "DOI in .zenodo.json")
     print()
 
     # Phase 3: Documentation
     print("📚 Phase 2 & 4: Documentation")
     print("-" * 70)
     checks["zenodo_guide"] = check_file_exists(
-        "ZENODO_UPLOAD_GUIDE.md",
-        "Zenodo upload guide exists"
+        "ZENODO_UPLOAD_GUIDE.md", "Zenodo upload guide exists"
     )
-    checks["compile_guide"] = check_file_exists(
-        "COMPILE_MANUSCRIPT.md",
-        "Compilation guide exists"
-    )
+    checks["compile_guide"] = check_file_exists("COMPILE_MANUSCRIPT.md", "Compilation guide exists")
     checks["arxiv_readme"] = check_file_exists(
-        "arxiv_submission/README_ARXIV.md",
-        "arXiv README exists"
+        "arxiv_submission/README_ARXIV.md", "arXiv README exists"
     )
     checks["release_notes"] = check_file_exists(
-        "GITHUB_RELEASE_NOTES.md",
-        "GitHub release notes exist"
+        "GITHUB_RELEASE_NOTES.md", "GitHub release notes exist"
     )
     print()
 
@@ -156,16 +143,13 @@ def main():
     print("🔬 Phase 1: Core Components")
     print("-" * 70)
     checks["analysis_results"] = check_file_exists(
-        "analysis/results",
-        "Analysis results directory exists"
+        "analysis/results", "Analysis results directory exists"
     )
     checks["wei_integration"] = check_file_exists(
-        "docs/wei_integration.md",
-        "Wei integration docs exist"
+        "docs/wei_integration.md", "Wei integration docs exist"
     )
     checks["llm_extractor"] = check_file_exists(
-        "analysis/llm_beta_extractor.py",
-        "LLM beta extractor exists"
+        "analysis/llm_beta_extractor.py", "LLM beta extractor exists"
     )
     print()
 
@@ -198,8 +182,11 @@ def main():
 
     # Categorize results
     critical_checks = [
-        "manuscript_tex", "manuscript_doi", "readme_doi",
-        "citation_doi", "zenodo_json"
+        "manuscript_tex",
+        "manuscript_doi",
+        "readme_doi",
+        "citation_doi",
+        "zenodo_json",
     ]
 
     critical_passed = sum(1 for k in critical_checks if checks.get(k, False))
@@ -233,6 +220,7 @@ def main():
         print()
         print("Fix the issues above and run this script again.")
         return 1
+
 
 if __name__ == "__main__":
     sys.exit(main())

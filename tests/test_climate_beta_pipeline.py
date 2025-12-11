@@ -22,4 +22,3 @@ def test_process_dataset_simulation(tmp_path):
     assert payload["beta_manifest_target"] == dataset.beta_target
     assert payload["theta_manifest_estimate"] == dataset.theta_estimate
     assert payload["resonance_status"] == dataset.resonance_status
-

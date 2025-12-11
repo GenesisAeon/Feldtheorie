@@ -108,7 +108,9 @@ def craft_driver(shape: DriverShape, steps: int, dt: float) -> list[float]:
         bloom = shape.logistic_height * _logistic_bloom(
             t, shape.logistic_center, shape.logistic_steepness
         )
-        harmonic = shape.harmonic_gain * math.sin(2.0 * math.pi * t / max(shape.harmonic_period, 1e-6))
+        harmonic = shape.harmonic_gain * math.sin(
+            2.0 * math.pi * t / max(shape.harmonic_period, 1e-6)
+        )
         noise = shape.noise_scale * (rng.random() - 0.5)
         drivers.append(shape.base_level + bloom + harmonic + noise)
     return drivers
@@ -176,7 +178,9 @@ def _series_stats(values: Iterable[float]) -> dict[str, float]:
     }
 
 
-def summarise_meta_drift(results: Mapping[str, list[float]], baseline_theta: float, baseline_beta: float) -> dict[str, object]:
+def summarise_meta_drift(
+    results: Mapping[str, list[float]], baseline_theta: float, baseline_beta: float
+) -> dict[str, object]:
     """Capture meta-gate fractions and theta/beta drift metrics."""
 
     theta_series = [float(value) for value in results.get("theta", [])]

@@ -1,5 +1,4 @@
 import pytest
-
 from simulation.genesis_cube import GenesisCube, GenesisCubeConfig
 
 

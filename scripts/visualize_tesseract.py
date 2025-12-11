@@ -12,6 +12,7 @@ Usage:
     python scripts/visualize_tesseract.py --mode dual-view --slice 50
     python scripts/visualize_tesseract.py --mode photon-paths
 """
+
 import argparse
 import sys
 from pathlib import Path
@@ -19,24 +20,23 @@ from pathlib import Path
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.animation import FuncAnimation
-from mpl_toolkits.mplot3d import Axes3D
-
 from simulation.tesseract_timeslices import (
+    PhotonPropagator,
     TesseractConfig,
     TesseractTimeSlices,
-    PhotonPropagator,
 )
 
 
-def render_cube_wireframe(ax, edges, color='black', alpha=0.3, linewidth=1):
+def render_cube_wireframe(ax, edges, color="black", alpha=0.3, linewidth=1):
     """Render cube wireframe edges."""
     for start, end in edges:
         points = np.array([start, end])
-        ax.plot3D(points[:, 0], points[:, 1], points[:, 2],
-                  color=color, linewidth=linewidth, alpha=alpha)
+        ax.plot3D(
+            points[:, 0], points[:, 1], points[:, 2], color=color, linewidth=linewidth, alpha=alpha
+        )
 
 
 def render_normal_cube(
@@ -67,8 +67,14 @@ def render_normal_cube(
 
             # Plot triangulated surface
             ax.plot_trisurf(
-                verts[:, 0], verts[:, 1], faces, verts[:, 2],
-                cmap='viridis', alpha=0.7, linewidth=0, shade=True
+                verts[:, 0],
+                verts[:, 1],
+                faces,
+                verts[:, 2],
+                cmap="viridis",
+                alpha=0.7,
+                linewidth=0,
+                shade=True,
             )
         except (ValueError, RuntimeError):
             # If isosurface extraction fails, skip
@@ -77,13 +83,13 @@ def render_normal_cube(
     # Wireframe rendering
     if show_wireframe:
         edges = tesseract.get_cube_wireframe_edges()
-        render_cube_wireframe(ax, edges, color='black', alpha=0.5, linewidth=1.5)
+        render_cube_wireframe(ax, edges, color="black", alpha=0.5, linewidth=1.5)
 
     # Styling
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y')
-    ax.set_zlabel('Z')
-    ax.set_title(f'Zeitscheibe: {time_label}')
+    ax.set_xlabel("X")
+    ax.set_ylabel("Y")
+    ax.set_zlabel("Z")
+    ax.set_title(f"Zeitscheibe: {time_label}")
     ax.set_box_aspect([1, 1, 1])  # Equal aspect ratio
 
     # Set limits to show full cube
@@ -118,9 +124,9 @@ def visualize_4d_projection(
 
     for t_idx in range(0, tesseract.config.num_slices, sample_every):
         # Highlight current slice
-        is_current = (t_idx == current_t_index)
+        is_current = t_idx == current_t_index
         alpha = 0.8 if is_current else 0.1
-        color = 'red' if is_current else 'gray'
+        color = "red" if is_current else "gray"
         linewidth = 2.0 if is_current else 0.5
 
         # Vertical offset for this timeslice
@@ -128,28 +134,49 @@ def visualize_4d_projection(
 
         # Draw cube wireframe at this height
         s = n - 1
-        corners = np.array([
-            [0, 0, z_offset], [s, 0, z_offset],
-            [s, s, z_offset], [0, s, z_offset],
-            [0, 0, z_offset + s*z_scale], [s, 0, z_offset + s*z_scale],
-            [s, s, z_offset + s*z_scale], [0, s, z_offset + s*z_scale],
-        ])
+        corners = np.array(
+            [
+                [0, 0, z_offset],
+                [s, 0, z_offset],
+                [s, s, z_offset],
+                [0, s, z_offset],
+                [0, 0, z_offset + s * z_scale],
+                [s, 0, z_offset + s * z_scale],
+                [s, s, z_offset + s * z_scale],
+                [0, s, z_offset + s * z_scale],
+            ]
+        )
 
         edge_indices = [
-            (0, 1), (1, 2), (2, 3), (3, 0),  # Bottom
-            (4, 5), (5, 6), (6, 7), (7, 4),  # Top
-            (0, 4), (1, 5), (2, 6), (3, 7),  # Vertical
+            (0, 1),
+            (1, 2),
+            (2, 3),
+            (3, 0),  # Bottom
+            (4, 5),
+            (5, 6),
+            (6, 7),
+            (7, 4),  # Top
+            (0, 4),
+            (1, 5),
+            (2, 6),
+            (3, 7),  # Vertical
         ]
 
         for i, j in edge_indices:
             points = corners[[i, j]]
-            ax.plot3D(points[:, 0], points[:, 1], points[:, 2],
-                      color=color, linewidth=linewidth, alpha=alpha)
+            ax.plot3D(
+                points[:, 0],
+                points[:, 1],
+                points[:, 2],
+                color=color,
+                linewidth=linewidth,
+                alpha=alpha,
+            )
 
-    ax.set_title('4D-Hyperkubus (gestapelte Zeitscheiben)')
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y')
-    ax.set_zlabel('Zeit (Z + t)')
+    ax.set_title("4D-Hyperkubus (gestapelte Zeitscheiben)")
+    ax.set_xlabel("X")
+    ax.set_ylabel("Y")
+    ax.set_zlabel("Zeit (Z + t)")
     ax.set_box_aspect([1, 1, 2])
 
 
@@ -169,20 +196,17 @@ def create_animation(
     print(f"🎬 Creating animation with {tesseract.config.num_slices} frames...")
 
     fig = plt.figure(figsize=(10, 10))
-    ax = fig.add_subplot(111, projection='3d')
+    ax = fig.add_subplot(111, projection="3d")
 
     def update(frame):
         """Animation update function."""
         cube_3d = tesseract.extract_timeslice(frame)
         t = tesseract.t_1d[frame]
         render_normal_cube(ax, cube_3d, tesseract, f"t = {t:.3f}")
-        return ax,
+        return (ax,)
 
     anim = FuncAnimation(
-        fig, update,
-        frames=tesseract.config.num_slices,
-        interval=1000//fps,
-        blit=False
+        fig, update, frames=tesseract.config.num_slices, interval=1000 // fps, blit=False
     )
 
     # Save animation
@@ -190,8 +214,8 @@ def create_animation(
     output_file.parent.mkdir(parents=True, exist_ok=True)
 
     print(f"💾 Saving to {output_path}...")
-    anim.save(str(output_file), writer='ffmpeg', fps=fps)
-    print(f"✅ Animation saved!")
+    anim.save(str(output_file), writer="ffmpeg", fps=fps)
+    print("✅ Animation saved!")
 
     plt.close()
 
@@ -214,11 +238,11 @@ def create_dual_view(
     fig = plt.figure(figsize=(16, 7))
 
     # Left: 4D projection
-    ax1 = fig.add_subplot(121, projection='3d')
+    ax1 = fig.add_subplot(121, projection="3d")
     visualize_4d_projection(ax1, tesseract, t_index, sample_every=5)
 
     # Right: Extracted 3D cube
-    ax2 = fig.add_subplot(122, projection='3d')
+    ax2 = fig.add_subplot(122, projection="3d")
     cube_3d = tesseract.extract_timeslice(t_index)
     t = tesseract.t_1d[t_index]
     render_normal_cube(ax2, cube_3d, tesseract, f"t = {t:.3f}")
@@ -228,7 +252,7 @@ def create_dual_view(
     if output_path:
         output_file = Path(output_path)
         output_file.parent.mkdir(parents=True, exist_ok=True)
-        plt.savefig(output_file, dpi=150, bbox_inches='tight')
+        plt.savefig(output_file, dpi=150, bbox_inches="tight")
         print(f"✅ Figure saved to {output_path}")
 
     plt.show()
@@ -255,11 +279,11 @@ def visualize_photon_paths(
     # Generate photon paths with different starting positions
     paths = []
     start_positions = [
-        (n//2, n//2, n//2),  # Center
-        (n//4, n//4, n//4),  # Off-center 1
-        (3*n//4, n//2, n//2),  # Off-center 2
-        (n//2, 3*n//4, n//4),  # Off-center 3
-        (n//4, 3*n//4, 3*n//4),  # Off-center 4
+        (n // 2, n // 2, n // 2),  # Center
+        (n // 4, n // 4, n // 4),  # Off-center 1
+        (3 * n // 4, n // 2, n // 2),  # Off-center 2
+        (n // 2, 3 * n // 4, n // 4),  # Off-center 3
+        (n // 4, 3 * n // 4, 3 * n // 4),  # Off-center 4
     ]
 
     for i in range(num_photons):
@@ -275,7 +299,7 @@ def visualize_photon_paths(
     fig = plt.figure(figsize=(14, 10))
 
     # 3D plot: x, y, t (z mapped to color)
-    ax = fig.add_subplot(111, projection='3d')
+    ax = fig.add_subplot(111, projection="3d")
 
     for i, path in enumerate(paths):
         if len(path) > 0:
@@ -283,23 +307,26 @@ def visualize_photon_paths(
             colors = plt.cm.viridis(path[:, 2] / n)
 
             ax.plot3D(
-                path[:, 0], path[:, 1], path[:, 3],  # x, y, t
-                linewidth=2, label=f'Photon {i+1}',
-                alpha=0.8
+                path[:, 0],
+                path[:, 1],
+                path[:, 3],  # x, y, t
+                linewidth=2,
+                label=f"Photon {i+1}",
+                alpha=0.8,
             )
 
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y')
-    ax.set_zlabel('Zeit (Scheiben-Index)')
-    ax.set_title(f'Photonenbahnen durch 4D-Tesseract\nBewusstseins-Integral I_C = {I_C:.3f}')
-    ax.legend(loc='upper left')
+    ax.set_xlabel("X")
+    ax.set_ylabel("Y")
+    ax.set_zlabel("Zeit (Scheiben-Index)")
+    ax.set_title(f"Photonenbahnen durch 4D-Tesseract\nBewusstseins-Integral I_C = {I_C:.3f}")
+    ax.legend(loc="upper left")
 
     plt.tight_layout()
 
     if output_path:
         output_file = Path(output_path)
         output_file.parent.mkdir(parents=True, exist_ok=True)
-        plt.savefig(output_file, dpi=150, bbox_inches='tight')
+        plt.savefig(output_file, dpi=150, bbox_inches="tight")
         print(f"✅ Figure saved to {output_path}")
 
     plt.show()
@@ -307,39 +334,24 @@ def visualize_photon_paths(
 
 def main():
     """Main CLI entry point."""
-    parser = argparse.ArgumentParser(
-        description="Visualize 4D Tesseract Time-Slicing"
-    )
+    parser = argparse.ArgumentParser(description="Visualize 4D Tesseract Time-Slicing")
     parser.add_argument(
         "--mode",
         choices=["animation", "dual-view", "photon-paths"],
         default="dual-view",
-        help="Visualization mode"
+        help="Visualization mode",
     )
     parser.add_argument(
         "--slice",
         type=int,
         default=None,
-        help="Timeslice index for dual-view (default: middle slice)"
+        help="Timeslice index for dual-view (default: middle slice)",
     )
+    parser.add_argument("--resolution", type=int, default=32, help="Grid resolution (default: 32)")
     parser.add_argument(
-        "--resolution",
-        type=int,
-        default=32,
-        help="Grid resolution (default: 32)"
+        "--num-slices", type=int, default=50, help="Number of temporal slices (default: 50)"
     )
-    parser.add_argument(
-        "--num-slices",
-        type=int,
-        default=50,
-        help="Number of temporal slices (default: 50)"
-    )
-    parser.add_argument(
-        "--output",
-        type=str,
-        default=None,
-        help="Output file path"
-    )
+    parser.add_argument("--output", type=str, default=None, help="Output file path")
 
     args = parser.parse_args()
 

@@ -45,6 +45,7 @@ class StereoVisionParameters:
     integration_window : float
         Temporal integration window Δt_Q in seconds (default: 0.15 s)
     """
+
     interocular_distance: float = INTEROCULAR_DISTANCE_CM
     object_distance: float = 50.0  # arm's length in cm
     eye_focal_length: float = EYE_FOCAL_LENGTH_CM
@@ -135,16 +136,16 @@ class StereoVisionModel:
 
         # In 3D space at distance d, the apparent jump is approximately IPD
         # (for objects at arm's length, this is a good approximation)
-        parallax_distance_cm = ipd * (d / (d - ipd/2))
+        parallax_distance_cm = ipd * (d / (d - ipd / 2))
 
         # Retinal displacement
         retinal_displacement_mm = f * math.tan(parallax_angle_rad) * 10  # cm to mm
 
         return {
-            'parallax_angle_deg': parallax_angle_deg,
-            'parallax_angle_rad': parallax_angle_rad,
-            'parallax_distance_cm': parallax_distance_cm,
-            'retinal_displacement_mm': retinal_displacement_mm,
+            "parallax_angle_deg": parallax_angle_deg,
+            "parallax_angle_rad": parallax_angle_rad,
+            "parallax_distance_cm": parallax_distance_cm,
+            "retinal_displacement_mm": retinal_displacement_mm,
         }
 
     def calculate_slice_fusion_frequency(self) -> float:
@@ -213,7 +214,7 @@ class StereoVisionModel:
             Neural integration velocity in cm/s
         """
         parallax = self.calculate_binocular_parallax()
-        return parallax['parallax_distance_cm'] / self.params.integration_window
+        return parallax["parallax_distance_cm"] / self.params.integration_window
 
     def analyze_stereo_integration(self) -> dict[str, float]:
         """Perform complete stereo-vision slice integration analysis.
@@ -243,23 +244,21 @@ class StereoVisionModel:
         v_neural = self.calculate_neural_integration_velocity()
 
         return {
-            'ipd_cm': self.params.interocular_distance,
-            'object_distance_cm': self.params.object_distance,
-            'parallax_angle_deg': parallax['parallax_angle_deg'],
-            'parallax_distance_cm': parallax['parallax_distance_cm'],
-            'retinal_displacement_mm': parallax['retinal_displacement_mm'],
-            'integration_window_ms': self.params.integration_window * 1000,
-            'slice_fusion_frequency_hz': sff,
-            'v_rig_km_s': V_RIG_DEFAULT,
-            'v_rig_integration_distance_km': vrig_dist / 100000,  # cm to km
-            'neural_integration_velocity_m_s': v_neural / 100,  # cm/s to m/s
-            'scale_ratio': self.v_rig / v_neural,
+            "ipd_cm": self.params.interocular_distance,
+            "object_distance_cm": self.params.object_distance,
+            "parallax_angle_deg": parallax["parallax_angle_deg"],
+            "parallax_distance_cm": parallax["parallax_distance_cm"],
+            "retinal_displacement_mm": parallax["retinal_displacement_mm"],
+            "integration_window_ms": self.params.integration_window * 1000,
+            "slice_fusion_frequency_hz": sff,
+            "v_rig_km_s": V_RIG_DEFAULT,
+            "v_rig_integration_distance_km": vrig_dist / 100000,  # cm to km
+            "neural_integration_velocity_m_s": v_neural / 100,  # cm/s to m/s
+            "scale_ratio": self.v_rig / v_neural,
         }
 
     def predict_metabolic_sff_variation(
-        self,
-        baseline_metabolic_rate: float = 1.0,
-        perturbed_metabolic_rate: float = 1.15
+        self, baseline_metabolic_rate: float = 1.0, perturbed_metabolic_rate: float = 1.15
     ) -> dict[str, float]:
         """Predict how SFF varies with metabolic rate.
 
@@ -294,9 +293,9 @@ class StereoVisionModel:
         sff_change_percent = ((perturbed_sff - baseline_sff) / baseline_sff) * 100
 
         return {
-            'baseline_sff_hz': baseline_sff,
-            'perturbed_sff_hz': perturbed_sff,
-            'sff_change_percent': sff_change_percent,
+            "baseline_sff_hz": baseline_sff,
+            "perturbed_sff_hz": perturbed_sff,
+            "sff_change_percent": sff_change_percent,
         }
 
 
@@ -314,10 +313,7 @@ class CriticalFlickerFrequency:
     """
 
     @staticmethod
-    def estimate_cff(
-        luminance_cd_m2: float = 100.0,
-        metabolic_factor: float = 1.0
-    ) -> float:
+    def estimate_cff(luminance_cd_m2: float = 100.0, metabolic_factor: float = 1.0) -> float:
         """Estimate CFF based on luminance and metabolic state.
 
         Uses the Ferry-Porter law: CFF ∝ log(luminance)
@@ -375,11 +371,11 @@ class CriticalFlickerFrequency:
         delta_t_sff = 1.0 / sff_hz
 
         return {
-            'cff_hz': cff_hz,
-            'sff_hz': sff_hz,
-            'ratio': ratio,
-            'implied_delta_t_Q_from_cff_ms': delta_t_cff * 1000,
-            'implied_delta_t_Q_from_sff_ms': delta_t_sff * 1000,
+            "cff_hz": cff_hz,
+            "sff_hz": sff_hz,
+            "ratio": ratio,
+            "implied_delta_t_Q_from_cff_ms": delta_t_cff * 1000,
+            "implied_delta_t_Q_from_sff_ms": delta_t_sff * 1000,
         }
 
 
@@ -433,7 +429,9 @@ def demonstrate_stereo_vision_experiment():
     print("-" * 70)
     print(f"v_RIG (fundamental):               {results['v_rig_km_s']:.1f} km/s")
     print(f"v_RIG integration distance:        {results['v_rig_integration_distance_km']:.1f} km")
-    print(f"Neural integration velocity:       {results['neural_integration_velocity_m_s']:.2f} m/s")
+    print(
+        f"Neural integration velocity:       {results['neural_integration_velocity_m_s']:.2f} m/s"
+    )
     print(f"Scale ratio (v_RIG / v_neural):    {results['scale_ratio']:.0f}×")
     print()
 
@@ -455,13 +453,17 @@ def demonstrate_stereo_vision_experiment():
     print("-" * 70)
     cff = CriticalFlickerFrequency.estimate_cff(luminance_cd_m2=100.0)
     correlation = CriticalFlickerFrequency.correlate_cff_with_sff(
-        cff, results['slice_fusion_frequency_hz']
+        cff, results["slice_fusion_frequency_hz"]
     )
     print(f"Estimated CFF:                     {correlation['cff_hz']:.1f} Hz")
     print(f"Measured SFF:                      {correlation['sff_hz']:.1f} Hz")
     print(f"CFF/SFF Ratio:                     {correlation['ratio']:.1f}")
-    print(f"Implied Δt_Q from CFF:             {correlation['implied_delta_t_Q_from_cff_ms']:.1f} ms")
-    print(f"Implied Δt_Q from SFF:             {correlation['implied_delta_t_Q_from_sff_ms']:.1f} ms")
+    print(
+        f"Implied Δt_Q from CFF:             {correlation['implied_delta_t_Q_from_cff_ms']:.1f} ms"
+    )
+    print(
+        f"Implied Δt_Q from SFF:             {correlation['implied_delta_t_Q_from_sff_ms']:.1f} ms"
+    )
     print()
 
     print("=" * 70)
@@ -469,6 +471,6 @@ def demonstrate_stereo_vision_experiment():
     print("=" * 70)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Run demonstration
     demonstrate_stereo_vision_experiment()

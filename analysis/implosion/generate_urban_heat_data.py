@@ -52,7 +52,7 @@ def generate_city_data(
         if R_over_Theta > 0.95:
             # Critical/super-critical regime: cubic root amplification
             proximity = max(R_over_Theta - 1.0, 0.0001)
-            beta = k * (proximity ** (1.0/3.0)) + BETA_FIXPOINT_PHI3
+            beta = k * (proximity ** (1.0 / 3.0)) + BETA_FIXPOINT_PHI3
             # Add realistic measurement noise
             beta *= np.random.uniform(0.95, 1.05)
         elif R_over_Theta > 0.85:
@@ -67,8 +67,16 @@ def generate_city_data(
     beta2_inv = generate_beta(R2_target)
 
     # Classical beta (slightly lower in critical regime)
-    beta1_class = beta1_inv * np.random.uniform(0.92, 0.98) if R1_target > 0.95 else beta1_inv * np.random.uniform(0.98, 1.02)
-    beta2_class = beta2_inv * np.random.uniform(0.92, 0.98) if R2_target > 0.95 else beta2_inv * np.random.uniform(0.98, 1.02)
+    beta1_class = (
+        beta1_inv * np.random.uniform(0.92, 0.98)
+        if R1_target > 0.95
+        else beta1_inv * np.random.uniform(0.98, 1.02)
+    )
+    beta2_class = (
+        beta2_inv * np.random.uniform(0.92, 0.98)
+        if R2_target > 0.95
+        else beta2_inv * np.random.uniform(0.98, 1.02)
+    )
 
     # Confidence intervals (tighter for stronger signals)
     ci1_width = 0.1 * beta1_inv if R1_target > 0.95 else 0.15 * beta1_inv
@@ -129,35 +137,211 @@ def main():
     cities = [
         # Hot desert cities - like pilot (R/Θ > 1.15 for strong β spikes)
         ("Cairo", "Egypt", "Hot_Desert", "Summer_2024", "Winter_2024", 2024, 1.15, 0.68, 0.290),
-        ("Kuwait_City", "Kuwait", "Hot_Desert", "Summer_2024", "Winter_2024", 2024, 1.42, 0.72, 0.280),
+        (
+            "Kuwait_City",
+            "Kuwait",
+            "Hot_Desert",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            1.42,
+            0.72,
+            0.280,
+        ),
         ("Las_Vegas", "USA", "Hot_Desert", "Summer_2024", "Winter_2024", 2024, 1.08, 0.58, 0.300),
-        ("Riyadh", "Saudi_Arabia", "Hot_Desert", "Summer_2024", "Winter_2024", 2024, 1.38, 0.70, 0.285),
+        (
+            "Riyadh",
+            "Saudi_Arabia",
+            "Hot_Desert",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            1.38,
+            0.70,
+            0.285,
+        ),
         ("Ahvaz", "Iran", "Hot_Desert", "Summer_2024", "Winter_2024", 2024, 1.25, 0.65, 0.295),
-
         # Temperate cities (moderate patterns, sub-critical)
-        ("Paris", "France", "Temperate_Oceanic", "Summer_2024", "Winter_2024", 2024, 0.72, 0.35, 0.380),
-        ("Tokyo", "Japan", "Humid_Subtropical", "Summer_2024", "Winter_2024", 2024, 0.88, 0.52, 0.350),
-        ("New_York", "USA", "Humid_Continental", "Summer_2024", "Winter_2024", 2024, 0.82, 0.38, 0.370),
-        ("London", "UK", "Temperate_Oceanic", "Summer_2024", "Winter_2024", 2024, 0.65, 0.32, 0.390),
-        ("Berlin", "Germany", "Temperate_Oceanic", "Summer_2024", "Winter_2024", 2024, 0.68, 0.28, 0.385),
-
+        (
+            "Paris",
+            "France",
+            "Temperate_Oceanic",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            0.72,
+            0.35,
+            0.380,
+        ),
+        (
+            "Tokyo",
+            "Japan",
+            "Humid_Subtropical",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            0.88,
+            0.52,
+            0.350,
+        ),
+        (
+            "New_York",
+            "USA",
+            "Humid_Continental",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            0.82,
+            0.38,
+            0.370,
+        ),
+        (
+            "London",
+            "UK",
+            "Temperate_Oceanic",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            0.65,
+            0.32,
+            0.390,
+        ),
+        (
+            "Berlin",
+            "Germany",
+            "Temperate_Oceanic",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            0.68,
+            0.28,
+            0.385,
+        ),
         # Tropical cities - sampling full critical range (0.96-1.15)
-        ("Mumbai", "India", "Tropical_Monsoon", "Monsoon_2024", "Dry_2024", 2024, 1.05, 0.92, 0.310),
-        ("Jakarta", "Indonesia", "Tropical_Rainforest", "Wet_2024", "Dry_2024", 2024, 0.98, 0.85, 0.325),
+        (
+            "Mumbai",
+            "India",
+            "Tropical_Monsoon",
+            "Monsoon_2024",
+            "Dry_2024",
+            2024,
+            1.05,
+            0.92,
+            0.310,
+        ),
+        (
+            "Jakarta",
+            "Indonesia",
+            "Tropical_Rainforest",
+            "Wet_2024",
+            "Dry_2024",
+            2024,
+            0.98,
+            0.85,
+            0.325,
+        ),
         ("Lagos", "Nigeria", "Tropical_Savanna", "Wet_2024", "Dry_2024", 2024, 0.94, 0.78, 0.330),
-        ("São_Paulo", "Brazil", "Subtropical_Highland", "Summer_2024", "Winter_2024", 2024, 0.76, 0.48, 0.360),
-        ("Bangkok", "Thailand", "Tropical_Monsoon", "Hot_2024", "Cool_2024", 2024, 1.12, 0.88, 0.315),
-        ("Karachi", "Pakistan", "Hot_Desert", "Summer_2024", "Winter_2024", 2024, 1.02, 0.67, 0.305),
-        ("Dhaka", "Bangladesh", "Tropical_Monsoon", "Summer_2024", "Winter_2024", 2024, 1.01, 0.82, 0.318),
-
+        (
+            "São_Paulo",
+            "Brazil",
+            "Subtropical_Highland",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            0.76,
+            0.48,
+            0.360,
+        ),
+        (
+            "Bangkok",
+            "Thailand",
+            "Tropical_Monsoon",
+            "Hot_2024",
+            "Cool_2024",
+            2024,
+            1.12,
+            0.88,
+            0.315,
+        ),
+        (
+            "Karachi",
+            "Pakistan",
+            "Hot_Desert",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            1.02,
+            0.67,
+            0.305,
+        ),
+        (
+            "Dhaka",
+            "Bangladesh",
+            "Tropical_Monsoon",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            1.01,
+            0.82,
+            0.318,
+        ),
         # Cold cities (low baseline stress)
-        ("Moscow", "Russia", "Humid_Continental", "Summer_2024", "Winter_2024", 2024, 0.58, 0.18, 0.420),
-        ("Montreal", "Canada", "Humid_Continental", "Summer_2024", "Winter_2024", 2024, 0.62, 0.22, 0.410),
-        ("Helsinki", "Finland", "Humid_Continental", "Summer_2024", "Winter_2024", 2024, 0.48, 0.15, 0.430),
-
+        (
+            "Moscow",
+            "Russia",
+            "Humid_Continental",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            0.58,
+            0.18,
+            0.420,
+        ),
+        (
+            "Montreal",
+            "Canada",
+            "Humid_Continental",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            0.62,
+            0.22,
+            0.410,
+        ),
+        (
+            "Helsinki",
+            "Finland",
+            "Humid_Continental",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            0.48,
+            0.15,
+            0.430,
+        ),
         # Coastal cities (maritime moderation)
-        ("Sydney", "Australia", "Humid_Subtropical", "Summer_2024", "Winter_2024", 2024, 0.78, 0.42, 0.365),
-        ("Cape_Town", "South_Africa", "Mediterranean", "Summer_2024", "Winter_2024", 2024, 0.85, 0.38, 0.355),
+        (
+            "Sydney",
+            "Australia",
+            "Humid_Subtropical",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            0.78,
+            0.42,
+            0.365,
+        ),
+        (
+            "Cape_Town",
+            "South_Africa",
+            "Mediterranean",
+            "Summer_2024",
+            "Winter_2024",
+            2024,
+            0.85,
+            0.38,
+            0.355,
+        ),
         ("Vancouver", "Canada", "Oceanic", "Summer_2024", "Winter_2024", 2024, 0.52, 0.28, 0.405),
         ("Miami", "USA", "Tropical_Monsoon", "Summer_2024", "Winter_2024", 2024, 0.96, 0.68, 0.335),
     ]

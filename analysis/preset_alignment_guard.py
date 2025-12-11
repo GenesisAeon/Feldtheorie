@@ -213,7 +213,9 @@ def validate_presets(
         result_path = (base_root / result_path_value).resolve()
         if not result_path.exists():
             issues.append(
-                PresetIssue(preset_path, "analysis.result_path", result_path_value, "file not found")
+                PresetIssue(
+                    preset_path, "analysis.result_path", result_path_value, "file not found"
+                )
             )
             continue
 
@@ -290,7 +292,11 @@ def validate_presets(
         preset_delta_aic = analysis_block.get("delta_aic_best_null")
         if isinstance(best_delta_aic, float) and isinstance(preset_delta_aic, (int, float)):
             if not _relative_close(float(preset_delta_aic), best_delta_aic, rel_tol):
-                issues.append(PresetIssue(preset_path, "delta_aic_best_null", preset_delta_aic, best_delta_aic))
+                issues.append(
+                    PresetIssue(
+                        preset_path, "delta_aic_best_null", preset_delta_aic, best_delta_aic
+                    )
+                )
         elif best_delta_aic is not None or preset_delta_aic is not None:
             issues.append(
                 PresetIssue(preset_path, "delta_aic_best_null", preset_delta_aic, best_delta_aic)
@@ -299,7 +305,9 @@ def validate_presets(
         preset_delta_r2 = analysis_block.get("delta_r2_best_null")
         if isinstance(best_delta_r2, float) and isinstance(preset_delta_r2, (int, float)):
             if not _relative_close(float(preset_delta_r2), best_delta_r2, rel_tol):
-                issues.append(PresetIssue(preset_path, "delta_r2_best_null", preset_delta_r2, best_delta_r2))
+                issues.append(
+                    PresetIssue(preset_path, "delta_r2_best_null", preset_delta_r2, best_delta_r2)
+                )
         elif best_delta_r2 is not None or preset_delta_r2 is not None:
             issues.append(
                 PresetIssue(preset_path, "delta_r2_best_null", preset_delta_r2, best_delta_r2)

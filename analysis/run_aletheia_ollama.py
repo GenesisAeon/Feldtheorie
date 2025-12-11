@@ -8,9 +8,7 @@ Based on: releases/V6-Plans_etc/Finalize/Aletheia_Plan_umsetzen_bitte.txt
 
 import argparse
 import csv
-import json
 import time
-from collections import Counter
 from pathlib import Path
 
 import requests
@@ -134,9 +132,7 @@ def check_ollama_available():
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Run Aletheia evaluation on local Ollama models"
-    )
+    parser = argparse.ArgumentParser(description="Run Aletheia evaluation on local Ollama models")
     parser.add_argument(
         "--models",
         nargs="+",
@@ -241,9 +237,7 @@ def main():
             )
 
     print(f"\n💾 Ergebnisse gespeichert in {args.output}")
-    print(
-        f"👉 Nächster Schritt: python analysis/aletheia_evaluation.py --input {args.output}"
-    )
+    print(f"👉 Nächster Schritt: python analysis/aletheia_evaluation.py --input {args.output}")
 
     # Optional: Zusammenfassung anzeigen
     print("\n" + "=" * 60)

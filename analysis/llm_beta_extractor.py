@@ -241,7 +241,7 @@ def fit_power_law(samples: Sequence[AbilitySample]) -> NullFit:
     log_a = float(coeffs[1])
     a = math.exp(log_a)
 
-    predicted = a * (scale ** b)
+    predicted = a * (scale**b)
     residual_prob = P - predicted
     sse_prob = float(np.sum(residual_prob**2))
     mean_prob = float(np.mean(P))
@@ -360,9 +360,7 @@ def run_analysis(
         float(canonical_beta + band_half_width),
     )
     beta_band_distance = float(abs(aggregate["beta_mean"] - canonical_beta))
-    within_canonical_band = bool(
-        canonical_band[0] <= aggregate["beta_mean"] <= canonical_band[1]
-    )
+    within_canonical_band = bool(canonical_band[0] <= aggregate["beta_mean"] <= canonical_band[1])
 
     aggregate.update(
         {
@@ -393,10 +391,12 @@ def run_analysis(
             ),
             "empirical": (
                 "analysis/llm_beta_extractor.py reproducibly digitises PaLM scaling"
-                " sweeps and exports JSON for Docs and the manuscript."),
+                " sweeps and exports JSON for Docs and the manuscript."
+            ),
             "metaphorical": (
                 "Wei's 137 lanterns await digitisation; this trio already hums in"
-                " phase with the UTF membrane."),
+                " phase with the UTF membrane."
+            ),
         },
     }
 

@@ -7,11 +7,12 @@ write_zarr(ds, path, mode="w", consolidated=True):
 read_zarr(path):
 - Efficiently loads Zarr
 """
+
 from __future__ import annotations
-from typing import Optional
+
+import fsspec
 import xarray as xr
 import zarr
-import fsspec
 
 
 def write_zarr(
@@ -20,7 +21,7 @@ def write_zarr(
     *,
     mode: str = "w",
     consolidated: bool = True,
-    compressor: Optional[zarr.codecs.Codec] = None,
+    compressor: zarr.codecs.Codec | None = None,
 ) -> None:
     """Write xarray.Dataset to Zarr store.
 

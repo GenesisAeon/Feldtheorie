@@ -9,7 +9,6 @@ Version: 1.0.0
 
 import numpy as np
 import pytest
-
 from models.rg_flow_simulator import (
     FlowVariant,
     RGFlowConfig,
@@ -23,7 +22,6 @@ from models.rg_flow_simulator import (
     polynomial_flow,
 )
 from models.utac_type6_implosive import BETA_FIXPOINT_PHI3, BETA_STEPS
-
 
 # ═══════════════════════════════════════════════════════════════
 # FLOW FUNCTION TESTS
@@ -43,9 +41,7 @@ class TestFlowFunctions:
         assert flow > 0, "Flow should be positive when β < fixpoint (dβ/dλ > 0 means β increases)"
 
         # At fixpoint, flow should be zero
-        flow_at_fixpoint = linear_phi_attractor(
-            fixpoint, alpha=0.5, fixpoint=fixpoint
-        )
+        flow_at_fixpoint = linear_phi_attractor(fixpoint, alpha=0.5, fixpoint=fixpoint)
         assert abs(flow_at_fixpoint) < 1e-6, "Flow at fixpoint should be zero"
 
     def test_polynomial_flow_symmetry(self):
@@ -103,9 +99,7 @@ class TestFlowFunctions:
             fixpoint=fixpoint,
         )
 
-        assert (
-            abs(flow_damped) < abs(flow_near)
-        ), "Damping should reduce flow magnitude"
+        assert abs(flow_damped) < abs(flow_near), "Damping should reduce flow magnitude"
 
     def test_cubic_root_amplification_drive(self):
         """Cubic root flow should drive β above threshold."""
@@ -125,9 +119,7 @@ class TestFlowFunctions:
             k=5.0,
             beta_base=4.236,
         )
-        assert (
-            flow_below < 0
-        ), "Flow below threshold should be negative (relaxing to baseline)"
+        assert flow_below < 0, "Flow below threshold should be negative (relaxing to baseline)"
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -190,9 +182,7 @@ class TestRGFlowSimulator:
         for fp in fixed_points:
             distances = np.abs(BETA_STEPS - fp)
             min_distance = np.min(distances)
-            assert (
-                min_distance < 0.3
-            ), f"Fixed point {fp:.3f} should be near a Φⁿ value"
+            assert min_distance < 0.3, f"Fixed point {fp:.3f} should be near a Φⁿ value"
 
     def test_basin_of_attraction(self, simulator):
         """Basin of attraction should contain fixpoint."""
@@ -210,9 +200,7 @@ class TestRGFlowSimulator:
         assert np.isfinite(basin_min) and np.isfinite(basin_max)
 
         # Fixpoint should be within basin
-        assert (
-            basin_min <= fixpoint <= basin_max
-        ), "Fixpoint should be within its own basin"
+        assert basin_min <= fixpoint <= basin_max, "Fixpoint should be within its own basin"
 
     def test_euler_vs_rk45_consistency(self, simulator):
         """Euler and RK45 methods should give similar results."""
@@ -348,9 +336,7 @@ class TestEdgeCases:
 
         # Should remain close to fixpoint
         final_deviation = abs(beta_traj[-1] - beta_initial)
-        assert (
-            final_deviation < 0.05
-        ), f"Should stay at fixpoint (deviation: {final_deviation:.3f})"
+        assert final_deviation < 0.05, f"Should stay at fixpoint (deviation: {final_deviation:.3f})"
 
     def test_extreme_beta_values(self):
         """Extreme β values should not cause numerical issues."""

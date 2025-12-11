@@ -6,7 +6,6 @@ import json
 from pathlib import Path
 
 import pytest
-
 from analysis.resonance_cohort_summary import parse_result, summarise_records
 
 
@@ -20,14 +19,8 @@ def _base_payload() -> dict:
         "beta_estimate": {"value": 5.0, "ci95": [4.5, 5.5]},
         "logistic_model": {"r2": 0.99, "aic": -120.0},
         "logistic_fit": {"sigma_hat": [0.25, 0.75]},
-        "null_models": {
-            "linear": {"r2": 0.8, "aic": -60.0}
-        },
-        "falsification": {
-            "comparisons": {
-                "linear": {"delta_aic": 60.0, "delta_r2": 0.19}
-            }
-        },
+        "null_models": {"linear": {"r2": 0.8, "aic": -60.0}},
+        "falsification": {"comparisons": {"linear": {"delta_aic": 60.0, "delta_r2": 0.19}}},
         "membrane": {"zeta_mean": 1.2},
     }
 

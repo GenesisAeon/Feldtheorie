@@ -95,8 +95,7 @@ def build_summary(data_path: Path, output_path: Path) -> dict[str, object]:
         "sigma_fit": logistic_predictions,
         "zeta": [item["zeta"] for item in zeta_info["samples"]],
         "flux": [
-            obs_sigma - pred
-            for obs_sigma, pred in zip(observations["sigma"], logistic_predictions)
+            obs_sigma - pred for obs_sigma, pred in zip(observations["sigma"], logistic_predictions)
         ],
         "theta": [fit_metrics["theta"]],
         "beta": [fit_metrics["beta"]],

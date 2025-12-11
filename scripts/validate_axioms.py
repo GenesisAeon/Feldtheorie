@@ -5,15 +5,15 @@ from __future__ import annotations
 import argparse
 import sys
 import tempfile
+from collections.abc import Callable, Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Dict, Iterable, List
 
 import yaml
+
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from tools import crep_guard
-
 
 CONFIG_PATH = Path("config/overpersonal_axioms.yaml")
 
@@ -73,7 +73,7 @@ def _validate_cli_defaults(params: dict) -> str:
 def _validate_escalation_mapping(params: dict) -> str:
     """Verify intention-aligned escalation levels along σ(β(R-Θ))."""
 
-    mapping: Dict[float, int] = {float(k): int(v) for k, v in params.get("mapping", {}).items()}
+    mapping: dict[float, int] = {float(k): int(v) for k, v in params.get("mapping", {}).items()}
     for crep_value, expected_level in mapping.items():
         observed = crep_guard._determine_escalation(crep_value)
         if observed != expected_level:
@@ -109,14 +109,14 @@ def _validate_audit_logging(params: dict) -> str:
 def _validate_documentation_anchor(params: dict) -> str:
     """Ensure anchors to the source ontology remain present (semantische Gravitation)."""
 
-    anchors: List[Path] = [Path(p) for p in params.get("anchors", [])]
+    anchors: list[Path] = [Path(p) for p in params.get("anchors", [])]
     missing = [str(path) for path in anchors if not path.exists()]
     if missing:
         raise AxiomValidationError(f"documentation anchors missing: {', '.join(missing)}")
     return f"Anchors present ({len(anchors)} paths)"
 
 
-VALIDATORS: Dict[str, Callable[[dict], str]] = {
+VALIDATORS: dict[str, Callable[[dict], str]] = {
     "trilayer_alignment": _validate_trilayer,
     "cli_defaults": _validate_cli_defaults,
     "escalation_mapping": _validate_escalation_mapping,
@@ -125,10 +125,10 @@ VALIDATORS: Dict[str, Callable[[dict], str]] = {
 }
 
 
-def _run_validations(config: dict) -> List[AxiomResult]:
+def _run_validations(config: dict) -> list[AxiomResult]:
     """Execute all configured validators and collect results."""
 
-    results: List[AxiomResult] = []
+    results: list[AxiomResult] = []
     for axiom in config.get("axioms", []):
         validator_type = axiom.get("validator", {}).get("type")
         params = axiom.get("validator", {}).get("parameters", {})

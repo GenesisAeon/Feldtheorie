@@ -254,13 +254,17 @@ def execute_run(run: BatchRun, *, dry_run: bool, config_path: Path) -> dict[str,
             switch_width=float(run.simulation_params.get("switch_width", 0.35)),
             dynamic_robin=bool(run.simulation_params.get("dynamic_robin", False)),
             beta_robin=float(run.simulation_params.get("beta_robin", 4.8)),
-            boundary_logistic_weight=float(run.simulation_params.get("boundary_logistic_weight", 0.35)),
+            boundary_logistic_weight=float(
+                run.simulation_params.get("boundary_logistic_weight", 0.35)
+            ),
             boundary_driver_weight=float(run.simulation_params.get("boundary_driver_weight", 0.15)),
         )
         metadata: dict[str, Any] = {}
     else:
         if run.input_path is None:
-            raise ConfigurationError(f"Run {run.identifier!r} requires an input file in ingest mode")
+            raise ConfigurationError(
+                f"Run {run.identifier!r} requires an input file in ingest mode"
+            )
         series, extra_metadata = _ingest_series(run.input_path)
         results = series
         metadata = dict(extra_metadata)
@@ -288,13 +292,15 @@ def execute_run(run: BatchRun, *, dry_run: bool, config_path: Path) -> dict[str,
         summary["source"].update({"mode": "ingest", "input": str(run.input_path)})
     else:
         summary.setdefault("source", {})
-        summary["source"].update({
-            "mode": "simulate",
-            "simulation": {
-                key: (float(value) if isinstance(value, (int, float)) else value)
-                for key, value in run.simulation_params.items()
-            },
-        })
+        summary["source"].update(
+            {
+                "mode": "simulate",
+                "simulation": {
+                    key: (float(value) if isinstance(value, (int, float)) else value)
+                    for key, value in run.simulation_params.items()
+                },
+            }
+        )
 
     summary.setdefault("source", {})
     summary["source"].update(
@@ -307,8 +313,12 @@ def execute_run(run: BatchRun, *, dry_run: bool, config_path: Path) -> dict[str,
     if run.notes:
         summary.setdefault("notes", run.notes)
 
-    delta_aic_linear = null_metrics["linear"].get("aic", float("nan")) - summary["logistic_model"]["aic"]
-    delta_aic_power = null_metrics["power_law"].get("aic", float("nan")) - summary["logistic_model"]["aic"]
+    delta_aic_linear = (
+        null_metrics["linear"].get("aic", float("nan")) - summary["logistic_model"]["aic"]
+    )
+    delta_aic_power = (
+        null_metrics["power_law"].get("aic", float("nan")) - summary["logistic_model"]["aic"]
+    )
     print(
         f"[batch:{run.identifier}] mode={run.mode} R²={summary['logistic_model']['r2']:.6f} "
         f"ΔAIC(linear)={delta_aic_linear:.2f} ΔAIC(power)={delta_aic_power:.2f}"

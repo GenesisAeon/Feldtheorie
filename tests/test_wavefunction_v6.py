@@ -11,18 +11,14 @@ References:
 - METRICS.md §8 (Type-VI Classification)
 - AGENTS.md §V6-Specific Escalation Rules
 """
+
 from __future__ import annotations
 
-import math
 import numpy as np
 import pytest
-
 from simulation.genesis_cube import (
     GenesisCube,
     GenesisCubeConfig,
-    ALPHA_INV,
-    PHI_GOLDEN,
-    L_PLANCK,
 )
 from simulation.implosive_genesis_sim import (
     compute_crep_index,
@@ -87,7 +83,9 @@ class TestEntropicWavefunction:
         mean_mag = sum(mags) / len(mags)
 
         for mag in mags:
-            assert abs(mag - mean_mag) / mean_mag < 0.7  # Within 70% tolerance (relaxed for tetrahedral)
+            assert (
+                abs(mag - mean_mag) / mean_mag < 0.7
+            )  # Within 70% tolerance (relaxed for tetrahedral)
 
     def test_entropy_gradient_near_threshold(self):
         """∇S should be largest near threshold Θ (emergence of gravity)."""
@@ -98,9 +96,7 @@ class TestEntropicWavefunction:
         phi = 0.0
         t = 0.0
 
-        grad_S_vals = [
-            cube.compute_entropy_gradient(r, theta, phi, t) for r in r_vals
-        ]
+        grad_S_vals = [cube.compute_entropy_gradient(r, theta, phi, t) for r in r_vals]
 
         # Gradient magnitude should be significant near threshold
         # (exact behavior depends on wavefunction shape)
@@ -257,7 +253,9 @@ class TestRK4Integration:
         phi_grid = np.zeros(n)
 
         psi_init = cube.compute_wavefunction(r_grid, theta_grid, phi_grid, t=0.0)
-        psi_next = cube.rk4_step(psi_init, t=0.0, dt=1e-44, r_grid=r_grid, theta_grid=theta_grid, phi_grid=phi_grid)
+        psi_next = cube.rk4_step(
+            psi_init, t=0.0, dt=1e-44, r_grid=r_grid, theta_grid=theta_grid, phi_grid=phi_grid
+        )
 
         assert psi_next.shape == psi_init.shape
         assert psi_next.dtype in [np.complex64, np.complex128, complex]

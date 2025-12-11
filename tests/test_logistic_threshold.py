@@ -9,8 +9,6 @@ from __future__ import annotations
 import math
 
 import numpy as np
-import pytest
-
 from models.logistic_threshold import ThresholdMembrane, _default_impedance
 
 
@@ -79,6 +77,7 @@ class TestThresholdMembraneResponse:
 
     def test_custom_impedance_modulates_response(self) -> None:
         """Custom impedance function should scale the response."""
+
         def half_impedance(r: np.ndarray) -> np.ndarray:
             return 0.5 * np.ones_like(r)
 
@@ -206,8 +205,13 @@ class TestExportSummary:
         summary = membrane.export_summary(r)
 
         expected = {
-            "R_min", "R_max", "theta", "beta",
-            "zeta_mean", "resonance_gain", "half_max_index"
+            "R_min",
+            "R_max",
+            "theta",
+            "beta",
+            "zeta_mean",
+            "resonance_gain",
+            "half_max_index",
         }
         assert set(summary.keys()) == expected
 

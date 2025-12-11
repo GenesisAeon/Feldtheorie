@@ -162,7 +162,9 @@ def _summary_stats(values: Sequence[float]) -> dict[str, float]:
     }
 
 
-def _residual_metrics(observed: Sequence[float], predicted: Sequence[float], k: int) -> dict[str, float]:
+def _residual_metrics(
+    observed: Sequence[float], predicted: Sequence[float], k: int
+) -> dict[str, float]:
     residuals = [obs - pred for obs, pred in zip(observed, predicted)]
     ss_res = sum(value**2 for value in residuals)
     mean_obs = sum(observed) / len(observed)
@@ -195,7 +197,9 @@ def evaluate_power_law_null(R: Sequence[float], sigma: Sequence[float]) -> dict[
     mean_log_R = sum(log_R) / len(log_R)
     mean_log_sigma = sum(log_sigma) / len(log_sigma)
     Sxx = sum((value - mean_log_R) ** 2 for value in log_R)
-    Sxy = sum((log_R[idx] - mean_log_R) * (log_sigma[idx] - mean_log_sigma) for idx in range(len(R)))
+    Sxy = sum(
+        (log_R[idx] - mean_log_R) * (log_sigma[idx] - mean_log_sigma) for idx in range(len(R))
+    )
     exponent = Sxy / Sxx if Sxx > 0 else 0.0
     amplitude = math.exp(mean_log_sigma - exponent * mean_log_R)
     sigma_hat = [amplitude * (max(r, 1e-6) ** exponent) for r in R]
@@ -365,7 +369,9 @@ def build_summary(steps: int = 64) -> dict[str, object]:
     scenarios = build_scenarios()
     evaluations = [evaluate_scenario(scenario, steps=steps) for scenario in scenarios]
 
-    mean_delta_aic = sum(item["metrics"]["delta_aic_dynamic_vs_static"] for item in evaluations) / len(evaluations)
+    mean_delta_aic = sum(
+        item["metrics"]["delta_aic_dynamic_vs_static"] for item in evaluations
+    ) / len(evaluations)
     interference_means = [item["theta_shift"]["stats"]["mean"] for item in evaluations]
 
     return {

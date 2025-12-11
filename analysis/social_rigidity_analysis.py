@@ -210,7 +210,10 @@ def analyze_country(df: pd.DataFrame, country_code: str) -> RigidityFitResult | 
     country_df = df[df["country_code"] == country_code].sort_values("year")
 
     if len(country_df) < 5:
-        print(f"WARNING: Insufficient data for {country_code} ({len(country_df)} obs)", file=sys.stderr)
+        print(
+            f"WARNING: Insufficient data for {country_code} ({len(country_df)} obs)",
+            file=sys.stderr,
+        )
         return None
 
     country_name = country_df["country_name"].iloc[0]
@@ -276,9 +279,7 @@ def export_results(results: list[RigidityFitResult], output_path: Path) -> None:
                 "mean": np.mean([r.beta for r in results]),
                 "median": np.median([r.beta for r in results]),
             },
-            "high_rigidity_countries": [
-                r.country_code for r in results_sorted[:5]  # Top 5 by β
-            ],
+            "high_rigidity_countries": [r.country_code for r in results_sorted[:5]],  # Top 5 by β
             "low_rigidity_countries": [
                 r.country_code for r in results_sorted[-5:]  # Bottom 5 by β
             ],

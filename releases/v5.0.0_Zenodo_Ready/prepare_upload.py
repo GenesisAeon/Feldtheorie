@@ -27,8 +27,6 @@ import os
 import zipfile
 from datetime import datetime
 from pathlib import Path
-from typing import List, Set
-
 
 # ============================================================================
 # CONFIGURATION
@@ -45,7 +43,6 @@ EXCLUSIONS = {
     ".github/workflows",  # Exclude workflows but keep other .github content
     ".gitignore",
     ".gitattributes",
-
     # Python artifacts
     "__pycache__",
     "*.pyc",
@@ -57,13 +54,11 @@ EXCLUSIONS = {
     ".pytest_cache",
     ".coverage",
     "htmlcov",
-
     # Virtual environments
     "venv",
     "env",
     "ENV",
     ".venv",
-
     # IDE and editor files
     ".vscode",
     ".idea",
@@ -71,23 +66,19 @@ EXCLUSIONS = {
     "*.swo",
     "*~",
     ".DS_Store",
-
     # Temporary and cache files
     "tmp",
     "temp",
     ".cache",
     "*.tmp",
-
     # Large binary files (optional, adjust as needed)
     "*.mp4",
     "*.avi",
     "*.mov",
-
     # Build artifacts
     "build",
     "dist",
     "*.egg-info",
-
     # THIS RELEASE FOLDER (to avoid recursion)
     "releases/v5.0.0_Zenodo_Ready",
 }
@@ -107,8 +98,20 @@ SLIM_EXCLUSIONS = {
 
 # File extensions to INCLUDE (whitelist approach for critical files)
 IMPORTANT_EXTENSIONS = {
-    ".py", ".md", ".txt", ".yml", ".yaml", ".json", ".csv",
-    ".toml", ".cfg", ".ini", ".sh", ".bash", ".R", ".ipynb"
+    ".py",
+    ".md",
+    ".txt",
+    ".yml",
+    ".yaml",
+    ".json",
+    ".csv",
+    ".toml",
+    ".cfg",
+    ".ini",
+    ".sh",
+    ".bash",
+    ".R",
+    ".ipynb",
 }
 
 
@@ -116,7 +119,8 @@ IMPORTANT_EXTENSIONS = {
 # UTILITY FUNCTIONS
 # ============================================================================
 
-def build_exclusion_set(profile: str) -> Set[str]:
+
+def build_exclusion_set(profile: str) -> set[str]:
     """Build the exclusion set based on the selected profile."""
 
     exclusions = set(EXCLUSIONS)
@@ -127,7 +131,7 @@ def build_exclusion_set(profile: str) -> Set[str]:
     return exclusions
 
 
-def should_exclude(path: Path, repo_root: Path, exclusions: Set[str]) -> bool:
+def should_exclude(path: Path, repo_root: Path, exclusions: set[str]) -> bool:
     """
     Check if a path should be excluded from the ZIP.
 
@@ -176,7 +180,7 @@ def compute_file_hash(file_path: Path) -> str:
     return sha256.hexdigest()
 
 
-def get_all_files(repo_root: Path, exclusions: Set[str]) -> List[Path]:
+def get_all_files(repo_root: Path, exclusions: set[str]) -> list[Path]:
     """
     Get all files in repository that should be included.
 
@@ -203,11 +207,7 @@ def get_all_files(repo_root: Path, exclusions: Set[str]) -> List[Path]:
     return sorted(all_files)
 
 
-def create_zip_archive(
-    repo_root: Path,
-    output_path: Path,
-    files: List[Path]
-) -> None:
+def create_zip_archive(repo_root: Path, output_path: Path, files: list[Path]) -> None:
     """
     Create ZIP archive of repository.
 
@@ -234,7 +234,7 @@ def create_zip_archive(
 def create_manifest(
     repo_root: Path,
     output_path: Path,
-    files: List[Path],
+    files: list[Path],
     profile: str,
 ) -> None:
     """
@@ -496,21 +496,18 @@ ls -lh {zip_path.name}
 # MAIN FUNCTION
 # ============================================================================
 
+
 def main():
     """Main execution function."""
-    parser = argparse.ArgumentParser(
-        description="Prepare Feldtheorie V5.0.0 for Zenodo upload"
-    )
+    parser = argparse.ArgumentParser(description="Prepare Feldtheorie V5.0.0 for Zenodo upload")
     parser.add_argument(
         "--output",
         type=Path,
         default=None,
-        help="Output directory (default: releases/v5.0.0_Zenodo_Ready)"
+        help="Output directory (default: releases/v5.0.0_Zenodo_Ready)",
     )
     parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Show what would be done without creating files"
+        "--dry-run", action="store_true", help="Show what would be done without creating files"
     )
     parser.add_argument(
         "--profile",
@@ -599,8 +596,8 @@ def main():
         print("NEXT STEPS:")
         print("1. Review UPLOAD_CHECKLIST.md")
         print("2. Convert papers to PDF (optional but recommended):")
-        print(f"   - Paper_1_The_Fractal_Engine.md → PDF")
-        print(f"   - Paper_2_Hypothesis_137_Beta.md → PDF")
+        print("   - Paper_1_The_Fractal_Engine.md → PDF")
+        print("   - Paper_2_Hypothesis_137_Beta.md → PDF")
         print("3. Go to https://zenodo.org/ and create new upload")
         print("4. Follow UPLOAD_CHECKLIST.md instructions")
     else:

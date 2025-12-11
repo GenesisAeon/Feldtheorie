@@ -9,10 +9,11 @@ Function: load_radar_zarr(url, rename_map, chunks)
 - Normalizes dimensions to (time, y, x)
 - Renames variables to FieldCube standard
 """
+
 from __future__ import annotations
-from typing import Dict, Optional
-import xarray as xr
+
 import fsspec
+import xarray as xr
 
 
 def _open_any(url: str) -> xr.Dataset:
@@ -54,8 +55,8 @@ def _normalize_dims(ds: xr.Dataset) -> xr.Dataset:
 def load_radar_zarr(
     store_url: str,
     *,
-    rename_map: Optional[Dict[str, str]] = None,
-    chunks: Optional[Dict[str, int]] = None,
+    rename_map: dict[str, str] | None = None,
+    chunks: dict[str, int] | None = None,
 ) -> xr.Dataset:
     """Load radar data (Nimrod/MRMS) from Zarr or NetCDF.
 

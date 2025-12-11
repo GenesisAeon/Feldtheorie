@@ -22,9 +22,9 @@ TRILAYER STRUCTURE:
 import csv
 import json
 import re
-from pathlib import Path
-from typing import Dict, List, Any
 from collections import defaultdict
+from pathlib import Path
+from typing import Any
 
 import yaml
 
@@ -35,10 +35,7 @@ class ChampollionIngestion:
     """
 
     def __init__(
-        self,
-        base_path: Path,
-        artifacts_dir: str = "artifacts",
-        context_dir: str = "context"
+        self, base_path: Path, artifacts_dir: str = "artifacts", context_dir: str = "context"
     ):
         """
         Initialize the ingestion engine.
@@ -57,7 +54,7 @@ class ChampollionIngestion:
         self.context_path.mkdir(parents=True, exist_ok=True)
 
         # Category aggregation storage
-        self.category_data: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
+        self.category_data: dict[str, list[dict[str, Any]]] = defaultdict(list)
 
     def categorize_signal(self, signal_strength: float) -> str:
         """
@@ -76,7 +73,7 @@ class ChampollionIngestion:
         else:
             return "low_coherence"
 
-    def extract_keywords(self, notes: str) -> List[str]:
+    def extract_keywords(self, notes: str) -> list[str]:
         """
         Extract search keywords from notes.
 
@@ -88,9 +85,9 @@ class ChampollionIngestion:
         """
         # Common keywords that indicate important metadata
         keyword_patterns = [
-            r'\b(threshold|coherence|entropy|baseline|signature|pattern|noise)\b',
-            r'\b(Cicada|row \d+)\b',
-            r'\b(detected|approach|emergence|drift|coupling)\b'
+            r"\b(threshold|coherence|entropy|baseline|signature|pattern|noise)\b",
+            r"\b(Cicada|row \d+)\b",
+            r"\b(detected|approach|emergence|drift|coupling)\b",
         ]
 
         keywords = []
@@ -100,7 +97,7 @@ class ChampollionIngestion:
 
         return list(set(keywords))  # Remove duplicates
 
-    def extract_warnings(self, notes: str) -> List[str]:
+    def extract_warnings(self, notes: str) -> list[str]:
         """
         Extract warning/avoidance protocols from notes.
 
@@ -124,11 +121,7 @@ class ChampollionIngestion:
 
         return warnings
 
-    def create_artifact_trilayer(
-        self,
-        artifact_id: str,
-        data: Dict[str, Any]
-    ) -> None:
+    def create_artifact_trilayer(self, artifact_id: str, data: dict[str, Any]) -> None:
         """
         Create Trilayer artifact (YAML, JSON, MD) for a single data entry.
 
@@ -141,31 +134,31 @@ class ChampollionIngestion:
 
         # 1. YAML - Structure & Navigation
         yaml_data = {
-            'artifact_id': artifact_id,
-            'category': data['category'],
-            'signal_strength': data['signal_strength'],
-            'metadata': {
-                'created': '2025-11-23',
-                'source': 'mock_rosetta.csv',
-                'type': 'symbol_sequence'
-            }
+            "artifact_id": artifact_id,
+            "category": data["category"],
+            "signal_strength": data["signal_strength"],
+            "metadata": {
+                "created": "2025-11-23",
+                "source": "mock_rosetta.csv",
+                "type": "symbol_sequence",
+            },
         }
 
-        with open(f"{base_name}.yaml", 'w') as f:
+        with open(f"{base_name}.yaml", "w") as f:
             yaml.dump(yaml_data, f, default_flow_style=False, sort_keys=False)
 
         # 2. JSON - Logic & AI Metadata
         json_data = {
-            'artifact_id': artifact_id,
-            'symbol_sequence': data['symbol_sequence'],
-            'signal_strength': data['signal_strength'],
-            'category': data['category'],
-            'search_hints': data['keywords'],
-            'warnings': data['warnings'],
-            'entropy_estimate': self._estimate_entropy(data['symbol_sequence'])
+            "artifact_id": artifact_id,
+            "symbol_sequence": data["symbol_sequence"],
+            "signal_strength": data["signal_strength"],
+            "category": data["category"],
+            "search_hints": data["keywords"],
+            "warnings": data["warnings"],
+            "entropy_estimate": self._estimate_entropy(data["symbol_sequence"]),
         }
 
-        with open(f"{base_name}.json", 'w') as f:
+        with open(f"{base_name}.json", "w") as f:
             json.dump(json_data, f, indent=2)
 
         # 3. MD - Human-Readable Narrative
@@ -191,7 +184,7 @@ class ChampollionIngestion:
 - **Entropy**: {self._estimate_entropy(data['symbol_sequence']):.3f} bits
 """
 
-        with open(f"{base_name}.md", 'w') as f:
+        with open(f"{base_name}.md", "w") as f:
             f.write(md_content)
 
     def _estimate_entropy(self, sequence: str) -> float:
@@ -214,6 +207,7 @@ class ChampollionIngestion:
 
         # Calculate Shannon entropy: H = -Σ p(x) * log2(p(x))
         import math
+
         total = len(sequence)
         entropy = 0.0
         for count in freq.values():
@@ -233,28 +227,28 @@ class ChampollionIngestion:
         print(f"📥 PHASE 1: Ingesting data from {csv_path.name}")
         print("=" * 60)
 
-        with open(csv_path, 'r') as f:
+        with open(csv_path) as f:
             reader = csv.DictReader(f)
             artifact_count = 0
 
             for idx, row in enumerate(reader, start=1):
                 # Skip empty rows
-                if not row.get('symbol_sequence'):
+                if not row.get("symbol_sequence"):
                     continue
 
                 # Extract and enrich data
-                signal_strength = float(row['signal_strength'])
+                signal_strength = float(row["signal_strength"])
                 category = self.categorize_signal(signal_strength)
-                keywords = self.extract_keywords(row['notes'])
-                warnings = self.extract_warnings(row['notes'])
+                keywords = self.extract_keywords(row["notes"])
+                warnings = self.extract_warnings(row["notes"])
 
                 artifact_data = {
-                    'symbol_sequence': row['symbol_sequence'],
-                    'signal_strength': signal_strength,
-                    'notes': row['notes'],
-                    'category': category,
-                    'keywords': keywords,
-                    'warnings': warnings
+                    "symbol_sequence": row["symbol_sequence"],
+                    "signal_strength": signal_strength,
+                    "notes": row["notes"],
+                    "category": category,
+                    "keywords": keywords,
+                    "warnings": warnings,
                 }
 
                 # Create trilayer artifact
@@ -262,10 +256,7 @@ class ChampollionIngestion:
                 self.create_artifact_trilayer(artifact_id, artifact_data)
 
                 # Store for context aggregation
-                self.category_data[category].append({
-                    'artifact_id': artifact_id,
-                    **artifact_data
-                })
+                self.category_data[category].append({"artifact_id": artifact_id, **artifact_data})
 
                 artifact_count += 1
                 print(f"  ✓ Created artifact {artifact_id} [{category}]")
@@ -279,7 +270,7 @@ class ChampollionIngestion:
 
         This is the MIDDLEWARE layer that aggregates metadata by category.
         """
-        print(f"\n🔄 PHASE 2: Generating Context Layer (Semantic Middleware)")
+        print("\n🔄 PHASE 2: Generating Context Layer (Semantic Middleware)")
         print("=" * 60)
 
         for category, artifacts in self.category_data.items():
@@ -292,10 +283,10 @@ class ChampollionIngestion:
             signal_strengths = []
 
             for artifact in artifacts:
-                all_keywords.extend(artifact['keywords'])
-                all_warnings.extend(artifact['warnings'])
-                artifact_ids.append(artifact['artifact_id'])
-                signal_strengths.append(artifact['signal_strength'])
+                all_keywords.extend(artifact["keywords"])
+                all_warnings.extend(artifact["warnings"])
+                artifact_ids.append(artifact["artifact_id"])
+                signal_strengths.append(artifact["signal_strength"])
 
             # Remove duplicates and sort
             unique_keywords = sorted(set(all_keywords))
@@ -308,24 +299,24 @@ class ChampollionIngestion:
 
             # 1. Context JSON - AI Metadata
             context_json = {
-                'category': category,
-                'artifact_count': len(artifacts),
-                'search_hints': unique_keywords,
-                'avoidance_protocols': unique_warnings,
-                'access_frequency': {
-                    'read_count': 0,  # Placeholder for future tracking
-                    'last_accessed': None
+                "category": category,
+                "artifact_count": len(artifacts),
+                "search_hints": unique_keywords,
+                "avoidance_protocols": unique_warnings,
+                "access_frequency": {
+                    "read_count": 0,  # Placeholder for future tracking
+                    "last_accessed": None,
                 },
-                'statistics': {
-                    'avg_signal_strength': round(avg_signal, 3),
-                    'min_signal_strength': round(min_signal, 3),
-                    'max_signal_strength': round(max_signal, 3)
+                "statistics": {
+                    "avg_signal_strength": round(avg_signal, 3),
+                    "min_signal_strength": round(min_signal, 3),
+                    "max_signal_strength": round(max_signal, 3),
                 },
-                'artifact_ids': artifact_ids
+                "artifact_ids": artifact_ids,
             }
 
             json_path = self.context_path / f"{category}_meta.json"
-            with open(json_path, 'w') as f:
+            with open(json_path, "w") as f:
                 json.dump(context_json, f, indent=2)
             print(f"  ✓ Generated {json_path.name}")
 
@@ -360,27 +351,27 @@ When searching in this category, focus on these keywords:
 """
 
             md_path = self.context_path / f"{category}_narrative.md"
-            with open(md_path, 'w') as f:
+            with open(md_path, "w") as f:
                 f.write(context_md)
             print(f"  ✓ Generated {md_path.name}")
 
             # 3. Context YAML - Navigation Structure
             context_yaml = {
-                'category': category,
-                'artifact_count': len(artifacts),
-                'artifacts': [
+                "category": category,
+                "artifact_count": len(artifacts),
+                "artifacts": [
                     {
-                        'id': aid,
-                        'yaml_ref': f'artifacts/artifact_{aid}.yaml',
-                        'json_ref': f'artifacts/artifact_{aid}.json',
-                        'md_ref': f'artifacts/artifact_{aid}.md'
+                        "id": aid,
+                        "yaml_ref": f"artifacts/artifact_{aid}.yaml",
+                        "json_ref": f"artifacts/artifact_{aid}.json",
+                        "md_ref": f"artifacts/artifact_{aid}.md",
                     }
                     for aid in artifact_ids
-                ]
+                ],
             }
 
             yaml_path = self.context_path / f"{category}_nav.yaml"
-            with open(yaml_path, 'w') as f:
+            with open(yaml_path, "w") as f:
                 yaml.dump(context_yaml, f, default_flow_style=False, sort_keys=False)
             print(f"  ✓ Generated {yaml_path.name}")
 
@@ -418,5 +409,5 @@ def main():
     print("\n✨ Ready for Master Index generation (run close_the_diamond.py)")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

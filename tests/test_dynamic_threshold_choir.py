@@ -3,19 +3,19 @@
 Tests for Dynamic Threshold Choir system
 """
 
-import pytest
-import numpy as np
+import tempfile
 from datetime import datetime, timedelta
 from pathlib import Path
-import tempfile
 
+import numpy as np
+import pytest
 from sonification.dynamic_threshold_choir import (
+    ChoirMetadata,
+    DataSourceSimulator,
+    DestabilizationEffects,
     ThresholdChoir,
     VoiceState,
-    ChoirMetadata,
-    DestabilizationEffects,
-    DataSourceSimulator,
-    create_demo_choir
+    create_demo_choir,
 )
 
 
@@ -24,11 +24,7 @@ class TestVoiceState:
 
     def test_voice_state_creation(self):
         voice = VoiceState(
-            name="Test",
-            beta=4.0,
-            theta=50.0,
-            current_R=60.0,
-            field_type="strongly_coupled"
+            name="Test", beta=4.0, theta=50.0, current_R=60.0, field_type="strongly_coupled"
         )
         assert voice.name == "Test"
         assert voice.beta == 4.0
@@ -39,11 +35,7 @@ class TestVoiceState:
 
     def test_voice_state_defaults(self):
         voice = VoiceState(
-            name="Test",
-            beta=3.0,
-            theta=100.0,
-            current_R=90.0,
-            field_type="high_dimensional"
+            name="Test", beta=3.0, theta=100.0, current_R=90.0, field_type="high_dimensional"
         )
         assert voice.amplitude == 0.5
         assert voice.frequency == 220.0
@@ -62,10 +54,7 @@ class TestDestabilizationEffects:
 
         # Apply tremolo
         tremolo_signal = DestabilizationEffects.tremolo(
-            signal,
-            rate=5.0,
-            depth=0.5,
-            sample_rate=sample_rate
+            signal, rate=5.0, depth=0.5, sample_rate=sample_rate
         )
 
         # Check output shape
@@ -79,11 +68,7 @@ class TestDestabilizationEffects:
         sample_rate = 44100
         duration = 0.5
         vibrato_signal = DestabilizationEffects.vibrato(
-            frequency=440.0,
-            rate=5.0,
-            depth=10.0,
-            duration=duration,
-            sample_rate=sample_rate
+            frequency=440.0, rate=5.0, depth=10.0, duration=duration, sample_rate=sample_rate
         )
 
         # Check output shape
@@ -125,13 +110,7 @@ class TestThresholdChoir:
 
     def test_add_voice(self):
         choir = ThresholdChoir()
-        voice = choir.add_voice(
-            name="TestVoice",
-            beta=4.2,
-            theta=50.0,
-            initial_R=60.0,
-            pan=-0.5
-        )
+        voice = choir.add_voice(name="TestVoice", beta=4.2, theta=50.0, initial_R=60.0, pan=-0.5)
 
         assert voice.name == "TestVoice"
         assert voice.beta == 4.2
@@ -210,15 +189,15 @@ class TestThresholdChoir:
         stereo_center = choir.apply_spatial_mix(signal, pan=0.0)
         assert stereo_center.shape == (2, 1000)
         # Center should have equal power in both channels
-        assert np.abs(np.sum(stereo_center[0]**2) - np.sum(stereo_center[1]**2)) < 1e-5
+        assert np.abs(np.sum(stereo_center[0] ** 2) - np.sum(stereo_center[1] ** 2)) < 1e-5
 
         # Test left
         stereo_left = choir.apply_spatial_mix(signal, pan=-1.0)
-        assert np.sum(stereo_left[0]**2) > np.sum(stereo_left[1]**2)
+        assert np.sum(stereo_left[0] ** 2) > np.sum(stereo_left[1] ** 2)
 
         # Test right
         stereo_right = choir.apply_spatial_mix(signal, pan=1.0)
-        assert np.sum(stereo_right[1]**2) > np.sum(stereo_right[0]**2)
+        assert np.sum(stereo_right[1] ** 2) > np.sum(stereo_right[0] ** 2)
 
     def test_render_empty_choir_raises(self):
         choir = ThresholdChoir()
@@ -288,10 +267,7 @@ class TestDataSourceSimulator:
     """Test data source simulators"""
 
     def test_simulate_amoc(self):
-        data = DataSourceSimulator.simulate_amoc_destabilization(
-            duration=10.0,
-            sample_rate=1.0
-        )
+        data = DataSourceSimulator.simulate_amoc_destabilization(duration=10.0, sample_rate=1.0)
 
         assert len(data) == 10
         # Should be list of (time, value) tuples
@@ -302,10 +278,7 @@ class TestDataSourceSimulator:
         assert values[-1] < values[0]
 
     def test_simulate_llm_scaling(self):
-        data = DataSourceSimulator.simulate_llm_scaling(
-            duration=5.0,
-            sample_rate=2.0
-        )
+        data = DataSourceSimulator.simulate_llm_scaling(duration=5.0, sample_rate=2.0)
 
         assert len(data) == 10  # 5s * 2 Hz
 
@@ -314,10 +287,7 @@ class TestDataSourceSimulator:
         assert values[-1] > values[0]
 
     def test_simulate_ecosystem_collapse(self):
-        data = DataSourceSimulator.simulate_ecosystem_collapse(
-            duration=8.0,
-            sample_rate=1.0
-        )
+        data = DataSourceSimulator.simulate_ecosystem_collapse(duration=8.0, sample_rate=1.0)
 
         assert len(data) == 8
 
@@ -379,7 +349,7 @@ class TestIntegration:
             assert output.stat().st_size > 0
 
             # Check metadata
-            metadata_path = output.with_suffix('.json')
+            metadata_path = output.with_suffix(".json")
             assert metadata_path.exists()
 
     def test_stability_dynamics(self):

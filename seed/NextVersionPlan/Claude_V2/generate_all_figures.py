@@ -3,13 +3,13 @@
 Master script to generate all figures for arXiv submission
 """
 
-import sys
 import subprocess
+import sys
 
 figures = [
-    ('generate_figure1.py', 'Figure 1: UTAC Overview'),
-    ('generate_figure3.py', 'Figure 3: ABM Results'),
-    ('generate_figures_4_5.py', 'Figures 4 & 5: Meta-Regression and Phi-Scaling'),
+    ("generate_figure1.py", "Figure 1: UTAC Overview"),
+    ("generate_figure3.py", "Figure 3: ABM Results"),
+    ("generate_figures_4_5.py", "Figures 4 & 5: Meta-Regression and Phi-Scaling"),
 ]
 
 print("=" * 60)
@@ -22,15 +22,12 @@ failed = []
 for script, description in figures:
     print(f"Generating {description}...")
     print(f"  Running: python3 {script}")
-    
+
     try:
-        result = subprocess.run(['python3', script], 
-                              capture_output=True, 
-                              text=True, 
-                              timeout=60)
-        
+        result = subprocess.run(["python3", script], capture_output=True, text=True, timeout=60)
+
         if result.returncode == 0:
-            print(f"  ✓ Success!")
+            print("  ✓ Success!")
             if result.stdout:
                 print(f"  {result.stdout.strip()}")
         else:
@@ -39,12 +36,12 @@ for script, description in figures:
                 print(f"  Error: {result.stderr}")
             failed.append((script, description))
     except subprocess.TimeoutExpired:
-        print(f"  ✗ TIMEOUT (>60s)")
+        print("  ✗ TIMEOUT (>60s)")
         failed.append((script, description))
     except Exception as e:
         print(f"  ✗ ERROR: {e}")
         failed.append((script, description))
-    
+
     print()
 
 print("=" * 60)

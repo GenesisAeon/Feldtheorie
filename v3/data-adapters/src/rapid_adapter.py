@@ -26,19 +26,14 @@ Date: 2025-11-14
 Version: 0.1.0
 """
 
+import os
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Dict, List, Optional, Any, Tuple
-import json
-import os
-import re
+from typing import Any
 
 import numpy as np
 import pandas as pd
-from scipy import stats, signal
-import requests
-
-from base_adapter import BaseAdapter, UTACState
+from base_adapter import BaseAdapter
 
 
 class RAPIDAdapter(BaseAdapter):
@@ -56,12 +51,7 @@ class RAPIDAdapter(BaseAdapter):
     # RAPID array location
     LATITUDE = 26.5  # °N
 
-    def __init__(
-        self,
-        api_key: Optional[str] = None,
-        cache_dir: Optional[Path] = None,
-        **kwargs
-    ):
+    def __init__(self, api_key: str | None = None, cache_dir: Path | None = None, **kwargs):
         """
         Initialize RAPID adapter.
 
@@ -70,9 +60,9 @@ class RAPIDAdapter(BaseAdapter):
             cache_dir: Cache directory
             **kwargs: Additional BaseAdapter arguments
         """
-        super().__init__(system_id='amoc', cache_dir=cache_dir, **kwargs)
+        super().__init__(system_id="amoc", cache_dir=cache_dir, **kwargs)
 
-        self.api_key = api_key or os.getenv('RAPID_API_KEY')
+        self.api_key = api_key or os.getenv("RAPID_API_KEY")
 
         # RAPID data endpoints
         self.api_base = "https://www.rapid.ac.uk/rapidmoc/rapid_data"
@@ -80,7 +70,7 @@ class RAPIDAdapter(BaseAdapter):
 
         self.logger.info("Initialized RAPIDAdapter for AMOC")
 
-    def fetch_raw_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+    def fetch_raw_data(self, start_date: datetime, end_date: datetime) -> dict[str, Any]:
         """
         Fetch RAPID-MOCHA transport data.
 
@@ -100,7 +90,7 @@ class RAPIDAdapter(BaseAdapter):
         self.logger.info("Using synthetic RAPID data (based on real trends)")
         return self._generate_synthetic_data(start_date, end_date)
 
-    def _generate_synthetic_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+    def _generate_synthetic_data(self, start_date: datetime, end_date: datetime) -> dict[str, Any]:
         """
         Generate synthetic RAPID data based on real AMOC trends.
 
@@ -117,7 +107,7 @@ class RAPIDAdapter(BaseAdapter):
             Synthetic data dictionary
         """
         # Generate daily timestamps
-        timestamps = pd.date_range(start=start_date, end=end_date, freq='D')
+        timestamps = pd.date_range(start=start_date, end=end_date, freq="D")
 
         # Base trend: decline from 17.2 Sv (2004) to 15.8 Sv (2024)
         # Linear trend: -0.07 Sv/yr
@@ -125,18 +115,19 @@ class RAPIDAdapter(BaseAdapter):
         baseline_transport = 17.2  # Sv
         decline_rate = -0.07  # Sv/yr
 
-        years_since_baseline = (timestamps - pd.Timestamp(f'{baseline_year}-01-01')).days / 365.25
+        years_since_baseline = (timestamps - pd.Timestamp(f"{baseline_year}-01-01")).days / 365.25
 
         # Mean transport
         mean_transport = baseline_transport + decline_rate * years_since_baseline
 
         # Add realistic variability
         # 1. Seasonal cycle (±2 Sv amplitude)
-        seasonal = 2.0 * np.sin(2 * np.pi * years_since_baseline - np.pi/2)
+        seasonal = 2.0 * np.sin(2 * np.pi * years_since_baseline - np.pi / 2)
 
         # 2. Synoptic variability (±3 Sv, ~10-day timescale)
         synoptic = 3.0 * np.random.randn(len(timestamps))
         from scipy.ndimage import gaussian_filter1d
+
         synoptic = gaussian_filter1d(synoptic, sigma=10)
 
         # 3. Interannual variability (±1 Sv)
@@ -154,19 +145,19 @@ class RAPIDAdapter(BaseAdapter):
         mht = 0.06 * moc_transport  # PW (Petawatts = 10^15 W)
 
         return {
-            'timestamps': timestamps.tolist(),
-            'moc_transport_sv': moc_transport.tolist(),
-            'mht_pw': mht.tolist(),
-            'metadata': {
-                'source': 'synthetic',
-                'baseline_transport_sv': baseline_transport,
-                'decline_rate_sv_per_yr': decline_rate,
-                'baseline_year': baseline_year,
-                'location': f'{self.LATITUDE}°N Atlantic'
-            }
+            "timestamps": timestamps.tolist(),
+            "moc_transport_sv": moc_transport.tolist(),
+            "mht_pw": mht.tolist(),
+            "metadata": {
+                "source": "synthetic",
+                "baseline_transport_sv": baseline_transport,
+                "decline_rate_sv_per_yr": decline_rate,
+                "baseline_year": baseline_year,
+                "location": f"{self.LATITUDE}°N Atlantic",
+            },
         }
 
-    def transform_to_timeseries(self, raw_data: Dict[str, Any]) -> pd.DataFrame:
+    def transform_to_timeseries(self, raw_data: dict[str, Any]) -> pd.DataFrame:
         """
         Transform raw RAPID data to standardized time series.
 
@@ -176,22 +167,24 @@ class RAPIDAdapter(BaseAdapter):
         Returns:
             DataFrame with columns: ['timestamp', 'value', 'mht']
         """
-        df = pd.DataFrame({
-            'timestamp': pd.to_datetime(raw_data['timestamps']),
-            'value': raw_data['moc_transport_sv'],  # MOC transport as primary value
-            'mht': raw_data['mht_pw']
-        })
+        df = pd.DataFrame(
+            {
+                "timestamp": pd.to_datetime(raw_data["timestamps"]),
+                "value": raw_data["moc_transport_sv"],  # MOC transport as primary value
+                "mht": raw_data["mht_pw"],
+            }
+        )
 
-        df = df.set_index('timestamp').sort_index()
+        df = df.set_index("timestamp").sort_index()
 
         # Resample to monthly (RAPID daily data is noisy)
-        df_monthly = df.resample('MS').mean()
+        df_monthly = df.resample("MS").mean()
 
         self.logger.info(f"Transformed {len(df_monthly)} RAPID monthly observations")
 
         return df_monthly.reset_index()
 
-    def estimate_beta(self, timeseries: pd.DataFrame) -> Tuple[float, float]:
+    def estimate_beta(self, timeseries: pd.DataFrame) -> tuple[float, float]:
         """
         Estimate β from RAPID time series.
 
@@ -206,7 +199,7 @@ class RAPIDAdapter(BaseAdapter):
         Returns:
             (beta_mean, beta_std)
         """
-        ts = timeseries.set_index('timestamp')['value']
+        ts = timeseries.set_index("timestamp")["value"]
 
         # Method 1: Hosing Experiment Response
         # β from response time to freshwater forcing
@@ -302,7 +295,7 @@ class RAPIDAdapter(BaseAdapter):
 
         return R
 
-    def get_additional_metrics(self, timeseries: pd.DataFrame) -> Dict[str, Any]:
+    def get_additional_metrics(self, timeseries: pd.DataFrame) -> dict[str, Any]:
         """
         Calculate additional AMOC-specific metrics.
 
@@ -313,13 +306,13 @@ class RAPIDAdapter(BaseAdapter):
             - mht_current_pw: Meridional heat transport
             - years_to_threshold: Estimated years to collapse
         """
-        ts = timeseries.set_index('timestamp')['value']
+        ts = timeseries.set_index("timestamp")["value"]
 
         # Current transport
         current_transport = ts.iloc[-1]
 
         # Decline rate (linear fit over last 20 years)
-        recent = ts.last('20Y')
+        recent = ts.last("20Y")
         x = np.arange(len(recent))
         slope, _ = np.polyfit(x, recent.values, 1)
         decline_rate_per_month = slope
@@ -336,18 +329,19 @@ class RAPIDAdapter(BaseAdapter):
         mht_current = 0.06 * current_transport
 
         return {
-            'current_transport_sv': float(current_transport),
-            'decline_rate_sv_per_decade': float(decline_rate_per_decade),
-            'mht_current_pw': float(mht_current),
-            'years_to_threshold': float(years_to_threshold),
-            'threshold_sv': self.THETA_TRANSPORT_SV,
-            'historical_mean_sv': self.HISTORICAL_MEAN_SV
+            "current_transport_sv": float(current_transport),
+            "decline_rate_sv_per_decade": float(decline_rate_per_decade),
+            "mht_current_pw": float(mht_current),
+            "years_to_threshold": float(years_to_threshold),
+            "threshold_sv": self.THETA_TRANSPORT_SV,
+            "historical_mean_sv": self.HISTORICAL_MEAN_SV,
         }
 
 
 if __name__ == "__main__":
     """Test RAPID adapter with synthetic data."""
     import logging
+
     logging.basicConfig(level=logging.INFO)
 
     adapter = RAPIDAdapter()
@@ -355,9 +349,9 @@ if __name__ == "__main__":
     # Get current state
     state = adapter.get_current_state()
 
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("AMOC (Atlantic Meridional Overturning Circulation)")
-    print("="*60)
+    print("=" * 60)
     print(f"System ID: {state.system_id}")
     print(f"Timestamp: {state.timestamp}")
     print(f"R (normalized state): {state.R:.4f}")
@@ -365,15 +359,15 @@ if __name__ == "__main__":
     print(f"β (steepness): {state.beta:.2f}")
     print(f"σ (sigmoid): {state.sigma:.4f}")
     print(f"Status: {state.status}")
-    print(f"\nMetadata:")
+    print("\nMetadata:")
     print(f"  β uncertainty: ±{state.metadata['beta_std']:.2f}")
     print(f"  Raw MOC transport: {state.metadata['raw_value']:.2f} Sv")
     print(f"  Observations: {state.metadata['n_observations']}")
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
 
     # Additional metrics
     end_date = datetime.now()
-    start_date = end_date - timedelta(days=365*5)
+    start_date = end_date - timedelta(days=365 * 5)
     raw_data = adapter.fetch_raw_data(start_date, end_date)
     ts = adapter.transform_to_timeseries(raw_data)
     metrics = adapter.get_additional_metrics(ts)

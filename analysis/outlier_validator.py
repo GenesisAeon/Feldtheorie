@@ -52,7 +52,9 @@ def analyse_dataset(
 
     guard_threshold = metadata.delta_aic_guard or 10.0
     guard_pass = guard_delta_aic(result, guard_threshold)
-    instrument_flag = instrumentation_heuristic(result.beta, result.delta_aic_best, result.r_squared)
+    instrument_flag = instrumentation_heuristic(
+        result.beta, result.delta_aic_best, result.r_squared
+    )
 
     payload = result.to_dict()
     payload.update(
@@ -75,9 +77,7 @@ def run_cli(args: argparse.Namespace) -> None:
     filtered = filter_datasets(datasets, domains=args.domain, identifiers=args.dataset)
 
     candidates: list[ManifestDataset] = [
-        dataset
-        for dataset in filtered
-        if is_outlier_candidate(dataset, args.beta_threshold)
+        dataset for dataset in filtered if is_outlier_candidate(dataset, args.beta_threshold)
     ]
 
     if not candidates:

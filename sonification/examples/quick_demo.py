@@ -55,9 +55,9 @@ def main():
             "High-Dimensional (β=3.25)",
             "Strongly Coupled (β=4.0)",
             "Physically Constrained (β=5.0)",
-            "Meta-Adaptive (β=8.0)"
+            "Meta-Adaptive (β=8.0)",
         ],
-        gap_duration=0.5
+        gap_duration=0.5,
     )
     save_audio(audio, output_dir / "field_type_spectrum.wav", sonifier.sample_rate)
     save_metadata(meta, output_dir / "field_type_spectrum.json")
@@ -70,9 +70,9 @@ def main():
             "LLM Emergence (β=3.47)",
             "AMOC Collapse (β=4.2)",
             "Black Hole Accretion (β=5.5)",
-            "Urban Heat Island (β=16.3)"
+            "Urban Heat Island (β=16.3)",
         ],
-        gap_duration=0.7
+        gap_duration=0.7,
     )
     save_audio(audio, output_dir / "criticality_journey.wav", sonifier.sample_rate)
     save_metadata(meta, output_dir / "criticality_journey.json")

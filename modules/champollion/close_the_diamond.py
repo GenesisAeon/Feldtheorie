@@ -19,7 +19,7 @@ OUTPUT:
 
 import json
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Any
 
 import yaml
 
@@ -29,12 +29,7 @@ class DiamondClosure:
     Master Index Generator - Closes the Champollion Diamond Architecture.
     """
 
-    def __init__(
-        self,
-        base_path: Path,
-        context_dir: str = "context",
-        indices_dir: str = "indices"
-    ):
+    def __init__(self, base_path: Path, context_dir: str = "context", indices_dir: str = "indices"):
         """
         Initialize the Diamond Closure engine.
 
@@ -51,7 +46,7 @@ class DiamondClosure:
         self.indices_path.mkdir(parents=True, exist_ok=True)
 
         # Storage for aggregated context data
-        self.categories: Dict[str, Dict[str, Any]] = {}
+        self.categories: dict[str, dict[str, Any]] = {}
 
     def load_context_layer(self) -> None:
         """
@@ -70,29 +65,29 @@ class DiamondClosure:
             return
 
         for json_file in json_files:
-            category = json_file.stem.replace('_meta', '')
+            category = json_file.stem.replace("_meta", "")
 
-            with open(json_file, 'r') as f:
+            with open(json_file) as f:
                 metadata = json.load(f)
 
             # Load corresponding narrative
             md_file = self.context_path / f"{category}_narrative.md"
             narrative = ""
             if md_file.exists():
-                with open(md_file, 'r') as f:
+                with open(md_file) as f:
                     narrative = f.read()
 
             # Load corresponding navigation
             yaml_file = self.context_path / f"{category}_nav.yaml"
             navigation = {}
             if yaml_file.exists():
-                with open(yaml_file, 'r') as f:
+                with open(yaml_file) as f:
                     navigation = yaml.safe_load(f)
 
             self.categories[category] = {
-                'metadata': metadata,
-                'narrative': narrative,
-                'navigation': navigation
+                "metadata": metadata,
+                "narrative": narrative,
+                "navigation": navigation,
             }
 
             print(f"  ✓ Loaded context for: {category}")
@@ -113,30 +108,30 @@ class DiamondClosure:
         print("=" * 60)
 
         master_index = {
-            'champollion_version': '5.0',
-            'architecture': 'Diamond (Trilayer with Context Middleware)',
-            'description': 'Master index for Champollion artifact system',
-            'last_updated': '2025-11-23',
-            'categories': {}
+            "champollion_version": "5.0",
+            "architecture": "Diamond (Trilayer with Context Middleware)",
+            "description": "Master index for Champollion artifact system",
+            "last_updated": "2025-11-23",
+            "categories": {},
         }
 
         for category, data in self.categories.items():
-            metadata = data['metadata']
-            navigation = data['navigation']
+            metadata = data["metadata"]
+            navigation = data["navigation"]
 
-            master_index['categories'][category] = {
-                'artifact_count': metadata.get('artifact_count', 0),
-                'context_layer': {
-                    'json_ref': f'context/{category}_meta.json',
-                    'yaml_ref': f'context/{category}_nav.yaml',
-                    'md_ref': f'context/{category}_narrative.md'
+            master_index["categories"][category] = {
+                "artifact_count": metadata.get("artifact_count", 0),
+                "context_layer": {
+                    "json_ref": f"context/{category}_meta.json",
+                    "yaml_ref": f"context/{category}_nav.yaml",
+                    "md_ref": f"context/{category}_narrative.md",
                 },
-                'statistics': metadata.get('statistics', {}),
-                'artifacts': navigation.get('artifacts', [])
+                "statistics": metadata.get("statistics", {}),
+                "artifacts": navigation.get("artifacts", []),
             }
 
         output_path = self.indices_path / "champollion_index.yaml"
-        with open(output_path, 'w') as f:
+        with open(output_path, "w") as f:
             yaml.dump(master_index, f, default_flow_style=False, sort_keys=False)
 
         print(f"  ✓ Generated: {output_path}")
@@ -191,15 +186,15 @@ This is the **Master Index** for the Champollion Diamond Architecture. It provid
 
         # Generate category sections
         for category, data in sorted(self.categories.items()):
-            metadata = data['metadata']
-            stats = metadata.get('statistics', {})
+            metadata = data["metadata"]
+            stats = metadata.get("statistics", {})
 
             readme_content += f"### {category.replace('_', ' ').title()}\n\n"
             readme_content += f"**Artifacts**: {metadata.get('artifact_count', 0)} | "
             readme_content += f"**Avg Signal**: {stats.get('avg_signal_strength', 0):.3f}\n\n"
 
             # AI Transparency Section
-            search_hints = metadata.get('search_hints', [])
+            search_hints = metadata.get("search_hints", [])
             if search_hints:
                 readme_content += "**🤖 AI Search Hints** (What the AI looks for):\n"
                 readme_content += "```\n"
@@ -207,7 +202,7 @@ This is the **Master Index** for the Champollion Diamond Architecture. It provid
                 readme_content += "\n```\n\n"
 
             # Human Warnings Section
-            warnings = metadata.get('avoidance_protocols', [])
+            warnings = metadata.get("avoidance_protocols", [])
             if warnings:
                 readme_content += "**⚠️  Human Review Protocols**:\n"
                 for warning in warnings:
@@ -215,10 +210,14 @@ This is the **Master Index** for the Champollion Diamond Architecture. It provid
                 readme_content += "\n"
 
             # Navigation
-            readme_content += f"**📂 Context Files**:\n"
-            readme_content += f"- Metadata: [`context/{category}_meta.json`](context/{category}_meta.json)\n"
+            readme_content += "**📂 Context Files**:\n"
+            readme_content += (
+                f"- Metadata: [`context/{category}_meta.json`](context/{category}_meta.json)\n"
+            )
             readme_content += f"- Narrative: [`context/{category}_narrative.md`](context/{category}_narrative.md)\n"
-            readme_content += f"- Navigation: [`context/{category}_nav.yaml`](context/{category}_nav.yaml)\n"
+            readme_content += (
+                f"- Navigation: [`context/{category}_nav.yaml`](context/{category}_nav.yaml)\n"
+            )
             readme_content += "\n---\n\n"
 
         # Footer
@@ -254,7 +253,7 @@ both human and machine intelligence work with the same context.
 """
 
         output_path = self.indices_path / "README_INDEX.md"
-        with open(output_path, 'w') as f:
+        with open(output_path, "w") as f:
             f.write(readme_content)
 
         print(f"  ✓ Generated: {output_path}")
@@ -270,11 +269,11 @@ both human and machine intelligence work with the same context.
             print("⚠️  Warning: Main README.md not found, skipping update")
             return
 
-        with open(main_readme_path, 'r') as f:
+        with open(main_readme_path) as f:
             content = f.read()
 
         # Check if reference already exists
-        if 'indices/README_INDEX.md' in content:
+        if "indices/README_INDEX.md" in content:
             print("\n✓ Main README already contains index reference")
             return
 
@@ -306,10 +305,10 @@ The Master Index provides:
             # Append at end if no roadmap section
             content += reference
 
-        with open(main_readme_path, 'w') as f:
+        with open(main_readme_path, "w") as f:
             f.write(content)
 
-        print(f"\n✓ Updated main README with index reference")
+        print("\n✓ Updated main README with index reference")
 
     def close_diamond(self) -> None:
         """
@@ -332,10 +331,10 @@ The Master Index provides:
         print("\n" + "=" * 60)
         print("💎 DIAMOND CLOSURE COMPLETE")
         print("=" * 60)
-        print(f"\n📍 Entry Points:")
+        print("\n📍 Entry Points:")
         print(f"   - System/AI: {yaml_path}")
         print(f"   - Human:     {readme_path}")
-        print(f"\n✨ The Champollion Diamond is now complete!")
+        print("\n✨ The Champollion Diamond is now complete!")
 
 
 def main():
@@ -354,5 +353,5 @@ def main():
     closure.close_diamond()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

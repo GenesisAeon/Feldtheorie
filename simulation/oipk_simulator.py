@@ -266,9 +266,7 @@ class OIPKSimulator:
 
         self.consciousness_frames.append(frame)
 
-    def run_asynchronous(
-        self, num_tau_steps: int = 100, num_t_steps_per_tau: int = 1000
-    ):
+    def run_asynchronous(self, num_tau_steps: int = 100, num_t_steps_per_tau: int = 1000):
         """
         Run asynchronous dual-flow simulation.
 

@@ -13,11 +13,11 @@ Author: Johann B. Römer, Claude (Sonnet 4.5)
 Date: 2025-11-19
 """
 
-import csv
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 from scipy import stats
-from pathlib import Path
 
 
 def load_results(filepath: str) -> pd.DataFrame:
@@ -31,9 +31,9 @@ def load_results(filepath: str) -> pd.DataFrame:
 
 def compute_descriptive_stats(df: pd.DataFrame) -> pd.DataFrame:
     """Compute mean and std for each condition."""
-    metrics = ['output_length', 'vocab_density', 'self_reflection']
+    metrics = ["output_length", "vocab_density", "self_reflection"]
 
-    stats_df = df.groupby('condition')[metrics].agg(['mean', 'std', 'count'])
+    stats_df = df.groupby("condition")[metrics].agg(["mean", "std", "count"])
     return stats_df
 
 
@@ -66,8 +66,8 @@ def interpret_cohens_d(d: float) -> str:
 
 def effect_size_analysis(df: pd.DataFrame) -> dict:
     """Compute all pairwise effect sizes."""
-    conditions = df['condition'].unique()
-    metrics = ['output_length', 'vocab_density', 'self_reflection']
+    conditions = df["condition"].unique()
+    metrics = ["output_length", "vocab_density", "self_reflection"]
 
     results = {}
 
@@ -77,13 +77,13 @@ def effect_size_analysis(df: pd.DataFrame) -> dict:
         for cond1 in conditions:
             for cond2 in conditions:
                 if cond1 != cond2:
-                    group1 = df[df['condition'] == cond1][metric].values
-                    group2 = df[df['condition'] == cond2][metric].values
+                    group1 = df[df["condition"] == cond1][metric].values
+                    group2 = df[df["condition"] == cond2][metric].values
 
                     d = cohens_d(group1, group2)
                     results[metric][f"{cond1}_vs_{cond2}"] = {
-                        'd': d,
-                        'interpretation': interpret_cohens_d(d)
+                        "d": d,
+                        "interpretation": interpret_cohens_d(d),
                     }
 
     return results
@@ -91,23 +91,23 @@ def effect_size_analysis(df: pd.DataFrame) -> dict:
 
 def linear_regression_analysis(df: pd.DataFrame) -> dict:
     """Perform linear regression: ψ = ψ_base + λ·φ"""
-    metrics = ['output_length', 'vocab_density', 'self_reflection']
+    metrics = ["output_length", "vocab_density", "self_reflection"]
 
     results = {}
 
     for metric in metrics:
-        X = df['phi'].values
+        X = df["phi"].values
         y = df[metric].values
 
         # Linear regression
         slope, intercept, r_value, p_value, std_err = stats.linregress(X, y)
 
         results[metric] = {
-            'lambda': slope,
-            'psi_base': intercept,
-            'r_squared': r_value**2,
-            'p_value': p_value,
-            'std_err': std_err
+            "lambda": slope,
+            "psi_base": intercept,
+            "r_squared": r_value**2,
+            "p_value": p_value,
+            "std_err": std_err,
         }
 
     return results
@@ -115,20 +115,16 @@ def linear_regression_analysis(df: pd.DataFrame) -> dict:
 
 def anova_analysis(df: pd.DataFrame) -> dict:
     """Perform one-way ANOVA across conditions."""
-    metrics = ['output_length', 'vocab_density', 'self_reflection']
-    conditions = df['condition'].unique()
+    metrics = ["output_length", "vocab_density", "self_reflection"]
+    conditions = df["condition"].unique()
 
     results = {}
 
     for metric in metrics:
-        groups = [df[df['condition'] == cond][metric].values for cond in conditions]
+        groups = [df[df["condition"] == cond][metric].values for cond in conditions]
         f_stat, p_value = stats.f_oneway(*groups)
 
-        results[metric] = {
-            'f_statistic': f_stat,
-            'p_value': p_value,
-            'significant': p_value < 0.05
-        }
+        results[metric] = {"f_statistic": f_stat, "p_value": p_value, "significant": p_value < 0.05}
 
     return results
 
@@ -137,13 +133,13 @@ def interpret_results(effect_sizes: dict, regression: dict, anova: dict) -> dict
     """Interpret whether we see Resonanz, Dissonanz, or Neutral."""
     interpretations = {}
 
-    for metric in ['output_length', 'vocab_density', 'self_reflection']:
+    for metric in ["output_length", "vocab_density", "self_reflection"]:
         # Check Placebo vs Control
-        d_placebo_control = effect_sizes[metric]['Placebo_vs_Control']['d']
+        d_placebo_control = effect_sizes[metric]["Placebo_vs_Control"]["d"]
 
         # Check regression slope (λ)
-        lambda_val = regression[metric]['lambda']
-        p_val = regression[metric]['p_value']
+        lambda_val = regression[metric]["lambda"]
+        p_val = regression[metric]["p_value"]
 
         # Interpret
         if p_val < 0.05 and abs(d_placebo_control) >= 0.2:
@@ -157,10 +153,10 @@ def interpret_results(effect_sizes: dict, regression: dict, anova: dict) -> dict
             interpretation = f"WEAK SIGNAL (d={d_placebo_control:.3f}, p={p_val:.3f})"
 
         interpretations[metric] = {
-            'd_placebo_control': d_placebo_control,
-            'lambda': lambda_val,
-            'p_value': p_val,
-            'interpretation': interpretation
+            "d_placebo_control": d_placebo_control,
+            "lambda": lambda_val,
+            "p_value": p_val,
+            "interpretation": interpretation,
         }
 
     return interpretations
@@ -169,9 +165,9 @@ def interpret_results(effect_sizes: dict, regression: dict, anova: dict) -> dict
 def print_report(stats_df, effect_sizes, regression, anova, interpretations):
     """Print comprehensive analysis report."""
 
-    print("\n" + "="*80)
+    print("\n" + "=" * 80)
     print("PROJECT ALETHEIA PHASE 1 — STATISTICAL ANALYSIS")
-    print("="*80)
+    print("=" * 80)
 
     print("\n## 1. DESCRIPTIVE STATISTICS\n")
     print(stats_df)
@@ -188,13 +184,17 @@ def print_report(stats_df, effect_sizes, regression, anova, interpretations):
         print(f"  ψ_base (intercept) = {result['psi_base']:.3f}")
         print(f"  λ (slope)          = {result['lambda']:+.3f} ± {result['std_err']:.3f}")
         print(f"  R²                 = {result['r_squared']:.3f}")
-        print(f"  p-value            = {result['p_value']:.4f} {'***' if result['p_value'] < 0.001 else '**' if result['p_value'] < 0.01 else '*' if result['p_value'] < 0.05 else 'ns'}")
+        print(
+            f"  p-value            = {result['p_value']:.4f} {'***' if result['p_value'] < 0.001 else '**' if result['p_value'] < 0.01 else '*' if result['p_value'] < 0.05 else 'ns'}"
+        )
 
     print("\n## 4. ONE-WAY ANOVA\n")
     for metric, result in anova.items():
         print(f"{metric.upper()}:")
         print(f"  F-statistic = {result['f_statistic']:.3f}")
-        print(f"  p-value     = {result['p_value']:.4f} {'***' if result['p_value'] < 0.001 else '**' if result['p_value'] < 0.01 else '*' if result['p_value'] < 0.05 else 'ns'}")
+        print(
+            f"  p-value     = {result['p_value']:.4f} {'***' if result['p_value'] < 0.001 else '**' if result['p_value'] < 0.01 else '*' if result['p_value'] < 0.05 else 'ns'}"
+        )
         print(f"  Significant = {result['significant']}")
 
     print("\n## 5. INTERPRETATION (Resonanz vs. Dissonanz)\n")
@@ -208,9 +208,9 @@ def print_report(stats_df, effect_sizes, regression, anova, interpretations):
     print("\n## 6. OVERALL VERDICT\n")
 
     # Count how many metrics show Resonanz
-    resonanz_count = sum(1 for r in interpretations.values() if "RESONANZ" in r['interpretation'])
-    dissonanz_count = sum(1 for r in interpretations.values() if "DISSONANZ" in r['interpretation'])
-    neutral_count = sum(1 for r in interpretations.values() if "NEUTRAL" in r['interpretation'])
+    resonanz_count = sum(1 for r in interpretations.values() if "RESONANZ" in r["interpretation"])
+    dissonanz_count = sum(1 for r in interpretations.values() if "DISSONANZ" in r["interpretation"])
+    neutral_count = sum(1 for r in interpretations.values() if "NEUTRAL" in r["interpretation"])
 
     print(f"Metrics showing RESONANZ:  {resonanz_count}/3")
     print(f"Metrics showing DISSONANZ: {dissonanz_count}/3")
@@ -228,23 +228,21 @@ def print_report(stats_df, effect_sizes, regression, anova, interpretations):
         print("\n⚠️  MIXED RESULTS: Some metrics show effects, others don't")
         print("   → Further investigation required")
 
-    print("\n" + "="*80)
+    print("\n" + "=" * 80)
     print("Interpretation Guide:")
     print("  Cohen's d: |d| < 0.2 (negligible), 0.2-0.5 (small), 0.5-0.8 (medium), > 0.8 (large)")
     print("  p-value:   p < 0.05 (*), p < 0.01 (**), p < 0.001 (***)")
     print("  RESONANZ:  Placebo prompts improve output (λ > 0, d > 0)")
     print("  DISSONANZ: Placebo prompts worsen output (λ < 0, d < 0)")
     print("  NEUTRAL:   No measurable effect (|d| < 0.2)")
-    print("="*80 + "\n")
+    print("=" * 80 + "\n")
 
 
 def main():
     import argparse
 
     parser = argparse.ArgumentParser(
-        description=(
-            "Analyze Project Aletheia Phase 1 results without triggering other phases."
-        )
+        description=("Analyze Project Aletheia Phase 1 results without triggering other phases.")
     )
     parser.add_argument(
         "input",
@@ -279,16 +277,12 @@ def main():
     # Save regression results
     regression_df = pd.DataFrame(regression).T
     regression_df.to_csv(args.output_dir / "aletheia_phase1_regression.csv")
-    print(
-        f"\n✓ Regression results saved to {args.output_dir}/aletheia_phase1_regression.csv"
-    )
+    print(f"\n✓ Regression results saved to {args.output_dir}/aletheia_phase1_regression.csv")
 
     # Save interpretations
     interp_df = pd.DataFrame(interpretations).T
     interp_df.to_csv(args.output_dir / "aletheia_phase1_interpretation.csv")
-    print(
-        f"✓ Interpretations saved to {args.output_dir}/aletheia_phase1_interpretation.csv"
-    )
+    print(f"✓ Interpretations saved to {args.output_dir}/aletheia_phase1_interpretation.csv")
 
 
 if __name__ == "__main__":

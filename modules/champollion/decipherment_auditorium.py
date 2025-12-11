@@ -19,7 +19,6 @@ import argparse
 import csv
 import json
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 
@@ -32,7 +31,7 @@ class PatternAgent:
     patterns such as word boundaries and grammatical structures.
     """
 
-    def __init__(self, n_gram_range: Tuple[int, int] = (1, 3)):
+    def __init__(self, n_gram_range: tuple[int, int] = (1, 3)):
         """
         Initialize the PatternAgent.
 
@@ -40,13 +39,9 @@ class PatternAgent:
             n_gram_range: Tuple of (min_n, max_n) for n-gram analysis
         """
         self.n_gram_range = n_gram_range
-        self.detected_patterns: Dict[str, int] = {}
+        self.detected_patterns: dict[str, int] = {}
 
-    def find_structure(
-        self,
-        sequence: str,
-        return_top_k: int = 10
-    ) -> Dict[str, any]:
+    def find_structure(self, sequence: str, return_top_k: int = 10) -> dict[str, any]:
         """
         Identify syntactic patterns in the input sequence.
 
@@ -65,10 +60,10 @@ class PatternAgent:
         # TODO: Identify candidate segmentation boundaries
 
         return {
-            'n_grams': {},
-            'repetitions': [],
-            'candidate_boundaries': [],
-            'entropy': self._calculate_pattern_entropy(sequence)
+            "n_grams": {},
+            "repetitions": [],
+            "candidate_boundaries": [],
+            "entropy": self._calculate_pattern_entropy(sequence),
         }
 
     def _calculate_pattern_entropy(self, sequence: str) -> float:
@@ -107,7 +102,7 @@ class ContextAgent:
     and generates translation candidates.
     """
 
-    def __init__(self, context_corpus: Optional[List[str]] = None):
+    def __init__(self, context_corpus: list[str] | None = None):
         """
         Initialize the ContextAgent.
 
@@ -115,13 +110,11 @@ class ContextAgent:
             context_corpus: Optional list of known texts for context
         """
         self.context_corpus = context_corpus or []
-        self.provisional_lexicon: Dict[str, List[str]] = {}
+        self.provisional_lexicon: dict[str, list[str]] = {}
 
     def hypothesize_meanings(
-        self,
-        syntax_hypotheses: Dict[str, any],
-        confidence_threshold: float = 0.5
-    ) -> List[Dict[str, any]]:
+        self, syntax_hypotheses: dict[str, any], confidence_threshold: float = 0.5
+    ) -> list[dict[str, any]]:
         """
         Generate semantic hypotheses based on syntactic patterns.
 
@@ -140,11 +133,7 @@ class ContextAgent:
 
         return hypotheses
 
-    def _compute_coherence_score(
-        self,
-        hypothesis: str,
-        context: List[str]
-    ) -> float:
+    def _compute_coherence_score(self, hypothesis: str, context: list[str]) -> float:
         """
         Compute semantic coherence score for a translation hypothesis.
 
@@ -167,7 +156,7 @@ class SigillinScribe:
     and computes ΔAIC scores for competing hypotheses.
     """
 
-    def __init__(self, baseline_entropy: Optional[float] = None):
+    def __init__(self, baseline_entropy: float | None = None):
         """
         Initialize the SigillinScribe.
 
@@ -175,13 +164,11 @@ class SigillinScribe:
             baseline_entropy: Maximum entropy (null hypothesis)
         """
         self.baseline_entropy = baseline_entropy
-        self.validation_history: List[Dict[str, any]] = []
+        self.validation_history: list[dict[str, any]] = []
 
     def validate(
-        self,
-        hypotheses: List[Dict[str, any]],
-        original_sequence: str
-    ) -> Tuple[Optional[Dict[str, any]], float]:
+        self, hypotheses: list[dict[str, any]], original_sequence: str
+    ) -> tuple[dict[str, any] | None, float]:
         """
         Validate translation hypotheses using entropy and ΔAIC criteria.
 
@@ -209,7 +196,7 @@ class SigillinScribe:
         null_entropy: float,
         hypothesis_entropy: float,
         k_null: int = 1,
-        k_hypothesis: int = 10
+        k_hypothesis: int = 10,
     ) -> float:
         """
         Compute ΔAIC between null model and hypothesis.
@@ -247,13 +234,13 @@ def load_cipher_text(filepath: Path) -> str:
     """
     sequences = []
 
-    with open(filepath, 'r', encoding='utf-8') as f:
+    with open(filepath, encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            if 'symbol_sequence' in row:
-                sequences.append(row['symbol_sequence'])
+            if "symbol_sequence" in row:
+                sequences.append(row["symbol_sequence"])
 
-    return ''.join(sequences)
+    return "".join(sequences)
 
 
 def main():
@@ -262,22 +249,15 @@ def main():
         description="UTAC-based decipherment of unknown semiotic systems"
     )
     parser.add_argument(
-        '--input',
-        type=Path,
-        required=True,
-        help='Path to CSV file with cipher text'
+        "--input", type=Path, required=True, help="Path to CSV file with cipher text"
     )
     parser.add_argument(
-        '--method',
-        choices=['entropy_descent', 'pattern_first', 'context_first'],
-        default='entropy_descent',
-        help='Decipherment strategy'
+        "--method",
+        choices=["entropy_descent", "pattern_first", "context_first"],
+        default="entropy_descent",
+        help="Decipherment strategy",
     )
-    parser.add_argument(
-        '--output',
-        type=Path,
-        help='Optional output path for results (JSON)'
-    )
+    parser.add_argument("--output", type=Path, help="Optional output path for results (JSON)")
 
     args = parser.parse_args()
 
@@ -315,18 +295,18 @@ def main():
     # Save results if requested
     if args.output:
         results = {
-            'cipher_length': len(cipher_text),
-            'baseline_entropy': syntax_hypotheses['entropy'],
-            'delta_aic': delta_aic,
-            'best_translation': best_translation,
-            'method': args.method
+            "cipher_length": len(cipher_text),
+            "baseline_entropy": syntax_hypotheses["entropy"],
+            "delta_aic": delta_aic,
+            "best_translation": best_translation,
+            "method": args.method,
         }
 
-        with open(args.output, 'w') as f:
+        with open(args.output, "w") as f:
             json.dump(results, f, indent=2)
 
         print(f"\nResults saved to {args.output}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

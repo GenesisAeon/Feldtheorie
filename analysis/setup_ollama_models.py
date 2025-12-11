@@ -15,10 +15,10 @@ import time
 
 # Models required for Aletheia Phase 5
 REQUIRED_MODELS = [
-    "gemma2",           # Baseline
-    "mistral",          # General purpose
-    "qwen2.5",          # Previous generation
-    "qwen2.5-coder",    # Specialist (expected high β)
+    "gemma2",  # Baseline
+    "mistral",  # General purpose
+    "qwen2.5",  # Previous generation
+    "qwen2.5-coder",  # Specialist (expected high β)
 ]
 
 # Optional models (can be added later)
@@ -36,7 +36,7 @@ def run_command(cmd, shell=False):
             shell=shell,
             capture_output=True,
             text=True,
-            timeout=300  # 5 minute timeout for pulls
+            timeout=300,  # 5 minute timeout for pulls
         )
         return result.stdout, result.stderr, result.returncode
     except subprocess.TimeoutExpired:
@@ -68,10 +68,10 @@ def list_installed_models():
 
     # Parse output (skip header line)
     models = []
-    for line in stdout.strip().split('\n')[1:]:  # Skip "NAME ID SIZE MODIFIED"
+    for line in stdout.strip().split("\n")[1:]:  # Skip "NAME ID SIZE MODIFIED"
         if line.strip():
             # Model name is the first column
-            model_name = line.split()[0].split(':')[0]  # Remove :latest tag
+            model_name = line.split()[0].split(":")[0]  # Remove :latest tag
             models.append(model_name)
 
     return models
@@ -80,7 +80,7 @@ def list_installed_models():
 def pull_model(model_name):
     """Pull a specific Ollama model."""
     print(f"\n📥 Pulling model: {model_name}")
-    print(f"   This may take several minutes depending on model size...")
+    print("   This may take several minutes depending on model size...")
 
     # We need to use shell=True on Windows for ollama commands
     cmd = f"ollama pull {model_name}"
@@ -88,12 +88,7 @@ def pull_model(model_name):
     # Run with live output
     try:
         process = subprocess.Popen(
-            cmd,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            bufsize=1
+            cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1
         )
 
         # Stream output
@@ -150,12 +145,12 @@ def main():
         print(f"      • {model}")
 
     # Step 4: Ask user if they want to pull missing models
-    print(f"\n📊 Total download size estimate: ~5-10 GB")
-    print(f"   (varies by model, qwen2.5-coder is largest)")
+    print("\n📊 Total download size estimate: ~5-10 GB")
+    print("   (varies by model, qwen2.5-coder is largest)")
 
     response = input("\n❓ Pull missing models now? [y/N]: ").strip().lower()
 
-    if response != 'y':
+    if response != "y":
         print("\n⏭️  Skipping model download.")
         print("   You can manually pull models with: ollama pull <model-name>")
         return

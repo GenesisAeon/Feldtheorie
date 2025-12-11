@@ -142,13 +142,13 @@ def test_alpha_beta_relationship(k_empirical=0.32):
     print(f"Using k = {k_empirical:.6f}\n")
 
     for _, row in alphas.iterrows():
-        param = row['parameter']
-        alpha = float(row['alpha_value'])
-        formula = row['formula']
+        param = row["parameter"]
+        alpha = float(row["alpha_value"])
+        formula = row["formula"]
 
         # Predict β from α
         beta_pred_empirical = k_empirical / alpha
-        beta_pred_cubic = (1/3) / alpha
+        beta_pred_cubic = (1 / 3) / alpha
 
         # Compare to typical domain β-values
         # Informational domain: β ≈ 4.5 ± 0.9
@@ -157,19 +157,23 @@ def test_alpha_beta_relationship(k_empirical=0.32):
         error_empirical = abs(beta_pred_empirical - beta_expected) / beta_expected * 100
         error_cubic = abs(beta_pred_cubic - beta_expected) / beta_expected * 100
 
-        results.append({
-            'parameter': param,
-            'alpha': alpha,
-            'beta_predicted_k_empirical': beta_pred_empirical,
-            'beta_predicted_k_cubic': beta_pred_cubic,
-            'beta_expected_LLM': beta_expected,
-            'error_percent_empirical': error_empirical,
-            'error_percent_cubic': error_cubic
-        })
+        results.append(
+            {
+                "parameter": param,
+                "alpha": alpha,
+                "beta_predicted_k_empirical": beta_pred_empirical,
+                "beta_predicted_k_cubic": beta_pred_cubic,
+                "beta_expected_LLM": beta_expected,
+                "error_percent_empirical": error_empirical,
+                "error_percent_cubic": error_cubic,
+            }
+        )
 
-        print(f"{param:12s} (α={alpha:.3f}): β_pred={beta_pred_empirical:.2f} "
-              f"(cubic: {beta_pred_cubic:.2f}, expected: {beta_expected:.1f}, "
-              f"error: {error_empirical:.1f}%)")
+        print(
+            f"{param:12s} (α={alpha:.3f}): β_pred={beta_pred_empirical:.2f} "
+            f"(cubic: {beta_pred_cubic:.2f}, expected: {beta_expected:.1f}, "
+            f"error: {error_empirical:.1f}%)"
+        )
 
     df_results = pd.DataFrame(results)
 
@@ -202,11 +206,11 @@ def analyze_seismic_b_value_to_beta():
 
     # Empirical calibration points
     calibration_points = [
-        {'b_value': 1.0, 'beta_empirical': 4.6, 'status': 'Normal crust'},
-        {'b_value': 0.8, 'beta_empirical': 5.8, 'status': 'Slightly stressed'},
-        {'b_value': 0.6, 'beta_empirical': 7.5, 'status': 'Stressed (pre-mainshock)'},
-        {'b_value': 0.4, 'beta_empirical': 11.0, 'status': 'Critical'},
-        {'b_value': 0.27, 'beta_empirical': 16.29, 'status': 'Extreme (subduction rupture)'}
+        {"b_value": 1.0, "beta_empirical": 4.6, "status": "Normal crust"},
+        {"b_value": 0.8, "beta_empirical": 5.8, "status": "Slightly stressed"},
+        {"b_value": 0.6, "beta_empirical": 7.5, "status": "Stressed (pre-mainshock)"},
+        {"b_value": 0.4, "beta_empirical": 11.0, "status": "Critical"},
+        {"b_value": 0.27, "beta_empirical": 16.29, "status": "Extreme (subduction rupture)"},
     ]
 
     df_calib = pd.DataFrame(calibration_points)
@@ -215,15 +219,17 @@ def analyze_seismic_b_value_to_beta():
     # β = k_seismic / b
     # k_seismic = β × b
 
-    k_values = df_calib['beta_empirical'] * df_calib['b_value']
+    k_values = df_calib["beta_empirical"] * df_calib["b_value"]
     k_seismic_mean = k_values.mean()
     k_seismic_std = k_values.std()
 
     print("Calibration points:")
     for _, row in df_calib.iterrows():
-        k = row['beta_empirical'] * row['b_value']
-        print(f"  b={row['b_value']:.2f} → β={row['beta_empirical']:.2f} "
-              f"(k={k:.3f}, {row['status']})")
+        k = row["beta_empirical"] * row["b_value"]
+        print(
+            f"  b={row['b_value']:.2f} → β={row['beta_empirical']:.2f} "
+            f"(k={k:.3f}, {row['status']})"
+        )
 
     print(f"\nFitted k_seismic: {k_seismic_mean:.3f} ± {k_seismic_std:.3f}")
 
@@ -232,25 +238,22 @@ def analyze_seismic_b_value_to_beta():
     beta_pred = k_seismic_mean / b_range
 
     # Create prediction DataFrame
-    df_pred = pd.DataFrame({
-        'b_value': b_range,
-        'beta_predicted': beta_pred
-    })
+    df_pred = pd.DataFrame({"b_value": b_range, "beta_predicted": beta_pred})
 
     # Interpret β predictions
     def interpret_beta(beta):
         if beta < 3.0:
-            return 'Informational (Low)'
+            return "Informational (Low)"
         elif beta < 5.5:
-            return 'Informational (Φ³)'
+            return "Informational (Φ³)"
         elif beta < 9.0:
-            return 'Biological (Φ⁴)'
+            return "Biological (Φ⁴)"
         elif beta < 13.0:
-            return 'Climate (Φ⁵)'
+            return "Climate (Φ⁵)"
         else:
-            return 'Extreme (>Φ⁵)'
+            return "Extreme (>Φ⁵)"
 
-    df_pred['domain_cluster'] = df_pred['beta_predicted'].apply(interpret_beta)
+    df_pred["domain_cluster"] = df_pred["beta_predicted"].apply(interpret_beta)
 
     # Save results
     output_path_calib = OUTPUT_DIR / "b_value_to_beta_calibration.csv"
@@ -267,7 +270,7 @@ def analyze_seismic_b_value_to_beta():
     return df_calib, df_pred, k_seismic_mean
 
 
-def visualize_alpha_beta_relationship(k_empirical=0.32, k_cubic=1/3):
+def visualize_alpha_beta_relationship(k_empirical=0.32, k_cubic=1 / 3):
     """
     Create visualization of α-β relationship.
 
@@ -292,31 +295,27 @@ def visualize_alpha_beta_relationship(k_empirical=0.32, k_cubic=1/3):
     beta_empirical = k_empirical / alpha_range
     beta_cubic = k_cubic / alpha_range
 
-    ax1.plot(alpha_range, beta_empirical, 'b-', linewidth=2,
-             label=f'β = {k_empirical:.3f}/α (empirical)')
-    ax1.plot(alpha_range, beta_cubic, 'r--', linewidth=2,
-             label='β = (1/3)/α (cubic hypothesis)')
+    ax1.plot(
+        alpha_range, beta_empirical, "b-", linewidth=2, label=f"β = {k_empirical:.3f}/α (empirical)"
+    )
+    ax1.plot(alpha_range, beta_cubic, "r--", linewidth=2, label="β = (1/3)/α (cubic hypothesis)")
 
     # Plot calibration points
     for _, row in alphas.iterrows():
-        alpha = float(row['alpha_value'])
+        alpha = float(row["alpha_value"])
         beta_pred = k_empirical / alpha
-        ax1.plot(alpha, beta_pred, 'bo', markersize=8)
-        ax1.text(alpha, beta_pred + 0.5, row['parameter'], fontsize=8, ha='center')
+        ax1.plot(alpha, beta_pred, "bo", markersize=8)
+        ax1.text(alpha, beta_pred + 0.5, row["parameter"], fontsize=8, ha="center")
 
     # Add Φ-attractors
-    phi_attractors = [
-        (PHI**3, 'Φ³', 'green'),
-        (PHI**4, 'Φ⁴', 'orange'),
-        (PHI**5, 'Φ⁵', 'red')
-    ]
+    phi_attractors = [(PHI**3, "Φ³", "green"), (PHI**4, "Φ⁴", "orange"), (PHI**5, "Φ⁵", "red")]
 
     for phi_val, label, color in phi_attractors:
-        ax1.axhline(phi_val, color=color, linestyle=':', alpha=0.6, label=label)
+        ax1.axhline(phi_val, color=color, linestyle=":", alpha=0.6, label=label)
 
-    ax1.set_xlabel('α (Power-Law Exponent)', fontsize=12)
-    ax1.set_ylabel('β (UTAC Steepness)', fontsize=12)
-    ax1.set_title('α → β Relationship (Scaling Laws)', fontsize=14, fontweight='bold')
+    ax1.set_xlabel("α (Power-Law Exponent)", fontsize=12)
+    ax1.set_ylabel("β (UTAC Steepness)", fontsize=12)
+    ax1.set_title("α → β Relationship (Scaling Laws)", fontsize=14, fontweight="bold")
     ax1.legend(fontsize=10)
     ax1.grid(True, alpha=0.3)
     ax1.set_xlim(0.05, 0.8)
@@ -328,27 +327,28 @@ def visualize_alpha_beta_relationship(k_empirical=0.32, k_cubic=1/3):
     # Load seismic calibration
     _, df_pred, k_seismic = analyze_seismic_b_value_to_beta()
 
-    ax2.plot(df_pred['b_value'], df_pred['beta_predicted'], 'b-', linewidth=2,
-             label=f'β = {k_seismic:.2f}/b (seismic)')
+    ax2.plot(
+        df_pred["b_value"],
+        df_pred["beta_predicted"],
+        "b-",
+        linewidth=2,
+        label=f"β = {k_seismic:.2f}/b (seismic)",
+    )
 
     # Add Φ-attractors
     for phi_val, label, color in phi_attractors:
-        ax2.axhline(phi_val, color=color, linestyle=':', alpha=0.6, label=label)
+        ax2.axhline(phi_val, color=color, linestyle=":", alpha=0.6, label=label)
 
     # Highlight key b-values
-    key_b_values = [
-        (1.0, 4.6, 'Normal'),
-        (0.6, 7.5, 'Stressed'),
-        (0.27, 16.29, 'Subduction')
-    ]
+    key_b_values = [(1.0, 4.6, "Normal"), (0.6, 7.5, "Stressed"), (0.27, 16.29, "Subduction")]
 
     for b, beta, status in key_b_values:
-        ax2.plot(b, beta, 'ro', markersize=8)
-        ax2.text(b, beta + 0.8, status, fontsize=8, ha='center')
+        ax2.plot(b, beta, "ro", markersize=8)
+        ax2.text(b, beta + 0.8, status, fontsize=8, ha="center")
 
-    ax2.set_xlabel('b-value (Gutenberg-Richter)', fontsize=12)
-    ax2.set_ylabel('β (UTAC Steepness)', fontsize=12)
-    ax2.set_title('b-value → β Relationship (Seismic)', fontsize=14, fontweight='bold')
+    ax2.set_xlabel("b-value (Gutenberg-Richter)", fontsize=12)
+    ax2.set_ylabel("β (UTAC Steepness)", fontsize=12)
+    ax2.set_title("b-value → β Relationship (Seismic)", fontsize=14, fontweight="bold")
     ax2.legend(fontsize=10)
     ax2.grid(True, alpha=0.3)
     ax2.set_xlim(0.2, 1.5)
@@ -358,7 +358,7 @@ def visualize_alpha_beta_relationship(k_empirical=0.32, k_cubic=1/3):
 
     # Save figure
     output_path = OUTPUT_DIR / "alpha_beta_relationship_visualization.png"
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
     print(f"✓ Saved visualization to {output_path.name}")
 
     plt.close()
@@ -376,112 +376,104 @@ def create_unified_theory_summary():
     print(f"{'='*70}\n")
 
     k_empirical = calculate_k_optimal()
-    k_cubic = 1/3
+    k_cubic = 1 / 3
 
     _, _, k_seismic = analyze_seismic_b_value_to_beta()
 
     summary = {
-        'title': 'Unified Theory: Power-Law Exponents and UTAC β-Parameter',
-        'date': '2025-11-19',
-        'author': 'Johann (UTAC Framework)',
-
-        'core_hypothesis': {
-            'formula': 'β ≈ k / α',
-            'intuition': 'Slow improvement (small α) → sharp emergence (large β)',
-            'interpretation': 'The rate of smooth loss scaling (α) is inversely related '
-                            'to the sharpness of capability transitions (β).'
+        "title": "Unified Theory: Power-Law Exponents and UTAC β-Parameter",
+        "date": "2025-11-19",
+        "author": "Johann (UTAC Framework)",
+        "core_hypothesis": {
+            "formula": "β ≈ k / α",
+            "intuition": "Slow improvement (small α) → sharp emergence (large β)",
+            "interpretation": "The rate of smooth loss scaling (α) is inversely related "
+            "to the sharpness of capability transitions (β).",
         },
-
-        'scaling_laws_alpha_to_beta': {
-            'description': 'Kaplan et al. (2020) Scaling Laws for Neural Language Models',
-            'formula': 'β = k / α',
-            'k_empirical': float(k_empirical),
-            'k_cubic_hypothesis': float(k_cubic),
-            'calibration_point': {
-                'alpha_N': 0.076,
-                'beta_LLM': 4.2,
-                'domain': 'Informational (LLMs, near Φ³)'
+        "scaling_laws_alpha_to_beta": {
+            "description": "Kaplan et al. (2020) Scaling Laws for Neural Language Models",
+            "formula": "β = k / α",
+            "k_empirical": float(k_empirical),
+            "k_cubic_hypothesis": float(k_cubic),
+            "calibration_point": {
+                "alpha_N": 0.076,
+                "beta_LLM": 4.2,
+                "domain": "Informational (LLMs, near Φ³)",
             },
-            'predictions': {
-                'alpha_N_0.076': f'{k_empirical / 0.076:.2f}',
-                'alpha_D_0.095': f'{k_empirical / 0.095:.2f}',
-                'alpha_C_0.057': f'{k_empirical / 0.057:.2f}'
-            }
-        },
-
-        'seismic_b_value_to_beta': {
-            'description': 'Gutenberg-Richter b-value to UTAC β conversion',
-            'formula': 'β = k_seismic / b',
-            'k_seismic': float(k_seismic),
-            'calibration_points': {
-                'b_1.0_normal': 4.6,
-                'b_0.6_stressed': 7.5,
-                'b_0.27_extreme': 16.29
+            "predictions": {
+                "alpha_N_0.076": f"{k_empirical / 0.076:.2f}",
+                "alpha_D_0.095": f"{k_empirical / 0.095:.2f}",
+                "alpha_C_0.057": f"{k_empirical / 0.057:.2f}",
             },
-            'interpretation': 'Low b-value (stress accumulation) → high β (sharp rupture threshold)'
         },
-
-        'cubic_hypothesis': {
-            'formula': 'β ≈ (1/3) / α',
-            'k_value': float(k_cubic),
-            'reasoning': [
-                '3D physical space dimensionality',
-                'Cubic root relationship (Φ^(1/3) scaling)',
-                'Renormalization group fixed points'
+        "seismic_b_value_to_beta": {
+            "description": "Gutenberg-Richter b-value to UTAC β conversion",
+            "formula": "β = k_seismic / b",
+            "k_seismic": float(k_seismic),
+            "calibration_points": {
+                "b_1.0_normal": 4.6,
+                "b_0.6_stressed": 7.5,
+                "b_0.27_extreme": 16.29,
+            },
+            "interpretation": "Low b-value (stress accumulation) → high β (sharp rupture threshold)",
+        },
+        "cubic_hypothesis": {
+            "formula": "β ≈ (1/3) / α",
+            "k_value": float(k_cubic),
+            "reasoning": [
+                "3D physical space dimensionality",
+                "Cubic root relationship (Φ^(1/3) scaling)",
+                "Renormalization group fixed points",
             ],
-            'empirical_fit': {
-                'k_empirical': float(k_empirical),
-                'k_cubic': float(k_cubic),
-                'ratio': float(k_empirical / k_cubic),
-                'interpretation': f'k_empirical / k_cubic = {k_empirical / k_cubic:.3f} '
-                                 f'(close to 1, supporting cubic hypothesis)'
-            }
-        },
-
-        'phi_attractors': {
-            'description': 'β-values cluster around golden ratio powers',
-            'Phi_3': {
-                'value': float(PHI**3),
-                'domain': 'Informational (LLMs, Markets)',
-                'beta_range': [3.0, 5.5]
+            "empirical_fit": {
+                "k_empirical": float(k_empirical),
+                "k_cubic": float(k_cubic),
+                "ratio": float(k_empirical / k_cubic),
+                "interpretation": f"k_empirical / k_cubic = {k_empirical / k_cubic:.3f} "
+                f"(close to 1, supporting cubic hypothesis)",
             },
-            'Phi_4': {
-                'value': float(PHI**4),
-                'domain': 'Biological (Ecosystems)',
-                'beta_range': [5.5, 9.0]
+        },
+        "phi_attractors": {
+            "description": "β-values cluster around golden ratio powers",
+            "Phi_3": {
+                "value": float(PHI**3),
+                "domain": "Informational (LLMs, Markets)",
+                "beta_range": [3.0, 5.5],
             },
-            'Phi_5': {
-                'value': float(PHI**5),
-                'domain': 'Climate (AMOC, Ice Sheets)',
-                'beta_range': [9.0, 13.0]
-            }
+            "Phi_4": {
+                "value": float(PHI**4),
+                "domain": "Biological (Ecosystems)",
+                "beta_range": [5.5, 9.0],
+            },
+            "Phi_5": {
+                "value": float(PHI**5),
+                "domain": "Climate (AMOC, Ice Sheets)",
+                "beta_range": [9.0, 13.0],
+            },
         },
-
-        'implications': {
-            'LLM_scaling': 'α_N = 0.076 predicts β ≈ 4.2, matching LLM emergence near Φ³',
-            'seismic_forecasting': 'b-value drops predict β increases → sharper rupture transitions',
-            'universal_constant': 'k ≈ 0.32 ≈ 1/3 suggests fundamental connection between '
-                                 'smooth scaling and sharp emergence',
-            'domain_clustering': 'β-values cluster around Φ^(n/3), not arbitrary'
+        "implications": {
+            "LLM_scaling": "α_N = 0.076 predicts β ≈ 4.2, matching LLM emergence near Φ³",
+            "seismic_forecasting": "b-value drops predict β increases → sharper rupture transitions",
+            "universal_constant": "k ≈ 0.32 ≈ 1/3 suggests fundamental connection between "
+            "smooth scaling and sharp emergence",
+            "domain_clustering": "β-values cluster around Φ^(n/3), not arbitrary",
         },
-
-        'citations': [
-            'Kaplan, J., et al. (2020). Scaling Laws for Neural Language Models. arXiv:2001.08361',
-            'Gutenberg, B., & Richter, C. F. (1944). Frequency of earthquakes in California.',
-            'Scholz, C. H. (2019). The Mechanics of Earthquakes and Faulting (3rd ed.).'
+        "citations": [
+            "Kaplan, J., et al. (2020). Scaling Laws for Neural Language Models. arXiv:2001.08361",
+            "Gutenberg, B., & Richter, C. F. (1944). Frequency of earthquakes in California.",
+            "Scholz, C. H. (2019). The Mechanics of Earthquakes and Faulting (3rd ed.).",
         ],
-
-        'files_generated': [
-            'alpha_beta_predictions.csv',
-            'b_value_to_beta_calibration.csv',
-            'b_value_to_beta_predictions.csv',
-            'alpha_beta_relationship_visualization.png'
-        ]
+        "files_generated": [
+            "alpha_beta_predictions.csv",
+            "b_value_to_beta_calibration.csv",
+            "b_value_to_beta_predictions.csv",
+            "alpha_beta_relationship_visualization.png",
+        ],
     }
 
     # Save summary
     output_path = OUTPUT_DIR / "alpha_beta_unified_theory.json"
-    with open(output_path, 'w', encoding='utf-8') as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2, ensure_ascii=False)
 
     print(f"✓ Created unified theory summary: {output_path.name}")
@@ -510,9 +502,9 @@ def create_unified_theory_summary():
 
 
 if __name__ == "__main__":
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("SCALING LAWS α-β RELATIONSHIP ANALYSIS")
-    print("="*70 + "\n")
+    print("=" * 70 + "\n")
 
     # 1. Calculate optimal k
     k_empirical = calculate_k_optimal(alpha_N=0.076, beta_LLM=4.2)
@@ -524,7 +516,7 @@ if __name__ == "__main__":
     df_calib, df_pred, k_seismic = analyze_seismic_b_value_to_beta()
 
     # 4. Create visualization
-    visualize_alpha_beta_relationship(k_empirical=k_empirical, k_cubic=1/3)
+    visualize_alpha_beta_relationship(k_empirical=k_empirical, k_cubic=1 / 3)
 
     # 5. Create unified theory summary
     summary_path = create_unified_theory_summary()

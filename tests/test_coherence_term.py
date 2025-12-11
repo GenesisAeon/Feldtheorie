@@ -2,13 +2,12 @@ import math
 
 import numpy as np
 import pytest
-
 from models.coherence_term import (
     MandalaCoherence,
+    _broadcast_fields,
+    coherence_measure,
     mandala_coherence,
     semantic_coupling_term,
-    coherence_measure,
-    _broadcast_fields,
 )
 
 
@@ -17,9 +16,7 @@ class TestMandalaCoherenceDataclass:
 
     def test_to_dict_returns_all_fields(self) -> None:
         """to_dict should return all fields."""
-        coherence = MandalaCoherence(
-            covariance=0.5, normalised=0.8, gate=0.6, zeta=0.9
-        )
+        coherence = MandalaCoherence(covariance=0.5, normalised=0.8, gate=0.6, zeta=0.9)
         result = coherence.to_dict()
 
         assert result == {

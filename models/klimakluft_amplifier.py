@@ -17,6 +17,7 @@ Poetic:
     coil together, the β-slope steepens and σ(β(R-Θ)) leaps faster toward
     resonance.
 """
+
 from __future__ import annotations
 
 from collections.abc import Iterable

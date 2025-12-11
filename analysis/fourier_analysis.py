@@ -32,11 +32,12 @@ try:
 except ImportError:
     # Fallback for direct script execution
     import sys
+
     sys.path.insert(0, str(Path(__file__).parent.parent))
     from sonification import utac_fourier
 
 
-def load_signal(filepath, column=0, delimiter=','):
+def load_signal(filepath, column=0, delimiter=","):
     """
     Load time series signal from file.
 
@@ -65,9 +66,9 @@ def load_signal(filepath, column=0, delimiter=','):
         raise FileNotFoundError(f"Signal file not found: {filepath}")
 
     # Load based on extension
-    if filepath.suffix == '.npy':
+    if filepath.suffix == ".npy":
         signal = np.load(filepath)
-    elif filepath.suffix in ['.csv', '.txt', '.dat']:
+    elif filepath.suffix in [".csv", ".txt", ".dat"]:
         data = np.loadtxt(filepath, delimiter=delimiter)
 
         # Handle multi-column data
@@ -100,10 +101,10 @@ def save_results(results, output_path):
         "features": results["features"],
         "field_type": results["field_type"],
         "spectrum": results["spectrum"].tolist()[:100],  # First 100 bins only
-        "freqs": results["freqs"].tolist()[:100]
+        "freqs": results["freqs"].tolist()[:100],
     }
 
-    with open(output_path, 'w') as f:
+    with open(output_path, "w") as f:
         json.dump(serializable_results, f, indent=2)
 
     print(f"✅ Results saved to: {output_path}")
@@ -111,7 +112,7 @@ def save_results(results, output_path):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='UTAC Fourier Analysis - Spectral analysis for threshold field systems',
+        description="UTAC Fourier Analysis - Spectral analysis for threshold field systems",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -135,63 +136,59 @@ Field Type Classification:
   - High-Dimensional:    300-600 Hz (ätherisch, komplex)
   - Physically Constrained: 600-1000 Hz (scharf, präzise)
   - Meta-Adaptive:       > 1000 Hz (morphing, adaptiv)
-        """
+        """,
     )
 
     # Required arguments
-    parser.add_argument(
-        'signal_file',
-        type=str,
-        help='Path to signal file (CSV, TXT, NPY)'
-    )
+    parser.add_argument("signal_file", type=str, help="Path to signal file (CSV, TXT, NPY)")
 
     # Optional arguments
     parser.add_argument(
-        '--sampling-rate', '-sr',
+        "--sampling-rate",
+        "-sr",
         type=float,
         default=44100,
-        help='Sampling rate in Hz (default: 44100)'
+        help="Sampling rate in Hz (default: 44100)",
     )
 
     parser.add_argument(
-        '--column', '-c',
+        "--column",
+        "-c",
         type=int,
         default=0,
-        help='Column index for multi-column files (default: 0)'
+        help="Column index for multi-column files (default: 0)",
     )
 
     parser.add_argument(
-        '--delimiter', '-d',
+        "--delimiter", "-d", type=str, default=",", help='CSV delimiter (default: ",")'
+    )
+
+    parser.add_argument(
+        "--title",
+        "-t",
         type=str,
-        default=',',
-        help='CSV delimiter (default: ",")'
+        default="UTAC Fourier Spectrum",
+        help='Plot title (default: "UTAC Fourier Spectrum")',
     )
 
     parser.add_argument(
-        '--title', '-t',
-        type=str,
-        default='UTAC Fourier Spectrum',
-        help='Plot title (default: "UTAC Fourier Spectrum")'
-    )
-
-    parser.add_argument(
-        '--output', '-o',
-        type=str,
-        default=None,
-        help='Output path for spectrum plot (default: display only)'
-    )
-
-    parser.add_argument(
-        '--json', '-j',
+        "--output",
+        "-o",
         type=str,
         default=None,
-        help='Output path for JSON results (default: no JSON output)'
+        help="Output path for spectrum plot (default: display only)",
     )
 
     parser.add_argument(
-        '--verbose', '-v',
-        action='store_true',
-        help='Print detailed analysis results'
+        "--json",
+        "-j",
+        type=str,
+        default=None,
+        help="Output path for JSON results (default: no JSON output)",
+    )
+
+    parser.add_argument(
+        "--verbose", "-v", action="store_true", help="Print detailed analysis results"
     )
 
     args = parser.parse_args()
@@ -205,21 +202,18 @@ Field Type Classification:
         # Run Fourier analysis
         print(f"🔬 Running Fourier analysis (sampling rate: {args.sampling_rate} Hz)")
         results = utac_fourier.run_analysis(
-            signal,
-            sampling_rate=args.sampling_rate,
-            title=args.title,
-            save_path=args.output
+            signal, sampling_rate=args.sampling_rate, title=args.title, save_path=args.output
         )
 
         # Print results
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("🎵 UTAC FOURIER ANALYSIS RESULTS")
-        print("="*60)
+        print("=" * 60)
         print(f"Field Type:         {results['field_type']}")
         print(f"Dominant Frequency: {results['features']['dominant_freq']:.2f} Hz")
         print(f"Spectral Centroid:  {results['features']['centroid']:.2f} Hz")
         print(f"Spectral Entropy:   {results['features']['entropy']:.2f} bits")
-        print("="*60)
+        print("=" * 60)
 
         if args.verbose:
             print(f"\nSpectrum bins: {len(results['spectrum'])}")
@@ -244,6 +238,7 @@ Field Type Classification:
         print(f"❌ Unexpected error: {e}", file=sys.stderr)
         if args.verbose:
             import traceback
+
             traceback.print_exc()
         return 1
 

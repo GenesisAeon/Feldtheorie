@@ -36,6 +36,7 @@ Usage:
         --n-samples 2000 \\
         --n-tune 1000
 """
+
 from __future__ import annotations
 
 import argparse
@@ -46,15 +47,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 # Try PyMC import with fallback
 try:
-    import pymc as pm
     import arviz as az
+    import pymc as pm
+
     PYMC_AVAILABLE = True
 except ImportError:
     PYMC_AVAILABLE = False
@@ -63,6 +64,7 @@ except ImportError:
 # Type-6 constants
 try:
     from models.utac_type6_implosive import BETA_FIXPOINT_PHI3, PHI
+
     CANONICAL_BETA = float(BETA_FIXPOINT_PHI3)  # Φ³ ≈ 4.236
 except ImportError:
     PHI = 1.618034
@@ -70,17 +72,18 @@ except ImportError:
 
 # Domain expected values (empirical priors)
 DOMAIN_PRIORS = {
-    'biology': {'mean': 7.4, 'sd': 1.5},
-    'climate': {'mean': 11.0, 'sd': 2.0},
-    'cognition': {'mean': 4.5, 'sd': 1.0},
-    'ai_symbolic': {'mean': 1.0, 'sd': 0.5},
-    'default': {'mean': CANONICAL_BETA, 'sd': 3.0}
+    "biology": {"mean": 7.4, "sd": 1.5},
+    "climate": {"mean": 11.0, "sd": 2.0},
+    "cognition": {"mean": 4.5, "sd": 1.0},
+    "ai_symbolic": {"mean": 1.0, "sd": 0.5},
+    "default": {"mean": CANONICAL_BETA, "sd": 3.0},
 }
 
 
 @dataclass
 class BayesianResults:
     """Container for Bayesian hierarchical model results."""
+
     timestamp: str
     n_samples: int
     n_tune: int
@@ -121,22 +124,22 @@ def load_data(beta_csv: Path, covariates_csv: Path) -> pd.DataFrame:
 
     if covariates_csv.exists():
         covariates = pd.read_csv(covariates_csv)
-        df = betas.merge(covariates, on='domain', how='left')
+        df = betas.merge(covariates, on="domain", how="left")
     else:
         df = betas.copy()
 
     # Ensure required columns
-    if 'domain' not in df.columns:
+    if "domain" not in df.columns:
         raise ValueError("beta_csv must contain 'domain' column")
-    if 'beta' not in df.columns and 'beta_estimate' not in df.columns:
+    if "beta" not in df.columns and "beta_estimate" not in df.columns:
         raise ValueError("beta_csv must contain 'beta' or 'beta_estimate' column")
 
     # Standardize column names
-    if 'beta_estimate' in df.columns and 'beta' not in df.columns:
-        df['beta'] = df['beta_estimate']
+    if "beta_estimate" in df.columns and "beta" not in df.columns:
+        df["beta"] = df["beta_estimate"]
 
     # Map domains to categories
-    df['domain_category'] = df['domain'].apply(categorize_domain)
+    df["domain_category"] = df["domain"].apply(categorize_domain)
 
     return df
 
@@ -145,16 +148,16 @@ def categorize_domain(domain: str) -> str:
     """Categorize domain into broad categories for hierarchical effects."""
     domain_lower = str(domain).lower()
 
-    if any(kw in domain_lower for kw in ['bio', 'metabol', 'kleiber', 'allometr']):
-        return 'biology'
-    elif any(kw in domain_lower for kw in ['climat', 'cosmic', 'astroph', 'geo']):
-        return 'climate'
-    elif any(kw in domain_lower for kw in ['cognit', 'conscious', 'neural', 'brain']):
-        return 'cognition'
-    elif any(kw in domain_lower for kw in ['ai', 'llm', 'gpt', 'symbolic', 'algorithm']):
-        return 'ai_symbolic'
+    if any(kw in domain_lower for kw in ["bio", "metabol", "kleiber", "allometr"]):
+        return "biology"
+    elif any(kw in domain_lower for kw in ["climat", "cosmic", "astroph", "geo"]):
+        return "climate"
+    elif any(kw in domain_lower for kw in ["cognit", "conscious", "neural", "brain"]):
+        return "cognition"
+    elif any(kw in domain_lower for kw in ["ai", "llm", "gpt", "symbolic", "algorithm"]):
+        return "ai_symbolic"
     else:
-        return 'default'
+        return "default"
 
 
 def compute_vif(X: pd.DataFrame) -> pd.DataFrame:
@@ -162,7 +165,7 @@ def compute_vif(X: pd.DataFrame) -> pd.DataFrame:
     from sklearn.linear_model import LinearRegression
 
     vif_data = pd.DataFrame()
-    vif_data['feature'] = X.columns
+    vif_data["feature"] = X.columns
     vif_values = []
 
     for i, col in enumerate(X.columns):
@@ -182,24 +185,23 @@ def compute_vif(X: pd.DataFrame) -> pd.DataFrame:
         vif = 1 / (1 - r_squared) if r_squared < 0.9999 else np.inf
         vif_values.append(vif)
 
-    vif_data['VIF'] = vif_values
+    vif_data["VIF"] = vif_values
     return vif_data
 
 
 def build_pymc_model(
-    df: pd.DataFrame,
-    covariates: list[str] | None = None
+    df: pd.DataFrame, covariates: list[str] | None = None
 ) -> tuple[pm.Model, dict[str, Any]]:
     """Build hierarchical Bayesian model with PyMC."""
     if not PYMC_AVAILABLE:
         raise ImportError("PyMC is required. Install with: pip install pymc")
 
     # Prepare data
-    domains = df['domain_category'].unique()
-    domain_idx = pd.Categorical(df['domain_category']).codes
+    domains = df["domain_category"].unique()
+    domain_idx = pd.Categorical(df["domain_category"]).codes
     n_domains = len(domains)
 
-    y = df['beta'].values
+    y = df["beta"].values
     n_obs = len(y)
 
     # Prepare covariates if provided
@@ -213,25 +215,22 @@ def build_pymc_model(
     with pm.Model() as model:
         # === Level 3: Global hyperpriors ===
         # Global mean centered on Φ³ ≈ 4.236
-        mu_global = pm.Normal('mu_global', mu=CANONICAL_BETA, sigma=3.0)
+        mu_global = pm.Normal("mu_global", mu=CANONICAL_BETA, sigma=3.0)
 
         # Global heterogeneity
-        sigma_global = pm.HalfNormal('sigma_global', sigma=2.0)
+        sigma_global = pm.HalfNormal("sigma_global", sigma=2.0)
 
         # === Level 2: Domain-level random effects ===
         # Domain means drawn from global distribution
-        mu_domain_raw = pm.Normal('mu_domain_raw', mu=0, sigma=1, shape=n_domains)
-        mu_domain = pm.Deterministic(
-            'mu_domain',
-            mu_global + sigma_global * mu_domain_raw
-        )
+        mu_domain_raw = pm.Normal("mu_domain_raw", mu=0, sigma=1, shape=n_domains)
+        mu_domain = pm.Deterministic("mu_domain", mu_global + sigma_global * mu_domain_raw)
 
         # Domain-specific variance
-        sigma_domain = pm.HalfNormal('sigma_domain', sigma=1.5, shape=n_domains)
+        sigma_domain = pm.HalfNormal("sigma_domain", sigma=1.5, shape=n_domains)
 
         # === Covariate effects (if any) ===
         if X is not None:
-            gamma = pm.Normal('gamma', mu=0, sigma=2.0, shape=n_covariates)
+            gamma = pm.Normal("gamma", mu=0, sigma=2.0, shape=n_covariates)
             X_effect = pm.math.dot(X, gamma)
         else:
             X_effect = 0
@@ -241,30 +240,20 @@ def build_pymc_model(
         beta_expected = mu_domain[domain_idx] + X_effect
 
         # Observation noise
-        sigma_obs = pm.HalfNormal('sigma_obs', sigma=1.0)
+        sigma_obs = pm.HalfNormal("sigma_obs", sigma=1.0)
 
         # Likelihood
-        beta_obs = pm.Normal(
-            'beta_obs',
-            mu=beta_expected,
-            sigma=sigma_obs,
-            observed=y
-        )
+        beta_obs = pm.Normal("beta_obs", mu=beta_expected, sigma=sigma_obs, observed=y)
 
         # === Posterior predictive ===
-        beta_pred = pm.Normal(
-            'beta_pred',
-            mu=beta_expected,
-            sigma=sigma_obs,
-            shape=n_obs
-        )
+        beta_pred = pm.Normal("beta_pred", mu=beta_expected, sigma=sigma_obs, shape=n_obs)
 
     data_dict = {
-        'domains': domains,
-        'domain_idx': domain_idx,
-        'y': y,
-        'X': X,
-        'covariates': covariates
+        "domains": domains,
+        "domain_idx": domain_idx,
+        "y": y,
+        "X": X,
+        "covariates": covariates,
     }
 
     return model, data_dict
@@ -275,7 +264,7 @@ def run_mcmc_sampling(
     n_samples: int = 2000,
     n_tune: int = 1000,
     n_chains: int = 4,
-    random_seed: int = 42
+    random_seed: int = 42,
 ) -> az.InferenceData:
     """Run MCMC sampling with NUTS."""
     if not PYMC_AVAILABLE:
@@ -289,14 +278,11 @@ def run_mcmc_sampling(
             chains=n_chains,
             random_seed=random_seed,
             target_accept=0.95,
-            return_inferencedata=True
+            return_inferencedata=True,
         )
 
         # Sample posterior predictive
-        ppc = pm.sample_posterior_predictive(
-            trace,
-            random_seed=random_seed
-        )
+        ppc = pm.sample_posterior_predictive(trace, random_seed=random_seed)
 
         # Combine traces
         trace.extend(ppc)
@@ -306,28 +292,25 @@ def run_mcmc_sampling(
 
 def compute_diagnostics(trace: az.InferenceData) -> dict[str, float]:
     """Compute MCMC diagnostics (R-hat, ESS)."""
-    summary = az.summary(trace, kind='diagnostics')
+    summary = az.summary(trace, kind="diagnostics")
 
     diagnostics = {
-        'r_hat_max': float(summary['r_hat'].max()),
-        'ess_bulk_min': float(summary['ess_bulk'].min()),
-        'ess_tail_min': float(summary['ess_tail'].min())
+        "r_hat_max": float(summary["r_hat"].max()),
+        "ess_bulk_min": float(summary["ess_bulk"].min()),
+        "ess_tail_min": float(summary["ess_tail"].min()),
     }
 
     # Check for divergences
-    divergences = int(trace.sample_stats['diverging'].sum())
-    diagnostics['divergences'] = divergences
+    divergences = int(trace.sample_stats["diverging"].sum())
+    diagnostics["divergences"] = divergences
 
     return diagnostics
 
 
-def posterior_predictive_checks(
-    trace: az.InferenceData,
-    y_obs: np.ndarray
-) -> dict[str, float]:
+def posterior_predictive_checks(trace: az.InferenceData, y_obs: np.ndarray) -> dict[str, float]:
     """Run posterior predictive checks."""
     # Extract posterior predictive samples
-    y_pred = trace.posterior_predictive['beta_pred'].values.reshape(-1, len(y_obs))
+    y_pred = trace.posterior_predictive["beta_pred"].values.reshape(-1, len(y_obs))
 
     # Compute predictive p-value
     # P(T(y_rep) >= T(y_obs))
@@ -339,24 +322,19 @@ def posterior_predictive_checks(
     posterior_mean = np.mean(y_pred, axis=0)
     rmse = float(np.sqrt(np.mean((y_obs - posterior_mean) ** 2)))
 
-    return {
-        'ppc_p_value': p_value,
-        'ppc_rmse': rmse
-    }
+    return {"ppc_p_value": p_value, "ppc_rmse": rmse}
 
 
 def compute_shrinkage(
-    trace: az.InferenceData,
-    df: pd.DataFrame,
-    data_dict: dict[str, Any]
+    trace: az.InferenceData, df: pd.DataFrame, data_dict: dict[str, Any]
 ) -> dict[str, float]:
     """Compute shrinkage factors (information borrowing strength)."""
     # Extract domain effects
-    mu_domain = trace.posterior['mu_domain'].values.mean(axis=(0, 1))
-    mu_global = float(trace.posterior['mu_global'].values.mean())
+    mu_domain = trace.posterior["mu_domain"].values.mean(axis=(0, 1))
+    mu_global = float(trace.posterior["mu_global"].values.mean())
 
-    domains = data_dict['domains']
-    domain_idx = data_dict['domain_idx']
+    domains = data_dict["domains"]
+    domain_idx = data_dict["domain_idx"]
 
     shrinkage = {}
     for i, domain in enumerate(domains):
@@ -364,7 +342,7 @@ def compute_shrinkage(
         mask = domain_idx == i
         if not mask.any():
             continue
-        obs_mean = df.loc[mask, 'beta'].mean()
+        obs_mean = df.loc[mask, "beta"].mean()
 
         # Hierarchical estimate (partial pooling)
         hier_mean = mu_domain[i]
@@ -386,49 +364,49 @@ def extract_results(
     df: pd.DataFrame,
     n_samples: int,
     n_tune: int,
-    n_chains: int
+    n_chains: int,
 ) -> BayesianResults:
     """Extract and summarize Bayesian results."""
     summary = az.summary(trace, hdi_prob=0.94)
 
     # Global parameters
-    mu_global_stats = summary.loc['mu_global']
-    mu_global_mean = float(mu_global_stats['mean'])
-    mu_global_hdi = az.hdi(trace, hdi_prob=0.94)['mu_global'].values
+    mu_global_stats = summary.loc["mu_global"]
+    mu_global_mean = float(mu_global_stats["mean"])
+    mu_global_hdi = az.hdi(trace, hdi_prob=0.94)["mu_global"].values
     mu_global_hdi_low = float(mu_global_hdi[0])
     mu_global_hdi_high = float(mu_global_hdi[1])
 
-    sigma_global = float(summary.loc['sigma_global', 'mean'])
+    sigma_global = float(summary.loc["sigma_global", "mean"])
 
     # Domain effects
-    domains = data_dict['domains']
+    domains = data_dict["domains"]
     domain_effects = {}
     for i, domain in enumerate(domains):
-        mu_domain_stats = summary.loc[f'mu_domain[{i}]']
-        mu_domain_hdi = az.hdi(trace, hdi_prob=0.94)[f'mu_domain'].values[i]
+        mu_domain_stats = summary.loc[f"mu_domain[{i}]"]
+        mu_domain_hdi = az.hdi(trace, hdi_prob=0.94)["mu_domain"].values[i]
 
         domain_effects[str(domain)] = {
-            'mean': float(mu_domain_stats['mean']),
-            'sd': float(mu_domain_stats['sd']),
-            'hdi_low': float(mu_domain_hdi[0]),
-            'hdi_high': float(mu_domain_hdi[1])
+            "mean": float(mu_domain_stats["mean"]),
+            "sd": float(mu_domain_stats["sd"]),
+            "hdi_low": float(mu_domain_hdi[0]),
+            "hdi_high": float(mu_domain_hdi[1]),
         }
 
     # Covariate effects
     covariate_effects = {}
-    if data_dict['covariates']:
-        for i, cov in enumerate(data_dict['covariates']):
-            gamma_stats = summary.loc[f'gamma[{i}]']
+    if data_dict["covariates"]:
+        for i, cov in enumerate(data_dict["covariates"]):
+            gamma_stats = summary.loc[f"gamma[{i}]"]
             covariate_effects[cov] = {
-                'mean': float(gamma_stats['mean']),
-                'sd': float(gamma_stats['sd'])
+                "mean": float(gamma_stats["mean"]),
+                "sd": float(gamma_stats["sd"]),
             }
 
     # Diagnostics
     diagnostics = compute_diagnostics(trace)
 
     # Posterior predictive checks
-    ppc = posterior_predictive_checks(trace, data_dict['y'])
+    ppc = posterior_predictive_checks(trace, data_dict["y"])
 
     # Shrinkage
     shrinkage = compute_shrinkage(trace, df, data_dict)
@@ -444,20 +422,18 @@ def extract_results(
         sigma_global=sigma_global,
         domain_effects=domain_effects,
         covariate_effects=covariate_effects,
-        r_hat_max=diagnostics['r_hat_max'],
-        ess_bulk_min=diagnostics['ess_bulk_min'],
-        ess_tail_min=diagnostics['ess_tail_min'],
-        divergences=diagnostics['divergences'],
-        ppc_p_value=ppc['ppc_p_value'],
-        ppc_rmse=ppc['ppc_rmse'],
-        shrinkage_factors=shrinkage
+        r_hat_max=diagnostics["r_hat_max"],
+        ess_bulk_min=diagnostics["ess_bulk_min"],
+        ess_tail_min=diagnostics["ess_tail_min"],
+        divergences=diagnostics["divergences"],
+        ppc_p_value=ppc["ppc_p_value"],
+        ppc_rmse=ppc["ppc_rmse"],
+        shrinkage_factors=shrinkage,
     )
 
 
 def create_visualizations(
-    trace: az.InferenceData,
-    results: BayesianResults,
-    output_dir: Path
+    trace: az.InferenceData, results: BayesianResults, output_dir: Path
 ) -> None:
     """Create diagnostic and summary visualizations."""
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -465,37 +441,28 @@ def create_visualizations(
     # Trace plots
     fig, axes = plt.subplots(3, 2, figsize=(12, 10))
     az.plot_trace(
-        trace,
-        var_names=['mu_global', 'sigma_global', 'mu_domain'],
-        compact=False,
-        axes=axes
+        trace, var_names=["mu_global", "sigma_global", "mu_domain"], compact=False, axes=axes
     )
     plt.tight_layout()
-    plt.savefig(output_dir / 'trace_plots.png', dpi=150, bbox_inches='tight')
+    plt.savefig(output_dir / "trace_plots.png", dpi=150, bbox_inches="tight")
     plt.close()
 
     # Forest plot (domain effects)
     fig, ax = plt.subplots(figsize=(10, 6))
-    az.plot_forest(
-        trace,
-        var_names=['mu_domain'],
-        combined=True,
-        hdi_prob=0.94,
-        ax=ax
-    )
-    ax.set_title('Domain-Level β Estimates (94% HDI)')
-    ax.set_xlabel('β (Logistic Steepness)')
+    az.plot_forest(trace, var_names=["mu_domain"], combined=True, hdi_prob=0.94, ax=ax)
+    ax.set_title("Domain-Level β Estimates (94% HDI)")
+    ax.set_xlabel("β (Logistic Steepness)")
     plt.tight_layout()
-    plt.savefig(output_dir / 'forest_plot_domains.png', dpi=150, bbox_inches='tight')
+    plt.savefig(output_dir / "forest_plot_domains.png", dpi=150, bbox_inches="tight")
     plt.close()
 
     # Posterior predictive check
     fig, ax = plt.subplots(figsize=(8, 6))
     az.plot_ppc(trace, ax=ax)
-    ax.set_title('Posterior Predictive Check')
-    ax.set_xlabel('β (Observed vs Predicted)')
+    ax.set_title("Posterior Predictive Check")
+    ax.set_xlabel("β (Observed vs Predicted)")
     plt.tight_layout()
-    plt.savefig(output_dir / 'ppc_plot.png', dpi=150, bbox_inches='tight')
+    plt.savefig(output_dir / "ppc_plot.png", dpi=150, bbox_inches="tight")
     plt.close()
 
     print(f"📊 Visualizations saved to {output_dir}/")
@@ -509,7 +476,7 @@ def run_pipeline(
     n_tune: int = 1000,
     n_chains: int = 4,
     covariates: list[str] | None = None,
-    random_seed: int = 42
+    random_seed: int = 42,
 ) -> None:
     """Run full Bayesian hierarchical analysis pipeline."""
     if not PYMC_AVAILABLE:
@@ -533,7 +500,7 @@ def run_pipeline(
         print("🔍 Checking multicollinearity (VIF)...")
         vif_df = compute_vif(df[covariates])
         print(vif_df)
-        if (vif_df['VIF'] > 10).any():
+        if (vif_df["VIF"] > 10).any():
             warnings.warn("High VIF detected (>10). Consider removing collinear covariates.")
         print()
 
@@ -546,11 +513,7 @@ def run_pipeline(
     # Sample
     print(f"🎯 Running MCMC (chains={n_chains}, samples={n_samples}, tune={n_tune})...")
     trace = run_mcmc_sampling(
-        model,
-        n_samples=n_samples,
-        n_tune=n_tune,
-        n_chains=n_chains,
-        random_seed=random_seed
+        model, n_samples=n_samples, n_tune=n_tune, n_chains=n_chains, random_seed=random_seed
     )
     print("✅ Sampling complete")
     print()
@@ -570,12 +533,16 @@ def run_pipeline(
 
     # Results summary
     print("📊 Results Summary:")
-    print(f"   μ_global: {results.mu_global_mean:.3f} [{results.mu_global_hdi_low:.3f}, {results.mu_global_hdi_high:.3f}]")
+    print(
+        f"   μ_global: {results.mu_global_mean:.3f} [{results.mu_global_hdi_low:.3f}, {results.mu_global_hdi_high:.3f}]"
+    )
     print(f"   σ_global: {results.sigma_global:.3f}")
     print()
     print("   Domain Effects:")
     for domain, effects in results.domain_effects.items():
-        print(f"      {domain:12s}: {effects['mean']:.3f} [{effects['hdi_low']:.3f}, {effects['hdi_high']:.3f}]")
+        print(
+            f"      {domain:12s}: {effects['mean']:.3f} [{effects['hdi_low']:.3f}, {effects['hdi_high']:.3f}]"
+        )
     print()
 
     if results.shrinkage_factors:
@@ -591,14 +558,14 @@ def run_pipeline(
     # Save results
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    timestamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
-    results_path = output_dir / f'bayes_results_{timestamp}.json'
-    with results_path.open('w') as f:
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    results_path = output_dir / f"bayes_results_{timestamp}.json"
+    with results_path.open("w") as f:
         json.dump(results.to_dict(), f, indent=2)
     print(f"💾 Results saved: {results_path}")
 
     # Save trace
-    trace_path = output_dir / f'bayes_trace_{timestamp}.nc'
+    trace_path = output_dir / f"bayes_trace_{timestamp}.nc"
     trace.to_netcdf(trace_path)
     print(f"💾 Trace saved: {trace_path}")
 
@@ -615,52 +582,30 @@ def parse_args() -> argparse.Namespace:
         description="Hierarchical Bayesian β meta-regression with PyMC"
     )
     parser.add_argument(
-        '--beta-csv',
+        "--beta-csv",
         type=Path,
-        default=Path('data/derived/beta_estimates.csv'),
-        help='CSV with β estimates (must have "domain" and "beta" columns)'
+        default=Path("data/derived/beta_estimates.csv"),
+        help='CSV with β estimates (must have "domain" and "beta" columns)',
     )
     parser.add_argument(
-        '--covariates-csv',
+        "--covariates-csv",
         type=Path,
-        default=Path('data/derived/domain_covariates.csv'),
-        help='CSV with domain covariates'
+        default=Path("data/derived/domain_covariates.csv"),
+        help="CSV with domain covariates",
     )
     parser.add_argument(
-        '--output-dir',
+        "--output-dir",
         type=Path,
-        default=Path('analysis/results/bayes'),
-        help='Output directory for results and plots'
+        default=Path("analysis/results/bayes"),
+        help="Output directory for results and plots",
     )
     parser.add_argument(
-        '--n-samples',
-        type=int,
-        default=2000,
-        help='Number of MCMC samples per chain'
+        "--n-samples", type=int, default=2000, help="Number of MCMC samples per chain"
     )
-    parser.add_argument(
-        '--n-tune',
-        type=int,
-        default=1000,
-        help='Number of tuning/burn-in samples'
-    )
-    parser.add_argument(
-        '--n-chains',
-        type=int,
-        default=4,
-        help='Number of MCMC chains'
-    )
-    parser.add_argument(
-        '--covariates',
-        nargs='*',
-        help='List of covariate column names to include'
-    )
-    parser.add_argument(
-        '--seed',
-        type=int,
-        default=42,
-        help='Random seed'
-    )
+    parser.add_argument("--n-tune", type=int, default=1000, help="Number of tuning/burn-in samples")
+    parser.add_argument("--n-chains", type=int, default=4, help="Number of MCMC chains")
+    parser.add_argument("--covariates", nargs="*", help="List of covariate column names to include")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed")
     return parser.parse_args()
 
 
@@ -681,9 +626,9 @@ def main() -> None:
         n_tune=args.n_tune,
         n_chains=args.n_chains,
         covariates=args.covariates,
-        random_seed=args.seed
+        random_seed=args.seed,
     )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -14,6 +14,7 @@ Input:
 Output:
     Matplotlib figures (display or save to disk)
 """
+
 from __future__ import annotations
 
 import json
@@ -25,11 +26,12 @@ import pandas as pd
 
 RESULTS_DIR = pathlib.Path("analysis/results")
 
+
 def _load_df():
     """Load validation results from any available format."""
-    agg = RESULTS_DIR/"rg_phase2_microscopic_validation_agg.json"
-    csv = RESULTS_DIR/"rg_phase2_microscopic_validation.csv"
-    raw = RESULTS_DIR/"rg_phase2_microscopic_validation.json"
+    agg = RESULTS_DIR / "rg_phase2_microscopic_validation_agg.json"
+    csv = RESULTS_DIR / "rg_phase2_microscopic_validation.csv"
+    raw = RESULTS_DIR / "rg_phase2_microscopic_validation.json"
 
     if agg.exists():
         return pd.json_normalize(json.loads(agg.read_text())["records"])
@@ -39,6 +41,7 @@ def _load_df():
         return pd.json_normalize(json.loads(raw.read_text())["records"])
 
     raise FileNotFoundError("Validation-Ergebnisse nicht gefunden.")
+
 
 def plot_overview(save=None):
     """
@@ -58,8 +61,8 @@ def plot_overview(save=None):
     figs = []
 
     # β-Verteilung
-    fig1, ax1 = plt.subplots(figsize=(6,4))
-    ax1.hist(df["beta_hat"], bins=40, edgecolor='black', alpha=0.7)
+    fig1, ax1 = plt.subplots(figsize=(6, 4))
+    ax1.hist(df["beta_hat"], bins=40, edgecolor="black", alpha=0.7)
     ax1.set_title("β-Verteilung")
     ax1.set_xlabel("β")
     ax1.set_ylabel("N")
@@ -67,7 +70,7 @@ def plot_overview(save=None):
     figs.append(("beta_hist.png", fig1))
 
     # β vs log(J/T)
-    fig2, ax2 = plt.subplots(figsize=(6,4))
+    fig2, ax2 = plt.subplots(figsize=(6, 4))
     x = np.log(df["J_over_T"].astype(float).values)
     y = df["beta_hat"].astype(float).values
     ax2.scatter(x, y, s=12, alpha=0.75)
@@ -78,10 +81,9 @@ def plot_overview(save=None):
     figs.append(("beta_vs_logJoverT.png", fig2))
 
     # β per Lattice
-    fig3, ax3 = plt.subplots(figsize=(7,4))
+    fig3, ax3 = plt.subplots(figsize=(7, 4))
     for g, sub in df.groupby("lattice"):
-        ax3.scatter(np.log(sub["J_over_T"]), sub["beta_hat"],
-                   s=10, label=f"N={g}", alpha=0.7)
+        ax3.scatter(np.log(sub["J_over_T"]), sub["beta_hat"], s=10, label=f"N={g}", alpha=0.7)
     ax3.set_xlabel("log(J/T)")
     ax3.set_ylabel("β")
     ax3.set_title("β by lattice")
@@ -94,12 +96,13 @@ def plot_overview(save=None):
         save_path.mkdir(parents=True, exist_ok=True)
         for name, fig in figs:
             fig.tight_layout()
-            fig.savefig(save_path/name, dpi=150)
+            fig.savefig(save_path / name, dpi=150)
             print(f"✅ Saved: {save_path/name}")
     else:
         plt.show()
 
     return figs
+
 
 if __name__ == "__main__":
     plot_overview(save="analysis/results/plots")

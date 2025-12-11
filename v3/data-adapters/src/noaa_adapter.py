@@ -26,18 +26,15 @@ Date: 2025-11-14
 Version: 0.1.0
 """
 
+import os
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Dict, List, Optional, Any, Tuple
-import json
-import os
+from typing import Any
 
 import numpy as np
 import pandas as pd
-from scipy import stats, signal
 import requests
-
-from base_adapter import BaseAdapter, UTACState
+from base_adapter import BaseAdapter
 
 
 class NOAAAdapter(BaseAdapter):
@@ -50,11 +47,11 @@ class NOAAAdapter(BaseAdapter):
 
     # Coral reef regions (major reef systems)
     REEF_REGIONS = {
-        'great_barrier_reef': {'lat': (-25, -10), 'lon': (142, 154)},
-        'caribbean': {'lat': (10, 28), 'lon': (-90, -60)},
-        'coral_triangle': {'lat': (-11, 20), 'lon': (95, 140)},
-        'red_sea': {'lat': (12, 30), 'lon': (32, 44)},
-        'maldives': {'lat': (-1, 8), 'lon': (72, 74)}
+        "great_barrier_reef": {"lat": (-25, -10), "lon": (142, 154)},
+        "caribbean": {"lat": (10, 28), "lon": (-90, -60)},
+        "coral_triangle": {"lat": (-11, 20), "lon": (95, 140)},
+        "red_sea": {"lat": (12, 30), "lon": (32, 44)},
+        "maldives": {"lat": (-1, 8), "lon": (72, 74)},
     }
 
     # Temperature thresholds
@@ -67,10 +64,10 @@ class NOAAAdapter(BaseAdapter):
 
     def __init__(
         self,
-        api_key: Optional[str] = None,
-        region: str = 'global',
-        cache_dir: Optional[Path] = None,
-        **kwargs
+        api_key: str | None = None,
+        region: str = "global",
+        cache_dir: Path | None = None,
+        **kwargs,
     ):
         """
         Initialize NOAA adapter.
@@ -81,9 +78,9 @@ class NOAAAdapter(BaseAdapter):
             cache_dir: Cache directory
             **kwargs: Additional BaseAdapter arguments
         """
-        super().__init__(system_id='coral', cache_dir=cache_dir, **kwargs)
+        super().__init__(system_id="coral", cache_dir=cache_dir, **kwargs)
 
-        self.api_key = api_key or os.getenv('NOAA_API_KEY')
+        self.api_key = api_key or os.getenv("NOAA_API_KEY")
         self.region = region
 
         # NOAA OISST API endpoints
@@ -91,7 +88,9 @@ class NOAAAdapter(BaseAdapter):
 
         self.logger.info(f"Initialized NOAAAdapter for coral reefs (region: {region})")
 
-    def fetch_raw_data(self, start_date: datetime, end_date: datetime, use_real_data: bool = False) -> Dict[str, Any]:
+    def fetch_raw_data(
+        self, start_date: datetime, end_date: datetime, use_real_data: bool = False
+    ) -> dict[str, Any]:
         """
         Fetch NOAA OISST SST data.
 
@@ -116,7 +115,7 @@ class NOAAAdapter(BaseAdapter):
             self.logger.info("Using synthetic NOAA OISST data (based on real trends)")
             return self._generate_synthetic_data(start_date, end_date)
 
-    def _fetch_real_noaa_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+    def _fetch_real_noaa_data(self, start_date: datetime, end_date: datetime) -> dict[str, Any]:
         """
         Fetch REAL NOAA OISST data from NCEI API.
 
@@ -147,7 +146,7 @@ class NOAAAdapter(BaseAdapter):
             self.logger.error(f"NetCDF fetch failed: {e}")
             raise
 
-    def _fetch_csv_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+    def _fetch_csv_data(self, start_date: datetime, end_date: datetime) -> dict[str, Any]:
         """
         Fetch SST data using NOAA NCEI CSV API.
 
@@ -162,14 +161,14 @@ class NOAAAdapter(BaseAdapter):
             Parsed data dictionary
         """
         # Get bounding box for region
-        if self.region == 'global':
+        if self.region == "global":
             # Global average (use multiple representative stations)
             bbox = None  # Will aggregate multiple regions
             stations = None  # Use global dataset
         elif self.region in self.REEF_REGIONS:
             region_def = self.REEF_REGIONS[self.region]
-            lat_min, lat_max = region_def['lat']
-            lon_min, lon_max = region_def['lon']
+            lat_min, lat_max = region_def["lat"]
+            lon_min, lon_max = region_def["lon"]
             bbox = f"{lon_min},{lat_min},{lon_max},{lat_max}"
             stations = None
         else:
@@ -179,18 +178,18 @@ class NOAAAdapter(BaseAdapter):
         base_url = "https://www.ncei.noaa.gov/access/services/data/v1"
 
         params = {
-            'dataset': 'global-marine',
-            'dataTypes': 'SST',  # Sea Surface Temperature
-            'startDate': start_date.strftime('%Y-%m-%d'),
-            'endDate': end_date.strftime('%Y-%m-%d'),
-            'format': 'csv',
-            'units': 'metric'
+            "dataset": "global-marine",
+            "dataTypes": "SST",  # Sea Surface Temperature
+            "startDate": start_date.strftime("%Y-%m-%d"),
+            "endDate": end_date.strftime("%Y-%m-%d"),
+            "format": "csv",
+            "units": "metric",
         }
 
         if bbox:
-            params['bbox'] = bbox
+            params["bbox"] = bbox
         if stations:
-            params['stations'] = stations
+            params["stations"] = stations
 
         self.logger.info(f"Fetching CSV data: {params}")
 
@@ -200,30 +199,32 @@ class NOAAAdapter(BaseAdapter):
 
         # Parse CSV
         from io import StringIO
+
         df = pd.read_csv(StringIO(response.text))
 
         self.logger.info(f"Fetched {len(df)} rows from NOAA CSV API")
 
         # Process data
-        if 'DATE' in df.columns:
-            timestamps = pd.to_datetime(df['DATE'])
-        elif 'TIMESTAMP' in df.columns:
-            timestamps = pd.to_datetime(df['TIMESTAMP'])
+        if "DATE" in df.columns:
+            timestamps = pd.to_datetime(df["DATE"])
+        elif "TIMESTAMP" in df.columns:
+            timestamps = pd.to_datetime(df["TIMESTAMP"])
         else:
             raise ValueError(f"No DATE column in CSV. Columns: {df.columns.tolist()}")
 
         # Extract SST
-        if 'SST' in df.columns:
-            sst_values = df['SST'].values
-        elif 'SEA_SURFACE_TEMP' in df.columns:
-            sst_values = df['SEA_SURFACE_TEMP'].values
+        if "SST" in df.columns:
+            sst_values = df["SST"].values
+        elif "SEA_SURFACE_TEMP" in df.columns:
+            sst_values = df["SEA_SURFACE_TEMP"].values
         else:
             raise ValueError(f"No SST column in CSV. Columns: {df.columns.tolist()}")
 
         # Calculate SST anomaly (relative to baseline)
         # Baseline: 1985-1993 average
-        baseline_mask = (timestamps >= f'{self.BASELINE_PERIOD[0]}-01-01') & \
-                        (timestamps < f'{self.BASELINE_PERIOD[1]+1}-01-01')
+        baseline_mask = (timestamps >= f"{self.BASELINE_PERIOD[0]}-01-01") & (
+            timestamps < f"{self.BASELINE_PERIOD[1]+1}-01-01"
+        )
 
         if baseline_mask.any():
             baseline_mean = sst_values[baseline_mask].mean()
@@ -238,19 +239,19 @@ class NOAAAdapter(BaseAdapter):
         dhw = self._calculate_dhw(timestamps, sst_anomaly)
 
         return {
-            'timestamps': timestamps.tolist(),
-            'sst_anomaly_c': sst_anomaly.tolist(),
-            'dhw': dhw.tolist(),
-            'metadata': {
-                'source': 'NOAA NCEI CSV API',
-                'baseline_period': f'{self.BASELINE_PERIOD[0]}-{self.BASELINE_PERIOD[1]}',
-                'baseline_mean_c': float(baseline_mean),
-                'region': self.region,
-                'n_observations': len(df)
-            }
+            "timestamps": timestamps.tolist(),
+            "sst_anomaly_c": sst_anomaly.tolist(),
+            "dhw": dhw.tolist(),
+            "metadata": {
+                "source": "NOAA NCEI CSV API",
+                "baseline_period": f"{self.BASELINE_PERIOD[0]}-{self.BASELINE_PERIOD[1]}",
+                "baseline_mean_c": float(baseline_mean),
+                "region": self.region,
+                "n_observations": len(df),
+            },
         }
 
-    def _fetch_netcdf_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+    def _fetch_netcdf_data(self, start_date: datetime, end_date: datetime) -> dict[str, Any]:
         """
         Fetch SST data from NOAA OISST NetCDF files.
 
@@ -293,7 +294,9 @@ class NOAAAdapter(BaseAdapter):
         # sst = ds_region['sst']
         # ...
 
-        raise NotImplementedError("NetCDF fetching requires xarray. Use CSV method or install: pip install xarray netCDF4")
+        raise NotImplementedError(
+            "NetCDF fetching requires xarray. Use CSV method or install: pip install xarray netCDF4"
+        )
 
     def _calculate_dhw(self, timestamps: pd.DatetimeIndex, sst_anomaly: np.ndarray) -> np.ndarray:
         """
@@ -318,7 +321,7 @@ class NOAAAdapter(BaseAdapter):
             start_idx = max(0, i - lookback_days)
 
             # Get recent anomalies
-            recent = sst_anomaly[start_idx:i+1]
+            recent = sst_anomaly[start_idx : i + 1]
 
             # Accumulate stress above 1°C threshold
             stress = np.maximum(recent - 1.0, 0)
@@ -326,7 +329,7 @@ class NOAAAdapter(BaseAdapter):
 
         return dhw
 
-    def _generate_synthetic_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+    def _generate_synthetic_data(self, start_date: datetime, end_date: datetime) -> dict[str, Any]:
         """
         Generate synthetic NOAA OISST data based on real coral bleaching trends.
 
@@ -343,7 +346,7 @@ class NOAAAdapter(BaseAdapter):
             Synthetic data dictionary
         """
         # Generate daily timestamps
-        timestamps = pd.date_range(start=start_date, end=end_date, freq='D')
+        timestamps = pd.date_range(start=start_date, end=end_date, freq="D")
 
         # Base warming trend: +1.4°C in 2024 (relative to 1850-1900)
         baseline_year = 1985
@@ -351,13 +354,13 @@ class NOAAAdapter(BaseAdapter):
         current_anomaly = 1.4  # °C
         warming_rate = current_anomaly / (current_year - baseline_year)  # °C/yr
 
-        years_since_baseline = (timestamps - pd.Timestamp(f'{baseline_year}-01-01')).days / 365.25
+        years_since_baseline = (timestamps - pd.Timestamp(f"{baseline_year}-01-01")).days / 365.25
 
         # Long-term warming trend
         trend_anomaly = warming_rate * years_since_baseline
 
         # Seasonal cycle (±0.3°C amplitude, varies by region)
-        seasonal = 0.3 * np.sin(2 * np.pi * years_since_baseline - np.pi/2)
+        seasonal = 0.3 * np.sin(2 * np.pi * years_since_baseline - np.pi / 2)
 
         # ENSO variability (±0.5°C, ~4-7 year cycle)
         enso_period = 5.5  # years
@@ -376,6 +379,7 @@ class NOAAAdapter(BaseAdapter):
 
         # Smooth heatwaves
         from scipy.ndimage import gaussian_filter1d
+
         mhw = gaussian_filter1d(mhw, sigma=30)
 
         # Daily noise
@@ -392,25 +396,25 @@ class NOAAAdapter(BaseAdapter):
             # Look back 12 weeks
             lookback_days = 84  # 12 weeks
             start_idx = max(0, i - lookback_days)
-            recent_anomalies = np.array(sst_anomaly[start_idx:i+1])
+            recent_anomalies = np.array(sst_anomaly[start_idx : i + 1])
 
             # Accumulate stress above 1°C threshold
             stress = np.maximum(recent_anomalies - 1.0, 0)
             dhw[i] = np.sum(stress) / 7  # Convert to weeks
 
         return {
-            'timestamps': timestamps.tolist(),
-            'sst_anomaly_c': sst_anomaly.tolist(),
-            'dhw': dhw.tolist(),
-            'metadata': {
-                'source': 'synthetic',
-                'baseline_period': f'{self.BASELINE_PERIOD[0]}-{self.BASELINE_PERIOD[1]}',
-                'warming_rate_c_per_yr': warming_rate,
-                'region': self.region
-            }
+            "timestamps": timestamps.tolist(),
+            "sst_anomaly_c": sst_anomaly.tolist(),
+            "dhw": dhw.tolist(),
+            "metadata": {
+                "source": "synthetic",
+                "baseline_period": f"{self.BASELINE_PERIOD[0]}-{self.BASELINE_PERIOD[1]}",
+                "warming_rate_c_per_yr": warming_rate,
+                "region": self.region,
+            },
         }
 
-    def transform_to_timeseries(self, raw_data: Dict[str, Any]) -> pd.DataFrame:
+    def transform_to_timeseries(self, raw_data: dict[str, Any]) -> pd.DataFrame:
         """
         Transform raw NOAA data to standardized time series.
 
@@ -420,22 +424,24 @@ class NOAAAdapter(BaseAdapter):
         Returns:
             DataFrame with columns: ['timestamp', 'value', 'dhw']
         """
-        df = pd.DataFrame({
-            'timestamp': pd.to_datetime(raw_data['timestamps']),
-            'value': raw_data['sst_anomaly_c'],  # SST anomaly as primary value
-            'dhw': raw_data['dhw']
-        })
+        df = pd.DataFrame(
+            {
+                "timestamp": pd.to_datetime(raw_data["timestamps"]),
+                "value": raw_data["sst_anomaly_c"],  # SST anomaly as primary value
+                "dhw": raw_data["dhw"],
+            }
+        )
 
-        df = df.set_index('timestamp').sort_index()
+        df = df.set_index("timestamp").sort_index()
 
         # Resample to monthly (reduce noise)
-        df_monthly = df.resample('MS').mean()
+        df_monthly = df.resample("MS").mean()
 
         self.logger.info(f"Transformed {len(df_monthly)} NOAA monthly observations")
 
         return df_monthly.reset_index()
 
-    def estimate_beta(self, timeseries: pd.DataFrame) -> Tuple[float, float]:
+    def estimate_beta(self, timeseries: pd.DataFrame) -> tuple[float, float]:
         """
         Estimate β from NOAA time series.
 
@@ -450,7 +456,7 @@ class NOAAAdapter(BaseAdapter):
         Returns:
             (beta_mean, beta_std)
         """
-        ts = timeseries.set_index('timestamp')
+        ts = timeseries.set_index("timestamp")
 
         # Method 1: DHW Response Curve
         # β from bleaching response to thermal stress
@@ -475,11 +481,11 @@ class NOAAAdapter(BaseAdapter):
 
         # Historical events (from coral_trilayer.md)
         events = [
-            {'year': 1998, 'temp': 1.0, 'bleaching': 0.16},
-            {'year': 2010, 'temp': 1.1, 'bleaching': 0.35},
-            {'year': 2016, 'temp': 1.3, 'bleaching': 0.56},
-            {'year': 2020, 'temp': 1.35, 'bleaching': 0.68},
-            {'year': 2023, 'temp': 1.4, 'bleaching': 0.84}
+            {"year": 1998, "temp": 1.0, "bleaching": 0.16},
+            {"year": 2010, "temp": 1.1, "bleaching": 0.35},
+            {"year": 2016, "temp": 1.3, "bleaching": 0.56},
+            {"year": 2020, "temp": 1.35, "bleaching": 0.68},
+            {"year": 2023, "temp": 1.4, "bleaching": 0.84},
         ]
 
         # Fit sigmoid: bleaching = σ(β(T - Θ))
@@ -488,14 +494,16 @@ class NOAAAdapter(BaseAdapter):
         def sigmoid(T, beta, theta):
             return 1 / (1 + np.exp(-beta * (T - theta)))
 
-        T_data = np.array([e['temp'] for e in events])
-        bleaching_data = np.array([e['bleaching'] for e in events])
+        T_data = np.array([e["temp"] for e in events])
+        bleaching_data = np.array([e["bleaching"] for e in events])
 
         try:
             popt, _ = curve_fit(sigmoid, T_data, bleaching_data, p0=[7.0, 1.2])
             beta_historical = popt[0]
             theta_historical = popt[1]
-            self.logger.debug(f"β (historical fit): {beta_historical:.2f}, Θ={theta_historical:.2f}°C")
+            self.logger.debug(
+                f"β (historical fit): {beta_historical:.2f}, Θ={theta_historical:.2f}°C"
+            )
         except:
             beta_historical = 6.8  # Fallback
             self.logger.debug(f"β (historical fallback): {beta_historical:.2f}")
@@ -506,7 +514,7 @@ class NOAAAdapter(BaseAdapter):
         # Coral reefs show rapid transitions → high variance and AR(1)
         if ews.variance > 0:
             # Empirical relation: β ∝ sqrt(variance)
-            beta_ews = 5.0 + 10.0 * np.sqrt(ews.variance) / np.sqrt(np.mean(ts['value']**2))
+            beta_ews = 5.0 + 10.0 * np.sqrt(ews.variance) / np.sqrt(np.mean(ts["value"] ** 2))
             beta_ews = np.clip(beta_ews, 3, 15)
         else:
             beta_ews = 7.5  # Use prior
@@ -566,7 +574,7 @@ class NOAAAdapter(BaseAdapter):
 
         return R
 
-    def get_additional_metrics(self, timeseries: pd.DataFrame) -> Dict[str, Any]:
+    def get_additional_metrics(self, timeseries: pd.DataFrame) -> dict[str, Any]:
         """
         Calculate additional coral-specific metrics.
 
@@ -578,14 +586,14 @@ class NOAAAdapter(BaseAdapter):
             - bleaching_probability: Estimated bleaching %
             - years_since_last_mhw: Years since last marine heatwave
         """
-        ts = timeseries.set_index('timestamp')
+        ts = timeseries.set_index("timestamp")
 
         # Current values
-        current_sst = ts['value'].iloc[-1]
-        current_dhw = ts['dhw'].iloc[-1]
+        current_sst = ts["value"].iloc[-1]
+        current_dhw = ts["dhw"].iloc[-1]
 
         # Warming rate (linear fit over last 30 years)
-        recent = ts['value'].last('30Y')
+        recent = ts["value"].last("30Y")
         x = np.arange(len(recent))
         slope, _ = np.polyfit(x, recent.values, 1)
         warming_rate_per_month = slope
@@ -596,7 +604,7 @@ class NOAAAdapter(BaseAdapter):
         bleaching_prob = 1 / (1 + np.exp(-7.5 * (current_sst - 1.2)))
 
         # Years since last marine heatwave (DHW > 4)
-        mhw_events = ts[ts['dhw'] > 4]
+        mhw_events = ts[ts["dhw"] > 4]
         if len(mhw_events) > 0:
             last_mhw = mhw_events.index[-1]
             years_since_mhw = (ts.index[-1] - last_mhw).days / 365.25
@@ -604,19 +612,20 @@ class NOAAAdapter(BaseAdapter):
             years_since_mhw = np.inf
 
         return {
-            'current_sst_anomaly_c': float(current_sst),
-            'current_dhw': float(current_dhw),
-            'warming_rate_c_per_decade': float(warming_rate_per_decade),
-            'bleaching_probability': float(bleaching_prob),
-            'years_since_last_mhw': float(years_since_mhw),
-            'threshold_temp_c': self.THETA_TEMP_ANOMALY_C,
-            'threshold_dhw': self.THETA_DHW
+            "current_sst_anomaly_c": float(current_sst),
+            "current_dhw": float(current_dhw),
+            "warming_rate_c_per_decade": float(warming_rate_per_decade),
+            "bleaching_probability": float(bleaching_prob),
+            "years_since_last_mhw": float(years_since_mhw),
+            "threshold_temp_c": self.THETA_TEMP_ANOMALY_C,
+            "threshold_dhw": self.THETA_DHW,
         }
 
 
 if __name__ == "__main__":
     """Test NOAA adapter with synthetic data."""
     import logging
+
     logging.basicConfig(level=logging.INFO)
 
     adapter = NOAAAdapter()
@@ -624,9 +633,9 @@ if __name__ == "__main__":
     # Get current state
     state = adapter.get_current_state()
 
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("Coral Reefs - NOAA OISST Monitoring")
-    print("="*60)
+    print("=" * 60)
     print(f"System ID: {state.system_id}")
     print(f"Timestamp: {state.timestamp}")
     print(f"R (normalized state): {state.R:.4f}")
@@ -634,15 +643,15 @@ if __name__ == "__main__":
     print(f"β (steepness): {state.beta:.2f}")
     print(f"σ (sigmoid): {state.sigma:.4f}")
     print(f"Status: {state.status}")
-    print(f"\nMetadata:")
+    print("\nMetadata:")
     print(f"  β uncertainty: ±{state.metadata['beta_std']:.2f}")
     print(f"  Raw SST anomaly: {state.metadata['raw_value']:.2f}°C")
     print(f"  Observations: {state.metadata['n_observations']}")
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
 
     # Additional metrics
     end_date = datetime.now()
-    start_date = end_date - timedelta(days=365*5)
+    start_date = end_date - timedelta(days=365 * 5)
     raw_data = adapter.fetch_raw_data(start_date, end_date)
     ts = adapter.transform_to_timeseries(raw_data)
     metrics = adapter.get_additional_metrics(ts)

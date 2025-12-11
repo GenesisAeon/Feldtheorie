@@ -10,7 +10,6 @@ import math
 
 import numpy as np
 import pytest
-
 from analysis.resonance_fit_pipeline import (
     _mean,
     _variance,
@@ -152,8 +151,15 @@ class TestFitThresholdParameters:
         result = fit_threshold_parameters(R, sigma)
 
         expected_keys = {
-            "beta", "theta", "beta_ci_lower", "beta_ci_upper",
-            "theta_ci_lower", "theta_ci_upper", "r2", "aic", "ss_res"
+            "beta",
+            "theta",
+            "beta_ci_lower",
+            "beta_ci_upper",
+            "theta_ci_lower",
+            "theta_ci_upper",
+            "r2",
+            "aic",
+            "ss_res",
         }
         assert set(result.keys()) == expected_keys
 

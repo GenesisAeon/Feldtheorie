@@ -4,10 +4,11 @@ Tests for UTAC Tooltip System API
 v2-feat-ext-001: Tooltip System
 """
 
-import pytest
-from fastapi.testclient import TestClient
 import sys
 from pathlib import Path
+
+import pytest
+from fastapi.testclient import TestClient
 
 # Add project root to path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +23,7 @@ client = TestClient(app)
 # Health & Status Tests
 # ============================================================================
 
+
 def test_health_check():
     """Test health endpoint returns correct status"""
     response = client.get("/health")
@@ -35,6 +37,7 @@ def test_health_check():
 # ============================================================================
 # Tooltip API Tests
 # ============================================================================
+
 
 def test_get_all_tooltip_data():
     """Test GET /api/tooltip returns list of tooltip data"""
@@ -75,9 +78,11 @@ def test_get_tooltip_data_nonexistent_preset():
 # Field Type Classification Tests
 # ============================================================================
 
+
 def test_field_type_weakly_coupled():
     """Test field type classification for weakly coupled (β < 2.5)"""
     from api.server import classify_field_type
+
     result = classify_field_type(2.0)
     assert result.type == "weakly_coupled"
     assert result.beta_range == [0.0, 2.5]
@@ -87,6 +92,7 @@ def test_field_type_weakly_coupled():
 def test_field_type_high_dimensional():
     """Test field type classification for high-dimensional (2.5 ≤ β < 4.0)"""
     from api.server import classify_field_type
+
     result = classify_field_type(3.5)
     assert result.type == "high_dimensional"
     assert result.beta_range == [2.5, 4.0]
@@ -96,6 +102,7 @@ def test_field_type_high_dimensional():
 def test_field_type_strongly_coupled():
     """Test field type classification for strongly coupled (4.0 ≤ β < 5.5)"""
     from api.server import classify_field_type
+
     result = classify_field_type(4.5)
     assert result.type == "strongly_coupled"
     assert result.beta_range == [4.0, 5.5]
@@ -105,6 +112,7 @@ def test_field_type_strongly_coupled():
 def test_field_type_physically_constrained():
     """Test field type classification for physically constrained (5.5 ≤ β < 10.0)"""
     from api.server import classify_field_type
+
     result = classify_field_type(7.0)
     assert result.type == "physically_constrained"
     assert result.beta_range == [5.5, 10.0]
@@ -114,6 +122,7 @@ def test_field_type_physically_constrained():
 def test_field_type_meta_adaptive():
     """Test field type classification for meta-adaptive (β ≥ 10.0)"""
     from api.server import classify_field_type
+
     result = classify_field_type(16.3)  # Urban heat β
     assert result.type == "meta_adaptive"
     assert result.beta_range == [10.0, 1000.0]
@@ -123,6 +132,7 @@ def test_field_type_meta_adaptive():
 def test_field_type_none_input():
     """Test field type classification with None input (should default)"""
     from api.server import classify_field_type
+
     result = classify_field_type(None)
     assert result.type == "high_dimensional"  # Default
 
@@ -131,15 +141,12 @@ def test_field_type_none_input():
 # CREP Score Tests
 # ============================================================================
 
+
 def test_crep_scores_computation():
     """Test CREP scores are computed correctly"""
     from api.server import compute_crep_scores
-    crep = compute_crep_scores(
-        r2=0.95,
-        delta_aic=150.0,
-        impedance_mean=1.5,
-        beta=4.5
-    )
+
+    crep = compute_crep_scores(r2=0.95, delta_aic=150.0, impedance_mean=1.5, beta=4.5)
     assert crep is not None
     assert 0 <= crep.coherence <= 1
     assert 0 <= crep.resilience <= 1
@@ -152,18 +159,15 @@ def test_crep_scores_computation():
 def test_crep_scores_null_inputs():
     """Test CREP scores return None with null inputs"""
     from api.server import compute_crep_scores
-    crep = compute_crep_scores(
-        r2=None,
-        delta_aic=150.0,
-        impedance_mean=1.5,
-        beta=4.5
-    )
+
+    crep = compute_crep_scores(r2=None, delta_aic=150.0, impedance_mean=1.5, beta=4.5)
     assert crep is None
 
 
 # ============================================================================
 # Data Structure Tests
 # ============================================================================
+
 
 def test_tooltip_data_structure():
     """Test tooltip data has required fields"""
@@ -198,6 +202,7 @@ def test_field_type_info_structure():
 # Integration Tests
 # ============================================================================
 
+
 def test_tooltip_data_matches_field_type_beta():
     """Test that field_type classification matches beta value"""
     response = client.get("/api/tooltip")
@@ -211,8 +216,9 @@ def test_tooltip_data_matches_field_type_beta():
 
             # Beta should be within field type range
             # (Allow small tolerance for boundary cases)
-            assert beta_min <= beta <= beta_max + 0.1, \
-                f"{item['preset_id']}: β={beta} not in {ft['type']} range [{beta_min}, {beta_max}]"
+            assert (
+                beta_min <= beta <= beta_max + 0.1
+            ), f"{item['preset_id']}: β={beta} not in {ft['type']} range [{beta_min}, {beta_max}]"
 
 
 if __name__ == "__main__":

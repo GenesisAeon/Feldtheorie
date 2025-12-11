@@ -89,7 +89,9 @@ def fit_sigmoid_with_fallbacks(x: Sequence[float], y: Sequence[float]) -> Sigmoi
             theta0 = float(np.median(r))
             baseline0 = float(response.min())
             with warnings.catch_warnings():
-                warnings.filterwarnings("ignore", message="Covariance of the parameters could not be estimated")
+                warnings.filterwarnings(
+                    "ignore", message="Covariance of the parameters could not be estimated"
+                )
                 popt, pcov = _SCIPY_OPTIMIZE.curve_fit(
                     logistic,
                     r,
@@ -225,7 +227,7 @@ def _aic(y_true: np.ndarray, y_pred: np.ndarray, *, n_params: int) -> float:
     """Gaussian AIC for resonance exports."""
 
     resid = y_true - y_pred
-    sse = float(np.sum(resid ** 2))
+    sse = float(np.sum(resid**2))
     n = y_true.size
     if n <= n_params + 1:
         return float("inf")
@@ -246,13 +248,15 @@ def _steepness_ci_width_from_covariance(covariance: np.ndarray, *, index: int) -
     return 3.92 * standard_error  # ≈ 95 % (±1.96)
 
 
-def _steepness_ci_width_from_linear(design: np.ndarray, target: np.ndarray, coeffs: np.ndarray) -> float | None:
+def _steepness_ci_width_from_linear(
+    design: np.ndarray, target: np.ndarray, coeffs: np.ndarray
+) -> float | None:
     residuals = target - design @ coeffs
     n = design.shape[0]
     p = design.shape[1]
     if n <= p:
         return None
-    sigma2 = float(np.sum(residuals ** 2) / (n - p))
+    sigma2 = float(np.sum(residuals**2) / (n - p))
     if not np.isfinite(sigma2) or sigma2 <= 0.0:
         return None
     fisher = design.T @ design
@@ -279,4 +283,3 @@ __all__ = [
     "logistic",
     "power_law_fit_aic",
 ]
-

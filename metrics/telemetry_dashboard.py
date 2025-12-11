@@ -26,18 +26,18 @@ Usage:
     # Generate dashboard plots
     plot_beta_drift(output_dir="analysis/results/telemetry")
 """
+
 from __future__ import annotations
 
 import csv
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional
 
 import numpy as np
 import pandas as pd
 
 try:
-    from models.utac_type6_implosive import PHI, PHI_CBRT, BETA_FIXPOINT_PHI3
+    from models.utac_type6_implosive import BETA_FIXPOINT_PHI3, PHI, PHI_CBRT
 except ImportError:
     PHI = 1.618034
     PHI_CBRT = 1.174070
@@ -177,9 +177,7 @@ def plot_beta_drift(
             label=domain,
             alpha=0.7,
         )
-    ax.axhline(
-        BETA_FIXPOINT_PHI3, color="red", linestyle="--", alpha=0.5, label="Φ³ (canonical)"
-    )
+    ax.axhline(BETA_FIXPOINT_PHI3, color="red", linestyle="--", alpha=0.5, label="Φ³ (canonical)")
     ax.set_xlabel("Time (UTC)")
     ax.set_ylabel("β (Steepness)")
     ax.set_title("β Evolution Over Time")
@@ -228,7 +226,14 @@ def plot_beta_drift(
     ax = axes[1, 1]
     df_crep = df[df["crep_flag"] == True]
     if not df_crep.empty:
-        ax.scatter(df_crep["timestamp"], df_crep["beta"], color="red", marker="x", s=100, label="CREP ≥ 0.7")
+        ax.scatter(
+            df_crep["timestamp"],
+            df_crep["beta"],
+            color="red",
+            marker="x",
+            s=100,
+            label="CREP ≥ 0.7",
+        )
         ax.scatter(df["timestamp"], df["beta"], color="lightgray", alpha=0.3, s=30, label="Normal")
         ax.axhline(BETA_FIXPOINT_PHI3, color="blue", linestyle="--", alpha=0.5)
         ax.set_xlabel("Time (UTC)")
@@ -240,7 +245,10 @@ def plot_beta_drift(
         ax.text(0.5, 0.5, "No CREP flags", ha="center", va="center", transform=ax.transAxes)
 
     plt.tight_layout()
-    plot_path = output_path / f"beta_drift_dashboard_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}.png"
+    plot_path = (
+        output_path
+        / f"beta_drift_dashboard_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}.png"
+    )
     plt.savefig(plot_path, dpi=150, bbox_inches="tight")
     print(f"✅ Dashboard saved: {plot_path}")
 
@@ -293,7 +301,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="β-Drift Telemetry Dashboard")
     parser.add_argument("--plot", action="store_true", help="Generate dashboard plots")
     parser.add_argument("--summary", action="store_true", help="Print summary report")
-    parser.add_argument("--output-dir", default="analysis/results/telemetry", help="Output directory")
+    parser.add_argument(
+        "--output-dir", default="analysis/results/telemetry", help="Output directory"
+    )
 
     args = parser.parse_args()
 

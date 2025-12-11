@@ -106,7 +106,9 @@ def build_summary(data_path: Path, output_path: Path) -> dict[str, object]:
         "order_parameter": "probability of slow-slip rupture transitioning to seismic failure",
         "measurements": [
             {"R": R, "sigma": sigma, "logistic_fit": pred}
-            for R, sigma, pred in zip(observations["R"], observations["sigma"], logistic_predictions)
+            for R, sigma, pred in zip(
+                observations["R"], observations["sigma"], logistic_predictions
+            )
         ],
     }
     summary["impedance"] = zeta_info

@@ -5,10 +5,11 @@ Tests for UTAC Fourier Analysis Module
 Tests spectral analysis functions for UTAC threshold field systems.
 """
 
-import pytest
-import numpy as np
-from pathlib import Path
 import sys
+from pathlib import Path
+
+import numpy as np
+import pytest
 
 # Add parent dir to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -49,16 +50,16 @@ class TestComputeFourier:
         t = np.linspace(0, 1, sampling_rate)
 
         # Composite: 220 Hz + 440 Hz + 880 Hz
-        signal = (np.sin(2 * np.pi * 220 * t) +
-                  np.sin(2 * np.pi * 440 * t) +
-                  np.sin(2 * np.pi * 880 * t))
+        signal = (
+            np.sin(2 * np.pi * 220 * t) + np.sin(2 * np.pi * 440 * t) + np.sin(2 * np.pi * 880 * t)
+        )
 
         spectrum, freqs = utac_fourier.compute_fourier(signal, sampling_rate)
 
         # Find peaks (should be at 220, 440, 880 Hz)
         peaks = []
         for i in range(1, len(spectrum) - 1):
-            if spectrum[i] > spectrum[i-1] and spectrum[i] > spectrum[i+1]:
+            if spectrum[i] > spectrum[i - 1] and spectrum[i] > spectrum[i + 1]:
                 if spectrum[i] > 1000:  # Significant peak
                     peaks.append(freqs[i])
 
@@ -78,7 +79,7 @@ class TestComputeFourier:
         t = np.linspace(0, duration, int(sampling_rate * duration))
 
         # Annual cycle: period = 365 days → freq = 1/365 Hz
-        signal = np.sin(2 * np.pi * (1/365) * t)
+        signal = np.sin(2 * np.pi * (1 / 365) * t)
 
         spectrum, freqs = utac_fourier.compute_fourier(signal, sampling_rate)
 
@@ -88,7 +89,7 @@ class TestComputeFourier:
         # Check peak near 1/365 Hz
         peak_idx = np.argmax(spectrum)
         peak_freq = freqs[peak_idx]
-        assert peak_freq == pytest.approx(1/365, abs=0.01)
+        assert peak_freq == pytest.approx(1 / 365, abs=0.01)
 
 
 class TestSpectralFeatures:
@@ -104,7 +105,7 @@ class TestSpectralFeatures:
         spectrum, freqs = utac_fourier.compute_fourier(signal, sampling_rate)
         features = utac_fourier.spectral_features(spectrum, freqs)
 
-        assert features['dominant_freq'] == pytest.approx(440.0, abs=2.0)
+        assert features["dominant_freq"] == pytest.approx(440.0, abs=2.0)
 
     def test_spectral_centroid(self):
         """Test spectral centroid computation"""
@@ -121,7 +122,7 @@ class TestSpectralFeatures:
         spectrum_high, freqs = utac_fourier.compute_fourier(signal_high, sampling_rate)
         features_high = utac_fourier.spectral_features(spectrum_high, freqs)
 
-        assert features_low['centroid'] < features_high['centroid']
+        assert features_low["centroid"] < features_high["centroid"]
 
     def test_spectral_entropy(self):
         """Test spectral entropy computation"""
@@ -140,7 +141,7 @@ class TestSpectralFeatures:
         features_noise = utac_fourier.spectral_features(spectrum_noise, freqs)
 
         # Entropy should be higher for noise than pure tone
-        assert features_noise['entropy'] > features_pure['entropy']
+        assert features_noise["entropy"] > features_pure["entropy"]
 
     def test_feature_keys(self):
         """Test that all expected features are present"""
@@ -152,14 +153,14 @@ class TestSpectralFeatures:
         features = utac_fourier.spectral_features(spectrum, freqs)
 
         # Check all required keys exist
-        assert 'dominant_freq' in features
-        assert 'entropy' in features
-        assert 'centroid' in features
+        assert "dominant_freq" in features
+        assert "entropy" in features
+        assert "centroid" in features
 
         # Check values are numeric
-        assert isinstance(features['dominant_freq'], (int, float, np.number))
-        assert isinstance(features['entropy'], (int, float, np.number))
-        assert isinstance(features['centroid'], (int, float, np.number))
+        assert isinstance(features["dominant_freq"], (int, float, np.number))
+        assert isinstance(features["entropy"], (int, float, np.number))
+        assert isinstance(features["centroid"], (int, float, np.number))
 
 
 class TestClassifyFieldType:
@@ -167,55 +168,58 @@ class TestClassifyFieldType:
 
     def test_weakly_coupled(self):
         """Test Weakly Coupled classification (< 150 Hz)"""
-        features = {'dominant_freq': 110}
+        features = {"dominant_freq": 110}
         field_type = utac_fourier.classify_field_type(features)
-        assert field_type == 'Weakly Coupled'
+        assert field_type == "Weakly Coupled"
 
     def test_strongly_coupled(self):
         """Test Strongly Coupled classification (150-300 Hz)"""
-        features = {'dominant_freq': 220}
+        features = {"dominant_freq": 220}
         field_type = utac_fourier.classify_field_type(features)
-        assert field_type == 'Strongly Coupled'
+        assert field_type == "Strongly Coupled"
 
     def test_high_dimensional(self):
         """Test High-Dimensional classification (300-600 Hz)"""
-        features = {'dominant_freq': 440}
+        features = {"dominant_freq": 440}
         field_type = utac_fourier.classify_field_type(features)
-        assert field_type == 'High-Dimensional'
+        assert field_type == "High-Dimensional"
 
     def test_physically_constrained(self):
         """Test Physically Triggered classification (600-1000 Hz)"""
-        features = {'dominant_freq': 800, 'entropy': 7.5}  # High entropy for Physically Triggered
+        features = {"dominant_freq": 800, "entropy": 7.5}  # High entropy for Physically Triggered
         field_type = utac_fourier.classify_field_type(features)
-        assert field_type == 'Physically Triggered'
+        assert field_type == "Physically Triggered"
 
     def test_meta_adaptive(self):
         """Test Meta-Adaptive classification (> 1000 Hz)"""
-        features = {'dominant_freq': 1500, 'entropy': 8.5}  # High entropy for Meta-Adaptive
+        features = {"dominant_freq": 1500, "entropy": 8.5}  # High entropy for Meta-Adaptive
         field_type = utac_fourier.classify_field_type(features)
-        assert field_type == 'Meta-Adaptive'
+        assert field_type == "Meta-Adaptive"
 
     def test_boundary_conditions(self):
         """Test classification at boundary frequencies"""
         # Exactly at 150 Hz → Strongly Coupled (>= 150)
-        features_150 = {'dominant_freq': 150}
-        assert utac_fourier.classify_field_type(features_150) == 'Strongly Coupled'
+        features_150 = {"dominant_freq": 150}
+        assert utac_fourier.classify_field_type(features_150) == "Strongly Coupled"
 
         # Just below 150 Hz → Weakly Coupled
-        features_149 = {'dominant_freq': 149}
-        assert utac_fourier.classify_field_type(features_149) == 'Weakly Coupled'
+        features_149 = {"dominant_freq": 149}
+        assert utac_fourier.classify_field_type(features_149) == "Weakly Coupled"
 
         # Exactly at 1000 Hz → Physically Triggered with default low entropy
-        features_1000 = {'dominant_freq': 1000}
-        assert utac_fourier.classify_field_type(features_1000) == 'Physically Triggered (High-frequency)'
+        features_1000 = {"dominant_freq": 1000}
+        assert (
+            utac_fourier.classify_field_type(features_1000)
+            == "Physically Triggered (High-frequency)"
+        )
 
         # At 1000 Hz with high entropy → Meta-Adaptive
-        features_1000_meta = {'dominant_freq': 1000, 'entropy': 8.5}
-        assert utac_fourier.classify_field_type(features_1000_meta) == 'Meta-Adaptive'
+        features_1000_meta = {"dominant_freq": 1000, "entropy": 8.5}
+        assert utac_fourier.classify_field_type(features_1000_meta) == "Meta-Adaptive"
 
         # Just below 1000 Hz → High-Dimensional (Upper) with default low entropy
-        features_999 = {'dominant_freq': 999}
-        assert utac_fourier.classify_field_type(features_999) == 'High-Dimensional (Upper)'
+        features_999 = {"dominant_freq": 999}
+        assert utac_fourier.classify_field_type(features_999) == "High-Dimensional (Upper)"
 
 
 class TestRunAnalysis:
@@ -229,25 +233,25 @@ class TestRunAnalysis:
         signal = np.sin(2 * np.pi * 220 * t)
 
         # Run analysis (without plot to avoid display issues)
-        results = utac_fourier.run_analysis(signal, sampling_rate, title='Test', save_path=None)
+        results = utac_fourier.run_analysis(signal, sampling_rate, title="Test", save_path=None)
 
         # Check all keys exist
-        assert 'features' in results
-        assert 'field_type' in results
-        assert 'spectrum' in results
-        assert 'freqs' in results
+        assert "features" in results
+        assert "field_type" in results
+        assert "spectrum" in results
+        assert "freqs" in results
 
         # Check types
-        assert isinstance(results['features'], dict)
-        assert isinstance(results['field_type'], str)
-        assert isinstance(results['spectrum'], np.ndarray)
-        assert isinstance(results['freqs'], np.ndarray)
+        assert isinstance(results["features"], dict)
+        assert isinstance(results["field_type"], str)
+        assert isinstance(results["spectrum"], np.ndarray)
+        assert isinstance(results["freqs"], np.ndarray)
 
         # Check field type is correct (actual result for 220 Hz pure sine)
-        assert results['field_type'] == 'High-Dimensional (Transitional)'
+        assert results["field_type"] == "High-Dimensional (Transitional)"
 
         # Check dominant frequency is correct
-        assert results['features']['dominant_freq'] == pytest.approx(220.0, abs=2.0)
+        assert results["features"]["dominant_freq"] == pytest.approx(220.0, abs=2.0)
 
     def test_utac_field_type_spectrum(self):
         """Test analysis across different UTAC field types"""
@@ -257,19 +261,19 @@ class TestRunAnalysis:
 
         # Test each field type (actual results from pure sine waves)
         test_cases = [
-            (110, 'Weakly Coupled'),
-            (220, 'High-Dimensional (Transitional)'),  # Pure sine has high bandwidth
-            (440, 'High-Dimensional'),
-            (800, 'High-Dimensional (Upper)'),  # Pure sine has low entropy
-            (1500, 'Physically Triggered (High-frequency)'),  # Pure sine has low entropy
+            (110, "Weakly Coupled"),
+            (220, "High-Dimensional (Transitional)"),  # Pure sine has high bandwidth
+            (440, "High-Dimensional"),
+            (800, "High-Dimensional (Upper)"),  # Pure sine has low entropy
+            (1500, "Physically Triggered (High-frequency)"),  # Pure sine has low entropy
         ]
 
         for freq, expected_type in test_cases:
             signal = np.sin(2 * np.pi * freq * t)
             results = utac_fourier.run_analysis(signal, sampling_rate, save_path=None)
 
-            assert results['field_type'] == expected_type
-            assert results['features']['dominant_freq'] == pytest.approx(freq, abs=5.0)
+            assert results["field_type"] == expected_type
+            assert results["features"]["dominant_freq"] == pytest.approx(freq, abs=5.0)
 
 
 class TestEdgeCases:
@@ -315,4 +319,4 @@ class TestEdgeCases:
 
 # Run tests
 if __name__ == "__main__":
-    pytest.main([__file__, '-v'])
+    pytest.main([__file__, "-v"])

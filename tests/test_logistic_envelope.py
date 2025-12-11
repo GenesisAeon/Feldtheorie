@@ -8,8 +8,6 @@ from __future__ import annotations
 
 import math
 
-import pytest
-
 from models.logistic_envelope import LogisticFieldEnvelope, _linspace
 
 
@@ -70,7 +68,7 @@ class TestLogisticFieldEnvelopeInit:
             amplitude=0.9,
             resonant_gain=0.6,
             damped_gain=1.4,
-            impedance_width=0.3
+            impedance_width=0.3,
         )
         assert envelope.theta == 0.8
         assert envelope.beta == 3.5
@@ -301,14 +299,25 @@ class TestExportMetadata:
         metadata = envelope.export_metadata()
 
         assert isinstance(metadata, dict)
-        expected_keys = {"theta", "beta", "amplitude", "resonant_gain", "damped_gain", "impedance_width"}
+        expected_keys = {
+            "theta",
+            "beta",
+            "amplitude",
+            "resonant_gain",
+            "damped_gain",
+            "impedance_width",
+        }
         assert set(metadata.keys()) == expected_keys
 
     def test_export_metadata_values_match(self) -> None:
         """Exported values should match envelope parameters."""
         envelope = LogisticFieldEnvelope(
-            theta=0.7, beta=3.5, amplitude=0.9,
-            resonant_gain=0.65, damped_gain=1.25, impedance_width=0.4
+            theta=0.7,
+            beta=3.5,
+            amplitude=0.9,
+            resonant_gain=0.65,
+            damped_gain=1.25,
+            impedance_width=0.4,
         )
         metadata = envelope.export_metadata()
 

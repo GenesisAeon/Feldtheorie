@@ -36,16 +36,12 @@ Version: 0.1.0
 
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Dict, List, Optional, Any, Tuple
-import json
-import os
+from typing import Any
 
 import numpy as np
 import pandas as pd
-from scipy import stats, optimize
-import requests
-
-from base_adapter import BaseAdapter, UTACState
+from base_adapter import BaseAdapter
+from scipy import stats
 
 
 class UsgsSeismicAdapter(BaseAdapter):
@@ -66,19 +62,13 @@ class UsgsSeismicAdapter(BaseAdapter):
 
     # Seismic regions (major tectonic zones)
     SEISMIC_REGIONS = {
-        'global': {'name': 'Global', 'lat': None, 'lon': None},
-        'circum_pacific': {'name': 'Ring of Fire',
-                          'lat': (-60, 60), 'lon': (120, -60)},
-        'cascadia': {'name': 'Cascadia Subduction Zone',
-                    'lat': (40, 50), 'lon': (-130, -120)},
-        'japan': {'name': 'Japan Trench',
-                 'lat': (30, 45), 'lon': (130, 150)},
-        'mediterranean': {'name': 'Mediterranean-Alpine Belt',
-                         'lat': (30, 50), 'lon': (-10, 50)},
-        'himalayan': {'name': 'Himalayan Belt',
-                     'lat': (25, 40), 'lon': (70, 100)},
-        'california': {'name': 'San Andreas Fault',
-                      'lat': (32, 42), 'lon': (-125, -114)}
+        "global": {"name": "Global", "lat": None, "lon": None},
+        "circum_pacific": {"name": "Ring of Fire", "lat": (-60, 60), "lon": (120, -60)},
+        "cascadia": {"name": "Cascadia Subduction Zone", "lat": (40, 50), "lon": (-130, -120)},
+        "japan": {"name": "Japan Trench", "lat": (30, 45), "lon": (130, 150)},
+        "mediterranean": {"name": "Mediterranean-Alpine Belt", "lat": (30, 50), "lon": (-10, 50)},
+        "himalayan": {"name": "Himalayan Belt", "lat": (25, 40), "lon": (70, 100)},
+        "california": {"name": "San Andreas Fault", "lat": (32, 42), "lon": (-125, -114)},
     }
 
     # Stress accumulation threshold (from subduction_rupture_threshold.json)
@@ -91,10 +81,10 @@ class UsgsSeismicAdapter(BaseAdapter):
 
     def __init__(
         self,
-        region: str = 'global',
+        region: str = "global",
         min_magnitude: float = 4.5,
-        cache_dir: Optional[Path] = None,
-        **kwargs
+        cache_dir: Path | None = None,
+        **kwargs,
     ):
         """
         Initialize USGS adapter.
@@ -105,18 +95,22 @@ class UsgsSeismicAdapter(BaseAdapter):
             cache_dir: Cache directory
             **kwargs: Additional BaseAdapter arguments
         """
-        super().__init__(system_id='seismic', cache_dir=cache_dir, **kwargs)
+        super().__init__(system_id="seismic", cache_dir=cache_dir, **kwargs)
 
         if region not in self.SEISMIC_REGIONS:
-            raise ValueError(f"Unknown region: {region}. Available: {list(self.SEISMIC_REGIONS.keys())}")
+            raise ValueError(
+                f"Unknown region: {region}. Available: {list(self.SEISMIC_REGIONS.keys())}"
+            )
 
         self.region = region
         self.min_magnitude = min_magnitude
         self.region_def = self.SEISMIC_REGIONS[region]
 
-        self.logger.info(f"Initialized UsgsSeismicAdapter for {self.region_def['name']} (M ≥ {min_magnitude})")
+        self.logger.info(
+            f"Initialized UsgsSeismicAdapter for {self.region_def['name']} (M ≥ {min_magnitude})"
+        )
 
-    def fetch_raw_data(self, start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+    def fetch_raw_data(self, start_date: datetime, end_date: datetime) -> dict[str, Any]:
         """
         Fetch live earthquake data from USGS FDSNWS Event Web Service.
 
@@ -134,23 +128,23 @@ class UsgsSeismicAdapter(BaseAdapter):
 
         # Build API request parameters
         params = {
-            'format': 'csv',
-            'starttime': start_date.strftime('%Y-%m-%d'),
-            'endtime': end_date.strftime('%Y-%m-%d'),
-            'minmagnitude': self.min_magnitude,
-            'orderby': 'time'
+            "format": "csv",
+            "starttime": start_date.strftime("%Y-%m-%d"),
+            "endtime": end_date.strftime("%Y-%m-%d"),
+            "minmagnitude": self.min_magnitude,
+            "orderby": "time",
         }
 
         # Add spatial bounds if not global
-        if self.region != 'global':
-            lat_range = self.region_def['lat']
-            lon_range = self.region_def['lon']
+        if self.region != "global":
+            lat_range = self.region_def["lat"]
+            lon_range = self.region_def["lon"]
 
             if lat_range and lon_range:
-                params['minlatitude'] = lat_range[0]
-                params['maxlatitude'] = lat_range[1]
-                params['minlongitude'] = lon_range[0]
-                params['maxlongitude'] = lon_range[1]
+                params["minlatitude"] = lat_range[0]
+                params["maxlatitude"] = lat_range[1]
+                params["minlongitude"] = lon_range[0]
+                params["maxlongitude"] = lon_range[1]
 
         self.logger.debug(f"USGS API request: {params}")
 
@@ -160,37 +154,38 @@ class UsgsSeismicAdapter(BaseAdapter):
 
             # Parse CSV response
             from io import StringIO
+
             df = pd.read_csv(StringIO(response.text))
 
             self.logger.info(f"Fetched {len(df)} earthquakes from USGS (M ≥ {self.min_magnitude})")
 
             # Extract relevant columns
-            timestamps = pd.to_datetime(df['time'])
-            magnitudes = df['mag'].values
-            latitudes = df['latitude'].values
-            longitudes = df['longitude'].values
-            depths = df['depth'].values
+            timestamps = pd.to_datetime(df["time"])
+            magnitudes = df["mag"].values
+            latitudes = df["latitude"].values
+            longitudes = df["longitude"].values
+            depths = df["depth"].values
 
             return {
-                'timestamps': timestamps.tolist(),
-                'magnitudes': magnitudes.tolist(),
-                'latitudes': latitudes.tolist(),
-                'longitudes': longitudes.tolist(),
-                'depths': depths.tolist(),
-                'metadata': {
-                    'source': 'USGS FDSNWS Event Web Service',
-                    'region': self.region,
-                    'region_name': self.region_def['name'],
-                    'min_magnitude': self.min_magnitude,
-                    'n_events': len(df)
-                }
+                "timestamps": timestamps.tolist(),
+                "magnitudes": magnitudes.tolist(),
+                "latitudes": latitudes.tolist(),
+                "longitudes": longitudes.tolist(),
+                "depths": depths.tolist(),
+                "metadata": {
+                    "source": "USGS FDSNWS Event Web Service",
+                    "region": self.region,
+                    "region_name": self.region_def["name"],
+                    "min_magnitude": self.min_magnitude,
+                    "n_events": len(df),
+                },
             }
 
         except Exception as e:
             self.logger.error(f"Failed to fetch USGS data: {e}")
             raise
 
-    def transform_to_timeseries(self, raw_data: Dict[str, Any]) -> pd.DataFrame:
+    def transform_to_timeseries(self, raw_data: dict[str, Any]) -> pd.DataFrame:
         """
         Transform raw earthquake catalog to standardized time series.
 
@@ -205,49 +200,50 @@ class UsgsSeismicAdapter(BaseAdapter):
         Returns:
             DataFrame with columns: ['timestamp', 'value', 'magnitude', 'cumulative_moment']
         """
-        df = pd.DataFrame({
-            'timestamp': pd.to_datetime(raw_data['timestamps']),
-            'magnitude': raw_data['magnitudes'],
-            'latitude': raw_data['latitudes'],
-            'longitude': raw_data['longitudes'],
-            'depth': raw_data['depths']
-        })
+        df = pd.DataFrame(
+            {
+                "timestamp": pd.to_datetime(raw_data["timestamps"]),
+                "magnitude": raw_data["magnitudes"],
+                "latitude": raw_data["latitudes"],
+                "longitude": raw_data["longitudes"],
+                "depth": raw_data["depths"],
+            }
+        )
 
-        df = df.set_index('timestamp').sort_index()
+        df = df.set_index("timestamp").sort_index()
 
         # Calculate seismic moment (M₀ = 10^(1.5*M + 9.1) N·m)
         # This measures total energy release
-        df['moment_nm'] = 10 ** (1.5 * df['magnitude'] + 9.1)
+        df["moment_nm"] = 10 ** (1.5 * df["magnitude"] + 9.1)
 
         # Cumulative moment (stress accumulation proxy)
-        df['cumulative_moment'] = df['moment_nm'].cumsum()
+        df["cumulative_moment"] = df["moment_nm"].cumsum()
 
         # Normalize cumulative moment to [0, 1] range
         # R = cumulative_moment / max_moment
-        max_moment = df['cumulative_moment'].max()
-        df['value'] = df['cumulative_moment'] / max_moment if max_moment > 0 else 0
+        max_moment = df["cumulative_moment"].max()
+        df["value"] = df["cumulative_moment"] / max_moment if max_moment > 0 else 0
 
         # Resample to daily bins (aggregate multiple events per day)
-        df_daily = df.resample('D').agg({
-            'magnitude': 'max',  # Maximum magnitude per day
-            'moment_nm': 'sum',  # Total moment per day
-            'cumulative_moment': 'last',  # Running total
-            'value': 'last'  # Normalized cumulative
-        })
+        df_daily = df.resample("D").agg(
+            {
+                "magnitude": "max",  # Maximum magnitude per day
+                "moment_nm": "sum",  # Total moment per day
+                "cumulative_moment": "last",  # Running total
+                "value": "last",  # Normalized cumulative
+            }
+        )
 
         # Forward-fill missing days (no earthquakes)
-        df_daily = df_daily.fillna(method='ffill')
+        df_daily = df_daily.fillna(method="ffill")
 
         self.logger.info(f"Transformed {len(df_daily)} daily seismic observations")
 
         return df_daily.reset_index()
 
     def calculate_gutenberg_richter_b(
-        self,
-        magnitudes: np.ndarray,
-        min_mag: Optional[float] = None,
-        method: str = 'maxlik'
-    ) -> Tuple[float, float, float]:
+        self, magnitudes: np.ndarray, min_mag: float | None = None, method: str = "maxlik"
+    ) -> tuple[float, float, float]:
         """
         Calculate Gutenberg-Richter b-value from earthquake magnitudes.
 
@@ -283,16 +279,18 @@ class UsgsSeismicAdapter(BaseAdapter):
         mags_complete = mags[mags >= min_mag]
 
         if len(mags_complete) < 10:
-            self.logger.warning(f"Insufficient data for b-value estimation (n={len(mags_complete)})")
+            self.logger.warning(
+                f"Insufficient data for b-value estimation (n={len(mags_complete)})"
+            )
             return 1.0, 5.0, min_mag  # Return default values
 
-        if method == 'maxlik':
+        if method == "maxlik":
             # Maximum likelihood (Aki, 1965)
             # b = log₁₀(e) / (⟨M⟩ - Mc)
             mean_mag = np.mean(mags_complete)
             b_value = np.log10(np.e) / (mean_mag - min_mag + 0.05)  # Add small delta for binning
 
-        elif method == 'lsq':
+        elif method == "lsq":
             # Least squares regression
             # Create magnitude bins
             mag_bins = np.arange(min_mag, mags_complete.max() + 0.1, 0.1)
@@ -355,7 +353,7 @@ class UsgsSeismicAdapter(BaseAdapter):
 
         return beta
 
-    def estimate_beta(self, timeseries: pd.DataFrame) -> Tuple[float, float]:
+    def estimate_beta(self, timeseries: pd.DataFrame) -> tuple[float, float]:
         """
         Estimate β from earthquake time series.
 
@@ -371,19 +369,18 @@ class UsgsSeismicAdapter(BaseAdapter):
         Returns:
             (beta_mean, beta_std)
         """
-        ts = timeseries.set_index('timestamp')
+        ts = timeseries.set_index("timestamp")
 
         # Get original earthquake catalog (before daily aggregation)
         # We need individual magnitudes for b-value calculation
         # For now, use the 'magnitude' column which contains max daily magnitude
 
         # Method 1: Gutenberg-Richter b-value
-        magnitudes = ts['magnitude'].dropna().values
+        magnitudes = ts["magnitude"].dropna().values
 
         if len(magnitudes) > 0:
             b_value, a_value, Mc = self.calculate_gutenberg_richter_b(
-                magnitudes,
-                min_mag=self.MIN_MAGNITUDE_ANALYSIS
+                magnitudes, min_mag=self.MIN_MAGNITUDE_ANALYSIS
             )
             beta_gr = self.estimate_beta_from_b_value(b_value)
             self.logger.debug(f"β (Gutenberg-Richter b={b_value:.3f}): {beta_gr:.2f}")
@@ -393,7 +390,7 @@ class UsgsSeismicAdapter(BaseAdapter):
 
         # Method 2: Cumulative moment acceleration
         # β ∝ d²M/dt² / dM/dt (acceleration relative to rate)
-        cumulative = ts['cumulative_moment'].values
+        cumulative = ts["cumulative_moment"].values
 
         if len(cumulative) > 10:
             # Calculate first and second derivatives
@@ -401,7 +398,7 @@ class UsgsSeismicAdapter(BaseAdapter):
             d2M = np.gradient(dM)
 
             # β from acceleration ratio (avoiding division by zero)
-            with np.errstate(divide='ignore', invalid='ignore'):
+            with np.errstate(divide="ignore", invalid="ignore"):
                 accel_ratio = np.abs(d2M) / (np.abs(dM) + 1e-10)
 
             # Normalize to β range [2, 20]
@@ -422,7 +419,7 @@ class UsgsSeismicAdapter(BaseAdapter):
 
         if ews.variance > 0:
             # High variance → critical slowing down → high β
-            beta_ews = 3.0 + 15.0 * np.sqrt(ews.variance) / np.sqrt(np.mean(ts['value']**2))
+            beta_ews = 3.0 + 15.0 * np.sqrt(ews.variance) / np.sqrt(np.mean(ts["value"] ** 2))
             beta_ews = np.clip(beta_ews, 2.0, 20.0)
         else:
             beta_ews = 4.6
@@ -432,25 +429,20 @@ class UsgsSeismicAdapter(BaseAdapter):
         # Ensemble estimate with weighted average
         # Give more weight to Gutenberg-Richter and EWS (data-driven)
         # Less weight to subduction prior (too extreme for most regions)
-        weights = {
-            'gr': 0.35,
-            'accel': 0.25,
-            'subduction': 0.15,
-            'ews': 0.25
-        }
+        weights = {"gr": 0.35, "accel": 0.25, "subduction": 0.15, "ews": 0.25}
 
         beta_estimates = {
-            'gr': beta_gr,
-            'accel': beta_accel,
-            'subduction': beta_subduction,
-            'ews': beta_ews
+            "gr": beta_gr,
+            "accel": beta_accel,
+            "subduction": beta_subduction,
+            "ews": beta_ews,
         }
 
         # Weighted mean
         beta_mean = sum(weights[k] * beta_estimates[k] for k in weights)
 
         # Weighted standard deviation
-        beta_var = sum(weights[k] * (beta_estimates[k] - beta_mean)**2 for k in weights)
+        beta_var = sum(weights[k] * (beta_estimates[k] - beta_mean) ** 2 for k in weights)
         beta_std = np.sqrt(beta_var)
 
         self.logger.info(f"β estimate: {beta_mean:.2f} ± {beta_std:.2f} (ensemble)")
@@ -497,7 +489,7 @@ class UsgsSeismicAdapter(BaseAdapter):
 
         return R
 
-    def get_additional_metrics(self, timeseries: pd.DataFrame) -> Dict[str, Any]:
+    def get_additional_metrics(self, timeseries: pd.DataFrame) -> dict[str, Any]:
         """
         Calculate additional seismic-specific metrics.
 
@@ -510,21 +502,21 @@ class UsgsSeismicAdapter(BaseAdapter):
             - moment_release_rate: Current seismic moment release rate
             - time_since_last_major: Days since last M ≥ 7.0 event
         """
-        ts = timeseries.set_index('timestamp')
+        ts = timeseries.set_index("timestamp")
 
         # Calculate b-value
-        magnitudes = ts['magnitude'].dropna().values
+        magnitudes = ts["magnitude"].dropna().values
         b_value, a_value, Mc = self.calculate_gutenberg_richter_b(magnitudes)
 
         # Largest magnitude
-        largest_mag = ts['magnitude'].max()
+        largest_mag = ts["magnitude"].max()
 
         # Count major/great events
         n_major = np.sum(magnitudes >= self.MAGNITUDE_THRESHOLD_MAJOR)
         n_great = np.sum(magnitudes >= self.MAGNITUDE_THRESHOLD_GREAT)
 
         # Moment release rate (recent trend)
-        recent = ts['cumulative_moment'].last('30D')
+        recent = ts["cumulative_moment"].last("30D")
         if len(recent) > 1:
             x = np.arange(len(recent))
             slope, _ = np.polyfit(x, recent.values, 1)
@@ -533,7 +525,7 @@ class UsgsSeismicAdapter(BaseAdapter):
             moment_rate = 0.0
 
         # Time since last major event
-        major_events = ts[ts['magnitude'] >= self.MAGNITUDE_THRESHOLD_MAJOR]
+        major_events = ts[ts["magnitude"] >= self.MAGNITUDE_THRESHOLD_MAJOR]
         if len(major_events) > 0:
             last_major = major_events.index[-1]
             days_since_major = (ts.index[-1] - last_major).days
@@ -541,15 +533,15 @@ class UsgsSeismicAdapter(BaseAdapter):
             days_since_major = np.inf
 
         return {
-            'current_b_value': float(b_value),
-            'current_a_value': float(a_value),
-            'magnitude_completeness': float(Mc),
-            'largest_magnitude': float(largest_mag),
-            'n_major_events': int(n_major),
-            'n_great_events': int(n_great),
-            'moment_release_rate_nm_per_day': float(moment_rate),
-            'days_since_last_major': float(days_since_major),
-            'b_value_status': self._interpret_b_value(b_value)
+            "current_b_value": float(b_value),
+            "current_a_value": float(a_value),
+            "magnitude_completeness": float(Mc),
+            "largest_magnitude": float(largest_mag),
+            "n_major_events": int(n_major),
+            "n_great_events": int(n_great),
+            "moment_release_rate_nm_per_day": float(moment_rate),
+            "days_since_last_major": float(days_since_major),
+            "b_value_status": self._interpret_b_value(b_value),
         }
 
     def _interpret_b_value(self, b_value: float) -> str:
@@ -577,9 +569,10 @@ class UsgsSeismicAdapter(BaseAdapter):
 if __name__ == "__main__":
     """Test USGS adapter with real data."""
     import logging
+
     logging.basicConfig(level=logging.INFO)
 
-    adapter = UsgsSeismicAdapter(region='global', min_magnitude=4.5)
+    adapter = UsgsSeismicAdapter(region="global", min_magnitude=4.5)
 
     # Get current state (last 90 days for b-value statistics)
     end_date = datetime.now()
@@ -587,9 +580,9 @@ if __name__ == "__main__":
 
     state = adapter.get_current_state(start_date=start_date, end_date=end_date)
 
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("Seismic Monitoring - USGS Earthquake Catalog")
-    print("="*60)
+    print("=" * 60)
     print(f"System ID: {state.system_id}")
     print(f"Timestamp: {state.timestamp}")
     print(f"R (normalized state): {state.R:.4f}")
@@ -597,10 +590,10 @@ if __name__ == "__main__":
     print(f"β (steepness): {state.beta:.2f}")
     print(f"σ (sigmoid): {state.sigma:.4f}")
     print(f"Status: {state.status}")
-    print(f"\nMetadata:")
+    print("\nMetadata:")
     print(f"  β uncertainty: ±{state.metadata['beta_std']:.2f}")
     print(f"  Observations: {state.metadata['n_observations']}")
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
 
     # Additional metrics
     raw_data = adapter.fetch_raw_data(start_date, end_date)
@@ -608,7 +601,9 @@ if __name__ == "__main__":
     metrics = adapter.get_additional_metrics(ts)
 
     print("\nSeismic Metrics:")
-    print(f"  Gutenberg-Richter b-value: {metrics['current_b_value']:.3f} ({metrics['b_value_status']})")
+    print(
+        f"  Gutenberg-Richter b-value: {metrics['current_b_value']:.3f} ({metrics['b_value_status']})"
+    )
     print(f"  Largest magnitude: M {metrics['largest_magnitude']:.1f}")
     print(f"  Major events (M ≥ 7.0): {metrics['n_major_events']}")
     print(f"  Great events (M ≥ 8.0): {metrics['n_great_events']}")

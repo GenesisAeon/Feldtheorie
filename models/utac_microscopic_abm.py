@@ -211,14 +211,12 @@ def coarse_grain(lattice: np.ndarray, block_size: int = 2) -> np.ndarray:
         Coarse-grained lattice (shape: [N/block_size, N/block_size])
     """
     # Use uniform_filter for efficient block averaging
-    coarse = uniform_filter(lattice, size=block_size, mode='wrap')
+    coarse = uniform_filter(lattice, size=block_size, mode="wrap")
     # Downsample by block_size
     return coarse[::block_size, ::block_size]
 
 
-def multi_scale_coarsening(
-    lattice: np.ndarray, n_scales: int = 4
-) -> list[np.ndarray]:
+def multi_scale_coarsening(lattice: np.ndarray, n_scales: int = 4) -> list[np.ndarray]:
     """Perform multi-scale coarse-graining.
 
     Parameters
@@ -293,7 +291,9 @@ def extract_emergent_beta(
         ss_tot = np.sum((sigma_values - np.mean(sigma_values)) ** 2)
         with warnings.catch_warnings():
             warnings.filterwarnings("ignore", message="divide by zero encountered")
-            r_squared = float(1 - np.sum((sigma_values - sigma_pred) ** 2) / ss_tot) if ss_tot != 0 else 0.0
+            r_squared = (
+                float(1 - np.sum((sigma_values - sigma_pred) ** 2) / ss_tot) if ss_tot != 0 else 0.0
+            )
         fit_info = {
             "beta": float(beta_fit),
             "theta": float(theta_fit),
@@ -450,6 +450,8 @@ if __name__ == "__main__":
     print("\n🎯 Theory validation:")
     print(f"   Predicted: β ≈ {params.J / params.T:.2f}")
     print(f"   Emergent:  β = {results['beta_emergent']:.2f}")
-    print(f"   Deviation: {abs(results['beta_emergent'] - params.J / params.T) / (params.J / params.T) * 100:.1f}%")
+    print(
+        f"   Deviation: {abs(results['beta_emergent'] - params.J / params.T) / (params.J / params.T) * 100:.1f}%"
+    )
 
     print("\n✨ Success: β emerges from microscopic interactions!")

@@ -12,7 +12,6 @@ highlighting the difference. The plot is saved to
 """
 
 import os
-from typing import Tuple
 
 import matplotlib
 
@@ -32,7 +31,7 @@ def warning_window(beta: float) -> float:
     return (np.log(0.9 / 0.1) - np.log(0.1 / 0.9)) / beta
 
 
-def compute_windows(beta_universal: float, beta_oxfam: float) -> Tuple[float, float, float]:
+def compute_windows(beta_universal: float, beta_oxfam: float) -> tuple[float, float, float]:
     """Return the windows for both betas and the reduction percentage."""
     window_universal = warning_window(beta_universal)
     window_oxfam = warning_window(beta_oxfam)
@@ -45,8 +44,19 @@ def plot_curves(beta_universal: float, beta_oxfam: float, window_reduction_pct: 
     r_values = np.linspace(-1, 1, 500)
     plt.figure(figsize=(8, 5))
 
-    plt.plot(r_values, logistic(r_values, beta_universal), label=f"Universal Adaptive (β={beta_universal})", linewidth=2)
-    plt.plot(r_values, logistic(r_values, beta_oxfam), label=f"Oxfam Rigid (β={beta_oxfam})", linewidth=2, linestyle="--")
+    plt.plot(
+        r_values,
+        logistic(r_values, beta_universal),
+        label=f"Universal Adaptive (β={beta_universal})",
+        linewidth=2,
+    )
+    plt.plot(
+        r_values,
+        logistic(r_values, beta_oxfam),
+        label=f"Oxfam Rigid (β={beta_oxfam})",
+        linewidth=2,
+        linestyle="--",
+    )
 
     plt.title("Warning Window Compression under Inequality")
     plt.xlabel("Order Parameter R")

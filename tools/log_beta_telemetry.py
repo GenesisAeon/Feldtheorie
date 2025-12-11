@@ -26,9 +26,9 @@ from __future__ import annotations
 import argparse
 import csv
 import sys
+from collections.abc import Iterable
 from datetime import datetime
 from pathlib import Path
-from typing import Iterable
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = REPO_ROOT / "metrics" / "beta_evolution.csv"
@@ -84,38 +84,42 @@ def append_telemetry_entry(
 
         # Write header if file is new
         if not file_exists or CSV_PATH.stat().st_size == 0:
-            writer.writerow([
-                "timestamp",
-                "domain",
-                "beta",
-                "beta_drift_pct",
-                "drift_flag",
-                "R",
-                "Theta",
-                "zeta",
-                "tau_star",
-                "crep_value",
-                "crep_level",
-                "type6_tag",
-                "notes",
-            ])
+            writer.writerow(
+                [
+                    "timestamp",
+                    "domain",
+                    "beta",
+                    "beta_drift_pct",
+                    "drift_flag",
+                    "R",
+                    "Theta",
+                    "zeta",
+                    "tau_star",
+                    "crep_value",
+                    "crep_level",
+                    "type6_tag",
+                    "notes",
+                ]
+            )
 
         # Write data row
-        writer.writerow([
-            timestamp,
-            domain,
-            f"{beta:.4f}",
-            f"{beta_drift:.4f}",
-            drift_flag,
-            f"{R:.4f}",
-            f"{theta:.4f}",
-            f"{zeta:.4f}",
-            f"{tau_star:.4f}",
-            f"{crep:.4f}",
-            crep_level,
-            type6_tag,
-            notes,
-        ])
+        writer.writerow(
+            [
+                timestamp,
+                domain,
+                f"{beta:.4f}",
+                f"{beta_drift:.4f}",
+                drift_flag,
+                f"{R:.4f}",
+                f"{theta:.4f}",
+                f"{zeta:.4f}",
+                f"{tau_star:.4f}",
+                f"{crep:.4f}",
+                crep_level,
+                type6_tag,
+                notes,
+            ]
+        )
 
 
 def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
@@ -150,13 +154,17 @@ def main(argv: Iterable[str] | None = None) -> int:
         drift_pct = calculate_beta_drift(args.beta)
         crep_level = determine_crep_level(args.crep)
 
-        print(f"[beta_telemetry] Logged: domain={args.domain} β={args.beta:.3f} CREP={args.crep:.3f}")
+        print(
+            f"[beta_telemetry] Logged: domain={args.domain} β={args.beta:.3f} CREP={args.crep:.3f}"
+        )
 
         if drift_pct > 0.1:
             print(f"⚠️  [HIGH_DRIFT] β-drift {drift_pct*100:.1f}% > 10% threshold")
 
         if crep_level >= 2:
-            print(f"⚠️  [CREP-ESCALATION] Level {crep_level} - Reviewer required (CREP={args.crep:.3f})")
+            print(
+                f"⚠️  [CREP-ESCALATION] Level {crep_level} - Reviewer required (CREP={args.crep:.3f})"
+            )
 
         if crep_level >= 3:
             print("🛑 [TYPE-VI-BLOCK] CREP ≥ 0.8 - Automatic escalation to Level 3")

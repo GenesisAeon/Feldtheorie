@@ -15,22 +15,23 @@ References:
 - V6_Wellenfunktions_Integrationsplan.md
 - GrundPrinzip Simulation.txt (theoretical foundation)
 """
+
 from __future__ import annotations
 
 import math
+
 import numpy as np
 import pytest
-
 from pipelines.wavefunction.psi_field import (
+    ALPHA_INV,
+    E_PLANCK,
+    HBAR,
+    L_PLANCK,
+    PHI,
     PsiField,
     PsiFieldConfig,
     PsiFieldPipeline,
     compute_psi_genesis,
-    ALPHA_INV,
-    PHI,
-    L_PLANCK,
-    E_PLANCK,
-    HBAR,
 )
 
 
@@ -148,10 +149,7 @@ class TestPsiFieldAngularComponent:
         # 3-fold symmetry: φ = 0, 2π/3, 4π/3
         phi_vals = np.array([0, 2 * np.pi / 3, 4 * np.pi / 3])
 
-        y_vals = [
-            field._angular_component(np.array([theta]), np.array([phi]))
-            for phi in phi_vals
-        ]
+        y_vals = [field._angular_component(np.array([theta]), np.array([phi])) for phi in phi_vals]
 
         # Magnitudes should be similar (within 50% due to approximate form)
         mags = [abs(complex(y[0])) for y in y_vals]
@@ -318,10 +316,10 @@ class TestPsiFieldUTACCollapse:
 
         result = field.collapse_to_utac(psi, r_grid)
 
-        assert 'probability_density' in result
-        assert 'radial_distribution' in result
-        assert 'mean_r' in result
-        assert 'delta_r' in result
+        assert "probability_density" in result
+        assert "radial_distribution" in result
+        assert "mean_r" in result
+        assert "delta_r" in result
 
     def test_collapse_to_utac_radial_distribution_normalized(self):
         """Radial distribution P(r) should integrate to 1."""
@@ -334,7 +332,7 @@ class TestPsiFieldUTACCollapse:
         psi = field.compute_wavefunction(r_grid, theta, phi, 0.0)
 
         result = field.collapse_to_utac(psi, r_grid)
-        radial_dist = result['radial_distribution']
+        radial_dist = result["radial_distribution"]
 
         # Check that distribution is normalized (within tolerance)
         integral = np.trapezoid(radial_dist, r_grid)
@@ -356,7 +354,7 @@ class TestPsiFieldUTACCollapse:
 
         result = field.collapse_to_utac(psi, r_grid)
 
-        assert result['mean_r'] >= 0
+        assert result["mean_r"] >= 0
 
     def test_collapse_to_utac_delta_r_uncertainty(self):
         """Δr = √(<r²> - <r>²) should satisfy uncertainty relation."""
@@ -371,8 +369,8 @@ class TestPsiFieldUTACCollapse:
         result = field.collapse_to_utac(psi, r_grid)
 
         # Δr should be positive and finite
-        assert result['delta_r'] >= 0
-        assert np.isfinite(result['delta_r'])
+        assert result["delta_r"] >= 0
+        assert np.isfinite(result["delta_r"])
 
 
 class TestPsiFieldEntropy:
@@ -432,15 +430,15 @@ class TestPsiFieldPipeline:
 
         results = pipeline.run(r_max=5.0, n_points=20, theta_phi_res=10, t=0.0)
 
-        assert 'r_grid' in results
-        assert 'theta_grid' in results
-        assert 'phi_grid' in results
-        assert 'psi' in results
-        assert 'probability_density' in results
-        assert 'radial_distribution' in results
-        assert 'mean_r' in results
-        assert 'delta_r' in results
-        assert 'entropy' in results
+        assert "r_grid" in results
+        assert "theta_grid" in results
+        assert "phi_grid" in results
+        assert "psi" in results
+        assert "probability_density" in results
+        assert "radial_distribution" in results
+        assert "mean_r" in results
+        assert "delta_r" in results
+        assert "entropy" in results
 
     def test_pipeline_run_grid_dimensions(self):
         """Pipeline should create correct grid dimensions."""
@@ -449,17 +447,12 @@ class TestPsiFieldPipeline:
         n_points = 30
         theta_phi_res = 15
 
-        results = pipeline.run(
-            r_max=10.0,
-            n_points=n_points,
-            theta_phi_res=theta_phi_res,
-            t=0.0
-        )
+        results = pipeline.run(r_max=10.0, n_points=n_points, theta_phi_res=theta_phi_res, t=0.0)
 
-        assert len(results['r_grid']) == n_points
-        assert len(results['theta_grid']) == theta_phi_res
-        assert len(results['phi_grid']) == theta_phi_res
-        assert results['psi'].shape == (n_points, theta_phi_res, theta_phi_res)
+        assert len(results["r_grid"]) == n_points
+        assert len(results["theta_grid"]) == theta_phi_res
+        assert len(results["phi_grid"]) == theta_phi_res
+        assert results["psi"].shape == (n_points, theta_phi_res, theta_phi_res)
 
     def test_pipeline_run_with_time_evolution(self):
         """Pipeline should handle non-zero time."""
@@ -469,8 +462,8 @@ class TestPsiFieldPipeline:
         results_t1 = pipeline.run(r_max=5.0, n_points=20, theta_phi_res=10, t=1e-44)
 
         # Wavefunctions should differ (time evolution)
-        psi_t0 = results_t0['psi']
-        psi_t1 = results_t1['psi']
+        psi_t0 = results_t0["psi"]
+        psi_t1 = results_t1["psi"]
 
         # Phases should differ
         phase_diff = np.abs(np.angle(psi_t1) - np.angle(psi_t0))
@@ -482,9 +475,9 @@ class TestPsiFieldPipeline:
 
         results = pipeline.run(r_max=5.0, n_points=50, theta_phi_res=10, t=0.0)
 
-        assert 'entropy' in results
-        assert results['entropy'] >= 0
-        assert np.isfinite(results['entropy'])
+        assert "entropy" in results
+        assert results["entropy"] >= 0
+        assert np.isfinite(results["entropy"])
 
     def test_pipeline_custom_config(self):
         """Pipeline should accept custom PsiFieldConfig."""
@@ -498,7 +491,7 @@ class TestPsiFieldPipeline:
 
         results = pipeline.run(r_max=5.0, n_points=20, theta_phi_res=10)
 
-        assert results['psi'] is not None
+        assert results["psi"] is not None
 
 
 class TestConvenienceFunction:

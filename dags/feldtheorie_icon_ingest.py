@@ -12,10 +12,13 @@ Activation:
 
 Note: For simple runs, a CLI script without Airflow suffices.
 """
+
 from __future__ import annotations
-from datetime import datetime, timedelta
+
 import os
 import sys
+from datetime import datetime, timedelta
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
@@ -25,13 +28,13 @@ if REPO_ROOT and REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
 
 from pipelines.ocf_sources.icon_eu import load_icon_eu_zarr
-from pipelines.transform.standardize import to_fieldcube
 from pipelines.sinks.zarr_store import write_zarr
+from pipelines.transform.standardize import to_fieldcube
 
 # Configuration from environment
 SRC = os.environ.get(
     "ICON_EU_ZARR",
-    "https://huggingface.co/datasets/openclimatefix/dwd-icon-eu/resolve/main/icon_eu.zarr"
+    "https://huggingface.co/datasets/openclimatefix/dwd-icon-eu/resolve/main/icon_eu.zarr",
 )
 DST = os.environ.get("ICON_EU_OUT", "/data/fieldcube/icon_eu.zarr")
 
@@ -47,10 +50,13 @@ RENAME = {
 def run_ingest():
     """Execute ICON-EU → FieldCube → Zarr pipeline."""
     ds = load_icon_eu_zarr(SRC, rename_map=RENAME)
-    fc = to_fieldcube(ds, global_attrs={
-        "source": "ICON-EU via OCF",
-        "institution": "GenesisAeon/Feldtheorie",
-    })
+    fc = to_fieldcube(
+        ds,
+        global_attrs={
+            "source": "ICON-EU via OCF",
+            "institution": "GenesisAeon/Feldtheorie",
+        },
+    )
     write_zarr(fc, DST)
 
 
