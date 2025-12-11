@@ -42,15 +42,32 @@ def load_dataset(meta: Dict[str, Any], data_dir: str = DATA_DIR) -> DatasetType:
     if not dataset_name:
         raise ValueError("Metadata must include a non-empty 'dataset' field")
 
-    base_path = Path(data_dir) / dataset_name.replace(" ", "_").lower()
+    normalized_name = dataset_name.replace(" ", "_").lower()
+    base_path = Path(data_dir) / normalized_name
 
-    for suffix, reader in (
-        (".csv", pd.read_csv),
+    reader_map = (
         (".csv.gz", pd.read_csv),
+        (".csv", pd.read_csv),
         (".nc", xr.open_dataset),
         (".json", pd.read_json),
-    ):
+    )
+
+    candidates = []
+    seen_paths = set()
+
+    for suffix, reader in reader_map:
+        if str(base_path).endswith(suffix):
+            candidates.append((base_path, reader))
+            seen_paths.add(base_path)
+            break
+
+    for suffix, reader in reader_map:
         candidate = base_path.with_suffix(suffix)
+        if candidate not in seen_paths:
+            candidates.append((candidate, reader))
+            seen_paths.add(candidate)
+
+    for candidate, reader in candidates:
         if candidate.exists():
             return reader(candidate)
 

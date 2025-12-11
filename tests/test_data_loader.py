@@ -53,6 +53,19 @@ def test_load_dataset_supports_compressed_csv(tmp_path):
     assert list(loaded["value"]) == [10, 20]
 
 
+def test_load_dataset_respects_explicit_extension(tmp_path):
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+
+    dataset_name = "Explicit Data.csv.gz"
+    gzip_path = data_dir / "explicit_data.csv.gz"
+    pd.DataFrame({"value": [7]}).to_csv(gzip_path, index=False, compression="gzip")
+
+    loaded = load_dataset({"dataset": dataset_name}, data_dir=str(data_dir))
+
+    assert list(loaded["value"]) == [7]
+
+
 def test_load_all_collects_metadata_and_optional_data(tmp_path):
     metadata_dir = tmp_path / "metadata"
     data_dir = tmp_path / "data"
