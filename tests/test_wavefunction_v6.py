@@ -50,6 +50,19 @@ class TestEntropicWavefunction:
         integral = np.sum(rho) * (r_vals[-1] - r_vals[0]) / len(r_vals)
         assert 0.1 < integral < 15.0  # Order of magnitude check (relaxed for V6)
 
+    def test_wavefunction_explicit_normalization_flag(self):
+        """normalize=True should rescale Ψ to unit probability mass on the grid."""
+        cube = GenesisCube()
+
+        r_vals = np.linspace(0, 1, 50)
+        theta_vals = np.full_like(r_vals, np.pi / 4)
+        phi_vals = np.zeros_like(r_vals)
+
+        psi = cube.compute_wavefunction(r_vals, theta_vals, phi_vals, t=0.0, normalize=True)
+        rho = np.abs(psi) ** 2
+
+        assert np.isclose(np.sum(rho), 1.0, rtol=1e-6)
+
     def test_wavefunction_contains_physical_constants(self):
         """Ψ should incorporate α⁻¹=137 and Φ=1.618."""
         cube = GenesisCube()

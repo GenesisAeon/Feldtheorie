@@ -257,6 +257,7 @@ class GenesisCube:
         theta: float | np.ndarray,
         phi: float | np.ndarray,
         t: float,
+        normalize: bool = False,
     ) -> complex | np.ndarray:
         """
         Compute entropic genesis wavefunction Ψ(r,θ,φ,t).
@@ -273,6 +274,7 @@ class GenesisCube:
             theta: Polar angle
             phi: Azimuthal angle
             t: Time (in Planck units)
+            normalize: If True, normalize Ψ such that Σ|Ψ|² ≈ 1 on the provided grid
 
         Returns:
             Complex wavefunction value(s) Ψ
@@ -290,7 +292,20 @@ class GenesisCube:
         # Normalization factor (approximate)
         N = (ALPHA_INV / np.pi) ** (3 / 4)
 
-        return N * psi_radial * psi_angular * psi_time
+        psi = N * psi_radial * psi_angular * psi_time
+
+        if normalize:
+            psi_arr = np.asarray(psi, dtype=complex)
+            norm = np.sqrt(np.sum(np.abs(psi_arr) ** 2))
+            if norm > 0:
+                psi = psi_arr / norm
+            else:
+                psi = psi_arr
+
+            if np.ndim(psi) == 0:
+                return psi.item()
+
+        return psi
 
     def compute_probability_density(
         self,
