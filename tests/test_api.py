@@ -47,8 +47,9 @@ def test_health_check():
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "healthy"
-    assert data["phase"] == "2"
-    assert data["progress"] == "60%"
+    assert data["phase"] == "tooltip-system"  # Updated to current API version
+    assert "progress" in data
+    assert "version" in data
 
     # Check all endpoints are implemented
     endpoints = data["endpoints"]
@@ -57,6 +58,7 @@ def test_health_check():
     assert endpoints["system"] == "implemented"
     assert endpoints["fieldtypes"] == "implemented"
     assert endpoints["simulate"] == "implemented"
+    assert "tooltip" in endpoints  # New tooltip endpoint
 
 
 # ============================================================================

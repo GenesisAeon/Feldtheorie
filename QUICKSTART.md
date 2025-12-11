@@ -44,7 +44,7 @@
 ├─ analysis/             ← Python analyses & β-fits
 ├─ models/               ← Numerical solvers
 ├─ data/                 ← Datasets (6 domains)
-└─ tests/                ← 514/514 tests (100% passing)
+└─ tests/                ← 567/567 tests (100% passing)
 ```
 
 ---

@@ -1,0 +1,22 @@
+# Optional dependencies for Feldtheorie
+# Install with: pip install -r requirements-optional.txt
+
+# =============================================================================
+# REST API & Web Server
+# =============================================================================
+# FastAPI framework for REST endpoints
+fastapi>=0.104.0,<0.120
+
+# ASGI server for running the API
+uvicorn[standard]>=0.24.0,<0.35
+
+# HTTP client for testing FastAPI endpoints
+httpx>=0.25.0
+
+# =============================================================================
+# Notes
+# =============================================================================
+# - Sonification features use scipy/numpy (already in main requirements.txt)
+# - API tests (test_api.py, test_tooltip_api.py) require fastapi + httpx
+# - Run API server: uvicorn api.server:app --reload --port 8000
+# - API docs: http://localhost:8000/docs (Swagger UI)

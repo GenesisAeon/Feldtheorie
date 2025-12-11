@@ -7,10 +7,17 @@ from .utac_fourier import (
     run_analysis
 )
 
+from .utac_sonification import (
+    UTACsonifier,
+    FIELD_TYPE_PROFILES
+)
+
 __all__ = [
     'compute_fourier',
     'plot_spectrum',
     'spectral_features',
     'classify_field_type',
-    'run_analysis'
+    'run_analysis',
+    'UTACsonifier',
+    'FIELD_TYPE_PROFILES'
 ]
