@@ -39,6 +39,24 @@ docs = [
   "myst-parser>=2.0,<5",
   "sphinx>=7.3,<9",
 ]
+api = [
+  "fastapi>=0.104,<0.120",
+  "uvicorn[standard]>=0.24,<0.35",
+  "httpx>=0.25",
+]
+all = [
+  "black>=24.4,<26",
+  "mypy>=1.10,<1.20",
+  "nox>=2024.4.15,<2025.12",
+  "pytest>=8.2,<10",
+  "pytest-cov>=4.1,<8",
+  "ruff>=0.5.0,<0.15",
+  "myst-parser>=2.0,<5",
+  "sphinx>=7.3,<9",
+  "fastapi>=0.104,<0.120",
+  "uvicorn[standard]>=0.24,<0.35",
+  "httpx>=0.25",
+]
 
 [project.scripts]
 utf-batch = "analysis.resonance_batch_runner:main"
