@@ -100,7 +100,22 @@ class ThresholdMembrane:
         r_arr = np.asarray(list(r), dtype=float)
         logistic = self.response(r_arr)
         null = self.null_baseline(r_arr)
-        gain = float(np.trapezoid(logistic, r_arr) / np.trapezoid(null, r_arr))
+
+        def _safe_trapezoid(values: np.ndarray, abscissa: np.ndarray) -> float:
+            values_arr = np.asarray(values, dtype=float)
+            abscissa_arr = np.asarray(abscissa, dtype=float)
+
+            if values_arr.size == 0 or abscissa_arr.size == 0:
+                return 0.0
+
+            if abscissa_arr.size < 2:
+                return float(np.sum(values_arr))
+
+            return float(np.trapezoid(values_arr, abscissa_arr))
+
+        logistic_area = _safe_trapezoid(logistic, r_arr)
+        null_area = _safe_trapezoid(null, r_arr)
+        gain = float(logistic_area / null_area) if abs(null_area) > 1e-12 else float("inf")
         half_max = 0.5 * np.max(logistic)
         onset_idx = int(np.argmax(logistic >= half_max))
         return {
