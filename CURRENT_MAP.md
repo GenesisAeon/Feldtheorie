@@ -2960,72 +2960,201 @@ relevance_legend:
 ## Sigillin Sync Report
 Command: python scripts/sigillin_sync.py report
 ```
-Exit code: 1
-Traceback (most recent call last):
-  File "/workspace/Feldtheorie/scripts/sigillin_sync.py", line 383, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/workspace/Feldtheorie/scripts/sigillin_sync.py", line 376, in main
-    return handle_report(args)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/workspace/Feldtheorie/scripts/sigillin_sync.py", line 355, in handle_report
-    envelope = generate_report(trilayers)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/workspace/Feldtheorie/scripts/sigillin_sync.py", line 148, in generate_report
-    statuses = [inspect_trilayer(base) for base in trilayers]
-                ^^^^^^^^^^^^^^^^^^^^^^
-  File "/workspace/Feldtheorie/scripts/sigillin_sync.py", line 102, in inspect_trilayer
-    yaml_data = load_yaml(base.with_suffix(".yaml"))
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/workspace/Feldtheorie/scripts/sigillin_sync.py", line 93, in load_yaml
-    return yaml.safe_load(handle)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/__init__.py", line 125, in safe_load
-    return load(stream, SafeLoader)
-           ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/__init__.py", line 81, in load
-    return loader.get_single_data()
-           ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/constructor.py", line 49, in get_single_data
-    node = self.get_single_node()
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/composer.py", line 36, in get_single_node
-    document = self.compose_document()
-               ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/composer.py", line 55, in compose_document
-    node = self.compose_node(None, None)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/composer.py", line 84, in compose_node
-    node = self.compose_mapping_node(anchor)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/composer.py", line 133, in compose_mapping_node
-    item_value = self.compose_node(node, item_key)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/composer.py", line 84, in compose_node
-    node = self.compose_mapping_node(anchor)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/composer.py", line 133, in compose_mapping_node
-    item_value = self.compose_node(node, item_key)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/composer.py", line 84, in compose_node
-    node = self.compose_mapping_node(anchor)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/composer.py", line 127, in compose_mapping_node
-    while not self.check_event(MappingEndEvent):
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/parser.py", line 98, in check_event
-    self.current_event = self.state()
-                         ^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/parser.py", line 428, in parse_block_mapping_key
-    if self.check_token(KeyToken):
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/scanner.py", line 116, in check_token
-    self.fetch_more_tokens()
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/scanner.py", line 223, in fetch_more_tokens
-    return self.fetch_value()
-           ^^^^^^^^^^^^^^^^^^
-  File "/root/.pyenv/versions/3.12.12/lib/python3.12/site-packages/yaml/scanner.py", line 577, in fetch_value
-    raise ScannerError(None, None,
-yaml.scanner.ScannerError: mapping values are not allowed here
-  in "/workspace/Feldtheorie/seed/bedeutungssigillin/metaquest/system/metaquest_system_map.yaml", line 7, column 40
+{
+  "meta": {
+    "generated_at": "2025-12-11T08:26:27.161858+00:00",
+    "roots": [
+      "/workspace/Feldtheorie/seed/bedeutungssigillin/metaquest",
+      "/workspace/Feldtheorie/seed/bedeutungssigillin/metaquest/system",
+      "/workspace/Feldtheorie/seed/bedeutungssigillin/metaquest/wissenschaftsprojekt",
+      "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest",
+      "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest/system",
+      "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest/system/lanterns",
+      "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest/wissenschaftsprojekt",
+      "/workspace/Feldtheorie/seed/shadow_sigillin/metaquest/wissenschaftsprojekt/lanterns"
+    ],
+    "logistic": {
+      "R": "Count of trilayers inspected for parity.",
+      "Theta": "All tri-layer sigils share version + updated metadata.",
+      "beta": 4.6,
+      "zeta": "Damped when reports reach codexfeedback within one sprint."
+    },
+    "counts": {
+      "total": 17,
+      "with_gaps": 0
+    }
+  },
+  "trilayers": [
+    {
+      "path": "seed/bedeutungssigillin/metaquest/metaquest_activation_gap_report",
+      "sigil": "bedeutungs-metaquest-activation-gap-report",
+      "version": "0.1.0",
+      "updated": "2026-08-21T10:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2026-08-21T10:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/bedeutungssigillin/metaquest/metaquest_activation_matrix",
+      "sigil": "bedeutungs-metaquest-activation-matrix",
+      "version": "0.2.0",
+      "updated": "2026-08-20T00:00:00Z",
+      "json_version": "0.2.0",
+      "json_updated": "2026-08-20T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/bedeutungssigillin/metaquest/metaquest_meaning_index",
+      "sigil": "bedeutungs-metaquest-bridge",
+      "version": "0.5.0",
+      "updated": "2026-08-21T10:00:00Z",
+      "json_version": "0.5.0",
+      "json_updated": "2026-08-21T10:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/bedeutungssigillin/metaquest/system/metaquest_system_compass",
+      "sigil": "bedeutungs-metaquest-system-compass",
+      "version": "0.3.0",
+      "updated": "2026-08-20T00:00:00Z",
+      "json_version": "0.3.0",
+      "json_updated": "2026-08-20T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/bedeutungssigillin/metaquest/system/metaquest_system_index",
+      "sigil": "bedeutungs-metaquest-system-index",
+      "version": "0.3.0",
+      "updated": "2026-08-20T00:00:00Z",
+      "json_version": "0.3.0",
+      "json_updated": "2026-08-20T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/bedeutungssigillin/metaquest/system/metaquest_system_map",
+      "sigil": "bedeutungs-metaquest-system-bridge-map",
+      "version": "0.1.0",
+      "updated": "2025-12-24T00:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2025-12-24T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass",
+      "sigil": "bedeutungs-metaquest-campaign-compass",
+      "version": "0.1.1",
+      "updated": "2025-12-19T00:00:00Z",
+      "json_version": "0.1.1",
+      "json_updated": "2025-12-19T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index",
+      "sigil": "bedeutungs-metaquest-campaign-index",
+      "version": "0.1.0",
+      "updated": "2025-12-18T00:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2025-12-18T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/metaquest_activation_gap_guard",
+      "sigil": "shadow-metaquest-activation-gap-guard",
+      "version": "0.1.0",
+      "updated": "2026-08-21T10:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2026-08-21T10:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/metaquest_shadow_index",
+      "sigil": "shadow-metaquest-bridge",
+      "version": "0.5.0",
+      "updated": "2026-08-21T10:00:00Z",
+      "json_version": "0.5.0",
+      "json_updated": "2026-08-21T10:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/system/lanterns/metaquest_system_shadow_lanterns",
+      "sigil": "shadow-metaquest-system-lanterns",
+      "version": "0.1.0",
+      "updated": "2025-12-18T00:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2025-12-18T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow",
+      "sigil": "shadow-metaquest-system-bridge-map",
+      "version": "0.1.0",
+      "updated": "2025-12-24T00:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2025-12-24T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_compass",
+      "sigil": "shadow-metaquest-system-compass",
+      "version": "0.2.0",
+      "updated": "2025-12-09T00:00:00Z",
+      "json_version": "0.2.0",
+      "json_updated": "2025-12-09T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/system/metaquest_system_shadow_index",
+      "sigil": "shadow-metaquest-system-index",
+      "version": "0.3.0",
+      "updated": "2026-08-20T00:00:00Z",
+      "json_version": "0.3.0",
+      "json_updated": "2026-08-20T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/lanterns/metaquest_campaign_shadow_lanterns",
+      "sigil": "shadow-metaquest-campaign-lanterns",
+      "version": "0.1.0",
+      "updated": "2025-12-18T00:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2025-12-18T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass",
+      "sigil": "shadow-metaquest-campaign-compass",
+      "version": "0.2.0",
+      "updated": "2025-12-09T00:00:00Z",
+      "json_version": "0.2.0",
+      "json_updated": "2025-12-09T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    },
+    {
+      "path": "seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index",
+      "sigil": "shadow-metaquest-campaign-index",
+      "version": "0.1.0",
+      "updated": "2025-12-18T00:00:00Z",
+      "json_version": "0.1.0",
+      "json_updated": "2025-12-18T00:00:00Z",
+      "md_present": true,
+      "gaps": []
+    }
+  ]
+}
 ```
