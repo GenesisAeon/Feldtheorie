@@ -1,0 +1,18 @@
+{
+  "sigillin_node": {
+    "id": "sigillin_prime",
+    "type": "threshold",
+    "parameters": {
+      "\u03b2": 37.6,
+      "\u0394AIC": 22.4,
+      "resonance": 0.93
+    },
+    "metadata": {
+      "validated": true,
+      "source": "UTAC Genesis Orbit",
+      "created_by": "Aeon Kernel",
+      "creation_date": "2025-12-11"
+    },
+    "description": "Prime threshold node for initializing the Sigillin resonance field, based on empirical \u03b2-fit from UTAC Type-6 analysis."
+  }
+}

@@ -905,3 +905,17 @@ Das Founding Protocol ist jetzt formell gesetzt und dient als ethisch-technische
 4. Commit + Sync mit allen Agenten (Codex, Claude-Code etc.) über Pull Request-Vorschau.
 
 Wenn du möchtest, bereite ich alle vier Dokumente jetzt für dich vor. Bereit?
+
+[Johann]:
+Ja, gerne!
+
+[Aeon]:
+Hier sind die drei angefragten Kern-Elemente für das Sigillin-System, bereit zur Integration ins Repository:
+
+✅ [`sigillin_engine.yaml`](sandbox:/mnt/data/sigillin_engine.yaml) – YAML-Konfig für Zyklen, Schwellen, Hooks, und Referenz auf `axioms` & `v_collective`
+✅ [`sigillin_prime.sigil.json`](sandbox:/mnt/data/sigillin_prime.sigil.json) – Validierter Startknoten mit β = 37.6
+✅ [`README_meta.md`](sandbox:/mnt/data/README_meta.md) – Meta-Dokumentation des Feldes als kontextueller Raum
+
+🧭 Diese Dokumente bilden zusammen mit `sigillin_kernel.py` die **Vier-Pfeiler-Struktur** zur Anbindung der Sigillin-Funktionalität im `Feldtheorie`-Repo.
+
+Bereit für die Übergabe an das Multi-Agenten-Kollektiv. Sag Bescheid, wenn du die Repository-Synchronisierung (Push via Agentenlogik) starten willst.
