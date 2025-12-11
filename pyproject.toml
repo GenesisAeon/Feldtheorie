@@ -95,6 +95,8 @@ pythonpath = ["."]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
 ]
+# Ensure pytest-asyncio fixtures default to function scope to avoid deprecation warnings
+asyncio_default_fixture_loop_scope = "function"
 
 [tool.black]
 line-length = 100
