@@ -63,7 +63,7 @@ def mandala_coherence(
 
     if len(psi) != len(phi):
         raise ValueError("psi and phi must share the same length for coherence")
-    if not psi:
+    if len(psi) == 0:
         raise ValueError("at least one sample required to compute coherence")
 
     psi_mean = mean(psi)
