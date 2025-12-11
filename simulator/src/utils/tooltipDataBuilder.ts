@@ -24,7 +24,12 @@ function extractCREPScores(preset: DomainPreset): CREPScores | undefined {
   const { analysis, impedance } = preset;
 
   // If we don't have analysis data, can't compute CREP
-  if (!analysis.logistic_r2 || !analysis.delta_aic_best_null) {
+  if (
+    analysis.logistic_r2 === null ||
+    analysis.logistic_r2 === undefined ||
+    analysis.delta_aic_best_null === null ||
+    analysis.delta_aic_best_null === undefined
+  ) {
     return undefined;
   }
 
