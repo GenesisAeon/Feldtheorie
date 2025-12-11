@@ -61,8 +61,10 @@ class PsiField:
         """Compute angular component with tetrahedral symmetry Y_tetra(θ,φ)"""
         if not self.config.use_tetrahedral:
             return 1.0
-        # Tetrahedral symmetry approximation
-        return 1.0 + 0.5 * np.cos(4 * phi) * np.sin(theta - np.arccos(-1 / 3)) ** 2
+
+        # Enforce 3-fold rotational symmetry (φ → φ + 2π/3) for the tetrahedral group
+        tetrahedral_offset = np.sin(theta - np.arccos(-1 / 3)) ** 2
+        return 1.0 + 0.5 * np.cos(3 * phi) * tetrahedral_offset
 
     def _time_component(self, t):
         """Compute time component: exp(-i·Φ·E_P·t/ℏ)"""
@@ -80,6 +82,21 @@ class PsiField:
             psi = psi * self.config.normalization
 
         return psi
+
+    @staticmethod
+    def _safe_trapezoid(values, abscissa):
+        """Numerically integrate with graceful fallbacks for tiny grids."""
+
+        values_arr = np.asarray(values, dtype=float)
+        abscissa_arr = np.asarray(abscissa, dtype=float)
+
+        if values_arr.size == 0 or abscissa_arr.size == 0:
+            return 0.0
+
+        if abscissa_arr.size < 2:
+            return float(np.sum(values_arr))
+
+        return float(np.trapezoid(values_arr, abscissa_arr))
 
     def collapse_to_utac(self, psi=None, r_vals=None, theta=np.pi / 2, phi=0, t=0):
         """Collapse wave function to UTAC probability: P(R) = |ψ|².
@@ -101,8 +118,7 @@ class PsiField:
         prob_density = np.abs(psi) ** 2
 
         # Normalize
-        dr = r_vals[1] - r_vals[0] if len(r_vals) > 1 else 1.0
-        norm = np.sum(prob_density * r_vals**2 * dr) * 4 * np.pi
+        norm = self._safe_trapezoid(prob_density * r_vals**2, r_vals) * 4 * np.pi
         if norm > 0:
             prob_density = prob_density / norm
 
@@ -110,13 +126,13 @@ class PsiField:
         radial_distribution = 4 * np.pi * r_vals**2 * prob_density
 
         # Renormalize radial distribution
-        radial_norm = np.trapezoid(radial_distribution, r_vals)
+        radial_norm = self._safe_trapezoid(radial_distribution, r_vals)
         if radial_norm > 0:
             radial_distribution = radial_distribution / radial_norm
 
         # Compute expectation values using radial distribution
-        mean_r = np.trapezoid(radial_distribution * r_vals, r_vals)
-        mean_r2 = np.trapezoid(radial_distribution * r_vals**2, r_vals)
+        mean_r = self._safe_trapezoid(radial_distribution * r_vals, r_vals)
+        mean_r2 = self._safe_trapezoid(radial_distribution * r_vals**2, r_vals)
         delta_r = np.sqrt(np.abs(mean_r2 - mean_r**2))
 
         return {
@@ -148,7 +164,7 @@ class PsiField:
         p = result["radial_distribution"]
 
         # Ensure proper normalization
-        p_sum = np.trapezoid(p, r_vals)
+        p_sum = self._safe_trapezoid(p, r_vals)
         if p_sum > 0:
             p = p / p_sum
 
