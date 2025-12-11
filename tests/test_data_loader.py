@@ -40,6 +40,19 @@ def test_load_dataset_requires_dataset_field():
         load_dataset({}, data_dir="unused")
 
 
+def test_load_dataset_supports_compressed_csv(tmp_path):
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+
+    dataset_name = "Compressed Data"
+    gzip_path = data_dir / "compressed_data.csv.gz"
+    pd.DataFrame({"value": [10, 20]}).to_csv(gzip_path, index=False, compression="gzip")
+
+    loaded = load_dataset({"dataset": dataset_name}, data_dir=str(data_dir))
+
+    assert list(loaded["value"]) == [10, 20]
+
+
 def test_load_all_collects_metadata_and_optional_data(tmp_path):
     metadata_dir = tmp_path / "metadata"
     data_dir = tmp_path / "data"

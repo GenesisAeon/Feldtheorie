@@ -4,7 +4,7 @@ Reads YAML metadata files and loads associated datasets for analysis.
 """
 
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, Union
 
 import pandas as pd
 import xarray as xr
@@ -12,6 +12,9 @@ import yaml
 
 METADATA_DIR = "data/metadata/"
 DATA_DIR = "data/"
+
+
+DatasetType = Union[pd.DataFrame, xr.Dataset]
 
 
 def load_metadata(file_name: str, metadata_dir: str = METADATA_DIR) -> Dict[str, Any]:
@@ -25,13 +28,14 @@ def load_metadata(file_name: str, metadata_dir: str = METADATA_DIR) -> Dict[str,
         return yaml.safe_load(f)
 
 
-def load_dataset(meta: Dict[str, Any], data_dir: str = DATA_DIR):
+def load_dataset(meta: Dict[str, Any], data_dir: str = DATA_DIR) -> DatasetType:
     """
     Load a dataset based on metadata.
 
-    The loader supports CSV, NetCDF and JSON files. The `dataset` field in the
-    metadata is used to derive the filename; whitespace is replaced with
-    underscores and the name is lowercased to stabilize lookups.
+    The loader supports CSV (plain or gzip-compressed), NetCDF and JSON files.
+    The `dataset` field in the metadata is used to derive the filename;
+    whitespace is replaced with underscores and the name is lowercased to
+    stabilize lookups.
     """
 
     dataset_name = meta.get("dataset")
@@ -42,6 +46,7 @@ def load_dataset(meta: Dict[str, Any], data_dir: str = DATA_DIR):
 
     for suffix, reader in (
         (".csv", pd.read_csv),
+        (".csv.gz", pd.read_csv),
         (".nc", xr.open_dataset),
         (".json", pd.read_json),
     ):
