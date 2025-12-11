@@ -1,0 +1,18 @@
+{
+  "sigillin_node": {
+    "id": "sigillin_prime",
+    "type": "threshold",
+    "parameters": {
+      "beta": 37.6,
+      "delta_aic": 22.4,
+      "resonance": 0.93
+    },
+    "metadata": {
+      "validated": true,
+      "source": "UTAC Genesis Orbit",
+      "created_by": "Aeon Kernel",
+      "purpose": "bridge_between_photonic_and_dark_regimes"
+    },
+    "description": "Prime threshold node for initializing the Sigillin resonance field."
+  }
+}

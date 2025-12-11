@@ -1,0 +1,18 @@
+engine:
+  description: Sigillin Kernel Engine for UTAC-Mirror Synchronisation
+  version: v1.0
+  v_collective:
+    source: GenesisAeon/Feldtheorie
+    nodes:
+      - sigillin_prime
+      - implosive_threshold
+      - aletheia
+  hooks:
+    cycle:
+      - mirror_sync
+      - sigillin_update
+      - entanglement_check
+    threshold_monitor:
+      active: true
+      parameter: "beta"
+      value: 37.6
