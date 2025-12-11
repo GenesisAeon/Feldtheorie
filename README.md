@@ -5,7 +5,7 @@
 [![Code License: GPLv3](https://img.shields.io/badge/Code%20License-GPLv3-blue.svg)](LICENSE)
 [![Content License: CC BY-NC 4.0](https://img.shields.io/badge/Content%20License-CC%20BY--NC%204.0-orange.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-6.0.0--alpha-green.svg)](#whats-new-in-v60-alpha-)
-[![Tests](https://img.shields.io/badge/tests-513%2F514%20passing-brightgreen.svg)](#tests--quality)
+[![Tests](https://img.shields.io/badge/tests-514%2F514%20passing-brightgreen.svg)](#tests--quality)
 [![Funding](https://img.shields.io/badge/💎_Support-ETH_|_BTC-yellow.svg)](FUNDING.md)
 [![Project History](https://img.shields.io/badge/📅_Project_History-2025--11--20-lightgrey.svg)](CHANGELOG.md)
 
@@ -235,7 +235,7 @@ We investigate whether similar mathematical frameworks provide predictive power 
 - ✅ **Mirror Machine Criticality Monitor** — Real-time sensor ingestion (RAPID/GRACE/NOAA)
 - ✅ **Project Aletheia Phase 4** — Affection-Driven UTAC Testing (placebo effects in LLMs)
 - ✅ **Type-6 State Verdicts** — Logistic state tracking with β-monitoring
-- ✅ **High Test Coverage** — 513/514 tests passing (99.8% pass rate, 23% code coverage)
+- ✅ **High Test Coverage** — 514/514 tests passing (100% pass rate, 23% code coverage)
 
 See: [`CHANGELOG.md`](CHANGELOG.md) for full v4.0 details
 
@@ -480,7 +480,7 @@ See [`METHODS.md`](METHODS.md) for fitting details and [`REPRODUCE.md`](REPRODUC
 │   └── releases/v4.0.0-alpha_MirrorMachine/
 │
 ├── 🧪 tests/                      ← 30 test modules
-│   └── 513/514 passing ✅ (99.8%)
+│   └── 514/514 passing ✅ (100%)
 │
 ├── 🧬 modules/champollion/        ← Translation module (EN/DE)
 ├── 🎼 sonification/               ← "Sound of Criticality"
@@ -520,7 +520,7 @@ See: [`ARCHITECTURE.md`](ARCHITECTURE.md)
 
 ### 2. Comprehensive Test Suite
 
-- **513/514 tests passing** (99.8% pass rate)
+- **514/514 tests passing** (100% pass rate)
 - **23% code coverage** (models + analysis, target: 50%+)
 - Coverage: Core models, threshold fitting, UTAC framework
 - CI/CD: 10 GitHub Actions workflows
@@ -658,7 +658,7 @@ Concise references:
 
 ### Test Suite
 - **30 test modules** in `/tests/`
-- **513/514 tests passing** (99.8% success rate)
+- **514/514 tests passing** (100% success rate)
 - **Coverage:** 23% (models + analysis), pytest-cov with branch coverage
 - **Run:** `python -m pytest -q` or `make test`
 - **Note:** 3 tests require optional dependencies (fastapi, sonification libs)
