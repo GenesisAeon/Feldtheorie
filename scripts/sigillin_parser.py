@@ -12,7 +12,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import yaml
 
@@ -22,18 +22,18 @@ class SigillinParser:
 
     def __init__(self, root_path: Path):
         self.root_path = root_path
-        self.triplets: List[Dict[str, Any]] = []
-        self.errors: List[str] = []
-        self.warnings: List[str] = []
+        self.triplets: list[dict[str, Any]] = []
+        self.errors: list[str] = []
+        self.warnings: list[str] = []
 
-    def find_sigil_files(self) -> List[Path]:
+    def find_sigil_files(self) -> list[Path]:
         """Find all *.sigil.json files recursively."""
         return sorted(self.root_path.rglob("*.sigil.json"))
 
-    def load_json(self, path: Path) -> Optional[Dict[str, Any]]:
+    def load_json(self, path: Path) -> dict[str, Any] | None:
         """Load JSON file."""
         try:
-            with open(path, "r", encoding="utf-8") as f:
+            with open(path, encoding="utf-8") as f:
                 return json.load(f)
         except json.JSONDecodeError as e:
             self.errors.append(f"JSON parse error in {path}: {e}")
@@ -42,10 +42,10 @@ class SigillinParser:
             self.errors.append(f"Error reading {path}: {e}")
             return None
 
-    def load_yaml(self, path: Path) -> Optional[Dict[str, Any]]:
+    def load_yaml(self, path: Path) -> dict[str, Any] | None:
         """Load YAML file."""
         try:
-            with open(path, "r", encoding="utf-8") as f:
+            with open(path, encoding="utf-8") as f:
                 return yaml.safe_load(f)
         except yaml.YAMLError as e:
             self.errors.append(f"YAML parse error in {path}: {e}")
@@ -54,16 +54,16 @@ class SigillinParser:
             self.errors.append(f"Error reading {path}: {e}")
             return None
 
-    def load_markdown(self, path: Path) -> Optional[str]:
+    def load_markdown(self, path: Path) -> str | None:
         """Load Markdown file."""
         try:
-            with open(path, "r", encoding="utf-8") as f:
+            with open(path, encoding="utf-8") as f:
                 return f.read()
         except Exception as e:
             self.errors.append(f"Error reading {path}: {e}")
             return None
 
-    def validate_triplet(self, json_path: Path) -> Optional[Dict[str, Any]]:
+    def validate_triplet(self, json_path: Path) -> dict[str, Any] | None:
         """Validate that JSON/YAML/MD triplet exists and is consistent."""
 
         # Derive paths
@@ -110,9 +110,7 @@ class SigillinParser:
         if md_content and "sigil_id" in json_data:
             sigil_id = json_data["sigil_id"]
             if sigil_id not in md_content:
-                self.warnings.append(
-                    f"{md_path}: Sigil ID '{sigil_id}' not found in markdown"
-                )
+                self.warnings.append(f"{md_path}: Sigil ID '{sigil_id}' not found in markdown")
 
         return {
             "sigil_id": json_data.get("sigil_id", "unknown"),
@@ -120,18 +118,14 @@ class SigillinParser:
             "version": json_data.get("version", "unknown"),
             "status": json_data.get("status", "unknown"),
             "json_path": str(json_path.relative_to(self.root_path)),
-            "yaml_path": str(yaml_path.relative_to(self.root_path))
-            if yaml_path.exists()
-            else None,
-            "md_path": str(md_path.relative_to(self.root_path))
-            if md_path.exists()
-            else None,
+            "yaml_path": str(yaml_path.relative_to(self.root_path)) if yaml_path.exists() else None,
+            "md_path": str(md_path.relative_to(self.root_path)) if md_path.exists() else None,
             "field_type": json_data.get("field_type", "unknown"),
             "beta_window": json_data.get("resonance_pattern", {}).get("beta_window"),
             "crep_index": json_data.get("resonance_pattern", {}).get("crep_index"),
         }
 
-    def parse_all(self) -> List[Dict[str, Any]]:
+    def parse_all(self) -> list[dict[str, Any]]:
         """Parse and validate all Sigillin triplets."""
         sigil_files = self.find_sigil_files()
 
@@ -215,9 +209,7 @@ class SigillinParser:
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Parse and validate Sigillin Selfmeta triplets"
-    )
+    parser = argparse.ArgumentParser(description="Parse and validate Sigillin Selfmeta triplets")
     parser.add_argument(
         "--root",
         type=Path,

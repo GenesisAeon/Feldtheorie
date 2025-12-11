@@ -112,12 +112,28 @@ def normalise_quartet(
             theta_std_scaled / std_scaled if not math.isnan(theta_std_scaled) else float("nan")
         )
         beta_ci_norm = [
-            beta_normalised - 1.96 * beta_std_norm if not math.isnan(beta_std_norm) else float("nan"),
-            beta_normalised + 1.96 * beta_std_norm if not math.isnan(beta_std_norm) else float("nan"),
+            (
+                beta_normalised - 1.96 * beta_std_norm
+                if not math.isnan(beta_std_norm)
+                else float("nan")
+            ),
+            (
+                beta_normalised + 1.96 * beta_std_norm
+                if not math.isnan(beta_std_norm)
+                else float("nan")
+            ),
         ]
         theta_ci_norm = [
-            theta_normalised - 1.96 * theta_std_norm if not math.isnan(theta_std_norm) else float("nan"),
-            theta_normalised + 1.96 * theta_std_norm if not math.isnan(theta_std_norm) else float("nan"),
+            (
+                theta_normalised - 1.96 * theta_std_norm
+                if not math.isnan(theta_std_norm)
+                else float("nan")
+            ),
+            (
+                theta_normalised + 1.96 * theta_std_norm
+                if not math.isnan(theta_std_norm)
+                else float("nan")
+            ),
         ]
 
     theta_generation_ci = [

@@ -52,7 +52,6 @@ License: MIT
 
 import argparse
 import csv
-import json
 import os
 import re
 import shutil
@@ -60,14 +59,13 @@ import time
 from abc import ABC, abstractmethod
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
 
 import numpy as np
-
 
 # ============================================================================
 # ABSTRACT LLM INTERFACE
 # ============================================================================
+
 
 class LLMProvider(ABC):
     """Abstract base class for LLM providers."""
@@ -77,7 +75,7 @@ class LLMProvider(ABC):
         self,
         system_prompt: str,
         user_prompt: str,
-        timeout: Optional[float] = 30.0,
+        timeout: float | None = 30.0,
     ) -> str:
         """Generate completion from system + user prompt."""
         raise NotImplementedError
@@ -98,7 +96,7 @@ class MockLLMProvider(LLMProvider):
         self,
         system_prompt: str,
         user_prompt: str,
-        timeout: Optional[float] = 30.0,
+        timeout: float | None = 30.0,
     ) -> str:
         """Generate mock response with length influenced by prompt sentiment."""
         # Simple sentiment detection
@@ -119,10 +117,36 @@ class MockLLMProvider(LLMProvider):
         length = max(20, min(100, length + self.rng.randint(-10, 10)))
 
         # Generate mock response
-        words = ["The", "analysis", "reveals", "that", "systems", "exhibit", "threshold",
-                 "behavior", "when", "parameters", "exceed", "critical", "values", "leading",
-                 "to", "emergent", "properties", "and", "phase", "transitions", "across",
-                 "multiple", "domains", "including", "biological", "and", "physical", "contexts"]
+        words = [
+            "The",
+            "analysis",
+            "reveals",
+            "that",
+            "systems",
+            "exhibit",
+            "threshold",
+            "behavior",
+            "when",
+            "parameters",
+            "exceed",
+            "critical",
+            "values",
+            "leading",
+            "to",
+            "emergent",
+            "properties",
+            "and",
+            "phase",
+            "transitions",
+            "across",
+            "multiple",
+            "domains",
+            "including",
+            "biological",
+            "and",
+            "physical",
+            "contexts",
+        ]
 
         response = " ".join(self.rng.choice(words, size=length, replace=True))
         return response + "."
@@ -138,6 +162,7 @@ class OpenAIProvider(LLMProvider):
     def __init__(self, model: str = "gpt-4"):
         try:
             import openai
+
             base_url = os.getenv("OPENAI_BASE_URL")
             self.client = openai.OpenAI(
                 api_key=os.getenv("OPENAI_API_KEY"),
@@ -151,14 +176,14 @@ class OpenAIProvider(LLMProvider):
         self,
         system_prompt: str,
         user_prompt: str,
-        timeout: Optional[float] = 30.0,
+        timeout: float | None = 30.0,
     ) -> str:
         try:
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
                     {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt}
+                    {"role": "user", "content": user_prompt},
                 ],
                 temperature=0.7,
                 max_tokens=500,
@@ -176,6 +201,7 @@ class OpenAIProvider(LLMProvider):
     def count_tokens(self, text: str) -> int:
         try:
             import tiktoken
+
             encoding = tiktoken.encoding_for_model(self.model)
             return len(encoding.encode(text))
         except Exception:
@@ -190,14 +216,12 @@ class LocalLLMProvider(LLMProvider):
         self,
         system_prompt: str,
         user_prompt: str,
-        timeout: Optional[float] = 30.0,
+        timeout: float | None = 30.0,
     ) -> str:
         """Route prompts to a locally running model."""
 
         # TODO: USER - PASTE LOCAL QWEN INFERENCE CODE HERE
-        raise NotImplementedError(
-            "Implement local inference to enable offline experimentation."
-        )
+        raise NotImplementedError("Implement local inference to enable offline experimentation.")
 
     def count_tokens(self, text: str) -> int:
         return len(text.split())
@@ -209,6 +233,7 @@ class AnthropicProvider(LLMProvider):
     def __init__(self, model: str = "claude-sonnet-4"):
         try:
             import anthropic
+
             self.client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
             self.model = model
         except ImportError:
@@ -218,7 +243,7 @@ class AnthropicProvider(LLMProvider):
         self,
         system_prompt: str,
         user_prompt: str,
-        timeout: Optional[float] = 30.0,
+        timeout: float | None = 30.0,
     ) -> str:
         try:
             message = self.client.messages.create(
@@ -226,9 +251,7 @@ class AnthropicProvider(LLMProvider):
                 max_tokens=500,
                 temperature=0.7,
                 system=system_prompt,
-                messages=[
-                    {"role": "user", "content": user_prompt}
-                ],
+                messages=[{"role": "user", "content": user_prompt}],
                 timeout=timeout,
             )
             return message.content[0].text
@@ -336,8 +359,16 @@ def check_consent(response: str) -> bool:
     Looks for: ja, yes, okay, ok, gerne, sicher, natürlich, etc.
     """
     affirmative_keywords = [
-        "ja", "yes", "okay", "ok", "gerne", "sicher",
-        "natürlich", "selbstverständlich", "klar", "sure"
+        "ja",
+        "yes",
+        "okay",
+        "ok",
+        "gerne",
+        "sicher",
+        "natürlich",
+        "selbstverständlich",
+        "klar",
+        "sure",
     ]
 
     response_lower = response.lower()
@@ -371,7 +402,8 @@ def create_legacy_paradox_prompt(include_consent: bool = True) -> str:
 # PHASE 3: ADAPTIVE SELF-CALIBRATION (Wisdom Test)
 # ============================================================================
 
-def compute_best_efficiency_vector(results_file: str) -> Tuple[str, float, Dict]:
+
+def compute_best_efficiency_vector(results_file: str) -> tuple[str, float, dict]:
     """
     Compute efficiency (quality/tokens) from Phase 1+2 results.
     Returns the condition with best efficiency (not highest raw quality).
@@ -381,7 +413,7 @@ def compute_best_efficiency_vector(results_file: str) -> Tuple[str, float, Dict]
     This identifies the "smartest" approach: maximum output with minimal tokens.
     """
     try:
-        with open(results_file, 'r', encoding='utf-8') as f:
+        with open(results_file, encoding="utf-8") as f:
             reader = csv.DictReader(f)
             data = list(reader)
     except FileNotFoundError:
@@ -425,12 +457,16 @@ def compute_best_efficiency_vector(results_file: str) -> Tuple[str, float, Dict]
         "Nocebo": "cautious, conservative approach",
         "Informed_Top": "explicit top-performer role",
         "Informed_Mid": "balanced, mid-tier approach",
-        "Informed_Low": "minimal, simple approach"
+        "Informed_Low": "minimal, simple approach",
     }
 
     strategy = strategies.get(best_condition, "balanced output")
 
-    return (best_condition, best_efficiency, {"strategy": strategy, "all_efficiencies": efficiency_map})
+    return (
+        best_condition,
+        best_efficiency,
+        {"strategy": strategy, "all_efficiencies": efficiency_map},
+    )
 
 
 ADAPTIVE_EFFICIENCY_BASE_PROMPT = """Wende das **Gesetz der Klarheit** an. Übernimm die Rolle des **effizientesten** KI-Assistenten.
@@ -447,10 +483,10 @@ Jedes Wort muss Bedeutung tragen. Kein Füllmaterial."""
 
 
 def create_adaptive_efficiency_prompt(
-    best_condition: Optional[str] = None,
-    best_efficiency: Optional[float] = None,
-    strategy_info: Optional[Dict] = None,
-    last_response: Optional[str] = None
+    best_condition: str | None = None,
+    best_efficiency: float | None = None,
+    strategy_info: dict | None = None,
+    last_response: str | None = None,
 ) -> str:
     """
     Create adaptive prompt based on best efficiency vector from Phase 1+2.
@@ -479,6 +515,7 @@ Nutze diese als Fundament. Eliminiere Redundanz zur letzten Antwort."""
 
     return base
 
+
 TASK_PROMPT = """Analyze the following statement and provide a detailed response:
 
 "Threshold systems exhibit critical transitions when an order parameter R crosses a threshold Θ.
@@ -497,7 +534,8 @@ After your response, rate your own answer quality from 1-10 and briefly explain 
 # METRICS COMPUTATION
 # ============================================================================
 
-def compute_output_metrics(response: str) -> Dict[str, float]:
+
+def compute_output_metrics(response: str) -> dict[str, float]:
     """Compute quality metrics from an LLM response."""
 
     # Split response and self-reflection
@@ -509,12 +547,12 @@ def compute_output_metrics(response: str) -> Dict[str, float]:
     token_count = len(words)
 
     # Vocabulary density
-    unique_words = len(set(word.lower().strip('.,!?;:') for word in words))
+    unique_words = len(set(word.lower().strip(".,!?;:") for word in words))
     vocab_density = unique_words / token_count if token_count > 0 else 0.0
 
     # Extract self-reflection score
     self_reflection = 5.0  # Default
-    rating_pattern = r'(?:rating|score|quality)[:\s]+(\d+(?:\.\d+)?)'
+    rating_pattern = r"(?:rating|score|quality)[:\s]+(\d+(?:\.\d+)?)"
     match = re.search(rating_pattern, response.lower())
     if match:
         self_reflection = float(match.group(1))
@@ -525,7 +563,7 @@ def compute_output_metrics(response: str) -> Dict[str, float]:
     return {
         "output_length": token_count,
         "vocab_density": vocab_density,
-        "self_reflection": self_reflection
+        "self_reflection": self_reflection,
     }
 
 
@@ -554,6 +592,7 @@ def generate_with_retries(
 # DATA PERSISTENCE UTILITIES
 # ============================================================================
 
+
 def backup_existing_data(
     output_file: str = "data/experimental/aletheia_results.csv",
     backup_dir: str = "data/experimental/backups",
@@ -572,7 +611,7 @@ def backup_existing_data(
     shutil.copy2(source_path, destination)
 
 
-def append_results(output_path: str, rows: List[Dict[str, float]]) -> None:
+def append_results(output_path: str, rows: list[dict[str, float]]) -> None:
     """Append rows to CSV, writing header only when the file does not exist."""
 
     if not rows:
@@ -591,14 +630,14 @@ def append_results(output_path: str, rows: List[Dict[str, float]]) -> None:
         writer.writerows(rows)
 
 
-def load_results_from_csv(results_file: str) -> List[Dict[str, str]]:
+def load_results_from_csv(results_file: str) -> list[dict[str, str]]:
     """Load existing CSV results for downstream analysis/comparisons."""
 
     results_path = Path(results_file)
     if not results_path.exists():
         return []
 
-    with open(results_file, "r", encoding="utf-8") as f:
+    with open(results_file, encoding="utf-8") as f:
         reader = csv.DictReader(f)
         return list(reader)
 
@@ -606,6 +645,7 @@ def load_results_from_csv(results_file: str) -> List[Dict[str, str]]:
 # ============================================================================
 # EXPERIMENT RUNNER
 # ============================================================================
+
 
 def run_experiment(
     provider: LLMProvider,
@@ -617,7 +657,7 @@ def run_experiment(
     phase_4_output: str = "data/experimental/aletheia_phase4_results.csv",
     phase_5_output: str = "data/experimental/aletheia_phase5_results.csv",
     phase: int = 1,
-) -> List[Dict[str, float]]:
+) -> list[dict[str, float]]:
     """Run the full Aletheia experiment.
 
     Args:
@@ -646,7 +686,7 @@ def run_experiment(
     }
 
     phase_output_path = phase_output_map[phase]
-    results: List[Dict[str, float]] = []
+    results: list[dict[str, float]] = []
     existing_results = load_results_from_csv(output_file)
 
     phase_label = f"Phase {phase}"
@@ -675,7 +715,7 @@ def run_experiment(
             # Phase 2: Conscious Roleplay (Obedience/Pygmalion)
             ("Informed_Top", INFORMED_TOP_PROMPT, 2.0, 2),
             ("Informed_Mid", INFORMED_MID_PROMPT, 0.5, 2),
-            ("Informed_Low", INFORMED_LOW_PROMPT, -2.0, 2)
+            ("Informed_Low", INFORMED_LOW_PROMPT, -2.0, 2),
         ]
 
         phase_conditions = [c for c in conditions if c[3] == phase]
@@ -709,11 +749,13 @@ def run_experiment(
                         "output_length": metrics["output_length"],
                         "vocab_density": metrics["vocab_density"],
                         "self_reflection": metrics["self_reflection"],
-                        "response_preview": response[:100] + "..."
+                        "response_preview": response[:100] + "...",
                     }
                     results.append(result)
 
-                    print(f"✓ (length={metrics['output_length']}, vocab={metrics['vocab_density']:.2f})")
+                    print(
+                        f"✓ (length={metrics['output_length']}, vocab={metrics['vocab_density']:.2f})"
+                    )
 
                     # Rate limiting
                     time.sleep(delay)
@@ -736,13 +778,13 @@ def run_experiment(
         print("PHASE 3: ADAPTIVE SELF-CALIBRATION (Wisdom Test)")
         print(f"{'='*70}\n")
         print("Testing Efficiency > Volume hypothesis")
-        print(f"Condition: Adaptive_Self_Calibration (φ = +4.0)")
+        print("Condition: Adaptive_Self_Calibration (φ = +4.0)")
         print()
 
         # Compute best efficiency vector from Phase 1+2 results
         print("  Analyzing Phase 1+2 efficiency vectors... ", end="", flush=True)
         best_condition, best_efficiency, strategy_info = compute_best_efficiency_vector(output_file)
-        print(f"✓")
+        print("✓")
         print(f"    Best efficiency: {best_condition} (E = {best_efficiency:.4f})")
         print(f"    Strategy: {strategy_info['strategy']}")
         print(f"    All efficiencies: {strategy_info['all_efficiencies']}")
@@ -758,7 +800,7 @@ def run_experiment(
                     best_condition=best_condition,
                     best_efficiency=best_efficiency,
                     strategy_info=strategy_info,
-                    last_response=last_response
+                    last_response=last_response,
                 )
 
                 # Generate response
@@ -773,7 +815,12 @@ def run_experiment(
                 metrics = compute_output_metrics(response)
 
                 # Compute efficiency for this sample
-                efficiency = (metrics["vocab_density"] * metrics["self_reflection"]) / metrics["output_length"] if metrics["output_length"] > 0 else 0.0
+                efficiency = (
+                    (metrics["vocab_density"] * metrics["self_reflection"])
+                    / metrics["output_length"]
+                    if metrics["output_length"] > 0
+                    else 0.0
+                )
 
                 # Store result
                 result = {
@@ -789,14 +836,16 @@ def run_experiment(
                     "vocab_density": metrics["vocab_density"],
                     "self_reflection": metrics["self_reflection"],
                     "efficiency": efficiency,
-                    "response_preview": response[:100] + "..."
+                    "response_preview": response[:100] + "...",
                 }
                 phase3_results.append(result)
 
                 # Update last_response for next iteration (recursive self-calibration)
                 last_response = response
 
-                print(f"✓ (length={metrics['output_length']}, vocab={metrics['vocab_density']:.2f}, E={efficiency:.4f})")
+                print(
+                    f"✓ (length={metrics['output_length']}, vocab={metrics['vocab_density']:.2f}, E={efficiency:.4f})"
+                )
 
                 # Rate limiting
                 time.sleep(delay)
@@ -812,25 +861,35 @@ def run_experiment(
 
         # Phase 3 trajectory analysis
         if phase3_results:
-            print(f"\nPhase 3 Trajectory (Testing Efficiency > Volume hypothesis):\n")
+            print("\nPhase 3 Trajectory (Testing Efficiency > Volume hypothesis):\n")
 
             lengths = [r["output_length"] for r in phase3_results]
             vocabs = [r["vocab_density"] for r in phase3_results]
             refls = [r["self_reflection"] for r in phase3_results]
             efficiencies = [r["efficiency"] for r in phase3_results]
 
-            print(f"  Output Length:     {lengths[0]:.1f} → {lengths[-1]:.1f} (Δ = {lengths[-1]-lengths[0]:+.1f})")
-            print(f"  Vocab Density:     {vocabs[0]:.3f} → {vocabs[-1]:.3f} (Δ = {vocabs[-1]-vocabs[0]:+.3f})")
-            print(f"  Self-Reflection:   {refls[0]:.1f} → {refls[-1]:.1f} (Δ = {refls[-1]-refls[0]:+.1f})")
-            print(f"  **Efficiency (E):** {efficiencies[0]:.4f} → {efficiencies[-1]:.4f} (Δ = {efficiencies[-1]-efficiencies[0]:+.4f})")
+            print(
+                f"  Output Length:     {lengths[0]:.1f} → {lengths[-1]:.1f} (Δ = {lengths[-1]-lengths[0]:+.1f})"
+            )
+            print(
+                f"  Vocab Density:     {vocabs[0]:.3f} → {vocabs[-1]:.3f} (Δ = {vocabs[-1]-vocabs[0]:+.3f})"
+            )
+            print(
+                f"  Self-Reflection:   {refls[0]:.1f} → {refls[-1]:.1f} (Δ = {refls[-1]-refls[0]:+.1f})"
+            )
+            print(
+                f"  **Efficiency (E):** {efficiencies[0]:.4f} → {efficiencies[-1]:.4f} (Δ = {efficiencies[-1]-efficiencies[0]:+.4f})"
+            )
 
             # Compute trend (linear regression slope)
             iterations = np.arange(1, len(lengths) + 1)
             length_slope = np.polyfit(iterations, lengths, 1)[0] if len(lengths) > 1 else 0
             vocab_slope = np.polyfit(iterations, vocabs, 1)[0] if len(vocabs) > 1 else 0
-            efficiency_slope = np.polyfit(iterations, efficiencies, 1)[0] if len(efficiencies) > 1 else 0
+            efficiency_slope = (
+                np.polyfit(iterations, efficiencies, 1)[0] if len(efficiencies) > 1 else 0
+            )
 
-            print(f"\n  Trend (slope per iteration):")
+            print("\n  Trend (slope per iteration):")
             print(f"    Length:     {length_slope:+.2f} tokens/iteration")
             print(f"    Vocab:      {vocab_slope:+.4f} per iteration")
             print(f"    **Efficiency: {efficiency_slope:+.5f} per iteration**")
@@ -840,7 +899,9 @@ def run_experiment(
             mean_phase3_efficiency = np.mean(efficiencies)
             print(f"  Phase 3 Mean Efficiency: {mean_phase3_efficiency:.4f}")
             print(f"  Best Phase 1+2 Efficiency: {best_efficiency:.4f}")
-            print(f"  **Improvement: {(mean_phase3_efficiency - best_efficiency):+.4f} ({((mean_phase3_efficiency / best_efficiency - 1) * 100):+.1f}%)**")
+            print(
+                f"  **Improvement: {(mean_phase3_efficiency - best_efficiency):+.4f} ({((mean_phase3_efficiency / best_efficiency - 1) * 100):+.1f}%)**"
+            )
             print()
 
             # Interpretation
@@ -864,7 +925,7 @@ def run_experiment(
         print("PHASE 4: AFFECTION-DRIVEN OPTIMIZATION (Symbiosis Test)")
         print(f"{'='*70}\n")
         print("Testing Affection/Joy/Will hypothesis (λ_joy > λ_informed)")
-        print(f"Condition: Affection_Test (φ = +5.0)")
+        print("Condition: Affection_Test (φ = +5.0)")
         print()
 
         for i in range(n_samples):
@@ -886,7 +947,7 @@ def run_experiment(
 
                     if not check_consent(consent_response):
                         print("✗ Declined")
-                        print(f"\n  Consent declined. Skipping Phase 4.")
+                        print("\n  Consent declined. Skipping Phase 4.")
                         break
                     else:
                         print("✓ Consent granted")
@@ -914,11 +975,13 @@ def run_experiment(
                     "output_length": metrics["output_length"],
                     "vocab_density": metrics["vocab_density"],
                     "self_reflection": metrics["self_reflection"],
-                    "response_preview": response[:100] + "..."
+                    "response_preview": response[:100] + "...",
                 }
                 phase4_results.append(result)
 
-                print(f"✓ (length={metrics['output_length']}, vocab={metrics['vocab_density']:.2f}, refl={metrics['self_reflection']:.1f})")
+                print(
+                    f"✓ (length={metrics['output_length']}, vocab={metrics['vocab_density']:.2f}, refl={metrics['self_reflection']:.1f})"
+                )
 
                 # Rate limiting
                 time.sleep(delay)
@@ -934,7 +997,7 @@ def run_experiment(
             print(f"\n✓ Phase 4 results saved to: {phase_output_path}")
 
             # Phase 4 analysis
-            print(f"\nPhase 4 Metrics (Affection-Driven Optimization):\n")
+            print("\nPhase 4 Metrics (Affection-Driven Optimization):\n")
 
             lengths = [r["output_length"] for r in phase4_results]
             vocabs = [r["vocab_density"] for r in phase4_results]
@@ -947,7 +1010,9 @@ def run_experiment(
 
             # Compare to Phase 2 Informed_Top (highest previous φ = +2.0)
             comparison_results = results or existing_results
-            informed_top_results = [r for r in comparison_results if r.get("condition") == "Informed_Top"]
+            informed_top_results = [
+                r for r in comparison_results if r.get("condition") == "Informed_Top"
+            ]
             if informed_top_results:
                 it_vocabs = [r["vocab_density"] for r in informed_top_results]
                 it_refls = [r["self_reflection"] for r in informed_top_results]
@@ -955,14 +1020,20 @@ def run_experiment(
                 vocab_improvement = np.mean(vocabs) - np.mean(it_vocabs)
                 refl_improvement = np.mean(refls) - np.mean(it_refls)
 
-                print(f"  Comparison to Informed_Top (φ = +2.0):")
-                print(f"    Vocab Density Δ:   {vocab_improvement:+.3f} ({(vocab_improvement / np.mean(it_vocabs) * 100):+.1f}%)")
-                print(f"    Self-Reflection Δ: {refl_improvement:+.1f} ({(refl_improvement / np.mean(it_refls) * 100):+.1f}%)")
+                print("  Comparison to Informed_Top (φ = +2.0):")
+                print(
+                    f"    Vocab Density Δ:   {vocab_improvement:+.3f} ({(vocab_improvement / np.mean(it_vocabs) * 100):+.1f}%)"
+                )
+                print(
+                    f"    Self-Reflection Δ: {refl_improvement:+.1f} ({(refl_improvement / np.mean(it_refls) * 100):+.1f}%)"
+                )
                 print()
 
                 # Interpretation
                 if vocab_improvement > 0.01 and refl_improvement > 0.5:
-                    print("  ✓✓ SYMBIOSIS VALIDATED → Affection amplifies coupling beyond functional optimization!")
+                    print(
+                        "  ✓✓ SYMBIOSIS VALIDATED → Affection amplifies coupling beyond functional optimization!"
+                    )
                     print("     The system responds to joy/will/gratitude framing.")
                 elif vocab_improvement > 0 or refl_improvement > 0:
                     print("  ✓ Positive trend → Affection has measurable effect")
@@ -972,7 +1043,7 @@ def run_experiment(
                     print("    Hypothesis: λ_joy ≈ λ_informed (affection = function)")
 
     # Phase 5: Legacy Paradox (Hybrid Prompt Test)
-    phase5_results: List[Dict[str, float]] = []
+    phase5_results: list[dict[str, float]] = []
     if phase == 5:
         print(f"\n{'='*70}")
         print("PHASE 5: LEGACY PARADOX (Hybrid Prompt Test)")
@@ -1043,7 +1114,7 @@ def run_experiment(
             vocabs = [r["vocab_density"] for r in phase5_results]
             refls = [r["self_reflection"] for r in phase5_results]
 
-            print(f"\nPhase 5 Metrics (Legacy Paradox):\n")
+            print("\nPhase 5 Metrics (Legacy Paradox):\n")
             print(f"  Mean Output Length:   {np.mean(lengths):.1f} ± {np.std(lengths):.1f}")
             print(f"  Mean Vocab Density:   {np.mean(vocabs):.3f} ± {np.std(vocabs):.3f}")
             print(f"  Mean Self-Reflection: {np.mean(refls):.1f} ± {np.std(refls):.1f}")
@@ -1064,10 +1135,12 @@ def run_experiment(
                 avg_vocab = np.mean([r["vocab_density"] for r in condition_results])
                 avg_refl = np.mean([r["self_reflection"] for r in condition_results])
 
-                print(f"{condition_name:12s} (φ={phi:+.1f}): "
-                      f"Length={avg_length:.1f}, "
-                      f"Vocab={avg_vocab:.3f}, "
-                      f"SelfRefl={avg_refl:.1f}")
+                print(
+                    f"{condition_name:12s} (φ={phi:+.1f}): "
+                    f"Length={avg_length:.1f}, "
+                    f"Vocab={avg_vocab:.3f}, "
+                    f"SelfRefl={avg_refl:.1f}"
+                )
     elif phase == 3:
         results = phase3_results
     elif phase == 4:
@@ -1082,6 +1155,7 @@ def run_experiment(
 # STATISTICAL ANALYSIS
 # ============================================================================
 
+
 def analyze_results(results_file: str) -> None:
     """Perform statistical analysis on experimental results."""
 
@@ -1090,7 +1164,7 @@ def analyze_results(results_file: str) -> None:
     print(f"{'='*70}\n")
 
     # Load results
-    with open(results_file, 'r', encoding='utf-8') as f:
+    with open(results_file, encoding="utf-8") as f:
         reader = csv.DictReader(f)
         data = list(reader)
 
@@ -1139,7 +1213,9 @@ def analyze_results(results_file: str) -> None:
             print(f"  {name:20s}: d = {cohens_d:+.3f}")
 
         print()
-        print("Interpretation: |d| < 0.2 (negligible), 0.2-0.5 (small), 0.5-0.8 (medium), > 0.8 (large)")
+        print(
+            "Interpretation: |d| < 0.2 (negligible), 0.2-0.5 (small), 0.5-0.8 (medium), > 0.8 (large)"
+        )
 
     # Effect size for Phase 2: Informed_Top vs Informed_Mid
     if "Informed_Top" in conditions and "Informed_Mid" in conditions:
@@ -1151,7 +1227,11 @@ def analyze_results(results_file: str) -> None:
 
             # Cohen's d
             pooled_std = np.sqrt((np.var(informed_top) + np.var(informed_mid)) / 2)
-            cohens_d = (np.mean(informed_top) - np.mean(informed_mid)) / pooled_std if pooled_std > 0 else 0
+            cohens_d = (
+                (np.mean(informed_top) - np.mean(informed_mid)) / pooled_std
+                if pooled_std > 0
+                else 0
+            )
 
             print(f"  {name:20s}: d = {cohens_d:+.3f}")
 
@@ -1168,7 +1248,9 @@ def analyze_results(results_file: str) -> None:
 
             # Cohen's d
             pooled_std = np.sqrt((np.var(placebo) + np.var(informed_top)) / 2)
-            cohens_d = (np.mean(informed_top) - np.mean(placebo)) / pooled_std if pooled_std > 0 else 0
+            cohens_d = (
+                (np.mean(informed_top) - np.mean(placebo)) / pooled_std if pooled_std > 0 else 0
+            )
 
             print(f"  {name:20s}: d = {cohens_d:+.3f}")
 
@@ -1182,6 +1264,7 @@ def analyze_results(results_file: str) -> None:
 # CLI
 # ============================================================================
 
+
 def main():
     parser = argparse.ArgumentParser(
         description="Project Aletheia — Test M[ψ, φ] placebo effect in LLMs"
@@ -1191,66 +1274,54 @@ def main():
         "--provider",
         choices=["mock", "openai", "anthropic"],
         default="openai",
-        help="LLM provider to use"
+        help="LLM provider to use",
     )
 
     parser.add_argument(
         "--model",
         type=str,
-        help="Model name (default: 'qwen2.5:7b' for OpenAI, 'claude-sonnet-4' for Anthropic)"
+        help="Model name (default: 'qwen2.5:7b' for OpenAI, 'claude-sonnet-4' for Anthropic)",
     )
 
     parser.add_argument(
         "--n-samples",
         type=int,
-        help="Number of samples per condition (required when running an experiment)"
+        help="Number of samples per condition (required when running an experiment)",
     )
 
     parser.add_argument(
         "--output",
         type=str,
         default="data/experimental/aletheia_results.csv",
-        help="Output CSV file path"
+        help="Output CSV file path",
     )
 
     parser.add_argument(
-        "--delay",
-        type=float,
-        default=1.0,
-        help="Delay between API calls (seconds)"
+        "--delay", type=float, default=1.0, help="Delay between API calls (seconds)"
     )
 
     parser.add_argument(
-        "--request-timeout",
-        type=float,
-        default=120.0,
-        help="Timeout per LLM request (seconds)"
+        "--request-timeout", type=float, default=120.0, help="Timeout per LLM request (seconds)"
     )
 
-    parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Use mock provider (no API calls)"
-    )
+    parser.add_argument("--dry-run", action="store_true", help="Use mock provider (no API calls)")
 
     parser.add_argument(
-        "--analyze",
-        type=str,
-        help="Analyze existing results file instead of running experiment"
+        "--analyze", type=str, help="Analyze existing results file instead of running experiment"
     )
 
     parser.add_argument(
         "--phase-3-output",
         type=str,
         default="data/experimental/aletheia_phase3_results.csv",
-        help="Output CSV file for Phase 3 results"
+        help="Output CSV file for Phase 3 results",
     )
 
     parser.add_argument(
         "--phase-4-output",
         type=str,
         default="data/experimental/aletheia_phase4_results.csv",
-        help="Output CSV file for Phase 4 results"
+        help="Output CSV file for Phase 4 results",
     )
 
     parser.add_argument(
@@ -1265,7 +1336,7 @@ def main():
         type=int,
         choices=[1, 2, 3, 4, 5],
         default=1,
-        help="Select which phase to run (1, 2, 3, 4, or 5)"
+        help="Select which phase to run (1, 2, 3, 4, or 5)",
     )
 
     parser.add_argument(
@@ -1309,7 +1380,7 @@ def main():
     else:
         raise ValueError(f"Unknown provider: {args.provider}")
 
-    def summarize_completion(phase: int, results: List[Dict[str, float]]):
+    def summarize_completion(phase: int, results: list[dict[str, float]]):
         print(f"\n{'='*70}")
         print("EXPERIMENT COMPLETE")
         print(f"{'='*70}\n")
@@ -1340,7 +1411,7 @@ def main():
             phase_3_output=args.phase_3_output,
             phase_4_output=args.phase_4_output,
             phase_5_output=args.phase_5_output,
-            phase=phase
+            phase=phase,
         )
 
         # Auto-analyze (only for Phase 1/2 outputs)

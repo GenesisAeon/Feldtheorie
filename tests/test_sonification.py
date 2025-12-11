@@ -3,15 +3,16 @@ Tests for UTAC Sonification module
 ===================================
 """
 
-import pytest
-import numpy as np
-from pathlib import Path
 import sys
+from pathlib import Path
+
+import numpy as np
+import pytest
 
 # Add parent dir to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from sonification import UTACsonifier, FIELD_TYPE_PROFILES
+from sonification import FIELD_TYPE_PROFILES, UTACsonifier
 
 
 class TestUTACsonifier:
@@ -42,7 +43,7 @@ class TestUTACsonifier:
         assert sigma[4] > 0.9  # Far above threshold
 
         # Check monotonicity
-        assert all(sigma[i] < sigma[i+1] for i in range(len(sigma)-1))
+        assert all(sigma[i] < sigma[i + 1] for i in range(len(sigma) - 1))
 
     def test_classify_field_type(self):
         """Test field type classification"""
@@ -59,10 +60,7 @@ class TestUTACsonifier:
         sonifier = UTACsonifier(duration=1.0)
 
         audio = sonifier.generate_tone(
-            frequency=440.0,
-            amplitude=0.8,
-            harmonics=[1.0, 0.5, 0.25],
-            envelope_type="sustained"
+            frequency=440.0, amplitude=0.8, harmonics=[1.0, 0.5, 0.25], envelope_type="sustained"
         )
 
         # Check shape
@@ -93,10 +91,7 @@ class TestUTACsonifier:
         """Test single transition sonification"""
         sonifier = UTACsonifier(duration=1.0)
 
-        audio, metadata = sonifier.sonify_transition(
-            beta=4.0,
-            theta=100.0
-        )
+        audio, metadata = sonifier.sonify_transition(beta=4.0, theta=100.0)
 
         # Check audio
         expected_length = int(sonifier.sample_rate * sonifier.duration)
@@ -116,10 +111,7 @@ class TestUTACsonifier:
         sonifier = UTACsonifier(duration=0.5)
 
         beta_values = [2.5, 3.5, 4.5]
-        audio, metadata = sonifier.sonify_spectrum(
-            beta_values=beta_values,
-            gap_duration=0.2
-        )
+        audio, metadata = sonifier.sonify_spectrum(beta_values=beta_values, gap_duration=0.2)
 
         # Check audio exists
         assert len(audio) > 0
@@ -149,7 +141,14 @@ class TestUTACsonifier:
 
     def test_field_type_profiles_complete(self):
         """Test that all field type profiles are complete"""
-        required_keys = ["beta_range", "base_freq", "harmonics", "envelope", "timbre", "description"]
+        required_keys = [
+            "beta_range",
+            "base_freq",
+            "harmonics",
+            "envelope",
+            "timbre",
+            "description",
+        ]
 
         for field_type, profile in FIELD_TYPE_PROFILES.items():
             for key in required_keys:
@@ -218,11 +217,7 @@ class TestIntegration:
         """Test saving metadata to JSON"""
         from sonification.utac_sonification import save_metadata
 
-        metadata = {
-            "beta": 4.0,
-            "theta": 100.0,
-            "field_type": "strongly_coupled"
-        }
+        metadata = {"beta": 4.0, "theta": 100.0, "field_type": "strongly_coupled"}
 
         output_file = tmp_path / "test.json"
         save_metadata(metadata, output_file)
@@ -232,6 +227,7 @@ class TestIntegration:
 
         # Check content
         import json
+
         with open(output_file) as f:
             loaded = json.load(f)
         assert loaded["beta"] == 4.0
@@ -253,8 +249,9 @@ class TestAcousticMapping:
             frequencies.append(meta["base_frequency_hz"])
 
         # All frequencies should be different
-        assert len(set(frequencies)) == len(frequencies), \
-            f"Expected unique frequencies for different β values, got: {frequencies}"
+        assert len(set(frequencies)) == len(
+            frequencies
+        ), f"Expected unique frequencies for different β values, got: {frequencies}"
 
         # Test that β-scaling works within a fixed field type profile
         # By testing the frequency multiplier directly
@@ -267,8 +264,9 @@ class TestAcousticMapping:
         freq_mult_high = 1.0 + (beta_high - 2.0) / 10.0
 
         # Higher β should produce higher multiplier
-        assert freq_mult_high > freq_mult_low, \
-            f"Expected higher β to produce higher frequency multiplier"
+        assert (
+            freq_mult_high > freq_mult_low
+        ), "Expected higher β to produce higher frequency multiplier"
 
         # Check actual scaled frequencies
         assert base_freq * freq_mult_high > base_freq * freq_mult_low

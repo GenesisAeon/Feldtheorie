@@ -9,12 +9,12 @@ References:
 - V6_Wellenfunktions_Integrationsplan.md
 - simulation/genesis_cube.py (compute_psifield_analysis, hybrid_evolution)
 """
+
 from __future__ import annotations
 
 import numpy as np
 import pytest
-
-from simulation.genesis_cube import GenesisCube, GenesisCubeConfig, PSIFIELD_AVAILABLE
+from simulation.genesis_cube import PSIFIELD_AVAILABLE, GenesisCube, GenesisCubeConfig
 
 
 class TestGenesisPsiFieldIntegration:
@@ -49,18 +49,13 @@ class TestGenesisPsiFieldIntegration:
         config = GenesisCubeConfig(use_psifield_pipeline=True)
         cube = GenesisCube(config)
 
-        results = cube.compute_psifield_analysis(
-            r_max=5.0,
-            n_points=20,
-            theta_phi_res=10,
-            t=0.0
-        )
+        results = cube.compute_psifield_analysis(r_max=5.0, n_points=20, theta_phi_res=10, t=0.0)
 
         assert results is not None
-        assert 'r_grid' in results
-        assert 'psi' in results
-        assert 'entropy' in results
-        assert 'utac_coupling' in results
+        assert "r_grid" in results
+        assert "psi" in results
+        assert "entropy" in results
+        assert "utac_coupling" in results
 
     def test_compute_psifield_analysis_utac_coupling(self):
         """UTAC coupling should be computed and included."""
@@ -76,12 +71,12 @@ class TestGenesisPsiFieldIntegration:
 
         results = cube.compute_psifield_analysis(r_max=5.0, n_points=20)
 
-        utac = results['utac_coupling']
-        assert 'R' in utac
-        assert 'sigma' in utac
-        assert 'beta' in utac
-        assert utac['beta'] == 4.8
-        assert utac['theta'] == 0.5
+        utac = results["utac_coupling"]
+        assert "R" in utac
+        assert "sigma" in utac
+        assert "beta" in utac
+        assert utac["beta"] == 4.8
+        assert utac["theta"] == 0.5
 
     def test_compute_psifield_analysis_without_pipeline(self):
         """Should return None and warn when pipeline not available."""
@@ -99,9 +94,9 @@ class TestGenesisPsiFieldIntegration:
 
         results = cube.hybrid_evolution(r_max=5.0, n_points=30)
 
-        assert 'geometric' in results
-        assert 'quantum' in results
-        assert 'integration' in results
+        assert "geometric" in results
+        assert "quantum" in results
+        assert "integration" in results
 
     def test_hybrid_evolution_geometric_component(self):
         """Geometric component should contain block universe slices."""
@@ -110,10 +105,10 @@ class TestGenesisPsiFieldIntegration:
 
         results = cube.hybrid_evolution(r_max=5.0, n_points=30)
 
-        geometric = results['geometric']
-        assert 'slices' in geometric
-        assert 'slice_count' in geometric
-        assert len(geometric['slices']) > 0
+        geometric = results["geometric"]
+        assert "slices" in geometric
+        assert "slice_count" in geometric
+        assert len(geometric["slices"]) > 0
 
     def test_hybrid_evolution_quantum_component(self):
         """Quantum component should contain wavefunction results (if enabled)."""
@@ -125,11 +120,11 @@ class TestGenesisPsiFieldIntegration:
 
         results = cube.hybrid_evolution(r_max=5.0, n_points=20)
 
-        quantum = results['quantum']
+        quantum = results["quantum"]
         if quantum is not None:
-            assert 'psi' in quantum
-            assert 'entropy' in quantum
-            assert 'mean_r' in quantum
+            assert "psi" in quantum
+            assert "entropy" in quantum
+            assert "mean_r" in quantum
 
     def test_hybrid_evolution_without_psifield(self):
         """Hybrid evolution should work even without PsiFieldPipeline."""
@@ -138,10 +133,10 @@ class TestGenesisPsiFieldIntegration:
 
         results = cube.hybrid_evolution(r_max=5.0, n_points=20)
 
-        assert results['quantum'] is None
-        assert results['integration']['psifield_enabled'] is False
+        assert results["quantum"] is None
+        assert results["integration"]["psifield_enabled"] is False
         # But geometric should still work
-        assert len(results['geometric']['slices']) > 0
+        assert len(results["geometric"]["slices"]) > 0
 
     def test_integration_preserves_genesis_cube_functionality(self):
         """Integration should not break existing GenesisCube methods."""
@@ -171,7 +166,7 @@ class TestGenesisPsiFieldIntegration:
 
         results = cube.compute_psifield_analysis(r_max=5.0, n_points=30)
 
-        entropy = results['entropy']
+        entropy = results["entropy"]
         assert entropy >= 0
         assert np.isfinite(entropy)
 
@@ -185,10 +180,10 @@ class TestGenesisPsiFieldIntegration:
 
         results = cube.compute_psifield_analysis(r_max=10.0, n_points=50)
 
-        assert 'mean_r' in results
-        assert 'delta_r' in results
-        assert results['mean_r'] >= 0
-        assert results['delta_r'] >= 0
+        assert "mean_r" in results
+        assert "delta_r" in results
+        assert results["mean_r"] >= 0
+        assert results["delta_r"] >= 0
 
 
 class TestV6IntegrationPhilosophy:
@@ -201,10 +196,10 @@ class TestV6IntegrationPhilosophy:
 
         results = cube.hybrid_evolution()
 
-        integration = results['integration']
-        assert 'V6' in integration['description']
-        assert 'Tesseract' in integration['description']
-        assert 'ψ_genesis' in integration['description']
+        integration = results["integration"]
+        assert "V6" in integration["description"]
+        assert "Tesseract" in integration["description"]
+        assert "ψ_genesis" in integration["description"]
 
     def test_quantum_classical_bridge(self):
         """Integration should bridge quantum (Planck scale) and classical (UTAC)."""
@@ -220,11 +215,11 @@ class TestV6IntegrationPhilosophy:
 
         results = cube.compute_psifield_analysis(r_max=5.0)
 
-        utac = results['utac_coupling']
+        utac = results["utac_coupling"]
         # Planck scale → UTAC R mapping
-        assert 'mean_r_planck' in utac  # Quantum (Planck lengths)
-        assert 'R' in utac  # Classical (UTAC parameter)
-        assert 'sigma' in utac  # UTAC coupling strength
+        assert "mean_r_planck" in utac  # Quantum (Planck lengths)
+        assert "R" in utac  # Classical (UTAC parameter)
+        assert "sigma" in utac  # UTAC coupling strength
 
 
 if __name__ == "__main__":

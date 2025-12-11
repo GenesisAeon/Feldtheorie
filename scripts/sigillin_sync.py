@@ -36,11 +36,11 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from collections.abc import Iterable, Sequence
 from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
 import yaml
 
@@ -53,15 +53,15 @@ class TrilayerStatus:
     """Represents the resonance state of a trilayer grouping."""
 
     base_path: Path
-    sigil: Optional[str]
-    version: Optional[str]
-    updated: Optional[str]
-    json_version: Optional[str]
-    json_updated: Optional[str]
+    sigil: str | None
+    version: str | None
+    updated: str | None
+    json_version: str | None
+    json_updated: str | None
     md_present: bool
-    gaps: List[str]
+    gaps: list[str]
 
-    def to_dict(self) -> Dict[str, object]:
+    def to_dict(self) -> dict[str, object]:
         return {
             "path": self.base_path.as_posix(),
             "sigil": self.sigil,
@@ -74,8 +74,8 @@ class TrilayerStatus:
         }
 
 
-def discover_trilayers(roots: Sequence[Path]) -> List[Path]:
-    trilayers: List[Path] = []
+def discover_trilayers(roots: Sequence[Path]) -> list[Path]:
+    trilayers: list[Path] = []
     for root in roots:
         if not root.exists():
             continue
@@ -88,12 +88,12 @@ def discover_trilayers(roots: Sequence[Path]) -> List[Path]:
     return sorted(set(trilayers))
 
 
-def load_yaml(path: Path) -> Dict[str, object]:
+def load_yaml(path: Path) -> dict[str, object]:
     with path.open("r", encoding="utf-8") as handle:
         return yaml.safe_load(handle)
 
 
-def load_json(path: Path) -> Dict[str, object]:
+def load_json(path: Path) -> dict[str, object]:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
 
@@ -109,7 +109,7 @@ def inspect_trilayer(base: Path) -> TrilayerStatus:
     updated = None
     json_version = None
     json_updated = None
-    gaps: List[str] = []
+    gaps: list[str] = []
 
     meta_yaml = yaml_data.get("meta") if isinstance(yaml_data, dict) else None
     if isinstance(meta_yaml, dict):
@@ -144,7 +144,7 @@ def inspect_trilayer(base: Path) -> TrilayerStatus:
     )
 
 
-def generate_report(trilayers: Iterable[Path]) -> Dict[str, object]:
+def generate_report(trilayers: Iterable[Path]) -> dict[str, object]:
     statuses = [inspect_trilayer(base) for base in trilayers]
     envelope = {
         "meta": {
@@ -166,7 +166,7 @@ def generate_report(trilayers: Iterable[Path]) -> Dict[str, object]:
     return envelope
 
 
-def write_output(envelope: Dict[str, object], output: Path) -> None:
+def write_output(envelope: dict[str, object], output: Path) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open("w", encoding="utf-8") as handle:
         json.dump(envelope, handle, ensure_ascii=False, indent=2)
@@ -224,7 +224,7 @@ CODEx_JSON_PATH = CODEX_BASE.with_suffix(".json")
 CODEx_YAML_PATH = CODEX_BASE.with_suffix(".yaml")
 
 
-def _append_to_entries(store: Dict[str, object], entry: Dict[str, object]) -> None:
+def _append_to_entries(store: dict[str, object], entry: dict[str, object]) -> None:
     """Append ``entry`` to the ``entries`` list inside ``store``.
 
     The Codex tri-layer keeps a shared schema where the top-level document is an
@@ -241,7 +241,7 @@ def _append_to_entries(store: Dict[str, object], entry: Dict[str, object]) -> No
 
 
 def append_codex_entry(
-    envelope: Dict[str, object], codex_id: str, note: str, dry_run: bool = False
+    envelope: dict[str, object], codex_id: str, note: str, dry_run: bool = False
 ) -> None:
     timestamp = envelope["meta"]["generated_at"]
     total = envelope["meta"]["counts"]["total"]
@@ -307,7 +307,7 @@ def append_codex_entry(
         yaml.dump(codex_yaml, handle, allow_unicode=True, sort_keys=False)
 
 
-def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
+def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Metaquest Sigillin Sync Harness")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -333,12 +333,14 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
         default=[],
         help="Directory roots to inspect before stamping",
     )
-    stamp_parser.add_argument("--dry-run", action="store_true", help="Preview codex entry without writing")
+    stamp_parser.add_argument(
+        "--dry-run", action="store_true", help="Preview codex entry without writing"
+    )
 
     return parser.parse_args(argv)
 
 
-def resolve_roots(raw_roots: Sequence[str]) -> List[Path]:
+def resolve_roots(raw_roots: Sequence[str]) -> list[Path]:
     if raw_roots:
         roots = [Path(root) if Path(root).is_absolute() else BASE_DIR / root for root in raw_roots]
     else:
@@ -370,7 +372,7 @@ def handle_stamp(args: argparse.Namespace) -> int:
     return 0
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:
+def main(argv: Sequence[str] | None = None) -> int:
     args = parse_args(argv)
     if args.command == "report":
         return handle_report(args)

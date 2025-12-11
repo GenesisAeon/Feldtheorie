@@ -15,17 +15,15 @@ Date: 2025-11-13
 
 import numpy as np
 import pytest
-
 from models.utac_microscopic_abm import (
     ABMParams,
-    MicroscopicABM,
     EmergentBetaSimulator,
+    MicroscopicABM,
     coarse_grain,
-    multi_scale_coarsening,
     extract_emergent_beta,
     microscopic_to_beta_map,
+    multi_scale_coarsening,
 )
-
 
 # ═══════════════════════════════════════════════════════════════
 # ABM INITIALIZATION & STATE TESTS
@@ -178,9 +176,7 @@ class TestEmergentBeta:
         theta_true = 0.0
         sigma_true = 1 / (1 + np.exp(-beta_true * (R_values - theta_true)))
 
-        beta_fit, r_squared, fit_info = extract_emergent_beta(
-            R_values, sigma_true, theta=0.0
-        )
+        beta_fit, r_squared, fit_info = extract_emergent_beta(R_values, sigma_true, theta=0.0)
 
         assert abs(beta_fit - beta_true) < 0.1
         assert r_squared > 0.99
@@ -194,9 +190,7 @@ class TestEmergentBeta:
         sigma_noisy = sigma_true + np.random.randn(len(sigma_true)) * 0.05
         sigma_noisy = np.clip(sigma_noisy, 0, 1)
 
-        beta_fit, r_squared, fit_info = extract_emergent_beta(
-            R_values, sigma_noisy, theta=0.0
-        )
+        beta_fit, r_squared, fit_info = extract_emergent_beta(R_values, sigma_noisy, theta=0.0)
 
         assert abs(beta_fit - beta_true) < 0.5
         assert r_squared > 0.9
@@ -206,9 +200,7 @@ class TestEmergentBeta:
         R_values = np.linspace(0, 1, 20)
         sigma_flat = np.ones(20) * 0.5  # Flat, no transition
 
-        beta_fit, r_squared, fit_info = extract_emergent_beta(
-            R_values, sigma_flat, theta=0.5
-        )
+        beta_fit, r_squared, fit_info = extract_emergent_beta(R_values, sigma_flat, theta=0.5)
 
         # Should return valid result or NaN
         assert np.isfinite(beta_fit) or np.isnan(beta_fit)
@@ -232,9 +224,7 @@ class TestEmergentBetaSimulator:
         """Test R-scan produces valid σ values."""
         params = ABMParams(lattice_size=16, T=0.2)
         simulator = EmergentBetaSimulator(params)
-        R_values, sigma_values = simulator.scan_resource_range(
-            R_min=-1.0, R_max=1.0, n_points=10
-        )
+        R_values, sigma_values = simulator.scan_resource_range(R_min=-1.0, R_max=1.0, n_points=10)
         assert len(R_values) == 10
         assert len(sigma_values) == 10
         assert np.all(sigma_values >= 0) and np.all(sigma_values <= 1)

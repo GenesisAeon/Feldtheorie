@@ -45,6 +45,7 @@ from models.utac_type6_implosive import (
 # Optional plotting
 try:
     import matplotlib.pyplot as plt
+
     HAS_MATPLOTLIB = True
 except ImportError:
     HAS_MATPLOTLIB = False
@@ -53,9 +54,9 @@ except ImportError:
 
 def load_urban_heat_data(filepath: str) -> pd.DataFrame:
     """Load urban heat catalog, skipping comment lines."""
-    df = pd.read_csv(filepath, comment='#')
+    df = pd.read_csv(filepath, comment="#")
     # Remove any completely empty rows
-    df = df.dropna(how='all')
+    df = df.dropna(how="all")
     return df
 
 
@@ -91,13 +92,13 @@ def fit_cubic_root_exponent(
 
     if critical_mask.sum() < 3:
         return {
-            'p_fit': np.nan,
-            'p_ci_lower': np.nan,
-            'p_ci_upper': np.nan,
-            'k_fit': np.nan,
-            'r_squared': np.nan,
-            'falsified': None,
-            'message': 'Insufficient critical regime data (need R/Θ > 0.95)',
+            "p_fit": np.nan,
+            "p_ci_lower": np.nan,
+            "p_ci_upper": np.nan,
+            "k_fit": np.nan,
+            "r_squared": np.nan,
+            "falsified": None,
+            "message": "Insufficient critical regime data (need R/Θ > 0.95)",
         }
 
     R_crit = R_over_Theta[critical_mask]
@@ -106,7 +107,7 @@ def fit_cubic_root_exponent(
     # Define power-law model: β = k · (R/Θ - 1)^p + β_base
     def power_model(R_ratio, k, p):
         proximity = np.maximum(R_ratio - 1.0, 1e-9)
-        return k * proximity ** p + beta_base
+        return k * proximity**p + beta_base
 
     try:
         # Fit with initial guess p=1/3, k=10
@@ -114,7 +115,7 @@ def fit_cubic_root_exponent(
             power_model,
             R_crit,
             beta_crit,
-            p0=[10.0, 1.0/3.0],
+            p0=[10.0, 1.0 / 3.0],
             maxfev=10000,
         )
 
@@ -139,24 +140,24 @@ def fit_cubic_root_exponent(
         falsified = not (p_ci_lower <= p_target <= p_ci_upper)
 
         return {
-            'p_fit': p_fit,
-            'p_ci_lower': p_ci_lower,
-            'p_ci_upper': p_ci_upper,
-            'k_fit': k_fit,
-            'r_squared': r_squared,
-            'falsified': falsified,
-            'message': 'Fit converged',
+            "p_fit": p_fit,
+            "p_ci_lower": p_ci_lower,
+            "p_ci_upper": p_ci_upper,
+            "k_fit": k_fit,
+            "r_squared": r_squared,
+            "falsified": falsified,
+            "message": "Fit converged",
         }
 
     except Exception as e:
         return {
-            'p_fit': np.nan,
-            'p_ci_lower': np.nan,
-            'p_ci_upper': np.nan,
-            'k_fit': np.nan,
-            'r_squared': np.nan,
-            'falsified': None,
-            'message': f'Fit failed: {e}',
+            "p_fit": np.nan,
+            "p_ci_lower": np.nan,
+            "p_ci_upper": np.nan,
+            "k_fit": np.nan,
+            "r_squared": np.nan,
+            "falsified": None,
+            "message": f"Fit failed: {e}",
         }
 
 
@@ -182,25 +183,27 @@ def test_early_warning_thresholds(df: pd.DataFrame) -> dict:
         - falsified: True if accuracy < 0.30 (fails >70%)
     """
     # YELLOW threshold: R/Θ > 0.90 predicts β > 6.0
-    yellow_mask = df['R_over_Theta'] > 0.90
-    yellow_correct = ((yellow_mask & (df['beta_inverted'] > 6.0)) |
-                      (~yellow_mask & (df['beta_inverted'] <= 6.0)))
+    yellow_mask = df["R_over_Theta"] > 0.90
+    yellow_correct = (yellow_mask & (df["beta_inverted"] > 6.0)) | (
+        ~yellow_mask & (df["beta_inverted"] <= 6.0)
+    )
     yellow_accuracy = yellow_correct.mean()
 
     # RED threshold: R/Θ > 0.95 predicts β > 12.0
-    red_mask = df['R_over_Theta'] > 0.95
-    red_correct = ((red_mask & (df['beta_inverted'] > 12.0)) |
-                   (~red_mask & (df['beta_inverted'] <= 12.0)))
+    red_mask = df["R_over_Theta"] > 0.95
+    red_correct = (red_mask & (df["beta_inverted"] > 12.0)) | (
+        ~red_mask & (df["beta_inverted"] <= 12.0)
+    )
     red_accuracy = red_correct.mean()
 
     # Falsify if either threshold fails >70% (accuracy < 0.30)
     falsified = (yellow_accuracy < 0.30) or (red_accuracy < 0.30)
 
     return {
-        'yellow_accuracy': yellow_accuracy,
-        'red_accuracy': red_accuracy,
-        'falsified': falsified,
-        'message': 'FALSIFIED' if falsified else 'VALIDATED',
+        "yellow_accuracy": yellow_accuracy,
+        "red_accuracy": red_accuracy,
+        "falsified": falsified,
+        "message": "FALSIFIED" if falsified else "VALIDATED",
     }
 
 
@@ -222,29 +225,29 @@ def test_sigmoid_preference(df: pd.DataFrame) -> dict:
         - mean_delta_aic_critical: Mean ΔAIC in critical regime
         - falsified: True if classical wins >70% with ΔAIC > 10
     """
-    critical = df[df['R_over_Theta'] > 0.95]
+    critical = df[df["R_over_Theta"] > 0.95]
 
     if len(critical) == 0:
         return {
-            'critical_inverted_wins': np.nan,
-            'mean_delta_aic_critical': np.nan,
-            'falsified': None,
-            'message': 'No critical regime data',
+            "critical_inverted_wins": np.nan,
+            "mean_delta_aic_critical": np.nan,
+            "falsified": None,
+            "message": "No critical regime data",
         }
 
     # ΔAIC > 0 means inverted wins
-    inverted_wins = (critical['delta_aic'] > 0).mean()
-    mean_delta_aic = critical['delta_aic'].mean()
+    inverted_wins = (critical["delta_aic"] > 0).mean()
+    mean_delta_aic = critical["delta_aic"].mean()
 
     # Falsify if classical wins >70% with strong preference (ΔAIC < -10)
-    classical_strong_wins = (critical['delta_aic'] < -10).mean()
+    classical_strong_wins = (critical["delta_aic"] < -10).mean()
     falsified = classical_strong_wins > 0.70
 
     return {
-        'critical_inverted_wins': inverted_wins,
-        'mean_delta_aic_critical': mean_delta_aic,
-        'falsified': falsified,
-        'message': 'FALSIFIED' if falsified else 'VALIDATED',
+        "critical_inverted_wins": inverted_wins,
+        "mean_delta_aic_critical": mean_delta_aic,
+        "falsified": falsified,
+        "message": "FALSIFIED" if falsified else "VALIDATED",
     }
 
 
@@ -265,27 +268,27 @@ def test_beta_spike(df: pd.DataFrame) -> dict:
         - fraction_spike: Fraction with β ≥ 12 in critical regime
         - falsified: True if no spikes observed
     """
-    critical = df[(df['R_over_Theta'] > 0.95) & (df['R_over_Theta'] < 1.05)]
+    critical = df[(df["R_over_Theta"] > 0.95) & (df["R_over_Theta"] < 1.05)]
 
     if len(critical) == 0:
         return {
-            'mean_beta_critical': np.nan,
-            'fraction_spike': np.nan,
-            'falsified': None,
-            'message': 'No critical regime data',
+            "mean_beta_critical": np.nan,
+            "fraction_spike": np.nan,
+            "falsified": None,
+            "message": "No critical regime data",
         }
 
-    mean_beta = critical['beta_inverted'].mean()
-    fraction_spike = (critical['beta_inverted'] >= 12.0).mean()
+    mean_beta = critical["beta_inverted"].mean()
+    fraction_spike = (critical["beta_inverted"] >= 12.0).mean()
 
     # Falsify if <10% show β≥12 (no spike pattern)
     falsified = fraction_spike < 0.10
 
     return {
-        'mean_beta_critical': mean_beta,
-        'fraction_spike': fraction_spike,
-        'falsified': falsified,
-        'message': 'FALSIFIED' if falsified else 'VALIDATED',
+        "mean_beta_critical": mean_beta,
+        "fraction_spike": fraction_spike,
+        "falsified": falsified,
+        "message": "FALSIFIED" if falsified else "VALIDATED",
     }
 
 
@@ -299,102 +302,140 @@ def create_validation_plots(df: pd.DataFrame, cubic_fit: dict, output_path: str)
 
     # Panel A: β vs R/Θ with cubic-root fit
     ax = axes[0, 0]
-    critical = df[df['R_over_Theta'] > 0.95]
-    subcritical = df[df['R_over_Theta'] <= 0.95]
+    critical = df[df["R_over_Theta"] > 0.95]
+    subcritical = df[df["R_over_Theta"] <= 0.95]
 
-    ax.scatter(subcritical['R_over_Theta'], subcritical['beta_inverted'],
-               c='gray', alpha=0.6, s=80, label='Sub-critical')
-    ax.scatter(critical['R_over_Theta'], critical['beta_inverted'],
-               c='red', alpha=0.8, s=100, label='Critical (R/Θ>0.95)')
+    ax.scatter(
+        subcritical["R_over_Theta"],
+        subcritical["beta_inverted"],
+        c="gray",
+        alpha=0.6,
+        s=80,
+        label="Sub-critical",
+    )
+    ax.scatter(
+        critical["R_over_Theta"],
+        critical["beta_inverted"],
+        c="red",
+        alpha=0.8,
+        s=100,
+        label="Critical (R/Θ>0.95)",
+    )
 
     # Plot cubic-root fit if available
-    if not np.isnan(cubic_fit['p_fit']):
-        R_range = np.linspace(0.95, df['R_over_Theta'].max(), 100)
+    if not np.isnan(cubic_fit["p_fit"]):
+        R_range = np.linspace(0.95, df["R_over_Theta"].max(), 100)
         proximity = np.maximum(R_range - 1.0, 1e-9)
-        beta_fit = cubic_fit['k_fit'] * proximity ** cubic_fit['p_fit'] + BETA_FIXPOINT_PHI3
-        ax.plot(R_range, beta_fit, 'r--', linewidth=2,
-                label=f'p={cubic_fit["p_fit"]:.3f} ± {cubic_fit["p_ci_upper"]-cubic_fit["p_fit"]:.3f}')
+        beta_fit = cubic_fit["k_fit"] * proximity ** cubic_fit["p_fit"] + BETA_FIXPOINT_PHI3
+        ax.plot(
+            R_range,
+            beta_fit,
+            "r--",
+            linewidth=2,
+            label=f'p={cubic_fit["p_fit"]:.3f} ± {cubic_fit["p_ci_upper"]-cubic_fit["p_fit"]:.3f}',
+        )
 
-    ax.axhline(BETA_FIXPOINT_PHI3, color='blue', linestyle=':', linewidth=1.5,
-               label=f'Φ³ fixpoint ({BETA_FIXPOINT_PHI3:.2f})')
-    ax.axhline(12.0, color='orange', linestyle=':', linewidth=1.5,
-               label='Spike threshold (β=12)')
-    ax.axvline(0.95, color='orange', linestyle=':', alpha=0.5, label='Critical boundary')
+    ax.axhline(
+        BETA_FIXPOINT_PHI3,
+        color="blue",
+        linestyle=":",
+        linewidth=1.5,
+        label=f"Φ³ fixpoint ({BETA_FIXPOINT_PHI3:.2f})",
+    )
+    ax.axhline(12.0, color="orange", linestyle=":", linewidth=1.5, label="Spike threshold (β=12)")
+    ax.axvline(0.95, color="orange", linestyle=":", alpha=0.5, label="Critical boundary")
 
-    ax.set_xlabel('R/Θ (Thermal Storage / Threshold)', fontsize=11)
-    ax.set_ylabel('β (Steepness)', fontsize=11)
-    ax.set_title('A: Cubic-Root Jump Mechanism', fontsize=12, fontweight='bold')
+    ax.set_xlabel("R/Θ (Thermal Storage / Threshold)", fontsize=11)
+    ax.set_ylabel("β (Steepness)", fontsize=11)
+    ax.set_title("A: Cubic-Root Jump Mechanism", fontsize=12, fontweight="bold")
     ax.legend(fontsize=9)
     ax.grid(True, alpha=0.3)
 
     # Panel B: ΔAIC comparison (inverted vs classical)
     ax = axes[0, 1]
-    colors = ['green' if aic > 0 else 'purple' for aic in df['delta_aic']]
-    ax.bar(range(len(df)), df['delta_aic'], color=colors, alpha=0.7)
-    ax.axhline(0, color='black', linewidth=1)
-    ax.axhline(10, color='green', linestyle='--', linewidth=1.5,
-               label='Strong inverted preference')
-    ax.axhline(-10, color='purple', linestyle='--', linewidth=1.5,
-               label='Strong classical preference')
-    ax.set_xlabel('City-Season Index', fontsize=11)
-    ax.set_ylabel('ΔAIC (Inverted - Classical)', fontsize=11)
-    ax.set_title('B: Sigmoid Type Preference', fontsize=12, fontweight='bold')
+    colors = ["green" if aic > 0 else "purple" for aic in df["delta_aic"]]
+    ax.bar(range(len(df)), df["delta_aic"], color=colors, alpha=0.7)
+    ax.axhline(0, color="black", linewidth=1)
+    ax.axhline(10, color="green", linestyle="--", linewidth=1.5, label="Strong inverted preference")
+    ax.axhline(
+        -10, color="purple", linestyle="--", linewidth=1.5, label="Strong classical preference"
+    )
+    ax.set_xlabel("City-Season Index", fontsize=11)
+    ax.set_ylabel("ΔAIC (Inverted - Classical)", fontsize=11)
+    ax.set_title("B: Sigmoid Type Preference", fontsize=12, fontweight="bold")
     ax.legend(fontsize=9)
-    ax.grid(True, alpha=0.3, axis='y')
+    ax.grid(True, alpha=0.3, axis="y")
 
     # Panel C: Early warning threshold performance
     ax = axes[1, 0]
 
     R_bins = [0, 0.9, 0.95, 2.0]
-    bin_labels = ['Safe\n(R/Θ<0.9)', 'Yellow\n(0.9-0.95)', 'Red\n(R/Θ>0.95)']
+    bin_labels = ["Safe\n(R/Θ<0.9)", "Yellow\n(0.9-0.95)", "Red\n(R/Θ>0.95)"]
 
-    df['regime'] = pd.cut(df['R_over_Theta'], bins=R_bins, labels=bin_labels)
-    regime_beta = df.groupby('regime')['beta_inverted'].mean()
+    df["regime"] = pd.cut(df["R_over_Theta"], bins=R_bins, labels=bin_labels)
+    regime_beta = df.groupby("regime")["beta_inverted"].mean()
 
-    colors_regime = ['green', 'yellow', 'red']
+    colors_regime = ["green", "yellow", "red"]
     ax.bar(range(len(regime_beta)), regime_beta, color=colors_regime, alpha=0.7)
     ax.set_xticks(range(len(regime_beta)))
     ax.set_xticklabels(bin_labels, fontsize=10)
-    ax.set_ylabel('Mean β', fontsize=11)
-    ax.set_title('C: Early Warning Thresholds', fontsize=12, fontweight='bold')
-    ax.axhline(BETA_FIXPOINT_PHI3, color='blue', linestyle=':', linewidth=1.5,
-               label=f'Φ³ baseline ({BETA_FIXPOINT_PHI3:.2f})')
-    ax.axhline(12.0, color='orange', linestyle=':', linewidth=1.5, label='Spike threshold')
+    ax.set_ylabel("Mean β", fontsize=11)
+    ax.set_title("C: Early Warning Thresholds", fontsize=12, fontweight="bold")
+    ax.axhline(
+        BETA_FIXPOINT_PHI3,
+        color="blue",
+        linestyle=":",
+        linewidth=1.5,
+        label=f"Φ³ baseline ({BETA_FIXPOINT_PHI3:.2f})",
+    )
+    ax.axhline(12.0, color="orange", linestyle=":", linewidth=1.5, label="Spike threshold")
     ax.legend(fontsize=9)
-    ax.grid(True, alpha=0.3, axis='y')
+    ax.grid(True, alpha=0.3, axis="y")
 
     # Panel D: City-season trajectory
     ax = axes[1, 1]
 
     # Group by city, plot seasonal trajectories
-    for city in df['city'].unique():
-        city_data = df[df['city'] == city].sort_values('season')
-        ax.plot(city_data['R_over_Theta'], city_data['beta_inverted'],
-                marker='o', linewidth=2, markersize=8, alpha=0.7, label=city)
+    for city in df["city"].unique():
+        city_data = df[df["city"] == city].sort_values("season")
+        ax.plot(
+            city_data["R_over_Theta"],
+            city_data["beta_inverted"],
+            marker="o",
+            linewidth=2,
+            markersize=8,
+            alpha=0.7,
+            label=city,
+        )
 
-    ax.axvline(0.95, color='orange', linestyle=':', alpha=0.5, label='Critical boundary')
-    ax.axhline(BETA_FIXPOINT_PHI3, color='blue', linestyle=':', linewidth=1.5)
-    ax.set_xlabel('R/Θ', fontsize=11)
-    ax.set_ylabel('β', fontsize=11)
-    ax.set_title('D: Seasonal Trajectories', fontsize=12, fontweight='bold')
-    ax.legend(fontsize=9, loc='best')
+    ax.axvline(0.95, color="orange", linestyle=":", alpha=0.5, label="Critical boundary")
+    ax.axhline(BETA_FIXPOINT_PHI3, color="blue", linestyle=":", linewidth=1.5)
+    ax.set_xlabel("R/Θ", fontsize=11)
+    ax.set_ylabel("β", fontsize=11)
+    ax.set_title("D: Seasonal Trajectories", fontsize=12, fontweight="bold")
+    ax.legend(fontsize=9, loc="best")
     ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
     print(f"✓ Saved validation plot: {output_path}")
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Urban Heat Island Cubic-Root Jump Validation (UTAC Type-6 Experiment A)'
+        description="Urban Heat Island Cubic-Root Jump Validation (UTAC Type-6 Experiment A)"
     )
-    parser.add_argument('--input', default='data/implosion/urban_heat_catalog.csv',
-                        help='Path to urban heat catalog CSV')
-    parser.add_argument('--out', default='paper/figures/cubic_root_jump_heat.png',
-                        help='Output path for validation figure')
-    parser.add_argument('--verbose', action='store_true',
-                        help='Print detailed results')
+    parser.add_argument(
+        "--input",
+        default="data/implosion/urban_heat_catalog.csv",
+        help="Path to urban heat catalog CSV",
+    )
+    parser.add_argument(
+        "--out",
+        default="paper/figures/cubic_root_jump_heat.png",
+        help="Output path for validation figure",
+    )
+    parser.add_argument("--verbose", action="store_true", help="Print detailed results")
 
     args = parser.parse_args()
 
@@ -416,11 +457,11 @@ def main():
     print("TEST 1: Cubic-Root Exponent (β ∝ (R/Θ - 1)^p)")
     print("─" * 70)
     cubic_fit = fit_cubic_root_exponent(
-        df['R_over_Theta'].values,
-        df['beta_inverted'].values,
+        df["R_over_Theta"].values,
+        df["beta_inverted"].values,
     )
 
-    if not np.isnan(cubic_fit['p_fit']):
+    if not np.isnan(cubic_fit["p_fit"]):
         print(f"  Best-fit exponent: p = {cubic_fit['p_fit']:.4f}")
         print(f"  95% CI: [{cubic_fit['p_ci_lower']:.4f}, {cubic_fit['p_ci_upper']:.4f}]")
         print("  Theoretical: p = 1/3 ≈ 0.3333")
@@ -428,7 +469,7 @@ def main():
         print(f"  Amplification: k = {cubic_fit['k_fit']:.2f}")
         print()
 
-        if cubic_fit['falsified']:
+        if cubic_fit["falsified"]:
             print("  ⚠️  FALSIFIED: 95% CI excludes p = 1/3")
         else:
             print("  ✓ VALIDATED: 95% CI includes p = 1/3")
@@ -443,12 +484,12 @@ def main():
     print("─" * 70)
     spike_test = test_beta_spike(df)
 
-    if not np.isnan(spike_test['mean_beta_critical']):
+    if not np.isnan(spike_test["mean_beta_critical"]):
         print(f"  Mean β (critical): {spike_test['mean_beta_critical']:.2f}")
         print(f"  Fraction β ≥ 12: {spike_test['fraction_spike']:.2%}")
         print()
 
-        if spike_test['falsified']:
+        if spike_test["falsified"]:
             print("  ⚠️  FALSIFIED: No β spike observed in critical regime")
         else:
             print("  ✓ VALIDATED: β spikes near R/Θ → 1")
@@ -463,12 +504,12 @@ def main():
     print("─" * 70)
     sigmoid_test = test_sigmoid_preference(df)
 
-    if not np.isnan(sigmoid_test['critical_inverted_wins']):
+    if not np.isnan(sigmoid_test["critical_inverted_wins"]):
         print(f"  Inverted wins (critical): {sigmoid_test['critical_inverted_wins']:.2%}")
         print(f"  Mean ΔAIC (critical): {sigmoid_test['mean_delta_aic_critical']:.2f}")
         print()
 
-        if sigmoid_test['falsified']:
+        if sigmoid_test["falsified"]:
             print("  ⚠️  FALSIFIED: Classical sigmoid dominates")
         else:
             print("  ✓ VALIDATED: Inverted sigmoid preferred in critical regime")
@@ -487,7 +528,7 @@ def main():
     print(f"  RED (R/Θ > 0.95) accuracy: {threshold_test['red_accuracy']:.2%}")
     print()
 
-    if threshold_test['falsified']:
+    if threshold_test["falsified"]:
         print("  ⚠️  FALSIFIED: Thresholds fail >70% of time")
     else:
         print("  ✓ VALIDATED: Thresholds distinguish regimes reliably")
@@ -500,8 +541,8 @@ def main():
     print("═" * 70)
 
     tests = [cubic_fit, spike_test, sigmoid_test, threshold_test]
-    falsified_count = sum(1 for t in tests if t.get('falsified') == True)
-    validated_count = sum(1 for t in tests if t.get('falsified') == False)
+    falsified_count = sum(1 for t in tests if t.get("falsified") == True)
+    validated_count = sum(1 for t in tests if t.get("falsified") == False)
 
     print("  Tests run: 4")
     print(f"  Validated: {validated_count}")
@@ -532,5 +573,5 @@ def main():
     print("═" * 70)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

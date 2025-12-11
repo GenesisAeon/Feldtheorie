@@ -20,6 +20,7 @@ References:
     - activation_gaps_tau_star.md
     - FinalyzeVorschlägeChatGPT5.1Agent.txt L53-L64
 """
+
 from __future__ import annotations
 
 __version__ = "0.1.0"

@@ -127,7 +127,11 @@ def fit_logistic(R: np.ndarray, sigma: np.ndarray) -> LogisticFitResult:
         beta_hat + 1.96 * np.sqrt(max(beta_var, 0.0)),
     )
 
-    grad = np.array([intercept_hat / (beta_hat**2), -1.0 / beta_hat]) if beta_hat != 0 else np.array([0.0, 0.0])
+    grad = (
+        np.array([intercept_hat / (beta_hat**2), -1.0 / beta_hat])
+        if beta_hat != 0
+        else np.array([0.0, 0.0])
+    )
     theta_var = float(grad.T @ cov @ grad) if cov.size else 0.0
     theta_ci = (
         theta_hat - 1.96 * np.sqrt(max(theta_var, 0.0)),
@@ -171,7 +175,9 @@ def cubic_null_model(R: np.ndarray, sigma: np.ndarray) -> dict[str, float]:
     }
 
 
-def assemble_payload(run: dict[str, np.ndarray], fit: LogisticFitResult, null: dict[str, float]) -> dict[str, object]:
+def assemble_payload(
+    run: dict[str, np.ndarray], fit: LogisticFitResult, null: dict[str, float]
+) -> dict[str, object]:
     model: CoupledThresholdField = run["model"]
     observables = model.export_observables(
         {

@@ -3,17 +3,17 @@
 This tool ingests Sigillin YAML artefacts, validates their logistic framing,
 and exports CREP summaries so downstream automation can tune ζ(R) controllers.
 """
+
 from __future__ import annotations
 
 import argparse
 import json
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
 from statistics import mean
-from typing import Dict, Iterable, List, Tuple
 
 import yaml
-
 
 SIGIL_TYPES = {"order", "dynamics", "meaning", "shadow"}
 SIGIL_STATUSES = {"draft", "primed", "active", "resonant", "archived"}
@@ -33,21 +33,21 @@ class SigilValidationError(Exception):
 @dataclass
 class ParsedSigil:
     path: Path
-    data: Dict
+    data: dict
 
     @property
-    def core(self) -> Dict:
+    def core(self) -> dict:
         return self.data["sigil"]["core"]
 
     @property
-    def logistic_frame(self) -> Dict:
+    def logistic_frame(self) -> dict:
         return self.data["sigil"]["logistic_frame"]
 
     @property
-    def crep(self) -> Dict[str, float]:
+    def crep(self) -> dict[str, float]:
         return self.data["sigil"]["crep"]
 
-    def summary(self) -> Dict:
+    def summary(self) -> dict:
         anchors = self.data["sigil"].get("anchors", [])
         return {
             "id": self.core["id"],
@@ -62,7 +62,7 @@ class ParsedSigil:
         }
 
 
-def load_yaml(path: Path) -> Dict:
+def load_yaml(path: Path) -> dict:
     try:
         with path.open("r", encoding="utf-8") as handle:
             return yaml.safe_load(handle)
@@ -70,7 +70,7 @@ def load_yaml(path: Path) -> Dict:
         raise SigilValidationError(f"Failed to parse YAML in {path}: {exc}") from exc
 
 
-def validate_structure(data: Dict, path: Path) -> None:
+def validate_structure(data: dict, path: Path) -> None:
     if not isinstance(data, dict):
         raise SigilValidationError(f"Sigil at {path} must be a mapping.")
     for key in ("meta", "sigil"):
@@ -100,9 +100,7 @@ def validate_structure(data: Dict, path: Path) -> None:
         if not isinstance(anchor, dict):
             raise SigilValidationError(f"Anchor in {path} must be a mapping.")
         if "path" not in anchor or "kind" not in anchor:
-            raise SigilValidationError(
-                f"Anchor in {path} must define both 'path' and 'kind'."
-            )
+            raise SigilValidationError(f"Anchor in {path} must define both 'path' and 'kind'.")
 
 
 def validate_semantics(parsed: ParsedSigil) -> None:
@@ -111,13 +109,9 @@ def validate_semantics(parsed: ParsedSigil) -> None:
     crep = parsed.crep
 
     if core["type"] not in SIGIL_TYPES:
-        raise SigilValidationError(
-            f"Sigil {core['id']} has invalid type '{core['type']}'."
-        )
+        raise SigilValidationError(f"Sigil {core['id']} has invalid type '{core['type']}'.")
     if core["status"] not in SIGIL_STATUSES:
-        raise SigilValidationError(
-            f"Sigil {core['id']} has invalid status '{core['status']}'."
-        )
+        raise SigilValidationError(f"Sigil {core['id']} has invalid status '{core['status']}'.")
 
     try:
         beta_value = float(logistic_frame["beta"])
@@ -126,9 +120,7 @@ def validate_semantics(parsed: ParsedSigil) -> None:
             f"Sigil {core['id']} provides non-numeric β: {logistic_frame['beta']}"
         ) from exc
     if beta_value < 0.5:
-        raise SigilValidationError(
-            f"Sigil {core['id']} reports β={beta_value}, below minimum 0.5."
-        )
+        raise SigilValidationError(f"Sigil {core['id']} reports β={beta_value}, below minimum 0.5.")
     parsed.data["sigil"]["logistic_frame"]["beta"] = beta_value
 
     for key in CREP_KEYS:
@@ -146,8 +138,8 @@ def validate_semantics(parsed: ParsedSigil) -> None:
         parsed.data["sigil"]["crep"][key] = numeric
 
 
-def parse_sigils(paths: Iterable[Path], validate: bool = False) -> List[ParsedSigil]:
-    parsed_sigils: List[ParsedSigil] = []
+def parse_sigils(paths: Iterable[Path], validate: bool = False) -> list[ParsedSigil]:
+    parsed_sigils: list[ParsedSigil] = []
     for path in paths:
         data = load_yaml(path)
         if validate:
@@ -159,8 +151,8 @@ def parse_sigils(paths: Iterable[Path], validate: bool = False) -> List[ParsedSi
     return parsed_sigils
 
 
-def aggregate_crep(sigils: Iterable[ParsedSigil]) -> Dict[str, float]:
-    values: Dict[str, List[float]] = {key: [] for key in CREP_KEYS}
+def aggregate_crep(sigils: Iterable[ParsedSigil]) -> dict[str, float]:
+    values: dict[str, list[float]] = {key: [] for key in CREP_KEYS}
     for sigil in sigils:
         for key in CREP_KEYS:
             try:
@@ -170,9 +162,9 @@ def aggregate_crep(sigils: Iterable[ParsedSigil]) -> Dict[str, float]:
     return {key: mean(vals) if vals else 0.0 for key, vals in values.items()}
 
 
-def collect_paths(args: argparse.Namespace) -> Tuple[List[Path], Path | None]:
+def collect_paths(args: argparse.Namespace) -> tuple[list[Path], Path | None]:
     root: Path | None = None
-    paths: List[Path] = []
+    paths: list[Path] = []
 
     if args.examples:
         root = Path("seed/sigillin/examples").resolve()
@@ -205,7 +197,7 @@ def collect_paths(args: argparse.Namespace) -> Tuple[List[Path], Path | None]:
     return unique_paths, root
 
 
-def build_summary(sigils: List[ParsedSigil], validate: bool) -> Dict:
+def build_summary(sigils: list[ParsedSigil], validate: bool) -> dict:
     return {
         "generated_at": args_timestamp(),
         "validated": validate,
@@ -225,9 +217,7 @@ def create_argument_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Parse Sigillin YAML files and emit CREP/logistic summaries.",
     )
-    parser.add_argument(
-        "files", nargs="*", help="Explicit Sigillin files to parse."
-    )
+    parser.add_argument("files", nargs="*", help="Explicit Sigillin files to parse.")
     parser.add_argument(
         "-d",
         "--directory",
@@ -250,19 +240,21 @@ def create_argument_parser() -> argparse.ArgumentParser:
     )
     return parser
 
+
 # ============================================================================
 # Codex Integration (v2-pr-0019)
 # ============================================================================
+
 
 def sigil_to_codex_entry(sigil, timestamp):
     """Convert a ParsedSigil to a codexfeedback entry format."""
     core = sigil.core
     logistic_frame = sigil.logistic_frame
     tri_layer = sigil.data["sigil"]["tri_layer"]
-    
+
     # Generate codex ID from sigil ID (maintain traceability)
     codex_id = f"sigil-{core['id']}"
-    
+
     return {
         "id": codex_id,
         "title": core["title"],
@@ -288,37 +280,37 @@ def load_codex_trilayer(codex_dir):
     """Load existing codexfeedback YAML and JSON."""
     yaml_path = codex_dir / "codexfeedback.yaml"
     json_path = codex_dir / "codexfeedback.json"
-    
+
     if not yaml_path.exists():
         raise SigilValidationError(f"Codex YAML not found: {yaml_path}")
     if not json_path.exists():
         raise SigilValidationError(f"Codex JSON not found: {json_path}")
-    
+
     with yaml_path.open("r", encoding="utf-8") as f:
         codex_yaml = yaml.safe_load(f)
-    
+
     with json_path.open("r", encoding="utf-8") as f:
         codex_json = json.load(f)
-    
+
     return codex_yaml, codex_json
 
 
 def write_codex_trilayer(codex_dir, codex_yaml, codex_json):
     """Write updated codexfeedback to YAML, JSON, and MD (Trilayer!)."""
-    import sys
+
     yaml_path = codex_dir / "codexfeedback.yaml"
     json_path = codex_dir / "codexfeedback.json"
     md_path = codex_dir / "codexfeedback.md"
-    
+
     # Write YAML
     with yaml_path.open("w", encoding="utf-8") as f:
         yaml.dump(codex_yaml, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
-    
+
     # Write JSON
     with json_path.open("w", encoding="utf-8") as f:
         json.dump(codex_json, f, indent=2, ensure_ascii=False)
         f.write("\n")
-    
+
     # Generate MD from entries
     md_content = generate_codex_markdown(codex_yaml)
     with md_path.open("w", encoding="utf-8") as f:
@@ -334,16 +326,18 @@ def generate_codex_markdown(codex_yaml):
     lines.append(f"**Updated:** {codex_yaml['meta']['updated']}\n\n")
     lines.append("---\n\n")
     lines.append("## Entries\n\n")
-    
+
     for entry in codex_yaml["entries"]:
         lines.append(f"### {entry['id']}: {entry['title']}\n\n")
         lines.append(f"**Status:** {entry.get('status', 'active')}\n\n")
         lines.append(f"**Scope:** {', '.join(entry.get('scope', []))}\n\n")
-        
+
         params = entry.get("parameters", {})
-        lines.append(f"**Parameters:** β={params.get('beta', 'N/A')}, Θ={params.get('Theta', 'N/A')}\n\n")
+        lines.append(
+            f"**Parameters:** β={params.get('beta', 'N/A')}, Θ={params.get('Theta', 'N/A')}\n\n"
+        )
         lines.append(f"**Resonance:** {entry.get('resonance', '')}\n\n")
-        
+
         if "notes" in entry:
             notes = entry["notes"]
             lines.append("**Formal Thread:**\n\n")
@@ -352,43 +346,47 @@ def generate_codex_markdown(codex_yaml):
             lines.append(f"{notes.get('empirical', '')}\n\n")
             lines.append("**Poetic Thread:**\n\n")
             lines.append(f"{notes.get('poetic', '')}\n\n")
-        
+
         lines.append("---\n\n")
-    
+
     return "".join(lines)
 
 
 def append_to_codex(sigils, codex_dir, timestamp):
     """Append parsed sigils to codexfeedback.* (Trilayer!)"""
     import sys
+
     try:
         codex_yaml, codex_json = load_codex_trilayer(codex_dir)
     except SigilValidationError as exc:
         print(f"Error loading codex: {exc}", file=sys.stderr)
         return 1
-    
+
     # Convert sigils to codex entries
     new_entries = [sigil_to_codex_entry(sigil, timestamp) for sigil in sigils]
-    
+
     # Check for ID collisions
     existing_ids = {entry["id"] for entry in codex_yaml["entries"]}
     collisions = [entry["id"] for entry in new_entries if entry["id"] in existing_ids]
     if collisions:
-        print(f"Warning: Skipping {len(collisions)} entries with existing IDs: {collisions}", file=sys.stderr)
+        print(
+            f"Warning: Skipping {len(collisions)} entries with existing IDs: {collisions}",
+            file=sys.stderr,
+        )
         new_entries = [e for e in new_entries if e["id"] not in existing_ids]
-    
+
     if not new_entries:
         print("No new entries to add to codex.", file=sys.stderr)
         return 0
-    
+
     # Append to YAML and JSON
     codex_yaml["entries"].extend(new_entries)
     codex_json["entries"].extend(new_entries)
-    
+
     # Update metadata
     codex_yaml["meta"]["updated"] = timestamp
     codex_json["meta"]["updated"] = timestamp
-    
+
     # Write Trilayer
     try:
         write_codex_trilayer(codex_dir, codex_yaml, codex_json)
@@ -401,14 +399,11 @@ def append_to_codex(sigils, codex_dir, timestamp):
         return 1
 
 
-
 def create_argument_parser():
     parser = argparse.ArgumentParser(
         description="Parse Sigillin YAML files and emit CREP/logistic summaries.",
     )
-    parser.add_argument(
-        "files", nargs="*", help="Explicit Sigillin files to parse."
-    )
+    parser.add_argument("files", nargs="*", help="Explicit Sigillin files to parse.")
     parser.add_argument(
         "-d",
         "--directory",

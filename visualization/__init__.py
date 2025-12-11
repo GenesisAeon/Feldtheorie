@@ -10,7 +10,8 @@ Provides visualization tools for:
 
 try:
     from .psi_field_viz import PsiFieldVisualizer, create_full_visualization_suite
-    __all__ = ['PsiFieldVisualizer', 'create_full_visualization_suite']
+
+    __all__ = ["PsiFieldVisualizer", "create_full_visualization_suite"]
 except ImportError:
     # PsiFieldPipeline not available
     __all__ = []

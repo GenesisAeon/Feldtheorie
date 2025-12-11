@@ -14,18 +14,17 @@ OpenAPI Docs:
 """
 
 import asyncio
+import base64
 import json
 import re
-import uuid
-from fastapi import FastAPI, HTTPException, Response, WebSocket, WebSocketDisconnect
-from fastapi.responses import JSONResponse, StreamingResponse
-from pydantic import BaseModel, Field, field_validator, model_validator
-from typing import List, Optional, Dict, Any, Set
-import io
-import base64
-import numpy as np
-from pathlib import Path
 import sys
+import uuid
+from pathlib import Path
+from typing import Any
+
+import numpy as np
+from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 # Add project root to path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -33,16 +32,9 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 # Import UTAC modules
 try:
-    from sonification.utac_sonification import (
-        sonify_threshold,
-        get_field_type_profile,
-        FIELD_TYPES
-    )
+    from models.coupled_threshold_field import CoupledThresholdField, simulate_coupled_dynamics
     from models.sigmoid_fit import fit_sigmoid
-    from models.coupled_threshold_field import (
-        CoupledThresholdField,
-        simulate_coupled_dynamics
-    )
+    from sonification.utac_sonification import FIELD_TYPES, get_field_type_profile, sonify_threshold
 except ImportError as e:
     print(f"Warning: Could not import UTAC modules: {e}")
     print("API will run with limited functionality.")
@@ -75,14 +67,8 @@ All UTAC systems follow σ(β(R-Θ)):
 See OpenAPI spec for full details: `/openapi.json`
     """,
     version="1.0.0",
-    contact={
-        "name": "Feldtheorie Project",
-        "url": "https://github.com/GenesisAeon/Feldtheorie"
-    },
-    license_info={
-        "name": "MIT",
-        "url": "https://opensource.org/licenses/MIT"
-    }
+    contact={"name": "Feldtheorie Project", "url": "https://github.com/GenesisAeon/Feldtheorie"},
+    license_info={"name": "MIT", "url": "https://opensource.org/licenses/MIT"},
 )
 
 
@@ -90,27 +76,30 @@ See OpenAPI spec for full details: `/openapi.json`
 # Pydantic Models
 # ============================================================================
 
+
 class SonifyRequest(BaseModel):
     beta: float = Field(..., ge=0.1, le=20.0, description="Steepness parameter β")
     theta: float = Field(..., description="Threshold value Θ")
-    field_type: Optional[str] = Field(
-        "strongly_coupled",
-        description="UTAC field type"
-    )
+    field_type: str | None = Field("strongly_coupled", description="UTAC field type")
     duration: float = Field(5.0, ge=0.1, le=60.0, description="Audio duration (s)")
     sample_rate: int = Field(44100, description="Sample rate (Hz)")
-    preset: Optional[str] = Field(None, description="Optional preset name")
+    preset: str | None = Field(None, description="Optional preset name")
 
-    @field_validator('field_type')
+    @field_validator("field_type")
     @classmethod
     def validate_field_type(cls, v):
-        valid_types = ['weakly_coupled', 'high_dimensional', 'strongly_coupled',
-                      'physically_constrained', 'meta_adaptive']
+        valid_types = [
+            "weakly_coupled",
+            "high_dimensional",
+            "strongly_coupled",
+            "physically_constrained",
+            "meta_adaptive",
+        ]
         if v not in valid_types:
             raise ValueError(f"field_type must be one of {valid_types}")
         return v
 
-    @field_validator('sample_rate')
+    @field_validator("sample_rate")
     @classmethod
     def validate_sample_rate(cls, v):
         if v not in [22050, 44100, 48000]:
@@ -120,26 +109,25 @@ class SonifyRequest(BaseModel):
 
 class SonifyResponse(BaseModel):
     audio_base64: str
-    metadata: Dict[str, Any]
+    metadata: dict[str, Any]
 
 
 class AnalyzeRequest(BaseModel):
-    R: List[float] = Field(..., min_length=5, description="Control parameter values")
-    sigma: List[float] = Field(..., min_length=5, description="Order parameter values")
+    R: list[float] = Field(..., min_length=5, description="Control parameter values")
+    sigma: list[float] = Field(..., min_length=5, description="Order parameter values")
     bootstrap_iterations: int = Field(1000, ge=100, le=10000)
-    null_models: List[str] = Field(
-        ["linear", "exponential", "power_law"],
-        description="Null models to compare"
+    null_models: list[str] = Field(
+        ["linear", "exponential", "power_law"], description="Null models to compare"
     )
 
-    @field_validator('sigma')
+    @field_validator("sigma")
     @classmethod
     def validate_sigma(cls, v):
         if any(s < 0 or s > 1 for s in v):
             raise ValueError("sigma values must be between 0 and 1")
         return v
 
-    @model_validator(mode='after')
+    @model_validator(mode="after")
     def validate_lengths_match(self):
         if len(self.R) != len(self.sigma):
             raise ValueError("R and sigma must have same length")
@@ -148,20 +136,19 @@ class AnalyzeRequest(BaseModel):
 
 class AnalyzeResponse(BaseModel):
     theta: float
-    theta_ci: List[float]
+    theta_ci: list[float]
     beta: float
-    beta_ci: List[float]
+    beta_ci: list[float]
     r_squared: float
     aic: float
-    null_models: Dict[str, Dict[str, float]]
+    null_models: dict[str, dict[str, float]]
     field_type: str
 
 
 class LiveAnalyzeRequest(BaseModel):
     samples: int = Field(1, ge=1, le=25, description="Number of runs per model")
-    run_id: Optional[str] = Field(
-        None,
-        description="Client-specified run identifier for telemetry correlation"
+    run_id: str | None = Field(
+        None, description="Client-specified run identifier for telemetry correlation"
     )
 
 
@@ -173,46 +160,45 @@ class SimulateRequest(BaseModel):
     initial_phi: float = Field(0.05, description="Initial coherence")
     duration: float = Field(10.0, ge=1.0, le=100.0, description="Simulation duration")
     dt: float = Field(0.01, ge=0.001, le=0.1, description="Time step")
-    stimulus: Optional[Dict[str, float]] = Field(
-        None,
-        description="Stimulus parameters (base, amplitude, frequency)"
+    stimulus: dict[str, float] | None = Field(
+        None, description="Stimulus parameters (base, amplitude, frequency)"
     )
 
 
 class SimulateResponse(BaseModel):
-    time: List[float]
-    R: List[float]
-    psi: List[float]
-    phi: List[float]
-    sigma: List[float]
-    metadata: Dict[str, Any]
+    time: list[float]
+    R: list[float]
+    psi: list[float]
+    phi: list[float]
+    sigma: list[float]
+    metadata: dict[str, Any]
 
 
 class SystemMetadata(BaseModel):
     id: str
     name: str
     domain: str
-    parameters: Dict[str, Any]
+    parameters: dict[str, Any]
     field_type: str
-    references: List[str]
-    data_sources: List[str]
+    references: list[str]
+    data_sources: list[str]
 
 
 class FieldTypesResponse(BaseModel):
-    field_types: List[Dict[str, Any]]
+    field_types: list[dict[str, Any]]
 
 
 class ErrorResponse(BaseModel):
     error: str
     message: str
-    details: Optional[Dict[str, Any]] = None
+    details: dict[str, Any] | None = None
 
 
 class TelemetryManager:
     """Manage telemetry WebSocket subscribers and broadcast events."""
 
     def __init__(self) -> None:
-        self.connections: Set[WebSocket] = set()
+        self.connections: set[WebSocket] = set()
         self._lock = asyncio.Lock()
 
     async def connect(self, websocket: WebSocket) -> None:
@@ -224,7 +210,7 @@ class TelemetryManager:
         async with self._lock:
             self.connections.discard(websocket)
 
-    async def broadcast(self, message: Dict[str, Any]) -> None:
+    async def broadcast(self, message: dict[str, Any]) -> None:
         payload = json.dumps(message)
         async with self._lock:
             connections = list(self.connections)
@@ -245,6 +231,7 @@ telemetry_manager = TelemetryManager()
 # ============================================================================
 # Live Analysis Helpers
 # ============================================================================
+
 
 async def _stream_subprocess_output(run_id: str, process: asyncio.subprocess.Process) -> None:
     """Forward subprocess stdout/stderr to telemetry clients with basic parsing."""
@@ -354,6 +341,7 @@ async def run_live_analysis(run_id: str, samples: int) -> None:
 # Endpoints
 # ============================================================================
 
+
 @app.get("/")
 async def root():
     """Root endpoint - redirect to docs"""
@@ -361,7 +349,7 @@ async def root():
         "message": "UTAC Modular API",
         "version": "1.0.0",
         "docs": "/docs",
-        "openapi": "/openapi.json"
+        "openapi": "/openapi.json",
     }
 
 
@@ -372,11 +360,7 @@ async def analyze_live(request: LiveAnalyzeRequest):
     run_id = request.run_id or str(uuid.uuid4())
     asyncio.create_task(run_live_analysis(run_id, request.samples))
 
-    return {
-        "run_id": run_id,
-        "status": "started",
-        "samples": request.samples
-    }
+    return {"run_id": run_id, "status": "started", "samples": request.samples}
 
 
 @app.websocket("/ws/telemetry")
@@ -408,20 +392,14 @@ async def sonify(request: SonifyRequest):
     """
     try:
         # Import sonification module
-        from sonification.utac_sonification import UTACsonifier, save_audio
         from scipy.io import wavfile
+        from sonification.utac_sonification import UTACsonifier, save_audio
 
         # Create sonifier
-        sonifier = UTACsonifier(
-            sample_rate=request.sample_rate,
-            duration=request.duration
-        )
+        sonifier = UTACsonifier(sample_rate=request.sample_rate, duration=request.duration)
 
         # Generate audio
-        audio, metadata = sonifier.sonify_transition(
-            beta=request.beta,
-            theta=request.theta
-        )
+        audio, metadata = sonifier.sonify_transition(beta=request.beta, theta=request.theta)
 
         # Convert to WAV bytes
         # Normalize and convert to int16
@@ -430,12 +408,13 @@ async def sonify(request: SonifyRequest):
 
         # Write to in-memory buffer
         import io
+
         buffer = io.BytesIO()
         wavfile.write(buffer, request.sample_rate, audio_int16)
         buffer.seek(0)
 
         # Encode as base64
-        audio_b64 = base64.b64encode(buffer.read()).decode('utf-8')
+        audio_b64 = base64.b64encode(buffer.read()).decode("utf-8")
 
         # Return response
         return SonifyResponse(
@@ -448,15 +427,12 @@ async def sonify(request: SonifyRequest):
                 "sample_rate": metadata["sample_rate_hz"],
                 "format": "wav",
                 "base_frequency_hz": metadata["base_frequency_hz"],
-                "profile": metadata["profile"]
-            }
+                "profile": metadata["profile"],
+            },
         )
 
     except ImportError as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Sonification module not available: {str(e)}"
-        )
+        raise HTTPException(status_code=500, detail=f"Sonification module not available: {str(e)}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -484,10 +460,7 @@ async def analyze(request: AnalyzeRequest):
         result = fit_sigmoid_with_fallbacks(R, sigma)
 
         if not result.ok or result.beta is None or result.params is None:
-            raise HTTPException(
-                status_code=400,
-                detail=f"Fitting failed: {result.message}"
-            )
+            raise HTTPException(status_code=400, detail=f"Fitting failed: {result.message}")
 
         # Extract parameters
         L, beta, theta, baseline = result.params
@@ -547,21 +520,18 @@ async def analyze(request: AnalyzeRequest):
             null_models={
                 "linear": {
                     "delta_aic": float(delta_aic_linear),
-                    "delta_r2": float(delta_r2_linear)
+                    "delta_r2": float(delta_r2_linear),
                 },
                 "exponential": {
                     "delta_aic": float(delta_aic_exp),
-                    "delta_r2": float(max(0, delta_r2_linear * 0.8))
-                }
+                    "delta_r2": float(max(0, delta_r2_linear * 0.8)),
+                },
             },
-            field_type=field_type
+            field_type=field_type,
         )
 
     except ImportError as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Analysis module not available: {str(e)}"
-        )
+        raise HTTPException(status_code=500, detail=f"Analysis module not available: {str(e)}")
     except HTTPException:
         raise
     except Exception as e:
@@ -598,7 +568,7 @@ async def get_system(system_id: str):
             if not possible_files:
                 raise HTTPException(
                     status_code=404,
-                    detail=f"System '{system_id}' not found. Available systems: {list(system_files.keys())}"
+                    detail=f"System '{system_id}' not found. Available systems: {list(system_files.keys())}",
                 )
 
             filepath = possible_files[0]
@@ -657,11 +627,11 @@ async def get_system(system_id: str):
                 "beta_ci": [float(beta_ci[0]), float(beta_ci[1])],
                 "theta": float(theta),
                 "theta_ci": [float(theta_ci[0]), float(theta_ci[1])],
-                "r_squared": float(r2)
+                "r_squared": float(r2),
             },
             field_type=field_type,
             references=[str(filepath.relative_to(PROJECT_ROOT))],
-            data_sources=data.get("data_sources", ["Internal analysis"])
+            data_sources=data.get("data_sources", ["Internal analysis"]),
         )
 
     except HTTPException:
@@ -689,10 +659,7 @@ async def get_field_types():
                 "beta_range": [2.0, 3.0],
                 "description": "Gradual transitions, diffuse coupling",
                 "examples": ["Ecosystem succession", "Diffusion processes"],
-                "acoustic_profile": {
-                    "base_frequency": 110.0,
-                    "timbre": "Soft, diffuse, ambient"
-                }
+                "acoustic_profile": {"base_frequency": 110.0, "timbre": "Soft, diffuse, ambient"},
             },
             {
                 "name": "high_dimensional",
@@ -701,28 +668,22 @@ async def get_field_types():
                 "examples": ["LLM emergence", "Neural networks", "Semantic shifts"],
                 "acoustic_profile": {
                     "base_frequency": 329.63,
-                    "timbre": "Ethereal, complex, layered"
-                }
+                    "timbre": "Ethereal, complex, layered",
+                },
             },
             {
                 "name": "strongly_coupled",
                 "beta_range": [4.0, 5.0],
                 "description": "Sharp, resonant thresholds",
                 "examples": ["AMOC collapse", "Phase transitions", "QPO resonance"],
-                "acoustic_profile": {
-                    "base_frequency": 220.0,
-                    "timbre": "Warm, resonant, clear"
-                }
+                "acoustic_profile": {"base_frequency": 220.0, "timbre": "Warm, resonant, clear"},
             },
             {
                 "name": "physically_constrained",
                 "beta_range": [5.0, 10.0],
                 "description": "Hard physical limits",
                 "examples": ["Boiling point", "Material failure", "Combustion"],
-                "acoustic_profile": {
-                    "base_frequency": 440.0,
-                    "timbre": "Sharp, precise, metallic"
-                }
+                "acoustic_profile": {"base_frequency": 440.0, "timbre": "Sharp, precise, metallic"},
             },
             {
                 "name": "meta_adaptive",
@@ -731,9 +692,9 @@ async def get_field_types():
                 "examples": ["Urban heat islands", "Market crashes", "Cascading failures"],
                 "acoustic_profile": {
                     "base_frequency": 261.63,
-                    "timbre": "Morphing, adaptive, unstable"
-                }
-            }
+                    "timbre": "Morphing, adaptive, unstable",
+                },
+            },
         ]
 
         return FieldTypesResponse(field_types=field_types)
@@ -760,10 +721,7 @@ async def simulate(request: SimulateRequest):
 
         # Create field
         field = CoupledThresholdField(
-            theta=request.theta,
-            beta=request.beta,
-            coupling=0.5,  # Default coupling
-            dt=request.dt
+            theta=request.theta, beta=request.beta, coupling=0.5, dt=request.dt  # Default coupling
         )
 
         # Generate stimulus (driver sequence)
@@ -790,7 +748,7 @@ async def simulate(request: SimulateRequest):
             drivers=drivers,
             R0=request.initial_R,
             psi0=request.initial_psi,
-            phi0=request.initial_phi
+            phi0=request.initial_phi,
         )
 
         # Extract and format results
@@ -806,15 +764,12 @@ async def simulate(request: SimulateRequest):
                 "dt": float(request.dt),
                 "n_steps": len(results["t"]) - 1,
                 "duration": float(request.duration),
-                "coupling": 0.5
-            }
+                "coupling": 0.5,
+            },
         )
 
     except ImportError as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Simulation module not available: {str(e)}"
-        )
+        raise HTTPException(status_code=500, detail=f"Simulation module not available: {str(e)}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -827,8 +782,10 @@ async def simulate(request: SimulateRequest):
 # Tooltip System Endpoints (v2-feat-ext-001)
 # ============================================================================
 
+
 class CREPScores(BaseModel):
     """CREP (Coherence, Resilience, Empathy, Propagation) scores"""
+
     coherence: float = Field(..., ge=0, le=1, description="Internal consistency (R²-based)")
     resilience: float = Field(..., ge=0, le=1, description="Recovery capacity (impedance-based)")
     empathy: float = Field(..., ge=0, le=1, description="Cross-domain resonance (ΔAIC-based)")
@@ -837,36 +794,40 @@ class CREPScores(BaseModel):
 
 class FieldTypeInfo(BaseModel):
     """Field type classification with β-range"""
+
     type: str = Field(..., description="Field type name")
     description: str = Field(..., description="Human-readable description")
-    beta_range: List[float] = Field(..., min_length=2, max_length=2, description="[min, max] β range")
+    beta_range: list[float] = Field(
+        ..., min_length=2, max_length=2, description="[min, max] β range"
+    )
     color: str = Field(..., description="Hex color code")
 
 
 class TooltipData(BaseModel):
     """Complete tooltip data for interactive visualizations"""
+
     preset_id: str
     label: str
     domain: str
-    beta: Optional[float] = None
-    beta_ci: Optional[List[float]] = None
-    theta: Optional[float] = None
-    theta_ci: Optional[List[float]] = None
-    r_squared: Optional[float] = None
-    delta_aic: Optional[float] = None
-    delta_r2: Optional[float] = None
-    best_null_model: Optional[str] = None
-    crep: Optional[CREPScores] = None
-    field_type: Optional[FieldTypeInfo] = None
+    beta: float | None = None
+    beta_ci: list[float] | None = None
+    theta: float | None = None
+    theta_ci: list[float] | None = None
+    r_squared: float | None = None
+    delta_aic: float | None = None
+    delta_r2: float | None = None
+    best_null_model: str | None = None
+    crep: CREPScores | None = None
+    field_type: FieldTypeInfo | None = None
     impedance_closed: float
     impedance_open: float
     impedance_mean: float
-    formal_thread: Optional[str] = None
-    empirical_thread: Optional[str] = None
-    poetic_thread: Optional[str] = None
+    formal_thread: str | None = None
+    empirical_thread: str | None = None
+    poetic_thread: str | None = None
 
 
-def classify_field_type(beta: Optional[float]) -> FieldTypeInfo:
+def classify_field_type(beta: float | None) -> FieldTypeInfo:
     """Classify field type based on β value"""
     if beta is None:
         beta = 3.5  # Default to high-dimensional
@@ -876,40 +837,41 @@ def classify_field_type(beta: Optional[float]) -> FieldTypeInfo:
             type="weakly_coupled",
             description="Weakly Coupled: Gradual transitions, low coupling",
             beta_range=[0.0, 2.5],
-            color="#a8dadc"
+            color="#a8dadc",
         )
     elif beta < 4.0:
         return FieldTypeInfo(
             type="high_dimensional",
             description="High-Dimensional: Complex state spaces (AI, neural)",
             beta_range=[2.5, 4.0],
-            color="#457b9d"
+            color="#457b9d",
         )
     elif beta < 5.5:
         return FieldTypeInfo(
             type="strongly_coupled",
             description="Strongly Coupled: Resonant systems (climate, ecology)",
             beta_range=[4.0, 5.5],
-            color="#1d3557"
+            color="#1d3557",
         )
     elif beta < 10.0:
         return FieldTypeInfo(
             type="physically_constrained",
             description="Physically Constrained: Hard constraints (astrophysics)",
             beta_range=[5.5, 10.0],
-            color="#e63946"
+            color="#e63946",
         )
     else:
         return FieldTypeInfo(
             type="meta_adaptive",
             description="Meta-Adaptive: Extreme nonlinearity (urban systems)",
             beta_range=[10.0, 1000.0],
-            color="#f77f00"
+            color="#f77f00",
         )
 
 
-def compute_crep_scores(r2: Optional[float], delta_aic: Optional[float],
-                       impedance_mean: float, beta: Optional[float]) -> Optional[CREPScores]:
+def compute_crep_scores(
+    r2: float | None, delta_aic: float | None, impedance_mean: float, beta: float | None
+) -> CREPScores | None:
     """Compute CREP scores from metrics"""
     if r2 is None or delta_aic is None or beta is None:
         return None
@@ -927,10 +889,7 @@ def compute_crep_scores(r2: Optional[float], delta_aic: Optional[float],
     propagation = min(1.0, 1.0 / (1.0 + np.exp(-0.2 * (beta - 5.0))))
 
     return CREPScores(
-        coherence=coherence,
-        resilience=resilience,
-        empathy=empathy,
-        propagation=propagation
+        coherence=coherence, resilience=resilience, empathy=empathy, propagation=propagation
     )
 
 
@@ -958,6 +917,7 @@ async def get_tooltip_data(preset_id: str):
         raise HTTPException(status_code=404, detail=f"Preset '{preset_id}' not found")
 
     import json
+
     with open(preset_path) as f:
         preset = json.load(f)
 
@@ -994,11 +954,11 @@ async def get_tooltip_data(preset_id: str):
         impedance_mean=impedance.get("mean", 0.5),
         formal_thread=narrative.get("formal"),
         empirical_thread=narrative.get("empirical"),
-        poetic_thread=narrative.get("poetic")
+        poetic_thread=narrative.get("poetic"),
     )
 
 
-@app.get("/api/tooltip", response_model=List[TooltipData], tags=["tooltip"])
+@app.get("/api/tooltip", response_model=list[TooltipData], tags=["tooltip"])
 async def get_all_tooltip_data():
     """
     Get tooltip data for all available presets
@@ -1045,9 +1005,9 @@ async def health_check():
             "system": "implemented",
             "fieldtypes": "implemented",
             "simulate": "implemented",
-            "tooltip": "implemented ✨ NEW!"
+            "tooltip": "implemented ✨ NEW!",
         },
-        "message": "All 6 endpoints operational! Tooltip system online."
+        "message": "All 6 endpoints operational! Tooltip system online.",
     }
 
 
@@ -1057,4 +1017,5 @@ async def health_check():
 
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(app, host="0.0.0.0", port=8000)

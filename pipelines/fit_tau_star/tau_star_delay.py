@@ -12,20 +12,18 @@ Usage:
     # Apply delay in RK4 integration
     R_delayed = apply_safety_delay(R, R_prev, tau_star, dt)
 """
-from __future__ import annotations
 
-import math
-from typing import Union
+from __future__ import annotations
 
 import numpy as np
 
 
 def compute_tau_star(
-    R: Union[float, np.ndarray],
+    R: float | np.ndarray,
     Theta: float,
     beta: float = 4.8,
     k: float = 0.1,
-) -> Union[float, np.ndarray]:
+) -> float | np.ndarray:
     """
     Compute τ* safety delay for implosive field dynamics.
 
@@ -55,12 +53,12 @@ def compute_tau_star(
 
 
 def apply_safety_delay(
-    R_current: Union[float, np.ndarray],
-    R_previous: Union[float, np.ndarray],
-    tau_star: Union[float, np.ndarray],
+    R_current: float | np.ndarray,
+    R_previous: float | np.ndarray,
+    tau_star: float | np.ndarray,
     dt: float,
     mode: str = "exponential",
-) -> Union[float, np.ndarray]:
+) -> float | np.ndarray:
     """
     Apply τ* safety delay to field evolution in RK4 integration.
 
@@ -110,10 +108,10 @@ def apply_safety_delay(
 
 
 def compute_zeta_risk(
-    R: Union[float, np.ndarray],
+    R: float | np.ndarray,
     Theta: float,
     beta: float,
-) -> Union[float, np.ndarray]:
+) -> float | np.ndarray:
     """
     Compute ζ-risk factor for implosive scenarios.
 
@@ -170,7 +168,7 @@ def rk4_step_with_tau_star(
     k4 = dR_dt_func(R + dt * k3)
 
     # RK4 update (undelayed)
-    R_rk4 = R + (dt / 6.0) * (k1 + 2*k2 + 2*k3 + k4)
+    R_rk4 = R + (dt / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4)
 
     # Compute τ* for current state
     tau_star = compute_tau_star(R, Theta, beta)

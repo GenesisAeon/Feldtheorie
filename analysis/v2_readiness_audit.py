@@ -90,12 +90,16 @@ class TargetStatus:
             "description": self.description,
             "category": self.category,
             "exists": self.path.exists(),
-            "last_modified": iso_datetime(self.path.stat().st_mtime) if self.path.exists() else None,
+            "last_modified": (
+                iso_datetime(self.path.stat().st_mtime) if self.path.exists() else None
+            ),
             "expected_outputs": [
                 {
                     "path": rel(out_path),
                     "exists": out_path.exists(),
-                    "last_modified": iso_datetime(out_path.stat().st_mtime) if out_path.exists() else None,
+                    "last_modified": (
+                        iso_datetime(out_path.stat().st_mtime) if out_path.exists() else None
+                    ),
                 }
                 for out_path in self.expected_outputs
             ],
@@ -178,10 +182,8 @@ def parse_dataset_status(manifest: dict) -> list[DatasetStatus]:
                 identifier=entry.get("id", "unknown"),
                 domain=entry.get("domain", "unknown"),
                 resonance_status=entry.get("resonance_status", "unknown"),
-                theta_estimate=entry.get("theta_estimate")
-                or entry.get("threshold_Theta_estimate"),
-                beta_target=entry.get("beta_target")
-                or entry.get("steepness_beta_target"),
+                theta_estimate=entry.get("theta_estimate") or entry.get("threshold_Theta_estimate"),
+                beta_target=entry.get("beta_target") or entry.get("steepness_beta_target"),
                 declared_readiness_ratio=entry.get("readiness_ratio"),
                 components=components,
             )
@@ -242,7 +244,12 @@ def build_action_items(
             }
         )
 
-    for scope, prefix in ((targets, "analysis"), (docs, "docs"), (simulator_targets, "sim"), (sigillin_targets, "sigillin")):
+    for scope, prefix in (
+        (targets, "analysis"),
+        (docs, "docs"),
+        (simulator_targets, "sim"),
+        (sigillin_targets, "sigillin"),
+    ):
         for target in scope:
             exists = target.path.exists()
             missing_outputs = [out for out in target.expected_outputs if not out.exists()]
@@ -276,7 +283,9 @@ def build_action_items(
     return actions
 
 
-def build_targets() -> tuple[list[TargetStatus], list[TargetStatus], list[TargetStatus], list[TargetStatus]]:
+def build_targets() -> (
+    tuple[list[TargetStatus], list[TargetStatus], list[TargetStatus], list[TargetStatus]]
+):
     analysis_targets = [
         TargetStatus(
             path=REPO_ROOT / "analysis" / "climate_beta_extractor.py",
@@ -299,7 +308,9 @@ def build_targets() -> tuple[list[TargetStatus], list[TargetStatus], list[Target
         TargetStatus(
             path=REPO_ROOT / "analysis" / "beta_meta_regression_v2.py",
             description="meta regression v2 refresh",
-            expected_outputs=[REPO_ROOT / "analysis" / "results" / "beta_meta_regression_v2_latest.json"],
+            expected_outputs=[
+                REPO_ROOT / "analysis" / "results" / "beta_meta_regression_v2_latest.json"
+            ],
             category="analysis",
         ),
     ]
@@ -371,7 +382,9 @@ def write_yaml(path: Path, payload: dict) -> None:
         yaml.safe_dump(payload, handle, sort_keys=False, allow_unicode=True)
 
 
-def write_markdown(path: Path, payload: dict, datasets: Sequence[DatasetStatus], actions: Sequence[dict]) -> None:
+def write_markdown(
+    path: Path, payload: dict, datasets: Sequence[DatasetStatus], actions: Sequence[dict]
+) -> None:
     logistic_info = payload["meta"]["logistic"]
     dataset_summary_info = payload["data_summary"]
 
@@ -386,9 +399,11 @@ def write_markdown(path: Path, payload: dict, datasets: Sequence[DatasetStatus],
     lines.append("")
     lines.append("## 1. Formal Stratum — Logistic Summary")
     lines.append("")
-    lines.append("- Manifest lanterns: **{total}** (fully ready: {ready}).".format(
-        total=dataset_summary_info["total"], ready=dataset_summary_info["fully_ready"]
-    ))
+    lines.append(
+        "- Manifest lanterns: **{total}** (fully ready: {ready}).".format(
+            total=dataset_summary_info["total"], ready=dataset_summary_info["fully_ready"]
+        )
+    )
     lines.append(
         "- Average readiness R̄ = {avg:.2f}; Θ = {theta:.2f}; β = {beta:.2f}; σ(β(R-Θ)) = {sigma:.3f}.".format(
             avg=logistic_info["mean_readiness"],
@@ -410,7 +425,9 @@ def write_markdown(path: Path, payload: dict, datasets: Sequence[DatasetStatus],
     for ds in datasets:
         missing_names = ", ".join(c.name for c in ds.missing_components()) or "—"
         readiness_pct = int(round(ds.actual_readiness_ratio() * 100))
-        next_step = "Complete manifest tri-layer" if missing_names != "—" else "Run updated analysis"
+        next_step = (
+            "Complete manifest tri-layer" if missing_names != "—" else "Run updated analysis"
+        )
         lines.append(
             f"| {ds.identifier} | {ds.domain} | {ds.resonance_status} | {readiness_pct}% | {missing_names} | {next_step} |"
         )
@@ -501,7 +518,9 @@ def build_payload(
         "doc_targets": summarise_targets(doc_targets),
         "simulator_targets": summarise_targets(simulator_targets),
         "sigillin_targets": summarise_targets(sigillin_targets),
-        "action_items": build_action_items(datasets, analysis_targets, doc_targets, simulator_targets, sigillin_targets),
+        "action_items": build_action_items(
+            datasets, analysis_targets, doc_targets, simulator_targets, sigillin_targets
+        ),
     }
 
 

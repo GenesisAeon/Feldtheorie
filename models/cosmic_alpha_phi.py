@@ -110,6 +110,7 @@ class MonteCarloResult:
 # CORE QUANTIZATION CLASS
 # ============================================================================
 
+
 class CosmicQuantization:
     """
     Implements empirical testing of cosmic velocity scaling hypothesis.
@@ -131,12 +132,7 @@ class CosmicQuantization:
         null_hypothesis_test: Test against random constant models
     """
 
-    def __init__(
-        self,
-        c: float = C_KM_S,
-        alpha: float = ALPHA,
-        phi: float = PHI
-    ):
+    def __init__(self, c: float = C_KM_S, alpha: float = ALPHA, phi: float = PHI):
         """
         Initialize with fundamental constants.
 
@@ -171,7 +167,7 @@ class CosmicQuantization:
     def compare_boehme(
         self,
         measured_v: float = BOEHME_VELOCITY_KM_S,
-        measured_sigma: float = BOEHME_UNCERTAINTY_KM_S
+        measured_sigma: float = BOEHME_UNCERTAINTY_KM_S,
     ) -> VelocityPrediction:
         """
         Compare prediction with Böhme et al. measurement.
@@ -197,14 +193,14 @@ class CosmicQuantization:
             deviation=deviation,
             relative_error=relative_error,
             z_score=z_score,
-            p_value=p_value
+            p_value=p_value,
         )
 
     def monte_carlo_uncertainty(
         self,
         n_samples: int = 100_000,
         alpha_rel_uncertainty: float = ALPHA_UNCERTAINTY,
-        seed: int | None = 42
+        seed: int | None = 42,
     ) -> MonteCarloResult:
         """
         Propagate uncertainties via Monte Carlo sampling.
@@ -231,9 +227,7 @@ class CosmicQuantization:
 
         # Sample alpha from its uncertainty distribution
         alpha_samples = np.random.normal(
-            loc=self.alpha,
-            scale=self.alpha * alpha_rel_uncertainty,
-            size=n_samples
+            loc=self.alpha, scale=self.alpha * alpha_rel_uncertainty, size=n_samples
         )
 
         # Calculate v_RIG for each sample
@@ -250,7 +244,7 @@ class CosmicQuantization:
             std_velocity=std_v,
             percentile_5=p5,
             percentile_95=p95,
-            samples=v_samples
+            samples=v_samples,
         )
 
     def null_hypothesis_test(
@@ -258,7 +252,7 @@ class CosmicQuantization:
         n_random_trials: int = 10_000,
         alpha_range: tuple[float, float] = (0.001, 0.02),
         phi_range: tuple[float, float] = (1.3, 2.0),
-        seed: int | None = 42
+        seed: int | None = 42,
     ) -> dict[str, float]:
         """
         Test null hypothesis: random constants vs. α and Φ.
@@ -298,13 +292,15 @@ class CosmicQuantization:
         std_random_deviation = np.std(random_deviations, ddof=1)
 
         return {
-            'our_deviation_km_s': our_deviation,
-            'mean_random_deviation_km_s': mean_random_deviation,
-            'std_random_deviation_km_s': std_random_deviation,
-            'p_value_null': p_value_null,
-            'n_random_better': better_than_ours,
-            'n_trials': n_random_trials,
-            'improvement_factor': mean_random_deviation / our_deviation if our_deviation > 0 else np.inf
+            "our_deviation_km_s": our_deviation,
+            "mean_random_deviation_km_s": mean_random_deviation,
+            "std_random_deviation_km_s": std_random_deviation,
+            "p_value_null": p_value_null,
+            "n_random_better": better_than_ours,
+            "n_trials": n_random_trials,
+            "improvement_factor": (
+                mean_random_deviation / our_deviation if our_deviation > 0 else np.inf
+            ),
         }
 
     def significance_analysis(self) -> dict[str, float]:
@@ -327,23 +323,24 @@ class CosmicQuantization:
         likelihood = stats.norm.pdf(
             comparison.measured_velocity,
             loc=comparison.predicted_velocity,
-            scale=BOEHME_UNCERTAINTY_KM_S
+            scale=BOEHME_UNCERTAINTY_KM_S,
         )
 
         return {
-            'predicted_km_s': comparison.predicted_velocity,
-            'measured_km_s': comparison.measured_velocity,
-            'deviation_km_s': comparison.deviation,
-            'relative_error': comparison.relative_error,
-            'sigma_discrepancy': sigma_agreement,
-            'p_value': comparison.p_value,
-            'bayesian_likelihood': likelihood
+            "predicted_km_s": comparison.predicted_velocity,
+            "measured_km_s": comparison.measured_velocity,
+            "deviation_km_s": comparison.deviation,
+            "relative_error": comparison.relative_error,
+            "sigma_discrepancy": sigma_agreement,
+            "p_value": comparison.p_value,
+            "bayesian_likelihood": likelihood,
         }
 
 
 # ============================================================================
 # CONVENIENCE FUNCTIONS
 # ============================================================================
+
 
 def quick_prediction() -> float:
     """
@@ -402,20 +399,20 @@ def full_analysis(verbose: bool = True) -> dict:
         print()
         print("SIGNIFICANCE METRICS:")
         for key, value in significance.items():
-            if 'km_s' in key:
+            if "km_s" in key:
                 print(f"  {key:25s}: {value:8.2f} km/s")
-            elif 'likelihood' in key:
+            elif "likelihood" in key:
                 print(f"  {key:25s}: {value:.4e}")
             else:
                 print(f"  {key:25s}: {value:8.4f}")
         print("=" * 70)
 
     return {
-        'prediction': v_pred,
-        'comparison': comparison,
-        'monte_carlo': mc_result,
-        'null_hypothesis': null_test,
-        'significance': significance
+        "prediction": v_pred,
+        "comparison": comparison,
+        "monte_carlo": mc_result,
+        "null_hypothesis": null_test,
+        "significance": significance,
     }
 
 

@@ -155,14 +155,32 @@ def parse_result(result_path: Path) -> CohortRecord:
         if isinstance(path_value, str):
             dataset_path = path_value
 
-    theta_info = payload.get("theta_estimate") if isinstance(payload.get("theta_estimate"), Mapping) else {}
-    beta_info = payload.get("beta_estimate") if isinstance(payload.get("beta_estimate"), Mapping) else {}
-    logistic_info = payload.get("logistic_model") if isinstance(payload.get("logistic_model"), Mapping) else {}
-    logistic_fit = payload.get("logistic_fit") if isinstance(payload.get("logistic_fit"), Mapping) else {}
-    meta_threshold = payload.get("meta_threshold") if isinstance(payload.get("meta_threshold"), Mapping) else {}
-    null_models = payload.get("null_models") if isinstance(payload.get("null_models"), Mapping) else {}
-    falsification = payload.get("falsification") if isinstance(payload.get("falsification"), Mapping) else {}
-    comparisons = falsification.get("comparisons") if isinstance(falsification.get("comparisons"), Mapping) else {}
+    theta_info = (
+        payload.get("theta_estimate") if isinstance(payload.get("theta_estimate"), Mapping) else {}
+    )
+    beta_info = (
+        payload.get("beta_estimate") if isinstance(payload.get("beta_estimate"), Mapping) else {}
+    )
+    logistic_info = (
+        payload.get("logistic_model") if isinstance(payload.get("logistic_model"), Mapping) else {}
+    )
+    logistic_fit = (
+        payload.get("logistic_fit") if isinstance(payload.get("logistic_fit"), Mapping) else {}
+    )
+    meta_threshold = (
+        payload.get("meta_threshold") if isinstance(payload.get("meta_threshold"), Mapping) else {}
+    )
+    null_models = (
+        payload.get("null_models") if isinstance(payload.get("null_models"), Mapping) else {}
+    )
+    falsification = (
+        payload.get("falsification") if isinstance(payload.get("falsification"), Mapping) else {}
+    )
+    comparisons = (
+        falsification.get("comparisons")
+        if isinstance(falsification.get("comparisons"), Mapping)
+        else {}
+    )
     membrane_info = payload.get("membrane") if isinstance(payload.get("membrane"), Mapping) else {}
     impedance_candidates: list[Mapping[str, Any]] = []
     raw_impedance = payload.get("impedance")
@@ -176,14 +194,20 @@ def parse_result(result_path: Path) -> CohortRecord:
         impedance_info = candidate
         if "relief_peak" in candidate or "impedance_area" in candidate:
             break
-    crossing_info = payload.get("threshold_crossing") if isinstance(payload.get("threshold_crossing"), Mapping) else {}
+    crossing_info = (
+        payload.get("threshold_crossing")
+        if isinstance(payload.get("threshold_crossing"), Mapping)
+        else {}
+    )
     boundary_info = payload.get("boundary") if isinstance(payload.get("boundary"), Mapping) else {}
     meta_gate_payload = payload.get("meta_gate")
     if isinstance(meta_gate_payload, Mapping):
         meta_gate_info: Mapping[str, Any] = meta_gate_payload
     elif isinstance(logistic_fit, Mapping) and isinstance(logistic_fit.get("meta_gate"), Mapping):
         meta_gate_info = logistic_fit["meta_gate"]  # type: ignore[assignment]
-    elif isinstance(meta_threshold, Mapping) and isinstance(meta_threshold.get("meta_gate"), Mapping):
+    elif isinstance(meta_threshold, Mapping) and isinstance(
+        meta_threshold.get("meta_gate"), Mapping
+    ):
         meta_gate_info = meta_threshold["meta_gate"]  # type: ignore[assignment]
     else:
         meta_gate_info = {}
@@ -237,20 +261,44 @@ def parse_result(result_path: Path) -> CohortRecord:
         count = sum(1 for value in values if value >= 0.5)
         return count / len(values)
 
-    sigma_fraction_above_half = _safe_float(logistic_fit.get("fraction_above_half")) if isinstance(logistic_fit, Mapping) else None
+    sigma_fraction_above_half = (
+        _safe_float(logistic_fit.get("fraction_above_half"))
+        if isinstance(logistic_fit, Mapping)
+        else None
+    )
     if sigma_fraction_above_half is None:
-        sigma_fraction_above_half = _fraction_above_half(logistic_fit.get("sigma_hat")) if isinstance(logistic_fit, Mapping) else None
+        sigma_fraction_above_half = (
+            _fraction_above_half(logistic_fit.get("sigma_hat"))
+            if isinstance(logistic_fit, Mapping)
+            else None
+        )
 
-    theta_drift_total = _safe_float(logistic_fit.get("theta_drift_total")) if isinstance(logistic_fit, Mapping) else None
-    beta_drift_total = _safe_float(logistic_fit.get("beta_drift_total")) if isinstance(logistic_fit, Mapping) else None
+    theta_drift_total = (
+        _safe_float(logistic_fit.get("theta_drift_total"))
+        if isinstance(logistic_fit, Mapping)
+        else None
+    )
+    beta_drift_total = (
+        _safe_float(logistic_fit.get("beta_drift_total"))
+        if isinstance(logistic_fit, Mapping)
+        else None
+    )
     if theta_drift_total is None and isinstance(meta_threshold, Mapping):
         theta_drift_total = _safe_float(meta_threshold.get("theta_drift_total"))
     if beta_drift_total is None and isinstance(meta_threshold, Mapping):
         beta_drift_total = _safe_float(meta_threshold.get("beta_drift_total"))
 
-    meta_gate_fraction_above_half = _safe_float(meta_gate_info.get("fraction_above_half")) if isinstance(meta_gate_info, Mapping) else None
+    meta_gate_fraction_above_half = (
+        _safe_float(meta_gate_info.get("fraction_above_half"))
+        if isinstance(meta_gate_info, Mapping)
+        else None
+    )
     if meta_gate_fraction_above_half is None:
-        meta_gate_fraction_above_half = _fraction_above_half(meta_gate_info.get("series")) if isinstance(meta_gate_info, Mapping) else None
+        meta_gate_fraction_above_half = (
+            _fraction_above_half(meta_gate_info.get("series"))
+            if isinstance(meta_gate_info, Mapping)
+            else None
+        )
 
     meta_gate_mean = None
     if isinstance(meta_gate_info, Mapping):
@@ -289,51 +337,177 @@ def parse_result(result_path: Path) -> CohortRecord:
         delta_aic=best_delta_aic,
         delta_r2=best_delta_r2,
         logistic_minus_best_r2=logistic_minus_best_r2,
-        zeta_mean=_safe_float(membrane_info.get("zeta_mean")) if isinstance(membrane_info, Mapping) else None,
+        zeta_mean=(
+            _safe_float(membrane_info.get("zeta_mean"))
+            if isinstance(membrane_info, Mapping)
+            else None
+        ),
         threshold_crossed=threshold_crossed,
-        crossing_time=_safe_float(crossing_info.get("crossing_time")) if isinstance(crossing_info, Mapping) else None,
-        crossing_R=_safe_float(crossing_info.get("crossing_R")) if isinstance(crossing_info, Mapping) else None,
-        crossing_sigma=_safe_float(crossing_info.get("crossing_sigma")) if isinstance(crossing_info, Mapping) else None,
-        overshoot=_safe_float(crossing_info.get("overshoot")) if isinstance(crossing_info, Mapping) else None,
-        zeta_at_crossing=_safe_float(crossing_info.get("zeta_at_crossing")) if isinstance(crossing_info, Mapping) else None,
+        crossing_time=(
+            _safe_float(crossing_info.get("crossing_time"))
+            if isinstance(crossing_info, Mapping)
+            else None
+        ),
+        crossing_R=(
+            _safe_float(crossing_info.get("crossing_R"))
+            if isinstance(crossing_info, Mapping)
+            else None
+        ),
+        crossing_sigma=(
+            _safe_float(crossing_info.get("crossing_sigma"))
+            if isinstance(crossing_info, Mapping)
+            else None
+        ),
+        overshoot=(
+            _safe_float(crossing_info.get("overshoot"))
+            if isinstance(crossing_info, Mapping)
+            else None
+        ),
+        zeta_at_crossing=(
+            _safe_float(crossing_info.get("zeta_at_crossing"))
+            if isinstance(crossing_info, Mapping)
+            else None
+        ),
         sigma_fraction_above_half=sigma_fraction_above_half,
         meta_gate_fraction_above_half=meta_gate_fraction_above_half,
         meta_gate_mean=meta_gate_mean,
         theta_drift_total=theta_drift_total,
         beta_drift_total=beta_drift_total,
-        gate_area=_safe_float(impedance_info.get("gate_area")) if isinstance(impedance_info, Mapping) else None,
-        impedance_area=_safe_float(impedance_info.get("impedance_area")) if isinstance(impedance_info, Mapping) else None,
-        relief_area=_safe_float(impedance_info.get("relief_area")) if isinstance(impedance_info, Mapping) else None,
-        recovery_area=_safe_float(impedance_info.get("recovery_area")) if isinstance(impedance_info, Mapping) else None,
-        hysteresis_area=_safe_float(impedance_info.get("hysteresis_area")) if isinstance(impedance_info, Mapping) else None,
-        relief_recovery_balance=_safe_float(impedance_info.get("relief_recovery_balance"))
-        if isinstance(impedance_info, Mapping)
-        else None,
-        relief_recovery_ratio=_safe_float(impedance_info.get("relief_recovery_ratio"))
-        if isinstance(impedance_info, Mapping)
-        else None,
-        relief_recovery_symmetry=_safe_float(impedance_info.get("relief_recovery_symmetry"))
-        if isinstance(impedance_info, Mapping)
-        else None,
-        hysteresis_bias=_safe_float(impedance_info.get("hysteresis_bias")) if isinstance(impedance_info, Mapping) else None,
-        relief_peak=_safe_float(impedance_info.get("relief_peak")) if isinstance(impedance_info, Mapping) else None,
-        recovery_peak=_safe_float(impedance_info.get("recovery_peak")) if isinstance(impedance_info, Mapping) else None,
-        hysteresis_peak=_safe_float(impedance_info.get("hysteresis_peak")) if isinstance(impedance_info, Mapping) else None,
-        relief_mean=_safe_float(impedance_info.get("relief_mean")) if isinstance(impedance_info, Mapping) else None,
-        recovery_mean=_safe_float(impedance_info.get("recovery_mean")) if isinstance(impedance_info, Mapping) else None,
-        hysteresis_mean=_safe_float(impedance_info.get("hysteresis_mean")) if isinstance(impedance_info, Mapping) else None,
-        relief_min=_safe_float(impedance_info.get("relief_min")) if isinstance(impedance_info, Mapping) else None,
-        recovery_min=_safe_float(impedance_info.get("recovery_min")) if isinstance(impedance_info, Mapping) else None,
-        hysteresis_min=_safe_float(impedance_info.get("hysteresis_min")) if isinstance(impedance_info, Mapping) else None,
-        final_impedance=_safe_float(impedance_info.get("final_impedance")) if isinstance(impedance_info, Mapping) else None,
-        baseline_impedance=_safe_float(impedance_info.get("baseline_impedance")) if isinstance(impedance_info, Mapping) else None,
-        boundary_flux_mean=_safe_float(boundary_info.get("boundary_flux_mean")) if isinstance(boundary_info, Mapping) else None,
-        boundary_flux_std=_safe_float(boundary_info.get("boundary_flux_std")) if isinstance(boundary_info, Mapping) else None,
-        boundary_flux_peak=_safe_float(boundary_info.get("boundary_flux_peak")) if isinstance(boundary_info, Mapping) else None,
-        boundary_flux_valley=_safe_float(boundary_info.get("boundary_flux_valley")) if isinstance(boundary_info, Mapping) else None,
-        boundary_gate_mean=_safe_float(boundary_info.get("boundary_gate_mean")) if isinstance(boundary_info, Mapping) else None,
-        boundary_gate_peak=_safe_float(boundary_info.get("boundary_gate_peak")) if isinstance(boundary_info, Mapping) else None,
-        boundary_gate_valley=_safe_float(boundary_info.get("boundary_gate_valley")) if isinstance(boundary_info, Mapping) else None,
+        gate_area=(
+            _safe_float(impedance_info.get("gate_area"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        impedance_area=(
+            _safe_float(impedance_info.get("impedance_area"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        relief_area=(
+            _safe_float(impedance_info.get("relief_area"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        recovery_area=(
+            _safe_float(impedance_info.get("recovery_area"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        hysteresis_area=(
+            _safe_float(impedance_info.get("hysteresis_area"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        relief_recovery_balance=(
+            _safe_float(impedance_info.get("relief_recovery_balance"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        relief_recovery_ratio=(
+            _safe_float(impedance_info.get("relief_recovery_ratio"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        relief_recovery_symmetry=(
+            _safe_float(impedance_info.get("relief_recovery_symmetry"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        hysteresis_bias=(
+            _safe_float(impedance_info.get("hysteresis_bias"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        relief_peak=(
+            _safe_float(impedance_info.get("relief_peak"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        recovery_peak=(
+            _safe_float(impedance_info.get("recovery_peak"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        hysteresis_peak=(
+            _safe_float(impedance_info.get("hysteresis_peak"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        relief_mean=(
+            _safe_float(impedance_info.get("relief_mean"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        recovery_mean=(
+            _safe_float(impedance_info.get("recovery_mean"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        hysteresis_mean=(
+            _safe_float(impedance_info.get("hysteresis_mean"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        relief_min=(
+            _safe_float(impedance_info.get("relief_min"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        recovery_min=(
+            _safe_float(impedance_info.get("recovery_min"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        hysteresis_min=(
+            _safe_float(impedance_info.get("hysteresis_min"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        final_impedance=(
+            _safe_float(impedance_info.get("final_impedance"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        baseline_impedance=(
+            _safe_float(impedance_info.get("baseline_impedance"))
+            if isinstance(impedance_info, Mapping)
+            else None
+        ),
+        boundary_flux_mean=(
+            _safe_float(boundary_info.get("boundary_flux_mean"))
+            if isinstance(boundary_info, Mapping)
+            else None
+        ),
+        boundary_flux_std=(
+            _safe_float(boundary_info.get("boundary_flux_std"))
+            if isinstance(boundary_info, Mapping)
+            else None
+        ),
+        boundary_flux_peak=(
+            _safe_float(boundary_info.get("boundary_flux_peak"))
+            if isinstance(boundary_info, Mapping)
+            else None
+        ),
+        boundary_flux_valley=(
+            _safe_float(boundary_info.get("boundary_flux_valley"))
+            if isinstance(boundary_info, Mapping)
+            else None
+        ),
+        boundary_gate_mean=(
+            _safe_float(boundary_info.get("boundary_gate_mean"))
+            if isinstance(boundary_info, Mapping)
+            else None
+        ),
+        boundary_gate_peak=(
+            _safe_float(boundary_info.get("boundary_gate_peak"))
+            if isinstance(boundary_info, Mapping)
+            else None
+        ),
+        boundary_gate_valley=(
+            _safe_float(boundary_info.get("boundary_gate_valley"))
+            if isinstance(boundary_info, Mapping)
+            else None
+        ),
     )
 
 
@@ -361,8 +535,12 @@ def summarise_records(records: Sequence[CohortRecord]) -> dict[str, Any]:
     delta_aic_values = _flatten_sequences(record.delta_aic for record in records)
     delta_r2_values = _flatten_sequences(record.delta_r2 for record in records)
     zeta_mean_values = _flatten_sequences(record.zeta_mean for record in records)
-    sigma_fraction_values = _flatten_sequences(record.sigma_fraction_above_half for record in records)
-    meta_gate_fraction_values = _flatten_sequences(record.meta_gate_fraction_above_half for record in records)
+    sigma_fraction_values = _flatten_sequences(
+        record.sigma_fraction_above_half for record in records
+    )
+    meta_gate_fraction_values = _flatten_sequences(
+        record.meta_gate_fraction_above_half for record in records
+    )
     meta_gate_mean_values = _flatten_sequences(record.meta_gate_mean for record in records)
     theta_drift_totals = _flatten_sequences(record.theta_drift_total for record in records)
     beta_drift_totals = _flatten_sequences(record.beta_drift_total for record in records)
@@ -395,10 +573,14 @@ def summarise_records(records: Sequence[CohortRecord]) -> dict[str, Any]:
     boundary_flux_mean_values = _flatten_sequences(record.boundary_flux_mean for record in records)
     boundary_flux_std_values = _flatten_sequences(record.boundary_flux_std for record in records)
     boundary_flux_peak_values = _flatten_sequences(record.boundary_flux_peak for record in records)
-    boundary_flux_valley_values = _flatten_sequences(record.boundary_flux_valley for record in records)
+    boundary_flux_valley_values = _flatten_sequences(
+        record.boundary_flux_valley for record in records
+    )
     boundary_gate_mean_values = _flatten_sequences(record.boundary_gate_mean for record in records)
     boundary_gate_peak_values = _flatten_sequences(record.boundary_gate_peak for record in records)
-    boundary_gate_valley_values = _flatten_sequences(record.boundary_gate_valley for record in records)
+    boundary_gate_valley_values = _flatten_sequences(
+        record.boundary_gate_valley for record in records
+    )
 
     def stats(series: list[float]) -> dict[str, float] | None:
         if not series:
@@ -451,29 +633,19 @@ def summarise_records(records: Sequence[CohortRecord]) -> dict[str, Any]:
             "meta_gate_fraction_above_half": stats(
                 _flatten_sequences(r.meta_gate_fraction_above_half for r in domain_records)
             ),
-            "meta_gate_mean": stats(
-                _flatten_sequences(r.meta_gate_mean for r in domain_records)
-            ),
+            "meta_gate_mean": stats(_flatten_sequences(r.meta_gate_mean for r in domain_records)),
             "theta_drift_total": stats(
                 _flatten_sequences(r.theta_drift_total for r in domain_records)
             ),
             "beta_drift_total": stats(
                 _flatten_sequences(r.beta_drift_total for r in domain_records)
             ),
-            "beta_ci_width": stats(
-                _flatten_sequences(r.beta_ci_width for r in domain_records)
-            ),
+            "beta_ci_width": stats(_flatten_sequences(r.beta_ci_width for r in domain_records)),
             "gate_area": stats(_flatten_sequences(r.gate_area for r in domain_records)),
-            "impedance_area": stats(
-                _flatten_sequences(r.impedance_area for r in domain_records)
-            ),
+            "impedance_area": stats(_flatten_sequences(r.impedance_area for r in domain_records)),
             "relief_area": stats(_flatten_sequences(r.relief_area for r in domain_records)),
-            "recovery_area": stats(
-                _flatten_sequences(r.recovery_area for r in domain_records)
-            ),
-            "hysteresis_area": stats(
-                _flatten_sequences(r.hysteresis_area for r in domain_records)
-            ),
+            "recovery_area": stats(_flatten_sequences(r.recovery_area for r in domain_records)),
+            "hysteresis_area": stats(_flatten_sequences(r.hysteresis_area for r in domain_records)),
             "relief_recovery_balance": stats(
                 _flatten_sequences(r.relief_recovery_balance for r in domain_records)
             ),
@@ -483,33 +655,17 @@ def summarise_records(records: Sequence[CohortRecord]) -> dict[str, Any]:
             "relief_recovery_symmetry": stats(
                 _flatten_sequences(r.relief_recovery_symmetry for r in domain_records)
             ),
-            "hysteresis_bias": stats(
-                _flatten_sequences(r.hysteresis_bias for r in domain_records)
-            ),
+            "hysteresis_bias": stats(_flatten_sequences(r.hysteresis_bias for r in domain_records)),
             "relief_peak": stats(_flatten_sequences(r.relief_peak for r in domain_records)),
-            "recovery_peak": stats(
-                _flatten_sequences(r.recovery_peak for r in domain_records)
-            ),
-            "hysteresis_peak": stats(
-                _flatten_sequences(r.hysteresis_peak for r in domain_records)
-            ),
+            "recovery_peak": stats(_flatten_sequences(r.recovery_peak for r in domain_records)),
+            "hysteresis_peak": stats(_flatten_sequences(r.hysteresis_peak for r in domain_records)),
             "relief_mean": stats(_flatten_sequences(r.relief_mean for r in domain_records)),
-            "recovery_mean": stats(
-                _flatten_sequences(r.recovery_mean for r in domain_records)
-            ),
-            "hysteresis_mean": stats(
-                _flatten_sequences(r.hysteresis_mean for r in domain_records)
-            ),
+            "recovery_mean": stats(_flatten_sequences(r.recovery_mean for r in domain_records)),
+            "hysteresis_mean": stats(_flatten_sequences(r.hysteresis_mean for r in domain_records)),
             "relief_min": stats(_flatten_sequences(r.relief_min for r in domain_records)),
-            "recovery_min": stats(
-                _flatten_sequences(r.recovery_min for r in domain_records)
-            ),
-            "hysteresis_min": stats(
-                _flatten_sequences(r.hysteresis_min for r in domain_records)
-            ),
-            "final_impedance": stats(
-                _flatten_sequences(r.final_impedance for r in domain_records)
-            ),
+            "recovery_min": stats(_flatten_sequences(r.recovery_min for r in domain_records)),
+            "hysteresis_min": stats(_flatten_sequences(r.hysteresis_min for r in domain_records)),
+            "final_impedance": stats(_flatten_sequences(r.final_impedance for r in domain_records)),
             "baseline_impedance": stats(
                 _flatten_sequences(r.baseline_impedance for r in domain_records)
             ),
@@ -631,8 +787,9 @@ def render_console_report(records: Sequence[CohortRecord]) -> None:
         best_null = record.best_null_model or "(none)"
         if record.threshold_crossed is True:
             crossing_note = (
-                "crossed at t≈"
-                f"{record.crossing_time:.2f}" if record.crossing_time is not None else "crossed"
+                "crossed at t≈" f"{record.crossing_time:.2f}"
+                if record.crossing_time is not None
+                else "crossed"
             )
         elif record.threshold_crossed is False:
             crossing_note = "no crossing"
@@ -702,7 +859,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    source_paths = [path if path.is_absolute() else (Path.cwd() / path).resolve() for path in args.sources]
+    source_paths = [
+        path if path.is_absolute() else (Path.cwd() / path).resolve() for path in args.sources
+    ]
     result_files = iter_result_files(source_paths)
 
     output_path = args.output.resolve() if args.output else None

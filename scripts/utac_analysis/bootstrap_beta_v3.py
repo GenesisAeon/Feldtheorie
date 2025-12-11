@@ -34,11 +34,8 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Dict, List, Tuple
 
 import numpy as np
-import pandas as pd
-from scipy import stats
 from scipy.optimize import curve_fit
 
 # Set random seed for reproducibility
@@ -48,6 +45,7 @@ np.random.seed(42)
 # ═══════════════════════════════════════════════════════════════════
 # UTAC Logistic Function
 # ═══════════════════════════════════════════════════════════════════
+
 
 def utac_logistic(R: np.ndarray, beta: float, Theta: float) -> np.ndarray:
     """UTAC activation function: σ(β(R-Θ))
@@ -63,8 +61,7 @@ def utac_logistic(R: np.ndarray, beta: float, Theta: float) -> np.ndarray:
     return 1.0 / (1.0 + np.exp(-beta * (R - Theta)))
 
 
-def fit_utac_beta(R: np.ndarray, sigma: np.ndarray,
-                  Theta: float) -> Tuple[float, float]:
+def fit_utac_beta(R: np.ndarray, sigma: np.ndarray, Theta: float) -> tuple[float, float]:
     """Fit β parameter given R, σ data and fixed Θ
 
     Args:
@@ -82,17 +79,21 @@ def fit_utac_beta(R: np.ndarray, sigma: np.ndarray,
             return utac_logistic(R, beta, Theta)
 
         # Fit using curve_fit
-        popt, pcov = curve_fit(logistic_fit, R, sigma,
-                               p0=[5.0],  # Initial guess for β
-                               bounds=([0.5], [20.0]),  # β ∈ [0.5, 20]
-                               maxfev=10000)
+        popt, pcov = curve_fit(
+            logistic_fit,
+            R,
+            sigma,
+            p0=[5.0],  # Initial guess for β
+            bounds=([0.5], [20.0]),  # β ∈ [0.5, 20]
+            maxfev=10000,
+        )
 
         beta_fit = popt[0]
         beta_se = np.sqrt(np.diag(pcov))[0]
 
         return beta_fit, beta_se
 
-    except Exception as e:
+    except Exception:
         # If fit fails, return NaN
         return np.nan, np.nan
 
@@ -101,9 +102,10 @@ def fit_utac_beta(R: np.ndarray, sigma: np.ndarray,
 # Bootstrap Resampling
 # ═══════════════════════════════════════════════════════════════════
 
-def bootstrap_beta_single_system(R: np.ndarray, sigma: np.ndarray,
-                                   Theta: float,
-                                   n_bootstrap: int = 1000) -> Dict:
+
+def bootstrap_beta_single_system(
+    R: np.ndarray, sigma: np.ndarray, Theta: float, n_bootstrap: int = 1000
+) -> dict:
     """Bootstrap confidence intervals for single system's β
 
     Args:
@@ -142,16 +144,18 @@ def bootstrap_beta_single_system(R: np.ndarray, sigma: np.ndarray,
     cv = beta_std / beta_mean if beta_mean != 0 else np.nan
 
     return {
-        'beta_mean': float(beta_mean),
-        'beta_std': float(beta_std),
-        'beta_ci_lower': float(beta_ci_lower),
-        'beta_ci_upper': float(beta_ci_upper),
-        'beta_ci_width': float(beta_ci_upper - beta_ci_lower),
-        'beta_ci_width_relative': float((beta_ci_upper - beta_ci_lower) / beta_mean) if beta_mean != 0 else np.nan,
-        'coefficient_of_variation': float(cv),
-        'n_bootstrap': n_bootstrap,
-        'n_successful_fits': len(beta_bootstrap),
-        'convergence_rate': len(beta_bootstrap) / n_bootstrap
+        "beta_mean": float(beta_mean),
+        "beta_std": float(beta_std),
+        "beta_ci_lower": float(beta_ci_lower),
+        "beta_ci_upper": float(beta_ci_upper),
+        "beta_ci_width": float(beta_ci_upper - beta_ci_lower),
+        "beta_ci_width_relative": (
+            float((beta_ci_upper - beta_ci_lower) / beta_mean) if beta_mean != 0 else np.nan
+        ),
+        "coefficient_of_variation": float(cv),
+        "n_bootstrap": n_bootstrap,
+        "n_successful_fits": len(beta_bootstrap),
+        "convergence_rate": len(beta_bootstrap) / n_bootstrap,
     }
 
 
@@ -159,7 +163,8 @@ def bootstrap_beta_single_system(R: np.ndarray, sigma: np.ndarray,
 # V3 System Definitions
 # ═══════════════════════════════════════════════════════════════════
 
-def get_v3_system_data() -> Dict[str, Dict]:
+
+def get_v3_system_data() -> dict[str, dict]:
     """Get data for all 6 V3 systems
 
     Returns:
@@ -183,14 +188,14 @@ def get_v3_system_data() -> Dict[str, Dict]:
     # Theta = 1.5°C (ice sheet destabilization threshold)
     # Current: R ≈ 1.17°C
 
-    systems['wais'] = {
-        'name': 'West Antarctic Ice Sheet',
-        'R': np.array([0.5, 0.7, 0.9, 1.0, 1.1, 1.17, 1.2, 1.3]),
-        'sigma': np.array([0.02, 0.05, 0.15, 0.25, 0.45, 0.65, 0.75, 0.88]),
-        'Theta': 1.5,
-        'beta_expected': 13.5,
-        'domain': 'Climate',
-        'utac_type': 'Type-2 Thermodynamic'
+    systems["wais"] = {
+        "name": "West Antarctic Ice Sheet",
+        "R": np.array([0.5, 0.7, 0.9, 1.0, 1.1, 1.17, 1.2, 1.3]),
+        "sigma": np.array([0.02, 0.05, 0.15, 0.25, 0.45, 0.65, 0.75, 0.88]),
+        "Theta": 1.5,
+        "beta_expected": 13.5,
+        "domain": "Climate",
+        "utac_type": "Type-2 Thermodynamic",
     }
 
     # ───────────────────────────────────────────────────────────────
@@ -200,14 +205,14 @@ def get_v3_system_data() -> Dict[str, Dict]:
     # Theta = 0.46 Sv (bifurcation threshold)
     # Current: R ≈ 0.38 Sv
 
-    systems['amoc'] = {
-        'name': 'Atlantic Meridional Overturning Circulation',
-        'R': np.array([0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.38, 0.42]),
-        'sigma': np.array([0.01, 0.02, 0.05, 0.10, 0.20, 0.35, 0.48, 0.70]),
-        'Theta': 0.46,
-        'beta_expected': 10.2,
-        'domain': 'Climate',
-        'utac_type': 'Type-2 Thermodynamic (Bistable)'
+    systems["amoc"] = {
+        "name": "Atlantic Meridional Overturning Circulation",
+        "R": np.array([0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.38, 0.42]),
+        "sigma": np.array([0.01, 0.02, 0.05, 0.10, 0.20, 0.35, 0.48, 0.70]),
+        "Theta": 0.46,
+        "beta_expected": 10.2,
+        "domain": "Climate",
+        "utac_type": "Type-2 Thermodynamic (Bistable)",
     }
 
     # ───────────────────────────────────────────────────────────────
@@ -217,14 +222,14 @@ def get_v3_system_data() -> Dict[str, Dict]:
     # Theta = 1.0°C (bleaching threshold)
     # Current: R ≈ 1.4°C (POST-TIPPING)
 
-    systems['coral'] = {
-        'name': 'Coral Reef Bleaching',
-        'R': np.array([0.3, 0.5, 0.7, 0.9, 1.0, 1.2, 1.4, 1.6]),
-        'sigma': np.array([0.01, 0.03, 0.08, 0.22, 0.50, 0.82, 0.95, 0.98]),
-        'Theta': 1.0,
-        'beta_expected': 7.5,
-        'domain': 'Ecology',
-        'utac_type': 'Type-2/3 Hybrid'
+    systems["coral"] = {
+        "name": "Coral Reef Bleaching",
+        "R": np.array([0.3, 0.5, 0.7, 0.9, 1.0, 1.2, 1.4, 1.6]),
+        "sigma": np.array([0.01, 0.03, 0.08, 0.22, 0.50, 0.82, 0.95, 0.98]),
+        "Theta": 1.0,
+        "beta_expected": 7.5,
+        "domain": "Ecology",
+        "utac_type": "Type-2/3 Hybrid",
     }
 
     # ───────────────────────────────────────────────────────────────
@@ -234,14 +239,14 @@ def get_v3_system_data() -> Dict[str, Dict]:
     # Theta = 0.95 (herd immunity threshold)
     # Current: R ≈ 0.90 (below threshold → outbreak)
 
-    systems['measles'] = {
-        'name': 'Measles Herd Immunity (Canada)',
-        'R': np.array([0.70, 0.75, 0.80, 0.85, 0.90, 0.92, 0.94, 0.96]),
-        'sigma': np.array([0.95, 0.88, 0.72, 0.50, 0.28, 0.18, 0.08, 0.02]),
-        'Theta': 0.95,
-        'beta_expected': 5.8,
-        'domain': 'Health',
-        'utac_type': 'Type-4 Informational'
+    systems["measles"] = {
+        "name": "Measles Herd Immunity (Canada)",
+        "R": np.array([0.70, 0.75, 0.80, 0.85, 0.90, 0.92, 0.94, 0.96]),
+        "sigma": np.array([0.95, 0.88, 0.72, 0.50, 0.28, 0.18, 0.08, 0.02]),
+        "Theta": 0.95,
+        "beta_expected": 5.8,
+        "domain": "Health",
+        "utac_type": "Type-4 Informational",
     }
 
     # ───────────────────────────────────────────────────────────────
@@ -251,14 +256,14 @@ def get_v3_system_data() -> Dict[str, Dict]:
     # Theta = 0.42 (cascade threshold)
     # Current: R ≈ 0.55 (POST-EVENT, studied retrospectively)
 
-    systems['finance'] = {
-        'name': 'Financial Contagion 2008',
-        'R': np.array([0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55]),
-        'sigma': np.array([0.02, 0.05, 0.10, 0.22, 0.48, 0.75, 0.90, 0.96]),
-        'Theta': 0.42,
-        'beta_expected': 4.9,
-        'domain': 'Economics',
-        'utac_type': 'Type-4 Network'
+    systems["finance"] = {
+        "name": "Financial Contagion 2008",
+        "R": np.array([0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55]),
+        "sigma": np.array([0.02, 0.05, 0.10, 0.22, 0.48, 0.75, 0.90, 0.96]),
+        "Theta": 0.42,
+        "beta_expected": 4.9,
+        "domain": "Economics",
+        "utac_type": "Type-4 Network",
     }
 
     # ───────────────────────────────────────────────────────────────
@@ -268,14 +273,14 @@ def get_v3_system_data() -> Dict[str, Dict]:
     # Theta = 0.35 (tumor control threshold)
     # Current: Variable (individual-level)
 
-    systems['cancer'] = {
-        'name': 'Cancer-Immune Threshold',
-        'R': np.array([0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45]),
-        'sigma': np.array([0.95, 0.88, 0.75, 0.58, 0.42, 0.25, 0.12, 0.05]),
-        'Theta': 0.35,
-        'beta_expected': 3.5,
-        'domain': 'Biology',
-        'utac_type': 'Type-3 Electrochemical'
+    systems["cancer"] = {
+        "name": "Cancer-Immune Threshold",
+        "R": np.array([0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45]),
+        "sigma": np.array([0.95, 0.88, 0.75, 0.58, 0.42, 0.25, 0.12, 0.05]),
+        "Theta": 0.35,
+        "beta_expected": 3.5,
+        "domain": "Biology",
+        "utac_type": "Type-3 Electrochemical",
     }
 
     return systems
@@ -285,8 +290,8 @@ def get_v3_system_data() -> Dict[str, Dict]:
 # Main Bootstrap Pipeline
 # ═══════════════════════════════════════════════════════════════════
 
-def run_bootstrap_v3(n_bootstrap: int = 1000,
-                     output_file: Path = None) -> Dict:
+
+def run_bootstrap_v3(n_bootstrap: int = 1000, output_file: Path = None) -> dict:
     """Run bootstrap analysis for all 6 V3 systems
 
     Args:
@@ -297,9 +302,9 @@ def run_bootstrap_v3(n_bootstrap: int = 1000,
         dict with bootstrap results for all systems
     """
 
-    print(f"╔══════════════════════════════════════════════════════════╗")
+    print("╔══════════════════════════════════════════════════════════╗")
     print(f"║  UTAC V3 Bootstrap Confidence Intervals (n={n_bootstrap})  ║")
-    print(f"╚══════════════════════════════════════════════════════════╝\n")
+    print("╚══════════════════════════════════════════════════════════╝\n")
 
     systems = get_v3_system_data()
     results = {}
@@ -312,87 +317,99 @@ def run_bootstrap_v3(n_bootstrap: int = 1000,
 
         # Run bootstrap
         bootstrap_stats = bootstrap_beta_single_system(
-            R=system_data['R'],
-            sigma=system_data['sigma'],
-            Theta=system_data['Theta'],
-            n_bootstrap=n_bootstrap
+            R=system_data["R"],
+            sigma=system_data["sigma"],
+            Theta=system_data["Theta"],
+            n_bootstrap=n_bootstrap,
         )
 
         # Add metadata
-        bootstrap_stats['system_id'] = system_id
-        bootstrap_stats['system_name'] = system_data['name']
-        bootstrap_stats['beta_expected'] = system_data['beta_expected']
-        bootstrap_stats['Theta'] = system_data['Theta']
-        bootstrap_stats['domain'] = system_data['domain']
-        bootstrap_stats['utac_type'] = system_data['utac_type']
+        bootstrap_stats["system_id"] = system_id
+        bootstrap_stats["system_name"] = system_data["name"]
+        bootstrap_stats["beta_expected"] = system_data["beta_expected"]
+        bootstrap_stats["Theta"] = system_data["Theta"]
+        bootstrap_stats["domain"] = system_data["domain"]
+        bootstrap_stats["utac_type"] = system_data["utac_type"]
 
         # Calculate how close fitted β is to expected β
-        beta_diff = abs(bootstrap_stats['beta_mean'] - system_data['beta_expected'])
-        beta_diff_pct = 100 * beta_diff / system_data['beta_expected']
+        beta_diff = abs(bootstrap_stats["beta_mean"] - system_data["beta_expected"])
+        beta_diff_pct = 100 * beta_diff / system_data["beta_expected"]
 
-        bootstrap_stats['beta_diff_from_expected'] = float(beta_diff)
-        bootstrap_stats['beta_diff_pct'] = float(beta_diff_pct)
+        bootstrap_stats["beta_diff_from_expected"] = float(beta_diff)
+        bootstrap_stats["beta_diff_pct"] = float(beta_diff_pct)
 
         # Check if expected β is within 95% CI
-        in_ci = (system_data['beta_expected'] >= bootstrap_stats['beta_ci_lower'] and
-                 system_data['beta_expected'] <= bootstrap_stats['beta_ci_upper'])
-        bootstrap_stats['expected_within_ci'] = in_ci
+        in_ci = (
+            system_data["beta_expected"] >= bootstrap_stats["beta_ci_lower"]
+            and system_data["beta_expected"] <= bootstrap_stats["beta_ci_upper"]
+        )
+        bootstrap_stats["expected_within_ci"] = in_ci
 
         results[system_id] = bootstrap_stats
 
         # Print results
         print(f"  ✓ β_mean: {bootstrap_stats['beta_mean']:.2f}")
-        print(f"  ✓ β_95%CI: [{bootstrap_stats['beta_ci_lower']:.2f}, {bootstrap_stats['beta_ci_upper']:.2f}]")
-        print(f"  ✓ CI width: {bootstrap_stats['beta_ci_width']:.2f} ({bootstrap_stats['beta_ci_width_relative']*100:.1f}% relative)")
+        print(
+            f"  ✓ β_95%CI: [{bootstrap_stats['beta_ci_lower']:.2f}, {bootstrap_stats['beta_ci_upper']:.2f}]"
+        )
+        print(
+            f"  ✓ CI width: {bootstrap_stats['beta_ci_width']:.2f} ({bootstrap_stats['beta_ci_width_relative']*100:.1f}% relative)"
+        )
         print(f"  ✓ Convergence: {bootstrap_stats['convergence_rate']*100:.1f}%")
         print(f"  ✓ Diff from expected: {beta_diff:.2f} ({beta_diff_pct:.1f}%)")
         print(f"  ✓ Expected in CI: {'YES ✅' if in_ci else 'NO ❌'}")
         print()
 
     # Global summary
-    all_betas = [r['beta_mean'] for r in results.values()]
-    all_cis_lower = [r['beta_ci_lower'] for r in results.values()]
-    all_cis_upper = [r['beta_ci_upper'] for r in results.values()]
+    all_betas = [r["beta_mean"] for r in results.values()]
+    all_cis_lower = [r["beta_ci_lower"] for r in results.values()]
+    all_cis_upper = [r["beta_ci_upper"] for r in results.values()]
 
     global_summary = {
-        'n_systems': len(results),
-        'n_bootstrap': n_bootstrap,
-        'beta_range': [min(all_betas), max(all_betas)],
-        'beta_mean_across_systems': float(np.mean(all_betas)),
-        'beta_std_across_systems': float(np.std(all_betas)),
-        'all_expected_within_ci': all([r['expected_within_ci'] for r in results.values()]),
-        'convergence_rate_min': min([r['convergence_rate'] for r in results.values()]),
-        'convergence_rate_mean': float(np.mean([r['convergence_rate'] for r in results.values()]))
+        "n_systems": len(results),
+        "n_bootstrap": n_bootstrap,
+        "beta_range": [min(all_betas), max(all_betas)],
+        "beta_mean_across_systems": float(np.mean(all_betas)),
+        "beta_std_across_systems": float(np.std(all_betas)),
+        "all_expected_within_ci": all([r["expected_within_ci"] for r in results.values()]),
+        "convergence_rate_min": min([r["convergence_rate"] for r in results.values()]),
+        "convergence_rate_mean": float(np.mean([r["convergence_rate"] for r in results.values()])),
     }
 
-    print(f"╔══════════════════════════════════════════════════════════╗")
-    print(f"║  GLOBAL SUMMARY                                          ║")
-    print(f"╚══════════════════════════════════════════════════════════╝")
+    print("╔══════════════════════════════════════════════════════════╗")
+    print("║  GLOBAL SUMMARY                                          ║")
+    print("╚══════════════════════════════════════════════════════════╝")
     print(f"  Systems analyzed: {global_summary['n_systems']}")
-    print(f"  β-range: {global_summary['beta_range'][0]:.2f} → {global_summary['beta_range'][1]:.2f}")
-    print(f"  Mean β across systems: {global_summary['beta_mean_across_systems']:.2f} ± {global_summary['beta_std_across_systems']:.2f}")
-    print(f"  All expected β within CIs: {'YES ✅' if global_summary['all_expected_within_ci'] else 'NO ❌'}")
+    print(
+        f"  β-range: {global_summary['beta_range'][0]:.2f} → {global_summary['beta_range'][1]:.2f}"
+    )
+    print(
+        f"  Mean β across systems: {global_summary['beta_mean_across_systems']:.2f} ± {global_summary['beta_std_across_systems']:.2f}"
+    )
+    print(
+        f"  All expected β within CIs: {'YES ✅' if global_summary['all_expected_within_ci'] else 'NO ❌'}"
+    )
     print(f"  Bootstrap convergence: {global_summary['convergence_rate_mean']*100:.1f}%")
     print()
 
     # Compile final output
     output = {
-        'meta': {
-            'version': '1.0.0',
-            'date': '2025-11-15',
-            'n_bootstrap': n_bootstrap,
-            'method': 'Bootstrap resampling with UTAC logistic fit',
-            'author': 'Claude Code (Anthropic)',
-            'note': 'MOCK DATA - Replace with real GRACE, RAPID, OISST, WHO, etc.'
+        "meta": {
+            "version": "1.0.0",
+            "date": "2025-11-15",
+            "n_bootstrap": n_bootstrap,
+            "method": "Bootstrap resampling with UTAC logistic fit",
+            "author": "Claude Code (Anthropic)",
+            "note": "MOCK DATA - Replace with real GRACE, RAPID, OISST, WHO, etc.",
         },
-        'global_summary': global_summary,
-        'systems': results
+        "global_summary": global_summary,
+        "systems": results,
     }
 
     # Save to file if specified
     if output_file:
         output_file.parent.mkdir(parents=True, exist_ok=True)
-        with open(output_file, 'w') as f:
+        with open(output_file, "w") as f:
             json.dump(output, f, indent=2)
         print(f"✓ Results saved to: {output_file}")
 
@@ -403,9 +420,10 @@ def run_bootstrap_v3(n_bootstrap: int = 1000,
 # CLI Interface
 # ═══════════════════════════════════════════════════════════════════
 
+
 def main():
     parser = argparse.ArgumentParser(
-        description='Bootstrap confidence intervals for UTAC V3 β-parameters',
+        description="Bootstrap confidence intervals for UTAC V3 β-parameters",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -417,31 +435,32 @@ Examples:
 
   # Quick test run (n=100)
   python bootstrap_beta_v3.py --n-bootstrap 100 --output test.json
-        """
+        """,
     )
 
-    parser.add_argument('--output', '-o',
-                        type=Path,
-                        default=Path('beta_fits_v3_bootstrap.json'),
-                        help='Output JSON file path (default: beta_fits_v3_bootstrap.json)')
+    parser.add_argument(
+        "--output",
+        "-o",
+        type=Path,
+        default=Path("beta_fits_v3_bootstrap.json"),
+        help="Output JSON file path (default: beta_fits_v3_bootstrap.json)",
+    )
 
-    parser.add_argument('--n-bootstrap', '-n',
-                        type=int,
-                        default=1000,
-                        help='Number of bootstrap iterations (default: 1000)')
+    parser.add_argument(
+        "--n-bootstrap",
+        "-n",
+        type=int,
+        default=1000,
+        help="Number of bootstrap iterations (default: 1000)",
+    )
 
-    parser.add_argument('--verbose', '-v',
-                        action='store_true',
-                        help='Verbose output')
+    parser.add_argument("--verbose", "-v", action="store_true", help="Verbose output")
 
     args = parser.parse_args()
 
     # Run bootstrap
     try:
-        results = run_bootstrap_v3(
-            n_bootstrap=args.n_bootstrap,
-            output_file=args.output
-        )
+        results = run_bootstrap_v3(n_bootstrap=args.n_bootstrap, output_file=args.output)
 
         print("\n✅ Bootstrap analysis complete!")
         print(f"📊 Results: {args.output}")
@@ -452,9 +471,10 @@ Examples:
         print(f"\n❌ Error: {e}", file=sys.stderr)
         if args.verbose:
             import traceback
+
             traceback.print_exc()
         return 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     sys.exit(main())

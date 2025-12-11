@@ -1,6 +1,5 @@
 import numpy as np
 import pytest
-
 from pipelines.fit_tau_star import (
     apply_safety_delay,
     compute_tau_star,
@@ -51,9 +50,7 @@ def test_rk4_step_with_tau_star_applies_delay():
     beta = 4.8
     dt = 0.01
 
-    R_next, tau_star = rk4_step_with_tau_star(
-        R_start, dR_dt, dt, Theta, beta, R_history=[R_start]
-    )
+    R_next, tau_star = rk4_step_with_tau_star(R_start, dR_dt, dt, Theta, beta, R_history=[R_start])
 
     assert tau_star > 0
     assert R_next < R_start

@@ -16,26 +16,24 @@ Date: 2025-11-14
 Version: 0.1.0
 """
 
-from abc import ABC, abstractmethod
-from dataclasses import dataclass, asdict
-from datetime import datetime, timedelta
-from pathlib import Path
-from typing import Dict, List, Optional, Any, Tuple
+import hashlib
 import json
 import logging
-import hashlib
 import os
+from abc import ABC, abstractmethod
+from dataclasses import asdict, dataclass
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any
 
 import numpy as np
 import pandas as pd
-from scipy import stats
 import requests
-
 
 # Configure logging
 logging.basicConfig(
-    level=os.getenv('LOG_LEVEL', 'INFO'),
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    level=os.getenv("LOG_LEVEL", "INFO"),
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 
 
@@ -54,6 +52,7 @@ class UTACState:
         status: System status (STABLE, MONITORING, WATCH, WARNING, ALERT, TIPPING, POST-TIPPING)
         metadata: Additional system-specific data
     """
+
     system_id: str
     timestamp: str
     R: float
@@ -61,9 +60,9 @@ class UTACState:
     beta: float
     sigma: float
     status: str
-    metadata: Dict[str, Any]
+    metadata: dict[str, Any]
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Convert to dictionary for JSON serialization."""
         return asdict(self)
 
@@ -97,6 +96,7 @@ class EWSSignals:
         p_value_variance: P-value for variance trend
         p_value_ar1: P-value for AR(1) trend
     """
+
     variance: float
     ar1: float
     spectral_reddening: float
@@ -111,8 +111,12 @@ class EWSSignals:
 
         Returns True if both variance and AR(1) show significant increasing trends.
         """
-        return (self.p_value_variance < alpha and self.kendall_tau_variance > 0 and
-                self.p_value_ar1 < alpha and self.kendall_tau_ar1 > 0)
+        return (
+            self.p_value_variance < alpha
+            and self.kendall_tau_variance > 0
+            and self.p_value_ar1 < alpha
+            and self.kendall_tau_ar1 > 0
+        )
 
 
 class BaseAdapter(ABC):
@@ -130,9 +134,9 @@ class BaseAdapter(ABC):
     def __init__(
         self,
         system_id: str,
-        cache_dir: Optional[Path] = None,
+        cache_dir: Path | None = None,
         cache_ttl_hours: int = 24,
-        max_retries: int = 3
+        max_retries: int = 3,
     ):
         """
         Initialize base adapter.
@@ -144,7 +148,7 @@ class BaseAdapter(ABC):
             max_retries: Maximum HTTP request retries
         """
         self.system_id = system_id
-        self.cache_dir = cache_dir or Path('./cache')
+        self.cache_dir = cache_dir or Path("./cache")
         self.cache_ttl = timedelta(hours=cache_ttl_hours)
         self.max_retries = max_retries
         self.logger = logging.getLogger(f"{__name__}.{system_id}")
@@ -186,7 +190,7 @@ class BaseAdapter(ABC):
         pass
 
     @abstractmethod
-    def estimate_beta(self, timeseries: pd.DataFrame) -> Tuple[float, float]:
+    def estimate_beta(self, timeseries: pd.DataFrame) -> tuple[float, float]:
         """
         Estimate β parameter from time series data.
 
@@ -201,10 +205,7 @@ class BaseAdapter(ABC):
         pass
 
     def fetch_with_cache(
-        self,
-        url: str,
-        params: Optional[Dict] = None,
-        force_refresh: bool = False
+        self, url: str, params: dict | None = None, force_refresh: bool = False
     ) -> requests.Response:
         """
         Fetch URL with local caching.
@@ -228,10 +229,10 @@ class BaseAdapter(ABC):
             cache_age = datetime.now() - datetime.fromtimestamp(cache_file.stat().st_mtime)
             if cache_age < self.cache_ttl:
                 self.logger.debug(f"Cache hit: {cache_key}")
-                with open(cache_file, 'r') as f:
+                with open(cache_file) as f:
                     cached_data = json.load(f)
                     response = requests.Response()
-                    response._content = json.dumps(cached_data['content']).encode()
+                    response._content = json.dumps(cached_data["content"]).encode()
                     response.status_code = 200
                     return response
 
@@ -243,13 +244,22 @@ class BaseAdapter(ABC):
                 response.raise_for_status()
 
                 # Cache response
-                with open(cache_file, 'w') as f:
-                    json.dump({
-                        'url': url,
-                        'params': params,
-                        'timestamp': datetime.now().isoformat(),
-                        'content': response.json() if response.headers.get('content-type', '').startswith('application/json') else response.text
-                    }, f)
+                with open(cache_file, "w") as f:
+                    json.dump(
+                        {
+                            "url": url,
+                            "params": params,
+                            "timestamp": datetime.now().isoformat(),
+                            "content": (
+                                response.json()
+                                if response.headers.get("content-type", "").startswith(
+                                    "application/json"
+                                )
+                                else response.text
+                            ),
+                        },
+                        f,
+                    )
 
                 return response
 
@@ -260,7 +270,7 @@ class BaseAdapter(ABC):
 
         raise RuntimeError(f"Failed to fetch {url} after {self.max_retries} attempts")
 
-    def detrend_timeseries(self, ts: pd.Series, method: str = 'linear') -> pd.Series:
+    def detrend_timeseries(self, ts: pd.Series, method: str = "linear") -> pd.Series:
         """
         Detrend time series for EWS calculation.
 
@@ -271,16 +281,17 @@ class BaseAdapter(ABC):
         Returns:
             Detrended time series
         """
-        if method == 'linear':
+        if method == "linear":
             # Linear detrending
             x = np.arange(len(ts))
             slope, intercept = np.polyfit(x, ts.values, 1)
             trend = slope * x + intercept
             return pd.Series(ts.values - trend, index=ts.index)
 
-        elif method == 'gaussian':
+        elif method == "gaussian":
             # Gaussian kernel smoothing (bandwidth = 50% of time series length)
             from scipy.ndimage import gaussian_filter1d
+
             sigma = len(ts) * 0.25
             trend = gaussian_filter1d(ts.values, sigma)
             return pd.Series(ts.values - trend, index=ts.index)
@@ -291,8 +302,8 @@ class BaseAdapter(ABC):
     def calculate_ews(
         self,
         timeseries: pd.DataFrame,
-        window_size: Optional[int] = None,
-        detrend_method: str = 'gaussian'
+        window_size: int | None = None,
+        detrend_method: str = "gaussian",
     ) -> EWSSignals:
         """
         Calculate Early Warning Signals.
@@ -307,7 +318,7 @@ class BaseAdapter(ABC):
         Returns:
             EWSSignals object
         """
-        ts = timeseries['value'].dropna()
+        ts = timeseries["value"].dropna()
 
         if window_size is None:
             window_size = len(ts) // 2
@@ -328,6 +339,7 @@ class BaseAdapter(ABC):
 
         # Spectral reddening (low-freq / high-freq power)
         from scipy import signal
+
         freqs, psd = signal.periodogram(detrended.dropna())
         low_freq_power = psd[freqs < np.median(freqs)].sum()
         high_freq_power = psd[freqs >= np.median(freqs)].sum()
@@ -347,10 +359,10 @@ class BaseAdapter(ABC):
             variance=rolling_var.iloc[-1],
             ar1=rolling_ar1.iloc[-1],
             spectral_reddening=spectral_reddening,
-            kendall_tau_variance=mk_var.z if hasattr(mk_var, 'z') else 0.0,
-            kendall_tau_ar1=mk_ar1.z if hasattr(mk_ar1, 'z') else 0.0,
+            kendall_tau_variance=mk_var.z if hasattr(mk_var, "z") else 0.0,
+            kendall_tau_ar1=mk_ar1.z if hasattr(mk_ar1, "z") else 0.0,
             p_value_variance=mk_var.p,
-            p_value_ar1=mk_ar1.p
+            p_value_ar1=mk_ar1.p,
         )
 
     def compute_utac_state(
@@ -359,7 +371,7 @@ class BaseAdapter(ABC):
         Theta: float,
         beta: float,
         timestamp: datetime,
-        metadata: Optional[Dict] = None
+        metadata: dict | None = None,
     ) -> UTACState:
         """
         Compute UTAC state from R, Θ, β.
@@ -401,13 +413,11 @@ class BaseAdapter(ABC):
             beta=beta,
             sigma=sigma,
             status=status,
-            metadata=metadata or {}
+            metadata=metadata or {},
         )
 
     def get_current_state(
-        self,
-        start_date: Optional[datetime] = None,
-        end_date: Optional[datetime] = None
+        self, start_date: datetime | None = None, end_date: datetime | None = None
     ) -> UTACState:
         """
         Get current UTAC state for this system.
@@ -425,9 +435,11 @@ class BaseAdapter(ABC):
         if end_date is None:
             end_date = datetime.now()
         if start_date is None:
-            start_date = end_date - timedelta(days=365*5)
+            start_date = end_date - timedelta(days=365 * 5)
 
-        self.logger.info(f"Fetching state for {self.system_id} ({start_date.date()} to {end_date.date()})")
+        self.logger.info(
+            f"Fetching state for {self.system_id} ({start_date.date()} to {end_date.date()})"
+        )
 
         # Fetch and transform data
         raw_data = self.fetch_raw_data(start_date, end_date)
@@ -440,7 +452,7 @@ class BaseAdapter(ABC):
         ews = self.calculate_ews(timeseries)
 
         # Get current R value (most recent observation)
-        current_value = timeseries['value'].iloc[-1]
+        current_value = timeseries["value"].iloc[-1]
 
         # Theta is system-specific, must be provided by subclass
         # For now, use a placeholder that subclasses should override
@@ -456,14 +468,16 @@ class BaseAdapter(ABC):
             beta=beta_mean,
             timestamp=end_date,
             metadata={
-                'beta_std': beta_std,
-                'ews': asdict(ews),
-                'raw_value': current_value,
-                'n_observations': len(timeseries)
-            }
+                "beta_std": beta_std,
+                "ews": asdict(ews),
+                "raw_value": current_value,
+                "n_observations": len(timeseries),
+            },
         )
 
-        self.logger.info(f"State: R={R:.3f}, Θ={Theta:.3f}, β={beta_mean:.2f}±{beta_std:.2f}, σ={state.sigma:.3f} ({state.status})")
+        self.logger.info(
+            f"State: R={R:.3f}, Θ={Theta:.3f}, β={beta_mean:.2f}±{beta_std:.2f}, σ={state.sigma:.3f} ({state.status})"
+        )
 
         return state
 

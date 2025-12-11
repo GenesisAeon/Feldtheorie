@@ -11,6 +11,7 @@ Usage:
     # Generate dashboard
     plot_beta_drift()
 """
+
 from .telemetry_dashboard import (
     generate_summary_report,
     load_telemetry,

@@ -57,7 +57,6 @@ def write_csv(path: Path, traces: dict[str, Iterable[float]]) -> None:
             writer.writerow([f"{value:.10f}" for value in row])
 
 
-
 def build_summary(args: argparse.Namespace) -> tuple[dict[str, object], dict[str, Iterable[float]]]:
     r"""Generate a synthetic sweep, fit logistics, and package diagnostics."""
 
@@ -143,16 +142,60 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Generate a synthetic logistic threshold sweep with UTF diagnostics.",
     )
-    parser.add_argument("--theta", type=float, default=0.0, help="Critical threshold Theta controlling the sweep centre.")
-    parser.add_argument("--beta", type=float, default=8.0, help="Steepness beta governing the logistic ascent.")
-    parser.add_argument("--amplitude", type=float, default=1.0, help="Amplitude multiplier representing impedance scaling.")
-    parser.add_argument("--resonant-gain", dest="resonant_gain", type=float, default=0.7, help="Impedance floor zeta below Theta.")
-    parser.add_argument("--damped-gain", dest="damped_gain", type=float, default=1.3, help="Impedance ceiling zeta above Theta.")
-    parser.add_argument("--impedance-width", dest="impedance_width", type=float, default=0.5, help="Width of the impedance transition zone.")
-    parser.add_argument("--span", type=float, default=1.0, help="Half-width of the control parameter sweep around Theta.")
-    parser.add_argument("--points", type=int, default=60, help="Number of samples in the sweep trajectory.")
-    parser.add_argument("--noise", type=float, default=0.02, help="Standard deviation of Gaussian noise added to sigma.")
-    parser.add_argument("--seed", type=int, default=7, help="Random seed for noise reproducibility.")
+    parser.add_argument(
+        "--theta",
+        type=float,
+        default=0.0,
+        help="Critical threshold Theta controlling the sweep centre.",
+    )
+    parser.add_argument(
+        "--beta", type=float, default=8.0, help="Steepness beta governing the logistic ascent."
+    )
+    parser.add_argument(
+        "--amplitude",
+        type=float,
+        default=1.0,
+        help="Amplitude multiplier representing impedance scaling.",
+    )
+    parser.add_argument(
+        "--resonant-gain",
+        dest="resonant_gain",
+        type=float,
+        default=0.7,
+        help="Impedance floor zeta below Theta.",
+    )
+    parser.add_argument(
+        "--damped-gain",
+        dest="damped_gain",
+        type=float,
+        default=1.3,
+        help="Impedance ceiling zeta above Theta.",
+    )
+    parser.add_argument(
+        "--impedance-width",
+        dest="impedance_width",
+        type=float,
+        default=0.5,
+        help="Width of the impedance transition zone.",
+    )
+    parser.add_argument(
+        "--span",
+        type=float,
+        default=1.0,
+        help="Half-width of the control parameter sweep around Theta.",
+    )
+    parser.add_argument(
+        "--points", type=int, default=60, help="Number of samples in the sweep trajectory."
+    )
+    parser.add_argument(
+        "--noise",
+        type=float,
+        default=0.02,
+        help="Standard deviation of Gaussian noise added to sigma.",
+    )
+    parser.add_argument(
+        "--seed", type=int, default=7, help="Random seed for noise reproducibility."
+    )
     parser.add_argument(
         "--output",
         type=Path,

@@ -5,20 +5,21 @@ workflow. It orchestrates σ(β(R-Θ)) sweeps, records ΔAIC against smooth
 null models, and exports resonance diagnostics into the `data/safety_delay/`
 ledger so simulator presets and manuscripts can cite the same membrane pulse.
 """
+
 from __future__ import annotations
 
 import argparse
 import csv
 import json
+from collections.abc import Iterable, Sequence
 from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Iterable, List, Sequence
 
 from analysis.safety_delay_sweep import SweepConfig, run_sweep
 
 
-def _parse_float_list(values: Iterable[str] | None, default: Sequence[float]) -> List[float]:
+def _parse_float_list(values: Iterable[str] | None, default: Sequence[float]) -> list[float]:
     if values is None:
         return [float(v) for v in default]
     return [float(v) for v in values]
@@ -31,7 +32,7 @@ def _nanmean(values: Iterable[float]) -> float:
     return float(sum(clean) / len(clean))
 
 
-def _write_csv(path: Path, runs: List[Dict[str, float]]) -> None:
+def _write_csv(path: Path, runs: list[dict[str, float]]) -> None:
     fieldnames = [
         "control_strength",
         "drift_rate",
@@ -65,10 +66,10 @@ def _build_metadata(
     dataset_path: Path,
     summary_path: Path,
     config: SweepConfig,
-    runs: List[Dict[str, float]],
-    summary: Dict[str, float],
+    runs: list[dict[str, float]],
+    summary: dict[str, float],
     timestamp: str,
-) -> Dict[str, object]:
+) -> dict[str, object]:
     beta_values = [run.get("beta_hat") for run in runs]
     theta_values = [run.get("theta_hat") for run in runs]
     mean_beta = _nanmean(beta_values)
@@ -114,7 +115,7 @@ def _build_metadata(
     }
 
 
-def run_safety_delay_command(args: argparse.Namespace) -> Dict[str, Path | None]:
+def run_safety_delay_command(args: argparse.Namespace) -> dict[str, Path | None]:
     config = SweepConfig(
         t_max=args.t_max,
         dt=args.dt,
@@ -158,7 +159,9 @@ def run_safety_delay_command(args: argparse.Namespace) -> Dict[str, Path | None]
     with summary_path.open("w", encoding="utf-8") as handle:
         json.dump(summary_payload, handle, indent=2, ensure_ascii=False)
 
-    metadata = _build_metadata(dataset_path, summary_path, config, payload["runs"], payload["summary"], stamp)
+    metadata = _build_metadata(
+        dataset_path, summary_path, config, payload["runs"], payload["summary"], stamp
+    )
     with metadata_path.open("w", encoding="utf-8") as handle:
         json.dump(metadata, handle, indent=2, ensure_ascii=False)
 
@@ -183,8 +186,7 @@ def run_safety_delay_command(args: argparse.Namespace) -> Dict[str, Path | None]
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
-            "UTAC simulator CLI for safety-delay σ(β(R-Θ)) sweeps "
-            "and ΔAIC resonance logging."
+            "UTAC simulator CLI for safety-delay σ(β(R-Θ)) sweeps " "and ΔAIC resonance logging."
         )
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -225,7 +227,7 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main(argv: Sequence[str] | None = None) -> Dict[str, Path | None]:
+def main(argv: Sequence[str] | None = None) -> dict[str, Path | None]:
     parser = build_parser()
     args = parser.parse_args(argv)
 

@@ -10,6 +10,7 @@ control parameter \(R\) drifts toward the critical threshold \(\Theta\).
 Control centrality and CREP-resonance diagnostics are provided so the module
 can plug directly into the Sigillin-Netz resonance ledger.
 r"""
+
 from __future__ import annotations
 
 from collections.abc import Callable
@@ -22,6 +23,7 @@ from scipy.optimize import curve_fit
 # -----------------------------------------------------------------------------
 # Logistic scaffolding
 # -----------------------------------------------------------------------------
+
 
 def logistic_response(R: ArrayLike, beta: ArrayLike, theta: float) -> np.ndarray:
     """Compute the logistic response for control parameter values ``R``.
@@ -80,7 +82,9 @@ def estimate_logistic_parameters(R: np.ndarray, field: np.ndarray) -> tuple[floa
 # -----------------------------------------------------------------------------
 
 
-def default_control_schedule(time: ArrayLike, midpoint: float = 35.0, kappa: float = 0.25) -> np.ndarray:
+def default_control_schedule(
+    time: ArrayLike, midpoint: float = 35.0, kappa: float = 0.25
+) -> np.ndarray:
     """Smooth control ramp used when no custom schedule is provided."""
 
     t = np.asarray(time, dtype=float)
@@ -173,7 +177,11 @@ def simulate_safety_delay_field(
 
     escape_condition = state <= (theta - 0.5)
     tau_escape = time[np.argmax(escape_condition)] if np.any(escape_condition) else np.nan
-    tau_delay = float(tau_escape - tau_threshold) if np.isfinite(tau_escape) and np.isfinite(tau_threshold) else np.nan
+    tau_delay = (
+        float(tau_escape - tau_threshold)
+        if np.isfinite(tau_escape) and np.isfinite(tau_threshold)
+        else np.nan
+    )
 
     control_energy = float(np.trapezoid(control_signal**2, time))
     beta_shift = float(beta_hat - beta_base)

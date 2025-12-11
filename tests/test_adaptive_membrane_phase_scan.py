@@ -5,7 +5,6 @@ import math
 from pathlib import Path
 
 import pytest
-
 from analysis import adaptive_membrane_phase_scan as phase_scan
 
 

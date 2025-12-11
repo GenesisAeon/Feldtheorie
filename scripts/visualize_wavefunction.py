@@ -22,14 +22,13 @@ from __future__ import annotations
 import argparse
 import sys
 from pathlib import Path
-from typing import Tuple
 
 import matplotlib
+
 matplotlib.use("Agg")  # Non-interactive backend
 
-import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
 import numpy as np
 
 # Add repository root to path
@@ -58,20 +57,17 @@ class WavefunctionVisualizer:
             wavefunction_resolution=64,
             time_steps=100,
             beta=4.8,
-            theta=0.0
+            theta=0.0,
         )
         self.cube = GenesisCube(config)
 
-        print(f"✓ Initialized WavefunctionVisualizer")
+        print("✓ Initialized WavefunctionVisualizer")
         print(f"  Output directory: {self.output_dir}")
         print(f"  Resolution: {config.wavefunction_resolution}")
         print(f"  Time steps: {config.time_steps}")
 
     def plot_probability_density(
-        self,
-        t: float = 0.0,
-        r_max: float = 10.0,
-        filename: str = "probability_density.png"
+        self, t: float = 0.0, r_max: float = 10.0, filename: str = "probability_density.png"
     ) -> None:
         """Plot |Ψ(r,θ,φ,t)|² probability density.
 
@@ -100,40 +96,35 @@ class WavefunctionVisualizer:
 
         # Heatmap
         im1 = ax1.imshow(
-            psi_squared,
-            extent=[0, r_max, 0, np.pi],
-            origin='lower',
-            cmap='viridis',
-            aspect='auto'
+            psi_squared, extent=[0, r_max, 0, np.pi], origin="lower", cmap="viridis", aspect="auto"
         )
-        ax1.set_xlabel('Radial coordinate r (Planck lengths)', fontsize=11)
-        ax1.set_ylabel('Polar angle θ (radians)', fontsize=11)
-        ax1.set_title(f'|Ψ(r,θ,φ=0,t={t:.2e})|² Probability Density', fontsize=12, fontweight='bold')
-        plt.colorbar(im1, ax=ax1, label='|Ψ|²')
+        ax1.set_xlabel("Radial coordinate r (Planck lengths)", fontsize=11)
+        ax1.set_ylabel("Polar angle θ (radians)", fontsize=11)
+        ax1.set_title(
+            f"|Ψ(r,θ,φ=0,t={t:.2e})|² Probability Density", fontsize=12, fontweight="bold"
+        )
+        plt.colorbar(im1, ax=ax1, label="|Ψ|²")
 
         # Radial profile at theta=π/4
         theta_idx = n // 4
         radial_profile = psi_squared[theta_idx, :]
 
-        ax2.plot(r, radial_profile, 'b-', linewidth=2, label=f'θ = π/4')
-        ax2.set_xlabel('Radial coordinate r (Planck lengths)', fontsize=11)
-        ax2.set_ylabel('|Ψ|²', fontsize=11)
-        ax2.set_title('Radial Probability Profile', fontsize=12, fontweight='bold')
+        ax2.plot(r, radial_profile, "b-", linewidth=2, label="θ = π/4")
+        ax2.set_xlabel("Radial coordinate r (Planck lengths)", fontsize=11)
+        ax2.set_ylabel("|Ψ|²", fontsize=11)
+        ax2.set_title("Radial Probability Profile", fontsize=12, fontweight="bold")
         ax2.grid(True, alpha=0.3)
         ax2.legend()
 
         plt.tight_layout()
         output_path = self.output_dir / filename
-        plt.savefig(output_path, dpi=150, bbox_inches='tight')
+        plt.savefig(output_path, dpi=150, bbox_inches="tight")
         plt.close()
 
         print(f"✓ Saved probability density plot: {output_path}")
 
     def plot_entropy_gradient(
-        self,
-        t: float = 0.0,
-        r_max: float = 10.0,
-        filename: str = "entropy_gradient.png"
+        self, t: float = 0.0, r_max: float = 10.0, filename: str = "entropy_gradient.png"
     ) -> None:
         """Plot entropy gradient ∇S from emergent gravity.
 
@@ -161,32 +152,28 @@ class WavefunctionVisualizer:
 
         # Heatmap
         im1 = ax1.imshow(
-            grad_S,
-            extent=[0.1, r_max, 0, np.pi],
-            origin='lower',
-            cmap='RdBu_r',
-            aspect='auto'
+            grad_S, extent=[0.1, r_max, 0, np.pi], origin="lower", cmap="RdBu_r", aspect="auto"
         )
-        ax1.set_xlabel('Radial coordinate r (Planck lengths)', fontsize=11)
-        ax1.set_ylabel('Polar angle θ (radians)', fontsize=11)
-        ax1.set_title(f'∇S Entropy Gradient (t={t:.2e})', fontsize=12, fontweight='bold')
-        plt.colorbar(im1, ax=ax1, label='∇S')
+        ax1.set_xlabel("Radial coordinate r (Planck lengths)", fontsize=11)
+        ax1.set_ylabel("Polar angle θ (radians)", fontsize=11)
+        ax1.set_title(f"∇S Entropy Gradient (t={t:.2e})", fontsize=12, fontweight="bold")
+        plt.colorbar(im1, ax=ax1, label="∇S")
 
         # Radial profile
         theta_idx = n // 4
         radial_grad = grad_S[theta_idx, :]
 
-        ax2.plot(r, radial_grad, 'r-', linewidth=2, label=f'θ = π/4')
-        ax2.axhline(0, color='k', linestyle='--', alpha=0.3)
-        ax2.set_xlabel('Radial coordinate r (Planck lengths)', fontsize=11)
-        ax2.set_ylabel('∇S', fontsize=11)
-        ax2.set_title('Radial Entropy Gradient Profile', fontsize=12, fontweight='bold')
+        ax2.plot(r, radial_grad, "r-", linewidth=2, label="θ = π/4")
+        ax2.axhline(0, color="k", linestyle="--", alpha=0.3)
+        ax2.set_xlabel("Radial coordinate r (Planck lengths)", fontsize=11)
+        ax2.set_ylabel("∇S", fontsize=11)
+        ax2.set_title("Radial Entropy Gradient Profile", fontsize=12, fontweight="bold")
         ax2.grid(True, alpha=0.3)
         ax2.legend()
 
         plt.tight_layout()
         output_path = self.output_dir / filename
-        plt.savefig(output_path, dpi=150, bbox_inches='tight')
+        plt.savefig(output_path, dpi=150, bbox_inches="tight")
         plt.close()
 
         print(f"✓ Saved entropy gradient plot: {output_path}")
@@ -194,10 +181,10 @@ class WavefunctionVisualizer:
     def plot_phase_evolution(
         self,
         r_fixed: float = 5.0,
-        theta_fixed: float = np.pi/4,
+        theta_fixed: float = np.pi / 4,
         phi_fixed: float = 0.0,
         num_steps: int = 50,
-        filename: str = "phase_evolution.png"
+        filename: str = "phase_evolution.png",
     ) -> None:
         """Plot phase evolution arg(Ψ) over time at fixed position.
 
@@ -224,31 +211,31 @@ class WavefunctionVisualizer:
         fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8), sharex=True)
 
         # Amplitude
-        ax1.plot(times, amplitudes, 'b-', linewidth=2)
-        ax1.set_ylabel('|Ψ|', fontsize=11)
-        ax1.set_title(f'Wavefunction Evolution at (r={r_fixed:.1f}, θ={theta_fixed:.2f}, φ={phi_fixed:.2f})',
-                     fontsize=12, fontweight='bold')
+        ax1.plot(times, amplitudes, "b-", linewidth=2)
+        ax1.set_ylabel("|Ψ|", fontsize=11)
+        ax1.set_title(
+            f"Wavefunction Evolution at (r={r_fixed:.1f}, θ={theta_fixed:.2f}, φ={phi_fixed:.2f})",
+            fontsize=12,
+            fontweight="bold",
+        )
         ax1.grid(True, alpha=0.3)
 
         # Phase
-        ax2.plot(times, phases, 'r-', linewidth=2)
-        ax2.set_xlabel('Time t (Planck units × 10)', fontsize=11)
-        ax2.set_ylabel('arg(Ψ) (radians)', fontsize=11)
-        ax2.set_title('Phase Evolution', fontsize=12, fontweight='bold')
+        ax2.plot(times, phases, "r-", linewidth=2)
+        ax2.set_xlabel("Time t (Planck units × 10)", fontsize=11)
+        ax2.set_ylabel("arg(Ψ) (radians)", fontsize=11)
+        ax2.set_title("Phase Evolution", fontsize=12, fontweight="bold")
         ax2.grid(True, alpha=0.3)
 
         plt.tight_layout()
         output_path = self.output_dir / filename
-        plt.savefig(output_path, dpi=150, bbox_inches='tight')
+        plt.savefig(output_path, dpi=150, bbox_inches="tight")
         plt.close()
 
         print(f"✓ Saved phase evolution plot: {output_path}")
 
     def create_animation(
-        self,
-        frames: int = 50,
-        r_max: float = 10.0,
-        filename: str = "wavefunction_animation.gif"
+        self, frames: int = 50, r_max: float = 10.0, filename: str = "wavefunction_animation.gif"
     ) -> None:
         """Create animation of |Ψ|² evolution over time.
 
@@ -279,23 +266,26 @@ class WavefunctionVisualizer:
             im = ax.imshow(
                 psi_squared,
                 extent=[0, r_max, 0, np.pi],
-                origin='lower',
-                cmap='viridis',
-                aspect='auto',
+                origin="lower",
+                cmap="viridis",
+                aspect="auto",
                 vmin=0,
-                vmax=np.max(psi_squared) * 1.2
+                vmax=np.max(psi_squared) * 1.2,
             )
-            ax.set_xlabel('Radial coordinate r (Planck lengths)', fontsize=11)
-            ax.set_ylabel('Polar angle θ (radians)', fontsize=11)
-            ax.set_title(f'|Ψ(r,θ,φ=0,t)|² Evolution (frame {frame}/{frames})',
-                        fontsize=12, fontweight='bold')
+            ax.set_xlabel("Radial coordinate r (Planck lengths)", fontsize=11)
+            ax.set_ylabel("Polar angle θ (radians)", fontsize=11)
+            ax.set_title(
+                f"|Ψ(r,θ,φ=0,t)|² Evolution (frame {frame}/{frames})",
+                fontsize=12,
+                fontweight="bold",
+            )
 
             return [im]
 
         anim = animation.FuncAnimation(fig, animate, frames=frames, interval=100, blit=False)
 
         output_path = self.output_dir / filename
-        anim.save(output_path, writer='pillow', fps=10, dpi=100)
+        anim.save(output_path, writer="pillow", fps=10, dpi=100)
         plt.close()
 
         print(f"✓ Saved animation: {output_path}")
@@ -304,7 +294,9 @@ class WavefunctionVisualizer:
 def main():
     """Main entry point."""
     parser = argparse.ArgumentParser(description="Visualize entropic wavefunction Ψ(r,θ,φ,t)")
-    parser.add_argument("--output", default="analysis/results/wavefunction", help="Output directory")
+    parser.add_argument(
+        "--output", default="analysis/results/wavefunction", help="Output directory"
+    )
     parser.add_argument("--animate", action="store_true", help="Create animation")
     parser.add_argument("--frames", type=int, default=50, help="Animation frames")
     parser.add_argument("--time", type=float, default=0.0, help="Time coordinate for static plots")

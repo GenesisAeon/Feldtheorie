@@ -17,13 +17,14 @@ License: MIT
 
 import argparse
 import json
-import numpy as np
 import warnings
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
+
+import numpy as np
 
 try:
     from scipy.io import wavfile
+
     SCIPY_AVAILABLE = True
 except ImportError:
     SCIPY_AVAILABLE = False
@@ -41,7 +42,7 @@ FIELD_TYPE_PROFILES = {
         "harmonics": [1.0, 0.5, 0.25, 0.125],  # Rich harmonics
         "envelope": "sustained",
         "timbre": "warm",
-        "description": "Neural networks, AMOC, honeybees"
+        "description": "Neural networks, AMOC, honeybees",
     },
     "high_dimensional": {
         "beta_range": (3.0, 4.5),
@@ -49,7 +50,7 @@ FIELD_TYPE_PROFILES = {
         "harmonics": [1.0, 0.7, 0.4, 0.3, 0.2, 0.15],  # Complex overtones
         "envelope": "floating",
         "timbre": "ethereal",
-        "description": "LLMs, evolutionary systems"
+        "description": "LLMs, evolutionary systems",
     },
     "weakly_coupled": {
         "beta_range": (2.0, 3.5),
@@ -57,7 +58,7 @@ FIELD_TYPE_PROFILES = {
         "harmonics": [1.0, 0.3, 0.1],  # Few harmonics
         "envelope": "gentle",
         "timbre": "soft",
-        "description": "Neural plasticity, ecosystems"
+        "description": "Neural plasticity, ecosystems",
     },
     "physically_constrained": {
         "beta_range": (4.5, 6.0),
@@ -65,7 +66,7 @@ FIELD_TYPE_PROFILES = {
         "harmonics": [1.0, 0.2, 0.05],  # Clear fundamental
         "envelope": "percussive",
         "timbre": "sharp",
-        "description": "Black holes, earthquakes"
+        "description": "Black holes, earthquakes",
     },
     "meta_adaptive": {
         "beta_range": (2.5, 16.3),  # Variable!
@@ -73,14 +74,15 @@ FIELD_TYPE_PROFILES = {
         "harmonics": [1.0, 0.6, 0.4, 0.3, 0.2, 0.15, 0.1],  # Rich modulation
         "envelope": "adaptive",
         "timbre": "morphing",
-        "description": "Climate cascades, markets, urban heat"
-    }
+        "description": "Climate cascades, markets, urban heat",
+    },
 }
 
 
 # ============================================================================
 # Core Sonification Engine
 # ============================================================================
+
 
 class UTACsonifier:
     """
@@ -95,21 +97,14 @@ class UTACsonifier:
     """
 
     def __init__(
-        self,
-        sample_rate: int = 44100,
-        duration: float = 3.0,
-        beta_to_freq_scale: float = 100.0
+        self, sample_rate: int = 44100, duration: float = 3.0, beta_to_freq_scale: float = 100.0
     ):
         self.sample_rate = sample_rate
         self.duration = duration
         self.beta_to_freq_scale = beta_to_freq_scale
 
     def logistic_curve(
-        self,
-        R: np.ndarray,
-        beta: float,
-        theta: float,
-        L: float = 1.0
+        self, R: np.ndarray, beta: float, theta: float, L: float = 1.0
     ) -> np.ndarray:
         """Compute σ(β(R-Θ))"""
         return L / (1.0 + np.exp(-beta * (R - theta)))
@@ -130,8 +125,8 @@ class UTACsonifier:
         self,
         frequency: float,
         amplitude: float,
-        harmonics: List[float],
-        envelope_type: str = "sustained"
+        harmonics: list[float],
+        envelope_type: str = "sustained",
     ) -> np.ndarray:
         """
         Generate a complex tone with harmonics and envelope.
@@ -183,7 +178,7 @@ class UTACsonifier:
             # Attack
             envelope[:attack_len] = np.linspace(0, 1, attack_len)
             # Decay
-            envelope[attack_len:attack_len+decay_len] = np.linspace(1, sustain_level, decay_len)
+            envelope[attack_len : attack_len + decay_len] = np.linspace(1, sustain_level, decay_len)
             # Release
             envelope[-release_len:] = np.linspace(sustain_level, 0, release_len)
 
@@ -212,9 +207,9 @@ class UTACsonifier:
         self,
         beta: float,
         theta: float,
-        R_range: Optional[Tuple[float, float]] = None,
-        L: float = 1.0
-    ) -> Tuple[np.ndarray, Dict]:
+        R_range: tuple[float, float] | None = None,
+        L: float = 1.0,
+    ) -> tuple[np.ndarray, dict]:
         """
         Sonify a single threshold transition.
 
@@ -237,7 +232,7 @@ class UTACsonifier:
             Sonification metadata
         """
         if R_range is None:
-            R_range = (theta - 2/beta, theta + 2/beta)
+            R_range = (theta - 2 / beta, theta + 2 / beta)
 
         # Classify field type
         field_type = self.classify_field_type(beta)
@@ -289,18 +284,18 @@ class UTACsonifier:
             "base_frequency_hz": base_freq,
             "profile": profile["description"],
             "duration_sec": self.duration,
-            "sample_rate_hz": self.sample_rate
+            "sample_rate_hz": self.sample_rate,
         }
 
         return signal, metadata
 
     def sonify_spectrum(
         self,
-        beta_values: List[float],
-        theta_values: Optional[List[float]] = None,
-        labels: Optional[List[str]] = None,
-        gap_duration: float = 0.5
-    ) -> Tuple[np.ndarray, Dict]:
+        beta_values: list[float],
+        theta_values: list[float] | None = None,
+        labels: list[str] | None = None,
+        gap_duration: float = 0.5,
+    ) -> tuple[np.ndarray, dict]:
         """
         Sonify multiple β values as a sequence.
 
@@ -348,7 +343,7 @@ class UTACsonifier:
             "n_transitions": len(beta_values),
             "total_duration_sec": len(combined) / self.sample_rate,
             "gap_duration_sec": gap_duration,
-            "transitions": transition_metadata
+            "transitions": transition_metadata,
         }
 
         return combined, metadata
@@ -358,12 +353,8 @@ class UTACsonifier:
 # I/O Functions
 # ============================================================================
 
-def save_audio(
-    audio: np.ndarray,
-    filepath: Path,
-    sample_rate: int = 44100,
-    normalize: bool = True
-):
+
+def save_audio(audio: np.ndarray, filepath: Path, sample_rate: int = 44100, normalize: bool = True):
     """Save audio to WAV file"""
     if normalize:
         audio = audio / np.max(np.abs(audio))
@@ -376,19 +367,19 @@ def save_audio(
         print(f"✓ Audio saved: {filepath}")
     else:
         # Fallback: save as numpy
-        np.save(filepath.with_suffix('.npy'), audio)
+        np.save(filepath.with_suffix(".npy"), audio)
         print(f"✓ Audio saved as numpy: {filepath.with_suffix('.npy')}")
         print("  Install scipy to save as WAV: pip install scipy")
 
 
-def save_metadata(metadata: Dict, filepath: Path):
+def save_metadata(metadata: dict, filepath: Path):
     """Save sonification metadata as JSON"""
-    with open(filepath, 'w') as f:
+    with open(filepath, "w") as f:
         json.dump(metadata, f, indent=2)
     print(f"✓ Metadata saved: {filepath}")
 
 
-def load_preset(preset_name: str) -> Dict:
+def load_preset(preset_name: str) -> dict:
     """Load sonification preset"""
     preset_path = Path(__file__).parent / "presets" / f"{preset_name}.json"
 
@@ -402,6 +393,7 @@ def load_preset(preset_name: str) -> Dict:
 # ============================================================================
 # CLI
 # ============================================================================
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -417,23 +409,22 @@ Examples:
 
   # Sonify full field type spectrum
   python -m sonification.utac_sonification --preset field_types --output field_spectrum.wav
-"""
+""",
     )
 
     parser.add_argument("--preset", help="Load preset configuration")
     parser.add_argument("--beta", type=float, help="β (transition steepness)")
     parser.add_argument("--theta", type=float, default=100.0, help="Θ (threshold)")
-    parser.add_argument("--duration", type=float, default=3.0, help="Duration per transition (seconds)")
+    parser.add_argument(
+        "--duration", type=float, default=3.0, help="Duration per transition (seconds)"
+    )
     parser.add_argument("--output", "-o", required=True, help="Output audio file (.wav)")
     parser.add_argument("--sample-rate", type=int, default=44100, help="Sample rate (Hz)")
 
     args = parser.parse_args()
 
     # Initialize sonifier
-    sonifier = UTACsonifier(
-        sample_rate=args.sample_rate,
-        duration=args.duration
-    )
+    sonifier = UTACsonifier(sample_rate=args.sample_rate, duration=args.duration)
 
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -448,31 +439,27 @@ Examples:
             audio, metadata = sonifier.sonify_spectrum(
                 beta_values=preset["beta_values"],
                 theta_values=preset.get("theta_values"),
-                labels=preset.get("labels")
+                labels=preset.get("labels"),
             )
         else:
             # Single transition
             audio, metadata = sonifier.sonify_transition(
-                beta=preset["beta"],
-                theta=preset.get("theta", 100.0)
+                beta=preset["beta"], theta=preset.get("theta", 100.0)
             )
 
     elif args.beta is not None:
         # Single transition from CLI args
         print(f"🎵 Sonifying β={args.beta}, Θ={args.theta}")
-        audio, metadata = sonifier.sonify_transition(
-            beta=args.beta,
-            theta=args.theta
-        )
+        audio, metadata = sonifier.sonify_transition(beta=args.beta, theta=args.theta)
 
     else:
         parser.error("Either --preset or --beta must be specified")
 
     # Save
     save_audio(audio, output_path, args.sample_rate)
-    save_metadata(metadata, output_path.with_suffix('.json'))
+    save_metadata(metadata, output_path.with_suffix(".json"))
 
-    print(f"\n✨ Sonification complete!")
+    print("\n✨ Sonification complete!")
     print(f"   Duration: {len(audio)/args.sample_rate:.2f} seconds")
     if "field_type" in metadata:
         print(f"   Field Type: {metadata['field_type']}")

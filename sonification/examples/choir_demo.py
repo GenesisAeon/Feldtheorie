@@ -17,8 +17,9 @@ from pathlib import Path
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from sonification.dynamic_threshold_choir import ThresholdChoir, DataSourceSimulator
 from datetime import datetime, timedelta
+
+from sonification.dynamic_threshold_choir import ThresholdChoir
 
 
 def demo_basic_choir():
@@ -42,15 +43,19 @@ def demo_basic_choir():
     print("Stimmen:")
     for name, voice in choir.voices.items():
         distance = voice.current_R - voice.theta
-        status = "🟢 stabil" if distance > 10 else "🟡 kritisch" if distance > -10 else "🔴 kollabiert"
-        print(f"  {name:12s}: R={voice.current_R:6.1f}, Θ={voice.theta:6.1f}, "
-              f"Δ={distance:+6.1f} {status}")
+        status = (
+            "🟢 stabil" if distance > 10 else "🟡 kritisch" if distance > -10 else "🔴 kollabiert"
+        )
+        print(
+            f"  {name:12s}: R={voice.current_R:6.1f}, Θ={voice.theta:6.1f}, "
+            f"Δ={distance:+6.1f} {status}"
+        )
     print()
 
     output = Path("output/choir_basic.wav")
     output.parent.mkdir(exist_ok=True, parents=True)
 
-    print(f"Rendering 5 Sekunden...")
+    print("Rendering 5 Sekunden...")
     choir.save_wav(output, duration=5.0)
     print()
 
@@ -75,8 +80,10 @@ def demo_destabilizing_choir():
 
     print("Initial state:")
     for name, voice in choir.voices.items():
-        print(f"  {name:12s}: R={voice.current_R:6.1f}, Θ={voice.theta:6.1f}, "
-              f"stability={voice.stability:.2f}")
+        print(
+            f"  {name:12s}: R={voice.current_R:6.1f}, Θ={voice.theta:6.1f}, "
+            f"stability={voice.stability:.2f}"
+        )
     print()
 
     # Simulate AMOC weakening
@@ -94,7 +101,7 @@ def demo_destabilizing_choir():
     print()
 
     output = Path("output/choir_destabilizing.wav")
-    print(f"Rendering 8 Sekunden with destabilization effects...")
+    print("Rendering 8 Sekunden with destabilization effects...")
     choir.save_wav(output, duration=8.0)
     print()
 
@@ -114,8 +121,10 @@ def demo_full_choir_evolution():
 
     print("Voices configured:")
     for name, voice in choir.voices.items():
-        print(f"  {name:12s}: β={voice.beta:.2f}, Θ={voice.theta:5.1f}, "
-              f"R₀={voice.current_R:6.1f}, pan={voice.pan:+.1f}")
+        print(
+            f"  {name:12s}: β={voice.beta:.2f}, Θ={voice.theta:5.1f}, "
+            f"R₀={voice.current_R:6.1f}, pan={voice.pan:+.1f}"
+        )
     print()
 
     output = Path("output/choir_evolution.wav")
@@ -130,8 +139,10 @@ def demo_full_choir_evolution():
     print()
     print("Events logged:")
     for event in choir.destabilization_events:
-        print(f"  {event['voice']:12s}: R={event['R']:6.1f}, "
-              f"stability={event['stability']:.3f}, dR/dt={event['rate_of_change']:+.2e}")
+        print(
+            f"  {event['voice']:12s}: R={event['R']:6.1f}, "
+            f"stability={event['stability']:.3f}, dR/dt={event['rate_of_change']:+.2e}"
+        )
     print()
 
 
@@ -146,11 +157,11 @@ def demo_spatial_positioning():
 
     # Create 5 voices across stereo field
     voices_config = [
-        ("AMOC", 4.2, 50.0, 60.0, -1.0),      # Far left
-        ("Ice_Sheet", 5.1, 30.0, 35.0, -0.5), # Left
-        ("LLM", 3.47, 100.0, 100.0, 0.0),     # Center
-        ("Ecosystem", 2.8, 500.0, 450.0, 0.5), # Right
-        ("Urban_Heat", 16.3, 40.0, 50.0, 1.0), # Far right
+        ("AMOC", 4.2, 50.0, 60.0, -1.0),  # Far left
+        ("Ice_Sheet", 5.1, 30.0, 35.0, -0.5),  # Left
+        ("LLM", 3.47, 100.0, 100.0, 0.0),  # Center
+        ("Ecosystem", 2.8, 500.0, 450.0, 0.5),  # Right
+        ("Urban_Heat", 16.3, 40.0, 50.0, 1.0),  # Far right
     ]
 
     print("Spatial configuration:")
@@ -161,7 +172,7 @@ def demo_spatial_positioning():
 
     print()
     output = Path("output/choir_spatial.wav")
-    print(f"Rendering 6s with spatial mix...")
+    print("Rendering 6s with spatial mix...")
     print("  💡 Listen with headphones to hear stereo positioning!")
     print()
 
@@ -202,6 +213,7 @@ def main():
     except Exception as e:
         print(f"❌ Error: {e}")
         import traceback
+
         traceback.print_exc()
         return 1
 

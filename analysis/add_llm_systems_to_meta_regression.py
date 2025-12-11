@@ -45,8 +45,8 @@ LLM_SYSTEMS = [
         "source": "Synthetic LLM training trajectory (GPT-125M convergence)",
         # Covariates
         "C_eff": 0.72,  # Moderate coupling (attention mechanism)
-        "D_eff": 12,     # High dimensionality (125M params)
-        "SNR": 4.0,      # Moderate signal-to-noise
+        "D_eff": 12,  # High dimensionality (125M params)
+        "SNR": 4.0,  # Moderate signal-to-noise
         "Memory": 0.25,  # Low memory (small context window)
         "Theta_dot": 0.06,  # Moderate learning rate
         "field_type": "high_dimensional",
@@ -159,6 +159,7 @@ LLM_SYSTEMS = [
 # CSV UPDATE FUNCTIONS
 # ═══════════════════════════════════════════════════════════════
 
+
 def load_csv(filepath: Path) -> list[dict]:
     """Load CSV as list of dicts."""
     with open(filepath) as f:
@@ -167,7 +168,7 @@ def load_csv(filepath: Path) -> list[dict]:
 
 def write_csv(filepath: Path, rows: list[dict], fieldnames: list[str]):
     """Write list of dicts to CSV."""
-    with open(filepath, 'w', newline='') as f:
+    with open(filepath, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(rows)
@@ -177,26 +178,28 @@ def add_to_beta_estimates(systems: list[dict], beta_csv: Path, dry_run: bool = F
     """Add LLM systems to beta_estimates.csv."""
     # Load existing
     existing = load_csv(beta_csv)
-    existing_domains = {row['domain'] for row in existing}
+    existing_domains = {row["domain"] for row in existing}
 
     # Prepare new rows
     new_rows = []
     for sys in systems:
-        if sys['domain'] in existing_domains:
+        if sys["domain"] in existing_domains:
             print(f"⚠️  Skipping {sys['domain']} (already exists)")
             continue
 
-        new_rows.append({
-            'domain': sys['domain'],
-            'beta': sys['beta'],
-            'beta_ci_lower': sys['beta_ci_lower'],
-            'beta_ci_upper': sys['beta_ci_upper'],
-            'beta_ci_width': sys['beta_ci_width'],
-            'theta': sys['theta'],
-            'r_squared': sys['r_squared'],
-            'delta_aic': sys['delta_aic'],
-            'source': sys['source'],
-        })
+        new_rows.append(
+            {
+                "domain": sys["domain"],
+                "beta": sys["beta"],
+                "beta_ci_lower": sys["beta_ci_lower"],
+                "beta_ci_upper": sys["beta_ci_upper"],
+                "beta_ci_width": sys["beta_ci_width"],
+                "theta": sys["theta"],
+                "r_squared": sys["r_squared"],
+                "delta_aic": sys["delta_aic"],
+                "source": sys["source"],
+            }
+        )
 
     if not new_rows:
         print("✅ No new systems to add to beta_estimates.csv")
@@ -220,25 +223,27 @@ def add_to_domain_covariates(systems: list[dict], covar_csv: Path, dry_run: bool
     """Add LLM systems to domain_covariates.csv."""
     # Load existing
     existing = load_csv(covar_csv)
-    existing_domains = {row['domain'] for row in existing}
+    existing_domains = {row["domain"] for row in existing}
 
     # Prepare new rows
     new_rows = []
     for sys in systems:
-        if sys['domain'] in existing_domains:
+        if sys["domain"] in existing_domains:
             print(f"⚠️  Skipping {sys['domain']} (already exists)")
             continue
 
-        new_rows.append({
-            'domain': sys['domain'],
-            'C_eff': sys['C_eff'],
-            'D_eff': sys['D_eff'],
-            'SNR': sys['SNR'],
-            'Memory': sys['Memory'],
-            'Theta_dot': sys['Theta_dot'],
-            'field_type': sys['field_type'],
-            'notes': sys['notes'],
-        })
+        new_rows.append(
+            {
+                "domain": sys["domain"],
+                "C_eff": sys["C_eff"],
+                "D_eff": sys["D_eff"],
+                "SNR": sys["SNR"],
+                "Memory": sys["Memory"],
+                "Theta_dot": sys["Theta_dot"],
+                "field_type": sys["field_type"],
+                "notes": sys["notes"],
+            }
+        )
 
     if not new_rows:
         print("✅ No new systems to add to domain_covariates.csv")
@@ -250,7 +255,9 @@ def add_to_domain_covariates(systems: list[dict], covar_csv: Path, dry_run: bool
     if dry_run:
         print(f"\n📋 DRY RUN: Would add {len(new_rows)} systems to domain_covariates.csv:")
         for row in new_rows:
-            print(f"  - {row['domain']}: C={row['C_eff']:.2f}, D={row['D_eff']}, FT={row['field_type']}")
+            print(
+                f"  - {row['domain']}: C={row['C_eff']:.2f}, D={row['D_eff']}, FT={row['field_type']}"
+            )
     else:
         fieldnames = list(existing[0].keys())
         write_csv(covar_csv, all_rows, fieldnames)
@@ -262,11 +269,16 @@ def add_to_domain_covariates(systems: list[dict], covar_csv: Path, dry_run: bool
 # MAIN
 # ═══════════════════════════════════════════════════════════════
 
+
 def main():
     parser = argparse.ArgumentParser(description="Add LLM systems to meta-regression dataset")
-    parser.add_argument("--dry-run", action="store_true", help="Show what would be added without writing")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Show what would be added without writing"
+    )
     parser.add_argument("--beta-csv", type=Path, default=Path("data/derived/beta_estimates.csv"))
-    parser.add_argument("--covar-csv", type=Path, default=Path("data/derived/domain_covariates.csv"))
+    parser.add_argument(
+        "--covar-csv", type=Path, default=Path("data/derived/domain_covariates.csv")
+    )
     args = parser.parse_args()
 
     print("=" * 70)

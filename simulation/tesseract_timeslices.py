@@ -21,6 +21,7 @@ Poetic:
 Reference:
     See releases/V6-Plans_etc/Zusatz_bitte_integrieren!.txt for theoretical foundation
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -68,12 +69,14 @@ class TesseractConfig:
     enable_wireframe: bool = True
     isosurface_threshold: float = 0.5
 
-    notes: list[str] = field(default_factory=lambda: [
-        "4D-Tesseract [−1,1]⁴ sliced into temporal layers",
-        "Each slice: normal 3D cube (not inverted pyramid)",
-        "Light propagates orthogonally through t-axis",
-        "Space implodes radially with exp(-α⁻¹·r²/ℓ²_P)",
-    ])
+    notes: list[str] = field(
+        default_factory=lambda: [
+            "4D-Tesseract [−1,1]⁴ sliced into temporal layers",
+            "Each slice: normal 3D cube (not inverted pyramid)",
+            "Light propagates orthogonally through t-axis",
+            "Space implodes radially with exp(-α⁻¹·r²/ℓ²_P)",
+        ]
+    )
 
 
 class TesseractTimeSlices:
@@ -98,10 +101,7 @@ class TesseractTimeSlices:
     def initialize_4d_field(self) -> None:
         """Initialize implosive field in 4D block."""
         # Create 4D meshgrid
-        X, Y, Z, T = np.meshgrid(
-            self.x_1d, self.y_1d, self.z_1d, self.t_1d,
-            indexing='ij'
-        )
+        X, Y, Z, T = np.meshgrid(self.x_1d, self.y_1d, self.z_1d, self.t_1d, indexing="ij")
 
         # Radial distance in 3D space (for each time)
         R = np.sqrt(X**2 + Y**2 + Z**2)
@@ -109,7 +109,7 @@ class TesseractTimeSlices:
         # Implosive field: Collapse toward center over time
         # ψ(r, t) = exp(-α⁻¹ · r² / (1 + t))
         # As t increases, the Gaussian spreads (backward in time = implosion)
-        self.block_4d = np.exp(-self.config.alpha_inv * R**2 / (1.0 + 10*T))
+        self.block_4d = np.exp(-self.config.alpha_inv * R**2 / (1.0 + 10 * T))
 
         # Optional: Add tetrahedral modulation
         # theta = np.arccos(Z / (R + 1e-10))
@@ -149,22 +149,41 @@ class TesseractTimeSlices:
         s = self.config.resolution - 1
 
         # 8 corners of cube
-        corners = np.array([
-            [0, 0, 0], [s, 0, 0], [s, s, 0], [0, s, 0],  # Bottom face
-            [0, 0, s], [s, 0, s], [s, s, s], [0, s, s],  # Top face
-        ])
+        corners = np.array(
+            [
+                [0, 0, 0],
+                [s, 0, 0],
+                [s, s, 0],
+                [0, s, 0],  # Bottom face
+                [0, 0, s],
+                [s, 0, s],
+                [s, s, s],
+                [0, s, s],  # Top face
+            ]
+        )
 
         # 12 edges (pairs of corner indices)
         edge_indices = [
-            (0, 1), (1, 2), (2, 3), (3, 0),  # Bottom
-            (4, 5), (5, 6), (6, 7), (7, 4),  # Top
-            (0, 4), (1, 5), (2, 6), (3, 7),  # Vertical
+            (0, 1),
+            (1, 2),
+            (2, 3),
+            (3, 0),  # Bottom
+            (4, 5),
+            (5, 6),
+            (6, 7),
+            (7, 4),  # Top
+            (0, 4),
+            (1, 5),
+            (2, 6),
+            (3, 7),  # Vertical
         ]
 
         edges = [(corners[i], corners[j]) for i, j in edge_indices]
         return edges
 
-    def compute_isosurface(self, cube_3d: np.ndarray, threshold: float | None = None) -> tuple[np.ndarray, np.ndarray]:
+    def compute_isosurface(
+        self, cube_3d: np.ndarray, threshold: float | None = None
+    ) -> tuple[np.ndarray, np.ndarray]:
         """
         Compute isosurface of 3D cube using marching cubes.
 
@@ -178,7 +197,9 @@ class TesseractTimeSlices:
         try:
             from skimage import measure
         except ImportError:
-            raise ImportError("scikit-image required for isosurface computation: pip install scikit-image")
+            raise ImportError(
+                "scikit-image required for isosurface computation: pip install scikit-image"
+            )
 
         if threshold is None:
             threshold = self.config.isosurface_threshold * np.max(cube_3d)
@@ -298,7 +319,7 @@ class TesseractTimeSlices:
                 np.arange(cube_3d.shape[0]),
                 np.arange(cube_3d.shape[1]),
                 np.arange(cube_3d.shape[2]),
-                indexing='ij'
+                indexing="ij",
             )
             x_cm = np.sum(x_grid * cube_3d) / total_mass
             y_cm = np.sum(y_grid * cube_3d) / total_mass
@@ -392,9 +413,9 @@ class PhotonPropagator:
             # Coupling to implosive field: photon "slows down" in high-density regions
             # k_vec *= (1 - coupling_strength * field_strength)
             coupling_strength = 0.01
-            kx *= (1.0 - coupling_strength * field_strength)
-            ky *= (1.0 - coupling_strength * field_strength)
-            kz *= (1.0 - coupling_strength * field_strength)
+            kx *= 1.0 - coupling_strength * field_strength
+            ky *= 1.0 - coupling_strength * field_strength
+            kz *= 1.0 - coupling_strength * field_strength
 
             # Check bounds
             if x < 0 or x >= self.tesseract.config.resolution:
@@ -428,10 +449,10 @@ class PhotonPropagator:
             # Integrate F·u along path
             for i in range(len(path) - 1):
                 # 4-velocity: u^μ = (dx, dy, dz) / dt
-                dx = path[i+1, 0] - path[i, 0]
-                dy = path[i+1, 1] - path[i, 1]
-                dz = path[i+1, 2] - path[i, 2]
-                dt_index = path[i+1, 3] - path[i, 3]
+                dx = path[i + 1, 0] - path[i, 0]
+                dy = path[i + 1, 1] - path[i, 1]
+                dz = path[i + 1, 2] - path[i, 2]
+                dt_index = path[i + 1, 3] - path[i, 3]
 
                 if dt_index == 0:
                     continue
@@ -530,12 +551,14 @@ class PhotonPropagator:
                 coherence = 0.5  # Monocular default
 
             coherence_scores.append(coherence)
-            integrated_windows.append({
-                "t_start": t_start,
-                "t_end": t_end,
-                "n_paths": len(window_paths),
-                "coherence": coherence,
-            })
+            integrated_windows.append(
+                {
+                    "t_start": t_start,
+                    "t_end": t_end,
+                    "n_paths": len(window_paths),
+                    "coherence": coherence,
+                }
+            )
 
         # Slice Fusion Frequency (SFF)
         # SFF = c/(2·IPD·tan(θ/2)) where θ is viewing angle
@@ -601,17 +624,17 @@ def animate_dual_flow(
         mid_z = tesseract.config.resolution // 2
         block_slice = tesseract.block_4d[:, :, mid_z, t_index]
 
-        im1 = axes[0].imshow(block_slice, cmap='inferno', origin='lower', vmin=0, vmax=1)
-        axes[0].set_title(f'4D Block (Z={mid_z}, τ-time)\nImplosive Field', fontsize=12)
-        axes[0].set_xlabel('X')
-        axes[0].set_ylabel('Y')
-        axes[0].axis('equal')
+        im1 = axes[0].imshow(block_slice, cmap="inferno", origin="lower", vmin=0, vmax=1)
+        axes[0].set_title(f"4D Block (Z={mid_z}, τ-time)\nImplosive Field", fontsize=12)
+        axes[0].set_xlabel("X")
+        axes[0].set_ylabel("Y")
+        axes[0].axis("equal")
 
         # RIGHT: 3D Timeslice extraction with photon paths
         cube_3d = tesseract.extract_timeslice(t_index)
         mid_z_slice = cube_3d[:, :, mid_z]
 
-        im2 = axes[1].imshow(mid_z_slice, cmap='viridis', origin='lower', vmin=0, vmax=1)
+        im2 = axes[1].imshow(mid_z_slice, cmap="viridis", origin="lower", vmin=0, vmax=1)
 
         # Overlay photon paths
         for path in photon_paths:
@@ -619,17 +642,20 @@ def animate_dual_flow(
             mask = np.abs(path[:, 3] - t_index) < 2
             if np.sum(mask) > 0:
                 path_segment = path[mask]
-                axes[1].plot(path_segment[:, 1], path_segment[:, 0], 'r-', linewidth=1, alpha=0.7)
-                axes[1].plot(path_segment[-1, 1], path_segment[-1, 0], 'ro', markersize=5)
+                axes[1].plot(path_segment[:, 1], path_segment[:, 0], "r-", linewidth=1, alpha=0.7)
+                axes[1].plot(path_segment[-1, 1], path_segment[-1, 0], "ro", markersize=5)
 
-        axes[1].set_title(f'3D Timeslice (t={t_index}, photons)\nHorizontal t-time', fontsize=12)
-        axes[1].set_xlabel('Y')
-        axes[1].set_ylabel('X')
-        axes[1].axis('equal')
+        axes[1].set_title(f"3D Timeslice (t={t_index}, photons)\nHorizontal t-time", fontsize=12)
+        axes[1].set_xlabel("Y")
+        axes[1].set_ylabel("X")
+        axes[1].axis("equal")
 
         # Global title
-        fig.suptitle(f'OIPK Dual-Flow Architecture: Frame {frame_idx+1}/{n_frames}',
-                     fontsize=14, fontweight='bold')
+        fig.suptitle(
+            f"OIPK Dual-Flow Architecture: Frame {frame_idx+1}/{n_frames}",
+            fontsize=14,
+            fontweight="bold",
+        )
 
         plt.tight_layout()
 
@@ -639,6 +665,7 @@ def animate_dual_flow(
 
     # Save
     import os
+
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
     writer = PillowWriter(fps=10)
@@ -674,8 +701,12 @@ def demo_tesseract_slicing() -> None:
     path = propagator.propagate_photon(start_pos, start_t_index=0)
 
     print(f"   Photon path length: {len(path)} steps")
-    print(f"   Start: t={path[0, 3]:.0f}, pos=({path[0, 0]:.1f}, {path[0, 1]:.1f}, {path[0, 2]:.1f})")
-    print(f"   End:   t={path[-1, 3]:.0f}, pos=({path[-1, 0]:.1f}, {path[-1, 1]:.1f}, {path[-1, 2]:.1f})")
+    print(
+        f"   Start: t={path[0, 3]:.0f}, pos=({path[0, 0]:.1f}, {path[0, 1]:.1f}, {path[0, 2]:.1f})"
+    )
+    print(
+        f"   End:   t={path[-1, 3]:.0f}, pos=({path[-1, 0]:.1f}, {path[-1, 1]:.1f}, {path[-1, 2]:.1f})"
+    )
 
     # Consciousness integral
     I_C = propagator.compute_consciousness_integral([path])

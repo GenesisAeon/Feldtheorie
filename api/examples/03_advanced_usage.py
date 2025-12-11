@@ -20,14 +20,15 @@ Usage:
     python api/examples/03_advanced_usage.py
 """
 
-import requests
-import json
 import base64
-import numpy as np
-from pathlib import Path
-from typing import List, Dict, Any
+import json
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
+from typing import Any
+
+import numpy as np
+import requests
 
 # API Base URL
 BASE_URL = "http://localhost:8000"
@@ -37,11 +38,12 @@ BASE_URL = "http://localhost:8000"
 # Error Handling
 # ============================================================================
 
+
 def example_robust_error_handling():
     """Demonstrate proper error handling for all error types"""
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("ADVANCED 1: Robust Error Handling")
-    print("="*70)
+    print("=" * 70)
 
     test_cases = [
         {
@@ -49,43 +51,43 @@ def example_robust_error_handling():
             "endpoint": "/api/sonify",
             "method": "POST",
             "data": {"beta": 4.0, "theta": 50.0, "duration": 1.0},
-            "expected": 200
+            "expected": 200,
         },
         {
             "name": "Invalid beta (too high)",
             "endpoint": "/api/sonify",
             "method": "POST",
             "data": {"beta": 25.0, "theta": 50.0},
-            "expected": 422
+            "expected": 422,
         },
         {
             "name": "Invalid field type",
             "endpoint": "/api/sonify",
             "method": "POST",
             "data": {"beta": 4.0, "theta": 50.0, "field_type": "invalid_type"},
-            "expected": 422
+            "expected": 422,
         },
         {
             "name": "Mismatched array lengths",
             "endpoint": "/api/analyze",
             "method": "POST",
             "data": {"R": [0.1, 0.2, 0.3], "sigma": [0.1, 0.2]},
-            "expected": 422
+            "expected": 422,
         },
         {
             "name": "System not found",
             "endpoint": "/api/system/nonexistent",
             "method": "GET",
             "data": None,
-            "expected": 404
+            "expected": 404,
         },
         {
             "name": "Duration too long",
             "endpoint": "/api/simulate",
             "method": "POST",
             "data": {"theta": 0.5, "beta": 4.0, "duration": 200.0},
-            "expected": 422
-        }
+            "expected": 422,
+        },
     ]
 
     print("\nTesting error handling across all endpoints:\n")
@@ -94,29 +96,27 @@ def example_robust_error_handling():
         print(f"[{i}/{len(test_cases)}] {test['name']}")
 
         try:
-            if test['method'] == 'GET':
+            if test["method"] == "GET":
                 response = requests.get(f"{BASE_URL}{test['endpoint']}", timeout=5)
             else:
                 response = requests.post(
-                    f"{BASE_URL}{test['endpoint']}",
-                    json=test['data'],
-                    timeout=5
+                    f"{BASE_URL}{test['endpoint']}", json=test["data"], timeout=5
                 )
 
-            status_ok = response.status_code == test['expected']
+            status_ok = response.status_code == test["expected"]
             symbol = "✅" if status_ok else "❌"
 
             print(f"    {symbol} Status: {response.status_code} (expected {test['expected']})")
 
             if not status_ok or response.status_code >= 400:
                 error_data = response.json()
-                if 'detail' in error_data:
+                if "detail" in error_data:
                     print(f"       Error: {error_data['detail']}")
 
         except requests.exceptions.Timeout:
-            print(f"    ⏱️  Timeout (> 5s)")
+            print("    ⏱️  Timeout (> 5s)")
         except requests.exceptions.ConnectionError:
-            print(f"    🔌 Connection error - is server running?")
+            print("    🔌 Connection error - is server running?")
             break
         except Exception as e:
             print(f"    ❌ Unexpected error: {e}")
@@ -129,11 +129,12 @@ def example_robust_error_handling():
 # Batch Processing
 # ============================================================================
 
+
 def example_batch_analysis():
     """Analyze multiple datasets in batch"""
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("ADVANCED 2: Batch Processing")
-    print("="*70)
+    print("=" * 70)
 
     # Generate synthetic datasets for different systems
     datasets = []
@@ -162,24 +163,22 @@ def example_batch_analysis():
 
         response = requests.post(
             f"{BASE_URL}/api/analyze",
-            json={
-                "R": R,
-                "sigma": sigma,
-                "bootstrap_iterations": 200  # Reduced for speed
-            }
+            json={"R": R, "sigma": sigma, "bootstrap_iterations": 200},  # Reduced for speed
         )
 
         if response.status_code == 200:
             data = response.json()
-            results.append({
-                "name": name,
-                "beta": data['beta'],
-                "beta_ci": data['beta_ci'],
-                "theta": data['theta'],
-                "theta_ci": data['theta_ci'],
-                "field_type": data['field_type'],
-                "r_squared": data['r_squared']
-            })
+            results.append(
+                {
+                    "name": name,
+                    "beta": data["beta"],
+                    "beta_ci": data["beta_ci"],
+                    "theta": data["theta"],
+                    "theta_ci": data["theta_ci"],
+                    "field_type": data["field_type"],
+                    "r_squared": data["r_squared"],
+                }
+            )
             print(f"    ✅ β={data['beta']:.3f}, Θ={data['theta']:.3f}, R²={data['r_squared']:.4f}")
             print(f"       Field type: {data['field_type']}")
         else:
@@ -198,11 +197,12 @@ def example_batch_analysis():
 # Parallel Processing
 # ============================================================================
 
+
 def example_parallel_sonification():
     """Generate multiple audio files in parallel"""
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("ADVANCED 3: Parallel Sonification")
-    print("="*70)
+    print("=" * 70)
 
     # Define parameter sweep
     beta_values = [2.5, 3.5, 4.5, 6.0, 8.0]
@@ -212,7 +212,7 @@ def example_parallel_sonification():
     print(f"  β values: {beta_values}")
     print(f"  Θ values: {theta_values}")
 
-    def sonify_params(beta: float, theta: float) -> Dict[str, Any]:
+    def sonify_params(beta: float, theta: float) -> dict[str, Any]:
         """Sonify single parameter combination"""
         try:
             response = requests.post(
@@ -221,16 +221,16 @@ def example_parallel_sonification():
                     "beta": beta,
                     "theta": theta,
                     "duration": 2.0,
-                    "sample_rate": 22050  # Lower for speed
+                    "sample_rate": 22050,  # Lower for speed
                 },
-                timeout=10
+                timeout=10,
             )
 
             if response.status_code == 200:
                 data = response.json()
 
                 # Save audio file
-                audio_bytes = base64.b64decode(data['audio_base64'])
+                audio_bytes = base64.b64decode(data["audio_base64"])
                 filename = f"advanced_parallel_beta{beta:.1f}_theta{theta:.0f}.wav"
                 filepath = Path(filename)
                 filepath.write_bytes(audio_bytes)
@@ -240,23 +240,13 @@ def example_parallel_sonification():
                     "theta": theta,
                     "success": True,
                     "file": str(filepath),
-                    "field_type": data['metadata']['field_type']
+                    "field_type": data["metadata"]["field_type"],
                 }
             else:
-                return {
-                    "beta": beta,
-                    "theta": theta,
-                    "success": False,
-                    "error": response.json()
-                }
+                return {"beta": beta, "theta": theta, "success": False, "error": response.json()}
 
         except Exception as e:
-            return {
-                "beta": beta,
-                "theta": theta,
-                "success": False,
-                "error": str(e)
-            }
+            return {"beta": beta, "theta": theta, "success": False, "error": str(e)}
 
     # Execute in parallel
     start_time = time.time()
@@ -275,18 +265,24 @@ def example_parallel_sonification():
             result = future.result()
             results.append(result)
 
-            symbol = "✅" if result['success'] else "❌"
-            if result['success']:
-                print(f"  {symbol} β={result['beta']:.1f}, Θ={result['theta']:.0f} → {result['file']}")
+            symbol = "✅" if result["success"] else "❌"
+            if result["success"]:
+                print(
+                    f"  {symbol} β={result['beta']:.1f}, Θ={result['theta']:.0f} → {result['file']}"
+                )
             else:
-                print(f"  {symbol} β={result['beta']:.1f}, Θ={result['theta']:.0f} → Error: {result.get('error', 'Unknown')}")
+                print(
+                    f"  {symbol} β={result['beta']:.1f}, Θ={result['theta']:.0f} → Error: {result.get('error', 'Unknown')}"
+                )
 
     elapsed = time.time() - start_time
 
-    success_count = sum(1 for r in results if r['success'])
+    success_count = sum(1 for r in results if r["success"])
 
     print(f"\n⏱️  Completed in {elapsed:.2f}s")
-    print(f"   Success rate: {success_count}/{len(results)} ({100*success_count/len(results):.0f}%)")
+    print(
+        f"   Success rate: {success_count}/{len(results)} ({100*success_count/len(results):.0f}%)"
+    )
 
     print(f"\n{'='*70}")
     print("✅ Parallel sonification complete")
@@ -296,16 +292,17 @@ def example_parallel_sonification():
 # Parameter Sweep
 # ============================================================================
 
+
 def example_parameter_sweep():
     """Systematic parameter sweep for simulation"""
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("ADVANCED 4: Parameter Sweep (Simulation)")
-    print("="*70)
+    print("=" * 70)
 
     beta_range = [3.0, 4.0, 5.0, 6.0]
     theta_range = [0.4, 0.5, 0.6, 0.7]
 
-    print(f"\nRunning parameter sweep:")
+    print("\nRunning parameter sweep:")
     print(f"  β: {beta_range}")
     print(f"  Θ: {theta_range}")
     print(f"  Total: {len(beta_range) * len(theta_range)} simulations\n")
@@ -329,35 +326,33 @@ def example_parameter_sweep():
                     "initial_phi": 0.05,
                     "duration": 5.0,
                     "dt": 0.05,
-                    "stimulus": {
-                        "base": 0.15,
-                        "amplitude": 0.2,
-                        "frequency": 0.3
-                    }
-                }
+                    "stimulus": {"base": 0.15, "amplitude": 0.2, "frequency": 0.3},
+                },
             )
 
             if response.status_code == 200:
                 data = response.json()
 
                 # Calculate summary statistics
-                R_final = data['R'][-1]
-                sigma_final = data['sigma'][-1]
-                R_mean = np.mean(data['R'])
-                R_std = np.std(data['R'])
+                R_final = data["R"][-1]
+                sigma_final = data["sigma"][-1]
+                R_mean = np.mean(data["R"])
+                R_std = np.std(data["R"])
 
-                sweep_results.append({
-                    "beta": beta,
-                    "theta": theta,
-                    "R_final": R_final,
-                    "sigma_final": sigma_final,
-                    "R_mean": R_mean,
-                    "R_std": R_std
-                })
+                sweep_results.append(
+                    {
+                        "beta": beta,
+                        "theta": theta,
+                        "R_final": R_final,
+                        "sigma_final": sigma_final,
+                        "R_mean": R_mean,
+                        "R_std": R_std,
+                    }
+                )
 
                 print(f"✅ R_final={R_final:.3f}, σ_final={sigma_final:.3f}")
             else:
-                print(f"❌ Failed")
+                print("❌ Failed")
 
     # Save sweep results
     output_path = Path("advanced_parameter_sweep.json")
@@ -365,11 +360,11 @@ def example_parameter_sweep():
     print(f"\n💾 Sweep results saved to: {output_path}")
 
     # Summary
-    print(f"\nSummary:")
+    print("\nSummary:")
     print(f"  Completed: {len(sweep_results)}/{len(beta_range) * len(theta_range)} simulations")
 
     if sweep_results:
-        R_finals = [r['R_final'] for r in sweep_results]
+        R_finals = [r["R_final"] for r in sweep_results]
         print(f"  R_final range: [{min(R_finals):.3f}, {max(R_finals):.3f}]")
         print(f"  Mean R_final: {np.mean(R_finals):.3f}")
 
@@ -381,11 +376,12 @@ def example_parameter_sweep():
 # Data Export
 # ============================================================================
 
+
 def example_data_export():
     """Export analysis results in multiple formats"""
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("ADVANCED 5: Data Export (JSON, CSV)")
-    print("="*70)
+    print("=" * 70)
 
     # Run analysis
     print("\n[1/3] Running analysis...")
@@ -394,8 +390,7 @@ def example_data_export():
     sigma = [1 / (1 + np.exp(-4.2 * (r - 0.55))) for r in R]
 
     response = requests.post(
-        f"{BASE_URL}/api/analyze",
-        json={"R": R, "sigma": sigma, "bootstrap_iterations": 500}
+        f"{BASE_URL}/api/analyze", json={"R": R, "sigma": sigma, "bootstrap_iterations": 500}
     )
 
     if response.status_code != 200:
@@ -408,14 +403,19 @@ def example_data_export():
     # Export as JSON
     print("\n[2/3] Exporting as JSON...")
     json_path = Path("advanced_export.json")
-    json_path.write_text(json.dumps({
-        "input": {"R": R, "sigma": sigma},
-        "results": analysis,
-        "metadata": {
-            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-            "api_version": "1.0.0"
-        }
-    }, indent=2))
+    json_path.write_text(
+        json.dumps(
+            {
+                "input": {"R": R, "sigma": sigma},
+                "results": analysis,
+                "metadata": {
+                    "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                    "api_version": "1.0.0",
+                },
+            },
+            indent=2,
+        )
+    )
     print(f"✅ Saved to: {json_path}")
 
     # Export as CSV
@@ -426,7 +426,7 @@ def example_data_export():
         f"theta,{analysis['theta']},{analysis['theta_ci'][0]},{analysis['theta_ci'][1]}",
         f"beta,{analysis['beta']},{analysis['beta_ci'][0]},{analysis['beta_ci'][1]}",
         f"r_squared,{analysis['r_squared']},,",
-        f"aic,{analysis['aic']},,"
+        f"aic,{analysis['aic']},,",
     ]
     csv_path.write_text("\n".join(csv_lines))
     print(f"✅ Saved to: {csv_path}")
@@ -438,6 +438,7 @@ def example_data_export():
 # ============================================================================
 # Main
 # ============================================================================
+
 
 def main():
     """Run all advanced examples"""
@@ -458,9 +459,9 @@ def main():
         example_parameter_sweep()
         example_data_export()
 
-        print("\n" + "="*70)
+        print("\n" + "=" * 70)
         print("✅ ALL ADVANCED EXAMPLES COMPLETED!")
-        print("="*70)
+        print("=" * 70)
         print("\nGenerated files:")
         print("  📊 advanced_batch_results.json")
         print("  📊 advanced_parameter_sweep.json")
@@ -473,7 +474,7 @@ def main():
         print("  3. Parallel requests for performance")
         print("  4. Systematic parameter sweeps")
         print("  5. Multi-format data export")
-        print("="*70 + "\n")
+        print("=" * 70 + "\n")
 
     except requests.exceptions.ConnectionError:
         print("\n❌ Error: Could not connect to API server!")

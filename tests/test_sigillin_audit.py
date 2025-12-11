@@ -1,7 +1,6 @@
 import math
 
 import pytest
-
 from scripts.sigillin_audit import ALETHEIA_ALERT, V_RIG_IDEAL, audit_integrity
 
 

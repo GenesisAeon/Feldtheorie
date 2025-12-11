@@ -189,9 +189,7 @@ class DynamicRobinBoundary:
         gate = self.gate(R)
         logistic_gap = sigma - R
         driver_gap = driver - R
-        return gate * (
-            self.logistic_weight * logistic_gap + self.driver_weight * driver_gap
-        )
+        return gate * (self.logistic_weight * logistic_gap + self.driver_weight * driver_gap)
 
     def snapshot(self, R: float, sigma: float, driver: float) -> dict[str, float]:
         """Summarise gate, impedance, and flux terms for diagnostics."""
@@ -285,8 +283,7 @@ class AdaptiveThresholdController:
 
         beta_target = self.beta_baseline * (1.0 + self.beta_gain * gate)
         beta_shift = dt * (
-            self.beta_rate * (beta_target - float(self.beta))
-            - self.beta_fatigue * abs(theta_shift)
+            self.beta_rate * (beta_target - float(self.beta)) - self.beta_fatigue * abs(theta_shift)
         )
         self.beta = max(1e-3, float(self.beta) + beta_shift)
 
@@ -513,14 +510,10 @@ def threshold_crossing_diagnostics(
         theta_cross = theta_curr_val
 
     beta_prev_val = (
-        float(beta_series_raw[prev_idx])
-        if dynamic_beta and beta_series_raw
-        else float(beta)
+        float(beta_series_raw[prev_idx]) if dynamic_beta and beta_series_raw else float(beta)
     )
     beta_curr_val = (
-        float(beta_series_raw[crossing_index])
-        if dynamic_beta and beta_series_raw
-        else float(beta)
+        float(beta_series_raw[crossing_index]) if dynamic_beta and beta_series_raw else float(beta)
     )
     beta_cross = (
         beta_prev_val + fraction * (beta_curr_val - beta_prev_val)
@@ -902,9 +895,13 @@ class ThresholdFieldSolver:
         R_vals = results["R"]
         theta_series = results.get("theta") if isinstance(results.get("theta"), list) else None
         beta_series = results.get("beta") if isinstance(results.get("beta"), list) else None
-        meaning_series = results.get("meaning") if isinstance(results.get("meaning"), list) else None
+        meaning_series = (
+            results.get("meaning") if isinstance(results.get("meaning"), list) else None
+        )
         coupling_series = (
-            results.get("semantic_coupling") if isinstance(results.get("semantic_coupling"), list) else None
+            results.get("semantic_coupling")
+            if isinstance(results.get("semantic_coupling"), list)
+            else None
         )
         boundary_flux_series = (
             results.get("boundary_flux") if isinstance(results.get("boundary_flux"), list) else None
@@ -955,8 +952,8 @@ class ThresholdFieldSolver:
             )
         if boundary_flux_series:
             boundary_flux_mean = sum(boundary_flux_series) / len(boundary_flux_series)
-            boundary_flux_sq = (
-                sum(value**2 for value in boundary_flux_series) / len(boundary_flux_series)
+            boundary_flux_sq = sum(value**2 for value in boundary_flux_series) / len(
+                boundary_flux_series
             )
             boundary_flux_std = math.sqrt(max(boundary_flux_sq - boundary_flux_mean**2, 0.0))
             summary.update(

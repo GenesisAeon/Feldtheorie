@@ -24,9 +24,9 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 # Direct import to avoid loading all simulation modules
 import importlib.util
+
 spec = importlib.util.spec_from_file_location(
-    "type6_cascade",
-    Path(__file__).parent.parent / "simulation" / "type6_cascade.py"
+    "type6_cascade", Path(__file__).parent.parent / "simulation" / "type6_cascade.py"
 )
 type6_cascade = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(type6_cascade)
@@ -103,7 +103,7 @@ def validate_cubic_root_scaling(history, verbose=True):
     validated = (slope_error < slope_tolerance) and (r_squared > r2_threshold)
 
     if verbose:
-        print(f"\n📊 Log-Log Regression Results:")
+        print("\n📊 Log-Log Regression Results:")
         print(f"   Data points: {len(R_minus_Theta_valid)}")
         print(f"   Slope (b):   {slope:.4f}")
         print(f"   Expected:    {expected_slope:.4f} (cubic-root: 1/3)")
@@ -111,14 +111,14 @@ def validate_cubic_root_scaling(history, verbose=True):
         print(f"   R²:          {r_squared:.4f}")
         print(f"   Intercept:   {intercept:.4f}")
 
-        print(f"\n🎯 Validation Criteria:")
+        print("\n🎯 Validation Criteria:")
         print(f"   Slope tolerance: ±{slope_tolerance}")
         print(f"   R² threshold:    >{r2_threshold}")
 
         print(f"\n{'✅' if validated else '❌'} Cubic-Root Scaling: ", end="")
         if validated:
             print("VALIDATED")
-            print(f"   The Type-VI cascade exhibits cubic-root jumps.")
+            print("   The Type-VI cascade exhibits cubic-root jumps.")
             print(f"   ΔR ∝ (R - Θ)^{slope:.3f} (expected: (R - Θ)^0.333)")
         else:
             if slope_error >= slope_tolerance:

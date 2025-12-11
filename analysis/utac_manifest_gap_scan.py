@@ -42,9 +42,7 @@ def _ensure_exists(path: Path) -> bool:
     return path.exists()
 
 
-def _collect_missing_components(
-    components: Sequence[Mapping[str, Any]]
-) -> list[dict[str, Any]]:
+def _collect_missing_components(components: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
     """Return metadata for components that do not exist on disk."""
 
     missing: list[dict[str, Any]] = []
@@ -131,9 +129,7 @@ def scan_manifest(
         )
 
     dataset_ready = sum(1 for entry in dataset_entries if entry["observed_ratio"] >= 1.0)
-    dataset_partial = sum(
-        1 for entry in dataset_entries if 0.0 < entry["observed_ratio"] < 1.0
-    )
+    dataset_partial = sum(1 for entry in dataset_entries if 0.0 < entry["observed_ratio"] < 1.0)
 
     analysis_gaps = _collect_target_gaps(manifest_data.get("analysis_targets", []))
     doc_gaps = _collect_target_gaps(manifest_data.get("doc_targets", []))
@@ -187,9 +183,7 @@ def _parse_iso_datetime(value: str) -> _dt.datetime:
     try:
         parsed = _dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
     except ValueError as exc:  # pragma: no cover - defensive path
-        raise argparse.ArgumentTypeError(
-            f"invalid ISO-8601 datetime value: {value!r}"
-        ) from exc
+        raise argparse.ArgumentTypeError(f"invalid ISO-8601 datetime value: {value!r}") from exc
 
     if parsed.tzinfo is None:
         parsed = parsed.replace(tzinfo=_dt.timezone.utc)

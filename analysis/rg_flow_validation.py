@@ -71,13 +71,17 @@ def load_llm_trajectories() -> dict[str, pd.DataFrame]:
     # Check columns - adjust for actual CSV format
     if "run_id" in df.columns and "training_step" in df.columns and "beta_estimate" in df.columns:
         # Rename to expected format
-        df = df.rename(columns={
-            "run_id": "model",
-            "training_step": "epoch",
-            "beta_estimate": "beta",
-        })
+        df = df.rename(
+            columns={
+                "run_id": "model",
+                "training_step": "epoch",
+                "beta_estimate": "beta",
+            }
+        )
     elif not all(col in df.columns for col in ["model", "epoch", "beta"]):
-        raise ValueError(f"Expected columns: model, epoch, beta (or run_id, training_step, beta_estimate). Got: {df.columns}")
+        raise ValueError(
+            f"Expected columns: model, epoch, beta (or run_id, training_step, beta_estimate). Got: {df.columns}"
+        )
 
     # Split by model
     trajectories = {}

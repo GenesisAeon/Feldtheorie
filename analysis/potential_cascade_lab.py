@@ -342,6 +342,7 @@ def build_parser(defaults: Mapping[str, float | int]) -> argparse.ArgumentParser
     )
     return parser
 
+
 def generate_potential_series(
     steps: int,
     *,
@@ -617,7 +618,9 @@ def simulate_cascade(
     )
 
 
-def compile_payload(diagnostics: CascadeDiagnostics, *, generated_at: str | None = None) -> dict[str, object]:
+def compile_payload(
+    diagnostics: CascadeDiagnostics, *, generated_at: str | None = None
+) -> dict[str, object]:
     """Convert diagnostics into the JSON schema used by Docs and notebooks."""
 
     payload = diagnostics.to_payload(generated_at=generated_at)

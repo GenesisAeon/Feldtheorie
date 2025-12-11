@@ -21,13 +21,13 @@ Author: Genesis Aeon (UTAC Framework)
 Version: 5.0 "Rigorous Falsification"
 """
 
+import warnings
+from itertools import combinations
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
-from pathlib import Path
-from typing import Dict, List, Tuple
 from scipy import constants
-from itertools import combinations, product
-import warnings
 
 # ============================================================================
 # CONFIGURATION
@@ -48,7 +48,8 @@ C_KM_S = constants.c / 1000.0  # 299792.458 km/s
 # FUNDAMENTAL CONSTANTS DATABASE
 # ============================================================================
 
-def build_constant_library() -> Dict[str, float]:
+
+def build_constant_library() -> dict[str, float]:
     """
     Compile library of dimensionless fundamental constants.
 
@@ -60,12 +61,11 @@ def build_constant_library() -> Dict[str, float]:
         "alpha": constants.alpha,  # Fine-structure constant
         "alpha_inv": 1.0 / constants.alpha,  # 137.036
         "proton_electron_mass_ratio": constants.proton_mass / constants.electron_mass,  # ~1836.15
-        "electron_muon_mass_ratio": constants.electron_mass / (105.6583755e-3 * 1e9 * constants.eV / constants.c**2),  # ~0.00483
-
+        "electron_muon_mass_ratio": constants.electron_mass
+        / (105.6583755e-3 * 1e9 * constants.eV / constants.c**2),  # ~0.00483
         # Coupling constants (order of magnitude)
         "weak_coupling": 1.0 / 29.0,  # Approximate
         "strong_coupling": 1.0,  # At low energy (dimensionless estimate)
-
         # Mathematical constants
         "phi": (1.0 + np.sqrt(5.0)) / 2.0,  # Golden ratio
         "pi": np.pi,
@@ -75,12 +75,10 @@ def build_constant_library() -> Dict[str, float]:
         "sqrt5": np.sqrt(5.0),
         "euler_gamma": 0.5772156649,  # Euler-Mascheroni constant
         "zeta3": 1.2020569,  # Riemann zeta(3) (Apéry's constant)
-
         # Powers of phi
         "phi_squared": ((1.0 + np.sqrt(5.0)) / 2.0) ** 2,
         "phi_cubed": ((1.0 + np.sqrt(5.0)) / 2.0) ** 3,
         "phi_inv": 2.0 / (1.0 + np.sqrt(5.0)),
-
         # Small dimensionless numbers
         "one_tenth": 0.1,
         "one_seventh": 1.0 / 7.0,
@@ -94,10 +92,10 @@ def build_constant_library() -> Dict[str, float]:
 # COMBINATION GENERATOR
 # ============================================================================
 
+
 def generate_constant_pairs(
-    library: Dict[str, float],
-    max_pairs: int = 10_000
-) -> List[Tuple[str, str, float, float]]:
+    library: dict[str, float], max_pairs: int = 10_000
+) -> list[tuple[str, str, float, float]]:
     """
     Generate pairs of constants for testing.
 
@@ -125,8 +123,7 @@ def generate_constant_pairs(
 
 
 def generate_extended_combinations(
-    library: Dict[str, float],
-    max_combinations: int = 50_000
+    library: dict[str, float], max_combinations: int = 50_000
 ) -> pd.DataFrame:
     """
     Generate extended combinations: products, quotients, powers.
@@ -150,40 +147,46 @@ def generate_extended_combinations(
             break
 
         # Product
-        results.append({
-            "name1": name1,
-            "name2": name2,
-            "value1": val1,
-            "value2": val2,
-            "operation": "multiply",
-            "combined_value": val1 * val2,
-            "formula": f"{name1} * {name2}"
-        })
-        count += 1
-
-        # Quotient (both directions)
-        if val2 != 0:
-            results.append({
+        results.append(
+            {
                 "name1": name1,
                 "name2": name2,
                 "value1": val1,
                 "value2": val2,
-                "operation": "divide",
-                "combined_value": val1 / val2,
-                "formula": f"{name1} / {name2}"
-            })
+                "operation": "multiply",
+                "combined_value": val1 * val2,
+                "formula": f"{name1} * {name2}",
+            }
+        )
+        count += 1
+
+        # Quotient (both directions)
+        if val2 != 0:
+            results.append(
+                {
+                    "name1": name1,
+                    "name2": name2,
+                    "value1": val1,
+                    "value2": val2,
+                    "operation": "divide",
+                    "combined_value": val1 / val2,
+                    "formula": f"{name1} / {name2}",
+                }
+            )
             count += 1
 
         if val1 != 0:
-            results.append({
-                "name1": name2,
-                "name2": name1,
-                "value1": val2,
-                "value2": val1,
-                "operation": "divide",
-                "combined_value": val2 / val1,
-                "formula": f"{name2} / {name1}"
-            })
+            results.append(
+                {
+                    "name1": name2,
+                    "name2": name1,
+                    "value1": val2,
+                    "value2": val1,
+                    "operation": "divide",
+                    "combined_value": val2 / val1,
+                    "formula": f"{name2} / {name1}",
+                }
+            )
             count += 1
 
     # Simple powers
@@ -191,17 +194,19 @@ def generate_extended_combinations(
         if count >= max_combinations:
             break
 
-        for exp in [2, 3, 0.5, 1/3]:
+        for exp in [2, 3, 0.5, 1 / 3]:
             if val > 0:  # Avoid complex numbers
-                results.append({
-                    "name1": name,
-                    "name2": f"^{exp}",
-                    "value1": val,
-                    "value2": exp,
-                    "operation": "power",
-                    "combined_value": val ** exp,
-                    "formula": f"{name}^{exp}"
-                })
+                results.append(
+                    {
+                        "name1": name,
+                        "name2": f"^{exp}",
+                        "value1": val,
+                        "value2": exp,
+                        "operation": "power",
+                        "combined_value": val**exp,
+                        "formula": f"{name}^{exp}",
+                    }
+                )
                 count += 1
 
     return pd.DataFrame(results)
@@ -211,11 +216,8 @@ def generate_extended_combinations(
 # VELOCITY PREDICTION & SCORING
 # ============================================================================
 
-def predict_velocity_from_pair(
-    const1: float,
-    const2: float,
-    c: float = C_KM_S
-) -> float:
+
+def predict_velocity_from_pair(const1: float, const2: float, c: float = C_KM_S) -> float:
     """
     Predict velocity using formula: v = c / (const1 · const2)
 
@@ -240,10 +242,8 @@ def predict_velocity_from_pair(
 
 
 def score_prediction(
-    v_pred: float,
-    v_obs: float = BOEHME_VELOCITY,
-    sigma_obs: float = BOEHME_UNCERTAINTY
-) -> Dict[str, float]:
+    v_pred: float, v_obs: float = BOEHME_VELOCITY, sigma_obs: float = BOEHME_UNCERTAINTY
+) -> dict[str, float]:
     """
     Score a velocity prediction.
 
@@ -263,13 +263,14 @@ def score_prediction(
         "v_pred": v_pred,
         "deviation": deviation,
         "relative_error": relative_error,
-        "sigma_discrepancy": sigma_discrepancy
+        "sigma_discrepancy": sigma_discrepancy,
     }
 
 
 # ============================================================================
 # MASSIVE SCAN
 # ============================================================================
+
 
 class UniversalConstantScanner:
     """
@@ -284,7 +285,7 @@ class UniversalConstantScanner:
     def __init__(
         self,
         target_velocity: float = BOEHME_VELOCITY,
-        target_uncertainty: float = BOEHME_UNCERTAINTY
+        target_uncertainty: float = BOEHME_UNCERTAINTY,
     ):
         """
         Initialize scanner.
@@ -326,14 +327,16 @@ class UniversalConstantScanner:
             # Score
             score = score_prediction(v_pred)
 
-            results.append({
-                "constant1": name1,
-                "constant2": name2,
-                "value1": val1,
-                "value2": val2,
-                "formula": f"c / ({name1} · {name2})",
-                **score
-            })
+            results.append(
+                {
+                    "constant1": name1,
+                    "constant2": name2,
+                    "value1": val1,
+                    "value2": val2,
+                    "formula": f"c / ({name1} · {name2})",
+                    **score,
+                }
+            )
 
         self.results = pd.DataFrame(results)
 
@@ -359,7 +362,7 @@ class UniversalConstantScanner:
 
         return ranked
 
-    def compute_look_elsewhere_effect(self) -> Dict[str, float]:
+    def compute_look_elsewhere_effect(self) -> dict[str, float]:
         """
         Compute Look-Elsewhere Effect correction.
 
@@ -371,15 +374,13 @@ class UniversalConstantScanner:
 
         # Our baseline (alpha, phi)
         alpha_phi_match = self.results[
-            (self.results["constant1"] == "alpha") &
-            (self.results["constant2"] == "phi")
+            (self.results["constant1"] == "alpha") & (self.results["constant2"] == "phi")
         ]
 
         if len(alpha_phi_match) == 0:
             # Try inverse
             alpha_phi_match = self.results[
-                (self.results["constant1"] == "alpha_inv") &
-                (self.results["constant2"] == "phi")
+                (self.results["constant1"] == "alpha_inv") & (self.results["constant2"] == "phi")
             ]
 
         if len(alpha_phi_match) == 0:
@@ -403,13 +404,14 @@ class UniversalConstantScanner:
             "n_better_than_ours": int(better_count),
             "p_value_empirical": p_value_empirical,
             "percentile": percentile,
-            "look_elsewhere_penalty": len(self.results)
+            "look_elsewhere_penalty": len(self.results),
         }
 
 
 # ============================================================================
 # MAIN EXECUTION
 # ============================================================================
+
 
 def main():
     """Run massive constant scan."""
@@ -482,7 +484,8 @@ def main():
     summary_file = OUTPUT_DIR / "look_elsewhere_summary.json"
 
     import json
-    with open(summary_file, 'w') as f:
+
+    with open(summary_file, "w") as f:
         summary = {
             "target_velocity_km_s": BOEHME_VELOCITY,
             "target_uncertainty_km_s": BOEHME_UNCERTAINTY,
@@ -491,13 +494,13 @@ def main():
             "top_match": {
                 "formula": top_20.iloc[0]["formula"],
                 "v_pred": float(top_20.iloc[0]["v_pred"]),
-                "deviation": float(top_20.iloc[0]["deviation"])
+                "deviation": float(top_20.iloc[0]["deviation"]),
             },
             "alpha_phi_performance": {
                 "deviation_km_s": float(lee["our_deviation_km_s"]),
                 "percentile": float(lee["percentile"]),
-                "p_value": float(lee["p_value_empirical"])
-            }
+                "p_value": float(lee["p_value_empirical"]),
+            },
         }
         json.dump(summary, f, indent=2)
 

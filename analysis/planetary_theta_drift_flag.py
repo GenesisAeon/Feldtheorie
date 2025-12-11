@@ -103,9 +103,7 @@ def _normalised_width(interval: Iterable[float], centre: float) -> float:
 
 
 def _utc_now() -> str:
-    return (
-        datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-    )
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 def load_input(path: Path) -> dict[str, Any]:
@@ -274,12 +272,15 @@ def main() -> None:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(drift_payload, indent=2), encoding="utf-8")
     print(
-        "σ(β(R-Θ)) gap audit geschrieben nach", args.output,
-        "–", drift_payload["overview"]["theta_flags"], "von",
-        drift_payload["overview"]["total_elements"], "Laternen benötigen adaptive Θ."
+        "σ(β(R-Θ)) gap audit geschrieben nach",
+        args.output,
+        "–",
+        drift_payload["overview"]["theta_flags"],
+        "von",
+        drift_payload["overview"]["total_elements"],
+        "Laternen benötigen adaptive Θ.",
     )
 
 
 if __name__ == "__main__":
     main()
-

@@ -176,9 +176,7 @@ def holm_bonferroni(p_values: np.ndarray, alpha: float = 0.05) -> np.ndarray:
 
 
 def corrected_aic_threshold(
-    n_comparisons: int,
-    alpha: float = 0.05,
-    correction: str = "bonferroni"
+    n_comparisons: int, alpha: float = 0.05, correction: str = "bonferroni"
 ) -> float:
     """Compute ΔAIC threshold adjusted for multiple testing.
 
@@ -268,7 +266,9 @@ def interpret_corrections(
     lines.append("")
 
     lines.append(f"Total comparisons: {len(comparisons)}")
-    lines.append(f"Uncorrected rejections (ΔAIC > 10): {sum(c.delta_aic > 10 for c in comparisons)}")
+    lines.append(
+        f"Uncorrected rejections (ΔAIC > 10): {sum(c.delta_aic > 10 for c in comparisons)}"
+    )
     lines.append("")
 
     lines.append("Corrected thresholds:")
@@ -285,17 +285,15 @@ def interpret_corrections(
 
     lines.append("INTERPRETATION:")
     if np.sum(bh_reject) < len(comparisons) / 3:
-        lines.append(
-            "  After multiple testing correction, fewer than 1/3 of comparisons"
-        )
+        lines.append("  After multiple testing correction, fewer than 1/3 of comparisons")
         lines.append("  remain significant. This suggests:")
         lines.append("    - Some initial ΔAIC > 10 findings may be false positives")
-        lines.append("    - Universality claims should be limited to corrected-significant datasets")
+        lines.append(
+            "    - Universality claims should be limited to corrected-significant datasets"
+        )
         lines.append("    - Recommend reporting FDR-adjusted results in manuscript")
     else:
-        lines.append(
-            "  Majority of comparisons remain significant after correction."
-        )
+        lines.append("  Majority of comparisons remain significant after correction.")
         lines.append("  This supports robust model preference for logistic over null models.")
 
     lines.append("")
@@ -346,9 +344,7 @@ def main():
 
     # Compute corrected ΔAIC thresholds
     corrected_thresholds = {
-        "bonferroni": corrected_aic_threshold(
-            len(comparisons), args.alpha, "bonferroni"
-        ),
+        "bonferroni": corrected_aic_threshold(len(comparisons), args.alpha, "bonferroni"),
         "holm": corrected_aic_threshold(len(comparisons), args.alpha, "holm"),
         "fdr": corrected_aic_threshold(len(comparisons), args.alpha, "fdr"),
     }

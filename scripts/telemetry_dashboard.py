@@ -36,7 +36,6 @@ import sys
 from datetime import datetime, timezone
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
-from typing import Dict, List, Optional
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 
@@ -44,13 +43,12 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(BASE_DIR))
 from scripts.sigillin_sync import discover_trilayers, generate_report, resolve_roots
 
-
 # ============================================================================
 # Metric Collection
 # ============================================================================
 
 
-def collect_trilayer_health() -> Dict[str, object]:
+def collect_trilayer_health() -> dict[str, object]:
     """Collect trilayer synchronization metrics."""
     try:
         roots = resolve_roots([])  # Use defaults
@@ -72,7 +70,7 @@ def collect_trilayer_health() -> Dict[str, object]:
         return {"status": "error", "error": str(e)}
 
 
-def collect_test_coverage() -> Dict[str, object]:
+def collect_test_coverage() -> dict[str, object]:
     """Collect pytest test coverage metrics."""
     try:
         # Run pytest with coverage
@@ -102,7 +100,7 @@ def collect_test_coverage() -> Dict[str, object]:
         return {"status": "error", "error": str(e)}
 
 
-def collect_codex_status() -> Dict[str, object]:
+def collect_codex_status() -> dict[str, object]:
     """Collect codex feedback metrics."""
     try:
         codex_json = BASE_DIR / "seed" / "codexfeedback.json"
@@ -134,7 +132,7 @@ def collect_codex_status() -> Dict[str, object]:
         return {"status": "error", "error": str(e)}
 
 
-def collect_git_status() -> Dict[str, object]:
+def collect_git_status() -> dict[str, object]:
     """Collect git repository status."""
     try:
         # Get branch
@@ -155,9 +153,7 @@ def collect_git_status() -> Dict[str, object]:
             text=True,
             timeout=5,
         )
-        commit_count = (
-            int(commit_result.stdout.strip()) if commit_result.returncode == 0 else 0
-        )
+        commit_count = int(commit_result.stdout.strip()) if commit_result.returncode == 0 else 0
 
         # Get uncommitted changes
         status_result = subprocess.run(
@@ -167,7 +163,9 @@ def collect_git_status() -> Dict[str, object]:
             text=True,
             timeout=5,
         )
-        uncommitted = len(status_result.stdout.strip().split("\n")) if status_result.stdout.strip() else 0
+        uncommitted = (
+            len(status_result.stdout.strip().split("\n")) if status_result.stdout.strip() else 0
+        )
 
         return {
             "status": "healthy" if uncommitted == 0 else "dirty",
@@ -179,7 +177,7 @@ def collect_git_status() -> Dict[str, object]:
         return {"status": "error", "error": str(e)}
 
 
-def collect_preset_alignment() -> Dict[str, object]:
+def collect_preset_alignment() -> dict[str, object]:
     """Collect preset alignment metrics (simulator ↔ analysis)."""
     # This would call preset_alignment_guard.py, but for prototype we return placeholder
     return {
@@ -193,7 +191,7 @@ def collect_preset_alignment() -> Dict[str, object]:
 # ============================================================================
 
 
-def aggregate_telemetry() -> Dict[str, object]:
+def aggregate_telemetry() -> dict[str, object]:
     """Aggregate all telemetry metrics into single envelope."""
     return {
         "meta": {
@@ -225,7 +223,7 @@ def aggregate_telemetry() -> Dict[str, object]:
 # ============================================================================
 
 
-def export_json(telemetry: Dict[str, object], output_path: Path) -> None:
+def export_json(telemetry: dict[str, object], output_path: Path) -> None:
     """Export telemetry to JSON."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", encoding="utf-8") as f:
@@ -234,7 +232,7 @@ def export_json(telemetry: Dict[str, object], output_path: Path) -> None:
     print(f"✅ JSON telemetry exported to {output_path}", file=sys.stderr)
 
 
-def export_html(telemetry: Dict[str, object], output_path: Path) -> None:
+def export_html(telemetry: dict[str, object], output_path: Path) -> None:
     """Export telemetry to HTML dashboard."""
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
@@ -457,7 +455,7 @@ def serve_dashboard(port: int = 8000):
 # ============================================================================
 
 
-def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Feldtheorie Telemetry Dashboard")
 
     parser.add_argument(
@@ -472,15 +470,13 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
         default=BASE_DIR / "telemetry",
         help="Output path (without extension for 'both')",
     )
-    parser.add_argument(
-        "--serve", action="store_true", help="Start HTTP server for live dashboard"
-    )
+    parser.add_argument("--serve", action="store_true", help="Start HTTP server for live dashboard")
     parser.add_argument("--port", type=int, default=8000, help="HTTP server port (default: 8000)")
 
     return parser.parse_args(argv)
 
 
-def main(argv: Optional[List[str]] = None) -> int:
+def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
 
     if args.serve:

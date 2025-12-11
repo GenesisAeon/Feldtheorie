@@ -67,8 +67,18 @@ def _check_metadata_sync(json_data: dict, yaml_data: dict, md_meta: dict) -> boo
 
     for label, j_val, y_val, m_val in [
         ("version", json_meta.get("version"), yaml_meta.get("version"), md_meta.get("version")),
-        ("generated_at", json_meta.get("generated_at"), yaml_meta.get("generated_at"), md_meta.get("generated_at")),
-        ("updated_at", json_meta.get("updated_at"), yaml_meta.get("updated_at"), md_meta.get("updated_at")),
+        (
+            "generated_at",
+            json_meta.get("generated_at"),
+            yaml_meta.get("generated_at"),
+            md_meta.get("generated_at"),
+        ),
+        (
+            "updated_at",
+            json_meta.get("updated_at"),
+            yaml_meta.get("updated_at"),
+            md_meta.get("updated_at"),
+        ),
         ("scope", json_meta.get("scope"), yaml_meta.get("scope"), md_meta.get("scope")),
     ]:
         print(f"🧭 {label}: JSON='{j_val}', YAML='{y_val}', MD='{m_val}'")
@@ -107,7 +117,9 @@ def _check_index_bridges() -> bool:
     return drift_detected
 
 
-def validate_trilayer(base_path: str = "releases/V6-Plans_etc", todo_name: str = "V6ToDorefresh") -> int:
+def validate_trilayer(
+    base_path: str = "releases/V6-Plans_etc", todo_name: str = "V6ToDorefresh"
+) -> int:
     """
     Validate TriLayer consistency between YAML/JSON/MD.
 
@@ -159,7 +171,9 @@ def validate_trilayer(base_path: str = "releases/V6-Plans_etc", todo_name: str =
     md_beta = md_meta.get("beta_drive")
 
     print(f"📐 β-drive: JSON={json_beta}, YAML={yaml_beta}, MD={md_beta}")
-    if abs(json_beta - yaml_beta) > 0.01 or (md_beta is not None and abs(json_beta - md_beta) > 0.01):
+    if abs(json_beta - yaml_beta) > 0.01 or (
+        md_beta is not None and abs(json_beta - md_beta) > 0.01
+    ):
         print("⚠️  DRIFT: β-drive mismatch!")
         drift_detected = True
     else:
@@ -231,11 +245,14 @@ def validate_trilayer(base_path: str = "releases/V6-Plans_etc", todo_name: str =
 if __name__ == "__main__":
     # Support both V6_ToDoListe and V6ToDorefresh trilayers
     import argparse
+
     parser = argparse.ArgumentParser(description="Validate TriLayer consistency")
-    parser.add_argument("--name", default="V6ToDorefresh",
-                        help="Trilayer name prefix (default: V6ToDorefresh)")
-    parser.add_argument("--path", default="releases/V6-Plans_etc",
-                        help="Base path (default: releases/V6-Plans_etc)")
+    parser.add_argument(
+        "--name", default="V6ToDorefresh", help="Trilayer name prefix (default: V6ToDorefresh)"
+    )
+    parser.add_argument(
+        "--path", default="releases/V6-Plans_etc", help="Base path (default: releases/V6-Plans_etc)"
+    )
     args = parser.parse_args()
 
     sys.exit(validate_trilayer(base_path=args.path, todo_name=args.name))

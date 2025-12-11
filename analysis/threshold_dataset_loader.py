@@ -292,9 +292,7 @@ def evaluate_logistic_fit(
         "power_law": power_null,
     }
 
-    best_null_aic = min(
-        value.get("aic", float("inf")) for value in null_models_raw.values()
-    )
+    best_null_aic = min(value.get("aic", float("inf")) for value in null_models_raw.values())
     delta_aic_best = best_null_aic - metrics.get("aic", float("nan"))
 
     return FitResult(

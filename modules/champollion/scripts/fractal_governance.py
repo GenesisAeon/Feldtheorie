@@ -18,15 +18,13 @@ Each context gets specialized versions of:
 - POLICY.md (specific rules)
 """
 
-import os
 import re
-import yaml
-import json
-from pathlib import Path
-from datetime import datetime
-from typing import Dict, List, Optional, Tuple, Set
 from dataclasses import dataclass, field
+from datetime import datetime
+from pathlib import Path
+from typing import Optional
 
+import yaml
 
 # ============================================================================
 # CONFIGURATION
@@ -41,9 +39,15 @@ GOVERNANCE_FILES = ["AGENTS.md", "ETHICS.md", "ARCHITECTURE.md", "POLICY.md"]
 
 # Directories to skip
 SKIP_DIRS = {
-    ".git", ".github", "__pycache__", ".pytest_cache",
-    "node_modules", "venv", "env", ".venv",
-    "modules/champollion"  # Don't govern the governance system itself
+    ".git",
+    ".github",
+    "__pycache__",
+    ".pytest_cache",
+    "node_modules",
+    "venv",
+    "env",
+    ".venv",
+    "modules/champollion",  # Don't govern the governance system itself
 }
 
 # Custom rules markers
@@ -55,13 +59,15 @@ CUSTOM_RULES_END = "<!-- /CUSTOM_RULES -->"
 # DATA STRUCTURES
 # ============================================================================
 
+
 @dataclass
 class ModeConfig:
     """Configuration for a governance mode"""
+
     mode: str
     mode_id: str
     description: str
-    folder_patterns: List[str]
+    folder_patterns: list[str]
     agents_content: str
     workflow_content: str
     ethics_content: str
@@ -76,42 +82,45 @@ class ModeConfig:
 @dataclass
 class Context:
     """Represents a directory context in the repository"""
+
     path: Path
     depth: int
-    mode: Optional[ModeConfig] = None
-    parent: Optional['Context'] = None
-    custom_rules: Dict[str, str] = field(default_factory=dict)
+    mode: ModeConfig | None = None
+    parent: Optional["Context"] = None
+    custom_rules: dict[str, str] = field(default_factory=dict)
     has_governance: bool = False
-    inconsistencies: List[str] = field(default_factory=list)
+    inconsistencies: list[str] = field(default_factory=list)
 
 
 @dataclass
 class GovernanceReport:
     """Aggregated governance report"""
+
     total_contexts: int = 0
-    contexts_by_mode: Dict[str, int] = field(default_factory=dict)
-    total_agents: Dict[str, int] = field(default_factory=dict)
-    inconsistencies: List[Tuple[str, str]] = field(default_factory=list)
-    custom_policies: List[Tuple[str, str]] = field(default_factory=list)
+    contexts_by_mode: dict[str, int] = field(default_factory=dict)
+    total_agents: dict[str, int] = field(default_factory=dict)
+    inconsistencies: list[tuple[str, str]] = field(default_factory=list)
+    custom_policies: list[tuple[str, str]] = field(default_factory=list)
 
 
 # ============================================================================
 # MODE DETECTION
 # ============================================================================
 
-def load_mode_config(mode_dir: Path) -> Optional[ModeConfig]:
+
+def load_mode_config(mode_dir: Path) -> ModeConfig | None:
     """Load configuration for a specific mode"""
     config_file = mode_dir / "config.yaml"
     if not config_file.exists():
         return None
 
-    with open(config_file, 'r') as f:
+    with open(config_file) as f:
         data = yaml.safe_load(f)
 
     return ModeConfig(**data)
 
 
-def load_all_modes() -> List[ModeConfig]:
+def load_all_modes() -> list[ModeConfig]:
     """Load all mode configurations"""
     modes = []
     for mode_dir in TEMPLATES_DIR.iterdir():
@@ -122,7 +131,7 @@ def load_all_modes() -> List[ModeConfig]:
     return modes
 
 
-def detect_mode(path: Path, modes: List[ModeConfig]) -> Optional[ModeConfig]:
+def detect_mode(path: Path, modes: list[ModeConfig]) -> ModeConfig | None:
     """
     Detect which governance mode applies to a directory.
 
@@ -133,7 +142,7 @@ def detect_mode(path: Path, modes: List[ModeConfig]) -> Optional[ModeConfig]:
     for mode in modes:
         for pattern in mode.folder_patterns:
             # Check if the path matches the pattern
-            if rel_path.startswith(pattern.rstrip('/')):
+            if rel_path.startswith(pattern.rstrip("/")):
                 return mode
             # Also check if the directory name matches
             if path.name + "/" == pattern:
@@ -145,6 +154,7 @@ def detect_mode(path: Path, modes: List[ModeConfig]) -> Optional[ModeConfig]:
 # ============================================================================
 # TEMPLATE RENDERING
 # ============================================================================
+
 
 def extract_custom_rules(content: str) -> str:
     """Extract custom rules block from existing governance file"""
@@ -158,21 +168,16 @@ def extract_custom_rules(content: str) -> str:
         return ""
 
     # Extract everything between markers, including the markers
-    return content[start:end + len(CUSTOM_RULES_END)]
+    return content[start : end + len(CUSTOM_RULES_END)]
 
 
-def render_template(
-    template_path: Path,
-    context: Context,
-    mode: ModeConfig,
-    timestamp: str
-) -> str:
+def render_template(template_path: Path, context: Context, mode: ModeConfig, timestamp: str) -> str:
     """
     Render a governance template with context-specific values.
 
     Preserves CUSTOM_RULES blocks if they exist.
     """
-    with open(template_path, 'r') as f:
+    with open(template_path) as f:
         template = f.read()
 
     # Calculate parent path
@@ -225,13 +230,14 @@ def render_template(
 # TOP-DOWN PROPAGATION
 # ============================================================================
 
-def read_root_governance() -> Dict[str, str]:
+
+def read_root_governance() -> dict[str, str]:
     """Read root-level governance files"""
     governance = {}
     for filename in GOVERNANCE_FILES:
         filepath = REPO_ROOT / filename
         if filepath.exists():
-            with open(filepath, 'r') as f:
+            with open(filepath) as f:
                 governance[filename] = f.read()
     return governance
 
@@ -253,11 +259,8 @@ def should_skip_directory(path: Path) -> bool:
 
 
 def scan_directory_tree(
-    root: Path,
-    modes: List[ModeConfig],
-    parent: Optional[Context] = None,
-    depth: int = 0
-) -> List[Context]:
+    root: Path, modes: list[ModeConfig], parent: Context | None = None, depth: int = 0
+) -> list[Context]:
     """
     Recursively scan directory tree and create Context objects.
 
@@ -272,19 +275,14 @@ def scan_directory_tree(
     mode = detect_mode(root, modes)
 
     if mode is not None:  # Only create context if mode is detected
-        context = Context(
-            path=root,
-            depth=depth,
-            mode=mode,
-            parent=parent
-        )
+        context = Context(path=root, depth=depth, mode=mode, parent=parent)
 
         # Check if governance files already exist and extract custom rules
         for filename in GOVERNANCE_FILES:
             filepath = root / filename
             if filepath.exists():
                 context.has_governance = True
-                with open(filepath, 'r') as f:
+                with open(filepath) as f:
                     content = f.read()
                     custom_rules = extract_custom_rules(content)
                     if custom_rules:
@@ -298,13 +296,8 @@ def scan_directory_tree(
     # Recurse into subdirectories
     try:
         for item in sorted(root.iterdir()):
-            if item.is_dir() and not item.name.startswith('.'):
-                subcontexts = scan_directory_tree(
-                    item,
-                    modes,
-                    parent=use_parent,
-                    depth=depth+1
-                )
+            if item.is_dir() and not item.name.startswith("."):
+                subcontexts = scan_directory_tree(item, modes, parent=use_parent, depth=depth + 1)
                 contexts.extend(subcontexts)
     except PermissionError:
         pass  # Skip directories we can't read
@@ -312,7 +305,7 @@ def scan_directory_tree(
     return contexts
 
 
-def propagate_governance(contexts: List[Context], dry_run: bool = False) -> int:
+def propagate_governance(contexts: list[Context], dry_run: bool = False) -> int:
     """
     TOP-DOWN: Propagate governance files to all contexts.
 
@@ -342,7 +335,7 @@ def propagate_governance(contexts: List[Context], dry_run: bool = False) -> int:
             if dry_run:
                 print(f"[DRY RUN] Would write: {output_path.relative_to(REPO_ROOT)}")
             else:
-                with open(output_path, 'w') as f:
+                with open(output_path, "w") as f:
                     f.write(rendered)
                 files_written += 1
                 print(f"✓ Written: {output_path.relative_to(REPO_ROOT)}")
@@ -354,7 +347,8 @@ def propagate_governance(contexts: List[Context], dry_run: bool = False) -> int:
 # BOTTOM-UP AGGREGATION
 # ============================================================================
 
-def aggregate_governance(contexts: List[Context]) -> GovernanceReport:
+
+def aggregate_governance(contexts: list[Context]) -> GovernanceReport:
     """
     BOTTOM-UP: Aggregate governance information and detect inconsistencies.
     """
@@ -442,7 +436,7 @@ def write_governance_report(report: GovernanceReport, output_path: Path):
 *This report was generated automatically by the Fractal Governance Engine.*
 """
 
-    with open(output_path, 'w') as f:
+    with open(output_path, "w") as f:
         f.write(content)
 
     print(f"\n📊 Report written: {output_path.relative_to(REPO_ROOT)}")
@@ -452,6 +446,7 @@ def write_governance_report(report: GovernanceReport, output_path: Path):
 # MAIN
 # ============================================================================
 
+
 def main():
     """Main entry point"""
     import argparse
@@ -460,14 +455,12 @@ def main():
         description="Fractal Governance Engine - Bi-directional policy propagation"
     )
     parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Show what would be done without making changes"
+        "--dry-run", action="store_true", help="Show what would be done without making changes"
     )
     parser.add_argument(
         "--report-only",
         action="store_true",
-        help="Only generate the governance report (no propagation)"
+        help="Only generate the governance report (no propagation)",
     )
 
     args = parser.parse_args()

@@ -8,7 +8,6 @@ from __future__ import annotations
 import math
 
 import pytest
-
 from models.membrane_solver import (
     DynamicRobinBoundary,
     logistic_impedance_gate,
@@ -66,12 +65,16 @@ class TestLogisticImpedanceGate:
 
     def test_returns_zeta_closed_below_theta(self) -> None:
         """Far below theta, should return zeta_closed."""
-        result = logistic_impedance_gate(-10.0, theta=0.0, beta=4.0, zeta_closed=1.35, zeta_open=0.65)
+        result = logistic_impedance_gate(
+            -10.0, theta=0.0, beta=4.0, zeta_closed=1.35, zeta_open=0.65
+        )
         assert math.isclose(result, 1.35, rel_tol=1e-3)
 
     def test_returns_zeta_open_above_theta(self) -> None:
         """Far above theta, should return zeta_open."""
-        result = logistic_impedance_gate(10.0, theta=0.0, beta=4.0, zeta_closed=1.35, zeta_open=0.65)
+        result = logistic_impedance_gate(
+            10.0, theta=0.0, beta=4.0, zeta_closed=1.35, zeta_open=0.65
+        )
         assert math.isclose(result, 0.65, rel_tol=1e-3)
 
     def test_blends_at_theta(self) -> None:
@@ -92,7 +95,9 @@ class TestUpdateImpedance:
 
     def test_update_impedance_tracks_logistic_gate(self) -> None:
         """Should track logistic transition."""
-        zeta_closed = update_impedance(R_trigger=-1.0, Theta=0.5, beta=6.0, zeta_max=1.4, zeta_min=0.2)
+        zeta_closed = update_impedance(
+            R_trigger=-1.0, Theta=0.5, beta=6.0, zeta_max=1.4, zeta_min=0.2
+        )
         zeta_mid = update_impedance(R_trigger=0.5, Theta=0.5, beta=6.0, zeta_max=1.4, zeta_min=0.2)
         zeta_open = update_impedance(R_trigger=1.5, Theta=0.5, beta=6.0, zeta_max=1.4, zeta_min=0.2)
 
@@ -102,13 +107,20 @@ class TestUpdateImpedance:
 
     def test_update_impedance_monotonic(self) -> None:
         """Should be monotonically decreasing."""
-        values = [update_impedance(R_trigger=r, Theta=0.0, beta=5.0, zeta_max=1.2, zeta_min=0.3) for r in (-1.0, 0.0, 1.0)]
+        values = [
+            update_impedance(R_trigger=r, Theta=0.0, beta=5.0, zeta_max=1.2, zeta_min=0.3)
+            for r in (-1.0, 0.0, 1.0)
+        ]
         assert values[0] > values[1] > values[2]
 
     def test_custom_zeta_range(self) -> None:
         """Should respect custom zeta_max and zeta_min."""
-        zeta_low = update_impedance(R_trigger=-10.0, Theta=0.0, beta=4.0, zeta_max=2.0, zeta_min=0.1)
-        zeta_high = update_impedance(R_trigger=10.0, Theta=0.0, beta=4.0, zeta_max=2.0, zeta_min=0.1)
+        zeta_low = update_impedance(
+            R_trigger=-10.0, Theta=0.0, beta=4.0, zeta_max=2.0, zeta_min=0.1
+        )
+        zeta_high = update_impedance(
+            R_trigger=10.0, Theta=0.0, beta=4.0, zeta_max=2.0, zeta_min=0.1
+        )
         assert math.isclose(zeta_low, 2.0, rel_tol=1e-3)
         assert math.isclose(zeta_high, 0.1, rel_tol=1e-3)
 
@@ -239,7 +251,7 @@ class TestThresholdCrossingDiagnostics:
         results = {
             "R": [0.0, 0.3, 0.6, 0.8, 1.0],
             "sigma": [0.1, 0.2, 0.7, 0.9, 0.95],
-            "t": [0.0, 1.0, 2.0, 3.0, 4.0]
+            "t": [0.0, 1.0, 2.0, 3.0, 4.0],
         }
         diagnostics = threshold_crossing_diagnostics(results, theta=0.5, beta=4.0)
 
@@ -251,7 +263,7 @@ class TestThresholdCrossingDiagnostics:
         results = {
             "R": [0.0, 0.3, 0.6, 0.8, 1.0],
             "sigma": [0.1, 0.2, 0.7, 0.9, 0.95],
-            "t": [0.0, 1.0, 2.0, 3.0, 4.0]
+            "t": [0.0, 1.0, 2.0, 3.0, 4.0],
         }
         diagnostics = threshold_crossing_diagnostics(results, theta=0.5, beta=4.0)
 
@@ -267,7 +279,7 @@ class TestThresholdCrossingDiagnostics:
         results = {
             "R": [0.0, 0.1, 0.2, 0.3],
             "sigma": [0.1, 0.15, 0.2, 0.25],
-            "t": [0.0, 1.0, 2.0, 3.0]
+            "t": [0.0, 1.0, 2.0, 3.0],
         }
         diagnostics = threshold_crossing_diagnostics(results, theta=0.5, beta=4.0)
 
@@ -275,21 +287,13 @@ class TestThresholdCrossingDiagnostics:
 
     def test_handles_single_point(self) -> None:
         """Should handle single-point trajectory."""
-        results = {
-            "R": [0.5],
-            "sigma": [0.5],
-            "t": [0.0]
-        }
+        results = {"R": [0.5], "sigma": [0.5], "t": [0.0]}
         diagnostics = threshold_crossing_diagnostics(results, theta=0.5, beta=4.0)
         assert isinstance(diagnostics, dict)
 
     def test_handles_empty_trajectory(self) -> None:
         """Should raise ValueError for empty trajectory."""
-        results = {
-            "R": [],
-            "sigma": [],
-            "t": []
-        }
+        results = {"R": [], "sigma": [], "t": []}
         # Function raises ValueError for empty input
         with pytest.raises(ValueError, match="At least one sample"):
             threshold_crossing_diagnostics(results, theta=0.5, beta=4.0)

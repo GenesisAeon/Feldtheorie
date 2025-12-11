@@ -20,6 +20,7 @@ The default invocation produces a timestamped JSON artefact inside
 ``analysis/results/`` so the Tri-Layer indices can surface the newest
 Safety-Delay evidence.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -239,9 +240,7 @@ def _run_single(
     )
 
     n = result.field_response.size
-    logistic_fit = logistic_response(
-        result.control_parameter, result.beta_hat, result.theta_hat
-    )
+    logistic_fit = logistic_response(result.control_parameter, result.beta_hat, result.theta_hat)
     rss_logistic = float(np.sum((result.field_response - logistic_fit) ** 2))
     aic_logistic = _aic_from_rss(rss_logistic, n=n, k=2)
 

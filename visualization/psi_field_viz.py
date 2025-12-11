@@ -21,25 +21,24 @@ References:
 - V6_Wellenfunktions_Integrationsplan.md
 - GrundPrinzip Simulation.txt
 """
+
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Tuple
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.animation import FuncAnimation, PillowWriter
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.colors as mcolors
 
 try:
     from pipelines.wavefunction.psi_field import (
+        ALPHA_INV,
+        L_PLANCK,
+        PHI,
         PsiField,
         PsiFieldConfig,
         PsiFieldPipeline,
         compute_psi_genesis,
-        ALPHA_INV,
-        PHI,
-        L_PLANCK,
     )
+
     PSIFIELD_AVAILABLE = True
 except ImportError:
     PSIFIELD_AVAILABLE = False
@@ -50,8 +49,8 @@ class PsiFieldVisualizer:
 
     def __init__(
         self,
-        config: Optional['PsiFieldConfig'] = None,
-        figsize: Tuple[int, int] = (12, 8),
+        config: PsiFieldConfig | None = None,
+        figsize: tuple[int, int] = (12, 8),
         dpi: int = 100,
     ):
         """Initialize visualizer.
@@ -78,7 +77,7 @@ class PsiFieldVisualizer:
         self,
         r_max: float = 5.0,
         n_points: int = 200,
-        save_path: Optional[str] = None,
+        save_path: str | None = None,
     ) -> plt.Figure:
         """Plot radial probability density |ψ(r)|².
 
@@ -107,30 +106,36 @@ class PsiFieldVisualizer:
         # Plot
         fig, ax = plt.subplots(figsize=self.figsize, dpi=self.dpi)
 
-        ax.plot(r / L_PLANCK, prob, linewidth=2, color='#2E86AB', label=r'$|\psi_{\mathrm{genesis}}|^2$')
-        ax.fill_between(r / L_PLANCK, 0, prob, alpha=0.3, color='#2E86AB')
+        ax.plot(
+            r / L_PLANCK, prob, linewidth=2, color="#2E86AB", label=r"$|\psi_{\mathrm{genesis}}|^2$"
+        )
+        ax.fill_between(r / L_PLANCK, 0, prob, alpha=0.3, color="#2E86AB")
 
-        ax.set_xlabel(r'$r$ (Planck lengths $\ell_P$)', fontsize=12)
-        ax.set_ylabel(r'Probability Density $|\psi|^2$', fontsize=12)
-        ax.set_title(r'Entropische Wellenfunktion: $|\psi_{\mathrm{genesis}}(r)|^2$', fontsize=14, fontweight='bold')
-        ax.grid(True, alpha=0.3, linestyle='--')
+        ax.set_xlabel(r"$r$ (Planck lengths $\ell_P$)", fontsize=12)
+        ax.set_ylabel(r"Probability Density $|\psi|^2$", fontsize=12)
+        ax.set_title(
+            r"Entropische Wellenfunktion: $|\psi_{\mathrm{genesis}}(r)|^2$",
+            fontsize=14,
+            fontweight="bold",
+        )
+        ax.grid(True, alpha=0.3, linestyle="--")
         ax.legend(fontsize=10)
 
         # Add annotations
         max_prob_idx = np.argmax(prob)
         ax.annotate(
-            f'Peak: r = {r[max_prob_idx]/L_PLANCK:.2f} ℓ_P',
-            xy=(r[max_prob_idx]/L_PLANCK, prob[max_prob_idx]),
-            xytext=(r[max_prob_idx]/L_PLANCK + r_max*0.3, prob[max_prob_idx]*0.8),
-            arrowprops=dict(arrowstyle='->', color='red', lw=1.5),
+            f"Peak: r = {r[max_prob_idx]/L_PLANCK:.2f} ℓ_P",
+            xy=(r[max_prob_idx] / L_PLANCK, prob[max_prob_idx]),
+            xytext=(r[max_prob_idx] / L_PLANCK + r_max * 0.3, prob[max_prob_idx] * 0.8),
+            arrowprops=dict(arrowstyle="->", color="red", lw=1.5),
             fontsize=10,
-            color='red',
+            color="red",
         )
 
         plt.tight_layout()
 
         if save_path:
-            fig.savefig(save_path, dpi=self.dpi, bbox_inches='tight')
+            fig.savefig(save_path, dpi=self.dpi, bbox_inches="tight")
             print(f"Saved probability density plot to {save_path}")
 
         return fig
@@ -139,7 +144,7 @@ class PsiFieldVisualizer:
         self,
         r_max: float = 10.0,
         n_points: int = 200,
-        save_path: Optional[str] = None,
+        save_path: str | None = None,
     ) -> plt.Figure:
         """Plot radial distribution P(r) = r²|ψ|².
 
@@ -159,31 +164,39 @@ class PsiFieldVisualizer:
         # Compute via pipeline
         results = self.pipeline.run(r_max=r_max, n_points=n_points, theta_phi_res=10, t=0.0)
 
-        r_grid = results['r_grid']
-        radial_dist = results['radial_distribution']
-        mean_r = results['mean_r']
-        delta_r = results['delta_r']
+        r_grid = results["r_grid"]
+        radial_dist = results["radial_distribution"]
+        mean_r = results["mean_r"]
+        delta_r = results["delta_r"]
 
         # Plot
         fig, ax = plt.subplots(figsize=self.figsize, dpi=self.dpi)
 
-        ax.plot(r_grid, radial_dist, linewidth=2, color='#A23B72', label=r'$P(r) = r^2 |\psi|^2$')
-        ax.fill_between(r_grid, 0, radial_dist, alpha=0.3, color='#A23B72')
+        ax.plot(r_grid, radial_dist, linewidth=2, color="#A23B72", label=r"$P(r) = r^2 |\psi|^2$")
+        ax.fill_between(r_grid, 0, radial_dist, alpha=0.3, color="#A23B72")
 
         # Mark mean and uncertainty
-        ax.axvline(mean_r, color='green', linestyle='--', linewidth=2, label=f'⟨r⟩ = {mean_r:.2f} ℓ_P')
-        ax.axvspan(mean_r - delta_r, mean_r + delta_r, alpha=0.2, color='green', label=f'Δr = {delta_r:.2f} ℓ_P')
+        ax.axvline(
+            mean_r, color="green", linestyle="--", linewidth=2, label=f"⟨r⟩ = {mean_r:.2f} ℓ_P"
+        )
+        ax.axvspan(
+            mean_r - delta_r,
+            mean_r + delta_r,
+            alpha=0.2,
+            color="green",
+            label=f"Δr = {delta_r:.2f} ℓ_P",
+        )
 
-        ax.set_xlabel(r'Radius $r$ (Planck lengths)', fontsize=12)
-        ax.set_ylabel(r'Radial Distribution $P(r)$', fontsize=12)
-        ax.set_title(r'Radiale Verteilung der Wellenfunktion', fontsize=14, fontweight='bold')
-        ax.grid(True, alpha=0.3, linestyle='--')
+        ax.set_xlabel(r"Radius $r$ (Planck lengths)", fontsize=12)
+        ax.set_ylabel(r"Radial Distribution $P(r)$", fontsize=12)
+        ax.set_title(r"Radiale Verteilung der Wellenfunktion", fontsize=14, fontweight="bold")
+        ax.grid(True, alpha=0.3, linestyle="--")
         ax.legend(fontsize=10)
 
         plt.tight_layout()
 
         if save_path:
-            fig.savefig(save_path, dpi=self.dpi, bbox_inches='tight')
+            fig.savefig(save_path, dpi=self.dpi, bbox_inches="tight")
             print(f"Saved radial distribution plot to {save_path}")
 
         return fig
@@ -193,7 +206,7 @@ class PsiFieldVisualizer:
         r_max: float = 5.0,
         n_points: int = 100,
         t: float = 0.0,
-        save_path: Optional[str] = None,
+        save_path: str | None = None,
     ) -> plt.Figure:
         """Plot 2D probability density map (x-y plane).
 
@@ -232,18 +245,18 @@ class PsiFieldVisualizer:
         # Use log scale for better visibility
         prob_log = np.log10(prob + 1e-100)
 
-        im = ax.contourf(X, Y, prob_log, levels=20, cmap='plasma')
-        cbar = fig.colorbar(im, ax=ax, label=r'$\log_{10}(|\psi|^2)$')
+        im = ax.contourf(X, Y, prob_log, levels=20, cmap="plasma")
+        cbar = fig.colorbar(im, ax=ax, label=r"$\log_{10}(|\psi|^2)$")
 
-        ax.set_xlabel(r'$x$ (Planck lengths)', fontsize=12)
-        ax.set_ylabel(r'$y$ (Planck lengths)', fontsize=12)
-        ax.set_title(r'2D Wahrscheinlichkeitsdichte (z=0 Ebene)', fontsize=14, fontweight='bold')
-        ax.set_aspect('equal')
+        ax.set_xlabel(r"$x$ (Planck lengths)", fontsize=12)
+        ax.set_ylabel(r"$y$ (Planck lengths)", fontsize=12)
+        ax.set_title(r"2D Wahrscheinlichkeitsdichte (z=0 Ebene)", fontsize=14, fontweight="bold")
+        ax.set_aspect("equal")
 
         plt.tight_layout()
 
         if save_path:
-            fig.savefig(save_path, dpi=self.dpi, bbox_inches='tight')
+            fig.savefig(save_path, dpi=self.dpi, bbox_inches="tight")
             print(f"Saved 2D probability map to {save_path}")
 
         return fig
@@ -252,7 +265,7 @@ class PsiFieldVisualizer:
         self,
         r: float = 1.0,
         n_points: int = 100,
-        save_path: Optional[str] = None,
+        save_path: str | None = None,
     ) -> plt.Figure:
         """Visualize tetrahedral angular symmetry Y_tetra(θ,φ).
 
@@ -271,7 +284,7 @@ class PsiFieldVisualizer:
         """
         # Angular grid
         theta = np.linspace(0, np.pi, n_points)
-        phi = np.linspace(0, 2*np.pi, n_points)
+        phi = np.linspace(0, 2 * np.pi, n_points)
         Theta, Phi = np.meshgrid(theta, phi)
 
         # Compute angular component
@@ -286,31 +299,37 @@ class PsiFieldVisualizer:
 
         # Plot
         fig = plt.figure(figsize=self.figsize, dpi=self.dpi)
-        ax = fig.add_subplot(111, projection='3d')
+        ax = fig.add_subplot(111, projection="3d")
 
         # Surface plot with color based on magnitude
         surf = ax.plot_surface(
-            X, Y, Z,
-            cmap='viridis',
+            X,
+            Y,
+            Z,
+            cmap="viridis",
             facecolors=plt.cm.viridis(angular_mag / angular_mag.max()),
             alpha=0.8,
-            edgecolor='none',
+            edgecolor="none",
         )
 
-        ax.set_xlabel('X', fontsize=10)
-        ax.set_ylabel('Y', fontsize=10)
-        ax.set_zlabel('Z', fontsize=10)
-        ax.set_title(r'Tetraedrische Symmetrie $Y_{\mathrm{tetra}}(\theta, \phi)$', fontsize=14, fontweight='bold')
+        ax.set_xlabel("X", fontsize=10)
+        ax.set_ylabel("Y", fontsize=10)
+        ax.set_zlabel("Z", fontsize=10)
+        ax.set_title(
+            r"Tetraedrische Symmetrie $Y_{\mathrm{tetra}}(\theta, \phi)$",
+            fontsize=14,
+            fontweight="bold",
+        )
 
         # Add colorbar
-        mappable = plt.cm.ScalarMappable(cmap='viridis')
+        mappable = plt.cm.ScalarMappable(cmap="viridis")
         mappable.set_array(angular_mag)
-        fig.colorbar(mappable, ax=ax, shrink=0.5, label=r'$|Y_{\mathrm{tetra}}|$')
+        fig.colorbar(mappable, ax=ax, shrink=0.5, label=r"$|Y_{\mathrm{tetra}}|$")
 
         plt.tight_layout()
 
         if save_path:
-            fig.savefig(save_path, dpi=self.dpi, bbox_inches='tight')
+            fig.savefig(save_path, dpi=self.dpi, bbox_inches="tight")
             print(f"Saved tetrahedral symmetry plot to {save_path}")
 
         return fig
@@ -319,8 +338,8 @@ class PsiFieldVisualizer:
         self,
         r_max: float = 5.0,
         n_points: int = 100,
-        t_values: Optional[List[float]] = None,
-        save_path: Optional[str] = None,
+        t_values: list[float] | None = None,
+        save_path: str | None = None,
     ) -> plt.Figure:
         """Plot time evolution of wavefunction.
 
@@ -358,25 +377,37 @@ class PsiFieldVisualizer:
             ax2 = ax.twinx()
 
             # Probability
-            ax.plot(r / L_PLANCK, prob, color='blue', linewidth=2, label=r'$|\psi|^2$')
-            ax.fill_between(r / L_PLANCK, 0, prob, alpha=0.3, color='blue')
+            ax.plot(r / L_PLANCK, prob, color="blue", linewidth=2, label=r"$|\psi|^2$")
+            ax.fill_between(r / L_PLANCK, 0, prob, alpha=0.3, color="blue")
 
             # Phase
-            ax2.plot(r / L_PLANCK, phase, color='red', linewidth=1.5, linestyle='--', alpha=0.7, label=r'Phase')
+            ax2.plot(
+                r / L_PLANCK,
+                phase,
+                color="red",
+                linewidth=1.5,
+                linestyle="--",
+                alpha=0.7,
+                label=r"Phase",
+            )
 
-            ax.set_xlabel(r'$r$ (ℓ_P)', fontsize=10)
-            ax.set_ylabel(r'$|\psi|^2$', fontsize=10, color='blue')
-            ax2.set_ylabel(r'Phase (rad)', fontsize=10, color='red')
-            ax.set_title(f't = {t:.2e} Planck times', fontsize=11)
-            ax.tick_params(axis='y', labelcolor='blue')
-            ax2.tick_params(axis='y', labelcolor='red')
+            ax.set_xlabel(r"$r$ (ℓ_P)", fontsize=10)
+            ax.set_ylabel(r"$|\psi|^2$", fontsize=10, color="blue")
+            ax2.set_ylabel(r"Phase (rad)", fontsize=10, color="red")
+            ax.set_title(f"t = {t:.2e} Planck times", fontsize=11)
+            ax.tick_params(axis="y", labelcolor="blue")
+            ax2.tick_params(axis="y", labelcolor="red")
             ax.grid(True, alpha=0.3)
 
-        fig.suptitle(r'Zeitliche Evolution von $\psi_{\mathrm{genesis}}(r, t)$', fontsize=14, fontweight='bold')
+        fig.suptitle(
+            r"Zeitliche Evolution von $\psi_{\mathrm{genesis}}(r, t)$",
+            fontsize=14,
+            fontweight="bold",
+        )
         plt.tight_layout()
 
         if save_path:
-            fig.savefig(save_path, dpi=self.dpi, bbox_inches='tight')
+            fig.savefig(save_path, dpi=self.dpi, bbox_inches="tight")
             print(f"Saved time evolution plot to {save_path}")
 
         return fig
@@ -386,7 +417,7 @@ class PsiFieldVisualizer:
         r_max: float = 10.0,
         n_points: int = 50,
         n_times: int = 20,
-        save_path: Optional[str] = None,
+        save_path: str | None = None,
     ) -> plt.Figure:
         """Plot entropy evolution S(t).
 
@@ -420,18 +451,18 @@ class PsiFieldVisualizer:
         # Plot
         fig, ax = plt.subplots(figsize=self.figsize, dpi=self.dpi)
 
-        ax.plot(t_values * 1e44, entropies, linewidth=2, color='#F18F01', marker='o', markersize=4)
-        ax.fill_between(t_values * 1e44, 0, entropies, alpha=0.3, color='#F18F01')
+        ax.plot(t_values * 1e44, entropies, linewidth=2, color="#F18F01", marker="o", markersize=4)
+        ax.fill_between(t_values * 1e44, 0, entropies, alpha=0.3, color="#F18F01")
 
-        ax.set_xlabel(r'Zeit $t$ (in $10^{-44}$ s)', fontsize=12)
-        ax.set_ylabel(r'von Neumann Entropie $S$', fontsize=12)
-        ax.set_title(r'Entropie-Evolution $S(t)$', fontsize=14, fontweight='bold')
-        ax.grid(True, alpha=0.3, linestyle='--')
+        ax.set_xlabel(r"Zeit $t$ (in $10^{-44}$ s)", fontsize=12)
+        ax.set_ylabel(r"von Neumann Entropie $S$", fontsize=12)
+        ax.set_title(r"Entropie-Evolution $S(t)$", fontsize=14, fontweight="bold")
+        ax.grid(True, alpha=0.3, linestyle="--")
 
         plt.tight_layout()
 
         if save_path:
-            fig.savefig(save_path, dpi=self.dpi, bbox_inches='tight')
+            fig.savefig(save_path, dpi=self.dpi, bbox_inches="tight")
             print(f"Saved entropy evolution plot to {save_path}")
 
         return fig
@@ -441,7 +472,7 @@ class PsiFieldVisualizer:
         r_max: float = 5.0,
         n_points: int = 150,
         n_frames: int = 50,
-        save_path: Optional[str] = None,
+        save_path: str | None = None,
     ) -> FuncAnimation:
         """Create animation of wavefunction time evolution.
 
@@ -467,16 +498,18 @@ class PsiFieldVisualizer:
         t_values = np.linspace(0, 5e-43, n_frames)
 
         fig, ax = plt.subplots(figsize=self.figsize, dpi=self.dpi)
-        line, = ax.plot([], [], linewidth=2, color='#2E86AB')
-        fill = ax.fill_between([], 0, [], alpha=0.3, color='#2E86AB')
+        (line,) = ax.plot([], [], linewidth=2, color="#2E86AB")
+        fill = ax.fill_between([], 0, [], alpha=0.3, color="#2E86AB")
 
         ax.set_xlim(0, r_max)
-        ax.set_xlabel(r'$r$ (Planck lengths)', fontsize=12)
-        ax.set_ylabel(r'$|\psi|^2$', fontsize=12)
-        ax.set_title(r'$\psi_{\mathrm{genesis}}$ Animation', fontsize=14, fontweight='bold')
+        ax.set_xlabel(r"$r$ (Planck lengths)", fontsize=12)
+        ax.set_ylabel(r"$|\psi|^2$", fontsize=12)
+        ax.set_title(r"$\psi_{\mathrm{genesis}}$ Animation", fontsize=14, fontweight="bold")
         ax.grid(True, alpha=0.3)
 
-        time_text = ax.text(0.02, 0.95, '', transform=ax.transAxes, fontsize=10, verticalalignment='top')
+        time_text = ax.text(
+            0.02, 0.95, "", transform=ax.transAxes, fontsize=10, verticalalignment="top"
+        )
 
         def init():
             line.set_data([], [])
@@ -493,13 +526,15 @@ class PsiFieldVisualizer:
             nonlocal fill
             for coll in ax.collections:
                 coll.remove()
-            fill = ax.fill_between(r / L_PLANCK, 0, prob, alpha=0.3, color='#2E86AB')
+            fill = ax.fill_between(r / L_PLANCK, 0, prob, alpha=0.3, color="#2E86AB")
 
-            time_text.set_text(f't = {t:.2e} Planck times')
+            time_text.set_text(f"t = {t:.2e} Planck times")
 
             return line, time_text
 
-        anim = FuncAnimation(fig, animate, init_func=init, frames=n_frames, interval=100, blit=False)
+        anim = FuncAnimation(
+            fig, animate, init_func=init, frames=n_frames, interval=100, blit=False
+        )
 
         if save_path:
             writer = PillowWriter(fps=10)
@@ -536,6 +571,7 @@ def create_full_visualization_suite(
     - wavefunction_animation.gif
     """
     import os
+
     os.makedirs(output_dir, exist_ok=True)
 
     viz = PsiFieldVisualizer(dpi=dpi)
@@ -543,11 +579,11 @@ def create_full_visualization_suite(
     print("Creating ψ-field visualization suite...")
 
     viz.plot_probability_density(r_max=r_max, save_path=f"{output_dir}/probability_density.png")
-    viz.plot_radial_distribution(r_max=r_max*2, save_path=f"{output_dir}/radial_distribution.png")
+    viz.plot_radial_distribution(r_max=r_max * 2, save_path=f"{output_dir}/radial_distribution.png")
     viz.plot_2d_probability_map(r_max=r_max, save_path=f"{output_dir}/probability_map_2d.png")
     viz.plot_tetrahedral_symmetry(r=1.0, save_path=f"{output_dir}/tetrahedral_symmetry.png")
     viz.plot_time_evolution(r_max=r_max, save_path=f"{output_dir}/time_evolution.png")
-    viz.plot_entropy_evolution(r_max=r_max*2, save_path=f"{output_dir}/entropy_evolution.png")
+    viz.plot_entropy_evolution(r_max=r_max * 2, save_path=f"{output_dir}/entropy_evolution.png")
     viz.animate_wavefunction(r_max=r_max, save_path=f"{output_dir}/wavefunction_animation.gif")
 
     print(f"\n✓ Visualization suite complete! Saved to {output_dir}/")
@@ -556,7 +592,7 @@ def create_full_visualization_suite(
         print(f"  - {file}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("=" * 70)
     print("Ψ-FIELD VISUALIZATION MODULE — V6 Framework")
     print("=" * 70)

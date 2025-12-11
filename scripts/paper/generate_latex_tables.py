@@ -13,11 +13,10 @@ Author: Genesis Aeon (UTAC Framework)
 Version: 5.0 "Automated Manuscript Generation"
 """
 
-import numpy as np
-import pandas as pd
-from pathlib import Path
 import json
-from typing import Dict, List
+from pathlib import Path
+
+import pandas as pd
 
 # ============================================================================
 # CONFIGURATION
@@ -41,6 +40,7 @@ OUTPUT_DIR = Path(__file__).parent.parent.parent / "paper" / "v5_manuscript"
 # TABLE GENERATORS
 # ============================================================================
 
+
 def generate_ising_parameters_table() -> str:
     """
     Generate LaTeX table for fitted Ising parameters.
@@ -51,13 +51,14 @@ def generate_ising_parameters_table() -> str:
     if not PARAMS_FILE.exists():
         return "% ERROR: Fitted parameters file not found\n"
 
-    with open(PARAMS_FILE, 'r') as f:
+    with open(PARAMS_FILE) as f:
         params = json.load(f)
 
     crisis_opt = params["crisis_optimized"]
     stability_opt = params["stability_optimized"]
 
-    table = r"""
+    table = (
+        r"""
 \begin{table}[htbp]
 \centering
 \caption{Fitted Parameters for Social Ising Model}
@@ -66,13 +67,26 @@ def generate_ising_parameters_table() -> str:
 \toprule
 \textbf{Parameter} & \textbf{Crisis-Optimized} & \textbf{Stability-Optimized} \\
 \midrule
-Coupling $J$ & """ + f"{crisis_opt['J']:.3f}" + r""" & """ + f"{stability_opt['J']:.3f}" + r""" \\
-External Field $h$ & """ + f"{crisis_opt['h']:.3f}" + r""" & """ + f"{stability_opt['h']:.3f}" + r""" \\
-Critical Gini $G_c$ & """ + f"{crisis_opt['critical_gini']:.3f}" + r""" & """ + f"{stability_opt['critical_gini']:.3f}" + r""" \\
+Coupling $J$ & """
+        + f"{crisis_opt['J']:.3f}"
+        + r""" & """
+        + f"{stability_opt['J']:.3f}"
+        + r""" \\
+External Field $h$ & """
+        + f"{crisis_opt['h']:.3f}"
+        + r""" & """
+        + f"{stability_opt['h']:.3f}"
+        + r""" \\
+Critical Gini $G_c$ & """
+        + f"{crisis_opt['critical_gini']:.3f}"
+        + r""" & """
+        + f"{stability_opt['critical_gini']:.3f}"
+        + r""" \\
 \bottomrule
 \end{tabular}
 \end{table}
 """
+    )
 
     return table
 
@@ -87,12 +101,13 @@ def generate_ising_diagnostics_table() -> str:
     if not PARAMS_FILE.exists():
         return "% ERROR: Fitted parameters file not found\n"
 
-    with open(PARAMS_FILE, 'r') as f:
+    with open(PARAMS_FILE) as f:
         params = json.load(f)
 
     crisis_opt = params["crisis_optimized"]
 
-    table = r"""
+    table = (
+        r"""
 \begin{table}[htbp]
 \centering
 \caption{Social Ising Model: Empirical Validation Diagnostics}
@@ -101,23 +116,43 @@ def generate_ising_diagnostics_table() -> str:
 \toprule
 \textbf{Metric} & \textbf{Value} & \textbf{Significance} \\
 \midrule
-Crisis Event Correlation ($\rho$) & """ + f"{crisis_opt['crisis_correlation']:.3f}" + r""" & """ + \
-    ("$p < 0.05$" if crisis_opt['crisis_p_value'] < 0.05 else f"$p = {crisis_opt['crisis_p_value']:.3f}$") + r""" \\
-Stability Anti-Correlation ($r$) & """ + f"{crisis_opt['stability_correlation']:.3f}" + r""" & """ + \
-    ("$p < 0.05$" if crisis_opt['stability_p_value'] < 0.05 else f"$p = {crisis_opt['stability_p_value']:.3f}$") + r""" \\
-Max Susceptibility $\chi_{\max}$ & """ + f"{crisis_opt['max_susceptibility']:.2f}" + r""" & --- \\
+Crisis Event Correlation ($\rho$) & """
+        + f"{crisis_opt['crisis_correlation']:.3f}"
+        + r""" & """
+        + (
+            "$p < 0.05$"
+            if crisis_opt["crisis_p_value"] < 0.05
+            else f"$p = {crisis_opt['crisis_p_value']:.3f}$"
+        )
+        + r""" \\
+Stability Anti-Correlation ($r$) & """
+        + f"{crisis_opt['stability_correlation']:.3f}"
+        + r""" & """
+        + (
+            "$p < 0.05$"
+            if crisis_opt["stability_p_value"] < 0.05
+            else f"$p = {crisis_opt['stability_p_value']:.3f}$"
+        )
+        + r""" \\
+Max Susceptibility $\chi_{\max}$ & """
+        + f"{crisis_opt['max_susceptibility']:.2f}"
+        + r""" & --- \\
 \bottomrule
 \end{tabular}
 \vspace{0.3cm}
 \begin{tablenotes}
 \small
-\item \textbf{Interpretation:} """ + \
-    ("Significant correlation between theoretical susceptibility and empirical crisis events." \
-     if crisis_opt['crisis_p_value'] < 0.05 else \
-     "No significant correlation detected. Model requires revision.") + r"""
+\item \textbf{Interpretation:} """
+        + (
+            "Significant correlation between theoretical susceptibility and empirical crisis events."
+            if crisis_opt["crisis_p_value"] < 0.05
+            else "No significant correlation detected. Model requires revision."
+        )
+        + r"""
 \end{tablenotes}
 \end{table}
 """
+    )
 
     return table
 
@@ -139,7 +174,7 @@ def generate_cosmic_alternatives_table(top_n: int = 10) -> str:
 
     # Load summary for our baseline
     if LEE_SUMMARY_FILE.exists():
-        with open(LEE_SUMMARY_FILE, 'r') as f:
+        with open(LEE_SUMMARY_FILE) as f:
             lee = json.load(f)
         our_percentile = lee["alpha_phi_performance"]["percentile"]
     else:
@@ -166,16 +201,20 @@ def generate_cosmic_alternatives_table(top_n: int = 10) -> str:
 
         table += f"{idx} & {formula} & {row.v_pred:.1f} & {row.deviation:.1f} \\\\\n"
 
-    table += r"""\bottomrule
+    table += (
+        r"""\bottomrule
 \end{tabular}
 \vspace{0.3cm}
 \begin{tablenotes}
 \small
 \item Target: $v_{\text{obs}} = 1370 \pm 10$ km/s (Böhme et al., 2021).
-\item \textbf{Look-Elsewhere Penalty:} $\alpha$-$\Phi$ formula ranks in top """ + f"{100-our_percentile:.1f}" + r"""\% of tested pairs.
+\item \textbf{Look-Elsewhere Penalty:} $\alpha$-$\Phi$ formula ranks in top """
+        + f"{100-our_percentile:.1f}"
+        + r"""\% of tested pairs.
 \end{tablenotes}
 \end{table}
 """
+    )
 
     return table
 
@@ -198,13 +237,14 @@ def generate_crisis_events_table() -> str:
 
     # Load fitted parameters
     if PARAMS_FILE.exists():
-        with open(PARAMS_FILE, 'r') as f:
+        with open(PARAMS_FILE) as f:
             params = json.load(f)
         J = params["crisis_optimized"]["J"]
         h = params["crisis_optimized"]["h"]
 
         # Compute susceptibility
         import sys
+
         sys.path.insert(0, str(Path(__file__).parent.parent.parent))
         from models.social_rigidity_ising import SocialIsingModel
 
@@ -238,7 +278,7 @@ def generate_crisis_events_table() -> str:
         year = row.Year
         gini = row.Gini
         chi = row.Susceptibility
-        event = row.Crisis_Description if hasattr(row, 'Crisis_Description') else "Crisis"
+        event = row.Crisis_Description if hasattr(row, "Crisis_Description") else "Crisis"
 
         table += f"{country} & {year} & {gini:.2f} & {chi:.2f} & {event} \\\\\n"
 
@@ -253,6 +293,7 @@ def generate_crisis_events_table() -> str:
 # ============================================================================
 # MAIN EXECUTION
 # ============================================================================
+
 
 def main():
     """Generate all LaTeX tables."""
@@ -270,19 +311,19 @@ def main():
         "ising_parameters": generate_ising_parameters_table(),
         "ising_diagnostics": generate_ising_diagnostics_table(),
         "cosmic_alternatives": generate_cosmic_alternatives_table(top_n=10),
-        "crisis_events": generate_crisis_events_table()
+        "crisis_events": generate_crisis_events_table(),
     }
 
     # Save individual tables
     for name, content in tables.items():
         output_file = OUTPUT_DIR / f"table_{name}.tex"
-        with open(output_file, 'w') as f:
+        with open(output_file, "w") as f:
             f.write(content)
         print(f"  ✓ Saved: {output_file.name}")
 
     # Save combined file
     combined_file = OUTPUT_DIR / "all_tables.tex"
-    with open(combined_file, 'w') as f:
+    with open(combined_file, "w") as f:
         f.write("% AUTO-GENERATED TABLES FOR UTAC V5.0 MANUSCRIPT\n")
         f.write("% Generated by scripts/paper/generate_latex_tables.py\n\n")
         for name, content in tables.items():

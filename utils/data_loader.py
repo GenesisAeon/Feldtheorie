@@ -4,7 +4,7 @@ Reads YAML metadata files and loads associated datasets for analysis.
 """
 
 from pathlib import Path
-from typing import Any, Dict, Union
+from typing import Any, Union
 
 import pandas as pd
 import xarray as xr
@@ -17,7 +17,7 @@ DATA_DIR = "data/"
 DatasetType = Union[pd.DataFrame, xr.Dataset]
 
 
-def load_metadata(file_name: str, metadata_dir: str = METADATA_DIR) -> Dict[str, Any]:
+def load_metadata(file_name: str, metadata_dir: str = METADATA_DIR) -> dict[str, Any]:
     """Load a YAML metadata file from the configured directory."""
 
     path = Path(metadata_dir) / file_name
@@ -28,7 +28,7 @@ def load_metadata(file_name: str, metadata_dir: str = METADATA_DIR) -> Dict[str,
         return yaml.safe_load(f)
 
 
-def load_dataset(meta: Dict[str, Any], data_dir: str = DATA_DIR) -> DatasetType:
+def load_dataset(meta: dict[str, Any], data_dir: str = DATA_DIR) -> DatasetType:
     """
     Load a dataset based on metadata.
 
@@ -54,9 +54,7 @@ def load_dataset(meta: Dict[str, Any], data_dir: str = DATA_DIR) -> DatasetType:
         if candidate.exists():
             return reader(candidate)
 
-    raise FileNotFoundError(
-        f"No dataset found for {dataset_name} in {Path(data_dir).resolve()}"
-    )
+    raise FileNotFoundError(f"No dataset found for {dataset_name} in {Path(data_dir).resolve()}")
 
 
 def calculate_tau_star(beta: float, theta: float, R: float) -> float:
@@ -83,7 +81,7 @@ def calculate_tau_star(beta: float, theta: float, R: float) -> float:
 def load_all(metadata_dir: str = METADATA_DIR, data_dir: str = DATA_DIR):
     """Load all metadata + datasets into a dictionary keyed by dataset name."""
 
-    datasets: Dict[str, Dict[str, Any]] = {}
+    datasets: dict[str, dict[str, Any]] = {}
     metadata_path = Path(metadata_dir)
 
     if not metadata_path.exists():
@@ -106,22 +104,23 @@ def load_all(metadata_dir: str = METADATA_DIR, data_dir: str = DATA_DIR):
 
     return datasets
 
+
 if __name__ == "__main__":
     all_data = load_all()
     print(f"\n📊 Loaded {len(all_data)} datasets:\n")
-    
+
     for name, content in all_data.items():
         print(f"  ✅ {name}")
         meta = content["metadata"]
         print(f"     β: {meta.get('beta_estimate', 'N/A')}")
         print(f"     Period: {meta.get('period', 'N/A')}")
         print(f"     Source: {meta.get('source', 'N/A')}")
-        
+
         if content["data"] is not None:
-            if hasattr(content['data'], 'shape'):
+            if hasattr(content["data"], "shape"):
                 print(f"     Shape: {content['data'].shape}")
             else:
-                print(f"     Type: xarray dataset")
+                print("     Type: xarray dataset")
         else:
-            print(f"     ⚠️  No data file found (metadata only)")
+            print("     ⚠️  No data file found (metadata only)")
         print()

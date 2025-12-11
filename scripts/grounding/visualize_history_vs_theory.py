@@ -15,16 +15,15 @@ Author: Genesis Aeon (UTAC Framework)
 Version: 5.0 "Empirical Grounding"
 """
 
-import numpy as np
-import pandas as pd
-from pathlib import Path
 import json
+import sys
+from pathlib import Path
 
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
+import numpy as np
+import pandas as pd
 from matplotlib import cm
 
-import sys
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from models.social_rigidity_ising import SocialIsingModel
 
@@ -40,13 +39,14 @@ OUTPUT_DIR = Path(__file__).parent.parent.parent / "figures" / "v5_empirical"
 FOCUS_COUNTRIES = ["United States", "China", "France"]
 
 # Figure style
-plt.style.use('seaborn-v0_8-darkgrid')
-COLORS = {'USA': '#1f77b4', 'China': '#ff7f0e', 'France': '#2ca02c'}
+plt.style.use("seaborn-v0_8-darkgrid")
+COLORS = {"USA": "#1f77b4", "China": "#ff7f0e", "France": "#2ca02c"}
 
 
 # ============================================================================
 # PLOTTING FUNCTIONS
 # ============================================================================
+
 
 def plot_time_series(data: pd.DataFrame, J: float, h: float):
     """
@@ -78,44 +78,46 @@ def plot_time_series(data: pd.DataFrame, J: float, h: float):
         stability = country_data["Stability_Score"].values
         chi = np.array(chi_values)
 
-        color = COLORS.get(country, '#333')
+        color = COLORS.get(country, "#333")
 
         # Plot 1: Gini
-        axes[0].plot(years, gini, marker='o', label=country, color=color, linewidth=2)
+        axes[0].plot(years, gini, marker="o", label=country, color=color, linewidth=2)
 
         # Plot 2: Stability
-        axes[1].plot(years, stability, marker='s', label=country, color=color, linewidth=2)
+        axes[1].plot(years, stability, marker="s", label=country, color=color, linewidth=2)
 
         # Plot 3: Susceptibility
-        axes[2].plot(years, chi, marker='^', label=country, color=color, linewidth=2)
+        axes[2].plot(years, chi, marker="^", label=country, color=color, linewidth=2)
 
         # Mark crisis events
         crisis_years = country_data[country_data["Crisis_Event"] == 1]["Year"].values
         for crisis_year in crisis_years:
             for ax in axes:
-                ax.axvline(crisis_year, color=color, linestyle='--', alpha=0.3, linewidth=1.5)
+                ax.axvline(crisis_year, color=color, linestyle="--", alpha=0.3, linewidth=1.5)
 
     # Formatting
-    axes[0].set_ylabel("Gini Coefficient", fontsize=12, fontweight='bold')
-    axes[0].legend(loc='upper left', fontsize=10)
-    axes[0].set_title("Inequality Trajectory (1990-2024)", fontsize=14, fontweight='bold')
+    axes[0].set_ylabel("Gini Coefficient", fontsize=12, fontweight="bold")
+    axes[0].legend(loc="upper left", fontsize=10)
+    axes[0].set_title("Inequality Trajectory (1990-2024)", fontsize=14, fontweight="bold")
     axes[0].grid(True, alpha=0.3)
 
-    axes[1].set_ylabel("Stability Score", fontsize=12, fontweight='bold')
-    axes[1].legend(loc='upper left', fontsize=10)
-    axes[1].set_title("Empirical Stability", fontsize=14, fontweight='bold')
+    axes[1].set_ylabel("Stability Score", fontsize=12, fontweight="bold")
+    axes[1].legend(loc="upper left", fontsize=10)
+    axes[1].set_title("Empirical Stability", fontsize=14, fontweight="bold")
     axes[1].grid(True, alpha=0.3)
 
-    axes[2].set_ylabel("Susceptibility χ", fontsize=12, fontweight='bold')
-    axes[2].set_xlabel("Year", fontsize=12, fontweight='bold')
-    axes[2].legend(loc='upper left', fontsize=10)
-    axes[2].set_title(f"Theoretical Susceptibility (J={J:.2f}, h={h:.2f})", fontsize=14, fontweight='bold')
+    axes[2].set_ylabel("Susceptibility χ", fontsize=12, fontweight="bold")
+    axes[2].set_xlabel("Year", fontsize=12, fontweight="bold")
+    axes[2].legend(loc="upper left", fontsize=10)
+    axes[2].set_title(
+        f"Theoretical Susceptibility (J={J:.2f}, h={h:.2f})", fontsize=14, fontweight="bold"
+    )
     axes[2].grid(True, alpha=0.3)
 
     plt.tight_layout()
 
     output_file = OUTPUT_DIR / "time_series_comparison.png"
-    plt.savefig(output_file, dpi=300, bbox_inches='tight')
+    plt.savefig(output_file, dpi=300, bbox_inches="tight")
     print(f"  ✓ Saved: {output_file}")
 
     plt.close()
@@ -151,24 +153,24 @@ def plot_phase_diagram(data: pd.DataFrame, J: float, h: float):
         normal_data["Gini"],
         normal_data["Susceptibility"],
         c=normal_data["Stability_Score"],
-        cmap='viridis',
+        cmap="viridis",
         s=50,
         alpha=0.6,
-        edgecolors='k',
+        edgecolors="k",
         linewidth=0.5,
-        label="Normal"
+        label="Normal",
     )
 
     crisis_scatter = ax.scatter(
         crisis_data["Gini"],
         crisis_data["Susceptibility"],
-        c='red',
+        c="red",
         s=200,
         alpha=0.8,
-        edgecolors='darkred',
+        edgecolors="darkred",
         linewidth=2,
-        marker='X',
-        label="Crisis Event"
+        marker="X",
+        label="Crisis Event",
     )
 
     # Theoretical curve (mean Load)
@@ -183,35 +185,29 @@ def plot_phase_diagram(data: pd.DataFrame, J: float, h: float):
     ax.plot(
         gini_range,
         chi_theory,
-        'k--',
+        "k--",
         linewidth=3,
         label=f"Theory (Load={mean_load:.2f})",
-        alpha=0.7
+        alpha=0.7,
     )
 
     # Formatting
-    ax.set_xlabel("Gini Coefficient", fontsize=14, fontweight='bold')
-    ax.set_ylabel("Susceptibility χ", fontsize=14, fontweight='bold')
+    ax.set_xlabel("Gini Coefficient", fontsize=14, fontweight="bold")
+    ax.set_ylabel("Susceptibility χ", fontsize=14, fontweight="bold")
     ax.set_title(
-        f"Phase Diagram: Ising Model (J={J:.2f}, h={h:.2f})",
-        fontsize=16,
-        fontweight='bold'
+        f"Phase Diagram: Ising Model (J={J:.2f}, h={h:.2f})", fontsize=16, fontweight="bold"
     )
-    ax.legend(fontsize=12, loc='upper left')
+    ax.legend(fontsize=12, loc="upper left")
     ax.grid(True, alpha=0.3)
 
     # Color bar
-    cbar = plt.colorbar(
-        cm.ScalarMappable(cmap='viridis'),
-        ax=ax,
-        label='Stability Score'
-    )
-    cbar.set_label('Stability Score', fontsize=12, fontweight='bold')
+    cbar = plt.colorbar(cm.ScalarMappable(cmap="viridis"), ax=ax, label="Stability Score")
+    cbar.set_label("Stability Score", fontsize=12, fontweight="bold")
 
     plt.tight_layout()
 
     output_file = OUTPUT_DIR / "phase_diagram.png"
-    plt.savefig(output_file, dpi=300, bbox_inches='tight')
+    plt.savefig(output_file, dpi=300, bbox_inches="tight")
     print(f"  ✓ Saved: {output_file}")
 
     plt.close()
@@ -244,31 +240,31 @@ def plot_correlation_scatter(data: pd.DataFrame, J: float, h: float):
     ax.scatter(
         normal_data["Susceptibility"],
         normal_data["Stability_Score"],
-        c='blue',
+        c="blue",
         s=60,
         alpha=0.5,
-        edgecolors='k',
+        edgecolors="k",
         linewidth=0.3,
-        label="Normal"
+        label="Normal",
     )
 
     ax.scatter(
         crisis_data["Susceptibility"],
         crisis_data["Stability_Score"],
-        c='red',
+        c="red",
         s=200,
         alpha=0.9,
-        edgecolors='darkred',
+        edgecolors="darkred",
         linewidth=2,
-        marker='X',
-        label="Crisis Event"
+        marker="X",
+        label="Crisis Event",
     )
 
     # Regression line
     from scipy.stats import linregress
+
     slope, intercept, r_value, p_value, std_err = linregress(
-        data["Susceptibility"],
-        data["Stability_Score"]
+        data["Susceptibility"], data["Stability_Score"]
     )
 
     chi_fit = np.linspace(data["Susceptibility"].min(), data["Susceptibility"].max(), 100)
@@ -277,26 +273,22 @@ def plot_correlation_scatter(data: pd.DataFrame, J: float, h: float):
     ax.plot(
         chi_fit,
         stability_fit,
-        'k--',
+        "k--",
         linewidth=2,
-        label=f"Linear fit: R²={r_value**2:.3f}, p={p_value:.4f}"
+        label=f"Linear fit: R²={r_value**2:.3f}, p={p_value:.4f}",
     )
 
     # Formatting
-    ax.set_xlabel("Theoretical Susceptibility χ", fontsize=14, fontweight='bold')
-    ax.set_ylabel("Empirical Stability Score", fontsize=14, fontweight='bold')
-    ax.set_title(
-        "Correlation: Theory vs. Observation",
-        fontsize=16,
-        fontweight='bold'
-    )
-    ax.legend(fontsize=11, loc='upper right')
+    ax.set_xlabel("Theoretical Susceptibility χ", fontsize=14, fontweight="bold")
+    ax.set_ylabel("Empirical Stability Score", fontsize=14, fontweight="bold")
+    ax.set_title("Correlation: Theory vs. Observation", fontsize=16, fontweight="bold")
+    ax.legend(fontsize=11, loc="upper right")
     ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
 
     output_file = OUTPUT_DIR / "correlation_scatter.png"
-    plt.savefig(output_file, dpi=300, bbox_inches='tight')
+    plt.savefig(output_file, dpi=300, bbox_inches="tight")
     print(f"  ✓ Saved: {output_file}")
 
     plt.close()
@@ -305,6 +297,7 @@ def plot_correlation_scatter(data: pd.DataFrame, J: float, h: float):
 # ============================================================================
 # MAIN EXECUTION
 # ============================================================================
+
 
 def main():
     """Generate all visualizations."""
@@ -329,7 +322,7 @@ def main():
         print("Run: python scripts/grounding/fit_ising_parameters.py")
         return
 
-    with open(PARAMS_FILE, 'r') as f:
+    with open(PARAMS_FILE) as f:
         params = json.load(f)
 
     # Use crisis-optimized parameters

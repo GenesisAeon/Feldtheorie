@@ -20,18 +20,16 @@ Author: Genesis Aeon (UTAC Framework)
 Version: 5.0 "Empirical Grounding"
 """
 
-import numpy as np
-import pandas as pd
-from pathlib import Path
-from typing import Dict, Tuple, Optional
-import warnings
-
-from scipy.optimize import minimize, differential_evolution
-from scipy.stats import pearsonr, spearmanr
-import matplotlib.pyplot as plt
-
 # Import our Ising model
 import sys
+import warnings
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+from scipy.optimize import differential_evolution, minimize
+from scipy.stats import pearsonr, spearmanr
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from models.social_rigidity_ising import SocialIsingModel
 
@@ -52,11 +50,9 @@ N_ITERATIONS_LOCAL = 1000  # For L-BFGS-B
 # OBJECTIVE FUNCTIONS
 # ============================================================================
 
+
 def compute_theoretical_susceptibility(
-    gini_values: np.ndarray,
-    load_values: np.ndarray,
-    J: float,
-    h: float
+    gini_values: np.ndarray, load_values: np.ndarray, J: float, h: float
 ) -> np.ndarray:
     """
     Compute theoretical susceptibility for given parameters.
@@ -82,10 +78,7 @@ def compute_theoretical_susceptibility(
 
 
 def objective_crisis_correlation(
-    params: np.ndarray,
-    gini_values: np.ndarray,
-    load_values: np.ndarray,
-    crisis_events: np.ndarray
+    params: np.ndarray, gini_values: np.ndarray, load_values: np.ndarray, crisis_events: np.ndarray
 ) -> float:
     """
     Objective function: Negative correlation between χ and crisis events.
@@ -108,9 +101,7 @@ def objective_crisis_correlation(
         return 1e6  # Penalty for out-of-bounds
 
     try:
-        chi_values = compute_theoretical_susceptibility(
-            gini_values, load_values, J, h
-        )
+        chi_values = compute_theoretical_susceptibility(gini_values, load_values, J, h)
 
         # Correlation with crisis events
         correlation, p_value = spearmanr(chi_values, crisis_events)
@@ -133,7 +124,7 @@ def objective_stability_anticorrelation(
     params: np.ndarray,
     gini_values: np.ndarray,
     load_values: np.ndarray,
-    stability_scores: np.ndarray
+    stability_scores: np.ndarray,
 ) -> float:
     """
     Alternative objective: High χ should predict low stability.
@@ -153,9 +144,7 @@ def objective_stability_anticorrelation(
         return 1e6
 
     try:
-        chi_values = compute_theoretical_susceptibility(
-            gini_values, load_values, J, h
-        )
+        chi_values = compute_theoretical_susceptibility(gini_values, load_values, J, h)
 
         # Invert stability (low stability = high instability)
         instability = 100.0 - stability_scores
@@ -178,6 +167,7 @@ def objective_stability_anticorrelation(
 # ============================================================================
 # PARAMETER FITTING
 # ============================================================================
+
 
 class IsingParameterFitter:
     """
@@ -204,11 +194,8 @@ class IsingParameterFitter:
         self.crisis = data["Crisis_Event"].values
 
     def fit_global(
-        self,
-        objective: str = "crisis",
-        maxiter: int = N_ITERATIONS_GLOBAL,
-        seed: int = 42
-    ) -> Dict:
+        self, objective: str = "crisis", maxiter: int = N_ITERATIONS_GLOBAL, seed: int = 42
+    ) -> dict:
         """
         Global optimization using differential evolution.
 
@@ -224,9 +211,7 @@ class IsingParameterFitter:
 
         # Select objective function
         if objective == "crisis":
-            obj_func = lambda p: objective_crisis_correlation(
-                p, self.gini, self.load, self.crisis
-            )
+            obj_func = lambda p: objective_crisis_correlation(p, self.gini, self.load, self.crisis)
         else:
             obj_func = lambda p: objective_stability_anticorrelation(
                 p, self.gini, self.load, self.stability
@@ -244,7 +229,7 @@ class IsingParameterFitter:
             polish=True,
             atol=1e-6,
             tol=1e-6,
-            workers=1  # Parallel workers (set to -1 for all CPUs)
+            workers=1,  # Parallel workers (set to -1 for all CPUs)
         )
 
         J_opt, h_opt = result.x
@@ -260,14 +245,12 @@ class IsingParameterFitter:
             "objective_value": result.fun,
             "success": result.success,
             "message": result.message,
-            "n_iterations": result.nit
+            "n_iterations": result.nit,
         }
 
     def fit_local(
-        self,
-        initial_params: Tuple[float, float] = (1.0, 0.0),
-        objective: str = "crisis"
-    ) -> Dict:
+        self, initial_params: tuple[float, float] = (1.0, 0.0), objective: str = "crisis"
+    ) -> dict:
         """
         Local optimization using L-BFGS-B.
 
@@ -281,9 +264,7 @@ class IsingParameterFitter:
         print(f"Running local optimization (objective={objective})...")
 
         if objective == "crisis":
-            obj_func = lambda p: objective_crisis_correlation(
-                p, self.gini, self.load, self.crisis
-            )
+            obj_func = lambda p: objective_crisis_correlation(p, self.gini, self.load, self.crisis)
         else:
             obj_func = lambda p: objective_stability_anticorrelation(
                 p, self.gini, self.load, self.stability
@@ -294,9 +275,9 @@ class IsingParameterFitter:
         result = minimize(
             obj_func,
             x0=initial_params,
-            method='L-BFGS-B',
+            method="L-BFGS-B",
             bounds=bounds,
-            options={'maxiter': N_ITERATIONS_LOCAL, 'ftol': 1e-8}
+            options={"maxiter": N_ITERATIONS_LOCAL, "ftol": 1e-8},
         )
 
         J_opt, h_opt = result.x
@@ -305,14 +286,9 @@ class IsingParameterFitter:
         print(f"  ✓ Optimal J = {J_opt:.4f}")
         print(f"  ✓ Optimal h = {h_opt:.4f}")
 
-        return {
-            "J": J_opt,
-            "h": h_opt,
-            "objective_value": result.fun,
-            "success": result.success
-        }
+        return {"J": J_opt, "h": h_opt, "objective_value": result.fun, "success": result.success}
 
-    def compute_fit_diagnostics(self, J: float, h: float) -> Dict:
+    def compute_fit_diagnostics(self, J: float, h: float) -> dict:
         """
         Compute diagnostic metrics for fitted parameters.
 
@@ -323,9 +299,7 @@ class IsingParameterFitter:
         Returns:
             Dict with correlation metrics and critical Gini
         """
-        chi_values = compute_theoretical_susceptibility(
-            self.gini, self.load, J, h
-        )
+        chi_values = compute_theoretical_susceptibility(self.gini, self.load, J, h)
 
         # Crisis correlation
         crisis_corr, crisis_p = spearmanr(chi_values, self.crisis)
@@ -344,13 +318,14 @@ class IsingParameterFitter:
             "stability_correlation": stability_corr,
             "stability_p_value": stability_p,
             "critical_gini": critical_gini,
-            "max_susceptibility": chi_values[max_chi_idx]
+            "max_susceptibility": chi_values[max_chi_idx],
         }
 
 
 # ============================================================================
 # MAIN EXECUTION
 # ============================================================================
+
 
 def main():
     """Run full parameter fitting pipeline."""
@@ -410,13 +385,14 @@ def main():
 
     results = {
         "crisis_optimized": {**result_crisis, **diag_crisis},
-        "stability_optimized": {**result_stability, **diag_stability}
+        "stability_optimized": {**result_stability, **diag_stability},
     }
 
     output_file = OUTPUT_DIR / "fitted_parameters.json"
 
     import json
-    with open(output_file, 'w') as f:
+
+    with open(output_file, "w") as f:
         # Convert numpy types to native Python
         def convert(obj):
             if isinstance(obj, np.integer):
@@ -428,8 +404,7 @@ def main():
             return obj
 
         results_serializable = {
-            k: {k2: convert(v2) for k2, v2 in v.items()}
-            for k, v in results.items()
+            k: {k2: convert(v2) for k2, v2 in v.items()} for k, v in results.items()
         }
 
         json.dump(results_serializable, f, indent=2)
@@ -445,10 +420,12 @@ def main():
     print(f"  Best J (crisis):     {result_crisis['J']:.3f}")
     print(f"  Best h (crisis):     {result_crisis['h']:.3f}")
     print(f"  Critical Gini:       {diag_crisis['critical_gini']:.3f}")
-    print(f"  Crisis correlation:  {diag_crisis['crisis_correlation']:.3f} (p={diag_crisis['crisis_p_value']:.4f})")
+    print(
+        f"  Crisis correlation:  {diag_crisis['crisis_correlation']:.3f} (p={diag_crisis['crisis_p_value']:.4f})"
+    )
     print()
     print("INTERPRETATION:")
-    if diag_crisis['crisis_p_value'] < 0.05:
+    if diag_crisis["crisis_p_value"] < 0.05:
         print("  ✓ SIGNIFICANT: Susceptibility χ correlates with crisis events (p<0.05)")
         print("  → The Ising model shows predictive power for historical instability.")
     else:

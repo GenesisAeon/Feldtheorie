@@ -176,11 +176,9 @@ def simulate_scenario(
         for _ in range(nights):
             heat_load = rng.gauss(scenario.heat_load_mean, scenario.heat_load_std)
             cooling_capacity = scenario.base_cooling + scenario.canopy_gain * (
-                R ** scenario.advective_exponent
+                R**scenario.advective_exponent
             )
-            storage_penalty = scenario.storage_coefficient * math.exp(
-                -R / scenario.relief_scale
-            )
+            storage_penalty = scenario.storage_coefficient * math.exp(-R / scenario.relief_scale)
             net_balance = cooling_capacity - storage_penalty - heat_load
             net_balance += rng.gauss(0.0, scenario.noise_std)
             if net_balance >= scenario.threshold:
@@ -227,8 +225,7 @@ def evaluate_scenario(
         "power_law": evaluate_power_law_null(R, sigma),
     }
     sigma_fit = [
-        float(logistic_response(value, fit_metrics["theta"], fit_metrics["beta"]))
-        for value in R
+        float(logistic_response(value, fit_metrics["theta"], fit_metrics["beta"])) for value in R
     ]
     zeta_info = impedance_trace(R, fit_metrics["theta"], fit_metrics["beta"])
     payload = {
@@ -311,25 +308,21 @@ def scenario_dataset_rows(
     }
 
 
-def correlation_summary(beta_values: Sequence[float], storage_values: Sequence[float]) -> dict[str, float]:
+def correlation_summary(
+    beta_values: Sequence[float], storage_values: Sequence[float]
+) -> dict[str, float]:
     """Compute linear regression diagnostics between β and storage."""
 
     if len(beta_values) != len(storage_values):
         raise ValueError("β and storage arrays must share length")
     mean_beta = statistics.mean(beta_values)
     mean_storage = statistics.mean(storage_values)
-    cov = sum(
-        (b - mean_beta) * (s - mean_storage)
-        for b, s in zip(beta_values, storage_values)
-    )
+    cov = sum((b - mean_beta) * (s - mean_storage) for b, s in zip(beta_values, storage_values))
     var_storage = sum((s - mean_storage) ** 2 for s in storage_values)
     slope = cov / var_storage
     intercept = mean_beta - slope * mean_storage
     ss_tot = sum((b - mean_beta) ** 2 for b in beta_values)
-    ss_res = sum(
-        (b - (slope * s + intercept)) ** 2
-        for b, s in zip(beta_values, storage_values)
-    )
+    ss_res = sum((b - (slope * s + intercept)) ** 2 for b, s in zip(beta_values, storage_values))
     r_squared = 1.0 - ss_res / ss_tot if ss_tot else float("nan")
     return {
         "slope": slope,

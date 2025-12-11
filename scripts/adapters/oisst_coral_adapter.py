@@ -12,7 +12,6 @@ import csv
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List
 
 import numpy as np
 
@@ -48,22 +47,27 @@ class OISSTCoralAdapter:
             mock_data_path: Path to mock CSV file
         """
         if mock_data_path is None:
-            mock_data_path = Path(__file__).parent.parent.parent / "data" / "biology" / "coral_bleaching_global_mock.csv"
+            mock_data_path = (
+                Path(__file__).parent.parent.parent
+                / "data"
+                / "biology"
+                / "coral_bleaching_global_mock.csv"
+            )
 
         self.data_path = Path(mock_data_path)
 
         if not self.data_path.exists():
             raise FileNotFoundError(f"Mock data not found: {self.data_path}")
 
-    def fetch_bleaching_data(self) -> List[CoralBleachingRecord]:
+    def fetch_bleaching_data(self) -> list[CoralBleachingRecord]:
         """Load mock coral bleaching observations from CSV.
 
         Returns:
             List[CoralBleachingRecord]: Parsed annual records ordered by year.
         """
 
-        records: List[CoralBleachingRecord] = []
-        with open(self.data_path, "r", encoding="utf-8") as handle:
+        records: list[CoralBleachingRecord] = []
+        with open(self.data_path, encoding="utf-8") as handle:
             reader = csv.DictReader(handle)
             for row in reader:
                 records.append(
@@ -99,11 +103,11 @@ class OISSTCoralAdapter:
         Returns:
             dict: Statistics summary
         """
-        years = np.array(data['years'])
-        bleaching = np.array(data['bleaching_percent'])
-        dhw = np.array(data['dhw_degree_heating_weeks'])
-        sst = np.array(data['sst_anomaly_C'])
-        distance = np.array(data['distance_to_tipping'])
+        years = np.array(data["years"])
+        bleaching = np.array(data["bleaching_percent"])
+        dhw = np.array(data["dhw_degree_heating_weeks"])
+        sst = np.array(data["sst_anomaly_C"])
+        distance = np.array(data["distance_to_tipping"])
 
         # Current values (most recent)
         current_bleaching = bleaching[-1]
@@ -138,46 +142,45 @@ class OISSTCoralAdapter:
         pre_tipping = bool(50.0 <= current_bleaching < 99.0)
 
         stats = {
-            'n_datapoints': len(bleaching),
-            'date_range': {
-                'start': int(years[0]),
-                'end': int(years[-1])
+            "n_datapoints": len(bleaching),
+            "date_range": {"start": int(years[0]), "end": int(years[-1])},
+            "current_state": {
+                "bleaching_percent": float(current_bleaching),
+                "dhw_degree_heating_weeks": float(current_dhw),
+                "sst_anomaly_C": float(current_sst),
+                "distance_to_tipping": float(current_distance),
             },
-            'current_state': {
-                'bleaching_percent': float(current_bleaching),
-                'dhw_degree_heating_weeks': float(current_dhw),
-                'sst_anomaly_C': float(current_sst),
-                'distance_to_tipping': float(current_distance)
+            "historical_trends": {
+                "bleaching_early_period_percent": float(early_bleaching),
+                "bleaching_late_period_percent": float(late_bleaching),
+                "bleaching_increase_percent": float(bleaching_increase_percent),
+                "dhw_early_period": float(early_dhw),
+                "dhw_late_period": float(late_dhw),
+                "dhw_increase_percent": float(dhw_increase_percent),
+                "bleaching_rate_percent_per_decade": float(bleaching_trend),
             },
-            'historical_trends': {
-                'bleaching_early_period_percent': float(early_bleaching),
-                'bleaching_late_period_percent': float(late_bleaching),
-                'bleaching_increase_percent': float(bleaching_increase_percent),
-                'dhw_early_period': float(early_dhw),
-                'dhw_late_period': float(late_dhw),
-                'dhw_increase_percent': float(dhw_increase_percent),
-                'bleaching_rate_percent_per_decade': float(bleaching_trend)
+            "mass_bleaching_events": {
+                "count": int(mass_bleaching_count),
+                "years": [int(y) for y in mass_bleaching_years],
+                "first_event": int(mass_bleaching_years[0]) if mass_bleaching_count > 0 else None,
             },
-            'mass_bleaching_events': {
-                'count': int(mass_bleaching_count),
-                'years': [int(y) for y in mass_bleaching_years],
-                'first_event': int(mass_bleaching_years[0]) if mass_bleaching_count > 0 else None
+            "tipping_assessment": {
+                "status": "TIPPED" if tipped else ("PRE_TIPPING" if pre_tipping else "STABLE"),
+                "tipped": bool(tipped),
+                "pre_tipping": bool(pre_tipping),
+                "threshold_exceeded": bool(
+                    current_bleaching >= 84.0
+                ),  # 84% = 4th global event threshold
+                "heat_stress_critical": bool(current_dhw >= 8.0),  # DHW > 8 = severe bleaching
             },
-            'tipping_assessment': {
-                'status': 'TIPPED' if tipped else ('PRE_TIPPING' if pre_tipping else 'STABLE'),
-                'tipped': bool(tipped),
-                'pre_tipping': bool(pre_tipping),
-                'threshold_exceeded': bool(current_bleaching >= 84.0),  # 84% = 4th global event threshold
-                'heat_stress_critical': bool(current_dhw >= 8.0)  # DHW > 8 = severe bleaching
+            "thresholds": {
+                "bleaching_moderate": 30.0,
+                "bleaching_severe": 50.0,
+                "bleaching_mass_event": 84.0,
+                "dhw_mild_stress": 4.0,
+                "dhw_severe_stress": 8.0,
+                "sst_anomaly_danger": 1.0,
             },
-            'thresholds': {
-                'bleaching_moderate': 30.0,
-                'bleaching_severe': 50.0,
-                'bleaching_mass_event': 84.0,
-                'dhw_mild_stress': 4.0,
-                'dhw_severe_stress': 8.0,
-                'sst_anomaly_danger': 1.0
-            }
         }
 
         return stats
@@ -213,7 +216,7 @@ class OISSTCoralAdapter:
 
         return "resilience_loss" if dhw >= 4.0 else "stable"
 
-    def latest_sensor_payload(self) -> Dict[str, object]:
+    def latest_sensor_payload(self) -> dict[str, object]:
         """Return the latest observation in Sigillin-standard JSON shape."""
 
         records = self.fetch_bleaching_data()
@@ -246,7 +249,9 @@ class OISSTCoralAdapter:
         """
 
         if output_path is None:
-            output_path = Path(__file__).parent.parent / "analysis" / "results" / "coral_adapter_output.json"
+            output_path = (
+                Path(__file__).parent.parent / "analysis" / "results" / "coral_adapter_output.json"
+            )
 
         output_path = Path(output_path)
         output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -264,8 +269,16 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description="OISST Coral Adapter (Mock)")
-    parser.add_argument("--input", type=str, help="Input CSV path (default: data/biology/coral_bleaching_global_mock.csv)")
-    parser.add_argument("--output", type=str, help="Output JSON path (default: analysis/results/coral_adapter_output.json)")
+    parser.add_argument(
+        "--input",
+        type=str,
+        help="Input CSV path (default: data/biology/coral_bleaching_global_mock.csv)",
+    )
+    parser.add_argument(
+        "--output",
+        type=str,
+        help="Output JSON path (default: analysis/results/coral_adapter_output.json)",
+    )
 
     args = parser.parse_args()
 
@@ -278,5 +291,5 @@ def main():
     print(json.dumps(payload, indent=2))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

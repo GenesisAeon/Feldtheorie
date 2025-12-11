@@ -137,11 +137,11 @@ def get_consciousness_timescales() -> dict[str, float]:
     vrig_crossing_time = a_max_m / vrig_m_s
 
     return {
-        'delta_t_Q_min': delta_t_Q_min,
-        'delta_t_Q_typical': delta_t_Q_typical,
-        'delta_t_Q_max': delta_t_Q_max,
-        'photon_bounce_12fold': photon_bounce_time,
-        'vrig_crossing': vrig_crossing_time,
+        "delta_t_Q_min": delta_t_Q_min,
+        "delta_t_Q_typical": delta_t_Q_typical,
+        "delta_t_Q_max": delta_t_Q_max,
+        "photon_bounce_12fold": photon_bounce_time,
+        "vrig_crossing": vrig_crossing_time,
     }
 
 
@@ -159,11 +159,11 @@ def get_oipk_geometry_params() -> dict[str, float]:
         - 'reflection_coefficient': Light reflection efficiency (0.99)
     """
     return {
-        'tau_max': 13.8e9,  # years
-        'a_max': 46.5e9,  # light-years
-        'b_max': 1.0,  # Normalized (to be determined from observations)
-        'n_edges': 12,  # 12-fold cube-edge symmetry
-        'reflection_coefficient': 0.99,  # Near-perfect reflection
+        "tau_max": 13.8e9,  # years
+        "a_max": 46.5e9,  # light-years
+        "b_max": 1.0,  # Normalized (to be determined from observations)
+        "n_edges": 12,  # 12-fold cube-edge symmetry
+        "reflection_coefficient": 0.99,  # Near-perfect reflection
     }
 
 
@@ -187,17 +187,17 @@ def get_vrig_analysis() -> dict[str, float]:
     beta_kleiber = 3.0 / 4.0  # Metabolic scaling exponent
 
     return {
-        'v_rig_km_s': v_rig,
-        'v_rig_fraction_c': v_rig / C_LIGHT_KM_S,
-        'alpha_inv': ALPHA_INV,
-        'phi': PHI,
-        'impedance': impedance,
-        'beta': beta_kleiber,
-        'regime_transition': 1.0 / beta_kleiber,  # 4/3 ≈ 1.333
+        "v_rig_km_s": v_rig,
+        "v_rig_fraction_c": v_rig / C_LIGHT_KM_S,
+        "alpha_inv": ALPHA_INV,
+        "phi": PHI,
+        "impedance": impedance,
+        "beta": beta_kleiber,
+        "regime_transition": 1.0 / beta_kleiber,  # 4/3 ≈ 1.333
     }
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Demo: Print v_RIG and related constants
     print("=" * 70)
     print("V6 Unified Constants: Regime Integration Gradient")

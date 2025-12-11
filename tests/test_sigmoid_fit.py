@@ -3,11 +3,10 @@
 from __future__ import annotations
 
 import math
-from typing import Sequence
+from collections.abc import Sequence
 
 import numpy as np
 import pytest
-
 from models.sigmoid_fit import (
     SigmoidFitResult,
     fit_sigmoid_with_fallbacks,
@@ -47,7 +46,9 @@ def test_fit_sigmoid_with_fallbacks_prefers_scipy_when_available() -> None:
     assert result.ci_width is None or result.ci_width >= 0.0
 
 
-def test_fit_sigmoid_with_fallbacks_recovers_when_scipy_missing(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_fit_sigmoid_with_fallbacks_recovers_when_scipy_missing(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     import models.sigmoid_fit as sigmoid_fit
 
     monkeypatch.setattr(sigmoid_fit, "_SCIPY_OPTIMIZE", None)
@@ -65,7 +66,7 @@ def test_null_model_aic_functions_handle_degenerate_inputs() -> None:
 
     x = np.linspace(1.0, 2.0, num=10)
     y_linear = 2.0 * x + 1.0
-    y_power = x ** 2
+    y_power = x**2
 
     assert math.isfinite(linear_fit_aic(x, y_linear))
     assert math.isfinite(power_law_fit_aic(x, y_power))

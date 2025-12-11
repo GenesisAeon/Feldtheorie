@@ -9,8 +9,6 @@ from __future__ import annotations
 import math
 
 import numpy as np
-import pytest
-
 from models.coupled_threshold_field import (
     CoupledThresholdField,
     logistic_semantic_kernel,
@@ -126,9 +124,7 @@ class TestComputeCoupling:
     def test_compute_coupling_scales_kernel_by_coupling(self) -> None:
         """Should scale kernel result by coupling constant."""
         field = CoupledThresholdField(theta=0.5, beta=4.0, coupling=0.4)
-        result = field.compute_coupling(
-            R=0.5, psi=0.3, phi=0.8, driver=1.0, sigma=0.6
-        )
+        result = field.compute_coupling(R=0.5, psi=0.3, phi=0.8, driver=1.0, sigma=0.6)
         kernel_value = 0.8 - 0.3  # default kernel: phi - psi
         expected = 0.4 * kernel_value
         assert math.isclose(result, expected)
@@ -142,9 +138,7 @@ class TestComputeCoupling:
         field = CoupledThresholdField(
             theta=0.5, beta=4.0, coupling=0.3, coupling_kernel=custom_kernel
         )
-        result = field.compute_coupling(
-            R=0.5, psi=0.2, phi=0.6, driver=1.0, sigma=0.5
-        )
+        result = field.compute_coupling(R=0.5, psi=0.2, phi=0.6, driver=1.0, sigma=0.5)
         expected = 0.3 * 2.0 * (0.6 - 0.2)
         assert math.isclose(result, expected)
 
@@ -406,9 +400,7 @@ class TestLogisticSemanticKernel:
     def test_logistic_semantic_kernel_can_be_used_with_field(self) -> None:
         """Custom kernel should work with CoupledThresholdField."""
         kernel = logistic_semantic_kernel(theta=0.5, beta=4.0)
-        field = CoupledThresholdField(
-            theta=0.5, beta=4.0, coupling=0.3, coupling_kernel=kernel
-        )
+        field = CoupledThresholdField(theta=0.5, beta=4.0, coupling=0.3, coupling_kernel=kernel)
         drivers = [0.0, 0.5, 1.0]
         result = field.simulate(drivers)
 

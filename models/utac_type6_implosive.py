@@ -242,8 +242,8 @@ BETA_STEPS = np.array([PHI ** (n / 3.0) for n in range(10)])
 
 # Key fixpoints
 BETA_FIXPOINT_PHI = PHI  # β ≈ 1.618 (step 3)
-BETA_FIXPOINT_PHI2 = PHI ** 2  # β ≈ 2.618 (step 6)
-BETA_FIXPOINT_PHI3 = PHI ** 3  # β ≈ 4.236 (step 9, universal mean-field)
+BETA_FIXPOINT_PHI2 = PHI**2  # β ≈ 2.618 (step 6)
+BETA_FIXPOINT_PHI3 = PHI**3  # β ≈ 4.236 (step 9, universal mean-field)
 
 
 def nearest_beta_step(beta: float) -> tuple[int, float, float]:

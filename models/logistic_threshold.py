@@ -111,7 +111,9 @@ class ThresholdMembrane:
             "half_max_index": onset_idx,
         }
 
-    def export_summary(self, r: ArrayLike, store: MutableMapping[str, float] | None = None) -> MutableMapping[str, float]:
+    def export_summary(
+        self, r: ArrayLike, store: MutableMapping[str, float] | None = None
+    ) -> MutableMapping[str, float]:
         r"""Emit a compact summary of the membrane state for downstream modules.
 
         Parameters

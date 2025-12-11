@@ -35,7 +35,6 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Optional
 
 import pandas as pd
 
@@ -85,7 +84,7 @@ class GiniDataPoint:
     source: str = "World Bank"
     indicator: str = GINI_INDICATOR
 
-    def to_dict(self) -> Dict[str, object]:
+    def to_dict(self) -> dict[str, object]:
         return {
             "country_code": self.country_code,
             "country_name": self.country_name,
@@ -98,7 +97,7 @@ class GiniDataPoint:
 
 def fetch_gini_for_country(
     country_code: str, start_year: int = 1990, end_year: int = 2023
-) -> List[GiniDataPoint]:
+) -> list[GiniDataPoint]:
     """Fetch Gini coefficient time series for a single country.
 
     Args:
@@ -135,7 +134,9 @@ def fetch_gini_for_country(
     observations = data[1]
 
     if not observations:
-        print(f"WARNING: No Gini data for {country_code} in {start_year}-{end_year}", file=sys.stderr)
+        print(
+            f"WARNING: No Gini data for {country_code} in {start_year}-{end_year}", file=sys.stderr
+        )
         return []
 
     country_name = observations[0]["country"]["value"] if observations else country_code
@@ -157,8 +158,8 @@ def fetch_gini_for_country(
 
 
 def fetch_gini_bulk(
-    countries: List[str], start_year: int = 1990, end_year: int = 2023
-) -> List[GiniDataPoint]:
+    countries: list[str], start_year: int = 1990, end_year: int = 2023
+) -> list[GiniDataPoint]:
     """Fetch Gini data for multiple countries.
 
     Args:
@@ -182,7 +183,7 @@ def fetch_gini_bulk(
     return all_data
 
 
-def export_to_csv(datapoints: List[GiniDataPoint], output_path: Path) -> None:
+def export_to_csv(datapoints: list[GiniDataPoint], output_path: Path) -> None:
     """Export Gini data to CSV with metadata sidecar.
 
     Args:
@@ -244,7 +245,7 @@ def export_to_csv(datapoints: List[GiniDataPoint], output_path: Path) -> None:
     print(f"✅ Metadata saved to {metadata_path}", file=sys.stderr)
 
 
-def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Fetch Gini coefficient data from World Bank for social rigidity analysis"
     )
@@ -274,7 +275,7 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def main(argv: Optional[List[str]] = None) -> int:
+def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
 
     if args.list_countries:
@@ -286,7 +287,10 @@ def main(argv: Optional[List[str]] = None) -> int:
     # Parse country list
     countries = [c.strip().upper() for c in args.countries.split(",")]
 
-    print(f"Fetching Gini data for {len(countries)} countries: {', '.join(countries)}", file=sys.stderr)
+    print(
+        f"Fetching Gini data for {len(countries)} countries: {', '.join(countries)}",
+        file=sys.stderr,
+    )
     print(f"Year range: {args.start_year}-{args.end_year}\n", file=sys.stderr)
 
     # Fetch data

@@ -16,9 +16,9 @@ from __future__ import annotations
 import argparse
 import os
 import sys
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, List, Sequence, Tuple
 
 import matplotlib
 
@@ -62,7 +62,7 @@ class PhaseCutoffs:
     phase_3: int
 
     @classmethod
-    def from_total_frames(cls, total_frames: int) -> "PhaseCutoffs":
+    def from_total_frames(cls, total_frames: int) -> PhaseCutoffs:
         phase_1 = max(1, int(total_frames * PHASE_1_RATIO))
         phase_2 = max(phase_1 + 1, int(total_frames * PHASE_2_RATIO))
         phase_3 = max(phase_2 + 1, int(total_frames * PHASE_3_RATIO))
@@ -122,7 +122,9 @@ class GenesisVisualizer:
         return (self.scatter_void, *self.lines_strings, *self.cube_lines)
 
     @staticmethod
-    def _cube_edges(vertices: Sequence[Sequence[float]]) -> List[Tuple[List[float], List[float], List[float]]]:
+    def _cube_edges(
+        vertices: Sequence[Sequence[float]],
+    ) -> list[tuple[list[float], list[float], list[float]]]:
         """Return edge coordinates for the cube defined by its eight vertices."""
 
         connections = [
@@ -140,7 +142,7 @@ class GenesisVisualizer:
             (4, 6),
         ]
 
-        edges: List[Tuple[List[float], List[float], List[float]]] = []
+        edges: list[tuple[list[float], list[float], list[float]]] = []
         if len(vertices) != 8:
             return edges
 
@@ -287,16 +289,14 @@ def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
         "--damping",
         type=float,
         default=DEFAULT_DAMPING,
-        help="ζ(R) Dämpfungsfaktor für die Scheiben." \
-             " Standard: %(default)s",
+        help="ζ(R) Dämpfungsfaktor für die Scheiben." " Standard: %(default)s",
     )
     parser.add_argument(
         "--slices",
         type=int,
         default=DEFAULT_SLICES,
         dest="slice_count",
-        help="Anzahl der Block-Universum-Schnitte." \
-             " Standard: %(default)s",
+        help="Anzahl der Block-Universum-Schnitte." " Standard: %(default)s",
     )
     parser.add_argument(
         "--output",
@@ -348,7 +348,9 @@ def main(cli_args: Sequence[str] | None = None) -> None:
             theta_str = f", Θ={preset.theta:.3f}" if preset.theta is not None else ""
             source_str = f" | Quelle: {preset.source}" if preset.source else ""
             domain_str = f" | Domäne: {preset.domain}" if getattr(preset, "domain", None) else ""
-            color_str = f" | Farbe: {preset.color_hex}" if getattr(preset, "color_hex", None) else ""
+            color_str = (
+                f" | Farbe: {preset.color_hex}" if getattr(preset, "color_hex", None) else ""
+            )
             description = f" | {preset.description}" if getattr(preset, "description", None) else ""
             print(
                 f"  - {preset.name}: β={preset.beta:.3f}{theta_str}{source_str}{domain_str}{color_str}{description}"

@@ -12,12 +12,11 @@ Usage:
     pytest tests/test_api.py -v
 """
 
-import pytest
-import json
-import base64
-from starlette.testclient import TestClient
-from pathlib import Path
 import sys
+from pathlib import Path
+
+import pytest
+from starlette.testclient import TestClient
 
 # Add project root to path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -31,6 +30,7 @@ client = TestClient(app)
 # ============================================================================
 # Health Check Tests
 # ============================================================================
+
 
 def test_root():
     """Test root endpoint"""
@@ -65,6 +65,7 @@ def test_health_check():
 # GET /api/fieldtypes Tests
 # ============================================================================
 
+
 def test_get_fieldtypes():
     """Test field types endpoint"""
     response = client.get("/api/fieldtypes")
@@ -96,6 +97,7 @@ def test_get_fieldtypes():
 # POST /api/sonify Tests
 # ============================================================================
 
+
 def test_sonify_basic():
     """Test sonification endpoint with basic parameters"""
     response = client.post(
@@ -104,8 +106,8 @@ def test_sonify_basic():
             "beta": 4.2,
             "theta": 50.0,
             "duration": 1.0,  # Short for test
-            "sample_rate": 22050  # Lower for faster test
-        }
+            "sample_rate": 22050,  # Lower for faster test
+        },
     )
     assert response.status_code == 200
     data = response.json()
@@ -132,8 +134,8 @@ def test_sonify_field_type():
             "theta": 100.0,
             "field_type": "strongly_coupled",
             "duration": 0.5,
-            "sample_rate": 22050
-        }
+            "sample_rate": 22050,
+        },
     )
     assert response.status_code == 200
     data = response.json()
@@ -142,25 +144,14 @@ def test_sonify_field_type():
 
 def test_sonify_invalid_beta():
     """Test sonification with invalid beta (out of range)"""
-    response = client.post(
-        "/api/sonify",
-        json={
-            "beta": 25.0,  # > 20.0 max
-            "theta": 50.0
-        }
-    )
+    response = client.post("/api/sonify", json={"beta": 25.0, "theta": 50.0})  # > 20.0 max
     assert response.status_code == 422  # Validation error
 
 
 def test_sonify_invalid_field_type():
     """Test sonification with invalid field type"""
     response = client.post(
-        "/api/sonify",
-        json={
-            "beta": 4.0,
-            "theta": 50.0,
-            "field_type": "invalid_type"
-        }
+        "/api/sonify", json={"beta": 4.0, "theta": 50.0, "field_type": "invalid_type"}
     )
     assert response.status_code == 422  # Validation error
 
@@ -168,6 +159,7 @@ def test_sonify_invalid_field_type():
 # ============================================================================
 # POST /api/analyze Tests
 # ============================================================================
+
 
 def test_analyze_basic():
     """Test analysis endpoint with basic logistic data"""
@@ -177,11 +169,7 @@ def test_analyze_basic():
 
     response = client.post(
         "/api/analyze",
-        json={
-            "R": R,
-            "sigma": sigma,
-            "bootstrap_iterations": 100  # Low for test speed
-        }
+        json={"R": R, "sigma": sigma, "bootstrap_iterations": 100},  # Low for test speed
     )
     assert response.status_code == 200
     data = response.json()
@@ -210,11 +198,7 @@ def test_analyze_basic():
 def test_analyze_mismatched_arrays():
     """Test analysis with mismatched array lengths"""
     response = client.post(
-        "/api/analyze",
-        json={
-            "R": [0.1, 0.2, 0.3],
-            "sigma": [0.01, 0.02]  # Different length
-        }
+        "/api/analyze", json={"R": [0.1, 0.2, 0.3], "sigma": [0.01, 0.02]}  # Different length
     )
     assert response.status_code == 422  # Validation error
 
@@ -223,10 +207,7 @@ def test_analyze_sigma_out_of_range():
     """Test analysis with sigma values outside [0,1]"""
     response = client.post(
         "/api/analyze",
-        json={
-            "R": [0.1, 0.2, 0.3, 0.4, 0.5],
-            "sigma": [0.1, 0.2, 1.5, 0.4, 0.5]  # 1.5 > 1.0
-        }
+        json={"R": [0.1, 0.2, 0.3, 0.4, 0.5], "sigma": [0.1, 0.2, 1.5, 0.4, 0.5]},  # 1.5 > 1.0
     )
     assert response.status_code == 422  # Validation error
 
@@ -234,11 +215,7 @@ def test_analyze_sigma_out_of_range():
 def test_analyze_too_few_points():
     """Test analysis with too few data points"""
     response = client.post(
-        "/api/analyze",
-        json={
-            "R": [0.1, 0.2],
-            "sigma": [0.1, 0.2]  # < 5 points
-        }
+        "/api/analyze", json={"R": [0.1, 0.2], "sigma": [0.1, 0.2]}  # < 5 points
     )
     assert response.status_code == 422  # Validation error
 
@@ -246,6 +223,7 @@ def test_analyze_too_few_points():
 # ============================================================================
 # GET /api/system/{system_id} Tests
 # ============================================================================
+
 
 def test_get_system_amazon():
     """Test getting Amazon system metadata"""
@@ -290,6 +268,7 @@ def test_get_system_adaptive_theta():
 # POST /api/simulate Tests
 # ============================================================================
 
+
 def test_simulate_basic():
     """Test simulation endpoint with basic parameters"""
     response = client.post(
@@ -301,8 +280,8 @@ def test_simulate_basic():
             "initial_psi": 0.1,
             "initial_phi": 0.05,
             "duration": 1.0,  # Short for test
-            "dt": 0.1  # Large step for test speed
-        }
+            "dt": 0.1,  # Large step for test speed
+        },
     )
     assert response.status_code == 200
     data = response.json()
@@ -338,12 +317,8 @@ def test_simulate_with_stimulus():
             "beta": 4.0,
             "duration": 1.0,
             "dt": 0.1,
-            "stimulus": {
-                "base": 0.2,
-                "amplitude": 0.3,
-                "frequency": 1.0
-            }
-        }
+            "stimulus": {"base": 0.2, "amplitude": 0.3, "frequency": 1.0},
+        },
     )
     assert response.status_code == 200
     data = response.json()
@@ -354,12 +329,7 @@ def test_simulate_with_stimulus():
 def test_simulate_invalid_duration():
     """Test simulation with invalid duration"""
     response = client.post(
-        "/api/simulate",
-        json={
-            "theta": 0.5,
-            "beta": 4.0,
-            "duration": 150.0  # > 100.0 max
-        }
+        "/api/simulate", json={"theta": 0.5, "beta": 4.0, "duration": 150.0}  # > 100.0 max
     )
     assert response.status_code == 422  # Validation error
 
@@ -367,12 +337,7 @@ def test_simulate_invalid_duration():
 def test_simulate_invalid_dt():
     """Test simulation with invalid dt"""
     response = client.post(
-        "/api/simulate",
-        json={
-            "theta": 0.5,
-            "beta": 4.0,
-            "dt": 0.2  # > 0.1 max
-        }
+        "/api/simulate", json={"theta": 0.5, "beta": 4.0, "dt": 0.2}  # > 0.1 max
     )
     assert response.status_code == 422  # Validation error
 
@@ -381,16 +346,14 @@ def test_simulate_invalid_dt():
 # Integration Tests
 # ============================================================================
 
+
 def test_analyze_then_sonify():
     """Test workflow: analyze data, then sonify result"""
     # Step 1: Analyze
     R = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
     sigma = [0.01, 0.02, 0.05, 0.12, 0.35, 0.68, 0.88, 0.95, 0.98, 0.99]
 
-    analyze_response = client.post(
-        "/api/analyze",
-        json={"R": R, "sigma": sigma}
-    )
+    analyze_response = client.post("/api/analyze", json={"R": R, "sigma": sigma})
     assert analyze_response.status_code == 200
     analyze_data = analyze_response.json()
 
@@ -401,8 +364,8 @@ def test_analyze_then_sonify():
             "beta": analyze_data["beta"],
             "theta": analyze_data["theta"] * 50,  # Scale theta
             "duration": 0.5,
-            "sample_rate": 22050
-        }
+            "sample_rate": 22050,
+        },
     )
     assert sonify_response.status_code == 200
     sonify_data = sonify_response.json()
@@ -420,12 +383,7 @@ def test_get_system_then_simulate():
     params = system_data["parameters"]
     simulate_response = client.post(
         "/api/simulate",
-        json={
-            "theta": params["theta"],
-            "beta": params["beta"],
-            "duration": 1.0,
-            "dt": 0.1
-        }
+        json={"theta": params["theta"], "beta": params["beta"], "duration": 1.0, "dt": 0.1},
     )
     assert simulate_response.status_code == 200
     simulate_data = simulate_response.json()
@@ -436,19 +394,15 @@ def test_get_system_then_simulate():
 # Performance Tests
 # ============================================================================
 
+
 def test_sonify_performance():
     """Test that sonification completes in reasonable time"""
     import time
+
     start = time.time()
 
     response = client.post(
-        "/api/sonify",
-        json={
-            "beta": 4.0,
-            "theta": 50.0,
-            "duration": 1.0,
-            "sample_rate": 22050
-        }
+        "/api/sonify", json={"beta": 4.0, "theta": 50.0, "duration": 1.0, "sample_rate": 22050}
     )
 
     elapsed = time.time() - start
@@ -465,12 +419,7 @@ def test_analyze_performance():
 
     start = time.time()
     response = client.post(
-        "/api/analyze",
-        json={
-            "R": R,
-            "sigma": sigma,
-            "bootstrap_iterations": 100
-        }
+        "/api/analyze", json={"R": R, "sigma": sigma, "bootstrap_iterations": 100}
     )
 
     elapsed = time.time() - start

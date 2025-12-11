@@ -39,30 +39,32 @@ License: MIT
 
 import argparse
 import json
-import numpy as np
 import warnings
-from pathlib import Path
-from typing import Dict, List, Tuple, Optional, Callable
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from datetime import datetime
+from pathlib import Path
+
+import numpy as np
 
 try:
     from scipy.io import wavfile
+
     SCIPY_AVAILABLE = True
 except ImportError:
     SCIPY_AVAILABLE = False
     warnings.warn("scipy not available - will save as raw numpy array")
 
-from .utac_sonification import UTACsonifier, FIELD_TYPE_PROFILES
-
+from .utac_sonification import FIELD_TYPE_PROFILES, UTACsonifier
 
 # ============================================================================
 # Data Structures
 # ============================================================================
 
+
 @dataclass
 class VoiceState:
     """State of a single voice in the choir"""
+
     name: str
     beta: float
     theta: float
@@ -81,33 +83,30 @@ class VoiceState:
     frequency: float = 220.0
 
     # Timestamps
-    last_update: Optional[datetime] = None
+    last_update: datetime | None = None
 
 
 @dataclass
 class ChoirMetadata:
     """Metadata for the choir system"""
-    voices: List[str]
+
+    voices: list[str]
     duration: float
     sample_rate: int
     timestamp: str
-    destabilization_events: List[Dict]
+    destabilization_events: list[dict]
 
 
 # ============================================================================
 # Destabilization Effects
 # ============================================================================
 
+
 class DestabilizationEffects:
     """Audio effects that represent system destabilization"""
 
     @staticmethod
-    def tremolo(
-        signal: np.ndarray,
-        rate: float,
-        depth: float,
-        sample_rate: int
-    ) -> np.ndarray:
+    def tremolo(signal: np.ndarray, rate: float, depth: float, sample_rate: int) -> np.ndarray:
         """
         Amplitude modulation (tremolo) - makes the sound "tremble"
 
@@ -128,11 +127,7 @@ class DestabilizationEffects:
 
     @staticmethod
     def vibrato(
-        frequency: float,
-        rate: float,
-        depth: float,
-        duration: float,
-        sample_rate: int
+        frequency: float, rate: float, depth: float, duration: float, sample_rate: int
     ) -> np.ndarray:
         """
         Frequency modulation (vibrato) - makes the pitch waver
@@ -158,10 +153,7 @@ class DestabilizationEffects:
         return np.sin(phase)
 
     @staticmethod
-    def noise_injection(
-        signal: np.ndarray,
-        noise_level: float
-    ) -> np.ndarray:
+    def noise_injection(signal: np.ndarray, noise_level: float) -> np.ndarray:
         """
         Add noise to signal - represents chaos/unpredictability
 
@@ -176,10 +168,7 @@ class DestabilizationEffects:
         return signal + noise
 
     @staticmethod
-    def harmonic_distortion(
-        signal: np.ndarray,
-        distortion: float
-    ) -> np.ndarray:
+    def harmonic_distortion(signal: np.ndarray, distortion: float) -> np.ndarray:
         """
         Add harmonic distortion - represents system stress
 
@@ -198,6 +187,7 @@ class DestabilizationEffects:
 # Multi-Voice Choir Engine
 # ============================================================================
 
+
 class ThresholdChoir:
     """
     Multi-voice sonification engine for real-time UTAC data.
@@ -206,24 +196,20 @@ class ThresholdChoir:
     Spatial positioning and destabilization effects create a rich soundscape.
     """
 
-    def __init__(
-        self,
-        sample_rate: int = 44100,
-        master_volume: float = 0.7
-    ):
+    def __init__(self, sample_rate: int = 44100, master_volume: float = 0.7):
         self.sample_rate = sample_rate
         self.master_volume = master_volume
-        self.voices: Dict[str, VoiceState] = {}
+        self.voices: dict[str, VoiceState] = {}
         self.sonifier = UTACsonifier(sample_rate=sample_rate)
-        self.destabilization_events: List[Dict] = []
+        self.destabilization_events: list[dict] = []
 
     def add_voice(
         self,
         name: str,
         beta: float,
         theta: float,
-        initial_R: Optional[float] = None,
-        pan: float = 0.0
+        initial_R: float | None = None,
+        pan: float = 0.0,
     ) -> VoiceState:
         """
         Add a voice to the choir.
@@ -260,18 +246,13 @@ class ThresholdChoir:
             field_type=field_type,
             pan=pan,
             frequency=profile["base_freq"],
-            last_update=datetime.now()
+            last_update=datetime.now(),
         )
 
         self.voices[name] = voice
         return voice
 
-    def update_voice(
-        self,
-        name: str,
-        new_R: float,
-        timestamp: Optional[datetime] = None
-    ):
+    def update_voice(self, name: str, new_R: float, timestamp: datetime | None = None):
         """
         Update a voice with new data.
 
@@ -310,25 +291,23 @@ class ThresholdChoir:
 
         # Check for destabilization event
         if voice.stability < 0.3:
-            self.destabilization_events.append({
-                "voice": name,
-                "timestamp": timestamp.isoformat() if timestamp else None,
-                "R": new_R,
-                "theta": voice.theta,
-                "stability": voice.stability,
-                "rate_of_change": voice.rate_of_change
-            })
+            self.destabilization_events.append(
+                {
+                    "voice": name,
+                    "timestamp": timestamp.isoformat() if timestamp else None,
+                    "R": new_R,
+                    "theta": voice.theta,
+                    "stability": voice.stability,
+                    "rate_of_change": voice.rate_of_change,
+                }
+            )
 
     def remove_voice(self, name: str):
         """Remove a voice from the choir"""
         if name in self.voices:
             del self.voices[name]
 
-    def synthesize_voice(
-        self,
-        voice: VoiceState,
-        duration: float
-    ) -> np.ndarray:
+    def synthesize_voice(self, voice: VoiceState, duration: float) -> np.ndarray:
         """
         Synthesize audio for a single voice.
 
@@ -347,11 +326,9 @@ class ThresholdChoir:
         profile = FIELD_TYPE_PROFILES[voice.field_type]
 
         # Calculate amplitude based on σ(β(R-Θ))
-        sigma = self.sonifier.logistic_curve(
-            np.array([voice.current_R]),
-            voice.beta,
-            voice.theta
-        )[0]
+        sigma = self.sonifier.logistic_curve(np.array([voice.current_R]), voice.beta, voice.theta)[
+            0
+        ]
 
         # Amplitude envelope: peaks at threshold
         # σ(1-σ) is maximum at σ=0.5 (i.e., R=Θ)
@@ -373,21 +350,13 @@ class ThresholdChoir:
 
             # Generate tone with vibrato
             signal = DestabilizationEffects.vibrato(
-                base_freq,
-                vibrato_rate,
-                vibrato_depth,
-                duration,
-                self.sample_rate
+                base_freq, vibrato_rate, vibrato_depth, duration, self.sample_rate
             )
 
             # Apply harmonics
             for i, harmonic_amp in enumerate(profile["harmonics"][1:], start=2):
                 harmonic_signal = DestabilizationEffects.vibrato(
-                    base_freq * i,
-                    vibrato_rate,
-                    vibrato_depth * i,
-                    duration,
-                    self.sample_rate
+                    base_freq * i, vibrato_rate, vibrato_depth * i, duration, self.sample_rate
                 )
                 signal += harmonic_amp * harmonic_signal
 
@@ -397,10 +366,7 @@ class ThresholdChoir:
 
             # Apply tremolo
             signal = DestabilizationEffects.tremolo(
-                signal,
-                tremolo_rate,
-                tremolo_depth,
-                self.sample_rate
+                signal, tremolo_rate, tremolo_depth, self.sample_rate
             )
 
             # Add noise for extreme instability
@@ -432,11 +398,7 @@ class ThresholdChoir:
 
         return signal
 
-    def apply_spatial_mix(
-        self,
-        signal: np.ndarray,
-        pan: float
-    ) -> np.ndarray:
+    def apply_spatial_mix(self, signal: np.ndarray, pan: float) -> np.ndarray:
         """
         Apply stereo panning to a mono signal.
 
@@ -465,11 +427,7 @@ class ThresholdChoir:
 
         return stereo
 
-    def render(
-        self,
-        duration: float,
-        normalize: bool = True
-    ) -> np.ndarray:
+    def render(self, duration: float, normalize: bool = True) -> np.ndarray:
         """
         Render the complete choir mix.
 
@@ -518,15 +476,10 @@ class ThresholdChoir:
             duration=duration,
             sample_rate=self.sample_rate,
             timestamp=datetime.now().isoformat(),
-            destabilization_events=self.destabilization_events
+            destabilization_events=self.destabilization_events,
         )
 
-    def save_wav(
-        self,
-        filepath: Path,
-        duration: float,
-        save_metadata: bool = True
-    ):
+    def save_wav(self, filepath: Path, duration: float, save_metadata: bool = True):
         """
         Render and save choir as WAV file.
 
@@ -554,7 +507,7 @@ class ThresholdChoir:
 
         # Save metadata
         if save_metadata:
-            metadata_path = filepath.with_suffix('.json')
+            metadata_path = filepath.with_suffix(".json")
             metadata = self.get_metadata(duration)
 
             # Add voice states
@@ -566,12 +519,12 @@ class ThresholdChoir:
                     "current_R": v.current_R,
                     "field_type": v.field_type,
                     "stability": v.stability,
-                    "pan": v.pan
+                    "pan": v.pan,
                 }
                 for name, v in self.voices.items()
             }
 
-            with open(metadata_path, 'w') as f:
+            with open(metadata_path, "w") as f:
                 json.dump(metadata_dict, f, indent=2)
             print(f"✓ Saved metadata: {metadata_path}")
 
@@ -580,14 +533,14 @@ class ThresholdChoir:
 # Data Source Simulators
 # ============================================================================
 
+
 class DataSourceSimulator:
     """Simulates live data feeds for demo purposes"""
 
     @staticmethod
     def simulate_amoc_destabilization(
-        duration: float,
-        sample_rate: float = 1.0
-    ) -> List[Tuple[float, float]]:
+        duration: float, sample_rate: float = 1.0
+    ) -> list[tuple[float, float]]:
         """
         Simulate AMOC circulation weakening over time.
 
@@ -614,9 +567,8 @@ class DataSourceSimulator:
 
     @staticmethod
     def simulate_llm_scaling(
-        duration: float,
-        sample_rate: float = 1.0
-    ) -> List[Tuple[float, float]]:
+        duration: float, sample_rate: float = 1.0
+    ) -> list[tuple[float, float]]:
         """
         Simulate LLM capability emergence with model size.
 
@@ -635,9 +587,8 @@ class DataSourceSimulator:
 
     @staticmethod
     def simulate_ecosystem_collapse(
-        duration: float,
-        sample_rate: float = 1.0
-    ) -> List[Tuple[float, float]]:
+        duration: float, sample_rate: float = 1.0
+    ) -> list[tuple[float, float]]:
         """
         Simulate ecosystem population decline.
 
@@ -647,7 +598,7 @@ class DataSourceSimulator:
         times = np.linspace(0, duration, n_samples)
 
         # Logistic decay
-        population = 1000 / (1 + np.exp(3 * (times - duration/2) / duration))
+        population = 1000 / (1 + np.exp(3 * (times - duration / 2) / duration))
 
         # Add noise
         noise = np.random.randn(n_samples) * 20
@@ -658,6 +609,7 @@ class DataSourceSimulator:
 # ============================================================================
 # CLI Interface
 # ============================================================================
+
 
 def create_demo_choir(duration: float = 30.0) -> ThresholdChoir:
     """
@@ -676,7 +628,7 @@ def create_demo_choir(duration: float = 30.0) -> ThresholdChoir:
         beta=4.2,
         theta=50.0,  # Critical strength threshold
         initial_R=100.0,
-        pan=-0.6  # Left
+        pan=-0.6,  # Left
     )
 
     # Voice 2: LLM GPT-style (center, high-dimensional)
@@ -685,7 +637,7 @@ def create_demo_choir(duration: float = 30.0) -> ThresholdChoir:
         beta=3.47,
         theta=100.0,  # Emergence at ~100B parameters
         initial_R=10.0,
-        pan=0.0  # Center
+        pan=0.0,  # Center
     )
 
     # Voice 3: Ecosystem (right, weakly coupled)
@@ -694,7 +646,7 @@ def create_demo_choir(duration: float = 30.0) -> ThresholdChoir:
         beta=2.8,
         theta=500.0,  # Critical population
         initial_R=1000.0,
-        pan=0.6  # Right
+        pan=0.6,  # Right
     )
 
     # Simulate data updates
@@ -715,28 +667,15 @@ def main():
     parser = argparse.ArgumentParser(
         description="Dynamic Threshold Choir - Multi-voice real-time UTAC sonification"
     )
+    parser.add_argument("--demo", action="store_true", help="Run demo with simulated data")
     parser.add_argument(
-        "--demo",
-        action="store_true",
-        help="Run demo with simulated data"
+        "--duration", type=float, default=30.0, help="Duration in seconds (default: 30)"
     )
     parser.add_argument(
-        "--duration",
-        type=float,
-        default=30.0,
-        help="Duration in seconds (default: 30)"
+        "--output", type=str, default="output/threshold_choir.wav", help="Output WAV file path"
     )
     parser.add_argument(
-        "--output",
-        type=str,
-        default="output/threshold_choir.wav",
-        help="Output WAV file path"
-    )
-    parser.add_argument(
-        "--sample-rate",
-        type=int,
-        default=44100,
-        help="Sample rate in Hz (default: 44100)"
+        "--sample-rate", type=int, default=44100, help="Sample rate in Hz (default: 44100)"
     )
 
     args = parser.parse_args()
@@ -748,15 +687,17 @@ def main():
     if args.demo:
         print("🎵 Creating Dynamic Threshold Choir (Demo Mode)")
         print(f"   Duration: {args.duration}s")
-        print(f"   Voices: AMOC, LLM_GPT, Ecosystem")
+        print("   Voices: AMOC, LLM_GPT, Ecosystem")
         print()
 
         choir = create_demo_choir(args.duration)
 
         print("🎼 Voice configuration:")
         for name, voice in choir.voices.items():
-            print(f"   {name:12s}: β={voice.beta:.2f}, Θ={voice.theta:.1f}, "
-                  f"R={voice.current_R:.1f}, stability={voice.stability:.2f}")
+            print(
+                f"   {name:12s}: β={voice.beta:.2f}, Θ={voice.theta:.1f}, "
+                f"R={voice.current_R:.1f}, stability={voice.stability:.2f}"
+            )
         print()
 
         print("🔊 Rendering audio...")

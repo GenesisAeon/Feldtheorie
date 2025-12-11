@@ -13,11 +13,9 @@ from __future__ import annotations
 import json
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Optional
 
 import numpy as np
 import pandas as pd
-
 
 DEFAULT_DATA_PATH = (
     Path(__file__).resolve().parents[2] / "data" / "climate" / "wais_mass_balance_mock.csv"
@@ -25,7 +23,7 @@ DEFAULT_DATA_PATH = (
 REQUIRED_COLUMNS = {"date", "mass_change_Gt"}
 
 
-def fetch_grace_data(mock_data_path: Optional[str] = None) -> pd.DataFrame:
+def fetch_grace_data(mock_data_path: str | None = None) -> pd.DataFrame:
     """Load WAIS mass-change data from the GRACE/GRACE-FO proxy CSV.
 
     Validates that the dataset exposes the expected columns and computes
@@ -81,7 +79,7 @@ def _beta_from_acceleration(acceleration: float) -> float:
     return baseline_beta + damped_penalty
 
 
-def estimate_beta_signal(df: pd.DataFrame, window_years: int = 5) -> Dict[str, float | str]:
+def estimate_beta_signal(df: pd.DataFrame, window_years: int = 5) -> dict[str, float | str]:
     """Estimate beta dynamics via quadratic acceleration over a rolling window.
 
     Args:
@@ -123,7 +121,7 @@ def estimate_beta_signal(df: pd.DataFrame, window_years: int = 5) -> Dict[str, f
     }
 
 
-def build_payload(df: pd.DataFrame, window_years: int = 5) -> Dict[str, str | float]:
+def build_payload(df: pd.DataFrame, window_years: int = 5) -> dict[str, str | float]:
     """Build the Sigillin-standard payload for WAIS early warnings."""
 
     beta_signal = estimate_beta_signal(df, window_years=window_years)
@@ -138,13 +136,16 @@ def build_payload(df: pd.DataFrame, window_years: int = 5) -> Dict[str, str | fl
     }
 
 
-def export_payload(payload: Dict[str, str | float], output_path: Optional[str]) -> str:
+def export_payload(payload: dict[str, str | float], output_path: str | None) -> str:
     """Export the payload as JSON to the requested path."""
 
     destination = (
         Path(output_path)
         if output_path
-        else Path(__file__).resolve().parents[1] / "analysis" / "results" / "wais_adapter_output.json"
+        else Path(__file__).resolve().parents[1]
+        / "analysis"
+        / "results"
+        / "wais_adapter_output.json"
     )
     destination.parent.mkdir(parents=True, exist_ok=True)
 

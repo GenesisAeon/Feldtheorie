@@ -15,10 +15,11 @@ Usage:
     python api/examples/01_basic_usage.py
 """
 
-import requests
-import json
 import base64
+import json
 from pathlib import Path
+
+import requests
 
 # API Base URL
 BASE_URL = "http://localhost:8000"
@@ -26,9 +27,9 @@ BASE_URL = "http://localhost:8000"
 
 def example_health_check():
     """Example: Check API health"""
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("Example 1: Health Check")
-    print("="*60)
+    print("=" * 60)
 
     response = requests.get(f"{BASE_URL}/health")
     data = response.json()
@@ -36,22 +37,22 @@ def example_health_check():
     print(f"Status: {data['status']}")
     print(f"Version: {data['version']}")
     print(f"Phase: {data['phase']} ({data['progress']})")
-    print(f"\nEndpoints:")
-    for name, status in data['endpoints'].items():
+    print("\nEndpoints:")
+    for name, status in data["endpoints"].items():
         print(f"  - {name}: {status}")
 
 
 def example_get_fieldtypes():
     """Example: Get all field types"""
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("Example 2: Get Field Types")
-    print("="*60)
+    print("=" * 60)
 
     response = requests.get(f"{BASE_URL}/api/fieldtypes")
     data = response.json()
 
     print(f"Found {len(data['field_types'])} field types:\n")
-    for ft in data['field_types']:
+    for ft in data["field_types"]:
         print(f"📊 {ft['name'].upper()}")
         print(f"   β range: {ft['beta_range']}")
         print(f"   {ft['description']}")
@@ -61,9 +62,9 @@ def example_get_fieldtypes():
 
 def example_sonify():
     """Example: Generate audio from threshold dynamics"""
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("Example 3: Sonification (Generate Audio)")
-    print("="*60)
+    print("=" * 60)
 
     # Parameters for a strongly coupled system (like AMOC)
     request_data = {
@@ -71,10 +72,10 @@ def example_sonify():
         "theta": 50.0,
         "field_type": "strongly_coupled",
         "duration": 3.0,
-        "sample_rate": 44100
+        "sample_rate": 44100,
     }
 
-    print(f"Generating audio with:")
+    print("Generating audio with:")
     print(f"  β = {request_data['beta']}")
     print(f"  Θ = {request_data['theta']}")
     print(f"  Field type = {request_data['field_type']}")
@@ -83,16 +84,16 @@ def example_sonify():
 
     if response.status_code == 200:
         data = response.json()
-        metadata = data['metadata']
+        metadata = data["metadata"]
 
-        print(f"\n✅ Audio generated successfully!")
+        print("\n✅ Audio generated successfully!")
         print(f"   Duration: {metadata['duration']}s")
         print(f"   Sample rate: {metadata['sample_rate']} Hz")
         print(f"   Field type: {metadata['field_type']}")
         print(f"   Base frequency: {metadata['base_frequency_hz']:.1f} Hz")
 
         # Decode and save audio
-        audio_bytes = base64.b64decode(data['audio_base64'])
+        audio_bytes = base64.b64decode(data["audio_base64"])
         output_path = Path("threshold_sound.wav")
         output_path.write_bytes(audio_bytes)
         print(f"\n🎵 Audio saved to: {output_path}")
@@ -102,9 +103,9 @@ def example_sonify():
 
 def example_analyze():
     """Example: Fit β and Θ to empirical data"""
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("Example 4: Analysis (β-Fitting)")
-    print("="*60)
+    print("=" * 60)
 
     # Generate synthetic logistic data
     # σ(R) = 1 / (1 + exp(-β(R-Θ)))
@@ -112,11 +113,7 @@ def example_analyze():
     R = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
     sigma = [0.01, 0.02, 0.05, 0.12, 0.35, 0.68, 0.88, 0.95, 0.98, 0.99]
 
-    request_data = {
-        "R": R,
-        "sigma": sigma,
-        "bootstrap_iterations": 1000
-    }
+    request_data = {"R": R, "sigma": sigma, "bootstrap_iterations": 1000}
 
     print("Analyzing threshold data...")
     print(f"  Data points: {len(R)}")
@@ -126,16 +123,20 @@ def example_analyze():
     if response.status_code == 200:
         data = response.json()
 
-        print(f"\n✅ Analysis complete!")
-        print(f"\nFitted parameters:")
-        print(f"  Θ (theta) = {data['theta']:.3f} [{data['theta_ci'][0]:.3f}, {data['theta_ci'][1]:.3f}]")
-        print(f"  β (beta)  = {data['beta']:.3f} [{data['beta_ci'][0]:.3f}, {data['beta_ci'][1]:.3f}]")
+        print("\n✅ Analysis complete!")
+        print("\nFitted parameters:")
+        print(
+            f"  Θ (theta) = {data['theta']:.3f} [{data['theta_ci'][0]:.3f}, {data['theta_ci'][1]:.3f}]"
+        )
+        print(
+            f"  β (beta)  = {data['beta']:.3f} [{data['beta_ci'][0]:.3f}, {data['beta_ci'][1]:.3f}]"
+        )
         print(f"  R² = {data['r_squared']:.4f}")
         print(f"  AIC = {data['aic']:.2f}")
         print(f"\nField type: {data['field_type']}")
 
-        print(f"\nNull model comparison:")
-        for model, metrics in data['null_models'].items():
+        print("\nNull model comparison:")
+        for model, metrics in data["null_models"].items():
             print(f"  {model}:")
             print(f"    ΔAIC = {metrics['delta_aic']:.2f}")
             print(f"    ΔR² = {metrics['delta_r2']:.4f}")
@@ -145,9 +146,9 @@ def example_analyze():
 
 def example_get_system():
     """Example: Get system metadata"""
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("Example 5: Get System Metadata")
-    print("="*60)
+    print("=" * 60)
 
     system_id = "amazon"
     print(f"Fetching metadata for system: {system_id}")
@@ -161,14 +162,18 @@ def example_get_system():
         print(f"   Domain: {data['domain']}")
         print(f"   Field type: {data['field_type']}")
 
-        params = data['parameters']
-        print(f"\nParameters:")
-        print(f"  β = {params['beta']:.3f} [{params['beta_ci'][0]:.3f}, {params['beta_ci'][1]:.3f}]")
-        print(f"  Θ = {params['theta']:.3f} [{params['theta_ci'][0]:.3f}, {params['theta_ci'][1]:.3f}]")
+        params = data["parameters"]
+        print("\nParameters:")
+        print(
+            f"  β = {params['beta']:.3f} [{params['beta_ci'][0]:.3f}, {params['beta_ci'][1]:.3f}]"
+        )
+        print(
+            f"  Θ = {params['theta']:.3f} [{params['theta_ci'][0]:.3f}, {params['theta_ci'][1]:.3f}]"
+        )
         print(f"  R² = {params['r_squared']:.4f}")
 
-        print(f"\nReferences:")
-        for ref in data['references']:
+        print("\nReferences:")
+        for ref in data["references"]:
             print(f"  - {ref}")
     else:
         print(f"❌ Error: {response.json()}")
@@ -176,9 +181,9 @@ def example_get_system():
 
 def example_simulate():
     """Example: Run coupled threshold field simulation"""
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("Example 6: Simulation (Coupled Dynamics)")
-    print("="*60)
+    print("=" * 60)
 
     request_data = {
         "theta": 0.66,
@@ -188,14 +193,10 @@ def example_simulate():
         "initial_phi": 0.05,
         "duration": 10.0,
         "dt": 0.05,
-        "stimulus": {
-            "base": 0.15,
-            "amplitude": 0.25,
-            "frequency": 0.3
-        }
+        "stimulus": {"base": 0.15, "amplitude": 0.25, "frequency": 0.3},
     }
 
-    print(f"Running simulation with:")
+    print("Running simulation with:")
     print(f"  Θ = {request_data['theta']}")
     print(f"  β = {request_data['beta']}")
     print(f"  Duration = {request_data['duration']}")
@@ -205,14 +206,15 @@ def example_simulate():
     if response.status_code == 200:
         data = response.json()
 
-        print(f"\n✅ Simulation complete!")
+        print("\n✅ Simulation complete!")
         print(f"   Time steps: {len(data['time'])}")
         print(f"   Final R: {data['R'][-1]:.3f}")
         print(f"   Final σ: {data['sigma'][-1]:.3f}")
 
         # Show some stats
         import statistics
-        print(f"\nStatistics:")
+
+        print("\nStatistics:")
         print(f"  R:   mean={statistics.mean(data['R']):.3f}, max={max(data['R']):.3f}")
         print(f"  Ψ:   mean={statistics.mean(data['psi']):.3f}, max={max(data['psi']):.3f}")
         print(f"  φ:   mean={statistics.mean(data['phi']):.3f}, max={max(data['phi']):.3f}")
@@ -230,6 +232,7 @@ def example_simulate():
 # Main
 # ============================================================================
 
+
 def main():
     """Run all examples"""
     print("\n" + "🌐 UTAC API - Basic Usage Examples ".center(60, "="))
@@ -242,9 +245,9 @@ def main():
         example_simulate()
         example_sonify()  # Last because it generates file
 
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("✅ All examples completed successfully!")
-        print("="*60 + "\n")
+        print("=" * 60 + "\n")
 
     except requests.exceptions.ConnectionError:
         print("\n❌ Error: Could not connect to API server!")

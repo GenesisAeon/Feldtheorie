@@ -2,13 +2,12 @@ from pathlib import Path
 
 import numpy as np
 import pytest
-
 from analysis.threshold_dataset_loader import (
+    _coerce_simulation_hint,
     evaluate_logistic_fit,
     guard_delta_aic,
     load_dataset,
     load_metadata,
-    _coerce_simulation_hint,
 )
 
 
@@ -47,12 +46,9 @@ def test_coerce_simulation_hint_with_empty_dict():
 
 def test_coerce_simulation_hint_with_custom_values():
     """_coerce_simulation_hint should use provided values."""
-    hint = _coerce_simulation_hint({
-        "control_min": 0.2,
-        "control_max": 0.8,
-        "n_points": 50,
-        "noise_scale": 0.05
-    })
+    hint = _coerce_simulation_hint(
+        {"control_min": 0.2, "control_max": 0.8, "n_points": 50, "noise_scale": 0.05}
+    )
     assert hint.control_min == 0.2
     assert hint.control_max == 0.8
     assert hint.n_points == 50
@@ -97,7 +93,7 @@ def test_guard_delta_aic_passes_when_above_minimum():
         aic=100.0,
         delta_aic_best=10.0,  # Above threshold
         null_models={},
-        sample_size=100
+        sample_size=100,
     )
 
     assert guard_delta_aic(result, minimum=5.0) is True
@@ -125,7 +121,7 @@ def test_guard_delta_aic_fails_when_below_minimum():
         aic=100.0,
         delta_aic_best=2.0,  # Below threshold
         null_models={},
-        sample_size=100
+        sample_size=100,
     )
 
     assert guard_delta_aic(result, minimum=5.0) is False

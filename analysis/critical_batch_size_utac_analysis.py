@@ -51,6 +51,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # TEIL 1: THEORETISCHE MODELLE
 # ============================================================
 
+
 def power_law_bcrit(L, B_star, alpha):
     """
     Power-Law-Modell nach Kaplan et al. (2020)
@@ -71,7 +72,7 @@ def power_law_bcrit(L, B_star, alpha):
     B_crit : array-like
         Critical batch size
     """
-    return B_star / (L ** alpha)
+    return B_star / (L**alpha)
 
 
 def utac_sigmoid_efficiency(B, beta, B_crit):
@@ -114,12 +115,13 @@ def gradient_noise_scale(B, B_simple):
 
     Bei B = B_simple: E = 2/3 (genau die Mitte des Übergangs)
     """
-    return (B_simple + B) / (B_simple + 2*B)
+    return (B_simple + B) / (B_simple + 2 * B)
 
 
 # ============================================================
 # TEIL 2: SYNTHETISCHE DATEN (Kaplan et al. 2020 digitalisiert)
 # ============================================================
+
 
 def generate_kaplan_bcrit_data():
     """
@@ -146,11 +148,11 @@ def generate_kaplan_bcrit_data():
     batch_crit_noisy = batch_crit * noise
 
     return {
-        'loss': loss_values,
-        'batch_crit': batch_crit_noisy,
-        'source': 'Kaplan et al. 2020 (arXiv:2001.08361) - Synthetic',
-        'B_star_true': B_star,
-        'alpha_true': ALPHA_B
+        "loss": loss_values,
+        "batch_crit": batch_crit_noisy,
+        "source": "Kaplan et al. 2020 (arXiv:2001.08361) - Synthetic",
+        "B_star_true": B_star,
+        "alpha_true": ALPHA_B,
     }
 
 
@@ -183,17 +185,18 @@ def generate_efficiency_curve_data(B_crit=2**18, beta=4.76):
     efficiency_observed = np.clip(efficiency_true + noise, 0, 1)
 
     return {
-        'batch_size': batch_sizes,
-        'efficiency': efficiency_observed,
-        'B_crit_true': B_crit,
-        'beta_true': beta,
-        'source': 'UTAC Synthetic - Gradient Noise Scale Model'
+        "batch_size": batch_sizes,
+        "efficiency": efficiency_observed,
+        "B_crit_true": B_crit,
+        "beta_true": beta,
+        "source": "UTAC Synthetic - Gradient Noise Scale Model",
     }
 
 
 # ============================================================
 # TEIL 3: UTAC-PARAMETER-EXTRAKTION
 # ============================================================
+
 
 def fit_utac_to_efficiency(batch_sizes, efficiency):
     """
@@ -219,7 +222,7 @@ def fit_utac_to_efficiency(batch_sizes, efficiency):
         return utac_sigmoid_efficiency(np.exp(log_B), beta, np.exp(log_B_crit))
 
     # Initial guess
-    log_B_crit_guess = np.log(batch_sizes[len(batch_sizes)//2])
+    log_B_crit_guess = np.log(batch_sizes[len(batch_sizes) // 2])
     beta_guess = 4.0
 
     try:
@@ -230,7 +233,7 @@ def fit_utac_to_efficiency(batch_sizes, efficiency):
             efficiency,
             p0=[beta_guess, log_B_crit_guess],
             bounds=([0.5, log_B.min()], [20.0, log_B.max()]),
-            maxfev=10000
+            maxfev=10000,
         )
 
         beta_fit, log_B_crit_fit = params
@@ -238,8 +241,8 @@ def fit_utac_to_efficiency(batch_sizes, efficiency):
 
         # R²
         efficiency_pred = sigmoid_wrapper(log_B, beta_fit, log_B_crit_fit)
-        ss_res = np.sum((efficiency - efficiency_pred)**2)
-        ss_tot = np.sum((efficiency - np.mean(efficiency))**2)
+        ss_res = np.sum((efficiency - efficiency_pred) ** 2)
+        ss_tot = np.sum((efficiency - np.mean(efficiency)) ** 2)
         r_squared = 1 - (ss_res / ss_tot)
 
         # Bootstrap CI
@@ -251,7 +254,7 @@ def fit_utac_to_efficiency(batch_sizes, efficiency):
                     efficiency[indices],
                     p0=[beta_fit, log_B_crit_fit],
                     bounds=([0.5, log_B.min()], [20.0, log_B.max()]),
-                    maxfev=5000
+                    maxfev=5000,
                 )
                 return p
             except:
@@ -270,25 +273,25 @@ def fit_utac_to_efficiency(batch_sizes, efficiency):
         B_crit_ci = (np.percentile(B_crit_samples, 2.5), np.percentile(B_crit_samples, 97.5))
 
         return {
-            'beta': beta_fit,
-            'beta_ci': beta_ci,
-            'B_crit': B_crit_fit,
-            'B_crit_ci': B_crit_ci,
-            'r_squared': r_squared,
-            'fit_successful': True,
-            'efficiency_pred': efficiency_pred
+            "beta": beta_fit,
+            "beta_ci": beta_ci,
+            "B_crit": B_crit_fit,
+            "B_crit_ci": B_crit_ci,
+            "r_squared": r_squared,
+            "fit_successful": True,
+            "efficiency_pred": efficiency_pred,
         }
 
     except Exception as e:
         print(f"⚠️ Fit failed: {e}")
         return {
-            'beta': None,
-            'beta_ci': (None, None),
-            'B_crit': None,
-            'B_crit_ci': (None, None),
-            'r_squared': None,
-            'fit_successful': False,
-            'efficiency_pred': None
+            "beta": None,
+            "beta_ci": (None, None),
+            "B_crit": None,
+            "B_crit_ci": (None, None),
+            "r_squared": None,
+            "fit_successful": False,
+            "efficiency_pred": None,
         }
 
 
@@ -309,8 +312,8 @@ def verify_alpha_beta_relationship():
     beta_scaled = 0.32 / alpha_B
 
     # Vergleich mit UTAC v2.0 Attractors
-    phi_3 = PHI ** 3
-    phi_4 = PHI ** 4
+    phi_3 = PHI**3
+    phi_4 = PHI**4
 
     inverse_error_phi3 = abs(beta_inverse - phi_3) / phi_3 * 100
     inverse_error_phi4 = abs(beta_inverse - phi_4) / phi_4 * 100
@@ -318,24 +321,21 @@ def verify_alpha_beta_relationship():
     scaled_error_phi3 = abs(beta_scaled - phi_3) / phi_3 * 100
 
     return {
-        'alpha_B': alpha_B,
-        'beta_inverse': beta_inverse,
-        'beta_scaled': beta_scaled,
-        'phi_3_attractor': phi_3,
-        'phi_4_attractor': phi_4,
-        'inverse_match_phi3': {
-            'error_percent': inverse_error_phi3,
-            'passes': inverse_error_phi3 < 15  # ±15% Toleranz
+        "alpha_B": alpha_B,
+        "beta_inverse": beta_inverse,
+        "beta_scaled": beta_scaled,
+        "phi_3_attractor": phi_3,
+        "phi_4_attractor": phi_4,
+        "inverse_match_phi3": {
+            "error_percent": inverse_error_phi3,
+            "passes": inverse_error_phi3 < 15,  # ±15% Toleranz
         },
-        'inverse_match_phi4': {
-            'error_percent': inverse_error_phi4,
-            'passes': inverse_error_phi4 < 15
+        "inverse_match_phi4": {
+            "error_percent": inverse_error_phi4,
+            "passes": inverse_error_phi4 < 15,
         },
-        'scaled_match_phi3': {
-            'error_percent': scaled_error_phi3,
-            'passes': scaled_error_phi3 < 15
-        },
-        'recommendation': 'inverse' if inverse_error_phi3 < scaled_error_phi3 else 'scaled'
+        "scaled_match_phi3": {"error_percent": scaled_error_phi3, "passes": scaled_error_phi3 < 15},
+        "recommendation": "inverse" if inverse_error_phi3 < scaled_error_phi3 else "scaled",
     }
 
 
@@ -343,14 +343,15 @@ def verify_alpha_beta_relationship():
 # TEIL 4: VISUALISIERUNG
 # ============================================================
 
+
 def plot_bcrit_powerlaw_fit(data, save_path):
     """
     Plottet B_crit vs. Loss mit Power-Law-Fit
     """
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    loss = data['loss']
-    batch_crit = data['batch_crit']
+    loss = data["loss"]
+    batch_crit = data["batch_crit"]
 
     # Power-Law fit
     def fit_func(L, B_star, alpha):
@@ -360,29 +361,38 @@ def plot_bcrit_powerlaw_fit(data, save_path):
     B_star_fit, alpha_fit = params
 
     # Plot
-    ax.scatter(loss, batch_crit, s=80, alpha=0.6, label='Data (Kaplan et al. 2020)', zorder=3)
+    ax.scatter(loss, batch_crit, s=80, alpha=0.6, label="Data (Kaplan et al. 2020)", zorder=3)
 
     loss_fine = np.logspace(np.log10(loss.min()), np.log10(loss.max()), 100)
     batch_fit = fit_func(loss_fine, B_star_fit, alpha_fit)
-    ax.plot(loss_fine, batch_fit, 'r-', lw=2,
-            label=f'Power-Law Fit: $B_{{crit}} = B^*/L^{{{alpha_fit:.3f}}}$', zorder=2)
+    ax.plot(
+        loss_fine,
+        batch_fit,
+        "r-",
+        lw=2,
+        label=f"Power-Law Fit: $B_{{crit}} = B^*/L^{{{alpha_fit:.3f}}}$",
+        zorder=2,
+    )
 
-    ax.set_xscale('log')
-    ax.set_yscale('log')
-    ax.set_xlabel('Loss', fontsize=13)
-    ax.set_ylabel('Critical Batch Size $B_{crit}$', fontsize=13)
-    ax.set_title(f'Critical Batch Size Scaling\n'
-                 f'$\\alpha_B = {alpha_fit:.3f}$ (Kaplan: 0.21), '
-                 f'$B^* = {B_star_fit:.2e}$',
-                 fontsize=14, fontweight='bold')
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    ax.set_xlabel("Loss", fontsize=13)
+    ax.set_ylabel("Critical Batch Size $B_{crit}$", fontsize=13)
+    ax.set_title(
+        f"Critical Batch Size Scaling\n"
+        f"$\\alpha_B = {alpha_fit:.3f}$ (Kaplan: 0.21), "
+        f"$B^* = {B_star_fit:.2e}$",
+        fontsize=14,
+        fontweight="bold",
+    )
     ax.legend(fontsize=11)
-    ax.grid(alpha=0.3, which='both')
+    ax.grid(alpha=0.3, which="both")
     plt.tight_layout()
-    plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    plt.savefig(save_path, dpi=300, bbox_inches="tight")
     print(f"✓ Saved: {save_path}")
     plt.close()
 
-    return {'B_star_fit': B_star_fit, 'alpha_fit': alpha_fit}
+    return {"B_star_fit": B_star_fit, "alpha_fit": alpha_fit}
 
 
 def plot_efficiency_sigmoid_fit(data, fit_results, save_path):
@@ -391,53 +401,79 @@ def plot_efficiency_sigmoid_fit(data, fit_results, save_path):
     """
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    B = data['batch_size']
-    E = data['efficiency']
+    B = data["batch_size"]
+    E = data["efficiency"]
 
     # Data
-    ax.scatter(B, E, s=80, alpha=0.6, label='Observed Efficiency', zorder=3, color='steelblue')
+    ax.scatter(B, E, s=80, alpha=0.6, label="Observed Efficiency", zorder=3, color="steelblue")
 
     # Fitted UTAC Sigmoid
-    if fit_results['fit_successful']:
-        beta = fit_results['beta']
-        B_crit = fit_results['B_crit']
-        beta_ci = fit_results['beta_ci']
+    if fit_results["fit_successful"]:
+        beta = fit_results["beta"]
+        B_crit = fit_results["B_crit"]
+        beta_ci = fit_results["beta_ci"]
 
         B_fine = np.logspace(np.log10(B.min()), np.log10(B.max()), 200)
         E_fit = utac_sigmoid_efficiency(B_fine, beta, B_crit)
 
-        ax.plot(B_fine, E_fit, 'r-', lw=2.5,
-                label=f'UTAC Fit: $\\beta = {beta:.2f}$ [{beta_ci[0]:.2f}, {beta_ci[1]:.2f}]',
-                zorder=2)
+        ax.plot(
+            B_fine,
+            E_fit,
+            "r-",
+            lw=2.5,
+            label=f"UTAC Fit: $\\beta = {beta:.2f}$ [{beta_ci[0]:.2f}, {beta_ci[1]:.2f}]",
+            zorder=2,
+        )
 
         # Critical point
-        ax.axvline(B_crit, color='gray', ls='--', lw=1.5, alpha=0.7,
-                   label=f'$B_{{crit}} = {B_crit:.2e}$', zorder=1)
+        ax.axvline(
+            B_crit,
+            color="gray",
+            ls="--",
+            lw=1.5,
+            alpha=0.7,
+            label=f"$B_{{crit}} = {B_crit:.2e}$",
+            zorder=1,
+        )
 
         # Φ³ reference
-        phi_3 = PHI ** 3
-        ax.axhline(0.5, color='orange', ls=':', lw=1, alpha=0.5, zorder=0)
-        ax.text(B.max()*0.6, 0.52, f'$\\Phi^3 \\approx {phi_3:.2f}$ (Informational Target)',
-                fontsize=9, color='orange', alpha=0.7)
+        phi_3 = PHI**3
+        ax.axhline(0.5, color="orange", ls=":", lw=1, alpha=0.5, zorder=0)
+        ax.text(
+            B.max() * 0.6,
+            0.52,
+            f"$\\Phi^3 \\approx {phi_3:.2f}$ (Informational Target)",
+            fontsize=9,
+            color="orange",
+            alpha=0.7,
+        )
 
         # R²
-        r2 = fit_results['r_squared']
-        ax.text(0.05, 0.95, f'$R^2 = {r2:.4f}$',
-                transform=ax.transAxes, fontsize=11,
-                verticalalignment='top',
-                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
+        r2 = fit_results["r_squared"]
+        ax.text(
+            0.05,
+            0.95,
+            f"$R^2 = {r2:.4f}$",
+            transform=ax.transAxes,
+            fontsize=11,
+            verticalalignment="top",
+            bbox=dict(boxstyle="round", facecolor="wheat", alpha=0.3),
+        )
 
-    ax.set_xscale('log')
-    ax.set_xlabel('Batch Size $B$', fontsize=13)
-    ax.set_ylabel('Training Efficiency $E(B)$', fontsize=13)
-    ax.set_title('Critical Batch Size als UTAC-Übergang\n'
-                 'Training Efficiency: Sample-Limited → Compute-Limited',
-                 fontsize=14, fontweight='bold')
-    ax.legend(fontsize=10, loc='lower right')
-    ax.grid(alpha=0.3, which='both')
+    ax.set_xscale("log")
+    ax.set_xlabel("Batch Size $B$", fontsize=13)
+    ax.set_ylabel("Training Efficiency $E(B)$", fontsize=13)
+    ax.set_title(
+        "Critical Batch Size als UTAC-Übergang\n"
+        "Training Efficiency: Sample-Limited → Compute-Limited",
+        fontsize=14,
+        fontweight="bold",
+    )
+    ax.legend(fontsize=10, loc="lower right")
+    ax.grid(alpha=0.3, which="both")
     ax.set_ylim(0, 1.05)
     plt.tight_layout()
-    plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    plt.savefig(save_path, dpi=300, bbox_inches="tight")
     print(f"✓ Saved: {save_path}")
     plt.close()
 
@@ -448,62 +484,65 @@ def plot_alpha_beta_relationship(alpha_beta_data, save_path):
     """
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
 
-    alpha_B = alpha_beta_data['alpha_B']
-    beta_inv = alpha_beta_data['beta_inverse']
-    beta_sca = alpha_beta_data['beta_scaled']
-    phi_3 = alpha_beta_data['phi_3_attractor']
-    phi_4 = alpha_beta_data['phi_4_attractor']
+    alpha_B = alpha_beta_data["alpha_B"]
+    beta_inv = alpha_beta_data["beta_inverse"]
+    beta_sca = alpha_beta_data["beta_scaled"]
+    phi_3 = alpha_beta_data["phi_3_attractor"]
+    phi_4 = alpha_beta_data["phi_4_attractor"]
 
     # Panel 1: β vs α Relationship
     alphas = np.array([0.057, 0.076, 0.095, 0.21, 0.76])
-    alpha_names = ['α_C\n(Compute)', 'α_N\n(Params)', 'α_D\n(Data)',
-                   'α_B\n(Batch)', 'α_S\n(Steps)']
+    alpha_names = ["α_C\n(Compute)", "α_N\n(Params)", "α_D\n(Data)", "α_B\n(Batch)", "α_S\n(Steps)"]
     betas_inv = 1.0 / alphas
     betas_sca = 0.32 / alphas
 
     x = np.arange(len(alphas))
     width = 0.35
 
-    ax1.bar(x - width/2, betas_inv, width, label='β = 1/α (Inverse)',
-            alpha=0.7, color='steelblue')
-    ax1.bar(x + width/2, betas_sca, width, label='β = 0.32/α (Scaled)',
-            alpha=0.7, color='coral')
+    ax1.bar(
+        x - width / 2, betas_inv, width, label="β = 1/α (Inverse)", alpha=0.7, color="steelblue"
+    )
+    ax1.bar(x + width / 2, betas_sca, width, label="β = 0.32/α (Scaled)", alpha=0.7, color="coral")
 
-    ax1.axhline(phi_3, color='green', ls='--', lw=1.5, label=f'Φ³ ≈ {phi_3:.2f}', alpha=0.7)
-    ax1.axhline(phi_4, color='purple', ls='--', lw=1.5, label=f'Φ⁴ ≈ {phi_4:.2f}', alpha=0.7)
+    ax1.axhline(phi_3, color="green", ls="--", lw=1.5, label=f"Φ³ ≈ {phi_3:.2f}", alpha=0.7)
+    ax1.axhline(phi_4, color="purple", ls="--", lw=1.5, label=f"Φ⁴ ≈ {phi_4:.2f}", alpha=0.7)
 
-    ax1.set_ylabel('Predicted β', fontsize=12)
-    ax1.set_xlabel('Scaling Law Exponents (Kaplan et al. 2020)', fontsize=12)
-    ax1.set_title('α-β Relationship Hypothesis', fontsize=13, fontweight='bold')
+    ax1.set_ylabel("Predicted β", fontsize=12)
+    ax1.set_xlabel("Scaling Law Exponents (Kaplan et al. 2020)", fontsize=12)
+    ax1.set_title("α-β Relationship Hypothesis", fontsize=13, fontweight="bold")
     ax1.set_xticks(x)
     ax1.set_xticklabels(alpha_names, fontsize=9)
     ax1.legend(fontsize=9)
-    ax1.grid(alpha=0.3, axis='y')
+    ax1.grid(alpha=0.3, axis="y")
 
     # Panel 2: Critical Batch Size Highlight
     highlight_data = {
-        'Parameter': ['α_B', 'β_inverse', 'β_scaled', 'Φ³', 'Φ⁴'],
-        'Value': [alpha_B, beta_inv, beta_sca, phi_3, phi_4],
-        'Color': ['gray', 'steelblue', 'coral', 'green', 'purple']
+        "Parameter": ["α_B", "β_inverse", "β_scaled", "Φ³", "Φ⁴"],
+        "Value": [alpha_B, beta_inv, beta_sca, phi_3, phi_4],
+        "Color": ["gray", "steelblue", "coral", "green", "purple"],
     }
 
-    ax2.barh(highlight_data['Parameter'], highlight_data['Value'],
-             color=highlight_data['Color'], alpha=0.7)
+    ax2.barh(
+        highlight_data["Parameter"],
+        highlight_data["Value"],
+        color=highlight_data["Color"],
+        alpha=0.7,
+    )
 
     # Error to Φ³
-    inv_error = alpha_beta_data['inverse_match_phi3']['error_percent']
-    sca_error = alpha_beta_data['scaled_match_phi3']['error_percent']
+    inv_error = alpha_beta_data["inverse_match_phi3"]["error_percent"]
+    sca_error = alpha_beta_data["scaled_match_phi3"]["error_percent"]
 
-    ax2.text(beta_inv + 0.5, 1, f'{inv_error:.1f}% error', fontsize=9, va='center')
-    ax2.text(beta_sca + 0.5, 2, f'{sca_error:.1f}% error', fontsize=9, va='center')
+    ax2.text(beta_inv + 0.5, 1, f"{inv_error:.1f}% error", fontsize=9, va="center")
+    ax2.text(beta_sca + 0.5, 2, f"{sca_error:.1f}% error", fontsize=9, va="center")
 
-    ax2.set_xlabel('Value', fontsize=12)
-    ax2.set_title('Critical Batch Size: α_B → β Conversion', fontsize=13, fontweight='bold')
-    ax2.grid(alpha=0.3, axis='x')
-    ax2.set_xlim(0, max(highlight_data['Value']) * 1.3)
+    ax2.set_xlabel("Value", fontsize=12)
+    ax2.set_title("Critical Batch Size: α_B → β Conversion", fontsize=13, fontweight="bold")
+    ax2.grid(alpha=0.3, axis="x")
+    ax2.set_xlim(0, max(highlight_data["Value"]) * 1.3)
 
     plt.tight_layout()
-    plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    plt.savefig(save_path, dpi=300, bbox_inches="tight")
     print(f"✓ Saved: {save_path}")
     plt.close()
 
@@ -512,13 +551,14 @@ def plot_alpha_beta_relationship(alpha_beta_data, save_path):
 # TEIL 5: HAUPTANALYSE
 # ============================================================
 
+
 def run_full_analysis():
     """
     Führt vollständige Critical Batch Size UTAC-Analyse durch
     """
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("CRITICAL BATCH SIZE ALS UTAC-ÜBERGANG - UMFASSENDE ANALYSE")
-    print("="*70 + "\n")
+    print("=" * 70 + "\n")
 
     results = {}
 
@@ -528,36 +568,32 @@ def run_full_analysis():
 
     kaplan_data = generate_kaplan_bcrit_data()
     powerlaw_fit = plot_bcrit_powerlaw_fit(
-        kaplan_data,
-        OUTPUT_DIR / "critical_batch_size_powerlaw_fit.png"
+        kaplan_data, OUTPUT_DIR / "critical_batch_size_powerlaw_fit.png"
     )
 
     print(f"  Fitted α_B = {powerlaw_fit['alpha_fit']:.3f} (Kaplan: 0.21)")
     print(f"  Fitted B* = {powerlaw_fit['B_star_fit']:.2e}")
-    results['powerlaw'] = powerlaw_fit
+    results["powerlaw"] = powerlaw_fit
 
     # ========== SCHRITT 2: UTAC Sigmoid-Analyse ==========
     print("\nSCHRITT 2: UTAC Sigmoid E(B) Analyse")
     print("-" * 70)
 
     efficiency_data = generate_efficiency_curve_data(B_crit=2**18, beta=4.76)
-    utac_fit = fit_utac_to_efficiency(
-        efficiency_data['batch_size'],
-        efficiency_data['efficiency']
-    )
+    utac_fit = fit_utac_to_efficiency(efficiency_data["batch_size"], efficiency_data["efficiency"])
 
-    if utac_fit['fit_successful']:
-        beta = utac_fit['beta']
-        beta_ci = utac_fit['beta_ci']
-        B_crit = utac_fit['B_crit']
-        r2 = utac_fit['r_squared']
+    if utac_fit["fit_successful"]:
+        beta = utac_fit["beta"]
+        beta_ci = utac_fit["beta_ci"]
+        B_crit = utac_fit["B_crit"]
+        r2 = utac_fit["r_squared"]
 
         print(f"  ✓ Fitted β = {beta:.2f} (95% CI: [{beta_ci[0]:.2f}, {beta_ci[1]:.2f}])")
         print(f"  ✓ Fitted B_crit = {B_crit:.2e}")
         print(f"  ✓ R² = {r2:.4f}")
 
         # Check Informational Domain
-        phi_3 = PHI ** 3
+        phi_3 = PHI**3
         error_phi3 = abs(beta - phi_3) / phi_3 * 100
         in_info_domain = 3.0 <= beta <= 5.5
 
@@ -567,22 +603,20 @@ def run_full_analysis():
         print(f"    Error = {error_phi3:.1f}%")
         print(f"    In Informational Domain (3.0-5.5)? {'✅ YES' if in_info_domain else '❌ NO'}")
 
-        results['utac_sigmoid'] = {
-            'beta': beta,
-            'beta_ci': beta_ci,
-            'B_crit': B_crit,
-            'r_squared': r2,
-            'in_informational_domain': in_info_domain,
-            'phi3_error_percent': error_phi3
+        results["utac_sigmoid"] = {
+            "beta": beta,
+            "beta_ci": beta_ci,
+            "B_crit": B_crit,
+            "r_squared": r2,
+            "in_informational_domain": in_info_domain,
+            "phi3_error_percent": error_phi3,
         }
     else:
         print("  ❌ UTAC Sigmoid fit failed")
-        results['utac_sigmoid'] = None
+        results["utac_sigmoid"] = None
 
     plot_efficiency_sigmoid_fit(
-        efficiency_data,
-        utac_fit,
-        OUTPUT_DIR / "critical_batch_size_utac_sigmoid.png"
+        efficiency_data, utac_fit, OUTPUT_DIR / "critical_batch_size_utac_sigmoid.png"
     )
 
     # ========== SCHRITT 3: α-β Beziehung ==========
@@ -595,17 +629,20 @@ def run_full_analysis():
     print(f"  β_inverse (1/α) = {alpha_beta['beta_inverse']:.2f}")
     print(f"  β_scaled (0.32/α) = {alpha_beta['beta_scaled']:.2f}")
     print(f"\n  Φ³ Attractor = {alpha_beta['phi_3_attractor']:.2f}")
-    print(f"  β_inverse Match: {alpha_beta['inverse_match_phi3']['error_percent']:.1f}% error "
-          f"{'✅' if alpha_beta['inverse_match_phi3']['passes'] else '❌'}")
-    print(f"  β_scaled Match: {alpha_beta['scaled_match_phi3']['error_percent']:.1f}% error "
-          f"{'✅' if alpha_beta['scaled_match_phi3']['passes'] else '❌'}")
+    print(
+        f"  β_inverse Match: {alpha_beta['inverse_match_phi3']['error_percent']:.1f}% error "
+        f"{'✅' if alpha_beta['inverse_match_phi3']['passes'] else '❌'}"
+    )
+    print(
+        f"  β_scaled Match: {alpha_beta['scaled_match_phi3']['error_percent']:.1f}% error "
+        f"{'✅' if alpha_beta['scaled_match_phi3']['passes'] else '❌'}"
+    )
     print(f"\n  ⭐ Empfehlung: '{alpha_beta['recommendation']}' Methode verwenden")
 
-    results['alpha_beta_relationship'] = alpha_beta
+    results["alpha_beta_relationship"] = alpha_beta
 
     plot_alpha_beta_relationship(
-        alpha_beta,
-        OUTPUT_DIR / "critical_batch_size_alpha_beta_relationship.png"
+        alpha_beta, OUTPUT_DIR / "critical_batch_size_alpha_beta_relationship.png"
     )
 
     # ========== SCHRITT 4: UTAC v2.0 Integration ==========
@@ -613,30 +650,30 @@ def run_full_analysis():
     print("-" * 70)
 
     utac_v2_summary = {
-        'System': 'Critical Batch Size (Deep Learning Training)',
-        'Domain': 'Informational',
-        'Threshold_Type': 'Sample-Limited → Compute-Limited Regime Transition',
-        'Beta': alpha_beta['beta_inverse'],
-        'Beta_Source': 'α_B^(-1) = 1/0.21',
-        'Phi_Attractor': 'Φ³',
-        'Phi_Value': alpha_beta['phi_3_attractor'],
-        'Phi_Match_Error_Percent': alpha_beta['inverse_match_phi3']['error_percent'],
-        'In_Domain': alpha_beta['inverse_match_phi3']['passes'],
-        'Control_Parameter': 'log(Batch Size)',
-        'Response_Variable': 'Training Efficiency',
-        'Threshold_Location': 'B_crit ≈ 2^18 (typ. for GPT-scale models)',
-        'Statistical_Evidence': {
-            'R_squared': utac_fit['r_squared'] if utac_fit['fit_successful'] else None,
-            'Power_Law_Exponent': powerlaw_fit['alpha_fit'],
-            'Kaplan_Reference': 'α_B = 0.21 (arXiv:2001.08361)'
+        "System": "Critical Batch Size (Deep Learning Training)",
+        "Domain": "Informational",
+        "Threshold_Type": "Sample-Limited → Compute-Limited Regime Transition",
+        "Beta": alpha_beta["beta_inverse"],
+        "Beta_Source": "α_B^(-1) = 1/0.21",
+        "Phi_Attractor": "Φ³",
+        "Phi_Value": alpha_beta["phi_3_attractor"],
+        "Phi_Match_Error_Percent": alpha_beta["inverse_match_phi3"]["error_percent"],
+        "In_Domain": alpha_beta["inverse_match_phi3"]["passes"],
+        "Control_Parameter": "log(Batch Size)",
+        "Response_Variable": "Training Efficiency",
+        "Threshold_Location": "B_crit ≈ 2^18 (typ. for GPT-scale models)",
+        "Statistical_Evidence": {
+            "R_squared": utac_fit["r_squared"] if utac_fit["fit_successful"] else None,
+            "Power_Law_Exponent": powerlaw_fit["alpha_fit"],
+            "Kaplan_Reference": "α_B = 0.21 (arXiv:2001.08361)",
         },
-        'Physical_Interpretation': [
-            'B < B_crit: Sample-limited regime - larger batches improve training speed',
-            'B ≈ B_crit: Critical transition - diminishing returns begin',
-            'B > B_crit: Compute-limited regime - larger batches waste compute',
-            'β ≈ 4.76 indicates moderately sharp transition (Informational class)'
+        "Physical_Interpretation": [
+            "B < B_crit: Sample-limited regime - larger batches improve training speed",
+            "B ≈ B_crit: Critical transition - diminishing returns begin",
+            "B > B_crit: Compute-limited regime - larger batches waste compute",
+            "β ≈ 4.76 indicates moderately sharp transition (Informational class)",
         ],
-        'UTAC_v2_Classification': 'Type-4 UTAC (Informational, Φ³ attractor)'
+        "UTAC_v2_Classification": "Type-4 UTAC (Informational, Φ³ attractor)",
     }
 
     print(f"  System: {utac_v2_summary['System']}")
@@ -646,32 +683,32 @@ def run_full_analysis():
     print(f"  Match Error: {utac_v2_summary['Phi_Match_Error_Percent']:.1f}%")
     print(f"  Classification: {utac_v2_summary['UTAC_v2_Classification']}")
 
-    results['utac_v2_integration'] = utac_v2_summary
+    results["utac_v2_integration"] = utac_v2_summary
 
     # ========== EXPORT ==========
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("EXPORT RESULTS")
-    print("="*70)
+    print("=" * 70)
 
     # JSON Export
     json_path = OUTPUT_DIR / "critical_batch_size_utac_analysis.json"
-    with open(json_path, 'w', encoding='utf-8') as f:
+    with open(json_path, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, ensure_ascii=False, default=str)
     print(f"  ✓ JSON: {json_path.name}")
 
     # CSV Export for beta_estimates.csv integration
     csv_data = {
-        'domain': utac_v2_summary['Domain'],
-        'beta': utac_v2_summary['Beta'],
-        'beta_ci_lower': utac_fit['beta_ci'][0] if utac_fit['fit_successful'] else None,
-        'beta_ci_upper': utac_fit['beta_ci'][1] if utac_fit['fit_successful'] else None,
-        'theta': np.log(utac_fit['B_crit']) if utac_fit['fit_successful'] else 18*np.log(2),
-        'r_squared': utac_fit['r_squared'] if utac_fit['fit_successful'] else None,
-        'delta_aic': None,  # Would need null model comparison
-        'source': 'Kaplan et al. 2020 - Critical Batch Size Scaling',
-        'system': utac_v2_summary['System'],
-        'phi_attractor': utac_v2_summary['Phi_Attractor'],
-        'phi_match_error_percent': utac_v2_summary['Phi_Match_Error_Percent']
+        "domain": utac_v2_summary["Domain"],
+        "beta": utac_v2_summary["Beta"],
+        "beta_ci_lower": utac_fit["beta_ci"][0] if utac_fit["fit_successful"] else None,
+        "beta_ci_upper": utac_fit["beta_ci"][1] if utac_fit["fit_successful"] else None,
+        "theta": np.log(utac_fit["B_crit"]) if utac_fit["fit_successful"] else 18 * np.log(2),
+        "r_squared": utac_fit["r_squared"] if utac_fit["fit_successful"] else None,
+        "delta_aic": None,  # Would need null model comparison
+        "source": "Kaplan et al. 2020 - Critical Batch Size Scaling",
+        "system": utac_v2_summary["System"],
+        "phi_attractor": utac_v2_summary["Phi_Attractor"],
+        "phi_match_error_percent": utac_v2_summary["Phi_Match_Error_Percent"],
     }
 
     csv_path = OUTPUT_DIR / "critical_batch_size_beta_estimate.csv"
@@ -680,7 +717,7 @@ def run_full_analysis():
 
     # Summary Report
     report_path = OUTPUT_DIR / "critical_batch_size_utac_report.md"
-    with open(report_path, 'w', encoding='utf-8') as f:
+    with open(report_path, "w", encoding="utf-8") as f:
         f.write("# Critical Batch Size als UTAC-Übergang\n\n")
         f.write("**Analyse-Datum:** 2025-11-18  \n")
         f.write("**Session:** claude/analyze-batch-size-utac-01NebefD6S8W7MvnzTh9aRjW  \n\n")
@@ -691,10 +728,12 @@ def run_full_analysis():
 
         f.write(f"- **β = {utac_v2_summary['Beta']:.2f}** ")
         f.write("(von α_B = 0.21 via β = 1/α)\n")
-        f.write(f"- **Φ³-Attraktor Match:** {utac_v2_summary['Phi_Match_Error_Percent']:.1f}% Fehler ")
+        f.write(
+            f"- **Φ³-Attraktor Match:** {utac_v2_summary['Phi_Match_Error_Percent']:.1f}% Fehler "
+        )
         f.write("(✅ < 15% Toleranz)\n")
         f.write(f"- **Domain:** {utac_v2_summary['Domain']} (Type-4 UTAC)\n")
-        f.write(f"- **R² = {utac_fit['r_squared']:.4f}** " if utac_fit['fit_successful'] else "")
+        f.write(f"- **R² = {utac_fit['r_squared']:.4f}** " if utac_fit["fit_successful"] else "")
         f.write("(Sigmoid Fit)\n\n")
 
         f.write("## Theoretischer Hintergrund\n\n")
@@ -718,7 +757,7 @@ def run_full_analysis():
         f.write("✅\n\n")
 
         f.write("## Physikalische Interpretation\n\n")
-        for i, interp in enumerate(utac_v2_summary['Physical_Interpretation'], 1):
+        for i, interp in enumerate(utac_v2_summary["Physical_Interpretation"], 1):
             f.write(f"{i}. {interp}\n")
 
         f.write("\n## UTAC v2.0 Klassifikation\n\n")
@@ -726,7 +765,7 @@ def run_full_analysis():
         f.write("- **Domäne:** Informational (wie LLMs, neuronale Avalanches, Märkte)\n")
         f.write("- **β-Bereich:** 3.0 - 5.5 (weiche Emergenz, schnelle Übergänge)\n")
         f.write("- **Attraktor:** Φ³ ≈ 4.236 (geometrischer RG-Fixpunkt)\n")
-        f.write("- **Ontologische Resistenz:** Niedrig (Information \"atmet leicht\")\n\n")
+        f.write('- **Ontologische Resistenz:** Niedrig (Information "atmet leicht")\n\n')
 
         f.write("## Implikationen\n\n")
         f.write("1. **Batch Size Optimization:** Der UTAC-Sigmoid zeigt, dass es einen ")
@@ -746,9 +785,9 @@ def run_full_analysis():
 
     print(f"  ✓ Report: {report_path.name}")
 
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("✅ ANALYSE ABGESCHLOSSEN!")
-    print("="*70)
+    print("=" * 70)
     print(f"\nErgebnisse gespeichert in: {OUTPUT_DIR}")
     print("\nDateien:")
     print("  • critical_batch_size_powerlaw_fit.png")
@@ -772,4 +811,6 @@ if __name__ == "__main__":
     print("\n🎯 Kernergebnis:")
     print("   Critical Batch Size ist ein Type-4 UTAC (Informational, Φ³)")
     print(f"   β ≈ {results['alpha_beta_relationship']['beta_inverse']:.2f}")
-    print(f"   Match zu Φ³: {results['alpha_beta_relationship']['inverse_match_phi3']['error_percent']:.1f}% Fehler")
+    print(
+        f"   Match zu Φ³: {results['alpha_beta_relationship']['inverse_match_phi3']['error_percent']:.1f}% Fehler"
+    )

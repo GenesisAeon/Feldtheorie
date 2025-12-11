@@ -85,9 +85,7 @@ class TesseractTimeSlices:
         # Implosive field: Collapse to center over time
         # ψ(r, t) = exp(-α⁻¹ · r² / (1 + strength·t))
         self.block_4d = np.exp(
-            -self.params.alpha_inv
-            * R**2
-            / (1 + self.params.implosion_strength * T)
+            -self.params.alpha_inv * R**2 / (1 + self.params.implosion_strength * T)
         )
 
         # Compute entropy field (S ∝ -ψ log ψ, von Neumann entropy)
@@ -308,9 +306,7 @@ class PhotonBetweenSlices:
         """Initialize photon propagator."""
         self.tesseract = tesseract
 
-    def propagate_photon(
-        self, start_xyz: tuple[int, int, int], start_t: int
-    ) -> np.ndarray:
+    def propagate_photon(self, start_xyz: tuple[int, int, int], start_t: int) -> np.ndarray:
         """
         Propagate photon from start position through slices.
 
@@ -355,9 +351,7 @@ class PhotonBetweenSlices:
 
         return np.array(path_4d) if path_4d else np.array([])
 
-    def visualize_light_path(
-        self, start_positions: list[tuple[int, int, int]], start_t: int = 0
-    ):
+    def visualize_light_path(self, start_positions: list[tuple[int, int, int]], start_t: int = 0):
         """
         Visualize multiple photon paths through slices.
 
@@ -391,9 +385,7 @@ class PhotonBetweenSlices:
         return fig
 
 
-def compute_wavefunction(
-    r: np.ndarray, theta: np.ndarray, phi: np.ndarray, t: float
-) -> np.ndarray:
+def compute_wavefunction(r: np.ndarray, theta: np.ndarray, phi: np.ndarray, t: float) -> np.ndarray:
     """
     Genesis wavefunction Ψ(r,θ,φ,t).
 
@@ -419,9 +411,7 @@ def compute_wavefunction(
     psi_radial = np.exp(-alpha_inv * r**2 / l_planck**2)
 
     # Angular component (tetrahedral symmetry, simplified)
-    psi_angular = np.cos(theta) ** 2 * np.sin(3 * phi) + np.sin(theta) ** 2 * np.cos(
-        3 * phi
-    )
+    psi_angular = np.cos(theta) ** 2 * np.sin(3 * phi) + np.sin(theta) ** 2 * np.cos(3 * phi)
 
     # Time evolution (golden ratio frequency)
     psi_time = np.exp(-1j * phi_golden * E_planck * t)
@@ -515,9 +505,7 @@ def main():
     print(f"   1. Block universe: {params.resolution}³ × {params.num_slices} (4D)")
     print("   2. Photon paths: Diagonal through slices")
     print("   3. Gravity: Emergent from ∇S (entropy gradient)")
-    print(
-        "   4. Slice spacing varies with entropy: Δz ∝ 1/√S (testable with Shapiro delay)"
-    )
+    print("   4. Slice spacing varies with entropy: Δz ∝ 1/√S (testable with Shapiro delay)")
 
     plt.show()
 

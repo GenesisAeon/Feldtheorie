@@ -195,9 +195,7 @@ def compute_beta_statistics(
 
     beta_values = [float(e.beta) for e in elements if getattr(e, "beta", None) is not None]
     width_values = [
-        float(e.steepness_band)
-        for e in elements
-        if getattr(e, "beta_ci95", None) is not None
+        float(e.steepness_band) for e in elements if getattr(e, "beta_ci95", None) is not None
     ]
 
     beta_mean = _mean(beta_values)
@@ -216,9 +214,7 @@ def compute_beta_statistics(
         beta_sem_ci95 = None
 
     ci_width_mean = _mean(width_values)
-    ci_width_std = (
-        _sample_std(width_values, ci_width_mean) if ci_width_mean is not None else None
-    )
+    ci_width_std = _sample_std(width_values, ci_width_mean) if ci_width_mean is not None else None
 
     beta_iqr = _iqr(beta_values)
 
@@ -345,9 +341,7 @@ def _format_formal_beta_statement(
         return f"σ(β(R-Θ)) koppelt lokale Felder via g_ij; β liegt zwischen {beta_min:.2f} und {beta_max:.2f} (μ≈{beta_mean:.2f})."
 
     if beta_canonical is not None:
-        return (
-            f"σ(β(R-Θ)) koppelt lokale Felder via g_ij; der kanonische Fit bestätigt β≈{beta_canonical:.2f}."
-        )
+        return f"σ(β(R-Θ)) koppelt lokale Felder via g_ij; der kanonische Fit bestätigt β≈{beta_canonical:.2f}."
 
     return "σ(β(R-Θ)) koppelt lokale Felder via g_ij; neue Messungen müssen das β-Band noch füllen."
 
@@ -367,9 +361,7 @@ def compile_summary(
 ) -> dict[str, Any]:
     beta_values = [e.beta for e in elements if getattr(e, "beta", None) is not None]
     stats = compute_beta_statistics(elements, aggregate_beta=aggregate.beta)
-    beta_evidence = calculate_universal_beta_evidence(
-        elements, aggregate_beta=aggregate.beta
-    )
+    beta_evidence = calculate_universal_beta_evidence(elements, aggregate_beta=aggregate.beta)
     theta_values = [e.theta for e in elements if getattr(e, "theta", None) is not None]
     beta_canonical = (
         beta_evidence["beta_canonical"]
@@ -377,9 +369,7 @@ def compile_summary(
         else aggregate.beta
     )
     beta_mean_report = (
-        beta_evidence["beta_mean"]
-        if beta_evidence["beta_mean"] is not None
-        else beta_canonical
+        beta_evidence["beta_mean"] if beta_evidence["beta_mean"] is not None else beta_canonical
     )
 
     if generated_at is None:
@@ -400,7 +390,9 @@ def compile_summary(
             note["evidence"]["beta_iqr"] = beta_evidence["beta_iqr"]
             note["evidence"]["n_elements"] = beta_evidence["sample_size"]
             note["evidence"]["delta_aic_linear"] = aggregate.null_models["linear"]["delta_aic"]
-            note["evidence"]["delta_aic_power_law"] = aggregate.null_models["power_law"]["delta_aic"]
+            note["evidence"]["delta_aic_power_law"] = aggregate.null_models["power_law"][
+                "delta_aic"
+            ]
             note["evidence"]["beta_canonical"] = beta_canonical
 
             delta_linear = aggregate.null_models["linear"]["delta_aic"]
@@ -414,9 +406,7 @@ def compile_summary(
             beta_in_band_value = (
                 beta_mean_report if beta_mean_report is not None else beta_canonical
             )
-            beta_in_band = (
-                beta_in_band_value is not None and 3.6 <= beta_in_band_value <= 4.6
-            )
+            beta_in_band = beta_in_band_value is not None and 3.6 <= beta_in_band_value <= 4.6
             enough_elements = beta_evidence["sample_size"] >= 3
 
             if aic_strong and beta_in_band and enough_elements:
@@ -473,7 +463,7 @@ def compile_summary(
             "beta_min": min(beta_values) if beta_values else None,
             "beta_max": max(beta_values) if beta_values else None,
             "theta_min": min(theta_values) if theta_values else None,
-            "theta_max": max(theta_values) if theta_values else None
+            "theta_max": max(theta_values) if theta_values else None,
         },
         "elements": [
             {
@@ -485,7 +475,7 @@ def compile_summary(
                 "beta_ci95": e.beta_ci95,
                 "logistic_r2": e.logistic_r2,
                 "impedance": e.impedance,
-                "null_models": e.null_deltas
+                "null_models": e.null_deltas,
             }
             for e in elements
         ],
@@ -494,20 +484,22 @@ def compile_summary(
         "falsification": {
             "logistic_beats_linear": aggregate.null_models["linear"]["delta_aic"] > 0,
             "logistic_beats_power_law": aggregate.null_models["power_law"]["delta_aic"] > 0,
-            "notes": "ΔAIC und ΔR² stammen aus DeepResearch-Synthesen; künftige TIPMIP-Datenläufe sollen diese Werte replizieren."
+            "notes": "ΔAIC und ΔR² stammen aus DeepResearch-Synthesen; künftige TIPMIP-Datenläufe sollen diese Werte replizieren.",
         },
         "tri_layer": {
             "formal": _format_formal_beta_statement(beta_values, stats.mean, beta_canonical),
             "empirical": "Aggregierte Parameter entstammen Global Tipping Points 2025, TIPMIP-Notizen und RepoPlan-DeepResearch-Workflows.",
-            "poetic": "AMOC, Eis, Wald und Permafrost stimmen in denselben Schwellenchor ein – eine Gaia-Membran, die auf Resonanz wartet."
-        }
+            "poetic": "AMOC, Eis, Wald und Permafrost stimmen in denselben Schwellenchor ein – eine Gaia-Membran, die auf Resonanz wartet.",
+        },
     }
     return payload
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Synthesize planetary tipping logistic summary")
-    parser.add_argument("--output", type=Path, default=OUTPUT_PATH, help="Pfad für die Ergebnis-JSON")
+    parser.add_argument(
+        "--output", type=Path, default=OUTPUT_PATH, help="Pfad für die Ergebnis-JSON"
+    )
     args = parser.parse_args()
 
     elements = load_elements()

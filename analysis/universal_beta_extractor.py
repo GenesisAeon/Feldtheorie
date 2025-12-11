@@ -325,7 +325,9 @@ def _safe_stats(values: Sequence[float]) -> dict[str, float | None]:
     }
 
 
-def summarise(records: Sequence[BetaRecord], canonical_beta: float, canonical_band: Sequence[float]) -> BetaSummary:
+def summarise(
+    records: Sequence[BetaRecord], canonical_beta: float, canonical_band: Sequence[float]
+) -> BetaSummary:
     beta_values = [rec.beta for rec in records if rec.beta is not None]
     theta_values = [rec.theta for rec in records if rec.theta is not None]
     delta_values = [rec.delta_aic_min for rec in records if rec.delta_aic_min is not None]
@@ -339,7 +341,9 @@ def summarise(records: Sequence[BetaRecord], canonical_beta: float, canonical_ba
     within_fraction = None
     if beta_values:
         within_count = sum(
-            1 for rec in records if rec.beta is not None and canonical_band[0] <= rec.beta <= canonical_band[1]
+            1
+            for rec in records
+            if rec.beta is not None and canonical_band[0] <= rec.beta <= canonical_band[1]
         )
         within_fraction = within_count / len(beta_values) if beta_values else None
 
@@ -361,7 +365,9 @@ def summarise(records: Sequence[BetaRecord], canonical_beta: float, canonical_ba
     )
 
 
-def validate(summary: BetaSummary, records: Sequence[BetaRecord], delta_guard: float, r2_guard: float) -> dict[str, Any]:
+def validate(
+    summary: BetaSummary, records: Sequence[BetaRecord], delta_guard: float, r2_guard: float
+) -> dict[str, Any]:
     delta_pass = summary.delta_aic_min is not None and summary.delta_aic_min >= delta_guard
     r2_pass = summary.logistic_r2_median is not None and summary.logistic_r2_median >= r2_guard
     failing_records: list[str] = []
@@ -414,7 +420,9 @@ def print_report(summary: BetaSummary, validation: dict[str, Any] | None) -> Non
     print("======================")
     print(f"Records analysed : {summary.count}")
     if summary.beta_mean is not None:
-        print(f"β mean          : {summary.beta_mean:.3f} (std {summary.beta_std:.3f} | band {canonical_range})")
+        print(
+            f"β mean          : {summary.beta_mean:.3f} (std {summary.beta_std:.3f} | band {canonical_range})"
+        )
     if summary.delta_aic_min is not None:
         print(f"ΔAIC minimum    : {summary.delta_aic_min:.2f}")
     if summary.logistic_r2_median is not None:
@@ -423,7 +431,11 @@ def print_report(summary: BetaSummary, validation: dict[str, Any] | None) -> Non
         print(f"Within band     : {summary.within_canonical_fraction*100:.1f}%")
     if validation is not None:
         status = "PASS" if validation.get("passes") else "FAIL"
-        print("Validation       : {} (ΔAIC≥{:.1f}, R²≥{:.2f})".format(status, validation["delta_guard"], validation["r2_guard"]))
+        print(
+            "Validation       : {} (ΔAIC≥{:.1f}, R²≥{:.2f})".format(
+                status, validation["delta_guard"], validation["r2_guard"]
+            )
+        )
         if validation.get("failing_records"):
             print("  Guard shortfall files:")
             for path in validation["failing_records"]:
@@ -484,7 +496,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     if not results_dir.exists():
         raise FileNotFoundError(f"Results directory not found: {results_dir}")
 
-    canonical_band = (args.canonical_beta - args.band_half_width, args.canonical_beta + args.band_half_width)
+    canonical_band = (
+        args.canonical_beta - args.band_half_width,
+        args.canonical_beta + args.band_half_width,
+    )
     records = collect_records(results_dir, canonical_band)
     summary = summarise(records, args.canonical_beta, canonical_band)
     validation: dict[str, Any] | None = None

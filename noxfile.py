@@ -71,10 +71,14 @@ def crep_guard(session: nox.Session) -> None:
     _reuse_virtualenv(session)
     session.install("pyyaml>=6.0")
     session.run(
-        "python", "-m", "tools.crep_guard",
+        "python",
+        "-m",
+        "tools.crep_guard",
         "--check-type6-trilayer",
-        "--threshold", "0.7",
-        "--tau-default", "0.1"
+        "--threshold",
+        "0.7",
+        "--tau-default",
+        "0.1",
     )
 
 

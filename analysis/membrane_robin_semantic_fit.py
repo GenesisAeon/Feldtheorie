@@ -127,7 +127,9 @@ def build_driver(config: DriverConfig, steps: int, dt: float) -> list[float]:
     for idx in range(steps):
         t = idx * dt
         burst = config.burst_amplitude * _gaussian_bump(t, config.burst_center, config.burst_width)
-        harmonic = config.harmonic_gain * math.sin(2.0 * math.pi * t / max(config.harmonic_period, 1e-6))
+        harmonic = config.harmonic_gain * math.sin(
+            2.0 * math.pi * t / max(config.harmonic_period, 1e-6)
+        )
         noise = config.noise_scale * (rng.random() - 0.5)
         drivers.append(config.base_level + burst + harmonic + noise)
     return drivers
@@ -145,7 +147,9 @@ def summarise_residuals(observed: Iterable[float], predicted: Iterable[float]) -
     }
 
 
-def tri_layer_story(theta: float, beta: float, delta_aic_linear: float, delta_aic_power: float) -> dict[str, str]:
+def tri_layer_story(
+    theta: float, beta: float, delta_aic_linear: float, delta_aic_power: float
+) -> dict[str, str]:
     """Compose the tri-layer cadence for the exported JSON payload."""
 
     return {
@@ -177,8 +181,12 @@ def simulate_robin_semantic(
 ) -> dict[str, list[float]]:
     """Run the ThresholdFieldSolver with semantic coupling and Robin boundary."""
 
-    impedance = smooth_impedance_profile(theta, resonant_gain=0.72, damped_gain=1.42, switch_width=0.55)
-    meaning_kernel = semantic_resonance_kernel(theta, beta, meaning_relaxation=1.05, resonance_bias=0.58)
+    impedance = smooth_impedance_profile(
+        theta, resonant_gain=0.72, damped_gain=1.42, switch_width=0.55
+    )
+    meaning_kernel = semantic_resonance_kernel(
+        theta, beta, meaning_relaxation=1.05, resonance_bias=0.58
+    )
     solver = ThresholdFieldSolver(
         theta=theta,
         beta=beta,
@@ -212,8 +220,7 @@ def package_output(
 
     fit_stats = fit_threshold_parameters(results["R"], results["sigma"])
     logistic_hat = [
-        float(logistic_response(R, fit_stats["theta"], fit_stats["beta"]))
-        for R in results["R"]
+        float(logistic_response(R, fit_stats["theta"], fit_stats["beta"])) for R in results["R"]
     ]
     residual_stats = summarise_residuals(results["sigma"], logistic_hat)
     null_linear = evaluate_null_model(results["R"], results["sigma"])
@@ -280,9 +287,7 @@ def package_output(
             "flux_std": solver_summary.get("flux_std"),
         },
         "boundary": {
-            key: solver_summary[key]
-            for key in solver_summary
-            if key.startswith("boundary_")
+            key: solver_summary[key] for key in solver_summary if key.startswith("boundary_")
         },
         "meaning": {
             key: solver_summary[key]
@@ -312,7 +317,9 @@ def package_output(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Simulate a Robin-semantic threshold field and export diagnostics.")
+    parser = argparse.ArgumentParser(
+        description="Simulate a Robin-semantic threshold field and export diagnostics."
+    )
     parser.add_argument(
         "--theta",
         type=float,
@@ -345,7 +352,14 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    robin = DynamicRobinBoundary(theta=args.theta, beta_robin=5.0, zeta_floor=0.62, zeta_ceiling=1.48, logistic_weight=0.42, driver_weight=0.22)
+    robin = DynamicRobinBoundary(
+        theta=args.theta,
+        beta_robin=5.0,
+        zeta_floor=0.62,
+        zeta_ceiling=1.48,
+        logistic_weight=0.42,
+        driver_weight=0.22,
+    )
     config = DriverConfig()
     results = simulate_robin_semantic(
         theta=args.theta,

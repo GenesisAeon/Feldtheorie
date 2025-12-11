@@ -71,8 +71,8 @@ def mandala_coherence(
     centred = [(p - psi_mean, f - phi_mean) for p, f in zip(psi, phi)]
     if len(psi) > 1:
         covariance = sum(p * f for p, f in centred) / (len(psi) - 1)
-        psi_var = sum(p ** 2 for p, _ in centred) / (len(psi) - 1)
-        phi_var = sum(f ** 2 for _, f in centred) / (len(psi) - 1)
+        psi_var = sum(p**2 for p, _ in centred) / (len(psi) - 1)
+        phi_var = sum(f**2 for _, f in centred) / (len(psi) - 1)
     else:
         covariance = 0.0
         psi_var = 0.0

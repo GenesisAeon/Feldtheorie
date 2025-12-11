@@ -20,12 +20,11 @@ import argparse
 import json
 import re
 import sys
+from collections.abc import Iterable
 from datetime import datetime
 from pathlib import Path
-from typing import Iterable
 
 import yaml
-
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 TYPE6_PREFIX = REPO_ROOT / "releases" / "V6-Plans_etc" / "type6_crep_tau_star_checklist"
@@ -107,7 +106,10 @@ def check_type6_trilayer(threshold: float, tau_default: float) -> None:
     json_path = TYPE6_PREFIX.with_suffix(".json")
     md_path = TYPE6_PREFIX.with_suffix(".md")
 
-    _ensure(yaml_path.exists() and json_path.exists() and md_path.exists(), "Type6 checklist trilayer missing components")
+    _ensure(
+        yaml_path.exists() and json_path.exists() and md_path.exists(),
+        "Type6 checklist trilayer missing components",
+    )
 
     yaml_payload = _load_yaml(yaml_path)
     json_payload = _load_json(json_path)
@@ -116,7 +118,10 @@ def check_type6_trilayer(threshold: float, tau_default: float) -> None:
     json_version = json_payload.get("metadata", {}).get("version")
     md_version = _extract_md_value(md_path, "Version")
 
-    _ensure(yaml_version == json_version == md_version, "Version mismatch across Type6 checklist trilayer")
+    _ensure(
+        yaml_version == json_version == md_version,
+        "Version mismatch across Type6 checklist trilayer",
+    )
 
     expected_tau = f"{_format_float(tau_default)}*abs(Theta-R)"
     yaml_tau = yaml_payload.get("checklist", [])[1].get("metrics", {}).get("tau_star_default")
@@ -125,7 +130,10 @@ def check_type6_trilayer(threshold: float, tau_default: float) -> None:
 
     _ensure(yaml_tau == expected_tau, f"YAML τ* default mismatch (expected {expected_tau})")
     _ensure(json_tau == expected_tau, f"JSON τ* default mismatch (expected {expected_tau})")
-    _ensure(re.search(rf"τ\*\s*=\s*{_format_float(tau_default)}", md_text), "Markdown τ* default not found")
+    _ensure(
+        re.search(rf"τ\*\s*=\s*{_format_float(tau_default)}", md_text),
+        "Markdown τ* default not found",
+    )
 
     md_threshold_ok = re.search(rf"threshold\s+{_format_float(threshold)}", md_text)
     yaml_threshold = yaml_payload.get("checklist", [])[0].get("metrics", {}).get("threshold")
@@ -139,7 +147,12 @@ def check_type6_trilayer(threshold: float, tau_default: float) -> None:
 def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="CREP/τ* guard for Type-VI governance artifacts")
     parser.add_argument("--threshold", type=float, default=0.7, help="Expected CREP threshold")
-    parser.add_argument("--tau-default", type=float, default=0.1, help="Expected τ* default multiplier (abs(Theta-R))")
+    parser.add_argument(
+        "--tau-default",
+        type=float,
+        default=0.1,
+        help="Expected τ* default multiplier (abs(Theta-R))",
+    )
     parser.add_argument(
         "--check-type6-trilayer",
         action="store_true",
@@ -151,12 +164,20 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
         help="Append a CREP/τ* detection entry to logs/type_vi_detections.jsonl",
     )
     parser.add_argument("--task-id", default="v6r-crep-guard-ci", help="Task identifier to log")
-    parser.add_argument("--crep-value", type=float, help="CREP value to log when --log-detection is set")
-    parser.add_argument("--tau-star", type=float, help="τ* value to log when --log-detection is set")
+    parser.add_argument(
+        "--crep-value", type=float, help="CREP value to log when --log-detection is set"
+    )
+    parser.add_argument(
+        "--tau-star", type=float, help="τ* value to log when --log-detection is set"
+    )
     parser.add_argument("--escalation-level", type=int, help="Override computed escalation level")
     parser.add_argument("--reviewer", default="", help="Reviewer or routing hint for escalation")
-    parser.add_argument("--notes", default="", help="Additional notes to capture in the audit trail")
-    parser.add_argument("--log-path", type=Path, default=DEFAULT_LOG_PATH, help="Path to the JSONL audit log")
+    parser.add_argument(
+        "--notes", default="", help="Additional notes to capture in the audit trail"
+    )
+    parser.add_argument(
+        "--log-path", type=Path, default=DEFAULT_LOG_PATH, help="Path to the JSONL audit log"
+    )
     return parser.parse_args(argv)
 
 

@@ -1,11 +1,10 @@
 from pathlib import Path
 
 import pytest
-
 from simulation.genesis_cube import GenesisCubeConfig
 from simulation.genesis_loader import (
-    GenesisPreset,
     GenesisLoader,
+    GenesisPreset,
     index_presets,
     load_beta_presets,
     resolve_preset,

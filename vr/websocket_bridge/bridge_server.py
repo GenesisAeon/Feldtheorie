@@ -15,27 +15,24 @@ Date: 2025-11-12
 Version: 1.0.0
 """
 
+import argparse
 import asyncio
 import json
 import logging
-import argparse
 from datetime import datetime, timezone
-from typing import Set, Dict, List
+
 import websockets
 from websockets.server import WebSocketServerProtocol
 
 # Logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s [%(levelname)s] %(message)s'
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
 # Connected clients
-clients: Set[WebSocketServerProtocol] = set()
+clients: set[WebSocketServerProtocol] = set()
 
 # Subscriptions (client -> system_ids mapping)
-subscriptions: Dict[WebSocketServerProtocol, Set[str]] = {}
+subscriptions: dict[WebSocketServerProtocol, set[str]] = {}
 
 # Test mode (synthetic data)
 TEST_MODE = False
@@ -56,13 +53,13 @@ TEST_SYSTEMS = {
             "coherence": 0.95,
             "resilience": 0.80,
             "empathy": 0.90,
-            "propagation": 0.92
+            "propagation": 0.92,
         },
         "metadata": {
             "domain": "climate",
             "citation": "Caesar et al. (2018)",
-            "last_updated": "2025-11-12T12:00:00Z"
-        }
+            "last_updated": "2025-11-12T12:00:00Z",
+        },
     },
     "urban_heat": {
         "beta": 16.28,
@@ -74,31 +71,31 @@ TEST_SYSTEMS = {
             "coherence": 0.99,
             "resilience": 0.85,
             "empathy": 1.00,
-            "propagation": 0.98
+            "propagation": 0.98,
         },
         "metadata": {
             "domain": "urban_climate",
             "citation": "Smith et al. (2023)",
-            "last_updated": "2025-11-12T12:00:00Z"
-        }
+            "last_updated": "2025-11-12T12:00:00Z",
+        },
     },
     "llm_emergence": {
         "beta": 3.47,
         "theta": 1e9,  # 1B parameters
-        "R": 1.5e9,    # 1.5B parameters
+        "R": 1.5e9,  # 1.5B parameters
         "sigma": 0.73,
         "field_type": "High-Dimensional",
         "crep_scores": {
             "coherence": 0.98,
             "resilience": 0.65,
             "empathy": 0.88,
-            "propagation": 0.91
+            "propagation": 0.91,
         },
         "metadata": {
             "domain": "ai",
             "citation": "Wei et al. (2022)",
-            "last_updated": "2025-11-12T12:00:00Z"
-        }
+            "last_updated": "2025-11-12T12:00:00Z",
+        },
     },
     "theta_plasticity": {
         "beta": 2.50,
@@ -110,36 +107,36 @@ TEST_SYSTEMS = {
             "coherence": 0.82,
             "resilience": 0.75,
             "empathy": 0.70,
-            "propagation": 0.68
+            "propagation": 0.68,
         },
         "metadata": {
             "domain": "neuroscience",
             "citation": "Bienenstock et al. (1982)",
-            "last_updated": "2025-11-12T12:00:00Z"
-        }
+            "last_updated": "2025-11-12T12:00:00Z",
+        },
     },
     "climate_tipping": {
         "beta": 9.23,
         "theta": 2.0,  # 2°C warming
-        "R": 1.8,      # 1.8°C current
+        "R": 1.8,  # 1.8°C current
         "sigma": 0.68,
         "field_type": "Physically Constrained",
         "crep_scores": {
             "coherence": 0.93,
             "resilience": 0.55,
             "empathy": 0.95,
-            "propagation": 0.87
+            "propagation": 0.87,
         },
         "metadata": {
             "domain": "climate",
             "citation": "Lenton et al. (2008)",
-            "last_updated": "2025-11-12T12:00:00Z"
-        }
-    }
+            "last_updated": "2025-11-12T12:00:00Z",
+        },
+    },
 }
 
 
-async def fetch_system_data(system_id: str) -> Dict:
+async def fetch_system_data(system_id: str) -> dict:
     """
     Fetch system data from UTAC API.
 
@@ -174,7 +171,7 @@ async def fetch_system_data(system_id: str) -> Dict:
             raise ValueError(f"Unknown system: {system_id}")
 
 
-async def send_system_update(websocket: WebSocketServerProtocol, system_id: str, data: Dict):
+async def send_system_update(websocket: WebSocketServerProtocol, system_id: str, data: dict):
     """
     Send system_update message to client.
 
@@ -187,7 +184,7 @@ async def send_system_update(websocket: WebSocketServerProtocol, system_id: str,
         "type": "system_update",
         "system_id": system_id,
         "data": data,
-        "timestamp": datetime.now(timezone.utc).isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
     try:
@@ -197,7 +194,7 @@ async def send_system_update(websocket: WebSocketServerProtocol, system_id: str,
         logger.error(f"Error sending system_update: {e}")
 
 
-async def handle_subscribe(websocket: WebSocketServerProtocol, system_ids: List[str]):
+async def handle_subscribe(websocket: WebSocketServerProtocol, system_ids: list[str]):
     """
     Handle subscribe message from client.
 
@@ -221,15 +218,19 @@ async def handle_subscribe(websocket: WebSocketServerProtocol, system_ids: List[
         except Exception as e:
             logger.error(f"Error fetching {system_id}: {e}")
             # Send error message
-            await websocket.send(json.dumps({
-                "type": "error",
-                "code": "SYSTEM_NOT_FOUND",
-                "message": f"System '{system_id}' not found",
-                "timestamp": datetime.now(timezone.utc).isoformat()
-            }))
+            await websocket.send(
+                json.dumps(
+                    {
+                        "type": "error",
+                        "code": "SYSTEM_NOT_FOUND",
+                        "message": f"System '{system_id}' not found",
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
+                    }
+                )
+            )
 
 
-async def handle_unsubscribe(websocket: WebSocketServerProtocol, system_ids: List[str]):
+async def handle_unsubscribe(websocket: WebSocketServerProtocol, system_ids: list[str]):
     """
     Handle unsubscribe message from client.
 
@@ -253,7 +254,7 @@ async def handle_ping(websocket: WebSocketServerProtocol, timestamp: str):
     pong = {
         "type": "pong",
         "client_timestamp": timestamp,
-        "server_timestamp": datetime.now(timezone.utc).isoformat()
+        "server_timestamp": datetime.now(timezone.utc).isoformat(),
     }
     await websocket.send(json.dumps(pong))
     logger.debug("Sent pong")
@@ -267,8 +268,12 @@ async def handle_list_systems(websocket: WebSocketServerProtocol):
         websocket: WebSocket connection
     """
     systems_list = [
-        {"id": sid, "name": sid.replace("_", " ").title(),
-         "field_type": data["field_type"], "beta": data["beta"]}
+        {
+            "id": sid,
+            "name": sid.replace("_", " ").title(),
+            "field_type": data["field_type"],
+            "beta": data["beta"],
+        }
         for sid, data in TEST_SYSTEMS.items()
     ]
 
@@ -276,7 +281,7 @@ async def handle_list_systems(websocket: WebSocketServerProtocol):
         "type": "systems_list",
         "systems": systems_list,
         "count": len(systems_list),
-        "timestamp": datetime.now(timezone.utc).isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
     await websocket.send(json.dumps(message))
@@ -312,30 +317,42 @@ async def handle_message(websocket: WebSocketServerProtocol, message: str):
 
         else:
             # Unknown message type
-            await websocket.send(json.dumps({
-                "type": "error",
-                "code": "UNKNOWN_MESSAGE_TYPE",
-                "message": f"Unknown message type: {msg_type}",
-                "timestamp": datetime.now(timezone.utc).isoformat()
-            }))
+            await websocket.send(
+                json.dumps(
+                    {
+                        "type": "error",
+                        "code": "UNKNOWN_MESSAGE_TYPE",
+                        "message": f"Unknown message type: {msg_type}",
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
+                    }
+                )
+            )
 
     except json.JSONDecodeError:
         logger.error("Invalid JSON message")
-        await websocket.send(json.dumps({
-            "type": "error",
-            "code": "INVALID_JSON",
-            "message": "Message is not valid JSON",
-            "timestamp": datetime.now(timezone.utc).isoformat()
-        }))
+        await websocket.send(
+            json.dumps(
+                {
+                    "type": "error",
+                    "code": "INVALID_JSON",
+                    "message": "Message is not valid JSON",
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                }
+            )
+        )
 
     except Exception as e:
         logger.error(f"Error handling message: {e}")
-        await websocket.send(json.dumps({
-            "type": "error",
-            "code": "INTERNAL_ERROR",
-            "message": str(e),
-            "timestamp": datetime.now(timezone.utc).isoformat()
-        }))
+        await websocket.send(
+            json.dumps(
+                {
+                    "type": "error",
+                    "code": "INTERNAL_ERROR",
+                    "message": str(e),
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                }
+            )
+        )
 
 
 async def stream_updates_task(websocket: WebSocketServerProtocol):
@@ -374,7 +391,9 @@ async def handler(websocket: WebSocketServerProtocol):
     """
     # Register client
     clients.add(websocket)
-    logger.info(f"✅ Client connected from {websocket.remote_address}. Total clients: {len(clients)}")
+    logger.info(
+        f"✅ Client connected from {websocket.remote_address}. Total clients: {len(clients)}"
+    )
 
     # Start streaming task
     stream_task = asyncio.create_task(stream_updates_task(websocket))
@@ -404,15 +423,15 @@ async def main(host: str, port: int):
         host: Host address (default: "localhost")
         port: Port number (default: 8765)
     """
-    logger.info(f"🚀 Starting UTAC WebSocket Bridge Server...")
-    logger.info(f"   Protocol Version: 1.0.0")
+    logger.info("🚀 Starting UTAC WebSocket Bridge Server...")
+    logger.info("   Protocol Version: 1.0.0")
     logger.info(f"   Mode: {'TEST' if TEST_MODE else 'PRODUCTION'}")
     logger.info(f"   Host: {host}")
     logger.info(f"   Port: {port}")
 
     async with websockets.serve(handler, host, port):
         logger.info(f"✅ WebSocket Bridge running on ws://{host}:{port}")
-        logger.info(f"   Press Ctrl+C to stop")
+        logger.info("   Press Ctrl+C to stop")
 
         # Run forever
         await asyncio.Future()
@@ -423,7 +442,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="UTAC WebSocket Bridge Server")
     parser.add_argument("--host", default="localhost", help="Host address (default: localhost)")
     parser.add_argument("--port", type=int, default=8765, help="Port number (default: 8765)")
-    parser.add_argument("--test-mode", action="store_true", help="Use synthetic test data (no UTAC API)")
+    parser.add_argument(
+        "--test-mode", action="store_true", help="Use synthetic test data (no UTAC API)"
+    )
     parser.add_argument("--debug", action="store_true", help="Enable debug logging")
 
     args = parser.parse_args()

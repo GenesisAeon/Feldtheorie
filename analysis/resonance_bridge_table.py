@@ -236,7 +236,9 @@ def build_summary(entries: Sequence[BridgeEntry]) -> dict[str, Any]:
     }
 
 
-def write_json(entries: Sequence[BridgeEntry], aggregate: Mapping[str, Any], output_path: Path) -> None:
+def write_json(
+    entries: Sequence[BridgeEntry], aggregate: Mapping[str, Any], output_path: Path
+) -> None:
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "aggregate": aggregate,
@@ -253,7 +255,9 @@ def write_json(entries: Sequence[BridgeEntry], aggregate: Mapping[str, Any], out
         handle.write("\n")
 
 
-def write_markdown(entries: Sequence[BridgeEntry], aggregate: Mapping[str, Any], output_path: Path) -> None:
+def write_markdown(
+    entries: Sequence[BridgeEntry], aggregate: Mapping[str, Any], output_path: Path
+) -> None:
     lines: list[str] = []
     lines.append("# Resonance Bridge Table")
     lines.append("")
@@ -278,7 +282,9 @@ def write_markdown(entries: Sequence[BridgeEntry], aggregate: Mapping[str, Any],
     lines.append(f"*Datasets tallied:* {aggregate.get('count', 0)}")
     domain_stats = aggregate.get("domains", {})
     if domain_stats:
-        domain_parts = ", ".join(f"{domain}: {count}" for domain, count in sorted(domain_stats.items()))
+        domain_parts = ", ".join(
+            f"{domain}: {count}" for domain, count in sorted(domain_stats.items())
+        )
         lines.append(f"*Domain spread:* {domain_parts}")
     delta_stats = aggregate.get("delta_aic", {})
     if delta_stats and any(value is not None for value in delta_stats.values()):
@@ -338,7 +344,9 @@ def format_float(value: float | None) -> str:
 
 
 def run_cli(argv: Sequence[str] | None = None) -> None:
-    parser = argparse.ArgumentParser(description="Generate the cross-domain resonance bridge table.")
+    parser = argparse.ArgumentParser(
+        description="Generate the cross-domain resonance bridge table."
+    )
     parser.add_argument(
         "--results-dir",
         type=Path,

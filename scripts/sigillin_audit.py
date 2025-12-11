@@ -11,15 +11,14 @@ v_RIG stays aligned with the fine-structure-inspired ideal.
 import importlib.util
 import math
 import random
-from dataclasses import dataclass, field
-from pathlib import Path
-from typing import Any, Mapping
-
 import sys
 import types
+from collections.abc import Mapping
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any
 
 import numpy as np
-
 from simulation.genesis_cube import GenesisCube, GenesisCubeConfig
 
 AUDIT_CYCLE = 137
@@ -45,9 +44,7 @@ class AuditReport:
 def _load_sigillin_kernel() -> Any:
     """Load the legacy sigillin kernel logic for logistic coupling context."""
 
-    kernel_path = Path(
-        "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_kernel.py"
-    )
+    kernel_path = Path("releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_kernel.py")
     _ensure_legacy_dependencies()
     spec = importlib.util.spec_from_file_location("sigillin_kernel_legacy", kernel_path)
     if spec is None or spec.loader is None:
@@ -65,7 +62,9 @@ def _mirror_seed(snapshot: Mapping[str, Any]) -> Mapping[str, Any]:
     return sigillin_kernel.mirror_machine(snapshot)
 
 
-def _random_genesis_config(rng: random.Random, overrides: Mapping[str, Any] | None) -> GenesisCubeConfig:
+def _random_genesis_config(
+    rng: random.Random, overrides: Mapping[str, Any] | None
+) -> GenesisCubeConfig:
     """Build a GenesisCubeConfig seeded with stochastic β/Θ drift parameters."""
 
     overrides = overrides or {}
@@ -191,7 +190,9 @@ def _ensure_legacy_dependencies() -> None:
     if storage_module is None:
         storage_module = types.ModuleType("scripts.sigillin_storage")
 
-        def store_sigillin(beta_fit: Mapping[str, Any] | None, audit_result: Mapping[str, Any]) -> dict[str, Any]:
+        def store_sigillin(
+            beta_fit: Mapping[str, Any] | None, audit_result: Mapping[str, Any]
+        ) -> dict[str, Any]:
             return {"beta_fit": beta_fit or {}, "audit_result": audit_result}
 
         storage_module.store_sigillin = store_sigillin
@@ -201,7 +202,9 @@ def _ensure_legacy_dependencies() -> None:
 if __name__ == "__main__":
     report = audit_integrity()
     status = "PASS" if report.passed else "FAIL"
-    print(f"[σ-monitor] Audit {status} :: entropy_ok={report.entropy_ok} | velocity_ok={report.velocity_ok}")
+    print(
+        f"[σ-monitor] Audit {status} :: entropy_ok={report.entropy_ok} | velocity_ok={report.velocity_ok}"
+    )
     if report.alerts:
         for alert in report.alerts:
             print(alert)

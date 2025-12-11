@@ -103,6 +103,7 @@ class PhaseTransition:
 # CORE ISING MODEL CLASS
 # ============================================================================
 
+
 class SocialIsingModel:
     """
     Mean-field Ising model applied to social dynamics.
@@ -134,7 +135,7 @@ class SocialIsingModel:
         self,
         coupling_strength: float = 1.0,
         external_field: float = 0.0,
-        load_baseline: float = 1.0
+        load_baseline: float = 1.0,
     ):
         """
         Initialize social Ising model.
@@ -177,10 +178,7 @@ class SocialIsingModel:
         return T
 
     def solve_magnetization(
-        self,
-        temperature: float,
-        max_iterations: int = 1000,
-        tolerance: float = 1e-6
+        self, temperature: float, max_iterations: int = 1000, tolerance: float = 1e-6
     ) -> float:
         """
         Solve self-consistent mean-field equation for magnetization.
@@ -272,14 +270,14 @@ class SocialIsingModel:
             temperature=T,
             magnetization=M,
             susceptibility=chi,
-            rigidity=rigidity
+            rigidity=rigidity,
         )
 
     def phase_transition_scan(
         self,
         gini_range: tuple[float, float] = (0.2, 0.95),
         n_points: int = 100,
-        load: float | None = None
+        load: float | None = None,
     ) -> PhaseTransition:
         """
         Scan Gini coefficient to map out phase transition.
@@ -327,14 +325,11 @@ class SocialIsingModel:
             magnetizations=magnetizations,
             susceptibilities=susceptibilities,
             critical_gini=critical_gini,
-            transition_sharpness=transition_width
+            transition_sharpness=transition_width,
         )
 
     def critical_exponents(
-        self,
-        gini_critical: float = 0.71,
-        epsilon: float = 0.01,
-        load: float | None = None
+        self, gini_critical: float = 0.71, epsilon: float = 0.01, load: float | None = None
     ) -> dict[str, float]:
         """
         Estimate critical exponents near phase transition.
@@ -372,16 +367,17 @@ class SocialIsingModel:
             gamma_exp = np.nan
 
         return {
-            'beta_exponent': beta_exp,
-            'gamma_exponent': gamma_exp,
-            'beta_theory': BETA_CRITICAL,
-            'gamma_theory': GAMMA_CRITICAL
+            "beta_exponent": beta_exp,
+            "gamma_exponent": gamma_exp,
+            "beta_theory": BETA_CRITICAL,
+            "gamma_theory": GAMMA_CRITICAL,
         }
 
 
 # ============================================================================
 # CONVENIENCE FUNCTIONS
 # ============================================================================
+
 
 def quick_rigidity(gini: float, load: float = 1.0) -> float:
     """
@@ -466,9 +462,9 @@ def full_analysis(verbose: bool = True) -> dict:
         print("=" * 70)
 
     return {
-        'states': {'low': low_gini, 'mid': mid_gini, 'high': high_gini},
-        'transition': transition,
-        'exponents': exponents
+        "states": {"low": low_gini, "mid": mid_gini, "high": high_gini},
+        "transition": transition,
+        "exponents": exponents,
     }
 
 

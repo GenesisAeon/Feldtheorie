@@ -271,9 +271,7 @@ def assemble_summary(
             else float("nan")
         )
         delta_r2 = (
-            fit_metrics["r2"] - metrics.get("r2", float("nan"))
-            if "r2" in metrics
-            else float("nan")
+            fit_metrics["r2"] - metrics.get("r2", float("nan")) if "r2" in metrics else float("nan")
         )
         comparisons[name] = {"delta_aic": delta_aic, "delta_r2": delta_r2}
         if not (delta_aic > 0 and delta_r2 >= 0):
@@ -294,7 +292,9 @@ def assemble_summary(
     if boundary_flux_values:
         boundary_flux_mean = _mean(boundary_flux_values)
         boundary_flux_std = math.sqrt(
-            max(_variance(boundary_flux_values, boundary_flux_mean) / len(boundary_flux_values), 0.0)
+            max(
+                _variance(boundary_flux_values, boundary_flux_mean) / len(boundary_flux_values), 0.0
+            )
         )
         boundary_flux_peak = max(boundary_flux_values)
         boundary_flux_valley = min(boundary_flux_values)
@@ -317,13 +317,9 @@ def assemble_summary(
     theta_series = list(results.get("theta", []))
     beta_series = list(results.get("beta", []))
     theta_reference = (
-        float(theta_series[0])
-        if theta_series
-        else fit_metrics.get("theta", float("nan"))
+        float(theta_series[0]) if theta_series else fit_metrics.get("theta", float("nan"))
     )
-    beta_reference = (
-        float(beta_series[0]) if beta_series else fit_metrics.get("beta", float("nan"))
-    )
+    beta_reference = float(beta_series[0]) if beta_series else fit_metrics.get("beta", float("nan"))
 
     residuals: list[float] = []
     if sigma_fit is not None:
@@ -425,7 +421,6 @@ def simulate_series(
     beta_robin: float,
     boundary_logistic_weight: float,
     boundary_driver_weight: float,
-
 ) -> Mapping[str, list[float]]:
     r"""Generate a driver sequence and simulate the membrane response.
 
@@ -531,14 +526,24 @@ def parse_arguments() -> argparse.Namespace:
         description="Fit logistic threshold parameters to UTF trajectories with falsification checks."
     )
     parser.add_argument("--mode", choices=["simulate", "ingest"], default="simulate")
-    parser.add_argument("--input", type=Path, help="JSON file with solver traces for ingest mode.", default=None)
+    parser.add_argument(
+        "--input", type=Path, help="JSON file with solver traces for ingest mode.", default=None
+    )
     parser.add_argument("--output", type=Path, help="Where to write the summary JSON.")
 
-    parser.add_argument("--theta", type=float, default=1.0, help="Critical threshold Theta for simulation mode.")
-    parser.add_argument("--beta", type=float, default=8.0, help="Steepness beta for simulation mode.")
-    parser.add_argument("--steps", type=int, default=240, help="Number of driver timesteps to simulate.")
+    parser.add_argument(
+        "--theta", type=float, default=1.0, help="Critical threshold Theta for simulation mode."
+    )
+    parser.add_argument(
+        "--beta", type=float, default=8.0, help="Steepness beta for simulation mode."
+    )
+    parser.add_argument(
+        "--steps", type=int, default=240, help="Number of driver timesteps to simulate."
+    )
     parser.add_argument("--dt", type=float, default=0.05, help="Integrator step size dt.")
-    parser.add_argument("--driver", type=float, default=0.9, help="Constant driver current applied at each step.")
+    parser.add_argument(
+        "--driver", type=float, default=0.9, help="Constant driver current applied at each step."
+    )
     parser.add_argument("--R0", type=float, default=0.2, help="Initial order parameter R(0).")
     parser.add_argument("--resonant-gain", type=float, default=0.6, dest="resonant_gain")
     parser.add_argument("--damped-gain", type=float, default=1.4, dest="damped_gain")
