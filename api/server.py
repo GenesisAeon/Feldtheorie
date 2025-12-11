@@ -1005,7 +1005,7 @@ async def health_check():
             "system": "implemented",
             "fieldtypes": "implemented",
             "simulate": "implemented",
-            "tooltip": "implemented ✨ NEW!",
+            "tooltip": "implemented",
         },
         "message": "All 6 endpoints operational! Tooltip system online.",
     }
