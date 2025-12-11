@@ -35,24 +35,44 @@ def load_dataset(meta: dict[str, Any], data_dir: str = DATA_DIR) -> DatasetType:
     The loader supports CSV (plain or gzip-compressed), NetCDF and JSON files.
     The `dataset` field in the metadata is used to derive the filename;
     whitespace is replaced with underscores and the name is lowercased to
-    stabilize lookups.
+    stabilize lookups. Alternatively, metadata can supply a `filename` or
+    `file` entry to explicitly point to the data file (absolute or relative to
+    ``data_dir``), which avoids the lowercasing transform.
     """
+
+    def _load_path(path: Path) -> DatasetType:
+        suffixes = [suffix.lower() for suffix in path.suffixes]
+        if suffixes[-2:] == [".csv", ".gz"]:
+            return pd.read_csv(path)
+
+        suffix = path.suffix.lower()
+        if suffix == ".csv":
+            return pd.read_csv(path)
+        if suffix == ".nc":
+            return xr.open_dataset(path)
+        if suffix == ".json":
+            return pd.read_json(path)
+        raise ValueError(f"Unsupported dataset format for {path}")
 
     dataset_name = meta.get("dataset")
     if not dataset_name:
         raise ValueError("Metadata must include a non-empty 'dataset' field")
 
+    explicit = meta.get("filename") or meta.get("file")
+    if explicit:
+        path = Path(explicit)
+        if not path.is_absolute():
+            path = Path(data_dir) / path
+        if not path.exists():
+            raise FileNotFoundError(f"Specified dataset file not found: {path}")
+        return _load_path(path)
+
     base_path = Path(data_dir) / dataset_name.replace(" ", "_").lower()
 
-    for suffix, reader in (
-        (".csv", pd.read_csv),
-        (".csv.gz", pd.read_csv),
-        (".nc", xr.open_dataset),
-        (".json", pd.read_json),
-    ):
+    for suffix in (".csv", ".csv.gz", ".nc", ".json"):
         candidate = base_path.with_suffix(suffix)
         if candidate.exists():
-            return reader(candidate)
+            return _load_path(candidate)
 
     raise FileNotFoundError(f"No dataset found for {dataset_name} in {Path(data_dir).resolve()}")
 

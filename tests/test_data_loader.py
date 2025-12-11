@@ -39,6 +39,22 @@ def test_load_dataset_requires_dataset_field():
         load_dataset({}, data_dir="unused")
 
 
+def test_load_dataset_respects_explicit_filename(tmp_path):
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+
+    dataset_name = "MixedCase Dataset"
+    explicit_name = "ExampleData.CSV"
+    csv_path = data_dir / explicit_name
+    pd.DataFrame({"value": [5, 6]}).to_csv(csv_path, index=False)
+
+    loaded = load_dataset(
+        {"dataset": dataset_name, "filename": explicit_name}, data_dir=str(data_dir)
+    )
+
+    assert list(loaded["value"]) == [5, 6]
+
+
 def test_load_dataset_supports_compressed_csv(tmp_path):
     data_dir = tmp_path / "data"
     data_dir.mkdir()
