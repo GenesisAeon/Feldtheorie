@@ -56,6 +56,16 @@ class TestMandalaCoherence:
         with pytest.raises(ValueError, match="same length"):
             mandala_coherence(psi, phi)
 
+    def test_mandala_coherence_accepts_numpy_arrays(self) -> None:
+        """NumPy arrays should bypass ambiguous truth-value errors."""
+        psi = np.array([0.2, 0.6, 1.0])
+        phi = np.array([0.1, 0.4, 0.9])
+
+        result = mandala_coherence(psi, phi)
+
+        assert isinstance(result, MandalaCoherence)
+        assert 0.0 <= result.gate <= 1.0
+
     def test_mandala_coherence_raises_on_empty_input(self) -> None:
         """Should raise ValueError for empty input."""
         with pytest.raises(ValueError, match="at least one sample"):
