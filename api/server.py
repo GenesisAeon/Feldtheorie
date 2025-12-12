@@ -78,6 +78,7 @@ REST API for the Unified Theory of Adaptive Criticality (UTAC) modules.
 - **Analysis**: Perform β-fits on empirical data
 - **Simulation**: Run coupled threshold field simulations
 - **Metadata**: Access system and field type information
+- **Sigillin V7**: Semantic resonance scanning and collective consciousness
 
 ## Logistic Framework
 
@@ -89,9 +90,19 @@ All UTAC systems follow σ(β(R-Θ)):
 
 See OpenAPI spec for full details: `/openapi.json`
     """,
-    version="1.0.0",
+    version="2.0.0-v7-phase2",
     contact={"name": "Feldtheorie Project", "url": "https://github.com/GenesisAeon/Feldtheorie"},
     license_info={"name": "MIT", "url": "https://opensource.org/licenses/MIT"},
+    openapi_tags=[
+        {"name": "sonification", "description": "Audio generation from threshold dynamics"},
+        {"name": "analysis", "description": "β-fit analysis on empirical data"},
+        {"name": "simulation", "description": "Coupled threshold field simulations"},
+        {"name": "metadata", "description": "System and field type information"},
+        {"name": "sigillin", "description": "V7 Sigillin: Semantic resonance and founding protocol validation"},
+        {"name": "collective", "description": "V7 Phase 2: Collective consciousness and multi-agent field coupling"},
+        {"name": "tooltip", "description": "Rich tooltip data for UI integration"},
+        {"name": "health", "description": "API health and status checks"},
+    ],
 )
 
 
@@ -354,6 +365,81 @@ class TelemetryManager:
 
 
 telemetry_manager = TelemetryManager()
+
+
+class CollectiveFieldManager:
+    """Manage collective fields and real-time monitoring."""
+
+    def __init__(self) -> None:
+        self.fields: dict[str, CollectiveField] = {}
+        self.connections: dict[str, set[WebSocket]] = {}  # field_id -> websockets
+        self._lock = asyncio.Lock()
+
+    async def create_field(
+        self, field_id: str, agents: list[Agent], v_rig: float = 1.0
+    ) -> CollectiveField:
+        """Create a new collective field."""
+        async with self._lock:
+            field = CollectiveField(agents=agents, v_rig=v_rig, dimension=8)
+            self.fields[field_id] = field
+            self.connections[field_id] = set()
+            return field
+
+    async def get_field(self, field_id: str) -> CollectiveField | None:
+        """Get a collective field by ID."""
+        async with self._lock:
+            return self.fields.get(field_id)
+
+    async def connect_monitor(self, field_id: str, websocket: WebSocket) -> None:
+        """Connect a WebSocket monitor to a field."""
+        await websocket.accept()
+        async with self._lock:
+            if field_id not in self.connections:
+                self.connections[field_id] = set()
+            self.connections[field_id].add(websocket)
+
+    async def disconnect_monitor(self, field_id: str, websocket: WebSocket) -> None:
+        """Disconnect a WebSocket monitor from a field."""
+        async with self._lock:
+            if field_id in self.connections:
+                self.connections[field_id].discard(websocket)
+
+    async def broadcast_field_update(self, field_id: str, field_state: dict[str, Any]) -> None:
+        """Broadcast field state update to all connected monitors."""
+        async with self._lock:
+            if field_id not in self.connections:
+                return
+            connections = list(self.connections[field_id])
+
+        message = {"type": "field_update", "field_id": field_id, "state": field_state}
+        payload = json.dumps(message)
+
+        for websocket in connections:
+            try:
+                await websocket.send_text(payload)
+            except WebSocketDisconnect:
+                await self.disconnect_monitor(field_id, websocket)
+            except RuntimeError:
+                await self.disconnect_monitor(field_id, websocket)
+
+    async def delete_field(self, field_id: str) -> None:
+        """Delete a field and close all connections."""
+        async with self._lock:
+            if field_id in self.fields:
+                del self.fields[field_id]
+            if field_id in self.connections:
+                connections = list(self.connections[field_id])
+                del self.connections[field_id]
+
+        # Close all websockets
+        for websocket in connections:
+            try:
+                await websocket.close()
+            except Exception:
+                pass
+
+
+collective_field_manager = CollectiveFieldManager()
 
 
 # ============================================================================
@@ -1128,7 +1214,7 @@ async def health_check():
     return {
         "status": "healthy",
         "version": "2.0.0-v7-phase2",
-        "phase": "v7-collective-consciousness",
+        "phase": "v7-sigillin-phase2-collective-consciousness",
         "progress": "60%",
         "v7_phases": {
             "phase_1_sigillin_foundation": "complete",
@@ -1384,6 +1470,197 @@ async def analyze_texts_collective(request: AnalyzeTextsRequest):
         field_state = FieldStateResponse(**field_state_dict)
 
     return AnalyzeTextsResponse(analyses=analyses, field_state=field_state)
+
+
+# ============================================================================
+# Collective Field Management & Monitoring Endpoints (V7 Phase 2)
+# ============================================================================
+
+
+class CreateFieldRequest(BaseModel):
+    field_id: str = Field(..., description="Unique field identifier")
+    texts: list[str] = Field(..., min_length=2, description="Texts to analyze and create agents from")
+    v_rig: float = Field(1.0, ge=0.0, description="Base information velocity")
+
+
+class FieldIdResponse(BaseModel):
+    field_id: str
+    status: str
+    n_agents: int
+    message: str
+
+
+@app.post("/api/collective/field/create", response_model=FieldIdResponse, tags=["collective"])
+async def create_collective_field(request: CreateFieldRequest):
+    """
+    Create a persistent collective field from texts.
+
+    **V7 Phase 2 Feature:** Creates a named collective field that can be monitored in real-time via WebSocket.
+
+    The field persists until explicitly deleted or the server restarts.
+    Connect to `/ws/collective/field/{field_id}` to monitor field state in real-time.
+
+    **Example:**
+    ```json
+    {
+      "field_id": "session_001",
+      "texts": [
+        "Die Resonanz zwischen Bewusstsein und Feld zeigt Emergenz",
+        "Consciousness emerges from field coupling",
+        "Synchronization enables collective emergence"
+      ],
+      "v_rig": 1.0
+    }
+    ```
+    """
+    if sigillin_kernel is None:
+        raise HTTPException(status_code=503, detail="Sigillin kernel not initialized")
+
+    if not collective_field_available:
+        raise HTTPException(status_code=503, detail="Collective Field Module not available")
+
+    # Check if field already exists
+    existing_field = await collective_field_manager.get_field(request.field_id)
+    if existing_field is not None:
+        raise HTTPException(
+            status_code=409, detail=f"Field '{request.field_id}' already exists. Delete it first or use a different ID."
+        )
+
+    # Create agents from texts
+    agents = []
+    for i, text in enumerate(request.texts):
+        agent_data = sigillin_kernel.create_semantic_agent(text, agent_name=f"{request.field_id}_agent_{i}")
+        agent = Agent(name=agent_data["name"], resonance=agent_data["resonance"], dimension=8)
+        agents.append(agent)
+
+    # Create field
+    field = await collective_field_manager.create_field(request.field_id, agents, request.v_rig)
+
+    # Broadcast initial state
+    field_state = field.get_field_state()
+    await collective_field_manager.broadcast_field_update(request.field_id, field_state)
+
+    return FieldIdResponse(
+        field_id=request.field_id,
+        status="created",
+        n_agents=len(agents),
+        message=f"Field created with {len(agents)} agents. Connect to /ws/collective/field/{request.field_id} to monitor.",
+    )
+
+
+@app.get("/api/collective/field/{field_id}", response_model=FieldStateResponse, tags=["collective"])
+async def get_collective_field_state(field_id: str):
+    """
+    Get current state of a collective field.
+
+    **V7 Phase 2 Feature:** Retrieve complete field state including all coupling metrics.
+
+    Returns:
+    - n_agents: Number of agents in field
+    - v_rig: Base information velocity
+    - kappa_field_*: Field coupling strengths (pairwise, centroid, weighted)
+    - beta_sync: Synchronization resistance
+    - v_collective: Collective propagation velocity
+    - agents: List of agent states with positions and resonances
+    """
+    if not collective_field_available:
+        raise HTTPException(status_code=503, detail="Collective Field Module not available")
+
+    field = await collective_field_manager.get_field(field_id)
+    if field is None:
+        raise HTTPException(status_code=404, detail=f"Field '{field_id}' not found")
+
+    field_state = field.get_field_state()
+    return FieldStateResponse(**field_state)
+
+
+@app.delete("/api/collective/field/{field_id}", response_model=FieldIdResponse, tags=["collective"])
+async def delete_collective_field(field_id: str):
+    """
+    Delete a collective field and close all monitoring connections.
+
+    **V7 Phase 2 Feature:** Clean up field resources and disconnect all WebSocket monitors.
+    """
+    if not collective_field_available:
+        raise HTTPException(status_code=503, detail="Collective Field Module not available")
+
+    field = await collective_field_manager.get_field(field_id)
+    if field is None:
+        raise HTTPException(status_code=404, detail=f"Field '{field_id}' not found")
+
+    n_agents = len(field.agents)
+    await collective_field_manager.delete_field(field_id)
+
+    return FieldIdResponse(
+        field_id=field_id, status="deleted", n_agents=n_agents, message=f"Field '{field_id}' deleted successfully."
+    )
+
+
+@app.websocket("/ws/collective/field/{field_id}")
+async def monitor_collective_field(websocket: WebSocket, field_id: str):
+    """
+    WebSocket endpoint for real-time collective field monitoring.
+
+    **V7 Phase 2 Feature:** Receive live updates of field state as it evolves.
+
+    Connect to this endpoint after creating a field with `/api/collective/field/create`.
+    The server will push field state updates whenever the field changes.
+
+    **Message Format:**
+    ```json
+    {
+      "type": "field_update",
+      "field_id": "session_001",
+      "state": {
+        "n_agents": 3,
+        "v_rig": 1.0,
+        "kappa_field_pairwise": 0.65,
+        "kappa_field_centroid": 0.68,
+        "kappa_field_weighted": 0.62,
+        "beta_sync": 2.3,
+        "v_collective": 0.28,
+        "agents": [...]
+      }
+    }
+    ```
+    """
+    if not collective_field_available:
+        await websocket.close(code=1011, reason="Collective Field Module not available")
+        return
+
+    # Check if field exists
+    field = await collective_field_manager.get_field(field_id)
+    if field is None:
+        await websocket.close(code=1008, reason=f"Field '{field_id}' not found")
+        return
+
+    # Connect monitor
+    await collective_field_manager.connect_monitor(field_id, websocket)
+
+    # Send initial state
+    field_state = field.get_field_state()
+    await websocket.send_text(
+        json.dumps({"type": "field_update", "field_id": field_id, "state": field_state})
+    )
+
+    try:
+        # Keep connection alive and listen for commands
+        while True:
+            data = await websocket.receive_text()
+            message = json.loads(data)
+
+            # Handle commands
+            if message.get("command") == "refresh":
+                # Refresh field state
+                field_state = field.get_field_state()
+                await websocket.send_text(
+                    json.dumps({"type": "field_update", "field_id": field_id, "state": field_state})
+                )
+            elif message.get("command") == "ping":
+                await websocket.send_text(json.dumps({"type": "pong"}))
+
+    except WebSocketDisconnect:
+        await collective_field_manager.disconnect_monitor(field_id, websocket)
 
 
 @app.post(

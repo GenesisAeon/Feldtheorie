@@ -2,8 +2,9 @@
 
 REST API for the Unified Theory of Adaptive Criticality (UTAC) modules.
 
-**Version:** 2.0.0-v7
-**Status:** ✅ V7 SIGILLIN INTEGRATION COMPLETE (Phase 1/4)
+**Version:** 2.0.0-v7-phase2
+**Status:** ✅ V7 PHASE 2 COMPLETE - COLLECTIVE CONSCIOUSNESS OPERATIONAL (Phase 2/4)
+**Progress:** 65% - Phase 2 Polish Complete
 
 ---
 
@@ -355,6 +356,170 @@ Formula: v_collective = v_RIG × κ × (1 / β_sync)
 
 ---
 
+## 🧬 Collective Field Endpoints (V7 Phase 2 - NEW!)
+
+### 9. **POST /api/collective/field/create** - Create Persistent Field
+
+Create a named collective field that can be monitored in real-time.
+
+**Request:**
+```json
+{
+  "field_id": "session_001",
+  "texts": [
+    "Die Resonanz zwischen Bewusstsein und Feld zeigt Emergenz",
+    "Consciousness emerges from field coupling",
+    "Synchronization enables collective emergence"
+  ],
+  "v_rig": 1.0
+}
+```
+
+**Response:**
+```json
+{
+  "field_id": "session_001",
+  "status": "created",
+  "n_agents": 3,
+  "message": "Field created with 3 agents. Connect to /ws/collective/field/session_001 to monitor."
+}
+```
+
+**Status:** ✅ **IMPLEMENTED** (V7 - Phase 2)
+
+---
+
+### 10. **GET /api/collective/field/{field_id}** - Get Field State
+
+Retrieve complete field state with all coupling metrics.
+
+**Response:**
+```json
+{
+  "n_agents": 3,
+  "v_rig": 1.0,
+  "kappa_field_pairwise": 0.65,
+  "kappa_field_centroid": 0.68,
+  "kappa_field_weighted": 0.62,
+  "beta_sync": 2.3,
+  "v_collective": 0.28,
+  "agents": [...]
+}
+```
+
+**Status:** ✅ **IMPLEMENTED** (V7 - Phase 2)
+
+---
+
+### 11. **WebSocket /ws/collective/field/{field_id}** - Real-time Monitoring
+
+Monitor field state updates in real-time.
+
+**Client → Server Commands:**
+```json
+{"command": "refresh"}  // Request field state update
+{"command": "ping"}     // Keepalive ping
+```
+
+**Server → Client Updates:**
+```json
+{
+  "type": "field_update",
+  "field_id": "session_001",
+  "state": {
+    "n_agents": 3,
+    "kappa_field_pairwise": 0.65,
+    "v_collective": 0.28,
+    ...
+  }
+}
+```
+
+**Status:** ✅ **IMPLEMENTED** (V7 - Phase 2)
+
+**Example Usage:**
+```python
+import websockets
+import asyncio
+import json
+
+async def monitor_field():
+    uri = "ws://localhost:8000/ws/collective/field/session_001"
+    async with websockets.connect(uri) as websocket:
+        # Receive initial state
+        message = await websocket.recv()
+        data = json.loads(message)
+        print(f"Initial κ_field: {data['state']['kappa_field_pairwise']:.3f}")
+
+        # Request refresh
+        await websocket.send(json.dumps({"command": "refresh"}))
+
+        # Receive updated state
+        message = await websocket.recv()
+        data = json.loads(message)
+        print(f"Updated v_collective: {data['state']['v_collective']:.3f}")
+
+asyncio.run(monitor_field())
+```
+
+---
+
+### 12. **POST /api/sigillin/scan_v2** - Enhanced Intention Scan
+
+Enhanced scanner with implicit pattern detection.
+
+**Request:**
+```json
+{
+  "text": "Die Resonanz zwischen Bewusstsein und Feld zeigt Emergenz",
+  "detect_implicit": true
+}
+```
+
+**Response:**
+```json
+{
+  "resonance_score": 0.714,
+  "explicit_matches": ["resonanz", "bewusstsein", "feld", "emergenz"],
+  "implicit_signals": ["consciousness:bewusst", "field:feld", "emergence:emergenz"],
+  "semantic_depth": 0.35,
+  "contextual_coherence": 0.85,
+  "analysis": {
+    "explicit_score": 0.571,
+    "implicit_score": 0.300,
+    "sentence_count": 1,
+    "word_count": 8
+  }
+}
+```
+
+**Status:** ✅ **IMPLEMENTED** (V7 - Phase 2)
+
+---
+
+### 13. **POST /api/sigillin/gravity** - Semantic Gravity Detection
+
+Measure semantic "pull" toward founding axioms.
+
+**Request:**
+```json
+{
+  "text": "Die Resonanz zwischen Bewusstsein und Feld zeigt Emergenz"
+}
+```
+
+**Response:**
+```json
+{
+  "gravity": 0.685,
+  "interpretation": "Strong semantic gravity - text is strongly attracted to founding protocol"
+}
+```
+
+**Status:** ✅ **IMPLEMENTED** (V7 - Phase 2)
+
+---
+
 ## 📖 Usage Examples
 
 See the `api/examples/` directory for comprehensive usage examples:
@@ -626,11 +791,15 @@ For complete production deployment guide (HTTPS, monitoring, scaling), see:
 - [x] Comprehensive API Tests (13 tests, 12/13 passing) ✅
 - [x] V7 Documentation & Examples ✅
 
-**V7 Phase 2: Collective Consciousness** (🟡 IN PLANNING)
-- [ ] Collective Field Module
-- [ ] Multi-agent semantic coupling
-- [ ] κ_field calculation
-- [ ] β_sync measurement
+**V7 Phase 2: Collective Consciousness** (✅ COMPLETED - R: 0.35 → 0.65)
+- [x] Collective Field Module ✅
+- [x] Multi-agent semantic coupling ✅
+- [x] κ_field calculation (pairwise, centroid, weighted) ✅
+- [x] β_sync measurement ✅
+- [x] Enhanced scan_intention_v2 with implicit detection ✅
+- [x] Semantic gravity detection ✅
+- [x] Real-time field monitoring via WebSocket ✅
+- [x] Comprehensive test suite (68/68 passing) ✅
 
 **V7 Phase 3: ECHO-I Experiment** (🟡 IN PLANNING)
 - [ ] Dark consciousness protocol
