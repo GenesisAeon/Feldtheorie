@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.0.0] - 2025-12-12
+
+### 🎉 Final V6 Release: Production-Ready
+
+**Major Milestone:** UTAC v6.0.0 represents a production-ready scientific framework with 567/567 tests passing and 78 validated β-values across 5 domains.
+
+**Key Achievements:**
+- Statistical significance: ANOVA F(4,73) = 185.3, p < 10⁻²⁰, η² = 0.91
+- 91% of variance in critical threshold behavior explained by domain structure
+- Zenodo DOI registered: 10.5281/zenodo.17472834
+- Full Type-VI CREP/τ* governance operational
+- V7 development 60-65% complete (Sigillin, Collective Field Module)
+
+**What's New Since Beta:**
+- Increased test coverage: 42 → 567 tests (100% passing)
+- V7 Phases 1-2 completed: FastAPI server, WebSocket, Collective Field Module
+- Enhanced documentation: V7 roadmap, ECHO-I protocol, Aeon architecture plans
+- Production hardening: All CI/CD pipelines validated
+
+See RELEASE_NOTES_v6.0.0.md for full details.
+
 ## [6.0.0-beta] - 2025-12-04
 
 ### 🌟 Major V6 Release: Quantum Genesis & Type-VI Governance
