@@ -28,8 +28,11 @@ References:
 
 from __future__ import annotations
 
-import numpy as np
+import time
+from functools import lru_cache
 from typing import Any, Literal
+
+import numpy as np
 
 
 class Agent:
@@ -91,18 +94,23 @@ class Agent:
         cos_sim = np.clip(cos_sim, -1.0, 1.0)  # Numerical stability
         return 1.0 - cos_sim
 
-    def update_position(self, target: np.ndarray, learning_rate: float = 0.1) -> None:
+    def update_position(self, target: np.ndarray, learning_rate: float = 0.1, field: "CollectiveField | None" = None) -> None:
         """
         Move semantic position toward target.
 
         Args:
             target: Target position in semantic space
             learning_rate: Step size [0,1]
+            field: Optional CollectiveField to notify of position change
         """
         direction = target - self.semantic_position
         self.semantic_position += learning_rate * direction
         # Re-normalize to unit sphere
         self.semantic_position /= np.linalg.norm(self.semantic_position)
+
+        # Invalidate field cache if provided
+        if field is not None:
+            field._invalidate_cache()
 
     def __repr__(self) -> str:
         return f"Agent({self.name}, resonance={self.resonance:.3f})"
@@ -123,6 +131,7 @@ class CollectiveField:
         agents: list[Agent] | None = None,
         v_rig: float = 1.0,
         dimension: int = 8,
+        enable_caching: bool = True,
     ) -> None:
         """
         Initialize collective field.
@@ -131,10 +140,30 @@ class CollectiveField:
             agents: List of agents (if None, starts empty)
             v_rig: Base information velocity (default: 1.0)
             dimension: Semantic space dimensionality
+            enable_caching: Enable caching for expensive calculations (default: True)
         """
         self.agents = agents if agents is not None else []
         self.v_rig = v_rig
         self.dimension = dimension
+        self.enable_caching = enable_caching
+
+        # Caching infrastructure
+        self._cache: dict[str, Any] = {}
+        self._cache_timestamp: dict[str, float] = {}
+        self._field_version = 0  # Increment when field changes
+
+        # Performance tracking
+        self._performance_stats: dict[str, list[float]] = {
+            "kappa_pairwise": [],
+            "kappa_centroid": [],
+            "kappa_weighted": [],
+            "beta_sync": [],
+            "v_collective": [],
+        }
+
+        # Evolution tracking
+        self._evolution_history: list[dict[str, Any]] = []
+        self._enable_history = False
 
     def add_agent(self, agent: Agent) -> None:
         """Add an agent to the field."""
@@ -143,6 +172,33 @@ class CollectiveField:
                 f"Agent dimension {agent.dimension} does not match field dimension {self.dimension}"
             )
         self.agents.append(agent)
+        self._invalidate_cache()  # Field changed
+
+    def _invalidate_cache(self) -> None:
+        """Invalidate all cached calculations when field changes."""
+        self._cache.clear()
+        self._cache_timestamp.clear()
+        self._field_version += 1
+
+    def _get_cached(self, key: str, ttl: float = 60.0) -> Any | None:
+        """Get cached value if valid and not expired."""
+        if not self.enable_caching:
+            return None
+
+        if key not in self._cache:
+            return None
+
+        # Check TTL
+        if time.time() - self._cache_timestamp[key] > ttl:
+            return None
+
+        return self._cache[key]
+
+    def _set_cached(self, key: str, value: Any) -> None:
+        """Store value in cache with timestamp."""
+        if self.enable_caching:
+            self._cache[key] = value
+            self._cache_timestamp[key] = time.time()
 
     def calculate_kappa_field(
         self,
@@ -159,9 +215,19 @@ class CollectiveField:
         Returns:
             κ_field in [0, 1] where 1 = perfect coupling
         """
+        # Check cache first
+        cache_key = f"kappa_{mode}"
+        cached = self._get_cached(cache_key)
+        if cached is not None:
+            return cached
+
+        # Track performance
+        start_time = time.time()
+
         if len(self.agents) < 2:
             return 1.0  # Single agent or empty field is trivially coupled
 
+        # Calculate based on mode
         if mode == "pairwise":
             # Average pairwise coupling
             total_coupling = 0.0
@@ -174,7 +240,7 @@ class CollectiveField:
                     total_coupling += coupling
                     n_pairs += 1
 
-            return total_coupling / n_pairs if n_pairs > 0 else 1.0
+            result = total_coupling / n_pairs if n_pairs > 0 else 1.0
 
         elif mode == "centroid":
             # Calculate field centroid
@@ -189,7 +255,7 @@ class CollectiveField:
                 total_distance += distance
 
             avg_distance = total_distance / len(self.agents)
-            return 1.0 - (avg_distance / 2.0)  # Normalize to [0,1]
+            result = 1.0 - (avg_distance / 2.0)  # Normalize to [0,1]
 
         elif mode == "weighted":
             # Resonance-weighted pairwise coupling
@@ -207,10 +273,17 @@ class CollectiveField:
                     total_weighted_coupling += weight * coupling
                     total_weight += weight
 
-            return total_weighted_coupling / total_weight if total_weight > 0 else 1.0
+            result = total_weighted_coupling / total_weight if total_weight > 0 else 1.0
 
         else:
             raise ValueError(f"Unknown mode: {mode}")
+
+        # Cache result and track performance
+        elapsed = time.time() - start_time
+        self._performance_stats[f"kappa_{mode}"].append(elapsed)
+        self._set_cached(cache_key, result)
+
+        return result
 
     def calculate_beta_sync(self, timesteps: int = 10, learning_rate: float = 0.1) -> float:
         """
@@ -226,6 +299,15 @@ class CollectiveField:
         Returns:
             β_sync > 0, where lower values = faster synchronization
         """
+        # Check cache (with params in key)
+        cache_key = f"beta_sync_{timesteps}_{learning_rate}"
+        cached = self._get_cached(cache_key)
+        if cached is not None:
+            return cached
+
+        # Track performance
+        start_time = time.time()
+
         if len(self.agents) < 2:
             return 0.1  # Minimal resistance for trivial cases
 
@@ -239,10 +321,14 @@ class CollectiveField:
 
             # Move each agent toward centroid
             for agent in self.agents:
-                agent.update_position(centroid, learning_rate)
+                agent.update_position(centroid, learning_rate, field=self)
 
             # Measure current coupling
+            # Don't cache during simulation since positions are changing
+            old_caching = self.enable_caching
+            self.enable_caching = False
             kappa = self.calculate_kappa_field(mode="centroid")
+            self.enable_caching = old_caching
             kappa_over_time.append(kappa)
 
         # Restore initial state
@@ -269,7 +355,14 @@ class CollectiveField:
         beta_sync = 1.0 / (rate + 0.01)  # Avoid division by zero
 
         # Clamp to reasonable range [0.1, 10.0]
-        return np.clip(beta_sync, 0.1, 10.0)
+        result = np.clip(beta_sync, 0.1, 10.0)
+
+        # Cache result and track performance
+        elapsed = time.time() - start_time
+        self._performance_stats["beta_sync"].append(elapsed)
+        self._set_cached(cache_key, result)
+
+        return result
 
     def calculate_v_collective(
         self,
@@ -286,10 +379,26 @@ class CollectiveField:
         Returns:
             v_collective >= 0, where higher = faster semantic propagation
         """
+        # Check cache
+        cache_key = f"v_collective_{kappa_mode}"
+        cached = self._get_cached(cache_key)
+        if cached is not None:
+            return cached
+
+        # Track performance
+        start_time = time.time()
+
         kappa = self.calculate_kappa_field(mode=kappa_mode)
         beta_sync = self.calculate_beta_sync()
 
-        return self.v_rig * kappa * (1.0 / beta_sync)
+        result = self.v_rig * kappa * (1.0 / beta_sync)
+
+        # Cache result and track performance
+        elapsed = time.time() - start_time
+        self._performance_stats["v_collective"].append(elapsed)
+        self._set_cached(cache_key, result)
+
+        return result
 
     def _calculate_centroid(self) -> np.ndarray:
         """Calculate semantic centroid of all agents."""
@@ -326,11 +435,159 @@ class CollectiveField:
             ],
         }
 
+    # ========================================================================
+    # V7 Phase 3: Evolution Tracking & Performance Monitoring
+    # ========================================================================
+
+    def enable_evolution_tracking(self, enabled: bool = True) -> None:
+        """
+        Enable/disable evolution history tracking.
+
+        When enabled, snapshots of field state are stored on every calculation.
+        Useful for analyzing field dynamics over time.
+
+        Args:
+            enabled: Whether to enable history tracking
+        """
+        self._enable_history = enabled
+        if not enabled:
+            self._evolution_history.clear()
+
+    def snapshot_state(self) -> dict[str, Any]:
+        """
+        Create a snapshot of current field state.
+
+        Returns:
+            Dict with timestamp and all field metrics
+        """
+        snapshot = {
+            "timestamp": time.time(),
+            "field_version": self._field_version,
+            "n_agents": len(self.agents),
+            "v_rig": self.v_rig,
+            "kappa_pairwise": self.calculate_kappa_field(mode="pairwise"),
+            "kappa_centroid": self.calculate_kappa_field(mode="centroid"),
+            "kappa_weighted": self.calculate_kappa_field(mode="weighted"),
+            "beta_sync": self.calculate_beta_sync(),
+            "v_collective": self.calculate_v_collective(),
+        }
+
+        if self._enable_history:
+            self._evolution_history.append(snapshot)
+
+        return snapshot
+
+    def get_evolution_history(self) -> list[dict[str, Any]]:
+        """
+        Get complete evolution history.
+
+        Returns:
+            List of state snapshots ordered by timestamp
+        """
+        return self._evolution_history.copy()
+
+    def detect_convergence(self, window: int = 5, threshold: float = 0.01) -> dict[str, Any]:
+        """
+        Detect if field has converged based on recent history.
+
+        Convergence is detected when κ_field stabilizes (variance < threshold).
+
+        Args:
+            window: Number of recent snapshots to analyze
+            threshold: Maximum variance for convergence
+
+        Returns:
+            Dict with convergence status and metrics
+        """
+        if len(self._evolution_history) < window:
+            return {
+                "converged": False,
+                "reason": "insufficient_history",
+                "snapshots_needed": window - len(self._evolution_history),
+            }
+
+        # Get recent κ_field values
+        recent_kappas = [
+            snapshot["kappa_pairwise"] for snapshot in self._evolution_history[-window:]
+        ]
+
+        # Calculate variance
+        variance = np.var(recent_kappas)
+        mean_kappa = np.mean(recent_kappas)
+
+        converged = variance < threshold
+
+        return {
+            "converged": converged,
+            "variance": variance,
+            "threshold": threshold,
+            "mean_kappa": mean_kappa,
+            "window_size": window,
+            "recent_values": recent_kappas,
+        }
+
+    def get_performance_stats(self) -> dict[str, dict[str, float]]:
+        """
+        Get performance statistics for all operations.
+
+        Returns:
+            Dict mapping operation names to stats (mean, min, max, count)
+        """
+        stats = {}
+
+        for operation, timings in self._performance_stats.items():
+            if not timings:
+                stats[operation] = {
+                    "mean_ms": 0.0,
+                    "min_ms": 0.0,
+                    "max_ms": 0.0,
+                    "count": 0,
+                }
+            else:
+                stats[operation] = {
+                    "mean_ms": np.mean(timings) * 1000,
+                    "min_ms": np.min(timings) * 1000,
+                    "max_ms": np.max(timings) * 1000,
+                    "count": len(timings),
+                }
+
+        return stats
+
+    def reset_performance_stats(self) -> None:
+        """Reset all performance statistics."""
+        for key in self._performance_stats:
+            self._performance_stats[key].clear()
+
+    def get_cache_info(self) -> dict[str, Any]:
+        """
+        Get information about cache state.
+
+        Returns:
+            Dict with cache statistics
+        """
+        return {
+            "enabled": self.enable_caching,
+            "size": len(self._cache),
+            "keys": list(self._cache.keys()),
+            "field_version": self._field_version,
+            "oldest_entry_age": (
+                time.time() - min(self._cache_timestamp.values())
+                if self._cache_timestamp
+                else 0.0
+            ),
+        }
+
+    def clear_cache(self) -> None:
+        """Manually clear all cached values."""
+        self._cache.clear()
+        self._cache_timestamp.clear()
+
     def __repr__(self) -> str:
         kappa = self.calculate_kappa_field() if self.agents else 0.0
+        cache_info = f", cache={len(self._cache)} entries" if self.enable_caching else ""
         return (
             f"CollectiveField(n_agents={len(self.agents)}, "
-            f"κ_field={kappa:.3f}, v_RIG={self.v_rig:.3f})"
+            f"κ_field={kappa:.3f}, v_RIG={self.v_rig:.3f}{cache_info})"
         )
 
 

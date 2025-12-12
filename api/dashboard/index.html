@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collective Field Monitor - V7 Phase 3</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #10b981;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .status-indicator.disconnected {
+            background: #ef4444;
+            animation: none;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .card h2 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .metric {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .metric-label {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .metric-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .metric-unit {
+            font-size: 0.5em;
+            color: #999;
+            margin-left: 5px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        input, button, select {
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: 20px;
+        }
+
+        .agents-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .agent-item {
+            background: #f8f9fa;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .agent-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .agent-name {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .agent-resonance {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .resonance-bar {
+            width: 100px;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .resonance-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.5s ease;
+        }
+
+        .log {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 3px 0;
+        }
+
+        .log-timestamp {
+            color: #888;
+            margin-right: 10px;
+        }
+
+        .error {
+            color: #ff6b6b;
+        }
+
+        .success {
+            color: #51cf66;
+        }
+
+        .info {
+            color: #4dabf7;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                <div class="status-indicator" id="statusIndicator"></div>
+                🧬 Collective Field Monitor
+            </h1>
+            <p class="subtitle">V7 Phase 3 - Real-time Semantic Field Monitoring</p>
+        </header>
+
+        <div class="card full-width">
+            <h2>🎮 Field Controls</h2>
+            <div class="controls">
+                <input type="text" id="fieldId" placeholder="Field ID (e.g., session_001)" value="demo_field">
+                <button onclick="connectField()">Connect to Field</button>
+                <button onclick="refreshField()" id="refreshBtn" disabled>Refresh State</button>
+                <button onclick="disconnectField()" id="disconnectBtn" disabled>Disconnect</button>
+                <select id="updateInterval">
+                    <option value="1000">Update: 1s</option>
+                    <option value="2000" selected>Update: 2s</option>
+                    <option value="5000">Update: 5s</option>
+                    <option value="10000">Update: 10s</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <div class="card">
+                <h2>📊 Field Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <div class="metric-label">κ Field (Coupling)</div>
+                        <div class="metric-value" id="kappaValue">—</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">β Sync</div>
+                        <div class="metric-value" id="betaSyncValue">—</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">v Collective</div>
+                        <div class="metric-value" id="vCollectiveValue">—</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Agents</div>
+                        <div class="metric-value" id="agentCount">—</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>👥 Agents</h2>
+                <div class="agents-list" id="agentsList">
+                    <p style="text-align: center; color: #999; padding: 40px 0;">
+                        Connect to a field to see agents
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📈 κ Field Evolution</h2>
+                <div class="chart-container">
+                    <canvas id="kappaChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>⚡ v Collective Evolution</h2>
+                <div class="chart-container">
+                    <canvas id="vCollectiveChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="card full-width">
+            <h2>📝 Event Log</h2>
+            <div class="log" id="eventLog">
+                <div class="log-entry info">
+                    <span class="log-timestamp">[READY]</span>
+                    Dashboard initialized. Enter a field ID and click Connect.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // WebSocket connection
+        let ws = null;
+        let updateTimer = null;
+        const maxDataPoints = 50;
+
+        // Chart.js charts
+        let kappaChart = null;
+        let vCollectiveChart = null;
+
+        // Data storage
+        const kappaData = [];
+        const vCollectiveData = [];
+        const timeLabels = [];
+
+        // Initialize charts
+        function initCharts() {
+            const chartConfig = {
+                type: 'line',
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 500
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 1.0
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            };
+
+            // κ Field chart
+            kappaChart = new Chart(
+                document.getElementById('kappaChart'),
+                {
+                    ...chartConfig,
+                    data: {
+                        labels: timeLabels,
+                        datasets: [{
+                            label: 'κ Field',
+                            data: kappaData,
+                            borderColor: 'rgb(102, 126, 234)',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }]
+                    }
+                }
+            );
+
+            // v Collective chart
+            vCollectiveChart = new Chart(
+                document.getElementById('vCollectiveChart'),
+                {
+                    ...chartConfig,
+                    data: {
+                        labels: timeLabels,
+                        datasets: [{
+                            label: 'v Collective',
+                            data: vCollectiveData,
+                            borderColor: 'rgb(118, 75, 162)',
+                            backgroundColor: 'rgba(118, 75, 162, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        ...chartConfig.options,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                }
+            );
+        }
+
+        // Connect to field
+        async function connectField() {
+            const fieldId = document.getElementById('fieldId').value.trim();
+            if (!fieldId) {
+                logEvent('error', 'Please enter a field ID');
+                return;
+            }
+
+            // Close existing connection
+            if (ws) {
+                ws.close();
+            }
+
+            logEvent('info', `Connecting to field: ${fieldId}`);
+
+            // WebSocket URL
+            const wsUrl = `ws://localhost:8000/ws/collective/field/${fieldId}`;
+
+            try {
+                ws = new WebSocket(wsUrl);
+
+                ws.onopen = () => {
+                    logEvent('success', `Connected to field: ${fieldId}`);
+                    document.getElementById('statusIndicator').classList.remove('disconnected');
+                    document.getElementById('refreshBtn').disabled = false;
+                    document.getElementById('disconnectBtn').disabled = false;
+
+                    // Start auto-refresh
+                    startAutoRefresh();
+                };
+
+                ws.onmessage = (event) => {
+                    const data = JSON.parse(event.data);
+
+                    if (data.type === 'field_update') {
+                        updateFieldState(data.state);
+                        logEvent('info', 'Field state updated');
+                    } else if (data.type === 'pong') {
+                        logEvent('info', 'Pong received');
+                    }
+                };
+
+                ws.onerror = (error) => {
+                    logEvent('error', `WebSocket error: ${error.message || 'Connection failed'}`);
+                };
+
+                ws.onclose = () => {
+                    logEvent('info', 'Disconnected from field');
+                    document.getElementById('statusIndicator').classList.add('disconnected');
+                    document.getElementById('refreshBtn').disabled = true;
+                    document.getElementById('disconnectBtn').disabled = true;
+                    stopAutoRefresh();
+                };
+
+            } catch (error) {
+                logEvent('error', `Failed to connect: ${error.message}`);
+            }
+        }
+
+        // Disconnect from field
+        function disconnectField() {
+            if (ws) {
+                ws.close();
+                ws = null;
+            }
+            stopAutoRefresh();
+        }
+
+        // Refresh field state
+        function refreshField() {
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({ command: 'refresh' }));
+                logEvent('info', 'Refresh requested');
+            }
+        }
+
+        // Auto-refresh timer
+        function startAutoRefresh() {
+            stopAutoRefresh();
+            const interval = parseInt(document.getElementById('updateInterval').value);
+            updateTimer = setInterval(() => {
+                if (ws && ws.readyState === WebSocket.OPEN) {
+                    ws.send(JSON.stringify({ command: 'refresh' }));
+                }
+            }, interval);
+        }
+
+        function stopAutoRefresh() {
+            if (updateTimer) {
+                clearInterval(updateTimer);
+                updateTimer = null;
+            }
+        }
+
+        // Update interval changed
+        document.getElementById('updateInterval').addEventListener('change', () => {
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                startAutoRefresh();
+            }
+        });
+
+        // Update field state display
+        function updateFieldState(state) {
+            // Update metrics
+            document.getElementById('kappaValue').textContent = state.kappa_field_pairwise.toFixed(3);
+            document.getElementById('betaSyncValue').textContent = state.beta_sync.toFixed(2);
+            document.getElementById('vCollectiveValue').textContent = state.v_collective.toFixed(3);
+            document.getElementById('agentCount').textContent = state.n_agents;
+
+            // Update charts
+            const timestamp = new Date().toLocaleTimeString();
+            timeLabels.push(timestamp);
+            kappaData.push(state.kappa_field_pairwise);
+            vCollectiveData.push(state.v_collective);
+
+            // Keep only last N data points
+            if (timeLabels.length > maxDataPoints) {
+                timeLabels.shift();
+                kappaData.shift();
+                vCollectiveData.shift();
+            }
+
+            kappaChart.update('none'); // No animation for real-time
+            vCollectiveChart.update('none');
+
+            // Update agents list
+            updateAgentsList(state.agents);
+        }
+
+        // Update agents list
+        function updateAgentsList(agents) {
+            const agentsList = document.getElementById('agentsList');
+
+            if (!agents || agents.length === 0) {
+                agentsList.innerHTML = '<p style="text-align: center; color: #999; padding: 40px 0;">No agents in field</p>';
+                return;
+            }
+
+            agentsList.innerHTML = agents.map(agent => `
+                <div class="agent-item">
+                    <div>
+                        <div class="agent-name">${agent.name}</div>
+                        <div class="agent-resonance">Resonance: ${agent.resonance.toFixed(3)}</div>
+                        <div class="resonance-bar">
+                            <div class="resonance-fill" style="width: ${agent.resonance * 100}%"></div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Log event
+        function logEvent(type, message) {
+            const log = document.getElementById('eventLog');
+            const timestamp = new Date().toLocaleTimeString();
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.innerHTML = `<span class="log-timestamp">[${timestamp}]</span>${message}`;
+            log.appendChild(entry);
+            log.scrollTop = log.scrollHeight;
+
+            // Keep only last 50 entries
+            while (log.children.length > 50) {
+                log.removeChild(log.firstChild);
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            initCharts();
+            logEvent('success', 'Dashboard ready! 🚀');
+        });
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            if (ws) {
+                ws.close();
+            }
+        });
+    </script>
+</body>
+</html>
