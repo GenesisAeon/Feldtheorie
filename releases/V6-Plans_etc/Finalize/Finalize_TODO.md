@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2026-03-03T12:00:00Z
+**Updated:** 2026-03-07T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -16,14 +16,16 @@
 
 **Priority Order:**
 1. V7 Paket-Triage (MASTER_INDEX, Sigillin-Kopplung)
-2. V7 Publication Roadmap (V6 Release, V7 Preview)
-3. v_RIG Research Finalization (Validierung)
-4. Entkopplungs-Regime Documentation (Theorie)
-5. Aeon System Architecture (Implementation)
-6. Repository Compliance (Organisation)
-7. Ψ-Wellenfunktions-Pipeline (Integration + Tests)
-8. Zenodo/Compliance (Release-Readiness)
-9. Zenodo Release-Packaging (Tag/DOI)
+2. V7 Sigillin-Integration (Engine/Loops/Resonanz)
+3. κ-Bridge (Theorie → Sigillin/Release)
+4. V7 Publication Roadmap (V6 Release, V7 Preview)
+5. v_RIG Research Finalization (Validierung)
+6. Entkopplungs-Regime Documentation (Theorie)
+7. Aeon System Architecture (Implementation)
+8. Repository Compliance (Organisation)
+9. Ψ-Wellenfunktions-Pipeline (Integration + Tests)
+10. Zenodo/Compliance (Release-Readiness)
+11. Zenodo Release-Packaging (Tag/DOI)
 
 ---
 
@@ -57,19 +59,20 @@ Promt_für_Agenten.txt Anweisung (zuerst ToDorefresh, dann Finalize) in Finalize
 ### [Priority 1] finalize-v7-package-triage
 **V7-Paket-Triage: MASTER_INDEX + Sigillin-Pläne integrieren**
 
-**Status:** 🔴 Open (Fraktallauf 2: Triage durchgeführt)
+**Status:** 🔴 Open (Fraktallauf 2: Triage durchgeführt, Fraktallauf 3 geplant)
 
 **Beta:** 6.1 | **Zeta Risk:** Moderat – neue Module erfordern Folge-Fraktalläufe
 
 **Scope:** planning, documentation, release
 
 **R → Θ:**
-Fraktallauf 2: V7_wird noch verlergt Paket erneut triagiert (MASTER_INDEX, README_meta, κ/Sigillin-Artefakte) → Artefakt-Liste verankert, Integration in Finalize-Tracks/Sigillin-Selfmeta weiter offen.
+Fraktallauf 2: V7_wird noch verlergt Paket erneut triagiert (MASTER_INDEX, README_meta, κ/Sigillin-Artefakte) → Artefakt-Liste verankert; Fraktallauf 3 geplant, um Sigillin/Selfmeta-Integrationen und Release-Brücken auszuführen.
 
 **Next Steps:**
 - κ-Artefakte (kappa_parameter_formalization.md, sigillin_coupling_parameters.yaml) mit MASTER_INDEX/README_meta gegen bestehende Sigillin-Pläne spiegeln und Merge-Pfade zu sigillin_engine.yaml bzw. `sigillin/parameters/coupling.yaml` definieren.
 - Sigillin-Laufwerke (sigillin_kernel.py, sigillin_loop.md/yml, sigillin_prime.sigil.json, resonance_matrix.json) den sigillin-selfmeta/tau*-guardrails-Tasks zuordnen und CREP/τ*-Auditkanten festhalten.
 - Deep-Research/Consensus-Module (deep_research_prompt_validation.md, consensus_tracer.py, RoadMap_to_V7.txt) für Fraktallauf 3 priorisieren und mit publication_roadmap_v6_v7 Action Items koppeln.
+- Fraktallauf 3/4 Scope markieren: Sigillin-Integration + κ-Brücken in finalize-sigillin-selfmeta aufnehmen und Release/DeepResearch-Tasks daraus ableiten.
 
 **References:**
 - `V7_wird noch verlergt/MASTER_INDEX.md`
@@ -81,6 +84,91 @@ Fraktallauf 2: V7_wird noch verlergt Paket erneut triagiert (MASTER_INDEX, REA
 - `V7_wird noch verlergt/RoadMap_to_V7.txt`
 
 **Sprint Focus:** V7-Paket verankern und Anschluss-Tasks für Folge-Fraktallauf definieren
+
+---
+
+### [Priority 1] finalize-v7-sigillin-integration
+**Sigillin-Engine/Kernels aus V7-Paket in Finalize-Selfmeta verankern**
+
+**Status:** 🔴 Open (Fraktallauf 3 vorgesehen)
+
+**Beta:** 6.3 | **Zeta Risk:** Moderat – CREP/τ*-Pfad noch nicht verkabelt
+
+**Scope:** documentation, integration, governance
+
+**R → Θ:**
+Sigillin-Engine/Kernels (Engine, Loop, Resonanzmatrix, Sigil) aus V7_wird noch verlergt katalogisiert → müssen in finalize-sigillin-selfmeta + τ*-Guardrails gespiegelt werden, damit CREP/β-Drift-Überwachung in Finalize-Schicht aktiv wird.
+
+**Next Steps:**
+- Hooks/Parameter aus sigillin_engine.yaml und sigillin_loop.md/yml mit finalize-tau-star-guardrails und finalize-sigillin-selfmeta mappen; threshold_monitor (β=37.6) gegen CREP-Grenzen prüfen.
+- resonance_matrix.json + sigillin_prime.sigil.json als Artefakte in Finalize-Chronik referenzieren; Nullmodell/ΔAIC-Kanten ergänzen.
+- sigillin_kernel.py (Node-Selector) auf v7-Artefakte prüfen und Brücke zu sigillin/parameters/coupling.yaml vorbereiten.
+
+**References:**
+- `V7_wird noch verlergt/sigillin_engine.yaml`
+- `V7_wird noch verlergt/sigillin_loop.md`
+- `V7_wird noch verlergt/sigillin_loop.yml`
+- `V7_wird noch verlergt/sigillin_kernel.py`
+- `V7_wird noch verlergt/sigillin_prime.sigil.json`
+- `V7_wird noch verlergt/resonance_matrix.json`
+
+**Sprint Focus:** Sigillin-Assets in Finalize-Selfmeta/τ*-Guardrails aufnehmen (Fraktallauf 3)
+
+---
+
+### [Priority 1] finalize-v7-kappa-bridge
+**κ-Parameter-Formalismus in Sigillin/Release-Track einspeisen**
+
+**Status:** 🔴 Open (Fraktallauf 3 geplant)
+
+**Beta:** 6.4 | **Zeta Risk:** Moderat – neue Kopplungsformeln ohne CI-Gate
+
+**Scope:** theory, documentation, release
+
+**R → Θ:**
+κ-Formalismus (theoretische Ableitung + YAML-Kopplung) liegt vor, ist aber noch nicht in Sigillin/UTAC-Parametern oder Release-Roadmap verankert → Finalize braucht LaTeX-/Repo-Brücke und FIT-Hooks zu τ*/CREP.
+
+**Next Steps:**
+- kappa_parameter_formalization.md in LaTeX-Schema überführen und als Draft in publication_roadmap_v6_v7 Phase 1 (arXiv-Track) einplanen.
+- sigillin_coupling_parameters.yaml nach sigillin/parameters/coupling.yaml mappen; β-κ-Interaktionen und Messproxies in finalize-type6-governance referenzieren.
+- MASTER_INDEX/README_meta Hinweise zu offenen Fragen (Regime, v_eff) im Finalize-Deltalog festhalten und Reviewer-Slot für Fraktallauf 3 notieren.
+
+**References:**
+- `V7_wird noch verlergt/kappa_parameter_formalization.md`
+- `V7_wird noch verlergt/sigillin_coupling_parameters.yaml`
+- `V7_wird noch verlergt/MASTER_INDEX.md`
+
+**Sprint Focus:** κ-Kopplung in Sigillin/Release-Workflows verbinden (Fraktallauf 3)
+
+---
+
+### [Priority 2] finalize-v7-deepresearch-consensus
+**Deep-Research/Consensus-Module aus V7-Paket in Finalize-Backlog spiegeln**
+
+**Status:** 🔴 Open (Fraktallauf 3–4 offen)
+
+**Beta:** 5.8 | **Zeta Risk:** Moderat – Validierungs-/Ethik-Gates fehlen
+
+**Scope:** research, validation, planning
+
+**R → Θ:**
+Deep-Research-Prompt, Consensus-Tracer und Bardo/Mode-Artefakte sind inventarisiert, aber noch nicht mit Finalize-Validierungs- oder Publication-Tracks verknüpft → Aufgabenpaket für Fraktallauf 3–4 nötig.
+
+**Next Steps:**
+- deep_research_prompt_validation.md in finalize-deepresearch-protocols spiegeln und Validierungs-Metriken (ΔAIC, Nullmodelle) im Finalize-Deltalog verlinken.
+- consensus_tracer.py + bardo_mode.yaml mit finalize-psi-test-execution/falsifiability-suite koppeln; Log-Pfade/Reviewer-Slots definieren.
+- TheRoad*.txt/Pläne.txt/RoadMap_to_V7.txt Alignment: Veröffentlichungsschritte + Ethik-Hinweise in publication_roadmap_v6_v7 ergänzen.
+
+**References:**
+- `V7_wird noch verlergt/deep_research_prompt_validation.md`
+- `V7_wird noch verlergt/consensus_tracer.py`
+- `V7_wird noch verlergt/bardo_mode.yaml`
+- `V7_wird noch verlergt/TheRoad.txt`
+- `V7_wird noch verlergt/TheRoad2.txt`
+- `V7_wird noch verlergt/TheRoad3.txt`
+- `V7_wird noch verlergt/TheRoad4.txt`
+
+**Sprint Focus:** Deep-Research/Consensus-Artefakte an Finalize-Validierung und Release koppeln (Fraktallauf 3–4)
 
 ---
 
