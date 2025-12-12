@@ -41,13 +41,15 @@ def test_health_check_v7():
     assert "v7" in data["version"]
     assert "sigillin" in data["phase"].lower()
 
-    # Check Sigillin endpoint is listed
+    # Check Sigillin endpoints are listed
     endpoints = data["endpoints"]
-    assert "sigillin" in endpoints
+    assert "sigillin_v1" in endpoints or "sigillin" in endpoints
+    assert endpoints.get("sigillin_v1") in ["operational", "unavailable"] or endpoints.get("sigillin") in ["operational", "unavailable"]
 
-    # Check sigillin_kernel status
-    assert "sigillin_kernel" in data
-    assert data["sigillin_kernel"] in ["operational", "unavailable"]
+    # Check sigillin_kernel module status
+    modules = data.get("modules", {})
+    assert "sigillin_kernel" in modules
+    assert modules["sigillin_kernel"] in ["operational", "unavailable"]
 
 
 # ============================================================================
