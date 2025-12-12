@@ -121,7 +121,7 @@
       "id": "finalize-v7-package-triage",
       "title": "V7-Paket-Triage: MASTER_INDEX + Sigillin-Pläne integrieren",
       "status": "open",
-      "completeness": "V7_wird noch verlergt Paket gesichtet (Fraktallauf 1); Umsetzung und Mapping in bestehende Finalize-Tracks stehen aus.",
+      "completeness": "Fraktallauf 2: MASTER_INDEX/README_meta + κ/Sigillin-Artefakte triagiert; Integration in Finalize-Tracks und Sigillin-Selfmeta steht aus.",
       "scope": [
         "planning",
         "documentation",
@@ -134,16 +134,16 @@
         "zeta_risk": "moderat – neue Module erfordern Folge-Fraktalläufe"
       },
       "next_steps": [
-        "MASTER_INDEX.md gegen bestehende Finalize-Tasks mappen (TheRoad*, Pläne.txt, README_meta) und Lücken markieren.",
-        "Neue Sigillin-Artefakte (sigillin_engine.yaml, sigillin_prime.sigil.json, sigillin_loop.md/yml) den Tracks sigillin-selfmeta/tau*-guardrails zuordnen.",
-        "Fraktallauf 2 planen: V7-spezifische Module (consensus_tracer.py, resonance_matrix.json) priorisieren und CREP/τ*-Notizen ergänzen."
+        "κ-Artefakte (kappa_parameter_formalization.md, sigillin_coupling_parameters.yaml) gegen MASTER_INDEX/README_meta spiegeln und Merge-Pfade zu sigillin_engine.yaml sowie sigillin/parameters/coupling.yaml definieren.",
+        "Sigillin-Laufwerke (sigillin_kernel.py, sigillin_loop.md/yml, sigillin_prime.sigil.json, resonance_matrix.json) den sigillin-selfmeta/tau*-guardrails-Tasks zuordnen und CREP/τ*-Auditkanten dokumentieren.",
+        "Deep-Research/Consensus-Module (deep_research_prompt_validation.md, consensus_tracer.py, RoadMap_to_V7.txt) für Fraktallauf 3 priorisieren und mit publication_roadmap_v6_v7 Action Items koppeln."
       ],
       "references": [
         {
           "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/MASTER_INDEX.md",
           "lines": [
             1,
-            120
+            200
           ]
         },
         {
@@ -157,7 +157,35 @@
           "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_engine.yaml",
           "lines": [
             1,
-            80
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/kappa_parameter_formalization.md",
+          "lines": [
+            1,
+            220
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_coupling_parameters.yaml",
+          "lines": [
+            1,
+            240
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/deep_research_prompt_validation.md",
+          "lines": [
+            1,
+            220
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/RoadMap_to_V7.txt",
+          "lines": [
+            1,
+            120
           ]
         }
       ],
@@ -168,7 +196,7 @@
       "id": "finalize-v7-publication-roadmap",
       "title": "V7 Publikations- und Release-Roadmap operationalisieren",
       "status": "open",
-      "completeness": "Action Items aus publication_roadmap_v6_v7.md übernommen; Umsetzung/CI-Checks erfordern weiteren Fraktallauf.",
+      "completeness": "Fraktallauf 2: publication_roadmap_v6_v7 Phasen 1–4 in Finalize-Board gespiegelt; V6/V7 Asset-Skelette definiert, Umsetzung/CI-Anschluss offen.",
       "scope": [
         "release",
         "documentation",
@@ -181,20 +209,34 @@
         "zeta_risk": "moderat – externe Abhängigkeiten (Zenodo/Ankündigungen) offen"
       },
       "next_steps": [
-        "Phase-1 bis Phase-4 Action Items aus publication_roadmap_v6_v7.md in bestehende finalize-zenodo-* und finalize-release Tasks einspeisen.",
-        "PREVIEW_NOTES/DISCLAIMER Templates für v0.7.0-preview als Repo-Artefakte anlegen und Tagging-Plan (v0.6.0, v0.7-preview) festhalten.",
-        "Follow-up Fraktallauf einplanen, um Repro-Guide, Methodology.md und Forum-Ankündigungen mit CI/telemetry-Hooks zu koppeln."
+        "Phase-1 Deliverables (v0.6.0 RELEASE_NOTES/Methodology/Repro-Guide aus publication_roadmap_v6_v7.md) in finalize-zenodo-* Checklisten ablegen und Deadline 15.12 laut RoadMap_to_V7.txt vermerken.",
+        "V7-Preview-Artefakte (PREVIEW_NOTES.md, DISCLAIMER.md, experimental_design.md, preliminary_results.csv) als Repo-Stubs anlegen und mit ontologischen Framing-Experimenten aus RoadMap_to_V7.txt verknüpfen.",
+        "Fraktallauf 3 planen: Kommunikation/CI (Forum-Posts, Zenodo DOI, telemetry hooks) mit Letzter_Teil_Road_MapV7!!-wichtig-.txt synchronisieren."
       ],
       "references": [
         {
           "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/publication_roadmap_v6_v7.md",
           "lines": [
             1,
-            200
+            260
           ]
         },
         {
           "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/Pläne.txt",
+          "lines": [
+            1,
+            160
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/RoadMap_to_V7.txt",
+          "lines": [
+            1,
+            160
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/Letzter_Teil_Road_MapV7!!-wichtig-.txt",
           "lines": [
             1,
             120
