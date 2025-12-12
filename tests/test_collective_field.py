@@ -468,7 +468,7 @@ def test_field_convergence_integration():
     for _ in range(10):
         centroid = field._calculate_centroid()
         for agent in field.agents:
-            agent.update_position(centroid, learning_rate=0.1)
+            agent.update_position(centroid, learning_rate=0.1, field=field)
 
     # Final state
     final_kappa = field.calculate_kappa_field()
