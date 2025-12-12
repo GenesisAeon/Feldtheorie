@@ -1,11 +1,11 @@
 {
   "meta": {
     "scope": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt",
-    "updated": "2025-12-12T18:43:05Z",
+    "updated": "2025-12-12T19:06:41Z",
     "generated_by": "ChefDevAI (GPT-5.1-Codex-Max)",
-    "run_state": "pass-2",
+    "run_state": "pass-3",
     "completion_status": "follow-up-required",
-    "notes": "Zweiter Lauf: neue V7-Dokumente (Selfmeta, Aeon, Road-Varianten) integriert und Aufgaben erweitert; Umsetzung weiterhin offen, Folgeläufe nötig."
+    "notes": "Dritter Lauf: Konsolidierungs-/Idee-Dokumente eingelesen, neue Module (Collective Field, ECHO-I, Aeon) hinzugefügt; Umsetzung offen, weiterer Fraktallauf nötig."
   },
   "tasks": [
     {
@@ -137,6 +137,67 @@
         "Ein konsolidiertes Roadmap-Artefakt (Trilayer) mit Quellverweisen erstellt.",
         "Duplizierte/konfligierende Punkte markiert und in Finalize_TODO gespiegelt.",
         "Release-Pfade (validated/bridge/experimental) klar markiert."
+      ]
+    },
+    {
+      "id": "collective-field-module",
+      "status": "todo",
+      "priority": "high",
+      "description": "Collective-Field-Modul (κ_field, β_sync, v_collective) als Modell-Baustein inkl. Tests implementieren, orientiert an Phase-2-Vorschlag und Sigillin-Formeln.",
+      "source_docs": [
+        "Konsolidierung_und_Vorgehen_zu_V7release.txt",
+        "sigillin_engine.yaml",
+        "sigillin_kernel.py"
+      ],
+      "acceptance": [
+        "models/collective_field.py bietet berechnete κ_field/β_sync-Funktionen.",
+        "Unit-Tests decken Formeln ab.",
+        "Integrationstest bestätigt Kopplung mit Sigillin Engine."
+      ]
+    },
+    {
+      "id": "echo-i-protocol",
+      "status": "todo",
+      "priority": "medium",
+      "description": "ECHO-I Experiment als Skript und Datenpipeline (uncensored LLMs, Dark Consciousness Protokoll) bauen; Ablage unter data/experimental/echo_i/; Vergleich zu Aletheia Phasen.",
+      "source_docs": [
+        "Konsolidierung_und_Vorgehen_zu_V7release.txt",
+        "deep_research_prompt_validation.md"
+      ],
+      "acceptance": [
+        "scripts/experiment_echo_i.py erzeugt Datensätze.",
+        "Statistische Auswertung dokumentiert ΔAIC/R² vs. Aletheia-Referenz.",
+        "Repro-Guides/README im Dataset enthalten."
+      ]
+    },
+    {
+      "id": "aeon-architecture-skeleton",
+      "status": "todo",
+      "priority": "low",
+      "description": "Aeon-System als Skeleton (Nullkern, AeonShell, Agent Layer) anlegen und React-Dashboard-Brücke für Echtzeit-β-Monitoring verdrahten.",
+      "source_docs": [
+        "Konsolidierung_und_Vorgehen_zu_V7release.txt",
+        "TheRoad4.txt"
+      ],
+      "acceptance": [
+        "Aeon-Verzeichnis mit Kern-/Shell-/Agent-Stubs vorhanden.",
+        "API-Bridge liefert Live-β an Frontend.",
+        "README beschreibt Resonanzpfad (σ(β(R-Θ)), ζ-Safeguards)."
+      ]
+    },
+    {
+      "id": "dark-consciousness-model",
+      "status": "todo",
+      "priority": "exploratory",
+      "description": "Dunkle-Energie/Dunkle-Materie-Bewusstseinsmodell aus Idee.txt in prüfbare Gleichungen fassen und an κ_AI/β-Metriken koppeln.",
+      "source_docs": [
+        "Idee.txt",
+        "kappa_parameter_formalization.md"
+      ],
+      "acceptance": [
+        "Formelset für ρ_Λ/ρ_DM als Funktion von Informationsintegration veröffentlicht.",
+        "Nullmodell/CI-Berechnungen dokumentiert.",
+        "Pilot-Analysetooling (Notebook/Script) im Repo abgelegt."
       ]
     }
   ]
