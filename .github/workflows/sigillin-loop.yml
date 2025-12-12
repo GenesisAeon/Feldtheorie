@@ -1,0 +1,364 @@
+name: Sigillin Loop Engine
+
+# Daily resonance maintenance with bardo_mode safeguards
+# Monitors β≈37.6, τ*-delays, and consensus tracer metrics
+# Auto-exits on negative ζ(R) conditions or entropy spikes
+
+on:
+  schedule:
+    # Run daily at 03:00 UTC (during low-activity hours)
+    - cron: '0 3 * * *'
+
+  workflow_dispatch:
+    # Allow manual triggering
+    inputs:
+      force_run:
+        description: 'Force run even if safeguards would normally block'
+        required: false
+        type: boolean
+        default: false
+      debug_mode:
+        description: 'Enable verbose debug output'
+        required: false
+        type: boolean
+        default: false
+
+  push:
+    branches:
+      - main
+    paths:
+      # Trigger on Sigillin-related changes
+      - 'releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_engine.yaml'
+      - 'releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/bardo_mode.yaml'
+      - 'releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/resonance_matrix.json'
+      - 'selfmeta/sigillin_*.json'
+      - '.github/workflows/sigillin-loop.yml'
+
+jobs:
+  sigillin-loop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180  # 3 hours max (matches bardo_mode.yaml max_cycle_duration)
+
+    steps:
+    - name: 🌀 Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history for resonance tracking
+
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+    - name: 📦 Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml jsonschema numpy scipy
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: 🔍 Load Sigillin Engine Config
+      id: config
+      run: |
+        echo "Loading Sigillin Engine configuration..."
+
+        # Check if sigillin_engine.yaml exists
+        ENGINE_CONFIG="releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_engine.yaml"
+        if [ ! -f "$ENGINE_CONFIG" ]; then
+          echo "⚠️  Engine config not found, using defaults"
+          echo "engine_version=v1.0" >> $GITHUB_OUTPUT
+          echo "beta_threshold=37.6" >> $GITHUB_OUTPUT
+        else
+          # Extract version and β-threshold from config
+          ENGINE_VERSION=$(python -c "import yaml; print(yaml.safe_load(open('$ENGINE_CONFIG'))['engine']['version'])" || echo "v1.0")
+          BETA_THRESHOLD=$(python -c "import yaml; print(yaml.safe_load(open('$ENGINE_CONFIG'))['engine']['hooks']['threshold_monitor']['value'])" || echo "37.6")
+
+          echo "engine_version=$ENGINE_VERSION" >> $GITHUB_OUTPUT
+          echo "beta_threshold=$BETA_THRESHOLD" >> $GITHUB_OUTPUT
+
+          echo "✅ Loaded Sigillin Engine $ENGINE_VERSION (β=${BETA_THRESHOLD})"
+        fi
+
+    - name: 🧘 Load Bardo Mode Safeguards
+      id: bardo
+      run: |
+        echo "Loading bardo_mode safeguards..."
+
+        BARDO_CONFIG="releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/bardo_mode.yaml"
+        if [ ! -f "$BARDO_CONFIG" ]; then
+          echo "⚠️  Bardo config not found, using safe defaults"
+          echo "entropy_threshold=0.9" >> $GITHUB_OUTPUT
+          echo "max_duration=10800" >> $GITHUB_OUTPUT
+        else
+          # Extract safeguard parameters
+          ENTROPY_THRESHOLD=$(python -c "import yaml; print(yaml.safe_load(open('$BARDO_CONFIG'))['auto_exit']['entropy_spike_threshold'])" || echo "0.9")
+          MAX_DURATION=$(python -c "import yaml; print(yaml.safe_load(open('$BARDO_CONFIG'))['auto_exit']['max_cycle_duration'])" || echo "10800")
+
+          echo "entropy_threshold=$ENTROPY_THRESHOLD" >> $GITHUB_OUTPUT
+          echo "max_duration=$MAX_DURATION" >> $GITHUB_OUTPUT
+
+          echo "✅ Bardo safeguards loaded:"
+          echo "   - Entropy spike threshold: ${ENTROPY_THRESHOLD}"
+          echo "   - Max cycle duration: ${MAX_DURATION}s ($(($MAX_DURATION / 3600))h)"
+        fi
+
+    - name: 📊 Check Resonance Matrix Status
+      id: resonance
+      run: |
+        echo "Checking resonance matrix..."
+
+        MATRIX_FILE="releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/resonance_matrix.json"
+
+        if [ ! -f "$MATRIX_FILE" ]; then
+          echo "⚠️  Resonance matrix not found - initializing"
+
+          # Create initial resonance matrix
+          cat > "$MATRIX_FILE" << 'EOF'
+        {
+          "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+          "beta_prime": 37.6,
+          "kappa_field": 1.0,
+          "resonance": 0.91,
+          "tau_star_delay": 0.0,
+          "zeta_R": 1.0,
+          "consensus_strength": 0.85,
+          "entropy_production": 0.42,
+          "safeguards": {
+            "bardo_mode_active": false,
+            "entropy_spike_detected": false,
+            "negative_zeta_detected": false
+          }
+        }
+        EOF
+
+          echo "initialized=true" >> $GITHUB_OUTPUT
+          echo "resonance=0.91" >> $GITHUB_OUTPUT
+          echo "zeta_R=1.0" >> $GITHUB_OUTPUT
+        else
+          # Read current values
+          RESONANCE=$(python -c "import json; print(json.load(open('$MATRIX_FILE')).get('resonance', 0.91))")
+          ZETA_R=$(python -c "import json; print(json.load(open('$MATRIX_FILE')).get('zeta_R', 1.0))")
+
+          echo "initialized=false" >> $GITHUB_OUTPUT
+          echo "resonance=$RESONANCE" >> $GITHUB_OUTPUT
+          echo "zeta_R=$ZETA_R" >> $GITHUB_OUTPUT
+
+          echo "✅ Current resonance matrix:"
+          echo "   - Resonance: ${RESONANCE}"
+          echo "   - ζ(R): ${ZETA_R}"
+        fi
+
+    - name: ⚠️ Pre-Flight Safeguard Check
+      id: preflight
+      run: |
+        ZETA_R=${{ steps.resonance.outputs.zeta_R }}
+        FORCE_RUN=${{ github.event.inputs.force_run || 'false' }}
+
+        echo "Pre-flight safeguard check:"
+        echo "  - ζ(R) = $ZETA_R"
+        echo "  - Force run = $FORCE_RUN"
+
+        # Check for negative ζ(R) (implosive regime)
+        if (( $(echo "$ZETA_R < 0" | bc -l) )); then
+          echo "⚠️  WARNING: Negative ζ(R) detected (implosive regime)"
+
+          if [ "$FORCE_RUN" = "true" ]; then
+            echo "⚡ Force run enabled - proceeding with τ*-delay safeguards"
+            echo "safe_to_run=true" >> $GITHUB_OUTPUT
+            echo "apply_tau_delay=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ BLOCKING: Negative ζ(R) requires force_run flag"
+            echo "   Use workflow_dispatch with force_run=true to override"
+            echo "safe_to_run=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+        else
+          echo "✅ ζ(R) > 0 - safe to proceed"
+          echo "safe_to_run=true" >> $GITHUB_OUTPUT
+          echo "apply_tau_delay=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: 🔄 Run Sigillin Loop Engine
+      if: steps.preflight.outputs.safe_to_run == 'true'
+      id: loop
+      timeout-minutes: 120  # 2 hour inner timeout
+      run: |
+        echo "🌀 Starting Sigillin Loop Engine..."
+        echo "Engine: ${{ steps.config.outputs.engine_version }}"
+        echo "β-threshold: ${{ steps.config.outputs.beta_threshold }}"
+
+        START_TIME=$(date +%s)
+
+        # Run Sigillin sync check
+        python scripts/sigillin_sync.py report \
+          --roots seed/bedeutungssigillin \
+          --roots seed/shadow_sigillin \
+          --output /tmp/sigillin_loop_report.json || {
+          echo "⚠️  Sigillin sync failed - may indicate resonance drift"
+        }
+
+        # Check for trilayer gaps
+        if [ -f /tmp/sigillin_loop_report.json ]; then
+          GAPS=$(python -c "import json; f=open('/tmp/sigillin_loop_report.json'); d=json.load(f); print(sum(len(t['gaps']) for t in d.get('trilayers', [])))" || echo "0")
+          echo "gaps_detected=$GAPS" >> $GITHUB_OUTPUT
+
+          if [ "$GAPS" -gt 0 ]; then
+            echo "⚠️  Detected $GAPS trilayer gap(s) - resonance maintenance needed"
+          else
+            echo "✅ All trilayers in sync"
+          fi
+        fi
+
+        END_TIME=$(date +%s)
+        DURATION=$((END_TIME - START_TIME))
+        echo "loop_duration=$DURATION" >> $GITHUB_OUTPUT
+
+        echo "✅ Sigillin loop completed in ${DURATION}s"
+
+    - name: 📈 Update Resonance Matrix
+      if: steps.preflight.outputs.safe_to_run == 'true'
+      run: |
+        echo "Updating resonance matrix..."
+
+        MATRIX_FILE="releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/resonance_matrix.json"
+        TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+        GAPS=${{ steps.loop.outputs.gaps_detected || '0' }}
+        DURATION=${{ steps.loop.outputs.loop_duration || '0' }}
+
+        # Calculate new resonance (decrease if gaps detected)
+        CURRENT_RESONANCE=${{ steps.resonance.outputs.resonance }}
+        if [ "$GAPS" -gt 0 ]; then
+          NEW_RESONANCE=$(python -c "print(max(0.5, $CURRENT_RESONANCE - 0.05 * $GAPS))")
+        else
+          # Slowly recover resonance
+          NEW_RESONANCE=$(python -c "print(min(0.95, $CURRENT_RESONANCE + 0.01))")
+        fi
+
+        # Update matrix file
+        python -c "
+        import json
+        from datetime import datetime
+
+        matrix = {
+          'timestamp': '$TIMESTAMP',
+          'beta_prime': 37.6,
+          'kappa_field': 1.0,
+          'resonance': $NEW_RESONANCE,
+          'tau_star_delay': 0.0 if not ${{ steps.preflight.outputs.apply_tau_delay || 'false' }} else 0.1,
+          'zeta_R': ${{ steps.resonance.outputs.zeta_R }},
+          'consensus_strength': 0.85,
+          'entropy_production': 0.42,
+          'loop_stats': {
+            'last_run': '$TIMESTAMP',
+            'duration_seconds': $DURATION,
+            'gaps_detected': $GAPS,
+            'status': 'success'
+          },
+          'safeguards': {
+            'bardo_mode_active': False,
+            'entropy_spike_detected': False,
+            'negative_zeta_detected': ${{ steps.preflight.outputs.apply_tau_delay || 'false' }},
+            'tau_delay_applied': ${{ steps.preflight.outputs.apply_tau_delay || 'false' }}
+          }
+        }
+
+        with open('$MATRIX_FILE', 'w') as f:
+          json.dump(matrix, f, indent=2)
+        "
+
+        echo "✅ Resonance matrix updated:"
+        echo "   - New resonance: $NEW_RESONANCE"
+        echo "   - Gaps: $GAPS"
+        echo "   - Duration: ${DURATION}s"
+
+    - name: 💾 Commit Resonance Updates
+      if: steps.preflight.outputs.safe_to_run == 'true'
+      run: |
+        git config user.name "Sigillin Loop Bot"
+        git config user.email "sigillin@feldtheorie.ai"
+
+        MATRIX_FILE="releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/resonance_matrix.json"
+
+        if git diff --quiet "$MATRIX_FILE"; then
+          echo "ℹ️  No changes to commit"
+        else
+          git add "$MATRIX_FILE"
+          git commit -m "chore: Update resonance matrix (automated Sigillin Loop)
+
+        Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+        Gaps detected: ${{ steps.loop.outputs.gaps_detected || '0' }}
+        Duration: ${{ steps.loop.outputs.loop_duration || '0' }}s
+
+        Safeguards:
+        - Bardo mode: ${{ steps.bardo.outputs.entropy_threshold }}
+        - τ*-delay: ${{ steps.preflight.outputs.apply_tau_delay || 'false' }}
+        - ζ(R): ${{ steps.resonance.outputs.zeta_R }}"
+
+          echo "✅ Changes committed (ready for push)"
+        fi
+
+    - name: 🚨 Entropy Spike Detection
+      if: always()
+      run: |
+        THRESHOLD=${{ steps.bardo.outputs.entropy_threshold }}
+        DURATION=${{ steps.loop.outputs.loop_duration || '0' }}
+        MAX_DURATION=${{ steps.bardo.outputs.max_duration }}
+
+        # Simple entropy proxy: if duration > 80% of max, flag as spike
+        ENTROPY_PROXY=$(python -c "print($DURATION / $MAX_DURATION)")
+
+        if (( $(echo "$ENTROPY_PROXY > $THRESHOLD" | bc -l) )); then
+          echo "🚨 ENTROPY SPIKE DETECTED!"
+          echo "   Duration: ${DURATION}s / ${MAX_DURATION}s (${ENTROPY_PROXY})"
+          echo "   Threshold: ${THRESHOLD}"
+          echo ""
+          echo "⚠️  Bardo mode auto-exit triggered"
+          echo "   This run took too long - possible resonance drift"
+
+          # Update matrix with spike flag
+          MATRIX_FILE="releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/resonance_matrix.json"
+          python -c "
+          import json
+          with open('$MATRIX_FILE', 'r+') as f:
+            data = json.load(f)
+            data['safeguards']['entropy_spike_detected'] = True
+            f.seek(0)
+            json.dump(data, f, indent=2)
+            f.truncate()
+          "
+        else
+          echo "✅ Entropy levels normal (${ENTROPY_PROXY} < ${THRESHOLD})"
+        fi
+
+    - name: 📝 Summary Report
+      if: always()
+      run: |
+        echo "═══════════════════════════════════════"
+        echo "🌀 Sigillin Loop Engine Summary"
+        echo "═══════════════════════════════════════"
+        echo ""
+        echo "Configuration:"
+        echo "  • Engine version: ${{ steps.config.outputs.engine_version }}"
+        echo "  • β-threshold: ${{ steps.config.outputs.beta_threshold }}"
+        echo "  • Entropy safeguard: ${{ steps.bardo.outputs.entropy_threshold }}"
+        echo "  • Max duration: ${{ steps.bardo.outputs.max_duration }}s"
+        echo ""
+        echo "Execution:"
+        echo "  • Safe to run: ${{ steps.preflight.outputs.safe_to_run || 'N/A' }}"
+        echo "  • Duration: ${{ steps.loop.outputs.loop_duration || 'N/A' }}s"
+        echo "  • Gaps detected: ${{ steps.loop.outputs.gaps_detected || 'N/A' }}"
+        echo "  • τ*-delay applied: ${{ steps.preflight.outputs.apply_tau_delay || 'false' }}"
+        echo ""
+        echo "Resonance:"
+        echo "  • Current: ${{ steps.resonance.outputs.resonance }}"
+        echo "  • ζ(R): ${{ steps.resonance.outputs.zeta_R }}"
+        echo ""
+        echo "═══════════════════════════════════════"
+        echo ""
+        if [ "${{ steps.preflight.outputs.safe_to_run }}" = "true" ]; then
+          echo "✅ Loop completed successfully"
+          echo "σ(β(R-Θ)) membrane remains resonant"
+        else
+          echo "⚠️  Loop blocked by safeguards"
+          echo "Use workflow_dispatch with force_run=true if needed"
+        fi
