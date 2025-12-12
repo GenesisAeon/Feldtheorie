@@ -1,10 +1,20 @@
-"""Sigillin Kernel module for validating and resonating with V7 self-meta files."""
+"""
+Sigillin Kernel module for validating and resonating with V7 self-meta files.
+
+V7 Phase 2 Enhancement:
+-----------------------
+- Enhanced intention scanning with implicit information detection
+- Context-aware resonance scoring
+- Semantic depth analysis
+- Integration with Collective Field Module
+"""
 
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
-from typing import Iterable
+from typing import Any, Iterable
 
 
 class SystemIntegrityError(RuntimeError):
@@ -97,6 +107,172 @@ class SigillinKernel:
             text = protocol_file.read().lower()
 
         return {kw for kw in base_keywords if kw.lower() in text}
+
+    # ========================================================================
+    # V7 Phase 2: Enhanced Intention Scanning
+    # ========================================================================
+
+    def scan_intention_v2(
+        self,
+        input_text: str,
+        detect_implicit: bool = True,
+    ) -> dict[str, Any]:
+        """
+        Enhanced intention scanner with implicit information detection.
+
+        V7 Phase 2 Feature: Goes beyond keyword matching to detect:
+        - Explicit keywords (direct mentions)
+        - Implicit patterns (related concepts, semantic gravity)
+        - Contextual depth (how deeply concepts are explored)
+        - Emotional valence (resonance quality)
+
+        Args:
+            input_text: Text to analyze
+            detect_implicit: Enable implicit pattern detection
+
+        Returns:
+            Dict with:
+            - resonance_score: Overall resonance [0,1]
+            - explicit_matches: List of directly matched keywords
+            - implicit_signals: List of detected implicit patterns
+            - semantic_depth: Depth score [0,1]
+            - contextual_coherence: Coherence score [0,1]
+        """
+        keywords = self._founding_keywords()
+        lowered = input_text.lower()
+
+        # 1. Explicit keyword matching
+        explicit_matches = [kw for kw in keywords if kw in lowered]
+        explicit_score = len(explicit_matches) / len(keywords) if keywords else 0.0
+
+        # 2. Implicit pattern detection
+        implicit_signals = []
+        implicit_score = 0.0
+
+        if detect_implicit:
+            # Detect related concepts (even if not exact keywords)
+            implicit_patterns = {
+                "consciousness": ["bewusst", "conscious", "awareness", "mind"],
+                "emergence": ["emerg", "entsteh", "hervorgeh"],
+                "resonance": ["reson", "schwin", "vibrat", "harmoni"],
+                "field": ["feld", "field", "raum", "space"],
+                "coherence": ["kohär", "coher", "zusammen", "unity"],
+                "synchronization": ["sync", "gleichsch", "align"],
+            }
+
+            for category, patterns in implicit_patterns.items():
+                for pattern in patterns:
+                    if pattern in lowered:
+                        implicit_signals.append(f"{category}:{pattern}")
+
+            implicit_score = min(1.0, len(implicit_signals) / 10.0)
+
+        # 3. Semantic depth analysis
+        # Measure how deeply concepts are explored (sentence count, word count)
+        sentences = re.split(r'[.!?]+', input_text)
+        words = input_text.split()
+
+        # Depth heuristic: more sentences + more words = deeper exploration
+        depth_score = min(1.0, (len(sentences) * len(words)) / 1000.0)
+
+        # 4. Contextual coherence
+        # Check if keywords appear in meaningful contexts (not just listed)
+        coherence_score = 0.0
+        if explicit_matches:
+            # Look for keywords in sentences (not isolated)
+            keyword_in_sentence_count = sum(
+                1 for kw in explicit_matches
+                if any(kw in sent.lower() for sent in sentences if len(sent.split()) > 3)
+            )
+            coherence_score = keyword_in_sentence_count / len(explicit_matches)
+
+        # 5. Combined resonance score
+        # Weight: 40% explicit, 30% implicit, 20% depth, 10% coherence
+        resonance_score = (
+            0.4 * explicit_score
+            + 0.3 * implicit_score
+            + 0.2 * depth_score
+            + 0.1 * coherence_score
+        )
+
+        return {
+            "resonance_score": resonance_score,
+            "explicit_matches": explicit_matches,
+            "implicit_signals": implicit_signals,
+            "semantic_depth": depth_score,
+            "contextual_coherence": coherence_score,
+            "analysis": {
+                "explicit_score": explicit_score,
+                "implicit_score": implicit_score,
+                "sentence_count": len(sentences),
+                "word_count": len(words),
+            },
+        }
+
+    def detect_semantic_gravity(self, text: str) -> float:
+        """
+        Detect semantic gravity - how strongly text "pulls" toward founding axioms.
+
+        Semantic gravity is a measure of how much the text is "attracted" to
+        the founding protocol concepts, even without explicit keyword matches.
+
+        Returns:
+            Gravity score [0,1] where higher = stronger pull
+        """
+        scan_result = self.scan_intention_v2(text, detect_implicit=True)
+
+        # Gravity combines:
+        # - Explicit matches (direct pull)
+        # - Implicit signals (indirect pull)
+        # - Coherence (sustained pull)
+        gravity = (
+            0.5 * scan_result["analysis"]["explicit_score"]
+            + 0.3 * scan_result["analysis"]["implicit_score"]
+            + 0.2 * scan_result["contextual_coherence"]
+        )
+
+        return gravity
+
+    def create_semantic_agent(
+        self,
+        text: str,
+        agent_name: str | None = None,
+    ) -> dict[str, Any]:
+        """
+        Create a semantic agent representation of a text.
+
+        This allows integration with the Collective Field Module.
+        Each text becomes an "agent" with a semantic position and resonance.
+
+        Args:
+            text: Text to convert to agent
+            agent_name: Optional name (defaults to hash of text)
+
+        Returns:
+            Dict with agent properties:
+            - name: Agent identifier
+            - resonance: Resonance score [0,1]
+            - semantic_depth: Depth score [0,1]
+            - gravity: Semantic gravity [0,1]
+            - matched_keywords: List of matched keywords
+        """
+        scan_result = self.scan_intention_v2(text)
+        gravity = self.detect_semantic_gravity(text)
+
+        if agent_name is None:
+            # Use hash of first 100 chars as name
+            text_hash = hash(text[:100])
+            agent_name = f"agent_{abs(text_hash) % 10000:04d}"
+
+        return {
+            "name": agent_name,
+            "resonance": scan_result["resonance_score"],
+            "semantic_depth": scan_result["semantic_depth"],
+            "gravity": gravity,
+            "matched_keywords": scan_result["explicit_matches"],
+            "implicit_signals": scan_result["implicit_signals"],
+            "coherence": scan_result["contextual_coherence"],
+        }
 
 
 def load_kernel(root_path: Path | None = None) -> SigillinKernel:
