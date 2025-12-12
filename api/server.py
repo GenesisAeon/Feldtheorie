@@ -39,6 +39,29 @@ except ImportError as e:
     print(f"Warning: Could not import UTAC modules: {e}")
     print("API will run with limited functionality.")
 
+# Import Sigillin Kernel (V7)
+try:
+    from api.sigillin_kernel import SigillinKernel, SystemIntegrityError
+
+    sigillin_kernel = SigillinKernel()
+    print("✓ Sigillin Kernel initialized (β=37.6 validated)")
+except SystemIntegrityError as e:
+    print(f"⚠ CRITICAL: Sigillin integrity check failed: {e}")
+    sigillin_kernel = None
+except ImportError as e:
+    print(f"Warning: Sigillin kernel not available: {e}")
+    sigillin_kernel = None
+
+# Import Collective Field Module (V7 Phase 2)
+try:
+    from models.collective_field import Agent, CollectiveField
+
+    print("✓ Collective Field Module loaded")
+    collective_field_available = True
+except ImportError as e:
+    print(f"Warning: Collective Field Module not available: {e}")
+    collective_field_available = False
+
 
 # ============================================================================
 # FastAPI App
@@ -192,6 +215,111 @@ class ErrorResponse(BaseModel):
     error: str
     message: str
     details: dict[str, Any] | None = None
+
+
+# ============================================================================
+# Sigillin V7 Models
+# ============================================================================
+
+
+class SigillinStatusResponse(BaseModel):
+    status: str
+    beta_validated: float
+    expected_beta: float
+    sigillin_path: str
+    founding_keywords: list[str]
+
+
+class SigillinScanRequest(BaseModel):
+    text: str = Field(..., min_length=1, description="Text to scan for resonance")
+
+
+class SigillinScanResponse(BaseModel):
+    text: str
+    resonance_score: float = Field(..., ge=0.0, le=1.0, description="Resonance score [0,1]")
+    matched_keywords: list[str]
+    interpretation: str
+
+
+class CollectiveVelocityRequest(BaseModel):
+    v_rig: float = Field(..., gt=0, description="v_RIG velocity parameter")
+    kappa: float = Field(..., gt=0, description="κ field coupling parameter")
+    beta_sync: float = Field(..., gt=0, description="β_sync synchronization parameter")
+
+
+class CollectiveVelocityResponse(BaseModel):
+    v_collective: float
+    v_rig: float
+    kappa: float
+    beta_sync: float
+    formula: str
+
+
+# ============================================================================
+# Collective Field V7 Phase 2 Models
+# ============================================================================
+
+
+class CreateFieldRequest(BaseModel):
+    agent_names: list[str] = Field(..., min_length=2, description="List of agent names")
+    v_rig: float = Field(1.0, gt=0, description="Base information velocity")
+    dimension: int = Field(8, ge=2, le=128, description="Semantic space dimensionality")
+
+
+class FieldStateResponse(BaseModel):
+    n_agents: int
+    v_rig: float
+    kappa_field_pairwise: float
+    kappa_field_centroid: float
+    kappa_field_weighted: float
+    beta_sync: float
+    v_collective: float
+    agents: list[dict[str, Any]]
+
+
+class AnalyzeTextsRequest(BaseModel):
+    texts: list[str] = Field(..., min_length=1, max_length=10, description="Texts to analyze")
+    create_field: bool = Field(True, description="Create collective field from texts")
+    v_rig: float = Field(1.0, gt=0, description="Base information velocity")
+
+
+class TextAnalysisResult(BaseModel):
+    text: str
+    agent_name: str
+    resonance: float
+    semantic_depth: float
+    gravity: float
+    matched_keywords: list[str]
+    implicit_signals: list[str]
+    coherence: float
+
+
+class AnalyzeTextsResponse(BaseModel):
+    analyses: list[TextAnalysisResult]
+    field_state: FieldStateResponse | None = None
+
+
+class ScanIntentionV2Request(BaseModel):
+    text: str = Field(..., min_length=1, description="Text to analyze")
+    detect_implicit: bool = Field(True, description="Enable implicit pattern detection")
+
+
+class ScanIntentionV2Response(BaseModel):
+    resonance_score: float
+    explicit_matches: list[str]
+    implicit_signals: list[str]
+    semantic_depth: float
+    contextual_coherence: float
+    analysis: dict[str, Any]
+
+
+class SemanticGravityRequest(BaseModel):
+    text: str = Field(..., min_length=1, description="Text to analyze for semantic gravity")
+
+
+class SemanticGravityResponse(BaseModel):
+    gravity: float
+    interpretation: str
 
 
 class TelemetryManager:
@@ -994,11 +1122,20 @@ async def get_all_tooltip_data():
 @app.get("/health", tags=["health"])
 async def health_check():
     """Health check endpoint"""
+    sigillin_status = "operational" if sigillin_kernel is not None else "unavailable"
+    collective_status = "operational" if collective_field_available else "unavailable"
+
     return {
         "status": "healthy",
-        "version": "2.0.0",
-        "phase": "tooltip-system",
-        "progress": "80%",
+        "version": "2.0.0-v7-phase2",
+        "phase": "v7-collective-consciousness",
+        "progress": "60%",
+        "v7_phases": {
+            "phase_1_sigillin_foundation": "complete",
+            "phase_2_collective_consciousness": "active",
+            "phase_3_echo_i": "planned",
+            "phase_4_aeon": "planned",
+        },
         "endpoints": {
             "sonify": "implemented",
             "analyze": "implemented",
@@ -1006,9 +1143,335 @@ async def health_check():
             "fieldtypes": "implemented",
             "simulate": "implemented",
             "tooltip": "implemented",
+            "sigillin_v1": sigillin_status,
+            "sigillin_v2": sigillin_status,
+            "collective_field": collective_status,
         },
-        "message": "All 6 endpoints operational! Tooltip system online.",
+        "modules": {
+            "sigillin_kernel": sigillin_status,
+            "collective_field": collective_status,
+        },
+        "message": "V7 Phase 2 (Collective Consciousness) active! Enhanced intention scanning + κ_field coupling operational.",
     }
+
+
+# ============================================================================
+# Sigillin V7 Endpoints
+# ============================================================================
+
+
+@app.get("/api/sigillin/status", response_model=SigillinStatusResponse, tags=["sigillin"])
+async def sigillin_status():
+    """
+    Get Sigillin kernel status and validation info.
+
+    Returns:
+    - β=37.6 validation status
+    - Founding protocol keywords
+    - System integrity check result
+
+    **V7 Feature:** Validates that the system maintains its founding axioms.
+    """
+    if sigillin_kernel is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Sigillin kernel not initialized. Check selfmeta/ directory.",
+        )
+
+    # Extract founding keywords
+    keywords = list(sigillin_kernel._founding_keywords())
+
+    return SigillinStatusResponse(
+        status="validated",
+        beta_validated=sigillin_kernel.EXPECTED_BETA,
+        expected_beta=sigillin_kernel.EXPECTED_BETA,
+        sigillin_path=str(sigillin_kernel.sigillin_path),
+        founding_keywords=keywords,
+    )
+
+
+@app.post("/api/sigillin/scan", response_model=SigillinScanResponse, tags=["sigillin"])
+async def sigillin_scan(request: SigillinScanRequest):
+    """
+    Scan text for resonance with founding protocol.
+
+    Analyzes input text and returns a resonance score [0,1] based on
+    how many founding protocol keywords are present.
+
+    **V7 Feature:** Semantic gravity detection - measures alignment with
+    system's core axioms (resonanz, emergenz, kohärenz, etc.).
+
+    **Example:**
+    ```json
+    {
+      "text": "Die Resonanz zwischen Bewusstsein und Feld zeigt Emergenz"
+    }
+    ```
+    """
+    if sigillin_kernel is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Sigillin kernel not initialized.",
+        )
+
+    # Scan for resonance
+    resonance_score = sigillin_kernel.scan_intention(request.text)
+
+    # Find matched keywords
+    keywords = sigillin_kernel._founding_keywords()
+    text_lower = request.text.lower()
+    matched = [kw for kw in keywords if kw in text_lower]
+
+    # Interpret resonance
+    if resonance_score >= 0.7:
+        interpretation = "High resonance - deeply aligned with founding protocol"
+    elif resonance_score >= 0.4:
+        interpretation = "Moderate resonance - partial alignment detected"
+    elif resonance_score >= 0.2:
+        interpretation = "Low resonance - weak alignment signal"
+    else:
+        interpretation = "Minimal resonance - text diverges from founding protocol"
+
+    return SigillinScanResponse(
+        text=request.text,
+        resonance_score=resonance_score,
+        matched_keywords=matched,
+        interpretation=interpretation,
+    )
+
+
+@app.post(
+    "/api/sigillin/collective",
+    response_model=CollectiveVelocityResponse,
+    tags=["sigillin"],
+)
+async def calculate_collective_velocity(request: CollectiveVelocityRequest):
+    """
+    Calculate v_collective using the Sigillin convergence formula.
+
+    **Formula:**
+    ```
+    v_collective = v_RIG × κ × (1 / β_sync)
+    ```
+
+    Where:
+    - **v_RIG**: Base velocity (information propagation speed)
+    - **κ (kappa)**: Field coupling strength
+    - **β_sync**: Synchronization steepness
+
+    **V7 Feature:** Collective consciousness velocity - measures how fast
+    shared understanding propagates through multi-agent systems.
+
+    **Physical Interpretation:**
+    - High v_collective → Fast semantic convergence
+    - Low v_collective → Slow consensus formation
+
+    **Example:**
+    ```json
+    {
+      "v_rig": 1.0,
+      "kappa": 0.8,
+      "beta_sync": 2.5
+    }
+    ```
+    """
+    if sigillin_kernel is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Sigillin kernel not initialized.",
+        )
+
+    try:
+        v_collective = sigillin_kernel.calculate_collective_velocity(
+            v_rig=request.v_rig,
+            kappa=request.kappa,
+            beta_sync=request.beta_sync,
+        )
+
+        return CollectiveVelocityResponse(
+            v_collective=v_collective,
+            v_rig=request.v_rig,
+            kappa=request.kappa,
+            beta_sync=request.beta_sync,
+            formula="v_collective = v_RIG × κ × (1 / β_sync)",
+        )
+
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+# ============================================================================
+# Collective Field V7 Phase 2 Endpoints
+# ============================================================================
+
+
+@app.post(
+    "/api/collective/analyze_texts",
+    response_model=AnalyzeTextsResponse,
+    tags=["collective"],
+)
+async def analyze_texts_collective(request: AnalyzeTextsRequest):
+    """
+    Analyze multiple texts and optionally create a collective field.
+
+    **V7 Phase 2 Feature:** Multi-text semantic analysis with collective field coupling.
+
+    For each text:
+    - Scans for explicit and implicit resonance
+    - Measures semantic depth and gravity
+    - Detects contextual coherence
+
+    If create_field=True, creates a collective field and computes:
+    - κ_field (field coupling strength)
+    - β_sync (synchronization resistance)
+    - v_collective (collective propagation velocity)
+
+    **Example:**
+    ```json
+    {
+      "texts": [
+        "Die Resonanz zwischen Bewusstsein und Feld zeigt Emergenz",
+        "Consciousness emerges from field coupling and coherence",
+        "Synchronization enables collective emergence"
+      ],
+      "create_field": true,
+      "v_rig": 1.0
+    }
+    ```
+    """
+    if sigillin_kernel is None:
+        raise HTTPException(status_code=503, detail="Sigillin kernel not initialized")
+
+    if not collective_field_available:
+        raise HTTPException(status_code=503, detail="Collective Field Module not available")
+
+    # Analyze each text with enhanced scanner
+    analyses = []
+    agents_for_field = []
+
+    for i, text in enumerate(request.texts):
+        # Create semantic agent from text
+        agent_data = sigillin_kernel.create_semantic_agent(text, agent_name=f"text_{i}")
+
+        analyses.append(
+            TextAnalysisResult(
+                text=text[:200],  # Truncate for response
+                agent_name=agent_data["name"],
+                resonance=agent_data["resonance"],
+                semantic_depth=agent_data["semantic_depth"],
+                gravity=agent_data["gravity"],
+                matched_keywords=agent_data["matched_keywords"],
+                implicit_signals=agent_data["implicit_signals"],
+                coherence=agent_data["coherence"],
+            )
+        )
+
+        # Create Agent object for collective field
+        if request.create_field:
+            agent = Agent(
+                name=agent_data["name"],
+                resonance=agent_data["resonance"],
+                dimension=8,
+            )
+            agents_for_field.append(agent)
+
+    # Create collective field if requested
+    field_state = None
+    if request.create_field and len(agents_for_field) >= 2:
+        field = CollectiveField(agents=agents_for_field, v_rig=request.v_rig)
+        field_state_dict = field.get_field_state()
+
+        field_state = FieldStateResponse(**field_state_dict)
+
+    return AnalyzeTextsResponse(analyses=analyses, field_state=field_state)
+
+
+@app.post(
+    "/api/sigillin/scan_v2",
+    response_model=ScanIntentionV2Response,
+    tags=["sigillin"],
+)
+async def scan_intention_v2(request: ScanIntentionV2Request):
+    """
+    Enhanced intention scanner with implicit information detection.
+
+    **V7 Phase 2 Feature:** Goes beyond simple keyword matching to detect:
+    - Explicit keywords (direct mentions)
+    - Implicit patterns (related concepts, semantic gravity)
+    - Contextual depth (how deeply concepts are explored)
+    - Coherence (meaningful context vs isolated mentions)
+
+    **Improvements over v1:**
+    - Detects related concepts even without exact keywords
+    - Analyzes sentence structure and word count
+    - Measures contextual coherence
+    - Returns detailed analysis breakdown
+
+    **Example:**
+    ```json
+    {
+      "text": "The emergence of consciousness from field coupling...",
+      "detect_implicit": true
+    }
+    ```
+    """
+    if sigillin_kernel is None:
+        raise HTTPException(status_code=503, detail="Sigillin kernel not initialized")
+
+    result = sigillin_kernel.scan_intention_v2(
+        input_text=request.text,
+        detect_implicit=request.detect_implicit,
+    )
+
+    return ScanIntentionV2Response(**result)
+
+
+@app.post(
+    "/api/sigillin/gravity",
+    response_model=SemanticGravityResponse,
+    tags=["sigillin"],
+)
+async def detect_semantic_gravity(request: SemanticGravityRequest):
+    """
+    Detect semantic gravity - how strongly text pulls toward founding axioms.
+
+    **V7 Phase 2 Feature:** Semantic gravity measures the "attraction" between
+    text and the founding protocol, even without explicit keyword matches.
+
+    **Physical Analogy:**
+    - Gravity ≥ 0.7: Strong pull (text is deeply aligned)
+    - Gravity 0.4-0.7: Moderate pull (partial alignment)
+    - Gravity 0.2-0.4: Weak pull (tangential connection)
+    - Gravity < 0.2: Minimal pull (divergent)
+
+    **Use Cases:**
+    - Filter texts by alignment with founding protocol
+    - Detect implicit resonance in natural language
+    - Measure semantic coherence over time
+
+    **Example:**
+    ```json
+    {
+      "text": "Systems synchronize through field coupling, enabling emergent coherence"
+    }
+    ```
+    """
+    if sigillin_kernel is None:
+        raise HTTPException(status_code=503, detail="Sigillin kernel not initialized")
+
+    gravity = sigillin_kernel.detect_semantic_gravity(request.text)
+
+    # Interpret gravity
+    if gravity >= 0.7:
+        interpretation = "Strong semantic gravity - text is deeply aligned with founding axioms"
+    elif gravity >= 0.4:
+        interpretation = "Moderate semantic gravity - partial alignment detected"
+    elif gravity >= 0.2:
+        interpretation = "Weak semantic gravity - tangential connection"
+    else:
+        interpretation = "Minimal semantic gravity - text diverges from founding protocol"
+
+    return SemanticGravityResponse(gravity=gravity, interpretation=interpretation)
 
 
 # ============================================================================
