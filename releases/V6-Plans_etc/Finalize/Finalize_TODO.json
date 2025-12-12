@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2026-03-01T12:00:00Z",
+    "updated_at": "2026-03-03T12:00:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -15,6 +15,8 @@
       "window": "2025-11-27 → 2025-12-15",
       "priority_order": [
         "finalize-fit-prompt-bridge",
+        "finalize-v7-package-triage",
+        "finalize-v7-publication-roadmap",
         "finalize-vrig-research",
         "finalize-entkopplung",
         "finalize-loihi-experiment",
@@ -114,6 +116,93 @@
       ],
       "priority": 0,
       "sprint_focus": "FIT-Fluss sichtbar machen & Handoff sichern"
+    },
+    {
+      "id": "finalize-v7-package-triage",
+      "title": "V7-Paket-Triage: MASTER_INDEX + Sigillin-Pläne integrieren",
+      "status": "open",
+      "completeness": "V7_wird noch verlergt Paket gesichtet (Fraktallauf 1); Umsetzung und Mapping in bestehende Finalize-Tracks stehen aus.",
+      "scope": [
+        "planning",
+        "documentation",
+        "release"
+      ],
+      "logistic_profile": {
+        "R_target": "V7-Dokumentenpaket inventarisiert und Finalize-Arbeitsplan synchronisiert",
+        "Theta_condition": "MASTER_INDEX + publication_roadmap_v6_v7 im Finalize_TODO gespiegelt; Folge-Tasks für Sigillin/Release verlinkt",
+        "beta_estimate": 6.1,
+        "zeta_risk": "moderat – neue Module erfordern Folge-Fraktalläufe"
+      },
+      "next_steps": [
+        "MASTER_INDEX.md gegen bestehende Finalize-Tasks mappen (TheRoad*, Pläne.txt, README_meta) und Lücken markieren.",
+        "Neue Sigillin-Artefakte (sigillin_engine.yaml, sigillin_prime.sigil.json, sigillin_loop.md/yml) den Tracks sigillin-selfmeta/tau*-guardrails zuordnen.",
+        "Fraktallauf 2 planen: V7-spezifische Module (consensus_tracer.py, resonance_matrix.json) priorisieren und CREP/τ*-Notizen ergänzen."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/MASTER_INDEX.md",
+          "lines": [
+            1,
+            120
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/README_meta.md",
+          "lines": [
+            1,
+            40
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_engine.yaml",
+          "lines": [
+            1,
+            80
+          ]
+        }
+      ],
+      "priority": 1,
+      "sprint_focus": "V7-Paket verankern und Anschluss-Tasks für Folge-Fraktallauf definieren"
+    },
+    {
+      "id": "finalize-v7-publication-roadmap",
+      "title": "V7 Publikations- und Release-Roadmap operationalisieren",
+      "status": "open",
+      "completeness": "Action Items aus publication_roadmap_v6_v7.md übernommen; Umsetzung/CI-Checks erfordern weiteren Fraktallauf.",
+      "scope": [
+        "release",
+        "documentation",
+        "governance"
+      ],
+      "logistic_profile": {
+        "R_target": "V6/V7 Release-Pipeline mit Preprint- und Preview-Assets verknüpft",
+        "Theta_condition": "Action Items aus publication_roadmap_v6_v7 in Checklisten, Tags und Zenodo-Hooks überführt",
+        "beta_estimate": 5.9,
+        "zeta_risk": "moderat – externe Abhängigkeiten (Zenodo/Ankündigungen) offen"
+      },
+      "next_steps": [
+        "Phase-1 bis Phase-4 Action Items aus publication_roadmap_v6_v7.md in bestehende finalize-zenodo-* und finalize-release Tasks einspeisen.",
+        "PREVIEW_NOTES/DISCLAIMER Templates für v0.7.0-preview als Repo-Artefakte anlegen und Tagging-Plan (v0.6.0, v0.7-preview) festhalten.",
+        "Follow-up Fraktallauf einplanen, um Repro-Guide, Methodology.md und Forum-Ankündigungen mit CI/telemetry-Hooks zu koppeln."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/publication_roadmap_v6_v7.md",
+          "lines": [
+            1,
+            200
+          ]
+        },
+        {
+          "path": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/Pläne.txt",
+          "lines": [
+            1,
+            120
+          ]
+        }
+      ],
+      "priority": 2,
+      "sprint_focus": "Release- und Zenodo-Brücken aus der V7-Roadmap in das Finalize-Board überführen"
     },
     {
       "id": "finalize-vrig-research",

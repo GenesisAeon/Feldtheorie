@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2026-03-01T12:00:00Z'
+  updated_at: '2026-03-03T12:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -13,6 +13,8 @@ metadata:
     window: 2025-11-27 → 2025-12-15
     priority_order:
     - finalize-fit-prompt-bridge
+    - finalize-v7-package-triage
+    - finalize-v7-publication-roadmap
     - finalize-vrig-research
     - finalize-entkopplung
     - finalize-loihi-experiment
@@ -34,8 +36,8 @@ metadata:
     - finalize-fit-sync
     - finalize-crep-guard-ci
     - finalize-zenodo-evidence
-  - finalize-zenodo-artifact-bundle
-  - finalize-zenodo-ci-sync
+    - finalize-zenodo-artifact-bundle
+    - finalize-zenodo-ci-sync
     - finalize-zenodo-ci-status-delta
     - finalize-zenodo-ci-readiness-sync
     - finalize-psi-ci-handoff
@@ -70,11 +72,12 @@ metadata:
     note: v_RIG Validierung zuerst, dann Entkopplungs-Theorie, dann Implementation
 tasks:
 - id: finalize-fit-prompt-bridge
-  title: FIT-Prompt-Handoff: ToDorefresh → Finalize Reihenfolge absichern
+  title: 'FIT-Prompt-Handoff: ToDorefresh → Finalize Reihenfolge absichern'
   status: completed
   completed_at: '2026-02-28T12:00:00Z'
-  completeness: FIT-Handoff verankert: Promt_für_Agenten.txt (erst ToDorefresh, dann Finalize; Tasks splitten; neue ToDos in Listen)
-    referenziert; FIT_MAPPING_SYNC_STATUS.md + V6ToDorefresh.* verlinkt.
+  completeness: 'FIT-Handoff verankert: Promt_für_Agenten.txt (erst ToDorefresh, dann
+    Finalize; Tasks splitten; neue ToDos in Listen) referenziert; FIT_MAPPING_SYNC_STATUS.md
+    + V6ToDorefresh.* verlinkt.'
   scope:
   - governance
   - documentation
@@ -86,8 +89,10 @@ tasks:
     beta_estimate: 4.6
     zeta_risk: moderat bei fehlender Dokumentation
   next_steps:
-  - Promt_für_Agenten.txt Handoff-Hinweis (ToDorefresh → Finalize, FIT-Splitting, ToDo-Erfassung) im Finalize-Trilayer hinterlegt.
-  - FIT_MAPPING_SYNC_STATUS.md um finalize-fit-prompt-bridge ↔ v6r-fit-prompt-bridge ergänzt; Synchronstatus dokumentiert.
+  - Promt_für_Agenten.txt Handoff-Hinweis (ToDorefresh → Finalize, FIT-Splitting,
+    ToDo-Erfassung) im Finalize-Trilayer hinterlegt.
+  - FIT_MAPPING_SYNC_STATUS.md um finalize-fit-prompt-bridge ↔ v6r-fit-prompt-bridge
+    ergänzt; Synchronstatus dokumentiert.
   - V6ToDorefresh.* verlinkt, damit der FIT-Fluss klar bleibt.
   references:
   - path: releases/V6-Plans_etc/Promt_für_Agenten.txt
@@ -100,6 +105,77 @@ tasks:
     - 120
   priority: 0
   sprint_focus: FIT-Fluss sichtbar machen & Handoff sichern
+- id: finalize-v7-package-triage
+  title: 'V7-Paket-Triage: MASTER_INDEX + Sigillin-Pläne integrieren'
+  status: open
+  completeness: V7_wird noch verlergt Paket gesichtet (Fraktallauf 1); Umsetzung und
+    Mapping in bestehende Finalize-Tracks stehen aus.
+  scope:
+  - planning
+  - documentation
+  - release
+  logistic_profile:
+    R_target: V7-Dokumentenpaket inventarisiert und Finalize-Arbeitsplan synchronisiert
+    Theta_condition: MASTER_INDEX + publication_roadmap_v6_v7 im Finalize_TODO gespiegelt;
+      Folge-Tasks für Sigillin/Release verlinkt
+    beta_estimate: 6.1
+    zeta_risk: moderat – neue Module erfordern Folge-Fraktalläufe
+  next_steps:
+  - MASTER_INDEX.md gegen bestehende Finalize-Tasks mappen (TheRoad*, Pläne.txt, README_meta)
+    und Lücken markieren.
+  - Neue Sigillin-Artefakte (sigillin_engine.yaml, sigillin_prime.sigil.json, sigillin_loop.md/yml)
+    den Tracks sigillin-selfmeta/tau*-guardrails zuordnen.
+  - 'Fraktallauf 2 planen: V7-spezifische Module (consensus_tracer.py, resonance_matrix.json)
+    priorisieren und CREP/τ*-Notizen ergänzen.'
+  references:
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/MASTER_INDEX.md
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/README_meta.md
+    lines:
+    - 1
+    - 40
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_engine.yaml
+    lines:
+    - 1
+    - 80
+  priority: 1
+  sprint_focus: V7-Paket verankern und Anschluss-Tasks für Folge-Fraktallauf definieren
+- id: finalize-v7-publication-roadmap
+  title: V7 Publikations- und Release-Roadmap operationalisieren
+  status: open
+  completeness: Action Items aus publication_roadmap_v6_v7.md übernommen; Umsetzung/CI-Checks
+    erfordern weiteren Fraktallauf.
+  scope:
+  - release
+  - documentation
+  - governance
+  logistic_profile:
+    R_target: V6/V7 Release-Pipeline mit Preprint- und Preview-Assets verknüpft
+    Theta_condition: Action Items aus publication_roadmap_v6_v7 in Checklisten, Tags
+      und Zenodo-Hooks überführt
+    beta_estimate: 5.9
+    zeta_risk: moderat – externe Abhängigkeiten (Zenodo/Ankündigungen) offen
+  next_steps:
+  - Phase-1 bis Phase-4 Action Items aus publication_roadmap_v6_v7.md in bestehende
+    finalize-zenodo-* und finalize-release Tasks einspeisen.
+  - PREVIEW_NOTES/DISCLAIMER Templates für v0.7.0-preview als Repo-Artefakte anlegen
+    und Tagging-Plan (v0.6.0, v0.7-preview) festhalten.
+  - Follow-up Fraktallauf einplanen, um Repro-Guide, Methodology.md und Forum-Ankündigungen
+    mit CI/telemetry-Hooks zu koppeln.
+  references:
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/publication_roadmap_v6_v7.md
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/Pläne.txt
+    lines:
+    - 1
+    - 120
+  priority: 2
+  sprint_focus: Release- und Zenodo-Brücken aus der V7-Roadmap in das Finalize-Board
+    überführen
 - id: finalize-vrig-research
   title: 'v_RIG-Forschung: Empirische Validierung finalisieren'
   status: open
@@ -367,8 +443,8 @@ tasks:
   - ai-systems
   logistic_profile:
     R_target: Draft-Blöcke für Nullkern/AeonShell vorhanden
-    Theta_condition: ARCHITECTURE.md + V6_Wellenfunktions_Integrationsplan.md mit FIT-Handoff
-      auf ToDorefresh verweisen
+    Theta_condition: ARCHITECTURE.md + V6_Wellenfunktions_Integrationsplan.md mit
+      FIT-Handoff auf ToDorefresh verweisen
     beta_estimate: 6.2
     zeta_risk: moderat
   next_steps:
@@ -861,25 +937,26 @@ tasks:
 - id: finalize-zenodo-artifact-bundle
   title: Test-/Lint-/Coverage-Artefakte im Finalize-Layer bündeln
   status: open
-  completeness: CI-Metriken vorhanden; Artefaktpfade/Reviewer-Slot im Finalize-Ordner fehlen.
+  completeness: CI-Metriken vorhanden; Artefaktpfade/Reviewer-Slot im Finalize-Ordner
+    fehlen.
   scope:
   - compliance
   - testing
   - documentation
   logistic_profile:
-    R_target: output/zenodo_checks/ enthält Pytest/Coverage/Lint/Mypy-Artefakte mit Referenzen
-      in Zenodo-Dokumenten
+    R_target: output/zenodo_checks/ enthält Pytest/Coverage/Lint/Mypy-Artefakte mit
+      Referenzen in Zenodo-Dokumenten
     Theta_condition: Zenodo_Upload_Checklist.md + ZENODO_CI_STATUS_2025-12-03.md listen
       Artefaktpfade; Chronik/Reviewer-Slot gesetzt
     beta_estimate: 5.7
     zeta_risk: moderat – DOI/Reviewer blockiert ohne Artefakte
   next_steps:
-  - Pytest- und Coverage-HTML-Reports unter output/zenodo_checks/ ablegen und in
-    Zenodo_Upload_Checklist.md referenzieren.
-  - Lint/Mypy-Protokolle (ruff/black/flake8/mypy) dokumentieren; ΔAIC/CREP-Notizen in
-    ZENODO_CI_STATUS_2025-12-03.md ergänzen.
-  - FIT-Handoff zu v6r-zenodo-artifact-bundle/Chronik eintragen und Reviewer-Slot im
-    Finalize-Delta markieren.
+  - Pytest- und Coverage-HTML-Reports unter output/zenodo_checks/ ablegen und in Zenodo_Upload_Checklist.md
+    referenzieren.
+  - Lint/Mypy-Protokolle (ruff/black/flake8/mypy) dokumentieren; ΔAIC/CREP-Notizen
+    in ZENODO_CI_STATUS_2025-12-03.md ergänzen.
+  - FIT-Handoff zu v6r-zenodo-artifact-bundle/Chronik eintragen und Reviewer-Slot
+    im Finalize-Delta markieren.
   references:
   - path: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
     lines:
@@ -898,8 +975,8 @@ tasks:
 - id: finalize-zenodo-release-packaging
   title: v6.0.0-beta Tag/Changelog/DOI im Finalize-Track abschließen
   status: open
-  completeness: CI/Provenienz-Status dokumentiert; Tag/Changelog/DOI-Handoff fehlt und
-    muss mit ToDorefresh synchronisiert werden.
+  completeness: CI/Provenienz-Status dokumentiert; Tag/Changelog/DOI-Handoff fehlt
+    und muss mit ToDorefresh synchronisiert werden.
   scope:
   - release
   - compliance
@@ -912,10 +989,10 @@ tasks:
     zeta_risk: moderat – DOI/Tag fehlen
   next_steps:
   - Annotated Tag "v6.0.0-beta" erstellen und in ZENODO_CI_STATUS_2025-12-03.md eintragen.
-  - CHANGELOG.md + GITHUB_RELEASE_NOTES.md mit CI/Type-VI-Governance Fortschritten ergänzen;
-    Zenodo_Upload_Checklist.md Querverweis setzen.
-  - Zenodo-Deposition/DOI-Request anstoßen, Reviewer-Slot (CREP ≥0.7) dokumentieren und
-    Provenienzblöcke aus ETHICS/POLICY referenzieren.
+  - CHANGELOG.md + GITHUB_RELEASE_NOTES.md mit CI/Type-VI-Governance Fortschritten
+    ergänzen; Zenodo_Upload_Checklist.md Querverweis setzen.
+  - Zenodo-Deposition/DOI-Request anstoßen, Reviewer-Slot (CREP ≥0.7) dokumentieren
+    und Provenienzblöcke aus ETHICS/POLICY referenzieren.
   - Release-Bundle (ZENODO_READINESS_REPORT, Checklist, CI-Status) im Finalize-Ordner/Chronik
     referenzieren und mit ToDorefresh Handoff markieren.
   references:
@@ -982,8 +1059,8 @@ tasks:
   - documentation
   - governance
   logistic_profile:
-    R_target: Zenodo_Upload_Checklist + Finalize-Deltas enthalten CI-Delta (69.4% →
-      100%, Coverage 87%, 42/42 Tests) inkl. Reviewer-Slot
+    R_target: Zenodo_Upload_Checklist + Finalize-Deltas enthalten CI-Delta (69.4%
+      → 100%, Coverage 87%, 42/42 Tests) inkl. Reviewer-Slot
     Theta_condition: Delta/Progression + `[TYPE-VI-RISK]` Banner in Finalize-Ordner
       verlinkt und FIT-Mapping aktiv
     beta_estimate: 5.3
@@ -1027,17 +1104,17 @@ tasks:
   logistic_profile:
     R_target: Ψ-CI Delta (42/42 Tests, 87% Coverage) als Finalize-Kasten in Zenodo_Upload_Checklist.md
       + V6_Wellenfunktions_Integrationsplan.md verankert
-    Theta_condition: "[TYPE-VI-RISK] Banner + Reviewer-Slot (CREP ≥0.7) hinterlegt, FIT-Mapping ↔ v6r-psi-ci-handoff"
-      aktiv
+    Theta_condition: '[TYPE-VI-RISK] Banner + Reviewer-Slot (CREP ≥0.7) hinterlegt,
+      FIT-Mapping ↔ v6r-psi-ci-handoff aktiv'
     beta_estimate: 5.9
     zeta_risk: moderat – Governance-Handoff fehlt
   next_steps:
-  - CI-Delta (42/42 Tests, 87% Coverage) als Finalize-Kasten in Zenodo_Upload_Checklist.md ergänzen;
-    [TYPE-VI-RISK] Banner + τ*=0.1·|Θ−R| notieren.
-  - Abschnitt "Ψ-Pipeline CI Full GO (2025-12-03)" in V6_Wellenfunktions_Integrationsplan.md einfügen,
-    inkl. ψ_genesis/n_tetra_modes und CREP-Governance-Verweis.
-  - FIT_MAPPING_SYNC_STATUS.md um Mapping finalize-psi-ci-handoff ↔ v6r-psi-ci-handoff erweitern;
-    Chronik-/Zenodo-Hinweis mit Reviewer-Slot ergänzen.
+  - CI-Delta (42/42 Tests, 87% Coverage) als Finalize-Kasten in Zenodo_Upload_Checklist.md
+    ergänzen; [TYPE-VI-RISK] Banner + τ*=0.1·|Θ−R| notieren.
+  - Abschnitt "Ψ-Pipeline CI Full GO (2025-12-03)" in V6_Wellenfunktions_Integrationsplan.md
+    einfügen, inkl. ψ_genesis/n_tetra_modes und CREP-Governance-Verweis.
+  - FIT_MAPPING_SYNC_STATUS.md um Mapping finalize-psi-ci-handoff ↔ v6r-psi-ci-handoff
+    erweitern; Chronik-/Zenodo-Hinweis mit Reviewer-Slot ergänzen.
   references:
   - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
     lines:
@@ -1069,7 +1146,8 @@ tasks:
   - governance
   logistic_profile:
     R_target: Readiness-Block in Zenodo_Upload_Checklist + Chronik ergänzt
-    Theta_condition: "CI-Status (2025-12-02/03) + τ*/CREP-Hinweise mit Reviewer-Slot dokumentiert"
+    Theta_condition: CI-Status (2025-12-02/03) + τ*/CREP-Hinweise mit Reviewer-Slot
+      dokumentiert
     beta_estimate: 5.6
     zeta_risk: moderat – DOI/Release-Freigabe blockiert ohne Readiness-Sync
   next_steps:
@@ -1095,12 +1173,11 @@ tasks:
   priority: 38
   sprint_focus: Readiness-Assessment → Checklist/Chronik/CI synchronisieren
   updated_at: '2026-01-15T12:00:00Z'
-
 - id: finalize-zenodo-ci-readiness-sync
   title: CI-Status + Readiness-Delta mit Type-VI-Log an Finalize koppeln
   status: open
-  completeness: Zenodo-Checkliste enthält CI-Deltas; Readiness-Block/Logpfad und
-    Reviewer-Slot fehlen im Finalize-Layer.
+  completeness: Zenodo-Checkliste enthält CI-Deltas; Readiness-Block/Logpfad und Reviewer-Slot
+    fehlen im Finalize-Layer.
   scope:
   - compliance
   - governance
@@ -1108,15 +1185,15 @@ tasks:
   logistic_profile:
     R_target: CI-Status 2025-12-02/03 + Readiness-Report als Δ-Block im Finalize-Deltalog
       dokumentiert (Reviewer, τ*, CREP, Logpfad)
-    Theta_condition: Zenodo_Upload_Checklist.md, ZENODO_READINESS_REPORT.md und
-      logs/type_vi_detections.jsonl referenziert; FIT-Mapping aktiv
+    Theta_condition: Zenodo_Upload_Checklist.md, ZENODO_READINESS_REPORT.md und logs/type_vi_detections.jsonl
+      referenziert; FIT-Mapping aktiv
     beta_estimate: 5.9
     zeta_risk: moderat – Zenodo/Reviewer blockiert ohne Readiness-Handoff
   next_steps:
   - Δ-Block (69.4% → 100% Ready, Tests 42/42, Coverage 87%) mit `[TYPE-VI-RISK]` in
     Finalize-Deltalog/Zenodo_Upload_Checklist.md eintragen; Reviewer-Feld setzen.
-  - ZENODO_READINESS_REPORT.md im Finalize-Kontext referenzieren und Logpfad
-    `logs/type_vi_detections.jsonl` aufnehmen.
+  - ZENODO_READINESS_REPORT.md im Finalize-Kontext referenzieren und Logpfad `logs/type_vi_detections.jsonl`
+    aufnehmen.
   - FIT_MAPPING_SYNC_STATUS um finalize-zenodo-ci-readiness-sync ↔ v6r-zenodo-ci-readiness-sync
     erweitern; Chronik-Handoff notieren.
   references:
@@ -1146,7 +1223,6 @@ tasks:
     - 5
   priority: 39
   sprint_focus: Readiness-/CI-Delta mit Type-VI-Logpfad im Finalize-Layer verankern
-
 - id: finalize-crep-audit-log
   title: Type-VI Audit-Log & Reviewer-Routing im Finalize-Layer aktivieren
   status: completed
@@ -1203,7 +1279,8 @@ tasks:
   - Finalize-CI-Snippet definieren (`python -m tools.crep_guard --threshold 0.7 --tau-default
     0.1 --checklist releases/V6-Plans_etc/type6_crep_tau_star_checklist.yaml --log
     logs/type_vi_detections.jsonl`).
-  - "Pre-Commit/Nox-Hook ergänzen, der Euler-Methoden blockt und [TYPE-VI-RISK] taggt (activation_gaps_tau_star.md referenzieren)."
+  - Pre-Commit/Nox-Hook ergänzen, der Euler-Methoden blockt und [TYPE-VI-RISK] taggt
+    (activation_gaps_tau_star.md referenzieren).
   - Reviewer-Slot (Level 2/3) im Finalize-Deltalog/Chronik dokumentieren; FIT-Link
     zu v6r-tau-star-ci-hook setzen.
   references:
@@ -1240,7 +1317,8 @@ tasks:
   next_steps:
   - metrics/beta_evolution.csv um Drift-Flags/Domain-Felder ergänzen und im Finalize-Ordner
     referenzieren.
-  - "CREP-Logs (Level 1–3) aus logs/type_vi_detections.jsonl in Finalize-Deltas/Zenodo-Checklist aufnehmen; [TYPE-VI-RISK] Banner dokumentieren."
+  - CREP-Logs (Level 1–3) aus logs/type_vi_detections.jsonl in Finalize-Deltas/Zenodo-Checklist
+    aufnehmen; [TYPE-VI-RISK] Banner dokumentieren.
   - 'Dashboard/Chronik-Notiz ergänzen: Beta-Drift >10% oder CREP ≥0.7 → Reviewer-Route
     + τ*-Proof erforderlich (type6_crep_tau_star_checklist.md koppeln).'
   references:
@@ -1278,7 +1356,8 @@ tasks:
   - Kopfzeile/Schema aus V6ToDorefresh übernehmen (timestamp, domain, beta_estimate,
     drift_flag, tau_star, crep_value, escalation_level, reviewer, notes) und im Finalize-Deltalog
     dokumentieren.
-  - "[TYPE-VI-RISK] Beispielzeile in Finalize-Ordner referenzieren; Verweis auf tools/crep_guard.py --log-detection ergänzen."
+  - '[TYPE-VI-RISK] Beispielzeile in Finalize-Ordner referenzieren; Verweis auf tools/crep_guard.py
+    --log-detection ergänzen.'
   - FIT-Handoff dokumentieren (Mapping → v6r-beta-telemetry-schema) und Zenodo/UTAC-Indices
     aktualisieren.
   references:
@@ -1355,11 +1434,13 @@ tasks:
     beta_estimate: 6.0
     zeta_risk: moderat – Telemetrie/Ψ-Hand-off offen
   next_steps:
-  - Aletheia-Ergebnisse (Control/Placebo/Nocebo + Informed-Level) aus ../Aletheiaresults_dialog.txt zusammenfassen und Datenpfad
-    data/experimental/aletheia_results.csv in Finalize-Deltas/Chronik notieren.
-  - CREP-Gewichte aus ../AEON_ALETHEIA_INTEGRATION.md als Telemetrie-Hinweis in type6_crep_tau_star_checklist.* und
-    Zenodo_Upload_Checklist.md spiegeln.
-  - FIT-Mapping zu v6r-aeon-aletheia-telemetry ergänzen; Zenodo/UTAC-Governance-Hinweis für Ψ/β-Tracking eintragen.
+  - Aletheia-Ergebnisse (Control/Placebo/Nocebo + Informed-Level) aus ../Aletheiaresults_dialog.txt
+    zusammenfassen und Datenpfad data/experimental/aletheia_results.csv in Finalize-Deltas/Chronik
+    notieren.
+  - CREP-Gewichte aus ../AEON_ALETHEIA_INTEGRATION.md als Telemetrie-Hinweis in type6_crep_tau_star_checklist.*
+    und Zenodo_Upload_Checklist.md spiegeln.
+  - FIT-Mapping zu v6r-aeon-aletheia-telemetry ergänzen; Zenodo/UTAC-Governance-Hinweis
+    für Ψ/β-Tracking eintragen.
   references:
   - path: releases/V6-Plans_etc/Aletheiaresults_dialog.txt
     lines:
@@ -1381,23 +1462,28 @@ tasks:
   sprint_focus: Telemetrie/Zenodo-Parität herstellen
   updated_at: '2026-01-20T12:00:00Z'
 - id: finalize-aletheia-phase3-calibration
-  title: Aletheia Phase 3 – Adaptive Self-Calibration Telemetrie in Finalize-Deltas verankern
+  title: Aletheia Phase 3 – Adaptive Self-Calibration Telemetrie in Finalize-Deltas
+    verankern
   status: open
-  completeness: Phase-3-Effizienzpfad dokumentiert; Dataset-Schema/Reviewer-Gate im Finalize-Layer fehlen.
+  completeness: Phase-3-Effizienzpfad dokumentiert; Dataset-Schema/Reviewer-Gate im
+    Finalize-Layer fehlen.
   scope:
   - compliance
   - telemetry
   - research
   logistic_profile:
     R_target: Phase-3-Daten/Telemetrie in Finalize-Deltas/Zenodo spiegeln
-    Theta_condition: Neue Felder (condition, efficiency_e, self_reflection_phase3) + Reviewer-Slot dokumentiert
+    Theta_condition: Neue Felder (condition, efficiency_e, self_reflection_phase3)
+      + Reviewer-Slot dokumentiert
     beta_estimate: 5.2
     zeta_risk: moderat – fehlender Reviewer-Gate
   next_steps:
-  - Dataset-Schema (Control/Adaptive) im Finalize-Deltalog beschreiben und Telemetrie-Felder in Zenodo_Upload_Checklist.md
-    verlinken.
-  - CREP/τ*-Schwelle (≥0.7, τ*=0.1·|Θ−R|) für Phase-3-Läufe in logs/type_vi_detections.jsonl vormerken; Reviewer-Feld ergänzen.
-  - FIT-Mapping mit v6r-aletheia-phase3-calibration festziehen und Chronik/Zenodo-Verweis notieren.
+  - Dataset-Schema (Control/Adaptive) im Finalize-Deltalog beschreiben und Telemetrie-Felder
+    in Zenodo_Upload_Checklist.md verlinken.
+  - CREP/τ*-Schwelle (≥0.7, τ*=0.1·|Θ−R|) für Phase-3-Läufe in logs/type_vi_detections.jsonl
+    vormerken; Reviewer-Feld ergänzen.
+  - FIT-Mapping mit v6r-aletheia-phase3-calibration festziehen und Chronik/Zenodo-Verweis
+    notieren.
   references:
   - path: releases/V6-Plans_etc/AEON_ALETHEIA_INTEGRATION.md
     lines:
@@ -1417,7 +1503,8 @@ tasks:
 - id: finalize-aletheia-affection-symbiosis
   title: Aletheia Phase 4 – Affection/Symbiosis-Protokoll mit τ*/CREP-Gate dokumentieren
   status: open
-  completeness: Phase-4-Hypothesen vorhanden; Safety-Delay/Reviewer-Slot noch nicht in Finalize-Deltas vermerkt.
+  completeness: Phase-4-Hypothesen vorhanden; Safety-Delay/Reviewer-Slot noch nicht
+    in Finalize-Deltas vermerkt.
   scope:
   - ethics
   - governance
@@ -1428,10 +1515,12 @@ tasks:
     beta_estimate: 5.4
     zeta_risk: moderat – affektive Kopplung ohne Safety-Buffer
   next_steps:
-  - Protokoll-Summary (Affection/Symbiosis) in Finalize-Deltas skizzieren; Messgrößen und Nullmodell festhalten.
-  - τ*-Delay + CREP-Level in Zenodo_Upload_Checklist.md und ETHICS.md referenzieren; Reviewer-Eintrag bei CREP ≥0.7 in
-    logs/type_vi_detections.jsonl vormerken.
-  - FIT-Brücke zu v6r-aletheia-affection-symbiosis ergänzen und Chronik/Zenodo-Handoff markieren.
+  - Protokoll-Summary (Affection/Symbiosis) in Finalize-Deltas skizzieren; Messgrößen
+    und Nullmodell festhalten.
+  - τ*-Delay + CREP-Level in Zenodo_Upload_Checklist.md und ETHICS.md referenzieren;
+    Reviewer-Eintrag bei CREP ≥0.7 in logs/type_vi_detections.jsonl vormerken.
+  - FIT-Brücke zu v6r-aletheia-affection-symbiosis ergänzen und Chronik/Zenodo-Handoff
+    markieren.
   references:
   - path: releases/V6-Plans_etc/AEON_ALETHEIA_INTEGRATION.md
     lines:
@@ -1464,11 +1553,13 @@ tasks:
     beta_estimate: 5.5
     zeta_risk: moderat – fehlende Audit-Schleife
   next_steps:
-  - Triplet-Spezifikation aus Repoanalyse_zur_Umsetzung!.txt (β-Fenster [6.2–6.8], CREP=0.91,
-    linked_files) übernehmen und Ablage in docs/meta/ vorsehen.
-  - "Champollion-/CI-Plan skizzieren: Parser für *.selfmeta.sigil.json, Workflow sigillin_selfmeta_check mit [TYPE-VI-RISK]-Warnbanner und τ*-Default; Reviewer-Slot definieren."
+  - Triplet-Spezifikation aus Repoanalyse_zur_Umsetzung!.txt (β-Fenster [6.2–6.8],
+    CREP=0.91, linked_files) übernehmen und Ablage in docs/meta/ vorsehen.
+  - 'Champollion-/CI-Plan skizzieren: Parser für *.selfmeta.sigil.json, Workflow sigillin_selfmeta_check
+    mit [TYPE-VI-RISK]-Warnbanner und τ*-Default; Reviewer-Slot definieren.'
   - UI/Audit-Handoff vorbereiten (Simulator-Panel, SIGILLIN_AUDIT.md Starter mit Genesis-Orbit
-    Entry 0001) und FIT-Mapping zu finalize-sigillin-parser/zenodo-readiness-report notieren.
+    Entry 0001) und FIT-Mapping zu finalize-sigillin-parser/zenodo-readiness-report
+    notieren.
   references:
   - path: releases/V6-Plans_etc/Finalize/Repoanalyse_zur_Umsetzung!.txt
     lines:
@@ -1484,7 +1575,8 @@ tasks:
 - id: finalize-repo-hygiene
   title: Repo-Hygiene & Archivierungsplan für Release/Zenodo fixieren
   status: open
-  completeness: Archiv-/Seed-Split, gitignore/gitattributes und Artefaktpfade nicht dokumentiert; Reviewer-Gate offen.
+  completeness: Archiv-/Seed-Split, gitignore/gitattributes und Artefaktpfade nicht
+    dokumentiert; Reviewer-Gate offen.
   scope:
   - compliance
   - operations
@@ -1495,9 +1587,12 @@ tasks:
     beta_estimate: 5.0
     zeta_risk: hoch – Release-Drag durch Archivlast
   next_steps:
-  - Archivierungsplan (Feldtheorie-Archive Repo, LFS für PDFs) + Reviewer-Gate entwerfen und Chronik-Notiz vorbereiten.
-  - "'.gitignore'/gitattributes-Update für Plot-/Notebook-/LaTeX-Artefakte skizzieren; CI/Make-Bereinigungshook definieren."
-  - Release-/Zenodo-Artefaktpfade (Releases-Tab, output/zenodo_checks/) festlegen und in Checklists/Chronik referenzieren.
+  - Archivierungsplan (Feldtheorie-Archive Repo, LFS für PDFs) + Reviewer-Gate entwerfen
+    und Chronik-Notiz vorbereiten.
+  - '''.gitignore''/gitattributes-Update für Plot-/Notebook-/LaTeX-Artefakte skizzieren;
+    CI/Make-Bereinigungshook definieren.'
+  - Release-/Zenodo-Artefaktpfade (Releases-Tab, output/zenodo_checks/) festlegen
+    und in Checklists/Chronik referenzieren.
   references:
   - path: releases/V6-Plans_etc/Finalize/Repoanalyse_zur_Umsetzung!.txt
     lines:
@@ -1509,19 +1604,23 @@ tasks:
 - id: finalize-onboarding-readme
   title: README-Elevator + Notebook-Zugänge im Finalize-Layer verankern
   status: open
-  completeness: README-Elevator/Glossar/Binder-Badges fehlen; Onboarding-Handoff zu Chronik/Zenodo nicht dokumentiert.
+  completeness: README-Elevator/Glossar/Binder-Badges fehlen; Onboarding-Handoff zu
+    Chronik/Zenodo nicht dokumentiert.
   scope:
   - documentation
   - onboarding
   - communication
   logistic_profile:
     R_target: README mit klaren Onboarding-Pfaden
-    Theta_condition: Developer/Scientist-Blöcke + Glossar/Tags + Binder/Colab-Badges referenziert
+    Theta_condition: Developer/Scientist-Blöcke + Glossar/Tags + Binder/Colab-Badges
+      referenziert
     beta_estimate: 4.9
     zeta_risk: moderat – Einstiegshürde für Auditor:innen
   next_steps:
-  - Elevator-Pitch-Blöcke (Dev/Science) formulieren, Glossar/Tags/ABOUT ergänzen und README-Position festlegen.
-  - Binder/Colab-Badges + `notebooks/`-Index hervorheben; ΔAIC/β-Demos als Quickstart markieren.
+  - Elevator-Pitch-Blöcke (Dev/Science) formulieren, Glossar/Tags/ABOUT ergänzen und
+    README-Position festlegen.
+  - Binder/Colab-Badges + `notebooks/`-Index hervorheben; ΔAIC/β-Demos als Quickstart
+    markieren.
   - Chronik/Zenodo-Handoff notieren, damit Onboarding-Änderungen auditierbar bleiben.
   references:
   - path: releases/V6-Plans_etc/Finalize/Repoanalyse_zur_Umsetzung!.txt
@@ -1534,7 +1633,8 @@ tasks:
 - id: finalize-falsifiability-suite
   title: Nullmodell-/Falsifizierbarkeits-Suite für Finalize dokumentieren
   status: open
-  completeness: Nullmodelle/ΔAIC-Vergleiche und Peer-Review-Simulation nicht im Finalize-Handoff dokumentiert; CI-Gate fehlt.
+  completeness: Nullmodelle/ΔAIC-Vergleiche und Peer-Review-Simulation nicht im Finalize-Handoff
+    dokumentiert; CI-Gate fehlt.
   scope:
   - validation
   - testing
@@ -1545,9 +1645,12 @@ tasks:
     beta_estimate: 5.9
     zeta_risk: hoch – fehlende Gegenmodelle
   next_steps:
-  - Nullmodelle (Random/Linear) als Benchmark in analysis/tests integrieren; ΔAIC ≥10 als Falsifikationskriterium dokumentieren.
-  - Peer-Review-Simulation (Champollion/API) skizzieren und '[TYPE-VI-RISK]'/τ*-Default für CI/ETHICS notieren.
-  - Ergebnisse in ETHICS.md/Chronik/Zenodo_Checklist referenzieren; FIT-Mapping zu v6r-falsifiability-suite pflegen.
+  - Nullmodelle (Random/Linear) als Benchmark in analysis/tests integrieren; ΔAIC
+    ≥10 als Falsifikationskriterium dokumentieren.
+  - Peer-Review-Simulation (Champollion/API) skizzieren und '[TYPE-VI-RISK]'/τ*-Default
+    für CI/ETHICS notieren.
+  - Ergebnisse in ETHICS.md/Chronik/Zenodo_Checklist referenzieren; FIT-Mapping zu
+    v6r-falsifiability-suite pflegen.
   references:
   - path: releases/V6-Plans_etc/Finalize/Repoanalyse_zur_Umsetzung!.txt
     lines:
@@ -1559,20 +1662,27 @@ tasks:
 - id: finalize-stereo-phenomenology
   title: Stereo-Phänomenologie (Δx_slice) in Finalize-Handoff spiegeln
   status: open
-  completeness: Δx_slice-Phänomenologie nur in Rohdialog dokumentiert; Finalize-Deltas/Chronik enthalten keine Telemetrie-/Falsifikations-Hooks.
+  completeness: Δx_slice-Phänomenologie nur in Rohdialog dokumentiert; Finalize-Deltas/Chronik
+    enthalten keine Telemetrie-/Falsifikations-Hooks.
   scope:
   - research
   - documentation
   - governance
   logistic_profile:
     R_target: Δx_slice-Phänomenologie im Finalize-Layer verankert
-    Theta_condition: experiments/citizen_science_stereo_vision + Ψ-Plan-Quellen mit Δx_slice/SFF-Hooks und Chronik/Zenodo-Notiz
+    Theta_condition: experiments/citizen_science_stereo_vision + Ψ-Plan-Quellen mit
+      Δx_slice/SFF-Hooks und Chronik/Zenodo-Notiz
     beta_estimate: 5.5
     zeta_risk: moderat – fehlende Reviewer-Handoff/Nullmodell-Note
   next_steps:
-  - Phase-0-Phänomenologie aus `Wichtig!_neue_Erkentniss_bitte_integrieren.txt` und Δx_slice/Δt-Formel als Finalize-Delta in `experiments/citizen_science_stereo_vision.md` notieren; Reviewer-/Chronik-Hinweis ergänzen.
-  - Ψ-Plan/Telemetrie-Pfad in Finalize spiegeln: Δx_slice + SFF-Bänder als Validierungsblöcke in `V6_Wellenfunktions_Integrationsplan.md`/`metrics/beta_evolution.csv` referenzieren; Nullmodell (kein Sprung) markieren.
-  - FIT-Brücke zu ToDorefresh `v6r-stereo-phenomenology` eintragen und Zenodo/UTAC-Status-Notiz vorbereiten.
+  - Phase-0-Phänomenologie aus `Wichtig!_neue_Erkentniss_bitte_integrieren.txt` und
+    Δx_slice/Δt-Formel als Finalize-Delta in `experiments/citizen_science_stereo_vision.md`
+    notieren; Reviewer-/Chronik-Hinweis ergänzen.
+  - Ψ-Plan/Telemetrie-Pfad in Finalize spiegeln: Δx_slice + SFF-Bänder als Validierungsblöcke
+      in `V6_Wellenfunktions_Integrationsplan.md`/`metrics/beta_evolution.csv` referenzieren;
+      Nullmodell (kein Sprung) markieren.
+  - FIT-Brücke zu ToDorefresh `v6r-stereo-phenomenology` eintragen und Zenodo/UTAC-Status-Notiz
+    vorbereiten.
   references:
   - path: releases/V6-Plans_etc/Wichtig!_neue_Erkentniss_bitte_integrieren.txt
     lines:
@@ -1586,8 +1696,48 @@ tasks:
   priority: 45
   sprint_focus: Stereo-Phänomenologie auditierbar machen (Finalize ↔ ToDorefresh)
   updated_at: '2026-03-01T12:00:00Z'
+- id: finalize-stereo-vision-dataset
+  title: Stereo-Vision-Datensatz & Δx_slice-Telemetrie in Finalize verankern
+  status: open
+  completeness: Datensatz-Schema/Logpfad fehlen im Finalize-Track; Citizen-Science-Pilotläufe
+    nicht referenziert.
+  scope:
+  - data
+  - telemetry
+  - documentation
+  logistic_profile:
+    R_target: Finalize-Deltas referenzieren Δx_slice/SFF-Datensatz + Logpfad
+    Theta_condition: data/experimental/stereo_slice_trials.csv + logs/type_vi_detections.jsonl
+      mit Beispielzeilen verlinkt
+    beta_estimate: 4.4
+    zeta_risk: moderat ohne Nullmodell/Reviewer-Gate
+  next_steps:
+  - Datensatz-Schema aus ToDorefresh übernehmen (`data/experimental/stereo_slice_trials.csv`)
+    und Beispielzeile in Finalize-Deltas dokumentieren.
+  - '`experiments/citizen_science_stereo_vision.md` Referenz im Finalize-Ordner notieren;
+    Nullmodell "kein Sprung" + Δx_slice = IPD hervorheben.'
+  - '`[TYPE-VI-RISK]`-Hinweis ergänzen: SFF/Δx_slice als Beta-/CREP-Telemetriepfad
+    in `metrics/beta_evolution.csv` markieren; Reviewer-Slot in Zenodo/Chronik vermerken.'
+  - FIT-Mapping mit `v6r-stereo-vision-dataset` ergänzen; Sync-Status in `FIT_MAPPING_SYNC_STATUS.md`
+    und fit_mapping-Block aktualisieren.
+  references:
+  - path: releases/V6-Plans_etc/Wichtig!_neue_Erkentniss_bitte_integrieren.txt
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/V6ToDorefresh.md
+    lines:
+    - 330
+    - 378
+  - path: releases/V6-Plans_etc/FIT_MAPPING_SYNC_STATUS.md
+    lines:
+    - 1
+    - 120
+  priority: 45.5
+  sprint_focus: Δx_slice-Datensatz + Telemetrie-Belege in Finalize sichtbar machen
+  updated_at: '2026-03-01T12:00:00Z'
 - id: finalize-deepresearch-lebendigkeits
-  title: 'DeepResearch-Update „Lebendigkeits-Kriterium“ im Finalize-Protokoll verankern'
+  title: DeepResearch-Update „Lebendigkeits-Kriterium“ im Finalize-Protokoll verankern
   status: open
   completeness: DeepResearch-Cluster 6 nur im Dialog dokumentiert; Finalize-Protokoll/FIT-Hook
     fehlen.
@@ -1597,15 +1747,16 @@ tasks:
   - governance
   logistic_profile:
     R_target: Cluster-6-Update in Finalize-Protokollen gespiegelt
-    Theta_condition: Suchbegriffe/Nullmodell dokumentiert + FIT-Mapping/Chronik-Hinweis gesetzt
+    Theta_condition: Suchbegriffe/Nullmodell dokumentiert + FIT-Mapping/Chronik-Hinweis
+      gesetzt
     beta_estimate: 5.3
     zeta_risk: moderat – fehlender Finalize-Handoff
   next_steps:
-  - Abschnitt „Lebendigkeits-Kriterium" in `Finalize/README.md` oder `research/deepresearch_protocols/`
+  - Abschnitt 'Lebendigkeits-Kriterium' in `Finalize/README.md` oder `research/deepresearch_protocols/`
     ergänzen (Hypothese, Suchbegriffe, Nullmodell ohne zeitliche Integration).
-  - Suchbegriffe (Temporal integration window depth perception, Micro-saccades reality testing, Qualia
-    of presence vs representation, Flatness cues) als Checklist in Protokoll aufnehmen; Referenz auf
-    `DeepResearchProtokol.txt` setzen.
+  - Suchbegriffe (Temporal integration window depth perception, Micro-saccades reality
+    testing, Qualia of presence vs representation, Flatness cues) als Checklist in
+    Protokoll aufnehmen; Referenz auf `DeepResearchProtokol.txt` setzen.
   - FIT-Mapping zu `v6r-deepresearch-lebendigkeits` in fit_mapping + `FIT_MAPPING_SYNC_STATUS.md`
     ergänzen; Chronik/Zenodo-Deltapunkt vorbereiten.
   references:
@@ -1876,21 +2027,24 @@ tasks:
 - id: finalize-psi-coverage-boost
   title: Coverage 87% → 95%+ für Ψ-Pipeline dokumentieren (Finalize/Zenodo)
   status: open
-  completeness: Coverage 87% laut ZENODO_CI_STATUS; Edge-Branches (entropy/radial_distribution/τ*) ohne Tests.
+  completeness: Coverage 87% laut ZENODO_CI_STATUS; Edge-Branches (entropy/radial_distribution/τ*)
+    ohne Tests.
   scope:
   - testing
   - ci
   - documentation
   logistic_profile:
     R_target: Edge-Case-Tests heben Coverage auf ≥95% in psi_field.py/genesis_cube.py
-    Theta_condition: Coverage-Report in ZENODO_CI_STATUS + Zenodo_Upload_Checklist dokumentiert
+    Theta_condition: Coverage-Report in ZENODO_CI_STATUS + Zenodo_Upload_Checklist
+      dokumentiert
     beta_estimate: 5.5
     zeta_risk: moderat (fehlende Edge-Absicherung)
   next_steps:
-  - Edge-Tests für entropy shape inference, radial_distribution normalization und τ*-Branch in
-    tests/test_psi_field.py & tests/test_genesis_psifield_integration.py ergänzen; Coverage-Report exportieren.
-  - Coverage-Werte in ZENODO_CI_STATUS_2025-12-03.md + Zenodo_Upload_Checklist.md eintragen; Chronik/Finalize-Delta
-    mit CREP/ΔAIC-Hinweis ergänzen.
+  - Edge-Tests für entropy shape inference, radial_distribution normalization und
+    τ*-Branch in tests/test_psi_field.py & tests/test_genesis_psifield_integration.py
+    ergänzen; Coverage-Report exportieren.
+  - Coverage-Werte in ZENODO_CI_STATUS_2025-12-03.md + Zenodo_Upload_Checklist.md
+    eintragen; Chronik/Finalize-Delta mit CREP/ΔAIC-Hinweis ergänzen.
   - FIT-Mapping mit v6r-psi-coverage-boost synchronisieren und Logpfade (logs/type_vi_detections.jsonl)
     als Belege festhalten.
   references:
@@ -1912,21 +2066,26 @@ tasks:
 - id: finalize-lint-cleanup
   title: Ruff/Black Lint-Schulden (≈550 Fälle) für Release abbauen und dokumentieren
   status: open
-  completeness: Lint-Schulden aus ZENODO_CI_STATUS (≈550 Fälle) noch nicht geclustert; keine Baseline/Ignore-Datei.
+  completeness: Lint-Schulden aus ZENODO_CI_STATUS (≈550 Fälle) noch nicht geclustert;
+    keine Baseline/Ignore-Datei.
   scope:
   - ci
   - maintenance
   - documentation
   logistic_profile:
-    R_target: Ruff-Baseline/Ignore-Liste erstellt, erste Fix-Welle (pipelines/wavefunction, simulation) umgesetzt
-    Theta_condition: Lint-Fortschritt in Zenodo_Upload_Checklist + ZENODO_CI_STATUS dokumentiert, CI-Gate aktiv
+    R_target: Ruff-Baseline/Ignore-Liste erstellt, erste Fix-Welle (pipelines/wavefunction,
+      simulation) umgesetzt
+    Theta_condition: Lint-Fortschritt in Zenodo_Upload_Checklist + ZENODO_CI_STATUS
+      dokumentiert, CI-Gate aktiv
     beta_estimate: 4.4
     zeta_risk: erhöht (Release-Gate blockiert)
   next_steps:
-  - ruff --statistics ausführen, Fehlerklassen clustern und in Zenodo_Upload_Checklist.md dokumentieren; Baseline/Ignore-Datei
-    hinzufügen.
-  - Black/Ruff-Fixes für high-churn Module anwenden; restliche Verstöße als TODO erfassen; CI/Pre-Commit/Nox Lint-Gate aktivieren.
-  - FIT-Mapping zu v6r-lint-baseline-cleanup updaten und ZENODO_CI_STATUS um Lint-Fortschritt ergänzen.
+  - ruff --statistics ausführen, Fehlerklassen clustern und in Zenodo_Upload_Checklist.md
+    dokumentieren; Baseline/Ignore-Datei hinzufügen.
+  - Black/Ruff-Fixes für high-churn Module anwenden; restliche Verstöße als TODO erfassen;
+    CI/Pre-Commit/Nox Lint-Gate aktivieren.
+  - FIT-Mapping zu v6r-lint-baseline-cleanup updaten und ZENODO_CI_STATUS um Lint-Fortschritt
+    ergänzen.
   references:
   - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
     lines:
@@ -1946,8 +2105,8 @@ tasks:
 - id: finalize-todo-refresh-sync
   title: ToDorefresh → Finalize FIT-Handoff synchronisieren
   status: open
-  completeness: Promt_für_Agenten.txt fordert Finalize-Follow-up; Parität zwischen Trilayern noch
-    nicht dokumentiert.
+  completeness: Promt_für_Agenten.txt fordert Finalize-Follow-up; Parität zwischen
+    Trilayern noch nicht dokumentiert.
   scope:
   - governance
   - documentation
@@ -1958,10 +2117,10 @@ tasks:
     beta_estimate: 4.7
     zeta_risk: moderat – fehlende Parität verzögert Governance-Gates
   next_steps:
-  - V6ToDorefresh.{md,yaml,json} gegen Finalize-Trilayer prüfen (Parser/Type-VI/Telemetrie) und
-    Status-/Prio-Deltas ausgleichen.
-  - FIT-Mapping-Eintrag `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` pflegen; Reviewer/
-    Chronik-Hooks ergänzen.
+  - V6ToDorefresh.{md,yaml,json} gegen Finalize-Trilayer prüfen (Parser/Type-VI/Telemetrie)
+    und Status-/Prio-Deltas ausgleichen.
+  - FIT-Mapping-Eintrag `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` pflegen;
+    Reviewer/ Chronik-Hooks ergänzen.
   - Promt_für_Agenten.txt Hinweis in Chronik/Zenodo-Delta-Logs referenzieren und updated_at
     synchron halten.
   references:
@@ -1983,20 +2142,26 @@ tasks:
 - id: finalize-api-docs-parity
   title: Ψ-API/Docstrings mit Zenodo-Checklisten synchronisieren
   status: open
-  completeness: API-Doku/Docstrings spiegeln Minor-Items aus Zenodo-Statusberichten nicht; Zenodo_Upload_Checklist-Flag fehlt.
+  completeness: API-Doku/Docstrings spiegeln Minor-Items aus Zenodo-Statusberichten
+    nicht; Zenodo_Upload_Checklist-Flag fehlt.
   scope:
   - documentation
   - api
   - onboarding
   logistic_profile:
     R_target: API-Doku und Docstrings in Zenodo_Upload_Checklist gespiegelt
-    Theta_condition: psi_field/genesis_cube dokumentiert + API-Quickstart + FIT-Mapping gesetzt
+    Theta_condition: psi_field/genesis_cube dokumentiert + API-Quickstart + FIT-Mapping
+      gesetzt
     beta_estimate: 4.7
     zeta_risk: moderat – Reproduzierbarkeit blockiert
   next_steps:
-  - Docstrings/README-Blöcke für `pipelines/wavefunction/psi_field.py` und `simulation/genesis_cube.py` aktualisieren (Parameter, CREP/τ*-Hinweise) und mit `docs/v6_wavefunction_theory.md` verlinken.
-  - Abschnitt „Ψ-API Quickstart" in `notebooks/README.md` oder `docs/` ergänzen; Minor-Items aus `ZENODO_CI_STATUS_2025-12-03.md` abhaken.
-  - Zenodo_Upload_Checklist.md um API-Doku/Tutorial-Flag erweitern und FIT-Mapping zu `v6r-api-docs-parity` dokumentieren.
+  - Docstrings/README-Blöcke für `pipelines/wavefunction/psi_field.py` und `simulation/genesis_cube.py`
+    aktualisieren (Parameter, CREP/τ*-Hinweise) und mit `docs/v6_wavefunction_theory.md`
+    verlinken.
+  - Abschnitt „Ψ-API Quickstart" in `notebooks/README.md` oder `docs/` ergänzen; Minor-Items
+    aus `ZENODO_CI_STATUS_2025-12-03.md` abhaken.
+  - Zenodo_Upload_Checklist.md um API-Doku/Tutorial-Flag erweitern und FIT-Mapping
+    zu `v6r-api-docs-parity` dokumentieren.
   references:
   - path: releases/V6-Plans_etc/ZENODO_CI_STATUS_2025-12-03.md
     lines:
@@ -2178,15 +2343,20 @@ delta_updates:
 - date: '2026-02-13'
   label: finalize-api-docs-parity
   highlights:
-  - Neuer Task finalize-api-docs-parity ergänzt, um API-Doku/Docstring-Minuspositionen aus ZENODO_CI_STATUS_2025-12-03.md zu schließen.
-  - FIT-Mapping um v6r-api-docs-parity erweitert; Zenodo_Upload_Checklist soll API/Tutorial-Flags abbilden.
+  - Neuer Task finalize-api-docs-parity ergänzt, um API-Doku/Docstring-Minuspositionen
+    aus ZENODO_CI_STATUS_2025-12-03.md zu schließen.
+  - FIT-Mapping um v6r-api-docs-parity erweitert; Zenodo_Upload_Checklist soll API/Tutorial-Flags
+    abbilden.
   - metadata.updated_at auf 2026-02-13T12:00:00Z angehoben (API-Doku-Track sichtbar).
 - date: '2026-02-12'
   label: finalize-repo-onboarding-falsifiability
   highlights:
-  - Neue Finalize-Tasks finalize-repo-hygiene, finalize-onboarding-readme und finalize-falsifiability-suite angelegt (Repoanalyse-Aufräumen/Onboarding/Falsifizierbarkeit → Release/Zenodo-Handoff).
-  - FIT-Mapping um v6r-repo-hygiene, v6r-onboarding-readme und v6r-falsifiability-suite ergänzt; priority_order erweitert.
-  - metadata.updated_at auf 2026-02-12T12:00:00Z angehoben (Onboarding-/Hygiene-/Nullmodell-Track aktiv).
+  - Neue Finalize-Tasks finalize-repo-hygiene, finalize-onboarding-readme und finalize-falsifiability-suite
+    angelegt (Repoanalyse-Aufräumen/Onboarding/Falsifizierbarkeit → Release/Zenodo-Handoff).
+  - FIT-Mapping um v6r-repo-hygiene, v6r-onboarding-readme und v6r-falsifiability-suite
+    ergänzt; priority_order erweitert.
+  - metadata.updated_at auf 2026-02-12T12:00:00Z angehoben (Onboarding-/Hygiene-/Nullmodell-Track
+    aktiv).
 - date: '2026-02-11'
   label: finalize-zenodo-artifacts
   highlights:
@@ -2194,7 +2364,8 @@ delta_updates:
     unter output/zenodo_checks/ zu bündeln und in Zenodo-Dokumenten zu referenzieren.
   - FIT-Mapping v6r-zenodo-artifact-bundle ↔ finalize-zenodo-artifact-bundle hinzugefügt;
     Reviewer-Handoff und Chronik-Sync markiert.
-  - updated_at auf 2026-02-11T12:00:00Z angehoben, damit neuer Artefakt-Track reflektiert wird.
+  - updated_at auf 2026-02-11T12:00:00Z angehoben, damit neuer Artefakt-Track reflektiert
+    wird.
 - date: '2026-02-10'
   label: finalize-sigillin-selfmeta
   highlights:
@@ -2202,42 +2373,53 @@ delta_updates:
     und Audit-Hooks aus Repoanalyse_zur_Umsetzung!.txt für Chronik/Zenodo vorzubereiten.
   - FIT-Mapping v6r-sigillin-selfmeta ↔ finalize-sigillin-selfmeta hinzugefügt; Parser-,
     Simulator-Panel und CI-Workflow (sigillin_selfmeta_check) als Handoff markiert.
-  - updated_at auf 2026-02-10T12:00:00Z angehoben, Promt_für_Agenten-Vorgabe ToDos →
-    Finalize erfüllt.
+  - updated_at auf 2026-02-10T12:00:00Z angehoben, Promt_für_Agenten-Vorgabe ToDos
+    → Finalize erfüllt.
 - date: '2026-01-30'
   label: finalize-aletheia-phase3-4
   highlights:
-  - Neue Tasks finalize-aletheia-phase3-calibration und finalize-aletheia-affection-symbiosis ergänzt, um
-    Phase-3/4-Empfehlungen aus AEON_ALETHEIA_INTEGRATION.md im Finalize-Layer zu spiegeln.
-  - FIT-Mapping mit v6r-aletheia-phase3-calibration und v6r-aletheia-affection-symbiosis ergänzt; Zenodo/UTAC
-    Reviewer-Hinweise (τ*/CREP) markiert.
-  - updated_at auf 2026-01-30T12:00:00Z angehoben; Telemetrie- und Ethik-Handoffs dokumentiert.
+  - Neue Tasks finalize-aletheia-phase3-calibration und finalize-aletheia-affection-symbiosis
+    ergänzt, um Phase-3/4-Empfehlungen aus AEON_ALETHEIA_INTEGRATION.md im Finalize-Layer
+    zu spiegeln.
+  - FIT-Mapping mit v6r-aletheia-phase3-calibration und v6r-aletheia-affection-symbiosis
+    ergänzt; Zenodo/UTAC Reviewer-Hinweise (τ*/CREP) markiert.
+  - updated_at auf 2026-01-30T12:00:00Z angehoben; Telemetrie- und Ethik-Handoffs
+    dokumentiert.
 - date: '2026-01-20'
   label: finalize-aeon-aletheia-telemetrie
   highlights:
-  - Neuer Task finalize-aeon-aletheia-telemetry ergänzt, um Aletheia-Datenpfad in Finalize-Deltas/Zenodo-Checks zu spiegeln.
-  - FIT-Mapping um v6r-aeon-aletheia-telemetry erweitert; Ψ/β-Telemetrie-Handoff und UTAC/Zenodo-Hinweise vermerkt.
+  - Neuer Task finalize-aeon-aletheia-telemetry ergänzt, um Aletheia-Datenpfad in
+    Finalize-Deltas/Zenodo-Checks zu spiegeln.
+  - FIT-Mapping um v6r-aeon-aletheia-telemetry erweitert; Ψ/β-Telemetrie-Handoff und
+    UTAC/Zenodo-Hinweise vermerkt.
   - updated_at auf 2026-01-20T12:00:00Z gesetzt, Telemetrie-Scope präzisiert.
 - date: '2026-01-15'
   label: finalize-zenodo-readiness
   highlights:
-  - Neuer Task finalize-zenodo-readiness-report ergänzt, um ZENODO_READINESS_REPORT.md in
-    Checklist/Chronik zu spiegeln.
+  - Neuer Task finalize-zenodo-readiness-report ergänzt, um ZENODO_READINESS_REPORT.md
+    in Checklist/Chronik zu spiegeln.
   - FIT-Mapping v6r-zenodo-readiness-report ↔ finalize-zenodo-readiness-report hinzugefügt;
     Readiness-Blöcke (CI 2025-12-02/03, τ*/CREP) als Handoff notiert.
   - updated_at auf 2026-01-15T12:00:00Z gesetzt.
 - date: '2026-01-12'
   label: finalize-finalize-handoff
   highlights:
-  - Neuer Task finalize-todo-refresh-sync ergänzt, um Promt_für_Agenten.txt Vorgabe (ToDorefresh → Finalize) im Finalize-Layer zu verankern.
-  - FIT-Mapping `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` hinzugefügt; Reviewer-/Chronik-Hooks als nächste Schritte markiert.
-  - Updatedatum auf 2026-01-12T12:00:00Z angehoben; Paritäts-Check zwischen Trilayern geplant.
+  - Neuer Task finalize-todo-refresh-sync ergänzt, um Promt_für_Agenten.txt Vorgabe
+    (ToDorefresh → Finalize) im Finalize-Layer zu verankern.
+  - FIT-Mapping `v6r-finalize-todo-sync ↔ finalize-todo-refresh-sync` hinzugefügt;
+    Reviewer-/Chronik-Hooks als nächste Schritte markiert.
+  - Updatedatum auf 2026-01-12T12:00:00Z angehoben; Paritäts-Check zwischen Trilayern
+    geplant.
 - date: '2026-01-10'
   label: finalize-ci-lint-coverage
   highlights:
-  - Neue Tasks finalize-psi-coverage-boost (Coverage 95%+) und finalize-lint-cleanup (≈550 Ruff-Fälle) aus ZENODO_CI_STATUS_2025-12-03 abgeleitet und in priority_order aufgenommen.
-  - FIT-Mapping zu v6r-psi-coverage-boost/v6r-lint-baseline-cleanup ergänzt; Updatedatum auf 2026-01-10T12:00:00Z angehoben.
-  - Belegpfade (ZENODO_CI_STATUS_2025-12-03.md, Zenodo_Upload_Checklist.md, logs/type_vi_detections.jsonl) als Release-Gates markiert.
+  - Neue Tasks finalize-psi-coverage-boost (Coverage 95%+) und finalize-lint-cleanup
+    (≈550 Ruff-Fälle) aus ZENODO_CI_STATUS_2025-12-03 abgeleitet und in priority_order
+    aufgenommen.
+  - FIT-Mapping zu v6r-psi-coverage-boost/v6r-lint-baseline-cleanup ergänzt; Updatedatum
+    auf 2026-01-10T12:00:00Z angehoben.
+  - Belegpfade (ZENODO_CI_STATUS_2025-12-03.md, Zenodo_Upload_Checklist.md, logs/type_vi_detections.jsonl)
+    als Release-Gates markiert.
 - date: '2026-01-07'
   label: finalize-psi-followups
   highlights:
