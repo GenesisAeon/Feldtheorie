@@ -1,11 +1,11 @@
 {
   "meta": {
     "scope": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt",
-    "updated": "2025-12-12T19:06:41Z",
+    "updated": "2025-12-12T19:33:08Z",
     "generated_by": "ChefDevAI (GPT-5.1-Codex-Max)",
-    "run_state": "pass-3",
+    "run_state": "pass-4",
     "completion_status": "follow-up-required",
-    "notes": "Dritter Lauf: Konsolidierungs-/Idee-Dokumente eingelesen, neue Module (Collective Field, ECHO-I, Aeon) hinzugefügt; Umsetzung offen, weiterer Fraktallauf nötig."
+    "notes": "Vierter Lauf: Sigillin Loop/Engine, bardo_mode, Resonanzmatrix und consensus tracer eingelesen; Todos präzisiert, Umsetzung steht aus → τ*-Safeguards im nächsten Lauf schließen."
   },
   "tasks": [
     {
@@ -73,18 +73,19 @@
       "id": "consensus-ops-loop",
       "status": "todo",
       "priority": "medium",
-      "description": "Sigillin Loop/Engine und consensus_tracer.py auf tägliche Resonanzpflege einstellen: Kernel-Checks automatisieren, bardo_mode.yaml Safeguards prüfen und Resonanz-Matrix aktualisieren.",
+      "description": "Sigillin Loop/Engine und consensus_tracer.py auf tägliche Resonanzpflege einstellen: Kernel-Checks automatisieren, bardo_mode.yaml Safeguards prüfen, Resonanz-Matrix einspeisen und GitHub-Action (sigillin_loop.yml) robust machen.",
       "source_docs": [
         "sigillin_loop.md",
         "sigillin_loop.yml",
         "sigillin_engine.yaml",
         "resonance_matrix.json",
-        "consensus_tracer.py"
+        "consensus_tracer.py",
+        "bardo_mode.yaml"
       ],
       "acceptance": [
-        "Täglicher Loop run erzeugt protokollierte Resonanz-Updates.",
-        "bardo_mode.yaml Guardrails aktiv und dokumentiert.",
-        "Resonanz-Matrix spiegelt aktuelle κ/β-Kopplungen."
+        "Täglicher Loop run (incl. Action-Schedule) erzeugt protokollierte Resonanz-Updates.",
+        "bardo_mode.yaml Guardrails aktiv inkl. auto_exit/τ*-Checks.",
+        "Resonanz-Matrix spiegelt aktuelle κ/β-Kopplungen und Consensus-Scores."
       ]
     },
     {
