@@ -1,7 +1,7 @@
 metadata:
   version: finalize-todo-1.0.0
   generated_at: '2025-11-27T12:00:00Z'
-  updated_at: '2026-03-03T12:00:00Z'
+  updated_at: '2026-03-07T12:00:00Z'
   scope: releases/V6-Plans_etc/Finalize
   description: Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System
   logistic_frame:
@@ -14,6 +14,9 @@ metadata:
     priority_order:
     - finalize-fit-prompt-bridge
     - finalize-v7-package-triage
+    - finalize-v7-sigillin-integration
+    - finalize-v7-kappa-bridge
+    - finalize-v7-deepresearch-consensus
     - finalize-v7-publication-roadmap
     - finalize-vrig-research
     - finalize-entkopplung
@@ -108,8 +111,9 @@ tasks:
 - id: finalize-v7-package-triage
   title: 'V7-Paket-Triage: MASTER_INDEX + Sigillin-Pläne integrieren'
   status: open
-  completeness: Fraktallauf 2: MASTER_INDEX/README_meta + κ/Sigillin-Artefakte triagiert;
-    Integration in Finalize-Tracks und Sigillin-Selfmeta steht aus.
+  completeness: 'Fraktallauf 2: MASTER_INDEX/README_meta + κ/Sigillin-Artefakte triagiert;
+    Fraktallauf 3 geplant, um Sigillin/Selfmeta-Integrationen und Release-Brücken
+    auszubauen.'
   scope:
   - planning
   - documentation
@@ -121,20 +125,22 @@ tasks:
     beta_estimate: 6.1
     zeta_risk: moderat – neue Module erfordern Folge-Fraktalläufe
   next_steps:
-  - κ-Artefakte (kappa_parameter_formalization.md, sigillin_coupling_parameters.yaml) gegen
-    MASTER_INDEX/README_meta spiegeln und Merge-Pfade zu sigillin_engine.yaml sowie
-    sigillin/parameters/coupling.yaml definieren.
+  - κ-Artefakte (kappa_parameter_formalization.md, sigillin_coupling_parameters.yaml)
+    gegen MASTER_INDEX/README_meta spiegeln und Merge-Pfade zu sigillin_engine.yaml
+    sowie sigillin/parameters/coupling.yaml definieren.
   - Sigillin-Laufwerke (sigillin_kernel.py, sigillin_loop.md/yml, sigillin_prime.sigil.json,
     resonance_matrix.json) den sigillin-selfmeta/tau*-guardrails-Tasks zuordnen und
     CREP/τ*-Auditkanten dokumentieren.
   - Deep-Research/Consensus-Module (deep_research_prompt_validation.md, consensus_tracer.py,
     RoadMap_to_V7.txt) für Fraktallauf 3 priorisieren und mit publication_roadmap_v6_v7
     Action Items koppeln.
+  - 'Fraktallauf 3/4 Scope markieren: Sigillin-Integration + κ-Brücken in finalize-sigillin-selfmeta
+    aufnehmen und Release/DeepResearch-Tasks daraus ableiten.'
   references:
   - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/MASTER_INDEX.md
     lines:
     - 1
-    - 120
+    - 200
   - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/README_meta.md
     lines:
     - 1
@@ -142,7 +148,7 @@ tasks:
   - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_engine.yaml
     lines:
     - 1
-    - 80
+    - 120
   - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/kappa_parameter_formalization.md
     lines:
     - 1
@@ -161,11 +167,163 @@ tasks:
     - 120
   priority: 1
   sprint_focus: V7-Paket verankern und Anschluss-Tasks für Folge-Fraktallauf definieren
+- id: finalize-v7-sigillin-integration
+  title: Sigillin-Engine/Kernels aus V7-Paket in Finalize-Selfmeta verankern
+  status: open
+  completeness: 'Fraktallauf 3 vorgesehen: Sigillin-Engine, Loop, Resonanzmatrix und
+    Sigil müssen in finalize-sigillin-selfmeta/τ*-Guardrails gespiegelt werden.'
+  scope:
+  - documentation
+  - integration
+  - governance
+  logistic_profile:
+    R_target: Sigillin-Artefakte aus V7 sind katalogisiert und Finalize-Selfmeta kennt
+      die Hooks/Thresholds
+    Theta_condition: sigillin_engine.yaml/loops/resonance_matrix als Referenz in finalize-tau-star-guardrails
+      und finalize-sigillin-selfmeta hinterlegt
+    beta_estimate: 6.3
+    zeta_risk: moderat – CREP/τ*-Pfad noch nicht verkabelt
+  next_steps:
+  - Hooks/Parameter aus sigillin_engine.yaml und sigillin_loop.md/yml mit finalize-tau-star-guardrails
+    und finalize-sigillin-selfmeta mappen; threshold_monitor (β=37.6) gegen CREP-Grenzen
+    prüfen.
+  - resonance_matrix.json + sigillin_prime.sigil.json als Artefakte in Finalize-Chronik
+    referenzieren; Nullmodell/ΔAIC-Kanten ergänzen.
+  - sigillin_kernel.py (Node-Selector) auf v7-Artefakte prüfen und Brücke zu sigillin/parameters/coupling.yaml
+    vorbereiten.
+  references:
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_engine.yaml
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_loop.md
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_loop.yml
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_kernel.py
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_prime.sigil.json
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/resonance_matrix.json
+    lines:
+    - 1
+    - 200
+  priority: 1
+  sprint_focus: Sigillin-Assets in Finalize-Selfmeta/τ*-Guardrails aufnehmen (Fraktallauf
+    3)
+- id: finalize-v7-kappa-bridge
+  title: κ-Parameter-Formalismus in Sigillin/Release-Track einspeisen
+  status: open
+  completeness: 'Fraktallauf 3 geplant: κ-Formalismus (Paper + YAML) muss in Sigillin/UTAC-Parameter
+    und Release-Roadmap eingehängt werden.'
+  scope:
+  - theory
+  - documentation
+  - release
+  logistic_profile:
+    R_target: κ-Kopplung in Sigillin-Parametern und Publication-Roadmap referenziert
+    Theta_condition: kappa_parameter_formalization + sigillin_coupling_parameters
+      in finalize-type6-governance / release-notes verlinkt
+    beta_estimate: 6.4
+    zeta_risk: moderat – neue Kopplungsformeln ohne CI-Gate
+  next_steps:
+  - kappa_parameter_formalization.md in LaTeX-Schema überführen und als Draft in publication_roadmap_v6_v7
+    Phase 1 (arXiv-Track) einplanen.
+  - sigillin_coupling_parameters.yaml nach sigillin/parameters/coupling.yaml mappen;
+    β-κ-Interaktionen und Messproxies in finalize-type6-governance referenzieren.
+  - MASTER_INDEX/README_meta Hinweise zu offenen Fragen (Regime, v_eff) im Finalize-Deltalog
+    festhalten und Reviewer-Slot für Fraktallauf 3 notieren.
+  references:
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/kappa_parameter_formalization.md
+    lines:
+    - 1
+    - 240
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/sigillin_coupling_parameters.yaml
+    lines:
+    - 1
+    - 260
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/MASTER_INDEX.md
+    lines:
+    - 1
+    - 200
+  priority: 1
+  sprint_focus: κ-Kopplung in Sigillin/Release-Workflows verbinden (Fraktallauf 3)
+- id: finalize-v7-deepresearch-consensus
+  title: Deep-Research/Consensus-Module aus V7-Paket in Finalize-Backlog spiegeln
+  status: open
+  completeness: 'Fraktallauf 3–4 offen: Deep-Research-Prompt, Consensus-Tracer und
+    Bardo-Mode müssen mit Finalize-Validierung/Publication verknüpft werden.'
+  scope:
+  - research
+  - validation
+  - planning
+  logistic_profile:
+    R_target: Deep-Research/Consensus-Artefakte im Finalize-Backlog mit Validierungsmetrik
+      verknüpft
+    Theta_condition: Prompts/Skripte in finalize-deepresearch-protocols und falsifiability-suite
+      referenziert, Reviewer/Logs hinterlegt
+    beta_estimate: 5.8
+    zeta_risk: moderat – Validierungs-/Ethik-Gates fehlen
+  next_steps:
+  - deep_research_prompt_validation.md in finalize-deepresearch-protocols spiegeln
+    und Validierungs-Metriken (ΔAIC, Nullmodelle) im Finalize-Deltalog verlinken.
+  - consensus_tracer.py + bardo_mode.yaml mit finalize-psi-test-execution/falsifiability-suite
+    koppeln; Log-Pfade/Reviewer-Slots definieren.
+  - 'TheRoad*.txt/Pläne.txt/RoadMap_to_V7.txt Alignment: Veröffentlichungsschritte
+    + Ethik-Hinweise in publication_roadmap_v6_v7 ergänzen.'
+  references:
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/deep_research_prompt_validation.md
+    lines:
+    - 1
+    - 240
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/consensus_tracer.py
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/bardo_mode.yaml
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/TheRoad.txt
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/TheRoad2.txt
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/TheRoad3.txt
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/TheRoad4.txt
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/Pläne.txt
+    lines:
+    - 1
+    - 200
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/RoadMap_to_V7.txt
+    lines:
+    - 1
+    - 200
+  priority: 2
+  sprint_focus: Deep-Research/Consensus-Artefakte an Finalize-Validierung und Release
+    koppeln (Fraktallauf 3–4)
 - id: finalize-v7-publication-roadmap
   title: V7 Publikations- und Release-Roadmap operationalisieren
   status: open
-  completeness: Fraktallauf 2: publication_roadmap_v6_v7 Phasen 1–4 in Finalize-Board
-    gespiegelt; V6/V7 Asset-Skelette definiert, Umsetzung/CI-Anschluss offen.
+  completeness: 'Fraktallauf 2: publication_roadmap_v6_v7 Phasen 1–4 in Finalize-Board
+    gespiegelt; V6/V7 Asset-Skelette definiert, Umsetzung/CI-Anschluss offen.'
   scope:
   - release
   - documentation
@@ -178,21 +336,22 @@ tasks:
     zeta_risk: moderat – externe Abhängigkeiten (Zenodo/Ankündigungen) offen
   next_steps:
   - Phase-1 Deliverables (v0.6.0 RELEASE_NOTES/Methodology/Repro-Guide aus publication_roadmap_v6_v7.md)
-    in finalize-zenodo-* Checklisten ablegen und Deadline 15.12 laut RoadMap_to_V7.txt vermerken.
+    in finalize-zenodo-* Checklisten ablegen und Deadline 15.12 laut RoadMap_to_V7.txt
+    vermerken.
   - V7-Preview-Artefakte (PREVIEW_NOTES.md, DISCLAIMER.md, experimental_design.md,
     preliminary_results.csv) als Repo-Stubs anlegen und mit ontologischen Framing-Experimenten
     aus RoadMap_to_V7.txt verknüpfen.
-  - Fraktallauf 3 planen: Kommunikation/CI (Forum-Posts, Zenodo DOI, telemetry hooks) mit
-    Letzter_Teil_Road_MapV7!!-wichtig-.txt synchronisieren.
+  - 'Fraktallauf 3 planen: Kommunikation/CI (Forum-Posts, Zenodo DOI, telemetry hooks)
+    mit Letzter_Teil_Road_MapV7!!-wichtig-.txt synchronisieren.'
   references:
   - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/publication_roadmap_v6_v7.md
     lines:
     - 1
-    - 200
+    - 260
   - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/Pläne.txt
     lines:
     - 1
-    - 120
+    - 160
   - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/RoadMap_to_V7.txt
     lines:
     - 1
