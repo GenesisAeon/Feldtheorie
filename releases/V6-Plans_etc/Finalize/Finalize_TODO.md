@@ -2,7 +2,7 @@
 
 **Version:** finalize-todo-1.0.0
 **Generiert:** 2025-11-27T12:00:00Z
-**Updated:** 2025-12-09T12:00:00Z
+**Updated:** 2026-03-03T12:00:00Z
 **Scope:** releases/V6-Plans_etc/Finalize
 
 ## Logistic Frame
@@ -15,13 +15,15 @@
 ## Sprint Window: 2025-11-27 → 2025-12-15
 
 **Priority Order:**
-1. v_RIG Research Finalization (Validierung)
-2. Entkopplungs-Regime Documentation (Theorie)
-3. Aeon System Architecture (Implementation)
-4. Repository Compliance (Organisation)
-5. Ψ-Wellenfunktions-Pipeline (Integration + Tests)
-6. Zenodo/Compliance (Release-Readiness)
-7. Zenodo Release-Packaging (Tag/DOI)
+1. V7 Paket-Triage (MASTER_INDEX, Sigillin-Kopplung)
+2. V7 Publication Roadmap (V6 Release, V7 Preview)
+3. v_RIG Research Finalization (Validierung)
+4. Entkopplungs-Regime Documentation (Theorie)
+5. Aeon System Architecture (Implementation)
+6. Repository Compliance (Organisation)
+7. Ψ-Wellenfunktions-Pipeline (Integration + Tests)
+8. Zenodo/Compliance (Release-Readiness)
+9. Zenodo Release-Packaging (Tag/DOI)
 
 ---
 
@@ -49,6 +51,57 @@ Promt_für_Agenten.txt Anweisung (zuerst ToDorefresh, dann Finalize) in Finalize
 - `../FIT_MAPPING_SYNC_STATUS.md:1-120`
 
 **Sprint Focus:** FIT-Fluss sichtbar machen & Handoff sichern
+
+---
+
+### [Priority 1] finalize-v7-package-triage
+**V7-Paket-Triage: MASTER_INDEX + Sigillin-Pläne integrieren**
+
+**Status:** 🔴 Open
+
+**Beta:** 6.1 | **Zeta Risk:** Moderat – neue Module erfordern Folge-Fraktalläufe
+
+**Scope:** planning, documentation, release
+
+**R → Θ:**
+V7_wird noch verlergt Paket im Finalize-Arbeitsplan verankert (Fraktallauf 1 = Dokumenten-Triage abgeschlossen) → MASTER_INDEX + publication_roadmap_v6_v7 gespiegelt, Sigillin-Artefakte den passenden Tracks zugeordnet.
+
+**Next Steps:**
+- MASTER_INDEX.md gegen bestehende Finalize-Tasks mappen (TheRoad*, Pläne.txt, README_meta) und Lücken markieren.
+- Neue Sigillin-Artefakte (sigillin_engine.yaml, sigillin_prime.sigil.json, sigillin_loop.md/yml) den Tracks sigillin-selfmeta/tau*-guardrails zuordnen.
+- Fraktallauf 2 planen: V7-spezifische Module (consensus_tracer.py, resonance_matrix.json) priorisieren und CREP/τ*-Notizen ergänzen.
+
+**References:**
+- `V7_wird noch verlergt/MASTER_INDEX.md`
+- `V7_wird noch verlergt/README_meta.md`
+- `V7_wird noch verlergt/sigillin_engine.yaml`
+
+**Sprint Focus:** V7-Paket verankern und Anschluss-Tasks für Folge-Fraktallauf definieren
+
+---
+
+### [Priority 2] finalize-v7-publication-roadmap
+**V7 Publikations- und Release-Roadmap operationalisieren**
+
+**Status:** 🔴 Open
+
+**Beta:** 5.9 | **Zeta Risk:** Moderat – externe Abhängigkeiten (Zenodo/Ankündigungen) offen
+
+**Scope:** release, documentation, governance
+
+**R → Θ:**
+Release-Pipeline für V6 (tag/Zenodo) und V7-Preview (DISCLAIMER/Preview Notes) mit den Action Items aus publication_roadmap_v6_v7.md verknüpft; weiterer Fraktallauf eingeplant für Umsetzung/CI.
+
+**Next Steps:**
+- Phase 1–4 Action Items aus publication_roadmap_v6_v7.md in bestehende finalize-zenodo-* und finalize-release Tasks einspeisen.
+- PREVIEW_NOTES/DISCLAIMER Templates für v0.7.0-preview anlegen und Tagging-Plan (v0.6.0, v0.7-preview) festhalten.
+- Follow-up Fraktallauf einplanen, um Repro-Guide, Methodology.md und Forum-Ankündigungen mit CI/telemetry-Hooks zu koppeln.
+
+**References:**
+- `V7_wird noch verlergt/publication_roadmap_v6_v7.md`
+- `V7_wird noch verlergt/Pläne.txt`
+
+**Sprint Focus:** Release- und Zenodo-Brücken aus der V7-Roadmap in das Finalize-Board überführen
 
 ---
 
