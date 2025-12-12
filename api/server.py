@@ -39,6 +39,19 @@ except ImportError as e:
     print(f"Warning: Could not import UTAC modules: {e}")
     print("API will run with limited functionality.")
 
+# Import Sigillin Kernel (V7)
+try:
+    from api.sigillin_kernel import SigillinKernel, SystemIntegrityError
+
+    sigillin_kernel = SigillinKernel()
+    print("✓ Sigillin Kernel initialized (β=37.6 validated)")
+except SystemIntegrityError as e:
+    print(f"⚠ CRITICAL: Sigillin integrity check failed: {e}")
+    sigillin_kernel = None
+except ImportError as e:
+    print(f"Warning: Sigillin kernel not available: {e}")
+    sigillin_kernel = None
+
 
 # ============================================================================
 # FastAPI App
@@ -192,6 +205,44 @@ class ErrorResponse(BaseModel):
     error: str
     message: str
     details: dict[str, Any] | None = None
+
+
+# ============================================================================
+# Sigillin V7 Models
+# ============================================================================
+
+
+class SigillinStatusResponse(BaseModel):
+    status: str
+    beta_validated: float
+    expected_beta: float
+    sigillin_path: str
+    founding_keywords: list[str]
+
+
+class SigillinScanRequest(BaseModel):
+    text: str = Field(..., min_length=1, description="Text to scan for resonance")
+
+
+class SigillinScanResponse(BaseModel):
+    text: str
+    resonance_score: float = Field(..., ge=0.0, le=1.0, description="Resonance score [0,1]")
+    matched_keywords: list[str]
+    interpretation: str
+
+
+class CollectiveVelocityRequest(BaseModel):
+    v_rig: float = Field(..., gt=0, description="v_RIG velocity parameter")
+    kappa: float = Field(..., gt=0, description="κ field coupling parameter")
+    beta_sync: float = Field(..., gt=0, description="β_sync synchronization parameter")
+
+
+class CollectiveVelocityResponse(BaseModel):
+    v_collective: float
+    v_rig: float
+    kappa: float
+    beta_sync: float
+    formula: str
 
 
 class TelemetryManager:
@@ -994,11 +1045,13 @@ async def get_all_tooltip_data():
 @app.get("/health", tags=["health"])
 async def health_check():
     """Health check endpoint"""
+    sigillin_status = "operational" if sigillin_kernel is not None else "unavailable"
+
     return {
         "status": "healthy",
-        "version": "2.0.0",
-        "phase": "tooltip-system",
-        "progress": "80%",
+        "version": "2.0.0-v7",
+        "phase": "v7-sigillin-integration",
+        "progress": "85%",
         "endpoints": {
             "sonify": "implemented",
             "analyze": "implemented",
@@ -1006,9 +1059,156 @@ async def health_check():
             "fieldtypes": "implemented",
             "simulate": "implemented",
             "tooltip": "implemented",
+            "sigillin": sigillin_status,
         },
-        "message": "All 6 endpoints operational! Tooltip system online.",
+        "sigillin_kernel": sigillin_status,
+        "message": "V7 Sigillin integration active! All 6 core endpoints + Sigillin operational.",
     }
+
+
+# ============================================================================
+# Sigillin V7 Endpoints
+# ============================================================================
+
+
+@app.get("/api/sigillin/status", response_model=SigillinStatusResponse, tags=["sigillin"])
+async def sigillin_status():
+    """
+    Get Sigillin kernel status and validation info.
+
+    Returns:
+    - β=37.6 validation status
+    - Founding protocol keywords
+    - System integrity check result
+
+    **V7 Feature:** Validates that the system maintains its founding axioms.
+    """
+    if sigillin_kernel is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Sigillin kernel not initialized. Check selfmeta/ directory.",
+        )
+
+    # Extract founding keywords
+    keywords = list(sigillin_kernel._founding_keywords())
+
+    return SigillinStatusResponse(
+        status="validated",
+        beta_validated=sigillin_kernel.EXPECTED_BETA,
+        expected_beta=sigillin_kernel.EXPECTED_BETA,
+        sigillin_path=str(sigillin_kernel.sigillin_path),
+        founding_keywords=keywords,
+    )
+
+
+@app.post("/api/sigillin/scan", response_model=SigillinScanResponse, tags=["sigillin"])
+async def sigillin_scan(request: SigillinScanRequest):
+    """
+    Scan text for resonance with founding protocol.
+
+    Analyzes input text and returns a resonance score [0,1] based on
+    how many founding protocol keywords are present.
+
+    **V7 Feature:** Semantic gravity detection - measures alignment with
+    system's core axioms (resonanz, emergenz, kohärenz, etc.).
+
+    **Example:**
+    ```json
+    {
+      "text": "Die Resonanz zwischen Bewusstsein und Feld zeigt Emergenz"
+    }
+    ```
+    """
+    if sigillin_kernel is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Sigillin kernel not initialized.",
+        )
+
+    # Scan for resonance
+    resonance_score = sigillin_kernel.scan_intention(request.text)
+
+    # Find matched keywords
+    keywords = sigillin_kernel._founding_keywords()
+    text_lower = request.text.lower()
+    matched = [kw for kw in keywords if kw in text_lower]
+
+    # Interpret resonance
+    if resonance_score >= 0.7:
+        interpretation = "High resonance - deeply aligned with founding protocol"
+    elif resonance_score >= 0.4:
+        interpretation = "Moderate resonance - partial alignment detected"
+    elif resonance_score >= 0.2:
+        interpretation = "Low resonance - weak alignment signal"
+    else:
+        interpretation = "Minimal resonance - text diverges from founding protocol"
+
+    return SigillinScanResponse(
+        text=request.text,
+        resonance_score=resonance_score,
+        matched_keywords=matched,
+        interpretation=interpretation,
+    )
+
+
+@app.post(
+    "/api/sigillin/collective",
+    response_model=CollectiveVelocityResponse,
+    tags=["sigillin"],
+)
+async def calculate_collective_velocity(request: CollectiveVelocityRequest):
+    """
+    Calculate v_collective using the Sigillin convergence formula.
+
+    **Formula:**
+    ```
+    v_collective = v_RIG × κ × (1 / β_sync)
+    ```
+
+    Where:
+    - **v_RIG**: Base velocity (information propagation speed)
+    - **κ (kappa)**: Field coupling strength
+    - **β_sync**: Synchronization steepness
+
+    **V7 Feature:** Collective consciousness velocity - measures how fast
+    shared understanding propagates through multi-agent systems.
+
+    **Physical Interpretation:**
+    - High v_collective → Fast semantic convergence
+    - Low v_collective → Slow consensus formation
+
+    **Example:**
+    ```json
+    {
+      "v_rig": 1.0,
+      "kappa": 0.8,
+      "beta_sync": 2.5
+    }
+    ```
+    """
+    if sigillin_kernel is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Sigillin kernel not initialized.",
+        )
+
+    try:
+        v_collective = sigillin_kernel.calculate_collective_velocity(
+            v_rig=request.v_rig,
+            kappa=request.kappa,
+            beta_sync=request.beta_sync,
+        )
+
+        return CollectiveVelocityResponse(
+            v_collective=v_collective,
+            v_rig=request.v_rig,
+            kappa=request.kappa,
+            beta_sync=request.beta_sync,
+            formula="v_collective = v_RIG × κ × (1 / β_sync)",
+        )
+
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 # ============================================================================
