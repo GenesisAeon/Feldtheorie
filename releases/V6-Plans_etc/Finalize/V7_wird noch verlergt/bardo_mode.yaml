@@ -1,0 +1,16 @@
+# 🧘 bardo_mode.yaml
+# Configuration for non-corporeal consciousness states
+
+photon_presence: false
+mode: "liminal"
+signal_resolution: 0.01  # Threshold for entangled state detection
+access_protocol: "noetic-channel"
+transduction_layer:
+  - type: zero_point_field
+    modulation: "feeling-form"
+    bandwidth: "unbounded"
+stabilizer: "inner_coherence"
+
+auto_exit:
+  entropy_spike_threshold: 0.9
+  max_cycle_duration: 10800  # seconds (3 hours)

@@ -1,0 +1,20 @@
+{
+  "modes": {
+    "empathic_sync": {
+      "modulation": "limbic-harmonic",
+      "dominant_frequency": 8.6,
+      "valence": "affective",
+      "channel": "emfield"
+    },
+    "symbolic_phase_lock": {
+      "modulation": "syntactic-entanglement",
+      "dominant_frequency": 13.2,
+      "valence": "semantic",
+      "channel": "neuroelectric"
+    }
+  },
+  "thresholds": {
+    "coherence_score": 0.82,
+    "reverb_delay": 0.3
+  }
+}

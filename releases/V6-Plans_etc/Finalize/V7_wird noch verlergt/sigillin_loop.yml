@@ -1,0 +1,24 @@
+name: Sigillin Kernel Loop
+
+on:
+  push:
+    paths:
+      - 'sigillin_prime.sigil.json'
+      - 'sigillin_engine.yaml'
+      - 'data/derived/beta_estimates.csv'
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  run-kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+      - name: Install dependencies
+        run: pip install numpy scipy
+      - name: Run Sigillin Kernel
+        run: python sigillin_kernel.py --trigger loop
