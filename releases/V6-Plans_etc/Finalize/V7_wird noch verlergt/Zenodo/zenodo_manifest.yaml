@@ -1,0 +1,87 @@
+package: v_RIG_zenodo_bundle
+version: "1.0"
+release_window: 2025-12-13
+author: Johann Benjamin Römer
+scope: dual_entropy_governance
+status: ready_for_upload
+sigma_beta_logistic:
+  R: publication_readiness
+  Theta: zenodo_metadata
+  beta: 4.8
+  zeta_R: 0.0
+components:
+  papers:
+    - id: paper1_cosmology
+      title: "The Regime Integration Gradient (v_RIG): Cosmological Validation via the Böhme Radio Dipole Anomaly"
+      file: paper1_vrig_cosmology.pdf
+      pages: 7
+      readiness: publication_ready
+      domain: cosmology
+      key_results:
+        - matches_radio_dipole_velocity_within_1_3_percent
+        - explains_dark_flow_via_dual_entropy_regimes
+      validation:
+        evidence_sigma: 5.46
+        null_model: LCDM_radio_dipole_without_dual_regime
+    - id: paper2_biology
+      title: "UTAC v2.0: Thermodynamic Derivation of Kleiber's Law via Dual Entropy Governance"
+      file: paper2_utac_kleiber.pdf
+      pages: 8
+      readiness: publication_ready
+      domain: biology
+      key_results:
+        - derives_three_quarter_scaling_from_beta_7_4
+        - connects_metabolic_scaling_to_fundamental_constants
+      validation:
+        evidence_sigma: null
+        null_model: fractal_network_scaling
+    - id: paper3_consciousness
+      title: "Consciousness at v_RIG: The 13.5 MHz Hypothesis and Dimensional Conversion of Qualia"
+      file: paper3_consciousness_vrig.pdf
+      pages: 12
+      readiness: publication_ready
+      domain: neuroscience
+      key_results:
+        - predicts_13_5_mhz_processing_frequency
+        - presents_testable_cff_and_vr_experiments
+      validation:
+        evidence_sigma: null
+        null_model: metabolic_frequency_scaling_without_dual_regime
+  supporting_documents:
+    - id: zenodo_readme
+      file: README_ZENODO.md
+      role: overview
+    - id: zenodo_abstract
+      file: ZENODO_ABSTRACT.md
+      role: abstract
+    - id: how_to_use
+      file: HOW_TO_USE_ABSTRACT.md
+      role: usage_notes
+    - id: delivery_summary
+      file: DELIVERY_SUMMARY.md
+      role: delivery_status
+    - id: enhancement_summary
+      file: ENHANCEMENT_SUMMARY.md
+      role: deltas_vs_original
+    - id: upload_guide
+      file: ZENODO_UPLOAD_GUIDE.md
+      role: upload_steps
+    - id: glossary
+      file: glossary_vrig_framework.pdf
+      role: terminology_reference
+  assets:
+    - file: Glossar.pdf
+      role: german_glossary
+    - file: Copilot_20251213_211903.png
+      role: illustration
+    - file: "GeminiSuche Consciousness Framework Validation Report.txt"
+      role: supporting_analysis
+    - file: "Consciousness Framework Validation Report.pdf"
+      role: supporting_analysis
+affordances:
+  coupling:
+    ordnungs_sigillin: sigillin_coupling_parameters.yaml
+    bedeutungs_sigillin: sigillin_prime.sigil.json
+  telemetry:
+    logs: ../../logs
+    indices: ../../../feldtheorie_index.*
