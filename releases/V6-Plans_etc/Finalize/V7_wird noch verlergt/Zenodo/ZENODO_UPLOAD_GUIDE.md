@@ -2,14 +2,17 @@
 
 ## 🚀 READY TO UPLOAD!
 
-You have **4 files** ready for Zenodo:
+You have **7 primary files** ready for Zenodo:
 
 1. **README_ZENODO.md** - Overview and documentation
-2. **paper1_vrig_cosmology.pdf** (213 KB) - Cosmological validation
-3. **paper2_utac_kleiber.pdf** (232 KB) - Biological scaling  
-4. **paper3_consciousness_vrig.pdf** (242 KB) - Consciousness mechanism
+2. **ZENODO_ABSTRACT.md** - Paste-ready description + condensed version
+3. **paper1_vrig_cosmology.pdf** (213 KB) - Cosmological validation (7 pages)
+4. **paper2_utac_kleiber.pdf** (232 KB) - Biological scaling (8 pages)
+5. **paper3_consciousness_vrig.pdf** (267 KB) - Consciousness mechanism (12 pages)
+6. **glossary_vrig_framework.pdf** (226 KB) - Comprehensive terminology guide
+7. **Glossar.pdf** (de) - Kurzfassung des Glossars für deutschsprachige Leser:innen
 
-**Total size:** ~700 KB (well under Zenodo limits)
+**Total size:** ~1.0 MB (well under Zenodo limits)
 
 ---
 
@@ -24,11 +27,18 @@ You have **4 files** ready for Zenodo:
 - Upload type: **Publication** → **Preprint**
 
 ### Step 3: Upload Files
-Drag and drop all 4 files:
+Drag and drop all 7 primary files:
 - README_ZENODO.md
+- ZENODO_ABSTRACT.md
 - paper1_vrig_cosmology.pdf
-- paper2_utac_kleiber.pdf  
+- paper2_utac_kleiber.pdf
 - paper3_consciousness_vrig.pdf
+- glossary_vrig_framework.pdf
+- Glossar.pdf
+
+Optional (nice-to-have attachments for provenance):
+- DELIVERY_SUMMARY.md
+- ENHANCEMENT_SUMMARY.md
 
 ### Step 4: Fill Metadata
 
