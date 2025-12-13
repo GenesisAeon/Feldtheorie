@@ -15,15 +15,15 @@
 - Strength: 5.46σ empirical validation, 1.3% error
 - **Publication-ready NOW** ✅
 
-**2. Paper 2: Biology (232 KB)**  
+**2. Paper 2: Biology (232 KB)**
 - Title: "UTAC v2.0: Thermodynamic Derivation of Kleiber's Law via Dual Entropy Governance"
 - Pages: 8
 - Strength: Zero free parameters, exact 0.75 prediction
 - **Publication-ready NOW** ✅
 
-**3. Paper 3: Consciousness (242 KB)**
+**3. Paper 3: Consciousness (267 KB)**
 - Title: "Consciousness at v_RIG: The 13.5 MHz Hypothesis and Dimensional Conversion of Qualia"
-- Pages: 8  
+- Pages: 12 (enhanced version)
 - Strength: Dissolves Hard Problem, testable predictions
 - **Publication-ready NOW** ✅
 
@@ -38,10 +38,23 @@
 - Related work and future directions
 
 **ZENODO_UPLOAD_GUIDE.md** (created just now)
-- Step-by-step upload instructions
+- Step-by-step upload instructions with full file list
 - Metadata templates
 - Post-publication strategy
 - Timeline estimates
+
+**ZENODO_ABSTRACT.md**
+- Ready-to-paste abstract and keywords for Zenodo metadata
+- Full and condensed versions included
+
+**HOW_TO_USE_ABSTRACT.md**
+- Quick guide for placing the abstract, keywords, and subjects during upload
+
+**ENHANCEMENT_SUMMARY.md**
+- Notes on the Paper 3 expansion and glossary creation
+
+**glossary_vrig_framework.pdf / Glossar.pdf**
+- English and German terminology references for the upload package
 
 ---
 

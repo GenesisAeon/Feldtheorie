@@ -15,6 +15,19 @@ The framework proposes that the universe operates under dual entropy governance:
 
 ---
 
+## Zenodo Upload Checklist (Trilayer Coupled)
+
+- **Papers (3):** `paper1_vrig_cosmology.pdf` (7 pp), `paper2_utac_kleiber.pdf` (8 pp), `paper3_consciousness_vrig.pdf` (12 pp, enhanced)
+- **Glossaries (2):** `glossary_vrig_framework.pdf` (EN), `Glossar.pdf` (DE)
+- **Metadata helpers (3):** `ZENODO_ABSTRACT.md`, `HOW_TO_USE_ABSTRACT.md`, `ZENODO_UPLOAD_GUIDE.md`
+- **Status docs (2):** `DELIVERY_SUMMARY.md`, `ENHANCEMENT_SUMMARY.md`
+- **Manifest (Tri-Layer):** `zenodo_manifest.{md,yaml,json}` keeps σ(β(R-Θ)) aligned across narrative, structure, and interface
+- **Supporting analyses:** `GeminiSuche Consciousness Framework Validation Report.txt`, `Consciousness Framework Validation Report.pdf`, `Copilot_20251213_211903.png`
+
+Use the upload guide plus the abstract helper to mirror metadata in Zenodo; keep the manifest files synchronized when new assets are added.
+
+---
+
 ## Papers Included
 
 ### Paper 1: Cosmological Validation
