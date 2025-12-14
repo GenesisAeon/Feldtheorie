@@ -442,6 +442,83 @@ class CollectiveFieldManager:
 collective_field_manager = CollectiveFieldManager()
 
 
+class GuardrailMonitor:
+    """Guardrail logger for β/κ validation and τ*-delays.
+
+    Each connection gets a lightweight audit entry so we can trace σ(β(R-Θ))
+    transitions, κ-bounds, and whether a τ* delay was enforced for ζ(R) < 0.
+    """
+
+    def __init__(self) -> None:
+        self.log_path = PROJECT_ROOT / "logs" / "api_guardrails.jsonl"
+        self.log_path.parent.mkdir(parents=True, exist_ok=True)
+
+    def record(self, event: str, payload: dict[str, Any]) -> None:
+        entry = {"event": event, "payload": payload}
+        with self.log_path.open("a", encoding="utf-8") as log_file:
+            log_file.write(json.dumps(entry) + "\n")
+
+
+guardrail_monitor = GuardrailMonitor()
+
+BETA_TARGET = 4.8
+KAPPA_BOUNDS = (0.1, 10.0)
+DEFAULT_DELTA_R = 1.0
+
+
+def compute_tau_star(delta_r: float) -> float:
+    """Compute τ* delay for ζ(R) < 0 safety buffers."""
+
+    return 0.1 * abs(delta_r)
+
+
+async def apply_websocket_guardrails(websocket: WebSocket, context: str) -> dict[str, Any]:
+    """Validate Sigillin kernel and enforce τ*-delay if ζ(R) < 0.
+
+    The guardrails echo the UTAC logistic constraints to the client and log
+    the state for later auditing. A small τ* buffer is applied whenever the
+    caller signals negative damping via `zeta` query params.
+    """
+
+    zeta = float(websocket.query_params.get("zeta", "0"))
+    delta_r = float(websocket.query_params.get("delta_r", DEFAULT_DELTA_R))
+    tau_star = compute_tau_star(delta_r) if zeta < 0 else 0.0
+
+    beta_expected = getattr(sigillin_kernel, "EXPECTED_BETA", BETA_TARGET)
+    beta_status = sigillin_kernel is not None and sigillin_kernel.sigillin_data is not None
+
+    guard_payload = {
+        "type": "guardrail",
+        "context": context,
+        "beta_expected": beta_expected,
+        "beta_validated": beta_status,
+        "beta_target": BETA_TARGET,
+        "kappa_bounds": list(KAPPA_BOUNDS),
+        "zeta": zeta,
+        "delta_r": delta_r,
+        "tau_star": tau_star,
+    }
+
+    await websocket.send_json(guard_payload)
+
+    guardrail_monitor.record(
+        "websocket_guardrail",
+        {
+            "context": context,
+            "beta_expected": beta_expected,
+            "beta_validated": beta_status,
+            "zeta": zeta,
+            "delta_r": delta_r,
+            "tau_star": tau_star,
+        },
+    )
+
+    if tau_star > 0:
+        await asyncio.sleep(tau_star)
+
+    return guard_payload
+
+
 # ============================================================================
 # Live Analysis Helpers
 # ============================================================================
@@ -582,6 +659,7 @@ async def telemetry(websocket: WebSocket):
     """WebSocket endpoint for live telemetry (progress + β-estimates)."""
 
     await telemetry_manager.connect(websocket)
+    await apply_websocket_guardrails(websocket, context="telemetry")
 
     try:
         while True:
@@ -1237,6 +1315,11 @@ async def health_check():
             "sigillin_kernel": sigillin_status,
             "collective_field": collective_status,
         },
+        "guardrails": {
+            "beta_target": BETA_TARGET,
+            "kappa_bounds": list(KAPPA_BOUNDS),
+            "tau_star_rule": "tau* = 0.1 * |Theta-R| (applied when zeta<0 via query params)",
+        },
         "message": "V7 Phase 2 (Collective Consciousness) active! Enhanced intention scanning + κ_field coupling operational.",
     }
 
@@ -1636,6 +1719,7 @@ async def monitor_collective_field(websocket: WebSocket, field_id: str):
 
     # Connect monitor
     await collective_field_manager.connect_monitor(field_id, websocket)
+    await apply_websocket_guardrails(websocket, context=f"collective:{field_id}")
 
     # Send initial state
     field_state = field.get_field_state()
