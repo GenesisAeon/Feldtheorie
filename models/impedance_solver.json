@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "name": "impedance_solver",
+    "version": "v8.0.1",
+    "description": "Adaptive Z(β) membrane following σ(β-Θ) logistics",
+    "theta_reference": 7.4,
+    "resonance_velocity_km_s": 1351.7868
+  },
+  "parameters": {
+    "beta_reference": 7.4,
+    "steepness": 0.5,
+    "floor_scale": 0.5,
+    "ceiling_scale": 1.5,
+    "alpha_inv": 137.036,
+    "phi": 1.61803398875,
+    "c_light_km_s": 299792.458
+  },
+  "domains": [
+    {"name": "information", "beta": 4.5, "R": 0.45, "Theta": 7.4, "sigma_beta": "sigma(beta-Theta) < 0.1"},
+    {"name": "biology", "beta": 7.4, "R": 0.74, "Theta": 7.4, "sigma_beta": "sigma(beta-Theta) ≈ 0.5"},
+    {"name": "climate", "beta": 11.0, "R": 1.1, "Theta": 7.4, "sigma_beta": "sigma(beta-Theta) > 0.9"}
+  ],
+  "null_models": {
+    "description": "Linear impedance ramp with identical Θ",
+    "z_null_expression": "Z_null(beta) = Z0 * (1 + 0.05 * (beta - Theta))",
+    "falsifiability_hook": "compare RMSE vs adaptive membrane"
+  }
+}

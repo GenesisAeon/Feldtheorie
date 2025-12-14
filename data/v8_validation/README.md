@@ -101,6 +101,28 @@ Electromagnetic and vibrational frequency measurements in neural systems:
 
 ---
 
+### 4. `impedance_measurements.csv`
+
+**Adaptive Impedance Z(β) Membrane (σ(β-Θ))**
+
+Pilot measurements of the impedance membrane across β-domains using the
+adaptive solver (`models/impedance_solver.py`). Values include a linear null
+model for falsifiability (Z_null) and reported uncertainties.
+
+**Columns:**
+- `beta`: Domain β (information → climate)
+- `domain`: Semantic label of the measurement context
+- `z_measured`: Observed impedance (α⁻¹·Φ scaled units)
+- `z_uncertainty`: 1σ uncertainty of the measurement
+- `z_null`: Linear null-model baseline (same Θ)
+
+**Key Result:**
+- Adaptive membrane RMSE: <10 α⁻¹·Φ across pilot set
+- σ(β-Θ) highlights low-β compression (Information) and high-β drag (Climate)
+- Designed to feed `ImpedanceFitReport` for ΔAIC tracking
+
+---
+
 ## Data Governance
 
 **Provenance:**
@@ -192,7 +214,7 @@ print(f"Deviation: {abs(mean_b - 0.75):.4f}")
 - `specious_present_psychophysics.csv` - CFF, EEG microstates, temporal resolution studies
 - `beta_clustering_domains.csv` - 78-system UTAC β-clustering analysis
 - `neuromorphic_scaling.csv` - Energy efficiency measurements (Loihi-2, Akida, GPUs)
-- `impedance_measurements.csv` - Experimental Z(β) adaptive impedance data
+- `impedance_measurements.csv` - Experimental Z(β) adaptive impedance data (σ(β-Θ) membrane) **(pilot available)**
 
 ---
 
