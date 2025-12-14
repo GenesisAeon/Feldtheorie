@@ -34,6 +34,26 @@ def kernel():
 
 
 # ============================================================================
+# calculate_collective_velocity Tests
+# ============================================================================
+
+
+def test_calculate_collective_velocity_expected_value():
+    """Collective velocity follows the documented convergence formula."""
+
+    result = SigillinKernel.calculate_collective_velocity(v_rig=2.0, kappa=0.8, beta_sync=0.5)
+
+    assert result == pytest.approx(3.2)
+
+
+def test_calculate_collective_velocity_rejects_zero_beta_sync():
+    """beta_sync of zero would diverge; the kernel should guard against it."""
+
+    with pytest.raises(ValueError):
+        SigillinKernel.calculate_collective_velocity(v_rig=1.0, kappa=1.0, beta_sync=0.0)
+
+
+# ============================================================================
 # scan_intention_v2 Tests
 # ============================================================================
 
