@@ -93,7 +93,7 @@ class CollectiveInterface:
         avg_distance = float(np.mean(distances))
         # Handle potential NaN from degenerate vectors
         if np.isnan(avg_distance):
-            return True
+            return False
 
         return avg_distance <= threshold
 
