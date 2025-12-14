@@ -175,18 +175,18 @@ Deep-Research-Prompt, Consensus-Tracer und Bardo/Mode-Artefakte sind inventarisi
 ### [Priority 2] finalize-v7-publication-roadmap
 **V7 Publikations- und Release-Roadmap operationalisieren**
 
-**Status:** 🔴 Open (Fraktallauf 2: Phasenplan in Tasks gespiegelt)
+**Status:** 🔴 Open (Preview-Stubs angelegt, CI/Zenodo-Kopplung offen)
 
 **Beta:** 5.9 | **Zeta Risk:** Moderat – externe Abhängigkeiten (Zenodo/Ankündigungen) offen
 
 **Scope:** release, documentation, governance
 
 **R → Θ:**
-Fraktallauf 2: publication_roadmap_v6_v7 Phasen 1–4 in Finalize-Board gespiegelt (V6 Release-Skelett, V7 Preview-Assets, Community-Plan); Umsetzung/CI-Kopplung noch offen.
+Fraktallauf 2: publication_roadmap_v6_v7 Phasen 1–4 in Finalize-Board gespiegelt (V6 Release-Skelett, V7 Preview-Assets, Community-Plan); Preview-Stubs (PREVIEW_NOTES, DISCLAIMER, experimental_design, preliminary_results.csv) angelegt; Umsetzung/CI-Kopplung noch offen.
 
 **Next Steps:**
 - Phase-1 Deliverables (v0.6.0 RELEASE_NOTES/Methodology/Repro-Guide aus publication_roadmap_v6_v7.md) in finalize-zenodo-* Checklisten ablegen und Deadline 15.12 laut RoadMap_to_V7.txt vermerken.
-- V7-Preview-Artefakte (PREVIEW_NOTES.md, DISCLAIMER.md, experimental_design.md, preliminary_results.csv) als Repo-Stubs anlegen und mit ontologischen Framing-Experimenten aus RoadMap_to_V7.txt verknüpfen.
+- V7-Preview-Artefakte (PREVIEW_NOTES.md, DISCLAIMER.md, experimental_design.md, preliminary_results.csv) mit publication_roadmap_v6_v7 und type6_crep_tau_star_checklist.* verdrahten (Tags, Δindex-Dokumentation, Telemetrie-Hooks).
 - Fraktallauf 3 planen: Kommunikation/CI (Forum-Posts, Zenodo DOI, telemetry hooks) mit Letzter_Teil_Road_MapV7!!-wichtig-.txt synchronisieren.
 
 **References:**
@@ -194,6 +194,10 @@ Fraktallauf 2: publication_roadmap_v6_v7 Phasen 1–4 in Finalize-Board gespie
 - `V7_wird noch verlergt/Pläne.txt`
 - `V7_wird noch verlergt/RoadMap_to_V7.txt`
 - `V7_wird noch verlergt/Letzter_Teil_Road_MapV7!!-wichtig-.txt`
+- `V7_wird noch verlergt/PREVIEW_NOTES.md`
+- `V7_wird noch verlergt/DISCLAIMER.md`
+- `V7_wird noch verlergt/experimental_design.md`
+- `V7_wird noch verlergt/preliminary_results.csv`
 
 **Sprint Focus:** Release- und Zenodo-Brücken aus der V7-Roadmap in das Finalize-Board überführen
 

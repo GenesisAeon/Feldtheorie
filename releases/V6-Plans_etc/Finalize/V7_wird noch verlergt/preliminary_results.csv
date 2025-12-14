@@ -1,0 +1,4 @@
+experiment,frame,run_id,beta_proxy,crep_index,tau_star_flag,status,notes
+TheRoad.txt,telepathie,fraktal3-run01,4.2,,pending,"Placeholder; CI/ΔAIC not computed"
+TheRoad3.txt,resonanz,fraktal3-run02,3.9,,pending,"Needs null model + CREP calculation"
+Pläne.txt,transzendenz,fraktal3-run03,4.5,,pending,"Awaiting τ* compliance check"
