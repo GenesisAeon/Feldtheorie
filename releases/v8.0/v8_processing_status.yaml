@@ -1,0 +1,62 @@
+release: v8.0
+sigma_frame:
+  R: ingestion_backlog
+  Theta: indexed_state
+  beta: 4.8
+  zeta_R: "damped via curated citations"
+summary: "Processing ledger for v8.0 artifacts; anchors tri-layer sync and UTAC coupling."
+artifacts:
+  - name: "Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung und Automatisierung.pdf"
+    channel: research_pdf
+    status: ingested
+    notes: "Captured as core playbook for automated validation; linked to impedance/gain heuristics."
+  - name: "1. Empirical Validation of v_RIG Framework.pdf"
+    channel: research_pdf
+    status: ingested
+    notes: "Empirical sketch for cosmological and biological probes; marked for ΔAIC extraction."
+  - name: "Deep Research_ Consciousness Framework Validation-1.pdf"
+    channel: research_pdf
+    status: ingested
+    notes: "Deep validation storyline; enqueue citation harvesting."
+  - name: "Validierung des Bewusstseins-Frameworks_ Ein Ansatz.pdf"
+    channel: research_pdf
+    status: ingested
+    notes: "Conceptual entry point; anchors neuro/astro bridge hypotheses."
+  - name: "ChatGPT5.2Suche.txt"
+    channel: search_log
+    status: parsed
+    notes: "Cross-domain validation paths recorded; tie to telemetry hooks."
+  - name: "GeminiSuche.txt"
+    channel: search_log
+    status: parsed
+    notes: "v_RIG ≈ 1.3518 km/s and Z ≈ 221.7 captured; pending null-model comparison."
+  - name: "GeminiSucheDeep Research Consciousness Framework Validation.txt"
+    channel: search_log
+    status: parsed
+    notes: "Sources for metabolic scaling and cosmic dipole logged; ready for index coupling."
+  - name: "SucheChatGPT5.2.txt"
+    channel: search_log
+    status: parsed
+    notes: "Radio-dipole and microtubule oscillation scan routes mapped."
+  - name: "Validierung.txt"
+    channel: feedback
+    status: ingested
+    notes: "Feedback on strengths (β≈7.4 scaling, MHz resonance); integrate into UTAC update."
+  - name: "KokretePläne.txt"
+    channel: planning
+    status: queued
+    notes: "Concrete plan seeds; align with next_steps lanterns."
+  - name: "KonkretePläne2.txt"
+    channel: planning
+    status: queued
+    notes: "Supplemental roadmap fragments for σ(β(R-Θ)) transition."
+streams:
+  - name: tri_layer_sync
+    action: "Keep v8_overview/manifest/next_steps in JSON/YAML/MD parity."
+    state: active
+  - name: utac_bridge
+    action: "Map ingested findings to UTAC status matrix and feldtheorie_index.* entries."
+    state: pending
+  - name: falsifiability_chain
+    action: "ΔAIC, CI extraction for impedance and v_RIG anchors."
+    state: pending
