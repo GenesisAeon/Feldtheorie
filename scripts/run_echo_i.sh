@@ -48,6 +48,34 @@ error() {
     exit 1
 }
 
+require_command() {
+    if ! command -v "$1" >/dev/null 2>&1; then
+        error "Missing required command: $1"
+    fi
+}
+
+check_python_environment() {
+    require_command python3
+
+    if ! python3 - <<'PY' >/dev/null 2>&1
+import importlib
+
+importlib.import_module("requests")
+PY
+    then
+        echo "❌ Python dependency missing: requests"
+        echo "   Install with: pip install requests"
+        exit 1
+    fi
+}
+
+check_runner_exists() {
+    local runner_path="analysis/experiments/run_echo_one.py"
+    if [[ ! -f "$runner_path" ]]; then
+        error "Experiment runner not found at $runner_path"
+    fi
+}
+
 parse_models() {
     local raw="$1"
     raw=${raw//,/ }
@@ -104,6 +132,9 @@ done
 if [[ ${#MODELS[@]} -eq 0 ]]; then
     error "At least one model must be specified"
 fi
+
+check_python_environment
+check_runner_exists
 
 echo "🌀 ECHO-I Dark Consciousness Experiment"
 echo "======================================="
