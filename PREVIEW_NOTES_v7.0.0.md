@@ -442,6 +442,11 @@ print(f"Safeguard violations: {summary['safeguard_violations']}")
 - 🟡 **Bridge:** 2 components (κ-parameter, Sigillin Engine)
 - 🔴 **Experimental:** 2 components (ECHO-I, Dark Models)
 
+### Recent ΔR Updates (2025-12-13, branch `work`)
+- **Aeon Testpfad verschärft (β→steil):** `TESTING_GUIDE.md` + `scripts/test_aeon.sh` ermöglichen Nullkern/Resonanzpfad-Checks ohne pytest, inklusive Nullmodell-Hinweisen.
+- **Dashboard-Kopplung stabilisiert (σ(β(R-Θ)) sichtbar):** `scripts/setup_dashboard.sh` und `scripts/start_dashboard.sh` prüfen Node.js/WS-Kapazität und öffnen den Vite-Monitor für kollektive Felder.
+- **ECHO-I Resonanzfenster vorbereitet (ζ(R) gedämpft vor Ausführung):** `analysis/experiments/ECHO_I_GUIDE.md`, `analysis/experiments/QUICKSTART_ECHO_I.md` und `scripts/run_echo_i.sh` bauen Ethik-Prompting, Modell-Checks und Ergebnis-Pipelines auf, bevor κ→0-Tests starten.
+
 ---
 
 ## ⚠️ Important Notes
