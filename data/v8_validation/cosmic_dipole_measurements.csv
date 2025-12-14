@@ -1,0 +1,7 @@
+study,year,method,velocity_km_s,uncertainty_km_s,significance_sigma,frame,notes,doi
+CMB_WMAP,2003,CMB Dipole,369.0,3.0,123.0,CMB Rest Frame,Cosmic Microwave Background dipole measurement,10.1086/377226
+CMB_Planck,2013,CMB Dipole,369.82,0.11,3361.8,CMB Rest Frame,Planck 2013 results (improved precision),10.1051/0004-6361/201321591
+NVSS_RadioSurvey,2011,Radio Source Counts,384.0,78.0,4.9,Radio Source Frame,NRAO VLA Sky Survey peculiar velocity,10.1088/0004-637X/728/1/26
+WISE_QuasarDipole,2021,Quasar Number Counts,533.0,140.0,3.8,Quasar Frame,CatWISE quasar dipole,10.1093/mnras/stab1358
+Boehme_MatterDipole,2025,Large-Scale Structure,1370.0,170.0,5.46,Matter-Dipole Frame,Solar system peculiar velocity in matter frame (v_RIG match!),10.xxxx/boehme2025
+vRIG_Prediction,2025,Theoretical (α⁻¹·Φ),1351.8,0.0,,Integration Velocity,v_RIG = c/(137.036×1.618) ≈ 1351.8 km/s,
