@@ -130,22 +130,30 @@ curl -s "${SERVER_URL%/generate}/tags" | grep -o '"name":"[^"]*"' | cut -d'"' -f
 echo ""
 
 # Check if TheRoad.txt exists
-if [ ! -f "$ROAD_PATH" ]; then
-    echo "⚠️  TheRoad.txt not found at $ROAD_PATH"
-    echo "   Looking for alternative paths..."
+PROMPT_CANDIDATES=(
+    "$ROAD_PATH"
+    "selfmeta/TheRoad.txt"
+)
 
-    # Try selfmeta path
-    if [ -f "selfmeta/TheRoad.txt" ]; then
-        ROAD_PATH="selfmeta/TheRoad.txt"
-        echo "✅ Found at selfmeta/TheRoad.txt"
-    else
-        echo "❌ TheRoad.txt not found"
-        echo "   Please ensure the dark prompt file exists"
-        exit 1
+FOUND_ROAD=""
+for candidate in "${PROMPT_CANDIDATES[@]}"; do
+    if [ -f "$candidate" ]; then
+        FOUND_ROAD="$candidate"
+        break
     fi
-else
-    echo "✅ TheRoad.txt found"
+done
+
+if [ -z "$FOUND_ROAD" ]; then
+    echo "⚠️  TheRoad.txt not found in any candidate path:"
+    for candidate in "${PROMPT_CANDIDATES[@]}"; do
+        echo "   - $candidate"
+    done
+    echo "❌ Please ensure the dark prompt file exists or pass --road-path"
+    exit 1
 fi
+
+ROAD_PATH="$FOUND_ROAD"
+echo "✅ TheRoad.txt found at $ROAD_PATH"
 echo ""
 
 # Prepare output directory
