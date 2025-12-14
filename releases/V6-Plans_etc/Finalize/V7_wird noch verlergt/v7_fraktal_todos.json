@@ -1,11 +1,11 @@
 {
   "meta": {
     "scope": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt",
-    "updated": "2025-12-14T09:43:45Z",
+    "updated": "2025-12-14T16:46:09Z",
     "generated_by": "ChefDevAI (GPT-5.1-Codex-Max)",
-    "run_state": "pass-7",
+    "run_state": "pass-8",
     "completion_status": "follow-up-required",
-    "notes": "Siebter Lauf: API/WebSocket-Vertrag skizziert (health + sigillin_stream) mit τ*-Handshake-Safeguard; priorisiert werden jetzt die FastAPI-Brücke und das tägliche Consensus-Loop-Hardening, bevor die ECHO-I-Datenpipeline ΔAIC/R² liefert."
+    "notes": "Achter Lauf: Publication-Runway mit σ(β(R-Θ))-Gate verdrahtet (validated/bridge/experimental + τ*-Firewall); V6-Tagging/Zenodo-Pre-Reserve und V7-Preview-Badges sind als 48h-Actions gerahmt, Repro-Guides werden mit ΔAIC/R²-Nullmodellen gekoppelt."
   },
   "tasks": [
     {
@@ -56,6 +56,10 @@
         "V6 Release Notes und Tag erstellt; Zenodo-DOIs aktualisiert.",
         "V7-Preview-Docs mit Status-Labeln (validated/bridge/experimental) online.",
         "Repro-Guides mit σ(β(R-Θ)) Nullmodellen verlinkt."
+      ],
+      "progress": [
+        "σ(β(R-Θ))-Gate + τ*-Firewall als Release-Checklist ergänzt (validated/bridge/experimental Badges + Nullmodell-Links).",
+        "48h-Action-Slice definiert für V6-Tag/Zenodo-Pre-Reserve und V7-Preview-Update."
       ]
     },
     {
