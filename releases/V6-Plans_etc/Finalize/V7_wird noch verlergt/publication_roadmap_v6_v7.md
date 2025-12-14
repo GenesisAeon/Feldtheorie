@@ -2,9 +2,20 @@
 
 **Prepared for:** Johann Römer  
 **Date:** December 12, 2025  
-**Status:** Action Plan  
+**Status:** Action Plan
 
 ---
+
+## ⚡ Rapid Synchronization Check (σ(β(R-Θ)) Gate)
+
+- **Control (R):** Publication artifacts for V6 (tag + Zenodo) und V7 (Preview-Docs).  **Θ:** All artifacts tragen die dreistufige Klassifikation (validated/bridge/experimental) und verlinken Nullmodelle (ΔAIC, R²) pro Experiment.
+- **β-Steigung:** 6.8 (hohe Dringlichkeit) — Ziel: einmalige Push-Phase, keine Drift.  **ζ-Puffer:** τ*-Delay für riskante/experimental Claims, bis Shadow-Checks grün sind.
+- **κ-Kopplung:** Verankere κ-Referenzen aus `sigillin_coupling_parameters.*` und `sigillin_engine.yaml` direkt in die Release-Docs, damit arXiv/Zenodo den biologischen Koppelungsindex mitführen.
+- **Action Slice (48h):**
+  1. ✅ V6 Tag + Zenodo-Reservation vorbereiten (DOI-Pre-Reserve + `RELEASE_NOTES_v6.0.0.md` Link im README anpassen).
+  2. ✅ V7 Preview-Note aktualisieren mit valid/bridge/experimental Badges + Referenz auf Selfmeta β=37.6 Guardrails.
+  3. 🔄 Repro-Guides mit σ(β(R-Θ)) Nullmodellen verknüpfen (`scripts/sigillin_sync.py report` als Pflichtschritt; ΔAIC Tabellen anfügen).
+  4. 🔒 Firewall-Hinweis (validated vs speculative) oben in jede Export-Pipeline (PDF/Markdown) spiegeln.
 
 ## PHASE 1: IMMEDIATE RELEASE (This Week)
 
