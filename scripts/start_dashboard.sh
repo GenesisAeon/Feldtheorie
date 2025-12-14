@@ -4,7 +4,17 @@
 #
 # Starts the React dashboard with proper setup checks
 
-set -e
+set -euo pipefail
+
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+PROJECT_ROOT=$(cd "${SCRIPT_DIR}/.." && pwd)
+
+cd "$PROJECT_ROOT"
+if [ ! -f "dashboard/package.json" ]; then
+    echo "❌ Dashboard package.json not found (expected at $PROJECT_ROOT/dashboard/package.json)"
+    echo "   Ensure you are running within the Feldtheorie repository."
+    exit 1
+fi
 
 echo "🌌 Aeon Consciousness Dashboard - Launcher"
 echo "==========================================="
