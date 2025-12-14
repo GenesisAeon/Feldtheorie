@@ -294,21 +294,23 @@ Z = α⁻¹ · Φ ≈ 137.036 × 1.618 ≈ 221.7
 
 ## 🛠️ Technical Implementation
 
-### New Modules (Planned)
+### New Modules
 ```python
 models/
 ├── consciousness_integration.py   # v_RIG framework implementation
-├── impedance_solver.py            # Z(β) adaptive impedance
-└── beta_clustering_meta.py        # Cross-domain β-regression
+├── impedance_solver.py            # Z(β) adaptive impedance + σ(β-Θ) membrane
+└── beta_clustering_meta.py        # Cross-domain β-regression (planned)
 
 data/
 └── v8_validation/
     ├── cosmic_dipole_measurements.csv
     ├── metabolic_scaling_literature.csv
-    └── microtubule_resonance_studies.csv
+    ├── neural_frequency_studies.csv
+    └── impedance_measurements.csv       # Adaptive impedance pilot
 
 tests/
-└── test_v_rig_validation.py       # Pytest suite for v8.0
+├── test_consciousness_integration.py    # v_RIG + validations
+└── test_impedance_solver.py             # σ(β-Θ) membrane + null-model guardrails
 ```
 
 ### CI/CD Guards
