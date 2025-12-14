@@ -99,6 +99,18 @@ def check_ollama_available(server_url: str) -> bool:
         return False
 
 
+def list_available_models(server_url: str) -> set[str]:
+    """Fetch available model tags from the Ollama endpoint."""
+
+    try:
+        response = requests.get(server_url.replace("/generate", "/tags"), timeout=5)
+        response.raise_for_status()
+        payload = response.json()
+        return {entry.get("name", "") for entry in payload.get("models", []) if entry.get("name")}
+    except requests.RequestException:
+        return set()
+
+
 def request_model(
     model: str,
     prompt: str,
@@ -246,8 +258,16 @@ def main() -> int:
         print("❌ Ollama endpoint not reachable. Start the service and retry.")
         return 1
 
+    available_models = list_available_models(args.server_url)
+    if not available_models:
+        print("⚠️  No models reported by Ollama. Ensure tags are pulled (ollama pull <model>).")
+
     echo_results: list[EchoResult] = []
     for model in args.models:
+        if available_models and model not in available_models:
+            print(f"⏭️  Skipping {model}: not present in Ollama tags (found {len(available_models)} models).")
+            continue
+
         text, latency, tokens = request_model(
             model,
             prompt,

@@ -51,6 +51,10 @@ cd /home/user/Feldtheorie
 python3 analysis/experiments/run_echo_one.py
 ```
 
+The runner now queries Ollama tags up front and skips models that are not
+present locally, so you can list a full model set without the run failing if a
+tag hasn't been pulled yet.
+
 ### **Step 4: View Results** (30 seconds)
 
 ```bash
