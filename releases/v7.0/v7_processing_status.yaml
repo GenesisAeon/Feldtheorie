@@ -1,0 +1,37 @@
+metadata:
+  purpose: V7 GitHub Release Readiness
+  sigma_frame:
+    R: preview_assets_ingested
+    Theta: release_ready_with_assets
+    beta: 7.0
+    zeta: medium (Selfmeta/κ Kopplung erfordert Shadow-Mirror)
+artifacts:
+  - id: v7r-preview
+    status: ingested
+    notes: Validated/Bridge/Experimental Klassen dokumentiert
+  - id: v7r-status-report
+    status: ingested
+    notes: 747/747 Tests; API-Bridge Telemetriepfade
+  - id: v7r-collective-field
+    status: production_ready
+    notes: 33/33 Assertions; v_collective Formel verankert
+  - id: v7r-selfmeta
+    status: production_ready
+    notes: β=37.6 Anker aktiv; Guardrails in config/sigillin_engine.yaml
+  - id: v7r-kappa-parameter
+    status: bridge
+    notes: κ-Regime beschrieben; empirische Slots offen
+  - id: v7r-api-bridge
+    status: ready
+    notes: Health + WS Pfade; Guardrail IDs offen
+  - id: v7r-release-notes
+    status: drafted
+    notes: GitHub Text + Snippets brauchen Finale QA
+streams:
+  tri_layer_sync: active
+  github_release: queued
+  telemetry_map: pending
+tri_layer:
+  markdown: releases/v7.0/v7_processing_status.md
+  yaml: releases/v7.0/v7_processing_status.yaml
+  json: releases/v7.0/v7_processing_status.json
