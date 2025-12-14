@@ -1,0 +1,132 @@
+{
+  "metadata": {
+    "version": "v7.0-manifest-0.1.0",
+    "scope": "releases/v7.0",
+    "updated": "2026-01-27T00:00:00Z",
+    "status": "drafted",
+    "logistic_frame": {
+      "R_goal": "V7 Preview-Artefakte (Aeon, Collective Field, Selfmeta, API-Bridge) auf GitHub-releasebare Struktur heben",
+      "Theta_threshold": "Tri-Layer + GitHub Release Assets mit Sigillin/UTAC Verknüpfung und testbarer β=37.6 Ankerung",
+      "beta_drive": 7.0,
+      "zeta_risk": "medium – Selfmeta/Kopplung ist sensibel, Shadow-Mirroring erforderlich"
+    },
+    "coupling": {
+      "ordnungs_sigillin": [
+        "feldtheorie_index.{yaml,json,md}"
+      ],
+      "bedeutungs_sigillin": [
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md"
+      ],
+      "shadow_sigillin": [
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.md"
+      ],
+      "empirics": [
+        "analysis/",
+        "data/",
+        "tests/"
+      ]
+    }
+  },
+  "artifacts": [
+    {
+      "id": "v7r-preview",
+      "path": "PREVIEW_NOTES_v7.0.0.md",
+      "kind": "preview",
+      "focus": "Überblick über kollektives Bewusstsein, Selfmeta und κ-Kopplung",
+      "status": "indexed",
+      "action_items": [
+        "ΔAIC/Nullmodelle aus Preview in Release Notes destillieren",
+        "Links in feldtheorie_index trilayern"
+      ]
+    },
+    {
+      "id": "v7r-status-report",
+      "path": "V7_STATUS_REPORT_2025-12-14.md",
+      "kind": "status-report",
+      "focus": "Teststand (747/747), API-Brücke, β=37.6 Guardrails",
+      "status": "indexed",
+      "action_items": [
+        "GitHub Release-Summary daraus ableiten",
+        "Telemetrie-Hinweise in processing_status spiegeln"
+      ]
+    },
+    {
+      "id": "v7r-aeon-architecture",
+      "path": "aeon/",
+      "kind": "module",
+      "focus": "Nullkern, AeonShell, SemanticAgent, Resonanzpfad (β-κ Monitoring)",
+      "status": "production_ready",
+      "action_items": [
+        "Referenzen für Release Highlights sammeln",
+        "CI Badge/Tests in Release Notes verlinken"
+      ]
+    },
+    {
+      "id": "v7r-collective-field",
+      "path": "models/collective_field.py",
+      "kind": "model",
+      "focus": "Multi-Agent-Resonanz, v_collective = v_RIG * κ_field * (1 / β_sync)",
+      "status": "production_ready",
+      "action_items": [
+        "ΔAIC/CI Slots vorbereiten",
+        "σ(β(R-Θ)) Parameter in overview dokumentieren"
+      ]
+    },
+    {
+      "id": "v7r-selfmeta",
+      "path": "selfmeta/",
+      "kind": "package",
+      "focus": "β=37.6 Anker, Self-referentielle Guardrails (sigillin_selfmeta, founding_protocol)",
+      "status": "production_ready",
+      "action_items": [
+        "Coupling zu config/sigillin_engine.yaml dokumentieren",
+        "Shadow-Sigillin Spiegel prüfen"
+      ]
+    },
+    {
+      "id": "v7r-kappa-parameter",
+      "path": "sigillin/parameters/coupling.*",
+      "kind": "parameter",
+      "focus": "κ Photonic Coupling Regime (six ranges, EM-Kohärenz)",
+      "status": "bridge",
+      "action_items": [
+        "Empirische Referenzen ergänzen",
+        "Δβ/κ Telemetrie in dashboards verbinden"
+      ]
+    },
+    {
+      "id": "v7r-api-bridge",
+      "path": "api/server.py",
+      "kind": "service",
+      "focus": "FastAPI/WS Telemetrie, Collective Field Streams, Sigillin Kernel Hook",
+      "status": "ready",
+      "action_items": [
+        "Health/WS Beispiele in github_release_notes.md aufnehmen",
+        "Guardrail-IDs in processing_status referenzieren"
+      ]
+    },
+    {
+      "id": "v7r-release-notes",
+      "path": "releases/v7.0/github_release_notes.md",
+      "kind": "github-release-notes",
+      "focus": "GitHub-ready Highlights, Install/Run Snippets",
+      "status": "drafted",
+      "action_items": [
+        "Nach Tagging als Asset anhängen",
+        "Tri-Layer auf Manifest/Overview referenzieren"
+      ]
+    }
+  ],
+  "operations": {
+    "tri_layer_status": {
+      "yaml": "present",
+      "json": "present",
+      "md": "present"
+    },
+    "next_steps": [
+      "Release Overview + Processing Status mit GitHub Assets verknüpfen",
+      "GitHub Release-Tag (v7.0.0) vorbereiten und Assets testen",
+      "UTAC/Shadow-Sigillin mit β=37.6 + κ nach Asset-Publikation aktualisieren"
+    ]
+  }
+}
