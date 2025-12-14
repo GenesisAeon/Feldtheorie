@@ -94,6 +94,20 @@ def test_load_all_collects_metadata_and_optional_data(tmp_path) -> None:
     assert loaded["beta"]["data"] is None
 
 
+def test_load_all_requires_dataset_field(tmp_path) -> None:
+    """Incomplete metadata should surface a clear σ(β(R-Θ)) validation error."""
+
+    metadata_dir = tmp_path / "metadata"
+    data_dir = tmp_path / "data"
+    metadata_dir.mkdir()
+    data_dir.mkdir()
+
+    (metadata_dir / "broken.yaml").write_text("title: missing dataset\n")
+
+    with pytest.raises(ValueError, match="missing the required 'dataset' field"):
+        load_all(metadata_dir=str(metadata_dir), data_dir=str(data_dir))
+
+
 def test_calculate_tau_star_requires_positive_beta() -> None:
     """β must be positive to keep the τ* curve physically meaningful."""
 

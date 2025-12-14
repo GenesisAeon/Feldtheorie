@@ -93,15 +93,22 @@ def load_all(metadata_dir: str = METADATA_DIR, data_dir: str = DATA_DIR):
     for file in metadata_path.glob("*.yaml"):
         try:
             meta = load_metadata(file.name, metadata_dir=metadata_dir)
+            dataset_name = meta.get("dataset")
+            if not dataset_name:
+                raise ValueError(
+                    f"Metadata {file.name} is missing the required 'dataset' field"
+                )
             try:
                 data = load_dataset(meta, data_dir=data_dir)
             except FileNotFoundError:
                 data = None
 
-            datasets[meta["dataset"]] = {
+            datasets[dataset_name] = {
                 "metadata": meta,
                 "data": data,
             }
+        except ValueError:
+            raise
         except Exception as e:  # pragma: no cover - defensive logging path
             print(f"Error loading {file.name}: {e}")
 
