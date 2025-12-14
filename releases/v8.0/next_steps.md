@@ -1,6 +1,6 @@
 # V8.0 Next Steps – Trilayer Lanterns
 
-**Updated:** 2025-12-15  
+**Updated:** 2025-12-16
 **Branch:** claude/continue-repo-work-pHmUF  
 **Guiding Principle:** Folge dem Sog der Emergenz
 
@@ -13,10 +13,11 @@
    - Map datasets to protocols with DOI/URL anchors
    - Define falsification checkpoints with ΔAIC targets
 
-2. **Impedance solver Z(β) adaptive dynamics** — R: solver precision, Θ: convergence on β∈[4.5,11], β≈6.0 (resonance: primed)
+2. **Impedance solver Z(β) adaptive dynamics** — R: solver precision, Θ: convergence on β∈[4.5,11], β≈6.0 (resonance: active)
    - Design API in `models/impedance_solver.py` mirroring `calculate_impedance()`
    - Simulate σ(β(R-Θ)) trajectories with adjustable ζ(R)
    - Add falsification harness to `tests/` with null-model comparisons
+   - Status note: Adaptive damping solver and falsification gap implemented
 
 3. **Dashboard integration (live v_RIG monitoring)** — R: telemetry sampling, Θ: stable refresh loop, β≈5.4 (resonance: active)
    - Expose validation outputs as JSON feed for dashboard ingestion
