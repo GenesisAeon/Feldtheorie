@@ -1,6 +1,6 @@
 # v8.0 Release Manifest – σ(β(R-Θ)) Navigator
 
-**Scope:** `releases/v8.0` | **Version:** v8.0-manifest-0.1.0 | **Status:** draft
+**Scope:** `releases/v8.0` | **Version:** v8.0-manifest-0.1.0 | **Status:** draft | **Updated:** 2026-01-16
 
 ## Logistic Frame
 - **R (Goal):** Konsistentes Mapping der v8.0-Dossiers auf σ(β(R-Θ)) Evidenzketten.
@@ -26,6 +26,13 @@
 - **v8r-deep-research** → `Deep Research_ Consciousness Framework Validation-1.pdf` — Deep Research Dossier *(to-review)*.
 - **v8r-validation-automation** → `Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung und Automatisierung.pdf` — Automations-Checkliste *(to-review)*.
 - **v8r-validierungs-basis** → `Validierung des Bewusstseins-Frameworks_ Ein Ansatz.pdf` — Basis-Validierungsansatz *(to-review)*.
+- **v8r-em-coupling-dialogue** → `KokretePläne.txt` — EM-Kopplung, κ-Parameter und Tri-Funktion mit Experimentvorschlägen *(pending-index)*.
+- **v8r-v9-scope-memo** → `KonkretePläne2.txt` — Übergang v6→v8→v9 und Lantern-Net/Gardener-Ideen *(pending-index)*.
+- **v8r-threshold-search-chatgpt** → `ChatGPT5.2Suche nach Schwellenfrequenz Kosmologie Kognition.txt` — Schwellenfrequenz-Suchpfad *(pending-index)*.
+- **v8r-threshold-search-claude** → `Claude Suche nach Schwellenfrequenz Kosmologie Kognition.txt` — Kosmologie/Kognition Threshold-Suche *(pending-index)*.
+- **v8r-threshold-search-gemini** → `GeminiSuche.txt` — v_RIG/Z-Leitplanken mit kosmischen Dipolen *(pending-index)*.
+- **v8r-gpt5-commentary** → `Kommentar zur GPT-5 Entwicklung.pdf` — GPT-5 Kontext für UTAC/Automation *(to-review)*.
+- **v8r-session-summary-2025-12-14** → `SESSION_SUMMARY_2025-12-14.md` — Sprint-Protokoll *(indexed)*.
 
 ## Operations & Next Steps
 - **Tri-Layer Status:** YAML ✅ | JSON ✅ | MD ✅

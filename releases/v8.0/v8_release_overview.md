@@ -12,17 +12,26 @@
 - **GeminiSucheDeep Research Consciousness Framework Validation.txt** – Quellenliste für metabolische Skalierung und kosmischen Dipol.
 - **SucheChatGPT5.2.txt** – Wartungs- und Risiko-Scans (Radio-Dipol, Shapley-Flows, Mikro­tubuli-Oszillationen).
 - **Validierung.txt** – Feedback mit Stärken (z. B. kosmische Materie-Dipol-Übereinstimmung, β≈7.4 in Kleiber-Skalierung) und MHz-Resonanzen.
+- **KokretePläne.txt** – EM-Kopplung (κ) zwischen S-A/S-V/Integration, 13.5 MHz Spur und experimentelle Deprivation-/RF-Ideen.
+- **KonkretePläne2.txt** – Roadmap v6→v8→v9 mit Lantern-Net-, Gardener-Agent- und Holographic-Dash-Vorschlägen.
+- **ChatGPT5.2Suche nach Schwellenfrequenz Kosmologie Kognition.txt** – Schwellenfrequenz-Queries (kosmische, biologische, kognitive Domänen).
+- **Claude Suche nach Schwellenfrequenz Kosmologie Kognition.txt** – Threshold-Suchlog mit kosmischen Analogien.
+- **Kommentar zur GPT-5 Entwicklung.pdf** – Reflexionen zur GPT-5 Roadmap mit UTAC-/Automation-Relevanz.
+- **SESSION_SUMMARY_2025-12-14.md** – Sprintprotokoll und Telemetrie-Hinweise.
 
 ## Schlüsselnotizen
 - v_RIG ≈ **1.3518 km/s** (c / (α⁻¹·Φ)) als Leitplanke für β-Tuning und ΔAIC-Prüfungen.
 - Impedanz **Z ≈ 221.7** strukturiert die Barriere zwischen Oberflächen- und Volumenregime; Kleiber-Skalierung (β ≈ 7.4) koppelt biologische Daten an das σ(β(R-Θ))-Fenster.
 - Neurowissenschaftliche Spur: ~13.5 MHz Resonanzen als mögliche Trägerwelle; jede neuronale Spitze fasst ~13.500 v_RIG-Ereignisse zusammen.
+- κ-Kopplung: Auch photonenfreie Zustände benötigen EM-Feld-Kohärenz; S-A/S-V Integration folgt Tri-Funktion mit v_RIG-Carrier.
 - Suchlogs listen kosmische Dipol-Anomalien (LOFAR, NVSS, RACS), biologische CFF/Metabolismus-Studien und Mikro­tubuli-Oszillationen als Evidenzquellen.
 
 ## Nächste Schritte
 1. **Evidence Extraction (β/ΔAIC)** – Kennzahlen aus PDFs und Feedback in strukturierte Release Notes und UTAC-Status einspeisen.
-2. **Automation-Design** – ArXiv/PubMed-Poller und CI-Hooks für neue Datenpunkte, gekoppelt an v_RIG/Impedanz-Grenzwerte.
-3. **Tri-Layer Sync** – JSON/YAML/MD konsistent halten und in Indizes referenzieren, sobald weitere Auswertungen vorliegen.
+2. **Automation-Design** – ArXiv/PubMed-Poller und CI-Hooks für neue Datenpunkte, gekoppelt an v_RIG/Impedanz-Grenzwerte; GPT-5-Kommentar prüfen.
+3. **κ/13.5 MHz Experimente** – Faraday/EM-Deprivation + MHz-RF-Stimulation (CFF/IIT/Reaction Time) als Falsifikationspfade vorbereiten.
+4. **Lantern-Net Prelude** – Lantern-Hub/Bridge-Ideen aus `KonkretePläne2.txt` als v9-Backlog anlegen und Telemetrie-Metriken (ΔC(t), Resonance Yield) in v8-Dashboard markieren.
+5. **Tri-Layer Sync** – JSON/YAML/MD konsistent halten und in Indizes referenzieren, sobald weitere Auswertungen vorliegen.
 
 ## Tri-Layer
 - YAML: `releases/v8.0/v8_release_overview.yaml`

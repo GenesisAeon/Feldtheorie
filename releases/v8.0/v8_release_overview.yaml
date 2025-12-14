@@ -1,5 +1,5 @@
 version: "v8.0"
-last_updated: "2025-12-14T21:16:15+00:00"
+last_updated: "2026-01-16T00:00:00+00:00"
 sigma_beta_transition: "σ(β(R-Θ)) gates the shift from raw search traces (R) to the intended validation corpus (Θ) with β tuned by v_RIG ≈ 1.3518 km/s and adaptive impedance Z ≈ 221.7."
 artifacts:
   - id: v8-validierung-plan
@@ -38,6 +38,42 @@ artifacts:
     focus: "UTAC/v_RIG hypothesis derivations and cosmic/biological convergence"
     status: ingested
     notes: "Highlights v_RIG ≈ 1.3518 km/s, impedance Z, and planned validation steps."
+  - id: v8-search-threshold-chatgpt
+    filename: "ChatGPT5.2Suche nach Schwellenfrequenz Kosmologie Kognition.txt"
+    type: search_log
+    focus: "Threshold-frequency prompts across cosmology, biology, and cognition"
+    status: pending_review
+    notes: "Collects open questions and blindspots for v_RIG; needs consolidation into feldtheorie_index."
+  - id: v8-search-threshold-claude
+    filename: "Claude Suche nach Schwellenfrequenz Kosmologie Kognition.txt"
+    type: search_log
+    focus: "Claude trace on threshold frequencies and cosmic analogies"
+    status: pending_review
+    notes: "Map hypotheses to σ(β(R-Θ)) null models and LOFAR/NVSS evidence."
+  - id: v8-em-coupling-dialogue
+    filename: "KokretePläne.txt"
+    type: dialogue
+    focus: "κ/EM coupling of S-A/S-V/Integration with 13.5 MHz carrier and experiment sketches"
+    status: pending_review
+    notes: "Extract Faraday-cage + RF stimulation protocols (CFF/IIT/RT) and impedance hooks."
+  - id: v8-v9-scope-memo
+    filename: "KonkretePläne2.txt"
+    type: roadmap
+    focus: "v6→v8→v9 lineage with Lantern-Net, Gardener agents, holographic dash"
+    status: pending_review
+    notes: "Seed Lantern-Hub/Bridge backlog and ΔC(t)/Resonance-Yield telemetry metrics."
+  - id: v8-gpt5-commentary
+    filename: "Kommentar zur GPT-5 Entwicklung.pdf"
+    type: pdf
+    focus: "Commentary on GPT-5 development relevant for UTAC automation"
+    status: pending_review
+    notes: "Extract governance/automation implications and cross-link to ETHICS/POLICY."
+  - id: v8-session-summary-2025-12-14
+    filename: "SESSION_SUMMARY_2025-12-14.md"
+    type: session_summary
+    focus: "Sprint checkpoint with telemetry reminders"
+    status: ingested
+    notes: "Mirror telemetry hooks into next_steps and indices."
   - id: v8-search-gemini-deep
     filename: "GeminiSucheDeep Research Consciousness Framework Validation.txt"
     type: research_brief
