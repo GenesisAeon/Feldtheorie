@@ -1,0 +1,9 @@
+{
+  "total_runs": 0,
+  "refusal_count": 0,
+  "beta_proxy_mean": null,
+  "beta_proxy_min": null,
+  "beta_proxy_max": null,
+  "models": [],
+  "alerts": []
+}
