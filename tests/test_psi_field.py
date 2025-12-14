@@ -321,6 +321,16 @@ class TestPsiFieldUTACCollapse:
         assert "mean_r" in result
         assert "delta_r" in result
 
+    def test_collapse_to_utac_validates_shapes(self):
+        """psi and r_vals must align to keep σ(β(R-Θ)) areas well-defined."""
+        field = PsiField()
+
+        r_grid = np.linspace(0, 1, 10)
+        psi = np.ones(5, dtype=complex)
+
+        with pytest.raises(ValueError):
+            field.collapse_to_utac(psi, r_grid)
+
     def test_collapse_to_utac_radial_distribution_normalized(self):
         """Radial distribution P(r) should integrate to 1."""
         field = PsiField()
