@@ -1,0 +1,72 @@
+version: "v8.0"
+last_updated: "2025-12-14T21:16:15+00:00"
+sigma_beta_transition: "σ(β(R-Θ)) gates the shift from raw search traces (R) to the intended validation corpus (Θ) with β tuned by v_RIG ≈ 1.3518 km/s and adaptive impedance Z ≈ 221.7."
+artifacts:
+  - id: v8-validierung-plan
+    filename: "Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung und Automatisierung.pdf"
+    type: pdf
+    focus: "Validation playbook for v_RIG and automated verification routines"
+    status: pending_review
+    notes: "Anchor PDF for the release; align ΔAIC/null models once parsed."
+  - id: v8-empirical-brief
+    filename: "1. Empirical Validation of v_RIG Framework.pdf"
+    type: pdf
+    focus: "Empirical validation outline for UTAC/v_RIG"
+    status: pending_review
+    notes: "Cross-check cosmic dipole evidence vs. σ(β(R-Θ)) forecasts."
+  - id: v8-deep-research
+    filename: "Deep Research_ Consciousness Framework Validation-1.pdf"
+    type: pdf
+    focus: "Deep research narrative on consciousness framework validation"
+    status: pending_review
+    notes: "Extract testable claims and map to β regimes."
+  - id: v8-ansatz
+    filename: "Validierung des Bewusstseins-Frameworks_ Ein Ansatz.pdf"
+    type: pdf
+    focus: "Conceptual entry point for the consciousness framework"
+    status: pending_review
+    notes: "Identify prerequisites for automated checks."
+  - id: v8-search-chatgpt
+    filename: "ChatGPT5.2Suche.txt"
+    type: search_log
+    focus: "Search trace for cross-domain validation and repository lookup"
+    status: ingested
+    notes: "Lists repository paths and initial validation questions for v_RIG/UTAC artifacts."
+  - id: v8-search-gemini
+    filename: "GeminiSuche.txt"
+    type: research_brief
+    focus: "UTAC/v_RIG hypothesis derivations and cosmic/biological convergence"
+    status: ingested
+    notes: "Highlights v_RIG ≈ 1.3518 km/s, impedance Z, and planned validation steps."
+  - id: v8-search-gemini-deep
+    filename: "GeminiSucheDeep Research Consciousness Framework Validation.txt"
+    type: research_brief
+    focus: "Deep research log on the integrative UTAC constant"
+    status: ingested
+    notes: "Collects sources for metabolic scaling and cosmic dipole cross-checks."
+  - id: v8-search-chatgpt-maintenance
+    filename: "SucheChatGPT5.2.txt"
+    type: search_log
+    focus: "Maintenance and risk sweeps for UTAC v7 validation"
+    status: ingested
+    notes: "Captures checks on radio dipole anisotropy, Shapley attractor flows, and microtubule oscillations."
+  - id: v8-feedback-validierung
+    filename: "Validierung.txt"
+    type: feedback
+    focus: "Structured feedback summarizing v_RIG validation strengths and next steps"
+    status: ingested
+    notes: "Emphasizes cosmic matter-dipole alignment, Kleiber scaling (β ≈ 7.4), and MHz-range neural resonance."
+actions:
+  - id: tri-layer-sync
+    status: ready
+    description: "Use this overview as the σ(β(R-Θ)) map for downstream release notes and dashboards."
+  - id: evidence-extraction
+    status: pending
+    description: "Extract quantitative anchors (v_RIG ≈ 1.3518 km/s, Z ≈ 221.7, β regimes) into structured release notes and UTAC alignment documents."
+  - id: automation-design
+    status: pending
+    description: "Draft automation plan to sync ArXiv/PubMed updates with validation tests referenced in the PDFs."
+tri_layer:
+  markdown: releases/v8.0/v8_release_overview.md
+  json: releases/v8.0/v8_release_overview.json
+  yaml: releases/v8.0/v8_release_overview.yaml
