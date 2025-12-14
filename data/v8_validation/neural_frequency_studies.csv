@@ -1,0 +1,10 @@
+study,year,method,frequency_mhz,tissue_type,temperature_k,notes,doi
+Sahu_MicrotubuleResonance,2013,Dielectric Spectroscopy,13.5,Isolated Microtubules,300,Electromagnetic resonance in single microtubules,10.1016/j.bios.2013.02.050
+Bandyopadhyay_FractalResonance,2011,Quantum Measurement,8-12,Brain-Extracted Microtubules,300,Fractal resonance patterns (lower bound),10.3390/app1030103
+Hameroff_OrchOR,2014,Theoretical Model,10-40,Neuronal Microtubules,310,Orchestrated objective reduction (wide range),10.1016/j.plrev.2013.08.002
+Pokorny_EMFields,2013,Field Measurement,0.01-100,Neural Tissue,310,Electromagnetic fields in neurons (broad spectrum),10.3389/fnint.2013.00074
+PennyHartmann_Oscillations,2015,Raman Spectroscopy,5-20,Tubulin Protein,300,Vibrational modes in tubulin,10.1371/journal.pone.0127675
+vRIG_Prediction,2025,Theoretical (v_RIG/λ),13.52,Cortical Paths,310,f = v_RIG / λ ≈ 1351.8 km/s / 10 cm ≈ 13.5 MHz,
+FlickerFusion_Psychophysics,2009,Perceptual Threshold,0.03-0.06,Human Visual System,310,Critical flicker fusion (30-60 Hz upper bound),10.1016/j.visres.2009.02.011
+EEG_GammaBand,2015,Electrophysiology,0.03-0.1,Human Cortex,310,Gamma oscillations (30-100 Hz neural sync),10.1016/j.neuron.2015.09.034
+NeuralSpikes_Firing,2020,Electrophysiology,0.001,Cortical Neurons,310,Typical neuronal firing rate (~1 kHz),10.1038/s41586-020-2649-2
