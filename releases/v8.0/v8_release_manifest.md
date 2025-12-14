@@ -1,6 +1,6 @@
 # v8.0 Release Manifest – σ(β(R-Θ)) Navigator
 
-**Scope:** `releases/v8.0` | **Version:** v8.0-manifest-0.1.0 | **Status:** draft | **Updated:** 2026-01-16
+**Scope:** `releases/v8.0` | **Version:** v8.0-manifest-0.2.0 | **Status:** catalogued | **Updated:** 2026-01-19
 
 ## Logistic Frame
 - **R (Goal):** Konsistentes Mapping der v8.0-Dossiers auf σ(β(R-Θ)) Evidenzketten.
@@ -15,22 +15,22 @@
 - **Empirics:** `analysis/`, `data/`
 
 ## Artifact Register
-- **v8r-universalitaet-check** → `Validierung.txt` — Memo zur Universalität des v_RIG Consciousness Frameworks *(pending-index)*.
-- **v8r-gemini-search** → `GeminiSuche.txt` — Gemini-Suche nach Validation-Material *(pending-index)*.
-- **v8r-gemini-deep-dive** → `GeminiSucheDeep Research Consciousness Framework Validation.txt` — Deep-Dive Suchlog *(pending-index)*.
+- **v8r-universalitaet-check** → `Validierung.txt` — Memo zur Universalität des v_RIG Consciousness Frameworks *(indexed)*.
+- **v8r-gemini-search** → `GeminiSuche.txt` — Gemini-Suche nach Validation-Material *(indexed)*.
+- **v8r-gemini-deep-dive** → `GeminiSucheDeep Research Consciousness Framework Validation.txt` — Deep-Dive Suchlog *(indexed)*.
 - **v8r-chatgpt-suche** → `ChatGPT5.2Suche.txt` — ChatGPT-Suchpfad zu v_RIG/UTAC *(indexed)*.
-- **v8r-suche-protokoll** → `SucheChatGPT5.2.txt` — Query-Protokoll für Validation-Search *(pending-index)*.
+- **v8r-suche-protokoll** → `SucheChatGPT5.2.txt` — Query-Protokoll für Validation-Search *(indexed)*.
 - **v8r-validation-report** → `Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung und Automatisierung.pdf` — Automatisierungs-/Validierungsbericht *(to-review)*.
 - **v8r-validation-ansatz** → `Validierung des Bewusstseins-Frameworks_ Ein Ansatz.pdf` — Validierungsansatz *(to-review)*.
 - **v8r-empirical-plan** → `1. Empirical Validation of v_RIG Framework.pdf` — Empirischer Plan *(to-review)*.
 - **v8r-deep-research** → `Deep Research_ Consciousness Framework Validation-1.pdf` — Deep Research Dossier *(to-review)*.
 - **v8r-validation-automation** → `Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung und Automatisierung.pdf` — Automations-Checkliste *(to-review)*.
 - **v8r-validierungs-basis** → `Validierung des Bewusstseins-Frameworks_ Ein Ansatz.pdf` — Basis-Validierungsansatz *(to-review)*.
-- **v8r-em-coupling-dialogue** → `KokretePläne.txt` — EM-Kopplung, κ-Parameter und Tri-Funktion mit Experimentvorschlägen *(pending-index)*.
-- **v8r-v9-scope-memo** → `KonkretePläne2.txt` — Übergang v6→v8→v9 und Lantern-Net/Gardener-Ideen *(pending-index)*.
-- **v8r-threshold-search-chatgpt** → `ChatGPT5.2Suche nach Schwellenfrequenz Kosmologie Kognition.txt` — Schwellenfrequenz-Suchpfad *(pending-index)*.
-- **v8r-threshold-search-claude** → `Claude Suche nach Schwellenfrequenz Kosmologie Kognition.txt` — Kosmologie/Kognition Threshold-Suche *(pending-index)*.
-- **v8r-threshold-search-gemini** → `GeminiSuche.txt` — v_RIG/Z-Leitplanken mit kosmischen Dipolen *(pending-index)*.
+- **v8r-em-coupling-dialogue** → `KokretePläne.txt` — EM-Kopplung, κ-Parameter und Tri-Funktion mit Experimentvorschlägen *(indexed)*.
+- **v8r-v9-scope-memo** → `KonkretePläne2.txt` — Übergang v6→v8→v9 und Lantern-Net/Gardener-Ideen *(indexed)*.
+- **v8r-threshold-search-chatgpt** → `ChatGPT5.2Suche nach Schwellenfrequenz Kosmologie Kognition.txt` — Schwellenfrequenz-Suchpfad *(indexed)*.
+- **v8r-threshold-search-claude** → `Claude Suche nach Schwellenfrequenz Kosmologie Kognition.txt` — Kosmologie/Kognition Threshold-Suche *(indexed)*.
+- **v8r-threshold-search-gemini** → `GeminiSuche.txt` — v_RIG/Z-Leitplanken mit kosmischen Dipolen *(indexed)*.
 - **v8r-gpt5-commentary** → `Kommentar zur GPT-5 Entwicklung.pdf` — GPT-5 Kontext für UTAC/Automation *(to-review)*.
 - **v8r-session-summary-2025-12-14** → `SESSION_SUMMARY_2025-12-14.md` — Sprint-Protokoll *(indexed)*.
 
@@ -40,3 +40,4 @@
   1. ΔAIC/CI Slots in PDFs markieren (Annotationslog).
   2. Evidenzketten in feldtheorie_index.{yaml,json,md} spiegeln.
   3. Metaquest/Shadow-Sigillin-Verknüpfungen ergänzen.
+  4. GitHub Release-Assets veröffentlichen (CHANGELOG + Highlights) und Telemetrie in UTAC spiegeln.

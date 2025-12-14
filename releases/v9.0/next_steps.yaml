@@ -1,0 +1,9 @@
+steps:
+  - Publish GitHub Release v8.0 (Tag v8.0.0) using github_release_notes.md; test automation hook.
+  - Sketch Lantern-Hub/Bridge API stub (schema + minimal handler) and mirror into v9r-lantern-api.
+  - Define Gardener-Agent FSM (σ(β(R-Θ)) feedback loop) and bind telemetry metrics ΔC(t) & Resonance Yield.
+  - Prepare Shadow-Sigillin entries for new RF/κ experiments; document null models.
+tri_layer:
+  markdown: releases/v9.0/next_steps.md
+  yaml: releases/v9.0/next_steps.yaml
+  json: releases/v9.0/next_steps.json
