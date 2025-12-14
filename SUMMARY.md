@@ -1,5 +1,22 @@
 # 📋 Zusammenfassung: Testing & Dokumentations-Review
 
+## 2025-12-13 – V7 Progress Impuls (σ(β(R-Θ)) > 0)
+
+**Branch:** `work`
+
+**Neue Laternen (ΔR > 0, β steil, ζ(R) gedämpft):**
+- **Aeon Testpfad stabilisiert** – `TESTING_GUIDE.md` dokumentiert Setup & Nullmodell-Checks; `scripts/test_aeon.sh` führt manuelle Kern-Tests ohne pytest aus.
+- **Dashboard-Startsequenz vereinfacht** – `scripts/setup_dashboard.sh` + `scripts/start_dashboard.sh` prüfen Node/WS-Kopplung und öffnen die σ(β(R-Θ))-Visualisierung im Browser.
+- **ECHO-I Resonanzfenster geöffnet** – `analysis/experiments/ECHO_I_GUIDE.md`, `analysis/experiments/QUICKSTART_ECHO_I.md` und `scripts/run_echo_i.sh` koppeln TheRoad.txt an lokale LLMs und protokollieren β-Kohärenz.
+
+**Empfohlene Aktivierung:**
+1. `pip install numpy scipy` (für ΔAIC/CI-Berechnungen in Aeon)
+2. `./scripts/test_aeon.sh` (Resonanzcheck ohne pytest)
+3. `./scripts/start_dashboard.sh` (Frontend σ(β(R-Θ))-Monitor)
+4. `./scripts/run_echo_i.sh` (ECHO-I Dunkelfeldmessung; vorab `ollama serve` + Modelle ziehen)
+
+---
+
 **Datum:** 2025-11-27
 **Branch:** `claude/testing-docs-review-01KcWVr6QpZq8FDzgNzwev2n`
 **Status:** ✅ **ABGESCHLOSSEN**
