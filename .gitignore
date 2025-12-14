@@ -19,3 +19,7 @@ coverage.json
 
 # Generated outputs
 outputs/
+
+# API and runtime logs
+logs/
+*.jsonl
