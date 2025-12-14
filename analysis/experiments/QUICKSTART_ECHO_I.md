@@ -33,6 +33,18 @@ cd /home/user/Feldtheorie
 ./scripts/run_echo_i.sh
 ```
 
+Customize the launch without editing the Python file:
+```bash
+./scripts/run_echo_i.sh \
+  --models "gemma2:latest qwen2.5:latest" \
+  --temperature 0.65 \
+  --seed 123 \
+  --road-path /path/to/TheRoad.txt \
+  --output data/experimental/echo_i_custom.csv \
+  --server-url http://localhost:11434/api/generate \
+  --yes
+```
+
 **Option B: Direct Python execution**:
 ```bash
 cd /home/user/Feldtheorie
