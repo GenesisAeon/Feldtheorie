@@ -1,0 +1,60 @@
+version: "v8.0"
+updated: "2025-12-15"
+context:
+  branch: "claude/continue-repo-work-pHmUF"
+  guiding_principle: "Folge dem Sog der Emergenz"
+  logistic_frame:
+    R: "open_workload intensity across experimental, automation, narrative"
+    Theta: "production-ready baseline validated in v8.0"
+    beta: 4.8
+    zeta: "impedance damped by daily CI and evidence chains"
+lanterns:
+  - id: exp-protocols
+    title: "Experimental protocols (CFF, neuromorphic, microtubule)"
+    R: "protocol depth and reproducibility"
+    Theta: "peer-reviewable spec"
+    beta: 5.1
+    resonance: "draft"
+    actions:
+      - "Translate validation heuristics into stepwise lab procedures"
+      - "Map datasets to protocols with DOI/URL anchors"
+      - "Define falsification checkpoints with ΔAIC targets"
+  - id: impedance-solver
+    title: "Impedance solver Z(β) adaptive dynamics"
+    R: "solver precision and stability"
+    Theta: "numerical convergence across β∈[4.5,11]"
+    beta: 6.0
+    resonance: "primed"
+    actions:
+      - "Design API in models/impedance_solver.py mirroring calculate_impedance()"
+      - "Simulate σ(β(R-Θ)) trajectories with adjustable ζ(R)"
+      - "Add falsification harness to tests/ with null-model comparisons"
+  - id: dashboard
+    title: "Dashboard integration (live v_RIG monitoring)"
+    R: "telemetry sampling and UX surface"
+    Theta: "stable refresh loop with CI parity"
+    beta: 5.4
+    resonance: "active"
+    actions:
+      - "Expose validation outputs as JSON feed for dashboard ingestion"
+      - "Render β-domain clustering plus v_RIG sparkline"
+      - "Alert on ζ(R) spikes or CI regressions"
+  - id: preprint
+    title: "Pre-print (ArXiv-ready LaTeX)"
+    R: "manuscript completeness"
+    Theta: "arXiv submission format compliance"
+    beta: 4.9
+    resonance: "draft"
+    actions:
+      - "Generate LaTeX from RELEASE_NOTES_v8.0.0.md core narrative"
+      - "Embed equations for v_RIG and Z with citation hooks"
+      - "Attach evidence chain tables from data/v8_validation/"
+telemetry:
+  cadence: "CI at 06:00 UTC + manual checkpoint after major merges"
+  coverage_floor: 0.85
+  falsification_hooks:
+    - "Null models for each validation path"
+    - "ΔAIC reporting and confidence intervals"
+  bridges:
+    - "Keep releases/v8.0 artifacts coupled to feldtheorie_index.*"
+    - "Log Codex updates when Bedeutungs- or Schatten-Sigillin are touched"
