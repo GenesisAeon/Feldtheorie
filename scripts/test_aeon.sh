@@ -23,7 +23,11 @@ python3 << 'EOF'
 import sys
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1] if hasattr(Path(__file__), 'resolve') else Path.cwd()
+try:
+    PROJECT_ROOT = Path(__file__).resolve().parents[1]
+except NameError:
+    PROJECT_ROOT = Path.cwd()
+
 sys.path.insert(0, str(PROJECT_ROOT))
 
 try:
