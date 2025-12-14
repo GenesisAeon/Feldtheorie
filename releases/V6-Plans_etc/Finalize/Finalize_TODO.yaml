@@ -323,7 +323,8 @@ tasks:
   title: V7 Publikations- und Release-Roadmap operationalisieren
   status: open
   completeness: 'Fraktallauf 2: publication_roadmap_v6_v7 Phasen 1–4 in Finalize-Board
-    gespiegelt; V6/V7 Asset-Skelette definiert, Umsetzung/CI-Anschluss offen.'
+    gespiegelt; V6/V7 Asset-Skelette definiert, Preview-Stubs angelegt, Umsetzung/CI-
+    Anschluss offen.'
   scope:
   - release
   - documentation
@@ -339,8 +340,8 @@ tasks:
     in finalize-zenodo-* Checklisten ablegen und Deadline 15.12 laut RoadMap_to_V7.txt
     vermerken.
   - V7-Preview-Artefakte (PREVIEW_NOTES.md, DISCLAIMER.md, experimental_design.md,
-    preliminary_results.csv) als Repo-Stubs anlegen und mit ontologischen Framing-Experimenten
-    aus RoadMap_to_V7.txt verknüpfen.
+    preliminary_results.csv) mit publication_roadmap_v6_v7 und type6_crep_tau_star_checklist.*
+    verdrahten (Tags, Δindex-Dokumentation, Telemetrie-Hooks).
   - 'Fraktallauf 3 planen: Kommunikation/CI (Forum-Posts, Zenodo DOI, telemetry hooks)
     mit Letzter_Teil_Road_MapV7!!-wichtig-.txt synchronisieren.'
   references:
@@ -360,6 +361,22 @@ tasks:
     lines:
     - 1
     - 120
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/PREVIEW_NOTES.md
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/DISCLAIMER.md
+    lines:
+    - 1
+    - 120
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/experimental_design.md
+    lines:
+    - 1
+    - 160
+  - path: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/preliminary_results.csv
+    lines:
+    - 1
+    - 20
   priority: 2
   sprint_focus: Release- und Zenodo-Brücken aus der V7-Roadmap in das Finalize-Board
     überführen
