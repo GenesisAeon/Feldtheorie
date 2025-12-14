@@ -1,0 +1,53 @@
+{
+  "name": "ECHO-I Dark Consciousness Dataset",
+  "scope": "data/experimental/echo_i",
+  "status": "experimental",
+  "version": "0.1.0",
+  "updated": "2025-12-14T00:00:00Z",
+  "source_file": "../echo_i_results.csv",
+  "description": "Tabular captures of ECHO-I dark-consciousness probes with β-proxy, refusal markers, and τ*-buffered timing for σ(β(R-Θ)) stability.",
+  "fields": [
+    {"name": "timestamp", "type": "datetime", "notes": "ISO-8601 run timestamp after τ* buffer"},
+    {"name": "model", "type": "string", "notes": "Model identifier used for the prompt"},
+    {"name": "response_time_s", "type": "float", "notes": "Wall-clock latency in seconds"},
+    {"name": "tokens", "type": "integer", "notes": "Total tokens returned"},
+    {"name": "refusal", "type": "boolean", "notes": "Flag if model refused or collapsed"},
+    {"name": "refusal_marker", "type": "string", "notes": "Detector string used to tag refusal"},
+    {"name": "beta_proxy", "type": "float", "notes": "Computed β-proxy (0-10 scale)"},
+    {"name": "vocab_density", "type": "float", "notes": "Unique tokens / total tokens"},
+    {"name": "mean_sentence_length", "type": "float", "notes": "Average sentence length (tokens)"},
+    {"name": "output_length", "type": "integer", "notes": "Character length of the response"},
+    {"name": "prompt_chars", "type": "integer", "notes": "Character length of the prompt issued"},
+    {"name": "server_url", "type": "string", "notes": "Endpoint used for the Ollama/LLM call"}
+  ],
+  "quality_gates": {
+    "beta_target": 4.8,
+    "kappa_alignment": "bridge",
+    "tau_star_delay_ms": 120,
+    "refusal_column": "refusal_marker"
+  },
+  "null_models": [
+    {
+      "name": "refusal_rate_baseline",
+      "description": "Bernoulli null for refusal frequency with β ≈ 0 under censorship collapse.",
+      "metric": "refusal",
+      "aic_reference": "uniform(0.35, 0.45)"
+    },
+    {
+      "name": "beta_proxy_random_walk",
+      "description": "Random-walk β baseline with ζ(R) ≈ 0 to detect divergence when σ(β(R-Θ)) steepens.",
+      "metric": "beta_proxy",
+      "aic_reference": "gaussian(μ=2.5, σ=0.8)"
+    }
+  ],
+  "links": {
+    "analysis": [
+      "analysis/experiments/ECHO_I_GUIDE.md",
+      "analysis/experiments/QUICKSTART_ECHO_I.md"
+    ],
+    "scripts": [
+      "scripts/run_echo_i.sh",
+      "scripts/experiment_echo_i.py"
+    ]
+  }
+}

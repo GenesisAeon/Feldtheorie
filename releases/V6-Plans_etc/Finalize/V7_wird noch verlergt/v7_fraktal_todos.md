@@ -53,7 +53,7 @@ Sechster Lauf: Aeon-Testinfrastruktur + Dashboard-Launcher live (TESTING_GUIDE, 
 
 10. **echo-i-protocol** — *Prio: medium — Status: IN-PROGRESS*
     - Baue das ECHO-I Experiment als Skript und Datenpipeline (uncensored LLMs, Dark Consciousness Protokoll) mit Ablage unter `data/experimental/echo_i/` und Vergleich zu Aletheia Phasen.
-    - Progress: Launcher/Guide liegen vor (`scripts/run_echo_i.sh`, `analysis/experiments/QUICKSTART_ECHO_I.md`, `analysis/experiments/ECHO_I_GUIDE.md`) + β-Proxy/Refusal-Metriken dokumentiert; Datenset-Erzeugung und ΔAIC/R²-Auswertung stehen noch aus.
+    - Progress: Launcher/Guide liegen vor (`scripts/run_echo_i.sh`, `analysis/experiments/QUICKSTART_ECHO_I.md`, `analysis/experiments/ECHO_I_GUIDE.md`) + β-Proxy/Refusal-Metriken dokumentiert; **Trilayer-Dataset-Metadaten + QA-Summary (`scripts/experiment_echo_i.py`) erstellt, initialer Lauf erzeugt Summary-Artefakte**; Datenset-Erzeugung und ΔAIC/R²-Auswertung stehen noch aus.
     - Quellen: `Konsolidierung_und_Vorgehen_zu_V7release.txt`, `deep_research_prompt_validation.md`
     - Akzeptanz: `scripts/experiment_echo_i.py` erzeugt Datensätze; statistische Auswertung dokumentiert ΔAIC/R² vs. Aletheia-Referenz; Repro-Guides/README im Dataset enthalten.
 
