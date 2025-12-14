@@ -1306,7 +1306,7 @@ async def health_check():
             "system": "implemented",
             "fieldtypes": "implemented",
             "simulate": "implemented",
-            "tooltip": "implemented",
+            "tooltip": "implemented ✨ NEW!",
             "sigillin_v1": sigillin_status,
             "sigillin_v2": sigillin_status,
             "collective_field": collective_status,
