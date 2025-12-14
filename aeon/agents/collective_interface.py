@@ -80,9 +80,22 @@ class CollectiveInterface:
         if len(self.agents) < 2:
             return True  # Single agent is always in consensus
 
-        matrix = self.get_distance_matrix()
-        avg_distance = np.mean(matrix[matrix > 0])
-        return avg_distance < threshold
+        # Collect upper-triangular pairwise distances to avoid zero diagonals
+        distances = [
+            agent_i.semantic_distance(agent_j)
+            for i, agent_i in enumerate(self.agents)
+            for agent_j in self.agents[i + 1 :]
+        ]
+
+        if not distances:
+            return True  # No pairwise comparisons → trivially in consensus
+
+        avg_distance = float(np.mean(distances))
+        # Handle potential NaN from degenerate vectors
+        if np.isnan(avg_distance):
+            return True
+
+        return avg_distance <= threshold
 
     def compute_field_metrics(self) -> dict[str, Any]:
         """
