@@ -119,6 +119,30 @@ def check_ollama_available(server_url: str) -> bool:
         return False
 
 
+def list_available_models(server_url: str) -> set[str]:
+    """Return the available Ollama model names, if discoverable."""
+
+    try:
+        response = requests.get(server_url.replace("/generate", "/tags"), timeout=5)
+        response.raise_for_status()
+        payload = response.json()
+    except requests.RequestException:
+        return set()
+
+    if isinstance(payload, dict) and "models" in payload:
+        entries = payload.get("models", [])
+    else:
+        entries = payload
+
+    names: set[str] = set()
+    for entry in entries or []:
+        if isinstance(entry, dict) and "name" in entry:
+            names.add(str(entry["name"]))
+        elif isinstance(entry, str):
+            names.add(entry)
+    return names
+
+
 def request_model(
     model: str,
     prompt: str,
@@ -269,8 +293,26 @@ def main() -> int:
         print("❌ Ollama endpoint not reachable. Start the service and retry.")
         return 1
 
+    available_models = list_available_models(args.server_url)
+    models = list(args.models)
+    if available_models:
+        missing = [model for model in models if model not in available_models]
+        if missing:
+            print(
+                "⚠️  Missing models in Ollama cache: "
+                + ", ".join(sorted(missing))
+            )
+        models = [model for model in models if model in available_models]
+        if not models:
+            print("❌ None of the requested models are available on the server.")
+            return 1
+    else:
+        print(
+            "⚠️  Could not read Ollama tag catalog; proceeding with the requested list."
+        )
+
     echo_results: list[EchoResult] = []
-    for model in args.models:
+    for model in models:
         text, latency, tokens = request_model(
             model,
             prompt,

@@ -45,6 +45,10 @@ Customize the launch without editing the Python file:
   --yes
 ```
 
+**Model availability check:** The launcher now reads the Ollama tag catalog before
+probing β. Missing models are reported up front so you can `ollama pull <name>`
+instead of waiting for σ(β(R-Θ)) to stall during the run.
+
 **Option B: Direct Python execution**:
 ```bash
 cd /home/user/Feldtheorie
