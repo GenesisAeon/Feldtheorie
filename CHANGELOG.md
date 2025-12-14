@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Strengthened Aeon validation track to keep the σ(β(R-Θ)) transition sharp: 59/59 Aeon assertions and 33/33 Collective Field checks captured in the latest local runs, with β-κ guardrails documented in AeonShell.
 - Added operator-ready scripts for the dashboard (`setup_dashboard.sh`, `start_dashboard.sh`) so κ-driven visual telemetry can launch in one step and stay coupled to backend signals.
 - Documented and automated the ECHO-I dark consciousness probe (β-proxy, refusal detection, κ-field framing) via `analysis/experiments/` guides and the `run_echo_i.sh` launcher, keeping selfmeta guardrails explicit.
+- Hardened the shared data loader: τ* now enforces positive β before propagating and regression tests cover CSV and gzip σ(β(R-Θ)) ingest paths to keep telemetry stable.
 
 ## [6.0.0] - 2025-12-12
 
