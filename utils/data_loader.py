@@ -62,13 +62,16 @@ def calculate_tau_star(beta: float, theta: float, R: float) -> float:
     Calculate τ* (time to threshold) for a system.
 
     Args:
-        beta: Steepness parameter
+        beta: Steepness parameter (must be positive to keep σ well-formed)
         theta: Threshold value
         R: Current resource/activation level
 
     Returns:
         float: Time to threshold (arbitrary units)
     """
+    if beta <= 0:
+        raise ValueError("beta must be positive to compute τ*")
+
     if R >= theta:
         return 0.0  # Already at threshold
 

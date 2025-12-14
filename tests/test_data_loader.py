@@ -1,14 +1,16 @@
+"""Regression tests for the shared data loader utilities."""
+
+from __future__ import annotations
+
 import pandas as pd
 import pytest
-from utils.data_loader import (
-    calculate_tau_star,
-    load_all,
-    load_dataset,
-    load_metadata,
-)
+
+from utils.data_loader import calculate_tau_star, load_all, load_dataset, load_metadata
 
 
-def test_load_metadata_reads_yaml(tmp_path):
+def test_load_metadata_reads_yaml(tmp_path) -> None:
+    """Metadata YAML should round-trip through the loader."""
+
     metadata_dir = tmp_path / "metadata"
     metadata_dir.mkdir()
 
@@ -21,38 +23,58 @@ def test_load_metadata_reads_yaml(tmp_path):
     assert meta["beta_estimate"] == 0.42
 
 
-def test_load_dataset_prefers_available_format(tmp_path):
+def test_load_dataset_reads_csv_with_normalized_name(tmp_path) -> None:
+    """CSV files should load after name normalization to σ(β(R-Θ)) paths."""
+
+    meta = {"dataset": "Resonant Data"}
+    df = pd.DataFrame({"value": [1, 2, 3]})
+    csv_path = tmp_path / "resonant_data.csv"
+    df.to_csv(csv_path, index=False)
+
+    loaded = load_dataset(meta, data_dir=tmp_path)
+
+    pd.testing.assert_frame_equal(loaded, df)
+
+
+def test_load_dataset_prefers_available_format(tmp_path) -> None:
+    """A plain CSV should be ingested when it is present."""
+
     data_dir = tmp_path / "data"
     data_dir.mkdir()
 
     dataset_name = "Example Dataset"
     csv_path = data_dir / "example_dataset.csv"
-    pd.DataFrame({"value": [1, 2, 3]}).to_csv(csv_path, index=False)
+    df = pd.DataFrame({"value": [1, 2, 3]})
+    df.to_csv(csv_path, index=False)
 
     loaded = load_dataset({"dataset": dataset_name}, data_dir=str(data_dir))
 
-    assert list(loaded["value"]) == [1, 2, 3]
+    pd.testing.assert_frame_equal(loaded, df)
 
 
-def test_load_dataset_requires_dataset_field():
-    with pytest.raises(ValueError):
-        load_dataset({}, data_dir="unused")
+def test_load_dataset_handles_gzipped_csv(tmp_path) -> None:
+    """Gzipped CSV should load when it is the available τ-track."""
+
+    meta = {"dataset": "Compressed Echo"}
+    df = pd.DataFrame({"signal": [0.1, 0.2]})
+    gz_path = tmp_path / "compressed_echo.csv.gz"
+    df.to_csv(gz_path, index=False, compression="gzip")
+
+    loaded = load_dataset(meta, data_dir=tmp_path)
+
+    pd.testing.assert_frame_equal(loaded, df)
 
 
-def test_load_dataset_supports_compressed_csv(tmp_path):
-    data_dir = tmp_path / "data"
-    data_dir.mkdir()
+def test_load_dataset_requires_dataset_field() -> None:
+    """Missing dataset metadata should surface as a clear validation error."""
 
-    dataset_name = "Compressed Data"
-    gzip_path = data_dir / "compressed_data.csv.gz"
-    pd.DataFrame({"value": [10, 20]}).to_csv(gzip_path, index=False, compression="gzip")
-
-    loaded = load_dataset({"dataset": dataset_name}, data_dir=str(data_dir))
-
-    assert list(loaded["value"]) == [10, 20]
+    with pytest.raises(ValueError, match="non-empty 'dataset' field"):
+        load_dataset({})
 
 
-def test_load_all_collects_metadata_and_optional_data(tmp_path):
+def test_load_all_collects_metadata_and_optional_data(tmp_path) -> None:
+    """load_all should collect metadata even when data files are absent."""
+
     metadata_dir = tmp_path / "metadata"
     data_dir = tmp_path / "data"
     metadata_dir.mkdir()
@@ -72,6 +94,22 @@ def test_load_all_collects_metadata_and_optional_data(tmp_path):
     assert loaded["beta"]["data"] is None
 
 
-def test_calculate_tau_star_handles_threshold_crossing():
-    assert calculate_tau_star(beta=2.0, theta=5.0, R=1.0) > 0
-    assert calculate_tau_star(beta=1.0, theta=1.0, R=2.0) == 0.0
+def test_calculate_tau_star_requires_positive_beta() -> None:
+    """β must be positive to keep the τ* curve physically meaningful."""
+
+    for beta in (0.0, -1.2):
+        with pytest.raises(ValueError, match="beta must be positive"):
+            calculate_tau_star(beta=beta, theta=1.0, R=0.5)
+
+
+def test_calculate_tau_star_zero_when_at_threshold() -> None:
+    """If R ≥ Θ the τ* horizon collapses to zero."""
+
+    assert calculate_tau_star(beta=3.3, theta=1.0, R=1.0) == 0.0
+
+
+def test_calculate_tau_star_positive_when_below_threshold() -> None:
+    """Below the threshold the τ* horizon should remain finite and positive."""
+
+    tau_star = calculate_tau_star(beta=2.0, theta=5.0, R=1.0)
+    assert tau_star > 0
