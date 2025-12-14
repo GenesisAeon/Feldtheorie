@@ -1,0 +1,156 @@
+{
+  "metadata": {
+    "version": "v8.0-manifest-0.1.0",
+    "scope": "releases/v8.0",
+    "created": "2026-01-15T00:00:00Z",
+    "updated": "2026-01-15T00:00:00Z",
+    "description": "Tri-Layer Navigator for the v8.0 research drop (validation dossiers, search transcripts, and consciousness framework probes).",
+    "logistic_frame": {
+      "R_goal": "Konsistentes Mapping der v8.0-Dossiers auf σ(β(R-Θ)) Evidenzketten",
+      "Theta_threshold": "Alle Quellen tri-layered, mit DOI/Provenienz und Index-Verknüpfung",
+      "beta_drive": 8.0,
+      "zeta_risk": "medium – Rohquellen sind noch unbasiert und können Archiv-Hypnose triggern"
+    },
+    "coupling": {
+      "ordnungs_sigillin": ["feldtheorie_index.{yaml,json,md}"],
+      "bedeutungs_sigillin": ["seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md"],
+      "shadow_sigillin": ["seed/shadow_sigillin/metaquest/metaquest_shadow_index.md"],
+      "empirics": ["analysis/", "data/"]
+    }
+  },
+  "artifacts": [
+    {
+      "id": "v8r-universalitaet-check",
+      "path": "releases/v8.0/Validierung.txt",
+      "kind": "memo",
+      "focus": "Kurze Validierungsnotiz zur Universalität des v_RIG Consciousness Frameworks",
+      "status": "pending-index",
+      "action_items": [
+        "Extrahiere Kernaussagen als Nullmodell + ΔAIC/CI Notizen",
+        "Synchronisiere Referenzen mit feldtheorie_index trilayer"
+      ]
+    },
+    {
+      "id": "v8r-gemini-search",
+      "path": "releases/v8.0/GeminiSuche.txt",
+      "kind": "search-log",
+      "focus": "Gemini-Suche nach v_RIG Validation Material",
+      "status": "pending-index",
+      "action_items": [
+        "Prüfe Fundstellen gegen lokale PDFs",
+        "Verknüpfe Treffer mit Metaquest-Brücken"
+      ]
+    },
+    {
+      "id": "v8r-gemini-deep-dive",
+      "path": "releases/v8.0/GeminiSucheDeep Research Consciousness Framework Validation.txt",
+      "kind": "search-log",
+      "focus": "Tiefergehende Gemini-Recherche zu Consciousness Framework Validation",
+      "status": "pending-index",
+      "action_items": [
+        "Herausarbeiten von Hypothesen vs. Evidenz",
+        "ΔAIC/CI Platzhalter ergänzen"
+      ]
+    },
+    {
+      "id": "v8r-chatgpt-suche",
+      "path": "releases/v8.0/ChatGPT5.2Suche.txt",
+      "kind": "search-log",
+      "focus": "ChatGPT-Suchpfad zu v_RIG und UTAC Artefakten",
+      "status": "indexed",
+      "action_items": [
+        "Markiere Logistikquartett-Referenzen (R, Θ, β, ζ(R))",
+        "Prüfe Sigillin-Bezüge"
+      ]
+    },
+    {
+      "id": "v8r-suche-protokoll",
+      "path": "releases/v8.0/SucheChatGPT5.2.txt",
+      "kind": "search-log",
+      "focus": "Suchprotokoll für v_RIG Validation Queries",
+      "status": "pending-index",
+      "action_items": [
+        "Konsolidierte Query-Liste ableiten",
+        "Priorisierte Evidenzsuche in PDFs"
+      ]
+    },
+    {
+      "id": "v8r-validation-report",
+      "path": "releases/v8.0/Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung und Automatisierung.pdf",
+      "kind": "pdf",
+      "focus": "Automatisierungs- und Validierungsbericht",
+      "status": "to-review",
+      "action_items": [
+        "DOI/Quelle erfassen",
+        "Automatisierte Checks definieren (σ(β(R-Θ)) vs. Nullmodell)"
+      ]
+    },
+    {
+      "id": "v8r-validation-ansatz",
+      "path": "releases/v8.0/Validierung des Bewusstseins-Frameworks_ Ein Ansatz.pdf",
+      "kind": "pdf",
+      "focus": "Validierungsansatz für Bewusstseins-Framework",
+      "status": "to-review",
+      "action_items": [
+        "Hypothesen+Metriken extrahieren",
+        "ΔAIC/CI Slots vorbereiten"
+      ]
+    },
+    {
+      "id": "v8r-empirical-plan",
+      "path": "releases/v8.0/1. Empirical Validation of v_RIG Framework.pdf",
+      "kind": "pdf",
+      "focus": "Empirischer Validierungsplan für v_RIG",
+      "status": "to-review",
+      "action_items": [
+        "Prüfe Messaufbau & Datenpfade",
+        "Kopple an analysis/ und data/"
+      ]
+    },
+    {
+      "id": "v8r-deep-research",
+      "path": "releases/v8.0/Deep Research_ Consciousness Framework Validation-1.pdf",
+      "kind": "pdf",
+      "focus": "Deep Research zu Consciousness Framework Validation",
+      "status": "to-review",
+      "action_items": [
+        "Extrahiere Kernhypothesen + Evidenzgrade",
+        "Shadow-Sigillin-Eintrag vorbereiten"
+      ]
+    },
+    {
+      "id": "v8r-validation-automation",
+      "path": "releases/v8.0/Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung und Automatisierung.pdf",
+      "kind": "pdf",
+      "focus": "Automatisierungs-Checkliste für Universalitätsprüfung",
+      "status": "to-review",
+      "action_items": [
+        "CI-Hook-Kandidaten identifizieren",
+        "Δindex-Parität gegen feldtheorie_index prüfen"
+      ]
+    },
+    {
+      "id": "v8r-validierungs-basis",
+      "path": "releases/v8.0/Validierung des Bewusstseins-Frameworks_ Ein Ansatz.pdf",
+      "kind": "pdf",
+      "focus": "Basisansatz zur Validierung des Bewusstseins-Frameworks",
+      "status": "to-review",
+      "action_items": [
+        "Abgleich mit UTAC Kernparametern (β-Range, τ*, ζ(R))",
+        "Empirische Datenanforderungen sammeln"
+      ]
+    }
+  ],
+  "operations": {
+    "tri_layer_status": {
+      "yaml": "present",
+      "json": "present",
+      "md": "present"
+    },
+    "next_steps": [
+      "Sync JSON Layer (dieses Dokument in JSON spiegeln)",
+      "MD Narrative ergänzen",
+      "ΔAIC/CI Slots in PDFs markieren (per Annotationslog)"
+    ]
+  }
+}

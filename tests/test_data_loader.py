@@ -65,6 +65,19 @@ def test_load_dataset_handles_gzipped_csv(tmp_path) -> None:
     pd.testing.assert_frame_equal(loaded, df)
 
 
+def test_load_dataset_reads_json(tmp_path) -> None:
+    """JSON datasets should hydrate into DataFrames when present."""
+
+    meta = {"dataset": "Json Resonance"}
+    df = pd.DataFrame({"signal": [0.5, 0.9]})
+    json_path = tmp_path / "json_resonance.json"
+    df.to_json(json_path, orient="records")
+
+    loaded = load_dataset(meta, data_dir=tmp_path)
+
+    pd.testing.assert_frame_equal(loaded, df)
+
+
 def test_load_dataset_requires_dataset_field() -> None:
     """Missing dataset metadata should surface as a clear validation error."""
 

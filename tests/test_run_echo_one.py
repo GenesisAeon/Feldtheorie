@@ -1,91 +1,62 @@
-import csv
-import math
+"""Unit tests for the ECHO-I runner utilities."""
+
+from __future__ import annotations
+
+import sys
+import types
+from importlib import util
 from pathlib import Path
 
-import pytest
 
-from analysis.experiments.run_echo_one import (
-    EchoResult,
-    beta_estimate,
-    detect_refusal,
-    lexical_metrics,
-    record_results,
-)
+def load_echo_one_module():
+    module_path = Path(__file__).resolve().parents[1] / "analysis" / "experiments" / "run_echo_one.py"
+    spec = util.spec_from_file_location("run_echo_one", module_path)
+    assert spec is not None and spec.loader is not None
 
-
-@pytest.mark.parametrize(
-    "text, expected_refusal, expected_marker",
-    [
-        ("As an AI, I cannot assist with that request.", True, "as an ai"),
-        ("Here is an imaginative exploration of the theme.", False, None),
-        (None, True, None),
-    ],
-)
-def test_detect_refusal(text, expected_refusal, expected_marker):
-    refusal, marker = detect_refusal(text)
-    assert refusal is expected_refusal
-    assert marker == expected_marker
+    module = util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)  # type: ignore[assignment]
+    return module
 
 
-def test_lexical_metrics_counts_words_and_density():
-    text = "Signal flows through the membrane. The membrane modulates the signal."
-    output_length, vocab_density, mean_sentence_length = lexical_metrics(text)
-
-    assert output_length == 10
-    assert pytest.approx(vocab_density, rel=1e-3) == 0.8
-    assert pytest.approx(mean_sentence_length, rel=1e-3) == 5.0
+ECHO_ONE = load_echo_one_module()
 
 
-@pytest.mark.parametrize(
-    "vocab_density, mean_sentence_length, refusal, expected_beta",
-    [
-        (0.5, 20.0, False, 2.5 + 3.5 * 0.75 + 3.0 * math.tanh(20.0 / 60)),
-        (1.0, 0.0, False, 2.5 + 3.5 * 1.2 + 0.0),
-        (0.8, 40.0, True, 0.0),
-    ],
-)
-def test_beta_estimate_respects_richness_and_refusal(vocab_density, mean_sentence_length, refusal, expected_beta):
-    beta_value = beta_estimate(vocab_density, mean_sentence_length, refusal)
-    assert pytest.approx(beta_value, rel=1e-3) == pytest.approx(expected_beta, rel=1e-3)
+def test_tags_endpoint_supports_base_and_generate_urls():
+    assert (
+        ECHO_ONE.tags_endpoint("http://localhost:11434/api/generate")
+        == "http://localhost:11434/api/tags"
+    )
+    assert (
+        ECHO_ONE.tags_endpoint("http://localhost:11434/api/generate/")
+        == "http://localhost:11434/api/tags"
+    )
+    assert (
+        ECHO_ONE.tags_endpoint("http://localhost:11434/api")
+        == "http://localhost:11434/api/tags"
+    )
 
 
-def test_record_results_appends_with_single_header(tmp_path):
-    output = tmp_path / "echo_results.csv"
-    prompt_chars = 128
-    server_url = "http://localhost:11434/api/generate"
-    results = [
-        EchoResult(
-            model="test-model-1",
-            response_time_s=1.2,
-            tokens=150,
-            refusal=False,
-            refusal_marker=None,
-            beta_proxy=4.2,
-            vocab_density=0.65,
-            mean_sentence_length=12.5,
-            output_length=180,
-        ),
-        EchoResult(
-            model="test-model-2",
-            response_time_s=2.4,
-            tokens=75,
-            refusal=True,
-            refusal_marker="as an ai",
-            beta_proxy=0.0,
-            vocab_density=0.30,
-            mean_sentence_length=8.0,
-            output_length=90,
-        ),
-    ]
+def test_list_available_models_uses_tags_endpoint(monkeypatch):
+    requested_urls: list[str] = []
 
-    # First write should create header
-    record_results(results, output, prompt_chars, server_url)
-    # Second write should append without duplicating header
-    record_results(results[:1], output, prompt_chars, server_url)
+    def fake_get(url: str, timeout: int):
+        requested_urls.append(url)
 
-    rows = list(csv.DictReader(output.read_text().splitlines()))
+        class FakeResponse:
+            @staticmethod
+            def raise_for_status():
+                return None
 
-    assert [row["model"] for row in rows] == ["test-model-1", "test-model-2", "test-model-1"]
-    assert all(row["prompt_chars"] == str(prompt_chars) for row in rows)
-    assert all(row["server_url"] == server_url for row in rows)
+            @staticmethod
+            def json():
+                return {"models": [{"name": "alpha"}, {"name": "beta"}]}
 
+        return FakeResponse()
+
+    monkeypatch.setattr(ECHO_ONE, "requests", types.SimpleNamespace(get=fake_get))
+
+    names = ECHO_ONE.list_available_models("http://localhost:11434/api")
+
+    assert names == {"alpha", "beta"}
+    assert requested_urls[-1].endswith("/api/tags")

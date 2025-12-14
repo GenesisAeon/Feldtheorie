@@ -40,3 +40,17 @@ def test_reset_restores_baselines_after_adaptation() -> None:
 
     assert membrane.theta == pytest.approx(membrane.theta_baseline)
     assert membrane.beta == pytest.approx(membrane.beta_baseline)
+
+
+def test_summarise_reports_gate_floor_when_quiet() -> None:
+    """Summaries should record a missing half-max crossing when gates stay quiet."""
+
+    membrane = AdaptiveLogisticMembrane(theta=0.8, beta=5.0, meta_beta=10.0)
+    control = np.linspace(0.0, 0.6, 10)
+
+    history = membrane.propagate(control, dt=0.05)
+    summary = membrane.summarise(history)
+
+    assert summary["gate_above_half_fraction"] == 0.0
+    assert summary["half_max_index"] == -1.0
+    assert summary["resonance_gain"] >= 0.0

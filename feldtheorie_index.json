@@ -258,6 +258,14 @@
         "analysis/multiple_testing_correction.py",
         "analysis/universality_test.py"
       ],
+      "v8_validation_drop": [
+        "releases/v8.0/v8_release_manifest.yaml",
+        "releases/v8.0/v8_release_manifest.json",
+        "releases/v8.0/v8_release_manifest.md",
+        "releases/v8.0/Validierung.txt",
+        "releases/v8.0/1. Empirical Validation of v_RIG Framework.pdf",
+        "releases/v8.0/Deep Research_ Consciousness Framework Validation-1.pdf"
+      ],
       "metaquest_parity": [
         "docs/metaquest_parity_brief.md",
         "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml",

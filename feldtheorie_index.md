@@ -271,6 +271,26 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 
 ---
 
+### 🧪 **releases/v8.0/** - v_RIG Validation Drop
+**Multiple Docs** | **Validation Sprint β=8.0**
+📍 Index: `releases/v8.0/v8_release_manifest.{yaml,json,md}`
+📍 Status: **Draft Logistics Frame (2026-01-15)**
+
+**Was:** Validierungs-Dossiers (PDF) + Search-Logs (Gemini/ChatGPT) zur Universalität des v_RIG Consciousness Frameworks.
+
+**Must-Read:**
+- `v8_release_manifest.md` – σ(β(R-Θ)) Navigator mit Ordnungs-/Bedeutungs-/Schatten-Sigillin-Koppelung.
+- `Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung und Automatisierung.pdf` – Automations-Checkliste & ΔAIC/CI-Slots *(to-review)*.
+- `1. Empirical Validation of v_RIG Framework.pdf` – Empirischer Validierungsplan *(to-review)*.
+- `GeminiSucheDeep Research Consciousness Framework Validation.txt` – Query- und Evidence-Pfade *(pending-index)*.
+
+**Δ-Tasks:**
+- Tri-Layer Sync gegen feldtheorie_index.* + Metaquest/Shadow-Sigillin.
+- DOI/Provenienz erfassen, Nullmodelle + ΔAIC/CI pro Hypothese eintragen.
+- Query-Protokolle mit Evidenz-Trails (analysis/, data/) verlinken.
+
+---
+
 ## 🎨 Die Co-Hypothese
 
 **UTAC + Sigillin = Theorie + Mittel**

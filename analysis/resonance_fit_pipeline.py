@@ -26,6 +26,8 @@ import sys
 from collections.abc import Iterable, Mapping
 from pathlib import Path
 
+EPSILON_AIC = 1e-12
+
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
@@ -127,7 +129,8 @@ def fit_threshold_parameters(R: Iterable[float], sigma: Iterable[float]) -> dict
     mean_sigma = _mean(sigma_list)
     ss_tot = sum((value - mean_sigma) ** 2 for value in sigma_list)
     r2 = 1.0 - ss_res / ss_tot if ss_tot > 0 else 1.0
-    aic = float("-inf") if ss_res <= 0 else n * math.log(ss_res / n) + 2 * 2
+    variance = max(ss_res / n, EPSILON_AIC)
+    aic = n * math.log(variance) + 2 * 2
 
     return {
         "beta": beta,
@@ -173,7 +176,8 @@ def evaluate_null_model(R: Iterable[float], sigma: Iterable[float]) -> dict[str,
     ss_res = sum(value**2 for value in residuals)
     ss_tot = sum((value - mean_sigma) ** 2 for value in sigma_list)
     r2 = 1.0 - ss_res / ss_tot if ss_tot > 0 else 1.0
-    aic = float("-inf") if ss_res <= 0 else n * math.log(ss_res / n) + 2 * 2
+    variance = max(ss_res / n, EPSILON_AIC)
+    aic = n * math.log(variance) + 2 * 2
     return {
         "r2": r2,
         "aic": aic,
