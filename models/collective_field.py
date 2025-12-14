@@ -70,15 +70,23 @@ class Agent:
                 raise ValueError(
                     f"semantic_position must have dimension {dimension}, got {len(semantic_position)}"
                 )
-            self.semantic_position = semantic_position
+            self.semantic_position = self._unit_vector(semantic_position)
         else:
             # Random initialization in unit hypersphere
             self.semantic_position = self._random_unit_vector(dimension)
 
     def _random_unit_vector(self, dim: int) -> np.ndarray:
         """Generate random unit vector in dim-dimensional space."""
+
         vec = np.random.randn(dim)
-        return vec / np.linalg.norm(vec)
+        norm = np.linalg.norm(vec)
+        return vec / norm if norm > 0 else np.zeros(dim)
+
+    def _unit_vector(self, vec: np.ndarray) -> np.ndarray:
+        """Return a safely normalised vector with zero fallback."""
+
+        norm = np.linalg.norm(vec)
+        return vec / norm if norm > 0 else np.zeros_like(vec)
 
     def semantic_distance(self, other: Agent) -> float:
         """
@@ -90,8 +98,13 @@ class Agent:
         if self.dimension != other.dimension:
             raise ValueError("Agents must have same semantic dimension")
 
-        cos_sim = np.dot(self.semantic_position, other.semantic_position)
-        cos_sim = np.clip(cos_sim, -1.0, 1.0)  # Numerical stability
+        self_vec = self._unit_vector(self.semantic_position)
+        other_vec = self._unit_vector(other.semantic_position)
+
+        if not np.any(self_vec) or not np.any(other_vec):
+            return 1.0
+
+        cos_sim = float(np.clip(np.dot(self_vec, other_vec), -1.0, 1.0))
         return 1.0 - cos_sim
 
     def update_position(self, target: np.ndarray, learning_rate: float = 0.1, field: "CollectiveField | None" = None) -> None:
