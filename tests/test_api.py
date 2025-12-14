@@ -47,7 +47,9 @@ def test_health_check():
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "healthy"
-    assert data["phase"] == "tooltip-system"  # Updated to current API version
+    assert (
+        data["phase"] == "v7-sigillin-phase2-collective-consciousness"
+    )  # Updated to current V7 health payload
     assert "progress" in data
     assert "version" in data
 
