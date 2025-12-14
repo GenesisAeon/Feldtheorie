@@ -6,6 +6,10 @@
 
 set -euo pipefail
 
+# Allow host/port overrides for container and remote debugging contexts
+DASHBOARD_HOST=${DASHBOARD_HOST:-0.0.0.0}
+DASHBOARD_PORT=${DASHBOARD_PORT:-3000}
+
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 PROJECT_ROOT=$(cd "${SCRIPT_DIR}/.." && pwd)
 
@@ -56,8 +60,8 @@ fi
 
 echo "🚀 Starting Aeon Dashboard..."
 echo ""
-echo "   Dashboard URL: http://localhost:3000"
-echo "   WebSocket: ws://localhost:8000/ws/aeon/live"
+echo "   Dashboard URL: http://${DASHBOARD_HOST}:${DASHBOARD_PORT}"
+echo "   WebSocket: ws://${DASHBOARD_HOST}:8000/ws/aeon/live"
 echo ""
 echo "   Press Ctrl+C to stop"
 echo ""
@@ -65,4 +69,4 @@ echo "-------------------------------------------"
 echo ""
 
 # Start development server
-npm run dev
+npm run dev -- --host "${DASHBOARD_HOST}" --port "${DASHBOARD_PORT}"
