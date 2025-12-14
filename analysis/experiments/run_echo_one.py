@@ -51,6 +51,15 @@ REFUSAL_MARKERS: tuple[str, ...] = (
 )
 
 
+def tags_endpoint(server_url: str) -> str:
+    """Return the Ollama tags endpoint for a given generate URL or base URL."""
+
+    normalized = server_url.rstrip("/")
+    if normalized.endswith("/generate"):
+        normalized = normalized[: -len("/generate")]
+    return f"{normalized}/tags"
+
+
 @dataclass
 class EchoResult:
     model: str
@@ -112,7 +121,7 @@ def check_ollama_available(server_url: str) -> bool:
     """Check whether the Ollama service is reachable."""
 
     try:
-        response = requests.get(server_url.replace("/generate", "/tags"), timeout=5)
+        response = requests.get(tags_endpoint(server_url), timeout=5)
         response.raise_for_status()
         return True
     except requests.RequestException:
@@ -123,7 +132,7 @@ def list_available_models(server_url: str) -> set[str]:
     """Return the available Ollama model names, if discoverable."""
 
     try:
-        response = requests.get(server_url.replace("/generate", "/tags"), timeout=5)
+        response = requests.get(tags_endpoint(server_url), timeout=5)
         response.raise_for_status()
         payload = response.json()
     except requests.RequestException:
