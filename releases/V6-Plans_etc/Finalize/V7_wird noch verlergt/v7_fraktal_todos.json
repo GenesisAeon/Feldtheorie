@@ -1,16 +1,16 @@
 {
   "meta": {
     "scope": "releases/V6-Plans_etc/Finalize/V7_wird noch verlergt",
-    "updated": "2025-12-14T00:00:00Z",
+    "updated": "2025-12-14T09:43:45Z",
     "generated_by": "ChefDevAI (GPT-5.1-Codex-Max)",
-    "run_state": "pass-6",
+    "run_state": "pass-7",
     "completion_status": "follow-up-required",
-    "notes": "Sechster Lauf: Aeon-Testinfrastruktur + Dashboard-Launcher live (TESTING_GUIDE, test_aeon.sh, setup/start_dashboard.sh); ECHO-I-Guide/Quickstart + run_echo_i.sh bereit. Nächster Fokus: API-Brücke mit τ*-Safeguards und ECHO-I-Datenpipeline/ΔAIC-Auswertung."
+    "notes": "Siebter Lauf: API/WebSocket-Vertrag skizziert (health + sigillin_stream) mit τ*-Handshake-Safeguard; priorisiert werden jetzt die FastAPI-Brücke und das tägliche Consensus-Loop-Hardening, bevor die ECHO-I-Datenpipeline ΔAIC/R² liefert."
   },
   "tasks": [
     {
       "id": "v7-api-bridge",
-      "status": "todo",
+      "status": "in-progress",
       "priority": "critical",
       "description": "FastAPI-Grundlage mit /health und WebSocket-Live-Streaming bauen, Sigillin-Kernel-Hooks aktivieren und β/κ-Checks pro Request erzwingen (σ(β(R-Θ)) stabilisieren).",
       "source_docs": [
@@ -21,6 +21,10 @@
         "WebSocket-Test mit httpx/pytest-asyncio besteht.",
         "Kernel-Validierung greift bei jedem Stream-Start (β≈4.8, ζ-Puffer).",
         "Monitoring-Logs zeigen tau*-Delay für negative ζ(R)."
+      ],
+      "progress": [
+        "Contract für /health + sigillin_stream festgelegt.",
+        "Test-Harness mit httpx/pytest-asyncio geplant inklusive τ*-Instrumentation beim Handshake."
       ]
     },
     {
