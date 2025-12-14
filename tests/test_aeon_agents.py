@@ -170,24 +170,27 @@ def test_collective_distance_matrix():
 def test_collective_consensus_detection():
     """Test consensus detection."""
     # Create agents with similar positions (consensus)
+    # Use larger noise to ensure non-zero distances
     position = np.array([1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
     agents_similar = [
-        SemanticAgent(name=f"Agent-{i}", semantic_position=position + np.random.randn(8) * 0.01)
+        SemanticAgent(name=f"Agent-{i}", semantic_position=position + np.random.randn(8) * 0.1)
         for i in range(3)
     ]
     interface_similar = CollectiveInterface(agents_similar)
 
-    # Create agents with different positions (no consensus)
-    agents_different = [SemanticAgent(name=f"Agent-{i}") for i in range(3)]
+    # Create agents with very different positions (no consensus)
+    agents_different = [
+        SemanticAgent(name=f"Agent-{i}", semantic_position=np.random.randn(8) * 5.0)
+        for i in range(3)
+    ]
     interface_different = CollectiveInterface(agents_different)
 
-    # Similar agents should have consensus
-    assert interface_similar.detect_consensus(threshold=0.5) is True
+    # Similar agents should have consensus (with appropriate threshold)
+    # Use == instead of 'is' for numpy boolean comparison
+    assert interface_similar.detect_consensus(threshold=1.0) == True
 
-    # Different agents may not have consensus
-    # (This test is probabilistic, so we just check it runs)
-    consensus = interface_different.detect_consensus(threshold=0.3)
-    assert isinstance(consensus, bool)
+    # Different agents should not have consensus (tight threshold)
+    assert interface_different.detect_consensus(threshold=0.5) == False
 
 
 def test_collective_field_metrics():
