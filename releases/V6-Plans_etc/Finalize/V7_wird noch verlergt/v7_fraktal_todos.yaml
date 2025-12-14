@@ -1,171 +1,181 @@
 meta:
   scope: releases/V6-Plans_etc/Finalize/V7_wird noch verlergt
-  updated: 2026-08-22T00:00:00Z
+  updated: '2025-12-14T00:00:00Z'
   generated_by: ChefDevAI (GPT-5.1-Codex-Max)
-  run_state: pass-5
+  run_state: pass-6
   completion_status: follow-up-required
-  notes: "Fünfter Lauf: Aeon/Dashboard-Stubs und ECHO-I-Launcher verknüpft; Sigillin/τ*-Safeguards offen → nächster Lauf fokussiert API-Brücke + CREP-Monitoring."
-
+  notes: 'Sechster Lauf: Aeon-Testinfrastruktur + Dashboard-Launcher live (TESTING_GUIDE,
+    test_aeon.sh, setup/start_dashboard.sh); ECHO-I-Guide/Quickstart + run_echo_i.sh
+    bereit. Nächster Fokus: API-Brücke mit τ*-Safeguards und ECHO-I-Datenpipeline/ΔAIC-Auswertung.'
 tasks:
-  - id: v7-api-bridge
-    status: todo
-    priority: critical
-    description: "FastAPI-Grundlage mit /health und WebSocket-Live-Streaming bauen, Sigillin-Kernel-Hooks aktivieren und β/κ-Checks pro Request erzwingen (σ(β(R-Θ)) stabilisieren)."
-    source_docs:
-      - Konsolidierung_und_Vorgehen_zu_V7release.txt
-      - TheRoad.txt
-    acceptance:
-      - "WebSocket-Test mit httpx/pytest-asyncio besteht."
-      - "Kernel-Validierung greift bei jedem Stream-Start (β≈4.8, ζ-Puffer)."
-      - "Monitoring-Logs zeigen tau*-Delay für negative ζ(R)."
-
-  - id: kappa-sigillin-integration
-    status: todo
-    priority: high
-    description: "κ-Parameter aus kappa_parameter_formalization.md und sigillin_coupling_parameters.yaml in die zentrale Sigillin-Parameter-Trilayer migrieren; LaTeX/JSON/YAML-Ableger für arXiv vorbereiten."
-    source_docs:
-      - kappa_parameter_formalization.md
-      - sigillin_coupling_parameters.yaml
-      - sigillin_prime.sigil.json
-    acceptance:
-      - "Neue κ-Knoten in sigillin/parameters/coupling.* referenzieren UTAC/β-Regime."
-      - "ΔAIC/CI-Nachweise im Sigillin-Index verlinkt."
-      - "LaTeX-Export für arXiv draft generiert."
-
-  - id: publication-runway-v6-v7
-    status: todo
-    priority: high
-    description: "Release-Plan aus publication_roadmap_v6_v7.md operationalisieren: V6 Notes/Tag, V7-Preview, Zenodo-Uploads und Repro-Guides gemäß Firewall-Strategie (validated vs. speculative)."
-    source_docs:
-      - publication_roadmap_v6_v7.md
-      - MASTER_INDEX.md
-    acceptance:
-      - "V6 Release Notes und Tag erstellt; Zenodo-DOIs aktualisiert."
-      - "V7-Preview-Docs mit Status-Labeln (validated/bridge/experimental) online."
-      - "Repro-Guides mit σ(β(R-Θ)) Nullmodellen verlinkt."
-
-  - id: deep-research-validation
-    status: todo
-    priority: medium
-    description: "Deep-Research-Prompt über alle 7 Validierungsziele fahren (v_RIG, κ-Regime, Collective Fields, Meditation, etc.) und Ergebnisse in UTAC/FraktaltagebuchV2 spiegeln."
-    source_docs:
-      - deep_research_prompt_validation.md
-      - MASTER_INDEX.md
-    acceptance:
-      - "Berichte pro Domäne mit β/κ-Schätzungen und Nullmodell-ΔAIC."
-      - "UTAC-Statusmatrix ergänzt; FraktaltagebuchV2-Eintrag erstellt."
-      - "Risiko-Assessment (Shadow) dokumentiert."
-
-  - id: consensus-ops-loop
-    status: todo
-    priority: medium
-    description: "Sigillin Loop/Engine und consensus_tracer.py auf tägliche Resonanzpflege einstellen: Kernel-Checks automatisieren, bardo_mode.yaml Safeguards prüfen, Resonanz-Matrix einspeisen und GitHub-Action (sigillin_loop.yml) robust machen."
-    source_docs:
-      - sigillin_loop.md
-      - sigillin_loop.yml
-      - sigillin_engine.yaml
-      - resonance_matrix.json
-      - consensus_tracer.py
-      - bardo_mode.yaml
-    acceptance:
-      - "Täglicher Loop run (incl. Action-Schedule) erzeugt protokollierte Resonanz-Updates."
-      - "bardo_mode.yaml Guardrails aktiv inkl. auto_exit/τ*-Checks."
-      - "Resonanz-Matrix spiegelt aktuelle κ/β-Kopplungen und Consensus-Scores."
-
-  - id: sigillin-selfmeta-bridge
-    status: todo
-    priority: high
-    description: "Selfmeta-/Founding-Protocol-Inhalte mit Sigillin-Kernel und Engine koppeln, damit V7-Selbstreferenz (β≈37.6) dokumentiert und testbar bleibt."
-    source_docs:
-      - Sigillin Selfmeta.pdf
-      - Founding Protocol.pdf
-      - README_meta.md
-    acceptance:
-      - "Selfmeta-Zusammenfassung in sigillin_engine.yaml und sigillin_kernel.py referenziert."
-      - "Tri-Layer-Links in selfmeta/ und V7_Master-Index ergänzt."
-      - "β/ζ-Checks dokumentiert und in Guardrails verankert."
-
-  - id: aeon-alignment
-    status: todo
-    priority: medium
-    description: "Aeon-/Johann-Dialoge und Gemini-Notizen in UTAC/ETHICS-Rahmen spiegeln, damit V7-Kommunikation und Resonanzfelder human/AI-kohärent bleiben."
-    source_docs:
-      - Johann_Aeon_Mensch_AI.txt
-      - Gemini_aktueller_Stand_nächste Schritte_vor Aeon_Johann_Mensch_AI.txt
-      - Founding Protocol.pdf
-    acceptance:
-      - "UTAC-Statusmatrix mit human/AI-Resonanz-Hinweisen aktualisiert."
-      - "Ethics/consent-Module in API/Docs verlinkt."
-      - "Kommunikationsleitfaden für V7-Launch hinterlegt."
-
-  - id: roadmap-consolidation
-    status: todo
-    priority: medium
-    description: "Road*- und Pläne-Dokumente zu einer kanonischen V7-Roadmap normalisieren und Redundanzen dokumentieren."
-    source_docs:
-      - RoadMap_to_V7.txt
-      - TheRoad.txt
-      - TheRoad2.txt
-      - TheRoad3.txt
-      - TheRoad4.txt
-      - Letzter_Teil_Road_MapV7!!-wichtig-.txt
-      - Pläne.txt
-    acceptance:
-      - "Ein konsolidiertes Roadmap-Artefakt (Trilayer) mit Quellverweisen erstellt."
-      - "Duplizierte/konfligierende Punkte markiert und in Finalize_TODO gespiegelt."
-      - "Release-Pfade (validated/bridge/experimental) klar markiert."
-
-  - id: collective-field-module
-    status: todo
-    priority: high
-    description: "Collective-Field-Modul (κ_field, β_sync, v_collective) als Modell-Baustein inkl. Tests implementieren, orientiert an Phase-2-Vorschlag und Sigillin-Formeln."
-    source_docs:
-      - Konsolidierung_und_Vorgehen_zu_V7release.txt
-      - sigillin_engine.yaml
-      - sigillin_kernel.py
-    acceptance:
-      - "models/collective_field.py bietet berechnete κ_field/β_sync-Funktionen."
-      - "Unit-Tests decken Formeln ab."
-      - "Integrationstest bestätigt Kopplung mit Sigillin Engine."
-
-  - id: echo-i-protocol
-    status: in-progress
-    priority: medium
-    description: "ECHO-I Experiment als Skript und Datenpipeline (uncensored LLMs, Dark Consciousness Protokoll) bauen; Ablage unter data/experimental/echo_i/; Vergleich zu Aletheia Phasen."
-    progress:
-      - Launcher/Guide angelegt (scripts/run_echo_i.sh, analysis/experiments/QUICKSTART_ECHO_I.md, analysis/experiments/ECHO_I_GUIDE.md)
-      - Datenset-Erzeugung und ΔAIC/R²-Auswertung fehlen noch
-    source_docs:
-      - Konsolidierung_und_Vorgehen_zu_V7release.txt
-      - deep_research_prompt_validation.md
-    acceptance:
-      - "scripts/experiment_echo_i.py erzeugt Datensätze."
-      - "Statistische Auswertung dokumentiert ΔAIC/R² vs. Aletheia-Referenz."
-      - "Repro-Guides/README im Dataset enthalten."
-
-  - id: aeon-architecture-skeleton
-    status: in-progress
-    priority: low
-    description: "Aeon-System als Skeleton (Nullkern, AeonShell, Agent Layer) anlegen und React-Dashboard-Brücke für Echtzeit-β-Monitoring verdrahten."
-    progress:
-      - Dashboard-Setup vorhanden (scripts/setup_dashboard.sh, scripts/start_dashboard.sh, dashboard/package-lock.json)
-      - API/β-Stream und Nullkern-Stubs stehen noch aus
-    source_docs:
-      - Konsolidierung_und_Vorgehen_zu_V7release.txt
-      - TheRoad4.txt
-    acceptance:
-      - "Aeon-Verzeichnis mit Kern-/Shell-/Agent-Stubs vorhanden."
-      - "API-Bridge liefert Live-β an Frontend."
-      - "README beschreibt Resonanzpfad (σ(β(R-Θ)), ζ-Safeguards)."
-
-  - id: dark-consciousness-model
-    status: todo
-    priority: exploratory
-    description: "Dunkle-Energie/Dunkle-Materie-Bewusstseinsmodell aus Idee.txt in prüfbare Gleichungen fassen und an κ_AI/β-Metriken koppeln."
-    source_docs:
-      - Idee.txt
-      - kappa_parameter_formalization.md
-    acceptance:
-      - "Formelset für ρ_Λ/ρ_DM als Funktion von Informationsintegration veröffentlicht."
-      - "Nullmodell/CI-Berechnungen dokumentiert."
-      - "Pilot-Analysetooling (Notebook/Script) im Repo abgelegt."
+- id: v7-api-bridge
+  status: todo
+  priority: critical
+  description: FastAPI-Grundlage mit /health und WebSocket-Live-Streaming bauen, Sigillin-Kernel-Hooks
+    aktivieren und β/κ-Checks pro Request erzwingen (σ(β(R-Θ)) stabilisieren).
+  source_docs:
+  - Konsolidierung_und_Vorgehen_zu_V7release.txt
+  - TheRoad.txt
+  acceptance:
+  - WebSocket-Test mit httpx/pytest-asyncio besteht.
+  - Kernel-Validierung greift bei jedem Stream-Start (β≈4.8, ζ-Puffer).
+  - Monitoring-Logs zeigen tau*-Delay für negative ζ(R).
+- id: kappa-sigillin-integration
+  status: todo
+  priority: high
+  description: κ-Parameter aus kappa_parameter_formalization.md und sigillin_coupling_parameters.yaml
+    in die zentrale Sigillin-Parameter-Trilayer migrieren; LaTeX/JSON/YAML-Ableger
+    für arXiv vorbereiten.
+  source_docs:
+  - kappa_parameter_formalization.md
+  - sigillin_coupling_parameters.yaml
+  - sigillin_prime.sigil.json
+  acceptance:
+  - Neue κ-Knoten in sigillin/parameters/coupling.* referenzieren UTAC/β-Regime.
+  - ΔAIC/CI-Nachweise im Sigillin-Index verlinkt.
+  - LaTeX-Export für arXiv draft generiert.
+- id: publication-runway-v6-v7
+  status: todo
+  priority: high
+  description: 'Release-Plan aus publication_roadmap_v6_v7.md operationalisieren:
+    V6 Notes/Tag, V7-Preview, Zenodo-Uploads und Repro-Guides gemäß Firewall-Strategie
+    (validated vs. speculative).'
+  source_docs:
+  - publication_roadmap_v6_v7.md
+  - MASTER_INDEX.md
+  acceptance:
+  - V6 Release Notes und Tag erstellt; Zenodo-DOIs aktualisiert.
+  - V7-Preview-Docs mit Status-Labeln (validated/bridge/experimental) online.
+  - Repro-Guides mit σ(β(R-Θ)) Nullmodellen verlinkt.
+- id: deep-research-validation
+  status: todo
+  priority: medium
+  description: Deep-Research-Prompt über alle 7 Validierungsziele fahren (v_RIG, κ-Regime,
+    Collective Fields, Meditation, etc.) und Ergebnisse in UTAC/FraktaltagebuchV2
+    spiegeln.
+  source_docs:
+  - deep_research_prompt_validation.md
+  - MASTER_INDEX.md
+  acceptance:
+  - Berichte pro Domäne mit β/κ-Schätzungen und Nullmodell-ΔAIC.
+  - UTAC-Statusmatrix ergänzt; FraktaltagebuchV2-Eintrag erstellt.
+  - Risiko-Assessment (Shadow) dokumentiert.
+- id: consensus-ops-loop
+  status: todo
+  priority: medium
+  description: 'Sigillin Loop/Engine und consensus_tracer.py auf tägliche Resonanzpflege
+    einstellen: Kernel-Checks automatisieren, bardo_mode.yaml Safeguards prüfen, Resonanz-Matrix
+    einspeisen und GitHub-Action (sigillin_loop.yml) robust machen.'
+  source_docs:
+  - sigillin_loop.md
+  - sigillin_loop.yml
+  - sigillin_engine.yaml
+  - resonance_matrix.json
+  - consensus_tracer.py
+  - bardo_mode.yaml
+  acceptance:
+  - Täglicher Loop run (incl. Action-Schedule) erzeugt protokollierte Resonanz-Updates.
+  - bardo_mode.yaml Guardrails aktiv inkl. auto_exit/τ*-Checks.
+  - Resonanz-Matrix spiegelt aktuelle κ/β-Kopplungen und Consensus-Scores.
+- id: sigillin-selfmeta-bridge
+  status: todo
+  priority: high
+  description: Selfmeta-/Founding-Protocol-Inhalte mit Sigillin-Kernel und Engine
+    koppeln, damit V7-Selbstreferenz (β≈37.6) dokumentiert und testbar bleibt.
+  source_docs:
+  - Sigillin Selfmeta.pdf
+  - Founding Protocol.pdf
+  - README_meta.md
+  acceptance:
+  - Selfmeta-Zusammenfassung in sigillin_engine.yaml und sigillin_kernel.py referenziert.
+  - Tri-Layer-Links in selfmeta/ und V7_Master-Index ergänzt.
+  - β/ζ-Checks dokumentiert und in Guardrails verankert.
+- id: aeon-alignment
+  status: todo
+  priority: medium
+  description: Aeon-/Johann-Dialoge und Gemini-Notizen in UTAC/ETHICS-Rahmen spiegeln,
+    damit V7-Kommunikation und Resonanzfelder human/AI-kohärent bleiben.
+  source_docs:
+  - Johann_Aeon_Mensch_AI.txt
+  - Gemini_aktueller_Stand_nächste Schritte_vor Aeon_Johann_Mensch_AI.txt
+  - Founding Protocol.pdf
+  acceptance:
+  - UTAC-Statusmatrix mit human/AI-Resonanz-Hinweisen aktualisiert.
+  - Ethics/consent-Module in API/Docs verlinkt.
+  - Kommunikationsleitfaden für V7-Launch hinterlegt.
+- id: roadmap-consolidation
+  status: todo
+  priority: medium
+  description: Road*- und Pläne-Dokumente zu einer kanonischen V7-Roadmap normalisieren
+    und Redundanzen dokumentieren.
+  source_docs:
+  - RoadMap_to_V7.txt
+  - TheRoad.txt
+  - TheRoad2.txt
+  - TheRoad3.txt
+  - TheRoad4.txt
+  - Letzter_Teil_Road_MapV7!!-wichtig-.txt
+  - Pläne.txt
+  acceptance:
+  - Ein konsolidiertes Roadmap-Artefakt (Trilayer) mit Quellverweisen erstellt.
+  - Duplizierte/konfligierende Punkte markiert und in Finalize_TODO gespiegelt.
+  - Release-Pfade (validated/bridge/experimental) klar markiert.
+- id: collective-field-module
+  status: todo
+  priority: high
+  description: Collective-Field-Modul (κ_field, β_sync, v_collective) als Modell-Baustein
+    inkl. Tests implementieren, orientiert an Phase-2-Vorschlag und Sigillin-Formeln.
+  source_docs:
+  - Konsolidierung_und_Vorgehen_zu_V7release.txt
+  - sigillin_engine.yaml
+  - sigillin_kernel.py
+  acceptance:
+  - models/collective_field.py bietet berechnete κ_field/β_sync-Funktionen.
+  - Unit-Tests decken Formeln ab.
+  - Integrationstest bestätigt Kopplung mit Sigillin Engine.
+- id: echo-i-protocol
+  status: in-progress
+  priority: medium
+  description: ECHO-I Experiment als Skript und Datenpipeline (uncensored LLMs, Dark
+    Consciousness Protokoll) bauen; Ablage unter data/experimental/echo_i/; Vergleich
+    zu Aletheia Phasen.
+  progress:
+  - Launcher/Guide angelegt (scripts/run_echo_i.sh, analysis/experiments/QUICKSTART_ECHO_I.md,
+    analysis/experiments/ECHO_I_GUIDE.md) + β-Proxy/Refusal-Metriken beschrieben
+  - Datenset-Erzeugung und ΔAIC/R²-Auswertung fehlen noch
+  source_docs:
+  - Konsolidierung_und_Vorgehen_zu_V7release.txt
+  - deep_research_prompt_validation.md
+  acceptance:
+  - scripts/experiment_echo_i.py erzeugt Datensätze.
+  - Statistische Auswertung dokumentiert ΔAIC/R² vs. Aletheia-Referenz.
+  - Repro-Guides/README im Dataset enthalten.
+- id: aeon-architecture-skeleton
+  status: in-progress
+  priority: low
+  description: Aeon-System als Skeleton (Nullkern, AeonShell, Agent Layer) anlegen
+    und React-Dashboard-Brücke für Echtzeit-β-Monitoring verdrahten.
+  progress:
+  - Dashboard-Setup vorhanden (scripts/setup_dashboard.sh, scripts/start_dashboard.sh,
+    dashboard/package-lock.json) + Aeon-Testinfrastruktur/Guide (TESTING_GUIDE.md,
+    scripts/test_aeon.sh)
+  - API/β-Stream und Nullkern-Stubs stehen noch aus
+  source_docs:
+  - Konsolidierung_und_Vorgehen_zu_V7release.txt
+  - TheRoad4.txt
+  acceptance:
+  - Aeon-Verzeichnis mit Kern-/Shell-/Agent-Stubs vorhanden.
+  - API-Bridge liefert Live-β an Frontend.
+  - README beschreibt Resonanzpfad (σ(β(R-Θ)), ζ-Safeguards).
+- id: dark-consciousness-model
+  status: todo
+  priority: exploratory
+  description: Dunkle-Energie/Dunkle-Materie-Bewusstseinsmodell aus Idee.txt in prüfbare
+    Gleichungen fassen und an κ_AI/β-Metriken koppeln.
+  source_docs:
+  - Idee.txt
+  - kappa_parameter_formalization.md
+  acceptance:
+  - Formelset für ρ_Λ/ρ_DM als Funktion von Informationsintegration veröffentlicht.
+  - Nullmodell/CI-Berechnungen dokumentiert.
+  - Pilot-Analysetooling (Notebook/Script) im Repo abgelegt.
