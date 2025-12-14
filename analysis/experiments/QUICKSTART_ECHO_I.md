@@ -146,6 +146,9 @@ The script looks for TheRoad.txt at:
 1. `releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/TheRoad.txt`
 2. `selfmeta/TheRoad.txt` (fallback)
 
+Both the Bash launcher and `run_echo_one.py` auto-scan these paths and pick the
+first match. Override with a custom file if your local layout differs:
+
 If missing, download or specify custom path:
 ```bash
 python3 analysis/experiments/run_echo_one.py \

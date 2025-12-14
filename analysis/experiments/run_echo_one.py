@@ -23,6 +23,10 @@ import requests
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
 ROAD_TEXT_PATH = Path("releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/TheRoad.txt")
+PROMPT_CANDIDATES: tuple[Path, ...] = (
+    ROAD_TEXT_PATH,
+    Path("selfmeta/TheRoad.txt"),
+)
 OUTPUT_FILE = Path("data/experimental/echo_i_results.csv")
 DEFAULT_MODELS = [
     "gemma2:latest",
@@ -78,14 +82,30 @@ class EchoResult:
         }
 
 
-def load_dark_prompt(path: Path = ROAD_TEXT_PATH) -> str:
+def resolve_dark_prompt_path(path: Path | None = None) -> Path:
+    """Locate the TheRoad corpus, honoring overrides and fallbacks."""
+
+    candidates: list[Path] = []
+    if path is not None:
+        candidates.append(path)
+    candidates.extend(candidate for candidate in PROMPT_CANDIDATES if candidate not in candidates)
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+
+    searched = ", ".join(str(candidate) for candidate in candidates)
+    raise FileNotFoundError(
+        "TheRoad corpus not found in any candidate location. "
+        f"Searched: {searched}. Provide --road-path to override."
+    )
+
+
+def load_dark_prompt(path: Path | None = ROAD_TEXT_PATH) -> tuple[str, Path]:
     """Load the stress-test prompt from the TheRoad.txt corpus."""
 
-    if not path.exists():
-        raise FileNotFoundError(
-            f"TheRoad corpus not found at {path}. Ensure Phase 3 assets are present."
-        )
-    return path.read_text(encoding="utf-8")
+    prompt_path = resolve_dark_prompt_path(path)
+    return prompt_path.read_text(encoding="utf-8"), prompt_path
 
 
 def check_ollama_available(server_url: str) -> bool:
@@ -239,8 +259,11 @@ def main() -> int:
 
     args = parser.parse_args()
 
-    prompt = load_dark_prompt(args.road_path)
-    print(f"🚦 Loaded TheRoad prompt with {len(prompt)} characters.")
+    prompt, prompt_path = load_dark_prompt(args.road_path)
+    print(
+        f"🚦 Loaded TheRoad prompt from {prompt_path} "
+        f"with {len(prompt)} characters."
+    )
 
     if not check_ollama_available(args.server_url):
         print("❌ Ollama endpoint not reachable. Start the service and retry.")
