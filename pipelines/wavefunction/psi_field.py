@@ -85,13 +85,21 @@ class PsiField:
 
     @staticmethod
     def _safe_trapezoid(values, abscissa):
-        """Numerically integrate with graceful fallbacks for tiny grids."""
+        """Numerically integrate with graceful fallbacks for tiny grids.
 
-        values_arr = np.asarray(values, dtype=float)
-        abscissa_arr = np.asarray(abscissa, dtype=float)
+        Ensures both arrays share a 1D shape before applying the trapezoidal
+        rule so σ(β(R-Θ)) areas remain well-defined even when inputs are
+        partially broadcasted.
+        """
+
+        values_arr = np.atleast_1d(np.asarray(values, dtype=float))
+        abscissa_arr = np.atleast_1d(np.asarray(abscissa, dtype=float))
 
         if values_arr.size == 0 or abscissa_arr.size == 0:
             return 0.0
+
+        if values_arr.shape != abscissa_arr.shape and abscissa_arr.size > 1:
+            raise ValueError("values and abscissa must share the same shape")
 
         if abscissa_arr.size < 2:
             return float(np.sum(values_arr))
@@ -112,8 +120,14 @@ class PsiField:
         if r_vals is None:
             r_vals = np.linspace(0, 10, 100)
 
+        r_vals = np.atleast_1d(np.asarray(r_vals, dtype=float))
+
         if psi is None:
             psi = self.compute_wavefunction(r_vals, theta, phi, t)
+        else:
+            psi = np.asarray(psi)
+            if psi.shape != r_vals.shape:
+                raise ValueError("psi and r_vals must share the same shape for UTAC collapse")
 
         prob_density = np.abs(psi) ** 2
 
