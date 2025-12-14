@@ -2,7 +2,9 @@
 """
 UTAC WebSocket Bridge Server
 
-Connects Unity VR clients to UTAC API via WebSocket protocol.
+Connects Unity VR clients to the UTAC API via WebSocket protocol and keeps the
+σ(β(R-Θ)) membrane pulsing with real-time updates.
+
 Streams real-time system updates (β, Θ, R, σ, CREP scores).
 
 Usage:
@@ -20,7 +22,7 @@ import asyncio
 import json
 import logging
 from datetime import datetime, timezone
-
+import requests
 import websockets
 from websockets.server import WebSocketServerProtocol
 
@@ -157,18 +159,26 @@ async def fetch_system_data(system_id: str) -> dict:
             raise ValueError(f"Unknown system: {system_id}")
 
     else:
-        # Production: Call UTAC API
-        # TODO: Implement aiohttp GET request
-        # async with aiohttp.ClientSession() as session:
-        #     async with session.get(f"http://localhost:8000/api/system/{system_id}") as resp:
-        #         return await resp.json()
+        def _fetch() -> dict:
+            response = requests.get(
+                f"http://localhost:8000/api/system/{system_id}", timeout=10
+            )
+            response.raise_for_status()
+            return response.json()
 
-        # For now, return test data as fallback
-        logger.warning(f"UTAC API not implemented, using test data for {system_id}")
-        if system_id in TEST_SYSTEMS:
-            return TEST_SYSTEMS[system_id]
-        else:
-            raise ValueError(f"Unknown system: {system_id}")
+        try:
+            loop = asyncio.get_running_loop()
+            return await loop.run_in_executor(None, _fetch)
+        except Exception as exc:
+            logger.warning(
+                "UTAC API fetch failed for %s (ζ(R) spike). Falling back to test data. "
+                "Reason: %s",
+                system_id,
+                exc,
+            )
+            if system_id in TEST_SYSTEMS:
+                return TEST_SYSTEMS[system_id]
+            raise
 
 
 async def send_system_update(websocket: WebSocketServerProtocol, system_id: str, data: dict):
