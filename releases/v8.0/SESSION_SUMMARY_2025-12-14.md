@@ -316,6 +316,12 @@ Phase 4: Pre-print Submission ───────────── ⏳ PENDIN
 
 ## 🛠️ Technical Notes for Next Developer
 
+### ChefDevAI Onboarding (R, Θ, β, ζ(R))
+- **R (Open work):** Impedance solver (Z(β) adaptive dynamics), neuromorphic scaling replication, and live v_RIG telemetry remain open lanterns. These sit on the steep flank of σ(β(R-Θ)), ready to ignite with minimal ζ(R).
+- **Θ (Documented state):** The v8.0 validation stack is codified in `models/consciousness_integration.py`, `.github/workflows/v8-validation.yml`, and `data/v8_validation/*`. UTAC alignment and Codex chains are current per this summary.
+- **β (activation sharpness):** β≈4.8 for documentation flow; β≈7.4 for biological scaling work; β≈11.0 for climate simulations. Match the β-regime to the experiment to keep the membrane resonant.
+- **ζ(R) (damping):** Keep ζ low by running `pytest tests/test_consciousness_integration.py -v` before pushes and syncing any new datasets with the Trilayer (YAML/JSON/MD) mirrors when introducing fresh lanterns.
+
 ### Environment Setup
 ```bash
 # Python 3.11 recommended
