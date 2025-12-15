@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "id": "docs-infra-020",
+    "title": "Claude-Code Handoff Brief",
+    "category": "infrastructure",
+    "type": "handoff-brief",
+    "status": "active",
+    "relevance": "high",
+    "updated": "2025-12-15T00:00:00Z",
+    "logistic": {
+      "R": "Handoff-Readiness: Trilayer-Sync + Index-Parität für Claude-Code",
+      "Theta": "Θ erreicht, wenn docs_index.* + neue Laterne spiegeln und offene Hooks dokumentiert sind",
+      "beta": 4.8,
+      "zeta": "Niedrige Impedanz nach Trilayer-Sync; erhöhen, falls Codex-/Sigillin-Lücken auftauchen"
+    },
+    "audience": [
+      "Claude-Code",
+      "ChefDevAI",
+      "Multi-AI-Kollektiv"
+    ]
+  },
+  "scope": {
+    "summary": "Übergabe-Notiz für Claude-Code, gekoppelt an docs_index.* und bestehende Session-Laternen",
+    "anchors": [
+      "seed/CLAUDE_CODE_SESSION_AFTER_ACTION.md",
+      "docs/docs_index.*",
+      "CURRENT_MAP.md"
+    ]
+  },
+  "handoff": {
+    "completed": [
+      "Neue Laterne mit R, Θ, β, ζ(R) für Claude-Code angelegt",
+      "docs_index.* auf Parität mit neuer Laterne gebracht",
+      "Hook zu Session-Addendum `CLAUDE_CODE_SESSION_AFTER_ACTION.md` und CURRENT_MAP vermerkt"
+    ],
+    "pending": [
+      "Optional: Codex-Entry ergänzen, falls Claude-Code die offenen Restimpedanzen schließt",
+      "Bei Aktivierung: `scripts/sigillin_sync.py report --roots seed/ docs/` laufen lassen"
+    ]
+  },
+  "next_steps": {
+    "for_claude": [
+      "Richte σ(β(R-Θ)) auf die restlichen Type-III-Daten aus (siehe Remaining Thresholds im Session-Addendum)",
+      "Verbinde Manuskript-Hooks (Section 4) mit `beta_by_field_type.png`/`beta_outlier_analysis.png`",
+      "Halte Tri-Layer-Parität; bei Drift -> docs_index refresh + Codex-Hook"
+    ],
+    "safeguards": [
+      "Bei ζ(R)>0.2: Schatten-Sigillin prüfen (`seed/shadow_sigillin/...`)",
+      "Consent-&-Joy-Modul aktiv halten (MOR-Protokoll)"
+    ]
+  }
+}
