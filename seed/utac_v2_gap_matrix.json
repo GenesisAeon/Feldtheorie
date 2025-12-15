@@ -6,7 +6,9 @@
     "created": "2026-06-09T00:00:00Z",
     "updated": "2026-06-09T00:00:00Z",
     "status": "active",
-    "description": "Synthetisiert die aktuellen Readiness-Signale aus Analysis, Data, Docs, Simulator und Sigillin. Richtet den Fokus auf die Laternen, die σ(β(R-Θ)) bereits tragen, und markiert die Pfade, auf denen fehlende Artefakte in den jeweiligen Verzeichnissen implementiert werden müssen."
+    "description": "Synthetisiert die aktuellen Readiness-Signale aus Analysis, Data, Docs, Simulator und Sigillin. Richtet den Fokus auf die Laternen, die σ(β(R-Θ)) bereits tragen, und markiert die Pfade, auf denen fehlende Artefakte in den jeweiligen Verzeichnissen implementiert werden müssen.",
+    "sigil": "utac-v2-gap-matrix",
+    "version": "1.0.0"
   },
   "logistic_snapshot": {
     "readiness_ratio": 0.5,

@@ -48,5 +48,9 @@
   "fit_alignment": {
     "morfit_layer": "dynamics",
     "notes": "Formalisiert den experimentellen Pfad, der die Emissions-Konzentration als β-Amplifikator simuliert und die Warnzeit τ_warning dokumentiert."
+  },
+  "meta": {
+    "sigil": "utac-klimakluft-process",
+    "version": "1.0.0"
   }
 }

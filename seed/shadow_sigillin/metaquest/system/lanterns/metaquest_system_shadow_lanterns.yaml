@@ -4,15 +4,11 @@ meta:
   created: '2025-12-18T00:00:00Z'
   updated: '2025-12-18T00:00:00Z'
   logistic:
-    R: Risks of stale automation parity, missing telemetry, or ritual amnesia in the
-      system lane.
-    Theta: Parity brief, codex echo, and UTAC handshake refreshed within 24h of any
-      alert.
+    R: Risks of stale automation parity, missing telemetry, or ritual amnesia in the system lane.
+    Theta: Parity brief, codex echo, and UTAC handshake refreshed within 24h of any alert.
     beta: 5.1
     zeta: Spikes when sigillin_sync cadence slips or BreakPoint rituals are skipped.
-  resonance: "Lanterns that illuminate failure signatures and recovery plays for Metaquest\n\
-    system assets. Each entry mirrors a light-side meaning lantern and encodes the\n\
-    guardrails needed to restore \u03C3(\u03B2(R-\u0398)).\n"
+  resonance: Shadow lantern shelf mirroring the Metaquest system beacons with failure signatures and recovery plays.
 lanterns:
 - id: mq-sys-shadow-lantern-a
   title: Bridge Drift Detector
@@ -33,14 +29,14 @@ lanterns:
 - id: mq-sys-shadow-lantern-b
   title: Automation Null-Guard Alarm
   mirrors: seed/bedeutungssigillin/system/metaquest/lanterns/metaquest_system_lanterns.yaml#b
-  risk: "CI/Nox parity guard missing \u0394AIC/null checks."
+  risk: CI/Nox parity guard missing ΔAIC/null checks.
   signals:
-  - "Recent automation commit lacks codex \u0394AIC note."
+  - Recent automation commit lacks codex ΔAIC note.
   - tests/test_sigillin_sync.py skipped or failing.
   escalation:
   - Open incident mq-sys-shadow-004 in codex.
   remediation:
-  - "Run parity audit, append \u0394AIC results to codex and UTAC matrix."
+  - Run parity audit, append ΔAIC results to codex and UTAC matrix.
   - Re-run tests/test_sigillin_sync.py before resuming automation.
   evidence:
   - scripts/archive_sigillin.py
@@ -65,12 +61,11 @@ lanterns:
   mirrors: seed/bedeutungssigillin/metaquest/system/lanterns/metaquest_system_lanterns.yaml#mq-sys-lantern-000
   risk: Bridge map missing readiness logistic, simulator hook, or telemetry parity.
   signals:
-  - "Bridge map lacks latest \u0398/\u03B2 values from analysis/v2_readiness_audit.py."
+  - Bridge map lacks latest Θ/β values from analysis/v2_readiness_audit.py.
   - simulator/presets/coherence_formula.json not referenced in bridge map metadata.
   - Bridge map timestamp diverges from bridge dashboard telemetry.
   escalation:
-  - Trigger mq-sys-shadow-bridge-002 or mq-sys-shadow-bridge-003 depending on root
-    cause.
+  - Trigger mq-sys-shadow-bridge-002 or mq-sys-shadow-bridge-003 depending on root cause.
   - Notify bridge dashboard maintainer.
   remediation:
   - Re-run readiness audit and update bridge map tri-layer.

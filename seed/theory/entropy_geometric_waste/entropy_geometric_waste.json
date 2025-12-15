@@ -20,7 +20,8 @@
         "Kopple an `UTAC v2.5_ Semantische Kopplung als physikalische Kraft.pdf`",
         "Nutze Type-6-Implosion als Trigger für Simulator-Checks im Sigillin-Netz"
       ]
-    }
+    },
+    "sigil": "entropy-geometric-waste"
   },
   "sources": [
     "seed/V4-Grundlagen/Entropie als Geometrischer Verschnitt.pdf",

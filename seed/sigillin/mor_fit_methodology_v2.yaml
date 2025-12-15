@@ -1,64 +1,59 @@
-meta:
-  sigil_id: O-014
-  type: Type O (Order)
-  status: active
-  version: 2.0.0
-  created: '2026-08-27T00:05:00Z'
-  steward: GPT-5.1-Codex-Max
-  scope: MOR-FIT Infrastruktur V3
-  description: Extended MOR-FIT Methodology aus NextVersionmaybe formalisiert
-
+sigil_id: O-014
+type: Type O (Order)
+status: active
+version: 2.0.0
+created: '2026-08-27T00:05:00Z'
+steward: GPT-5.1-Codex-Max
+scope: MOR-FIT Infrastruktur V3
 logistic_frame:
   R: repository_resonance_progress
   Theta: 0.66
   beta: 4.8
-  zeta: 'σ-sync debt damped via trilayer parity'
-  sigma: '1 / (1 + exp(-beta * (R - Theta)))'
-
+  zeta: σ-sync debt damped via trilayer parity
+  sigma: 1 / (1 + exp(-beta * (R - Theta)))
 pillars:
-  - name: MOR
-    role: Multi-Orchestra-Research orchestriert spezialisierte KI-Plattformen
-    actions:
-      - task_decomposition_to_agent_strengths
-      - parallel_execution
-      - semantic_convergence_via_sigillin
-  - name: Sigillin_System
-    role: Trilayer-Gedächtnis (YAML/JSON/MD) für Navigation, Exekution und Narrativ
-    actions:
-      - maintain_trilayer_parity
-      - couple_meaning_order_dynamics
-      - cross_link_to_indices
-  - name: FIT
-    role: Fraktales Implementierungs-Tagebuch zur Kontext-Isolation
-    actions:
-      - per-phase_diaries
-      - agent_tasks_from_diary
-      - human_oversight_logging
-
+- name: MOR
+  role: Multi-Orchestra-Research orchestriert spezialisierte KI-Plattformen
+  actions:
+  - task_decomposition_to_agent_strengths
+  - parallel_execution
+  - semantic_convergence_via_sigillin
+- name: Sigillin_System
+  role: Trilayer-Gedächtnis (YAML/JSON/MD) für Navigation, Exekution und Narrativ
+  actions:
+  - maintain_trilayer_parity
+  - couple_meaning_order_dynamics
+  - cross_link_to_indices
+- name: FIT
+  role: Fraktales Implementierungs-Tagebuch zur Kontext-Isolation
+  actions:
+  - per-phase_diaries
+  - agent_tasks_from_diary
+  - human_oversight_logging
 workflows:
-  - name: V3_trilayer_sync
-    steps:
-      - sync v3_roadmap.{yaml,json,md}
-      - sync v3_codex.{yaml,json,md}
-      - verify sigma alignment with updated R_bar
-  - name: sigillin_fabrication
-    steps:
-      - classify concept (B/D/O)
-      - emit YAML/JSON/MD
-      - link to codex entry and indices
-  - name: archive_hygiene
-    steps:
-      - move raw sources to archive/v3_ideas
-      - backreference from sigillin sources
-      - keep lineage in git history
-
+- name: V3_trilayer_sync
+  steps:
+  - sync v3_roadmap.{yaml,json,md}
+  - sync v3_codex.{yaml,json,md}
+  - verify sigma alignment with updated R_bar
+- name: sigillin_fabrication
+  steps:
+  - classify concept (B/D/O)
+  - emit YAML/JSON/MD
+  - link to codex entry and indices
+- name: archive_hygiene
+  steps:
+  - move raw sources to archive/v3_ideas
+  - backreference from sigillin sources
+  - keep lineage in git history
 source_material:
   processed_from:
-    - archive/v3_ideas/NextVersionmaybe/MOR-FIT_METHODOLOGY_Extended.md
-    - archive/v3_ideas/NextVersionmaybe/MOR-FIT_Sigillin.txt
-
+  - archive/v3_ideas/NextVersionmaybe/MOR-FIT_METHODOLOGY_Extended.md
+  - archive/v3_ideas/NextVersionmaybe/MOR-FIT_Sigillin.txt
 fit_alignment:
   morfit_layer: order
-  notes: >-
-    Fixiert das Betriebssystem für V3: Orchestrierung (MOR), Gedächtnis (Sigillin),
-    Exekutionstagebücher (FIT) mit logistischer Aktivierung β=4.8.
+  notes: 'Fixiert das Betriebssystem für V3: Orchestrierung (MOR), Gedächtnis (Sigillin), Exekutionstagebücher (FIT) mit logistischer
+    Aktivierung β=4.8.'
+meta:
+  sigil: mor-fit-methodology
+  version: 1.0.0

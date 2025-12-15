@@ -4,13 +4,12 @@ meta:
   created: '2026-08-21T10:00:00Z'
   updated: '2026-08-21T10:00:00Z'
   logistic:
-    R: 'Unresolved Metaquest activation risks: Δindex drift, stale telemetry, unsynchronised
-      parity loops, unmirrored rituals, uncoupled urban-heat narrative.'
-    Theta: Bridge dashboard, compasses, parity brief, and codex carry identical timestamps
-      + gap notes within 24h, shadow entries recorded.
+    R: 'Unresolved Metaquest activation risks: Δindex drift, stale telemetry, unsynchronised parity loops, unmirrored rituals,
+      uncoupled urban-heat narrative.'
+    Theta: Bridge dashboard, compasses, parity brief, and codex carry identical timestamps + gap notes within 24h, shadow
+      entries recorded.
     beta: 5.1
-    zeta: Spikes if BreakPoint rituals or sigillin_sync exports lapse, or if activation
-      matrix/backlog diverge.
+    zeta: Spikes if BreakPoint rituals or sigillin_sync exports lapse, or if activation matrix/backlog diverge.
   light_coupling: ../../bedeutungssigillin/metaquest/metaquest_activation_gap_report.yaml
 risks:
 - id: mq-activation-shadow-Δindex
@@ -24,8 +23,7 @@ risks:
   mitigation:
   - Freeze Metaquest merges, run archive_sigillin.py recount, attach diff to codex.
   - Implement/polish CI guard and record in UTAC status matrix implementation map.
-  - Confirm feldtheorie_index.* + seed_index.* include new assets before release work
-    resumes.
+  - Confirm feldtheorie_index.* + seed_index.* include new assets before release work resumes.
   guardrail:
     metric: Δindex parity
     threshold: 0 after remediation commit
@@ -48,12 +46,10 @@ risks:
   mirrors: mq-gap-ritual-mirror
   risk: BreakPoint rituals noted in light sigils but missing from shadow partners.
   signals:
-  - metaquest_system_sigil.yaml updated without metaquest_system_shadow_sigil.yaml
-    echo.
+  - metaquest_system_sigil.yaml updated without metaquest_system_shadow_sigil.yaml echo.
   - Codex entry lacks mq-sys-shadow or mq-sci-shadow identifier.
   - BreakPoint scripts executed without timestamp in shadow lanterns.
-  consequence: Recovery scripts fall out of sync; ζ(R) spikes during automation/outreach
-    adjustments.
+  consequence: Recovery scripts fall out of sync; ζ(R) spikes during automation/outreach adjustments.
   mitigation:
   - Update light + shadow sigils with shared ritual + codex references same day.
   - Annotate BreakPoint completion in codex + UTAC matrix, referencing both sigils.
@@ -63,14 +59,12 @@ risks:
     threshold: ≤24h difference between light/shadow ritual notes
 - id: mq-activation-shadow-urban-heat
   mirrors: mq-gap-urban-heat-bridge
-  risk: Urban-heat mechanism missing from Metaquest narrative; outreach lacks falsifiable
-    story.
+  risk: Urban-heat mechanism missing from Metaquest narrative; outreach lacks falsifiable story.
   signals:
   - analysis/urban_heat_analysis.py not updated after new data drop.
   - metaquest_campaign_map.md lacks ΔAIC>10 summary or codex reference.
   - UTAC backlog urban-heat row marked open for >1 sprint.
-  consequence: Campaign messaging drifts; reviewers question physical bridge for high-β
-    hotspots.
+  consequence: Campaign messaging drifts; reviewers question physical bridge for high-β hotspots.
   mitigation:
   - Schedule analysis rerun, store outputs, cite in Metaquest compass/map.
   - Log codex entry with mq-sci-shadow reference and ΔAIC summary.
@@ -80,14 +74,12 @@ risks:
     threshold: Backlog + compass cite mechanism within one sprint of data update
 - id: mq-activation-shadow-parity-loop
   mirrors: mq-gap-parity-loop
-  risk: Parity brief lacks playlist/endorsement echo; compasses drift from governance
-    ledger.
+  risk: Parity brief lacks playlist/endorsement echo; compasses drift from governance ledger.
   signals:
   - docs/metaquest_parity_brief.md missing latest playlist id or endorsement timestamp.
   - simulator/presets updates without codex mention.
   - Bridge dashboard references different codex entry than parity brief.
-  consequence: Launch governance cannot certify readiness; endorsements misalign with
-    demos.
+  consequence: Launch governance cannot certify readiness; endorsements misalign with demos.
   mitigation:
   - Update parity brief, bridge, compasses with playlist + ledger referencing codex.
   - Record mq-bridge-shadow-001 remediation in codex + UTAC backlog.
@@ -122,8 +114,7 @@ playbooks:
   - Mirror changes in bridge + compasses.
   - Log mq-activation-shadow-parity-loop closure in codex + backlog.
 null_model:
-  description: Metaquest launch proceeds with stale telemetry, missing indices, or
-    half-specified parity loops.
+  description: Metaquest launch proceeds with stale telemetry, missing indices, or half-specified parity loops.
   detection:
   - Bridge dashboard older than codex entry by >24h.
   - Backlog rows remain open without codex status updates.

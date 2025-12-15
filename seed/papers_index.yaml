@@ -10,8 +10,8 @@ meta:
   created: '2025-11-06T14:38:12.072029'
   status: active
   sigillin_type: ordnungs-sigillin
-  note: Dies ist ein Ordnungs-Sigillin (Navigation/Indexierung). PDFs selbst sind
-    Bedeutungs-Sigillin.
+  note: Dies ist ein Ordnungs-Sigillin (Navigation/Indexierung). PDFs selbst sind Bedeutungs-Sigillin.
+  sigil: papers-index
 categories:
   theory:
     name: Theoretische Grundlagen
@@ -147,51 +147,42 @@ papers:
     version: '1.0'
     change_count: 1
 - id: paper-009
-  title: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz
-    Emergenz-1
-  path: Die Unified Theory of Adaptive Criticality_ Schwellenfeld-Dynamik als Universalgesetz
-    Emergenz-1.pdf
+  title: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz Emergenz-1
+  path: Die Unified Theory of Adaptive Criticality_ Schwellenfeld-Dynamik als Universalgesetz Emergenz-1.pdf
   category: theory
   type: paper
   status: stable
   relevance: medium
   keywords: []
-  description: 'PDF: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik
-    als Universalgesetz Emergenz-1'
+  description: 'PDF: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz Emergenz-1'
   temporal:
     created: '2025-11-03T13:28:37+01:00'
     modified: '2025-11-03T13:28:37+01:00'
     version: '1.0'
     change_count: 1
 - id: paper-010
-  title: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz
-    Emergenz-2
-  path: Die Unified Theory of Adaptive Criticality_ Schwellenfeld-Dynamik als Universalgesetz
-    Emergenz-2.pdf
+  title: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz Emergenz-2
+  path: Die Unified Theory of Adaptive Criticality_ Schwellenfeld-Dynamik als Universalgesetz Emergenz-2.pdf
   category: theory
   type: paper
   status: stable
   relevance: medium
   keywords: []
-  description: 'PDF: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik
-    als Universalgesetz Emergenz-2'
+  description: 'PDF: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz Emergenz-2'
   temporal:
     created: '2025-11-03T13:28:37+01:00'
     modified: '2025-11-03T13:28:37+01:00'
     version: '1.0'
     change_count: 1
 - id: paper-011
-  title: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz
-    Emergenz
-  path: Die Unified Theory of Adaptive Criticality_ Schwellenfeld-Dynamik als Universalgesetz
-    Emergenz.pdf
+  title: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz Emergenz
+  path: Die Unified Theory of Adaptive Criticality_ Schwellenfeld-Dynamik als Universalgesetz Emergenz.pdf
   category: theory
   type: paper
   status: stable
   relevance: medium
   keywords: []
-  description: 'PDF: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik
-    als Universalgesetz Emergenz'
+  description: 'PDF: Die Unified Theory of Adaptive Criticality  Schwellenfeld-Dynamik als Universalgesetz Emergenz'
   temporal:
     created: '2025-11-03T13:28:37+01:00'
     modified: '2025-11-03T13:28:37+01:00'
@@ -205,8 +196,7 @@ papers:
   status: stable
   relevance: medium
   keywords: []
-  description: 'PDF: Einheitliches Schwellenfeld-Modell  Universelle Prinzipien quer
-    durch Disziplinen'
+  description: 'PDF: Einheitliches Schwellenfeld-Modell  Universelle Prinzipien quer durch Disziplinen'
   temporal:
     created: '2025-11-03T13:28:37+01:00'
     modified: '2025-11-03T13:28:37+01:00'
@@ -220,8 +210,7 @@ papers:
   status: stable
   relevance: medium
   keywords: []
-  description: 'PDF: Einheitliches Schwellenfeld-Modell  Universelle Prinzipien quer
-    durch DisziplinenAbhandlung'
+  description: 'PDF: Einheitliches Schwellenfeld-Modell  Universelle Prinzipien quer durch DisziplinenAbhandlung'
   temporal:
     created: '2025-11-03T13:28:37+01:00'
     modified: '2025-11-03T13:28:37+01:00'
@@ -396,17 +385,14 @@ papers:
     version: '1.0'
     change_count: 1
 - id: paper-026
-  title: Interdisziplinäre Analyse der Lagrange-basierten BHA-Membran-Kopplung im
-    Kontext astrophysikalischer
-  path: Interdisziplinäre Analyse der Lagrange-basierten BHA-Membran-Kopplung im Kontext
-    astrophysikalischer.pdf
+  title: Interdisziplinäre Analyse der Lagrange-basierten BHA-Membran-Kopplung im Kontext astrophysikalischer
+  path: Interdisziplinäre Analyse der Lagrange-basierten BHA-Membran-Kopplung im Kontext astrophysikalischer.pdf
   category: meta
   type: paper
   status: stable
   relevance: medium
   keywords: []
-  description: 'PDF: Interdisziplinäre Analyse der Lagrange-basierten BHA-Membran-Kopplung
-    im Kontext astrophysikalischer'
+  description: 'PDF: Interdisziplinäre Analyse der Lagrange-basierten BHA-Membran-Kopplung im Kontext astrophysikalischer'
   temporal:
     created: '2025-11-03T13:28:37+01:00'
     modified: '2025-11-03T13:28:37+01:00'
@@ -476,8 +462,7 @@ papers:
   status: stable
   relevance: medium
   keywords: []
-  description: 'PDF: Schwellenverhalten und emergente Ordnungsübergänge in komplexen
-    Systemen'
+  description: 'PDF: Schwellenverhalten und emergente Ordnungsübergänge in komplexen Systemen'
   temporal:
     created: '2025-11-03T13:28:37+01:00'
     modified: '2025-11-03T13:28:37+01:00'
@@ -533,8 +518,7 @@ papers:
   status: stable
   relevance: medium
   keywords: []
-  description: 'PDF: Utac Module M-β — Zyklische Emergenz  Steilheitsgrad Als Potenzial
-    → Bedingung-1'
+  description: 'PDF: Utac Module M-β — Zyklische Emergenz  Steilheitsgrad Als Potenzial → Bedingung-1'
   temporal:
     created: '2025-11-03T13:28:37+01:00'
     modified: '2025-11-03T13:28:37+01:00'
@@ -548,8 +532,7 @@ papers:
   status: stable
   relevance: medium
   keywords: []
-  description: 'PDF: Utac Module M-β — Zyklische Emergenz  Steilheitsgrad Als Potenzial
-    → Bedingung'
+  description: 'PDF: Utac Module M-β — Zyklische Emergenz  Steilheitsgrad Als Potenzial → Bedingung'
   temporal:
     created: '2025-11-03T13:28:37+01:00'
     modified: '2025-11-03T13:28:37+01:00'

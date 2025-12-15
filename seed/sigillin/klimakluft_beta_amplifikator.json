@@ -9,7 +9,8 @@
     "sigillin_class": "semantics",
     "change_frequency": "low",
     "archival_protocol": "version_and_preserve",
-    "significance": "Erklärt Emissionsungleichheit als mathematischen β-Amplifikationsmechanismus"
+    "significance": "Erklärt Emissionsungleichheit als mathematischen β-Amplifikationsmechanismus",
+    "sigil": "klimakluft-beta-amplifikator"
   },
   "concept": {
     "name": "Die Klimakluft als β-Amplifikator",
@@ -162,7 +163,7 @@
     "resilience_note": "Falsifiable through emission distribution data",
     "empathy": 0.92,
     "empathy_note": "Bridges climate justice and mathematical criticality",
-    "propagation": 0.90,
+    "propagation": 0.9,
     "propagation_note": "Applicable to all domains with extreme inequality (wealth, resource access, computational power)"
   },
   "publication_context": {

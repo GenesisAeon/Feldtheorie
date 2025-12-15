@@ -33,7 +33,8 @@
         "docs/resonance-bridge-map.md",
         "docs/threshold_resonance_atlas.md"
       ]
-    }
+    },
+    "sigil": "planetary-threshold-cartography"
   },
   "tri_layer": {
     "formal": "ΔAIC_linear = 33.58 und ΔAIC_power = 35.2 bestätigen σ(β(R-Θ)) als Klimakern. Adaptive Θ-Gaps (≥0.25) werden über analysis/planetary_theta_drift_flag.py sichtbar.",

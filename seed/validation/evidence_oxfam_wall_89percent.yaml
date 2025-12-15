@@ -2,13 +2,15 @@ meta:
   id: evidence-001-oxfam-wall
   type: empirical_proof
   status: verified
-  created: 2025-11-21
+  created: '2025-11-21'
+  sigil: evidence-oxfam-wall-89percent
+  version: 1.0.0
 metrics:
   beta_base: 4.1
   beta_eff: 37.6
   reduction_percent: 89.1
   load_factor: 9.6
 provenance:
-  data_source: "source-oxfam-2024"
-  derivation_script: "scripts/analysis/visualize_oxfam_wall.py"
-  theory_basis: "Mean-Field Ising Model / Wealth Condensation"
+  data_source: source-oxfam-2024
+  derivation_script: scripts/analysis/visualize_oxfam_wall.py
+  theory_basis: Mean-Field Ising Model / Wealth Condensation

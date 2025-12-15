@@ -3,7 +3,9 @@
     "id": "evidence-001-oxfam-wall",
     "type": "empirical_proof",
     "status": "verified",
-    "created": "2025-11-21"
+    "created": "2025-11-21",
+    "sigil": "evidence-oxfam-wall-89percent",
+    "version": "1.0.0"
   },
   "metrics": {
     "beta_base": 4.1,

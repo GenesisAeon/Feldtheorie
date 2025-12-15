@@ -5,7 +5,10 @@
   "status": "primed",
   "order_parameter_R": 15,
   "threshold_Theta": 10,
-  "beta_band": [2.5, 16.3],
+  "beta_band": [
+    2.5,
+    16.3
+  ],
   "impedance_zeta_notes": "Residuale ζ(R) stammen aus zusammengelegten Feldern; partielle Pooling-Modelle sind nötig, um die Drift zu dämpfen.",
   "next_steps": [
     {
@@ -42,5 +45,9 @@
     "Keep trilayer sync for any new lanterns",
     "Preserve Bedeutungs-Sigillin; keine Überschreibung"
   ],
-  "contact": "Claude-Code"
+  "contact": "Claude-Code",
+  "meta": {
+    "sigil": "claude-code-handoff",
+    "version": "1.0.0"
+  }
 }
