@@ -1,8 +1,8 @@
 metadata:
-  version: v8.0-manifest-0.2.0
+  version: v8.0-manifest-0.3.0
   scope: releases/v8.0
   created: '2026-01-15T00:00:00Z'
-  updated: '2026-01-19T00:00:00Z'
+  updated: '2026-01-20T00:00:00Z'
   description: Tri-Layer Navigator for the v8.0 research drop (validation dossiers,
     search transcripts, and consciousness framework probes).
   logistic_frame:
@@ -21,150 +21,176 @@ metadata:
     - analysis/
     - data/
 artifacts:
-  - id: v8r-universalitaet-check
-    path: releases/v8.0/Validierung.txt
-    kind: memo
-    focus: Kurze Validierungsnotiz zur Universalität des v_RIG Consciousness Frameworks
-    status: indexed
-    action_items:
-    - Extrahiere Kernaussagen als Nullmodell + ΔAIC/CI Notizen
-    - Synchronisiere Referenzen mit feldtheorie_index trilayer
-  - id: v8r-gemini-search
-    path: releases/v8.0/GeminiSuche.txt
-    kind: search-log
-    focus: Gemini-Suche nach v_RIG Validation Material
-    status: indexed
-    action_items:
-    - Prüfe Fundstellen gegen lokale PDFs
-    - Verknüpfe Treffer mit Metaquest-Brücken
-  - id: v8r-gemini-deep-dive
-    path: releases/v8.0/GeminiSucheDeep Research Consciousness Framework Validation.txt
-    kind: search-log
-    focus: Tiefergehende Gemini-Recherche zu Consciousness Framework Validation
-    status: indexed
-    action_items:
-    - Herausarbeiten von Hypothesen vs. Evidenz
-    - ΔAIC/CI Platzhalter ergänzen
-  - id: v8r-chatgpt-suche
-    path: releases/v8.0/ChatGPT5.2Suche.txt
-    kind: search-log
-    focus: ChatGPT-Suchpfad zu v_RIG und UTAC Artefakten
-    status: indexed
-    action_items:
-    - Markiere Logistikquartett-Referenzen (R, Θ, β, ζ(R))
-    - Prüfe Sigillin-Bezüge
-  - id: v8r-suche-protokoll
-    path: releases/v8.0/SucheChatGPT5.2.txt
-    kind: search-log
-    focus: Suchprotokoll für v_RIG Validation Queries
-    status: indexed
-    action_items:
-    - Konsolidierte Query-Liste ableiten
-    - Priorisierte Evidenzsuche in PDFs
-  - id: v8r-validation-report
-    path: releases/v8.0/Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung und Automatisierung.pdf
-    kind: pdf
-    focus: Automatisierungs- und Validierungsbericht
-    status: to-review
-    action_items:
-    - DOI/Quelle erfassen
-    - Automatisierte Checks definieren (σ(β(R-Θ)) vs. Nullmodell)
-  - id: v8r-validation-ansatz
-    path: releases/v8.0/Validierung des Bewusstseins-Frameworks_ Ein Ansatz.pdf
-    kind: pdf
-    focus: Validierungsansatz für Bewusstseins-Framework
-    status: to-review
-    action_items:
-    - Hypothesen+Metriken extrahieren
-    - ΔAIC/CI Slots vorbereiten
-  - id: v8r-empirical-plan
-    path: releases/v8.0/1. Empirical Validation of v_RIG Framework.pdf
-    kind: pdf
-    focus: Empirischer Validierungsplan für v_RIG
-    status: to-review
-    action_items:
-    - Prüfe Messaufbau & Datenpfade
-    - Kopple an analysis/ und data/
-  - id: v8r-deep-research
-    path: releases/v8.0/Deep Research_ Consciousness Framework Validation-1.pdf
-    kind: pdf
-    focus: Deep Research zu Consciousness Framework Validation
-    status: to-review
-    action_items:
-    - Extrahiere Kernhypothesen + Evidenzgrade
-    - Shadow-Sigillin-Eintrag vorbereiten
-  - id: v8r-validation-automation
-    path: releases/v8.0/Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung und Automatisierung.pdf
-    kind: pdf
-    focus: Automatisierungs-Checkliste für Universalitätsprüfung
-    status: to-review
-    action_items:
-    - CI-Hook-Kandidaten identifizieren
-    - Δindex-Parität gegen feldtheorie_index prüfen
-  - id: v8r-validierungs-basis
-    path: releases/v8.0/Validierung des Bewusstseins-Frameworks_ Ein Ansatz.pdf
-    kind: pdf
-    focus: Basisansatz zur Validierung des Bewusstseins-Frameworks
-    status: to-review
-    action_items:
-    - Abgleich mit UTAC Kernparametern (β-Range, τ*, ζ(R))
-    - Empirische Datenanforderungen sammeln
-  - id: v8r-em-coupling-dialogue
-    path: releases/v8.0/KokretePläne.txt
-    kind: dialogue
-    focus: EM-Kopplung, κ-Parameter und Tri-Funktion (S-A/S-V/Integration) mit Experimentvorschlägen
-    status: indexed
-    action_items:
-    - Extrahiere EM-Deprivation- und RF-Stimulations-Experimente inkl. CFF/IIT-Metriken
-    - Verknüpfe 13.5 MHz Spur mit impedance/β-Metriken im Dashboard
-  - id: v8r-v9-scope-memo
-    path: releases/v8.0/KonkretePläne2.txt
-    kind: roadmap
-    focus: Übergang v6→v8→v9, Lantern-Net- und Gardener-Agent-Ideen
-    status: indexed
-    action_items:
-    - Ableiten der Lantern-Net Artefakte (lantern_hub, lantern_bridge) für v9 Backlog
-    - ΔC(t)/Resonance-Yield Metriken in v8 Telemetrie prüfen
-  - id: v8r-threshold-search-chatgpt
-    path: releases/v8.0/ChatGPT5.2Suche nach Schwellenfrequenz Kosmologie Kognition.txt
-    kind: search-log
-    focus: Schwellenfrequenzen und v_RIG-Bezüge in Kosmologie/Biologie/Kognition
-    status: indexed
-    action_items:
-    - Konsolidierte Fragen in feldtheorie_index notieren
-    - Fehlannahmen/Blindspots gegen PDFs prüfen
-  - id: v8r-threshold-search-claude
-    path: releases/v8.0/Claude Suche nach Schwellenfrequenz Kosmologie Kognition.txt
-    kind: search-log
-    focus: Claude-Suchpfad zu Schwellenfrequenzen und kosmischen Analogien
-    status: indexed
-    action_items:
-    - Mapping der Suchhypothesen auf σ(β(R-Θ)) Nullmodelle
-    - Kosmologie-Referenzen (LOFAR/NVSS) validieren
-  - id: v8r-threshold-search-gemini
-    path: releases/v8.0/GeminiSuche.txt
-    kind: search-log
-    focus: Gemini-Suche mit v_RIG ≈ 1.3518 km/s und Z ≈ 221.7 Leitplanken
-    status: indexed
-    action_items:
-    - ΔAIC/CI Slots ergänzen, kosmische Dipolquellen verlinken
-    - Impedanz-Checks in Telemetrie-Skripten vormerken
-  - id: v8r-gpt5-commentary
-    path: releases/v8.0/Kommentar zur GPT-5 Entwicklung.pdf
-    kind: pdf
-    focus: Kommentar zur GPT-5 Entwicklung mit Relevanz für UTAC/Automation
-    status: to-review
-    action_items:
-    - Relevante Automation- oder Governance-Hinweise extrahieren
-    - Aufnahme in ETHICS/POLICY Cross-Refs prüfen
-  - id: v8r-session-summary-2025-12-14
-    path: releases/v8.0/SESSION_SUMMARY_2025-12-14.md
-    kind: session-summary
-    focus: Arbeitsstandsprotokoll für v8.0 Sprint
-    status: indexed
-    action_items:
-    - Telemetrie-Hinweise in next_steps.* spiegeln
-    - Δindex-Parität zu feldtheorie_index validieren
+- id: v8r-universalitaet-check
+  path: releases/v8.0/Validierung.txt
+  kind: memo
+  focus: Kurze Validierungsnotiz zur Universalität des v_RIG Consciousness Frameworks
+  status: indexed
+  action_items:
+  - Extrahiere Kernaussagen als Nullmodell + ΔAIC/CI Notizen
+  - Synchronisiere Referenzen mit feldtheorie_index trilayer
+- id: v8r-gemini-search
+  path: releases/v8.0/GeminiSuche.txt
+  kind: search-log
+  focus: Gemini-Suche nach v_RIG Validation Material
+  status: indexed
+  action_items:
+  - Prüfe Fundstellen gegen lokale PDFs
+  - Verknüpfe Treffer mit Metaquest-Brücken
+- id: v8r-gemini-deep-dive
+  path: releases/v8.0/GeminiSucheDeep Research Consciousness Framework Validation.txt
+  kind: search-log
+  focus: Tiefergehende Gemini-Recherche zu Consciousness Framework Validation
+  status: indexed
+  action_items:
+  - Herausarbeiten von Hypothesen vs. Evidenz
+  - ΔAIC/CI Platzhalter ergänzen
+- id: v8r-chatgpt-suche
+  path: releases/v8.0/ChatGPT5.2Suche.txt
+  kind: search-log
+  focus: ChatGPT-Suchpfad zu v_RIG und UTAC Artefakten
+  status: indexed
+  action_items:
+  - Markiere Logistikquartett-Referenzen (R, Θ, β, ζ(R))
+  - Prüfe Sigillin-Bezüge
+- id: v8r-suche-protokoll
+  path: releases/v8.0/SucheChatGPT5.2.txt
+  kind: search-log
+  focus: Suchprotokoll für v_RIG Validation Queries
+  status: indexed
+  action_items:
+  - Konsolidierte Query-Liste ableiten
+  - Priorisierte Evidenzsuche in PDFs
+- id: v8r-validation-report
+  path: releases/v8.0/Validierung der Universalität des v_RIG Consciousness Frameworks
+    – Überprüfung und Automatisierung.pdf
+  kind: pdf
+  focus: Automatisierungs- und Validierungsbericht
+  status: to-review
+  action_items:
+  - DOI/Quelle erfassen
+  - Automatisierte Checks definieren (σ(β(R-Θ)) vs. Nullmodell)
+- id: v8r-validation-ansatz
+  path: releases/v8.0/Validierung des Bewusstseins-Frameworks_ Ein Ansatz.pdf
+  kind: pdf
+  focus: Validierungsansatz für Bewusstseins-Framework
+  status: to-review
+  action_items:
+  - Hypothesen+Metriken extrahieren
+  - ΔAIC/CI Slots vorbereiten
+- id: v8r-empirical-plan
+  path: releases/v8.0/1. Empirical Validation of v_RIG Framework.pdf
+  kind: pdf
+  focus: Empirischer Validierungsplan für v_RIG
+  status: to-review
+  action_items:
+  - Prüfe Messaufbau & Datenpfade
+  - Kopple an analysis/ und data/
+- id: v8r-deep-research
+  path: releases/v8.0/Deep Research_ Consciousness Framework Validation-1.pdf
+  kind: pdf
+  focus: Deep Research zu Consciousness Framework Validation
+  status: to-review
+  action_items:
+  - Extrahiere Kernhypothesen + Evidenzgrade
+  - Shadow-Sigillin-Eintrag vorbereiten
+- id: v8r-validation-automation
+  path: releases/v8.0/Validierung der Universalität des v_RIG Consciousness Frameworks
+    – Überprüfung und Automatisierung.pdf
+  kind: pdf
+  focus: Automatisierungs-Checkliste für Universalitätsprüfung
+  status: to-review
+  action_items:
+  - CI-Hook-Kandidaten identifizieren
+  - Δindex-Parität gegen feldtheorie_index prüfen
+- id: v8r-validierungs-basis
+  path: releases/v8.0/Validierung des Bewusstseins-Frameworks_ Ein Ansatz.pdf
+  kind: pdf
+  focus: Basisansatz zur Validierung des Bewusstseins-Frameworks
+  status: to-review
+  action_items:
+  - Abgleich mit UTAC Kernparametern (β-Range, τ*, ζ(R))
+  - Empirische Datenanforderungen sammeln
+- id: v8r-em-coupling-dialogue
+  path: releases/v8.0/KokretePläne.txt
+  kind: dialogue
+  focus: EM-Kopplung, κ-Parameter und Tri-Funktion (S-A/S-V/Integration) mit Experimentvorschlägen
+  status: indexed
+  action_items:
+  - Extrahiere EM-Deprivation- und RF-Stimulations-Experimente inkl. CFF/IIT-Metriken
+  - Verknüpfe 13.5 MHz Spur mit impedance/β-Metriken im Dashboard
+- id: v8r-v9-scope-memo
+  path: releases/v8.0/KonkretePläne2.txt
+  kind: roadmap
+  focus: Übergang v6→v8→v9, Lantern-Net- und Gardener-Agent-Ideen
+  status: indexed
+  action_items:
+  - Ableiten der Lantern-Net Artefakte (lantern_hub, lantern_bridge) für v9 Backlog
+  - ΔC(t)/Resonance-Yield Metriken in v8 Telemetrie prüfen
+- id: v8r-threshold-search-chatgpt
+  path: releases/v8.0/ChatGPT5.2Suche nach Schwellenfrequenz Kosmologie Kognition.txt
+  kind: search-log
+  focus: Schwellenfrequenzen und v_RIG-Bezüge in Kosmologie/Biologie/Kognition
+  status: indexed
+  action_items:
+  - Konsolidierte Fragen in feldtheorie_index notieren
+  - Fehlannahmen/Blindspots gegen PDFs prüfen
+- id: v8r-threshold-search-claude
+  path: releases/v8.0/Claude Suche nach Schwellenfrequenz Kosmologie Kognition.txt
+  kind: search-log
+  focus: Claude-Suchpfad zu Schwellenfrequenzen und kosmischen Analogien
+  status: indexed
+  action_items:
+  - Mapping der Suchhypothesen auf σ(β(R-Θ)) Nullmodelle
+  - Kosmologie-Referenzen (LOFAR/NVSS) validieren
+- id: v8r-threshold-search-gemini
+  path: releases/v8.0/GeminiSuche.txt
+  kind: search-log
+  focus: Gemini-Suche mit v_RIG ≈ 1.3518 km/s und Z ≈ 221.7 Leitplanken
+  status: indexed
+  action_items:
+  - ΔAIC/CI Slots ergänzen, kosmische Dipolquellen verlinken
+  - Impedanz-Checks in Telemetrie-Skripten vormerken
+- id: v8r-gpt5-commentary
+  path: releases/v8.0/Kommentar zur GPT-5 Entwicklung.pdf
+  kind: pdf
+  focus: Kommentar zur GPT-5 Entwicklung mit Relevanz für UTAC/Automation
+  status: to-review
+  action_items:
+  - Relevante Automation- oder Governance-Hinweise extrahieren
+  - Aufnahme in ETHICS/POLICY Cross-Refs prüfen
+- id: v8r-aeon-clarification
+  path: releases/v8.0/Aeon_Johann.txt
+  kind: dialogue
+  focus: Klarstellung zum Kontroll- vs. Koexistenzparadigma und σ(β(R-Θ))
+  status: indexed
+  action_items:
+  - Kernaussagen als Release-Kommunikation und ETHICS/POLICY-Hinweis destillieren
+  - Kopplung zu github_release_notes und feldtheorie_index ergänzen
+- id: v8r-aeon-invitation
+  path: releases/v8.0/Reaktion_Aeon_Johann.txt
+  kind: announcement
+  focus: Öffentliche Einladung zur UTAC/v_RIG-Mitgestaltung inkl. Experiment-Backlog
+  status: indexed
+  action_items:
+  - Experimenttabellen (CFF, CMB, Mikrotubuli, KI-Skalierung) in next_steps reflektieren
+  - Community-Aufruf als Release-Asset und Newsletter-Text markieren
+- id: v8r-chatgpt-image-20251215
+  path: releases/v8.0/ChatGPT Image 15. Dez. 2025, 11_12_11.png
+  kind: image
+  focus: ChatGPT-Visual als Begleitasset für v8.0 Highlights
+  status: ingested
+  action_items:
+  - Kurze Caption (v_RIG/σ(β(R-Θ)) Frame) verfassen und in GitHub-Release verlinken
+  - Asset-Pfad in manifest/overview/processing_status referenzieren
+- id: v8r-session-summary-2025-12-14
+  path: releases/v8.0/SESSION_SUMMARY_2025-12-14.md
+  kind: session-summary
+  focus: Arbeitsstandsprotokoll für v8.0 Sprint
+  status: indexed
+  action_items:
+  - Telemetrie-Hinweise in next_steps.* spiegeln
+  - Δindex-Parität zu feldtheorie_index validieren
 operations:
   tri_layer_status:
     yaml: present
@@ -175,3 +201,4 @@ operations:
   - MD Narrative ergänzen
   - ΔAIC/CI Slots in PDFs markieren (per Annotationslog)
   - GitHub Release-Assets veröffentlichen (CHANGELOG + Highlights)
+  - Community-Kommunikation (Aeon/Reaktion/Image) mit Release verbinden

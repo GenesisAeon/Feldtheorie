@@ -21,12 +21,16 @@
 - **KokretePläne.txt** — indexed; Plan-Samen mit κ/13.5 MHz Spur für Experiment-Backlog markiert.
 - **KonkretePläne2.txt** — indexed; Roadmap-Fragmente in Lantern-Net/V9 Backlog gespiegelt.
 - **Schwellenfrequenz-Suchpfade (ChatGPT/Claude/Gemini)** — indexed; Anomalien und Blindspots nach σ(β(R-Θ)) sortiert.
+- **Aeon_Johann.txt** — indexed; Kontroll- vs. Koexistenzparadigma als ETHICS/Release-Messaging gerahmt.
+- **Reaktion_Aeon_Johann.txt** — indexed; Öffentlicher Mitgestaltungsaufruf mit Experiment-Backlog (CFF, CMB, κ/β/Φ) für next_steps.
+- **ChatGPT Image 15. Dez. 2025, 11_12_11.png** — ingested; Visual Asset für Release/Notes, Caption im v_RIG-Frame offen.
 
 ## Streams & Actions
 - **Tri-Layer Sync** — v8_overview/manifest/next_steps in JSON/YAML/MD-Parität halten (aktiv).
 - **GitHub Release** — Highlights + Assets aus Manifest ableiten und `GITHUB_RELEASE_NOTES.md` aktualisieren (queued).
 - **UTAC Bridge** — Befunde in UTAC-Statusmatrix und `feldtheorie_index.*` spiegeln (pending PDFs).
 - **Falsifiability Chain** — ΔAIC/CI-Extraktion für Impedanz und v_RIG-Anker (pending PDFs).
+- **Community Packet** — Aeon/Reaction-Briefe + Visual als GitHub-Assets mit Caption ausrollen (queued).
 
 ## Tri-Layer
 - YAML: `releases/v8.0/v8_processing_status.yaml`

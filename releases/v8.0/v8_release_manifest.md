@@ -1,6 +1,6 @@
 # v8.0 Release Manifest – σ(β(R-Θ)) Navigator
 
-**Scope:** `releases/v8.0` | **Version:** v8.0-manifest-0.2.0 | **Status:** catalogued | **Updated:** 2026-01-19
+**Scope:** `releases/v8.0` | **Version:** v8.0-manifest-0.3.0 | **Status:** catalogued | **Updated:** 2026-01-20
 
 ## Logistic Frame
 - **R (Goal):** Konsistentes Mapping der v8.0-Dossiers auf σ(β(R-Θ)) Evidenzketten.
@@ -32,6 +32,9 @@
 - **v8r-threshold-search-claude** → `Claude Suche nach Schwellenfrequenz Kosmologie Kognition.txt` — Kosmologie/Kognition Threshold-Suche *(indexed)*.
 - **v8r-threshold-search-gemini** → `GeminiSuche.txt` — v_RIG/Z-Leitplanken mit kosmischen Dipolen *(indexed)*.
 - **v8r-gpt5-commentary** → `Kommentar zur GPT-5 Entwicklung.pdf` — GPT-5 Kontext für UTAC/Automation *(to-review)*.
+- **v8r-aeon-clarification** → `Aeon_Johann.txt` — Klarstellung Kontroll- vs. Koexistenzparadigma *(indexed)*.
+- **v8r-aeon-invitation** → `Reaktion_Aeon_Johann.txt` — Öffentlicher Mitgestaltungsaufruf mit Experiment-Backlog *(indexed)*.
+- **v8r-chatgpt-image-20251215** → `ChatGPT Image 15. Dez. 2025, 11_12_11.png` — Visual Asset für Release-Kommunikation *(ingested)*.
 - **v8r-session-summary-2025-12-14** → `SESSION_SUMMARY_2025-12-14.md` — Sprint-Protokoll *(indexed)*.
 
 ## Operations & Next Steps

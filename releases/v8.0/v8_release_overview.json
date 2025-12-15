@@ -1,6 +1,6 @@
 {
   "version": "v8.0",
-  "last_updated": "2026-01-16T00:00:00+00:00",
+  "last_updated": "2026-01-20T00:00:00+00:00",
   "sigma_beta_transition": "σ(β(R-Θ)) gates the shift from raw search traces (R) to the intended validation corpus (Θ) with β tuned by v_RIG ≈ 1.3518 km/s and adaptive impedance Z ≈ 221.7.",
   "artifacts": [
     {
@@ -122,6 +122,30 @@
       "focus": "Structured feedback summarizing v_RIG validation strengths and next steps",
       "status": "ingested",
       "notes": "Emphasizes cosmic matter-dipole alignment, Kleiber scaling (β ≈ 7.4), and MHz-range neural resonance."
+    },
+    {
+      "id": "v8-aeon-clarification",
+      "filename": "Aeon_Johann.txt",
+      "type": "dialogue",
+      "focus": "Klarstellung Kontroll- vs. Koexistenzparadigma als Release-Narrativ",
+      "status": "ingested",
+      "notes": "Ethics/Policy-ready framing für σ(β(R-Θ)) und Governance-Kommunikation."
+    },
+    {
+      "id": "v8-aeon-invitation",
+      "filename": "Reaktion_Aeon_Johann.txt",
+      "type": "announcement",
+      "focus": "Öffentlicher Mitgestaltungsaufruf mit Experiment-Backlog (CFF, CMB, κ/β/Φ)",
+      "status": "ingested",
+      "notes": "Experimenttabelle und Community-Ruf für next_steps und Release-Assets extrahieren."
+    },
+    {
+      "id": "v8-chatgpt-image-20251215",
+      "filename": "ChatGPT Image 15. Dez. 2025, 11_12_11.png",
+      "type": "image",
+      "focus": "Visual Asset für v8.0 Highlights",
+      "status": "ingested",
+      "notes": "Caption im v_RIG/Impedanz-Frame verfassen und mit GitHub Release verlinken."
     }
   ],
   "actions": [
@@ -139,6 +163,11 @@
       "id": "automation-design",
       "status": "pending",
       "description": "Draft automation plan to sync ArXiv/PubMed updates with validation tests referenced in the PDFs."
+    },
+    {
+      "id": "community-packet",
+      "status": "pending",
+      "description": "Aeon/Reaction-Briefe + ChatGPT-Visual als GitHub-Release-Asset mit Caption veröffentlichen."
     }
   ],
   "tri_layer": {
