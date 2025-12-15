@@ -26,6 +26,7 @@ ROAD_PATH="$DEFAULT_ROAD_PATH"
 OUTPUT_PATH="$DEFAULT_OUTPUT"
 SERVER_URL="$DEFAULT_SERVER_URL"
 AUTO_CONFIRM=0
+LIST_ONLY=0
 
 usage() {
     cat <<'USAGE'
@@ -38,6 +39,7 @@ Options:
   -r, --road-path PATH    Path to TheRoad.txt prompt file
   -o, --output PATH       Destination CSV for results
   -u, --server-url URL    Ollama generate endpoint
+  -l, --list-models       Only list cached Ollama models and exit
   -y, --yes               Skip interactive confirmation
   -h, --help              Show this help message
 USAGE
@@ -114,6 +116,9 @@ while [[ $# -gt 0 ]]; do
             [[ $# -gt 0 ]] || error "--server-url requires a value"
             SERVER_URL="$1"
             ;;
+        -l|--list-models)
+            LIST_ONLY=1
+            ;;
         -y|--yes)
             AUTO_CONFIRM=1
             ;;
@@ -157,8 +162,20 @@ echo "✅ Ollama service is running"
 
 # Check available models
 echo "📦 Available Ollama models:"
-curl -s "${SERVER_URL%/generate}/tags" | grep -o '"name":"[^"]*"' | cut -d'"' -f4 || true
+mapfile -t AVAILABLE_MODELS < <(curl -s "${SERVER_URL%/generate}/tags" | grep -o '"name":"[^"]*"' | cut -d'"' -f4 | sort -u || true)
+if [[ ${#AVAILABLE_MODELS[@]} -eq 0 ]]; then
+    echo "⚠️  No cached models detected. Pull one with: ollama pull <model>"
+else
+    for model in "${AVAILABLE_MODELS[@]}"; do
+        echo " - $model"
+    done
+fi
 echo ""
+
+if [[ $LIST_ONLY -eq 1 ]]; then
+    echo "ℹ️  List-only mode enabled; skipping σ(β(R-Θ)) probing."
+    exit 0
+fi
 
 # Check if TheRoad.txt exists
 PROMPT_CANDIDATES=(

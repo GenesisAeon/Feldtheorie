@@ -49,6 +49,10 @@ Customize the launch without editing the Python file:
 probing β. Missing models are reported up front so you can `ollama pull <name>`
 instead of waiting for σ(β(R-Θ)) to stall during the run.
 
+**Cache-only reconnaissance:** Run `./scripts/run_echo_i.sh --list-models` to
+survey the local tag cache and exit. This keeps the σ(β(R-Θ)) probe idle while
+you download or prune models for a clean resonance sweep.
+
 **Option B: Direct Python execution**:
 ```bash
 cd /home/user/Feldtheorie
