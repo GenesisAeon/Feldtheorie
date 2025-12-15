@@ -65,6 +65,32 @@ def test_load_dataset_handles_gzipped_csv(tmp_path) -> None:
     pd.testing.assert_frame_equal(loaded, df)
 
 
+def test_load_dataset_uses_provided_extension_without_duplication(tmp_path) -> None:
+    """Explicit extensions should be honored without duplicating suffixes."""
+
+    meta = {"dataset": "Observations.csv.gz"}
+    df = pd.DataFrame({"signal": [1, 2, 3]})
+    gz_path = tmp_path / "observations.csv.gz"
+    df.to_csv(gz_path, index=False, compression="gzip")
+
+    loaded = load_dataset(meta, data_dir=tmp_path)
+
+    pd.testing.assert_frame_equal(loaded, df)
+
+
+def test_load_dataset_falls_back_to_other_known_formats(tmp_path) -> None:
+    """When a specified format is absent the loader should try other known suffixes."""
+
+    meta = {"dataset": "Signal.csv"}
+    df = pd.DataFrame({"signal": [4, 5]})
+    gz_path = tmp_path / "signal.csv.gz"
+    df.to_csv(gz_path, index=False, compression="gzip")
+
+    loaded = load_dataset(meta, data_dir=tmp_path)
+
+    pd.testing.assert_frame_equal(loaded, df)
+
+
 def test_load_dataset_reads_json(tmp_path) -> None:
     """JSON datasets should hydrate into DataFrames when present."""
 

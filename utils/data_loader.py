@@ -17,6 +17,31 @@ DATA_DIR = "data/"
 DatasetType = Union[pd.DataFrame, xr.Dataset]
 
 
+SUFFIX_READERS: tuple[tuple[str, Any], ...] = (
+    (".csv", pd.read_csv),
+    (".csv.gz", pd.read_csv),
+    (".nc", xr.open_dataset),
+    (".json", pd.read_json),
+)
+
+
+def _normalize_dataset_name(name: str) -> Path:
+    """Normalize a dataset name to a filesystem-friendly path fragment."""
+
+    return Path(name.replace(" ", "_").lower())
+
+
+def _known_suffix(path: Path) -> str | None:
+    """Return a recognized suffix (including compound ones) for a path if present."""
+
+    suffixes = path.suffixes
+    if len(suffixes) >= 2 and suffixes[-2:] == [".csv", ".gz"]:
+        return ".csv.gz"
+    if suffixes:
+        return suffixes[-1]
+    return None
+
+
 def load_metadata(file_name: str, metadata_dir: str = METADATA_DIR) -> dict[str, Any]:
     """Load a YAML metadata file from the configured directory."""
 
@@ -42,17 +67,33 @@ def load_dataset(meta: dict[str, Any], data_dir: str = DATA_DIR) -> DatasetType:
     if not dataset_name:
         raise ValueError("Metadata must include a non-empty 'dataset' field")
 
-    base_path = Path(data_dir) / dataset_name.replace(" ", "_").lower()
+    base_path = Path(data_dir) / _normalize_dataset_name(dataset_name)
 
-    for suffix, reader in (
-        (".csv", pd.read_csv),
-        (".csv.gz", pd.read_csv),
-        (".nc", xr.open_dataset),
-        (".json", pd.read_json),
-    ):
-        candidate = base_path.with_suffix(suffix)
-        if candidate.exists():
-            return reader(candidate)
+    candidates: list[tuple[Path, Any]] = []
+    seen: set[Path] = set()
+
+    provided_suffix = _known_suffix(base_path)
+    if provided_suffix:
+        for suffix, reader in SUFFIX_READERS:
+            if suffix == provided_suffix:
+                if base_path.exists():
+                    candidates.append((base_path, reader))
+                    seen.add(base_path)
+                break
+
+    suffixless = base_path
+    while suffixless.suffix:
+        suffixless = suffixless.with_suffix("")
+
+    for suffix, reader in SUFFIX_READERS:
+        candidate = suffixless.with_suffix(suffix)
+        if candidate not in seen and candidate.exists():
+            candidates.append((candidate, reader))
+            seen.add(candidate)
+
+    if candidates:
+        path, reader = candidates[0]
+        return reader(path)
 
     raise FileNotFoundError(f"No dataset found for {dataset_name} in {Path(data_dir).resolve()}")
 
