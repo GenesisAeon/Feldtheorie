@@ -3,6 +3,7 @@ UTAC Data Loader - v1.3
 Reads YAML metadata files and loads associated datasets for analysis.
 
 This module provides transparent data infrastructure for UTAC v2.0:
+
 - Automatic loading of YAML metadata
 - Support for CSV, NetCDF, JSON formats
 - Error handling and validation
@@ -14,8 +15,6 @@ Date: December 2024
 
 from __future__ import annotations
 
-import json
-import os
 from pathlib import Path
 from typing import Any, Dict, Optional
 
@@ -33,7 +32,11 @@ METADATA_DIR = Path("data/metadata/")
 DATA_DIR = Path("data/")
 
 
-def load_metadata(file_name: str | Path) -> Dict[str, Any]:
+def load_metadata(
+    file_name: str | Path,
+    *,
+    metadata_dir: str | Path | None = None,
+) -> Dict[str, Any]:
     """
     Load a YAML metadata file.
 
@@ -41,6 +44,8 @@ def load_metadata(file_name: str | Path) -> Dict[str, Any]:
     ----------
     file_name : str or Path
         Name of the YAML file (with or without .yaml extension)
+    metadata_dir : str or Path, optional
+        Override directory for metadata files; defaults to ``data/metadata``
 
     Returns
     -------
@@ -54,10 +59,11 @@ def load_metadata(file_name: str | Path) -> Dict[str, Any]:
     yaml.YAMLError
         If YAML parsing fails
     """
-    if not str(file_name).endswith('.yaml'):
+    if not str(file_name).endswith(".yaml"):
         file_name = f"{file_name}.yaml"
 
-    path = METADATA_DIR / file_name
+    base_dir = Path(metadata_dir) if metadata_dir is not None else METADATA_DIR
+    path = base_dir / file_name
 
     if not path.exists():
         raise FileNotFoundError(f"Metadata file not found: {path}")
@@ -69,7 +75,9 @@ def load_metadata(file_name: str | Path) -> Dict[str, Any]:
             raise yaml.YAMLError(f"Failed to parse {path}: {e}")
 
 
-def load_dataset(meta: Dict[str, Any]) -> Optional[pd.DataFrame | Any]:
+def load_dataset(
+    meta: Dict[str, Any], *, data_dir: str | Path | None = None
+) -> Optional[pd.DataFrame | Any]:
     """
     Load dataset based on metadata.
 
@@ -82,6 +90,8 @@ def load_dataset(meta: Dict[str, Any]) -> Optional[pd.DataFrame | Any]:
     ----------
     meta : dict
         Metadata dictionary with 'dataset' key
+    data_dir : str or Path, optional
+        Override base directory for data files; defaults to ``data``
 
     Returns
     -------
@@ -90,47 +100,75 @@ def load_dataset(meta: Dict[str, Any]) -> Optional[pd.DataFrame | Any]:
 
     Notes
     -----
-    File search order: CSV -> NetCDF -> JSON
+    File search order: CSV -> CSV.GZ -> NetCDF -> JSON
     """
-    dataset_name = meta.get("dataset", "unknown").replace(" ", "_").lower()
-    data_path = DATA_DIR / dataset_name
+    dataset_raw = str(meta.get("dataset", "")).strip()
+    if not dataset_raw:
+        raise ValueError("Metadata must include a non-empty 'dataset' field")
 
-    # Try CSV
-    csv_file = data_path.with_suffix(".csv")
-    if csv_file.exists():
-        try:
-            return pd.read_csv(csv_file)
-        except Exception as e:
-            print(f"Warning: Failed to load CSV {csv_file}: {e}")
+    normalized_name = dataset_raw.replace(" ", "_").lower()
+    base_dir = Path(data_dir) if data_dir is not None else DATA_DIR
+    normalized_path = Path(normalized_name)
 
-    # Try NetCDF
-    if XARRAY_AVAILABLE:
-        nc_file = data_path.with_suffix(".nc")
-        if nc_file.exists():
-            try:
-                return xr.open_dataset(nc_file)
-            except Exception as e:
-                print(f"Warning: Failed to load NetCDF {nc_file}: {e}")
+    candidates = []
+    if normalized_path.suffixes:
+        candidates.append(base_dir / normalized_path)
+        # If a CSV is requested explicitly, also try the gzipped twin
+        if normalized_path.suffixes[-1] == ".csv":
+            candidates.append(base_dir / normalized_path.with_suffix(".csv.gz"))
+        # If the request is already gzipped, allow a non-gz fallback
+        if normalized_path.suffixes[-2:] == [".csv", ".gz"]:
+            candidates.append(base_dir / normalized_path.with_suffix(".csv"))
     else:
-        nc_file = data_path.with_suffix(".nc")
-        if nc_file.exists():
-            print(f"Warning: NetCDF file found ({nc_file}) but xarray not installed")
+        root = base_dir / normalized_path
+        candidates.extend(
+            [
+                root.with_suffix(".csv"),
+                root.with_suffix(".csv.gz"),
+            ]
+        )
+        if XARRAY_AVAILABLE:
+            candidates.append(root.with_suffix(".nc"))
+        candidates.append(root.with_suffix(".json"))
 
-    # Try JSON
-    json_file = data_path.with_suffix(".json")
-    if json_file.exists():
+    for candidate in candidates:
+        if not candidate.exists():
+            continue
+
         try:
-            return pd.read_json(json_file)
-        except Exception as e:
-            print(f"Warning: Failed to load JSON {json_file}: {e}")
+            if candidate.suffix in {".csv", ""} or candidate.suffixes[-2:] == [".csv", ".gz"]:
+                return pd.read_csv(candidate)
+            if candidate.suffix == ".json":
+                return pd.read_json(candidate)
+            if candidate.suffix == ".nc" and XARRAY_AVAILABLE:
+                return xr.open_dataset(candidate)
+            if candidate.suffix == ".nc" and not XARRAY_AVAILABLE:
+                print(
+                    f"Warning: NetCDF file found ({candidate}) but xarray is not installed; "
+                    "install xarray to access σ(β(R-Θ)) phase grids."
+                )
+        except Exception as e:  # pragma: no cover - defensive logging
+            print(f"Warning: Failed to load {candidate}: {e}")
 
-    print(f"No dataset found for '{meta.get('dataset', 'unknown')}' (searched: CSV, NetCDF, JSON)")
+    print(
+        "No dataset found for "
+        f"'{dataset_raw}' (searched: CSV, CSV.GZ, NetCDF, JSON)"
+    )
     return None
 
 
-def load_all() -> Dict[str, Dict[str, Any]]:
+def load_all(
+    *, metadata_dir: str | Path | None = None, data_dir: str | Path | None = None
+) -> Dict[str, Dict[str, Any]]:
     """
     Load all metadata + datasets into a dictionary.
+
+    Parameters
+    ----------
+    metadata_dir : str or Path, optional
+        Override directory for YAML metadata; defaults to ``data/metadata``
+    data_dir : str or Path, optional
+        Override directory for datasets; defaults to ``data``
 
     Returns
     -------
@@ -144,28 +182,37 @@ def load_all() -> Dict[str, Dict[str, Any]]:
     FileNotFoundError
         If metadata directory doesn't exist
     """
-    if not METADATA_DIR.exists():
-        raise FileNotFoundError(f"Metadata directory not found: {METADATA_DIR}")
+    base_metadata_dir = Path(metadata_dir) if metadata_dir is not None else METADATA_DIR
+    base_data_dir = Path(data_dir) if data_dir is not None else DATA_DIR
+
+    if not base_metadata_dir.exists():
+        raise FileNotFoundError(f"Metadata directory not found: {base_metadata_dir}")
 
     datasets = {}
-    yaml_files = list(METADATA_DIR.glob("*.yaml"))
+    yaml_files = list(base_metadata_dir.glob("*.yaml"))
 
     if not yaml_files:
-        print(f"Warning: No YAML files found in {METADATA_DIR}")
+        print(f"Warning: No YAML files found in {base_metadata_dir}")
         return datasets
 
     for yaml_file in yaml_files:
         try:
-            meta = load_metadata(yaml_file.name)
-            data = load_dataset(meta)
-            dataset_name = meta.get("dataset", yaml_file.stem)
+            meta = load_metadata(yaml_file.name, metadata_dir=base_metadata_dir)
+            dataset_name_raw = str(meta.get("dataset", "")).strip()
+            if not dataset_name_raw:
+                raise ValueError(
+                    f"Metadata entry {yaml_file.name} is missing the required 'dataset' field"
+                )
+
+            data = load_dataset(meta, data_dir=base_data_dir)
+            dataset_name = dataset_name_raw.replace(" ", "_").lower()
             datasets[dataset_name] = {
                 "metadata": meta,
                 "data": data
             }
         except Exception as e:
             print(f"Error loading {yaml_file.name}: {e}")
-            continue
+            raise
 
     return datasets
 
@@ -192,7 +239,11 @@ def calculate_tau_star(beta: float, theta: float, R: float) -> float:
     -----
     Simplified formula: τ* = (Θ - R) / (dR/dt)
     Assumes linear approach for first-order approximation
+    β must remain positive to keep σ(β(R-Θ)) meaningful
     """
+    if beta <= 0:
+        raise ValueError("beta must be positive to keep σ(β(R-Θ)) resonant")
+
     if R >= theta:
         return 0.0  # Already at or past threshold
 
