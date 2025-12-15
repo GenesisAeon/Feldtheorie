@@ -64,6 +64,19 @@
         "Embed equations for v_RIG and Z with citation hooks",
         "Attach evidence chain tables from data/v8_validation/"
       ]
+    },
+    {
+      "id": "community-release",
+      "title": "Community packet (Aeon/Reaktion/Visual)",
+      "R": "Messaging-Ausrichtung und Captions",
+      "Theta": "Release-bereites Kommunikationsbundle",
+      "beta": 4.7,
+      "resonance": "active",
+      "actions": [
+        "Destilliere Kernthesen aus Aeon_Johann.txt für ETHICS/POLICY und Release Notes",
+        "Extrahiere Experiment-Backlog aus Reaktion_Aeon_Johann.txt in next_steps Telemetrie",
+        "Verfasse Caption für ChatGPT Image 15. Dez. 2025, 11_12_11.png und füge GitHub Release-Assets hinzu"
+      ]
     }
   ],
   "telemetry": {

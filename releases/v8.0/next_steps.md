@@ -25,9 +25,13 @@
    - Alert on ζ(R) spikes or CI regressions
 
 4. **Pre-print (ArXiv-ready LaTeX)** — R: manuscript completeness, Θ: arXiv format, β≈4.9 (resonance: draft)
-   - Generate LaTeX from `RELEASE_NOTES_v8.0.0.md` core narrative
-   - Embed equations for v_RIG and Z with citation hooks
-   - Attach evidence chain tables from `data/v8_validation/`
+ - Generate LaTeX from `RELEASE_NOTES_v8.0.0.md` core narrative
+  - Embed equations for v_RIG and Z with citation hooks
+  - Attach evidence chain tables from `data/v8_validation/`
+5. **Community packet (Aeon/Reaktion/Visual)** — R: Messaging-Ausrichtung, Θ: Release-bereites Kommunikationsbundle, β≈4.7 (resonance: active)
+   - Destilliere Kernthesen aus `Aeon_Johann.txt` für ETHICS/POLICY und Release Notes
+   - Extrahiere Experiment-Backlog aus `Reaktion_Aeon_Johann.txt` in next_steps Telemetrie
+   - Verfasse Caption für `ChatGPT Image 15. Dez. 2025, 11_12_11.png` und füge GitHub Release-Assets hinzu
 
 ## Telemetry Hooks
 

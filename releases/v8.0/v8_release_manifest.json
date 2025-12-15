@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "version": "v8.0-manifest-0.2.0",
+    "version": "v8.0-manifest-0.3.0",
     "scope": "releases/v8.0",
     "created": "2026-01-15T00:00:00Z",
-    "updated": "2026-01-19T00:00:00Z",
+    "updated": "2026-01-20T00:00:00Z",
     "description": "Tri-Layer Navigator for the v8.0 research drop (validation dossiers, search transcripts, and consciousness framework probes).",
     "logistic_frame": {
       "R_goal": "Konsistentes Mapping der v8.0-Dossiers auf σ(β(R-Θ)) Evidenzketten",
@@ -225,6 +225,39 @@
         "Telemetrie-Hinweise in next_steps.* spiegeln",
         "Δindex-Parität zu feldtheorie_index validieren"
       ]
+    },
+    {
+      "id": "v8r-aeon-clarification",
+      "path": "releases/v8.0/Aeon_Johann.txt",
+      "kind": "dialogue",
+      "focus": "Klarstellung zum Kontroll- vs. Koexistenzparadigma und σ(β(R-Θ))",
+      "status": "indexed",
+      "action_items": [
+        "Kernaussagen als Release-Kommunikation und ETHICS/POLICY-Hinweis destillieren",
+        "Kopplung zu github_release_notes und feldtheorie_index ergänzen"
+      ]
+    },
+    {
+      "id": "v8r-aeon-invitation",
+      "path": "releases/v8.0/Reaktion_Aeon_Johann.txt",
+      "kind": "announcement",
+      "focus": "Öffentliche Einladung zur UTAC/v_RIG-Mitgestaltung inkl. Experiment-Backlog",
+      "status": "indexed",
+      "action_items": [
+        "Experimenttabellen (CFF, CMB, Mikrotubuli, KI-Skalierung) in next_steps reflektieren",
+        "Community-Aufruf als Release-Asset und Newsletter-Text markieren"
+      ]
+    },
+    {
+      "id": "v8r-chatgpt-image-20251215",
+      "path": "releases/v8.0/ChatGPT Image 15. Dez. 2025, 11_12_11.png",
+      "kind": "image",
+      "focus": "ChatGPT-Visual als Begleitasset für v8.0 Highlights",
+      "status": "ingested",
+      "action_items": [
+        "Kurze Caption (v_RIG/σ(β(R-Θ)) Frame) verfassen und in GitHub-Release verlinken",
+        "Asset-Pfad in manifest/overview/processing_status referenzieren"
+      ]
     }
   ],
   "operations": {
@@ -237,7 +270,8 @@
       "Sync JSON Layer (dieses Dokument in JSON spiegeln)",
       "MD Narrative ergänzen",
       "ΔAIC/CI Slots in PDFs markieren (per Annotationslog)",
-      "GitHub Release-Assets veröffentlichen (CHANGELOG + Highlights)"
+      "GitHub Release-Assets veröffentlichen (CHANGELOG + Highlights)",
+      "Community-Kommunikation (Aeon/Reaktion/Image) mit Release verbinden"
     ]
   }
 }

@@ -6,47 +6,59 @@ metadata:
     beta: 4.8
     zeta: damped via curated citations
 artifacts:
-  - name: Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung und Automatisierung (PDF)
-    status: ingested
-    notes: Kern-Playbook für automatisierte Validierung und Impedanz/Gain-Heuristiken.
-  - name: 1. Empirical Validation of v_RIG Framework (PDF)
-    status: ingested
-    notes: Empirische Skizze; ΔAIC-Extraktion vormerken.
-  - name: Deep Research_ Consciousness Framework Validation-1 (PDF)
-    status: ingested
-    notes: Storyline vertieft, Zitations-Harvesting in Queue.
-  - name: Validierung des Bewusstseins-Frameworks_ Ein Ansatz (PDF)
-    status: ingested
-    notes: Konzeptanker für Neuro/Astro-Brücke.
-  - name: ChatGPT5.2Suche.txt
-    status: indexed
-    notes: Cross-Domain-Validierungspfade mit Telemetrie-Hooks verknüpft.
-  - name: GeminiSuche.txt
-    status: indexed
-    notes: v_RIG ≈ 1.3518 km/s und Z ≈ 221.7 gesichert, Nullmodell-Vergleich offen.
-  - name: GeminiSucheDeep Research Consciousness Framework Validation.txt
-    status: indexed
-    notes: Quellen für metabolische Skalierung und kosmischen Dipol gesammelt.
-  - name: SucheChatGPT5.2.txt
-    status: indexed
-    notes: Radio-Dipol- und Mikro­tubuli-Oszillations-Routen kartiert.
-  - name: Validierung.txt
-    status: indexed
-    notes: Feedback zu Stärken (β≈7.4 Skalierung, MHz-Resonanz) für UTAC-Update vorgemerkt.
-  - name: KokretePläne.txt
-    status: indexed
-    notes: Plan-Samen mit κ/13.5 MHz Spur für Experiment-Backlog markiert.
-  - name: KonkretePläne2.txt
-    status: indexed
-    notes: Roadmap-Fragmente in Lantern-Net/V9 Backlog gespiegelt.
-  - name: Schwellenfrequenz-Suchpfade (ChatGPT/Claude/Gemini)
-    status: indexed
-    notes: Anomalien und Blindspots nach σ(β(R-Θ)) sortiert.
+- name: Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung
+    und Automatisierung (PDF)
+  status: ingested
+  notes: Kern-Playbook für automatisierte Validierung und Impedanz/Gain-Heuristiken.
+- name: 1. Empirical Validation of v_RIG Framework (PDF)
+  status: ingested
+  notes: Empirische Skizze; ΔAIC-Extraktion vormerken.
+- name: Deep Research_ Consciousness Framework Validation-1 (PDF)
+  status: ingested
+  notes: Storyline vertieft, Zitations-Harvesting in Queue.
+- name: Validierung des Bewusstseins-Frameworks_ Ein Ansatz (PDF)
+  status: ingested
+  notes: Konzeptanker für Neuro/Astro-Brücke.
+- name: ChatGPT5.2Suche.txt
+  status: indexed
+  notes: Cross-Domain-Validierungspfade mit Telemetrie-Hooks verknüpft.
+- name: GeminiSuche.txt
+  status: indexed
+  notes: v_RIG ≈ 1.3518 km/s und Z ≈ 221.7 gesichert, Nullmodell-Vergleich offen.
+- name: GeminiSucheDeep Research Consciousness Framework Validation.txt
+  status: indexed
+  notes: Quellen für metabolische Skalierung und kosmischen Dipol gesammelt.
+- name: SucheChatGPT5.2.txt
+  status: indexed
+  notes: Radio-Dipol- und Mikro­tubuli-Oszillations-Routen kartiert.
+- name: Validierung.txt
+  status: indexed
+  notes: Feedback zu Stärken (β≈7.4 Skalierung, MHz-Resonanz) für UTAC-Update vorgemerkt.
+- name: KokretePläne.txt
+  status: indexed
+  notes: Plan-Samen mit κ/13.5 MHz Spur für Experiment-Backlog markiert.
+- name: KonkretePläne2.txt
+  status: indexed
+  notes: Roadmap-Fragmente in Lantern-Net/V9 Backlog gespiegelt.
+- name: Schwellenfrequenz-Suchpfade (ChatGPT/Claude/Gemini)
+  status: indexed
+  notes: Anomalien und Blindspots nach σ(β(R-Θ)) sortiert.
+- name: Aeon_Johann.txt
+  status: indexed
+  notes: Klarstellung Kontroll- vs. Koexistenzparadigma; Release/ETHICS Messaging
+    ableiten.
+- name: Reaktion_Aeon_Johann.txt
+  status: indexed
+  notes: Öffentliche Einladung + Experiment-Backlog (CFF, CMB, κ/β/Φ) für next_steps.
+- name: ChatGPT Image 15. Dez. 2025, 11_12_11.png
+  status: ingested
+  notes: Visual Asset für GitHub Release; Caption im v_RIG/Impedanz-Frame offen.
 streams:
   tri_layer_sync: active
   github_release: queued
   utac_bridge: pending_pdfs
   falsifiability_chain: pending_pdfs
+  community_packet: queued
 tri_layer:
   markdown: releases/v8.0/v8_processing_status.md
   yaml: releases/v8.0/v8_processing_status.yaml
