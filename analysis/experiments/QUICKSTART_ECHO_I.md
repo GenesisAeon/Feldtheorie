@@ -42,8 +42,11 @@ Customize the launch without editing the Python file:
   --road-path /path/to/TheRoad.txt \
   --output data/experimental/echo_i_custom.csv \
   --server-url http://localhost:11434/api/generate \
+  --timeout 120 \
   --yes
 ```
+
+Set `--timeout` higher for slower, high-ζ(R) models to keep σ(β(R-Θ)) flowing instead of failing early when responses are long.
 
 **Model availability check:** The launcher now reads the Ollama tag catalog before
 probing β. Missing models are reported up front so you can `ollama pull <name>`

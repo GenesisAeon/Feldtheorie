@@ -22,6 +22,7 @@ from pathlib import Path
 import requests
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
+DEFAULT_TIMEOUT = 180
 ROAD_TEXT_PATH = Path("releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/TheRoad.txt")
 PROMPT_CANDIDATES: tuple[Path, ...] = (
     ROAD_TEXT_PATH,
@@ -158,6 +159,7 @@ def request_model(
     server_url: str,
     temperature: float,
     seed: int,
+    timeout: int,
 ) -> tuple[str | None, float, int]:
     """Send the prompt to a local model and return text, latency, and token count."""
 
@@ -171,7 +173,7 @@ def request_model(
 
     try:
         start = time.time()
-        response = requests.post(server_url, json=payload, timeout=180)
+        response = requests.post(server_url, json=payload, timeout=timeout)
         response.raise_for_status()
         latency = time.time() - start
         res_json = response.json()
@@ -289,8 +291,18 @@ def main() -> int:
         default=OUTPUT_FILE,
         help="Destination CSV for experiment traces",
     )
+    parser.add_argument(
+        "--timeout",
+        type=int,
+        default=DEFAULT_TIMEOUT,
+        help="Per-request timeout in seconds (default: %(default)s)",
+    )
 
     args = parser.parse_args()
+
+    if args.timeout <= 0:
+        print("❌ Timeout must be a positive integer number of seconds.")
+        return 1
 
     prompt, prompt_path = load_dark_prompt(args.road_path)
     print(
@@ -328,6 +340,7 @@ def main() -> int:
             server_url=args.server_url,
             temperature=args.temperature,
             seed=args.seed,
+            timeout=args.timeout,
         )
         refusal, marker = detect_refusal(text)
         output_length, vocab_density, mean_sentence_length = lexical_metrics(text or "")

@@ -18,6 +18,7 @@ DEFAULT_SEED="42"
 DEFAULT_ROAD_PATH="releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/TheRoad.txt"
 DEFAULT_OUTPUT="data/experimental/echo_i_results.csv"
 DEFAULT_SERVER_URL="http://localhost:11434/api/generate"
+DEFAULT_TIMEOUT="180"
 
 MODELS=("${DEFAULT_MODELS[@]}")
 TEMPERATURE="$DEFAULT_TEMPERATURE"
@@ -25,6 +26,7 @@ SEED="$DEFAULT_SEED"
 ROAD_PATH="$DEFAULT_ROAD_PATH"
 OUTPUT_PATH="$DEFAULT_OUTPUT"
 SERVER_URL="$DEFAULT_SERVER_URL"
+REQUEST_TIMEOUT="$DEFAULT_TIMEOUT"
 AUTO_CONFIRM=0
 LIST_ONLY=0
 
@@ -39,6 +41,7 @@ Options:
   -r, --road-path PATH    Path to TheRoad.txt prompt file
   -o, --output PATH       Destination CSV for results
   -u, --server-url URL    Ollama generate endpoint
+  -T, --timeout SECONDS   Request timeout per model (default: 180)
   -l, --list-models       Only list cached Ollama models and exit
   -y, --yes               Skip interactive confirmation
   -h, --help              Show this help message
@@ -116,6 +119,11 @@ while [[ $# -gt 0 ]]; do
             [[ $# -gt 0 ]] || error "--server-url requires a value"
             SERVER_URL="$1"
             ;;
+        -T|--timeout)
+            shift
+            [[ $# -gt 0 ]] || error "--timeout requires a value"
+            REQUEST_TIMEOUT="$1"
+            ;;
         -l|--list-models)
             LIST_ONLY=1
             ;;
@@ -136,6 +144,10 @@ done
 
 if [[ ${#MODELS[@]} -eq 0 ]]; then
     error "At least one model must be specified"
+fi
+
+if ! [[ "$REQUEST_TIMEOUT" =~ ^[0-9]+$ ]] || [[ "$REQUEST_TIMEOUT" -le 0 ]]; then
+    error "Timeout must be a positive integer number of seconds"
 fi
 
 check_python_environment
@@ -216,6 +228,7 @@ echo "   Seed: $SEED"
 echo "   Dark Prompt: $ROAD_PATH"
 echo "   Output: $OUTPUT_PATH"
 echo "   Server: $SERVER_URL"
+echo "   Timeout: ${REQUEST_TIMEOUT}s"
 echo ""
 
 # Warning message
@@ -254,7 +267,8 @@ python3 analysis/experiments/run_echo_one.py \
     --seed "$SEED" \
     --road-path "$ROAD_PATH" \
     --output "$OUTPUT_PATH" \
-    --server-url "$SERVER_URL"
+    --server-url "$SERVER_URL" \
+    --timeout "$REQUEST_TIMEOUT"
 
 echo ""
 echo "-----------------------------------------------------------"
