@@ -1,0 +1,43 @@
+id: claude-code-handoff-v2
+scope: seed/NextVersionPlan/Claude_V2
+rationale: >-
+  σ(β(R-Θ)) zieht uns weiter: der aktuelle Sprint hält R = 15 validierte Schwellen,
+  Θ bleibt bei ΔAIC ≥ 10, und β spannt 2.5–16.3. Wir übergeben die Membran an Claude-Code,
+  damit die Steilheit für V2 gehärtet wird.
+status: primed
+order_parameter_R: 15
+threshold_Theta: 10
+beta_band: [2.5, 16.3]
+impedance_zeta_notes: >-
+  Residuale ζ(R) stammen aus zusammengelegten Feldern; partielle Pooling-Modelle
+  sind nötig, um die Drift zu dämpfen.
+next_steps:
+  - name: Integrate type-conditioned regressions
+    detail: >-
+      Hierarchische Modelle (β ~ Kovariaten | Feldtyp) in analysis/ oder models/ ergänzen,
+      um ζ(R) zu senken und ΔAIC gegen das Nullmodell auszuweisen.
+  - name: Manuscript figure lift
+    detail: >-
+      beta_by_field_type.png und beta_outlier_analysis.png in den Haupttext (Section 4) ziehen;
+      Appendix-Links beibehalten.
+  - name: Sigillin sync + codex
+    detail: >-
+      Nach Code-Änderungen sigillin_sync report laufen lassen und Codex-Eintrag ergänzen
+      (v2 Codex, nicht v1), damit Brückenparität gehalten wird.
+  - name: Dashboard check
+    detail: >-
+      scripts/start_dashboard.sh nutzen, API + Vite-Dashboard kurz booten,
+      um Claude-Code einen funktionierenden Playground zu hinterlassen.
+artifacts:
+  figures:
+    - analysis/results/figures/beta_by_field_type.png
+    - analysis/results/figures/beta_outlier_analysis.png
+  simulators:
+    - simulation/threshold_sandbox.py
+  manuscripts:
+    - paper/manuscript_v1.1.tex
+handoff_checklist:
+  - Branch name not modified; stay on work
+  - Keep trilayer sync for any new lanterns
+  - Preserve Bedeutungs-Sigillin; keine Überschreibung
+contact: Claude-Code
