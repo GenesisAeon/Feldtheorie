@@ -1,177 +1,273 @@
 """
-UTAC Data Loader – v1.2
+UTAC Data Loader - v1.3
 Reads YAML metadata files and loads associated datasets for analysis.
+
+This module provides transparent data infrastructure for UTAC v2.0:
+- Automatic loading of YAML metadata
+- Support for CSV, NetCDF, JSON formats
+- Error handling and validation
+- Integration with UTAC analysis pipelines
+
+Author: Johann Römer & Aeon
+Date: December 2024
 """
 
+from __future__ import annotations
+
+import json
+import os
 from pathlib import Path
-from typing import Any, Union
+from typing import Any, Dict, Optional
 
 import pandas as pd
-import xarray as xr
 import yaml
 
-METADATA_DIR = "data/metadata/"
-DATA_DIR = "data/"
+try:
+    import xarray as xr
+    XARRAY_AVAILABLE = True
+except ImportError:
+    XARRAY_AVAILABLE = False
+    xr = None
+
+METADATA_DIR = Path("data/metadata/")
+DATA_DIR = Path("data/")
 
 
-DatasetType = Union[pd.DataFrame, xr.Dataset]
+def load_metadata(file_name: str | Path) -> Dict[str, Any]:
+    """
+    Load a YAML metadata file.
 
+    Parameters
+    ----------
+    file_name : str or Path
+        Name of the YAML file (with or without .yaml extension)
 
-SUFFIX_READERS: tuple[tuple[str, Any], ...] = (
-    (".csv", pd.read_csv),
-    (".csv.gz", pd.read_csv),
-    (".nc", xr.open_dataset),
-    (".json", pd.read_json),
-)
+    Returns
+    -------
+    dict
+        Metadata dictionary
 
+    Raises
+    ------
+    FileNotFoundError
+        If metadata file not found
+    yaml.YAMLError
+        If YAML parsing fails
+    """
+    if not str(file_name).endswith('.yaml'):
+        file_name = f"{file_name}.yaml"
 
-def _normalize_dataset_name(name: str) -> Path:
-    """Normalize a dataset name to a filesystem-friendly path fragment."""
+    path = METADATA_DIR / file_name
 
-    return Path(name.replace(" ", "_").lower())
-
-
-def _known_suffix(path: Path) -> str | None:
-    """Return a recognized suffix (including compound ones) for a path if present."""
-
-    suffixes = path.suffixes
-    if len(suffixes) >= 2 and suffixes[-2:] == [".csv", ".gz"]:
-        return ".csv.gz"
-    if suffixes:
-        return suffixes[-1]
-    return None
-
-
-def load_metadata(file_name: str, metadata_dir: str = METADATA_DIR) -> dict[str, Any]:
-    """Load a YAML metadata file from the configured directory."""
-
-    path = Path(metadata_dir) / file_name
     if not path.exists():
         raise FileNotFoundError(f"Metadata file not found: {path}")
 
-    with path.open("r", encoding="utf-8") as f:
-        return yaml.safe_load(f)
-
-
-def load_dataset(meta: dict[str, Any], data_dir: str = DATA_DIR) -> DatasetType:
-    """
-    Load a dataset based on metadata.
-
-    The loader supports CSV (plain or gzip-compressed), NetCDF and JSON files.
-    The `dataset` field in the metadata is used to derive the filename;
-    whitespace is replaced with underscores and the name is lowercased to
-    stabilize lookups.
-    """
-
-    dataset_name = meta.get("dataset")
-    if not dataset_name:
-        raise ValueError("Metadata must include a non-empty 'dataset' field")
-
-    base_path = Path(data_dir) / _normalize_dataset_name(dataset_name)
-
-    candidates: list[tuple[Path, Any]] = []
-    seen: set[Path] = set()
-
-    provided_suffix = _known_suffix(base_path)
-    if provided_suffix:
-        for suffix, reader in SUFFIX_READERS:
-            if suffix == provided_suffix:
-                if base_path.exists():
-                    candidates.append((base_path, reader))
-                    seen.add(base_path)
-                break
-
-    suffixless = base_path
-    while suffixless.suffix:
-        suffixless = suffixless.with_suffix("")
-
-    for suffix, reader in SUFFIX_READERS:
-        candidate = suffixless.with_suffix(suffix)
-        if candidate not in seen and candidate.exists():
-            candidates.append((candidate, reader))
-            seen.add(candidate)
-
-    if candidates:
-        path, reader = candidates[0]
-        return reader(path)
-
-    raise FileNotFoundError(f"No dataset found for {dataset_name} in {Path(data_dir).resolve()}")
-
-
-def calculate_tau_star(beta: float, theta: float, R: float) -> float:
-    """
-    Calculate τ* (time to threshold) for a system.
-
-    Args:
-        beta: Steepness parameter (must be positive to keep σ well-formed)
-        theta: Threshold value
-        R: Current resource/activation level
-
-    Returns:
-        float: Time to threshold (arbitrary units)
-    """
-    if beta <= 0:
-        raise ValueError("beta must be positive to compute τ*")
-
-    if R >= theta:
-        return 0.0  # Already at threshold
-
-    # Simplified τ* calculation: τ* ∝ 1/(β·(θ-R))
-    # This is a first-order approximation
-    tau_star = 1.0 / (beta * (theta - R) + 1e-10)
-    return tau_star
-
-
-def load_all(metadata_dir: str = METADATA_DIR, data_dir: str = DATA_DIR):
-    """Load all metadata + datasets into a dictionary keyed by dataset name."""
-
-    datasets: dict[str, dict[str, Any]] = {}
-    metadata_path = Path(metadata_dir)
-
-    if not metadata_path.exists():
-        raise FileNotFoundError(f"Metadata directory does not exist: {metadata_dir}")
-
-    for file in metadata_path.glob("*.yaml"):
+    with open(path, "r", encoding="utf-8") as f:
         try:
-            meta = load_metadata(file.name, metadata_dir=metadata_dir)
-            dataset_name = meta.get("dataset")
-            if not dataset_name:
-                raise ValueError(
-                    f"Metadata {file.name} is missing the required 'dataset' field"
-                )
-            try:
-                data = load_dataset(meta, data_dir=data_dir)
-            except FileNotFoundError:
-                data = None
+            return yaml.safe_load(f)
+        except yaml.YAMLError as e:
+            raise yaml.YAMLError(f"Failed to parse {path}: {e}")
 
+
+def load_dataset(meta: Dict[str, Any]) -> Optional[pd.DataFrame | Any]:
+    """
+    Load dataset based on metadata.
+
+    Supports:
+    - CSV files (pandas DataFrame)
+    - NetCDF files (xarray Dataset, if xarray installed)
+    - JSON files (pandas DataFrame)
+
+    Parameters
+    ----------
+    meta : dict
+        Metadata dictionary with 'dataset' key
+
+    Returns
+    -------
+    DataFrame or Dataset or None
+        Loaded data, or None if file not found
+
+    Notes
+    -----
+    File search order: CSV -> NetCDF -> JSON
+    """
+    dataset_name = meta.get("dataset", "unknown").replace(" ", "_").lower()
+    data_path = DATA_DIR / dataset_name
+
+    # Try CSV
+    csv_file = data_path.with_suffix(".csv")
+    if csv_file.exists():
+        try:
+            return pd.read_csv(csv_file)
+        except Exception as e:
+            print(f"Warning: Failed to load CSV {csv_file}: {e}")
+
+    # Try NetCDF
+    if XARRAY_AVAILABLE:
+        nc_file = data_path.with_suffix(".nc")
+        if nc_file.exists():
+            try:
+                return xr.open_dataset(nc_file)
+            except Exception as e:
+                print(f"Warning: Failed to load NetCDF {nc_file}: {e}")
+    else:
+        nc_file = data_path.with_suffix(".nc")
+        if nc_file.exists():
+            print(f"Warning: NetCDF file found ({nc_file}) but xarray not installed")
+
+    # Try JSON
+    json_file = data_path.with_suffix(".json")
+    if json_file.exists():
+        try:
+            return pd.read_json(json_file)
+        except Exception as e:
+            print(f"Warning: Failed to load JSON {json_file}: {e}")
+
+    print(f"No dataset found for '{meta.get('dataset', 'unknown')}' (searched: CSV, NetCDF, JSON)")
+    return None
+
+
+def load_all() -> Dict[str, Dict[str, Any]]:
+    """
+    Load all metadata + datasets into a dictionary.
+
+    Returns
+    -------
+    dict
+        Dictionary mapping dataset names to dicts with keys:
+        - 'metadata': YAML metadata dict
+        - 'data': Loaded dataset (DataFrame, xarray Dataset, or None)
+
+    Raises
+    ------
+    FileNotFoundError
+        If metadata directory doesn't exist
+    """
+    if not METADATA_DIR.exists():
+        raise FileNotFoundError(f"Metadata directory not found: {METADATA_DIR}")
+
+    datasets = {}
+    yaml_files = list(METADATA_DIR.glob("*.yaml"))
+
+    if not yaml_files:
+        print(f"Warning: No YAML files found in {METADATA_DIR}")
+        return datasets
+
+    for yaml_file in yaml_files:
+        try:
+            meta = load_metadata(yaml_file.name)
+            data = load_dataset(meta)
+            dataset_name = meta.get("dataset", yaml_file.stem)
             datasets[dataset_name] = {
                 "metadata": meta,
-                "data": data,
+                "data": data
             }
-        except ValueError:
-            raise
-        except Exception as e:  # pragma: no cover - defensive logging path
-            print(f"Error loading {file.name}: {e}")
+        except Exception as e:
+            print(f"Error loading {yaml_file.name}: {e}")
+            continue
 
     return datasets
 
 
+def calculate_tau_star(beta: float, theta: float, R: float) -> float:
+    """
+    Calculate τ* (critical time to threshold) for UTAC system.
+
+    Parameters
+    ----------
+    beta : float
+        Steepness parameter
+    theta : float
+        Threshold value
+    R : float
+        Current order parameter value
+
+    Returns
+    -------
+    float
+        Time to threshold (τ*)
+
+    Notes
+    -----
+    Simplified formula: τ* = (Θ - R) / (dR/dt)
+    Assumes linear approach for first-order approximation
+    """
+    if R >= theta:
+        return 0.0  # Already at or past threshold
+
+    # Simplified: assume dR/dt proportional to beta
+    # More sophisticated: use actual time series derivative
+    delta_R = theta - R
+    rate = beta * 0.1  # Scaling factor (domain-specific)
+
+    return delta_R / rate if rate > 0 else float('inf')
+
+
+def summarize_datasets(datasets: Dict[str, Dict[str, Any]]) -> pd.DataFrame:
+    """
+    Create summary DataFrame of all loaded datasets.
+
+    Parameters
+    ----------
+    datasets : dict
+        Output from load_all()
+
+    Returns
+    -------
+    DataFrame
+        Summary with columns: dataset, beta, theta, field_type, data_shape, loaded
+    """
+    summaries = []
+    for name, content in datasets.items():
+        meta = content['metadata']
+        data = content['data']
+
+        summary = {
+            'dataset': name,
+            'beta': meta.get('beta', None),
+            'theta': meta.get('theta', None),
+            'field_type': meta.get('field_type', 'unknown'),
+            'data_loaded': data is not None,
+            'data_shape': str(data.shape) if hasattr(data, 'shape') else 'xarray'
+        }
+        summaries.append(summary)
+
+    return pd.DataFrame(summaries)
+
+
 if __name__ == "__main__":
-    all_data = load_all()
-    print(f"\n📊 Loaded {len(all_data)} datasets:\n")
+    print("🌊 UTAC Data Loader v1.3")
+    print("=" * 50)
 
-    for name, content in all_data.items():
-        print(f"  ✅ {name}")
-        meta = content["metadata"]
-        print(f"     β: {meta.get('beta_estimate', 'N/A')}")
-        print(f"     Period: {meta.get('period', 'N/A')}")
-        print(f"     Source: {meta.get('source', 'N/A')}")
+    try:
+        all_data = load_all()
+        print(f"\n✅ Loaded {len(all_data)} datasets\n")
 
-        if content["data"] is not None:
-            if hasattr(content["data"], "shape"):
-                print(f"     Shape: {content['data'].shape}")
+        for name, content in all_data.items():
+            print(f"📊 {name}:")
+            meta = content['metadata']
+            print(f"   β = {meta.get('beta', 'N/A')}")
+            print(f"   Θ = {meta.get('theta', 'N/A')}")
+            print(f"   Field Type: {meta.get('field_type', 'unknown')}")
+
+            if content["data"] is not None:
+                data = content['data']
+                if hasattr(data, 'shape'):
+                    print(f"   Data shape: {data.shape}")
+                else:
+                    print(f"   Data type: xarray Dataset")
             else:
-                print("     Type: xarray dataset")
-        else:
-            print("     ⚠️  No data file found (metadata only)")
-        print()
+                print(f"   ⚠️  No data file found")
+            print()
+
+        # Summary table
+        print("\n" + "=" * 50)
+        print("Summary Table:")
+        print("=" * 50)
+        summary_df = summarize_datasets(all_data)
+        print(summary_df.to_string(index=False))
+
+    except Exception as e:
+        print(f"\n❌ Error: {e}")
+        print("\nEnsure data/metadata/ directory exists with YAML files")

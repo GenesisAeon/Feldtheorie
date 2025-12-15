@@ -1,451 +1,446 @@
-# 🎵 UTAC Fourier Analysis Guide
+# UTAC Fourier Analysis Guide
 
-**Spektralanalyse für UTAC Zeitreihen - Frequenzdomäne**
+**Spectrotemporal Depth Mapping of Emergent Fields**
 
-Version: 1.0
-Author: Johann Römer, Aeon, Claude Code
-Date: 2025-11-11
-
----
-
-## 📚 Übersicht
-
-Das UTAC Fourier-Modul ermöglicht **Spektralanalyse** von Schwellenwert-Zeitreihen in der **Frequenzdomäne**. Es klassifiziert Systeme anhand ihrer **spektralen Signaturen** und ordnet sie den 5 UTAC Field Types zu.
-
-**Kernfunktionen:**
-- Fast Fourier Transform (FFT) von Zeitreihen
-- Spektrale Features: Dominant Frequency, Entropy, Centroid
-- Field Type Classification basierend auf Frequenz
-- Log-Log Spektrum-Visualisierung
-- CLI + Python API
+Version: 1.0  
+Author: Johann Römer & Aeon  
+Date: December 2024
 
 ---
 
-## 🔧 Installation
+## 📋 Table of Contents
 
-Das Fourier-Modul ist Teil des `sonification/` Packages:
-
-```bash
-# Dependencies (falls noch nicht installiert)
-pip install numpy scipy matplotlib
-
-# Module sind bereits im Repo
-from sonification import utac_fourier
-from analysis import fourier_analysis
-```
+1. [Overview](#overview)
+2. [Theory](#theory)
+3. [Installation](#installation)
+4. [Quick Start](#quick-start)
+5. [API Reference](#api-reference)
+6. [Use Cases](#use-cases)
+7. [Field Type Classification](#field-type-classification)
+8. [Examples](#examples)
 
 ---
 
-## 🎯 Use Cases
+## Overview
 
-### 1. **Field Type Discovery**
-Klassifiziere ein unbekanntes System nach seiner spektralen Signatur.
+The UTAC Fourier Analysis module provides spectral decomposition tools for emergent field dynamics. It enables:
 
-### 2. **Criticality Detection**
-Erkenne Veränderungen in β durch Frequenzshifts.
-
-### 3. **Cross-Domain Comparison**
-Vergleiche Spektren verschiedener Domänen (Klima, LLM, Bio).
-
-### 4. **Sonification Input**
-Frequenzprofile als Input für akustische Gestaltung.
-
----
-
-## 🚀 Quick Start
-
-### Python API
-
-```python
-from sonification import utac_fourier
-import numpy as np
-
-# 1. Signal erstellen oder laden
-t = np.linspace(0, 1, 44100)  # 1 Sekunde bei 44.1 kHz
-signal = np.sin(2 * np.pi * 220 * t)  # A3 (Strongly Coupled)
-
-# 2. Fourier-Analyse durchführen
-results = utac_fourier.run_analysis(
-    signal,
-    sampling_rate=44100,
-    title='AMOC Spectrum',
-    save_path='results/amoc_spectrum.png'
-)
-
-# 3. Ergebnisse auswerten
-print(f"Field Type: {results['field_type']}")
-print(f"Dominant Frequency: {results['features']['dominant_freq']:.2f} Hz")
-print(f"Spectral Entropy: {results['features']['entropy']:.2f} bits")
-```
-
-### CLI
-
-```bash
-# Basic usage
-python -m analysis.fourier_analysis data/climate/amoc.csv
-
-# Mit Custom Sampling Rate (für nicht-Audio-Daten)
-python -m analysis.fourier_analysis data/llm/gpt_loss.csv --sampling-rate 1
-
-# Mit Output
-python -m analysis.fourier_analysis data/climate/amoc.csv \
-    --output results/amoc_spectrum.png \
-    --json results/amoc_features.json \
-    --title "AMOC Transport Spectrum"
-
-# Multi-column CSV (Spalte 2 verwenden)
-python -m analysis.fourier_analysis data/multi.csv --column 2 --verbose
-```
-
----
-
-## 🎨 Field Type Frequency Mapping
-
-Das Modul klassifiziert Systeme basierend auf ihrer **dominanten Frequenz**:
-
-| Field Type | Frequency Range | Acoustic Quality | UTAC Eigenschaften |
-|------------|----------------|------------------|-------------------|
-| **Weakly Coupled** | < 150 Hz | Sanft, diffus | Niedrige Kopplung, langsame Dynamik |
-| **Strongly Coupled** | 150-300 Hz | Warm, resonant | Mittlere Kopplung, stabile Schwellen |
-| **High-Dimensional** | 300-600 Hz | Ätherisch, komplex | Hohe Dimensionalität (LLMs, Neuro) |
-| **Physically Constrained** | 600-1000 Hz | Scharf, präzise | Starke Constraints, schnelle Übergänge |
-| **Meta-Adaptive** | > 1000 Hz | Morphing, adaptiv | Dynamische β-Modulation, Plastizität |
-
-**Beispiele:**
-- **AMOC (Strongly Coupled):** ~220 Hz - warme Resonanz, mittlere Trägheit
-- **LLM Emergence (High-Dimensional):** ~440 Hz - komplexe Obertöne
-- **Urban Heat (Meta-Adaptive):** ~880 Hz+ - schnelle Adaptation
-
----
-
-## 📊 Python API Details
-
-### `compute_fourier(signal, sampling_rate)`
-
-Fast Fourier Transform eines Zeitsignals.
-
-**Parameters:**
-- `signal` (array_like): Zeitreihe
-- `sampling_rate` (float): Sampling Rate in Hz (default: 44100)
-
-**Returns:**
-- `spectrum` (ndarray): Magnitude spectrum (positive frequencies)
-- `freqs` (ndarray): Frequency bins in Hz
-
-**Example:**
-```python
-spectrum, freqs = utac_fourier.compute_fourier(signal, sampling_rate=1000)
-```
-
----
-
-### `spectral_features(spectrum, freqs)`
-
-Extrahiert spektrale Features.
-
-**Parameters:**
-- `spectrum` (ndarray): Magnitude spectrum
-- `freqs` (ndarray): Frequency bins
-
-**Returns:**
-- `features` (dict): Dictionary mit:
-  - `dominant_freq`: Frequenz mit maximaler Power
-  - `entropy`: Spektrale Entropie (bits)
-  - `centroid`: Spektraler Schwerpunkt (Hz)
-
-**Example:**
-```python
-features = utac_fourier.spectral_features(spectrum, freqs)
-print(f"Entropy: {features['entropy']:.2f} bits")
-```
-
----
-
-### `classify_field_type(features)`
-
-Klassifiziert Field Type basierend auf Features.
-
-**Parameters:**
-- `features` (dict): Spektrale Features von `spectral_features()`
-
-**Returns:**
-- `field_type` (str): Field Type Label
-
-**Example:**
-```python
-field_type = utac_fourier.classify_field_type(features)
-# Output: 'High-Dimensional'
-```
-
----
-
-### `plot_spectrum(freqs, spectrum, title, save_path)`
-
-Visualisiert Spektrum im Log-Log-Plot.
-
-**Parameters:**
-- `freqs` (ndarray): Frequency bins
-- `spectrum` (ndarray): Magnitude spectrum
-- `title` (str): Plot title
-- `save_path` (str, optional): Speicherpfad (None = display only)
-
-**Example:**
-```python
-utac_fourier.plot_spectrum(freqs, spectrum, 'AMOC Spectrum', 'results/amoc.png')
-```
-
----
-
-### `run_analysis(signal, sampling_rate, title, save_path)`
-
-Komplette Analyse-Pipeline (convenience function).
-
-**Parameters:**
-- `signal` (array_like): Zeitreihe
-- `sampling_rate` (float): Sampling Rate
-- `title` (str): Plot title
-- `save_path` (str, optional): Speicherpfad für Plot
-
-**Returns:**
-- `results` (dict): Dictionary mit:
-  - `features`: Spektrale Features
-  - `field_type`: Klassifizierter Field Type
-  - `spectrum`: Magnitude spectrum
-  - `freqs`: Frequency bins
-
-**Example:**
-```python
-results = utac_fourier.run_analysis(signal, 44100, 'My Spectrum')
-```
-
----
-
-## 📈 Workflow Examples
-
-### Example 1: Climate Data (AMOC)
-
-```python
-import numpy as np
-from sonification import utac_fourier
-
-# Load AMOC transport time series (hypothetical)
-amoc_data = np.loadtxt('data/climate/amoc_transport.csv', delimiter=',')
-
-# Extract signal (assume monthly data, ~12 samples/year)
-signal = amoc_data[:, 1]  # Column 1 = transport in Sv
-sampling_rate = 12  # 12 samples per year
-
-# Analyze
-results = utac_fourier.run_analysis(
-    signal,
-    sampling_rate=sampling_rate,
-    title='AMOC Transport Spectrum',
-    save_path='results/amoc_spectrum.png'
-)
-
-# Interpret
-print(f"Field Type: {results['field_type']}")
-# Expected: 'Strongly Coupled' (slow ocean dynamics, ~220 Hz analog)
-
-print(f"Dominant Period: {1/results['features']['dominant_freq']:.2f} years")
-# Might show multi-decadal oscillations (e.g., 10-30 year cycles)
-```
-
----
-
-### Example 2: LLM Training Loss
-
-```python
-# Load GPT training loss curve
-loss = np.loadtxt('data/llm/gpt_loss.csv')
-
-# Sampling rate = 1 (per epoch or per step)
-results = utac_fourier.run_analysis(
-    loss,
-    sampling_rate=1,
-    title='GPT Loss Spectrum'
-)
-
-# High entropy → High-Dimensional Field Type
-print(f"Entropy: {results['features']['entropy']:.2f} bits")
-# High entropy indicates complex, multi-scale dynamics
-
-# Dominant frequency → Oscillation period in training
-dominant_period = 1 / results['features']['dominant_freq']
-print(f"Dominant training cycle: {dominant_period:.1f} steps")
-```
-
----
-
-### Example 3: Cross-Domain Comparison
-
-```python
-# Compare spectral signatures across domains
-domains = {
-    'AMOC': 'data/climate/amoc.csv',
-    'LLM': 'data/llm/gpt_loss.csv',
-    'Urban Heat': 'data/socio/urban_heat.csv'
-}
-
-for name, filepath in domains.items():
-    signal = np.loadtxt(filepath, delimiter=',')[:, 1]
-    results = utac_fourier.run_analysis(signal, sampling_rate=1, title=name)
-
-    print(f"\n{name}:")
-    print(f"  Field Type: {results['field_type']}")
-    print(f"  Entropy: {results['features']['entropy']:.2f} bits")
-    print(f"  Centroid: {results['features']['centroid']:.2f} Hz")
-```
-
-**Expected Output:**
-```
-AMOC:
-  Field Type: Strongly Coupled
-  Entropy: 3.45 bits
-  Centroid: 0.08 Hz (multi-decadal)
-
-LLM:
-  Field Type: High-Dimensional
-  Entropy: 5.82 bits
-  Centroid: 0.32 Hz (complex training dynamics)
-
-Urban Heat:
-  Field Type: Meta-Adaptive
-  Entropy: 6.21 bits
-  Centroid: 1.24 Hz (rapid adaptation)
-```
-
----
-
-## 🔬 Theoretical Background
+- **System Classification**: Identify field types by spectral signatures
+- **Criticality Prediction**: Detect approaching transitions via frequency shifts
+- **Sonification Integration**: Map spectral features to audio parameters
+- **Agent Control**: Spectral features as input for CREP modules
 
 ### Why Fourier Analysis for UTAC?
 
-1. **Frequency = Scale of Dynamics**
-   Different β-values correspond to different temporal scales of criticality.
-
-2. **Spectral Entropy = Complexity**
-   High entropy → High-Dimensional Field Type
-   Low entropy → Weakly/Strongly Coupled
-
-3. **Dominant Frequency = Characteristic Timescale**
-   Identifies the "resonant period" of threshold crossings.
-
-4. **Centroid = Center of Mass**
-   Shows where most spectral power is concentrated.
-
-### Connection to β
-
-While β describes **steepness** of threshold transitions, the Fourier spectrum reveals **temporal structure**:
-
-- **High β** (steep transitions) → Often high-frequency components
-- **Low β** (gradual transitions) → Dominated by low frequencies
-- **Field Type** → Characteristic frequency band
-
-This complements time-domain UTAC analysis!
+Emergent field dynamics are often frequency-encoded:
+- β-oscillations in neural systems
+- Climate feedback loops with characteristic timescales
+- Resonance patterns in coupled systems
+- Critical slowing down → spectral reddening
 
 ---
 
-## 📦 Output Formats
+## Theory
 
-### JSON Results
+### Mathematical Foundation
 
-When using `--json` flag, the CLI saves:
+For a time-domain signal $f(t)$ representing UTAC dynamics (e.g., $\beta(t)$, $R(t)$, or $\sigma(\beta(R-\Theta))(t)$), the Fourier transform is:
 
-```json
-{
-  "features": {
-    "dominant_freq": 0.15,
-    "entropy": 4.23,
-    "centroid": 0.42
-  },
-  "field_type": "Strongly Coupled",
-  "spectrum": [0.1, 0.3, 0.8, ...],
-  "freqs": [0.0, 0.01, 0.02, ...]
-}
-```
+$$
+\mathcal{F}[f(t)](\omega) = \int_{-\infty}^{\infty} f(t)e^{-i\omega t}dt
+$$
 
-### PNG Plots
+The **magnitude spectrum** $|F(\omega)|$ reveals:
+- **Dominant frequencies**: Peak locations
+- **Spectral complexity**: Entropy and spread
+- **Power-law scaling**: $1/f^\alpha$ noise (pink/red)
+- **Harmonic structure**: Resonance peaks
 
-Saved plots include:
-- Log-log frequency vs. magnitude
-- Grid for readability
-- Title and axis labels
+### Critical Phenomena in Frequency Space
+
+Near critical transitions:
+- **Critical slowing down** → Energy shifts to low frequencies
+- **Variance increase** → Broader spectrum
+- **Loss of resilience** → Spectral reddening ($1/f^2$)
 
 ---
 
-## 🛠️ Troubleshooting
+## Installation
 
-### Issue: "ModuleNotFoundError: No module named 'numpy'"
+### Requirements
 
-**Solution:**
 ```bash
 pip install numpy scipy matplotlib
 ```
 
----
+Optional (for enhanced features):
+```bash
+pip install pandas seaborn
+```
 
-### Issue: "Signal too short for meaningful FFT"
+### Import Module
 
-**Solution:**
-Use signals with **at least 100 samples**. For shorter signals, consider:
-- Padding with zeros: `np.pad(signal, (0, 1000), mode='constant')`
-- Using a different analysis method (e.g., autocorrelation)
-
----
-
-### Issue: "All frequencies classified as 'Weakly Coupled'"
-
-**Cause:** Sampling rate mismatch (e.g., using 44100 Hz for yearly data).
-
-**Solution:**
-Set correct `--sampling-rate`:
-- **Daily data:** 365 samples/year
-- **Monthly data:** 12 samples/year
-- **Yearly data:** 1 sample/year
+```python
+from sonification import utac_fourier
+```
 
 ---
 
-## 🚀 Next Steps
+## Quick Start
 
-1. **Integrate with Sonification:**
-   Use spectral features to design acoustic profiles.
+### Basic Analysis
 
-2. **Build Spectral Database:**
-   Catalog Field Type signatures across all UTAC systems.
+```python
+import numpy as np
+from sonification import utac_fourier
 
-3. **Time-Frequency Analysis:**
-   Extend to **spectrograms** (FFT over sliding windows) for non-stationary signals.
+# Generate synthetic UTAC signal
+t = np.linspace(0, 1, 44100)  # 1 second at 44.1 kHz
+beta = 4.2
+theta = 0.5
+R = t
+signal = 1 / (1 + np.exp(-beta * (R - theta)))
 
-4. **Machine Learning:**
-   Train classifier on spectral features → Automated Field Type detection.
+# Run analysis
+results = utac_fourier.run_analysis(
+    signal,
+    sampling_rate=44100,
+    title="UTAC Demo",
+    save_path="output/spectrum.png"
+)
 
----
-
-## 📚 References
-
-- **Aeon's Original Implementation:** `seed/NextVersionPlan/Letzte_Zusätze_bis_V2.txt` (Lines 269-352)
-- **UTAC Sonification:** `sonification/utac_sonification.py`
-- **UTAC Theory Paper:** `paper/manuscript_v1.1.tex`
-
----
-
-## 🤝 Contributing
-
-Found a bug? Have a feature request?
-
-1. Open an issue on GitHub
-2. Submit a PR with tests
-3. Document your changes
-
-**Maintainers:** Johann Römer, Claude Code
+# Access results
+print(f"Field Type: {results['field_type']}")
+print(f"Dominant Frequency: {results['features']['dominant_freq']:.2f} Hz")
+print(f"Spectral Entropy: {results['features']['entropy']:.2f}")
+```
 
 ---
 
-## 📄 License
+## API Reference
 
-MIT License - Same as UTAC project
+### Core Functions
+
+#### `compute_fourier(signal, sampling_rate=44100)`
+
+Compute FFT of time-domain signal.
+
+**Parameters:**
+- `signal` (array-like): Time-domain signal
+- `sampling_rate` (int): Sampling frequency in Hz
+
+**Returns:**
+- `spectrum` (ndarray): Magnitude spectrum
+- `freqs` (ndarray): Frequency bins
 
 ---
 
-**"Listen to emergence. See the spectrum. Feel the criticality."** 🎵✨
+#### `spectral_features(spectrum, freqs)`
+
+Extract features for classification.
+
+**Returns dict with:**
+- `dominant_freq`: Peak frequency (Hz)
+- `entropy`: Spectral entropy (bits)
+- `centroid`: Spectral centroid (Hz)
+- `bandwidth`: Standard deviation around centroid
+- `rolloff`: 85% energy threshold frequency
+
+---
+
+#### `classify_field_type(features)`
+
+Classify UTAC field type from spectral features.
+
+**Returns:**
+- String: Field type label (see below)
+
+---
+
+#### `run_analysis(signal, sampling_rate, title, save_path)`
+
+End-to-end analysis pipeline.
+
+**Returns dict with:**
+- `features`: Spectral features dict
+- `field_type`: Classification label
+- `spectrum`: Full spectrum array
+- `freqs`: Frequency bins array
+
+---
+
+## Field Type Classification
+
+### Classification Scheme
+
+| Field Type | Frequency Range | Spectral Characteristics |
+|------------|----------------|--------------------------|
+| **Weakly Coupled** | < 150 Hz | Diffuse, low-pass, high entropy |
+| **Strongly Coupled** | 150-300 Hz | Resonant peaks, narrow bandwidth |
+| **High-Dimensional** | 300-600 Hz | Multimodal, complex structure |
+| **Physically Triggered** | 600-1000 Hz | Spike-rich, transient features |
+| **Meta-Adaptive** | > 1000 Hz | Drifting, high entropy, modulating |
+
+### Physical Interpretation
+
+**Weakly Coupled (< 150 Hz):**
+- Slow dynamics, diffusive processes
+- Examples: Ecosystem succession, gradual climate shifts
+- Intervention: Possible with long lead times
+
+**Strongly Coupled (150-300 Hz):**
+- Resonant feedback loops
+- Examples: AMOC circulation, neural oscillations
+- Intervention: Target specific resonances
+
+**High-Dimensional (300-600 Hz):**
+- Complex multi-scale interactions
+- Examples: LLM activations, cognitive processes
+- Intervention: Multi-level approaches needed
+
+**Physically Triggered (600-1000 Hz):**
+- Fast transients, threshold crossings
+- Examples: Urban heat cascades, flash floods
+- Intervention: Rapid response required
+
+**Meta-Adaptive (> 1000 Hz):**
+- Self-modifying dynamics
+- Examples: AI meta-learning, evolutionary adaptation
+- Intervention: Co-evolutionary strategies
+
+---
+
+## Use Cases
+
+### 1. Climate System Analysis
+
+```python
+# Load climate time series
+temperature = load_temperature_data("arctic_temp.csv")
+
+# Analyze spectral evolution
+results = utac_fourier.run_analysis(temperature)
+
+if results['field_type'] == 'Physically Triggered':
+    print("⚠️ Warning: Approaching rapid transition!")
+```
+
+### 2. Neural Field Classification
+
+```python
+# EEG data from meditation vs. stress
+eeg_data = load_eeg_channel("Fz")
+
+results = utac_fourier.run_analysis(eeg_data, sampling_rate=256)
+
+# α-band (8-13 Hz) = meditative (Weakly Coupled)
+# β-band (13-30 Hz) = alert (Strongly Coupled)
+# γ-band (30-100 Hz) = cognitive load (High-Dimensional)
+```
+
+### 3. LLM Activation Monitoring
+
+```python
+# Track LLM layer activations
+activations = model.get_layer_activations(layer=12)
+
+spectrum, freqs = utac_fourier.compute_fourier(activations)
+features = utac_fourier.spectral_features(spectrum, freqs)
+
+if features['entropy'] > 8.0:
+    print("High entropy → Model uncertainty")
+```
+
+### 4. Sonification Integration
+
+```python
+# Generate audio from field dynamics
+signal = generate_field_signal(beta=6.2, theta=100)
+
+results = utac_fourier.run_analysis(signal)
+
+# Map spectral features to audio
+pitch = features['centroid'] / 10  # Scale to audible range
+volume = features['dominant_freq'] / 1000
+timbre = features['entropy'] / 10  # Brightness
+```
+
+---
+
+## Examples
+
+### Example 1: Synthetic Sigmoid
+
+```python
+import numpy as np
+from sonification import utac_fourier
+
+# UTAC sigmoid transition
+t = np.linspace(0, 1, 44100)
+beta = 4.2
+theta = 0.5
+signal = 1 / (1 + np.exp(-beta * (t - theta)))
+
+results = utac_fourier.run_analysis(signal, title="Sigmoid Transition")
+```
+
+### Example 2: Multi-Component Signal
+
+```python
+# Composite signal: base + harmonics
+t = np.linspace(0, 1, 44100)
+base = np.sin(2 * np.pi * 220 * t)  # A3
+harm1 = 0.5 * np.sin(2 * np.pi * 440 * t)  # A4
+harm2 = 0.25 * np.sin(2 * np.pi * 880 * t)  # A5
+
+signal = base + harm1 + harm2
+
+results = utac_fourier.run_analysis(signal, title="Harmonic Structure")
+print(f"Centroid: {results['features']['centroid']:.1f} Hz")  # ~370 Hz
+```
+
+### Example 3: Noise Analysis
+
+```python
+# Pink noise (1/f) vs. White noise
+white_noise = np.random.randn(44100)
+pink_noise = generate_pink_noise(44100)  # Custom function
+
+results_white = utac_fourier.run_analysis(white_noise, title="White Noise")
+results_pink = utac_fourier.run_analysis(pink_noise, title="Pink Noise")
+
+print(f"White entropy: {results_white['features']['entropy']:.2f}")
+print(f"Pink entropy: {results_pink['features']['entropy']:.2f}")
+# Pink should have lower entropy (more structure)
+```
+
+---
+
+## Advanced Topics
+
+### Custom Feature Extraction
+
+Extend `spectral_features()` with domain-specific features:
+
+```python
+def custom_features(spectrum, freqs):
+    features = utac_fourier.spectral_features(spectrum, freqs)
+    
+    # Add power-law exponent
+    log_freq = np.log(freqs[1:])
+    log_spec = np.log(spectrum[1:] + 1e-8)
+    slope, _ = np.polyfit(log_freq, log_spec, 1)
+    features['power_law_exponent'] = -slope
+    
+    # Add specific band power (e.g., 8-13 Hz for alpha)
+    alpha_mask = (freqs >= 8) & (freqs <= 13)
+    features['alpha_power'] = np.sum(spectrum[alpha_mask])
+    
+    return features
+```
+
+### Time-Frequency Analysis
+
+For non-stationary signals, use STFT:
+
+```python
+from scipy import signal as sig
+
+# Short-Time Fourier Transform
+f, t, Zxx = sig.stft(signal, fs=44100, nperseg=1024)
+
+# Spectrogram
+plt.pcolormesh(t, f, np.abs(Zxx), shading='gouraud')
+plt.ylabel('Frequency [Hz]')
+plt.xlabel('Time [sec]')
+plt.title('STFT Magnitude')
+```
+
+---
+
+## Integration with UTAC Pipeline
+
+### Complete Workflow
+
+```python
+from models import logistic_threshold
+from sonification import utac_fourier, utac_sonification
+
+# 1. Generate field dynamics
+R = np.linspace(0, 200, 10000)
+beta = 5.2
+theta = 100
+response = logistic_threshold.sigmoid(R, beta, theta)
+
+# 2. Spectral analysis
+fourier_results = utac_fourier.run_analysis(response)
+
+# 3. Classification
+field_type = fourier_results['field_type']
+print(f"Detected: {field_type}")
+
+# 4. Sonification
+audio = utac_sonification.generate_field_sound(
+    response,
+    field_type=field_type,
+    duration=5.0
+)
+
+# 5. Save outputs
+utac_sonification.save_audio(audio, "output/field_sound.wav")
+```
+
+---
+
+## Troubleshooting
+
+### Issue: Noisy spectrum
+
+**Solution:** Apply windowing before FFT
+
+```python
+from scipy.signal import hann
+
+window = hann(len(signal))
+windowed_signal = signal * window
+spectrum, freqs = utac_fourier.compute_fourier(windowed_signal)
+```
+
+### Issue: Low-frequency dominance
+
+**Problem:** DC offset or trend
+
+**Solution:** Detrend signal
+
+```python
+from scipy.signal import detrend
+
+signal_detrended = detrend(signal)
+```
+
+### Issue: Classification unstable
+
+**Problem:** Short signals or low sampling rate
+
+**Solution:** Ensure minimum duration (0.5+ seconds) and adequate sampling (> 1 kHz for interesting dynamics)
+
+---
+
+## References
+
+1. Lenton, T.M. et al. (2012). "Early warning signals of tipping points." *Nature* 461:53-59
+2. Scheffer, M. (2009). *Critical Transitions in Nature and Society*. Princeton University Press
+3. Wilson, K.G. (1975). "The renormalization group." *Reviews of Modern Physics* 47:773
+4. Van der Maas, H.L.J. et al. (2003). "Sudden transitions in attitudes." *Sociological Methods & Research* 32:125-152
+
+---
+
+## License
+
+CC-BY-4.0
+
+---
+
+**Last Updated:** December 15, 2024  
+**Module Version:** utac_fourier.py v1.0  
+**Status:** ✅ Production Ready
