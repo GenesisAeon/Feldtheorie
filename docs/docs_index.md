@@ -1,6 +1,6 @@
 # 📚 Docs Index - Living Documentation Navigator
 
-**Version:** 1.3.8 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 18. Nov 2025 | **Verzeichnis:** `docs/`
+**Version:** 1.3.8 | **Datum:** 6. Nov 2025 | **Zuletzt aktualisiert:** 15. Dez 2025 | **Verzeichnis:** `docs/`
 
 ---
 
@@ -14,7 +14,7 @@ docs/
 ├── V6 Extensions (3): Entropy Governance & Tesseract-Physics, OIPK Summary, Tesseract Geometry ⭐NEW!
 ├── Applications (4): Classification, Use Cases, Review Guide, Safety-Delay Status
 ├── Validation (2): Falsifiability, Reports
-└── Infrastructure (19): README, Cleanup Resonance Map, Status Matrix, Metaquest Parity Brief, Activation Backlog, Docs Index, Sigillin Hygiene, Search Patterns, Zenodo Abstract, Zenodo Playbook, Resonance Bridge Map, UTAC v2 Data Lanterns, UTAC v2 Activation Tracker 2026-02, UTAC v2 Activation Tracker 2026-03, UTAC v2 Activation Tracker 2026-05, UTAC v2 Activation Tracker 2026-06, UTAC v2 Activation Tracker 2026-07, UTAC v2 Activation Tracker 2026-08, UTAC v2 Gap Synopsis 2026-03
+└── Infrastructure (20): README, Cleanup Resonance Map, Status Matrix, Metaquest Parity Brief, Activation Backlog, Docs Index, Sigillin Hygiene, Search Patterns, Zenodo Abstract, Zenodo Playbook, Resonance Bridge Map, UTAC v2 Data Lanterns, UTAC v2 Activation Tracker 2026-02, UTAC v2 Activation Tracker 2026-03, UTAC v2 Activation Tracker 2026-05, UTAC v2 Activation Tracker 2026-06, UTAC v2 Activation Tracker 2026-07, UTAC v2 Activation Tracker 2026-08, UTAC v2 Gap Synopsis 2026-03, Claude-Code Handoff Brief
 
 Total: 33 MD files
 ```
@@ -120,7 +120,7 @@ Total: 33 MD files
 1. `utac_falsifiability.md` - ⭐ Popper würde stolz sein!
 2. `validation_report_v1.0.1.md` - Empirische Zusammenfassung
 
-### 🟣 Infrastructure (19 docs)
+### 🟣 Infrastructure (20 docs)
 1. `README.md` - Living Documentation Tapestry Manifest
 2. `repo_cleanup_resonance.md` - Resonanzkarte für Struktur- & Metadaten-Aufgaben
 3. `utac_status_alignment_v1.2.md` - Status & Implementation Matrix v1.2-pre
@@ -140,6 +140,7 @@ Total: 33 MD files
 17. `utac_v2_activation_tracker_2026-07.md` - Juli-Gap Scan (σ≈0.317) mit `--as-of` Telemetrie, ΔAIC-Doppelposten (`neuro_ai_beta.json`, `beta_meta_regression_v2_latest.json`) und Codex-Hook `pr-draft-0108`
 18. `utac_v2_activation_tracker_2026-08.md` - August-Gap Scan (σ≈0.317) mit neuem Manifest-JSON (`20260820T000000Z`), Prioritätshooks und Codex-Hook `pr-draft-0110`
 19. `utac_v2_gap_synopsis_2026-03.md` - Inventar "haben vs. brauchen" + Guard-Update (meta.logistic) für die UTAC v2 Laternen
+20. `claude_code_handoff.md` - Übergabe-Notiz für Claude-Code (R↔Θ Snapshot, Manuskript-Hooks Section 4, Consent-&-Joy aktiv, Schatten-Check bei ζ(R)>0.2)
 
 ---
 

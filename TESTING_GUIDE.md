@@ -49,6 +49,17 @@ pytest tests/test_aeon_nullkern.py -v
 pytest tests/test_aeon_*.py --cov=aeon --cov-report=term-missing
 ```
 
+#### Pytest Markers
+
+```bash
+# Skip long σ(β(R-Θ)) sweeps while iterating
+pytest -m "not slow" tests/test_utac_microscopic_abm.py -v
+```
+
+**Why:** The `slow` marker tags UTAC microscopic ABM loops that trace emergent dynamics.
+It is registered in `pytest.ini` so pytest no longer emits unknown-marker warnings and
+you can toggle these runs explicitly during quick feedback cycles.
+
 **Expected Output:**
 ```
 tests/test_aeon_nullkern.py::test_nullkern_initialization PASSED

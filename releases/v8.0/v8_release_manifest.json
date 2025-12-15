@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "version": "v8.0-manifest-0.1.0",
+    "version": "v8.0-manifest-0.2.0",
     "scope": "releases/v8.0",
     "created": "2026-01-15T00:00:00Z",
-    "updated": "2026-01-15T00:00:00Z",
+    "updated": "2026-01-19T00:00:00Z",
     "description": "Tri-Layer Navigator for the v8.0 research drop (validation dossiers, search transcripts, and consciousness framework probes).",
     "logistic_frame": {
       "R_goal": "Konsistentes Mapping der v8.0-Dossiers auf σ(β(R-Θ)) Evidenzketten",
@@ -12,10 +12,19 @@
       "zeta_risk": "medium – Rohquellen sind noch unbasiert und können Archiv-Hypnose triggern"
     },
     "coupling": {
-      "ordnungs_sigillin": ["feldtheorie_index.{yaml,json,md}"],
-      "bedeutungs_sigillin": ["seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md"],
-      "shadow_sigillin": ["seed/shadow_sigillin/metaquest/metaquest_shadow_index.md"],
-      "empirics": ["analysis/", "data/"]
+      "ordnungs_sigillin": [
+        "feldtheorie_index.{yaml,json,md}"
+      ],
+      "bedeutungs_sigillin": [
+        "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md"
+      ],
+      "shadow_sigillin": [
+        "seed/shadow_sigillin/metaquest/metaquest_shadow_index.md"
+      ],
+      "empirics": [
+        "analysis/",
+        "data/"
+      ]
     }
   },
   "artifacts": [
@@ -24,7 +33,7 @@
       "path": "releases/v8.0/Validierung.txt",
       "kind": "memo",
       "focus": "Kurze Validierungsnotiz zur Universalität des v_RIG Consciousness Frameworks",
-      "status": "pending-index",
+      "status": "indexed",
       "action_items": [
         "Extrahiere Kernaussagen als Nullmodell + ΔAIC/CI Notizen",
         "Synchronisiere Referenzen mit feldtheorie_index trilayer"
@@ -35,7 +44,7 @@
       "path": "releases/v8.0/GeminiSuche.txt",
       "kind": "search-log",
       "focus": "Gemini-Suche nach v_RIG Validation Material",
-      "status": "pending-index",
+      "status": "indexed",
       "action_items": [
         "Prüfe Fundstellen gegen lokale PDFs",
         "Verknüpfe Treffer mit Metaquest-Brücken"
@@ -46,7 +55,7 @@
       "path": "releases/v8.0/GeminiSucheDeep Research Consciousness Framework Validation.txt",
       "kind": "search-log",
       "focus": "Tiefergehende Gemini-Recherche zu Consciousness Framework Validation",
-      "status": "pending-index",
+      "status": "indexed",
       "action_items": [
         "Herausarbeiten von Hypothesen vs. Evidenz",
         "ΔAIC/CI Platzhalter ergänzen"
@@ -68,7 +77,7 @@
       "path": "releases/v8.0/SucheChatGPT5.2.txt",
       "kind": "search-log",
       "focus": "Suchprotokoll für v_RIG Validation Queries",
-      "status": "pending-index",
+      "status": "indexed",
       "action_items": [
         "Konsolidierte Query-Liste ableiten",
         "Priorisierte Evidenzsuche in PDFs"
@@ -139,6 +148,83 @@
         "Abgleich mit UTAC Kernparametern (β-Range, τ*, ζ(R))",
         "Empirische Datenanforderungen sammeln"
       ]
+    },
+    {
+      "id": "v8r-em-coupling-dialogue",
+      "path": "releases/v8.0/KokretePläne.txt",
+      "kind": "dialogue",
+      "focus": "EM-Kopplung, κ-Parameter und Tri-Funktion (S-A/S-V/Integration) mit Experimentvorschlägen",
+      "status": "indexed",
+      "action_items": [
+        "Extrahiere EM-Deprivation- und RF-Stimulations-Experimente inkl. CFF/IIT-Metriken",
+        "Verknüpfe 13.5 MHz Spur mit impedance/β-Metriken im Dashboard"
+      ]
+    },
+    {
+      "id": "v8r-v9-scope-memo",
+      "path": "releases/v8.0/KonkretePläne2.txt",
+      "kind": "roadmap",
+      "focus": "Übergang v6→v8→v9, Lantern-Net- und Gardener-Agent-Ideen",
+      "status": "indexed",
+      "action_items": [
+        "Ableiten der Lantern-Net Artefakte (lantern_hub, lantern_bridge) für v9 Backlog",
+        "ΔC(t)/Resonance-Yield Metriken in v8 Telemetrie prüfen"
+      ]
+    },
+    {
+      "id": "v8r-threshold-search-chatgpt",
+      "path": "releases/v8.0/ChatGPT5.2Suche nach Schwellenfrequenz Kosmologie Kognition.txt",
+      "kind": "search-log",
+      "focus": "Schwellenfrequenzen und v_RIG-Bezüge in Kosmologie/Biologie/Kognition",
+      "status": "indexed",
+      "action_items": [
+        "Konsolidierte Fragen in feldtheorie_index notieren",
+        "Fehlannahmen/Blindspots gegen PDFs prüfen"
+      ]
+    },
+    {
+      "id": "v8r-threshold-search-claude",
+      "path": "releases/v8.0/Claude Suche nach Schwellenfrequenz Kosmologie Kognition.txt",
+      "kind": "search-log",
+      "focus": "Claude-Suchpfad zu Schwellenfrequenzen und kosmischen Analogien",
+      "status": "indexed",
+      "action_items": [
+        "Mapping der Suchhypothesen auf σ(β(R-Θ)) Nullmodelle",
+        "Kosmologie-Referenzen (LOFAR/NVSS) validieren"
+      ]
+    },
+    {
+      "id": "v8r-threshold-search-gemini",
+      "path": "releases/v8.0/GeminiSuche.txt",
+      "kind": "search-log",
+      "focus": "Gemini-Suche mit v_RIG ≈ 1.3518 km/s und Z ≈ 221.7 Leitplanken",
+      "status": "indexed",
+      "action_items": [
+        "ΔAIC/CI Slots ergänzen, kosmische Dipolquellen verlinken",
+        "Impedanz-Checks in Telemetrie-Skripten vormerken"
+      ]
+    },
+    {
+      "id": "v8r-gpt5-commentary",
+      "path": "releases/v8.0/Kommentar zur GPT-5 Entwicklung.pdf",
+      "kind": "pdf",
+      "focus": "Kommentar zur GPT-5 Entwicklung mit Relevanz für UTAC/Automation",
+      "status": "to-review",
+      "action_items": [
+        "Relevante Automation- oder Governance-Hinweise extrahieren",
+        "Aufnahme in ETHICS/POLICY Cross-Refs prüfen"
+      ]
+    },
+    {
+      "id": "v8r-session-summary-2025-12-14",
+      "path": "releases/v8.0/SESSION_SUMMARY_2025-12-14.md",
+      "kind": "session-summary",
+      "focus": "Arbeitsstandsprotokoll für v8.0 Sprint",
+      "status": "indexed",
+      "action_items": [
+        "Telemetrie-Hinweise in next_steps.* spiegeln",
+        "Δindex-Parität zu feldtheorie_index validieren"
+      ]
     }
   ],
   "operations": {
@@ -150,7 +236,8 @@
     "next_steps": [
       "Sync JSON Layer (dieses Dokument in JSON spiegeln)",
       "MD Narrative ergänzen",
-      "ΔAIC/CI Slots in PDFs markieren (per Annotationslog)"
+      "ΔAIC/CI Slots in PDFs markieren (per Annotationslog)",
+      "GitHub Release-Assets veröffentlichen (CHANGELOG + Highlights)"
     ]
   }
 }

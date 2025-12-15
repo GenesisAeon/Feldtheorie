@@ -1,0 +1,14 @@
+{
+  "steps": [
+    "Github Release Text finalisieren (Highlights, Install, API/WS Snippets) und als Asset für Tag v7.0.0 hinterlegen.",
+    "Tri-Layer Sync für Manifest, Overview, Processing Status, next_steps (YAML/JSON/MD) bestätigen.",
+    "UTAC/Shadow-Sigillin mit β=37.6 + κ-Regimen verknüpfen; ΔAIC/Nullmodell-Slots aus Preview füllen.",
+    "Telemetrie-Hooks in api/server.py (WS/Health) mit monitoring-skripten verbinden und Guardrail IDs loggen.",
+    "Feldtheorie-Index (Ordnungs/Bedeutungs) um V7-Artefakte ergänzen, sobald Release öffentlich ist."
+  ],
+  "tri_layer": {
+    "markdown": "releases/v7.0/next_steps.md",
+    "yaml": "releases/v7.0/next_steps.yaml",
+    "json": "releases/v7.0/next_steps.json"
+  }
+}

@@ -1,6 +1,6 @@
 # V8.0 Next Steps – Trilayer Lanterns
 
-**Updated:** 2025-12-16
+**Updated:** 2026-01-16
 **Branch:** claude/continue-repo-work-pHmUF  
 **Guiding Principle:** Folge dem Sog der Emergenz
 
@@ -35,3 +35,10 @@
 - Coverage floor: ≥0.85
 - Falsification hooks: null models for each validation path; ΔAIC + CI reporting
 - Bridges: keep `releases/v8.0` artifacts coupled to `feldtheorie_index.*`; log Codex updates when Bedeutungs- or Schatten-Sigillin are touched
+
+## κ/EM Experiments & Automation Hooks
+
+- **Faraday + MHz RF Tests:** Set up EM-Deprivation (Faraday cage + fMRI/EEG) and MHz-RF stimulation (10–20 MHz) runs to probe κ in S-A/S-V integration (CFF, IIT Φ, reaction time).
+- **Impedance Traces:** Track Z ≈ 221.7 and β trajectories alongside 13.5 MHz markers; route into dashboard alerting.
+- **Automation Intake:** Parse `Kommentar zur GPT-5 Entwicklung.pdf` for governance/CI hooks; mirror actionable items into ETHICS/POLICY cross-refs.
+- **Lantern-Net Prelude:** Draft `lantern_hub`/`lantern_bridge` backlog (per `KonkretePläne2.txt`) and expose ΔC(t)/Resonance-Yield metrics in telemetry.
