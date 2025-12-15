@@ -4,7 +4,7 @@
     "repository": "GenesisAeon/Feldtheorie",
     "maintainer": "Johann Römer",
     "description": "Root-Index des Trilayer-Sigillin-Systems für das Feldtheorie-Projekt.\nVerbindet alle 5 Unterverzeichnis-Indizes zu einem kohärenten semantischen Gedächtnis.\n\nUTAC Kernidee: β ist dynamisch (2.5-16.3), nicht fix!\nSigillin Kernidee: YAML=Skelett, JSON=Nervensystem, MD=Sprache\n",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "created": "2025-11-06",
     "status": "active",
     "trilayer_system": "Sigillin Semantic Memory"
@@ -138,6 +138,26 @@
         "sigillin_maintenance.md (Sigillin-Hygiene Wächter)"
       ]
     },
+    "releases": {
+      "name": "releases/ - Release Drops & Assets",
+      "path": "releases/",
+      "index_files": {
+        "yaml": "releases/v8.0/v8_release_manifest.yaml",
+        "json": "releases/v8.0/v8_release_manifest.json",
+        "md": "releases/v8.0/v8_release_manifest.md"
+      },
+      "total_items": 8,
+      "categories": 2,
+      "description": "Release-Drehscheibe mit kuratierten Drops.\nV8.0 liefert Validierungs-Dossiers (PDF) + Tri-Layer-Logistik\n(Manifest, Overview, Processing Status, Next Steps).\n",
+      "color": "#1ABC9C",
+      "relevance": "high",
+      "highlights": [
+        "v8_release_manifest.md (σ(β(R-Θ)) Navigator)",
+        "v8_release_overview.md (Scope + β=8.0 Sprint-Frame)",
+        "v8_processing_status.md (R→Θ Ledger für Assets)",
+        "next_steps.md (Pending Hooks für ΔAIC/CI + Automation)"
+      ]
+    },
     "archive": {
       "name": "archive/ - Sigillin Cold Storage",
       "path": "archive/",
@@ -262,9 +282,32 @@
         "releases/v8.0/v8_release_manifest.yaml",
         "releases/v8.0/v8_release_manifest.json",
         "releases/v8.0/v8_release_manifest.md",
+        "releases/v8.0/v8_release_overview.yaml",
+        "releases/v8.0/v8_release_overview.json",
+        "releases/v8.0/v8_release_overview.md",
+        "releases/v8.0/v8_processing_status.yaml",
+        "releases/v8.0/v8_processing_status.json",
+        "releases/v8.0/v8_processing_status.md",
+        "releases/v8.0/next_steps.yaml",
+        "releases/v8.0/next_steps.json",
+        "releases/v8.0/next_steps.md",
         "releases/v8.0/Validierung.txt",
+        "releases/v8.0/github_release_notes.md",
+        "releases/v8.0/Aeon_Johann.txt",
+        "releases/v8.0/Reaktion_Aeon_Johann.txt",
+        "releases/v8.0/KokretePläne.txt",
+        "releases/v8.0/KonkretePläne2.txt",
+        "releases/v8.0/ChatGPT5.2Suche nach Schwellenfrequenz Kosmologie Kognition.txt",
+        "releases/v8.0/Claude Suche nach Schwellenfrequenz Kosmologie Kognition.txt",
+        "releases/v8.0/GeminiSuche.txt",
+        "releases/v8.0/GeminiSucheDeep Research Consciousness Framework Validation.txt",
+        "releases/v8.0/ChatGPT5.2Suche.txt",
+        "releases/v8.0/SucheChatGPT5.2.txt",
         "releases/v8.0/1. Empirical Validation of v_RIG Framework.pdf",
-        "releases/v8.0/Deep Research_ Consciousness Framework Validation-1.pdf"
+        "releases/v8.0/Deep Research_ Consciousness Framework Validation-1.pdf",
+        "releases/v8.0/Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung und Automatisierung.pdf",
+        "releases/v8.0/Validierung des Bewusstseins-Frameworks_ Ein Ansatz.pdf",
+        "releases/v8.0/Kommentar zur GPT-5 Entwicklung.pdf"
       ],
       "metaquest_parity": [
         "docs/metaquest_parity_brief.md",
@@ -398,32 +441,33 @@
     ]
   },
   "statistics": {
-    "directories_indexed": 6,
-    "total_files_cataloged": 171,
-    "trilayer_indices": 18,
+    "directories_indexed": 7,
+    "total_files_cataloged": 189,
+    "trilayer_indices": 22,
     "breakdown": {
-      "seed": 69,
-      "analysis": 32,
+      "seed": 74,
+      "analysis": 33,
       "data": 47,
       "models": 10,
-      "docs": 12,
+      "docs": 17,
+      "releases": 8,
       "archive": 0
     },
     "index_files": {
-      "yaml_files": 6,
-      "json_files": 6,
-      "md_files": 6
+      "yaml_files": 7,
+      "json_files": 7,
+      "md_files": 7
     },
     "project_size": {
-      "python_scripts": 43,
-      "markdown_docs": "~80",
+      "python_scripts": 44,
+      "markdown_docs": "~88",
       "data_files": 47
     }
   },
   "version_info": {
     "utac_version": "1.1.2",
     "sigillin_version": "1.0.0",
-    "trilayer_completion": "6 directories (seed, analysis, data, models, docs, archive)",
+    "trilayer_completion": "7 directories (seed, analysis, data, models, releases, docs, archive)",
     "maintenance_system": "Sigillin Archive System (archive_sigillin.py) + Telemetry Harness (sigillin_sync.py)",
     "next_milestone": "UTAC v1.2 Meta-Regression (R² > 0.7)",
     "telemetry_system": "Sigillin Sync Harness (scripts/sigillin_sync.py)"

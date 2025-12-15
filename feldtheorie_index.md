@@ -1,14 +1,14 @@
 # 🌸 Feldtheorie - Master Index
 
 **Projekt:** Universal Threshold Adaptive Criticality (UTAC)
-**Version:** 1.0.0 | **Datum:** 6. November 2025
+**Version:** 1.1.0 | **Datum:** 6. November 2025
 **System:** Sigillin Trilayer Semantic Memory
 
 ---
 
 ## 🎯 Was ist das?
 
-Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **167 katalogisierte Dateien** über **6 Hauptverzeichnisse**!
+Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **189 katalogisierte Dateien** über **7 Hauptverzeichnisse**!
 
 ```
 🌳 Feldtheorie (UTAC + Sigillin)
@@ -17,10 +17,11 @@ Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **167 katalogis
 ├── 📊 analysis/    32 scripts (Fits, Batch, Meta-Regression)
 ├── 📦 data/        47 files   (8 Domänen, β-Estimates)
 ├── 🔬 models/      10 models  (Solver, ODE-Systeme)
-├── 📚 docs/        12 docs    (Theory, Falsifiability, Parity)
+├── 📚 docs/        17 docs    (Theory, Falsifiability, Parity)
+├── 🧪 releases/     8 assets  (v8.0 Manifest + Evidence Trails)
 └── 🗄️  archive/      0 items   (Sigillin Cold Storage)
 
-Total: 171 files | 18 Trilayer-Indizes (YAML+JSON+MD)
+Total: 189 files | 22 Trilayer-Indizes (YAML+JSON+MD)
 ```
 
 ---
@@ -273,21 +274,24 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 
 ### 🧪 **releases/v8.0/** - v_RIG Validation Drop
 **Multiple Docs** | **Validation Sprint β=8.0**
-📍 Index: `releases/v8.0/v8_release_manifest.{yaml,json,md}`
-📍 Status: **Draft Logistics Frame (2026-01-15)**
+📍 Indizes: `v8_release_manifest.{yaml,json,md}` + `v8_release_overview.{yaml,json,md}`
+📍 Status: **Indexed Logistics Frame (2026-01-19)**
 
-**Was:** Validierungs-Dossiers (PDF) + Search-Logs (Gemini/ChatGPT) zur Universalität des v_RIG Consciousness Frameworks.
+**Was:** Validierungs-Dossiers (PDF) + Search-Logs (Gemini/ChatGPT/Claude) + Tri-Layer Ops (Processing Status, Next Steps) zur Universalität des v_RIG Consciousness Frameworks.
 
 **Must-Read:**
 - `v8_release_manifest.md` – σ(β(R-Θ)) Navigator mit Ordnungs-/Bedeutungs-/Schatten-Sigillin-Koppelung.
+- `v8_release_overview.md` – Scope & β=8.0 Sprint-Karte.
+- `v8_processing_status.md` – Ledger für R→Θ (ingested → indexed) inkl. Evidenzketten.
+- `next_steps.md` – Aktionsliste (ΔAIC/CI Harvest, Automation-Hooks) tri-layered.
 - `Validierung der Universalität des v_RIG Consciousness Frameworks – Überprüfung und Automatisierung.pdf` – Automations-Checkliste & ΔAIC/CI-Slots *(to-review)*.
 - `1. Empirical Validation of v_RIG Framework.pdf` – Empirischer Validierungsplan *(to-review)*.
-- `GeminiSucheDeep Research Consciousness Framework Validation.txt` – Query- und Evidence-Pfade *(pending-index)*.
+- `GeminiSucheDeep Research Consciousness Framework Validation.txt` & `ChatGPT5.2Suche nach Schwellenfrequenz Kosmologie Kognition.txt` – Query- und Evidence-Pfade (13.5 MHz, Z≈221.7).
 
 **Δ-Tasks:**
 - Tri-Layer Sync gegen feldtheorie_index.* + Metaquest/Shadow-Sigillin.
 - DOI/Provenienz erfassen, Nullmodelle + ΔAIC/CI pro Hypothese eintragen.
-- Query-Protokolle mit Evidenz-Trails (analysis/, data/) verlinken.
+- Query-Protokolle mit Evidenz-Trails (analysis/, data/) verlinken; GitHub Release Draft (`github_release_notes.md`) aus Manifest ableiten.
 
 ---
 
