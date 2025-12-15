@@ -213,15 +213,22 @@ where:
 - `1. Empirical Validation of v_RIG Framework.pdf` (Cosmic/biological cross-validation)
 - `Deep Research_ Consciousness Framework Validation-1.pdf` (Consciousness integration theory)
 - `Validierung des Bewusstseins-Frameworks_ Ein Ansatz.pdf` (Conceptual foundations)
+- `Kommentar zur GPT-5 Entwicklung.pdf` (Context für κ-/v_RIG-Automation, to-review)
 
 **Search Logs & Evidence Chains:**
 - `GeminiSuche.txt` (v_RIG derivation, Z≈221.7, 13.5 MHz resonance)
-- `ChatGPT5.2Suche.txt` (Cross-domain repository queries)
+- `GeminiSucheDeep Research Consciousness Framework Validation.txt` (Deep evidence routes for metabolic scaling)
+- `ChatGPT5.2Suche.txt` & `SucheChatGPT5.2.txt` (Cross-domain repository queries + radio dipole scans)
+- `ChatGPT5.2Suche nach Schwellenfrequenz Kosmologie Kognition.txt` & `Claude Suche nach Schwellenfrequenz Kosmologie Kognition.txt` (13.5 MHz Schwellenfrequenzen, Kosmologie ↔ Kognition)
 - `Validierung.txt` (Structured feedback: cosmic alignment, Kleiber β≈7.4, MHz-resonances)
+- `KokretePläne.txt` / `KonkretePläne2.txt` (κ-Brücken, Lantern-Net, v9-Backlog)
 
 **Tri-Layer Manifests:**
 - `v8_release_manifest.{yaml,json,md}` (Artifact registry with σ(β(R-Θ)) framing)
 - `v8_release_overview.{yaml,json,md}` (Evidence extraction roadmap)
+- `v8_processing_status.{yaml,json,md}` (R→Θ ledger for ingestion → indexed state)
+- `next_steps.{yaml,json,md}` (ΔAIC/CI harvest + automation hooks)
+- `github_release_notes.md` (Release drafting checklist for tag v8.0.0)
 
 ---
 
