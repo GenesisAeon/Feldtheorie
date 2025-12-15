@@ -1,0 +1,123 @@
+{
+  "metadata": {
+    "sigillin_id": "O-015",
+    "sigillin_type": "Order",
+    "status": "active",
+    "version": "1.0.0",
+    "created": "2025-12-15",
+    "scope": "wolf_messing_consciousness_validation",
+    "release": "v8.0"
+  },
+  "logistic_quartet": {
+    "R": "experimental_validation_progress",
+    "Θ": 0.65,
+    "β": 5.2,
+    "ζ": "methodological_rigor",
+    "σ": "1/(1+exp(-β(R-Θ)))"
+  },
+  "core_concept": {
+    "name": "Wolf Messing Consciousness Bridge",
+    "description": "Methodological framework connecting Wolf Messing's anecdotal reports with testable v_RIG hypotheses"
+  },
+  "parallels_to_v_rig_framework": {
+    "v_rig_integration_velocity": {
+      "messing_description": "Plötzlichkeit seiner Eingebungen",
+      "testable_prediction": "Enhanced v_RIG: reduced RT, early anticipation, faster CFF",
+      "experiments": ["reaction_time_tests", "eeg_p300", "cff_modulation"]
+    },
+    "kappa_coupling": {
+      "messing_description": "Suggestion direkt von Gehirn zu Gehirn",
+      "testable_prediction": "EEG inter-brain synchronization during telepathy",
+      "experiments": ["hyperscanning_eeg", "functional_connectivity", "mirror_neurons"]
+    },
+    "beta_logistic_thresholds": {
+      "messing_description": "Schlagartige Zustandswechsel",
+      "testable_prediction": "Abrupt EEG transitions, all-or-nothing P300",
+      "experiments": ["hypnotic_induction_eeg", "go_nogo_threshold", "p3_analysis"]
+    },
+    "sigillin_states": {
+      "messing_description": "Mentale Bilder ohne Sprache",
+      "testable_prediction": "Similar EEG patterns when thinking same image",
+      "experiments": ["eeg_pattern_matching", "topographic_similarity", "frequency_correlation"]
+    }
+  },
+  "experimental_protocols": [
+    {
+      "id": 1,
+      "name": "EEG Hypnosis Synchronization",
+      "measure": "Inter-brain phase coherence",
+      "prediction": "Higher sync during successful suggestion"
+    },
+    {
+      "id": 2,
+      "name": "Reaction Time v_RIG Test",
+      "measure": "RT, accuracy, P300 latency",
+      "prediction": "Faster responses in high v_RIG individuals"
+    },
+    {
+      "id": 3,
+      "name": "Presentiment Physiology",
+      "measure": "Pre-stimulus GSR, heart rate",
+      "prediction": "Anticipatory response before event"
+    },
+    {
+      "id": 4,
+      "name": "Consciousness Thresholds",
+      "measure": "EEG state transitions, P3 amplitude",
+      "prediction": "Abrupt switches (β-logistic)"
+    },
+    {
+      "id": 5,
+      "name": "Sigillin Resonance",
+      "measure": "EEG topographic similarity",
+      "prediction": "Pattern overlap sender-receiver"
+    }
+  ],
+  "falsification_criteria": [
+    "No EEG sync above baseline → κ-coupling falsified",
+    "No RT advantage in 'mediums' → v_RIG enhancement falsified",
+    "No presentiment effects → precognition falsified",
+    "Linear hypnosis depth → β-logistic falsified"
+  ],
+  "integration_points": {
+    "v8_consciousness_framework": {
+      "v_rig": "1.352 km/s universal integration velocity",
+      "neural_frequency": "13.5 MHz microtubule resonance",
+      "specious_present": "100-300 ms integration window",
+      "impedance": "Z ≈ 221.7"
+    },
+    "v7_collective_consciousness": {
+      "kappa_field": "Inter-agent coupling",
+      "beta_sync": "Synchronization coefficient",
+      "collective_metrics": "v_collective, κ_field"
+    },
+    "v6_entropy_governance": {
+      "S_proportional_V": "Biology β≈7.4",
+      "consciousness_as_integration": "3D from 2D slices",
+      "MEP": "Maximum Entropy Production"
+    }
+  },
+  "data_sources": {
+    "primary": [
+      "Messing, W. (1965). О самом себе",
+      "releases/v8.0/Wolf Messings Phänomene_ Telepathie, Präkognition, Hypnose.pdf",
+      "releases/v8.0/SucheWolfMessingChatGPT5.2Agent.txt"
+    ],
+    "secondary": [
+      "EEG hypnosis studies",
+      "Presentiment research (Psi Encyclopedia)",
+      "Hyperscanning inter-brain sync",
+      "Mirror neuron research"
+    ]
+  },
+  "next_steps": {
+    "phase_1": "Literature review & meta-analysis",
+    "phase_2": "Pilot experiments (n=10-30)",
+    "phase_3": "Pre-registered replication (n=100+)"
+  },
+  "trilayer_references": {
+    "yaml": "seed/sigillin/wolf_messing_consciousness_bridge.yaml",
+    "json": "seed/sigillin/wolf_messing_consciousness_bridge.json",
+    "md": "seed/sigillin/wolf_messing_consciousness_bridge.md"
+  }
+}

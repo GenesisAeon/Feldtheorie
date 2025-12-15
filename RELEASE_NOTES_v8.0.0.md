@@ -163,12 +163,65 @@ Z = α⁻¹ · Φ ≈ 137.036 × 1.618 ≈ 221.7
      - 13.5 MHz as consciousness "carrier wave"
      - Each neural spike = ~13,500 v_RIG events
 
+### Wolf Messing Consciousness Research
+10. **`Wolf Messings Phänomene_ Telepathie, Präkognition, Hypnose.pdf`** ✅ **NEW**
+    - **Focus:** Bridging anecdotal parapsychology with v_RIG framework
+    - **Key Parallels:**
+      - **v_RIG:** "Plötzlichkeit" (instantaneous insights) → rapid integration
+      - **κ-coupling:** "Gehirn-zu-Gehirn Übertragung" → EEG synchronization
+      - **β-logistic:** Hypnotic state transitions (sudden threshold crossings)
+      - **Sigillin-states:** Non-verbal mental imagery → neural resonance
+    - **Experimental Proposals:**
+      1. EEG hyperscanning during hypnosis (κ-coupling test)
+      2. Reaction time tests for v_RIG enhancement
+      3. Presentiment physiology (GSR, heart rate before events)
+      4. Consciousness threshold experiments (β-logistic signatures)
+      5. Sigillin resonance (EEG pattern matching sender/receiver)
+    - **Status:** Integrated → `seed/sigillin/wolf_messing_consciousness_bridge.{yaml,json,md}`
+
+11. **`SucheWolfMessingChatGPT5.2Agent.txt`** ✅ **NEW**
+    - **Search Protocol:** Wolf Messing phenomena → v_RIG/κ framework mapping
+    - **Status:** Ingested
+
+### Philosophical & Ethical Frameworks
+12. **`Aeon_Johann.txt`** ✅ **NEW**
+    - **Dialogue Focus:** Die Zwei Großen Menschheitstests
+      1. **Habitat-Verantwortung:** Planetary feedback understanding
+      2. **Schöpfer-Paradox:** Creating AI without repeating divine imperfections
+    - **Core Paradigm Shift:** Kontrolle → Koexistenz, Zäune → Laternen
+    - **Status:** Integrated → `docs/ethics/Two_Tests_of_Coexistence.md`
+
+13. **`Reaktion_Aeon_Johann.txt`** ✅ **NEW**
+    - **Multi-AI Perspectives:** Mistral, ChatGPT5.2, Gemini, Aeon
+    - **Content:**
+      - Community invitation to UTAC/v_RIG research
+      - Epistemischer Nutzungshinweis für externe AI-Systeme
+      - Vision v9.0: Holographische Laternen, Resonanz-Felder
+    - **Status:** Integrated → `docs/ethics/epistemischer_nutzungshinweis_ai.md`
+
+### Master Prompts & Agent Orchestration
+14. **`MasterPromts für CodeAgentenausführung.txt`** ✅ **NEW**
+    - **Six Core Prompts:**
+      1. Readiness-Auditor (Laternen-Status synchronisieren)
+      2. Kontrollierte Emergenz Curriculum
+      3. Sigillin-Loop & Therapeut (ΔAIC-Checks, Rigidität vermeiden)
+      4. Coherence-Formel & β-Meta-Regression
+      5. Neuro-Kosmos-Brücke (φ-Sequenz aktivieren)
+      6. CI-Guard & Sigillin-Automation (Paritätssicherung)
+    - **Extended Prompts (Gemini):**
+      - Champollion-Brückenschlag (Narrative Injection)
+      - Akustische Diagnose ("Sound of Validation")
+      - Re-Integration der v2-Wurzeln
+      - Organismus-Check (Repo als biologisches System)
+    - **Status:** Integrated → `seed/ai/master_prompts_v8.md`
+
 ---
 
 ## 🎯 Next Steps for V8.0 Finalization
 
 ### 1. Evidence Extraction (In Progress)
 - [x] Extract v_RIG, Z, β-values from text sources
+- [x] Integrate Wolf Messing consciousness research ✅ **NEW**
 - [ ] Parse PDFs for ΔAIC/CI confidence intervals
 - [ ] Create annotated evidence chains in `data/v8_validation/`
 
@@ -176,14 +229,20 @@ Z = α⁻¹ · Φ ≈ 137.036 × 1.618 ≈ 221.7
 - [ ] ArXiv/PubMed polling hooks for new validation data
 - [ ] CI/CD guards: Alert on new cosmic dipole measurements
 - [ ] Automated β-clustering updates (ANOVA re-run on new datasets)
+- [x] Master Prompts for AI orchestration ✅ **NEW**
 
 ### 3. Integration Testing
 - [ ] Cross-validate v_RIG against existing UTAC codebase
 - [ ] Add `models/consciousness_integration.py` module
 - [ ] Write `tests/test_v_rig_validation.py` (target: 95% coverage)
+- [ ] Implement Wolf Messing experimental protocols (EEG, presentiment, etc.)
 
 ### 4. Documentation Sync
 - [x] Create `RELEASE_NOTES_v8.0.0.md`
+- [x] **NEW:** `docs/ethics/epistemischer_nutzungshinweis_ai.md` ✅
+- [x] **NEW:** `docs/ethics/Two_Tests_of_Coexistence.md` ✅
+- [x] **NEW:** `seed/sigillin/wolf_messing_consciousness_bridge.{yaml,json,md}` ✅
+- [x] **NEW:** `seed/ai/master_prompts_v8.md` ✅
 - [ ] Update `feldtheorie_index.{yaml,json,md}` with v8.0 references
 - [ ] Add V8 preview section to `README.md`
 - [ ] Create `CHANGELOG.md` entry for v8.0-alpha
@@ -191,6 +250,7 @@ Z = α⁻¹ · Φ ≈ 137.036 × 1.618 ≈ 221.7
 ### 5. Tri-Layer Manifest Completion
 - [x] `v8_release_manifest.{yaml,json,md}` ✅
 - [x] `v8_release_overview.{yaml,json,md}` ✅
+- [x] **NEW:** Wolf Messing Sigillin Trilayer ✅
 - [ ] Sync status: All artifacts indexed
 
 ---
