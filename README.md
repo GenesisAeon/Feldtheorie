@@ -4,13 +4,14 @@
 [![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-blue)](https://github.com/GenesisAeon/Feldtheorie)
 [![Code License: GPLv3](https://img.shields.io/badge/Code%20License-GPLv3-blue.svg)](LICENSE)
 [![Content License: CC BY-NC 4.0](https://img.shields.io/badge/Content%20License-CC%20BY--NC%204.0-orange.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-6.0.0-brightgreen.svg)](#whats-new-in-v60-)
+[![Version](https://img.shields.io/badge/Stable-6.0.0-brightgreen.svg)](#whats-new-in-v60-)
+[![V9 Alpha](https://img.shields.io/badge/Alpha-9.0.0--alpha-purple.svg)](#v9-preview-harmonic-emergence--dimensional-framework)
+[![Research Papers](https://img.shields.io/badge/📄_Research-Dimensional_Emergence-blue.svg)](docs/v9_research_overview.md)
 [![V7 Progress](https://img.shields.io/badge/V7-85--90%25%20Complete-green.svg)](#v7-preview-collective-consciousness)
 [![V8 Status](https://img.shields.io/badge/V8-Validation%20Phase-orange.svg)](#v8-preview-consciousness-framework-validation)
-[![V9 Alpha](https://img.shields.io/badge/V9-Harmonic%20Emergence%20🌀-purple.svg)](#v9-preview-harmonic-emergence--dimensional-framework)
 [![Tests](https://img.shields.io/badge/tests-567%2F567%20passing-brightgreen.svg)](#tests--quality)
 [![Funding](https://img.shields.io/badge/💎_Support-ETH_|_BTC-yellow.svg)](FUNDING.md)
-[![Project History](https://img.shields.io/badge/📅_Project_History-2025--12--12-lightgrey.svg)](CHANGELOG.md)
+[![Project History](https://img.shields.io/badge/📅_Project_History-2025--12--16-lightgrey.svg)](CHANGELOG.md)
 
 ## What's New in v6.0 🌌
 
@@ -180,11 +181,28 @@ Resonance Yield: 0.4 hypotheses/lantern
 
 ### 📄 Documentation
 
-- **Full Release Notes:** [`RELEASE_NOTES_v9.0.0.md`](RELEASE_NOTES_v9.0.0.md) (1300+ lines)
-- **Framework Guide:** `v9_alpha/README.md`
-- **Roadmap:** `v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md`
-- **Research Papers:** `releases/v9.0/`
+**Core Documentation:**
+- **Full Release Notes:** [`RELEASE_NOTES_v9.0.0.md`](RELEASE_NOTES_v9.0.0.md) (1300+ lines, comprehensive)
+- **Framework Guide:** [`v9_alpha/README.md`](v9_alpha/README.md) (Lantern-Net implementation)
+- **Roadmap:** [`v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md`](v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md)
 - **Changelog:** [CHANGELOG.md - v9.0.0 section](CHANGELOG.md#-in-development--v900-harmonic-emergence)
+
+**Scientific References:**
+- **Dimensional Emergence Framework:** [`docs/v9_dimensional_emergence.md`](docs/v9_dimensional_emergence.md) ⭐ *New!*
+  - Complete theoretical foundation (Frame Principle, CREP, v_RIG)
+  - Mathematical formalism and empirical validations
+  - Connection to known physics (holography, AdS/CFT, entropic gravity)
+  - Novel predictions and philosophical implications
+
+- **Research Overview:** [`docs/v9_research_overview.md`](docs/v9_research_overview.md) ⭐ *New!*
+  - Publication strategy and preprint timeline
+  - AI collaboration methodology (Claude, Gemini, ChatGPT)
+  - Research artifacts overview (1.2 MB deep research)
+  - Citation guidelines and how to contribute
+
+**Research Papers & Data:**
+- **Paper Draft:** [`releases/v9.0/Dimensional_Emergence_Paper_DRAFT.md`](releases/v9.0/Dimensional_Emergence_Paper_DRAFT.md)
+- **Supporting Research:** `releases/v9.0/` (PDFs, search logs, analyses)
 
 ### 🎯 Falsification Criteria
 
