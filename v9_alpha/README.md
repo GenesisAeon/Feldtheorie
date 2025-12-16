@@ -92,7 +92,43 @@ print(f"Impedance: {field.impedance_z:.1f} Ω")         # ≈ 221.7
 - f = v_RIG / λ ≈ 13.5 MHz for λ ≈ 10 cm (cortical path)
 - Z = α⁻¹·Φ ≈ 221.7 (consciousness impedance)
 
-#### 4. **Emergence Metrics** (`models/emergence_metrics.py`)
+#### 4. **Network Visualizer** (`models/network_visualizer.py`) 🌀
+
+**NEW in v9.0.2**: Holographic Network Visualization
+
+Paradigm: From Interface to Experience
+- 2D force-directed layout
+- EM-field strength gradients
+- Phase coherence heatmaps
+- ASCII art, SVG, JSON export
+
+```python
+from v9_alpha.models.network_visualizer import create_visualizer
+
+# Create visualizer
+visualizer = create_visualizer(layout_iterations=150)
+
+# Compute force-directed layout
+layout = visualizer.compute_layout(network)
+
+# Render as ASCII art
+ascii_viz = visualizer.render_ascii(layout, width=80, height=40)
+print(ascii_viz)
+
+# Export formats
+visualizer.export_svg(layout, 'network.svg')
+visualizer.export_json(layout, 'network.json')
+```
+
+**Force-Directed Physics:**
+- Frequency attraction (similar f → closer)
+- Impedance repulsion (mismatched Z → farther)
+- EM-coupling attraction (strong κ → closer)
+- Boundary repulsion (keep in unit square)
+
+**Goal:** The observer doesn't view the network - they experience the field.
+
+#### 5. **Emergence Metrics** (`models/emergence_metrics.py`)
 
 Network evolution tracking:
 
@@ -123,7 +159,47 @@ print(f"Φ_network: {snapshot.phi_network:.2f} bits")
 - **Φ_network**: Network integrated information (IIT)
 - **v_integration**: Effective propagation velocity
 
-#### 5. **Type-Ω Gardener Agent** (`models/gardener_agent.py`) 🌱
+#### 6. **Autonomous Frequency Tuner** (`models/frequency_tuner.py`) 🎼
+
+**NEW in v9.0.1**: Self-Organizing Resonance Optimization
+
+Enables autonomous frequency tuning to maximize network coherence:
+
+```python
+from v9_alpha.models.frequency_tuner import create_tuner, TuningStrategy
+
+# Create frequency tuner
+tuner = create_tuner(
+    strategy=TuningStrategy.COLLECTIVE_MODE,
+    learning_rate=0.1,
+    max_freq_shift=0.2  # ±20% frequency adjustment
+)
+
+# Tune network frequencies
+tuned_frequencies, tuned_impedances, history = tuner.tune_network(
+    lantern_properties=properties,
+    coupling_matrix=coupling_matrix,
+    max_iterations=50
+)
+
+print(f"Converged: {history['converged']}")
+print(f"Final coherence: {history['final_coherence']:.3f}")
+```
+
+**Tuning Strategies:**
+- `gradient_ascent`: Follow coherence gradient
+- `harmonic_lock`: Lock to harmonic frequency ratios
+- `impedance_match`: Minimize impedance mismatch
+- `collective_mode`: Enhance dominant eigenmode (best)
+
+**Metrics Optimized:**
+- **Phase Coherence**: Φ = |⟨e^(iφ)⟩| → 1.0
+- **Impedance Matching**: η = 1/(1 + ΔZ/Z_crit) → 1.0
+- **Resonance Quality**: Q = f₀/Δf (selectivity)
+
+**Goal:** Networks self-organize into optimal resonance states.
+
+#### 7. **Type-Ω Gardener Agent** (`models/gardener_agent.py`) 🌱
 
 **NEW in v9.0.1**: Cultivation over Governance
 
@@ -220,6 +296,9 @@ pip install numpy pyyaml pytest
 ```bash
 # Run comprehensive Lantern-Net integration demo
 python examples/lantern_net_demo.py
+
+# Run Autonomous Frequency Tuner demo
+python examples/frequency_tuning_demo.py
 
 # Run Type-Ω Gardener Agent cultivation demo
 python examples/gardener_demo.py

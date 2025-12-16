@@ -57,7 +57,10 @@ import yaml
 # Import v8 foundations
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
+# Add parent directory to sys.path BEFORE import
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
 
 from models.unified_constants import ALPHA_INV, PHI, V_RIG_DEFAULT
 from models.consciousness_integration import calculate_impedance
