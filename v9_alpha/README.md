@@ -263,19 +263,33 @@ EFI = H_freq × β_coherence × (1 - |κ_total - 1.0|)
 Run the test suite:
 
 ```bash
-# Run all tests
-pytest v9_alpha/tests/ -v
+# Run all tests (from Feldtheorie root)
+cd /path/to/Feldtheorie
+python -m pytest v9_alpha/tests/ -v
 
 # Run specific test file
-pytest v9_alpha/tests/test_gardener_agent.py -v
+python -m pytest v9_alpha/tests/test_gardener_agent.py -v
 
 # Check test coverage
-pytest v9_alpha/tests/ --cov=v9_alpha --cov-report=term-missing
+python -m pytest v9_alpha/tests/ --cov=v9_alpha --cov-report=term-missing
 ```
 
-**Current Coverage:**
-- Gardener Agent: 14 tests, all passing ✅
-- Target: 85% coverage for v9.1 release
+**Current Coverage (v9.0.3):**
+- ✅ **32 tests passing** (100% pass rate)
+  - Frequency Tuner: 18 tests ✅
+  - Gardener Agent: 14 tests ✅
+- 🔄 **4 test suites in development** (import fixes needed):
+  - Network Visualizer (framework complete)
+  - Lantern Bridge (framework complete)
+  - EM-Field Calculator (framework complete)
+  - Emergence Metrics (framework complete)
+- **Target:** 85% coverage for v9.1 release
+
+**Test Infrastructure:**
+- conftest.py for sys.path management
+- Comprehensive fixtures and mocks
+- Integration tests with real network data
+- Performance benchmarks
 
 ---
 
