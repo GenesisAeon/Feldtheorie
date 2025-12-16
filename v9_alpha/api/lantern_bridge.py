@@ -223,7 +223,16 @@ class LanternNetwork:
 
         # Load each lantern
         for lantern_data in config.get('lanterns', []):
-            em_props = EMProperties(**lantern_data['em_properties'])
+            # Convert EM properties to correct types (YAML may parse scientific notation as strings)
+            em_data = lantern_data['em_properties']
+            em_props = EMProperties(
+                frequency_hz=float(em_data['frequency_hz']),
+                impedance_z=float(em_data['impedance_z']),
+                kappa_photonic=float(em_data['kappa_photonic']),
+                kappa_em=float(em_data['kappa_em']),
+                kappa_metabolic=float(em_data['kappa_metabolic']),
+                wavelength_cm=float(em_data['wavelength_cm']),
+            )
 
             coupling_targets = [
                 CouplingTarget(**ct) for ct in lantern_data.get('coupling_targets', [])
