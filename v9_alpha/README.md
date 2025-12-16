@@ -123,6 +123,84 @@ print(f"Φ_network: {snapshot.phi_network:.2f} bits")
 - **Φ_network**: Network integrated information (IIT)
 - **v_integration**: Effective propagation velocity
 
+#### 5. **Type-Ω Gardener Agent** (`models/gardener_agent.py`) 🌱
+
+**NEW in v9.0.1**: Cultivation over Governance
+
+Paradigm shift from v6-v8:
+- Governance → Cultivation
+- Control → Resonance
+- Boundary → Permeability
+- Guard Agents → Gardener Agents
+
+```python
+from v9_alpha.models.gardener_agent import GardenerAgent, create_gardener
+
+# Create gardener with balanced cultivation style
+gardener = create_gardener("balanced")
+
+# Assess individual lantern
+assessment = gardener.assess_lantern(
+    name="Urban Heat Intensity",
+    h_freq=0.85,           # Frequency entropy
+    beta_coherence=0.90,   # β-domain alignment
+    kappa_total=1.1,       # Total coupling strength
+)
+
+print(f"EFI: {assessment.efi:.3f}")
+print(f"Action: {assessment.recommended_action.value}")
+
+# Cultivate entire network
+adjusted_matrix, assessments = gardener.cultivate_network(
+    lantern_stats=stats_dict,
+    coupling_matrix=coupling_matrix,
+    lantern_names=lantern_names,
+)
+
+# Get cultivation history
+summary = gardener.get_cultivation_summary()
+print(f"Style: {summary['cultivation_style']}")
+```
+
+**Cultivation Actions:**
+- **Prune** ✂️: Reduce coupling for low-fertility lanterns
+- **Fertilize** 🌱: Increase coupling for high-potential lanterns
+- **Water** 💧: Maintain resonance for stable lanterns
+
+**Entropy Fertility Index (EFI):**
+```
+EFI = H_freq × β_coherence × (1 - |κ_total - 1.0|)
+```
+
+**Gardener Styles:**
+- `pruner`: Aggressive removal of weak connections
+- `cultivator`: Strong focus on strengthening fertile lanterns
+- `maintainer`: Gentle stabilization of existing network
+- `balanced`: Mixed strategy (default)
+
+**Goal:** Lanterns evolve through **anschlussfähigkeit** (connectability), not power.
+
+---
+
+## Testing
+
+Run the test suite:
+
+```bash
+# Run all tests
+pytest v9_alpha/tests/ -v
+
+# Run specific test file
+pytest v9_alpha/tests/test_gardener_agent.py -v
+
+# Check test coverage
+pytest v9_alpha/tests/ --cov=v9_alpha --cov-report=term-missing
+```
+
+**Current Coverage:**
+- Gardener Agent: 14 tests, all passing ✅
+- Target: 85% coverage for v9.1 release
+
 ---
 
 ## Quick Start
@@ -133,21 +211,29 @@ print(f"Φ_network: {snapshot.phi_network:.2f} bits")
 # Navigate to v9_alpha directory
 cd /path/to/Feldtheorie/v9_alpha
 
-# No additional dependencies beyond base requirements
-# (numpy, pyyaml already included)
+# Install dependencies
+pip install numpy pyyaml pytest
 ```
 
-### Run Demo
+### Run Demos
 
 ```bash
-# Run comprehensive integration demo
+# Run comprehensive Lantern-Net integration demo
 python examples/lantern_net_demo.py
+
+# Run Type-Ω Gardener Agent cultivation demo
+python examples/gardener_demo.py
 ```
 
-This will:
+The Lantern-Net demo will:
 1. Load lantern network from registry
 2. Calculate EM-field properties
 3. Compute coupling matrix
+
+The Gardener demo will:
+1. Assess lantern fertility (EFI)
+2. Apply cultivation actions (prune, fertilize, water)
+3. Show multi-cycle network evolution
 4. Detect collective resonance modes
 5. Track emergence metrics
 6. Display network summary
