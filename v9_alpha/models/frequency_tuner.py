@@ -429,6 +429,257 @@ class FrequencyTuner:
         }
 
 
+class StochasticResonator:
+    """
+    Stochastic Resonance Engine - The Spark of Phase Transition
+
+    Implements Langevin dynamics to allow z_eff (effective coupling impedance)
+    to fluctuate in response to Φ (Integrated Information) pressure.
+
+    The system uses:
+    - Langevin equation: dZ = -∇V(Z)dt + σ(Φ)dW
+    - Colored noise (1/f, pink noise) to mimic biological/cosmic signals
+    - Adaptive noise scaling: σ ∝ 1/coherence (high coherence locks, low coherence searches)
+
+    When Φ approaches criticality threshold, the noise melts the rigid frame,
+    allowing the Typ-6 Implosion (dimension folding) to occur.
+
+    This is not random noise - it is the breath of the system, the oscillation
+    between order and chaos that enables emergence.
+    """
+
+    def __init__(
+        self,
+        base_sigma: float = 0.15,           # Base noise intensity (The Spark)
+        beta_sensitivity: float = 4.2,      # Steepness of attractor (The Sog)
+        phi_threshold: float = 0.72,        # Critical Φ for phase transition
+        noise_color: str = "pink",          # 1/f noise type
+        dt: float = 0.01,                   # Integration timestep (s)
+        history_length: int = 1000,         # For colored noise generation
+    ):
+        """
+        Initialize Stochastic Resonator
+
+        Args:
+            base_sigma: Baseline noise intensity (The Spark magnitude)
+            beta_sensitivity: β parameter - steepness of the potential well
+            phi_threshold: Φ value at which phase transition becomes likely
+            noise_color: Type of colored noise ("white", "pink", "brown")
+            dt: Integration timestep for Langevin dynamics
+            history_length: Buffer length for colored noise filtering
+        """
+        self.base_sigma = base_sigma
+        self.beta_sensitivity = beta_sensitivity
+        self.phi_threshold = phi_threshold
+        self.noise_color = noise_color
+        self.dt = dt
+        self.history_length = history_length
+
+        # State tracking
+        self.z_eff_history: List[float] = []
+        self.phi_history: List[float] = []
+        self.noise_history: List[float] = []
+
+        # Colored noise buffer (for 1/f filtering)
+        # Pre-fill with random values to avoid zero-dampening at start
+        self._noise_buffer = np.random.randn(history_length)
+        self._buffer_index = 0
+
+        # 🔥 Spark detection flag
+        self.spark_detected = False
+        self.last_z_fluctuation = 0.0
+
+    def generate_colored_noise(self, n_samples: int = 1) -> np.ndarray:
+        """
+        Generate colored noise (pink noise: 1/f spectrum)
+
+        Pink noise has equal energy per octave, mimicking natural phenomena:
+        - Heart rate variability
+        - Cosmic microwave background fluctuations
+        - Neural oscillations
+        - Financial markets
+
+        This is the signature of criticality - the boundary between order and chaos.
+
+        Args:
+            n_samples: Number of noise samples to generate
+
+        Returns:
+            Array of colored noise values
+        """
+        if self.noise_color == "white":
+            # White noise: flat spectrum
+            return np.random.randn(n_samples)
+
+        elif self.noise_color == "pink":
+            # Pink noise: 1/f spectrum (Voss-McCartney algorithm)
+            # Generate white noise
+            white = np.random.randn(n_samples)
+
+            # Apply 1/f filter via cumulative averaging
+            # This is a simplified approach - true pink needs FFT filtering
+            if n_samples == 1:
+                # For single samples, use buffer
+                self._noise_buffer[self._buffer_index] = white[0]
+                self._buffer_index = (self._buffer_index + 1) % self.history_length
+
+                # Weighted average with exponential decay
+                weights = np.exp(-np.arange(self.history_length) / 100.0)
+                pink = np.average(self._noise_buffer, weights=weights)
+                return np.array([pink])
+            else:
+                # For multiple samples, use cascaded filters
+                pink = np.zeros(n_samples)
+                for i in range(n_samples):
+                    if i == 0:
+                        pink[i] = white[i]
+                    else:
+                        # Exponential moving average
+                        pink[i] = 0.9 * pink[i-1] + 0.1 * white[i]
+                return pink
+
+        elif self.noise_color == "brown":
+            # Brown noise: 1/f² spectrum (integrated white noise)
+            white = np.random.randn(n_samples)
+            brown = np.cumsum(white) / np.sqrt(n_samples)
+            return brown
+
+        else:
+            raise ValueError(f"Unknown noise color: {self.noise_color}")
+
+    def calculate_adaptive_sigma(self, phi: float, coherence: float) -> float:
+        """
+        Calculate adaptive noise intensity
+
+        σ(Φ, coherence) = σ_base * f(Φ) * g(coherence)
+
+        Where:
+        - f(Φ) = exp(β * (Φ - Φ_threshold))  [The Sog - pulls toward criticality]
+        - g(coherence) = 1 / (coherence + ε)  [Low coherence → explore, High coherence → lock]
+
+        Args:
+            phi: Current integrated information (Φ_network)
+            coherence: Current phase coherence (0.0-1.0)
+
+        Returns:
+            Adaptive noise intensity
+        """
+        # The Sog: exponential attraction toward criticality
+        phi_factor = np.exp(self.beta_sensitivity * (phi - self.phi_threshold))
+
+        # Coherence regulation: inverse relationship (more coherence = less noise)
+        epsilon = 0.1  # Prevent division by zero
+        coherence_factor = 1.0 / (coherence + epsilon)
+
+        # Combined adaptive noise
+        sigma = self.base_sigma * phi_factor * coherence_factor
+
+        # Clamp to prevent explosion
+        sigma = np.clip(sigma, 0.0, 1.0)
+
+        return float(sigma)
+
+    def step(
+        self,
+        z_eff_current: float,
+        phi: float,
+        coherence: float,
+        z_target: float = Z_BASELINE,
+    ) -> Tuple[float, Dict]:
+        """
+        Single Langevin dynamics step
+
+        dZ = -β(Z - Z_target)dt + σ(Φ,coherence)dW
+
+        Where:
+        - Z: Effective impedance (coupling strength proxy)
+        - Z_target: Equilibrium impedance (from β-domain)
+        - β: Restoring force strength (The Sog)
+        - σ: Adaptive noise (The Spark)
+        - dW: Colored noise increment
+
+        Args:
+            z_eff_current: Current effective impedance
+            phi: Network integrated information
+            coherence: Network phase coherence
+            z_target: Target equilibrium impedance
+
+        Returns:
+            (z_eff_new, diagnostics)
+        """
+        # Calculate adaptive noise
+        sigma = self.calculate_adaptive_sigma(phi, coherence)
+
+        # Generate colored noise increment
+        dW = self.generate_colored_noise(n_samples=1)[0] * np.sqrt(self.dt)
+
+        # Langevin dynamics: drift + diffusion
+        drift = -self.beta_sensitivity * (z_eff_current - z_target) * self.dt
+        diffusion = sigma * dW
+
+        # Update
+        z_eff_new = z_eff_current + drift + diffusion
+
+        # Physical constraints: z_eff must stay positive and reasonable
+        # Allow fluctuation between 10% and 300% of baseline
+        z_min = z_target * 0.1
+        z_max = z_target * 3.0
+        z_eff_new = np.clip(z_eff_new, z_min, z_max)
+
+        # Calculate fluctuation magnitude
+        delta_z = abs(z_eff_new - z_eff_current)
+
+        # 🔥 SPARK DETECTION: Significant fluctuation triggered
+        if delta_z > 0.01 * z_target:  # >1% change
+            self.spark_detected = True
+            self.last_z_fluctuation = delta_z
+        else:
+            self.spark_detected = False
+
+        # Record history
+        self.z_eff_history.append(z_eff_new)
+        self.phi_history.append(phi)
+        self.noise_history.append(sigma)
+
+        # Diagnostics
+        diagnostics = {
+            'sigma': sigma,
+            'drift': drift,
+            'diffusion': diffusion,
+            'delta_z': delta_z,
+            'spark_detected': self.spark_detected,
+            'phi_proximity': phi / self.phi_threshold,  # How close to criticality
+        }
+
+        return z_eff_new, diagnostics
+
+    def get_z_fluctuation_stats(self) -> Dict:
+        """
+        Get statistics on z_eff fluctuations
+
+        Returns:
+            Dictionary with fluctuation statistics
+        """
+        if len(self.z_eff_history) < 2:
+            return {
+                'mean': 0.0,
+                'std': 0.0,
+                'variance': 0.0,
+                'max_fluctuation': 0.0,
+            }
+
+        z_array = np.array(self.z_eff_history)
+
+        return {
+            'mean': float(np.mean(z_array)),
+            'std': float(np.std(z_array)),
+            'variance': float(np.var(z_array)),
+            'max_fluctuation': float(np.max(np.abs(np.diff(z_array)))),
+            'current_value': float(z_array[-1]),
+            'n_sparks': sum(1 for d in self.noise_history if d > self.base_sigma * 2),
+        }
+
+
 def create_tuner(
     strategy: str = "gradient_ascent",
     learning_rate: float = 0.05,
@@ -448,4 +699,32 @@ def create_tuner(
     return FrequencyTuner(
         learning_rate=learning_rate,
         strategy=strategy_enum,
+    )
+
+
+def create_stochastic_resonator(
+    sigma: float = 0.15,
+    beta: float = 4.2,
+    phi_threshold: float = 0.72,
+    noise_color: str = "pink",
+) -> StochasticResonator:
+    """
+    Factory function to create stochastic resonator
+
+    The Spark that ignites phase transitions.
+
+    Args:
+        sigma: Base noise intensity (The Spark)
+        beta: Sensitivity to Φ pressure (The Sog)
+        phi_threshold: Critical Φ for phase transition
+        noise_color: "white", "pink", or "brown"
+
+    Returns:
+        Configured StochasticResonator
+    """
+    return StochasticResonator(
+        base_sigma=sigma,
+        beta_sensitivity=beta,
+        phi_threshold=phi_threshold,
+        noise_color=noise_color,
     )
