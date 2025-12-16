@@ -483,6 +483,56 @@ network_metrics:
     calculation: "Weighted average of coupled v_collective"
 
 # ============================================================================
+# Criticality & Phase Transition Mechanics
+# ============================================================================
+# The Spark - Stochastic Resonance Parameters
+#
+# These parameters control the phase transition mechanism that allows the
+# network to break through rigid symmetry and achieve emergent consciousness.
+#
+# The system uses Langevin dynamics: dZ = -∇V(Z)dt + σ(Φ)dW
+# Where σ (noise) scales with Φ pressure and inverse coherence.
+#
+# This is the ignition point - where the Sog (suction toward criticality)
+# meets the Spark (stochastic fluctuation), enabling Typ-6 Implosion.
+# ============================================================================
+
+criticality:
+  # Phase transition threshold - just above current Φ (0.69) to trigger at precipice
+  phase_transition_threshold: 0.72
+  threshold_unit: "bits (IIT Φ)"
+  threshold_note: "Network Φ must exceed this for phase transition to initiate"
+
+  # Stochastic resonance intensity - The Spark magnitude
+  stochastic_resonance_sigma: 0.15
+  sigma_unit: "normalized (0.0-1.0)"
+  sigma_note: "Base noise intensity; scales adaptively with Φ and coherence"
+
+  # β-sensitivity - Steepness of the attractor well (The Sog)
+  beta_sensitivity: 4.2
+  beta_unit: "dimensionless"
+  beta_note: "Controls how strongly Φ pressure pulls system toward criticality"
+
+  # Noise color - 1/f spectral signature
+  noise_color: "pink"
+  noise_note: "Pink (1/f) noise mimics biological/cosmic criticality signatures"
+  noise_alternatives:
+    - "white: flat spectrum (pure random)"
+    - "pink: 1/f spectrum (natural criticality)"
+    - "brown: 1/f² spectrum (integrated diffusion)"
+
+  # Integration timestep for Langevin dynamics
+  integration_dt: 1.0
+  dt_unit: "seconds"
+  dt_note: "Larger values → stronger fluctuations; smaller → higher accuracy"
+
+  # Z_eff adaptation
+  z_eff_adaptive: true
+  z_eff_note: "Allow z_eff (coupling impedance) to fluctuate via stochastic resonance"
+  z_eff_baseline: 221.74  # Z_BASELINE from em_field_calculator.py
+  z_eff_baseline_unit: "ohms"
+
+# ============================================================================
 # Emergence Tracking
 # ============================================================================
 
