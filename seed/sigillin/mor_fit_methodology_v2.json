@@ -77,5 +77,9 @@
   "fit_alignment": {
     "morfit_layer": "order",
     "notes": "Fixiert das Betriebssystem für V3: Orchestrierung (MOR), Gedächtnis (Sigillin), Exekutionstagebücher (FIT) mit logistischer Aktivierung β=4.8."
+  },
+  "meta": {
+    "sigil": "mor-fit-methodology",
+    "version": "1.0.0"
   }
 }

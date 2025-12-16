@@ -17,7 +17,8 @@
     "source_material": "seed/RoadToV.3/NextVersionmaybe/",
     "sigillin_class": "semantic_stability",
     "change_frequency": "rare",
-    "archival_protocol": "version_new_archive_old"
+    "archival_protocol": "version_new_archive_old",
+    "sigil": "utac-type6-iri"
   },
   "document": {
     "location": "docs/utac_type6_iri_extensions.md",

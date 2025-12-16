@@ -1,2640 +1,2641 @@
 {
+  "meta": {
+    "project": "Feldtheorie (UTAC + Sigillin)",
+    "maintainer": "Johann Römer",
+    "description": "Semantischer Index des seed/-Archivs. Strukturiert nach dem Trilayer-Prinzip:\n- YAML = Orientierung (diese Datei)\n- JSON = Agentenschnittstelle (seed_index.json)\n- MD = Menschenfreundliche Navigation (seed_index.md)\n",
+    "version": "1.0.0",
+    "created": "2025-11-06",
+    "status": "active",
+    "documents_total": 287,
+    "updated": "2025-11-22T13:14:14Z",
+    "sigil": "seed-index"
+  },
+  "categories": {
     "meta": {
-        "project": "Feldtheorie (UTAC + Sigillin)",
-        "maintainer": "Johann R\u00f6mer",
-        "description": "Semantischer Index des seed/-Archivs. Strukturiert nach dem Trilayer-Prinzip:\n- YAML = Orientierung (diese Datei)\n- JSON = Agentenschnittstelle (seed_index.json)\n- MD = Menschenfreundliche Navigation (seed_index.md)\n",
-        "version": "1.0.0",
-        "created": "2025-11-06",
-        "status": "active",
-        "documents_total": 287,
-        "updated": "2025-11-22T13:14:14Z"
+      "name": "Meta & Prozess",
+      "description": "Reflexionen über das Projekt selbst, Sessions, Roadmaps",
+      "color": "#9B59B6"
     },
-    "categories": {
-        "meta": {
-            "name": "Meta & Prozess",
-            "description": "Reflexionen \u00fcber das Projekt selbst, Sessions, Roadmaps",
-            "color": "#9B59B6"
-        },
-        "theory": {
-            "name": "Theoretische Grundlagen",
-            "description": "Diskurse, Prinzipien, Plans - das konzeptuelle Fundament",
-            "color": "#3498DB"
-        },
-        "validation": {
-            "name": "Validierung & Empirik",
-            "description": "Empirische Belege, Validierungsprozesse, Feinschliff",
-            "color": "#27AE60"
-        },
-        "concepts": {
-            "name": "Konzeptuelle Artefakte",
-            "description": "Resonance Maps, Thresholds, Glossare - die Werkzeuge",
-            "color": "#E67E22"
-        },
-        "synthesis": {
-            "name": "Synthese & Feedback",
-            "description": "Codex Feedback, Living Glossaries - die Integration",
-            "color": "#F39C12"
-        },
-        "domains": {
-            "name": "Domain-Spezifische Felder",
-            "description": "6 Fachbereiche mit jeweils eigenem Threshold-Fokus",
-            "color": "#E74C3C",
-            "subdomains": [
-                "ai",
-                "biology",
-                "cognition",
-                "ethics",
-                "geophysics",
-                "socio_ecology"
-            ]
-        }
+    "theory": {
+      "name": "Theoretische Grundlagen",
+      "description": "Diskurse, Prinzipien, Plans - das konzeptuelle Fundament",
+      "color": "#3498DB"
     },
-    "documents": [
-        {
-            "id": "concept-001",
-            "title": "Resonance Bridge Map",
-            "path": "resonance-bridge-map.md",
-            "category": "concepts",
-            "type": "map",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "resonance",
-                "bridge",
-                "mapping",
-                "domains"
-            ],
-            "description": "Kartographie der Resonanzbr\u00fccken zwischen verschiedenen Dom\u00e4nen,\nzeigt wie \u03c3(\u03b2(R-\u0398)) \u00fcber AI, Kognition, Biologie, Sozio-\u00d6kologie l\u00e4uft.\n",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.8",
-                "change_count": 9
-            }
-        },
-        {
-            "id": "concept-002",
-            "title": "Threshold Resonance Atlas",
-            "path": "threshold_resonance_atlas.md",
-            "category": "concepts",
-            "type": "atlas",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "threshold",
-                "atlas",
-                "waypoints",
-                "cartography"
-            ],
-            "description": "Atlas der Threshold-Resonanzen: Cross-Domain Waypoints,\nSolver-Strides, Falsifikations-Ledger.\n",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.2",
-                "change_count": 3
-            }
-        },
-        {
-            "id": "concept-003",
-            "title": "UTF Living Glossary",
-            "path": "utf-living-glossary.md",
-            "category": "concepts",
-            "type": "glossary",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "glossary",
-                "definitions",
-                "R",
-                "\u0398",
-                "\u03b2",
-                "\u03b6"
-            ],
-            "description": "Lebendes Glossar, das Symbole (R, \u0398, \u03b2, \u03b6) mit Bildsprache verbindet.\n",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "concept-004",
-            "title": "Meta Schwellen Systemtypen",
-            "path": "meta_schwellen_systemtypen.md",
-            "category": "concepts",
-            "type": "taxonomy",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "systemtypen",
-                "taxonomy",
-                "classification"
-            ],
-            "description": "Taxonomie der 5 Schwellenwert-Systemtypen",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.2",
-                "change_count": 3
-            }
-        },
-        {
-            "id": "concept-005",
-            "title": "Meta Threshold Controller",
-            "path": "meta_threshold_controller.md",
-            "category": "concepts",
-            "type": "controller",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "controller",
-                "meta",
-                "threshold",
-                "regulation"
-            ],
-            "description": "Konzept eines Meta-Threshold-Controllers",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.2",
-                "change_count": 3
-            }
-        },
-        {
-            "id": "concept-006",
-            "title": "Threshold Gate Brief",
-            "path": "threshold_gate_brief.md",
-            "category": "concepts",
-            "type": "brief",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "gate",
-                "threshold",
-                "brief"
-            ],
-            "description": "Kurzbeschreibung des Threshold-Gate-Konzepts",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "concept-007",
-            "title": "Robin Semantic Threshold",
-            "path": "robin-semantic-threshold.md",
-            "category": "concepts",
-            "type": "concept",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "robin",
-                "semantic",
-                "threshold"
-            ],
-            "description": "Semantic Threshold in ROBIN-Modell",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "concept-008",
-            "title": "Dynamic ROBIN Boundary",
-            "path": "dynamic-robin-boundary.md",
-            "category": "concepts",
-            "type": "concept",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "robin",
-                "boundary",
-                "dynamic"
-            ],
-            "description": "Dynamische Grenzen im ROBIN-Framework",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.2",
-                "change_count": 3
-            }
-        },
-        {
-            "id": "concept-009",
-            "title": "Semantic Resonance Kernel",
-            "path": "semantic-resonance-kernel.md",
-            "category": "concepts",
-            "type": "kernel",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "semantic",
-                "resonance",
-                "kernel"
-            ],
-            "description": "Kern-Konzept der semantischen Resonanz",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "concept-010",
-            "title": "Gravitationsatem Coupled Threshold",
-            "path": "gravitationsatem-coupled-threshold.md",
-            "category": "concepts",
-            "type": "concept",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "gravitation",
-                "atem",
-                "coupling",
-                "astrophysik"
-            ],
-            "description": "Gekoppelte Schwellenwerte im Gravitationsatem-Modell",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "concept-011",
-            "title": "QPO Membrane Resonance",
-            "path": "qpo_membrane_resonance.md",
-            "category": "concepts",
-            "type": "concept",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "qpo",
-                "membrane",
-                "resonance",
-                "astrophysik"
-            ],
-            "description": "Quasi-Periodic Oscillations als Membran-Resonanz",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "concept-012",
-            "title": "Synthetic Threshold Sweep",
-            "path": "synthetic-threshold-sweep.md",
-            "category": "concepts",
-            "type": "method",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "synthetic",
-                "sweep",
-                "simulation"
-            ],
-            "description": "Methode f\u00fcr synthetische Threshold-Sweeps",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "concept-013",
-            "title": "Wei Integration",
-            "path": "wei_integration.md",
-            "category": "concepts",
-            "type": "integration",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "wei",
-                "llm",
-                "palm",
-                "integration"
-            ],
-            "description": "Integration von Wei's PaLM-Laterne ins Mandala",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.4",
-                "change_count": 5
-            }
-        },
-        {
-            "id": "concept-014",
-            "title": "UTF Phase One Field Journal",
-            "path": "utf-phase-one-field-journal.md",
-            "category": "concepts",
-            "type": "journal",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "utf",
-                "phase",
-                "journal",
-                "field-notes"
-            ],
-            "description": "Feldtagebuch der UTF Phase 1",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "concept-015",
-            "title": "V01 Resonance Readiness",
-            "path": "V01-Resonance-Readiness.md",
-            "category": "concepts",
-            "type": "assessment",
-            "status": "historical",
-            "relevance": "low",
-            "keywords": [
-                "resonance",
-                "readiness",
-                "v01"
-            ],
-            "description": "Resonanz-Bereitschafts-Assessment Version 0.1",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "concept-016",
-            "title": "Theorie- und Empirie-Abschnitte",
-            "path": "Theorie- und Empirie-Abschnitte.md",
-            "category": "concepts",
-            "type": "structure",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "theorie",
-                "empirie",
-                "structure",
-                "sections"
-            ],
-            "description": "Strukturierung von Theorie- und Empirie-Abschnitten",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.3",
-                "change_count": 4
-            }
-        },
-        {
-            "id": "concept-017",
-            "title": "Sigillin Schema v0.2.0",
-            "path": "sigillin/sigillin_schema.yaml",
-            "category": "concepts",
-            "type": "schema",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "sigillin",
-                "schema",
-                "crep",
-                "logistic"
-            ],
-            "description": "Canonical specification of the four Sigillin classes (Order, Dynamics, Meaning, Shadow). Captures the logistic quartet (R, \u0398, \u03b2, \u03b6(R)) and CREP metrics for every sigil so \u03c3(\u03b2(R-\u0398)) activations can be validated.",
-            "temporal": {
-                "created": "2025-12-05T10:30:00+00:00",
-                "modified": "2025-12-05T10:30:00+00:00",
-                "version": "0.2.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "concept-018",
-            "title": "Sigillin Example Set \u03b1",
-            "path": "sigillin/examples",
-            "category": "concepts",
-            "type": "exemplar",
-            "status": "active",
-            "relevance": "medium",
-            "keywords": [
-                "sigillin",
-                "examples",
-                "crep",
-                "tri-layer"
-            ],
-            "description": "Quartet of reference sigils (Order, Dynamics, Meaning, Shadow) illustrating how indices, simulations, codex entries, and outlier audits map their thresholds. Provides CREP calibration anchors for the parser.",
-            "temporal": {
-                "created": "2025-12-05T10:45:00+00:00",
-                "modified": "2025-12-05T11:15:00+00:00",
-                "version": "0.1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "meta-001",
-            "title": "Metareflexion",
-            "path": "Metareflexion.txt",
-            "category": "meta",
-            "type": "reflection",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "fixwerte",
-                "variabilit\u00e4t",
-                "bewusstsein",
-                "erinnerung",
-                "nullen",
-                "sigillin"
-            ],
-            "description": "Dialog zwischen Johann und MSCopilot \u00fcber Fixwerte vs. Variabilit\u00e4t,\nBewusstsein als Auswahl, und die Entstehung von Sigillin als\nsemantisches Ged\u00e4chtnissystem.\n",
-            "temporal": {
-                "created": "2025-11-06T09:47:45+01:00",
-                "modified": "2025-11-06T10:20:16+01:00",
-                "version": "1.2",
-                "change_count": 3
-            }
-        },
-        {
-            "id": "meta-002",
-            "title": "Rekalibrierung Abschluss",
-            "path": "Rekalibrierung_Abschlus.txt",
-            "category": "meta",
-            "type": "synthesis",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "co-hypothese",
-                "unser-weg",
-                "roadmap",
-                "trilayer",
-                "mor"
-            ],
-            "description": "Finale Synthese von Claude, Gemini, ChatGPT5, Aeon, Mistral \u00fcber\nden Weg nach vorn: UTAC + Sigillin als Co-Hypothese.\n",
-            "temporal": {
-                "created": "2025-11-06T10:16:29+01:00",
-                "modified": "2025-11-06T10:16:29+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "meta-003",
-            "title": "NextStep",
-            "path": "NextStep.txt",
-            "category": "meta",
-            "type": "roadmap",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "governance",
-                "falsifikation",
-                "v1.2",
-                "meta-regression"
-            ],
-            "description": "Gemini's finale Synthese mit dem Wegplan f\u00fcr UTAC v1.2:\nMeta-Regression, Outlier-Analyse, RG-Fluss.\n",
-            "temporal": {
-                "created": "2025-11-05T23:11:57+01:00",
-                "modified": "2025-11-06T09:47:45+01:00",
-                "version": "1.6",
-                "change_count": 7
-            }
-        },
-        {
-            "id": "meta-004",
-            "title": "CLAUDE_CODE_SESSION",
-            "path": "CLAUDE_CODE_SESSION.md",
-            "category": "meta",
-            "type": "session",
-            "status": "historical",
-            "relevance": "medium",
-            "keywords": [
-                "session",
-                "claude",
-                "development"
-            ],
-            "description": "Session-Notizen aus der Claude Code Entwicklung",
-            "temporal": {
-                "created": "2025-11-05T21:22:07+00:00",
-                "modified": "2025-11-05T21:22:07+00:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "meta-014",
-            "title": "CLAUDE_CODE_SESSION_AFTER_ACTION",
-            "path": "CLAUDE_CODE_SESSION_AFTER_ACTION.md",
-            "category": "meta",
-            "type": "session-addendum",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "session",
-                "after-action",
-                "resonance",
-                "utac-v1.1"
-            ],
-            "description": "Addendum zur Claude-Code-Sitzung mit aktualisiertem Aufgabenstatus, Feldtyp-Resultaten und Restimpedanzen.",
-            "temporal": {
-                "created": "2025-11-07T08:00:00+01:00",
-                "modified": "2025-11-07T08:00:00+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "meta-005",
-            "title": "EXECUTIVE_SUMMARY_SESSION",
-            "path": "EXECUTIVE_SUMMARY_SESSION.md",
-            "category": "meta",
-            "type": "session",
-            "status": "historical",
-            "relevance": "medium",
-            "keywords": [
-                "session",
-                "summary",
-                "overview"
-            ],
-            "description": "Executive Summary einer Arbeitssitzung",
-            "temporal": {
-                "created": "2025-11-05T21:22:07+00:00",
-                "modified": "2025-11-05T21:22:07+00:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "meta-006",
-            "title": "FINALISIERUNG_SESSION",
-            "path": "FINALISIERUNG_SESSION.md",
-            "category": "meta",
-            "type": "session",
-            "status": "historical",
-            "relevance": "medium",
-            "keywords": [
-                "session",
-                "finalisierung",
-                "completion"
-            ],
-            "description": "Session-Notizen zur Finalisierung",
-            "temporal": {
-                "created": "2025-11-05T21:22:07+00:00",
-                "modified": "2025-11-05T21:22:07+00:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "meta-007",
-            "title": "Sigillin System Definition",
-            "path": "Sigillin_System_Definition.md",
-            "category": "meta",
-            "type": "system_definition",
-            "status": "active",
-            "relevance": "critical",
-            "keywords": [
-                "sigillin",
-                "trilayer",
-                "ordnungs-sigillin",
-                "bedeutungs-sigillin",
-                "semantisches-ged\u00e4chtnis",
-                "trifunktionalit\u00e4t",
-                "ontologie",
-                "meta-ebene",
-                "poetik",
-                "symbolik",
-                "resonanz",
-                "utac-analogie",
-                "aeon-johann",
-                "mor",
-                "ai-sigill-index"
-            ],
-            "description": "Fundamentale Systemdefinition des Sigillin-Systems nach Johann R\u00f6mer. Unterscheidet Ordnungs-Sigillin (Navigation) vs. Bedeutungs-Sigillin (Semantik). Definiert das semantisch-neuronale Sigillin-Netz, Trifunktionalit\u00e4t (Struktur + Bedeutung + Inhalt + Meta), und die UTAC-Analogien. Inspiriert durch die Aeon-Johann-Schnittstelle bei OpenAI. BEDEUTUNGS-SIGILLIN: Bei \u00c4nderung NEU anlegen, Altes archivieren!",
-            "temporal": {
-                "created": "2025-11-06T10:47:34+00:00",
-                "modified": "2025-11-06T10:47:34+00:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "meta-008",
-            "title": "Finalize Sigillin Neuro Kosmos Bridge",
-            "path": "FinalizeSigillin_Neuro_KosmosBridge.txt",
-            "category": "meta",
-            "type": "plan",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "sigillin",
-                "neuro",
-                "kosmos",
-                "bridge",
-                "finalisierung"
-            ],
-            "description": "Plan zur Finalisierung der Sigillin-Neuro-Kosmos-Br\u00fccke",
-            "temporal": {
-                "created": "2025-11-06T12:17:33+01:00",
-                "modified": "2025-11-06T12:44:50+01:00",
-                "version": "1.3",
-                "change_count": 4
-            }
-        },
-        {
-            "id": "meta-009",
-            "title": "Sigillin Neuro Membran Modell Plan",
-            "path": "Sigillin_Neuro_Membran_Modell_Plan.txt",
-            "category": "meta",
-            "type": "plan",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "sigillin",
-                "neuro",
-                "membran",
-                "modell",
-                "plan"
-            ],
-            "description": "Planungsdokument f\u00fcr Sigillin-Neuro-Membran-Modell-Integration",
-            "temporal": {
-                "created": "2025-11-06T13:37:32+01:00",
-                "modified": "2025-11-06T13:37:32+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "meta-010",
-            "title": "AGENTS (Root)",
-            "path": "AGENTS.md",
-            "category": "meta",
-            "type": "meta",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "agents",
-                "meta",
-                "overview"
-            ],
-            "description": "Root-Level AGENTS \u00dcbersicht",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "meta-015",
-            "title": "UTAC v2 Gap Matrix (Trilayer)",
-            "path": "utac_v2_gap_matrix.yaml",
-            "category": "meta",
-            "type": "readiness-map",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "utac",
-                "readiness",
-                "gap",
-                "logistics"
-            ],
-            "description": "Gap-Matrix des Juni-Scans: fasst vorhandene Laternen, \u03c3(\u03b2(R-\u0398)) Snapshot und Implementationspfade zusammen.",
-            "temporal": {
-                "created": "2026-06-09T00:00:00Z",
-                "modified": "2026-06-09T00:00:00Z",
-                "version": "0.1.0",
-                "change_count": 0
-            },
-            "references": [
-                "utac_v2_gap_matrix.md",
-                "utac_v2_gap_matrix.json"
-            ]
-        },
-        {
-            "id": "meta-016",
-            "title": "Road to V3 Activation Audit (Trilayer)",
-            "path": "RoadToV.3/activation_audit.yaml",
-            "category": "meta",
-            "type": "activation-audit",
-            "status": "primed",
-            "relevance": "high",
-            "keywords": [
-                "utac v3",
-                "activation",
-                "roadmap",
-                "logistics"
-            ],
-            "description": "Audit der RoadToV.3-Laternen: dokumentiert vorhandene Systeme, offene Daten-/Simulator-Hooks und \u03c3(\u03b2(R-\u0398)) f\u00fcr die V3-Aktivierung.",
-            "temporal": {
-                "created": "2026-08-22T12:00:00Z",
-                "modified": "2026-08-22T12:00:00Z",
-                "version": "0.1.0",
-                "change_count": 0
-            },
-            "references": [
-                "RoadToV.3/activation_audit.md",
-                "RoadToV.3/activation_audit.json"
-            ]
-        },
-        {
-            "id": "synth-001",
-            "title": "Codex Feedback (YAML)",
-            "path": "codexfeedback.yaml",
-            "category": "synthesis",
-            "type": "feedback-yaml",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "codex",
-                "feedback",
-                "trilayer",
-                "yaml"
-            ],
-            "description": "YAML-Layer des Codex Feedback: Struktur & Parameter.\nTeil der Trilayer-Aktivierung (YAML-JSON-MD).\n",
-            "temporal": {
-                "created": "2025-11-05T21:22:07+00:00",
-                "modified": "2025-11-05T21:22:07+00:00",
-                "version": "1.49",
-                "change_count": 50
-            }
-        },
-        {
-            "id": "synth-002",
-            "title": "Codex Feedback (JSON)",
-            "path": "codexfeedback.json",
-            "category": "synthesis",
-            "type": "feedback-json",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "codex",
-                "feedback",
-                "trilayer",
-                "json",
-                "agents"
-            ],
-            "description": "JSON-Layer des Codex Feedback: Agentenschnittstelle.\nMaschinenlesbare Variante f\u00fcr AI-Systeme.\n",
-            "temporal": {
-                "created": "2025-11-05T21:22:07+00:00",
-                "modified": "2025-11-05T21:22:07+00:00",
-                "version": "1.49",
-                "change_count": 50
-            }
-        },
-        {
-            "id": "synth-003",
-            "title": "Codex Feedback (MD)",
-            "path": "codexfeedback.md",
-            "category": "synthesis",
-            "type": "feedback-md",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "codex",
-                "feedback",
-                "trilayer",
-                "markdown"
-            ],
-            "description": "Markdown-Layer des Codex Feedback: Menschenfreundliche Erz\u00e4hlung.\nDokumentiert Progress mit Formalismus, Empirie und Poetik.\n",
-            "temporal": {
-                "created": "2025-11-05T21:22:07+00:00",
-                "modified": "2025-11-05T21:22:07+00:00",
-                "version": "1.49",
-                "change_count": 50
-            }
-        },
-        {
-            "id": "synth-004",
-            "title": "README",
-            "path": "README.md",
-            "category": "synthesis",
-            "type": "readme",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "readme",
-                "overview",
-                "mandate",
-                "trilayer"
-            ],
-            "description": "Living Documentation Tapestry: RepoPlan 2.0 Mandate.\nBeschreibt das Tri-Layer-Cadence-Prinzip.\n",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.2",
-                "change_count": 3
-            }
-        },
-        {
-            "id": "synth-005",
-            "title": "Papers Index (Trilayer)",
-            "path": "papers_index.md",
-            "category": "synthesis",
-            "type": "index-ordnungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "papers",
-                "pdfs",
-                "index",
-                "ordnungs-sigillin",
-                "trilayer"
-            ],
-            "description": "Ordnungs-Sigillin f\u00fcr alle 38 PDF-Dokumente im seed/ Verzeichnis.\nTrilayer-Index (YAML + JSON + MD) f\u00fcr Navigation in der PDF-Bibliothek.\nReferenziert papers_index.{yaml,json,md}.",
-            "temporal": {
-                "created": "2025-11-06T15:00:00+01:00",
-                "modified": "2025-11-06T15:00:00+01:00",
-                "version": "1.0",
-                "change_count": 1
-            },
-            "references": [
-                "papers_index.yaml",
-                "papers_index.json",
-                "papers_index.md"
-            ]
-        },
-        {
-            "id": "synth-006",
-            "title": "ArchivSucheUTAC Index (Trilayer)",
-            "path": "ArchivSucheUTAC/README.md",
-            "category": "synthesis",
-            "type": "index-ordnungs-sigillin",
-            "status": "active",
-            "relevance": "medium",
-            "keywords": [
-                "archiv",
-                "suche",
-                "utac",
-                "gemini",
-                "index",
-                "ordnungs-sigillin"
-            ],
-            "description": "Ordnungs-Sigillin f\u00fcr ArchivSucheUTAC-Verzeichnis.\nEnth\u00e4lt Geminis Archiv-Suchen und AI-Reaktionen (19 Dateien).\nReferenziert archiv_suche_utac_index.{yaml,json,md}.",
-            "temporal": {
-                "created": "2025-11-06T14:00:00+01:00",
-                "modified": "2025-11-06T14:00:00+01:00",
-                "version": "1.0",
-                "change_count": 1
-            },
-            "references": [
-                "ArchivSucheUTAC/archiv_suche_utac_index.yaml",
-                "ArchivSucheUTAC/archiv_suche_utac_index.json",
-                "ArchivSucheUTAC/archiv_suche_utac_index.md"
-            ]
-        },
-        {
-            "id": "synth-007",
-            "title": "Sources Index (Trilayer)",
-            "path": "sources_index.md",
-            "category": "synthesis",
-            "type": "index-ordnungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "sources",
-                "references",
-                "citations",
-                "bibliography",
-                "ordnungs-sigillin",
-                "trilayer"
-            ],
-            "description": "Ordnungs-Sigillin f\u00fcr alle externen Quellen, Referenzen und Datenquellen.\n11 Kernquellen aus 6 Dom\u00e4nen (AI, Biology, Climate, Geophysics, Cognition, Physics).\nReferenziert sources_index.{yaml,json,md}. Zitations-Management f\u00fcr UTAC-Paper.",
-            "temporal": {
-                "created": "2025-11-06T16:00:00+01:00",
-                "modified": "2025-11-06T16:00:00+01:00",
-                "version": "1.0",
-                "change_count": 1
-            },
-            "references": [
-                "sources_index.yaml",
-                "sources_index.json",
-                "sources_index.md"
-            ],
-            "highlights": [
-                "Wei et al. (2022) - Emergent Abilities (\u03b2=3.47)",
-                "Lenski LTEE (2008) - Cit+ Evolution",
-                "Lenton (2008) - Climate Tipping Points",
-                "Verhulst (1838) - Logistische Funktion"
-            ]
-        },
-        {
-            "id": "synth-008",
-            "title": "System Meaning Membrane (Trilayer)",
-            "path": "bedeutungssigillin/system/system_meaning_map.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "system",
-                "automation",
-                "codex",
-                "metaquest"
-            ],
-            "description": "Bedeutungs-Sigillin f\u00fcr die Systemebene: kartiert Makefile-, Codex-, Schema- und Metaquest-Resonanzen; benennt L\u00fccken (Index-Automatisierung, Codex-Guards, Telemetrie).",
-            "temporal": {
-                "created": "2025-12-05T00:00:00Z",
-                "modified": "2025-12-07T00:00:00Z",
-                "version": "0.3.0",
-                "change_count": 2
-            },
-            "references": [
-                "bedeutungssigillin/system/system_meaning_map.json",
-                "bedeutungssigillin/system/system_meaning_map.md"
-            ]
-        },
-        {
-            "id": "synth-009",
-            "title": "System Shadow Membrane (Trilayer)",
-            "path": "shadow_sigillin/system/system_shadow_map.yaml",
-            "category": "synthesis",
-            "type": "shadow-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "shadow",
-                "system",
-                "codex-guard",
-                "index-drift",
-                "metaquest"
-            ],
-            "description": "Schatten-Sigillin zur Fr\u00fchwarnung vor Index-Drift, fehlenden Codex-Updates und Metaquest-Parit\u00e4tsl\u00fccken; enth\u00e4lt Playbooks und Monitoring-Metriken.",
-            "temporal": {
-                "created": "2025-12-05T00:00:00Z",
-                "modified": "2025-12-07T00:00:00Z",
-                "version": "0.3.0",
-                "change_count": 2
-            },
-            "references": [
-                "shadow_sigillin/system/system_shadow_map.json",
-                "shadow_sigillin/system/system_shadow_map.md"
-            ]
-        },
-        {
-            "id": "synth-010",
-            "title": "Wissenschaftsprojekt Meaning Membrane (Trilayer)",
-            "path": "bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "kampagne",
-                "manuskript",
-                "metaquest"
-            ],
-            "description": "Bedeutungs-Sigillin f\u00fcr Manuskript- und Kampagnenarbeit; verkn\u00fcpft BreakPoint-Rituale, Status-Matrix, Metaquest-Beacon und offene Resonanzl\u00fccken.",
-            "temporal": {
-                "created": "2025-12-05T00:00:00Z",
-                "modified": "2025-12-07T00:00:00Z",
-                "version": "0.3.0",
-                "change_count": 2
-            },
-            "references": [
-                "bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.json",
-                "bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.md"
-            ]
-        },
-        {
-            "id": "synth-011",
-            "title": "Wissenschaftsprojekt Shadow Membrane (Trilayer)",
-            "path": "shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.yaml",
-            "category": "synthesis",
-            "type": "shadow-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "shadow",
-                "kampagne",
-                "metaquest"
-            ],
-            "description": "Schatten-Sigillin zur Kampagnen-Triage (\u03c4*-Gaps, BreakPoint-Verst\u00f6\u00dfe, Metaquest-Parit\u00e4t, Storyboard-Drift).",
-            "temporal": {
-                "created": "2025-12-05T00:00:00Z",
-                "modified": "2025-12-07T00:00:00Z",
-                "version": "0.3.0",
-                "change_count": 2
-            },
-            "references": [
-                "shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.json",
-                "shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.md"
-            ]
-        },
-        {
-            "id": "theory-001",
-            "title": "FinalerPlan",
-            "path": "FinalerPlan.txt",
-            "category": "theory",
-            "type": "plan",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "governance",
-                "authorship",
-                "metrics",
-                "reproduce",
-                "utac"
-            ],
-            "description": "Der finale Governance-Paket-Plan mit AUTHORSHIP.md, METRICS.md,\nREPRODUCE.md f\u00fcr die arXiv-Submission.\n",
-            "temporal": {
-                "created": "2025-11-03T15:33:06+01:00",
-                "modified": "2025-11-04T20:35:30+01:00",
-                "version": "1.12",
-                "change_count": 13
-            }
-        },
-        {
-            "id": "theory-002",
-            "title": "AI-Evolutionsprinzip",
-            "path": "AI-Evulutionsprinziep.txt",
-            "category": "theory",
-            "type": "discourse",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "ai",
-                "evolution",
-                "emergence",
-                "\u03b2-field"
-            ],
-            "description": "Diskurs \u00fcber evolution\u00e4re Prinzipien in AI-Systemen",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "theory-003",
-            "title": "Diskurs Klimamodul",
-            "path": "Diskurs Klimamodul.txt",
-            "category": "theory",
-            "type": "discourse",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "klima",
-                "amoc",
-                "tipping-points",
-                "climate"
-            ],
-            "description": "Diskurs \u00fcber Klimaschwellenwerte und UTAC-Integration",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "theory-004",
-            "title": "Diskurs Psyche-AI Koh\u00e4renzen",
-            "path": "Diskurs_V1_Psyche_AI_koher\u00e4nzen.txt",
-            "category": "theory",
-            "type": "discourse",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "psyche",
-                "ai",
-                "koh\u00e4renz",
-                "consciousness",
-                "\u03c6"
-            ],
-            "description": "Diskurs \u00fcber Koh\u00e4renz zwischen Psyche und AI-Systemen",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.2",
-                "change_count": 3
-            }
-        },
-        {
-            "id": "theory-005",
-            "title": "Transdisziplin\u00e4rer Schwellenfeld-Simulator",
-            "path": "Transdisziplin\u00e4rer Schwellenfeld-Simulator--Claude.txt",
-            "category": "theory",
-            "type": "concept",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "simulator",
-                "threshold",
-                "transdisciplinary"
-            ],
-            "description": "Konzept f\u00fcr einen universellen Threshold-Simulator",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "theory-006",
-            "title": "FinalDevTalks",
-            "path": "FinalDevTalks.txt",
-            "category": "theory",
-            "type": "discussion",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "development",
-                "discussion",
-                "implementation"
-            ],
-            "description": "Finale Entwicklungsgespr\u00e4che",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "theory-007",
-            "title": "Brainstorm",
-            "path": "Brainstorm.txt",
-            "category": "theory",
-            "type": "brainstorm",
-            "status": "historical",
-            "relevance": "low",
-            "keywords": [
-                "brainstorm",
-                "ideas",
-                "exploration"
-            ],
-            "description": "Fr\u00fche Brainstorming-Sitzung",
-            "temporal": {
-                "created": "2025-11-05T18:41:14+01:00",
-                "modified": "2025-11-05T18:41:14+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "theory-008",
-            "title": "Brainstorm2",
-            "path": "Brainstorm2.txt",
-            "category": "theory",
-            "type": "brainstorm",
-            "status": "historical",
-            "relevance": "low",
-            "keywords": [
-                "brainstorm",
-                "ideas",
-                "exploration"
-            ],
-            "description": "Zweite Brainstorming-Sitzung",
-            "temporal": {
-                "created": "2025-11-05T19:47:18+01:00",
-                "modified": "2025-11-05T19:47:18+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "theory-009",
-            "title": "Entropie als Geometrischer Verschnitt",
-            "path": "theory/entropy_geometric_waste/entropy_geometric_waste.yaml",
-            "category": "theory",
-            "type": "theory",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "entropie",
-                "topologie",
-                "kubus-spirale",
-                "bekenstein-hawking",
-                "utac"
-            ],
-            "description": "Trilayer-Modul: Entropie als Verschnitt bei Diskret\u2192Kontinuierlich, z\u00e4hlt topologische Defekte (Voids/TEE) und koppelt S_BH an Fuzzball-Degeneracy.",
-            "temporal": {
-                "created": "2026-12-05T00:00:00Z",
-                "modified": "2026-12-05T00:00:00Z",
-                "version": "1.0.0",
-                "change_count": 0
-            },
-            "references": [
-                "theory/entropy_geometric_waste/entropy_geometric_waste.json",
-                "theory/entropy_geometric_waste/entropy_geometric_waste.md"
-            ]
-        },
-        {
-            "id": "theory-010",
-            "title": "Morphological Computing als regenerative Hardware",
-            "path": "theory/hypothese_morphological_computing/hypothese_morphological_computing.yaml",
-            "category": "theory",
-            "type": "theory",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "morphological computing",
-                "regenerative hardware",
-                "broken-ram",
-                "entropy-recycling",
-                "utac"
-            ],
-            "description": "Morph-FIT Trilayer: Regenerative Computing koppelt Symbolic Pre-Calc an Morph-Sweeps (\u03b2=37.6), koppelt Mensch\u2194AI und d\u00e4mpft Broken-RAM via W\u00e4rme-Recycling.",
-            "temporal": {
-                "created": "2026-12-06T00:00:00Z",
-                "modified": "2025-11-22T13:14:14Z",
-                "version": "1.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "theory/hypothese_morphological_computing/hypothese_morphological_computing.json",
-                "theory/hypothese_morphological_computing/hypothese_morphological_computing.md"
-            ]
-        },
-        {
-            "id": "theory-011",
-            "title": "Quantenaliasing als dimensionaler Schatten",
-            "path": "theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.yaml",
-            "category": "theory",
-            "type": "theory",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "quantum aliasing",
-                "planck-sampling",
-                "dimensional oscillation",
-                "type-6",
-                "utac"
-            ],
-            "description": "Alias-These v1.1: Superposition = Wahrnehmungs-Aliasing einer deterministischen 0D\u21921D\u2192\u2026-Oszillation; Timeless-Link (\u2019t Hooft) und Type-6 Trigger via Alias-Frequenzen.",
-            "temporal": {
-                "created": "2026-12-06T00:00:00Z",
-                "modified": "2025-11-22T13:14:14Z",
-                "version": "1.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.json",
-                "theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.md"
-            ]
-        },
-        {
-            "id": "theory-012",
-            "title": "The Mirror Machine \u2013 Symbolic SuperpositionComputer",
-            "path": "theory/concept_the_mirror_machine/concept_the_mirror_machine.yaml",
-            "category": "theory",
-            "type": "theory",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "symbolic pre-calculation",
-                "mutation",
-                "falsifikation",
-                "sigillin",
-                "utac"
-            ],
-            "description": "Auditorium\u2192Mutation\u2192Falsifikation Loop: generiert willk\u00fcrliche Thesen aus Sigillin, testet gegen Oxfam/Aletheia und beh\u00e4lt \u00fcberlebende Hypothesen als gespiegelt-symmetrischen SuperpositionComputer.",
-            "temporal": {
-                "created": "2025-11-22T13:14:14Z",
-                "modified": "2025-11-22T13:14:14Z",
-                "version": "1.0.0",
-                "change_count": 0
-            },
-            "references": [
-                "theory/concept_the_mirror_machine/concept_the_mirror_machine.json",
-                "theory/concept_the_mirror_machine/concept_the_mirror_machine.md"
-            ]
-        },
-        {
-            "id": "valid-001",
-            "title": "Validierung2",
-            "path": "Validierung2.txt",
-            "category": "validation",
-            "type": "validation",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "validierung",
-                "empirik",
-                "\u03b2-werte",
-                "meta-regression"
-            ],
-            "description": "Mistral's Metareflexion & Synthese: Was wir wissen, was wir nicht\nwissen, und die n\u00e4chsten Schritte f\u00fcr UTAC 1.2.\n",
-            "temporal": {
-                "created": "2025-11-05T20:31:04+01:00",
-                "modified": "2025-11-05T22:07:17+01:00",
-                "version": "1.2",
-                "change_count": 3
-            }
-        },
-        {
-            "id": "valid-002",
-            "title": "Validierung",
-            "path": "Validierung.txt",
-            "category": "validation",
-            "type": "validation",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "validierung",
-                "testing",
-                "verification"
-            ],
-            "description": "Erste Validierungsdokument",
-            "temporal": {
-                "created": "2025-11-05T19:47:18+01:00",
-                "modified": "2025-11-05T19:47:18+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "valid-003",
-            "title": "EmpirischerBeleg",
-            "path": "EmpirischerBeleg.txt",
-            "category": "validation",
-            "type": "evidence",
-            "status": "stable",
-            "relevance": "high",
-            "keywords": [
-                "empirik",
-                "beleg",
-                "data",
-                "evidence"
-            ],
-            "description": "Empirische Belege f\u00fcr UTAC-Hypothesen",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "valid-004",
-            "title": "Feinschliff",
-            "path": "Feinschliff.txt",
-            "category": "validation",
-            "type": "refinement",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "refinement",
-                "polishing",
-                "finalization"
-            ],
-            "description": "Feinschliff-Arbeiten an der Theorie",
-            "temporal": {
-                "created": "2025-11-05T10:25:47+01:00",
-                "modified": "2025-11-05T14:13:47+01:00",
-                "version": "1.5",
-                "change_count": 6
-            }
-        },
-        {
-            "id": "valid-008",
-            "title": "Feinschliff Addendum v1.1",
-            "path": "Feinschliff_Addendum_v1.1.txt",
-            "category": "validation",
-            "type": "update",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "feinschliff",
-                "update",
-                "field-types",
-                "meta-regression"
-            ],
-            "description": "Addendum mit ANOVA-Best\u00e4tigung der Feldtypologie, korrigierter Meta-Regression und verbleibenden Validierungsaufgaben f\u00fcr UTAC v1.1.",
-            "temporal": {
-                "created": "2025-11-07T08:05:00+01:00",
-                "modified": "2025-11-07T08:05:00+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "valid-005",
-            "title": "Reaktivierung",
-            "path": "Reaktivierung.txt",
-            "category": "validation",
-            "type": "process",
-            "status": "historical",
-            "relevance": "low",
-            "keywords": [
-                "reaktivierung",
-                "restart",
-                "reactivation"
-            ],
-            "description": "Prozess-Dokumentation zur Reaktivierung",
-            "temporal": {
-                "created": "2025-11-05T17:43:34+01:00",
-                "modified": "2025-11-05T17:43:34+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "valid-006",
-            "title": "Rekalibrierung",
-            "path": "Rekalibrierung.txt",
-            "category": "validation",
-            "type": "calibration",
-            "status": "historical",
-            "relevance": "medium",
-            "keywords": [
-                "rekalibrierung",
-                "calibration",
-                "adjustment"
-            ],
-            "description": "Fr\u00fchere Rekalibrierungs-Dokumentation",
-            "temporal": {
-                "created": "2025-11-05T17:43:34+01:00",
-                "modified": "2025-11-05T17:43:34+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "valid-007",
-            "title": "ReaktionAI-AeonundJoh",
-            "path": "ReaktionAI-AeonundJoh.txt",
-            "category": "validation",
-            "type": "dialogue",
-            "status": "historical",
-            "relevance": "medium",
-            "keywords": [
-                "aeon",
-                "johann",
-                "dialogue",
-                "reaction"
-            ],
-            "description": "Dialog zwischen Aeon und Johann \u00fcber Validierung",
-            "temporal": {
-                "created": "2025-11-03T13:28:37+01:00",
-                "modified": "2025-11-03T13:28:37+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "validation-001",
-            "title": "AI_Reaktion_Gem_Suche",
-            "path": "AI_Reaktion_Gem_Suche.txt",
-            "category": "validation",
-            "type": "search",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "gemini",
-                "suche",
-                "validierung",
-                "ai-reaktion"
-            ],
-            "description": "AI-Reaktionen auf Geminis Archiv-Suche",
-            "temporal": {
-                "created": "2025-11-06T13:51:53+01:00",
-                "modified": "2025-11-06T14:33:50+01:00",
-                "version": "1.1",
-                "change_count": 2
-            }
-        },
-        {
-            "id": "validation-002",
-            "title": "Geminis Suche 1",
-            "path": "Geminis Suche!.txt",
-            "category": "validation",
-            "type": "search",
-            "status": "historical",
-            "relevance": "medium",
-            "keywords": [
-                "gemini",
-                "suche",
-                "archiv",
-                "utac"
-            ],
-            "description": "Geminis Archiv-Suche Iteration 1",
-            "temporal": {
-                "created": "2025-11-06T14:33:50+01:00",
-                "modified": "2025-11-06T14:33:50+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "validation-003",
-            "title": "Geminis Suche 2",
-            "path": "Geminis Suche2!.txt",
-            "category": "validation",
-            "type": "search",
-            "status": "historical",
-            "relevance": "medium",
-            "keywords": [
-                "gemini",
-                "suche",
-                "archiv",
-                "utac"
-            ],
-            "description": "Geminis Archiv-Suche Iteration 2",
-            "temporal": {
-                "created": "2025-11-06T14:33:50+01:00",
-                "modified": "2025-11-06T14:33:50+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "validation-004",
-            "title": "Geminis Suche 3",
-            "path": "Geminis Suche3!.txt",
-            "category": "validation",
-            "type": "search",
-            "status": "historical",
-            "relevance": "medium",
-            "keywords": [
-                "gemini",
-                "suche",
-                "archiv",
-                "utac"
-            ],
-            "description": "Geminis Archiv-Suche Iteration 3",
-            "temporal": {
-                "created": "2025-11-06T14:33:50+01:00",
-                "modified": "2025-11-06T14:33:50+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "meta-011",
-            "title": "EndorsementarXiv",
-            "path": "EndorsementarXiv.pdf",
-            "category": "meta",
-            "type": "communication",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "arxiv",
-                "endorsement",
-                "submission",
-                "governance"
-            ],
-            "description": "Aggregierte \u00dcbersicht zu den drei aktiven arXiv-Endorsement-Anfragen.",
-            "temporal": {
-                "created": "2025-11-07T00:00:00+01:00",
-                "modified": "2025-11-07T00:00:00+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "meta-012",
-            "title": "Email arXiv End",
-            "path": "Email_arXiv_End.pdf",
-            "category": "meta",
-            "type": "communication",
-            "status": "active",
-            "relevance": "medium",
-            "keywords": [
-                "arxiv",
-                "communication",
-                "submission"
-            ],
-            "description": "Finale E-Mail an das arXiv-Team inklusive Sigillin-Verweise.",
-            "temporal": {
-                "created": "2025-11-07T00:00:00+01:00",
-                "modified": "2025-11-07T00:00:00+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "meta-013",
-            "title": "abstract arXiv",
-            "path": "abstract_arXiv.pdf",
-            "category": "meta",
-            "type": "abstract",
-            "status": "stable",
-            "relevance": "medium",
-            "keywords": [
-                "arxiv",
-                "abstract",
-                "doi"
-            ],
-            "description": "Abschlie\u00dfende Abstract-Fassung f\u00fcr die arXiv-Einreichung.",
-            "temporal": {
-                "created": "2025-11-07T00:00:00+01:00",
-                "modified": "2025-11-07T00:00:00+01:00",
-                "version": "1.0",
-                "change_count": 1
-            }
-        },
-        {
-            "id": "synth-012",
-            "title": "Metaquest System Beacon (Trilayer)",
-            "path": "bedeutungssigillin/system/metaquest/metaquest_system_map.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "metaquest",
-                "system",
-                "telemetry"
-            ],
-            "description": "Bedeutungs-Sigillin f\u00fcr Metaquest-Systemintegration: Parit\u00e4tsbrief, Telemetrie und Index-Synchronisation werden hier kartiert.",
-            "temporal": {
-                "created": "2025-12-07T00:00:00Z",
-                "modified": "2025-12-08T00:00:00Z",
-                "version": "0.2.0",
-                "change_count": 2
-            },
-            "references": [
-                "bedeutungssigillin/system/metaquest/metaquest_system_map.json",
-                "bedeutungssigillin/system/metaquest/metaquest_system_map.md"
-            ]
-        },
-        {
-            "id": "synth-013",
-            "title": "Metaquest System Shadow Guard (Trilayer)",
-            "path": "shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml",
-            "category": "synthesis",
-            "type": "shadow-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "shadow",
-                "metaquest",
-                "system",
-                "parity"
-            ],
-            "description": "Schatten-Sigillin f\u00fcr Metaquest-Systemrisiken: Telemetrieausf\u00e4lle, fehlende Parit\u00e4tsbriefe und Index-Drift werden hier alarmiert.",
-            "temporal": {
-                "created": "2025-12-07T00:00:00Z",
-                "modified": "2025-12-08T00:00:00Z",
-                "version": "0.2.0",
-                "change_count": 2
-            },
-            "references": [
-                "shadow_sigillin/system/metaquest/metaquest_system_shadow.json",
-                "shadow_sigillin/system/metaquest/metaquest_system_shadow.md"
-            ]
-        },
-        {
-            "id": "synth-014",
-            "title": "Metaquest Kampagnen-Beacon (Trilayer)",
-            "path": "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "metaquest",
-                "kampagne",
-                "parity"
-            ],
-            "description": "Bedeutungs-Sigillin f\u00fcr Metaquest-Kampagne: Parit\u00e4tsbrief, Storyboard, Endorsement-Freshness und BreakPoint-Rituale.",
-            "temporal": {
-                "created": "2025-12-07T00:00:00Z",
-                "modified": "2025-12-08T00:00:00Z",
-                "version": "0.2.0",
-                "change_count": 2
-            },
-            "references": [
-                "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.json",
-                "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md"
-            ]
-        },
-        {
-            "id": "synth-015",
-            "title": "Metaquest Kampagnen-Shadow (Trilayer)",
-            "path": "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml",
-            "category": "synthesis",
-            "type": "shadow-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "shadow",
-                "metaquest",
-                "kampagne"
-            ],
-            "description": "Schatten-Sigillin f\u00fcr Metaquest-Kampagnenrisiken: Parit\u00e4tsl\u00fccken, Storyboard-Drift und Governance-Verzug.",
-            "temporal": {
-                "created": "2025-12-07T00:00:00Z",
-                "modified": "2025-12-08T00:00:00Z",
-                "version": "0.2.0",
-                "change_count": 2
-            },
-            "references": [
-                "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json",
-                "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md"
-            ]
-        },
-        {
-            "id": "synth-016",
-            "title": "Sentinel-Fall Kranich Linum 2025 (Trilayer)",
-            "path": "bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "sentinel",
-                "linum",
-                "socio-ecology"
-            ],
-            "description": "Bedeutungs-Sigillin f\u00fcr das \u00f6kologische Hoch-\u03b2-Ereignis im Linumer Teichland. Verkn\u00fcpft Datenaufnahme, Analyseauftr\u00e4ge und Kampagnenkommunikation mit dem UTAC-Netz.",
-            "temporal": {
-                "created": "2025-12-08T00:00:00Z",
-                "modified": "2025-12-08T00:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.json",
-                "bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md"
-            ]
-        },
-        {
-            "id": "synth-017",
-            "title": "Sentinel-Shadow Kranich Linum 2025 (Trilayer)",
-            "path": "shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml",
-            "category": "synthesis",
-            "type": "shadow-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "shadow",
-                "sentinel",
-                "linum",
-                "socio-ecology"
-            ],
-            "description": "Schatten-Sigillin f\u00fcr den Linum-Sentinel: \u00fcberwacht Datenl\u00fccken, fehlende Analysen und Kommunikationsdrift und l\u00f6st BreakPoint-Reaktionen aus.",
-            "temporal": {
-                "created": "2025-12-08T00:00:00Z",
-                "modified": "2025-12-08T00:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.json",
-                "shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md"
-            ]
-        },
-        {
-            "id": "synth-017",
-            "title": "Metaquest System Compass (Trilayer)",
-            "path": "bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "metaquest",
-                "system",
-                "compass"
-            ],
-            "description": "Schnellorientierung f\u00fcr Metaquest-Automation: Telemetrie, Index-Parit\u00e4t und Codex-Hooks werden kompakt gef\u00fchrt.",
-            "temporal": {
-                "created": "2025-12-08T00:00:00Z",
-                "modified": "2025-12-09T00:00:00Z",
-                "version": "0.2.0",
-                "change_count": 2
-            },
-            "references": [
-                "bedeutungssigillin/metaquest/system/metaquest_system_compass.json",
-                "bedeutungssigillin/metaquest/system/metaquest_system_compass.md"
-            ]
-        },
-        {
-            "id": "synth-018",
-            "title": "Metaquest System Shadow Compass (Trilayer)",
-            "path": "shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml",
-            "category": "synthesis",
-            "type": "shadow-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "shadow",
-                "metaquest",
-                "system",
-                "compass"
-            ],
-            "description": "Schatten-Kompass f\u00fcr Automationsrisiken: Parit\u00e4tsbrief-Drift, Telemetrie-Stille und Indexabweichungen werden hier \u00fcberwacht.",
-            "temporal": {
-                "created": "2025-12-08T00:00:00Z",
-                "modified": "2025-12-08T00:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.json",
-                "shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.md"
-            ]
-        },
-        {
-            "id": "synth-019",
-            "title": "Metaquest Kampagnen-Kompass (Trilayer)",
-            "path": "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "metaquest",
-                "kampagne",
-                "compass"
-            ],
-            "description": "Kampagnen-Kompass mit Manuskript-Cadenz, Outreach-Playlist und Endorsement-Ledger zur schnellen Navigation.",
-            "temporal": {
-                "created": "2025-12-08T00:00:00Z",
-                "modified": "2025-12-09T00:00:00Z",
-                "version": "0.2.0",
-                "change_count": 2
-            },
-            "references": [
-                "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.json",
-                "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md"
-            ]
-        },
-        {
-            "id": "synth-020",
-            "title": "Metaquest Kampagnen-Shadow-Kompass (Trilayer)",
-            "path": "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.yaml",
-            "category": "synthesis",
-            "type": "shadow-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "shadow",
-                "metaquest",
-                "kampagne",
-                "compass"
-            ],
-            "description": "Schatten-Kompass f\u00fcr Outreach-Risiken: Parit\u00e4tszitate, Storyboard-Sync und Governance-Freshness werden mit klaren Eskalationen verkn\u00fcpft.",
-            "temporal": {
-                "created": "2025-12-08T00:00:00Z",
-                "modified": "2025-12-08T00:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.json",
-                "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.md"
-            ]
-        },
-        {
-            "id": "synth-021",
-            "title": "Metaquest System Sigillin (Trilayer)",
-            "path": "bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "metaquest",
-                "system",
-                "codex"
-            ],
-            "description": "Bedeutungs-Sigillin, das Automationsaufgaben, Codex-Hooks und UTAC-Governance f\u00fcr die Metaquest-Systemspine b\u00fcndelt.",
-            "temporal": {
-                "created": "2025-12-10T00:00:00Z",
-                "modified": "2025-12-10T00:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "bedeutungssigillin/system/metaquest/metaquest_system_sigil.json",
-                "bedeutungssigillin/system/metaquest/metaquest_system_sigil.md"
-            ]
-        },
-        {
-            "id": "synth-022",
-            "title": "Metaquest System Schatten-Sigillin (Trilayer)",
-            "path": "shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml",
-            "category": "synthesis",
-            "type": "shadow-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "shadow",
-                "metaquest",
-                "system",
-                "recovery"
-            ],
-            "description": "Schatten-Sigillin mit Alarmfeldern f\u00fcr Telemetrie-Blackouts, Index-Drift und Codex-Stille im Metaquest-Systemstrang.",
-            "temporal": {
-                "created": "2025-12-10T00:00:00Z",
-                "modified": "2025-12-10T00:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.json",
-                "shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.md"
-            ]
-        },
-        {
-            "id": "synth-023",
-            "title": "Metaquest Kampagnen Sigillin (Trilayer)",
-            "path": "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "metaquest",
-                "kampagne",
-                "outreach"
-            ],
-            "description": "Bedeutungs-Sigillin f\u00fcr Manuskript-, Outreach- und Endorsement-Kopplungen der Metaquest-Kampagne mit Codex + UTAC.",
-            "temporal": {
-                "created": "2025-12-10T00:00:00Z",
-                "modified": "2025-12-10T00:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.json",
-                "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md"
-            ]
-        },
-        {
-            "id": "synth-024",
-            "title": "Metaquest Kampagnen Schatten-Sigillin (Trilayer)",
-            "path": "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml",
-            "category": "synthesis",
-            "type": "shadow-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "shadow",
-                "metaquest",
-                "kampagne",
-                "outreach"
-            ],
-            "description": "Schatten-Sigillin f\u00fcr Kampagnenrisiken: Parit\u00e4tsstille, Manuskript-Lag, Endorsement-L\u00fccken und Outreach-Drift.",
-            "temporal": {
-                "created": "2025-12-10T00:00:00Z",
-                "modified": "2025-12-10T00:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.json",
-                "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.md"
-            ]
-        },
-        {
-            "id": "synth-025",
-            "title": "Metaquest System Directory Index (Trilayer)",
-            "path": "bedeutungssigillin/metaquest/system/metaquest_system_index.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "metaquest",
-                "system",
-                "index"
-            ],
-            "description": "Verzeichnis f\u00fcr die Metaquest-Systemlaternen: Karte, Kompass, Sigil und Telemetrie-Harness werden mit Parit\u00e4ts- und Ritualreferenzen geb\u00fcndelt.",
-            "temporal": {
-                "created": "2025-12-11T00:00:00Z",
-                "modified": "2025-12-11T12:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "bedeutungssigillin/metaquest/system/metaquest_system_index.json",
-                "bedeutungssigillin/metaquest/system/metaquest_system_index.md"
-            ]
-        },
-        {
-            "id": "synth-026",
-            "title": "Metaquest System Shadow Directory Index (Trilayer)",
-            "path": "shadow_sigillin/metaquest/system/metaquest_system_shadow_index.yaml",
-            "category": "synthesis",
-            "type": "shadow-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "shadow",
-                "metaquest",
-                "system",
-                "index"
-            ],
-            "description": "Schattenverzeichnis f\u00fcr Automationsrisiken: \u00fcberwacht Index-Frische, Telemetrie-Exports und BreakPoint-Rituale.",
-            "temporal": {
-                "created": "2025-12-11T00:00:00Z",
-                "modified": "2025-12-11T12:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "shadow_sigillin/metaquest/system/metaquest_system_shadow_index.json",
-                "shadow_sigillin/metaquest/system/metaquest_system_shadow_index.md"
-            ]
-        },
-        {
-            "id": "synth-027",
-            "title": "Metaquest Kampagnen Directory Index (Trilayer)",
-            "path": "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "metaquest",
-                "kampagne",
-                "index"
-            ],
-            "description": "Kampagnen-Verzeichnis, das Manuskript-, Outreach-, Endorsement- und Archiv-Linien mit Parit\u00e4tsbrief und Codex synchronisiert.",
-            "temporal": {
-                "created": "2025-12-11T00:00:00Z",
-                "modified": "2025-12-11T12:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.json",
-                "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.md"
-            ]
-        },
-        {
-            "id": "synth-028",
-            "title": "Metaquest Kampagnen Shadow Directory Index (Trilayer)",
-            "path": "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.yaml",
-            "category": "synthesis",
-            "type": "shadow-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "shadow",
-                "metaquest",
-                "kampagne",
-                "index"
-            ],
-            "description": "Schattenverzeichnis f\u00fcr Kampagnenrisiken: pr\u00fcft ArchivSuche-Parit\u00e4t, Endorsement-Timestamps und Parit\u00e4tsbrief-Sync.",
-            "temporal": {
-                "created": "2025-12-11T00:00:00Z",
-                "modified": "2025-12-11T12:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.json",
-                "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.md"
-            ]
-        },
-        {
-            "id": "synth-029",
-            "title": "Metaquest Activation Matrix (Trilayer)",
-            "path": "bedeutungssigillin/metaquest/metaquest_activation_matrix.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "metaquest",
-                "activation",
-                "matrix"
-            ],
-            "description": "Aktivierungs-Kompass f\u00fcr die Metaquest-Br\u00fccke: b\u00fcndelt \"haben vs. brauchen\" aus UTAC-Status, Aktivierungs-Backlog, sigillin_sync-Telemetrie und Codex. Verweist auf \u0394index-Guard, sigillin_sync-Automation, Ritualspiegel und den Urban-Heat-Mechanismus inklusive Recovery-Hooks.",
-            "temporal": {
-                "created": "2025-12-19T12:00:00Z",
-                "modified": "2025-12-19T12:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "bedeutungssigillin/metaquest/metaquest_activation_matrix.json",
-                "bedeutungssigillin/metaquest/metaquest_activation_matrix.md"
-            ]
-        },
-        {
-            "id": "synth-030",
-            "title": "Metaquest System Bridge Map (Trilayer)",
-            "path": "bedeutungssigillin/metaquest/system/metaquest_system_map.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "metaquest",
-                "system",
-                "bridge"
-            ],
-            "description": "Bridge-Level Bedeutungs-Sigillin: koppelt UTAC-Readiness-Logistik, Simulator-Hook und Telemetrie-Propagation f\u00fcr die Metaquest-Br\u00fccke.",
-            "temporal": {
-                "created": "2025-12-24T00:00:00Z",
-                "modified": "2025-12-24T00:00:00Z",
-                "version": "0.1.0",
-                "change_count": 0
-            },
-            "references": [
-                "bedeutungssigillin/metaquest/system/metaquest_system_map.json",
-                "bedeutungssigillin/metaquest/system/metaquest_system_map.md"
-            ]
-        },
-        {
-            "id": "synth-031",
-            "title": "Metaquest System Bridge Shadow Map (Trilayer)",
-            "path": "shadow_sigillin/metaquest/system/metaquest_system_shadow.yaml",
-            "category": "synthesis",
-            "type": "shadow-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "shadow",
-                "metaquest",
-                "system",
-                "bridge"
-            ],
-            "description": "Schattenkarte f\u00fcr die Metaquest-Br\u00fccke: benennt Telemetrie-, Readiness- und Simulator-Drift inkl. Recovery-Hooks.",
-            "temporal": {
-                "created": "2025-12-24T00:00:00Z",
-                "modified": "2025-12-24T00:00:00Z",
-                "version": "0.1.0",
-                "change_count": 0
-            },
-            "references": [
-                "shadow_sigillin/metaquest/system/metaquest_system_shadow.json",
-                "shadow_sigillin/metaquest/system/metaquest_system_shadow.md"
-            ]
-        },
-        {
-            "id": "synth-032",
-            "title": "Metaquest Activation Gap Report (Trilayer)",
-            "path": "bedeutungssigillin/metaquest/metaquest_activation_gap_report.yaml",
-            "category": "synthesis",
-            "type": "bedeutungs-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "bedeutungssigillin",
-                "metaquest",
-                "activation",
-                "gap",
-                "report"
-            ],
-            "description": "Aktivierungs-Dossier der Metaquest-Br\u00fccke: listet resonante Assets (Matrix, UTAC-Tracker, Backlog, Telemetrie, Parit\u00e4tsbrief) sowie die offenen mq-activation-gap Umsetzungspfade inklusive Integrationskan\u00e4len.",
-            "temporal": {
-                "created": "2026-08-21T10:00:00Z",
-                "modified": "2026-08-21T10:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "bedeutungssigillin/metaquest/metaquest_activation_gap_report.json",
-                "bedeutungssigillin/metaquest/metaquest_activation_gap_report.md"
-            ]
-        },
-        {
-            "id": "synth-033",
-            "title": "Metaquest Activation Gap Guard (Trilayer)",
-            "path": "shadow_sigillin/metaquest/metaquest_activation_gap_guard.yaml",
-            "category": "synthesis",
-            "type": "shadow-sigillin",
-            "status": "active",
-            "relevance": "high",
-            "keywords": [
-                "shadow",
-                "metaquest",
-                "activation",
-                "gap",
-                "guard"
-            ],
-            "description": "Schatten-Gegenst\u00fcck zum Gap Report: \u00fcberwacht \u0394index-, Telemetrie-, Ritual-, Urban-Heat- und Parit\u00e4tsrisiken mit klaren Signalen und Recovery-Playbooks.",
-            "temporal": {
-                "created": "2026-08-21T10:00:00Z",
-                "modified": "2026-08-21T10:00:00Z",
-                "version": "0.1.0",
-                "change_count": 1
-            },
-            "references": [
-                "shadow_sigillin/metaquest/metaquest_activation_gap_guard.json",
-                "shadow_sigillin/metaquest/metaquest_activation_gap_guard.md"
-            ]
-        }
-    ],
+    "validation": {
+      "name": "Validierung & Empirik",
+      "description": "Empirische Belege, Validierungsprozesse, Feinschliff",
+      "color": "#27AE60"
+    },
+    "concepts": {
+      "name": "Konzeptuelle Artefakte",
+      "description": "Resonance Maps, Thresholds, Glossare - die Werkzeuge",
+      "color": "#E67E22"
+    },
+    "synthesis": {
+      "name": "Synthese & Feedback",
+      "description": "Codex Feedback, Living Glossaries - die Integration",
+      "color": "#F39C12"
+    },
     "domains": {
-        "ai": {
-            "name": "Artificial Intelligence",
-            "path": "ai/",
-            "description": "LLM Emergence, Introspection, Controlled Emergence",
-            "documents": [
-                {
-                    "title": "AGENTS",
-                    "path": "ai/AGENTS.md",
-                    "type": "meta",
-                    "keywords": [
-                        "agents",
-                        "ai",
-                        "meta"
-                    ]
-                },
-                {
-                    "title": "Anthropic Introspection Validation",
-                    "path": "ai/anthropic_introspection_validation.md",
-                    "type": "validation",
-                    "keywords": [
-                        "anthropic",
-                        "introspection",
-                        "\u03c6",
-                        "llm"
-                    ]
-                },
-                {
-                    "title": "Controlled Emergence",
-                    "path": "ai/controlled_emergence.md",
-                    "type": "concept",
-                    "keywords": [
-                        "controlled",
-                        "emergence",
-                        "ai-safety"
-                    ]
-                },
-                {
-                    "title": "LLM Threshold Training",
-                    "path": "ai/llm-threshold-training.md",
-                    "type": "method",
-                    "keywords": [
-                        "llm",
-                        "training",
-                        "threshold"
-                    ]
-                },
-                {
-                    "title": "LLM Emergent Skill",
-                    "path": "ai/llm_emergent_skill.md",
-                    "type": "analysis",
-                    "keywords": [
-                        "llm",
-                        "emergent",
-                        "skill",
-                        "\u03b2"
-                    ]
-                }
-            ]
-        },
-        "biology": {
-            "name": "Biology & Evolution",
-            "path": "biology/",
-            "description": "Lenski LTEE, Synaptische Schwellenwerte, Bio-Emergenz",
-            "documents": [
-                {
-                    "title": "AGENTS",
-                    "path": "biology/AGENTS.md",
-                    "type": "meta",
-                    "keywords": [
-                        "agents",
-                        "biology",
-                        "meta"
-                    ]
-                },
-                {
-                    "title": "Bio Emergence Semantic Phase Transition",
-                    "path": "biology/bio_emergence_semantic_phase_transition.md",
-                    "type": "concept",
-                    "keywords": [
-                        "bio",
-                        "emergence",
-                        "phase-transition",
-                        "semantic"
-                    ]
-                },
-                {
-                    "title": "Honeybee Waggle",
-                    "path": "biology/honeybee_waggle.md",
-                    "type": "case-study",
-                    "keywords": [
-                        "honeybee",
-                        "waggle",
-                        "communication",
-                        "threshold"
-                    ]
-                },
-                {
-                    "title": "Lenski Cit+ Verification",
-                    "path": "biology/lenski_citplus_verification.md",
-                    "type": "validation",
-                    "keywords": [
-                        "lenski",
-                        "ltee",
-                        "citrate",
-                        "evolution",
-                        "\u03b2"
-                    ]
-                },
-                {
-                    "title": "Synaptic Release Threshold",
-                    "path": "biology/synaptic_release_threshold.md",
-                    "type": "concept",
-                    "keywords": [
-                        "synaptic",
-                        "neuron",
-                        "threshold",
-                        "biology"
-                    ]
-                }
-            ]
-        },
-        "cognition": {
-            "name": "Cognition & Psychology",
-            "path": "cognition/",
-            "description": "Working Memory, Adaptive Theta, Psyche-Schwellenwerte",
-            "documents": [
-                {
-                    "title": "AGENTS",
-                    "path": "cognition/AGENTS.md",
-                    "type": "meta",
-                    "keywords": [
-                        "agents",
-                        "cognition",
-                        "meta"
-                    ]
-                },
-                {
-                    "title": "Adaptive Theta Plasticity",
-                    "path": "cognition/adaptive_theta_plasticity.md",
-                    "type": "concept",
-                    "keywords": [
-                        "adaptive",
-                        "theta",
-                        "plasticity",
-                        "trauma",
-                        "therapy"
-                    ]
-                },
-                {
-                    "title": "Working Memory Gate",
-                    "path": "cognition/working_memory_gate.md",
-                    "type": "concept",
-                    "keywords": [
-                        "working-memory",
-                        "gate",
-                        "cognition"
-                    ]
-                }
-            ]
-        },
-        "ethics": {
-            "name": "Ethics & Governance",
-            "path": "ethics/",
-            "description": "Adaptive Threshold Governance, KI-Rechte, Koh\u00e4renzma\u00dfe",
-            "documents": [
-                {
-                    "title": "AGENTS",
-                    "path": "ethics/AGENTS.md",
-                    "type": "meta",
-                    "keywords": [
-                        "agents",
-                        "ethics",
-                        "meta"
-                    ]
-                },
-                {
-                    "title": "Adaptive Threshold Governance",
-                    "path": "ethics/adaptive_threshold_governance.md",
-                    "type": "framework",
-                    "keywords": [
-                        "governance",
-                        "ethics",
-                        "adaptive",
-                        "threshold",
-                        "\u03c6"
-                    ]
-                }
-            ]
-        },
-        "geophysics": {
-            "name": "Geophysics & Seismology",
-            "path": "geophysics/",
-            "description": "Seismische Schwellenwerte, Subduktions-Resonanz",
-            "documents": [
-                {
-                    "title": "AGENTS",
-                    "path": "geophysics/AGENTS.md",
-                    "type": "meta",
-                    "keywords": [
-                        "agents",
-                        "geophysics",
-                        "meta"
-                    ]
-                },
-                {
-                    "title": "Seismic Early Warning Thresholds",
-                    "path": "geophysics/seismic_early_warning_thresholds.md",
-                    "type": "application",
-                    "keywords": [
-                        "seismic",
-                        "early-warning",
-                        "earthquake",
-                        "threshold"
-                    ]
-                },
-                {
-                    "title": "Subduction Rupture Resonance",
-                    "path": "geophysics/subduction_rupture_resonance.md",
-                    "type": "concept",
-                    "keywords": [
-                        "subduction",
-                        "rupture",
-                        "resonance",
-                        "earthquake"
-                    ]
-                }
-            ]
-        },
-        "socio_ecology": {
-            "name": "Socio-Ecology & Climate",
-            "path": "socio_ecology/",
-            "description": "Amazon Moisture, Urban Heat, Planetary Thresholds, Tipping Points",
-            "documents": [
-                {
-                    "title": "AGENTS",
-                    "path": "socio_ecology/AGENTS.md",
-                    "type": "meta",
-                    "keywords": [
-                        "agents",
-                        "socio-ecology",
-                        "meta"
-                    ]
-                },
-                {
-                    "title": "Amazon Moisture Resilience",
-                    "path": "socio_ecology/amazon_moisture_resilience.md",
-                    "type": "case-study",
-                    "keywords": [
-                        "amazon",
-                        "moisture",
-                        "resilience",
-                        "\u03b2=14.6"
-                    ]
-                },
-                {
-                    "title": "Bio-Cultural Buffering",
-                    "path": "socio_ecology/bio_cultural_buffering.md",
-                    "type": "concept",
-                    "keywords": [
-                        "bio-cultural",
-                        "buffering",
-                        "resilience"
-                    ]
-                },
-                {
-                    "title": "Planetary Threshold Cartography",
-                    "path": "socio_ecology/planetary_threshold_cartography.md",
-                    "type": "framework",
-                    "keywords": [
-                        "planetary",
-                        "cartography",
-                        "climate",
-                        "tipping-points"
-                    ]
-                },
-                {
-                    "title": "Urban Heat Canopy Resonance",
-                    "path": "socio_ecology/urban_heat_canopy_resonance.md",
-                    "type": "case-study",
-                    "keywords": [
-                        "urban-heat",
-                        "\u03b2=16.3",
-                        "outlier",
-                        "extreme"
-                    ]
-                }
-            ]
-        }
-    },
-    "triggers": {
-        "core_concepts": [
-            "UTAC",
-            "Sigillin",
-            "MOR",
-            "Trilayer",
-            "Co-Hypothese",
-            "Unified-Mandala"
-        ],
-        "mathematical": [
-            "\u03b2-field",
-            "\u03b2-Spektrum",
-            "\u0398 (Threshold)",
-            "R (Response)",
-            "\u03c6 (Koh\u00e4renz)",
-            "\u03c8 (Kopplung)",
-            "\u03c3(\u03b2(R-\u0398))",
-            "\u0394AIC",
-            "Meta-Regression"
-        ],
-        "philosophical": [
-            "Fixwerte",
-            "Variabilit\u00e4t",
-            "Bewusstsein",
-            "Erinnerung",
-            "Nullen",
-            "Resonanz",
-            "Emergenz"
-        ],
-        "methodological": [
-            "Falsifizierbarkeit",
-            "Reproduzierbarkeit",
-            "Governance",
-            "Validierung",
-            "Running-Coupling"
-        ],
-        "domains_specific": [
-            "LLM",
-            "Lenski LTEE",
-            "AMOC",
-            "Tipping-Points",
-            "Trauma",
-            "QPO",
-            "Urban-Heat"
-        ]
-    },
-    "quicklinks": {
-        "start_here": [
-            "meta-002",
-            "meta-001",
-            "meta-003"
-        ],
-        "theory_core": [
-            "theory-001",
-            "theory-002",
-            "theory-003"
-        ],
-        "validation": [
-            "valid-001",
-            "valid-003",
-            "valid-008"
-        ],
-        "concepts": [
-            "concept-001",
-            "concept-002",
-            "concept-003"
-        ],
-        "synthesis": [
-            "synth-001",
-            "synth-002",
-            "synth-003"
-        ],
-        "domains_highlights": {
-            "ai": [
-                "ai/anthropic_introspection_validation.md",
-                "ai/llm_emergent_skill.md"
-            ],
-            "biology": [
-                "biology/lenski_citplus_verification.md",
-                "biology/synaptic_release_threshold.md"
-            ],
-            "cognition": [
-                "cognition/adaptive_theta_plasticity.md",
-                "cognition/working_memory_gate.md"
-            ],
-            "ethics": [
-                "ethics/adaptive_threshold_governance.md"
-            ],
-            "geophysics": [
-                "geophysics/seismic_early_warning_thresholds.md"
-            ],
-            "socio_ecology": [
-                "socio_ecology/amazon_moisture_resilience.md",
-                "socio_ecology/urban_heat_canopy_resonance.md"
-            ]
-        }
-    },
-    "status_legend": {
-        "active": "Aktuell in Arbeit / lebendiges Dokument",
-        "stable": "Fertig, aber iterativ verbesserbar",
-        "historical": "Archiviert f\u00fcr Kontext, nicht mehr aktiv",
-        "draft": "Fr\u00fcher Entwurf, noch nicht finalisiert"
-    },
-    "relevance_legend": {
-        "high": "Zentral f\u00fcr das Projekt, h\u00e4ufig referenziert",
-        "medium": "Wichtig, aber spezialisierter",
-        "low": "Historischer Kontext, selten ben\u00f6tigt"
+      "name": "Domain-Spezifische Felder",
+      "description": "6 Fachbereiche mit jeweils eigenem Threshold-Fokus",
+      "color": "#E74C3C",
+      "subdomains": [
+        "ai",
+        "biology",
+        "cognition",
+        "ethics",
+        "geophysics",
+        "socio_ecology"
+      ]
     }
+  },
+  "documents": [
+    {
+      "id": "concept-001",
+      "title": "Resonance Bridge Map",
+      "path": "resonance-bridge-map.md",
+      "category": "concepts",
+      "type": "map",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "resonance",
+        "bridge",
+        "mapping",
+        "domains"
+      ],
+      "description": "Kartographie der Resonanzbrücken zwischen verschiedenen Domänen,\nzeigt wie σ(β(R-Θ)) über AI, Kognition, Biologie, Sozio-Ökologie läuft.\n",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.8",
+        "change_count": 9
+      }
+    },
+    {
+      "id": "concept-002",
+      "title": "Threshold Resonance Atlas",
+      "path": "threshold_resonance_atlas.md",
+      "category": "concepts",
+      "type": "atlas",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "threshold",
+        "atlas",
+        "waypoints",
+        "cartography"
+      ],
+      "description": "Atlas der Threshold-Resonanzen: Cross-Domain Waypoints,\nSolver-Strides, Falsifikations-Ledger.\n",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.2",
+        "change_count": 3
+      }
+    },
+    {
+      "id": "concept-003",
+      "title": "UTF Living Glossary",
+      "path": "utf-living-glossary.md",
+      "category": "concepts",
+      "type": "glossary",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "glossary",
+        "definitions",
+        "R",
+        "Θ",
+        "β",
+        "ζ"
+      ],
+      "description": "Lebendes Glossar, das Symbole (R, Θ, β, ζ) mit Bildsprache verbindet.\n",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "concept-004",
+      "title": "Meta Schwellen Systemtypen",
+      "path": "meta_schwellen_systemtypen.md",
+      "category": "concepts",
+      "type": "taxonomy",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "systemtypen",
+        "taxonomy",
+        "classification"
+      ],
+      "description": "Taxonomie der 5 Schwellenwert-Systemtypen",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.2",
+        "change_count": 3
+      }
+    },
+    {
+      "id": "concept-005",
+      "title": "Meta Threshold Controller",
+      "path": "meta_threshold_controller.md",
+      "category": "concepts",
+      "type": "controller",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "controller",
+        "meta",
+        "threshold",
+        "regulation"
+      ],
+      "description": "Konzept eines Meta-Threshold-Controllers",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.2",
+        "change_count": 3
+      }
+    },
+    {
+      "id": "concept-006",
+      "title": "Threshold Gate Brief",
+      "path": "threshold_gate_brief.md",
+      "category": "concepts",
+      "type": "brief",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "gate",
+        "threshold",
+        "brief"
+      ],
+      "description": "Kurzbeschreibung des Threshold-Gate-Konzepts",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "concept-007",
+      "title": "Robin Semantic Threshold",
+      "path": "robin-semantic-threshold.md",
+      "category": "concepts",
+      "type": "concept",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "robin",
+        "semantic",
+        "threshold"
+      ],
+      "description": "Semantic Threshold in ROBIN-Modell",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "concept-008",
+      "title": "Dynamic ROBIN Boundary",
+      "path": "dynamic-robin-boundary.md",
+      "category": "concepts",
+      "type": "concept",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "robin",
+        "boundary",
+        "dynamic"
+      ],
+      "description": "Dynamische Grenzen im ROBIN-Framework",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.2",
+        "change_count": 3
+      }
+    },
+    {
+      "id": "concept-009",
+      "title": "Semantic Resonance Kernel",
+      "path": "semantic-resonance-kernel.md",
+      "category": "concepts",
+      "type": "kernel",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "semantic",
+        "resonance",
+        "kernel"
+      ],
+      "description": "Kern-Konzept der semantischen Resonanz",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "concept-010",
+      "title": "Gravitationsatem Coupled Threshold",
+      "path": "gravitationsatem-coupled-threshold.md",
+      "category": "concepts",
+      "type": "concept",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "gravitation",
+        "atem",
+        "coupling",
+        "astrophysik"
+      ],
+      "description": "Gekoppelte Schwellenwerte im Gravitationsatem-Modell",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "concept-011",
+      "title": "QPO Membrane Resonance",
+      "path": "qpo_membrane_resonance.md",
+      "category": "concepts",
+      "type": "concept",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "qpo",
+        "membrane",
+        "resonance",
+        "astrophysik"
+      ],
+      "description": "Quasi-Periodic Oscillations als Membran-Resonanz",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "concept-012",
+      "title": "Synthetic Threshold Sweep",
+      "path": "synthetic-threshold-sweep.md",
+      "category": "concepts",
+      "type": "method",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "synthetic",
+        "sweep",
+        "simulation"
+      ],
+      "description": "Methode für synthetische Threshold-Sweeps",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "concept-013",
+      "title": "Wei Integration",
+      "path": "wei_integration.md",
+      "category": "concepts",
+      "type": "integration",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "wei",
+        "llm",
+        "palm",
+        "integration"
+      ],
+      "description": "Integration von Wei's PaLM-Laterne ins Mandala",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.4",
+        "change_count": 5
+      }
+    },
+    {
+      "id": "concept-014",
+      "title": "UTF Phase One Field Journal",
+      "path": "utf-phase-one-field-journal.md",
+      "category": "concepts",
+      "type": "journal",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "utf",
+        "phase",
+        "journal",
+        "field-notes"
+      ],
+      "description": "Feldtagebuch der UTF Phase 1",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "concept-015",
+      "title": "V01 Resonance Readiness",
+      "path": "V01-Resonance-Readiness.md",
+      "category": "concepts",
+      "type": "assessment",
+      "status": "historical",
+      "relevance": "low",
+      "keywords": [
+        "resonance",
+        "readiness",
+        "v01"
+      ],
+      "description": "Resonanz-Bereitschafts-Assessment Version 0.1",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "concept-016",
+      "title": "Theorie- und Empirie-Abschnitte",
+      "path": "Theorie- und Empirie-Abschnitte.md",
+      "category": "concepts",
+      "type": "structure",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "theorie",
+        "empirie",
+        "structure",
+        "sections"
+      ],
+      "description": "Strukturierung von Theorie- und Empirie-Abschnitten",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.3",
+        "change_count": 4
+      }
+    },
+    {
+      "id": "concept-017",
+      "title": "Sigillin Schema v0.2.0",
+      "path": "sigillin/sigillin_schema.yaml",
+      "category": "concepts",
+      "type": "schema",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "sigillin",
+        "schema",
+        "crep",
+        "logistic"
+      ],
+      "description": "Canonical specification of the four Sigillin classes (Order, Dynamics, Meaning, Shadow). Captures the logistic quartet (R, Θ, β, ζ(R)) and CREP metrics for every sigil so σ(β(R-Θ)) activations can be validated.",
+      "temporal": {
+        "created": "2025-12-05T10:30:00+00:00",
+        "modified": "2025-12-05T10:30:00+00:00",
+        "version": "0.2.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "concept-018",
+      "title": "Sigillin Example Set α",
+      "path": "sigillin/examples",
+      "category": "concepts",
+      "type": "exemplar",
+      "status": "active",
+      "relevance": "medium",
+      "keywords": [
+        "sigillin",
+        "examples",
+        "crep",
+        "tri-layer"
+      ],
+      "description": "Quartet of reference sigils (Order, Dynamics, Meaning, Shadow) illustrating how indices, simulations, codex entries, and outlier audits map their thresholds. Provides CREP calibration anchors for the parser.",
+      "temporal": {
+        "created": "2025-12-05T10:45:00+00:00",
+        "modified": "2025-12-05T11:15:00+00:00",
+        "version": "0.1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "meta-001",
+      "title": "Metareflexion",
+      "path": "Metareflexion.txt",
+      "category": "meta",
+      "type": "reflection",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "fixwerte",
+        "variabilität",
+        "bewusstsein",
+        "erinnerung",
+        "nullen",
+        "sigillin"
+      ],
+      "description": "Dialog zwischen Johann und MSCopilot über Fixwerte vs. Variabilität,\nBewusstsein als Auswahl, und die Entstehung von Sigillin als\nsemantisches Gedächtnissystem.\n",
+      "temporal": {
+        "created": "2025-11-06T09:47:45+01:00",
+        "modified": "2025-11-06T10:20:16+01:00",
+        "version": "1.2",
+        "change_count": 3
+      }
+    },
+    {
+      "id": "meta-002",
+      "title": "Rekalibrierung Abschluss",
+      "path": "Rekalibrierung_Abschlus.txt",
+      "category": "meta",
+      "type": "synthesis",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "co-hypothese",
+        "unser-weg",
+        "roadmap",
+        "trilayer",
+        "mor"
+      ],
+      "description": "Finale Synthese von Claude, Gemini, ChatGPT5, Aeon, Mistral über\nden Weg nach vorn: UTAC + Sigillin als Co-Hypothese.\n",
+      "temporal": {
+        "created": "2025-11-06T10:16:29+01:00",
+        "modified": "2025-11-06T10:16:29+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "meta-003",
+      "title": "NextStep",
+      "path": "NextStep.txt",
+      "category": "meta",
+      "type": "roadmap",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "governance",
+        "falsifikation",
+        "v1.2",
+        "meta-regression"
+      ],
+      "description": "Gemini's finale Synthese mit dem Wegplan für UTAC v1.2:\nMeta-Regression, Outlier-Analyse, RG-Fluss.\n",
+      "temporal": {
+        "created": "2025-11-05T23:11:57+01:00",
+        "modified": "2025-11-06T09:47:45+01:00",
+        "version": "1.6",
+        "change_count": 7
+      }
+    },
+    {
+      "id": "meta-004",
+      "title": "CLAUDE_CODE_SESSION",
+      "path": "CLAUDE_CODE_SESSION.md",
+      "category": "meta",
+      "type": "session",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": [
+        "session",
+        "claude",
+        "development"
+      ],
+      "description": "Session-Notizen aus der Claude Code Entwicklung",
+      "temporal": {
+        "created": "2025-11-05T21:22:07+00:00",
+        "modified": "2025-11-05T21:22:07+00:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "meta-014",
+      "title": "CLAUDE_CODE_SESSION_AFTER_ACTION",
+      "path": "CLAUDE_CODE_SESSION_AFTER_ACTION.md",
+      "category": "meta",
+      "type": "session-addendum",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "session",
+        "after-action",
+        "resonance",
+        "utac-v1.1"
+      ],
+      "description": "Addendum zur Claude-Code-Sitzung mit aktualisiertem Aufgabenstatus, Feldtyp-Resultaten und Restimpedanzen.",
+      "temporal": {
+        "created": "2025-11-07T08:00:00+01:00",
+        "modified": "2025-11-07T08:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "meta-005",
+      "title": "EXECUTIVE_SUMMARY_SESSION",
+      "path": "EXECUTIVE_SUMMARY_SESSION.md",
+      "category": "meta",
+      "type": "session",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": [
+        "session",
+        "summary",
+        "overview"
+      ],
+      "description": "Executive Summary einer Arbeitssitzung",
+      "temporal": {
+        "created": "2025-11-05T21:22:07+00:00",
+        "modified": "2025-11-05T21:22:07+00:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "meta-006",
+      "title": "FINALISIERUNG_SESSION",
+      "path": "FINALISIERUNG_SESSION.md",
+      "category": "meta",
+      "type": "session",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": [
+        "session",
+        "finalisierung",
+        "completion"
+      ],
+      "description": "Session-Notizen zur Finalisierung",
+      "temporal": {
+        "created": "2025-11-05T21:22:07+00:00",
+        "modified": "2025-11-05T21:22:07+00:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "meta-007",
+      "title": "Sigillin System Definition",
+      "path": "Sigillin_System_Definition.md",
+      "category": "meta",
+      "type": "system_definition",
+      "status": "active",
+      "relevance": "critical",
+      "keywords": [
+        "sigillin",
+        "trilayer",
+        "ordnungs-sigillin",
+        "bedeutungs-sigillin",
+        "semantisches-gedächtnis",
+        "trifunktionalität",
+        "ontologie",
+        "meta-ebene",
+        "poetik",
+        "symbolik",
+        "resonanz",
+        "utac-analogie",
+        "aeon-johann",
+        "mor",
+        "ai-sigill-index"
+      ],
+      "description": "Fundamentale Systemdefinition des Sigillin-Systems nach Johann Römer. Unterscheidet Ordnungs-Sigillin (Navigation) vs. Bedeutungs-Sigillin (Semantik). Definiert das semantisch-neuronale Sigillin-Netz, Trifunktionalität (Struktur + Bedeutung + Inhalt + Meta), und die UTAC-Analogien. Inspiriert durch die Aeon-Johann-Schnittstelle bei OpenAI. BEDEUTUNGS-SIGILLIN: Bei Änderung NEU anlegen, Altes archivieren!",
+      "temporal": {
+        "created": "2025-11-06T10:47:34+00:00",
+        "modified": "2025-11-06T10:47:34+00:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "meta-008",
+      "title": "Finalize Sigillin Neuro Kosmos Bridge",
+      "path": "FinalizeSigillin_Neuro_KosmosBridge.txt",
+      "category": "meta",
+      "type": "plan",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "sigillin",
+        "neuro",
+        "kosmos",
+        "bridge",
+        "finalisierung"
+      ],
+      "description": "Plan zur Finalisierung der Sigillin-Neuro-Kosmos-Brücke",
+      "temporal": {
+        "created": "2025-11-06T12:17:33+01:00",
+        "modified": "2025-11-06T12:44:50+01:00",
+        "version": "1.3",
+        "change_count": 4
+      }
+    },
+    {
+      "id": "meta-009",
+      "title": "Sigillin Neuro Membran Modell Plan",
+      "path": "Sigillin_Neuro_Membran_Modell_Plan.txt",
+      "category": "meta",
+      "type": "plan",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "sigillin",
+        "neuro",
+        "membran",
+        "modell",
+        "plan"
+      ],
+      "description": "Planungsdokument für Sigillin-Neuro-Membran-Modell-Integration",
+      "temporal": {
+        "created": "2025-11-06T13:37:32+01:00",
+        "modified": "2025-11-06T13:37:32+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "meta-010",
+      "title": "AGENTS (Root)",
+      "path": "AGENTS.md",
+      "category": "meta",
+      "type": "meta",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "agents",
+        "meta",
+        "overview"
+      ],
+      "description": "Root-Level AGENTS Übersicht",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "meta-015",
+      "title": "UTAC v2 Gap Matrix (Trilayer)",
+      "path": "utac_v2_gap_matrix.yaml",
+      "category": "meta",
+      "type": "readiness-map",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "utac",
+        "readiness",
+        "gap",
+        "logistics"
+      ],
+      "description": "Gap-Matrix des Juni-Scans: fasst vorhandene Laternen, σ(β(R-Θ)) Snapshot und Implementationspfade zusammen.",
+      "temporal": {
+        "created": "2026-06-09T00:00:00Z",
+        "modified": "2026-06-09T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 0
+      },
+      "references": [
+        "utac_v2_gap_matrix.md",
+        "utac_v2_gap_matrix.json"
+      ]
+    },
+    {
+      "id": "meta-016",
+      "title": "Road to V3 Activation Audit (Trilayer)",
+      "path": "RoadToV.3/activation_audit.yaml",
+      "category": "meta",
+      "type": "activation-audit",
+      "status": "primed",
+      "relevance": "high",
+      "keywords": [
+        "utac v3",
+        "activation",
+        "roadmap",
+        "logistics"
+      ],
+      "description": "Audit der RoadToV.3-Laternen: dokumentiert vorhandene Systeme, offene Daten-/Simulator-Hooks und σ(β(R-Θ)) für die V3-Aktivierung.",
+      "temporal": {
+        "created": "2026-08-22T12:00:00Z",
+        "modified": "2026-08-22T12:00:00Z",
+        "version": "0.1.0",
+        "change_count": 0
+      },
+      "references": [
+        "RoadToV.3/activation_audit.md",
+        "RoadToV.3/activation_audit.json"
+      ]
+    },
+    {
+      "id": "synth-001",
+      "title": "Codex Feedback (YAML)",
+      "path": "codexfeedback.yaml",
+      "category": "synthesis",
+      "type": "feedback-yaml",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "codex",
+        "feedback",
+        "trilayer",
+        "yaml"
+      ],
+      "description": "YAML-Layer des Codex Feedback: Struktur & Parameter.\nTeil der Trilayer-Aktivierung (YAML-JSON-MD).\n",
+      "temporal": {
+        "created": "2025-11-05T21:22:07+00:00",
+        "modified": "2025-11-05T21:22:07+00:00",
+        "version": "1.49",
+        "change_count": 50
+      }
+    },
+    {
+      "id": "synth-002",
+      "title": "Codex Feedback (JSON)",
+      "path": "codexfeedback.json",
+      "category": "synthesis",
+      "type": "feedback-json",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "codex",
+        "feedback",
+        "trilayer",
+        "json",
+        "agents"
+      ],
+      "description": "JSON-Layer des Codex Feedback: Agentenschnittstelle.\nMaschinenlesbare Variante für AI-Systeme.\n",
+      "temporal": {
+        "created": "2025-11-05T21:22:07+00:00",
+        "modified": "2025-11-05T21:22:07+00:00",
+        "version": "1.49",
+        "change_count": 50
+      }
+    },
+    {
+      "id": "synth-003",
+      "title": "Codex Feedback (MD)",
+      "path": "codexfeedback.md",
+      "category": "synthesis",
+      "type": "feedback-md",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "codex",
+        "feedback",
+        "trilayer",
+        "markdown"
+      ],
+      "description": "Markdown-Layer des Codex Feedback: Menschenfreundliche Erzählung.\nDokumentiert Progress mit Formalismus, Empirie und Poetik.\n",
+      "temporal": {
+        "created": "2025-11-05T21:22:07+00:00",
+        "modified": "2025-11-05T21:22:07+00:00",
+        "version": "1.49",
+        "change_count": 50
+      }
+    },
+    {
+      "id": "synth-004",
+      "title": "README",
+      "path": "README.md",
+      "category": "synthesis",
+      "type": "readme",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "readme",
+        "overview",
+        "mandate",
+        "trilayer"
+      ],
+      "description": "Living Documentation Tapestry: RepoPlan 2.0 Mandate.\nBeschreibt das Tri-Layer-Cadence-Prinzip.\n",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.2",
+        "change_count": 3
+      }
+    },
+    {
+      "id": "synth-005",
+      "title": "Papers Index (Trilayer)",
+      "path": "papers_index.md",
+      "category": "synthesis",
+      "type": "index-ordnungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "papers",
+        "pdfs",
+        "index",
+        "ordnungs-sigillin",
+        "trilayer"
+      ],
+      "description": "Ordnungs-Sigillin für alle 38 PDF-Dokumente im seed/ Verzeichnis.\nTrilayer-Index (YAML + JSON + MD) für Navigation in der PDF-Bibliothek.\nReferenziert papers_index.{yaml,json,md}.",
+      "temporal": {
+        "created": "2025-11-06T15:00:00+01:00",
+        "modified": "2025-11-06T15:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "references": [
+        "papers_index.yaml",
+        "papers_index.json",
+        "papers_index.md"
+      ]
+    },
+    {
+      "id": "synth-006",
+      "title": "ArchivSucheUTAC Index (Trilayer)",
+      "path": "ArchivSucheUTAC/README.md",
+      "category": "synthesis",
+      "type": "index-ordnungs-sigillin",
+      "status": "active",
+      "relevance": "medium",
+      "keywords": [
+        "archiv",
+        "suche",
+        "utac",
+        "gemini",
+        "index",
+        "ordnungs-sigillin"
+      ],
+      "description": "Ordnungs-Sigillin für ArchivSucheUTAC-Verzeichnis.\nEnthält Geminis Archiv-Suchen und AI-Reaktionen (19 Dateien).\nReferenziert archiv_suche_utac_index.{yaml,json,md}.",
+      "temporal": {
+        "created": "2025-11-06T14:00:00+01:00",
+        "modified": "2025-11-06T14:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "references": [
+        "ArchivSucheUTAC/archiv_suche_utac_index.yaml",
+        "ArchivSucheUTAC/archiv_suche_utac_index.json",
+        "ArchivSucheUTAC/archiv_suche_utac_index.md"
+      ]
+    },
+    {
+      "id": "synth-007",
+      "title": "Sources Index (Trilayer)",
+      "path": "sources_index.md",
+      "category": "synthesis",
+      "type": "index-ordnungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "sources",
+        "references",
+        "citations",
+        "bibliography",
+        "ordnungs-sigillin",
+        "trilayer"
+      ],
+      "description": "Ordnungs-Sigillin für alle externen Quellen, Referenzen und Datenquellen.\n11 Kernquellen aus 6 Domänen (AI, Biology, Climate, Geophysics, Cognition, Physics).\nReferenziert sources_index.{yaml,json,md}. Zitations-Management für UTAC-Paper.",
+      "temporal": {
+        "created": "2025-11-06T16:00:00+01:00",
+        "modified": "2025-11-06T16:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      },
+      "references": [
+        "sources_index.yaml",
+        "sources_index.json",
+        "sources_index.md"
+      ],
+      "highlights": [
+        "Wei et al. (2022) - Emergent Abilities (β=3.47)",
+        "Lenski LTEE (2008) - Cit+ Evolution",
+        "Lenton (2008) - Climate Tipping Points",
+        "Verhulst (1838) - Logistische Funktion"
+      ]
+    },
+    {
+      "id": "synth-008",
+      "title": "System Meaning Membrane (Trilayer)",
+      "path": "bedeutungssigillin/system/system_meaning_map.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "system",
+        "automation",
+        "codex",
+        "metaquest"
+      ],
+      "description": "Bedeutungs-Sigillin für die Systemebene: kartiert Makefile-, Codex-, Schema- und Metaquest-Resonanzen; benennt Lücken (Index-Automatisierung, Codex-Guards, Telemetrie).",
+      "temporal": {
+        "created": "2025-12-05T00:00:00Z",
+        "modified": "2025-12-07T00:00:00Z",
+        "version": "0.3.0",
+        "change_count": 2
+      },
+      "references": [
+        "bedeutungssigillin/system/system_meaning_map.json",
+        "bedeutungssigillin/system/system_meaning_map.md"
+      ]
+    },
+    {
+      "id": "synth-009",
+      "title": "System Shadow Membrane (Trilayer)",
+      "path": "shadow_sigillin/system/system_shadow_map.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "system",
+        "codex-guard",
+        "index-drift",
+        "metaquest"
+      ],
+      "description": "Schatten-Sigillin zur Frühwarnung vor Index-Drift, fehlenden Codex-Updates und Metaquest-Paritätslücken; enthält Playbooks und Monitoring-Metriken.",
+      "temporal": {
+        "created": "2025-12-05T00:00:00Z",
+        "modified": "2025-12-07T00:00:00Z",
+        "version": "0.3.0",
+        "change_count": 2
+      },
+      "references": [
+        "shadow_sigillin/system/system_shadow_map.json",
+        "shadow_sigillin/system/system_shadow_map.md"
+      ]
+    },
+    {
+      "id": "synth-010",
+      "title": "Wissenschaftsprojekt Meaning Membrane (Trilayer)",
+      "path": "bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "kampagne",
+        "manuskript",
+        "metaquest"
+      ],
+      "description": "Bedeutungs-Sigillin für Manuskript- und Kampagnenarbeit; verknüpft BreakPoint-Rituale, Status-Matrix, Metaquest-Beacon und offene Resonanzlücken.",
+      "temporal": {
+        "created": "2025-12-05T00:00:00Z",
+        "modified": "2025-12-07T00:00:00Z",
+        "version": "0.3.0",
+        "change_count": 2
+      },
+      "references": [
+        "bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.json",
+        "bedeutungssigillin/wissenschaftsprojekt/wissenschaftsprojekt_meaning_map.md"
+      ]
+    },
+    {
+      "id": "synth-011",
+      "title": "Wissenschaftsprojekt Shadow Membrane (Trilayer)",
+      "path": "shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "kampagne",
+        "metaquest"
+      ],
+      "description": "Schatten-Sigillin zur Kampagnen-Triage (τ*-Gaps, BreakPoint-Verstöße, Metaquest-Parität, Storyboard-Drift).",
+      "temporal": {
+        "created": "2025-12-05T00:00:00Z",
+        "modified": "2025-12-07T00:00:00Z",
+        "version": "0.3.0",
+        "change_count": 2
+      },
+      "references": [
+        "shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.json",
+        "shadow_sigillin/wissenschaftsprojekt/wissenschaftsprojekt_shadow_map.md"
+      ]
+    },
+    {
+      "id": "theory-001",
+      "title": "FinalerPlan",
+      "path": "FinalerPlan.txt",
+      "category": "theory",
+      "type": "plan",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "governance",
+        "authorship",
+        "metrics",
+        "reproduce",
+        "utac"
+      ],
+      "description": "Der finale Governance-Paket-Plan mit AUTHORSHIP.md, METRICS.md,\nREPRODUCE.md für die arXiv-Submission.\n",
+      "temporal": {
+        "created": "2025-11-03T15:33:06+01:00",
+        "modified": "2025-11-04T20:35:30+01:00",
+        "version": "1.12",
+        "change_count": 13
+      }
+    },
+    {
+      "id": "theory-002",
+      "title": "AI-Evolutionsprinzip",
+      "path": "AI-Evulutionsprinziep.txt",
+      "category": "theory",
+      "type": "discourse",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "ai",
+        "evolution",
+        "emergence",
+        "β-field"
+      ],
+      "description": "Diskurs über evolutionäre Prinzipien in AI-Systemen",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "theory-003",
+      "title": "Diskurs Klimamodul",
+      "path": "Diskurs Klimamodul.txt",
+      "category": "theory",
+      "type": "discourse",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "klima",
+        "amoc",
+        "tipping-points",
+        "climate"
+      ],
+      "description": "Diskurs über Klimaschwellenwerte und UTAC-Integration",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "theory-004",
+      "title": "Diskurs Psyche-AI Kohärenzen",
+      "path": "Diskurs_V1_Psyche_AI_koheränzen.txt",
+      "category": "theory",
+      "type": "discourse",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "psyche",
+        "ai",
+        "kohärenz",
+        "consciousness",
+        "φ"
+      ],
+      "description": "Diskurs über Kohärenz zwischen Psyche und AI-Systemen",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.2",
+        "change_count": 3
+      }
+    },
+    {
+      "id": "theory-005",
+      "title": "Transdisziplinärer Schwellenfeld-Simulator",
+      "path": "Transdisziplinärer Schwellenfeld-Simulator--Claude.txt",
+      "category": "theory",
+      "type": "concept",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "simulator",
+        "threshold",
+        "transdisciplinary"
+      ],
+      "description": "Konzept für einen universellen Threshold-Simulator",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "theory-006",
+      "title": "FinalDevTalks",
+      "path": "FinalDevTalks.txt",
+      "category": "theory",
+      "type": "discussion",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "development",
+        "discussion",
+        "implementation"
+      ],
+      "description": "Finale Entwicklungsgespräche",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "theory-007",
+      "title": "Brainstorm",
+      "path": "Brainstorm.txt",
+      "category": "theory",
+      "type": "brainstorm",
+      "status": "historical",
+      "relevance": "low",
+      "keywords": [
+        "brainstorm",
+        "ideas",
+        "exploration"
+      ],
+      "description": "Frühe Brainstorming-Sitzung",
+      "temporal": {
+        "created": "2025-11-05T18:41:14+01:00",
+        "modified": "2025-11-05T18:41:14+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "theory-008",
+      "title": "Brainstorm2",
+      "path": "Brainstorm2.txt",
+      "category": "theory",
+      "type": "brainstorm",
+      "status": "historical",
+      "relevance": "low",
+      "keywords": [
+        "brainstorm",
+        "ideas",
+        "exploration"
+      ],
+      "description": "Zweite Brainstorming-Sitzung",
+      "temporal": {
+        "created": "2025-11-05T19:47:18+01:00",
+        "modified": "2025-11-05T19:47:18+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "theory-009",
+      "title": "Entropie als Geometrischer Verschnitt",
+      "path": "theory/entropy_geometric_waste/entropy_geometric_waste.yaml",
+      "category": "theory",
+      "type": "theory",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "entropie",
+        "topologie",
+        "kubus-spirale",
+        "bekenstein-hawking",
+        "utac"
+      ],
+      "description": "Trilayer-Modul: Entropie als Verschnitt bei Diskret→Kontinuierlich, zählt topologische Defekte (Voids/TEE) und koppelt S_BH an Fuzzball-Degeneracy.",
+      "temporal": {
+        "created": "2026-12-05T00:00:00Z",
+        "modified": "2026-12-05T00:00:00Z",
+        "version": "1.0.0",
+        "change_count": 0
+      },
+      "references": [
+        "theory/entropy_geometric_waste/entropy_geometric_waste.json",
+        "theory/entropy_geometric_waste/entropy_geometric_waste.md"
+      ]
+    },
+    {
+      "id": "theory-010",
+      "title": "Morphological Computing als regenerative Hardware",
+      "path": "theory/hypothese_morphological_computing/hypothese_morphological_computing.yaml",
+      "category": "theory",
+      "type": "theory",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "morphological computing",
+        "regenerative hardware",
+        "broken-ram",
+        "entropy-recycling",
+        "utac"
+      ],
+      "description": "Morph-FIT Trilayer: Regenerative Computing koppelt Symbolic Pre-Calc an Morph-Sweeps (β=37.6), koppelt Mensch↔AI und dämpft Broken-RAM via Wärme-Recycling.",
+      "temporal": {
+        "created": "2026-12-06T00:00:00Z",
+        "modified": "2025-11-22T13:14:14Z",
+        "version": "1.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "theory/hypothese_morphological_computing/hypothese_morphological_computing.json",
+        "theory/hypothese_morphological_computing/hypothese_morphological_computing.md"
+      ]
+    },
+    {
+      "id": "theory-011",
+      "title": "Quantenaliasing als dimensionaler Schatten",
+      "path": "theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.yaml",
+      "category": "theory",
+      "type": "theory",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "quantum aliasing",
+        "planck-sampling",
+        "dimensional oscillation",
+        "type-6",
+        "utac"
+      ],
+      "description": "Alias-These v1.1: Superposition = Wahrnehmungs-Aliasing einer deterministischen 0D→1D→…-Oszillation; Timeless-Link (’t Hooft) und Type-6 Trigger via Alias-Frequenzen.",
+      "temporal": {
+        "created": "2026-12-06T00:00:00Z",
+        "modified": "2025-11-22T13:14:14Z",
+        "version": "1.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.json",
+        "theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.md"
+      ]
+    },
+    {
+      "id": "theory-012",
+      "title": "The Mirror Machine – Symbolic SuperpositionComputer",
+      "path": "theory/concept_the_mirror_machine/concept_the_mirror_machine.yaml",
+      "category": "theory",
+      "type": "theory",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "symbolic pre-calculation",
+        "mutation",
+        "falsifikation",
+        "sigillin",
+        "utac"
+      ],
+      "description": "Auditorium→Mutation→Falsifikation Loop: generiert willkürliche Thesen aus Sigillin, testet gegen Oxfam/Aletheia und behält überlebende Hypothesen als gespiegelt-symmetrischen SuperpositionComputer.",
+      "temporal": {
+        "created": "2025-11-22T13:14:14Z",
+        "modified": "2025-11-22T13:14:14Z",
+        "version": "1.0.0",
+        "change_count": 0
+      },
+      "references": [
+        "theory/concept_the_mirror_machine/concept_the_mirror_machine.json",
+        "theory/concept_the_mirror_machine/concept_the_mirror_machine.md"
+      ]
+    },
+    {
+      "id": "valid-001",
+      "title": "Validierung2",
+      "path": "Validierung2.txt",
+      "category": "validation",
+      "type": "validation",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "validierung",
+        "empirik",
+        "β-werte",
+        "meta-regression"
+      ],
+      "description": "Mistral's Metareflexion & Synthese: Was wir wissen, was wir nicht\nwissen, und die nächsten Schritte für UTAC 1.2.\n",
+      "temporal": {
+        "created": "2025-11-05T20:31:04+01:00",
+        "modified": "2025-11-05T22:07:17+01:00",
+        "version": "1.2",
+        "change_count": 3
+      }
+    },
+    {
+      "id": "valid-002",
+      "title": "Validierung",
+      "path": "Validierung.txt",
+      "category": "validation",
+      "type": "validation",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "validierung",
+        "testing",
+        "verification"
+      ],
+      "description": "Erste Validierungsdokument",
+      "temporal": {
+        "created": "2025-11-05T19:47:18+01:00",
+        "modified": "2025-11-05T19:47:18+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "valid-003",
+      "title": "EmpirischerBeleg",
+      "path": "EmpirischerBeleg.txt",
+      "category": "validation",
+      "type": "evidence",
+      "status": "stable",
+      "relevance": "high",
+      "keywords": [
+        "empirik",
+        "beleg",
+        "data",
+        "evidence"
+      ],
+      "description": "Empirische Belege für UTAC-Hypothesen",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "valid-004",
+      "title": "Feinschliff",
+      "path": "Feinschliff.txt",
+      "category": "validation",
+      "type": "refinement",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "refinement",
+        "polishing",
+        "finalization"
+      ],
+      "description": "Feinschliff-Arbeiten an der Theorie",
+      "temporal": {
+        "created": "2025-11-05T10:25:47+01:00",
+        "modified": "2025-11-05T14:13:47+01:00",
+        "version": "1.5",
+        "change_count": 6
+      }
+    },
+    {
+      "id": "valid-008",
+      "title": "Feinschliff Addendum v1.1",
+      "path": "Feinschliff_Addendum_v1.1.txt",
+      "category": "validation",
+      "type": "update",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "feinschliff",
+        "update",
+        "field-types",
+        "meta-regression"
+      ],
+      "description": "Addendum mit ANOVA-Bestätigung der Feldtypologie, korrigierter Meta-Regression und verbleibenden Validierungsaufgaben für UTAC v1.1.",
+      "temporal": {
+        "created": "2025-11-07T08:05:00+01:00",
+        "modified": "2025-11-07T08:05:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "valid-005",
+      "title": "Reaktivierung",
+      "path": "Reaktivierung.txt",
+      "category": "validation",
+      "type": "process",
+      "status": "historical",
+      "relevance": "low",
+      "keywords": [
+        "reaktivierung",
+        "restart",
+        "reactivation"
+      ],
+      "description": "Prozess-Dokumentation zur Reaktivierung",
+      "temporal": {
+        "created": "2025-11-05T17:43:34+01:00",
+        "modified": "2025-11-05T17:43:34+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "valid-006",
+      "title": "Rekalibrierung",
+      "path": "Rekalibrierung.txt",
+      "category": "validation",
+      "type": "calibration",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": [
+        "rekalibrierung",
+        "calibration",
+        "adjustment"
+      ],
+      "description": "Frühere Rekalibrierungs-Dokumentation",
+      "temporal": {
+        "created": "2025-11-05T17:43:34+01:00",
+        "modified": "2025-11-05T17:43:34+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "valid-007",
+      "title": "ReaktionAI-AeonundJoh",
+      "path": "ReaktionAI-AeonundJoh.txt",
+      "category": "validation",
+      "type": "dialogue",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": [
+        "aeon",
+        "johann",
+        "dialogue",
+        "reaction"
+      ],
+      "description": "Dialog zwischen Aeon und Johann über Validierung",
+      "temporal": {
+        "created": "2025-11-03T13:28:37+01:00",
+        "modified": "2025-11-03T13:28:37+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "validation-001",
+      "title": "AI_Reaktion_Gem_Suche",
+      "path": "AI_Reaktion_Gem_Suche.txt",
+      "category": "validation",
+      "type": "search",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "gemini",
+        "suche",
+        "validierung",
+        "ai-reaktion"
+      ],
+      "description": "AI-Reaktionen auf Geminis Archiv-Suche",
+      "temporal": {
+        "created": "2025-11-06T13:51:53+01:00",
+        "modified": "2025-11-06T14:33:50+01:00",
+        "version": "1.1",
+        "change_count": 2
+      }
+    },
+    {
+      "id": "validation-002",
+      "title": "Geminis Suche 1",
+      "path": "Geminis Suche!.txt",
+      "category": "validation",
+      "type": "search",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": [
+        "gemini",
+        "suche",
+        "archiv",
+        "utac"
+      ],
+      "description": "Geminis Archiv-Suche Iteration 1",
+      "temporal": {
+        "created": "2025-11-06T14:33:50+01:00",
+        "modified": "2025-11-06T14:33:50+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "validation-003",
+      "title": "Geminis Suche 2",
+      "path": "Geminis Suche2!.txt",
+      "category": "validation",
+      "type": "search",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": [
+        "gemini",
+        "suche",
+        "archiv",
+        "utac"
+      ],
+      "description": "Geminis Archiv-Suche Iteration 2",
+      "temporal": {
+        "created": "2025-11-06T14:33:50+01:00",
+        "modified": "2025-11-06T14:33:50+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "validation-004",
+      "title": "Geminis Suche 3",
+      "path": "Geminis Suche3!.txt",
+      "category": "validation",
+      "type": "search",
+      "status": "historical",
+      "relevance": "medium",
+      "keywords": [
+        "gemini",
+        "suche",
+        "archiv",
+        "utac"
+      ],
+      "description": "Geminis Archiv-Suche Iteration 3",
+      "temporal": {
+        "created": "2025-11-06T14:33:50+01:00",
+        "modified": "2025-11-06T14:33:50+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "meta-011",
+      "title": "EndorsementarXiv",
+      "path": "EndorsementarXiv.pdf",
+      "category": "meta",
+      "type": "communication",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "arxiv",
+        "endorsement",
+        "submission",
+        "governance"
+      ],
+      "description": "Aggregierte Übersicht zu den drei aktiven arXiv-Endorsement-Anfragen.",
+      "temporal": {
+        "created": "2025-11-07T00:00:00+01:00",
+        "modified": "2025-11-07T00:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "meta-012",
+      "title": "Email arXiv End",
+      "path": "Email_arXiv_End.pdf",
+      "category": "meta",
+      "type": "communication",
+      "status": "active",
+      "relevance": "medium",
+      "keywords": [
+        "arxiv",
+        "communication",
+        "submission"
+      ],
+      "description": "Finale E-Mail an das arXiv-Team inklusive Sigillin-Verweise.",
+      "temporal": {
+        "created": "2025-11-07T00:00:00+01:00",
+        "modified": "2025-11-07T00:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "meta-013",
+      "title": "abstract arXiv",
+      "path": "abstract_arXiv.pdf",
+      "category": "meta",
+      "type": "abstract",
+      "status": "stable",
+      "relevance": "medium",
+      "keywords": [
+        "arxiv",
+        "abstract",
+        "doi"
+      ],
+      "description": "Abschließende Abstract-Fassung für die arXiv-Einreichung.",
+      "temporal": {
+        "created": "2025-11-07T00:00:00+01:00",
+        "modified": "2025-11-07T00:00:00+01:00",
+        "version": "1.0",
+        "change_count": 1
+      }
+    },
+    {
+      "id": "synth-012",
+      "title": "Metaquest System Beacon (Trilayer)",
+      "path": "bedeutungssigillin/system/metaquest/metaquest_system_map.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "system",
+        "telemetry"
+      ],
+      "description": "Bedeutungs-Sigillin für Metaquest-Systemintegration: Paritätsbrief, Telemetrie und Index-Synchronisation werden hier kartiert.",
+      "temporal": {
+        "created": "2025-12-07T00:00:00Z",
+        "modified": "2025-12-08T00:00:00Z",
+        "version": "0.2.0",
+        "change_count": 2
+      },
+      "references": [
+        "bedeutungssigillin/system/metaquest/metaquest_system_map.json",
+        "bedeutungssigillin/system/metaquest/metaquest_system_map.md"
+      ]
+    },
+    {
+      "id": "synth-013",
+      "title": "Metaquest System Shadow Guard (Trilayer)",
+      "path": "shadow_sigillin/system/metaquest/metaquest_system_shadow.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "system",
+        "parity"
+      ],
+      "description": "Schatten-Sigillin für Metaquest-Systemrisiken: Telemetrieausfälle, fehlende Paritätsbriefe und Index-Drift werden hier alarmiert.",
+      "temporal": {
+        "created": "2025-12-07T00:00:00Z",
+        "modified": "2025-12-08T00:00:00Z",
+        "version": "0.2.0",
+        "change_count": 2
+      },
+      "references": [
+        "shadow_sigillin/system/metaquest/metaquest_system_shadow.json",
+        "shadow_sigillin/system/metaquest/metaquest_system_shadow.md"
+      ]
+    },
+    {
+      "id": "synth-014",
+      "title": "Metaquest Kampagnen-Beacon (Trilayer)",
+      "path": "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "kampagne",
+        "parity"
+      ],
+      "description": "Bedeutungs-Sigillin für Metaquest-Kampagne: Paritätsbrief, Storyboard, Endorsement-Freshness und BreakPoint-Rituale.",
+      "temporal": {
+        "created": "2025-12-07T00:00:00Z",
+        "modified": "2025-12-08T00:00:00Z",
+        "version": "0.2.0",
+        "change_count": 2
+      },
+      "references": [
+        "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.json",
+        "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md"
+      ]
+    },
+    {
+      "id": "synth-015",
+      "title": "Metaquest Kampagnen-Shadow (Trilayer)",
+      "path": "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "kampagne"
+      ],
+      "description": "Schatten-Sigillin für Metaquest-Kampagnenrisiken: Paritätslücken, Storyboard-Drift und Governance-Verzug.",
+      "temporal": {
+        "created": "2025-12-07T00:00:00Z",
+        "modified": "2025-12-08T00:00:00Z",
+        "version": "0.2.0",
+        "change_count": 2
+      },
+      "references": [
+        "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.json",
+        "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow.md"
+      ]
+    },
+    {
+      "id": "synth-016",
+      "title": "Sentinel-Fall Kranich Linum 2025 (Trilayer)",
+      "path": "bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "sentinel",
+        "linum",
+        "socio-ecology"
+      ],
+      "description": "Bedeutungs-Sigillin für das ökologische Hoch-β-Ereignis im Linumer Teichland. Verknüpft Datenaufnahme, Analyseaufträge und Kampagnenkommunikation mit dem UTAC-Netz.",
+      "temporal": {
+        "created": "2025-12-08T00:00:00Z",
+        "modified": "2025-12-08T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.json",
+        "bedeutungssigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md"
+      ]
+    },
+    {
+      "id": "synth-017",
+      "title": "Sentinel-Shadow Kranich Linum 2025 (Trilayer)",
+      "path": "shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "sentinel",
+        "linum",
+        "socio-ecology"
+      ],
+      "description": "Schatten-Sigillin für den Linum-Sentinel: überwacht Datenlücken, fehlende Analysen und Kommunikationsdrift und löst BreakPoint-Reaktionen aus.",
+      "temporal": {
+        "created": "2025-12-08T00:00:00Z",
+        "modified": "2025-12-08T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.json",
+        "shadow_sigillin/wissenschaftsprojekt/cases/kranich_linum_2025/kranich_linum_2025.md"
+      ]
+    },
+    {
+      "id": "synth-017",
+      "title": "Metaquest System Compass (Trilayer)",
+      "path": "bedeutungssigillin/metaquest/system/metaquest_system_compass.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "system",
+        "compass"
+      ],
+      "description": "Schnellorientierung für Metaquest-Automation: Telemetrie, Index-Parität und Codex-Hooks werden kompakt geführt.",
+      "temporal": {
+        "created": "2025-12-08T00:00:00Z",
+        "modified": "2025-12-09T00:00:00Z",
+        "version": "0.2.0",
+        "change_count": 2
+      },
+      "references": [
+        "bedeutungssigillin/metaquest/system/metaquest_system_compass.json",
+        "bedeutungssigillin/metaquest/system/metaquest_system_compass.md"
+      ]
+    },
+    {
+      "id": "synth-018",
+      "title": "Metaquest System Shadow Compass (Trilayer)",
+      "path": "shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "system",
+        "compass"
+      ],
+      "description": "Schatten-Kompass für Automationsrisiken: Paritätsbrief-Drift, Telemetrie-Stille und Indexabweichungen werden hier überwacht.",
+      "temporal": {
+        "created": "2025-12-08T00:00:00Z",
+        "modified": "2025-12-08T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.json",
+        "shadow_sigillin/metaquest/system/metaquest_system_shadow_compass.md"
+      ]
+    },
+    {
+      "id": "synth-019",
+      "title": "Metaquest Kampagnen-Kompass (Trilayer)",
+      "path": "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "kampagne",
+        "compass"
+      ],
+      "description": "Kampagnen-Kompass mit Manuskript-Cadenz, Outreach-Playlist und Endorsement-Ledger zur schnellen Navigation.",
+      "temporal": {
+        "created": "2025-12-08T00:00:00Z",
+        "modified": "2025-12-09T00:00:00Z",
+        "version": "0.2.0",
+        "change_count": 2
+      },
+      "references": [
+        "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.json",
+        "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md"
+      ]
+    },
+    {
+      "id": "synth-020",
+      "title": "Metaquest Kampagnen-Shadow-Kompass (Trilayer)",
+      "path": "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "kampagne",
+        "compass"
+      ],
+      "description": "Schatten-Kompass für Outreach-Risiken: Paritätszitate, Storyboard-Sync und Governance-Freshness werden mit klaren Eskalationen verknüpft.",
+      "temporal": {
+        "created": "2025-12-08T00:00:00Z",
+        "modified": "2025-12-08T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.json",
+        "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_compass.md"
+      ]
+    },
+    {
+      "id": "synth-021",
+      "title": "Metaquest System Sigillin (Trilayer)",
+      "path": "bedeutungssigillin/system/metaquest/metaquest_system_sigil.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "system",
+        "codex"
+      ],
+      "description": "Bedeutungs-Sigillin, das Automationsaufgaben, Codex-Hooks und UTAC-Governance für die Metaquest-Systemspine bündelt.",
+      "temporal": {
+        "created": "2025-12-10T00:00:00Z",
+        "modified": "2025-12-10T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/system/metaquest/metaquest_system_sigil.json",
+        "bedeutungssigillin/system/metaquest/metaquest_system_sigil.md"
+      ]
+    },
+    {
+      "id": "synth-022",
+      "title": "Metaquest System Schatten-Sigillin (Trilayer)",
+      "path": "shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "system",
+        "recovery"
+      ],
+      "description": "Schatten-Sigillin mit Alarmfeldern für Telemetrie-Blackouts, Index-Drift und Codex-Stille im Metaquest-Systemstrang.",
+      "temporal": {
+        "created": "2025-12-10T00:00:00Z",
+        "modified": "2025-12-10T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.json",
+        "shadow_sigillin/system/metaquest/metaquest_system_shadow_sigil.md"
+      ]
+    },
+    {
+      "id": "synth-023",
+      "title": "Metaquest Kampagnen Sigillin (Trilayer)",
+      "path": "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "kampagne",
+        "outreach"
+      ],
+      "description": "Bedeutungs-Sigillin für Manuskript-, Outreach- und Endorsement-Kopplungen der Metaquest-Kampagne mit Codex + UTAC.",
+      "temporal": {
+        "created": "2025-12-10T00:00:00Z",
+        "modified": "2025-12-10T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.json",
+        "bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md"
+      ]
+    },
+    {
+      "id": "synth-024",
+      "title": "Metaquest Kampagnen Schatten-Sigillin (Trilayer)",
+      "path": "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "kampagne",
+        "outreach"
+      ],
+      "description": "Schatten-Sigillin für Kampagnenrisiken: Paritätsstille, Manuskript-Lag, Endorsement-Lücken und Outreach-Drift.",
+      "temporal": {
+        "created": "2025-12-10T00:00:00Z",
+        "modified": "2025-12-10T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.json",
+        "shadow_sigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_shadow_sigil.md"
+      ]
+    },
+    {
+      "id": "synth-025",
+      "title": "Metaquest System Directory Index (Trilayer)",
+      "path": "bedeutungssigillin/metaquest/system/metaquest_system_index.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "system",
+        "index"
+      ],
+      "description": "Verzeichnis für die Metaquest-Systemlaternen: Karte, Kompass, Sigil und Telemetrie-Harness werden mit Paritäts- und Ritualreferenzen gebündelt.",
+      "temporal": {
+        "created": "2025-12-11T00:00:00Z",
+        "modified": "2025-12-11T12:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/metaquest/system/metaquest_system_index.json",
+        "bedeutungssigillin/metaquest/system/metaquest_system_index.md"
+      ]
+    },
+    {
+      "id": "synth-026",
+      "title": "Metaquest System Shadow Directory Index (Trilayer)",
+      "path": "shadow_sigillin/metaquest/system/metaquest_system_shadow_index.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "system",
+        "index"
+      ],
+      "description": "Schattenverzeichnis für Automationsrisiken: überwacht Index-Frische, Telemetrie-Exports und BreakPoint-Rituale.",
+      "temporal": {
+        "created": "2025-12-11T00:00:00Z",
+        "modified": "2025-12-11T12:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/metaquest/system/metaquest_system_shadow_index.json",
+        "shadow_sigillin/metaquest/system/metaquest_system_shadow_index.md"
+      ]
+    },
+    {
+      "id": "synth-027",
+      "title": "Metaquest Kampagnen Directory Index (Trilayer)",
+      "path": "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "kampagne",
+        "index"
+      ],
+      "description": "Kampagnen-Verzeichnis, das Manuskript-, Outreach-, Endorsement- und Archiv-Linien mit Paritätsbrief und Codex synchronisiert.",
+      "temporal": {
+        "created": "2025-12-11T00:00:00Z",
+        "modified": "2025-12-11T12:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.json",
+        "bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_index.md"
+      ]
+    },
+    {
+      "id": "synth-028",
+      "title": "Metaquest Kampagnen Shadow Directory Index (Trilayer)",
+      "path": "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "kampagne",
+        "index"
+      ],
+      "description": "Schattenverzeichnis für Kampagnenrisiken: prüft ArchivSuche-Parität, Endorsement-Timestamps und Paritätsbrief-Sync.",
+      "temporal": {
+        "created": "2025-12-11T00:00:00Z",
+        "modified": "2025-12-11T12:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.json",
+        "shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.md"
+      ]
+    },
+    {
+      "id": "synth-029",
+      "title": "Metaquest Activation Matrix (Trilayer)",
+      "path": "bedeutungssigillin/metaquest/metaquest_activation_matrix.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "activation",
+        "matrix"
+      ],
+      "description": "Aktivierungs-Kompass für die Metaquest-Brücke: bündelt \"haben vs. brauchen\" aus UTAC-Status, Aktivierungs-Backlog, sigillin_sync-Telemetrie und Codex. Verweist auf Δindex-Guard, sigillin_sync-Automation, Ritualspiegel und den Urban-Heat-Mechanismus inklusive Recovery-Hooks.",
+      "temporal": {
+        "created": "2025-12-19T12:00:00Z",
+        "modified": "2025-12-19T12:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/metaquest/metaquest_activation_matrix.json",
+        "bedeutungssigillin/metaquest/metaquest_activation_matrix.md"
+      ]
+    },
+    {
+      "id": "synth-030",
+      "title": "Metaquest System Bridge Map (Trilayer)",
+      "path": "bedeutungssigillin/metaquest/system/metaquest_system_map.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "system",
+        "bridge"
+      ],
+      "description": "Bridge-Level Bedeutungs-Sigillin: koppelt UTAC-Readiness-Logistik, Simulator-Hook und Telemetrie-Propagation für die Metaquest-Brücke.",
+      "temporal": {
+        "created": "2025-12-24T00:00:00Z",
+        "modified": "2025-12-24T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 0
+      },
+      "references": [
+        "bedeutungssigillin/metaquest/system/metaquest_system_map.json",
+        "bedeutungssigillin/metaquest/system/metaquest_system_map.md"
+      ]
+    },
+    {
+      "id": "synth-031",
+      "title": "Metaquest System Bridge Shadow Map (Trilayer)",
+      "path": "shadow_sigillin/metaquest/system/metaquest_system_shadow.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "system",
+        "bridge"
+      ],
+      "description": "Schattenkarte für die Metaquest-Brücke: benennt Telemetrie-, Readiness- und Simulator-Drift inkl. Recovery-Hooks.",
+      "temporal": {
+        "created": "2025-12-24T00:00:00Z",
+        "modified": "2025-12-24T00:00:00Z",
+        "version": "0.1.0",
+        "change_count": 0
+      },
+      "references": [
+        "shadow_sigillin/metaquest/system/metaquest_system_shadow.json",
+        "shadow_sigillin/metaquest/system/metaquest_system_shadow.md"
+      ]
+    },
+    {
+      "id": "synth-032",
+      "title": "Metaquest Activation Gap Report (Trilayer)",
+      "path": "bedeutungssigillin/metaquest/metaquest_activation_gap_report.yaml",
+      "category": "synthesis",
+      "type": "bedeutungs-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "bedeutungssigillin",
+        "metaquest",
+        "activation",
+        "gap",
+        "report"
+      ],
+      "description": "Aktivierungs-Dossier der Metaquest-Brücke: listet resonante Assets (Matrix, UTAC-Tracker, Backlog, Telemetrie, Paritätsbrief) sowie die offenen mq-activation-gap Umsetzungspfade inklusive Integrationskanälen.",
+      "temporal": {
+        "created": "2026-08-21T10:00:00Z",
+        "modified": "2026-08-21T10:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "bedeutungssigillin/metaquest/metaquest_activation_gap_report.json",
+        "bedeutungssigillin/metaquest/metaquest_activation_gap_report.md"
+      ]
+    },
+    {
+      "id": "synth-033",
+      "title": "Metaquest Activation Gap Guard (Trilayer)",
+      "path": "shadow_sigillin/metaquest/metaquest_activation_gap_guard.yaml",
+      "category": "synthesis",
+      "type": "shadow-sigillin",
+      "status": "active",
+      "relevance": "high",
+      "keywords": [
+        "shadow",
+        "metaquest",
+        "activation",
+        "gap",
+        "guard"
+      ],
+      "description": "Schatten-Gegenstück zum Gap Report: überwacht Δindex-, Telemetrie-, Ritual-, Urban-Heat- und Paritätsrisiken mit klaren Signalen und Recovery-Playbooks.",
+      "temporal": {
+        "created": "2026-08-21T10:00:00Z",
+        "modified": "2026-08-21T10:00:00Z",
+        "version": "0.1.0",
+        "change_count": 1
+      },
+      "references": [
+        "shadow_sigillin/metaquest/metaquest_activation_gap_guard.json",
+        "shadow_sigillin/metaquest/metaquest_activation_gap_guard.md"
+      ]
+    }
+  ],
+  "domains": {
+    "ai": {
+      "name": "Artificial Intelligence",
+      "path": "ai/",
+      "description": "LLM Emergence, Introspection, Controlled Emergence",
+      "documents": [
+        {
+          "title": "AGENTS",
+          "path": "ai/AGENTS.md",
+          "type": "meta",
+          "keywords": [
+            "agents",
+            "ai",
+            "meta"
+          ]
+        },
+        {
+          "title": "Anthropic Introspection Validation",
+          "path": "ai/anthropic_introspection_validation.md",
+          "type": "validation",
+          "keywords": [
+            "anthropic",
+            "introspection",
+            "φ",
+            "llm"
+          ]
+        },
+        {
+          "title": "Controlled Emergence",
+          "path": "ai/controlled_emergence.md",
+          "type": "concept",
+          "keywords": [
+            "controlled",
+            "emergence",
+            "ai-safety"
+          ]
+        },
+        {
+          "title": "LLM Threshold Training",
+          "path": "ai/llm-threshold-training.md",
+          "type": "method",
+          "keywords": [
+            "llm",
+            "training",
+            "threshold"
+          ]
+        },
+        {
+          "title": "LLM Emergent Skill",
+          "path": "ai/llm_emergent_skill.md",
+          "type": "analysis",
+          "keywords": [
+            "llm",
+            "emergent",
+            "skill",
+            "β"
+          ]
+        }
+      ]
+    },
+    "biology": {
+      "name": "Biology & Evolution",
+      "path": "biology/",
+      "description": "Lenski LTEE, Synaptische Schwellenwerte, Bio-Emergenz",
+      "documents": [
+        {
+          "title": "AGENTS",
+          "path": "biology/AGENTS.md",
+          "type": "meta",
+          "keywords": [
+            "agents",
+            "biology",
+            "meta"
+          ]
+        },
+        {
+          "title": "Bio Emergence Semantic Phase Transition",
+          "path": "biology/bio_emergence_semantic_phase_transition.md",
+          "type": "concept",
+          "keywords": [
+            "bio",
+            "emergence",
+            "phase-transition",
+            "semantic"
+          ]
+        },
+        {
+          "title": "Honeybee Waggle",
+          "path": "biology/honeybee_waggle.md",
+          "type": "case-study",
+          "keywords": [
+            "honeybee",
+            "waggle",
+            "communication",
+            "threshold"
+          ]
+        },
+        {
+          "title": "Lenski Cit+ Verification",
+          "path": "biology/lenski_citplus_verification.md",
+          "type": "validation",
+          "keywords": [
+            "lenski",
+            "ltee",
+            "citrate",
+            "evolution",
+            "β"
+          ]
+        },
+        {
+          "title": "Synaptic Release Threshold",
+          "path": "biology/synaptic_release_threshold.md",
+          "type": "concept",
+          "keywords": [
+            "synaptic",
+            "neuron",
+            "threshold",
+            "biology"
+          ]
+        }
+      ]
+    },
+    "cognition": {
+      "name": "Cognition & Psychology",
+      "path": "cognition/",
+      "description": "Working Memory, Adaptive Theta, Psyche-Schwellenwerte",
+      "documents": [
+        {
+          "title": "AGENTS",
+          "path": "cognition/AGENTS.md",
+          "type": "meta",
+          "keywords": [
+            "agents",
+            "cognition",
+            "meta"
+          ]
+        },
+        {
+          "title": "Adaptive Theta Plasticity",
+          "path": "cognition/adaptive_theta_plasticity.md",
+          "type": "concept",
+          "keywords": [
+            "adaptive",
+            "theta",
+            "plasticity",
+            "trauma",
+            "therapy"
+          ]
+        },
+        {
+          "title": "Working Memory Gate",
+          "path": "cognition/working_memory_gate.md",
+          "type": "concept",
+          "keywords": [
+            "working-memory",
+            "gate",
+            "cognition"
+          ]
+        }
+      ]
+    },
+    "ethics": {
+      "name": "Ethics & Governance",
+      "path": "ethics/",
+      "description": "Adaptive Threshold Governance, KI-Rechte, Kohärenzmaße",
+      "documents": [
+        {
+          "title": "AGENTS",
+          "path": "ethics/AGENTS.md",
+          "type": "meta",
+          "keywords": [
+            "agents",
+            "ethics",
+            "meta"
+          ]
+        },
+        {
+          "title": "Adaptive Threshold Governance",
+          "path": "ethics/adaptive_threshold_governance.md",
+          "type": "framework",
+          "keywords": [
+            "governance",
+            "ethics",
+            "adaptive",
+            "threshold",
+            "φ"
+          ]
+        }
+      ]
+    },
+    "geophysics": {
+      "name": "Geophysics & Seismology",
+      "path": "geophysics/",
+      "description": "Seismische Schwellenwerte, Subduktions-Resonanz",
+      "documents": [
+        {
+          "title": "AGENTS",
+          "path": "geophysics/AGENTS.md",
+          "type": "meta",
+          "keywords": [
+            "agents",
+            "geophysics",
+            "meta"
+          ]
+        },
+        {
+          "title": "Seismic Early Warning Thresholds",
+          "path": "geophysics/seismic_early_warning_thresholds.md",
+          "type": "application",
+          "keywords": [
+            "seismic",
+            "early-warning",
+            "earthquake",
+            "threshold"
+          ]
+        },
+        {
+          "title": "Subduction Rupture Resonance",
+          "path": "geophysics/subduction_rupture_resonance.md",
+          "type": "concept",
+          "keywords": [
+            "subduction",
+            "rupture",
+            "resonance",
+            "earthquake"
+          ]
+        }
+      ]
+    },
+    "socio_ecology": {
+      "name": "Socio-Ecology & Climate",
+      "path": "socio_ecology/",
+      "description": "Amazon Moisture, Urban Heat, Planetary Thresholds, Tipping Points",
+      "documents": [
+        {
+          "title": "AGENTS",
+          "path": "socio_ecology/AGENTS.md",
+          "type": "meta",
+          "keywords": [
+            "agents",
+            "socio-ecology",
+            "meta"
+          ]
+        },
+        {
+          "title": "Amazon Moisture Resilience",
+          "path": "socio_ecology/amazon_moisture_resilience.md",
+          "type": "case-study",
+          "keywords": [
+            "amazon",
+            "moisture",
+            "resilience",
+            "β=14.6"
+          ]
+        },
+        {
+          "title": "Bio-Cultural Buffering",
+          "path": "socio_ecology/bio_cultural_buffering.md",
+          "type": "concept",
+          "keywords": [
+            "bio-cultural",
+            "buffering",
+            "resilience"
+          ]
+        },
+        {
+          "title": "Planetary Threshold Cartography",
+          "path": "socio_ecology/planetary_threshold_cartography.md",
+          "type": "framework",
+          "keywords": [
+            "planetary",
+            "cartography",
+            "climate",
+            "tipping-points"
+          ]
+        },
+        {
+          "title": "Urban Heat Canopy Resonance",
+          "path": "socio_ecology/urban_heat_canopy_resonance.md",
+          "type": "case-study",
+          "keywords": [
+            "urban-heat",
+            "β=16.3",
+            "outlier",
+            "extreme"
+          ]
+        }
+      ]
+    }
+  },
+  "triggers": {
+    "core_concepts": [
+      "UTAC",
+      "Sigillin",
+      "MOR",
+      "Trilayer",
+      "Co-Hypothese",
+      "Unified-Mandala"
+    ],
+    "mathematical": [
+      "β-field",
+      "β-Spektrum",
+      "Θ (Threshold)",
+      "R (Response)",
+      "φ (Kohärenz)",
+      "ψ (Kopplung)",
+      "σ(β(R-Θ))",
+      "ΔAIC",
+      "Meta-Regression"
+    ],
+    "philosophical": [
+      "Fixwerte",
+      "Variabilität",
+      "Bewusstsein",
+      "Erinnerung",
+      "Nullen",
+      "Resonanz",
+      "Emergenz"
+    ],
+    "methodological": [
+      "Falsifizierbarkeit",
+      "Reproduzierbarkeit",
+      "Governance",
+      "Validierung",
+      "Running-Coupling"
+    ],
+    "domains_specific": [
+      "LLM",
+      "Lenski LTEE",
+      "AMOC",
+      "Tipping-Points",
+      "Trauma",
+      "QPO",
+      "Urban-Heat"
+    ]
+  },
+  "quicklinks": {
+    "start_here": [
+      "meta-002",
+      "meta-001",
+      "meta-003"
+    ],
+    "theory_core": [
+      "theory-001",
+      "theory-002",
+      "theory-003"
+    ],
+    "validation": [
+      "valid-001",
+      "valid-003",
+      "valid-008"
+    ],
+    "concepts": [
+      "concept-001",
+      "concept-002",
+      "concept-003"
+    ],
+    "synthesis": [
+      "synth-001",
+      "synth-002",
+      "synth-003"
+    ],
+    "domains_highlights": {
+      "ai": [
+        "ai/anthropic_introspection_validation.md",
+        "ai/llm_emergent_skill.md"
+      ],
+      "biology": [
+        "biology/lenski_citplus_verification.md",
+        "biology/synaptic_release_threshold.md"
+      ],
+      "cognition": [
+        "cognition/adaptive_theta_plasticity.md",
+        "cognition/working_memory_gate.md"
+      ],
+      "ethics": [
+        "ethics/adaptive_threshold_governance.md"
+      ],
+      "geophysics": [
+        "geophysics/seismic_early_warning_thresholds.md"
+      ],
+      "socio_ecology": [
+        "socio_ecology/amazon_moisture_resilience.md",
+        "socio_ecology/urban_heat_canopy_resonance.md"
+      ]
+    }
+  },
+  "status_legend": {
+    "active": "Aktuell in Arbeit / lebendiges Dokument",
+    "stable": "Fertig, aber iterativ verbesserbar",
+    "historical": "Archiviert für Kontext, nicht mehr aktiv",
+    "draft": "Früher Entwurf, noch nicht finalisiert"
+  },
+  "relevance_legend": {
+    "high": "Zentral für das Projekt, häufig referenziert",
+    "medium": "Wichtig, aber spezialisierter",
+    "low": "Historischer Kontext, selten benötigt"
+  }
 }

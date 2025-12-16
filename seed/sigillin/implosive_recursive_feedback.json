@@ -37,7 +37,9 @@
       "seed/FraktaltagebuchV3/v3_roadmap.yaml",
       "seed/sigillin/mor_fit_methodology_v2.yaml"
     ],
-    "dynamics_sigillin": ["seed/sigillin/utac_klimakluft_process.yaml"],
+    "dynamics_sigillin": [
+      "seed/sigillin/utac_klimakluft_process.yaml"
+    ],
     "indices": [
       "feldtheorie_index.yaml",
       "seed/seed_index.yaml"
@@ -52,5 +54,9 @@
   "fit_alignment": {
     "morfit_layer": "meaning",
     "notes": "Sigil fixiert die theoretische Laterne für V3, damit Order- und Dynamics-Sigillin auf derselben Φ^(1/3)-Spirale operieren."
+  },
+  "meta": {
+    "sigil": "implosive-recursive-feedback",
+    "version": "1.0.0"
   }
 }

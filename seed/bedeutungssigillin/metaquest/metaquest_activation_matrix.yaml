@@ -4,19 +4,17 @@ meta:
   created: '2025-12-19T12:00:00Z'
   updated: '2026-08-20T00:00:00Z'
   logistic:
-    R: Aggregierter Aktivierungsstau (UTAC-Observatorium, Activation Backlog, Paritätsbrief und
-      Telemetrie) per 2026-08-20.
-    Theta: Jedes offene mq-gap besitzt eine verlinkte Implementationsstelle plus Guard/Test-Hinweis
-      und Paritätsloop-Nachweis in Bridge, Kompass, Backlog und Codex binnen 24h.
+    R: Aggregierter Aktivierungsstau (UTAC-Observatorium, Activation Backlog, Paritätsbrief und Telemetrie) per 2026-08-20.
+    Theta: Jedes offene mq-gap besitzt eine verlinkte Implementationsstelle plus Guard/Test-Hinweis und Paritätsloop-Nachweis
+      in Bridge, Kompass, Backlog und Codex binnen 24h.
     beta: 4.82
-    zeta: Gedämpft, sobald BreakPoint-Rituale, sigillin_sync-Telemetrie, Index-Wächter und
-      Paritätsbrief-Updates Licht/Schatten synchron halten.
-  resonance: >-
-    Kartiert, welche Metaquest-Laternen im August 2026 bereits resonant leuchten und wo der
-    Aktivierungsstau noch Implementationspfade benötigt. Verbindet UTAC-Status, Backlog,
-    Telemetrie und Paritätsbrief so, dass σ(β(R-Θ)) zielgerichtet aktiviert und dokumentiert wird.
-  null_model: Metaquest-Start ohne aktualisiertes Aktivierungslayout; Aufgaben treiben auseinander,
-    Parität reißt und Schatten-Alarme feuern zu spät.
+    zeta: Gedämpft, sobald BreakPoint-Rituale, sigillin_sync-Telemetrie, Index-Wächter und Paritätsbrief-Updates Licht/Schatten
+      synchron halten.
+  resonance: Kartiert, welche Metaquest-Laternen im August 2026 bereits resonant leuchten und wo der Aktivierungsstau noch
+    Implementationspfade benötigt. Verbindet UTAC-Status, Backlog, Telemetrie und Paritätsbrief so, dass σ(β(R-Θ)) zielgerichtet
+    aktiviert und dokumentiert wird.
+  null_model: Metaquest-Start ohne aktualisiertes Aktivierungslayout; Aufgaben treiben auseinander, Parität reißt und Schatten-Alarme
+    feuern zu spät.
   shadow_coupling: ../../shadow_sigillin/metaquest/metaquest_shadow_index.yaml
   references:
   - ../../docs/utac_status_alignment_v1.2.md
@@ -32,8 +30,8 @@ resonant_assets:
   location: ../../docs/utac_status_alignment_v1.2.md
   status: active
   notes:
-    logistic_role: Hält Θ sichtbar, indem Resonant Inventory + Activation Gaps (inkl. ΔAIC/Nullmodell-Wächter)
-      die Metaquest-Laternen koppeln.
+    logistic_role: Hält Θ sichtbar, indem Resonant Inventory + Activation Gaps (inkl. ΔAIC/Nullmodell-Wächter) die Metaquest-Laternen
+      koppeln.
     evidence:
     - ../../docs/utac_status_alignment_v1.2.md#2-resonant-inventory-%E2%80%94-what-already-exists
     - ../../docs/utac_status_alignment_v1.2.md#3-activation-gaps-%E2%80%94-what-we-still-need
@@ -47,11 +45,11 @@ resonant_assets:
   location: ../../docs/utac_activation_backlog.md
   status: active
   notes:
-    logistic_role: Lenkt R auf konkrete Umsetzungsschienen; meta.updated → 2026-08-20 hält mq-gap IDs,
-      Null-Guards und Status-Notizen synchron.
+    logistic_role: Lenkt R auf konkrete Umsetzungsschienen; meta.updated → 2026-08-20 hält mq-gap IDs, Null-Guards und Status-Notizen
+      synchron.
     evidence:
     - ../../docs/utac_activation_backlog.md#%F0%9F%A7%AD-pulse-summary
-    - '../../docs/utac_activation_backlog.md#%F0%9F%A7%82%EF%B8%8F-task-lattice-what-we-have-vs-what-we-still-need'
+    - ../../docs/utac_activation_backlog.md#%F0%9F%A7%82%EF%B8%8F-task-lattice-what-we-have-vs-what-we-still-need
     - analysis/results/utac_v2_manifest_gap_scan_20260820T000000Z.json
     - ../../docs/utac_v2_activation_tracker_2026-08.md
     coupling:
@@ -63,8 +61,8 @@ resonant_assets:
   location: ../../analysis/sigillin_sync/latest.json
   status: active
   notes:
-    logistic_role: Vermisst R=12 Trilayer, Θ=0 Paritätslücken und β≈4.6; Referenz für automatische Spiegelungen
-      in Bridge, Kompass und Backlog.
+    logistic_role: Vermisst R=12 Trilayer, Θ=0 Paritätslücken und β≈4.6; Referenz für automatische Spiegelungen in Bridge,
+      Kompass und Backlog.
     evidence:
     - ../../analysis/sigillin_sync/latest.json
     - ../../analysis/sigillin_sync/metaquest_report_20251107T215246Z.json
@@ -178,7 +176,8 @@ activation_requirements:
     R: Simulator-Playlist, Endorsement-Ledger und Codex-Querverweis fehlen im Paritätsbrief oder wurden nicht gespiegelt.
     Theta: Paritätsbrief führt Playlist + Endorsement-Ledger + Codex-ID binnen 24h in Bridge, Kompassen, Backlog und Codex.
     beta: 4.88
-    zeta: Gedämpft, wenn Paritätsloop + BreakPoint-Protokolle synchron laufen; ohne Spiegelung steigt ζ(R) und löst mq-bridge-shadow-Alerts aus.
+    zeta: Gedämpft, wenn Paritätsloop + BreakPoint-Protokolle synchron laufen; ohne Spiegelung steigt ζ(R) und löst mq-bridge-shadow-Alerts
+      aus.
   implementation_sites:
   - ../../docs/metaquest_parity_brief.md#3-outstanding-parity-gaps
   - ../metaquest_meaning_index.md

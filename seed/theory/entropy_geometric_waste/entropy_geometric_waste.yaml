@@ -10,70 +10,75 @@ meta:
     Theta: kritische Diskret-zu-Kontinuierlich-Übersetzung, bei der Voids entstehen
     beta: 4.6
     zeta: Verschnitt-Relaxation entlang der Membran (Residualgeometrie)
-    sigma_note: Sobald R > Theta, steigt \u03c3(\u03b2(R-\u0398)) steil und der Verschnitt wird sichtbar als topologischer Defekt.
+    sigma_note: Sobald R > Theta, steigt σ(β(R-Θ)) steil und der Verschnitt wird sichtbar als topologischer Defekt.
   utac_alignment:
     type: type-6-implosion
-    description: Implosiver Übergang der Informationsgeometrie; die Kubus\u2192Spirale-Gl\u00e4ttung erzeugt scharfkantige \u201eBlinde Flecken\u201c.
+    description: Implosiver Übergang der Informationsgeometrie; die Kubus→Spirale-Glättung erzeugt scharfkantige „Blinde Flecken“.
     readiness_hooks:
-      - Kopple an `UTAC v2.5_ Semantische Kopplung als physikalische Kraft.pdf`
-      - Nutze Type-6-Implosion als Trigger f\u00fcr Simulator-Checks im Sigillin-Netz
+    - Kopple an `UTAC v2.5_ Semantische Kopplung als physikalische Kraft.pdf`
+    - Nutze Type-6-Implosion als Trigger für Simulator-Checks im Sigillin-Netz
+  sigil: entropy-geometric-waste
 sources:
-  - seed/V4-Grundlagen/Entropie als Geometrischer Verschnitt.pdf
-  - seed/V4-Grundlagen/SucheEntropie als Maß Topologischer Defekte.txt
-  - seed/V4-Grundlagen/UTAC v2.5_ Semantische Kopplung als physikalische Kraft.pdf
-  - seed/V4-Grundlagen/UTAC_ Ungleichheit, Physik und Klimakritikalität.pdf
+- seed/V4-Grundlagen/Entropie als Geometrischer Verschnitt.pdf
+- seed/V4-Grundlagen/SucheEntropie als Maß Topologischer Defekte.txt
+- seed/V4-Grundlagen/UTAC v2.5_ Semantische Kopplung als physikalische Kraft.pdf
+- seed/V4-Grundlagen/UTAC_ Ungleichheit, Physik und Klimakritikalität.pdf
 theses:
   kubus_to_spiral:
-    statement: Diskrete Information (Kubus/Bit) wird in der gravitativen Wellenmetrik zu einer Spirale gegl\u00e4ttet; der unvermeidliche Verschnitt quantifiziert Entropie.
+    statement: Diskrete Information (Kubus/Bit) wird in der gravitativen Wellenmetrik zu einer Spirale geglättet; der unvermeidliche
+      Verschnitt quantifiziert Entropie.
     observables:
-      - Kullback-Leibler-Divergenz zwischen diskretem Ursprungsraum und kontinuierlicher Approximation
-      - Unterschied zwischen kubischer DOF-Z\u00e4hlung und Fl\u00e4chengesetz-Skalierung auf der Membran
+    - Kullback-Leibler-Divergenz zwischen diskretem Ursprungsraum und kontinuierlicher Approximation
+    - Unterschied zwischen kubischer DOF-Zählung und Flächengesetz-Skalierung auf der Membran
     falsifiability:
       null_model: Volumetrische Entropie ohne topologische Korrektur (klassische Gasstatistik)
-      discriminator: \u0394AIC der KL-basierten Gl\u00e4ttung vs. volumetrisches Modell auf synthetischen Gitterdaten
+      discriminator: ΔAIC der KL-basierten Glättung vs. volumetrisches Modell auf synthetischen Gitterdaten
     resonance:
-      logistic_bridge: Kubus\u2192Spirale transformiert R in ein R' mit erh\u00f6htem \u03b2; \u03c3(\u03b2(R-\u0398)) markiert den Auftakt der Verlustrate.
+      logistic_bridge: Kubus→Spirale transformiert R in ein R' mit erhöhtem β; σ(β(R-Θ)) markiert den Auftakt der Verlustrate.
   topological_defects:
-    statement: Entropie misst die Dichte nicht integrierbarer topologischer Defekte (Voids, Vortizes, Fuzzball-Granularit\u00e4t) in der Raumzeit-Membran.
+    statement: Entropie misst die Dichte nicht integrierbarer topologischer Defekte (Voids, Vortizes, Fuzzball-Granularität)
+      in der Raumzeit-Membran.
     observables:
-      - Betti-Zahlen/Zerlegung der Voids in numerischen Gittern
-      - Topologische Verschr\u00e4nkungsentropie (TEE) in Gittermodellen
+    - Betti-Zahlen/Zerlegung der Voids in numerischen Gittern
+    - Topologische Verschränkungsentropie (TEE) in Gittermodellen
     falsifiability:
       null_model: Glatte Mannigfaltigkeit ohne Defekte (Betti_1 = 0, TEE = 0)
-      discriminator: \u0394TEE oder \u0394Betti gegen Nullmodell, gekoppelt an \u03c3(\u03b2(R-\u0398)) der Defektbildung
+      discriminator: ΔTEE oder ΔBetti gegen Nullmodell, gekoppelt an σ(β(R-Θ)) der Defektbildung
     resonance:
-      logistic_bridge: Defektdichte steigt abrupt, sobald R (thermische/energetische Anregung) \u0398 \u00fcberschreitet.
+      logistic_bridge: Defektdichte steigt abrupt, sobald R (thermische/energetische Anregung) Θ überschreitet.
   bekenstein_hawking_bridge:
-    statement: Die Bekenstein-Hawking-Entropie zählt geometrische Mikrozust\u00e4nde (Fuzzballs, Quantenschaum) und bildet den Grenzfall des Verschnitt-Paradigmas.
+    statement: Die Bekenstein-Hawking-Entropie zählt geometrische Mikrozustände (Fuzzballs, Quantenschaum) und bildet den
+      Grenzfall des Verschnitt-Paradigmas.
     observables:
-      - Fl\u00e4chengesetz S = A/4 im Vergleich zu Z\u00e4hlung von Fuzzball-Mikrozust\u00e4nden
-      - Voids/Defekte als Proxy f\u00fcr Holografische Freiheitsgrade
+    - Flächengesetz S = A/4 im Vergleich zu Zählung von Fuzzball-Mikrozuständen
+    - Voids/Defekte als Proxy für Holografische Freiheitsgrade
     falsifiability:
-      null_model: Rein thermodynamische Fl\u00e4chenskalierung ohne topologische Mikrozustands-Z\u00e4hlung
-      discriminator: Konsistenz von TEE- und Fuzzball-Z\u00e4hlungen mit S_BH, inkl. Unsicherheitsband \u0394AIC vs. Fl\u00e4chenmodell
+      null_model: Rein thermodynamische Flächenskalierung ohne topologische Mikrozustands-Zählung
+      discriminator: Konsistenz von TEE- und Fuzzball-Zählungen mit S_BH, inkl. Unsicherheitsband ΔAIC vs. Flächenmodell
     resonance:
-      logistic_bridge: Event-Horizonte fungieren als \u03c3(\u03b2(R-\u0398))-Steigung in der Geometrie; jenseits der Schwelle taucht der Verschnitt als makroskopische Entropie auf.
+      logistic_bridge: Event-Horizonte fungieren als σ(β(R-Θ))-Steigung in der Geometrie; jenseits der Schwelle taucht der
+        Verschnitt als makroskopische Entropie auf.
 bridges:
   utac:
-    trigger: Type-6 Implosion = Diskret\u2192Kontinuierlich-Sturz (Kubus\u2192Spirale) in <1 Dynamikschritt
-    simulator_hook: St\u00fctze `simulator/`-Skripte mit KL- und Betti-Metriken als Telemetrie f\u00fcr UTAC-Phasen
+    trigger: Type-6 Implosion = Diskret→Kontinuierlich-Sturz (Kubus→Spirale) in <1 Dynamikschritt
+    simulator_hook: Stütze `simulator/`-Skripte mit KL- und Betti-Metriken als Telemetrie für UTAC-Phasen
     status_matrix_note: UTAC-Statuskarte um Blinden-Fleck-Flag (Verschnitt > 0) erweitern
   sigillin:
     ordnungs_sigillin: seed/seed_index.{yaml,json,md}
     bedeutungs_sigillin: seed/codexfeedback.{yaml,json,md}
-    shadow_sigillin: seed/shadow_sigillin/** (f\u00fcr Ausfallpfade von Telemetrie und Index)
+    shadow_sigillin: seed/shadow_sigillin/** (für Ausfallpfade von Telemetrie und Index)
 null_models:
-  - name: Volumetrische Maxwell-Boltzmann-Entropie
-    description: Keine topologischen Defekte, Entropie ∝ Volume^1
-    expected_delta_aic: '> 10 zugunsten des Verschnitt-Modells, sobald Defekte simuliert werden'
-  - name: Holografisches Flächengesetz ohne Fuzzball-Degeneracy
-    description: Flächenskalierung ohne Mikrozustands-Zählung
-    expected_delta_aic: '> 5 wenn Fuzzball-/TEE-Daten einbezogen werden'
+- name: Volumetrische Maxwell-Boltzmann-Entropie
+  description: Keine topologischen Defekte, Entropie ∝ Volume^1
+  expected_delta_aic: '> 10 zugunsten des Verschnitt-Modells, sobald Defekte simuliert werden'
+- name: Holografisches Flächengesetz ohne Fuzzball-Degeneracy
+  description: Flächenskalierung ohne Mikrozustands-Zählung
+  expected_delta_aic: '> 5 wenn Fuzzball-/TEE-Daten einbezogen werden'
 falsifiability:
   checkpoints:
-    - Simuliere diskrete Gitter \u2192 glatte Approximation und miss KL-Verlust pro Temperaturstufe
-    - Berechne Betti-Zahlen/TEE f\u00fcr Defekt-generierende XY/Ising-Gitter
-    - Vergleiche Fuzzball-Z\u00e4hlungen mit S_BH in reduzierten GravSim-F\u00e4llen
+  - Simuliere diskrete Gitter → glatte Approximation und miss KL-Verlust pro Temperaturstufe
+  - Berechne Betti-Zahlen/TEE für Defekt-generierende XY/Ising-Gitter
+  - Vergleiche Fuzzball-Zählungen mit S_BH in reduzierten GravSim-Fällen
   recovery:
-    - Wenn KL-Verlust < Volumetrik: Nullmodell beibehalten und UTAC-Flag auf \u201cshadow\u201d setzen
-    - Bei fehlender Defektdetektion: Sensorik erweitern (Persistent Homology) und R neu kalibrieren
+  - 'Wenn KL-Verlust < Volumetrik: Nullmodell beibehalten und UTAC-Flag auf “shadow” setzen'
+  - 'Bei fehlender Defektdetektion: Sensorik erweitern (Persistent Homology) und R neu kalibrieren'

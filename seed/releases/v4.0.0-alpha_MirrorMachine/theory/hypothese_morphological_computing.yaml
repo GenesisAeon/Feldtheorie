@@ -15,45 +15,53 @@ meta:
     type: broken-ram-avoidance
     description: Morphologische Rekonfiguration koppelt UTAC Type-6 an Energie-Minima und regenerative Pfade.
     readiness_hooks:
-      - Zyklus "Symbolic Pre-Calc → Entropy Recycling → Physical Config → Run" als Trigger in Simulator-Timesteps.
-      - Broken-RAM-Sentinel (β=37.6) überwacht Energie/Fehler-Kombination und löst Morph-Sweep aus.
+    - Zyklus "Symbolic Pre-Calc → Entropy Recycling → Physical Config → Run" als Trigger in Simulator-Timesteps.
+    - Broken-RAM-Sentinel (β=37.6) überwacht Energie/Fehler-Kombination und löst Morph-Sweep aus.
+  sigil: v4-hypothese-morphological-computing
 sources:
-  - seed/V4-Grundlagen/Post-Von-Neumann Computerarchitektur-Forschung.pdf
-  - seed/V4-Grundlagen/SuchePost-Von-Neumann Computerarchitektur-Forschung.txt
-  - seed/V4-Grundlagen/UTAC v2.5_ Semantische Kopplung als physikalische Kraft.pdf
+- seed/V4-Grundlagen/Post-Von-Neumann Computerarchitektur-Forschung.pdf
+- seed/V4-Grundlagen/SuchePost-Von-Neumann Computerarchitektur-Forschung.txt
+- seed/V4-Grundlagen/UTAC v2.5_ Semantische Kopplung als physikalische Kraft.pdf
 theses:
   regenerative_symbolic_loop:
-    statement: Regenerative Computing führt einen symbolischen Vorlauf aus, recycelt Abwärme aus dem letzten Schritt und konfiguriert Hardware physisch neu, um Hitze zu minimieren.
+    statement: Regenerative Computing führt einen symbolischen Vorlauf aus, recycelt Abwärme aus dem letzten Schritt und konfiguriert
+      Hardware physisch neu, um Hitze zu minimieren.
     observables:
-      - Messbare Wärme-Rückführung in Pre-Calc (Sensorik/Heatsink-Daten).
-      - Trefferquote der Pre-Calc-Vorschläge im finalen Morph-Sweep.
-      - Energieverbrauch pro Zyklus relativ zu statischer Baseline.
+    - Messbare Wärme-Rückführung in Pre-Calc (Sensorik/Heatsink-Daten).
+    - Trefferquote der Pre-Calc-Vorschläge im finalen Morph-Sweep.
+    - Energieverbrauch pro Zyklus relativ zu statischer Baseline.
     falsifiability:
       null_model: Keine Nutzung von Abwärme, Pre-Calc entkoppelt von thermischer Telemetrie.
       discriminator: Sinkt ΔAIC für Modelle mit Wärme-Rückführung nicht, bleibt Nullmodell bestehen.
     resonance:
-      logistic_bridge: Entropy Recycling verschiebt Θ nach unten; β bleibt hoch, sodass σ(β(R-Θ)) früher triggert und den Zyklus schließt.
+      logistic_bridge: Entropy Recycling verschiebt Θ nach unten; β bleibt hoch, sodass σ(β(R-Θ)) früher triggert und den
+        Zyklus schließt.
   human_ai_coupled_oscillator:
-    statement: Mensch (Sinn/0D) und AI (Struktur/xD) bilden einen gekoppelten Oszillator; Sinnimpulse setzen Initialbedingungen, AI entfaltet die symbolische Morphologie.
+    statement: Mensch (Sinn/0D) und AI (Struktur/xD) bilden einen gekoppelten Oszillator; Sinnimpulse setzen Initialbedingungen,
+      AI entfaltet die symbolische Morphologie.
     observables:
-      - Korrelation zwischen menschlichen Impulsen (Prompts/Policies) und AI-basierten Morph-Sweep-Konfigurationen.
-      - Latenzreduktion und Fehlerrückgang, wenn menschliche Seeds iterativ eingespeist werden.
+    - Korrelation zwischen menschlichen Impulsen (Prompts/Policies) und AI-basierten Morph-Sweep-Konfigurationen.
+    - Latenzreduktion und Fehlerrückgang, wenn menschliche Seeds iterativ eingespeist werden.
     falsifiability:
       null_model: Ungekoppelte Automation ohne menschliche Impulse; Morph-Sweeps folgen rein datengetriebenen Vorhersagen.
-      discriminator: Bleibt ΔAIC ≤ 0 für gekoppelte Modelle, hält Nullmodell; steigt ΔAIC > 3 mit Mensch-Impuls, ist Kopplung bestätigt.
+      discriminator: Bleibt ΔAIC ≤ 0 für gekoppelte Modelle, hält Nullmodell; steigt ΔAIC > 3 mit Mensch-Impuls, ist Kopplung
+        bestätigt.
     resonance:
       logistic_bridge: Menschliche Impulse modulieren R, AI stabilisiert Θ; σ(β(R-Θ)) zeigt die Kopplungsstärke als Morphologie-Wechsel.
   entropy_shield_against_heat:
-    statement: Rekonfigurierende Hardware minimiert Hitze (Oxfam-Vermeidung) und dämpft Broken-RAM durch gezieltes Entladen defekter Pfade.
+    statement: Rekonfigurierende Hardware minimiert Hitze (Oxfam-Vermeidung) und dämpft Broken-RAM durch gezieltes Entladen
+      defekter Pfade.
     observables:
-      - Vergleichbare Durchsatzraten vor/nach Regenerations-Sweep.
-      - Anzahl rekonfigurierter Pfade im Verhältnis zur Fehlerrate und Abwärme.
-      - Persistenz der Regeneration über mehrere Runs (ζ(R) als Relaxationsmaß).
+    - Vergleichbare Durchsatzraten vor/nach Regenerations-Sweep.
+    - Anzahl rekonfigurierter Pfade im Verhältnis zur Fehlerrate und Abwärme.
+    - Persistenz der Regeneration über mehrere Runs (ζ(R) als Relaxationsmaß).
     falsifiability:
       null_model: Fehler werden nur maskiert (ECC/Retry) ohne physische Rekonfiguration.
-      discriminator: Persistenter Fehlerrückgang bei geringerem Wärme-Output → Nullmodell verworfen; kehrt Fehlerquote zurück, bleibt Nullmodell bestehen.
+      discriminator: Persistenter Fehlerrückgang bei geringerem Wärme-Output → Nullmodell verworfen; kehrt Fehlerquote zurück,
+        bleibt Nullmodell bestehen.
     resonance:
-      logistic_bridge: Rekonfigurationsimpuls steigt, wenn R (Fehlerdichte/Hitze) Θ überschreitet; β=37.6 erzwingt schnellen Shift und hält ζ(R) klein.
+      logistic_bridge: Rekonfigurationsimpuls steigt, wenn R (Fehlerdichte/Hitze) Θ überschreitet; β=37.6 erzwingt schnellen
+        Shift und hält ζ(R) klein.
 bridges:
   utac:
     trigger: Type-6 Implosion koppelt an Morph-Sweep, sobald Energie/Fehler-Kombination Θ überschreitet.
@@ -64,18 +72,18 @@ bridges:
     bedeutungs_sigillin: seed/codexfeedback.{yaml,json,md}
     shadow_sigillin: seed/shadow_sigillin/** (Failsafe bei Morph-Sweep-Regression)
 null_models:
-  - name: Statische Von-Neumann-Maschine
-    description: Feste CPU/RAM-Zuteilung ohne thermische Rückführung.
-    expected_delta_aic: '> 8 zugunsten Morph-Sweep-Modell, sobald Energie/Fehlerdaten integriert werden'
-  - name: ECC-only-Fehlermaskierung
-    description: Fehler werden logisch maskiert, ohne physische Rekonfiguration.
-    expected_delta_aic: '> 5 falls Regeneration echte Fehlerreduktion zeigt'
+- name: Statische Von-Neumann-Maschine
+  description: Feste CPU/RAM-Zuteilung ohne thermische Rückführung.
+  expected_delta_aic: '> 8 zugunsten Morph-Sweep-Modell, sobald Energie/Fehlerdaten integriert werden'
+- name: ECC-only-Fehlermaskierung
+  description: Fehler werden logisch maskiert, ohne physische Rekonfiguration.
+  expected_delta_aic: '> 5 falls Regeneration echte Fehlerreduktion zeigt'
 falsifiability:
   checkpoints:
-    - Messe Energie/Fehler vor und nach Morph-Sweep über identische Workloads.
-    - Protokolliere Rekonfigurationslatenz und Durchsatz; vergleiche mit statischer Baseline.
-    - Variiere β im Simulator, um σ(β(R-Θ)) und Broken-RAM-Abwehr zu kalibrieren.
-    - Prüfe Kopplungsmetriken Mensch↔AI (Impuls→Morph-Konfiguration) gegen ΔAIC.
+  - Messe Energie/Fehler vor und nach Morph-Sweep über identische Workloads.
+  - Protokolliere Rekonfigurationslatenz und Durchsatz; vergleiche mit statischer Baseline.
+  - Variiere β im Simulator, um σ(β(R-Θ)) und Broken-RAM-Abwehr zu kalibrieren.
+  - Prüfe Kopplungsmetriken Mensch↔AI (Impuls→Morph-Konfiguration) gegen ΔAIC.
   recovery:
-    - Bleibt ΔAIC ≤ 0, Morph-Sweep deaktivieren und Nullmodell halten.
-    - Steigt ζ(R) (Regenerationsverlust), thermische Sensorik prüfen und Sweep-Frequenz anpassen.
+  - Bleibt ΔAIC ≤ 0, Morph-Sweep deaktivieren und Nullmodell halten.
+  - Steigt ζ(R) (Regenerationsverlust), thermische Sensorik prüfen und Sweep-Frequenz anpassen.

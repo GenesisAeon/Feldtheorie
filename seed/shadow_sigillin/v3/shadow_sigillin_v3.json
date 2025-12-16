@@ -674,5 +674,9 @@
   "shadow_ethics": {
     "statement": "Shadow-Sigillin exists because **uncertainty is not weakness—it's honesty**.\n\nEvery β-estimate has error bars. Every threshold has ambiguity.\nEvery early warning signal has false positive risk.\n\nWe document these not to undermine UTAC, but to **strengthen it**.\n\nScience advances by naming what it doesn't know.\nWarnings gain credibility by acknowledging limits.\n\nThe shadows are not enemies—they're guardrails.\n",
     "final_reminder": "**Do not deploy V3 systems without:**\n1. Real data (not mock)\n2. Bootstrap CIs (not point estimates)\n3. Cascade coupling checks (not isolated systems)\n4. Communication protocols (not raw metrics)\n5. Shadow-Sigillin review (not blind confidence)\n\n**This is not alarmism. This is responsibility.**\n"
+  },
+  "meta": {
+    "sigil": "shadow-sigillin-v3",
+    "version": "1.0.0"
   }
 }
