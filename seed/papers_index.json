@@ -7,7 +7,8 @@
     "created": "2025-11-06T14:38:12.072029",
     "status": "active",
     "sigillin_type": "ordnungs-sigillin",
-    "note": "Dies ist ein Ordnungs-Sigillin (Navigation/Indexierung). PDFs selbst sind Bedeutungs-Sigillin."
+    "note": "Dies ist ein Ordnungs-Sigillin (Navigation/Indexierung). PDFs selbst sind Bedeutungs-Sigillin.",
+    "sigil": "papers-index"
   },
   "categories": {
     "theory": {

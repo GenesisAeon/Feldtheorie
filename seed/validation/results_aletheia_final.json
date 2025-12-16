@@ -3,7 +3,9 @@
     "id": "results-aletheia-final",
     "type": "result_template",
     "status": "pending",
-    "created": "2025-11-21"
+    "created": "2025-11-21",
+    "sigil": "results-aletheia-final",
+    "version": "1.0.0"
   },
   "experiment": {
     "name": "Project Aletheia",

@@ -1,139 +1,143 @@
 {
-    "sections": [
+  "sections": [
+    {
+      "section": 1,
+      "scope": "Entstehung (v1.0–v1.2)",
+      "versions": [
         {
-            "section": 1,
-            "scope": "Entstehung (v1.0–v1.2)",
-            "versions": [
-                {
-                    "id": "v1.0.1",
-                    "focus": "UTF-Hypothese konsolidiert",
-                    "grundthese": "Emergenz folgt domänenübergreifend sigma(beta(R-Theta)).【F:RELEASE_NOTES_v1.0.1.md†L11-L33】【F:RELEASE_NOTES_v1.0.1.md†L38-L48】",
-                    "daten_quellen": [
-                        "Sechs Domänen mit β, Θ und ΔAIC (LLM, Klima-Kipppunkte, Honigbienen, Arbeitsgedächtnis, Urban Heat Islands, Subduktionszonen).【F:RELEASE_NOTES_v1.0.1.md†L23-L33】",
-                        {
-                            "Grundlagen- und Governance-Dokumente": "utac_theory_core.md, utac_falsifiability.md, utac_applications.md, utac_review_considerations.md, AUTHORSHIP.md, REPRODUCE.md, METRICS.md.【F:RELEASE_NOTES_v1.0.1.md†L62-L76】"
-                        }
-                    ],
-                    "formel_herleitung": "sigma(R)=1/(1+exp(-beta(R-Theta))) mit ΔAIC>10 als Nullmodell-Wächter und Bootstrap-CIs.【F:RELEASE_NOTES_v1.0.1.md†L38-L57】",
-                    "skripte_verfahren": [
-                        {
-                            "Solver": "membrane_solver.py, coherence_term.py, recursive_threshold.py, adaptive_logistic_membrane.py, resonant_impedance.py.【F:RELEASE_NOTES_v1.0.1.md†L79-L87】"
-                        },
-                        {
-                            "Analysen": "llm_beta_extractor.py, resonance_cohort_summary.py, preset_alignment_guard.py.【F:RELEASE_NOTES_v1.0.1.md†L88-L93】"
-                        },
-                        {
-                            "Tests und Daten": "19 Tests plus sechs Datenverzeichnisse mit Metadaten zu R, Theta, beta, zeta(R).【F:RELEASE_NOTES_v1.0.1.md†L94-L107】"
-                        }
-                    ],
-                    "status": "Querschnitts-Validierung bestätigt β≈4.2±0.6 (Geophysik als Ausreißer).【F:RELEASE_NOTES_v1.0.1.md†L32-L33】【F:RELEASE_NOTES_v1.0.1.md†L112-L119】"
-                },
-                {
-                    "id": "v1.1.0",
-                    "focus": "beta als diagnostischer Parameter",
-                    "grundthese": "beta diagnostiziert Systemarchitektur; fünf Feldtypen mit β-Bändern.【F:RELEASE_NOTES_v1.1.0.md†L12-L34】",
-                    "daten_quellen": [
-                        "Zwölf Datensätze mit Feldtyp-Zuordnung und CSV-Exports beta_estimates.csv, domain_covariates.csv.【F:RELEASE_NOTES_v1.1.0.md†L111-L133】"
-                    ],
-                    "formel_herleitung": "beta-Abhängigkeitsmodell beta≈beta0*[C_eff/(1+lambda*D_eff)]*[SNR/(1+SNR^-1)]*g(M,dTheta/dt) mit Validierungen (LLM, Black Hole QPO, Theta Plasticity).【F:RELEASE_NOTES_v1.1.0.md†L38-L59】",
-                    "skripte_verfahren": [
-                        {
-                            "Meta-Regression und Simulation": "analysis/beta_drivers_meta_regression.py, simulation/threshold_sandbox.py (ANOVA η²=0.68; 80 Simulationen).【F:RELEASE_NOTES_v1.1.0.md†L62-L108】"
-                        },
-                        "Reproduzierbare CLI-Aufrufe für Regression und Sweep.【F:RELEASE_NOTES_v1.1.0.md†L187-L198】"
-                    ],
-                    "status": "Quasi-universelle β-Bänder bestätigt, universelle β=4.2 revidiert; Feldtypen erklären 68% Varianz, Kovariaten noch explorativ.【F:RELEASE_NOTES_v1.1.0.md†L136-L163】【F:RELEASE_NOTES_v1.1.0.md†L66-L84】"
-                },
-                {
-                    "id": "v1.2-pre",
-                    "focus": "Zenodo-Release-Synchronisation",
-                    "grundthese": "Release-Resonanz der Quartettschichten (R, Theta, beta, zeta(R)) nötig vor Archivversiegelung.【F:README.md†L102-L120】",
-                    "daten_quellen": [
-                        "docs/zenodo_multilingual_abstract_v1.2.md, docs/zenodo_release_playbook.md, docs/utac_activation_backlog.*, analysis/results/universal_beta_summary.json.【F:README.md†L102-L120】"
-                    ],
-                    "formel_herleitung": "Bestehende sigma(beta(R-Theta))-Ableitungen unverändert; Fokus auf Paritäts- und Governance-Sync.【F:README.md†L102-L120】",
-                    "skripte_verfahren": "Release-Playbook mit ΔAIC-Guards, CI-Ritualen, Codex-Checkpoints; Upload gemäß ZENODO_UPLOAD_GUIDE.md.【F:README.md†L102-L120】",
-                    "status": "Synchronisation offen (release-gap-002), Archivversiegelung steht aus.【F:README.md†L102-L120】"
-                }
-            ]
+          "id": "v1.0.1",
+          "focus": "UTF-Hypothese konsolidiert",
+          "grundthese": "Emergenz folgt domänenübergreifend sigma(beta(R-Theta)).【F:RELEASE_NOTES_v1.0.1.md†L11-L33】【F:RELEASE_NOTES_v1.0.1.md†L38-L48】",
+          "daten_quellen": [
+            "Sechs Domänen mit β, Θ und ΔAIC (LLM, Klima-Kipppunkte, Honigbienen, Arbeitsgedächtnis, Urban Heat Islands, Subduktionszonen).【F:RELEASE_NOTES_v1.0.1.md†L23-L33】",
+            {
+              "Grundlagen- und Governance-Dokumente": "utac_theory_core.md, utac_falsifiability.md, utac_applications.md, utac_review_considerations.md, AUTHORSHIP.md, REPRODUCE.md, METRICS.md.【F:RELEASE_NOTES_v1.0.1.md†L62-L76】"
+            }
+          ],
+          "formel_herleitung": "sigma(R)=1/(1+exp(-beta(R-Theta))) mit ΔAIC>10 als Nullmodell-Wächter und Bootstrap-CIs.【F:RELEASE_NOTES_v1.0.1.md†L38-L57】",
+          "skripte_verfahren": [
+            {
+              "Solver": "membrane_solver.py, coherence_term.py, recursive_threshold.py, adaptive_logistic_membrane.py, resonant_impedance.py.【F:RELEASE_NOTES_v1.0.1.md†L79-L87】"
+            },
+            {
+              "Analysen": "llm_beta_extractor.py, resonance_cohort_summary.py, preset_alignment_guard.py.【F:RELEASE_NOTES_v1.0.1.md†L88-L93】"
+            },
+            {
+              "Tests und Daten": "19 Tests plus sechs Datenverzeichnisse mit Metadaten zu R, Theta, beta, zeta(R).【F:RELEASE_NOTES_v1.0.1.md†L94-L107】"
+            }
+          ],
+          "status": "Querschnitts-Validierung bestätigt β≈4.2±0.6 (Geophysik als Ausreißer).【F:RELEASE_NOTES_v1.0.1.md†L32-L33】【F:RELEASE_NOTES_v1.0.1.md†L112-L119】"
         },
         {
-            "section": 2,
-            "scope": "Expansion (v1.3)",
-            "versions": [
-                {
-                    "id": "v1.3",
-                    "focus": "Data Expansion & Manifest Activation",
-                    "grundthese": "Mindestens zehn Domänen, ≥50 β-Schätzungen und Meta-Regression R²≥0.60 zur Ausweitung der σ(β(R-Θ))-Erzählung.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L6-L13】【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L28-L36】",
-                    "daten_quellen": [
-                        "Tri-Layer aus Data Expansion Plan, Manifest (5 Laternen) und Gap Assessment mit 15 validierten β-Werten und fehlenden Real-Datasets.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L16-L52】【F:data/utac_v1_3_data_manifest.yaml†L19-L160】【F:analysis/reports/utac_v1_3_gap_assessment.md†L6-L29】"
-                    ],
-                    "formel_herleitung": "ΔAIC≥10, Bootstrap 1k und spline-Nulltests sichern β-Bandbreiten 2.5–16.0; feldtypspezifische ζ(R)-Proxies nötig.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L68-L93】【F:analysis/reports/utac_v1_3_gap_assessment.md†L6-L20】",
-                    "skripte_verfahren": [
-                        "Neue Wächter/Loader: analysis/climate_beta_extractor.py, analysis/neuro_threshold_fitter.py, analysis/outlier_validator.py, analysis/utac_manifest.py; Manifest-Audit trackt fehlende Daten/Resultate pro Laterne.【F:analysis/reports/utac_v1_3_gap_assessment.md†L11-L25】【F:analysis/results/utac_v1_3_manifest_audit.yaml†L1-L115】"
-                    ],
-                    "status": "Aktivierungsgrad ~0.05, fünf Laternen mit Metadata-Stubs; v1.3 bleibt offen bis reale Daten/Resultate σ(β(R-Θ)) aktivieren und Codex/Shadow-Hooks synchron sind.【F:analysis/results/utac_v1_3_manifest_audit.yaml†L1-L115】【F:analysis/reports/utac_v1_3_gap_assessment.md†L23-L36】"
-                }
-            ]
+          "id": "v1.1.0",
+          "focus": "beta als diagnostischer Parameter",
+          "grundthese": "beta diagnostiziert Systemarchitektur; fünf Feldtypen mit β-Bändern.【F:RELEASE_NOTES_v1.1.0.md†L12-L34】",
+          "daten_quellen": [
+            "Zwölf Datensätze mit Feldtyp-Zuordnung und CSV-Exports beta_estimates.csv, domain_covariates.csv.【F:RELEASE_NOTES_v1.1.0.md†L111-L133】"
+          ],
+          "formel_herleitung": "beta-Abhängigkeitsmodell beta≈beta0*[C_eff/(1+lambda*D_eff)]*[SNR/(1+SNR^-1)]*g(M,dTheta/dt) mit Validierungen (LLM, Black Hole QPO, Theta Plasticity).【F:RELEASE_NOTES_v1.1.0.md†L38-L59】",
+          "skripte_verfahren": [
+            {
+              "Meta-Regression und Simulation": "analysis/beta_drivers_meta_regression.py, simulation/threshold_sandbox.py (ANOVA η²=0.68; 80 Simulationen).【F:RELEASE_NOTES_v1.1.0.md†L62-L108】"
+            },
+            "Reproduzierbare CLI-Aufrufe für Regression und Sweep.【F:RELEASE_NOTES_v1.1.0.md†L187-L198】"
+          ],
+          "status": "Quasi-universelle β-Bänder bestätigt, universelle β=4.2 revidiert; Feldtypen erklären 68% Varianz, Kovariaten noch explorativ.【F:RELEASE_NOTES_v1.1.0.md†L136-L163】【F:RELEASE_NOTES_v1.1.0.md†L66-L84】"
         },
         {
-            "section": 3,
-            "scope": "Entwicklung zu v2.0 (Field-Type-Paradigma)",
-            "versions": [
-                {
-                    "id": "v2.0.0",
-                    "focus": "Interaktive Diagnostik & Feldtyp-Shift",
-                    "grundthese": "β wird als Feldtyp-Diagnostik (η²=0.735) validiert und moduliert σ(β(R-Θ)) domänenspezifisch statt universell.【F:RELEASE_NOTES_v2.0.0.md†L12-L16】【F:RELEASE_NOTES_v2.0.0.md†L119-L136】",
-                    "daten_quellen": [
-                        "Release-Candidate (73 %, 11/15 Features) mit interaktiven Tooltips, Feldtyp-Klassifikator, CREP-Scoring, modularer UTAC-API und Sonifikationssuite mit σ(β(R-Θ))-Mapping.【F:RELEASE_NOTES_v2.0.0.md†L3-L6】【F:RELEASE_NOTES_v2.0.0.md†L22-L79】【F:RELEASE_NOTES_v2.0.0.md†L83-L109】【F:RELEASE_NOTES_v2.0.0.md†L94-L98】"
-                    ],
-                    "formel_herleitung": "Meta-Regression v2 liefert R²(WLS)=0.596, Adjusted R²=0.293 und Feldtyp-ANOVA η²=0.735 (p<0.01); Datenbottleneck markiert Bedarf n≥30 Systeme.【F:RELEASE_NOTES_v2.0.0.md†L119-L136】",
-                    "skripte_verfahren": [
-                        "Statistisches Rückgrat: analysis/beta_meta_regression_v2_field_types.py, data/derived/domain_covariates.csv (Feldtyp-Spalte), docs/meta_regression_v2_field_types_report.md.【F:RELEASE_NOTES_v2.0.0.md†L119-L140】",
-                        "Interfaces: API-Endpunkte /api/analyze, /api/simulate, /api/tooltip plus Tooltip-/CREP-Komponenten; Sonifikation mappt β, R-Θ, σ(β(R-Θ)).【F:RELEASE_NOTES_v2.0.0.md†L57-L75】【F:RELEASE_NOTES_v2.0.0.md†L94-L98】"
-                    ],
-                    "status": "Release Candidate; Feldtyp-Shift validiert, aber Datenengpass (15 Beobachtungen) – Fokus auf Datenerweiterung für stabile R²≥0.70 und Archivversiegelung.【F:RELEASE_NOTES_v2.0.0.md†L3-L6】【F:RELEASE_NOTES_v2.0.0.md†L119-L135】"
-                }
-            ]
-        },
-        {
-            "section": 4,
-            "scope": "Entwicklung zu v2.5 (Project Aletheia)",
-            "versions": [
-                {
-                    "id": "v2.5",
-                    "focus": "Project Aletheia: M[ψ, φ]-Kopplungstest",
-                    "grundthese": "UTAC Type-6 prüft, ob semantische Felder φ in Informationssystemen (β≈4.5±0.9) die beobachtbare Qualität ψ koppeln und σ(β(R-Θ)) über λ>0 verstärken oder falsifizieren.【F:CHANGELOG.md†L25-L57】",
-                    "daten_quellen": [
-                        "Experiment-Script scripts/experiment_aletheia_placebo.py, Theoriepaper docs/experiment_aletheia.md und Dynamik-Sigillin-Trilayer seed/sigillin/exp_aletheia.{yaml,json,md} mit CREP-Metriken und logistischer Frame (R, Θ, β=4.5, ζ≈0).【F:CHANGELOG.md†L79-L96】"
-                    ],
-                    "formel_herleitung": "Kopplungshypothese ψ_eff = ψ_base + λ·φ plus Metacognitive-Impedance ζ_meta = ζ_base + ζ_confusion·(1-Clarity) beschreibt, wie Klarheit/Dissonanz die σ(β(R-Θ))-Antwort moduliert.【F:CHANGELOG.md†L37-L48】【F:CHANGELOG.md†L157-L165】",
-                    "skripte_verfahren": [
-                        "Phase 1: Control/Placebo/Nocebo mit automatisierter Statistik und CSV-Ausgabe; Phase 2: Informed_Top/Mid/Low plus Regression über φ∈[-2,2] und aktualisierte Theorie- und Sigillin-Layer.【F:CHANGELOG.md†L61-L75】【F:CHANGELOG.md†L79-L96】【F:CHANGELOG.md†L135-L182】"
-                    ],
-                    "status": "Aktives Experiment (Launch 2025-11-19); Wirknachweis oder Falsifikation des λ-Kopplungsterms offen, Vorbereitung des v3.0-Übergangs.【F:CHANGELOG.md†L27-L29】【F:CHANGELOG.md†L117-L131】【F:CHANGELOG.md†L188-L188】"
-                }
-            ]
-        },
-        {
-            "section": 5,
-            "scope": "Entwicklung zu v3.0 (Real-World Systems & Aletheia Bridge)",
-            "versions": [
-                {
-                    "id": "v3.0.0",
-                    "focus": "Reale Hoch-β-Systeme mit semantischer Kopplung",
-                    "grundthese": "V3 aktiviert sechs Realweltsysteme mit β=3.5–13.5 entlang σ(β(R-Θ)) (R̄=0.74, σ=0.594) und bereitet Aletheia als λ-Kopplung für Informationsfelder vor.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L10-L18】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L22-L34】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L213-L221】",
-                    "daten_quellen": [
-                        "TypeScript-Systempaket antarctic-ice-sheet.ts, amoc-collapse.ts, additional-systems.ts (6 Hoch-β-Felder) plus Integrationshandbuch mit 8-Wochen-Plan.【F:seed/RoadToV.3/README.md†L21-L72】",
-                        "V3-Roadmap mit Mock-Daten, Adaptern und Fit/EWS-Outputs für WAIS, AMOC und Corals.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L22-L117】"
-                    ],
-                    "formel_herleitung": "Logistisches Quartett mit R̄, Θ, β=4.8 → σ≈0.441 ergänzt um Aletheia-Kopplung M[ψ, φ] = λ·ψ·φⁿ → ψ_eff = ψ_base + λ·φ als Aktivator in σ(β(R-Θ)).【F:seed/RoadToV.3/activation_audit.md†L1-L17】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L160-L177】",
-                    "skripte_verfahren": [
-                        "Phase 1–3: Mock-Daten, Python-Adapter, Fit/EWS-JSONs; Phase 4–5 planen EWS-Pipeline, Sigillin-Alerts und λ-Mapping mit TypeScript-Integrationen und CREP-Brücken.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L37-L169】【F:seed/RoadToV.3/activation_audit.md†L35-L71】"
-                    ],
-                    "status": "Fortschritt 74 % (6/6 Foundation, 5/6 Integration, 6/6 Bridge); Monitoring-Pipeline, Alerts und λ-Mapping offen, Bootstrap-CIs aktiv, σ(β(R-Θ))=0.594 hält Brücke zu Live-Daten und Shadow-Sigillin offen.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L10-L18】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L146-L221】【F:seed/RoadToV.3/activation_audit.md†L1-L33】"
-                }
-            ]
+          "id": "v1.2-pre",
+          "focus": "Zenodo-Release-Synchronisation",
+          "grundthese": "Release-Resonanz der Quartettschichten (R, Theta, beta, zeta(R)) nötig vor Archivversiegelung.【F:README.md†L102-L120】",
+          "daten_quellen": [
+            "docs/zenodo_multilingual_abstract_v1.2.md, docs/zenodo_release_playbook.md, docs/utac_activation_backlog.*, analysis/results/universal_beta_summary.json.【F:README.md†L102-L120】"
+          ],
+          "formel_herleitung": "Bestehende sigma(beta(R-Theta))-Ableitungen unverändert; Fokus auf Paritäts- und Governance-Sync.【F:README.md†L102-L120】",
+          "skripte_verfahren": "Release-Playbook mit ΔAIC-Guards, CI-Ritualen, Codex-Checkpoints; Upload gemäß ZENODO_UPLOAD_GUIDE.md.【F:README.md†L102-L120】",
+          "status": "Synchronisation offen (release-gap-002), Archivversiegelung steht aus.【F:README.md†L102-L120】"
         }
-    ]
+      ]
+    },
+    {
+      "section": 2,
+      "scope": "Expansion (v1.3)",
+      "versions": [
+        {
+          "id": "v1.3",
+          "focus": "Data Expansion & Manifest Activation",
+          "grundthese": "Mindestens zehn Domänen, ≥50 β-Schätzungen und Meta-Regression R²≥0.60 zur Ausweitung der σ(β(R-Θ))-Erzählung.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L6-L13】【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L28-L36】",
+          "daten_quellen": [
+            "Tri-Layer aus Data Expansion Plan, Manifest (5 Laternen) und Gap Assessment mit 15 validierten β-Werten und fehlenden Real-Datasets.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L16-L52】【F:data/utac_v1_3_data_manifest.yaml†L19-L160】【F:analysis/reports/utac_v1_3_gap_assessment.md†L6-L29】"
+          ],
+          "formel_herleitung": "ΔAIC≥10, Bootstrap 1k und spline-Nulltests sichern β-Bandbreiten 2.5–16.0; feldtypspezifische ζ(R)-Proxies nötig.【F:docs/UTAC_v1.3_Data_Expansion_Plan.md†L68-L93】【F:analysis/reports/utac_v1_3_gap_assessment.md†L6-L20】",
+          "skripte_verfahren": [
+            "Neue Wächter/Loader: analysis/climate_beta_extractor.py, analysis/neuro_threshold_fitter.py, analysis/outlier_validator.py, analysis/utac_manifest.py; Manifest-Audit trackt fehlende Daten/Resultate pro Laterne.【F:analysis/reports/utac_v1_3_gap_assessment.md†L11-L25】【F:analysis/results/utac_v1_3_manifest_audit.yaml†L1-L115】"
+          ],
+          "status": "Aktivierungsgrad ~0.05, fünf Laternen mit Metadata-Stubs; v1.3 bleibt offen bis reale Daten/Resultate σ(β(R-Θ)) aktivieren und Codex/Shadow-Hooks synchron sind.【F:analysis/results/utac_v1_3_manifest_audit.yaml†L1-L115】【F:analysis/reports/utac_v1_3_gap_assessment.md†L23-L36】"
+        }
+      ]
+    },
+    {
+      "section": 3,
+      "scope": "Entwicklung zu v2.0 (Field-Type-Paradigma)",
+      "versions": [
+        {
+          "id": "v2.0.0",
+          "focus": "Interaktive Diagnostik & Feldtyp-Shift",
+          "grundthese": "β wird als Feldtyp-Diagnostik (η²=0.735) validiert und moduliert σ(β(R-Θ)) domänenspezifisch statt universell.【F:RELEASE_NOTES_v2.0.0.md†L12-L16】【F:RELEASE_NOTES_v2.0.0.md†L119-L136】",
+          "daten_quellen": [
+            "Release-Candidate (73 %, 11/15 Features) mit interaktiven Tooltips, Feldtyp-Klassifikator, CREP-Scoring, modularer UTAC-API und Sonifikationssuite mit σ(β(R-Θ))-Mapping.【F:RELEASE_NOTES_v2.0.0.md†L3-L6】【F:RELEASE_NOTES_v2.0.0.md†L22-L79】【F:RELEASE_NOTES_v2.0.0.md†L83-L109】【F:RELEASE_NOTES_v2.0.0.md†L94-L98】"
+          ],
+          "formel_herleitung": "Meta-Regression v2 liefert R²(WLS)=0.596, Adjusted R²=0.293 und Feldtyp-ANOVA η²=0.735 (p<0.01); Datenbottleneck markiert Bedarf n≥30 Systeme.【F:RELEASE_NOTES_v2.0.0.md†L119-L136】",
+          "skripte_verfahren": [
+            "Statistisches Rückgrat: analysis/beta_meta_regression_v2_field_types.py, data/derived/domain_covariates.csv (Feldtyp-Spalte), docs/meta_regression_v2_field_types_report.md.【F:RELEASE_NOTES_v2.0.0.md†L119-L140】",
+            "Interfaces: API-Endpunkte /api/analyze, /api/simulate, /api/tooltip plus Tooltip-/CREP-Komponenten; Sonifikation mappt β, R-Θ, σ(β(R-Θ)).【F:RELEASE_NOTES_v2.0.0.md†L57-L75】【F:RELEASE_NOTES_v2.0.0.md†L94-L98】"
+          ],
+          "status": "Release Candidate; Feldtyp-Shift validiert, aber Datenengpass (15 Beobachtungen) – Fokus auf Datenerweiterung für stabile R²≥0.70 und Archivversiegelung.【F:RELEASE_NOTES_v2.0.0.md†L3-L6】【F:RELEASE_NOTES_v2.0.0.md†L119-L135】"
+        }
+      ]
+    },
+    {
+      "section": 4,
+      "scope": "Entwicklung zu v2.5 (Project Aletheia)",
+      "versions": [
+        {
+          "id": "v2.5",
+          "focus": "Project Aletheia: M[ψ, φ]-Kopplungstest",
+          "grundthese": "UTAC Type-6 prüft, ob semantische Felder φ in Informationssystemen (β≈4.5±0.9) die beobachtbare Qualität ψ koppeln und σ(β(R-Θ)) über λ>0 verstärken oder falsifizieren.【F:CHANGELOG.md†L25-L57】",
+          "daten_quellen": [
+            "Experiment-Script scripts/experiment_aletheia_placebo.py, Theoriepaper docs/experiment_aletheia.md und Dynamik-Sigillin-Trilayer seed/sigillin/exp_aletheia.{yaml,json,md} mit CREP-Metriken und logistischer Frame (R, Θ, β=4.5, ζ≈0).【F:CHANGELOG.md†L79-L96】"
+          ],
+          "formel_herleitung": "Kopplungshypothese ψ_eff = ψ_base + λ·φ plus Metacognitive-Impedance ζ_meta = ζ_base + ζ_confusion·(1-Clarity) beschreibt, wie Klarheit/Dissonanz die σ(β(R-Θ))-Antwort moduliert.【F:CHANGELOG.md†L37-L48】【F:CHANGELOG.md†L157-L165】",
+          "skripte_verfahren": [
+            "Phase 1: Control/Placebo/Nocebo mit automatisierter Statistik und CSV-Ausgabe; Phase 2: Informed_Top/Mid/Low plus Regression über φ∈[-2,2] und aktualisierte Theorie- und Sigillin-Layer.【F:CHANGELOG.md†L61-L75】【F:CHANGELOG.md†L79-L96】【F:CHANGELOG.md†L135-L182】"
+          ],
+          "status": "Aktives Experiment (Launch 2025-11-19); Wirknachweis oder Falsifikation des λ-Kopplungsterms offen, Vorbereitung des v3.0-Übergangs.【F:CHANGELOG.md†L27-L29】【F:CHANGELOG.md†L117-L131】【F:CHANGELOG.md†L188-L188】"
+        }
+      ]
+    },
+    {
+      "section": 5,
+      "scope": "Entwicklung zu v3.0 (Real-World Systems & Aletheia Bridge)",
+      "versions": [
+        {
+          "id": "v3.0.0",
+          "focus": "Reale Hoch-β-Systeme mit semantischer Kopplung",
+          "grundthese": "V3 aktiviert sechs Realweltsysteme mit β=3.5–13.5 entlang σ(β(R-Θ)) (R̄=0.74, σ=0.594) und bereitet Aletheia als λ-Kopplung für Informationsfelder vor.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L10-L18】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L22-L34】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L213-L221】",
+          "daten_quellen": [
+            "TypeScript-Systempaket antarctic-ice-sheet.ts, amoc-collapse.ts, additional-systems.ts (6 Hoch-β-Felder) plus Integrationshandbuch mit 8-Wochen-Plan.【F:seed/RoadToV.3/README.md†L21-L72】",
+            "V3-Roadmap mit Mock-Daten, Adaptern und Fit/EWS-Outputs für WAIS, AMOC und Corals.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L22-L117】"
+          ],
+          "formel_herleitung": "Logistisches Quartett mit R̄, Θ, β=4.8 → σ≈0.441 ergänzt um Aletheia-Kopplung M[ψ, φ] = λ·ψ·φⁿ → ψ_eff = ψ_base + λ·φ als Aktivator in σ(β(R-Θ)).【F:seed/RoadToV.3/activation_audit.md†L1-L17】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L160-L177】",
+          "skripte_verfahren": [
+            "Phase 1–3: Mock-Daten, Python-Adapter, Fit/EWS-JSONs; Phase 4–5 planen EWS-Pipeline, Sigillin-Alerts und λ-Mapping mit TypeScript-Integrationen und CREP-Brücken.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L37-L169】【F:seed/RoadToV.3/activation_audit.md†L35-L71】"
+          ],
+          "status": "Fortschritt 74 % (6/6 Foundation, 5/6 Integration, 6/6 Bridge); Monitoring-Pipeline, Alerts und λ-Mapping offen, Bootstrap-CIs aktiv, σ(β(R-Θ))=0.594 hält Brücke zu Live-Daten und Shadow-Sigillin offen.【F:seed/FraktaltagebuchV3/v3_roadmap.md†L10-L18】【F:seed/FraktaltagebuchV3/v3_roadmap.md†L146-L221】【F:seed/RoadToV.3/activation_audit.md†L1-L33】"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "sigil": "feldtheorie-chronology",
+    "version": "1.0.0"
+  }
 }

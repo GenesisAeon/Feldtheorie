@@ -5,80 +5,77 @@ meta:
   updated: '2025-12-18T00:00:00Z'
   logistic:
     R: 'Metaquest campaign directory backlog: map, compass, sigil, lantern shelf, telemetry hooks.'
-    Theta: 'Bridge dashboard + parity brief + codex entry echo same timestamp within 24h.'
+    Theta: Bridge dashboard + parity brief + codex entry echo same timestamp within 24h.
     beta: 4.85
-    zeta: 'Damped when BreakPoint rituals and sigillin_sync exports cite campaign scope.'
-  resonance: |
-    Directory index that lets new agents traverse the Metaquest campaign lane.
-    It braids map, compass, lanterns, and codex hooks so σ(β(R-Θ)) stays visible
-    during launch preparation.
+    zeta: Damped when BreakPoint rituals and sigillin_sync exports cite campaign scope.
+  resonance: Directory index braiding map, compass, lanterns, and codex hooks for the Metaquest campaign lane.
   parent_links:
-    bridge_index: 'seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml'
-    campaign_map: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml'
-    campaign_sigil: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml'
-  shadow_coupling: 'seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.yaml'
+    bridge_index: seed/bedeutungssigillin/metaquest/metaquest_meaning_index.yaml
+    campaign_map: seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
+    campaign_sigil: seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
+  shadow_coupling: seed/shadow_sigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_shadow_index.yaml
 lanterns:
-  - id: mq-sci-lantern-map
-    title: Metaquest Campaign Map
-    path: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml'
-    logistic_focus: 'High-level storyline with assets + activation gaps.'
-    parity_links:
-      - docs/utac_status_alignment_v1.2.md#metaquest-handshake
-      - seed/Manuskriptfinalisierung und Kampagnenstart.pdf
-    evidence:
-      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md
-    status: active
-  - id: mq-sci-lantern-compass
-    title: Metaquest Campaign Compass
-    path: 'seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml'
-    logistic_focus: 'Operational vectors for manuscript, outreach, telemetry.'
-    parity_links:
-      - docs/metaquest_parity_brief.md
-      - seed/codexfeedback.yaml
-    evidence:
-      - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md
-    status: active
-  - id: mq-sci-lantern-sigil
-    title: Metaquest Campaign Sigil
-    path: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml'
-    logistic_focus: 'Meaning layer bridging campaign narrative with UTAC ethics.'
-    parity_links:
-      - docs/metaquest_parity_brief.md
-      - ETHICS.md
-    evidence:
-      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md
-    status: active
-  - id: mq-sci-lantern-shelf
-    title: Campaign Lantern Shelf
-    path: 'seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.yaml'
-    logistic_focus: 'Detailed orientation for manuscripts, outreach, telemetry.'
-    parity_links:
-      - seed/codexfeedback.yaml
-      - scripts/sigillin_sync.py
-    evidence:
-      - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.md
-    status: active
-  - id: mq-sci-lantern-telemetry
-    title: Codex & Telemetry Hooks
-    path: 'scripts/sigillin_sync.py'
-    logistic_focus: 'Ensures telemetry exports register campaign scope.'
-    parity_links:
-      - docs/utac_status_alignment_v1.2.md#implementation-map
-      - seed/codexfeedback.json
-    evidence:
-      - tests/test_sigillin_sync.py
-    status: active
+- id: mq-sci-lantern-map
+  title: Metaquest Campaign Map
+  path: seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.yaml
+  logistic_focus: High-level storyline with assets + activation gaps.
+  parity_links:
+  - docs/utac_status_alignment_v1.2.md#metaquest-handshake
+  - seed/Manuskriptfinalisierung und Kampagnenstart.pdf
+  evidence:
+  - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_map.md
+  status: active
+- id: mq-sci-lantern-compass
+  title: Metaquest Campaign Compass
+  path: seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.yaml
+  logistic_focus: Operational vectors for manuscript, outreach, telemetry.
+  parity_links:
+  - docs/metaquest_parity_brief.md
+  - seed/codexfeedback.yaml
+  evidence:
+  - seed/bedeutungssigillin/metaquest/wissenschaftsprojekt/metaquest_campaign_compass.md
+  status: active
+- id: mq-sci-lantern-sigil
+  title: Metaquest Campaign Sigil
+  path: seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.yaml
+  logistic_focus: Meaning layer bridging campaign narrative with UTAC ethics.
+  parity_links:
+  - docs/metaquest_parity_brief.md
+  - ETHICS.md
+  evidence:
+  - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/metaquest_campaign_sigil.md
+  status: active
+- id: mq-sci-lantern-shelf
+  title: Campaign Lantern Shelf
+  path: seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.yaml
+  logistic_focus: Detailed orientation for manuscripts, outreach, telemetry.
+  parity_links:
+  - seed/codexfeedback.yaml
+  - scripts/sigillin_sync.py
+  evidence:
+  - seed/bedeutungssigillin/wissenschaftsprojekt/metaquest/lanterns/metaquest_campaign_lanterns.md
+  status: active
+- id: mq-sci-lantern-telemetry
+  title: Codex & Telemetry Hooks
+  path: scripts/sigillin_sync.py
+  logistic_focus: Ensures telemetry exports register campaign scope.
+  parity_links:
+  - docs/utac_status_alignment_v1.2.md#implementation-map
+  - seed/codexfeedback.json
+  evidence:
+  - tests/test_sigillin_sync.py
+  status: active
 activation_hooks:
-  - trigger: 'Campaign milestone logged'
-    action: 'Update map, compass, lantern shelf, and codex with shared timestamp.'
-    guard: 'If delta exceeds 24h, escalate via mq-sci-shadow-index-002.'
-  - trigger: 'Telemetry export completed'
-    action: 'Record run id in compass + lanterns, notify shadow index.'
-    guard: 'Missing export for one sprint → mq-sci-shadow-index-003.'
+- trigger: Campaign milestone logged
+  action: Update map, compass, lantern shelf, and codex with shared timestamp.
+  guard: If delta exceeds 24h, escalate via mq-sci-shadow-index-002.
+- trigger: Telemetry export completed
+  action: Record run id in compass + lanterns, notify shadow index.
+  guard: Missing export for one sprint → mq-sci-shadow-index-003.
 null_model:
-  description: 'Null = Campaign directory drifts; map, compass, and sigil fall out of sync with bridge + codex.'
+  description: Null = Campaign directory drifts; map, compass, and sigil fall out of sync with bridge + codex.
   detection:
-    - signal: 'Bridge dashboard timestamp older than campaign compass by >24h.'
-      mitigation: 'Run sigillin_sync, refresh compass + map, log codex note.'
-    - signal: 'Codex lacks mq-sci reference for latest milestone.'
-      mitigation: 'Append codex entry with mq-sci scope, update lantern shelf.'
+  - signal: Bridge dashboard timestamp older than campaign compass by >24h.
+    mitigation: Run sigillin_sync, refresh compass + map, log codex note.
+  - signal: Codex lacks mq-sci reference for latest milestone.
+    mitigation: Append codex entry with mq-sci scope, update lantern shelf.

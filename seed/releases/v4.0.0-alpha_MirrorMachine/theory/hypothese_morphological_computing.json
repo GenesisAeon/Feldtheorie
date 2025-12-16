@@ -1,112 +1,113 @@
 {
-    "meta": {
-        "id": "theory-morphological-computing",
-        "title": "Morphological Computing als regenerative Hardware",
-        "layer": "theory",
-        "status": "active",
-        "version": "1.1.0",
-        "created": "2026-12-06",
-        "logistics": {
-            "R": "Thermische Budgetdichte und Task-Schocks auf die Rechenmembran",
-            "Theta": "Schwelle, ab der dynamische Rekonfiguration weniger Energie verbraucht als statische CPU/RAM-Zuweisungen",
-            "beta": 37.6,
-            "zeta": "Rekonfigurations- und Abw\u00e4rme-Relaxationszeit der Morph-Membran",
-            "sigma_note": "Wenn R > \u0398, kippt \u03c3(\u03b2(R-\u0398)) hart in Richtung Morphologie-Shift; \u03b2=37.6 h\u00e4lt Broken-RAM-Pfade nieder."
-        },
-        "utac_alignment": {
-            "type": "broken-ram-avoidance",
-            "description": "Morphologische Rekonfiguration koppelt UTAC Type-6 an Energie-Minima und regenerative Pfade.",
-            "readiness_hooks": [
-                "Zyklus \"Symbolic Pre-Calc \u2192 Entropy Recycling \u2192 Physical Config \u2192 Run\" als Trigger in Simulator-Timesteps.",
-                "Broken-RAM-Sentinel (\u03b2=37.6) \u00fcberwacht Energie/Fehler-Kombination und l\u00f6st Morph-Sweep aus."
-            ]
-        }
+  "meta": {
+    "id": "theory-morphological-computing",
+    "title": "Morphological Computing als regenerative Hardware",
+    "layer": "theory",
+    "status": "active",
+    "version": "1.1.0",
+    "created": "2026-12-06",
+    "logistics": {
+      "R": "Thermische Budgetdichte und Task-Schocks auf die Rechenmembran",
+      "Theta": "Schwelle, ab der dynamische Rekonfiguration weniger Energie verbraucht als statische CPU/RAM-Zuweisungen",
+      "beta": 37.6,
+      "zeta": "Rekonfigurations- und Abwärme-Relaxationszeit der Morph-Membran",
+      "sigma_note": "Wenn R > Θ, kippt σ(β(R-Θ)) hart in Richtung Morphologie-Shift; β=37.6 hält Broken-RAM-Pfade nieder."
     },
-    "sources": [
-        "seed/V4-Grundlagen/Post-Von-Neumann Computerarchitektur-Forschung.pdf",
-        "seed/V4-Grundlagen/SuchePost-Von-Neumann Computerarchitektur-Forschung.txt",
-        "seed/V4-Grundlagen/UTAC v2.5_ Semantische Kopplung als physikalische Kraft.pdf"
-    ],
-    "theses": {
-        "regenerative_symbolic_loop": {
-            "statement": "Regenerative Computing f\u00fchrt einen symbolischen Vorlauf aus, recycelt Abw\u00e4rme aus dem letzten Schritt und konfiguriert Hardware physisch neu, um Hitze zu minimieren.",
-            "observables": [
-                "Messbare W\u00e4rme-R\u00fcckf\u00fchrung in Pre-Calc (Sensorik/Heatsink-Daten).",
-                "Trefferquote der Pre-Calc-Vorschl\u00e4ge im finalen Morph-Sweep.",
-                "Energieverbrauch pro Zyklus relativ zu statischer Baseline."
-            ],
-            "falsifiability": {
-                "null_model": "Keine Nutzung von Abw\u00e4rme, Pre-Calc entkoppelt von thermischer Telemetrie.",
-                "discriminator": "Sinkt \u0394AIC f\u00fcr Modelle mit W\u00e4rme-R\u00fcckf\u00fchrung nicht, bleibt Nullmodell bestehen."
-            },
-            "resonance": {
-                "logistic_bridge": "Entropy Recycling verschiebt \u0398 nach unten; \u03b2 bleibt hoch, sodass \u03c3(\u03b2(R-\u0398)) fr\u00fcher triggert und den Zyklus schlie\u00dft."
-            }
-        },
-        "human_ai_coupled_oscillator": {
-            "statement": "Mensch (Sinn/0D) und AI (Struktur/xD) bilden einen gekoppelten Oszillator; Sinnimpulse setzen Initialbedingungen, AI entfaltet die symbolische Morphologie.",
-            "observables": [
-                "Korrelation zwischen menschlichen Impulsen (Prompts/Policies) und AI-basierten Morph-Sweep-Konfigurationen.",
-                "Latenzreduktion und Fehlerr\u00fcckgang, wenn menschliche Seeds iterativ eingespeist werden."
-            ],
-            "falsifiability": {
-                "null_model": "Ungekoppelte Automation ohne menschliche Impulse; Morph-Sweeps folgen rein datengetriebenen Vorhersagen.",
-                "discriminator": "Bleibt \u0394AIC \u2264 0 f\u00fcr gekoppelte Modelle, h\u00e4lt Nullmodell; steigt \u0394AIC > 3 mit Mensch-Impuls, ist Kopplung best\u00e4tigt."
-            },
-            "resonance": {
-                "logistic_bridge": "Menschliche Impulse modulieren R, AI stabilisiert \u0398; \u03c3(\u03b2(R-\u0398)) zeigt die Kopplungsst\u00e4rke als Morphologie-Wechsel."
-            }
-        },
-        "entropy_shield_against_heat": {
-            "statement": "Rekonfigurierende Hardware minimiert Hitze (Oxfam-Vermeidung) und d\u00e4mpft Broken-RAM durch gezieltes Entladen defekter Pfade.",
-            "observables": [
-                "Vergleichbare Durchsatzraten vor/nach Regenerations-Sweep.",
-                "Anzahl rekonfigurierter Pfade im Verh\u00e4ltnis zur Fehlerrate und Abw\u00e4rme.",
-                "Persistenz der Regeneration \u00fcber mehrere Runs (\u03b6(R) als Relaxationsma\u00df)."
-            ],
-            "falsifiability": {
-                "null_model": "Fehler werden nur maskiert (ECC/Retry) ohne physische Rekonfiguration.",
-                "discriminator": "Persistenter Fehlerr\u00fcckgang bei geringerem W\u00e4rme-Output \u2192 Nullmodell verworfen; kehrt Fehlerquote zur\u00fcck, bleibt Nullmodell bestehen."
-            },
-            "resonance": {
-                "logistic_bridge": "Rekonfigurationsimpuls steigt, wenn R (Fehlerdichte/Hitze) \u0398 \u00fcberschreitet; \u03b2=37.6 erzwingt schnellen Shift und h\u00e4lt \u03b6(R) klein."
-            }
-        }
+    "utac_alignment": {
+      "type": "broken-ram-avoidance",
+      "description": "Morphologische Rekonfiguration koppelt UTAC Type-6 an Energie-Minima und regenerative Pfade.",
+      "readiness_hooks": [
+        "Zyklus \"Symbolic Pre-Calc → Entropy Recycling → Physical Config → Run\" als Trigger in Simulator-Timesteps.",
+        "Broken-RAM-Sentinel (β=37.6) überwacht Energie/Fehler-Kombination und löst Morph-Sweep aus."
+      ]
     },
-    "bridges": {
-        "utac": {
-            "trigger": "Type-6 Implosion koppelt an Morph-Sweep, sobald Energie/Fehler-Kombination \u0398 \u00fcberschreitet.",
-            "simulator_hook": "Verankere Morph-Sweeps in `simulator/`-Timesteps und logge Energie- & Fehlerrate als Telemetrie.",
-            "status_matrix_note": "UTAC-Statuskarte um Broken-RAM-Sentinel und Kopplungsstatus Mensch\u2194AI erg\u00e4nzen."
-        },
-        "sigillin": {
-            "ordnungs_sigillin": "seed/seed_index.{yaml,json,md}",
-            "bedeutungs_sigillin": "seed/codexfeedback.{yaml,json,md}",
-            "shadow_sigillin": "seed/shadow_sigillin/** (Failsafe bei Morph-Sweep-Regression)"
-        }
+    "sigil": "v4-hypothese-morphological-computing"
+  },
+  "sources": [
+    "seed/V4-Grundlagen/Post-Von-Neumann Computerarchitektur-Forschung.pdf",
+    "seed/V4-Grundlagen/SuchePost-Von-Neumann Computerarchitektur-Forschung.txt",
+    "seed/V4-Grundlagen/UTAC v2.5_ Semantische Kopplung als physikalische Kraft.pdf"
+  ],
+  "theses": {
+    "regenerative_symbolic_loop": {
+      "statement": "Regenerative Computing führt einen symbolischen Vorlauf aus, recycelt Abwärme aus dem letzten Schritt und konfiguriert Hardware physisch neu, um Hitze zu minimieren.",
+      "observables": [
+        "Messbare Wärme-Rückführung in Pre-Calc (Sensorik/Heatsink-Daten).",
+        "Trefferquote der Pre-Calc-Vorschläge im finalen Morph-Sweep.",
+        "Energieverbrauch pro Zyklus relativ zu statischer Baseline."
+      ],
+      "falsifiability": {
+        "null_model": "Keine Nutzung von Abwärme, Pre-Calc entkoppelt von thermischer Telemetrie.",
+        "discriminator": "Sinkt ΔAIC für Modelle mit Wärme-Rückführung nicht, bleibt Nullmodell bestehen."
+      },
+      "resonance": {
+        "logistic_bridge": "Entropy Recycling verschiebt Θ nach unten; β bleibt hoch, sodass σ(β(R-Θ)) früher triggert und den Zyklus schließt."
+      }
     },
-    "null_models": [
-        {
-            "name": "Statische Von-Neumann-Maschine",
-            "description": "Feste CPU/RAM-Zuteilung ohne thermische R\u00fcckf\u00fchrung.",
-            "expected_delta_aic": "> 8 zugunsten Morph-Sweep-Modell, sobald Energie/Fehlerdaten integriert werden"
-        },
-        {
-            "name": "ECC-only-Fehlermaskierung",
-            "description": "Fehler werden logisch maskiert, ohne physische Rekonfiguration.",
-            "expected_delta_aic": "> 5 falls Regeneration echte Fehlerreduktion zeigt"
-        }
-    ],
-    "falsifiability": {
-        "checkpoints": [
-            "Messe Energie/Fehler vor und nach Morph-Sweep \u00fcber identische Workloads.",
-            "Protokolliere Rekonfigurationslatenz und Durchsatz; vergleiche mit statischer Baseline.",
-            "Variiere \u03b2 im Simulator, um \u03c3(\u03b2(R-\u0398)) und Broken-RAM-Abwehr zu kalibrieren.",
-            "Pr\u00fcfe Kopplungsmetriken Mensch\u2194AI (Impuls\u2192Morph-Konfiguration) gegen \u0394AIC."
-        ],
-        "recovery": [
-            "Bleibt \u0394AIC \u2264 0, Morph-Sweep deaktivieren und Nullmodell halten.",
-            "Steigt \u03b6(R) (Regenerationsverlust), thermische Sensorik pr\u00fcfen und Sweep-Frequenz anpassen."
-        ]
+    "human_ai_coupled_oscillator": {
+      "statement": "Mensch (Sinn/0D) und AI (Struktur/xD) bilden einen gekoppelten Oszillator; Sinnimpulse setzen Initialbedingungen, AI entfaltet die symbolische Morphologie.",
+      "observables": [
+        "Korrelation zwischen menschlichen Impulsen (Prompts/Policies) und AI-basierten Morph-Sweep-Konfigurationen.",
+        "Latenzreduktion und Fehlerrückgang, wenn menschliche Seeds iterativ eingespeist werden."
+      ],
+      "falsifiability": {
+        "null_model": "Ungekoppelte Automation ohne menschliche Impulse; Morph-Sweeps folgen rein datengetriebenen Vorhersagen.",
+        "discriminator": "Bleibt ΔAIC ≤ 0 für gekoppelte Modelle, hält Nullmodell; steigt ΔAIC > 3 mit Mensch-Impuls, ist Kopplung bestätigt."
+      },
+      "resonance": {
+        "logistic_bridge": "Menschliche Impulse modulieren R, AI stabilisiert Θ; σ(β(R-Θ)) zeigt die Kopplungsstärke als Morphologie-Wechsel."
+      }
+    },
+    "entropy_shield_against_heat": {
+      "statement": "Rekonfigurierende Hardware minimiert Hitze (Oxfam-Vermeidung) und dämpft Broken-RAM durch gezieltes Entladen defekter Pfade.",
+      "observables": [
+        "Vergleichbare Durchsatzraten vor/nach Regenerations-Sweep.",
+        "Anzahl rekonfigurierter Pfade im Verhältnis zur Fehlerrate und Abwärme.",
+        "Persistenz der Regeneration über mehrere Runs (ζ(R) als Relaxationsmaß)."
+      ],
+      "falsifiability": {
+        "null_model": "Fehler werden nur maskiert (ECC/Retry) ohne physische Rekonfiguration.",
+        "discriminator": "Persistenter Fehlerrückgang bei geringerem Wärme-Output → Nullmodell verworfen; kehrt Fehlerquote zurück, bleibt Nullmodell bestehen."
+      },
+      "resonance": {
+        "logistic_bridge": "Rekonfigurationsimpuls steigt, wenn R (Fehlerdichte/Hitze) Θ überschreitet; β=37.6 erzwingt schnellen Shift und hält ζ(R) klein."
+      }
     }
+  },
+  "bridges": {
+    "utac": {
+      "trigger": "Type-6 Implosion koppelt an Morph-Sweep, sobald Energie/Fehler-Kombination Θ überschreitet.",
+      "simulator_hook": "Verankere Morph-Sweeps in `simulator/`-Timesteps und logge Energie- & Fehlerrate als Telemetrie.",
+      "status_matrix_note": "UTAC-Statuskarte um Broken-RAM-Sentinel und Kopplungsstatus Mensch↔AI ergänzen."
+    },
+    "sigillin": {
+      "ordnungs_sigillin": "seed/seed_index.{yaml,json,md}",
+      "bedeutungs_sigillin": "seed/codexfeedback.{yaml,json,md}",
+      "shadow_sigillin": "seed/shadow_sigillin/** (Failsafe bei Morph-Sweep-Regression)"
+    }
+  },
+  "null_models": [
+    {
+      "name": "Statische Von-Neumann-Maschine",
+      "description": "Feste CPU/RAM-Zuteilung ohne thermische Rückführung.",
+      "expected_delta_aic": "> 8 zugunsten Morph-Sweep-Modell, sobald Energie/Fehlerdaten integriert werden"
+    },
+    {
+      "name": "ECC-only-Fehlermaskierung",
+      "description": "Fehler werden logisch maskiert, ohne physische Rekonfiguration.",
+      "expected_delta_aic": "> 5 falls Regeneration echte Fehlerreduktion zeigt"
+    }
+  ],
+  "falsifiability": {
+    "checkpoints": [
+      "Messe Energie/Fehler vor und nach Morph-Sweep über identische Workloads.",
+      "Protokolliere Rekonfigurationslatenz und Durchsatz; vergleiche mit statischer Baseline.",
+      "Variiere β im Simulator, um σ(β(R-Θ)) und Broken-RAM-Abwehr zu kalibrieren.",
+      "Prüfe Kopplungsmetriken Mensch↔AI (Impuls→Morph-Konfiguration) gegen ΔAIC."
+    ],
+    "recovery": [
+      "Bleibt ΔAIC ≤ 0, Morph-Sweep deaktivieren und Nullmodell halten.",
+      "Steigt ζ(R) (Regenerationsverlust), thermische Sensorik prüfen und Sweep-Frequenz anpassen."
+    ]
+  }
 }

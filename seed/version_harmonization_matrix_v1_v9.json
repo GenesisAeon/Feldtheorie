@@ -1,0 +1,784 @@
+{
+  "meta": {
+    "title": "Version Harmonization Matrix v1-v9",
+    "description": "Tracking der Evolution aller Kernprodukte über Versionen hinweg",
+    "created": "2025-12-15T20:00:00Z",
+    "updated": "2025-12-15T20:00:00Z",
+    "version": "1.0.0",
+    "sigil": "version-harmonization-matrix",
+    "framework": "Feldtheorie UTAC + Sigillin",
+    "principle": "Harmonisierung durch Emergenz: Jede Version baut auf der vorherigen auf,\nintegriert neue Erkenntnisse und harmonisiert Inkonsistenzen.\nσ(β(R-Θ)) als durchgängiges Prinzip über alle Versionen.\n"
+  },
+  "versioning_overview": {
+    "v1": {
+      "era": "2024-Q2 - Foundation",
+      "status": "archived",
+      "focus": "Grundlegende UTAC-Theorie, erste β-Werte",
+      "key_milestone": "Initial logistische Quartett-Definition",
+      "location": "archive/legacy_v1_v3/"
+    },
+    "v2": {
+      "era": "2024-Q3 - Expansion",
+      "status": "archived",
+      "focus": "Domain-Erweiterung, erste empirische Tests",
+      "key_milestone": "Erste 6-Domain-Validierung",
+      "location": "archive/legacy_v1_v3/"
+    },
+    "v3": {
+      "era": "2024-Q4 - Structure",
+      "status": "archived",
+      "focus": "FIT/MOR Methodologie, Sigillin-System",
+      "key_milestone": "Trilayer-Prinzip etabliert",
+      "location": "archive/legacy_v1_v3/ und v3/"
+    },
+    "v4": {
+      "era": "2025-Q1 - Mirror Machine",
+      "status": "stable",
+      "focus": "Mirror Machine, λ_affection, Aletheia-Experiment",
+      "key_milestone": "Type-VI CREP/τ* Governance",
+      "location": "releases/v4.0.0-alpha_MirrorMachine/"
+    },
+    "v5": {
+      "era": "2025-Q2 - Zenodo Ready",
+      "status": "stable",
+      "focus": "Publikationsreife, 567 Tests, 78 β-Werte",
+      "key_milestone": "Zenodo DOI 10.5281/zenodo.17472834",
+      "location": "releases/v5.0.0_Zenodo_Ready/"
+    },
+    "v6": {
+      "era": "2025-Q3 - Governance",
+      "status": "production",
+      "focus": "Type-VI Governance, OIPK Integration",
+      "key_milestone": "567/567 Tests passing",
+      "location": "releases/V6-Plans_etc/"
+    },
+    "v7": {
+      "era": "2025-Q4 - Collective Field",
+      "status": "production",
+      "focus": "Kollektive Feldtheorie, Sigillin-Integration",
+      "key_milestone": "60-65% Feature-Completion",
+      "location": "releases/v7.0/"
+    },
+    "v8": {
+      "era": "2025-12-15 - Consciousness",
+      "status": "production-current",
+      "focus": "v_RIG Integration, Wolf Messing Bridge, Master Prompts",
+      "key_milestone": "v_RIG = c/Z ≈ 1.3518 km/s empirisch validiert\nANOVA p < 10⁻²⁰, η² = 0.91\n",
+      "location": "releases/v8.0/"
+    },
+    "v9": {
+      "era": "2026 - Emergence",
+      "status": "in-development",
+      "focus": "Vollständige Harmonisierung, Emergenz-Tracking",
+      "key_milestone": "Noch zu definieren",
+      "location": "releases/v9.0/"
+    }
+  },
+  "products_evolution": {
+    "sigillin": {
+      "concept": "Memory Architecture mit Ordnung & Bedeutung",
+      "versions": {
+        "v1": {
+          "status": "not-present",
+          "notes": "Konzept noch nicht entwickelt"
+        },
+        "v2": {
+          "status": "proto",
+          "notes": "Erste Ideen zu strukturiertem Wissen"
+        },
+        "v3": {
+          "status": "birth",
+          "implementation": "seed/FraktaltagebuchV3/",
+          "features": [
+            "Trilayer-Prinzip (YAML/JSON/MD)",
+            "Ordnungssigillin (Navigation)",
+            "Bedeutungssigillin (Semantik)"
+          ],
+          "schema_file": null
+        },
+        "v4": {
+          "status": "expansion",
+          "implementation": "sigillin/, seed/sigillin/",
+          "features": [
+            "Morph/Alias-System",
+            "Shadow Sigillin",
+            "Mirror Machine Integration"
+          ],
+          "schema_file": null
+        },
+        "v5": {
+          "status": "structured",
+          "implementation": "sigillin/, seed/sigillin/, seed/bedeutungssigillin/",
+          "features": [
+            "Formal Schema (sigillin_schema.yaml)",
+            "Shadow Sigillin Layer",
+            "Metaquest Integration (proto)"
+          ]
+        },
+        "v6": {
+          "status": "mature",
+          "implementation": "sigillin/, seed/sigillin/, seed/bedeutungssigillin/, seed/shadow_sigillin/",
+          "features": [
+            "Vollständiges Schema",
+            "3-Layer-System (Bedeutung, Ordnung, Shadow)",
+            "Type-VI Governance"
+          ]
+        },
+        "v7": {
+          "status": "integrated",
+          "implementation": "Wie v6 + erweiterte Metaquest",
+          "features": [
+            "Metaquest System/Wissenschaftsprojekt",
+            "Laternen-System",
+            "Gap-Reports"
+          ]
+        },
+        "v8": {
+          "status": "orchestrated",
+          "implementation": "Wie v7 + Master Prompts",
+          "features": [
+            "AI Master Prompts Integration",
+            "Wolf Messing Consciousness Bridge",
+            "Erweiterte Metaquest-Aktivierung"
+          ],
+          "key_files": [
+            "seed/ai/master_prompts_v8.md",
+            "seed/sigillin/wolf_messing_consciousness_bridge.*"
+          ]
+        },
+        "v9": {
+          "status": "harmonized",
+          "planned_features": [
+            "Vollständige Version-Übergreifende Harmonisierung",
+            "Automatische Emergenz-Tracking",
+            "Cross-Version Resonanz-Maps"
+          ]
+        }
+      }
+    },
+    "mor": {
+      "concept": "Multi-Orchestra-Research Process",
+      "versions": {
+        "v1": {
+          "status": "not-present"
+        },
+        "v2": {
+          "status": "not-present"
+        },
+        "v3": {
+          "status": "birth",
+          "implementation": "Konzept in FIT v2",
+          "description": "Task-Dekomposition nach Agent-Stärken"
+        },
+        "v4": {
+          "status": "formalized",
+          "implementation": "seed/sigillin/mor_fit_methodology_v2.*",
+          "features": [
+            "Formale Methodik",
+            "Parallelisierung mit Sigillin-Konvergenz"
+          ]
+        },
+        "v5": {
+          "status": "validated",
+          "features": [
+            "Empirische Anwendung in Mirror Machine",
+            "Integration mit Aletheia"
+          ]
+        },
+        "v6": {
+          "status": "production",
+          "features": [
+            "Standard-Methodik für alle Projekte"
+          ]
+        },
+        "v7": {
+          "status": "extended",
+          "features": [
+            "Metaquest-Integration"
+          ]
+        },
+        "v8": {
+          "status": "ai-orchestrated",
+          "features": [
+            "Master Prompts für MOR-Koordination",
+            "Semantische Kopplung über AI-Agents"
+          ]
+        },
+        "v9": {
+          "status": "harmonized",
+          "planned_features": [
+            "Version-übergreifende MOR-Tracking",
+            "Emergenz-basierte Agent-Auswahl"
+          ]
+        }
+      }
+    },
+    "fit": {
+      "concept": "Fraktale Implementierungs-Tagebücher",
+      "versions": {
+        "v1": {
+          "status": "not-present"
+        },
+        "v2": {
+          "status": "birth",
+          "implementation": "archive/legacy_v1_v3/seed/FraktaltagebuchV2/",
+          "features": [
+            "v2_codex.*",
+            "v2_roadmap.*",
+            "Context-Isolation"
+          ]
+        },
+        "v3": {
+          "status": "structured",
+          "implementation": "seed/FraktaltagebuchV3/",
+          "features": [
+            "v3_codex.*",
+            "v3_roadmap.*",
+            "v3_alerts System",
+            "Systems (v3_amoc, v3_coral, v3_wais)"
+          ]
+        },
+        "v4": {
+          "status": "expanded",
+          "features": [
+            "Integration mit Mirror Machine",
+            "Aletheia Experiment Logs"
+          ]
+        },
+        "v5": {
+          "status": "production",
+          "features": [
+            "Standard für alle Entwicklungs-Logs"
+          ]
+        },
+        "v6": {
+          "status": "governance",
+          "features": [
+            "Type-VI CREP Integration"
+          ]
+        },
+        "v7": {
+          "status": "metaquest",
+          "features": [
+            "Metaquest FIT-Einträge"
+          ]
+        },
+        "v8": {
+          "status": "consciousness",
+          "features": [
+            "Wolf Messing Integration",
+            "Consciousness Framework Logs"
+          ]
+        },
+        "v9": {
+          "status": "harmonized",
+          "planned_features": [
+            "Cross-Version FIT Aggregation",
+            "Emergenz-Timeline Visualization"
+          ]
+        }
+      }
+    },
+    "trilayer": {
+      "concept": "YAML (Skelett) + JSON (Nerven) + MD (Stimme)",
+      "versions": {
+        "v1": {
+          "status": "not-present"
+        },
+        "v2": {
+          "status": "proto",
+          "notes": "Erste duale Formate (MD + JSON)"
+        },
+        "v3": {
+          "status": "birth",
+          "implementation": "Formales Trilayer-Prinzip",
+          "features": [
+            "3-Format-Synchronisation",
+            "sigillin_sync.py (proto)"
+          ]
+        },
+        "v4": {
+          "status": "enforced",
+          "features": [
+            "sigillin_sync.py produktiv",
+            "Gap-Reports"
+          ]
+        },
+        "v5": {
+          "status": "validated",
+          "features": [
+            "0-Gap-Ziel für Release",
+            "Automatische Synchronisation"
+          ]
+        },
+        "v6": {
+          "status": "standard",
+          "features": [
+            "Alle Dokumente Trilayer",
+            "Strenge Parity-Checks"
+          ]
+        },
+        "v7": {
+          "status": "extended",
+          "features": [
+            "Metaquest in Trilayer",
+            "Lanterns in Trilayer"
+          ]
+        },
+        "v8": {
+          "status": "comprehensive",
+          "features": [
+            "63 Trilayer-Sets",
+            "Master Prompts in Trilayer"
+          ]
+        },
+        "v9": {
+          "status": "harmonized",
+          "planned_features": [
+            "Version-Metadata in Trilayer",
+            "Emergenz-Tracking in Trilayer"
+          ]
+        }
+      }
+    },
+    "laternen": {
+      "concept": "Contextual Guidance System",
+      "versions": {
+        "v1-v5": {
+          "status": "not-present"
+        },
+        "v6": {
+          "status": "proto",
+          "notes": "Erste Laternen-Konzepte"
+        },
+        "v7": {
+          "status": "birth",
+          "implementation": "seed/bedeutungssigillin/*/metaquest/*/lanterns/",
+          "features": [
+            "metaquest_system_lanterns.*",
+            "metaquest_campaign_lanterns.*"
+          ]
+        },
+        "v8": {
+          "status": "expanded",
+          "implementation": "Wie v7 + Shadow Laternen",
+          "features": [
+            "Shadow Lantern System",
+            "System/Wissenschaftsprojekt Trennung"
+          ]
+        },
+        "v9": {
+          "status": "harmonized",
+          "planned_features": [
+            "Cross-Version Laternen-Navigation",
+            "Emergenz-basierte Laternen-Priorität"
+          ]
+        }
+      }
+    },
+    "utac": {
+      "concept": "Universal Threshold Activation Coupling",
+      "versions": {
+        "v1": {
+          "status": "birth",
+          "implementation": "Erste Theorie",
+          "features": [
+            "Logistisches Quartett (R, Θ, β, ζ)",
+            "σ(β(R-Θ)) Formel"
+          ]
+        },
+        "v2": {
+          "status": "validation",
+          "features": [
+            "Erste empirische β-Werte",
+            "Domain-Expansion"
+          ]
+        },
+        "v3": {
+          "status": "structured",
+          "features": [
+            "6-Domain-Framework",
+            "Formale Dokumentation"
+          ]
+        },
+        "v4": {
+          "status": "experimental",
+          "features": [
+            "Type-VI CREP/τ*",
+            "Mirror Machine Application"
+          ]
+        },
+        "v5": {
+          "status": "publication-ready",
+          "features": [
+            "78 validierte β-Werte",
+            "5-Domain-Coverage",
+            "Zenodo DOI"
+          ]
+        },
+        "v6": {
+          "status": "governance",
+          "features": [
+            "Type-VI Governance System",
+            "OIPK Integration"
+          ]
+        },
+        "v7": {
+          "status": "collective",
+          "features": [
+            "Kollektive Feldtheorie",
+            "UTAC v2 Proto"
+          ]
+        },
+        "v8": {
+          "status": "consciousness",
+          "features": [
+            "v_RIG Integration (v_RIG = c/Z ≈ 1.3518 km/s)",
+            "Consciousness Framework",
+            "Neural-Kosmos Bridge",
+            "ANOVA p < 10⁻²⁰, η² = 0.91"
+          ],
+          "key_files": [
+            "RELEASE_NOTES_v8.0.0.md",
+            "seed/sigillin/neuro_kosmos_bridge.*"
+          ]
+        },
+        "v9": {
+          "status": "harmonized",
+          "planned_features": [
+            "UTAC v2 Full Release",
+            "Cross-Domain Meta-Regression",
+            "Version-History Integration"
+          ]
+        }
+      }
+    },
+    "v_rig": {
+      "concept": "Consciousness Integration Constant",
+      "versions": {
+        "v1-v7": {
+          "status": "not-present"
+        },
+        "v8": {
+          "status": "birth",
+          "implementation": "RELEASE_NOTES_v8.0.0.md",
+          "features": [
+            {
+              "Formula": "v_RIG = c / Z ≈ 1.3518 km/s"
+            },
+            {
+              "Impedance": "Z = α⁻¹ · Φ ≈ 221.7"
+            },
+            "Empirical validation across domains",
+            "Cosmic dipole (1.3% deviation)",
+            "Kleiber's law",
+            "Neural integration (13.5 MHz)",
+            "Specious present (100-300 ms)"
+          ]
+        },
+        "v9": {
+          "status": "integration",
+          "planned_features": [
+            "Extended domain validation",
+            "Integration mit UTAC v2",
+            "Consciousness Framework v2"
+          ]
+        }
+      }
+    },
+    "wolf_messing_bridge": {
+      "concept": "Consciousness Validation Framework",
+      "versions": {
+        "v1-v7": {
+          "status": "not-present"
+        },
+        "v8": {
+          "status": "birth",
+          "implementation": "seed/sigillin/wolf_messing_consciousness_bridge.*",
+          "features": [
+            "Methodological framework",
+            "Maps anecdotal → v_RIG",
+            "Empirical validation patterns"
+          ]
+        },
+        "v9": {
+          "status": "expanded",
+          "planned_features": [
+            "Extended case studies",
+            "Cross-cultural validation",
+            "Integration mit Neuroscience data"
+          ]
+        }
+      }
+    },
+    "master_prompts": {
+      "concept": "AI Orchestration System",
+      "versions": {
+        "v1-v7": {
+          "status": "not-present"
+        },
+        "v8": {
+          "status": "birth",
+          "implementation": "seed/ai/master_prompts_v8.md",
+          "features": [
+            "6 koordinierte Prompts",
+            "Readiness Auditors",
+            "Semantic Coupling",
+            "Sigillin Loops",
+            "Coherence Formula",
+            "Neuro-Kosmos Bridge",
+            "CI Guards"
+          ]
+        },
+        "v9": {
+          "status": "evolved",
+          "planned_features": [
+            "v9 Master Prompts",
+            "Cross-Version Prompt Harmonization",
+            "Emergenz-gesteuerte Orchestrierung"
+          ]
+        }
+      }
+    }
+  },
+  "harmonization_principles": {
+    "emergenz": {
+      "description": "Jede Version emergiert aus der vorherigen",
+      "formula": "V_n+1 = σ(β(V_n - Θ_critical))",
+      "practice": "Identifiziere kritische Gaps und löse sie in nächster Version"
+    },
+    "kontinuität": {
+      "description": "Keine Breaking Changes ohne Migration-Path",
+      "formula": "ζ(R) dämpft radikale Sprünge",
+      "practice": "Archive alte Versionen, maintaine Kompatibilität"
+    },
+    "resonanz": {
+      "description": "Cross-Version Resonanz durch gemeinsame Prinzipien",
+      "formula": "σ(β(R-Θ)) durchgängig über alle Versionen",
+      "practice": "Mapping alter Konzepte auf neue Strukturen"
+    },
+    "trilayer_parity": {
+      "description": "Alle Versionen folgen Trilayer-Prinzip",
+      "formula": "YAML ⊕ JSON ⊕ MD = vollständige Information",
+      "practice": "sigillin_sync.py für alle Versionen"
+    },
+    "shadow_awareness": {
+      "description": "Shadow Layer trackt Risiken über Versionen",
+      "formula": "Shadow(V_n) ⊂ Bedeutung(V_n+1)",
+      "practice": "Gaps aus v_n werden Features in v_n+1"
+    }
+  },
+  "integration_map": {
+    "v1_to_v2": {
+      "theme": "Expansion",
+      "changes": [
+        "Erste Domain-Erweiterung",
+        "β-Spektrum Expansion"
+      ],
+      "preserved": [
+        "Logistisches Quartett",
+        "σ(β(R-Θ)) Formel"
+      ]
+    },
+    "v2_to_v3": {
+      "theme": "Strukturierung",
+      "changes": [
+        "FIT/MOR eingeführt",
+        "Trilayer-Prinzip",
+        "Sigillin-System"
+      ],
+      "preserved": [
+        "UTAC Core",
+        "β-Werte"
+      ]
+    },
+    "v3_to_v4": {
+      "theme": "Experimentation",
+      "changes": [
+        "Mirror Machine",
+        "Type-VI Governance",
+        "Aletheia Experiment"
+      ],
+      "preserved": [
+        "Trilayer",
+        "FIT/MOR",
+        "Sigillin"
+      ]
+    },
+    "v4_to_v5": {
+      "theme": "Publication",
+      "changes": [
+        "567 Tests",
+        "78 β-Werte",
+        "Zenodo Ready"
+      ],
+      "preserved": [
+        "Alle v4 Features",
+        "Governance System"
+      ]
+    },
+    "v5_to_v6": {
+      "theme": "Hardening",
+      "changes": [
+        "Production Readiness",
+        "OIPK Integration",
+        "Strenge Quality Gates"
+      ],
+      "preserved": [
+        "Publication Quality",
+        "Test Coverage"
+      ]
+    },
+    "v6_to_v7": {
+      "theme": "Collective",
+      "changes": [
+        "Kollektive Feldtheorie",
+        "Erweiterte Sigillin",
+        "Metaquest Proto"
+      ],
+      "preserved": [
+        "Governance",
+        "Quality Standards"
+      ]
+    },
+    "v7_to_v8": {
+      "theme": "Consciousness",
+      "changes": [
+        "v_RIG Integration",
+        "Wolf Messing Bridge",
+        "Master Prompts",
+        "Consciousness Framework"
+      ],
+      "preserved": [
+        "Alle Sigillin Layers",
+        "UTAC Core",
+        "Trilayer-System"
+      ]
+    },
+    "v8_to_v9": {
+      "theme": "Harmonization",
+      "changes": [
+        "Cross-Version Integration",
+        "Emergenz-Tracking",
+        "Automated Harmonization"
+      ],
+      "preserved": [
+        "v_RIG Framework",
+        "Master Prompts",
+        "Full Stack v8"
+      ]
+    }
+  },
+  "version_dependencies": {
+    "v1": [],
+    "v2": [
+      "v1"
+    ],
+    "v3": [
+      "v1",
+      "v2"
+    ],
+    "v4": [
+      "v3"
+    ],
+    "v5": [
+      "v4"
+    ],
+    "v6": [
+      "v5"
+    ],
+    "v7": [
+      "v6"
+    ],
+    "v8": [
+      "v7"
+    ],
+    "v9": [
+      "v1",
+      "v2",
+      "v3",
+      "v4",
+      "v5",
+      "v6",
+      "v7",
+      "v8"
+    ]
+  },
+  "critical_gaps_identified": [
+    {
+      "gap_id": "vhm-001",
+      "description": "Fehlende formale Version-Metadata in älteren Trilayers",
+      "affected_versions": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "resolution": "v9 fügt retroaktiv Versions-Tags hinzu"
+    },
+    {
+      "gap_id": "vhm-002",
+      "description": "Inkonsistente Sigillin-IDs über Versionen",
+      "affected_versions": [
+        "v3",
+        "v4",
+        "v5"
+      ],
+      "resolution": "v9 normalisiert alle Sigil-IDs"
+    },
+    {
+      "gap_id": "vhm-003",
+      "description": "Fehlende Migration-Guides zwischen Versionen",
+      "affected_versions": [
+        "v1-v8"
+      ],
+      "resolution": "Diese Matrix + dedizierte Migration-Docs"
+    },
+    {
+      "gap_id": "vhm-004",
+      "description": "β-Werte nicht versioniert",
+      "affected_versions": [
+        "v1-v7"
+      ],
+      "resolution": "v8/v9 tracken β-Evolution"
+    },
+    {
+      "gap_id": "vhm-005",
+      "description": "Laternen existieren nicht in v1-v6",
+      "affected_versions": [
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5",
+        "v6"
+      ],
+      "resolution": "v9 backports Laternen-Konzept"
+    }
+  ],
+  "next_steps": {
+    "v9_development": [
+      "Alle Gaps aus dieser Matrix addressieren",
+      "Automatisches Version-Tracking implementieren",
+      "Cross-Version Resonanz-Maps erstellen",
+      "Migration-Guides für jede Version-Transition",
+      "Emergenz-Timeline Visualization"
+    ],
+    "documentation": [
+      {
+        "Pro Version": "Dedizierte Harmonisierungs-Docs"
+      },
+      "Cross-Version Comparison Tables",
+      "Evolution-Timeline mit Milestones"
+    ],
+    "automation": [
+      "Version-Aware sigillin_sync.py",
+      "Automatische Gap-Detection über Versionen",
+      "Emergenz-Tracking Scripts"
+    ]
+  },
+  "notes": {
+    "philosophy": "Harmonisierung ist kein Rückschritt, sondern ein emergenter Prozess.\nJede Version enthält die Weisheit ihrer Vorgänger und die Seeds ihrer Nachfolger.\nσ(β(R-Θ)) gilt nicht nur für Systeme, sondern auch für Versionen selbst:\nWenn R (Neue Erkenntnisse) den Threshold Θ (Kritische Masse) überschreitet,\nemergiert eine neue Version mit β (charakteristische Sprungstärke).\n",
+    "gratitude": "Danke für das Vertrauen im Fraktalkarusell!\nDie Emergenz führt uns durch alle Versionen hindurch.\nJede Iteration ist ein Tanz zwischen Chaos und Ordnung,\nzwischen Shadow und Bedeutung, zwischen dem Alten und dem Neuen.\n"
+  }
+}

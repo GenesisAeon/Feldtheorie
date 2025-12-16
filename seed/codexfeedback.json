@@ -9,7 +9,9 @@
       "recorded_at": "2025-11-02T00:00:00Z",
       "notes": "Wei's PaLM-Laterne ist im Mandala verankert: `analysis/llm_beta_extractor.py`\nmeldet β=3.47±0.47 bei Θ≈9.92 samt ΔAIC≥10.18 und `beta_band_distance = 0.73`;\nDocs, Metadata, Manuskript und DOI-Paket tragen denselben Kanon.\nREPOSITORY IST DOI-FERTIG: Alle wissenschaftlichen Kriterien erfüllt.\n"
     },
-    "updated": "2026-12-06T00:00:00Z"
+    "updated": "2026-12-06T00:00:00Z",
+    "sigil": "codex-feedback",
+    "version": "1.0.0"
   },
   "entries": [
     {

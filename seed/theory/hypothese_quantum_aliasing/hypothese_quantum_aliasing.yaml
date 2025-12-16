@@ -10,44 +10,51 @@ meta:
     Theta: Beobachtbare Abtastrate (≤ Planck-Zeit) der Messapparatur
     beta: 6.8
     zeta: Dekohärenz-Relaxation zwischen Oszillationstakten
-    sigma_note: Überschreitet R die Abtastrate Θ, erscheint σ(β(R-Θ)) als Wahrnehmungsfehler – die Superposition ist nur der Alias-Schatten.
+    sigma_note: Überschreitet R die Abtastrate Θ, erscheint σ(β(R-Θ)) als Wahrnehmungsfehler – die Superposition ist nur der
+      Alias-Schatten.
   utac_alignment:
     type: type-6-implosion
     description: Alias-Schatten als physikalischer Trigger für Type-6; dekohärente Fenster definieren den Implosionsstart.
     readiness_hooks:
-      - Kopple Alias-Frequenz an Implosionszeiten im Simulator und logge Beat-Frequenzen.
-      - Markiere Dekohärenz-Fenster als ζ(R), um Oversampling-Kampagnen zu takten.
+    - Kopple Alias-Frequenz an Implosionszeiten im Simulator und logge Beat-Frequenzen.
+    - Markiere Dekohärenz-Fenster als ζ(R), um Oversampling-Kampagnen zu takten.
+  sigil: hypothese-quantum-aliasing
 sources:
-  - seed/V4-Grundlagen/Quantenmechanik als dimensionales Aliasing.pdf
-  - seed/V4-Grundlagen/Suche.txt
-  - seed/V4-Grundlagen/Suche_UTAC_Ungleichheit, Physik und Klimakrise.txt
+- seed/V4-Grundlagen/Quantenmechanik als dimensionales Aliasing.pdf
+- seed/V4-Grundlagen/Suche.txt
+- seed/V4-Grundlagen/Suche_UTAC_Ungleichheit, Physik und Klimakrise.txt
 theses:
   aliasing_not_superposition:
-    statement: Superposition ist ein Sampling-Artefakt; die Dynamik läuft deterministisch schneller als die Planck-Taktung und wird aliasiert.
+    statement: Superposition ist ein Sampling-Artefakt; die Dynamik läuft deterministisch schneller als die Planck-Taktung
+      und wird aliasiert.
     observables:
-      - Spektrale Faltungen/Beat-Frequenzen in Interferenzexperimenten.
-      - Zeitaufgelöste Messungen knapp oberhalb der Detektor-Abtastrate.
-      - Abweichungen von Born-Verteilungen bei Oversampling und Phasenverschiebungen.
+    - Spektrale Faltungen/Beat-Frequenzen in Interferenzexperimenten.
+    - Zeitaufgelöste Messungen knapp oberhalb der Detektor-Abtastrate.
+    - Abweichungen von Born-Verteilungen bei Oversampling und Phasenverschiebungen.
     falsifiability:
       null_model: Standard-Quantenformalismus mit echter Superposition (Born-Maß erhalten).
-      discriminator: Verschwindet das Alias-Muster bei Oversampling, hält das Nullmodell; bleibt es bestehen, gewinnt die Alias-These ΔAIC > 5.
+      discriminator: Verschwindet das Alias-Muster bei Oversampling, hält das Nullmodell; bleibt es bestehen, gewinnt die
+        Alias-These ΔAIC > 5.
     resonance:
       logistic_bridge: R = Oszillationsfrequenz, Θ = Detektor-Rate; σ(β(R-Θ)) erzeugt den sichtbaren Schatten als Wahrnehmungsfehler.
   deterministic_timeless_link:
-    statement: Die aliasierte Dynamik entspricht einem zeitlosen, deterministischen Substrat (vgl. ’t Hooft / Timeless Physics) und projiziert Schattenzustände.
+    statement: Die aliasierte Dynamik entspricht einem zeitlosen, deterministischen Substrat (vgl. ’t Hooft / Timeless Physics)
+      und projiziert Schattenzustände.
     observables:
-      - Korrelationen zwischen Alias-Phasen und deterministischen Zellautomaten-/Lattice-Modellen.
-      - Mapping von Oversampling-Daten auf zeitlose Schrödinger-Lösungen aus den Suche-Logs.
+    - Korrelationen zwischen Alias-Phasen und deterministischen Zellautomaten-/Lattice-Modellen.
+    - Mapping von Oversampling-Daten auf zeitlose Schrödinger-Lösungen aus den Suche-Logs.
     falsifiability:
       null_model: Keine deterministische Rückbindung; Alias-Effekte bleiben zufällig.
       discriminator: ΔAIC > 3 zugunsten deterministischer Modelle, sobald Alias-Phase die Timeless-Vorhersagen spiegelt.
     resonance:
-      logistic_bridge: Θ_eff verschiebt sich, wenn deterministische Modelle Phasenfolge vorhersagen; β moduliert den Sichtbarkeitsgrad der Schatten.
+      logistic_bridge: Θ_eff verschiebt sich, wenn deterministische Modelle Phasenfolge vorhersagen; β moduliert den Sichtbarkeitsgrad
+        der Schatten.
   utac_implication:
-    statement: Type-6 Implosion tritt, wenn Alias-Schatten und energetische Schwelle synchronisieren; Beobachter sehen abrupten Zustandssprung.
+    statement: Type-6 Implosion tritt, wenn Alias-Schatten und energetische Schwelle synchronisieren; Beobachter sehen abrupten
+      Zustandssprung.
     observables:
-      - Sprunghafte Zustandsänderung synchron mit Alias-Frequenzspitzen.
-      - Energie-/Phasen-Korrelationen in UTAC-Simulatoren und Aletheia-Logdaten.
+    - Sprunghafte Zustandsänderung synchron mit Alias-Frequenzspitzen.
+    - Energie-/Phasen-Korrelationen in UTAC-Simulatoren und Aletheia-Logdaten.
     falsifiability:
       null_model: Implosion folgt rein thermischen Triggern ohne Alias-Kopplung.
       discriminator: Fehlt die Alias-Korrelation, bleibt Nullmodell; tritt sie auf, trägt Alias-These.
@@ -56,24 +63,25 @@ theses:
 bridges:
   utac:
     trigger: Alias-Frequenz > Detektor-Θ koppelt Type-6-Implosion an Beobachterperspektive.
-    simulator_hook: Implementiere Oversampling- und Alias-Sweeps in `simulator/`-Pipelines; logge Phasen/Energie-Spektren gegen Nullmodelle und Timeless-Templates.
+    simulator_hook: Implementiere Oversampling- und Alias-Sweeps in `simulator/`-Pipelines; logge Phasen/Energie-Spektren
+      gegen Nullmodelle und Timeless-Templates.
     status_matrix_note: UTAC-Status um Alias-Fenster erweitern (sichtbare Schatten vs. resolvierte Dynamik).
   sigillin:
     ordnungs_sigillin: seed/seed_index.{yaml,json,md}
     bedeutungs_sigillin: seed/codexfeedback.{yaml,json,md}
     shadow_sigillin: seed/shadow_sigillin/** (für Mess-Lücken oder Dekohärenz-Drift)
 null_models:
-  - name: Genuine Superposition
-    description: Klassische Quantensuperposition ohne Sampling-Artefakt.
-    expected_delta_aic: '> 5 wenn Alias-Muster bei Oversampling persistiert'
-  - name: Thermischer Dekohärenzsprung
-    description: Zustandswechsel durch Umweltkopplung, ohne dimensionale Oszillation.
-    expected_delta_aic: '> 3 falls Phasenfolge Alias-Frequenzen folgt'
+- name: Genuine Superposition
+  description: Klassische Quantensuperposition ohne Sampling-Artefakt.
+  expected_delta_aic: '> 5 wenn Alias-Muster bei Oversampling persistiert'
+- name: Thermischer Dekohärenzsprung
+  description: Zustandswechsel durch Umweltkopplung, ohne dimensionale Oszillation.
+  expected_delta_aic: '> 3 falls Phasenfolge Alias-Frequenzen folgt'
 falsifiability:
   checkpoints:
-    - Führe Oversampling-Experimente im Simulator durch und suche nach Beat-Frequenzen.
-    - Variiere Messbasis zeitlich, um Dimensionssprünge zu verfolgen und mit Timeless-Vorhersagen abzugleichen.
-    - Verknüpfe Alias-Fenster mit Type-6-Triggern und beobachte ΔAIC gegen Nullmodelle.
+  - Führe Oversampling-Experimente im Simulator durch und suche nach Beat-Frequenzen.
+  - Variiere Messbasis zeitlich, um Dimensionssprünge zu verfolgen und mit Timeless-Vorhersagen abzugleichen.
+  - Verknüpfe Alias-Fenster mit Type-6-Triggern und beobachte ΔAIC gegen Nullmodelle.
   recovery:
-    - Keine Alias-Korrelation → Nullmodell bevorzugen, Alias-These archivieren.
-    - Alias-Muster instabil → ζ(R) erhöhen (Dekohärenz-Relaxation) und Messrate anpassen.
+  - Keine Alias-Korrelation → Nullmodell bevorzugen, Alias-These archivieren.
+  - Alias-Muster instabil → ζ(R) erhöhen (Dekohärenz-Relaxation) und Messrate anpassen.

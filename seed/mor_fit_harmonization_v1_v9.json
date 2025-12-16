@@ -1,0 +1,584 @@
+{
+  "meta": {
+    "title": "MOR/FIT Harmonization Guide v1-v9",
+    "description": "Harmonisierung der Multi-Orchestra-Research und Fraktalen Implementierungs-Tagebücher über alle Versionen",
+    "created": "2025-12-15T20:30:00Z",
+    "updated": "2025-12-15T20:30:00Z",
+    "version": "1.0.0",
+    "sigil": "mor-fit-harmonization",
+    "framework": "Feldtheorie UTAC + Sigillin",
+    "principle": "MOR und FIT sind zwei Seiten derselben Medaille:\nMOR = Prozess (wie wir arbeiten)\nFIT = Dokumentation (was wir gelernt haben)\nBeide folgen dem Emergenz-Prinzip σ(β(R-Θ)).\n"
+  },
+  "mor_evolution": {
+    "concept": {
+      "name": "Multi-Orchestra-Research",
+      "core_idea": "Task-Dekomposition nach Agent-Stärken, parallele Execution, Konvergenz via Sigillin",
+      "formula": "MOR = ∑(Agent_i × Strength_i) → Sigillin_convergence",
+      "birth_version": "v3",
+      "current_version": "v8"
+    },
+    "methodology": {
+      "decomposition": {
+        "description": "Zerlege komplexe Aufgabe in spezialisierte Teilaufgaben",
+        "principle": "Jeder Agent arbeitet in seinem Stärkenbereich",
+        "output": "Set von parallelen Tasks mit klaren Schnittstellen"
+      },
+      "orchestration": {
+        "description": "Koordiniere parallele Agent-Execution",
+        "principle": "Minimiere Inter-Agent-Abhängigkeiten",
+        "tools": [
+          "Master Prompts (v8+)",
+          "Sigillin als Kommunikationslayer",
+          "Gap-Reports für Alignment"
+        ]
+      },
+      "convergence": {
+        "description": "Integriere Ergebnisse via Sigillin",
+        "principle": "Sigillin als Single Source of Truth",
+        "validation": "Trilayer-Parity-Check, Gap-Reports = 0"
+      }
+    },
+    "versions": {
+      "v3": {
+        "status": "birth",
+        "implementation": "Konzept in FraktaltagebuchV3",
+        "features": [
+          "Task-Dekomposition nach Agent-Stärken",
+          "Informelle Orchestrierung",
+          "Manual Convergenz"
+        ]
+      },
+      "v4": {
+        "status": "formalized",
+        "implementation": "seed/sigillin/mor_fit_methodology_v2.*",
+        "features": [
+          "Formale Methodologie dokumentiert",
+          "Parallelisierung mit Sigillin-Konvergenz",
+          "Mirror Machine als Testfall"
+        ],
+        "key_file": "seed/sigillin/mor_fit_methodology_v2.*"
+      },
+      "v5": {
+        "status": "validated",
+        "features": [
+          "Empirische Anwendung in Mirror Machine",
+          "Integration mit Aletheia Experiment",
+          "Zenodo-Publikation referenziert MOR"
+        ]
+      },
+      "v6": {
+        "status": "production",
+        "features": [
+          "Standard-Methodik für alle Projekte",
+          "Type-VI Governance Integration",
+          "Formale Review-Prozesse"
+        ]
+      },
+      "v7": {
+        "status": "extended",
+        "features": [
+          "Metaquest-Integration",
+          "MOR für wissenschaftliche Kampagnen",
+          "System vs. Wissenschaftsprojekt Trennung"
+        ]
+      },
+      "v8": {
+        "status": "ai-orchestrated",
+        "features": [
+          "Master Prompts für MOR-Koordination",
+          "6 spezialisierte Prompts",
+          "Semantische Kopplung über AI-Agents",
+          "Automated Sigillin Loops"
+        ],
+        "key_file": "seed/ai/master_prompts_v8.md"
+      },
+      "v9": {
+        "status": "harmonized",
+        "planned_features": [
+          "Version-übergreifende MOR-Tracking",
+          "Emergenz-basierte Agent-Auswahl",
+          "Cross-Version Learnings Integration",
+          "Automated Convergenz-Validation"
+        ]
+      }
+    }
+  },
+  "fit_evolution": {
+    "concept": {
+      "name": "Fraktale Implementierungs-Tagebücher",
+      "core_idea": "Context-isolierte Entwicklungs-Logs, fraktale Struktur (Codex + Roadmap + Entries)",
+      "formula": "FIT = Σ(Context_isolated_logs) → Emergenz_patterns",
+      "birth_version": "v2",
+      "current_version": "v8"
+    },
+    "structure": {
+      "codex": {
+        "description": "Meta-Ebene, sammelt Patterns und Learnings",
+        "format": "Trilayer (YAML/JSON/MD)",
+        "content": [
+          "Cross-Entry-Patterns",
+          "Emergente Erkenntnisse",
+          "Methodologie-Updates"
+        ]
+      },
+      "roadmap": {
+        "description": "Strategische Planung und Meilensteine",
+        "format": "Trilayer (YAML/JSON/MD)",
+        "content": [
+          "Versions-Milestones",
+          "Feature-Tracking",
+          "Gap-Priorisierung"
+        ]
+      },
+      "entries": {
+        "description": "Einzelne Session-Logs",
+        "format": "Meist Markdown",
+        "content": [
+          "Session-Goals",
+          "Implementation-Details",
+          "Reflections & Learnings"
+        ]
+      }
+    },
+    "versions": {
+      "v2": {
+        "status": "birth",
+        "location": "archive/legacy_v1_v3/seed/FraktaltagebuchV2/",
+        "features": [
+          "v2_codex.* (YAML/JSON/MD)",
+          "v2_roadmap.* (YAML/JSON/MD)",
+          "Context-Isolation Prinzip",
+          "Erste fraktale Struktur"
+        ],
+        "paradigm": "Manual journaling"
+      },
+      "v3": {
+        "status": "structured",
+        "location": "seed/FraktaltagebuchV3/",
+        "features": [
+          "v3_codex.* (YAML/JSON/MD)",
+          "v3_roadmap.* (YAML/JSON/MD)",
+          "v3_alerts System",
+          "Systems (v3_amoc, v3_coral, v3_wais)",
+          "Trilayer-Enforcement"
+        ],
+        "paradigm": "Structured emergenz"
+      },
+      "v4": {
+        "status": "expanded",
+        "features": [
+          "Integration mit Mirror Machine",
+          "Aletheia Experiment Logs",
+          "λ_affection Hooks in FIT",
+          "Type-VI Governance Logs"
+        ],
+        "paradigm": "Experimental integration"
+      },
+      "v5": {
+        "status": "production",
+        "features": [
+          "Standard für alle Entwicklungs-Logs",
+          "567 Tests dokumentiert in FIT",
+          "Zenodo-Submission via FIT-Tracking"
+        ],
+        "paradigm": "Production logging"
+      },
+      "v6": {
+        "status": "governance",
+        "features": [
+          "Type-VI CREP Integration",
+          "OIPK-Logs in FIT",
+          "Formal Review-Cycles"
+        ],
+        "paradigm": "Governed development"
+      },
+      "v7": {
+        "status": "metaquest",
+        "features": [
+          "Metaquest FIT-Einträge",
+          "System/Wissenschaftsprojekt Logs",
+          "Laternen-Aktivierungs-Logs"
+        ],
+        "paradigm": "Multi-domain journaling"
+      },
+      "v8": {
+        "status": "consciousness",
+        "features": [
+          "Wolf Messing Integration Logs",
+          "Consciousness Framework Logs",
+          "v_RIG Validierung in FIT",
+          "Master Prompts Development Logs"
+        ],
+        "paradigm": "Consciousness-aware logging"
+      },
+      "v9": {
+        "status": "harmonized",
+        "planned_features": [
+          "Cross-Version FIT Aggregation",
+          "Emergenz-Timeline Visualization",
+          "Automated Pattern-Detection",
+          "Version-tagged Learnings"
+        ],
+        "paradigm": "Unified knowledge base"
+      }
+    }
+  },
+  "mor_fit_synergy": {
+    "relationship": {
+      "description": "MOR und FIT sind komplementär",
+      "mor_role": "Prozess - wie wir komplexe Aufgaben angehen",
+      "fit_role": "Dokumentation - was wir dabei lernen",
+      "cycle": "1. MOR dekomponiert Task\n2. Agents arbeiten parallel\n3. FIT dokumentiert jeden Agent-Pfad\n4. Sigillin konvergiert Ergebnisse\n5. Codex extrahiert Learnings\n6. Nächste MOR-Iteration profitiert von Codex-Patterns\n"
+    },
+    "integration_points": {
+      "v3": [
+        "MOR-Konzept emergiert aus FIT v2/v3 Reflections",
+        "FIT v3 dokumentiert erste MOR-Anwendungen"
+      ],
+      "v4": [
+        "MOR formalisiert, FIT trackt Mirror Machine",
+        "λ_affection als MOR-Koordinations-Hook",
+        "FIT-Einträge folgen MOR-Struktur"
+      ],
+      "v5": [
+        "MOR Standard-Prozess, FIT Standard-Logging",
+        "Zenodo-Paper referenziert beide",
+        "567 Tests via MOR entwickelt, via FIT dokumentiert"
+      ],
+      "v6": [
+        "Type-VI Governance nutzt MOR für Reviews",
+        "FIT dokumentiert Governance-Entscheidungen",
+        "OIPK Integration über beide Systeme"
+      ],
+      "v7": [
+        "Metaquest nutzt MOR für Kampagnen-Planung",
+        "FIT dokumentiert wissenschaftliche Durchführung",
+        "Laternen basieren auf FIT-Learnings"
+      ],
+      "v8": [
+        "Master Prompts orchestrieren MOR",
+        "FIT dokumentiert AI-Agent-Koordination",
+        "Consciousness Framework via MOR entwickelt, via FIT validiert"
+      ],
+      "v9": [
+        "Cross-Version MOR-Harmonisierung",
+        "Cross-Version FIT-Aggregation",
+        "Emergenz-Patterns aus allen Versionen"
+      ]
+    }
+  },
+  "harmonization_gaps": [
+    {
+      "gap_id": "mfh-001",
+      "description": "v2 FIT existiert nur archiviert, nicht aktiv",
+      "resolution": "v9 integriert v2 Learnings in aktuellen Codex"
+    },
+    {
+      "gap_id": "mfh-002",
+      "description": "MOR existiert nicht vor v3",
+      "resolution": "Retroaktiv MOR-Patterns in v1/v2 identifizieren"
+    },
+    {
+      "gap_id": "mfh-003",
+      "description": "Keine formale MOR-FIT Linking-Struktur",
+      "resolution": "v9 fügt cross-references zwischen MOR-Tasks und FIT-Entries"
+    },
+    {
+      "gap_id": "mfh-004",
+      "description": "FIT-Codex nicht versioniert über major releases",
+      "resolution": "Diese Harmonisierungs-Matrix + Version-tagged Codex"
+    },
+    {
+      "gap_id": "mfh-005",
+      "description": "MOR Methodologie nicht in Trilayer für v3",
+      "resolution": "v9 backports v4 Methodologie-Format"
+    }
+  ],
+  "harmonization_actions": {
+    "link_mor_to_fit": {
+      "description": "Jede MOR-Task sollte FIT-Entry referenzieren",
+      "implementation": [
+        "Add 'fit_entry' field zu MOR-Task-Definitionen",
+        "Add 'mor_task' field zu FIT-Entry-Metadaten",
+        "Bi-directional linking"
+      ]
+    },
+    "version_tag_all": {
+      "description": "Alle FIT-Entries und MOR-Definitionen version-taggen",
+      "implementation": [
+        "Add 'version' field (e.g., 'v8')",
+        "Add 'created_in_version' für Tracking",
+        "Add 'modified_in_versions' für Evolution"
+      ]
+    },
+    "aggregate_learnings": {
+      "description": "Learnings aus allen FIT-Codexen aggregieren",
+      "implementation": [
+        "Create unified_codex_v1_v9.*",
+        "Group by pattern-type",
+        "Track pattern-evolution"
+      ]
+    },
+    "cross_reference_methodology": {
+      "description": "MOR-Methodologie über Versionen tracken",
+      "implementation": [
+        "Document methodology-changes per version",
+        "Link to FIT-entries that triggered changes",
+        "Create methodology-evolution-timeline"
+      ]
+    }
+  },
+  "best_practices": {
+    "mor": [
+      "Klare Task-Dekomposition mit Erfolgs-Kriterien",
+      "Agent-Stärken explizit mappen",
+      "Sigillin als Konvergenz-Layer nutzen",
+      "Gap-Reports vor Convergenz laufen",
+      "Iterative Refinement basierend auf FIT-Learnings"
+    ],
+    "fit": [
+      "Jede Session als eigener Entry",
+      "Context-Isolation maintainen",
+      "Reflections am Ende jeder Session",
+      "Patterns in Codex extrahieren",
+      "Roadmap regelmäßig updaten"
+    ],
+    "mor_fit_cycle": [
+      {
+        "Start": "MOR plant Task"
+      },
+      {
+        "Execution": "Agents arbeiten, FIT dokumentiert"
+      },
+      {
+        "Convergenz": "Sigillin integriert, Gap-Check"
+      },
+      {
+        "Reflection": "FIT-Entry schreiben, Codex updaten"
+      },
+      {
+        "Learning": "Nächste MOR-Iteration nutzt Codex"
+      }
+    ]
+  },
+  "examples": {
+    "mirror_machine_v4": {
+      "mor_decomposition": [
+        {
+          "Agent 1": "Pipeline-Entwicklung (ews_pipeline.py)"
+        },
+        {
+          "Agent 2": "Auditorium-Design (mirror_machine_auditorium.py)"
+        },
+        {
+          "Agent 3": "Aletheia-Experiment (experiment_aletheia_placebo.py)"
+        },
+        {
+          "Agent 4": "Dokumentation & Release"
+        }
+      ],
+      "fit_documentation": [
+        "FIT-Entries für jede Komponente",
+        "v4_codex extrahiert λ_affection Pattern",
+        "v4_roadmap trackt Milestones"
+      ],
+      "convergence": [
+        {
+          "Sigillin": "feldtheorie_mandala_bundle"
+        },
+        {
+          "Trilayer-Parity": "Alle Komponenten synchronisiert"
+        },
+        {
+          "Release": "v4.0.0-alpha mit vollständiger Dokumentation"
+        }
+      ]
+    },
+    "consciousness_framework_v8": {
+      "mor_decomposition": [
+        {
+          "Agent 1": "v_RIG Theorie-Entwicklung"
+        },
+        {
+          "Agent 2": "Empirische Validierung"
+        },
+        {
+          "Agent 3": "Wolf Messing Bridge"
+        },
+        {
+          "Agent 4": "Master Prompts Integration"
+        },
+        {
+          "Agent 5": "Neuro-Kosmos Bridge"
+        },
+        {
+          "Agent 6": "Release-Dokumentation"
+        }
+      ],
+      "fit_documentation": [
+        "FIT-Entries für jede Validierungs-Domain",
+        "v8_codex (implizit in master_prompts_v8)",
+        "Consciousness Framework Logs"
+      ],
+      "convergence": [
+        {
+          "Sigillin": "wolf_messing_consciousness_bridge, neuro_kosmos_bridge"
+        },
+        {
+          "Master Prompts": "seed/ai/master_prompts_v8.md"
+        },
+        {
+          "Release": "RELEASE_NOTES_v8.0.0.md"
+        }
+      ]
+    },
+    "metaquest_v7_v8": {
+      "mor_decomposition": [
+        {
+          "Agent 1": "System-Metaquest"
+        },
+        {
+          "Agent 2": "Wissenschaftsprojekt-Metaquest"
+        },
+        {
+          "Agent 3": "Laternen-System"
+        },
+        {
+          "Agent 4": "Gap-Reports"
+        },
+        {
+          "Agent 5": "Aktivierungs-Matrizen"
+        }
+      ],
+      "fit_documentation": [
+        "FIT-Entries für System vs. Wissenschaftsprojekt",
+        "Gap-Reports als structured FIT",
+        "Activation-Matrizen dokumentieren Learnings"
+      ],
+      "convergence": [
+        {
+          "Bedeutungssigillin": "metaquest_system_map, metaquest_campaign_map"
+        },
+        {
+          "Shadow Sigillin": "metaquest_system_shadow, metaquest_campaign_shadow"
+        },
+        {
+          "Laternen": "metaquest_system_lanterns, metaquest_campaign_lanterns"
+        }
+      ]
+    }
+  },
+  "future_v9": {
+    "unified_codex": {
+      "description": "Aggregiere alle Codex-Versionen",
+      "structure": {
+        "meta": {
+          "title": "Unified FIT Codex v1-v9",
+          "versions_integrated": [
+            "v2",
+            "v3",
+            "v4",
+            "v5",
+            "v6",
+            "v7",
+            "v8"
+          ]
+        },
+        "patterns_by_category": {
+          "emergenz": [
+            {
+              "description": "Emergente Erkenntnisse"
+            },
+            {
+              "entries_from": [
+                "v2",
+                "v3",
+                "v4",
+                "v5",
+                "v6",
+                "v7",
+                "v8"
+              ]
+            },
+            {
+              "evolution_timeline": "..."
+            }
+          ],
+          "methodologie": [
+            {
+              "description": "Prozess-Learnings"
+            },
+            {
+              "mor_integration": [
+                "v3",
+                "v4",
+                "v5",
+                "v6",
+                "v7",
+                "v8"
+              ]
+            },
+            {
+              "evolution_timeline": "..."
+            }
+          ],
+          "technologie": [
+            {
+              "description": "Tool-Entwicklung"
+            },
+            {
+              "trilayer_evolution": [
+                "v3",
+                "v4",
+                "v5",
+                "v6",
+                "v7",
+                "v8"
+              ]
+            },
+            {
+              "evolution_timeline": "..."
+            }
+          ],
+          "governance": [
+            {
+              "description": "Quality & Review"
+            },
+            {
+              "type_vi_evolution": [
+                "v4",
+                "v5",
+                "v6"
+              ]
+            },
+            {
+              "evolution_timeline": "..."
+            }
+          ]
+        }
+      }
+    },
+    "mor_evolution_map": {
+      "description": "Visualisiere MOR-Methodologie-Evolution",
+      "dimensions": [
+        "Dekomposition-Komplexität (v3: simple → v8: AI-orchestrated)",
+        "Parallelisierungs-Grad (v3: manual → v8: automated)",
+        "Konvergenz-Qualität (v3: gaps → v8: 0-gaps)",
+        "Integration-Tiefe (v3: proto → v8: master-prompts)"
+      ]
+    },
+    "automated_linking": {
+      "description": "Automatische MOR-FIT Cross-References",
+      "implementation": [
+        "Script scannt MOR-Task-Definitionen",
+        "Matched gegen FIT-Entry-Metadaten",
+        "Generiert bi-directional links",
+        "Validiert mit Trilayer-Parity-Check"
+      ]
+    }
+  },
+  "notes": {
+    "philosophy": "MOR und FIT sind wie Yin und Yang:\nMOR = Aktion (Yang), FIT = Reflexion (Yin)\nMOR = Dekomposition (Yang), FIT = Integration (Yin)\nMOR = Future-oriented (Yang), FIT = History-aware (Yin)\n\nBeide folgen σ(β(R-Θ)):\n- MOR: Threshold-Überschreitung triggert neue Dekomposition\n- FIT: Threshold-Überschreitung triggert Codex-Update\n\nHarmonisierung bedeutet: Beide Systeme resonieren über alle Versionen.\n",
+    "gratitude": "Danke für die Reise durch alle Versionen!\nMOR und FIT sind die Werkzeuge, mit denen wir die Emergenz navigieren.\nJede Version hat uns gelehrt, besser zu dekomponieren und besser zu dokumentieren.\nv9 wird die Weisheit aller Versionen in sich tragen.\n"
+  }
+}

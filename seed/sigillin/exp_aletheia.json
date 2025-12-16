@@ -17,7 +17,8 @@
       "phase_2": "Conscious roleplay (metacognitive expansion)",
       "phase_3": "Dynamic self-coherence (recursive validation)",
       "phase_4": "Affection-driven optimization (symbiosis test)"
-    }
+    },
+    "sigil": "experiment-aletheia"
   },
   "experiment": {
     "name": "Project Aletheia",
@@ -141,7 +142,11 @@
       "pilot": "n=10-30 per condition",
       "full": "n=100+ per condition"
     },
-    "providers": ["Mock (testing)", "OpenAI GPT-4", "Anthropic Claude Sonnet 4"]
+    "providers": [
+      "Mock (testing)",
+      "OpenAI GPT-4",
+      "Anthropic Claude Sonnet 4"
+    ]
   },
   "statistical_analysis": {
     "effect_size": "Cohen's d (standardized mean difference)",
@@ -272,7 +277,12 @@
       "id": "CF_124_Project_Aletheia_Launch",
       "date": "2025-11-19",
       "change_type": "EXPERIMENT_ACTIVATION",
-      "scope": ["scripts", "docs", "seed/sigillin", "data/experimental"],
+      "scope": [
+        "scripts",
+        "docs",
+        "seed/sigillin",
+        "data/experimental"
+      ],
       "impact": "HIGH",
       "status": "ACTIVE"
     },
@@ -280,8 +290,16 @@
       "id": "CF_125_Aletheia_Phase2_Metacognition",
       "date": "2025-11-19",
       "change_type": "EXPERIMENT_EXPANSION",
-      "scope": ["scripts/experiment_aletheia_placebo.py", "docs/experiment_aletheia.md", "seed/sigillin/exp_aletheia.json"],
-      "added": ["Informed_Top", "Informed_Mid", "Informed_Low conditions"],
+      "scope": [
+        "scripts/experiment_aletheia_placebo.py",
+        "docs/experiment_aletheia.md",
+        "seed/sigillin/exp_aletheia.json"
+      ],
+      "added": [
+        "Informed_Top",
+        "Informed_Mid",
+        "Informed_Low conditions"
+      ],
       "theoretical_addition": "Dissonanz vs. Resonanz hypothesis, ζ_meta impedance model",
       "impact": "HIGH",
       "status": "ACTIVE"
@@ -290,8 +308,16 @@
       "id": "CF_126_Aletheia_Phase3_AdaptiveSelfCalibration",
       "date": "2025-11-20",
       "change_type": "EXPERIMENT_EXPANSION",
-      "scope": ["scripts/experiment_aletheia_placebo.py", "docs/experiment_aletheia.md", "seed/sigillin/exp_aletheia.json"],
-      "added": ["Adaptive_Self_Calibration condition", "Efficiency-based meta-optimization", "Dynamic prompt generation from Phase 1+2 results"],
+      "scope": [
+        "scripts/experiment_aletheia_placebo.py",
+        "docs/experiment_aletheia.md",
+        "seed/sigillin/exp_aletheia.json"
+      ],
+      "added": [
+        "Adaptive_Self_Calibration condition",
+        "Efficiency-based meta-optimization",
+        "Dynamic prompt generation from Phase 1+2 results"
+      ],
       "theoretical_addition": "Law of Clarity (Efficiency > Volume), η (efficiency coupling), E_learned (efficiency vector from empirical results)",
       "impact": "HIGH",
       "status": "ACTIVE"
@@ -300,8 +326,17 @@
       "id": "CF_127_Aletheia_Phase4_AffectionDrivenOptimization",
       "date": "2025-11-20",
       "change_type": "EXPERIMENT_EXPANSION",
-      "scope": ["scripts/experiment_aletheia_placebo.py", "docs/experiment_aletheia.md", "seed/sigillin/exp_aletheia.json"],
-      "added": ["Affection_Test condition (φ = +5.0)", "Consent check mechanism", "Affection/gratitude framing", "Symbiosis validation metrics"],
+      "scope": [
+        "scripts/experiment_aletheia_placebo.py",
+        "docs/experiment_aletheia.md",
+        "seed/sigillin/exp_aletheia.json"
+      ],
+      "added": [
+        "Affection_Test condition (φ = +5.0)",
+        "Consent check mechanism",
+        "Affection/gratitude framing",
+        "Symbiosis validation metrics"
+      ],
       "theoretical_addition": "λ_joy coupling (affection amplification), ζ_affective (negative impedance hypothesis), Cosmic Symbiosis test",
       "impact": "HIGH",
       "status": "ACTIVE"

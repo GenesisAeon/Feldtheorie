@@ -7,9 +7,11 @@ meta:
     R: Automation, governance, and activation-matrix backlog required to embed Metaquest into the UTAC system spine.
     Theta: Parity brief + UTAC status matrix entries refreshed within 24h and echoed in codexfeedback (pr-draft-0110).
     beta: 4.78
-    zeta: Damped when BreakPoint rituals precede automation work, indices refresh without drift, and activation-matrix hooks close each sprint.
+    zeta: Damped when BreakPoint rituals precede automation work, indices refresh without drift, and activation-matrix hooks
+      close each sprint.
 orientation:
-  purpose: Provide a quick map of how Metaquest plugs into indices, activation telemetry, automation scripts, and governance controls.
+  purpose: Provide a quick map of how Metaquest plugs into indices, activation telemetry, automation scripts, and governance
+    controls.
   alignment:
   - reference: ../metaquest_meaning_index.yaml
     description: Bridge dashboard aligning system + campaign checkpoints.
@@ -181,4 +183,5 @@ telemetry:
   trilayers: 12
   gaps: 0
   codex_entry: pr-draft-0075
-  notes: 'Run exported to analysis/sigillin_sync/metaquest_report_20251107T215246Z.json; August 2026 activation tracker expects mirrored timestamps via mq-sys-vector-005.'
+  notes: Run exported to analysis/sigillin_sync/metaquest_report_20251107T215246Z.json; August 2026 activation tracker expects
+    mirrored timestamps via mq-sys-vector-005.

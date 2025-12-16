@@ -7,7 +7,8 @@
     "created": "2025-11-06T16:53:06.943509",
     "status": "active",
     "sigillin_type": "ordnungs-sigillin",
-    "note": "Quellenkatalog für UTAC-Projekt. Referenziert Papers, Daten, Code."
+    "note": "Quellenkatalog für UTAC-Projekt. Referenziert Papers, Daten, Code.",
+    "sigil": "sources-index"
   },
   "categories": {
     "ai_llm": {
@@ -329,53 +330,53 @@
         "universality"
       ],
       "relevance": "high",
-    "notes": "Universalität kritischer Phänomene",
-    "utac_connection": "β-Spektrum als Universalitätsklasse"
-  },
-  {
-    "id": "source-oxfam-2024",
-    "title": "Carbon Inequality Kills (Oxfam 2024)",
-    "path": [
-      "https://policy-practice.oxfam.org/resources/carbon-inequality-kills-why-ending-the-contribution-of-the-super-rich-is-esse-621656/"
-    ],
-    "category": "socio_ecology",
-    "type": "report",
-    "status": "active",
-    "relevance": "critical",
-    "keywords": [
-      "carbon-inequality",
-      "gini",
-      "load-factor",
-      "investment-emissions"
-    ],
-    "description": "Liefert den empirischen 'Load'-Faktor (~10) für den Klimakluft-Amplifier. Belegt, dass das Top-1% das Budget in <5 Monaten verbraucht (vs. 4 Jahre global).",
-    "temporal": {
-      "year": 2024,
-      "authors": "Oxfam International"
+      "notes": "Universalität kritischer Phänomene",
+      "utac_connection": "β-Spektrum als Universalitätsklasse"
+    },
+    {
+      "id": "source-oxfam-2024",
+      "title": "Carbon Inequality Kills (Oxfam 2024)",
+      "path": [
+        "https://policy-practice.oxfam.org/resources/carbon-inequality-kills-why-ending-the-contribution-of-the-super-rich-is-esse-621656/"
+      ],
+      "category": "socio_ecology",
+      "type": "report",
+      "status": "active",
+      "relevance": "critical",
+      "keywords": [
+        "carbon-inequality",
+        "gini",
+        "load-factor",
+        "investment-emissions"
+      ],
+      "description": "Liefert den empirischen 'Load'-Faktor (~10) für den Klimakluft-Amplifier. Belegt, dass das Top-1% das Budget in <5 Monaten verbraucht (vs. 4 Jahre global).",
+      "temporal": {
+        "year": 2024,
+        "authors": "Oxfam International"
+      }
+    },
+    {
+      "id": "source-landauer-1961",
+      "title": "Irreversibility and Heat Generation in the Computing Process",
+      "path": [
+        "https://ibm.com/landauer"
+      ],
+      "category": "physics",
+      "type": "paper",
+      "status": "active",
+      "relevance": "critical",
+      "keywords": [
+        "landauer-limit",
+        "information-entropy",
+        "thermodynamics",
+        "broken-ram"
+      ],
+      "description": "Physikalisches Fundament der 'Broken RAM' Hypothese. Definiert die Mindestenergie (kT ln 2) pro gelöschtem Bit. Bei β > 30 (durch Ungleichheit) wird die Entropie-Abfuhr physikalisch unmöglich.",
+      "temporal": {
+        "year": 1961,
+        "authors": "Rolf Landauer"
+      }
     }
-  },
-  {
-    "id": "source-landauer-1961",
-    "title": "Irreversibility and Heat Generation in the Computing Process",
-    "path": [
-      "https://ibm.com/landauer"
-    ],
-    "category": "physics",
-    "type": "paper",
-    "status": "active",
-    "relevance": "critical",
-    "keywords": [
-      "landauer-limit",
-      "information-entropy",
-      "thermodynamics",
-      "broken-ram"
-    ],
-    "description": "Physikalisches Fundament der 'Broken RAM' Hypothese. Definiert die Mindestenergie (kT ln 2) pro gelöschtem Bit. Bei β > 30 (durch Ungleichheit) wird die Entropie-Abfuhr physikalisch unmöglich.",
-    "temporal": {
-      "year": 1961,
-      "authors": "Rolf Landauer"
-    }
-  }
   ],
   "statistics": {
     "total_sources": 13,
