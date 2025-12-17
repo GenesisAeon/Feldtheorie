@@ -864,6 +864,149 @@ class TopologicalReaper:
 
         return redundant_edges
 
+    def calculate_eigenvector_centrality(
+        self,
+        coupling_matrix: np.ndarray,
+        max_iter: int = 100,
+        tol: float = 1e-6,
+    ) -> np.ndarray:
+        """
+        Calculate eigenvector centrality for each node
+
+        Eigenvector centrality measures node importance based on:
+        - Direct connections (degree)
+        - Importance of neighbors (recursive)
+
+        This identifies the "hubs" - nodes that are both:
+        - Highly connected
+        - Connected to other important nodes
+
+        Args:
+            coupling_matrix: NxN coupling matrix
+            max_iter: Maximum power iteration steps
+            tol: Convergence tolerance
+
+        Returns:
+            Array of centrality scores per node (normalized)
+        """
+        n = coupling_matrix.shape[0]
+
+        # Convert to adjacency matrix (binary)
+        adj_matrix = (coupling_matrix > 0).astype(float)
+
+        # Power iteration to find dominant eigenvector
+        centrality = np.ones(n) / n  # Initialize uniformly
+
+        for _ in range(max_iter):
+            centrality_new = adj_matrix @ centrality
+
+            # Normalize
+            norm = np.linalg.norm(centrality_new)
+            if norm > 0:
+                centrality_new = centrality_new / norm
+
+            # Check convergence
+            if np.allclose(centrality, centrality_new, atol=tol):
+                break
+
+            centrality = centrality_new
+
+        return centrality
+
+    def identify_hub_node(
+        self,
+        coupling_matrix: np.ndarray,
+    ) -> Tuple[int, float]:
+        """
+        Identify the hub node (highest eigenvector centrality)
+
+        The hub is the "king" of the network - the most central,
+        most influential node. Attacking it creates maximum
+        structural trauma.
+
+        Args:
+            coupling_matrix: NxN coupling matrix
+
+        Returns:
+            (hub_index, centrality_score)
+        """
+        centrality = self.calculate_eigenvector_centrality(coupling_matrix)
+
+        hub_index = int(np.argmax(centrality))
+        hub_centrality = centrality[hub_index]
+
+        return hub_index, hub_centrality
+
+    def phase1_hub_attack(
+        self,
+        coupling_matrix: np.ndarray,
+        beta_values: np.ndarray,
+        slash_fraction: float = 0.5,
+    ) -> np.ndarray:
+        """
+        PHASE 1 (ALTERNATIVE): HUB ATTACK - Asymmetric Trauma
+
+        Instead of pruning weak connections (uniform symmetry),
+        this attacks the STRONGEST node - the hub.
+
+        **The Theory of Symmetry Breaking:**
+        - Uniform pruning maintains spherical symmetry → static crystal
+        - Hub attack breaks symmetry → creates gradient → forces evolution
+
+        **The Mechanism:**
+        1. Identify the hub (highest eigenvector centrality)
+        2. Slash a fraction of the hub's connections
+        3. Force the network to find alternative routes
+        4. Create evolutionary pressure → reorganization
+
+        **Expected Outcome:**
+        - Φ crashes initially (Crisis)
+        - Coherence drops (Chaos)
+        - System forced to reconstruct → potential for higher complexity
+
+        This is the "Königsmord" (King Slayer) strategy.
+
+        Args:
+            coupling_matrix: NxN coupling matrix
+            beta_values: Array of β-values per node
+            slash_fraction: Fraction of hub's connections to delete (default: 0.5)
+
+        Returns:
+            Modified coupling matrix with hub attacked
+        """
+        coupling_attacked = coupling_matrix.copy()
+
+        # Identify the hub (The King)
+        hub_idx, hub_centrality = self.identify_hub_node(coupling_matrix)
+
+        # Get all connections of the hub
+        hub_connections = []
+        for j in range(len(coupling_matrix)):
+            if j != hub_idx and coupling_matrix[hub_idx, j] > 0:
+                hub_connections.append((hub_idx, j, coupling_matrix[hub_idx, j]))
+
+        # Sort by connection strength (weakest first for selective attack)
+        # NOTE: We could also attack strongest first - that's even more brutal
+        hub_connections = sorted(hub_connections, key=lambda x: x[2])
+
+        # Calculate how many to slash
+        n_slash = int(len(hub_connections) * slash_fraction)
+
+        # THE CUT: Delete hub's connections (The Beheading)
+        self.pruned_edges = []
+        for i in range(n_slash):
+            hub_idx_local, j, _ = hub_connections[i]
+            coupling_attacked[hub_idx_local, j] = 0.0
+            coupling_attacked[j, hub_idx_local] = 0.0  # Symmetric
+            self.pruned_edges.append((hub_idx_local, j))
+
+        self.phase_history.append(
+            f"HUB ATTACK: Slashed {n_slash}/{len(hub_connections)} connections "
+            f"of hub node {hub_idx} (centrality={hub_centrality:.3f})"
+        )
+
+        return coupling_attacked
+
     def phase1_implosion(
         self,
         coupling_matrix: np.ndarray,
@@ -1095,6 +1238,7 @@ def create_topological_reaper(
     pruning_threshold: float = 0.1,
     redundancy_threshold: float = 0.95,
     growth_resonance_threshold: float = 0.8,
+    strategy: str = "uniform",  # "uniform" or "hub_attack"
 ) -> TopologicalReaper:
     """
     Factory function to create topological reaper
@@ -1105,12 +1249,16 @@ def create_topological_reaper(
         pruning_threshold: Coupling strength threshold for weak edge pruning
         redundancy_threshold: β-similarity threshold for redundancy detection
         growth_resonance_threshold: Resonance threshold for synaptogenesis
+        strategy: Pruning strategy - "uniform" (default) or "hub_attack"
 
     Returns:
         Configured TopologicalReaper
     """
-    return TopologicalReaper(
+    reaper = TopologicalReaper(
         pruning_threshold=pruning_threshold,
         redundancy_threshold=redundancy_threshold,
         growth_resonance_threshold=growth_resonance_threshold,
     )
+    # Store strategy as attribute for later use
+    reaper.strategy = strategy
+    return reaper
