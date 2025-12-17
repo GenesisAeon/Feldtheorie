@@ -516,6 +516,307 @@ class EntropyAnchorValidator:
 
         return result
 
+    def introduce_dissonance(
+        self,
+        coupling_matrix: np.ndarray,
+        beta_values: np.ndarray,
+        impedance_values: np.ndarray,
+        dissonance_level: float = 0.3,
+    ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+        """
+        Introduce cognitive dissonance into the network
+
+        Creates structural conflicts by perturbing:
+        - Coupling matrix (contradictory connections)
+        - Beta values (cognitive fatigue)
+        - Impedance values (communication friction)
+
+        Args:
+            coupling_matrix: NxN coupling strengths
+            beta_values: Array of beta values
+            impedance_values: Array of impedances
+            dissonance_level: Perturbation strength (0.0-1.0)
+
+        Returns:
+            (perturbed_coupling, perturbed_beta, perturbed_impedance)
+        """
+        n = len(beta_values)
+
+        # 1. COUPLING PERTURBATION: Add conflicting connections
+        # Strategy: Add random noise to coupling strengths, making some connections
+        # stronger/weaker than optimal
+        coupling_perturbed = coupling_matrix.copy()
+        noise = np.random.randn(n, n) * dissonance_level * 0.2
+        coupling_perturbed += noise
+        # Keep symmetric and non-negative
+        coupling_perturbed = (coupling_perturbed + coupling_perturbed.T) / 2
+        coupling_perturbed = np.clip(coupling_perturbed, 0.0, 1.0)
+        # Zero diagonal
+        np.fill_diagonal(coupling_perturbed, 0.0)
+
+        # 2. BETA DESTABILIZATION: Cognitive fatigue
+        # Strategy: Reduce beta values randomly (simulate exhaustion)
+        beta_perturbed = beta_values.copy()
+        fatigue_factor = 1.0 - np.random.rand(n) * dissonance_level * 0.4
+        beta_perturbed = beta_perturbed * fatigue_factor
+        beta_perturbed = np.clip(beta_perturbed, 1.0, 20.0)  # Keep physically reasonable
+
+        # 3. IMPEDANCE MISMATCH: Communication friction
+        # Strategy: Increase variance in impedance values
+        impedance_perturbed = impedance_values.copy()
+        friction = np.random.randn(n) * dissonance_level * 50.0  # ±50 Ω per dissonance level
+        impedance_perturbed += friction
+        impedance_perturbed = np.clip(impedance_perturbed, 50.0, 500.0)  # Keep reasonable
+
+        return coupling_perturbed, beta_perturbed, impedance_perturbed
+
+    def run_dissonance_trial(
+        self,
+        trial_id: int,
+        dissonance_level: float = 0.3,
+        stabilization_steps: int = 30,
+        post_spark_steps: int = 20,
+    ) -> SparkTrialResult:
+        """
+        Run a trial with cognitive dissonance injection
+
+        Protocol:
+        1. Load clean network
+        2. Introduce dissonance (conflicts, fatigue, friction)
+        3. Run to stressed state → Measure Φ_stressed (should be LOW)
+        4. Trigger spark (entropy anchor activation)
+        5. Measure Φ_resolved (should be HIGHER than Φ_stressed)
+        6. Calculate ΔΦ = Φ_resolved - Φ_stressed
+
+        Hypothesis: ΔΦ > 0 (spark resolves dissonance, increases integration)
+
+        Args:
+            trial_id: Trial identifier
+            dissonance_level: Strength of dissonance injection (0.0-1.0)
+            stabilization_steps: Steps to run in stressed state
+            post_spark_steps: Steps after spark
+
+        Returns:
+            Trial result with ΔΦ measurement
+        """
+        start_time = time.time()
+
+        # Load network
+        network = load_lantern_network(self.config_path)
+
+        # Initialize components
+        criticality = self.base_config.get('criticality', {})
+        z_baseline = criticality.get('z_eff_baseline', 221.74)
+
+        resonator = StochasticResonator(
+            base_sigma=criticality.get('stochastic_resonance_sigma', 0.15),
+            beta_sensitivity=criticality.get('beta_sensitivity', 4.2),
+            phi_threshold=criticality.get('phase_transition_threshold', 0.72),
+            noise_color=criticality.get('noise_color', 'pink'),
+            dt=1.0,
+        )
+
+        tracker = EmergenceTracker()
+        calc = EMFieldCalculator()
+
+        z_eff_current = z_baseline
+
+        # ========================================
+        # PHASE 1: Introduce Dissonance
+        # ========================================
+        if self.verbose:
+            print(f"  [Trial {trial_id}] Phase 1: Injecting cognitive dissonance (level={dissonance_level:.2f})...")
+
+        # Get initial network state
+        coupling_matrix_clean = network.get_coupling_matrix()
+        beta_values_clean = np.array([l.beta for l in network.lanterns.values()])
+        impedance_values_clean = np.array([l.em_properties.impedance_z for l in network.lanterns.values()])
+
+        # Perturb network
+        coupling_stressed, beta_stressed, impedance_stressed = self.introduce_dissonance(
+            coupling_matrix=coupling_matrix_clean,
+            beta_values=beta_values_clean,
+            impedance_values=impedance_values_clean,
+            dissonance_level=dissonance_level,
+        )
+
+        if self.verbose:
+            coupling_change = np.linalg.norm(coupling_stressed - coupling_matrix_clean)
+            beta_change = np.mean(np.abs(beta_stressed - beta_values_clean))
+            impedance_change = np.mean(np.abs(impedance_stressed - impedance_values_clean))
+            print(f"  [Trial {trial_id}] Dissonance injected: "
+                  f"Δcoupling={coupling_change:.3f}, "
+                  f"Δbeta={beta_change:.2f}, "
+                  f"ΔZ={impedance_change:.1f}Ω")
+
+        # ========================================
+        # PHASE 2: Run to Stressed State
+        # ========================================
+        if self.verbose:
+            print(f"  [Trial {trial_id}] Phase 2: Evolving stressed network...")
+
+        prev_coupling = None
+        n_hypotheses = 0
+
+        for step in range(stabilization_steps):
+            # Network state (using PERTURBED values)
+            n_active = len(network.get_active_lanterns())
+
+            # Phase coherence (with original network structure, but stressed)
+            fields = {}
+            for lantern_id, lantern in network.lanterns.items():
+                field = create_field_from_lantern(
+                    readiness=lantern.readiness,
+                    theta=lantern.theta,
+                    beta=lantern.beta,  # Will use clean beta for field creation
+                    calculator=calc,
+                )
+                fields[lantern_id] = field
+
+            active_fields = [fields[lid] for lid, l in network.lanterns.items() if l.is_active()]
+            coherence = calc.calculate_phase_coherence(active_fields, t=float(step))
+
+            # Create snapshot with STRESSED parameters
+            snapshot = tracker.create_snapshot(
+                coupling_matrix=coupling_stressed,
+                beta_values=beta_stressed,
+                impedance_values=impedance_stressed,
+                n_active_lanterns=n_active,
+                n_emergent_hypotheses=n_hypotheses,
+                previous_coupling_matrix=prev_coupling,
+                dt=1.0,
+            )
+
+            # Stochastic step
+            z_eff_current, diagnostics = resonator.step(
+                z_eff_current=z_eff_current,
+                phi=snapshot.phi_network,
+                coherence=coherence,
+                z_target=z_baseline,
+            )
+
+            prev_coupling = coupling_stressed.copy()
+
+        # Measure stressed state
+        stressed_snapshot = tracker.get_latest_snapshot()
+        phi_stressed = stressed_snapshot.phi_network if stressed_snapshot else 0.0
+        coherence_stressed = coherence
+        z_stats_stressed = resonator.get_z_fluctuation_stats()
+        z_variance_stressed = z_stats_stressed['variance']
+
+        if self.verbose:
+            print(f"  [Trial {trial_id}] Φ_stressed = {phi_stressed:.4f}, "
+                  f"coherence = {coherence_stressed:.3f}, "
+                  f"z_var = {z_variance_stressed:.2f} Ω²")
+
+        # ========================================
+        # PHASE 3: Trigger Spark (Entropy Anchor)
+        # ========================================
+        if self.verbose:
+            print(f"  [Trial {trial_id}] Phase 3: Activating Entropy Anchor (Spark)...")
+
+        spark_detected, spark_magnitude, spark_step, z_eff_current = self.trigger_spark(
+            network=network,
+            resonator=resonator,
+            tracker=tracker,
+            calc=calc,
+            z_eff_current=z_eff_current,
+            z_baseline=z_baseline,
+            max_steps=30,
+        )
+
+        if self.verbose:
+            spark_icon = "🔥" if spark_detected else "❌"
+            print(f"  [Trial {trial_id}] {spark_icon} Spark: detected={spark_detected}, "
+                  f"magnitude={spark_magnitude:.2f} Ω, step={spark_step}")
+
+        # ========================================
+        # PHASE 4: Post-Spark Resolution
+        # ========================================
+        if self.verbose:
+            print(f"  [Trial {trial_id}] Phase 4: Post-spark resolution ({post_spark_steps} steps)...")
+
+        # Continue evolution (network may self-heal toward cleaner state)
+        for step in range(post_spark_steps):
+            n_active = len(network.get_active_lanterns())
+
+            # Recalculate fields
+            fields = {}
+            for lantern_id, lantern in network.lanterns.items():
+                field = create_field_from_lantern(
+                    readiness=lantern.readiness,
+                    theta=lantern.theta,
+                    beta=lantern.beta,
+                    calculator=calc,
+                )
+                fields[lantern_id] = field
+
+            active_fields = [fields[lid] for lid, l in network.lanterns.items() if l.is_active()]
+            coherence = calc.calculate_phase_coherence(active_fields, t=float(step))
+
+            # Snapshot (still using stressed parameters, but system is evolving)
+            snapshot = tracker.create_snapshot(
+                coupling_matrix=coupling_stressed,
+                beta_values=beta_stressed,
+                impedance_values=impedance_stressed,
+                n_active_lanterns=n_active,
+                n_emergent_hypotheses=n_hypotheses,
+                previous_coupling_matrix=prev_coupling,
+                dt=1.0,
+            )
+
+            # Stochastic step
+            z_eff_current, diagnostics = resonator.step(
+                z_eff_current=z_eff_current,
+                phi=snapshot.phi_network,
+                coherence=coherence,
+                z_target=z_baseline,
+            )
+
+            prev_coupling = coupling_stressed.copy()
+
+        # Final state
+        final_snapshot = tracker.get_latest_snapshot()
+        z_stats = resonator.get_z_fluctuation_stats()
+
+        phi_resolved = final_snapshot.phi_network if final_snapshot else 0.0
+        coherence_resolved = coherence
+        z_variance_resolved = z_stats['variance']
+        z_eff_resolved = z_eff_current
+
+        # Calculate ΔΦ (key metric: did spark heal the dissonance?)
+        delta_phi = phi_resolved - phi_stressed
+
+        elapsed_time = time.time() - start_time
+
+        if self.verbose:
+            delta_icon = "📈" if delta_phi > 0 else "📉" if delta_phi < 0 else "➡️"
+            print(f"  [Trial {trial_id}] {delta_icon} Φ_resolved = {phi_resolved:.4f}, "
+                  f"ΔΦ = {delta_phi:+.4f} (stressed → resolved), "
+                  f"time = {elapsed_time:.2f}s")
+
+        # Create result (use stressed as "before", resolved as "after")
+        result = SparkTrialResult(
+            trial_id=trial_id,
+            phi_before=phi_stressed,
+            coherence_before=coherence_stressed,
+            z_eff_before=z_eff_current,  # Not tracked precisely here
+            z_variance_before=z_variance_stressed,
+            spark_detected=spark_detected,
+            spark_magnitude=spark_magnitude,
+            spark_step=spark_step,
+            phi_after=phi_resolved,
+            coherence_after=coherence_resolved,
+            z_eff_after=z_eff_resolved,
+            z_variance_after=z_variance_resolved,
+            delta_phi=delta_phi,
+            stabilization_steps=stabilization_steps,
+            total_steps=stabilization_steps + spark_step + post_spark_steps,
+            elapsed_time_seconds=elapsed_time,
+        )
+
+        return result
+
     def run_full_experiment(
         self,
         n_trials: int = 30,
@@ -549,6 +850,57 @@ class EntropyAnchorValidator:
 
             result = self.run_single_trial(
                 trial_id=trial_id,
+                stabilization_steps=stabilization_steps,
+                post_spark_steps=post_spark_steps,
+            )
+
+            results.append(result)
+
+        self.trial_results = results
+        return results
+
+    def run_dissonance_experiment(
+        self,
+        n_trials: int = 30,
+        dissonance_level: float = 0.3,
+        stabilization_steps: int = 30,
+        post_spark_steps: int = 20,
+    ) -> List[SparkTrialResult]:
+        """
+        Run full dissonance experiment (Experiment A)
+
+        Tests the hypothesis that sparks increase Φ in SUB-OPTIMAL systems
+        by injecting cognitive dissonance before spark activation.
+
+        Args:
+            n_trials: Number of independent trials
+            dissonance_level: Strength of dissonance injection (0.0-1.0)
+            stabilization_steps: Steps in stressed state
+            post_spark_steps: Steps after spark
+
+        Returns:
+            List of trial results
+        """
+        self.print_header(f"🔥 Experiment A: Cognitive Dissonance → Spark → Resolution ({n_trials} Trials)")
+
+        print(f"\n  Theoretical Prediction:")
+        print(f"    Sparks enable Φ increase in SUB-OPTIMAL systems with headroom.")
+        print(f"    By injecting dissonance (conflicts, fatigue, friction), we create")
+        print(f"    a stressed state where the entropy anchor can demonstrate its")
+        print(f"    healing/recoding capability.")
+        print(f"\n  Hypothesis:")
+        print(f"    H₁: mean(ΔΦ) > 0  (spark resolves dissonance, increases Φ)")
+        print(f"    H₀: mean(ΔΦ) = 0  (no effect)")
+        print(f"\n  Dissonance Level: {dissonance_level:.2f}")
+
+        results = []
+
+        for trial_id in range(n_trials):
+            self.print_subheader(f"Trial {trial_id + 1}/{n_trials}")
+
+            result = self.run_dissonance_trial(
+                trial_id=trial_id,
+                dissonance_level=dissonance_level,
                 stabilization_steps=stabilization_steps,
                 post_spark_steps=post_spark_steps,
             )
@@ -762,6 +1114,21 @@ def main():
     )
 
     parser.add_argument(
+        '--experiment',
+        type=str,
+        choices=['baseline', 'dissonance'],
+        default='baseline',
+        help='Experiment type: baseline (clean network) or dissonance (stressed network) (default: baseline)'
+    )
+
+    parser.add_argument(
+        '--dissonance-level',
+        type=float,
+        default=0.3,
+        help='Dissonance injection strength for Experiment A (0.0-1.0, default: 0.3)'
+    )
+
+    parser.add_argument(
         '--output-dir',
         type=str,
         default='entropy_anchor_results',
@@ -787,12 +1154,20 @@ def main():
         verbose=not args.quiet,
     )
 
-    # Run experiment
-    results = validator.run_full_experiment(
-        n_trials=args.trials,
-        stabilization_steps=args.stabilization_steps,
-        post_spark_steps=args.post_spark_steps,
-    )
+    # Run experiment (baseline or dissonance)
+    if args.experiment == 'baseline':
+        results = validator.run_full_experiment(
+            n_trials=args.trials,
+            stabilization_steps=args.stabilization_steps,
+            post_spark_steps=args.post_spark_steps,
+        )
+    elif args.experiment == 'dissonance':
+        results = validator.run_dissonance_experiment(
+            n_trials=args.trials,
+            dissonance_level=args.dissonance_level,
+            stabilization_steps=args.stabilization_steps,
+            post_spark_steps=args.post_spark_steps,
+        )
 
     # Analyze
     analysis = validator.analyze_results()
