@@ -111,6 +111,27 @@ def test_load_dataset_requires_dataset_field() -> None:
         load_dataset({})
 
 
+def test_load_dataset_rejects_none_dataset() -> None:
+    """Explicit null dataset names should be treated as missing metadata."""
+
+    with pytest.raises(ValueError, match="non-empty 'dataset' field"):
+        load_dataset({"dataset": None})
+
+
+def test_load_dataset_strict_reports_search_log(tmp_path) -> None:
+    """Strict mode should expose the candidate search log when nothing is found."""
+
+    meta = {"dataset": "Missing Signal"}
+
+    with pytest.raises(FileNotFoundError) as excinfo:
+        load_dataset(meta, data_dir=tmp_path, strict=True)
+
+    message = str(excinfo.value)
+    assert "missing_signal.csv" in message
+    assert "missing_signal.csv.gz" in message
+    assert "missing_signal.json" in message
+
+
 def test_load_all_collects_metadata_and_optional_data(tmp_path) -> None:
     """load_all should collect metadata even when data files are absent."""
 
