@@ -229,6 +229,8 @@ class TopologicalSparkValidator:
         pruning_threshold: float = 0.15,
         growth_resonance_threshold: float = 0.75,
         vacuum_steps: int = 10,
+        strategy: str = "uniform",
+        hub_slash_fraction: float = 0.5,
     ) -> TopologicalTrialResult:
         """
         Run a single topological reconfiguration trial
@@ -238,6 +240,8 @@ class TopologicalSparkValidator:
             pruning_threshold: Threshold for pruning weak connections
             growth_resonance_threshold: Threshold for growing new connections
             vacuum_steps: Number of steps to run in vacuum phase
+            strategy: Pruning strategy - "uniform" or "hub_attack"
+            hub_slash_fraction: Fraction of hub connections to slash (for hub_attack)
 
         Returns:
             TopologicalTrialResult
@@ -251,6 +255,7 @@ class TopologicalSparkValidator:
         reaper = create_topological_reaper(
             pruning_threshold=pruning_threshold,
             growth_resonance_threshold=growth_resonance_threshold,
+            strategy=strategy,
         )
 
         if self.verbose:
@@ -269,15 +274,26 @@ class TopologicalSparkValidator:
         # PHASE 1: IMPLOSION 🔪
         # ────────────────────────────────────────────────────────────────────
 
-        if self.verbose:
-            print("\n  🔪 PHASE 1: IMPLOSION (The Cut)")
+        if strategy == "hub_attack":
+            if self.verbose:
+                print("\n  👑🔪 PHASE 1: HUB ATTACK (The Königsmord)")
+        else:
+            if self.verbose:
+                print("\n  🔪 PHASE 1: IMPLOSION (The Cut)")
 
         # Get current network state
         coupling_matrix = network.get_coupling_matrix()
         beta_values = np.array([l.beta for l in network.lanterns.values()])
 
-        # Execute implosion
-        coupling_pruned = reaper.phase1_implosion(coupling_matrix, beta_values)
+        # Execute implosion (uniform or hub attack)
+        if strategy == "hub_attack":
+            coupling_pruned = reaper.phase1_hub_attack(
+                coupling_matrix,
+                beta_values,
+                slash_fraction=hub_slash_fraction,
+            )
+        else:
+            coupling_pruned = reaper.phase1_implosion(coupling_matrix, beta_values)
 
         # Update network with pruned topology
         network.set_coupling_matrix(coupling_pruned)
@@ -386,6 +402,8 @@ class TopologicalSparkValidator:
         pruning_threshold: float = 0.15,
         growth_resonance_threshold: float = 0.75,
         vacuum_steps: int = 10,
+        strategy: str = "uniform",
+        hub_slash_fraction: float = 0.5,
     ) -> List[TopologicalTrialResult]:
         """
         Run full Experiment B with multiple trials
@@ -395,6 +413,8 @@ class TopologicalSparkValidator:
             pruning_threshold: Threshold for pruning
             growth_resonance_threshold: Threshold for growth
             vacuum_steps: Steps to run in vacuum phase
+            strategy: Pruning strategy - "uniform" or "hub_attack"
+            hub_slash_fraction: Fraction of hub connections to slash (for hub_attack)
 
         Returns:
             List of trial results
@@ -402,10 +422,13 @@ class TopologicalSparkValidator:
         self.print_header("EXPERIMENT B: TOPOLOGICAL SPARK - THE BIT-FLIP TEST")
 
         print(f"\nConfiguration:")
+        print(f"  Strategy: {strategy}")
         print(f"  Trials: {n_trials}")
         print(f"  Pruning threshold: {pruning_threshold}")
         print(f"  Growth resonance threshold: {growth_resonance_threshold}")
         print(f"  Vacuum steps: {vacuum_steps}")
+        if strategy == "hub_attack":
+            print(f"  Hub slash fraction: {hub_slash_fraction}")
 
         self.trial_results = []
 
@@ -415,6 +438,8 @@ class TopologicalSparkValidator:
                 pruning_threshold=pruning_threshold,
                 growth_resonance_threshold=growth_resonance_threshold,
                 vacuum_steps=vacuum_steps,
+                strategy=strategy,
+                hub_slash_fraction=hub_slash_fraction,
             )
             self.trial_results.append(result)
 
@@ -581,6 +606,21 @@ def main():
     )
 
     parser.add_argument(
+        '--strategy',
+        type=str,
+        default='uniform',
+        choices=['uniform', 'hub_attack'],
+        help='Pruning strategy: "uniform" (prune weak edges) or "hub_attack" (attack hub node)'
+    )
+
+    parser.add_argument(
+        '--hub-slash-fraction',
+        type=float,
+        default=0.5,
+        help='Fraction of hub connections to slash (only for hub_attack strategy, default: 0.5)'
+    )
+
+    parser.add_argument(
         '--quiet',
         action='store_true',
         help='Suppress verbose output'
@@ -600,6 +640,8 @@ def main():
         pruning_threshold=args.pruning_threshold,
         growth_resonance_threshold=args.growth_threshold,
         vacuum_steps=args.vacuum_steps,
+        strategy=args.strategy,
+        hub_slash_fraction=args.hub_slash_fraction,
     )
 
     # Analyze and save
