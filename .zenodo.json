@@ -1,24 +1,24 @@
 {
-  "title": "Universal Threshold Field v1.0.1 — Wei Bridge Alignment",
+  "title": "GenesisAeon v9.0: Living Crystal – A Metastable Threshold Field Simulation",
   "upload_type": "software",
-  "description": "The UTF programme aligns Jason Wei's emergent ability lanterns with the universal threshold quartet (R, Θ, β, ζ(R)). This release packages analysis/llm_beta_extractor.py, docs/wei_integration.md, and paper/manuscript_v1.0.tex updates so ΔAIC diagnostics, canonical β bands, and symbolic narratives cohere for DOI minting.",
+  "description": "Release v9.0 packages the Living Crystal stack that breaks the Crystal-Death paradox. The SolarDriver injects entropy when coherence spikes, the StochasticResonator anchors Φ at criticality, and the TopologicalReaper heals topology to keep σ(β(R−Θ)) breathing. The archive contains the main CLI (v9_alpha/main_simulation.py), modular models for metastability and sensing, and Sensorium streams that expose the Climate–Economy coupling anomaly discovered in Experiment E.",
   "creators": [
-    {
-      "name": "Römer, Johann"
-    },
-    {
-      "name": "Universal Threshold Field Contributors"
-    }
+    { "name": "Römer, Johann Benjamin" },
+    { "name": "Claude (Anthropic)" },
+    { "name": "MOR Research Agents" },
+    { "name": "GPT-5.1-Codex-Max (OpenAI)" }
   ],
-  "version": "1.0.1",
-  "publication_date": "2025-11-02",
+  "version": "9.0.0",
+  "publication_date": "2025-12-17",
   "language": "eng",
   "keywords": [
-    "logistic resonance",
-    "threshold field",
-    "emergent abilities",
-    "Jason Wei",
-    "transdisciplinary science"
+    "living crystal",
+    "metastability",
+    "entropy anchor",
+    "solar forcing",
+    "topological reconfiguration",
+    "climate-economy coupling",
+    "lantern network"
   ],
   "related_identifiers": [
     {
@@ -28,12 +28,11 @@
     },
     {
       "relation": "documents",
-      "identifier": "https://www.jasonwei.net/blog/common-arguments-regarding-emergent-abilities",
+      "identifier": "https://zenodo.org/record/17472834",
       "scheme": "url"
     }
   ],
   "license": "MIT",
   "access_right": "open",
-  "notes": "ΔAIC ≥ 10.18 guards the Wei bridge; canonical β band [3.6, 4.8] accompanies the release.",
-  "doi": "10.5281/zenodo.17472834"
+  "notes": "Packaged for Zenodo reproduction: Experiments A–E summarized, Sensorium interference traces available, and ΔAIC/CI-ready metadata bundled."
 }

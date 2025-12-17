@@ -1,0 +1,37 @@
+{
+  "release": "v9.0-living-crystal",
+  "logistic_frame": {
+    "R": "Living Crystal metastability package",
+    "Theta": "Zenodo reproducibility",
+    "beta": 9.0,
+    "zeta_R": "low-to-medium"
+  },
+  "components": {
+    "entrypoint": "v9_alpha/main_simulation.py",
+    "drivers": ["SolarDriver", "StochasticResonator", "TopologicalReaper", "MultiStreamLoader"],
+    "metadata": [".zenodo.json", "CITATION.cff", "FINAL_RELEASE_NOTES.{md,json,yaml}"]
+  },
+  "quickstart": [
+    "pip install -r requirements.txt",
+    "python v9_alpha/main_simulation.py --enable-solar-driver --enable-resonator --enable-reaper --enable-sensorium --output-prefix releases/v9.0/living_crystal_run",
+    "inspect releases/v9.0/living_crystal_run.{json,yaml}"
+  ],
+  "experiments": [
+    {"id": "A", "label": "Noise", "outcome": "ΔΦ ≈ 0"},
+    {"id": "B", "label": "Pruning", "outcome": "Φ ↑, coherence → 1"},
+    {"id": "C", "label": "Solar", "outcome": "Metastability via SolarDriver"},
+    {"id": "D", "label": "Sensorium", "outcome": "Climate–Economy coupling r ≈ -0.54"},
+    {"id": "E", "label": "Synergy", "outcome": "Non-linear lift from additive + interaction stress"}
+  ],
+  "verification": {
+    "coherence_target": 0.93,
+    "phi_expectation": "final_phi increases after reaper+solar cycles",
+    "entropy_anchor": "resonator_trace shows adaptive noise near Φ_threshold",
+    "sensing": "combined_stress modulates phase drift"
+  },
+  "sigillin_links": {
+    "ordnungs": "feldtheorie_index.{yaml,json,md}",
+    "bedeutung": "seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md",
+    "schatten": "seed/shadow_sigillin/metaquest/metaquest_shadow_index.md"
+  }
+}

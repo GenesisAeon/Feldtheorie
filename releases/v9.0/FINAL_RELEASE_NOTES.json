@@ -1,0 +1,23 @@
+{
+  "version": "9.0",
+  "codename": "Living Crystal",
+  "logistic_frame": {
+    "R": "Archive-ready Living Crystal stack",
+    "Theta": "Reproducibility threshold",
+    "beta": 9.0,
+    "zeta_R": "managed via entropy anchors and solar forcing"
+  },
+  "experiments": [
+    {"id": "A", "name": "Noise", "status": "failed", "observation": "ΔΦ ≈ 0 despite high dissonance", "mechanism": "parameter noise null model"},
+    {"id": "B", "name": "Pruning", "status": "partial", "observation": "Φ increases; coherence → 1.0 (frozen)", "mechanism": "TopologicalReaper implosion + vacuum collapses dynamics"},
+    {"id": "C", "name": "Solar", "status": "success", "observation": "SolarDriver keeps coherence below threshold; Φ breathes", "mechanism": "active symmetry breaking via phase kicks"},
+    {"id": "D", "name": "Sensorium", "status": "resonance", "observation": "Climate–Economy coupling r ≈ -0.54", "mechanism": "MultiStreamLoader interference modulates phase drift"},
+    {"id": "E", "name": "Synergy", "status": "success", "observation": "Non-linear lift beyond additive baseline", "mechanism": "SolarDriver + Sensorium with Reaper healing"}
+  ],
+  "conclusion": "Entropy sinks and active forcing are both required for 4D emergence; topology must stay plastic while Sensorium reveals cross-domain coupling.",
+  "repro_checklist": [
+    "python v9_alpha/main_simulation.py --enable-solar-driver --enable-resonator --enable-reaper --enable-sensorium --output-prefix releases/v9.0/living_crystal_run",
+    "Confirm coherence oscillates below Theta and Φ rises post-reaper cycles",
+    "Archive living_crystal_run.{json,yaml} with these notes"
+  ]
+}
