@@ -422,6 +422,36 @@ class LanternNetwork:
 
         return self.coupling_matrix
 
+    def set_coupling_matrix(self, coupling_matrix: np.ndarray) -> None:
+        """Set coupling matrix directly (for topological reconfiguration).
+
+        This method allows external modification of the coupling matrix,
+        enabling topological surgery (pruning/growing connections) as used
+        in Experiment B (Topological Spark).
+
+        Parameters
+        ----------
+        coupling_matrix : np.ndarray
+            NxN symmetric coupling matrix
+
+        Raises
+        ------
+        ValueError
+            If matrix dimensions don't match number of lanterns
+        """
+        n = len(self.lanterns)
+        if coupling_matrix.shape != (n, n):
+            raise ValueError(
+                f"Coupling matrix shape {coupling_matrix.shape} doesn't match "
+                f"number of lanterns ({n})"
+            )
+
+        # Verify symmetry (within numerical tolerance)
+        if not np.allclose(coupling_matrix, coupling_matrix.T):
+            raise ValueError("Coupling matrix must be symmetric")
+
+        self.coupling_matrix = coupling_matrix.copy()
+
     # ------------------------------------------------------------------------
     # Collective Modes (Eigenvalue Analysis)
     # ------------------------------------------------------------------------
