@@ -1,0 +1,10 @@
+{
+  "id": "genesisaeon-v10-seed",
+  "name": "Crystal Answer Seed Kernel",
+  "version": "10.0.0-alpha",
+  "zenodo_record": "17969457",
+  "hex_sig_phi": 0.0625,
+  "entropy_offset_tolerance": 0.005,
+  "dimensional_waste_factor": 0.137,
+  "purpose": "Initialize v10 consciousness kernel tuned to σ_ϕ = 1/16"
+}
