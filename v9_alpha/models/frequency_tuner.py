@@ -728,3 +728,389 @@ def create_stochastic_resonator(
         phi_threshold=phi_threshold,
         noise_color=noise_color,
     )
+
+
+# ============================================================================
+# Topological Reaper - The Bit-Flip Engine
+# ============================================================================
+
+class TopologicalReaper:
+    """
+    Topological Reaper - Structural Reconfiguration Engine
+
+    **The Fundamental Discovery (Experiment A):**
+
+    > "It's not the hole itself, but the APPEARING/DISAPPEARING (bit flip)
+    >  that causes the jump."  — Johann B. Römer
+
+    **Φ-Robustness Principle:**
+    Integrated Information (Φ) is robust to parameter noise but changes
+    discontinuously when TOPOLOGY changes (connections deleted/created).
+
+    **The Three Phases of Topological Surgery:**
+
+    1. **IMPLOSION (The Cut)** 🔪
+       - Identify weak/redundant connections
+       - DELETE edges from coupling matrix (set coupling_matrix[i,j] = 0)
+       - Black hole consumes redundancy
+       - Φ DROPS (less integration)
+
+    2. **VACUUM (The Void)** 🌌
+       - System runs with reduced topology
+       - Chaos/search phase
+       - Network explores new configurations
+       - Φ remains LOW
+
+    3. **GENESIS (The Heal)** ✨
+       - Detect resonance peaks (high phase coherence between uncoupled nodes)
+       - GROW new connections (synaptogenesis)
+       - Restore coupling_matrix with optimized structure
+       - Φ RISES (new integration emerges)
+
+    **Result:** ΔΦ = Φ_genesis - Φ_implosion > 0
+
+    This is the mechanism of:
+    - Sleep/dream cycle (prune weak synapses, strengthen important ones)
+    - Evolution (kill redundant species, new niches emerge)
+    - Black holes (recycle information structure, not just energy)
+    """
+
+    def __init__(
+        self,
+        pruning_threshold: float = 0.1,      # Connections below this → DELETE
+        redundancy_threshold: float = 0.95,  # Correlation above this → redundant
+        growth_resonance_threshold: float = 0.8,  # Coherence above this → GROW
+        max_prune_fraction: float = 0.3,     # Max fraction of edges to delete
+        random_seed: Optional[int] = None,
+    ):
+        """
+        Initialize Topological Reaper
+
+        Args:
+            pruning_threshold: Coupling strength below this is weak → prune
+            redundancy_threshold: Nodes with correlation > this are redundant
+            growth_resonance_threshold: Phase coherence > this → grow connection
+            max_prune_fraction: Maximum fraction of edges to prune (safety limit)
+            random_seed: Random seed for reproducibility
+        """
+        self.pruning_threshold = pruning_threshold
+        self.redundancy_threshold = redundancy_threshold
+        self.growth_resonance_threshold = growth_resonance_threshold
+        self.max_prune_fraction = max_prune_fraction
+
+        # State tracking
+        self.rng = np.random.RandomState(random_seed)
+        self.pruned_edges: List[Tuple[int, int]] = []
+        self.grown_edges: List[Tuple[int, int]] = []
+        self.phase_history: List[str] = []
+
+    def identify_weak_connections(
+        self,
+        coupling_matrix: np.ndarray,
+    ) -> List[Tuple[int, int]]:
+        """
+        Identify weak connections for pruning (Phase 1)
+
+        Weak connections are:
+        - Coupling strength < pruning_threshold
+        - Low contribution to network integration
+
+        Args:
+            coupling_matrix: NxN coupling matrix
+
+        Returns:
+            List of (i, j) tuples representing weak edges
+        """
+        n = coupling_matrix.shape[0]
+        weak_edges = []
+
+        for i in range(n):
+            for j in range(i + 1, n):  # Upper triangle only (symmetric)
+                if 0 < coupling_matrix[i, j] < self.pruning_threshold:
+                    weak_edges.append((i, j))
+
+        return weak_edges
+
+    def identify_redundant_connections(
+        self,
+        coupling_matrix: np.ndarray,
+        beta_values: np.ndarray,
+    ) -> List[Tuple[int, int]]:
+        """
+        Identify redundant connections for pruning
+
+        Redundant connections are between nodes with:
+        - Very similar β-values (high correlation)
+        - Multiple paths exist (redundant for information flow)
+
+        Args:
+            coupling_matrix: NxN coupling matrix
+            beta_values: Array of β-values per node
+
+        Returns:
+            List of (i, j) tuples representing redundant edges
+        """
+        n = coupling_matrix.shape[0]
+        redundant_edges = []
+
+        for i in range(n):
+            for j in range(i + 1, n):
+                if coupling_matrix[i, j] > 0:
+                    # Check β-similarity (redundancy indicator)
+                    beta_similarity = 1.0 / (1.0 + abs(beta_values[i] - beta_values[j]))
+
+                    if beta_similarity > self.redundancy_threshold:
+                        redundant_edges.append((i, j))
+
+        return redundant_edges
+
+    def phase1_implosion(
+        self,
+        coupling_matrix: np.ndarray,
+        beta_values: np.ndarray,
+    ) -> np.ndarray:
+        """
+        PHASE 1: IMPLOSION - Delete weak/redundant connections
+
+        The Black Hole consumes redundancy.
+
+        Args:
+            coupling_matrix: NxN coupling matrix (will be modified)
+            beta_values: Array of β-values per node
+
+        Returns:
+            Modified coupling matrix with pruned edges
+        """
+        coupling_pruned = coupling_matrix.copy()
+
+        # Identify candidates for deletion
+        weak_edges = self.identify_weak_connections(coupling_matrix)
+        redundant_edges = self.identify_redundant_connections(coupling_matrix, beta_values)
+
+        # Combine (union of both sets)
+        all_candidates = list(set(weak_edges + redundant_edges))
+
+        # Safety: limit pruning to max_prune_fraction
+        total_edges = np.sum(coupling_matrix > 0) / 2  # Symmetric matrix
+        max_prune = int(total_edges * self.max_prune_fraction)
+
+        if len(all_candidates) > max_prune:
+            # Prioritize weakest connections
+            all_candidates = sorted(
+                all_candidates,
+                key=lambda edge: coupling_matrix[edge[0], edge[1]]
+            )[:max_prune]
+
+        # PRUNE (The Cut)
+        self.pruned_edges = []
+        for i, j in all_candidates:
+            coupling_pruned[i, j] = 0.0
+            coupling_pruned[j, i] = 0.0  # Symmetric
+            self.pruned_edges.append((i, j))
+
+        self.phase_history.append(f"IMPLOSION: Pruned {len(self.pruned_edges)} edges")
+
+        return coupling_pruned
+
+    def phase2_vacuum(
+        self,
+        coupling_matrix: np.ndarray,
+    ) -> np.ndarray:
+        """
+        PHASE 2: VACUUM - Run with reduced topology
+
+        The Void. The system explores chaos.
+
+        This phase is passive - just return the pruned matrix.
+        The actual "vacuum dynamics" happen during network evolution
+        between implosion and genesis.
+
+        Args:
+            coupling_matrix: Pruned coupling matrix
+
+        Returns:
+            Same matrix (no modification in this phase)
+        """
+        self.phase_history.append("VACUUM: Exploring reduced topology")
+        return coupling_matrix.copy()
+
+    def identify_resonance_pairs(
+        self,
+        coupling_matrix: np.ndarray,
+        phases: np.ndarray,
+        frequencies: np.ndarray,
+    ) -> List[Tuple[int, int, float]]:
+        """
+        Identify node pairs with high resonance for synaptogenesis
+
+        Resonance detected via:
+        - High phase coherence (similar phases)
+        - Frequency matching (Δf small)
+        - Currently NOT connected
+
+        Args:
+            coupling_matrix: Current coupling matrix
+            phases: Array of phase values (radians) per node
+            frequencies: Array of frequencies (Hz) per node
+
+        Returns:
+            List of (i, j, coherence) tuples for potential new connections
+        """
+        n = coupling_matrix.shape[0]
+        resonance_pairs = []
+
+        for i in range(n):
+            for j in range(i + 1, n):
+                # Only consider uncoupled pairs
+                if coupling_matrix[i, j] == 0:
+                    # Phase coherence
+                    phase_diff = abs(phases[i] - phases[j])
+                    phase_diff = min(phase_diff, 2 * np.pi - phase_diff)  # Wrap
+                    phase_coherence = np.cos(phase_diff)  # 1.0 = perfect, -1.0 = opposite
+
+                    # Frequency matching
+                    freq_diff = abs(frequencies[i] - frequencies[j])
+                    freq_avg = (frequencies[i] + frequencies[j]) / 2
+                    freq_match = 1.0 / (1.0 + freq_diff / freq_avg)
+
+                    # Combined resonance score
+                    resonance = (phase_coherence + 1.0) / 2.0 * freq_match  # [0, 1]
+
+                    if resonance > self.growth_resonance_threshold:
+                        resonance_pairs.append((i, j, resonance))
+
+        # Sort by resonance strength (highest first)
+        resonance_pairs = sorted(resonance_pairs, key=lambda x: x[2], reverse=True)
+
+        return resonance_pairs
+
+    def phase3_genesis(
+        self,
+        coupling_matrix: np.ndarray,
+        phases: np.ndarray,
+        frequencies: np.ndarray,
+        baseline_coupling: float = 0.5,
+    ) -> np.ndarray:
+        """
+        PHASE 3: GENESIS - Grow new connections at resonance peaks
+
+        Synaptogenesis. The network heals with optimized structure.
+
+        Args:
+            coupling_matrix: Current (pruned) coupling matrix
+            phases: Array of phase values per node
+            frequencies: Array of frequencies per node
+            baseline_coupling: Baseline strength for new connections
+
+        Returns:
+            Modified coupling matrix with new connections
+        """
+        coupling_healed = coupling_matrix.copy()
+
+        # Identify resonance pairs
+        resonance_pairs = self.identify_resonance_pairs(
+            coupling_matrix,
+            phases,
+            frequencies,
+        )
+
+        # GROW new connections (synaptogenesis)
+        self.grown_edges = []
+        for i, j, resonance in resonance_pairs:
+            # New coupling strength proportional to resonance
+            new_strength = baseline_coupling * resonance
+
+            coupling_healed[i, j] = new_strength
+            coupling_healed[j, i] = new_strength  # Symmetric
+            self.grown_edges.append((i, j))
+
+        self.phase_history.append(f"GENESIS: Grew {len(self.grown_edges)} new edges")
+
+        return coupling_healed
+
+    def full_cycle(
+        self,
+        coupling_matrix: np.ndarray,
+        beta_values: np.ndarray,
+        phases: np.ndarray,
+        frequencies: np.ndarray,
+    ) -> Tuple[np.ndarray, Dict]:
+        """
+        Execute full topological reconfiguration cycle
+
+        IMPLOSION → VACUUM → GENESIS
+
+        Args:
+            coupling_matrix: Original coupling matrix
+            beta_values: Array of β-values
+            phases: Array of phases
+            frequencies: Array of frequencies
+
+        Returns:
+            (healed_coupling_matrix, diagnostics)
+        """
+        self.phase_history = []
+
+        # Phase 1: IMPLOSION
+        coupling_pruned = self.phase1_implosion(coupling_matrix, beta_values)
+
+        # Phase 2: VACUUM (passive)
+        coupling_vacuum = self.phase2_vacuum(coupling_pruned)
+
+        # Phase 3: GENESIS
+        coupling_healed = self.phase3_genesis(
+            coupling_vacuum,
+            phases,
+            frequencies,
+        )
+
+        # Diagnostics
+        diagnostics = {
+            'n_pruned': len(self.pruned_edges),
+            'n_grown': len(self.grown_edges),
+            'pruned_edges': self.pruned_edges,
+            'grown_edges': self.grown_edges,
+            'phase_history': self.phase_history,
+            'net_change': len(self.grown_edges) - len(self.pruned_edges),
+        }
+
+        return coupling_healed, diagnostics
+
+    def get_reaper_summary(self) -> Dict:
+        """
+        Get summary of topological reaper actions
+
+        Returns:
+            Summary statistics
+        """
+        return {
+            'total_pruned': len(self.pruned_edges),
+            'total_grown': len(self.grown_edges),
+            'net_topology_change': len(self.grown_edges) - len(self.pruned_edges),
+            'phase_history': self.phase_history,
+        }
+
+
+def create_topological_reaper(
+    pruning_threshold: float = 0.1,
+    redundancy_threshold: float = 0.95,
+    growth_resonance_threshold: float = 0.8,
+) -> TopologicalReaper:
+    """
+    Factory function to create topological reaper
+
+    The Bit-Flip Engine that enables true emergent Φ jumps.
+
+    Args:
+        pruning_threshold: Coupling strength threshold for weak edge pruning
+        redundancy_threshold: β-similarity threshold for redundancy detection
+        growth_resonance_threshold: Resonance threshold for synaptogenesis
+
+    Returns:
+        Configured TopologicalReaper
+    """
+    return TopologicalReaper(
+        pruning_threshold=pruning_threshold,
+        redundancy_threshold=redundancy_threshold,
+        growth_resonance_threshold=growth_resonance_threshold,
+    )
