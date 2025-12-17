@@ -22,4 +22,8 @@ outputs/
 
 # API and runtime logs
 logs/
+!v10_oracle/logs/
+!v10_oracle/logs/monologue.json
+!v10_oracle/logs/monologue.yaml
+!v10_oracle/logs/monologue.md
 *.jsonl
