@@ -75,8 +75,47 @@ def load_metadata(
             raise yaml.YAMLError(f"Failed to parse {path}: {e}")
 
 
+
+def _normalize_dataset_name(dataset_raw: Any) -> str:
+    if dataset_raw is None:
+        raise ValueError("Metadata must include a non-empty 'dataset' field")
+
+    normalized = str(dataset_raw).strip()
+    if not normalized:
+        raise ValueError("Metadata must include a non-empty 'dataset' field")
+    return normalized.replace(" ", "_").lower()
+
+
+def _candidate_paths(dataset_raw: Any, base_dir: Path) -> list[Path]:
+    normalized_name = _normalize_dataset_name(dataset_raw)
+    normalized_path = Path(normalized_name)
+
+    candidates: list[Path] = []
+    seen: set[Path] = set()
+
+    def add_candidate(path: Path) -> None:
+        if path not in seen:
+            candidates.append(path)
+            seen.add(path)
+
+    if normalized_path.suffixes:
+        add_candidate(base_dir / normalized_path)
+        if normalized_path.suffixes[-1] == ".csv":
+            add_candidate(base_dir / normalized_path.with_suffix(".csv.gz"))
+        if normalized_path.suffixes[-2:] == [".csv", ".gz"]:
+            add_candidate(base_dir / normalized_path.with_suffix(".csv"))
+    else:
+        root = base_dir / normalized_path
+        add_candidate(root.with_suffix(".csv"))
+        add_candidate(root.with_suffix(".csv.gz"))
+        add_candidate(root.with_suffix(".json"))
+        add_candidate(root.with_suffix(".nc"))
+
+    return candidates
+
+
 def load_dataset(
-    meta: Dict[str, Any], *, data_dir: str | Path | None = None
+    meta: Dict[str, Any], *, data_dir: str | Path | None = None, strict: bool = False
 ) -> Optional[pd.DataFrame | Any]:
     """
     Load dataset based on metadata.
@@ -92,6 +131,9 @@ def load_dataset(
         Metadata dictionary with 'dataset' key
     data_dir : str or Path, optional
         Override base directory for data files; defaults to ``data``
+    strict : bool, optional
+        If True, raise :class:`FileNotFoundError` (or dependency errors) when
+        no candidate file can be loaded instead of returning ``None``
 
     Returns
     -------
@@ -100,39 +142,19 @@ def load_dataset(
 
     Notes
     -----
-    File search order: CSV -> CSV.GZ -> NetCDF -> JSON
+    File search order: CSV -> CSV.GZ -> NetCDF -> JSON. Missing files and
+    load errors are recorded in a search log that is surfaced when ``strict``
+    is enabled to keep the σ(β(R-Θ)) diagnostics transparent.
     """
-    dataset_raw = str(meta.get("dataset", "")).strip()
-    if not dataset_raw:
-        raise ValueError("Metadata must include a non-empty 'dataset' field")
+    dataset_raw = meta.get("dataset", "")
 
-    normalized_name = dataset_raw.replace(" ", "_").lower()
     base_dir = Path(data_dir) if data_dir is not None else DATA_DIR
-    normalized_path = Path(normalized_name)
-
-    candidates = []
-    if normalized_path.suffixes:
-        candidates.append(base_dir / normalized_path)
-        # If a CSV is requested explicitly, also try the gzipped twin
-        if normalized_path.suffixes[-1] == ".csv":
-            candidates.append(base_dir / normalized_path.with_suffix(".csv.gz"))
-        # If the request is already gzipped, allow a non-gz fallback
-        if normalized_path.suffixes[-2:] == [".csv", ".gz"]:
-            candidates.append(base_dir / normalized_path.with_suffix(".csv"))
-    else:
-        root = base_dir / normalized_path
-        candidates.extend(
-            [
-                root.with_suffix(".csv"),
-                root.with_suffix(".csv.gz"),
-            ]
-        )
-        if XARRAY_AVAILABLE:
-            candidates.append(root.with_suffix(".nc"))
-        candidates.append(root.with_suffix(".json"))
+    candidates = _candidate_paths(dataset_raw, base_dir)
+    search_log: list[str] = []
 
     for candidate in candidates:
         if not candidate.exists():
+            search_log.append(f"{candidate} (missing)")
             continue
 
         try:
@@ -143,17 +165,26 @@ def load_dataset(
             if candidate.suffix == ".nc" and XARRAY_AVAILABLE:
                 return xr.open_dataset(candidate)
             if candidate.suffix == ".nc" and not XARRAY_AVAILABLE:
-                print(
-                    f"Warning: NetCDF file found ({candidate}) but xarray is not installed; "
+                message = (
+                    f"NetCDF file found ({candidate}) but xarray is not installed; "
                     "install xarray to access σ(β(R-Θ)) phase grids."
                 )
+                search_log.append(f"{candidate} (requires xarray)")
+                if strict:
+                    raise ImportError(message)
+                print(f"Warning: {message}")
         except Exception as e:  # pragma: no cover - defensive logging
+            search_log.append(f"{candidate} (error: {e})")
             print(f"Warning: Failed to load {candidate}: {e}")
 
-    print(
+    detail = "; ".join(search_log) if search_log else "no candidates generated"
+    message = (
         "No dataset found for "
-        f"'{dataset_raw}' (searched: CSV, CSV.GZ, NetCDF, JSON)"
+        f"'{dataset_raw}' (searched: {detail})"
     )
+    if strict:
+        raise FileNotFoundError(message)
+    print(message)
     return None
 
 
