@@ -1,0 +1,177 @@
+{
+  "experiment": "Experiment B - Topological Spark",
+  "hypothesis": "Topological reconfiguration increases \u03a6",
+  "n_trials": 5,
+  "trials": [
+    {
+      "trial_id": 1,
+      "phi_baseline": 1.3540364170823858,
+      "n_edges_baseline": 36,
+      "coherence_baseline": 1.0,
+      "phi_implosion": 1.5059325044048286,
+      "n_edges_implosion": 32,
+      "n_pruned": 4,
+      "coherence_implosion": 1.0,
+      "phi_vacuum": 1.5059325044048286,
+      "vacuum_steps": 10,
+      "coherence_vacuum": 1.0,
+      "phi_genesis": 1.5059325044048286,
+      "n_edges_genesis": 32,
+      "n_grown": 0,
+      "coherence_genesis": 1.0,
+      "delta_phi_implosion": 0.15189608732244286,
+      "delta_phi_genesis": 0.0,
+      "delta_phi_total": 0.15189608732244286,
+      "elapsed_time_seconds": 0.031270503997802734,
+      "reaper_summary": {
+        "total_pruned": 4,
+        "total_grown": 0,
+        "net_topology_change": -4,
+        "phase_history": [
+          "HUB ATTACK: Slashed 4/8 connections of hub node 0 (centrality=0.333)",
+          "VACUUM: Exploring reduced topology",
+          "GENESIS: Grew 0 new edges"
+        ]
+      }
+    },
+    {
+      "trial_id": 2,
+      "phi_baseline": 1.3540364170823858,
+      "n_edges_baseline": 36,
+      "coherence_baseline": 1.0,
+      "phi_implosion": 1.5059325044048286,
+      "n_edges_implosion": 32,
+      "n_pruned": 4,
+      "coherence_implosion": 1.0,
+      "phi_vacuum": 1.5059325044048286,
+      "vacuum_steps": 10,
+      "coherence_vacuum": 1.0,
+      "phi_genesis": 1.5059325044048286,
+      "n_edges_genesis": 32,
+      "n_grown": 0,
+      "coherence_genesis": 1.0,
+      "delta_phi_implosion": 0.15189608732244286,
+      "delta_phi_genesis": 0.0,
+      "delta_phi_total": 0.15189608732244286,
+      "elapsed_time_seconds": 0.029064178466796875,
+      "reaper_summary": {
+        "total_pruned": 4,
+        "total_grown": 0,
+        "net_topology_change": -4,
+        "phase_history": [
+          "HUB ATTACK: Slashed 4/8 connections of hub node 0 (centrality=0.333)",
+          "VACUUM: Exploring reduced topology",
+          "GENESIS: Grew 0 new edges"
+        ]
+      }
+    },
+    {
+      "trial_id": 3,
+      "phi_baseline": 1.3540364170823858,
+      "n_edges_baseline": 36,
+      "coherence_baseline": 1.0,
+      "phi_implosion": 1.5059325044048286,
+      "n_edges_implosion": 32,
+      "n_pruned": 4,
+      "coherence_implosion": 1.0,
+      "phi_vacuum": 1.5059325044048286,
+      "vacuum_steps": 10,
+      "coherence_vacuum": 1.0,
+      "phi_genesis": 1.5059325044048286,
+      "n_edges_genesis": 32,
+      "n_grown": 0,
+      "coherence_genesis": 1.0,
+      "delta_phi_implosion": 0.15189608732244286,
+      "delta_phi_genesis": 0.0,
+      "delta_phi_total": 0.15189608732244286,
+      "elapsed_time_seconds": 0.031097888946533203,
+      "reaper_summary": {
+        "total_pruned": 4,
+        "total_grown": 0,
+        "net_topology_change": -4,
+        "phase_history": [
+          "HUB ATTACK: Slashed 4/8 connections of hub node 0 (centrality=0.333)",
+          "VACUUM: Exploring reduced topology",
+          "GENESIS: Grew 0 new edges"
+        ]
+      }
+    },
+    {
+      "trial_id": 4,
+      "phi_baseline": 1.3540364170823858,
+      "n_edges_baseline": 36,
+      "coherence_baseline": 1.0,
+      "phi_implosion": 1.5059325044048286,
+      "n_edges_implosion": 32,
+      "n_pruned": 4,
+      "coherence_implosion": 1.0,
+      "phi_vacuum": 1.5059325044048286,
+      "vacuum_steps": 10,
+      "coherence_vacuum": 1.0,
+      "phi_genesis": 1.5059325044048286,
+      "n_edges_genesis": 32,
+      "n_grown": 0,
+      "coherence_genesis": 1.0,
+      "delta_phi_implosion": 0.15189608732244286,
+      "delta_phi_genesis": 0.0,
+      "delta_phi_total": 0.15189608732244286,
+      "elapsed_time_seconds": 0.029995441436767578,
+      "reaper_summary": {
+        "total_pruned": 4,
+        "total_grown": 0,
+        "net_topology_change": -4,
+        "phase_history": [
+          "HUB ATTACK: Slashed 4/8 connections of hub node 0 (centrality=0.333)",
+          "VACUUM: Exploring reduced topology",
+          "GENESIS: Grew 0 new edges"
+        ]
+      }
+    },
+    {
+      "trial_id": 5,
+      "phi_baseline": 1.3540364170823858,
+      "n_edges_baseline": 36,
+      "coherence_baseline": 1.0,
+      "phi_implosion": 1.5059325044048286,
+      "n_edges_implosion": 32,
+      "n_pruned": 4,
+      "coherence_implosion": 1.0,
+      "phi_vacuum": 1.5059325044048286,
+      "vacuum_steps": 10,
+      "coherence_vacuum": 1.0,
+      "phi_genesis": 1.5059325044048286,
+      "n_edges_genesis": 32,
+      "n_grown": 0,
+      "coherence_genesis": 1.0,
+      "delta_phi_implosion": 0.15189608732244286,
+      "delta_phi_genesis": 0.0,
+      "delta_phi_total": 0.15189608732244286,
+      "elapsed_time_seconds": 0.02900838851928711,
+      "reaper_summary": {
+        "total_pruned": 4,
+        "total_grown": 0,
+        "net_topology_change": -4,
+        "phase_history": [
+          "HUB ATTACK: Slashed 4/8 connections of hub node 0 (centrality=0.333)",
+          "VACUUM: Exploring reduced topology",
+          "GENESIS: Grew 0 new edges"
+        ]
+      }
+    }
+  ],
+  "analysis": {
+    "n_trials": 5,
+    "delta_phi_implosion_mean": 0.15189608732244286,
+    "delta_phi_implosion_std": 0.0,
+    "delta_phi_genesis_mean": 0.0,
+    "delta_phi_genesis_std": 0.0,
+    "delta_phi_total_mean": 0.15189608732244286,
+    "delta_phi_total_std": 0.0,
+    "t_statistic": NaN,
+    "p_value": NaN,
+    "cohens_d": null,
+    "hypothesis_confirmed": false,
+    "n_pruned_mean": 4.0,
+    "n_grown_mean": 0.0
+  }
+}
