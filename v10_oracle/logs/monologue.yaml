@@ -1,0 +1,1280 @@
+- step: 0
+  state: LUCID_RESONANCE
+  confidence: 0.9476415458951717
+  sigma_phi: 0.06263089613526207
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9373691038647379
+  frequency: 1.0
+  chaotic_signal: 0.30896135262079705
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0626, coherence=0.9374, f=1.0000Hz → Golden Path: lucid and resonant.'
+- step: 1
+  state: LUCID_RESONANCE
+  confidence: 0.7618363494178875
+  sigma_phi: 0.06309540912645528
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9369045908735447
+  frequency: 0.9970588235294118
+  chaotic_signal: 0.5878479934585021
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0631, coherence=0.9369, f=0.9971Hz → Golden Path: lucid and resonant.'
+- step: 2
+  state: LUCID_RESONANCE
+  confidence: 0.5783804674646782
+  sigma_phi: 0.0635540488313383
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9364459511686617
+  frequency: 0.9941176470588236
+  chaotic_signal: 0.8043926928719652
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0636, coherence=0.9364, f=0.9941Hz → Golden Path: lucid and resonant.'
+- step: 3
+  state: LUCID_RESONANCE
+  confidence: 0.3976835230160566
+  sigma_phi: 0.06400579119245986
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9359942088075401
+  frequency: 0.9911764705882353
+  chaotic_signal: 0.9501251816127299
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0640, coherence=0.9360, f=0.9912Hz → Golden Path: lucid and resonant.'
+- step: 4
+  state: LUCID_RESONANCE
+  confidence: 0.22066264271372016
+  sigma_phi: 0.0644483433932157
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9355516566067843
+  frequency: 0.9882352941176471
+  chaotic_signal: 1.0045701105454534
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0644, coherence=0.9356, f=0.9882Hz → Golden Path: lucid and resonant.'
+- step: 5
+  state: LUCID_RESONANCE
+  confidence: 0.04781076032187581
+  sigma_phi: 0.06488047309919531
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9351195269008047
+  frequency: 0.9852941176470589
+  chaotic_signal: 0.9580879707618268
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0649, coherence=0.9351, f=0.9853Hz → Golden Path: lucid and resonant.'
+- step: 6
+  state: LUCID_RESONANCE
+  confidence: 0.49299259932740574
+  sigma_phi: 0.0653029602690377
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9346970397309623
+  frequency: 0.9823529411764705
+  chaotic_signal: 0.8205099652257682
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0653, coherence=0.9347, f=0.9824Hz → Edge-walk: near the band,
+    still coherent.'
+- step: 7
+  state: LUCID_RESONANCE
+  confidence: 0.4919552093337344
+  sigma_phi: 0.06571791626650625
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9342820837334938
+  frequency: 0.9794117647058823
+  chaotic_signal: 0.6139378586047456
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0657, coherence=0.9343, f=0.9794Hz → Edge-walk: near the band,
+    still coherent.'
+- step: 8
+  state: LUCID_RESONANCE
+  confidence: 0.4909358944333132
+  sigma_phi: 0.06612564222667472
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9338743577733253
+  frequency: 0.9764705882352941
+  chaotic_signal: 0.34281184146192245
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0661, coherence=0.9339, f=0.9765Hz → Edge-walk: near the band,
+    still coherent.'
+- step: 9
+  state: LUCID_RESONANCE
+  confidence: 0.4899232842474517
+  sigma_phi: 0.06653068630101933
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9334693136989807
+  frequency: 0.9735294117647059
+  chaotic_signal: 0.05094155335554605
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0665, coherence=0.9335, f=0.9735Hz → Edge-walk: near the band,
+    still coherent.'
+- step: 10
+  state: LUCID_RESONANCE
+  confidence: 0.48877682916087695
+  sigma_phi: 0.06698926833564922
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9330107316643508
+  frequency: 0.9705882352941176
+  chaotic_signal: -0.2577581338536715
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0670, coherence=0.9330, f=0.9706Hz → Edge-walk: near the band,
+    still coherent.'
+- step: 11
+  state: LUCID_RESONANCE
+  confidence: 0.487613926102461
+  sigma_phi: 0.0674544295590156
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9325455704409844
+  frequency: 0.9676470588235294
+  chaotic_signal: -0.521684587043561
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0675, coherence=0.9325, f=0.9676Hz → Edge-walk: near the band,
+    still coherent.'
+- step: 12
+  state: LUCID_RESONANCE
+  confidence: 0.4864589089555131
+  sigma_phi: 0.06791643641779477
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9320835635822052
+  frequency: 0.9647058823529412
+  chaotic_signal: -0.752936112878955
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0679, coherence=0.9321, f=0.9647Hz → Edge-walk: near the band,
+    still coherent.'
+- step: 13
+  state: LUCID_RESONANCE
+  confidence: 0.4853228144800746
+  sigma_phi: 0.06837087420797017
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9316291257920298
+  frequency: 0.961764705882353
+  chaotic_signal: -0.9124178238540992
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0684, coherence=0.9316, f=0.9618Hz → Edge-walk: near the band,
+    still coherent.'
+- step: 14
+  state: LUCID_RESONANCE
+  confidence: 0.4842076744899075
+  sigma_phi: 0.06881693020403701
+  target_sigma_phi: 0.0625
+  global_coherence: 0.931183069795963
+  frequency: 0.9588235294117647
+  chaotic_signal: -0.9944583680227895
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0688, coherence=0.9312, f=0.9588Hz → Edge-walk: near the band,
+    still coherent.'
+- step: 15
+  state: LUCID_RESONANCE
+  confidence: 0.4831167357461201
+  sigma_phi: 0.06925330570155197
+  target_sigma_phi: 0.0625
+  global_coherence: 0.930746694298448
+  frequency: 0.9558823529411765
+  chaotic_signal: -0.9892346207048979
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0693, coherence=0.9307, f=0.9559Hz → Edge-walk: near the band,
+    still coherent.'
+- step: 16
+  state: LUCID_RESONANCE
+  confidence: 0.48205514059658044
+  sigma_phi: 0.06967794376136782
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9303220562386322
+  frequency: 0.9529411764705882
+  chaotic_signal: -0.880522066443801
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0697, coherence=0.9303, f=0.9529Hz → Edge-walk: near the band,
+    still coherent.'
+- step: 17
+  state: CRITICAL_SLOWING
+  confidence: 4.382459307730881e-17
+  sigma_phi: 0.07009287540009124
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9299071245999088
+  frequency: 0.95
+  chaotic_signal: -0.6883768099757124
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0701, coherence=0.9299, f=0.9500Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 18
+  state: CRITICAL_SLOWING
+  confidence: 0.0030959752321981756
+  sigma_phi: 0.07050185671142162
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9294981432885784
+  frequency: 0.9470588235294117
+  chaotic_signal: -0.4472742900379452
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0705, coherence=0.9295, f=0.9471Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 19
+  state: CRITICAL_SLOWING
+  confidence: 0.006191950464396307
+  sigma_phi: 0.07090598464503739
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9290940153549626
+  frequency: 0.9441176470588235
+  chaotic_signal: -0.1677412073843283
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0709, coherence=0.9291, f=0.9441Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 20
+  state: CRITICAL_SLOWING
+  confidence: 0.009287925696594439
+  sigma_phi: 0.07133454178017262
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9286654582198274
+  frequency: 0.9411764705882353
+  chaotic_signal: 0.10159461036311129
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0713, coherence=0.9287, f=0.9412Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 21
+  state: CRITICAL_SLOWING
+  confidence: 0.01238390092879257
+  sigma_phi: 0.07180529201723551
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9281947079827645
+  frequency: 0.9382352941176471
+  chaotic_signal: 0.3954764921165799
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0718, coherence=0.9282, f=0.9382Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 22
+  state: CRITICAL_SLOWING
+  confidence: 0.015479876160990702
+  sigma_phi: 0.07227037765117983
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9277296223488202
+  frequency: 0.9352941176470588
+  chaotic_signal: 0.6373493069295897
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0723, coherence=0.9277, f=0.9353Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 23
+  state: CRITICAL_SLOWING
+  confidence: 0.018575851393188833
+  sigma_phi: 0.0727294447163973
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9272705552836027
+  frequency: 0.9323529411764706
+  chaotic_signal: 0.8253338133365155
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0727, coherence=0.9273, f=0.9324Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 24
+  state: CRITICAL_SLOWING
+  confidence: 0.021671826625386966
+  sigma_phi: 0.07318230957779603
+  target_sigma_phi: 0.0625
+  global_coherence: 0.926817690422204
+  frequency: 0.9294117647058824
+  chaotic_signal: 0.9590223919976371
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0732, coherence=0.9268, f=0.9294Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 25
+  state: CRITICAL_SLOWING
+  confidence: 0.024767801857585096
+  sigma_phi: 0.07362362813343715
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9263763718665629
+  frequency: 0.9264705882352942
+  chaotic_signal: 0.9953113564083211
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0736, coherence=0.9264, f=0.9265Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 26
+  state: CRITICAL_SLOWING
+  confidence: 0.02786377708978323
+  sigma_phi: 0.07405533384307916
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9259446661569208
+  frequency: 0.9235294117647059
+  chaotic_signal: 0.9520935185745977
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0741, coherence=0.9259, f=0.9235Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 27
+  state: CRITICAL_SLOWING
+  confidence: 0.03095975232198136
+  sigma_phi: 0.07447622507297669
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9255237749270233
+  frequency: 0.9205882352941177
+  chaotic_signal: 0.8211822112316943
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0745, coherence=0.9255, f=0.9206Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 28
+  state: CRITICAL_SLOWING
+  confidence: 0.034055727554179606
+  sigma_phi: 0.07489050434141065
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9251094956585894
+  frequency: 0.9176470588235294
+  chaotic_signal: 0.6384294772560448
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0749, coherence=0.9251, f=0.9176Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 29
+  state: CRITICAL_SLOWING
+  confidence: 0.03715170278637774
+  sigma_phi: 0.07529437740892164
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9247056225910784
+  frequency: 0.9147058823529411
+  chaotic_signal: 0.3743214705328224
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0753, coherence=0.9247, f=0.9147Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 30
+  state: CRITICAL_SLOWING
+  confidence: 0.04024767801857587
+  sigma_phi: 0.07569831048850861
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9243016895114914
+  frequency: 0.9117647058823529
+  chaotic_signal: 0.11421500050580076
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0757, coherence=0.9243, f=0.9118Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 31
+  state: CRITICAL_SLOWING
+  confidence: 0.043343653250774
+  sigma_phi: 0.07614188807189493
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9238581119281051
+  frequency: 0.9088235294117647
+  chaotic_signal: -0.17260930862020318
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0761, coherence=0.9239, f=0.9088Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 32
+  state: CRITICAL_SLOWING
+  confidence: 0.04643962848297213
+  sigma_phi: 0.07661173404890542
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9233882659510946
+  frequency: 0.9058823529411765
+  chaotic_signal: -0.43761732550365534
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0766, coherence=0.9234, f=0.9059Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 33
+  state: CRITICAL_SLOWING
+  confidence: 0.04953560371517027
+  sigma_phi: 0.07707836002495805
+  target_sigma_phi: 0.0625
+  global_coherence: 0.922921639975042
+  frequency: 0.9029411764705882
+  chaotic_signal: -0.6739062758289281
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0771, coherence=0.9229, f=0.9029Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 34
+  state: CRITICAL_SLOWING
+  confidence: 0.0526315789473684
+  sigma_phi: 0.07753560987738128
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9224643901226187
+  frequency: 0.9
+  chaotic_signal: -0.8340658348825637
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0775, coherence=0.9225, f=0.9000Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 35
+  state: CRITICAL_SLOWING
+  confidence: 0.05572755417956653
+  sigma_phi: 0.07798986551630405
+  target_sigma_phi: 0.0625
+  global_coherence: 0.922010134483696
+  frequency: 0.8970588235294118
+  chaotic_signal: -0.9689778112352617
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0780, coherence=0.9220, f=0.8971Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 36
+  state: CRITICAL_SLOWING
+  confidence: 0.05882352941176466
+  sigma_phi: 0.07843247612944748
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9215675238705525
+  frequency: 0.8941176470588236
+  chaotic_signal: -1.0125830254853345
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0784, coherence=0.9216, f=0.8941Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 37
+  state: CRITICAL_SLOWING
+  confidence: 0.06191950464396291
+  sigma_phi: 0.07886552724657148
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9211344727534285
+  frequency: 0.8911764705882352
+  chaotic_signal: -0.9825665476856623
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0789, coherence=0.9211, f=0.8912Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 38
+  state: CRITICAL_SLOWING
+  confidence: 0.06501547987616103
+  sigma_phi: 0.07928768908524875
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9207123109147513
+  frequency: 0.888235294117647
+  chaotic_signal: -0.8702266446935331
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0793, coherence=0.9207, f=0.8882Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 39
+  state: CRITICAL_SLOWING
+  confidence: 0.06811145510835917
+  sigma_phi: 0.07969597282848284
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9203040271715172
+  frequency: 0.8852941176470588
+  chaotic_signal: -0.654559479274506
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0797, coherence=0.9203, f=0.8853Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 40
+  state: CRITICAL_SLOWING
+  confidence: 0.0712074303405573
+  sigma_phi: 0.08010312766431371
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9198968723356863
+  frequency: 0.8823529411764706
+  chaotic_signal: -0.4331213478987516
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0801, coherence=0.9199, f=0.8824Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 41
+  state: CRITICAL_SLOWING
+  confidence: 0.07430340557275543
+  sigma_phi: 0.08050109176725861
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9194989082327414
+  frequency: 0.8794117647058823
+  chaotic_signal: -0.14593164384952426
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0805, coherence=0.9195, f=0.8794Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 42
+  state: CRITICAL_SLOWING
+  confidence: 0.07739938080495357
+  sigma_phi: 0.08093723626800808
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9190627637319919
+  frequency: 0.8764705882352941
+  chaotic_signal: 0.14510525321846296
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0809, coherence=0.9191, f=0.8765Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 43
+  state: CRITICAL_SLOWING
+  confidence: 0.0804953560371517
+  sigma_phi: 0.08140307352249265
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9185969264775073
+  frequency: 0.8735294117647059
+  chaotic_signal: 0.3628859623625175
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0814, coherence=0.9186, f=0.8735Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 44
+  state: CRITICAL_SLOWING
+  confidence: 0.08359133126934983
+  sigma_phi: 0.0818710220138188
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9181289779861812
+  frequency: 0.8705882352941177
+  chaotic_signal: 0.5934588836500575
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0819, coherence=0.9181, f=0.8706Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 45
+  state: CRITICAL_SLOWING
+  confidence: 0.08668730650154796
+  sigma_phi: 0.08233520820377604
+  target_sigma_phi: 0.0625
+  global_coherence: 0.917664791796224
+  frequency: 0.8676470588235294
+  chaotic_signal: 0.7938747898761968
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0823, coherence=0.9177, f=0.8676Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 46
+  state: CRITICAL_SLOWING
+  confidence: 0.0897832817337461
+  sigma_phi: 0.08278890043954457
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9172110995604554
+  frequency: 0.8647058823529412
+  chaotic_signal: 0.916016136831157
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0828, coherence=0.9172, f=0.8647Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 47
+  state: CRITICAL_SLOWING
+  confidence: 0.09287925696594422
+  sigma_phi: 0.08323843625311866
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9167615637468813
+  frequency: 0.861764705882353
+  chaotic_signal: 1.0068282063774365
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0832, coherence=0.9168, f=0.8618Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 48
+  state: CRITICAL_SLOWING
+  confidence: 0.09597523219814236
+  sigma_phi: 0.08366998328514796
+  target_sigma_phi: 0.0625
+  global_coherence: 0.916330016714852
+  frequency: 0.8588235294117648
+  chaotic_signal: 0.9680678831088831
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0837, coherence=0.9163, f=0.8588Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 49
+  state: CRITICAL_SLOWING
+  confidence: 0.0990712074303405
+  sigma_phi: 0.08409849141682935
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9159015085831707
+  frequency: 0.8558823529411765
+  chaotic_signal: 0.9081882712559032
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0841, coherence=0.9159, f=0.8559Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 50
+  state: CRITICAL_SLOWING
+  confidence: 0.10216718266253874
+  sigma_phi: 0.08450967570371404
+  target_sigma_phi: 0.0625
+  global_coherence: 0.915490324296286
+  frequency: 0.8529411764705882
+  chaotic_signal: 0.7267271621533069
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0845, coherence=0.9155, f=0.8529Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 51
+  state: CRITICAL_SLOWING
+  confidence: 0.10526315789473686
+  sigma_phi: 0.08492345288693248
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9150765471130675
+  frequency: 0.85
+  chaotic_signal: 0.5655841689494482
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0849, coherence=0.9151, f=0.8500Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 52
+  state: CRITICAL_SLOWING
+  confidence: 0.108359133126935
+  sigma_phi: 0.08532723075100812
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9146727692489919
+  frequency: 0.8470588235294118
+  chaotic_signal: 0.3365522397872999
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0853, coherence=0.9147, f=0.8471Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 53
+  state: CRITICAL_SLOWING
+  confidence: 0.11145510835913314
+  sigma_phi: 0.08572171569373255
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9142782843062675
+  frequency: 0.8441176470588235
+  chaotic_signal: 0.04570850852484805
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0857, coherence=0.9143, f=0.8441Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 54
+  state: CRITICAL_SLOWING
+  confidence: 0.11455108359133126
+  sigma_phi: 0.08617733804990835
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9138226619500917
+  frequency: 0.8411764705882353
+  chaotic_signal: -0.17984514280425762
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0862, coherence=0.9138, f=0.8412Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 55
+  state: CRITICAL_SLOWING
+  confidence: 0.1176470588235294
+  sigma_phi: 0.08665200495712688
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9133479950428731
+  frequency: 0.8382352941176471
+  chaotic_signal: -0.44303999412790535
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0867, coherence=0.9133, f=0.8382Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 56
+  state: CRITICAL_SLOWING
+  confidence: 0.12074303405572752
+  sigma_phi: 0.08711721233892666
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9128827876610733
+  frequency: 0.8352941176470589
+  chaotic_signal: -0.6387472306495413
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0871, coherence=0.9129, f=0.8353Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 57
+  state: CRITICAL_SLOWING
+  confidence: 0.12383900928792566
+  sigma_phi: 0.08758270111935296
+  target_sigma_phi: 0.0625
+  global_coherence: 0.912417298880647
+  frequency: 0.8323529411764706
+  chaotic_signal: -0.8341508732655744
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0876, coherence=0.9124, f=0.8324Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 58
+  state: CRITICAL_SLOWING
+  confidence: 0.12693498452012392
+  sigma_phi: 0.08803704043758043
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9119629595624196
+  frequency: 0.8294117647058823
+  chaotic_signal: -0.95219405563638
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0880, coherence=0.9120, f=0.8294Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 59
+  state: CRITICAL_SLOWING
+  confidence: 0.13003095975232204
+  sigma_phi: 0.08848199981768778
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9115180001823122
+  frequency: 0.8264705882352941
+  chaotic_signal: -1.0060360530407015
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0885, coherence=0.9115, f=0.8265Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 60
+  state: CRITICAL_SLOWING
+  confidence: 0.1331269349845202
+  sigma_phi: 0.08891016140431462
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9110898385956854
+  frequency: 0.8235294117647058
+  chaotic_signal: -0.9472945161586764
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0889, coherence=0.9111, f=0.8235Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 61
+  state: CRITICAL_SLOWING
+  confidence: 0.1362229102167183
+  sigma_phi: 0.08934432175672413
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9106556782432759
+  frequency: 0.8205882352941176
+  chaotic_signal: -0.9289728799010883
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0893, coherence=0.9107, f=0.8206Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 62
+  state: CRITICAL_SLOWING
+  confidence: 0.13931888544891644
+  sigma_phi: 0.08976048253625168
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9102395174637483
+  frequency: 0.8176470588235294
+  chaotic_signal: -0.7921740777883294
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0898, coherence=0.9102, f=0.8176Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 63
+  state: CRITICAL_SLOWING
+  confidence: 0.14241486068111459
+  sigma_phi: 0.0901639841652182
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9098360158347818
+  frequency: 0.8147058823529412
+  chaotic_signal: -0.5738595211991437
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0902, coherence=0.9098, f=0.8147Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 64
+  state: CRITICAL_SLOWING
+  confidence: 0.1455108359133127
+  sigma_phi: 0.09057100658658968
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9094289934134103
+  frequency: 0.8117647058823529
+  chaotic_signal: -0.38087963851865464
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0906, coherence=0.9094, f=0.8118Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 65
+  state: CRITICAL_SLOWING
+  confidence: 0.14860681114551083
+  sigma_phi: 0.09096524500756842
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9090347549924316
+  frequency: 0.8088235294117647
+  chaotic_signal: -0.10706277904969048
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0910, coherence=0.9090, f=0.8088Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 66
+  state: CRITICAL_SLOWING
+  confidence: 0.15170278637770898
+  sigma_phi: 0.0914044492714492
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9085955507285508
+  frequency: 0.8058823529411765
+  chaotic_signal: 0.12629239915714854
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0914, coherence=0.9086, f=0.8059Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 67
+  state: CRITICAL_SLOWING
+  confidence: 0.1547987616099071
+  sigma_phi: 0.09187366085580484
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9081263391441952
+  frequency: 0.8029411764705883
+  chaotic_signal: 0.33787670017171084
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0919, coherence=0.9081, f=0.8029Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 68
+  state: CRITICAL_SLOWING
+  confidence: 0.15789473684210523
+  sigma_phi: 0.09235809021259067
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9076419097874093
+  frequency: 0.8
+  chaotic_signal: 0.6443448220077894
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0924, coherence=0.9076, f=0.8000Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 69
+  state: CRITICAL_SLOWING
+  confidence: 0.16099071207430338
+  sigma_phi: 0.09281557445368227
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9071844255463177
+  frequency: 0.7970588235294118
+  chaotic_signal: 0.7764897952883991
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0928, coherence=0.9072, f=0.7971Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 70
+  state: CRITICAL_SLOWING
+  confidence: 0.1640866873065015
+  sigma_phi: 0.09328269638642028
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9067173036135797
+  frequency: 0.7941176470588236
+  chaotic_signal: 0.968113400301529
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0933, coherence=0.9067, f=0.7941Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 71
+  state: CRITICAL_SLOWING
+  confidence: 0.16718266253869973
+  sigma_phi: 0.09371519464719524
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9062848053528048
+  frequency: 0.7911764705882353
+  chaotic_signal: 0.940199552090804
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0937, coherence=0.9063, f=0.7912Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 72
+  state: CRITICAL_SLOWING
+  confidence: 0.17027863777089788
+  sigma_phi: 0.09416893649057279
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9058310635094272
+  frequency: 0.788235294117647
+  chaotic_signal: 1.0453488643991178
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0942, coherence=0.9058, f=0.7882Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 73
+  state: CRITICAL_SLOWING
+  confidence: 0.173374613003096
+  sigma_phi: 0.09458386114172301
+  target_sigma_phi: 0.0625
+  global_coherence: 0.905416138858277
+  frequency: 0.7852941176470588
+  chaotic_signal: 0.9080581285341687
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0946, coherence=0.9054, f=0.7853Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 74
+  state: CRITICAL_SLOWING
+  confidence: 0.17647058823529413
+  sigma_phi: 0.09501376361852021
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9049862363814798
+  frequency: 0.7823529411764706
+  chaotic_signal: 0.8648291052877796
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0950, coherence=0.9050, f=0.7824Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 75
+  state: CRITICAL_SLOWING
+  confidence: 0.17956656346749228
+  sigma_phi: 0.0954267469933493
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9045732530066507
+  frequency: 0.7794117647058824
+  chaotic_signal: 0.7179259060668298
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0954, coherence=0.9046, f=0.7794Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 76
+  state: CRITICAL_SLOWING
+  confidence: 0.1826625386996904
+  sigma_phi: 0.09583143690082019
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9041685630991798
+  frequency: 0.7764705882352941
+  chaotic_signal: 0.5217453883179872
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0958, coherence=0.9042, f=0.7765Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 77
+  state: CRITICAL_SLOWING
+  confidence: 0.18575851393188852
+  sigma_phi: 0.09621975247927694
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9037802475207231
+  frequency: 0.7735294117647059
+  chaotic_signal: 0.2278144452816658
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0962, coherence=0.9038, f=0.7735Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 78
+  state: CRITICAL_SLOWING
+  confidence: 0.18885448916408668
+  sigma_phi: 0.09662481321140293
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9033751867885971
+  frequency: 0.7705882352941177
+  chaotic_signal: 0.03833828148481195
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0966, coherence=0.9034, f=0.7706Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 79
+  state: CRITICAL_SLOWING
+  confidence: 0.1919504643962849
+  sigma_phi: 0.09708699595211112
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9029130040478889
+  frequency: 0.7676470588235293
+  chaotic_signal: -0.19522072384886863
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0971, coherence=0.9029, f=0.7676Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 80
+  state: CRITICAL_SLOWING
+  confidence: 0.19504643962848306
+  sigma_phi: 0.09756776220375063
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9024322377962494
+  frequency: 0.7647058823529411
+  chaotic_signal: -0.46203540737798726
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0976, coherence=0.9024, f=0.7647Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 81
+  state: CRITICAL_SLOWING
+  confidence: 0.19814241486068118
+  sigma_phi: 0.09803930480529954
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9019606951947005
+  frequency: 0.7617647058823529
+  chaotic_signal: -0.6711286507282277
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0980, coherence=0.9020, f=0.7618Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 82
+  state: CRITICAL_SLOWING
+  confidence: 0.2012383900928793
+  sigma_phi: 0.09849663771015915
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9015033622898408
+  frequency: 0.7588235294117647
+  chaotic_signal: -0.7937376242086732
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0985, coherence=0.9015, f=0.7588Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 83
+  state: CRITICAL_SLOWING
+  confidence: 0.20433436532507745
+  sigma_phi: 0.09894823063546165
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9010517693645383
+  frequency: 0.7558823529411764
+  chaotic_signal: -0.881207713868885
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0989, coherence=0.9011, f=0.7559Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 84
+  state: CRITICAL_SLOWING
+  confidence: 0.20743034055727558
+  sigma_phi: 0.09941314968272219
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9005868503172778
+  frequency: 0.7529411764705882
+  chaotic_signal: -1.0462092063238244
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0994, coherence=0.9006, f=0.7529Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 85
+  state: CRITICAL_SLOWING
+  confidence: 0.2105263157894737
+  sigma_phi: 0.09984493847702058
+  target_sigma_phi: 0.0625
+  global_coherence: 0.9001550615229794
+  frequency: 0.75
+  chaotic_signal: -1.015667740050925
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.0998, coherence=0.9002, f=0.7500Hz → Shadow: tempo slows, anticipation
+    rises.'
+- step: 86
+  state: ENTROPIC_STRESS
+  confidence: 0.005518247995554559
+  sigma_phi: 0.10027591239977773
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8997240876002223
+  frequency: 0.7470588235294118
+  chaotic_signal: -0.9806759683552416
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1003, coherence=0.8997, f=0.7471Hz → Storm: overwhelmed edge.'
+- step: 87
+  state: ENTROPIC_STRESS
+  confidence: 0.01397500843796251
+  sigma_phi: 0.10069875042189813
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8993012495781019
+  frequency: 0.7441176470588236
+  chaotic_signal: -0.8988576400379084
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1007, coherence=0.8993, f=0.7441Hz → Storm: overwhelmed edge.'
+- step: 88
+  state: ENTROPIC_STRESS
+  confidence: 0.022270981637730336
+  sigma_phi: 0.10111354908188652
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8988864509181135
+  frequency: 0.7411764705882353
+  chaotic_signal: -0.7714450910394532
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1011, coherence=0.8989, f=0.7412Hz → Storm: overwhelmed edge.'
+- step: 89
+  state: ENTROPIC_STRESS
+  confidence: 0.030048165770774626
+  sigma_phi: 0.10150240828853874
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8984975917114613
+  frequency: 0.7382352941176471
+  chaotic_signal: -0.4963171405790463
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1015, coherence=0.8985, f=0.7382Hz → Storm: overwhelmed edge.'
+- step: 90
+  state: ENTROPIC_STRESS
+  confidence: 0.038336860604485934
+  sigma_phi: 0.1019168430302243
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8980831569697757
+  frequency: 0.7352941176470589
+  chaotic_signal: -0.36995537078975477
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1019, coherence=0.8981, f=0.7353Hz → Storm: overwhelmed edge.'
+- step: 91
+  state: ENTROPIC_STRESS
+  confidence: 0.04605980939208443
+  sigma_phi: 0.10230299046960423
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8976970095303958
+  frequency: 0.7323529411764707
+  chaotic_signal: -0.08391568997177452
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1023, coherence=0.8977, f=0.7324Hz → Storm: overwhelmed edge.'
+- step: 92
+  state: ENTROPIC_STRESS
+  confidence: 0.05485301054675318
+  sigma_phi: 0.10274265052733766
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8972573494726623
+  frequency: 0.7294117647058824
+  chaotic_signal: 0.10347611002956009
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1027, coherence=0.8973, f=0.7294Hz → Storm: overwhelmed edge.'
+- step: 93
+  state: ENTROPIC_STRESS
+  confidence: 0.06444535759695114
+  sigma_phi: 0.10322226787984756
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8967777321201524
+  frequency: 0.7264705882352942
+  chaotic_signal: 0.3479643840389116
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1032, coherence=0.8968, f=0.7265Hz → Storm: overwhelmed edge.'
+- step: 94
+  state: ENTROPIC_STRESS
+  confidence: 0.07409213850164409
+  sigma_phi: 0.10370460692508221
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8962953930749178
+  frequency: 0.7235294117647059
+  chaotic_signal: 0.6054295492710607
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1037, coherence=0.8963, f=0.7235Hz → Storm: overwhelmed edge.'
+- step: 95
+  state: ENTROPIC_STRESS
+  confidence: 0.08307619199410421
+  sigma_phi: 0.10415380959970522
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8958461904002948
+  frequency: 0.7205882352941176
+  chaotic_signal: 0.6755525049021058
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1042, coherence=0.8958, f=0.7206Hz → Storm: overwhelmed edge.'
+- step: 96
+  state: ENTROPIC_STRESS
+  confidence: 0.09236067615774946
+  sigma_phi: 0.10461803380788748
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8953819661921125
+  frequency: 0.7176470588235294
+  chaotic_signal: 0.8284791381237184
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1046, coherence=0.8954, f=0.7176Hz → Storm: overwhelmed edge.'
+- step: 97
+  state: ENTROPIC_STRESS
+  confidence: 0.10150922382108296
+  sigma_phi: 0.10507546119105415
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8949245388089458
+  frequency: 0.7147058823529412
+  chaotic_signal: 0.9424101801703008
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1051, coherence=0.8949, f=0.7147Hz → Storm: overwhelmed edge.'
+- step: 98
+  state: ENTROPIC_STRESS
+  confidence: 0.11040235560909994
+  sigma_phi: 0.105520117780455
+  target_sigma_phi: 0.0625
+  global_coherence: 0.894479882219545
+  frequency: 0.711764705882353
+  chaotic_signal: 0.9849980359642205
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1055, coherence=0.8945, f=0.7118Hz → Storm: overwhelmed edge.'
+- step: 99
+  state: ENTROPIC_STRESS
+  confidence: 0.11931593156774889
+  sigma_phi: 0.10596579657838745
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8940342034216125
+  frequency: 0.7088235294117646
+  chaotic_signal: 1.032798104207114
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1060, coherence=0.8940, f=0.7088Hz → Storm: overwhelmed edge.'
+- step: 100
+  state: ENTROPIC_STRESS
+  confidence: 0.12770819507244846
+  sigma_phi: 0.10638540975362243
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8936145902463776
+  frequency: 0.7058823529411764
+  chaotic_signal: 0.9379875025697998
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1064, coherence=0.8936, f=0.7059Hz → Storm: overwhelmed edge.'
+- step: 101
+  state: ENTROPIC_STRESS
+  confidence: 0.13588967258970353
+  sigma_phi: 0.10679448362948518
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8932055163705148
+  frequency: 0.7029411764705882
+  chaotic_signal: 0.7868079505111978
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1068, coherence=0.8932, f=0.7029Hz → Storm: overwhelmed edge.'
+- step: 102
+  state: ENTROPIC_STRESS
+  confidence: 0.14419297564365274
+  sigma_phi: 0.10720964878218264
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8927903512178174
+  frequency: 0.7
+  chaotic_signal: 0.6699161971266363
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1072, coherence=0.8928, f=0.7000Hz → Storm: overwhelmed edge.'
+- step: 103
+  state: ENTROPIC_STRESS
+  confidence: 0.15255194483402013
+  sigma_phi: 0.10762759724170101
+  target_sigma_phi: 0.0625
+  global_coherence: 0.892372402758299
+  frequency: 0.6970588235294117
+  chaotic_signal: 0.5690502360822258
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1076, coherence=0.8924, f=0.6971Hz → Storm: overwhelmed edge.'
+- step: 104
+  state: ENTROPIC_STRESS
+  confidence: 0.16026757488802834
+  sigma_phi: 0.10801337874440142
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8919866212555986
+  frequency: 0.6941176470588235
+  chaotic_signal: 0.2967618810221807
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1080, coherence=0.8920, f=0.6941Hz → Storm: overwhelmed edge.'
+- step: 105
+  state: ENTROPIC_STRESS
+  confidence: 0.16835329541357635
+  sigma_phi: 0.10841766477067882
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8915823352293212
+  frequency: 0.6911764705882353
+  chaotic_signal: 0.1255846593069152
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1084, coherence=0.8916, f=0.6912Hz → Storm: overwhelmed edge.'
+- step: 106
+  state: ENTROPIC_STRESS
+  confidence: 0.1768783853544259
+  sigma_phi: 0.1088439192677213
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8911560807322787
+  frequency: 0.6882352941176471
+  chaotic_signal: -0.07256902768626017
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1088, coherence=0.8912, f=0.6882Hz → Storm: overwhelmed edge.'
+- step: 107
+  state: ENTROPIC_STRESS
+  confidence: 0.18651282055332563
+  sigma_phi: 0.10932564102766629
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8906743589723337
+  frequency: 0.6852941176470588
+  chaotic_signal: -0.3132395050799211
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1093, coherence=0.8907, f=0.6853Hz → Storm: overwhelmed edge.'
+- step: 108
+  state: ENTROPIC_STRESS
+  confidence: 0.19632155903795023
+  sigma_phi: 0.10981607795189752
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8901839220481025
+  frequency: 0.6823529411764706
+  chaotic_signal: -0.597668123653192
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1098, coherence=0.8902, f=0.6824Hz → Storm: overwhelmed edge.'
+- step: 109
+  state: ENTROPIC_STRESS
+  confidence: 0.2052874916744435
+  sigma_phi: 0.11026437458372218
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8897356254162778
+  frequency: 0.6794117647058824
+  chaotic_signal: -0.6587901565271397
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1103, coherence=0.8897, f=0.6794Hz → Storm: overwhelmed edge.'
+- step: 110
+  state: ENTROPIC_STRESS
+  confidence: 0.21447361219730066
+  sigma_phi: 0.11072368060986504
+  target_sigma_phi: 0.0625
+  global_coherence: 0.889276319390135
+  frequency: 0.6764705882352942
+  chaotic_signal: -0.7768210116449054
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1107, coherence=0.8893, f=0.6765Hz → Storm: overwhelmed edge.'
+- step: 111
+  state: ENTROPIC_STRESS
+  confidence: 0.22407878149172944
+  sigma_phi: 0.11120393907458648
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8887960609254135
+  frequency: 0.6735294117647059
+  chaotic_signal: -1.0026737913693307
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1112, coherence=0.8888, f=0.6735Hz → Storm: overwhelmed edge.'
+- step: 112
+  state: ENTROPIC_STRESS
+  confidence: 0.2328106994401996
+  sigma_phi: 0.11164053497200999
+  target_sigma_phi: 0.0625
+  global_coherence: 0.88835946502799
+  frequency: 0.6705882352941177
+  chaotic_signal: -1.0007386990370075
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1116, coherence=0.8884, f=0.6706Hz → Storm: overwhelmed edge.'
+- step: 113
+  state: ENTROPIC_STRESS
+  confidence: 0.24129949281152363
+  sigma_phi: 0.11206497464057619
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8879350253594238
+  frequency: 0.6676470588235295
+  chaotic_signal: -0.9362130296922369
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1121, coherence=0.8879, f=0.6676Hz → Storm: overwhelmed edge.'
+- step: 114
+  state: ENTROPIC_STRESS
+  confidence: 0.25032658882427616
+  sigma_phi: 0.11251632944121381
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8874836705587862
+  frequency: 0.6647058823529413
+  chaotic_signal: -1.0102651801089952
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1125, coherence=0.8875, f=0.6647Hz → Storm: overwhelmed edge.'
+- step: 115
+  state: ENTROPIC_STRESS
+  confidence: 0.2588638450052144
+  sigma_phi: 0.11294319225026073
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8870568077497393
+  frequency: 0.6617647058823529
+  chaotic_signal: -0.958621610485626
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1129, coherence=0.8871, f=0.6618Hz → Storm: overwhelmed edge.'
+- step: 116
+  state: ENTROPIC_STRESS
+  confidence: 0.2670035881788907
+  sigma_phi: 0.11335017940894454
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8866498205910555
+  frequency: 0.6588235294117647
+  chaotic_signal: -0.8063530692659886
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1134, coherence=0.8866, f=0.6588Hz → Storm: overwhelmed edge.'
+- step: 117
+  state: ENTROPIC_STRESS
+  confidence: 0.2749264268592361
+  sigma_phi: 0.11374632134296181
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8862536786570382
+  frequency: 0.6558823529411765
+  chaotic_signal: -0.6004569646824766
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1137, coherence=0.8863, f=0.6559Hz → Storm: overwhelmed edge.'
+- step: 118
+  state: ENTROPIC_STRESS
+  confidence: 0.2831427956197591
+  sigma_phi: 0.11415713978098796
+  target_sigma_phi: 0.0625
+  global_coherence: 0.885842860219012
+  frequency: 0.6529411764705882
+  chaotic_signal: -0.4702902593418811
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1142, coherence=0.8858, f=0.6529Hz → Storm: overwhelmed edge.'
+- step: 119
+  state: ENTROPIC_STRESS
+  confidence: 0.2912989962977858
+  sigma_phi: 0.1145649498148893
+  target_sigma_phi: 0.0625
+  global_coherence: 0.8854350501851107
+  frequency: 0.65
+  chaotic_signal: -0.32610785718463337
+  entropy_tolerance: 0.005
+  rationale: 'σ_ϕ=0.1146, coherence=0.8854, f=0.6500Hz → Storm: overwhelmed edge.'
