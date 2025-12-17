@@ -180,4 +180,89 @@ def load_stream_configs(path: Path) -> List[Dict]:
     raise ValueError(f"Unsupported config format for {path}")
 
 
-__all__ = ["DataStream", "MultiStreamLoader", "load_stream_configs"]
+class BifurcationGenerator:
+    """Generate a fold-bifurcation "doom" stream with critical slowing down signals.
+
+    The generator drifts the control parameter μ from positive to negative,
+    integrates dx/dt = μ - x^2 + ξ(t), and records when the trajectory crosses
+    a crash threshold. This produces a synthetic tipping point with rising
+    autocorrelation and variance, mirroring σ(β(R-Θ)) as stability erodes.
+    """
+
+    def __init__(
+        self,
+        length: int = 512,
+        mu_start: float = 0.6,
+        mu_end: float = -0.6,
+        noise_std: float = 0.03,
+        dt: float = 0.05,
+        x0: float = 0.2,
+        crash_threshold: float = -1.0,
+        seed: int = 7,
+    ):
+        self.length = length
+        self.mu_start = mu_start
+        self.mu_end = mu_end
+        self.noise_std = noise_std
+        self.dt = dt
+        self.x0 = x0
+        self.crash_threshold = crash_threshold
+        self.rng = np.random.default_rng(seed)
+        self._last_result: Optional[Dict[str, np.ndarray]] = None
+
+    def generate(self) -> Dict[str, np.ndarray]:
+        mu_series = np.linspace(self.mu_start, self.mu_end, num=self.length)
+        noise = self.rng.normal(0.0, self.noise_std, size=self.length)
+        states = np.zeros(self.length, dtype=float)
+        derivatives = np.zeros(self.length, dtype=float)
+        crash_index: Optional[int] = None
+
+        states[0] = self.x0
+        derivatives[0] = mu_series[0] - states[0] ** 2 + noise[0]
+
+        for i in range(1, self.length):
+            derivatives[i] = mu_series[i - 1] - states[i - 1] ** 2 + noise[i - 1]
+            states[i] = states[i - 1] + self.dt * derivatives[i]
+
+            if crash_index is None and mu_series[i] < 0 and states[i] < self.crash_threshold:
+                crash_index = i
+
+        if crash_index is None:
+            crash_index = self.length - 1
+
+        self._last_result = {
+            "state": states,
+            "mu": mu_series,
+            "noise": noise,
+            "derivative": derivatives,
+            "crash_index": crash_index,
+        }
+        return self._last_result
+
+    def to_stream(self, normalization: str = "minmax", invert: bool = False) -> DataStream:
+        """Convert the generated trajectory into a normalized DataStream."""
+        if self._last_result is None:
+            self.generate()
+        assert self._last_result is not None  # for type checkers
+        time_index = np.arange(self.length) * self.dt
+        return DataStream(
+            name="doom_stream",
+            values=self._last_result["state"],
+            normalization=normalization,
+            invert=invert,
+            time_index=time_index,
+        )
+
+    def summary(self) -> Dict:
+        """Return metadata describing the bifurcation run."""
+        return {
+            "length": self.length,
+            "mu_start": self.mu_start,
+            "mu_end": self.mu_end,
+            "noise_std": self.noise_std,
+            "dt": self.dt,
+            "crash_threshold": self.crash_threshold,
+        }
+
+
+__all__ = ["DataStream", "MultiStreamLoader", "load_stream_configs", "BifurcationGenerator"]
