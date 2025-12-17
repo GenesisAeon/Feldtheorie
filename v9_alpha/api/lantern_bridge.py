@@ -221,7 +221,7 @@ class LanternNetwork:
         config_path : str
             Path to lantern_hub.yaml
         """
-        with open(config_path, 'r') as f:
+        with open(config_path, 'r', encoding='utf-8') as f:
             config = yaml.safe_load(f)
 
         # Load each lantern
