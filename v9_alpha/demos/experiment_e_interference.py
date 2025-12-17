@@ -34,8 +34,8 @@ if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
 from v9_alpha.api.lantern_bridge import load_lantern_network, LanternNetwork  # noqa: E402
-from v9_alpha.demos.experiment_c_solar_engine import SolarDriver  # noqa: E402
-from v9_alpha.demos.sensorium import MultiStreamLoader  # noqa: E402
+from v9_alpha.models.solar_driver import SolarDriver  # noqa: E402
+from v9_alpha.models.sensorium import MultiStreamLoader  # noqa: E402
 from v9_alpha.models.phase_dynamics import PhaseEvolver, create_natural_frequencies  # noqa: E402
 
 

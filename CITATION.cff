@@ -1,55 +1,34 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "Universal Threshold Activation Criticality (UTAC): Emergent Steepness Framework"
+title: "GenesisAeon v9.0: Living Crystal – A Metastable Threshold Field Simulation"
 abstract: >-
-  The Universal Threshold Activation Criticality (UTAC) framework establishes a
-  unified field-theoretic approach to critical transitions across domains. This
-  repository contains the complete implementation of UTAC v2.0, including:
-  (1) microscopic derivation of β≈4.2 from Renormalization Group theory,
-  (2) field type classification with type-conditioned meta-regressions (R²=0.665),
-  (3) spectral analysis via Fourier decomposition for emergent pattern recognition,
-  (4) validation pipeline with agent-based modeling and cross-domain empirical tests,
-  (5) arXiv-ready manuscript "Emergent Steepness" with figures and supplementary materials.
-  The framework foregrounds the quartet (R, Θ, β, ζ(R)) and the sigmoid response
-  σ(β(R-Θ)) governing phase transitions in physics, climate, cognition, and AI systems.
-  Version 2.0 elevates UTAC from phenomenological observation to theoretically grounded
-  framework with predictive power across 36 validated systems in 11 domains.
+  Release v9.0 packages the Living Crystal stack that resolves the
+  Crystal-Death paradox: entropy anchors (StochasticResonator), active
+  forcing (SolarDriver), and structural healing (TopologicalReaper) keep
+  σ(β(R-Θ)) oscillating instead of freezing. The repository ships a single
+  CLI entry point (`v9_alpha/main_simulation.py`) that runs Experiments C–E
+  end-to-end, plus Sensorium streams that surface the climate–economy
+  coupling signature. Artifacts include Zenodo metadata (.zenodo.json),
+  Trilayer release notes (MD/JSON/YAML), and reproducible configs for
+  Lantern-Hub/Bridge.
 authors:
   - family-names: "Römer"
-    given-names: "Johann"
-    orcid: "https://orcid.org/0000-0000-0000-0000"
-  - name: "Aeon (AI Research Assistant)"
-    orcid: null
-  - name: "Universal Threshold Field Contributors"
-version: 2.0.0
-doi: 10.5281/zenodo.17472834
-date-released: 2024-12-15
+    given-names: "Johann Benjamin"
+  - name: "Claude (Anthropic Co-Author)"
+  - name: "MOR Research Agents"
+  - name: "GPT-5.1-Codex-Max (OpenAI)"
+version: 9.0.0
+date-released: 2025-12-17
 url: "https://github.com/GenesisAeon/Feldtheorie"
 keywords:
-  - critical phenomena
-  - renormalization group theory
-  - phase transitions
-  - emergent steepness
-  - universal behavior
-  - field type classification
-  - spectral analysis
-  - agent-based modeling
-  - sigmoid activation
-  - threshold field
-  - adaptive criticality
-  - emergence
-  - transdisciplinary science
-  - climate tipping points
-  - complex systems
+  - metastability
+  - electromagnetic resonance
+  - integrated information
+  - climate-economy coupling
+  - stochastic resonance
+  - topology reconfiguration
+  - logistic activation
+  - emergent coherence
 license: CC-BY-4.0
 repository-code: "https://github.com/GenesisAeon/Feldtheorie"
 type: software
-references:
-  - type: article
-    title: "Emergent Steepness: Microscopic Derivation of the Universal Threshold Activation Criticality Parameter β"
-    authors:
-      - family-names: "Römer"
-        given-names: "Johann"
-    year: 2024
-    journal: "arXiv preprint (submitted)"
-    notes: "Main theoretical paper for UTAC v2.0"

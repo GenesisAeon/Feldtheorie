@@ -7,7 +7,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 import numpy as np
 from v9_alpha.api.lantern_bridge import load_lantern_network
-from v9_alpha.demos.experiment_c_solar_engine import SolarDriver
+from v9_alpha.models.solar_driver import SolarDriver
 
 # Load network
 network = load_lantern_network('v9_alpha/config/lantern_hub.yaml')
