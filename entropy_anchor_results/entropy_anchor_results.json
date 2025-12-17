@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "timestamp": "2025-12-17 06:15:40",
+    "config_path": "/home/user/Feldtheorie/v9_alpha/demos/../../v9_alpha/config/lantern_hub.yaml",
+    "n_trials": 3,
+    "experiment": "entropy_anchor_validation",
+    "theoretical_basis": "Theorie_schwarze_L\u00f6cher_Enthropie.txt"
+  },
+  "results": [
+    {
+      "trial_id": 0,
+      "phi_before": 1.3540364170823858,
+      "coherence_before": 1.0,
+      "z_eff_before": 22.174000000000003,
+      "z_variance_before": 81088.38721098611,
+      "spark_detected": true,
+      "spark_magnitude": 643.046,
+      "spark_step": 0,
+      "phi_after": 1.3540364170823858,
+      "coherence_after": 1.0,
+      "z_eff_after": 22.174000000000003,
+      "z_variance_after": 89153.3961267774,
+      "delta_phi": 0.0,
+      "stabilization_steps": 30,
+      "total_steps": 45,
+      "elapsed_time_seconds": 0.045495033264160156
+    },
+    {
+      "trial_id": 1,
+      "phi_before": 1.3540364170823858,
+      "coherence_before": 1.0,
+      "z_eff_before": 22.174000000000003,
+      "z_variance_before": 81088.38721098611,
+      "spark_detected": true,
+      "spark_magnitude": 643.046,
+      "spark_step": 0,
+      "phi_after": 1.3540364170823858,
+      "coherence_after": 1.0,
+      "z_eff_after": 22.174000000000003,
+      "z_variance_after": 89153.3961267774,
+      "delta_phi": 0.0,
+      "stabilization_steps": 30,
+      "total_steps": 45,
+      "elapsed_time_seconds": 0.042296409606933594
+    },
+    {
+      "trial_id": 2,
+      "phi_before": 1.3540364170823858,
+      "coherence_before": 1.0,
+      "z_eff_before": 22.174000000000003,
+      "z_variance_before": 81088.38721098611,
+      "spark_detected": true,
+      "spark_magnitude": 643.046,
+      "spark_step": 0,
+      "phi_after": 1.3540364170823858,
+      "coherence_after": 1.0,
+      "z_eff_after": 22.174000000000003,
+      "z_variance_after": 89153.3961267774,
+      "delta_phi": 0.0,
+      "stabilization_steps": 30,
+      "total_steps": 45,
+      "elapsed_time_seconds": 0.04359555244445801
+    }
+  ]
+}
