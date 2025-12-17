@@ -32,6 +32,7 @@ from v9_alpha.models.frequency_tuner import (
 from v9_alpha.models.phase_dynamics import PhaseEvolver, create_natural_frequencies
 from v9_alpha.models.sensorium import MultiStreamLoader, load_stream_configs
 from v9_alpha.models.solar_driver import SolarDriver, phase_coherence
+from v9_alpha.demos.experiment_f_oracle import ExperimentFConfig, run_oracle
 
 
 def default_streams() -> list[Dict[str, Any]]:
@@ -219,8 +220,43 @@ def run_simulation(args: argparse.Namespace) -> Dict[str, Any]:
     return payload
 
 
+def run_oracle_experiment(args: argparse.Namespace) -> Dict[str, Any]:
+    output_prefix = Path(args.output_prefix) if args.output_prefix else Path("experiment_f_results")
+    config = ExperimentFConfig(
+        steps=args.oracle_steps,
+        dt=args.dt,
+        mu_start=args.oracle_mu_start,
+        mu_end=args.oracle_mu_end,
+        noise_std=args.oracle_noise_level,
+        crash_threshold=args.oracle_crash_threshold,
+        phi_window=args.oracle_phi_window,
+        alert_threshold=args.oracle_alert_threshold,
+        frequency_gain=args.oracle_frequency_gain,
+        base_frequency=args.oracle_base_frequency,
+        coherence_threshold=args.coherence_threshold,
+        kick_amplitude=args.kick_amplitude,
+        output_path=str(output_prefix.with_suffix(".json")),
+        seed=args.seed,
+    )
+
+    summary, traces = run_oracle(config)
+    payload = {"summary": summary, "traces": traces}
+
+    if args.output_prefix:
+        record(output_prefix.with_suffix(".json"), payload)
+        record(output_prefix.with_suffix(".yaml"), payload)
+
+    return payload
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run the v9.0 Living Crystal end-to-end simulation")
+    parser.add_argument(
+        "--experiment",
+        default="living-crystal",
+        choices=["living-crystal", "oracle"],
+        help="Choose core run: Living Crystal loop or the Pre-Cognition Oracle",
+    )
     parser.add_argument("--config", default="v9_alpha/config/lantern_hub.yaml", help="Lantern hub configuration path")
     parser.add_argument("--steps", type=int, default=128, help="Number of simulation steps")
     parser.add_argument("--dt", type=float, default=0.05, help="Timestep for PhaseEvolver")
@@ -256,11 +292,33 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility")
     parser.add_argument("--output-prefix", type=str, help="If set, write JSON+YAML results to this path prefix")
 
+    parser.add_argument("--oracle-steps", type=int, default=200, help="Steps for Pre-Cognition Engine run")
+    parser.add_argument("--oracle-mu-start", type=float, default=0.6, help="Initial μ for bifurcation drift")
+    parser.add_argument("--oracle-mu-end", type=float, default=-0.6, help="Terminal μ triggering collapse")
+    parser.add_argument("--oracle-noise-level", type=float, default=0.03, help="Noise level on the doom stream")
+    parser.add_argument("--oracle-crash-threshold", type=float, default=-0.9, help="Crash detection threshold for doom state")
+    parser.add_argument("--oracle-phi-window", type=int, default=50, help="Rolling Φ window for autocorrelation")
+    parser.add_argument("--oracle-alert-threshold", type=float, default=0.8, help="Alert threshold on lag-1 autocorrelation")
+    parser.add_argument("--oracle-frequency-gain", type=float, default=0.9, help="Frequency modulation strength from doom signal")
+    parser.add_argument("--oracle-base-frequency", type=float, default=0.05, help="Base natural frequency during oracle run")
+
     return parser.parse_args()
 
 
 if __name__ == "__main__":
     args = parse_args()
+    if len(sys.argv) == 1:
+        args.enable_solar_driver = True
+        args.enable_resonator = True
+        args.enable_reaper = True
+        args.enable_sensorium = True
+        args.steps = 50
+
     np.random.seed(args.seed)
-    results = run_simulation(args)
-    print(json.dumps({"R": results["summary"], "Theta": "cli"}, indent=2))
+
+    if args.experiment == "oracle":
+        payload = run_oracle_experiment(args)
+        print(json.dumps({"R": payload["summary"], "Theta": "oracle"}, indent=2))
+    else:
+        results = run_simulation(args)
+        print(json.dumps({"R": results["summary"], "Theta": "cli"}, indent=2))

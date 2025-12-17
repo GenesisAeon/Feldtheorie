@@ -1,0 +1,31 @@
+{
+  "version": "v9.0-gold",
+  "codename": "Living Crystal",
+  "logistic_frame": {
+    "R": "Oracle-enabled Living Crystal stack",
+    "Theta": "Reproducible CSD alerts + breathing Φ",
+    "beta": 9.0,
+    "zeta_R": "entropy anchors + doom-stream anticipation"
+  },
+  "sources": [
+    {"path": "v9_alpha/main_simulation.py", "role": "Living Crystal CLI with demo + oracle flag"},
+    {"path": "v9_alpha/demos/experiment_f_oracle.py", "role": "Reference Pre-Cognition Engine routine"},
+    {"path": "v9_alpha/models/early_warning.py", "role": "Critical Slowing Down oracle analytics"},
+    {"path": "v9_alpha/models/sensorium.py", "role": "Bifurcation generator + sensor streams"},
+    {"path": "v9_alpha/api/lantern_bridge.py", "role": "Lantern network loader"}
+  ],
+  "configs": [
+    {"path": "v9_alpha/config/lantern_hub.yaml", "role": "Lantern-Net topology (Experiments C–F)"},
+    {"path": "v9_alpha/config/experiments/exp_e_synergy.yaml", "role": "Synergy stress configuration"},
+    {"path": "releases/v9.0/FINAL_RELEASE_NOTES.yaml", "role": "Tri-Layer release note anchor"},
+    {"path": "releases/v9.0/README.yaml", "role": "Zenodo quickstart summary"}
+  ],
+  "datasets": [
+    {"path": "experiment_c_results/experiment_c_solar_engine_results.json", "status": "included"},
+    {"path": "experiment_d_results/experiment_d_sensorium_results.json", "status": "included"},
+    {"path": "experiment_e_results/experiment_e_synergy_results.json", "status": "included"},
+    {"path": "experiment_f_results.json", "status": "included"},
+    {"path": "entropy_anchor_results/entropy_anchor_results.json", "status": "included"}
+  ],
+  "notes": "Tri-Layer manifest for Zenodo freeze; run v9_alpha/main_simulation.py --experiment oracle for the 168-step lead-time reproduction."
+}
