@@ -1,0 +1,53 @@
+{
+  "experiment": {
+    "name": "Experiment E - Interference Synergy",
+    "description": "Combine AMOC and Amazon Hydro proxies to close the activation gap. Target resonance frequency f≈13.5 MHz, lift σ(β(R-Θ)) above 0.5.",
+    "seed": 42
+  },
+  "streams": [
+    {
+      "name": "amoc",
+      "path": "data/ocean/amoc_strength_mock.csv",
+      "value_column": "strength_Sv",
+      "time_column": "date",
+      "normalization": "zscore",
+      "invert": false,
+      "synthetic_base": "seasonal",
+      "seasonal_freq": 0.06,
+      "trend_strength": 0.12,
+      "noise_level": 0.08
+    },
+    {
+      "name": "amazon",
+      "path": null,
+      "value_column": null,
+      "time_column": null,
+      "normalization": "minmax",
+      "invert": true,
+      "synthetic_base": "pulse",
+      "seasonal_freq": 0.04,
+      "trend_strength": 0.18,
+      "noise_level": 0.1
+    }
+  ],
+  "combination": {
+    "coupling_factor": 0.35
+  },
+  "simulation": {
+    "steps": 256,
+    "dt": 0.05,
+    "noise_level": 0.02,
+    "mean_frequency": 0.0,
+    "frequency_spread": 0.07,
+    "frequency_gain": 0.45,
+    "coherence_threshold": 0.9,
+    "kick_amplitude": 0.35,
+    "kick_strategy": "gentle",
+    "output_path": "experiment_e_results/experiment_e_synergy_results.json"
+  },
+  "metrics": {
+    "synergy_target": 0.5,
+    "window": 32,
+    "narrative_stub": "releases/v9.0/EXPERIMENT_E_SYNERGY_RESULTS.md"
+  }
+}
