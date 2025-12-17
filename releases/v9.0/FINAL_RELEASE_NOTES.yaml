@@ -31,10 +31,18 @@ experiments:
     status: success
     observation: "Non-linear lift beyond additive baseline"
     mechanism: SolarDriver + Sensorium with Reaper healing
+  - id: F
+    name: Pre-Cognition Engine
+    status: success
+    observation: Lag-1 autocorr(Φ) > 0.8 by step 9; crash at 177 → lead time 168
+    mechanism: Bifurcation doom stream + EarlyWarningSystem surface Critical Slowing Down
 conclusion: >-
   Entropy sinks and active forcing are both required for 4D emergence; topology must
-  stay plastic while Sensorium reveals cross-domain coupling.
+  stay plastic while Sensorium reveals cross-domain coupling. Oracle-grade anticipation
+  (168-step CSD lead time) completes the self-maintenance, sensing, integration, and
+  prediction stack.
 repro_checklist:
   - python v9_alpha/main_simulation.py --enable-solar-driver --enable-resonator --enable-reaper --enable-sensorium --output-prefix releases/v9.0/living_crystal_run
+  - python v9_alpha/main_simulation.py --experiment oracle --oracle-steps 200 --output-prefix releases/v9.0/experiment_f_oracle
   - Confirm coherence oscillates below Theta and Φ rises post-reaper cycles
-  - Archive living_crystal_run.{json,yaml} with these notes
+  - Archive living_crystal_run.{json,yaml} and experiment_f_oracle.{json,yaml} with these notes
