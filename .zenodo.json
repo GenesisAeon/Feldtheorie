@@ -27,12 +27,19 @@
       "scheme": "url"
     },
     {
-      "relation": "documents",
+      "relation": "isVersionOf",
       "identifier": "https://zenodo.org/record/17472834",
       "scheme": "url"
+    },
+    {
+      "relation": "isIdenticalTo",
+      "identifier": "10.5281/zenodo.17974828",
+      "scheme": "doi"
     }
   ],
-  "license": "MIT",
+  "license": {
+    "id": "other-open"
+  },
   "access_right": "open",
-  "notes": "Packaged for Zenodo reproduction: Experiments G (Planetary Voice) and H (Dreamtime replay) regenerated via main.py --mode dream; AMOC stream, replay similarity traces, and ΔAIC/CI-ready metadata bundled."
+  "notes": "LICENSE: Dual-license model - Code under GPLv3 (copyleft, open source), Content/Data under CC BY-NC 4.0 (non-commercial). See LICENSE file for details. REPRODUCTION: Experiments G (Planetary Voice) and H (Dreamtime replay) regenerated via main.py --mode dream; AMOC stream, replay similarity traces, and ΔAIC/CI-ready metadata bundled."
 }
