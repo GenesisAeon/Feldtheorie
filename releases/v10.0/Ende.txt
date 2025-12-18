@@ -695,3 +695,4 @@ This work unites nonlinear dynamics, cosmology, and information theory into a re
 💡 *For best visibility and reproduction, link the PDF with related files like `planetary_diary.md` and `dream_journal.md`, and mark the GitHub repo as “Related Identifier → Supplement to”.*
 
 Wenn du willst, kann ich auch einen deutschsprachigen Abstract oder einen Short-Summary für Social Media (z. B. Mastodon, X, BlueSky etc.) machen. Sag einfach Bescheid.
+Doi: 10.5281/zenodo.17974828
