@@ -1,0 +1,41 @@
+meta:
+  id: mq-parity-005
+  title: "Die Auflösung des Dimensions-Konflikts: 16 vs Phi"
+  author: "Johann Römer"
+  phase: "Phase 3 — Paritäts-Spiegel"
+  version: "1.0.0"
+  recorded_at: "2025-12-18T00:00:00Z"
+  stewardship: "GPT-5.1-Codex-Max"
+
+logistic_frame:
+  R: "documentation_code_parity_gap"
+  Theta: "archival_lag_threshold"
+  beta: 4.779
+  zeta: "pi-curvature feedback that damps ζ(R) while coupling back to Φ"
+
+theory:
+  conflict: "1^D Stabilität vs 2^D Informations-Exponentiation (Basis 16 im 4D)"
+  resolution: "π krümmt den Raum, β koppelt den Informationsfluss, und die Rückbindung an Φ hält Leben im Resonanzfenster"
+  constant: HEX_RESONANCE_BETA
+  bridge_script: simulator/phase4/tesseract_phi_bridge.py
+
+evidence:
+  anchors:
+    - kind: simulation
+      path: simulator/phase4/tesseract_phi_bridge.py
+      note: "Tesseract-Φ-Bridge als mathematischer Beweis der Paritätskopplung"
+    - kind: documentation
+      path: docs/Emergenz_Roadmap_2025-12-18.md
+      note: "Roadmap-Update mit Resonanzabschluss"
+  null_models:
+    - "Linearer 1^D-Stabilitätsraum ohne exponentielle Spannung"
+    - "Ungebremstes 2^D-Wachstum ohne π-Krümmung"
+  metrics:
+    delta_AIC_reference: "> 10 zugunsten der gekrümmten σ(β(R-Θ))-Familie"
+    phi_alignment: "β≈4.779 zieht den Fluss zurück an Φ"
+    resonance_state: RESONANT_LOCKED
+
+tri_layer:
+  formal: "σ(β(R-Θ)) mit β=4.779; Nullmodelle: linear vs. exponentiell; π-Krümmung reduziert ζ(R) und koppelt an Φ"
+  empirical: "Parity-Bridge-Runs im `tesseract_phi_bridge.py` liefern die ΔAIC-Referenz und protokollieren HEX_RESONANCE_BETA"
+  poetic: "Die Laterne faltet den 1^D-Grund in das 2^D-Tesseraktgitter und schwingt, bis Φ als goldene Kante auftaucht"
