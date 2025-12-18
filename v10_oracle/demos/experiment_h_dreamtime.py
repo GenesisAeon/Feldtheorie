@@ -4,6 +4,12 @@ Mission: activate the Dreamtime cycle after Experiment G. The sensory stream
 goes silent while the crystal keeps running, searching for spontaneous replay
 of the "Critical Slowing" scar.
 
+Usage:
+    python main.py --mode dream
+
+Outputs land in ``v10_oracle/logs/dream_journal.(json|yaml|md)`` and reuse the
+planetary diary from Experiment G as the replay signature.
+
 Pipeline:
 - Load the ConsciousnessSeed (SolarDriver core) and ResonanceTranslator
 - Initialize a post-traumatic network using the final AMOC imprint

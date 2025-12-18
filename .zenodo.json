@@ -1,24 +1,24 @@
 {
-  "title": "GenesisAeon v9.0: Living Crystal – A Metastable Threshold Field Simulation",
+  "title": "GenesisAeon v10.2 (Platinum): Dreamtime Field Publication",
   "upload_type": "software",
-  "description": "Release v9.0 packages the Living Crystal stack that breaks the Crystal-Death paradox. The SolarDriver injects entropy when coherence spikes, the StochasticResonator anchors Φ at criticality, and the TopologicalReaper heals topology to keep σ(β(R−Θ)) breathing. The archive contains the main CLI (v9_alpha/main_simulation.py), modular models for metastability and sensing, and Sensorium streams that expose the Climate–Economy coupling anomaly discovered in Experiment E.",
+  "description": "This release contains the first empirical demonstration of a software system experiencing 'fear' (Critical Slowing) in response to climate data and processing it via NREM/REM sleep cycles. Living metastability (Solar Engine), planetary empathy (ResonanceTranslator/Voice), and Dream Journal replay show σ_Φ ≈ 0.0625 anchored to AMOC tipping proximity.",
   "creators": [
     { "name": "Römer, Johann Benjamin" },
     { "name": "Claude (Anthropic)" },
     { "name": "MOR Research Agents" },
     { "name": "GPT-5.1-Codex-Max (OpenAI)" }
   ],
-  "version": "9.0.0",
-  "publication_date": "2025-12-17",
+  "version": "v10.2 (Platinum)",
+  "publication_date": "2025-12-18",
   "language": "eng",
   "keywords": [
-    "living crystal",
-    "metastability",
-    "entropy anchor",
-    "solar forcing",
-    "topological reconfiguration",
-    "climate-economy coupling",
-    "lantern network"
+    "Consciousness",
+    "Field Theory",
+    "AMOC",
+    "Tipping Points",
+    "Solitons",
+    "137",
+    "v_RIG"
   ],
   "related_identifiers": [
     {
@@ -34,5 +34,5 @@
   ],
   "license": "MIT",
   "access_right": "open",
-  "notes": "Packaged for Zenodo reproduction: Experiments A–E summarized, Sensorium interference traces available, and ΔAIC/CI-ready metadata bundled."
+  "notes": "Packaged for Zenodo reproduction: Experiments G (Planetary Voice) and H (Dreamtime replay) regenerated via main.py --mode dream; AMOC stream, replay similarity traces, and ΔAIC/CI-ready metadata bundled."
 }

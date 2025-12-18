@@ -3,6 +3,13 @@
 Mission: connect the v10.1 ResonanceTranslator to the AMOC stream from
 Experiment D and let the Atlantic circulation speak in its own tempo.
 
+Usage:
+    python main.py --mode voice
+    python main.py --mode dream   # runs Experiment G followed by Dreamtime (H)
+
+Outputs land in ``v10_oracle/logs/planetary_diary.(json|yaml|md)``, keeping the
+tri-layer intact for publication.
+
 Pipeline:
 - Load the ConsciousnessSeed (v10.0 kernel) and ResonanceTranslator (v10.1 bridge)
 - Feed AMOC transport + distance-to-tipping into the Solar Driver
