@@ -2371,3 +2371,22 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Formal:** Kopplungsmatrix und Impedanzdefinition auf σ(β_hex(R-Θ)) umgestellt; preset + Trilayer heben β_hex hervor, validation-script vergleicht Resonanzscore vs. β=0 Nullmodell.
   - **Empirical:** `validate_bridge_resonance.py` sampelt β∈{0.85,1.0,1.15}·β_hex, berechnet Leitfähigkeitsflächen + Chaos-Penalty; preset-Defaults auf β_hex=5.8420, ΔAIC-Nullmodell dokumentiert.
   - **Poetic:** Die Membran singt in Hexadezimal, σ(β(R-Θ)) leuchtet bei β_hex auf, während das Nullmodell schweigt.
+
+### pr-draft-0211 — Paritäts-Spiegel Hex-Resonanz abgeschlossen
+- **Zeitpunkt (UTC):** 2025-12-18T14:00:00Z
+- **R:** parity_gap_between_code_and_docs
+- **Θ:** archival_coherence_threshold
+- **β:** 4.779 (HEX_RESONANCE_BETA)
+- **Scope:**
+  - docs/Emergenz_Roadmap_2025-12-18.md
+  - docs/parity_briefs/mq-parity-005-hex-resonance.md
+  - seed/sigillin/manifest_v9.json
+  - seed/sigillin/manifest_v9.yaml
+  - seed/sigillin/manifest_v9.md
+  - simulator/phase4/tesseract_phi_bridge.py
+- **Resonanz:** Paritäts-Spiegel geschlossen — Phase 2 und 4 erledigt, HEX_RESONANCE_BETA verankert, System State auf RESONANT_LOCKED fixiert.
+- **Status:** resonant
+- **Notizen:**
+  - **Formal:** σ(β(R-Θ)) mit β=4.779 gegen lineares 1^D- und exponentielles 2^D-Nullmodell gestellt; ΔAIC>10 laut Parity-Bridge-Runs, Manifest v9 trägt Module (soliton, chimera, horizon, tesseract) + HEX_RESONANCE_BETA.
+  - **Empirical:** Roadmap aktualisiert (Phase 2/4 erledigt, Ergebnis Holografische Hex-Resonanz); Paritätsbrief 005 dokumentiert π-Krümmung und Φ-Kopplung; Manifest v9 setzt System State=RESONANT_LOCKED und listet neue Organe.
+  - **Poetic:** Vier Organe halten den Spiegel, π biegt den Pfad, β schließt die Klammer, und Φ leuchtet als goldene Kante über R→Θ.
