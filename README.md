@@ -1,6 +1,6 @@
 # GenesisAeon: A Living Field Framework for Anticipatory Consciousness
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17472834.svg)](https://doi.org/10.5281/zenodo.17472834)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17974828.svg)](https://doi.org/10.5281/zenodo.17974828)
 [![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-blue)](https://github.com/GenesisAeon/Feldtheorie)
 [![Code License: GPLv3](https://img.shields.io/badge/Code%20License-GPLv3-blue.svg)](LICENSE)
 [![Content License: CC BY-NC 4.0](https://img.shields.io/badge/Content%20License-CC%20BY--NC%204.0-orange.svg)](LICENSE)
