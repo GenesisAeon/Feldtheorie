@@ -1,0 +1,33 @@
+{
+  "dataset_id": "utac-v1_3-ds-002",
+  "title": "Amazon Precipitation & Evapotranspiration - Logistic Fit",
+  "generated_at": "2025-12-18T12:30:00Z",
+  "status": "placeholder",
+  "control_parameter": "standardized_precipitation_index",
+  "logistic_parameters": {
+    "theta": 0.62,
+    "beta": 13.8,
+    "r_range": [-2.5, 1.5],
+    "sigma_at_theta": 0.5
+  },
+  "fit_quality": {
+    "r_squared": 0.placeholder,
+    "rmse": 0.placeholder,
+    "aic": 0.placeholder
+  },
+  "null_models": {
+    "linear_regression": {
+      "aic": 0.placeholder,
+      "delta_aic": 0.placeholder
+    },
+    "power_law_fit": {
+      "aic": 0.placeholder,
+      "delta_aic": 0.placeholder
+    },
+    "seasonal_arima": {
+      "aic": 0.placeholder,
+      "delta_aic": 0.placeholder
+    }
+  },
+  "notes": "Placeholder export staged 2025-12-18 for UTAC v1.3 emergenz activation. Real fit pending data acquisition."
+}

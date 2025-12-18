@@ -1,25 +1,25 @@
 {
   "meta": {
-    "generated_at": "2025-11-09T20:02:38.397468+00:00",
+    "generated_at": "2025-12-18T12:06:08.712515+00:00",
     "manifest_path": "data/utac_v1_3_data_manifest.yaml",
     "logistic": {
       "theta": 0.66,
       "beta": 4.8,
-      "mean_readiness": 0.5,
-      "sigma": 0.3169119051378149
+      "mean_readiness": 0.9,
+      "sigma": 0.7598760354908782
     }
   },
   "data_summary": {
     "total": 5,
-    "fully_ready": 1,
-    "any_components_missing": 10,
-    "average_readiness": 0.5,
+    "fully_ready": 3,
+    "any_components_missing": 2,
+    "average_readiness": 0.9,
     "values": [
       1.0,
-      0.5,
-      0.5,
-      0.25,
-      0.25
+      0.75,
+      1.0,
+      1.0,
+      0.75
     ]
   },
   "datasets": [
@@ -70,7 +70,7 @@
       "theta_estimate": 0.62,
       "beta_target": 13.8,
       "declared_readiness_ratio": null,
-      "actual_readiness_ratio": 0.5,
+      "actual_readiness_ratio": 0.75,
       "missing_components": [
         {
           "name": "data",
@@ -78,13 +78,6 @@
           "declared_exists": false,
           "actual_exists": false,
           "kind": "data"
-        },
-        {
-          "name": "amazon_hydro_fit.json",
-          "path": "analysis/results/amazon_hydro_fit.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
         }
       ],
       "components": [
@@ -106,7 +99,7 @@
           "name": "amazon_hydro_fit.json",
           "path": "analysis/results/amazon_hydro_fit.json",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "result"
         },
         {
@@ -125,29 +118,14 @@
       "theta_estimate": 14.0,
       "beta_target": 9.6,
       "declared_readiness_ratio": null,
-      "actual_readiness_ratio": 0.5,
-      "missing_components": [
-        {
-          "name": "data",
-          "path": "data/ocean/amoc_transport.csv",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "data"
-        },
-        {
-          "name": "amoc_transport_fit.json",
-          "path": "analysis/results/amoc_transport_fit.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        }
-      ],
+      "actual_readiness_ratio": 1.0,
+      "missing_components": [],
       "components": [
         {
           "name": "data",
           "path": "data/ocean/amoc_transport.csv",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "data"
         },
         {
@@ -161,7 +139,7 @@
           "name": "amoc_transport_fit.json",
           "path": "analysis/results/amoc_transport_fit.json",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "result"
         },
         {
@@ -180,36 +158,14 @@
       "theta_estimate": 0.48,
       "beta_target": 6.1,
       "declared_readiness_ratio": null,
-      "actual_readiness_ratio": 0.25,
-      "missing_components": [
-        {
-          "name": "data",
-          "path": "data/neuro_ai/hybrid_activation.csv",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "data"
-        },
-        {
-          "name": "neuro_ai_beta.json",
-          "path": "analysis/results/neuro_ai_beta.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        },
-        {
-          "name": "neuro_ai_bootstrap.json",
-          "path": "analysis/results/neuro_ai_bootstrap.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        }
-      ],
+      "actual_readiness_ratio": 1.0,
+      "missing_components": [],
       "components": [
         {
           "name": "data",
           "path": "data/neuro_ai/hybrid_activation.csv",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "data"
         },
         {
@@ -223,14 +179,14 @@
           "name": "neuro_ai_beta.json",
           "path": "analysis/results/neuro_ai_beta.json",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "result"
         },
         {
           "name": "neuro_ai_bootstrap.json",
           "path": "analysis/results/neuro_ai_bootstrap.json",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "result"
         }
       ]
@@ -242,22 +198,8 @@
       "theta_estimate": 1.15,
       "beta_target": 7.4,
       "declared_readiness_ratio": null,
-      "actual_readiness_ratio": 0.25,
+      "actual_readiness_ratio": 0.75,
       "missing_components": [
-        {
-          "name": "data",
-          "path": "data/economy/systemic_thresholds.csv",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "data"
-        },
-        {
-          "name": "economy_threshold_fit.json",
-          "path": "analysis/results/economy_threshold_fit.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        },
         {
           "name": "meta_v2_summary_refresh.json",
           "path": "analysis/results/meta_v2_summary_refresh.json",
@@ -271,7 +213,7 @@
           "name": "data",
           "path": "data/economy/systemic_thresholds.csv",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "data"
         },
         {
@@ -285,7 +227,7 @@
           "name": "economy_threshold_fit.json",
           "path": "analysis/results/economy_threshold_fit.json",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "result"
         },
         {
@@ -304,12 +246,12 @@
       "description": "climate beta extractor pipeline",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-11-09T18:31:21.549418+00:00",
+      "last_modified": "2025-12-18T07:32:16+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/urban_heat_global_fit.json",
           "exists": true,
-          "last_modified": "2025-11-09T20:00:17.623927+00:00"
+          "last_modified": "2025-12-18T07:32:16+00:00"
         }
       ]
     },
@@ -318,12 +260,12 @@
       "description": "neuro-AI hybrid threshold fitter",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-11-09T18:31:21.549418+00:00",
+      "last_modified": "2025-12-18T07:32:16+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/neuro_ai_beta.json",
-          "exists": false,
-          "last_modified": null
+          "exists": true,
+          "last_modified": "2025-12-18T11:01:24+00:00"
         }
       ]
     },
@@ -332,12 +274,12 @@
       "description": "β>10 instrumentation guard",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-11-09T18:31:21.549418+00:00",
+      "last_modified": "2025-12-18T07:32:16+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/outlier_validator_report.json",
           "exists": true,
-          "last_modified": "2025-11-09T20:01:05.312335+00:00"
+          "last_modified": "2025-12-18T07:32:16+00:00"
         }
       ]
     },
@@ -346,12 +288,12 @@
       "description": "meta regression v2 refresh",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-11-09T18:31:21.549418+00:00",
+      "last_modified": "2025-12-18T07:32:16+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/beta_meta_regression_v2_latest.json",
-          "exists": false,
-          "last_modified": null
+          "exists": true,
+          "last_modified": "2025-12-18T11:01:33+00:00"
         }
       ]
     }
@@ -362,7 +304,7 @@
       "description": "UTAC v2.0 coherence formula narrative",
       "category": "documentation",
       "exists": true,
-      "last_modified": "2025-11-09T18:31:21.581419+00:00",
+      "last_modified": "2025-12-18T07:32:16+00:00",
       "expected_outputs": []
     },
     {
@@ -370,7 +312,7 @@
       "description": "resonance bridge map",
       "category": "documentation",
       "exists": true,
-      "last_modified": "2025-11-09T18:31:21.585419+00:00",
+      "last_modified": "2025-12-18T07:32:16+00:00",
       "expected_outputs": []
     }
   ],
@@ -380,7 +322,7 @@
       "description": "coherence formula simulator preset",
       "category": "simulator",
       "exists": true,
-      "last_modified": "2025-11-09T18:31:21.717420+00:00",
+      "last_modified": "2025-12-18T07:32:17+00:00",
       "expected_outputs": []
     }
   ],
@@ -390,7 +332,7 @@
       "description": "metaquest system map",
       "category": "sigillin",
       "exists": true,
-      "last_modified": "2025-11-09T18:31:21.697419+00:00",
+      "last_modified": "2025-12-18T07:32:17+00:00",
       "expected_outputs": []
     },
     {
@@ -398,7 +340,7 @@
       "description": "metaquest system shadow map",
       "category": "sigillin",
       "exists": true,
-      "last_modified": "2025-11-09T18:31:21.713419+00:00",
+      "last_modified": "2025-12-18T07:32:17+00:00",
       "expected_outputs": []
     }
   ],
@@ -415,13 +357,6 @@
           "declared_exists": false,
           "actual_exists": false,
           "kind": "data"
-        },
-        {
-          "name": "amazon_hydro_fit.json",
-          "path": "analysis/results/amazon_hydro_fit.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
         }
       ],
       "related_resonance_status": "active"
@@ -429,76 +364,9 @@
     {
       "id": "dataset-02",
       "priority": "P1",
-      "title": "Complete ocean dataset utac-v1_3-ds-003",
-      "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
-      "targets": [
-        {
-          "name": "data",
-          "path": "data/ocean/amoc_transport.csv",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "data"
-        },
-        {
-          "name": "amoc_transport_fit.json",
-          "path": "analysis/results/amoc_transport_fit.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        }
-      ],
-      "related_resonance_status": "draft"
-    },
-    {
-      "id": "dataset-03",
-      "priority": "P1",
-      "title": "Complete neuro_ai dataset utac-v1_3-ds-004",
-      "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
-      "targets": [
-        {
-          "name": "data",
-          "path": "data/neuro_ai/hybrid_activation.csv",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "data"
-        },
-        {
-          "name": "neuro_ai_beta.json",
-          "path": "analysis/results/neuro_ai_beta.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        },
-        {
-          "name": "neuro_ai_bootstrap.json",
-          "path": "analysis/results/neuro_ai_bootstrap.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        }
-      ],
-      "related_resonance_status": "primed"
-    },
-    {
-      "id": "dataset-04",
-      "priority": "P1",
       "title": "Complete economy dataset utac-v1_3-ds-005",
       "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
       "targets": [
-        {
-          "name": "data",
-          "path": "data/economy/systemic_thresholds.csv",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "data"
-        },
-        {
-          "name": "economy_threshold_fit.json",
-          "path": "analysis/results/economy_threshold_fit.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        },
         {
           "name": "meta_v2_summary_refresh.json",
           "path": "analysis/results/meta_v2_summary_refresh.json",
@@ -508,42 +376,6 @@
         }
       ],
       "related_resonance_status": "draft"
-    },
-    {
-      "id": "analysis-05",
-      "priority": "P2",
-      "title": "Activate neuro-AI hybrid threshold fitter",
-      "description": "Ensure artefact and its outputs exist so the readiness bridge remains tri-layered.",
-      "targets": [
-        {
-          "path": "analysis/neuro_threshold_fitter.py",
-          "exists": true,
-          "category": "analysis"
-        },
-        {
-          "path": "analysis/results/neuro_ai_beta.json",
-          "exists": false,
-          "category": "output"
-        }
-      ]
-    },
-    {
-      "id": "analysis-06",
-      "priority": "P2",
-      "title": "Activate meta regression v2 refresh",
-      "description": "Ensure artefact and its outputs exist so the readiness bridge remains tri-layered.",
-      "targets": [
-        {
-          "path": "analysis/beta_meta_regression_v2.py",
-          "exists": true,
-          "category": "analysis"
-        },
-        {
-          "path": "analysis/results/beta_meta_regression_v2_latest.json",
-          "exists": false,
-          "category": "output"
-        }
-      ]
     }
   ]
 }

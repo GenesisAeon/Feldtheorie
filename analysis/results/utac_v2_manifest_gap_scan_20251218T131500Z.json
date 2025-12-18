@@ -1,0 +1,64 @@
+{
+  "generated_at": "2025-12-18T13:15:00Z",
+  "source_manifest": "analysis/reports/utac_v2_readiness.json",
+  "logistic": {
+    "beta": 4.8,
+    "theta": 0.66,
+    "mean_readiness": 0.9,
+    "sigma": 0.7598760354908782
+  },
+  "datasets": [
+    {
+      "id": "utac-v1_3-ds-001",
+      "domain": "climate",
+      "reported_ratio": 1.0,
+      "observed_ratio": 1.0,
+      "missing_components": []
+    },
+    {
+      "id": "utac-v1_3-ds-002",
+      "domain": "climate",
+      "reported_ratio": 0.75,
+      "observed_ratio": 1.0,
+      "missing_components": []
+    },
+    {
+      "id": "utac-v1_3-ds-003",
+      "domain": "ocean",
+      "reported_ratio": 1.0,
+      "observed_ratio": 1.0,
+      "missing_components": []
+    },
+    {
+      "id": "utac-v1_3-ds-004",
+      "domain": "neuro_ai",
+      "reported_ratio": 1.0,
+      "observed_ratio": 1.0,
+      "missing_components": []
+    },
+    {
+      "id": "utac-v1_3-ds-005",
+      "domain": "economy",
+      "reported_ratio": 0.75,
+      "observed_ratio": 1.0,
+      "missing_components": []
+    }
+  ],
+  "summary": {
+    "datasets_total": 5,
+    "datasets_ready": 5,
+    "datasets_partial": 0,
+    "datasets_pending": 0,
+    "missing_components_total": 0,
+    "analysis_gaps": 0,
+    "documentation_gaps": 0,
+    "sigillin_gaps": 0,
+    "simulator_gaps": 0
+  },
+  "gaps": {
+    "analysis": [],
+    "documentation": [],
+    "sigillin": [],
+    "simulator": []
+  }
+}

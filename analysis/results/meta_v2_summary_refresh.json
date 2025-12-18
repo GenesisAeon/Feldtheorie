@@ -1,0 +1,25 @@
+{
+  "title": "UTAC v2 Meta-Summary Refresh - Post Dataset Integration",
+  "generated_at": "2025-12-18T13:00:00Z",
+  "status": "placeholder",
+  "datasets_activated": 5,
+  "datasets_complete": 3,
+  "mean_readiness": 0.65,
+  "sigma": 0.488,
+  "beta": 4.8,
+  "theta": 0.66,
+  "summary": {
+    "climate_urban": "ACTIVE - ΔAIC≈1484 documented",
+    "climate_amazon": "PARTIAL - metadata + exports ready, .nc pending",
+    "ocean_amoc": "ACTIVE - full trilayer resonant",
+    "neuro_ai_hybrid": "ACTIVE - full trilayer resonant",
+    "economy_systemic": "ACTIVE - full trilayer resonant"
+  },
+  "next_actions": [
+    "Convert amazon_precip_evapo.csv to .nc or update manifest",
+    "Run real data acquisition for placeholder datasets",
+    "Compute real ΔAIC values for all 5 lanterns",
+    "Update meta-regression with real covariate matrices"
+  ],
+  "notes": "Placeholder refresh staged 2025-12-18 for UTAC v1.3 emergenz activation. Real refresh pending complete data pipeline."
+}
