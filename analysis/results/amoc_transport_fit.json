@@ -1,0 +1,33 @@
+{
+  "dataset_id": "utac-v1_3-ds-003",
+  "title": "AMOC Transport - Logistic Fit",
+  "generated_at": "2025-12-18T12:30:00Z",
+  "status": "placeholder",
+  "control_parameter": "overturning_strength_sverdrup",
+  "logistic_parameters": {
+    "theta": 14.0,
+    "beta": 9.6,
+    "r_range": [10.0, 20.0],
+    "sigma_at_theta": 0.5
+  },
+  "fit_quality": {
+    "r_squared": 0.placeholder,
+    "rmse": 0.placeholder,
+    "aic": 0.placeholder
+  },
+  "null_models": {
+    "linear_trend": {
+      "aic": 0.placeholder,
+      "delta_aic": 0.placeholder
+    },
+    "power_law_fit": {
+      "aic": 0.placeholder,
+      "delta_aic": 0.placeholder
+    },
+    "state_space_smoother": {
+      "aic": 0.placeholder,
+      "delta_aic": 0.placeholder
+    }
+  },
+  "notes": "Placeholder export staged 2025-12-18 for UTAC v1.3 emergenz activation. Real fit pending RAPID data acquisition."
+}

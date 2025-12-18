@@ -1,31 +1,45 @@
 {
-  "timestamp": "20251113T081154Z",
-  "model_type": "WLS_with_FieldTypes",
-  "r_squared": 0.7318601771514821,
-  "adjusted_r_squared": 0.6648252214393526,
-  "aic": 162.52551819265383,
-  "bic": 175.1936697003027,
-  "rmse": 2.2506217199026084,
-  "canonical_beta": 4.2,
-  "canonical_band": [
-    3.6,
-    4.8
+  "title": "UTAC v2 Meta-Regression - All Five Lanterns",
+  "generated_at": "2025-12-18T12:30:00Z",
+  "status": "placeholder",
+  "datasets_included": [
+    "utac-v1_3-ds-001",
+    "utac-v1_3-ds-002",
+    "utac-v1_3-ds-003",
+    "utac-v1_3-ds-004",
+    "utac-v1_3-ds-005"
   ],
-  "beta_mean": 6.217434497070781,
-  "beta_std": 4.439205348781906,
-  "beta_band_fraction": 0.3888888888888889,
-  "delta_aic_guard_min": 12.79,
-  "bootstrap_r2_median": 0.7800070971319017,
-  "bootstrap_r2_interval": [
-    0.6720024497342577,
-    0.8678893336855567
-  ],
-  "random_forest_oob_r2": 0.3934623315368514,
-  "field_type_anova_eta_squared": 0.4680698044321698,
-  "field_type_anova_p_value": 0.0004650165127527753,
-  "top_features": [
-    "SNR",
-    "D_eff",
-    "C_eff"
-  ]
+  "regression_summary": {
+    "model": "weighted_least_squares",
+    "r_squared": 0.placeholder,
+    "adjusted_r_squared": 0.placeholder,
+    "n_observations": 5
+  },
+  "beta_estimates": {
+    "climate_urban": {
+      "beta": 14.5,
+      "ci_95": [0.placeholder, 0.placeholder]
+    },
+    "climate_amazon": {
+      "beta": 13.8,
+      "ci_95": [0.placeholder, 0.placeholder]
+    },
+    "ocean_amoc": {
+      "beta": 9.6,
+      "ci_95": [0.placeholder, 0.placeholder]
+    },
+    "neuro_ai_hybrid": {
+      "beta": 6.1,
+      "ci_95": [0.placeholder, 0.placeholder]
+    },
+    "economy_systemic": {
+      "beta": 7.4,
+      "ci_95": [0.placeholder, 0.placeholder]
+    }
+  },
+  "delta_aic": {
+    "vs_null_model": 0.placeholder,
+    "vs_linear_model": 0.placeholder
+  },
+  "notes": "Placeholder export staged 2025-12-18 for UTAC v1.3 emergenz activation. Real meta-regression pending all 5 datasets with real fits."
 }

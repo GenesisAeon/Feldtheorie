@@ -1,63 +1,25 @@
 {
-  "dataset_name": "Neuro–AI Hybrid Activation",
-  "domain": "neuro_ai",
-  "path": "data/neuro_ai/hybrid_activation.csv",
-  "status": "staging",
-  "description": "Synchronisierte EEG-Epochen und Transformer-Aktivierungslog für σ(β(R-Θ)) Vergleich.",
-  "data_format": "csv",
-  "control_parameter_R": {
-    "column": "stimulus_complexity_index",
-    "units": "a.u.",
-    "description": "Komplexitätsindex der Präsentationssequenz"
+  "id": "utac-v1_3-ds-004",
+  "title": "Neuro–AI Hybrid Activation",
+  "version": "0.1.0-placeholder",
+  "status": "draft",
+  "created_at": "2025-12-18T00:00:00Z",
+  "source": {
+    "name": "OpenNeuro + LLM Telemetry",
+    "citation": "Poldrack et al. + GenesisAeon logs",
+    "license": "CC-BY-4.0 + OpenRAIL-M",
+    "access_url": "https://openneuro.org/"
   },
-  "response_sigma": {
-    "column": "hybrid_activation_fraction",
-    "units": "fraction",
-    "description": "Gemeinsame Aktivierungsquote EEG ↔ LLM (0–1)"
+  "utac_parameters": {
+    "control_parameter_R": "stimulus_complexity_index",
+    "threshold_Theta_estimate": 0.48,
+    "steepness_beta_target": 6.1,
+    "impedance_zeta_notes": "ζ(R) koppelt hippocampales Replay mit Transformator-Aktivierungen"
   },
-  "threshold_estimates": {
-    "theta": 0.48,
-    "beta": 6.1,
-    "zeta_R": "ζ(R) koppelt hippocampales Replay mit Transformator-Spikes",
-    "delta_aic_guard": 8.0
+  "resonance_status": "primed",
+  "ethics": {
+    "human_subjects": true,
+    "irb_approval": "pending"
   },
-  "null_models_tested": [
-    "linear_regression",
-    "randomized_prompt_baseline",
-    "phase_scrambled_surrogate"
-  ],
-  "preprocessing_steps": [
-    "Align EEG Epochen und Prompt-Batches",
-    "Berechnung gemeinsamer Aktivierungsmanifold",
-    "Normalisierung auf [0,1]"
-  ],
-  "provenance": {
-    "sources": [
-      {
-        "name": "OpenNeuro",
-        "citation": "Poldrack et al., diverse EEG Datensätze",
-        "url": "https://openneuro.org/"
-      },
-      {
-        "name": "GenesisAeon LLM Telemetrie",
-        "citation": "Internal activation logs",
-        "url": "https://github.com/GenesisAeon"
-      }
-    ],
-    "license": "CC-BY + OpenRAIL"
-  },
-  "temporal": {
-    "created": "2025-12-19T00:00:00Z",
-    "modified": "2025-12-19T00:00:00Z",
-    "version": "0.1.0",
-    "change_count": 0
-  },
-  "simulation_hint": {
-    "control_min": 0.0,
-    "control_max": 1.0,
-    "n_points": 160,
-    "noise_scale": 0.02
-  },
-  "falsification_notes": "ΔAIC ≥ 8 vs linear, ≥ 12 vs randomisierte Prompts; Phasen-Scramble als Spiegel für ζ(R).",
-  "logistic_form": "sigma(beta*(R-Theta))"
+  "notes": "Placeholder staged 2025-12-18 for UTAC v1.3 emergenz activation"
 }

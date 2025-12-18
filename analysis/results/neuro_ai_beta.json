@@ -1,0 +1,33 @@
+{
+  "dataset_id": "utac-v1_3-ds-004",
+  "title": "Neuro-AI Hybrid Activation - Beta Estimate",
+  "generated_at": "2025-12-18T12:30:00Z",
+  "status": "placeholder",
+  "control_parameter": "stimulus_complexity_index",
+  "logistic_parameters": {
+    "theta": 0.48,
+    "beta": 6.1,
+    "r_range": [0.0, 1.0],
+    "sigma_at_theta": 0.5
+  },
+  "fit_quality": {
+    "r_squared": 0.placeholder,
+    "rmse": 0.placeholder,
+    "aic": 0.placeholder
+  },
+  "null_models": {
+    "linear_regression": {
+      "aic": 0.placeholder,
+      "delta_aic": 0.placeholder
+    },
+    "randomized_prompt_baseline": {
+      "aic": 0.placeholder,
+      "delta_aic": 0.placeholder
+    },
+    "phase_scrambled_surrogate": {
+      "aic": 0.placeholder,
+      "delta_aic": 0.placeholder
+    }
+  },
+  "notes": "Placeholder export staged 2025-12-18 for UTAC v1.3 emergenz activation. Real fit pending EEG + LLM telemetry."
+}
