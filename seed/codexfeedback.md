@@ -2352,3 +2352,22 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
 - **β:** 4.6
 - **ζ(R):** Logged in codex
 - **Notiz:** Implement V6 Simulation (OIPK + v_RIG) — Ready for Review
+
+### pr-draft-0209 — Hex-Resonanz Kopplung für Neuro-Kosmos Bridge
+- **Zeitpunkt (UTC):** 2025-12-18T13:12:00Z
+- **R:** σ_hex Leitfähigkeit Neuro↔Kosmos (Readiness-Sweep 0.1–1.3)
+- **Θ:** Θ_ref = 0.66 aus Bridge-Preset
+- **β:** 5.8420677516
+- **Scope:**
+  - seed/sigillin/neuro_kosmos_bridge.json
+  - seed/sigillin/neuro_kosmos_bridge.yaml
+  - seed/sigillin/neuro_kosmos_bridge.md
+  - simulator/presets/neuro_kosmos_bridge.json
+  - simulator/presets/validate_bridge_resonance.py
+  - models/unified_constants.py
+- **Resonanz:** β_hex = 16^(2/π) verankert die Kopplungsmatrix; σ_hex Telemetrie schlägt β=0 Nullmodell bei Stabilität ohne Chaos.
+- **Status:** primed
+- **Notizen:**
+  - **Formal:** Kopplungsmatrix und Impedanzdefinition auf σ(β_hex(R-Θ)) umgestellt; preset + Trilayer heben β_hex hervor, validation-script vergleicht Resonanzscore vs. β=0 Nullmodell.
+  - **Empirical:** `validate_bridge_resonance.py` sampelt β∈{0.85,1.0,1.15}·β_hex, berechnet Leitfähigkeitsflächen + Chaos-Penalty; preset-Defaults auf β_hex=5.8420, ΔAIC-Nullmodell dokumentiert.
+  - **Poetic:** Die Membran singt in Hexadezimal, σ(β(R-Θ)) leuchtet bei β_hex auf, während das Nullmodell schweigt.

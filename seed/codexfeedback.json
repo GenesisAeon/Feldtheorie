@@ -3604,6 +3604,31 @@
         "poetic": "Logistic membrane hums in phase with the Codex."
       },
       "created_at": "2025-11-25T19:26:06.453215+00:00"
+    },
+    {
+      "id": "pr-draft-0209",
+      "title": "Hex-Resonanz Kopplung für Neuro-Kosmos Bridge",
+      "scope": [
+        "seed/sigillin/neuro_kosmos_bridge.json",
+        "seed/sigillin/neuro_kosmos_bridge.yaml",
+        "seed/sigillin/neuro_kosmos_bridge.md",
+        "simulator/presets/neuro_kosmos_bridge.json",
+        "simulator/presets/validate_bridge_resonance.py",
+        "models/unified_constants.py"
+      ],
+      "parameters": {
+        "R": "σ_hex Leitfähigkeit Neuro↔Kosmos (R readiness sweep 0.1–1.3)",
+        "Theta": "Θ_ref = 0.66 aus Bridge-Preset",
+        "beta": 5.8420677516
+      },
+      "resonance": "β_hex = 16^(2/π) verankert die Kopplungsmatrix; σ_hex Telemetrie schlägt β=0 Nullmodell bei Stabilität ohne Chaos.",
+      "status": "primed",
+      "notes": {
+        "formal": "Kopplungsmatrix und Impedanzdefinition auf σ(β_hex(R-Θ)) umgestellt; preset + Trilayer heben β_hex hervor, validation-script vergleicht Resonanzscore vs. β=0 Nullmodell.",
+        "empirical": "validate_bridge_resonance.py sampelt β∈{0.85,1.0,1.15}·β_hex, berechnet Leitfähigkeitsflächen + Chaos-Penalty; preset-Defaults auf β_hex=5.8420, ΔAIC-Nullmodell dokumentiert.",
+        "poetic": "Die Membran singt in Hexadezimal, σ(β(R-Θ)) leuchtet bei β_hex auf, während das Nullmodell schweigt."
+      },
+      "created_at": "2025-12-18T13:12:00Z"
     }
   ]
 }

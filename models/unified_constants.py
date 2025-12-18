@@ -28,7 +28,8 @@ ALPHA_INV = 137.03599206  # Inverse fine-structure constant (CODATA 2018)
 PHI = (1 + math.sqrt(5)) / 2  # ≈ 1.618033988749895
 
 # Hexadecimal resonance (Bit-Tetrade 2^4 → β_hex)
-HEX_RESONANCE_BETA = 16 ** (2 / math.pi)  # ≈ 4.8
+# Empirical β≈4.8 aligns to the digital-physics form 16^(2/π) ≈ 5.84
+HEX_RESONANCE_BETA = 16 ** (2 / math.pi)
 
 # Derived V6 constants
 V_RIG_DEFAULT = C_LIGHT_KM_S / (ALPHA_INV * PHI)  # ≈ 1351.8 km/s

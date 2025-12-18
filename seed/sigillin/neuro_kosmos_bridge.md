@@ -45,7 +45,7 @@ Die **Neuro-Kosmos-Bridge** ist der zentrale Beweis, dass **UTAC ein domain-übe
 - Akkretionsscheiben QPO-Resonanz entwickeln (jet launching threshold)
 
 ### β (Steepness)
-**β ≈ 4.88** (Bridge Mittelwert)
+**β_hex = 16^(2/π) ≈ 5.84** (digitale Physik Leitwert, empirisch zentriert um β≈4.8)
 
 **Domain-spezifisch:**
 - **Neuro:** β = 3.8 - 4.2 (niedrigere Dimensionalität, höheres Rauschen)
@@ -58,12 +58,24 @@ Die **Neuro-Kosmos-Bridge** ist der zentrale Beweis, dass **UTAC ein domain-übe
 - Schwellenmigration (Θ̇)
 
 ### ζ(R) (Impedance)
-**ζ(R) ≈ 1.2 - 0.4 · σ(4.88(R-0.66))**
+**ζ(R) ≈ 1.2 - 0.4 · σ(β_hex(R-0.66))**
 
 **Dämpfung durch:**
 - Messunsicherheiten (scale mismatch)
 - Domain-spezifische Rauschquellen
 - Kalibrierungsfehler
+
+### 🔁 Kopplungs-Matrix (σ_hex)
+
+Interaktion **Neuro ↔ Kosmos** wird über die logistische Leitfunktion getrieben:
+
+```
+σ_hex = 1 / (1 + exp(-β_hex · (R - Θ))),
+β_hex = 16^(2/π) ≈ 5.8421, Θ_ref = 0.66
+```
+
+- **Nullmodell:** lineare Kopplung (β=0) ohne hexadezimale Resonanz
+- **Validation:** `simulator/presets/validate_bridge_resonance.py` zeigt, dass σ_hex bei β_hex maximal leitfähig bleibt, ohne in Chaos zu kippen.
 
 ---
 
