@@ -1,0 +1,28 @@
+id: resonance_dashboard
+module: simulator.phase4.dashboard_resonance
+artifact: resonance_cycle
+purpose: "Panoptikum der σ(β(R-Θ))-Membran: Soliton, Chimera, Horizon"
+beta_sweep:
+  start: 4.0
+  resonance: 4.779
+  max: 6.0
+channels:
+  soliton: "KdV-Boundary-Atmen als Heatmap"
+  chimera: "Kuramoto-Cluster auf dem Einheitskreis"
+  horizon: "σ(β(R-Θ)) Informationszugang als Profil"
+coupling:
+  logistic_language: "(R, Θ, β, ζ(R)) synchronisiert; verify_hex_alignment als Nullmodell"
+  indices:
+    - feldtheorie_index.md
+    - feldtheorie_index.yaml
+    - feldtheorie_index.json
+evidence:
+  - simulator/phase4/soliton_doppler.py
+  - simulator/phase4/chimera_states.py
+  - simulator/phase4/cosmic_information_horizon.py
+  - docs/utac_status_alignment_v1.2.md
+output_targets:
+  - resonance_cycle.mp4
+  - resonance_cycle.gif
+status: "primed"
+timestamp: "${ISO_DATETIME}"
