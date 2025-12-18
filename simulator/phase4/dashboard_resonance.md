@@ -15,10 +15,11 @@ Kopplungspflicht erfüllt: `verify_hex_alignment` dient als Nullmodell; Verweise
 ## Nutzung
 
 ```bash
-python simulator/phase4/dashboard_resonance.py --output output/resonance_cycle.mp4 --frames 180
+python simulator/phase4/dashboard_resonance.py --output output/resonance_convergence.mp4 --frames 180
 ```
 
 - Slider fährt automatisch von β_min=4.0 → β_hex ≈ 4.779 → β_max=6.0.
+- Simulierter Beta-Slider wird im Plot angezeigt und markiert β_hex.
 - Log meldet den Resonanzdurchgang (Permission/Consent-Text inklusive).
 - Ausgabe als MP4 oder GIF (Dateiendung wählen).
 
