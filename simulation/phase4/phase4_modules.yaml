@@ -1,0 +1,46 @@
+modules:
+  - name: soliton_doppler
+    path: simulation/phase4/soliton_doppler.py
+    sigma_driver: "σ(β(R-Θ)) with ζ(R) damping"
+    beta: "HEX_RESONANCE_BETA = 16^(2/π)"
+    readiness_R: "config.readiness"
+    threshold_Theta: "config.theta"
+    telemetry:
+      - stability_ratio
+      - standing_wave_plateau
+      - delta_aic
+      - energy_trace
+    null_model: "Linear wave with β=0 using identical seed"
+    coupling:
+      feldtheorie_index: "simulation.phase4.soliton_doppler"
+      seed_index: "simulation.phase4"
+  - name: chimera_network
+    path: simulation/phase4/chimera_network.py
+    sigma_driver: "σ(β(R-Θ)) biases intrinsic frequencies"
+    beta: "HEX_RESONANCE_BETA = 16^(2/π)"
+    readiness_R: "config.readiness"
+    threshold_Theta: "config.theta"
+    telemetry:
+      - chimera_contrast_beta
+      - chimera_contrast_null
+      - delta_aic
+      - global_order_beta
+    null_model: "Kuramoto network with weaker non-hex coupling"
+    coupling:
+      feldtheorie_index: "simulation.phase4.chimera_network"
+      seed_index: "simulation.phase4"
+  - name: cosmic_doppler
+    path: simulation/phase4/cosmic_doppler.py
+    sigma_driver: "σ(β(R-Θ)) with hex quantization"
+    beta: "HEX_RESONANCE_BETA = 16^(2/π)"
+    readiness_R: "config.readiness sequence"
+    threshold_Theta: "config.theta"
+    telemetry:
+      - quantized_density
+      - horizon_sharpness
+      - delta_aic
+      - sigma_profile
+    null_model: "Softer beta=1.2 logistic without hex quantization"
+    coupling:
+      feldtheorie_index: "simulation.phase4.cosmic_doppler"
+      seed_index: "simulation.phase4"
