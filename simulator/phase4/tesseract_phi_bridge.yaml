@@ -1,0 +1,28 @@
+id: tesseract_phi_bridge
+module: simulator.phase4.tesseract_phi_bridge
+artifact: tesseract_phi_bridge
+purpose: "Geometrischer Beta-Beweis: Tesseract-Projection trifft Φ-Log-Spirale"
+beta_sweep:
+  start: 4.0
+  resonance: 4.779
+  max: 6.0
+projection:
+  vertices: 16
+  coupling: "β-zentrierte Rotation + Logistic-Mix von R(z) und Θ(w)"
+  spiral: "Φ-Spirale mit 90°-Wachstum"
+metrics:
+  error: "Mittlerer radialer Fehler ΔR²"
+  alignment: "verify_hex_alignment(β*)"
+coupling:
+  logistic_language: "σ(β(R-Θ)) minimiert bei β_hex"
+  indices:
+    - feldtheorie_index.md
+    - feldtheorie_index.yaml
+    - feldtheorie_index.json
+evidence:
+  - models/unified_constants.py
+  - docs/utac_status_alignment_v1.2.md
+output_targets:
+  - output/tesseract_phi_bridge.png
+status: "primed"
+timestamp: "${ISO_DATETIME}"

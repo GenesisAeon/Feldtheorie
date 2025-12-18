@@ -16,7 +16,7 @@ Key Merkmale (Trilayer-geeignet):
 - Stimme: Narratives Logging beim Passieren der Hex-Resonanz – Consent & Joy
   inklusive.
 
-Ausgabe: Erstellt ein MP4- oder GIF-Rendering unter ``resonance_cycle.*``
+Ausgabe: Erstellt ein MP4- oder GIF-Rendering unter ``resonance_convergence.*``
 und schreibt Logmeldungen, sobald der Resonanzpunkt durchschritten wird.
 """
 
@@ -179,7 +179,7 @@ def create_dashboard_animation(
 
     # Matplotlib canvas
     plt.style.use("dark_background")
-    fig, axes = plt.subplots(3, 1, figsize=(9, 12), gridspec_kw={"height_ratios": [2.2, 1.6, 1.4]})
+    fig, axes = plt.subplots(3, 1, figsize=(10, 12.4), gridspec_kw={"height_ratios": [2.2, 1.6, 1.4]})
     fig.suptitle("Resonanz-Panoptikum • σ(β(R-Θ)) Sweep", fontsize=16, weight="bold")
 
     soliton_im = axes[0].imshow(
@@ -212,6 +212,16 @@ def create_dashboard_animation(
     axes[2].set_title("Kosmischer Informations-Horizont")
 
     beta_text = axes[0].text(0.02, 0.92, "β=--", color="white", transform=axes[0].transAxes, fontsize=12, bbox=dict(boxstyle="round", facecolor="black", alpha=0.4))
+
+    slider_ax = fig.add_axes([0.16, 0.04, 0.68, 0.02])
+    slider_ax.set_xlim(beta_min, beta_max)
+    slider_ax.set_ylim(0, 1)
+    slider_ax.axis("off")
+    slider_ax.set_title("Beta-Slider (simuliert)", fontsize=10, pad=4, color="#a8e6ff")
+    slider_ax.hlines(0.5, beta_min, beta_max, color="#3a3f4b", linewidth=6, alpha=0.9)
+    slider_marker = slider_ax.plot(beta_min, 0.5, marker="s", color="#66d9ef", markersize=10, markeredgecolor="white", markeredgewidth=0.6)[0]
+    slider_ax.axvline(resonance_beta, color="#ff8c00", linestyle="--", linewidth=2, alpha=0.9)
+    slider_label = slider_ax.text(resonance_beta, 0.85, "β_hex", color="#ffdd99", fontsize=9, ha="center")
     resonance_log_done = False
 
     def update(frame_index: int) -> Iterable:
@@ -254,6 +264,9 @@ def create_dashboard_animation(
             check = verify_hex_alignment(beta, tolerance=0.02)
             LOGGER.info("✨ Resonanzpunkt erreicht: β=%.3f | status=%s | Δ=%.3f", beta, check.get("status"), check.get("deviation"))
 
+        slider_marker.set_data([beta], [0.5])
+        slider_label.set_color("#b0ffb4" if abs(beta - resonance_beta) < 1e-3 else "#ffdd99")
+
         t += dt_time
 
         return soliton_im, chimera_scatter, horizon_line, density_line, horizon_marker, beta_text
@@ -285,7 +298,7 @@ def create_dashboard_animation(
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Create the Resonanz-Panoptikum dashboard animation.")
-    parser.add_argument("--output", type=Path, default=Path("resonance_cycle.mp4"), help="Target file (.mp4 or .gif)")
+    parser.add_argument("--output", type=Path, default=Path("resonance_convergence.mp4"), help="Target file (.mp4 or .gif)")
     parser.add_argument("--frames", type=int, default=150, help="Number of frames for the sweep")
     parser.add_argument("--fps", type=int, default=20, help="Frames per second for the writer")
     parser.add_argument("--beta-min", type=float, default=4.0, dest="beta_min", help="Starting β value")
