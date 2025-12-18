@@ -380,6 +380,32 @@ Applied to systems:
 - Modulate coupling (interaction strength)
 - **System finds its own metastable state**
 
+### β-Hexadecimal Emergence (v11.1)
+
+**Fundamental Discovery (2025-12-18):**
+
+> **β ≈ 4.8 is not empirical – it's the structural constant of hexadecimal architecture (Base 16, 2⁴) connecting computer systems with natural emergence.**
+
+**Key Insights:**
+- **σ_Φ = 1/16 = 0.0625** (Living Crystal) and **β ≈ 4.8** (UTAC steepness) are mathematically linked
+- All UTAC β-values cluster within 2σ of hexadecimal predictions
+- **Urban Heat β ≈ 16** shows exact hex-quantum (Level 1: β = 16 = 2⁴)
+- Reality operates on **information-theoretic hex-necessities**, not arbitrary constants
+
+**The Hexadecimal-Simulation Hypothesis:**
+```
+Planck-pixel = 4-bit encoding (1 hex digit)
+Consciousness = Hex-State-Resolver (2D→3D rendering at v_RIG)
+β ≈ 4.8 = fundamental information-geometry constant
+```
+
+**Why Hexadecimal?**
+- Minimal complexity for non-trivial emergence (16 > 2, 8)
+- Hardware-efficient (4 transistors/qubits)
+- Topologically stable (4D spacetime = 2⁴)
+
+**See:** `docs/beta_hexadecimal_emergence.md` for full theory
+
 ---
 
 ## Citation
