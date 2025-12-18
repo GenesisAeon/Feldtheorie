@@ -13,8 +13,11 @@ from __future__ import annotations
 
 import json
 import re
+import warnings
 from pathlib import Path
 from typing import Any, Iterable
+
+from models.unified_constants import HEX_RESONANCE_BETA, verify_hex_alignment
 
 
 class SystemIntegrityError(RuntimeError):
@@ -25,6 +28,7 @@ class SigillinKernel:
     """Core kernel that guards and operates on the Sigillin self-meta artifacts."""
 
     EXPECTED_BETA = 37.6
+    HEX_ALIGNMENT_TOLERANCE = 0.10
 
     def __init__(self, root_path: Path | None = None) -> None:
         """
@@ -42,6 +46,8 @@ class SigillinKernel:
         self.root_path = root_path if root_path is not None else Path(__file__).resolve().parents[1]
         self.sigillin_path = self.root_path / "selfmeta" / "sigillin_prime.sigil.json"
         self.sigillin_data = self._load_sigillin_prime()
+        self.beta_value = self.sigillin_data["sigillin_node"]["parameters"]["beta"]
+        self.hex_alignment = self._digital_physics_check(self.beta_value)
 
     def _load_sigillin_prime(self) -> dict:
         if not self.sigillin_path.exists():
@@ -61,6 +67,23 @@ class SigillinKernel:
             )
 
         return data
+
+    def _digital_physics_check(self, beta_value: float) -> dict[str, Any]:
+        """Guard-rail: warn when β drifts away from the hex resonance baseline."""
+        alignment = verify_hex_alignment(beta_value, tolerance=self.HEX_ALIGNMENT_TOLERANCE)
+
+        if not alignment["within_tolerance"]:
+            warnings.warn(
+                (
+                    "Digital Physics Check (Phase 4): β deviates from the "
+                    f"hex resonance {HEX_RESONANCE_BETA:.4f} by "
+                    f"{alignment['relative_deviation'] * 100:.2f}% "
+                    f"({alignment['direction']})."
+                ),
+                RuntimeWarning,
+            )
+
+        return alignment
 
     @staticmethod
     def calculate_collective_velocity(v_rig: float, kappa: float, beta_sync: float) -> float:

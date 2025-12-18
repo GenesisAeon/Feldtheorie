@@ -27,6 +27,9 @@ ALPHA_INV = 137.03599206  # Inverse fine-structure constant (CODATA 2018)
 # Golden ratio
 PHI = (1 + math.sqrt(5)) / 2  # ≈ 1.618033988749895
 
+# Hexadecimal resonance (Bit-Tetrade 2^4 → β_hex)
+HEX_RESONANCE_BETA = 16 ** (2 / math.pi)  # ≈ 4.8
+
 # Derived V6 constants
 V_RIG_DEFAULT = C_LIGHT_KM_S / (ALPHA_INV * PHI)  # ≈ 1351.8 km/s
 
@@ -194,6 +197,45 @@ def get_vrig_analysis() -> dict[str, float]:
         "impedance": impedance,
         "beta": beta_kleiber,
         "regime_transition": 1.0 / beta_kleiber,  # 4/3 ≈ 1.333
+    }
+
+
+def verify_hex_alignment(empirical_beta: float, tolerance: float = 0.1) -> dict[str, float | bool | str]:
+    """Assess how closely an empirical β aligns with the hexadecimal resonance.
+
+    The hex resonance β_hex = 16^(2/π) anchors the σ(β(R-Θ)) steepness to the
+    Bit-Tetrade (2^4) foundation. This helper quantifies deviations between
+    measured gradients (Amazonas, AMOC, etc.) and the digital-physics null model.
+
+    Parameters
+    ----------
+    empirical_beta : float
+        Observed system steepness β.
+    tolerance : float, optional
+        Relative tolerance (fractional) for considering the value aligned to
+        β_hex. Default is 0.10 (±10% envelope).
+
+    Returns
+    -------
+    dict
+        Alignment metrics including:
+        - 'empirical_beta': Provided measurement
+        - 'hex_resonance_beta': Theoretical β_hex
+        - 'absolute_deviation': |empirical - β_hex|
+        - 'relative_deviation': |empirical - β_hex| / β_hex
+        - 'direction': 'above' or 'below' the resonance
+        - 'within_tolerance': True if relative deviation ≤ tolerance
+    """
+    deviation = empirical_beta - HEX_RESONANCE_BETA
+    relative_deviation = abs(deviation) / HEX_RESONANCE_BETA
+
+    return {
+        "empirical_beta": empirical_beta,
+        "hex_resonance_beta": HEX_RESONANCE_BETA,
+        "absolute_deviation": abs(deviation),
+        "relative_deviation": relative_deviation,
+        "direction": "above" if deviation > 0 else "below",
+        "within_tolerance": relative_deviation <= tolerance,
     }
 
 
