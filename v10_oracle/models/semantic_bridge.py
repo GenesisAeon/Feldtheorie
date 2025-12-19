@@ -97,5 +97,63 @@ class ResonanceTranslator:
 
         return Translation(state=state, confidence=confidence, rationale=rationale, markers=markers)
 
+    def get_contextual_resonance(
+        self, word: str, context_vector: Dict[str, float]
+    ) -> Dict[str, object]:
+        """Assess resonance of a word given environmental context.
+
+        The contextual bridge captures semantic shifts under stress. In particular,
+        damping ("dampen") that is soothing at low pressure becomes brittle under
+        compression, so the oracle nudges toward structural stabilization instead.
+
+        Args:
+            word: Candidate action keyword.
+            context_vector: Environmental markers (e.g., pressure, temperature).
+
+        Returns:
+            Dict with the normalized word, contextual resonance label, suggested
+            action, and a brief rationale.
+        """
+
+        pressure = float(context_vector.get("pressure", 1.0))
+        temperature = float(context_vector.get("temperature", 1.0))
+
+        normalized_word = word.lower()
+        resonance_label = "neutral"
+        suggested = normalized_word
+        rationale_parts = [
+            f"pressure={pressure:.2f}atm",
+            f"temperature={temperature:.2f}",
+        ]
+
+        if normalized_word == "dampen":
+            if pressure > 3.0:
+                resonance_label = "dissonant"
+                suggested = "stabilize"
+                rationale_parts.append(
+                    "High pressure stiffens the lattice; damping would over-tighten → stabilize structure instead."
+                )
+            else:
+                resonance_label = "resonant"
+                suggested = "dampen"
+                rationale_parts.append(
+                    "Pressure within gentle band; damping calms oscillations without brittleness."
+                )
+        elif normalized_word == "stabilize":
+            resonance_label = "resonant"
+            rationale_parts.append("Stabilization preserves structure across pressures.")
+        else:
+            resonance_label = "unknown"
+            rationale_parts.append("No contextual override; default resonance applied.")
+
+        rationale = " | ".join(rationale_parts)
+        return {
+            "input_word": normalized_word,
+            "suggested_word": suggested,
+            "resonance": resonance_label,
+            "rationale": rationale,
+            "context": {"pressure": pressure, "temperature": temperature},
+        }
+
 
 __all__ = ["ResonanceTranslator", "Translation"]
