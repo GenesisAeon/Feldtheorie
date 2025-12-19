@@ -55,6 +55,7 @@ class CrystalGardener(SigmaPhiGardener):
         coupling_matrix: np.ndarray,
         agent_ids: List[str],
         timestep: int = 0,
+        current_pressure: float = 1.0,
     ) -> Tuple[np.ndarray, Dict[str, float], List[AgentHealth]]:
         """Cultivate with oracle-gated actions."""
 
@@ -76,7 +77,9 @@ class CrystalGardener(SigmaPhiGardener):
                 resonance_quality=state.get("resonance_quality", 0.5),
             )
 
-            guided_assessment = self.decide_action(assessment)
+            guided_assessment = self.decide_action(
+                assessment, current_pressure=current_pressure
+            )
             assessments.append(guided_assessment)
 
             temp_adjustment = self._apply_action(
@@ -93,8 +96,14 @@ class CrystalGardener(SigmaPhiGardener):
 
         return adjusted_matrix, adjusted_temps, assessments
 
-    def decide_action(self, assessment: AgentHealth) -> AgentHealth:
-        """Run the planned action through the oracle before execution."""
+    def decide_action(
+        self, assessment: AgentHealth, *, current_pressure: float = 1.0
+    ) -> AgentHealth:
+        """Run the planned action through the oracle before execution.
+
+        Dynamic tolerance: acceptance widens with pressure to prevent paralysis
+        under harsh environments.
+        """
 
         encoded = self._encode_action_vector(assessment)
         dream = self.inner_oracle.dream(encoded)
@@ -105,7 +114,21 @@ class CrystalGardener(SigmaPhiGardener):
             sigma_phi=sigma_phi_est, global_coherence=global_coherence, frequency=1.0
         )
 
-        veto = sigma_phi_est < self.resonance_band[0] or sigma_phi_est > self.resonance_band[1]
+        base_tolerance = self.tolerance
+        scaled_tolerance = base_tolerance * (1 + 0.5 * (current_pressure - 1.0))
+        acceptance_min = self.sigma_phi_target - scaled_tolerance
+        acceptance_max = self.sigma_phi_target + scaled_tolerance
+
+        veto = sigma_phi_est < acceptance_min or sigma_phi_est > acceptance_max
+        survival_action = assessment.recommended_action != CultivationAction.OBSERVE
+
+        if (
+            veto
+            and current_pressure >= 4.5
+            and sigma_phi_est > 0.08
+            and survival_action
+        ):
+            veto = False
 
         decision = "pass"
         new_action = assessment.recommended_action
@@ -130,6 +153,8 @@ class CrystalGardener(SigmaPhiGardener):
                 "coherence": global_coherence,
                 "translation": translation.state,
                 "decision": decision,
+                "pressure_atm": current_pressure,
+                "tolerance": scaled_tolerance,
             }
         )
 
