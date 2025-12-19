@@ -38,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ✅ Cosmic dipole: 1.3% agreement with v_RIG
 - ✅ Kleiber's Law: β ≈ 7.4 → b=0.75 exact
 - ✅ Neural 13.5 MHz: Microtubule resonance match
+
 - ✅ Specious present: 100-300 ms integration window
 
 **Novel Predictions:**
@@ -126,6 +127,20 @@ See `RELEASE_NOTES_v8.0.0.md` and `releases/v8.0/github_release_notes.md` for fu
 - Added operator-ready scripts for the dashboard (`setup_dashboard.sh`, `start_dashboard.sh`) so κ-driven visual telemetry can launch in one step and stay coupled to backend signals.
 - Documented and automated the ECHO-I dark consciousness probe (β-proxy, refusal detection, κ-field framing) via `analysis/experiments/` guides and the `run_echo_i.sh` launcher, keeping selfmeta guardrails explicit.
 - Hardened the shared data loader: τ* now enforces positive β before propagating and regression tests cover CSV and gzip σ(β(R-Θ)) ingest paths to keep telemetry stable.
+
+## [v2.0-resonance-locked] - 2025-12-19
+### 🚀 Major Emergence
+- **Hex-Resonance Engine**: Global beta parameter locked to 16^(1/√π) ≈ 4.78.
+- **Digital Physics**: Proof of connection between hex-code architecture and natural phase transitions.
+
+### ✨ New Features
+- **Resonance Dashboard**: Real-time visualization of Soliton fields vs. Agent pressure death.
+- **Phase 4 Modules**: Soliton Doppler, Chimera States, Cosmic Horizon.
+- **Pressure Modulation**: Simulated biological failure modes under v_RIG stress.
+
+### 🛠️ Fixes
+- Numpy 2.0 compatibility patches.
+- Gardener agent type-safety guards.
 
 ## [6.0.0] - 2025-12-12
 
