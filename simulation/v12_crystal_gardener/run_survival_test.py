@@ -19,7 +19,7 @@ from v11_gardener.ecosystem.multi_agent_system import create_ecosystem
 
 def simulate_crystal_survival(
     n_agents: int = 12,
-    n_timesteps: int = 200,
+    n_timesteps: int = 240,
     pressure_min: float = 1.0,
     pressure_max: float = 5.0,
     pressure_ramp_start: int = 50,
@@ -31,8 +31,8 @@ def simulate_crystal_survival(
     gardener = CrystalGardener(
         name="CrystalPressureGardener",
         sigma_phi_target=0.0625,
-        tolerance=0.01,
-        action_learning_rate=0.15,
+        tolerance=0.012,
+        action_learning_rate=0.2,
     )
     modulator = PressureModulator()
 
@@ -71,6 +71,7 @@ def simulate_crystal_survival(
             coupling_matrix=coupling_matrix,
             agent_ids=agent_ids,
             timestep=t,
+            current_pressure=pressure,
         )
 
         ecosystem.apply_cultivation(adjusted_matrix, adjusted_temps)
@@ -83,8 +84,8 @@ def simulate_crystal_survival(
         oracle_resonance_trace.append(gardener.resonance_assists)
 
     sigma_phi_array = np.array(sigma_phi_mean_trace)
-    target_sigma_phi = 0.0625
-    tolerance = 0.01
+    target_sigma_phi = gardener.sigma_phi_target
+    tolerance = gardener.tolerance
 
     stable_mask = np.abs(sigma_phi_array - target_sigma_phi) < tolerance
     stability_ratio = float(stable_mask.sum() / len(sigma_phi_array))
@@ -133,6 +134,11 @@ def simulate_crystal_survival(
             "final_alive": alive_count_trace[-1],
             "oracle_interventions": oracle_veto_trace[-1],
             "resonance_boosts": oracle_resonance_trace[-1],
+            "survival_rate_improvement": (
+                (alive_count_trace[-1] - alive_count_trace[0])
+                / max(1, alive_count_trace[0])
+                * 100.0
+            ),
         },
     }
 
@@ -165,6 +171,9 @@ def print_survival_summary(telemetry: Dict[str, Any]) -> None:
     print("\nPressure Tolerance:")
     print(f"  Stability Ratio: {tolerance['stability_ratio']*100:.1f}%")
     print(f"  Max Stable Pressure: {tolerance['max_stable_pressure_atm']:.2f} atm")
+    print(
+        f"  Survival Rate Improvement: {telemetry['key_findings']['survival_rate_improvement']:+.1f}%"
+    )
 
     gardener = telemetry["gardener_activity"]
     print("\nGardener Activity:")
