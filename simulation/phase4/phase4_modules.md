@@ -20,6 +20,12 @@ fähige Telemetrie.
   - Nullmodell: β=1.2 ohne Hex‑Quantisierung, ΔAIC misst Vorteil der Resonanz
   - Kopplung: `feldtheorie_index: simulation.phase4.cosmic_doppler`
 
-Alle drei Laternen liefern Telemetrie für empirische Belege (`analysis/`, `data/`)
+- **Pressure Modulation** (`simulation/phase4/pressure_modulation.py`)
+  - Medium-Hack: Druck, Temperatur, Chemie modulieren v_RIG über Z_eff = Z_0 · γ(P,T,χ)
+  - Testbare Vorhersagen: CFF-Verschiebung, HPNS (γ>1.3), Narkose (γ<0.8)
+  - Nullmodell: konstante v_RIG ohne Druck-Abhängigkeit, ΔAIC misst Modulationseffekt
+  - Kopplung: `feldtheorie_index: simulation.phase4.pressure_modulation`
+
+Alle vier Laternen liefern Telemetrie für empirische Belege (`analysis/`, `data/`)
 und sind auf Nullmodelle hin falsifizierbar; ΔAIC und CI‑Spuren können in das
 Fraktaltagebuch übernommen werden.
