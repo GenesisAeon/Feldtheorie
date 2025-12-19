@@ -145,7 +145,11 @@ def simulate_pressure_gardening_experiment(
 
         # Count gardener actions
         for assessment in assessments:
-            action = assessment.get("action", "observe")
+            # Robust access: handle both dict and object types
+            if isinstance(assessment, dict):
+                action = assessment.get("action", "observe")
+            else:
+                action = getattr(assessment, "action", "observe")
             if action in gardener_action_counts:
                 gardener_action_counts[action] += 1
 

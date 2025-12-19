@@ -28,6 +28,7 @@ Date: 2025-12-18
 
 from __future__ import annotations
 
+from collections import defaultdict
 import json
 import sys
 from pathlib import Path
@@ -263,7 +264,7 @@ def analyze_beta_quantization(analysis_dir: Path | None = None) -> Dict[str, Any
     print("  β-Value Classification to Hexadecimal Levels")
     print("-" * 70)
 
-    level_counts = {0: [], 1: [], 2: [], 3: []}
+    level_counts = defaultdict(list)
     levels_info = beta_quantization_levels()
 
     print(f"\n  {'Source':<40} | β_emp  | Level | β_hex  | Δ")

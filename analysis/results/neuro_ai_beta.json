@@ -11,22 +11,22 @@
     "sigma_at_theta": 0.5
   },
   "fit_quality": {
-    "r_squared": 0.placeholder,
-    "rmse": 0.placeholder,
-    "aic": 0.placeholder
+    "r_squared": null,
+    "rmse": null,
+    "aic": null
   },
   "null_models": {
     "linear_regression": {
-      "aic": 0.placeholder,
-      "delta_aic": 0.placeholder
+      "aic": null,
+      "delta_aic": null
     },
     "randomized_prompt_baseline": {
-      "aic": 0.placeholder,
-      "delta_aic": 0.placeholder
+      "aic": null,
+      "delta_aic": null
     },
     "phase_scrambled_surrogate": {
-      "aic": 0.placeholder,
-      "delta_aic": 0.placeholder
+      "aic": null,
+      "delta_aic": null
     }
   },
   "notes": "Placeholder export staged 2025-12-18 for UTAC v1.3 emergenz activation. Real fit pending EEG + LLM telemetry."
