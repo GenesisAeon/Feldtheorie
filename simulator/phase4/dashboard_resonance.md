@@ -1,41 +1,51 @@
-# Resonanz-Panoptikum – σ(β(R-Θ)) Dashboard
+# Resonanz-Kino – σ(β(R-Θ)) Dashboard
 
-**Scope:** `simulator/phase4/dashboard_resonance.*` | **Tri-Layer:** YAML + JSON + Markdown | **Resonanz:** β≈4.779
+**Scope:** `simulator/phase4/dashboard_resonance.*` | **Tri-Layer:** YAML + JSON + Markdown | **Signal:** β≈4.8 (Level 0)
 
-Wir legen die drei Felder übereinander und fahren den β-Slider von 4.0 über die
-Hex-Resonanz bis 6.0. Das Dashboard zeigt:
+Wir koppeln drei Ströme in Echtzeit, um Johann das geforderte Mission-Control
+zu liefern:
 
-1. **Soliton-Doppler (R-Kanal):** KdV-Heatmap mit Boundary-Atmen (ζ(R) wird über die History gedämpft).
-2. **Chimera-Staat (Θ-Kanal):** Phasenpunkte auf dem Einheitskreis, Clusterbildung sichtbar.
-3. **Cosmic Horizon (σ-Kanal):** Informationszugang P(R)=σ(β(R-Θ)) als Kurve, inkl. r_s-Marker.
+1. **Soliton-Feld (R):** KdV-Heatmap, Soliton läuft von links nach rechts.
+   Overlay zeigt den aktuellen β-Wert, moduliert durch den Druck-Stream.
+2. **Druck × Sterblichkeit (Θ):** Alive-Trace des `pressure_gardener` mit
+   zweiter Y-Achse für die Druckrampe (1→5 atm) und Marker, wann der Gärtner
+   wegen verzögerter Reaktion versagt.
+3. **Hex-Quantisierung (σ):** Balkendiagramm der β-Level 0–4. Level 0
+   (β≈4.8) ist als rotes „Signal" hervorgehoben – der klumpende Grundton.
 
-Kopplungspflicht erfüllt: `verify_hex_alignment` dient als Nullmodell; Verweise auf
-`feldtheorie_index.*` und `docs/utac_status_alignment_v1.2.md` sind hinterlegt.
+**Kopplung:** `FuncAnimation` treibt alle drei Subplots synchron; β verbindet
+den Druck (Mitte) mit dem Soliton-Atmen (Oben) und stabilisiert die
+Quantisierung (Unten). `verify_hex_alignment` bleibt das Nullmodell über die
+Hex-Level aus `beta_hexadecimal`.
 
 ## Nutzung
 
 ```bash
-python simulator/phase4/dashboard_resonance.py --output output/resonance_convergence.mp4 --frames 180
+python simulator/phase4/dashboard_resonance.py --output output/resonance_kino.mp4 --frames 160
 ```
 
-- Slider fährt automatisch von β_min=4.0 → β_hex ≈ 4.779 → β_max=6.0.
-- Simulierter Beta-Slider wird im Plot angezeigt und markiert β_hex.
-- Log meldet den Resonanzdurchgang (Permission/Consent-Text inklusive).
-- Ausgabe als MP4 oder GIF (Dateiendung wählen).
+- Top: Heatmap aktualisiert mit KdV-RK4-Steps aus `soliton_doppler`.
+- Mitte: Alive- und Druck-Traces aus `pressure_gardener_integration` (Fallback
+  synthetisch, falls Abhängigkeiten fehlen) plus Versagensmarker.
+- Unten: β-Level-Histogramm aus `beta_quantization_analysis`/`beta_hexadecimal`.
+- Writer wählt automatisch FFmpeg (oder GIF via Pillow).
 
 ## Parameter-Notizen
 
-- **R (Readiness):** Soliton-Energie im Heatmap-Verlauf.
-- **Θ (Threshold):** 0.66 (Neuro-Kosmos Brücke) für Horizon-Sigmoid.
-- **β (Steepness):** gemeinsamer Slider, ΔAIC-Nullmodell via Alignment-Check.
-- **ζ(R) (Dämpfung):** History-Länge der Heatmap reguliert Glättung.
+- **R (Readiness):** Soliton-Energie, gedämpft über History-Länge.
+- **Θ (Threshold):** Druckabhängiger β-Shift (tanh-Kopplung) + Versagenszeitpunkt.
+- **β (Steepness):** HEX_RESONANCE_BETA als Basis, moduliert über Druckramp.
+- **ζ(R) (Dämpfung):** History = 80 sorgt für viskose Glättung.
 
 ## Brücken & Evidenz
 
 - Struktur: `simulator/phase4/dashboard_resonance.yaml`
 - Agentennerv: `simulator/phase4/dashboard_resonance.json`
 - Stimme: dieses Dokument
-- Empirie: `simulator/phase4/soliton_doppler.py`, `simulator/phase4/chimera_states.py`, `simulator/phase4/cosmic_information_horizon.py`
+- Empirie: `simulator/phase4/soliton_doppler.py`,
+  `v11_gardener/experiments/pressure_gardener_integration.py`,
+  `v11_gardener/experiments/beta_quantization_analysis.py`
 - Observatorium: `docs/utac_status_alignment_v1.2.md`
 
-✨ Lass die Laternen tanzen – Boundary-Breathing als Beweis der Reife (R=0.90).
+✨ σ(β(R-Θ)) als Kino: Druck lässt die Laternen dimmen, Solitonen atmen weiter
+und Level 0 bleibt der rote Grundton.
