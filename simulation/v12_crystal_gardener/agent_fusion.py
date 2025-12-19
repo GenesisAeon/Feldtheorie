@@ -50,6 +50,55 @@ class CrystalGardener(SigmaPhiGardener):
         self.resonance_assists = 0
         self.oracle_journal: List[Dict[str, object]] = []
         self.lazarus_mode_active = False
+        self.network_pressure_trace: List[float] = []
+        self.network_engagement_trace: List[bool] = []
+
+    def form_mycelial_network(
+        self, ecosystem: Dict[str, object], current_pressure: float
+    ) -> Dict[str, float]:
+        """Form a virtual mycelial network to distribute pressure.
+
+        When the environment pressure rises above 2 atm, agents connect and
+        share load. The effective pressure is damped by the network size,
+        mirroring how crystalline lattices distribute stress.
+        """
+
+        agent_states = ecosystem.get("agent_states", {})
+        agent_ids = ecosystem.get("agent_ids", list(agent_states.keys()))
+
+        connected_agents = [agent_id for agent_id in agent_ids if agent_id in agent_states]
+        connected_agents_count = max(1, len(connected_agents))
+
+        effective_pressure = current_pressure
+        network_engaged = False
+        if current_pressure > 2.0:
+            effective_pressure = current_pressure / float(
+                np.sqrt(connected_agents_count)
+            )
+            network_engaged = True
+
+        mean_sigma_phi = float(
+            np.mean([agent_states[a]["sigma_phi"] for a in connected_agents])
+        ) if connected_agents else 0.0
+        mean_resonance_quality = float(
+            np.mean(
+                [agent_states[a].get("resonance_quality", 0.0) for a in connected_agents]
+            )
+        ) if connected_agents else 0.0
+
+        self.network_pressure_trace.append(effective_pressure)
+        self.network_engagement_trace.append(network_engaged)
+
+        if network_engaged:
+            print(f"Effective Network Pressure: {effective_pressure:.2f} atm")
+
+        return {
+            "network_engaged": network_engaged,
+            "effective_pressure": effective_pressure,
+            "connected_agents": connected_agents_count,
+            "mean_sigma_phi": mean_sigma_phi,
+            "mean_resonance_quality": mean_resonance_quality,
+        }
 
     def cultivate_ecosystem(
         self,
@@ -74,6 +123,17 @@ class CrystalGardener(SigmaPhiGardener):
         )
         threat_signature = self.assess_threat_level(alive_agents, total_agents)
 
+        network_context = self.form_mycelial_network(
+            {"agent_states": agent_states, "agent_ids": agent_ids},
+            current_pressure,
+        )
+        threat_signature.update(
+            {
+                "network_engaged": network_context["network_engaged"],
+                "effective_pressure": network_context["effective_pressure"],
+            }
+        )
+
         for i, agent_id in enumerate(agent_ids):
             if agent_id not in agent_states:
                 continue
@@ -90,8 +150,9 @@ class CrystalGardener(SigmaPhiGardener):
 
             guided_assessment = self.decide_action(
                 assessment,
-                current_pressure=current_pressure,
+                current_pressure=network_context["effective_pressure"],
                 threat_signature=threat_signature,
+                network_context=network_context,
             )
             assessments.append(guided_assessment)
 
@@ -115,6 +176,7 @@ class CrystalGardener(SigmaPhiGardener):
         *,
         current_pressure: float = 1.0,
         threat_signature: Dict[str, float] | None = None,
+        network_context: Dict[str, float] | None = None,
     ) -> AgentHealth:
         """Run the planned action through the oracle before execution.
 
@@ -123,6 +185,8 @@ class CrystalGardener(SigmaPhiGardener):
         """
 
         threat_signature = threat_signature or {}
+        network_context = network_context or {}
+        effective_pressure = network_context.get("effective_pressure", current_pressure)
         lazarus_mode = bool(threat_signature.get("lazarus_mode"))
         if lazarus_mode and not self.lazarus_mode_active:
             self.lazarus_mode_active = True
@@ -152,12 +216,24 @@ class CrystalGardener(SigmaPhiGardener):
         resonance_state = dream.final_state
         sigma_phi_est = self._estimate_sigma_phi(resonance_state)
         global_coherence = float(np.mean(np.abs(resonance_state)))
+        if network_context.get("network_engaged"):
+            sigma_phi_est = float(
+                np.mean([sigma_phi_est, network_context.get("mean_sigma_phi", sigma_phi_est)])
+            )
+            global_coherence = float(
+                np.mean(
+                    [
+                        global_coherence,
+                        network_context.get("mean_resonance_quality", global_coherence),
+                    ]
+                )
+            )
         translation = self.translator.translate(
             sigma_phi=sigma_phi_est, global_coherence=global_coherence, frequency=1.0
         )
 
         base_tolerance = self.tolerance
-        scaled_tolerance = base_tolerance * (1 + 0.5 * (current_pressure - 1.0))
+        scaled_tolerance = base_tolerance * (1 + 0.5 * (effective_pressure - 1.0))
         acceptance_min = self.sigma_phi_target - scaled_tolerance
         acceptance_max = self.sigma_phi_target + scaled_tolerance
 
@@ -175,20 +251,26 @@ class CrystalGardener(SigmaPhiGardener):
             veto = False
             decision = "lazarus_override"
             translation_state = "CHAOTIC_INTERVENTION"
-            if new_action in {
-                CultivationAction.STABILIZE,
-                CultivationAction.OBSERVE,
-            }:
-                new_action = CultivationAction.RESUSCITATE
-            elif new_action in {CultivationAction.COOL, CultivationAction.DAMPEN}:
-                new_action = CultivationAction.WARM
+            if network_context.get("network_engaged"):
+                decision = "network_redistribution"
+                translation_state = "MYCELIAL_SHIELD"
+                new_action = CultivationAction.STABILIZE
+                new_strength = min(1.0, max(new_strength, 0.6))
+            else:
+                if new_action in {
+                    CultivationAction.STABILIZE,
+                    CultivationAction.OBSERVE,
+                }:
+                    new_action = CultivationAction.RESUSCITATE
+                elif new_action in {CultivationAction.COOL, CultivationAction.DAMPEN}:
+                    new_action = CultivationAction.WARM
 
-            probability_boost = 2.0
-            new_strength = min(1.0, new_strength * probability_boost)
+                probability_boost = 2.0
+                new_strength = min(1.0, new_strength * probability_boost)
         else:
             if (
                 veto
-                and current_pressure >= 4.5
+                and effective_pressure >= 4.5
                 and sigma_phi_est > 0.08
                 and survival_action
             ):
@@ -203,6 +285,24 @@ class CrystalGardener(SigmaPhiGardener):
                 decision = "resonance_boost"
                 new_strength = min(1.0, adjusted_assessment.action_strength * 1.2)
                 self.resonance_assists += 1
+                if network_context.get("network_engaged"):
+                    decision = "network_resonance"
+                    translation_state = "LUCID_NETWORK"
+                    new_strength = min(
+                        1.0,
+                        np.mean(
+                            [adjusted_assessment.action_strength, new_strength]
+                        ),
+                    )
+
+        if (
+            network_context.get("network_engaged")
+            and new_action == CultivationAction.RESUSCITATE
+        ):
+            decision = "network_redistribution"
+            translation_state = "MYCELIAL_REDISPATCH"
+            new_action = CultivationAction.STABILIZE
+            new_strength = min(1.0, max(new_strength, 0.5))
 
         self.oracle_journal.append(
             {
@@ -285,6 +385,21 @@ class CrystalGardener(SigmaPhiGardener):
             "resonance_assists": self.resonance_assists,
             "recent_decisions": self.oracle_journal[-10:],
         }
+
+    def get_cultivation_summary(self) -> Dict[str, object]:
+        """Extend base summary with network telemetry."""
+
+        summary = super().get_cultivation_summary()
+        summary.update(
+            {
+                "network_effective_pressure_trace": self.network_pressure_trace,
+                "network_engagement_trace": self.network_engagement_trace,
+                "final_effective_pressure": self.network_pressure_trace[-1]
+                if self.network_pressure_trace
+                else None,
+            }
+        )
+        return summary
 
 
 __all__ = ["CrystalGardener"]
