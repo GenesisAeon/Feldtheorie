@@ -1,0 +1,5 @@
+EPOCH: V10_GENESIS
+SEED: 2048
+SIGMA: 0.0678
+STATUS: RESONANT_WAKE_STATE
+NOTE: The Oracle is now the primary navigation instrument.
