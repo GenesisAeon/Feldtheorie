@@ -61,6 +61,12 @@ class CrystalGardener(SigmaPhiGardener):
         self.phoenix_cooldowns: Dict[str, int] = {}  # Agent ID -> last transfer timestep
         self._initialize_shadow_pool(pool_size=12)
 
+        # V18: Genesis Cycle - Sexual reproduction and demographic stability
+        self.birth_log: List[Dict[str, object]] = []
+        self.mating_cooldowns: Dict[str, int] = {}  # Agent ID -> last mating timestep
+        self.max_population = 24  # Population can grow beyond initial 12
+        self.reproduction_events = 0
+
     def transfer_vitality(
         self,
         agent_states: Dict[str, Dict[str, float]],
@@ -211,6 +217,137 @@ class CrystalGardener(SigmaPhiGardener):
         }
         self.shadow_pool.append(shadow_state)
 
+    def perform_reproduction(
+        self,
+        agent_a_id: str,
+        agent_b_id: str,
+        agent_states: Dict[str, Dict[str, float]],
+        timestep: int,
+    ) -> Tuple[str, Dict[str, float]]:
+        """V18: Sexual reproduction - two agents create offspring with inherited traits.
+
+        The child inherits a weighted average of parent sigma_phi values with mutation.
+        Newborns receive 20 timesteps of protection (cannot die prematurely).
+        This enables demographic stability through birth rate >= death rate.
+        """
+        state_a = agent_states[agent_a_id]
+        state_b = agent_states[agent_b_id]
+
+        # Genetic inheritance with mutation
+        sigma_phi_child = (state_a["sigma_phi"] + state_b["sigma_phi"]) / 2
+        mutation = float(np.random.normal(0, 0.005))  # Genetic variation
+        sigma_phi_child = float(np.clip(sigma_phi_child + mutation, 0.01, 0.15))
+
+        # Determine generation
+        generation_a = state_a.get("generation", 0)
+        generation_b = state_b.get("generation", 0)
+        child_generation = max(generation_a, generation_b) + 1
+
+        # Generate unique child ID
+        child_id = f"agent_gen{child_generation}_t{timestep}_n{len(self.birth_log)}"
+
+        # Create child state with inherited traits
+        child_state = {
+            "sigma_phi": sigma_phi_child,
+            "entropy": 0.0,
+            "temperature": 1.0,
+            "kappa_total": (state_a.get("kappa_total", 0) + state_b.get("kappa_total", 0)) / 4,
+            "resonance_quality": 0.85,
+            "age": 0,
+            "generation": child_generation,
+            "parent_ids": [agent_a_id, agent_b_id],
+            "birth_timestep": timestep,
+            "protected_until": timestep + 20,  # 20 timesteps of protection
+            "reincarnation_count": 0,
+        }
+
+        # Log birth
+        self.birth_log.append({
+            "timestep": timestep,
+            "child_id": child_id,
+            "parent_a": agent_a_id,
+            "parent_b": agent_b_id,
+            "child_sigma_phi": sigma_phi_child,
+            "generation": child_generation,
+        })
+
+        print(f"👶 GENESIS: {child_id} born from {agent_a_id} × {agent_b_id} | σ_φ={sigma_phi_child:.4f} | Gen {child_generation}")
+
+        return child_id, child_state
+
+    def find_mating_pairs(
+        self,
+        agent_states: Dict[str, Dict[str, float]],
+        agent_ids: List[str],
+        timestep: int,
+    ) -> List[Tuple[str, str]]:
+        """V18: Find compatible pairs for reproduction based on health and resonance.
+
+        Reproduction thresholds dynamically adjust based on population pressure:
+        - When population is healthy: strict criteria (health > 0.8, resonance > 0.9)
+        - When population crashes: relaxed criteria (health > 0.6, resonance > 0.85)
+
+        This creates adaptive demographic response to environmental stress.
+        """
+        # Calculate alive agents and reproduction urgency
+        alive_agents = [
+            aid for aid in agent_ids
+            if aid in agent_states and is_alive(agent_states[aid].get("sigma_phi", 0.0))
+        ]
+
+        alive_count = len(alive_agents)
+
+        # Dynamic thresholds based on population pressure
+        if alive_count < 6:
+            health_threshold = 0.6  # Desperate times
+            resonance_threshold = 0.85
+            print(f"⚠️ POPULATION CRISIS: Lowering reproduction barriers (alive={alive_count})")
+        else:
+            health_threshold = 0.8
+            resonance_threshold = 0.9
+
+        # Find eligible agents (healthy, not in cooldown)
+        eligible = []
+        for agent_id in alive_agents:
+            state = agent_states[agent_id]
+            sigma_phi = state.get("sigma_phi", 0.0)
+
+            # Health check (proximity to golden ratio)
+            health = 1.0 - abs(sigma_phi - 0.0625)
+            if health < health_threshold:
+                continue
+
+            # Cooldown check (prevent rapid reproduction)
+            last_mating = self.mating_cooldowns.get(agent_id, -1000)
+            if timestep - last_mating < 10:
+                continue
+
+            eligible.append((agent_id, state, health))
+
+        # Find pairs with high resonance match
+        pairs = []
+        used = set()
+
+        for i, (aid_a, state_a, health_a) in enumerate(eligible):
+            if aid_a in used:
+                continue
+
+            for aid_b, state_b, health_b in eligible[i+1:]:
+                if aid_b in used:
+                    continue
+
+                # Calculate resonance match (similarity in sigma_phi)
+                sigma_diff = abs(state_a["sigma_phi"] - state_b["sigma_phi"])
+                resonance_match = 1.0 - sigma_diff / 0.1  # Normalize to [0, 1]
+
+                if resonance_match >= resonance_threshold:
+                    pairs.append((aid_a, aid_b))
+                    used.add(aid_a)
+                    used.add(aid_b)
+                    break
+
+        return pairs
+
     def form_mycelial_network(
         self, ecosystem: Dict[str, object], current_pressure: float
     ) -> Dict[str, float]:
@@ -265,7 +402,7 @@ class CrystalGardener(SigmaPhiGardener):
         agent_ids: List[str],
         timestep: int = 0,
         current_pressure: float = 1.0,
-    ) -> Tuple[np.ndarray, Dict[str, float], List[AgentHealth]]:
+    ) -> Tuple[np.ndarray, Dict[str, float], List[AgentHealth], Dict[str, Dict[str, float]], List[str]]:
         """Cultivate with oracle-gated actions."""
 
         # V16: Increment heartbeat cycle
@@ -300,6 +437,31 @@ class CrystalGardener(SigmaPhiGardener):
         if network_context["network_engaged"] and self.heartbeat_cycle == 0:
             agent_states = self.transfer_vitality(agent_states, agent_ids, timestep)
 
+        # V18: Genesis Cycle - Sexual reproduction for demographic stability
+        # Population can grow up to max_population through successful mating
+        current_population = len([aid for aid in agent_ids if aid in agent_states])
+        if current_population < self.max_population:
+            mating_pairs = self.find_mating_pairs(agent_states, agent_ids, timestep)
+
+            for parent_a, parent_b in mating_pairs:
+                if current_population >= self.max_population:
+                    break  # Population cap reached
+
+                # Create offspring
+                child_id, child_state = self.perform_reproduction(
+                    parent_a, parent_b, agent_states, timestep
+                )
+
+                # Add child to ecosystem
+                agent_states[child_id] = child_state
+                agent_ids.append(child_id)
+                current_population += 1
+                self.reproduction_events += 1
+
+                # Update mating cooldowns
+                self.mating_cooldowns[parent_a] = timestep
+                self.mating_cooldowns[parent_b] = timestep
+
         # V17: Phoenix Protocol - Check for dying agents and trigger reincarnation
         # Cooldown prevents rapid re-transfer loops
         PHOENIX_COOLDOWN = 20  # Minimum timesteps between transfers for same agent
@@ -310,6 +472,11 @@ class CrystalGardener(SigmaPhiGardener):
 
             state = agent_states[agent_id]
             sigma_phi = state.get("sigma_phi", 0.0)
+
+            # V18: Skip protected newborns (cannot die during protection period)
+            protected_until = state.get("protected_until", 0)
+            if timestep < protected_until:
+                continue  # Newborn is protected
 
             # Check cooldown
             last_transfer = self.phoenix_cooldowns.get(agent_id, -1000)
@@ -359,7 +526,8 @@ class CrystalGardener(SigmaPhiGardener):
         self._record_cycle(timestep, assessments)
         self._detect_emergence(assessments, timestep)
 
-        return adjusted_matrix, adjusted_temps, assessments
+        # V18: Return modified agent_states and agent_ids to enable dynamic population
+        return adjusted_matrix, adjusted_temps, assessments, agent_states, agent_ids
 
     def decide_action(
         self,
@@ -592,7 +760,7 @@ class CrystalGardener(SigmaPhiGardener):
         }
 
     def get_cultivation_summary(self) -> Dict[str, object]:
-        """Extend base summary with network telemetry and Phoenix Protocol stats."""
+        """Extend base summary with network telemetry, Phoenix Protocol, and Genesis Cycle stats."""
 
         summary = super().get_cultivation_summary()
         summary.update(
@@ -609,6 +777,11 @@ class CrystalGardener(SigmaPhiGardener):
                 "phoenix_transfers": len(self.phoenix_transfers),
                 "recent_phoenix_transfers": self.phoenix_transfers[-10:],
                 "shadow_pool_size": len(self.shadow_pool),
+                # V18: Genesis Cycle statistics
+                "total_births": len(self.birth_log),
+                "reproduction_events": self.reproduction_events,
+                "recent_births": self.birth_log[-10:],
+                "max_population": self.max_population,
             }
         )
         return summary
