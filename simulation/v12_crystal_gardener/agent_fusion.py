@@ -52,6 +52,78 @@ class CrystalGardener(SigmaPhiGardener):
         self.lazarus_mode_active = False
         self.network_pressure_trace: List[float] = []
         self.network_engagement_trace: List[bool] = []
+        self.heartbeat_cycle = 0  # V16: Rhythmic pulse counter
+        self.vitality_transfers: List[Dict[str, object]] = []
+
+    def transfer_vitality(
+        self,
+        agent_states: Dict[str, Dict[str, float]],
+        agent_ids: List[str],
+        timestep: int,
+    ) -> Dict[str, Dict[str, float]]:
+        """V16: Transfer energy from healthy agents to struggling ones.
+
+        When the mycelial network is active, the top 50% healthiest agents
+        donate 10% of their sigma_phi stability to the bottom 50%.
+        This prevents cascade collapse (domino effect).
+        """
+
+        # Calculate health scores for all agents
+        health_scores = []
+        for agent_id in agent_ids:
+            if agent_id not in agent_states:
+                continue
+            state = agent_states[agent_id]
+            sigma_phi = state.get("sigma_phi", 0.0)
+
+            # Health = proximity to golden ratio + being alive
+            health = 1.0 - abs(sigma_phi - 0.0625) if is_alive(sigma_phi) else 0.0
+            health_scores.append((agent_id, health, sigma_phi))
+
+        if len(health_scores) < 2:
+            return agent_states
+
+        # Sort by health (descending)
+        health_scores.sort(key=lambda x: x[1], reverse=True)
+
+        # Split into donors (top 50%) and recipients (bottom 50%)
+        split_point = len(health_scores) // 2
+        donors = health_scores[:split_point]
+        recipients = health_scores[split_point:]
+
+        # Transfer 10% of stability from donors to recipients
+        transfer_log = []
+        modified_states = agent_states.copy()
+
+        for (donor_id, donor_health, donor_sigma), (recipient_id, recipient_health, recipient_sigma) in zip(donors, recipients):
+            if donor_sigma <= 0.01 or not is_alive(donor_sigma):
+                continue  # Don't drain dead/dying donors
+
+            # Calculate transfer amount (10% of donor's "stability budget")
+            stability_surplus = max(0.0, donor_sigma - 0.0625)
+            transfer_amount = 0.1 * stability_surplus
+
+            if transfer_amount > 0.001:
+                # Apply transfer
+                new_donor_sigma = max(0.01, donor_sigma - transfer_amount)
+                new_recipient_sigma = min(0.2, recipient_sigma + transfer_amount * 0.8)  # 20% loss in transit
+
+                modified_states[donor_id] = {**modified_states[donor_id], "sigma_phi": new_donor_sigma}
+                modified_states[recipient_id] = {**modified_states[recipient_id], "sigma_phi": new_recipient_sigma}
+
+                transfer_log.append({
+                    "timestep": timestep,
+                    "donor": donor_id,
+                    "recipient": recipient_id,
+                    "amount": transfer_amount,
+                    "efficiency": 0.8,
+                })
+
+        if transfer_log:
+            self.vitality_transfers.extend(transfer_log)
+            print(f"💓 Symbiotic Pulse: {len(transfer_log)} energy transfers completed")
+
+        return modified_states
 
     def form_mycelial_network(
         self, ecosystem: Dict[str, object], current_pressure: float
@@ -90,7 +162,7 @@ class CrystalGardener(SigmaPhiGardener):
         self.network_engagement_trace.append(network_engaged)
 
         if network_engaged:
-            print(f"Effective Network Pressure: {effective_pressure:.2f} atm")
+            print(f"🕸️ Effective Network Pressure: {effective_pressure:.2f} atm")
 
         return {
             "network_engaged": network_engaged,
@@ -109,6 +181,9 @@ class CrystalGardener(SigmaPhiGardener):
         current_pressure: float = 1.0,
     ) -> Tuple[np.ndarray, Dict[str, float], List[AgentHealth]]:
         """Cultivate with oracle-gated actions."""
+
+        # V16: Increment heartbeat cycle
+        self.heartbeat_cycle = (self.heartbeat_cycle + 1) % 4
 
         assessments: List[AgentHealth] = []
         adjusted_matrix = coupling_matrix.copy()
@@ -131,8 +206,13 @@ class CrystalGardener(SigmaPhiGardener):
             {
                 "network_engaged": network_context["network_engaged"],
                 "effective_pressure": network_context["effective_pressure"],
+                "heartbeat_phase": self.heartbeat_cycle,
             }
         )
+
+        # V16: Apply vitality transfer when network is engaged and on pulse beat (cycle 0)
+        if network_context["network_engaged"] and self.heartbeat_cycle == 0:
+            agent_states = self.transfer_vitality(agent_states, agent_ids, timestep)
 
         for i, agent_id in enumerate(agent_ids):
             if agent_id not in agent_states:
@@ -252,10 +332,21 @@ class CrystalGardener(SigmaPhiGardener):
             decision = "lazarus_override"
             translation_state = "CHAOTIC_INTERVENTION"
             if network_context.get("network_engaged"):
-                decision = "network_redistribution"
-                translation_state = "MYCELIAL_SHIELD"
-                new_action = CultivationAction.STABILIZE
-                new_strength = min(1.0, max(new_strength, 0.6))
+                # V16: Rhythmic pulse - alternate between structure and energy
+                heartbeat_phase = threat_signature.get("heartbeat_phase", 0)
+
+                if heartbeat_phase == 0:
+                    # PULSE BEAT: Energy transfer phase
+                    decision = "symbiotic_pulse"
+                    translation_state = "MYCELIAL_HEARTBEAT"
+                    new_action = CultivationAction.RESUSCITATE
+                    new_strength = min(1.0, max(new_strength, 0.8))
+                else:
+                    # CONTRACTION PHASE: Structural stabilization
+                    decision = "network_redistribution"
+                    translation_state = "MYCELIAL_SHIELD"
+                    new_action = CultivationAction.STABILIZE
+                    new_strength = min(1.0, max(new_strength, 0.6))
             else:
                 if new_action in {
                     CultivationAction.STABILIZE,
@@ -397,6 +488,9 @@ class CrystalGardener(SigmaPhiGardener):
                 "final_effective_pressure": self.network_pressure_trace[-1]
                 if self.network_pressure_trace
                 else None,
+                "vitality_transfers": len(self.vitality_transfers),
+                "recent_vitality_transfers": self.vitality_transfers[-10:],
+                "heartbeat_cycle": self.heartbeat_cycle,
             }
         )
         return summary
