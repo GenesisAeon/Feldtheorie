@@ -10,6 +10,7 @@ import numpy as np
 
 from simulation.v10_oracle import CrystalOracle
 from v10_oracle.models.semantic_bridge import ResonanceTranslator
+from v11_gardener.core.constants import is_alive
 from v11_gardener.agents.sigma_phi_gardener import (
     AgentHealth,
     CultivationAction,
@@ -48,6 +49,7 @@ class CrystalGardener(SigmaPhiGardener):
         self.oracle_vetoes = 0
         self.resonance_assists = 0
         self.oracle_journal: List[Dict[str, object]] = []
+        self.lazarus_mode_active = False
 
     def cultivate_ecosystem(
         self,
@@ -62,6 +64,15 @@ class CrystalGardener(SigmaPhiGardener):
         assessments: List[AgentHealth] = []
         adjusted_matrix = coupling_matrix.copy()
         adjusted_temps: Dict[str, float] = {}
+
+        total_agents = len([agent_id for agent_id in agent_ids if agent_id in agent_states])
+        alive_agents = sum(
+            1
+            for agent_id in agent_ids
+            if agent_id in agent_states
+            and is_alive(agent_states[agent_id].get("sigma_phi", 0.0))
+        )
+        threat_signature = self.assess_threat_level(alive_agents, total_agents)
 
         for i, agent_id in enumerate(agent_ids):
             if agent_id not in agent_states:
@@ -78,7 +89,9 @@ class CrystalGardener(SigmaPhiGardener):
             )
 
             guided_assessment = self.decide_action(
-                assessment, current_pressure=current_pressure
+                assessment,
+                current_pressure=current_pressure,
+                threat_signature=threat_signature,
             )
             assessments.append(guided_assessment)
 
@@ -97,13 +110,27 @@ class CrystalGardener(SigmaPhiGardener):
         return adjusted_matrix, adjusted_temps, assessments
 
     def decide_action(
-        self, assessment: AgentHealth, *, current_pressure: float = 1.0
+        self,
+        assessment: AgentHealth,
+        *,
+        current_pressure: float = 1.0,
+        threat_signature: Dict[str, float] | None = None,
     ) -> AgentHealth:
         """Run the planned action through the oracle before execution.
 
         Dynamic tolerance: acceptance widens with pressure to prevent paralysis
         under harsh environments.
         """
+
+        threat_signature = threat_signature or {}
+        lazarus_mode = bool(threat_signature.get("lazarus_mode"))
+        if lazarus_mode and not self.lazarus_mode_active:
+            self.lazarus_mode_active = True
+            print(
+                "⚠️ LAZARUS PROTOCOL ENGAGED. SHATTERING CRYSTAL FOR SURVIVAL."
+            )
+        elif not lazarus_mode:
+            self.lazarus_mode_active = False
 
         context = {
             "pressure": current_pressure,
@@ -139,27 +166,43 @@ class CrystalGardener(SigmaPhiGardener):
             adjusted_assessment.recommended_action != CultivationAction.OBSERVE
         )
 
-        if (
-            veto
-            and current_pressure >= 4.5
-            and sigma_phi_est > 0.08
-            and survival_action
-        ):
-            veto = False
-
         decision = "pass"
         new_action = adjusted_assessment.recommended_action
         new_strength = adjusted_assessment.action_strength
+        translation_state = translation.state
 
-        if veto:
-            decision = "veto"
-            new_action = CultivationAction.OBSERVE
-            new_strength = 0.0
-            self.oracle_vetoes += 1
-        elif translation.state == "LUCID_RESONANCE":
-            decision = "resonance_boost"
-            new_strength = min(1.0, adjusted_assessment.action_strength * 1.2)
-            self.resonance_assists += 1
+        if lazarus_mode:
+            veto = False
+            decision = "lazarus_override"
+            translation_state = "CHAOTIC_INTERVENTION"
+            if new_action in {
+                CultivationAction.STABILIZE,
+                CultivationAction.OBSERVE,
+            }:
+                new_action = CultivationAction.RESUSCITATE
+            elif new_action in {CultivationAction.COOL, CultivationAction.DAMPEN}:
+                new_action = CultivationAction.WARM
+
+            probability_boost = 2.0
+            new_strength = min(1.0, new_strength * probability_boost)
+        else:
+            if (
+                veto
+                and current_pressure >= 4.5
+                and sigma_phi_est > 0.08
+                and survival_action
+            ):
+                veto = False
+
+            if veto:
+                decision = "veto"
+                new_action = CultivationAction.OBSERVE
+                new_strength = 0.0
+                self.oracle_vetoes += 1
+            elif translation.state == "LUCID_RESONANCE":
+                decision = "resonance_boost"
+                new_strength = min(1.0, adjusted_assessment.action_strength * 1.2)
+                self.resonance_assists += 1
 
         self.oracle_journal.append(
             {
@@ -168,11 +211,12 @@ class CrystalGardener(SigmaPhiGardener):
                 "final_action": new_action.value,
                 "sigma_phi_est": sigma_phi_est,
                 "coherence": global_coherence,
-                "translation": translation.state,
+                "translation": translation_state,
                 "decision": decision,
                 "pressure_atm": current_pressure,
                 "tolerance": scaled_tolerance,
                 "contextual_resonance": contextual_resonance,
+                "threat_signature": threat_signature,
             }
         )
 
@@ -209,6 +253,26 @@ class CrystalGardener(SigmaPhiGardener):
         coherence = float(np.mean(np.abs(resonance_state)))
         sigma_phi_est = 0.0625 + 0.02 * np.tanh(dispersion + (1.0 - coherence))
         return float(np.clip(sigma_phi_est, 0.0, 0.2))
+
+    def assess_threat_level(self, alive_agents: int, total_agents: int) -> Dict[str, float]:
+        """Assess ecosystem threat based on survival ratio."""
+
+        if total_agents <= 0:
+            return {
+                "alive_agents": float(alive_agents),
+                "total_agents": float(total_agents),
+                "alive_ratio": 0.0,
+                "lazarus_mode": False,
+            }
+
+        alive_ratio = alive_agents / total_agents
+        lazarus_mode = alive_ratio < 0.5
+        return {
+            "alive_agents": float(alive_agents),
+            "total_agents": float(total_agents),
+            "alive_ratio": float(alive_ratio),
+            "lazarus_mode": lazarus_mode,
+        }
 
     def oracle_summary(self) -> Dict[str, object]:
         """Return metrics on oracle interventions."""
