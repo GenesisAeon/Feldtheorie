@@ -122,6 +122,14 @@ def simulate_crystal_survival(
             "oracle_recent": oracle_summary["recent_decisions"],
             "action_counts": gardener_summary.get("total_actions", {}),
         },
+        "network_metrics": {
+            "effective_pressure_trace": gardener_summary.get(
+                "network_effective_pressure_trace", []
+            ),
+            "final_effective_pressure": gardener_summary.get(
+                "final_effective_pressure"
+            ),
+        },
         "pressure_tolerance_analysis": {
             "stability_ratio": stability_ratio,
             "max_stable_pressure_atm": max_stable_pressure,
@@ -174,6 +182,12 @@ def print_survival_summary(telemetry: Dict[str, Any]) -> None:
     print(
         f"  Survival Rate Improvement: {telemetry['key_findings']['survival_rate_improvement']:+.1f}%"
     )
+
+    network = telemetry.get("network_metrics", {})
+    if network.get("effective_pressure_trace"):
+        print(
+            f"  Effective Network Pressure: {network['final_effective_pressure']:.2f} atm"
+        )
 
     gardener = telemetry["gardener_activity"]
     print("\nGardener Activity:")
