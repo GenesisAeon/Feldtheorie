@@ -128,10 +128,10 @@ def quantization_distribution() -> tuple[list[int], list[float], list[int]]:
 def create_dashboard_animation(
     output_path: Path,
     frames: int = 160,
-    fps: int = 20,
+    fps: int = 15,
     soliton_grid: int = 180,
     history: int = 80,
-    soliton_dt: float = 0.012,
+    soliton_dt: float = 0.006,
     gamma: float = 0.12,
 ) -> Path:
     """Render the Resonanz-Kino animation and persist it to disk."""
@@ -207,6 +207,8 @@ def create_dashboard_animation(
         # Soliton micro-steps
         for _ in range(2):
             soliton_field_local = step_soliton(soliton_history[-1], beta=beta_now, dx=dx, dt=soliton_dt, gamma=gamma)
+            soliton_field_local = np.nan_to_num(soliton_field_local)
+            soliton_field_local = np.clip(soliton_field_local, -5.0, 5.0)
             soliton_history.append(soliton_field_local)
             soliton_history[:] = soliton_history[-history:]
 
@@ -237,22 +239,17 @@ def create_dashboard_animation(
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    if output_path.suffix.lower() == ".gif":
-        writer: animation.AbstractMovieWriter = animation.PillowWriter(fps=fps)
-    else:
-        writer = animation.FFMpegWriter(fps=fps) if animation.writers.is_available("ffmpeg") else animation.PillowWriter(fps=fps)
-
     LOGGER.info("🎥 Rendering Resonanz-Kino → %s", output_path)
-    anim.save(output_path, writer=writer, dpi=130)
+    anim.save(output_path, writer="pillow", fps=15, dpi=130)
     plt.close(fig)
     return output_path
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Create the Resonanz-Kino dashboard animation.")
-    parser.add_argument("--output", type=Path, default=Path("output/resonance_kino.mp4"), help="Target file (.mp4 or .gif)")
+    parser.add_argument("--output", type=Path, default=Path("output/resonance_kino.gif"), help="Target file (.mp4 or .gif)")
     parser.add_argument("--frames", type=int, default=160, help="Number of frames for the animation")
-    parser.add_argument("--fps", type=int, default=20, help="Frames per second for the writer")
+    parser.add_argument("--fps", type=int, default=15, help="Frames per second for the writer")
     return parser.parse_args(argv)
 
 
