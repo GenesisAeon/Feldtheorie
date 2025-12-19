@@ -53,6 +53,11 @@ def simulate_crystal_survival(
         )
         pressure_schedule[ramp_end:] = pressure_max
 
+    # V18: Track agent states across timesteps (needed for dynamic population)
+    agent_states = ecosystem.get_agent_states()
+    agent_ids = ecosystem.get_agent_ids()
+    coupling_matrix = ecosystem.get_coupling_matrix()
+
     for t in range(n_timesteps):
         pressure = float(pressure_schedule[t])
         v_rig_eff = modulator.effective_v_rig(pressure, 37.0, 0.0)
@@ -62,11 +67,27 @@ def simulate_crystal_survival(
 
         ecosystem.step(dt=0.1)
 
-        agent_states = ecosystem.get_agent_states()
-        agent_ids = ecosystem.get_agent_ids()
-        coupling_matrix = ecosystem.get_coupling_matrix()
+        # Update ecosystem states (but keep our extended agent population)
+        ecosystem_states = ecosystem.get_agent_states()
+        for agent_id, state in ecosystem_states.items():
+            if agent_id in agent_states:
+                # Update existing agents with ecosystem changes
+                agent_states[agent_id].update(state)
 
-        adjusted_matrix, adjusted_temps, _ = gardener.cultivate_ecosystem(
+        # Expand coupling matrix if population grew
+        n_current = len(agent_ids)
+        if coupling_matrix.shape[0] < n_current:
+            new_size = n_current
+            new_matrix = np.zeros((new_size, new_size))
+            old_size = coupling_matrix.shape[0]
+            new_matrix[:old_size, :old_size] = coupling_matrix
+            # New agents have weak coupling to existing agents
+            for i in range(old_size, new_size):
+                new_matrix[i, :old_size] = 0.05  # Weak initial coupling
+                new_matrix[:old_size, i] = 0.05
+            coupling_matrix = new_matrix
+
+        adjusted_matrix, adjusted_temps, _, agent_states, agent_ids = gardener.cultivate_ecosystem(
             agent_states=agent_states,
             coupling_matrix=coupling_matrix,
             agent_ids=agent_ids,
@@ -74,12 +95,16 @@ def simulate_crystal_survival(
             current_pressure=pressure,
         )
 
-        ecosystem.apply_cultivation(adjusted_matrix, adjusted_temps)
+        # Apply cultivation to ecosystem (only affects original agents)
+        ecosystem.apply_cultivation(adjusted_matrix[:n_agents, :n_agents], adjusted_temps)
 
-        stats = ecosystem.get_statistics()
-        sigma_phi_mean_trace.append(stats["mean_sigma_phi"])
-        sigma_phi_std_trace.append(stats["std_sigma_phi"])
-        alive_count_trace.append(stats["alive_count"])
+        # Calculate statistics including new agents
+        sigma_phi_values = [s["sigma_phi"] for s in agent_states.values()]
+        alive_in_extended = sum(1 for s in agent_states.values() if 0.0 < s.get("sigma_phi", 0.0) < 0.2)
+
+        sigma_phi_mean_trace.append(float(np.mean(sigma_phi_values)))
+        sigma_phi_std_trace.append(float(np.std(sigma_phi_values)))
+        alive_count_trace.append(alive_in_extended)
         oracle_veto_trace.append(gardener.oracle_vetoes)
         oracle_resonance_trace.append(gardener.resonance_assists)
 
@@ -129,6 +154,14 @@ def simulate_crystal_survival(
             "final_effective_pressure": gardener_summary.get(
                 "final_effective_pressure"
             ),
+            "vitality_transfers": gardener_summary.get("vitality_transfers", 0),
+            "phoenix_transfers": gardener_summary.get("phoenix_transfers", 0),
+        },
+        "genesis_metrics": {
+            "total_births": gardener_summary.get("total_births", 0),
+            "reproduction_events": gardener_summary.get("reproduction_events", 0),
+            "recent_births": gardener_summary.get("recent_births", []),
+            "max_population": gardener_summary.get("max_population", n_agents),
         },
         "pressure_tolerance_analysis": {
             "stability_ratio": stability_ratio,
@@ -188,6 +221,26 @@ def print_survival_summary(telemetry: Dict[str, Any]) -> None:
         print(
             f"  Effective Network Pressure: {network['final_effective_pressure']:.2f} atm"
         )
+    if network.get("vitality_transfers"):
+        print(f"  Vitality Transfers (V16): {network['vitality_transfers']}")
+    if network.get("phoenix_transfers"):
+        print(f"  Phoenix Transfers (V17): {network['phoenix_transfers']}")
+
+    genesis = telemetry.get("genesis_metrics", {})
+    if genesis.get("total_births", 0) > 0:
+        print("\n👶 Genesis Cycle (V18) - Demographic Stability:")
+        print(f"  Total Births: {genesis['total_births']}")
+        print(f"  Reproduction Events: {genesis['reproduction_events']}")
+        print(f"  Population Capacity: {config['n_agents']} → {genesis['max_population']}")
+
+        if genesis.get("recent_births"):
+            print("  Recent Births:")
+            for birth in genesis["recent_births"]:
+                print(
+                    f"    t={birth['timestep']}: {birth['child_id']} "
+                    f"from {birth['parent_a']} × {birth['parent_b']} "
+                    f"| σ_φ={birth['child_sigma_phi']:.4f} | Gen {birth['generation']}"
+                )
 
     gardener = telemetry["gardener_activity"]
     print("\nGardener Activity:")
