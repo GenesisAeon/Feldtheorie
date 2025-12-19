@@ -107,7 +107,7 @@ def simulate_soliton_doppler(config: SolitonDopplerConfig | None = None) -> Dict
         amplitude = np.abs(psi)
         energies.append(float(np.trapz(amplitude**2, dx=cfg.dx)))
         unwrapped_phase = np.unwrap(np.angle(psi))
-        phase_velocities.append(float(unwrapped_phase.ptp() / (cfg.grid_points * cfg.dx)))
+        phase_velocities.append(float(np.ptp(unwrapped_phase) / (cfg.grid_points * cfg.dx)))
         center_trace.append(float(amplitude[cfg.grid_points // 2]))
 
     amplitude_final = np.abs(psi)

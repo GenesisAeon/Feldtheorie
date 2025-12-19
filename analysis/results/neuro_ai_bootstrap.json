@@ -7,13 +7,13 @@
   "parameters": {
     "theta": {
       "mean": 0.48,
-      "ci_95": [0.placeholder, 0.placeholder],
-      "std": 0.placeholder
+      "ci_95": [null, null],
+      "std": null
     },
     "beta": {
       "mean": 6.1,
-      "ci_95": [0.placeholder, 0.placeholder],
-      "std": 0.placeholder
+      "ci_95": [null, null],
+      "std": null
     }
   },
   "notes": "Placeholder export staged 2025-12-18 for UTAC v1.3 emergenz activation. Real bootstrap pending data."
