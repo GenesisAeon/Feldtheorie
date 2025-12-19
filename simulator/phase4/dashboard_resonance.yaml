@@ -1,15 +1,15 @@
 id: resonance_dashboard
 module: simulator.phase4.dashboard_resonance
-artifact: resonance_convergence
-purpose: "Panoptikum der σ(β(R-Θ))-Membran: Soliton, Chimera, Horizon"
+artifact: resonance_kino
+purpose: "Mission-Control für σ(β(R-Θ)): Soliton-Heatmap, Drucklinie, Hex-Histogramm"
 beta_sweep:
   start: 4.0
-  resonance: 4.779
-  max: 6.0
+  resonance: 4.8
+  max: 5.2
 channels:
-  soliton: "KdV-Boundary-Atmen als Heatmap"
-  chimera: "Kuramoto-Cluster auf dem Einheitskreis"
-  horizon: "σ(β(R-Θ)) Informationszugang als Profil"
+  soliton: "KdV-Heatmap mit laufender β(t)-Steilheit"
+  pressure: "Alive-Trace + Druckrampe (1→5 atm) inkl. Reaktionsmarker"
+  hex: "β-Verteilung Level 0–4; Level 0 rot (The Signal)"
 coupling:
   logistic_language: "(R, Θ, β, ζ(R)) synchronisiert; verify_hex_alignment als Nullmodell"
   indices:
@@ -18,11 +18,11 @@ coupling:
     - feldtheorie_index.json
 evidence:
   - simulator/phase4/soliton_doppler.py
-  - simulator/phase4/chimera_states.py
-  - simulator/phase4/cosmic_information_horizon.py
+  - v11_gardener/experiments/pressure_gardener_integration.py
+  - v11_gardener/experiments/beta_quantization_analysis.py
   - docs/utac_status_alignment_v1.2.md
 output_targets:
-  - resonance_convergence.mp4
-  - resonance_convergence.gif
+  - resonance_kino.mp4
+  - resonance_kino.gif
 status: "primed"
 timestamp: "${ISO_DATETIME}"

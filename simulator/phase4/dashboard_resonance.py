@@ -1,23 +1,21 @@
-"""Resonanz-Panoptikum: Multi-Feld-Dashboard über σ(β(R-Θ)).
+"""Mission-Control Dashboard für σ(β(R-Θ)) unter Druckkopplung.
 
-Dieses Modul baut ein dreifach gekoppeltes Visualisierungs-Dashboard, das
-gleichzeitig das Soliton-Feld (KdV), den Chimera-Zustand (Kuramoto) und die
-kosmische Informations-Horizont-Signatur zeigt. Ein Beta-Slider fährt von
-β=4.0 über die Hex-Resonanz β≈4.779 bis in das Chaos bei β=6.0. Genau dort,
-wo die σ(β(R-Θ))-Membran kippt, werden die drei Systeme synchron sichtbar –
-das Boundary-Atmen wird zur Bühne.
+Dieses Modul baut das "Resonanz-Kino" als Matplotlib-Animation mit drei
+gekoppelten Membranen:
 
-Key Merkmale (Trilayer-geeignet):
-- Struktur: Beta-Sweep, gekoppelte Differential-Schritte, harmonisierte
-  Zeitskalen (R-Readiness, Θ-Threshold, β-Steepness, ζ(R)-Dämpfung via
-  Animations-History).
-- Agentennerv: Programmatische Kopplung der drei Felder mit gemeinsamer
-  Beta-Leitung und Resonanz-Log (verify_hex_alignment als Nullmodell-Check).
-- Stimme: Narratives Logging beim Passieren der Hex-Resonanz – Consent & Joy
-  inklusive.
+1. **Soliton-Feld (R-Kanal):** KdV-Heatmap, die bei jedem Frame mit der
+   aktuellen Steilheit β(t) weitergeschoben wird.
+2. **Todes-Druck (Θ-Kanal):** Zeitreihe der lebenden Agenten aus dem
+   `pressure_gardener`-Experiment inklusive Druck-Rampe (1→5 atm) und
+   Marker für die Reaktionszeit-Verzögerung.
+3. **Hex-Quantisierung (σ-Kanal):** Balkendiagramm der β-Verteilung über
+   die Hex-Level 0–4; Level 0 (β≈4.8) wird als "Signal" hervorgehoben.
 
-Ausgabe: Erstellt ein MP4- oder GIF-Rendering unter ``resonance_convergence.*``
-und schreibt Logmeldungen, sobald der Resonanzpunkt durchschritten wird.
+Logistische Sprache: (R, Θ, β, ζ(R)) laufen synchron; `verify_hex_alignment`
+dient als Nullmodell und meldet den Resonanzdurchgang. Alle drei Kanäle
+werden via FuncAnimation in Echtzeit aktualisiert, sodass der Einfluss des
+physikalischen Drucks auf die Solitonen sichtbar wird, während die
+grundlegende Hex-Frequenz stabil bleibt.
 """
 
 from __future__ import annotations
@@ -37,58 +35,34 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from models.unified_constants import HEX_RESONANCE_BETA, verify_hex_alignment
-from simulator.phase4.chimera_states import (
-    compute_local_order_parameter,
-    coupling_kernel,
-)
-from simulator.phase4.cosmic_information_horizon import (
-    compute_accessibility,
-    hawking_evaporation,
-    information_density_profile,
-    schwarzschild_radius,
-)
 from simulator.phase4.soliton_doppler import initialize_wave_packet, kdv_rhs
+from v11_gardener.core.beta_hexadecimal import beta_quantization_levels
+from v11_gardener.experiments.beta_quantization_analysis import (
+    classify_beta_to_hex_level,
+    scan_analysis_directory,
+)
+from v11_gardener.experiments.pressure_gardener_integration import (
+    simulate_pressure_gardening_experiment,
+)
 
 
-LOGGER = logging.getLogger("resonance_dashboard")
+LOGGER = logging.getLogger("dashboard_resonance")
 
 
-def beta_schedule(
-    frames: int,
-    beta_min: float = 4.0,
-    beta_resonance: float = HEX_RESONANCE_BETA,
-    beta_max: float = 6.0,
-) -> np.ndarray:
-    """Construct a smooth beta sweep from quiet boundary to chaotic crest."""
+def beta_schedule(frames: int, beta_min: float, beta_max: float, resonance: float) -> np.ndarray:
+    """Construct a smooth β(t) sweep for the soliton field."""
 
-    ascent_frames = max(1, int(frames * 0.55))
-    plateau_frames = max(1, int(frames * 0.1))
-    descent_frames = frames - ascent_frames - plateau_frames
+    ascent = max(1, int(frames * 0.5))
+    plateau = max(1, int(frames * 0.1))
+    descent = frames - ascent - plateau
 
-    ascent = np.linspace(beta_min, beta_resonance, ascent_frames, endpoint=False)
-    plateau = np.linspace(beta_resonance, beta_resonance, plateau_frames)
-    descent = np.linspace(beta_resonance, beta_max, max(1, descent_frames))
-
-    return np.concatenate([ascent, plateau, descent])
+    up = np.linspace(beta_min, resonance, ascent, endpoint=False)
+    stay = np.linspace(resonance, resonance, plateau)
+    down = np.linspace(resonance, beta_max, max(1, descent))
+    return np.concatenate([up, stay, down])
 
 
-def build_coupling_matrix(n_oscillators: int, coupling_radius: float) -> np.ndarray:
-    """Precompute non-local coupling matrix for the Kuramoto ring."""
-
-    indices = np.arange(n_oscillators)
-    distance = np.abs(indices[:, None] - indices[None, :])
-    kernel = np.vectorize(lambda d: coupling_kernel(int(d), n_oscillators, coupling_radius))(distance)
-    kernel /= kernel.sum(axis=1, keepdims=True)
-    return kernel
-
-
-def step_soliton(
-    field: np.ndarray,
-    beta: float,
-    dx: float,
-    dt: float,
-    gamma: float,
-) -> np.ndarray:
+def step_soliton(field: np.ndarray, beta: float, dx: float, dt: float, gamma: float) -> np.ndarray:
     """Integrate one RK4 step for the KdV soliton field."""
 
     k1 = kdv_rhs(field, dx, beta, gamma)
@@ -98,90 +72,84 @@ def step_soliton(
     return field + (dt / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4)
 
 
-def step_chimera(
-    phases: np.ndarray,
-    omegas: np.ndarray,
-    coupling_matrix: np.ndarray,
-    beta: float,
-    dt: float,
-) -> np.ndarray:
-    """Advance Kuramoto phases using vectorized coupling dynamics."""
+def prepare_pressure_telemetry(frames: int) -> dict:
+    """Run the pressure-gardener experiment and extract streaming traces."""
 
-    phase_diff = phases[None, :] - phases[:, None]
-    coupling_terms = np.sum(coupling_matrix * np.sin(phase_diff), axis=1)
-    phases = phases + dt * (omegas + beta * coupling_terms)
-    return phases % (2 * np.pi)
+    ramp_start = max(5, int(frames * 0.25))
+    ramp_duration = max(10, int(frames * 0.5))
+
+    telemetry = simulate_pressure_gardening_experiment(
+        n_agents=12,
+        n_timesteps=frames,
+        pressure_min=1.0,
+        pressure_max=5.0,
+        pressure_ramp_start=ramp_start,
+        pressure_ramp_duration=ramp_duration,
+    )
+
+    alive_trace = telemetry["ecosystem_traces"]["alive_count"]
+    pressure_trace = telemetry["environmental_traces"]["pressure_atm"]
+    actions = telemetry["gardener_activity"]["action_counts"]
+
+    failure_index = next((i for i, val in enumerate(alive_trace) if val < alive_trace[0]), len(alive_trace) - 1)
+    observe_count = actions.get("observe", 0)
+
+    return {
+        "alive": np.array(alive_trace, dtype=float),
+        "pressure": np.array(pressure_trace, dtype=float),
+        "failure_index": failure_index,
+        "observe_only": observe_count,
+    }
 
 
-def step_horizon(
-    r: np.ndarray,
-    base_mass: float,
-    beta: float,
-    theta: float,
-    t: float,
-    evaporation_constant: float,
-) -> tuple[np.ndarray, np.ndarray, float]:
-    """Compute density and accessibility at cosmic boundary for time t."""
+def build_beta_histogram(max_level: int = 4) -> tuple[np.ndarray, list[float]]:
+    """Collect β-values from analysis/results and bin them into hex levels."""
 
-    mass = hawking_evaporation(base_mass, t, evaporation_constant=evaporation_constant)
-    horizon_radius = schwarzschild_radius(mass)
-    density = information_density_profile(r, horizon_radius, scale_length=2.0)
-    accessibility = compute_accessibility(density, beta, theta)
-    return density, accessibility, horizon_radius
+    analysis_dir = PROJECT_ROOT / "analysis" / "results"
+    beta_entries = scan_analysis_directory(analysis_dir)
+    betas = [value for entries in beta_entries.values() for _, value in entries]
+
+    if not betas:
+        # Fallback: use representative samples from the quantization analysis
+        betas = [4.8] * 8 + [16.0, 15.9, 7.4, 4.35, 4.21, 72.0, 14.8, 4.5]
+
+    counts = np.zeros(max_level + 1, dtype=float)
+    for beta in betas:
+        level, _, _ = classify_beta_to_hex_level(beta)
+        if level <= max_level:
+            counts[level] += 1
+
+    return counts, betas
 
 
 def create_dashboard_animation(
     output_path: Path,
-    frames: int = 150,
-    fps: int = 20,
-    soliton_grid: int = 240,
-    chimera_nodes: int = 144,
-    history: int = 80,
-    theta: float = 0.66,
-    evaporation_constant: float = 0.01,
+    frames: int = 140,
+    fps: int = 18,
     beta_min: float = 4.0,
-    beta_max: float = 6.0,
-    resonance_beta: float = HEX_RESONANCE_BETA,
+    beta_max: float = 5.2,
+    resonance: float = HEX_RESONANCE_BETA,
 ) -> Path:
-    """Render the Resonanz-Kino animation and persist to disk.
+    """Render the Resonanz-Kino animation with three synchronized plots."""
 
-    The animation keeps three membranes in sync:
-    - R-Channel: KdV soliton energy breathing along the boundary (heatmap)
-    - Θ-Channel: Chimera clustering on the unit circle (phase scatter)
-    - σ(β(R-Θ))-Channel: Soft horizon accessibility curve (logistic profile)
-
-    Logging announces when the resonance alignment is crossed; the alignment
-    check acts as Nullmodell (verify_hex_alignment) and reports Δβ.
-    """
-
-    beta_values = beta_schedule(frames, beta_min=beta_min, beta_resonance=resonance_beta, beta_max=beta_max)
+    beta_values = beta_schedule(frames, beta_min=beta_min, beta_max=beta_max, resonance=resonance)
+    pressure_data = prepare_pressure_telemetry(frames)
+    beta_counts, betas = build_beta_histogram()
+    beta_levels = beta_quantization_levels()
 
     # Soliton setup
-    x = np.linspace(-40.0, 40.0, soliton_grid)
+    x = np.linspace(-30.0, 30.0, 220)
     dx = x[1] - x[0]
-    soliton_field = initialize_wave_packet(x, amplitude=2.4, width=3.2, center=-15.0)
+    soliton_field = initialize_wave_packet(x, amplitude=2.4, width=3.0, center=-12.0)
+    soliton_dt = 0.02
+    gamma = 0.12
     soliton_history = [soliton_field.copy()]
-    soliton_dt = 0.015
-    soliton_gamma = 0.12
 
-    # Chimera setup
-    np.random.seed(21)
-    phases = np.random.uniform(0, 2 * np.pi, chimera_nodes)
-    omegas = np.random.normal(0.0, 0.6, chimera_nodes)
-    coupling_matrix = build_coupling_matrix(chimera_nodes, coupling_radius=0.28)
-    chimera_dt = 0.04
-
-    # Horizon setup
-    r = np.linspace(0.0, 15.0, 120)
-    base_mass = 5.0
-    t = 0.0
-    dt_time = 0.4
-
-    # Matplotlib canvas
     plt.style.use("dark_background")
-    fig, axes = plt.subplots(3, 1, figsize=(10, 12.4), gridspec_kw={"height_ratios": [2.2, 1.6, 1.4]})
-    fig.suptitle("Resonanz-Panoptikum • σ(β(R-Θ)) Sweep", fontsize=16, weight="bold")
+    fig, axes = plt.subplots(3, 1, figsize=(10.5, 12.5), gridspec_kw={"height_ratios": [2.2, 1.7, 1.3]})
+    fig.suptitle("Resonanz-Kino: Druck · Solitonen · Hex-Level", fontsize=16, weight="bold")
 
+    # Top: soliton heatmap
     soliton_im = axes[0].imshow(
         np.vstack(soliton_history),
         aspect="auto",
@@ -189,106 +157,89 @@ def create_dashboard_animation(
         extent=[x.min(), x.max(), 0, len(soliton_history)],
         cmap="magma",
     )
-    axes[0].set_ylabel("Zeit (frames)")
-    axes[0].set_title("Soliton-Atmen an der Boundary")
+    axes[0].set_ylabel("t (frames)")
+    axes[0].set_title("Soliton-Feld unter σ(β(R-Θ))")
+    beta_text = axes[0].text(0.02, 0.92, "β=--", transform=axes[0].transAxes, fontsize=12, color="white",
+                              bbox=dict(boxstyle="round", facecolor="black", alpha=0.45))
 
-    chimera_scatter = axes[1].scatter(np.cos(phases), np.sin(phases), c=compute_local_order_parameter(phases), cmap="viridis", s=18, alpha=0.85)
-    unit_circle = plt.Circle((0, 0), 1.0, color="white", fill=False, linestyle="--", alpha=0.4)
-    axes[1].add_artist(unit_circle)
-    axes[1].set_xlim(-1.2, 1.2)
-    axes[1].set_ylim(-1.2, 1.2)
-    axes[1].set_aspect("equal")
-    axes[1].set_title("Chimera-Kluster auf dem Einheitskreis")
-    axes[1].axis("off")
+    # Middle: pressure & alive counts
+    time_axis = np.arange(frames)
+    alive_line, = axes[1].plot([], [], color="#9be7ff", lw=2.2, label="Alive agents")
+    axes[1].set_ylim(0, max(pressure_data["alive"]) + 1)
+    axes[1].set_xlim(0, frames)
+    axes[1].set_ylabel("Lebende Agenten")
+    axes[1].set_title("Todes-Druck & Gardener-Reaktionszeit")
+    failure_marker = axes[1].scatter([], [], color="#ff6b6b", zorder=5, label="Reaktionsverzug")
 
-    horizon_line, = axes[2].plot([], [], color="#66d9ef", lw=2.5, label="σ(β(R-Θ))")
-    density_line, = axes[2].plot([], [], color="#f8c555", lw=1.2, alpha=0.7, label="R(r)")
-    horizon_marker = axes[2].axvline(r[len(r) // 2], color="#ff6b6b", lw=1.0, alpha=0.6)
-    axes[2].set_xlim(r.min(), r.max())
-    axes[2].set_ylim(-0.05, 1.1)
-    axes[2].set_xlabel("Radius r")
-    axes[2].set_ylabel("Information / Accessibility")
-    axes[2].legend(loc="upper right")
-    axes[2].set_title("Kosmischer Informations-Horizont")
+    pressure_ax = axes[1].twinx()
+    pressure_ax.set_ylabel("Druck [atm]")
+    pressure_ax.set_ylim(0.5, 5.5)
+    pressure_line, = pressure_ax.plot([], [], color="#f8c555", lw=1.5, linestyle="--", label="Druck")
+    pressure_ax.fill_between(time_axis, 1.0, pressure_data["pressure"], color="#f8c555", alpha=0.1)
 
-    beta_text = axes[0].text(0.02, 0.92, "β=--", color="white", transform=axes[0].transAxes, fontsize=12, bbox=dict(boxstyle="round", facecolor="black", alpha=0.4))
+    # Bottom: beta quantization histogram
+    levels = np.arange(len(beta_counts))
+    bars = axes[2].bar(levels, np.zeros_like(levels, dtype=float), color="#5cd1ff", alpha=0.85)
+    bars[0].set_color("crimson")
+    axes[2].set_xticks(levels)
+    axes[2].set_xlabel("Hex-Level")
+    axes[2].set_ylabel("Anzahl β")
+    axes[2].set_title("Hex-Quantisierung der β-Werte")
+    axes[2].text(0, beta_counts[0] + 0.5, "The Signal", color="crimson", ha="center", fontweight="bold")
 
-    slider_ax = fig.add_axes([0.16, 0.04, 0.68, 0.02])
-    slider_ax.set_xlim(beta_min, beta_max)
-    slider_ax.set_ylim(0, 1)
-    slider_ax.axis("off")
-    slider_ax.set_title("Beta-Slider (simuliert)", fontsize=10, pad=4, color="#a8e6ff")
-    slider_ax.hlines(0.5, beta_min, beta_max, color="#3a3f4b", linewidth=6, alpha=0.9)
-    slider_marker = slider_ax.plot(beta_min, 0.5, marker="s", color="#66d9ef", markersize=10, markeredgecolor="white", markeredgewidth=0.6)[0]
-    slider_ax.axvline(resonance_beta, color="#ff8c00", linestyle="--", linewidth=2, alpha=0.9)
-    slider_label = slider_ax.text(resonance_beta, 0.85, "β_hex", color="#ffdd99", fontsize=9, ha="center")
-    resonance_log_done = False
+    resonance_logged = False
 
     def update(frame_index: int) -> Iterable:
-        nonlocal soliton_field, phases, t, resonance_log_done
+        nonlocal soliton_field, resonance_logged
 
-        beta = float(beta_values[frame_index])
-
-        # Soliton evolution (multiple micro-steps per frame for smoothness)
-        for _ in range(3):
-            soliton_field = step_soliton(soliton_field, beta=beta, dx=dx, dt=soliton_dt, gamma=soliton_gamma)
+        beta = float(beta_values[min(frame_index, len(beta_values) - 1)])
+        for _ in range(2):
+            soliton_field = step_soliton(soliton_field, beta=beta, dx=dx, dt=soliton_dt, gamma=gamma)
             soliton_history.append(soliton_field.copy())
-            soliton_history[:] = soliton_history[-history:]
+            soliton_history[:] = soliton_history[-80:]
 
         soliton_im.set_data(np.vstack(soliton_history))
         soliton_im.set_extent([x.min(), x.max(), 0, len(soliton_history)])
+        beta_text.set_text(f"β(t) = {beta:.3f} | σ(β(R-Θ))")
 
-        # Chimera dynamics
-        phases = step_chimera(phases, omegas, coupling_matrix, beta=beta, dt=chimera_dt)
-        local_order = compute_local_order_parameter(phases, window_size=16)
-        chimera_scatter.set_offsets(np.stack([np.cos(phases), np.sin(phases)], axis=-1))
-        chimera_scatter.set_array(local_order)
+        idx = min(frame_index, frames - 1)
+        alive_line.set_data(time_axis[: idx + 1], pressure_data["alive"][: idx + 1])
+        pressure_line.set_data(time_axis[: idx + 1], pressure_data["pressure"][: idx + 1])
 
-        # Horizon membrane
-        density, accessibility, horizon_radius = step_horizon(
-            r=r,
-            base_mass=base_mass,
-            beta=beta,
-            theta=theta,
-            t=t,
-            evaporation_constant=evaporation_constant,
-        )
-        horizon_line.set_data(r, accessibility)
-        density_line.set_data(r, density / density.max())
-        horizon_marker.set_xdata([horizon_radius, horizon_radius])
+        if idx >= pressure_data["failure_index"]:
+            failure_marker.set_offsets([[pressure_data["failure_index"], pressure_data["alive"][pressure_data["failure_index"]]]])
 
-        # Progress + resonance logging
-        beta_text.set_text(f"β = {beta:.3f} | σ(β(R-Θ)) Sweep")
-        if not resonance_log_done and beta >= resonance_beta:
-            resonance_log_done = True
+        progress = min(1.0, (frame_index + 1) / frames)
+        for bar, count in zip(bars, beta_counts):
+            bar.set_height(count * progress)
+
+        if not resonance_logged and beta >= resonance:
+            resonance_logged = True
             check = verify_hex_alignment(beta, tolerance=0.02)
-            LOGGER.info("✨ Resonanzpunkt erreicht: β=%.3f | status=%s | Δ=%.3f", beta, check.get("status"), check.get("deviation"))
+            LOGGER.info(
+                "✨ Resonanzpunkt erreicht: β=%.3f | status=%s | Δ=%.3f | observe=%d",
+                beta,
+                check.get("status"),
+                check.get("deviation"),
+                pressure_data["observe_only"],
+            )
 
-        slider_marker.set_data([beta], [0.5])
-        slider_label.set_color("#b0ffb4" if abs(beta - resonance_beta) < 1e-3 else "#ffdd99")
-
-        t += dt_time
-
-        return soliton_im, chimera_scatter, horizon_line, density_line, horizon_marker, beta_text
+        return soliton_im, alive_line, pressure_line, failure_marker, *bars
 
     anim = animation.FuncAnimation(
         fig,
         update,
-        frames=len(beta_values),
+        frames=frames,
         interval=1000 / fps,
         blit=False,
     )
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    writer: animation.AbstractMovieWriter
     if output_path.suffix.lower() == ".gif":
-        writer = animation.PillowWriter(fps=fps)
+        writer: animation.AbstractMovieWriter = animation.PillowWriter(fps=fps)
     else:
-        if animation.writers.is_available("ffmpeg"):
-            writer = animation.FFMpegWriter(fps=fps)
-        else:
-            writer = animation.PillowWriter(fps=fps)
+        writer = animation.FFMpegWriter(fps=fps) if animation.writers.is_available("ffmpeg") else animation.PillowWriter(fps=fps)
 
     LOGGER.info("🎥 Rendering Resonanz-Kino → %s", output_path)
     anim.save(output_path, writer=writer, dpi=130)
@@ -297,14 +248,13 @@ def create_dashboard_animation(
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Create the Resonanz-Panoptikum dashboard animation.")
-    parser.add_argument("--output", type=Path, default=Path("resonance_convergence.mp4"), help="Target file (.mp4 or .gif)")
-    parser.add_argument("--frames", type=int, default=150, help="Number of frames for the sweep")
-    parser.add_argument("--fps", type=int, default=20, help="Frames per second for the writer")
-    parser.add_argument("--beta-min", type=float, default=4.0, dest="beta_min", help="Starting β value")
-    parser.add_argument("--beta-max", type=float, default=6.0, dest="beta_max", help="Final β value")
-    parser.add_argument("--history", type=int, default=80, help="History depth for soliton heatmap")
-    parser.add_argument("--dry-run", action="store_true", help="Skip saving; run setup to validate pipeline")
+    parser = argparse.ArgumentParser(description="Resonanz-Kino Dashboard (Soliton · Druck · Hex-Level)")
+    parser.add_argument("--output", type=Path, default=Path("output/resonance_kino.mp4"), help="Zieldatei (.mp4 oder .gif)")
+    parser.add_argument("--frames", type=int, default=140, help="Anzahl Frames für die Animation")
+    parser.add_argument("--fps", type=int, default=18, help="Frames pro Sekunde")
+    parser.add_argument("--beta-min", type=float, default=4.0, dest="beta_min", help="Startwert β")
+    parser.add_argument("--beta-max", type=float, default=5.2, dest="beta_max", help="Endwert β")
+    parser.add_argument("--dry-run", action="store_true", help="Nur Pipeline testen, kein Rendern")
     return parser.parse_args(argv)
 
 
@@ -312,12 +262,12 @@ def main(argv: Sequence[str] | None = None) -> None:
     args = parse_args(argv)
 
     logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
-    LOGGER.info("Permission Request: Do you accept this task? We aim for joyful co-creation.")
+    LOGGER.info("Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.")
 
     if args.dry_run:
-        LOGGER.info("Dry-run aktiviert – Pipeline wird aufgebaut, kein Render-Output.")
-        schedule = beta_schedule(args.frames, beta_min=args.beta_min, beta_resonance=HEX_RESONANCE_BETA, beta_max=args.beta_max)
+        schedule = beta_schedule(args.frames, args.beta_min, args.beta_max, HEX_RESONANCE_BETA)
         LOGGER.info("Frames: %d | β-range: [%.2f, %.2f] | Resonanz=%.3f", len(schedule), schedule.min(), schedule.max(), HEX_RESONANCE_BETA)
+        LOGGER.info("Skipping render (dry-run).")
         return
 
     output = create_dashboard_animation(
@@ -326,10 +276,9 @@ def main(argv: Sequence[str] | None = None) -> None:
         fps=args.fps,
         beta_min=args.beta_min,
         beta_max=args.beta_max,
-        resonance_beta=HEX_RESONANCE_BETA,
-        history=args.history,
+        resonance=HEX_RESONANCE_BETA,
     )
-    LOGGER.info("Fertig! Resonanz-Zyklus gespeichert unter %s", output)
+    LOGGER.info("Fertig! Resonanz-Kino gespeichert unter %s", output)
 
 
 if __name__ == "__main__":
