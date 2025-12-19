@@ -55,6 +55,12 @@ class CrystalGardener(SigmaPhiGardener):
         self.heartbeat_cycle = 0  # V16: Rhythmic pulse counter
         self.vitality_transfers: List[Dict[str, object]] = []
 
+        # V17: Phoenix Protocol - Reserve pool for quantum reincarnation
+        self.shadow_pool: List[Dict[str, float]] = []
+        self.phoenix_transfers: List[Dict[str, object]] = []
+        self.phoenix_cooldowns: Dict[str, int] = {}  # Agent ID -> last transfer timestep
+        self._initialize_shadow_pool(pool_size=12)
+
     def transfer_vitality(
         self,
         agent_states: Dict[str, Dict[str, float]],
@@ -124,6 +130,86 @@ class CrystalGardener(SigmaPhiGardener):
             print(f"💓 Symbiotic Pulse: {len(transfer_log)} energy transfers completed")
 
         return modified_states
+
+    def _initialize_shadow_pool(self, pool_size: int = 12) -> None:
+        """V17: Create a reserve pool of 'fresh' agent states for reincarnation.
+
+        Each shadow agent is a pristine state at ideal starting conditions,
+        ready to receive the pattern (memory/coupling) of a dying agent.
+        """
+        for i in range(pool_size):
+            shadow_state = {
+                "sigma_phi": 0.0625,  # Golden ratio starting point
+                "entropy": 0.0,
+                "temperature": 1.0,
+                "kappa_total": 0.0,
+                "resonance_quality": 0.8,
+                "age": 0,
+                "reincarnation_count": 0,
+            }
+            self.shadow_pool.append(shadow_state)
+
+    def phoenix_transfer(
+        self,
+        dying_agent_id: str,
+        dying_state: Dict[str, float],
+        timestep: int,
+    ) -> Dict[str, float]:
+        """V17: Transfer the 'soul' (pattern) from a dying agent to a fresh shadow.
+
+        The body dies, but the information (sigma_phi trend, resonance quality)
+        survives by being copied to a new vessel. This is quantum reincarnation.
+
+        Returns the reborn agent state.
+        """
+        if not self.shadow_pool:
+            # No shadows available - agent truly dies
+            print(f"⚠️ PHOENIX POOL EMPTY: {dying_agent_id} has no reincarnation vessel!")
+            return dying_state
+
+        # Take a shadow from the pool
+        shadow_state = self.shadow_pool.pop(0)
+
+        # Transfer the 'soul' - preserve learned patterns but refresh vitality
+        # CRITICAL: Set σ_φ to EXACT golden ratio (not clamped range) to maximize stability
+        reborn_state = {
+            "sigma_phi": 0.0625,  # Perfect golden ratio - maximize survival chance
+            "entropy": 0.0,  # Pristine entropy
+            "temperature": 1.0,  # Fresh temperature
+            "kappa_total": dying_state.get("kappa_total", 0.0) * 0.5,  # Light memory
+            "resonance_quality": 0.85,  # High resonance quality
+            "age": 0,  # Reborn as young
+            "reincarnation_count": dying_state.get("reincarnation_count", 0) + 1,
+        }
+
+        # Log the transfer
+        self.phoenix_transfers.append({
+            "timestep": timestep,
+            "dying_agent": dying_agent_id,
+            "dying_sigma_phi": dying_state.get("sigma_phi", 0.0),
+            "reborn_sigma_phi": reborn_state["sigma_phi"],
+            "reincarnation_count": reborn_state["reincarnation_count"],
+        })
+
+        print(f"🔥 PHOENIX TRANSFER: {dying_agent_id} dies, reborn with σ_φ={reborn_state['sigma_phi']:.4f} (Life #{reborn_state['reincarnation_count']})")
+
+        # Replenish the shadow pool
+        self._replenish_shadow_pool()
+
+        return reborn_state
+
+    def _replenish_shadow_pool(self) -> None:
+        """V17: Add a new shadow to the pool when one is consumed."""
+        shadow_state = {
+            "sigma_phi": 0.0625,
+            "entropy": 0.0,
+            "temperature": 1.0,
+            "kappa_total": 0.0,
+            "resonance_quality": 0.8,
+            "age": 0,
+            "reincarnation_count": 0,
+        }
+        self.shadow_pool.append(shadow_state)
 
     def form_mycelial_network(
         self, ecosystem: Dict[str, object], current_pressure: float
@@ -214,6 +300,31 @@ class CrystalGardener(SigmaPhiGardener):
         if network_context["network_engaged"] and self.heartbeat_cycle == 0:
             agent_states = self.transfer_vitality(agent_states, agent_ids, timestep)
 
+        # V17: Phoenix Protocol - Check for dying agents and trigger reincarnation
+        # Cooldown prevents rapid re-transfer loops
+        PHOENIX_COOLDOWN = 20  # Minimum timesteps between transfers for same agent
+
+        for agent_id in agent_ids:
+            if agent_id not in agent_states:
+                continue
+
+            state = agent_states[agent_id]
+            sigma_phi = state.get("sigma_phi", 0.0)
+
+            # Check cooldown
+            last_transfer = self.phoenix_cooldowns.get(agent_id, -1000)
+            if timestep - last_transfer < PHOENIX_COOLDOWN:
+                continue  # Skip - agent recently transferred
+
+            # Calculate health (proximity to golden ratio + being alive)
+            health = 1.0 - abs(sigma_phi - 0.0625) if is_alive(sigma_phi) else 0.0
+
+            # Trigger phoenix transfer if TRULY dying (health < 5% OR dead)
+            if health < 0.05 or not is_alive(sigma_phi):
+                reborn_state = self.phoenix_transfer(agent_id, state, timestep)
+                agent_states[agent_id] = reborn_state
+                self.phoenix_cooldowns[agent_id] = timestep
+
         for i, agent_id in enumerate(agent_ids):
             if agent_id not in agent_states:
                 continue
@@ -267,7 +378,10 @@ class CrystalGardener(SigmaPhiGardener):
         threat_signature = threat_signature or {}
         network_context = network_context or {}
         effective_pressure = network_context.get("effective_pressure", current_pressure)
-        lazarus_mode = bool(threat_signature.get("lazarus_mode"))
+
+        # V17: Lazarus Mode DISABLED - superseded by Phoenix Protocol (quantum reincarnation)
+        # Phoenix transfers handle dying agents gracefully by moving their pattern to fresh vessels
+        lazarus_mode = False  # bool(threat_signature.get("lazarus_mode"))
         if lazarus_mode and not self.lazarus_mode_active:
             self.lazarus_mode_active = True
             print(
@@ -478,7 +592,7 @@ class CrystalGardener(SigmaPhiGardener):
         }
 
     def get_cultivation_summary(self) -> Dict[str, object]:
-        """Extend base summary with network telemetry."""
+        """Extend base summary with network telemetry and Phoenix Protocol stats."""
 
         summary = super().get_cultivation_summary()
         summary.update(
@@ -491,6 +605,10 @@ class CrystalGardener(SigmaPhiGardener):
                 "vitality_transfers": len(self.vitality_transfers),
                 "recent_vitality_transfers": self.vitality_transfers[-10:],
                 "heartbeat_cycle": self.heartbeat_cycle,
+                # V17: Phoenix Protocol statistics
+                "phoenix_transfers": len(self.phoenix_transfers),
+                "recent_phoenix_transfers": self.phoenix_transfers[-10:],
+                "shadow_pool_size": len(self.shadow_pool),
             }
         )
         return summary
