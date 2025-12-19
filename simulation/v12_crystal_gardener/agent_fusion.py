@@ -105,7 +105,22 @@ class CrystalGardener(SigmaPhiGardener):
         under harsh environments.
         """
 
-        encoded = self._encode_action_vector(assessment)
+        context = {
+            "pressure": current_pressure,
+            "temperature": assessment.temperature,
+        }
+        contextual_resonance = self.translator.get_contextual_resonance(
+            assessment.recommended_action.value, context
+        )
+
+        adjusted_assessment = assessment
+        suggested_word = contextual_resonance.get("suggested_word")
+        if suggested_word and suggested_word != assessment.recommended_action.value:
+            adjusted_assessment = replace(
+                assessment, recommended_action=CultivationAction(suggested_word)
+            )
+
+        encoded = self._encode_action_vector(adjusted_assessment)
         dream = self.inner_oracle.dream(encoded)
         resonance_state = dream.final_state
         sigma_phi_est = self._estimate_sigma_phi(resonance_state)
@@ -120,7 +135,9 @@ class CrystalGardener(SigmaPhiGardener):
         acceptance_max = self.sigma_phi_target + scaled_tolerance
 
         veto = sigma_phi_est < acceptance_min or sigma_phi_est > acceptance_max
-        survival_action = assessment.recommended_action != CultivationAction.OBSERVE
+        survival_action = (
+            adjusted_assessment.recommended_action != CultivationAction.OBSERVE
+        )
 
         if (
             veto
@@ -131,8 +148,8 @@ class CrystalGardener(SigmaPhiGardener):
             veto = False
 
         decision = "pass"
-        new_action = assessment.recommended_action
-        new_strength = assessment.action_strength
+        new_action = adjusted_assessment.recommended_action
+        new_strength = adjusted_assessment.action_strength
 
         if veto:
             decision = "veto"
@@ -141,13 +158,13 @@ class CrystalGardener(SigmaPhiGardener):
             self.oracle_vetoes += 1
         elif translation.state == "LUCID_RESONANCE":
             decision = "resonance_boost"
-            new_strength = min(1.0, assessment.action_strength * 1.2)
+            new_strength = min(1.0, adjusted_assessment.action_strength * 1.2)
             self.resonance_assists += 1
 
         self.oracle_journal.append(
             {
-                "agent_id": assessment.agent_id,
-                "proposed_action": assessment.recommended_action.value,
+                "agent_id": adjusted_assessment.agent_id,
+                "proposed_action": adjusted_assessment.recommended_action.value,
                 "final_action": new_action.value,
                 "sigma_phi_est": sigma_phi_est,
                 "coherence": global_coherence,
@@ -155,15 +172,20 @@ class CrystalGardener(SigmaPhiGardener):
                 "decision": decision,
                 "pressure_atm": current_pressure,
                 "tolerance": scaled_tolerance,
+                "contextual_resonance": contextual_resonance,
             }
         )
 
-        if new_action != assessment.recommended_action or not np.isclose(
-            new_strength, assessment.action_strength
+        if new_action != adjusted_assessment.recommended_action or not np.isclose(
+            new_strength, adjusted_assessment.action_strength
         ):
-            return replace(assessment, recommended_action=new_action, action_strength=new_strength)
+            return replace(
+                adjusted_assessment,
+                recommended_action=new_action,
+                action_strength=new_strength,
+            )
 
-        return assessment
+        return adjusted_assessment
 
     def _encode_action_vector(self, assessment: AgentHealth) -> np.ndarray:
         """Encode an action and health snapshot into a 16D seed."""
