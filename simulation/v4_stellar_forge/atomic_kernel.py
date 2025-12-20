@@ -1,9 +1,10 @@
 """Atomic kernel for V4 stellar forge.
 
 This module defines atomic agents as physically grounded entities whose mind
-vectors encode basic quantum numbers. The presets allow quick construction of
-hydrogen, helium, photon, and compact remnant agents that participate in
-nucleosynthesis on the hex lattice.
+vectors encode basic quantum numbers. The presets span light and heavy
+elements (H, He, C, O, Si, Fe) as well as photon and compact remnant agents
+that participate in nucleosynthesis on the hex lattice. Compact remnants track
+their Schwarzschild-like horizon as they grow.
 """
 
 from __future__ import annotations
@@ -20,6 +21,8 @@ from simulation.v4_cosmos.entity import CosmicEntity
 HYDROGEN_MASS = 1.007  # AMU
 HELIUM_MASS = 4.0026  # AMU
 CARBON_MASS = 12.0  # AMU
+OXYGEN_MASS = 16.0  # AMU
+SILICON_MASS = 28.0  # AMU
 IRON_MASS = 56.0  # AMU
 NEUTRON_STAR_MASS = 100.0
 BLACK_HOLE_SEED_MASS = 500.0
@@ -136,6 +139,44 @@ class AtomAgent(CosmicEntity):
             coord,
             mass=CARBON_MASS,
             charge=+6.0,
+            temperature=temperature,
+            velocity=velocity,
+        )
+
+    @classmethod
+    def oxygen(
+        cls,
+        agent_id: str,
+        coord: HexCoord,
+        temperature: float = 0.0,
+        velocity: Iterable[float] | None = None,
+    ) -> "AtomAgent":
+        """Preset for an oxygen nucleus."""
+
+        return cls.from_quantum(
+            agent_id,
+            coord,
+            mass=OXYGEN_MASS,
+            charge=+8.0,
+            temperature=temperature,
+            velocity=velocity,
+        )
+
+    @classmethod
+    def silicon(
+        cls,
+        agent_id: str,
+        coord: HexCoord,
+        temperature: float = 0.0,
+        velocity: Iterable[float] | None = None,
+    ) -> "AtomAgent":
+        """Preset for a silicon nucleus."""
+
+        return cls.from_quantum(
+            agent_id,
+            coord,
+            mass=SILICON_MASS,
+            charge=+14.0,
             temperature=temperature,
             velocity=velocity,
         )
@@ -289,4 +330,5 @@ class BlackHoleAgent(AtomAgent):
         )
         self.mass = total_mass
         self.event_horizon = self.schwarzschild_radius(self.mass)
+        self.mind_state[0] = self.mass
 
