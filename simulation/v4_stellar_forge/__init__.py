@@ -6,4 +6,7 @@ __all__ = [
     "protostar_demo",
     "physics_engine",
     "big_bang_renderer",
+    "universe_dna",
+    "multiverse_manager",
+    "run_multiverse",
 ]

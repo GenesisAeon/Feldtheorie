@@ -6,6 +6,7 @@ ignition in a compact 2D timeline that can be stitched into a GIF.
 """
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 from typing import Iterable, List
 
@@ -16,9 +17,12 @@ from matplotlib.patches import Circle
 from simulation.v4_stellar_forge.physics_engine import (
     AtomAgent,
     ElementTypes,
+    apply_universe_dna,
+    current_universe_dna,
     gravity_step,
     fusion_step,
 )
+from simulation.v4_stellar_forge.universe_dna import UniverseDNA
 
 plt.switch_backend("Agg")
 
@@ -32,10 +36,12 @@ class BigBangRenderer:
         explosive_force: float = 1.5,
         swirl_factor: float = 0.4,
         seed: int = 42,
+        dna: UniverseDNA | None = None,
     ) -> None:
         self.explosive_force = explosive_force
         self.swirl_factor = swirl_factor
         self.random_state = np.random.default_rng(seed)
+        self.dna = dna or current_universe_dna()
         self.particles: List[AtomAgent] = []
 
     def initialize_bang(self, count: int = 150, radius: float = 2.0) -> None:
@@ -222,7 +228,7 @@ class BigBangRenderer:
 
     def _step_physics(self) -> None:
         gravity_step(self.particles)
-        self.particles = fusion_step(self.particles)
+        self.particles = fusion_step(self.particles, dna=self.dna)
 
     def run_timeline(self, frames: int = 200, output_dir: str | Path = "output/v4_frames") -> None:
         """Run the physics loop and persist each frame to disk."""
@@ -238,7 +244,9 @@ class BigBangRenderer:
             frame_path = frame_dir / f"frame_{idx:03d}.png"
             self._render_frame(frame_path)
 
-        print("Timeline generated in output/v4_frames/. Use a GIF tool to watch the star be born.")
+        print(
+            f"Timeline generated in {frame_dir}/. Use a GIF tool to watch the star be born."
+        )
 
 
 def _unit_vector(vector: Iterable[float]) -> np.ndarray:
@@ -249,7 +257,39 @@ def _unit_vector(vector: Iterable[float]) -> np.ndarray:
     return vec / norm
 
 
-if __name__ == "__main__":
-    renderer = BigBangRenderer()
+def _parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Render a primordial universe timeline.")
+    parser.add_argument(
+        "--seed",
+        type=str,
+        default="42",
+        help="Integer seed or JSON-encoded UniverseDNA payload",
+    )
+    parser.add_argument(
+        "--frames",
+        type=int,
+        default=200,
+        help="Number of frames to render",
+    )
+    parser.add_argument(
+        "--output",
+        type=str,
+        default="output/v4_frames",
+        help="Directory to store rendered frames",
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = _parse_args()
+    dna, rng_seed = UniverseDNA.from_seed_token(args.seed)
+    if dna is not None:
+        apply_universe_dna(dna)
+
+    renderer = BigBangRenderer(seed=rng_seed, dna=dna)
     renderer.initialize_bang()
-    renderer.run_timeline()
+    renderer.run_timeline(frames=args.frames, output_dir=args.output)
+
+
+if __name__ == "__main__":
+    main()
