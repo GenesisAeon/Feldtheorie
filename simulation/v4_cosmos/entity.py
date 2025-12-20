@@ -7,7 +7,7 @@ import numpy as np
 from simulation.v3_noosphere.cognitive.mind_vector import CognitiveAgent
 from simulation.v3_noosphere.spatial.hex_lattice import HexCoord
 
-COSMIC_TYPES = {"PARTICLE", "PLANET", "STAR"}
+COSMIC_TYPES = {"PARTICLE", "PLANET", "STAR", "PHOTON"}
 
 
 @dataclass
@@ -25,7 +25,10 @@ class CosmicEntity(CognitiveAgent):
 
     def __post_init__(self) -> None:
         super().__post_init__()
-        if self.mass <= 0:
+        if self.type == "PHOTON":
+            if self.mass != 0:
+                raise ValueError("Photons must be massless")
+        elif self.mass <= 0:
             raise ValueError("CosmicEntity mass must be positive")
 
         if self.velocity.shape != (2,):
@@ -46,6 +49,9 @@ class CosmicEntity(CognitiveAgent):
             planet_threshold: Mass at which particles become planets.
             star_threshold: Mass at which planets ignite into stars.
         """
+
+        if self.type == "PHOTON":
+            return
 
         if self.mass >= star_threshold:
             self.type = "STAR"
