@@ -11,6 +11,7 @@ from typing import Iterable, List
 
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.patches import Circle
 
 from simulation.v4_stellar_forge.physics_engine import (
     AtomAgent,
@@ -78,9 +79,12 @@ class BigBangRenderer:
         hydrogen_x, hydrogen_y = [], []
         helium_x, helium_y = [], []
         carbon_x, carbon_y = [], []
+        oxygen_x, oxygen_y = [], []
+        silicon_x, silicon_y = [], []
         iron_x, iron_y = [], []
-        remnant_x, remnant_y, remnant_sizes = [], [], []
+        remnant_x, remnant_y, remnant_sizes, remnant_colors = [], [], [], []
         photon_segments = []
+        horizon_patches: List[Circle] = []
 
         for particle in self.particles:
             if particle.element is ElementTypes.HYDROGEN:
@@ -92,13 +96,34 @@ class BigBangRenderer:
             elif particle.element is ElementTypes.CARBON:
                 carbon_x.append(particle.position[0])
                 carbon_y.append(particle.position[1])
+            elif particle.element is ElementTypes.OXYGEN:
+                oxygen_x.append(particle.position[0])
+                oxygen_y.append(particle.position[1])
+            elif particle.element is ElementTypes.SILICON:
+                silicon_x.append(particle.position[0])
+                silicon_y.append(particle.position[1])
             elif particle.element is ElementTypes.IRON:
                 iron_x.append(particle.position[0])
                 iron_y.append(particle.position[1])
             elif particle.element in (ElementTypes.NEUTRON_STAR, ElementTypes.BLACK_HOLE):
                 remnant_x.append(particle.position[0])
                 remnant_y.append(particle.position[1])
-                remnant_sizes.append(80 if particle.element is ElementTypes.NEUTRON_STAR else 120)
+                if particle.element is ElementTypes.NEUTRON_STAR:
+                    remnant_sizes.append(80)
+                    remnant_colors.append(ElementTypes.NEUTRON_STAR.color)
+                else:
+                    remnant_sizes.append(120)
+                    remnant_colors.append(ElementTypes.BLACK_HOLE.color)
+                    horizon_patches.append(
+                        Circle(
+                            particle.position,
+                            radius=max(0.2, particle.event_horizon),
+                            fill=False,
+                            edgecolor="#888888",
+                            linewidth=1.2,
+                            alpha=0.7,
+                        )
+                    )
             else:
                 start = particle.position - particle.velocity * 0.3
                 end = particle.position + particle.velocity * 0.3
@@ -135,6 +160,28 @@ class BigBangRenderer:
                 linewidths=0.4,
                 label="C",
             )
+        if oxygen_x:
+            ax.scatter(
+                oxygen_x,
+                oxygen_y,
+                s=75,
+                c=ElementTypes.OXYGEN.color,
+                alpha=0.9,
+                edgecolors="white",
+                linewidths=0.4,
+                label="O",
+            )
+        if silicon_x:
+            ax.scatter(
+                silicon_x,
+                silicon_y,
+                s=80,
+                c=ElementTypes.SILICON.color,
+                alpha=0.9,
+                edgecolors="white",
+                linewidths=0.4,
+                label="Si",
+            )
         if iron_x:
             ax.scatter(
                 iron_x,
@@ -151,12 +198,14 @@ class BigBangRenderer:
                 remnant_x,
                 remnant_y,
                 s=remnant_sizes,
-                c=[ElementTypes.NEUTRON_STAR.color if size == 80 else ElementTypes.BLACK_HOLE.color for size in remnant_sizes],
+                c=remnant_colors,
                 alpha=0.95,
                 edgecolors="white",
                 linewidths=0.6,
                 label="Remnant",
             )
+        for patch in horizon_patches:
+            ax.add_patch(patch)
         for start, end in photon_segments:
             ax.plot(
                 [start[0], end[0]],

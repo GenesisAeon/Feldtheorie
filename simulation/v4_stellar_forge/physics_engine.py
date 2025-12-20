@@ -20,6 +20,8 @@ class ElementTypes(str, Enum):
     HYDROGEN = "HYDROGEN"
     HELIUM = "HELIUM"
     CARBON = "CARBON"
+    OXYGEN = "OXYGEN"
+    SILICON = "SILICON"
     IRON = "IRON"
     NEUTRON_STAR = "NEUTRON_STAR"
     BLACK_HOLE = "BLACK_HOLE"
@@ -33,6 +35,8 @@ class ElementTypes(str, Enum):
             ElementTypes.HYDROGEN: "#3399ff",  # blue
             ElementTypes.HELIUM: "#ff4d4d",  # bright red
             ElementTypes.CARBON: "#9c27b0",  # purple
+            ElementTypes.OXYGEN: "#4caf50",  # green
+            ElementTypes.SILICON: "#00bcd4",  # cyan
             ElementTypes.IRON: "#ff9800",  # orange
             ElementTypes.NEUTRON_STAR: "#cfd8dc",  # soft gray
             ElementTypes.BLACK_HOLE: "#111111",  # near-black
@@ -83,6 +87,8 @@ MASS_BY_ELEMENT = {
     ElementTypes.HYDROGEN: 1.0,
     ElementTypes.HELIUM: 4.0,
     ElementTypes.CARBON: 12.0,
+    ElementTypes.OXYGEN: 16.0,
+    ElementTypes.SILICON: 28.0,
     ElementTypes.IRON: 56.0,
     ElementTypes.NEUTRON_STAR: 100.0,
     ElementTypes.BLACK_HOLE: 500.0,
@@ -134,40 +140,63 @@ def _unit_vector(seed_vector: Iterable[float]) -> np.ndarray:
 def fusion_step(particles: Sequence[AtomAgent]) -> List[AtomAgent]:
     """Apply staged fusion, core collapse, and mass ejection events."""
 
-    post_hydrogen = _fuse_clusters(
-        particles,
-        source_element=ElementTypes.HYDROGEN,
-        distance=FUSION_DISTANCE,
-        min_cluster_size=3,
-        product_element=ElementTypes.HELIUM,
-        product_mass=MASS_BY_ELEMENT[ElementTypes.HELIUM],
-        velocity_scale=0.2,
-        emit_photon=True,
-    )
+    chain = [
+        {
+            "source": ElementTypes.HYDROGEN,
+            "distance": FUSION_DISTANCE,
+            "min_cluster": 3,
+            "product": ElementTypes.HELIUM,
+            "velocity_scale": 0.2,
+            "emit_photon": True,
+        },
+        {
+            "source": ElementTypes.HELIUM,
+            "distance": FUSION_DISTANCE * 0.7,
+            "min_cluster": 3,
+            "product": ElementTypes.CARBON,
+            "velocity_scale": 0.15,
+            "emit_photon": True,
+        },
+        {
+            "source": ElementTypes.CARBON,
+            "distance": FUSION_DISTANCE * 0.8,
+            "min_cluster": 2,
+            "product": ElementTypes.OXYGEN,
+            "velocity_scale": 0.12,
+            "emit_photon": True,
+        },
+        {
+            "source": ElementTypes.OXYGEN,
+            "distance": FUSION_DISTANCE * 0.8,
+            "min_cluster": 2,
+            "product": ElementTypes.SILICON,
+            "velocity_scale": 0.11,
+            "emit_photon": False,
+        },
+        {
+            "source": ElementTypes.SILICON,
+            "distance": FUSION_DISTANCE * 0.9,
+            "min_cluster": 2,
+            "product": ElementTypes.IRON,
+            "velocity_scale": 0.1,
+            "emit_photon": False,
+        },
+    ]
 
-    post_helium = _fuse_clusters(
-        post_hydrogen,
-        source_element=ElementTypes.HELIUM,
-        distance=FUSION_DISTANCE * 0.7,
-        min_cluster_size=3,
-        product_element=ElementTypes.CARBON,
-        product_mass=MASS_BY_ELEMENT[ElementTypes.CARBON],
-        velocity_scale=0.15,
-        emit_photon=True,
-    )
+    state: List[AtomAgent] = list(particles)
+    for stage in chain:
+        state = _fuse_clusters(
+            state,
+            source_element=stage["source"],
+            distance=stage["distance"],
+            min_cluster_size=stage["min_cluster"],
+            product_element=stage["product"],
+            product_mass=MASS_BY_ELEMENT[stage["product"]],
+            velocity_scale=stage["velocity_scale"],
+            emit_photon=stage["emit_photon"],
+        )
 
-    post_carbon = _fuse_clusters(
-        post_helium,
-        source_element=ElementTypes.CARBON,
-        distance=FUSION_DISTANCE * 0.8,
-        min_cluster_size=2,
-        product_element=ElementTypes.IRON,
-        product_mass=MASS_BY_ELEMENT[ElementTypes.IRON],
-        velocity_scale=0.1,
-        emit_photon=False,
-    )
-
-    after_supernova = _supernova_step(post_carbon)
+    after_supernova = _supernova_step(state)
     return after_supernova
 
 
