@@ -7,13 +7,16 @@ ignition in a compact 2D timeline that can be stitched into a GIF.
 from __future__ import annotations
 
 import argparse
+import base64
+import json
 from pathlib import Path
-from typing import Iterable, List
+from typing import Iterable, List, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import Circle
 
+from simulation.v4_stellar_forge import multiverse_manager
 from simulation.v4_stellar_forge.physics_engine import (
     AtomAgent,
     ElementTypes,
@@ -241,8 +244,12 @@ class BigBangRenderer:
 
         for idx in range(frames):
             self._step_physics()
+            multiverse_manager.process_queue()
             frame_path = frame_dir / f"frame_{idx:03d}.png"
             self._render_frame(frame_path)
+
+        # Final sweep to ensure any queued universes launch before exit
+        multiverse_manager.process_queue()
 
         print(
             f"Timeline generated in {frame_dir}/. Use a GIF tool to watch the star be born."
@@ -266,6 +273,12 @@ def _parse_args() -> argparse.Namespace:
         help="Integer seed or JSON-encoded UniverseDNA payload",
     )
     parser.add_argument(
+        "--dna",
+        type=str,
+        default=None,
+        help="Base64-encoded JSON UniverseDNA payload. Overrides --seed if provided.",
+    )
+    parser.add_argument(
         "--frames",
         type=int,
         default=200,
@@ -277,14 +290,57 @@ def _parse_args() -> argparse.Namespace:
         default="output/v4_frames",
         help="Directory to store rendered frames",
     )
+    parser.add_argument(
+        "--gen",
+        type=int,
+        default=0,
+        help="Generation index of this universe",
+    )
+    parser.add_argument(
+        "--universe-id",
+        type=str,
+        default="local",
+        help="Identifier assigned by the multiverse manager",
+    )
+    parser.add_argument(
+        "--parent-id",
+        type=str,
+        default=None,
+        help="Identifier of the parent universe, if any",
+    )
     return parser.parse_args()
+
+
+def _decode_dna(encoded: str | None) -> Tuple[UniverseDNA | None, int]:
+    if not encoded:
+        return None, 0
+
+    try:
+        decoded = base64.urlsafe_b64decode(encoded.encode("utf-8"))
+        payload = json.loads(decoded.decode("utf-8"))
+    except (ValueError, json.JSONDecodeError, KeyError):
+        return None, 0
+
+    dna = UniverseDNA(
+        gravity_const=float(payload["gravity_const"]),
+        fusion_threshold=float(payload["fusion_threshold"]),
+        entropy_rate=float(payload["entropy_rate"]),
+        mutation_scale=float(payload.get("mutation_scale", 0.05)),
+    )
+    seed_token = dna.to_seed_token()
+    _, rng_seed = UniverseDNA.from_seed_token(seed_token)
+    return dna, rng_seed
 
 
 def main() -> None:
     args = _parse_args()
-    dna, rng_seed = UniverseDNA.from_seed_token(args.seed)
+    dna, rng_seed = _decode_dna(args.dna)
+    if dna is None:
+        dna, rng_seed = UniverseDNA.from_seed_token(args.seed)
     if dna is not None:
         apply_universe_dna(dna)
+
+    multiverse_manager.set_local_context(args.universe_id, args.gen)
 
     renderer = BigBangRenderer(seed=rng_seed, dna=dna)
     renderer.initialize_bang()

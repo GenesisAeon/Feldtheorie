@@ -319,8 +319,12 @@ def check_supernova(remnant: AtomAgent, dna: UniverseDNA) -> None:
     if remnant.element is not ElementTypes.BLACK_HOLE:
         return
 
-    universe_id = multiverse_manager.spawn_child_universe(dna, remnant.mass)
-    print(f"🌌 SINGULARITY REACHED. Spawning Universe #{universe_id}.")
+    parent_id = multiverse_manager.local_universe_id()
+    multiverse_manager.request_genesis(dna, remnant.mass, parent_id)
+    print(
+        "🌌 SINGULARITY REACHED. Queueing child universe from",
+        f"parent {parent_id or 'unknown'} with mass {remnant.mass:.1f}.",
+    )
 
 
 def _supernova_step(
