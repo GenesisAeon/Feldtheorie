@@ -4,4 +4,6 @@ __all__ = [
     "atomic_kernel",
     "universal_forces",
     "protostar_demo",
+    "physics_engine",
+    "big_bang_renderer",
 ]
