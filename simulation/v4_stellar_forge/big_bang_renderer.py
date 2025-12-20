@@ -77,6 +77,9 @@ class BigBangRenderer:
 
         hydrogen_x, hydrogen_y = [], []
         helium_x, helium_y = [], []
+        carbon_x, carbon_y = [], []
+        iron_x, iron_y = [], []
+        remnant_x, remnant_y, remnant_sizes = [], [], []
         photon_segments = []
 
         for particle in self.particles:
@@ -86,6 +89,16 @@ class BigBangRenderer:
             elif particle.element is ElementTypes.HELIUM:
                 helium_x.append(particle.position[0])
                 helium_y.append(particle.position[1])
+            elif particle.element is ElementTypes.CARBON:
+                carbon_x.append(particle.position[0])
+                carbon_y.append(particle.position[1])
+            elif particle.element is ElementTypes.IRON:
+                iron_x.append(particle.position[0])
+                iron_y.append(particle.position[1])
+            elif particle.element in (ElementTypes.NEUTRON_STAR, ElementTypes.BLACK_HOLE):
+                remnant_x.append(particle.position[0])
+                remnant_y.append(particle.position[1])
+                remnant_sizes.append(80 if particle.element is ElementTypes.NEUTRON_STAR else 120)
             else:
                 start = particle.position - particle.velocity * 0.3
                 end = particle.position + particle.velocity * 0.3
@@ -110,6 +123,39 @@ class BigBangRenderer:
                 edgecolors="white",
                 linewidths=0.5,
                 label="He",
+            )
+        if carbon_x:
+            ax.scatter(
+                carbon_x,
+                carbon_y,
+                s=70,
+                c=ElementTypes.CARBON.color,
+                alpha=0.9,
+                edgecolors="white",
+                linewidths=0.4,
+                label="C",
+            )
+        if iron_x:
+            ax.scatter(
+                iron_x,
+                iron_y,
+                s=90,
+                c=ElementTypes.IRON.color,
+                alpha=0.9,
+                edgecolors="white",
+                linewidths=0.4,
+                label="Fe",
+            )
+        if remnant_x:
+            ax.scatter(
+                remnant_x,
+                remnant_y,
+                s=remnant_sizes,
+                c=[ElementTypes.NEUTRON_STAR.color if size == 80 else ElementTypes.BLACK_HOLE.color for size in remnant_sizes],
+                alpha=0.95,
+                edgecolors="white",
+                linewidths=0.6,
+                label="Remnant",
             )
         for start, end in photon_segments:
             ax.plot(
