@@ -13,6 +13,9 @@ from typing import Iterable, List, Sequence
 
 import numpy as np
 
+from simulation.v4_stellar_forge import multiverse_manager
+from simulation.v4_stellar_forge.universe_dna import UniverseDNA
+
 
 class ElementTypes(str, Enum):
     """Supported element types for the stellar forge timeline."""
@@ -75,6 +78,7 @@ class AtomAgent:
 GRAVITATIONAL_CONSTANT = 0.05
 SOFTENING = 0.1
 FUSION_DISTANCE = 0.5
+FUSION_THRESHOLD = FUSION_DISTANCE
 PHOTON_SPEED = 3.0
 EVENT_HORIZON_SCALE = 0.02
 SUPERNOVA_MASS_THRESHOLD = 120.0
@@ -94,6 +98,27 @@ MASS_BY_ELEMENT = {
     ElementTypes.BLACK_HOLE: 500.0,
     ElementTypes.PHOTON: 0.0,
 }
+
+
+def current_universe_dna() -> UniverseDNA:
+    """Capture the currently configured constants as UniverseDNA."""
+
+    return UniverseDNA(
+        gravity_const=GRAVITATIONAL_CONSTANT,
+        fusion_threshold=FUSION_THRESHOLD,
+        entropy_rate=HAWKING_DECAY_RATE,
+    )
+
+
+def apply_universe_dna(dna: UniverseDNA) -> None:
+    """Override module-level constants using a DNA payload."""
+
+    global GRAVITATIONAL_CONSTANT, FUSION_DISTANCE, FUSION_THRESHOLD, HAWKING_DECAY_RATE
+
+    GRAVITATIONAL_CONSTANT = float(dna.gravity_const)
+    FUSION_DISTANCE = float(dna.fusion_threshold)
+    FUSION_THRESHOLD = FUSION_DISTANCE
+    HAWKING_DECAY_RATE = float(dna.entropy_rate)
 
 
 def gravity_step(particles: Sequence[AtomAgent], dt: float = 1.0) -> None:
@@ -137,8 +162,12 @@ def _unit_vector(seed_vector: Iterable[float]) -> np.ndarray:
     return vector / norm
 
 
-def fusion_step(particles: Sequence[AtomAgent]) -> List[AtomAgent]:
+def fusion_step(
+    particles: Sequence[AtomAgent], dna: UniverseDNA | None = None
+) -> List[AtomAgent]:
     """Apply staged fusion, core collapse, and mass ejection events."""
+
+    dna = dna or current_universe_dna()
 
     chain = [
         {
@@ -196,7 +225,7 @@ def fusion_step(particles: Sequence[AtomAgent]) -> List[AtomAgent]:
             emit_photon=stage["emit_photon"],
         )
 
-    after_supernova = _supernova_step(state)
+    after_supernova = _supernova_step(state, dna=dna)
     return after_supernova
 
 
@@ -284,7 +313,19 @@ def _fuse_clusters(
     return remaining
 
 
-def _supernova_step(particles: Sequence[AtomAgent]) -> List[AtomAgent]:
+def check_supernova(remnant: AtomAgent, dna: UniverseDNA) -> None:
+    """Trigger child-universe spawning when a black hole forms."""
+
+    if remnant.element is not ElementTypes.BLACK_HOLE:
+        return
+
+    universe_id = multiverse_manager.spawn_child_universe(dna, remnant.mass)
+    print(f"🌌 SINGULARITY REACHED. Spawning Universe #{universe_id}.")
+
+
+def _supernova_step(
+    particles: Sequence[AtomAgent], dna: UniverseDNA | None = None
+) -> List[AtomAgent]:
     non_photons = [p for p in particles if p.element is not ElementTypes.PHOTON]
     if not non_photons:
         return list(particles)
@@ -320,6 +361,9 @@ def _supernova_step(particles: Sequence[AtomAgent]) -> List[AtomAgent]:
             event_horizon=schwarzschild_radius(collapse_mass),
         )
         label = "BLACK HOLE"
+        if dna is None:
+            dna = current_universe_dna()
+        check_supernova(remnant, dna)
     else:
         remnant = AtomAgent(
             position=center_of_mass,
