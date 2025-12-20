@@ -1,9 +1,9 @@
 """Lightweight physics engine for the stellar forge timeline renderer.
 
-This module provides a minimal 2D particle system with gravitational
-interaction and a toy fusion rule that converts clustered hydrogen into helium
-and photons. It is intentionally simple to keep the visualization fast and
-reproducible for the frame-by-frame renderer.
+This module provides a compact 2D particle system with gravitational
+interaction, staged fusion chains, and compact remnant dynamics. It now models
+stellar death throes: fusion stalls on iron, supernovae eject outer layers, and
+black holes accrete and evaporate via a Hawking-like process.
 """
 from __future__ import annotations
 
@@ -19,6 +19,10 @@ class ElementTypes(str, Enum):
 
     HYDROGEN = "HYDROGEN"
     HELIUM = "HELIUM"
+    CARBON = "CARBON"
+    IRON = "IRON"
+    NEUTRON_STAR = "NEUTRON_STAR"
+    BLACK_HOLE = "BLACK_HOLE"
     PHOTON = "PHOTON"
 
     @property
@@ -28,6 +32,10 @@ class ElementTypes(str, Enum):
         return {
             ElementTypes.HYDROGEN: "#3399ff",  # blue
             ElementTypes.HELIUM: "#ff4d4d",  # bright red
+            ElementTypes.CARBON: "#9c27b0",  # purple
+            ElementTypes.IRON: "#ff9800",  # orange
+            ElementTypes.NEUTRON_STAR: "#cfd8dc",  # soft gray
+            ElementTypes.BLACK_HOLE: "#111111",  # near-black
             ElementTypes.PHOTON: "#ffeb3b",  # yellow
         }[self]
 
@@ -40,11 +48,23 @@ class AtomAgent:
     velocity: np.ndarray
     mass: float
     element: ElementTypes
+    event_horizon: float = 0.0
+
+    def __post_init__(self) -> None:
+        self.position = np.array(self.position, dtype=float)
+        self.velocity = np.array(self.velocity, dtype=float)
+        self.refresh_horizon()
 
     def step(self, dt: float = 1.0) -> None:
         """Advance the particle in time using its current velocity."""
 
         self.position = self.position + self.velocity * dt
+
+    def refresh_horizon(self) -> None:
+        """Update the Schwarzschild-like horizon for black holes."""
+
+        if self.element is ElementTypes.BLACK_HOLE:
+            self.event_horizon = schwarzschild_radius(self.mass)
 
 
 # Physical constants tailored for a visually stable simulation
@@ -52,6 +72,22 @@ GRAVITATIONAL_CONSTANT = 0.05
 SOFTENING = 0.1
 FUSION_DISTANCE = 0.5
 PHOTON_SPEED = 3.0
+EVENT_HORIZON_SCALE = 0.02
+SUPERNOVA_MASS_THRESHOLD = 120.0
+SUPERNOVA_IMPULSE = 2.5
+BLACK_HOLE_THRESHOLD = 260.0
+BLACK_HOLE_EVAPORATION_THRESHOLD = 35.0
+HAWKING_DECAY_RATE = 0.001
+
+MASS_BY_ELEMENT = {
+    ElementTypes.HYDROGEN: 1.0,
+    ElementTypes.HELIUM: 4.0,
+    ElementTypes.CARBON: 12.0,
+    ElementTypes.IRON: 56.0,
+    ElementTypes.NEUTRON_STAR: 100.0,
+    ElementTypes.BLACK_HOLE: 500.0,
+    ElementTypes.PHOTON: 0.0,
+}
 
 
 def gravity_step(particles: Sequence[AtomAgent], dt: float = 1.0) -> None:
@@ -96,54 +132,120 @@ def _unit_vector(seed_vector: Iterable[float]) -> np.ndarray:
 
 
 def fusion_step(particles: Sequence[AtomAgent]) -> List[AtomAgent]:
-    """Fuse clusters of nearby hydrogen into helium and emit photons.
+    """Apply staged fusion, core collapse, and mass ejection events."""
 
-    Clusters of three or more hydrogen atoms within ``FUSION_DISTANCE`` collapse
-    into a single helium nucleus placed at the cluster centroid. A photon is
-    emitted in a random direction with high speed to visualize energy release.
-    """
+    post_hydrogen = _fuse_clusters(
+        particles,
+        source_element=ElementTypes.HYDROGEN,
+        distance=FUSION_DISTANCE,
+        min_cluster_size=3,
+        product_element=ElementTypes.HELIUM,
+        product_mass=MASS_BY_ELEMENT[ElementTypes.HELIUM],
+        velocity_scale=0.2,
+        emit_photon=True,
+    )
 
+    post_helium = _fuse_clusters(
+        post_hydrogen,
+        source_element=ElementTypes.HELIUM,
+        distance=FUSION_DISTANCE * 0.7,
+        min_cluster_size=3,
+        product_element=ElementTypes.CARBON,
+        product_mass=MASS_BY_ELEMENT[ElementTypes.CARBON],
+        velocity_scale=0.15,
+        emit_photon=True,
+    )
+
+    post_carbon = _fuse_clusters(
+        post_helium,
+        source_element=ElementTypes.CARBON,
+        distance=FUSION_DISTANCE * 0.8,
+        min_cluster_size=2,
+        product_element=ElementTypes.IRON,
+        product_mass=MASS_BY_ELEMENT[ElementTypes.IRON],
+        velocity_scale=0.1,
+        emit_photon=False,
+    )
+
+    after_supernova = _supernova_step(post_carbon)
+    return after_supernova
+
+
+def _collect_clusters(
+    particles: Sequence[AtomAgent],
+    *,
+    element: ElementTypes,
+    distance: float,
+) -> List[List[int]]:
+    clusters: List[List[int]] = []
+    visited: set[int] = set()
+
+    for idx, particle in enumerate(particles):
+        if idx in visited or particle.element is not element:
+            continue
+        stack = [idx]
+        cluster: List[int] = []
+        while stack:
+            current = stack.pop()
+            if current in visited:
+                continue
+            visited.add(current)
+            cluster.append(current)
+            for jdx, other in enumerate(particles):
+                if jdx in visited or other.element is not element:
+                    continue
+                separation = float(
+                    np.linalg.norm(particles[current].position - other.position)
+                )
+                if separation <= distance:
+                    stack.append(jdx)
+        clusters.append(cluster)
+    return clusters
+
+
+def _fuse_clusters(
+    particles: Sequence[AtomAgent],
+    *,
+    source_element: ElementTypes,
+    distance: float,
+    min_cluster_size: int,
+    product_element: ElementTypes,
+    product_mass: float,
+    velocity_scale: float,
+    emit_photon: bool,
+) -> List[AtomAgent]:
     remaining: List[AtomAgent] = []
     consumed: set[int] = set()
 
-    for idx, particle in enumerate(particles):
-        if particle.element is not ElementTypes.HYDROGEN or idx in consumed:
-            continue
-
-        cluster_indices = [idx]
-        for jdx, other in enumerate(particles):
-            if jdx == idx or jdx in consumed:
-                continue
-            if other.element is not ElementTypes.HYDROGEN:
-                continue
-            separation = float(np.linalg.norm(other.position - particle.position))
-            if separation <= FUSION_DISTANCE:
-                cluster_indices.append(jdx)
-
-        if len(cluster_indices) >= 3:
-            consumed.update(cluster_indices)
-            cluster_positions = [particles[i].position for i in cluster_indices]
-            cluster_velocities = [particles[i].velocity for i in cluster_indices]
+    clusters = _collect_clusters(particles, element=source_element, distance=distance)
+    for cluster in clusters:
+        if len(cluster) >= min_cluster_size:
+            consumed.update(cluster)
+            cluster_positions = [particles[i].position for i in cluster]
+            cluster_velocities = [particles[i].velocity for i in cluster]
             centroid = np.mean(cluster_positions, axis=0)
             avg_velocity = np.mean(cluster_velocities, axis=0)
 
-            helium = AtomAgent(
+            product = AtomAgent(
                 position=centroid,
-                velocity=avg_velocity * 0.2,
-                mass=4.0,
-                element=ElementTypes.HELIUM,
+                velocity=avg_velocity * velocity_scale,
+                mass=product_mass,
+                element=product_element,
             )
-            photon_direction = _unit_vector(np.random.uniform(-1.0, 1.0, size=2))
-            photon = AtomAgent(
-                position=centroid.copy(),
-                velocity=photon_direction * PHOTON_SPEED,
-                mass=0.0,
-                element=ElementTypes.PHOTON,
-            )
-            remaining.extend([helium, photon])
+            remaining.append(product)
+            if emit_photon:
+                direction = _unit_vector(np.random.uniform(-1.0, 1.0, size=2))
+                photon = AtomAgent(
+                    position=centroid.copy(),
+                    velocity=direction * PHOTON_SPEED,
+                    mass=MASS_BY_ELEMENT[ElementTypes.PHOTON],
+                    element=ElementTypes.PHOTON,
+                )
+                remaining.append(photon)
         else:
-            remaining.append(particle)
-            consumed.add(idx)
+            for idx in cluster:
+                consumed.add(idx)
+                remaining.append(particles[idx])
 
     for idx, particle in enumerate(particles):
         if idx in consumed:
@@ -151,3 +253,138 @@ def fusion_step(particles: Sequence[AtomAgent]) -> List[AtomAgent]:
         remaining.append(particle)
 
     return remaining
+
+
+def _supernova_step(particles: Sequence[AtomAgent]) -> List[AtomAgent]:
+    non_photons = [p for p in particles if p.element is not ElementTypes.PHOTON]
+    if not non_photons:
+        return list(particles)
+
+    total_mass = float(sum(p.mass for p in non_photons))
+    iron_mass = float(
+        sum(p.mass for p in non_photons if p.element is ElementTypes.IRON)
+    )
+    if total_mass < SUPERNOVA_MASS_THRESHOLD or iron_mass / total_mass < 0.5:
+        return list(particles)
+
+    center_of_mass = (
+        sum(p.position * p.mass for p in non_photons) / max(total_mass, 1e-6)
+    )
+    ejected: List[AtomAgent] = []
+
+    for particle in particles:
+        if particle.element is ElementTypes.IRON:
+            continue
+        direction = particle.position - center_of_mass
+        norm = float(np.linalg.norm(direction)) or 1.0
+        impulse = direction / norm * SUPERNOVA_IMPULSE * (1.0 + norm * 0.05)
+        particle.velocity = particle.velocity + impulse
+        ejected.append(particle)
+
+    collapse_mass = max(iron_mass, MASS_BY_ELEMENT[ElementTypes.NEUTRON_STAR])
+    if collapse_mass >= BLACK_HOLE_THRESHOLD:
+        remnant = AtomAgent(
+            position=center_of_mass,
+            velocity=np.zeros(2, dtype=float),
+            mass=collapse_mass,
+            element=ElementTypes.BLACK_HOLE,
+            event_horizon=schwarzschild_radius(collapse_mass),
+        )
+        label = "BLACK HOLE"
+    else:
+        remnant = AtomAgent(
+            position=center_of_mass,
+            velocity=np.zeros(2, dtype=float),
+            mass=collapse_mass,
+            element=ElementTypes.NEUTRON_STAR,
+        )
+        label = "NEUTRON STAR"
+
+    print(
+        f"Supernova triggered: iron core mass={iron_mass:.1f}, remnant={label}, "
+        f"ejecta={len(ejected)}"
+    )
+    return ejected + [remnant]
+
+
+def accretion_step(particles: Sequence[AtomAgent]) -> List[AtomAgent]:
+    """Allow black holes to accrete any particle inside their event horizon."""
+
+    black_holes = [p for p in particles if p.element is ElementTypes.BLACK_HOLE]
+    if not black_holes:
+        return list(particles)
+
+    survivors: List[AtomAgent] = []
+    for particle in particles:
+        if particle.element is ElementTypes.BLACK_HOLE:
+            survivors.append(particle)
+            continue
+        consumed = False
+        for bh in black_holes:
+            distance = float(np.linalg.norm(particle.position - bh.position))
+            if distance <= bh.event_horizon:
+                pre_mass = bh.mass
+                bh.mass += particle.mass
+                if bh.mass > 0:
+                    bh.velocity = (
+                        (bh.velocity * pre_mass + particle.velocity * particle.mass)
+                        / bh.mass
+                    )
+                bh.refresh_horizon()
+                consumed = True
+                break
+        if not consumed:
+            survivors.append(particle)
+    return survivors
+
+
+def hawking_process(particles: Sequence[AtomAgent]) -> List[AtomAgent]:
+    """Evaporate black holes slowly and emit high-energy photons."""
+
+    updated: List[AtomAgent] = []
+    emissions: List[AtomAgent] = []
+
+    for particle in particles:
+        if particle.element is not ElementTypes.BLACK_HOLE:
+            updated.append(particle)
+            continue
+
+        mass_loss = particle.mass * HAWKING_DECAY_RATE
+        particle.mass -= mass_loss
+        particle.refresh_horizon()
+        direction = _unit_vector(np.random.uniform(-1.0, 1.0, size=2))
+        emissions.append(
+            AtomAgent(
+                position=particle.position.copy(),
+                velocity=direction * PHOTON_SPEED * 1.5,
+                mass=MASS_BY_ELEMENT[ElementTypes.PHOTON],
+                element=ElementTypes.PHOTON,
+            )
+        )
+        if particle.mass <= BLACK_HOLE_EVAPORATION_THRESHOLD:
+            burst = _gamma_flash(particle.position)
+            emissions.extend(burst)
+            print("Black hole evaporated in a final gamma flash.")
+        else:
+            updated.append(particle)
+
+    return updated + emissions
+
+
+def _gamma_flash(position: np.ndarray, rays: int = 6) -> List[AtomAgent]:
+    photons: List[AtomAgent] = []
+    for _ in range(rays):
+        direction = _unit_vector(np.random.uniform(-1.0, 1.0, size=2))
+        photons.append(
+            AtomAgent(
+                position=position.copy(),
+                velocity=direction * PHOTON_SPEED * 3.0,
+                mass=MASS_BY_ELEMENT[ElementTypes.PHOTON],
+                element=ElementTypes.PHOTON,
+            )
+        )
+    return photons
+
+
+def schwarzschild_radius(mass: float) -> float:
+    return max(0.2, mass * EVENT_HORIZON_SCALE)

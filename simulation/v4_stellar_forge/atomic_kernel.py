@@ -2,8 +2,8 @@
 
 This module defines atomic agents as physically grounded entities whose mind
 vectors encode basic quantum numbers. The presets allow quick construction of
-hydrogen, helium, and photon agents that participate in nucleosynthesis on the
-hex lattice.
+hydrogen, helium, photon, and compact remnant agents that participate in
+nucleosynthesis on the hex lattice.
 """
 
 from __future__ import annotations
@@ -19,6 +19,11 @@ from simulation.v4_cosmos.entity import CosmicEntity
 
 HYDROGEN_MASS = 1.007  # AMU
 HELIUM_MASS = 4.0026  # AMU
+CARBON_MASS = 12.0  # AMU
+IRON_MASS = 56.0  # AMU
+NEUTRON_STAR_MASS = 100.0
+BLACK_HOLE_SEED_MASS = 500.0
+SCHWARZSCHILD_SCALE = 0.01
 PHOTON_SPEED = 1.0
 
 
@@ -117,6 +122,44 @@ class AtomAgent(CosmicEntity):
         )
 
     @classmethod
+    def carbon(
+        cls,
+        agent_id: str,
+        coord: HexCoord,
+        temperature: float = 0.0,
+        velocity: Iterable[float] | None = None,
+    ) -> "AtomAgent":
+        """Preset for a carbon nucleus."""
+
+        return cls.from_quantum(
+            agent_id,
+            coord,
+            mass=CARBON_MASS,
+            charge=+6.0,
+            temperature=temperature,
+            velocity=velocity,
+        )
+
+    @classmethod
+    def iron(
+        cls,
+        agent_id: str,
+        coord: HexCoord,
+        temperature: float = 0.0,
+        velocity: Iterable[float] | None = None,
+    ) -> "AtomAgent":
+        """Preset for an iron nucleus."""
+
+        return cls.from_quantum(
+            agent_id,
+            coord,
+            mass=IRON_MASS,
+            charge=+26.0,
+            temperature=temperature,
+            velocity=velocity,
+        )
+
+    @classmethod
     def photon(
         cls,
         agent_id: str,
@@ -145,4 +188,105 @@ class AtomAgent(CosmicEntity):
             velocity=direction_vec * PHOTON_SPEED,
             entity_type="PHOTON",
         )
+
+
+@dataclass
+class BlackHoleAgent(AtomAgent):
+    """Compact remnant with an event horizon that can accrete nearby mass."""
+
+    event_horizon: float = 0.0
+
+    def __post_init__(self) -> None:
+        self.event_horizon = self.event_horizon or self.schwarzschild_radius(self.mass)
+        super().__post_init__()
+
+    @staticmethod
+    def schwarzschild_radius(mass: float) -> float:
+        """Approximate Schwarzschild radius in lattice units."""
+
+        return max(0.1, mass * SCHWARZSCHILD_SCALE)
+
+    @classmethod
+    def neutron_star(
+        cls,
+        agent_id: str,
+        coord: HexCoord,
+        *,
+        mass: float = NEUTRON_STAR_MASS,
+        velocity: Iterable[float] | None = None,
+    ) -> "BlackHoleAgent":
+        """Create a dense neutron star remnant."""
+
+        return cls.from_quantum(
+            agent_id,
+            coord,
+            mass=mass,
+            charge=0.0,
+            velocity=velocity,
+            entity_type="NEUTRON_STAR",
+        )
+
+    @classmethod
+    def singularity(
+        cls,
+        agent_id: str,
+        coord: HexCoord,
+        *,
+        mass: float = BLACK_HOLE_SEED_MASS,
+        velocity: Iterable[float] | None = None,
+    ) -> "BlackHoleAgent":
+        """Create a black hole with a Schwarzschild event horizon."""
+
+        return cls.from_quantum(
+            agent_id,
+            coord,
+            mass=mass,
+            charge=0.0,
+            velocity=velocity,
+            entity_type="BLACK_HOLE",
+        )
+
+    @classmethod
+    def from_quantum(  # type: ignore[override]
+        cls,
+        agent_id: str,
+        coord: HexCoord,
+        *,
+        mass: float,
+        charge: float,
+        temperature: float = 0.0,
+        velocity: Iterable[float] | None = None,
+        entity_type: str = "BLACK_HOLE",
+    ) -> "BlackHoleAgent":
+        """Construct a compact remnant with horizon tracking."""
+
+        velocity_vec = (
+            np.array(list(velocity), dtype=float)
+            if velocity is not None
+            else np.zeros(2, dtype=float)
+        )
+        mind_state = _encode_state(mass, charge, temperature)
+        return cls(
+            agent_id=agent_id,
+            coord=coord,
+            mind_state=mind_state,
+            mass=mass,
+            charge=charge,
+            temperature=temperature,
+            velocity=velocity_vec,
+            type=entity_type,
+            event_horizon=cls.schwarzschild_radius(mass),
+        )
+
+    def absorb(self, other: AtomAgent) -> None:
+        """Accrete another agent's mass and momentum inside the horizon."""
+
+        total_mass = self.mass + other.mass
+        if total_mass == 0:
+            return
+        self.velocity = (
+            (self.velocity * self.mass + other.velocity * other.mass) / total_mass
+        )
+        self.mass = total_mass
+        self.event_horizon = self.schwarzschild_radius(self.mass)
 
