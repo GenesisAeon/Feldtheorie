@@ -28,10 +28,16 @@ class UniverseDNA:
         Rate at which compact objects evaporate, a proxy for entropy increase.
     """
 
-    gravity_const: float
-    fusion_threshold: float
-    entropy_rate: float
+    gravity_const: float = 0.05
+    fusion_threshold: float = 0.5
+    entropy_rate: float = 0.001
     mutation_scale: float = 0.05
+
+    @property
+    def gravity_strength(self) -> float:
+        """Alias used by newer V4 multiverse components."""
+
+        return self.gravity_const
 
     def mutate(self, rng: np.random.Generator | None = None) -> "UniverseDNA":
         """Return a mutated copy with constants jittered by up to ±5%.
