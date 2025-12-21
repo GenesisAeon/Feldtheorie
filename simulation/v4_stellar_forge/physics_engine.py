@@ -3,17 +3,21 @@
 This module provides a compact 2D particle system with gravitational
 interaction, staged fusion chains, and compact remnant dynamics. It now models
 stellar death throes: fusion stalls on iron, supernovae eject outer layers, and
-black holes accrete and evaporate via a Hawking-like process.
+black holes accrete and evaporate via a Hawking-like process. When a black hole
+forms, the engine emits a *genesis signal* to disk so the multiverse manager can
+spawn a descendant universe in a separate process.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+import json
+import uuid
+from dataclasses import asdict, dataclass
 from enum import Enum
+from pathlib import Path
 from typing import Iterable, List, Sequence
 
 import numpy as np
 
-from simulation.v4_stellar_forge import multiverse_manager
 from simulation.v4_stellar_forge.universe_dna import UniverseDNA
 
 
@@ -87,6 +91,12 @@ BLACK_HOLE_THRESHOLD = 260.0
 BLACK_HOLE_EVAPORATION_THRESHOLD = 35.0
 HAWKING_DECAY_RATE = 0.001
 
+SIGNAL_DIR = Path("output/signals")
+
+LOCAL_UNIVERSE_ID = "local"
+LOCAL_GENERATION = 0
+GENESIS_SIGNAL_SENT = False
+
 MASS_BY_ELEMENT = {
     ElementTypes.HYDROGEN: 1.0,
     ElementTypes.HELIUM: 4.0,
@@ -98,6 +108,15 @@ MASS_BY_ELEMENT = {
     ElementTypes.BLACK_HOLE: 500.0,
     ElementTypes.PHOTON: 0.0,
 }
+
+
+def set_universe_context(universe_id: str, generation: int) -> None:
+    """Record the identity and generation for the running universe."""
+
+    global LOCAL_UNIVERSE_ID, LOCAL_GENERATION, GENESIS_SIGNAL_SENT
+    LOCAL_UNIVERSE_ID = universe_id
+    LOCAL_GENERATION = generation
+    GENESIS_SIGNAL_SENT = False
 
 
 def current_universe_dna() -> UniverseDNA:
@@ -313,18 +332,35 @@ def _fuse_clusters(
     return remaining
 
 
+def _emit_genesis_signal(black_hole_mass: float, dna: UniverseDNA) -> None:
+    """Write a genesis signal file for the multiverse manager."""
+
+    global GENESIS_SIGNAL_SENT
+    if GENESIS_SIGNAL_SENT:
+        return
+
+    GENESIS_SIGNAL_SENT = True
+    SIGNAL_DIR.mkdir(parents=True, exist_ok=True)
+
+    payload = {
+        "universe_id": LOCAL_UNIVERSE_ID,
+        "generation": LOCAL_GENERATION,
+        "bh_mass": black_hole_mass,
+        "parent_dna": asdict(dna),
+    }
+
+    signal_path = SIGNAL_DIR / f"genesis_{uuid.uuid4().hex}.json"
+    signal_path.write_text(json.dumps(payload))
+    print("🌑 SINGULARITY REACHED! Transmitting DNA for Child Universe...")
+
+
 def check_supernova(remnant: AtomAgent, dna: UniverseDNA) -> None:
     """Trigger child-universe spawning when a black hole forms."""
 
     if remnant.element is not ElementTypes.BLACK_HOLE:
         return
 
-    parent_id = multiverse_manager.local_universe_id()
-    multiverse_manager.request_genesis(dna, remnant.mass, parent_id)
-    print(
-        "🌌 SINGULARITY REACHED. Queueing child universe from",
-        f"parent {parent_id or 'unknown'} with mass {remnant.mass:.1f}.",
-    )
+    _emit_genesis_signal(remnant.mass, dna)
 
 
 def _supernova_step(
