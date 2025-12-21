@@ -8,7 +8,6 @@ from __future__ import annotations
 
 import argparse
 import base64
-import json
 from pathlib import Path
 from typing import Iterable, List, Tuple
 
@@ -16,14 +15,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import Circle
 
-from simulation.v4_stellar_forge import multiverse_manager
 from simulation.v4_stellar_forge.physics_engine import (
     AtomAgent,
     ElementTypes,
     apply_universe_dna,
     current_universe_dna,
-    gravity_step,
     fusion_step,
+    gravity_step,
+    set_universe_context,
 )
 from simulation.v4_stellar_forge.universe_dna import UniverseDNA
 
@@ -233,7 +232,7 @@ class BigBangRenderer:
         gravity_step(self.particles)
         self.particles = fusion_step(self.particles, dna=self.dna)
 
-    def run_timeline(self, frames: int = 200, output_dir: str | Path = "output/v4_frames") -> None:
+    def run_timeline(self, frames: int = 200, output_dir: str | Path = "output/frames") -> None:
         """Run the physics loop and persist each frame to disk."""
 
         if not self.particles:
@@ -244,12 +243,8 @@ class BigBangRenderer:
 
         for idx in range(frames):
             self._step_physics()
-            multiverse_manager.process_queue()
             frame_path = frame_dir / f"frame_{idx:03d}.png"
             self._render_frame(frame_path)
-
-        # Final sweep to ensure any queued universes launch before exit
-        multiverse_manager.process_queue()
 
         print(
             f"Timeline generated in {frame_dir}/. Use a GIF tool to watch the star be born."
@@ -267,16 +262,16 @@ def _unit_vector(vector: Iterable[float]) -> np.ndarray:
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Render a primordial universe timeline.")
     parser.add_argument(
-        "--seed",
-        type=str,
-        default="42",
-        help="Integer seed or JSON-encoded UniverseDNA payload",
-    )
-    parser.add_argument(
         "--dna",
         type=str,
         default=None,
-        help="Base64-encoded JSON UniverseDNA payload. Overrides --seed if provided.",
+        help="JSON or base64-encoded UniverseDNA payload. Overrides --seed if provided.",
+    )
+    parser.add_argument(
+        "--seed",
+        type=str,
+        default="42",
+        help="Integer seed or JSON-encoded UniverseDNA payload used if --dna is absent.",
     )
     parser.add_argument(
         "--frames",
@@ -287,7 +282,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=str,
-        default="output/v4_frames",
+        default="output/frames",
         help="Directory to store rendered frames",
     )
     parser.add_argument(
@@ -297,9 +292,11 @@ def _parse_args() -> argparse.Namespace:
         help="Generation index of this universe",
     )
     parser.add_argument(
+        "--id",
         "--universe-id",
+        dest="universe_id",
         type=str,
-        default="local",
+        default="root",
         help="Identifier assigned by the multiverse manager",
     )
     parser.add_argument(
@@ -311,24 +308,17 @@ def _parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def _decode_dna(encoded: str | None) -> Tuple[UniverseDNA | None, int]:
+def _decode_dna(encoded: str | None) -> Tuple[UniverseDNA | None, int | None]:
     if not encoded:
-        return None, 0
+        return None, None
 
+    candidate = encoded
     try:
-        decoded = base64.urlsafe_b64decode(encoded.encode("utf-8"))
-        payload = json.loads(decoded.decode("utf-8"))
-    except (ValueError, json.JSONDecodeError, KeyError):
-        return None, 0
+        candidate = base64.urlsafe_b64decode(encoded.encode("utf-8")).decode("utf-8")
+    except (ValueError, UnicodeDecodeError):
+        candidate = encoded
 
-    dna = UniverseDNA(
-        gravity_const=float(payload["gravity_const"]),
-        fusion_threshold=float(payload["fusion_threshold"]),
-        entropy_rate=float(payload["entropy_rate"]),
-        mutation_scale=float(payload.get("mutation_scale", 0.05)),
-    )
-    seed_token = dna.to_seed_token()
-    _, rng_seed = UniverseDNA.from_seed_token(seed_token)
+    dna, rng_seed = UniverseDNA.from_seed_token(candidate)
     return dna, rng_seed
 
 
@@ -337,10 +327,11 @@ def main() -> None:
     dna, rng_seed = _decode_dna(args.dna)
     if dna is None:
         dna, rng_seed = UniverseDNA.from_seed_token(args.seed)
+    rng_seed = rng_seed or 42
     if dna is not None:
         apply_universe_dna(dna)
 
-    multiverse_manager.set_local_context(args.universe_id, args.gen)
+    set_universe_context(args.universe_id, args.gen)
 
     renderer = BigBangRenderer(seed=rng_seed, dna=dna)
     renderer.initialize_bang()
