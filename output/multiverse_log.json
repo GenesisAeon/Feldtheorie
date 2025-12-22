@@ -1,0 +1,242 @@
+[
+  {
+    "timestamp": 1766390047.560647,
+    "parent": "232b0488",
+    "child_number": 2,
+    "mutation_g": -0.002279612721850059
+  },
+  {
+    "timestamp": 1766390049.5906198,
+    "parent": "11c429db",
+    "child_number": 3,
+    "mutation_g": 0.0012729411164720122
+  },
+  {
+    "timestamp": 1766390051.6273148,
+    "parent": "1a20e4ba",
+    "child_number": 4,
+    "mutation_g": -0.0001733610393235413
+  },
+  {
+    "timestamp": 1766390053.6633136,
+    "parent": "6f0aee63",
+    "child_number": 5,
+    "mutation_g": -0.0011214060577171142
+  },
+  {
+    "timestamp": 1766390057.7013848,
+    "parent": "cbd7de0b",
+    "child_number": 6,
+    "mutation_g": -0.001117338752214328
+  },
+  {
+    "timestamp": 1766390059.7368445,
+    "parent": "33b8194c",
+    "child_number": 7,
+    "mutation_g": 0.0011500416050756399
+  },
+  {
+    "timestamp": 1766390061.7774007,
+    "parent": "6999a418",
+    "child_number": 8,
+    "mutation_g": 0.0008908688246672958
+  },
+  {
+    "timestamp": 1766390063.8221266,
+    "parent": "bdf05a92",
+    "child_number": 9,
+    "mutation_g": 0.0002154903894815638
+  },
+  {
+    "timestamp": 1766390066.8634918,
+    "parent": "041c04f0",
+    "child_number": 10,
+    "mutation_g": -0.0019652612055618968
+  },
+  {
+    "timestamp": 1766390068.9052563,
+    "parent": "8237d728",
+    "child_number": 11,
+    "mutation_g": 0.002148506850802215
+  },
+  {
+    "timestamp": 1766390070.948256,
+    "parent": "a2f75c06",
+    "child_number": 12,
+    "mutation_g": 0.002259436104967552
+  },
+  {
+    "timestamp": 1766390072.9872584,
+    "parent": "8651c5d5",
+    "child_number": 13,
+    "mutation_g": 7.897969196097449e-05
+  },
+  {
+    "timestamp": 1766390076.0372925,
+    "parent": "56498f1e",
+    "child_number": 14,
+    "mutation_g": -0.00028915520252494054
+  },
+  {
+    "timestamp": 1766390079.087947,
+    "parent": "061e7c2d",
+    "child_number": 15,
+    "mutation_g": -0.0021121357906142904
+  },
+  {
+    "timestamp": 1766390081.128467,
+    "parent": "bd76d909",
+    "child_number": 16,
+    "mutation_g": 0.001212977588370863
+  },
+  {
+    "timestamp": 1766390083.1755044,
+    "parent": "43d819d5",
+    "child_number": 17,
+    "mutation_g": -0.0021623268685726643
+  },
+  {
+    "timestamp": 1766390085.225506,
+    "parent": "524fa774",
+    "child_number": 18,
+    "mutation_g": -0.0009860823776915925
+  },
+  {
+    "timestamp": 1766390088.2778106,
+    "parent": "05bea6ef",
+    "child_number": 19,
+    "mutation_g": -0.00062014923848068
+  },
+  {
+    "timestamp": 1766390090.3138106,
+    "parent": "7ead4e98",
+    "child_number": 20,
+    "mutation_g": 0.0005298460206259667
+  },
+  {
+    "timestamp": 1766390092.3558092,
+    "parent": "11967018",
+    "child_number": 21,
+    "mutation_g": 0.0017104217540345468
+  },
+  {
+    "timestamp": 1766390094.404057,
+    "parent": "f82b7ee9",
+    "child_number": 22,
+    "mutation_g": 0.0007560078670128534
+  },
+  {
+    "timestamp": 1766390097.4453804,
+    "parent": "f204aa6b",
+    "child_number": 23,
+    "mutation_g": -0.0002222640937946177
+  },
+  {
+    "timestamp": 1766390099.484382,
+    "parent": "34a93c8c",
+    "child_number": 24,
+    "mutation_g": 0.002366991311284865
+  },
+  {
+    "timestamp": 1766390101.5313816,
+    "parent": "cdc30897",
+    "child_number": 25,
+    "mutation_g": -0.00048245687442039636
+  },
+  {
+    "timestamp": 1766390103.583068,
+    "parent": "49218b34",
+    "child_number": 26,
+    "mutation_g": 0.0011427825052528137
+  },
+  {
+    "timestamp": 1766390106.6345475,
+    "parent": "3759a156",
+    "child_number": 27,
+    "mutation_g": 0.0013321533746853895
+  },
+  {
+    "timestamp": 1766390108.6846278,
+    "parent": "b4644bb2",
+    "child_number": 28,
+    "mutation_g": -0.0023240940806528096
+  },
+  {
+    "timestamp": 1766390110.7256322,
+    "parent": "b457f7d2",
+    "child_number": 29,
+    "mutation_g": -0.002100490675618294
+  },
+  {
+    "timestamp": 1766390112.7666285,
+    "parent": "d177df2d",
+    "child_number": 30,
+    "mutation_g": 0.0008426836738305091
+  },
+  {
+    "timestamp": 1766390115.8080275,
+    "parent": "ca94fe74",
+    "child_number": 31,
+    "mutation_g": 0.0021924468540991324
+  },
+  {
+    "timestamp": 1766390117.8485446,
+    "parent": "462d8631",
+    "child_number": 32,
+    "mutation_g": 0.0005713464938167934
+  },
+  {
+    "timestamp": 1766390119.8925455,
+    "parent": "0ccbaff4",
+    "child_number": 33,
+    "mutation_g": -0.0024786522806080416
+  },
+  {
+    "timestamp": 1766390121.9355469,
+    "parent": "8ef0a9a8",
+    "child_number": 34,
+    "mutation_g": 0.0012107471558299304
+  },
+  {
+    "timestamp": 1766390124.9837348,
+    "parent": "8d1b0cba",
+    "child_number": 35,
+    "mutation_g": -0.0022437831449787435
+  },
+  {
+    "timestamp": 1766390127.0287335,
+    "parent": "65ea1974",
+    "child_number": 36,
+    "mutation_g": -0.0020329037722539647
+  },
+  {
+    "timestamp": 1766390129.0687337,
+    "parent": "1ddd04cc",
+    "child_number": 37,
+    "mutation_g": 0.0002682778450098164
+  },
+  {
+    "timestamp": 1766390131.1127343,
+    "parent": "18d56990",
+    "child_number": 38,
+    "mutation_g": 0.0022318789386969254
+  },
+  {
+    "timestamp": 1766390134.1551652,
+    "parent": "43ee50ab",
+    "child_number": 39,
+    "mutation_g": 0.0017812369042497361
+  },
+  {
+    "timestamp": 1766390136.2001035,
+    "parent": "37d1a32a",
+    "child_number": 40,
+    "mutation_g": -7.41538472816411e-05
+  },
+  {
+    "timestamp": 1766390138.2401066,
+    "parent": "c80cbb9e",
+    "child_number": 41,
+    "mutation_g": -0.0018241838714870492
+  }
+]
