@@ -4,9 +4,9 @@ from __future__ import annotations
 import time
 from typing import Dict, Iterable, List
 
-from interface.dialogue_bridge import MatterInterpreter
-from scenarios.level_0_vacuum import Fluctuation, VacuumSimulation
-from uatc_core.agent_kernel import ResonantEntity
+from src.interface.dialogue_bridge import MatterInterpreter
+from src.scenarios.level_0_vacuum import Fluctuation, VacuumSimulation
+from src.uatc_core.agent_kernel import ResonantEntity
 
 
 class VacuumDialogueBridge:
