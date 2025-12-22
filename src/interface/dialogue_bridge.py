@@ -4,7 +4,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Iterable, Optional
 
-from uatc_core.agent_kernel import ResonantEntity
+from src.uatc_core.agent_kernel import ResonantEntity
 
 
 @dataclass(frozen=True)

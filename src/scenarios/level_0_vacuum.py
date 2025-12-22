@@ -6,7 +6,7 @@ from itertools import combinations
 from typing import Dict, Iterable, List, Tuple
 import random
 
-from uatc_core.agent_kernel import ResonantEntity
+from src.uatc_core.agent_kernel import ResonantEntity
 
 
 @dataclass(frozen=True)
