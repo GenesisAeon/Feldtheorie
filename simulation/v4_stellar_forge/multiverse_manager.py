@@ -106,7 +106,10 @@ class MultiverseManager:
             "timestamp": time.time(),
             "parent": parent_id,
             "child_number": child_num,
-            "mutation_g": c_dna.gravity_strength - p_dna.gravity_strength
+            "mutation_g": c_dna.gravity_strength - p_dna.gravity_strength,
+            "mutation_clumping": c_dna.clumping_factor - p_dna.clumping_factor,
+            "child_clumping": c_dna.clumping_factor,
+            "parent_clumping": p_dna.clumping_factor,
         }
         
         # Append to log file properly

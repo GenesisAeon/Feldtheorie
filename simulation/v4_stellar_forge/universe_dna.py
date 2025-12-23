@@ -26,12 +26,15 @@ class UniverseDNA:
         Characteristic radius for fusion clustering.
     entropy_rate:
         Rate at which compact objects evaporate, a proxy for entropy increase.
+    clumping_factor:
+        Softening length multiplier that discourages over-dense clustering.
     """
 
     gravity_const: float = 0.05
     fusion_threshold: float = 0.5
     entropy_rate: float = 0.001
     mutation_scale: float = 0.05
+    clumping_factor: float = 1.0
 
     @property
     def gravity_strength(self) -> float:
@@ -59,6 +62,7 @@ class UniverseDNA:
             fusion_threshold=_jitter(self.fusion_threshold),
             entropy_rate=_jitter(self.entropy_rate),
             mutation_scale=self.mutation_scale,
+            clumping_factor=_jitter(self.clumping_factor),
         )
 
     def to_seed_token(self) -> str:
@@ -101,6 +105,7 @@ class UniverseDNA:
             fusion_threshold=float(data["fusion_threshold"]),
             entropy_rate=float(data["entropy_rate"]),
             mutation_scale=float(data.get("mutation_scale", 0.05)),
+            clumping_factor=float(data.get("clumping_factor", 1.0)),
         )
         rng_seed = cls._hash_seed(token)
         return dna, rng_seed
