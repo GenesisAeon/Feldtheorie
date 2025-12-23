@@ -29,11 +29,25 @@ def initialize_bang(dna):
 
 def run_timeline(engine, agents, frames, output_dir):
     os.makedirs(output_dir, exist_ok=True)
-    
+    os.makedirs("output/logs", exist_ok=True)
+    log_path = os.path.join("output/logs", f"{engine.universe_id}_clumping.jsonl")
+
     for f in range(frames):
         engine.gravity_step(agents)
         engine.fusion_step(agents)
-        
+
+        if f % 5 == 0:
+            metrics = engine.measure_clumping(agents)
+            metrics.update({
+                "frame": f,
+                "universe_id": engine.universe_id,
+                "generation": engine.generation,
+                "gravity_const": engine.G,
+                "clumping_factor": engine.clumping_factor,
+            })
+            with open(log_path, "a") as log_file:
+                log_file.write(json.dumps(metrics) + "\n")
+
         # Visualization (Headless)
         if f % 10 == 0: # Save every 10th frame to save disk IO
             plt.figure(figsize=(5,5))
