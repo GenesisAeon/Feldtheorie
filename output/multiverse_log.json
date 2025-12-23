@@ -238,5 +238,2930 @@
     "parent": "c80cbb9e",
     "child_number": 41,
     "mutation_g": -0.0018241838714870492
+  },
+  {
+    "timestamp": 1766483746.6033,
+    "parent": "e70a9820",
+    "child_number": 2,
+    "mutation_g": 0.0005834642426012157,
+    "mutation_clumping": -0.03614809011960718,
+    "child_clumping": 0.9638519098803928,
+    "parent_clumping": 1.0
+  },
+  {
+    "timestamp": 1766483748.6667402,
+    "parent": "9e4fe43b",
+    "child_number": 3,
+    "mutation_g": -0.0007796604274910232,
+    "mutation_clumping": -0.015047674760422236,
+    "child_clumping": 0.9488042351199706,
+    "parent_clumping": 0.9638519098803928
+  },
+  {
+    "timestamp": 1766483750.7036455,
+    "parent": "30d4fc11",
+    "child_number": 4,
+    "mutation_g": -0.0007646482286602918,
+    "mutation_clumping": -0.04370811772226035,
+    "child_clumping": 0.9050961173977102,
+    "parent_clumping": 0.9488042351199706
+  },
+  {
+    "timestamp": 1766483752.740693,
+    "parent": "d3fac5a9",
+    "child_number": 5,
+    "mutation_g": 0.0009636109425268796,
+    "mutation_clumping": -0.03141145158369851,
+    "child_clumping": 0.8736846658140117,
+    "parent_clumping": 0.9050961173977102
+  },
+  {
+    "timestamp": 1766483755.7793949,
+    "parent": "852ead89",
+    "child_number": 6,
+    "mutation_g": 0.0018534379542841234,
+    "mutation_clumping": -0.006460975827065951,
+    "child_clumping": 0.8672236899869458,
+    "parent_clumping": 0.8736846658140117
+  },
+  {
+    "timestamp": 1766483757.8136337,
+    "parent": "2caa0ee5",
+    "child_number": 7,
+    "mutation_g": 0.0020007295853589416,
+    "mutation_clumping": 0.030560633838381812,
+    "child_clumping": 0.8977843238253276,
+    "parent_clumping": 0.8672236899869458
+  },
+  {
+    "timestamp": 1766483759.8486059,
+    "parent": "963845a4",
+    "child_number": 8,
+    "mutation_g": -0.000985219033722541,
+    "mutation_clumping": -0.04161524319725063,
+    "child_clumping": 0.856169080628077,
+    "parent_clumping": 0.8977843238253276
+  },
+  {
+    "timestamp": 1766483761.8828757,
+    "parent": "9e7c90f5",
+    "child_number": 9,
+    "mutation_g": -0.0009082873138211087,
+    "mutation_clumping": -0.01905074328034051,
+    "child_clumping": 0.8371183373477364,
+    "parent_clumping": 0.856169080628077
+  },
+  {
+    "timestamp": 1766483763.9200413,
+    "parent": "3160cafc",
+    "child_number": 10,
+    "mutation_g": -0.0005163028872481532,
+    "mutation_clumping": -0.03335885643430181,
+    "child_clumping": 0.8037594809134346,
+    "parent_clumping": 0.8371183373477364
+  },
+  {
+    "timestamp": 1766483766.960263,
+    "parent": "c03a1f4a",
+    "child_number": 11,
+    "mutation_g": -0.00037515489384396666,
+    "mutation_clumping": -0.008407601501303708,
+    "child_clumping": 0.7953518794121309,
+    "parent_clumping": 0.8037594809134346
+  },
+  {
+    "timestamp": 1766483768.9947698,
+    "parent": "e87b24a4",
+    "child_number": 12,
+    "mutation_g": -0.0005355128364895045,
+    "mutation_clumping": 0.02731708821347878,
+    "child_clumping": 0.8226689676256097,
+    "parent_clumping": 0.7953518794121309
+  },
+  {
+    "timestamp": 1766483771.0294933,
+    "parent": "79dcddd9",
+    "child_number": 13,
+    "mutation_g": 0.0012400951953391512,
+    "mutation_clumping": -0.028519850938807267,
+    "child_clumping": 0.7941491166868024,
+    "parent_clumping": 0.8226689676256097
+  },
+  {
+    "timestamp": 1766483773.0645092,
+    "parent": "978adaec",
+    "child_number": 14,
+    "mutation_g": -0.00043082187813960754,
+    "mutation_clumping": -0.025857984622229213,
+    "child_clumping": 0.7682911320645732,
+    "parent_clumping": 0.7941491166868024
+  },
+  {
+    "timestamp": 1766483775.0992446,
+    "parent": "1ab225b7",
+    "child_number": 15,
+    "mutation_g": -0.0006499331078488255,
+    "mutation_clumping": 0.007882290156381644,
+    "child_clumping": 0.7761734222209549,
+    "parent_clumping": 0.7682911320645732
+  },
+  {
+    "timestamp": 1766483777.1358757,
+    "parent": "8cbd6556",
+    "child_number": 16,
+    "mutation_g": 0.002152532829628087,
+    "mutation_clumping": 0.025911447031405466,
+    "child_clumping": 0.8020848692523603,
+    "parent_clumping": 0.7761734222209549
+  },
+  {
+    "timestamp": 1766483780.1720738,
+    "parent": "9f9b5cfa",
+    "child_number": 17,
+    "mutation_g": 3.154512211271665e-06,
+    "mutation_clumping": 0.013838896788934463,
+    "child_clumping": 0.8159237660412948,
+    "parent_clumping": 0.8020848692523603
+  },
+  {
+    "timestamp": 1766483782.2107828,
+    "parent": "09a06b0e",
+    "child_number": 18,
+    "mutation_g": 0.001930535923924205,
+    "mutation_clumping": 0.013056243911320431,
+    "child_clumping": 0.8289800099526152,
+    "parent_clumping": 0.8159237660412948
+  },
+  {
+    "timestamp": 1766483784.2513044,
+    "parent": "4658778e",
+    "child_number": 19,
+    "mutation_g": 0.0009462510230025256,
+    "mutation_clumping": -0.024833412087191475,
+    "child_clumping": 0.8041465978654238,
+    "parent_clumping": 0.8289800099526152
+  },
+  {
+    "timestamp": 1766483786.2906706,
+    "parent": "2f47a2d4",
+    "child_number": 20,
+    "mutation_g": 0.0021169550375739407,
+    "mutation_clumping": -0.03302492466964313,
+    "child_clumping": 0.7711216731957806,
+    "parent_clumping": 0.8041465978654238
+  },
+  {
+    "timestamp": 1766483788.3258982,
+    "parent": "ed85244e",
+    "child_number": 21,
+    "mutation_g": 0.0009440179732694495,
+    "mutation_clumping": 0.006596233397001217,
+    "child_clumping": 0.7777179065927818,
+    "parent_clumping": 0.7711216731957806
+  },
+  {
+    "timestamp": 1766483790.365986,
+    "parent": "fd6be7ec",
+    "child_number": 22,
+    "mutation_g": 0.0008278383587136534,
+    "mutation_clumping": -0.019883464281548524,
+    "child_clumping": 0.7578344423112333,
+    "parent_clumping": 0.7777179065927818
+  },
+  {
+    "timestamp": 1766483793.41109,
+    "parent": "2cdf99db",
+    "child_number": 23,
+    "mutation_g": 0.002436846132767824,
+    "mutation_clumping": -0.00850929204656492,
+    "child_clumping": 0.7493251502646684,
+    "parent_clumping": 0.7578344423112333
+  },
+  {
+    "timestamp": 1766483795.452275,
+    "parent": "8a892347",
+    "child_number": 24,
+    "mutation_g": 0.002805135432773838,
+    "mutation_clumping": -0.011965765474867607,
+    "child_clumping": 0.7373593847898008,
+    "parent_clumping": 0.7493251502646684
+  },
+  {
+    "timestamp": 1766483797.4953196,
+    "parent": "af264de8",
+    "child_number": 25,
+    "mutation_g": -0.001853454967842949,
+    "mutation_clumping": 0.02662792811301995,
+    "child_clumping": 0.7639873129028207,
+    "parent_clumping": 0.7373593847898008
+  },
+  {
+    "timestamp": 1766483799.533833,
+    "parent": "be9310c5",
+    "child_number": 26,
+    "mutation_g": 0.0022302897917983178,
+    "mutation_clumping": -0.010267781192768277,
+    "child_clumping": 0.7537195317100525,
+    "parent_clumping": 0.7639873129028207
+  },
+  {
+    "timestamp": 1766483801.568825,
+    "parent": "8e7ba820",
+    "child_number": 27,
+    "mutation_g": 0.002836385412613149,
+    "mutation_clumping": 0.024053080541064698,
+    "child_clumping": 0.7777726122511172,
+    "parent_clumping": 0.7537195317100525
+  },
+  {
+    "timestamp": 1766483804.6128566,
+    "parent": "f135144e",
+    "child_number": 28,
+    "mutation_g": -0.0014950405867141942,
+    "mutation_clumping": -0.028583507687016674,
+    "child_clumping": 0.7491891045641005,
+    "parent_clumping": 0.7777726122511172
+  },
+  {
+    "timestamp": 1766483806.651194,
+    "parent": "491b88e6",
+    "child_number": 29,
+    "mutation_g": -0.00010576283840361966,
+    "mutation_clumping": 0.018034381241856745,
+    "child_clumping": 0.7672234858059572,
+    "parent_clumping": 0.7491891045641005
+  },
+  {
+    "timestamp": 1766483808.6867127,
+    "parent": "e9e9fee0",
+    "child_number": 30,
+    "mutation_g": 6.027765693747411e-05,
+    "mutation_clumping": -0.03556007456722743,
+    "child_clumping": 0.7316634112387298,
+    "parent_clumping": 0.7672234858059572
+  },
+  {
+    "timestamp": 1766483810.7237139,
+    "parent": "329daef6",
+    "child_number": 31,
+    "mutation_g": -0.001200469436482346,
+    "mutation_clumping": 0.004734797992553275,
+    "child_clumping": 0.7363982092312831,
+    "parent_clumping": 0.7316634112387298
+  },
+  {
+    "timestamp": 1766483812.7617135,
+    "parent": "0f606c92",
+    "child_number": 32,
+    "mutation_g": -0.003061000751114984,
+    "mutation_clumping": -0.018644243034629193,
+    "child_clumping": 0.7177539661966539,
+    "parent_clumping": 0.7363982092312831
+  },
+  {
+    "timestamp": 1766483815.8027613,
+    "parent": "ef512050",
+    "child_number": 33,
+    "mutation_g": -0.0004899495716473648,
+    "mutation_clumping": -0.03490792977954027,
+    "child_clumping": 0.6828460364171136,
+    "parent_clumping": 0.7177539661966539
+  },
+  {
+    "timestamp": 1766483817.8380332,
+    "parent": "cada08a9",
+    "child_number": 34,
+    "mutation_g": -0.0020525017505428553,
+    "mutation_clumping": 0.013172635415018674,
+    "child_clumping": 0.6960186718321323,
+    "parent_clumping": 0.6828460364171136
+  },
+  {
+    "timestamp": 1766483819.8740351,
+    "parent": "988c1ecd",
+    "child_number": 35,
+    "mutation_g": 0.0022783914698911653,
+    "mutation_clumping": 0.021109777839335764,
+    "child_clumping": 0.717128449671468,
+    "parent_clumping": 0.6960186718321323
+  },
+  {
+    "timestamp": 1766483821.9126859,
+    "parent": "e1392048",
+    "child_number": 36,
+    "mutation_g": -0.0016704008307665205,
+    "mutation_clumping": -0.029602026970143247,
+    "child_clumping": 0.6875264227013248,
+    "parent_clumping": 0.717128449671468
+  },
+  {
+    "timestamp": 1766483823.9522038,
+    "parent": "0d940825",
+    "child_number": 37,
+    "mutation_g": -0.0018931094123528572,
+    "mutation_clumping": 0.007608342087418785,
+    "child_clumping": 0.6951347647887436,
+    "parent_clumping": 0.6875264227013248
+  },
+  {
+    "timestamp": 1766483825.9922035,
+    "parent": "4381cbed",
+    "child_number": 38,
+    "mutation_g": -0.0016033843235474798,
+    "mutation_clumping": -0.0341480472965735,
+    "child_clumping": 0.6609867174921701,
+    "parent_clumping": 0.6951347647887436
+  },
+  {
+    "timestamp": 1766483829.0325055,
+    "parent": "88e94710",
+    "child_number": 39,
+    "mutation_g": 2.3016168910795776e-05,
+    "mutation_clumping": -0.026352667526417517,
+    "child_clumping": 0.6346340499657526,
+    "parent_clumping": 0.6609867174921701
+  },
+  {
+    "timestamp": 1766483831.0717878,
+    "parent": "1267194e",
+    "child_number": 40,
+    "mutation_g": 0.0014001484801826891,
+    "mutation_clumping": -0.0010753389078503872,
+    "child_clumping": 0.6335587110579022,
+    "parent_clumping": 0.6346340499657526
+  },
+  {
+    "timestamp": 1766483833.1075947,
+    "parent": "b68e9bf8",
+    "child_number": 41,
+    "mutation_g": -0.0011430895945888572,
+    "mutation_clumping": -0.030648087413616687,
+    "child_clumping": 0.6029106236442855,
+    "parent_clumping": 0.6335587110579022
+  },
+  {
+    "timestamp": 1766483835.1473691,
+    "parent": "86cb8650",
+    "child_number": 42,
+    "mutation_g": 0.0009213866682024063,
+    "mutation_clumping": 0.002744635603290857,
+    "child_clumping": 0.6056552592475763,
+    "parent_clumping": 0.6029106236442855
+  },
+  {
+    "timestamp": 1766483837.1883457,
+    "parent": "8e1e918b",
+    "child_number": 43,
+    "mutation_g": -0.0008649859446546448,
+    "mutation_clumping": -0.007741850386400073,
+    "child_clumping": 0.5979134088611763,
+    "parent_clumping": 0.6056552592475763
+  },
+  {
+    "timestamp": 1766483839.2243483,
+    "parent": "d4d4abb6",
+    "child_number": 44,
+    "mutation_g": 0.0014449621865437329,
+    "mutation_clumping": -0.0005378247793071944,
+    "child_clumping": 0.5973755840818691,
+    "parent_clumping": 0.5979134088611763
+  },
+  {
+    "timestamp": 1766483842.2643433,
+    "parent": "1de1c37c",
+    "child_number": 45,
+    "mutation_g": 0.0012927502901475194,
+    "mutation_clumping": -0.00887851183180266,
+    "child_clumping": 0.5884970722500664,
+    "parent_clumping": 0.5973755840818691
+  },
+  {
+    "timestamp": 1766483844.3023477,
+    "parent": "15920551",
+    "child_number": 46,
+    "mutation_g": 0.000156254167888413,
+    "mutation_clumping": 0.01817245733288697,
+    "child_clumping": 0.6066695295829534,
+    "parent_clumping": 0.5884970722500664
+  },
+  {
+    "timestamp": 1766483846.3413486,
+    "parent": "8ea3a096",
+    "child_number": 47,
+    "mutation_g": 0.0018451837327555787,
+    "mutation_clumping": 0.026533680794365355,
+    "child_clumping": 0.6332032103773187,
+    "parent_clumping": 0.6066695295829534
+  },
+  {
+    "timestamp": 1766483848.3767178,
+    "parent": "32dce655",
+    "child_number": 48,
+    "mutation_g": 0.0027359878861899153,
+    "mutation_clumping": 0.0012127549624428857,
+    "child_clumping": 0.6344159653397616,
+    "parent_clumping": 0.6332032103773187
+  },
+  {
+    "timestamp": 1766483850.414716,
+    "parent": "71e57758",
+    "child_number": 49,
+    "mutation_g": 0.002102378457266574,
+    "mutation_clumping": 0.011987514361230578,
+    "child_clumping": 0.6464034797009922,
+    "parent_clumping": 0.6344159653397616
+  },
+  {
+    "timestamp": 1766483853.4577181,
+    "parent": "5a77d41a",
+    "child_number": 50,
+    "mutation_g": 0.0025722570047413823,
+    "mutation_clumping": 0.026137727350479256,
+    "child_clumping": 0.6725412070514715,
+    "parent_clumping": 0.6464034797009922
+  },
+  {
+    "timestamp": 1766483855.502719,
+    "parent": "48c163c5",
+    "child_number": 51,
+    "mutation_g": -0.0012438214701121358,
+    "mutation_clumping": -0.011430170387730643,
+    "child_clumping": 0.6611110366637408,
+    "parent_clumping": 0.6725412070514715
+  },
+  {
+    "timestamp": 1766483857.544003,
+    "parent": "85c72db7",
+    "child_number": 52,
+    "mutation_g": -0.0014334836915718407,
+    "mutation_clumping": -0.0004741319621347495,
+    "child_clumping": 0.6606369047016061,
+    "parent_clumping": 0.6611110366637408
+  },
+  {
+    "timestamp": 1766483859.5856862,
+    "parent": "526756d8",
+    "child_number": 53,
+    "mutation_g": -0.001976200560592528,
+    "mutation_clumping": 0.025855789746873303,
+    "child_clumping": 0.6864926944484794,
+    "parent_clumping": 0.6606369047016061
+  },
+  {
+    "timestamp": 1766483861.6317048,
+    "parent": "8ea83149",
+    "child_number": 54,
+    "mutation_g": -0.0013145333772970336,
+    "mutation_clumping": 0.003697312780458928,
+    "child_clumping": 0.6901900072289383,
+    "parent_clumping": 0.6864926944484794
+  },
+  {
+    "timestamp": 1766483864.675704,
+    "parent": "7bdfa262",
+    "child_number": 55,
+    "mutation_g": 0.0013016325722358946,
+    "mutation_clumping": 0.032571097649397474,
+    "child_clumping": 0.7227611048783358,
+    "parent_clumping": 0.6901900072289383
+  },
+  {
+    "timestamp": 1766483866.7141833,
+    "parent": "f05ff1a9",
+    "child_number": 56,
+    "mutation_g": -0.001183191644017173,
+    "mutation_clumping": 0.006883543963581151,
+    "child_clumping": 0.7296446488419169,
+    "parent_clumping": 0.7227611048783358
+  },
+  {
+    "timestamp": 1766483868.754053,
+    "parent": "01a04ac4",
+    "child_number": 57,
+    "mutation_g": 0.0017463768240655736,
+    "mutation_clumping": -0.036210793203577674,
+    "child_clumping": 0.6934338556383393,
+    "parent_clumping": 0.7296446488419169
+  },
+  {
+    "timestamp": 1766483870.7989092,
+    "parent": "3aa2cc00",
+    "child_number": 58,
+    "mutation_g": -0.0012289271626675508,
+    "mutation_clumping": 0.0034001698359882315,
+    "child_clumping": 0.6968340254743275,
+    "parent_clumping": 0.6934338556383393
+  },
+  {
+    "timestamp": 1766483872.835605,
+    "parent": "624c6b90",
+    "child_number": 59,
+    "mutation_g": -0.0005935045525228694,
+    "mutation_clumping": 0.018608036705534903,
+    "child_clumping": 0.7154420621798624,
+    "parent_clumping": 0.6968340254743275
+  },
+  {
+    "timestamp": 1766483874.8762035,
+    "parent": "b281d2b3",
+    "child_number": 60,
+    "mutation_g": 0.00013959664428289664,
+    "mutation_clumping": -0.02279438454161853,
+    "child_clumping": 0.6926476776382439,
+    "parent_clumping": 0.7154420621798624
+  },
+  {
+    "timestamp": 1766483876.916683,
+    "parent": "94f1311a",
+    "child_number": 61,
+    "mutation_g": -0.0017455297544401727,
+    "mutation_clumping": -0.006902248104395103,
+    "child_clumping": 0.6857454295338488,
+    "parent_clumping": 0.6926476776382439
+  },
+  {
+    "timestamp": 1766483879.9568937,
+    "parent": "9b2831ff",
+    "child_number": 62,
+    "mutation_g": -0.0011030166251771376,
+    "mutation_clumping": 0.0037158620581413393,
+    "child_clumping": 0.6894612915919901,
+    "parent_clumping": 0.6857454295338488
+  },
+  {
+    "timestamp": 1766483882.0016644,
+    "parent": "0db5dd02",
+    "child_number": 63,
+    "mutation_g": 0.0009415902674181215,
+    "mutation_clumping": 0.015437054515696547,
+    "child_clumping": 0.7048983461076866,
+    "parent_clumping": 0.6894612915919901
+  },
+  {
+    "timestamp": 1766483884.0407727,
+    "parent": "9e19ab56",
+    "child_number": 64,
+    "mutation_g": -0.00045170788965306213,
+    "mutation_clumping": -0.027439154708934543,
+    "child_clumping": 0.6774591913987521,
+    "parent_clumping": 0.7048983461076866
+  },
+  {
+    "timestamp": 1766483886.0797691,
+    "parent": "a8db176d",
+    "child_number": 65,
+    "mutation_g": -0.0010803165340205131,
+    "mutation_clumping": 0.015865815295090124,
+    "child_clumping": 0.6933250066938422,
+    "parent_clumping": 0.6774591913987521
+  },
+  {
+    "timestamp": 1766483888.116029,
+    "parent": "adb4878c",
+    "child_number": 66,
+    "mutation_g": 0.0017967557582429863,
+    "mutation_clumping": 0.016760017631782365,
+    "child_clumping": 0.7100850243256246,
+    "parent_clumping": 0.6933250066938422
+  },
+  {
+    "timestamp": 1766483890.1540298,
+    "parent": "5478aebb",
+    "child_number": 67,
+    "mutation_g": -0.0005712059326692664,
+    "mutation_clumping": -0.021631260761082127,
+    "child_clumping": 0.6884537635645425,
+    "parent_clumping": 0.7100850243256246
+  },
+  {
+    "timestamp": 1766483892.2000303,
+    "parent": "cc4712e2",
+    "child_number": 68,
+    "mutation_g": 0.0013889605907272812,
+    "mutation_clumping": -0.02788492126566322,
+    "child_clumping": 0.6605688422988792,
+    "parent_clumping": 0.6884537635645425
+  },
+  {
+    "timestamp": 1766483895.243169,
+    "parent": "a229bc81",
+    "child_number": 69,
+    "mutation_g": 0.0024170930851490913,
+    "mutation_clumping": -0.031767848120900166,
+    "child_clumping": 0.6288009941779791,
+    "parent_clumping": 0.6605688422988792
+  },
+  {
+    "timestamp": 1766483897.278772,
+    "parent": "e68a35c4",
+    "child_number": 70,
+    "mutation_g": 0.0009304839129501558,
+    "mutation_clumping": 0.026935599463158266,
+    "child_clumping": 0.6557365936411373,
+    "parent_clumping": 0.6288009941779791
+  },
+  {
+    "timestamp": 1766483899.315768,
+    "parent": "a15e0253",
+    "child_number": 71,
+    "mutation_g": -0.0003063820447120752,
+    "mutation_clumping": -0.027410531679233796,
+    "child_clumping": 0.6283260619619035,
+    "parent_clumping": 0.6557365936411373
+  },
+  {
+    "timestamp": 1766483901.3547711,
+    "parent": "9b2465b5",
+    "child_number": 72,
+    "mutation_g": -0.002446301922234717,
+    "mutation_clumping": 0.031222996035178974,
+    "child_clumping": 0.6595490579970825,
+    "parent_clumping": 0.6283260619619035
+  },
+  {
+    "timestamp": 1766483903.3927662,
+    "parent": "5d0e4473",
+    "child_number": 73,
+    "mutation_g": 0.0001532709089715062,
+    "mutation_clumping": -0.000899533358787008,
+    "child_clumping": 0.6586495246382955,
+    "parent_clumping": 0.6595490579970825
+  },
+  {
+    "timestamp": 1766483905.4312866,
+    "parent": "b209546f",
+    "child_number": 74,
+    "mutation_g": 0.0029080595177849167,
+    "mutation_clumping": -0.02488296354662123,
+    "child_clumping": 0.6337665610916743,
+    "parent_clumping": 0.6586495246382955
+  },
+  {
+    "timestamp": 1766483907.4686933,
+    "parent": "eecdb2b8",
+    "child_number": 75,
+    "mutation_g": -0.003000617502241995,
+    "mutation_clumping": -0.013261817625820904,
+    "child_clumping": 0.6205047434658534,
+    "parent_clumping": 0.6337665610916743
+  },
+  {
+    "timestamp": 1766483910.5101953,
+    "parent": "d96e3455",
+    "child_number": 76,
+    "mutation_g": -0.002395228637282379,
+    "mutation_clumping": 0.005813618924227271,
+    "child_clumping": 0.6263183623900807,
+    "parent_clumping": 0.6205047434658534
+  },
+  {
+    "timestamp": 1766483912.5625513,
+    "parent": "c2134cf5",
+    "child_number": 77,
+    "mutation_g": 0.0013277941284126002,
+    "mutation_clumping": -0.02240535162703805,
+    "child_clumping": 0.6039130107630426,
+    "parent_clumping": 0.6263183623900807
+  },
+  {
+    "timestamp": 1766483914.6295497,
+    "parent": "159386c1",
+    "child_number": 78,
+    "mutation_g": -0.0008713259657759445,
+    "mutation_clumping": 0.010150246380215333,
+    "child_clumping": 0.6140632571432579,
+    "parent_clumping": 0.6039130107630426
+  },
+  {
+    "timestamp": 1766483916.671604,
+    "parent": "9a350931",
+    "child_number": 79,
+    "mutation_g": -0.002377388143875371,
+    "mutation_clumping": 0.03060598736752762,
+    "child_clumping": 0.6446692445107856,
+    "parent_clumping": 0.6140632571432579
+  },
+  {
+    "timestamp": 1766483919.714028,
+    "parent": "66992dcd",
+    "child_number": 80,
+    "mutation_g": -0.0028019321951295653,
+    "mutation_clumping": 0.020374910369315713,
+    "child_clumping": 0.6650441548801013,
+    "parent_clumping": 0.6446692445107856
+  },
+  {
+    "timestamp": 1766483921.752646,
+    "parent": "bc2cc958",
+    "child_number": 81,
+    "mutation_g": -0.0014224809480087378,
+    "mutation_clumping": 0.016966550369066136,
+    "child_clumping": 0.6820107052491674,
+    "parent_clumping": 0.6650441548801013
+  },
+  {
+    "timestamp": 1766483923.7904363,
+    "parent": "d68475cb",
+    "child_number": 82,
+    "mutation_g": -0.001087896895749084,
+    "mutation_clumping": 0.03232576630693573,
+    "child_clumping": 0.7143364715561031,
+    "parent_clumping": 0.6820107052491674
+  },
+  {
+    "timestamp": 1766483925.8287132,
+    "parent": "b112e892",
+    "child_number": 83,
+    "mutation_g": 0.00048474700413410343,
+    "mutation_clumping": -0.01646196374712816,
+    "child_clumping": 0.697874507808975,
+    "parent_clumping": 0.7143364715561031
+  },
+  {
+    "timestamp": 1766483928.870744,
+    "parent": "92b1ba1c",
+    "child_number": 84,
+    "mutation_g": -0.0005412338714749707,
+    "mutation_clumping": 0.032318472731048375,
+    "child_clumping": 0.7301929805400234,
+    "parent_clumping": 0.697874507808975
+  },
+  {
+    "timestamp": 1766483930.9103234,
+    "parent": "117a763c",
+    "child_number": 85,
+    "mutation_g": 0.0006755344282201661,
+    "mutation_clumping": -0.012838231027951452,
+    "child_clumping": 0.7173547495120719,
+    "parent_clumping": 0.7301929805400234
+  },
+  {
+    "timestamp": 1766483932.9489923,
+    "parent": "0dc9619f",
+    "child_number": 86,
+    "mutation_g": 0.0015932830745834375,
+    "mutation_clumping": 0.019797017382399362,
+    "child_clumping": 0.7371517668944713,
+    "parent_clumping": 0.7173547495120719
+  },
+  {
+    "timestamp": 1766483934.9899905,
+    "parent": "0a71bec3",
+    "child_number": 87,
+    "mutation_g": 0.0016517093457397367,
+    "mutation_clumping": 0.016524530067308363,
+    "child_clumping": 0.7536762969617796,
+    "parent_clumping": 0.7371517668944713
+  },
+  {
+    "timestamp": 1766483938.0366557,
+    "parent": "e0c9c3ff",
+    "child_number": 88,
+    "mutation_g": -0.0023492286900929985,
+    "mutation_clumping": 0.026650282280509918,
+    "child_clumping": 0.7803265792422895,
+    "parent_clumping": 0.7536762969617796
+  },
+  {
+    "timestamp": 1766483940.075652,
+    "parent": "4982073d",
+    "child_number": 89,
+    "mutation_g": -0.001253097064922007,
+    "mutation_clumping": -0.032570546098369735,
+    "child_clumping": 0.7477560331439198,
+    "parent_clumping": 0.7803265792422895
+  },
+  {
+    "timestamp": 1766483942.1143768,
+    "parent": "c8030954",
+    "child_number": 90,
+    "mutation_g": -0.0018686040129624812,
+    "mutation_clumping": 0.02880224497742423,
+    "child_clumping": 0.776558278121344,
+    "parent_clumping": 0.7477560331439198
+  },
+  {
+    "timestamp": 1766483944.1543758,
+    "parent": "e98d4f9c",
+    "child_number": 91,
+    "mutation_g": 0.00035410384922216626,
+    "mutation_clumping": 0.03754819703532952,
+    "child_clumping": 0.8141064751566736,
+    "parent_clumping": 0.776558278121344
+  },
+  {
+    "timestamp": 1766483946.1946099,
+    "parent": "50323254",
+    "child_number": 92,
+    "mutation_g": -0.0001181131311900549,
+    "mutation_clumping": -0.027223768606237098,
+    "child_clumping": 0.7868827065504365,
+    "parent_clumping": 0.8141064751566736
+  },
+  {
+    "timestamp": 1766483948.2339432,
+    "parent": "36beb10b",
+    "child_number": 93,
+    "mutation_g": 0.002164308436020182,
+    "mutation_clumping": 0.023140002446479735,
+    "child_clumping": 0.8100227089969162,
+    "parent_clumping": 0.7868827065504365
+  },
+  {
+    "timestamp": 1766483951.2751963,
+    "parent": "2860868d",
+    "child_number": 94,
+    "mutation_g": -0.0021255753815619047,
+    "mutation_clumping": -0.026103551347347653,
+    "child_clumping": 0.7839191576495685,
+    "parent_clumping": 0.8100227089969162
+  },
+  {
+    "timestamp": 1766483953.3136377,
+    "parent": "aa805de8",
+    "child_number": 95,
+    "mutation_g": 0.0005700913503097552,
+    "mutation_clumping": 0.01811604086171248,
+    "child_clumping": 0.802035198511281,
+    "parent_clumping": 0.7839191576495685
+  },
+  {
+    "timestamp": 1766483955.3536377,
+    "parent": "f0044873",
+    "child_number": 96,
+    "mutation_g": -0.0022964115379788957,
+    "mutation_clumping": 0.026671092793020157,
+    "child_clumping": 0.8287062913043012,
+    "parent_clumping": 0.802035198511281
+  },
+  {
+    "timestamp": 1766483957.3928387,
+    "parent": "088c7c05",
+    "child_number": 97,
+    "mutation_g": 0.0014891087205890219,
+    "mutation_clumping": 0.015493550485074836,
+    "child_clumping": 0.844199841789376,
+    "parent_clumping": 0.8287062913043012
+  },
+  {
+    "timestamp": 1766483959.4336643,
+    "parent": "8f107c36",
+    "child_number": 98,
+    "mutation_g": -0.0016263298430193654,
+    "mutation_clumping": 0.010545198078004692,
+    "child_clumping": 0.8547450398673807,
+    "parent_clumping": 0.844199841789376
+  },
+  {
+    "timestamp": 1766483961.4757068,
+    "parent": "c3ad838a",
+    "child_number": 99,
+    "mutation_g": -0.00036755919996180747,
+    "mutation_clumping": 0.03294711921050353,
+    "child_clumping": 0.8876921590778842,
+    "parent_clumping": 0.8547450398673807
+  },
+  {
+    "timestamp": 1766483964.5166645,
+    "parent": "934eff41",
+    "child_number": 100,
+    "mutation_g": -0.002504306800591466,
+    "mutation_clumping": 0.022574639906454252,
+    "child_clumping": 0.9102667989843385,
+    "parent_clumping": 0.8876921590778842
+  },
+  {
+    "timestamp": 1766483966.5577803,
+    "parent": "02151e38",
+    "child_number": 101,
+    "mutation_g": -0.0018091348071828939,
+    "mutation_clumping": 0.0019210689840098993,
+    "child_clumping": 0.9121878679683484,
+    "parent_clumping": 0.9102667989843385
+  },
+  {
+    "timestamp": 1766483968.5977764,
+    "parent": "11655363",
+    "child_number": 102,
+    "mutation_g": -0.00213043003643152,
+    "mutation_clumping": 0.020099827583157204,
+    "child_clumping": 0.9322876955515056,
+    "parent_clumping": 0.9121878679683484
+  },
+  {
+    "timestamp": 1766483970.6377797,
+    "parent": "34bdad45",
+    "child_number": 103,
+    "mutation_g": 0.0005712231846196,
+    "mutation_clumping": 0.033913190505538204,
+    "child_clumping": 0.9662008860570438,
+    "parent_clumping": 0.9322876955515056
+  },
+  {
+    "timestamp": 1766483972.6747782,
+    "parent": "c235d15c",
+    "child_number": 104,
+    "mutation_g": -0.00142557748000674,
+    "mutation_clumping": -0.014246437700308534,
+    "child_clumping": 0.9519544483567353,
+    "parent_clumping": 0.9662008860570438
+  },
+  {
+    "timestamp": 1766483974.7137783,
+    "parent": "dac00eb3",
+    "child_number": 105,
+    "mutation_g": 0.0003976641376370882,
+    "mutation_clumping": 0.04697258156249329,
+    "child_clumping": 0.9989270299192285,
+    "parent_clumping": 0.9519544483567353
+  },
+  {
+    "timestamp": 1766483976.7567773,
+    "parent": "f1796099",
+    "child_number": 106,
+    "mutation_g": 0.0016496070391300993,
+    "mutation_clumping": 0.005332825527185836,
+    "child_clumping": 1.0042598554464144,
+    "parent_clumping": 0.9989270299192285
+  },
+  {
+    "timestamp": 1766483979.8019893,
+    "parent": "9d1636e7",
+    "child_number": 107,
+    "mutation_g": -0.0012331362643159746,
+    "mutation_clumping": -0.022785659851678353,
+    "child_clumping": 0.981474195594736,
+    "parent_clumping": 1.0042598554464144
+  },
+  {
+    "timestamp": 1766483981.8420374,
+    "parent": "2249eaff",
+    "child_number": 108,
+    "mutation_g": 0.0001318853096584499,
+    "mutation_clumping": -0.03828761313835094,
+    "child_clumping": 0.9431865824563851,
+    "parent_clumping": 0.981474195594736
+  },
+  {
+    "timestamp": 1766483983.8806655,
+    "parent": "f945d3ff",
+    "child_number": 109,
+    "mutation_g": 0.0015899491828694975,
+    "mutation_clumping": 0.02623432603314324,
+    "child_clumping": 0.9694209084895283,
+    "parent_clumping": 0.9431865824563851
+  },
+  {
+    "timestamp": 1766483985.92566,
+    "parent": "d97d71da",
+    "child_number": 110,
+    "mutation_g": -0.00021102479088278697,
+    "mutation_clumping": 0.0034456643367316575,
+    "child_clumping": 0.97286657282626,
+    "parent_clumping": 0.9694209084895283
+  },
+  {
+    "timestamp": 1766483987.970658,
+    "parent": "d381cdbc",
+    "child_number": 111,
+    "mutation_g": 0.0004909340329465189,
+    "mutation_clumping": 0.011827920058522845,
+    "child_clumping": 0.9846944928847828,
+    "parent_clumping": 0.97286657282626
+  },
+  {
+    "timestamp": 1766483990.0196605,
+    "parent": "2a1f1f41",
+    "child_number": 112,
+    "mutation_g": -0.0013526892414107566,
+    "mutation_clumping": -0.013760772499784912,
+    "child_clumping": 0.9709337203849979,
+    "parent_clumping": 0.9846944928847828
+  },
+  {
+    "timestamp": 1766483993.065569,
+    "parent": "64ff52eb",
+    "child_number": 113,
+    "mutation_g": 0.00013302496423803906,
+    "mutation_clumping": 0.04275456769621866,
+    "child_clumping": 1.0136882880812166,
+    "parent_clumping": 0.9709337203849979
+  },
+  {
+    "timestamp": 1766483995.1083086,
+    "parent": "5cf8953f",
+    "child_number": 114,
+    "mutation_g": 0.0016555211032380224,
+    "mutation_clumping": -0.034185920378864365,
+    "child_clumping": 0.9795023677023522,
+    "parent_clumping": 1.0136882880812166
+  },
+  {
+    "timestamp": 1766483997.149832,
+    "parent": "3d9ef2c3",
+    "child_number": 115,
+    "mutation_g": 0.002225606331580178,
+    "mutation_clumping": -0.034816073877307785,
+    "child_clumping": 0.9446862938250444,
+    "parent_clumping": 0.9795023677023522
+  },
+  {
+    "timestamp": 1766483999.1889334,
+    "parent": "7092a781",
+    "child_number": 116,
+    "mutation_g": 0.002377082681898339,
+    "mutation_clumping": -0.0036626517397503333,
+    "child_clumping": 0.9410236420852941,
+    "parent_clumping": 0.9446862938250444
+  },
+  {
+    "timestamp": 1766484001.2394962,
+    "parent": "e949451c",
+    "child_number": 117,
+    "mutation_g": -0.0020890775175013768,
+    "mutation_clumping": -0.03956209234155761,
+    "child_clumping": 0.9014615497437365,
+    "parent_clumping": 0.9410236420852941
+  },
+  {
+    "timestamp": 1766484005.3685746,
+    "parent": "cb8a9874",
+    "child_number": 118,
+    "mutation_g": 0.0006024406822882633,
+    "mutation_clumping": 0.010511439386149846,
+    "child_clumping": 0.9119729891298863,
+    "parent_clumping": 0.9014615497437365
+  },
+  {
+    "timestamp": 1766484007.4106195,
+    "parent": "0001fe05",
+    "child_number": 119,
+    "mutation_g": 0.0018897850582871717,
+    "mutation_clumping": 0.01361831338483177,
+    "child_clumping": 0.9255913025147181,
+    "parent_clumping": 0.9119729891298863
+  },
+  {
+    "timestamp": 1766484009.4546218,
+    "parent": "55d4219d",
+    "child_number": 120,
+    "mutation_g": 0.0020402845878865136,
+    "mutation_clumping": 0.029497362414752315,
+    "child_clumping": 0.9550886649294704,
+    "parent_clumping": 0.9255913025147181
+  },
+  {
+    "timestamp": 1766484011.493181,
+    "parent": "a7f701cb",
+    "child_number": 121,
+    "mutation_g": 0.002546612679727854,
+    "mutation_clumping": -0.03773007144185603,
+    "child_clumping": 0.9173585934876144,
+    "parent_clumping": 0.9550886649294704
+  },
+  {
+    "timestamp": 1766484013.5332341,
+    "parent": "6df62bdc",
+    "child_number": 122,
+    "mutation_g": -0.0006797655317220472,
+    "mutation_clumping": 0.029204646582888016,
+    "child_clumping": 0.9465632400705024,
+    "parent_clumping": 0.9173585934876144
+  },
+  {
+    "timestamp": 1766484016.5748966,
+    "parent": "bddacd93",
+    "child_number": 123,
+    "mutation_g": 0.0024376817226676034,
+    "mutation_clumping": 0.04093353267692579,
+    "child_clumping": 0.9874967727474282,
+    "parent_clumping": 0.9465632400705024
+  },
+  {
+    "timestamp": 1766484018.6156025,
+    "parent": "1cf98628",
+    "child_number": 124,
+    "mutation_g": -0.0012276051237794863,
+    "mutation_clumping": 0.038219563009739055,
+    "child_clumping": 1.0257163357571673,
+    "parent_clumping": 0.9874967727474282
+  },
+  {
+    "timestamp": 1766484020.6597486,
+    "parent": "07bf7ffe",
+    "child_number": 125,
+    "mutation_g": -0.0020241689801376098,
+    "mutation_clumping": -0.0025969730543720093,
+    "child_clumping": 1.0231193627027952,
+    "parent_clumping": 1.0257163357571673
+  },
+  {
+    "timestamp": 1766484022.7006125,
+    "parent": "5ce1cadd",
+    "child_number": 126,
+    "mutation_g": 2.3748289975360215e-05,
+    "mutation_clumping": 0.04340249869866186,
+    "child_clumping": 1.066521861401457,
+    "parent_clumping": 1.0231193627027952
+  },
+  {
+    "timestamp": 1766484024.7414422,
+    "parent": "43a769c1",
+    "child_number": 127,
+    "mutation_g": 0.0002874192709062598,
+    "mutation_clumping": -0.0009949720424922148,
+    "child_clumping": 1.065526889358965,
+    "parent_clumping": 1.066521861401457
+  },
+  {
+    "timestamp": 1766484026.783743,
+    "parent": "3c34ce9f",
+    "child_number": 128,
+    "mutation_g": -0.0021585231040875466,
+    "mutation_clumping": 0.017953604160837466,
+    "child_clumping": 1.0834804935198024,
+    "parent_clumping": 1.065526889358965
+  },
+  {
+    "timestamp": 1766484029.8307438,
+    "parent": "58ec4dba",
+    "child_number": 129,
+    "mutation_g": 0.0007907043084724383,
+    "mutation_clumping": -0.03204347542429664,
+    "child_clumping": 1.0514370180955057,
+    "parent_clumping": 1.0834804935198024
+  },
+  {
+    "timestamp": 1766484031.875182,
+    "parent": "42ab48ba",
+    "child_number": 130,
+    "mutation_g": -0.00016658949586052796,
+    "mutation_clumping": -0.04082322357294399,
+    "child_clumping": 1.0106137945225617,
+    "parent_clumping": 1.0514370180955057
+  },
+  {
+    "timestamp": 1766484033.9176865,
+    "parent": "d1e87085",
+    "child_number": 131,
+    "mutation_g": 0.001696921124294662,
+    "mutation_clumping": 0.013776392939608195,
+    "child_clumping": 1.02439018746217,
+    "parent_clumping": 1.0106137945225617
+  },
+  {
+    "timestamp": 1766484035.9656866,
+    "parent": "9cf0c521",
+    "child_number": 132,
+    "mutation_g": 3.213600891168594e-05,
+    "mutation_clumping": -0.033310432038001214,
+    "child_clumping": 0.9910797554241687,
+    "parent_clumping": 1.02439018746217
+  },
+  {
+    "timestamp": 1766484038.0115917,
+    "parent": "b7733bff",
+    "child_number": 133,
+    "mutation_g": 0.0019838422200039382,
+    "mutation_clumping": -0.04750138185436292,
+    "child_clumping": 0.9435783735698058,
+    "parent_clumping": 0.9910797554241687
+  },
+  {
+    "timestamp": 1766484041.0570095,
+    "parent": "961d00fe",
+    "child_number": 134,
+    "mutation_g": 0.0005199574668474025,
+    "mutation_clumping": -0.011886333933162851,
+    "child_clumping": 0.9316920396366429,
+    "parent_clumping": 0.9435783735698058
+  },
+  {
+    "timestamp": 1766484043.0975847,
+    "parent": "13945a5c",
+    "child_number": 135,
+    "mutation_g": -0.0006605962883400179,
+    "mutation_clumping": 0.008218290683162821,
+    "child_clumping": 0.9399103303198058,
+    "parent_clumping": 0.9316920396366429
+  },
+  {
+    "timestamp": 1766484045.142304,
+    "parent": "5d263a51",
+    "child_number": 136,
+    "mutation_g": 0.0008408255049016308,
+    "mutation_clumping": 0.0025475822078286914,
+    "child_clumping": 0.9424579125276344,
+    "parent_clumping": 0.9399103303198058
+  },
+  {
+    "timestamp": 1766484047.185633,
+    "parent": "f0db2433",
+    "child_number": 137,
+    "mutation_g": -0.00027475044554976097,
+    "mutation_clumping": 0.023824022502327846,
+    "child_clumping": 0.9662819350299623,
+    "parent_clumping": 0.9424579125276344
+  },
+  {
+    "timestamp": 1766484050.2366772,
+    "parent": "1967cf99",
+    "child_number": 138,
+    "mutation_g": 0.0007814380727570874,
+    "mutation_clumping": -0.03600273346918015,
+    "child_clumping": 0.9302792015607821,
+    "parent_clumping": 0.9662819350299623
+  },
+  {
+    "timestamp": 1766484052.2764854,
+    "parent": "3209410c",
+    "child_number": 139,
+    "mutation_g": 0.0003166559749840092,
+    "mutation_clumping": 0.04231000981946631,
+    "child_clumping": 0.9725892113802485,
+    "parent_clumping": 0.9302792015607821
+  },
+  {
+    "timestamp": 1766484054.316516,
+    "parent": "c32a78f5",
+    "child_number": 140,
+    "mutation_g": 0.0002133367688550783,
+    "mutation_clumping": -0.031453115876318605,
+    "child_clumping": 0.9411360955039298,
+    "parent_clumping": 0.9725892113802485
+  },
+  {
+    "timestamp": 1766484056.3547,
+    "parent": "fb21d7fd",
+    "child_number": 141,
+    "mutation_g": 0.0010045952119256685,
+    "mutation_clumping": -0.008061082513833528,
+    "child_clumping": 0.9330750129900963,
+    "parent_clumping": 0.9411360955039298
+  },
+  {
+    "timestamp": 1766484058.3969774,
+    "parent": "ab120474",
+    "child_number": 142,
+    "mutation_g": -0.002177148583966393,
+    "mutation_clumping": 0.011008518598296213,
+    "child_clumping": 0.9440835315883925,
+    "parent_clumping": 0.9330750129900963
+  },
+  {
+    "timestamp": 1766484061.436998,
+    "parent": "4aa082b9",
+    "child_number": 143,
+    "mutation_g": -0.0009204666975108425,
+    "mutation_clumping": 0.013452424826959408,
+    "child_clumping": 0.9575359564153519,
+    "parent_clumping": 0.9440835315883925
+  },
+  {
+    "timestamp": 1766484063.4757125,
+    "parent": "bdcf4aef",
+    "child_number": 144,
+    "mutation_g": 0.0014986814696055714,
+    "mutation_clumping": -0.017550026387839757,
+    "child_clumping": 0.9399859300275122,
+    "parent_clumping": 0.9575359564153519
+  },
+  {
+    "timestamp": 1766484065.5191588,
+    "parent": "26639185",
+    "child_number": 145,
+    "mutation_g": 0.00217732951205353,
+    "mutation_clumping": -0.007025276609588071,
+    "child_clumping": 0.9329606534179241,
+    "parent_clumping": 0.9399859300275122
+  },
+  {
+    "timestamp": 1766484067.558669,
+    "parent": "afa10636",
+    "child_number": 146,
+    "mutation_g": 0.00185846976146814,
+    "mutation_clumping": -0.0013467350274553036,
+    "child_clumping": 0.9316139183904688,
+    "parent_clumping": 0.9329606534179241
+  },
+  {
+    "timestamp": 1766484069.6008513,
+    "parent": "c19c0cc6",
+    "child_number": 147,
+    "mutation_g": 0.002278798011743015,
+    "mutation_clumping": -0.0033596645528649605,
+    "child_clumping": 0.9282542538376038,
+    "parent_clumping": 0.9316139183904688
+  },
+  {
+    "timestamp": 1766484071.6426926,
+    "parent": "61117eab",
+    "child_number": 148,
+    "mutation_g": -0.0009803492396567165,
+    "mutation_clumping": -0.0325721038850153,
+    "child_clumping": 0.8956821499525885,
+    "parent_clumping": 0.9282542538376038
+  },
+  {
+    "timestamp": 1766484074.689829,
+    "parent": "ff28e6a7",
+    "child_number": 149,
+    "mutation_g": 0.002468891172127133,
+    "mutation_clumping": -0.02476723873016573,
+    "child_clumping": 0.8709149112224228,
+    "parent_clumping": 0.8956821499525885
+  },
+  {
+    "timestamp": 1766484076.7304027,
+    "parent": "80aad629",
+    "child_number": 150,
+    "mutation_g": -0.0028585922493752636,
+    "mutation_clumping": 0.03128018588219805,
+    "child_clumping": 0.9021950971046209,
+    "parent_clumping": 0.8709149112224228
+  },
+  {
+    "timestamp": 1766484078.771172,
+    "parent": "7dcbbfa3",
+    "child_number": 151,
+    "mutation_g": -0.0017811328806440416,
+    "mutation_clumping": 0.04252259757780441,
+    "child_clumping": 0.9447176946824253,
+    "parent_clumping": 0.9021950971046209
+  },
+  {
+    "timestamp": 1766484080.8149185,
+    "parent": "0a8aa517",
+    "child_number": 152,
+    "mutation_g": -0.0017990313932493215,
+    "mutation_clumping": -0.013404897000919735,
+    "child_clumping": 0.9313127976815055,
+    "parent_clumping": 0.9447176946824253
+  },
+  {
+    "timestamp": 1766484082.8560908,
+    "parent": "f303b235",
+    "child_number": 153,
+    "mutation_g": -0.001671084712590122,
+    "mutation_clumping": -0.043366360521736036,
+    "child_clumping": 0.8879464371597695,
+    "parent_clumping": 0.9313127976815055
+  },
+  {
+    "timestamp": 1766484084.900095,
+    "parent": "a7967e63",
+    "child_number": 154,
+    "mutation_g": -0.002701070426837787,
+    "mutation_clumping": -0.015165034614428086,
+    "child_clumping": 0.8727814025453414,
+    "parent_clumping": 0.8879464371597695
+  },
+  {
+    "timestamp": 1766484087.9469671,
+    "parent": "f05a160e",
+    "child_number": 155,
+    "mutation_g": 0.0024503129678714944,
+    "mutation_clumping": 0.030088972713476325,
+    "child_clumping": 0.9028703752588177,
+    "parent_clumping": 0.8727814025453414
+  },
+  {
+    "timestamp": 1766484089.990967,
+    "parent": "91e63de9",
+    "child_number": 156,
+    "mutation_g": 0.002329200586023393,
+    "mutation_clumping": 0.00012963967200563253,
+    "child_clumping": 0.9030000149308234,
+    "parent_clumping": 0.9028703752588177
+  },
+  {
+    "timestamp": 1766484092.034159,
+    "parent": "3961d725",
+    "child_number": 157,
+    "mutation_g": 0.0002913724988502092,
+    "mutation_clumping": -0.03826515739893099,
+    "child_clumping": 0.8647348575318924,
+    "parent_clumping": 0.9030000149308234
+  },
+  {
+    "timestamp": 1766484094.0781577,
+    "parent": "ecd0554c",
+    "child_number": 158,
+    "mutation_g": 0.002566697233835444,
+    "mutation_clumping": 0.023582077237792043,
+    "child_clumping": 0.8883169347696844,
+    "parent_clumping": 0.8647348575318924
+  },
+  {
+    "timestamp": 1766484096.1256268,
+    "parent": "ea818864",
+    "child_number": 159,
+    "mutation_g": -0.0009763577146380403,
+    "mutation_clumping": 0.02832995140937633,
+    "child_clumping": 0.9166468861790608,
+    "parent_clumping": 0.8883169347696844
+  },
+  {
+    "timestamp": 1766484098.1735463,
+    "parent": "b5582984",
+    "child_number": 160,
+    "mutation_g": 0.00010689276797058028,
+    "mutation_clumping": -0.02957056048647233,
+    "child_clumping": 0.8870763256925884,
+    "parent_clumping": 0.9166468861790608
+  },
+  {
+    "timestamp": 1766484101.2269251,
+    "parent": "b404228d",
+    "child_number": 161,
+    "mutation_g": 0.0001870342143045281,
+    "mutation_clumping": 0.0180133225307072,
+    "child_clumping": 0.9050896482232956,
+    "parent_clumping": 0.8870763256925884
+  },
+  {
+    "timestamp": 1766484103.2679248,
+    "parent": "446727c2",
+    "child_number": 162,
+    "mutation_g": -0.00011768628451672841,
+    "mutation_clumping": 0.02743540180783588,
+    "child_clumping": 0.9325250500311315,
+    "parent_clumping": 0.9050896482232956
+  },
+  {
+    "timestamp": 1766484105.3104062,
+    "parent": "c70060db",
+    "child_number": 163,
+    "mutation_g": -7.775749177550695e-05,
+    "mutation_clumping": 0.0004351376757182335,
+    "child_clumping": 0.9329601877068497,
+    "parent_clumping": 0.9325250500311315
+  },
+  {
+    "timestamp": 1766484107.350029,
+    "parent": "343deb62",
+    "child_number": 164,
+    "mutation_g": 0.0026983294931584856,
+    "mutation_clumping": -0.04006614197015346,
+    "child_clumping": 0.8928940457366963,
+    "parent_clumping": 0.9329601877068497
+  },
+  {
+    "timestamp": 1766484109.3908188,
+    "parent": "7c7f7f96",
+    "child_number": 165,
+    "mutation_g": -0.0017336184846226677,
+    "mutation_clumping": -0.020629750332126107,
+    "child_clumping": 0.8722642954045702,
+    "parent_clumping": 0.8928940457366963
+  },
+  {
+    "timestamp": 1766484111.4348185,
+    "parent": "2811b737",
+    "child_number": 166,
+    "mutation_g": -0.0005891247876293193,
+    "mutation_clumping": -0.013893113801620616,
+    "child_clumping": 0.8583711816029496,
+    "parent_clumping": 0.8722642954045702
+  },
+  {
+    "timestamp": 1766484114.4797838,
+    "parent": "8c921abd",
+    "child_number": 167,
+    "mutation_g": 0.0010726663635740041,
+    "mutation_clumping": -0.034448367090254894,
+    "child_clumping": 0.8239228145126947,
+    "parent_clumping": 0.8583711816029496
+  },
+  {
+    "timestamp": 1766484116.5190978,
+    "parent": "3e7581f3",
+    "child_number": 168,
+    "mutation_g": -0.00045228115565208726,
+    "mutation_clumping": 0.012576936034224606,
+    "child_clumping": 0.8364997505469193,
+    "parent_clumping": 0.8239228145126947
+  },
+  {
+    "timestamp": 1766484118.5577726,
+    "parent": "f79c688a",
+    "child_number": 169,
+    "mutation_g": 0.0015134793774835287,
+    "mutation_clumping": 0.02151080800233962,
+    "child_clumping": 0.8580105585492589,
+    "parent_clumping": 0.8364997505469193
+  },
+  {
+    "timestamp": 1766484120.597688,
+    "parent": "77c69066",
+    "child_number": 170,
+    "mutation_g": 0.002007865167246492,
+    "mutation_clumping": -0.014191092467938371,
+    "child_clumping": 0.8438194660813205,
+    "parent_clumping": 0.8580105585492589
+  },
+  {
+    "timestamp": 1766484122.641799,
+    "parent": "d26b739a",
+    "child_number": 171,
+    "mutation_g": 0.0019489931333477317,
+    "mutation_clumping": 0.008895803153544657,
+    "child_clumping": 0.8527152692348652,
+    "parent_clumping": 0.8438194660813205
+  },
+  {
+    "timestamp": 1766484125.6848688,
+    "parent": "9d077d6f",
+    "child_number": 172,
+    "mutation_g": 0.0011428241847996762,
+    "mutation_clumping": 0.018276532911826515,
+    "child_clumping": 0.8709918021466917,
+    "parent_clumping": 0.8527152692348652
+  },
+  {
+    "timestamp": 1766484127.7258937,
+    "parent": "4d3bbf25",
+    "child_number": 173,
+    "mutation_g": -0.002710623824036959,
+    "mutation_clumping": -0.036490703469538865,
+    "child_clumping": 0.8345010986771528,
+    "parent_clumping": 0.8709918021466917
+  },
+  {
+    "timestamp": 1766484129.7692308,
+    "parent": "5e64880e",
+    "child_number": 174,
+    "mutation_g": -0.0019559835986725504,
+    "mutation_clumping": -0.009312235311471628,
+    "child_clumping": 0.8251888633656812,
+    "parent_clumping": 0.8345010986771528
+  },
+  {
+    "timestamp": 1766484131.8163023,
+    "parent": "cc11d549",
+    "child_number": 175,
+    "mutation_g": -0.0024710925963323874,
+    "mutation_clumping": 0.033227557050507395,
+    "child_clumping": 0.8584164204161886,
+    "parent_clumping": 0.8251888633656812
+  },
+  {
+    "timestamp": 1766484133.8633728,
+    "parent": "a373a733",
+    "child_number": 176,
+    "mutation_g": 0.0017789117236520283,
+    "mutation_clumping": 0.015016204874150674,
+    "child_clumping": 0.8734326252903393,
+    "parent_clumping": 0.8584164204161886
+  },
+  {
+    "timestamp": 1766484136.9082685,
+    "parent": "99f1444e",
+    "child_number": 177,
+    "mutation_g": 0.0031140455480556245,
+    "mutation_clumping": 0.039901852435277996,
+    "child_clumping": 0.9133344777256173,
+    "parent_clumping": 0.8734326252903393
+  },
+  {
+    "timestamp": 1766484138.949279,
+    "parent": "49d5d24d",
+    "child_number": 178,
+    "mutation_g": 0.0016640399890886226,
+    "mutation_clumping": -0.04520805011869056,
+    "child_clumping": 0.8681264276069267,
+    "parent_clumping": 0.9133344777256173
+  },
+  {
+    "timestamp": 1766484140.9919193,
+    "parent": "1132fe37",
+    "child_number": 179,
+    "mutation_g": -0.0019061020428616654,
+    "mutation_clumping": 0.0009220986789990615,
+    "child_clumping": 0.8690485262859258,
+    "parent_clumping": 0.8681264276069267
+  },
+  {
+    "timestamp": 1766484143.0307589,
+    "parent": "ac182c35",
+    "child_number": 180,
+    "mutation_g": 0.00041210389951193416,
+    "mutation_clumping": -0.026513075575173906,
+    "child_clumping": 0.8425354507107519,
+    "parent_clumping": 0.8690485262859258
+  },
+  {
+    "timestamp": 1766484145.0782669,
+    "parent": "b2489874",
+    "child_number": 181,
+    "mutation_g": 0.0012806432161298897,
+    "mutation_clumping": 0.0121262150750574,
+    "child_clumping": 0.8546616657858093,
+    "parent_clumping": 0.8425354507107519
+  },
+  {
+    "timestamp": 1766484148.1266208,
+    "parent": "16f63206",
+    "child_number": 182,
+    "mutation_g": 0.001536840493655836,
+    "mutation_clumping": 0.005115526862237263,
+    "child_clumping": 0.8597771926480465,
+    "parent_clumping": 0.8546616657858093
+  },
+  {
+    "timestamp": 1766484150.1661835,
+    "parent": "a0858180",
+    "child_number": 183,
+    "mutation_g": 0.0010827947697435447,
+    "mutation_clumping": 0.015223195399781453,
+    "child_clumping": 0.875000388047828,
+    "parent_clumping": 0.8597771926480465
+  },
+  {
+    "timestamp": 1766484152.208183,
+    "parent": "d93ab162",
+    "child_number": 184,
+    "mutation_g": 0.0010570057265740368,
+    "mutation_clumping": -0.030039977200610912,
+    "child_clumping": 0.8449604108472171,
+    "parent_clumping": 0.875000388047828
+  },
+  {
+    "timestamp": 1766484154.2531807,
+    "parent": "350a17eb",
+    "child_number": 185,
+    "mutation_g": 0.0022065859081526196,
+    "mutation_clumping": -0.04217535996552502,
+    "child_clumping": 0.802785050881692,
+    "parent_clumping": 0.8449604108472171
+  },
+  {
+    "timestamp": 1766484156.3041847,
+    "parent": "200ee7ee",
+    "child_number": 186,
+    "mutation_g": 0.0028826222178597732,
+    "mutation_clumping": -0.006078976652301948,
+    "child_clumping": 0.7967060742293901,
+    "parent_clumping": 0.802785050881692
+  },
+  {
+    "timestamp": 1766484158.3506277,
+    "parent": "ec4f2e3e",
+    "child_number": 187,
+    "mutation_g": 0.0014465779598754197,
+    "mutation_clumping": -0.006368698084945779,
+    "child_clumping": 0.7903373761444443,
+    "parent_clumping": 0.7967060742293901
+  },
+  {
+    "timestamp": 1766484161.3989148,
+    "parent": "fffac907",
+    "child_number": 188,
+    "mutation_g": -0.002250058062346058,
+    "mutation_clumping": 0.010126485615389091,
+    "child_clumping": 0.8004638617598334,
+    "parent_clumping": 0.7903373761444443
+  },
+  {
+    "timestamp": 1766484163.439133,
+    "parent": "65e9e860",
+    "child_number": 189,
+    "mutation_g": 0.003258122567614513,
+    "mutation_clumping": 0.008176514948493252,
+    "child_clumping": 0.8086403767083267,
+    "parent_clumping": 0.8004638617598334
+  },
+  {
+    "timestamp": 1766484165.4887388,
+    "parent": "0caf6c74",
+    "child_number": 190,
+    "mutation_g": -0.0008531776847149203,
+    "mutation_clumping": 0.005477083738809063,
+    "child_clumping": 0.8141174604471357,
+    "parent_clumping": 0.8086403767083267
+  },
+  {
+    "timestamp": 1766484167.52879,
+    "parent": "9a14a1de",
+    "child_number": 191,
+    "mutation_g": 0.0005254394430102144,
+    "mutation_clumping": 0.040371009177038064,
+    "child_clumping": 0.8544884696241738,
+    "parent_clumping": 0.8141174604471357
+  },
+  {
+    "timestamp": 1766484169.5709982,
+    "parent": "aae339c1",
+    "child_number": 192,
+    "mutation_g": -0.0003876821865239216,
+    "mutation_clumping": -0.022681952123789872,
+    "child_clumping": 0.8318065175003839,
+    "parent_clumping": 0.8544884696241738
+  },
+  {
+    "timestamp": 1766484171.6159997,
+    "parent": "c6491694",
+    "child_number": 193,
+    "mutation_g": 0.0025733756780231404,
+    "mutation_clumping": -0.023496664538333212,
+    "child_clumping": 0.8083098529620507,
+    "parent_clumping": 0.8318065175003839
+  },
+  {
+    "timestamp": 1766484173.666825,
+    "parent": "243fadce",
+    "child_number": 194,
+    "mutation_g": 0.003976698820046379,
+    "mutation_clumping": -0.00901401086273268,
+    "child_clumping": 0.799295842099318,
+    "parent_clumping": 0.8083098529620507
+  },
+  {
+    "timestamp": 1766484176.721682,
+    "parent": "53f4cb8a",
+    "child_number": 195,
+    "mutation_g": 0.00410970335397029,
+    "mutation_clumping": 0.023725175560256884,
+    "child_clumping": 0.8230210176595749,
+    "parent_clumping": 0.799295842099318
+  },
+  {
+    "timestamp": 1766484178.7626605,
+    "parent": "3b8ba03f",
+    "child_number": 196,
+    "mutation_g": 0.0005455615659767793,
+    "mutation_clumping": 0.01256551099649994,
+    "child_clumping": 0.8355865286560749,
+    "parent_clumping": 0.8230210176595749
+  },
+  {
+    "timestamp": 1766484180.8056567,
+    "parent": "608805b8",
+    "child_number": 197,
+    "mutation_g": -0.0005872556528255662,
+    "mutation_clumping": 0.00031251486903571823,
+    "child_clumping": 0.8358990435251106,
+    "parent_clumping": 0.8355865286560749
+  },
+  {
+    "timestamp": 1766484182.8544238,
+    "parent": "443b6d6a",
+    "child_number": 198,
+    "mutation_g": -0.004198891389244133,
+    "mutation_clumping": -0.01471568998872097,
+    "child_clumping": 0.8211833535363896,
+    "parent_clumping": 0.8358990435251106
+  },
+  {
+    "timestamp": 1766484184.897852,
+    "parent": "eb23160b",
+    "child_number": 199,
+    "mutation_g": 0.00033467273518776597,
+    "mutation_clumping": 0.017317062812744366,
+    "child_clumping": 0.838500416349134,
+    "parent_clumping": 0.8211833535363896
+  },
+  {
+    "timestamp": 1766484186.941874,
+    "parent": "6ade6df4",
+    "child_number": 200,
+    "mutation_g": 0.00035226003226244973,
+    "mutation_clumping": -0.02308943733935498,
+    "child_clumping": 0.815410979009779,
+    "parent_clumping": 0.838500416349134
+  },
+  {
+    "timestamp": 1766484188.9818718,
+    "parent": "6cabe23b",
+    "child_number": 201,
+    "mutation_g": 0.0005772015383468804,
+    "mutation_clumping": 0.020386621746669942,
+    "child_clumping": 0.8357976007564489,
+    "parent_clumping": 0.815410979009779
+  },
+  {
+    "timestamp": 1766484191.0248406,
+    "parent": "7395dc5c",
+    "child_number": 202,
+    "mutation_g": -0.0006097430474076848,
+    "mutation_clumping": -0.005252033964525227,
+    "child_clumping": 0.8305455667919237,
+    "parent_clumping": 0.8357976007564489
+  },
+  {
+    "timestamp": 1766484193.0654247,
+    "parent": "51f23eb9",
+    "child_number": 203,
+    "mutation_g": 0.0019157424892773667,
+    "mutation_clumping": 0.007601550588741679,
+    "child_clumping": 0.8381471173806654,
+    "parent_clumping": 0.8305455667919237
+  },
+  {
+    "timestamp": 1766484195.1094477,
+    "parent": "d8255adb",
+    "child_number": 204,
+    "mutation_g": 0.0010639383017026355,
+    "mutation_clumping": -0.02111524594777825,
+    "child_clumping": 0.8170318714328871,
+    "parent_clumping": 0.8381471173806654
+  },
+  {
+    "timestamp": 1766484197.15141,
+    "parent": "bbc41c0e",
+    "child_number": 205,
+    "mutation_g": -0.0005277826056799689,
+    "mutation_clumping": 0.02246741279829867,
+    "child_clumping": 0.8394992842311858,
+    "parent_clumping": 0.8170318714328871
+  },
+  {
+    "timestamp": 1766484199.1907773,
+    "parent": "be3b00ac",
+    "child_number": 206,
+    "mutation_g": 0.0028154431518860185,
+    "mutation_clumping": 0.0281749131586031,
+    "child_clumping": 0.8676741973897889,
+    "parent_clumping": 0.8394992842311858
+  },
+  {
+    "timestamp": 1766484201.2326725,
+    "parent": "8512017f",
+    "child_number": 207,
+    "mutation_g": -0.0035708543784089414,
+    "mutation_clumping": -0.019165712569272686,
+    "child_clumping": 0.8485084848205162,
+    "parent_clumping": 0.8676741973897889
+  },
+  {
+    "timestamp": 1766484203.273866,
+    "parent": "73f66efd",
+    "child_number": 208,
+    "mutation_g": -0.0033067269022897805,
+    "mutation_clumping": -0.01770929831825796,
+    "child_clumping": 0.8307991865022583,
+    "parent_clumping": 0.8485084848205162
+  },
+  {
+    "timestamp": 1766484205.3148093,
+    "parent": "35fc3aa5",
+    "child_number": 209,
+    "mutation_g": 0.00215774071602913,
+    "mutation_clumping": 0.0037441368814733478,
+    "child_clumping": 0.8345433233837316,
+    "parent_clumping": 0.8307991865022583
+  },
+  {
+    "timestamp": 1766484207.356811,
+    "parent": "71545597",
+    "child_number": 210,
+    "mutation_g": 0.0026788494530599616,
+    "mutation_clumping": -0.004439779716485792,
+    "child_clumping": 0.8301035436672458,
+    "parent_clumping": 0.8345433233837316
+  },
+  {
+    "timestamp": 1766484209.4038103,
+    "parent": "2df3a5fd",
+    "child_number": 211,
+    "mutation_g": -0.001364502023145378,
+    "mutation_clumping": -0.007887879440197088,
+    "child_clumping": 0.8222156642270487,
+    "parent_clumping": 0.8301035436672458
+  },
+  {
+    "timestamp": 1766484211.4458725,
+    "parent": "b0cb8b4b",
+    "child_number": 212,
+    "mutation_g": -0.004191896069444284,
+    "mutation_clumping": 0.03001728371774004,
+    "child_clumping": 0.8522329479447888,
+    "parent_clumping": 0.8222156642270487
+  },
+  {
+    "timestamp": 1766484213.487872,
+    "parent": "09740262",
+    "child_number": 213,
+    "mutation_g": 0.00015863915518121718,
+    "mutation_clumping": 0.03977743519238641,
+    "child_clumping": 0.8920103831371752,
+    "parent_clumping": 0.8522329479447888
+  },
+  {
+    "timestamp": 1766484215.5385115,
+    "parent": "67638cf0",
+    "child_number": 214,
+    "mutation_g": -0.003751720840013295,
+    "mutation_clumping": 0.029515326001586684,
+    "child_clumping": 0.9215257091387619,
+    "parent_clumping": 0.8920103831371752
+  },
+  {
+    "timestamp": 1766484217.5825095,
+    "parent": "14c41268",
+    "child_number": 215,
+    "mutation_g": 0.0036394360005179843,
+    "mutation_clumping": 0.030269021068732416,
+    "child_clumping": 0.9517947302074943,
+    "parent_clumping": 0.9215257091387619
+  },
+  {
+    "timestamp": 1766484219.6235096,
+    "parent": "f3521140",
+    "child_number": 216,
+    "mutation_g": -0.00397280501188059,
+    "mutation_clumping": -0.01175130168944516,
+    "child_clumping": 0.9400434285180491,
+    "parent_clumping": 0.9517947302074943
+  },
+  {
+    "timestamp": 1766484221.6695094,
+    "parent": "3da31fe7",
+    "child_number": 217,
+    "mutation_g": -0.003583537766728609,
+    "mutation_clumping": -0.0401082182935516,
+    "child_clumping": 0.8999352102244975,
+    "parent_clumping": 0.9400434285180491
+  },
+  {
+    "timestamp": 1766484223.715504,
+    "parent": "d258120b",
+    "child_number": 218,
+    "mutation_g": -0.001075762150389875,
+    "mutation_clumping": -0.006956979815436082,
+    "child_clumping": 0.8929782304090614,
+    "parent_clumping": 0.8999352102244975
+  },
+  {
+    "timestamp": 1766484225.7575073,
+    "parent": "c9389b06",
+    "child_number": 219,
+    "mutation_g": -0.0027175095975175007,
+    "mutation_clumping": -0.010682464931226154,
+    "child_clumping": 0.8822957654778353,
+    "parent_clumping": 0.8929782304090614
+  },
+  {
+    "timestamp": 1766484227.8012826,
+    "parent": "bd5bc00a",
+    "child_number": 220,
+    "mutation_g": -0.0020573403505461663,
+    "mutation_clumping": -0.03533646299423532,
+    "child_clumping": 0.8469593024836,
+    "parent_clumping": 0.8822957654778353
+  },
+  {
+    "timestamp": 1766484229.8482807,
+    "parent": "401b43bc",
+    "child_number": 221,
+    "mutation_g": 0.0028837210611816627,
+    "mutation_clumping": -0.011123821772166198,
+    "child_clumping": 0.8358354807114338,
+    "parent_clumping": 0.8469593024836
+  },
+  {
+    "timestamp": 1766484231.8973033,
+    "parent": "6831d664",
+    "child_number": 222,
+    "mutation_g": -0.0034950655800150138,
+    "mutation_clumping": -0.010835871029425959,
+    "child_clumping": 0.8249996096820078,
+    "parent_clumping": 0.8358354807114338
+  },
+  {
+    "timestamp": 1766484233.9402843,
+    "parent": "d4657459",
+    "child_number": 223,
+    "mutation_g": 0.0007058161358280135,
+    "mutation_clumping": 5.149405935644946e-05,
+    "child_clumping": 0.8250511037413643,
+    "parent_clumping": 0.8249996096820078
+  },
+  {
+    "timestamp": 1766484235.9834454,
+    "parent": "9b9905e8",
+    "child_number": 224,
+    "mutation_g": 0.0008003154014297187,
+    "mutation_clumping": -0.010683141689593834,
+    "child_clumping": 0.8143679620517704,
+    "parent_clumping": 0.8250511037413643
+  },
+  {
+    "timestamp": 1766484238.0254424,
+    "parent": "eacd16d9",
+    "child_number": 225,
+    "mutation_g": 0.000750606149402866,
+    "mutation_clumping": -0.021744755962215923,
+    "child_clumping": 0.7926232060895545,
+    "parent_clumping": 0.8143679620517704
+  },
+  {
+    "timestamp": 1766484241.0704584,
+    "parent": "c5d1f512",
+    "child_number": 226,
+    "mutation_g": 0.0023861702209600905,
+    "mutation_clumping": 0.009571231398808222,
+    "child_clumping": 0.8021944374883627,
+    "parent_clumping": 0.7926232060895545
+  },
+  {
+    "timestamp": 1766484243.1137042,
+    "parent": "9959295f",
+    "child_number": 227,
+    "mutation_g": -0.0005818178382780703,
+    "mutation_clumping": 0.023777994091396693,
+    "child_clumping": 0.8259724315797594,
+    "parent_clumping": 0.8021944374883627
+  },
+  {
+    "timestamp": 1766484245.1566343,
+    "parent": "13d72cd0",
+    "child_number": 228,
+    "mutation_g": 0.002839274802140135,
+    "mutation_clumping": -0.02129781672378206,
+    "child_clumping": 0.8046746148559774,
+    "parent_clumping": 0.8259724315797594
+  },
+  {
+    "timestamp": 1766484247.2036552,
+    "parent": "e4828077",
+    "child_number": 229,
+    "mutation_g": -0.002161391278148128,
+    "mutation_clumping": -0.024363219049684748,
+    "child_clumping": 0.7803113958062926,
+    "parent_clumping": 0.8046746148559774
+  },
+  {
+    "timestamp": 1766484249.245456,
+    "parent": "4ee3441b",
+    "child_number": 230,
+    "mutation_g": 0.0016456814095286987,
+    "mutation_clumping": 0.007189160280319684,
+    "child_clumping": 0.7875005560866123,
+    "parent_clumping": 0.7803113958062926
+  },
+  {
+    "timestamp": 1766484251.290079,
+    "parent": "9ded6ebd",
+    "child_number": 231,
+    "mutation_g": -0.0024776604575598715,
+    "mutation_clumping": -0.021525082222832337,
+    "child_clumping": 0.76597547386378,
+    "parent_clumping": 0.7875005560866123
+  },
+  {
+    "timestamp": 1766484253.3320768,
+    "parent": "1931e24c",
+    "child_number": 232,
+    "mutation_g": 0.00024041266538804562,
+    "mutation_clumping": -0.012066433729334136,
+    "child_clumping": 0.7539090401344458,
+    "parent_clumping": 0.76597547386378
+  },
+  {
+    "timestamp": 1766484255.3750768,
+    "parent": "0bcb87e1",
+    "child_number": 233,
+    "mutation_g": 0.0014686141866766533,
+    "mutation_clumping": -0.0358010518989359,
+    "child_clumping": 0.7181079882355099,
+    "parent_clumping": 0.7539090401344458
+  },
+  {
+    "timestamp": 1766484257.418078,
+    "parent": "f41cc31e",
+    "child_number": 234,
+    "mutation_g": -8.592747015473412e-05,
+    "mutation_clumping": 0.026065577236366932,
+    "child_clumping": 0.7441735654718769,
+    "parent_clumping": 0.7181079882355099
+  },
+  {
+    "timestamp": 1766484259.460834,
+    "parent": "c636494f",
+    "child_number": 235,
+    "mutation_g": -0.0013182039601298545,
+    "mutation_clumping": 0.025994892695890948,
+    "child_clumping": 0.7701684581677678,
+    "parent_clumping": 0.7441735654718769
+  },
+  {
+    "timestamp": 1766484261.5038686,
+    "parent": "09388daa",
+    "child_number": 236,
+    "mutation_g": -0.003434369037062332,
+    "mutation_clumping": 0.0049382698293087834,
+    "child_clumping": 0.7751067279970766,
+    "parent_clumping": 0.7701684581677678
+  },
+  {
+    "timestamp": 1766484263.5488722,
+    "parent": "945ffc19",
+    "child_number": 237,
+    "mutation_g": -0.0035117751353670595,
+    "mutation_clumping": -0.029532610364277567,
+    "child_clumping": 0.745574117632799,
+    "parent_clumping": 0.7751067279970766
+  },
+  {
+    "timestamp": 1766484265.5938878,
+    "parent": "7957c8e8",
+    "child_number": 238,
+    "mutation_g": 0.003297307915006556,
+    "mutation_clumping": 0.02162300103541248,
+    "child_clumping": 0.7671971186682115,
+    "parent_clumping": 0.745574117632799
+  },
+  {
+    "timestamp": 1766484267.6368897,
+    "parent": "c30a96a5",
+    "child_number": 239,
+    "mutation_g": 0.0030612058932824177,
+    "mutation_clumping": 0.037148835409572256,
+    "child_clumping": 0.8043459540777838,
+    "parent_clumping": 0.7671971186682115
+  },
+  {
+    "timestamp": 1766484269.6818862,
+    "parent": "04e95404",
+    "child_number": 240,
+    "mutation_g": -0.001775997944599192,
+    "mutation_clumping": -0.02453595732171454,
+    "child_clumping": 0.7798099967560692,
+    "parent_clumping": 0.8043459540777838
+  },
+  {
+    "timestamp": 1766484271.7238905,
+    "parent": "478b13a8",
+    "child_number": 241,
+    "mutation_g": 0.001247234045023568,
+    "mutation_clumping": 0.012399598757017682,
+    "child_clumping": 0.7922095955130869,
+    "parent_clumping": 0.7798099967560692
+  },
+  {
+    "timestamp": 1766484273.7638843,
+    "parent": "16604498",
+    "child_number": 242,
+    "mutation_g": -0.0003286635572649216,
+    "mutation_clumping": 0.027121494663274737,
+    "child_clumping": 0.8193310901763616,
+    "parent_clumping": 0.7922095955130869
+  },
+  {
+    "timestamp": 1766484275.8080676,
+    "parent": "6dfebe1b",
+    "child_number": 243,
+    "mutation_g": -0.0003562624487666033,
+    "mutation_clumping": -0.034514757988125644,
+    "child_clumping": 0.784816332188236,
+    "parent_clumping": 0.8193310901763616
+  },
+  {
+    "timestamp": 1766484277.849563,
+    "parent": "ee88f3a3",
+    "child_number": 244,
+    "mutation_g": 0.0009520446706582225,
+    "mutation_clumping": 0.026081314976630354,
+    "child_clumping": 0.8108976471648663,
+    "parent_clumping": 0.784816332188236
+  },
+  {
+    "timestamp": 1766484279.8926134,
+    "parent": "19cae7b5",
+    "child_number": 245,
+    "mutation_g": -0.0013451953842562592,
+    "mutation_clumping": 0.0009144425465655859,
+    "child_clumping": 0.8118120897114319,
+    "parent_clumping": 0.8108976471648663
+  },
+  {
+    "timestamp": 1766484281.9376113,
+    "parent": "0814f12e",
+    "child_number": 246,
+    "mutation_g": 0.0009784726144237837,
+    "mutation_clumping": 0.017900590081643353,
+    "child_clumping": 0.8297126797930753,
+    "parent_clumping": 0.8118120897114319
+  },
+  {
+    "timestamp": 1766484283.983553,
+    "parent": "4453ce39",
+    "child_number": 247,
+    "mutation_g": -0.0002812906840766738,
+    "mutation_clumping": 0.00919654302361117,
+    "child_clumping": 0.8389092228166865,
+    "parent_clumping": 0.8297126797930753
+  },
+  {
+    "timestamp": 1766484286.0265565,
+    "parent": "dbaecb3a",
+    "child_number": 248,
+    "mutation_g": -0.0017262512070788383,
+    "mutation_clumping": 0.03920359588853295,
+    "child_clumping": 0.8781128187052194,
+    "parent_clumping": 0.8389092228166865
+  },
+  {
+    "timestamp": 1766484288.0705523,
+    "parent": "dc2e2bf8",
+    "child_number": 249,
+    "mutation_g": -0.0007185165317735859,
+    "mutation_clumping": -0.014630479217095371,
+    "child_clumping": 0.863482339488124,
+    "parent_clumping": 0.8781128187052194
+  },
+  {
+    "timestamp": 1766484290.114555,
+    "parent": "578c9d67",
+    "child_number": 250,
+    "mutation_g": 0.001476723524100304,
+    "mutation_clumping": -0.04151597086619041,
+    "child_clumping": 0.8219663686219336,
+    "parent_clumping": 0.863482339488124
+  },
+  {
+    "timestamp": 1766484292.1555521,
+    "parent": "d0d53dc8",
+    "child_number": 251,
+    "mutation_g": 0.0023872791777996144,
+    "mutation_clumping": 0.019491851411422845,
+    "child_clumping": 0.8414582200333565,
+    "parent_clumping": 0.8219663686219336
+  },
+  {
+    "timestamp": 1766484294.1985562,
+    "parent": "de0caa7b",
+    "child_number": 252,
+    "mutation_g": -0.0031932883790499605,
+    "mutation_clumping": 0.0059442313618227605,
+    "child_clumping": 0.8474024513951792,
+    "parent_clumping": 0.8414582200333565
+  },
+  {
+    "timestamp": 1766484296.2415497,
+    "parent": "1ac98c90",
+    "child_number": 253,
+    "mutation_g": -0.0006437236753533832,
+    "mutation_clumping": 0.020292998416413632,
+    "child_clumping": 0.8676954498115929,
+    "parent_clumping": 0.8474024513951792
+  },
+  {
+    "timestamp": 1766484298.2846975,
+    "parent": "e49acafa",
+    "child_number": 254,
+    "mutation_g": -0.0002074015028704912,
+    "mutation_clumping": 0.03370419745465225,
+    "child_clumping": 0.9013996472662451,
+    "parent_clumping": 0.8676954498115929
+  },
+  {
+    "timestamp": 1766484300.3306713,
+    "parent": "49eb393e",
+    "child_number": 255,
+    "mutation_g": 0.0018810999752797986,
+    "mutation_clumping": -0.02962034777487721,
+    "child_clumping": 0.8717792994913679,
+    "parent_clumping": 0.9013996472662451
+  },
+  {
+    "timestamp": 1766484302.380746,
+    "parent": "edc8ea41",
+    "child_number": 256,
+    "mutation_g": 0.0005623711021188332,
+    "mutation_clumping": 0.015570479849468355,
+    "child_clumping": 0.8873497793408363,
+    "parent_clumping": 0.8717792994913679
+  },
+  {
+    "timestamp": 1766484304.4228501,
+    "parent": "eebfab3e",
+    "child_number": 257,
+    "mutation_g": -0.0015908163718845597,
+    "mutation_clumping": 0.023221965144369916,
+    "child_clumping": 0.9105717444852062,
+    "parent_clumping": 0.8873497793408363
+  },
+  {
+    "timestamp": 1766484306.4678519,
+    "parent": "65b47fcb",
+    "child_number": 258,
+    "mutation_g": -0.0031508467363327436,
+    "mutation_clumping": 0.03914945950895532,
+    "child_clumping": 0.9497212039941615,
+    "parent_clumping": 0.9105717444852062
+  },
+  {
+    "timestamp": 1766484308.5127828,
+    "parent": "a5b968da",
+    "child_number": 259,
+    "mutation_g": -0.0033505299200649874,
+    "mutation_clumping": -0.04364147509641125,
+    "child_clumping": 0.9060797288977502,
+    "parent_clumping": 0.9497212039941615
+  },
+  {
+    "timestamp": 1766484310.5592096,
+    "parent": "12ca42fd",
+    "child_number": 260,
+    "mutation_g": 0.0019454741430200845,
+    "mutation_clumping": -0.04111140845489969,
+    "child_clumping": 0.8649683204428505,
+    "parent_clumping": 0.9060797288977502
+  },
+  {
+    "timestamp": 1766484313.6042168,
+    "parent": "625130ab",
+    "child_number": 261,
+    "mutation_g": 0.0007614720104625466,
+    "mutation_clumping": 0.004725348264107865,
+    "child_clumping": 0.8696936687069584,
+    "parent_clumping": 0.8649683204428505
+  },
+  {
+    "timestamp": 1766484315.6490178,
+    "parent": "0e8e63a8",
+    "child_number": 262,
+    "mutation_g": -0.0027304966959370985,
+    "mutation_clumping": -0.03485882495694281,
+    "child_clumping": 0.8348348437500156,
+    "parent_clumping": 0.8696936687069584
+  },
+  {
+    "timestamp": 1766484317.6940422,
+    "parent": "8cb22707",
+    "child_number": 263,
+    "mutation_g": 0.0027069821815567247,
+    "mutation_clumping": 0.01812122508970393,
+    "child_clumping": 0.8529560688397195,
+    "parent_clumping": 0.8348348437500156
+  },
+  {
+    "timestamp": 1766484319.7431383,
+    "parent": "a291f865",
+    "child_number": 264,
+    "mutation_g": 0.0001313540822442394,
+    "mutation_clumping": -0.019592320596434454,
+    "child_clumping": 0.8333637482432851,
+    "parent_clumping": 0.8529560688397195
+  },
+  {
+    "timestamp": 1766484321.7852316,
+    "parent": "5fa70b74",
+    "child_number": 265,
+    "mutation_g": -0.0016674765144226444,
+    "mutation_clumping": -0.0056497469766917385,
+    "child_clumping": 0.8277140012665933,
+    "parent_clumping": 0.8333637482432851
+  },
+  {
+    "timestamp": 1766484323.8322349,
+    "parent": "a6a0e5d2",
+    "child_number": 266,
+    "mutation_g": -0.0002388964682490391,
+    "mutation_clumping": 0.022530037562952576,
+    "child_clumping": 0.8502440388295459,
+    "parent_clumping": 0.8277140012665933
+  },
+  {
+    "timestamp": 1766484325.8747642,
+    "parent": "e99177e8",
+    "child_number": 267,
+    "mutation_g": 0.000977259681567949,
+    "mutation_clumping": 0.015843744736355747,
+    "child_clumping": 0.8660877835659017,
+    "parent_clumping": 0.8502440388295459
+  },
+  {
+    "timestamp": 1766484327.916852,
+    "parent": "6c13c710",
+    "child_number": 268,
+    "mutation_g": 0.001462967400719814,
+    "mutation_clumping": -0.0279990055929491,
+    "child_clumping": 0.8380887779729526,
+    "parent_clumping": 0.8660877835659017
+  },
+  {
+    "timestamp": 1766484329.9628477,
+    "parent": "e0ae6413",
+    "child_number": 269,
+    "mutation_g": -0.00021366653155170667,
+    "mutation_clumping": -0.027186397121987782,
+    "child_clumping": 0.8109023808509648,
+    "parent_clumping": 0.8380887779729526
+  },
+  {
+    "timestamp": 1766484332.0057235,
+    "parent": "fbadc354",
+    "child_number": 270,
+    "mutation_g": 0.001892605197107336,
+    "mutation_clumping": 0.038774914069902966,
+    "child_clumping": 0.8496772949208677,
+    "parent_clumping": 0.8109023808509648
+  },
+  {
+    "timestamp": 1766484334.046724,
+    "parent": "8f15fc99",
+    "child_number": 271,
+    "mutation_g": 0.003112391323159519,
+    "mutation_clumping": -0.036170141368163544,
+    "child_clumping": 0.8135071535527042,
+    "parent_clumping": 0.8496772949208677
+  },
+  {
+    "timestamp": 1766484336.0927236,
+    "parent": "a87c1725",
+    "child_number": 272,
+    "mutation_g": -0.00337618766208167,
+    "mutation_clumping": 0.009692510405535981,
+    "child_clumping": 0.8231996639582402,
+    "parent_clumping": 0.8135071535527042
+  },
+  {
+    "timestamp": 1766484338.1377227,
+    "parent": "4c0be822",
+    "child_number": 273,
+    "mutation_g": 0.0004271488456797923,
+    "mutation_clumping": 0.02701066872136626,
+    "child_clumping": 0.8502103326796064,
+    "parent_clumping": 0.8231996639582402
+  },
+  {
+    "timestamp": 1766484340.1817255,
+    "parent": "06e71897",
+    "child_number": 274,
+    "mutation_g": 0.000604878874401138,
+    "mutation_clumping": 0.03413749847851155,
+    "child_clumping": 0.884347831158118,
+    "parent_clumping": 0.8502103326796064
+  },
+  {
+    "timestamp": 1766484342.2267194,
+    "parent": "124b32a2",
+    "child_number": 275,
+    "mutation_g": 0.0033311498665395123,
+    "mutation_clumping": 0.020232175539054875,
+    "child_clumping": 0.9045800066971729,
+    "parent_clumping": 0.884347831158118
+  },
+  {
+    "timestamp": 1766484344.2698789,
+    "parent": "bff1a11e",
+    "child_number": 276,
+    "mutation_g": 0.0029047952827605528,
+    "mutation_clumping": -0.01189558439918903,
+    "child_clumping": 0.8926844222979838,
+    "parent_clumping": 0.9045800066971729
+  },
+  {
+    "timestamp": 1766484346.3238773,
+    "parent": "e29f764c",
+    "child_number": 277,
+    "mutation_g": 0.0006458306894774196,
+    "mutation_clumping": -0.042038644725498675,
+    "child_clumping": 0.8506457775724852,
+    "parent_clumping": 0.8926844222979838
+  },
+  {
+    "timestamp": 1766484348.3680842,
+    "parent": "3f50e67d",
+    "child_number": 278,
+    "mutation_g": -0.0014677354432056366,
+    "mutation_clumping": -0.021485514696235275,
+    "child_clumping": 0.8291602628762499,
+    "parent_clumping": 0.8506457775724852
+  },
+  {
+    "timestamp": 1766484351.4231088,
+    "parent": "278ac0de",
+    "child_number": 279,
+    "mutation_g": 0.0033408010750705375,
+    "mutation_clumping": 0.02212352790754346,
+    "child_clumping": 0.8512837907837933,
+    "parent_clumping": 0.8291602628762499
+  },
+  {
+    "timestamp": 1766484353.4653742,
+    "parent": "642ff5f8",
+    "child_number": 280,
+    "mutation_g": -0.0021554190384631966,
+    "mutation_clumping": -0.015126786509794043,
+    "child_clumping": 0.8361570042739993,
+    "parent_clumping": 0.8512837907837933
+  },
+  {
+    "timestamp": 1766484355.5123973,
+    "parent": "be127916",
+    "child_number": 281,
+    "mutation_g": 0.0017233534736142558,
+    "mutation_clumping": -0.033626930974005376,
+    "child_clumping": 0.8025300732999939,
+    "parent_clumping": 0.8361570042739993
+  },
+  {
+    "timestamp": 1766484358.5793717,
+    "parent": "4b615f7e",
+    "child_number": 282,
+    "mutation_g": -0.0022746785748646164,
+    "mutation_clumping": -0.039791949660379466,
+    "child_clumping": 0.7627381236396145,
+    "parent_clumping": 0.8025300732999939
+  },
+  {
+    "timestamp": 1766484361.6563716,
+    "parent": "a074ecd1",
+    "child_number": 283,
+    "mutation_g": 0.0035820277016943153,
+    "mutation_clumping": -0.03645883837179109,
+    "child_clumping": 0.7262792852678234,
+    "parent_clumping": 0.7627381236396145
+  },
+  {
+    "timestamp": 1766484364.7761254,
+    "parent": "dac18751",
+    "child_number": 284,
+    "mutation_g": 0.002622950078588357,
+    "mutation_clumping": 0.0070223728568258315,
+    "child_clumping": 0.7333016581246492,
+    "parent_clumping": 0.7262792852678234
+  },
+  {
+    "timestamp": 1766484367.8546479,
+    "parent": "b37edca9",
+    "child_number": 285,
+    "mutation_g": -0.0013927902637534545,
+    "mutation_clumping": 0.016392671614920085,
+    "child_clumping": 0.7496943297395693,
+    "parent_clumping": 0.7333016581246492
+  },
+  {
+    "timestamp": 1766484371.9236434,
+    "parent": "4366eff4",
+    "child_number": 286,
+    "mutation_g": 0.0026974833190177017,
+    "mutation_clumping": 0.01148929796041731,
+    "child_clumping": 0.7611836276999866,
+    "parent_clumping": 0.7496943297395693
+  },
+  {
+    "timestamp": 1766484374.991161,
+    "parent": "33f3f7a2",
+    "child_number": 287,
+    "mutation_g": -0.0005933804089242323,
+    "mutation_clumping": -0.0005468243948602014,
+    "child_clumping": 0.7606368033051264,
+    "parent_clumping": 0.7611836276999866
+  },
+  {
+    "timestamp": 1766484378.0597146,
+    "parent": "fa6555b4",
+    "child_number": 288,
+    "mutation_g": -0.0019524298888809744,
+    "mutation_clumping": -0.025137241935220933,
+    "child_clumping": 0.7354995613699055,
+    "parent_clumping": 0.7606368033051264
+  },
+  {
+    "timestamp": 1766484381.1852329,
+    "parent": "f055b4d1",
+    "child_number": 289,
+    "mutation_g": 0.0007206822440256333,
+    "mutation_clumping": 0.02188009614980546,
+    "child_clumping": 0.7573796575197109,
+    "parent_clumping": 0.7354995613699055
+  },
+  {
+    "timestamp": 1766484385.2702317,
+    "parent": "c16eab76",
+    "child_number": 290,
+    "mutation_g": 0.0032855118215153883,
+    "mutation_clumping": 0.02754780037001414,
+    "child_clumping": 0.7849274578897251,
+    "parent_clumping": 0.7573796575197109
+  },
+  {
+    "timestamp": 1766484388.336233,
+    "parent": "3462dcd3",
+    "child_number": 291,
+    "mutation_g": -0.00422460168848901,
+    "mutation_clumping": -0.009663844532339705,
+    "child_clumping": 0.7752636133573854,
+    "parent_clumping": 0.7849274578897251
+  },
+  {
+    "timestamp": 1766484391.4222305,
+    "parent": "4923a8ef",
+    "child_number": 292,
+    "mutation_g": -0.0030426507178654277,
+    "mutation_clumping": -0.020487222604325117,
+    "child_clumping": 0.7547763907530602,
+    "parent_clumping": 0.7752636133573854
+  },
+  {
+    "timestamp": 1766484394.487237,
+    "parent": "45948f5b",
+    "child_number": 293,
+    "mutation_g": 0.0027862721157743825,
+    "mutation_clumping": -0.0005802177130741493,
+    "child_clumping": 0.7541961730399861,
+    "parent_clumping": 0.7547763907530602
+  },
+  {
+    "timestamp": 1766484397.5617812,
+    "parent": "9867d747",
+    "child_number": 294,
+    "mutation_g": 0.0015666884196055691,
+    "mutation_clumping": -0.02870711491917388,
+    "child_clumping": 0.7254890581208122,
+    "parent_clumping": 0.7541961730399861
+  },
+  {
+    "timestamp": 1766484400.6558244,
+    "parent": "00cadfd5",
+    "child_number": 295,
+    "mutation_g": -0.0032107348320556256,
+    "mutation_clumping": -0.016234050784296516,
+    "child_clumping": 0.7092550073365157,
+    "parent_clumping": 0.7254890581208122
+  },
+  {
+    "timestamp": 1766484404.73734,
+    "parent": "a14fd3f9",
+    "child_number": 296,
+    "mutation_g": -0.00022553224683882767,
+    "mutation_clumping": -0.0007310504510300575,
+    "child_clumping": 0.7085239568854856,
+    "parent_clumping": 0.7092550073365157
+  },
+  {
+    "timestamp": 1766484407.8174188,
+    "parent": "e7a132e9",
+    "child_number": 297,
+    "mutation_g": 0.002415142211808302,
+    "mutation_clumping": 0.019533351280706435,
+    "child_clumping": 0.7280573081661921,
+    "parent_clumping": 0.7085239568854856
+  },
+  {
+    "timestamp": 1766484410.9289746,
+    "parent": "fab2b6c3",
+    "child_number": 298,
+    "mutation_g": -0.0031315523304170784,
+    "mutation_clumping": 0.03570782674062212,
+    "child_clumping": 0.7637651349068142,
+    "parent_clumping": 0.7280573081661921
+  },
+  {
+    "timestamp": 1766484414.0044928,
+    "parent": "d3878a8a",
+    "child_number": 299,
+    "mutation_g": -0.0006865072413237694,
+    "mutation_clumping": -0.01732045042329111,
+    "child_clumping": 0.7464446844835231,
+    "parent_clumping": 0.7637651349068142
+  },
+  {
+    "timestamp": 1766484418.090493,
+    "parent": "d1114b13",
+    "child_number": 300,
+    "mutation_g": 0.0016198879961707713,
+    "mutation_clumping": -0.024499768686184864,
+    "child_clumping": 0.7219449157973382,
+    "parent_clumping": 0.7464446844835231
+  },
+  {
+    "timestamp": 1766484421.1554947,
+    "parent": "533a8694",
+    "child_number": 301,
+    "mutation_g": -0.0014414059899574422,
+    "mutation_clumping": -0.014658653977821845,
+    "child_clumping": 0.7072862618195164,
+    "parent_clumping": 0.7219449157973382
+  },
+  {
+    "timestamp": 1766484424.2281504,
+    "parent": "6cb00bee",
+    "child_number": 302,
+    "mutation_g": -0.0033643410566326637,
+    "mutation_clumping": -0.02887419817249226,
+    "child_clumping": 0.6784120636470241,
+    "parent_clumping": 0.7072862618195164
+  },
+  {
+    "timestamp": 1766484427.295167,
+    "parent": "8e31321b",
+    "child_number": 303,
+    "mutation_g": -0.002529147794820538,
+    "mutation_clumping": -0.01667965386354331,
+    "child_clumping": 0.6617324097834808,
+    "parent_clumping": 0.6784120636470241
+  },
+  {
+    "timestamp": 1766484429.3546834,
+    "parent": "b960cc93",
+    "child_number": 304,
+    "mutation_g": 0.0018583617707260136,
+    "mutation_clumping": -0.02036516490127005,
+    "child_clumping": 0.6413672448822108,
+    "parent_clumping": 0.6617324097834808
+  },
+  {
+    "timestamp": 1766484432.4126823,
+    "parent": "7aea03ff",
+    "child_number": 305,
+    "mutation_g": 0.001860788865149024,
+    "mutation_clumping": 0.00686947304797314,
+    "child_clumping": 0.6482367179301839,
+    "parent_clumping": 0.6413672448822108
+  },
+  {
+    "timestamp": 1766484434.4616823,
+    "parent": "de54bb9c",
+    "child_number": 306,
+    "mutation_g": -0.002843885537765045,
+    "mutation_clumping": -0.00023468644020485652,
+    "child_clumping": 0.648002031489979,
+    "parent_clumping": 0.6482367179301839
+  },
+  {
+    "timestamp": 1766484436.5216844,
+    "parent": "bdef5edd",
+    "child_number": 307,
+    "mutation_g": -0.0010158857402790822,
+    "mutation_clumping": -0.017847515719344065,
+    "child_clumping": 0.630154515770635,
+    "parent_clumping": 0.648002031489979
+  },
+  {
+    "timestamp": 1766484438.5756838,
+    "parent": "a9af1dbe",
+    "child_number": 308,
+    "mutation_g": 0.0022763236125943193,
+    "mutation_clumping": 0.01276330818517979,
+    "child_clumping": 0.6429178239558148,
+    "parent_clumping": 0.630154515770635
+  },
+  {
+    "timestamp": 1766484441.640682,
+    "parent": "09869ee6",
+    "child_number": 309,
+    "mutation_g": 0.002081962514665414,
+    "mutation_clumping": 0.012326950067162445,
+    "child_clumping": 0.6552447740229772,
+    "parent_clumping": 0.6429178239558148
+  },
+  {
+    "timestamp": 1766484443.7116823,
+    "parent": "95b15422",
+    "child_number": 310,
+    "mutation_g": -0.00018619887758970777,
+    "mutation_clumping": -0.029103187268937902,
+    "child_clumping": 0.6261415867540393,
+    "parent_clumping": 0.6552447740229772
+  },
+  {
+    "timestamp": 1766484445.7727094,
+    "parent": "8786c65f",
+    "child_number": 311,
+    "mutation_g": 0.0026760507710127945,
+    "mutation_clumping": -0.012217113296053905,
+    "child_clumping": 0.6139244734579854,
+    "parent_clumping": 0.6261415867540393
+  },
+  {
+    "timestamp": 1766484447.8257074,
+    "parent": "13a51a80",
+    "child_number": 312,
+    "mutation_g": -0.0025395680560411776,
+    "mutation_clumping": 0.005319067234200725,
+    "child_clumping": 0.6192435406921861,
+    "parent_clumping": 0.6139244734579854
+  },
+  {
+    "timestamp": 1766484450.8847082,
+    "parent": "4b075caa",
+    "child_number": 313,
+    "mutation_g": 0.0017167418643238147,
+    "mutation_clumping": -0.007702120973276494,
+    "child_clumping": 0.6115414197189096,
+    "parent_clumping": 0.6192435406921861
+  },
+  {
+    "timestamp": 1766484452.9377134,
+    "parent": "642c96af",
+    "child_number": 314,
+    "mutation_g": 0.0038159491130538153,
+    "mutation_clumping": 0.005629938349884012,
+    "child_clumping": 0.6171713580687936,
+    "parent_clumping": 0.6115414197189096
+  },
+  {
+    "timestamp": 1766484454.9877071,
+    "parent": "c96e471d",
+    "child_number": 315,
+    "mutation_g": 0.0030789631113308236,
+    "mutation_clumping": -0.023170382113104293,
+    "child_clumping": 0.5940009759556893,
+    "parent_clumping": 0.6171713580687936
+  },
+  {
+    "timestamp": 1766484457.0437117,
+    "parent": "1bca9032",
+    "child_number": 316,
+    "mutation_g": 0.0005336589242347783,
+    "mutation_clumping": -0.028560518516853595,
+    "child_clumping": 0.5654404574388358,
+    "parent_clumping": 0.5940009759556893
+  },
+  {
+    "timestamp": 1766484460.1102285,
+    "parent": "028850c7",
+    "child_number": 317,
+    "mutation_g": 0.004157416347392112,
+    "mutation_clumping": 0.026196744282320883,
+    "child_clumping": 0.5916372017211566,
+    "parent_clumping": 0.5654404574388358
+  },
+  {
+    "timestamp": 1766484462.16623,
+    "parent": "4c46d8f9",
+    "child_number": 318,
+    "mutation_g": 0.0019098534815241291,
+    "mutation_clumping": 0.011252511054699488,
+    "child_clumping": 0.6028897127758561,
+    "parent_clumping": 0.5916372017211566
+  },
+  {
+    "timestamp": 1766484464.2272303,
+    "parent": "68d34308",
+    "child_number": 319,
+    "mutation_g": 0.0022526396057147013,
+    "mutation_clumping": -0.0027522598337831328,
+    "child_clumping": 0.600137452942073,
+    "parent_clumping": 0.6028897127758561
+  },
+  {
+    "timestamp": 1766484466.2852283,
+    "parent": "63e9e9cd",
+    "child_number": 320,
+    "mutation_g": -0.0024353919677398694,
+    "mutation_clumping": -0.0173802335778227,
+    "child_clumping": 0.5827572193642503,
+    "parent_clumping": 0.600137452942073
+  },
+  {
+    "timestamp": 1766484470.3482313,
+    "parent": "9a08b351",
+    "child_number": 321,
+    "mutation_g": 0.002152865473438209,
+    "mutation_clumping": -0.026945665291031373,
+    "child_clumping": 0.5558115540732189,
+    "parent_clumping": 0.5827572193642503
+  },
+  {
+    "timestamp": 1766484472.394548,
+    "parent": "d9cfef08",
+    "child_number": 322,
+    "mutation_g": 0.0013523144103994161,
+    "mutation_clumping": 0.00753413977162809,
+    "child_clumping": 0.563345693844847,
+    "parent_clumping": 0.5558115540732189
+  },
+  {
+    "timestamp": 1766484474.4455438,
+    "parent": "42348894",
+    "child_number": 323,
+    "mutation_g": 0.0021413924490641667,
+    "mutation_clumping": 0.01577862279206166,
+    "child_clumping": 0.5791243166369087,
+    "parent_clumping": 0.563345693844847
+  },
+  {
+    "timestamp": 1766484476.4945426,
+    "parent": "bc9d9a19",
+    "child_number": 324,
+    "mutation_g": -0.004314199721173195,
+    "mutation_clumping": 0.028552717788934534,
+    "child_clumping": 0.6076770344258432,
+    "parent_clumping": 0.5791243166369087
+  },
+  {
+    "timestamp": 1766484478.5435426,
+    "parent": "e11cc878",
+    "child_number": 325,
+    "mutation_g": -0.0045890562945237745,
+    "mutation_clumping": -0.005504857950241915,
+    "child_clumping": 0.6021721764756013,
+    "parent_clumping": 0.6076770344258432
+  },
+  {
+    "timestamp": 1766484480.5875916,
+    "parent": "5bbd69c0",
+    "child_number": 326,
+    "mutation_g": 0.0019621185501887822,
+    "mutation_clumping": 0.003274279172253869,
+    "child_clumping": 0.6054464556478552,
+    "parent_clumping": 0.6021721764756013
   }
 ]
