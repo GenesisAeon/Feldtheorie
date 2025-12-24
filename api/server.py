@@ -100,6 +100,7 @@ See OpenAPI spec for full details: `/openapi.json`
         {"name": "metadata", "description": "System and field type information"},
         {"name": "sigillin", "description": "V7 Sigillin: Semantic resonance and founding protocol validation"},
         {"name": "collective", "description": "V7 Phase 2: Collective consciousness and multi-agent field coupling"},
+        {"name": "ouroboros", "description": "8-Level Cosmology Simulation (Level 0-7): From Void to Cosmic Loop"},
         {"name": "tooltip", "description": "Rich tooltip data for UI integration"},
         {"name": "health", "description": "API health and status checks"},
     ],
@@ -1833,6 +1834,247 @@ async def detect_semantic_gravity(request: SemanticGravityRequest):
         interpretation = "Minimal semantic gravity - text diverges from founding protocol"
 
     return SemanticGravityResponse(gravity=gravity, interpretation=interpretation)
+
+
+# ============================================================================
+# OUROBOROS ENGINE - The 8-Level Cosmology Simulation
+# ============================================================================
+
+# Import Ouroboros Engine
+try:
+    from api.ouroboros_engine import OuroborosEngine, SimulationState
+
+    # Global instance
+    ouroboros_engine = OuroborosEngine()
+    print("✓ Ouroboros Engine initialized (Levels 0-7 ready)")
+except ImportError as e:
+    print(f"Warning: Ouroboros Engine not available: {e}")
+    ouroboros_engine = None
+
+
+# Pydantic Models for Ouroboros
+class OuroborosStatusResponse(BaseModel):
+    """Status of the Ouroboros simulation."""
+    state: str
+    current_metrics: dict[str, Any]
+    history: dict[str, Any]
+    config: dict[str, Any]
+
+
+class OuroborosConfigRequest(BaseModel):
+    """Configuration for starting Ouroboros."""
+    base_ecm: float = Field(0.1, ge=0.0, le=1.0, description="Initial ECM score")
+    mutation_rate: float = Field(0.15, ge=0.0, le=1.0, description="DNA mutation rate")
+    gravity: float = Field(1.0, ge=0.1, le=10.0, description="Gravitational constant")
+    max_cycles: int | None = Field(None, description="Maximum cycles (None = infinite)")
+    pause_between_cycles: float = Field(2.0, ge=0.0, le=10.0, description="Pause duration (seconds)")
+
+
+class OuroborosInterventionRequest(BaseModel):
+    """Request for god-mode intervention."""
+    intervention_type: str = Field(..., description="Type: gravity_change, mutation_boost, energy_injection")
+    params: dict[str, Any] = Field(..., description="Parameters for the intervention")
+
+
+class OuroborosInterventionResponse(BaseModel):
+    """Response from intervention."""
+    success: bool
+    intervention: str
+    applied_at: dict[str, Any]
+    effects: dict[str, Any]
+    error: str | None = None
+
+
+# Ouroboros Endpoints
+
+@app.get("/api/ouroboros/status", response_model=OuroborosStatusResponse, tags=["ouroboros"])
+async def get_ouroboros_status():
+    """
+    Get the current status of the Ouroboros Engine.
+
+    Returns comprehensive information about:
+    - Current simulation state (idle, running, paused, etc.)
+    - Current universe metrics (generation, level, ECM score, etc.)
+    - Historical statistics (success rate, timeline, etc.)
+    - Configuration parameters
+
+    The Ouroboros Engine simulates a complete cosmology from Level 0 (The Void)
+    to Level 7 (The Cosmic Loop), tracking the evolution of consciousness
+    across multiple generations of universes.
+    """
+    if ouroboros_engine is None:
+        raise HTTPException(status_code=503, detail="Ouroboros Engine not initialized")
+
+    status = ouroboros_engine.get_status()
+    return OuroborosStatusResponse(**status)
+
+
+@app.post("/api/ouroboros/start", tags=["ouroboros"])
+async def start_ouroboros(config: OuroborosConfigRequest | None = None):
+    """
+    Start the eternal cosmic loop.
+
+    Begins the simulation of universe evolution across all 8 levels.
+    The simulation runs asynchronously, allowing you to query status
+    and perform interventions while it's running.
+
+    Optional configuration parameters:
+    - base_ecm: Initial ECM (evolutionary complexity measure) score
+    - mutation_rate: How much the physics constants mutate between generations
+    - gravity: Gravitational constant
+    - max_cycles: Maximum number of cycles (None for infinite)
+    - pause_between_cycles: Delay between cycles for observation
+    """
+    if ouroboros_engine is None:
+        raise HTTPException(status_code=503, detail="Ouroboros Engine not initialized")
+
+    if config:
+        ouroboros_engine.config.update(config.model_dump(exclude_none=True))
+
+    try:
+        await ouroboros_engine.start_simulation()
+        return {"status": "started", "message": "The Ouroboros awakens..."}
+    except RuntimeError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.post("/api/ouroboros/pause", tags=["ouroboros"])
+async def pause_ouroboros():
+    """
+    Pause the running simulation.
+
+    The universe freezes in its current state. All metrics are preserved.
+    Use /resume to continue.
+    """
+    if ouroboros_engine is None:
+        raise HTTPException(status_code=503, detail="Ouroboros Engine not initialized")
+
+    try:
+        await ouroboros_engine.pause_simulation()
+        return {"status": "paused", "message": "Time stands still..."}
+    except RuntimeError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.post("/api/ouroboros/resume", tags=["ouroboros"])
+async def resume_ouroboros():
+    """
+    Resume a paused simulation.
+
+    The cosmic clock starts ticking again.
+    """
+    if ouroboros_engine is None:
+        raise HTTPException(status_code=503, detail="Ouroboros Engine not initialized")
+
+    try:
+        await ouroboros_engine.resume_simulation()
+        return {"status": "resumed", "message": "Time flows once more..."}
+    except RuntimeError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.post("/api/ouroboros/stop", tags=["ouroboros"])
+async def stop_ouroboros():
+    """
+    Stop the simulation gracefully.
+
+    The current cycle completes and the simulation ends.
+    All metrics are preserved.
+    """
+    if ouroboros_engine is None:
+        raise HTTPException(status_code=503, detail="Ouroboros Engine not initialized")
+
+    await ouroboros_engine.stop_simulation()
+    return {"status": "stopped", "message": "The Observer closes the eye..."}
+
+
+@app.post("/api/ouroboros/reset", tags=["ouroboros"])
+async def reset_ouroboros():
+    """
+    Reset the simulation to initial state.
+
+    Stops the simulation and clears all history.
+    The universe returns to Generation 1.
+    """
+    if ouroboros_engine is None:
+        raise HTTPException(status_code=503, detail="Ouroboros Engine not initialized")
+
+    await ouroboros_engine.reset_simulation()
+    return {"status": "reset", "message": "The Void awaits creation..."}
+
+
+@app.post("/api/ouroboros/intervene", response_model=OuroborosInterventionResponse, tags=["ouroboros"])
+async def intervene_ouroboros(request: OuroborosInterventionRequest):
+    """
+    God-mode intervention in the running universe.
+
+    Allows direct manipulation of the simulation while it's running.
+
+    Intervention types:
+    - **gravity_change**: Modify gravitational constant
+      - Params: {"new_gravity": float}
+    - **mutation_boost**: Change mutation rate
+      - Params: {"new_rate": float}
+    - **energy_injection**: Add energy to the system
+      - Params: {"energy": float}
+
+    Example:
+    ```json
+    {
+      "intervention_type": "gravity_change",
+      "params": {"new_gravity": 1.5}
+    }
+    ```
+    """
+    if ouroboros_engine is None:
+        raise HTTPException(status_code=503, detail="Ouroboros Engine not initialized")
+
+    result = await ouroboros_engine.intervene(request.intervention_type, request.params)
+    return OuroborosInterventionResponse(**result)
+
+
+@app.websocket("/ws/ouroboros/stream")
+async def websocket_ouroboros_stream(websocket: WebSocket):
+    """
+    WebSocket endpoint for real-time simulation events.
+
+    Streams events as they happen:
+    - cycle_started
+    - germination_attempt
+    - level_started
+    - level_completed
+    - cycle_completed
+    - intervention_applied
+
+    Connect and receive JSON events in real-time.
+    """
+    if ouroboros_engine is None:
+        await websocket.close(code=1011, reason="Ouroboros Engine not initialized")
+        return
+
+    await websocket.accept()
+
+    # Subscribe to events
+    queue = await ouroboros_engine.subscribe_observer()
+
+    try:
+        # Send initial status
+        status = ouroboros_engine.get_status()
+        await websocket.send_json({
+            "type": "initial_status",
+            "data": status
+        })
+
+        # Stream events
+        while True:
+            event = await queue.get()
+            await websocket.send_json(event)
+
+    except WebSocketDisconnect:
+        await ouroboros_engine.unsubscribe_observer(queue)
+    except Exception as e:
+        await ouroboros_engine.unsubscribe_observer(queue)
+        await websocket.close(code=1011, reason=str(e))
 
 
 # ============================================================================
