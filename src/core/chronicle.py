@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import ClassVar, Dict, List, Mapping, MutableMapping, Optional
+from typing import Any, ClassVar, Dict, List, Mapping, MutableMapping, Optional
 
 
 @dataclass(frozen=True)
@@ -44,8 +44,10 @@ class TheChronicle:
             return
         self.graveyard: List[AgentLog] = []
         self.resource_pool: Dict[str, int] = {
-            "HYDROGEN": 0,
+            "HYDROGEN": 1_000_000,
             "HELIUM": 0,
+            "METALS": 0,
+            "DUST": 0,
             "CARBON": 0,
             "OXYGEN": 0,
             "IRON": 0,
@@ -53,38 +55,60 @@ class TheChronicle:
             "HEAVY_METALS": 0,
             "BLACK_HOLE_SEED": 0,
         }
+        self.elemental_pool = self.resource_pool
         self.resource_lineage: Dict[str, List[ResourceOrigin]] = {}
         self.cycle: int = 0
+        self.cycle_count: int = 0
         self._initialized = True
 
     def record_death(
         self,
-        agent: object,
-        output_materials: Mapping[str, int],
+        agent: object | Mapping[str, Any],
+        output_materials: Mapping[str, int] | None = None,
         cause: str | None = None,
     ) -> AgentLog:
-        """Archive an agent and recycle its materials into the pool."""
+        """Archive an agent and recycle its materials into the pool.
+
+        The Chronicle accepts either structured agent objects (legacy path)
+        or plain dictionaries containing ``id``, ``role``, ``age`` and
+        ``yield`` entries for rapid prototyping scenarios.
+        """
 
         self.cycle += 1
-        normalized = self._normalize_materials(output_materials)
-        self._deposit_resources(normalized)
+        self.cycle_count = self.cycle
 
-        agent_id = self._agent_id(agent)
-        role_name = getattr(agent, "role_name", None)
-        lifespan = self._agent_lifespan(agent)
-        resonance = float(getattr(agent, "resonance_frequency", 0.0))
+        # Support dictionary payloads coming from scripted scenarios
+        if isinstance(agent, Mapping) and output_materials is None:
+            payload = agent
+            output_materials = payload.get("yield", {})  # type: ignore[assignment]
+            agent_id = str(payload.get("id", "unknown"))
+            role_name = payload.get("role", "PARTICLE")
+            lifespan = self._coerce_int(payload.get("age"))
+            resonance = float(payload.get("resonance", 0.0))
+            cause = cause or payload.get("death_reason") or "recycled"
+        else:
+            agent_id = self._agent_id(agent)
+            role_name = getattr(agent, "role_name", None)
+            lifespan = self._agent_lifespan(agent)
+            resonance = float(getattr(agent, "resonance_frequency", 0.0))
+            cause = cause or "unbekannt"
+
+        normalized = self._normalize_materials(output_materials or {})
+        self._deposit_resources(normalized)
 
         log = AgentLog(
             agent_id=agent_id,
             role_name=role_name,
             lifespan=lifespan,
             resonance=resonance,
-            cause_of_death=cause or "unbekannt",
+            cause_of_death=cause,
             materials_released=normalized,
             cycle=self.cycle,
         )
         self.graveyard.append(log)
         self._extend_lineage(log)
+
+        print(f"📜 CHRONICLE: Agent {log.agent_id} recorded. Pool updated: {self.resource_pool}")
         return log
 
     def request_resources(self, resource: str, amount: int) -> int:
@@ -99,11 +123,23 @@ class TheChronicle:
     def has_resources(self, required: Mapping[str, int]) -> bool:
         return all(self.resource_pool.get(k.upper(), 0) >= v for k, v in required.items())
 
+    def request_incarnation(self, required_materials: Mapping[str, int]) -> bool:
+        """Reserve materials for a new agent if the pool is sufficient."""
+
+        if not self.has_resources(required_materials):
+            return False
+        for element, amount in required_materials.items():
+            self.request_resources(element, amount)
+        return True
+
     def trace_resource(self, material: str) -> Optional[ResourceOrigin]:
         entries = self.resource_lineage.get(material.upper())
         if not entries:
             return None
         return entries[-1]
+
+    def get_ancestry(self, agent_id: str) -> str:
+        return f"Du bist Teil von Zyklus {self.cycle_count}. Vor dir starben {len(self.graveyard)} Ahnen."
 
     def report_pool(self) -> MutableMapping[str, int]:
         return dict(self.resource_pool)
@@ -143,8 +179,18 @@ class TheChronicle:
         for attr in ("lifespan", "lifetime", "age"):
             if hasattr(agent, attr):
                 value = getattr(agent, attr)
-                if isinstance(value, int):
-                    return value
+                coerced = self._coerce_int(value)
+                if coerced is not None:
+                    return coerced
+        return None
+
+    def _coerce_int(self, value: object | None) -> Optional[int]:
+        if value is None:
+            return None
+        if isinstance(value, bool):
+            return None
+        if isinstance(value, (int, float)):
+            return int(value)
         return None
 
 
