@@ -1,0 +1,25 @@
+# Ouroboros Interface Requirements
+# =================================
+# Install with: pip install -r src/interface/requirements.txt
+
+# Core API Framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+
+# WebSocket support
+websockets>=12.0
+python-multipart>=0.0.6
+
+# Dashboard Framework
+streamlit>=1.28.0
+
+# Data Processing & Visualization
+pandas>=2.0.0
+plotly>=5.17.0
+
+# HTTP Client (for dashboard → API communication)
+requests>=2.31.0
+
+# Optional but recommended
+python-dotenv>=1.0.0  # For environment configuration
