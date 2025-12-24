@@ -15,8 +15,9 @@ class ExistenceScale(Enum):
     VACUUM = 0
     ATOMIC = 1
     STELLAR = 2
-    GALACTIC = 3
-    COSMIC = 4
+    BIOLOGICAL = 3  # Life: Standing waves in matter
+    GALACTIC = 4
+    COSMIC = 5
 
 
 def _mind_vector() -> np.ndarray:
