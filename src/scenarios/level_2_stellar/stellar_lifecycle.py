@@ -5,8 +5,8 @@ from dataclasses import dataclass
 from typing import Dict, List, Optional
 import random
 
-from core import TheChronicle
-from uatc_core.agent_kernel import ResonantEntity
+from src.core import TheChronicle
+from src.uatc_core.agent_kernel import ResonantEntity
 
 
 @dataclass
