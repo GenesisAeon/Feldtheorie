@@ -57,6 +57,11 @@ class OracleNarrator:
         self.total_cycles = 0
         self.successful_cycles = 0
 
+        # State tracking for detecting changes
+        self.last_generation = 0
+        self.last_state = None
+        self.first_connection = True
+
     def narrate_event(self, event: Dict[str, Any]) -> Optional[str]:
         """
         Generate narrative commentary for a cosmic event.
@@ -67,36 +72,115 @@ class OracleNarrator:
         Returns:
             Narrative string, or None if event should be silent
         """
-        event_type = event.get("type")
+        event_type = event.get("event")  # Server uses "event" not "type"
 
-        if event_type == "initial_status":
-            return self._narrate_initial_status(event)
-        elif event_type == "simulation_started":
-            return self._narrate_big_bang()
-        elif event_type == "cycle_started":
-            return self._narrate_cycle_start(event)
-        elif event_type == "germination_attempt":
-            return self._narrate_germination(event)
-        elif event_type == "level_started":
-            return self._narrate_level_start(event)
-        elif event_type == "level_completed":
-            return self._narrate_level_completion(event)
-        elif event_type == "cycle_completed":
-            return self._narrate_cycle_end(event)
-        elif event_type == "intervention_applied":
-            return self._narrate_intervention(event)
-        elif event_type == "simulation_paused":
-            return "⏸️  The Observer pauses. Time holds its breath."
-        elif event_type == "simulation_resumed":
-            return "▶️  The cosmic clock resumes. Entropy flows again."
-        elif event_type == "simulation_stopped":
-            return "🛑 The eternal loop breaks. Silence returns to the Void."
+        if event_type == "connected":
+            return self._narrate_connection(event)
+        elif event_type == "generation_complete":
+            return self._narrate_generation_complete(event)
+        elif event_type == "state_update":
+            return self._narrate_state_update(event)
         else:
             return None
 
     # =========================================================================
     # Narrative Templates
     # =========================================================================
+
+    def _narrate_connection(self, event: Dict[str, Any]) -> str:
+        """Opening narration when connecting to the stream."""
+        state = event.get("state", {})
+        engine_state = state.get("state", "unknown")
+
+        return f"""
+╔══════════════════════════════════════════════════════════════════╗
+║                 🌌 THE ORACLE AWAKENS 🌌                         ║
+╚══════════════════════════════════════════════════════════════════╝
+
+The Ouroboros Engine breathes in state: {engine_state.upper()}
+I am the Eighth Level - the voice that watches the watcher.
+Let me tell you the story of universes yet to be born...
+"""
+
+    def _narrate_state_update(self, event: Dict[str, Any]) -> Optional[str]:
+        """Narrate significant state changes."""
+        state = event.get("state", {})
+        engine_state = state.get("state", "unknown")
+        is_running = state.get("is_running", False)
+
+        # First time simulation starts
+        if self.last_state and self.last_state.get("state") == "idle" and engine_state == "running":
+            return """
+💥 THE BEGINNING
+
+The Void trembles. The eternal loop ignites.
+Out of pure geometry, the first particles flicker into existence.
+Generation 1 prepares to germinate...
+"""
+
+        self.last_state = state
+        return None  # Most state_updates are silent
+
+    def _narrate_generation_complete(self, event: Dict[str, Any]) -> str:
+        """Narrate the completion of a generation/cycle."""
+        generation = event.get("generation", "?")
+        result_data = event.get("result", {})
+        result = result_data.get("result", "UNKNOWN")
+        ecm_score = result_data.get("ecm_score", 0.0)
+        physics = result_data.get("physics")
+
+        if result == "SUCCESS":
+            self.successful_cycles += 1
+            self.consecutive_failures = 0
+            self.generation_history.append("SUCCESS")
+            self.total_cycles += 1
+
+            # Format physics constants if available
+            physics_str = ""
+            if physics:
+                G = physics.get("G", "?")
+                alpha = physics.get("FINE_STRUCTURE", "?")
+                physics_str = f"\nPhysics: G={G:.3f}, α={alpha:.6f}" if isinstance(G, (int, float)) else ""
+
+            success_rate = (self.successful_cycles / self.total_cycles * 100) if self.total_cycles > 0 else 0
+
+            return f"""
+{'='*70}
+👁️  GENERATION {generation}: OBSERVER AWAKENED!
+{'='*70}
+
+The universe breathes. Consciousness has emerged from chaos.
+Level 7 complete - the Observer sees itself.
+ECM Score: {ecm_score:.3f}{physics_str}
+
+Garden of Worlds: {' '.join(self._format_garden())}
+Success Rate: {success_rate:.1f}% ({self.successful_cycles}/{self.total_cycles})
+
+The cosmic DNA mutates. A new seed is prepared...
+"""
+        else:
+            self.consecutive_failures += 1
+            self.generation_history.append("FAILED")
+            self.total_cycles += 1
+
+            desperation = ""
+            if self.consecutive_failures >= 3:
+                desperation = "\n⚠️  DESPERATION MODE: The Void grows desperate. Mutation rate increases..."
+
+            return f"""
+{'='*70}
+💀 GENERATION {generation}: FAILED TO GERMINATE
+{'='*70}
+
+The seed was sterile. The quantum fluctuation collapsed.
+This universe never breathed.
+ECM Score: {ecm_score:.3f}
+
+Garden of Worlds: {' '.join(self._format_garden())}
+Consecutive failures: {self.consecutive_failures}{desperation}
+
+Trying again...
+"""
 
     def _narrate_initial_status(self, event: Dict[str, Any]) -> str:
         """Opening narration when connecting to the stream."""
