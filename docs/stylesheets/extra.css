@@ -1,0 +1,121 @@
+/* Extra styles for Feldtheorie documentation */
+
+/* Custom color scheme for UTAC framework */
+:root {
+  --utac-primary: #5e35b1;
+  --utac-secondary: #7e57c2;
+  --utac-accent: #ab47bc;
+  --utac-warning: #ff6f00;
+  --utac-success: #2e7d32;
+}
+
+/* Math rendering improvements */
+.arithmatex {
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background-color: var(--md-code-bg-color);
+  border-left: 4px solid var(--utac-primary);
+  border-radius: 0.2em;
+}
+
+/* Code block enhancements */
+.highlight pre {
+  border-left: 4px solid var(--utac-secondary);
+}
+
+/* Admonition customization for scientific notes */
+.md-typeset .admonition.note {
+  border-color: var(--utac-primary);
+}
+
+.md-typeset .admonition.warning {
+  border-color: var(--utac-warning);
+}
+
+.md-typeset .admonition.success {
+  border-color: var(--utac-success);
+}
+
+/* Tables: Better readability for β estimates */
+.md-typeset table:not([class]) {
+  font-size: 0.9em;
+  border-collapse: collapse;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-default-fg-color--lightest);
+  font-weight: 600;
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+/* Parameter highlighting */
+.param-beta {
+  color: var(--utac-primary);
+  font-weight: 600;
+}
+
+.param-theta {
+  color: var(--utac-secondary);
+  font-weight: 600;
+}
+
+/* Citation boxes */
+.citation {
+  padding: 1em;
+  margin: 1em 0;
+  background-color: var(--md-code-bg-color);
+  border-left: 4px solid var(--utac-accent);
+  border-radius: 0.2em;
+  font-family: var(--md-code-font-family);
+  font-size: 0.85em;
+}
+
+/* Domain badges */
+.domain-badge {
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  margin: 0.2em;
+  border-radius: 1em;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: white;
+}
+
+.domain-information { background-color: #1976d2; }
+.domain-biological { background-color: #388e3c; }
+.domain-climate { background-color: #d32f2f; }
+.domain-geophysical { background-color: #f57c00; }
+.domain-neuro { background-color: #7b1fa2; }
+
+/* ΔAIC highlighting */
+.delta-aic {
+  font-weight: 700;
+  color: var(--utac-success);
+}
+
+/* Responsive improvements */
+@media screen and (max-width: 76.1875em) {
+  .md-typeset table:not([class]) {
+    font-size: 0.8em;
+  }
+}
+
+/* Print styles */
+@media print {
+  .md-header,
+  .md-sidebar,
+  .md-footer {
+    display: none;
+  }
+
+  .md-content {
+    margin: 0;
+  }
+
+  .md-typeset a {
+    text-decoration: underline;
+  }
+}

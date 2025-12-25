@@ -1,0 +1,8 @@
+#!/bin/bash
+# Post-build script for Binder
+
+# Install Feldtheorie package in development mode
+pip install -e .
+
+echo "✅ Feldtheorie installed successfully!"
+echo "📚 Notebooks ready in notebooks/ directory"
