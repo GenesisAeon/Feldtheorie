@@ -1,0 +1,193 @@
+site_name: Feldtheorie - Universal Threshold Field Framework
+site_description: Scientific documentation for the UTAC framework
+site_author: Johann Benjamin Römer & Contributors
+site_url: https://genesisaeon.github.io/Feldtheorie/
+
+repo_name: GenesisAeon/Feldtheorie
+repo_url: https://github.com/GenesisAeon/Feldtheorie
+edit_uri: edit/main/docs/
+
+copyright: Copyright &copy; 2025 Johann Benjamin Römer. Code (GPLv3), Content (CC BY-NC 4.0)
+
+theme:
+  name: material
+  palette:
+    # Light mode
+    - scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+
+  font:
+    text: Inter
+    code: Roboto Mono
+
+plugins:
+  - search:
+      lang: en
+  - tags
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  version:
+    provider: mike
+    default: latest
+
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/GenesisAeon/Feldtheorie
+    - icon: fontawesome/solid/book
+      link: https://doi.org/10.5281/zenodo.17974828
+      name: Zenodo Archive
+
+  analytics:
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/thumb-up-outline
+          name: This page was helpful
+          data: 1
+          note: Thanks for your feedback!
+        - icon: material/thumb-down-outline
+          name: This page could be improved
+          data: 0
+          note: Thanks for your feedback! Help us improve by reporting issues on GitHub.
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Home:
+    - Overview: README.md
+    - Scientific Summary: SUMMARY.md
+    - Quick Start: QUICKSTART.md
+    - User Guide: docs/USER_GUIDE.md
+
+  - Theory:
+    - UTAC Core: docs/utac_theory_core.md
+    - Field Classification: docs/field_type_classification_v1.1.md
+    - Entropy Governance: docs/v6_entropy_governance_tesseract_physics.md
+    - Dimensional Emergence: docs/v9_dimensional_emergence.md
+    - v_RIG Framework: docs/v8_consciousness_integration.md
+
+  - Getting Started:
+    - Installation: QUICKSTART.md
+    - First Analysis: docs/USER_GUIDE.md#1-quick-start
+    - Core Concepts: docs/USER_GUIDE.md#2-core-concepts
+    - Datasets: docs/USER_GUIDE.md#3-working-with-datasets
+
+  - User Guide:
+    - Running Analyses: docs/USER_GUIDE.md#4-running-analyses
+    - Interpreting Results: docs/USER_GUIDE.md#5-interpreting-results
+    - API Reference: docs/USER_GUIDE.md#6-api-reference
+    - CLI Tools: docs/USER_GUIDE.md#7-cli-tools
+    - Troubleshooting: docs/USER_GUIDE.md#8-troubleshooting
+    - FAQ: docs/USER_GUIDE.md#9-faq
+
+  - Methods:
+    - Statistical Methods: METHODS.md
+    - Testing Guide: TESTING_GUIDE.md
+    - Reproducibility: docs/REPRODUCE.md
+    - Data Governance: docs/data_governance.md
+
+  - Versions:
+    - v10.2 Platinum: RELEASE_NOTES_v8.0.0.md
+    - v9.0 Harmonic Emergence: RELEASE_NOTES_v9.0.0.md
+    - v8.0 Consciousness: RELEASE_NOTES_v8.0.0.md
+    - v6.0 Entropy Duality: RELEASE_NOTES_v6.0.0.md
+    - All Releases: CHANGELOG.md
+
+  - Architecture:
+    - System Design: ARCHITECTURE.md
+    - Trilayer System: docs/trilayer_system.md
+    - API Design: docs/tooltip_api.md
+    - Deployment: DEPLOYMENT.md
+
+  - Experiments:
+    - Project Aletheia: docs/experiment_aletheia.md
+    - ECHO-I Protocol: ECHO_I_AND_DEEP_RESEARCH_README.md
+    - Implosive Genesis: docs/implosive_origin_theory.md
+    - Φ-Coupling Theory: docs/phi_coupling_theory.md
+
+  - Reference:
+    - Executive Summary: docs/executive_summary_for_reviewers.md
+    - Falsifiability: docs/utac_falsifiability.md
+    - Limitations: LIMITATIONS.md
+    - Ethics: ETHICS.md
+    - Contributing: CONTRIBUTING.md
+    - Citation: CITATION.cff
+
+  - Community:
+    - Acknowledgments: ACKNOWLEDGEMENTS.md
+    - Authorship: AUTHORSHIP.md
+    - Funding: FUNDING.md
+    - Code Review: CODE_REVIEW.md

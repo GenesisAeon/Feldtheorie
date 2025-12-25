@@ -20,6 +20,9 @@ coverage.json
 # Generated outputs
 outputs/
 
+# MkDocs generated site
+site/
+
 # API and runtime logs
 logs/
 !v10_oracle/logs/
