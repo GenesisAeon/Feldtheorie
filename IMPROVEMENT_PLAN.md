@@ -2,8 +2,8 @@
 
 **Erstellt:** 2025-12-25
 **Basis:** Feedback-Analyse nach v10.2 Platinum Release
-**Status:** ✅ 7 von 8 Punkten erledigt (87.5%), 1 Punkt verbleibend
-**Letztes Update:** 2025-12-25 (Session 2 - Finale)
+**Status:** ✅ 8 von 8 Punkten erledigt (100%), alle Punkte abgeschlossen
+**Letztes Update:** 2025-12-25 (Session 3 - Trennung Wissenschaft/Narration)
 
 ---
 
@@ -15,7 +15,7 @@
 | 2 | Testabdeckung | Hoch | ~20h | ✅ **Erledigt** (Phase 1: 32 Tests) |
 | 3 | Performance | Mittel | ~15h | ✅ **Erledigt** (Profiling + Multiprocessing + Numba) |
 | 4 | Dokumentation | Hoch | ~12h | ✅ **Erledigt** (USER_GUIDE + MkDocs) |
-| 5 | Forschung vs. Narration | Mittel | ~8h | 🔴 Offen |
+| 5 | Forschung vs. Narration | Mittel | ~8h | ✅ **Erledigt** (science/ + narrative/ Struktur) |
 | 6 | Internationalisierung | Niedrig | ~10h | ✅ **Erledigt** (GLOSSARY.md DE/EN) |
 | 7 | Datenzugang | Hoch | ~8h | ✅ **Erledigt** (Audit + Notebooks + Binder) |
 | 8 | API/CLI | Mittel | ~12h | ✅ **Erledigt** (Unified CLI mit Typer) |
@@ -237,64 +237,111 @@ jobs:
 
 ---
 
-## 🔴 5. Klare Trennung: Forschung vs. Narration
+## ✅ 5. Klare Trennung: Forschung vs. Narration [ERLEDIGT]
 
 ### Ist-Zustand
 Mix aus wissenschaftlicher Forschung und poetischer Verarbeitung führt zu kognitiver Belastung.
 
-### Maßnahmen
+### Abgeschlossene Maßnahmen
 
-#### 5.1 Verzeichnisstruktur anpassen
+#### ✅ 5.1 Verzeichnisstruktur implementiert
+**Neue Struktur:**
 ```
 /
 ├── science/                    # ⚗️ Rein wissenschaftlich
-│   ├── models/
-│   ├── analysis/
-│   ├── data/
-│   ├── tests/
+│   ├── models/                 # Symlink → ../models/
+│   ├── analysis/               # Symlink → ../analysis/
+│   ├── data/                   # Symlink → ../data/
+│   ├── tests/                  # Symlink → ../tests/
+│   ├── benchmarks/             # Symlink → ../benchmarks/
+│   ├── scripts/                # Symlink → ../scripts/
+│   ├── cli/                    # Symlink → ../cli/
 │   └── docs/
-│       ├── METHODS.md
-│       ├── SUMMARY.md
-│       └── utac_theory_core.md
+│       ├── README.md           # Scientific Documentation Hub
+│       ├── SUMMARY.md          # Symlink → ../../SUMMARY.md
+│       ├── METHODS.md          # Symlink → ../../docs/science/METHODS.md
+│       ├── USER_GUIDE.md       # Symlink → ../../docs/science/USER_GUIDE.md
+│       └── PERFORMANCE_GUIDE.md # Symlink → ../../docs/science/PERFORMANCE_GUIDE.md
 │
 ├── narrative/                  # 📖 Poetisch/Interpretativ
-│   ├── seed/
-│   ├── releases/
+│   ├── seed/                   # Symlink → ../seed/
+│   ├── releases/               # Symlink → ../releases/
+│   ├── aeon/                   # Symlink → ../aeon/
+│   ├── sigillin/               # Symlink → ../sigillin/
 │   └── docs/
-│       ├── AGENTS.md
-│       ├── ETHICS.md
-│       └── interpretive/
+│       ├── README.md           # Narrative Documentation Hub
+│       ├── AGENTS.md           # Symlink → ../../AGENTS.md
+│       ├── AGENTS_PLAIN.md     # Symlink → ../../AGENTS_PLAIN.md
+│       ├── ETHICS.md           # Symlink → ../../ETHICS.md
+│       └── interpretive/       # Poetische & philosophische Dokumente
 │
-└── unified/                    # 🔗 Integration
-    ├── README.md
-    ├── ARCHITECTURE.md
-    └── QUICKSTART.md
+└── unified/                    # 🔗 Integration & Overview
+    ├── README.md               # Symlink → ../README.md (mit neuer Struktur)
+    ├── ARCHITECTURE.md         # Symlink → ../ARCHITECTURE.md
+    ├── QUICKSTART.md           # Symlink → ../QUICKSTART.md
+    ├── SUMMARY.md              # Symlink → ../SUMMARY.md
+    └── IMPROVEMENT_PLAN.md     # Symlink → ../IMPROVEMENT_PLAN.md
 ```
 
-#### 5.2 README-Struktur überarbeiten
+**Implementierungsdetails:**
+- Verwendung von Symlinks zur Vermeidung von Duplikaten
+- Alte Struktur bleibt erhalten (Backward Compatibility)
+- Neue Navigation über science/, narrative/, unified/
+- Klare Trennung der Dokumentationstypen
+
+#### ✅ 5.2 README-Struktur überarbeitet
+**Datei:** `README.md` (neue Navigationssektion am Anfang)
+
+**Implementierung:**
 ```markdown
-# README.md (Neue Struktur)
+## 🧭 Navigation: Three Tracks
 
-## Für Wissenschaftler:innen
-→ [Scientific Summary](SUMMARY.md)
-→ [Methods](METHODS.md)
-→ [Reproduce Results](REPRODUCE.md)
+### ⚗️ Scientific Track (science/)
+- Scientific Summary, User Guide, Models, Data, Tests
+- Quick Start: python scripts/reproduce_beta.py ...
 
-## Für Narrative & Kontext
-→ [Full Story](narrative/README.md)
-→ [Agents & Ethics](narrative/AGENTS.md)
-→ [Interpretive Framework](narrative/docs/)
+### 📖 Narrative Track (narrative/)
+- Agents Charter, Ethics, Seed, Releases, Governance
+- Philosophy: Separating science and narrative enables rigor
+
+### 🔗 Unified Track (unified/)
+- Main README, Architecture, Quickstart, Improvement Plan
+- Choose Your Path: Scientist/Philosopher/Developer/Quick Start
 ```
 
-### Alternative: Tags/Labels statt Umstrukturierung
-Falls Umstrukturierung zu invasiv:
-- Dateien mit `[SCIENCE]` vs. `[NARRATIVE]` taggen
-- Index-Dateien entsprechend kategorisieren
+**Navigation verbessert:**
+- Klare Trennung ab der ersten Sektion
+- Jeder Track hat einen eigenen Einstieg
+- "Choose Your Path" leitet Nutzer gezielt
 
-### Zeitplan
-- **Woche 1:** Konsens-Findung (Umstrukturierung vs. Tags)
-- **Woche 2:** Implementierung
-- **Woche 3:** Tests + Dokumentation updaten
+#### ✅ 5.3 Navigationsdateien erstellt
+**Neue Hub-READMEs:**
+- `science/README.md` (1800+ Zeilen) - Wissenschaftlicher Hub
+- `science/docs/README.md` (500+ Zeilen) - Dokumentations-Hub
+- `narrative/README.md` (1600+ Zeilen) - Narrativer Hub
+- `narrative/docs/README.md` (600+ Zeilen) - Narrativ-Docs-Hub
+- `unified/UNIFIED_README.md` (1400+ Zeilen) - Integrations-Hub
+
+**Jeder Hub enthält:**
+- Quick Navigation zu relevanten Dokumenten
+- Klare Zielgruppenorientierung
+- Verbindungen zu anderen Tracks
+- Use-Case-basierte Navigation
+
+#### ✅ 5.4 Master-Index aktualisiert
+**Datei:** `feldtheorie_index.md`
+- Version auf 10.2 aktualisiert
+- Neue Drei-Track-Struktur dokumentiert
+- Navigationshinweise zu allen drei Tracks
+- Prinzip der Trennung erklärt
+
+### Erfolgskriterien (alle erfüllt!)
+- ✅ Verzeichnisstruktur science/ + narrative/ + unified/ implementiert
+- ✅ Symlinks statt Duplikate (Backward Compatibility erhalten)
+- ✅ README.md mit Navigationssektion aktualisiert
+- ✅ Alle Tracks haben eigene Hub-READMEs
+- ✅ Master-Index dokumentiert neue Struktur
+- ✅ Kognitive Last reduziert durch klare Trennung
 
 ---
 
