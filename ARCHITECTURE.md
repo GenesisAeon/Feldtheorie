@@ -285,10 +285,14 @@ Feldtheorie/
 │   └── utf-living-glossary.md          (Vocabulary)
 │
 ├── docs/                  ← Documentation
-│   ├── utac_status_alignment_v1.2.md   (Status matrix)
-│   ├── metaquest_parity_brief.md       (Sync checklist)
-│   ├── field_type_classification_v1.1.md
-│   └── ...
+│   ├── science/                     (Research, methods, guides)
+│   │   ├── utac_status_alignment_v1.2.md   (Status matrix)
+│   │   ├── field_type_classification_v1.1.md
+│   │   └── ...
+│   └── narrative/                   (Roadmaps, Manifeste, Paritätsbriefe)
+│       ├── metaquest_parity_brief.md       (Sync checklist)
+│       ├── utac_activation_backlog.md      (Activation backlog)
+│       └── ...
 │
 ├── .github/workflows/     ← CI/CD
 │   ├── ci.yml                          (Main CI)

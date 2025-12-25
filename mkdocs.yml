@@ -130,34 +130,34 @@ nav:
     - Overview: README.md
     - Scientific Summary: SUMMARY.md
     - Quick Start: QUICKSTART.md
-    - User Guide: docs/USER_GUIDE.md
+    - User Guide: docs/science/USER_GUIDE.md
 
   - Theory:
-    - UTAC Core: docs/utac_theory_core.md
-    - Field Classification: docs/field_type_classification_v1.1.md
-    - Entropy Governance: docs/v6_entropy_governance_tesseract_physics.md
-    - Dimensional Emergence: docs/v9_dimensional_emergence.md
-    - v_RIG Framework: docs/v8_consciousness_integration.md
+    - UTAC Core: docs/science/utac_theory_core.md
+    - Field Classification: docs/science/field_type_classification_v1.1.md
+    - Entropy Governance: docs/science/v6_entropy_governance_tesseract_physics.md
+    - Dimensional Emergence: docs/science/v9_dimensional_emergence.md
+    - v_RIG Framework: docs/science/v_RIG_empirical_validation.md
 
   - Getting Started:
     - Installation: QUICKSTART.md
-    - First Analysis: docs/USER_GUIDE.md#1-quick-start
-    - Core Concepts: docs/USER_GUIDE.md#2-core-concepts
-    - Datasets: docs/USER_GUIDE.md#3-working-with-datasets
+    - First Analysis: docs/science/USER_GUIDE.md#1-quick-start
+    - Core Concepts: docs/science/USER_GUIDE.md#2-core-concepts
+    - Datasets: docs/science/USER_GUIDE.md#3-working-with-datasets
 
   - User Guide:
-    - Running Analyses: docs/USER_GUIDE.md#4-running-analyses
-    - Interpreting Results: docs/USER_GUIDE.md#5-interpreting-results
-    - API Reference: docs/USER_GUIDE.md#6-api-reference
-    - CLI Tools: docs/USER_GUIDE.md#7-cli-tools
-    - Troubleshooting: docs/USER_GUIDE.md#8-troubleshooting
-    - FAQ: docs/USER_GUIDE.md#9-faq
+    - Running Analyses: docs/science/USER_GUIDE.md#4-running-analyses
+    - Interpreting Results: docs/science/USER_GUIDE.md#5-interpreting-results
+    - API Reference: docs/science/USER_GUIDE.md#6-api-reference
+    - CLI Tools: docs/science/USER_GUIDE.md#7-cli-tools
+    - Troubleshooting: docs/science/USER_GUIDE.md#8-troubleshooting
+    - FAQ: docs/science/USER_GUIDE.md#9-faq
 
   - Methods:
     - Statistical Methods: METHODS.md
     - Testing Guide: TESTING_GUIDE.md
-    - Reproducibility: docs/REPRODUCE.md
-    - Data Governance: docs/data_governance.md
+    - Reproducibility: docs/science/validation_report_v1.0.1.md
+    - Data Governance: docs/science/sigillin_maintenance.md
 
   - Versions:
     - v10.2 Platinum: RELEASE_NOTES_v8.0.0.md
@@ -168,19 +168,19 @@ nav:
 
   - Architecture:
     - System Design: ARCHITECTURE.md
-    - Trilayer System: docs/trilayer_system.md
-    - API Design: docs/tooltip_api.md
+    - Trilayer System: docs/science/sigillin_search_patterns.md
+    - API Design: docs/science/tooltip_api.md
     - Deployment: DEPLOYMENT.md
 
   - Experiments:
-    - Project Aletheia: docs/experiment_aletheia.md
+    - Project Aletheia: docs/science/experiment_aletheia.md
     - ECHO-I Protocol: ECHO_I_AND_DEEP_RESEARCH_README.md
-    - Implosive Genesis: docs/implosive_origin_theory.md
-    - Φ-Coupling Theory: docs/phi_coupling_theory.md
+    - Implosive Genesis: docs/science/implosive_origin_theory.md
+    - Φ-Coupling Theory: docs/science/phi_coupling_theory.md
 
   - Reference:
-    - Executive Summary: docs/executive_summary_for_reviewers.md
-    - Falsifiability: docs/utac_falsifiability.md
+    - Executive Summary: docs/narrative/executive_summary_for_reviewers.md
+    - Falsifiability: docs/science/utac_falsifiability.md
     - Limitations: LIMITATIONS.md
     - Ethics: ETHICS.md
     - Contributing: CONTRIBUTING.md
