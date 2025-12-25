@@ -1,14 +1,40 @@
 # 🌸 Feldtheorie - Master Index
 
 **Projekt:** Universal Threshold Adaptive Criticality (UTAC)
-**Version:** 1.1.0 | **Datum:** 6. November 2025
-**System:** Sigillin Trilayer Semantic Memory
+**Version:** 10.2 | **Datum:** 25. Dezember 2025
+**System:** Sigillin Trilayer Semantic Memory + Three-Track Architecture
+
+---
+
+## 🧭 Neue Drei-Track-Struktur (v10.2)
+
+**Das Repository ist jetzt in drei komplementäre Tracks organisiert:**
+
+### ⚗️ [science/](science/) - Wissenschaftlicher Track
+- **Fokus:** Empirische Forschung, falsifizierbare Hypothesen
+- **Für:** Wissenschaftler, Forscher, Reviewer
+- **Enthält:** models/, analysis/, data/, tests/, benchmarks/, scripts/, cli/, docs/
+- **Start:** [science/docs/SUMMARY.md](science/docs/SUMMARY.md)
+
+### 📖 [narrative/](narrative/) - Narrativer Track
+- **Fokus:** Philosophischer Kontext, ethische Überlegungen, Entwicklungsgeschichte
+- **Für:** Philosophen, Ethiker, Kontextinteressierte
+- **Enthält:** seed/, releases/, aeon/, sigillin/, docs/
+- **Start:** [narrative/README.md](narrative/README.md)
+
+### 🔗 [unified/](unified/) - Integrationstrack
+- **Fokus:** Brücke zwischen Wissenschaft und Narration, Übersicht
+- **Für:** Alle Zielgruppen, Projektübersicht
+- **Enthält:** README.md, ARCHITECTURE.md, QUICKSTART.md, SUMMARY.md
+- **Start:** [unified/UNIFIED_README.md](unified/UNIFIED_README.md)
+
+**Prinzip:** Trennung von wissenschaftlichen und narrativen Inhalten reduziert kognitive Last und ermöglicht klare Einstiegspunkte.
 
 ---
 
 ## 🎯 Was ist das?
 
-Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in **189 katalogisierte Dateien** über **7 Hauptverzeichnisse**!
+Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in die neue Drei-Track-Struktur!
 
 ```
 🌳 Feldtheorie (UTAC + Sigillin)
