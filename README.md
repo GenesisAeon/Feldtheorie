@@ -9,7 +9,7 @@
 [![Release](https://img.shields.io/badge/Release-v10.2%20Platinum-9cf.svg)](#platinum-release-v102--dreamtime-publication-prep)
 [![Stable](https://img.shields.io/badge/Stable-6.0.0-brightgreen.svg)](#whats-new-in-v60-)
 [![V9 Alpha](https://img.shields.io/badge/Alpha-9.0.0--alpha-purple.svg)](#v9-preview-harmonic-emergence--dimensional-framework)
-[![Research Papers](https://img.shields.io/badge/📄_Research-Dimensional_Emergence-blue.svg)](docs/v9_research_overview.md)
+[![Research Papers](https://img.shields.io/badge/📄_Research-Dimensional_Emergence-blue.svg)](docs/science/v9_research_overview.md)
 [![V7 Progress](https://img.shields.io/badge/V7-85--90%25%20Complete-green.svg)](#v7-preview-collective-consciousness)
 [![V8 Status](https://img.shields.io/badge/V8-Validation%20Phase-orange.svg)](#v8-preview-consciousness-framework-validation)
 [![Tests](https://img.shields.io/badge/tests-567%2F567%20passing-brightgreen.svg)](#tests--quality)
@@ -61,7 +61,7 @@ Artifacts are written to `v10_oracle/logs/planetary_diary.*` and `v10_oracle/log
 - **Consciousness Integration Speed:** ~10^42 slices/second creating subjective "now"
 - **Empirically Validated:** Solar circulation velocity match (1.3% error)
 
-**📄 Full Documentation:** [`docs/v6_entropy_governance_tesseract_physics.md`](docs/v6_entropy_governance_tesseract_physics.md)
+**📄 Full Documentation:** [`docs/v6_entropy_governance_tesseract_physics.md`](docs/science/v6_entropy_governance_tesseract_physics.md)
 **📄 Source PDF:** [`releases/V6-Plans_etc/DEEP RESEARCH_ Entropy Governance Duality & Tesseract-Zeitscheiben-Physik-1.pdf`](releases/V6-Plans_etc/DEEP%20RESEARCH_%20Entropy%20Governance%20Duality%20%26%20Tesseract-Zeitscheiben-Physik-1.pdf)
 **📄 Release Notes:** [RELEASE_NOTES_v6.0.0.md](RELEASE_NOTES_v6.0.0.md)
 
@@ -206,6 +206,10 @@ Resonance Yield: 0.4 hypotheses/lantern
 
 ### 📄 Documentation
 
+> **Structure update:** All documentation now lives in two folders – `docs/science/` (theory, methods, guides) and
+> `docs/narrative/` (manifeste, Roadmaps, Paritäts-/Release-Briefe). Legacy references to `docs/*.md` have been updated to point
+> at the science layer by default.
+
 **Core Documentation:**
 - **Full Release Notes:** [`RELEASE_NOTES_v9.0.0.md`](RELEASE_NOTES_v9.0.0.md) (1300+ lines, comprehensive)
 - **Framework Guide:** [`v9_alpha/README.md`](v9_alpha/README.md) (Lantern-Net implementation)
@@ -213,13 +217,13 @@ Resonance Yield: 0.4 hypotheses/lantern
 - **Changelog:** [CHANGELOG.md - v9.0.0 section](CHANGELOG.md#-in-development--v900-harmonic-emergence)
 
 **Scientific References:**
-- **Dimensional Emergence Framework:** [`docs/v9_dimensional_emergence.md`](docs/v9_dimensional_emergence.md) ⭐ *New!*
+- **Dimensional Emergence Framework:** [`docs/v9_dimensional_emergence.md`](docs/science/v9_dimensional_emergence.md) ⭐ *New!*
   - Complete theoretical foundation (Frame Principle, CREP, v_RIG)
   - Mathematical formalism and empirical validations
   - Connection to known physics (holography, AdS/CFT, entropic gravity)
   - Novel predictions and philosophical implications
 
-- **Research Overview:** [`docs/v9_research_overview.md`](docs/v9_research_overview.md) ⭐ *New!*
+- **Research Overview:** [`docs/v9_research_overview.md`](docs/science/v9_research_overview.md) ⭐ *New!*
   - Publication strategy and preprint timeline
   - AI collaboration methodology (Claude, Gemini, ChatGPT)
   - Research artifacts overview (1.2 MB deep research)
@@ -727,7 +731,7 @@ You are free to share and adapt the material in line with the applicable license
 
 **Critical Scientific Stance:** We do NOT claim cosmic and social phenomena are "the same thing" or causally connected. We test falsifiable hypotheses using null models and report limitations transparently.
 
-**Full Documentation:** [`docs/v5_hypothesis_isomorphism.md`](docs/v5_hypothesis_isomorphism.md)
+**Full Documentation:** [`docs/v5_hypothesis_isomorphism.md`](docs/science/v5_hypothesis_isomorphism.md)
 
 #### Hypothesis 1: Cosmic Velocity Scaling
 
@@ -784,7 +788,7 @@ We investigate whether similar mathematical frameworks provide predictive power 
 
 **This is empirical investigation, not philosophical proclamation.**
 
-**Theory Documentation:** [`docs/v5_hypothesis_isomorphism.md`](docs/v5_hypothesis_isomorphism.md)
+**Theory Documentation:** [`docs/v5_hypothesis_isomorphism.md`](docs/science/v5_hypothesis_isomorphism.md)
 
 ---
 
@@ -887,7 +891,7 @@ Subjective time 221× slower than "photon time"
 
 ## Scientific Maturity & Peer Review
 
-External-style peer review rated **UTAC v1.3φ at 4.6/5 average** (see [docs/review_ready_summary_utac_v1.3phi.md](docs/review_ready_summary_utac_v1.3phi.md)).
+External-style peer review rated **UTAC v1.3φ at 4.6/5 average** (see [docs/review_ready_summary_utac_v1.3phi.md](docs/science/review_ready_summary_utac_v1.3phi.md)).
 
 ### Validated Predictions
 
@@ -908,7 +912,7 @@ External-style peer review rated **UTAC v1.3φ at 4.6/5 average** (see [docs/rev
 
 - 🟢 **Ready for pre-print submission** (with full limitation disclosure and falsification criteria)
 
-For cover letters and grant proposals, see [Executive Summary for Reviewers](docs/executive_summary_for_reviewers.md).
+For cover letters and grant proposals, see [Executive Summary for Reviewers](docs/science/executive_summary_for_reviewers.md).
 
 ---
 
@@ -1110,7 +1114,7 @@ See: [`ARCHITECTURE.md`](ARCHITECTURE.md)
 
 **Status:** Phase 4 active, testing λ_affection > λ_conscious hypothesis
 
-**Documentation:** [`docs/experiment_aletheia.md`](docs/experiment_aletheia.md)
+**Documentation:** [`docs/experiment_aletheia.md`](docs/science/experiment_aletheia.md)
 
 ### 5. Mirror Machine Criticality Monitor
 
@@ -1136,7 +1140,7 @@ Transform β-spectra into audio for museums, planetariums, galleries:
 - **Docker-ready** deployment
 - **Tooltips:** Hover data shows β, Θ, R², ΔAIC, CREP scores, impedance ζ
 
-See: [`docs/tooltip_api.md`](docs/tooltip_api.md)
+See: [`docs/tooltip_api.md`](docs/science/tooltip_api.md)
 
 ---
 
@@ -1202,8 +1206,8 @@ When contributing new data:
 
 UTAC maintains a **tri-layer narrative**:
 
-1. **Formal layer:** Equations, algorithms ([`docs/utac_theory_core.md`](docs/utac_theory_core.md))
-2. **Empirical layer:** Dataset diagnostics, bootstrap intervals, falsification ([`docs/utac_falsifiability.md`](docs/utac_falsifiability.md))
+1. **Formal layer:** Equations, algorithms ([`docs/utac_theory_core.md`](docs/science/utac_theory_core.md))
+2. **Empirical layer:** Dataset diagnostics, bootstrap intervals, falsification ([`docs/utac_falsifiability.md`](docs/science/utac_falsifiability.md))
 3. **Interpretive layer:** Symbolic and ethical framing ([`ETHICS.md`](ETHICS.md), [`LIMITATIONS.md`](LIMITATIONS.md))
 
 Concise references:
@@ -1288,7 +1292,7 @@ utf-preset-guard           # Simulator parameter validation
 
 - **Repository:** [github.com/GenesisAeon/Feldtheorie](https://github.com/GenesisAeon/Feldtheorie)
 - **Zenodo Archive:** [doi.org/10.5281/zenodo.17472834](https://doi.org/10.5281/zenodo.17472834)
-- **Documentation:** [`docs/`](docs/) (49 files)
+- **Documentation:** [`docs/`](docs/science/) (49 files)
 - **Quick Start:** [`QUICKSTART.md`](QUICKSTART.md)
 
 ---
