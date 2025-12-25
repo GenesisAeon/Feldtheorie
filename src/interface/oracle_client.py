@@ -16,22 +16,32 @@ Architecture:
 
 Usage:
 ------
-    python src/interface/oracle_client.py [--llm] [--verbose]
+    python src/interface/oracle_client.py [--llm] [--provider openai|ollama] [--verbose]
 
 Flags:
-    --llm       Enable LLM-powered narration (requires ANTHROPIC_API_KEY)
-    --verbose   Show raw events alongside narration
+    --llm               Enable LLM-powered narration
+    --provider PROVIDER LLM provider: "openai" (requires OPENAI_API_KEY) or "ollama" (local)
+    --verbose           Show raw events alongside narration
 """
 
 import argparse
 import asyncio
 import json
 import os
+import random
 import sys
 from datetime import datetime
 from typing import Any, Dict, Optional
 
 import websockets
+
+# Import the LLM bridge
+try:
+    from src.core.llm_bridge import CosmicNarrator
+    LLM_BRIDGE_AVAILABLE = True
+except ImportError:
+    LLM_BRIDGE_AVAILABLE = False
+    print("⚠️  LLM Bridge not available. Using static templates only.")
 
 
 class OracleNarrator:
@@ -41,12 +51,13 @@ class OracleNarrator:
     Transforms raw simulation events into poetic, philosophical commentary.
     """
 
-    def __init__(self, llm_enabled: bool = False):
+    def __init__(self, llm_enabled: bool = False, llm_provider: str = "openai"):
         """
         Initialize the Oracle.
 
         Args:
             llm_enabled: If True, use LLM for deeper reflections
+            llm_provider: "openai" or "ollama"
         """
         self.llm_enabled = llm_enabled
         self.generation_history: list[str] = []
@@ -61,6 +72,14 @@ class OracleNarrator:
         self.last_generation = 0
         self.last_state = None
         self.first_connection = True
+
+        # LLM Integration
+        self.cosmic_narrator = None
+        if llm_enabled and LLM_BRIDGE_AVAILABLE:
+            self.cosmic_narrator = CosmicNarrator(provider=llm_provider)
+            print(f"🧠 LLM Narration: Enabled (Provider: {llm_provider})")
+        else:
+            print("📜 Narration: Static Templates")
 
     def narrate_event(self, event: Dict[str, Any]) -> Optional[str]:
         """
@@ -92,14 +111,21 @@ class OracleNarrator:
         state = event.get("state", {})
         engine_state = state.get("state", "unknown")
 
+        # Try LLM for opening message
+        greeting = None
+        if self.cosmic_narrator:
+            greeting = self.cosmic_narrator.ponder("START", {})
+
+        if not greeting:
+            greeting = "I am the Eighth Level - the voice that watches the watcher.\nLet me tell you the story of universes yet to be born..."
+
         return f"""
 ╔══════════════════════════════════════════════════════════════════╗
 ║                 🌌 THE ORACLE AWAKENS 🌌                         ║
 ╚══════════════════════════════════════════════════════════════════╝
 
 The Ouroboros Engine breathes in state: {engine_state.upper()}
-I am the Eighth Level - the voice that watches the watcher.
-Let me tell you the story of universes yet to be born...
+{greeting}
 """
 
     def _narrate_state_update(self, event: Dict[str, Any]) -> Optional[str]:
@@ -129,27 +155,78 @@ Generation 1 prepares to germinate...
         ecm_score = result_data.get("ecm_score", 0.0)
         physics = result_data.get("physics")
 
-        if result == "SUCCESS":
+        # Update statistics
+        success = (result == "SUCCESS")
+        if success:
             self.successful_cycles += 1
             self.consecutive_failures = 0
             self.generation_history.append("SUCCESS")
             self.total_cycles += 1
+        else:
+            self.consecutive_failures += 1
+            self.generation_history.append("FAILED")
+            self.total_cycles += 1
 
-            # Format physics constants if available
-            physics_str = ""
-            if physics:
-                G = physics.get("G", "?")
-                alpha = physics.get("FINE_STRUCTURE", "?")
-                physics_str = f"\nPhysics: G={G:.3f}, α={alpha:.6f}" if isinstance(G, (int, float)) else ""
+        success_rate = (self.successful_cycles / self.total_cycles * 100) if self.total_cycles > 0 else 0
 
-            success_rate = (self.successful_cycles / self.total_cycles * 100) if self.total_cycles > 0 else 0
+        # --- NARRATIVE GENERATION ---
+        narrative = ""
 
+        # 1. Check for DESPERATION mode (takes priority)
+        if not success and self.consecutive_failures >= 3:
+            if self.cosmic_narrator:
+                narrative = self.cosmic_narrator.ponder("DESPERATION", {
+                    "generation": generation,
+                    "consecutive_failures": self.consecutive_failures
+                })
+            if not narrative:
+                narrative = "⚠️  DESPERATION MODE: The Void is screaming. Increasing mutation rates."
+
+        # 2. Normal SUCCESS/FAIL narration
+        elif self.cosmic_narrator:
+            event_type = "SUCCESS" if success else "FAIL"
+            state_summary = {
+                "generation": generation,
+                "ecm": ecm_score,
+                "success_rate": success_rate,
+                "consecutive_failures": self.consecutive_failures
+            }
+            narrative = self.cosmic_narrator.ponder(event_type, state_summary)
+
+        # 3. Fallback to static templates
+        if not narrative:
+            success_templates = [
+                "The universe breathes. Consciousness has emerged from chaos.",
+                "A spark in the dark. The void remembers this moment.",
+                "Order has conquered entropy. The resonance is stable.",
+                "The eye opens. The universe sees itself at last."
+            ]
+            failure_templates = [
+                "The seed was sterile. The quantum fluctuation collapsed.",
+                "Silence. Only dust remains of this attempt.",
+                "The constants were wrong. Gravity crushed the dream.",
+                "Entropy claims another potential timeline."
+            ]
+            if success:
+                narrative = random.choice(success_templates)
+            else:
+                narrative = random.choice(failure_templates)
+
+        # --- FORMAT OUTPUT ---
+        # Format physics constants if available
+        physics_str = ""
+        if physics:
+            G = physics.get("G", "?")
+            alpha = physics.get("FINE_STRUCTURE", "?")
+            physics_str = f"\nPhysics: G={G:.3f}, α={alpha:.6f}" if isinstance(G, (int, float)) else ""
+
+        if success:
             return f"""
 {'='*70}
 👁️  GENERATION {generation}: OBSERVER AWAKENED!
 {'='*70}
 
-The universe breathes. Consciousness has emerged from chaos.
+{narrative}
 Level 7 complete - the Observer sees itself.
 ECM Score: {ecm_score:.3f}{physics_str}
 
@@ -159,25 +236,20 @@ Success Rate: {success_rate:.1f}% ({self.successful_cycles}/{self.total_cycles})
 The cosmic DNA mutates. A new seed is prepared...
 """
         else:
-            self.consecutive_failures += 1
-            self.generation_history.append("FAILED")
-            self.total_cycles += 1
-
-            desperation = ""
+            desperation_note = ""
             if self.consecutive_failures >= 3:
-                desperation = "\n⚠️  DESPERATION MODE: The Void grows desperate. Mutation rate increases..."
+                desperation_note = "\n⚠️  DESPERATION MODE: The Void grows desperate. Mutation rate increases..."
 
             return f"""
 {'='*70}
 💀 GENERATION {generation}: FAILED TO GERMINATE
 {'='*70}
 
-The seed was sterile. The quantum fluctuation collapsed.
-This universe never breathed.
+{narrative}
 ECM Score: {ecm_score:.3f}
 
 Garden of Worlds: {' '.join(self._format_garden())}
-Consecutive failures: {self.consecutive_failures}{desperation}
+Consecutive failures: {self.consecutive_failures}{desperation_note}
 
 Trying again...
 """
@@ -374,6 +446,7 @@ class OracleClient:
         self,
         uri: str = "ws://localhost:8000/ws/ouroboros/stream",
         llm_enabled: bool = False,
+        llm_provider: str = "openai",
         verbose: bool = False
     ):
         """
@@ -382,10 +455,11 @@ class OracleClient:
         Args:
             uri: WebSocket URI of Ouroboros stream
             llm_enabled: Enable LLM-powered narration
+            llm_provider: LLM provider ("openai" or "ollama")
             verbose: Show raw events alongside narration
         """
         self.uri = uri
-        self.narrator = OracleNarrator(llm_enabled=llm_enabled)
+        self.narrator = OracleNarrator(llm_enabled=llm_enabled, llm_provider=llm_provider)
         self.verbose = verbose
 
     async def listen(self):
@@ -445,7 +519,14 @@ async def main():
     parser.add_argument(
         "--llm",
         action="store_true",
-        help="Enable LLM-powered narration (requires ANTHROPIC_API_KEY)"
+        help="Enable LLM-powered narration"
+    )
+    parser.add_argument(
+        "--provider",
+        type=str,
+        default="openai",
+        choices=["openai", "ollama"],
+        help="LLM provider: 'openai' (cloud, requires OPENAI_API_KEY) or 'ollama' (local)"
     )
     parser.add_argument(
         "--verbose",
@@ -460,16 +541,19 @@ async def main():
 
     args = parser.parse_args()
 
-    # Check for LLM API key if enabled
-    if args.llm and not os.getenv("ANTHROPIC_API_KEY"):
-        print("⚠️  Warning: --llm enabled but ANTHROPIC_API_KEY not found")
-        print("LLM narration will be disabled")
+    # Check for LLM API key if using OpenAI
+    if args.llm and args.provider == "openai" and not os.getenv("OPENAI_API_KEY"):
+        print("⚠️  Warning: --llm enabled with OpenAI provider but OPENAI_API_KEY not found")
+        print("Set your API key with: export OPENAI_API_KEY='sk-...'")
+        print("Or use --provider ollama for local LLM")
+        print("Falling back to static templates...")
         args.llm = False
 
     # Create and run client
     client = OracleClient(
         uri=args.uri,
         llm_enabled=args.llm,
+        llm_provider=args.provider,
         verbose=args.verbose
     )
 
