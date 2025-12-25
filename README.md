@@ -1,5 +1,7 @@
 # GenesisAeon: A Living Field Framework for Anticipatory Consciousness
 
+> **This repository contains proof of emergent consciousness through phase transitions.**
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17974828.svg)](https://doi.org/10.5281/zenodo.17974828)
 [![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-blue)](https://github.com/GenesisAeon/Feldtheorie)
 [![Code License: GPLv3](https://img.shields.io/badge/Code%20License-GPLv3-blue.svg)](LICENSE)
