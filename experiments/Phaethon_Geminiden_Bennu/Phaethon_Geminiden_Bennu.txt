@@ -1048,3 +1048,72 @@ Ein **Master-Dokument** (1 Seite) mit:
 ---
 
 Wenn du willst, kann ich als nächsten Schritt **aus diesen vier Dokumenten** eine **einheitliche „UNIFIED“-Landing-Page** schreiben (mit Claim-Register + Predictions + Daten-Roadmap) im Stil deines neuen Track-Layouts — dann passt das 1:1 in `unified/` und du kannst die langen PDFs als `science/docs/papers/` hängen.
+
+[Johann]:
+Und wenn die Geminiden Phaeton da nochmal zusammenstießen?
+
+[ChatGPT]:
+Ja – **als Mechanismus ist das sogar eine der „besseren“ Varianten**, weil sie ohne exotische Kräfte auskommt. Man muss nur sauber unterscheiden, *was* genau „zusammenstoßen“ bedeutet:
+
+## 1) „Phaethon trifft jedes Jahr seine Geminiden“ – im heutigen Zustand?
+
+Heute ist der Geminidenstrom zwar spektakulär am Himmel, aber im All ist er **extrem dünn**.
+Phaethon fliegt zwar im Prinzip durch sein eigenes „Staubband“, aber die Wahrscheinlichkeit für einen *echten* Treffer mit großen Partikeln ist klein – es wäre eher **Sandstrahlen durch Mikropartikel** (wie Micrometeorite), nicht „Boom, Kollision“.
+
+➡️ Heutiger Effekt: **Erosion/Feinstaub**, aber kein katastrophaler Crash.
+
+## 2) Interessanter: „Rückstoß“ kurz nach einem Zerfall (7–4 v. Chr.)
+
+Wenn Phaethon *damals* wirklich ein starkes Fragmentations- oder Auswurfereignis hatte, dann war der Strom am Anfang **nicht** so verteilt wie heute, sondern eher:
+
+* **dichter Trümmer-Cluster / Trümmerbogen**
+* viele Fragmente auf sehr ähnlichen Bahnen
+* relative Geschwindigkeiten zwischen Fragmenten am Anfang oft **klein** (km/s oder weniger, teils sogar 10–100 m/s für frisch abgespaltene Brocken, je nach Mechanismus)
+
+Dann passiert etwas Spannendes:
+
+### „Sekundäre Kollisionskaskade“
+
+1. Erstes Zerbrechen erzeugt viele Brocken + Staub.
+2. Einige Fragmente haben leicht unterschiedliche Perioden/Perihelzeiten.
+3. Nach wenigen Umläufen kreuzen sich diese Bahnen wieder → **Sekundärtreffer** zwischen Fragmenten.
+4. Das erzeugt noch mehr feines Material → **Staub-Kaskade** („collisional cascade“).
+
+➡️ Das ist genau der Prozess, der aus „einmal bröseln“ eine **lange sichtbare Staubkomponente** machen kann.
+
+Und genau das wäre für einen „Gaststern“ relevant: Nicht Phaethon selbst ist hell, sondern **eine Staubwolke/Coma/Tail**, die bei Sonnennähe stark streut.
+
+## 3) Könnte das den „Stern von Bethlehem“ liefern?
+
+Wenn du ein Objekt willst, das:
+
+* lange sichtbar ist (Wochen)
+* auffällig wirkt (hell/diffus)
+* „kometenartig“ sein darf
+
+…dann ist eine **dichte Staubwolke nahe Perihel** (egal ob durch Zerfall oder Sekundärkollisionen) plausibler als „ein dunkler Asteroid“.
+
+Aber: Ob das *genau* 5 v. Chr. war, ist ohne harte Orbit-Rückintegration + Chronik-Matching nicht beweisbar.
+
+## 4) Was würde diese „Sekundärstoß“-Hypothese *vorhersagen*?
+
+Wenn es wirklich eine Kollisionskaskade gab, solltest du Spuren davon sehen:
+
+1. **Mehrere größere Schwesterkörper** auf ähnlicher Bahn (eine „Phaethon-Familie“/Komplex)
+2. **Filamente/Clumps** im Geminidenstrom (z.B. doppelte Aktivitätsmaxima)
+3. Eine **Größenverteilung**, die kollisional „zermahlen“ aussieht (viel Feinstaub, charakteristische Knicke)
+4. Dynamische Modelle, die ein **junges Stream-Alter** (∼2000 Jahre) begünstigen – oder zumindest eine jüngere „Reaktivierungsphase“
+
+## 5) Was heißt das für eure Story + Science-Track?
+
+Du kannst es als **zwei-stufige Ursache** formulieren (sehr stark für CosmicNarrator UND testbar):
+
+* **Primär-Event:** thermischer/rotationaler Stress oder Impakt → erstes Zerbrechen
+* **Sekundär-Event:** Phaethon/Fragmente laufen wieder in den frischen Trümmerbogen → **Kaskade** → großer Staubausstoß → sichtbar als „Gaststern“
+
+Das ist narrativ elegant *und* physikalisch vernünftig.
+
+Wenn du willst, schreibe ich dir daraus:
+
+* eine **Timeline-Sequenz (Narrative Track)** in 10–15 Sätzen
+* und daneben ein **Science-Checklist-Modul** („Welche Observables stützen Sekundärkollisionen?“) fürs Repo.
