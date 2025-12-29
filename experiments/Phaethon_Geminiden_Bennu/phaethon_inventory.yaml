@@ -1,0 +1,164 @@
+- name: Bennu_ Chimera-Zustand und Partikelejektionen.pdf
+  extension: .pdf
+  size_bytes: 305224
+  category: paper
+- name: Bennu_ Chimera-Zustände und Asteroiden-Dynamik.pdf
+  extension: .pdf
+  size_bytes: 339658
+  category: paper
+- name: Bennu_ Partikel-Ejektionen und __Chimera-Zustände__ in einem frustrierten
+    System.pdf
+  extension: .pdf
+  size_bytes: 41768
+  category: paper
+- name: GeminiSuche_Geminiden_ Plasma-Verlangsamung statt Orbitalmechanik.txt
+  extension: .txt
+  size_bytes: 35463
+  category: note
+- name: Geminid Meteor Velocity, Solar-Wind Slow Waves, and Whistler-Mode Resonances.pdf
+  extension: .pdf
+  size_bytes: 62392
+  category: paper
+- name: Geminiden_ Plasma-Verlangsamung statt Orbitalmechanik.pdf
+  extension: .pdf
+  size_bytes: 300822
+  category: paper
+- name: Historische Synchronizität_ Phaethon & der Stern von Bethlehem.pdf
+  extension: .pdf
+  size_bytes: 95663
+  category: paper
+- name: Historische „Gaststerne“ um Christi Geburt (10 v. Chr. – 10 n. Chr.).pdf
+  extension: .pdf
+  size_bytes: 436937
+  category: paper
+- name: Hypothese_ Alfvén-Wellenresonanz und Phaethons Staubemission.pdf
+  extension: .pdf
+  size_bytes: 514698
+  category: paper
+- name: Modeling Phaethon Dust Emission via Alfven Wave Regolith Resonance Using Parker
+    Solar Probe Data and KdV Solitons.pdf
+  extension: .pdf
+  size_bytes: 51648
+  category: paper
+- name: NeueEntdeckung_schwarzeLöcher.txt
+  extension: .txt
+  size_bytes: 38363
+  category: note
+- name: Partikelemissionen auf Bennu_ Sonnenzeit-Korrelation, elektrostatische Levitation
+    und Oszillationen.pdf
+  extension: .pdf
+  size_bytes: 50950
+  category: paper
+- name: Phaethon, Geminiden und der Stern.pdf
+  extension: .pdf
+  size_bytes: 337759
+  category: paper
+- name: Phaethon-Simulation und Stern von Bethlehem.pdf
+  extension: .pdf
+  size_bytes: 327474
+  category: paper
+- name: Phaethon_ Plasma-Resonanz und Staubemission.pdf
+  extension: .pdf
+  size_bytes: 319827
+  category: paper
+- name: Phaethon_Geminiden_Bennu.txt
+  extension: .txt
+  size_bytes: 58013
+  category: note
+- name: README.md
+  extension: .md
+  size_bytes: 1552
+  category: metadata
+- name: STRATEGIC_ROADMAP.md
+  extension: .md
+  size_bytes: 12863
+  category: metadata
+- name: SucheChatGPT_Bennu-Partikelejektion als Chimera-Zustand Thermische, elektrische
+    und oszillatorische Trigger.txt
+  extension: .txt
+  size_bytes: 5174
+  category: ai_search_log
+  ai_system: ChatGPT
+- name: SucheChatGPT_Bennu-Partikelemission und Chimera-Zustände auf Asteroiden.txt
+  extension: .txt
+  size_bytes: 8778
+  category: ai_search_log
+  ai_system: ChatGPT
+- name: SucheChatGPT_Geminiden-Geschwindigkeit und langsame MHD-Resonanz im Sonnenwind.txt
+  extension: .txt
+  size_bytes: 6562
+  category: ai_search_log
+  ai_system: ChatGPT
+- name: SucheChatGPT_Hypothese_ Alfvén-Wellenresonanz und Phaethons Staubemission.txt
+  extension: .txt
+  size_bytes: 9273
+  category: ai_search_log
+  ai_system: ChatGPT
+- name: SucheChatGPT_Phaethon und der Weihnachtsstern Synchronizität von Stromentstehung
+    und antiken Himmelsbeobachtungen.txt
+  extension: .txt
+  size_bytes: 6739
+  category: ai_search_log
+  ai_system: ChatGPT
+- name: SucheGemini_Bennu Chimera-Zustand und Partikelejektionen.txt
+  extension: .txt
+  size_bytes: 102256
+  category: ai_search_log
+  ai_system: Gemini
+- name: SucheGemini_Bennu Chimera-Zustände und Asteroiden-Dynamik.txt
+  extension: .txt
+  size_bytes: 105348
+  category: ai_search_log
+  ai_system: Gemini
+- name: SucheGemini_Phaethon, Geminiden und der Stern von Bethlehem.txt
+  extension: .txt
+  size_bytes: 0
+  category: ai_search_log
+  ai_system: Gemini
+- name: SucheGemini_Phaethon, Geminiden und der Stern.txt
+  extension: .txt
+  size_bytes: 39962
+  category: ai_search_log
+  ai_system: Gemini
+- name: SucheGemini_Phaethon-Simulation und Stern von Bethlehem.txt
+  extension: .txt
+  size_bytes: 85079
+  category: ai_search_log
+  ai_system: Gemini
+- name: SucheGemini_Phaethon_ Plasma-Resonanz und Staubemission.txt
+  extension: .txt
+  size_bytes: 28712
+  category: ai_search_log
+  ai_system: Gemini
+- name: Tiefenanalyse Feldtheorie-1.pdf
+  extension: .pdf
+  size_bytes: 43922
+  category: paper
+- name: Tiefenanalyse Feldtheorie-2.pdf
+  extension: .pdf
+  size_bytes: 40833
+  category: paper
+- name: Tiefenanalyse Feldtheorie-3.pdf
+  extension: .pdf
+  size_bytes: 48707
+  category: paper
+- name: bennu_chimera_simulation.png
+  extension: .png
+  size_bytes: 148216
+  category: figure
+- name: chimera_state_model.py
+  extension: .py
+  size_bytes: 12049
+  category: code
+- name: phaethon_analysis_report.json
+  extension: .json
+  size_bytes: 529
+  category: metadata
+- name: phaethon_inventory.json
+  extension: .json
+  size_bytes: 5909
+  category: metadata
+- name: phaethon_inventory.yaml
+  extension: .yaml
+  size_bytes: 4660
+  category: metadata

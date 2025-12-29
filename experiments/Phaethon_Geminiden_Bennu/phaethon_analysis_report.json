@@ -1,243 +1,27 @@
 {
   "summary": {
     "total_files": 37,
-    "pdf_count": 18,
-    "text_count": 19,
-    "search_logs": 15,
-    "research_papers": 18
-  },
-  "structure": {
-    "search_logs": [
-      {
-        "file": "SucheChatGPT_Bennu-Partikelemission und Chimera-Zustände auf Asteroiden.txt",
-        "ai": "ChatGPT",
-        "size": 8960
-      },
-      {
-        "file": "SucheChatGPT_Phaethon und der Weihnachtsstern Synchronizit#U00e4t von Stromentstehung und antiken Himmelsbeobachtungen.txt",
-        "ai": "ChatGPT",
-        "size": 6883
-      },
-      {
-        "file": "SucheGemini_Bennu Chimera-Zust#U00e4nde und Asteroiden-Dynamik.txt",
-        "ai": "Gemini",
-        "size": 106578
-      },
-      {
-        "file": "SucheGemini_Bennu Chimera-Zustände und Asteroiden-Dynamik.txt",
-        "ai": "Gemini",
-        "size": 106578
-      },
-      {
-        "file": "SucheGemini_Phaethon-Simulation und Stern von Bethlehem.txt",
-        "ai": "Gemini",
-        "size": 86198
-      },
-      {
-        "file": "SucheChatGPT_Geminiden-Geschwindigkeit und langsame MHD-Resonanz im Sonnenwind.txt",
-        "ai": "ChatGPT",
-        "size": 6700
-      },
-      {
-        "file": "SucheGemini_Phaethon, Geminiden und der Stern.txt",
-        "ai": "Gemini",
-        "size": 40526
-      },
-      {
-        "file": "SucheChatGPT_Hypothese_ Alfvén-Wellenresonanz und Phaethons Staubemission.txt",
-        "ai": "ChatGPT",
-        "size": 9477
-      },
-      {
-        "file": "SucheGemini_Bennu Chimera-Zustand und Partikelejektionen.txt",
-        "ai": "Gemini",
-        "size": 103384
-      },
+    "categories": {
+      "paper": 16,
+      "note": 3,
+      "metadata": 5,
+      "ai_search_log": 11,
+      "figure": 1,
+      "code": 1
+    },
+    "ai_search_logs": {
+      "ChatGPT": 5,
+      "Gemini": 6
+    },
+    "anomalies": [
       {
         "file": "SucheGemini_Phaethon, Geminiden und der Stern von Bethlehem.txt",
-        "ai": "Gemini",
-        "size": 0
-      },
-      {
-        "file": "SucheGemini_Phaethon_ Plasma-Resonanz und Staubemission.txt",
-        "ai": "Gemini",
-        "size": 29061
-      },
-      {
-        "file": "SucheChatGPT_Hypothese_ Alfv#U00e9n-Wellenresonanz und Phaethons Staubemission.txt",
-        "ai": "ChatGPT",
-        "size": 9477
-      },
-      {
-        "file": "SucheChatGPT_Phaethon und der Weihnachtsstern Synchronizität von Stromentstehung und antiken Himmelsbeobachtungen.txt",
-        "ai": "ChatGPT",
-        "size": 6883
-      },
-      {
-        "file": "SucheChatGPT_Bennu-Partikelemission und Chimera-Zust#U00e4nde auf Asteroiden.txt",
-        "ai": "ChatGPT",
-        "size": 8960
-      },
-      {
-        "file": "SucheChatGPT_Bennu-Partikelejektion als Chimera-Zustand Thermische, elektrische und oszillatorische Trigger.txt",
-        "ai": "ChatGPT",
-        "size": 5280
-      }
-    ],
-    "text_files": [
-      {
-        "file": "NeueEntdeckung_schwarzeLöcher.txt",
-        "size": 39128
-      },
-      {
-        "file": "NeueEntdeckung_schwarzeL#U00f6cher.txt",
-        "size": 39128
-      },
-      {
-        "file": "Phaethon_Geminiden_Bennu.txt",
-        "size": 59132
-      }
-    ],
-    "research_papers": [
-      {
-        "file": "Historische Synchronizit#U00e4t_ Phaethon & der Stern von Bethlehem.pdf",
-        "topic": "Phaethon",
-        "size": 95663
-      },
-      {
-        "file": "Bennu_ Partikel-Ejektionen und __Chimera-Zustände__ in einem frustrierten System.pdf",
-        "topic": "Bennu",
-        "size": 41768
-      },
-      {
-        "file": "Bennu_ Chimera-Zustand und Partikelejektionen.pdf",
-        "topic": "Bennu",
-        "size": 305224
-      },
-      {
-        "file": "Phaethon_ Plasma-Resonanz und Staubemission.pdf",
-        "topic": "Phaethon",
-        "size": 319827
-      },
-      {
-        "file": "Modeling Phaethon Dust Emission via Alfven Wave Regolith Resonance Using Parker Solar Probe Data and KdV Solitons.pdf",
-        "topic": "Phaethon",
-        "size": 51648
-      },
-      {
-        "file": "Historische Synchronizität_ Phaethon & der Stern von Bethlehem.pdf",
-        "topic": "Phaethon",
-        "size": 95663
-      },
-      {
-        "file": "Geminid Meteor Velocity, Solar-Wind Slow Waves, and Whistler-Mode Resonances.pdf",
-        "topic": "Geminiden",
-        "size": 62392
-      },
-      {
-        "file": "Historische #U201eGaststerne#U201c um Christi Geburt (10 v. Chr. #U2013 10 n. Chr.).pdf",
-        "topic": "Historical/Bethlehem",
-        "size": 436937
-      },
-      {
-        "file": "Partikelemissionen auf Bennu_ Sonnenzeit-Korrelation, elektrostatische Levitation und Oszillationen.pdf",
-        "topic": "Bennu",
-        "size": 50950
-      },
-      {
-        "file": "Bennu_ Chimera-Zustände und Asteroiden-Dynamik.pdf",
-        "topic": "Bennu",
-        "size": 339658
-      },
-      {
-        "file": "Bennu_ Partikel-Ejektionen und __Chimera-Zust#U00e4nde__ in einem frustrierten System.pdf",
-        "topic": "Bennu",
-        "size": 41768
-      },
-      {
-        "file": "Bennu_ Chimera-Zust#U00e4nde und Asteroiden-Dynamik.pdf",
-        "topic": "Bennu",
-        "size": 339658
-      },
-      {
-        "file": "Historische „Gaststerne“ um Christi Geburt (10 v. Chr. – 10 n. Chr.).pdf",
-        "topic": "Historical/Bethlehem",
-        "size": 436937
-      },
-      {
-        "file": "Hypothese_ Alfv#U00e9n-Wellenresonanz und Phaethons Staubemission.pdf",
-        "topic": "Phaethon",
-        "size": 514698
-      },
-      {
-        "file": "Phaethon-Simulation und Stern von Bethlehem.pdf",
-        "topic": "Phaethon",
-        "size": 327474
-      },
-      {
-        "file": "Phaethon, Geminiden und der Stern.pdf",
-        "topic": "Phaethon",
-        "size": 337759
-      },
-      {
-        "file": "Geminiden_ Plasma-Verlangsamung statt Orbitalmechanik.pdf",
-        "topic": "Geminiden",
-        "size": 300822
-      },
-      {
-        "file": "Hypothese_ Alfvén-Wellenresonanz und Phaethons Staubemission.pdf",
-        "topic": "Phaethon",
-        "size": 514698
+        "issue": "empty file"
       }
     ]
   },
-  "themes": {
-    "chimera": 11,
-    "stern": 11,
-    "emission": 10,
-    "resonanz": 7,
-    "geminiden": 7,
-    "bethlehem": 5,
-    "synchron": 4,
-    "historisch": 4,
-    "plasma": 4,
-    "alfven": 1,
-    "soliton": 1,
-    "elektrostatisch": 1
-  },
-  "variants": {},
-  "gaps": [
-    {
-      "component": "DESTINY_predictions",
-      "missing_keywords": [
-        "destiny"
-      ],
-      "severity": "medium"
-    },
-    {
-      "component": "OSIRIS_data_analysis",
-      "missing_keywords": [
-        "osiris"
-      ],
-      "severity": "medium"
-    },
-    {
-      "component": "Code_implementations",
-      "missing_keywords": [
-        ".py",
-        ".ipynb"
-      ],
-      "severity": "high"
-    }
-  ],
-  "file_details": {
-    "ext_.txt": 19,
-    "search_logs": 15,
-    "text_other": 3,
-    "ext_.pdf": 18,
-    "papers_Phaethon": 8,
-    "papers_Bennu": 6,
-    "papers_Geminiden": 2,
-    "papers_Historical/Bethlehem": 2
+  "notes": {
+    "scope": "Phaethon/Bennu/Geminiden research archive",
+    "generated_by": "inventory script"
   }
 }
