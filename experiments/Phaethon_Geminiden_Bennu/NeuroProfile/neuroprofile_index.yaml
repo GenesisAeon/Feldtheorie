@@ -1,0 +1,39 @@
+id: neuroprofile-lantern-001
+name: NeuroProfile Resonance Bridge
+scope: experiments/Phaethon_Geminiden_Bennu/NeuroProfile
+status: primed
+logistic:
+  R: 0.42
+  Theta: 0.68
+  beta: 4.8
+  zeta_R: 0.18
+  sigma_beta_R_minus_Theta: 0.27
+purpose: >-
+  Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with
+  astrophysical resonance bands from Phaethon/Bennu.
+artifacts:
+  readme: README.md
+  roadmap: STRATEGIC_ROADMAP.md
+  methodology: docs/methodology.md
+  code:
+    - code/neuro_profile_model.py
+    - code/beta_extractor_neuro.py
+    - code/microtubule_resonance.py
+  data:
+    - data/raw/
+    - data/processed/
+    - data/results.json
+falsifiability:
+  null_models:
+    - linear
+    - power_law
+    - constant
+  delta_aic_target: 10
+  confidence_interval_note: Record CI per experiment in data/results.json
+telemetry:
+  last_updated: 2026-09-01
+  evidence_links:
+    - docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf
+notes: >-
+  σ(β(R-Θ)) signals a controlled activation; ζ(R) remains damped by staged
+  implementation and explicit consent requirements.

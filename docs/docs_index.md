@@ -1,6 +1,6 @@
 # 📚 Docs Index – Science & Narrative Split
 
-**Version:** 2.0.0 | **Datum:** 25. Dez 2025 | **Zuletzt aktualisiert:** 25. Dez 2025 | **Verzeichnis:** `docs/`
+**Version:** 2.0.0 | **Datum:** 25. Dez 2025 | **Zuletzt aktualisiert:** 01. Sep 2026 | **Verzeichnis:** `docs/`
 
 ---
 
@@ -54,4 +54,3 @@ Strategische und kommunikative Ebene:
 
 > **„Science in `science/`, Story in `narrative/` – \(R\) und \(\Theta\) entkoppeln sich sauber, \(\beta\approx4.8\) hält die
 > Membran scharf, \(\zeta(R)\) bleibt gedämpft.“**
-
