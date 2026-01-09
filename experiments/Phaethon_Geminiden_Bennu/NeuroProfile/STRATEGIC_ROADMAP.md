@@ -12,6 +12,7 @@
 - Implementiere `beta_extractor_neuro.py` (β-Proxy, synthetische Tests).
 - Implementiere `microtubule_resonance.py` (v_RIG-Proxy, Bandkopplung).
 - Implementiere `neuro_profile_model.py` (End-to-End Scaffold).
+- Consent-Check + Anonymisierung im Demo-Entry-Point verankern.
 - **Falsifizierbarkeit:** ΔAIC-Guard ≥ 10 gegen lineare/power-law Nullmodelle.
 
 ## Phase 2 – Calibration (Woche 3-4)

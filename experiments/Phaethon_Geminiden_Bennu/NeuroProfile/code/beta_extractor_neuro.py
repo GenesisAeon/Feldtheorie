@@ -40,7 +40,7 @@ def estimate_beta_from_series(series: Sequence[float]) -> BetaEstimate:
     if data.size < 10:
         return BetaEstimate(beta=0.0, threshold=0.0, r_value=0.0)
 
-    x = (data - data.min()) / (data.ptp() + 1e-9)
+    x = (data - data.min()) / (np.ptp(data) + 1e-9)
     y = np.clip(x, 1e-6, 1 - 1e-6)
 
     # Heuristische β-Schätzung über logit-Varianz

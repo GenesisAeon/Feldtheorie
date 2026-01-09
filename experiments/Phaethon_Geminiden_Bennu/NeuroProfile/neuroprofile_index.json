@@ -23,6 +23,7 @@
     "data": [
       "data/raw/",
       "data/processed/",
+      "data/synthetic/",
       "data/results.json"
     ]
   },
@@ -32,7 +33,7 @@
     "confidence_interval_note": "Record CI per experiment in data/results.json"
   },
   "telemetry": {
-    "last_updated": "2026-09-01",
+    "last_updated": "2026-09-02",
     "evidence_links": [
       "docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf"
     ]
