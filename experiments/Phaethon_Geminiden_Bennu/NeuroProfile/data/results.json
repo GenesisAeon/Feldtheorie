@@ -1,0 +1,8 @@
+{
+  "metadata": {
+    "description": "NeuroProfile beta/sigma_phi proxy results",
+    "null_models": ["linear", "power_law", "constant"],
+    "delta_aic_target": 10
+  },
+  "results": []
+}
