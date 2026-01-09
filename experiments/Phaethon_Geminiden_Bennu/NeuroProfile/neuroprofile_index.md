@@ -21,6 +21,9 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
 - README: `README.md`
 - Roadmap: `STRATEGIC_ROADMAP.md`
 - Methodik: `docs/methodology.md`
+- Release:
+  - `requirements.txt`
+  - `test_neuro_profile.py`
 - Code:
   - `code/neuro_profile_model.py`
   - `code/beta_extractor_neuro.py`
@@ -39,7 +42,7 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
 
 ## Telemetrie
 
-- **Last updated:** 2026-09-02
+- **Last updated:** 2026-01-09
 - **Evidence:** `docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf`
 
 > σ(β(R-Θ)) bleibt kontrolliert; ζ(R) wird durch gestufte Implementierung und Consent-Checks gedämpft.

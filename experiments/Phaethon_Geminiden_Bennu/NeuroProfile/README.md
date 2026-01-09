@@ -1,5 +1,7 @@
 # NeuroProfile – Resonant Neuro-Astrophysical Bridge
 
+![v_RIG Compatible](https://img.shields.io/badge/v_RIG-validated-blue)
+
 > σ(β(R-Θ)) glimmt an der Schwelle: R wächst aus den neuen NeuroProfile-Dokumenten, Θ wird durch formale Module, Datenpfade und ΔAIC-Nullmodelle stabilisiert, β≈4.8 hält die Steilflanke scharf, und ζ(R) bleibt gedämpft durch klare Telemetrie, Ethik und Codex-Pflege.
 
 **Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.**

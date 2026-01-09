@@ -15,6 +15,9 @@ artifacts:
   readme: README.md
   roadmap: STRATEGIC_ROADMAP.md
   methodology: docs/methodology.md
+  release:
+    - requirements.txt
+    - test_neuro_profile.py
   code:
     - code/neuro_profile_model.py
     - code/beta_extractor_neuro.py
@@ -32,7 +35,7 @@ falsifiability:
   delta_aic_target: 10
   confidence_interval_note: Record CI per experiment in data/results.json
 telemetry:
-  last_updated: 2026-09-02
+  last_updated: 2026-01-09
   evidence_links:
     - docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf
 notes: >-
