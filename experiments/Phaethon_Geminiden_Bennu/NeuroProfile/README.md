@@ -10,6 +10,11 @@
 
 NeuroProfile erweitert das Phaethon/Bennu-Programm um eine neurowissenschaftliche Resonanzschicht: individuelle β-Profile, σΦ-Fluktuationen und v_RIG-Proxy-Kopplungen werden mit astrophysikalischen Resonanzen gespiegelt. Das Modul ist so angelegt, dass es die vorhandene Experimentstruktur respektiert und in den UTAC-Kontext rückkoppelt.
 
+## Veröffentlichung & Referenzrahmen
+
+- **Published Version:** [Zenodo v27](https://doi.org/10.5281/zenodo.18201671)
+- **Related Framework:** [GenesisAeon/Feldtheorie](https://github.com/GenesisAeon/Feldtheorie) – Embedded in Dimensional Emergence Model (v_RIG)
+
 ## Struktur (Trilayer + Laborpfade)
 
 ```
