@@ -91,7 +91,7 @@
 | Neuro-Kosmos Sigillin bridge | `seed/sigillin/`, `seed/bedeutungssigillin/metaquest/**`, `seed/shadow_sigillin/metaquest/**`, `simulator/presets/` | Forge CREP-aligned trilayer + simulator vignette for EEG↔QPO β-coupling | Cite `seed/Sigillin_Neuro_Membran_Modell_Plan.txt`, mirror codex ID + timestamp once sigil lands |
 | φ-coupling climate handshake | `models/`, `analysis/`, `data/climate/`, `docs/` | Operationalise φ (AMOC↔Albedo) and export β gradients | TIPMIP request log, `climate_utac_phi_coupling.py`, ΔAIC ledger, codex entry |
 | Urban heat outlier mechanism | `analysis/urban_heat_analysis.py`, `data/socio_ecology/urban_heat/`, `docs/utac_activation_backlog.*` | Diagnose β≈16 hotspots with material physics narrative | Reference `seed/ArchivSucheUTAC/`, log ΔAIC + mechanism summary in status/backlog |
-| NeuroProfile resonance bridge | `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/`, `docs/science/utac_status_alignment_v1.2.md` | Trilayer index + methodology + ΔAIC/CI notes in `data/results.json` | Log β/σΦ proxy comparison and consent protocol references |
+| NeuroProfile resonance bridge | `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/`, `docs/science/utac_status_alignment_v1.2.md` | Trilayer index + methodology + ΔAIC/CI notes in `data/results.json` + synthetic data shelf | Log β/σΦ proxy comparison, ΔAIC null models, and consent protocol references |
 
 ---
 

@@ -23,6 +23,7 @@ NeuroProfile/
 ├── data/
 │   ├── raw/
 │   ├── processed/
+│   ├── synthetic/
 │   └── results.json
 ├── docs/
 │   ├── research/
@@ -53,6 +54,11 @@ NeuroProfile/
 - Datenpfade vorbereiten (`data/raw`, `data/processed`).
 - MVP-Analyse (synthetische EEG-Zeitreihen) mit β-Schätzung + σΦ-Proxy.
 - Resonanzvergleich gegen Phaethon/Bennu-Resonanzband (Dokumentation in `docs/methodology.md`).
+
+## Consent & Demo
+
+- Die Demo erfordert explizite Zustimmung (`consent_granted=True`) und anonymisiert optionale IDs.
+- Beispiel: `NeuroProfileModel().analyze(series, consent_granted=True, subject_id="demo")`
 
 ## Kontakt & Ethik
 

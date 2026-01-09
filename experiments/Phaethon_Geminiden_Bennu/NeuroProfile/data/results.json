@@ -1,8 +1,75 @@
 {
   "metadata": {
     "description": "NeuroProfile beta/sigma_phi proxy results",
-    "null_models": ["linear", "power_law", "constant"],
+    "null_models": [
+      "linear",
+      "power_law",
+      "constant"
+    ],
     "delta_aic_target": 10
   },
-  "results": []
+  "results": [
+    {
+      "timestamp": "2026-01-09T17:30:22.296403+00:00",
+      "subject_anonymized": "ee67af9e4dd45761c6f09211c26070977b714f5425091a5f8e004fb258b10f4e",
+      "beta": {
+        "estimate": 1.1800183676794114,
+        "threshold": 0.5319102892533023,
+        "r_value": 0.49989842729915834,
+        "ci_95": [
+          1.169794335948404,
+          1.581522388507493
+        ]
+      },
+      "sigma_phi_proxy": {
+        "value": 0.9429875847846012,
+        "ci_95": [
+          0.9352193800343218,
+          0.943440237718606
+        ]
+      },
+      "resonance_proxy": {
+        "gamma_beta_coupling": 0.7180502238961216,
+        "gamma_beta_ci_95": [
+          0.6858737902621761,
+          0.8345566039038017
+        ],
+        "proxy_alignment": 0.9493636292589295,
+        "proxy_alignment_ci_95": [
+          0.8987952110530172,
+          0.998780793872035
+        ]
+      },
+      "null_models": {
+        "best_model": "constant",
+        "aic": {
+          "constant": -2034.8484106158924,
+          "linear": -2034.0031946789054,
+          "power_law": -1674.0782683481475
+        },
+        "delta_aic": {
+          "constant": 0.0,
+          "linear": 0.8452159369869605,
+          "power_law": 360.77014226774486
+        },
+        "parameters": {
+          "constant": {
+            "mean": 0.793795911102724
+          },
+          "linear": {
+            "intercept": 0.7687733342029414,
+            "slope": 2.4424184382413507e-05
+          },
+          "power_law": {
+            "a": 0.4482543818399841,
+            "b": 0.024332409804884905
+          }
+        }
+      },
+      "consent": {
+        "message": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+        "granted": true
+      }
+    }
+  ]
 }

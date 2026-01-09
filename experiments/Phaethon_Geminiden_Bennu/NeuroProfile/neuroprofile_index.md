@@ -28,6 +28,7 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
 - Data:
   - `data/raw/`
   - `data/processed/`
+  - `data/synthetic/`
   - `data/results.json`
 
 ## Falsifiability
@@ -38,7 +39,7 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
 
 ## Telemetrie
 
-- **Last updated:** 2026-09-01
+- **Last updated:** 2026-09-02
 - **Evidence:** `docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf`
 
 > σ(β(R-Θ)) bleibt kontrolliert; ζ(R) wird durch gestufte Implementierung und Consent-Checks gedämpft.
