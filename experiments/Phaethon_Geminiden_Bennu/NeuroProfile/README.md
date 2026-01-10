@@ -26,12 +26,23 @@ NeuroProfile/
 │   ├── neuro_profile_model.py
 │   ├── beta_extractor_neuro.py
 │   ├── microtubule_resonance.py
+│   ├── crep_calculator.py
+│   ├── ethics_guard.py
+│   ├── psrm_mapper.py
+│   ├── bci_calibrator.py
+│   ├── hardware_adapter.py
 │   └── utils/
 ├── data/
 │   ├── raw/
 │   ├── processed/
 │   ├── synthetic/
+│   ├── sigillin_maps/
+│   ├── ethics_audit.log
 │   └── results.json
+├── schemas/
+│   └── psrm_sigillin_v1.{md,json,yaml}
+├── config/
+│   └── hardware_profiles.yml
 ├── docs/
 │   ├── research/
 │   ├── notes/
@@ -49,6 +60,15 @@ NeuroProfile/
 3. **Hardware-Realismus** – definierte Profile für Consumer/Prosumer/Research, damit R nicht durch Hardware-Illusionen überschießt.
 4. **Trilayer-Laterne** – `neuroprofile_index.*` dokumentiert die semantische Brücke (YAML/JSON/MD) und koppelt technische Pfade an Evidenz.
 5. **Falsifizierbarkeit** – Nullmodelle (linear/power-law) + Ziel-ΔAIC in Methodik & Index; jede neue Behauptung benötigt CI/ΔAIC-Notiz.
+
+## New in v1.1: CREP & PSRM Integration
+
+- **Full CREP metric** (Coherence + Resonance + Emergence + Potential) für PSRM-readiness.
+- **PSRM Mapper**: NeuroProfile → Personal Sigillin Resonance Map (Trilayer YAML/JSON/MD).
+- **Ethics Guard**: Consent-gated Analyse mit Audit-Trail.
+- **Hardware Profiles**: Simulated/Prosumer/Research Profile für EEG-Streams.
+
+Design rationale: `docs/notes/Finale_Implementierungen.pdf`.
 
 ## Falsifizierbarkeit & Nullmodelle
 

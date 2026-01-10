@@ -1,0 +1,57 @@
+{
+  "$schema": "https://genesisaeon.org/schemas/neuroprofile/v1",
+  "version": "1.0",
+  "user_id": "demo-subject",
+  "layer_1_signal": {
+    "source": "synthetic_1khz_eeg",
+    "beta": 1.18,
+    "beta_cluster": "sub-critical",
+    "sigma_phi": 0.943,
+    "gamma_beta_coupling": 0.718,
+    "crep_baseline": {
+      "coherence": 0.82,
+      "resonance": 0.72,
+      "emergence": 0.19,
+      "potential": 0.15
+    },
+    "crep_aggregate": 0.47
+  },
+  "layer_2_intention": {
+    "calibrated_intents": [],
+    "intent_ontology_version": "1.0",
+    "calibration_status": "pending"
+  },
+  "layer_3_context": {
+    "ethics_consent": true,
+    "hardware_tier": "simulated",
+    "data_retention": "study_duration_only",
+    "timestamp": "2026-01-10T14:30:00Z"
+  },
+  "metadata": {
+    "neuroprofile_version": "v27",
+    "psrm_mapper_version": "1.0",
+    "falsifiability_metrics": {
+      "beta_ci": [
+        1.17,
+        1.58
+      ],
+      "sigma_phi_ci": [
+        0.94,
+        0.94
+      ],
+      "best_null_model": "constant",
+      "delta_aic": {
+        "constant": 0.0,
+        "linear": 0.85,
+        "power_law": 360.77
+      }
+    },
+    "logistic": {
+      "R": 0.42,
+      "Theta": 0.68,
+      "beta": 4.8,
+      "zeta_R": 0.18,
+      "sigma_beta_R_minus_Theta": 0.27
+    }
+  }
+}

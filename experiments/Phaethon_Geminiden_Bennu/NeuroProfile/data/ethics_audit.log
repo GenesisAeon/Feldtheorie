@@ -1,0 +1,6 @@
+# Ethics audit log for NeuroProfile (PSRM)
+# Format: [timestamp] [user_hash] [warning_code] [context]
+[2026-01-10T14:05:22.900971+00:00] [e6d68fc48d3de64b070e1ca07b888458a35c2fe6b0ea499d3b80fe2d591c4273] [FRAME_DRIFT] Recalibration advised (CREP below threshold).
+[2026-01-10T14:05:23.044775+00:00] [0c04ce603576cf15e702b46dc5ec5ca6da00bccc5ee45da4bae73f3b6d0dbe28] [FRAME_DRIFT] Recalibration advised (CREP below threshold).
+[2026-01-10T14:05:38.221503+00:00] [e6d68fc48d3de64b070e1ca07b888458a35c2fe6b0ea499d3b80fe2d591c4273] [FRAME_DRIFT] Recalibration advised (CREP below threshold).
+[2026-01-10T14:05:38.341710+00:00] [0c04ce603576cf15e702b46dc5ec5ca6da00bccc5ee45da4bae73f3b6d0dbe28] [FRAME_DRIFT] Recalibration advised (CREP below threshold).

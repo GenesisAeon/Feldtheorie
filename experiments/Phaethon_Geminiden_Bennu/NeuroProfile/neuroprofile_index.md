@@ -14,7 +14,7 @@
 
 ## Purpose
 
-Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical resonance bands from Phaethon/Bennu.
+Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical resonance bands from Phaethon/Bennu and map PSRM via CREP.
 
 ## Artifacts
 
@@ -28,11 +28,22 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
   - `code/neuro_profile_model.py`
   - `code/beta_extractor_neuro.py`
   - `code/microtubule_resonance.py`
+  - `code/crep_calculator.py`
+  - `code/ethics_guard.py`
+  - `code/psrm_mapper.py`
+  - `code/bci_calibrator.py`
+  - `code/hardware_adapter.py`
 - Data:
   - `data/raw/`
   - `data/processed/`
   - `data/synthetic/`
+  - `data/sigillin_maps/`
+  - `data/ethics_audit.log`
   - `data/results.json`
+- Config:
+  - `config/hardware_profiles.yml`
+- Schemas:
+  - `schemas/psrm_sigillin_v1.{md,json,yaml}`
 
 ## Falsifiability
 
@@ -42,7 +53,7 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
 
 ## Telemetrie
 
-- **Last updated:** 2026-01-09
+- **Last updated:** 2026-01-10
 - **Evidence:** `docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf`
 
 > σ(β(R-Θ)) bleibt kontrolliert; ζ(R) wird durch gestufte Implementierung und Consent-Checks gedämpft.

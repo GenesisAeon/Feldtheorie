@@ -9,10 +9,12 @@ import sys
 import numpy as np
 
 
-CODE_DIR = Path(__file__).resolve().parent / "code"
-sys.path.insert(0, str(CODE_DIR))
+ROOT_DIR = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT_DIR))
 
-from neuro_profile_model import NeuroProfileModel  # noqa: E402
+from experiments.Phaethon_Geminiden_Bennu.NeuroProfile.code.neuro_profile_model import (  # noqa: E402
+    NeuroProfileModel,
+)
 
 
 class TestNeuroProfileModel(unittest.TestCase):
@@ -31,6 +33,8 @@ class TestNeuroProfileModel(unittest.TestCase):
         self.assertIsNotNone(result.beta_estimate)
         self.assertTrue(result.consent.granted)
         self.assertIsNotNone(result.consent.anonymized_subject)
+        self.assertTrue(0.0 <= result.crep.aggregate <= 1.0)
+        self.assertEqual(result.ethics_report.action, "proceed")
 
 
 if __name__ == "__main__":

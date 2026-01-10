@@ -11,11 +11,14 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import hashlib
+from pathlib import Path
 from typing import Callable, Sequence
 
 import numpy as np
 
 from .beta_extractor_neuro import BetaEstimate, estimate_beta_from_series
+from .crep_calculator import CrepResult, compute_crep
+from .ethics_guard import EthicsGuard, EthicsReport
 from .microtubule_resonance import ResonanceProxyResult, estimate_resonance_proxy
 
 CONSENT_MESSAGE = (
@@ -34,6 +37,9 @@ class NeuroProfileConfig:
     bootstrap_samples: int = 200
     bootstrap_seed: int = 23
     anonymization_salt: str = "neuroprofile"
+    crep_beta_baseline: float = 7.4
+    crep_warning_threshold: float = 0.70
+    neuroprofile_version: str = "v27"
 
 
 @dataclass
@@ -60,6 +66,8 @@ class NeuroProfileResult:
     resonance_proxy: ResonanceProxyResult
     gamma_beta_ci: tuple[float, float]
     resonance_alignment_ci: tuple[float, float]
+    crep: CrepResult
+    ethics_report: EthicsReport
     null_models: NullModelSummary
     consent: ConsentRecord
 
@@ -67,6 +75,8 @@ class NeuroProfileResult:
 class NeuroProfileModel:
     def __init__(self, config: NeuroProfileConfig | None = None) -> None:
         self.config = config or NeuroProfileConfig()
+        audit_path = Path(__file__).resolve().parents[1] / "data" / "ethics_audit.log"
+        self.ethics_guard = EthicsGuard(audit_path)
 
     def preprocess(self, series: Sequence[float]) -> np.ndarray:
         data = np.asarray(series, dtype=float)
@@ -161,12 +171,21 @@ class NeuroProfileModel:
         *,
         consent_granted: bool = False,
         subject_id: str | None = None,
+        context_location: str = "lab",
     ) -> NeuroProfileResult:
         self._require_consent(consent_granted)
         prepared = self.preprocess(series)
         beta_estimate = estimate_beta_from_series(prepared)
         sigma_phi_proxy = self.estimate_sigma_phi_proxy(prepared)
         resonance_proxy = estimate_resonance_proxy(prepared, self.config.sampling_rate)
+        crep = compute_crep(
+            beta_estimate.beta,
+            sigma_phi_proxy,
+            prepared,
+            self.config.sampling_rate,
+            sigma_phi_target=self.config.sigma_phi_target,
+            beta_baseline=self.config.crep_beta_baseline,
+        )
         null_models = self._fit_null_models(prepared)
         beta_ci = self._bootstrap_ci(prepared, lambda sample: estimate_beta_from_series(sample).beta)
         sigma_phi_ci = self._bootstrap_ci(prepared, self.estimate_sigma_phi_proxy)
@@ -179,6 +198,13 @@ class NeuroProfileModel:
             lambda sample: estimate_resonance_proxy(sample, self.config.sampling_rate).proxy_alignment,
         )
         anonymized = self._anonymize_subject(subject_id) if subject_id else None
+        ethics_report = self.ethics_guard.check_before_analysis(
+            location=context_location,
+            crep=crep.aggregate,
+            consent_granted=consent_granted,
+            subject_hash=anonymized or "anonymous",
+            crep_warning_threshold=self.config.crep_warning_threshold,
+        )
         return NeuroProfileResult(
             beta_estimate=beta_estimate,
             beta_ci=beta_ci,
@@ -187,6 +213,8 @@ class NeuroProfileModel:
             resonance_proxy=resonance_proxy,
             gamma_beta_ci=gamma_beta_ci,
             resonance_alignment_ci=resonance_alignment_ci,
+            crep=crep,
+            ethics_report=ethics_report,
             null_models=null_models,
             consent=ConsentRecord(
                 message=CONSENT_MESSAGE,

@@ -40,6 +40,13 @@
           0.998780793872035
         ]
       },
+      "crep": {
+        "coherence": 1.0,
+        "resonance": 0.7180502238961216,
+        "emergence": 0.15946194292289073,
+        "potential": 0.14554316958441755,
+        "aggregate": 0.5057638341008575
+      },
       "null_models": {
         "best_model": "constant",
         "aic": {
@@ -69,6 +76,10 @@
       "consent": {
         "message": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
         "granted": true
+      },
+      "ethics": {
+        "action": "proceed",
+        "warnings": []
       }
     }
   ]

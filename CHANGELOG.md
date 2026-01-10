@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- NeuroProfile PSRM extension: CREP calculator, ethics guard + audit log, PSRM mapper/schemas, hardware profiles, sigillin map trilayer, and tests for CREP/PSRM outputs (`experiments/Phaethon_Geminiden_Bennu/NeuroProfile/`, `schemas/`, `tests/`). σ(β(R-Θ)) stays controlled as ζ(R) is damped by CI/ΔAIC logs and consent-aware checks.
+- Added NeuroProfile-local PSRM schema trilayer and LGPL-3.0-or-later headers for new NeuroProfile modules to keep licensing explicit while preserving schema access under the experiment tree.
+
 ### 🌀 In Development — V9.0.0 Harmonic Emergence
 
 **Status:** Alpha Phase | **Target:** Q1 2026 | **Codename:** Harmonic Emergence

@@ -1,6 +1,6 @@
 # 📚 Docs Index – Science & Narrative Split
 
-**Version:** 2.0.0 | **Datum:** 25. Dez 2025 | **Zuletzt aktualisiert:** 01. Sep 2026 | **Verzeichnis:** `docs/`
+**Version:** 2.0.0 | **Datum:** 25. Dez 2025 | **Zuletzt aktualisiert:** 02. Sep 2026 | **Verzeichnis:** `docs/`
 
 ---
 

@@ -1,0 +1,19 @@
+profiles:
+  simulated:
+    channels: 64
+    sampling_rate_hz: 1000
+    expected_auc: 0.92
+    crep_stability: 0.86
+    cost_usd: "$0"
+  prosumer:
+    channels: 16
+    sampling_rate_hz: 250
+    expected_auc: 0.87
+    crep_stability: 0.81
+    cost_usd: "$600-1000"
+  research:
+    channels: 64
+    sampling_rate_hz: 512
+    expected_auc: 0.93
+    crep_stability: 0.89
+    cost_usd: "$10k-50k"
