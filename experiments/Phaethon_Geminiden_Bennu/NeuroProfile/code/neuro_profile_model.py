@@ -224,6 +224,30 @@ class NeuroProfileModel:
         )
 
 
+class NeuroProfile:
+    def __init__(self, subject_id: str | None = None, config: NeuroProfileConfig | None = None) -> None:
+        self.subject_id = subject_id
+        self.model = NeuroProfileModel(config=config)
+        self.series: np.ndarray | None = None
+        self.result: NeuroProfileResult | None = None
+
+    def load_synthetic_data(self, *, size: int = 2048, seed: int = 42) -> np.ndarray:
+        rng = np.random.default_rng(seed)
+        self.series = rng.normal(0.0, 1.0, size)
+        return self.series
+
+    def analyze(self, *, consent_granted: bool = True, context_location: str = "lab") -> NeuroProfileResult:
+        if self.series is None:
+            raise ValueError("No data loaded. Call load_synthetic_data or provide series first.")
+        self.result = self.model.analyze(
+            self.series,
+            consent_granted=consent_granted,
+            subject_id=self.subject_id,
+            context_location=context_location,
+        )
+        return self.result
+
+
 def run_demo() -> NeuroProfileResult:
     rng = np.random.default_rng(42)
     synthetic = rng.normal(0.0, 1.0, 2048)
