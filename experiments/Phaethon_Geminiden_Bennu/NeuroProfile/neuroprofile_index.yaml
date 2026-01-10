@@ -10,7 +10,8 @@ logistic:
   sigma_beta_R_minus_Theta: 0.27
 purpose: >-
   Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with
-  astrophysical resonance bands from Phaethon/Bennu.
+  astrophysical resonance bands from Phaethon/Bennu and map PSRM via
+  CREP.
 artifacts:
   readme: README.md
   roadmap: STRATEGIC_ROADMAP.md
@@ -22,11 +23,24 @@ artifacts:
     - code/neuro_profile_model.py
     - code/beta_extractor_neuro.py
     - code/microtubule_resonance.py
+    - code/crep_calculator.py
+    - code/ethics_guard.py
+    - code/psrm_mapper.py
+    - code/bci_calibrator.py
+    - code/hardware_adapter.py
   data:
     - data/raw/
     - data/processed/
     - data/synthetic/
+    - data/sigillin_maps/
+    - data/ethics_audit.log
     - data/results.json
+  config:
+    - config/hardware_profiles.yml
+  schemas:
+    - schemas/psrm_sigillin_v1.md
+    - schemas/psrm_sigillin_v1.json
+    - schemas/psrm_sigillin_v1.yaml
 falsifiability:
   null_models:
     - linear
@@ -35,7 +49,7 @@ falsifiability:
   delta_aic_target: 10
   confidence_interval_note: Record CI per experiment in data/results.json
 telemetry:
-  last_updated: 2026-01-09
+  last_updated: 2026-01-10
   evidence_links:
     - docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf
 notes: >-

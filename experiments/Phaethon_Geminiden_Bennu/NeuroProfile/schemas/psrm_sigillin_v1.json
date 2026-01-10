@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://genesisaeon.org/schemas/psrm_sigillin_v1.json",
+  "title": "PSRM Sigillin v1",
+  "type": "object",
+  "required": [
+    "$schema",
+    "version",
+    "user_id",
+    "layer_1_signal",
+    "layer_2_intention",
+    "layer_3_context",
+    "metadata"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string" },
+    "user_id": { "type": "string" },
+    "layer_1_signal": {
+      "type": "object",
+      "required": ["source", "beta", "sigma_phi", "gamma_beta_coupling", "crep_baseline", "crep_aggregate"],
+      "properties": {
+        "source": { "type": "string" },
+        "beta": { "type": "number" },
+        "beta_cluster": { "type": "string" },
+        "sigma_phi": { "type": "number" },
+        "gamma_beta_coupling": { "type": "number" },
+        "crep_baseline": {
+          "type": "object",
+          "required": ["coherence", "resonance", "emergence", "potential"],
+          "properties": {
+            "coherence": { "type": "number" },
+            "resonance": { "type": "number" },
+            "emergence": { "type": "number" },
+            "potential": { "type": "number" }
+          }
+        },
+        "crep_aggregate": { "type": "number" }
+      }
+    },
+    "layer_2_intention": {
+      "type": "object",
+      "required": ["calibrated_intents", "intent_ontology_version", "calibration_status"],
+      "properties": {
+        "calibrated_intents": { "type": "array", "items": { "type": "string" } },
+        "intent_ontology_version": { "type": "string" },
+        "calibration_status": { "type": "string" }
+      }
+    },
+    "layer_3_context": {
+      "type": "object",
+      "required": ["ethics_consent", "hardware_tier", "data_retention", "timestamp"],
+      "properties": {
+        "ethics_consent": { "type": "boolean" },
+        "hardware_tier": { "type": "string" },
+        "data_retention": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["neuroprofile_version", "psrm_mapper_version", "falsifiability_metrics"],
+      "properties": {
+        "neuroprofile_version": { "type": "string" },
+        "psrm_mapper_version": { "type": "string" },
+        "falsifiability_metrics": {
+          "type": "object",
+          "required": ["beta_ci", "sigma_phi_ci", "best_null_model", "delta_aic"],
+          "properties": {
+            "beta_ci": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+            "sigma_phi_ci": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+            "best_null_model": { "type": "string" },
+            "delta_aic": { "type": "object" }
+          }
+        },
+        "logistic": {
+          "type": "object",
+          "properties": {
+            "R": { "type": "number" },
+            "Theta": { "type": "number" },
+            "beta": { "type": "number" },
+            "zeta_R": { "type": "number" },
+            "sigma_beta_R_minus_Theta": { "type": "number" }
+          }
+        }
+      }
+    }
+  }
+}
