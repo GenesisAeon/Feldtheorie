@@ -40,13 +40,13 @@ docs = [
   "sphinx>=7.3,<9",
 ]
 api = [
-  "fastapi>=0.104,<0.125",
-  "uvicorn[standard]>=0.24,<0.35",
+  "fastapi>=0.104,<0.129",
+  "uvicorn[standard]>=0.24,<0.41",
   "httpx>=0.25",
-  "websockets>=12.0,<14",
+  "websockets>=12.0,<16",
 ]
 llm = [
-  "openai>=1.0,<2",
+  "openai>=1.0,<3",
   "python-dotenv>=1.0,<2",
 ]
 all = [
@@ -58,11 +58,11 @@ all = [
   "ruff>=0.5.0,<0.15",
   "myst-parser>=2.0,<5",
   "sphinx>=7.3,<9",
-  "fastapi>=0.104,<0.125",
-  "uvicorn[standard]>=0.24,<0.35",
+  "fastapi>=0.104,<0.129",
+  "uvicorn[standard]>=0.24,<0.41",
   "httpx>=0.25",
-  "websockets>=12.0,<14",
-  "openai>=1.0,<2",
+  "websockets>=12.0,<16",
+  "openai>=1.0,<3",
   "python-dotenv>=1.0,<2",
 ]
 
