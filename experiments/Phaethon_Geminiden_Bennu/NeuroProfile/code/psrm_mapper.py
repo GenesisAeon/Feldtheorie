@@ -21,7 +21,7 @@ from typing import Any
 import json
 import yaml
 
-from .neuro_profile_model import NeuroProfileResult, NeuroProfileConfig
+from .neuro_profile_model import NeuroProfile, NeuroProfileResult, NeuroProfileConfig
 
 
 @dataclass
@@ -137,3 +137,47 @@ def write_psrm_trilayer(map_data: PSRMMap, *, output_stem: Path) -> None:
         "```",
     ]
     md_path.write_text("\n".join(md_lines) + "\n", encoding="utf-8")
+
+
+class PSRMMapper:
+    def __init__(
+        self,
+        profile: NeuroProfile | NeuroProfileResult,
+        *,
+        source: str = "synthetic",
+        hardware_tier: str = "tier-0",
+        calibration_status: str = "uncalibrated",
+        intent_ontology_version: str = "1.0",
+        schema: str = "https://genesisaeon.org/schemas/neuroprofile/v1",
+        version: str = "1.0",
+        psrm_mapper_version: str = "1.0",
+    ) -> None:
+        self.profile = profile
+        self.source = source
+        self.hardware_tier = hardware_tier
+        self.calibration_status = calibration_status
+        self.intent_ontology_version = intent_ontology_version
+        self.schema = schema
+        self.version = version
+        self.psrm_mapper_version = psrm_mapper_version
+
+    def _resolve_result(self) -> tuple[NeuroProfileResult, NeuroProfileConfig]:
+        if isinstance(self.profile, NeuroProfile):
+            if self.profile.result is None:
+                raise ValueError("NeuroProfile has no analysis result. Call analyze() first.")
+            return self.profile.result, self.profile.model.config
+        return self.profile, NeuroProfileConfig()
+
+    def generate_sigillin_map(self) -> PSRMMap:
+        result, config = self._resolve_result()
+        return build_psrm_map(
+            result,
+            config=config,
+            source=self.source,
+            hardware_tier=self.hardware_tier,
+            calibration_status=self.calibration_status,
+            intent_ontology_version=self.intent_ontology_version,
+            schema=self.schema,
+            version=self.version,
+            psrm_mapper_version=self.psrm_mapper_version,
+        )
