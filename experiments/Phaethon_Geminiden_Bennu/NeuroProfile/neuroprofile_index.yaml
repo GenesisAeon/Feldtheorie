@@ -16,6 +16,10 @@ artifacts:
   readme: README.md
   roadmap: STRATEGIC_ROADMAP.md
   methodology: docs/methodology.md
+  v11_steps:
+    - docs/v11_implementation_steps.md
+    - docs/v11_implementation_steps.json
+    - docs/v11_implementation_steps.yaml
   release:
     - requirements.txt
     - test_neuro_profile.py
@@ -33,6 +37,9 @@ artifacts:
     - data/processed/
     - data/synthetic/
     - data/sigillin_maps/
+    - data/sigillin_maps/psrm_demo.md
+    - data/sigillin_maps/psrm_demo.json
+    - data/sigillin_maps/psrm_demo.yaml
     - data/ethics_audit.log
     - data/results.json
   config:
@@ -49,7 +56,7 @@ falsifiability:
   delta_aic_target: 10
   confidence_interval_note: Record CI per experiment in data/results.json
 telemetry:
-  last_updated: 2026-01-10
+  last_updated: 2026-01-11
   evidence_links:
     - docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf
 notes: >-
