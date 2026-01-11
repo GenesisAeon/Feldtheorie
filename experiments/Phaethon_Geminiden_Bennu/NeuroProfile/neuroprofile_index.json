@@ -4,11 +4,11 @@
   "scope": "experiments/Phaethon_Geminiden_Bennu/NeuroProfile",
   "status": "primed",
   "logistic": {
-    "R": 0.42,
-    "Theta": 0.68,
+    "R": 0.46,
+    "Theta": 0.72,
     "beta": 4.8,
-    "zeta_R": 0.18,
-    "sigma_beta_R_minus_Theta": 0.27
+    "zeta_R": 0.19,
+    "sigma_beta_R_minus_Theta": 0.29
   },
   "purpose": "Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical resonance bands from Phaethon/Bennu and map PSRM via CREP.",
   "artifacts": {
@@ -30,6 +30,7 @@
       "code/microtubule_resonance.py",
       "code/crep_calculator.py",
       "code/ethics_guard.py",
+      "code/resonant_return.py",
       "code/psrm_mapper.py",
       "code/bci_calibrator.py",
       "code/hardware_adapter.py"
@@ -37,6 +38,10 @@
     "data": [
       "data/raw/",
       "data/processed/",
+      "data/raw/gaia_dr3_cluster_sample.csv",
+      "data/raw/jwst_protocluster_candidates.csv",
+      "data/processed/gaia_dr3_cluster_sample_processed.csv",
+      "data/processed/jwst_protocluster_candidates_processed.csv",
       "data/synthetic/",
       "data/sigillin_maps/",
       "data/sigillin_maps/psrm_demo.md",
@@ -60,7 +65,7 @@
     "confidence_interval_note": "Record CI per experiment in data/results.json"
   },
   "telemetry": {
-    "last_updated": "2026-01-11",
+    "last_updated": "2026-01-11T00:00:00Z",
     "evidence_links": [
       "docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf"
     ]

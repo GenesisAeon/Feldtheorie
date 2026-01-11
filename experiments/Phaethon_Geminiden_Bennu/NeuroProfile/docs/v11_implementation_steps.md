@@ -47,6 +47,18 @@ PSRM-Erweiterung, Nullmodelle (linear/power-law/constant) und belegbare
 
 **Status-Update (YAML/JSON-Tracking):** Nach Abschluss jedes Steps `status: completed` und einen ISO-Zeitstempel (`completed_at`) setzen.
 
+## Status Tracking (2026-01-11T20:49:32Z)
+
+| Step | Status | completed_at |
+| ---- | ------ | ------------ |
+| v11-step-01 | completed | 2026-01-11T20:49:32Z |
+| v11-step-02 | completed | 2026-01-11T20:49:32Z |
+| v11-step-03 | completed | 2026-01-11T20:49:32Z |
+| v11-step-04 | completed | 2026-01-11T20:49:32Z |
+| v11-step-05 | completed | 2026-01-11T20:49:32Z |
+| v11-step-06 | completed | 2026-01-11T20:49:32Z |
+| v11-step-07 | completed | 2026-01-11T20:49:32Z |
+
 ## Falsifizierbarkeit & Nullmodelle
 
 - **Nullmodelle:** linear, power-law, konstant.

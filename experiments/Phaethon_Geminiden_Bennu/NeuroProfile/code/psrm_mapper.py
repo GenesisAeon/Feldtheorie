@@ -47,7 +47,7 @@ def build_psrm_map(
     intent_ontology_version: str = "1.0",
     schema: str = "https://genesisaeon.org/schemas/neuroprofile/v1",
     version: str = "1.0",
-    neuroprofile_version: str = "v27",
+    neuroprofile_version: str = "v11",
     psrm_mapper_version: str = "1.0",
     timestamp: datetime | None = None,
 ) -> PSRMMap:
@@ -63,6 +63,17 @@ def build_psrm_map(
             "beta_cluster": _beta_cluster(result.beta_estimate.beta),
             "sigma_phi": result.sigma_phi_proxy,
             "gamma_beta_coupling": result.resonance_proxy.gamma_beta_coupling,
+            "resonant_return": {
+                "beta_velocity_fit": result.resonant_return.beta_velocity_fit.beta,
+                "velocity_dispersion": result.resonant_return.velocity_dispersion,
+                "sigma_phi_proxy": result.resonant_return.sigma_phi_proxy,
+                "v_rig_alignment": result.resonant_return.v_rig_alignment,
+                "v_rig_target_kms": result.resonant_return.v_rig_target_kms,
+                "null_models": {
+                    "best_model": result.resonant_return.null_models.best_model,
+                    "delta_aic": result.resonant_return.null_models.delta_aic,
+                },
+            },
             "crep_baseline": {
                 "coherence": result.crep.coherence,
                 "resonance": result.crep.resonance,
@@ -90,6 +101,12 @@ def build_psrm_map(
                 "sigma_phi_ci": list(result.sigma_phi_ci),
                 "best_null_model": result.null_models.best_model,
                 "delta_aic": result.null_models.delta_aic,
+            },
+            "data_stubs": {
+                "gaia_dr3_cluster_sample": "data/raw/gaia_dr3_cluster_sample.csv",
+                "jwst_protocluster_candidates": "data/raw/jwst_protocluster_candidates.csv",
+                "gaia_processed": "data/processed/gaia_dr3_cluster_sample_processed.csv",
+                "jwst_processed": "data/processed/jwst_protocluster_candidates_processed.csv",
             },
             "logistic": {
                 "R": config.logistic_R,
@@ -179,5 +196,6 @@ class PSRMMapper:
             intent_ontology_version=self.intent_ontology_version,
             schema=self.schema,
             version=self.version,
+            neuroprofile_version=config.neuroprofile_version,
             psrm_mapper_version=self.psrm_mapper_version,
         )
