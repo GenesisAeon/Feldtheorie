@@ -35,6 +35,9 @@ class TestNeuroProfileModel(unittest.TestCase):
         self.assertIsNotNone(result.consent.anonymized_subject)
         self.assertTrue(0.0 <= result.crep.aggregate <= 1.0)
         self.assertEqual(result.ethics_report.action, "proceed")
+        self.assertIsNotNone(result.resonant_return)
+        self.assertTrue(0.0 <= result.resonant_return.v_rig_alignment <= 1.0)
+        self.assertGreaterEqual(len(result.null_model_bootstrap), 1)
 
 
 if __name__ == "__main__":

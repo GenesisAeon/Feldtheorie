@@ -46,6 +46,7 @@ class EthicsGuard:
         consent_granted: bool,
         subject_hash: str,
         crep_warning_threshold: float = 0.70,
+        tag: str = "v11",
     ) -> EthicsReport:
         if not consent_granted:
             raise EthicsViolation("CONSENT_REQUIRED")
@@ -67,14 +68,14 @@ class EthicsGuard:
             )
 
         if warnings:
-            self._log_warnings(subject_hash, warnings)
+            self._log_warnings(subject_hash, warnings, tag=tag)
 
         return EthicsReport(action="proceed", warnings=warnings)
 
-    def _log_warnings(self, subject_hash: str, warnings: list[EthicsWarning]) -> None:
+    def _log_warnings(self, subject_hash: str, warnings: list[EthicsWarning], *, tag: str) -> None:
         timestamp = datetime.now(timezone.utc).isoformat()
         with self.audit_log_path.open("a", encoding="utf-8") as handle:
             for warning in warnings:
                 handle.write(
-                    f"[{timestamp}] [{subject_hash}] [{warning.code}] {warning.message}\n"
+                    f"[{timestamp}] [{tag}] [{subject_hash}] [{warning.code}] {warning.message}\n"
                 )
