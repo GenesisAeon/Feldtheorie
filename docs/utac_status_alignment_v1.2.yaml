@@ -1,0 +1,10 @@
+title: "UTAC Status & Implementation Matrix v1.2 — Mirror"
+mirror_path: docs/utac_status_alignment_v1.2.md
+canonical_path: docs/science/utac_status_alignment_v1.2.md
+intent: "Legacy-link mirror that keeps σ(β(R-Θ)) navigation coherent while ζ(R) stays damped."
+logistic_quartet:
+  R: reference alignment across legacy links
+  Theta: canonical UTAC matrix in docs/science
+  beta: 4.8
+  zeta_R: damped via mirror consistency
+notes: "Update the canonical source; keep this mirror intact to preserve parity."
