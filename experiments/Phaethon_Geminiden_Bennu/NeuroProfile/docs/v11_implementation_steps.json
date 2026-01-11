@@ -16,6 +16,8 @@
       "id": "v11-step-01",
       "title": "Laternen & Telemetrie sichern",
       "description": "Update neuroprofile_index.* and mirror the v11 bridge in docs/science/utac_status_alignment_v1.2.md.",
+      "status": "pending",
+      "completed_at": null,
       "paths": [
         "neuroprofile_index.md",
         "neuroprofile_index.json",
@@ -27,6 +29,8 @@
       "id": "v11-step-02",
       "title": "Datenpfade & Metadaten aufbauen",
       "description": "Stage Gaia/JWST stubs under data/raw and data/processed and record provenance in data/README.md.",
+      "status": "pending",
+      "completed_at": null,
       "paths": [
         "data/raw/",
         "data/processed/",
@@ -36,31 +40,44 @@
     {
       "id": "v11-step-03",
       "title": "Resonant-Return-Modul implementieren",
-      "description": "Add resonant_return.py with beta fits, sigma-phi proxies, and v_RIG alignment; integrate null models.",
-      "paths": ["code/resonant_return.py"]
+      "description": "Add resonant_return.py with beta fits, sigma-phi proxies, and v_RIG alignment; integrate null models. Include Gaia stub link for data/raw/gaia_dr3_cluster_sample.csv.",
+      "status": "pending",
+      "completed_at": null,
+      "paths": [
+        "code/resonant_return.py",
+        "data/raw/gaia_dr3_cluster_sample.csv"
+      ]
     },
     {
       "id": "v11-step-04",
       "title": "PSRM-Bridge erweitern",
       "description": "Extend psrm_mapper.py for v11 fields and emit trilayer PSRM maps.",
+      "status": "pending",
+      "completed_at": null,
       "paths": ["code/psrm_mapper.py", "data/sigillin_maps/"]
     },
     {
       "id": "v11-step-05",
       "title": "Falsifizierbarkeit verankern",
-      "description": "Log ΔAIC ≥ 10 and CI intervals per experiment in data/results.json.",
+      "description": "Log ΔAIC ≥ 10 and CI intervals per experiment in data/results.json, including bootstrap iteration logs versus null models.",
+      "status": "pending",
+      "completed_at": null,
       "paths": ["data/results.json"]
     },
     {
       "id": "v11-step-06",
       "title": "Ethik & Consent sichern",
       "description": "Tag ethics guard events for v11 and keep consent protocol consistent.",
+      "status": "pending",
+      "completed_at": null,
       "paths": ["code/ethics_guard.py", "code/neuro_profile_model.py"]
     },
     {
       "id": "v11-step-07",
       "title": "Tests & Governance",
       "description": "Extend tests and refresh telemetry timestamps in neuroprofile_index.*.",
+      "status": "pending",
+      "completed_at": null,
       "paths": [
         "test_neuro_profile.py",
         "neuroprofile_index.md",
@@ -72,7 +89,10 @@
   "falsifiability": {
     "null_models": ["linear", "power_law", "constant"],
     "delta_aic_target": 10,
-    "confidence_interval_note": "Log CI + bootstrap intervals in data/results.json."
+    "confidence_interval_note": "Log CI + bootstrap intervals in data/results.json, including null-model iteration logs for ΔAIC comparisons."
+  },
+  "status_tracking": {
+    "instruction": "After each step completion, set status to completed and record completed_at with an ISO timestamp."
   },
   "evidence_hooks": [
     "docs/notes/Outline_und_v11Start.txt",
