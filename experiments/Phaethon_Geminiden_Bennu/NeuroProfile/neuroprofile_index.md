@@ -6,11 +6,11 @@
 
 ## Logistic Pulse
 
-- **R:** 0.42
-- **Θ:** 0.68
+- **R:** 0.46
+- **Θ:** 0.72
 - **β:** 4.8
-- **ζ(R):** 0.18
-- **σ(β(R-Θ)):** 0.27
+- **ζ(R):** 0.19
+- **σ(β(R-Θ)):** 0.29
 
 ## Purpose
 
@@ -31,12 +31,17 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
   - `code/microtubule_resonance.py`
   - `code/crep_calculator.py`
   - `code/ethics_guard.py`
+  - `code/resonant_return.py`
   - `code/psrm_mapper.py`
   - `code/bci_calibrator.py`
   - `code/hardware_adapter.py`
 - Data:
   - `data/raw/`
   - `data/processed/`
+  - `data/raw/gaia_dr3_cluster_sample.csv`
+  - `data/raw/jwst_protocluster_candidates.csv`
+  - `data/processed/gaia_dr3_cluster_sample_processed.csv`
+  - `data/processed/jwst_protocluster_candidates_processed.csv`
   - `data/synthetic/`
   - `data/sigillin_maps/`
   - `data/sigillin_maps/psrm_demo.{md,json,yaml}`
@@ -55,7 +60,7 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
 
 ## Telemetrie
 
-- **Last updated:** 2026-01-11
+- **Last updated:** 2026-01-11T00:00:00Z
 - **Evidence:** `docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf`
 
 > σ(β(R-Θ)) bleibt kontrolliert; ζ(R) wird durch gestufte Implementierung und Consent-Checks gedämpft.

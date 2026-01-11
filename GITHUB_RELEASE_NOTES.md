@@ -1,94 +1,56 @@
-# 🌀 UTAC v5.0.0 — Fractal Governance & Structural Isomorphism
+# 🌀 NeuroProfile v11 — Resonant Return & PSRM Bridge
 
-## 🎯 Stable GitHub Release
+**Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.**
 
-V5 turns Feldtheorie into a self-governing repository while testing α–Φ cosmic velocity scaling and inequality-driven Ising rigidity. Champollion & Sigillin agents propagate σ(β(R-Θ)) guardrails through every folder, and Zenodo-ready packaging keeps DOI provenance locked to GitHub assets.
+## Logistic Pulse
 
-**Release Date:** 2025-11-23
-**DOI:** [10.5281/zenodo.17472834](https://doi.org/10.5281/zenodo.17472834)
+- **R:** 0.46
+- **Θ:** 0.72
+- **β:** 4.8
+- **ζ(R):** 0.19
+- **σ(β(R-Θ)):** 0.29
+
+**Release Date:** 2026-01-11
 
 ---
 
 ## ✨ Highlights
 
-### Fractal Governance Engine
-- `setup/universal_skeleton_builder.py` seeds new projects with trilayer indices, ethics, and policy defaults.
-- `setup/AGENTS_BOOTSTRAP.md` + `setup/THEORY_OF_STRUCTURE.md` embed Champollion & Sigillin rules so every subtree inherits consent & joy modules.
-- Governance bundle mirrored in `releases/v5.0.0_Zenodo_Ready/` for DOI archival.
+### Resonant-Return Layer
+- `code/resonant_return.py` computes β-fits on velocity dispersion, σΦ proxies, and v_RIG alignment while keeping ζ(R) damped via ΔAIC guards.
+- Null models (linear/power-law/constant) are integrated for falsifiability telemetry.
 
-### Structural Isomorphism Models
-- `models/cosmic_alpha_phi.py` tests the α–Φ cosmic velocity hypothesis with Monte-Carlo nulls; documentation lives in `docs/v5_hypothesis_isomorphism.md`.
-- `models/social_rigidity_ising.py` maps inequality into an Ising field (T_social = 1/(Gini·Load)) with validation notes in `docs/v5_validation_session_2025-11-23.md` and `docs/v5_fit_mor_sigillin_review.md`.
+### PSRM v11 Bridge
+- `code/psrm_mapper.py` now emits v11 fields (Resonant-Return + Gaia/JWST stubs) and keeps σ(β(R-Θ)) explicit in the metadata.
+- Trilayer PSRM outputs are refreshed in `data/sigillin_maps/`.
 
-### Zenodo-Ready Packaging
-- `releases/v5.0.0_Zenodo_Ready/prepare_upload.py` rebuilds `Feldtheorie_v5.0.0_Source.zip` plus `MANIFEST.txt`.
-- `UPLOAD_CHECKLIST.md`, `ABSTRACT_ZENODO.md`, and `README.md` align metadata, asset order, and σ(β(R-Θ)) framing for GitHub + Zenodo parity.
+### Evidence & Governance
+- `data/results.json` logs CI intervals, ΔAIC metrics, and bootstrap ledgers to keep Θ transparent.
+- Ethics guard audit entries are tagged with `v11` to keep Consent telemetry traceable.
 
 ---
 
 ## 📦 What's Included
 
 ```
-feldtheorie/
-├── setup/universal_skeleton_builder.py          # Fractal governance skeleton generator
-├── setup/AGENTS_BOOTSTRAP.md                    # Embedded charter for cloned projects
-├── setup/THEORY_OF_STRUCTURE.md                 # Formal rationale for the membrane
-├── models/cosmic_alpha_phi.py                   # α–Φ cosmic velocity scaling model
-├── models/social_rigidity_ising.py              # Inequality-driven Ising rigidity model
-├── docs/v5_hypothesis_isomorphism.md            # Structural isomorphism hypothesis
-├── docs/v5_validation_session_2025-11-23.md     # Monte-Carlo & look-elsewhere scans
-├── releases/v5.0.0_Zenodo_Ready/prepare_upload.py   # ZIP + manifest generator
-└── releases/v5.0.0_Zenodo_Ready/README.md       # Asset list, metadata, upload steps
+experiments/Phaethon_Geminiden_Bennu/NeuroProfile/
+├── code/resonant_return.py
+├── code/psrm_mapper.py
+├── code/neuro_profile_model.py
+├── data/raw/gaia_dr3_cluster_sample.csv
+├── data/raw/jwst_protocluster_candidates.csv
+├── data/processed/gaia_dr3_cluster_sample_processed.csv
+├── data/processed/jwst_protocluster_candidates_processed.csv
+├── data/results.json
+└── data/sigillin_maps/psrm_demo.{md,json,yaml}
 ```
 
 ---
 
-## 🔬 Scientific Contributions
+## 🧪 Falsifiability & Null Models
 
-- **Repository-as-Code:** Fractal agent governance keeps σ(β(R-Θ)) coherent across 180+ governed contexts with consent & joy hooks baked into the skeleton.
-- **Isomorphism Testing:** α–Φ velocity scaling beats 99.9% of random null models; inequality-driven Ising sweeps probe phase rigidity with ΔAIC safeguards.
-- **Reproducibility:** Zenodo bundle ships manifest-hashed source and upload templates for DOI-stable replication.
+- Null models: linear, power-law, constant
+- ΔAIC guard: ≥ 10 (resonant-return + core ledger)
+- CI: 95% intervals logged per experiment in `data/results.json`
 
----
-
-## 🚀 Quick Start
-
-```bash
-# Clone repository
-git clone https://github.com/GenesisAeon/Feldtheorie.git
-cd Feldtheorie
-
-# Install dependencies
-conda env create -f environment.yml
-conda activate feldtheorie
-make install
-
-# Generate a governed skeleton
-python setup/universal_skeleton_builder.py ~/my-governed-project --domain research --metrics crep
-
-# Reproduce structural isomorphism tests
-python models/cosmic_alpha_phi.py --runs 10000
-python models/social_rigidity_ising.py --sweep --output results/social_rigidity.json
-```
-
----
-
-## 📖 Documentation
-
-- **Main README**: [README.md](README.md)
-- **Structural Isomorphism**: [docs/v5_hypothesis_isomorphism.md](docs/v5_hypothesis_isomorphism.md)
-- **Validation Session**: [docs/v5_validation_session_2025-11-23.md](docs/v5_validation_session_2025-11-23.md)
-- **Release Notes**: [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md)
-- **Zenodo Bundle**: [releases/v5.0.0_Zenodo_Ready/README.md](releases/v5.0.0_Zenodo_Ready/README.md)
-
----
-
-## 🙏 Acknowledgments
-
-Thanks to the Champollion, Sigillin, and MOR contributors whose telemetry, ΔAIC guards, and consent/joy modules keep ζ(R) elastic while the membrane scales.
-
----
-
-*Released: 2025-11-23*
-*Version: v5.0.0*
-*DOI: [10.5281/zenodo.17472834](https://doi.org/10.5281/zenodo.17472834)*
+> σ(β(R-Θ)) stays on the steep flank; ζ(R) remains damped by Consent, audit logs, and ΔAIC guards.

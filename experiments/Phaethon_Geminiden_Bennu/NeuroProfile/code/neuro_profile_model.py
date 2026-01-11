@@ -20,6 +20,7 @@ from .beta_extractor_neuro import BetaEstimate, estimate_beta_from_series
 from .crep_calculator import CrepResult, compute_crep
 from .ethics_guard import EthicsGuard, EthicsReport
 from .microtubule_resonance import ResonanceProxyResult, estimate_resonance_proxy
+from .resonant_return import ResonantReturnConfig, ResonantReturnResult, analyze_resonant_return
 
 CONSENT_MESSAGE = (
     "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration."
@@ -30,16 +31,17 @@ CONSENT_MESSAGE = (
 class NeuroProfileConfig:
     sampling_rate: float = 256.0
     sigma_phi_target: float = 0.0625
-    logistic_R: float = 0.42
-    logistic_Theta: float = 0.68
+    logistic_R: float = 0.46
+    logistic_Theta: float = 0.72
     logistic_beta: float = 4.8
-    zeta_R: float = 0.18
+    zeta_R: float = 0.19
+    v_rig_target_kms: float = 1.352
     bootstrap_samples: int = 200
     bootstrap_seed: int = 23
     anonymization_salt: str = "neuroprofile"
     crep_beta_baseline: float = 7.4
     crep_warning_threshold: float = 0.70
-    neuroprofile_version: str = "v27"
+    neuroprofile_version: str = "v11"
 
 
 @dataclass
@@ -58,6 +60,13 @@ class NullModelSummary:
 
 
 @dataclass
+class NullModelBootstrapEntry:
+    iteration: int
+    best_model: str
+    delta_aic: dict[str, float]
+
+
+@dataclass
 class NeuroProfileResult:
     beta_estimate: BetaEstimate
     beta_ci: tuple[float, float]
@@ -66,9 +75,11 @@ class NeuroProfileResult:
     resonance_proxy: ResonanceProxyResult
     gamma_beta_ci: tuple[float, float]
     resonance_alignment_ci: tuple[float, float]
+    resonant_return: ResonantReturnResult
     crep: CrepResult
     ethics_report: EthicsReport
     null_models: NullModelSummary
+    null_model_bootstrap: list[NullModelBootstrapEntry]
     consent: ConsentRecord
 
 
@@ -157,6 +168,24 @@ class NeuroProfileModel:
         low, high = np.percentile(samples, [2.5, 97.5])
         return (float(low), float(high))
 
+    def _bootstrap_null_models(self, series: np.ndarray) -> list[NullModelBootstrapEntry]:
+        if series.size == 0:
+            return []
+        rng = np.random.default_rng(self.config.bootstrap_seed)
+        indices = np.arange(series.size)
+        ledger: list[NullModelBootstrapEntry] = []
+        for iteration in range(1, self.config.bootstrap_samples + 1):
+            draw = rng.choice(indices, size=indices.size, replace=True)
+            summary = self._fit_null_models(series[draw])
+            ledger.append(
+                NullModelBootstrapEntry(
+                    iteration=iteration,
+                    best_model=summary.best_model,
+                    delta_aic=summary.delta_aic,
+                )
+            )
+        return ledger
+
     def _require_consent(self, granted: bool) -> None:
         if not granted:
             raise PermissionError(f"{CONSENT_MESSAGE} Consent not granted.")
@@ -178,6 +207,13 @@ class NeuroProfileModel:
         beta_estimate = estimate_beta_from_series(prepared)
         sigma_phi_proxy = self.estimate_sigma_phi_proxy(prepared)
         resonance_proxy = estimate_resonance_proxy(prepared, self.config.sampling_rate)
+        resonant_return = analyze_resonant_return(
+            prepared,
+            config=ResonantReturnConfig(
+                sigma_phi_target=self.config.sigma_phi_target,
+                v_rig_target_kms=self.config.v_rig_target_kms,
+            ),
+        )
         crep = compute_crep(
             beta_estimate.beta,
             sigma_phi_proxy,
@@ -187,6 +223,7 @@ class NeuroProfileModel:
             beta_baseline=self.config.crep_beta_baseline,
         )
         null_models = self._fit_null_models(prepared)
+        null_model_bootstrap = self._bootstrap_null_models(prepared)
         beta_ci = self._bootstrap_ci(prepared, lambda sample: estimate_beta_from_series(sample).beta)
         sigma_phi_ci = self._bootstrap_ci(prepared, self.estimate_sigma_phi_proxy)
         gamma_beta_ci = self._bootstrap_ci(
@@ -204,6 +241,7 @@ class NeuroProfileModel:
             consent_granted=consent_granted,
             subject_hash=anonymized or "anonymous",
             crep_warning_threshold=self.config.crep_warning_threshold,
+            tag=self.config.neuroprofile_version,
         )
         return NeuroProfileResult(
             beta_estimate=beta_estimate,
@@ -213,9 +251,11 @@ class NeuroProfileModel:
             resonance_proxy=resonance_proxy,
             gamma_beta_ci=gamma_beta_ci,
             resonance_alignment_ci=resonance_alignment_ci,
+            resonant_return=resonant_return,
             crep=crep,
             ethics_report=ethics_report,
             null_models=null_models,
+            null_model_bootstrap=null_model_bootstrap,
             consent=ConsentRecord(
                 message=CONSENT_MESSAGE,
                 granted=consent_granted,

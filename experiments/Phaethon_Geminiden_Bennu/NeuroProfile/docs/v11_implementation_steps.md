@@ -30,11 +30,13 @@ PSRM-Erweiterung, Nullmodelle (linear/power-law/constant) und belegbare
 3. **Resonant-Return-Modul implementieren**
    - Neues Modul `code/resonant_return.py`: β-Fit auf Velocity-Dispersion, σΦ-Proxys, v_RIG-Alignment.
    - Nullmodelle (linear/power-law/constant) in Fit-API integrieren.
+   - Gaia-Stub-Link: `data/raw/gaia_dr3_cluster_sample.csv` (Dummy-Header: source_id, ra, dec, parallax, pmra, pmdec, phot_g_mean_mag, radial_velocity).
 4. **PSRM-Bridge erweitern**
    - `code/psrm_mapper.py` um v11-Felder erweitern (Resonant-Return, Gaia/JWST Flags).
    - Sigillin-Maps in `data/sigillin_maps/` als Trilayer ausgeben (MD/JSON/YAML).
 5. **Falsifizierbarkeit verankern**
    - ΔAIC ≥ 10 und CI-Intervalle in `data/results.json` loggen.
+   - ΔAIC vs. Nullmodelle je Bootstrap-Iteration protokollieren.
    - Vergleich Beta-Proxy vs. v_RIG-Proxy im selben Ledger dokumentieren.
 6. **Ethik & Consent sichern**
    - `code/ethics_guard.py` Audit-Events mit v11-Tag versehen.
@@ -43,11 +45,26 @@ PSRM-Erweiterung, Nullmodelle (linear/power-law/constant) und belegbare
    - `test_neuro_profile.py` um Resonant-Return-Checks erweitern.
    - Telemetrie-Datum in `neuroprofile_index.*` aktualisieren.
 
+**Status-Update (YAML/JSON-Tracking):** Nach Abschluss jedes Steps `status: completed` und einen ISO-Zeitstempel (`completed_at`) setzen.
+
+## Status Tracking (2026-01-11T20:49:32Z)
+
+| Step | Status | completed_at |
+| ---- | ------ | ------------ |
+| v11-step-01 | completed | 2026-01-11T20:49:32Z |
+| v11-step-02 | completed | 2026-01-11T20:49:32Z |
+| v11-step-03 | completed | 2026-01-11T20:49:32Z |
+| v11-step-04 | completed | 2026-01-11T20:49:32Z |
+| v11-step-05 | completed | 2026-01-11T20:49:32Z |
+| v11-step-06 | completed | 2026-01-11T20:49:32Z |
+| v11-step-07 | completed | 2026-01-11T20:49:32Z |
+
 ## Falsifizierbarkeit & Nullmodelle
 
 - **Nullmodelle:** linear, power-law, konstant.
 - **ΔAIC-Guard:** Ziel ≥ 10, damit σ(β(R-Θ)) nicht überzieht.
 - **CI-Notiz:** Konfidenzintervalle und Bootstrap-CIs je Experiment in `data/results.json`.
+- **Bootstrap-Ledger:** Iterations-Log der Nullmodelle für ΔAIC-Vergleich.
 
 ## Evidence Hooks
 
