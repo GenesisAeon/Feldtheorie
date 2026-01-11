@@ -1,6 +1,6 @@
 # 📚 Docs Index – Science & Narrative Split
 
-**Version:** 2.0.0 | **Datum:** 25. Dez 2025 | **Zuletzt aktualisiert:** 02. Sep 2026 | **Verzeichnis:** `docs/`
+**Version:** 2.0.0 | **Datum:** 25. Dez 2025 | **Zuletzt aktualisiert:** 11. Jan 2026 | **Verzeichnis:** `docs/`
 
 ---
 
@@ -12,7 +12,7 @@ Schichten organisiert:
 - `docs/science/` – Technische Forschung, Methoden, Experimente, Leitfäden.
 - `docs/narrative/` – Manifeste, Roadmaps, Paritäts- und Release-Notizen.
 
-Insgesamt umfasst das Archiv aktuell **145 Markdown-Dokumente** plus die Spiegeldateien (`*.json`, `*.yaml`).
+Insgesamt umfasst das Archiv aktuell **146 Markdown-Dokumente** plus die Spiegeldateien (`*.json`, `*.yaml`).
 
 ---
 
