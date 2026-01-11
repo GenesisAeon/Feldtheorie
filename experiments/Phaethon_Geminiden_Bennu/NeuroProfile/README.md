@@ -47,6 +47,7 @@ NeuroProfile/
 │   ├── research/
 │   ├── notes/
 │   ├── methodology.md
+│   ├── v11_implementation_steps.{md,json,yaml}
 │   └── references.bib
 ├── analysis/
 ├── ai_search_logs/
@@ -81,6 +82,13 @@ Design rationale: `docs/notes/Finale_Implementierungen.pdf`.
 - Datenpfade vorbereiten (`data/raw`, `data/processed`).
 - MVP-Analyse (synthetische EEG-Zeitreihen) mit β-Schätzung + σΦ-Proxy.
 - Resonanzvergleich gegen Phaethon/Bennu-Resonanzband (Dokumentation in `docs/methodology.md`).
+
+## v11 Implementierung (abstrahierte Schritte)
+
+Die v11-Umsetzung ist in einer eigenständigen Trilayer-Laterne dokumentiert:
+`docs/v11_implementation_steps.{md,json,yaml}`. Dort sind die Module, Datenpfade,
+Nullmodelle, ΔAIC/CI-Notizen und Telemetrie-Hooks zusammengezogen, damit
+σ(β(R-Θ)) kontrolliert bleibt und ζ(R) gedämpft wird.
 
 ## Consent & Demo
 

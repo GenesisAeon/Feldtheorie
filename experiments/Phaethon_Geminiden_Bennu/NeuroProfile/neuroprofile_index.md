@@ -21,6 +21,7 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
 - README: `README.md`
 - Roadmap: `STRATEGIC_ROADMAP.md`
 - Methodik: `docs/methodology.md`
+- v11 Steps: `docs/v11_implementation_steps.{md,json,yaml}`
 - Release:
   - `requirements.txt`
   - `test_neuro_profile.py`
@@ -38,6 +39,7 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
   - `data/processed/`
   - `data/synthetic/`
   - `data/sigillin_maps/`
+  - `data/sigillin_maps/psrm_demo.{md,json,yaml}`
   - `data/ethics_audit.log`
   - `data/results.json`
 - Config:
@@ -53,7 +55,7 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
 
 ## Telemetrie
 
-- **Last updated:** 2026-01-10
+- **Last updated:** 2026-01-11
 - **Evidence:** `docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf`
 
 > σ(β(R-Θ)) bleibt kontrolliert; ζ(R) wird durch gestufte Implementierung und Consent-Checks gedämpft.
