@@ -47,7 +47,7 @@ def build_psrm_map(
     intent_ontology_version: str = "1.0",
     schema: str = "https://genesisaeon.org/schemas/neuroprofile/v1",
     version: str = "1.0",
-    neuroprofile_version: str = "v11",
+    neuroprofile_version: str = "v12",
     psrm_mapper_version: str = "1.0",
     mandala_version: str = ">=0.8.0",
     mandala_bridge_status: str = "planned",

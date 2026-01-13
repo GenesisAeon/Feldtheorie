@@ -46,7 +46,7 @@ class EthicsGuard:
         consent_granted: bool,
         subject_hash: str,
         crep_warning_threshold: float = 0.70,
-        tag: str = "v11",
+        tag: str = "v12",
     ) -> EthicsReport:
         if not consent_granted:
             raise EthicsViolation("CONSENT_REQUIRED")
