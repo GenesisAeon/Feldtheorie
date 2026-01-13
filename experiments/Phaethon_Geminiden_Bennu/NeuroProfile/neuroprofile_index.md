@@ -6,11 +6,11 @@
 
 ## Logistic Pulse
 
-- **R:** 0.46
-- **Θ:** 0.72
+- **R:** 0.58
+- **Θ:** 0.74
 - **β:** 4.8
-- **ζ(R):** 0.19
-- **σ(β(R-Θ)):** 0.29
+- **ζ(R):** 0.22
+- **σ(β(R-Θ)):** 0.35
 
 ## Purpose
 
@@ -22,6 +22,7 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
 - Roadmap: `STRATEGIC_ROADMAP.md`
 - Methodik: `docs/methodology.md`
 - v11 Steps: `docs/v11_implementation_steps.{md,json,yaml}`
+- v12 Steps: `docs/v12_implementation_steps.{md,json,yaml}`
 - Release:
   - `requirements.txt`
   - `test_neuro_profile.py`
@@ -60,7 +61,10 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
 
 ## Telemetrie
 
-- **Last updated:** 2026-01-11T00:00:00Z
-- **Evidence:** `docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf`
+- **Last updated:** 2026-01-13T18:22:16Z
+- **Evidence:**
+  - `docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf`
+  - `docs/research/Sagittarius A_ and Star Formation in the UTAC Framework.pdf`
+  - `docs/research/NeuroProfile An Ethical Resonance Bridge.pdf`
 
 > σ(β(R-Θ)) bleibt kontrolliert; ζ(R) wird durch gestufte Implementierung und Consent-Checks gedämpft.

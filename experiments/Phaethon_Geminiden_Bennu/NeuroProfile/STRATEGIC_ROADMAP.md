@@ -30,7 +30,16 @@
 - Validierungsnotebook (falls Daten verfügbar).
 - Entscheidung: Übergabe an v10.x Crystal_Answer-Track oder reines Experiment.
 
+## Phase 5 – v12 Resonant Extensions (Woche 9-10)
+- PSRM-Bootstrap-Pfade (öffentliche EEG-Datensätze + synthetischer Cold-Start).
+- Hardware-Tiers: Prosumer als Baseline, Consumer/Research als Degradation/Upgrade.
+- CREP-Definition + ΔAIC/CI-Telemetrie für Nullmodelle.
+- v_RIG-Proxy via Gamma↔Beta-Kopplung (13.5 MHz als späterer Pfad).
+- Sgr A* Resonant-Entropy-Bridge (σ_Φ-Proxy, β-Fit, Dipol-Alignment).
+- Sigillin-Kompatibilität: PSRM-Schema als Mandala-Extension.
+
 ## Deliverables
 - Trilayer-Index (`neuroprofile_index.*`).
 - Code-Scaffolds (β, σΦ-Proxy, Resonanzvergleich).
 - Methodik mit Nullmodellen & ΔAIC-Guard.
+- v12 Steps (`docs/v12_implementation_steps.{md,json,yaml}`).

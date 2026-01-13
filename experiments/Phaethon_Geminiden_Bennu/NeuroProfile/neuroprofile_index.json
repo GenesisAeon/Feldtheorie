@@ -4,11 +4,11 @@
   "scope": "experiments/Phaethon_Geminiden_Bennu/NeuroProfile",
   "status": "primed",
   "logistic": {
-    "R": 0.46,
-    "Theta": 0.72,
+    "R": 0.58,
+    "Theta": 0.74,
     "beta": 4.8,
-    "zeta_R": 0.19,
-    "sigma_beta_R_minus_Theta": 0.29
+    "zeta_R": 0.22,
+    "sigma_beta_R_minus_Theta": 0.35
   },
   "purpose": "Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical resonance bands from Phaethon/Bennu and map PSRM via CREP.",
   "artifacts": {
@@ -19,6 +19,11 @@
       "docs/v11_implementation_steps.md",
       "docs/v11_implementation_steps.json",
       "docs/v11_implementation_steps.yaml"
+    ],
+    "v12_steps": [
+      "docs/v12_implementation_steps.md",
+      "docs/v12_implementation_steps.json",
+      "docs/v12_implementation_steps.yaml"
     ],
     "release": [
       "requirements.txt",
@@ -65,9 +70,11 @@
     "confidence_interval_note": "Record CI per experiment in data/results.json"
   },
   "telemetry": {
-    "last_updated": "2026-01-11T00:00:00Z",
+    "last_updated": "2026-01-13T18:22:16Z",
     "evidence_links": [
-      "docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf"
+      "docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf",
+      "docs/research/Sagittarius A_ and Star Formation in the UTAC Framework.pdf",
+      "docs/research/NeuroProfile An Ethical Resonance Bridge.pdf"
     ]
   },
   "notes": "σ(β(R-Θ)) signals a controlled activation; ζ(R) remains damped by staged implementation and explicit consent requirements."
