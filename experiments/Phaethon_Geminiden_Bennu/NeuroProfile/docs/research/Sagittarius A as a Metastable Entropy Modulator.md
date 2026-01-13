@@ -5,7 +5,7 @@ GenesisAeon Project, Independent Researcher
 GitHub: @GenesisAeon/Feldtheorie  
 Version: v12.0.0  
 Date: January 13, 2026  
-DOI: (pending Zenodo assignment)  
+DOI: 10.5281/zenodo.18236095  
 Repository: https://github.com/GenesisAeon/Feldtheorie
 
 ## Abstract
