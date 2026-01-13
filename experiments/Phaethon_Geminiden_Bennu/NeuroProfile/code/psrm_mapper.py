@@ -49,6 +49,10 @@ def build_psrm_map(
     version: str = "1.0",
     neuroprofile_version: str = "v11",
     psrm_mapper_version: str = "1.0",
+    mandala_version: str = ">=0.8.0",
+    mandala_bridge_status: str = "planned",
+    mandala_validator_plan: str = "tests/test_neuro_profile.py::test_mandala_schema_extension_hook",
+    mandala_compatibility_notes: str = "PSRM remains an additive extension to Mandala formats.",
     timestamp: datetime | None = None,
 ) -> PSRMMap:
     stamp = timestamp or datetime.now(timezone.utc)
@@ -96,6 +100,12 @@ def build_psrm_map(
         "metadata": {
             "neuroprofile_version": neuroprofile_version,
             "psrm_mapper_version": psrm_mapper_version,
+            "mandala_bridge": {
+                "mandala_version": mandala_version,
+                "bridge_status": mandala_bridge_status,
+                "validator_plan": mandala_validator_plan,
+                "compatibility_notes": mandala_compatibility_notes,
+            },
             "falsifiability_metrics": {
                 "beta_ci": list(result.beta_ci),
                 "sigma_phi_ci": list(result.sigma_phi_ci),
@@ -168,6 +178,10 @@ class PSRMMapper:
         schema: str = "https://genesisaeon.org/schemas/neuroprofile/v1",
         version: str = "1.0",
         psrm_mapper_version: str = "1.0",
+        mandala_version: str = ">=0.8.0",
+        mandala_bridge_status: str = "planned",
+        mandala_validator_plan: str = "tests/test_neuro_profile.py::test_mandala_schema_extension_hook",
+        mandala_compatibility_notes: str = "PSRM remains an additive extension to Mandala formats.",
     ) -> None:
         self.profile = profile
         self.source = source
@@ -177,6 +191,10 @@ class PSRMMapper:
         self.schema = schema
         self.version = version
         self.psrm_mapper_version = psrm_mapper_version
+        self.mandala_version = mandala_version
+        self.mandala_bridge_status = mandala_bridge_status
+        self.mandala_validator_plan = mandala_validator_plan
+        self.mandala_compatibility_notes = mandala_compatibility_notes
 
     def _resolve_result(self) -> tuple[NeuroProfileResult, NeuroProfileConfig]:
         if isinstance(self.profile, NeuroProfile):
@@ -198,4 +216,8 @@ class PSRMMapper:
             version=self.version,
             neuroprofile_version=config.neuroprofile_version,
             psrm_mapper_version=self.psrm_mapper_version,
+            mandala_version=self.mandala_version,
+            mandala_bridge_status=self.mandala_bridge_status,
+            mandala_validator_plan=self.mandala_validator_plan,
+            mandala_compatibility_notes=self.mandala_compatibility_notes,
         )

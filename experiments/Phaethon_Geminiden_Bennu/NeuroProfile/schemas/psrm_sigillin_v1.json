@@ -63,6 +63,15 @@
       "properties": {
         "neuroprofile_version": { "type": "string" },
         "psrm_mapper_version": { "type": "string" },
+        "mandala_bridge": {
+          "type": "object",
+          "properties": {
+            "mandala_version": { "type": "string" },
+            "bridge_status": { "type": "string" },
+            "validator_plan": { "type": "string" },
+            "compatibility_notes": { "type": "string" }
+          }
+        },
         "falsifiability_metrics": {
           "type": "object",
           "required": ["beta_ci", "sigma_phi_ci", "best_null_model", "delta_aic"],

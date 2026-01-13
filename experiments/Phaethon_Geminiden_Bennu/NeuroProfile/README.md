@@ -31,16 +31,20 @@ NeuroProfile/
 │   ├── psrm_mapper.py
 │   ├── bci_calibrator.py
 │   ├── hardware_adapter.py
+│   ├── sgr_a_resonant_bridge.py
 │   └── utils/
 ├── data/
 │   ├── raw/
 │   ├── processed/
 │   ├── synthetic/
+│   ├── bootstrap_ledger.{md,json,yaml}
+│   ├── crep_null_model_ledger.{md,json,yaml}
 │   ├── sigillin_maps/
 │   ├── ethics_audit.log
 │   └── results.json
 ├── schemas/
-│   └── psrm_sigillin_v1.{md,json,yaml}
+│   ├── psrm_sigillin_v1.{md,json,yaml}
+│   └── psrm_sigillin_v1_mandala_extension.{md,json,yaml}
 ├── config/
 │   └── hardware_profiles.yml
 ├── docs/
@@ -59,17 +63,25 @@ NeuroProfile/
 1. **Foundation zuerst** – ein minimalistischer, getesteter Kern (β-Schätzung, σΦ-Proxy, Resonanzvergleich). Das reduziert ζ(R) und hält σ(β(R-Θ)) kontrollierbar.
 2. **v_RIG als Proxy** – 13.5 MHz bleibt vorerst konzeptuell; wir nutzen Gamma↔Beta-Kopplung als Proxy, bis reale Hochfrequenz-Messungen verfügbar sind.
 3. **Hardware-Realismus** – definierte Profile für Consumer/Prosumer/Research, damit R nicht durch Hardware-Illusionen überschießt.
-4. **Trilayer-Laterne** – `neuroprofile_index.*` dokumentiert die semantische Brücke (YAML/JSON/MD) und koppelt technische Pfade an Evidenz.
-5. **Falsifizierbarkeit** – Nullmodelle (linear/power-law) + Ziel-ΔAIC in Methodik & Index; jede neue Behauptung benötigt CI/ΔAIC-Notiz.
+4. **Bootstrap-Ledger** – `data/bootstrap_ledger.*` fixiert öffentliche EEG-Quellen und Cold-Start-Generatoren.
+5. **Trilayer-Laterne** – `neuroprofile_index.*` dokumentiert die semantische Brücke (YAML/JSON/MD) und koppelt technische Pfade an Evidenz.
+6. **Falsifizierbarkeit** – Nullmodelle (linear/power-law) + Ziel-ΔAIC in Methodik & Index; jede neue Behauptung benötigt CI/ΔAIC-Notiz.
 
 ## New in v1.1: CREP & PSRM Integration
 
 - **Full CREP metric** (Coherence + Resonance + Emergence + Potential) für PSRM-readiness.
 - **PSRM Mapper**: NeuroProfile → Personal Sigillin Resonance Map (Trilayer YAML/JSON/MD).
 - **Ethics Guard**: Consent-gated Analyse mit Audit-Trail.
-- **Hardware Profiles**: Simulated/Prosumer/Research Profile für EEG-Streams.
+- **Hardware Profiles**: Consumer/Prosumer/Research/Simulated Profile für EEG-Streams.
 
 Design rationale: `docs/notes/Finale_Implementierungen.pdf`.
+
+## v12 Additions (active)
+
+- **Bootstrap-Ledger** für PhysioNet/BCI IV 2a + Cold-Start (`data/bootstrap_ledger.*`).
+- **CREP Null-Model Ledger** für ΔAIC/CI-Telemetrie (`data/crep_null_model_ledger.*`).
+- **Mandala-Extension** für PSRM (`schemas/psrm_sigillin_v1_mandala_extension.*`).
+- **Sgr A* Bridge Sketch** als astro-resonanter Prüfstand (`code/sgr_a_resonant_bridge.py`).
 
 ## Falsifizierbarkeit & Nullmodelle
 

@@ -20,6 +20,8 @@ v_RIG-Proxies, CREP-Definition, Sigillin-Kompatibilität sowie ein Sgr A*
 Resonant-Entropy-Modul als astrophysischer Prüfstand. Jede Aussage wird mit einem
 Nullmodell (linear/power-law/constant) und ΔAIC/CI-Protokollen gekoppelt.
 
+**Status:** completed
+
 ## Entscheidungs-Knoten (aus den Notes konsolidiert)
 
 - **Bootstrap-Quellen:** PhysioNet EEG Motor Imagery + BCI Competition IV (Dataset 2a), plus synthetischer Cold-Start.
@@ -58,18 +60,18 @@ Nullmodell (linear/power-law/constant) und ΔAIC/CI-Protokollen gekoppelt.
 
 **Status-Update (YAML/JSON-Tracking):** Nach Abschluss jedes Steps `status: completed` und einen ISO-Zeitstempel (`completed_at`) setzen.
 
-## Status Tracking (2026-01-13T18:22:16Z)
+## Status Tracking (2026-02-15T12:00:00Z)
 
 | Step | Status | completed_at |
 | ---- | ------ | ------------ |
-| v12-step-01 | pending | — |
-| v12-step-02 | pending | — |
-| v12-step-03 | pending | — |
-| v12-step-04 | pending | — |
-| v12-step-05 | pending | — |
-| v12-step-06 | pending | — |
-| v12-step-07 | pending | — |
-| v12-step-08 | pending | — |
+| v12-step-01 | completed | 2026-02-15T12:00:00Z |
+| v12-step-02 | completed | 2026-02-15T12:00:00Z |
+| v12-step-03 | completed | 2026-02-15T12:00:00Z |
+| v12-step-04 | completed | 2026-02-15T12:00:00Z |
+| v12-step-05 | completed | 2026-02-15T12:00:00Z |
+| v12-step-06 | completed | 2026-02-15T12:00:00Z |
+| v12-step-07 | completed | 2026-02-15T12:00:00Z |
+| v12-step-08 | completed | 2026-02-15T12:00:00Z |
 
 ## Falsifizierbarkeit & Nullmodelle
 

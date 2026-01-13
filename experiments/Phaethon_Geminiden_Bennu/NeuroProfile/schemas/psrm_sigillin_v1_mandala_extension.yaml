@@ -1,0 +1,29 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://genesisaeon.org/schemas/psrm_sigillin_v1_mandala_extension.json
+title: PSRM Sigillin v1 Mandala Extension
+type: object
+allOf:
+  - $ref: https://genesisaeon.org/schemas/psrm_sigillin_v1.json
+properties:
+  metadata:
+    type: object
+    properties:
+      mandala_bridge:
+        type: object
+        required:
+          - mandala_version
+          - bridge_status
+          - validator_plan
+        properties:
+          mandala_version:
+            type: string
+          bridge_status:
+            type: string
+            enum:
+              - planned
+              - in_progress
+              - validated
+          validator_plan:
+            type: string
+          compatibility_notes:
+            type: string

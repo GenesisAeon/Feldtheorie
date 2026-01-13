@@ -1,0 +1,36 @@
+id: neuroprofile-v12-crep-ledger-001
+name: CREP Null-Model Ledger
+scope: experiments/Phaethon_Geminiden_Bennu/NeuroProfile
+status: active
+logistic:
+  R: 0.58
+  Theta: 0.74
+  beta: 4.8
+  zeta_R: 0.22
+  sigma_beta_R_minus_Theta: 0.35
+crep_definition: mean of coherence, resonance, emergence, potential (Phi proxy)
+null_model_guard:
+  models:
+    - linear
+    - power_law
+    - constant
+  delta_aic_target: 10
+  ci_requirement: Log CI + bootstrap intervals in data/results.json
+ledger_storage:
+  results_path: data/results.json
+  bootstrap_ledger: data/bootstrap_ledger.yaml
+entry_template:
+  fields:
+    - timestamp
+    - source_id
+    - hardware_tier
+    - crep_components
+    - crep_aggregate
+    - null_model_comparison
+    - confidence_intervals
+entries: []
+telemetry:
+  last_updated: 2026-02-15T12:00:00Z
+notes: >-
+  σ(β(R-Θ)) bleibt stabil, wenn CREP gegen Nullmodelle geprüft und
+  ΔAIC/CI-Telemetrie vollständig protokolliert wird.

@@ -6,3 +6,4 @@
 [2026-01-10T14:05:38.341710+00:00] [0c04ce603576cf15e702b46dc5ec5ca6da00bccc5ee45da4bae73f3b6d0dbe28] [FRAME_DRIFT] Recalibration advised (CREP below threshold).
 [2026-01-11T20:51:31.895090+00:00] [v11] [cd70d47c6438f77a82e75678f7cc4c7fb03d208ae30778ee6853240bbfdc61ee] [FRAME_DRIFT] Recalibration advised (CREP below threshold).
 [2026-01-11T20:53:48.149319+00:00] [v11] [cd70d47c6438f77a82e75678f7cc4c7fb03d208ae30778ee6853240bbfdc61ee] [FRAME_DRIFT] Recalibration advised (CREP below threshold).
+[2026-02-15T12:00:00+00:00] [v12] [aa8f9f7f38c2b9a8f2b6a2b3b9a94c9a9124cbb7d9c5d7dbb1a3f8c9a0b4e1f2] [PUBLIC_MODE_RISK] Reduced granularity recommended for public contexts.

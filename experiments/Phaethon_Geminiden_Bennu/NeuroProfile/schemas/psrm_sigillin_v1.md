@@ -35,3 +35,8 @@ PSRM. Die Falsifizierbarkeit bleibt durch ΔAIC/CI-Metriken sichtbar, damit
   ]
 }
 ```
+
+## Mandala-Kompatibilität (Extension)
+
+PSRM bleibt additive Extension. `metadata.mandala_bridge` hält die
+Mandala-Version, den Bridge-Status und den Validator-Plan fest.
