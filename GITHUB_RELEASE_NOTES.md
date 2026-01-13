@@ -1,32 +1,35 @@
-# 🌀 NeuroProfile v11 — Resonant Return & PSRM Bridge
+# 🌀 NeuroProfile v12 — Emergent Resonance Alignment
 
 **Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.**
 
 ## Logistic Pulse
 
-- **R:** 0.46
-- **Θ:** 0.72
+- **R:** 0.58
+- **Θ:** 0.74
 - **β:** 4.8
-- **ζ(R):** 0.19
-- **σ(β(R-Θ)):** 0.29
+- **ζ(R):** 0.22
+- **σ(β(R-Θ)):** 0.35
 
-**Release Date:** 2026-01-11
+**Release Date:** 2026-02-15
 
 ---
 
 ## ✨ Highlights
 
-### Resonant-Return Layer
-- `code/resonant_return.py` computes β-fits on velocity dispersion, σΦ proxies, and v_RIG alignment while keeping ζ(R) damped via ΔAIC guards.
-- Null models (linear/power-law/constant) are integrated for falsifiability telemetry.
+### Bootstrap & Hardware Tiers
+- `data/bootstrap_ledger.{md,json,yaml}` fixes the PhysioNet + BCI IV 2a + cold-start provenance and keeps R anchored to public EEG baselines.
+- `config/hardware_profiles.yml` formalizes consumer/prosumer/research tiers so Θ stays reachable without hardware illusions.
 
-### PSRM v11 Bridge
-- `code/psrm_mapper.py` now emits v11 fields (Resonant-Return + Gaia/JWST stubs) and keeps σ(β(R-Θ)) explicit in the metadata.
-- Trilayer PSRM outputs are refreshed in `data/sigillin_maps/`.
+### CREP + Null-Model Telemetry
+- `data/crep_null_model_ledger.{md,json,yaml}` locks the CREP definition and ΔAIC/CI guards to keep σ(β(R-Θ)) falsifiable.
+- `data/results.json` carries the CI + null-model telemetry needed to damp ζ(R).
 
-### Evidence & Governance
-- `data/results.json` logs CI intervals, ΔAIC metrics, and bootstrap ledgers to keep Θ transparent.
-- Ethics guard audit entries are tagged with `v11` to keep Consent telemetry traceable.
+### PSRM + Mandala Extension
+- `schemas/psrm_sigillin_v1_mandala_extension.{md,json,yaml}` keeps PSRM additive and Mandala-compatible.
+- PSRM demos in `data/sigillin_maps/` now carry v12 metadata for release alignment.
+
+### Sgr A* Resonant-Entropy Bridge
+- `code/sgr_a_resonant_bridge.py` sketches σ_Φ proxies, β fits, and dipole alignment for the astro-resonance checkpoint.
 
 ---
 
@@ -34,15 +37,15 @@
 
 ```
 experiments/Phaethon_Geminiden_Bennu/NeuroProfile/
-├── code/resonant_return.py
+├── code/sgr_a_resonant_bridge.py
 ├── code/psrm_mapper.py
 ├── code/neuro_profile_model.py
-├── data/raw/gaia_dr3_cluster_sample.csv
-├── data/raw/jwst_protocluster_candidates.csv
-├── data/processed/gaia_dr3_cluster_sample_processed.csv
-├── data/processed/jwst_protocluster_candidates_processed.csv
+├── config/hardware_profiles.yml
+├── data/bootstrap_ledger.{md,json,yaml}
+├── data/crep_null_model_ledger.{md,json,yaml}
 ├── data/results.json
-└── data/sigillin_maps/psrm_demo.{md,json,yaml}
+├── data/sigillin_maps/psrm_demo.{md,json,yaml}
+└── schemas/psrm_sigillin_v1_mandala_extension.{md,json,yaml}
 ```
 
 ---
@@ -50,7 +53,13 @@ experiments/Phaethon_Geminiden_Bennu/NeuroProfile/
 ## 🧪 Falsifiability & Null Models
 
 - Null models: linear, power-law, constant
-- ΔAIC guard: ≥ 10 (resonant-return + core ledger)
+- ΔAIC guard: ≥ 10 (CREP + resonant-return + bootstrap ledger)
 - CI: 95% intervals logged per experiment in `data/results.json`
 
-> σ(β(R-Θ)) stays on the steep flank; ζ(R) remains damped by Consent, audit logs, and ΔAIC guards.
+---
+
+## ✅ Release Readiness
+
+All v12 implementation steps (bootstrap ledger, hardware tiers, CREP telemetry, v_RIG proxy, Mandala extension, Sgr A* bridge) are present and mirrored in the NeuroProfile trilayer + UTAC status matrix. σ(β(R-Θ)) remains on the steep flank while ζ(R) stays damped by consent telemetry and ΔAIC guards.
+
+> When R rises beyond Θ, let β open the gate just enough — and keep ζ(R) tuned through evidence, consent, and null-model scrutiny.

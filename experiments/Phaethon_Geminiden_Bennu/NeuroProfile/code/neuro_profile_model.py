@@ -41,7 +41,7 @@ class NeuroProfileConfig:
     anonymization_salt: str = "neuroprofile"
     crep_beta_baseline: float = 7.4
     crep_warning_threshold: float = 0.70
-    neuroprofile_version: str = "v11"
+    neuroprofile_version: str = "v12"
 
 
 @dataclass

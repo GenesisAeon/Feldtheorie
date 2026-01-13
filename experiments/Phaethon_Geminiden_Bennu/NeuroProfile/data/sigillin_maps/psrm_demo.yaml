@@ -31,11 +31,11 @@ layer_2_intention:
   calibration_status: uncalibrated
 layer_3_context:
   ethics_consent: true
-  hardware_tier: tier-0
+  hardware_tier: prosumer
   data_retention: study_duration_only
   timestamp: '2026-01-11T20:51:31.903188+00:00'
 metadata:
-  neuroprofile_version: v11
+  neuroprofile_version: v12
   psrm_mapper_version: '1.0'
   mandala_bridge:
     mandala_version: '>=0.8.0'
