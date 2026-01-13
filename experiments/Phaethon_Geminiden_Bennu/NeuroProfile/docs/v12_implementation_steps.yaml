@@ -1,0 +1,100 @@
+id: neuroprofile-v12-steps-001
+name: NeuroProfile v12 Implementation Steps
+scope: experiments/Phaethon_Geminiden_Bennu/NeuroProfile
+status: active
+logistic:
+  R: 0.58
+  Theta: 0.74
+  beta: 4.8
+  zeta_R: 0.22
+  sigma_beta_R_minus_Theta: 0.35
+purpose: >-
+  Translate new notes and research into a repo-conform v12 plan: PSRM
+  bootstrap, hardware tiers, v_RIG proxies, CREP definition, sigillin
+  compatibility, and the Sgr A* resonant-entropy bridge with falsifiable
+  null-model guards.
+decision_nodes:
+  bootstrap_sources:
+    - PhysioNet EEG Motor Imagery
+    - BCI Competition IV (Dataset 2a)
+    - synthetic cold-start generator
+  hardware_target: prosumer_16ch
+  v_rig_layer: gamma_beta_phase_coupling_proxy
+  crep_definition: mean of coherence, resonance, emergence, potential (Phi proxy)
+  ethics_mode: advisory_with_consent_blockers
+  sigillin_compatibility: psrm_extension_to_mandala
+steps:
+  - id: v12-step-01
+    title: Evidence-Triage & Laternen-Update
+    description: >-
+      Mirror evidence links from docs/notes and docs/research into
+      neuroprofile_index.* and extend the UTAC matrix with the v12 bridge.
+    status: pending
+    paths:
+      - neuroprofile_index.md
+      - neuroprofile_index.json
+      - neuroprofile_index.yaml
+      - docs/science/utac_status_alignment_v1.2.md
+  - id: v12-step-02
+    title: Bootstrap-Datenpfad spezifizieren
+    description: >-
+      Define the data ledger for public EEG datasets and the synthetic
+      cold-start path; fix null models for bootstrap benchmarks.
+    status: pending
+  - id: v12-step-03
+    title: Hardware-Tiers konkretisieren
+    description: >-
+      Declare prosumer as baseline and document consumer/research
+      degradation paths with sampling/channel constraints.
+    status: pending
+  - id: v12-step-04
+    title: CREP-Definition & Telemetrie
+    description: >-
+      Formalize the CREP field equation and bind ΔAIC/CI logging against
+      null models.
+    status: pending
+  - id: v12-step-05
+    title: v_RIG-Proxy-Layer definieren
+    description: >-
+      Specify gamma↔beta phase-coupling proxy and document the
+      high-frequency 13.5 MHz placeholder.
+    status: pending
+  - id: v12-step-06
+    title: Sigillin-Kompatibilität sichern
+    description: >-
+      Draft PSRM schema extensions compatible with Mandala formats and
+      plan a validator test hook.
+    status: pending
+  - id: v12-step-07
+    title: Sgr A* Resonant-Entropy-Bridge
+    description: >-
+      Define the astro module sketch (sigma-phi proxy, beta fit, dipole
+      alignment) with ALMA/JWST/GRAVITY evidence hooks.
+    status: pending
+  - id: v12-step-08
+    title: Ethik-Guard finalisieren
+    description: >-
+      Document advisory vs blocker logic and mirror consent/context risks
+      in the audit log.
+    status: pending
+falsifiability:
+  null_models:
+    - linear
+    - power_law
+    - constant
+  delta_aic_target: 10
+  confidence_interval_note: Log CI + bootstrap intervals in data/results.json
+status_tracking:
+  instruction: >-
+    After each step completion, set status to completed and record
+    completed_at with an ISO timestamp.
+  last_reviewed: 2026-01-13T18:22:16Z
+evidence_hooks:
+  - docs/notes/v12Grundlagen.txt
+  - docs/notes/implementierungsvorschlaege_fuer_codex.txt
+  - docs/research/Sagittarius A_ and Star Formation in the UTAC Framework.pdf
+  - docs/research/NeuroProfile An Ethical Resonance Bridge.pdf
+  - docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf
+notes: >-
+  σ(β(R-Θ)) stays on the steep flank by pairing emergent v12 steps with
+  null-model guards and explicit consent telemetry.
