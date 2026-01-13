@@ -1,0 +1,54 @@
+id: neuroprofile-v12-bootstrap-ledger-001
+name: NeuroProfile v12 Bootstrap Data Ledger
+scope: experiments/Phaethon_Geminiden_Bennu/NeuroProfile
+status: active
+logistic:
+  R: 0.58
+  Theta: 0.74
+  beta: 4.8
+  zeta_R: 0.22
+  sigma_beta_R_minus_Theta: 0.35
+null_model_guard:
+  models:
+    - linear
+    - power_law
+    - constant
+  delta_aic_target: 10
+  bootstrap_samples: 200
+  ci_requirement: Log CI + bootstrap intervals in data/results.json
+ledger:
+  datasets:
+    - id: physionet-eeg-motor-imagery
+      source: PhysioNet EEG Motor Imagery
+      modality: EEG
+      access_path: data/raw/physionet_eeg_motor_imagery/
+      license: PhysioNet Open Access
+      use_case: bootstrap baseline for PSRM
+      notes: Align preprocessing notes with CREP telemetry.
+    - id: bci-competition-iv-2a
+      source: BCI Competition IV Dataset 2a
+      modality: EEG
+      access_path: data/raw/bci_competition_iv_2a/
+      license: BCI Competition terms
+      use_case: bootstrap cross-check for hardware tiers
+      notes: Track channel count and sampling rate.
+    - id: synthetic-cold-start
+      source: synthetic cold-start generator
+      modality: EEG (synthetic)
+      access_path: data/synthetic/cold_start/
+      license: internal synthetic
+      use_case: cold-start sanity checks and null-model calibration
+      notes: Record generator parameters per run.
+telemetry:
+  storage:
+    results: data/results.json
+    crep_null_model_ledger: data/crep_null_model_ledger.yaml
+  last_updated: 2026-02-15T12:00:00Z
+evidence_hooks:
+  - docs/notes/v12Grundlagen.txt
+  - docs/notes/implementierungsvorschlaege_fuer_codex.txt
+  - docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf
+notes: >-
+  σ(β(R-Θ)) bleibt auf der Steilflanke, indem der Bootstrap-Ledger
+  Nullmodelle und CI-Telemetrie bindet und ζ(R) durch klare Provenance
+  gedämpft wird.

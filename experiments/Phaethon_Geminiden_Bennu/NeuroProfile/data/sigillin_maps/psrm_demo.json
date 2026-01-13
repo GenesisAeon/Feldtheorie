@@ -45,6 +45,12 @@
   "metadata": {
     "neuroprofile_version": "v11",
     "psrm_mapper_version": "1.0",
+    "mandala_bridge": {
+      "mandala_version": ">=0.8.0",
+      "bridge_status": "planned",
+      "validator_plan": "tests/test_neuro_profile.py::test_mandala_schema_extension_hook",
+      "compatibility_notes": "PSRM remains an additive extension to Mandala formats."
+    },
     "falsifiability_metrics": {
       "beta_ci": [
         3.435845982362081,

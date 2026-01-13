@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import unittest
 from pathlib import Path
 import sys
@@ -38,6 +39,19 @@ class TestNeuroProfileModel(unittest.TestCase):
         self.assertIsNotNone(result.resonant_return)
         self.assertTrue(0.0 <= result.resonant_return.v_rig_alignment <= 1.0)
         self.assertGreaterEqual(len(result.null_model_bootstrap), 1)
+
+    def test_mandala_schema_extension_hook(self) -> None:
+        schema_path = (
+            ROOT_DIR
+            / "experiments"
+            / "Phaethon_Geminiden_Bennu"
+            / "NeuroProfile"
+            / "schemas"
+            / "psrm_sigillin_v1_mandala_extension.json"
+        )
+        self.assertTrue(schema_path.exists())
+        payload = json.loads(schema_path.read_text(encoding="utf-8"))
+        self.assertIn("mandala", payload.get("title", "").lower())
 
 
 if __name__ == "__main__":

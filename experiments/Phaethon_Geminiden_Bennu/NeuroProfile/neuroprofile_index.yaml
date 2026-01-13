@@ -1,7 +1,7 @@
 id: neuroprofile-lantern-001
 name: NeuroProfile Resonance Bridge
 scope: experiments/Phaethon_Geminiden_Bennu/NeuroProfile
-status: primed
+status: active
 logistic:
   R: 0.58
   Theta: 0.74
@@ -37,18 +37,28 @@ artifacts:
     - code/psrm_mapper.py
     - code/bci_calibrator.py
     - code/hardware_adapter.py
+    - code/sgr_a_resonant_bridge.py
   data:
     - data/raw/
     - data/processed/
     - data/raw/gaia_dr3_cluster_sample.csv
     - data/raw/jwst_protocluster_candidates.csv
+    - data/raw/physionet_eeg_motor_imagery/
+    - data/raw/bci_competition_iv_2a/
     - data/processed/gaia_dr3_cluster_sample_processed.csv
     - data/processed/jwst_protocluster_candidates_processed.csv
     - data/synthetic/
+    - data/synthetic/cold_start/
+    - data/bootstrap_ledger.md
+    - data/bootstrap_ledger.json
+    - data/bootstrap_ledger.yaml
     - data/sigillin_maps/
     - data/sigillin_maps/psrm_demo.md
     - data/sigillin_maps/psrm_demo.json
     - data/sigillin_maps/psrm_demo.yaml
+    - data/crep_null_model_ledger.md
+    - data/crep_null_model_ledger.json
+    - data/crep_null_model_ledger.yaml
     - data/ethics_audit.log
     - data/results.json
   config:
@@ -57,6 +67,9 @@ artifacts:
     - schemas/psrm_sigillin_v1.md
     - schemas/psrm_sigillin_v1.json
     - schemas/psrm_sigillin_v1.yaml
+    - schemas/psrm_sigillin_v1_mandala_extension.md
+    - schemas/psrm_sigillin_v1_mandala_extension.json
+    - schemas/psrm_sigillin_v1_mandala_extension.yaml
 falsifiability:
   null_models:
     - linear
@@ -65,11 +78,14 @@ falsifiability:
   delta_aic_target: 10
   confidence_interval_note: Record CI per experiment in data/results.json
 telemetry:
-  last_updated: 2026-01-13T18:22:16Z
+  last_updated: 2026-02-15T12:00:00Z
   evidence_links:
+    - docs/notes/v12Grundlagen.txt
+    - docs/notes/implementierungsvorschlaege_fuer_codex.txt
     - docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf
     - docs/research/Sagittarius A_ and Star Formation in the UTAC Framework.pdf
     - docs/research/NeuroProfile An Ethical Resonance Bridge.pdf
 notes: >-
-  σ(β(R-Θ)) signals a controlled activation; ζ(R) remains damped by staged
-  implementation and explicit consent requirements.
+  σ(β(R-Θ)) signals a controlled activation; ζ(R) remains damped by
+  bootstrap ledgers, Mandala-safe extensions, and explicit consent
+  requirements.

@@ -1,4 +1,10 @@
 profiles:
+  consumer:
+    channels: 8
+    sampling_rate_hz: 128
+    expected_auc: 0.78
+    crep_stability: 0.72
+    cost_usd: "$150-350"
   simulated:
     channels: 64
     sampling_rate_hz: 1000

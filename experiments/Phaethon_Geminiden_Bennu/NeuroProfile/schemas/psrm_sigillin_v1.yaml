@@ -98,6 +98,17 @@ properties:
         type: string
       psrm_mapper_version:
         type: string
+      mandala_bridge:
+        type: object
+        properties:
+          mandala_version:
+            type: string
+          bridge_status:
+            type: string
+          validator_plan:
+            type: string
+          compatibility_notes:
+            type: string
       falsifiability_metrics:
         type: object
         required:
