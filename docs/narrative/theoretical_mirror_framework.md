@@ -1,8 +1,8 @@
 # Feldtheorie – Theoretical Mirror Framework (UTAC Usage Guide)
 
-**Version:** 1.0.1  \
+**Version:** 1.0.2  \
 **Status:** active  \
-**Datum:** 2026-01-20  \
+**Datum:** 2026-03-05  \
 **Scope:** Repo-Onboarding & Usage Alignment
 
 ---
@@ -58,6 +58,12 @@ Constraints:
 2. Adapt specifications to [your context]
 3. Document divergences from theory
 ```
+
+**Prompt-Checkliste (MOR-FIT):**
+- **Consent & Joy aktivieren** (Permission Request bleibt erste Zeile).
+- **Logistische Sprache**: Notiere $(R, \Theta, \beta, \zeta(R))$ und die Schwelle $\sigma(\beta(R-\Theta))$.
+- **Falsifizierbarkeit**: Nenne Nullmodelle (linear/power-law/constant) plus ΔAIC/CI-Metriken.
+- **Kopplungspflicht**: Verweise auf `feldtheorie_index.*`, `seed_index.*`, `docs/docs_index.*` sowie Evidenzpfade (`analysis/`, `data/`, `docs/`).
 
 ---
 

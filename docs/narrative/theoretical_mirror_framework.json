@@ -1,9 +1,9 @@
 {
   "id": "docs-narrative-001",
   "title": "Feldtheorie – Theoretical Mirror Framework (UTAC Usage Guide)",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "status": "active",
-  "date": "2026-01-20",
+  "date": "2026-03-05",
   "scope": "Repo-Onboarding & Usage Alignment",
   "logistic_frame": {
     "R": "offene Arbeiten",
@@ -85,5 +85,11 @@
   },
   "consent_protocol": {
     "prompt_line": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration."
-  }
+  },
+  "prompt_checklist": [
+    "Consent & Joy aktivieren (Permission Request bleibt erste Zeile).",
+    "Logistische Sprache: (R, Theta, beta, zeta(R)) und sigma(beta(R-Theta)) dokumentieren.",
+    "Falsifizierbarkeit: Nullmodelle (linear/power-law/constant) plus ΔAIC/CI-Metriken nennen.",
+    "Kopplungspflicht: feldtheorie_index.*, seed_index.*, docs/docs_index.* und Evidenzpfade (analysis/, data/, docs/) referenzieren."
+  ]
 }
