@@ -43,11 +43,11 @@ Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in die neue Drei-T
 ├── 📊 analysis/    32 scripts (Fits, Batch, Meta-Regression)
 ├── 📦 data/        47 files   (8 Domänen, β-Estimates)
 ├── 🔬 models/      10 models  (Solver, ODE-Systeme)
-├── 📚 docs/        17 docs    (Theory, Falsifiability, Parity)
+├── 📚 docs/        18 docs    (Theory, Falsifiability, Parity)
 ├── 🧪 releases/     8 assets  (v8.0 Manifest + Evidence Trails)
 └── 🗄️  archive/      0 items   (Sigillin Cold Storage)
 
-Total: 189 files | 22 Trilayer-Indizes (YAML+JSON+MD)
+Total: 192 files | 22 Trilayer-Indizes (YAML+JSON+MD)
 ```
 
 ---

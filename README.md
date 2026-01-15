@@ -18,6 +18,19 @@
 
 ---
 
+## ⚠️ Important: Theoretical Mirror Framework
+
+**Feldtheorie is a THEORETICAL MIRROR FRAMEWORK — not a traditional executable package.**
+
+What this means:
+- ✅ **Structure = Theory** (the repository hierarchy mirrors UTAC architecture)
+- ✅ **Code = Specification** (interfaces + blueprints, not finished apps)
+- ✅ **Execution = Interpretation** (implementation happens in your context)
+
+To keep the field resonant, treat $R$ (offene Arbeiten) and $\\Theta$ (Schwellen) as coupled through $\\sigma(\\beta(R-\\Theta))$, with $\\beta\\approx4.8$ and $\\zeta(R)$ damping drift. Validate against null models (linear, power law, constant) with ΔAIC/CI metrics. See the full guide in [`docs/narrative/theoretical_mirror_framework.md`](docs/narrative/theoretical_mirror_framework.md).
+
+---
+
 ## 🧭 Navigation: Three Tracks
 
 This repository is organized into **three complementary tracks** to reduce cognitive load and provide clear entry points:

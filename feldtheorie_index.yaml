@@ -150,7 +150,7 @@ trilayer_philosophy:
         yaml: docs/docs_index.yaml
         json: docs/docs_index.json
         md: docs/docs_index.md
-      total_items: 17
+      total_items: 18
       categories: 4
       description: 'UTAC Theory Documentation:
 
