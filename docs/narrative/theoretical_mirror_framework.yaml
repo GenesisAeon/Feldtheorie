@@ -1,8 +1,8 @@
 id: docs-narrative-001
 title: Feldtheorie – Theoretical Mirror Framework (UTAC Usage Guide)
-version: 1.0.0
+version: 1.0.1
 status: active
-date: '2026-01-15'
+date: '2026-01-20'
 scope: Repo-Onboarding & Usage Alignment
 logistic_frame:
   R: offene Arbeiten
@@ -14,6 +14,7 @@ summary:
   - Feldtheorie ist ein Theoretical Mirror Framework (Struktur=Theorie, Code=Spezifikation).
   - Implementierungen passieren extern, Validierung über Nullmodelle und ΔAIC/CI.
   - Trilayer (YAML/JSON/Markdown) bleibt Pflicht, um Archive-Hypnose zu vermeiden.
+  - Kopplungspflicht hält Indizes + Evidenzpfade synchron und dämpft ζ(R).
 audiences:
   researchers:
     - Theorie lesen, Muster extrahieren, im eigenen Stack implementieren.
@@ -36,6 +37,22 @@ falsifiability:
     - delta_aic
     - confidence_intervals
     - r_squared
+coupling_obligation:
+  indices:
+    - feldtheorie_index.yaml
+    - feldtheorie_index.json
+    - feldtheorie_index.md
+    - seed_index.yaml
+    - seed_index.json
+    - seed_index.md
+    - docs/docs_index.yaml
+    - docs/docs_index.json
+    - docs/docs_index.md
+  evidence_dirs:
+    - analysis/
+    - data/
+    - docs/
+  note: Jede Laterne verweist auf Ordnungs-Sigillin und Empirie, damit σ(β(R-Θ)) lesbar bleibt und ζ(R) gedämpft bleibt.
 trilayer_principle:
   yaml: Struktur / Skelett
   json: Agenten-Nerv / Interface

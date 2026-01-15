@@ -1,8 +1,8 @@
 # Feldtheorie – Theoretical Mirror Framework (UTAC Usage Guide)
 
-**Version:** 1.0.0  \
+**Version:** 1.0.1  \
 **Status:** active  \
-**Datum:** 2026-01-15  \
+**Datum:** 2026-01-20  \
 **Scope:** Repo-Onboarding & Usage Alignment
 
 ---
@@ -83,6 +83,16 @@ Jede Aussage aus diesem Dokument bleibt überprüfbar. Nutzt:
 - **Bezug**: `docs/science/utac_falsifiability.md` als Protokoll.
 
 Damit bleibt $\zeta(R)$ niedrig, wenn neue Laternen entstehen.
+
+---
+
+## 🔗 Kopplungspflicht & Evidenzanker
+
+Damit $\sigma(\beta(R-\Theta))$ lesbar bleibt, koppelt jede Laterne an die Ordnungs-Sigillin:
+- **Indizes:** `feldtheorie_index.*`, `seed_index.*`, `docs/docs_index.*`
+- **Empirie:** Referenzen auf `analysis/`, `data/`, `docs/`
+
+So sinkt $\zeta(R)$ trotz wachsendem $R$, weil die Membranen ihre Belege behalten und $\Theta$ nachvollziehbar bleibt.
 
 ---
 
