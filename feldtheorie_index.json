@@ -127,7 +127,7 @@
         "json": "docs/docs_index.json",
         "md": "docs/docs_index.md"
       },
-      "total_items": 17,
+      "total_items": 18,
       "categories": 4,
       "description": "UTAC Theory Documentation:\n\n      Theory (3), Applications (4), Validation (2), Infrastructure (8).\n\n      Zentral: utac_theory_core.md, utac_falsifiability.md, utac_safety_delay_status.md\n\n      ",
       "color": "#F39C12",

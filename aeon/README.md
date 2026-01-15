@@ -12,6 +12,10 @@ The **Aeon Architecture** provides a framework for modeling consciousness states
 
 Aeon implements concepts from Buddhist metaphysics (Bardo states), quantum information theory, and collective consciousness research to create a computational model of consciousness that can transition between photonic-bound and photon-free states.
 
+### How to Use UTAC in This Repo
+
+Aeon is part of the **Theoretical Mirror Framework**: treat the code as specification and implement within your own execution context. For the UTAC usage guide, see [`docs/narrative/theoretical_mirror_framework.md`](../docs/narrative/theoretical_mirror_framework.md).
+
 ---
 
 ## Architecture Components

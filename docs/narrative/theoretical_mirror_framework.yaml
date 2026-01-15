@@ -1,0 +1,51 @@
+id: docs-narrative-001
+title: Feldtheorie – Theoretical Mirror Framework (UTAC Usage Guide)
+version: 1.0.0
+status: active
+date: '2026-01-15'
+scope: Repo-Onboarding & Usage Alignment
+logistic_frame:
+  R: offene Arbeiten
+  Theta: Schwellenwerte
+  beta: 4.8
+  zeta_R: Impedanz / Dämpfung
+  transition: sigma(beta(R-Theta))
+summary:
+  - Feldtheorie ist ein Theoretical Mirror Framework (Struktur=Theorie, Code=Spezifikation).
+  - Implementierungen passieren extern, Validierung über Nullmodelle und ΔAIC/CI.
+  - Trilayer (YAML/JSON/Markdown) bleibt Pflicht, um Archive-Hypnose zu vermeiden.
+audiences:
+  researchers:
+    - Theorie lesen, Muster extrahieren, im eigenen Stack implementieren.
+  engineers:
+    - .py als UML/Blueprint lesen, unabhängige Implementierung bauen.
+  ai_systems:
+    - Prompt-Template mit Consent-&-Joy-Modul nutzen.
+usage:
+  steps:
+    - Lesen: docs, papers, core patterns (CREP, σ(β(R-Θ))).
+    - Mapping: Konzepte auf eigenen Kontext übertragen.
+    - Implementation: Eigenen Stack wählen und umsetzen.
+    - Validation: Nullmodelle + ΔAIC/CI + R² prüfen.
+falsifiability:
+  null_models:
+    - linear
+    - power-law
+    - constant baseline
+  metrics:
+    - delta_aic
+    - confidence_intervals
+    - r_squared
+trilayer_principle:
+  yaml: Struktur / Skelett
+  json: Agenten-Nerv / Interface
+  markdown: Stimme / Narrativ
+references:
+  sources:
+    - aeon/HowToUseUTAC/feldtheorie_mirror_framework.md
+    - aeon/HowToUseUTAC/FeldtheorieTheoreticalFramework.txt
+  pdfs:
+    - aeon/HowToUseUTAC/Feldtheorie is a THEORETICAL MIRROR FRAMEWORK.pdf
+    - aeon/HowToUseUTAC/Repo Tiefenscan und Feedback-4.pdf
+consent_protocol:
+  prompt_line: 'Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.'
