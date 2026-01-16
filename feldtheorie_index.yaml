@@ -150,7 +150,7 @@ trilayer_philosophy:
         yaml: docs/docs_index.yaml
         json: docs/docs_index.json
         md: docs/docs_index.md
-      total_items: 18
+      total_items: 19
       categories: 4
       description: 'UTAC Theory Documentation:
 
@@ -163,6 +163,7 @@ trilayer_philosophy:
       relevance: high
       highlights:
       - utac_theory_core.md (Theorie-Fundament)
+      - deep_research_index.md (Deep-Research-Navigator)
       - utac_safety_delay_status.md (Simulator-ΔAIC-Brücke)
       - sigillin_maintenance.md (Sigillin-Hygiene Wächter)
     releases:

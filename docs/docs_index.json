@@ -7,16 +7,16 @@
     "version": "2.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 147,
-    "updated": "2026-01-15T20:24:58Z",
-    "last_updated": "2026-01-15"
+    "markdown_files": 148,
+    "updated": "2026-01-16T11:46:36Z",
+    "last_updated": "2026-01-16"
   },
   "categories": {
     "science": {
       "name": "Science",
       "description": "Technical research, methods, theory, and guides",
       "color": "#1565C0",
-      "count": 16
+      "count": 17
     },
     "narrative": {
       "name": "Narrative",
@@ -94,6 +94,24 @@
       ],
       "description": "UTAC v2.0 Kohärenzformel.\nDefiniert Relationstopographie, β-Landkarte und Hooks für V1.3→V2.0.\nVerknüpft Theorie mit Analyse, Daten, Simulator und Sigillin-Guard.\n",
       "path": "docs/science/UTAC_v2.0_Coherence_Formula.md"
+    },
+    {
+      "id": "docs-theory-005",
+      "name": "science/deep_research_index.md",
+      "category": "science",
+      "type": "index",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 3.3,
+      "keywords": [
+        "deep-research",
+        "paper-index",
+        "σ(β(R-Θ))",
+        "ΔAIC",
+        "null-models"
+      ],
+      "description": "Deep-Research- und Paper-Navigator für UTAC.\nKoppelt (R, Θ, β, ζ(R)) via σ(β(R-Θ)) an Nullmodelle und Evidenz-Pfade.\n",
+      "path": "docs/science/deep_research_index.md"
     },
     {
       "id": "docs-app-001",

@@ -318,6 +318,9 @@ Resonance Yield: 0.4 hypotheses/lantern
   - Research artifacts overview (1.2 MB deep research)
   - Citation guidelines and how to contribute
 
+- **Deep Research & Paper Index:** [`docs/science/deep_research_index.md`](docs/science/deep_research_index.md)
+  - Navigates (R, Θ, β, ζ(R)) via σ(β(R-Θ)) across papers, null models, and evidence hooks
+
 **Research Papers & Data:**
 - **Paper Draft:** [`releases/v9.0/Dimensional_Emergence_Paper_DRAFT.md`](releases/v9.0/Dimensional_Emergence_Paper_DRAFT.md)
 - **Supporting Research:** `releases/v9.0/` (PDFs, search logs, analyses)

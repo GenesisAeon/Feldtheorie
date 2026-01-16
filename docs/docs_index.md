@@ -1,6 +1,6 @@
 # 📚 Docs Index – Science & Narrative Split
 
-**Version:** 2.0.0 | **Datum:** 25. Dez 2025 | **Zuletzt aktualisiert:** 15. Jan 2026 | **Verzeichnis:** `docs/`
+**Version:** 2.0.0 | **Datum:** 25. Dez 2025 | **Zuletzt aktualisiert:** 16. Jan 2026 | **Verzeichnis:** `docs/`
 
 ---
 
@@ -12,7 +12,7 @@ Schichten organisiert:
 - `docs/science/` – Technische Forschung, Methoden, Experimente, Leitfäden.
 - `docs/narrative/` – Manifeste, Roadmaps, Paritäts- und Release-Notizen.
 
-Insgesamt umfasst das Archiv aktuell **147 Markdown-Dokumente** plus die Spiegeldateien (`*.json`, `*.yaml`).
+Insgesamt umfasst das Archiv aktuell **148 Markdown-Dokumente** plus die Spiegeldateien (`*.json`, `*.yaml`).
 
 ---
 
@@ -25,6 +25,7 @@ Kernstücke der wissenschaftlichen Dokumentation und Umsetzung:
 - `science/v6_entropy_governance_tesseract_physics.md` – Entropie-Dualität & Tesseract-Physik.
 - `science/field_type_classification_v1.1.md` – Klassifikation der Feldtypen.
 - `science/utac_falsifiability.md` – Nullmodelle, ΔAIC, Validierungsprotokolle.
+- `science/deep_research_index.md` – Deep-Research- & Paper-Navigator (R, Θ, β, ζ(R) via σ(β(R-Θ))).
 - `science/USER_GUIDE.md` – Praktische Bedienung (CLI, API, Workflows) mit Anker-Referenzen.
 - Unterordner: `appendices/`, `empirical_evidence/`, `ethics/`, `figures/`, `theoretical_extensions/`, `tutorials/`.
 
