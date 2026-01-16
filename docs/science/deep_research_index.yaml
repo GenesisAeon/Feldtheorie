@@ -1,0 +1,103 @@
+meta:
+  title: Deep Research & Paper Index (UTAC)
+  scope: docs/science
+  version: 1.0.0
+  status: active
+  updated: '2026-01-16T11:46:36Z'
+  logistic_frame:
+    R: Offene Deep-Research-Pfade und Indexlücken
+    Theta: Aktuelle Evidenz- und Statusschwelle
+    beta: 4.8
+    zeta_of_R: Restimpedanz aus offenen Laternen
+    sigma: σ(β(R-Θ))
+  coupling:
+    indices:
+    - feldtheorie_index.{yaml,json,md}
+    - seed/seed_index.{yaml,json,md}
+    evidence_roots:
+    - analysis/
+    - data/
+    - docs/
+    status_matrix:
+    - docs/utac_status_alignment_v1.2.{yaml,json,md}
+  falsifiability:
+    null_models:
+    - linear
+    - power law
+    metrics:
+    - ΔAIC
+    - CI
+    delta_aic_threshold: '>10'
+  consent_protocol: 'Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.'
+entries:
+- id: DR-001
+  title: UTAC Theory Core
+  path: docs/science/utac_theory_core.md
+  domain: Theory
+  beta_span: 2.5-16.3
+  status: stable
+  null_model: linear
+  evidence_links:
+  - analysis/
+  - data/derived/
+- id: DR-002
+  title: UTAC Emergence Universal
+  path: docs/science/utac_emergence_universal.md
+  domain: Cross-domain
+  beta_span: 3.1-11.2
+  status: stable
+  null_model: power law
+  evidence_links:
+  - analysis/
+  - data/
+- id: DR-003
+  title: Field Type Classification v1.1
+  path: docs/science/field_type_classification_v1.1.md
+  domain: Taxonomy
+  beta_span: 2.8-9.4
+  status: stable
+  null_model: linear
+  evidence_links:
+  - data/
+  - analysis/
+- id: DR-004
+  title: UTAC Falsifiability Protocol
+  path: docs/science/utac_falsifiability.md
+  domain: Validation
+  beta_span: 3.4-8.7
+  status: stable
+  null_model: power law
+  evidence_links:
+  - analysis/
+- id: DR-005
+  title: UTAC v2 Synthesis
+  path: docs/science/utac_v2_synthesis.md
+  domain: Multi-attractor
+  beta_span: 4.1-13.0
+  status: active
+  null_model: linear
+  evidence_links:
+  - analysis/
+  - docs/
+- id: DR-006
+  title: Theoretical Mirror Framework
+  path: docs/narrative/theoretical_mirror_framework.md
+  domain: Methodology
+  beta_span: 3.0-7.2
+  status: active
+  null_model: linear
+  evidence_links:
+  - docs/
+  - seed/
+rituals:
+  maintenance:
+  - Trilayer erzeugen (yaml/json/md)
+  - docs/docs_index.* synchronisieren
+  - feldtheorie_index.* aktualisieren
+  - Evidenz-Kopplung prüfen (analysis/data/docs)
+  - Nullmodell + ΔAIC/CI dokumentieren
+shadow_protocol:
+  required_paths:
+  - seed/shadow_sigillin/
+  - seed/codexfeedback.*
+  - seed/FraktaltagebuchV2/v2_codex.*

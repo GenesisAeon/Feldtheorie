@@ -43,7 +43,7 @@ Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in die neue Drei-T
 ├── 📊 analysis/    32 scripts (Fits, Batch, Meta-Regression)
 ├── 📦 data/        47 files   (8 Domänen, β-Estimates)
 ├── 🔬 models/      10 models  (Solver, ODE-Systeme)
-├── 📚 docs/        18 docs    (Theory, Falsifiability, Parity)
+├── 📚 docs/        19 docs    (Theory, Falsifiability, Parity)
 ├── 🧪 releases/     8 assets  (v8.0 Manifest + Evidence Trails)
 └── 🗄️  archive/      0 items   (Sigillin Cold Storage)
 
@@ -194,13 +194,14 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 ---
 
 ### 📚 **docs/** - Living Documentation Tapestry
-**17 Markdown-Docs** | **4 Kategorien**
+**18 Markdown-Docs** | **4 Kategorien**
 📍 Index: `docs/docs_index.{yaml,json,md}`
 
 **Was:** UTAC Theory, Falsifiability, Applications, Sigillin-Hygiene
 
 **Must-Read:**
 - `utac_theory_core.md` - Theorie-Fundament
+- `deep_research_index.md` - Deep-Research-Navigator
 - `utac_falsifiability.md` - **Popper-konform!**
 - `field_type_classification_v1.1.md` - 5 Systemtypen
 - `metaquest_parity_brief.md` - Parität für System + Kampagne sichern

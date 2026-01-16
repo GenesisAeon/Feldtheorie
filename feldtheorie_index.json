@@ -127,13 +127,14 @@
         "json": "docs/docs_index.json",
         "md": "docs/docs_index.md"
       },
-      "total_items": 18,
+      "total_items": 19,
       "categories": 4,
       "description": "UTAC Theory Documentation:\n\n      Theory (3), Applications (4), Validation (2), Infrastructure (8).\n\n      Zentral: utac_theory_core.md, utac_falsifiability.md, utac_safety_delay_status.md\n\n      ",
       "color": "#F39C12",
       "relevance": "high",
       "highlights": [
         "utac_theory_core.md (Theorie-Fundament)",
+        "deep_research_index.md (Deep-Research-Navigator)",
         "utac_safety_delay_status.md (Simulator-ΔAIC-Brücke)",
         "sigillin_maintenance.md (Sigillin-Hygiene Wächter)"
       ]
