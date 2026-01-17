@@ -23,42 +23,20 @@ Die Feldtheorie V6 vereint:
 
 #### Ethereum (Primary)
 
-**Wallet-Adresse:**
-```
-0xbcfdd442c9d92d491afef1dd3181c27c1f547b1b
+
 ```
 
 **Etherscan:**
-https://etherscan.io/address/0xbcfdd442c9d92d491afef1dd3181c27c1f547b1b
+https://etherscan.io/address/0xb113c1e63b84dd3aabd1fc2586dc6ab57c258d5a
 
 #### Bitcoin
 
-**Wallet-Adresse:**
-```
-bc1qujx302cs0767gcnjqcyl0fnwvwkxge2cdh90eq
+
 ```
 
 **Bitcoin Explorer:**
-https://blockchair.com/bitcoin/address/bc1qujx302cs0767gcnjqcyl0fnwvwkxge2cdh90eq
+https://blockchair.com/bitcoin/address/bc1qgcxa73lx3l8h6vl58luwlmxxsdp9xtnj3xlxmz
 
-**QR-Code:**
-```
-█████████████████████████████████
-█████████████████████████████████
-████ ▄▄▄▄▄ █▀ █▀▀██  █ ▄▄▄▄▄ ████
-████ █   █ █▀ ▀▄█ ▀▄ █ █   █ ████
-████ █▄▄▄█ █▀█ ▀█▀ ▀██ █▄▄▄█ ████
-████▄▄▄▄▄▄▄█ ▀ ▀ ▀ █ █▄▄▄▄▄▄▄████
-████  ▄  ▀▄  ██▄▀▀▄ ▀▄█▄▀▀▀█▄████
-████▄▀ █▀▄▄ ▀▄ ▄▀██▀█ ▀▄█  █ ████
-████ █ ▀ ▀▄▀  █▀▄█ ▄▄█ █▀▄  ▀████
-████▄██▄██▄▄▀ ▀▀█▀█ █ ▄▄▄  ▀▄████
-████ ▄▄▄▄▄ █▄▀▀█ █▀ ▀ █▄█ ▀▀▀████
-████ █   █ █  ▀ ▀▀▄▄▀▄▄  ▄▀▀▄████
-████ █▄▄▄█ █ ▄█▀▀▀█▄ █▀▀▀  █ ████
-████▄▄▄▄▄▄▄█▄▄▄█▄█▄█▄██▄█▄▄██████
-█████████████████████████████████
-█████████████████████████████████
 ```
 
 ### 🎯 Verwendung der Mittel
