@@ -27,6 +27,7 @@ Die Feldtheorie V6 vereint:
 ```
 
 **Etherscan:**
+
 https://etherscan.io/address/0xb113c1e63b84dd3aabd1fc2586dc6ab57c258d5a
 
 #### Bitcoin
@@ -35,6 +36,7 @@ https://etherscan.io/address/0xb113c1e63b84dd3aabd1fc2586dc6ab57c258d5a
 ```
 
 **Bitcoin Explorer:**
+
 https://blockchair.com/bitcoin/address/bc1qgcxa73lx3l8h6vl58luwlmxxsdp9xtnj3xlxmz
 
 ```
