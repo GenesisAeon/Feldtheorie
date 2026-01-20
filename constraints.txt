@@ -9,7 +9,7 @@ pyyaml>=6.0,<7
 jsonschema>=4.20,<5
 requests>=2.31,<3
 # Tooling and docs
-black>=24.4,<26
+black>=24.4,<27
 mypy>=1.10,<1.20
 nox>=2024.4.15,<2025.12
 pytest>=8.2,<10
