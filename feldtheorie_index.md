@@ -479,3 +479,5 @@ Sigillin Status:
 - `models/models_index.md`
 - `docs/docs_index.md`
 - `archive/archive_index.md`
+- `AI/index.md`
+- `Entropy_in_Climate/index.md`
