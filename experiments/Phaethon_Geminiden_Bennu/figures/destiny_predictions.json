@@ -1,0 +1,75 @@
+{
+  "dust_charge_soliton": 500,
+  "dust_charge_thermal": 30,
+  "dust_charge_ratio": 16.666666666666668,
+  "particle_size_soliton_um": [
+    1,
+    10
+  ],
+  "particle_size_thermal_um": [
+    100,
+    1000
+  ],
+  "velocity_peak_1_ms": 120,
+  "velocity_peak_2_ms": 250,
+  "velocity_peak_3_ms": 380,
+  "velocity_thermal_ms": [
+    10,
+    50
+  ],
+  "emission_rate_burst": [
+    100.0,
+    10000.0
+  ],
+  "emission_rate_continuous": [
+    10.0,
+    100.0
+  ],
+  "Na_Mg_ratio_soliton": 2.0,
+  "Na_Mg_ratio_thermal": 0.7,
+  "chimera_fraction": 0.45298983364140477,
+  "chimera_fraction_range": [
+    0.3,
+    0.6
+  ],
+  "LST_peak_h": 1.0856399999999997,
+  "LST_range_h": [
+    15,
+    18
+  ],
+  "active_region_size_km2": 1.0,
+  "repeatability_index": 0.5,
+  "rotation_correlation": true,
+  "burst_duration_s": [
+    10,
+    100
+  ],
+  "perihelion_enhancement": [
+    10,
+    100
+  ],
+  "alfven_velocity_kms": 503.5977193490035,
+  "plasma_beta": 0.006504975000000001,
+  "B_field_nT": 400.0,
+  "alfven_freq_range_Hz": [
+    0.1,
+    10
+  ],
+  "v_RIG_correlation": true,
+  "resonance_mode_1_Hz": 5.0,
+  "resonance_mode_2_Hz": 10.0,
+  "resonance_mode_3_Hz": 15.0,
+  "soliton_amplitude": 2.0,
+  "soliton_width_m": 5.0,
+  "energy_conservation": 0.998,
+  "beta_threshold": 4.8,
+  "ejection_threshold": 0.55,
+  "frustration_threshold": 0.3,
+  "falsify_LST_peak_thermal": [
+    10,
+    12
+  ],
+  "falsify_no_repeatability": 0.1,
+  "falsify_velocity_low": 50,
+  "falsify_no_alfven": "No waves at 0.1-10 Hz"
+}
