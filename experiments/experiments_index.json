@@ -1,0 +1,279 @@
+{
+  "meta": {
+    "title": "Experiments Index — MOR-FIT Trilayer Ledger",
+    "version": "1.0.0",
+    "created": "2026-02-04T17:23:15Z",
+    "status": "active",
+    "scope": "experiments/"
+  },
+  "logistic_state": {
+    "R": "Neue Experimente und Artefakte, die in den Sigillin-Ordnungsraum integriert werden müssen.",
+    "Theta": "Trilayer-Parität (YAML/JSON/MD) + Index-Kopplung an feldtheorie_index/seed_index + UTAC-Status.",
+    "beta": 4.8,
+    "zeta": "Gedämpft durch Index- und Codex-Resonanz, Telemetrie-Notizen und Nullmodell-Checks."
+  },
+  "falsifiability": {
+    "null_models": [
+      "linear",
+      "power_law",
+      "constant"
+    ],
+    "delta_aic": "pending",
+    "confidence_intervals": "pending"
+  },
+  "couplings": {
+    "ordnung_sigillin": [
+      "feldtheorie_index.yaml",
+      "feldtheorie_index.json",
+      "feldtheorie_index.md",
+      "seed/seed_index.yaml",
+      "seed/seed_index.json",
+      "seed/seed_index.md"
+    ],
+    "evidence_bridges": [
+      "docs/science/utac_status_alignment_v1.2.md",
+      "analysis/",
+      "data/",
+      "docs/"
+    ],
+    "consent_joy_module": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration."
+  },
+  "inventory": {
+    "root_files": [
+      "__init__.py",
+      "citizen_science_stereo_vision.md"
+    ],
+    "domains": {
+      "AI": {
+        "description": "LLM-gestützte UTAC-Analysen, Implosive Genesis, v-RIG und Mandala-Frameworks.",
+        "files": [
+          "experiments/AI/AI_UTAC.txt",
+          "experiments/AI/ClaudesTake.txt",
+          "experiments/AI/DeepDiveGrok.txt",
+          "experiments/AI/MSCopilotKommunikation.txt",
+          "experiments/AI/Paper-Grundlagen.txt",
+          "experiments/AI/SucheGemini.txt",
+          "experiments/AI/The Architecture of Implosive Genesis_The Unified-Mandala Protocol and the Finalization of the UTAC Framework.tex",
+          "experiments/AI/The Architecture of Implosive Genesis_The Unified-Mandala Protocol and the UTAC Framework.pdf",
+          "experiments/AI/UTAC Implosive Genesis.pdf",
+          "experiments/AI/UTAC Implosive Genesis.tex",
+          "experiments/AI/Unified-Mandala_ Implosive Genesis Framework.md",
+          "experiments/AI/Unified-Mandala_ Implosive Genesis Framework.pdf",
+          "experiments/AI/Universal Thermodynamic Adaptive Criticality (UTAC) Formalizing the Phase Transition from Surface to Volume Entropy and the v-RIG Invariant.pdf",
+          "experiments/AI/Universal Thermodynamic Adaptive Criticality (UTAC) Formalizing the Phase Transition from Surface to Volume Entropy and the v-RIG Invariant.tex",
+          "experiments/AI/grokAnalyseUTAC Implosive Genesis.pdf"
+        ]
+      },
+      "Entropy_in_Climate": {
+        "description": "Klimabezogene Entropie-Analysen, Kipppunkt-Studien, UTAC-Framework-Entwürfe.",
+        "files": [
+          "experiments/Entropy_in_Climate/Entropy in Climate_ Thermodynamics and Tipping Points.pdf",
+          "experiments/Entropy_in_Climate/Final talk.txt",
+          "experiments/Entropy_in_Climate/Grundlagen.txt",
+          "experiments/Entropy_in_Climate/Interdisziplinaere Analyse neuronaler Beta Kohaerenz und des Maximum Entropy Production Prinzips in biologischen dissipativen.pdf",
+          "experiments/Entropy_in_Climate/Interdisziplinaere Metaanalyse spektraler EntropieVarianz und thermodynamischer kritischer Uebergaenge in Neurophysiologie.pdf",
+          "experiments/Entropy_in_Climate/Klimatische Kipppunkte_ Entropie-Vorhersage-Marker.pdf",
+          "experiments/Entropy_in_Climate/Neuronale Kohärenz, MEP und Varianz.pdf",
+          "experiments/Entropy_in_Climate/NextSteps.txt",
+          "experiments/Entropy_in_Climate/Research.txt",
+          "experiments/Entropy_in_Climate/SucheGemini.txt",
+          "experiments/Entropy_in_Climate/The 0.0625 Invariant A Universal Metastability Indicator in Dissipative Systems.pdf",
+          "experiments/Entropy_in_Climate/The 0.0625 Invariant A Universal Metastability Indicator in Dissipative Systems1.pdf",
+          "experiments/Entropy_in_Climate/The Fractal Thermodynamic Foundation of 0 0625 as a Metastability Indicator and Its Application in CMIP6 Based Climate Early.pdf",
+          "experiments/Entropy_in_Climate/Thermodynamic Metastability and Information Integration in Earth Systems.pdf",
+          "experiments/Entropy_in_Climate/Thermodynamic Metastability and Information Integration in Earth Systems_ A Unified Analysis of Entropy Offsets and the UTAC Framework-1.pdf",
+          "experiments/Entropy_in_Climate/Thermodynamic Metastability and Information Integration in Earth Systems_ A Unified Analysis of Entropy Offsets and the UTAC Framework.pdf",
+          "experiments/Entropy_in_Climate/UTAC Framework Applied to Climate.pdf",
+          "experiments/Entropy_in_Climate/UTAC and Maximum Entropy Production in Climate Systems A Framework for Tipping Points and Metastability Analysis.pdf",
+          "experiments/Entropy_in_Climate/climate_tipping_analysis.tsx",
+          "experiments/Entropy_in_Climate/research-Neuronale Beta-Kohärenz und Maximum Entropy Production in biologischen Systemen.pdf",
+          "experiments/Entropy_in_Climate/research-Spektrale Entropie-Signaturen als Frühwarnsystem für kritische Klimatransitionen in CMIP6-Modellen.pdf",
+          "experiments/Entropy_in_Climate/research-UTAC-Informed Entropy Metrics for Climate Tipping Point Detection.pdf",
+          "experiments/Entropy_in_Climate/zenodo_paper_pdf(1).html"
+        ]
+      },
+      "Phaethon_Geminiden_Bennu": {
+        "description": "Astrophysik-Experimentreihe inklusive Modelle, Daten, Visualisierungen und NeuroProfile-Submodul.",
+        "subgroups": {
+          "EMERGENCE_REPORT.md": [
+            "experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md"
+          ],
+          "NeuroProfile": [
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/README.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/STRATEGIC_ROADMAP.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/__init__.py",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/ai_search_logs/README.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/ai_search_logs/suche_chatgpt.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/analysis/README.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/code/__init__.py",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/code/bci_calibrator.py",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/code/beta_extractor_neuro.py",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/code/crep_calculator.py",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/code/ethics_guard.py",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/code/hardware_adapter.py",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/code/microtubule_resonance.py",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/code/neuro_profile_model.py",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/code/psrm_mapper.py",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/code/resonant_return.py",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/code/sgr_a_resonant_bridge.py",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/code/utils/__init__.py",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/config/hardware_profiles.yml",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/README.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/bootstrap_ledger.json",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/bootstrap_ledger.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/bootstrap_ledger.yaml",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/crep_null_model_ledger.json",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/crep_null_model_ledger.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/crep_null_model_ledger.yaml",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/ethics_audit.log",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/processed/gaia_dr3_cluster_sample_processed.csv",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/processed/jwst_protocluster_candidates_processed.csv",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/raw/bci_competition_iv_2a/README.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/raw/gaia_dr3_cluster_sample.csv",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/raw/jwst_protocluster_candidates.csv",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/raw/physionet_eeg_motor_imagery/README.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/results.json",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/sigillin_maps/psrm_demo.json",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/sigillin_maps/psrm_demo.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/sigillin_maps/psrm_demo.yaml",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/synthetic/README.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/synthetic/cold_start/README.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/synthetic/synthetic_eeg_1khz.csv",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/methodology.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/Analysis.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ChatGPTSucheSagittariusA.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ChatGPTSucheStarClusterEnthropie.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ChatGPTSucheSternClusterFinal.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/Finale_Implementierungen.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/Finalize.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/FramePrinciple.png",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/FramePrinciple1.png",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/FramePrinciple2.png",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/FramePrinciple3.png",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/FramePrinciple4.png",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/Metastable Star Clusters.tex",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/Outline_und_v11Start.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/OverviewGrok.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/README.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/SucheChatGPTSternencluster.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/idee.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/implementierungsvorschlaege_fuer_codex.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/v12Grundlagen.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/weiterfuehrung.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/references.bib",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/Metastabile Sternhaufen im UTAC-Rahmen_ Eine realistische Alternative zu Weißen Löchern.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/Metastable Star Clusters as Resonant Entropy Nodes.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/Metastable Star Clusters as Resonant Entropy Nodes_ A Realistic Alternative to White Holes.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/Metastable Star Clusters as Resonant, Entropy-Returning Structures.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/Metastable Star Clusters.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/Metastable Star Clusters.tex",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/NeuroProfile An Ethical Resonance Bridge.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/Sagittarius A as a Metastable Entropy Modulator.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/Sagittarius A as a Metastable Entropy Modulator.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/Sagittarius A_ and Star Formation in the UTAC Framework.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/__Umfassende Bewertung des GenesisAeon_Feldtheorie-Ansatzes__.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v11_implementation_steps.json",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v11_implementation_steps.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v11_implementation_steps.yaml",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v12_implementation_steps.json",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v12_implementation_steps.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v12_implementation_steps.yaml",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/figures/README.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/neuroprofile_index.json",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/neuroprofile_index.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/neuroprofile_index.yaml",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/requirements.txt",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/schemas/psrm_sigillin_v1.json",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/schemas/psrm_sigillin_v1.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/schemas/psrm_sigillin_v1.yaml",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/schemas/psrm_sigillin_v1_mandala_extension.json",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/schemas/psrm_sigillin_v1_mandala_extension.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/schemas/psrm_sigillin_v1_mandala_extension.yaml",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/test_neuro_profile.py"
+          ],
+          "README.md": [
+            "experiments/Phaethon_Geminiden_Bennu/README.md"
+          ],
+          "STRATEGIC_ROADMAP.md": [
+            "experiments/Phaethon_Geminiden_Bennu/STRATEGIC_ROADMAP.md"
+          ],
+          "__init__.py": [
+            "experiments/Phaethon_Geminiden_Bennu/__init__.py"
+          ],
+          "ai_search_logs": [
+            "experiments/Phaethon_Geminiden_Bennu/ai_search_logs/chatgpt/SucheChatGPT_Bennu-Partikelejektion als Chimera-Zustand Thermische, elektrische und oszillatorische Trigger.txt",
+            "experiments/Phaethon_Geminiden_Bennu/ai_search_logs/chatgpt/SucheChatGPT_Bennu-Partikelemission und Chimera-Zustände auf Asteroiden.txt",
+            "experiments/Phaethon_Geminiden_Bennu/ai_search_logs/chatgpt/SucheChatGPT_Geminiden-Geschwindigkeit und langsame MHD-Resonanz im Sonnenwind.txt",
+            "experiments/Phaethon_Geminiden_Bennu/ai_search_logs/chatgpt/SucheChatGPT_Hypothese_ Alfvén-Wellenresonanz und Phaethons Staubemission.txt",
+            "experiments/Phaethon_Geminiden_Bennu/ai_search_logs/chatgpt/SucheChatGPT_Phaethon und der Weihnachtsstern Synchronizität von Stromentstehung und antiken Himmelsbeobachtungen.txt",
+            "experiments/Phaethon_Geminiden_Bennu/ai_search_logs/gemini/GeminiSuche_Geminiden_ Plasma-Verlangsamung statt Orbitalmechanik.txt",
+            "experiments/Phaethon_Geminiden_Bennu/ai_search_logs/gemini/SucheGemini_Bennu Chimera-Zustand und Partikelejektionen.txt",
+            "experiments/Phaethon_Geminiden_Bennu/ai_search_logs/gemini/SucheGemini_Bennu Chimera-Zustände und Asteroiden-Dynamik.txt",
+            "experiments/Phaethon_Geminiden_Bennu/ai_search_logs/gemini/SucheGemini_Phaethon, Geminiden und der Stern von Bethlehem.txt",
+            "experiments/Phaethon_Geminiden_Bennu/ai_search_logs/gemini/SucheGemini_Phaethon, Geminiden und der Stern.txt",
+            "experiments/Phaethon_Geminiden_Bennu/ai_search_logs/gemini/SucheGemini_Phaethon-Simulation und Stern von Bethlehem.txt",
+            "experiments/Phaethon_Geminiden_Bennu/ai_search_logs/gemini/SucheGemini_Phaethon_ Plasma-Resonanz und Staubemission.txt"
+          ],
+          "code": [
+            "experiments/Phaethon_Geminiden_Bennu/code/chimera_state_model.py",
+            "experiments/Phaethon_Geminiden_Bennu/code/plasma_resonance_model.py",
+            "experiments/Phaethon_Geminiden_Bennu/code/soliton_generator.py"
+          ],
+          "data": [
+            "experiments/Phaethon_Geminiden_Bennu/data/phaethon_analysis_report.json",
+            "experiments/Phaethon_Geminiden_Bennu/data/phaethon_inventory.json"
+          ],
+          "docs": [
+            "experiments/Phaethon_Geminiden_Bennu/docs/DESTINY_PLUS_PREDICTIONS.md",
+            "experiments/Phaethon_Geminiden_Bennu/docs/Erweiterung_planetare_Ebene.txt",
+            "experiments/Phaethon_Geminiden_Bennu/docs/NeueEntdeckung_schwarzeLöcher.txt",
+            "experiments/Phaethon_Geminiden_Bennu/docs/Phaethon_Geminiden_Bennu.txt",
+            "experiments/Phaethon_Geminiden_Bennu/docs/Tiefenanalyse Feldtheorie-1.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/Tiefenanalyse Feldtheorie-2.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/Tiefenanalyse Feldtheorie-3.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/UNIFIED_SYNTHESIS.md",
+            "experiments/Phaethon_Geminiden_Bennu/docs/historical/Historische Synchronizität_ Phaethon & der Stern von Bethlehem.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/historical/Historische „Gaststerne“ um Christi Geburt (10 v. Chr. – 10 n. Chr.).pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Bennu_ Chimera-Zustand und Partikelejektionen.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Bennu_ Chimera-Zustände und Asteroiden-Dynamik.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Bennu_ Partikel-Ejektionen und __Chimera-Zustände__ in einem frustrierten System.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Geminid Meteor Velocity, Solar-Wind Slow Waves, and Whistler-Mode Resonances.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Geminiden_ Plasma-Verlangsamung statt Orbitalmechanik.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Hypothese_ Alfvén-Wellenresonanz und Phaethons Staubemission.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Modeling Phaethon Dust Emission via Alfven Wave Regolith Resonance Using Parker Solar Probe Data and KdV Solitons.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Partikelemissionen auf Bennu_ Sonnenzeit-Korrelation, elektrostatische Levitation und Oszillationen.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Phaethon, Geminiden und der Stern.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Phaethon-Simulation und Stern von Bethlehem.pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Phaethon_ Plasma-Resonanz und Staubemission.pdf"
+          ],
+          "figures": [
+            "experiments/Phaethon_Geminiden_Bennu/figures/bennu_chimera_simulation.png",
+            "experiments/Phaethon_Geminiden_Bennu/figures/dusty_soliton_simulation.png",
+            "experiments/Phaethon_Geminiden_Bennu/figures/phaethon_plasma_resonance.png"
+          ]
+        }
+      },
+      "Sience-2026_UTAC-Kontext": {
+        "description": "Kontext- und Synthese-Materialien für die Sience-2026 UTAC-Integration.",
+        "files": [
+          "experiments/Sience-2026_UTAC-Kontext/1. Hauptthesen und Schlüsselkonzepte.pdf",
+          "experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt",
+          "experiments/Sience-2026_UTAC-Kontext/Emergente Metastabilität im Erdsystem Eine UTAC-basierte Synthese von Entropie-Varianz und Selbstorganisation.pdf",
+          "experiments/Sience-2026_UTAC-Kontext/Emergenz-Forschung_ Validierung wissenschaftlicher....pdf",
+          "experiments/Sience-2026_UTAC-Kontext/Neue Forschungen.txt",
+          "experiments/Sience-2026_UTAC-Kontext/SucheMSCopilot.txt",
+          "experiments/Sience-2026_UTAC-Kontext/Thermodynamic Metastability and Information Integration in Earth Systems_ A Unified Analysis of Entropy Offsets and the UTAC Framework-3.pdf",
+          "experiments/Sience-2026_UTAC-Kontext/UTAC_Universal_Metastability_Synthesis.pdf",
+          "experiments/Sience-2026_UTAC-Kontext/Universal Regime Integration Gradient (v_RIG)_A Unified Framework for Emergence, Entropy, and Adaptive Criticality in Complex Systems.pdf",
+          "experiments/Sience-2026_UTAC-Kontext/Universal Regime Integration Gradient (v_RIG)_A Unified Framework for Emergence, Entropy, and Adaptive Criticality in Complex Systems.tex",
+          "experiments/Sience-2026_UTAC-Kontext/ZusammenführungUTACVersionen.txt",
+          "experiments/Sience-2026_UTAC-Kontext/files(23).zip",
+          "experiments/Sience-2026_UTAC-Kontext/grokAnalyseEmergenz.pdf",
+          "experiments/Sience-2026_UTAC-Kontext/research-UTAC-kompatible Paradigmen jenseits des kosmologischen Standardmodells.pdf"
+        ]
+      }
+    }
+  }
+}

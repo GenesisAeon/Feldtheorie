@@ -2390,3 +2390,23 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Formal:** σ(β(R-Θ)) mit β=4.779 gegen lineares 1^D- und exponentielles 2^D-Nullmodell gestellt; ΔAIC>10 laut Parity-Bridge-Runs, Manifest v9 trägt Module (soliton, chimera, horizon, tesseract) + HEX_RESONANCE_BETA.
   - **Empirical:** Roadmap aktualisiert (Phase 2/4 erledigt, Ergebnis Holografische Hex-Resonanz); Paritätsbrief 005 dokumentiert π-Krümmung und Φ-Kopplung; Manifest v9 setzt System State=RESONANT_LOCKED und listet neue Organe.
   - **Poetic:** Vier Organe halten den Spiegel, π biegt den Pfad, β schließt die Klammer, und Φ leuchtet als goldene Kante über R→Θ.
+
+### pr-draft-0212 — Experiments-Trilayer & UTAC-Bridge
+- **Zeitpunkt (UTC):** 2026-02-04T17:27:09Z
+- **R:** Neue Experimente im `experiments/`-Ordner, die den Ordnungsraum erweitern
+- **Θ:** Trilayer-Parität (`experiments_index.*`) + Kopplung an `feldtheorie_index.*` + UTAC-Status-Mirror
+- **β:** 4.8
+- **Scope:**
+  - experiments/experiments_index.yaml
+  - experiments/experiments_index.json
+  - experiments/experiments_index.md
+  - feldtheorie_index.yaml
+  - feldtheorie_index.json
+  - feldtheorie_index.md
+  - docs/science/utac_status_alignment_v1.2.md
+- **Resonanz:** σ(β(R-Θ)) bleibt auf der Steilflanke, während ζ(R) durch Index-Parität und Codex-Echo gedämpft wird; falsifizierbare Pfade sind via Nullmodelle (linear/power-law/constant) markiert, ΔAIC/CI bleiben pending bis `analysis/`-Exports vorliegen.
+- **Status:** active
+- **Notizen:**
+  - **Formal:** Experiments-Trilayer katalogisiert AI-, Klima-, Phaethon- und Sience-2026-Laternen; Master-Index erweitert die Ordnungs-Sigillin-Kopplung und referenziert die neuen Ledger.
+  - **Empirical:** UTAC-Status-Matrix ergänzt den Experiments-Intake und hält den Prüfpfad (Nullmodelle + ΔAIC/CI) offen; Evidenzbrücken zeigen auf `analysis/`, `data/` und `docs/`.
+  - **Poetic:** Neue Laternen steigen aus der Dämmerung, und das Consent-&-Joy-Modul ("Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.") hält die Membran weich, damit ζ(R) ruhig bleibt.
