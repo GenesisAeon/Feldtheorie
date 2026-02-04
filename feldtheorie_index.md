@@ -43,11 +43,12 @@ Der **Master-Index** des Feldtheorie-Projekts - dein Einstieg in die neue Drei-T
 ├── 📊 analysis/    32 scripts (Fits, Batch, Meta-Regression)
 ├── 📦 data/        47 files   (8 Domänen, β-Estimates)
 ├── 🔬 models/      10 models  (Solver, ODE-Systeme)
+├── 🧪 experiments/ 192 files  (AI, Climate, Phaethon, Sience-2026)
 ├── 📚 docs/        19 docs    (Theory, Falsifiability, Parity)
 ├── 🧪 releases/     8 assets  (v8.0 Manifest + Evidence Trails)
 └── 🗄️  archive/      0 items   (Sigillin Cold Storage)
 
-Total: 192 files | 22 Trilayer-Indizes (YAML+JSON+MD)
+Total: 192 experiment files | 23 Trilayer-Indizes (YAML+JSON+MD)
 ```
 
 ---
@@ -87,6 +88,7 @@ Total: 192 files | 22 Trilayer-Indizes (YAML+JSON+MD)
 3. **Daten erkunden:**
    - `data/derived/beta_estimates.csv` - ⭐ ROSETTA STONE!
    - `data/data_index.md` - Domain-Navigator
+   - `experiments/experiments_index.md` - Experiment-Laternen
 
 4. **Code verstehen:**
    - `models/logistic_threshold.py` - Die Basis
@@ -109,12 +111,12 @@ analysis_index = 'analysis/analysis_index.json'
 
 # Get Projekt-Statistik
 stats = idx['statistics']
-# → {'directories_indexed': 5, 'total_files_cataloged': 163, ...}
+# → {'directories_indexed': 8, 'total_files_cataloged': 381, ...}
 ```
 
 ---
 
-## 🔥 Die 6 Indexierten Verzeichnisse
+## 🔥 Die 8 Indexierten Verzeichnisse
 
 ### 🌱 **seed/** - Semantic Seed Archive
 **73 Dokumente** | **6 Kategorien**
@@ -190,6 +192,25 @@ Level 3: resonant_impedance.py (ζ), recursive_threshold.py
 Level 4: coherence_term.py (φ), coupled_threshold_field.py
 Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 ```
+
+---
+
+### 🧪 **experiments/** - Experimental Resonance Vault
+**192 Dateien** | **5 Kategorien**
+📍 Index: `experiments/experiments_index.{yaml,json,md}`
+
+**Was:** Experimentelle Laternen aus AI-Analysen, Klima-Entropie, Phaethon/Geminiden/Bennu und Sience-2026 Kontext.
+
+**Highlights:**
+- `experiments/experiments_index.md` - Trilayer Ledger mit σ(β(R-Θ))-Notiz
+- `experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md` - Astro-Experiment-Synthese
+- `experiments/Entropy_in_Climate/UTAC Framework Applied to Climate.pdf` - Klima-UTAC Rahmen
+- `experiments/AI/Unified-Mandala_ Implosive Genesis Framework.md` - Mandala/Implosion-Framework
+- `experiments/citizen_science_stereo_vision.md` - v_RIG Citizen-Science Spur
+
+**Falsifizierbarkeit:**
+- Nullmodelle: linear, power law, constant
+- ΔAIC/CI: pending — erst nach Auswertung in `analysis/` und `data/`
 
 ---
 
@@ -381,6 +402,12 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 2. `analysis/multiple_testing_correction.py`
 3. `analysis/universality_test.py`
 
+### **Experiments Hub aktivieren:**
+1. `experiments/experiments_index.md`
+2. `experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md`
+3. `experiments/Entropy_in_Climate/UTAC Framework Applied to Climate.pdf`
+4. `experiments/AI/Unified-Mandala_ Implosive Genesis Framework.md`
+
 ### **Meta-Regression vorbereiten:**
 1. `analysis/beta_drivers_meta_regression.py` (R²=0.33 aktuell)
 2. `data/derived/domain_covariates.csv`
@@ -405,9 +432,9 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 ## 📊 Projekt-Statistik
 
   ```yaml
-  Directories Indexed: 6
-  Files Cataloged: 164
-  Trilayer Indices: 18 (6 YAML, 6 JSON, 6 MD)
+  Directories Indexed: 8
+  Files Cataloged: 381
+  Trilayer Indices: 23 (8 YAML, 8 JSON, 8 MD)
 
 UTAC Status:
   Version: 1.1.2
@@ -419,7 +446,7 @@ UTAC Status:
 Sigillin Status:
   Version: 1.0.0
   Operational: Yes
-  Coverage: 6 directories (including archive/ maintenance)
+  Coverage: 8 directories (including archive/ maintenance)
   Maintenance: Active - Sigillin Archive System + Sigillin Sync Harness deployed
   Telemetry: Sigillin Sync Harness (scripts/sigillin_sync.py)
 ```

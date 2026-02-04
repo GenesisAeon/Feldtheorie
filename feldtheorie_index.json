@@ -119,6 +119,27 @@
         "resonant_impedance.py (ζ-Dynamik)"
       ]
     },
+    "experiments": {
+      "name": "experiments/ - Experimental Resonance Vault",
+      "path": "experiments/",
+      "index_files": {
+        "yaml": "experiments/experiments_index.yaml",
+        "json": "experiments/experiments_index.json",
+        "md": "experiments/experiments_index.md"
+      },
+      "total_items": 192,
+      "categories": 5,
+      "description": "Experimentelle Laternen und Sammelmaterialien:\nAI, Entropy_in_Climate, Phaethon_Geminiden_Bennu,\nSience-2026_UTAC-Kontext sowie Root-Ledger.\n",
+      "color": "#8E44AD",
+      "relevance": "medium",
+      "highlights": [
+        "experiments/experiments_index.md (Trilayer Ledger)",
+        "experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md (Astro-Experiment)",
+        "experiments/Entropy_in_Climate/UTAC Framework Applied to Climate.pdf",
+        "experiments/AI/Unified-Mandala_ Implosive Genesis Framework.md",
+        "experiments/citizen_science_stereo_vision.md"
+      ]
+    },
     "docs": {
       "name": "docs/ - Living Documentation Tapestry",
       "path": "docs/",
@@ -250,6 +271,10 @@
         {
           "path": "analysis/results/",
           "description": "Alle Fit-Ergebnisse"
+        },
+        {
+          "path": "experiments/experiments_index.md",
+          "description": "Experimentelle Laternen (Trilayer Ledger)"
         }
       ],
       "for_code": [
@@ -278,6 +303,14 @@
         "docs/utac_falsifiability.md",
         "analysis/multiple_testing_correction.py",
         "analysis/universality_test.py"
+      ],
+      "experiments_hub": [
+        "experiments/experiments_index.yaml",
+        "experiments/experiments_index.json",
+        "experiments/experiments_index.md",
+        "experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md",
+        "experiments/Entropy_in_Climate/UTAC Framework Applied to Climate.pdf",
+        "experiments/AI/Unified-Mandala_ Implosive Genesis Framework.md"
       ],
       "v8_validation_drop": [
         "releases/v8.0/v8_release_manifest.yaml",
@@ -442,22 +475,23 @@
     ]
   },
   "statistics": {
-    "directories_indexed": 7,
-    "total_files_cataloged": 189,
-    "trilayer_indices": 22,
+    "directories_indexed": 8,
+    "total_files_cataloged": 381,
+    "trilayer_indices": 23,
     "breakdown": {
       "seed": 74,
       "analysis": 33,
       "data": 47,
       "models": 10,
+      "experiments": 192,
       "docs": 17,
       "releases": 8,
       "archive": 0
     },
     "index_files": {
-      "yaml_files": 7,
-      "json_files": 7,
-      "md_files": 7
+      "yaml_files": 8,
+      "json_files": 8,
+      "md_files": 8
     },
     "project_size": {
       "python_scripts": 44,
@@ -468,7 +502,7 @@
   "version_info": {
     "utac_version": "1.1.2",
     "sigillin_version": "1.0.0",
-    "trilayer_completion": "7 directories (seed, analysis, data, models, releases, docs, archive)",
+    "trilayer_completion": "8 directories (seed, analysis, data, models, experiments, releases, docs, archive)",
     "maintenance_system": "Sigillin Archive System (archive_sigillin.py) + Telemetry Harness (sigillin_sync.py)",
     "next_milestone": "UTAC v1.2 Meta-Regression (R² > 0.7)",
     "telemetry_system": "Sigillin Sync Harness (scripts/sigillin_sync.py)"
