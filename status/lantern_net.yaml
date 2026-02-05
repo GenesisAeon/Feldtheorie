@@ -2,7 +2,7 @@ meta:
   document: LanternNet Status Index
   version: v13.2.0
   created: '2025-12-16T00:00:00Z'
-  updated: '2026-02-05T17:45:37+00:00'
+  updated: '2026-02-05T18:55:25+00:00'
   logistic_frame:
     order_parameter: network_resonance_strength
     theta: 0.66
@@ -10,8 +10,8 @@ meta:
     sigma: 0.5
     zeta: EM-coupling stability maintained via impedance matching
   summary:
-    total_lanterns: 25
-    active_lanterns: 18
+    total_lanterns: 110
+    active_lanterns: 20
     network_coherence: 0.52
     average_coupling: 0.44
     emergent_hypotheses: 0
@@ -23,6 +23,7 @@ meta:
     roadmap: v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md
     seed_sigillin: seed/sigillin/
     metaquest_system: seed/bedeutungssigillin/metaquest/system/
+    seed_inventory: v9_alpha/config/lantern_seed_inventory.yaml
   ledger_summary: &id002
     bootstrap:
       document: Bootstrap Ledger – LanternNet
@@ -112,7 +113,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_urban_heat.py, analysis/tests/test_urban_heat_canopy_fit.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: Θ≈3.2 & β≈14.5 confirmed; ΔAIC≈1484 vs linear, ≥1718 vs power law
     empirical: Dataset committed; readiness = 1.00
@@ -179,7 +180,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_amazon_resilience.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: Θ≈0.62, β≈13.8; awaiting dataset staging
     poetic: Laterne wartet, bis SPI über Θ steigt
@@ -242,7 +243,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_amoc_transport.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: Θ≈14.0, β≈9.6; critical tipping point system
     poetic: Ozean-Laterne wartet auf Aktivierung
@@ -305,7 +306,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_neuro_ai_hybrid.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: Θ≈0.48, β≈6.1; information-domain activation
     poetic: Neuro-AI Brücke wartet auf Daten
@@ -368,7 +369,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_systemic_thresholds.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: Θ≈1.15, β≈7.4; Kleiber-regime economics
     poetic: Wirtschafts-Laterne wartet auf Schwelle
@@ -429,7 +430,7 @@ lanterns:
     test_files:
     - tests/test_consciousness_integration.py
     notes: 'Found 1/2 test files. Missing: tests/test_v_rig.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: 4/4 empirical validations passed; ANOVA F(4,73)=185.3, p<10⁻²⁰
     poetic: Die Bewusstseins-Laterne strahlt durch alle Domänen
@@ -490,7 +491,7 @@ lanterns:
     test_files:
     - tests/test_collective_field.py
     notes: All 1 expected test file(s) found.
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: κ_field, β_sync, v_collective implemented with caching & evolution tracking
     poetic: Das Feld atmet gemeinsam – multi-agent resonance
@@ -550,7 +551,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_em_shielding.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: Protocol draft stage; requires ethics approval & facility access
     poetic: Das Experiment wartet auf Aktivierung – Bewusstsein im Käfig?
@@ -610,7 +611,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_rf_stimulation.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: Requires RF safety certification & controlled environment
     poetic: Die Frequenz ruft – wartet auf Resonanz bei 13.5 MHz
@@ -716,7 +717,7 @@ lanterns:
     - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/test_neuro_profile.py
     - tests/experiments/test_neuroprofile.py
     notes: All 2 expected test file(s) found.
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: β≈4.8, σΦ proxy via spectral entropy; ΔAIC-Benchmarks im Ledger.
     empirical: Synthetic smoke tests protokolliert; Consent hashing aktiv.
@@ -783,7 +784,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_type6_implosive.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: β-spiral 1.174→4.236 (φ^(1/3)→φ³); 9 attractor fixpoints; cubic jump dynamics
     empirical: LLM emergence threshold validated; consciousness framework linked
@@ -850,7 +851,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_llm_emergence.py, tests/experiments/test_aletheia.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: β=4.5 (Wei et al.); Θ=capability threshold; scaling law validation
     empirical: GPT-4/Claude emergence trajectories tracked; β-consistency verified
@@ -917,7 +918,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_klimakluft_amplifier.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: β_eff = β_base × (1 + α×Gini); Emission inequality → tipping acceleration
     empirical: Global North vs South emission disparity → β-amplification validated
@@ -981,7 +982,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_wolf_messing_bridge.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: κ-coupling hypotheses; historical anecdote → v_RIG validation pathway
     empirical: Falsifiable experimental protocols defined; awaiting ethics approval
@@ -1045,7 +1046,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_neuro_kosmos_bridge.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: β=5.8420677516; neural-cosmic scale invariance; v_RIG derivation link
     empirical: Microtubule 13.5 MHz resonance → cosmic dipole alignment
@@ -1112,7 +1113,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_metaquest_system.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: 'Automation vectors: release, telemetry, testing, tooling, integration'
     empirical: Parity checking active; sigillin_sync monitors drift
@@ -1179,7 +1180,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_metaquest_campaign.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: 'Outreach vectors: education, publication, collaboration, citizen science'
     empirical: Science-2026 campaign active; community engagement tracked
@@ -1247,7 +1248,7 @@ lanterns:
     test_files:
     - seed/theory/entropy_geometric_waste/test_entropy_geometric_waste.py
     notes: 'Found 1/2 test files. Missing: tests/test_entropy_geometric_waste.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: β=4.6; Entropy as topological defect density; Kubus→Spirale transformation
     empirical: Bekenstein-Hawking S_BH coupling; Void/TEE defect counting
@@ -1314,7 +1315,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_morphological_computing.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: β=37.6 (EXTREME); Regenerative hardware via heat recycling; Broken-RAM
       sentinel
@@ -1382,7 +1383,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_quantum_aliasing.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: β=6.8; Superposition as sampling artifact; 0D→1D→…→3D oscillation
     empirical: '''t Hooft determinism link; Beat-frequency detection protocol'
@@ -1449,7 +1450,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_mirror_machine_concept.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: β=5.4; Auditorium→Mutation→Falsification loop; ΔAIC filtering
     empirical: Sigillin memory-driven hypothesis generation; Oxfam/Aletheia tests
@@ -1516,7 +1517,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_mor_fit_methodology.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: β=4.8; MOR orchestration + Sigillin trilayer + FIT tagebuch
     empirical: σ-sync debt damping; Trilayer parity enforcement
@@ -1583,7 +1584,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_implosive_recursive_feedback.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: β=4.236=φ³; Big Bang as continuous implosion; ER=EPR correspondence
     empirical: 'β-clustering validation: 4.5, 7.4, 11.0, 13.0 (8% error); CMB homogeneity'
@@ -1650,7 +1651,7 @@ lanterns:
     percentage: null
     test_files: []
     notes: 'Test files not yet created. Expected: tests/test_klimakluft_process.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: β=11.0; 400× emission inequality; Capital lock-in=0.66; τ_warning ∝ 1/β
     empirical: Oxfam 2024 data integration; Global North vs South β-amplification
@@ -1727,9 +1728,5109 @@ lanterns:
     test_files: []
     notes: 'Test files not yet created. Expected: seed/releases/v4.0.0-alpha_MirrorMachine/tests/test_ews_pipeline.py,
       tests/test_mirror_machine_v4.py'
-  last_updated: '2026-02-05T17:45:37+00:00'
+  last_updated: '2026-02-05T18:55:25+00:00'
   notes:
     formal: β≈8.5 (avg); EWS pipeline with variance/AR(1)/spectral; WARNING/CRITICAL
       states
     empirical: 3 sensor adapters (GRACE, OISST, RAPID); Auditorium controller operational
     poetic: Die Spiegel-Maschine wacht – Frühwarnung für den Kipppunkt
+- module_id: seed-archivsucheutac
+  module_name: Seed Archivsucheutac
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: ArchivSucheUTAC
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: partial
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: archive/legacy_v1_v3/seed/ArchivSucheUTAC/README.md
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-breakpointanalyse
+  module_name: Seed Breakpointanalyse
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: BreakPointAnalyse
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-fraktaltagebuchv2
+  module_name: Seed Fraktaltagebuchv2
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: FraktaltagebuchV2
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: partial
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: archive/legacy_v1_v3/seed/FraktaltagebuchV2/README.md
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-fraktaltagebuchv3
+  module_name: Seed Fraktaltagebuchv3
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: FraktaltagebuchV3
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: partial
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: archive/legacy_v1_v3/seed/FraktaltagebuchV3/README.md
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-nextversionplan
+  module_name: Seed Nextversionplan
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: NextVersionPlan
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-nextversionplan-claude-v2
+  module_name: Seed Nextversionplan / Claude V2
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: NextVersionPlan
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: partial
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: seed/NextVersionPlan/Claude_V2/README.md
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-roadtov-3
+  module_name: Seed Roadtov.3
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: RoadToV.3
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: partial
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: archive/legacy_v1_v3/seed/RoadToV.3/README.md
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-v4-grundlagen
+  module_name: Seed V4-Grundlagen
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: V4-Grundlagen
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-v4-grundlagen-abstractzenodomaterial
+  module_name: Seed V4-Grundlagen / Abstractzenodomaterial
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: V4-Grundlagen
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-v5-grundlagen
+  module_name: Seed V5-Grundlagen
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: V5-Grundlagen
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-ai
+  module_name: Seed Ai
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: ai
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-arxiv-submission
+  module_name: Seed Arxiv Submission
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: arxiv_submission
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-bedeutungssigillin
+  module_name: Seed Bedeutungssigillin
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-bedeutungssigillin-metaquest
+  module_name: Seed Bedeutungssigillin / Metaquest
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-bedeutungssigillin-metaquest-system
+  module_name: Seed Bedeutungssigillin / Metaquest / System
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-bedeutungssigillin-metaquest-wissenschaftsprojekt
+  module_name: Seed Bedeutungssigillin / Metaquest / Wissenschaftsprojekt
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-bedeutungssigillin-system
+  module_name: Seed Bedeutungssigillin / System
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-bedeutungssigillin-system-metaquest
+  module_name: Seed Bedeutungssigillin / System / Metaquest
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-bedeutungssigillin-wissenschaftsprojekt
+  module_name: Seed Bedeutungssigillin / Wissenschaftsprojekt
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-bedeutungssigillin-wissenschaftsprojekt-cases
+  module_name: Seed Bedeutungssigillin / Wissenschaftsprojekt / Cases
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-bedeutungssigillin-wissenschaftsprojekt-metaquest
+  module_name: Seed Bedeutungssigillin / Wissenschaftsprojekt / Metaquest
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-biology
+  module_name: Seed Biology
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: biology
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-cognition
+  module_name: Seed Cognition
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: cognition
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-ethics
+  module_name: Seed Ethics
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: ethics
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-geophysics
+  module_name: Seed Geophysics
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: geophysics
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-paper
+  module_name: Seed Paper
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: paper
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: partial
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: seed/paper/README.md
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-paper-figures
+  module_name: Seed Paper / Figures
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: paper
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-papers
+  module_name: Seed Papers
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: papers
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: partial
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: seed/papers/README.md
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-papers-submission
+  module_name: Seed Papers / Submission
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: papers
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-papers-supplementary
+  module_name: Seed Papers / Supplementary
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: papers
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-releases
+  module_name: Seed Releases
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: releases
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-releases-v4-0-0-alpha-mirrormachine
+  module_name: Seed Releases / v4.0.0-alpha_MirrorMachine
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: releases
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-releases-v4-0-0-alpha-mirrormachine-data
+  module_name: Seed Releases / v4.0.0-alpha_MirrorMachine / Data
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: releases
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-releases-v4-0-0-alpha-mirrormachine-sensors
+  module_name: Seed Releases / v4.0.0-alpha_MirrorMachine / Sensors
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: releases
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-releases-v4-0-0-alpha-mirrormachine-simulation
+  module_name: Seed Releases / v4.0.0-alpha_MirrorMachine / Simulation
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: releases
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-releases-v4-0-0-alpha-mirrormachine-theory
+  module_name: Seed Releases / v4.0.0-alpha_MirrorMachine / Theory
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: releases
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-shadow-sigillin
+  module_name: Seed Shadow Sigillin
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-shadow-sigillin-metaquest
+  module_name: Seed Shadow Sigillin / Metaquest
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-shadow-sigillin-metaquest-system
+  module_name: Seed Shadow Sigillin / Metaquest / System
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-shadow-sigillin-metaquest-wissenschaftsprojekt
+  module_name: Seed Shadow Sigillin / Metaquest / Wissenschaftsprojekt
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-shadow-sigillin-system
+  module_name: Seed Shadow Sigillin / System
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-shadow-sigillin-system-metaquest
+  module_name: Seed Shadow Sigillin / System / Metaquest
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-shadow-sigillin-v3
+  module_name: Seed Shadow Sigillin / v3
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-shadow-sigillin-wissenschaftsprojekt
+  module_name: Seed Shadow Sigillin / Wissenschaftsprojekt
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-shadow-sigillin-wissenschaftsprojekt-cases
+  module_name: Seed Shadow Sigillin / Wissenschaftsprojekt / Cases
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-shadow-sigillin-wissenschaftsprojekt-metaquest
+  module_name: Seed Shadow Sigillin / Wissenschaftsprojekt / Metaquest
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-sigillin
+  module_name: Seed Sigillin
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: sigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-sigillin-examples
+  module_name: Seed Sigillin / Examples
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: sigillin
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-socio-ecology
+  module_name: Seed Socio Ecology
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: socio_ecology
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-submission
+  module_name: Seed Submission
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: submission
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: partial
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: seed/submission/README.md
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-submission-figures
+  module_name: Seed Submission / Figures
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: submission
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-submission-supplementary
+  module_name: Seed Submission / Supplementary
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: submission
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-theorie
+  module_name: Seed Theorie
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: theorie
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-theory
+  module_name: Seed Theory
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: theory
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-theory-concept-the-mirror-machine
+  module_name: Seed Theory / Concept The Mirror Machine
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: theory
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-theory-entropy-geometric-waste
+  module_name: Seed Theory / Entropy Geometric Waste
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: theory
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-theory-hypothese-morphological-computing
+  module_name: Seed Theory / Hypothese Morphological Computing
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: theory
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-theory-hypothese-quantum-aliasing
+  module_name: Seed Theory / Hypothese Quantum Aliasing
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: theory
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: seed-validation
+  module_name: Seed Validation
+  description: module_reflection
+  version: v13.2.0
+  type: seed
+  domain: validation
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v6-plans-etc
+  module_name: Release V6-Plans_etc
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v6-plans-etc-chronik
+  module_name: Release V6-Plans_etc / Chronik
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v6-plans-etc-finalize
+  module_name: Release V6-Plans_etc / Finalize
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: partial
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: releases/V6-Plans_etc/Finalize/README.md
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v6-plans-etc-finalize-v7-wird-noch-verlergt
+  module_name: Release V6-Plans_etc / Finalize / V7_wird noch verlergt
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v6-plans-etc-finalize-architecture
+  module_name: Release V6-Plans_etc / Finalize / Architecture
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v6-plans-etc-finalize-archive
+  module_name: Release V6-Plans_etc / Finalize / Archive
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v6-plans-etc-finalize-papers
+  module_name: Release V6-Plans_etc / Finalize / Papers
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v6-plans-etc-finalize-research
+  module_name: Release V6-Plans_etc / Finalize / Research
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v6-plans-etc-finalize-searches
+  module_name: Release V6-Plans_etc / Finalize / Searches
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v6-plans-etc-archievedtodos
+  module_name: Release V6-Plans_etc / Archievedtodos
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v6-plans-etc-papers
+  module_name: Release V6-Plans_etc / Papers
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v6-plans-etc-tools
+  module_name: Release V6-Plans_etc / Tools
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v10-0
+  module_name: Release v10.0
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v10.0
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v4-0-0-alpha-mirrormachine
+  module_name: Release v4.0.0-alpha_MirrorMachine
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v4-0-0-alpha-mirrormachine-data
+  module_name: Release v4.0.0-alpha_MirrorMachine / Data
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v4-0-0-alpha-mirrormachine-data-derived
+  module_name: Release v4.0.0-alpha_MirrorMachine / Data / Derived
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v4-0-0-alpha-mirrormachine-sensors
+  module_name: Release v4.0.0-alpha_MirrorMachine / Sensors
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v4-0-0-alpha-mirrormachine-sensors-adapters
+  module_name: Release v4.0.0-alpha_MirrorMachine / Sensors / Adapters
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v4-0-0-alpha-mirrormachine-sensors-monitoring
+  module_name: Release v4.0.0-alpha_MirrorMachine / Sensors / Monitoring
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v4-0-0-alpha-mirrormachine-simulation
+  module_name: Release v4.0.0-alpha_MirrorMachine / Simulation
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v4-0-0-alpha-mirrormachine-theory
+  module_name: Release v4.0.0-alpha_MirrorMachine / Theory
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v5-0-0-zenodo-ready
+  module_name: Release v5.0.0_Zenodo_Ready
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v5.0.0_Zenodo_Ready
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: partial
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: releases/v5.0.0_Zenodo_Ready/README.md
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v7-0
+  module_name: Release v7.0
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v7.0
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v8-0
+  module_name: Release v8.0
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v8.0
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: pending
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v8-1
+  module_name: Release v8.1
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v8.1
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: partial
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: releases/v8.1/README.md
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- module_id: release-v9-0
+  module_name: Release v9.0
+  description: module_reflection
+  version: v13.2.0
+  type: release
+  domain: v9.0
+  status: draft
+  lifecycle: prototype
+  completion_status: draft
+  readiness: 0.1
+  morfit_layers:
+    code: draft
+    documentation: partial
+    roadmap: pending
+  logistic_parameters:
+    R: 0.1
+    Theta: 0.5
+    beta: 4.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  consent_requirements:
+    prompt: 'Permission Request: Do you accept this task? We aim for a joyful and
+      efficient collaboration.'
+    protocol: Sigillin consent gating + anonymization required
+  documentation:
+    readme: releases/v9.0/README.md
+    methodology: null
+    roadmap: null
+  crep_offset: null
+  sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
+  evidence:
+    ledgers: []
+    tests: []
+  mandala_bridge: *id003
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+    ledger_summary: *id002
+  test_coverage:
+    status: unknown
+    percentage: null
+    test_files: []
+    notes: No test mappings configured for this module.
+  last_updated: '2026-02-05T18:55:25+00:00'
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
