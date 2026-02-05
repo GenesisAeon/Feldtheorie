@@ -14,6 +14,82 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [v13.3.0] - 2026-02-05 — Fractal Implementation
+
+**Status:** Released | **Codename:** Fractal Implementation
+
+### Major Features
+
+#### models/ Directory Integration (8 new Lanterns)
+- 8 core computational models from `models/` directory registered as active Lanterns
+- Full logistic parameters (R, Theta, beta, zeta), EM-properties, and coupling targets
+- Test mappings added for all model Lanterns with existing test files
+
+| ID | Name | beta | R | Domain |
+|----|------|------|---|--------|
+| model-logistic-threshold-001 | Logistic Threshold Core | 9.0 | 1.0 | threshold_dynamics |
+| model-adaptive-membrane-001 | Adaptive Logistic Membrane | 11.5 | 0.95 | membrane_dynamics |
+| model-resonant-impedance-001 | Resonant Impedance Model | 7.4 | 0.90 | em_consciousness |
+| model-rg-flow-001 | RG Flow Simulator | 6.2 | 0.85 | renormalization |
+| model-coupled-field-001 | Coupled Threshold Field | 8.0 | 0.88 | field_dynamics |
+| model-sigmoid-fit-001 | Sigmoid Fit Engine | 7.4 | 0.92 | curve_fitting |
+| model-abm-microscopic-001 | UTAC Microscopic ABM | 5.0 | 0.78 | agent_based |
+| model-cosmic-alpha-phi-001 | Cosmic Alpha-Phi Model | 4.236 | 0.75 | cosmology |
+
+#### Phaethon Simulation Suite Lantern
+- New `exp-phaethon-sim-001` lantern covering 5 simulation modules
+- Chimera state, plasma resonance, soliton transport, integrated simulation, statistical analysis
+- Full tri-layer documentation (README, EMERGENCE_REPORT, STRATEGIC_ROADMAP, METHODOLOGY)
+
+#### 79 New Unit Tests
+- Comprehensive test suite for all 5 Phaethon simulation modules
+- `tests/test_phaethon_simulations.py`: 79 tests covering:
+  - BennuParameters, ChimeraStateModel (frustration, chimera fraction, ejection probability)
+  - PhaethonParameters, PlasmaResonanceModel (Alfven velocity, coupling, resonance maps)
+  - KdVSolver, DustySolitonModel (spectral method, soliton profiles, energy density)
+  - EnhancedChimeraModel, IntegratedPlasmaSolitonModel, DestinyPredictionsCalculator
+  - LSTAnalyzer, VelocityAnalyzer, RepeatabilityAnalyzer, ComprehensiveStatisticalAnalysis
+
+#### Ledger Expansion
+- Bootstrap ledger: 3 new entries (logistic threshold, Phaethon simulation, resonant impedance)
+- CREP null-model ledger: 3 new entries with crep_offset and CI values
+- sigma_phi_range populated for 3 additional lanterns
+
+### Network Statistics
+
+- **Total Lanterns:** 34 (up from 25)
+- **Active Lanterns:** 27 (up from 18)
+- **New beta values:** 4.236 (phi^3), 5.0, 6.2, 7.4, 8.0, 9.0, 11.5
+- **Test coverage:** 9 new MODULE_TEST_MAPPINGS added
+
+### Technical Changes
+
+- Extended `scripts/update_lantern_net.py` with 9 new MODULE_TEST_MAPPINGS
+- Updated `v9_alpha/config/lantern_hub.yaml` to v13.3.0 with 9 new Lantern definitions
+- Updated `data/bootstrap_ledger.json` and `data/crep_null_model_ledger.json` to v13.3.0
+- Created `experiments/Phaethon_Geminiden_Bennu/code/METHODOLOGY.md`
+- Regenerated `status/lantern_net.{yaml,json,md}` trilayer
+
+### Modified Files
+
+- `v9_alpha/config/lantern_hub.yaml` - 9 new Lantern definitions, version bump
+- `scripts/update_lantern_net.py` - 9 new MODULE_TEST_MAPPINGS
+- `data/bootstrap_ledger.json` - 3 new bootstrap entries
+- `data/crep_null_model_ledger.json` - 3 new CREP entries
+- `tests/test_phaethon_simulations.py` - NEW: 79 unit tests
+- `experiments/Phaethon_Geminiden_Bennu/code/METHODOLOGY.md` - NEW: simulation methodology
+- `status/lantern_net.{yaml,json,md}` - Regenerated with 34 Lanterns
+
+### Verification
+
+- All 79 new Phaethon simulation tests passing
+- Trilayer synchronization maintained (YAML/JSON/MD parity)
+- All new Lanterns have valid logistic parameters and EM-properties
+- Ledger entries cross-referenced with LanternNet index
+- MOR-FIT compliance: modular, falsifiable, open-data, consent-gated
+
+---
+
 ## [v13.2.0] - 2026-02-05 — Full Repository Reflection
 
 **Status:** Released | **Codename:** Fractal Mirror
