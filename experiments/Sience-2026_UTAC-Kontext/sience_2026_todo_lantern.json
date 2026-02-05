@@ -1,0 +1,108 @@
+{
+  "id": "sience-2026-todo-lantern-001",
+  "scope": "experiments/Sience-2026_UTAC-Kontext",
+  "status": "active",
+  "permission_request": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+  "logistic": {
+    "R": 0.52,
+    "Theta": 0.70,
+    "beta": 4.8,
+    "zeta_R": 0.24,
+    "sigma_beta_R_minus_Theta": 0.33
+  },
+  "purpose": "Abstract synthesis and equation paths (UTAC Synthesis/IGES) so σ(β(R-Θ)) stays consistent and evidence coupling to v2–v9 remains visible.",
+  "todos": [
+    {
+      "id": "SUTAC-TODO-01",
+      "title": "ρ_I definition consolidation",
+      "R": "Information density as bit/Planck volume or action density clarified.",
+      "Theta": "Definition + measurability anchored in the UTAC Synthesis document.",
+      "beta": 4.8,
+      "zeta_R": 0.24,
+      "sigma_beta_R_minus_Theta": 0.33,
+      "status": "primed",
+      "evidence": [
+        "experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt"
+      ]
+    },
+    {
+      "id": "SUTAC-TODO-02",
+      "title": "Tyg6 field & metric sign check",
+      "R": "Role clarification for Tyg6, integration time τ, dual-time metric.",
+      "Theta": "Signature decision + explicit rationale (spacelike vs timelike) documented.",
+      "beta": 4.8,
+      "zeta_R": 0.23,
+      "sigma_beta_R_minus_Theta": 0.34,
+      "status": "primed",
+      "evidence": [
+        "experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt"
+      ]
+    },
+    {
+      "id": "SUTAC-TODO-03",
+      "title": "Implosive Genesis Equation Set (IGES) finalization",
+      "R": "IGES core (genesis, field, metric, entropy) structured.",
+      "Theta": "Equation set as standalone document including null-model references.",
+      "beta": 4.8,
+      "zeta_R": 0.25,
+      "sigma_beta_R_minus_Theta": 0.32,
+      "status": "primed",
+      "evidence": [
+        "experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt",
+        "experiments/Sience-2026_UTAC-Kontext/Universal Regime Integration Gradient (v_RIG)_A Unified Framework for Emergence, Entropy, and Adaptive Criticality in Complex Systems.tex"
+      ]
+    },
+    {
+      "id": "SUTAC-TODO-04",
+      "title": "UTAC Synthesis & retrofit bridge",
+      "R": "v2/v3 (engine room) and v6/v9 (bridge) combined into synthesis.",
+      "Theta": "UTAC Synthesis draft with clear version matrix.",
+      "beta": 4.8,
+      "zeta_R": 0.24,
+      "sigma_beta_R_minus_Theta": 0.33,
+      "status": "primed",
+      "evidence": [
+        "experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt"
+      ]
+    },
+    {
+      "id": "SUTAC-TODO-05",
+      "title": "v9 executive summary",
+      "R": "Executive summary for physics, climate, and neuro audiences.",
+      "Theta": "Shortform with three target segments + evidence links.",
+      "beta": 4.8,
+      "zeta_R": 0.24,
+      "sigma_beta_R_minus_Theta": 0.33,
+      "status": "primed",
+      "evidence": [
+        "experiments/Sience-2026_UTAC-Kontext/ZusammenführungUTACVersionen.txt"
+      ]
+    }
+  ],
+  "falsifiability": {
+    "null_models": [
+      "linear",
+      "power_law",
+      "constant"
+    ],
+    "delta_aic_target": 10,
+    "confidence_interval_note": "Document null-model ΔAIC and CIs for core equations."
+  },
+  "couplings": {
+    "index": [
+      "experiments/experiments_index.md",
+      "experiments/experiments_index.json",
+      "experiments/experiments_index.yaml"
+    ],
+    "todo_index": [
+      "experiments/experiments_todo_index.md",
+      "experiments/experiments_todo_index.json",
+      "experiments/experiments_todo_index.yaml"
+    ],
+    "utac_matrix": [
+      "docs/science/utac_status_alignment_v1.2.md"
+    ]
+  },
+  "last_updated": "2026-02-05T10:29:12Z",
+  "notes": "σ(β(R-Θ)) remains stable when synthesis and IGES paths bind to defined measurements and null models."
+}

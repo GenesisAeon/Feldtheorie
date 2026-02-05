@@ -1,7 +1,7 @@
 # 🧭 Experiments Todo Index — Resonant Task Ledger
 
-**Version:** 1.0.0  
-**Stand:** 2026-02-05T10:10:25Z  
+**Version:** 1.1.0  
+**Stand:** 2026-02-05T10:29:12Z  
 **Scope:** `experiments/`  
 
 ---
@@ -80,26 +80,112 @@
    - **Status:** primed
    - **Quelle:** `experiments/Entropy_in_Climate/NextSteps.txt`
 
+8. **Klimadaten-Pipeline für σΦ aufsetzen.**
+   - **R:** NOAA ENSO + NSIDC Sea Ice, Spektralentropie via NeuroProfile-Code.
+   - **Θ:** Zeitreihen-Plot (1950–2024) mit 0.0625-Referenz + CI-Notiz.
+   - **Status:** primed
+   - **Quelle:** `experiments/Entropy_in_Climate/Grundlagen.txt`
+
+9. **CMIP6-Kipppunkt-Analyse priorisieren.**
+   - **R:** AMOC/Amazon, spektrale Entropie-Signaturen, σΦ-Drift.
+   - **Θ:** Vergleich gegen Critical-Slowing-Down-Nullmodelle + ΔAIC/CI-Log.
+   - **Status:** primed
+   - **Quelle:** `experiments/Entropy_in_Climate/SucheGemini.txt`, `experiments/Entropy_in_Climate/Research.txt`
+
+10. **Unified σΦ-Tooling (v10–v12 Brücke) skizzieren.**
+    - **R:** Master-Klasse für EEG/Klima/Sgr A* Daten.
+    - **Θ:** Prototyp + Validierungsplan (Nullmodelle, ΔAIC/CI).
+    - **Status:** primed
+    - **Quelle:** `experiments/Entropy_in_Climate/Grundlagen.txt`
+
+11. **Zenodo-Visualisierung („Killer-Grafik“) definieren.**
+    - **R:** 3D-Plot Spektralentropie vs. σΦ vs. Time-to-Collapse.
+    - **Θ:** Figure-Plan + Einbindung ins v12-Alpha Manuskript.
+    - **Status:** primed
+    - **Quelle:** `experiments/Entropy_in_Climate/Final talk.txt`
+
+### AI — Implosive Genesis / Zenodo
+12. **Zenodo-fähiges LaTeX-Paper konsolidieren.**
+    - **R:** Vollständiger LaTeX-Entwurf (Option A + A3, akademischer Ton).
+    - **Θ:** Konsolidiertes Manuskript inkl. IGES, v_RIG, Mandala-Protocol, Tabellen.
+    - **Status:** primed
+    - **Quelle:** `experiments/AI/MSCopilotKommunikation.txt`, `experiments/AI/UTAC Implosive Genesis.tex`
+
+13. **Build- & Compile-Check durchführen.**
+    - **R:** pdflatex/bibtex Build-Sequence, Referenzen prüfen.
+    - **Θ:** Kompilierter PDF-Draft mit vollständigem Literaturblock.
+    - **Status:** primed
+    - **Quelle:** `experiments/AI/ClaudesTake.txt`
+
+14. **Zenodo-Metadaten & Lizenz festlegen.**
+    - **R:** Titel, Autor:innen, Keywords, License, Related identifiers.
+    - **Θ:** Upload-Template + konsistente Repo-Verweise.
+    - **Status:** primed
+    - **Quelle:** `experiments/AI/ClaudesTake.txt`
+
+15. **Supplementary Materials paketieren.**
+    - **R:** 78 β-values CSV, IGES-Simulator-Snippets, Master-Indizes als Appendix.
+    - **Θ:** Supplements verknüpft + Evidence-Pfade im Manuskript.
+    - **Status:** primed
+    - **Quelle:** `experiments/AI/ClaudesTake.txt`
+
+16. **Falsifizierbarkeit & Limitations ausarbeiten.**
+    - **R:** 4 testbare Hypothesen, Limitations, Alternative-Erklärungen.
+    - **Θ:** Review-ready Abschnitt inkl. Nullmodell/ΔAIC-Hinweisen.
+    - **Status:** primed
+    - **Quelle:** `experiments/AI/ClaudesTake.txt`, `experiments/AI/Paper-Grundlagen.txt`
+
+### Sience-2026 UTAC Kontext — Synthese
+17. **ρ_I Definition konsolidieren.**
+    - **R:** Informationsdichte als Bit/Planck-Volumen oder Wirkungsdichte präzisieren.
+    - **Θ:** Definition + Messbarkeit im „UTAC Synthesis“-Dokument verankern.
+    - **Status:** primed
+    - **Quelle:** `experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt`
+
+18. **Tyg6-Field & Metrik-Vorzeichen prüfen.**
+    - **R:** Rollenklärung für Tyg6, Integrationszeit τ, Dual-Time-Metrik.
+    - **Θ:** Signatur-Entscheid + Begründung dokumentieren.
+    - **Status:** primed
+    - **Quelle:** `experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt`
+
+19. **Implosive Genesis Equation Set (IGES) finalisieren.**
+    - **R:** Genesis-, Field-, Metric- und Entropy-Equation strukturieren.
+    - **Θ:** Gleichungssatz als eigenes Dokument inkl. Nullmodell-Referenzen.
+    - **Status:** primed
+    - **Quelle:** `experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt`
+
+20. **UTAC Synthesis & Retrofit-Brücke bündeln.**
+    - **R:** v2/v3 und v6/v9 Pfade in Synthese verdichten.
+    - **Θ:** Draft mit Versionen-Matrix und Evidence-Links.
+    - **Status:** primed
+    - **Quelle:** `experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt`
+
+21. **v9 Executive Summary erstellen.**
+    - **R:** Kurzfassung für Physik, Klima, Neuro.
+    - **Θ:** Drei Zielgruppen + Evidenz-Links.
+    - **Status:** primed
+    - **Quelle:** `experiments/Sience-2026_UTAC-Kontext/ZusammenführungUTACVersionen.txt`
+
 ### NeuroProfile — Pilot & Crystal_Answer
-8. **PSRM-Pilotstudie (5–10 Probanden) durchführen.**
+22. **PSRM-Pilotstudie (5–10 Probanden) durchführen.**
    - **R:** Kalibrierung, CREP-Stabilität, AUC-Auswertung.
    - **Θ:** Datensatz + Nullmodellvergleich + CI-Protokoll.
    - **Status:** primed
    - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt`
 
-9. **Crystal_Answer Kernel & UI-Module entwickeln.**
+23. **Crystal_Answer Kernel & UI-Module entwickeln.**
    - **R:** Antwort-Vektor, CREP-Kohärenz-Scan, Fusion Engine, Resolver, CrystalMap UI.
    - **Θ:** Modul-Gerüst + Validierungsplan.
    - **Status:** primed
    - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt`
 
-10. **Publikationspfad für NeuroProfile koordinieren.**
+24. **Publikationspfad für NeuroProfile koordinieren.**
     - **R:** arXiv-Preprint, GitHub Release, Zenodo Pilot-Studie, Konferenz-Einreichung.
     - **Θ:** Veröffentlichungskalender + Evidenz-Anhänge.
     - **Status:** primed
     - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt`
 
-**Detail-Laterne:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.{md,json,yaml}`
+**Detail-Laternen:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.{md,json,yaml}`, `experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.{md,json,yaml}`, `experiments/AI/ai_utac_todo_lantern.{md,json,yaml}`, `experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.{md,json,yaml}`
 
 ---
 

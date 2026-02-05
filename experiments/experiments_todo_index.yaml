@@ -1,7 +1,7 @@
 meta:
   title: Experiments Todo Index — MOR-FIT Action Ledger
-  version: 1.0.0
-  created: '2026-02-05T10:10:25Z'
+  version: 1.1.0
+  created: '2026-02-05T10:29:12Z'
   status: active
   scope: experiments/
 logistic_state:
@@ -74,8 +74,8 @@ todo_items:
   - experiments/Phaethon_Geminiden_Bennu/docs/Phaethon_Geminiden_Bennu.txt
 - id: exp-todo-004
   domain: Phaethon_Geminiden_Bennu
-  summary: Historische Beobachtungen (10 v. Chr.–10 n. Chr.), Bahn-Rückrechnungen und
-    Alter des Geminidenstroms für die Synchronizitäts-These evaluieren.
+  summary: Historische Beobachtungen (10 v. Chr.–10 n. Chr.), Bahn-Rückrechnungen
+    und Alter des Geminidenstroms für die Synchronizitäts-These evaluieren.
   status: primed
   null_models:
   - linear
@@ -113,8 +113,8 @@ todo_items:
   - experiments/Entropy_in_Climate/NextSteps.txt
 - id: exp-todo-007
   domain: Entropy_in_Climate
-  summary: Zenodo v12-Alpha Paper zur Brücke zwischen Radio-Galaxien-Anomalie und Neuro-Resonanz
-    vorbereiten.
+  summary: Zenodo v12-Alpha Paper zur Brücke zwischen Radio-Galaxien-Anomalie und
+    Neuro-Resonanz vorbereiten.
   status: primed
   null_models:
   - linear
@@ -126,8 +126,8 @@ todo_items:
   - experiments/Entropy_in_Climate/NextSteps.txt
 - id: exp-todo-008
   domain: NeuroProfile
-  summary: PSRM-Pilotstudie mit 5–10 Probanden inkl. Kalibrierung, CREP-Stabilität und
-    AUC-Auswertung durchführen.
+  summary: PSRM-Pilotstudie mit 5–10 Probanden inkl. Kalibrierung, CREP-Stabilität
+    und AUC-Auswertung durchführen.
   status: primed
   null_models:
   - linear
@@ -140,8 +140,8 @@ todo_items:
   - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.json
 - id: exp-todo-009
   domain: NeuroProfile
-  summary: Crystal_Answer Kernel (Answer-Vektor, CREP-Scan, Fusion Engine, Resolver) plus
-    CrystalMap UI und Sigillin Resonator ausarbeiten.
+  summary: Crystal_Answer Kernel (Answer-Vektor, CREP-Scan, Fusion Engine, Resolver)
+    plus CrystalMap UI und Sigillin Resonator ausarbeiten.
   status: primed
   null_models:
   - linear
@@ -154,7 +154,8 @@ todo_items:
   - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.json
 - id: exp-todo-010
   domain: NeuroProfile
-  summary: Publikationspfad (arXiv, GitHub Release, Zenodo Pilot-Studie, Konferenz) koordinieren.
+  summary: Publikationspfad (arXiv, GitHub Release, Zenodo Pilot-Studie, Konferenz)
+    koordinieren.
   status: primed
   null_models:
   - linear
@@ -165,6 +166,204 @@ todo_items:
   sources:
   - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt
   - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.json
+- id: exp-todo-011
+  domain: Entropy_in_Climate
+  summary: Klimadaten-Pipeline für σΦ (NOAA ENSO, NSIDC Sea Ice) aufsetzen und 1950–2024
+    Zeitreihe mit 0.0625-Referenz + CI-Notiz plotten.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Entropy_in_Climate/Grundlagen.txt
+  - experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.json
+- id: exp-todo-012
+  domain: Entropy_in_Climate
+  summary: CMIP6-Kipppunkt-Analyse (AMOC/Amazon) mit spektraler Entropie + σΦ-Drift
+    gegen Critical-Slowing-Down-Nullmodelle validieren.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Entropy_in_Climate/SucheGemini.txt
+  - experiments/Entropy_in_Climate/Research.txt
+  - experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.json
+- id: exp-todo-013
+  domain: Entropy_in_Climate
+  summary: Unified σΦ-Tooling (v10–v12 Brücke) als Master-Klasse für EEG/Klima/Sgr
+    A* skizzieren und Validierungsplan (Nullmodelle, ΔAIC/CI) definieren.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Entropy_in_Climate/Grundlagen.txt
+  - experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.json
+- id: exp-todo-014
+  domain: Entropy_in_Climate
+  summary: Zenodo-Visualisierung (3D-Plot Spektralentropie × σΦ × Time-to-Collapse)
+    im v12-Alpha Manuskript verankern.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Entropy_in_Climate/Final talk.txt
+  - experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.json
+- id: exp-todo-015
+  domain: AI
+  summary: Zenodo-fähiges LaTeX-Paper (Option A + A3, akademischer Ton) konsolidieren,
+    inkl. IGES, v_RIG, Mandala-Protocol und Tabellen.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/AI/MSCopilotKommunikation.txt
+  - experiments/AI/UTAC Implosive Genesis.tex
+  - experiments/AI/ai_utac_todo_lantern.json
+- id: exp-todo-016
+  domain: AI
+  summary: Build- & Compile-Check (pdflatex/bibtex) durchführen und PDF-Draft mit
+    vollständigem Literaturblock erzeugen.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/AI/ClaudesTake.txt
+  - experiments/AI/ai_utac_todo_lantern.json
+- id: exp-todo-017
+  domain: AI
+  summary: Zenodo-Metadaten (Title/Authors/Keywords/License/Related identifiers) festlegen
+    und Upload-Template verknüpfen.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/AI/ClaudesTake.txt
+  - experiments/AI/ai_utac_todo_lantern.json
+- id: exp-todo-018
+  domain: AI
+  summary: Supplementary Materials (78 β-values CSV, IGES-Simulator-Snippets, Master-Indizes)
+    paketieren und im Manuskript referenzieren.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/AI/ClaudesTake.txt
+  - experiments/AI/ai_utac_todo_lantern.json
+- id: exp-todo-019
+  domain: AI
+  summary: Falsifizierbarkeit & Limitations (4 Hypothesen, Alternative-Erklärungen)
+    als Review-ready Abschnitt ausarbeiten.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/AI/ClaudesTake.txt
+  - experiments/AI/Paper-Grundlagen.txt
+  - experiments/AI/ai_utac_todo_lantern.json
+- id: exp-todo-020
+  domain: Sience-2026_UTAC-Kontext
+  summary: ρ_I-Definition (Bit/Planck-Volumen oder Wirkungsdichte) konsolidieren und
+    messbar in UTAC Synthesis verankern.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt
+  - experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.json
+- id: exp-todo-021
+  domain: Sience-2026_UTAC-Kontext
+  summary: Tyg6-Field-Rolle und Metrik-Vorzeichen (Dual-Time) prüfen und Signatur-Entscheid
+    dokumentieren.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt
+  - experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.json
+- id: exp-todo-022
+  domain: Sience-2026_UTAC-Kontext
+  summary: Implosive Genesis Equation Set (IGES) als eigenständigen Gleichungssatz
+    inkl. Nullmodell-Referenzen finalisieren.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt
+  - experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.json
+- id: exp-todo-023
+  domain: Sience-2026_UTAC-Kontext
+  summary: UTAC Synthesis Draft erstellen, der v2/v3 und v6/v9 Versionen-Matrix verbindet.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt
+  - experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.json
+- id: exp-todo-024
+  domain: Sience-2026_UTAC-Kontext
+  summary: v9 Executive Summary für Physik/Klima/Neuro schreiben und Evidenz-Links
+    bündeln.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Sience-2026_UTAC-Kontext/ZusammenführungUTACVersionen.txt
+  - experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.json
 resonance_note: Die Aufgaben bleiben im Steilhang der σ(β(R-Θ))-Membran, bis Nullmodelle,
   ΔAIC/CI und Evidenzpfade bestätigt sind. Die Todo-Laternen koppeln an Experiments-Index
   und UTAC-Matrix, damit ζ(R) ruhig bleibt.

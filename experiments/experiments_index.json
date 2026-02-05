@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Experiments Index — MOR-FIT Trilayer Ledger",
-    "version": "1.1.0",
-    "created": "2026-02-05T10:10:25Z",
+    "version": "1.2.0",
+    "created": "2026-02-05T10:29:12Z",
     "status": "active",
     "scope": "experiments/"
   },
@@ -64,7 +64,10 @@
           "experiments/AI/Unified-Mandala_ Implosive Genesis Framework.pdf",
           "experiments/AI/Universal Thermodynamic Adaptive Criticality (UTAC) Formalizing the Phase Transition from Surface to Volume Entropy and the v-RIG Invariant.pdf",
           "experiments/AI/Universal Thermodynamic Adaptive Criticality (UTAC) Formalizing the Phase Transition from Surface to Volume Entropy and the v-RIG Invariant.tex",
-          "experiments/AI/grokAnalyseUTAC Implosive Genesis.pdf"
+          "experiments/AI/grokAnalyseUTAC Implosive Genesis.pdf",
+          "experiments/AI/ai_utac_todo_lantern.md",
+          "experiments/AI/ai_utac_todo_lantern.json",
+          "experiments/AI/ai_utac_todo_lantern.yaml"
         ]
       },
       "Entropy_in_Climate": {
@@ -92,7 +95,10 @@
           "experiments/Entropy_in_Climate/research-Neuronale Beta-Kohärenz und Maximum Entropy Production in biologischen Systemen.pdf",
           "experiments/Entropy_in_Climate/research-Spektrale Entropie-Signaturen als Frühwarnsystem für kritische Klimatransitionen in CMIP6-Modellen.pdf",
           "experiments/Entropy_in_Climate/research-UTAC-Informed Entropy Metrics for Climate Tipping Point Detection.pdf",
-          "experiments/Entropy_in_Climate/zenodo_paper_pdf(1).html"
+          "experiments/Entropy_in_Climate/zenodo_paper_pdf(1).html",
+          "experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.md",
+          "experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.json",
+          "experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.yaml"
         ]
       },
       "Phaethon_Geminiden_Bennu": {
@@ -177,16 +183,16 @@
             "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/Sagittarius A as a Metastable Entropy Modulator.pdf",
             "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/Sagittarius A_ and Star Formation in the UTAC Framework.pdf",
             "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/research/__Umfassende Bewertung des GenesisAeon_Feldtheorie-Ansatzes__.pdf",
-          "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v11_implementation_steps.json",
-          "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v11_implementation_steps.md",
-          "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v11_implementation_steps.yaml",
-          "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v12_implementation_steps.json",
-          "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v12_implementation_steps.md",
-          "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v12_implementation_steps.yaml",
-          "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.json",
-          "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.md",
-          "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.yaml",
-          "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/figures/README.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v11_implementation_steps.json",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v11_implementation_steps.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v11_implementation_steps.yaml",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v12_implementation_steps.json",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v12_implementation_steps.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v12_implementation_steps.yaml",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.json",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.md",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.yaml",
+            "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/figures/README.md",
             "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/neuroprofile_index.json",
             "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/neuroprofile_index.md",
             "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/neuroprofile_index.yaml",
@@ -290,7 +296,10 @@
           "experiments/Sience-2026_UTAC-Kontext/ZusammenführungUTACVersionen.txt",
           "experiments/Sience-2026_UTAC-Kontext/files(23).zip",
           "experiments/Sience-2026_UTAC-Kontext/grokAnalyseEmergenz.pdf",
-          "experiments/Sience-2026_UTAC-Kontext/research-UTAC-kompatible Paradigmen jenseits des kosmologischen Standardmodells.pdf"
+          "experiments/Sience-2026_UTAC-Kontext/research-UTAC-kompatible Paradigmen jenseits des kosmologischen Standardmodells.pdf",
+          "experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.md",
+          "experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.json",
+          "experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.yaml"
         ]
       }
     }
