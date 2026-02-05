@@ -123,3 +123,21 @@ def test_documentation_and_coverage_detection(tmp_path: Path, monkeypatch) -> No
     assert lantern["documentation"]["readme"] == "docs/README.md"
     assert lantern["morfit_layers"]["documentation"] == "active"
     assert lantern["test_coverage"]["status"] == "passing"
+
+
+def test_mandala_bridge_validation(tmp_path: Path) -> None:
+    """Mandala bridge status should validate when the PSRM schema exists."""
+    schema_path = tmp_path / "schemas" / "psrm_map.schema.json"
+    schema_path.parent.mkdir(parents=True)
+    schema_path.write_text("{}", encoding="utf-8")
+
+    payload = build_lantern_net(
+        lantern_hub=_sample_lantern_hub(readiness=0.88),
+        bootstrap_ledger=None,
+        crep_ledger=None,
+        base_path=tmp_path,
+    )
+
+    mandala = payload["lanterns"][0]["mandala_bridge"]
+    assert mandala["status"] == "validated"
+    assert mandala["schema"] == "schemas/psrm_map.schema.json"
