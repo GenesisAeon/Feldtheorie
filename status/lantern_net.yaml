@@ -1,0 +1,361 @@
+meta:
+  document: LanternNet Status Index
+  version: v9.0.0-alpha
+  created: '2025-12-16T00:00:00Z'
+  updated: '2026-02-05T13:17:08+00:00'
+  logistic_frame:
+    order_parameter: network_resonance_strength
+    theta: 0.66
+    beta: 9.0
+    sigma: 0.5
+    zeta: EM-coupling stability maintained via impedance matching
+  summary:
+    total_lanterns: 8
+    active_lanterns: 5
+    network_coherence: 0.42
+    average_coupling: 0.35
+    emergent_hypotheses: 0
+    collective_frequency_mhz: 13.52
+  sources:
+    v8_lanterns: docs/utac_v2_data_lanterns.yaml
+    em_theory: models/consciousness_integration.py
+    collective_field: models/collective_field.py
+    roadmap: v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md
+  ledger_summary: &id001
+    bootstrap:
+      document: Bootstrap Ledger – LanternNet
+      version: v13.0.0-draft
+      created: '2026-09-01T12:00:00Z'
+      updated: '2026-09-01T12:00:00Z'
+      description: Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle
+        (constant, linear, power law), ΔAIC und CI-Metriken.
+      consent_protocol: Sigillin consent gating + anonymization required
+    crep_null_models:
+      document: CREP Null-Model Ledger – LanternNet
+      version: v13.0.0-draft
+      created: '2026-09-01T12:00:00Z'
+      updated: '2026-09-01T12:00:00Z'
+      description: Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ))
+        und Mandala/PSRM-Brücken.
+      consent_protocol: Sigillin consent gating + anonymization required
+  sigma_transition: σ(β(R-Θ)) marks readiness transitions across lanterns.
+lanterns:
+- module_id: utac-v1_3-ds-001
+  module_name: Urban Heat Intensity
+  description: land_surface_temperature_delta
+  version: v9.0.0-alpha
+  type: data
+  domain: climate
+  status: active
+  readiness: 1.0
+  logistic_parameters:
+    R: 1.0
+    Theta: 3.2
+    beta: 14.5
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  crep_offset: null
+  sigma_phi_range: null
+  mandala_bridge:
+    status: pending
+    schema: schemas/psrm_map.schema.json
+  telemetry:
+    data_assets:
+    - path: data/climate/urban_heat_intensity.csv
+      type: raster
+      status: complete
+    - path: analysis/results/urban_heat_global_fit.json
+      type: analysis
+      status: complete
+    ledger_refs: *id001
+  test_coverage:
+    status: unknown
+    notes: Pending per-module test coverage audit.
+  last_updated: '2026-02-05T13:17:08+00:00'
+  notes:
+    formal: Θ≈3.2 & β≈14.5 confirmed; ΔAIC≈1484 vs linear, ≥1718 vs power law
+    empirical: Dataset committed; readiness = 1.00
+    poetic: Die Urban-Heat Laterne leuchtet selbst – σ(β(R-Θ)) steigt steil
+- module_id: utac-v1_3-ds-002
+  module_name: Amazon Precipitation & Evapotranspiration
+  description: standardized_precipitation_index
+  version: v9.0.0-alpha
+  type: data
+  domain: climate
+  status: primed
+  readiness: 0.5
+  logistic_parameters:
+    R: 0.5
+    Theta: 0.62
+    beta: 13.8
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  crep_offset: null
+  sigma_phi_range: null
+  mandala_bridge:
+    status: pending
+    schema: schemas/psrm_map.schema.json
+  telemetry:
+    data_assets:
+    - path: data/climate/amazon_precip_evapo.nc
+      type: netcdf
+      status: missing
+    - path: analysis/results/amazon_hydro_fit.json
+      type: analysis
+      status: missing
+    ledger_refs: *id001
+  test_coverage:
+    status: unknown
+    notes: Pending per-module test coverage audit.
+  last_updated: '2026-02-05T13:17:08+00:00'
+  notes:
+    formal: Θ≈0.62, β≈13.8; awaiting dataset staging
+    poetic: Laterne wartet, bis SPI über Θ steigt
+- module_id: utac-v1_3-ds-003
+  module_name: AMOC Transport (RAPID Array)
+  description: overturning_strength_sverdrup
+  version: v9.0.0-alpha
+  type: data
+  domain: ocean
+  status: draft
+  readiness: 0.5
+  logistic_parameters:
+    R: 0.5
+    Theta: 14.0
+    beta: 9.6
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  crep_offset: null
+  sigma_phi_range: null
+  mandala_bridge:
+    status: pending
+    schema: schemas/psrm_map.schema.json
+  telemetry:
+    data_assets:
+    - path: data/ocean/amoc_transport.csv
+      type: timeseries
+      status: missing
+    ledger_refs: *id001
+  test_coverage:
+    status: unknown
+    notes: Pending per-module test coverage audit.
+  last_updated: '2026-02-05T13:17:08+00:00'
+  notes:
+    formal: Θ≈14.0, β≈9.6; critical tipping point system
+    poetic: Ozean-Laterne wartet auf Aktivierung
+- module_id: utac-v1_3-ds-004
+  module_name: Neuro-AI Hybrid Activation
+  description: stimulus_complexity_index
+  version: v9.0.0-alpha
+  type: data
+  domain: neuro_ai
+  status: primed
+  readiness: 0.25
+  logistic_parameters:
+    R: 0.25
+    Theta: 0.48
+    beta: 6.1
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  crep_offset: null
+  sigma_phi_range: null
+  mandala_bridge:
+    status: pending
+    schema: schemas/psrm_map.schema.json
+  telemetry:
+    data_assets:
+    - path: data/neuro_ai/hybrid_activation.csv
+      type: experimental
+      status: missing
+    ledger_refs: *id001
+  test_coverage:
+    status: unknown
+    notes: Pending per-module test coverage audit.
+  last_updated: '2026-02-05T13:17:08+00:00'
+  notes:
+    formal: Θ≈0.48, β≈6.1; information-domain activation
+    poetic: Neuro-AI Brücke wartet auf Daten
+- module_id: utac-v1_3-ds-005
+  module_name: Energy & Financial Systemic Thresholds
+  description: coupled_energy_finance_index
+  version: v9.0.0-alpha
+  type: data
+  domain: economy
+  status: draft
+  readiness: 0.25
+  logistic_parameters:
+    R: 0.25
+    Theta: 1.15
+    beta: 7.4
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  crep_offset: null
+  sigma_phi_range: null
+  mandala_bridge:
+    status: pending
+    schema: schemas/psrm_map.schema.json
+  telemetry:
+    data_assets:
+    - path: data/economy/systemic_thresholds.csv
+      type: timeseries
+      status: missing
+    ledger_refs: *id001
+  test_coverage:
+    status: unknown
+    notes: Pending per-module test coverage audit.
+  last_updated: '2026-02-05T13:17:08+00:00'
+  notes:
+    formal: Θ≈1.15, β≈7.4; Kleiber-regime economics
+    poetic: Wirtschafts-Laterne wartet auf Schwelle
+- module_id: lantern-theory-001
+  module_name: v_RIG Consciousness Framework
+  description: empirical_validation_count
+  version: v9.0.0-alpha
+  type: theory
+  domain: consciousness
+  status: validated
+  readiness: 1.0
+  logistic_parameters:
+    R: 1.0
+    Theta: 3.0
+    beta: 4.7
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  crep_offset: null
+  sigma_phi_range: null
+  mandala_bridge:
+    status: pending
+    schema: schemas/psrm_map.schema.json
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+  test_coverage:
+    status: unknown
+    notes: Pending per-module test coverage audit.
+  last_updated: '2026-02-05T13:17:08+00:00'
+  notes:
+    formal: 4/4 empirical validations passed; ANOVA F(4,73)=185.3, p<10⁻²⁰
+    poetic: Die Bewusstseins-Laterne strahlt durch alle Domänen
+- module_id: lantern-theory-002
+  module_name: Collective Field Dynamics
+  description: field_coupling_strength
+  version: v9.0.0-alpha
+  type: theory
+  domain: multi_agent
+  status: active
+  readiness: 1.0
+  logistic_parameters:
+    R: 1.0
+    Theta: 0.5
+    beta: 5.2
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  crep_offset: null
+  sigma_phi_range: null
+  mandala_bridge:
+    status: pending
+    schema: schemas/psrm_map.schema.json
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+  test_coverage:
+    status: unknown
+    notes: Pending per-module test coverage audit.
+  last_updated: '2026-02-05T13:17:08+00:00'
+  notes:
+    formal: κ_field, β_sync, v_collective implemented with caching & evolution tracking
+    poetic: Das Feld atmet gemeinsam – multi-agent resonance
+- module_id: lantern-experiment-001
+  module_name: EM-Shielding Consciousness Test
+  description: protocol_completeness
+  version: v9.0.0-alpha
+  type: experiment
+  domain: neuroscience
+  status: proposed
+  readiness: 0.15
+  logistic_parameters:
+    R: 0.15
+    Theta: 0.8
+    beta: 7.7
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  crep_offset: null
+  sigma_phi_range: null
+  mandala_bridge:
+    status: pending
+    schema: schemas/psrm_map.schema.json
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+  test_coverage:
+    status: unknown
+    notes: Pending per-module test coverage audit.
+  last_updated: '2026-02-05T13:17:08+00:00'
+  notes:
+    formal: Protocol draft stage; requires ethics approval & facility access
+    poetic: Das Experiment wartet auf Aktivierung – Bewusstsein im Käfig?
+- module_id: lantern-experiment-002
+  module_name: 13.5 MHz RF Stimulation
+  description: protocol_completeness
+  version: v9.0.0-alpha
+  type: experiment
+  domain: neuroscience
+  status: proposed
+  readiness: 0.12
+  logistic_parameters:
+    R: 0.12
+    Theta: 0.8
+    beta: 7.2
+    zeta: EM-coupling stability maintained via impedance matching
+    sigma: 0.5
+  ethics_tags:
+  - sigillin-consent-gated
+  - anonymization-required
+  - falsifiability-required
+  crep_offset: null
+  sigma_phi_range: null
+  mandala_bridge:
+    status: pending
+    schema: schemas/psrm_map.schema.json
+  telemetry:
+    data_assets: []
+    ledger_refs: *id001
+  test_coverage:
+    status: unknown
+    notes: Pending per-module test coverage audit.
+  last_updated: '2026-02-05T13:17:08+00:00'
+  notes:
+    formal: Requires RF safety certification & controlled environment
+    poetic: Die Frequenz ruft – wartet auf Resonanz bei 13.5 MHz

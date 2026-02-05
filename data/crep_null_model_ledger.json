@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "document": "CREP Null-Model Ledger – LanternNet",
+    "version": "v13.0.0-draft",
+    "created": "2026-09-01T12:00:00Z",
+    "updated": "2026-09-01T12:00:00Z",
+    "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
+    "consent_protocol": "Sigillin consent gating + anonymization required"
+  },
+  "entries": [
+    {
+      "id": "crep-null-0001",
+      "module": "LanternNet",
+      "scope": "v9_alpha/lantern_hub",
+      "consent_token_hash": "pending",
+      "null_models": [
+        {
+          "name": "constant",
+          "delta_aic": null
+        },
+        {
+          "name": "linear",
+          "delta_aic": null
+        },
+        {
+          "name": "power_law",
+          "delta_aic": null
+        }
+      ],
+      "crep_offset": null,
+      "ci_95": {
+        "crep_offset": [
+          null,
+          null
+        ]
+      },
+      "status": "draft",
+      "notes": {
+        "formal": "ΔAIC-Offsets noch nicht berechnet; Nullmodell-Gerüst vorhanden.",
+        "empirical": "Synthetic Runs für CREP-Offsets ausstehend.",
+        "poetic": "Das Schattenmodell wartet, bis die Laternen ihre Resonanz offenbaren."
+      }
+    }
+  ]
+}

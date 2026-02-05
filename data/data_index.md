@@ -12,6 +12,8 @@ Die **Data Resonance Archive** - der empirische Schatz von UTAC! Hier liegen die
 
 ```
 data/
+├── bootstrap_ledger.* (3 files)  🧪 Bootstrap-ΔAIC Ledger
+├── crep_null_model_ledger.* (3 files)  🌑 CREP-Nullmodelle
 ├── ai/               (9 files)  🤖 LLM, Wei's PaLM
 ├── astrophysics/     (2 files)  🌌 QPO, Black Holes
 ├── biology/          (8 files)  🧬 Lenski, Synaptic, Honeybee, Coral
@@ -25,7 +27,7 @@ data/
 ├── neuro_ai/        (2 files)  🧠🤖 Hybrid Activation Staging + Metadata
 └── economy/         (2 files)  ⚡💶 Energy-Finance Threshold Staging + Metadata
 
-Total: 70 files
+Total: 76 files
 ```
 
 ---
@@ -36,6 +38,8 @@ Total: 70 files
 - `derived/beta_estimates.csv` - **ALLE β-Werte!** (Kern von UTAC)
 - `derived/domain_covariates.csv` - Kovariaten für Meta-Regression v1.2
 - `utac_v1_3_data_manifest.yaml` - Planungsmanifest für neue Laternen (Climate, Ocean, Neuro-AI, Economy)
+- `bootstrap_ledger.*` - Bootstrap-Schätzungen für σ(β(R-Θ)) inkl. Nullmodelle
+- `crep_null_model_ledger.*` - CREP-Offsets & ΔAIC-Nullmodelle als Schatten-Ledger
 
 ### 🔥 **High-Impact Datasets:**
 - `ai/wei_emergent_abilities.csv` - Wei's PaLM (β=3.47±0.47)

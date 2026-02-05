@@ -14,13 +14,31 @@ meta:
   version: "1.0.0"
   created: "2025-11-06"
   status: "active"
-  total_files: 70
+  total_files: 76
   domains: 12
-  updated: "2026-08-24T18:10:00Z"
+  updated: "2026-09-01T12:00:00Z"
 
 # ═══════════════════════════════════════════════════════════════════
 # DOMAINS: Die 8 Datenquellen-Bereiche
 # ═══════════════════════════════════════════════════════════════════
+
+root_ledgers:
+  - name: "bootstrap_ledger"
+    files:
+      - "bootstrap_ledger.yaml"
+      - "bootstrap_ledger.json"
+      - "bootstrap_ledger.md"
+    description: "Bootstrap-Schätzungen für σ(β(R-Θ)) inkl. ΔAIC/CI-Nullmodelle."
+    status: "draft"
+    null_models: ["constant", "linear", "power_law"]
+  - name: "crep_null_model_ledger"
+    files:
+      - "crep_null_model_ledger.yaml"
+      - "crep_null_model_ledger.json"
+      - "crep_null_model_ledger.md"
+    description: "CREP-Nullmodelle & ΔAIC-Offsets als Schatten-Sigillin der Laternen."
+    status: "draft"
+    null_models: ["constant", "linear", "power_law"]
 
 domains:
   ai:
