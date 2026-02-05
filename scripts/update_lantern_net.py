@@ -28,19 +28,31 @@ CONSENT_PROMPT = (
 
 # Module-to-test-path mappings for coverage detection
 MODULE_TEST_MAPPINGS: dict[str, list[str]] = {
+    # Data Lanterns
     "utac-v1_3-ds-001": ["tests/test_urban_heat.py", "analysis/tests/test_urban_heat_canopy_fit.py"],
     "utac-v1_3-ds-002": ["tests/test_amazon_resilience.py"],
     "utac-v1_3-ds-003": ["tests/test_amoc_transport.py"],
     "utac-v1_3-ds-004": ["tests/test_neuro_ai_hybrid.py"],
     "utac-v1_3-ds-005": ["tests/test_systemic_thresholds.py"],
+    # Theory Lanterns
     "lantern-theory-001": ["tests/test_consciousness_integration.py", "tests/test_v_rig.py"],
     "lantern-theory-002": ["tests/test_collective_field.py"],
+    # Experiment Lanterns
     "lantern-experiment-001": ["tests/test_em_shielding.py"],
     "lantern-experiment-002": ["tests/test_rf_stimulation.py"],
     "exp-neuroprofile-001": [
         "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/test_neuro_profile.py",
         "tests/experiments/test_neuroprofile.py",
     ],
+    # Seed/Sigillin Lanterns (v13.1 Expansion)
+    "seed-type6-001": ["tests/test_type6_implosive.py"],
+    "seed-aletheia-001": ["tests/test_llm_emergence.py", "tests/experiments/test_aletheia.py"],
+    "seed-klimakluft-001": ["tests/test_klimakluft_amplifier.py"],
+    "seed-wolfmessing-001": ["tests/test_wolf_messing_bridge.py"],
+    "seed-neurokosmos-001": ["tests/test_neuro_kosmos_bridge.py"],
+    # Governance Lanterns
+    "metaquest-system-001": ["tests/test_metaquest_system.py"],
+    "metaquest-campaign-001": ["tests/test_metaquest_campaign.py"],
 }
 
 
