@@ -43,6 +43,35 @@ def _ledger_refs(bootstrap_ledger: Optional[Path], crep_ledger: Optional[Path]) 
     return refs
 
 
+def _normalize_key(value: Optional[str]) -> Optional[str]:
+    if value is None:
+        return None
+    return str(value).strip().lower()
+
+
+def _index_ledger_entries(ledger: Optional[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    if not ledger:
+        return {}
+    index: Dict[str, Dict[str, Any]] = {}
+    for entry in ledger.get("entries", []):
+        for key in (entry.get("module"), entry.get("module_id"), entry.get("scope")):
+            normalized = _normalize_key(key)
+            if normalized:
+                index[normalized] = entry
+    return index
+
+
+def _match_ledger_entry(
+    index: Dict[str, Dict[str, Any]],
+    module_id: Optional[str],
+    module_name: Optional[str],
+) -> Optional[Dict[str, Any]]:
+    for key in (_normalize_key(module_id), _normalize_key(module_name)):
+        if key and key in index:
+            return index[key]
+    return None
+
+
 def build_lantern_net(
     lantern_hub: Dict[str, Any],
     bootstrap_ledger: Optional[Dict[str, Any]] = None,
@@ -79,9 +108,15 @@ def build_lantern_net(
         "crep_null_models": crep_ledger.get("meta") if crep_ledger else None,
     }
     ledger_refs = _ledger_refs(bootstrap_ledger_path, crep_ledger_path)
+    bootstrap_index = _index_ledger_entries(bootstrap_ledger)
+    crep_index = _index_ledger_entries(crep_ledger)
 
     entries: List[Dict[str, Any]] = []
     for lantern in lantern_hub.get("lanterns", []):
+        module_id = lantern.get("id")
+        module_name = lantern.get("name")
+        bootstrap_entry = _match_ledger_entry(bootstrap_index, module_id, module_name)
+        crep_entry = _match_ledger_entry(crep_index, module_id, module_name)
         data_assets = lantern.get("data_assets", [])
         ethics_tags = lantern.get(
             "ethics_tags",
@@ -97,8 +132,8 @@ def build_lantern_net(
         )
         entries.append(
             {
-                "module_id": lantern.get("id"),
-                "module_name": lantern.get("name"),
+                "module_id": module_id,
+                "module_name": module_name,
                 "description": lantern.get("order_parameter", "UTAC lantern module"),
                 "version": meta.get("version"),
                 "type": lantern.get("type"),
@@ -124,8 +159,22 @@ def build_lantern_net(
                     "protocol": "Sigillin consent gating + anonymization required",
                 },
                 "documentation": documentation,
-                "crep_offset": None,
-                "sigma_phi_range": None,
+                "crep_offset": crep_entry.get("crep_offset") if crep_entry else None,
+                "sigma_phi_range": (
+                    bootstrap_entry.get("sigma_phi_range") if bootstrap_entry else None
+                ),
+                "null_models": {
+                    "bootstrap": bootstrap_entry.get("null_models") if bootstrap_entry else None,
+                    "crep": crep_entry.get("null_models") if crep_entry else None,
+                },
+                "ci_95": {
+                    "bootstrap": bootstrap_entry.get("ci_95") if bootstrap_entry else None,
+                    "crep": crep_entry.get("ci_95") if crep_entry else None,
+                },
+                "ledger_entries": {
+                    "bootstrap": bootstrap_entry.get("id") if bootstrap_entry else None,
+                    "crep_null_models": crep_entry.get("id") if crep_entry else None,
+                },
                 "mandala_bridge": {
                     "status": "pending",
                     "schema": "schemas/psrm_map.schema.json",
@@ -206,6 +255,10 @@ def _write_markdown(path: Path, payload: Dict[str, Any]) -> None:
                 f"- **Domain:** {lantern.get('domain')} | **Type:** {lantern.get('type')}",
                 f"- **Order Parameter:** {lantern.get('description')}",
                 f"- **Logistik:** R={params.get('R')}, Θ={params.get('Theta')}, β={params.get('beta')}, ζ={params.get('zeta')}",
+                f"- **σΦ Range:** {lantern.get('sigma_phi_range')}",
+                f"- **CREP Offset:** {lantern.get('crep_offset')}",
+                f"- **Ledger Entries:** bootstrap={lantern.get('ledger_entries', {}).get('bootstrap')}, "
+                f"crep={lantern.get('ledger_entries', {}).get('crep_null_models')}",
                 f"- **Ethics Tags:** {', '.join(lantern.get('ethics_tags', []))}",
                 f"- **Documentation:** README={lantern.get('documentation', {}).get('readme')}, "
                 f"Methodology={lantern.get('documentation', {}).get('methodology')}, "
