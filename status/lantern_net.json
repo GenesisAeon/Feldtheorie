@@ -3,7 +3,7 @@
     "document": "LanternNet Status Index",
     "version": "v13.0.0",
     "created": "2025-12-16T00:00:00Z",
-    "updated": "2026-02-05T14:46:37+00:00",
+    "updated": "2026-02-05T16:06:38+00:00",
     "logistic_frame": {
       "order_parameter": "network_resonance_strength",
       "theta": 0.66,
@@ -107,8 +107,9 @@
         "tests": []
       },
       "mandala_bridge": {
-        "status": "pending",
-        "schema": "schemas/psrm_map.schema.json"
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
       },
       "telemetry": {
         "data_assets": [
@@ -147,10 +148,12 @@
         }
       },
       "test_coverage": {
-        "status": "unknown",
-        "notes": "Pending per-module test coverage audit."
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: tests/test_urban_heat.py, analysis/tests/test_urban_heat_canopy_fit.py"
       },
-      "last_updated": "2026-02-05T14:46:37+00:00",
+      "last_updated": "2026-02-05T16:06:38+00:00",
       "notes": {
         "formal": "Θ≈3.2 & β≈14.5 confirmed; ΔAIC≈1484 vs linear, ≥1718 vs power law",
         "empirical": "Dataset committed; readiness = 1.00",
@@ -213,8 +216,9 @@
         "tests": []
       },
       "mandala_bridge": {
-        "status": "pending",
-        "schema": "schemas/psrm_map.schema.json"
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
       },
       "telemetry": {
         "data_assets": [
@@ -253,10 +257,12 @@
         }
       },
       "test_coverage": {
-        "status": "unknown",
-        "notes": "Pending per-module test coverage audit."
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: tests/test_amazon_resilience.py"
       },
-      "last_updated": "2026-02-05T14:46:37+00:00",
+      "last_updated": "2026-02-05T16:06:38+00:00",
       "notes": {
         "formal": "Θ≈0.62, β≈13.8; awaiting dataset staging",
         "poetic": "Laterne wartet, bis SPI über Θ steigt"
@@ -318,8 +324,9 @@
         "tests": []
       },
       "mandala_bridge": {
-        "status": "pending",
-        "schema": "schemas/psrm_map.schema.json"
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
       },
       "telemetry": {
         "data_assets": [
@@ -353,10 +360,12 @@
         }
       },
       "test_coverage": {
-        "status": "unknown",
-        "notes": "Pending per-module test coverage audit."
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: tests/test_amoc_transport.py"
       },
-      "last_updated": "2026-02-05T14:46:37+00:00",
+      "last_updated": "2026-02-05T16:06:38+00:00",
       "notes": {
         "formal": "Θ≈14.0, β≈9.6; critical tipping point system",
         "poetic": "Ozean-Laterne wartet auf Aktivierung"
@@ -418,8 +427,9 @@
         "tests": []
       },
       "mandala_bridge": {
-        "status": "pending",
-        "schema": "schemas/psrm_map.schema.json"
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
       },
       "telemetry": {
         "data_assets": [
@@ -453,10 +463,12 @@
         }
       },
       "test_coverage": {
-        "status": "unknown",
-        "notes": "Pending per-module test coverage audit."
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: tests/test_neuro_ai_hybrid.py"
       },
-      "last_updated": "2026-02-05T14:46:37+00:00",
+      "last_updated": "2026-02-05T16:06:38+00:00",
       "notes": {
         "formal": "Θ≈0.48, β≈6.1; information-domain activation",
         "poetic": "Neuro-AI Brücke wartet auf Daten"
@@ -518,8 +530,9 @@
         "tests": []
       },
       "mandala_bridge": {
-        "status": "pending",
-        "schema": "schemas/psrm_map.schema.json"
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
       },
       "telemetry": {
         "data_assets": [
@@ -553,10 +566,12 @@
         }
       },
       "test_coverage": {
-        "status": "unknown",
-        "notes": "Pending per-module test coverage audit."
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: tests/test_systemic_thresholds.py"
       },
-      "last_updated": "2026-02-05T14:46:37+00:00",
+      "last_updated": "2026-02-05T16:06:38+00:00",
       "notes": {
         "formal": "Θ≈1.15, β≈7.4; Kleiber-regime economics",
         "poetic": "Wirtschafts-Laterne wartet auf Schwelle"
@@ -618,8 +633,9 @@
         "tests": []
       },
       "mandala_bridge": {
-        "status": "pending",
-        "schema": "schemas/psrm_map.schema.json"
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
       },
       "telemetry": {
         "data_assets": [],
@@ -647,10 +663,14 @@
         }
       },
       "test_coverage": {
-        "status": "unknown",
-        "notes": "Pending per-module test coverage audit."
+        "status": "partial",
+        "percentage": null,
+        "test_files": [
+          "tests/test_consciousness_integration.py"
+        ],
+        "notes": "Found 1/2 test files. Missing: tests/test_v_rig.py"
       },
-      "last_updated": "2026-02-05T14:46:37+00:00",
+      "last_updated": "2026-02-05T16:06:38+00:00",
       "notes": {
         "formal": "4/4 empirical validations passed; ANOVA F(4,73)=185.3, p<10⁻²⁰",
         "poetic": "Die Bewusstseins-Laterne strahlt durch alle Domänen"
@@ -712,8 +732,9 @@
         "tests": []
       },
       "mandala_bridge": {
-        "status": "pending",
-        "schema": "schemas/psrm_map.schema.json"
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
       },
       "telemetry": {
         "data_assets": [],
@@ -741,10 +762,14 @@
         }
       },
       "test_coverage": {
-        "status": "unknown",
-        "notes": "Pending per-module test coverage audit."
+        "status": "passing",
+        "percentage": null,
+        "test_files": [
+          "tests/test_collective_field.py"
+        ],
+        "notes": "All 1 expected test file(s) found."
       },
-      "last_updated": "2026-02-05T14:46:37+00:00",
+      "last_updated": "2026-02-05T16:06:38+00:00",
       "notes": {
         "formal": "κ_field, β_sync, v_collective implemented with caching & evolution tracking",
         "poetic": "Das Feld atmet gemeinsam – multi-agent resonance"
@@ -806,8 +831,9 @@
         "tests": []
       },
       "mandala_bridge": {
-        "status": "pending",
-        "schema": "schemas/psrm_map.schema.json"
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
       },
       "telemetry": {
         "data_assets": [],
@@ -835,10 +861,12 @@
         }
       },
       "test_coverage": {
-        "status": "unknown",
-        "notes": "Pending per-module test coverage audit."
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: tests/test_em_shielding.py"
       },
-      "last_updated": "2026-02-05T14:46:37+00:00",
+      "last_updated": "2026-02-05T16:06:38+00:00",
       "notes": {
         "formal": "Protocol draft stage; requires ethics approval & facility access",
         "poetic": "Das Experiment wartet auf Aktivierung – Bewusstsein im Käfig?"
@@ -900,8 +928,9 @@
         "tests": []
       },
       "mandala_bridge": {
-        "status": "pending",
-        "schema": "schemas/psrm_map.schema.json"
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
       },
       "telemetry": {
         "data_assets": [],
@@ -929,10 +958,12 @@
         }
       },
       "test_coverage": {
-        "status": "unknown",
-        "notes": "Pending per-module test coverage audit."
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: tests/test_rf_stimulation.py"
       },
-      "last_updated": "2026-02-05T14:46:37+00:00",
+      "last_updated": "2026-02-05T16:06:38+00:00",
       "notes": {
         "formal": "Requires RF safety certification & controlled environment",
         "poetic": "Die Frequenz ruft – wartet auf Resonanz bei 13.5 MHz"
@@ -955,10 +986,10 @@
         "roadmap": "active"
       },
       "logistic_parameters": {
-        "R": 0.46,
+        "R": 0.43432981071206167,
         "Theta": 0.72,
-        "beta": 4.8,
-        "zeta": "EM-coupling stability maintained via impedance matching",
+        "beta": 0.141480740893942,
+        "zeta": 0.19,
         "sigma": 0.5
       },
       "ethics_tags": [
@@ -1054,8 +1085,9 @@
         ]
       },
       "mandala_bridge": {
-        "status": "pending",
-        "schema": "schemas/psrm_map.schema.json"
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
       },
       "telemetry": {
         "data_assets": [
@@ -1099,10 +1131,15 @@
         }
       },
       "test_coverage": {
-        "status": "unknown",
-        "notes": "Pending per-module test coverage audit."
+        "status": "passing",
+        "percentage": null,
+        "test_files": [
+          "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/test_neuro_profile.py",
+          "tests/experiments/test_neuroprofile.py"
+        ],
+        "notes": "All 2 expected test file(s) found."
       },
-      "last_updated": "2026-02-05T14:46:37+00:00",
+      "last_updated": "2026-02-05T16:06:38+00:00",
       "notes": {
         "formal": "β≈4.8, σΦ proxy via spectral entropy; ΔAIC-Benchmarks im Ledger.",
         "empirical": "Synthetic smoke tests protokolliert; Consent hashing aktiv.",

@@ -1,0 +1,394 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://feldtheorie.org/schemas/psrm_map.schema.json",
+  "title": "PSRM Map Schema",
+  "description": "Schema for Psycho-Somatic Resonance Mapping (PSRM) data structures. Validates module compatibility with the unified-mandala ecosystem and LanternNet integration.",
+  "type": "object",
+  "required": [
+    "meta",
+    "module_id",
+    "psrm_layers",
+    "resonance_parameters"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "description": "Document metadata following MOR-FIT principles",
+      "required": ["version", "created", "consent_protocol"],
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Schema version (SemVer)",
+          "pattern": "^v?[0-9]+\\.[0-9]+\\.[0-9]+(-[a-zA-Z0-9]+)?$"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO-8601 creation timestamp"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO-8601 last update timestamp"
+        },
+        "consent_protocol": {
+          "type": "string",
+          "description": "Sigillin consent gating protocol reference"
+        },
+        "morfit_compliance": {
+          "type": "object",
+          "description": "MOR-FIT layer compliance status",
+          "properties": {
+            "methodology": {"type": "boolean"},
+            "outcome": {"type": "boolean"},
+            "roadmap": {"type": "boolean"},
+            "falsifiability": {"type": "boolean"},
+            "integration": {"type": "boolean"},
+            "telemetry": {"type": "boolean"}
+          }
+        }
+      }
+    },
+    "module_id": {
+      "type": "string",
+      "description": "Unique identifier matching LanternNet lantern entry",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "module_name": {
+      "type": "string",
+      "description": "Human-readable module name"
+    },
+    "psrm_layers": {
+      "type": "object",
+      "description": "PSRM layer definitions for psycho-somatic resonance mapping",
+      "required": ["somatic", "psychic", "resonance"],
+      "properties": {
+        "somatic": {
+          "type": "object",
+          "description": "Somatic (body/physical) layer parameters",
+          "properties": {
+            "sensor_type": {
+              "type": "string",
+              "enum": ["EEG", "ECG", "HRV", "EMG", "EDA", "thermal", "pressure", "synthetic", "simulated"]
+            },
+            "sampling_rate_hz": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Data sampling rate in Hz"
+            },
+            "body_region": {
+              "type": "string",
+              "description": "Target body region or system"
+            },
+            "calibration_status": {
+              "type": "string",
+              "enum": ["calibrated", "uncalibrated", "pending", "synthetic"]
+            }
+          }
+        },
+        "psychic": {
+          "type": "object",
+          "description": "Psychic (mental/cognitive) layer parameters",
+          "properties": {
+            "task_type": {
+              "type": "string",
+              "enum": ["meditation", "attention", "emotion", "decision", "memory", "perception", "synthetic"]
+            },
+            "cognitive_load": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Normalized cognitive load estimate"
+            },
+            "consent_level": {
+              "type": "string",
+              "enum": ["full", "partial", "informed", "synthetic"],
+              "description": "Sigillin consent level for psychic data"
+            }
+          }
+        },
+        "resonance": {
+          "type": "object",
+          "description": "Resonance bridge between somatic and psychic layers",
+          "properties": {
+            "coupling_strength": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Normalized coupling strength (kappa)"
+            },
+            "resonance_frequency_hz": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Primary resonance frequency"
+            },
+            "phase_coherence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Phase coherence measure"
+            },
+            "bridge_type": {
+              "type": "string",
+              "enum": ["gamma_beta", "theta_alpha", "delta_sigma", "multiband", "synthetic"]
+            }
+          }
+        }
+      }
+    },
+    "resonance_parameters": {
+      "type": "object",
+      "description": "UTAC logistic resonance parameters",
+      "required": ["R", "Theta", "beta"],
+      "properties": {
+        "R": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Readiness parameter (open work metric, 0-1)"
+        },
+        "Theta": {
+          "type": "number",
+          "description": "Threshold parameter (activation point)"
+        },
+        "beta": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Steepness parameter (logistic slope, typically 2.5-16.3)"
+        },
+        "zeta": {
+          "oneOf": [
+            {"type": "number"},
+            {"type": "string"}
+          ],
+          "description": "Impedance damping parameter or description"
+        },
+        "sigma": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Sigma transition value from sigma(beta(R-Theta))"
+        }
+      }
+    },
+    "sigma_phi_proxy": {
+      "type": "object",
+      "description": "Spectral entropy proxy (sigma-Phi) measurements",
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Normalized spectral entropy value"
+        },
+        "range": {
+          "type": "array",
+          "items": {"type": "number"},
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "95% CI range [lower, upper]"
+        },
+        "target": {
+          "type": "number",
+          "description": "Target sigma-Phi value (e.g., 0.0625)"
+        },
+        "method": {
+          "type": "string",
+          "enum": ["fft_entropy", "wavelet_entropy", "permutation_entropy", "synthetic"]
+        }
+      }
+    },
+    "crep_metrics": {
+      "type": "object",
+      "description": "CREP (Consciousness Resonance Emergence Potential) metrics",
+      "properties": {
+        "aggregate": {
+          "type": "number",
+          "description": "Aggregate CREP score"
+        },
+        "offset": {
+          "type": "number",
+          "description": "CREP offset from baseline"
+        },
+        "components": {
+          "type": "object",
+          "properties": {
+            "beta_proximity": {"type": "number"},
+            "sigma_phi_deviation": {"type": "number"},
+            "resonance_alignment": {"type": "number"}
+          }
+        },
+        "warning_threshold": {
+          "type": "number",
+          "description": "CREP warning threshold"
+        }
+      }
+    },
+    "null_models": {
+      "type": "array",
+      "description": "Null model comparisons for falsifiability",
+      "items": {
+        "type": "object",
+        "required": ["name", "delta_aic"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": ["constant", "linear", "power_law", "exponential", "thermal_only", "random_emission"]
+          },
+          "delta_aic": {
+            "type": "number",
+            "description": "Delta AIC relative to best model"
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Model-specific parameters"
+          }
+        }
+      }
+    },
+    "mandala_extension": {
+      "type": "object",
+      "description": "Mandala ecosystem extension hooks",
+      "properties": {
+        "compatible": {
+          "type": "boolean",
+          "description": "Whether module is mandala-compatible"
+        },
+        "extension_type": {
+          "type": "string",
+          "enum": ["core", "peripheral", "experimental", "synthetic"]
+        },
+        "hooks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "endpoint": {"type": "string"},
+              "protocol": {"type": "string", "enum": ["sync", "async", "stream"]}
+            }
+          }
+        },
+        "unified_mandala_version": {
+          "type": "string",
+          "description": "Compatible unified-mandala version"
+        }
+      }
+    },
+    "ethics": {
+      "type": "object",
+      "description": "Ethics and consent tracking",
+      "properties": {
+        "consent_required": {
+          "type": "boolean"
+        },
+        "anonymization_applied": {
+          "type": "boolean"
+        },
+        "consent_token_hash": {
+          "type": "string",
+          "description": "SHA-256 hash of consent token (never store raw tokens)"
+        },
+        "ethics_tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "sigillin-consent-gated",
+              "anonymization-required",
+              "falsifiability-required",
+              "human-subjects",
+              "synthetic-data",
+              "open-data"
+            ]
+          }
+        },
+        "audit_log_ref": {
+          "type": "string",
+          "description": "Reference to ethics audit log entry"
+        }
+      }
+    },
+    "telemetry": {
+      "type": "object",
+      "description": "Telemetry and data asset references",
+      "properties": {
+        "data_assets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {"type": "string"},
+              "type": {"type": "string"},
+              "status": {
+                "type": "string",
+                "enum": ["complete", "missing", "synthetic", "active", "archived"]
+              }
+            }
+          }
+        },
+        "ledger_entries": {
+          "type": "object",
+          "properties": {
+            "bootstrap": {"type": ["string", "null"]},
+            "crep_null_models": {"type": ["string", "null"]}
+          }
+        },
+        "test_coverage": {
+          "type": "object",
+          "properties": {
+            "percentage": {"type": "number", "minimum": 0, "maximum": 100},
+            "status": {"type": "string", "enum": ["passing", "failing", "unknown", "pending"]},
+            "test_files": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "documentation": {
+      "type": "object",
+      "description": "Tri-layer documentation references",
+      "properties": {
+        "readme": {
+          "type": ["string", "null"],
+          "description": "Path to README.md"
+        },
+        "methodology": {
+          "type": ["string", "null"],
+          "description": "Path to methodology.md"
+        },
+        "roadmap": {
+          "type": ["string", "null"],
+          "description": "Path to roadmap.md"
+        }
+      }
+    },
+    "lanternnet_bridge": {
+      "type": "object",
+      "description": "LanternNet integration status",
+      "properties": {
+        "registered": {
+          "type": "boolean",
+          "description": "Whether module is registered in LanternNet index"
+        },
+        "lantern_id": {
+          "type": "string",
+          "description": "LanternNet lantern identifier"
+        },
+        "coupling_partners": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "List of coupled lantern IDs"
+        },
+        "network_coherence_contribution": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

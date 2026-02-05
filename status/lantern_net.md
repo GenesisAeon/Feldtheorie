@@ -4,7 +4,7 @@ Dieses Dokument bündelt $(R, \Theta, \beta, \zeta(R))$ für jede Laterne und
 markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 
 **Version:** v13.0.0
-**Updated:** 2026-02-05T14:46:37+00:00
+**Updated:** 2026-02-05T16:06:38+00:00
 
 ## Quellen
 - Lantern Hub: `docs/utac_v2_data_lanterns.yaml`
@@ -155,7 +155,7 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **MOR-FIT Layers:** code=prototype, documentation=active, roadmap=active
 - **Domain:** neuro | **Type:** experiment
 - **Order Parameter:** neuro_beta_sigma_phi_proxy
-- **Logistik:** R=0.46, Θ=0.72, β=4.8, ζ=EM-coupling stability maintained via impedance matching
+- **Logistik:** R=0.43432981071206167, Θ=0.72, β=0.141480740893942, ζ=0.19
 - **σΦ Range:** [0.9352193800343218, 0.943440237718606]
 - **CREP Offset:** -0.06567018928793833
 - **Ledger Entries:** bootstrap=bootstrap-run-0002, crep=crep-null-0002
