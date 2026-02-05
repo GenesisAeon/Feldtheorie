@@ -1,17 +1,17 @@
 # NeuroProfile Index – Resonance Lantern
 
 **ID:** neuroprofile-lantern-001
-**Version:** v12.1
+**Version:** v12.2
 **Scope:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile`
 **Status:** active
 
 ## Logistic Pulse
 
-- **R:** 0.58
+- **R:** 0.62
 - **Θ:** 0.74
 - **β:** 4.8
-- **ζ(R):** 0.22
-- **σ(β(R-Θ)):** 0.35
+- **ζ(R):** 0.19
+- **σ(β(R-Θ)):** 0.38
 
 ## Purpose
 
@@ -125,7 +125,8 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
 
 ## Telemetrie
 
-- **Last updated:** 2026-02-05T11:33:50Z
+- **Last updated:** 2026-02-05T23:45:00Z
+- **Test coverage:** 42 unit tests (100% pass)
 - **Evidence:**
   - `ai_search_logs/suche_chatgpt.txt`
   - `docs/notes/OverviewGrok.md`

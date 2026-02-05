@@ -99,6 +99,10 @@ class NeuroProfileModel:
         return (data - np.mean(data)) / (np.std(data) + 1e-9)
 
     def estimate_sigma_phi_proxy(self, series: np.ndarray) -> float:
+        """Estimate σΦ (spectral entropy) proxy from time series."""
+        # Handle empty or very short series
+        if series.size < 2:
+            return 0.0
         # Proxy: normalized spectral entropy
         spectrum = np.abs(np.fft.rfft(series)) ** 2
         if spectrum.size == 0:
