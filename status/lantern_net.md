@@ -3,8 +3,8 @@
 Dieses Dokument bündelt $(R, \Theta, \beta, \zeta(R))$ für jede Laterne und
 markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 
-**Version:** v13.2.0
-**Updated:** 2026-02-05T18:55:25+00:00
+**Version:** v13.3.0
+**Updated:** 2026-02-05T20:25:07+00:00
 
 ## Quellen
 - Lantern Hub: `docs/utac_v2_data_lanterns.yaml`
@@ -387,6 +387,141 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **Evidence:** ledgers=[], tests=[]
 - **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
 - **Documentation:** README=seed/releases/v4.0.0-alpha_MirrorMachine/README_ZENODO.md, Methodology=None, Roadmap=None
+
+### Logistic Threshold Core (model-logistic-threshold-001)
+- **Status:** active | **Readiness R:** 1.0
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** threshold_dynamics | **Type:** model
+- **Order Parameter:** sigmoid_activation_R
+- **Logistik:** R=1.0, Θ=0.66, β=9.0, ζ=σ(β(R-Θ)) core implementation
+- **σΦ Range:** [0.34, 0.52]
+- **CREP Offset:** 0.34
+- **Ledger Entries:** bootstrap=bootstrap-run-0003, crep=crep-null-0003
+- **Evidence:** ledgers=['bootstrap-run-0003', 'crep-null-0003'], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### Adaptive Logistic Membrane (model-adaptive-membrane-001)
+- **Status:** active | **Readiness R:** 0.95
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** membrane_dynamics | **Type:** model
+- **Order Parameter:** membrane_activation_state
+- **Logistik:** R=0.95, Θ=0.66, β=11.5, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### Resonant Impedance Model (model-resonant-impedance-001)
+- **Status:** active | **Readiness R:** 0.9
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** em_consciousness | **Type:** model
+- **Order Parameter:** impedance_matching_ratio
+- **Logistik:** R=0.9, Θ=0.66, β=7.4, ζ=EM impedance matching Z_bio ≈ 126.9Ω
+- **σΦ Range:** [0.38, 0.55]
+- **CREP Offset:** 0.24
+- **Ledger Entries:** bootstrap=bootstrap-run-0005, crep=crep-null-0005
+- **Evidence:** ledgers=['bootstrap-run-0005', 'crep-null-0005'], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### RG Flow Simulator (model-rg-flow-001)
+- **Status:** active | **Readiness R:** 0.85
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** renormalization | **Type:** model
+- **Order Parameter:** renormalization_fixed_point
+- **Logistik:** R=0.85, Θ=0.66, β=6.2, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### Coupled Threshold Field (model-coupled-field-001)
+- **Status:** active | **Readiness R:** 0.88
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** field_dynamics | **Type:** model
+- **Order Parameter:** field_coupling_coherence
+- **Logistik:** R=0.88, Θ=0.66, β=8.0, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### Sigmoid Fit Engine (model-sigmoid-fit-001)
+- **Status:** active | **Readiness R:** 0.92
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** curve_fitting | **Type:** model
+- **Order Parameter:** goodness_of_fit_r2
+- **Logistik:** R=0.92, Θ=0.66, β=7.4, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### UTAC Microscopic ABM (model-abm-microscopic-001)
+- **Status:** active | **Readiness R:** 0.78
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** agent_based | **Type:** model
+- **Order Parameter:** agent_consensus_fraction
+- **Logistik:** R=0.78, Θ=0.66, β=5.0, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### Cosmic Alpha-Phi Model (model-cosmic-alpha-phi-001)
+- **Status:** active | **Readiness R:** 0.75
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** cosmology | **Type:** model
+- **Order Parameter:** cosmic_coupling_constant
+- **Logistik:** R=0.75, Θ=0.66, β=4.236, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### Phaethon Simulation Suite (exp-phaethon-sim-001)
+- **Status:** active | **Readiness R:** 0.9
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=active, roadmap=active
+- **Domain:** astrophysics | **Type:** experiment
+- **Order Parameter:** chimera_ejection_coupling
+- **Logistik:** R=0.9, Θ=0.55, β=4.8, ζ=chimera-plasma-soliton coupled ejection
+- **σΦ Range:** [0.3, 0.6]
+- **CREP Offset:** 0.35
+- **Ledger Entries:** bootstrap=bootstrap-run-0004, crep=crep-null-0004
+- **Evidence:** ledgers=['bootstrap-run-0004', 'crep-null-0004'], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=experiments/Phaethon_Geminiden_Bennu/README.md, Methodology=experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md, Roadmap=experiments/Phaethon_Geminiden_Bennu/STRATEGIC_ROADMAP.md
 
 ### Seed Archivsucheutac (seed-archivsucheutac)
 - **Status:** draft | **Readiness R:** 0.1

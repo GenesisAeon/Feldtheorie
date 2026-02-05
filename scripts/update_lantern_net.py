@@ -70,6 +70,36 @@ MODULE_TEST_MAPPINGS: dict[str, list[str]] = {
         "seed/releases/v4.0.0-alpha_MirrorMachine/tests/test_ews_pipeline.py",
         "tests/test_mirror_machine_v4.py",
     ],
+    # models/ Core Computational Models (v13.3 Expansion)
+    "model-logistic-threshold-001": [
+        "tests/test_logistic_threshold.py",
+    ],
+    "model-adaptive-membrane-001": [
+        "tests/test_adaptive_logistic_membrane.py",
+    ],
+    "model-resonant-impedance-001": [
+        "tests/test_resonant_impedance.py",
+        "tests/test_impedance_solver.py",
+    ],
+    "model-rg-flow-001": [
+        "tests/test_rg_flow.py",
+    ],
+    "model-coupled-field-001": [
+        "tests/test_coupled_threshold_field.py",
+    ],
+    "model-sigmoid-fit-001": [
+        "tests/test_sigmoid_fit.py",
+    ],
+    "model-abm-microscopic-001": [
+        "tests/test_utac_microscopic_abm.py",
+    ],
+    "model-cosmic-alpha-phi-001": [
+        "tests/test_consciousness_integration.py",
+    ],
+    # experiments/ Phaethon Simulation Suite (v13.3 Expansion)
+    "exp-phaethon-sim-001": [
+        "tests/test_phaethon_simulations.py",
+    ],
 }
 
 

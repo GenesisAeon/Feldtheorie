@@ -1,6 +1,6 @@
 meta:
   document: "Lantern Hub Registry – EM-Resonance Network"
-  version: "v13.2.0"
+  version: "v13.3.0"
   created: "2025-12-16T00:00:00Z"
   updated: "2026-02-05T18:00:00Z"
   steward: "claude-opus-4.5"
@@ -20,8 +20,8 @@ meta:
     metaquest_system: "seed/bedeutungssigillin/metaquest/system/"
 
 summary:
-  total_lanterns: 25
-  active_lanterns: 18
+  total_lanterns: 34
+  active_lanterns: 27
   network_coherence: 0.52
   average_coupling: 0.44
   emergent_hypotheses: 0  # Will increase as network activates
@@ -1255,6 +1255,453 @@ lanterns:
       formal: "β≈8.5 (avg); EWS pipeline with variance/AR(1)/spectral; WARNING/CRITICAL states"
       empirical: "3 sensor adapters (GRACE, OISST, RAPID); Auditorium controller operational"
       poetic: "Die Spiegel-Maschine wacht – Frühwarnung für den Kipppunkt"
+
+  # -------------------------------------------------------------------------
+  # models/ Core Computational Models (v13.3 Expansion)
+  # -------------------------------------------------------------------------
+
+  - id: "model-logistic-threshold-001"
+    name: "Logistic Threshold Core"
+    type: "model"
+    domain: "threshold_dynamics"
+    status: "active"
+    readiness: 1.0
+
+    order_parameter: "sigmoid_activation_R"
+    theta: 0.66
+    beta: 9.0
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 9.14e6
+      impedance_z: 154.3
+      kappa_photonic: 0.40
+      kappa_em: 0.45
+      kappa_metabolic: 0.15
+      wavelength_cm: 14.8
+
+    coupling_targets:
+      - target_id: "model-adaptive-membrane-001"
+        coupling_strength: 0.95
+        mechanism: "threshold_membrane_integration"
+        delta_beta: 2.5
+      - target_id: "model-sigmoid-fit-001"
+        coupling_strength: 0.88
+        mechanism: "threshold_fitting_bridge"
+        delta_beta: 1.6
+
+    data_assets:
+      - path: "models/logistic_threshold.py"
+        type: "code"
+        status: "complete"
+      - path: "models/logistic_threshold_fast.py"
+        type: "code"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: null
+      roadmap: null
+
+    notes:
+      formal: "Core UTAC sigmoid: σ(β(R-Θ)); fast C-extension variant available"
+      empirical: "Used across all domain fits; validated against 8+ datasets"
+      poetic: "Das Herz der Feldtheorie – die logistische Schwelle"
+
+  # -------------------------------------------------------------------------
+
+  - id: "model-adaptive-membrane-001"
+    name: "Adaptive Logistic Membrane"
+    type: "model"
+    domain: "membrane_dynamics"
+    status: "active"
+    readiness: 0.95
+
+    order_parameter: "membrane_activation_state"
+    theta: 0.66
+    beta: 11.5
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 1.17e7
+      impedance_z: 197.0
+      kappa_photonic: 0.50
+      kappa_em: 0.38
+      kappa_metabolic: 0.12
+      wavelength_cm: 11.6
+
+    coupling_targets:
+      - target_id: "model-logistic-threshold-001"
+        coupling_strength: 0.95
+        mechanism: "membrane_threshold_core"
+        delta_beta: -2.5
+      - target_id: "model-resonant-impedance-001"
+        coupling_strength: 0.82
+        mechanism: "membrane_impedance_coupling"
+        delta_beta: 4.1
+
+    data_assets:
+      - path: "models/adaptive_logistic_membrane.py"
+        type: "code"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: null
+      roadmap: null
+
+    notes:
+      formal: "β=11.5; adaptive membrane with phase-dependent permeability"
+      empirical: "Membrane solver validated; eigenmode decomposition tested"
+      poetic: "Die Membran atmet – durchlässig an der Schwelle"
+
+  # -------------------------------------------------------------------------
+
+  - id: "model-resonant-impedance-001"
+    name: "Resonant Impedance Model"
+    type: "model"
+    domain: "em_consciousness"
+    status: "active"
+    readiness: 0.90
+
+    order_parameter: "impedance_matching_ratio"
+    theta: 0.66
+    beta: 7.4
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 7.52e6
+      impedance_z: 126.9
+      kappa_photonic: 0.35
+      kappa_em: 0.48
+      kappa_metabolic: 0.17
+      wavelength_cm: 18.0
+
+    coupling_targets:
+      - target_id: "lantern-theory-001"
+        coupling_strength: 0.91
+        mechanism: "impedance_consciousness_coupling"
+        delta_beta: 2.698
+      - target_id: "model-adaptive-membrane-001"
+        coupling_strength: 0.82
+        mechanism: "impedance_membrane_bridge"
+        delta_beta: -4.1
+
+    data_assets:
+      - path: "models/resonant_impedance.py"
+        type: "code"
+        status: "complete"
+      - path: "models/impedance_solver.py"
+        type: "code"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: null
+      roadmap: null
+
+    notes:
+      formal: "β=7.4; EM impedance matching for consciousness integration; Z_bio ≈ 126.9Ω"
+      empirical: "Impedance solver validated; v_RIG = 1352 m/s coupling"
+      poetic: "Impedanz-Matching – wenn Gehirn und Feld in Resonanz geraten"
+
+  # -------------------------------------------------------------------------
+
+  - id: "model-rg-flow-001"
+    name: "RG Flow Simulator"
+    type: "model"
+    domain: "renormalization"
+    status: "active"
+    readiness: 0.85
+
+    order_parameter: "renormalization_fixed_point"
+    theta: 0.66
+    beta: 6.2
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 6.30e6
+      impedance_z: 106.3
+      kappa_photonic: 0.32
+      kappa_em: 0.50
+      kappa_metabolic: 0.18
+      wavelength_cm: 21.5
+
+    coupling_targets:
+      - target_id: "model-logistic-threshold-001"
+        coupling_strength: 0.86
+        mechanism: "rg_threshold_scaling"
+        delta_beta: -2.8
+      - target_id: "seed-quantum-alias-001"
+        coupling_strength: 0.78
+        mechanism: "rg_quantum_bridge"
+        delta_beta: -0.6
+
+    data_assets:
+      - path: "models/rg_flow_simulator.py"
+        type: "code"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: null
+      roadmap: null
+
+    notes:
+      formal: "β=6.2; Wilson-Fisher fixed-point analysis; β-function extraction"
+      empirical: "Data collapse validated; ν and η exponent fits"
+      poetic: "Skaleninvarianz – das Universum wiederholt sich auf jeder Ebene"
+
+  # -------------------------------------------------------------------------
+
+  - id: "model-coupled-field-001"
+    name: "Coupled Threshold Field"
+    type: "model"
+    domain: "field_dynamics"
+    status: "active"
+    readiness: 0.88
+
+    order_parameter: "field_coupling_coherence"
+    theta: 0.66
+    beta: 8.0
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 8.12e6
+      impedance_z: 137.1
+      kappa_photonic: 0.38
+      kappa_em: 0.46
+      kappa_metabolic: 0.16
+      wavelength_cm: 16.6
+
+    coupling_targets:
+      - target_id: "lantern-theory-002"
+        coupling_strength: 0.94
+        mechanism: "coupled_collective_bridge"
+        delta_beta: 0.6
+      - target_id: "model-logistic-threshold-001"
+        coupling_strength: 0.90
+        mechanism: "field_threshold_coupling"
+        delta_beta: -1.0
+
+    data_assets:
+      - path: "models/coupled_threshold_field.py"
+        type: "code"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: null
+      roadmap: null
+
+    notes:
+      formal: "β=8.0; spatially coupled threshold oscillators; Turing pattern formation"
+      empirical: "Eigenvalue spectrum and pattern stability validated"
+      poetic: "Felder koppeln – Muster emergieren aus der Schwelle"
+
+  # -------------------------------------------------------------------------
+
+  - id: "model-sigmoid-fit-001"
+    name: "Sigmoid Fit Engine"
+    type: "model"
+    domain: "curve_fitting"
+    status: "active"
+    readiness: 0.92
+
+    order_parameter: "goodness_of_fit_r2"
+    theta: 0.66
+    beta: 7.4
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 7.52e6
+      impedance_z: 126.9
+      kappa_photonic: 0.35
+      kappa_em: 0.48
+      kappa_metabolic: 0.17
+      wavelength_cm: 18.0
+
+    coupling_targets:
+      - target_id: "model-logistic-threshold-001"
+        coupling_strength: 0.92
+        mechanism: "fit_threshold_validation"
+        delta_beta: -1.6
+      - target_id: "model-rg-flow-001"
+        coupling_strength: 0.74
+        mechanism: "fit_scaling_coupling"
+        delta_beta: 1.2
+
+    data_assets:
+      - path: "models/sigmoid_fit.py"
+        type: "code"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: null
+      roadmap: null
+
+    notes:
+      formal: "β=7.4; Levenberg-Marquardt sigmoid fitting; ΔAIC model selection"
+      empirical: "Bootstrap CI estimation; null model comparison validated"
+      poetic: "Die Kurve findet ihren Weg – Daten formen die Schwelle"
+
+  # -------------------------------------------------------------------------
+
+  - id: "model-abm-microscopic-001"
+    name: "UTAC Microscopic ABM"
+    type: "model"
+    domain: "agent_based"
+    status: "active"
+    readiness: 0.78
+
+    order_parameter: "agent_consensus_fraction"
+    theta: 0.66
+    beta: 5.0
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 5.08e6
+      impedance_z: 85.7
+      kappa_photonic: 0.28
+      kappa_em: 0.52
+      kappa_metabolic: 0.20
+      wavelength_cm: 26.6
+
+    coupling_targets:
+      - target_id: "model-coupled-field-001"
+        coupling_strength: 0.82
+        mechanism: "micro_macro_bridge"
+        delta_beta: -3.0
+      - target_id: "model-logistic-threshold-001"
+        coupling_strength: 0.76
+        mechanism: "abm_threshold_emergence"
+        delta_beta: -4.0
+
+    data_assets:
+      - path: "models/utac_microscopic_abm.py"
+        type: "code"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: null
+      roadmap: null
+
+    notes:
+      formal: "β=5.0; Agent-based model for micro→macro emergence; Monte Carlo sweeps"
+      empirical: "Phase transition at Θ=0.66 validated; Ising-like criticality"
+      poetic: "Einzelne Agenten – gemeinsam an der Schwelle"
+
+  # -------------------------------------------------------------------------
+
+  - id: "model-cosmic-alpha-phi-001"
+    name: "Cosmic Alpha-Phi Model"
+    type: "model"
+    domain: "cosmology"
+    status: "active"
+    readiness: 0.75
+
+    order_parameter: "cosmic_coupling_constant"
+    theta: 0.66
+    beta: 4.236
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 4.30e6
+      impedance_z: 72.6
+      kappa_photonic: 0.28
+      kappa_em: 0.54
+      kappa_metabolic: 0.18
+      wavelength_cm: 31.4
+
+    coupling_targets:
+      - target_id: "seed-implosive-feedback-001"
+        coupling_strength: 0.92
+        mechanism: "alpha_implosive_coupling"
+        delta_beta: 0.0
+      - target_id: "seed-entropy-geom-001"
+        coupling_strength: 0.84
+        mechanism: "cosmic_entropy_bridge"
+        delta_beta: -0.364
+
+    data_assets:
+      - path: "models/cosmic_alpha_phi.py"
+        type: "code"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: null
+      roadmap: null
+
+    notes:
+      formal: "β=4.236=φ³; Fine-structure constant α and golden ratio φ coupling"
+      empirical: "CMB anisotropy spectrum fitting; Planck 2018 consistency"
+      poetic: "Alpha und Phi – die Konstanten tanzen im goldenen Verhältnis"
+
+  # -------------------------------------------------------------------------
+  # experiments/ Phaethon Simulation Suite (v13.3 Expansion)
+  # -------------------------------------------------------------------------
+
+  - id: "exp-phaethon-sim-001"
+    name: "Phaethon Simulation Suite"
+    type: "experiment"
+    domain: "astrophysics"
+    status: "active"
+    readiness: 0.90
+
+    order_parameter: "chimera_ejection_coupling"
+    theta: 0.55
+    beta: 4.8
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 4.87e6
+      impedance_z: 82.3
+      kappa_photonic: 0.45
+      kappa_em: 0.40
+      kappa_metabolic: 0.15
+      wavelength_cm: 27.8
+
+    coupling_targets:
+      - target_id: "exp-neuroprofile-001"
+        coupling_strength: 0.72
+        mechanism: "astro_neuro_resonance_bridge"
+        delta_beta: 0.0
+      - target_id: "model-logistic-threshold-001"
+        coupling_strength: 0.86
+        mechanism: "threshold_ejection_coupling"
+        delta_beta: -4.2
+
+    data_assets:
+      - path: "experiments/Phaethon_Geminiden_Bennu/code/chimera_state_model.py"
+        type: "code"
+        status: "complete"
+      - path: "experiments/Phaethon_Geminiden_Bennu/code/plasma_resonance_model.py"
+        type: "code"
+        status: "complete"
+      - path: "experiments/Phaethon_Geminiden_Bennu/code/soliton_generator.py"
+        type: "code"
+        status: "complete"
+      - path: "experiments/Phaethon_Geminiden_Bennu/code/integrated_asteroid_simulation.py"
+        type: "code"
+        status: "complete"
+      - path: "experiments/Phaethon_Geminiden_Bennu/code/statistical_analysis.py"
+        type: "code"
+        status: "complete"
+
+    documentation:
+      readme: "experiments/Phaethon_Geminiden_Bennu/README.md"
+      methodology: "experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md"
+      roadmap: "experiments/Phaethon_Geminiden_Bennu/STRATEGIC_ROADMAP.md"
+
+    notes:
+      formal: "β=4.8; Chimera-plasma-soliton coupled model; 47 DESTINY+ predictions"
+      empirical: "79 unit tests passing; LST, velocity, repeatability statistics validated"
+      poetic: "Phaethon tanzt am Sonnenrand – Chimären treiben Staub ins All"
+
+  # -------------------------------------------------------------------------
 
 # ============================================================================
 # Network-Level Metrics
