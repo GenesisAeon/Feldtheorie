@@ -1,6 +1,8 @@
 """Tests for LanternNet index building and σ(β(R-Θ)) readiness alignment."""
 from __future__ import annotations
 
+from pathlib import Path
+
 from scripts.update_lantern_net import build_lantern_net
 
 
@@ -81,3 +83,43 @@ def test_readiness_prefers_config_when_provided() -> None:
 
     assert lantern["readiness"] == 0.42
     assert logistic["R"] == 0.91
+
+
+def test_documentation_and_coverage_detection(tmp_path: Path, monkeypatch) -> None:
+    """Documentation and test coverage should resolve relative to base_path."""
+    doc_dir = tmp_path / "docs"
+    doc_dir.mkdir()
+    readme_path = doc_dir / "README.md"
+    methodology_path = doc_dir / "methodology.md"
+    roadmap_path = doc_dir / "roadmap.md"
+    readme_path.write_text("# Lantern README\n", encoding="utf-8")
+    methodology_path.write_text("# Lantern Methodology\n", encoding="utf-8")
+    roadmap_path.write_text("# Lantern Roadmap\n", encoding="utf-8")
+
+    test_path = tmp_path / "tests" / "test_module.py"
+    test_path.parent.mkdir()
+    test_path.write_text("def test_placeholder():\n    assert True\n", encoding="utf-8")
+
+    monkeypatch.setattr(
+        "scripts.update_lantern_net.MODULE_TEST_MAPPINGS",
+        {"exp-neuroprofile-001": ["tests/test_module.py"]},
+    )
+
+    lantern_hub = _sample_lantern_hub(readiness=0.77)
+    lantern_hub["lanterns"][0]["documentation"] = {
+        "readme": "docs/README.md",
+        "methodology": "docs/methodology.md",
+        "roadmap": "docs/roadmap.md",
+    }
+
+    payload = build_lantern_net(
+        lantern_hub=lantern_hub,
+        bootstrap_ledger=None,
+        crep_ledger=None,
+        base_path=tmp_path,
+    )
+
+    lantern = payload["lanterns"][0]
+    assert lantern["documentation"]["readme"] == "docs/README.md"
+    assert lantern["morfit_layers"]["documentation"] == "active"
+    assert lantern["test_coverage"]["status"] == "passing"
