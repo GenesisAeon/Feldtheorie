@@ -1,7 +1,7 @@
 # 🧪 Experiments Index — Resonance Archive
 
 **Version:** 1.1.0  
-**Stand:** 2026-02-04T22:04:06Z  
+**Stand:** 2026-02-05T10:10:25Z  
 **Scope:** `experiments/`  
 
 ---
@@ -36,11 +36,11 @@
 ---
 
 ## Inventarübersicht
-- **Gesamtdateien:** 206
+- **Gesamtdateien:** 209
 - **Root-Dateien:** 5
 - **AI**: 15 Dateien
 - **Entropy_in_Climate**: 23 Dateien
-- **Phaethon_Geminiden_Bennu**: 149 Dateien
+- **Phaethon_Geminiden_Bennu**: 152 Dateien
 - **Sience-2026_UTAC-Kontext**: 14 Dateien
 
 ### Root-Dateien
@@ -184,6 +184,9 @@
   - `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v12_implementation_steps.json`
   - `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v12_implementation_steps.md`
   - `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/v12_implementation_steps.yaml`
+  - `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.json`
+  - `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.md`
+  - `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.yaml`
   - `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/figures/README.md`
   - `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/neuroprofile_index.json`
   - `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/neuroprofile_index.md`

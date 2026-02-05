@@ -1,0 +1,129 @@
+id: neuroprofile-todo-lantern-001
+scope: experiments/Phaethon_Geminiden_Bennu/NeuroProfile
+status: active
+permission_request: >-
+  Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.
+logistic:
+  R: 0.52
+  Theta: 0.70
+  beta: 4.8
+  zeta_R: 0.25
+  sigma_beta_R_minus_Theta: 0.33
+purpose: >-
+  Abstract open implementation paths from roadmap, notes, and research lanterns so
+  σ(β(R-Θ)) stays controlled and ζ(R) remains damped through evidence links.
+todos:
+  - id: NP-TODO-01
+    title: Bootstrap paths operationalized
+    R: PhysioNet EEG Motor Imagery + BCI IV 2a raw paths, cold-start generator.
+    Theta: Processed datasets + provenance + ΔAIC/CI notes in data/results.json.
+    beta: 4.8
+    zeta_R: 0.25
+    sigma_beta_R_minus_Theta: 0.33
+    status: primed
+    evidence:
+      - data/bootstrap_ledger.md
+      - data/bootstrap_ledger.json
+      - data/bootstrap_ledger.yaml
+      - data/raw/physionet_eeg_motor_imagery/README.md
+      - data/raw/bci_competition_iv_2a/README.md
+  - id: NP-TODO-02
+    title: Synthetic EEG pipeline validation
+    R: data/synthetic/synthetic_eeg_1khz.csv, beta extractor, v_RIG proxy.
+    Theta: Null-model comparison (linear/power-law/constant) + ΔAIC/CI log.
+    beta: 4.8
+    zeta_R: 0.24
+    sigma_beta_R_minus_Theta: 0.34
+    status: primed
+    evidence:
+      - code/beta_extractor_neuro.py
+      - code/microtubule_resonance.py
+      - data/crep_null_model_ledger.md
+      - data/crep_null_model_ledger.json
+      - data/crep_null_model_ledger.yaml
+  - id: NP-TODO-03
+    title: PSRM maps mirror v12 fields
+    R: PSRM demo mandala, CREP field formula, v_RIG proxy.
+    Theta: Updated trilayer maps with v12 fields + validator checks.
+    beta: 4.8
+    zeta_R: 0.23
+    sigma_beta_R_minus_Theta: 0.35
+    status: primed
+    evidence:
+      - data/sigillin_maps/psrm_demo.md
+      - data/sigillin_maps/psrm_demo.json
+      - data/sigillin_maps/psrm_demo.yaml
+      - schemas/psrm_sigillin_v1_mandala_extension.md
+      - schemas/psrm_sigillin_v1_mandala_extension.json
+      - schemas/psrm_sigillin_v1_mandala_extension.yaml
+  - id: NP-TODO-04
+    title: Resonance comparison + figures atlas
+    R: Phaethon/Bennu bands, resonant-return module, Gaia/JWST stubs.
+    Theta: Figures + methodology note with ΔAIC/CI coverage.
+    beta: 4.8
+    zeta_R: 0.26
+    sigma_beta_R_minus_Theta: 0.32
+    status: primed
+    evidence:
+      - code/resonant_return.py
+      - docs/methodology.md
+      - figures/README.md
+  - id: NP-TODO-05
+    title: Ethics guard + consent telemetry
+    R: Audit log, consent paths, test hooks.
+    Theta: Audit events tagged v12 + updated tests.
+    beta: 4.8
+    zeta_R: 0.22
+    sigma_beta_R_minus_Theta: 0.36
+    status: primed
+    evidence:
+      - code/ethics_guard.py
+      - data/ethics_audit.log
+      - test_neuro_profile.py
+  - id: NP-TODO-06
+    title: Sgr A* bridge evidence
+    R: σΦ proxy + dipole alignment sketch, ALMA/JWST/GRAVITY references.
+    Theta: Evidence nodes in methodology + ΔAIC/CI check in CREP ledger.
+    beta: 4.8
+    zeta_R: 0.24
+    sigma_beta_R_minus_Theta: 0.34
+    status: primed
+    evidence:
+      - code/sgr_a_resonant_bridge.py
+      - docs/research/Sagittarius A as a Metastable Entropy Modulator.md
+  - id: NP-TODO-07
+    title: PSRM pilot + Crystal_Answer path
+    R: Pilot design, CREP stability, answer-vector/resolver sketch.
+    Theta: Study plan + validation plan + publication calendar.
+    beta: 4.8
+    zeta_R: 0.27
+    sigma_beta_R_minus_Theta: 0.31
+    status: primed
+    evidence:
+      - docs/notes/ausserhalb_vorhandener_mittel.txt
+      - STRATEGIC_ROADMAP.md
+falsifiability:
+  null_models:
+    - linear
+    - power_law
+    - constant
+  delta_aic_target: 10
+  confidence_interval_note: Record CIs + bootstrap CIs per experiment in data/results.json.
+couplings:
+  index:
+    - neuroprofile_index.md
+    - neuroprofile_index.json
+    - neuroprofile_index.yaml
+    - experiments/experiments_index.md
+    - experiments/experiments_index.json
+    - experiments/experiments_index.yaml
+  todo_index:
+    - experiments/experiments_todo_index.md
+    - experiments/experiments_todo_index.json
+    - experiments/experiments_todo_index.yaml
+  utac_matrix:
+    - docs/science/utac_status_alignment_v1.2.md
+last_updated: 2026-02-05T10:10:25Z
+notes: >-
+  σ(β(R-Θ)) remains stable when todo lanterns bind to null models, ΔAIC/CI, and
+  evidence links.

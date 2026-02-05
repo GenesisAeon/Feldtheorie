@@ -15,6 +15,10 @@ purpose: >-
 artifacts:
   readme: README.md
   roadmap: STRATEGIC_ROADMAP.md
+  todo_lantern:
+    - docs/neuroprofile_todo_lantern.md
+    - docs/neuroprofile_todo_lantern.json
+    - docs/neuroprofile_todo_lantern.yaml
   methodology: docs/methodology.md
   v11_steps:
     - docs/v11_implementation_steps.md
@@ -24,6 +28,52 @@ artifacts:
     - docs/v12_implementation_steps.md
     - docs/v12_implementation_steps.json
     - docs/v12_implementation_steps.yaml
+  init:
+    - __init__.py
+    - code/__init__.py
+    - code/utils/__init__.py
+  ai_search_logs:
+    - ai_search_logs/README.md
+    - ai_search_logs/suche_chatgpt.txt
+  analysis:
+    - analysis/README.md
+  docs_notes:
+    - docs/notes/README.md
+    - docs/notes/Analysis.txt
+    - docs/notes/ChatGPTSucheSagittariusA.txt
+    - docs/notes/ChatGPTSucheStarClusterEnthropie.txt
+    - docs/notes/ChatGPTSucheSternClusterFinal.txt
+    - docs/notes/Finale_Implementierungen.pdf
+    - docs/notes/Finalize.txt
+    - docs/notes/FramePrinciple.png
+    - docs/notes/FramePrinciple1.png
+    - docs/notes/FramePrinciple2.png
+    - docs/notes/FramePrinciple3.png
+    - docs/notes/FramePrinciple4.png
+    - docs/notes/Metastable Star Clusters.tex
+    - docs/notes/Outline_und_v11Start.txt
+    - docs/notes/OverviewGrok.md
+    - docs/notes/SucheChatGPTSternencluster.txt
+    - docs/notes/ausserhalb_vorhandener_mittel.txt
+    - docs/notes/idee.txt
+    - docs/notes/implementierungsvorschlaege_fuer_codex.txt
+    - docs/notes/v12Grundlagen.txt
+    - docs/notes/weiterfuehrung.txt
+  docs_research:
+    - docs/research/Metastabile Sternhaufen im UTAC-Rahmen_ Eine realistische Alternative zu Weißen Löchern.pdf
+    - docs/research/Metastable Star Clusters as Resonant Entropy Nodes.pdf
+    - docs/research/Metastable Star Clusters as Resonant Entropy Nodes_ A Realistic Alternative to White Holes.pdf
+    - docs/research/Metastable Star Clusters as Resonant, Entropy-Returning Structures.pdf
+    - docs/research/Metastable Star Clusters.pdf
+    - docs/research/Metastable Star Clusters.tex
+    - docs/research/NeuroProfile An Ethical Resonance Bridge.pdf
+    - docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf
+    - docs/research/Sagittarius A as a Metastable Entropy Modulator.md
+    - docs/research/Sagittarius A as a Metastable Entropy Modulator.pdf
+    - docs/research/Sagittarius A_ and Star Formation in the UTAC Framework.pdf
+    - docs/research/__Umfassende Bewertung des GenesisAeon_Feldtheorie-Ansatzes__.pdf
+  docs_references:
+    - docs/references.bib
   release:
     - requirements.txt
     - test_neuro_profile.py
@@ -41,14 +91,20 @@ artifacts:
   data:
     - data/raw/
     - data/processed/
+    - data/README.md
     - data/raw/gaia_dr3_cluster_sample.csv
     - data/raw/jwst_protocluster_candidates.csv
     - data/raw/physionet_eeg_motor_imagery/
+    - data/raw/physionet_eeg_motor_imagery/README.md
     - data/raw/bci_competition_iv_2a/
+    - data/raw/bci_competition_iv_2a/README.md
     - data/processed/gaia_dr3_cluster_sample_processed.csv
     - data/processed/jwst_protocluster_candidates_processed.csv
     - data/synthetic/
     - data/synthetic/cold_start/
+    - data/synthetic/cold_start/README.md
+    - data/synthetic/README.md
+    - data/synthetic/synthetic_eeg_1khz.csv
     - data/bootstrap_ledger.md
     - data/bootstrap_ledger.json
     - data/bootstrap_ledger.yaml
@@ -70,6 +126,8 @@ artifacts:
     - schemas/psrm_sigillin_v1_mandala_extension.md
     - schemas/psrm_sigillin_v1_mandala_extension.json
     - schemas/psrm_sigillin_v1_mandala_extension.yaml
+  figures:
+    - figures/README.md
 falsifiability:
   null_models:
     - linear
@@ -78,11 +136,18 @@ falsifiability:
   delta_aic_target: 10
   confidence_interval_note: Record CI per experiment in data/results.json
 telemetry:
-  last_updated: 2026-02-15T12:00:00Z
+  last_updated: 2026-02-05T10:10:25Z
   evidence_links:
+    - ai_search_logs/suche_chatgpt.txt
+    - docs/notes/OverviewGrok.md
+    - docs/notes/Outline_und_v11Start.txt
+    - docs/notes/Finale_Implementierungen.pdf
     - docs/notes/v12Grundlagen.txt
     - docs/notes/implementierungsvorschlaege_fuer_codex.txt
+    - docs/notes/ausserhalb_vorhandener_mittel.txt
+    - docs/notes/weiterfuehrung.txt
     - docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf
+    - docs/research/Metastable Star Clusters as Resonant Entropy Nodes.pdf
     - docs/research/Sagittarius A_ and Star Formation in the UTAC Framework.pdf
     - docs/research/NeuroProfile An Ethical Resonance Bridge.pdf
 notes: >-

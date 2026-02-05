@@ -1,7 +1,7 @@
 meta:
   title: Experiments Todo Index — MOR-FIT Action Ledger
   version: 1.0.0
-  created: '2026-02-04T22:04:06Z'
+  created: '2026-02-05T10:10:25Z'
   status: active
   scope: experiments/
 logistic_state:
@@ -137,6 +137,7 @@ todo_items:
   confidence_intervals: pending
   sources:
   - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt
+  - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.json
 - id: exp-todo-009
   domain: NeuroProfile
   summary: Crystal_Answer Kernel (Answer-Vektor, CREP-Scan, Fusion Engine, Resolver) plus
@@ -150,6 +151,7 @@ todo_items:
   confidence_intervals: pending
   sources:
   - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt
+  - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.json
 - id: exp-todo-010
   domain: NeuroProfile
   summary: Publikationspfad (arXiv, GitHub Release, Zenodo Pilot-Studie, Konferenz) koordinieren.
@@ -162,6 +164,7 @@ todo_items:
   confidence_intervals: pending
   sources:
   - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt
+  - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.json
 resonance_note: Die Aufgaben bleiben im Steilhang der σ(β(R-Θ))-Membran, bis Nullmodelle,
   ΔAIC/CI und Evidenzpfade bestätigt sind. Die Todo-Laternen koppeln an Experiments-Index
   und UTAC-Matrix, damit ζ(R) ruhig bleibt.

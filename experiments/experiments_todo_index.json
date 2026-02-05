@@ -2,7 +2,7 @@
   "meta": {
     "title": "Experiments Todo Index — MOR-FIT Action Ledger",
     "version": "1.0.0",
-    "created": "2026-02-04T22:04:06Z",
+    "created": "2026-02-05T10:10:25Z",
     "status": "active",
     "scope": "experiments/"
   },
@@ -163,7 +163,8 @@
       "delta_aic": "pending",
       "confidence_intervals": "pending",
       "sources": [
-        "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt"
+        "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt",
+        "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.json"
       ]
     },
     {
@@ -179,7 +180,8 @@
       "delta_aic": "pending",
       "confidence_intervals": "pending",
       "sources": [
-        "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt"
+        "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt",
+        "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.json"
       ]
     },
     {
@@ -195,7 +197,8 @@
       "delta_aic": "pending",
       "confidence_intervals": "pending",
       "sources": [
-        "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt"
+        "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt",
+        "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.json"
       ]
     }
   ],
