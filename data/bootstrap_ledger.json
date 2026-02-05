@@ -3,9 +3,10 @@
     "document": "Bootstrap Ledger – LanternNet",
     "version": "v13.3.0",
     "created": "2026-09-01T12:00:00Z",
-    "updated": "2026-02-05T22:51:54+00:00",
+    "updated": "2026-02-05T23:09:10Z",
     "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
-    "consent_protocol": "Sigillin consent gating + anonymization required"
+    "consent_protocol": "Sigillin consent gating + anonymization required",
+    "consent_prompt": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration."
   },
   "entries": [
     {

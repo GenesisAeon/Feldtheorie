@@ -21,6 +21,11 @@ import yaml
 from .beta_extractor_neuro import BetaEstimate
 
 
+CONSENT_PROMPT = (
+    "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration."
+)
+
+
 def _timestamp() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
@@ -74,6 +79,7 @@ def _render_bootstrap_markdown(payload: dict[str, Any]) -> str:
         "## Meta",
         f"- **Version:** {meta.get('version')}",
         f"- **Consent Protocol:** {meta.get('consent_protocol')}",
+        f"- **Consent Prompt:** {meta.get('consent_prompt')}",
         f"- **Updated:** {meta.get('updated')}",
         "",
         "## Einträge",
@@ -123,6 +129,7 @@ def _render_crep_markdown(payload: dict[str, Any]) -> str:
         "## Meta",
         f"- **Version:** {meta.get('version')}",
         f"- **Consent Protocol:** {meta.get('consent_protocol')}",
+        f"- **Consent Prompt:** {meta.get('consent_prompt')}",
         f"- **Updated:** {meta.get('updated')}",
         "",
         "## Einträge",
@@ -185,6 +192,16 @@ def log_lanternnet_ledgers(
     crep_meta = crep_payload.setdefault("meta", {})
     bootstrap_meta["updated"] = stamp
     crep_meta["updated"] = stamp
+    bootstrap_meta.setdefault("consent_prompt", CONSENT_PROMPT)
+    crep_meta.setdefault("consent_prompt", CONSENT_PROMPT)
+    bootstrap_meta.setdefault(
+        "consent_protocol",
+        "Sigillin consent gating + anonymization required",
+    )
+    crep_meta.setdefault(
+        "consent_protocol",
+        "Sigillin consent gating + anonymization required",
+    )
 
     bootstrap_entries = bootstrap_payload.setdefault("entries", [])
     crep_entries = crep_payload.setdefault("entries", [])

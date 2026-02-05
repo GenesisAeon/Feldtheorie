@@ -200,6 +200,8 @@ class TestLanternNetLedgerLogging(unittest.TestCase):
             crep_payload = json.loads(crep_path.read_text(encoding="utf-8"))
             self.assertEqual(len(bootstrap_payload["entries"]), 1)
             self.assertEqual(len(crep_payload["entries"]), 1)
+            self.assertIn("consent_prompt", bootstrap_payload["meta"])
+            self.assertIn("consent_prompt", crep_payload["meta"])
             self.assertEqual(
                 bootstrap_payload["entries"][0]["consent_token_hash"],
                 result.consent.consent_token_hash,
