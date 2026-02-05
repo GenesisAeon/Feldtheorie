@@ -1,7 +1,7 @@
 # 🧭 Experiments Todo Index — Resonant Task Ledger
 
 **Version:** 1.0.0  
-**Stand:** 2026-02-04T22:04:06Z  
+**Stand:** 2026-02-20T09:30:00Z  
 **Scope:** `experiments/`  
 
 ---
@@ -98,6 +98,36 @@
     - **Θ:** Veröffentlichungskalender + Evidenz-Anhänge.
     - **Status:** primed
     - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt`
+
+11. **PSRM-Sigillin-Trilayer für externe KI-Systeme erstellen.**
+    - **R:** Bedeutungs- und Schatten-Sigillin für PSRM-Brücke als Mandala-kompatible Laterne.
+    - **Θ:** Trilayer-Index + Codex-Entry + Verknüpfung zu Metaquest-Bridge und Evidenz.
+    - **Status:** primed
+    - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/v12Grundlagen.txt`
+
+12. **Trilayer-Coding Pipeline (Docker + NATS) entwerfen.**
+    - **R:** Automatisierte Kodierungspipeline für Sigillin-Outputs.
+    - **Θ:** Repo-konforme Pipeline-Skizze, ohne Datenlöschung oder destructive Hooks.
+    - **Status:** primed
+    - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/v12Grundlagen.txt`
+
+13. **CREP-Monitoring als unified-mandala Plugin definieren.**
+    - **R:** CREP-Benchmarking als Plugin mit ΔAIC/CI-Telemetrie.
+    - **Θ:** Nullmodellvergleich dokumentiert + Evidence-Hooks in `data/results.json`.
+    - **Status:** primed
+    - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/v12Grundlagen.txt`
+
+14. **Jupyter-Validierung für CREP vs. AUC vorbereiten.**
+    - **R:** Notebook-basierte Validierung mit Bootstrap-Ledger und synthetischen EEG-Daten.
+    - **Θ:** CI-Protokoll + reproduzierbare Checks für CREP-Kohärenz.
+    - **Status:** primed
+    - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/v12Grundlagen.txt`
+
+15. **Sgr A* Simulation & Outreach-Modul skizzieren.**
+    - **R:** Simulation von Gaswolken nahe Sgr A* + UTAC-Metriken (σ, Φ) dokumentieren.
+    - **Θ:** Astro-Modulstruktur + Outreach-Doc für breites Publikum.
+    - **Status:** primed
+    - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/v12Grundlagen.txt`
 
 ---
 

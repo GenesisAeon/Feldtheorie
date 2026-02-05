@@ -26,6 +26,7 @@
       "docs/v12_implementation_steps.yaml"
     ],
     "release": [
+      "__init__.py",
       "requirements.txt",
       "test_neuro_profile.py"
     ],
@@ -39,23 +40,23 @@
       "code/psrm_mapper.py",
       "code/bci_calibrator.py",
       "code/hardware_adapter.py",
-      "code/sgr_a_resonant_bridge.py"
+      "code/sgr_a_resonant_bridge.py",
+      "code/utils/__init__.py"
     ],
     "data": [
-      "data/raw/",
-      "data/processed/",
       "data/raw/gaia_dr3_cluster_sample.csv",
       "data/raw/jwst_protocluster_candidates.csv",
-      "data/raw/physionet_eeg_motor_imagery/",
-      "data/raw/bci_competition_iv_2a/",
+      "data/raw/physionet_eeg_motor_imagery/README.md",
+      "data/raw/bci_competition_iv_2a/README.md",
       "data/processed/gaia_dr3_cluster_sample_processed.csv",
       "data/processed/jwst_protocluster_candidates_processed.csv",
-      "data/synthetic/",
-      "data/synthetic/cold_start/",
+      "data/README.md",
+      "data/synthetic/README.md",
+      "data/synthetic/cold_start/README.md",
+      "data/synthetic/synthetic_eeg_1khz.csv",
       "data/bootstrap_ledger.md",
       "data/bootstrap_ledger.json",
       "data/bootstrap_ledger.yaml",
-      "data/sigillin_maps/",
       "data/sigillin_maps/psrm_demo.md",
       "data/sigillin_maps/psrm_demo.json",
       "data/sigillin_maps/psrm_demo.yaml",
@@ -75,6 +76,54 @@
       "schemas/psrm_sigillin_v1_mandala_extension.md",
       "schemas/psrm_sigillin_v1_mandala_extension.json",
       "schemas/psrm_sigillin_v1_mandala_extension.yaml"
+    ],
+    "notes": [
+      "docs/notes/README.md",
+      "docs/notes/v12Grundlagen.txt",
+      "docs/notes/implementierungsvorschlaege_fuer_codex.txt",
+      "docs/notes/Outline_und_v11Start.txt",
+      "docs/notes/Finale_Implementierungen.pdf",
+      "docs/notes/Analysis.txt",
+      "docs/notes/OverviewGrok.md",
+      "docs/notes/FramePrinciple.png",
+      "docs/notes/FramePrinciple1.png",
+      "docs/notes/FramePrinciple2.png",
+      "docs/notes/FramePrinciple3.png",
+      "docs/notes/FramePrinciple4.png",
+      "docs/notes/ChatGPTSucheSagittariusA.txt",
+      "docs/notes/ChatGPTSucheStarClusterEnthropie.txt",
+      "docs/notes/ChatGPTSucheSternClusterFinal.txt",
+      "docs/notes/SucheChatGPTSternencluster.txt",
+      "docs/notes/ausserhalb_vorhandener_mittel.txt",
+      "docs/notes/idee.txt",
+      "docs/notes/weiterfuehrung.txt",
+      "docs/notes/Finalize.txt",
+      "docs/notes/Metastable Star Clusters.tex"
+    ],
+    "research": [
+      "docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf",
+      "docs/research/Sagittarius A_ and Star Formation in the UTAC Framework.pdf",
+      "docs/research/Sagittarius A as a Metastable Entropy Modulator.pdf",
+      "docs/research/Sagittarius A as a Metastable Entropy Modulator.md",
+      "docs/research/NeuroProfile An Ethical Resonance Bridge.pdf",
+      "docs/research/Metastable Star Clusters.pdf",
+      "docs/research/Metastable Star Clusters.tex",
+      "docs/research/Metastable Star Clusters as Resonant Entropy Nodes.pdf",
+      "docs/research/Metastable Star Clusters as Resonant Entropy Nodes_ A Realistic Alternative to White Holes.pdf",
+      "docs/research/Metastable Star Clusters as Resonant, Entropy-Returning Structures.pdf",
+      "docs/research/Metastabile Sternhaufen im UTAC-Rahmen_ Eine realistische Alternative zu Weißen Löchern.pdf",
+      "docs/research/__Umfassende Bewertung des GenesisAeon_Feldtheorie-Ansatzes__.pdf",
+      "docs/references.bib"
+    ],
+    "analysis": [
+      "analysis/README.md"
+    ],
+    "ai_search_logs": [
+      "ai_search_logs/README.md",
+      "ai_search_logs/suche_chatgpt.txt"
+    ],
+    "figures": [
+      "figures/README.md"
     ]
   },
   "falsifiability": {
@@ -83,12 +132,15 @@
     "confidence_interval_note": "Record CI per experiment in data/results.json"
   },
   "telemetry": {
-    "last_updated": "2026-02-15T12:00:00Z",
+    "last_updated": "2026-02-20T09:30:00Z",
     "evidence_links": [
       "docs/notes/v12Grundlagen.txt",
       "docs/notes/implementierungsvorschlaege_fuer_codex.txt",
+      "docs/notes/Outline_und_v11Start.txt",
+      "docs/notes/Finale_Implementierungen.pdf",
       "docs/research/Personal Sigillin Resonance Maps (PSRM) for Individualized BCI_ A Deep-Dive.pdf",
       "docs/research/Sagittarius A_ and Star Formation in the UTAC Framework.pdf",
+      "docs/research/Sagittarius A as a Metastable Entropy Modulator.pdf",
       "docs/research/NeuroProfile An Ethical Resonance Bridge.pdf"
     ]
   },

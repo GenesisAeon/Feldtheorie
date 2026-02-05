@@ -1,7 +1,7 @@
 meta:
   title: Experiments Todo Index — MOR-FIT Action Ledger
   version: 1.0.0
-  created: '2026-02-04T22:04:06Z'
+  created: '2026-02-20T09:30:00Z'
   status: active
   scope: experiments/
 logistic_state:
@@ -162,6 +162,71 @@ todo_items:
   confidence_intervals: pending
   sources:
   - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt
+- id: exp-todo-011
+  domain: NeuroProfile
+  summary: PSRM-Sigillin-Trilayer (Bedeutungs- und Schatten-Sigillin) als Mandala-kompatible
+    Laterne für externe KI-Systeme erstellen.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/v12Grundlagen.txt
+- id: exp-todo-012
+  domain: NeuroProfile
+  summary: Trilayer-Coding Pipeline (Docker + NATS) entwerfen, mit repo-konformer
+    Automatisierung ohne destructive Hooks.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/v12Grundlagen.txt
+- id: exp-todo-013
+  domain: NeuroProfile
+  summary: CREP-Monitoring als unified-mandala Plugin definieren, inkl. ΔAIC/CI-Telemetrie
+    und Evidence-Hooks.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/v12Grundlagen.txt
+- id: exp-todo-014
+  domain: NeuroProfile
+  summary: Jupyter-Validierung für CREP vs. AUC mit Bootstrap-Ledger und synthetischen
+    EEG-Daten vorbereiten.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/v12Grundlagen.txt
+- id: exp-todo-015
+  domain: NeuroProfile
+  summary: Sgr A* Simulationen (Gaswolken, σ/Φ-UTAC-Metriken) plus Outreach-Dokumentation
+    für breites Publikum skizzieren.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/v12Grundlagen.txt
 resonance_note: Die Aufgaben bleiben im Steilhang der σ(β(R-Θ))-Membran, bis Nullmodelle,
   ΔAIC/CI und Evidenzpfade bestätigt sind. Die Todo-Laternen koppeln an Experiments-Index
   und UTAC-Matrix, damit ζ(R) ruhig bleibt.
