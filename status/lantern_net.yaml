@@ -2,7 +2,7 @@ meta:
   document: LanternNet Status Index
   version: v9.0.0-alpha
   created: '2025-12-16T00:00:00Z'
-  updated: '2026-02-05T13:28:02+00:00'
+  updated: '2026-02-05T14:24:03+00:00'
   logistic_frame:
     order_parameter: network_resonance_strength
     theta: 0.66
@@ -78,6 +78,15 @@ lanterns:
     roadmap: null
   crep_offset: null
   sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
   mandala_bridge:
     status: pending
     schema: schemas/psrm_map.schema.json
@@ -94,7 +103,7 @@ lanterns:
   test_coverage:
     status: unknown
     notes: Pending per-module test coverage audit.
-  last_updated: '2026-02-05T13:28:02+00:00'
+  last_updated: '2026-02-05T14:24:03+00:00'
   notes:
     formal: Θ≈3.2 & β≈14.5 confirmed; ΔAIC≈1484 vs linear, ≥1718 vs power law
     empirical: Dataset committed; readiness = 1.00
@@ -132,6 +141,15 @@ lanterns:
     roadmap: null
   crep_offset: null
   sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
   mandala_bridge:
     status: pending
     schema: schemas/psrm_map.schema.json
@@ -148,7 +166,7 @@ lanterns:
   test_coverage:
     status: unknown
     notes: Pending per-module test coverage audit.
-  last_updated: '2026-02-05T13:28:02+00:00'
+  last_updated: '2026-02-05T14:24:03+00:00'
   notes:
     formal: Θ≈0.62, β≈13.8; awaiting dataset staging
     poetic: Laterne wartet, bis SPI über Θ steigt
@@ -185,6 +203,15 @@ lanterns:
     roadmap: null
   crep_offset: null
   sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
   mandala_bridge:
     status: pending
     schema: schemas/psrm_map.schema.json
@@ -198,7 +225,7 @@ lanterns:
   test_coverage:
     status: unknown
     notes: Pending per-module test coverage audit.
-  last_updated: '2026-02-05T13:28:02+00:00'
+  last_updated: '2026-02-05T14:24:03+00:00'
   notes:
     formal: Θ≈14.0, β≈9.6; critical tipping point system
     poetic: Ozean-Laterne wartet auf Aktivierung
@@ -235,6 +262,15 @@ lanterns:
     roadmap: null
   crep_offset: null
   sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
   mandala_bridge:
     status: pending
     schema: schemas/psrm_map.schema.json
@@ -248,7 +284,7 @@ lanterns:
   test_coverage:
     status: unknown
     notes: Pending per-module test coverage audit.
-  last_updated: '2026-02-05T13:28:02+00:00'
+  last_updated: '2026-02-05T14:24:03+00:00'
   notes:
     formal: Θ≈0.48, β≈6.1; information-domain activation
     poetic: Neuro-AI Brücke wartet auf Daten
@@ -285,6 +321,15 @@ lanterns:
     roadmap: null
   crep_offset: null
   sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
   mandala_bridge:
     status: pending
     schema: schemas/psrm_map.schema.json
@@ -298,7 +343,7 @@ lanterns:
   test_coverage:
     status: unknown
     notes: Pending per-module test coverage audit.
-  last_updated: '2026-02-05T13:28:02+00:00'
+  last_updated: '2026-02-05T14:24:03+00:00'
   notes:
     formal: Θ≈1.15, β≈7.4; Kleiber-regime economics
     poetic: Wirtschafts-Laterne wartet auf Schwelle
@@ -335,6 +380,15 @@ lanterns:
     roadmap: null
   crep_offset: null
   sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
   mandala_bridge:
     status: pending
     schema: schemas/psrm_map.schema.json
@@ -345,7 +399,7 @@ lanterns:
   test_coverage:
     status: unknown
     notes: Pending per-module test coverage audit.
-  last_updated: '2026-02-05T13:28:02+00:00'
+  last_updated: '2026-02-05T14:24:03+00:00'
   notes:
     formal: 4/4 empirical validations passed; ANOVA F(4,73)=185.3, p<10⁻²⁰
     poetic: Die Bewusstseins-Laterne strahlt durch alle Domänen
@@ -382,6 +436,15 @@ lanterns:
     roadmap: null
   crep_offset: null
   sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
   mandala_bridge:
     status: pending
     schema: schemas/psrm_map.schema.json
@@ -392,7 +455,7 @@ lanterns:
   test_coverage:
     status: unknown
     notes: Pending per-module test coverage audit.
-  last_updated: '2026-02-05T13:28:02+00:00'
+  last_updated: '2026-02-05T14:24:03+00:00'
   notes:
     formal: κ_field, β_sync, v_collective implemented with caching & evolution tracking
     poetic: Das Feld atmet gemeinsam – multi-agent resonance
@@ -429,6 +492,15 @@ lanterns:
     roadmap: null
   crep_offset: null
   sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
   mandala_bridge:
     status: pending
     schema: schemas/psrm_map.schema.json
@@ -439,7 +511,7 @@ lanterns:
   test_coverage:
     status: unknown
     notes: Pending per-module test coverage audit.
-  last_updated: '2026-02-05T13:28:02+00:00'
+  last_updated: '2026-02-05T14:24:03+00:00'
   notes:
     formal: Protocol draft stage; requires ethics approval & facility access
     poetic: Das Experiment wartet auf Aktivierung – Bewusstsein im Käfig?
@@ -476,6 +548,15 @@ lanterns:
     roadmap: null
   crep_offset: null
   sigma_phi_range: null
+  null_models:
+    bootstrap: null
+    crep: null
+  ci_95:
+    bootstrap: null
+    crep: null
+  ledger_entries:
+    bootstrap: null
+    crep_null_models: null
   mandala_bridge:
     status: pending
     schema: schemas/psrm_map.schema.json
@@ -486,7 +567,7 @@ lanterns:
   test_coverage:
     status: unknown
     notes: Pending per-module test coverage audit.
-  last_updated: '2026-02-05T13:28:02+00:00'
+  last_updated: '2026-02-05T14:24:03+00:00'
   notes:
     formal: Requires RF safety certification & controlled environment
     poetic: Die Frequenz ruft – wartet auf Resonanz bei 13.5 MHz
