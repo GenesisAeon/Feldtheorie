@@ -3,8 +3,8 @@
 Dieses Dokument bündelt $(R, \Theta, \beta, \zeta(R))$ für jede Laterne und
 markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 
-**Version:** v13.0.0
-**Updated:** 2026-02-05T14:46:37+00:00
+**Version:** v13.1.0
+**Updated:** 2026-02-05T16:17:16+00:00
 
 ## Quellen
 - Lantern Hub: `docs/utac_v2_data_lanterns.yaml`
@@ -155,11 +155,116 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **MOR-FIT Layers:** code=prototype, documentation=active, roadmap=active
 - **Domain:** neuro | **Type:** experiment
 - **Order Parameter:** neuro_beta_sigma_phi_proxy
-- **Logistik:** R=0.46, Θ=0.72, β=4.8, ζ=EM-coupling stability maintained via impedance matching
+- **Logistik:** R=0.43432981071206167, Θ=0.72, β=0.141480740893942, ζ=0.19
 - **σΦ Range:** [0.9352193800343218, 0.943440237718606]
 - **CREP Offset:** -0.06567018928793833
 - **Ledger Entries:** bootstrap=bootstrap-run-0002, crep=crep-null-0002
 - **Evidence:** ledgers=['bootstrap-run-0002', 'crep-null-0002'], tests=['experiments/Phaethon_Geminiden_Bennu/NeuroProfile/test_neuro_profile.py']
 - **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
 - **Documentation:** README=experiments/Phaethon_Geminiden_Bennu/NeuroProfile/README.md, Methodology=experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/methodology.md, Roadmap=experiments/Phaethon_Geminiden_Bennu/NeuroProfile/STRATEGIC_ROADMAP.md
+
+### Type-6 Implosive Genesis (seed-type6-001)
+- **Status:** active | **Readiness R:** 0.85
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** cosmology | **Type:** theory
+- **Order Parameter:** phi_spiral_collapse_intensity
+- **Logistik:** R=0.85, Θ=0.618, β=4.236, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### exp_aletheia LLM Emergence (seed-aletheia-001)
+- **Status:** active | **Readiness R:** 0.72
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** ai | **Type:** experiment
+- **Order Parameter:** llm_emergence_capability_threshold
+- **Logistik:** R=0.72, Θ=0.48, β=4.5, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### Climate Beta Amplification (seed-klimakluft-001)
+- **Status:** active | **Readiness R:** 0.68
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** climate | **Type:** theory
+- **Order Parameter:** inequality_amplified_beta
+- **Logistik:** R=0.68, Θ=1.5, β=11.5, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### Wolf Messing Consciousness Bridge (seed-wolfmessing-001)
+- **Status:** active | **Readiness R:** 0.55
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** consciousness | **Type:** theory
+- **Order Parameter:** telepathic_coupling_proxy
+- **Logistik:** R=0.55, Θ=0.65, β=5.2, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### Neuro-Kosmos Bridge (seed-neurokosmos-001)
+- **Status:** active | **Readiness R:** 0.78
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** consciousness | **Type:** theory
+- **Order Parameter:** neural_cosmic_resonance_coupling
+- **Logistik:** R=0.78, Θ=0.66, β=5.842, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### Metaquest System Governance (metaquest-system-001)
+- **Status:** active | **Readiness R:** 0.82
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** automation | **Type:** governance
+- **Order Parameter:** automation_parity_score
+- **Logistik:** R=0.82, Θ=0.75, β=4.8, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### Metaquest Campaign Coordination (metaquest-campaign-001)
+- **Status:** active | **Readiness R:** 0.65
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
+- **Domain:** outreach | **Type:** governance
+- **Order Parameter:** community_adoption_rate
+- **Logistik:** R=0.65, Θ=0.5, β=4.8, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=None, Roadmap=None
 

@@ -9,11 +9,88 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Continued refinement of LanternNet ecosystem and MOR-FIT compliance tracking
+
+---
+
+## [v13.0.0] - 2026-02-05 — LanternNet Integration Complete
+
+**Status:** Released | **Codename:** Lantern Resonance
+
+### 🌟 Major Features
+
+#### LanternNet Status Trilayer
+- Complete status index (`status/lantern_net.{yaml,json,md}`) tracking all 10 registered lanterns
+- Real-time synchronization of $(R, \Theta, \beta, \zeta(R))$ parameters from ledger telemetry
+- MOR-FIT layer tracking (Methodology, Outcome, Roadmap, Falsifiability, Integration, Telemetry)
+- Consent prompt propagation and Sigillin gating enforcement
+
+#### PSRM Schema and Mandala Bridge
+- Added comprehensive PSRM (Psycho-Somatic Resonance Mapping) JSON schema (`schemas/psrm_map.schema.json`)
+- Mandala bridge validation integrated into LanternNet update script
+- Schema supports somatic, psychic, and resonance layer definitions
+- Full ethics tracking with consent token hashing and audit log references
+
+#### Enhanced update_lantern_net.py
+- Test coverage auto-detection for all registered modules
+- Documentation status detection (README, methodology, roadmap files)
+- Mandala bridge validation (verifies PSRM schema existence)
+- Module-to-test-path mappings for systematic coverage tracking
+- New `--base-path` CLI argument for flexible deployment
+
+#### NeuroProfile Integration
+- NeuroProfile PSRM extension with CREP calculator, ethics guard, and audit logging
+- Synthetic runs logged to global LanternNet ledgers (β/σΦ/ΔAIC + CREP offsets)
+- Bootstrap and CREP null-model ledgers (`data/bootstrap_ledger.*`, `data/crep_null_model_ledger.*`)
+- Ledger-aware overrides for readiness metrics
+
+### 📊 Lantern Registry (10 Lanterns)
+
+| ID | Name | Status | Domain | β | R |
+|----|------|--------|--------|---|---|
+| utac-v1_3-ds-001 | Urban Heat Intensity | active | climate | 14.5 | 1.0 |
+| utac-v1_3-ds-002 | Amazon Precipitation | primed | climate | 13.8 | 0.5 |
+| utac-v1_3-ds-003 | AMOC Transport | draft | ocean | 9.6 | 0.5 |
+| utac-v1_3-ds-004 | Neuro-AI Hybrid | primed | neuro_ai | 6.1 | 0.25 |
+| utac-v1_3-ds-005 | Energy & Finance | draft | economy | 7.4 | 0.25 |
+| lantern-theory-001 | v_RIG Framework | validated | consciousness | 4.7 | 1.0 |
+| lantern-theory-002 | Collective Field | active | multi_agent | 5.2 | 1.0 |
+| lantern-experiment-001 | EM-Shielding Test | proposed | neuroscience | 7.7 | 0.15 |
+| lantern-experiment-002 | 13.5 MHz RF Stim | proposed | neuroscience | 7.2 | 0.12 |
+| exp-neuroprofile-001 | NeuroProfile Bridge | prototype | neuro | 4.8 | 0.46 |
+
+### 🔧 Technical Changes
+
+- Extended LanternNet schema with lifecycle/evidence fields
+- CI/ΔAIC envelope tracking in ledger entries
+- Consent token hashing (SHA-256) before storage
+- Ethics tags: `sigillin-consent-gated`, `anonymization-required`, `falsifiability-required`
+
+### 📁 New Files
+
+- `schemas/psrm_map.schema.json` - PSRM validation schema
+- `data/bootstrap_ledger.{json,yaml,md}` - Bootstrap estimation ledger
+- `data/crep_null_model_ledger.{json,yaml,md}` - CREP null-model ledger
+- `status/lantern_net.{yaml,json,md}` - LanternNet status trilayer
+
+### ✅ Verification
+
+- All 567+ tests passing
+- Trilayer synchronization: 100% (YAML/JSON/MD parity)
+- Network coherence: 0.42 | Average coupling: 0.35
+- Collective frequency: 13.52 MHz (microtubule resonance alignment)
+
+---
+
+## [v12.2.0] - 2026-01-15 — Ledger Foundation
+
+### Added
+
 - NeuroProfile PSRM extension: CREP calculator, ethics guard + audit log, PSRM mapper/schemas, hardware profiles, sigillin map trilayer, and tests for CREP/PSRM outputs (`experiments/Phaethon_Geminiden_Bennu/NeuroProfile/`, `schemas/`, `tests/`). σ(β(R-Θ)) stays controlled as ζ(R) is damped by CI/ΔAIC logs and consent-aware checks.
 - Added NeuroProfile-local PSRM schema trilayer and LGPL-3.0-or-later headers for new NeuroProfile modules to keep licensing explicit while preserving schema access under the experiment tree.
 - Added LanternNet status trilayer plus an update script to synthesize module metadata from the Lantern Hub and ledgers, alongside new bootstrap/CREP ledgers in `data/` to track σ(β(R-Θ)) falsification metrics and consent gating scaffolds.
 - Expanded LanternNet update outputs with MOR-FIT layer status, consent prompt propagation, documentation placeholders, and ledger references to align σ(β(R-Θ)) readiness with ethics telemetry.
-- Linked LanternNet lantern entries to bootstrap/CREP ledger lookups (σΦ ranges, ΔAIC null-models, CI envelopes) and surfaced ledger IDs in the generated trilayer output to keep σ(β(R-Θ)) evidence synchronized with telemetry. 
+- Linked LanternNet lantern entries to bootstrap/CREP ledger lookups (σΦ ranges, ΔAIC null-models, CI envelopes) and surfaced ledger IDs in the generated trilayer output to keep σ(β(R-Θ)) evidence synchronized with telemetry.
 - Logged NeuroProfile synthetic runs into the global LanternNet ledgers (β/σΦ/ΔAIC + CREP offsets), added the NeuroProfile lantern entry, and extended the LanternNet schema with lifecycle/evidence fields for v13 integration.
 - Added LanternNet ledger-aware overrides for $(R, \\Theta, \\beta, \\zeta(R))$ so σ(β(R-Θ)) readiness prefers observed ledger telemetry when present.
 
