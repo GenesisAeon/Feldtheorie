@@ -569,6 +569,8 @@ def _write_markdown(path: Path, payload: dict[str, Any]) -> None:
     ]
     for lantern in lanterns:
         params = lantern.get("logistic_parameters", {})
+        mandala = lantern.get("mandala_bridge", {}) or {}
+        coverage = lantern.get("test_coverage", {}) or {}
         lines.extend(
             [
                 f"### {lantern.get('module_name')} ({lantern.get('module_id')})",
@@ -587,6 +589,10 @@ def _write_markdown(path: Path, payload: dict[str, Any]) -> None:
                     f"- **Logistik:** R={params.get('R')}, Θ={params.get('Theta')}, "
                     f"β={params.get('beta')}, ζ={params.get('zeta')}"
                 ),
+                (
+                    "- **Consent Protocol:** "
+                    f"{lantern.get('consent_requirements', {}).get('protocol')}"
+                ),
                 f"- **σΦ Range:** {lantern.get('sigma_phi_range')}",
                 f"- **CREP Offset:** {lantern.get('crep_offset')}",
                 (
@@ -597,9 +603,18 @@ def _write_markdown(path: Path, payload: dict[str, Any]) -> None:
                 f"- **Evidence:** ledgers={lantern.get('evidence', {}).get('ledgers')}, "
                 f"tests={lantern.get('evidence', {}).get('tests')}",
                 f"- **Ethics Tags:** {', '.join(lantern.get('ethics_tags', []))}",
+                (
+                    "- **Mandala Bridge:** "
+                    f"status={mandala.get('status')}, schema={mandala.get('schema')}"
+                ),
                 f"- **Documentation:** README={lantern.get('documentation', {}).get('readme')}, "
                 f"Methodology={lantern.get('documentation', {}).get('methodology')}, "
                 f"Roadmap={lantern.get('documentation', {}).get('roadmap')}",
+                (
+                    "- **Test Coverage:** "
+                    f"status={coverage.get('status')}, files={coverage.get('test_files')}"
+                ),
+                f"- **Coverage Notes:** {coverage.get('notes')}",
                 "",
             ]
         )
