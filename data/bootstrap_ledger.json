@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "document": "Bootstrap Ledger – LanternNet",
+    "version": "v13.0.0-draft",
+    "created": "2026-09-01T12:00:00Z",
+    "updated": "2026-09-01T12:00:00Z",
+    "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
+    "consent_protocol": "Sigillin consent gating + anonymization required"
+  },
+  "entries": [
+    {
+      "id": "bootstrap-run-0001",
+      "module": "LanternNet",
+      "scope": "v9_alpha/lantern_hub",
+      "consent_token_hash": "pending",
+      "seed": 1337,
+      "logistic_parameters": {
+        "R": 0.5,
+        "Theta": 0.66,
+        "beta": 9.0,
+        "zeta": "EM-coupling stability maintained via impedance matching"
+      },
+      "sigma_phi_range": [
+        0.42,
+        0.58
+      ],
+      "null_models": [
+        {
+          "name": "constant",
+          "delta_aic": null
+        },
+        {
+          "name": "linear",
+          "delta_aic": null
+        },
+        {
+          "name": "power_law",
+          "delta_aic": null
+        }
+      ],
+      "ci_95": {
+        "beta": [
+          8.4,
+          9.6
+        ]
+      },
+      "status": "draft",
+      "notes": {
+        "formal": "Bootstrap-Seeds gesetzt; Nullmodelle als Vergleichsrahmen vorbereitet.",
+        "empirical": "Noch keine realen Runs, nur Platzhalter für Synthetic Smoke Tests.",
+        "poetic": "Die Laterne wartet am Rand der Steilflanke, σ(β(R-Θ)) bleibt im Dämmerlicht."
+      }
+    }
+  ]
+}
