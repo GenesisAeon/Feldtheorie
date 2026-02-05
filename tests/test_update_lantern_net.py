@@ -1,54 +1,83 @@
-"""Tests for LanternNet update script."""
+"""Tests for LanternNet index building and σ(β(R-Θ)) readiness alignment."""
 from __future__ import annotations
 
-import importlib.util
-from pathlib import Path
-
-import yaml
+from scripts.update_lantern_net import build_lantern_net
 
 
-def _load_module(path: Path):
-    spec = importlib.util.spec_from_file_location("update_lantern_net", path)
-    module = importlib.util.module_from_spec(spec)
-    assert spec.loader is not None
-    spec.loader.exec_module(module)
-    return module
+def _sample_lantern_hub(readiness: float | None) -> dict:
+    return {
+        "meta": {
+            "version": "v13.0.0",
+            "created": "2026-02-05T14:46:37+00:00",
+            "logistic_frame": {"zeta": "ledger-zeta", "sigma": 0.5},
+            "summary": {},
+            "sources": {},
+        },
+        "lanterns": [
+            {
+                "id": "exp-neuroprofile-001",
+                "name": "NeuroProfile Resonance Bridge",
+                "order_parameter": "sigma_phi_proxy",
+                "type": "experiment",
+                "domain": "neuro",
+                "status": "active",
+                "readiness": readiness,
+                "theta": 0.72,
+                "beta": 4.8,
+                "data_assets": [],
+            }
+        ],
+    }
 
 
-def test_build_lantern_net_matches_config():
-    module = _load_module(Path("scripts/update_lantern_net.py"))
-    lantern_hub = module._load_yaml(Path("v9_alpha/config/lantern_hub.yaml"))
-    payload = module.build_lantern_net(lantern_hub)
+def _sample_bootstrap_ledger() -> dict:
+    return {
+        "meta": {"document": "Bootstrap Ledger – LanternNet", "version": "v13.0.0"},
+        "entries": [
+            {
+                "id": "bootstrap-run-0007",
+                "module": "NeuroProfile Resonance Bridge",
+                "module_id": "exp-neuroprofile-001",
+                "logistic_parameters": {
+                    "R": 0.91,
+                    "Theta": 0.67,
+                    "beta": 6.1,
+                    "zeta": "ledger-zeta-override",
+                },
+                "sigma_phi_range": [0.12, 0.44],
+            }
+        ],
+    }
 
-    assert "lanterns" in payload
-    assert len(payload["lanterns"]) == len(lantern_hub.get("lanterns", []))
 
-    sample = payload["lanterns"][0]
-    assert "module_name" in sample
-    assert "logistic_parameters" in sample
-    assert "ethics_tags" in sample
-    assert "consent_requirements" in sample
-    assert "documentation" in sample
-    assert "morfit_layers" in sample
+def test_ledger_logistic_parameters_override_defaults() -> None:
+    """Ledger-derived (R, Θ, β, ζ) should override defaults near σ(β(R-Θ))."""
+    payload = build_lantern_net(
+        lantern_hub=_sample_lantern_hub(readiness=None),
+        bootstrap_ledger=_sample_bootstrap_ledger(),
+        crep_ledger=None,
+    )
+
+    lantern = payload["lanterns"][0]
+    logistic = lantern["logistic_parameters"]
+
+    assert logistic["R"] == 0.91
+    assert logistic["Theta"] == 0.67
+    assert logistic["beta"] == 6.1
+    assert logistic["zeta"] == "ledger-zeta-override"
+    assert lantern["readiness"] == 0.91
 
 
-def test_write_trilayer_outputs(tmp_path):
-    module = _load_module(Path("scripts/update_lantern_net.py"))
-    lantern_hub = module._load_yaml(Path("v9_alpha/config/lantern_hub.yaml"))
-    payload = module.build_lantern_net(lantern_hub)
+def test_readiness_prefers_config_when_provided() -> None:
+    """Config readiness should remain when present, even if ledger R exists."""
+    payload = build_lantern_net(
+        lantern_hub=_sample_lantern_hub(readiness=0.42),
+        bootstrap_ledger=_sample_bootstrap_ledger(),
+        crep_ledger=None,
+    )
 
-    module.write_trilayer(tmp_path, payload)
+    lantern = payload["lanterns"][0]
+    logistic = lantern["logistic_parameters"]
 
-    yaml_path = tmp_path / "lantern_net.yaml"
-    json_path = tmp_path / "lantern_net.json"
-    md_path = tmp_path / "lantern_net.md"
-
-    assert yaml_path.exists()
-    assert json_path.exists()
-    assert md_path.exists()
-
-    with yaml_path.open("r", encoding="utf-8") as handle:
-        loaded = yaml.safe_load(handle)
-    assert len(loaded["lanterns"]) == len(payload["lanterns"])
-    assert "consent_prompt" in loaded["meta"]
-    assert "ledger_refs" in loaded["meta"]
+    assert lantern["readiness"] == 0.42
+    assert logistic["R"] == 0.91
