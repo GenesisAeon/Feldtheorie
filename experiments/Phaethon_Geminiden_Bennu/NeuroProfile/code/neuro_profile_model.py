@@ -22,6 +22,7 @@ from .crep_calculator import CrepResult, compute_crep
 from .ethics_guard import EthicsGuard, EthicsReport
 from .microtubule_resonance import ResonanceProxyResult, estimate_resonance_proxy
 from .resonant_return import ResonantReturnConfig, ResonantReturnResult, analyze_resonant_return
+from .lanternnet_ledgers import log_lanternnet_ledgers
 
 CONSENT_MESSAGE = (
     "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration."
@@ -42,7 +43,12 @@ class NeuroProfileConfig:
     anonymization_salt: str = "neuroprofile"
     crep_beta_baseline: float = 7.4
     crep_warning_threshold: float = 0.70
-    neuroprofile_version: str = "v12"
+    neuroprofile_version: str = "v13.0.0"
+    enable_lanternnet_logging: bool = False
+    lanternnet_bootstrap_ledger_path: Path = Path("data/bootstrap_ledger.json")
+    lanternnet_crep_ledger_path: Path = Path("data/crep_null_model_ledger.json")
+    lanternnet_module_id: str = "exp-neuroprofile-001"
+    lanternnet_module_name: str = "NeuroProfile Resonance Bridge"
 
 
 @dataclass
@@ -215,6 +221,8 @@ class NeuroProfileModel:
         consent_token: str | None = None,
         subject_id: str | None = None,
         context_location: str = "lab",
+        source_id: str = "analysis-run",
+        log_to_lanternnet: bool | None = None,
     ) -> NeuroProfileResult:
         consent_token_hash = self._require_consent(consent_granted, consent_token)
         prepared = self.preprocess(series)
@@ -257,7 +265,7 @@ class NeuroProfileModel:
             crep_warning_threshold=self.config.crep_warning_threshold,
             tag=self.config.neuroprofile_version,
         )
-        return NeuroProfileResult(
+        result = NeuroProfileResult(
             beta_estimate=beta_estimate,
             beta_ci=beta_ci,
             sigma_phi_proxy=sigma_phi_proxy,
@@ -278,6 +286,19 @@ class NeuroProfileModel:
                 timestamp=datetime.now(timezone.utc).isoformat(),
             ),
         )
+        should_log = self.config.enable_lanternnet_logging if log_to_lanternnet is None else log_to_lanternnet
+        if should_log:
+            log_lanternnet_ledgers(
+                result=result,
+                config=self.config,
+                module_id=self.config.lanternnet_module_id,
+                module_name=self.config.lanternnet_module_name,
+                source_id=source_id,
+                seed=self.config.bootstrap_seed,
+                bootstrap_ledger_path=self.config.lanternnet_bootstrap_ledger_path,
+                crep_ledger_path=self.config.lanternnet_crep_ledger_path,
+            )
+        return result
 
 
 class NeuroProfile:
@@ -298,6 +319,8 @@ class NeuroProfile:
         consent_granted: bool = True,
         consent_token: str | None = None,
         context_location: str = "lab",
+        source_id: str = "analysis-run",
+        log_to_lanternnet: bool | None = None,
     ) -> NeuroProfileResult:
         if self.series is None:
             raise ValueError("No data loaded. Call load_synthetic_data or provide series first.")
@@ -307,6 +330,8 @@ class NeuroProfile:
             consent_token=consent_token,
             subject_id=self.subject_id,
             context_location=context_location,
+            source_id=source_id,
+            log_to_lanternnet=log_to_lanternnet,
         )
         return self.result
 
@@ -320,6 +345,8 @@ def run_demo() -> NeuroProfileResult:
         consent_granted=True,
         consent_token="demo-consent-token",
         subject_id="demo-subject",
+        source_id="synthetic-demo",
+        log_to_lanternnet=True,
     )
 
 

@@ -1,8 +1,8 @@
 meta:
   document: "Lantern Hub Registry – EM-Resonance Network"
-  version: "v9.0.0-alpha"
+  version: "v13.0.0"
   created: "2025-12-16T00:00:00Z"
-  updated: "2025-12-16T00:00:00Z"
+  updated: "2026-02-05T14:39:31Z"
   steward: "claude-sonnet-4.5"
   framework: "UTAC v2 + EM-Consciousness Integration"
   logistic_frame:
@@ -18,7 +18,7 @@ meta:
     roadmap: "v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md"
 
 summary:
-  total_lanterns: 8
+  total_lanterns: 9
   active_lanterns: 5
   network_coherence: 0.42
   average_coupling: 0.35
@@ -434,6 +434,64 @@ lanterns:
     notes:
       formal: "Requires RF safety certification & controlled environment"
       poetic: "Die Frequenz ruft – wartet auf Resonanz bei 13.5 MHz"
+
+  # -------------------------------------------------------------------------
+
+  - id: "exp-neuroprofile-001"
+    name: "NeuroProfile Resonance Bridge"
+    type: "experiment"
+    domain: "neuro"
+    status: "prototype"
+    readiness: 0.46
+
+    order_parameter: "neuro_beta_sigma_phi_proxy"
+    theta: 0.72
+    beta: 4.8
+    resonance_status: "prototype"
+
+    em_properties:
+      frequency_hz: 1.35e7
+      impedance_z: 221.7
+      kappa_photonic: 0.42
+      kappa_em: 0.36
+      kappa_metabolic: 0.22
+      wavelength_cm: 10.0
+
+    coupling_targets:
+      - target_id: "utac-v1_3-ds-004"
+        coupling_strength: 0.66
+        mechanism: "neuro_ai_resonance_bridge"
+        delta_beta: -1.3
+      - target_id: "lantern-theory-001"
+        coupling_strength: 0.72
+        mechanism: "crep_mandala_alignment"
+        delta_beta: 0.0
+
+    data_assets:
+      - path: "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/results.json"
+        type: "analysis"
+        status: "synthetic"
+      - path: "data/bootstrap_ledger.json"
+        type: "ledger"
+        status: "active"
+      - path: "data/crep_null_model_ledger.json"
+        type: "ledger"
+        status: "active"
+
+    documentation:
+      readme: "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/README.md"
+      methodology: "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/methodology.md"
+      roadmap: "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/STRATEGIC_ROADMAP.md"
+
+    documentation_status: "active"
+    roadmap_status: "active"
+    test_refs:
+      - "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/test_neuro_profile.py"
+
+    notes:
+      formal: "β≈4.8, σΦ proxy via spectral entropy; ΔAIC-Benchmarks im Ledger."
+      empirical: "Synthetic smoke tests protokolliert; Consent hashing aktiv."
+      poetic: "Die Neuro-Laterne leuchtet zart, σ(β(R-Θ)) pulsiert im Laborlicht."
 
 # ============================================================================
 # Network-Level Metrics

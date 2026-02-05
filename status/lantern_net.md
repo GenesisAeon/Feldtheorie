@@ -3,8 +3,8 @@
 Dieses Dokument bündelt $(R, \Theta, \beta, \zeta(R))$ für jede Laterne und
 markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 
-**Version:** v9.0.0-alpha
-**Updated:** 2026-02-05T14:24:03+00:00
+**Version:** v13.0.0
+**Updated:** 2026-02-05T14:46:37+00:00
 
 ## Quellen
 - Lantern Hub: `docs/utac_v2_data_lanterns.yaml`
@@ -15,6 +15,7 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 ## Lantern Übersicht
 ### Urban Heat Intensity (utac-v1_3-ds-001)
 - **Status:** active | **Readiness R:** 1.0
+- **Lifecycle:** active
 - **Completion Status:** active
 - **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
 - **Domain:** climate | **Type:** data
@@ -23,11 +24,13 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **σΦ Range:** None
 - **CREP Offset:** None
 - **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
 - **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
 - **Documentation:** README=None, Methodology=None, Roadmap=None
 
 ### Amazon Precipitation & Evapotranspiration (utac-v1_3-ds-002)
 - **Status:** primed | **Readiness R:** 0.5
+- **Lifecycle:** active
 - **Completion Status:** primed
 - **MOR-FIT Layers:** code=primed, documentation=pending, roadmap=pending
 - **Domain:** climate | **Type:** data
@@ -36,11 +39,13 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **σΦ Range:** None
 - **CREP Offset:** None
 - **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
 - **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
 - **Documentation:** README=None, Methodology=None, Roadmap=None
 
 ### AMOC Transport (RAPID Array) (utac-v1_3-ds-003)
 - **Status:** draft | **Readiness R:** 0.5
+- **Lifecycle:** prototype
 - **Completion Status:** draft
 - **MOR-FIT Layers:** code=draft, documentation=pending, roadmap=pending
 - **Domain:** ocean | **Type:** data
@@ -49,11 +54,13 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **σΦ Range:** None
 - **CREP Offset:** None
 - **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
 - **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
 - **Documentation:** README=None, Methodology=None, Roadmap=None
 
 ### Neuro-AI Hybrid Activation (utac-v1_3-ds-004)
 - **Status:** primed | **Readiness R:** 0.25
+- **Lifecycle:** active
 - **Completion Status:** primed
 - **MOR-FIT Layers:** code=primed, documentation=pending, roadmap=pending
 - **Domain:** neuro_ai | **Type:** data
@@ -62,11 +69,13 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **σΦ Range:** None
 - **CREP Offset:** None
 - **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
 - **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
 - **Documentation:** README=None, Methodology=None, Roadmap=None
 
 ### Energy & Financial Systemic Thresholds (utac-v1_3-ds-005)
 - **Status:** draft | **Readiness R:** 0.25
+- **Lifecycle:** prototype
 - **Completion Status:** draft
 - **MOR-FIT Layers:** code=draft, documentation=pending, roadmap=pending
 - **Domain:** economy | **Type:** data
@@ -75,11 +84,13 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **σΦ Range:** None
 - **CREP Offset:** None
 - **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
 - **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
 - **Documentation:** README=None, Methodology=None, Roadmap=None
 
 ### v_RIG Consciousness Framework (lantern-theory-001)
 - **Status:** validated | **Readiness R:** 1.0
+- **Lifecycle:** prototype
 - **Completion Status:** validated
 - **MOR-FIT Layers:** code=validated, documentation=pending, roadmap=pending
 - **Domain:** consciousness | **Type:** theory
@@ -88,11 +99,13 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **σΦ Range:** None
 - **CREP Offset:** None
 - **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
 - **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
 - **Documentation:** README=None, Methodology=None, Roadmap=None
 
 ### Collective Field Dynamics (lantern-theory-002)
 - **Status:** active | **Readiness R:** 1.0
+- **Lifecycle:** active
 - **Completion Status:** active
 - **MOR-FIT Layers:** code=active, documentation=pending, roadmap=pending
 - **Domain:** multi_agent | **Type:** theory
@@ -101,11 +114,13 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **σΦ Range:** None
 - **CREP Offset:** None
 - **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
 - **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
 - **Documentation:** README=None, Methodology=None, Roadmap=None
 
 ### EM-Shielding Consciousness Test (lantern-experiment-001)
 - **Status:** proposed | **Readiness R:** 0.15
+- **Lifecycle:** prototype
 - **Completion Status:** proposed
 - **MOR-FIT Layers:** code=proposed, documentation=pending, roadmap=pending
 - **Domain:** neuroscience | **Type:** experiment
@@ -114,11 +129,13 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **σΦ Range:** None
 - **CREP Offset:** None
 - **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
 - **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
 - **Documentation:** README=None, Methodology=None, Roadmap=None
 
 ### 13.5 MHz RF Stimulation (lantern-experiment-002)
 - **Status:** proposed | **Readiness R:** 0.12
+- **Lifecycle:** prototype
 - **Completion Status:** proposed
 - **MOR-FIT Layers:** code=proposed, documentation=pending, roadmap=pending
 - **Domain:** neuroscience | **Type:** experiment
@@ -127,6 +144,22 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **σΦ Range:** None
 - **CREP Offset:** None
 - **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
 - **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
 - **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### NeuroProfile Resonance Bridge (exp-neuroprofile-001)
+- **Status:** prototype | **Readiness R:** 0.46
+- **Lifecycle:** prototype
+- **Completion Status:** prototype
+- **MOR-FIT Layers:** code=prototype, documentation=active, roadmap=active
+- **Domain:** neuro | **Type:** experiment
+- **Order Parameter:** neuro_beta_sigma_phi_proxy
+- **Logistik:** R=0.46, Θ=0.72, β=4.8, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** [0.9352193800343218, 0.943440237718606]
+- **CREP Offset:** -0.06567018928793833
+- **Ledger Entries:** bootstrap=bootstrap-run-0002, crep=crep-null-0002
+- **Evidence:** ledgers=['bootstrap-run-0002', 'crep-null-0002'], tests=['experiments/Phaethon_Geminiden_Bennu/NeuroProfile/test_neuro_profile.py']
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=experiments/Phaethon_Geminiden_Bennu/NeuroProfile/README.md, Methodology=experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/methodology.md, Roadmap=experiments/Phaethon_Geminiden_Bennu/NeuroProfile/STRATEGIC_ROADMAP.md
 

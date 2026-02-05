@@ -1,9 +1,9 @@
 {
   "meta": {
     "document": "Bootstrap Ledger – LanternNet",
-    "version": "v13.0.0-draft",
+    "version": "v13.0.0",
     "created": "2026-09-01T12:00:00Z",
-    "updated": "2026-09-01T12:00:00Z",
+    "updated": "2026-02-05T14:44:41+00:00",
     "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
     "consent_protocol": "Sigillin consent gating + anonymization required"
   },
@@ -49,6 +49,61 @@
         "formal": "Bootstrap-Seeds gesetzt; Nullmodelle als Vergleichsrahmen vorbereitet.",
         "empirical": "Noch keine realen Runs, nur Platzhalter für Synthetic Smoke Tests.",
         "poetic": "Die Laterne wartet am Rand der Steilflanke, σ(β(R-Θ)) bleibt im Dämmerlicht."
+      }
+    },
+    {
+      "id": "bootstrap-run-0002",
+      "module": "NeuroProfile Resonance Bridge",
+      "module_id": "exp-neuroprofile-001",
+      "scope": "experiments/Phaethon_Geminiden_Bennu/NeuroProfile",
+      "source_id": "synthetic-demo",
+      "subject_hash": "31547e681afa9015f75e16e0c0be7acc68b441ef9af97831444ce70d4a640147",
+      "consent_token_hash": "f49c6740f6049f0c47148bd260fc9e265177b40c9a209224d73f3bea13dddab2",
+      "seed": 23,
+      "logistic_parameters": {
+        "R": 0.43432981071206167,
+        "Theta": 0.72,
+        "beta": 0.141480740893942,
+        "zeta": 0.19
+      },
+      "beta_estimate": {
+        "beta": 0.141480740893942,
+        "threshold": 1.4827333995988291e-13,
+        "r_value": -0.009788183327424704
+      },
+      "sigma_phi_range": [
+        0.9352193800343218,
+        0.943440237718606
+      ],
+      "null_models": [
+        {
+          "name": "constant",
+          "delta_aic": 0.0
+        },
+        {
+          "name": "linear",
+          "delta_aic": 0.8452159369869605
+        },
+        {
+          "name": "power_law",
+          "delta_aic": 360.77014226774486
+        }
+      ],
+      "ci_95": {
+        "beta": [
+          0.10000000000000002,
+          0.3459504452836826
+        ],
+        "sigma_phi": [
+          0.9352193800343218,
+          0.943440237718606
+        ]
+      },
+      "status": "synthetic",
+      "notes": {
+        "formal": "Bootstrap-Run für σ(β(R-Θ)); Nullmodelle (constant/linear/power law) mit ΔAIC best=constant.",
+        "empirical": "σΦ=0.9430, β=0.141, R≈0.434 aus Synthetic Run.",
+        "poetic": "Die Laterne tastet die Steilflanke – σ(β(R-Θ)) bleibt klar fokussiert."
       }
     }
   ]
