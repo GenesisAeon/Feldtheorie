@@ -84,7 +84,7 @@ Design rationale: `docs/notes/Finale_Implementierungen.pdf`.
 - **Sgr A* Bridge Sketch** als astro-resonanter Prüfstand (`code/sgr_a_resonant_bridge.py`).
 - **Resonant Return Module** für v_RIG-Alignment-Analyse (`code/resonant_return.py`).
 
-## Testing (v12.2)
+## Testing (v13.0)
 
 Comprehensive test suite with **42 unit tests** covering:
 - Consent enforcement & ethics guard
@@ -101,6 +101,13 @@ Comprehensive test suite with **42 unit tests** covering:
 - Sgr A* bridge normalization
 
 Run tests: `python -m unittest experiments.Phaethon_Geminiden_Bennu.NeuroProfile.test_neuro_profile -v`
+
+## v13 Additions (LanternNet Integration)
+
+- **LanternNet Ledger Logging** – Analyseergebnisse schreiben in `data/bootstrap_ledger.*`
+  und `data/crep_null_model_ledger.*`, inklusive ΔAIC/CI-Telemetrie.
+- **Consent Hashing** – Consent-Tokens werden gehasht gespeichert, Subject-IDs anonymisiert.
+- **LanternNet Status** – NeuroProfile-Laterne wird in `status/lantern_net.*` geführt.
 
 ## Falsifizierbarkeit & Nullmodelle
 
@@ -124,8 +131,8 @@ Nullmodelle, ΔAIC/CI-Notizen und Telemetrie-Hooks zusammengezogen, damit
 ## Consent & Demo
 
 - Die Demo erfordert explizite Zustimmung (`consent_granted=True`) **und** einen Consent-Token.
-- Der Token wird gehasht gespeichert; IDs werden anonymisiert, bevor sie in `data/results.json` landen.
-- Beispiel: `NeuroProfileModel().analyze(series, consent_granted=True, consent_token="demo-token", subject_id="demo")`
+- Der Token wird gehasht gespeichert; IDs werden anonymisiert, bevor sie in Ledgers/Results landen.
+- Beispiel: `NeuroProfileModel().analyze(series, consent_granted=True, consent_token="demo-token", subject_id="demo", log_to_lanternnet=True)`
 
 ## Kontakt & Ethik
 

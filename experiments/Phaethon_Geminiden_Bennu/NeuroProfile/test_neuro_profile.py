@@ -134,6 +134,78 @@ class TestNeuroProfileModel(unittest.TestCase):
         self.assertEqual(sigma_phi, 0.0)
 
 
+class TestLanternNetLedgerLogging(unittest.TestCase):
+    """Tests for LanternNet ledger logging integration."""
+
+    def test_lanternnet_logging_writes_trilayer(self) -> None:
+        """Logging should append entries and write JSON/YAML/MD files."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_path = Path(tmpdir)
+            bootstrap_path = tmp_path / "bootstrap_ledger.json"
+            crep_path = tmp_path / "crep_null_model_ledger.json"
+
+            bootstrap_path.write_text(
+                json.dumps(
+                    {
+                        "meta": {
+                            "document": "Bootstrap Ledger – LanternNet",
+                            "version": "v13.0.0",
+                            "consent_protocol": "Sigillin consent gating + anonymization required",
+                        },
+                        "entries": [],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            crep_path.write_text(
+                json.dumps(
+                    {
+                        "meta": {
+                            "document": "CREP Null-Model Ledger – LanternNet",
+                            "version": "v13.0.0",
+                            "consent_protocol": "Sigillin consent gating + anonymization required",
+                        },
+                        "entries": [],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            config = NeuroProfileConfig(
+                enable_lanternnet_logging=True,
+                lanternnet_bootstrap_ledger_path=bootstrap_path,
+                lanternnet_crep_ledger_path=crep_path,
+            )
+            model = NeuroProfileModel(config=config)
+            rng = np.random.default_rng(9)
+            series = rng.normal(0.0, 1.0, 256)
+
+            result = model.analyze(
+                series,
+                consent_granted=True,
+                consent_token="ledger-token",
+                subject_id="ledger-subject",
+                log_to_lanternnet=True,
+                source_id="synthetic-ledger-test",
+            )
+
+            self.assertTrue(bootstrap_path.exists())
+            self.assertTrue(crep_path.exists())
+            self.assertTrue(bootstrap_path.with_suffix(".yaml").exists())
+            self.assertTrue(bootstrap_path.with_suffix(".md").exists())
+            self.assertTrue(crep_path.with_suffix(".yaml").exists())
+            self.assertTrue(crep_path.with_suffix(".md").exists())
+
+            bootstrap_payload = json.loads(bootstrap_path.read_text(encoding="utf-8"))
+            crep_payload = json.loads(crep_path.read_text(encoding="utf-8"))
+            self.assertEqual(len(bootstrap_payload["entries"]), 1)
+            self.assertEqual(len(crep_payload["entries"]), 1)
+            self.assertEqual(
+                bootstrap_payload["entries"][0]["consent_token_hash"],
+                result.consent.consent_token_hash,
+            )
+
+
 class TestBetaEstimator(unittest.TestCase):
     """Tests for β-curve fitting accuracy."""
 

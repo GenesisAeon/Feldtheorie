@@ -1,9 +1,9 @@
 {
   "meta": {
     "document": "CREP Null-Model Ledger – LanternNet",
-    "version": "v13.0.0-draft",
+    "version": "v13.0.0",
     "created": "2026-09-01T12:00:00Z",
-    "updated": "2026-09-01T12:00:00Z",
+    "updated": "2026-02-05T14:44:41+00:00",
     "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
     "consent_protocol": "Sigillin consent gating + anonymization required"
   },
@@ -39,6 +39,54 @@
         "formal": "ΔAIC-Offsets noch nicht berechnet; Nullmodell-Gerüst vorhanden.",
         "empirical": "Synthetic Runs für CREP-Offsets ausstehend.",
         "poetic": "Das Schattenmodell wartet, bis die Laternen ihre Resonanz offenbaren."
+      }
+    },
+    {
+      "id": "crep-null-0002",
+      "module": "NeuroProfile Resonance Bridge",
+      "module_id": "exp-neuroprofile-001",
+      "scope": "experiments/Phaethon_Geminiden_Bennu/NeuroProfile",
+      "source_id": "synthetic-demo",
+      "subject_hash": "31547e681afa9015f75e16e0c0be7acc68b441ef9af97831444ce70d4a640147",
+      "consent_token_hash": "f49c6740f6049f0c47148bd260fc9e265177b40c9a209224d73f3bea13dddab2",
+      "null_models": [
+        {
+          "name": "constant",
+          "delta_aic": 0.0
+        },
+        {
+          "name": "linear",
+          "delta_aic": 0.8452159369869605
+        },
+        {
+          "name": "power_law",
+          "delta_aic": 360.77014226774486
+        }
+      ],
+      "crep_offset": -0.06567018928793833,
+      "ci_95": {
+        "beta": [
+          0.10000000000000002,
+          0.3459504452836826
+        ],
+        "sigma_phi": [
+          0.9352193800343218,
+          0.943440237718606
+        ],
+        "gamma_beta": [
+          0.6858737902621761,
+          0.8345566039038017
+        ],
+        "resonance_alignment": [
+          0.8987952110530172,
+          0.998780793872035
+        ]
+      },
+      "status": "synthetic",
+      "notes": {
+        "formal": "CREP-Offset gegen Nullmodelle dokumentiert; ΔAIC und CI bereitgestellt.",
+        "empirical": "CREP=0.4343 (Offset=-0.0657).",
+        "poetic": "Das Schattenmodell hält ζ(R) gedämpft, bis neue Resonanz entsteht."
       }
     }
   ]

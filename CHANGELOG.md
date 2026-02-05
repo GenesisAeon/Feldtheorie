@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added LanternNet status trilayer plus an update script to synthesize module metadata from the Lantern Hub and ledgers, alongside new bootstrap/CREP ledgers in `data/` to track σ(β(R-Θ)) falsification metrics and consent gating scaffolds.
 - Expanded LanternNet update outputs with MOR-FIT layer status, consent prompt propagation, documentation placeholders, and ledger references to align σ(β(R-Θ)) readiness with ethics telemetry.
 - Linked LanternNet lantern entries to bootstrap/CREP ledger lookups (σΦ ranges, ΔAIC null-models, CI envelopes) and surfaced ledger IDs in the generated trilayer output to keep σ(β(R-Θ)) evidence synchronized with telemetry. 
+- Logged NeuroProfile synthetic runs into the global LanternNet ledgers (β/σΦ/ΔAIC + CREP offsets), added the NeuroProfile lantern entry, and extended the LanternNet schema with lifecycle/evidence fields for v13 integration.
 
 ### 🌀 In Development — V9.0.0 Harmonic Emergence
 

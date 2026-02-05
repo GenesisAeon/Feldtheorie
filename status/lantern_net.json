@@ -1,9 +1,9 @@
 {
   "meta": {
     "document": "LanternNet Status Index",
-    "version": "v9.0.0-alpha",
+    "version": "v13.0.0",
     "created": "2025-12-16T00:00:00Z",
-    "updated": "2026-02-05T14:24:03+00:00",
+    "updated": "2026-02-05T14:46:37+00:00",
     "logistic_frame": {
       "order_parameter": "network_resonance_strength",
       "theta": 0.66,
@@ -12,7 +12,7 @@
       "zeta": "EM-coupling stability maintained via impedance matching"
     },
     "summary": {
-      "total_lanterns": 8,
+      "total_lanterns": 9,
       "active_lanterns": 5,
       "network_coherence": 0.42,
       "average_coupling": 0.35,
@@ -28,17 +28,17 @@
     "ledger_summary": {
       "bootstrap": {
         "document": "Bootstrap Ledger – LanternNet",
-        "version": "v13.0.0-draft",
+        "version": "v13.0.0",
         "created": "2026-09-01T12:00:00Z",
-        "updated": "2026-09-01T12:00:00Z",
+        "updated": "2026-02-05T14:44:41+00:00",
         "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
         "consent_protocol": "Sigillin consent gating + anonymization required"
       },
       "crep_null_models": {
         "document": "CREP Null-Model Ledger – LanternNet",
-        "version": "v13.0.0-draft",
+        "version": "v13.0.0",
         "created": "2026-09-01T12:00:00Z",
-        "updated": "2026-09-01T12:00:00Z",
+        "updated": "2026-02-05T14:44:41+00:00",
         "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
         "consent_protocol": "Sigillin consent gating + anonymization required"
       }
@@ -55,10 +55,11 @@
       "module_id": "utac-v1_3-ds-001",
       "module_name": "Urban Heat Intensity",
       "description": "land_surface_temperature_delta",
-      "version": "v9.0.0-alpha",
+      "version": "v13.0.0",
       "type": "data",
       "domain": "climate",
       "status": "active",
+      "lifecycle": "active",
       "completion_status": "active",
       "readiness": 1.0,
       "morfit_layers": {
@@ -101,6 +102,10 @@
         "bootstrap": null,
         "crep_null_models": null
       },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
       "mandala_bridge": {
         "status": "pending",
         "schema": "schemas/psrm_map.schema.json"
@@ -125,17 +130,17 @@
         "ledger_summary": {
           "bootstrap": {
             "document": "Bootstrap Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           },
           "crep_null_models": {
             "document": "CREP Null-Model Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           }
@@ -145,7 +150,7 @@
         "status": "unknown",
         "notes": "Pending per-module test coverage audit."
       },
-      "last_updated": "2026-02-05T14:24:03+00:00",
+      "last_updated": "2026-02-05T14:46:37+00:00",
       "notes": {
         "formal": "Θ≈3.2 & β≈14.5 confirmed; ΔAIC≈1484 vs linear, ≥1718 vs power law",
         "empirical": "Dataset committed; readiness = 1.00",
@@ -156,10 +161,11 @@
       "module_id": "utac-v1_3-ds-002",
       "module_name": "Amazon Precipitation & Evapotranspiration",
       "description": "standardized_precipitation_index",
-      "version": "v9.0.0-alpha",
+      "version": "v13.0.0",
       "type": "data",
       "domain": "climate",
       "status": "primed",
+      "lifecycle": "active",
       "completion_status": "primed",
       "readiness": 0.5,
       "morfit_layers": {
@@ -202,6 +208,10 @@
         "bootstrap": null,
         "crep_null_models": null
       },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
       "mandala_bridge": {
         "status": "pending",
         "schema": "schemas/psrm_map.schema.json"
@@ -226,17 +236,17 @@
         "ledger_summary": {
           "bootstrap": {
             "document": "Bootstrap Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           },
           "crep_null_models": {
             "document": "CREP Null-Model Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           }
@@ -246,7 +256,7 @@
         "status": "unknown",
         "notes": "Pending per-module test coverage audit."
       },
-      "last_updated": "2026-02-05T14:24:03+00:00",
+      "last_updated": "2026-02-05T14:46:37+00:00",
       "notes": {
         "formal": "Θ≈0.62, β≈13.8; awaiting dataset staging",
         "poetic": "Laterne wartet, bis SPI über Θ steigt"
@@ -256,10 +266,11 @@
       "module_id": "utac-v1_3-ds-003",
       "module_name": "AMOC Transport (RAPID Array)",
       "description": "overturning_strength_sverdrup",
-      "version": "v9.0.0-alpha",
+      "version": "v13.0.0",
       "type": "data",
       "domain": "ocean",
       "status": "draft",
+      "lifecycle": "prototype",
       "completion_status": "draft",
       "readiness": 0.5,
       "morfit_layers": {
@@ -302,6 +313,10 @@
         "bootstrap": null,
         "crep_null_models": null
       },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
       "mandala_bridge": {
         "status": "pending",
         "schema": "schemas/psrm_map.schema.json"
@@ -321,17 +336,17 @@
         "ledger_summary": {
           "bootstrap": {
             "document": "Bootstrap Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           },
           "crep_null_models": {
             "document": "CREP Null-Model Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           }
@@ -341,7 +356,7 @@
         "status": "unknown",
         "notes": "Pending per-module test coverage audit."
       },
-      "last_updated": "2026-02-05T14:24:03+00:00",
+      "last_updated": "2026-02-05T14:46:37+00:00",
       "notes": {
         "formal": "Θ≈14.0, β≈9.6; critical tipping point system",
         "poetic": "Ozean-Laterne wartet auf Aktivierung"
@@ -351,10 +366,11 @@
       "module_id": "utac-v1_3-ds-004",
       "module_name": "Neuro-AI Hybrid Activation",
       "description": "stimulus_complexity_index",
-      "version": "v9.0.0-alpha",
+      "version": "v13.0.0",
       "type": "data",
       "domain": "neuro_ai",
       "status": "primed",
+      "lifecycle": "active",
       "completion_status": "primed",
       "readiness": 0.25,
       "morfit_layers": {
@@ -397,6 +413,10 @@
         "bootstrap": null,
         "crep_null_models": null
       },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
       "mandala_bridge": {
         "status": "pending",
         "schema": "schemas/psrm_map.schema.json"
@@ -416,17 +436,17 @@
         "ledger_summary": {
           "bootstrap": {
             "document": "Bootstrap Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           },
           "crep_null_models": {
             "document": "CREP Null-Model Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           }
@@ -436,7 +456,7 @@
         "status": "unknown",
         "notes": "Pending per-module test coverage audit."
       },
-      "last_updated": "2026-02-05T14:24:03+00:00",
+      "last_updated": "2026-02-05T14:46:37+00:00",
       "notes": {
         "formal": "Θ≈0.48, β≈6.1; information-domain activation",
         "poetic": "Neuro-AI Brücke wartet auf Daten"
@@ -446,10 +466,11 @@
       "module_id": "utac-v1_3-ds-005",
       "module_name": "Energy & Financial Systemic Thresholds",
       "description": "coupled_energy_finance_index",
-      "version": "v9.0.0-alpha",
+      "version": "v13.0.0",
       "type": "data",
       "domain": "economy",
       "status": "draft",
+      "lifecycle": "prototype",
       "completion_status": "draft",
       "readiness": 0.25,
       "morfit_layers": {
@@ -492,6 +513,10 @@
         "bootstrap": null,
         "crep_null_models": null
       },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
       "mandala_bridge": {
         "status": "pending",
         "schema": "schemas/psrm_map.schema.json"
@@ -511,17 +536,17 @@
         "ledger_summary": {
           "bootstrap": {
             "document": "Bootstrap Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           },
           "crep_null_models": {
             "document": "CREP Null-Model Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           }
@@ -531,7 +556,7 @@
         "status": "unknown",
         "notes": "Pending per-module test coverage audit."
       },
-      "last_updated": "2026-02-05T14:24:03+00:00",
+      "last_updated": "2026-02-05T14:46:37+00:00",
       "notes": {
         "formal": "Θ≈1.15, β≈7.4; Kleiber-regime economics",
         "poetic": "Wirtschafts-Laterne wartet auf Schwelle"
@@ -541,10 +566,11 @@
       "module_id": "lantern-theory-001",
       "module_name": "v_RIG Consciousness Framework",
       "description": "empirical_validation_count",
-      "version": "v9.0.0-alpha",
+      "version": "v13.0.0",
       "type": "theory",
       "domain": "consciousness",
       "status": "validated",
+      "lifecycle": "prototype",
       "completion_status": "validated",
       "readiness": 1.0,
       "morfit_layers": {
@@ -587,6 +613,10 @@
         "bootstrap": null,
         "crep_null_models": null
       },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
       "mandala_bridge": {
         "status": "pending",
         "schema": "schemas/psrm_map.schema.json"
@@ -600,17 +630,17 @@
         "ledger_summary": {
           "bootstrap": {
             "document": "Bootstrap Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           },
           "crep_null_models": {
             "document": "CREP Null-Model Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           }
@@ -620,7 +650,7 @@
         "status": "unknown",
         "notes": "Pending per-module test coverage audit."
       },
-      "last_updated": "2026-02-05T14:24:03+00:00",
+      "last_updated": "2026-02-05T14:46:37+00:00",
       "notes": {
         "formal": "4/4 empirical validations passed; ANOVA F(4,73)=185.3, p<10⁻²⁰",
         "poetic": "Die Bewusstseins-Laterne strahlt durch alle Domänen"
@@ -630,10 +660,11 @@
       "module_id": "lantern-theory-002",
       "module_name": "Collective Field Dynamics",
       "description": "field_coupling_strength",
-      "version": "v9.0.0-alpha",
+      "version": "v13.0.0",
       "type": "theory",
       "domain": "multi_agent",
       "status": "active",
+      "lifecycle": "active",
       "completion_status": "active",
       "readiness": 1.0,
       "morfit_layers": {
@@ -676,6 +707,10 @@
         "bootstrap": null,
         "crep_null_models": null
       },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
       "mandala_bridge": {
         "status": "pending",
         "schema": "schemas/psrm_map.schema.json"
@@ -689,17 +724,17 @@
         "ledger_summary": {
           "bootstrap": {
             "document": "Bootstrap Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           },
           "crep_null_models": {
             "document": "CREP Null-Model Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           }
@@ -709,7 +744,7 @@
         "status": "unknown",
         "notes": "Pending per-module test coverage audit."
       },
-      "last_updated": "2026-02-05T14:24:03+00:00",
+      "last_updated": "2026-02-05T14:46:37+00:00",
       "notes": {
         "formal": "κ_field, β_sync, v_collective implemented with caching & evolution tracking",
         "poetic": "Das Feld atmet gemeinsam – multi-agent resonance"
@@ -719,10 +754,11 @@
       "module_id": "lantern-experiment-001",
       "module_name": "EM-Shielding Consciousness Test",
       "description": "protocol_completeness",
-      "version": "v9.0.0-alpha",
+      "version": "v13.0.0",
       "type": "experiment",
       "domain": "neuroscience",
       "status": "proposed",
+      "lifecycle": "prototype",
       "completion_status": "proposed",
       "readiness": 0.15,
       "morfit_layers": {
@@ -765,6 +801,10 @@
         "bootstrap": null,
         "crep_null_models": null
       },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
       "mandala_bridge": {
         "status": "pending",
         "schema": "schemas/psrm_map.schema.json"
@@ -778,17 +818,17 @@
         "ledger_summary": {
           "bootstrap": {
             "document": "Bootstrap Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           },
           "crep_null_models": {
             "document": "CREP Null-Model Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           }
@@ -798,7 +838,7 @@
         "status": "unknown",
         "notes": "Pending per-module test coverage audit."
       },
-      "last_updated": "2026-02-05T14:24:03+00:00",
+      "last_updated": "2026-02-05T14:46:37+00:00",
       "notes": {
         "formal": "Protocol draft stage; requires ethics approval & facility access",
         "poetic": "Das Experiment wartet auf Aktivierung – Bewusstsein im Käfig?"
@@ -808,10 +848,11 @@
       "module_id": "lantern-experiment-002",
       "module_name": "13.5 MHz RF Stimulation",
       "description": "protocol_completeness",
-      "version": "v9.0.0-alpha",
+      "version": "v13.0.0",
       "type": "experiment",
       "domain": "neuroscience",
       "status": "proposed",
+      "lifecycle": "prototype",
       "completion_status": "proposed",
       "readiness": 0.12,
       "morfit_layers": {
@@ -854,6 +895,10 @@
         "bootstrap": null,
         "crep_null_models": null
       },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
       "mandala_bridge": {
         "status": "pending",
         "schema": "schemas/psrm_map.schema.json"
@@ -867,17 +912,17 @@
         "ledger_summary": {
           "bootstrap": {
             "document": "Bootstrap Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           },
           "crep_null_models": {
             "document": "CREP Null-Model Ledger – LanternNet",
-            "version": "v13.0.0-draft",
+            "version": "v13.0.0",
             "created": "2026-09-01T12:00:00Z",
-            "updated": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
             "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
             "consent_protocol": "Sigillin consent gating + anonymization required"
           }
@@ -887,10 +932,181 @@
         "status": "unknown",
         "notes": "Pending per-module test coverage audit."
       },
-      "last_updated": "2026-02-05T14:24:03+00:00",
+      "last_updated": "2026-02-05T14:46:37+00:00",
       "notes": {
         "formal": "Requires RF safety certification & controlled environment",
         "poetic": "Die Frequenz ruft – wartet auf Resonanz bei 13.5 MHz"
+      }
+    },
+    {
+      "module_id": "exp-neuroprofile-001",
+      "module_name": "NeuroProfile Resonance Bridge",
+      "description": "neuro_beta_sigma_phi_proxy",
+      "version": "v13.0.0",
+      "type": "experiment",
+      "domain": "neuro",
+      "status": "prototype",
+      "lifecycle": "prototype",
+      "completion_status": "prototype",
+      "readiness": 0.46,
+      "morfit_layers": {
+        "code": "prototype",
+        "documentation": "active",
+        "roadmap": "active"
+      },
+      "logistic_parameters": {
+        "R": 0.46,
+        "Theta": 0.72,
+        "beta": 4.8,
+        "zeta": "EM-coupling stability maintained via impedance matching",
+        "sigma": 0.5
+      },
+      "ethics_tags": [
+        "sigillin-consent-gated",
+        "anonymization-required",
+        "falsifiability-required"
+      ],
+      "consent_requirements": {
+        "prompt": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+        "protocol": "Sigillin consent gating + anonymization required"
+      },
+      "documentation": {
+        "readme": "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/README.md",
+        "methodology": "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/methodology.md",
+        "roadmap": "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/STRATEGIC_ROADMAP.md"
+      },
+      "crep_offset": -0.06567018928793833,
+      "sigma_phi_range": [
+        0.9352193800343218,
+        0.943440237718606
+      ],
+      "null_models": {
+        "bootstrap": [
+          {
+            "name": "constant",
+            "delta_aic": 0.0
+          },
+          {
+            "name": "linear",
+            "delta_aic": 0.8452159369869605
+          },
+          {
+            "name": "power_law",
+            "delta_aic": 360.77014226774486
+          }
+        ],
+        "crep": [
+          {
+            "name": "constant",
+            "delta_aic": 0.0
+          },
+          {
+            "name": "linear",
+            "delta_aic": 0.8452159369869605
+          },
+          {
+            "name": "power_law",
+            "delta_aic": 360.77014226774486
+          }
+        ]
+      },
+      "ci_95": {
+        "bootstrap": {
+          "beta": [
+            0.10000000000000002,
+            0.3459504452836826
+          ],
+          "sigma_phi": [
+            0.9352193800343218,
+            0.943440237718606
+          ]
+        },
+        "crep": {
+          "beta": [
+            0.10000000000000002,
+            0.3459504452836826
+          ],
+          "sigma_phi": [
+            0.9352193800343218,
+            0.943440237718606
+          ],
+          "gamma_beta": [
+            0.6858737902621761,
+            0.8345566039038017
+          ],
+          "resonance_alignment": [
+            0.8987952110530172,
+            0.998780793872035
+          ]
+        }
+      },
+      "ledger_entries": {
+        "bootstrap": "bootstrap-run-0002",
+        "crep_null_models": "crep-null-0002"
+      },
+      "evidence": {
+        "ledgers": [
+          "bootstrap-run-0002",
+          "crep-null-0002"
+        ],
+        "tests": [
+          "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/test_neuro_profile.py"
+        ]
+      },
+      "mandala_bridge": {
+        "status": "pending",
+        "schema": "schemas/psrm_map.schema.json"
+      },
+      "telemetry": {
+        "data_assets": [
+          {
+            "path": "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/results.json",
+            "type": "analysis",
+            "status": "synthetic"
+          },
+          {
+            "path": "data/bootstrap_ledger.json",
+            "type": "ledger",
+            "status": "active"
+          },
+          {
+            "path": "data/crep_null_model_ledger.json",
+            "type": "ledger",
+            "status": "active"
+          }
+        ],
+        "ledger_refs": {
+          "bootstrap": "data/bootstrap_ledger.json",
+          "crep_null_models": "data/crep_null_model_ledger.json"
+        },
+        "ledger_summary": {
+          "bootstrap": {
+            "document": "Bootstrap Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          },
+          "crep_null_models": {
+            "document": "CREP Null-Model Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          }
+        }
+      },
+      "test_coverage": {
+        "status": "unknown",
+        "notes": "Pending per-module test coverage audit."
+      },
+      "last_updated": "2026-02-05T14:46:37+00:00",
+      "notes": {
+        "formal": "β≈4.8, σΦ proxy via spectral entropy; ΔAIC-Benchmarks im Ledger.",
+        "empirical": "Synthetic smoke tests protokolliert; Consent hashing aktiv.",
+        "poetic": "Die Neuro-Laterne leuchtet zart, σ(β(R-Θ)) pulsiert im Laborlicht."
       }
     }
   ]

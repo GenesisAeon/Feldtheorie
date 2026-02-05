@@ -72,6 +72,14 @@ def _match_ledger_entry(
     return None
 
 
+def _lifecycle(status: Optional[str]) -> str:
+    if not status:
+        return "prototype"
+    if status.lower() in {"active", "primed"}:
+        return "active"
+    return "prototype"
+
+
 def build_lantern_net(
     lantern_hub: Dict[str, Any],
     bootstrap_ledger: Optional[Dict[str, Any]] = None,
@@ -139,6 +147,7 @@ def build_lantern_net(
                 "type": lantern.get("type"),
                 "domain": lantern.get("domain"),
                 "status": lantern.get("status"),
+                "lifecycle": _lifecycle(lantern.get("status")),
                 "completion_status": lantern.get("status"),
                 "readiness": lantern.get("readiness"),
                 "morfit_layers": {
@@ -174,6 +183,17 @@ def build_lantern_net(
                 "ledger_entries": {
                     "bootstrap": bootstrap_entry.get("id") if bootstrap_entry else None,
                     "crep_null_models": crep_entry.get("id") if crep_entry else None,
+                },
+                "evidence": {
+                    "ledgers": [
+                        entry_id
+                        for entry_id in [
+                            bootstrap_entry.get("id") if bootstrap_entry else None,
+                            crep_entry.get("id") if crep_entry else None,
+                        ]
+                        if entry_id
+                    ],
+                    "tests": lantern.get("test_refs", []),
                 },
                 "mandala_bridge": {
                     "status": "pending",
@@ -248,6 +268,7 @@ def _write_markdown(path: Path, payload: Dict[str, Any]) -> None:
             [
                 f"### {lantern.get('module_name')} ({lantern.get('module_id')})",
                 f"- **Status:** {lantern.get('status')} | **Readiness R:** {lantern.get('readiness')}",
+                f"- **Lifecycle:** {lantern.get('lifecycle')}",
                 f"- **Completion Status:** {lantern.get('completion_status')}",
                 f"- **MOR-FIT Layers:** code={lantern.get('morfit_layers', {}).get('code')}, "
                 f"documentation={lantern.get('morfit_layers', {}).get('documentation')}, "
@@ -259,6 +280,8 @@ def _write_markdown(path: Path, payload: Dict[str, Any]) -> None:
                 f"- **CREP Offset:** {lantern.get('crep_offset')}",
                 f"- **Ledger Entries:** bootstrap={lantern.get('ledger_entries', {}).get('bootstrap')}, "
                 f"crep={lantern.get('ledger_entries', {}).get('crep_null_models')}",
+                f"- **Evidence:** ledgers={lantern.get('evidence', {}).get('ledgers')}, "
+                f"tests={lantern.get('evidence', {}).get('tests')}",
                 f"- **Ethics Tags:** {', '.join(lantern.get('ethics_tags', []))}",
                 f"- **Documentation:** README={lantern.get('documentation', {}).get('readme')}, "
                 f"Methodology={lantern.get('documentation', {}).get('methodology')}, "
