@@ -15,6 +15,9 @@ import yaml
 
 DEFAULT_CONFIG_PATH = Path("v9_alpha/config/lantern_hub.yaml")
 DEFAULT_OUTPUT_DIR = Path("status")
+CONSENT_PROMPT = (
+    "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration."
+)
 
 
 def _load_yaml(path: Path) -> Dict[str, Any]:
@@ -44,6 +47,8 @@ def build_lantern_net(
     lantern_hub: Dict[str, Any],
     bootstrap_ledger: Optional[Dict[str, Any]] = None,
     crep_ledger: Optional[Dict[str, Any]] = None,
+    bootstrap_ledger_path: Optional[Path] = None,
+    crep_ledger_path: Optional[Path] = None,
     timestamp: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Build LanternNet index from config and ledgers.
@@ -73,10 +78,23 @@ def build_lantern_net(
         "bootstrap": bootstrap_ledger.get("meta") if bootstrap_ledger else None,
         "crep_null_models": crep_ledger.get("meta") if crep_ledger else None,
     }
+    ledger_refs = _ledger_refs(bootstrap_ledger_path, crep_ledger_path)
 
     entries: List[Dict[str, Any]] = []
     for lantern in lantern_hub.get("lanterns", []):
         data_assets = lantern.get("data_assets", [])
+        ethics_tags = lantern.get(
+            "ethics_tags",
+            [
+                "sigillin-consent-gated",
+                "anonymization-required",
+                "falsifiability-required",
+            ],
+        )
+        documentation = lantern.get(
+            "documentation",
+            {"readme": None, "methodology": None, "roadmap": None},
+        )
         entries.append(
             {
                 "module_id": lantern.get("id"),
@@ -86,7 +104,13 @@ def build_lantern_net(
                 "type": lantern.get("type"),
                 "domain": lantern.get("domain"),
                 "status": lantern.get("status"),
+                "completion_status": lantern.get("status"),
                 "readiness": lantern.get("readiness"),
+                "morfit_layers": {
+                    "code": lantern.get("status"),
+                    "documentation": lantern.get("documentation_status", "pending"),
+                    "roadmap": lantern.get("roadmap_status", "pending"),
+                },
                 "logistic_parameters": {
                     "R": lantern.get("readiness"),
                     "Theta": lantern.get("theta"),
@@ -94,11 +118,12 @@ def build_lantern_net(
                     "zeta": logistic_frame.get("zeta"),
                     "sigma": logistic_frame.get("sigma"),
                 },
-                "ethics_tags": [
-                    "sigillin-consent-gated",
-                    "anonymization-required",
-                    "falsifiability-required",
-                ],
+                "ethics_tags": ethics_tags,
+                "consent_requirements": {
+                    "prompt": CONSENT_PROMPT,
+                    "protocol": "Sigillin consent gating + anonymization required",
+                },
+                "documentation": documentation,
                 "crep_offset": None,
                 "sigma_phi_range": None,
                 "mandala_bridge": {
@@ -107,7 +132,8 @@ def build_lantern_net(
                 },
                 "telemetry": {
                     "data_assets": data_assets,
-                    "ledger_refs": ledger_summary,
+                    "ledger_refs": ledger_refs,
+                    "ledger_summary": ledger_summary,
                 },
                 "test_coverage": {
                     "status": "unknown",
@@ -128,6 +154,8 @@ def build_lantern_net(
             "summary": summary,
             "sources": meta.get("sources", {}),
             "ledger_summary": ledger_summary,
+            "ledger_refs": ledger_refs,
+            "consent_prompt": CONSENT_PROMPT,
             "sigma_transition": "σ(β(R-Θ)) marks readiness transitions across lanterns.",
         },
         "lanterns": entries,
@@ -161,6 +189,7 @@ def _write_markdown(path: Path, payload: Dict[str, Any]) -> None:
         f"- Lantern Hub: `{meta.get('sources', {}).get('v8_lanterns', 'v9_alpha/config/lantern_hub.yaml')}`",
         f"- Ordnungs-Sigillin: `feldtheorie_index.*`",
         f"- Empirische Evidenz: `data/`, `analysis/`, `docs/`",
+        f"- Consent Prompt: {meta.get('consent_prompt')}",
         "",
         "## Lantern Übersicht",
     ]
@@ -170,10 +199,17 @@ def _write_markdown(path: Path, payload: Dict[str, Any]) -> None:
             [
                 f"### {lantern.get('module_name')} ({lantern.get('module_id')})",
                 f"- **Status:** {lantern.get('status')} | **Readiness R:** {lantern.get('readiness')}",
+                f"- **Completion Status:** {lantern.get('completion_status')}",
+                f"- **MOR-FIT Layers:** code={lantern.get('morfit_layers', {}).get('code')}, "
+                f"documentation={lantern.get('morfit_layers', {}).get('documentation')}, "
+                f"roadmap={lantern.get('morfit_layers', {}).get('roadmap')}",
                 f"- **Domain:** {lantern.get('domain')} | **Type:** {lantern.get('type')}",
                 f"- **Order Parameter:** {lantern.get('description')}",
                 f"- **Logistik:** R={params.get('R')}, Θ={params.get('Theta')}, β={params.get('beta')}, ζ={params.get('zeta')}",
                 f"- **Ethics Tags:** {', '.join(lantern.get('ethics_tags', []))}",
+                f"- **Documentation:** README={lantern.get('documentation', {}).get('readme')}, "
+                f"Methodology={lantern.get('documentation', {}).get('methodology')}, "
+                f"Roadmap={lantern.get('documentation', {}).get('roadmap')}",
                 "",
             ]
         )
@@ -204,6 +240,8 @@ def main() -> None:
         lantern_hub=lantern_hub,
         bootstrap_ledger=bootstrap_data,
         crep_ledger=crep_data,
+        bootstrap_ledger_path=args.bootstrap_ledger,
+        crep_ledger_path=args.crep_ledger,
     )
     write_trilayer(args.output_dir, payload)
 

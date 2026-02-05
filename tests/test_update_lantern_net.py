@@ -27,6 +27,9 @@ def test_build_lantern_net_matches_config():
     assert "module_name" in sample
     assert "logistic_parameters" in sample
     assert "ethics_tags" in sample
+    assert "consent_requirements" in sample
+    assert "documentation" in sample
+    assert "morfit_layers" in sample
 
 
 def test_write_trilayer_outputs(tmp_path):
@@ -47,3 +50,5 @@ def test_write_trilayer_outputs(tmp_path):
     with yaml_path.open("r", encoding="utf-8") as handle:
         loaded = yaml.safe_load(handle)
     assert len(loaded["lanterns"]) == len(payload["lanterns"])
+    assert "consent_prompt" in loaded["meta"]
+    assert "ledger_refs" in loaded["meta"]
