@@ -1,0 +1,106 @@
+{
+  "id": "docs-review-001",
+  "title": "Feldtheorie Repository Feedback — Emergenzpfad Audit",
+  "date": "2026-02-05",
+  "status": "primed",
+  "scope": "repository-review",
+  "consent_module": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+  "logistic_state": {
+    "R": "hoch",
+    "Theta": "stabil",
+    "beta": 4.8,
+    "zeta_R": "moderat-steigend"
+  },
+  "summary": [
+    "Trilayer-Prinzip konsistent, CI-gesichert.",
+    "Sigillin-Governance robust mit Licht/Schatten-Architektur.",
+    "Methodische Transparenz in LIMITATIONS.md und Bootstrap-Setup.",
+    "Modularer Code-Aufbau mit klaren Ebenen."
+  ],
+  "strengths": [
+    "Trilayer-Prinzip (YAML/JSON/MD) stabil.",
+    "Sigillin-System mit Recovery-Ritualen.",
+    "Falsifizierbarkeit (ΔAIC ≥ 10) klar dokumentiert.",
+    "Multi-Agenten-Transparenz via AUTHORSHIP.md."
+  ],
+  "gaps": [
+    "Cross-Validation (LOOCV) fehlt in Kern-Pipelines.",
+    "Multiple-Comparisons-Korrektur (Holm/BH-FDR) noch nicht integriert.",
+    "Archivhygiene in seed/ArchivSucheUTAC unzureichend.",
+    "Ruff-Issues und Deprecation-Risiken (NumPy/Pydantic).",
+    "Test-Status-Diskrepanz README vs CODE_REVIEW."
+  ],
+  "priorities": [
+    {
+      "id": "priority-01",
+      "action": "Cross-Validation (LOOCV) integrieren",
+      "rationale": "minimiert Overfitting bei kleinen Samples"
+    },
+    {
+      "id": "priority-02",
+      "action": "Holm/BH-FDR in Multiple-Testing integrieren",
+      "rationale": "senkt Familywise-Error-Rate"
+    },
+    {
+      "id": "priority-03",
+      "action": "Archivhygiene für seed/ArchivSucheUTAC",
+      "rationale": "reduziert ζ(R) und Tri-Layer-Drift"
+    },
+    {
+      "id": "priority-04",
+      "action": "Ruff Auto-Fix + Type-Hint-Modernisierung",
+      "rationale": "reduziert technische Schulden"
+    },
+    {
+      "id": "priority-05",
+      "action": "Test-Status konsolidieren",
+      "rationale": "Vertrauensbasis für CI"
+    }
+  ],
+  "falsifiability": [
+    {
+      "claim": "LOOCV reduziert Overfitting-Risiko",
+      "null_models": [
+        "linear",
+        "power-law",
+        "exponential"
+      ],
+      "delta_aic": "TBD",
+      "confidence_interval": "Bootstrap 1000 (Seed 1337)"
+    },
+    {
+      "claim": "Multiple-Comparisons-Korrektur senkt False-Positive-Rate < 5%",
+      "null_models": [
+        "uncorrected"
+      ],
+      "delta_aic": "TBD",
+      "confidence_interval": "Binomial-Bounds"
+    },
+    {
+      "claim": "Archivhygiene reduziert Tri-Layer-Drift",
+      "null_models": [
+        "unbereinigtes_archiv"
+      ],
+      "delta_aic": "N/A",
+      "confidence_interval": "Drift-Count"
+    }
+  ],
+  "coupling": {
+    "ordnungs_sigillin": [
+      "feldtheorie_index.*",
+      "seed_index.*"
+    ],
+    "evidence_paths": [
+      "analysis/",
+      "data/",
+      "docs/"
+    ],
+    "status_matrix": [
+      "docs/utac_status_alignment_v1.2.*"
+    ]
+  },
+  "notes": [
+    "Review-Laterne koppelt Narrative mit empirischen Pfaden.",
+    "Umsetzung erfolgt gestuft entlang σ(β(R-Θ))."
+  ]
+}

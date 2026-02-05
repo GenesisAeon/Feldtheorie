@@ -7,9 +7,9 @@
     "version": "2.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 148,
-    "updated": "2026-01-16T11:46:36Z",
-    "last_updated": "2026-01-16"
+    "markdown_files": 149,
+    "updated": "2026-02-05T22:02:04Z",
+    "last_updated": "2026-02-05"
   },
   "categories": {
     "science": {
@@ -22,7 +22,7 @@
       "name": "Narrative",
       "description": "Roadmaps, manifests, parity briefs, and release communications",
       "color": "#8E44AD",
-      "count": 15
+      "count": 16
     }
   },
   "markdown_docs": [
@@ -590,6 +590,24 @@
       ],
       "description": "UTAC-Nutzungsleitfaden als Theoretical Mirror Framework.\nBeschreibt Struktur=Theorie, Code=Spezifikation, Implementierung extern.\nVerankert Nullmodelle (ΔAIC/CI) und das Consent-&-Joy-Modul.\n",
       "path": "docs/narrative/theoretical_mirror_framework.md"
+    },
+    {
+      "id": "docs-review-001",
+      "name": "narrative/reviews/feldtheorie_repo_feedback_2026-02-05.md",
+      "category": "narrative",
+      "type": "review",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 3.4,
+      "keywords": [
+        "review",
+        "feedback",
+        "emergence",
+        "σ(β(R-Θ))",
+        "audit"
+      ],
+      "description": "Emergenzpfad-Audit und SeniorDev-Feedback mit Prioritäten, Nullmodellen und ΔAIC-Hinweisen.",
+      "path": "docs/narrative/reviews/feldtheorie_repo_feedback_2026-02-05.md"
     }
   ],
   "triggers": {
@@ -632,7 +650,8 @@
       "docs-app-002"
     ],
     "for_review": [
-      "docs-app-003"
+      "docs-app-003",
+      "docs-review-001"
     ],
     "for_operations": [
       "docs-infra-002",
