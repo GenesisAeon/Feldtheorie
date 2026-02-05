@@ -1,0 +1,1377 @@
+meta:
+  document: Seed/Release Lantern Inventory
+  created: '2026-02-05T18:55:12+00:00'
+  updated: '2026-02-05T18:55:12+00:00'
+  source: v9_alpha/config/lantern_seed_inventory.yaml
+  base_directories:
+  - seed
+  - releases
+  consent_prompt: 'Permission Request: Do you accept this task? We aim for a joyful
+    and efficient collaboration.'
+  default_parameters:
+    readiness: 0.1
+    theta: 0.5
+    beta: 4.8
+    order_parameter: module_reflection
+    status: draft
+lanterns:
+- id: seed-archivsucheutac
+  name: Seed Archivsucheutac
+  type: seed
+  domain: ArchivSucheUTAC
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: archive/legacy_v1_v3/seed/ArchivSucheUTAC/README.md
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-breakpointanalyse
+  name: Seed Breakpointanalyse
+  type: seed
+  domain: BreakPointAnalyse
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-fraktaltagebuchv2
+  name: Seed Fraktaltagebuchv2
+  type: seed
+  domain: FraktaltagebuchV2
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: archive/legacy_v1_v3/seed/FraktaltagebuchV2/README.md
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-fraktaltagebuchv3
+  name: Seed Fraktaltagebuchv3
+  type: seed
+  domain: FraktaltagebuchV3
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: archive/legacy_v1_v3/seed/FraktaltagebuchV3/README.md
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-nextversionplan
+  name: Seed Nextversionplan
+  type: seed
+  domain: NextVersionPlan
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-nextversionplan-claude-v2
+  name: Seed Nextversionplan / Claude V2
+  type: seed
+  domain: NextVersionPlan
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: seed/NextVersionPlan/Claude_V2/README.md
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-roadtov-3
+  name: Seed Roadtov.3
+  type: seed
+  domain: RoadToV.3
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: archive/legacy_v1_v3/seed/RoadToV.3/README.md
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-v4-grundlagen
+  name: Seed V4-Grundlagen
+  type: seed
+  domain: V4-Grundlagen
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-v4-grundlagen-abstractzenodomaterial
+  name: Seed V4-Grundlagen / Abstractzenodomaterial
+  type: seed
+  domain: V4-Grundlagen
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-v5-grundlagen
+  name: Seed V5-Grundlagen
+  type: seed
+  domain: V5-Grundlagen
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-ai
+  name: Seed Ai
+  type: seed
+  domain: ai
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-arxiv-submission
+  name: Seed Arxiv Submission
+  type: seed
+  domain: arxiv_submission
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-bedeutungssigillin
+  name: Seed Bedeutungssigillin
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-bedeutungssigillin-metaquest
+  name: Seed Bedeutungssigillin / Metaquest
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-bedeutungssigillin-metaquest-system
+  name: Seed Bedeutungssigillin / Metaquest / System
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-bedeutungssigillin-metaquest-wissenschaftsprojekt
+  name: Seed Bedeutungssigillin / Metaquest / Wissenschaftsprojekt
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-bedeutungssigillin-system
+  name: Seed Bedeutungssigillin / System
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-bedeutungssigillin-system-metaquest
+  name: Seed Bedeutungssigillin / System / Metaquest
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-bedeutungssigillin-wissenschaftsprojekt
+  name: Seed Bedeutungssigillin / Wissenschaftsprojekt
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-bedeutungssigillin-wissenschaftsprojekt-cases
+  name: Seed Bedeutungssigillin / Wissenschaftsprojekt / Cases
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-bedeutungssigillin-wissenschaftsprojekt-metaquest
+  name: Seed Bedeutungssigillin / Wissenschaftsprojekt / Metaquest
+  type: seed
+  domain: bedeutungssigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-biology
+  name: Seed Biology
+  type: seed
+  domain: biology
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-cognition
+  name: Seed Cognition
+  type: seed
+  domain: cognition
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-ethics
+  name: Seed Ethics
+  type: seed
+  domain: ethics
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-geophysics
+  name: Seed Geophysics
+  type: seed
+  domain: geophysics
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-paper
+  name: Seed Paper
+  type: seed
+  domain: paper
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: seed/paper/README.md
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-paper-figures
+  name: Seed Paper / Figures
+  type: seed
+  domain: paper
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-papers
+  name: Seed Papers
+  type: seed
+  domain: papers
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: seed/papers/README.md
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-papers-submission
+  name: Seed Papers / Submission
+  type: seed
+  domain: papers
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-papers-supplementary
+  name: Seed Papers / Supplementary
+  type: seed
+  domain: papers
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-releases
+  name: Seed Releases
+  type: seed
+  domain: releases
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-releases-v4-0-0-alpha-mirrormachine
+  name: Seed Releases / v4.0.0-alpha_MirrorMachine
+  type: seed
+  domain: releases
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-releases-v4-0-0-alpha-mirrormachine-data
+  name: Seed Releases / v4.0.0-alpha_MirrorMachine / Data
+  type: seed
+  domain: releases
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-releases-v4-0-0-alpha-mirrormachine-sensors
+  name: Seed Releases / v4.0.0-alpha_MirrorMachine / Sensors
+  type: seed
+  domain: releases
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-releases-v4-0-0-alpha-mirrormachine-simulation
+  name: Seed Releases / v4.0.0-alpha_MirrorMachine / Simulation
+  type: seed
+  domain: releases
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-releases-v4-0-0-alpha-mirrormachine-theory
+  name: Seed Releases / v4.0.0-alpha_MirrorMachine / Theory
+  type: seed
+  domain: releases
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-shadow-sigillin
+  name: Seed Shadow Sigillin
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-shadow-sigillin-metaquest
+  name: Seed Shadow Sigillin / Metaquest
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-shadow-sigillin-metaquest-system
+  name: Seed Shadow Sigillin / Metaquest / System
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-shadow-sigillin-metaquest-wissenschaftsprojekt
+  name: Seed Shadow Sigillin / Metaquest / Wissenschaftsprojekt
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-shadow-sigillin-system
+  name: Seed Shadow Sigillin / System
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-shadow-sigillin-system-metaquest
+  name: Seed Shadow Sigillin / System / Metaquest
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-shadow-sigillin-v3
+  name: Seed Shadow Sigillin / v3
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-shadow-sigillin-wissenschaftsprojekt
+  name: Seed Shadow Sigillin / Wissenschaftsprojekt
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-shadow-sigillin-wissenschaftsprojekt-cases
+  name: Seed Shadow Sigillin / Wissenschaftsprojekt / Cases
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-shadow-sigillin-wissenschaftsprojekt-metaquest
+  name: Seed Shadow Sigillin / Wissenschaftsprojekt / Metaquest
+  type: seed
+  domain: shadow_sigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-sigillin
+  name: Seed Sigillin
+  type: seed
+  domain: sigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-sigillin-examples
+  name: Seed Sigillin / Examples
+  type: seed
+  domain: sigillin
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-socio-ecology
+  name: Seed Socio Ecology
+  type: seed
+  domain: socio_ecology
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-submission
+  name: Seed Submission
+  type: seed
+  domain: submission
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: seed/submission/README.md
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-submission-figures
+  name: Seed Submission / Figures
+  type: seed
+  domain: submission
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-submission-supplementary
+  name: Seed Submission / Supplementary
+  type: seed
+  domain: submission
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-theorie
+  name: Seed Theorie
+  type: seed
+  domain: theorie
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-theory
+  name: Seed Theory
+  type: seed
+  domain: theory
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-theory-concept-the-mirror-machine
+  name: Seed Theory / Concept The Mirror Machine
+  type: seed
+  domain: theory
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-theory-entropy-geometric-waste
+  name: Seed Theory / Entropy Geometric Waste
+  type: seed
+  domain: theory
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-theory-hypothese-morphological-computing
+  name: Seed Theory / Hypothese Morphological Computing
+  type: seed
+  domain: theory
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-theory-hypothese-quantum-aliasing
+  name: Seed Theory / Hypothese Quantum Aliasing
+  type: seed
+  domain: theory
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: seed-validation
+  name: Seed Validation
+  type: seed
+  domain: validation
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v6-plans-etc
+  name: Release V6-Plans_etc
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v6-plans-etc-chronik
+  name: Release V6-Plans_etc / Chronik
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v6-plans-etc-finalize
+  name: Release V6-Plans_etc / Finalize
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: releases/V6-Plans_etc/Finalize/README.md
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v6-plans-etc-finalize-v7-wird-noch-verlergt
+  name: Release V6-Plans_etc / Finalize / V7_wird noch verlergt
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v6-plans-etc-finalize-architecture
+  name: Release V6-Plans_etc / Finalize / Architecture
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v6-plans-etc-finalize-archive
+  name: Release V6-Plans_etc / Finalize / Archive
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v6-plans-etc-finalize-papers
+  name: Release V6-Plans_etc / Finalize / Papers
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v6-plans-etc-finalize-research
+  name: Release V6-Plans_etc / Finalize / Research
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v6-plans-etc-finalize-searches
+  name: Release V6-Plans_etc / Finalize / Searches
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v6-plans-etc-archievedtodos
+  name: Release V6-Plans_etc / Archievedtodos
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v6-plans-etc-papers
+  name: Release V6-Plans_etc / Papers
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v6-plans-etc-tools
+  name: Release V6-Plans_etc / Tools
+  type: release
+  domain: V6-Plans_etc
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v10-0
+  name: Release v10.0
+  type: release
+  domain: v10.0
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v4-0-0-alpha-mirrormachine
+  name: Release v4.0.0-alpha_MirrorMachine
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v4-0-0-alpha-mirrormachine-data
+  name: Release v4.0.0-alpha_MirrorMachine / Data
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v4-0-0-alpha-mirrormachine-data-derived
+  name: Release v4.0.0-alpha_MirrorMachine / Data / Derived
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v4-0-0-alpha-mirrormachine-sensors
+  name: Release v4.0.0-alpha_MirrorMachine / Sensors
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v4-0-0-alpha-mirrormachine-sensors-adapters
+  name: Release v4.0.0-alpha_MirrorMachine / Sensors / Adapters
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v4-0-0-alpha-mirrormachine-sensors-monitoring
+  name: Release v4.0.0-alpha_MirrorMachine / Sensors / Monitoring
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v4-0-0-alpha-mirrormachine-simulation
+  name: Release v4.0.0-alpha_MirrorMachine / Simulation
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v4-0-0-alpha-mirrormachine-theory
+  name: Release v4.0.0-alpha_MirrorMachine / Theory
+  type: release
+  domain: v4.0.0-alpha_MirrorMachine
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v5-0-0-zenodo-ready
+  name: Release v5.0.0_Zenodo_Ready
+  type: release
+  domain: v5.0.0_Zenodo_Ready
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: releases/v5.0.0_Zenodo_Ready/README.md
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v7-0
+  name: Release v7.0
+  type: release
+  domain: v7.0
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v8-0
+  name: Release v8.0
+  type: release
+  domain: v8.0
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: null
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v8-1
+  name: Release v8.1
+  type: release
+  domain: v8.1
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: releases/v8.1/README.md
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.
+- id: release-v9-0
+  name: Release v9.0
+  type: release
+  domain: v9.0
+  status: draft
+  readiness: 0.1
+  order_parameter: module_reflection
+  theta: 0.5
+  beta: 4.8
+  documentation:
+    readme: releases/v9.0/README.md
+    methodology: null
+    roadmap: null
+  notes:
+    formal: Seed/Release module cataloged for LanternNet reflection.
+    poetic: Die Laterne wird sichtbar, sobald σ(β(R-Θ)) das Feld berührt.

@@ -78,6 +78,14 @@ def _load_yaml(path: Path) -> dict[str, Any]:
         return yaml.safe_load(handle)
 
 
+def _load_optional_yaml(path: Path | None) -> dict[str, Any] | None:
+    if not path:
+        return None
+    if not path.exists():
+        return None
+    return _load_yaml(path)
+
+
 def _load_json(path: Path) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
@@ -210,6 +218,38 @@ def _detect_test_coverage(module_id: str, base_path: Path) -> dict[str, Any]:
         }
 
 
+def _merge_lanterns(
+    base_lanterns: list[dict[str, Any]],
+    extra_lanterns: list[dict[str, Any]] | None,
+) -> list[dict[str, Any]]:
+    if not extra_lanterns:
+        return list(base_lanterns)
+    seen_ids = {lantern.get("id") for lantern in base_lanterns}
+    merged = list(base_lanterns)
+    for lantern in extra_lanterns:
+        if lantern.get("id") in seen_ids:
+            continue
+        merged.append(lantern)
+        seen_ids.add(lantern.get("id"))
+    return merged
+
+
+def _summary_from_entries(
+    entries: list[dict[str, Any]],
+    base_summary: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    summary = dict(base_summary or {})
+    total = len(entries)
+    active = sum(
+        1
+        for entry in entries
+        if (entry.get("status") or "").lower() in {"active", "validated", "primed"}
+    )
+    summary["total_lanterns"] = total
+    summary["active_lanterns"] = active
+    return summary
+
+
 def _validate_mandala_bridge(base_path: Path) -> dict[str, Any]:
     """Validate Mandala bridge status by checking PSRM schema existence.
 
@@ -294,6 +334,7 @@ def build_lantern_net(
     crep_ledger: dict[str, Any] | None = None,
     bootstrap_ledger_path: Path | None = None,
     crep_ledger_path: Path | None = None,
+    seed_inventory: dict[str, Any] | None = None,
     timestamp: str | None = None,
     base_path: Path | None = None,
 ) -> dict[str, Any]:
@@ -335,8 +376,12 @@ def build_lantern_net(
     bootstrap_index = _index_ledger_entries(bootstrap_ledger)
     crep_index = _index_ledger_entries(crep_ledger)
 
+    lanterns = _merge_lanterns(
+        lantern_hub.get("lanterns", []),
+        seed_inventory.get("lanterns", []) if seed_inventory else None,
+    )
     entries: list[dict[str, Any]] = []
-    for lantern in lantern_hub.get("lanterns", []):
+    for lantern in lanterns:
         module_id = lantern.get("id")
         module_name = lantern.get("name")
         bootstrap_entry = _match_ledger_entry(bootstrap_index, module_id, module_name)
@@ -433,6 +478,13 @@ def build_lantern_net(
             }
         )
 
+    summary = _summary_from_entries(entries, summary)
+    sources = dict(meta.get("sources", {}))
+    if seed_inventory:
+        sources["seed_inventory"] = seed_inventory.get("meta", {}).get(
+            "source", "v9_alpha/config/lantern_seed_inventory.yaml"
+        )
+
     return {
         "meta": {
             "document": "LanternNet Status Index",
@@ -441,7 +493,7 @@ def build_lantern_net(
             "updated": last_updated,
             "logistic_frame": logistic_frame,
             "summary": summary,
-            "sources": meta.get("sources", {}),
+            "sources": sources,
             "ledger_summary": ledger_summary,
             "ledger_refs": ledger_refs,
             "consent_prompt": CONSENT_PROMPT,
@@ -538,6 +590,7 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--bootstrap-ledger", type=Path, default=None)
     parser.add_argument("--crep-ledger", type=Path, default=None)
+    parser.add_argument("--seed-inventory", type=Path, default=None)
     parser.add_argument(
         "--base-path",
         type=Path,
@@ -547,6 +600,7 @@ def main() -> None:
     args = parser.parse_args()
 
     lantern_hub = _load_yaml(args.config)
+    seed_inventory = _load_optional_yaml(args.seed_inventory)
     bootstrap_data = _load_json(args.bootstrap_ledger) if args.bootstrap_ledger else None
     crep_data = _load_json(args.crep_ledger) if args.crep_ledger else None
 
@@ -556,6 +610,7 @@ def main() -> None:
         crep_ledger=crep_data,
         bootstrap_ledger_path=args.bootstrap_ledger,
         crep_ledger_path=args.crep_ledger,
+        seed_inventory=seed_inventory,
         base_path=args.base_path,
     )
     write_trilayer(args.output_dir, payload)
