@@ -1,0 +1,106 @@
+id: phaethon-geminiden-bennu-todo-lantern-001
+scope: experiments/Phaethon_Geminiden_Bennu
+status: active
+permission_request: >-
+  Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.
+logistic:
+  R: 0.53
+  Theta: 0.71
+  beta: 4.8
+  zeta_R: 0.25
+  sigma_beta_R_minus_Theta: 0.33
+purpose: >-
+  Abstract Phaethon/Bennu astrophysics research paths for DESTINY+ validation
+  so sigma(beta(R-Theta)) stays stable along falsifiability and β-clustering evidence.
+todos:
+  - id: PGB-TODO-01
+    title: DESTINY+ predictions validation preparation
+    R: 47 quantitative predictions documented, awaiting mission data (2026+).
+    Theta: Validated prediction table with ΔAIC/CI against thermal-only null model.
+    beta: 4.8
+    zeta_R: 0.25
+    sigma_beta_R_minus_Theta: 0.33
+    status: primed
+    evidence:
+      - experiments/Phaethon_Geminiden_Bennu/docs/DESTINY_PLUS_PREDICTIONS.md
+      - experiments/Phaethon_Geminiden_Bennu/STRATEGIC_ROADMAP.md
+  - id: PGB-TODO-02
+    title: Chimera state model OSIRIS-REx validation
+    R: Model running, LST clustering predictions formulated.
+    Theta: Validated chimera_state_model.py against Bennu LST event distribution.
+    beta: 4.8
+    zeta_R: 0.26
+    sigma_beta_R_minus_Theta: 0.32
+    status: primed
+    evidence:
+      - experiments/Phaethon_Geminiden_Bennu/code/chimera_state_model.py
+      - experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md
+  - id: PGB-TODO-03
+    title: Plasma resonance model (Alfven waves) calibration
+    R: Alfven velocity 436.6 km/s computed, resonance 5-25 Hz.
+    Theta: Validated plasma_resonance_model.py against Parker Solar Probe data.
+    beta: 4.8
+    zeta_R: 0.24
+    sigma_beta_R_minus_Theta: 0.34
+    status: primed
+    evidence:
+      - experiments/Phaethon_Geminiden_Bennu/code/plasma_resonance_model.py
+      - experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md
+  - id: PGB-TODO-04
+    title: KdV soliton generator validation
+    R: Soliton velocities 100-400 m/s, 99.8% energy conservation.
+    Theta: Validated soliton_generator.py against dusty plasma theory.
+    beta: 4.8
+    zeta_R: 0.25
+    sigma_beta_R_minus_Theta: 0.33
+    status: primed
+    evidence:
+      - experiments/Phaethon_Geminiden_Bennu/code/soliton_generator.py
+      - experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md
+  - id: PGB-TODO-05
+    title: Historical synchronicity consilience documentation
+    R: Star of Bethlehem hypothesis documented, Tier-3 (unfalsifiable narrative).
+    Theta: Consilience matrix with scientific/narrative/unified tracks.
+    beta: 4.8
+    zeta_R: 0.27
+    sigma_beta_R_minus_Theta: 0.31
+    status: primed
+    evidence:
+      - experiments/Phaethon_Geminiden_Bennu/docs/historical/Historische Synchronizität_ Phaethon & der Stern von Bethlehem.pdf
+      - experiments/Phaethon_Geminiden_Bennu/docs/UNIFIED_SYNTHESIS.md
+  - id: PGB-TODO-06
+    title: Icarus/PSJ paper draft (Paper 1)
+    R: Code complete, DESTINY+ predictions ready, structure outlined.
+    Theta: Manuscript draft 15-20 pages with figures and supplementary code.
+    beta: 4.8
+    zeta_R: 0.26
+    sigma_beta_R_minus_Theta: 0.32
+    status: primed
+    evidence:
+      - experiments/Phaethon_Geminiden_Bennu/STRATEGIC_ROADMAP.md
+      - experiments/Phaethon_Geminiden_Bennu/docs/paper_draft.md
+falsifiability:
+  null_models:
+    - thermal_only
+    - random_emission
+    - constant
+  delta_aic_target: 10
+  confidence_interval_note: Document ΔAIC against thermal-only model; β ~ 0.45 ± 0.10 for astrophysical systems.
+couplings:
+  index:
+    - experiments/experiments_index.md
+    - experiments/experiments_index.json
+    - experiments/experiments_index.yaml
+  todo_index:
+    - experiments/experiments_todo_index.md
+    - experiments/experiments_todo_index.json
+    - experiments/experiments_todo_index.yaml
+  utac_matrix:
+    - docs/science/utac_status_alignment_v1.2.md
+  neuroprofile:
+    - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.yaml
+last_updated: 2026-02-05T14:30:00Z
+notes: >-
+  sigma(beta(R-Theta)) remains stable when Phaethon/Bennu research binds to
+  DESTINY+ falsifiability, β-clustering evidence (0.45 ± 0.10), and dual-channel
+  (light + matter) information transfer framework.

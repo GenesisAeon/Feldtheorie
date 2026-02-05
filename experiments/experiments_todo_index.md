@@ -1,7 +1,7 @@
 # 🧭 Experiments Todo Index — Resonant Task Ledger
 
-**Version:** 1.1.0  
-**Stand:** 2026-02-05T10:29:12Z  
+**Version:** 1.2.0
+**Stand:** 2026-02-05T14:30:00Z  
 **Scope:** `experiments/`  
 
 ---
@@ -185,7 +185,75 @@
     - **Status:** primed
     - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt`
 
-**Detail-Laternen:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.{md,json,yaml}`, `experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.{md,json,yaml}`, `experiments/AI/ai_utac_todo_lantern.{md,json,yaml}`, `experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.{md,json,yaml}`
+### Phaethon / Geminiden / Bennu — Astrophysik-Validierung (Neue Laterne)
+25. **DESTINY+ Vorhersagen-Validierung vorbereiten.**
+    - **R:** 47 quantitative Vorhersagen dokumentiert, Mission-Daten ausstehend (2026+).
+    - **Θ:** Validierte Vorhersagetabelle mit ΔAIC/CI gegen thermal-only Nullmodell.
+    - **Status:** primed
+    - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/phaethon_geminiden_bennu_todo_lantern.yaml`
+
+26. **Chimera-State-Modell gegen OSIRIS-REx validieren.**
+    - **R:** Modell läuft, LST-Clustering-Vorhersagen formuliert.
+    - **Θ:** Validierte chimera_state_model.py gegen Bennu LST-Event-Verteilung.
+    - **Status:** primed
+    - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/code/chimera_state_model.py`
+
+27. **Plasma-Resonanz-Modell (Alfvén-Wellen) kalibrieren.**
+    - **R:** Alfvén-Geschwindigkeit 436.6 km/s berechnet, Resonanz 5-25 Hz.
+    - **Θ:** Validierte plasma_resonance_model.py gegen Parker Solar Probe Daten.
+    - **Status:** primed
+    - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/code/plasma_resonance_model.py`
+
+28. **KdV-Soliton-Generator validieren.**
+    - **R:** Soliton-Geschwindigkeiten 100-400 m/s, 99.8% Energieerhaltung.
+    - **Θ:** Validierte soliton_generator.py gegen Dusty-Plasma-Theorie.
+    - **Status:** primed
+    - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/code/soliton_generator.py`
+
+29. **Historische Synchronizität (Stern von Bethlehem) als Konsilienz dokumentieren.**
+    - **R:** Hypothese dokumentiert, Tier-3 (unfalsifizierbares Narrativ).
+    - **Θ:** Konsilienz-Matrix mit wissenschaftlichen/narrativen/unified Tracks.
+    - **Status:** primed
+    - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/docs/UNIFIED_SYNTHESIS.md`
+
+30. **Icarus/PSJ Paper-Entwurf (Paper 1) erstellen.**
+    - **R:** Code vollständig, DESTINY+ Vorhersagen bereit, Struktur skizziert.
+    - **Θ:** Manuskript-Entwurf 15-20 Seiten mit Abbildungen und Supplementary Code.
+    - **Status:** primed
+    - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/STRATEGIC_ROADMAP.md`
+
+### Citizen Science Stereo Vision — v_RIG Phänomenologische Validierung (Neue Laterne)
+31. **LED-Array Experimentalprotokoll entwickeln.**
+    - **R:** Konzeptionelles Protokoll in citizen_science_stereo_vision.md skizziert.
+    - **Θ:** Hardware-validierte SFF-Messung mit 10 LEDs bei 1 cm Abstand, 50 cm Distanz.
+    - **Status:** primed
+    - **Quelle:** `experiments/citizen_science_stereo_vision.md`
+
+32. **VR-Implementation für präzise SFF-Messung.**
+    - **R:** VR-Headset-Konzept für unabhängige Eye-Displays.
+    - **Θ:** Software-gesteuerte Alternationsrate mit automatisierter Datenerfassung.
+    - **Status:** primed
+    - **Quelle:** `experiments/citizen_science_stereo_vision.md`
+
+33. **Metabolische Modulation validieren (Koffein/Schlaf).**
+    - **R:** Hypothese: SFF variiert ±15-20% mit metabolischem Zustand.
+    - **Θ:** Validierte Korrelation SFF ~ metabolische Rate mit n=20-50 Probanden.
+    - **Status:** primed
+    - **Quelle:** `experiments/citizen_science_stereo_vision.md`
+
+34. **SFF-CFF Korrelationsstudie durchführen.**
+    - **R:** Erwartete lineare Korrelation r > 0.5 zwischen Slice-Fusion und Flicker-Fusion.
+    - **Θ:** Validierte Korrelation mit Herzratenvariabilität, Hautleitfähigkeit.
+    - **Status:** primed
+    - **Quelle:** `experiments/citizen_science_stereo_vision.md`
+
+35. **Citizen-Science-Datenbank einrichten.**
+    - **R:** Datenformat definiert (Subject ID, Age, Condition, SFF, Notes).
+    - **Θ:** GitHub Repository data/experimental/stereo_vision_citizen_science.csv aktiv.
+    - **Status:** primed
+    - **Quelle:** `experiments/citizen_science_stereo_vision.md`
+
+**Detail-Laternen:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.{md,json,yaml}`, `experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.{md,json,yaml}`, `experiments/AI/ai_utac_todo_lantern.{md,json,yaml}`, `experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.{md,json,yaml}`, `experiments/Phaethon_Geminiden_Bennu/phaethon_geminiden_bennu_todo_lantern.{md,json,yaml}`, `experiments/citizen_science_stereo_vision_todo_lantern.{md,json,yaml}`
 
 ---
 

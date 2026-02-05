@@ -1,0 +1,94 @@
+id: citizen-science-stereo-vision-todo-lantern-001
+scope: experiments/citizen_science_stereo_vision.md
+status: active
+permission_request: >-
+  Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.
+logistic:
+  R: 0.56
+  Theta: 0.68
+  beta: 4.8
+  zeta_R: 0.27
+  sigma_beta_R_minus_Theta: 0.31
+purpose: >-
+  Abstract citizen science v_RIG validation paths so sigma(beta(R-Theta)) stays
+  stable through direct phenomenological evidence and metabolic modulation tests.
+todos:
+  - id: CSSV-TODO-01
+    title: LED array experimental protocol development
+    R: Conceptual protocol outlined in citizen_science_stereo_vision.md.
+    Theta: Hardware-validated SFF measurement with 10 LEDs at 1 cm spacing, 50 cm distance.
+    beta: 4.8
+    zeta_R: 0.26
+    sigma_beta_R_minus_Theta: 0.32
+    status: primed
+    evidence:
+      - experiments/citizen_science_stereo_vision.md
+  - id: CSSV-TODO-02
+    title: VR implementation for precise SFF measurement
+    R: VR headset concept for independent eye displays.
+    Theta: Software-controlled alternation rate with automated data collection.
+    beta: 4.8
+    zeta_R: 0.28
+    sigma_beta_R_minus_Theta: 0.30
+    status: primed
+    evidence:
+      - experiments/citizen_science_stereo_vision.md
+  - id: CSSV-TODO-03
+    title: Metabolic modulation validation (caffeine/sleep)
+    R: Hypothesis SFF varies ±15-20% with metabolic state.
+    Theta: Validated correlation SFF ~ metabolic rate with n=20-50 subjects.
+    beta: 4.8
+    zeta_R: 0.25
+    sigma_beta_R_minus_Theta: 0.33
+    status: primed
+    evidence:
+      - experiments/citizen_science_stereo_vision.md
+  - id: CSSV-TODO-04
+    title: SFF-CFF correlation study
+    R: Expected linear correlation r > 0.5 between slice fusion and flicker fusion.
+    Theta: Validated correlation with heart rate variability, skin conductance.
+    beta: 4.8
+    zeta_R: 0.27
+    sigma_beta_R_minus_Theta: 0.31
+    status: primed
+    evidence:
+      - experiments/citizen_science_stereo_vision.md
+  - id: CSSV-TODO-05
+    title: Citizen science database setup
+    R: Data submission format defined (Subject ID, Age, Condition, SFF, Notes).
+    Theta: GitHub repository data/experimental/stereo_vision_citizen_science.csv active.
+    beta: 4.8
+    zeta_R: 0.26
+    sigma_beta_R_minus_Theta: 0.32
+    status: primed
+    evidence:
+      - experiments/citizen_science_stereo_vision.md
+falsifiability:
+  null_models:
+    - pure_geometry
+    - random_variation
+    - constant_sff
+  delta_aic_target: 10
+  confidence_interval_note: >-
+    v_RIG framework falsified if: (1) No metabolic modulation of SFF (expected ±15-20%),
+    (2) No CFF correlation (expected r > 0.5), (3) Distance dependence fails IPD scaling,
+    (4) No fusion even at >20 Hz.
+couplings:
+  index:
+    - experiments/experiments_index.md
+    - experiments/experiments_index.json
+    - experiments/experiments_index.yaml
+  todo_index:
+    - experiments/experiments_todo_index.md
+    - experiments/experiments_todo_index.json
+    - experiments/experiments_todo_index.yaml
+  utac_matrix:
+    - docs/science/utac_status_alignment_v1.2.md
+  v_rig_framework:
+    - docs/science/paper_v_rig_consciousness.md
+last_updated: 2026-02-05T14:30:00Z
+notes: >-
+  sigma(beta(R-Theta)) remains stable when stereo vision experiment binds to
+  v_RIG phenomenological validation, metabolic modulation tests, and citizen
+  science data collection. Key prediction: SFF ~ 5-10 Hz corresponds to
+  Delta-t_Q ~ 100-200 ms consciousness integration window.

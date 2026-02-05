@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Experiments Todo Index — MOR-FIT Action Ledger",
-    "version": "1.1.0",
-    "created": "2026-02-05T10:29:12Z",
+    "version": "1.2.0",
+    "created": "2026-02-05T14:30:00Z",
     "status": "active",
     "scope": "experiments/"
   },
@@ -440,6 +440,149 @@
       "sources": [
         "experiments/Sience-2026_UTAC-Kontext/ZusammenführungUTACVersionen.txt",
         "experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.json"
+      ]
+    },
+    {
+      "id": "exp-todo-025",
+      "domain": "Phaethon_Geminiden_Bennu",
+      "summary": "DESTINY+ Vorhersagen-Validierung vorbereiten (47 quantitative Vorhersagen).",
+      "status": "primed",
+      "null_models": ["thermal_only", "random_emission", "constant"],
+      "delta_aic": "pending",
+      "confidence_intervals": "pending",
+      "sources": [
+        "experiments/Phaethon_Geminiden_Bennu/phaethon_geminiden_bennu_todo_lantern.yaml",
+        "experiments/Phaethon_Geminiden_Bennu/docs/DESTINY_PLUS_PREDICTIONS.md"
+      ]
+    },
+    {
+      "id": "exp-todo-026",
+      "domain": "Phaethon_Geminiden_Bennu",
+      "summary": "Chimera-State-Modell gegen OSIRIS-REx Bennu LST-Event-Verteilung validieren.",
+      "status": "primed",
+      "null_models": ["thermal_only", "random_emission", "constant"],
+      "delta_aic": "pending",
+      "confidence_intervals": "pending",
+      "sources": [
+        "experiments/Phaethon_Geminiden_Bennu/code/chimera_state_model.py",
+        "experiments/Phaethon_Geminiden_Bennu/phaethon_geminiden_bennu_todo_lantern.yaml"
+      ]
+    },
+    {
+      "id": "exp-todo-027",
+      "domain": "Phaethon_Geminiden_Bennu",
+      "summary": "Plasma-Resonanz-Modell (Alfvén 436.6 km/s, 5-25 Hz) gegen PSP-Daten kalibrieren.",
+      "status": "primed",
+      "null_models": ["thermal_only", "random_emission", "constant"],
+      "delta_aic": "pending",
+      "confidence_intervals": "pending",
+      "sources": [
+        "experiments/Phaethon_Geminiden_Bennu/code/plasma_resonance_model.py",
+        "experiments/Phaethon_Geminiden_Bennu/phaethon_geminiden_bennu_todo_lantern.yaml"
+      ]
+    },
+    {
+      "id": "exp-todo-028",
+      "domain": "Phaethon_Geminiden_Bennu",
+      "summary": "KdV-Soliton-Generator (100-400 m/s, 99.8% Energieerhaltung) validieren.",
+      "status": "primed",
+      "null_models": ["thermal_only", "random_emission", "constant"],
+      "delta_aic": "pending",
+      "confidence_intervals": "pending",
+      "sources": [
+        "experiments/Phaethon_Geminiden_Bennu/code/soliton_generator.py",
+        "experiments/Phaethon_Geminiden_Bennu/phaethon_geminiden_bennu_todo_lantern.yaml"
+      ]
+    },
+    {
+      "id": "exp-todo-029",
+      "domain": "Phaethon_Geminiden_Bennu",
+      "summary": "Historische Synchronizität (Stern von Bethlehem) als Konsilienz-Test dokumentieren.",
+      "status": "primed",
+      "null_models": ["thermal_only", "random_emission", "constant"],
+      "delta_aic": "pending",
+      "confidence_intervals": "pending",
+      "sources": [
+        "experiments/Phaethon_Geminiden_Bennu/docs/UNIFIED_SYNTHESIS.md",
+        "experiments/Phaethon_Geminiden_Bennu/phaethon_geminiden_bennu_todo_lantern.yaml"
+      ]
+    },
+    {
+      "id": "exp-todo-030",
+      "domain": "Phaethon_Geminiden_Bennu",
+      "summary": "Icarus/PSJ Paper-Entwurf (15-20 Seiten + Supplementary Code) erstellen.",
+      "status": "primed",
+      "null_models": ["thermal_only", "random_emission", "constant"],
+      "delta_aic": "pending",
+      "confidence_intervals": "pending",
+      "sources": [
+        "experiments/Phaethon_Geminiden_Bennu/STRATEGIC_ROADMAP.md",
+        "experiments/Phaethon_Geminiden_Bennu/phaethon_geminiden_bennu_todo_lantern.yaml"
+      ]
+    },
+    {
+      "id": "exp-todo-031",
+      "domain": "Citizen_Science_Stereo_Vision",
+      "summary": "LED-Array Experimentalprotokoll für SFF-Messung (10 LEDs, 1cm, 50cm) entwickeln.",
+      "status": "primed",
+      "null_models": ["pure_geometry", "random_variation", "constant_sff"],
+      "delta_aic": "pending",
+      "confidence_intervals": "pending",
+      "sources": [
+        "experiments/citizen_science_stereo_vision.md",
+        "experiments/citizen_science_stereo_vision_todo_lantern.yaml"
+      ]
+    },
+    {
+      "id": "exp-todo-032",
+      "domain": "Citizen_Science_Stereo_Vision",
+      "summary": "VR-Implementation für präzise SFF-Messung mit automatisierter Datenerfassung.",
+      "status": "primed",
+      "null_models": ["pure_geometry", "random_variation", "constant_sff"],
+      "delta_aic": "pending",
+      "confidence_intervals": "pending",
+      "sources": [
+        "experiments/citizen_science_stereo_vision.md",
+        "experiments/citizen_science_stereo_vision_todo_lantern.yaml"
+      ]
+    },
+    {
+      "id": "exp-todo-033",
+      "domain": "Citizen_Science_Stereo_Vision",
+      "summary": "Metabolische Modulation validieren (SFF ±15-20% mit Koffein/Schlaf, n=20-50).",
+      "status": "primed",
+      "null_models": ["pure_geometry", "random_variation", "constant_sff"],
+      "delta_aic": "pending",
+      "confidence_intervals": "pending",
+      "sources": [
+        "experiments/citizen_science_stereo_vision.md",
+        "experiments/citizen_science_stereo_vision_todo_lantern.yaml"
+      ]
+    },
+    {
+      "id": "exp-todo-034",
+      "domain": "Citizen_Science_Stereo_Vision",
+      "summary": "SFF-CFF Korrelationsstudie (r > 0.5) mit HRV und Hautleitfähigkeit durchführen.",
+      "status": "primed",
+      "null_models": ["pure_geometry", "random_variation", "constant_sff"],
+      "delta_aic": "pending",
+      "confidence_intervals": "pending",
+      "sources": [
+        "experiments/citizen_science_stereo_vision.md",
+        "experiments/citizen_science_stereo_vision_todo_lantern.yaml"
+      ]
+    },
+    {
+      "id": "exp-todo-035",
+      "domain": "Citizen_Science_Stereo_Vision",
+      "summary": "Citizen-Science-Datenbank (stereo_vision_citizen_science.csv) einrichten.",
+      "status": "primed",
+      "null_models": ["pure_geometry", "random_variation", "constant_sff"],
+      "delta_aic": "pending",
+      "confidence_intervals": "pending",
+      "sources": [
+        "experiments/citizen_science_stereo_vision.md",
+        "experiments/citizen_science_stereo_vision_todo_lantern.yaml"
       ]
     }
   ],
