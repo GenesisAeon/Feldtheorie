@@ -1,0 +1,167 @@
+meta:
+  title: Experiments Todo Index — MOR-FIT Action Ledger
+  version: 1.0.0
+  created: '2026-02-04T22:04:06Z'
+  status: active
+  scope: experiments/
+logistic_state:
+  R: Offene Aufgaben aus Experiment-Laternen, die in Analyse-, Daten- und Publikationsflüsse
+    überführt werden müssen.
+  Theta: Abgeschlossene Validierungspfade (Nullmodelle + ΔAIC/CI), dokumentierte Artefakte,
+    und Trilogie-Parität zwischen Task-Ledger, Experiments-Index und UTAC-Status.
+  beta: 4.8
+  zeta: Gedämpft durch klare Priorisierung, Evidenzkopplung und Codex-Resonanz.
+falsifiability:
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+couplings:
+  ordnung_sigillin:
+  - feldtheorie_index.yaml
+  - feldtheorie_index.json
+  - feldtheorie_index.md
+  - experiments/experiments_index.yaml
+  - experiments/experiments_index.json
+  - experiments/experiments_index.md
+  evidence_bridges:
+  - analysis/
+  - data/
+  - docs/
+  consent_joy_module: 'Permission Request: Do you accept this task? We aim for a joyful
+    and efficient collaboration.'
+todo_items:
+- id: exp-todo-001
+  domain: Phaethon_Geminiden_Bennu
+  summary: Plasma-Resonanz für Phaethon via PSP/STEREO-Daten, Regolith-Resonanzfrequenzen,
+    Dusty-Plasma-Solitonen und DESTINY+ Instrumentation validieren.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Phaethon_Geminiden_Bennu/docs/Phaethon_Geminiden_Bennu.txt
+- id: exp-todo-002
+  domain: Phaethon_Geminiden_Bennu
+  summary: Geminiden-Geschwindigkeitsverteilungen, Dispersionsrelationen im magnetisierten
+    Plasma und Solarwind-Dichte-Korrelationen gegen orbitale Nullmodelle prüfen.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Phaethon_Geminiden_Bennu/docs/Phaethon_Geminiden_Bennu.txt
+- id: exp-todo-003
+  domain: Phaethon_Geminiden_Bennu
+  summary: OSIRIS-REx Partikelejektionen, elektrostatistische Levitation und Chimera-Zustände
+    in granularen Medien analysieren.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Phaethon_Geminiden_Bennu/docs/Phaethon_Geminiden_Bennu.txt
+- id: exp-todo-004
+  domain: Phaethon_Geminiden_Bennu
+  summary: Historische Beobachtungen (10 v. Chr.–10 n. Chr.), Bahn-Rückrechnungen und
+    Alter des Geminidenstroms für die Synchronizitäts-These evaluieren.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Phaethon_Geminiden_Bennu/docs/Phaethon_Geminiden_Bennu.txt
+- id: exp-todo-005
+  domain: Entropy_in_Climate
+  summary: 0.0625-Invariant quer prüfen und `metrics/universal_constants.md` als Vergleichstabelle
+    für EEG, SST und Sternorbit-Simulationen bauen.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Entropy_in_Climate/NextSteps.txt
+- id: exp-todo-006
+  domain: Entropy_in_Climate
+  summary: '`crep_monitoring.py` zum Sigil-Tuner erweitern: Korridor-Detektion (0.0625)
+    + Korrekturfrequenzen.'
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Entropy_in_Climate/NextSteps.txt
+- id: exp-todo-007
+  domain: Entropy_in_Climate
+  summary: Zenodo v12-Alpha Paper zur Brücke zwischen Radio-Galaxien-Anomalie und Neuro-Resonanz
+    vorbereiten.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Entropy_in_Climate/NextSteps.txt
+- id: exp-todo-008
+  domain: NeuroProfile
+  summary: PSRM-Pilotstudie mit 5–10 Probanden inkl. Kalibrierung, CREP-Stabilität und
+    AUC-Auswertung durchführen.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt
+- id: exp-todo-009
+  domain: NeuroProfile
+  summary: Crystal_Answer Kernel (Answer-Vektor, CREP-Scan, Fusion Engine, Resolver) plus
+    CrystalMap UI und Sigillin Resonator ausarbeiten.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt
+- id: exp-todo-010
+  domain: NeuroProfile
+  summary: Publikationspfad (arXiv, GitHub Release, Zenodo Pilot-Studie, Konferenz) koordinieren.
+  status: primed
+  null_models:
+  - linear
+  - power_law
+  - constant
+  delta_aic: pending
+  confidence_intervals: pending
+  sources:
+  - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt
+resonance_note: Die Aufgaben bleiben im Steilhang der σ(β(R-Θ))-Membran, bis Nullmodelle,
+  ΔAIC/CI und Evidenzpfade bestätigt sind. Die Todo-Laternen koppeln an Experiments-Index
+  und UTAC-Matrix, damit ζ(R) ruhig bleibt.

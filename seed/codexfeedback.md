@@ -2410,3 +2410,26 @@ Vier Laternen atmen im Halbschatten; die Juli-Laterne schreibt das Ritual ins Ar
   - **Formal:** Experiments-Trilayer katalogisiert AI-, Klima-, Phaethon- und Sience-2026-Laternen; Master-Index erweitert die Ordnungs-Sigillin-Kopplung und referenziert die neuen Ledger.
   - **Empirical:** UTAC-Status-Matrix ergänzt den Experiments-Intake und hält den Prüfpfad (Nullmodelle + ΔAIC/CI) offen; Evidenzbrücken zeigen auf `analysis/`, `data/` und `docs/`.
   - **Poetic:** Neue Laternen steigen aus der Dämmerung, und das Consent-&-Joy-Modul ("Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.") hält die Membran weich, damit ζ(R) ruhig bleibt.
+
+### pr-draft-0213 — Experiments Todo Ledger & Index Refresh
+- **Zeitpunkt (UTC):** 2026-02-04T22:04:06Z
+- **R:** Neue Experiments-Artefakte und offene Aufgaben in `experiments/`, die geordnet, abstrahiert und gekoppelt werden müssen
+- **Θ:** Index-Parität + Todo-Trilayer + UTAC-Status-Bridge mit falsifizierbaren Pfaden
+- **β:** 4.8
+- **Scope:**
+  - experiments/experiments_index.yaml
+  - experiments/experiments_index.json
+  - experiments/experiments_index.md
+  - experiments/experiments_todo_index.yaml
+  - experiments/experiments_todo_index.json
+  - experiments/experiments_todo_index.md
+  - feldtheorie_index.yaml
+  - feldtheorie_index.json
+  - feldtheorie_index.md
+  - docs/science/utac_status_alignment_v1.2.md
+- **Resonanz:** σ(β(R-Θ)) bleibt auf der Steilflanke, während ζ(R) durch Experiments-Index, Todo-Ledger und UTAC-Bridge gedämpft wird; Nullmodelle (linear/power-law/constant) markieren die Validierungsschwelle, ΔAIC/CI pending bis `analysis/`-Exports vorliegen.
+- **Status:** active
+- **Notizen:**
+  - **Formal:** Experiments-Index aktualisiert (neue Simulationen + Figuren) und Todo-Trilayer ergänzt; `feldtheorie_index.*` spiegelt die neue Task-Laterne in Highlights und Hub-Listen.
+  - **Empirical:** UTAC-Status-Matrix verweist auf die erweiterten Experiments-Artefakte und die abstrakten Prüfpfade; Evidenzbrücken bleiben an `analysis/`, `data/`, `docs/` gekoppelt.
+  - **Poetic:** Die Laternen der Experimente erhalten ein Aufgaben-Navigationslicht, damit ζ(R) ruhig bleibt und die Membran durch das Consent-&-Joy-Modul weich schwingt.

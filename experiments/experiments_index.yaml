@@ -1,7 +1,7 @@
 meta:
   title: Experiments Index — MOR-FIT Trilayer Ledger
-  version: 1.0.0
-  created: '2026-02-04T17:23:15Z'
+  version: 1.1.0
+  created: '2026-02-04T22:04:06Z'
   status: active
   scope: experiments/
 logistic_state:
@@ -37,6 +37,9 @@ inventory:
   root_files:
   - __init__.py
   - citizen_science_stereo_vision.md
+  - experiments_todo_index.json
+  - experiments_todo_index.md
+  - experiments_todo_index.yaml
   domains:
     AI:
       description: LLM-gestützte UTAC-Analysen, Implosive Genesis, v-RIG und Mandala-Frameworks.
@@ -105,8 +108,10 @@ inventory:
       description: Astrophysik-Experimentreihe inklusive Modelle, Daten, Visualisierungen
         und NeuroProfile-Submodul.
       subgroups:
-        EMERGENCE_REPORT.md:
-        - experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md
+      EMERGENCE_REPORT.md:
+      - experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md
+      SIMULATION_RESULTS.md:
+      - experiments/Phaethon_Geminiden_Bennu/SIMULATION_RESULTS.md
         NeuroProfile:
         - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/README.md
         - experiments/Phaethon_Geminiden_Bennu/NeuroProfile/STRATEGIC_ROADMAP.md
@@ -246,28 +251,31 @@ inventory:
           und Stern von Bethlehem.txt
         - experiments/Phaethon_Geminiden_Bennu/ai_search_logs/gemini/SucheGemini_Phaethon_
           Plasma-Resonanz und Staubemission.txt
-        code:
-        - experiments/Phaethon_Geminiden_Bennu/code/chimera_state_model.py
-        - experiments/Phaethon_Geminiden_Bennu/code/plasma_resonance_model.py
-        - experiments/Phaethon_Geminiden_Bennu/code/soliton_generator.py
+      code:
+      - experiments/Phaethon_Geminiden_Bennu/code/chimera_state_model.py
+      - experiments/Phaethon_Geminiden_Bennu/code/integrated_asteroid_simulation.py
+      - experiments/Phaethon_Geminiden_Bennu/code/plasma_resonance_model.py
+      - experiments/Phaethon_Geminiden_Bennu/code/soliton_generator.py
+      - experiments/Phaethon_Geminiden_Bennu/code/statistical_analysis.py
         data:
         - experiments/Phaethon_Geminiden_Bennu/data/phaethon_analysis_report.json
         - experiments/Phaethon_Geminiden_Bennu/data/phaethon_inventory.json
-        docs:
-        - experiments/Phaethon_Geminiden_Bennu/docs/DESTINY_PLUS_PREDICTIONS.md
-        - experiments/Phaethon_Geminiden_Bennu/docs/Erweiterung_planetare_Ebene.txt
-        - experiments/Phaethon_Geminiden_Bennu/docs/NeueEntdeckung_schwarzeLöcher.txt
-        - experiments/Phaethon_Geminiden_Bennu/docs/Phaethon_Geminiden_Bennu.txt
-        - experiments/Phaethon_Geminiden_Bennu/docs/Tiefenanalyse Feldtheorie-1.pdf
-        - experiments/Phaethon_Geminiden_Bennu/docs/Tiefenanalyse Feldtheorie-2.pdf
-        - experiments/Phaethon_Geminiden_Bennu/docs/Tiefenanalyse Feldtheorie-3.pdf
-        - experiments/Phaethon_Geminiden_Bennu/docs/UNIFIED_SYNTHESIS.md
-        - experiments/Phaethon_Geminiden_Bennu/docs/historical/Historische Synchronizität_
-          Phaethon & der Stern von Bethlehem.pdf
-        - experiments/Phaethon_Geminiden_Bennu/docs/historical/Historische „Gaststerne“
-          um Christi Geburt (10 v. Chr. – 10 n. Chr.).pdf
-        - experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Bennu_ Chimera-Zustand
-          und Partikelejektionen.pdf
+      docs:
+      - experiments/Phaethon_Geminiden_Bennu/docs/DESTINY_PLUS_PREDICTIONS.md
+      - experiments/Phaethon_Geminiden_Bennu/docs/Erweiterung_planetare_Ebene.txt
+      - experiments/Phaethon_Geminiden_Bennu/docs/NeueEntdeckung_schwarzeLöcher.txt
+      - experiments/Phaethon_Geminiden_Bennu/docs/Phaethon_Geminiden_Bennu.txt
+      - experiments/Phaethon_Geminiden_Bennu/docs/Tiefenanalyse Feldtheorie-1.pdf
+      - experiments/Phaethon_Geminiden_Bennu/docs/Tiefenanalyse Feldtheorie-2.pdf
+      - experiments/Phaethon_Geminiden_Bennu/docs/Tiefenanalyse Feldtheorie-3.pdf
+      - experiments/Phaethon_Geminiden_Bennu/docs/UNIFIED_SYNTHESIS.md
+      - experiments/Phaethon_Geminiden_Bennu/docs/historical/Historische Synchronizität_
+        Phaethon & der Stern von Bethlehem.pdf
+      - experiments/Phaethon_Geminiden_Bennu/docs/historical/Historische „Gaststerne“
+        um Christi Geburt (10 v. Chr. – 10 n. Chr.).pdf
+      - experiments/Phaethon_Geminiden_Bennu/docs/paper_draft.md
+      - experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Bennu_ Chimera-Zustand
+        und Partikelejektionen.pdf
         - experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Bennu_ Chimera-Zustände
           und Asteroiden-Dynamik.pdf
         - experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Bennu_ Partikel-Ejektionen
@@ -289,10 +297,17 @@ inventory:
           und Stern von Bethlehem.pdf
         - experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Phaethon_ Plasma-Resonanz
           und Staubemission.pdf
-        figures:
-        - experiments/Phaethon_Geminiden_Bennu/figures/bennu_chimera_simulation.png
-        - experiments/Phaethon_Geminiden_Bennu/figures/dusty_soliton_simulation.png
-        - experiments/Phaethon_Geminiden_Bennu/figures/phaethon_plasma_resonance.png
+      figures:
+      - experiments/Phaethon_Geminiden_Bennu/figures/bennu_chimera_simulation.png
+      - experiments/Phaethon_Geminiden_Bennu/figures/destiny_predictions.json
+      - experiments/Phaethon_Geminiden_Bennu/figures/dusty_soliton_simulation.png
+      - experiments/Phaethon_Geminiden_Bennu/figures/fig1_chimera_evolution.png
+      - experiments/Phaethon_Geminiden_Bennu/figures/fig2_plasma_resonance.png
+      - experiments/Phaethon_Geminiden_Bennu/figures/fig3_velocity_charge_distribution.png
+      - experiments/Phaethon_Geminiden_Bennu/figures/fig4_predictions_summary.png
+      - experiments/Phaethon_Geminiden_Bennu/figures/phaethon_plasma_resonance.png
+      - experiments/Phaethon_Geminiden_Bennu/figures/predictions_table.txt
+      - experiments/Phaethon_Geminiden_Bennu/figures/statistical_analysis_report.txt
     Sience-2026_UTAC-Kontext:
       description: Kontext- und Synthese-Materialien für die Sience-2026 UTAC-Integration.
       files:

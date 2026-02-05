@@ -127,13 +127,14 @@
         "json": "experiments/experiments_index.json",
         "md": "experiments/experiments_index.md"
       },
-      "total_items": 192,
+      "total_items": 206,
       "categories": 5,
       "description": "Experimentelle Laternen und Sammelmaterialien:\nAI, Entropy_in_Climate, Phaethon_Geminiden_Bennu,\nSience-2026_UTAC-Kontext sowie Root-Ledger.\n",
       "color": "#8E44AD",
       "relevance": "medium",
       "highlights": [
         "experiments/experiments_index.md (Trilayer Ledger)",
+        "experiments/experiments_todo_index.md (Todo-Ledger)",
         "experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md (Astro-Experiment)",
         "experiments/Entropy_in_Climate/UTAC Framework Applied to Climate.pdf",
         "experiments/AI/Unified-Mandala_ Implosive Genesis Framework.md",
@@ -308,6 +309,9 @@
         "experiments/experiments_index.yaml",
         "experiments/experiments_index.json",
         "experiments/experiments_index.md",
+        "experiments/experiments_todo_index.md",
+        "experiments/experiments_todo_index.json",
+        "experiments/experiments_todo_index.yaml",
         "experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md",
         "experiments/Entropy_in_Climate/UTAC Framework Applied to Climate.pdf",
         "experiments/AI/Unified-Mandala_ Implosive Genesis Framework.md"
@@ -476,14 +480,14 @@
   },
   "statistics": {
     "directories_indexed": 8,
-    "total_files_cataloged": 381,
+    "total_files_cataloged": 395,
     "trilayer_indices": 23,
     "breakdown": {
       "seed": 74,
       "analysis": 33,
       "data": 47,
       "models": 10,
-      "experiments": 192,
+      "experiments": 206,
       "docs": 17,
       "releases": 8,
       "archive": 0
