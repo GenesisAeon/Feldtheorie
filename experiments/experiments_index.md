@@ -1,7 +1,7 @@
 # 🧪 Experiments Index — Resonance Archive
 
-**Version:** 1.2.0  
-**Stand:** 2026-02-05T10:29:12Z  
+**Version:** 1.3.0
+**Stand:** 2026-02-05T14:30:00Z  
 **Scope:** `experiments/`  
 
 ---
@@ -36,16 +36,19 @@
 ---
 
 ## Inventarübersicht
-- **Gesamtdateien:** 218
-- **Root-Dateien:** 5
+- **Gesamtdateien:** 227
+- **Root-Dateien:** 8
 - **AI**: 18 Dateien
 - **Entropy_in_Climate**: 26 Dateien
-- **Phaethon_Geminiden_Bennu**: 152 Dateien
+- **Phaethon_Geminiden_Bennu**: 155 Dateien
 - **Sience-2026_UTAC-Kontext**: 17 Dateien
 
 ### Root-Dateien
 - `experiments/__init__.py`
 - `experiments/citizen_science_stereo_vision.md`
+- `experiments/citizen_science_stereo_vision_todo_lantern.json` **(NEU)**
+- `experiments/citizen_science_stereo_vision_todo_lantern.md` **(NEU)**
+- `experiments/citizen_science_stereo_vision_todo_lantern.yaml` **(NEU)**
 - `experiments/experiments_todo_index.json`
 - `experiments/experiments_todo_index.md`
 - `experiments/experiments_todo_index.yaml`
@@ -102,6 +105,11 @@
 
 ### Phaethon_Geminiden_Bennu
 **Beschreibung:** Astrophysik-Experimentreihe inklusive Modelle, Daten, Visualisierungen und NeuroProfile-Submodul.
+
+**Lantern-Dateien (NEU):**
+- `experiments/Phaethon_Geminiden_Bennu/phaethon_geminiden_bennu_todo_lantern.json`
+- `experiments/Phaethon_Geminiden_Bennu/phaethon_geminiden_bennu_todo_lantern.md`
+- `experiments/Phaethon_Geminiden_Bennu/phaethon_geminiden_bennu_todo_lantern.yaml`
 
 **Subgruppen:**
 - **EMERGENCE_REPORT.md**
