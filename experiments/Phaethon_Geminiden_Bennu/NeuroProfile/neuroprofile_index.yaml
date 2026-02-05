@@ -1,5 +1,6 @@
 id: neuroprofile-lantern-001
 name: NeuroProfile Resonance Bridge
+version: v12.1
 scope: experiments/Phaethon_Geminiden_Bennu/NeuroProfile
 status: active
 logistic:
@@ -136,7 +137,7 @@ falsifiability:
   delta_aic_target: 10
   confidence_interval_note: Record CI per experiment in data/results.json
 telemetry:
-  last_updated: 2026-02-05T10:10:25Z
+  last_updated: 2026-02-05T11:33:50Z
   evidence_links:
     - ai_search_logs/suche_chatgpt.txt
     - docs/notes/OverviewGrok.md

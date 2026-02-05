@@ -10,6 +10,7 @@ R, Θ, β und ζ(R) werden im Modellkontext explizit benannt,
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import datetime, timezone
 import hashlib
 from pathlib import Path
 from typing import Callable, Sequence
@@ -49,6 +50,8 @@ class ConsentRecord:
     message: str
     granted: bool
     anonymized_subject: str | None
+    consent_token_hash: str | None
+    timestamp: str
 
 
 @dataclass
@@ -186,23 +189,30 @@ class NeuroProfileModel:
             )
         return ledger
 
-    def _require_consent(self, granted: bool) -> None:
+    def _require_consent(self, granted: bool, consent_token: str | None) -> str:
         if not granted:
             raise PermissionError(f"{CONSENT_MESSAGE} Consent not granted.")
+        if not consent_token:
+            raise PermissionError(f"{CONSENT_MESSAGE} Consent token required.")
+        return self._hash_value("consent-token", consent_token)
+
+    def _hash_value(self, namespace: str, value: str) -> str:
+        payload = f"{self.config.anonymization_salt}:{namespace}:{value}"
+        return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
     def _anonymize_subject(self, subject_id: str) -> str:
-        payload = f"{self.config.anonymization_salt}:{subject_id}"
-        return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+        return self._hash_value("subject", subject_id)
 
     def analyze(
         self,
         series: Sequence[float],
         *,
         consent_granted: bool = False,
+        consent_token: str | None = None,
         subject_id: str | None = None,
         context_location: str = "lab",
     ) -> NeuroProfileResult:
-        self._require_consent(consent_granted)
+        consent_token_hash = self._require_consent(consent_granted, consent_token)
         prepared = self.preprocess(series)
         beta_estimate = estimate_beta_from_series(prepared)
         sigma_phi_proxy = self.estimate_sigma_phi_proxy(prepared)
@@ -260,6 +270,8 @@ class NeuroProfileModel:
                 message=CONSENT_MESSAGE,
                 granted=consent_granted,
                 anonymized_subject=anonymized,
+                consent_token_hash=consent_token_hash,
+                timestamp=datetime.now(timezone.utc).isoformat(),
             ),
         )
 
@@ -276,12 +288,19 @@ class NeuroProfile:
         self.series = rng.normal(0.0, 1.0, size)
         return self.series
 
-    def analyze(self, *, consent_granted: bool = True, context_location: str = "lab") -> NeuroProfileResult:
+    def analyze(
+        self,
+        *,
+        consent_granted: bool = True,
+        consent_token: str | None = None,
+        context_location: str = "lab",
+    ) -> NeuroProfileResult:
         if self.series is None:
             raise ValueError("No data loaded. Call load_synthetic_data or provide series first.")
         self.result = self.model.analyze(
             self.series,
             consent_granted=consent_granted,
+            consent_token=consent_token,
             subject_id=self.subject_id,
             context_location=context_location,
         )
@@ -295,6 +314,7 @@ def run_demo() -> NeuroProfileResult:
     return model.analyze(
         synthetic,
         consent_granted=True,
+        consent_token="demo-consent-token",
         subject_id="demo-subject",
     )
 

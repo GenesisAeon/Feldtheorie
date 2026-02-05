@@ -26,14 +26,23 @@ class TestNeuroProfileModel(unittest.TestCase):
 
     def test_requires_consent(self) -> None:
         with self.assertRaises(PermissionError):
-            self.model.analyze(self.series, consent_granted=False)
+            self.model.analyze(self.series, consent_granted=False, consent_token="token")
+
+        with self.assertRaises(PermissionError):
+            self.model.analyze(self.series, consent_granted=True, consent_token=None)
 
     def test_analyze_outputs(self) -> None:
-        result = self.model.analyze(self.series, consent_granted=True, subject_id="demo")
+        result = self.model.analyze(
+            self.series,
+            consent_granted=True,
+            consent_token="demo-token",
+            subject_id="demo",
+        )
         self.assertTrue(0.0 <= result.sigma_phi_proxy <= 1.0)
         self.assertIsNotNone(result.beta_estimate)
         self.assertTrue(result.consent.granted)
         self.assertIsNotNone(result.consent.anonymized_subject)
+        self.assertIsNotNone(result.consent.consent_token_hash)
         self.assertTrue(0.0 <= result.crep.aggregate <= 1.0)
         self.assertEqual(result.ethics_report.action, "proceed")
         self.assertIsNotNone(result.resonant_return)

@@ -104,8 +104,9 @@ Nullmodelle, ΔAIC/CI-Notizen und Telemetrie-Hooks zusammengezogen, damit
 
 ## Consent & Demo
 
-- Die Demo erfordert explizite Zustimmung (`consent_granted=True`) und anonymisiert optionale IDs.
-- Beispiel: `NeuroProfileModel().analyze(series, consent_granted=True, subject_id="demo")`
+- Die Demo erfordert explizite Zustimmung (`consent_granted=True`) **und** einen Consent-Token.
+- Der Token wird gehasht gespeichert; IDs werden anonymisiert, bevor sie in `data/results.json` landen.
+- Beispiel: `NeuroProfileModel().analyze(series, consent_granted=True, consent_token="demo-token", subject_id="demo")`
 
 ## Kontakt & Ethik
 

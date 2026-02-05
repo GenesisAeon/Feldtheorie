@@ -39,11 +39,35 @@ ledger:
       license: internal synthetic
       use_case: cold-start sanity checks and null-model calibration
       notes: Record generator parameters per run.
+  runs:
+    - timestamp: '2026-02-05T11:33:50.952348+00:00'
+      source_id: synthetic-cold-start
+      subject_hash: d4fc51155f8f9c509431b4a45f7b55f0f7781599f5eb8a3703f0ee819dc2ea6f
+      consent_token_hash: b13a4fc94fe03c5d0a169ae4548ec6ccc004769fbe8cf0384ff179e80b71777d
+      rng_seed: 2026
+      sample_count: 2048
+      beta_estimate: 0.1248664760896075
+      sigma_phi_proxy: 0.9413010581676123
+      crep_aggregate: 0.45011224438993547
+      null_model_best: constant
+      null_model_delta_aic:
+        constant: 0.0
+        linear: 0.35040277000553033
+        power_law: 366.3217906158436
+      null_model_parameters:
+        constant:
+          mean: 0.7985149186105158
+        linear:
+          intercept: 0.828114644580061
+          slope: -2.889187503127865e-05
+        power_law:
+          a: 0.5996538783203145
+          b: -0.017924951435173406
 telemetry:
   storage:
     results: data/results.json
     crep_null_model_ledger: data/crep_null_model_ledger.yaml
-  last_updated: 2026-02-15T12:00:00Z
+  last_updated: 2026-02-05T11:33:50Z
 evidence_hooks:
   - docs/notes/v12Grundlagen.txt
   - docs/notes/implementierungsvorschlaege_fuer_codex.txt

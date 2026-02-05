@@ -1,6 +1,7 @@
 # NeuroProfile Index – Resonance Lantern
 
 **ID:** neuroprofile-lantern-001
+**Version:** v12.1
 **Scope:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile`
 **Status:** active
 
@@ -124,7 +125,7 @@ Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with astrophysical res
 
 ## Telemetrie
 
-- **Last updated:** 2026-02-05T10:10:25Z
+- **Last updated:** 2026-02-05T11:33:50Z
 - **Evidence:**
   - `ai_search_logs/suche_chatgpt.txt`
   - `docs/notes/OverviewGrok.md`
