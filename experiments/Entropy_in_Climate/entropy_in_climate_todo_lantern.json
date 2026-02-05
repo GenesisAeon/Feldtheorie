@@ -1,0 +1,122 @@
+{
+  "id": "entropy-climate-todo-lantern-001",
+  "scope": "experiments/Entropy_in_Climate",
+  "status": "active",
+  "permission_request": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+  "logistic": {
+    "R": 0.55,
+    "Theta": 0.72,
+    "beta": 4.8,
+    "zeta_R": 0.26,
+    "sigma_beta_R_minus_Theta": 0.32
+  },
+  "purpose": "Abstract climate-focused implementation paths from the new lanterns so σ(β(R-Θ)) stays stable and ζ(R) remains damped through evidence and null-model hooks.",
+  "todos": [
+    {
+      "id": "EC-TODO-01",
+      "title": "0.0625 invariant comparison table",
+      "R": "EEG, SST, and Sgr A* references for σΦ/variance.",
+      "Theta": "Comparison table in metrics/universal_constants.md with null-model ΔAIC/CI notes.",
+      "beta": 4.8,
+      "zeta_R": 0.26,
+      "sigma_beta_R_minus_Theta": 0.32,
+      "status": "primed",
+      "evidence": [
+        "experiments/Entropy_in_Climate/NextSteps.txt"
+      ]
+    },
+    {
+      "id": "EC-TODO-02",
+      "title": "Sigil-tuner for the 0.0625 corridor",
+      "R": "crep_monitoring.py as corridor detector + correction frequency output.",
+      "Theta": "Tooling update + ΔAIC/CI note against linear/constant null models.",
+      "beta": 4.8,
+      "zeta_R": 0.25,
+      "sigma_beta_R_minus_Theta": 0.33,
+      "status": "primed",
+      "evidence": [
+        "experiments/Entropy_in_Climate/NextSteps.txt"
+      ]
+    },
+    {
+      "id": "EC-TODO-03",
+      "title": "Climate data pipeline for σΦ",
+      "R": "NOAA ENSO + NSIDC sea ice data, spectral entropy via NeuroProfile code.",
+      "Theta": "Time-series plot 1950–2024 with 0.0625 reference line + CI notes.",
+      "beta": 4.8,
+      "zeta_R": 0.27,
+      "sigma_beta_R_minus_Theta": 0.31,
+      "status": "primed",
+      "evidence": [
+        "experiments/Entropy_in_Climate/Grundlagen.txt"
+      ]
+    },
+    {
+      "id": "EC-TODO-04",
+      "title": "CMIP6 tipping-point analysis",
+      "R": "AMOC/Amazon transitions, spectral entropy signatures, σΦ drift evaluation.",
+      "Theta": "Critical-slowing-down null-model comparison + ΔAIC/CI protocol.",
+      "beta": 4.8,
+      "zeta_R": 0.28,
+      "sigma_beta_R_minus_Theta": 0.30,
+      "status": "primed",
+      "evidence": [
+        "experiments/Entropy_in_Climate/SucheGemini.txt",
+        "experiments/Entropy_in_Climate/Research.txt"
+      ]
+    },
+    {
+      "id": "EC-TODO-05",
+      "title": "Unified σΦ tooling (v10–v12 bridge)",
+      "R": "Master class for σΦ across EEG, climate, and Sgr A* datasets.",
+      "Theta": "Repo prototype + validation plan (null models, ΔAIC/CI).",
+      "beta": 4.8,
+      "zeta_R": 0.25,
+      "sigma_beta_R_minus_Theta": 0.33,
+      "status": "primed",
+      "evidence": [
+        "experiments/Entropy_in_Climate/Grundlagen.txt"
+      ]
+    },
+    {
+      "id": "EC-TODO-06",
+      "title": "Zenodo v12-alpha + visualization",
+      "R": "Paper bridge (radio-galaxy anomaly ↔ neuro-resonance) + 3D key figure.",
+      "Theta": "Draft manuscript + figure plan (spectral entropy, σΦ, time-to-collapse).",
+      "beta": 4.8,
+      "zeta_R": 0.27,
+      "sigma_beta_R_minus_Theta": 0.31,
+      "status": "primed",
+      "evidence": [
+        "experiments/Entropy_in_Climate/NextSteps.txt",
+        "experiments/Entropy_in_Climate/Final talk.txt"
+      ]
+    }
+  ],
+  "falsifiability": {
+    "null_models": [
+      "linear",
+      "power_law",
+      "constant"
+    ],
+    "delta_aic_target": 10,
+    "confidence_interval_note": "Record confidence intervals + bootstrap CIs per analysis path."
+  },
+  "couplings": {
+    "index": [
+      "experiments/experiments_index.md",
+      "experiments/experiments_index.json",
+      "experiments/experiments_index.yaml"
+    ],
+    "todo_index": [
+      "experiments/experiments_todo_index.md",
+      "experiments/experiments_todo_index.json",
+      "experiments/experiments_todo_index.yaml"
+    ],
+    "utac_matrix": [
+      "docs/science/utac_status_alignment_v1.2.md"
+    ]
+  },
+  "last_updated": "2026-02-05T10:29:12Z",
+  "notes": "σ(β(R-Θ)) remains stable when the climate lanterns bind to evidence paths, null models, and ΔAIC/CI checks."
+}

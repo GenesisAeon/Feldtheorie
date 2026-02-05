@@ -1,7 +1,7 @@
 # 🧪 Experiments Index — Resonance Archive
 
-**Version:** 1.1.0  
-**Stand:** 2026-02-05T10:10:25Z  
+**Version:** 1.2.0  
+**Stand:** 2026-02-05T10:29:12Z  
 **Scope:** `experiments/`  
 
 ---
@@ -36,12 +36,12 @@
 ---
 
 ## Inventarübersicht
-- **Gesamtdateien:** 209
+- **Gesamtdateien:** 218
 - **Root-Dateien:** 5
-- **AI**: 15 Dateien
-- **Entropy_in_Climate**: 23 Dateien
+- **AI**: 18 Dateien
+- **Entropy_in_Climate**: 26 Dateien
 - **Phaethon_Geminiden_Bennu**: 152 Dateien
-- **Sience-2026_UTAC-Kontext**: 14 Dateien
+- **Sience-2026_UTAC-Kontext**: 17 Dateien
 
 ### Root-Dateien
 - `experiments/__init__.py`
@@ -53,6 +53,9 @@
 ### AI
 **Beschreibung:** LLM-gestützte UTAC-Analysen, Implosive Genesis, v-RIG und Mandala-Frameworks.
 - `experiments/AI/AI_UTAC.txt`
+- `experiments/AI/ai_utac_todo_lantern.json`
+- `experiments/AI/ai_utac_todo_lantern.md`
+- `experiments/AI/ai_utac_todo_lantern.yaml`
 - `experiments/AI/ClaudesTake.txt`
 - `experiments/AI/DeepDiveGrok.txt`
 - `experiments/AI/MSCopilotKommunikation.txt`
@@ -71,6 +74,9 @@
 ### Entropy_in_Climate
 **Beschreibung:** Klimabezogene Entropie-Analysen, Kipppunkt-Studien, UTAC-Framework-Entwürfe.
 - `experiments/Entropy_in_Climate/Entropy in Climate_ Thermodynamics and Tipping Points.pdf`
+- `experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.json`
+- `experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.md`
+- `experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.yaml`
 - `experiments/Entropy_in_Climate/Final talk.txt`
 - `experiments/Entropy_in_Climate/Grundlagen.txt`
 - `experiments/Entropy_in_Climate/Interdisziplinaere Analyse neuronaler Beta Kohaerenz und des Maximum Entropy Production Prinzips in biologischen dissipativen.pdf`
@@ -266,6 +272,9 @@
 **Beschreibung:** Kontext- und Synthese-Materialien für die Sience-2026 UTAC-Integration.
 - `experiments/Sience-2026_UTAC-Kontext/1. Hauptthesen und Schlüsselkonzepte.pdf`
 - `experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt`
+- `experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.json`
+- `experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.md`
+- `experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.yaml`
 - `experiments/Sience-2026_UTAC-Kontext/Emergente Metastabilität im Erdsystem Eine UTAC-basierte Synthese von Entropie-Varianz und Selbstorganisation.pdf`
 - `experiments/Sience-2026_UTAC-Kontext/Emergenz-Forschung_ Validierung wissenschaftlicher....pdf`
 - `experiments/Sience-2026_UTAC-Kontext/Neue Forschungen.txt`

@@ -1,7 +1,7 @@
 meta:
   title: Experiments Index — MOR-FIT Trilayer Ledger
-  version: 1.1.0
-  created: '2026-02-05T10:10:25Z'
+  version: 1.2.0
+  created: '2026-02-05T10:29:12Z'
   status: active
   scope: experiments/
 logistic_state:
@@ -45,6 +45,9 @@ inventory:
       description: LLM-gestützte UTAC-Analysen, Implosive Genesis, v-RIG und Mandala-Frameworks.
       files:
       - experiments/AI/AI_UTAC.txt
+      - experiments/AI/ai_utac_todo_lantern.json
+      - experiments/AI/ai_utac_todo_lantern.md
+      - experiments/AI/ai_utac_todo_lantern.yaml
       - experiments/AI/ClaudesTake.txt
       - experiments/AI/DeepDiveGrok.txt
       - experiments/AI/MSCopilotKommunikation.txt
@@ -68,6 +71,9 @@ inventory:
       files:
       - experiments/Entropy_in_Climate/Entropy in Climate_ Thermodynamics and Tipping
         Points.pdf
+      - experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.json
+      - experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.md
+      - experiments/Entropy_in_Climate/entropy_in_climate_todo_lantern.yaml
       - experiments/Entropy_in_Climate/Final talk.txt
       - experiments/Entropy_in_Climate/Grundlagen.txt
       - experiments/Entropy_in_Climate/Interdisziplinaere Analyse neuronaler Beta
@@ -316,6 +322,9 @@ inventory:
       files:
       - experiments/Sience-2026_UTAC-Kontext/1. Hauptthesen und Schlüsselkonzepte.pdf
       - experiments/Sience-2026_UTAC-Kontext/Ausarbeitung.txt
+      - experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.json
+      - experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.md
+      - experiments/Sience-2026_UTAC-Kontext/sience_2026_todo_lantern.yaml
       - experiments/Sience-2026_UTAC-Kontext/Emergente Metastabilität im Erdsystem
         Eine UTAC-basierte Synthese von Entropie-Varianz und Selbstorganisation.pdf
       - experiments/Sience-2026_UTAC-Kontext/Emergenz-Forschung_ Validierung wissenschaftlicher....pdf

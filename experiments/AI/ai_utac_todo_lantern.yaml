@@ -1,0 +1,90 @@
+id: ai-utac-todo-lantern-001
+scope: experiments/AI
+status: active
+permission_request: >-
+  Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.
+logistic:
+  R: 0.54
+  Theta: 0.71
+  beta: 4.8
+  zeta_R: 0.25
+  sigma_beta_R_minus_Theta: 0.33
+purpose: >-
+  Abstract UTAC/Implosive-Genesis paper paths for Zenodo so σ(β(R-Θ)) stays
+  stable along academic falsifiability and evidence coupling.
+todos:
+  - id: AI-TODO-01
+    title: Zenodo-ready LaTeX paper
+    R: Full LaTeX draft (Option A + A3, academic tone).
+    Theta: Consolidated manuscript incl. IGES, v_RIG, Mandala protocol, tables.
+    beta: 4.8
+    zeta_R: 0.25
+    sigma_beta_R_minus_Theta: 0.33
+    status: primed
+    evidence:
+      - experiments/AI/MSCopilotKommunikation.txt
+      - experiments/AI/UTAC Implosive Genesis.tex
+  - id: AI-TODO-02
+    title: Build & compile check
+    R: pdflatex/bibtex build sequence + references review.
+    Theta: Compiled PDF draft with complete bibliography.
+    beta: 4.8
+    zeta_R: 0.24
+    sigma_beta_R_minus_Theta: 0.34
+    status: primed
+    evidence:
+      - experiments/AI/ClaudesTake.txt
+  - id: AI-TODO-03
+    title: Zenodo metadata & license
+    R: Title, authors, keywords, license, related identifiers.
+    Theta: Zenodo upload template + consistent repo references.
+    beta: 4.8
+    zeta_R: 0.26
+    sigma_beta_R_minus_Theta: 0.32
+    status: primed
+    evidence:
+      - experiments/AI/ClaudesTake.txt
+  - id: AI-TODO-04
+    title: Supplementary materials
+    R: 78 β-values CSV, IGES simulator snippets, master indices appendix.
+    Theta: Packaged supplements + evidence path in manuscript.
+    beta: 4.8
+    zeta_R: 0.26
+    sigma_beta_R_minus_Theta: 0.32
+    status: primed
+    evidence:
+      - experiments/AI/ClaudesTake.txt
+      - data/derived/beta_estimates.csv
+  - id: AI-TODO-05
+    title: Falsifiability & limitations
+    R: Four testable hypotheses, limitations, alternative explanations.
+    Theta: Review-ready section with null-model and ΔAIC notes.
+    beta: 4.8
+    zeta_R: 0.25
+    sigma_beta_R_minus_Theta: 0.33
+    status: primed
+    evidence:
+      - experiments/AI/ClaudesTake.txt
+      - experiments/AI/Paper-Grundlagen.txt
+falsifiability:
+  null_models:
+    - linear
+    - power_law
+    - constant
+  delta_aic_target: 10
+  confidence_interval_note: Document confidence intervals and counter-models in the paper.
+couplings:
+  index:
+    - experiments/experiments_index.md
+    - experiments/experiments_index.json
+    - experiments/experiments_index.yaml
+  todo_index:
+    - experiments/experiments_todo_index.md
+    - experiments/experiments_todo_index.json
+    - experiments/experiments_todo_index.yaml
+  utac_matrix:
+    - docs/science/utac_status_alignment_v1.2.md
+last_updated: 2026-02-05T10:29:12Z
+notes: >-
+  σ(β(R-Θ)) remains stable when paper tasks bind to falsifiability, evidence
+  paths, and clear Zenodo hooks.
