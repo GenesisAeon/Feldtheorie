@@ -28,9 +28,48 @@ entry_template:
     - crep_aggregate
     - null_model_comparison
     - confidence_intervals
-entries: []
+entries:
+  - timestamp: '2026-02-05T11:33:50.952348+00:00'
+    source_id: synthetic-cold-start
+    hardware_tier: tier-0
+    subject_hash: d4fc51155f8f9c509431b4a45f7b55f0f7781599f5eb8a3703f0ee819dc2ea6f
+    consent_token_hash: b13a4fc94fe03c5d0a169ae4548ec6ccc004769fbe8cf0384ff179e80b71777d
+    crep_components:
+      coherence: 1.0
+      resonance: 0.7834225782854601
+      emergence: 0.01687384812021723
+      potential: 0.000152551154064256
+    crep_aggregate: 0.45011224438993547
+    null_model_comparison:
+      best_model: constant
+      delta_aic:
+        constant: 0.0
+        linear: 0.35040277000553033
+        power_law: 366.3217906158436
+      parameters:
+        constant:
+          mean: 0.7985149186105158
+        linear:
+          intercept: 0.828114644580061
+          slope: -2.889187503127865e-05
+        power_law:
+          a: 0.5996538783203145
+          b: -0.017924951435173406
+    confidence_intervals:
+      beta_ci_95:
+        - 0.10000000000000002
+        - 0.25814104992634523
+      sigma_phi_ci_95:
+        - 0.9344676202066716
+        - 0.9430876773673147
+      gamma_beta_ci_95:
+        - 0.6805555811999692
+        - 0.8338915486094991
+      proxy_alignment_ci_95:
+        - 0.8936301851025573
+        - 0.9979050831429354
 telemetry:
-  last_updated: 2026-02-15T12:00:00Z
+  last_updated: 2026-02-05T11:33:50Z
 notes: >-
   σ(β(R-Θ)) bleibt stabil, wenn CREP gegen Nullmodelle geprüft und
   ΔAIC/CI-Telemetrie vollständig protokolliert wird.

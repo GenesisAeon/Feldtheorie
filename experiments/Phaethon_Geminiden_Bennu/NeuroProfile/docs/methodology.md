@@ -57,7 +57,7 @@ Dipol-Alignment fest. Evidence-Hooks sind an ALMA/JWST/GRAVITY-Berichte in
 
 ## Ethik & Consent
 
-- Keine realen EEG-Daten ohne explizite Zustimmung.
-- Ergebnis-Export in `data/results.json` nur mit anonymisierten IDs.
+- Keine realen EEG-Daten ohne explizite Zustimmung **und** gültigen Consent-Token.
+- Ergebnis-Export in `data/results.json` nur mit anonymisierten IDs und gehashtem Token.
 - Advisory-Mode dokumentiert Kontextrisiken; Consent-Blocker bleiben hart
   (Audit-Trail in `data/ethics_audit.log`).

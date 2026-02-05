@@ -1929,6 +1929,1927 @@
           "FRAME_DRIFT"
         ]
       }
+    },
+    {
+      "timestamp": "2026-02-05T11:33:50.952348+00:00",
+      "subject_anonymized": "d4fc51155f8f9c509431b4a45f7b55f0f7781599f5eb8a3703f0ee819dc2ea6f",
+      "beta": {
+        "estimate": 0.1248664760896075,
+        "threshold": 6.140120502278811e-15,
+        "r_value": -0.010416747068783039,
+        "ci_95": [
+          0.10000000000000002,
+          0.25814104992634523
+        ]
+      },
+      "sigma_phi_proxy": {
+        "value": 0.9413010581676123,
+        "ci_95": [
+          0.9344676202066716,
+          0.9430876773673147
+        ]
+      },
+      "resonance_proxy": {
+        "gamma_beta_coupling": 0.7834225782854601,
+        "gamma_beta_ci_95": [
+          0.6805555811999692,
+          0.8338915486094991
+        ],
+        "proxy_alignment": 0.9736288952201755,
+        "proxy_alignment_ci_95": [
+          0.8936301851025573,
+          0.9979050831429354
+        ]
+      },
+      "resonant_return": {
+        "beta_velocity_fit": {
+          "estimate": 2.161530990984739,
+          "threshold": 0.9999999999999999,
+          "r_value": -0.46849601606769187
+        },
+        "velocity_dispersion": 0.8416723953551972,
+        "sigma_phi_proxy": 0.28666662276086186,
+        "v_rig_alignment": 0.6225387542401319,
+        "v_rig_target_kms": 1.352,
+        "null_models": {
+          "best_model": "constant",
+          "aic": {
+            "constant": -704.0046626841943,
+            "linear": -702.0917562546027,
+            "power_law": -287.2623031486101
+          },
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.912906429591544,
+            "power_law": 416.74235953558417
+          },
+          "parameters": {
+            "constant": {
+              "mean": 1.1073148456878008
+            },
+            "linear": {
+              "intercept": 1.116826131295508,
+              "slope": -9.283831730313766e-06
+            },
+            "power_law": {
+              "a": 0.3443663490872606,
+              "b": 0.10946134972305908
+            }
+          }
+        }
+      },
+      "v_rig_proxy_comparison": {
+        "beta_estimate": 0.1248664760896075,
+        "beta_velocity_fit": 2.161530990984739,
+        "alignment_gap": 2.0366645148951315
+      },
+      "crep": {
+        "coherence": 1.0,
+        "resonance": 0.7834225782854601,
+        "emergence": 0.01687384812021723,
+        "potential": 0.000152551154064256,
+        "aggregate": 0.45011224438993547
+      },
+      "null_models": {
+        "best_model": "constant",
+        "aic": {
+          "constant": -2076.8811048182465,
+          "linear": -2076.530702048241,
+          "power_law": -1710.559314202403
+        },
+        "delta_aic": {
+          "constant": 0.0,
+          "linear": 0.35040277000553033,
+          "power_law": 366.3217906158436
+        },
+        "parameters": {
+          "constant": {
+            "mean": 0.7985149186105158
+          },
+          "linear": {
+            "intercept": 0.828114644580061,
+            "slope": -2.889187503127865e-05
+          },
+          "power_law": {
+            "a": 0.5996538783203145,
+            "b": -0.017924951435173406
+          }
+        }
+      },
+      "null_model_bootstrap": [
+        {
+          "iteration": 1,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.956286349416132,
+            "power_law": 404.64373881059305
+          }
+        },
+        {
+          "iteration": 2,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9823965619966657,
+            "power_law": 397.02698149684215
+          }
+        },
+        {
+          "iteration": 3,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 1.933999365614909,
+            "linear": 0.0,
+            "power_law": 368.1347067989327
+          }
+        },
+        {
+          "iteration": 4,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.1092011953430756,
+            "linear": 0.0,
+            "power_law": 350.0055167956407
+          }
+        },
+        {
+          "iteration": 5,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9929713250594432,
+            "power_law": 338.1963539104556
+          }
+        },
+        {
+          "iteration": 6,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.03671420616137766,
+            "power_law": 333.1504611223795
+          }
+        },
+        {
+          "iteration": 7,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9728000722186607,
+            "power_law": 380.996064293322
+          }
+        },
+        {
+          "iteration": 8,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9998552051506522,
+            "power_law": 397.9983959367562
+          }
+        },
+        {
+          "iteration": 9,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.8973122917750516,
+            "power_law": 359.04218058217384
+          }
+        },
+        {
+          "iteration": 10,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.8762814908563996,
+            "power_law": 369.32944117084116
+          }
+        },
+        {
+          "iteration": 11,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9676010303642215,
+            "power_law": 340.57662212909895
+          }
+        },
+        {
+          "iteration": 12,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9057796828087703,
+            "power_law": 378.99441622451604
+          }
+        },
+        {
+          "iteration": 13,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7812505673996384,
+            "power_law": 363.8348965155542
+          }
+        },
+        {
+          "iteration": 14,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.6035888499218345,
+            "power_law": 353.5196813709813
+          }
+        },
+        {
+          "iteration": 15,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9289565413610035,
+            "power_law": 353.3992571760332
+          }
+        },
+        {
+          "iteration": 16,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9275123884449386,
+            "power_law": 356.979326830676
+          }
+        },
+        {
+          "iteration": 17,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.7812442533486319,
+            "linear": 0.0,
+            "power_law": 350.3953736685453
+          }
+        },
+        {
+          "iteration": 18,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.13932301659974655,
+            "linear": 0.0,
+            "power_law": 384.2899374818646
+          }
+        },
+        {
+          "iteration": 19,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9767268265336497,
+            "power_law": 350.718074539976
+          }
+        },
+        {
+          "iteration": 20,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.10802887945328621,
+            "linear": 0.0,
+            "power_law": 352.21592779381444
+          }
+        },
+        {
+          "iteration": 21,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.2662416611242406,
+            "power_law": 337.3637700986808
+          }
+        },
+        {
+          "iteration": 22,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7593672381335637,
+            "power_law": 422.8822964231456
+          }
+        },
+        {
+          "iteration": 23,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9917991930665266,
+            "power_law": 354.1437114343694
+          }
+        },
+        {
+          "iteration": 24,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.130842923556429,
+            "power_law": 401.30787504327054
+          }
+        },
+        {
+          "iteration": 25,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.943029066026611,
+            "power_law": 375.7329309155414
+          }
+        },
+        {
+          "iteration": 26,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.795133425468066,
+            "power_law": 347.83375087961485
+          }
+        },
+        {
+          "iteration": 27,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.8047715945144773,
+            "power_law": 352.52126179749007
+          }
+        },
+        {
+          "iteration": 28,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.1929412231893366,
+            "power_law": 376.45695836896266
+          }
+        },
+        {
+          "iteration": 29,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.982809550331467,
+            "power_law": 357.71649929524847
+          }
+        },
+        {
+          "iteration": 30,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9999096992723935,
+            "power_law": 356.781954293936
+          }
+        },
+        {
+          "iteration": 31,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 1.871955749751578,
+            "linear": 0.0,
+            "power_law": 367.95866355603584
+          }
+        },
+        {
+          "iteration": 32,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.6896070711659377,
+            "power_law": 356.2200885842983
+          }
+        },
+        {
+          "iteration": 33,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.8089169078020859,
+            "power_law": 354.9895437787927
+          }
+        },
+        {
+          "iteration": 34,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.3919441652114983,
+            "power_law": 352.13341001599497
+          }
+        },
+        {
+          "iteration": 35,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.99964555421775,
+            "power_law": 358.29820602873883
+          }
+        },
+        {
+          "iteration": 36,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.6973095529033344,
+            "power_law": 349.6481849052732
+          }
+        },
+        {
+          "iteration": 37,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7054896756235394,
+            "power_law": 340.2919776653948
+          }
+        },
+        {
+          "iteration": 38,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9334344021845027,
+            "power_law": 343.81628723981316
+          }
+        },
+        {
+          "iteration": 39,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.711550794748291,
+            "power_law": 380.4926751517785
+          }
+        },
+        {
+          "iteration": 40,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.950973440533744,
+            "power_law": 349.94819438242325
+          }
+        },
+        {
+          "iteration": 41,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.3399456683118842,
+            "linear": 0.0,
+            "power_law": 371.4056940950709
+          }
+        },
+        {
+          "iteration": 42,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.564175530335433,
+            "power_law": 372.80828231496344
+          }
+        },
+        {
+          "iteration": 43,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.8372797935201106,
+            "power_law": 341.6750440731023
+          }
+        },
+        {
+          "iteration": 44,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.8422576424993622,
+            "linear": 0.0,
+            "power_law": 346.0520659468332
+          }
+        },
+        {
+          "iteration": 45,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.8685238477501116,
+            "power_law": 366.9354740468284
+          }
+        },
+        {
+          "iteration": 46,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.922864247063444,
+            "power_law": 336.23712338176347
+          }
+        },
+        {
+          "iteration": 47,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.2286002681594255,
+            "power_law": 360.8857453752403
+          }
+        },
+        {
+          "iteration": 48,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.5668697801402232,
+            "power_law": 383.5417564291315
+          }
+        },
+        {
+          "iteration": 49,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 1.2949387773749095,
+            "linear": 0.0,
+            "power_law": 352.313246880698
+          }
+        },
+        {
+          "iteration": 50,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.383440377640909,
+            "power_law": 342.8651383113952
+          }
+        },
+        {
+          "iteration": 51,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.9043978574982248,
+            "power_law": 405.3427954845631
+          }
+        },
+        {
+          "iteration": 52,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9484650115512068,
+            "power_law": 377.610830860913
+          }
+        },
+        {
+          "iteration": 53,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.20112580981935935,
+            "power_law": 366.5677946070032
+          }
+        },
+        {
+          "iteration": 54,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.582249553888687,
+            "power_law": 356.4613115813554
+          }
+        },
+        {
+          "iteration": 55,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7657516784497602,
+            "power_law": 375.90640636945363
+          }
+        },
+        {
+          "iteration": 56,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.146943343908788,
+            "power_law": 373.4603350801942
+          }
+        },
+        {
+          "iteration": 57,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.1910634581438444,
+            "power_law": 369.98961858529674
+          }
+        },
+        {
+          "iteration": 58,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7378218480409942,
+            "power_law": 362.14554240474604
+          }
+        },
+        {
+          "iteration": 59,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.0505867564215805,
+            "power_law": 346.06342891983377
+          }
+        },
+        {
+          "iteration": 60,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.897987088359514,
+            "power_law": 365.38348865193643
+          }
+        },
+        {
+          "iteration": 61,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7735625113352853,
+            "power_law": 340.1976528260943
+          }
+        },
+        {
+          "iteration": 62,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 5.779874396601372,
+            "linear": 0.0,
+            "power_law": 363.1964722653686
+          }
+        },
+        {
+          "iteration": 63,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.8457272938458118,
+            "power_law": 362.98261938158134
+          }
+        },
+        {
+          "iteration": 64,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9618321733296398,
+            "power_law": 370.7827392544714
+          }
+        },
+        {
+          "iteration": 65,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7577378887253872,
+            "power_law": 344.3057158608874
+          }
+        },
+        {
+          "iteration": 66,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.10562928131139415,
+            "linear": 0.0,
+            "power_law": 362.0836443961996
+          }
+        },
+        {
+          "iteration": 67,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9112786924852116,
+            "power_law": 354.9553539458086
+          }
+        },
+        {
+          "iteration": 68,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.46388708318045246,
+            "linear": 0.0,
+            "power_law": 349.3201660868249
+          }
+        },
+        {
+          "iteration": 69,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7109477948260974,
+            "power_law": 354.8946791784224
+          }
+        },
+        {
+          "iteration": 70,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7912926152534965,
+            "power_law": 380.81655467058613
+          }
+        },
+        {
+          "iteration": 71,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9373937541622581,
+            "power_law": 385.8564652795542
+          }
+        },
+        {
+          "iteration": 72,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.46108437660268464,
+            "linear": 0.0,
+            "power_law": 386.8494001885256
+          }
+        },
+        {
+          "iteration": 73,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9130054986685536,
+            "power_law": 367.7643099976551
+          }
+        },
+        {
+          "iteration": 74,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.641778998749487,
+            "power_law": 355.59367585528844
+          }
+        },
+        {
+          "iteration": 75,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9905594457895859,
+            "power_law": 362.33824305415624
+          }
+        },
+        {
+          "iteration": 76,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.2808774584882485,
+            "power_law": 353.66745687036223
+          }
+        },
+        {
+          "iteration": 77,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 1.5428886814802354,
+            "linear": 0.0,
+            "power_law": 376.9634159442469
+          }
+        },
+        {
+          "iteration": 78,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.1706061042436886,
+            "linear": 0.0,
+            "power_law": 375.79169873315595
+          }
+        },
+        {
+          "iteration": 79,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.24666059848868827,
+            "linear": 0.0,
+            "power_law": 383.32199222227223
+          }
+        },
+        {
+          "iteration": 80,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 3.450412173467612,
+            "linear": 0.0,
+            "power_law": 353.80368446703824
+          }
+        },
+        {
+          "iteration": 81,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9998566131907864,
+            "power_law": 368.9364930430884
+          }
+        },
+        {
+          "iteration": 82,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.2216434662359461,
+            "linear": 0.0,
+            "power_law": 381.13912799019204
+          }
+        },
+        {
+          "iteration": 83,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9998133518897703,
+            "power_law": 373.04107639694166
+          }
+        },
+        {
+          "iteration": 84,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9684056468372546,
+            "power_law": 385.20671407005534
+          }
+        },
+        {
+          "iteration": 85,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.7471864260501206,
+            "power_law": 356.81458283337815
+          }
+        },
+        {
+          "iteration": 86,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.8384995636183703,
+            "power_law": 388.3810777767867
+          }
+        },
+        {
+          "iteration": 87,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9964844587930202,
+            "power_law": 366.6174600775207
+          }
+        },
+        {
+          "iteration": 88,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7075891888771366,
+            "power_law": 365.54384000073674
+          }
+        },
+        {
+          "iteration": 89,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9579069871688262,
+            "power_law": 364.29569673259925
+          }
+        },
+        {
+          "iteration": 90,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.2778035221083428,
+            "power_law": 355.25711408503116
+          }
+        },
+        {
+          "iteration": 91,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.8789709839438729,
+            "power_law": 361.1376765066507
+          }
+        },
+        {
+          "iteration": 92,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.2573526257733647,
+            "power_law": 387.1161369352167
+          }
+        },
+        {
+          "iteration": 93,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9963778892038135,
+            "power_law": 375.449043386001
+          }
+        },
+        {
+          "iteration": 94,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.8964549726881614,
+            "power_law": 368.6867910404087
+          }
+        },
+        {
+          "iteration": 95,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.3779710048936522,
+            "power_law": 374.876934783945
+          }
+        },
+        {
+          "iteration": 96,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.34535501004666,
+            "power_law": 346.3075018993154
+          }
+        },
+        {
+          "iteration": 97,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9860246954604008,
+            "power_law": 359.27664851374493
+          }
+        },
+        {
+          "iteration": 98,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7851384558405243,
+            "power_law": 390.17735556919183
+          }
+        },
+        {
+          "iteration": 99,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9971777773407666,
+            "power_law": 345.19010975475203
+          }
+        },
+        {
+          "iteration": 100,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.9065356953838091,
+            "power_law": 364.25604556931376
+          }
+        },
+        {
+          "iteration": 101,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9989265168260317,
+            "power_law": 386.66876027015746
+          }
+        },
+        {
+          "iteration": 102,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.964718203524626,
+            "power_law": 351.3486206801424
+          }
+        },
+        {
+          "iteration": 103,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.5011375633559965,
+            "power_law": 357.8137059182927
+          }
+        },
+        {
+          "iteration": 104,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.6920943524633003,
+            "power_law": 369.09993560910743
+          }
+        },
+        {
+          "iteration": 105,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 2.578119981877535,
+            "linear": 0.0,
+            "power_law": 340.2882156697583
+          }
+        },
+        {
+          "iteration": 106,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9555100127399783,
+            "power_law": 378.8909197408582
+          }
+        },
+        {
+          "iteration": 107,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9321431965781812,
+            "power_law": 379.46640756481224
+          }
+        },
+        {
+          "iteration": 108,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9049450930806415,
+            "power_law": 347.1212380023237
+          }
+        },
+        {
+          "iteration": 109,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.6041537560258803,
+            "power_law": 374.2374213519972
+          }
+        },
+        {
+          "iteration": 110,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.6165733028656177,
+            "power_law": 380.56293973240076
+          }
+        },
+        {
+          "iteration": 111,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.2251910390302783,
+            "power_law": 387.38926940660144
+          }
+        },
+        {
+          "iteration": 112,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9214669997668352,
+            "power_law": 355.78077851238345
+          }
+        },
+        {
+          "iteration": 113,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 5.056160231684316,
+            "linear": 0.0,
+            "power_law": 351.2416040440203
+          }
+        },
+        {
+          "iteration": 114,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.155478655024126,
+            "power_law": 384.63245578910687
+          }
+        },
+        {
+          "iteration": 115,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.3701509733841704,
+            "power_law": 359.46853576845115
+          }
+        },
+        {
+          "iteration": 116,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9364256911635493,
+            "power_law": 355.10596051265475
+          }
+        },
+        {
+          "iteration": 117,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.5873334556231384,
+            "power_law": 383.82314353180163
+          }
+        },
+        {
+          "iteration": 118,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9640907653192698,
+            "power_law": 362.173651441552
+          }
+        },
+        {
+          "iteration": 119,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 1.9024473792137542,
+            "linear": 0.0,
+            "power_law": 344.0892243942801
+          }
+        },
+        {
+          "iteration": 120,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.04121372089934994,
+            "power_law": 325.84539166268655
+          }
+        },
+        {
+          "iteration": 121,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.785971476703935,
+            "power_law": 367.59228132991075
+          }
+        },
+        {
+          "iteration": 122,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.6733515533846912,
+            "linear": 0.0,
+            "power_law": 367.09325676137564
+          }
+        },
+        {
+          "iteration": 123,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.3582586463362532,
+            "power_law": 357.3690459972745
+          }
+        },
+        {
+          "iteration": 124,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 2.046179639690763,
+            "linear": 0.0,
+            "power_law": 375.7647338596548
+          }
+        },
+        {
+          "iteration": 125,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.5150288657014244,
+            "power_law": 363.07472737705507
+          }
+        },
+        {
+          "iteration": 126,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9062589360946731,
+            "power_law": 370.06842533496115
+          }
+        },
+        {
+          "iteration": 127,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.8404429105708004,
+            "power_law": 369.61065364422507
+          }
+        },
+        {
+          "iteration": 128,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.8812438190420835,
+            "power_law": 355.4149651008295
+          }
+        },
+        {
+          "iteration": 129,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.1480814743040355,
+            "power_law": 365.99831507627437
+          }
+        },
+        {
+          "iteration": 130,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.2627309380613951,
+            "power_law": 351.7683117935467
+          }
+        },
+        {
+          "iteration": 131,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9707726269907653,
+            "power_law": 355.8346265215996
+          }
+        },
+        {
+          "iteration": 132,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9145473267421949,
+            "power_law": 358.5348935169616
+          }
+        },
+        {
+          "iteration": 133,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.992778245386262,
+            "power_law": 364.5912458633452
+          }
+        },
+        {
+          "iteration": 134,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.6154144393931347,
+            "power_law": 370.8911230538006
+          }
+        },
+        {
+          "iteration": 135,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.990419822031754,
+            "power_law": 373.7765295559773
+          }
+        },
+        {
+          "iteration": 136,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9639570348963389,
+            "power_law": 392.06744588860624
+          }
+        },
+        {
+          "iteration": 137,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7245742190812052,
+            "power_law": 375.8198082479396
+          }
+        },
+        {
+          "iteration": 138,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9848426525043124,
+            "power_law": 337.9288278492329
+          }
+        },
+        {
+          "iteration": 139,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.2174513251516146,
+            "power_law": 380.43201589964497
+          }
+        },
+        {
+          "iteration": 140,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 1.9468106764538788,
+            "linear": 0.0,
+            "power_law": 368.79916323607654
+          }
+        },
+        {
+          "iteration": 141,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.8294979904185311,
+            "power_law": 358.27347406850686
+          }
+        },
+        {
+          "iteration": 142,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.7958683069800827,
+            "power_law": 366.99409160674077
+          }
+        },
+        {
+          "iteration": 143,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.999740399654911,
+            "power_law": 383.31297843061134
+          }
+        },
+        {
+          "iteration": 144,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.9668265494397019,
+            "power_law": 375.1906593532524
+          }
+        },
+        {
+          "iteration": 145,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.5306591867374664,
+            "linear": 0.0,
+            "power_law": 352.88760332131665
+          }
+        },
+        {
+          "iteration": 146,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.6607987575162042,
+            "power_law": 364.0532126149667
+          }
+        },
+        {
+          "iteration": 147,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9829890931378031,
+            "power_law": 385.34891558127083
+          }
+        },
+        {
+          "iteration": 148,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.1210279815636568,
+            "power_law": 357.65446108944093
+          }
+        },
+        {
+          "iteration": 149,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.3043471813221004,
+            "power_law": 336.0532589220229
+          }
+        },
+        {
+          "iteration": 150,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.6602154138408878,
+            "power_law": 373.129384019825
+          }
+        },
+        {
+          "iteration": 151,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.5211385700122264,
+            "power_law": 360.07165373976204
+          }
+        },
+        {
+          "iteration": 152,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.4504768243832586,
+            "power_law": 350.94180939238436
+          }
+        },
+        {
+          "iteration": 153,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.9196372299018094,
+            "power_law": 341.23672593502374
+          }
+        },
+        {
+          "iteration": 154,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9668376692261518,
+            "power_law": 369.5418793438007
+          }
+        },
+        {
+          "iteration": 155,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.870082409096085,
+            "linear": 0.0,
+            "power_law": 385.7948433952224
+          }
+        },
+        {
+          "iteration": 156,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9950062693649215,
+            "power_law": 374.3698083335994
+          }
+        },
+        {
+          "iteration": 157,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7269066115345595,
+            "power_law": 360.2026582926826
+          }
+        },
+        {
+          "iteration": 158,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9410896072849937,
+            "power_law": 365.85069688700924
+          }
+        },
+        {
+          "iteration": 159,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9691176485607684,
+            "power_law": 366.436541371419
+          }
+        },
+        {
+          "iteration": 160,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.504969404319354,
+            "power_law": 369.8806457462906
+          }
+        },
+        {
+          "iteration": 161,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.8567571363050774,
+            "power_law": 383.63912837179646
+          }
+        },
+        {
+          "iteration": 162,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.9903180148949104,
+            "power_law": 398.46014687826914
+          }
+        },
+        {
+          "iteration": 163,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.4390350565440713,
+            "power_law": 360.13878681357187
+          }
+        },
+        {
+          "iteration": 164,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9513197114738432,
+            "power_law": 372.946793439407
+          }
+        },
+        {
+          "iteration": 165,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.2714591227795609,
+            "power_law": 358.68881831738213
+          }
+        },
+        {
+          "iteration": 166,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 3.856524103571701,
+            "linear": 0.0,
+            "power_law": 365.08440080285595
+          }
+        },
+        {
+          "iteration": 167,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.0660553583775254,
+            "power_law": 402.090529122052
+          }
+        },
+        {
+          "iteration": 168,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7817653881756996,
+            "power_law": 365.4045271828868
+          }
+        },
+        {
+          "iteration": 169,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9999995715720615,
+            "power_law": 370.8800358188905
+          }
+        },
+        {
+          "iteration": 170,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 1.2016679903417753,
+            "linear": 0.0,
+            "power_law": 355.5287342664874
+          }
+        },
+        {
+          "iteration": 171,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 3.6683352613767966,
+            "linear": 0.0,
+            "power_law": 369.40119016897256
+          }
+        },
+        {
+          "iteration": 172,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.8340753290017346,
+            "power_law": 354.39408818996526
+          }
+        },
+        {
+          "iteration": 173,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.9494536637766942,
+            "power_law": 378.57099185319544
+          }
+        },
+        {
+          "iteration": 174,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9731074851792982,
+            "power_law": 347.6316676387455
+          }
+        },
+        {
+          "iteration": 175,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9937887943692658,
+            "power_law": 337.8812943236039
+          }
+        },
+        {
+          "iteration": 176,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9621231825813084,
+            "power_law": 357.54382348224567
+          }
+        },
+        {
+          "iteration": 177,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.6705891133601654,
+            "linear": 0.0,
+            "power_law": 369.09665826556625
+          }
+        },
+        {
+          "iteration": 178,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 2.5952952061065844,
+            "linear": 0.0,
+            "power_law": 361.1005915366677
+          }
+        },
+        {
+          "iteration": 179,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9964171875362808,
+            "power_law": 370.08220836877217
+          }
+        },
+        {
+          "iteration": 180,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.8520983859962143,
+            "power_law": 338.17507565355095
+          }
+        },
+        {
+          "iteration": 181,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.0047109748650200345,
+            "power_law": 384.39176385931796
+          }
+        },
+        {
+          "iteration": 182,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 2.2757889292495292,
+            "linear": 0.0,
+            "power_law": 364.655833162361
+          }
+        },
+        {
+          "iteration": 183,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 0.03618758738775796,
+            "linear": 0.0,
+            "power_law": 394.44478621876806
+          }
+        },
+        {
+          "iteration": 184,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7957897720539222,
+            "power_law": 372.1436456559395
+          }
+        },
+        {
+          "iteration": 185,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 0.8253199370756192,
+            "power_law": 351.8019854097229
+          }
+        },
+        {
+          "iteration": 186,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9993779756077856,
+            "power_law": 345.38055775384214
+          }
+        },
+        {
+          "iteration": 187,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.6405351171417806,
+            "power_law": 381.6689805829337
+          }
+        },
+        {
+          "iteration": 188,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 3.0883408886484176,
+            "linear": 0.0,
+            "power_law": 355.580643636451
+          }
+        },
+        {
+          "iteration": 189,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 2.097387247265033,
+            "linear": 0.0,
+            "power_law": 359.63484835531676
+          }
+        },
+        {
+          "iteration": 190,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.0672608645245418,
+            "power_law": 335.0574470103961
+          }
+        },
+        {
+          "iteration": 191,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.8928047414603952,
+            "power_law": 346.87965281758534
+          }
+        },
+        {
+          "iteration": 192,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7135011624568506,
+            "power_law": 377.9887324141439
+          }
+        },
+        {
+          "iteration": 193,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.5985558286290598,
+            "power_law": 335.7728037860916
+          }
+        },
+        {
+          "iteration": 194,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9798999166525846,
+            "power_law": 362.78046791400766
+          }
+        },
+        {
+          "iteration": 195,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.9536415200727788,
+            "power_law": 352.145917261274
+          }
+        },
+        {
+          "iteration": 196,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.3752235579545413,
+            "power_law": 352.63601195016577
+          }
+        },
+        {
+          "iteration": 197,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.3449232064926946,
+            "power_law": 365.01105243268375
+          }
+        },
+        {
+          "iteration": 198,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.243790947618436,
+            "power_law": 346.8005494288718
+          }
+        },
+        {
+          "iteration": 199,
+          "best_model": "constant",
+          "delta_aic": {
+            "constant": 0.0,
+            "linear": 1.7245478446143352,
+            "power_law": 346.77705482581564
+          }
+        },
+        {
+          "iteration": 200,
+          "best_model": "linear",
+          "delta_aic": {
+            "constant": 2.4689459262312994,
+            "linear": 0.0,
+            "power_law": 408.09468871725585
+          }
+        }
+      ],
+      "consent": {
+        "message": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+        "granted": true,
+        "consent_token_hash": "b13a4fc94fe03c5d0a169ae4548ec6ccc004769fbe8cf0384ff179e80b71777d",
+        "timestamp": "2026-02-05T11:33:50.952326+00:00"
+      },
+      "ethics": {
+        "action": "proceed",
+        "warnings": [
+          "FRAME_DRIFT"
+        ]
+      }
     }
   ]
 }

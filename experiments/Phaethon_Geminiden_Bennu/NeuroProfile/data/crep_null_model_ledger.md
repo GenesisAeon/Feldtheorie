@@ -30,6 +30,12 @@ CREP = mean(Coherence, Resonance, Emergence, Potential) with Φ as proxy anchor.
 - null_model_comparison
 - confidence_intervals
 
+## Entries
+
+| Timestamp (UTC) | Source ID | Hardware Tier | Subject Hash | CREP | Best null model |
+| --- | --- | --- | --- | --- | --- |
+| 2026-02-05T11:33:50.952348+00:00 | synthetic-cold-start | tier-0 | d4fc51155f8f9c509431b4a45f7b55f0f7781599f5eb8a3703f0ee819dc2ea6f | 0.4501 | constant |
+
 ## Storage
 
 - Results ledger: `data/results.json`

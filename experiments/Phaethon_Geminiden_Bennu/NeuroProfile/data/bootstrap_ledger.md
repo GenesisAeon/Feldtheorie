@@ -18,6 +18,12 @@
 | bci-competition-iv-2a | BCI Competition IV Dataset 2a | EEG | `data/raw/bci_competition_iv_2a/` | Cross-check hardware tiers |
 | synthetic-cold-start | Synthetic cold-start generator | EEG (synthetic) | `data/synthetic/cold_start/` | Null-model calibration |
 
+## Run Ledger
+
+| Timestamp (UTC) | Source ID | Subject Hash | β estimate | σΦ proxy | CREP | Best null model |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026-02-05T11:33:50.952348+00:00 | synthetic-cold-start | d4fc51155f8f9c509431b4a45f7b55f0f7781599f5eb8a3703f0ee819dc2ea6f | 0.1249 | 0.9413 | 0.4501 | constant |
+
 ## Null-Model Guard
 
 - **Models:** linear, power-law, constant
