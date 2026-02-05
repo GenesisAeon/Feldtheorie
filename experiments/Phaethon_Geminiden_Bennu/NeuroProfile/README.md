@@ -82,6 +82,25 @@ Design rationale: `docs/notes/Finale_Implementierungen.pdf`.
 - **CREP Null-Model Ledger** für ΔAIC/CI-Telemetrie (`data/crep_null_model_ledger.*`).
 - **Mandala-Extension** für PSRM (`schemas/psrm_sigillin_v1_mandala_extension.*`).
 - **Sgr A* Bridge Sketch** als astro-resonanter Prüfstand (`code/sgr_a_resonant_bridge.py`).
+- **Resonant Return Module** für v_RIG-Alignment-Analyse (`code/resonant_return.py`).
+
+## Testing (v12.2)
+
+Comprehensive test suite with **42 unit tests** covering:
+- Consent enforcement & ethics guard
+- β-estimation accuracy & logistic curve fitting
+- σΦ spectral entropy proxy range checking
+- Null model generation (constant, linear, power_law)
+- Correct ΔAIC selection
+- Bootstrap CI calculations
+- CREP aggregation & components
+- Resonance proxy (Gamma/Beta coupling)
+- PSRM mapper output structure & Mandala bridge
+- Hardware profile loading
+- BCI calibrator
+- Sgr A* bridge normalization
+
+Run tests: `python -m unittest experiments.Phaethon_Geminiden_Bennu.NeuroProfile.test_neuro_profile -v`
 
 ## Falsifizierbarkeit & Nullmodelle
 

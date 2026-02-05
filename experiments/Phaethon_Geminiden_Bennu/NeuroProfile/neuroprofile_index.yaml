@@ -1,14 +1,14 @@
 id: neuroprofile-lantern-001
 name: NeuroProfile Resonance Bridge
-version: v12.1
+version: v12.2
 scope: experiments/Phaethon_Geminiden_Bennu/NeuroProfile
 status: active
 logistic:
-  R: 0.58
+  R: 0.62
   Theta: 0.74
   beta: 4.8
-  zeta_R: 0.22
-  sigma_beta_R_minus_Theta: 0.35
+  zeta_R: 0.19
+  sigma_beta_R_minus_Theta: 0.38
 purpose: >-
   Bridge neuro-resonance profiles (β, σΦ, v_RIG proxies) with
   astrophysical resonance bands from Phaethon/Bennu and map PSRM via
@@ -137,7 +137,10 @@ falsifiability:
   delta_aic_target: 10
   confidence_interval_note: Record CI per experiment in data/results.json
 telemetry:
-  last_updated: 2026-02-05T11:33:50Z
+  last_updated: 2026-02-05T23:45:00Z
+  test_coverage:
+    unit_tests: 42
+    pass_rate: 100%
   evidence_links:
     - ai_search_logs/suche_chatgpt.txt
     - docs/notes/OverviewGrok.md
