@@ -37,6 +37,7 @@ Strategische und kommunikative Ebene:
 - `narrative/utac_v2_activation_tracker_2026-08.md` (und Vorgänger) – Gap-Scans & Telemetrie.
 - `narrative/theoretical_mirror_framework.md` – UTAC-Nutzungsleitfaden als Theoretical Mirror Framework.
 - `narrative/zenodo_release_playbook.md`, `narrative/zenodo_multilingual_abstract_v1.2.md` – Release-Kommunikation.
+- `narrative/reviews/feldtheorie_repo_feedback_2026-02-05.md` – Emergenzpfad-Audit & Review-Laterne.
 - Weitere Kontexte: `outreach/`, `parity_briefs/`, `reviews/`, `meta/`.
 
 ---
