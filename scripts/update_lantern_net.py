@@ -53,6 +53,23 @@ MODULE_TEST_MAPPINGS: dict[str, list[str]] = {
     # Governance Lanterns
     "metaquest-system-001": ["tests/test_metaquest_system.py"],
     "metaquest-campaign-001": ["tests/test_metaquest_campaign.py"],
+    # seed/theory/ Lanterns (v13.2 Expansion)
+    "seed-entropy-geom-001": [
+        "seed/theory/entropy_geometric_waste/test_entropy_geometric_waste.py",
+        "tests/test_entropy_geometric_waste.py",
+    ],
+    "seed-morph-compute-001": ["tests/test_morphological_computing.py"],
+    "seed-quantum-alias-001": ["tests/test_quantum_aliasing.py"],
+    "seed-mirror-machine-001": ["tests/test_mirror_machine_concept.py"],
+    # seed/sigillin/ Additional Lanterns (v13.2 Expansion)
+    "seed-morfit-001": ["tests/test_mor_fit_methodology.py"],
+    "seed-implosive-feedback-001": ["tests/test_implosive_recursive_feedback.py"],
+    "seed-klimakluft-process-001": ["tests/test_klimakluft_process.py"],
+    # Legacy Release Lanterns (v13.2 Expansion)
+    "release-mirror-v4-001": [
+        "seed/releases/v4.0.0-alpha_MirrorMachine/tests/test_ews_pipeline.py",
+        "tests/test_mirror_machine_v4.py",
+    ],
 }
 
 
