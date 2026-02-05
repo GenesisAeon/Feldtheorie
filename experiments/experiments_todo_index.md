@@ -1,7 +1,7 @@
 # 🧭 Experiments Todo Index — Resonant Task Ledger
 
 **Version:** 1.0.0  
-**Stand:** 2026-02-04T22:04:06Z  
+**Stand:** 2026-02-05T10:10:25Z  
 **Scope:** `experiments/`  
 
 ---
@@ -98,6 +98,8 @@
     - **Θ:** Veröffentlichungskalender + Evidenz-Anhänge.
     - **Status:** primed
     - **Quelle:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/notes/ausserhalb_vorhandener_mittel.txt`
+
+**Detail-Laterne:** `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/neuroprofile_todo_lantern.{md,json,yaml}`
 
 ---
 
