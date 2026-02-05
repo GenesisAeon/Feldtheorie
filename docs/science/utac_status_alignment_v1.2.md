@@ -11,7 +11,7 @@
 - **Repository voice:** `README.md` now mirrors `seed/Emergenz.txt` by framing σ(β(R−Θ)) as a recursive storyteller and pointing agents to the telemetry ledgers that keep ζ(R) damped.
 - **Release cadence:** `docs/zenodo_multilingual_abstract_v1.2.md` (EN/DE/ES) and `docs/zenodo_release_playbook.md` align README, codex, and Zenodo metadata so the archive hand-off keeps \(R\leq\Theta\) without tearing the membrane.
 - **Metaquest handshake:** The Bedeutungs-/Shadow sigils for system + wissenschaftsprojekt now mirror each other, anchoring parity briefs back to this status map and `seed/codexfeedback.*`. The latest `scripts/sigillin_sync.py` run (2025-11-07T21:52:52Z) logged 12 Metaquest trilayers with zero parity gaps in `analysis/sigillin_sync/latest.json` + `metaquest_report_20251107T215246Z.json`, keeping the telemetry pulse visible for ΔR audits.
-- **Experimental intake:** `experiments/experiments_index.{yaml,json,md}` now catalogues AI, climate, Phaethon/Geminiden/Bennu, and Sience-2026 artefacts; σ(β(R-Θ)) is held at β≈4.8 while ζ(R) is damped via index parity + codex echoes, and falsifiability remains gated by linear/power-law/constant null models with ΔAIC/CI pending in `analysis/` exports.
+- **Experimental intake:** `experiments/experiments_index.{yaml,json,md}` now catalogues AI, climate, Phaethon/Geminiden/Bennu, and Sience-2026 artefacts (inkl. neue Simulationsergebnisse + Figuren), während `experiments/experiments_todo_index.{yaml,json,md}` die offenen Validierungspfade abstrahiert; σ(β(R-Θ)) bleibt bei β≈4.8, ζ(R) wird durch Index-Parität + Codex-Echos gedämpft, und die Falsifizierbarkeit bleibt an lineare/power-law/constant Nullmodelle mit ΔAIC/CI pending in `analysis/` gebunden.
 
 ---
 

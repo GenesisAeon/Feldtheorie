@@ -196,13 +196,14 @@ Level 5: membrane_solver.py ⭐ HAUPT-SOLVER! (43 KB)
 ---
 
 ### 🧪 **experiments/** - Experimental Resonance Vault
-**192 Dateien** | **5 Kategorien**
+**206 Dateien** | **5 Kategorien**
 📍 Index: `experiments/experiments_index.{yaml,json,md}`
 
 **Was:** Experimentelle Laternen aus AI-Analysen, Klima-Entropie, Phaethon/Geminiden/Bennu und Sience-2026 Kontext.
 
 **Highlights:**
 - `experiments/experiments_index.md` - Trilayer Ledger mit σ(β(R-Θ))-Notiz
+- `experiments/experiments_todo_index.md` - Todo-Ledger für MOR-FIT-Abstrakte
 - `experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md` - Astro-Experiment-Synthese
 - `experiments/Entropy_in_Climate/UTAC Framework Applied to Climate.pdf` - Klima-UTAC Rahmen
 - `experiments/AI/Unified-Mandala_ Implosive Genesis Framework.md` - Mandala/Implosion-Framework

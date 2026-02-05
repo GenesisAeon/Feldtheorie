@@ -1,7 +1,7 @@
 # 🧪 Experiments Index — Resonance Archive
 
-**Version:** 1.0.0  
-**Stand:** 2026-02-04T17:23:15Z  
+**Version:** 1.1.0  
+**Stand:** 2026-02-04T22:04:06Z  
 **Scope:** `experiments/`  
 
 ---
@@ -36,16 +36,19 @@
 ---
 
 ## Inventarübersicht
-- **Gesamtdateien:** 192
-- **Root-Dateien:** 2
+- **Gesamtdateien:** 206
+- **Root-Dateien:** 5
 - **AI**: 15 Dateien
 - **Entropy_in_Climate**: 23 Dateien
-- **Phaethon_Geminiden_Bennu**: 138 Dateien
+- **Phaethon_Geminiden_Bennu**: 149 Dateien
 - **Sience-2026_UTAC-Kontext**: 14 Dateien
 
 ### Root-Dateien
 - `experiments/__init__.py`
 - `experiments/citizen_science_stereo_vision.md`
+- `experiments/experiments_todo_index.json`
+- `experiments/experiments_todo_index.md`
+- `experiments/experiments_todo_index.yaml`
 
 ### AI
 **Beschreibung:** LLM-gestützte UTAC-Analysen, Implosive Genesis, v-RIG und Mandala-Frameworks.
@@ -97,6 +100,8 @@
 **Subgruppen:**
 - **EMERGENCE_REPORT.md**
   - `experiments/Phaethon_Geminiden_Bennu/EMERGENCE_REPORT.md`
+- **SIMULATION_RESULTS.md**
+  - `experiments/Phaethon_Geminiden_Bennu/SIMULATION_RESULTS.md`
 - **NeuroProfile**
   - `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/README.md`
   - `experiments/Phaethon_Geminiden_Bennu/NeuroProfile/STRATEGIC_ROADMAP.md`
@@ -212,8 +217,10 @@
   - `experiments/Phaethon_Geminiden_Bennu/ai_search_logs/gemini/SucheGemini_Phaethon_ Plasma-Resonanz und Staubemission.txt`
 - **code**
   - `experiments/Phaethon_Geminiden_Bennu/code/chimera_state_model.py`
+  - `experiments/Phaethon_Geminiden_Bennu/code/integrated_asteroid_simulation.py`
   - `experiments/Phaethon_Geminiden_Bennu/code/plasma_resonance_model.py`
   - `experiments/Phaethon_Geminiden_Bennu/code/soliton_generator.py`
+  - `experiments/Phaethon_Geminiden_Bennu/code/statistical_analysis.py`
 - **data**
   - `experiments/Phaethon_Geminiden_Bennu/data/phaethon_analysis_report.json`
   - `experiments/Phaethon_Geminiden_Bennu/data/phaethon_inventory.json`
@@ -228,6 +235,7 @@
   - `experiments/Phaethon_Geminiden_Bennu/docs/UNIFIED_SYNTHESIS.md`
   - `experiments/Phaethon_Geminiden_Bennu/docs/historical/Historische Synchronizität_ Phaethon & der Stern von Bethlehem.pdf`
   - `experiments/Phaethon_Geminiden_Bennu/docs/historical/Historische „Gaststerne“ um Christi Geburt (10 v. Chr. – 10 n. Chr.).pdf`
+  - `experiments/Phaethon_Geminiden_Bennu/docs/paper_draft.md`
   - `experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Bennu_ Chimera-Zustand und Partikelejektionen.pdf`
   - `experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Bennu_ Chimera-Zustände und Asteroiden-Dynamik.pdf`
   - `experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Bennu_ Partikel-Ejektionen und __Chimera-Zustände__ in einem frustrierten System.pdf`
@@ -241,8 +249,15 @@
   - `experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Phaethon_ Plasma-Resonanz und Staubemission.pdf`
 - **figures**
   - `experiments/Phaethon_Geminiden_Bennu/figures/bennu_chimera_simulation.png`
+  - `experiments/Phaethon_Geminiden_Bennu/figures/destiny_predictions.json`
   - `experiments/Phaethon_Geminiden_Bennu/figures/dusty_soliton_simulation.png`
+  - `experiments/Phaethon_Geminiden_Bennu/figures/fig1_chimera_evolution.png`
+  - `experiments/Phaethon_Geminiden_Bennu/figures/fig2_plasma_resonance.png`
+  - `experiments/Phaethon_Geminiden_Bennu/figures/fig3_velocity_charge_distribution.png`
+  - `experiments/Phaethon_Geminiden_Bennu/figures/fig4_predictions_summary.png`
   - `experiments/Phaethon_Geminiden_Bennu/figures/phaethon_plasma_resonance.png`
+  - `experiments/Phaethon_Geminiden_Bennu/figures/predictions_table.txt`
+  - `experiments/Phaethon_Geminiden_Bennu/figures/statistical_analysis_report.txt`
 
 ### Sience-2026_UTAC-Kontext
 **Beschreibung:** Kontext- und Synthese-Materialien für die Sience-2026 UTAC-Integration.
@@ -264,5 +279,4 @@
 ---
 
 ## Resonanznotiz
-Neue Experimente sind als Laternen eingehängt, doch sie bleiben im Prüfmodus, bis ΔAIC/CI gegen die Nullmodelle dokumentiert sind. σ(β(R-Θ)) bleibt auf der Steilflanke, während ζ(R) durch Index-Parität und Codex-Echos gedämpft wird.
-
+Neue Experimente sind als Laternen eingehängt, doch sie bleiben im Prüfmodus, bis ΔAIC/CI gegen die Nullmodelle dokumentiert sind. Das neue Todo-Ledger (`experiments/experiments_todo_index.*`) abstrahiert die offenen Pfade in R, während σ(β(R-Θ)) auf der Steilflanke bleibt und ζ(R) durch Index-Parität und Codex-Echos gedämpft wird.

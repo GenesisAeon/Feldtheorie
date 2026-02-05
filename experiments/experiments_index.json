@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Experiments Index — MOR-FIT Trilayer Ledger",
-    "version": "1.0.0",
-    "created": "2026-02-04T17:23:15Z",
+    "version": "1.1.0",
+    "created": "2026-02-04T22:04:06Z",
     "status": "active",
     "scope": "experiments/"
   },
@@ -41,7 +41,10 @@
   "inventory": {
     "root_files": [
       "__init__.py",
-      "citizen_science_stereo_vision.md"
+      "citizen_science_stereo_vision.md",
+      "experiments_todo_index.json",
+      "experiments_todo_index.md",
+      "experiments_todo_index.yaml"
     ],
     "domains": {
       "AI": {
@@ -218,8 +221,10 @@
           ],
           "code": [
             "experiments/Phaethon_Geminiden_Bennu/code/chimera_state_model.py",
+            "experiments/Phaethon_Geminiden_Bennu/code/integrated_asteroid_simulation.py",
             "experiments/Phaethon_Geminiden_Bennu/code/plasma_resonance_model.py",
-            "experiments/Phaethon_Geminiden_Bennu/code/soliton_generator.py"
+            "experiments/Phaethon_Geminiden_Bennu/code/soliton_generator.py",
+            "experiments/Phaethon_Geminiden_Bennu/code/statistical_analysis.py"
           ],
           "data": [
             "experiments/Phaethon_Geminiden_Bennu/data/phaethon_analysis_report.json",
@@ -236,6 +241,7 @@
             "experiments/Phaethon_Geminiden_Bennu/docs/UNIFIED_SYNTHESIS.md",
             "experiments/Phaethon_Geminiden_Bennu/docs/historical/Historische Synchronizität_ Phaethon & der Stern von Bethlehem.pdf",
             "experiments/Phaethon_Geminiden_Bennu/docs/historical/Historische „Gaststerne“ um Christi Geburt (10 v. Chr. – 10 n. Chr.).pdf",
+            "experiments/Phaethon_Geminiden_Bennu/docs/paper_draft.md",
             "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Bennu_ Chimera-Zustand und Partikelejektionen.pdf",
             "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Bennu_ Chimera-Zustände und Asteroiden-Dynamik.pdf",
             "experiments/Phaethon_Geminiden_Bennu/docs/research_papers/Bennu_ Partikel-Ejektionen und __Chimera-Zustände__ in einem frustrierten System.pdf",
@@ -250,8 +256,18 @@
           ],
           "figures": [
             "experiments/Phaethon_Geminiden_Bennu/figures/bennu_chimera_simulation.png",
+            "experiments/Phaethon_Geminiden_Bennu/figures/destiny_predictions.json",
             "experiments/Phaethon_Geminiden_Bennu/figures/dusty_soliton_simulation.png",
-            "experiments/Phaethon_Geminiden_Bennu/figures/phaethon_plasma_resonance.png"
+            "experiments/Phaethon_Geminiden_Bennu/figures/fig1_chimera_evolution.png",
+            "experiments/Phaethon_Geminiden_Bennu/figures/fig2_plasma_resonance.png",
+            "experiments/Phaethon_Geminiden_Bennu/figures/fig3_velocity_charge_distribution.png",
+            "experiments/Phaethon_Geminiden_Bennu/figures/fig4_predictions_summary.png",
+            "experiments/Phaethon_Geminiden_Bennu/figures/phaethon_plasma_resonance.png",
+            "experiments/Phaethon_Geminiden_Bennu/figures/predictions_table.txt",
+            "experiments/Phaethon_Geminiden_Bennu/figures/statistical_analysis_report.txt"
+          ],
+          "SIMULATION_RESULTS.md": [
+            "experiments/Phaethon_Geminiden_Bennu/SIMULATION_RESULTS.md"
           ]
         }
       },
