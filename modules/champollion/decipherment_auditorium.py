@@ -19,6 +19,7 @@ import argparse
 import csv
 import json
 from pathlib import Path
+from typing import Any
 
 import numpy as np
 
@@ -41,7 +42,7 @@ class PatternAgent:
         self.n_gram_range = n_gram_range
         self.detected_patterns: dict[str, int] = {}
 
-    def find_structure(self, sequence: str, return_top_k: int = 10) -> dict[str, any]:
+    def find_structure(self, sequence: str, return_top_k: int = 10) -> dict[str, Any]:
         """
         Identify syntactic patterns in the input sequence.
 
@@ -55,14 +56,43 @@ class PatternAgent:
                 - 'repetitions': Detected repetitive structures
                 - 'candidate_boundaries': Possible word/phrase boundaries
         """
-        # TODO: Implement n-gram extraction
-        # TODO: Detect repetitive structures
-        # TODO: Identify candidate segmentation boundaries
+        if not sequence:
+            return {
+                "n_grams": [],
+                "repetitions": [],
+                "candidate_boundaries": [],
+                "entropy": 0.0,
+            }
+
+        min_n, max_n = self.n_gram_range
+        ngram_counts: dict[str, int] = {}
+        for n in range(min_n, max_n + 1):
+            for idx in range(len(sequence) - n + 1):
+                ngram = sequence[idx : idx + n]
+                ngram_counts[ngram] = ngram_counts.get(ngram, 0) + 1
+
+        sorted_ngrams = sorted(ngram_counts.items(), key=lambda item: item[1], reverse=True)
+        top_ngrams = [
+            {"pattern": pattern, "count": count, "length": len(pattern)}
+            for pattern, count in sorted_ngrams[:return_top_k]
+        ]
+
+        repetitions = [
+            {
+                "pattern": pattern,
+                "count": count,
+                "length": len(pattern),
+            }
+            for pattern, count in sorted_ngrams
+            if count > 1 and len(pattern) > 1
+        ]
+
+        candidate_boundaries = self._candidate_boundaries(sequence)
 
         return {
-            "n_grams": {},
-            "repetitions": [],
-            "candidate_boundaries": [],
+            "n_grams": top_ngrams,
+            "repetitions": repetitions[:return_top_k],
+            "candidate_boundaries": candidate_boundaries,
             "entropy": self._calculate_pattern_entropy(sequence),
         }
 
@@ -93,6 +123,29 @@ class PatternAgent:
 
         return entropy
 
+    def _candidate_boundaries(self, sequence: str) -> list[int]:
+        if len(sequence) < 3:
+            return []
+        if " " in sequence:
+            return [idx for idx, char in enumerate(sequence) if char == " "]
+
+        bigram_counts: dict[str, int] = {}
+        for idx in range(len(sequence) - 1):
+            bigram = sequence[idx : idx + 2]
+            bigram_counts[bigram] = bigram_counts.get(bigram, 0) + 1
+
+        frequencies = np.array(list(bigram_counts.values()), dtype=float)
+        if frequencies.size == 0:
+            return []
+        threshold = float(np.percentile(frequencies, 20))
+
+        boundaries: list[int] = []
+        for idx in range(1, len(sequence)):
+            bigram = sequence[idx - 1 : idx + 1]
+            if bigram_counts.get(bigram, 0) <= threshold:
+                boundaries.append(idx)
+        return boundaries
+
 
 class ContextAgent:
     """
@@ -113,8 +166,8 @@ class ContextAgent:
         self.provisional_lexicon: dict[str, list[str]] = {}
 
     def hypothesize_meanings(
-        self, syntax_hypotheses: dict[str, any], confidence_threshold: float = 0.5
-    ) -> list[dict[str, any]]:
+        self, syntax_hypotheses: dict[str, Any], confidence_threshold: float = 0.5
+    ) -> list[dict[str, Any]]:
         """
         Generate semantic hypotheses based on syntactic patterns.
 
@@ -125,11 +178,29 @@ class ContextAgent:
         Returns:
             List of semantic hypotheses with confidence scores
         """
-        # TODO: Implement context-based semantic mapping
-        # TODO: Build provisional lexicon
-        # TODO: Generate translation candidates
-
         hypotheses = []
+        ngrams = syntax_hypotheses.get("n_grams", [])
+        if not ngrams:
+            return hypotheses
+
+        max_count = max((entry.get("count", 1) for entry in ngrams), default=1)
+        context_tokens = self._context_tokens()
+
+        for entry in ngrams:
+            pattern = entry.get("pattern", "")
+            count = entry.get("count", 0)
+            confidence = float(count) / float(max_count)
+            translation = self._map_pattern_to_context(pattern, context_tokens)
+            coherence = self._compute_coherence_score(translation, self.context_corpus)
+            if confidence >= confidence_threshold or coherence >= confidence_threshold:
+                hypotheses.append(
+                    {
+                        "pattern": pattern,
+                        "translation": translation,
+                        "confidence": confidence,
+                        "coherence": coherence,
+                    }
+                )
 
         return hypotheses
 
@@ -144,8 +215,32 @@ class ContextAgent:
         Returns:
             Coherence score in [0, 1]
         """
-        # TODO: Implement coherence metric (e.g., cosine similarity with context)
-        return 0.0
+        if not hypothesis or not context:
+            return 0.0
+
+        hypothesis_tokens = set(hypothesis.lower().split())
+        context_tokens = set(" ".join(context).lower().split())
+        if not hypothesis_tokens or not context_tokens:
+            return 0.0
+        overlap = hypothesis_tokens.intersection(context_tokens)
+        return float(len(overlap) / len(hypothesis_tokens.union(context_tokens)))
+
+    def _context_tokens(self) -> list[str]:
+        return list({token for token in " ".join(self.context_corpus).split() if token})
+
+    def _map_pattern_to_context(self, pattern: str, context_tokens: list[str]) -> str:
+        if not context_tokens:
+            return f"concept_{pattern}"
+        pattern_set = set(pattern)
+        best_token = None
+        best_score = -1.0
+        for token in context_tokens:
+            token_set = set(token)
+            score = len(pattern_set.intersection(token_set))
+            if score > best_score:
+                best_score = score
+                best_token = token
+        return best_token or f"concept_{pattern}"
 
 
 class SigillinScribe:
@@ -164,11 +259,11 @@ class SigillinScribe:
             baseline_entropy: Maximum entropy (null hypothesis)
         """
         self.baseline_entropy = baseline_entropy
-        self.validation_history: list[dict[str, any]] = []
+        self.validation_history: list[dict[str, Any]] = []
 
     def validate(
-        self, hypotheses: list[dict[str, any]], original_sequence: str
-    ) -> tuple[dict[str, any] | None, float]:
+        self, hypotheses: list[dict[str, Any]], original_sequence: str
+    ) -> tuple[dict[str, Any] | None, float]:
         """
         Validate translation hypotheses using entropy and ΔAIC criteria.
 
@@ -182,14 +277,43 @@ class SigillinScribe:
         if not hypotheses:
             return None, 0.0
 
-        # TODO: Compute entropy for each hypothesis
-        # TODO: Calculate ΔAIC vs null model
-        # TODO: Select best hypothesis if ΔAIC ≥ 10
+        null_entropy = self.baseline_entropy
+        if null_entropy is None:
+            null_entropy = self._shannon_entropy(original_sequence)
 
-        delta_aic = 0.0  # Placeholder
         best_hypothesis = None
+        best_delta_aic = -np.inf
 
-        return best_hypothesis, delta_aic
+        for hypothesis in hypotheses:
+            translation = hypothesis.get("translation", "")
+            hypothesis_entropy = self._shannon_entropy(translation)
+            delta_aic = self._compute_delta_aic(null_entropy, hypothesis_entropy)
+            record = {
+                "hypothesis": hypothesis,
+                "null_entropy": null_entropy,
+                "hypothesis_entropy": hypothesis_entropy,
+                "delta_aic": delta_aic,
+            }
+            self.validation_history.append(record)
+
+            if delta_aic > best_delta_aic:
+                best_delta_aic = delta_aic
+                best_hypothesis = hypothesis
+
+        if best_delta_aic < 10:
+            return None, float(best_delta_aic)
+
+        return best_hypothesis, float(best_delta_aic)
+
+    def _shannon_entropy(self, sequence: str) -> float:
+        if not sequence:
+            return 0.0
+        freq_dist: dict[str, int] = {}
+        for char in sequence:
+            freq_dist[char] = freq_dist.get(char, 0) + 1
+        total = len(sequence)
+        probs = np.array([count / total for count in freq_dist.values()])
+        return float(-np.sum(probs * np.log2(probs + 1e-10)))
 
     def _compute_delta_aic(
         self,
