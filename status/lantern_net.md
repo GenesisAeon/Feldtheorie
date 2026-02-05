@@ -4,7 +4,7 @@ Dieses Dokument bündelt $(R, \Theta, \beta, \zeta(R))$ für jede Laterne und
 markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 
 **Version:** v13.3.0
-**Updated:** 2026-02-05T21:21:21+00:00
+**Updated:** 2026-02-05T22:52:00+00:00
 
 ## Quellen
 - Lantern Hub: `docs/utac_v2_data_lanterns.yaml`
@@ -195,8 +195,8 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **Consent Protocol:** Sigillin consent gating + anonymization required
 - **σΦ Range:** [0.9352193800343218, 0.943440237718606]
 - **CREP Offset:** -0.06567018928793833
-- **Ledger Entries:** bootstrap=bootstrap-run-0002, crep=crep-null-0002
-- **Evidence:** ledgers=['bootstrap-run-0002', 'crep-null-0002'], tests=['experiments/Phaethon_Geminiden_Bennu/NeuroProfile/test_neuro_profile.py']
+- **Ledger Entries:** bootstrap=bootstrap-run-0006, crep=crep-null-0006
+- **Evidence:** ledgers=['bootstrap-run-0006', 'crep-null-0006'], tests=['experiments/Phaethon_Geminiden_Bennu/NeuroProfile/test_neuro_profile.py']
 - **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
 - **Mandala Bridge:** status=validated, schema=schemas/psrm_map.schema.json
 - **Documentation:** README=experiments/Phaethon_Geminiden_Bennu/NeuroProfile/README.md, Methodology=experiments/Phaethon_Geminiden_Bennu/NeuroProfile/docs/methodology.md, Roadmap=experiments/Phaethon_Geminiden_Bennu/NeuroProfile/STRATEGIC_ROADMAP.md
