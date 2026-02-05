@@ -3,8 +3,8 @@
 Dieses Dokument bündelt $(R, \Theta, \beta, \zeta(R))$ für jede Laterne und
 markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 
-**Version:** v13.1.0
-**Updated:** 2026-02-05T16:17:16+00:00
+**Version:** v13.2.0
+**Updated:** 2026-02-05T17:45:37+00:00
 
 ## Quellen
 - Lantern Hub: `docs/utac_v2_data_lanterns.yaml`
@@ -267,4 +267,124 @@ markiert Übergänge über $\sigma(\beta(R-\Theta))$ als Resonanzschwellen.
 - **Evidence:** ledgers=[], tests=[]
 - **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
 - **Documentation:** README=None, Methodology=None, Roadmap=None
+
+### Entropy as Geometric Waste (seed-entropy-geom-001)
+- **Status:** active | **Readiness R:** 0.75
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=partial, roadmap=pending
+- **Domain:** thermodynamics | **Type:** theory
+- **Order Parameter:** informationsdichte_raumzeit_membran
+- **Logistik:** R=0.75, Θ=0.66, β=4.6, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=seed/theory/entropy_geometric_waste/entropy_geometric_waste.md, Roadmap=None
+
+### Morphological Computing (seed-morph-compute-001)
+- **Status:** active | **Readiness R:** 0.7
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=partial, roadmap=pending
+- **Domain:** computer_architecture | **Type:** theory
+- **Order Parameter:** thermische_budgetdichte_taskschock
+- **Logistik:** R=0.7, Θ=0.75, β=37.6, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=seed/theory/hypothese_morphological_computing/hypothese_morphological_computing.md, Roadmap=None
+
+### Quantum Aliasing Hypothesis (seed-quantum-alias-001)
+- **Status:** active | **Readiness R:** 0.68
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=partial, roadmap=pending
+- **Domain:** quantum_physics | **Type:** theory
+- **Order Parameter:** frequenz_dimensionaler_oszillation
+- **Logistik:** R=0.68, Θ=0.5, β=6.8, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=seed/theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.md, Roadmap=None
+
+### Mirror Machine Concept (seed-mirror-machine-001)
+- **Status:** active | **Readiness R:** 0.72
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=partial, roadmap=pending
+- **Domain:** symbolic_ai | **Type:** theory
+- **Order Parameter:** mutationsrate_thesen_generierung
+- **Logistik:** R=0.72, Θ=0.6, β=5.4, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=seed/theory/concept_the_mirror_machine/concept_the_mirror_machine.md, Roadmap=None
+
+### MOR-FIT Methodology v2 (seed-morfit-001)
+- **Status:** active | **Readiness R:** 0.85
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=partial, roadmap=pending
+- **Domain:** infrastructure | **Type:** governance
+- **Order Parameter:** repository_resonance_progress
+- **Logistik:** R=0.85, Θ=0.66, β=4.8, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=seed/sigillin/mor_fit_methodology_v2.md, Roadmap=None
+
+### Implosive Recursive Feedback (seed-implosive-feedback-001)
+- **Status:** active | **Readiness R:** 0.65
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=partial, roadmap=pending
+- **Domain:** cosmology | **Type:** theory
+- **Order Parameter:** implosive_information_density
+- **Logistik:** R=0.65, Θ=0.618, β=4.236, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=seed/sigillin/implosive_recursive_feedback.md, Roadmap=None
+
+### UTAC Klimakluft Process (seed-klimakluft-process-001)
+- **Status:** active | **Readiness R:** 0.72
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=partial, roadmap=pending
+- **Domain:** climate | **Type:** experiment
+- **Order Parameter:** emission_drive_with_delta_peak
+- **Logistik:** R=0.72, Θ=1.5, β=11.0, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=None, Methodology=seed/sigillin/utac_klimakluft_process.md, Roadmap=None
+
+### MirrorMachine v4.0.0-alpha (release-mirror-v4-001)
+- **Status:** active | **Readiness R:** 0.8
+- **Lifecycle:** active
+- **Completion Status:** active
+- **MOR-FIT Layers:** code=active, documentation=partial, roadmap=pending
+- **Domain:** monitoring | **Type:** integration
+- **Order Parameter:** ews_state_verdict_beta
+- **Logistik:** R=0.8, Θ=0.7, β=8.5, ζ=EM-coupling stability maintained via impedance matching
+- **σΦ Range:** None
+- **CREP Offset:** None
+- **Ledger Entries:** bootstrap=None, crep=None
+- **Evidence:** ledgers=[], tests=[]
+- **Ethics Tags:** sigillin-consent-gated, anonymization-required, falsifiability-required
+- **Documentation:** README=seed/releases/v4.0.0-alpha_MirrorMachine/README_ZENODO.md, Methodology=None, Roadmap=None
 

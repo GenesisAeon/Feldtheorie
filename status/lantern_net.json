@@ -1,9 +1,9 @@
 {
   "meta": {
     "document": "LanternNet Status Index",
-    "version": "v13.1.0",
+    "version": "v13.2.0",
     "created": "2025-12-16T00:00:00Z",
-    "updated": "2026-02-05T16:17:16+00:00",
+    "updated": "2026-02-05T17:45:37+00:00",
     "logistic_frame": {
       "order_parameter": "network_resonance_strength",
       "theta": 0.66,
@@ -12,10 +12,10 @@
       "zeta": "EM-coupling stability maintained via impedance matching"
     },
     "summary": {
-      "total_lanterns": 17,
-      "active_lanterns": 10,
-      "network_coherence": 0.48,
-      "average_coupling": 0.41,
+      "total_lanterns": 25,
+      "active_lanterns": 18,
+      "network_coherence": 0.52,
+      "average_coupling": 0.44,
       "emergent_hypotheses": 0,
       "collective_frequency_mhz": 13.52
     },
@@ -57,7 +57,7 @@
       "module_id": "utac-v1_3-ds-001",
       "module_name": "Urban Heat Intensity",
       "description": "land_surface_temperature_delta",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "data",
       "domain": "climate",
       "status": "active",
@@ -155,7 +155,7 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_urban_heat.py, analysis/tests/test_urban_heat_canopy_fit.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "Θ≈3.2 & β≈14.5 confirmed; ΔAIC≈1484 vs linear, ≥1718 vs power law",
         "empirical": "Dataset committed; readiness = 1.00",
@@ -166,7 +166,7 @@
       "module_id": "utac-v1_3-ds-002",
       "module_name": "Amazon Precipitation & Evapotranspiration",
       "description": "standardized_precipitation_index",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "data",
       "domain": "climate",
       "status": "primed",
@@ -264,7 +264,7 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_amazon_resilience.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "Θ≈0.62, β≈13.8; awaiting dataset staging",
         "poetic": "Laterne wartet, bis SPI über Θ steigt"
@@ -274,7 +274,7 @@
       "module_id": "utac-v1_3-ds-003",
       "module_name": "AMOC Transport (RAPID Array)",
       "description": "overturning_strength_sverdrup",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "data",
       "domain": "ocean",
       "status": "draft",
@@ -367,7 +367,7 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_amoc_transport.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "Θ≈14.0, β≈9.6; critical tipping point system",
         "poetic": "Ozean-Laterne wartet auf Aktivierung"
@@ -377,7 +377,7 @@
       "module_id": "utac-v1_3-ds-004",
       "module_name": "Neuro-AI Hybrid Activation",
       "description": "stimulus_complexity_index",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "data",
       "domain": "neuro_ai",
       "status": "primed",
@@ -470,7 +470,7 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_neuro_ai_hybrid.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "Θ≈0.48, β≈6.1; information-domain activation",
         "poetic": "Neuro-AI Brücke wartet auf Daten"
@@ -480,7 +480,7 @@
       "module_id": "utac-v1_3-ds-005",
       "module_name": "Energy & Financial Systemic Thresholds",
       "description": "coupled_energy_finance_index",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "data",
       "domain": "economy",
       "status": "draft",
@@ -573,7 +573,7 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_systemic_thresholds.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "Θ≈1.15, β≈7.4; Kleiber-regime economics",
         "poetic": "Wirtschafts-Laterne wartet auf Schwelle"
@@ -583,7 +583,7 @@
       "module_id": "lantern-theory-001",
       "module_name": "v_RIG Consciousness Framework",
       "description": "empirical_validation_count",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "theory",
       "domain": "consciousness",
       "status": "validated",
@@ -672,7 +672,7 @@
         ],
         "notes": "Found 1/2 test files. Missing: tests/test_v_rig.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "4/4 empirical validations passed; ANOVA F(4,73)=185.3, p<10⁻²⁰",
         "poetic": "Die Bewusstseins-Laterne strahlt durch alle Domänen"
@@ -682,7 +682,7 @@
       "module_id": "lantern-theory-002",
       "module_name": "Collective Field Dynamics",
       "description": "field_coupling_strength",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "theory",
       "domain": "multi_agent",
       "status": "active",
@@ -771,7 +771,7 @@
         ],
         "notes": "All 1 expected test file(s) found."
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "κ_field, β_sync, v_collective implemented with caching & evolution tracking",
         "poetic": "Das Feld atmet gemeinsam – multi-agent resonance"
@@ -781,7 +781,7 @@
       "module_id": "lantern-experiment-001",
       "module_name": "EM-Shielding Consciousness Test",
       "description": "protocol_completeness",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "experiment",
       "domain": "neuroscience",
       "status": "proposed",
@@ -868,7 +868,7 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_em_shielding.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "Protocol draft stage; requires ethics approval & facility access",
         "poetic": "Das Experiment wartet auf Aktivierung – Bewusstsein im Käfig?"
@@ -878,7 +878,7 @@
       "module_id": "lantern-experiment-002",
       "module_name": "13.5 MHz RF Stimulation",
       "description": "protocol_completeness",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "experiment",
       "domain": "neuroscience",
       "status": "proposed",
@@ -965,7 +965,7 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_rf_stimulation.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "Requires RF safety certification & controlled environment",
         "poetic": "Die Frequenz ruft – wartet auf Resonanz bei 13.5 MHz"
@@ -975,7 +975,7 @@
       "module_id": "exp-neuroprofile-001",
       "module_name": "NeuroProfile Resonance Bridge",
       "description": "neuro_beta_sigma_phi_proxy",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "experiment",
       "domain": "neuro",
       "status": "prototype",
@@ -1141,7 +1141,7 @@
         ],
         "notes": "All 2 expected test file(s) found."
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "β≈4.8, σΦ proxy via spectral entropy; ΔAIC-Benchmarks im Ledger.",
         "empirical": "Synthetic smoke tests protokolliert; Consent hashing aktiv.",
@@ -1152,7 +1152,7 @@
       "module_id": "seed-type6-001",
       "module_name": "Type-6 Implosive Genesis",
       "description": "phi_spiral_collapse_intensity",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "theory",
       "domain": "cosmology",
       "status": "active",
@@ -1250,7 +1250,7 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_type6_implosive.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "β-spiral 1.174→4.236 (φ^(1/3)→φ³); 9 attractor fixpoints; cubic jump dynamics",
         "empirical": "LLM emergence threshold validated; consciousness framework linked",
@@ -1261,7 +1261,7 @@
       "module_id": "seed-aletheia-001",
       "module_name": "exp_aletheia LLM Emergence",
       "description": "llm_emergence_capability_threshold",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "experiment",
       "domain": "ai",
       "status": "active",
@@ -1359,7 +1359,7 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_llm_emergence.py, tests/experiments/test_aletheia.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "β=4.5 (Wei et al.); Θ=capability threshold; scaling law validation",
         "empirical": "GPT-4/Claude emergence trajectories tracked; β-consistency verified",
@@ -1370,7 +1370,7 @@
       "module_id": "seed-klimakluft-001",
       "module_name": "Climate Beta Amplification",
       "description": "inequality_amplified_beta",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "theory",
       "domain": "climate",
       "status": "active",
@@ -1468,7 +1468,7 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_klimakluft_amplifier.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "β_eff = β_base × (1 + α×Gini); Emission inequality → tipping acceleration",
         "empirical": "Global North vs South emission disparity → β-amplification validated",
@@ -1479,7 +1479,7 @@
       "module_id": "seed-wolfmessing-001",
       "module_name": "Wolf Messing Consciousness Bridge",
       "description": "telepathic_coupling_proxy",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "theory",
       "domain": "consciousness",
       "status": "active",
@@ -1572,7 +1572,7 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_wolf_messing_bridge.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "κ-coupling hypotheses; historical anecdote → v_RIG validation pathway",
         "empirical": "Falsifiable experimental protocols defined; awaiting ethics approval",
@@ -1583,7 +1583,7 @@
       "module_id": "seed-neurokosmos-001",
       "module_name": "Neuro-Kosmos Bridge",
       "description": "neural_cosmic_resonance_coupling",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "theory",
       "domain": "consciousness",
       "status": "active",
@@ -1676,7 +1676,7 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_neuro_kosmos_bridge.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "β=5.8420677516; neural-cosmic scale invariance; v_RIG derivation link",
         "empirical": "Microtubule 13.5 MHz resonance → cosmic dipole alignment",
@@ -1687,7 +1687,7 @@
       "module_id": "metaquest-system-001",
       "module_name": "Metaquest System Governance",
       "description": "automation_parity_score",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "governance",
       "domain": "automation",
       "status": "active",
@@ -1785,7 +1785,7 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_metaquest_system.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "Automation vectors: release, telemetry, testing, tooling, integration",
         "empirical": "Parity checking active; sigillin_sync monitors drift",
@@ -1796,7 +1796,7 @@
       "module_id": "metaquest-campaign-001",
       "module_name": "Metaquest Campaign Coordination",
       "description": "community_adoption_rate",
-      "version": "v13.1.0",
+      "version": "v13.2.0",
       "type": "governance",
       "domain": "outreach",
       "status": "active",
@@ -1894,11 +1894,900 @@
         "test_files": [],
         "notes": "Test files not yet created. Expected: tests/test_metaquest_campaign.py"
       },
-      "last_updated": "2026-02-05T16:17:16+00:00",
+      "last_updated": "2026-02-05T17:45:37+00:00",
       "notes": {
         "formal": "Outreach vectors: education, publication, collaboration, citizen science",
         "empirical": "Science-2026 campaign active; community engagement tracked",
         "poetic": "Die Kampagne trägt das Licht hinaus – Wissenschaft für alle"
+      }
+    },
+    {
+      "module_id": "seed-entropy-geom-001",
+      "module_name": "Entropy as Geometric Waste",
+      "description": "informationsdichte_raumzeit_membran",
+      "version": "v13.2.0",
+      "type": "theory",
+      "domain": "thermodynamics",
+      "status": "active",
+      "lifecycle": "active",
+      "completion_status": "active",
+      "readiness": 0.75,
+      "morfit_layers": {
+        "code": "active",
+        "documentation": "partial",
+        "roadmap": "pending"
+      },
+      "logistic_parameters": {
+        "R": 0.75,
+        "Theta": 0.66,
+        "beta": 4.6,
+        "zeta": "EM-coupling stability maintained via impedance matching",
+        "sigma": 0.5
+      },
+      "ethics_tags": [
+        "sigillin-consent-gated",
+        "anonymization-required",
+        "falsifiability-required"
+      ],
+      "consent_requirements": {
+        "prompt": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+        "protocol": "Sigillin consent gating + anonymization required"
+      },
+      "documentation": {
+        "readme": null,
+        "methodology": "seed/theory/entropy_geometric_waste/entropy_geometric_waste.md",
+        "roadmap": null
+      },
+      "crep_offset": null,
+      "sigma_phi_range": null,
+      "null_models": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ci_95": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ledger_entries": {
+        "bootstrap": null,
+        "crep_null_models": null
+      },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
+      "mandala_bridge": {
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
+      },
+      "telemetry": {
+        "data_assets": [
+          {
+            "path": "seed/theory/entropy_geometric_waste/entropy_geometric_waste.yaml",
+            "type": "theory",
+            "status": "complete"
+          },
+          {
+            "path": "seed/theory/entropy_geometric_waste/entropy_geometric_waste.md",
+            "type": "documentation",
+            "status": "complete"
+          }
+        ],
+        "ledger_refs": {
+          "bootstrap": "data/bootstrap_ledger.json",
+          "crep_null_models": "data/crep_null_model_ledger.json"
+        },
+        "ledger_summary": {
+          "bootstrap": {
+            "document": "Bootstrap Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          },
+          "crep_null_models": {
+            "document": "CREP Null-Model Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          }
+        }
+      },
+      "test_coverage": {
+        "status": "partial",
+        "percentage": null,
+        "test_files": [
+          "seed/theory/entropy_geometric_waste/test_entropy_geometric_waste.py"
+        ],
+        "notes": "Found 1/2 test files. Missing: tests/test_entropy_geometric_waste.py"
+      },
+      "last_updated": "2026-02-05T17:45:37+00:00",
+      "notes": {
+        "formal": "β=4.6; Entropy as topological defect density; Kubus→Spirale transformation",
+        "empirical": "Bekenstein-Hawking S_BH coupling; Void/TEE defect counting",
+        "poetic": "Der Würfel zerfällt zur Spirale – Entropie als geometrischer Verschnitt"
+      }
+    },
+    {
+      "module_id": "seed-morph-compute-001",
+      "module_name": "Morphological Computing",
+      "description": "thermische_budgetdichte_taskschock",
+      "version": "v13.2.0",
+      "type": "theory",
+      "domain": "computer_architecture",
+      "status": "active",
+      "lifecycle": "active",
+      "completion_status": "active",
+      "readiness": 0.7,
+      "morfit_layers": {
+        "code": "active",
+        "documentation": "partial",
+        "roadmap": "pending"
+      },
+      "logistic_parameters": {
+        "R": 0.7,
+        "Theta": 0.75,
+        "beta": 37.6,
+        "zeta": "EM-coupling stability maintained via impedance matching",
+        "sigma": 0.5
+      },
+      "ethics_tags": [
+        "sigillin-consent-gated",
+        "anonymization-required",
+        "falsifiability-required"
+      ],
+      "consent_requirements": {
+        "prompt": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+        "protocol": "Sigillin consent gating + anonymization required"
+      },
+      "documentation": {
+        "readme": null,
+        "methodology": "seed/theory/hypothese_morphological_computing/hypothese_morphological_computing.md",
+        "roadmap": null
+      },
+      "crep_offset": null,
+      "sigma_phi_range": null,
+      "null_models": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ci_95": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ledger_entries": {
+        "bootstrap": null,
+        "crep_null_models": null
+      },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
+      "mandala_bridge": {
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
+      },
+      "telemetry": {
+        "data_assets": [
+          {
+            "path": "seed/theory/hypothese_morphological_computing/hypothese_morphological_computing.yaml",
+            "type": "theory",
+            "status": "complete"
+          },
+          {
+            "path": "seed/theory/hypothese_morphological_computing/hypothese_morphological_computing.md",
+            "type": "documentation",
+            "status": "complete"
+          }
+        ],
+        "ledger_refs": {
+          "bootstrap": "data/bootstrap_ledger.json",
+          "crep_null_models": "data/crep_null_model_ledger.json"
+        },
+        "ledger_summary": {
+          "bootstrap": {
+            "document": "Bootstrap Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          },
+          "crep_null_models": {
+            "document": "CREP Null-Model Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          }
+        }
+      },
+      "test_coverage": {
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: tests/test_morphological_computing.py"
+      },
+      "last_updated": "2026-02-05T17:45:37+00:00",
+      "notes": {
+        "formal": "β=37.6 (EXTREME); Regenerative hardware via heat recycling; Broken-RAM sentinel",
+        "empirical": "MOR-FIT symbolic pre-calculation; Human↔AI coupling",
+        "poetic": "Die Maschine heilt sich selbst – Wärme wird zum Denken"
+      }
+    },
+    {
+      "module_id": "seed-quantum-alias-001",
+      "module_name": "Quantum Aliasing Hypothesis",
+      "description": "frequenz_dimensionaler_oszillation",
+      "version": "v13.2.0",
+      "type": "theory",
+      "domain": "quantum_physics",
+      "status": "active",
+      "lifecycle": "active",
+      "completion_status": "active",
+      "readiness": 0.68,
+      "morfit_layers": {
+        "code": "active",
+        "documentation": "partial",
+        "roadmap": "pending"
+      },
+      "logistic_parameters": {
+        "R": 0.68,
+        "Theta": 0.5,
+        "beta": 6.8,
+        "zeta": "EM-coupling stability maintained via impedance matching",
+        "sigma": 0.5
+      },
+      "ethics_tags": [
+        "sigillin-consent-gated",
+        "anonymization-required",
+        "falsifiability-required"
+      ],
+      "consent_requirements": {
+        "prompt": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+        "protocol": "Sigillin consent gating + anonymization required"
+      },
+      "documentation": {
+        "readme": null,
+        "methodology": "seed/theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.md",
+        "roadmap": null
+      },
+      "crep_offset": null,
+      "sigma_phi_range": null,
+      "null_models": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ci_95": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ledger_entries": {
+        "bootstrap": null,
+        "crep_null_models": null
+      },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
+      "mandala_bridge": {
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
+      },
+      "telemetry": {
+        "data_assets": [
+          {
+            "path": "seed/theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.yaml",
+            "type": "theory",
+            "status": "complete"
+          },
+          {
+            "path": "seed/theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.md",
+            "type": "documentation",
+            "status": "complete"
+          }
+        ],
+        "ledger_refs": {
+          "bootstrap": "data/bootstrap_ledger.json",
+          "crep_null_models": "data/crep_null_model_ledger.json"
+        },
+        "ledger_summary": {
+          "bootstrap": {
+            "document": "Bootstrap Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          },
+          "crep_null_models": {
+            "document": "CREP Null-Model Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          }
+        }
+      },
+      "test_coverage": {
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: tests/test_quantum_aliasing.py"
+      },
+      "last_updated": "2026-02-05T17:45:37+00:00",
+      "notes": {
+        "formal": "β=6.8; Superposition as sampling artifact; 0D→1D→…→3D oscillation",
+        "empirical": "'t Hooft determinism link; Beat-frequency detection protocol",
+        "poetic": "Quantenunschärfe ist nur ein Schatten – die Wirklichkeit oszilliert schneller"
+      }
+    },
+    {
+      "module_id": "seed-mirror-machine-001",
+      "module_name": "Mirror Machine Concept",
+      "description": "mutationsrate_thesen_generierung",
+      "version": "v13.2.0",
+      "type": "theory",
+      "domain": "symbolic_ai",
+      "status": "active",
+      "lifecycle": "active",
+      "completion_status": "active",
+      "readiness": 0.72,
+      "morfit_layers": {
+        "code": "active",
+        "documentation": "partial",
+        "roadmap": "pending"
+      },
+      "logistic_parameters": {
+        "R": 0.72,
+        "Theta": 0.6,
+        "beta": 5.4,
+        "zeta": "EM-coupling stability maintained via impedance matching",
+        "sigma": 0.5
+      },
+      "ethics_tags": [
+        "sigillin-consent-gated",
+        "anonymization-required",
+        "falsifiability-required"
+      ],
+      "consent_requirements": {
+        "prompt": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+        "protocol": "Sigillin consent gating + anonymization required"
+      },
+      "documentation": {
+        "readme": null,
+        "methodology": "seed/theory/concept_the_mirror_machine/concept_the_mirror_machine.md",
+        "roadmap": null
+      },
+      "crep_offset": null,
+      "sigma_phi_range": null,
+      "null_models": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ci_95": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ledger_entries": {
+        "bootstrap": null,
+        "crep_null_models": null
+      },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
+      "mandala_bridge": {
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
+      },
+      "telemetry": {
+        "data_assets": [
+          {
+            "path": "seed/theory/concept_the_mirror_machine/concept_the_mirror_machine.yaml",
+            "type": "theory",
+            "status": "complete"
+          },
+          {
+            "path": "seed/theory/concept_the_mirror_machine/concept_the_mirror_machine.md",
+            "type": "documentation",
+            "status": "complete"
+          }
+        ],
+        "ledger_refs": {
+          "bootstrap": "data/bootstrap_ledger.json",
+          "crep_null_models": "data/crep_null_model_ledger.json"
+        },
+        "ledger_summary": {
+          "bootstrap": {
+            "document": "Bootstrap Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          },
+          "crep_null_models": {
+            "document": "CREP Null-Model Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          }
+        }
+      },
+      "test_coverage": {
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: tests/test_mirror_machine_concept.py"
+      },
+      "last_updated": "2026-02-05T17:45:37+00:00",
+      "notes": {
+        "formal": "β=5.4; Auditorium→Mutation→Falsification loop; ΔAIC filtering",
+        "empirical": "Sigillin memory-driven hypothesis generation; Oxfam/Aletheia tests",
+        "poetic": "Der Spiegel mutiert Thesen – nur die Überlebenden bleiben"
+      }
+    },
+    {
+      "module_id": "seed-morfit-001",
+      "module_name": "MOR-FIT Methodology v2",
+      "description": "repository_resonance_progress",
+      "version": "v13.2.0",
+      "type": "governance",
+      "domain": "infrastructure",
+      "status": "active",
+      "lifecycle": "active",
+      "completion_status": "active",
+      "readiness": 0.85,
+      "morfit_layers": {
+        "code": "active",
+        "documentation": "partial",
+        "roadmap": "pending"
+      },
+      "logistic_parameters": {
+        "R": 0.85,
+        "Theta": 0.66,
+        "beta": 4.8,
+        "zeta": "EM-coupling stability maintained via impedance matching",
+        "sigma": 0.5
+      },
+      "ethics_tags": [
+        "sigillin-consent-gated",
+        "anonymization-required",
+        "falsifiability-required"
+      ],
+      "consent_requirements": {
+        "prompt": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+        "protocol": "Sigillin consent gating + anonymization required"
+      },
+      "documentation": {
+        "readme": null,
+        "methodology": "seed/sigillin/mor_fit_methodology_v2.md",
+        "roadmap": null
+      },
+      "crep_offset": null,
+      "sigma_phi_range": null,
+      "null_models": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ci_95": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ledger_entries": {
+        "bootstrap": null,
+        "crep_null_models": null
+      },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
+      "mandala_bridge": {
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
+      },
+      "telemetry": {
+        "data_assets": [
+          {
+            "path": "seed/sigillin/mor_fit_methodology_v2.yaml",
+            "type": "governance",
+            "status": "complete"
+          },
+          {
+            "path": "seed/sigillin/mor_fit_methodology_v2.md",
+            "type": "documentation",
+            "status": "complete"
+          }
+        ],
+        "ledger_refs": {
+          "bootstrap": "data/bootstrap_ledger.json",
+          "crep_null_models": "data/crep_null_model_ledger.json"
+        },
+        "ledger_summary": {
+          "bootstrap": {
+            "document": "Bootstrap Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          },
+          "crep_null_models": {
+            "document": "CREP Null-Model Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          }
+        }
+      },
+      "test_coverage": {
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: tests/test_mor_fit_methodology.py"
+      },
+      "last_updated": "2026-02-05T17:45:37+00:00",
+      "notes": {
+        "formal": "β=4.8; MOR orchestration + Sigillin trilayer + FIT tagebuch",
+        "empirical": "σ-sync debt damping; Trilayer parity enforcement",
+        "poetic": "Die Methode orchestriert sich selbst – MOR-FIT als lebender Prozess"
+      }
+    },
+    {
+      "module_id": "seed-implosive-feedback-001",
+      "module_name": "Implosive Recursive Feedback",
+      "description": "implosive_information_density",
+      "version": "v13.2.0",
+      "type": "theory",
+      "domain": "cosmology",
+      "status": "active",
+      "lifecycle": "active",
+      "completion_status": "active",
+      "readiness": 0.65,
+      "morfit_layers": {
+        "code": "active",
+        "documentation": "partial",
+        "roadmap": "pending"
+      },
+      "logistic_parameters": {
+        "R": 0.65,
+        "Theta": 0.618,
+        "beta": 4.236,
+        "zeta": "EM-coupling stability maintained via impedance matching",
+        "sigma": 0.5
+      },
+      "ethics_tags": [
+        "sigillin-consent-gated",
+        "anonymization-required",
+        "falsifiability-required"
+      ],
+      "consent_requirements": {
+        "prompt": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+        "protocol": "Sigillin consent gating + anonymization required"
+      },
+      "documentation": {
+        "readme": null,
+        "methodology": "seed/sigillin/implosive_recursive_feedback.md",
+        "roadmap": null
+      },
+      "crep_offset": null,
+      "sigma_phi_range": null,
+      "null_models": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ci_95": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ledger_entries": {
+        "bootstrap": null,
+        "crep_null_models": null
+      },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
+      "mandala_bridge": {
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
+      },
+      "telemetry": {
+        "data_assets": [
+          {
+            "path": "seed/sigillin/implosive_recursive_feedback.yaml",
+            "type": "theory",
+            "status": "complete"
+          },
+          {
+            "path": "seed/sigillin/implosive_recursive_feedback.md",
+            "type": "documentation",
+            "status": "complete"
+          }
+        ],
+        "ledger_refs": {
+          "bootstrap": "data/bootstrap_ledger.json",
+          "crep_null_models": "data/crep_null_model_ledger.json"
+        },
+        "ledger_summary": {
+          "bootstrap": {
+            "document": "Bootstrap Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          },
+          "crep_null_models": {
+            "document": "CREP Null-Model Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          }
+        }
+      },
+      "test_coverage": {
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: tests/test_implosive_recursive_feedback.py"
+      },
+      "last_updated": "2026-02-05T17:45:37+00:00",
+      "notes": {
+        "formal": "β=4.236=φ³; Big Bang as continuous implosion; ER=EPR correspondence",
+        "empirical": "β-clustering validation: 4.5, 7.4, 11.0, 13.0 (8% error); CMB homogeneity",
+        "poetic": "Der Urknall implodiert noch immer – Raum emergiert aus Information"
+      }
+    },
+    {
+      "module_id": "seed-klimakluft-process-001",
+      "module_name": "UTAC Klimakluft Process",
+      "description": "emission_drive_with_delta_peak",
+      "version": "v13.2.0",
+      "type": "experiment",
+      "domain": "climate",
+      "status": "active",
+      "lifecycle": "active",
+      "completion_status": "active",
+      "readiness": 0.72,
+      "morfit_layers": {
+        "code": "active",
+        "documentation": "partial",
+        "roadmap": "pending"
+      },
+      "logistic_parameters": {
+        "R": 0.72,
+        "Theta": 1.5,
+        "beta": 11.0,
+        "zeta": "EM-coupling stability maintained via impedance matching",
+        "sigma": 0.5
+      },
+      "ethics_tags": [
+        "sigillin-consent-gated",
+        "anonymization-required",
+        "falsifiability-required"
+      ],
+      "consent_requirements": {
+        "prompt": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+        "protocol": "Sigillin consent gating + anonymization required"
+      },
+      "documentation": {
+        "readme": null,
+        "methodology": "seed/sigillin/utac_klimakluft_process.md",
+        "roadmap": null
+      },
+      "crep_offset": null,
+      "sigma_phi_range": null,
+      "null_models": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ci_95": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ledger_entries": {
+        "bootstrap": null,
+        "crep_null_models": null
+      },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
+      "mandala_bridge": {
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
+      },
+      "telemetry": {
+        "data_assets": [
+          {
+            "path": "seed/sigillin/utac_klimakluft_process.yaml",
+            "type": "experiment",
+            "status": "complete"
+          },
+          {
+            "path": "seed/sigillin/utac_klimakluft_process.md",
+            "type": "documentation",
+            "status": "complete"
+          }
+        ],
+        "ledger_refs": {
+          "bootstrap": "data/bootstrap_ledger.json",
+          "crep_null_models": "data/crep_null_model_ledger.json"
+        },
+        "ledger_summary": {
+          "bootstrap": {
+            "document": "Bootstrap Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          },
+          "crep_null_models": {
+            "document": "CREP Null-Model Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          }
+        }
+      },
+      "test_coverage": {
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: tests/test_klimakluft_process.py"
+      },
+      "last_updated": "2026-02-05T17:45:37+00:00",
+      "notes": {
+        "formal": "β=11.0; 400× emission inequality; Capital lock-in=0.66; τ_warning ∝ 1/β",
+        "empirical": "Oxfam 2024 data integration; Global North vs South β-amplification",
+        "poetic": "Die Klimakluft beschleunigt den Kollaps – Ungleichheit ist der Katalysator"
+      }
+    },
+    {
+      "module_id": "release-mirror-v4-001",
+      "module_name": "MirrorMachine v4.0.0-alpha",
+      "description": "ews_state_verdict_beta",
+      "version": "v13.2.0",
+      "type": "integration",
+      "domain": "monitoring",
+      "status": "active",
+      "lifecycle": "active",
+      "completion_status": "active",
+      "readiness": 0.8,
+      "morfit_layers": {
+        "code": "active",
+        "documentation": "partial",
+        "roadmap": "pending"
+      },
+      "logistic_parameters": {
+        "R": 0.8,
+        "Theta": 0.7,
+        "beta": 8.5,
+        "zeta": "EM-coupling stability maintained via impedance matching",
+        "sigma": 0.5
+      },
+      "ethics_tags": [
+        "sigillin-consent-gated",
+        "anonymization-required",
+        "falsifiability-required"
+      ],
+      "consent_requirements": {
+        "prompt": "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.",
+        "protocol": "Sigillin consent gating + anonymization required"
+      },
+      "documentation": {
+        "readme": "seed/releases/v4.0.0-alpha_MirrorMachine/README_ZENODO.md",
+        "methodology": null,
+        "roadmap": null
+      },
+      "crep_offset": null,
+      "sigma_phi_range": null,
+      "null_models": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ci_95": {
+        "bootstrap": null,
+        "crep": null
+      },
+      "ledger_entries": {
+        "bootstrap": null,
+        "crep_null_models": null
+      },
+      "evidence": {
+        "ledgers": [],
+        "tests": []
+      },
+      "mandala_bridge": {
+        "status": "validated",
+        "schema": "schemas/psrm_map.schema.json",
+        "notes": "PSRM schema exists and is available for validation."
+      },
+      "telemetry": {
+        "data_assets": [
+          {
+            "path": "seed/releases/v4.0.0-alpha_MirrorMachine/sensors/monitoring/ews_pipeline.py",
+            "type": "code",
+            "status": "complete"
+          },
+          {
+            "path": "seed/releases/v4.0.0-alpha_MirrorMachine/simulation/mirror_machine_auditorium.py",
+            "type": "code",
+            "status": "complete"
+          },
+          {
+            "path": "seed/releases/v4.0.0-alpha_MirrorMachine/sensors/adapters/rapid_amoc_adapter.py",
+            "type": "adapter",
+            "status": "complete"
+          },
+          {
+            "path": "seed/releases/v4.0.0-alpha_MirrorMachine/sensors/adapters/oisst_coral_adapter.py",
+            "type": "adapter",
+            "status": "complete"
+          },
+          {
+            "path": "seed/releases/v4.0.0-alpha_MirrorMachine/sensors/adapters/grace_wais_adapter.py",
+            "type": "adapter",
+            "status": "complete"
+          }
+        ],
+        "ledger_refs": {
+          "bootstrap": "data/bootstrap_ledger.json",
+          "crep_null_models": "data/crep_null_model_ledger.json"
+        },
+        "ledger_summary": {
+          "bootstrap": {
+            "document": "Bootstrap Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für Bootstrap-Schätzungen rund um σ(β(R-Θ)). Enthält Nullmodelle (constant, linear, power law), ΔAIC und CI-Metriken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          },
+          "crep_null_models": {
+            "document": "CREP Null-Model Ledger – LanternNet",
+            "version": "v13.0.0",
+            "created": "2026-09-01T12:00:00Z",
+            "updated": "2026-02-05T14:44:41+00:00",
+            "description": "Ledger für CREP-Nullmodelle und ΔAIC-Offsets. Kopplung zu σ(β(R-Θ)) und Mandala/PSRM-Brücken.",
+            "consent_protocol": "Sigillin consent gating + anonymization required"
+          }
+        }
+      },
+      "test_coverage": {
+        "status": "pending",
+        "percentage": null,
+        "test_files": [],
+        "notes": "Test files not yet created. Expected: seed/releases/v4.0.0-alpha_MirrorMachine/tests/test_ews_pipeline.py, tests/test_mirror_machine_v4.py"
+      },
+      "last_updated": "2026-02-05T17:45:37+00:00",
+      "notes": {
+        "formal": "β≈8.5 (avg); EWS pipeline with variance/AR(1)/spectral; WARNING/CRITICAL states",
+        "empirical": "3 sensor adapters (GRACE, OISST, RAPID); Auditorium controller operational",
+        "poetic": "Die Spiegel-Maschine wacht – Frühwarnung für den Kipppunkt"
       }
     }
   ]

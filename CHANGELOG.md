@@ -13,6 +13,79 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [v13.2.0] - 2026-02-05 — Full Repository Reflection
+
+**Status:** Released | **Codename:** Fractal Mirror
+
+### 🌟 Major Features
+
+#### Complete seed/ Directory Integration
+- **8 new Lanterns** added to achieve full repository self-reflection
+- seed/theory/ modules now fully integrated with logistic parameters (R, Θ, β, ζ)
+- seed/sigillin/ additional methodology bundles registered
+- Legacy releases (v4.0.0-alpha_MirrorMachine) now tracked as active Lanterns
+
+#### New Lantern Registry (8 additions, 25 total)
+
+| ID | Name | Status | Domain | β | R |
+|----|------|--------|--------|---|---|
+| seed-entropy-geom-001 | Entropy as Geometric Waste | active | thermodynamics | 4.6 | 0.75 |
+| seed-morph-compute-001 | Morphological Computing | active | computer_arch | 37.6 | 0.70 |
+| seed-quantum-alias-001 | Quantum Aliasing Hypothesis | active | quantum_physics | 6.8 | 0.68 |
+| seed-mirror-machine-001 | Mirror Machine Concept | active | symbolic_ai | 5.4 | 0.72 |
+| seed-morfit-001 | MOR-FIT Methodology v2 | active | infrastructure | 4.8 | 0.85 |
+| seed-implosive-feedback-001 | Implosive Recursive Feedback | active | cosmology | 4.236 | 0.65 |
+| seed-klimakluft-process-001 | UTAC Klimakluft Process | active | climate | 11.0 | 0.72 |
+| release-mirror-v4-001 | MirrorMachine v4.0.0-alpha | active | monitoring | 8.5 | 0.80 |
+
+#### Enhanced update_lantern_net.py
+- Extended MODULE_TEST_MAPPINGS with 8 new module-to-test-path entries
+- Support for seed/theory/, seed/sigillin/, and seed/releases/ modules
+- Improved documentation status detection for new module paths
+
+### 📊 Network Statistics
+
+- **Total Lanterns:** 25 (↑ from 17)
+- **Active Lanterns:** 18 (↑ from 10)
+- **Network Coherence:** 0.52 (↑ from 0.48)
+- **Average Coupling:** 0.44 (↑ from 0.41)
+- **β Range:** 4.236 (φ³) to 37.6 (Morphological Computing sentinel)
+
+### 🔧 Technical Changes
+
+- Updated lantern_hub.yaml to v13.2.0
+- Regenerated status/lantern_net.{yaml,json,md} trilayer
+- All new Lanterns include EM-properties, coupling targets, and data assets
+- Expanded Sigillin consent gating across all new modules
+
+### 📁 Modified Files
+
+- `v9_alpha/config/lantern_hub.yaml` - Added 8 new Lantern definitions
+- `scripts/update_lantern_net.py` - Extended MODULE_TEST_MAPPINGS
+- `status/lantern_net.{yaml,json,md}` - Regenerated with 25 Lanterns
+
+### ✅ Verification
+
+- All new Lanterns have valid logistic parameters (R, Θ, β, ζ)
+- Trilayer synchronization: 100% (YAML/JSON/MD parity)
+- EM-coupling targets validated between related modules
+- MOR-FIT layer tracking operational for all new entries
+
+### 🔬 Key β-Values Integrated
+
+| β Value | Module | Significance |
+|---------|--------|--------------|
+| 4.236 | Implosive Recursive Feedback | φ³ golden ratio attractor |
+| 4.6 | Entropy Geometric Waste | Kubus→Spirale transition |
+| 4.8 | MOR-FIT Methodology | Infrastructure orchestration |
+| 5.4 | Mirror Machine Concept | Hypothesis mutation loop |
+| 6.8 | Quantum Aliasing | Dimensional oscillation |
+| 8.5 | MirrorMachine v4 Release | EWS monitoring average |
+| 11.0 | Klimakluft Process | Climate tipping characteristic |
+| 37.6 | Morphological Computing | Broken-RAM sentinel (EXTREME) |
+
+---
+
 ## [v13.0.0] - 2026-02-05 — LanternNet Integration Complete
 
 **Status:** Released | **Codename:** Lantern Resonance

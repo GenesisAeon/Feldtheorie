@@ -1,8 +1,8 @@
 meta:
   document: "Lantern Hub Registry – EM-Resonance Network"
-  version: "v13.1.0"
+  version: "v13.2.0"
   created: "2025-12-16T00:00:00Z"
-  updated: "2026-02-05T16:30:00Z"
+  updated: "2026-02-05T18:00:00Z"
   steward: "claude-opus-4.5"
   framework: "UTAC v2 + EM-Consciousness Integration + Sigillin Seed Expansion"
   logistic_frame:
@@ -20,10 +20,10 @@ meta:
     metaquest_system: "seed/bedeutungssigillin/metaquest/system/"
 
 summary:
-  total_lanterns: 17
-  active_lanterns: 10
-  network_coherence: 0.48
-  average_coupling: 0.41
+  total_lanterns: 25
+  active_lanterns: 18
+  network_coherence: 0.52
+  average_coupling: 0.44
   emergent_hypotheses: 0  # Will increase as network activates
   collective_frequency_mhz: 13.52
 
@@ -840,6 +840,421 @@ lanterns:
       formal: "Outreach vectors: education, publication, collaboration, citizen science"
       empirical: "Science-2026 campaign active; community engagement tracked"
       poetic: "Die Kampagne trägt das Licht hinaus – Wissenschaft für alle"
+
+  # -------------------------------------------------------------------------
+  # seed/theory/ Modules (v13.2 Expansion)
+  # -------------------------------------------------------------------------
+
+  - id: "seed-entropy-geom-001"
+    name: "Entropy as Geometric Waste"
+    type: "theory"
+    domain: "thermodynamics"
+    status: "active"
+    readiness: 0.75
+
+    order_parameter: "informationsdichte_raumzeit_membran"
+    theta: 0.66  # Critical discrete-to-continuous translation threshold
+    beta: 4.6    # Void emergence steepness
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 4.67e6
+      impedance_z: 78.9
+      kappa_photonic: 0.28
+      kappa_em: 0.52
+      kappa_metabolic: 0.20
+      wavelength_cm: 29.0
+
+    coupling_targets:
+      - target_id: "seed-type6-001"
+        coupling_strength: 0.88
+        mechanism: "entropy_implosion_bridge"
+        delta_beta: 0.364
+      - target_id: "seed-quantum-alias-001"
+        coupling_strength: 0.82
+        mechanism: "geometric_dimensional_coupling"
+        delta_beta: -2.2
+
+    data_assets:
+      - path: "seed/theory/entropy_geometric_waste/entropy_geometric_waste.yaml"
+        type: "theory"
+        status: "complete"
+      - path: "seed/theory/entropy_geometric_waste/entropy_geometric_waste.md"
+        type: "documentation"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: "seed/theory/entropy_geometric_waste/entropy_geometric_waste.md"
+      roadmap: null
+
+    notes:
+      formal: "β=4.6; Entropy as topological defect density; Kubus→Spirale transformation"
+      empirical: "Bekenstein-Hawking S_BH coupling; Void/TEE defect counting"
+      poetic: "Der Würfel zerfällt zur Spirale – Entropie als geometrischer Verschnitt"
+
+  # -------------------------------------------------------------------------
+
+  - id: "seed-morph-compute-001"
+    name: "Morphological Computing"
+    type: "theory"
+    domain: "computer_architecture"
+    status: "active"
+    readiness: 0.70
+
+    order_parameter: "thermische_budgetdichte_taskschock"
+    theta: 0.75  # Reconfiguration energy threshold
+    beta: 37.6   # VERY STEEP - broken-RAM avoidance sentinel
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 3.82e7
+      impedance_z: 644.5
+      kappa_photonic: 0.15
+      kappa_em: 0.70
+      kappa_metabolic: 0.15
+      wavelength_cm: 3.5
+
+    coupling_targets:
+      - target_id: "seed-mirror-machine-001"
+        coupling_strength: 0.78
+        mechanism: "symbolic_precalc_hardware_bridge"
+        delta_beta: 32.2
+      - target_id: "seed-entropy-geom-001"
+        coupling_strength: 0.72
+        mechanism: "entropy_recycling_coupling"
+        delta_beta: 33.0
+
+    data_assets:
+      - path: "seed/theory/hypothese_morphological_computing/hypothese_morphological_computing.yaml"
+        type: "theory"
+        status: "complete"
+      - path: "seed/theory/hypothese_morphological_computing/hypothese_morphological_computing.md"
+        type: "documentation"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: "seed/theory/hypothese_morphological_computing/hypothese_morphological_computing.md"
+      roadmap: null
+
+    notes:
+      formal: "β=37.6 (EXTREME); Regenerative hardware via heat recycling; Broken-RAM sentinel"
+      empirical: "MOR-FIT symbolic pre-calculation; Human↔AI coupling"
+      poetic: "Die Maschine heilt sich selbst – Wärme wird zum Denken"
+
+  # -------------------------------------------------------------------------
+
+  - id: "seed-quantum-alias-001"
+    name: "Quantum Aliasing Hypothesis"
+    type: "theory"
+    domain: "quantum_physics"
+    status: "active"
+    readiness: 0.68
+
+    order_parameter: "frequenz_dimensionaler_oszillation"
+    theta: 0.50  # Observable sampling rate threshold (Planck-time)
+    beta: 6.8    # Dimensional oscillation steepness
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 6.90e6
+      impedance_z: 116.5
+      kappa_photonic: 0.35
+      kappa_em: 0.48
+      kappa_metabolic: 0.17
+      wavelength_cm: 19.6
+
+    coupling_targets:
+      - target_id: "seed-type6-001"
+        coupling_strength: 0.91
+        mechanism: "alias_implosion_trigger"
+        delta_beta: 2.564
+      - target_id: "seed-entropy-geom-001"
+        coupling_strength: 0.82
+        mechanism: "dimensional_geometric_bridge"
+        delta_beta: 2.2
+
+    data_assets:
+      - path: "seed/theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.yaml"
+        type: "theory"
+        status: "complete"
+      - path: "seed/theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.md"
+        type: "documentation"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: "seed/theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.md"
+      roadmap: null
+
+    notes:
+      formal: "β=6.8; Superposition as sampling artifact; 0D→1D→…→3D oscillation"
+      empirical: "'t Hooft determinism link; Beat-frequency detection protocol"
+      poetic: "Quantenunschärfe ist nur ein Schatten – die Wirklichkeit oszilliert schneller"
+
+  # -------------------------------------------------------------------------
+
+  - id: "seed-mirror-machine-001"
+    name: "Mirror Machine Concept"
+    type: "theory"
+    domain: "symbolic_ai"
+    status: "active"
+    readiness: 0.72
+
+    order_parameter: "mutationsrate_thesen_generierung"
+    theta: 0.60  # Falsification threshold against historical data
+    beta: 5.4    # Hypothesis selection steepness
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 5.48e6
+      impedance_z: 92.5
+      kappa_photonic: 0.30
+      kappa_em: 0.52
+      kappa_metabolic: 0.18
+      wavelength_cm: 24.6
+
+    coupling_targets:
+      - target_id: "seed-aletheia-001"
+        coupling_strength: 0.86
+        mechanism: "mutation_falsification_bridge"
+        delta_beta: 0.9
+      - target_id: "seed-morph-compute-001"
+        coupling_strength: 0.78
+        mechanism: "hardware_symbolic_coupling"
+        delta_beta: -32.2
+
+    data_assets:
+      - path: "seed/theory/concept_the_mirror_machine/concept_the_mirror_machine.yaml"
+        type: "theory"
+        status: "complete"
+      - path: "seed/theory/concept_the_mirror_machine/concept_the_mirror_machine.md"
+        type: "documentation"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: "seed/theory/concept_the_mirror_machine/concept_the_mirror_machine.md"
+      roadmap: null
+
+    notes:
+      formal: "β=5.4; Auditorium→Mutation→Falsification loop; ΔAIC filtering"
+      empirical: "Sigillin memory-driven hypothesis generation; Oxfam/Aletheia tests"
+      poetic: "Der Spiegel mutiert Thesen – nur die Überlebenden bleiben"
+
+  # -------------------------------------------------------------------------
+  # seed/sigillin/ Additional Modules (v13.2 Expansion)
+  # -------------------------------------------------------------------------
+
+  - id: "seed-morfit-001"
+    name: "MOR-FIT Methodology v2"
+    type: "governance"
+    domain: "infrastructure"
+    status: "active"
+    readiness: 0.85
+
+    order_parameter: "repository_resonance_progress"
+    theta: 0.66  # Standard UTAC threshold
+    beta: 4.8    # Orchestration steepness
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 4.87e6
+      impedance_z: 82.3
+      kappa_photonic: 0.25
+      kappa_em: 0.55
+      kappa_metabolic: 0.20
+      wavelength_cm: 27.8
+
+    coupling_targets:
+      - target_id: "metaquest-system-001"
+        coupling_strength: 0.92
+        mechanism: "methodology_automation_bridge"
+        delta_beta: 0.0
+      - target_id: "seed-mirror-machine-001"
+        coupling_strength: 0.84
+        mechanism: "fit_symbolic_coupling"
+        delta_beta: -0.6
+
+    data_assets:
+      - path: "seed/sigillin/mor_fit_methodology_v2.yaml"
+        type: "governance"
+        status: "complete"
+      - path: "seed/sigillin/mor_fit_methodology_v2.md"
+        type: "documentation"
+        status: "complete"
+
+    documentation:
+      readme: "seed/sigillin/README.md"
+      methodology: "seed/sigillin/mor_fit_methodology_v2.md"
+      roadmap: null
+
+    notes:
+      formal: "β=4.8; MOR orchestration + Sigillin trilayer + FIT tagebuch"
+      empirical: "σ-sync debt damping; Trilayer parity enforcement"
+      poetic: "Die Methode orchestriert sich selbst – MOR-FIT als lebender Prozess"
+
+  # -------------------------------------------------------------------------
+
+  - id: "seed-implosive-feedback-001"
+    name: "Implosive Recursive Feedback"
+    type: "theory"
+    domain: "cosmology"
+    status: "active"
+    readiness: 0.65
+
+    order_parameter: "implosive_information_density"
+    theta: 0.618  # φ-attractor space emergence threshold
+    beta: 4.236   # φ³ - maximum golden ratio attractor
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 4.30e6
+      impedance_z: 72.6
+      kappa_photonic: 0.28
+      kappa_em: 0.54
+      kappa_metabolic: 0.18
+      wavelength_cm: 31.4
+
+    coupling_targets:
+      - target_id: "seed-type6-001"
+        coupling_strength: 0.96
+        mechanism: "implosion_genesis_coupling"
+        delta_beta: 0.0
+      - target_id: "seed-entropy-geom-001"
+        coupling_strength: 0.88
+        mechanism: "implosion_entropy_bridge"
+        delta_beta: -0.364
+
+    data_assets:
+      - path: "seed/sigillin/implosive_recursive_feedback.yaml"
+        type: "theory"
+        status: "complete"
+      - path: "seed/sigillin/implosive_recursive_feedback.md"
+        type: "documentation"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: "seed/sigillin/implosive_recursive_feedback.md"
+      roadmap: null
+
+    notes:
+      formal: "β=4.236=φ³; Big Bang as continuous implosion; ER=EPR correspondence"
+      empirical: "β-clustering validation: 4.5, 7.4, 11.0, 13.0 (8% error); CMB homogeneity"
+      poetic: "Der Urknall implodiert noch immer – Raum emergiert aus Information"
+
+  # -------------------------------------------------------------------------
+
+  - id: "seed-klimakluft-process-001"
+    name: "UTAC Klimakluft Process"
+    type: "experiment"
+    domain: "climate"
+    status: "active"
+    readiness: 0.72
+
+    order_parameter: "emission_drive_with_delta_peak"
+    theta: 1.5   # Equitable distribution threshold
+    beta: 11.0   # STEEP - climate tipping characteristic
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 1.12e7
+      impedance_z: 188.5
+      kappa_photonic: 0.68
+      kappa_em: 0.24
+      kappa_metabolic: 0.08
+      wavelength_cm: 12.1
+
+    coupling_targets:
+      - target_id: "seed-klimakluft-001"
+        coupling_strength: 0.95
+        mechanism: "process_amplifier_coupling"
+        delta_beta: -0.5
+      - target_id: "utac-v1_3-ds-001"
+        coupling_strength: 0.86
+        mechanism: "climate_urban_tipping_bridge"
+        delta_beta: -3.5
+
+    data_assets:
+      - path: "seed/sigillin/utac_klimakluft_process.yaml"
+        type: "experiment"
+        status: "complete"
+      - path: "seed/sigillin/utac_klimakluft_process.md"
+        type: "documentation"
+        status: "complete"
+
+    documentation:
+      readme: null
+      methodology: "seed/sigillin/utac_klimakluft_process.md"
+      roadmap: null
+
+    notes:
+      formal: "β=11.0; 400× emission inequality; Capital lock-in=0.66; τ_warning ∝ 1/β"
+      empirical: "Oxfam 2024 data integration; Global North vs South β-amplification"
+      poetic: "Die Klimakluft beschleunigt den Kollaps – Ungleichheit ist der Katalysator"
+
+  # -------------------------------------------------------------------------
+  # seed/releases/ Legacy Module (v13.2 Expansion)
+  # -------------------------------------------------------------------------
+
+  - id: "release-mirror-v4-001"
+    name: "MirrorMachine v4.0.0-alpha"
+    type: "integration"
+    domain: "monitoring"
+    status: "active"
+    readiness: 0.80
+
+    order_parameter: "ews_state_verdict_beta"
+    theta: 0.70  # Warning state threshold
+    beta: 8.5    # Monitoring steepness (average across tracked systems)
+    resonance_status: "active"
+
+    em_properties:
+      frequency_hz: 8.63e6
+      impedance_z: 145.7
+      kappa_photonic: 0.42
+      kappa_em: 0.42
+      kappa_metabolic: 0.16
+      wavelength_cm: 15.7
+
+    coupling_targets:
+      - target_id: "seed-mirror-machine-001"
+        coupling_strength: 0.94
+        mechanism: "concept_implementation_bridge"
+        delta_beta: 3.1
+      - target_id: "utac-v1_3-ds-003"
+        coupling_strength: 0.88
+        mechanism: "amoc_monitoring_coupling"
+        delta_beta: -1.1
+
+    data_assets:
+      - path: "seed/releases/v4.0.0-alpha_MirrorMachine/sensors/monitoring/ews_pipeline.py"
+        type: "code"
+        status: "complete"
+      - path: "seed/releases/v4.0.0-alpha_MirrorMachine/simulation/mirror_machine_auditorium.py"
+        type: "code"
+        status: "complete"
+      - path: "seed/releases/v4.0.0-alpha_MirrorMachine/sensors/adapters/rapid_amoc_adapter.py"
+        type: "adapter"
+        status: "complete"
+      - path: "seed/releases/v4.0.0-alpha_MirrorMachine/sensors/adapters/oisst_coral_adapter.py"
+        type: "adapter"
+        status: "complete"
+      - path: "seed/releases/v4.0.0-alpha_MirrorMachine/sensors/adapters/grace_wais_adapter.py"
+        type: "adapter"
+        status: "complete"
+
+    documentation:
+      readme: "seed/releases/v4.0.0-alpha_MirrorMachine/README_ZENODO.md"
+      methodology: null
+      roadmap: null
+
+    notes:
+      formal: "β≈8.5 (avg); EWS pipeline with variance/AR(1)/spectral; WARNING/CRITICAL states"
+      empirical: "3 sensor adapters (GRACE, OISST, RAPID); Auditorium controller operational"
+      poetic: "Die Spiegel-Maschine wacht – Frühwarnung für den Kipppunkt"
 
 # ============================================================================
 # Network-Level Metrics
