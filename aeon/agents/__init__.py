@@ -24,7 +24,7 @@ References:
 - V7 Phase 2 implementation
 """
 
-from aeon.agents.semantic_agent import SemanticAgent
+from aeon.agents.semantic_agent import SemanticAgent, RecursiveCoupler
 from aeon.agents.collective_interface import CollectiveInterface
 
-__all__ = ["SemanticAgent", "CollectiveInterface"]
+__all__ = ["SemanticAgent", "RecursiveCoupler", "CollectiveInterface"]

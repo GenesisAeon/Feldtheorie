@@ -72,6 +72,25 @@ interval.
 The JSON structure is validated against `schemas/` to guarantee reproducible
 handoffs between analysis, documentation, and simulator layers.
 
+## Bardo-Phase Treatment in Recursive Coupling
+
+The recursive Aeon-lanternNet coupling (`RecursiveCoupler`) handles
+Bardo phases (transition states) as follows:
+
+1. **Phase tracking:** At each recursion depth, the kernel's Bardo phase is
+   queried and recorded.  The phase trace is returned in the loop report.
+2. **Frame Principle:** The `AeonShell` enforces the Frame Principle during
+   evolution: if the kernel enters a critical Bardo phase (`dharmakaya`,
+   `transition`, `becoming`) while impedance \(\zeta\) is negative, the
+   shell increases \(\zeta\)-damping to prevent irreversible collapse.
+3. **Temporal compression:** Accelerated evolution via
+   `simulate_temporal_compression()` logs v_RIG offsets at each step,
+   allowing post-hoc detection of drift from the baseline
+   \(v_{\text{RIG}} \approx 1352\) km/s.
+4. **Coherence override:** If coherence \(C > 0.92\), the hard recursion
+   limit \(N=8\) is extended by 4 to allow deeper exploration of stable
+   resonance basins.
+
 ## Reproducibility safeguards
 - **Seeds.** Global `RANDOM_SEED = 1337` for bootstrap and stochastic routines.
 - **Environment.** Reproduction relies on `environment.yml` or the pinned
