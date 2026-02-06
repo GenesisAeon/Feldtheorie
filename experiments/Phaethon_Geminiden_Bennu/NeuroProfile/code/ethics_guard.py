@@ -14,7 +14,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime, timezone
+import hashlib
 from pathlib import Path
+import re
 
 
 class EthicsViolation(RuntimeError):
@@ -34,6 +36,8 @@ class EthicsReport:
 
 
 class EthicsGuard:
+    _HASH_SALT = "ethics-guard"
+
     def __init__(self, audit_log_path: str | Path) -> None:
         self.audit_log_path = Path(audit_log_path)
         self.audit_log_path.parent.mkdir(parents=True, exist_ok=True)
@@ -50,6 +54,8 @@ class EthicsGuard:
     ) -> EthicsReport:
         if not consent_granted:
             raise EthicsViolation("CONSENT_REQUIRED")
+
+        anonymized_subject = self._normalize_subject_hash(subject_hash)
 
         warnings: list[EthicsWarning] = []
         if location == "public":
@@ -68,9 +74,18 @@ class EthicsGuard:
             )
 
         if warnings:
-            self._log_warnings(subject_hash, warnings, tag=tag)
+            self._log_warnings(anonymized_subject, warnings, tag=tag)
 
         return EthicsReport(action="proceed", warnings=warnings)
+
+    def _normalize_subject_hash(self, subject_hash: str) -> str:
+        if re.fullmatch(r"[a-f0-9]{64}", subject_hash):
+            return subject_hash
+        return self._hash_value(subject_hash)
+
+    def _hash_value(self, value: str) -> str:
+        payload = f"{self._HASH_SALT}:{value}"
+        return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
     def _log_warnings(self, subject_hash: str, warnings: list[EthicsWarning], *, tag: str) -> None:
         timestamp = datetime.now(timezone.utc).isoformat()
