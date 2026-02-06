@@ -625,9 +625,9 @@ Das **Aeon System v1.0** realisiert:
 - [x] Sechs Grundmodule (M1-M6) spezifiziert
 - [x] Karpathy-Integration beschrieben
 - [x] Use Cases formuliert
-- [ ] AeonShell BNF-Grammatik definieren
-- [ ] Nullkern-Formalismus mathematisch ausarbeiten
-- [ ] Erste Prototypen für M1-M3 implementieren
+- [x] AeonShell BNF-Grammatik definieren
+- [x] Nullkern-Formalismus mathematisch ausarbeiten
+- [x] Erste Prototypen für M1-M3 implementieren
 - [ ] Paper: "Aeon: A Null-Core Architecture for Symbiotic Intelligence"
 
 ---
