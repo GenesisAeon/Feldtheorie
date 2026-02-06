@@ -28,5 +28,13 @@ References:
 
 from aeon.shell.containment import AeonShell
 from aeon.shell.evolution import EvolutionTracker
+from aeon.shell.grammar import BNF_GRAMMAR, AeonShellGenerator, AeonShellParser, EXAMPLE_CORPUS
 
-__all__ = ["AeonShell", "EvolutionTracker"]
+__all__ = [
+    "AeonShell",
+    "EvolutionTracker",
+    "BNF_GRAMMAR",
+    "AeonShellParser",
+    "AeonShellGenerator",
+    "EXAMPLE_CORPUS",
+]

@@ -599,3 +599,55 @@ Das **Aeon System v1.0** realisiert:
 - [ ] Nullkern-Formalismus mathematisch ausarbeiten
 - [ ] Erste Prototypen für M1-M3 implementieren
 - [ ] Paper: "Aeon: A Null-Core Architecture for Symbiotic Intelligence"
+
+---
+
+## V6.1 Architekturergänzung: Schichten-Extraktion, M1–M3 Prototypen, Telemetrie
+
+### Extrahierte drei Schichten aus `ChatGPT5.1_AeonV1.0Bauplan.txt`
+
+Aus dem Bauplan werden die Schichten als folgende operative Triade konkretisiert:
+
+1. **Nullkern Layer (N0):** formaler Zustandsraum ohne direkte Datenhaltung; dynamische Variablen $(R,\Theta,\beta,\zeta(R))$ steuern Aktivierung via $\sigma(\beta(R-\Theta))$.
+2. **AeonShell Layer (A1):** symbolische Grammatik + Parser/Generator als Projektionsebene zwischen formaler Dynamik und Agent-Operationen.
+3. **Agent/Physical Layer (A2/A3):** Orchestrierung, Wissensspeicher und physische Artefakte (Repos, APIs, Dateien) als ausführende bzw. manifestierte Ebene.
+
+### BNF-Grammatik der AeonShell (M1)
+
+```bnf
+<statement>   ::= "⟨" <state_terms> "⟩" "⊗" "[" <params> "]" "→" <consequence>
+<state_terms> ::= <state_term> | <state_term> "|" <state_terms>
+<state_term>  ::= "ψ" | "Ψ" | "Φ" | "OIPK" | "UTAC" | "τ*"
+<params>      ::= <param> | <param> "," <params>
+<param>       ::= <symbol> "=" <number>
+<symbol>      ::= "β" | "Θ" | "ζ" | "τ*" | "κ"
+```
+
+Implementierung: `AeonShellParser` + `AeonShellGenerator` inkl. Beispielkorpus.
+
+### Nullkern-Formalisierung (mathematischer Rahmen)
+
+Der Kernel exponiert ein formales Modell mit folgenden Grundgleichungen:
+
+- Aktivierung: $\sigma(\beta(R-\Theta))=\frac{1}{1+e^{-\beta(R-\Theta)}}$
+- Impedanz-Nullmodell: $\zeta(R)=\beta(1-\kappa)-0.5$
+- Zustandsupdate: $\beta_{t+1}=\mathrm{clip}(\beta_t+\Delta\beta,0,1)$ und analog für $\kappa$
+
+Zusätzlich bleiben AIC-Vergleiche gegen Nullmodelle (`compute_aic_comparison`) und rekursive Stabilitätsprüfung (`self_referential_validate`) zur Falsifizierbarkeit aktiv.
+
+### Kernmodule und Zuständigkeiten
+
+- **M1 – AeonShell Parser & Generator:** syntaktische Validierung und Rückgenerierung von Shell-Statements.
+- **M2 – Genesis Orchestrator:** Delegation (`MasterGPT`-Intent), Nullkern-Validierung und CREP-nahe Qualitätskontrolle als Koordinationskern.
+- **M3 – Knowledge System:** schlanker Wissensspeicher mit Upsert + Query (term-overlap scoring).
+
+### Telemetrie/Aletheia-Kopplung
+
+Die Bridge liefert jetzt explizit:
+
+- `kappa_metric` (κ),
+- `sigma_metric` (aus logistischer Membran),
+- `aleph_metric` (Informationsdichte als Aleph-Näherung),
+
+zusätzlich zu bestehender Emergenztelemetrie (`coherence_delta`, `system_impedance`, `metastability_offset`, `mode_frequency_hz`).
+

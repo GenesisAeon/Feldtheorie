@@ -49,3 +49,6 @@ def test_aeon_lantern_async_bridge_telemetry_snapshot():
     assert telemetry["system_impedance"] == pytest.approx(221.7)
     assert telemetry["metastability_offset"] == pytest.approx(0.0625)
     assert telemetry["frame_counter"] >= 1
+    assert telemetry["kappa_metric"] == pytest.approx(0.3)
+    assert 0.0 <= telemetry["sigma_metric"] <= 1.0
+    assert telemetry["aleph_metric"] == pytest.approx(0.6)
