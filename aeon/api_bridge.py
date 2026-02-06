@@ -173,12 +173,20 @@ class AeonLanternAsyncBridge:
         coherence = self._latest_frame()[3]
         coherence_delta = float(coherence - self._last_coherence)
         self._last_coherence = float(coherence)
+        kernel_state = self.shell.get_shell_summary()["kernel_state"]
+        beta = float(kernel_state.get("beta", 0.0))
+        kappa = float(kernel_state.get("kappa", 0.0))
+        aleph = float(kernel_state.get("information_density", 0.0))
+        sigma = float(1.0 / (1.0 + np.exp(-beta * (coherence - 0.5))))
         return {
             "coherence_delta": coherence_delta,
             "system_impedance": self.SYSTEM_IMPEDANCE,
             "metastability_offset": self.METASTABILITY_OFFSET,
             "mode_frequency_hz": self.MODE_FREQUENCY_HZ,
             "frame_counter": self._frame_counter,
+            "kappa_metric": kappa,
+            "sigma_metric": sigma,
+            "aleph_metric": aleph,
         }
 
     def ingest_em_frame(self, em_vector: np.ndarray, timestamp: float | None = None) -> None:

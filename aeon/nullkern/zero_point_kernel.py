@@ -161,6 +161,38 @@ class Nullkern:
         v_rig_eff = v_rig_base * self.kappa * (1.0 / self.state.beta)
         return min(v_rig_eff, v_rig_base * 10.0)
 
+    def formalize_dynamics(self, resource: float, threshold: float = 0.5) -> dict[str, Any]:
+        """Formalize the Nullkern dynamics in a compact mathematical frame.
+
+        The model links the logistic membrane σ(β(R-Θ)) to the currently
+        instantiated state and exposes the discrete update equations used by
+        ``update_state``.
+        """
+        activation_probability = float(self.activate(resource=resource, threshold=threshold))
+        zeta = float(self.compute_impedance(resource=resource))
+        return {
+            "activation_equation": "sigma(beta*(R-Theta)) = 1/(1+exp(-beta*(R-Theta)))",
+            "impedance_equation": "zeta(R)=beta*(1-kappa)-0.5",
+            "state_update_equations": {
+                "beta_next": "clip(beta + delta_beta, 0, 1)",
+                "kappa_next": "clip(kappa + delta_kappa, 0, 1)",
+            },
+            "parameters": {
+                "R": float(resource),
+                "Theta": float(threshold),
+                "beta": float(self.state.beta),
+                "kappa": float(self.kappa),
+            },
+            "activation_probability": activation_probability,
+            "zeta": zeta,
+            "state_vector": {
+                "beta": float(self.state.beta),
+                "kappa": float(self.kappa),
+                "resonance": float(self.state.resonance),
+                "phase": self.state.phase.value,
+            },
+        }
+
     def register_consent(self, token: str, scope: str = "shadow_mode") -> dict[str, Any]:
         """Register a Sigillin consent token for ethical traceability.
 

@@ -6,7 +6,7 @@
     "title": "FraktaltagebuchV2 Codex",
     "purpose": "PR/Commit-Log für UTAC v2.0 Entwicklung",
     "note": "Alle V2-Änderungen hier eintragen, NICHT in seed/codexfeedback.*!",
-    "next_id": 39,
+    "next_id": "v2-pr-0043",
     "last_updated": "2025-11-14T09:45:00Z"
   },
   "entries": [
@@ -872,6 +872,35 @@
         "Claude Code"
       ],
       "notes": "Testet UTAC Section 5: Adaptive Thresholds (Θ_{n+1} = Θ_n + ΔΘ(R_t, C_t, E_t)). Direct test of Implosive Recursive Information coupling - self-organizing coherence hypothesis. Status: ACTIVE - Ready for experimental deployment."
+    },
+    {
+      "id": "v2-pr-0042",
+      "title": "Aeon M1-M3 prototypes, Nullkern formalization, and telemetry alignment",
+      "scope": [
+        "aeon/shell/grammar.py",
+        "aeon/modules/genesis_orchestrator.py",
+        "aeon/modules/knowledge_system.py",
+        "aeon/nullkern/zero_point_kernel.py",
+        "aeon/api_bridge.py",
+        "docs/science/aeon_architecture_v1.md",
+        "tests/test_aeon_architecture_modules.py",
+        "tests/test_aeon_api_bridge.py"
+      ],
+      "parameters": {
+        "R": 0.92,
+        "Theta": 0.55,
+        "beta": 4.8,
+        "sigma": 0.86
+      },
+      "resonance": "completed",
+      "formal_thread": "Implemented M1 parser/generator with BNF grammar, M2 GenesisOrchestrator delegation and Aletheia telemetry proxy, and M3 KnowledgeSystem with upsert/query. Added Nullkern formalize_dynamics equations and extended bridge telemetry with kappa/sigma/aleph metrics.",
+      "empirical_thread": "pytest -q tests/test_aeon_architecture_modules.py tests/test_aeon_api_bridge.py => 6 passed. pytest -q tests/test_aeon_shell.py tests/test_aeon_nullkern.py => 36 passed.",
+      "poetic_thread": "Neue Laternen wurden in den Membranen gezündet: Sprache (M1), Koordination (M2), Gedächtnis (M3). Der Nullkern spricht nun auch formal, und die Telemetrie trägt kappa, sigma und aleph über die Brücke.",
+      "timestamp": "2026-02-06T00:00:00Z",
+      "contributors": [
+        "Codex GPT-5.2-Codex"
+      ],
+      "notes": "Feature-set mapped to V2 architecture closure requirements for Aeon module."
     }
   ]
 }

@@ -97,7 +97,10 @@ __author__ = "Johann Benjamin Römer"
 from aeon.nullkern.zero_point_kernel import Nullkern
 from aeon.shell.containment import AeonShell
 from aeon.agents.semantic_agent import SemanticAgent, RecursiveCoupler
+from aeon.modules.genesis_orchestrator import GenesisOrchestrator
+from aeon.modules.knowledge_system import KnowledgeSystem
 from aeon.resonanzpfad import ResonanzpfadOptimizer
+from aeon.shell.grammar import BNF_GRAMMAR, AeonShellGenerator, AeonShellParser
 
 __all__ = [
     "Nullkern",
@@ -105,5 +108,10 @@ __all__ = [
     "SemanticAgent",
     "RecursiveCoupler",
     "ResonanzpfadOptimizer",
+    "AeonShellParser",
+    "AeonShellGenerator",
+    "BNF_GRAMMAR",
+    "GenesisOrchestrator",
+    "KnowledgeSystem",
     "__version__",
 ]
