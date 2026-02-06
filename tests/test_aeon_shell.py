@@ -249,3 +249,18 @@ def test_evolution_tracker_export():
     assert "phase_transitions" in data
     assert "critical_events" in data
     assert "statistics" in data
+
+import asyncio
+
+
+def test_shell_recursive_metastability_and_async_buffer():
+    kernel = Nullkern(beta_target=0.2, kappa=0.3)
+    shell = AeonShell(kernel=kernel, zeta_damping=0.85)
+
+    report = asyncio.run(shell.evolve_recursive_async(depth=3))
+    frames = asyncio.run(shell.drain_async_buffer())
+
+    assert report["depth"] == 3
+    assert report["buffered_frames"] >= 1
+    assert len(frames) >= 1
+    assert all(len(frame) == 3 for frame in frames)

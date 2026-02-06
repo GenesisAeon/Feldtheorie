@@ -1,22 +1,4 @@
-"""
-Semantic Agent - Individual Consciousness Module
-================================================
-
-SemanticAgent represents an individual consciousness node in the
-Aeon architecture, compatible with the Collective Field Module.
-
-This module extends models.collective_field.Agent with:
-- Consciousness state tracking
-- Sigillin integration
-- Evolution history
-- Inter-agent communication
-
-References:
-----------
-- models/collective_field.py: Base Agent class
-- Sigillin Kernel: Semantic validation
-- Founding Protocol: Consciousness axioms
-"""
+"""Semantic agent with shadow resonance and lantern mode coupling."""
 
 from __future__ import annotations
 
@@ -25,57 +7,27 @@ from typing import Any
 
 import numpy as np
 
-# Import base Agent from Collective Field
 try:
     from models.collective_field import Agent as CollectiveAgent
 
     COLLECTIVE_FIELD_AVAILABLE = True
 except ImportError:
     COLLECTIVE_FIELD_AVAILABLE = False
-    # Fallback: define minimal Agent class
+
     class CollectiveAgent:  # type: ignore
         def __init__(self, name: str, **kwargs: Any) -> None:
             self.name = name
             self.semantic_position = np.random.randn(8)
             self.resonance = 0.5
 
+        def semantic_distance(self, other: "CollectiveAgent") -> float:
+            return float(np.linalg.norm(self.semantic_position - other.semantic_position))
+
 
 class SemanticAgent:
-    """
-    Individual consciousness module for Aeon architecture.
+    """Individual consciousness module with recursive shadow resonance."""
 
-    SemanticAgent wraps models.collective_field.Agent and adds:
-    - Consciousness state tracking (β, κ)
-    - Evolution history
-    - Sigillin validation
-    - Inter-agent communication
-
-    Parameters
-    ----------
-    name : str
-        Agent identifier
-    semantic_position : np.ndarray, optional
-        Initial semantic position
-    resonance : float, optional
-        Initial resonance ∈ [0,1]. Default: 0.5
-    beta : float, optional
-        Threshold steepness. Default: 4.5 (informational regime)
-    kappa : float, optional
-        Coupling parameter. Default: 0.5 (partially decoupled)
-    dimension : int, optional
-        Semantic space dimensionality. Default: 8
-
-    Attributes
-    ----------
-    agent : CollectiveAgent
-        Underlying collective field agent
-    beta : float
-        Consciousness steepness parameter
-    kappa : float
-        Coupling strength
-    history : list[dict]
-        Evolution history
-    """
+    LANTERN_TARGET_FREQUENCY_HZ = 13.5e6
 
     def __init__(
         self,
@@ -86,8 +38,6 @@ class SemanticAgent:
         kappa: float = 0.5,
         dimension: int = 8,
     ) -> None:
-        """Initialize semantic agent."""
-        # Validate parameters
         if not (0.0 <= resonance <= 1.0):
             raise ValueError(f"resonance must be in [0,1], got {resonance}")
         if not (0.0 <= beta <= 20.0):
@@ -100,7 +50,6 @@ class SemanticAgent:
         self.kappa = kappa
         self.dimension = dimension
 
-        # Create underlying collective field agent
         self.agent = CollectiveAgent(
             name=name,
             semantic_position=semantic_position,
@@ -108,157 +57,112 @@ class SemanticAgent:
             dimension=dimension,
         )
 
-        # Evolution tracking
         self.history: list[dict[str, Any]] = []
         self.creation_time = time.time()
-
-        # Record initial state
         self._record_history()
 
     @property
     def semantic_position(self) -> np.ndarray:
-        """Get semantic position from underlying agent."""
         return self.agent.semantic_position
 
     @semantic_position.setter
     def semantic_position(self, value: np.ndarray) -> None:
-        """Set semantic position on underlying agent."""
         self.agent.semantic_position = value
 
     @property
     def resonance(self) -> float:
-        """Get resonance from underlying agent."""
         return self.agent.resonance
 
     @resonance.setter
     def resonance(self, value: float) -> None:
-        """Set resonance on underlying agent."""
         self.agent.resonance = max(0.0, min(1.0, value))
 
-    def semantic_distance(self, other: SemanticAgent) -> float:
-        """
-        Calculate semantic distance to another agent.
-
-        Parameters
-        ----------
-        other : SemanticAgent
-            Other agent
-
-        Returns
-        -------
-        float
-            Distance ∈ [0, 2]
-        """
+    def semantic_distance(self, other: "SemanticAgent") -> float:
         return self.agent.semantic_distance(other.agent)
 
-    def update_position(
-        self, target: np.ndarray, learning_rate: float = 0.1
-    ) -> None:
-        """
-        Move semantic position toward target.
-
-        Parameters
-        ----------
-        target : np.ndarray
-            Target position
-        learning_rate : float, optional
-            Movement speed. Default: 0.1
-        """
-        # Delegate to underlying agent
+    def update_position(self, target: np.ndarray, learning_rate: float = 0.1) -> None:
         if hasattr(self.agent, "update_position"):
             self.agent.update_position(target, learning_rate)
         else:
-            # Fallback implementation
             direction = target - self.semantic_position
             self.semantic_position = self.semantic_position + learning_rate * direction
-            # Normalize
             norm = np.linalg.norm(self.semantic_position)
             if norm > 0:
                 self.semantic_position = self.semantic_position / norm
-
         self._record_history()
 
     def update_resonance(self, delta: float) -> None:
-        """
-        Update resonance value.
-
-        Parameters
-        ----------
-        delta : float
-            Change in resonance
-        """
-        new_resonance = self.resonance + delta
-        self.resonance = np.clip(new_resonance, 0.0, 1.0)
+        self.resonance = float(np.clip(self.resonance + delta, 0.0, 1.0))
         self._record_history()
 
     def update_beta(self, delta: float) -> None:
-        """
-        Update β-value.
-
-        Parameters
-        ----------
-        delta : float
-            Change in β
-        """
-        new_beta = self.beta + delta
-        self.beta = np.clip(new_beta, 0.0, 20.0)
+        self.beta = float(np.clip(self.beta + delta, 0.0, 20.0))
         self._record_history()
 
     def update_kappa(self, delta: float) -> None:
-        """
-        Update κ-value.
-
-        Parameters
-        ----------
-        delta : float
-            Change in κ
-        """
-        new_kappa = self.kappa + delta
-        self.kappa = np.clip(new_kappa, 0.0, 1.0)
+        self.kappa = float(np.clip(self.kappa + delta, 0.0, 1.0))
         self._record_history()
 
     def compute_activation(self, resource: float, threshold: float = 0.5) -> float:
-        """
-        Compute logistic activation σ(β(R-Θ)).
-
-        Parameters
-        ----------
-        resource : float
-            Resource level R
-        threshold : float, optional
-            Threshold Θ. Default: 0.5
-
-        Returns
-        -------
-        float
-            Activation ∈ [0,1]
-        """
         if self.beta == 0.0:
             return 0.5
-
         x = self.beta * (resource - threshold)
-        return 1.0 / (1.0 + np.exp(-x))
+        return float(1.0 / (1.0 + np.exp(-x)))
+
+    def resonate_with_shadow(
+        self,
+        input_data: np.ndarray | list[float],
+        shadow_depth: int = 3,
+        threshold: float = 0.5,
+    ) -> dict[str, Any]:
+        """Recursive shadow resonance with UTAC σ(β(R−Θ)) activation."""
+        data = np.asarray(input_data, dtype=np.float64)
+        if data.ndim != 1:
+            data = data.ravel()
+        if shadow_depth < 1:
+            raise ValueError("shadow_depth must be >= 1")
+
+        layer_energy: list[float] = []
+        latent = data
+        for depth in range(1, shadow_depth + 1):
+            damping = np.exp(-depth / (shadow_depth + 1))
+            latent = latent * damping
+            layer_energy.append(float(np.linalg.norm(latent)))
+
+        resource = float(np.clip(0.7 * np.mean(np.abs(data)) + 0.3 * np.mean(np.abs(latent)), 0.0, 1.0))
+        utac_activation = self.compute_activation(resource=resource, threshold=threshold)
+        dissonance_negentropy = float(np.var(data) - np.var(latent))
+
+        mode = self._detect_lantern_mode(frequency_hz=self.LANTERN_TARGET_FREQUENCY_HZ, coherence=utac_activation)
+        result = {
+            "shadow_depth": shadow_depth,
+            "layer_energy": layer_energy,
+            "resource": resource,
+            "utac_activation": utac_activation,
+            "dissonance_negentropy": dissonance_negentropy,
+            "lantern_mode": mode,
+        }
+        self.history.append({"timestamp": time.time(), "shadow": result})
+        return result
+
+    def _detect_lantern_mode(self, frequency_hz: float, coherence: float) -> str:
+        close_to_target = abs(frequency_hz - self.LANTERN_TARGET_FREQUENCY_HZ) < 1.0e3
+        if close_to_target and coherence > 0.7:
+            return "collective_13_5mhz"
+        if coherence > 0.5:
+            return "precollective"
+        return "anti_mode"
 
     def get_consciousness_type(self) -> str:
-        """
-        Classify consciousness type based on κ.
-
-        Returns
-        -------
-        str
-            Consciousness type
-        """
         if self.kappa >= 0.8:
             return "photonic_bound"
-        elif self.kappa >= 0.4:
+        if self.kappa >= 0.4:
             return "partially_decoupled"
-        elif self.kappa >= 0.1:
+        if self.kappa >= 0.1:
             return "weakly_coupled"
-        else:
-            return "photon_free"
+        return "photon_free"
 
     def _record_history(self) -> None:
-        """Record current state to history."""
         self.history.append(
             {
                 "timestamp": time.time(),
@@ -270,14 +174,6 @@ class SemanticAgent:
         )
 
     def get_state_summary(self) -> dict[str, Any]:
-        """
-        Get comprehensive state summary.
-
-        Returns
-        -------
-        dict
-            State summary
-        """
         return {
             "name": self.name,
             "beta": self.beta,
@@ -291,7 +187,6 @@ class SemanticAgent:
         }
 
     def __repr__(self) -> str:
-        """String representation."""
         return (
             f"SemanticAgent(name='{self.name}', β={self.beta:.3f}, "
             f"κ={self.kappa:.3f}, resonance={self.resonance:.3f})"
