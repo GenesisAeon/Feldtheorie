@@ -235,3 +235,14 @@ def test_collective_empty_agents():
     assert metrics["num_agents"] == 0
     assert metrics["kappa_field"] == 0.0
     assert interface.detect_consensus() is True  # Empty set in consensus
+
+
+def test_semantic_agent_resonate_with_shadow_detects_mode():
+    agent = SemanticAgent(name="Shadow-Agent", beta=12.0)
+    signal = np.ones(32) * 0.95
+
+    result = agent.resonate_with_shadow(signal, shadow_depth=3)
+
+    assert result["shadow_depth"] == 3
+    assert result["utac_activation"] > 0.7
+    assert result["lantern_mode"] == "collective_13_5mhz"

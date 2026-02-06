@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - LanternNet markdown now surfaces consent protocols, Mandala bridge status, and test coverage notes
 - Logged an additional NeuroProfile synthetic run to the LanternNet bootstrap/CREP ledgers and refreshed LanternNet status outputs
 - Implemented Champollion decipherment heuristics (n-grams, boundary detection, coherence, ΔAIC validation) with new unit tests
+- Added Aeon v10 async EM↔Agent bridge with shared-memory zero-copy buffering, emergence telemetry endpoint, recursive shadow resonance, ζ-damped containment, and integration hub scaffolding for Vesta.V5/sonification/VR workflows
 
 ---
 

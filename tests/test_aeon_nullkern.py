@@ -225,3 +225,21 @@ def test_bardo_phase_enum():
     assert BardoPhase.NONE.value == "none"
     assert BardoPhase.DHARMAKAYA.value == "dharmakaya"
     assert BardoPhase.TRANSITION.value == "transition"
+
+def test_nullkern_self_referential_validation_stable():
+    kernel = Nullkern(beta_target=37.6)
+    report = kernel.self_referential_validate(recursion_depth=8)
+
+    assert report["stable"] is True
+    assert report["recursion_depth"] == 8
+    assert len(report["beta_trace"]) == 8
+
+
+def test_nullkern_synthetic_stability_from_repo_data():
+    kernel = Nullkern(beta_target=0.2)
+    report = kernel.evaluate_synthetic_stability(
+        "experiments/Phaethon_Geminiden_Bennu/NeuroProfile/data/synthetic/synthetic_eeg_1khz.csv"
+    )
+
+    assert report["sample_count"] > 10
+    assert report["overflow_detected"] is False
