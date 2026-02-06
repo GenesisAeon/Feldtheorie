@@ -166,7 +166,8 @@ class Nullkern:
 
         The model links the logistic membrane σ(β(R-Θ)) to the currently
         instantiated state and exposes the discrete update equations used by
-        ``update_state``.
+        ``update_state`` plus the continuous-time ODE system and stability
+        analysis.
         """
         activation_probability = float(self.activate(resource=resource, threshold=threshold))
         zeta = float(self.compute_impedance(resource=resource))
@@ -191,7 +192,131 @@ class Nullkern:
                 "resonance": float(self.state.resonance),
                 "phase": self.state.phase.value,
             },
+            "continuous_dynamics": self.get_continuous_dynamics(resource, threshold),
+            "stability": self.analyze_stability(resource, threshold),
         }
+
+    # ------------------------------------------------------------------
+    # Mathematical formalization: continuous-time ODE system
+    # ------------------------------------------------------------------
+
+    def get_continuous_dynamics(
+        self, resource: float, threshold: float = 0.5
+    ) -> dict[str, float]:
+        """Compute the continuous-time derivatives of the state vector.
+
+        The ODE system models:
+          dβ/dt = -α_β · β · (1 - σ(β(R-Θ)))      (β relaxes toward equilibrium)
+          dκ/dt = -α_κ · (κ - σ(β(R-Θ)))           (κ tracks activation)
+          dr/dt = -α_r · (r - κ·σ(β(R-Θ)))         (resonance follows κ-weighted activation)
+
+        where α_β, α_κ, α_r are damping rates and σ is the logistic membrane.
+        """
+        sigma = float(self.activate(resource, threshold))
+        beta = float(self.state.beta)
+        kappa = float(self.kappa)
+        resonance = float(self.state.resonance)
+
+        alpha_beta = 0.1
+        alpha_kappa = 0.05
+        alpha_resonance = 0.08
+
+        dbeta_dt = -alpha_beta * beta * (1.0 - sigma)
+        dkappa_dt = -alpha_kappa * (kappa - sigma)
+        dresonance_dt = -alpha_resonance * (resonance - kappa * sigma)
+
+        return {
+            "dbeta_dt": dbeta_dt,
+            "dkappa_dt": dkappa_dt,
+            "dresonance_dt": dresonance_dt,
+            "sigma": sigma,
+        }
+
+    def compute_jacobian(
+        self, resource: float, threshold: float = 0.5
+    ) -> np.ndarray:
+        """Compute the 3×3 Jacobian of the ODE system at the current state.
+
+        J = ∂(dβ/dt, dκ/dt, dr/dt) / ∂(β, κ, r)
+
+        Evaluated numerically via central finite differences.
+        """
+        eps = 1e-6
+        state_vec = np.array([
+            float(self.state.beta),
+            float(self.kappa),
+            float(self.state.resonance),
+        ])
+        jac = np.zeros((3, 3))
+
+        for j in range(3):
+            perturb = np.zeros(3)
+            perturb[j] = eps
+            f_plus = self._ode_rhs(state_vec + perturb, resource, threshold)
+            f_minus = self._ode_rhs(state_vec - perturb, resource, threshold)
+            jac[:, j] = (f_plus - f_minus) / (2 * eps)
+
+        return jac
+
+    def analyze_stability(
+        self, resource: float, threshold: float = 0.5
+    ) -> dict[str, Any]:
+        """Analyze local stability of the current state via eigenvalue analysis.
+
+        Returns eigenvalues of the Jacobian, stability flag, and a Lyapunov
+        energy candidate V = β² + (κ - σ)² + (r - κσ)².
+        """
+        jac = self.compute_jacobian(resource, threshold)
+        eigenvalues = np.linalg.eigvals(jac)
+        real_parts = [float(np.real(ev)) for ev in eigenvalues]
+        stable = all(rp <= 0.0 for rp in real_parts)
+        lyapunov = self.compute_energy(resource, threshold)
+
+        return {
+            "eigenvalues": [complex(ev) for ev in eigenvalues],
+            "real_parts": real_parts,
+            "stable": stable,
+            "lyapunov_candidate": lyapunov,
+            "jacobian_trace": float(np.trace(jac)),
+            "jacobian_det": float(np.linalg.det(jac)),
+        }
+
+    def compute_energy(self, resource: float, threshold: float = 0.5) -> float:
+        """Compute Lyapunov energy functional V(β, κ, r).
+
+        V = 0.5 · (β² + (κ - σ)² + (r - κ·σ)²)
+
+        V ≥ 0 always, V = 0 at equilibrium.
+        """
+        sigma = float(self.activate(resource, threshold))
+        beta = float(self.state.beta)
+        kappa = float(self.kappa)
+        resonance = float(self.state.resonance)
+        return 0.5 * (beta ** 2 + (kappa - sigma) ** 2 + (resonance - kappa * sigma) ** 2)
+
+    def _ode_rhs(
+        self,
+        state_vec: np.ndarray,
+        resource: float,
+        threshold: float,
+    ) -> np.ndarray:
+        """Evaluate the ODE right-hand side at an arbitrary state point."""
+        beta, kappa, resonance = float(state_vec[0]), float(state_vec[1]), float(state_vec[2])
+        beta = float(np.clip(beta, 0.0, 1.0))
+        kappa = float(np.clip(kappa, 0.0, 1.0))
+
+        x = beta * (resource - threshold)
+        sigma = 1.0 / (1.0 + np.exp(-x))
+
+        alpha_beta = 0.1
+        alpha_kappa = 0.05
+        alpha_resonance = 0.08
+
+        return np.array([
+            -alpha_beta * beta * (1.0 - sigma),
+            -alpha_kappa * (kappa - sigma),
+            -alpha_resonance * (resonance - kappa * sigma),
+        ])
 
     def register_consent(self, token: str, scope: str = "shadow_mode") -> dict[str, Any]:
         """Register a Sigillin consent token for ethical traceability.

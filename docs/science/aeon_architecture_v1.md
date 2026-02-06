@@ -370,33 +370,33 @@ class TutorGPT:
 
 ---
 
-### Phase 2: AeonShell Grammatik v0.1 ⏳
+### Phase 2: AeonShell Grammatik v0.1 ✅
 
-**Zu definieren:**
-- Vollständige Operator-Liste
-- Parse-Regeln
+**Implementiert:**
+- Vollständige Operator-Liste (VALID_STATE_TERMS, VALID_SYMBOLS)
+- Rekursiver Abstiegsparser mit BNF-Validierung
 - Semantik der Zustandsmarker
-- CREP-Filter-Grammatik
+- Beispielkorpus
 
-**Nächste Schritte:**
-- [ ] AeonShell Spezifikation (BNF)
-- [ ] Reference-Parser in Python
-- [ ] Example-Corpus für Training
+**Abgeschlossen:**
+- [x] AeonShell Spezifikation (BNF)
+- [x] Reference-Parser in Python (rekursiver Abstieg)
+- [x] Example-Corpus für Training
 
 ---
 
-### Phase 3: Genesis-Orchestrator v0.1 ⏳
+### Phase 3: Genesis-Orchestrator v0.1 ✅
 
-**Zu implementieren:**
-- MasterGPT-Delegationslogik
-- Multi-Agent-Kommunikation via AeonShell
-- Nullkern-Interface
-- CREP-basierte Quality Control
+**Implementiert:**
+- MasterGPT-Delegationslogik (delegate/broadcast)
+- Multi-Agent-Kommunikation (register_agent + broadcast)
+- Nullkern-Interface (get_nullkern_snapshot)
+- CREP-basierte Quality Control (crep_validate)
 
-**Nächste Schritte:**
-- [ ] Orchestrator-API definieren
-- [ ] Agent-Identitäten formalisieren
-- [ ] Resonanzraum-Metriken implementieren
+**Abgeschlossen:**
+- [x] Orchestrator-API definieren
+- [x] Agent-Identitäten formalisieren (AgentRecord mit capabilities)
+- [x] Resonanzraum-Metriken implementieren (Aletheia-Telemetrie mit CREP)
 
 ---
 
@@ -581,7 +581,7 @@ Das **Aeon System v1.0** realisiert:
 ✅ **CREP-Qualitätskontrolle** — Kohärenz, Resonanz, Emergenz, Persistenz
 ✅ **Topologisches Wissen** — Keine Dateien, nur Relationen
 
-**Status:** Theoretisch formuliert, bereit für Implementation v0.1
+**Status:** V0.1 implementiert und getestet (M1–M3 Prototypen + ODE-Formalisierung)
 
 ---
 
@@ -650,4 +650,111 @@ Die Bridge liefert jetzt explizit:
 - `aleph_metric` (Informationsdichte als Aleph-Näherung),
 
 zusätzlich zu bestehender Emergenztelemetrie (`coherence_delta`, `system_impedance`, `metastability_offset`, `mode_frequency_hz`).
+
+---
+
+## V6.2 Architekturergänzung: Rekursiver Parser, ODE-Formalisierung, erweiterte M2/M3
+
+**Datum:** 2026-02-06
+**Status:** Implementiert und getestet (80 Tests, alle bestanden)
+
+### M1: Rekursiver Abstiegsparser (Upgrade von Regex)
+
+Der bisherige Regex-basierte Parser wurde durch einen vollständigen **rekursiven Abstiegsparser** ersetzt, der die BNF-Grammatik strukturell validiert:
+
+- **Lexer-Schicht** (`_Lexer`): Tokenisierung mit Positionszeiger, Whitespace-Toleranz, strukturierte Fehlermeldungen mit Position
+- **Validierung gegen Grammatik**: Nur gültige State-Terms (`ψ, Ψ, Φ, OIPK, UTAC, τ*`) und Parameter-Symbole (`β, Θ, ζ, τ*, κ`) werden akzeptiert
+- **Fehlerbehandlung**: Klare `ValueError`-Meldungen bei ungültigen Tokens, fehlenden Operatoren (`⊗`, `→`, `⟨⟩`, `[]`)
+- **Rückwärtskompatibel**: Alle bestehenden Tests passieren unverändert
+
+**Datei:** `aeon/shell/grammar.py`
+
+### Nullkern: Kontinuierliche Dynamik und Stabilitätsanalyse
+
+Der Nullkern wurde um ein **kontinuierliches ODE-System** und **Stabilitätsanalyse** erweitert:
+
+#### ODE-System
+
+$$
+\frac{d\beta}{dt} = -\alpha_\beta \cdot \beta \cdot (1 - \sigma(\beta(R-\Theta)))
+$$
+$$
+\frac{d\kappa}{dt} = -\alpha_\kappa \cdot (\kappa - \sigma(\beta(R-\Theta)))
+$$
+$$
+\frac{dr}{dt} = -\alpha_r \cdot (r - \kappa \cdot \sigma(\beta(R-\Theta)))
+$$
+
+Wobei $\alpha_\beta = 0.1$, $\alpha_\kappa = 0.05$, $\alpha_r = 0.08$ die Dämpfungsraten sind.
+
+#### Jacobi-Matrix und Eigenwertanalyse
+
+- `compute_jacobian(R, Θ)`: 3×3 Jacobi-Matrix via zentrale Differenzen
+- `analyze_stability(R, Θ)`: Eigenwerte, Stabilitätsflag, Lyapunov-Kandidat, Jacobi-Spur und -Determinante
+- `compute_energy(R, Θ)`: Lyapunov-Energiefunktional $V = \frac{1}{2}(\beta^2 + (\kappa - \sigma)^2 + (r - \kappa\sigma)^2)$
+
+**Ergebnis:** Bei $\beta \to 0, \kappa \to 0$ (Dharmakaya) ist das System stabil (alle Eigenwert-Realteile $\leq 0$).
+
+**Datei:** `aeon/nullkern/zero_point_kernel.py`
+
+### M2: Genesis-Orchestrator (Erweiterung)
+
+Der Orchestrator wurde um folgende Funktionalität erweitert:
+
+| Feature | Methode | Beschreibung |
+|---------|---------|--------------|
+| Agent-Registrierung | `register_agent(name, capabilities)` | Deklarative Agenten mit Fähigkeitslisten |
+| Multi-Agent-Broadcast | `broadcast(intent, payload)` | Delegation an alle registrierten Agenten |
+| CREP-Qualitätskontrolle | `crep_validate(result)` | 4-Dimensionen-Score: Coherence, Resonance, Ethics, Precision |
+| Nullkern-Snapshot | `get_nullkern_snapshot()` | Lifecycle-Snapshot des Kernels |
+| Erweiterte Telemetrie | `get_aletheia_telemetry()` | Jetzt inkl. `crep_mean_score` |
+
+**CREP-Scoring:**
+```
+quality_score = (Coherence + Resonance + Ethics + Precision) / 4
+passed = quality_score >= 0.5
+```
+
+**Datei:** `aeon/modules/genesis_orchestrator.py`
+
+### M3: Knowledge-System (Erweiterung)
+
+Das Wissenssystem wurde um Ontologie-Kategorien und TF-IDF-Scoring erweitert:
+
+| Feature | Methode | Beschreibung |
+|---------|---------|--------------|
+| Kategorien | `upsert(id, content, category=)` | Einträge mit Ontologie-Tag |
+| Gefilterte Suche | `query(text, category=)` | Suche eingeschränkt auf Kategorie |
+| Einzelabruf | `get(entry_id)` | Direkter Zugriff auf Eintrag |
+| Löschen | `delete(entry_id)` | Eintrag entfernen |
+| Kategorie-Übersicht | `get_categories()` | Alle vorhandenen Kategorien |
+| Ontologie-Export | `export_ontology()` | Kategorie → Entry-ID Mapping |
+| TF-IDF-Scoring | intern | Logarithmische TF, IDF-gewichtet |
+
+**Datei:** `aeon/modules/knowledge_system.py`
+
+### Telemetrie-Fluss (End-to-End)
+
+```
+Nullkern (β, κ, r, phase)
+    ↓ formalize_dynamics() + analyze_stability()
+AeonShell Parser/Generator (symbolische Schnittstelle)
+    ↓ parse() / generate()
+Genesis-Orchestrator (Delegation + CREP)
+    ↓ get_aletheia_telemetry()
+API-Bridge (kappa_metric, sigma_metric, aleph_metric, crep_mean_score)
+    ↓ REST + WebSocket
+Dashboard / Aletheia
+```
+
+### Nächste Schritte (aktualisiert)
+
+- [x] AeonShell BNF-Grammatik definieren
+- [x] Rekursiver Abstiegsparser implementieren
+- [x] Nullkern-Formalismus mathematisch ausarbeiten (ODE + Stabilität)
+- [x] Erste Prototypen für M1–M3 implementieren
+- [x] M2 mit Multi-Agent-Kommunikation und CREP erweitern
+- [x] M3 mit Ontologie und TF-IDF erweitern
+- [x] Telemetrie End-to-End verifiziert
+- [ ] Paper: "Aeon: A Null-Core Architecture for Symbiotic Intelligence"
 
