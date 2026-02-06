@@ -6,6 +6,7 @@ import time
 from dataclasses import dataclass, field
 from typing import Any
 
+from aeon.modules.architecture_spec import get_core_module_contracts
 from aeon.modules.knowledge_system import KnowledgeSystem
 from aeon.nullkern.zero_point_kernel import Nullkern
 
@@ -167,6 +168,10 @@ class GenesisOrchestrator:
     def get_nullkern_snapshot(self) -> dict[str, Any]:
         """Return a lifecycle snapshot of the Nullkern."""
         return self.kernel.get_state_summary()
+
+    def get_core_module_contracts(self) -> dict[str, dict[str, object]]:
+        """Expose formalized contracts for MasterGPT/TutorGPT/etc. coordination."""
+        return get_core_module_contracts()
 
     # ------------------------------------------------------------------
     # Telemetry

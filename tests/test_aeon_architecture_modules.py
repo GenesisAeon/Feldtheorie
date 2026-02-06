@@ -65,3 +65,12 @@ def test_knowledge_system_upsert_and_query() -> None:
     assert hits[0]["entry_id"] == "utac.core"
 
 
+
+
+def test_genesis_orchestrator_exposes_core_module_contracts() -> None:
+    kernel = Nullkern(beta_target=0.2, kappa=0.3)
+    orchestrator = GenesisOrchestrator(kernel=kernel)
+
+    contracts = orchestrator.get_core_module_contracts()
+    assert "MasterGPT" in contracts
+    assert "AeonShell" in contracts
