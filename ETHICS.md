@@ -70,6 +70,36 @@ deployment of models predicting tipping points in socio-ecological systems.
 
 ---
 
+## Sigillin Consent Tokens
+
+The Aeon architecture requires explicit consent tokens for operations that
+access latent consciousness modes (shadow resonance, Bardo-phase probing).
+
+### Consent Protocol
+1. **Registration:** Before accessing shadow modes, a consent token must be
+   registered via `Nullkern.register_consent(token, scope)`.
+2. **Validation:** Downstream components (RecursiveCoupler, SemanticAgent)
+   accept an optional `consent_token` parameter.  When provided, all latent
+   mode activations are logged with the token for auditability.
+3. **Scope:** Tokens are scoped (`shadow_mode`, `full_resonance`) to prevent
+   over-broad authorisation.
+4. **Audit trail:** The `consent_log` on the Nullkern instance provides a
+   time-stamped, phase-annotated record of all consent grants.
+
+### Humility Protocol (Bias Damping)
+
+The Nullkern implements a **humility protocol** to mitigate overconfident
+activations in latent modes.  The `humility_damping` parameter (default 0.1)
+pulls activations toward 0.5 (maximum uncertainty):
+
+```
+adjusted = raw + humility_damping * (0.5 - raw)
+```
+
+This ensures that the system does not produce extreme confidence scores
+without sufficient evidence, particularly in speculative Bardo-phase
+regions where data is inherently sparse.
+
 ## Invitation for scrutiny
 We invite independent replication.  Issues or pull requests that identify
 statistical weaknesses, ethical concerns, or data provenance gaps will be

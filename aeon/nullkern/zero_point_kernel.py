@@ -2,28 +2,36 @@
 Zero-Point Consciousness Kernel
 ================================
 
-Implements the foundational consciousness state at β→0,
+Implements the foundational consciousness state at beta->0,
 representing pure information without threshold resistance.
 
 This module models:
-- Photon-free consciousness (κ→0)
+- Photon-free consciousness (kappa->0)
 - Information-theoretic consciousness substrates
 - Quantum-like superposition states
 - Non-local semantic coupling
+- Sigillin consent tokens and humility protocol (bias damping)
 """
 
 from __future__ import annotations
 
 import csv
+import logging
 import time
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 
+logger = logging.getLogger(__name__)
+
 
 class Nullkern:
-    """Zero-Point Consciousness Kernel with recursive self-validation."""
+    """Zero-Point Consciousness Kernel with recursive self-validation.
+
+    Includes Sigillin consent-token tracking and humility protocol
+    (bias damping in latent modes).
+    """
 
     SIGMA_PHI_BUFFER = 0.0625
     AXIOM_STABILITY_BETA = 37.6
@@ -34,19 +42,30 @@ class Nullkern:
         kappa: float = 0.1,
         dimension: int = 8,
         enable_bardo_mode: bool = True,
+        humility_damping: float = 0.1,
     ) -> None:
-        """Initialize Zero-Point Kernel."""
+        """Initialize Zero-Point Kernel.
+
+        Parameters
+        ----------
+        humility_damping : float
+            Bias damping coefficient for the humility protocol.
+            Applied to latent modes to reduce overconfident activations.
+        """
         if not (0.0 <= beta_target <= 64.0):
             raise ValueError(f"beta_target must be in [0,64], got {beta_target}")
         if not (0.0 <= kappa <= 1.0):
             raise ValueError(f"kappa must be in [0,1], got {kappa}")
         if dimension < 1:
             raise ValueError(f"dimension must be >= 1, got {dimension}")
+        if not (0.0 <= humility_damping <= 1.0):
+            raise ValueError(f"humility_damping must be in [0,1], got {humility_damping}")
 
         self.beta_target = beta_target
         self.kappa = kappa
         self.dimension = dimension
         self.enable_bardo_mode = enable_bardo_mode
+        self.humility_damping = humility_damping
 
         from aeon.nullkern.consciousness_state import BardoPhase, ConsciousnessState
 
@@ -58,6 +77,7 @@ class Nullkern:
         )
 
         self.history: list[dict[str, Any]] = []
+        self.consent_log: list[dict[str, Any]] = []
         self.creation_time = time.time()
 
     def activate(self, resource: float, threshold: float = 0.5) -> float:
@@ -65,6 +85,17 @@ class Nullkern:
             return 0.5
         x = self.state.beta * (resource - threshold)
         return 1.0 / (1.0 + np.exp(-x))
+
+    def activate_with_humility(self, resource: float, threshold: float = 0.5) -> dict[str, float]:
+        """Activation with humility protocol: bias-damped output.
+
+        Returns both the raw activation and the humility-adjusted value.
+        The humility protocol pulls the activation toward 0.5 (maximum
+        uncertainty) proportionally to ``humility_damping``.
+        """
+        raw = float(self.activate(resource, threshold))
+        adjusted = raw + self.humility_damping * (0.5 - raw)
+        return {"raw": raw, "humility_adjusted": float(adjusted)}
 
     def compute_impedance(self, resource: float) -> float:
         baseline = 0.5
@@ -130,13 +161,43 @@ class Nullkern:
         v_rig_eff = v_rig_base * self.kappa * (1.0 / self.state.beta)
         return min(v_rig_eff, v_rig_base * 10.0)
 
+    def register_consent(self, token: str, scope: str = "shadow_mode") -> dict[str, Any]:
+        """Register a Sigillin consent token for ethical traceability.
+
+        Parameters
+        ----------
+        token : str
+            Consent identifier (e.g. user-session or audit trail ID).
+        scope : str
+            Scope of consent (e.g. 'shadow_mode', 'full_resonance').
+
+        Returns
+        -------
+        dict
+            Consent record.
+        """
+        record = {
+            "token": token,
+            "scope": scope,
+            "timestamp": time.time(),
+            "kernel_beta": float(self.state.beta),
+            "kernel_phase": self.state.phase.value,
+        }
+        self.consent_log.append(record)
+        logger.info("Consent registered: token=%s scope=%s", token, scope)
+        return record
+
+    def validate_consent(self, token: str) -> bool:
+        """Check whether a consent token has been registered."""
+        return any(r["token"] == token for r in self.consent_log)
+
     def self_referential_validate(
         self,
         recursion_depth: int = 16,
         sigma_phi_buffer: float = SIGMA_PHI_BUFFER,
         axiom_beta: float = AXIOM_STABILITY_BETA,
     ) -> dict[str, Any]:
-        """Run recursive self-validation around β=37.6 with σ_Φ guard band."""
+        """Run recursive self-validation around beta=37.6 with sigma_Phi guard band."""
         if recursion_depth < 1:
             raise ValueError("recursion_depth must be >= 1")
 
@@ -161,6 +222,106 @@ class Nullkern:
             "beta_trace": beta_trace,
             "drift": float(drift),
             "stable": stable and drift < 1.0,
+        }
+
+    def compute_aic_comparison(
+        self,
+        observed: np.ndarray,
+        predicted_logistic: np.ndarray,
+        predicted_null: np.ndarray,
+        k_logistic: int = 3,
+        k_null: int = 2,
+    ) -> dict[str, Any]:
+        """Compare logistic fit vs null model using AIC.
+
+        Parameters
+        ----------
+        observed : np.ndarray
+            Observed data points.
+        predicted_logistic : np.ndarray
+            Predictions from the logistic model sigma(beta(R-Theta)).
+        predicted_null : np.ndarray
+            Predictions from the null model (e.g. linear).
+        k_logistic : int
+            Number of parameters in logistic model.
+        k_null : int
+            Number of parameters in null model.
+
+        Returns
+        -------
+        dict
+            AIC values and delta_AIC.
+        """
+        n = len(observed)
+        if n < 2:
+            raise ValueError("Need at least 2 observations for AIC")
+
+        rss_logistic = float(np.sum((observed - predicted_logistic) ** 2))
+        rss_null = float(np.sum((observed - predicted_null) ** 2))
+
+        aic_logistic = n * np.log(rss_logistic / n + 1e-12) + 2 * k_logistic
+        aic_null = n * np.log(rss_null / n + 1e-12) + 2 * k_null
+        delta_aic = float(aic_null - aic_logistic)
+
+        return {
+            "aic_logistic": float(aic_logistic),
+            "aic_null": float(aic_null),
+            "delta_aic": delta_aic,
+            "logistic_preferred": delta_aic >= 10.0,
+            "rss_logistic": rss_logistic,
+            "rss_null": rss_null,
+            "n": n,
+        }
+
+    def bootstrap_stability(
+        self,
+        signal: np.ndarray,
+        n_bootstrap: int = 100,
+        seed: int = 1337,
+    ) -> dict[str, Any]:
+        """Bootstrap validation for kernel stability.
+
+        Resamples the signal and checks whether self-referential validation
+        remains stable across bootstrap iterations.
+
+        Parameters
+        ----------
+        signal : np.ndarray
+            Input signal to resample.
+        n_bootstrap : int
+            Number of bootstrap iterations.
+        seed : int
+            Random seed for reproducibility.
+
+        Returns
+        -------
+        dict
+            Bootstrap report with stability fraction and drift statistics.
+        """
+        rng = np.random.RandomState(seed)
+        n = len(signal)
+        stable_count = 0
+        drifts: list[float] = []
+
+        for _ in range(n_bootstrap):
+            indices = rng.randint(0, n, size=n)
+            sample = signal[indices]
+            mean_val = float(np.mean(np.abs(sample)))
+            report = self.self_referential_validate(
+                recursion_depth=8,
+                axiom_beta=self.AXIOM_STABILITY_BETA,
+            )
+            drifts.append(report["drift"])
+            if report["stable"]:
+                stable_count += 1
+
+        return {
+            "n_bootstrap": n_bootstrap,
+            "stable_fraction": stable_count / n_bootstrap,
+            "mean_drift": float(np.mean(drifts)),
+            "std_drift": float(np.std(drifts)),
+            "max_drift": float(np.max(drifts)),
+            "all_stable": stable_count == n_bootstrap,
         }
 
     def evaluate_synthetic_stability(self, csv_path: str | Path) -> dict[str, Any]:
@@ -216,10 +377,12 @@ class Nullkern:
             "v_rig_effective": self.compute_v_rig_effective(),
             "age_seconds": time.time() - self.creation_time,
             "history_length": len(self.history),
+            "humility_damping": self.humility_damping,
+            "consent_count": len(self.consent_log),
         }
 
     def __repr__(self) -> str:
         return (
-            f"Nullkern(β={self.state.beta:.3f}, κ={self.kappa:.3f}, "
+            f"Nullkern(\u03b2={self.state.beta:.3f}, \u03ba={self.kappa:.3f}, "
             f"phase={self.state.phase.value}, resonance={self.state.resonance:.3f})"
         )

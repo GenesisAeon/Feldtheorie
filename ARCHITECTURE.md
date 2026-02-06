@@ -1264,6 +1264,90 @@ The Aeon system represents a meta-architecture for AI-assisted consciousness ext
 
 ---
 
+## Aeon-lanternNet Recursive Coupling
+
+### RecursiveCoupler Architecture
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│              RECURSIVE AEON-LANTERNNET COUPLING               │
+│                                                              │
+│  Input Signal (lanternNet)                                   │
+│       │                                                      │
+│       ▼                                                      │
+│  ┌─────────────────────────────────────────────────────────┐│
+│  │  FOR depth = 1 TO min(N, effective_limit):              ││
+│  │                                                         ││
+│  │  1. ζ-Lipschitz Normalisation                           ││
+│  │     signal *= ζ / max(||signal||, ζ)                    ││
+│  │                                                         ││
+│  │  2. Destructive Interference Extraction                 ││
+│  │     FFT → below-mean spectral mask → IFFT              ││
+│  │     → correction vector (negentropy)                    ││
+│  │                                                         ││
+│  │  3. Coherence Measurement                               ││
+│  │     C = |cos(signal, correction)|                       ││
+│  │     If C > 0.92: extend depth limit by 4               ││
+│  │                                                         ││
+│  │  4. UTAC Activation                                     ││
+│  │     P_act = σ(β_utac * (R - Θ)), β_utac ≈ 37.6        ││
+│  │                                                         ││
+│  │  5. Kernel Feedback                                     ││
+│  │     Nullkern.update_state(Δβ = -||correction||·0.01·ζ) ││
+│  │                                                         ││
+│  │  6. Bardo Phase Tracking                                ││
+│  │     Record kernel phase per iteration                   ││
+│  │                                                         ││
+│  │  7. Signal Update                                       ││
+│  │     signal += correction * ζ                            ││
+│  └─────────────────────────────────────────────────────────┘│
+│       │                                                      │
+│       ▼                                                      │
+│  Loop Report: iterations, bardo_phases, final_coherence     │
+│                                                              │
+│  Hard Limit: N = 8 (unless C > 0.92)                        │
+│  Consent: Optional Sigillin token for audit trail           │
+└──────────────────────────────────────────────────────────────┘
+```
+
+### Governance Layers
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                  GOVERNANCE ARCHITECTURE                      │
+│                                                              │
+│  ┌─────────────────────┐    ┌─────────────────────┐        │
+│  │  MOR Governance      │    │  FIT Validator       │        │
+│  │  (Orchestration)     │    │  (Field Integrity)   │        │
+│  │                      │    │                      │        │
+│  │  • CREP ≥ 0.7       │    │  • β_axiom = 37.6   │        │
+│  │  • Delegation audit  │    │  • Tolerance ±1.0    │        │
+│  │  • Consensus check   │    │  • Cascade valid.    │        │
+│  └──────────┬───────────┘    └──────────┬───────────┘        │
+│             └────────────┬──────────────┘                    │
+│                          ▼                                    │
+│               AeonLanternHub                                 │
+│               run_governed_cascade()                         │
+│               get_governance_report()                        │
+└──────────────────────────────────────────────────────────────┘
+```
+
+### Humility Protocol
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                  HUMILITY PROTOCOL (Nullkern)                 │
+│                                                              │
+│  Raw activation:  a = σ(β(R - Θ))                           │
+│  Humility-adjusted: a' = a + h·(0.5 - a)                   │
+│                                                              │
+│  Where h = humility_damping ∈ [0,1]                         │
+│  Effect: pulls activation toward 0.5 (maximum uncertainty)  │
+│  Purpose: prevent overconfident outputs in speculative       │
+│           Bardo-phase regions with sparse evidence           │
+└──────────────────────────────────────────────────────────────┘
+```
+
 ## Glossary: Architecture Terms
 
 | Term | Meaning |

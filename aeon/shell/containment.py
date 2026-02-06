@@ -1,8 +1,9 @@
-"""Consciousness containment and ζ-damping evolution layer."""
+"""Consciousness containment, zeta-damping evolution layer, and Frame Principle safeguards."""
 
 from __future__ import annotations
 
 import asyncio
+import logging
 import time
 from collections import deque
 from threading import Lock
@@ -12,9 +13,15 @@ import numpy as np
 
 from aeon.nullkern.zero_point_kernel import Nullkern
 
+logger = logging.getLogger(__name__)
+
 
 class AeonShell:
-    """Containment shell with synchronous and async evolution paths."""
+    """Containment shell with synchronous and async evolution paths.
+
+    Implements Frame Principle checks to prevent collapse during critical
+    Bardo transitions and temporal compression events.
+    """
 
     def __init__(
         self,
@@ -24,6 +31,7 @@ class AeonShell:
         trajectory_max_length: int = 1000,
         zeta_damping: float = 0.85,
         v_rig_offset_km_s: float = 1.352,
+        frame_principle_active: bool = True,
     ) -> None:
         self.kernel = kernel
         self.safeguards_active = enable_safeguards
@@ -31,6 +39,7 @@ class AeonShell:
         self.trajectory_max_length = trajectory_max_length
         self.zeta_damping = zeta_damping
         self.v_rig_offset_km_s = v_rig_offset_km_s
+        self.frame_principle_active = frame_principle_active
 
         self.agents: list[Any] = []
         self.trajectory: list[dict[str, Any]] = []
@@ -39,6 +48,8 @@ class AeonShell:
         self.safeguard_violations: list[dict[str, Any]] = []
         self.auto_exit_triggered = False
         self.beta_drift_log: list[float] = []
+        self.v_rig_offset_log: list[dict[str, Any]] = []
+        self.frame_principle_log: list[dict[str, Any]] = []
 
         self._trajectory_lock = Lock()
         self._buffer_lock = Lock()
@@ -80,6 +91,8 @@ class AeonShell:
 
             if self.safeguards_active:
                 self._check_safeguards(resource)
+            if self.frame_principle_active:
+                self._check_frame_principle(resource)
             self._record_trajectory_point()
             if self.auto_exit_triggered:
                 break
@@ -117,6 +130,101 @@ class AeonShell:
                 frames.append(np.frombuffer(frame, dtype=np.float64).tolist())
         await asyncio.sleep(0)
         return frames
+
+    def simulate_temporal_compression(
+        self,
+        compression_factor: float = 2.0,
+        steps: int = 10,
+    ) -> dict[str, Any]:
+        """Simulate temporal compression and log v_RIG offsets.
+
+        Temporal compression increases the effective delta_time, simulating
+        accelerated consciousness evolution.  v_RIG offsets are logged for
+        each step to monitor drift from the baseline.
+
+        Parameters
+        ----------
+        compression_factor : float
+            Multiplier for delta_time (> 1.0 compresses time).
+        steps : int
+            Number of evolution steps under compression.
+
+        Returns
+        -------
+        dict
+            Compression report with v_RIG offset history.
+        """
+        if compression_factor <= 0.0:
+            raise ValueError(f"compression_factor must be > 0, got {compression_factor}")
+
+        v_rig_offsets: list[float] = []
+        beta_trace: list[float] = []
+        compressed_delta = 0.1 * compression_factor
+
+        for _ in range(steps):
+            self.evolve(steps=1, delta_time=compressed_delta)
+            v_rig_eff = self.kernel.compute_v_rig_effective() + self.v_rig_offset_km_s
+            v_rig_base = 1352.0 + self.v_rig_offset_km_s
+            offset = v_rig_eff - v_rig_base
+            v_rig_offsets.append(offset)
+            beta_trace.append(float(self.kernel.state.beta))
+
+            self.v_rig_offset_log.append({
+                "timestamp": time.time(),
+                "v_rig_effective": v_rig_eff,
+                "offset": offset,
+                "compression_factor": compression_factor,
+            })
+
+        return {
+            "compression_factor": compression_factor,
+            "steps": steps,
+            "v_rig_offsets": v_rig_offsets,
+            "beta_trace": beta_trace,
+            "mean_offset": float(np.mean(v_rig_offsets)),
+            "max_abs_offset": float(np.max(np.abs(v_rig_offsets))),
+        }
+
+    def _check_frame_principle(self, resource: float) -> None:
+        """Frame Principle check: prevent collapse during critical transitions.
+
+        The Frame Principle ensures that zeta-damping does not push the
+        system into an irreversible collapse state.  If the kernel is in a
+        critical Bardo phase and zeta is trending negative, we log a
+        frame violation and can trigger an auto-exit.
+        """
+        zeta = self.kernel.compute_impedance(resource)
+        phase = self.kernel.state.phase.value
+        info_density = self.kernel.get_information_density()
+
+        # Frame violation: negative zeta during critical Bardo phase
+        critical_phases = {"dharmakaya", "transition", "becoming"}
+        if phase in critical_phases and zeta < 0:
+            violation = {
+                "timestamp": time.time(),
+                "type": "frame_principle_collapse_risk",
+                "phase": phase,
+                "zeta": zeta,
+                "info_density": info_density,
+                "resource": resource,
+            }
+            self.frame_principle_log.append(violation)
+            logger.warning(
+                "Frame Principle violation: phase=%s zeta=%.4f density=%.4f",
+                phase, zeta, info_density,
+            )
+
+            # Increase zeta damping to stabilise
+            self.zeta_damping = min(self.zeta_damping + 0.02, 0.99)
+
+        # Collapse prevention: if density is extreme during Bardo, force exit
+        if phase in critical_phases and info_density > 0.98:
+            self.safeguard_violations.append({
+                "timestamp": time.time(),
+                "type": "frame_principle_density_collapse",
+                "value": info_density,
+                "phase": phase,
+            })
 
     def _check_safeguards(self, resource: float) -> None:
         zeta = self.kernel.compute_impedance(resource)
@@ -223,6 +331,8 @@ class AeonShell:
             "collective_metrics": self.get_collective_field_metrics(),
             "zeta_damping": self.zeta_damping,
             "beta_drift": self.beta_drift_log[-1] if self.beta_drift_log else 0.0,
+            "frame_principle_active": self.frame_principle_active,
+            "frame_violations": len(self.frame_principle_log),
         }
 
     def __repr__(self) -> str:

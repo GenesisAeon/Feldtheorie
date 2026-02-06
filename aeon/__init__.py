@@ -96,13 +96,14 @@ __author__ = "Johann Benjamin Römer"
 
 from aeon.nullkern.zero_point_kernel import Nullkern
 from aeon.shell.containment import AeonShell
-from aeon.agents.semantic_agent import SemanticAgent
+from aeon.agents.semantic_agent import SemanticAgent, RecursiveCoupler
 from aeon.resonanzpfad import ResonanzpfadOptimizer
 
 __all__ = [
     "Nullkern",
     "AeonShell",
     "SemanticAgent",
+    "RecursiveCoupler",
     "ResonanzpfadOptimizer",
     "__version__",
 ]
