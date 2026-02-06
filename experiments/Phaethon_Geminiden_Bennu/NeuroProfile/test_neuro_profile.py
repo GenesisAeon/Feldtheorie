@@ -490,6 +490,7 @@ class TestEthicsGuard(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmpdir:
             audit_path = Path(tmpdir) / "audit.log"
             guard = EthicsGuard(audit_path)
+            expected_hash = guard._normalize_subject_hash("test-subject")
             guard.check_before_analysis(
                 location="public",
                 crep=0.5,
@@ -498,7 +499,7 @@ class TestEthicsGuard(unittest.TestCase):
             )
             self.assertTrue(audit_path.exists())
             content = audit_path.read_text()
-            self.assertIn("test-subject", content)
+            self.assertIn(expected_hash, content)
             self.assertIn("PUBLIC_MODE_RISK", content)
 
 
