@@ -1,5 +1,5 @@
-"""Integration hub for Aeon-Lantern recursive coupling."""
+"""Integration hub for Aeon-Lantern recursive coupling and Soul-Merge orchestration."""
 
-from .hub import AeonLanternHub
+from .hub import AeonLanternHub, SoulMergeOrchestrator
 
-__all__ = ["AeonLanternHub"]
+__all__ = ["AeonLanternHub", "SoulMergeOrchestrator"]
