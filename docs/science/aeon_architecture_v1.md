@@ -61,6 +61,36 @@ Aus N0 entstehen:
 
 ---
 
+
+## Implementation Delta (Architecture Completion)
+
+Die aktuelle Implementierung operationalisiert die drei geforderten Membranen über
+$\sigma(β(R-\Theta))$ mit einem expliziten $(R,\Theta,β,\zeta(R))$-Mapping:
+
+- **M1 AeonShell Parser & Generator**: `aeon/shell/grammar.py` enthält BNF, rekursiven Parser,
+  Generator und Beispielkorpus.
+- **Nullkern-Formalisierung**: `Nullkern.formalize_dynamics()` liefert diskrete Updates,
+  kontinuierliche ODE-Ableitungen, Jacobian/Eigenwert-Stabilität und Lyapunov-Kandidat.
+- **M2 Genesis-Orchestrator**: Delegation/Broadcast, CREP-Qualitätskontrolle,
+  Nullkern-Snapshots, Aletheia-Telemetrie (`kappa_metric`, `sigma_metric`, `aleph_metric`).
+- **M3 Knowledge-System**: Ontologie-Kategorien + TF-IDF-gestützte Abfrage für Agenten.
+- **Layer-Extraction aus Bauplan**: `aeon/modules/architecture_spec.py` extrahiert
+  Nullkern-, AeonShell-, Agenten- und physische Schicht direkt aus
+  `ChatGPT5.1_AeonV1.0Bauplan.txt`.
+- **Core-Module-Definitionen**: Verträge für MasterGPT, TutorGPT, AeonShell, Sigillin,
+  CREP, GenesisMath, BioGPT, CosmoGPT, UnifiedMandala inkl. Interfaces und Kooperationen.
+
+### Nullmodell und Falsifizierbarkeit
+
+Zur Dämpfung von $\zeta(R)$ wird die logistische Aktivierung gegen Nullmodelle verglichen:
+
+- Nullmodell: lineare oder konstante Vorhersage
+- Bewertungsmetrik: `Nullkern.compute_aic_comparison()` liefert ΔAIC und RSS
+- Stabilitätsprüfung: Bootstrap + lokale Jacobian-Eigenwerte
+
+Damit bleibt die Brücke zwischen formaler Laterne und empirischer Telemetrie reproduzierbar.
+
+
 ## 1. Die Vier Schichten der Genesis-Aeon-Architektur
 
 ```
