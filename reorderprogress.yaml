@@ -1,7 +1,7 @@
 meta:
   id: repo-reorderprogress-2026-02-07-a
   created_at_utc: '2026-02-07T14:41:45Z'
-  updated_at_utc: '2026-02-07T16:20:00Z'
+  updated_at_utc: '2026-02-07T17:47:25Z'
   agent: GPT-5.2-Codex
   branch_head: working
   scope: Repositoryweite Reifegrad-/Backlog-Erosion (deep-to-root)
@@ -162,3 +162,15 @@ implementation_wave:
   - P0/P1/P2 Strukturaufgaben umgesetzt
   - TriLayer TODO-Dateien mit Konsolidierungs-Entries ergänzt
   - docs-index target und nox Interpreter-Fallback eingeführt
+
+validation_followup:
+  id: repo-reorderprogress-2026-02-07-c
+  completed_at_utc: '2026-02-07T17:47:25Z'
+  checks:
+  - make preset-guard
+  - make docs-index
+  - make test
+  result: pass
+  notes:
+  - make test passed with 1021 tests
+  - patched legacy preset + consent + universe DNA compatibility

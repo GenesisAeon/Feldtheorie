@@ -27,5 +27,8 @@
       "type": "scalar_field",
       "impedance": "low"
     }
+  },
+  "analysis": {
+    "result_path": "analysis/results/neuro_ai_beta.json"
   }
 }
