@@ -87,3 +87,10 @@ Die Tri-Layer-Dateien (`reorderprogress.yaml/.json/.md`) sind angelegt und könn
 - Nullmodell unverändert: uniforme Verteilung offener Punkte über Domänen.
 - Signalmodell unverändert: Verdichtung in `seed/archive/releases/docs`.
 - ΔAIC/CI: weiter **pending** (keine numerische Re-Regression in dieser Welle).
+
+
+## Validierungsnachlauf 2026-02-07
+
+- P2-Verifikation abgeschlossen: `make test` läuft mit nox/Python 3.12 grün (1021 passed).
+- Flankierende Test-Fixes: Consent-Token im PSRM-Mapping-Test ergänzt; Legacy-Compat-Globals + `apply_universe_dna()` für v4-Physikpfad wiederhergestellt.
+- Preset-Guard stabilisiert: `neuro_kosmos_bridge.json` mit `analysis.result_path` ergänzt, damit σ(β(R-Θ))-Kopplung im Guard nicht als Drift ausfällt.

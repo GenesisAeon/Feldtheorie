@@ -23,7 +23,12 @@ def test_psrm_map_structure() -> None:
     rng = np.random.default_rng(5)
     series = rng.normal(0.0, 1.0, 512)
     model = NeuroProfileModel()
-    result = model.analyze(series, consent_granted=True, subject_id="tester")
+    result = model.analyze(
+        series,
+        consent_granted=True,
+        consent_token="psrm-test-token",
+        subject_id="tester",
+    )
     map_data = build_psrm_map(
         result,
         config=model.config,

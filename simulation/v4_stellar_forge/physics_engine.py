@@ -6,6 +6,25 @@ from dataclasses import asdict, dataclass
 from enum import Enum
 from statistics import mean
 
+
+# Backward-compatible module constants for legacy tests and callers.
+GRAVITATIONAL_CONSTANT = 0.05
+FUSION_DISTANCE = 0.5
+FUSION_THRESHOLD = 0.5
+HAWKING_DECAY_RATE = 0.001
+
+
+def apply_universe_dna(dna) -> None:
+    """Apply DNA constants to module-level defaults used by legacy paths."""
+
+    global GRAVITATIONAL_CONSTANT, FUSION_DISTANCE, FUSION_THRESHOLD, HAWKING_DECAY_RATE
+
+    GRAVITATIONAL_CONSTANT = float(dna.gravity_const)
+    FUSION_DISTANCE = float(dna.fusion_threshold)
+    FUSION_THRESHOLD = float(dna.fusion_threshold)
+    HAWKING_DECAY_RATE = float(dna.entropy_rate)
+
+
 class ElementTypes(str, Enum):
     HYDROGEN = "HYDROGEN"
     BLACK_HOLE = "BLACK_HOLE"
