@@ -2,7 +2,7 @@
   "metadata": {
     "version": "finalize-todo-1.0.0",
     "generated_at": "2025-11-27T12:00:00Z",
-    "updated_at": "2026-03-07T12:00:00Z",
+    "updated_at": "2026-02-07T16:05:00Z",
     "scope": "releases/V6-Plans_etc/Finalize",
     "description": "Finalize V6 Integration & Dokumentation - Research, Entkopplung, Aeon-System",
     "logistic_frame": {
@@ -3005,6 +3005,45 @@
       "priority": 31,
       "sprint_focus": "API-Doku-Minor-Items schließen & Zenodo-Checklisten updaten",
       "updated_at": "2026-02-13T12:00:00Z"
+    },
+    {
+      "id": "finalize-reorder-wave-2026-02-07",
+      "title": "Reorder-Welle P0: Finalize/ToDorefresh/Zenodo Konsolidierung",
+      "status": "completed",
+      "completed_at": "2026-02-07T16:05:00Z",
+      "completeness": "P0-Arbeitspaket konsolidiert: TriLayer-Referenzen synchronisiert, Zenodo-Checklist und Submission-Roadmap mit Deferred-Markern versehen.",
+      "scope": [
+        "documentation",
+        "release",
+        "governance"
+      ],
+      "logistic_profile": {
+        "R_target": "Doppelte P0-Aufgaben auf gemeinsame Abschlussnotiz reduzieren",
+        "Theta_condition": "Finalize + V6ToDorefresh + Zenodo/Submission referenzieren dieselbe Konsolidierungswelle",
+        "beta_estimate": 4.8,
+        "zeta_risk": "moderat – verbleibende manuelle Schritte bewusst deferred"
+      },
+      "next_steps": [
+        "Deferred-Punkte in der nächsten Welle mit Owner/Datum schließen."
+      ],
+      "references": [
+        {
+          "path": "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
+          "lines": [
+            1,
+            260
+          ]
+        },
+        {
+          "path": "seed/SUBMISSION_ROADMAP.md",
+          "lines": [
+            1,
+            260
+          ]
+        }
+      ],
+      "priority": 0,
+      "sprint_focus": "P0-Backlog entdoppeln und Release-Membran stabilisieren"
     }
   ],
   "fit_mapping": [

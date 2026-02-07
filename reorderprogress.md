@@ -1,7 +1,7 @@
 # Reorder Progress – Repo-Erosion & Reifegradscan
 
 **ID:** `repo-reorderprogress-2026-02-07-a`  
-**Timestamp (UTC):** `2026-02-07T14:41:45Z`  
+**Timestamp (UTC):** `2026-02-07T16:20:00Z`  
 **Branch Head:** `102323a`
 
 ## Logistic Pulse
@@ -74,3 +74,16 @@
 
 **Ein Run reicht für die Inventur:** ✅ **Ja, Vorgang beendet.**  
 Die Tri-Layer-Dateien (`reorderprogress.yaml/.json/.md`) sind angelegt und können als Resume-Anker für Folgeläufe verwendet werden.
+
+
+## Update-Welle 2026-02-07
+
+### Umsetzungsstatus (P0-P2)
+- **P0:** Finalize/ToDorefresh konsolidiert; Zenodo-Checklist + Submission-Roadmap mit Deferred-Markern versehen.
+- **P1:** V2-Laternen bereinigt; fehlende READMEs in aktiven Sigillin-/Legacy-Deep-Ordnern ergänzt.
+- **P2:** `Makefile` um `docs-index` ergänzt; nox nutzt Interpreter-Fallback statt harter 3.11-Abhängigkeit.
+
+### Falsifizierbarkeit
+- Nullmodell unverändert: uniforme Verteilung offener Punkte über Domänen.
+- Signalmodell unverändert: Verdichtung in `seed/archive/releases/docs`.
+- ΔAIC/CI: weiter **pending** (keine numerische Re-Regression in dieser Welle).

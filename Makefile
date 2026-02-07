@@ -2,7 +2,7 @@
 
 .PHONY: install lint format test typecheck build batch planetary preset-guard release dist-zenodo clean \
         install-ocf ingest-icon ingest-radar test-pipelines clean-cache run-meta-regression run-sonification \
-        validate aggregate plots reproduce validate-trilayer crep-guard crep-guard-strict analyze-aletheia-phase4
+        validate aggregate plots reproduce validate-trilayer crep-guard crep-guard-strict analyze-aletheia-phase4 docs-index
 
 install:
 	python -m pip install --upgrade pip
@@ -31,6 +31,11 @@ planetary:
 
 preset-guard:
 	utf-preset-guard
+
+docs-index:
+	@echo "Refreshing docs index parity snapshot..."
+	@python scripts/archive_sigillin.py --recount --recount-targets docs --dry-run
+	@echo "✅ docs-index check complete"
 
 release: lint test typecheck crep-guard build
 	@echo "ΔAIC guards aligned; CREP/τ* safety verified; release bundle ready."

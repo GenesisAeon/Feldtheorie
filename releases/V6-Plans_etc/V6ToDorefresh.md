@@ -2499,3 +2499,14 @@ tail -1 logs/type_vi_detections.jsonl | jq keys
 - ✅ Validation/Test | 🔧 Implementation | 📝 Documentation
 - 🔬 Research | 📊 Visualization | 🔗 Integration
 - ⚠️ Critical/Falsifiable | 💡 Insight/Hypothesis
+
+
+### [Priority 0] v6r-reorder-wave-2026-02-07
+**Reorder-Welle P0/P1: ToDorefresh Synchronisation mit Finalize + V2-Plan**
+
+**Status:** 🟢 Completed (2026-02-07)
+
+**R → Θ:** Reorder-Empfehlungen in ToDorefresh gespiegelt; V2-Plan-Laternen und README-Gaps als abgearbeitete Strukturaufgabe verankert.
+
+**Next Steps:**
+- P2 (docs-index + nox interpreter fallback) im CI-Lauf dauerhaft verankern.
