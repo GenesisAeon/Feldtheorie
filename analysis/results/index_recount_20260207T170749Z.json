@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "generated_at": "2026-02-07T17:07:49Z",
+    "base_path": "/workspace/Feldtheorie",
+    "order_parameter_R": "index parity delta",
+    "threshold_Theta": "filesystem counts",
+    "beta": 4.8,
+    "zeta": "σ(β(R-Θ)) guard for index parity"
+  },
+  "indices": [
+    {
+      "index": "docs",
+      "directory": "docs/",
+      "counts": {
+        "filesystem": 3,
+        "listed": 33
+      },
+      "delta": -30,
+      "missing_files": [
+        "AGENTS.md",
+        "utac_status_alignment_v1.2.md"
+      ],
+      "orphan_entries": [
+        "narrative/claude_code_handoff.md",
+        "narrative/metaquest_parity_brief.md",
+        "narrative/repo_cleanup_resonance.md",
+        "narrative/reviews/feldtheorie_repo_feedback_2026-02-05.md",
+        "narrative/theoretical_mirror_framework.md",
+        "narrative/utac_activation_backlog.md",
+        "narrative/utac_v2_activation_tracker_2026-02.md",
+        "narrative/utac_v2_activation_tracker_2026-03.md",
+        "narrative/utac_v2_activation_tracker_2026-05.md",
+        "narrative/utac_v2_activation_tracker_2026-06.md",
+        "narrative/utac_v2_activation_tracker_2026-07.md",
+        "narrative/utac_v2_activation_tracker_2026-08.md",
+        "narrative/utac_v2_data_lanterns.md",
+        "narrative/utac_v2_gap_synopsis_2026-03.md",
+        "narrative/zenodo_multilingual_abstract_v1.2.md",
+        "narrative/zenodo_release_playbook.md",
+        "science/README.md",
+        "science/UTAC_v2.0_Coherence_Formula.md",
+        "science/appendix_field_types.md",
+        "science/deep_research_index.md",
+        "science/field_type_classification_v1.1.md",
+        "science/resonance-bridge-map.md",
+        "science/sigillin_maintenance.md",
+        "science/sigillin_search_patterns.md",
+        "science/utac_applications.md",
+        "science/utac_emergence_universal.md",
+        "science/utac_falsifiability.md",
+        "science/utac_review_considerations.md",
+        "science/utac_safety_delay_status.md",
+        "science/utac_status_alignment_v1.2.md",
+        "science/utac_theory_core.md",
+        "science/validation_report_v1.0.1.md"
+      ],
+      "meta_updates": {
+        "yaml": {
+          "markdown_files": "3",
+          "updated": "\"2026-02-07T15:25:43Z\""
+        },
+        "json": {
+          "markdown_files": 3,
+          "updated": "2026-02-07T15:25:43Z"
+        }
+      },
+      "logistic": {
+        "beta": 4.8,
+        "zeta": "docs-index parity damping"
+      }
+    }
+  ]
+}
