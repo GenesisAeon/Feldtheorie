@@ -23,6 +23,8 @@ from typing import Any
 
 import numpy as np
 
+from theory.afet import AFETConstants
+
 logger = logging.getLogger(__name__)
 
 
@@ -33,8 +35,8 @@ class Nullkern:
     (bias damping in latent modes).
     """
 
-    SIGMA_PHI_BUFFER = 0.0625
-    AXIOM_STABILITY_BETA = 37.6
+    SIGMA_PHI_BUFFER = AFETConstants.SIGMA_PHI
+    AXIOM_STABILITY_BETA = AFETConstants.BETA_CRITICAL
 
     def __init__(
         self,
@@ -155,7 +157,7 @@ class Nullkern:
         return float(np.clip(density, 0.0, 1.0))
 
     def compute_v_rig_effective(self) -> float:
-        v_rig_base = 1352.0
+        v_rig_base = AFETConstants.V_RIG * 1000.0
         if self.state.beta == 0.0:
             return v_rig_base * 10.0
         v_rig_eff = v_rig_base * self.kappa * (1.0 / self.state.beta)
@@ -200,9 +202,7 @@ class Nullkern:
     # Mathematical formalization: continuous-time ODE system
     # ------------------------------------------------------------------
 
-    def get_continuous_dynamics(
-        self, resource: float, threshold: float = 0.5
-    ) -> dict[str, float]:
+    def get_continuous_dynamics(self, resource: float, threshold: float = 0.5) -> dict[str, float]:
         """Compute the continuous-time derivatives of the state vector.
 
         The ODE system models:
@@ -232,9 +232,7 @@ class Nullkern:
             "sigma": sigma,
         }
 
-    def compute_jacobian(
-        self, resource: float, threshold: float = 0.5
-    ) -> np.ndarray:
+    def compute_jacobian(self, resource: float, threshold: float = 0.5) -> np.ndarray:
         """Compute the 3×3 Jacobian of the ODE system at the current state.
 
         J = ∂(dβ/dt, dκ/dt, dr/dt) / ∂(β, κ, r)
@@ -242,11 +240,13 @@ class Nullkern:
         Evaluated numerically via central finite differences.
         """
         eps = 1e-6
-        state_vec = np.array([
-            float(self.state.beta),
-            float(self.kappa),
-            float(self.state.resonance),
-        ])
+        state_vec = np.array(
+            [
+                float(self.state.beta),
+                float(self.kappa),
+                float(self.state.resonance),
+            ]
+        )
         jac = np.zeros((3, 3))
 
         for j in range(3):
@@ -258,9 +258,7 @@ class Nullkern:
 
         return jac
 
-    def analyze_stability(
-        self, resource: float, threshold: float = 0.5
-    ) -> dict[str, Any]:
+    def analyze_stability(self, resource: float, threshold: float = 0.5) -> dict[str, Any]:
         """Analyze local stability of the current state via eigenvalue analysis.
 
         Returns eigenvalues of the Jacobian, stability flag, and a Lyapunov
@@ -292,7 +290,7 @@ class Nullkern:
         beta = float(self.state.beta)
         kappa = float(self.kappa)
         resonance = float(self.state.resonance)
-        return 0.5 * (beta ** 2 + (kappa - sigma) ** 2 + (resonance - kappa * sigma) ** 2)
+        return 0.5 * (beta**2 + (kappa - sigma) ** 2 + (resonance - kappa * sigma) ** 2)
 
     def _ode_rhs(
         self,
@@ -312,11 +310,13 @@ class Nullkern:
         alpha_kappa = 0.05
         alpha_resonance = 0.08
 
-        return np.array([
-            -alpha_beta * beta * (1.0 - sigma),
-            -alpha_kappa * (kappa - sigma),
-            -alpha_resonance * (resonance - kappa * sigma),
-        ])
+        return np.array(
+            [
+                -alpha_beta * beta * (1.0 - sigma),
+                -alpha_kappa * (kappa - sigma),
+                -alpha_resonance * (resonance - kappa * sigma),
+            ]
+        )
 
     def register_consent(self, token: str, scope: str = "shadow_mode") -> dict[str, Any]:
         """Register a Sigillin consent token for ethical traceability.
@@ -354,7 +354,7 @@ class Nullkern:
         sigma_phi_buffer: float = SIGMA_PHI_BUFFER,
         axiom_beta: float = AXIOM_STABILITY_BETA,
     ) -> dict[str, Any]:
-        """Run recursive self-validation around beta=37.6 with sigma_Phi guard band."""
+        """Run recursive self-validation around beta=AFETConstants.BETA_CRITICAL with sigma_Phi guard band."""
         if recursion_depth < 1:
             raise ValueError("recursion_depth must be >= 1")
 

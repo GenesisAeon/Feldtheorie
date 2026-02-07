@@ -11,6 +11,8 @@ from typing import Any
 
 import numpy as np
 
+from theory.afet import AFETConstants
+
 from aeon.nullkern.zero_point_kernel import Nullkern
 
 logger = logging.getLogger(__name__)
@@ -30,7 +32,7 @@ class AeonShell:
         max_agents: int = 100,
         trajectory_max_length: int = 1000,
         zeta_damping: float = 0.85,
-        v_rig_offset_km_s: float = 1.352,
+        v_rig_offset_km_s: float = AFETConstants.V_RIG,
         frame_principle_active: bool = True,
     ) -> None:
         self.kernel = kernel
@@ -58,9 +60,7 @@ class AeonShell:
 
     def add_agent(self, agent: Any) -> None:
         if len(self.agents) >= self.max_agents:
-            raise ValueError(
-                f"Cannot add agent: max_agents limit ({self.max_agents}) reached"
-            )
+            raise ValueError(f"Cannot add agent: max_agents limit ({self.max_agents}) reached")
         self.agents.append(agent)
         self._record_trajectory_point()
 
@@ -164,17 +164,19 @@ class AeonShell:
         for _ in range(steps):
             self.evolve(steps=1, delta_time=compressed_delta)
             v_rig_eff = self.kernel.compute_v_rig_effective() + self.v_rig_offset_km_s
-            v_rig_base = 1352.0 + self.v_rig_offset_km_s
+            v_rig_base = AFETConstants.V_RIG * 1000.0 + self.v_rig_offset_km_s
             offset = v_rig_eff - v_rig_base
             v_rig_offsets.append(offset)
             beta_trace.append(float(self.kernel.state.beta))
 
-            self.v_rig_offset_log.append({
-                "timestamp": time.time(),
-                "v_rig_effective": v_rig_eff,
-                "offset": offset,
-                "compression_factor": compression_factor,
-            })
+            self.v_rig_offset_log.append(
+                {
+                    "timestamp": time.time(),
+                    "v_rig_effective": v_rig_eff,
+                    "offset": offset,
+                    "compression_factor": compression_factor,
+                }
+            )
 
         return {
             "compression_factor": compression_factor,
@@ -211,7 +213,9 @@ class AeonShell:
             self.frame_principle_log.append(violation)
             logger.warning(
                 "Frame Principle violation: phase=%s zeta=%.4f density=%.4f",
-                phase, zeta, info_density,
+                phase,
+                zeta,
+                info_density,
             )
 
             # Increase zeta damping to stabilise
@@ -219,12 +223,14 @@ class AeonShell:
 
         # Collapse prevention: if density is extreme during Bardo, force exit
         if phase in critical_phases and info_density > 0.98:
-            self.safeguard_violations.append({
-                "timestamp": time.time(),
-                "type": "frame_principle_density_collapse",
-                "value": info_density,
-                "phase": phase,
-            })
+            self.safeguard_violations.append(
+                {
+                    "timestamp": time.time(),
+                    "type": "frame_principle_density_collapse",
+                    "value": info_density,
+                    "phase": phase,
+                }
+            )
 
     def _check_safeguards(self, resource: float) -> None:
         zeta = self.kernel.compute_impedance(resource)
@@ -301,7 +307,11 @@ class AeonShell:
 
             resonances = [getattr(a, "resonance", 0.5) for a in self.agents]
             beta_sync = np.std(resonances) / np.mean(resonances) if np.mean(resonances) > 0 else 0.0
-            v_collective = (1352.0 + self.v_rig_offset_km_s) * kappa_field * (1.0 / max(beta_sync, 0.1))
+            v_collective = (
+                (AFETConstants.V_RIG * 1000.0 + self.v_rig_offset_km_s)
+                * kappa_field
+                * (1.0 / max(beta_sync, 0.1))
+            )
 
             return {
                 "kappa_field": float(kappa_field),
