@@ -67,6 +67,8 @@ Let me run the skeleton builder..."
 python setup/universal_skeleton_builder.py <target_directory> \
   --domain <domain> \
   --metrics <metric_system> \
+  --mode <standalone|feldtheorie> \
+  --script-source <auto|stub|champollion> \
   --verbose
 ```
 
@@ -76,6 +78,8 @@ python setup/universal_skeleton_builder.py <target_directory> \
 |-----------|---------|-------------|
 | `--domain` | physics, biology, business, engineering, literature, general | Match user's field |
 | `--metrics` | `crep` (research), `roi` (business), `kpi` (engineering) | Match user's priorities |
+| `--mode` | `standalone`, `feldtheorie` | `feldtheorie` for repo-aware integration |
+| `--script-source` | `auto`, `stub`, `champollion` | `champollion` when real engine should be copied |
 | `--verbose` | flag | Always use for user transparency |
 
 **Example:**
@@ -85,13 +89,33 @@ python setup/universal_skeleton_builder.py <target_directory> \
 python setup/universal_skeleton_builder.py ~/my-physics-repo \
   --domain physics \
   --metrics crep \
+  --mode standalone \
+  --script-source stub \
   --verbose
 
 # For a business analytics project
 python setup/universal_skeleton_builder.py ~/quarterly-reports \
   --domain business \
   --metrics roi \
+  --mode feldtheorie \
+  --script-source champollion \
   --verbose
+```
+
+---
+
+### Step 2.5: Select Integration Mode
+
+Choose whether the user needs a generic skeleton or a Feldtheorie-integrated scaffold:
+
+- **standalone + stub**: external projects, minimal dependencies
+- **feldtheorie + champollion**: full engine integration (copies `modules/champollion/{scripts,engines,templates}` and installs wrappers in `scripts/`)
+
+For CI/non-interactive environments, prefer:
+
+```bash
+python setup/universal_skeleton_builder.py <target_directory> \
+  --non-interactive --force
 ```
 
 ---

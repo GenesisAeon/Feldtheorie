@@ -49,6 +49,7 @@ AUTHOR: Feldtheorie Framework (adapted from v5.0.0)
 import argparse
 import json
 import logging
+import shutil
 import sys
 from pathlib import Path
 
@@ -65,12 +66,23 @@ class UniversalSkeletonBuilder:
         target_path: Path,
         domain: str = "general",
         metrics: str = "crep",
+        mode: str = "standalone",
+        script_source: str = "auto",
+        force: bool = False,
+        non_interactive: bool = False,
+        with_feldtheorie_charter: bool = False,
         verbose: bool = False,
     ):
         self.target = target_path
         self.domain = domain
         self.metrics = metrics
+        self.mode = mode
+        self.script_source = self._resolve_script_source(script_source, mode)
+        self.force = force
+        self.non_interactive = non_interactive
+        self.with_feldtheorie_charter = with_feldtheorie_charter
         self.verbose = verbose
+        self.repo_root = Path(__file__).resolve().parent.parent
 
         if verbose:
             logger.setLevel(logging.DEBUG)
@@ -85,6 +97,8 @@ class UniversalSkeletonBuilder:
             self._generate_config_files()
             self._create_dummy_artifacts()
             self._install_base_scripts()
+            self._copy_setup_docs()
+            self._install_charter_seed()
             self._generate_root_readme()
 
             logger.info("✅ Skeleton successfully created!")
@@ -100,6 +114,13 @@ class UniversalSkeletonBuilder:
         """Ensure target directory is safe to use."""
         if self.target.exists():
             if any(self.target.iterdir()):
+                if self.force:
+                    logger.warning(f"⚠️  Directory {self.target} is not empty. Continuing due to --force")
+                    return
+                if self.non_interactive:
+                    raise RuntimeError(
+                        f"Target directory {self.target} is not empty. Use --force to continue in non-interactive mode."
+                    )
                 response = input(f"⚠️  Directory {self.target} is not empty. Continue? [y/N]: ")
                 if response.lower() != "y":
                     logger.info("Build cancelled.")
@@ -107,6 +128,12 @@ class UniversalSkeletonBuilder:
         else:
             self.target.mkdir(parents=True, exist_ok=True)
             logger.debug(f"Created target directory: {self.target}")
+
+    def _resolve_script_source(self, script_source: str, mode: str) -> str:
+        """Resolve script source strategy, with mode-aware defaults."""
+        if script_source != "auto":
+            return script_source
+        return "champollion" if mode == "feldtheorie" else "stub"
 
     def _create_directory_structure(self) -> None:
         """Create the Diamond Architecture folder hierarchy."""
@@ -149,6 +176,13 @@ class UniversalSkeletonBuilder:
         governance_path.write_text(governance_config)
         logger.debug(f"  ✓ {governance_path.name}")
 
+        if self.script_source == "champollion":
+            core_definition = self.repo_root / "config" / "sigillin_core_definition.yaml"
+            if core_definition.exists():
+                destination = self.target / "config" / "sigillin_core_definition.yaml"
+                shutil.copy2(core_definition, destination)
+                logger.debug("  ✓ sigillin_core_definition.yaml")
+
     def _get_metrics_template(self) -> str:
         """Generate metrics configuration based on selected system."""
         if self.metrics == "crep":
@@ -162,7 +196,7 @@ class UniversalSkeletonBuilder:
 
     def _get_crep_metrics(self) -> str:
         """CREP metrics template (default for research/theory)."""
-        return """# =============================================================================
+        return f"""# =============================================================================
 # SIGILLIN METRICS CONFIGURATION - CREP Framework
 # =============================================================================
 #
@@ -178,7 +212,7 @@ class UniversalSkeletonBuilder:
 project_meta:
   name: "Your Project Name"
   version: "1.0.0"
-  domain: "general"
+  domain: "{self.domain}"
   ontology: "Tri-Layer (Machine/Logic/Narrative)"
 
 active_metrics:
@@ -309,12 +343,12 @@ meta:
 
     def _get_roi_metrics(self) -> str:
         """ROI-focused metrics for business/finance projects."""
-        return """# Business Metrics Template (ROI-focused)
+        return f"""# Business Metrics Template (ROI-focused)
 # Adapt this for financial, business, or investment projects
 
 project_meta:
   name: "Your Business Project"
-  domain: "business"
+  domain: "{self.domain}"
 
 active_metrics:
   P:
@@ -352,12 +386,12 @@ meta:
 
     def _get_kpi_metrics(self) -> str:
         """KPI template for tech/engineering projects."""
-        return """# Technical KPI Template
+        return f"""# Technical KPI Template
 # For software engineering, DevOps, or technical operations
 
 project_meta:
   name: "Your Tech Project"
-  domain: "engineering"
+  domain: "{self.domain}"
 
 active_metrics:
   Q:
@@ -553,8 +587,12 @@ This is a **placeholder artifact** demonstrating the tri-layer structure:
         logger.debug(f"  ✓ {md_path.name}")
 
     def _install_base_scripts(self) -> None:
-        """Create minimal script stubs (users can replace with full versions)."""
+        """Install indexing and governance scripts for selected source strategy."""
         logger.info("🔧 Installing base scripts...")
+
+        if self.script_source == "champollion":
+            self._install_champollion_scripts()
+            return
 
         # Minimal indexer stub
         indexer_stub = """#!/usr/bin/env python3
@@ -661,6 +699,93 @@ if __name__ == "__main__":
         governance_path.write_text(governance_stub)
         governance_path.chmod(0o755)
         logger.debug(f"  ✓ {governance_path.name} (stub)")
+
+    def _install_champollion_scripts(self) -> None:
+        """Install production-grade Champollion scripts with compatible layout."""
+        source_root = self.repo_root / "modules" / "champollion"
+        if not source_root.exists():
+            raise RuntimeError(
+                "Champollion sources are unavailable in this repository. "
+                "Use --script-source stub to generate placeholder scripts."
+            )
+
+        target_champollion = self.target / "modules" / "champollion"
+        for relative_dir in ("scripts", "engines", "templates"):
+            src_dir = source_root / relative_dir
+            dst_dir = target_champollion / relative_dir
+            shutil.copytree(src_dir, dst_dir, dirs_exist_ok=True)
+            logger.debug(f"  ✓ copied modules/champollion/{relative_dir}/")
+
+        wrapper_indexer = """#!/usr/bin/env python3
+from pathlib import Path
+import os
+import runpy
+
+if __name__ == "__main__":
+    project_root = Path(__file__).resolve().parent.parent
+    os.chdir(project_root)
+    script = project_root / "modules" / "champollion" / "scripts" / "recursive_diamond_indexer.py"
+    runpy.run_path(str(script), run_name="__main__")
+"""
+
+        wrapper_governance = """#!/usr/bin/env python3
+from pathlib import Path
+import os
+import runpy
+
+if __name__ == "__main__":
+    project_root = Path(__file__).resolve().parent.parent
+    os.chdir(project_root)
+    script = project_root / "modules" / "champollion" / "scripts" / "fractal_governance.py"
+    runpy.run_path(str(script), run_name="__main__")
+"""
+
+        indexer_path = self.target / "scripts" / "recursive_diamond_indexer.py"
+        governance_path = self.target / "scripts" / "fractal_governance.py"
+        indexer_path.write_text(wrapper_indexer)
+        governance_path.write_text(wrapper_governance)
+        indexer_path.chmod(0o755)
+        governance_path.chmod(0o755)
+        logger.debug("  ✓ recursive_diamond_indexer.py (champollion wrapper)")
+        logger.debug("  ✓ fractal_governance.py (champollion wrapper)")
+
+    def _copy_setup_docs(self) -> None:
+        """Copy setup documentation referenced by generated README."""
+        setup_dir = self.target / "setup"
+        setup_dir.mkdir(parents=True, exist_ok=True)
+        for filename in ("THEORY_OF_STRUCTURE.md", "AGENTS_BOOTSTRAP.md"):
+            source = Path(__file__).resolve().parent / filename
+            destination = setup_dir / filename
+            shutil.copy2(source, destination)
+            logger.debug(f"  ✓ setup/{filename}")
+
+    def _install_charter_seed(self) -> None:
+        """Install a minimal charter seed for cooperative governance bootstrap."""
+        if not self.with_feldtheorie_charter:
+            return
+
+        charter_path = self.target / "AGENTS.md"
+        if charter_path.exists() and not self.force:
+            logger.debug("  ↷ AGENTS.md already exists; skipping charter seed")
+            return
+
+        charter = f"""# AGENTS Charter Seed (Feldtheorie-Compatible)
+
+Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.
+
+## Governance Intent
+
+- Mode: {self.mode}
+- Script Source: {self.script_source}
+- Domain: {self.domain}
+- Metrics: {self.metrics}
+
+## Minimal Tri-Layer Rule
+
+Every new governance artifact should preserve YAML + JSON + Markdown parity whenever applicable.
+"""
+        charter_path.write_text(charter)
+        logger.debug("  ✓ AGENTS.md (charter seed)")
 
     def _generate_root_readme(self) -> None:
         """Generate a minimal README with setup instructions."""
@@ -828,13 +953,51 @@ Source:
         help="Metric system to use (crep=research, roi=business, kpi=engineering)",
     )
 
+    parser.add_argument(
+        "--mode",
+        type=str,
+        default="standalone",
+        choices=["standalone", "feldtheorie"],
+        help="Builder mode (standalone=generic template, feldtheorie=repo-aware integration)",
+    )
+
+    parser.add_argument(
+        "--script-source",
+        type=str,
+        default="auto",
+        choices=["auto", "stub", "champollion"],
+        help="Script source strategy (auto picks champollion for feldtheorie mode, else stub)",
+    )
+
+    parser.add_argument("--force", action="store_true", help="Allow non-empty target directories")
+
+    parser.add_argument(
+        "--non-interactive",
+        action="store_true",
+        help="Fail instead of prompting when target directory is non-empty",
+    )
+
+    parser.add_argument(
+        "--with-feldtheorie-charter",
+        action="store_true",
+        help="Generate a minimal AGENTS.md charter seed with consent-and-joy module",
+    )
+
     parser.add_argument("--verbose", action="store_true", help="Show detailed output")
 
     args = parser.parse_args()
 
     # Build the skeleton
     builder = UniversalSkeletonBuilder(
-        target_path=args.target, domain=args.domain, metrics=args.metrics, verbose=args.verbose
+        target_path=args.target,
+        domain=args.domain,
+        metrics=args.metrics,
+        mode=args.mode,
+        script_source=args.script_source,
+        force=args.force,
+        non_interactive=args.non_interactive,
+        with_feldtheorie_charter=args.with_feldtheorie_charter,
+        verbose=args.verbose,
     )
 
     builder.build()
