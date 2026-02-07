@@ -1,7 +1,7 @@
 meta:
   id: repo-reorderprogress-2026-02-07-a
   created_at_utc: '2026-02-07T14:41:45Z'
-  updated_at_utc: '2026-02-07T17:47:25Z'
+  updated_at_utc: '2026-02-07T22:10:00Z'
   agent: GPT-5.2-Codex
   branch_head: working
   scope: Repositoryweite Reifegrad-/Backlog-Erosion (deep-to-root)
@@ -9,7 +9,7 @@ meta:
     R_open_signal: 2434
     Theta_target_signal: 0
     beta: 4.8
-    zeta_note: Hohe Restkomplexität wegen großer Legacy-/Release-Flächen
+    zeta_note: Weiterhin hoch, aber mit dokumentierten Restclustern in Zenodo/V2-Roadmaps
     sigma_beta_r_minus_theta_estimate: 1.0
   completion:
     run_status: completed
@@ -68,11 +68,11 @@ inventory:
     hits: 66
   top_unchecked_md_files:
   - file: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
-    hits: 132
+    hits: 133
   - file: seed/SUBMISSION_ROADMAP.md
-    hits: 120
+    hits: 121
   - file: seed/NextVersionPlan/UMSETZUNGSPLAN_V2.md
-    hits: 87
+    hits: 88
   - file: seed/paper/PRE_SUBMISSION_CHECKLIST.md
     hits: 43
   - file: experiments/Phaethon_Geminiden_Bennu/STRATEGIC_ROADMAP.md
@@ -106,8 +106,8 @@ deep_to_root_checklist:
   scope: Repo-Guards & Testhygiene
   findings:
   - make preset-guard läuft grün.
-  - make docs-index Target fehlt im aktuellen Makefile.
-  - make test scheitert wegen fehlendem python3.11 Interpreter für nox.
+  - make docs-index läuft (Target vorhanden, Ergebnis aktuell mit Index-Diff-Hinweis).
+  - make test läuft mit nox/Python 3.12 grün (1021 passed).
 open_tasks_recommended:
 - priority: P0
   task: Release-V6 TODO-Konsolidierung
@@ -120,20 +120,20 @@ open_tasks_recommended:
   loci:
   - releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
   - seed/SUBMISSION_ROADMAP.md
-  status: completed_in_wave_2026-02-07
+  status: in_progress_with_documented_residuals_2026-02-07
 - priority: P1
   task: V2 Plan-Laternen bereinigen
   loci:
   - seed/NextVersionPlan/UMSETZUNGSPLAN_V2.md
   - seed/NextVersionPlan/RELEASE_CHECKLIST.md
-  status: completed_in_wave_2026-02-07
+  status: in_progress_with_documented_residuals_2026-02-07
 - priority: P1
   task: README-Gaps in aktiven Deep-Ordnern schließen
   loci:
   - seed/bedeutungssigillin/**/lanterns
   - seed/shadow_sigillin/**/lanterns
   - archive/legacy_v1_v3/seed/RoadToV.3/**
-  status: completed_in_wave_2026-02-07
+  status: completed_in_wave_2026-02-07d
 - priority: P2
   task: CI/Test-Toolchain harmonisieren
   loci:
@@ -162,7 +162,6 @@ implementation_wave:
   - P0/P1/P2 Strukturaufgaben umgesetzt
   - TriLayer TODO-Dateien mit Konsolidierungs-Entries ergänzt
   - docs-index target und nox Interpreter-Fallback eingeführt
-
 validation_followup:
   id: repo-reorderprogress-2026-02-07-c
   completed_at_utc: '2026-02-07T17:47:25Z'
@@ -174,3 +173,24 @@ validation_followup:
   notes:
   - make test passed with 1021 tests
   - patched legacy preset + consent + universe DNA compatibility
+residual_backlog:
+  as_of_utc: '2026-02-07T22:10:00Z'
+  notes: P0/P1-Laternen strukturiert; verbleibende Checkboxen bleiben bewusst als
+    nächste Welle sichtbar.
+  open_checkboxes:
+  - file: releases/V6-Plans_etc/Zenodo_Upload_Checklist.md
+    hits: 133
+  - file: seed/SUBMISSION_ROADMAP.md
+    hits: 121
+  - file: seed/NextVersionPlan/UMSETZUNGSPLAN_V2.md
+    hits: 88
+  - file: seed/NextVersionPlan/RELEASE_CHECKLIST.md
+    hits: 25
+implementation_wave_d:
+  id: repo-reorderprogress-2026-02-07-d
+  completed_at_utc: '2026-02-07T22:10:00Z'
+  summary:
+  - Legacy README-Gaps in RoadToV.3 Action + Claude-Datenpacket geschlossen
+  - Reorder-TriLayer auf konsistenten Ist-Stand aktualisiert (R1-Hygiene + Residual-Backlog)
+  - P0/P1 Restcheckboxen explizit dokumentiert statt fälschlich als vollständig geschlossen
+    markiert
