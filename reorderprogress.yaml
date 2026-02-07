@@ -1,0 +1,153 @@
+meta:
+  id: repo-reorderprogress-2026-02-07-a
+  created_at_utc: "2026-02-07T14:41:45Z"
+  updated_at_utc: "2026-02-07T14:41:45Z"
+  agent: "GPT-5.2-Codex"
+  branch_head: "102323a"
+  scope: "Repositoryweite Reifegrad-/Backlog-Erosion (deep-to-root)"
+  logistic_frame:
+    R_open_signal: 2434
+    Theta_target_signal: 0
+    beta: 4.8
+    zeta_note: "Hohe Restkomplexität wegen großer Legacy-/Release-Flächen"
+    sigma_beta_r_minus_theta_estimate: 1.0
+  completion:
+    run_status: "completed"
+    additional_run_required: false
+    rationale: "Ein Vollscan wurde durchgeführt; Ergebnisse und nächste Wellen sind dokumentiert."
+
+scan_methods:
+  commands_executed:
+    - "rg --files -g 'AGENTS.md'"
+    - "rg -n --hidden --glob '!.git' --glob '!**/node_modules/**' '(TODO|FIXME|BUG|HACK|XXX|OPEN TASK|WIP|TBD)'"
+    - "rg -n --hidden --glob '!.git' --glob '!**/node_modules/**' '^\\s*[-*]\\s*\\[ \\]' --glob '*.md'"
+    - "make preset-guard"
+    - "make docs-index"
+    - "make test"
+  notes:
+    - "Marker-Scan enthält bewusst auch Release-/Archive-Bereiche als Aufgaben-Signal."
+    - "Checkbox-Scan misst offene Markdown-Tasks, nicht automatisch Defekte."
+
+inventory:
+  totals:
+    marker_files: 367
+    marker_hits: 2434
+    unchecked_md_files: 464
+    unchecked_md_hits: 4249
+  hotspot_root_domains:
+    - path: "seed"
+      marker_hits_agg: 56
+      unchecked_hits_agg: 3522
+      interpretation: "Stärkste offene Planungs-/Roadmap-Dichte."
+    - path: "archive"
+      marker_hits_agg: 271
+      unchecked_hits_agg: 2454
+      interpretation: "Viele Legacy-Backlogs; priorisierbar nach Relevanz für aktuellen Releasezug."
+    - path: "releases"
+      marker_hits_agg: 357
+      unchecked_hits_agg: 1311
+      interpretation: "Release-Orchestrierung mit hoher TODO-Last (v6/v7 Übergänge)."
+    - path: "docs"
+      marker_hits_agg: 68
+      unchecked_hits_agg: 1012
+      interpretation: "Dokubacklog mit vielen offenen Checklist-Punkten."
+  top_marker_files:
+    - file: "releases/V6-Plans_etc/Finalize/Finalize_TODO.yaml"
+      hits: 113
+    - file: "releases/V6-Plans_etc/Finalize/Finalize_TODO.json"
+      hits: 113
+    - file: "releases/V6-Plans_etc/V6ToDorefresh.yaml"
+      hits: 100
+    - file: "releases/V6-Plans_etc/V6ToDorefresh.json"
+      hits: 100
+    - file: "experiments/experiments_todo_index.yaml"
+      hits: 66
+    - file: "experiments/experiments_todo_index.json"
+      hits: 66
+  top_unchecked_md_files:
+    - file: "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md"
+      hits: 132
+    - file: "seed/SUBMISSION_ROADMAP.md"
+      hits: 120
+    - file: "seed/NextVersionPlan/UMSETZUNGSPLAN_V2.md"
+      hits: 87
+    - file: "seed/paper/PRE_SUBMISSION_CHECKLIST.md"
+      hits: 43
+    - file: "experiments/Phaethon_Geminiden_Bennu/STRATEGIC_ROADMAP.md"
+      hits: 42
+
+deep_to_root_checklist:
+  - id: D1
+    level: "deep"
+    status: "completed"
+    scope: "Tiefe Legacy-Aktionscluster (depth>=5)"
+    findings:
+      - "archive/legacy_v1_v3/seed/RoadToV.3/Action zeigt höchste tiefe Checkbox-Dichte."
+      - "Mehrere tiefe Lantern-/Case-Ordner in Bedeutungs-/Shadow-Sigillin ohne README."
+  - id: D2
+    level: "deep"
+    status: "completed"
+    scope: "Release-Detailcluster"
+    findings:
+      - "releases/V6-Plans_etc/Finalize + Chronik enthalten dichte TODO-Strukturen."
+      - "Zenodo-/Finalisierungsdateien dominieren offene Marker."
+  - id: M1
+    level: "mid"
+    status: "completed"
+    scope: "Root-Domänenpriorisierung"
+    findings:
+      - "seed/archive/releases/docs sind die stärksten offenen Membranen."
+      - "analysis/results enthält viele Artefakte, jedoch vergleichsweise wenig textuelle TODO-Marker."
+  - id: R1
+    level: "root"
+    status: "completed"
+    scope: "Repo-Guards & Testhygiene"
+    findings:
+      - "make preset-guard läuft grün."
+      - "make docs-index Target fehlt im aktuellen Makefile."
+      - "make test scheitert wegen fehlendem python3.11 Interpreter für nox."
+
+open_tasks_recommended:
+  - priority: "P0"
+    task: "Release-V6 TODO-Konsolidierung"
+    loci:
+      - "releases/V6-Plans_etc/Finalize/Finalize_TODO.{yaml,json,md}"
+      - "releases/V6-Plans_etc/V6ToDorefresh.{yaml,json,md}"
+  - priority: "P0"
+    task: "Zenodo Upload Readiness abräumen"
+    loci:
+      - "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md"
+      - "seed/SUBMISSION_ROADMAP.md"
+  - priority: "P1"
+    task: "V2 Plan-Laternen bereinigen"
+    loci:
+      - "seed/NextVersionPlan/UMSETZUNGSPLAN_V2.md"
+      - "seed/NextVersionPlan/RELEASE_CHECKLIST.md"
+  - priority: "P1"
+    task: "README-Gaps in aktiven Deep-Ordnern schließen"
+    loci:
+      - "seed/bedeutungssigillin/**/lanterns"
+      - "seed/shadow_sigillin/**/lanterns"
+      - "archive/legacy_v1_v3/seed/RoadToV.3/**"
+  - priority: "P2"
+    task: "CI/Test-Toolchain harmonisieren"
+    loci:
+      - "Makefile + nox/python interpreter matrix"
+
+validation_model:
+  null_model: "uniform-open-items-per-domain"
+  signal_model: "observed-open-items-per-domain"
+  delta_aic: "pending (nicht berechnet in diesem Run)"
+  confidence_interval: "pending (nicht berechnet in diesem Run)"
+
+next_run_bootstrap:
+  resume_order:
+    - "releases/V6-Plans_etc"
+    - "seed/NextVersionPlan"
+    - "seed/SUBMISSION_ROADMAP.md"
+    - "docs/science/utac_status_alignment_v1.2.md (nur wenn Backlog-State verändert wurde)"
+  done_reference:
+    - "D1"
+    - "D2"
+    - "M1"
+    - "R1"
