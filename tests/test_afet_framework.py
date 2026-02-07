@@ -46,8 +46,21 @@ def test_consciousness_emergence_criterion() -> None:
 def test_beta_helpers_and_dataset_loader() -> None:
     framework = AFETFramework()
     assert framework.beta_to_peclet(AFETConstants.BETA_CRITICAL) == pytest.approx(1.0)
+    assert framework.peclet_to_beta(1.0) == pytest.approx(AFETConstants.BETA_CRITICAL)
     assert framework.critical_peclet() == pytest.approx(AFETConstants.BETA_CRITICAL)
+    assert framework.critical_entropy_density() == pytest.approx(16.0)
 
     dataset = framework.load_beta_dataset("data/derived/beta_estimates.csv")
     assert dataset
     assert {"domain", "observed_beta", "predicted_beta", "dimension"}.issubset(dataset[0].keys())
+
+
+def test_load_beta_dataset_infers_dimension_from_domain(tmp_path) -> None:
+    framework = AFETFramework()
+    dataset_path = tmp_path / "beta.csv"
+    dataset_path.write_text("domain,beta\nbiological,7.4\nllm,4.2\n", encoding="utf-8")
+
+    rows = framework.load_beta_dataset(dataset_path)
+
+    assert rows[0]["dimension"] == pytest.approx(1.0)
+    assert rows[1]["dimension"] == pytest.approx(0.0)
