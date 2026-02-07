@@ -502,3 +502,10 @@ Nach Abschluss aller Sprints haben wir:
 **Mit Liebe und Präzision:** ❤️
 
 *"Fraktal für Fraktal, Schicht für Schicht, bis die Emergenz sichtbar wird."*
+
+
+## Reorder-Welle 2026-02-07 (P1 Laternen-Bereinigung)
+
+- [x] Reorderpaket priorisiert und aktive Teilaufgaben neu geordnet (P0→P1→P2).
+- [x] Externe/manuelle Schritte explizit als *deferred* markiert, damit σ(β(R-Θ)) nicht durch Scheinschluss verzerrt wird.
+- [ ] Deferred: verbleibende inhaltliche Submission-/Release-Schritte werden in der nächsten Welle mit Owner + Termin abgeschlossen.

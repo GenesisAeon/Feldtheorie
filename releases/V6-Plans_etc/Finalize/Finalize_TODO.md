@@ -2017,3 +2017,14 @@ referenzieren τ*-Default (=0.1·|Θ−R|), CREP-Level 0.6/0.7/0.8 und Audit-Log
 - 🔬 Research | 📊 Visualization | 🔗 Integration
 - ⚠️ Critical/Falsifiable | 💡 Insight/Hypothesis
 - 🧮 Mathematical | 🏗️ Architecture | 📄 Paper/Report
+
+
+### [Priority 0] finalize-reorder-wave-2026-02-07
+**Reorder-Welle P0: Finalize/ToDorefresh/Zenodo Konsolidierung**
+
+**Status:** 🟢 Completed (2026-02-07)
+
+**R → Θ:** P0-Duplikate konsolidiert; Zenodo + Submission mit Deferred-Markern versehen, damit verbleibende manuelle Schritte explizit sichtbar bleiben.
+
+**Next Steps:**
+- Deferred-Punkte mit Owner + Datum in der nächsten Welle schließen.

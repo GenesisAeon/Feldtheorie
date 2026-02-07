@@ -2643,3 +2643,31 @@ delta_updates:
   - FIT-Brücke v6r-finalize-bridge als completed markiert und Mapping-Status auf completed-sync
     gehoben
   - Updated_at auf 2026-01-09T18:00:00Z gesetzt
+
+- id: v6r-reorder-wave-2026-02-07
+  title: Reorder-Welle P0/P1: ToDorefresh Synchronisation mit Finalize + V2-Plan
+  status: completed
+  completed_at: '2026-02-07T16:05:00Z'
+  completeness: ToDorefresh auf Reorder-Welle referenziert; V2-Planlaternen und README-Gaps als abgearbeitete Strukturaufgabe dokumentiert.
+  scope:
+  - documentation
+  - planning
+  - governance
+  logistic_profile:
+    R_target: P0/P1-Mapping über alle betroffenen Planlaternen konsistent
+    Theta_condition: Finalize_TODO, V2-Plan und README-Gaps unter gemeinsamer Wellen-ID dokumentiert
+    beta_estimate: 4.8
+    zeta_risk: niedrig bis moderat
+  next_steps:
+  - P2-Harmonisierung (docs-index/nox) im CI-Lauf verifizieren.
+  references:
+  - path: seed/NextVersionPlan/UMSETZUNGSPLAN_V2.md
+    lines:
+    - 1
+    - 260
+  - path: seed/NextVersionPlan/RELEASE_CHECKLIST.md
+    lines:
+    - 1
+    - 220
+  priority: 0
+  sprint_focus: Reorder-Synchronstatus zwischen ToDorefresh und Finalize schließen

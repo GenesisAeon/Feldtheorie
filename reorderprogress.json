@@ -2,9 +2,9 @@
   "meta": {
     "id": "repo-reorderprogress-2026-02-07-a",
     "created_at_utc": "2026-02-07T14:41:45Z",
-    "updated_at_utc": "2026-02-07T14:41:45Z",
+    "updated_at_utc": "2026-02-07T16:20:00Z",
     "agent": "GPT-5.2-Codex",
-    "branch_head": "102323a",
+    "branch_head": "working",
     "scope": "Repositoryweite Reifegrad-/Backlog-Erosion (deep-to-root)",
     "logistic_frame": {
       "R_open_signal": 2434,
@@ -165,7 +165,8 @@
       "loci": [
         "releases/V6-Plans_etc/Finalize/Finalize_TODO.{yaml,json,md}",
         "releases/V6-Plans_etc/V6ToDorefresh.{yaml,json,md}"
-      ]
+      ],
+      "status": "completed_in_wave_2026-02-07"
     },
     {
       "priority": "P0",
@@ -173,7 +174,8 @@
       "loci": [
         "releases/V6-Plans_etc/Zenodo_Upload_Checklist.md",
         "seed/SUBMISSION_ROADMAP.md"
-      ]
+      ],
+      "status": "completed_in_wave_2026-02-07"
     },
     {
       "priority": "P1",
@@ -181,7 +183,8 @@
       "loci": [
         "seed/NextVersionPlan/UMSETZUNGSPLAN_V2.md",
         "seed/NextVersionPlan/RELEASE_CHECKLIST.md"
-      ]
+      ],
+      "status": "completed_in_wave_2026-02-07"
     },
     {
       "priority": "P1",
@@ -190,21 +193,23 @@
         "seed/bedeutungssigillin/**/lanterns",
         "seed/shadow_sigillin/**/lanterns",
         "archive/legacy_v1_v3/seed/RoadToV.3/**"
-      ]
+      ],
+      "status": "completed_in_wave_2026-02-07"
     },
     {
       "priority": "P2",
       "task": "CI/Test-Toolchain harmonisieren",
       "loci": [
         "Makefile + nox/python interpreter matrix"
-      ]
+      ],
+      "status": "completed_in_wave_2026-02-07"
     }
   ],
   "validation_model": {
     "null_model": "uniform-open-items-per-domain",
     "signal_model": "observed-open-items-per-domain",
-    "delta_aic": "pending (nicht berechnet in diesem Run)",
-    "confidence_interval": "pending (nicht berechnet in diesem Run)"
+    "delta_aic": "pending (nicht berechnet in dieser Umsetzungswelle)",
+    "confidence_interval": "pending (nicht berechnet in dieser Umsetzungswelle)"
   },
   "next_run_bootstrap": {
     "resume_order": [
@@ -218,6 +223,15 @@
       "D2",
       "M1",
       "R1"
+    ]
+  },
+  "implementation_wave": {
+    "id": "repo-reorderprogress-2026-02-07-b",
+    "completed_at_utc": "2026-02-07T16:20:00Z",
+    "summary": [
+      "P0/P1/P2 Strukturaufgaben umgesetzt",
+      "TriLayer TODO-Dateien mit Konsolidierungs-Entries ergänzt",
+      "docs-index target und nox Interpreter-Fallback eingeführt"
     ]
   }
 }

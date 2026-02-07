@@ -611,3 +611,10 @@ Zenodo DOI: 10.5281/zenodo.XXXXXXX
 
 *Generated: 2025-11-13*
 *UTAC V2.0 - Emergent Steepness Project*
+
+
+## Reorder-Welle 2026-02-07 (P0 Konsolidierung)
+
+- [x] Reorderpaket priorisiert und aktive Teilaufgaben neu geordnet (P0→P1→P2).
+- [x] Externe/manuelle Schritte explizit als *deferred* markiert, damit σ(β(R-Θ)) nicht durch Scheinschluss verzerrt wird.
+- [ ] Deferred: verbleibende inhaltliche Submission-/Release-Schritte werden in der nächsten Welle mit Owner + Termin abgeschlossen.

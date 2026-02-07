@@ -72,7 +72,18 @@ class SigillinKernel:
         """Guard-rail: warn when β drifts away from the hex resonance baseline."""
         alignment = verify_hex_alignment(beta_value, tolerance=self.HEX_ALIGNMENT_TOLERANCE)
 
-        if not alignment["within_tolerance"]:
+        within_tolerance = alignment.get("within_tolerance")
+        if within_tolerance is None:
+            relative_deviation = abs(beta_value - HEX_RESONANCE_BETA) / HEX_RESONANCE_BETA
+            within_tolerance = relative_deviation <= self.HEX_ALIGNMENT_TOLERANCE
+            alignment.setdefault("relative_deviation", relative_deviation)
+            alignment.setdefault(
+                "direction",
+                "above" if beta_value > HEX_RESONANCE_BETA else "below",
+            )
+            alignment["within_tolerance"] = within_tolerance
+
+        if not within_tolerance:
             warnings.warn(
                 (
                     "Digital Physics Check (Phase 4): β deviates from the "
