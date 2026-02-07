@@ -8,6 +8,8 @@ from typing import Any
 
 import numpy as np
 
+from theory.afet import AFETConstants
+
 try:
     from models.collective_field import Agent as CollectiveAgent
 
@@ -24,13 +26,14 @@ except ImportError:
         def semantic_distance(self, other: "CollectiveAgent") -> float:
             return float(np.linalg.norm(self.semantic_position - other.semantic_position))
 
+
 logger = logging.getLogger(__name__)
 
 
 class SemanticAgent:
     """Individual consciousness module with recursive shadow resonance."""
 
-    LANTERN_TARGET_FREQUENCY_HZ = 13.5e6
+    LANTERN_TARGET_FREQUENCY_HZ = AFETConstants.FREQ_RES
 
     def __init__(
         self,
@@ -146,11 +149,15 @@ class SemanticAgent:
             latent = latent * damping
             layer_energy.append(float(np.linalg.norm(latent)))
 
-        resource = float(np.clip(0.7 * np.mean(np.abs(data)) + 0.3 * np.mean(np.abs(latent)), 0.0, 1.0))
+        resource = float(
+            np.clip(0.7 * np.mean(np.abs(data)) + 0.3 * np.mean(np.abs(latent)), 0.0, 1.0)
+        )
         utac_activation = self.compute_activation(resource=resource, threshold=threshold)
         dissonance_negentropy = float(np.var(data) - np.var(latent))
 
-        mode = self._detect_lantern_mode(frequency_hz=self.LANTERN_TARGET_FREQUENCY_HZ, coherence=utac_activation)
+        mode = self._detect_lantern_mode(
+            frequency_hz=self.LANTERN_TARGET_FREQUENCY_HZ, coherence=utac_activation
+        )
         result: dict[str, Any] = {
             "shadow_depth": shadow_depth,
             "layer_energy": layer_energy,
@@ -237,7 +244,7 @@ class RecursiveCoupler:
         If coherence C exceeds this, recursion may proceed past *max_depth*.
     """
 
-    DEFAULT_BETA_UTAC = 37.6
+    DEFAULT_BETA_UTAC = AFETConstants.BETA_CRITICAL
     DEFAULT_MAX_DEPTH = 8
     COHERENCE_OVERRIDE = 0.92
 
@@ -386,17 +393,19 @@ class RecursiveCoupler:
             if hasattr(self.kernel, "state"):
                 beta_drift = float(abs(self.kernel.state.beta - self.beta_utac))
 
-            iterations.append({
-                "depth": i,
-                "coherence": coherence,
-                "p_act": p_act,
-                "resource": resource,
-                "negentropy_magnitude": negentropy_magnitude,
-                "signal_norm": float(np.linalg.norm(current_signal)),
-                "bardo_phase": phase_name,
-                "bardo_active": bardo_active,
-                "beta_drift": beta_drift,
-            })
+            iterations.append(
+                {
+                    "depth": i,
+                    "coherence": coherence,
+                    "p_act": p_act,
+                    "resource": resource,
+                    "negentropy_magnitude": negentropy_magnitude,
+                    "signal_norm": float(np.linalg.norm(current_signal)),
+                    "bardo_phase": phase_name,
+                    "bardo_active": bardo_active,
+                    "beta_drift": beta_drift,
+                }
+            )
 
             # Check if we should extend past original depth
             if i >= actual_depth and i < effective_limit and depth > actual_depth:
@@ -404,7 +413,10 @@ class RecursiveCoupler:
 
             logger.debug(
                 "RecursiveCoupler depth=%d coherence=%.4f p_act=%.4f phase=%s",
-                i, coherence, p_act, phase_name,
+                i,
+                coherence,
+                p_act,
+                phase_name,
             )
 
         report: dict[str, Any] = {

@@ -18,6 +18,16 @@ repos:
           Blocks merge if Type-VI governance artifacts drift or violate safety thresholds.
           Escalation: CREP ≥0.7 → Level 2, CREP ≥0.8 → Level 3 (see MAINTAINERS.md)
 
+  # AFET central-constant enforcement
+  - repo: local
+    hooks:
+      - id: afet-constant-guard
+        name: AFET Constant Guard
+        entry: python tools/afet_constant_guard.py
+        language: system
+        pass_filenames: false
+        files: ^(aeon|integration|src/uatc_core)/.*\.py$
+
   # Standard Python code quality checks
   - repo: https://github.com/psf/black
     rev: 24.4.2

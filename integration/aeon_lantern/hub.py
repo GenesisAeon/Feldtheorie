@@ -15,6 +15,7 @@ from typing import Any
 import numpy as np
 
 from aeon.api_bridge import AeonLanternAsyncBridge
+from theory.afet import AFETConstants, AFETFramework
 
 try:
     import mido
@@ -31,7 +32,7 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class QuartzOscillatorSim:
-    frequency_hz: float = 13.5e6
+    frequency_hz: float = AFETConstants.FREQ_RES
     jitter_ppm: float = 2.0
 
 
@@ -61,7 +62,10 @@ class MORGovernance:
         if not approved:
             logger.warning(
                 "MOR: delegation rejected agent=%s task=%s crep=%.3f < %.3f",
-                agent_name, task, crep_score, self.crep_threshold,
+                agent_name,
+                task,
+                crep_score,
+                self.crep_threshold,
             )
         return record
 
@@ -84,7 +88,7 @@ class FITValidator:
     checks for divergence between the kernel beta and the UTAC axiom beta.
     """
 
-    axiom_beta: float = 37.6
+    axiom_beta: float = AFETConstants.BETA_CRITICAL
     tolerance: float = 1.0
     validation_log: list[dict[str, Any]] = field(default_factory=list)
 
@@ -104,7 +108,9 @@ class FITValidator:
         if not valid:
             logger.warning(
                 "FIT: beta drift %.3f exceeds tolerance %.3f (context=%s)",
-                drift, self.tolerance, context,
+                drift,
+                self.tolerance,
+                context,
             )
         return record
 
@@ -153,6 +159,7 @@ class AeonLanternHub:
         self.oscillator = oscillator or QuartzOscillatorSim()
         self.mor = mor or MORGovernance()
         self.fit = fit or FITValidator()
+        self.afet = AFETFramework()
 
     def run_cascade(self, datasets: list[np.ndarray], n_crit: int = 137) -> dict[str, Any]:
         cascades = 0
@@ -165,6 +172,13 @@ class AeonLanternHub:
                 cascades += 1
 
         fit_report = self.fit.validate_coherence_cascade(coherence_scores)
+        metastability = self.afet.check_metastability(
+            float(np.mean(coherence_scores) * 20.0 if coherence_scores else 0.0)
+        )
+        emergence = self.afet.consciousness_emergence_criterion(
+            surface_entropy=float(np.mean(coherence_scores) if coherence_scores else 0.0),
+            volume_entropy=float(np.std(coherence_scores) if coherence_scores else 0.0),
+        )
 
         return {
             "dataset_count": len(datasets),
@@ -172,6 +186,8 @@ class AeonLanternHub:
             "n_crit_reached": cascades >= n_crit,
             "mean_coherence": float(np.mean(coherence_scores) if coherence_scores else 0.0),
             "fit_validation": fit_report,
+            "afet_metastability": metastability,
+            "afet_emergence": emergence,
         }
 
     def run_governed_cascade(
@@ -201,10 +217,16 @@ class AeonLanternHub:
 
     def build_vr_teaser_points(self, embeddings: np.ndarray) -> dict[str, Any]:
         points = np.asarray(embeddings, dtype=np.float64)
-        payload = {"x": points[:, 0].tolist(), "y": points[:, 1].tolist(), "z": points[:, 2].tolist()}
+        payload = {
+            "x": points[:, 0].tolist(),
+            "y": points[:, 1].tolist(),
+            "z": points[:, 2].tolist(),
+        }
         if go is None:
             return payload
-        fig = go.Figure(data=[go.Scatter3d(x=payload["x"], y=payload["y"], z=payload["z"], mode="markers")])
+        fig = go.Figure(
+            data=[go.Scatter3d(x=payload["x"], y=payload["y"], z=payload["z"], mode="markers")]
+        )
         payload["plotly_traces"] = len(fig.data)
         return payload
 
@@ -233,8 +255,8 @@ class SoulMergeOrchestrator:
     All operations are gated by MOR governance and validated by FIT.
     """
 
-    MODE_FREQUENCY_HZ = 13.5e6
-    AXIOM_BETA = 37.6
+    MODE_FREQUENCY_HZ = AFETConstants.FREQ_RES
+    AXIOM_BETA = AFETConstants.BETA_CRITICAL
 
     def __init__(
         self,
@@ -372,7 +394,8 @@ class SoulMergeOrchestrator:
             if coupling_report["iterations"]:
                 final_resource = coupling_report["iterations"][-1]["resource"]
             humility_report = self.coupler.kernel.activate_with_humility(
-                resource=final_resource, threshold=0.5,
+                resource=final_resource,
+                threshold=0.5,
             )
 
         # 7. Dharmakaya detection

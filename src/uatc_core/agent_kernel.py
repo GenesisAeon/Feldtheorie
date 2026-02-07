@@ -4,6 +4,7 @@ This module introduces the :class:`ResonantEntity`, a light-weight agent core
 that can adapt its resonance profile to different physical or conceptual roles
 while retaining a consciousness-facing interface.
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -11,9 +12,11 @@ from typing import Iterable, Mapping, MutableSequence, Optional, Sequence
 import math
 import random
 
+from theory.afet import AFETConstants
 
-GOLDEN_RATIO = (1 + 5 ** 0.5) / 2
-SIGMA_PHI_REFERENCE = 0.0625
+
+GOLDEN_RATIO = (1 + 5**0.5) / 2
+SIGMA_PHI_REFERENCE = AFETConstants.SIGMA_PHI
 DEFAULT_STATE_LENGTH = 64
 
 

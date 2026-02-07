@@ -11,6 +11,8 @@ from typing import Any
 
 import numpy as np
 
+from theory.afet import AFETConstants
+
 try:
     from fastapi import APIRouter, WebSocket, WebSocketDisconnect
     from pydantic import BaseModel, Field
@@ -91,7 +93,9 @@ class AeonBridge:
 
         @self.router.get("/agents")
         async def get_agents() -> list[dict[str, Any]]:
-            return [a.get_state_summary() for a in self.shell.agents if hasattr(a, "get_state_summary")]
+            return [
+                a.get_state_summary() for a in self.shell.agents if hasattr(a, "get_state_summary")
+            ]
 
         @self.router.get("/collective")
         async def get_collective() -> dict[str, Any]:
@@ -129,9 +133,9 @@ class AeonBridge:
 class AeonLanternAsyncBridge:
     """High-throughput async EM↔Aeon bridge with zero-copy buffer semantics."""
 
-    MODE_FREQUENCY_HZ = 13.5e6
+    MODE_FREQUENCY_HZ = AFETConstants.FREQ_RES
     SYSTEM_IMPEDANCE = 221.7
-    METASTABILITY_OFFSET = 0.0625
+    METASTABILITY_OFFSET = AFETConstants.SIGMA_PHI
 
     def __init__(
         self,
