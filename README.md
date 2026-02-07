@@ -727,6 +727,8 @@ The [`setup/`](setup/) directory contains a **production-ready builder script** 
 python setup/universal_skeleton_builder.py ~/my-new-project \
   --domain physics \
   --metrics crep \
+  --mode standalone \
+  --script-source stub \
   --verbose
 ```
 
@@ -734,8 +736,9 @@ python setup/universal_skeleton_builder.py ~/my-new-project \
 - ✅ **Diamond Architecture**: `modules/artifacts/`, `modules/context/`, `modules/navigation/`
 - ✅ **Fractal Governance**: Self-similar rules that propagate through folder hierarchies
 - ✅ **Metric Templates**: Choose CREP (research), ROI (business), or KPI (engineering)
-- ✅ **Recursive Indexer**: Bottom-up aggregation engine (stub included, full version in this repo)
+- ✅ **Recursive Indexer**: Bottom-up aggregation engine (`stub` or production `champollion` source)
 - ✅ **Tri-Layer Documentation**: YAML (machine), JSON (API), Markdown (human)
+- ✅ **Mode Split**: `standalone` for generic templates, `feldtheorie` for repo-aware integration
 
 ### Included Resources
 
