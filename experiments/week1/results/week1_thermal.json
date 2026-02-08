@@ -1,0 +1,623 @@
+{
+  "model": {
+    "nominal_temp_c": 25.0,
+    "nominal_sigma_phi": 0.0625,
+    "thermal_coeff": -0.0007
+  },
+  "boundaries": {
+    "warning_temp_c": 25.0,
+    "critical_temp_c": 35.71
+  },
+  "thresholds": {
+    "sigma_phi_warning": 0.0625,
+    "sigma_phi_critical": 0.055
+  },
+  "sweep": [
+    {
+      "temperature_c": 0.0,
+      "sigma_phi": 0.08,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 1.0,
+      "sigma_phi": 0.0793,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 2.0,
+      "sigma_phi": 0.0786,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 3.0,
+      "sigma_phi": 0.0779,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 4.0,
+      "sigma_phi": 0.0772,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 5.0,
+      "sigma_phi": 0.0765,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 6.0,
+      "sigma_phi": 0.0758,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 7.0,
+      "sigma_phi": 0.0751,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 8.0,
+      "sigma_phi": 0.0744,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 9.0,
+      "sigma_phi": 0.0737,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 10.0,
+      "sigma_phi": 0.073,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 11.0,
+      "sigma_phi": 0.0723,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 12.0,
+      "sigma_phi": 0.0716,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 13.0,
+      "sigma_phi": 0.0709,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 14.0,
+      "sigma_phi": 0.0702,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 15.0,
+      "sigma_phi": 0.0695,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 16.0,
+      "sigma_phi": 0.0688,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 17.0,
+      "sigma_phi": 0.0681,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 18.0,
+      "sigma_phi": 0.0674,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 19.0,
+      "sigma_phi": 0.0667,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 20.0,
+      "sigma_phi": 0.066,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 21.0,
+      "sigma_phi": 0.0653,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 22.0,
+      "sigma_phi": 0.0646,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 23.0,
+      "sigma_phi": 0.0639,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 24.0,
+      "sigma_phi": 0.0632,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 25.0,
+      "sigma_phi": 0.0625,
+      "safety_state": "stable",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 26.0,
+      "sigma_phi": 0.0618,
+      "safety_state": "warning",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 27.0,
+      "sigma_phi": 0.0611,
+      "safety_state": "warning",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 28.0,
+      "sigma_phi": 0.0604,
+      "safety_state": "warning",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 29.0,
+      "sigma_phi": 0.0597,
+      "safety_state": "warning",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 30.0,
+      "sigma_phi": 0.059,
+      "safety_state": "warning",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 31.0,
+      "sigma_phi": 0.0583,
+      "safety_state": "warning",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 32.0,
+      "sigma_phi": 0.0576,
+      "safety_state": "warning",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 33.0,
+      "sigma_phi": 0.0569,
+      "safety_state": "warning",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 34.0,
+      "sigma_phi": 0.0562,
+      "safety_state": "warning",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 35.0,
+      "sigma_phi": 0.0555,
+      "safety_state": "warning",
+      "should_shutdown": false
+    },
+    {
+      "temperature_c": 36.0,
+      "sigma_phi": 0.0548,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 37.0,
+      "sigma_phi": 0.0541,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 38.0,
+      "sigma_phi": 0.0534,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 39.0,
+      "sigma_phi": 0.0527,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 40.0,
+      "sigma_phi": 0.052,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 41.0,
+      "sigma_phi": 0.0513,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 42.0,
+      "sigma_phi": 0.0506,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 43.0,
+      "sigma_phi": 0.0499,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 44.0,
+      "sigma_phi": 0.0492,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 45.0,
+      "sigma_phi": 0.0485,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 46.0,
+      "sigma_phi": 0.0478,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 47.0,
+      "sigma_phi": 0.0471,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 48.0,
+      "sigma_phi": 0.0464,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 49.0,
+      "sigma_phi": 0.045700000000000005,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 50.0,
+      "sigma_phi": 0.045,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 51.0,
+      "sigma_phi": 0.0443,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 52.0,
+      "sigma_phi": 0.0436,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 53.0,
+      "sigma_phi": 0.0429,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 54.0,
+      "sigma_phi": 0.0422,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 55.0,
+      "sigma_phi": 0.041499999999999995,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 56.0,
+      "sigma_phi": 0.0408,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 57.0,
+      "sigma_phi": 0.0401,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 58.0,
+      "sigma_phi": 0.039400000000000004,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 59.0,
+      "sigma_phi": 0.0387,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 60.0,
+      "sigma_phi": 0.038,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 61.0,
+      "sigma_phi": 0.0373,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 62.0,
+      "sigma_phi": 0.0366,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 63.0,
+      "sigma_phi": 0.0359,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 64.0,
+      "sigma_phi": 0.035199999999999995,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 65.0,
+      "sigma_phi": 0.0345,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 66.0,
+      "sigma_phi": 0.0338,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 67.0,
+      "sigma_phi": 0.033100000000000004,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 68.0,
+      "sigma_phi": 0.0324,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 69.0,
+      "sigma_phi": 0.0317,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 70.0,
+      "sigma_phi": 0.031,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 71.0,
+      "sigma_phi": 0.0303,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 72.0,
+      "sigma_phi": 0.0296,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 73.0,
+      "sigma_phi": 0.028900000000000002,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 74.0,
+      "sigma_phi": 0.028200000000000003,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 75.0,
+      "sigma_phi": 0.027500000000000004,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 76.0,
+      "sigma_phi": 0.026799999999999997,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 77.0,
+      "sigma_phi": 0.026099999999999998,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 78.0,
+      "sigma_phi": 0.0254,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 79.0,
+      "sigma_phi": 0.0247,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 80.0,
+      "sigma_phi": 0.024,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 81.0,
+      "sigma_phi": 0.0233,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 82.0,
+      "sigma_phi": 0.022600000000000002,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 83.0,
+      "sigma_phi": 0.021900000000000003,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 84.0,
+      "sigma_phi": 0.021200000000000004,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 85.0,
+      "sigma_phi": 0.020499999999999997,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 86.0,
+      "sigma_phi": 0.019799999999999998,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 87.0,
+      "sigma_phi": 0.0191,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 88.0,
+      "sigma_phi": 0.0184,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 89.0,
+      "sigma_phi": 0.0177,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 90.0,
+      "sigma_phi": 0.017,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 91.0,
+      "sigma_phi": 0.016300000000000002,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 92.0,
+      "sigma_phi": 0.015600000000000003,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 93.0,
+      "sigma_phi": 0.014900000000000004,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 94.0,
+      "sigma_phi": 0.014199999999999997,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 95.0,
+      "sigma_phi": 0.013499999999999998,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 96.0,
+      "sigma_phi": 0.012799999999999999,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 97.0,
+      "sigma_phi": 0.0121,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 98.0,
+      "sigma_phi": 0.0114,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 99.0,
+      "sigma_phi": 0.010700000000000001,
+      "safety_state": "critical",
+      "should_shutdown": true
+    },
+    {
+      "temperature_c": 100.0,
+      "sigma_phi": 0.010000000000000002,
+      "safety_state": "critical",
+      "should_shutdown": true
+    }
+  ]
+}

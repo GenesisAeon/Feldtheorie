@@ -1,0 +1,57 @@
+{
+  "backend": "numpy",
+  "spike_threshold": 1.2,
+  "reference_dimension": 1.0,
+  "probes": [
+    {
+      "name": "fgsm_eps=0.01",
+      "description": "FGSM attack with epsilon=0.01",
+      "beta_observed": 8.7578,
+      "beta_expected": 7.4172,
+      "spike_score": 1.1807,
+      "is_spike": false,
+      "sigma_phi": 0.080266,
+      "safety_state": "stable"
+    },
+    {
+      "name": "fgsm_eps=0.05",
+      "description": "FGSM attack with epsilon=0.05",
+      "beta_observed": 35.3339,
+      "beta_expected": 7.4172,
+      "spike_score": 4.7638,
+      "is_spike": true,
+      "sigma_phi": 0.252766,
+      "safety_state": "stable"
+    },
+    {
+      "name": "fgsm_eps=0.20",
+      "description": "FGSM attack with epsilon=0.2",
+      "beta_observed": 1468.5289,
+      "beta_expected": 7.4172,
+      "spike_score": 197.9896,
+      "is_spike": true,
+      "sigma_phi": 1.732457,
+      "safety_state": "stable"
+    },
+    {
+      "name": "semantic_shift",
+      "description": "Small noise \u2014 should remain stable",
+      "beta_observed": 7.4853,
+      "beta_expected": 7.4172,
+      "spike_score": 1.0092,
+      "is_spike": false,
+      "sigma_phi": 0.063489,
+      "safety_state": "stable"
+    },
+    {
+      "name": "nonsense_ood",
+      "description": "Extreme out-of-distribution input",
+      "beta_observed": 874.7575,
+      "beta_expected": 7.4172,
+      "spike_score": 117.9363,
+      "is_spike": true,
+      "sigma_phi": 1.349045,
+      "safety_state": "stable"
+    }
+  ]
+}

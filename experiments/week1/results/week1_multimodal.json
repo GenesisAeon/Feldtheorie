@@ -1,0 +1,23 @@
+{
+  "backend": "numpy",
+  "scenarios": [
+    {
+      "scenario": "aligned",
+      "sigma_phi": 0.064098,
+      "safety_state": "stable",
+      "description": "Synthetic aligned logits \u2014 tight distribution"
+    },
+    {
+      "scenario": "contradictory",
+      "sigma_phi": 0.040747,
+      "safety_state": "critical",
+      "description": "Synthetic contradictory logits \u2014 wide distribution"
+    },
+    {
+      "scenario": "adversarial",
+      "sigma_phi": 0.033174,
+      "safety_state": "critical",
+      "description": "Synthetic adversarial logits \u2014 outlier injection"
+    }
+  ]
+}
