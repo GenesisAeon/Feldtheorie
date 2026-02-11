@@ -15,12 +15,54 @@ from __future__ import annotations
 import json
 import re
 from collections import Counter
-from dataclasses import dataclass, field
 from itertools import combinations
 from pathlib import Path
 from typing import Any
 
-import networkx as nx
+try:
+    import networkx as nx
+except ModuleNotFoundError:  # pragma: no cover - exercised in environments without networkx
+    nx = None
+
+
+class AttraktorGraph:
+    """Minimal weighted-undirected graph used when networkx is unavailable."""
+
+    def __init__(self) -> None:
+        self._nodes: set[str] = set()
+        self._edges: dict[tuple[str, str], dict[str, float]] = {}
+
+    def __contains__(self, node: str) -> bool:
+        return node in self._nodes
+
+    @property
+    def nodes(self) -> list[str]:
+        return sorted(self._nodes)
+
+    def add_node(self, node: str) -> None:
+        self._nodes.add(node)
+
+    def add_edge(self, a: str, b: str, *, weight: float = 1.0) -> None:
+        key = tuple(sorted((a, b)))
+        self._edges[key] = {"weight": float(weight)}
+        self._nodes.update([a, b])
+
+    def has_edge(self, a: str, b: str) -> bool:
+        return tuple(sorted((a, b))) in self._edges
+
+    def number_of_nodes(self) -> int:
+        return len(self._nodes)
+
+    def number_of_edges(self) -> int:
+        return len(self._edges)
+
+    def degree(self, node: str) -> int:
+        return sum(1 for (a, b) in self._edges if node == a or node == b)
+
+    def edges(self, data: bool = False) -> list[tuple[str, str] | tuple[str, str, dict[str, float]]]:
+        if data:
+            return [(a, b, payload) for (a, b), payload in sorted(self._edges.items())]
+        return [(a, b) for a, b in sorted(self._edges)]
 
 # ---------------------------------------------------------------------------
 # Canonical AFET terms to detect
@@ -101,13 +143,13 @@ def scan_files(directories: list[Path]) -> list[dict[str, Any]]:
 
 def build_cooccurrence_graph(
     scan_results: list[dict[str, Any]],
-) -> nx.Graph:
+) -> Any:
     """Build a weighted co-occurrence graph from scan results.
 
     Each AFET term becomes a node.  Two terms sharing a document get an
     edge whose weight equals the number of documents in which they co-occur.
     """
-    graph = nx.Graph()
+    graph: Any = nx.Graph() if nx is not None else AttraktorGraph()
     edge_counts: Counter[tuple[str, str]] = Counter()
 
     for entry in scan_results:
@@ -128,13 +170,21 @@ def build_cooccurrence_graph(
 # Metrics
 # ---------------------------------------------------------------------------
 
-def compute_graph_metrics(graph: nx.Graph) -> dict[str, dict[str, float]]:
+def compute_graph_metrics(graph: Any) -> dict[str, dict[str, float]]:
     """Compute degree, betweenness centrality, and PageRank for each node."""
     if graph.number_of_nodes() == 0:
         return {}
 
-    betweenness = nx.betweenness_centrality(graph, weight="weight")
-    pagerank = nx.pagerank(graph, weight="weight")
+    if nx is not None:
+        betweenness = nx.betweenness_centrality(graph, weight="weight")
+        pagerank = nx.pagerank(graph, weight="weight")
+    else:
+        total_degree = sum(graph.degree(node) for node in graph.nodes)
+        pagerank = {
+            node: (graph.degree(node) / total_degree if total_degree > 0 else 0.0)
+            for node in graph.nodes
+        }
+        betweenness = {node: 0.0 for node in graph.nodes}
 
     metrics: dict[str, dict[str, float]] = {}
     for node in graph.nodes:
@@ -152,7 +202,7 @@ def compute_graph_metrics(graph: nx.Graph) -> dict[str, dict[str, float]]:
 
 def export_json(
     metrics: dict[str, dict[str, float]],
-    graph: nx.Graph,
+    graph: Any,
     output_path: Path,
 ) -> None:
     """Write metrics and edge list to JSON."""
@@ -167,8 +217,10 @@ def export_json(
     output_path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
-def export_plot(graph: nx.Graph, metrics: dict[str, dict[str, float]], output_path: Path) -> None:
+def export_plot(graph: Any, metrics: dict[str, dict[str, float]], output_path: Path) -> None:
     """Render the co-occurrence graph to a PNG file."""
+    if nx is None:
+        return
     import matplotlib
 
     matplotlib.use("Agg")
@@ -202,7 +254,7 @@ def export_plot(graph: nx.Graph, metrics: dict[str, dict[str, float]], output_pa
 
 def generate_report(
     metrics: dict[str, dict[str, float]],
-    graph: nx.Graph,
+    graph: Any,
     scan_results: list[dict[str, Any]],
     output_path: Path,
 ) -> None:
