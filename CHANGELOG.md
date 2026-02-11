@@ -16,6 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Implemented Champollion decipherment heuristics (n-grams, boundary detection, coherence, ΔAIC validation) with new unit tests
 - Added Aeon v10 async EM↔Agent bridge with shared-memory zero-copy buffering, emergence telemetry endpoint, recursive shadow resonance, ζ-damped containment, and integration hub scaffolding for Vesta.V5/sonification/VR workflows
 
+## [v12.0.0] - 2026-02-11 — AFET Consolidation Release Prep
+
+### Changed
+
+- Finalized `releases/v12.0.0/` release documentation from scaffold to release-ready package.
+- Pinned canonical V11 baseline to commit `fb42ac8` and removed TODO placeholders.
+- Synchronized V12 tri-layer manifest (`yaml/json/md`) with consistent version and baseline fields.
+- Added structured pre-publication checklist including consent checkpoint and repository hygiene checks.
+- Added automated release consistency tests for V12 artifacts and trilayer parity.
+
 ---
 
 ## [v13.3.0] - 2026-02-05 — Fractal Implementation

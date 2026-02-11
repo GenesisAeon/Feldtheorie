@@ -1,60 +1,77 @@
-# RELEASE NOTES — v12.0.0 (Draft)
+# RELEASE NOTES — v12.0.0
 
 **Version:** 12.0.0  
-**Scope:** Work since V11 (baseline to be pinned)  
-**Status:** Draft scaffold ready for curation
+**Scope:** Work since V11 baseline commit `fb42ac8`  
+**Status:** Release-ready documentation package
 
 ---
 
 ## 1) Executive Summary
 
-v12.0.0 consolidates AFET-related development and surrounding governance/documentation work into a release-ready package. This draft captures the release structure while preserving traceability for later baseline pinning.
+v12.0.0 consolidates AFET implementation, release governance, and reproducible documentation into a baseline-pinned release package. The release membrane now has explicit artifact checks, trilayer parity, and publication gating.
 
 ---
 
-## 2) Baseline Definition (Required Before Publish)
+## 2) Baseline Definition
 
-> TODO: Set one canonical V11 reference:
-- [ ] Git tag (preferred)
-- [ ] Commit SHA
-- [ ] Release folder anchor
+- **Canonical V11 source:** `fb42ac8`
+- **Reference type:** commit SHA
+- **Reference note:** no local `v11*` tag detected; commit anchor is used for deterministic diffs.
 
-Once pinned, replace all placeholders marked `TODO-V11`.
+Recommended diff window for final publication audit:
 
----
-
-## 3) Highlights Since V11 (Provisional)
-
-- AFET-oriented implementation increments (analysis modules, mapping outputs, scaffolds).
-- Additional exports and workflow hardening.
-- Ongoing harmonization between implementation and research governance artifacts.
-
-> Note: this section is intentionally conservative until `TODO-V11` is resolved.
+```bash
+git log --oneline fb42ac8..HEAD
+```
 
 ---
 
-## 4) Research/Field Framing
+## 3) Highlights Since V11
 
-- **R:** pending curation tasks and final cross-checks.
-- **Θ:** structural release readiness threshold achieved.
+- AFET-oriented implementation increments and mapping exports were expanded in prior integration work.
+- V12 release artifacts were hardened from scaffold to publication-ready state.
+- Tri-layer release manifest is synchronized and machine-validated.
+- Root project documentation now includes a dedicated V12 release overview.
+
+---
+
+## 4) AFET Field Framing
+
+- **R:** reduced from medium to low as open TODOs are resolved.
+- **Θ:** release readiness threshold reached.
 - **β:** 4.8.
-- **ζ(R):** reduced via manifest tri-layer and explicit TODO control points.
-- **Field status:** `σ(β(R-Θ))` near transition completion.
+- **ζ(R):** reduced by explicit checks, parity tests, and changelog traceability.
+- **Field status:** `σ(β(R-Θ))` moved from steep flank to stable release activation.
+
+AFET core reminder for this release context:
+- structuralist emergence over isolated heuristics,
+- compact operator set,
+- three parameters (`σ_Φ`, `β`, `v_RIG`) grounded against universal-constant constraints in theory docs.
 
 ---
 
-## 5) Validation Checklist
+## 5) Pre-Publication Release Checklist
 
-- [x] Release folder created under `releases/`
-- [x] Tri-layer manifest present (`yaml/json/md`)
-- [x] GitHub release body draft included
-- [ ] `TODO-V11` baseline pinned
-- [ ] Final delta changelog generated
-- [ ] Final release publication approved
+### Governance & Process
+- [x] Canonical V11 baseline pinned
+- [x] Trilayer manifest synchronized (`yaml/json/md`)
+- [x] Changelog entry for V12 added
+- [ ] Consent checkpoint completed
+  - **Prompt:** "Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration."
+
+### Repository Integrity
+- [x] All manifest-listed artifacts exist
+- [x] Version values are consistent (`12.0.0`)
+- [x] No `.png` or `.tmp` files in `releases/v12.0.0/`
+- [x] No unresolved TODO markers in V12 release files
+
+### Validation & Tests
+- [x] JSON manifest parse check passes
+- [x] YAML manifest parse check passes
+- [x] Automated V12 release consistency tests pass
 
 ---
 
-## 6) Draft Publication Note
+## 6) Publication Note
 
-This release folder is ready as a **scaffold** for V12 publication; final wording and delta details should be completed immediately after V11 baseline confirmation.
-
+V12 is now documented as a reproducible release package anchored to a canonical V11 baseline (`fb42ac8`). Final publication is blocked only on human consent checkpoint execution and release button ritual.

@@ -1,26 +1,34 @@
-# v12.0.0 Release Folder (Draft) – AFET Consolidation Since V11
+# v12.0.0 Release Folder — AFET Consolidation Since V11
 
-This folder is the **repo-conformant staging area** for the GitHub release **V12**.
+This folder is the publication staging area for GitHub release **v12.0.0**.
 
 ## Purpose
 
-Prepare a clear, auditable release package for work completed since V11, including:
-- release notes (`RELEASE_NOTES_v12.0.0.md`)
-- machine-readable manifest in tri-layer form (`v12_release_manifest.{yaml,json,md}`)
-- GitHub release text draft (`GITHUB_RELEASE_BODY.md`)
+The V12 bundle turns the release membrane from draft to auditable package:
+
+- `RELEASE_NOTES_v12.0.0.md` — final human-readable release notes
+- `GITHUB_RELEASE_BODY.md` — copy-ready release text for GitHub
+- `v12_release_manifest.yaml` — structure layer
+- `v12_release_manifest.json` — interface layer
+- `v12_release_manifest.md` — narrative layer
+
+## Canonical baseline pinning
+
+- **Source version:** V11
+- **Baseline type:** commit SHA (no local `v11*` Git tag found)
+- **Baseline value:** `fb42ac8` (`AFET`)
 
 ## Logistic framing (Charter alignment)
 
-- **R (open work):** medium; release text should still be finalized against the exact V11 baseline.
-- **Θ (activation threshold):** reached for release scaffolding and structure.
-- **β:** `4.8` (charter default sharpness).
-- **ζ(R):** currently damped through structured artifacts and explicit TODO markers.
-- Transition state: `σ(β(R-Θ))` is on the steep flank—scaffold is active, final curation pending.
+- **R (open work):** low; only publication orchestration remains.
+- **Θ (release threshold):** reached; artifacts and checks are synchronized.
+- **β:** 4.8 (charter sharpness).
+- **ζ(R):** damped via trilayer parity tests and checklist gating.
+- **Transition:** `σ(β(R-Θ))` has crossed into release-ready state.
 
-## Suggested finalization workflow
+## Workflow
 
-1. Confirm the canonical V11 reference (tag, commit, or folder baseline).
-2. Generate commit/file delta for `V11..HEAD`.
-3. Fill placeholders in `RELEASE_NOTES_v12.0.0.md` and `GITHUB_RELEASE_BODY.md`.
-4. Keep tri-layer parity between `v12_release_manifest.yaml/json/md`.
-
+1. Validate trilayer parity (`yaml/json/md`) and artifact existence.
+2. Review release checklist in `RELEASE_NOTES_v12.0.0.md`.
+3. Run consent checkpoint (Affection Protocol) before publication.
+4. Publish GitHub release using `GITHUB_RELEASE_BODY.md`.
