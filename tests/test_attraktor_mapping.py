@@ -10,6 +10,7 @@ from analysis.attraktor_mapping import (
     AFET_TERMS,
     build_cooccurrence_graph,
     compute_graph_metrics,
+    export_cooccurrence_matrix,
     export_csv,
     extract_terms_from_text,
     scan_files,
@@ -128,6 +129,19 @@ class TestMetrics:
 
 
 class TestExport:
+
+    def test_export_matrix_writes_square_table(self, tmp_path: Path) -> None:
+        results = [{"file": "a.md", "terms": ["UTAC", "β", "CREP"]}]
+        graph = build_cooccurrence_graph(results)
+
+        matrix_csv = tmp_path / "matrix.csv"
+        export_cooccurrence_matrix(graph, matrix_csv)
+
+        rows = matrix_csv.read_text(encoding="utf-8").strip().splitlines()
+        assert rows[0].startswith("term,")
+        assert len(rows) == graph.number_of_nodes() + 1
+        assert any(line.startswith("UTAC,") for line in rows[1:])
+
     def test_export_csv_writes_nodes_and_edges(self, tmp_path: Path) -> None:
         results = [{"file": "a.md", "terms": ["UTAC", "β", "CREP"]}]
         graph = build_cooccurrence_graph(results)

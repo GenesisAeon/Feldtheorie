@@ -66,7 +66,7 @@ class AttraktorGraph:
         return [(a, b) for a, b in sorted(self._edges)]
 
 # ---------------------------------------------------------------------------
-# Canonical AFET terms to detect
+# Canonical AFET terms/operators to detect
 # ---------------------------------------------------------------------------
 AFET_TERMS: list[str] = [
     "UTAC",
@@ -74,6 +74,9 @@ AFET_TERMS: list[str] = [
     "Bardo-Phase",
     "Diamond Architecture",
     "β",
+    "μ",
+    "ω",
+    "K₂",
     "σ_Φ",
     "v_RIG",
     "AFET",
@@ -92,9 +95,7 @@ _TERM_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
 ]
 
 # File extensions to scan
-_SCAN_EXTENSIONS: frozenset[str] = frozenset(
-    {".py", ".md", ".txt"}
-)
+_SCAN_EXTENSIONS: frozenset[str] = frozenset({".py", ".md", ".txt", ".log", ".json", ".yaml", ".yml", ".tex"})
 
 
 # ---------------------------------------------------------------------------
@@ -251,6 +252,33 @@ def export_csv(
             )
 
 
+def export_cooccurrence_matrix(
+    graph: Any,
+    output_path: Path,
+) -> None:
+    """Write a square term co-occurrence matrix to CSV."""
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    nodes = sorted(graph.nodes)
+    weights: dict[tuple[str, str], float] = {}
+    for source, target, payload in graph.edges(data=True):
+        weight = float(payload.get("weight", 1.0))
+        weights[(source, target)] = weight
+        weights[(target, source)] = weight
+
+    with output_path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["term", *nodes])
+        for row_term in nodes:
+            row = [row_term]
+            for col_term in nodes:
+                if row_term == col_term:
+                    row.append(0)
+                else:
+                    row.append(weights.get((row_term, col_term), 0))
+            writer.writerow(row)
+
+
 def export_plot(graph: Any, metrics: dict[str, dict[str, float]], output_path: Path) -> None:
     """Render the co-occurrence graph to a PNG file."""
     if nx is None:
@@ -324,7 +352,8 @@ def generate_report(
         "",
         "See `analysis/results/attraktor_mapping.json`,"
         " `analysis/results/attraktor_mapping_nodes.csv`, and"
-        " `analysis/results/attraktor_mapping_edges.csv` for raw data and"
+        " `analysis/results/attraktor_mapping_edges.csv` plus"
+        " `analysis/results/attraktor_mapping_matrix.csv` for raw data and"
         " `analysis/plots/attraktor_graph.png` for the network visualisation.",
     ]
 
@@ -353,6 +382,10 @@ def main(root: Path | None = None, dirs: list[str] | None = None) -> None:
         graph,
         root / "analysis" / "results" / "attraktor_mapping_nodes.csv",
         root / "analysis" / "results" / "attraktor_mapping_edges.csv",
+    )
+    export_cooccurrence_matrix(
+        graph,
+        root / "analysis" / "results" / "attraktor_mapping_matrix.csv",
     )
     export_plot(graph, metrics, root / "analysis" / "plots" / "attraktor_graph.png")
     generate_report(metrics, graph, scan_results, root / "docs" / "emergence" / "attraktor_mapping.md")
