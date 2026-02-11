@@ -10,6 +10,7 @@ from analysis.attraktor_mapping import (
     AFET_TERMS,
     build_cooccurrence_graph,
     compute_graph_metrics,
+    export_csv,
     extract_terms_from_text,
     scan_files,
 )
@@ -124,3 +125,22 @@ class TestMetrics:
         for node, m in metrics.items():
             if node != "UTAC":
                 assert utac_degree >= m["degree"]
+
+
+class TestExport:
+    def test_export_csv_writes_nodes_and_edges(self, tmp_path: Path) -> None:
+        results = [{"file": "a.md", "terms": ["UTAC", "β", "CREP"]}]
+        graph = build_cooccurrence_graph(results)
+        metrics = compute_graph_metrics(graph)
+
+        nodes_csv = tmp_path / "nodes.csv"
+        edges_csv = tmp_path / "edges.csv"
+        export_csv(metrics, graph, nodes_csv, edges_csv)
+
+        nodes_text = nodes_csv.read_text(encoding="utf-8")
+        edges_text = edges_csv.read_text(encoding="utf-8")
+
+        assert "term,degree,betweenness,pagerank" in nodes_text
+        assert "UTAC" in nodes_text
+        assert "source,target,weight" in edges_text
+        assert "UTAC" in edges_text

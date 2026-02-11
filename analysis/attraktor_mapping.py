@@ -13,6 +13,7 @@ Outputs:
 from __future__ import annotations
 
 import json
+import csv
 import re
 from collections import Counter
 from itertools import combinations
@@ -92,7 +93,7 @@ _TERM_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
 
 # File extensions to scan
 _SCAN_EXTENSIONS: frozenset[str] = frozenset(
-    {".py", ".md", ".txt", ".yaml", ".yml", ".json", ".rst"}
+    {".py", ".md", ".txt"}
 )
 
 
@@ -126,6 +127,10 @@ def scan_files(directories: list[Path]) -> list[dict[str, Any]]:
             continue
         for path in sorted(directory.rglob("*")):
             if not path.is_file() or path.suffix not in _SCAN_EXTENSIONS:
+                continue
+            if {"results", "plots", "__pycache__"} & set(path.parts):
+                continue
+            if "docs" in path.parts and "emergence" in path.parts:
                 continue
             try:
                 text = path.read_text(encoding="utf-8", errors="replace")
@@ -217,6 +222,35 @@ def export_json(
     output_path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
+def export_csv(
+    metrics: dict[str, dict[str, float]],
+    graph: Any,
+    metrics_path: Path,
+    edges_path: Path,
+) -> None:
+    """Write node metrics and edge weights to CSV files."""
+    metrics_path.parent.mkdir(parents=True, exist_ok=True)
+    edges_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with metrics_path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["term", "degree", "betweenness", "pagerank"])
+        writer.writeheader()
+        for term, values in sorted(metrics.items()):
+            writer.writerow({"term": term, **values})
+
+    with edges_path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["source", "target", "weight"])
+        writer.writeheader()
+        for source, target, payload in graph.edges(data=True):
+            writer.writerow(
+                {
+                    "source": source,
+                    "target": target,
+                    "weight": payload.get("weight", 1),
+                }
+            )
+
+
 def export_plot(graph: Any, metrics: dict[str, dict[str, float]], output_path: Path) -> None:
     """Render the co-occurrence graph to a PNG file."""
     if nx is None:
@@ -288,7 +322,9 @@ def generate_report(
         " in the AFET concept space. These terms bridge multiple sub-domains and stabilise"
         " the emergent vocabulary.",
         "",
-        "See `analysis/results/attraktor_mapping.json` for raw data and"
+        "See `analysis/results/attraktor_mapping.json`,"
+        " `analysis/results/attraktor_mapping_nodes.csv`, and"
+        " `analysis/results/attraktor_mapping_edges.csv` for raw data and"
         " `analysis/plots/attraktor_graph.png` for the network visualisation.",
     ]
 
@@ -312,6 +348,12 @@ def main(root: Path | None = None, dirs: list[str] | None = None) -> None:
     metrics = compute_graph_metrics(graph)
 
     export_json(metrics, graph, root / "analysis" / "results" / "attraktor_mapping.json")
+    export_csv(
+        metrics,
+        graph,
+        root / "analysis" / "results" / "attraktor_mapping_nodes.csv",
+        root / "analysis" / "results" / "attraktor_mapping_edges.csv",
+    )
     export_plot(graph, metrics, root / "analysis" / "plots" / "attraktor_graph.png")
     generate_report(metrics, graph, scan_results, root / "docs" / "emergence" / "attraktor_mapping.md")
 
