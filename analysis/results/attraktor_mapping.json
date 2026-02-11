@@ -1,606 +1,606 @@
 {
   "nodes": {
+    "AFET": {
+      "degree": 14.0,
+      "betweenness": 0.0,
+      "pagerank": 0.06666666666666667
+    },
+    "Bardo-Phase": {
+      "degree": 14.0,
+      "betweenness": 0.0,
+      "pagerank": 0.06666666666666667
+    },
     "CREP": {
       "degree": 14.0,
       "betweenness": 0.0,
-      "pagerank": 0.0888306344218987
+      "pagerank": 0.06666666666666667
     },
-    "Resonanzpfad": {
-      "degree": 14.0,
-      "betweenness": 0.01695447409733124,
-      "pagerank": 0.03471182613344356
-    },
-    "UTAC": {
+    "Diamond Architecture": {
       "degree": 14.0,
       "betweenness": 0.0,
-      "pagerank": 0.19811470845976892
-    },
-    "β": {
-      "degree": 14.0,
-      "betweenness": 0.0,
-      "pagerank": 0.21731993207468736
-    },
-    "AFET": {
-      "degree": 14.0,
-      "betweenness": 0.0015698587127158557,
-      "pagerank": 0.04385957768940161
-    },
-    "Metastabilität": {
-      "degree": 14.0,
-      "betweenness": 0.01860282574568289,
-      "pagerank": 0.02541583219412904
-    },
-    "v_RIG": {
-      "degree": 14.0,
-      "betweenness": 0.0,
-      "pagerank": 0.08145677348594318
-    },
-    "σ_Φ": {
-      "degree": 14.0,
-      "betweenness": 0.005965463108320253,
-      "pagerank": 0.04142925876085865
-    },
-    "MOR": {
-      "degree": 14.0,
-      "betweenness": 0.0,
-      "pagerank": 0.06845262937620629
-    },
-    "Implosion": {
-      "degree": 14.0,
-      "betweenness": 0.005965463108320253,
-      "pagerank": 0.04803521593346601
+      "pagerank": 0.06666666666666667
     },
     "FIT": {
       "degree": 14.0,
       "betweenness": 0.0,
-      "pagerank": 0.04638564577932866
+      "pagerank": 0.06666666666666667
+    },
+    "Implosion": {
+      "degree": 14.0,
+      "betweenness": 0.0,
+      "pagerank": 0.06666666666666667
+    },
+    "MOR": {
+      "degree": 14.0,
+      "betweenness": 0.0,
+      "pagerank": 0.06666666666666667
+    },
+    "Metastabilität": {
+      "degree": 14.0,
+      "betweenness": 0.0,
+      "pagerank": 0.06666666666666667
     },
     "Nullkern": {
       "degree": 14.0,
-      "betweenness": 0.0015698587127158557,
-      "pagerank": 0.04611596021055319
+      "betweenness": 0.0,
+      "pagerank": 0.06666666666666667
     },
-    "Bardo-Phase": {
+    "Resonanzpfad": {
       "degree": 14.0,
-      "betweenness": 0.17438513867085298,
-      "pagerank": 0.01995733516010495
-    },
-    "Diamond Architecture": {
-      "degree": 14.0,
-      "betweenness": 0.17438513867085298,
-      "pagerank": 0.01995733516010495
+      "betweenness": 0.0,
+      "pagerank": 0.06666666666666667
     },
     "Schwellenfeld": {
       "degree": 14.0,
-      "betweenness": 0.17438513867085298,
-      "pagerank": 0.01995733516010495
+      "betweenness": 0.0,
+      "pagerank": 0.06666666666666667
+    },
+    "UTAC": {
+      "degree": 14.0,
+      "betweenness": 0.0,
+      "pagerank": 0.06666666666666667
+    },
+    "v_RIG": {
+      "degree": 14.0,
+      "betweenness": 0.0,
+      "pagerank": 0.06666666666666667
+    },
+    "β": {
+      "degree": 14.0,
+      "betweenness": 0.0,
+      "pagerank": 0.06666666666666667
+    },
+    "σ_Φ": {
+      "degree": 14.0,
+      "betweenness": 0.0,
+      "pagerank": 0.06666666666666667
     }
   },
   "edges": [
     {
+      "source": "AFET",
+      "target": "Bardo-Phase",
+      "weight": 1.0
+    },
+    {
+      "source": "AFET",
+      "target": "CREP",
+      "weight": 2.0
+    },
+    {
+      "source": "AFET",
+      "target": "Diamond Architecture",
+      "weight": 1.0
+    },
+    {
+      "source": "AFET",
+      "target": "FIT",
+      "weight": 2.0
+    },
+    {
+      "source": "AFET",
+      "target": "Implosion",
+      "weight": 1.0
+    },
+    {
+      "source": "AFET",
+      "target": "MOR",
+      "weight": 4.0
+    },
+    {
+      "source": "AFET",
+      "target": "Metastabilität",
+      "weight": 10.0
+    },
+    {
+      "source": "AFET",
+      "target": "Nullkern",
+      "weight": 8.0
+    },
+    {
+      "source": "AFET",
+      "target": "Resonanzpfad",
+      "weight": 1.0
+    },
+    {
+      "source": "AFET",
+      "target": "Schwellenfeld",
+      "weight": 1.0
+    },
+    {
+      "source": "AFET",
+      "target": "UTAC",
+      "weight": 10.0
+    },
+    {
+      "source": "AFET",
+      "target": "v_RIG",
+      "weight": 9.0
+    },
+    {
+      "source": "AFET",
+      "target": "β",
+      "weight": 15.0
+    },
+    {
+      "source": "AFET",
+      "target": "σ_Φ",
+      "weight": 16.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "CREP",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "Diamond Architecture",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "FIT",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "Implosion",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "MOR",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "Metastabilität",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "Nullkern",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "Resonanzpfad",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "Schwellenfeld",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "UTAC",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "v_RIG",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "β",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "σ_Φ",
+      "weight": 1.0
+    },
+    {
+      "source": "CREP",
+      "target": "Diamond Architecture",
+      "weight": 1.0
+    },
+    {
+      "source": "CREP",
+      "target": "FIT",
+      "weight": 9.0
+    },
+    {
+      "source": "CREP",
+      "target": "Implosion",
+      "weight": 7.0
+    },
+    {
+      "source": "CREP",
+      "target": "MOR",
+      "weight": 6.0
+    },
+    {
+      "source": "CREP",
+      "target": "Metastabilität",
+      "weight": 1.0
+    },
+    {
+      "source": "CREP",
+      "target": "Nullkern",
+      "weight": 6.0
+    },
+    {
       "source": "CREP",
       "target": "Resonanzpfad",
-      "weight": 3
+      "weight": 1.0
+    },
+    {
+      "source": "CREP",
+      "target": "Schwellenfeld",
+      "weight": 1.0
     },
     {
       "source": "CREP",
       "target": "UTAC",
-      "weight": 42
+      "weight": 33.0
+    },
+    {
+      "source": "CREP",
+      "target": "v_RIG",
+      "weight": 12.0
     },
     {
       "source": "CREP",
       "target": "β",
-      "weight": 43
+      "weight": 34.0
     },
     {
       "source": "CREP",
-      "target": "AFET",
-      "weight": 3
+      "target": "σ_Φ",
+      "weight": 3.0
     },
     {
-      "source": "CREP",
+      "source": "Diamond Architecture",
+      "target": "FIT",
+      "weight": 1.0
+    },
+    {
+      "source": "Diamond Architecture",
+      "target": "Implosion",
+      "weight": 1.0
+    },
+    {
+      "source": "Diamond Architecture",
+      "target": "MOR",
+      "weight": 1.0
+    },
+    {
+      "source": "Diamond Architecture",
       "target": "Metastabilität",
-      "weight": 2
+      "weight": 1.0
     },
     {
-      "source": "CREP",
-      "target": "v_RIG",
-      "weight": 14
-    },
-    {
-      "source": "CREP",
-      "target": "σ_Φ",
-      "weight": 5
-    },
-    {
-      "source": "CREP",
-      "target": "Implosion",
-      "weight": 7
-    },
-    {
-      "source": "CREP",
-      "target": "FIT",
-      "weight": 9
-    },
-    {
-      "source": "CREP",
-      "target": "MOR",
-      "weight": 6
-    },
-    {
-      "source": "CREP",
+      "source": "Diamond Architecture",
       "target": "Nullkern",
-      "weight": 6
+      "weight": 1.0
     },
     {
-      "source": "CREP",
-      "target": "Bardo-Phase",
-      "weight": 1
-    },
-    {
-      "source": "CREP",
-      "target": "Diamond Architecture",
-      "weight": 1
-    },
-    {
-      "source": "CREP",
-      "target": "Schwellenfeld",
-      "weight": 1
-    },
-    {
-      "source": "Resonanzpfad",
-      "target": "UTAC",
-      "weight": 8
-    },
-    {
-      "source": "Resonanzpfad",
-      "target": "β",
-      "weight": 10
-    },
-    {
-      "source": "Resonanzpfad",
-      "target": "Implosion",
-      "weight": 2
-    },
-    {
-      "source": "Resonanzpfad",
-      "target": "Nullkern",
-      "weight": 6
-    },
-    {
-      "source": "Resonanzpfad",
-      "target": "v_RIG",
-      "weight": 4
-    },
-    {
-      "source": "Resonanzpfad",
-      "target": "AFET",
-      "weight": 1
-    },
-    {
-      "source": "Resonanzpfad",
-      "target": "Bardo-Phase",
-      "weight": 1
-    },
-    {
-      "source": "Resonanzpfad",
-      "target": "Diamond Architecture",
-      "weight": 1
-    },
-    {
-      "source": "Resonanzpfad",
-      "target": "FIT",
-      "weight": 1
-    },
-    {
-      "source": "Resonanzpfad",
-      "target": "MOR",
-      "weight": 1
-    },
-    {
-      "source": "Resonanzpfad",
-      "target": "Metastabilität",
-      "weight": 1
-    },
-    {
-      "source": "Resonanzpfad",
-      "target": "Schwellenfeld",
-      "weight": 1
-    },
-    {
-      "source": "Resonanzpfad",
-      "target": "σ_Φ",
-      "weight": 1
-    },
-    {
-      "source": "UTAC",
-      "target": "β",
-      "weight": 191
-    },
-    {
-      "source": "UTAC",
-      "target": "MOR",
-      "weight": 36
-    },
-    {
-      "source": "UTAC",
-      "target": "Implosion",
-      "weight": 16
-    },
-    {
-      "source": "UTAC",
-      "target": "FIT",
-      "weight": 13
-    },
-    {
-      "source": "UTAC",
-      "target": "σ_Φ",
-      "weight": 4
-    },
-    {
-      "source": "UTAC",
-      "target": "Nullkern",
-      "weight": 9
-    },
-    {
-      "source": "UTAC",
-      "target": "v_RIG",
-      "weight": 24
-    },
-    {
-      "source": "UTAC",
-      "target": "AFET",
-      "weight": 5
-    },
-    {
-      "source": "UTAC",
-      "target": "Metastabilität",
-      "weight": 2
-    },
-    {
-      "source": "UTAC",
-      "target": "Bardo-Phase",
-      "weight": 1
-    },
-    {
-      "source": "UTAC",
-      "target": "Diamond Architecture",
-      "weight": 1
-    },
-    {
-      "source": "UTAC",
-      "target": "Schwellenfeld",
-      "weight": 1
-    },
-    {
-      "source": "β",
-      "target": "AFET",
-      "weight": 11
-    },
-    {
-      "source": "β",
-      "target": "Metastabilität",
-      "weight": 3
-    },
-    {
-      "source": "β",
-      "target": "v_RIG",
-      "weight": 37
-    },
-    {
-      "source": "β",
-      "target": "σ_Φ",
-      "weight": 11
-    },
-    {
-      "source": "β",
-      "target": "MOR",
-      "weight": 36
-    },
-    {
-      "source": "β",
-      "target": "Implosion",
-      "weight": 16
-    },
-    {
-      "source": "β",
-      "target": "FIT",
-      "weight": 11
-    },
-    {
-      "source": "β",
-      "target": "Nullkern",
-      "weight": 12
-    },
-    {
-      "source": "β",
-      "target": "Bardo-Phase",
-      "weight": 1
-    },
-    {
-      "source": "β",
-      "target": "Diamond Architecture",
-      "weight": 1
-    },
-    {
-      "source": "β",
-      "target": "Schwellenfeld",
-      "weight": 1
-    },
-    {
-      "source": "AFET",
-      "target": "Metastabilität",
-      "weight": 3
-    },
-    {
-      "source": "AFET",
-      "target": "v_RIG",
-      "weight": 5
-    },
-    {
-      "source": "AFET",
-      "target": "σ_Φ",
-      "weight": 12
-    },
-    {
-      "source": "AFET",
-      "target": "Nullkern",
-      "weight": 5
-    },
-    {
-      "source": "AFET",
-      "target": "Bardo-Phase",
-      "weight": 1
-    },
-    {
-      "source": "AFET",
-      "target": "Diamond Architecture",
-      "weight": 1
-    },
-    {
-      "source": "AFET",
-      "target": "FIT",
-      "weight": 2
-    },
-    {
-      "source": "AFET",
-      "target": "Implosion",
-      "weight": 1
-    },
-    {
-      "source": "AFET",
-      "target": "MOR",
-      "weight": 2
-    },
-    {
-      "source": "AFET",
-      "target": "Schwellenfeld",
-      "weight": 1
-    },
-    {
-      "source": "Metastabilität",
-      "target": "v_RIG",
-      "weight": 3
-    },
-    {
-      "source": "Metastabilität",
-      "target": "σ_Φ",
-      "weight": 2
-    },
-    {
-      "source": "Metastabilität",
-      "target": "Bardo-Phase",
-      "weight": 1
-    },
-    {
-      "source": "Metastabilität",
-      "target": "Diamond Architecture",
-      "weight": 1
-    },
-    {
-      "source": "Metastabilität",
-      "target": "FIT",
-      "weight": 1
-    },
-    {
-      "source": "Metastabilität",
-      "target": "Implosion",
-      "weight": 1
-    },
-    {
-      "source": "Metastabilität",
-      "target": "MOR",
-      "weight": 1
-    },
-    {
-      "source": "Metastabilität",
-      "target": "Nullkern",
-      "weight": 1
-    },
-    {
-      "source": "Metastabilität",
-      "target": "Schwellenfeld",
-      "weight": 1
-    },
-    {
-      "source": "v_RIG",
-      "target": "σ_Φ",
-      "weight": 6
-    },
-    {
-      "source": "v_RIG",
-      "target": "FIT",
-      "weight": 6
-    },
-    {
-      "source": "v_RIG",
-      "target": "Nullkern",
-      "weight": 9
-    },
-    {
-      "source": "v_RIG",
-      "target": "Implosion",
-      "weight": 8
-    },
-    {
-      "source": "v_RIG",
-      "target": "MOR",
-      "weight": 6
-    },
-    {
-      "source": "v_RIG",
-      "target": "Bardo-Phase",
-      "weight": 1
-    },
-    {
-      "source": "v_RIG",
-      "target": "Diamond Architecture",
-      "weight": 1
-    },
-    {
-      "source": "v_RIG",
-      "target": "Schwellenfeld",
-      "weight": 1
-    },
-    {
-      "source": "σ_Φ",
-      "target": "FIT",
-      "weight": 2
-    },
-    {
-      "source": "σ_Φ",
-      "target": "MOR",
-      "weight": 2
-    },
-    {
-      "source": "σ_Φ",
-      "target": "Bardo-Phase",
-      "weight": 1
-    },
-    {
-      "source": "σ_Φ",
-      "target": "Diamond Architecture",
-      "weight": 1
-    },
-    {
-      "source": "σ_Φ",
-      "target": "Implosion",
-      "weight": 1
-    },
-    {
-      "source": "σ_Φ",
-      "target": "Nullkern",
-      "weight": 1
-    },
-    {
-      "source": "σ_Φ",
-      "target": "Schwellenfeld",
-      "weight": 1
-    },
-    {
-      "source": "MOR",
-      "target": "FIT",
-      "weight": 8
-    },
-    {
-      "source": "MOR",
-      "target": "Implosion",
-      "weight": 5
-    },
-    {
-      "source": "MOR",
-      "target": "Bardo-Phase",
-      "weight": 1
-    },
-    {
-      "source": "MOR",
-      "target": "Diamond Architecture",
-      "weight": 1
-    },
-    {
-      "source": "MOR",
-      "target": "Nullkern",
-      "weight": 2
-    },
-    {
-      "source": "MOR",
-      "target": "Schwellenfeld",
-      "weight": 1
-    },
-    {
-      "source": "Implosion",
-      "target": "Nullkern",
-      "weight": 3
-    },
-    {
-      "source": "Implosion",
-      "target": "FIT",
-      "weight": 4
-    },
-    {
-      "source": "Implosion",
-      "target": "Bardo-Phase",
-      "weight": 1
-    },
-    {
-      "source": "Implosion",
-      "target": "Diamond Architecture",
-      "weight": 1
-    },
-    {
-      "source": "Implosion",
-      "target": "Schwellenfeld",
-      "weight": 1
-    },
-    {
-      "source": "FIT",
-      "target": "Nullkern",
-      "weight": 3
-    },
-    {
-      "source": "FIT",
-      "target": "Bardo-Phase",
-      "weight": 1
-    },
-    {
-      "source": "FIT",
-      "target": "Diamond Architecture",
-      "weight": 1
-    },
-    {
-      "source": "FIT",
-      "target": "Schwellenfeld",
-      "weight": 1
-    },
-    {
-      "source": "Nullkern",
-      "target": "Bardo-Phase",
-      "weight": 1
-    },
-    {
-      "source": "Nullkern",
-      "target": "Diamond Architecture",
-      "weight": 1
-    },
-    {
-      "source": "Nullkern",
-      "target": "Schwellenfeld",
-      "weight": 1
-    },
-    {
-      "source": "Bardo-Phase",
-      "target": "Diamond Architecture",
-      "weight": 1
-    },
-    {
-      "source": "Bardo-Phase",
-      "target": "Schwellenfeld",
-      "weight": 1
+      "source": "Diamond Architecture",
+      "target": "Resonanzpfad",
+      "weight": 1.0
     },
     {
       "source": "Diamond Architecture",
       "target": "Schwellenfeld",
-      "weight": 1
+      "weight": 1.0
+    },
+    {
+      "source": "Diamond Architecture",
+      "target": "UTAC",
+      "weight": 1.0
+    },
+    {
+      "source": "Diamond Architecture",
+      "target": "v_RIG",
+      "weight": 1.0
+    },
+    {
+      "source": "Diamond Architecture",
+      "target": "β",
+      "weight": 1.0
+    },
+    {
+      "source": "Diamond Architecture",
+      "target": "σ_Φ",
+      "weight": 1.0
+    },
+    {
+      "source": "FIT",
+      "target": "Implosion",
+      "weight": 4.0
+    },
+    {
+      "source": "FIT",
+      "target": "MOR",
+      "weight": 8.0
+    },
+    {
+      "source": "FIT",
+      "target": "Metastabilität",
+      "weight": 1.0
+    },
+    {
+      "source": "FIT",
+      "target": "Nullkern",
+      "weight": 3.0
+    },
+    {
+      "source": "FIT",
+      "target": "Resonanzpfad",
+      "weight": 1.0
+    },
+    {
+      "source": "FIT",
+      "target": "Schwellenfeld",
+      "weight": 1.0
+    },
+    {
+      "source": "FIT",
+      "target": "UTAC",
+      "weight": 13.0
+    },
+    {
+      "source": "FIT",
+      "target": "v_RIG",
+      "weight": 6.0
+    },
+    {
+      "source": "FIT",
+      "target": "β",
+      "weight": 11.0
+    },
+    {
+      "source": "FIT",
+      "target": "σ_Φ",
+      "weight": 2.0
+    },
+    {
+      "source": "Implosion",
+      "target": "MOR",
+      "weight": 5.0
+    },
+    {
+      "source": "Implosion",
+      "target": "Metastabilität",
+      "weight": 1.0
+    },
+    {
+      "source": "Implosion",
+      "target": "Nullkern",
+      "weight": 3.0
+    },
+    {
+      "source": "Implosion",
+      "target": "Resonanzpfad",
+      "weight": 2.0
+    },
+    {
+      "source": "Implosion",
+      "target": "Schwellenfeld",
+      "weight": 1.0
+    },
+    {
+      "source": "Implosion",
+      "target": "UTAC",
+      "weight": 16.0
+    },
+    {
+      "source": "Implosion",
+      "target": "v_RIG",
+      "weight": 8.0
+    },
+    {
+      "source": "Implosion",
+      "target": "β",
+      "weight": 16.0
+    },
+    {
+      "source": "Implosion",
+      "target": "σ_Φ",
+      "weight": 1.0
+    },
+    {
+      "source": "MOR",
+      "target": "Metastabilität",
+      "weight": 3.0
+    },
+    {
+      "source": "MOR",
+      "target": "Nullkern",
+      "weight": 3.0
+    },
+    {
+      "source": "MOR",
+      "target": "Resonanzpfad",
+      "weight": 1.0
+    },
+    {
+      "source": "MOR",
+      "target": "Schwellenfeld",
+      "weight": 1.0
+    },
+    {
+      "source": "MOR",
+      "target": "UTAC",
+      "weight": 33.0
+    },
+    {
+      "source": "MOR",
+      "target": "v_RIG",
+      "weight": 8.0
+    },
+    {
+      "source": "MOR",
+      "target": "β",
+      "weight": 32.0
+    },
+    {
+      "source": "MOR",
+      "target": "σ_Φ",
+      "weight": 4.0
+    },
+    {
+      "source": "Metastabilität",
+      "target": "Nullkern",
+      "weight": 4.0
+    },
+    {
+      "source": "Metastabilität",
+      "target": "Resonanzpfad",
+      "weight": 1.0
+    },
+    {
+      "source": "Metastabilität",
+      "target": "Schwellenfeld",
+      "weight": 1.0
+    },
+    {
+      "source": "Metastabilität",
+      "target": "UTAC",
+      "weight": 7.0
+    },
+    {
+      "source": "Metastabilität",
+      "target": "v_RIG",
+      "weight": 7.0
+    },
+    {
+      "source": "Metastabilität",
+      "target": "β",
+      "weight": 8.0
+    },
+    {
+      "source": "Metastabilität",
+      "target": "σ_Φ",
+      "weight": 6.0
+    },
+    {
+      "source": "Nullkern",
+      "target": "Resonanzpfad",
+      "weight": 6.0
+    },
+    {
+      "source": "Nullkern",
+      "target": "Schwellenfeld",
+      "weight": 1.0
+    },
+    {
+      "source": "Nullkern",
+      "target": "UTAC",
+      "weight": 11.0
+    },
+    {
+      "source": "Nullkern",
+      "target": "v_RIG",
+      "weight": 12.0
+    },
+    {
+      "source": "Nullkern",
+      "target": "β",
+      "weight": 15.0
+    },
+    {
+      "source": "Nullkern",
+      "target": "σ_Φ",
+      "weight": 4.0
+    },
+    {
+      "source": "Resonanzpfad",
+      "target": "Schwellenfeld",
+      "weight": 1.0
+    },
+    {
+      "source": "Resonanzpfad",
+      "target": "UTAC",
+      "weight": 6.0
+    },
+    {
+      "source": "Resonanzpfad",
+      "target": "v_RIG",
+      "weight": 4.0
+    },
+    {
+      "source": "Resonanzpfad",
+      "target": "β",
+      "weight": 8.0
+    },
+    {
+      "source": "Resonanzpfad",
+      "target": "σ_Φ",
+      "weight": 1.0
+    },
+    {
+      "source": "Schwellenfeld",
+      "target": "UTAC",
+      "weight": 1.0
+    },
+    {
+      "source": "Schwellenfeld",
+      "target": "v_RIG",
+      "weight": 1.0
+    },
+    {
+      "source": "Schwellenfeld",
+      "target": "β",
+      "weight": 1.0
+    },
+    {
+      "source": "Schwellenfeld",
+      "target": "σ_Φ",
+      "weight": 1.0
+    },
+    {
+      "source": "UTAC",
+      "target": "v_RIG",
+      "weight": 26.0
+    },
+    {
+      "source": "UTAC",
+      "target": "β",
+      "weight": 154.0
+    },
+    {
+      "source": "UTAC",
+      "target": "σ_Φ",
+      "weight": 6.0
+    },
+    {
+      "source": "v_RIG",
+      "target": "β",
+      "weight": 39.0
+    },
+    {
+      "source": "v_RIG",
+      "target": "σ_Φ",
+      "weight": 9.0
+    },
+    {
+      "source": "β",
+      "target": "σ_Φ",
+      "weight": 13.0
     }
   ]
 }
