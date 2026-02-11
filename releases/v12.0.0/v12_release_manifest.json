@@ -1,0 +1,52 @@
+{
+  "release": {
+    "version": "12.0.0",
+    "codename": "AFET Consolidation",
+    "title": "Work Since V11",
+    "status": "draft",
+    "folder": "releases/v12.0.0"
+  },
+  "baseline": {
+    "source_version": "V11",
+    "reference_type": "TODO-V11",
+    "reference_value": "TODO-V11"
+  },
+  "logistic_state": {
+    "R": "medium",
+    "theta": "release-structure-ready",
+    "beta": 4.8,
+    "zeta_R": "damped",
+    "sigma_state": "steep-flank-active"
+  },
+  "artifacts": [
+    {
+      "path": "releases/v12.0.0/README.md",
+      "role": "release scaffold overview"
+    },
+    {
+      "path": "releases/v12.0.0/RELEASE_NOTES_v12.0.0.md",
+      "role": "human-readable release notes"
+    },
+    {
+      "path": "releases/v12.0.0/GITHUB_RELEASE_BODY.md",
+      "role": "GitHub release text draft"
+    },
+    {
+      "path": "releases/v12.0.0/v12_release_manifest.yaml",
+      "role": "manifest structure layer"
+    },
+    {
+      "path": "releases/v12.0.0/v12_release_manifest.json",
+      "role": "manifest interface layer"
+    },
+    {
+      "path": "releases/v12.0.0/v12_release_manifest.md",
+      "role": "manifest narrative layer"
+    }
+  ],
+  "finalization_todos": [
+    "Pin canonical V11 baseline (tag or commit)",
+    "Generate final commit/file delta from baseline to HEAD",
+    "Resolve all TODO-V11 placeholders"
+  ]
+}
