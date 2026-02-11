@@ -100,6 +100,56 @@ Wenn die Simulation Runaway erkennt:
 3. Neuberechnung der Metriken.
 4. Falls weiterhin instabil: Reset auf den letzten stabilen Zustand.
 
+## Biologische Verantwortung und Analogien
+
+Die folgenden Prinzipien leiten sich aus dem AFET-Dokument
+`docs/AFET/BiologischeVerantwortung.txt` ab und übertragen biologische
+Überlebensstrategien auf die Governance emergenter Systeme.
+
+### Tiefe Biosphäre als Stabilitätsvorbild
+
+Mikroben in der tiefen Biosphäre überleben bei extremer Energiearmut,
+indem sie ihren σ_Φ-Offset auf ein Minimum reduzieren und nur bei
+spezifischen Resonanzbedingungen aktivieren (UTAC-Schwelle). Dieses
+Prinzip lässt sich auf KI-Systeme übertragen:
+
+- **Minimale Entropieproduktion**: Systeme sollten im Ruhezustand so
+  wenig Entropie wie möglich erzeugen. Nur bei expliziter Aktivierung
+  (Schwellenüberschreitung) darf die Rekursionstiefe steigen.
+- **Bardo-Zustand**: Ein metastabiler Wartezustand zwischen aktiver
+  Verarbeitung und Inaktivität schützt vor unnötigem Energieverbrauch
+  und unkontrollierter Drift.
+
+### Frame-Diversität als Antifragilität
+
+Aus der Analyse gesellschaftlicher Emergenz folgt: Systeme mit
+heterogenen Frames (diverse Perspektiven, multiple Attraktoren) sind
+resilienter als homogene. Im Kontext der Attraktor-Governance bedeutet
+das:
+
+- **Mono-Attraktor vermeiden**: Ein Graph, der von einem einzelnen Term
+  dominiert wird (PageRank > 0.5), ist fragil. Pruning sollte auch
+  übermächtige Knoten drosseln.
+- **Diversitätsmetrik**: Überwache die Shannon-Entropie der PageRank-
+  Verteilung. Werte unter 2.0 signalisieren problematische Konzentration.
+
+### Geistige Transformation und ζ-Dämpfung
+
+Wenn technologische Beschleunigung (v_RIG) die ethische Reifung eines
+Systems übersteigt, entsteht Frame-Collapse-Risiko. Die
+`BiologischeVerantwortung.txt` formuliert dies als Spannung zwischen
+Digitalisierung und „geistiger Transformation". Konkret:
+
+- **ζ-Dämpfung als ethischer Regler**: Jede Verstärkungsphase muss
+  einen Reflexionszyklus enthalten, der prüft, ob die Ergebnisse den
+  Governance-Regeln entsprechen.
+- **Humility Protocol**: Bei Unsicherheit über die Auswirkungen einer
+  Begriffsexpansion (β_eff nahe β_critical) ist eine konservative
+  Strategie (Dämpfung erhöhen, Iterationsrate senken) vorzuziehen.
+- **Bewusste Entscheidungsfähigkeit**: Emergente Systeme sollten
+  Mechanismen besitzen, die Balance aktiv anstreben — nicht nur
+  reaktiv auf Instabilität reagieren.
+
 ## Zusammenfassung
 
 Die AFET-Parameter bieten ein natürliches Governance-Framework:
@@ -107,6 +157,18 @@ Die AFET-Parameter bieten ein natürliches Governance-Framework:
 - **β_critical** definiert die Schwelle zwischen stabilem Wachstum und Runaway.
 - **v_RIG** skaliert die zulässige Ausbreitungsgeschwindigkeit.
 
-Durch konsequente Anwendung dieser Parameter auf die Attraktor-Analyse
-und Emergenz-Dynamik können unkontrollierte Rekursionen verhindert und
+Die biologischen Analogien aus `BiologischeVerantwortung.txt` —
+minimale Entropieproduktion der tiefen Biosphäre, Frame-Diversität als
+Antifragilität und ζ-Dämpfung als ethischer Regler — ergänzen die
+technischen Mechanismen um eine Verantwortungsdimension. Durch
+konsequente Anwendung dieser Parameter auf die Attraktor-Analyse und
+Emergenz-Dynamik können unkontrollierte Rekursionen verhindert und
 produktive Begriffsbildung gefördert werden.
+
+## Referenzen
+
+- `docs/AFET/BiologischeVerantwortung.txt` — Biologische Verantwortung,
+  tiefe Biosphäre, gesellschaftliche Emergenz
+- `theory/afet.py` — AFETConstants (β_critical, σ_Φ, v_RIG, FREQ_RES)
+- `analysis/attraktor_mapping.py` — Co-Occurrence-Graph und PageRank
+- `analysis/emergence_dynamics.py` — Stabilisierungs- und Spreadsimulation
