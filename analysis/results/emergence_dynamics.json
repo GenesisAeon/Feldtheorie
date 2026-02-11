@@ -1,0 +1,38 @@
+{
+  "stabilization": {
+    "sub-critical (β=20, d=0.1)": {
+      "converged": true,
+      "final_activation": 0.18124596249646516,
+      "steps_to_converge": 55
+    },
+    "critical (β=37.6, d=0.1)": {
+      "converged": true,
+      "final_activation": 0.3696017032158353,
+      "steps_to_converge": 72
+    },
+    "super-critical (β=50, d=0)": {
+      "converged": false,
+      "final_activation": 15.790647018521565,
+      "steps_to_converge": null
+    },
+    "super-critical damped (β=50, d=0.3)": {
+      "converged": true,
+      "final_activation": 0.14880685311422312,
+      "steps_to_converge": 26
+    }
+  },
+  "spread": {
+    "low β (10)": {
+      "peak_spread": 0.05665962961890783,
+      "half_life": null
+    },
+    "critical β (37.6)": {
+      "peak_spread": 0.8897185698970993,
+      "half_life": 69
+    },
+    "high β (60)": {
+      "peak_spread": 0.9981438769044229,
+      "half_life": 44
+    }
+  }
+}
