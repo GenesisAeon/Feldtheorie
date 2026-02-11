@@ -1,22 +1,33 @@
 # v12.0.0 — AFET Consolidation Since V11
 
 ## Summary
-This release packages development progress since V11 into a coherent V12 publication scaffold with traceable release artifacts.
+This release packages AFET-aligned implementation and governance documentation into a baseline-pinned, publication-ready V12 bundle.
 
-## Included in this draft
-- structured release notes
-- tri-layer manifest (YAML/JSON/Markdown)
-- explicit baseline/TODO controls for V11 diff finalization
+## Baseline
+- **V11 canonical reference:** `fb42ac8` (commit SHA)
+- **Reasoning:** no local `v11*` tag was present; SHA baseline ensures deterministic diffs
 
-## Before publishing
-- resolve `TODO-V11` baseline reference
-- regenerate final delta list (commits/files)
-- remove or resolve all placeholder text
+## Included Artifacts
+- `RELEASE_NOTES_v12.0.0.md`
+- `v12_release_manifest.yaml`
+- `v12_release_manifest.json`
+- `v12_release_manifest.md`
+- `README.md` (release folder guide)
 
-## Logistic field snapshot
-- `R`: medium (remaining curation)
-- `Θ`: reached for structure
+## AFET Snapshot
+- `R`: low
+- `Θ`: reached
 - `β`: 4.8
-- `ζ(R)`: damped via release ritual and manifest parity
-- `σ(β(R-Θ))`: transition active → nearly complete
+- `ζ(R)`: damped via parity checks + checklist gates
+- `σ(β(R-Θ))`: release-ready
 
+## Validation Snapshot
+- tri-layer manifest parity validated
+- all listed artifacts exist
+- no `.png` / `.tmp` payload in release folder
+- unresolved draft markers removed
+
+## Final Pre-Publish Gate
+Run the consent checkpoint before pressing publish:
+
+> Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.

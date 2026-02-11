@@ -73,6 +73,41 @@ python scripts/reproduce_beta.py --csv data/ai/wei_emergent_abilities.csv --out 
 
 ---
 
+## V12 Release — AFET Consolidation Since V11
+
+The repository now includes a dedicated release workspace at `releases/v12.0.0/` for publication-grade, auditable V12 packaging.
+
+### Why this matters
+
+- It pins a canonical V11 baseline (`fb42ac8`) for deterministic diffs.
+- It synchronizes release metadata across a tri-layer manifest (`yaml/json/md`).
+- It formalizes publication gates (artifact existence, TODO resolution, consent checkpoint).
+
+### AFET core in one glance
+
+AFET follows a structuralist emergence view: behavior arises from operator coupling, not isolated fragments. For release documentation, this is expressed through the logistic state tuple and membrane transition:
+
+- `R`: open work
+- `Θ`: release threshold
+- `β`: steepness / activation sharpness
+- `ζ(R)`: damping pressure
+- transition state via `σ(β(R-Θ))`
+
+The three AFET parameters stay central:
+
+- `σ_Φ` (integration state),
+- `β` (transition sharpness),
+- `v_RIG` (integration velocity constant),
+
+and are documented in relation to universal-constant constraints in the AFET theory materials.
+
+### V12 release files
+
+- `releases/v12.0.0/README.md`
+- `releases/v12.0.0/RELEASE_NOTES_v12.0.0.md`
+- `releases/v12.0.0/GITHUB_RELEASE_BODY.md`
+- `releases/v12.0.0/v12_release_manifest.{yaml,json,md}`
+
 ## 🧠 NeuroProfile v1.1: PSRM Integration
 
 NeuroProfile now includes **Personal Sigillin Resonance Maps (PSRM)** — individualized calibration profiles that preserve the Signal → Intention → Context trilayer while anchoring falsifiability with ΔAIC/CI metrics.
