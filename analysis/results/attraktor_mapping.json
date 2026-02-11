@@ -1,79 +1,94 @@
 {
   "nodes": {
     "AFET": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
     },
     "Bardo-Phase": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
     },
     "CREP": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
     },
     "Diamond Architecture": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
     },
     "FIT": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
     },
     "Implosion": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
+    },
+    "K₂": {
+      "degree": 17.0,
+      "betweenness": 0.0,
+      "pagerank": 0.05555555555555555
     },
     "MOR": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
     },
     "Metastabilität": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
     },
     "Nullkern": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
     },
     "Resonanzpfad": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
     },
     "Schwellenfeld": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
     },
     "UTAC": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
     },
     "v_RIG": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
     },
     "β": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
+    },
+    "μ": {
+      "degree": 17.0,
+      "betweenness": 0.0,
+      "pagerank": 0.05555555555555555
     },
     "σ_Φ": {
-      "degree": 14.0,
+      "degree": 17.0,
       "betweenness": 0.0,
-      "pagerank": 0.06666666666666667
+      "pagerank": 0.05555555555555555
+    },
+    "ω": {
+      "degree": 17.0,
+      "betweenness": 0.0,
+      "pagerank": 0.05555555555555555
     }
   },
   "edges": [
@@ -100,6 +115,11 @@
     {
       "source": "AFET",
       "target": "Implosion",
+      "weight": 1.0
+    },
+    {
+      "source": "AFET",
+      "target": "K₂",
       "weight": 1.0
     },
     {
@@ -144,8 +164,18 @@
     },
     {
       "source": "AFET",
+      "target": "μ",
+      "weight": 1.0
+    },
+    {
+      "source": "AFET",
       "target": "σ_Φ",
       "weight": 16.0
+    },
+    {
+      "source": "AFET",
+      "target": "ω",
+      "weight": 2.0
     },
     {
       "source": "Bardo-Phase",
@@ -169,6 +199,11 @@
     },
     {
       "source": "Bardo-Phase",
+      "target": "K₂",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
       "target": "MOR",
       "weight": 1.0
     },
@@ -209,7 +244,17 @@
     },
     {
       "source": "Bardo-Phase",
+      "target": "μ",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
       "target": "σ_Φ",
+      "weight": 1.0
+    },
+    {
+      "source": "Bardo-Phase",
+      "target": "ω",
       "weight": 1.0
     },
     {
@@ -229,6 +274,11 @@
     },
     {
       "source": "CREP",
+      "target": "K₂",
+      "weight": 1.0
+    },
+    {
+      "source": "CREP",
       "target": "MOR",
       "weight": 6.0
     },
@@ -245,7 +295,7 @@
     {
       "source": "CREP",
       "target": "Resonanzpfad",
-      "weight": 1.0
+      "weight": 3.0
     },
     {
       "source": "CREP",
@@ -255,7 +305,7 @@
     {
       "source": "CREP",
       "target": "UTAC",
-      "weight": 33.0
+      "weight": 41.0
     },
     {
       "source": "CREP",
@@ -265,11 +315,21 @@
     {
       "source": "CREP",
       "target": "β",
-      "weight": 34.0
+      "weight": 41.0
+    },
+    {
+      "source": "CREP",
+      "target": "μ",
+      "weight": 6.0
     },
     {
       "source": "CREP",
       "target": "σ_Φ",
+      "weight": 3.0
+    },
+    {
+      "source": "CREP",
+      "target": "ω",
       "weight": 3.0
     },
     {
@@ -284,6 +344,11 @@
     },
     {
       "source": "Diamond Architecture",
+      "target": "K₂",
+      "weight": 1.0
+    },
+    {
+      "source": "Diamond Architecture",
       "target": "MOR",
       "weight": 1.0
     },
@@ -324,13 +389,28 @@
     },
     {
       "source": "Diamond Architecture",
+      "target": "μ",
+      "weight": 1.0
+    },
+    {
+      "source": "Diamond Architecture",
       "target": "σ_Φ",
+      "weight": 1.0
+    },
+    {
+      "source": "Diamond Architecture",
+      "target": "ω",
       "weight": 1.0
     },
     {
       "source": "FIT",
       "target": "Implosion",
       "weight": 4.0
+    },
+    {
+      "source": "FIT",
+      "target": "K₂",
+      "weight": 1.0
     },
     {
       "source": "FIT",
@@ -374,8 +454,23 @@
     },
     {
       "source": "FIT",
+      "target": "μ",
+      "weight": 5.0
+    },
+    {
+      "source": "FIT",
       "target": "σ_Φ",
       "weight": 2.0
+    },
+    {
+      "source": "FIT",
+      "target": "ω",
+      "weight": 2.0
+    },
+    {
+      "source": "Implosion",
+      "target": "K₂",
+      "weight": 1.0
     },
     {
       "source": "Implosion",
@@ -419,7 +514,72 @@
     },
     {
       "source": "Implosion",
+      "target": "μ",
+      "weight": 7.0
+    },
+    {
+      "source": "Implosion",
       "target": "σ_Φ",
+      "weight": 1.0
+    },
+    {
+      "source": "Implosion",
+      "target": "ω",
+      "weight": 5.0
+    },
+    {
+      "source": "K₂",
+      "target": "MOR",
+      "weight": 1.0
+    },
+    {
+      "source": "K₂",
+      "target": "Metastabilität",
+      "weight": 1.0
+    },
+    {
+      "source": "K₂",
+      "target": "Nullkern",
+      "weight": 1.0
+    },
+    {
+      "source": "K₂",
+      "target": "Resonanzpfad",
+      "weight": 1.0
+    },
+    {
+      "source": "K₂",
+      "target": "Schwellenfeld",
+      "weight": 1.0
+    },
+    {
+      "source": "K₂",
+      "target": "UTAC",
+      "weight": 1.0
+    },
+    {
+      "source": "K₂",
+      "target": "v_RIG",
+      "weight": 1.0
+    },
+    {
+      "source": "K₂",
+      "target": "β",
+      "weight": 1.0
+    },
+    {
+      "source": "K₂",
+      "target": "μ",
+      "weight": 1.0
+    },
+    {
+      "source": "K₂",
+      "target": "σ_Φ",
+      "weight": 1.0
+    },
+    {
+      "source": "K₂",
+      "target": "ω",
       "weight": 1.0
     },
     {
@@ -455,12 +615,22 @@
     {
       "source": "MOR",
       "target": "β",
-      "weight": 32.0
+      "weight": 34.0
+    },
+    {
+      "source": "MOR",
+      "target": "μ",
+      "weight": 5.0
     },
     {
       "source": "MOR",
       "target": "σ_Φ",
       "weight": 4.0
+    },
+    {
+      "source": "MOR",
+      "target": "ω",
+      "weight": 1.0
     },
     {
       "source": "Metastabilität",
@@ -494,8 +664,18 @@
     },
     {
       "source": "Metastabilität",
+      "target": "μ",
+      "weight": 1.0
+    },
+    {
+      "source": "Metastabilität",
       "target": "σ_Φ",
       "weight": 6.0
+    },
+    {
+      "source": "Metastabilität",
+      "target": "ω",
+      "weight": 1.0
     },
     {
       "source": "Nullkern",
@@ -524,8 +704,18 @@
     },
     {
       "source": "Nullkern",
+      "target": "μ",
+      "weight": 1.0
+    },
+    {
+      "source": "Nullkern",
       "target": "σ_Φ",
       "weight": 4.0
+    },
+    {
+      "source": "Nullkern",
+      "target": "ω",
+      "weight": 2.0
     },
     {
       "source": "Resonanzpfad",
@@ -535,7 +725,7 @@
     {
       "source": "Resonanzpfad",
       "target": "UTAC",
-      "weight": 6.0
+      "weight": 8.0
     },
     {
       "source": "Resonanzpfad",
@@ -545,11 +735,21 @@
     {
       "source": "Resonanzpfad",
       "target": "β",
-      "weight": 8.0
+      "weight": 10.0
+    },
+    {
+      "source": "Resonanzpfad",
+      "target": "μ",
+      "weight": 1.0
     },
     {
       "source": "Resonanzpfad",
       "target": "σ_Φ",
+      "weight": 1.0
+    },
+    {
+      "source": "Resonanzpfad",
+      "target": "ω",
       "weight": 1.0
     },
     {
@@ -569,7 +769,17 @@
     },
     {
       "source": "Schwellenfeld",
+      "target": "μ",
+      "weight": 1.0
+    },
+    {
+      "source": "Schwellenfeld",
       "target": "σ_Φ",
+      "weight": 1.0
+    },
+    {
+      "source": "Schwellenfeld",
+      "target": "ω",
       "weight": 1.0
     },
     {
@@ -580,12 +790,22 @@
     {
       "source": "UTAC",
       "target": "β",
-      "weight": 154.0
+      "weight": 179.0
+    },
+    {
+      "source": "UTAC",
+      "target": "μ",
+      "weight": 15.0
     },
     {
       "source": "UTAC",
       "target": "σ_Φ",
       "weight": 6.0
+    },
+    {
+      "source": "UTAC",
+      "target": "ω",
+      "weight": 5.0
     },
     {
       "source": "v_RIG",
@@ -594,13 +814,48 @@
     },
     {
       "source": "v_RIG",
+      "target": "μ",
+      "weight": 14.0
+    },
+    {
+      "source": "v_RIG",
       "target": "σ_Φ",
       "weight": 9.0
+    },
+    {
+      "source": "v_RIG",
+      "target": "ω",
+      "weight": 5.0
+    },
+    {
+      "source": "β",
+      "target": "μ",
+      "weight": 23.0
     },
     {
       "source": "β",
       "target": "σ_Φ",
       "weight": 13.0
+    },
+    {
+      "source": "β",
+      "target": "ω",
+      "weight": 5.0
+    },
+    {
+      "source": "μ",
+      "target": "σ_Φ",
+      "weight": 1.0
+    },
+    {
+      "source": "μ",
+      "target": "ω",
+      "weight": 3.0
+    },
+    {
+      "source": "σ_Φ",
+      "target": "ω",
+      "weight": 2.0
     }
   ]
 }

@@ -4,6 +4,7 @@ AFET,CREP,2.0
 AFET,Diamond Architecture,1.0
 AFET,FIT,2.0
 AFET,Implosion,1.0
+AFET,K₂,1.0
 AFET,MOR,4.0
 AFET,Metastabilität,10.0
 AFET,Nullkern,8.0
@@ -12,11 +13,14 @@ AFET,Schwellenfeld,1.0
 AFET,UTAC,10.0
 AFET,v_RIG,9.0
 AFET,β,15.0
+AFET,μ,1.0
 AFET,σ_Φ,16.0
+AFET,ω,2.0
 Bardo-Phase,CREP,1.0
 Bardo-Phase,Diamond Architecture,1.0
 Bardo-Phase,FIT,1.0
 Bardo-Phase,Implosion,1.0
+Bardo-Phase,K₂,1.0
 Bardo-Phase,MOR,1.0
 Bardo-Phase,Metastabilität,1.0
 Bardo-Phase,Nullkern,1.0
@@ -25,21 +29,27 @@ Bardo-Phase,Schwellenfeld,1.0
 Bardo-Phase,UTAC,1.0
 Bardo-Phase,v_RIG,1.0
 Bardo-Phase,β,1.0
+Bardo-Phase,μ,1.0
 Bardo-Phase,σ_Φ,1.0
+Bardo-Phase,ω,1.0
 CREP,Diamond Architecture,1.0
 CREP,FIT,9.0
 CREP,Implosion,7.0
+CREP,K₂,1.0
 CREP,MOR,6.0
 CREP,Metastabilität,1.0
 CREP,Nullkern,6.0
-CREP,Resonanzpfad,1.0
+CREP,Resonanzpfad,3.0
 CREP,Schwellenfeld,1.0
-CREP,UTAC,33.0
+CREP,UTAC,41.0
 CREP,v_RIG,12.0
-CREP,β,34.0
+CREP,β,41.0
+CREP,μ,6.0
 CREP,σ_Φ,3.0
+CREP,ω,3.0
 Diamond Architecture,FIT,1.0
 Diamond Architecture,Implosion,1.0
+Diamond Architecture,K₂,1.0
 Diamond Architecture,MOR,1.0
 Diamond Architecture,Metastabilität,1.0
 Diamond Architecture,Nullkern,1.0
@@ -48,8 +58,11 @@ Diamond Architecture,Schwellenfeld,1.0
 Diamond Architecture,UTAC,1.0
 Diamond Architecture,v_RIG,1.0
 Diamond Architecture,β,1.0
+Diamond Architecture,μ,1.0
 Diamond Architecture,σ_Φ,1.0
+Diamond Architecture,ω,1.0
 FIT,Implosion,4.0
+FIT,K₂,1.0
 FIT,MOR,8.0
 FIT,Metastabilität,1.0
 FIT,Nullkern,3.0
@@ -58,7 +71,10 @@ FIT,Schwellenfeld,1.0
 FIT,UTAC,13.0
 FIT,v_RIG,6.0
 FIT,β,11.0
+FIT,μ,5.0
 FIT,σ_Φ,2.0
+FIT,ω,2.0
+Implosion,K₂,1.0
 Implosion,MOR,5.0
 Implosion,Metastabilität,1.0
 Implosion,Nullkern,3.0
@@ -67,40 +83,72 @@ Implosion,Schwellenfeld,1.0
 Implosion,UTAC,16.0
 Implosion,v_RIG,8.0
 Implosion,β,16.0
+Implosion,μ,7.0
 Implosion,σ_Φ,1.0
+Implosion,ω,5.0
+K₂,MOR,1.0
+K₂,Metastabilität,1.0
+K₂,Nullkern,1.0
+K₂,Resonanzpfad,1.0
+K₂,Schwellenfeld,1.0
+K₂,UTAC,1.0
+K₂,v_RIG,1.0
+K₂,β,1.0
+K₂,μ,1.0
+K₂,σ_Φ,1.0
+K₂,ω,1.0
 MOR,Metastabilität,3.0
 MOR,Nullkern,3.0
 MOR,Resonanzpfad,1.0
 MOR,Schwellenfeld,1.0
 MOR,UTAC,33.0
 MOR,v_RIG,8.0
-MOR,β,32.0
+MOR,β,34.0
+MOR,μ,5.0
 MOR,σ_Φ,4.0
+MOR,ω,1.0
 Metastabilität,Nullkern,4.0
 Metastabilität,Resonanzpfad,1.0
 Metastabilität,Schwellenfeld,1.0
 Metastabilität,UTAC,7.0
 Metastabilität,v_RIG,7.0
 Metastabilität,β,8.0
+Metastabilität,μ,1.0
 Metastabilität,σ_Φ,6.0
+Metastabilität,ω,1.0
 Nullkern,Resonanzpfad,6.0
 Nullkern,Schwellenfeld,1.0
 Nullkern,UTAC,11.0
 Nullkern,v_RIG,12.0
 Nullkern,β,15.0
+Nullkern,μ,1.0
 Nullkern,σ_Φ,4.0
+Nullkern,ω,2.0
 Resonanzpfad,Schwellenfeld,1.0
-Resonanzpfad,UTAC,6.0
+Resonanzpfad,UTAC,8.0
 Resonanzpfad,v_RIG,4.0
-Resonanzpfad,β,8.0
+Resonanzpfad,β,10.0
+Resonanzpfad,μ,1.0
 Resonanzpfad,σ_Φ,1.0
+Resonanzpfad,ω,1.0
 Schwellenfeld,UTAC,1.0
 Schwellenfeld,v_RIG,1.0
 Schwellenfeld,β,1.0
+Schwellenfeld,μ,1.0
 Schwellenfeld,σ_Φ,1.0
+Schwellenfeld,ω,1.0
 UTAC,v_RIG,26.0
-UTAC,β,154.0
+UTAC,β,179.0
+UTAC,μ,15.0
 UTAC,σ_Φ,6.0
+UTAC,ω,5.0
 v_RIG,β,39.0
+v_RIG,μ,14.0
 v_RIG,σ_Φ,9.0
+v_RIG,ω,5.0
+β,μ,23.0
 β,σ_Φ,13.0
+β,ω,5.0
+μ,σ_Φ,1.0
+μ,ω,3.0
+σ_Φ,ω,2.0

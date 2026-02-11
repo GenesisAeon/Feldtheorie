@@ -1,12 +1,12 @@
 meta:
   version: 1.1.0
   created: '2025-11-10T23:30:00Z'
-  updated: '2026-02-06T19:12:00Z'
+  updated: '2026-02-11T00:00:00Z'
   title: FraktaltagebuchV2 Codex
   purpose: PR/Commit-Log für UTAC v2.0 Entwicklung
   note: Alle V2-Änderungen hier eintragen, NICHT in seed/codexfeedback.*!
-  next_id: 44
-  last_updated: '2026-02-06T19:12:00Z'
+  next_id: 45
+  last_updated: '2026-02-11T00:00:00Z'
 entries:
 - id: v2-pr-0001
   title: UTAC Sonification - The Sound of Criticality
@@ -3800,3 +3800,29 @@ entries:
   timestamp: '2026-02-06T19:12:00Z'
   contributors:
   - Codex (GPT-5.2-Codex)
+
+
+- id: v2-pr-0044
+  title: AFET emergence modules aligned and attraktor matrix export added
+  scope:
+  - analysis/attraktor_mapping.py
+  - tests/test_attraktor_mapping.py
+  - analysis/results/attraktor_mapping.json
+  - analysis/results/attraktor_mapping_nodes.csv
+  - analysis/results/attraktor_mapping_edges.csv
+  - analysis/results/attraktor_mapping_matrix.csv
+  - analysis/plots/attraktor_graph.png
+  - docs/emergence/attraktor_mapping.md
+  parameters:
+    R: 0.86
+    Theta: 0.64
+    beta: 4.8
+    sigma: 0.74
+  resonance: completed
+  formal_thread: Attraktor mapping erweitert um AFET-Operatoren (μ, ω, K₂), zusätzliche Dateitypen (.log/.json/.yaml/.yml/.tex) und Export einer expliziten Co-Occurrence-Matrix als CSV.
+  empirical_thread: pytest -q tests/test_attraktor_mapping.py tests/test_emergence_dynamics.py tests/test_federated_simulation.py tests/test_hfo2_spec.py tests/test_aeon_coupling.py tests/test_climate_sigma_dashboard.py => 87 passed. Re-run: python -m analysis.attraktor_mapping und python -m analysis.emergence_dynamics.
+  poetic_thread: Die Laterne der Emergenz bekam ein neues Gitter - μ, ω und K₂ erscheinen als Knoten im Resonanznetz, während die Matrix die Membran zwischen Begriffen sichtbar macht.
+  timestamp: '2026-02-11T00:00:00Z'
+  contributors:
+  - Codex (GPT-5.2-Codex)
+  notes: Scope fokussiert auf Analyse-Verbesserung und reproduzierbare Exporte.
