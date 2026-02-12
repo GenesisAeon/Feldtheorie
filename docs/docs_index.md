@@ -1,18 +1,20 @@
-# 📚 Docs Index – Science & Narrative Split
+# 📚 Docs Index – Science, Narrative & xAI Collaboration
 
-**Version:** 2.0.0 | **Datum:** 25. Dez 2025 | **Zuletzt aktualisiert:** 16. Jan 2026 | **Verzeichnis:** `docs/`
+**Version:** 2.1.0 | **Datum:** 12. Feb 2026 | **Zuletzt aktualisiert:** 12. Feb 2026 | **Verzeichnis:** `docs/`
 
 ---
 
 ## 🎯 Was ist das?
 
-Nach der Konsens-Entscheidung für eine klare Trennung zwischen **Forschung** und **Erzählung** sind alle Dokumente jetzt in zwei
-Schichten organisiert:
+Nach der Konsens-Entscheidung für eine klare Trennung zwischen **Forschung**, **Erzählung** und
+**Kollaborationspaketen** sind die Dokumente in drei Schichten organisiert:
 
 - `docs/science/` – Technische Forschung, Methoden, Experimente, Leitfäden.
 - `docs/narrative/` – Manifeste, Roadmaps, Paritäts- und Release-Notizen.
+- `docs/xai_collab/` – AFET × xAI Pilotunterlagen, Spezifikationen und Wochenreports.
 
-Insgesamt umfasst das Archiv aktuell **148 Markdown-Dokumente** plus die Spiegeldateien (`*.json`, `*.yaml`).
+Insgesamt umfasst die aktuelle Navigationslaterne **48 kuratierte Markdown-Dokumente**
+(im Tri-Layer gespiegelt via `docs_index.{yaml,json,md}`).
 
 ---
 
@@ -21,39 +23,36 @@ Insgesamt umfasst das Archiv aktuell **148 Markdown-Dokumente** plus die Spiegel
 ### 🔵 Science (`docs/science/`)
 Kernstücke der wissenschaftlichen Dokumentation und Umsetzung:
 - `science/utac_theory_core.md` – Fundament: \(\sigma(\beta(R-\Theta))\), \(\beta\)-Spektrum, \(\zeta(R)\).
-- `science/utac_v2_synthesis.md` – Multi-Attraktor-Framework (β domänenspezifisch, 78 Systeme).
-- `science/v6_entropy_governance_tesseract_physics.md` – Entropie-Dualität & Tesseract-Physik.
 - `science/field_type_classification_v1.1.md` – Klassifikation der Feldtypen.
 - `science/utac_falsifiability.md` – Nullmodelle, ΔAIC, Validierungsprotokolle.
 - `science/deep_research_index.md` – Deep-Research- & Paper-Navigator (R, Θ, β, ζ(R) via σ(β(R-Θ))).
-- `science/USER_GUIDE.md` – Praktische Bedienung (CLI, API, Workflows) mit Anker-Referenzen.
-- Unterordner: `appendices/`, `empirical_evidence/`, `ethics/`, `figures/`, `theoretical_extensions/`, `tutorials/`.
 
 ### 🟣 Narrative (`docs/narrative/`)
 Strategische und kommunikative Ebene:
-- `narrative/V10_DEEP_RESEARCH_MANIFEST.md`, `narrative/V12_CRYSTAL_GARDENER_MANIFEST.md`, `narrative/V3_FRONTIER_MANIFEST.md` – Langfristige Leitbilder.
-- `narrative/V6_INTEGRATION_ROADMAP.md`, `narrative/Emergenz_Roadmap_2025-12-18.md` – Roadmaps & Milestones.
-- `narrative/metaquest_parity_brief.md`, `narrative/utac_activation_backlog.md` – Paritäts- und Aktivierungsübersichten.
-- `narrative/utac_v2_activation_tracker_2026-08.md` (und Vorgänger) – Gap-Scans & Telemetrie.
-- `narrative/theoretical_mirror_framework.md` – UTAC-Nutzungsleitfaden als Theoretical Mirror Framework.
-- `narrative/zenodo_release_playbook.md`, `narrative/zenodo_multilingual_abstract_v1.2.md` – Release-Kommunikation.
-- `narrative/reviews/feldtheorie_repo_feedback_2026-02-05.md` – Emergenzpfad-Audit & Review-Laterne.
-- Weitere Kontexte: `outreach/`, `parity_briefs/`, `reviews/`, `meta/`.
+- `narrative/V6_INTEGRATION_ROADMAP.md` – Roadmap & Milestones.
+- `narrative/metaquest_parity_brief.md` – Paritäts- und Telemetrie-Übersicht.
+- `narrative/utac_activation_backlog.md` – Aktivierungs-Backlog.
+- `narrative/zenodo_release_playbook.md` – Release Guardrails und CI-Hooks.
+
+### 🟢 xAI Collaboration (`docs/xai_collab/`)
+Pilotpaket für AFET × xAI:
+- `xai_collab/xai_afet_Executive_Summary.md` – Scope, Deliverables, Timeline.
+- `xai_collab/xai_afet_Technical_Spec.md` – Architektur, Module, Schnittstellen.
+- `xai_collab/xai_afet_Validation_Roadmap.md` – Nullmodell-, CI- und ΔAIC-Fahrplan.
+- `xai_collab/xai_afet_week1_results.md`, `xai_collab/xai_afet_week2_*.md` – Experimentberichte.
 
 ---
 
 ## 🚀 Navigation & Werkzeuge
 
-- **Schnellstart:**
-  - Theorie: `science/utac_theory_core.md` → `science/utac_v2_synthesis.md` → `science/v6_entropy_governance_tesseract_physics.md`.
-  - Praxis: `science/USER_GUIDE.md` (siehe MkDocs-Navigation) & `science/METHODS.md`.
 - **Paritäts-/Status-Checks:** `narrative/metaquest_parity_brief.md`, `narrative/utac_activation_backlog.md`.
-- **Release-Prep:** `narrative/zenodo_release_playbook.md`, `narrative/claude_code_handoff.md` (Tri-Layer Hooks beachten).
-- **Tri-Layer prüfen:** `python scripts/sigillin_sync.py report --roots docs/ seed/` (keine offenen Gaps vor Merge).
+- **Release-Prep:** `narrative/zenodo_release_playbook.md`, `narrative/claude_code_handoff.md`.
+- **Tri-Layer prüfen:** `python scripts/sigillin_sync.py report --roots docs/ seed/`.
+- **Index-Parität prüfen:** `make docs-index`.
 
 ---
 
 ## 🌊 Essenz
 
-> **„Science in `science/`, Story in `narrative/` – \(R\) und \(\Theta\) entkoppeln sich sauber, \(\beta\approx4.8\) hält die
-> Membran scharf, \(\zeta(R)\) bleibt gedämpft.“**
+> **„Science in `science/`, Story in `narrative/`, Partnerschaften in `xai_collab/` –**
+> **\(R\) bewegt sich über \(\Theta\), \(\beta\approx4.8\) hält die Membran scharf, \(\zeta(R)\) bleibt gedämpft.“**

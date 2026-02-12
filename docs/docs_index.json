@@ -7,8 +7,8 @@
     "version": "2.0.0",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 3,
-    "updated": "2026-02-07T17:07:49Z",
+    "markdown_files": 48,
+    "updated": "2026-02-12T14:47:47Z",
     "last_updated": "2026-02-05"
   },
   "categories": {
@@ -23,6 +23,12 @@
       "description": "Roadmaps, manifests, parity briefs, and release communications",
       "color": "#8E44AD",
       "count": 16
+    },
+    "xai_collab": {
+      "name": "xAI Collaboration",
+      "description": "AFET collaboration package, planning artifacts, and experiment reports",
+      "color": "#00897B",
+      "count": 15
     }
   },
   "markdown_docs": [
@@ -608,6 +614,276 @@
       ],
       "description": "Emergenzpfad-Audit und SeniorDev-Feedback mit Prioritäten, Nullmodellen und ΔAIC-Hinweisen.",
       "path": "docs/narrative/reviews/feldtheorie_repo_feedback_2026-02-05.md"
+    },
+    {
+      "id": "docs-xai-001",
+      "name": "xai_collab/xai_afet_README.md",
+      "category": "xai_collab",
+      "type": "readme",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 2.2,
+      "keywords": [
+        "xai",
+        "afet",
+        "collaboration",
+        "σ(β(R-Θ))",
+        "index"
+      ],
+      "description": "Einstiegslaterne für das xAI-Kollaborationspaket; verknüpft Deliverables, Übergänge über σ(β(R-Θ)) und Kontaktpfade.",
+      "path": "docs/xai_collab/xai_afet_README.md"
+    },
+    {
+      "id": "docs-xai-002",
+      "name": "xai_collab/xai_afet_Executive_Summary.md",
+      "category": "xai_collab",
+      "type": "executive-summary",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 1.3,
+      "keywords": [
+        "xai",
+        "summary",
+        "pilot",
+        "safety",
+        "climate"
+      ],
+      "description": "Kompakte Übersicht zu Scope, Ressourcen und 12-Wochen-Pilot für AFET bei xAI.",
+      "path": "docs/xai_collab/xai_afet_Executive_Summary.md"
+    },
+    {
+      "id": "docs-xai-003",
+      "name": "xai_collab/xai_afet_Proposal_OnePager.md",
+      "category": "xai_collab",
+      "type": "proposal",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 4.2,
+      "keywords": [
+        "proposal",
+        "xai",
+        "afet",
+        "constants",
+        "collaboration"
+      ],
+      "description": "One-Pager Proposal mit AFET-Konstanten, Deliverable-Skizze und Pilot-Nächsten Schritten.",
+      "path": "docs/xai_collab/xai_afet_Proposal_OnePager.md"
+    },
+    {
+      "id": "docs-xai-004",
+      "name": "xai_collab/xai_afet_Technical_Spec.md",
+      "category": "xai_collab",
+      "type": "technical-spec",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 4.2,
+      "keywords": [
+        "technical-spec",
+        "architecture",
+        "safety",
+        "integration",
+        "afet"
+      ],
+      "description": "Technische Spezifikation der Module (Scaling, Safety, HfO₂, Climate) inklusive Schnittstellen.",
+      "path": "docs/xai_collab/xai_afet_Technical_Spec.md"
+    },
+    {
+      "id": "docs-xai-005",
+      "name": "xai_collab/xai_afet_Implementation_Plan.md",
+      "category": "xai_collab",
+      "type": "implementation-plan",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 1.5,
+      "keywords": [
+        "implementation",
+        "roadmap",
+        "testing",
+        "milestones",
+        "afet"
+      ],
+      "description": "Implementierungsplan mit Anforderungsableitung, Test-first-Rhythmus und Repo-Checkpoints.",
+      "path": "docs/xai_collab/xai_afet_Implementation_Plan.md"
+    },
+    {
+      "id": "docs-xai-006",
+      "name": "xai_collab/xai_afet_Validation_Roadmap.md",
+      "category": "xai_collab",
+      "type": "validation-roadmap",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 3.3,
+      "keywords": [
+        "validation",
+        "null-model",
+        "ΔAIC",
+        "ci",
+        "afet"
+      ],
+      "description": "Validierungsfahrplan mit Nullmodellen, ΔAIC-Entscheidungskriterien und Meilensteinen.",
+      "path": "docs/xai_collab/xai_afet_Validation_Roadmap.md"
+    },
+    {
+      "id": "docs-xai-007",
+      "name": "xai_collab/xai_afet_Budget_Resources.md",
+      "category": "xai_collab",
+      "type": "budget",
+      "status": "active",
+      "relevance": "medium",
+      "size_kb": 1.1,
+      "keywords": [
+        "budget",
+        "resources",
+        "gpu",
+        "staffing",
+        "pilot"
+      ],
+      "description": "Ressourcen- und Budgetplan inklusive Compute-Hülle, Teamzuschnitt und IP-Leitplanken.",
+      "path": "docs/xai_collab/xai_afet_Budget_Resources.md"
+    },
+    {
+      "id": "docs-xai-008",
+      "name": "xai_collab/xai_afet_grok_integration_spec.md",
+      "category": "xai_collab",
+      "type": "integration-spec",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 6.0,
+      "keywords": [
+        "grok",
+        "integration",
+        "layer-monitor",
+        "safety-hooks",
+        "sigma_phi"
+      ],
+      "description": "Grok-Integrationsspezifikation für Layer-Monitoring, Drift-Reports und Safety-Hooks.",
+      "path": "docs/xai_collab/xai_afet_grok_integration_spec.md"
+    },
+    {
+      "id": "docs-xai-009",
+      "name": "xai_collab/xai_afet_week1_results.md",
+      "category": "xai_collab",
+      "type": "experiment-report",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 5.7,
+      "keywords": [
+        "week1",
+        "experiments",
+        "tests",
+        "sigma_phi",
+        "results"
+      ],
+      "description": "Wochenreport zu Thermal-, Multimodal- und Adversarial-Experimenten mit Teststatus und Grenzwerten.",
+      "path": "docs/xai_collab/xai_afet_week1_results.md"
+    },
+    {
+      "id": "docs-xai-010",
+      "name": "xai_collab/xai_afet_week2_clip_report.md",
+      "category": "xai_collab",
+      "type": "experiment-report",
+      "status": "active",
+      "relevance": "medium",
+      "size_kb": 1.0,
+      "keywords": [
+        "week2",
+        "clip",
+        "sigma_phi",
+        "safety",
+        "baseline"
+      ],
+      "description": "CLIP-Wochenreport mit σ_Φ-Verteilung, Sicherheitsklassifikation und Baseline-Vergleich.",
+      "path": "docs/xai_collab/xai_afet_week2_clip_report.md"
+    },
+    {
+      "id": "docs-xai-011",
+      "name": "xai_collab/xai_afet_week2_quantum_exploration.md",
+      "category": "xai_collab",
+      "type": "exploration",
+      "status": "active",
+      "relevance": "medium",
+      "size_kb": 2.2,
+      "keywords": [
+        "week2",
+        "quantum",
+        "decoherence",
+        "sigma_phi",
+        "bridge"
+      ],
+      "description": "Explorationsnotiz zur Brücke zwischen σ_Φ und Quanten-Dekohärenz samt Grenzfallanalyse.",
+      "path": "docs/xai_collab/xai_afet_week2_quantum_exploration.md"
+    },
+    {
+      "id": "docs-xai-012",
+      "name": "xai_collab/xai_afet_week2_stress_report.md",
+      "category": "xai_collab",
+      "type": "stress-report",
+      "status": "active",
+      "relevance": "medium",
+      "size_kb": 1.1,
+      "keywords": [
+        "week2",
+        "stress",
+        "multimodal",
+        "probes",
+        "safety"
+      ],
+      "description": "Stress-Test-Report über fünf Szenarien mit σ_Φ-Scoring, Reaktionszeit und Interpretation.",
+      "path": "docs/xai_collab/xai_afet_week2_stress_report.md"
+    },
+    {
+      "id": "docs-xai-013",
+      "name": "xai_collab/xai_collab_index.md",
+      "category": "xai_collab",
+      "type": "index",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 2.1,
+      "keywords": [
+        "xai",
+        "index",
+        "trilayer",
+        "coupling",
+        "ΔAIC"
+      ],
+      "description": "Tri-Layer-Indexlaterne für das xAI-Kollaborationspaket mit logistischer Rahmung, Kopplungen und Falsifizierbarkeits-Hooks.",
+      "path": "docs/xai_collab/xai_collab_index.md"
+    },
+    {
+      "id": "docs-xai-014",
+      "name": "xai_collab/xai_collab_index.yaml",
+      "category": "xai_collab",
+      "type": "index-structure",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 3.9,
+      "keywords": [
+        "xai",
+        "index",
+        "yaml",
+        "trilayer",
+        "governance"
+      ],
+      "description": "Strukturelle Sigillin-Schicht des xAI-Index mit R, Θ, β, ζ(R), Consent-Modul und Laternenregister.",
+      "path": "docs/xai_collab/xai_collab_index.yaml"
+    },
+    {
+      "id": "docs-xai-015",
+      "name": "xai_collab/xai_collab_index.json",
+      "category": "xai_collab",
+      "type": "index-interface",
+      "status": "active",
+      "relevance": "high",
+      "size_kb": 4.7,
+      "keywords": [
+        "xai",
+        "index",
+        "json",
+        "interface",
+        "trilayer"
+      ],
+      "description": "JSON-Agentenspiegel des xAI-Index für tooling, Automationshygiene und Paritätsprüfungen.",
+      "path": "docs/xai_collab/xai_collab_index.json"
     }
   ],
   "triggers": {
@@ -667,6 +943,23 @@
       "docs-infra-013",
       "docs-infra-015",
       "docs-infra-020"
+    ],
+    "for_xai_collab": [
+      "docs-xai-001",
+      "docs-xai-002",
+      "docs-xai-003",
+      "docs-xai-004",
+      "docs-xai-005",
+      "docs-xai-006",
+      "docs-xai-007",
+      "docs-xai-008",
+      "docs-xai-009",
+      "docs-xai-010",
+      "docs-xai-011",
+      "docs-xai-012",
+      "docs-xai-013",
+      "docs-xai-014",
+      "docs-xai-015"
     ]
   },
   "status_legend": {
