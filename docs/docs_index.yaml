@@ -9,11 +9,11 @@ meta:
     Tri-layer Cadence: Formal, Empirical, Metaphorical.
 
     '
-  version: 2.0.0
+  version: 2.1.0
   created: '2025-11-06'
   status: active
-  markdown_files: 48
-  updated: "2026-02-12T14:47:47Z"
+  markdown_files: 49
+  updated: '2026-02-12T14:54:43Z'
   last_updated: '2026-02-05'
 categories:
   science:
@@ -31,6 +31,11 @@ categories:
     description: AFET collaboration package, planning artifacts, and experiment reports
     color: '#00897B'
     count: 15
+  afet_intake:
+    name: AFET Intake
+    description: Raw AFET imports and intake registers for repository-compliant curation
+    color: '#EF6C00'
+    count: 1
 markdown_docs:
 - id: docs-theory-001
   name: science/utac_theory_core.md
@@ -769,8 +774,8 @@ markdown_docs:
   - ΔAIC
   - ci
   - afet
-  description: Validierungsfahrplan mit Nullmodellen, ΔAIC-Entscheidungskriterien und
-    Meilensteinen.
+  description: Validierungsfahrplan mit Nullmodellen, ΔAIC-Entscheidungskriterien
+    und Meilensteinen.
   path: docs/xai_collab/xai_afet_Validation_Roadmap.md
 - id: docs-xai-007
   name: xai_collab/xai_afet_Budget_Resources.md
@@ -801,8 +806,8 @@ markdown_docs:
   - layer-monitor
   - safety-hooks
   - sigma_phi
-  description: Grok-Integrationsspezifikation für Layer-Monitoring, Drift-Reports und
-    Safety-Hooks.
+  description: Grok-Integrationsspezifikation für Layer-Monitoring, Drift-Reports
+    und Safety-Hooks.
   path: docs/xai_collab/xai_afet_grok_integration_spec.md
 - id: docs-xai-009
   name: xai_collab/xai_afet_week1_results.md
@@ -817,8 +822,8 @@ markdown_docs:
   - tests
   - sigma_phi
   - results
-  description: Wochenreport zu Thermal-, Multimodal- und Adversarial-Experimenten mit
-    Teststatus und Grenzwerten.
+  description: Wochenreport zu Thermal-, Multimodal- und Adversarial-Experimenten
+    mit Teststatus und Grenzwerten.
   path: docs/xai_collab/xai_afet_week1_results.md
 - id: docs-xai-010
   name: xai_collab/xai_afet_week2_clip_report.md
@@ -916,6 +921,22 @@ markdown_docs:
   description: JSON-Agentenspiegel des xAI-Index für tooling, Automationshygiene und
     Paritätsprüfungen.
   path: docs/xai_collab/xai_collab_index.json
+- id: docs-afet-001
+  name: AFET/afet_intake_register.md
+  category: afet_intake
+  type: intake-register
+  status: active
+  relevance: high
+  size_kb: 2.7
+  keywords:
+  - AFET
+  - intake
+  - trilayer
+  - hash
+  - curation
+  description: Intake-Laterne für neue AFET-Rohdokumente mit Inventar, Hashes, logistischer
+    Rahmung und Kurationspfad.
+  path: docs/AFET/afet_intake_register.md
 triggers:
   core_concepts:
   - σ(β(R-Θ))
@@ -981,6 +1002,8 @@ quicklinks:
   - docs-xai-013
   - docs-xai-014
   - docs-xai-015
+  for_afet_intake:
+  - docs-afet-001
 status_legend:
   stable: Fertig, validiert, publikationsreif
   draft: In Arbeit

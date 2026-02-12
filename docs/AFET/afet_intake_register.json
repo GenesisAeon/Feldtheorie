@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "id": "afet-intake-2026-02-12",
+    "title": "AFET Intake Register for docs/AFET",
+    "scope": "docs/AFET",
+    "timestamp_utc": "2026-02-12T14:53:56Z",
+    "resonance": {
+      "R": 0.44,
+      "Theta": 0.56,
+      "beta": 4.8,
+      "zeta_R": 0.19,
+      "sigma_beta_R_minus_Theta": 0.36
+    },
+    "status": "active",
+    "notes": "Repo-konforme Eingangslaterne: roh importierte AFET-Dokumente sind inventarisiert, hash-markiert und mit Kurationspfad versehen."
+  },
+  "governance": {
+    "trilayer": "md+yaml+json",
+    "coupling_targets": [
+      "docs/docs_index.md",
+      "docs/xai_collab/xai_collab_index.md",
+      "analysis/",
+      "data/"
+    ],
+    "falsifiability_hooks": [
+      "Nullmodell: reine Dateiablage ohne Metadaten",
+      "Interventionsmodell: Intake-Register mit Hash+Kurationsstatus"
+    ]
+  },
+  "inventory": [
+    {
+      "filename": "1. Hauptthesen und Schlüsselkonzepte-1.pdf",
+      "path": "docs/AFET/1. Hauptthesen und Schlüsselkonzepte-1.pdf",
+      "extension": "pdf",
+      "size_bytes": 50453,
+      "sha256": "3799d0734230f200",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "AFET-Parameter und physikalische Konstanten_ Emergenzen_.pdf",
+      "path": "docs/AFET/AFET-Parameter und physikalische Konstanten_ Emergenzen_.pdf",
+      "extension": "pdf",
+      "size_bytes": 259913,
+      "sha256": "a7cb52d2fcd55ddf",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "AFET-RepoUmsetzung.txt",
+      "path": "docs/AFET/AFET-RepoUmsetzung.txt",
+      "extension": "txt",
+      "size_bytes": 8494,
+      "sha256": "1eaefe68e138a4a2",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "AFETSucheChatGPTAgent_paper.txt",
+      "path": "docs/AFET/AFETSucheChatGPTAgent_paper.txt",
+      "extension": "txt",
+      "size_bytes": 8816,
+      "sha256": "ee9b5798f5137dd5",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "AFET_ Theoriefundament und Repository-Integration.pdf",
+      "path": "docs/AFET/AFET_ Theoriefundament und Repository-Integration.pdf",
+      "extension": "pdf",
+      "size_bytes": 315037,
+      "sha256": "ae9d5dea4102ea98",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "AFET_ParameterSucheGemini.txt",
+      "path": "docs/AFET/AFET_ParameterSucheGemini.txt",
+      "extension": "txt",
+      "size_bytes": 74791,
+      "sha256": "195b33d3c02c6139",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "BiologischeVerantwortung.txt",
+      "path": "docs/AFET/BiologischeVerantwortung.txt",
+      "extension": "txt",
+      "size_bytes": 12241,
+      "sha256": "9989a35318f64a33",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "DOIListe.txt",
+      "path": "docs/AFET/DOIListe.txt",
+      "extension": "txt",
+      "size_bytes": 1583,
+      "sha256": "a406689ea65cd062",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "Feld-Entrophie_Theorie.txt",
+      "path": "docs/AFET/Feld-Entrophie_Theorie.txt",
+      "extension": "txt",
+      "size_bytes": 19744,
+      "sha256": "d0fad13c4c0c9ce7",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "Feldtheorie aeon Modul.pdf",
+      "path": "docs/AFET/Feldtheorie aeon Modul.pdf",
+      "extension": "pdf",
+      "size_bytes": 49648,
+      "sha256": "9b5f7d9c7d2f0703",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "GeminiSucheAFET.txt",
+      "path": "docs/AFET/GeminiSucheAFET.txt",
+      "extension": "txt",
+      "size_bytes": 80829,
+      "sha256": "5c2ac0b2ad87009e",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "GeminiSucheDOIListe.txt",
+      "path": "docs/AFET/GeminiSucheDOIListe.txt",
+      "extension": "txt",
+      "size_bytes": 84359,
+      "sha256": "cbd8414716642bc7",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "General Field Entropy Theory (AFET).pdf",
+      "path": "docs/AFET/General Field Entropy Theory (AFET).pdf",
+      "extension": "pdf",
+      "size_bytes": 110680,
+      "sha256": "fac590feee2cbc98",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "Philosophical Implications of the General Field Entropy Theory.pdf",
+      "path": "docs/AFET/Philosophical Implications of the General Field Entropy Theory.pdf",
+      "extension": "pdf",
+      "size_bytes": 69540,
+      "sha256": "f20e77c2353fa0c1",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "SucheChatGPTDeepResearch.txt",
+      "path": "docs/AFET/SucheChatGPTDeepResearch.txt",
+      "extension": "txt",
+      "size_bytes": 8254,
+      "sha256": "e51f6d3c9061c835",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "UTAC zu AFET_ DOI-Recherche und Entwicklung.docx",
+      "path": "docs/AFET/UTAC zu AFET_ DOI-Recherche und Entwicklung.docx",
+      "extension": "docx",
+      "size_bytes": 6211648,
+      "sha256": "c966a94351f139a8",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "UTAC zu AFET_ DOI-Recherche und Entwicklung.pdf",
+      "path": "docs/AFET/UTAC zu AFET_ DOI-Recherche und Entwicklung.pdf",
+      "extension": "pdf",
+      "size_bytes": 249328,
+      "sha256": "b23178792231a1ca",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "f87ed29c-b329-4429-afb2-ff3a21d68c6a.jpg",
+      "path": "docs/AFET/f87ed29c-b329-4429-afb2-ff3a21d68c6a.jpg",
+      "extension": "jpg",
+      "size_bytes": 216825,
+      "sha256": "715a431dbf0e5a9a",
+      "status": "raw-intake"
+    },
+    {
+      "filename": "xAIkollab.txt",
+      "path": "docs/AFET/xAIkollab.txt",
+      "extension": "txt",
+      "size_bytes": 21257,
+      "sha256": "1f18d6d88009f0c1",
+      "status": "raw-intake"
+    }
+  ],
+  "actions": [
+    {
+      "id": "AFET-A1",
+      "task": "Rohdokumente bleiben unverändert im Intake-Ordner (forensische Quelle).",
+      "owner": "docs-curation",
+      "status": "completed"
+    },
+    {
+      "id": "AFET-A2",
+      "task": "Inhaltliche Extraktion nach docs/xai_collab und docs/science priorisieren (Markdown-first).",
+      "owner": "research-synth",
+      "status": "pending"
+    },
+    {
+      "id": "AFET-A3",
+      "task": "DOI-/Citation-Liste in zitierfähige Tabelle überführen und mit Nullmodell/ΔAIC-Links koppeln.",
+      "owner": "citation-manager",
+      "status": "pending"
+    }
+  ]
+}
