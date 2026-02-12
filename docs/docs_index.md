@@ -1,4 +1,4 @@
-# 📚 Docs Index – Science, Narrative & xAI Collaboration
+# 📚 Docs Index – Science, Narrative, xAI Collaboration & AFET Intake
 
 **Version:** 2.1.0 | **Datum:** 12. Feb 2026 | **Zuletzt aktualisiert:** 12. Feb 2026 | **Verzeichnis:** `docs/`
 
@@ -12,8 +12,9 @@ Nach der Konsens-Entscheidung für eine klare Trennung zwischen **Forschung**, *
 - `docs/science/` – Technische Forschung, Methoden, Experimente, Leitfäden.
 - `docs/narrative/` – Manifeste, Roadmaps, Paritäts- und Release-Notizen.
 - `docs/xai_collab/` – AFET × xAI Pilotunterlagen, Spezifikationen und Wochenreports.
+- `docs/AFET/` – Rohimporte (PDF/TXT/DOCX/JPG) mit Intake-Register für repo-konforme Kuration.
 
-Insgesamt umfasst die aktuelle Navigationslaterne **48 kuratierte Markdown-Dokumente**
+Insgesamt umfasst die aktuelle Navigationslaterne **49 kuratierte Markdown-Dokumente**
 (im Tri-Layer gespiegelt via `docs_index.{yaml,json,md}`).
 
 ---
@@ -40,6 +41,12 @@ Pilotpaket für AFET × xAI:
 - `xai_collab/xai_afet_Technical_Spec.md` – Architektur, Module, Schnittstellen.
 - `xai_collab/xai_afet_Validation_Roadmap.md` – Nullmodell-, CI- und ΔAIC-Fahrplan.
 - `xai_collab/xai_afet_week1_results.md`, `xai_collab/xai_afet_week2_*.md` – Experimentberichte.
+
+### 🟠 AFET Intake (`docs/AFET/`)
+Eingangsschicht für neue AFET-Artefakte:
+- `AFET/afet_intake_register.md` – Inventar, Hashes, Kurationsstatus und Nullmodell-Hinweise.
+- Rohquellen bleiben unverändert im Intake-Ordner (forensische Nachvollziehbarkeit).
+- Inhalte werden schrittweise in zitierfähige Markdown-Laternen nach `science/` und `xai_collab/` gespiegelt.
 
 ---
 
