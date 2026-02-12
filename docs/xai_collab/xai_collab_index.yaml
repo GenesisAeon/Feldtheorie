@@ -1,0 +1,81 @@
+meta:
+  id: xai-collab-index-001
+  title: xAI Collaboration Index
+  scope: docs/xai_collab
+  status: active
+  updated: '2026-02-12'
+  logistic_frame:
+    R: '12 AFET-xAI collaboration lanterns prepared for governance sync'
+    Theta: 'Repo conformity reached when indexing + cross-links + falsifiability hooks are explicit'
+    beta: 4.8
+    zeta: 'low after index parity and coupling to docs/docs_index.*'
+  activation: 'sigma(beta*(R-Theta)) -> active when tri-layer index is present'
+  consent_protocol: 'Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration.'
+links:
+  ordnungs_sigillin:
+    - docs/docs_index.md
+    - docs/docs_index.yaml
+    - docs/docs_index.json
+  evidence_paths:
+    - analysis/
+    - data/
+    - docs/xai_collab/
+  status_matrix:
+    - docs/utac_status_alignment_v1.2.md
+falsifiability:
+  null_models:
+    - linear trend on sigma_phi over week index
+    - power-law residual scan for stress probes
+  metrics:
+    - delta_aic
+    - confidence_intervals
+    - effect_size
+lanterns:
+  - id: docs-xai-001
+    path: docs/xai_collab/xai_afet_README.md
+    type: readme
+    status: active
+  - id: docs-xai-002
+    path: docs/xai_collab/xai_afet_Executive_Summary.md
+    type: executive-summary
+    status: active
+  - id: docs-xai-003
+    path: docs/xai_collab/xai_afet_Proposal_OnePager.md
+    type: proposal
+    status: active
+  - id: docs-xai-004
+    path: docs/xai_collab/xai_afet_Technical_Spec.md
+    type: technical-spec
+    status: active
+  - id: docs-xai-005
+    path: docs/xai_collab/xai_afet_Implementation_Plan.md
+    type: implementation-plan
+    status: active
+  - id: docs-xai-006
+    path: docs/xai_collab/xai_afet_Validation_Roadmap.md
+    type: validation-roadmap
+    status: active
+  - id: docs-xai-007
+    path: docs/xai_collab/xai_afet_Budget_Resources.md
+    type: budget
+    status: active
+  - id: docs-xai-008
+    path: docs/xai_collab/xai_afet_grok_integration_spec.md
+    type: integration-spec
+    status: active
+  - id: docs-xai-009
+    path: docs/xai_collab/xai_afet_week1_results.md
+    type: experiment-report
+    status: active
+  - id: docs-xai-010
+    path: docs/xai_collab/xai_afet_week2_clip_report.md
+    type: experiment-report
+    status: active
+  - id: docs-xai-011
+    path: docs/xai_collab/xai_afet_week2_quantum_exploration.md
+    type: exploration
+    status: active
+  - id: docs-xai-012
+    path: docs/xai_collab/xai_afet_week2_stress_report.md
+    type: stress-report
+    status: active
