@@ -127,3 +127,104 @@ class TestProfilingGenerator:
         metrics_safe = FieldMetrics(entropy_density=5.0)
         snapshot_safe = generator.get_field_snapshot(metrics=metrics_safe)
         assert snapshot_safe["metastability"]["is_metastable"] is True
+
+    def test_generate_svg(self, generator: ProfilingGenerator, output_dir: Path):
+        out = generator.generate_svg(output_path=output_dir / "snapshot.svg")
+        assert out.exists()
+        assert out.suffix == ".svg"
+        assert out.stat().st_size > 0
+
+    def test_generate_svg_custom_metrics(self, generator: ProfilingGenerator, output_dir: Path):
+        metrics = FieldMetrics(
+            sigma_phi_deviation=0.4,
+            beta_values={"neuro": 13.5, "climate": 11.0},
+            s_crit_proximity=0.6,
+            label="SVG-test",
+        )
+        out = generator.generate_svg(metrics=metrics, output_path=output_dir / "custom.svg")
+        assert out.exists()
+        content = out.read_text()
+        assert "svg" in content.lower()
+
+    def test_generate_interactive(self, generator: ProfilingGenerator, output_dir: Path):
+        pytest.importorskip("plotly")
+        out = generator.generate_interactive(output_path=output_dir / "interactive.html")
+        assert out.exists()
+        assert out.suffix == ".html"
+        assert out.stat().st_size > 0
+
+    def test_generate_interactive_with_metrics(
+        self, generator: ProfilingGenerator, output_dir: Path
+    ):
+        pytest.importorskip("plotly")
+        metrics = FieldMetrics(
+            sigma_phi_deviation=0.2,
+            beta_values={"neuro": 13.5, "bio": 7.4},
+            s_crit_proximity=0.5,
+            label="Interactive-test",
+        )
+        out = generator.generate_interactive(
+            metrics=metrics, output_path=output_dir / "interactive_custom.html"
+        )
+        assert out.exists()
+        content = out.read_text()
+        assert "plotly" in content.lower() or "Plotly" in content
+
+    def test_generate_interactive_missing_plotly(self, generator: ProfilingGenerator, monkeypatch):
+        import visuals.profiling.profiling_generator as pg
+
+        monkeypatch.setattr(pg, "_PLOTLY_AVAILABLE", False)
+        with pytest.raises(ImportError, match="plotly"):
+            generator.generate_interactive()
+
+
+class TestQuadLayerSnapshot:
+    """Tests for the unified Quad-Layer snapshot via AeonLanternHub."""
+
+    @pytest.fixture
+    def hub(self):
+        from unittest.mock import MagicMock
+
+        from integration.aeon_lantern import AeonLanternHub
+
+        bridge = MagicMock()
+        return AeonLanternHub(bridge=bridge)
+
+    def test_quad_layer_structure(self, hub):
+        snapshot = hub.get_quad_layer_snapshot()
+        assert snapshot["quad_layer"] == "unified"
+        assert "layers" in snapshot
+        layers = snapshot["layers"]
+        assert "code_logic" in layers
+        assert "documentation" in layers
+        assert "sonification" in layers
+        assert "visual_profiling" in layers
+        assert "governance" in snapshot
+
+    def test_quad_layer_with_metrics(self, hub):
+        metrics = FieldMetrics(
+            entropy_density=10.0,
+            beta_values={"neuro": 13.5},
+            label="test-snapshot",
+        )
+        snapshot = hub.get_quad_layer_snapshot(metrics=metrics)
+        assert snapshot["layers"]["documentation"]["label"] == "test-snapshot"
+        assert "neuro" in snapshot["layers"]["code_logic"]["beta_analysis"]
+
+    def test_quad_layer_with_sonification(self, hub):
+        son_meta = {
+            "beta": 4.5,
+            "field_type": "strongly_coupled",
+            "base_frequency_hz": 220.0,
+        }
+        snapshot = hub.get_quad_layer_snapshot(sonification_metadata=son_meta)
+        assert snapshot["layers"]["sonification"] == son_meta
+
+    def test_quad_layer_sonification_none_by_default(self, hub):
+        snapshot = hub.get_quad_layer_snapshot()
+        assert snapshot["layers"]["sonification"] is None
+
+    def test_quad_layer_metastability(self, hub):
+        metrics = FieldMetrics(entropy_density=20.0)
+        snapshot = hub.get_quad_layer_snapshot(metrics=metrics)
+        assert snapshot["layers"]["code_logic"]["metastability"]["is_metastable"] is False

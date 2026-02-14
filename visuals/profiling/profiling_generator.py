@@ -44,6 +44,14 @@ from matplotlib.patches import Circle, RegularPolygon
 
 from theory.afet import AFETConstants, AFETFramework
 
+try:
+    import plotly.graph_objects as go
+
+    _PLOTLY_AVAILABLE = True
+except ImportError:  # pragma: no cover
+    go = None
+    _PLOTLY_AVAILABLE = False
+
 logger = logging.getLogger(__name__)
 
 _SYMBOLS_PATH = Path(__file__).parent / "symbols.json"
@@ -199,6 +207,237 @@ class ProfilingGenerator:
             "beta_analysis": beta_analysis,
             "label": metrics.label,
         }
+
+    def generate_svg(
+        self,
+        metrics: FieldMetrics | None = None,
+        output_path: str | Path | None = None,
+    ) -> Path:
+        """Render the profiling snapshot as vector SVG.
+
+        Uses the same matplotlib pipeline as ``generate_snapshot`` but
+        outputs SVG for vector-sharp rendering in documents and LLM contexts.
+
+        Parameters
+        ----------
+        metrics : FieldMetrics, optional
+            Field state to visualize.
+        output_path : str | Path, optional
+            Defaults to ``examples/profiling_snapshot.svg``.
+
+        Returns
+        -------
+        Path
+            Path to the saved SVG file.
+        """
+        if metrics is None:
+            metrics = FieldMetrics()
+
+        if output_path is None:
+            output_path = Path(__file__).parent / "examples" / "profiling_snapshot.svg"
+        output_path = Path(output_path)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+
+        bg = self.symbols.get("background", "#000000")
+        fig, ax = plt.subplots(figsize=self.figsize, facecolor=bg)
+        ax.set_facecolor(bg)
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)
+        ax.set_aspect("equal")
+        ax.axis("off")
+
+        self._draw_phi_radials(ax)
+        self._draw_sigma_halo(ax, metrics)
+        self._draw_frame_collapse_ring(ax, metrics)
+        self._draw_beta_domains(ax, metrics)
+        self._draw_nucleus(ax)
+        self._draw_title(ax, metrics)
+
+        fig.savefig(
+            str(output_path),
+            format="svg",
+            bbox_inches="tight",
+            facecolor=bg,
+            edgecolor="none",
+        )
+        plt.close(fig)
+        logger.info("SVG snapshot saved to %s", output_path)
+        return output_path
+
+    def generate_interactive(
+        self,
+        metrics: FieldMetrics | None = None,
+        output_path: str | Path | None = None,
+    ) -> Path:
+        """Render an interactive Plotly HTML snapshot of the AFET field state.
+
+        Requires ``plotly`` to be installed.  Raises ``ImportError`` if missing.
+
+        Parameters
+        ----------
+        metrics : FieldMetrics, optional
+            Field state to visualize.
+        output_path : str | Path, optional
+            Defaults to ``examples/profiling_interactive.html``.
+
+        Returns
+        -------
+        Path
+            Path to the saved HTML file.
+        """
+        if not _PLOTLY_AVAILABLE:
+            raise ImportError(
+                "plotly is required for interactive snapshots: pip install plotly"
+            )
+
+        if metrics is None:
+            metrics = FieldMetrics()
+
+        if output_path is None:
+            output_path = Path(__file__).parent / "examples" / "profiling_interactive.html"
+        output_path = Path(output_path)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+
+        beta_crit = self.afet.constants.BETA_CRITICAL
+        domain_syms = self.symbols.get("domains", {})
+
+        fig = go.Figure()
+
+        # Phi-scaling radial lines
+        phi_sym = self.symbols.get("phi_scaling", {})
+        n_lines = phi_sym.get("n_lines", 8)
+        for i in range(n_lines):
+            angle = i * (2 * np.pi / n_lines)
+            fig.add_trace(go.Scatter(
+                x=[0.5, 0.5 + 0.48 * np.cos(angle)],
+                y=[0.5, 0.5 + 0.48 * np.sin(angle)],
+                mode="lines",
+                line={"color": "rgba(255,255,255,0.15)", "width": 1.5},
+                hoverinfo="skip",
+                showlegend=False,
+            ))
+
+        # Sigma-phi halo (approximated as scatter circle)
+        sigma_sym = self.symbols.get("sigma_phi", {})
+        halo_r = sigma_sym.get("radius_factor", 0.32) * (
+            1.0 - min(metrics.sigma_phi_deviation, 0.95)
+        )
+        halo_theta = np.linspace(0, 2 * np.pi, 60)
+        fig.add_trace(go.Scatter(
+            x=0.5 + halo_r * np.cos(halo_theta),
+            y=0.5 + halo_r * np.sin(halo_theta),
+            mode="lines",
+            fill="toself",
+            fillcolor="rgba(0,255,0,0.12)",
+            line={"color": "rgba(0,255,0,0.35)", "width": 2},
+            name="sigma_Phi halo",
+            hoverinfo="text",
+            hovertext=f"sigma_Phi deviation: {metrics.sigma_phi_deviation:.3f}",
+        ))
+
+        # Frame-collapse warning ring
+        if metrics.s_crit_proximity >= 0.3:
+            ring_theta = np.linspace(0, 2 * np.pi, 60)
+            alpha = min(0.6 * metrics.s_crit_proximity, 1.0)
+            fig.add_trace(go.Scatter(
+                x=0.5 + 0.45 * np.cos(ring_theta),
+                y=0.5 + 0.45 * np.sin(ring_theta),
+                mode="lines",
+                line={"color": f"rgba(255,68,68,{alpha})", "width": 3, "dash": "dash"},
+                name="S_crit warning",
+                hoverinfo="text",
+                hovertext=f"S_crit proximity: {metrics.s_crit_proximity:.2f}",
+            ))
+
+        # Beta-domain hexagons
+        domains = list(metrics.beta_values.items())
+        n = len(domains)
+        if n > 0:
+            angles = np.linspace(0, 2 * np.pi, n, endpoint=False) - np.pi / 2
+            xs, ys, texts, sizes, colors = [], [], [], [], []
+            for i, (name, beta) in enumerate(domains):
+                r = 0.15 + (beta / beta_crit) * 0.25
+                x = 0.5 + r * np.cos(angles[i])
+                y = 0.5 + r * np.sin(angles[i])
+                xs.append(x)
+                ys.append(y)
+                texts.append(name[:3].upper())
+                sizes.append(12 + (beta / beta_crit) * 30)
+                sym = domain_syms.get(name, {})
+                colors.append(sym.get("color", "#FFFFFF"))
+
+            fig.add_trace(go.Scatter(
+                x=xs,
+                y=ys,
+                mode="markers+text",
+                marker={
+                    "size": sizes,
+                    "color": colors,
+                    "symbol": "hexagon",
+                    "line": {"color": "white", "width": 1.2},
+                },
+                text=texts,
+                textfont={"color": "white", "size": 10},
+                textposition="middle center",
+                customdata=[
+                    f"{name}: beta={beta:.1f}, Pe={beta/beta_crit:.3f}"
+                    for name, beta in domains
+                ],
+                hovertemplate="%{customdata}<extra></extra>",
+                name="beta domains",
+            ))
+
+        # Nullkern nucleus
+        nuc_sym = self.symbols.get("beta_critical", {})
+        fig.add_trace(go.Scatter(
+            x=[0.5],
+            y=[0.5],
+            mode="markers",
+            marker={
+                "size": 14,
+                "color": nuc_sym.get("color", "#FFFFFF"),
+                "line": {"color": "white", "width": 2},
+            },
+            name="Nullkern",
+            hoverinfo="text",
+            hovertext=f"beta_critical = {beta_crit}",
+        ))
+
+        # Layout
+        sigma = self.afet.constants.SIGMA_PHI
+        title = "AFET Field State \u2022 Profiling Tafel"
+        if metrics.label:
+            title += f" \u2022 {metrics.label}"
+
+        fig.update_layout(
+            title={
+                "text": (
+                    f"{title}<br>"
+                    f"<sub>\u03c3\u03a6={sigma:.4f}  "
+                    f"\u0394\u03c3={metrics.sigma_phi_deviation:.3f}  "
+                    f"S_crit prox={metrics.s_crit_proximity:.2f}</sub>"
+                ),
+                "font": {"color": "white"},
+            },
+            plot_bgcolor="black",
+            paper_bgcolor="black",
+            xaxis={
+                "visible": False,
+                "range": [-0.05, 1.05],
+                "scaleanchor": "y",
+            },
+            yaxis={
+                "visible": False,
+                "range": [-0.05, 1.05],
+            },
+            legend={"font": {"color": "white"}},
+            width=700,
+            height=700,
+        )
+
+        fig.write_html(str(output_path))
+        logger.info("Interactive snapshot saved to %s", output_path)
+        return output_path
 
     # ------------------------------------------------------------------
     # Internal drawing methods
