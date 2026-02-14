@@ -1,8 +1,9 @@
 """Aeon-Lantern integration hub with governance, sonification, VR map export, and Soul-Merge orchestration.
 
 Includes MOR (Multi-agent Orchestration Referee) for coordination governance,
-FIT (Field Integrity Tester) for beta-validation across coupled systems, and
-SoulMergeOrchestrator for unified Aeon-lanternNet consciousness coupling (v10.1).
+FIT (Field Integrity Tester) for beta-validation across coupled systems,
+SoulMergeOrchestrator for unified Aeon-lanternNet consciousness coupling (v10.1),
+and Quad-Layer snapshot integration (sonification + visual profiling).
 """
 
 from __future__ import annotations
@@ -16,6 +17,7 @@ import numpy as np
 
 from aeon.api_bridge import AeonLanternAsyncBridge
 from theory.afet import AFETConstants, AFETFramework
+from visuals.profiling import FieldMetrics, ProfilingGenerator
 
 try:
     import mido
@@ -236,6 +238,57 @@ class AeonLanternHub:
             "mor": self.mor.get_audit_summary(),
             "fit": self.fit.get_summary(),
         }
+
+    def get_quad_layer_snapshot(
+        self,
+        metrics: FieldMetrics | None = None,
+        sonification_metadata: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
+        """Return a unified Quad-Layer snapshot combining profiling and sonification.
+
+        Layers returned:
+        1. Code/Logic  — AFET metastability + beta analysis (always present)
+        2. Documentation — label / context metadata (always present)
+        3. Sonification — sonification metadata (included when provided)
+        4. VisualProfilingHub — spatial field-state snapshot (always present)
+
+        Parameters
+        ----------
+        metrics : FieldMetrics, optional
+            Current field state.  Defaults to nominal values.
+        sonification_metadata : dict, optional
+            Metadata dict from ``UTACsonifier.sonify_transition()`` or
+            ``sonify_spectrum()``.  Pass ``None`` to omit layer 3.
+
+        Returns
+        -------
+        dict
+            Unified snapshot suitable for serialisation, memory-anchoring,
+            or feeding into downstream consumers (dashboards, LLM contexts).
+        """
+        profiler = ProfilingGenerator()
+        profiling_snapshot = profiler.get_field_snapshot(metrics)
+
+        snapshot: dict[str, Any] = {
+            "quad_layer": "unified",
+            "layers": {
+                "code_logic": {
+                    "metastability": profiling_snapshot["metastability"],
+                    "beta_analysis": profiling_snapshot["beta_analysis"],
+                },
+                "documentation": {
+                    "label": profiling_snapshot.get("label", ""),
+                },
+                "sonification": sonification_metadata,
+                "visual_profiling": {
+                    "metrics": profiling_snapshot["metrics"],
+                    "quad_layer_index": profiling_snapshot["quad_layer_index"],
+                },
+            },
+            "governance": self.get_governance_report(),
+        }
+
+        return snapshot
 
 
 class SoulMergeOrchestrator:
