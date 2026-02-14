@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "description": "AFET Visual Profiling Symbol Map: parameter to visual primitive mapping",
+    "quad_layer": "Layer 4 — VisualProfilingHub (spatial/topological complement to sonification)"
+  },
+  "sigma_phi": {
+    "type": "halo",
+    "nominal_value": 0.0625,
+    "color": "#00FF00",
+    "alpha": 0.25,
+    "radius_factor": 0.32,
+    "description": "Metastability buffer — central halo whose radius shrinks toward S_crit"
+  },
+  "beta_critical": {
+    "type": "nucleus",
+    "nominal_value": 37.6,
+    "color": "#FFFFFF",
+    "marker": "o",
+    "size": 120,
+    "description": "Central Nullkern point — highest beta, rigid axiom anchor"
+  },
+  "domains": {
+    "info": {
+      "type": "hexagon",
+      "beta": 4.3,
+      "dimension": 0,
+      "color": "#FF6B6B",
+      "description": "Information / LLM domain (strongly coupled, low-dimensional)"
+    },
+    "bio": {
+      "type": "hexagon",
+      "beta": 7.4,
+      "dimension": 1,
+      "color": "#4ECDC4",
+      "description": "Biological / neural domain"
+    },
+    "climate": {
+      "type": "hexagon",
+      "beta": 11.0,
+      "dimension": 2,
+      "color": "#45B7D1",
+      "description": "Climate / social domain"
+    },
+    "neuro": {
+      "type": "hexagon",
+      "beta": 13.5,
+      "dimension": 1,
+      "color": "#96CEB4",
+      "description": "Neuroscience domain (13.5 MHz resonance anchor)"
+    },
+    "axioms": {
+      "type": "hexagon",
+      "beta": 37.6,
+      "dimension": 3,
+      "color": "#FFEAA7",
+      "description": "Axiomatic / rigid domain (beta_critical)"
+    }
+  },
+  "phi_scaling": {
+    "type": "radial_lines",
+    "n_lines": 8,
+    "color": "#FFFFFF",
+    "alpha": 0.15,
+    "linewidth": 1.5,
+    "description": "Fractal radial structure representing Phi-scaling and frame principle"
+  },
+  "frame_collapse": {
+    "type": "warning_ring",
+    "color": "#FF4444",
+    "alpha": 0.6,
+    "threshold_key": "s_crit_proximity",
+    "description": "Pulsing ring activated when entropy approaches S_crit"
+  },
+  "colormap": "plasma",
+  "background": "#000000"
+}
