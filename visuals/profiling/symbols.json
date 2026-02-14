@@ -72,6 +72,25 @@
     "threshold_key": "s_crit_proximity",
     "description": "Pulsing ring activated when entropy approaches S_crit"
   },
+  "self_referential": {
+    "description": "Self-referential AFET field metrics — the theory observing its own state",
+    "current_iteration": {
+      "value": 11,
+      "doi_tag": "v11_gardener",
+      "description": "Current DOI iteration count (monotonically increasing with each major revision)"
+    },
+    "theory_stability": {
+      "value": 0.87,
+      "method": "mean_beta_consistency",
+      "description": "Stability score [0,1] — ratio of observed beta values matching predicted values within tolerance across last DOI iterations",
+      "last_evaluated_dois": ["v9_alpha", "v10_oracle", "v11_gardener"]
+    },
+    "frame_proximity_to_crit": {
+      "value": 0.12,
+      "s_crit_reference": "sigma_phi.nominal_value",
+      "description": "How close the frame is to collapse — 0.0 = fully stable, 1.0 = at S_crit boundary"
+    }
+  },
   "colormap": "plasma",
   "background": "#000000"
 }
