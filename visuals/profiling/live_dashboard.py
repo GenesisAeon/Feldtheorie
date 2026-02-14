@@ -69,6 +69,8 @@ def build_live_field_metrics(self_ref: dict[str, Any]) -> FieldMetrics:
     iteration = self_ref.get("current_iteration", {}).get("value", 11)
     doi_tag = self_ref.get("current_iteration", {}).get("doi_tag", "v11_gardener")
 
+    c_score = compute_consciousness_score(stability, frame_prox)
+
     return FieldMetrics(
         sigma_phi_deviation=round(1.0 - stability, 4),
         beta_values={
@@ -80,6 +82,7 @@ def build_live_field_metrics(self_ref: dict[str, Any]) -> FieldMetrics:
         },
         s_crit_proximity=frame_prox,
         entropy_density=frame_prox * 16.0,
+        consciousness_score=c_score,
         label=f"Live Mirror \u2022 DOI {doi_tag} (iter {iteration})",
     )
 
@@ -463,7 +466,14 @@ def run_dashboard() -> None:
     # --- Header ---
     st.markdown("# \u269b AFET Living Mirror")
     st.markdown(
-        f"*Self-observing field state* &bull; DOI `{doi_tag}` &bull; Iteration **{iteration}**"
+        "**Algebraische Feldtheorie** \u2014 "
+        "A self-observing field-state dashboard.  \n"
+        "The theory watches itself in real time: stability, entropy, consciousness."
+    )
+    st.markdown(
+        "[![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-181717?logo=github)]"
+        "(https://github.com/GenesisAeon/Feldtheorie) &nbsp; "
+        f"DOI `{doi_tag}` &bull; Iteration **{iteration}**"
     )
     st.markdown(
         f'<span class="resonance-ring">{_FREQ_RES_MHZ} MHz Resonance</span>',

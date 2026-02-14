@@ -81,6 +81,9 @@ class FieldMetrics:
         How close the system is to critical entropy (0.0 = safe, 1.0 = at S_crit).
     entropy_density : float
         Current entropy density of the field.
+    consciousness_score : float
+        AFET Consciousness Score [0, 100].
+        Formula: theory_stability * (1 - frame_proximity) * 100.
     label : str
         Optional label for the snapshot (e.g. DOI iteration, timestamp).
     """
@@ -89,6 +92,7 @@ class FieldMetrics:
     beta_values: dict[str, float] = field(default_factory=lambda: dict(_DEFAULT_DOMAINS))
     s_crit_proximity: float = 0.0
     entropy_density: float = 0.0
+    consciousness_score: float = 0.0
     label: str = ""
 
 
@@ -202,6 +206,7 @@ class ProfilingGenerator:
                 "sigma_phi_deviation": metrics.sigma_phi_deviation,
                 "s_crit_proximity": metrics.s_crit_proximity,
                 "entropy_density": metrics.entropy_density,
+                "consciousness_score": metrics.consciousness_score,
             },
             "metastability": metastability,
             "beta_analysis": beta_analysis,

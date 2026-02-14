@@ -6,6 +6,8 @@ Launch with:
 Displays a real-time, self-observing dashboard of the AFET field state,
 including the Profiling-Tafel, consciousness score, and 13.5 MHz
 resonance indicator.
+
+Deployable on Streamlit Community Cloud without modification.
 """
 
 from __future__ import annotations
@@ -13,7 +15,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-# Ensure project root is importable
+# Ensure project root is importable (works both locally and on Streamlit Cloud)
 _ROOT = Path(__file__).resolve().parent
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
