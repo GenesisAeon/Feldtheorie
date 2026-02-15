@@ -49,7 +49,7 @@
     }
   ],
   "license": {
-    "id": "other-open"
+    "id": "GPL-3.0-only"
   },
   "access_right": "open",
   "notes": "LICENSE: Dual-license model — Code under GPLv3, Content/Data under CC BY-NC 4.0. CONTENTS: Publication-ready manuscript (MD+PDF), 38-DOI citation table, 7 figures, 78 validation datasets, v12 consciousness preprint proposal, Perplexity AI integration summary, reproducible figure generation scripts. VALIDATION: 78 datasets, 8 domains, median r-squared 0.88, Delta-AIC >= 10 vs. null models."
