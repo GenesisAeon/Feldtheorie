@@ -4,23 +4,120 @@ on:
   push:
     tags: ['v*']
 
+# Require manual approval before publishing to external services
+# The build-and-validate job runs automatically; publish requires environment approval
 jobs:
-  release:
+  build-and-validate:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
+      with:
+        fetch-depth: 0  # Full history for git archive
 
     - name: Set up Python
       uses: actions/setup-python@v6
       with:
         python-version: '3.11'
 
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -e .[dev]
+
+    - name: Lint
+      run: |
+        ruff check .
+        black --check .
+
+    - name: Run tests
+      run: pytest tests/ -q --tb=short
+
     - name: Build package
       run: |
         pip install build
         python -m build
 
-    - name: Release placeholder
+    - name: Package Zenodo bundle (dry-run)
+      run: python scripts/zenodo_upload_afet_v1.0.py --dry-run
+
+    - name: Package GitHub release asset (dry-run)
+      run: python scripts/create_github_release.py --dry-run
+
+    - name: Upload release artifacts
+      uses: actions/upload-artifact@v5
+      with:
+        name: release-bundle
+        path: |
+          dist/
+          releases/vAFET-1.0/zenodo_package/
+          releases/vAFET-1.0/github_release/
+
+  publish-github-release:
+    needs: build-and-validate
+    runs-on: ubuntu-latest
+    environment: release  # Requires manual approval in GitHub Settings > Environments
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
       run: |
-        echo "Release workflow: package built successfully"
-        echo "PyPI upload and Zenodo update would run here"
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Create GitHub Release
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: python scripts/create_github_release.py --skip-tag
+
+  publish-zenodo:
+    needs: build-and-validate
+    runs-on: ubuntu-latest
+    environment: release  # Requires manual approval in GitHub Settings > Environments
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Upload to Zenodo
+      env:
+        ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+      run: python scripts/zenodo_upload_afet_v1.0.py
+
+  post-release-checklist:
+    needs: [publish-github-release, publish-zenodo]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Post-release reminder
+      run: |
+        echo "=== AFET v1.0 Post-Release Checklist ==="
+        echo ""
+        echo "Automated steps completed:"
+        echo "  [x] GitHub Release created with assets"
+        echo "  [x] Zenodo upload completed"
+        echo ""
+        echo "Manual steps required:"
+        echo "  [ ] Update ORCID profile with new Zenodo DOI"
+        echo "  [ ] Generate PDF via Pandoc: pandoc paper.md -o paper.pdf --citeproc"
+        echo "  [ ] Verify DOI resolves at https://doi.org/<new-doi>"
+        echo "  [ ] Update CITATION.cff with final DOI"
+        echo "  [ ] Announce release on community channels"
