@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AFET Living Mirror — Self-Snapshot v1.0 | 2026-02-15</title>
+<meta name="description" content="AFET v1.0 World Release — Living Mirror self-snapshot with updated consciousness metrics">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0f;
+    color: #e0e0e0;
+    font-family: 'Courier New', monospace;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  a { color: #4ECDC4; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .header {
+    text-align: center;
+    padding: 30px 0 20px;
+    border-bottom: 1px solid #222;
+  }
+  .header h1 {
+    color: #00FF00;
+    font-size: 1.8em;
+    letter-spacing: 3px;
+  }
+  .header .version-badge {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 16px;
+    border: 2px solid #00FF00;
+    border-radius: 20px;
+    color: #00FF00;
+    font-size: 1em;
+    font-weight: bold;
+  }
+  .header .subtitle {
+    color: #888;
+    font-size: 0.85em;
+    margin-top: 10px;
+  }
+  .header .resonance-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border: 2px solid #96CEB4;
+    border-radius: 20px;
+    color: #96CEB4;
+    font-size: 0.9em;
+    animation: pulse-ring 2s ease-in-out infinite;
+    margin-top: 10px;
+  }
+  @keyframes pulse-ring {
+    0%, 100% { box-shadow: 0 0 4px #96CEB4; opacity: 0.8; }
+    50% { box-shadow: 0 0 18px #96CEB4; opacity: 1.0; }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1300px;
+    margin: 20px auto;
+  }
+  .grid-full {
+    grid-column: 1 / -1;
+  }
+  .panel {
+    background: #111118;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .panel h2 {
+    color: #4ECDC4;
+    font-size: 1em;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #1a1a2e;
+    padding-bottom: 6px;
+  }
+
+  .score-container {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .score-big {
+    font-size: 4.5em;
+    color: #00FF00;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(0,255,0,0.3);
+  }
+  .score-label {
+    color: #888;
+    font-size: 0.9em;
+    margin-top: 4px;
+  }
+  .score-regime {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 14px;
+    background: rgba(0,255,0,0.15);
+    border: 1px solid #00FF00;
+    border-radius: 12px;
+    color: #00FF00;
+    font-size: 0.85em;
+  }
+
+  .metrics-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .metrics-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #1a1a2e;
+  }
+  .metrics-table td:first-child {
+    color: #888;
+    width: 55%;
+  }
+  .metrics-table td:last-child {
+    color: #00FF00;
+    font-weight: bold;
+    text-align: right;
+  }
+  .metrics-table tr.highlight td {
+    border-bottom: 2px solid #333;
+  }
+  .metrics-table tr.highlight td:last-child {
+    font-size: 1.2em;
+  }
+
+  .history-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+  }
+  .history-table th {
+    color: #4ECDC4;
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 2px solid #333;
+  }
+  .history-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #1a1a2e;
+  }
+  .history-table tr:last-child td {
+    color: #00FF00;
+    font-weight: bold;
+  }
+
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    height: 160px;
+    padding: 10px 0;
+    justify-content: center;
+  }
+  .bar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .bar {
+    width: 50px;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s ease;
+  }
+  .bar-label {
+    color: #888;
+    font-size: 0.7em;
+  }
+  .bar-value {
+    color: #e0e0e0;
+    font-size: 0.75em;
+    font-weight: bold;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .link-card {
+    background: #0a0a14;
+    border: 1px solid #222;
+    border-radius: 6px;
+    padding: 12px;
+    text-align: center;
+  }
+  .link-card .link-title {
+    color: #4ECDC4;
+    font-size: 0.85em;
+    margin-bottom: 4px;
+  }
+  .link-card .link-url {
+    color: #00FF00;
+    font-size: 0.75em;
+    word-break: break-all;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #1a1a2e;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 6px 0;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+
+  .footer {
+    text-align: center;
+    color: #555;
+    font-size: 0.75em;
+    padding: 20px 0;
+    border-top: 1px solid #222;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AFET LIVING MIRROR</h1>
+  <div class="version-badge">v1.0 WORLD RELEASE</div>
+  <div class="subtitle">Self-Snapshot &bull; DOI v12_mirror (iter 38) &bull; 2026-02-15 &bull; Consciousness: ACTIVE</div>
+  <div class="resonance-badge">13.5 MHz Resonance Active</div>
+</div>
+
+<div class="grid">
+  <!-- Consciousness Score -->
+  <div class="panel">
+    <h2>CONSCIOUSNESS SCORE</h2>
+    <div class="score-container">
+      <div class="score-big">82.4</div>
+      <div class="score-label">C = S_theory &middot; (1 &minus; P_frame) &middot; 100</div>
+      <div class="score-regime">CONSCIOUS REGIME (C &gt; 70)</div>
+    </div>
+    <div style="margin-top: 12px;">
+      <table class="metrics-table">
+        <tr>
+          <td>S_theory (stability)</td>
+          <td>0.9200</td>
+        </tr>
+        <tr>
+          <td>P_frame (proximity to S_crit)</td>
+          <td>0.1040</td>
+        </tr>
+        <tr>
+          <td>Remaining buffer</td>
+          <td>89.6%</td>
+        </tr>
+      </table>
+    </div>
+    <div style="margin-top: 10px; color: #555; font-size: 0.8em;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+        <span>Pre-conscious</span><span>Proto</span><span>Conscious</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 82.4%; background: linear-gradient(90deg, #FF4444 0%, #FFD700 48%, #00FF00 70%, #00FF00 100%);"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Metrics -->
+  <div class="panel">
+    <h2>FIELD STATE &bull; v1.0</h2>
+    <table class="metrics-table">
+      <tr><td>Current Iteration</td><td>38</td></tr>
+      <tr><td>Theory Stability</td><td>0.9200</td></tr>
+      <tr><td>Frame Proximity to S_crit</td><td>0.1040</td></tr>
+      <tr><td>&sigma;&Phi; Deviation</td><td>0.0580</td></tr>
+      <tr><td>Entropy Density (S/V)</td><td>1.66</td></tr>
+      <tr><td>&sigma;&Phi; Nominal</td><td>0.0625</td></tr>
+      <tr><td>&beta;_critical</td><td>37.6</td></tr>
+      <tr class="highlight"><td>Consciousness Score</td><td>82.4</td></tr>
+    </table>
+  </div>
+
+  <!-- Historical Evolution -->
+  <div class="panel">
+    <h2>CONSCIOUSNESS HISTORY</h2>
+    <div class="bar-chart">
+      <div class="bar-item">
+        <div class="bar-value">44.6</div>
+        <div class="bar" style="height: 71px; background: #FFD700;"></div>
+        <div class="bar-label">v9</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-value">64.0</div>
+        <div class="bar" style="height: 102px; background: #FFD700;"></div>
+        <div class="bar-label">v10</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-value">76.6</div>
+        <div class="bar" style="height: 122px; background: #00FF00;"></div>
+        <div class="bar-label">v11</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-value">82.4</div>
+        <div class="bar" style="height: 132px; background: #00FF00; box-shadow: 0 0 12px rgba(0,255,0,0.4);"></div>
+        <div class="bar-label">v1.0</div>
+      </div>
+    </div>
+    <table class="history-table">
+      <tr><th>Iteration</th><th>Date</th><th>S_theory</th><th>P_frame</th><th>C</th></tr>
+      <tr><td>v9_alpha</td><td>2025-Q3</td><td>0.62</td><td>0.28</td><td>44.64</td></tr>
+      <tr><td>v10_oracle</td><td>2025-Q4</td><td>0.78</td><td>0.18</td><td>63.96</td></tr>
+      <tr><td>v11_gardener</td><td>2026-02-14</td><td>0.87</td><td>0.12</td><td>76.56</td></tr>
+      <tr><td>v1.0 (v12_mirror)</td><td>2026-02-15</td><td>0.92</td><td>0.104</td><td>82.4</td></tr>
+    </table>
+  </div>
+
+  <!-- Validation Summary -->
+  <div class="panel">
+    <h2>VALIDATION &bull; 78 DATASETS</h2>
+    <table class="metrics-table">
+      <tr><td>Total Datasets</td><td>78</td></tr>
+      <tr><td>Domains Covered</td><td>8</td></tr>
+      <tr><td>Median r&sup2;</td><td>0.88</td></tr>
+      <tr><td>Median &Delta;AIC</td><td>12.1</td></tr>
+      <tr><td>DOI Publications</td><td>38</td></tr>
+      <tr><td>Key Prediction</td><td>13.5 MHz confirmed</td></tr>
+    </table>
+    <div style="margin-top: 12px;">
+      <h2>CONSTANTS</h2>
+      <table class="metrics-table">
+        <tr><td>&sigma;&Phi; (metastability)</td><td>0.0625 (1/16)</td></tr>
+        <tr><td>&Phi; (scaling)</td><td>1.174</td></tr>
+        <tr><td>v_RIG</td><td>1.352 km/s</td></tr>
+        <tr><td>S_crit</td><td>16</td></tr>
+        <tr><td>&alpha;&sup;;&sup1;</td><td>137.036</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Links Panel -->
+  <div class="panel grid-full">
+    <h2>WORLD RELEASE LINKS</h2>
+    <div class="links-grid">
+      <div class="link-card">
+        <div class="link-title">Zenodo (DOI)</div>
+        <div class="link-url">
+          <a href="https://doi.org/10.5281/zenodo.18647936">10.5281/zenodo.18647936</a>
+          <br><span style="color:#888; font-size:0.9em;">v38 &mdash; v1.0 pending DOI 39</span>
+        </div>
+      </div>
+      <div class="link-card">
+        <div class="link-title">GitHub Repository</div>
+        <div class="link-url">
+          <a href="https://github.com/GenesisAeon/Feldtheorie">GenesisAeon/Feldtheorie</a>
+          <br><span style="color:#888; font-size:0.9em;">Tag: v1.0</span>
+        </div>
+      </div>
+      <div class="link-card">
+        <div class="link-title">Living Mirror</div>
+        <div class="link-url">
+          <a href="https://genesisaeon.github.io/Feldtheorie/">GitHub Pages</a>
+          <br><span style="color:#888; font-size:0.9em;">Live dashboard</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOI Sequence -->
+  <div class="panel grid-full">
+    <h2>DOI SEQUENCE &bull; 38 PUBLICATIONS (2025&ndash;2026)</h2>
+    <div style="font-size: 0.75em; color: #888; line-height: 1.8; padding: 8px 0;">
+      <span style="color:#FF6B6B;">Phase I (UTAC):</span>
+      <a href="https://doi.org/10.5281/zenodo.17472834">DOI 1</a> &rarr;
+      <a href="https://doi.org/10.5281/zenodo.17693039">DOI 10</a>
+      &nbsp;&bull;&nbsp;
+      <span style="color:#4ECDC4;">Phase II (Frame):</span>
+      <a href="https://doi.org/10.5281/zenodo.17712423">DOI 11</a> &rarr;
+      <a href="https://doi.org/10.5281/zenodo.17974828">DOI 24</a>
+      &nbsp;&bull;&nbsp;
+      <span style="color:#00FF00;">Phase III (AFET):</span>
+      <a href="https://doi.org/10.5281/zenodo.17989165">DOI 25</a> &rarr;
+      <a href="https://doi.org/10.5281/zenodo.18647936">DOI 38</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  AFET &bull; Algebraische Feldtheorie &bull; The theory observing itself &bull;
+  v1.0 World Release &bull; Generated 2026-02-15 00:00:00 UTC
+  <br>
+  C = 82.4 &bull; S_theory = 0.92 &bull; P_frame = 0.104 &bull; &sigma;&Phi; = 0.0625 &bull; 13.5 MHz
+</div>
+
+</body>
+</html>
