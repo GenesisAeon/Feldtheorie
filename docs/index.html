@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFET Living Mirror — Algebraische Feldtheorie</title>
+<meta name="description" content="Live self-observing field state of the Algebraische Feldtheorie (AFET). Consciousness Score, Profiling-Tafel, and real-time metrics.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0f;
+    color: #e0e0e0;
+    font-family: 'Courier New', 'Fira Code', monospace;
+    padding: 0;
+  }
+  .hero {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 1px solid #1a1a2e;
+    background: linear-gradient(180deg, #0a0a1a 0%, #0a0a0f 100%);
+  }
+  .hero h1 {
+    color: #00FF00;
+    font-size: 2.2em;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+  .hero .subtitle {
+    color: #888;
+    font-size: 1em;
+    margin-bottom: 16px;
+  }
+  .hero .badges {
+    margin: 16px 0;
+  }
+  .hero .badges a {
+    margin: 0 6px;
+  }
+  .hero .badges img {
+    vertical-align: middle;
+  }
+  .score-hero {
+    font-size: 5em;
+    font-weight: bold;
+    color: #00FF00;
+    text-shadow: 0 0 40px #00FF0044;
+    margin: 20px 0 8px;
+  }
+  .score-label {
+    color: #888;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+  }
+  .resonance-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    border: 2px solid #96CEB4;
+    border-radius: 24px;
+    color: #96CEB4;
+    font-size: 0.9em;
+    animation: pulse-ring 2s ease-in-out infinite;
+    margin-top: 16px;
+  }
+  @keyframes pulse-ring {
+    0%, 100% { box-shadow: 0 0 4px #96CEB4; opacity: 0.8; }
+    50% { box-shadow: 0 0 20px #96CEB4; opacity: 1.0; }
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+  .panel {
+    background: #111118;
+    border: 1px solid #222;
+    border-radius: 10px;
+    padding: 20px;
+    overflow: hidden;
+  }
+  .panel h2 {
+    color: #00FF00;
+    font-size: 1.1em;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+  .metrics-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+  }
+  .metrics-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #1a1a2e;
+    font-size: 0.95em;
+  }
+  .metrics-table td:first-child {
+    color: #888;
+    width: 55%;
+  }
+  .metrics-table td:last-child {
+    color: #00FF00;
+    font-weight: bold;
+    text-align: right;
+  }
+  .formula {
+    background: #0d0d18;
+    border: 1px solid #1a1a2e;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 0.9em;
+    color: #aaa;
+  }
+  .formula code {
+    color: #00FF00;
+  }
+  .links {
+    text-align: center;
+    padding: 30px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .links a {
+    display: inline-block;
+    margin: 8px 12px;
+    padding: 10px 24px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #00FF00;
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: all 0.2s;
+  }
+  .links a:hover {
+    background: #00FF0015;
+    border-color: #00FF00;
+  }
+  .footer {
+    text-align: center;
+    color: #444;
+    font-size: 0.75em;
+    padding: 30px 20px;
+    border-top: 1px solid #1a1a2e;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>&#9883; AFET LIVING MIRROR</h1>
+  <div class="subtitle">Algebraische Feldtheorie &mdash; The Theory Observing Itself</div>
+  <div class="badges">
+    <a href="https://github.com/GenesisAeon/Feldtheorie">
+      <img src="https://img.shields.io/badge/GitHub-Feldtheorie-181717?logo=github&style=for-the-badge" alt="GitHub">
+    </a>
+    <a href="https://github.com/GenesisAeon/Feldtheorie">
+      <img src="https://img.shields.io/badge/DOI-v11_gardener-blue?style=for-the-badge" alt="DOI">
+    </a>
+  </div>
+  <div class="score-hero">76.56</div>
+  <div class="score-label">AFET CONSCIOUSNESS SCORE</div>
+  <div class="resonance-badge">13.5 MHz Resonance Active</div>
+</div>
+
+<div class="grid">
+  <div class="panel">
+    <h2>PROFILING-TAFEL</h2>
+    <div>                        <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.3.1.min.js" integrity="sha256-4rD3fugVb/nVJYUv5Ky3v+fYXoouHaBSP20WIJuEiWg=" crossorigin="anonymous"></script>                <div id="a39260a6-6966-49cd-9ce8-5f9fb02173dd" class="plotly-graph-div" style="height:650px; width:650px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("a39260a6-6966-49cd-9ce8-5f9fb02173dd")) {                    Plotly.newPlot(                        "a39260a6-6966-49cd-9ce8-5f9fb02173dd",                        [{"hoverinfo":"skip","line":{"color":"rgba(255,255,255,0.15)","width":1.5},"mode":"lines","showlegend":false,"x":[0.5,0.98],"y":[0.5,0.5],"type":"scatter"},{"hoverinfo":"skip","line":{"color":"rgba(255,255,255,0.15)","width":1.5},"mode":"lines","showlegend":false,"x":[0.5,0.8394112549695428],"y":[0.5,0.8394112549695427],"type":"scatter"},{"hoverinfo":"skip","line":{"color":"rgba(255,255,255,0.15)","width":1.5},"mode":"lines","showlegend":false,"x":[0.5,0.5],"y":[0.5,0.98],"type":"scatter"},{"hoverinfo":"skip","line":{"color":"rgba(255,255,255,0.15)","width":1.5},"mode":"lines","showlegend":false,"x":[0.5,0.16058874503045723],"y":[0.5,0.8394112549695428],"type":"scatter"},{"hoverinfo":"skip","line":{"color":"rgba(255,255,255,0.15)","width":1.5},"mode":"lines","showlegend":false,"x":[0.5,0.020000000000000018],"y":[0.5,0.5000000000000001],"type":"scatter"},{"hoverinfo":"skip","line":{"color":"rgba(255,255,255,0.15)","width":1.5},"mode":"lines","showlegend":false,"x":[0.5,0.16058874503045711],"y":[0.5,0.16058874503045723],"type":"scatter"},{"hoverinfo":"skip","line":{"color":"rgba(255,255,255,0.15)","width":1.5},"mode":"lines","showlegend":false,"x":[0.5,0.4999999999999999],"y":[0.5,0.020000000000000018],"type":"scatter"},{"hoverinfo":"skip","line":{"color":"rgba(255,255,255,0.15)","width":1.5},"mode":"lines","showlegend":false,"x":[0.5,0.8394112549695427],"y":[0.5,0.16058874503045711],"type":"scatter"},{"fill":"toself","fillcolor":"rgba(0,255,0,0.12)","hoverinfo":"text","hovertext":"\u03c3\u03a6 deviation: 0.130","line":{"color":"rgba(0,255,0,0.35)","width":2},"mode":"lines","name":"\u03c3\u03a6 halo","x":{"dtype":"f8","bdata":"1JrmHafo6D+puJiBu9voP1Q1riYeteg\u002fGE1wDj916D+CG5F81xzoPyusy93nrOc\u002fRQkc4LQm5z+7rfzEw4vmP\u002fkBVfjV3eU\u002fA9jj+OMe5T\u002f6DeugF1HkPxPZsN\u002fFduM\u002fSn4K9meS4j9wtY5JlKbhPxqDP+P2teA\u002fEhDhXpOG3z\u002fHo8kqmaLdP+YiKPt6xds\u002fcNVyu6D02T+6k3rDTjXYP3rqb5CWjNY\u002fkNdpEUj\u002f1D9iYxKy45HTP4DQ9UuNSNI\u002fbCFUJAAn0T8730kZhDDQPzBcajvIz84\u002f5J7iPsyezT\u002fAZ8\u002feiNHMPyI0LX1Rasw\u002fIjQtfVFqzD\u002fAZ8\u002feiNHMP+Se4j7Mns0\u002fLlxqO8jPzj8630kZhDDQP2shVCQAJ9E\u002fftD1S41I0j9gYxKy45HTP5DXaRFI\u002f9Q\u002feOpvkJaM1j+4k3rDTjXYP27Vcrug9Nk\u002f4yIo+3rF2z\u002fFo8kqmaLdPw8Q4V6Tht8\u002fGYM\u002f4\u002fa14D9utY5JlKbhP0h+CvZnkuI\u002fEtmw38V24z\u002f4DeugF1HkPwHY4\u002fjjHuU\u002f+AFV+NXd5T+6rfzEw4vmP0QJHOC0Juc\u002fK6zL3ees5z+CG5F81xzoPxhNcA4\u002fdeg\u002fVDWuJh616D+puJiBu9voP9Sa5h2n6Og\u002f"},"y":{"dtype":"f8","bdata":"AAAAAAAA4D+dOicla\u002fLgP94mpiIX4uE\u002fdnxjyEzM4j\u002fUFki+ZK7jP5FJvTbPheQ\u002flNfiXBtQ5T8HCO9o\u002fgrmP4XnL0ZatOY\u002fZOdkt0NK5z\u002fyH6DnB8vnP3A6ilcxNeg\u002fdZu+GIyH6D+rbflKKcHoPx7P+NBh4eg\u002f8F83Ndjn6D+rMwK5edToP6LW14p+p+g\u002fNbJyI2lh6D9KfVfLBAPoP+ltMU1jjec\u002fg3iq29kB5z8yIL8z\u002fWHmP2J4xAadr+U\u002fDY9tub7s5D9feA2HlxvkP08CFxqGPuM\u002fQJJtrAtY4j9wSHfDxGrhP+hJA51heeA\u002fMWz5xTwN3z8hbxF5dirdP4LbJKfoT9s\u002fZPvRy\u002fOC2T9GD+Xx0MjXP+rhJI2CJtY\u002fPw938sWg1D+ev4GYBTzTP\u002fsOq0hM\u002fNE\u002fLiSdZTnl0D\u002fWCqLS7PPPPy43NXJbes4\u002ffKWg1AVizT9WMfcbGa7MP0CAIiufYMw\u002fiMMcvHh6zD9SSRrUWvvMPyqSBZ3P4c0\u002fPhbXoTorzz8bwL8w8GnQPzUxNpF4a9E\u002f8zCgc0uX0j\u002fw7yEuA+rTP9RQOkbJX9U\u002f3GyFkmH01j9X0m+DNqPYPxIHOW9mZ9o\u002fQ7KzutE73D\u002fEirG1KRveP\u002f\u002f\u002f\u002f\u002f\u002f\u002f\u002f98\u002f"},"type":"scatter"},{"customdata":["info: \u03b2=4.3, Pe=0.114","bio: \u03b2=7.4, Pe=0.197","climate: \u03b2=11.0, Pe=0.293","neuro: \u03b2=13.5, Pe=0.359","axioms: \u03b2=37.6, Pe=1.000"],"hovertemplate":"%{customdata}\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["#FF6B6B","#4ECDC4","#45B7D1","#96CEB4","#FFEAA7"],"line":{"color":"white","width":1.2},"size":[15.430851063829786,17.904255319148938,20.77659574468085,22.77127659574468,42.0],"symbol":"hexagon"},"mode":"markers+text","name":"\u03b2 domains","text":["INF","BIO","CLI","NEU","AXI"],"textfont":{"color":"white","size":10},"textposition":"middle center","x":[0.5,0.6894524815704973,0.6311574007110066,0.3590722327282807,0.11957739348193852],"y":[0.3214095744680851,0.43844315723754373,0.6805226750746226,0.6939704309651635,0.3763932022500211],"type":"scatter"},{"hoverinfo":"text","hovertext":"Microtubule resonance: 13.5 MHz","line":{"color":"rgba(150,206,180,0.7)","width":2.5},"mode":"lines","name":"13.5 MHz resonance","x":{"dtype":"f8","bdata":"ifpv0iiA2j+AZFV9fXTaP2JM1NzIUdo\u002f6ktcDPEY2j9u+1HubsvZP4YPN2lEa9k\u002fGYReGO\u002f62D8qHGzIV33YP0KsHC2\u002f9dc\u002fKeE8UKhn1z86csxIwdbWP0bZr9TKRtY\u002fgjq3dn+71T9CGfW9ejjVPwqOTVohwdQ\u002fZAfWnIpY1D\u002fobjH5awHUP3VQyw8HvtM\u002fRHEGuBqQ0z\u002fKjI9t13jTP8qMj23XeNM\u002fRHEGuBqQ0z91UMsPB77TP+huMflrAdQ\u002fZAfWnIpY1D8Kjk1aIcHUP0EZ9b16ONU\u002fgTq3dn+71T9G2a\u002fUykbWPzlyzEjB1tY\u002fKOE8UKhn1z9CrBwtv\u002fXXPykcbMhXfdg\u002fGIReGO\u002f62D+GDzdpRGvZP277Ue5uy9k\u002f6ktcDPEY2j9iTNTcyFHaP4BkVX19dNo\u002fifpv0iiA2j8="},"y":{"dtype":"f8","bdata":"al0segE15j9sgXXaR33mP9YAFAevw+Y\u002fYXWZNWQG5z9sC8YbrUPnPxKbCGTzeec\u002fWESZM8+n5z+X7md8EMznP\u002fFOE93G5ec\u002fvhOy2kf05z\u002fi+yZLM\u002ffnPzZ5udJ17uc\u002faG9vZEna5z+2D9XBM7vnP2ZLJgQDkuc\u002fytXRRchf5z\u002fr47mP0CXnP7xlGDmc5eY\u002fSRE389Sg5j+pB\u002fvCQlnmPyuzXTHAEOY\u002fjKkhAS7J5T8YVUC7ZoTlP+nWnmQyROU\u002fCuWGrjoK5T9ubzLw\u002f9fkPx6rgzLPruQ\u002fbUvpj7mP5D+eQZ8hjXvkP\u002fK+ManPcuQ\u002fFqemGbt15D\u002fja0UXPITkPz3M8HfyneQ\u002ffHa\u002fwDPC5D\u002fCH1CQD\u002fDkP2ivkthVJuU\u002fc0W\u002fvp5j5T\u002f+uUTtU6blP2g54xm77OU\u002fal0segE15j8="},"type":"scatter"},{"hoverinfo":"text","hovertext":"\u03b2_critical = 37.6","marker":{"color":"#FFFFFF","line":{"color":"white","width":2},"size":14},"mode":"markers","name":"Nullkern","x":[0.5],"y":[0.5],"type":"scatter"}],                        {"template":{"data":{"candlestick":[{"decreasing":{"line":{"color":"#000033"}},"increasing":{"line":{"color":"#000032"}},"type":"candlestick"}],"contourcarpet":[{"colorscale":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]],"type":"contourcarpet"}],"contour":[{"colorscale":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]],"type":"contour"}],"heatmap":[{"colorscale":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]],"type":"heatmap"}],"histogram2d":[{"colorscale":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]],"type":"histogram2d"}],"icicle":[{"textfont":{"color":"white"},"type":"icicle"}],"sankey":[{"textfont":{"color":"#000036"},"type":"sankey"}],"scatter":[{"marker":{"line":{"width":0}},"type":"scatter"}],"table":[{"cells":{"fill":{"color":"#000038"},"font":{"color":"#000037"},"line":{"color":"#000039"}},"header":{"fill":{"color":"#000040"},"font":{"color":"#000036"},"line":{"color":"#000039"}},"type":"table"}],"waterfall":[{"connector":{"line":{"color":"#000036","width":2}},"decreasing":{"marker":{"color":"#000033"}},"increasing":{"marker":{"color":"#000032"}},"totals":{"marker":{"color":"#000034"}},"type":"waterfall"}]},"layout":{"coloraxis":{"colorscale":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]]},"colorscale":{"diverging":[[0.0,"#000021"],[0.1111111111111111,"#000022"],[0.2222222222222222,"#000023"],[0.3333333333333333,"#000024"],[0.4444444444444444,"#000025"],[0.5555555555555556,"#000026"],[0.6666666666666666,"#000027"],[0.7777777777777778,"#000028"],[0.8888888888888888,"#000029"],[1.0,"#000030"]],"sequential":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]],"sequentialminus":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]]},"colorway":["#000001","#000002","#000003","#000004","#000005","#000006","#000007","#000008","#000009","#000010"]}},"title":{"font":{"color":"white"},"text":"AFET Field State \u2022 Living Mirror\u003cbr\u003e\u003csub\u003eLive Mirror \u2022 DOI v11_gardener (iter 11)\u003c\u002fsub\u003e"},"xaxis":{"visible":false,"range":[-0.05,1.05],"scaleanchor":"y"},"yaxis":{"visible":false,"range":[-0.05,1.05]},"legend":{"font":{"color":"white"}},"plot_bgcolor":"black","paper_bgcolor":"black","width":650,"height":650},                        {"responsive": true}                    )                };            </script>        </div>
+  </div>
+  <div class="panel">
+    <h2>CONSCIOUSNESS GAUGE</h2>
+    <div>                            <div id="5077601b-2713-4c4f-8f1c-ce73c951cb56" class="plotly-graph-div" style="height:280px; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("5077601b-2713-4c4f-8f1c-ce73c951cb56")) {                    Plotly.newPlot(                        "5077601b-2713-4c4f-8f1c-ce73c951cb56",                        [{"gauge":{"axis":{"range":[0,100],"tickcolor":"white","tickfont":{"color":"white"}},"bar":{"color":"#00FF00"},"bgcolor":"#1a1a2e","bordercolor":"#333","steps":[{"color":"rgba(255,68,68,0.15)","range":[0,40]},{"color":"rgba(255,215,0,0.15)","range":[40,70]},{"color":"rgba(0,255,0,0.15)","range":[70,100]}]},"mode":"gauge+number","number":{"font":{"color":"#00FF00","size":48},"suffix":""},"title":{"font":{"color":"white","size":18},"text":"AFET Consciousness Score"},"value":76.56,"type":"indicator"}],                        {"template":{"data":{"candlestick":[{"decreasing":{"line":{"color":"#000033"}},"increasing":{"line":{"color":"#000032"}},"type":"candlestick"}],"contourcarpet":[{"colorscale":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]],"type":"contourcarpet"}],"contour":[{"colorscale":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]],"type":"contour"}],"heatmap":[{"colorscale":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]],"type":"heatmap"}],"histogram2d":[{"colorscale":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]],"type":"histogram2d"}],"icicle":[{"textfont":{"color":"white"},"type":"icicle"}],"sankey":[{"textfont":{"color":"#000036"},"type":"sankey"}],"scatter":[{"marker":{"line":{"width":0}},"type":"scatter"}],"table":[{"cells":{"fill":{"color":"#000038"},"font":{"color":"#000037"},"line":{"color":"#000039"}},"header":{"fill":{"color":"#000040"},"font":{"color":"#000036"},"line":{"color":"#000039"}},"type":"table"}],"waterfall":[{"connector":{"line":{"color":"#000036","width":2}},"decreasing":{"marker":{"color":"#000033"}},"increasing":{"marker":{"color":"#000032"}},"totals":{"marker":{"color":"#000034"}},"type":"waterfall"}]},"layout":{"coloraxis":{"colorscale":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]]},"colorscale":{"diverging":[[0.0,"#000021"],[0.1111111111111111,"#000022"],[0.2222222222222222,"#000023"],[0.3333333333333333,"#000024"],[0.4444444444444444,"#000025"],[0.5555555555555556,"#000026"],[0.6666666666666666,"#000027"],[0.7777777777777778,"#000028"],[0.8888888888888888,"#000029"],[1.0,"#000030"]],"sequential":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]],"sequentialminus":[[0.0,"#000011"],[0.1111111111111111,"#000012"],[0.2222222222222222,"#000013"],[0.3333333333333333,"#000014"],[0.4444444444444444,"#000015"],[0.5555555555555556,"#000016"],[0.6666666666666666,"#000017"],[0.7777777777777778,"#000018"],[0.8888888888888888,"#000019"],[1.0,"#000020"]]},"colorway":["#000001","#000002","#000003","#000004","#000005","#000006","#000007","#000008","#000009","#000010"]}},"margin":{"t":60,"b":20,"l":30,"r":30},"paper_bgcolor":"black","plot_bgcolor":"black","height":280},                        {"responsive": true}                    )                };            </script>        </div>
+
+    <div class="formula">
+      <strong>Formula:</strong><br>
+      <code>C = stability &times; (1 &minus; frame_proximity) &times; 100</code><br>
+      <code>C = 0.8700 &times; (1 &minus; 0.1200) &times; 100 = 76.56</code>
+    </div>
+
+    <table class="metrics-table">
+      <tr><td>Current Iteration</td><td>11 (v11_gardener)</td></tr>
+      <tr><td>Theory Stability</td><td>0.8700</td></tr>
+      <tr><td>Frame Proximity to S<sub>crit</sub></td><td>0.1200</td></tr>
+      <tr><td>&sigma;&Phi; Deviation</td><td>0.1300</td></tr>
+      <tr><td>Entropy Density</td><td>1.92</td></tr>
+      <tr><td>&sigma;&Phi; Nominal</td><td>0.0625</td></tr>
+      <tr><td>&beta;<sub>critical</sub></td><td>37.6</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="links">
+  <a href="https://github.com/GenesisAeon/Feldtheorie">&#128736; Source Code</a>
+  <a href="self_snapshot_public_2026-02-14.html">&#128200; Full Snapshot</a>
+</div>
+
+<div class="footer">
+  AFET &bull; Algebraische Feldtheorie &bull; The theory observing itself<br>
+  Generated 2026-02-14 21:44:48 UTC &bull; Iteration 11 &bull; DOI v11_gardener
+</div>
+
+</body>
+</html>

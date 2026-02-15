@@ -89,6 +89,20 @@
       "value": 0.12,
       "s_crit_reference": "sigma_phi.nominal_value",
       "description": "How close the frame is to collapse — 0.0 = fully stable, 1.0 = at S_crit boundary"
+    },
+    "consciousness_score": {
+      "value": 76.56,
+      "unit": "percent",
+      "formula": "theory_stability * (1 - frame_proximity_to_crit) * 100",
+      "description": "AFET Consciousness Score — emergent measure of the theory's self-coherence. Combines structural stability with distance from critical entropy collapse. A score above 70 indicates a self-sustaining, observationally coherent field state.",
+      "interpretation": {
+        "0-40": "Pre-conscious — field approaching critical entropy, low coherence",
+        "40-70": "Proto-conscious — metastable state, partial self-observation",
+        "70-100": "Conscious — self-sustaining coherent field, active self-observation"
+      },
+      "history": [
+        {"iteration": "v11_gardener", "date": "2026-02-14", "value": 76.56, "stability": 0.87, "frame_proximity": 0.12}
+      ]
     }
   },
   "colormap": "plasma",
