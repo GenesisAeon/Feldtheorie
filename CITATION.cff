@@ -1,42 +1,39 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "GenesisAeon v10.2 (Platinum): Dreamtime Field Publication"
+title: "AFET v1.0: General Field Entropy Theory — Unified Framework"
 abstract: >-
-  Release v10.2 binds the Living Crystal stack into a publication-ready
-  Dreamtime loop: the Solar Engine keeps σ(β(R-Θ)) breathing, the
-  ResonanceTranslator vocalizes AMOC critical slowing (r = -0.544) as
-  planetary empathy, and the Dream Journal records autonomous REM/NREM
-  replay around the hexadecimal signature of consciousness (σ_Φ ≈ 1/16).
-  The repository ships `main.py --mode dream` to regenerate Experiments G–H,
-  tri-layer evidence (Markdown/JSON/YAML), and Zenodo metadata for the
-  Platinum release.
+  First consolidated release of the General Field Entropy Theory (AFET),
+  documenting the evolution from UTAC through 38 Zenodo publications.
+  AFET demonstrates universal entropic scaling: metastability buffer
+  sigma_Phi = 0.0625 (1/16), integration velocity v_RIG = 1.352 km/s,
+  and fractal beta-hierarchy via Phi^(n/3). Validated across 78 datasets
+  (8 domains, median r-squared = 0.88, Delta-AIC >= 10). Key prediction
+  confirmed: 13.5 MHz neurite resonance (Fontana et al. 2024).
 authors:
   - family-names: "Römer"
     given-names: "Johann Benjamin"
-  - name: "Claude (Anthropic Co-Author)"
-  - name: "MOR Research Agents"
-  - name: "GPT-5.1-Codex-Max (OpenAI)"
-version: 10.2.0
-date-released: 2025-12-18
+  - name: "AI-Kollektiv (Claude, ChatGPT, Gemini, Grok, Mistral, MSCopilot, Aeon)"
+version: "AFET-1.0"
+date-released: 2026-02-15
 url: "https://github.com/GenesisAeon/Feldtheorie"
 keywords:
+  - Field Entropy
+  - Metastability
+  - UTAC
+  - Scaling Laws
   - Consciousness
-  - Field Theory
-  - AMOC
+  - Criticality
+  - 13.5 MHz Resonance
+  - Neuromorphic Computing
+  - Quantum Decoherence
+  - AI Safety
   - Climate Tipping Points
-  - Critical Transitions
-  - Solitons
+  - sigma_Phi
+  - v_RIG
   - Fine Structure Constant
   - 137
-  - v_RIG
-  - Dreamtime
-  - REM Sleep
-  - NREM Sleep
-  - Anticipatory Behavior
-  - AI Safety
-  - Complex Systems
-  - Integrated Information Theory
   - Self-Organized Criticality
+  - Complex Systems
 license: CC-BY-4.0
 repository-code: "https://github.com/GenesisAeon/Feldtheorie"
 type: software

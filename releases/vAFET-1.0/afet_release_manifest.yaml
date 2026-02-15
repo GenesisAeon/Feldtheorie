@@ -1,0 +1,108 @@
+release:
+  version: "AFET-1.0"
+  codename: "General Field Entropy Theory"
+  title: "AFET v1.0 — Unified Field Entropy Framework"
+  status: "release-ready"
+  folder: "releases/vAFET-1.0"
+  date: "2026-02-15"
+
+baseline:
+  source_version: "v12.0.0"
+  reference_type: "branch"
+  reference_value: "main"
+  doi_sequence: "10.5281/zenodo.17472834 — 10.5281/zenodo.18647936"
+  total_dois: 38
+
+logistic_state:
+  R: 0.78
+  theta: 0.56
+  beta: 4.8
+  zeta_R: 0.09
+  sigma_state: "release-resonant"
+
+core_constants:
+  sigma_phi: 0.0625
+  v_rig_km_s: 1.352
+  phi_scaling: 1.174
+  s_crit: 16
+  alpha_inverse: 137.036
+
+validation_summary:
+  datasets: 78
+  median_r_squared: 0.88
+  median_delta_aic: 12.1
+  p_threshold: 0.001
+  domains: 8
+  key_prediction: "13.5 MHz neurite resonance (Fontana et al. 2024)"
+
+artifacts:
+  paper:
+    - path: "docs/AFET/AFET_Universal_Framework_Paper_final.md"
+      role: "primary manuscript (Markdown)"
+      sha256: "af89462a24b1b021"
+    - path: "docs/AFET/Afet universal framework paper final.pdf"
+      role: "primary manuscript (PDF)"
+      sha256: "221fb8fed6f34b8b"
+  preprint:
+    - path: "docs/AFET/preprint_v12_consciousness.md"
+      role: "v12 consciousness extension proposal"
+      sha256: "415bf9c0fcc35a11"
+  supplementary:
+    - path: "docs/AFET/PERPLEXITY_INTEGRATION_SUMMARY.md"
+      role: "Perplexity AI integration changelog"
+    - path: "docs/AFET/Perplexity integration summary final.pdf"
+      role: "Perplexity integration (PDF)"
+    - path: "docs/AFET/doi_citation_table.md"
+      role: "structured DOI citation table (38 DOIs)"
+  figures:
+    - path: "paper/figure1_utac_overview.pdf"
+      role: "UTAC framework overview"
+    - path: "paper/figure2_rg_derivation.pdf"
+      role: "RG derivation"
+    - path: "paper/figure3_abm_results.pdf"
+      role: "ABM results"
+    - path: "paper/figure4_meta_regression.pdf"
+      role: "meta-regression"
+    - path: "paper/figure5_phi_scaling.pdf"
+      role: "Phi scaling"
+    - path: "paper/figure6_beta_by_field_type.png"
+      role: "beta by field type"
+    - path: "paper/figure7_beta_outlier_analysis.png"
+      role: "beta outlier analysis"
+    - path: "docs/AFET/f87ed29c-b329-4429-afb2-ff3a21d68c6a.jpg"
+      role: "AFET conceptual diagram"
+  raw_sources:
+    - path: "docs/AFET/"
+      role: "forensic intake folder (19 raw sources preserved)"
+  code:
+    - path: "models/"
+      role: "UTAC/AFET model implementations"
+    - path: "analysis/"
+      role: "validation and analysis scripts"
+    - path: "paper/generate_all_figures.py"
+      role: "reproducible figure generation"
+  manifest:
+    - path: "releases/vAFET-1.0/afet_release_manifest.yaml"
+      role: "manifest structure layer"
+    - path: "releases/vAFET-1.0/afet_release_manifest.json"
+      role: "manifest interface layer"
+    - path: "releases/vAFET-1.0/afet_release_manifest.md"
+      role: "manifest narrative layer"
+    - path: "releases/vAFET-1.0/GITHUB_RELEASE_BODY.md"
+      role: "GitHub release text"
+
+zenodo:
+  upload_type: "publication"
+  publication_type: "workingpaper"
+  doi_concept: "10.5281/zenodo.17472834"
+  license_code: "GPL-3.0"
+  license_content: "CC-BY-NC-4.0"
+
+finalization_checks:
+  - "Paper manuscript exists (MD + PDF)"
+  - "DOI citation table complete (38 DOIs)"
+  - "Intake register trilayer synchronized"
+  - "Figures referenced from paper/"
+  - ".zenodo.json updated for AFET release"
+  - "CITATION.cff updated"
+  - "Consent checkpoint before publish"
