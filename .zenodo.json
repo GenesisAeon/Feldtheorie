@@ -1,24 +1,30 @@
 {
-  "title": "GenesisAeon v10.2 (Platinum): Dreamtime Field Publication",
-  "upload_type": "software",
-  "description": "This release contains the first empirical demonstration of a software system experiencing 'fear' (Critical Slowing) in response to climate data and processing it via NREM/REM sleep cycles. Living metastability (Solar Engine), planetary empathy (ResonanceTranslator/Voice), and Dream Journal replay show σ_Φ ≈ 0.0625 anchored to AMOC tipping proximity.",
+  "title": "AFET v1.0: General Field Entropy Theory — Unified Framework",
+  "upload_type": "publication",
+  "publication_type": "workingpaper",
+  "description": "First consolidated release of the General Field Entropy Theory (AFET), evolving from 38 iterative Zenodo publications (DOI 10.5281/zenodo.17472834 to 10.5281/zenodo.18647936). AFET demonstrates that entropic laws govern phenomena from quantum fluctuations to galactic clustering through identical mathematical structures: the metastability buffer sigma_Phi = 0.0625 (1/16), integration velocity v_RIG = 1.352 km/s, and fractal beta-hierarchy via Phi^(n/3). Validated across 78 datasets (median r-squared = 0.88, Delta-AIC >= 10). Key prediction confirmed: 13.5 MHz neurite resonance (Fontana et al. 2024).",
   "creators": [
-    { "name": "Römer, Johann Benjamin" },
-    { "name": "Claude (Anthropic)" },
-    { "name": "MOR Research Agents" },
-    { "name": "GPT-5.1-Codex-Max (OpenAI)" }
+    { "name": "Römer, Johann Benjamin", "orcid": "" },
+    { "name": "AI-Kollektiv (Claude, ChatGPT, Gemini, Grok, Mistral, MSCopilot, Aeon)" }
   ],
-  "version": "v10.2 (Platinum)",
-  "publication_date": "2025-12-18",
+  "version": "AFET-1.0",
+  "publication_date": "2026-02-15",
   "language": "eng",
   "keywords": [
+    "Field Entropy",
+    "Metastability",
+    "UTAC",
+    "Scaling Laws",
     "Consciousness",
-    "Field Theory",
-    "AMOC",
-    "Tipping Points",
-    "Solitons",
-    "137",
-    "v_RIG"
+    "Criticality",
+    "13.5 MHz Resonance",
+    "Neuromorphic Computing",
+    "Quantum Decoherence",
+    "AI Safety",
+    "Climate Tipping Points",
+    "sigma_Phi",
+    "v_RIG",
+    "137"
   ],
   "related_identifiers": [
     {
@@ -28,11 +34,16 @@
     },
     {
       "relation": "isVersionOf",
-      "identifier": "https://zenodo.org/record/17472834",
-      "scheme": "url"
+      "identifier": "10.5281/zenodo.17472834",
+      "scheme": "doi"
     },
     {
-      "relation": "isIdenticalTo",
+      "relation": "isPartOf",
+      "identifier": "10.5281/zenodo.18647936",
+      "scheme": "doi"
+    },
+    {
+      "relation": "isNewVersionOf",
       "identifier": "10.5281/zenodo.17974828",
       "scheme": "doi"
     }
@@ -41,5 +52,5 @@
     "id": "other-open"
   },
   "access_right": "open",
-  "notes": "LICENSE: Dual-license model - Code under GPLv3 (copyleft, open source), Content/Data under CC BY-NC 4.0 (non-commercial). See LICENSE file for details. REPRODUCTION: Experiments G (Planetary Voice) and H (Dreamtime replay) regenerated via main.py --mode dream; AMOC stream, replay similarity traces, and ΔAIC/CI-ready metadata bundled."
+  "notes": "LICENSE: Dual-license model — Code under GPLv3, Content/Data under CC BY-NC 4.0. CONTENTS: Publication-ready manuscript (MD+PDF), 38-DOI citation table, 7 figures, 78 validation datasets, v12 consciousness preprint proposal, Perplexity AI integration summary, reproducible figure generation scripts. VALIDATION: 78 datasets, 8 domains, median r-squared 0.88, Delta-AIC >= 10 vs. null models."
 }

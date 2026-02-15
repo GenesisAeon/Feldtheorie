@@ -1,16 +1,16 @@
 meta:
-  id: "afet-intake-2026-02-12"
+  id: "afet-intake-2026-02-15"
   title: "AFET Intake Register for docs/AFET"
   scope: "docs/AFET"
-  timestamp_utc: "2026-02-12T14:53:56Z"
+  timestamp_utc: "2026-02-15T12:00:00Z"
   resonance:
-    R: 0.44
+    R: 0.78
     Theta: 0.56
     beta: 4.8
-    zeta_R: 0.19
-    sigma_beta_R_minus_Theta: 0.36
-  status: "active"
-  notes: "Repo-konforme Eingangslaterne: roh importierte AFET-Dokumente sind inventarisiert, hash-markiert und mit Kurationspfad versehen."
+    zeta_R: 0.09
+    sigma_beta_R_minus_Theta: 0.73
+  status: "release-ready"
+  notes: "AFET-Kuration abgeschlossen: Paper final (MD+PDF), Perplexity-Integration, v12-Preprint, DOI-Tabelle erstellt. Zenodo-Release-Paket vorbereitet."
 governance:
   trilayer: "md+yaml+json"
   coupling_targets:
@@ -67,9 +67,9 @@ inventory:
   - filename: "DOIListe.txt"
     path: docs/AFET/DOIListe.txt
     extension: txt
-    size_bytes: 1583
-    sha256: a406689ea65cd062
-    status: raw-intake
+    size_bytes: 1627
+    sha256: 6a02e4dc29c92ac2
+    status: curated
   - filename: "Feld-Entrophie_Theorie.txt"
     path: docs/AFET/Feld-Entrophie_Theorie.txt
     extension: txt
@@ -136,6 +136,41 @@ inventory:
     size_bytes: 21257
     sha256: 1f18d6d88009f0c1
     status: raw-intake
+  - filename: "AFET_Universal_Framework_Paper_final.md"
+    path: docs/AFET/AFET_Universal_Framework_Paper_final.md
+    extension: md
+    size_bytes: 48735
+    sha256: af89462a24b1b021
+    status: curated
+    role: "AFET final paper (Markdown, publication-ready)"
+  - filename: "Afet universal framework paper final.pdf"
+    path: "docs/AFET/Afet universal framework paper final.pdf"
+    extension: pdf
+    size_bytes: 560609
+    sha256: 221fb8fed6f34b8b
+    status: curated
+    role: "AFET final paper (PDF export)"
+  - filename: "Perplexity integration summary final.pdf"
+    path: "docs/AFET/Perplexity integration summary final.pdf"
+    extension: pdf
+    size_bytes: 327128
+    sha256: 0c017c63b3e12734
+    status: curated
+    role: "Perplexity AI integration summary (PDF)"
+  - filename: "preprint_v12_consciousness.md"
+    path: docs/AFET/preprint_v12_consciousness.md
+    extension: md
+    size_bytes: 6267
+    sha256: 415bf9c0fcc35a11
+    status: curated
+    role: "v12 consciousness preprint proposal"
+  - filename: "PERPLEXITY_INTEGRATION_SUMMARY.md"
+    path: docs/AFET/PERPLEXITY_INTEGRATION_SUMMARY.md
+    extension: md
+    size_bytes: 7804
+    sha256: cd112b2c2a223d2d
+    status: curated
+    role: "Perplexity integration changelog (Markdown)"
 actions:
   - id: AFET-A1
     task: "Rohdokumente bleiben unverändert im Intake-Ordner (forensische Quelle)."
@@ -144,8 +179,15 @@ actions:
   - id: AFET-A2
     task: "Inhaltliche Extraktion nach docs/xai_collab und docs/science priorisieren (Markdown-first)."
     owner: research-synth
-    status: pending
+    status: completed
+    notes: "Final paper (MD+PDF), Perplexity-Summary, v12-Preprint liegen als kuratierte Artefakte vor."
   - id: AFET-A3
     task: "DOI-/Citation-Liste in zitierfähige Tabelle überführen und mit Nullmodell/ΔAIC-Links koppeln."
     owner: citation-manager
-    status: pending
+    status: completed
+    notes: "37 DOIs in docs/AFET/doi_citation_table.md als strukturierte Tabelle mit Phasen-Zuordnung."
+  - id: AFET-A4
+    task: "Zenodo-Release-Paket erstellen (releases/vAFET-1.0/)."
+    owner: release-manager
+    status: completed
+    notes: "Trilayer-Manifest, .zenodo.json, CITATION.cff aktualisiert."
