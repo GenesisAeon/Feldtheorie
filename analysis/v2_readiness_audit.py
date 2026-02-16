@@ -211,6 +211,30 @@ def dataset_summary(datasets: Sequence[DatasetStatus]) -> dict:
     }
 
 
+def declared_actual_drift(datasets: Sequence[DatasetStatus]) -> dict:
+    mismatches: list[dict[str, str | bool]] = []
+    for ds in datasets:
+        for component in ds.components:
+            if component.declared_exists == component.actual_exists:
+                continue
+            mismatches.append(
+                {
+                    "dataset_id": ds.identifier,
+                    "domain": ds.domain,
+                    "component": component.name,
+                    "path": rel(component.path),
+                    "declared_exists": component.declared_exists,
+                    "actual_exists": component.actual_exists,
+                }
+            )
+
+    return {
+        "mismatch_count": len(mismatches),
+        "has_drift": bool(mismatches),
+        "mismatches": mismatches,
+    }
+
+
 def build_action_items(
     datasets: Sequence[DatasetStatus],
     targets: Sequence[TargetStatus],
@@ -417,6 +441,13 @@ def write_markdown(
             missing=dataset_summary_info["any_components_missing"]
         )
     )
+    drift_info = payload["declared_actual_drift"]
+    lines.append(
+        "- Drift ledger: {count} declared-vs-actual mismatches ({state}).".format(
+            count=drift_info["mismatch_count"],
+            state="active" if drift_info["has_drift"] else "stable",
+        )
+    )
     lines.append("")
     lines.append("## 2. Empirical Stratum — Dataset Ledger")
     lines.append("")
@@ -448,7 +479,22 @@ def write_markdown(
                     )
                 )
     lines.append("")
-    lines.append("## 4. Beacon Status — Analysis · Docs · Simulator · Sigillin")
+    lines.append("## 4.1 Drift Ledger — declared_exists vs actual_exists")
+    lines.append("")
+    if drift_info["has_drift"]:
+        lines.append("| Dataset | Domain | Component | Declared | Actual | Path |")
+        lines.append("|:--------|:-------|:----------|:---------|:-------|:-----|")
+        for mismatch in drift_info["mismatches"]:
+            lines.append(
+                "| {dataset_id} | {domain} | {component} | {declared_exists} | {actual_exists} | `{path}` |".format(
+                    **mismatch
+                )
+            )
+    else:
+        lines.append("Keine Drift erkannt: declared_exists und actual_exists sind synchron.")
+    lines.append("")
+
+    lines.append("## 5. Beacon Status — Analysis · Docs · Simulator · Sigillin")
     lines.append("")
     for section_name, items in (
         ("Analysis", payload["analysis_targets"]),
@@ -473,7 +519,7 @@ def write_markdown(
                 )
             )
         lines.append("")
-    lines.append("## 5. Poetic Stratum — Membrane Whisper")
+    lines.append("## 6. Poetic Stratum — Membrane Whisper")
     lines.append("")
     missing_components = dataset_summary_info["any_components_missing"]
     if missing_components == 0:
@@ -508,6 +554,7 @@ def build_payload(
     beta: float,
 ) -> dict:
     dataset_info = dataset_summary(datasets)
+    drift_info = declared_actual_drift(datasets)
     sigma_value = logistic(beta=beta, r_value=dataset_info["average_readiness"], theta=theta)
 
     return {
@@ -522,6 +569,7 @@ def build_payload(
             },
         },
         "data_summary": dataset_info,
+        "declared_actual_drift": drift_info,
         "datasets": [ds.to_dict() for ds in datasets],
         "analysis_targets": summarise_targets(analysis_targets),
         "doc_targets": summarise_targets(doc_targets),
@@ -563,6 +611,14 @@ def main(argv: Sequence[str] | None = None) -> int:
         default=4.8,
         help="Steepness parameter β for logistic activation.",
     )
+    parser.add_argument(
+        "--fail-on-declared-drift",
+        action="store_true",
+        help=(
+            "Return non-zero exit code when declared_exists and actual_exists diverge "
+            "for any manifest component."
+        ),
+    )
     args = parser.parse_args(argv)
 
     manifest = load_manifest(args.manifest)
@@ -595,6 +651,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     write_json(json_path, payload)
     write_yaml(yaml_path, payload)
     write_markdown(md_path, payload, datasets, payload["action_items"])
+
+    drift_count = payload["declared_actual_drift"]["mismatch_count"]
+    if args.fail_on_declared_drift and drift_count > 0:
+        raise SystemExit(
+            f"Declared/actual drift detected in {drift_count} manifest components."
+        )
 
     return 0
 

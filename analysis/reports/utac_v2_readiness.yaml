@@ -1,5 +1,5 @@
 meta:
-  generated_at: '2026-02-16T09:42:01.362240+00:00'
+  generated_at: '2026-02-16T09:52:20.642358+00:00'
   manifest_path: data/utac_v1_3_data_manifest.yaml
   logistic:
     theta: 0.66
@@ -17,6 +17,10 @@ data_summary:
   - 1.0
   - 1.0
   - 1.0
+declared_actual_drift:
+  mismatch_count: 0
+  has_drift: false
+  mismatches: []
 datasets:
 - id: utac-v1_3-ds-001
   domain: climate
@@ -168,69 +172,69 @@ analysis_targets:
   description: climate beta extractor pipeline
   category: analysis
   exists: true
-  last_modified: '2026-02-16T09:02:12.370106+00:00'
+  last_modified: '2026-02-16T09:32:29.187544+00:00'
   expected_outputs:
   - path: analysis/results/urban_heat_global_fit.json
     exists: true
-    last_modified: '2026-02-16T09:02:12.466106+00:00'
+    last_modified: '2026-02-16T09:32:29.263544+00:00'
 - path: analysis/neuro_threshold_fitter.py
   description: neuro-AI hybrid threshold fitter
   category: analysis
   exists: true
-  last_modified: '2026-02-16T09:02:12.374106+00:00'
+  last_modified: '2026-02-16T09:32:29.191544+00:00'
   expected_outputs:
   - path: analysis/results/neuro_ai_beta.json
     exists: true
-    last_modified: '2026-02-16T09:02:12.442106+00:00'
+    last_modified: '2026-02-16T09:32:29.243544+00:00'
 - path: analysis/outlier_validator.py
   description: β>10 instrumentation guard
   category: analysis
   exists: true
-  last_modified: '2026-02-16T09:02:12.374106+00:00'
+  last_modified: '2026-02-16T09:32:29.191544+00:00'
   expected_outputs:
   - path: analysis/results/outlier_validator_report.json
     exists: true
-    last_modified: '2026-02-16T09:02:12.442106+00:00'
+    last_modified: '2026-02-16T09:32:29.243544+00:00'
 - path: analysis/beta_meta_regression_v2.py
   description: meta regression v2 refresh
   category: analysis
   exists: true
-  last_modified: '2026-02-16T09:02:12.366106+00:00'
+  last_modified: '2026-02-16T09:32:29.187544+00:00'
   expected_outputs:
   - path: analysis/results/beta_meta_regression_v2_latest.json
     exists: true
-    last_modified: '2026-02-16T09:02:12.390106+00:00'
+    last_modified: '2026-02-16T09:32:29.203544+00:00'
 doc_targets:
 - path: docs/science/UTAC_v2.0_Coherence_Formula.md
   description: UTAC v2.0 coherence formula narrative
   category: documentation
   exists: true
-  last_modified: '2026-02-16T09:02:12.946103+00:00'
+  last_modified: '2026-02-16T09:32:29.655545+00:00'
   expected_outputs: []
 - path: docs/science/resonance-bridge-map.md
   description: resonance bridge map
   category: documentation
   exists: true
-  last_modified: '2026-02-16T09:02:12.990102+00:00'
+  last_modified: '2026-02-16T09:32:29.687545+00:00'
   expected_outputs: []
 simulator_targets:
 - path: simulator/presets/coherence_formula.json
   description: coherence formula simulator preset
   category: simulator
   exists: true
-  last_modified: '2026-02-16T09:02:15.842084+00:00'
+  last_modified: '2026-02-16T09:32:31.759549+00:00'
   expected_outputs: []
 sigillin_targets:
 - path: seed/bedeutungssigillin/metaquest/system/metaquest_system_map.json
   description: metaquest system map
   category: sigillin
   exists: true
-  last_modified: '2026-02-16T09:02:15.738085+00:00'
+  last_modified: '2026-02-16T09:32:31.679549+00:00'
   expected_outputs: []
 - path: seed/shadow_sigillin/metaquest/system/metaquest_system_shadow.json
   description: metaquest system shadow map
   category: sigillin
   exists: true
-  last_modified: '2026-02-16T09:02:15.806084+00:00'
+  last_modified: '2026-02-16T09:32:31.735549+00:00'
   expected_outputs: []
 action_items: []

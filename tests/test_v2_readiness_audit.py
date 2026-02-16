@@ -1,4 +1,4 @@
-from analysis.v2_readiness_audit import parse_dataset_status
+from analysis.v2_readiness_audit import declared_actual_drift, parse_dataset_status
 
 
 def test_parse_dataset_status_marks_manifest_components_as_declared() -> None:
@@ -25,3 +25,32 @@ def test_parse_dataset_status_marks_manifest_components_as_declared() -> None:
     assert component_names_to_declared["data"] is True
     assert component_names_to_declared["metadata"] is True
     assert component_names_to_declared["urban_heat_global_fit.json"] is True
+
+
+def test_declared_actual_drift_reports_mismatch() -> None:
+    manifest = {
+        "datasets": [
+            {
+                "id": "ds-002",
+                "domain": "ocean",
+                "components": [
+                    {
+                        "name": "amoc_transport",
+                        "path": "data/ocean/does_not_exist.csv",
+                        "exists": True,
+                        "kind": "data",
+                    }
+                ],
+            }
+        ]
+    }
+
+    datasets = parse_dataset_status(manifest)
+    drift = declared_actual_drift(datasets)
+
+    assert drift["has_drift"] is True
+    assert drift["mismatch_count"] == 1
+    mismatch = drift["mismatches"][0]
+    assert mismatch["dataset_id"] == "ds-002"
+    assert mismatch["declared_exists"] is True
+    assert mismatch["actual_exists"] is False
