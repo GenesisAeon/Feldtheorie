@@ -47,6 +47,18 @@ import yaml
 BASE_DIR = Path(__file__).resolve().parents[1]
 CODEX_BASE = BASE_DIR / "seed" / "codexfeedback"
 
+# Profile definitions: named root sets for --profile flag
+PROFILES: dict[str, list[str]] = {
+    "metaquest": [
+        "seed/bedeutungssigillin/metaquest",
+        "seed/shadow_sigillin/metaquest",
+    ],
+    "full": [
+        "seed/bedeutungssigillin",
+        "seed/shadow_sigillin",
+    ],
+}
+
 
 @dataclass
 class TrilayerStatus:
@@ -337,6 +349,12 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         help="Directory roots to inspect (default: Metaquest + shadow directories)",
     )
     report_parser.add_argument(
+        "--profile",
+        choices=list(PROFILES),
+        default=None,
+        help="Named root set (default: metaquest). Ignored when --roots is given.",
+    )
+    report_parser.add_argument(
         "--output",
         type=Path,
         help="Optional path to write JSON report",
@@ -345,6 +363,12 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     stamp_parser = subparsers.add_parser("stamp", help="Generate report and append codex entry")
     stamp_parser.add_argument("--codex-id", required=True)
     stamp_parser.add_argument("--note", required=True)
+    stamp_parser.add_argument(
+        "--profile",
+        choices=list(PROFILES),
+        default=None,
+        help="Named root set (default: metaquest). Ignored when --roots is given.",
+    )
     stamp_parser.add_argument(
         "--roots",
         action="append",
@@ -358,19 +382,21 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def resolve_roots(raw_roots: Sequence[str]) -> list[Path]:
+def resolve_roots(raw_roots: Sequence[str], profile: str | None = None) -> list[Path]:
     if raw_roots:
         roots = [Path(root) if Path(root).is_absolute() else BASE_DIR / root for root in raw_roots]
     else:
-        roots = [
-            BASE_DIR / "seed" / "bedeutungssigillin" / "metaquest",
-            BASE_DIR / "seed" / "shadow_sigillin" / "metaquest",
-        ]
+        profile_name = profile or "metaquest"
+        if profile_name not in PROFILES:
+            raise ValueError(
+                f"Unknown profile '{profile_name}'. Available: {', '.join(PROFILES)}"
+            )
+        roots = [BASE_DIR / p for p in PROFILES[profile_name]]
     return roots
 
 
 def handle_report(args: argparse.Namespace) -> int:
-    roots = resolve_roots(args.roots)
+    roots = resolve_roots(args.roots, profile=args.profile)
     trilayers = discover_trilayers(roots)
     envelope = generate_report(trilayers)
     print(json.dumps(envelope, ensure_ascii=False, indent=2))
@@ -380,7 +406,7 @@ def handle_report(args: argparse.Namespace) -> int:
 
 
 def handle_stamp(args: argparse.Namespace) -> int:
-    roots = resolve_roots(args.roots)
+    roots = resolve_roots(args.roots, profile=args.profile)
     trilayers = discover_trilayers(roots)
     envelope = generate_report(trilayers)
     append_codex_entry(envelope, args.codex_id, args.note, dry_run=args.dry_run)
