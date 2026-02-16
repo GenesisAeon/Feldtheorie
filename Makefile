@@ -217,4 +217,7 @@ doctor:
 	@echo "8. v9_alpha tests"
 	@cd v9_alpha && python3 -m pytest --collect-only -q 2>&1 | tail -1
 	@echo ""
+	@echo "9. Readiness declared/actual parity"
+	@python3 scripts/validation/check_readiness_declared_actual.py
+	@echo ""
 	@echo "🩺 Doctor complete."
