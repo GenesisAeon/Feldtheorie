@@ -515,20 +515,32 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
             if isinstance(entry, dict)
         ]
         listed_set = {name for name in listed_entries if name}
+        curated_entries = [
+            entry
+            for entry in (yaml_data.get("markdown_docs") or [])
+            if isinstance(entry, dict) and entry.get("status") != "uncurated"
+        ]
 
         filesystem_count = len(files)
+        curated_count = len(curated_entries)
 
         yaml_replacements = {
             "markdown_files": filesystem_count,
+            "filesystem_markdown_docs": filesystem_count,
+            "curated_markdown_docs": curated_count,
             "updated": timestamp,
         }
         previous_yaml = self._update_yaml_fields(index_yaml, yaml_replacements)
 
         previous_json = {
             "markdown_files": json_data.get("meta", {}).get("markdown_files"),
+            "filesystem_markdown_docs": json_data.get("meta", {}).get("filesystem_markdown_docs"),
+            "curated_markdown_docs": json_data.get("meta", {}).get("curated_markdown_docs"),
             "updated": json_data.get("meta", {}).get("updated"),
         }
         json_data.setdefault("meta", {})["markdown_files"] = filesystem_count
+        json_data["meta"]["filesystem_markdown_docs"] = filesystem_count
+        json_data["meta"]["curated_markdown_docs"] = curated_count
         json_data["meta"]["updated"] = timestamp
 
         with open(index_json, "w", encoding="utf-8") as f:
