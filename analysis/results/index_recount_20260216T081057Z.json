@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "generated_at": "2026-02-16T08:10:57Z",
+    "base_path": "/home/user/Feldtheorie",
+    "order_parameter_R": "index parity delta",
+    "threshold_Theta": "filesystem counts",
+    "beta": 4.8,
+    "zeta": "σ(β(R-Θ)) guard for index parity"
+  },
+  "indices": [
+    {
+      "index": "docs",
+      "directory": "docs/",
+      "counts": {
+        "filesystem": 174,
+        "listed": 172
+      },
+      "delta": 2,
+      "missing_files": [
+        "xai_collab/week2_clip_report.md",
+        "xai_collab/week2_stress_report.md"
+      ],
+      "orphan_entries": [],
+      "meta_updates": {
+        "yaml": {
+          "markdown_files": "172",
+          "updated": "\"2026-02-16T07:59:51Z\""
+        },
+        "json": {
+          "markdown_files": 172,
+          "updated": "2026-02-16T07:59:51Z"
+        }
+      },
+      "logistic": {
+        "beta": 4.8,
+        "zeta": "docs-index parity damping"
+      }
+    }
+  ]
+}
