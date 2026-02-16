@@ -1,25 +1,25 @@
 {
   "meta": {
-    "generated_at": "2025-12-18T12:06:08.712515+00:00",
+    "generated_at": "2026-02-16T09:33:48.384704+00:00",
     "manifest_path": "data/utac_v1_3_data_manifest.yaml",
     "logistic": {
       "theta": 0.66,
       "beta": 4.8,
-      "mean_readiness": 0.9,
-      "sigma": 0.7598760354908782
+      "mean_readiness": 1.0,
+      "sigma": 0.8364434345496531
     }
   },
   "data_summary": {
     "total": 5,
-    "fully_ready": 3,
-    "any_components_missing": 2,
-    "average_readiness": 0.9,
+    "fully_ready": 5,
+    "any_components_missing": 0,
+    "average_readiness": 1.0,
     "values": [
       1.0,
-      0.75,
       1.0,
       1.0,
-      0.75
+      1.0,
+      1.0
     ]
   },
   "datasets": [
@@ -70,22 +70,14 @@
       "theta_estimate": 0.62,
       "beta_target": 13.8,
       "declared_readiness_ratio": null,
-      "actual_readiness_ratio": 0.75,
-      "missing_components": [
-        {
-          "name": "data",
-          "path": "data/climate/amazon_precip_evapo.nc",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "data"
-        }
-      ],
+      "actual_readiness_ratio": 1.0,
+      "missing_components": [],
       "components": [
         {
           "name": "data",
-          "path": "data/climate/amazon_precip_evapo.nc",
+          "path": "data/climate/amazon_precip_evapo.csv",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "data"
         },
         {
@@ -198,16 +190,8 @@
       "theta_estimate": 1.15,
       "beta_target": 7.4,
       "declared_readiness_ratio": null,
-      "actual_readiness_ratio": 0.75,
-      "missing_components": [
-        {
-          "name": "meta_v2_summary_refresh.json",
-          "path": "analysis/results/meta_v2_summary_refresh.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        }
-      ],
+      "actual_readiness_ratio": 1.0,
+      "missing_components": [],
       "components": [
         {
           "name": "data",
@@ -234,7 +218,7 @@
           "name": "meta_v2_summary_refresh.json",
           "path": "analysis/results/meta_v2_summary_refresh.json",
           "declared_exists": false,
-          "actual_exists": false,
+          "actual_exists": true,
           "kind": "result"
         }
       ]
@@ -246,12 +230,12 @@
       "description": "climate beta extractor pipeline",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-12-18T07:32:16+00:00",
+      "last_modified": "2026-02-16T08:52:16.754181+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/urban_heat_global_fit.json",
           "exists": true,
-          "last_modified": "2025-12-18T07:32:16+00:00"
+          "last_modified": "2026-02-16T08:52:16.830182+00:00"
         }
       ]
     },
@@ -260,12 +244,12 @@
       "description": "neuro-AI hybrid threshold fitter",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-12-18T07:32:16+00:00",
+      "last_modified": "2026-02-16T08:52:16.758182+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/neuro_ai_beta.json",
           "exists": true,
-          "last_modified": "2025-12-18T11:01:24+00:00"
+          "last_modified": "2026-02-16T08:52:16.806182+00:00"
         }
       ]
     },
@@ -274,12 +258,12 @@
       "description": "β>10 instrumentation guard",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-12-18T07:32:16+00:00",
+      "last_modified": "2026-02-16T08:52:16.758182+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/outlier_validator_report.json",
           "exists": true,
-          "last_modified": "2025-12-18T07:32:16+00:00"
+          "last_modified": "2026-02-16T08:52:16.806182+00:00"
         }
       ]
     },
@@ -288,31 +272,31 @@
       "description": "meta regression v2 refresh",
       "category": "analysis",
       "exists": true,
-      "last_modified": "2025-12-18T07:32:16+00:00",
+      "last_modified": "2026-02-16T08:52:16.754181+00:00",
       "expected_outputs": [
         {
           "path": "analysis/results/beta_meta_regression_v2_latest.json",
           "exists": true,
-          "last_modified": "2025-12-18T11:01:33+00:00"
+          "last_modified": "2026-02-16T08:52:16.770182+00:00"
         }
       ]
     }
   ],
   "doc_targets": [
     {
-      "path": "docs/UTAC_v2.0_Coherence_Formula.md",
+      "path": "docs/science/UTAC_v2.0_Coherence_Formula.md",
       "description": "UTAC v2.0 coherence formula narrative",
       "category": "documentation",
       "exists": true,
-      "last_modified": "2025-12-18T07:32:16+00:00",
+      "last_modified": "2026-02-16T08:52:17.206183+00:00",
       "expected_outputs": []
     },
     {
-      "path": "docs/resonance-bridge-map.md",
+      "path": "docs/science/resonance-bridge-map.md",
       "description": "resonance bridge map",
       "category": "documentation",
       "exists": true,
-      "last_modified": "2025-12-18T07:32:16+00:00",
+      "last_modified": "2026-02-16T08:52:17.238183+00:00",
       "expected_outputs": []
     }
   ],
@@ -322,7 +306,7 @@
       "description": "coherence formula simulator preset",
       "category": "simulator",
       "exists": true,
-      "last_modified": "2025-12-18T07:32:17+00:00",
+      "last_modified": "2026-02-16T08:52:19.154188+00:00",
       "expected_outputs": []
     }
   ],
@@ -332,7 +316,7 @@
       "description": "metaquest system map",
       "category": "sigillin",
       "exists": true,
-      "last_modified": "2025-12-18T07:32:17+00:00",
+      "last_modified": "2026-02-16T08:52:19.082188+00:00",
       "expected_outputs": []
     },
     {
@@ -340,42 +324,9 @@
       "description": "metaquest system shadow map",
       "category": "sigillin",
       "exists": true,
-      "last_modified": "2025-12-18T07:32:17+00:00",
+      "last_modified": "2026-02-16T08:52:19.130188+00:00",
       "expected_outputs": []
     }
   ],
-  "action_items": [
-    {
-      "id": "dataset-01",
-      "priority": "P1",
-      "title": "Complete climate dataset utac-v1_3-ds-002",
-      "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
-      "targets": [
-        {
-          "name": "data",
-          "path": "data/climate/amazon_precip_evapo.nc",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "data"
-        }
-      ],
-      "related_resonance_status": "active"
-    },
-    {
-      "id": "dataset-02",
-      "priority": "P1",
-      "title": "Complete economy dataset utac-v1_3-ds-005",
-      "description": "Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.",
-      "targets": [
-        {
-          "name": "meta_v2_summary_refresh.json",
-          "path": "analysis/results/meta_v2_summary_refresh.json",
-          "declared_exists": false,
-          "actual_exists": false,
-          "kind": "result"
-        }
-      ],
-      "related_resonance_status": "draft"
-    }
-  ]
+  "action_items": []
 }

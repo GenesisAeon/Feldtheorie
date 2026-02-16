@@ -317,13 +317,13 @@ def build_targets() -> (
 
     doc_targets = [
         TargetStatus(
-            path=REPO_ROOT / "docs" / "UTAC_v2.0_Coherence_Formula.md",
+            path=REPO_ROOT / "docs" / "science" / "UTAC_v2.0_Coherence_Formula.md",
             description="UTAC v2.0 coherence formula narrative",
             expected_outputs=[],
             category="documentation",
         ),
         TargetStatus(
-            path=REPO_ROOT / "docs" / "resonance-bridge-map.md",
+            path=REPO_ROOT / "docs" / "science" / "resonance-bridge-map.md",
             description="resonance bridge map",
             expected_outputs=[],
             category="documentation",

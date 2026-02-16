@@ -1,31 +1,25 @@
 # UTAC v2.0 Readiness Audit – σ(β(R-Θ)) Compass
 
-*Generated 2025-12-18T12:06:08.712515+00:00 via `analysis/v2_readiness_audit.py` – logistic quartet guiding V2 activation.*
+*Generated 2026-02-16T09:33:48.384704+00:00 via `analysis/v2_readiness_audit.py` – logistic quartet guiding V2 activation.*
 
 ## 1. Formal Stratum — Logistic Summary
 
-- Manifest lanterns: **5** (fully ready: 3).
-- Average readiness R̄ = 0.90; Θ = 0.66; β = 4.80; σ(β(R-Θ)) = 0.760.
-- ζ(R) guard: 2 components still dark across manifest entries.
+- Manifest lanterns: **5** (fully ready: 5).
+- Average readiness R̄ = 1.00; Θ = 0.66; β = 4.80; σ(β(R-Θ)) = 0.836.
+- ζ(R) guard: 0 components still dark across manifest entries.
 
 ## 2. Empirical Stratum — Dataset Ledger
 
 | Dataset | Domain | Resonance | Ready | Missing | Next Step |
 |:-------|:-------|:----------|:------|:--------|:-----------|
 | utac-v1_3-ds-001 | climate | active | 100% | — | Run updated analysis |
-| utac-v1_3-ds-002 | climate | active | 75% | data | Complete manifest tri-layer |
+| utac-v1_3-ds-002 | climate | active | 100% | — | Run updated analysis |
 | utac-v1_3-ds-003 | ocean | draft | 100% | — | Run updated analysis |
 | utac-v1_3-ds-004 | neuro_ai | primed | 100% | — | Run updated analysis |
-| utac-v1_3-ds-005 | economy | draft | 75% | meta_v2_summary_refresh.json | Complete manifest tri-layer |
+| utac-v1_3-ds-005 | economy | draft | 100% | — | Run updated analysis |
 
 ## 3. Implementation Map — Priority Actions
 
-- **dataset-01 (P1)** — Complete climate dataset utac-v1_3-ds-002
-  - Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.
-  - target: `data/climate/amazon_precip_evapo.nc` (exists: False)
-- **dataset-02 (P1)** — Complete economy dataset utac-v1_3-ds-005
-  - Ingest missing components and run logistic fits so that σ(β(R-Θ)) reaches activation.
-  - target: `analysis/results/meta_v2_summary_refresh.json` (exists: False)
 
 ## 4. Beacon Status — Analysis · Docs · Simulator · Sigillin
 
@@ -36,8 +30,8 @@
 - `analysis/beta_meta_regression_v2.py` — exists: True; outputs: analysis/results/beta_meta_regression_v2_latest.json (exists: True)
 
 ### Documentation
-- `docs/UTAC_v2.0_Coherence_Formula.md` — exists: True; outputs: —
-- `docs/resonance-bridge-map.md` — exists: True; outputs: —
+- `docs/science/UTAC_v2.0_Coherence_Formula.md` — exists: True; outputs: —
+- `docs/science/resonance-bridge-map.md` — exists: True; outputs: —
 
 ### Simulator
 - `simulator/presets/coherence_formula.json` — exists: True; outputs: —
