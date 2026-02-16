@@ -18,6 +18,10 @@ def test_aeon_bridge_requires_fastapi(monkeypatch):
         api_bridge.AeonBridge(shell=object())
 
 
+@pytest.mark.skipif(
+    not importlib.util.find_spec("fastapi"),
+    reason="fastapi not installed",
+)
 def test_aeon_lantern_async_bridge_telemetry_snapshot():
     api_bridge = importlib.import_module("aeon.api_bridge")
 

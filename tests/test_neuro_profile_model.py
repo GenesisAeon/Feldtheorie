@@ -35,7 +35,9 @@ def test_analysis_outputs():
     model = module.NeuroProfileModel()
     rng = np.random.default_rng(1)
     series = rng.normal(0.0, 1.0, 256)
-    result = model.analyze(series, consent_granted=True, subject_id="unit-test")
+    result = model.analyze(
+        series, consent_granted=True, consent_token="unit-test-token", subject_id="unit-test"
+    )
 
     assert result.beta_ci[0] <= result.beta_estimate.beta <= result.beta_ci[1]
     assert result.sigma_phi_ci[0] <= result.sigma_phi_proxy <= result.sigma_phi_ci[1]

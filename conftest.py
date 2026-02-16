@@ -14,4 +14,6 @@ collect_ignore_glob = [
     "v11_gardener/*",
     "vr/*",
     "science/tests/*",
+    "analysis/implosion/*",
+    "science/analysis/implosion/*",
 ]

@@ -26,6 +26,10 @@ except ImportError:
     class BaseModel:  # type: ignore
         pass
 
+    def Field(*args: Any, **kwargs: Any) -> Any:  # type: ignore
+        """Stub for pydantic.Field when fastapi is not installed."""
+        return kwargs.get("default", ...)
+
 
 class AeonStatusResponse(BaseModel):
     kernel_beta: float = Field(..., description="Current β-value")
