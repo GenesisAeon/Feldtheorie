@@ -25,12 +25,15 @@ build:
 	nox -s build
 
 batch:
+	@command -v utf-batch >/dev/null 2>&1 || { echo "⚠  utf-batch not found. Run 'make install' first."; exit 1; }
 	utf-batch --config analysis/batch_configs/resonance_runs.json
 
 planetary:
+	@command -v utf-planetary-summary >/dev/null 2>&1 || { echo "⚠  utf-planetary-summary not found. Run 'make install' first."; exit 1; }
 	utf-planetary-summary --output analysis/results/planetary_tipping_elements.json
 
 preset-guard:
+	@command -v utf-preset-guard >/dev/null 2>&1 || { echo "⚠  utf-preset-guard not found. Run 'make install' first."; exit 1; }
 	utf-preset-guard
 
 docs-index:
@@ -205,5 +208,13 @@ doctor:
 	@echo ""
 	@echo "6. Trilayer sync"
 	@python3 scripts/sigillin_sync.py report 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); m=d['meta']; print(f'   Trilayers: {m[\"counts\"][\"total\"]}, gaps: {m[\"counts\"][\"with_gaps\"]}')"
+	@echo ""
+	@echo "7. CLI guard binaries"
+	@command -v utf-preset-guard >/dev/null 2>&1 && echo "   utf-preset-guard: ✅" || echo "   utf-preset-guard: ⚠  not found"
+	@command -v utf-batch >/dev/null 2>&1 && echo "   utf-batch: ✅" || echo "   utf-batch: ⚠  not found"
+	@command -v utf-planetary-summary >/dev/null 2>&1 && echo "   utf-planetary-summary: ✅" || echo "   utf-planetary-summary: ⚠  not found"
+	@echo ""
+	@echo "8. v9_alpha tests"
+	@cd v9_alpha && python3 -m pytest --collect-only -q 2>&1 | tail -1
 	@echo ""
 	@echo "🩺 Doctor complete."
