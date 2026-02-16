@@ -16,6 +16,8 @@ import sys
 from pathlib import Path
 
 import pytest
+
+pytest.importorskip("starlette", reason="starlette required: pip install feldtheorie[api]")
 from starlette.testclient import TestClient
 
 # Add project root to path
