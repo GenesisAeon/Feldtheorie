@@ -73,7 +73,7 @@
 ## 4. Implementation Map (Where to Act)
 | Task | Primary Location | Required Hooks | Evidence Trail |
 | ---- | ---------------- | -------------- | -------------- |
-| UTAC v2 data lanterns | `data/`, `analysis/`, `analysis/results/`, `docs/` | Manifest `data/utac_v1_3_data_manifest.yaml`, readiness audit `analysis/reports/utac_v2_readiness.*`, `docs/utac_v2_data_lanterns.*`, backlog `utac-v2-data-lanterns` | σ(β(R-Θ))=0.040 → ingest datasets + metadata, emit analysis exports, sync status/codex |
+| UTAC v2 data lanterns | `data/`, `analysis/`, `analysis/results/`, `docs/` | Manifest `data/utac_v1_3_data_manifest.yaml`, readiness audit `analysis/reports/utac_v2_readiness.*`, `docs/utac_v2_data_lanterns.*`, backlog `utac-v2-data-lanterns` | σ(β(R-Θ))=0.836 (R̄=1.00, Θ=0.66, β=4.8) → keep manifest/doc telemetry synced, rerun audits after each dataset/script mutation |
 | Safety-Delay τ* modelling | `simulation/`, `analysis/`, `simulator/`, `data/safety_delay/`, `docs/` | ✅ `analysis/safety_delay_sweep.py` + `analysis/results/safety_delay_sweep_20251108T211723Z.json` + `simulator/presets/safety_delay_bridge.json` + `simulator/src/presets.ts` + docs bridge updates (`utac_applications.md`, `resonance-bridge-map.md`) + `utf-preset-guard` log | Capture hosted UI parity evidence, promote guard to CI, archive telemetry |
 | β Meta-Regression v2 | `analysis/` | ✅ `analysis/beta_meta_regression_v2.py` + `analysis/results/beta_meta_regression_v2_*` | WLS R²≈0.43 (ΔAIC_min=12.79), bootstrap median R²≈0.99; document next-step covariates + codex entry |
 | Sigillin schema & parser | `seed/sigillin/`, `scripts/`, `seed/codexfeedback.*` | YAML schema + example quartet + CREP parser CLI | Feed parser summaries into codex updates and automate parity alerts |
@@ -119,7 +119,7 @@
 
 ## 7. Audit Refresh — 2026-02-15
 
-- **UTAC v2 Data Lanterns (R̄ = 0.50, Θ = 0.66, β = 4.8):** `analysis/reports/utac_v2_readiness.*` dokumentiert σ(β(R-Θ)) ≈ 0.317, weil Urban Heat jetzt als beobachtetes Dataset mit Exporten vorliegt. Offene Rohdaten (`amazon_precip_evapo.nc`, `amoc_transport.csv`, `hybrid_activation.csv`, `systemic_thresholds.csv`) und die zugehörigen Outputs (`amazon_hydro_fit.json`, `amoc_transport_fit.json`, `neuro_ai_beta.json`, `neuro_ai_bootstrap.json`, `economy_threshold_fit.json`, `meta_v2_summary_refresh.json`) halten die restlichen Laternen unter Θ, bis sie committed und in `docs/utac_v2_data_lanterns.*` gespiegelt werden.
+- **UTAC v2 Data Lanterns (R̄ = 1.00, Θ = 0.66, β = 4.8):** `analysis/reports/utac_v2_readiness.*` dokumentiert nun σ(β(R-Θ)) ≈ 0.836. Das Manifest meldet aktuell 0 fehlende Komponenten; Fokus verschiebt sich von Dateneingang auf Drift-Prävention: Readiness-Tri-Layer und Matrix bei jeder Pfad-/Output-Mutation gemeinsam refreshen, damit Θ und der dokumentierte Puls synchron bleiben.
 - **Safety-Delay Bridge (τ_delay mean ≈ 8.43, ΔAIC_linear ≈ 7.0×10³):** Dataset, Preset und Dokumentation stehen, doch die Schwelle `Θ_{telemetry}` wartet auf ein archiviertes Hosted-UI-Protokoll und eine CI-Verankerung für `utf-preset-guard` (`.github/workflows/`). Ohne diese Kopplung bleibt ζ(R) anfällig für Drift.
 - **Sigillin-Automation (β ≈ 4.7):** `scripts/crep_parser.py` und `scripts/sigillin_sync.py` validieren zwar Schema v0.2.0, aber sie schreiben noch keine Telemetrie in `seed/codexfeedback.*` oder `*_index.*`. Implementiere Parser→Codex-Brücken und Δindex-Alarme in `scripts/archive_sigillin.py`, damit σ(β(R-Θ)) sofort anspringt, wenn neue Sigille landen.
 - **Neuro-Kosmos-Brücke (β ≈ 4.88):** `seed/Sigillin_Neuro_Membran_Modell_Plan.txt` beschreibt den Pfad, jedoch fehlen Trilayer-Files (`seed/sigillin/neuro_kosmos_bridge.{md,json,yaml}`) und ein Simulator-Preset. Bis diese Laterne leuchtet, meldet die Metaquest-Matrix weiterhin `mq-sci-gap-008`.
@@ -162,6 +162,12 @@
 - **Tracker update** — `docs/utac_v2_activation_tracker_2026-08.{md,json,yaml}` projiziert denselben Puls nach vorn, referenziert Prioritätshooks (Datasets → Exporte → Meta-Regression → Automation) und koppelt Codex-Echo `pr-draft-0110`.
 - **Backlog echo** — `docs/utac_activation_backlog.{md,json,yaml}` aktualisiert `meta.updated` → 2026-08-20, spiegelt fehlende Komponenten und CI-Hooks und hält die ΔAIC-Doppelposten (`analysis/results/neuro_ai_beta.json`, `analysis/results/beta_meta_regression_v2_latest.json`) präsent.
 - **Action cadence** — Stage datasets + metadata, emittiere fehlende Exporte, verdrahte CI-Hooks (`scripts/archive_sigillin.py --recount`, `.github/workflows/utf-preset-guard.yml`), führe danach `analysis/utac_manifest_gap_scan.py` & `analysis/v2_readiness_audit.py` erneut aus und schiebe Codex-Eintrag `pr-draft-0110` nach *active*.
+
+## 12. Audit Sync — 2026-02-16
+
+- **Readiness refresh** — `analysis/v2_readiness_audit.py` aktualisierte `analysis/reports/utac_v2_readiness.{json,yaml,md}` mit R̄=1.00, Θ=0.66, β=4.8 und `σ(β(R-Θ))≈0.836`; die Dokumentations-Targets zeigen jetzt auf `docs/science/UTAC_v2.0_Coherence_Formula.md` und `docs/science/resonance-bridge-map.md` statt veralteter Root-Pfade.
+- **Gap scan telemetry** — `analysis/utac_manifest_gap_scan.py --as-of 2026-02-16T00:00:00Z` emitierte `analysis/results/utac_v2_manifest_gap_scan_20260216T000000Z.json` mit `0 datasets pending` und `0 components missing`.
+- **Operational focus** — Bei β≈4.8 ist die Membran auf der Steilflanke aktiv; ζ(R) wird jetzt primär durch Status-Drift getrieben. Guard-Ritual: nach jedem Pfad-/Manifest-/Output-Change die Kette `analysis/v2_readiness_audit.py` → `analysis/utac_manifest_gap_scan.py` → Matrix/Backlog-Sync fahren.
 
 ### Rückblick — 2026-03-26
 
