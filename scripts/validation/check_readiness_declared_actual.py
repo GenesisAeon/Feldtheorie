@@ -29,12 +29,49 @@ def _load_report(path: Path) -> dict[str, Any]:
     raise ValueError(f"Unsupported report format: {path}")
 
 
+def _iter_component_scopes(report: dict[str, Any]) -> list[tuple[str, list[dict[str, Any]]]]:
+    """Return named component scopes from known readiness schemas.
+
+    Current readiness reports store components under ``datasets``; older reports
+    used ``domains``. We support both so drift checks stay robust during schema
+    transitions.
+    """
+
+    datasets = report.get("datasets")
+    if isinstance(datasets, list):
+        scopes: list[tuple[str, list[dict[str, Any]]]] = []
+        for dataset in datasets:
+            if not isinstance(dataset, dict):
+                continue
+            dataset_id = str(dataset.get("id", "unknown-dataset"))
+            domain = str(dataset.get("domain", "unknown-domain"))
+            scope_label = f"{dataset_id} ({domain})"
+            components = dataset.get("components", [])
+            if isinstance(components, list):
+                scopes.append((scope_label, components))
+        return scopes
+
+    domains = report.get("domains")
+    if isinstance(domains, list):
+        scopes = []
+        for domain in domains:
+            if not isinstance(domain, dict):
+                continue
+            domain_name = str(domain.get("name", "unknown-domain"))
+            components = domain.get("components", [])
+            if isinstance(components, list):
+                scopes.append((domain_name, components))
+        return scopes
+
+    return []
+
+
 def _collect_mismatches(report: dict[str, Any]) -> list[dict[str, Any]]:
     mismatches: list[dict[str, Any]] = []
-    domains = report.get("domains", [])
-    for domain in domains:
-        domain_name = domain.get("name", "unknown-domain")
-        for component in domain.get("components", []):
+    for scope_name, components in _iter_component_scopes(report):
+        for component in components:
+            if not isinstance(component, dict):
+                continue
             declared = component.get("declared_exists")
             actual = component.get("actual_exists")
             if declared is None or actual is None:
@@ -42,7 +79,7 @@ def _collect_mismatches(report: dict[str, Any]) -> list[dict[str, Any]]:
             if bool(declared) != bool(actual):
                 mismatches.append(
                     {
-                        "domain": domain_name,
+                        "scope": scope_name,
                         "component": component.get("name", "unknown-component"),
                         "path": component.get("path", "unknown-path"),
                         "declared_exists": bool(declared),
@@ -57,7 +94,7 @@ def _print_report(label: str, mismatches: list[dict[str, Any]]) -> None:
     for mismatch in mismatches:
         print(
             "  - "
-            f"{mismatch['domain']} :: {mismatch['component']} ({mismatch['path']}): "
+            f"{mismatch['scope']} :: {mismatch['component']} ({mismatch['path']}): "
             f"declared_exists={mismatch['declared_exists']} vs "
             f"actual_exists={mismatch['actual_exists']}"
         )
