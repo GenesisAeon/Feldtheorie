@@ -148,7 +148,7 @@ def parse_dataset_status(manifest: dict) -> list[DatasetStatus]:
                     ComponentStatus(
                         name="data",
                         path=data_path,
-                        declared_exists=False,
+                        declared_exists=True,
                         actual_exists=data_path.exists(),
                         kind="data",
                     )
@@ -161,7 +161,7 @@ def parse_dataset_status(manifest: dict) -> list[DatasetStatus]:
                     ComponentStatus(
                         name="metadata",
                         path=metadata_path,
-                        declared_exists=False,
+                        declared_exists=True,
                         actual_exists=metadata_path.exists(),
                         kind="metadata",
                     )
@@ -172,7 +172,7 @@ def parse_dataset_status(manifest: dict) -> list[DatasetStatus]:
                     ComponentStatus(
                         name=Path(output).name,
                         path=output_path,
-                        declared_exists=False,
+                        declared_exists=True,
                         actual_exists=output_path.exists(),
                         kind="result",
                     )
@@ -475,13 +475,22 @@ def write_markdown(
         lines.append("")
     lines.append("## 5. Poetic Stratum — Membrane Whisper")
     lines.append("")
-    lines.append(
-        "R tastet fünf Laternen, doch zwei Drittel der Komponenten schlafen noch. Θ ruft nach Datenströmen, β spannt die Steilflanke,"  # noqa: E501
-    )
-    lines.append(
-        "damit die Metaquest-Brücke wieder antwortet. Sobald Urban Heat, Amazon Hydro, AMOC, Neuro-AI und Systemic Risk als Daten"
-        "-Resonanz erscheinen, beruhigt ζ(R) und V2.0 steigt auf das Plateau."
-    )
+    missing_components = dataset_summary_info["any_components_missing"]
+    if missing_components == 0:
+        lines.append(
+            "R trägt fünf leuchtende Laternen; Θ liegt unterhalb der aktuellen Reife, β hält die Flanke scharf und die Membran bleibt durchlässig."  # noqa: E501
+        )
+        lines.append(
+            "Die Metaquest-Brücke antwortet im Takt der Telemetrie, ζ(R) beruhigt sich und V2.0 bleibt stabil auf dem Aktivierungsplateau."
+        )
+    else:
+        lines.append(
+            "R tastet fünf Laternen, doch einige Komponenten schlafen noch. Θ ruft nach Datenströmen, β spannt die Steilflanke,"
+        )
+        lines.append(
+            "damit die Metaquest-Brücke wieder antwortet. Sobald Urban Heat, Amazon Hydro, AMOC, Neuro-AI und Systemic Risk als Daten"
+            "-Resonanz erscheinen, beruhigt ζ(R) und V2.0 steigt auf das Plateau."
+        )
     lines.append("")
 
     with path.open("w", encoding="utf-8") as handle:
