@@ -31,24 +31,35 @@ def _load_report(path: Path) -> dict[str, Any]:
 
 def _collect_mismatches(report: dict[str, Any]) -> list[dict[str, Any]]:
     mismatches: list[dict[str, Any]] = []
-    domains = report.get("domains", [])
-    for domain in domains:
-        domain_name = domain.get("name", "unknown-domain")
-        for component in domain.get("components", []):
+
+    def collect(scope_name: str, scope: dict[str, Any]) -> None:
+        domain_name = scope.get("domain") or scope.get("name") or "unknown-domain"
+        dataset_name = scope.get("id") or scope.get("name") or "unknown-dataset"
+        for component in scope.get("components", []):
             declared = component.get("declared_exists")
             actual = component.get("actual_exists")
             if declared is None or actual is None:
                 continue
-            if bool(declared) != bool(actual):
-                mismatches.append(
-                    {
-                        "domain": domain_name,
-                        "component": component.get("name", "unknown-component"),
-                        "path": component.get("path", "unknown-path"),
-                        "declared_exists": bool(declared),
-                        "actual_exists": bool(actual),
-                    }
-                )
+            if bool(declared) == bool(actual):
+                continue
+            mismatches.append(
+                {
+                    "scope": scope_name,
+                    "dataset": dataset_name,
+                    "domain": domain_name,
+                    "component": component.get("name", "unknown-component"),
+                    "path": component.get("path", "unknown-path"),
+                    "declared_exists": bool(declared),
+                    "actual_exists": bool(actual),
+                }
+            )
+
+    for dataset in report.get("datasets", []):
+        collect("datasets", dataset)
+
+    for domain in report.get("domains", []):
+        collect("domains", domain)
+
     return mismatches
 
 
@@ -57,7 +68,8 @@ def _print_report(label: str, mismatches: list[dict[str, Any]]) -> None:
     for mismatch in mismatches:
         print(
             "  - "
-            f"{mismatch['domain']} :: {mismatch['component']} ({mismatch['path']}): "
+            f"[{mismatch['scope']}] {mismatch['dataset']} / {mismatch['domain']} :: "
+            f"{mismatch['component']} ({mismatch['path']}): "
             f"declared_exists={mismatch['declared_exists']} vs "
             f"actual_exists={mismatch['actual_exists']}"
         )
