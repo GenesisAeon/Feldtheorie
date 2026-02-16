@@ -27,7 +27,7 @@
 | \(R\) | Ordnungsträger (Input, Energiefluss) | Dokumentiere Messgrößen mit Metadaten in `data/**`, verknüpfe mit Analyse-Skripten |
 | \(\Theta\) | Adaptive Schwelle | Leite Θ aus Fits oder Governance-Auflagen ab; vermerke Quellen im Codex |
 | \(\beta\) | Steilheitsparameter | Nutze logistisches Fit-Protokoll (`analysis/universal_beta_extractor.py`), halte ΔAIC-Vergleich bereit |
-| \(\alpha\) | Kopplungsstärke zwischen Systemen | Beschreibe Kopplungsgraphen in `docs/resonance-bridge-map.md`, referenziere Simulation |
+| \(\alpha\) | Kopplungsstärke zwischen Systemen | Beschreibe Kopplungsgraphen in `docs/science/resonance-bridge-map.md`, referenziere Simulation |
 | \(\phi\) | Semantische Kohärenz | Hinterlege Bedeutungs-Sigille (`seed/bedeutungssigillin/**`) mit passenden Ritual-Kommentaren |
 | \(\zeta(R, \alpha, \phi)\) | Rückkopplungsantwort | Verfolge Dämpfungsmaßnahmen in `docs/utac_status_alignment_v1.2.md` und Shadow-Sigillen |
 
@@ -53,7 +53,7 @@
 ## 🛰️ 4. Implementations-Hooks (V1.3 → V2.0)
 1. **Kohärenz-Dokumentation:**
    - Update `docs/docs_index.*` (Tri-Layer) mit der neuen Laterne.
-   - Ergänze Cross-Links im `docs/resonance-bridge-map.md`.
+   - Ergänze Cross-Links im `docs/science/resonance-bridge-map.md`.
 2. **Analyse-Erweiterung:**
    - `analysis/beta_meta_regression_v2.py`: Neue Feature-Sets für High-β-Systeme (Arctic Sea Ice, Urban Heat) einpflegen.
    - Exportiere Ergebnisse nach `analysis/results/beta_meta_regression_v2_latest.*`.
