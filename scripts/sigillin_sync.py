@@ -89,13 +89,23 @@ def discover_trilayers(roots: Sequence[Path]) -> list[Path]:
 
 
 def load_yaml(path: Path) -> dict[str, object]:
-    with path.open("r", encoding="utf-8") as handle:
-        return yaml.safe_load(handle)
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            data = yaml.safe_load(handle)
+            return data if isinstance(data, dict) else {}
+    except (yaml.YAMLError, OSError) as exc:
+        print(f"WARNING: YAML parse error in {path}: {exc}", file=sys.stderr)
+        return {}
 
 
 def load_json(path: Path) -> dict[str, object]:
-    with path.open("r", encoding="utf-8") as handle:
-        return json.load(handle)
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            data = json.load(handle)
+            return data if isinstance(data, dict) else {}
+    except (json.JSONDecodeError, OSError) as exc:
+        print(f"WARNING: JSON parse error in {path}: {exc}", file=sys.stderr)
+        return {}
 
 
 def inspect_trilayer(base: Path) -> TrilayerStatus:
@@ -145,7 +155,14 @@ def inspect_trilayer(base: Path) -> TrilayerStatus:
 
 
 def generate_report(trilayers: Iterable[Path]) -> dict[str, object]:
-    statuses = [inspect_trilayer(base) for base in trilayers]
+    statuses: list[TrilayerStatus] = []
+    errors: list[dict[str, str]] = []
+    for base in trilayers:
+        try:
+            statuses.append(inspect_trilayer(base))
+        except Exception as exc:
+            errors.append({"path": base.as_posix(), "error": str(exc)})
+            print(f"WARNING: skipping {base}: {exc}", file=sys.stderr)
     envelope = {
         "meta": {
             "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -162,6 +179,7 @@ def generate_report(trilayers: Iterable[Path]) -> dict[str, object]:
             },
         },
         "trilayers": [status.to_dict() for status in statuses],
+        "errors": errors,
     }
     return envelope
 

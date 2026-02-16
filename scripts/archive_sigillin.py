@@ -496,7 +496,9 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
         files = self._collect_files(
             directory,
             patterns=["*.md"],
-            recursive=False,
+            recursive=True,
+            exclude_names={"docs_index.md"},
+            use_relative=True,
         )
 
         index_yaml = directory / "docs_index.yaml"

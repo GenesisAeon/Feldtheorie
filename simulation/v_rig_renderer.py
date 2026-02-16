@@ -16,6 +16,7 @@ import numpy as np
 ALPHA_INV = 137.036  # Fine structure constant inverse
 PHI = (1 + np.sqrt(5)) / 2  # Golden ratio ≈ 1.618
 TARGET_N = ALPHA_INV * PHI  # ≈ 221.74
+N_OPTIMAL = TARGET_N  # Alias used by v_rig_quick_test
 
 
 @dataclass
@@ -34,9 +35,21 @@ class VRigRealityRenderer:
     Core Hypothesis: Maximum 3D coherence at buffer size N ≈ α⁻¹·Φ ≈ 222.
     """
 
-    def __init__(self, config: VRigConfig | None = None):
+    def __init__(
+        self,
+        config: VRigConfig | None = None,
+        *,
+        slice_resolution: int | None = None,
+        seed: int | None = None,
+    ):
         self.config = config or VRigConfig()
+        if slice_resolution is not None:
+            self.config.slice_size = slice_resolution
         self.target_n = self.config.alpha_inv * self.config.phi
+        if seed is not None:
+            self._rng = np.random.default_rng(seed)
+        else:
+            self._rng = np.random.default_rng()
 
     def generate_holographic_slice(self, slice_index: int) -> np.ndarray:
         """Generate 2D holographic slice with interference patterns.
@@ -108,7 +121,14 @@ class VRigRealityRenderer:
         return coherence
 
     def scan_window_sizes(
-        self, N_min: int = 1, N_max: int = 500, N_step: int = 10
+        self,
+        N_min: int = 1,
+        N_max: int = 500,
+        N_step: int = 10,
+        *,
+        N_range: tuple[int, int] | None = None,
+        n_slices: int | None = None,
+        step: int | None = None,
     ) -> tuple[np.ndarray, np.ndarray]:
         """Scan buffer window sizes and measure coherence.
 
@@ -118,10 +138,17 @@ class VRigRealityRenderer:
             N_min: Minimum buffer size
             N_max: Maximum buffer size
             N_step: Step size for scan
+            N_range: Convenience tuple (min, max) overriding N_min/N_max
+            n_slices: Unused (kept for API compatibility)
+            step: Convenience alias for N_step
 
         Returns:
             Tuple of (N_values, coherence_values)
         """
+        if N_range is not None:
+            N_min, N_max = N_range
+        if step is not None:
+            N_step = step
         N_values = np.arange(N_min, N_max + 1, N_step)
         coherence_values = []
 
@@ -176,6 +203,40 @@ def run_vrig_validation() -> None:
         print(f"\n⚠️  HYPOTHESIS WEAK: {deviation_pct:.1f}% deviation")
     else:
         print(f"\n❌ HYPOTHESIS REJECTED: {deviation_pct:.1f}% deviation")
+
+
+def plot_coherence_scan(
+    N_values: np.ndarray,
+    coherence_values: np.ndarray,
+    *,
+    save_path: str | None = None,
+) -> None:
+    """Plot coherence vs buffer size N with theoretical prediction line.
+
+    Args:
+        N_values: Array of buffer sizes scanned.
+        coherence_values: Corresponding coherence measurements.
+        save_path: If provided, save the figure to this path instead of showing.
+    """
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.plot(N_values, coherence_values, "o-", label="Measured coherence")
+    ax.axvline(TARGET_N, color="r", linestyle="--", label=f"Target N = {TARGET_N:.1f}")
+    ax.set_xlabel("Buffer size N")
+    ax.set_ylabel("Coherence")
+    ax.set_title("v_RIG Coherence Scan")
+    ax.legend()
+    ax.grid(True, alpha=0.3)
+
+    if save_path:
+        from pathlib import Path
+
+        Path(save_path).parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(save_path, dpi=150, bbox_inches="tight")
+        plt.close(fig)
+    else:
+        plt.show()
 
 
 if __name__ == "__main__":
