@@ -561,6 +561,112 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
             },
         }
 
+    # ------------------------------------------------------------------
+    # Category inference from docs/ subdirectory
+    # ------------------------------------------------------------------
+
+    _CATEGORY_MAP = {
+        "science": "science",
+        "narrative": "narrative",
+        "xai_collab": "xai_collab",
+        "AFET": "afet_intake",
+        "emergence": "science",
+        "roadmap": "narrative",
+    }
+
+    def _infer_category(self, relative_name: str) -> str:
+        """Infer docs category from the first path segment."""
+        first_segment = relative_name.split("/")[0] if "/" in relative_name else ""
+        return self._CATEGORY_MAP.get(first_segment, "science")
+
+    def sync_docs_entries(self) -> dict:
+        """Add skeleton entries for docs files missing from the index.
+
+        Updates both ``docs_index.yaml`` and ``docs_index.json`` with minimal
+        entries (status=uncurated) so the listed count matches the filesystem.
+        Removes orphan entries whose files no longer exist.
+        """
+        directory = self.base_path / "docs"
+        files = self._collect_files(
+            directory,
+            patterns=["*.md"],
+            recursive=True,
+            exclude_names={"docs_index.md"},
+            use_relative=True,
+        )
+
+        index_yaml = directory / "docs_index.yaml"
+        index_json = directory / "docs_index.json"
+
+        yaml_data = self._load_yaml_or_empty(index_yaml)
+        with open(index_json, encoding="utf-8") as f:
+            json_data = json.load(f)
+
+        existing_docs = yaml_data.get("markdown_docs") or []
+        listed_set = {
+            entry.get("name") for entry in existing_docs if isinstance(entry, dict) and entry.get("name")
+        }
+
+        missing = sorted(files - listed_set)
+        orphans = sorted(listed_set - files)
+
+        if not missing and not orphans:
+            print("   ✅ docs-index entries already in sync.")
+            return {"added": 0, "removed": 0}
+
+        # Remove orphan entries
+        if orphans:
+            orphan_set = set(orphans)
+            existing_docs = [e for e in existing_docs if e.get("name") not in orphan_set]
+            print(f"   🗑  Removed {len(orphans)} orphan entries: {', '.join(orphans[:5])}{'...' if len(orphans) > 5 else ''}")
+
+        # Generate skeleton entries for missing files
+        max_id = 0
+        for entry in existing_docs:
+            eid = entry.get("id", "")
+            if eid.startswith("docs-auto-"):
+                try:
+                    max_id = max(max_id, int(eid.split("-")[-1]))
+                except ValueError:
+                    pass
+
+        new_entries = []
+        for i, name in enumerate(missing, start=max_id + 1):
+            filepath = directory / name
+            size_kb = round(filepath.stat().st_size / 1024, 1) if filepath.exists() else 0.0
+            category = self._infer_category(name)
+            new_entries.append({
+                "id": f"docs-auto-{i:04d}",
+                "name": name,
+                "category": category,
+                "type": "document",
+                "status": "uncurated",
+                "relevance": "medium",
+                "size_kb": size_kb,
+                "keywords": [],
+                "description": "",
+                "path": f"docs/{name}",
+            })
+
+        all_docs = existing_docs + new_entries
+
+        if not self.dry_run:
+            # Update YAML
+            yaml_data["markdown_docs"] = all_docs
+            with open(index_yaml, "w", encoding="utf-8") as f:
+                yaml.dump(yaml_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+
+            # Update JSON
+            json_data["markdown_docs"] = all_docs
+            with open(index_json, "w", encoding="utf-8") as f:
+                json.dump(json_data, f, ensure_ascii=False, indent=2)
+
+            print(f"   ✅ Added {len(new_entries)} skeleton entries ({len(all_docs)} total).")
+        else:
+            print(f"   [dry-run] Would add {len(new_entries)} skeleton entries ({len(all_docs)} total).")
+
+        return {"added": len(new_entries), "removed": len(orphans), "total": len(all_docs)}
+
     def _recount_analysis(self, timestamp: str) -> dict:
         directory = self.base_path / "analysis"
         py_files = self._collect_files(
@@ -940,10 +1046,15 @@ def main():
         nargs="*",
         help="Specific indices to recount (default: all supported)",
     )
+    parser.add_argument(
+        "--sync-entries",
+        action="store_true",
+        help="Sync docs-index entries: add skeletons for missing files, remove orphans",
+    )
 
     args = parser.parse_args()
 
-    if not args.sigillin and not args.scan_all and not args.recount:
+    if not args.sigillin and not args.scan_all and not args.recount and not args.sync_entries:
         parser.print_help()
         sys.exit(1)
 
@@ -959,6 +1070,9 @@ def main():
 
     if args.recount:
         archiver.recount_indices(targets=args.recount_targets)
+
+    if args.sync_entries:
+        archiver.sync_docs_entries()
 
     if args.sigillin:
         archiver.archive_sigillin(args.sigillin)

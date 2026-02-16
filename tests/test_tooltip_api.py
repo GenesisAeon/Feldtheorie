@@ -8,6 +8,8 @@ import sys
 from pathlib import Path
 
 import pytest
+
+pytest.importorskip("fastapi", reason="fastapi required: pip install feldtheorie[api]")
 from fastapi.testclient import TestClient
 
 # Add project root to path

@@ -2,7 +2,8 @@
 
 .PHONY: install lint format test typecheck build batch planetary preset-guard release dist-zenodo clean \
         install-ocf ingest-icon ingest-radar test-pipelines clean-cache run-meta-regression run-sonification \
-        validate aggregate plots reproduce validate-trilayer crep-guard crep-guard-strict analyze-aletheia-phase4 docs-index
+        validate aggregate plots reproduce validate-trilayer crep-guard crep-guard-strict analyze-aletheia-phase4 \
+        docs-index docs-index-sync test-v9 doctor
 
 install:
 	python -m pip install --upgrade pip
@@ -36,6 +37,17 @@ docs-index:
 	@echo "Refreshing docs index parity snapshot..."
 	@python scripts/archive_sigillin.py --recount --recount-targets docs --dry-run
 	@echo "✅ docs-index check complete"
+
+docs-index-sync:
+	@echo "Syncing docs-index entries to match filesystem..."
+	@python scripts/archive_sigillin.py --sync-entries
+	@python scripts/archive_sigillin.py --recount --recount-targets docs
+	@echo "✅ docs-index sync complete"
+
+test-v9:
+	@echo "Running v9_alpha tests..."
+	@cd v9_alpha && python -m pytest -q
+	@echo "✅ v9_alpha tests complete"
 
 release: lint test typecheck crep-guard build
 	@echo "ΔAIC guards aligned; CREP/τ* safety verified; release bundle ready."
@@ -162,3 +174,36 @@ validate-type6:
 	@echo "🔍 Validating Type-VI governance artifacts..."
 	@$(PYTHON) -m tools.crep_guard --check-type6-trilayer --threshold 0.7 --tau-default 0.1
 	@echo "✅ Type-VI validation complete (CREP threshold 0.7, τ*=0.1·|Θ-R|)"
+
+# ============================================================================
+# Developer Health Check
+# ============================================================================
+
+doctor:
+	@echo "🩺 Feldtheorie Environment Doctor"
+	@echo "================================="
+	@echo ""
+	@echo "1. Python environment"
+	@python3 --version
+	@python -c "import feldtheorie; print('   feldtheorie package: installed')" 2>/dev/null || python3 -c "import feldtheorie; print('   feldtheorie package: installed')" 2>/dev/null || echo "   ⚠  feldtheorie package: NOT installed (run make install)"
+	@echo ""
+	@echo "2. Core dependencies"
+	@python3 -c "import numpy; print(f'   numpy {numpy.__version__}')" 2>/dev/null || echo "   ❌ numpy: MISSING"
+	@python3 -c "import scipy; print(f'   scipy {scipy.__version__}')" 2>/dev/null || echo "   ❌ scipy: MISSING"
+	@python3 -c "import pandas; print(f'   pandas {pandas.__version__}')" 2>/dev/null || echo "   ❌ pandas: MISSING"
+	@python3 -c "import yaml; print(f'   pyyaml {yaml.__version__}')" 2>/dev/null || echo "   ❌ pyyaml: MISSING"
+	@echo ""
+	@echo "3. Optional dependencies"
+	@python3 -c "import fastapi; print(f'   fastapi {fastapi.__version__}')" 2>/dev/null || echo "   ⚠  fastapi: not installed (pip install -e \".[api]\")"
+	@python3 -c "import streamlit; print(f'   streamlit {streamlit.__version__}')" 2>/dev/null || echo "   ⚠  streamlit: not installed"
+	@echo ""
+	@echo "4. Test collection"
+	@python3 -m pytest --collect-only -q 2>&1 | tail -1
+	@echo ""
+	@echo "5. Docs-index parity"
+	@python3 scripts/archive_sigillin.py --recount --recount-targets docs --dry-run 2>&1 | grep -E "Filesystem|Listed|✅"
+	@echo ""
+	@echo "6. Trilayer sync"
+	@python3 scripts/sigillin_sync.py report 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); m=d['meta']; print(f'   Trilayers: {m[\"counts\"][\"total\"]}, gaps: {m[\"counts\"][\"with_gaps\"]}')"
+	@echo ""
+	@echo "🩺 Doctor complete."
