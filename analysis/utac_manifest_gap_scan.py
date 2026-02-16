@@ -60,6 +60,33 @@ def _collect_missing_components(components: Sequence[Mapping[str, Any]]) -> list
     return missing
 
 
+def _collect_declared_actual_drift(
+    components: Sequence[Mapping[str, Any]],
+) -> list[dict[str, Any]]:
+    """Return components where declared and observed filesystem status diverge."""
+
+    drift: list[dict[str, Any]] = []
+    for comp in components:
+        path = Path(comp.get("path", ""))
+        declared_exists = comp.get("declared_exists")
+        if declared_exists is None:
+            # Older manifests may not encode declaration status.
+            continue
+
+        observed_exists = _ensure_exists(path)
+        if bool(declared_exists) != observed_exists:
+            drift.append(
+                {
+                    "name": comp.get("name") or path.name,
+                    "path": str(path),
+                    "kind": comp.get("kind", "unknown"),
+                    "declared_exists": bool(declared_exists),
+                    "observed_exists": observed_exists,
+                }
+            )
+    return drift
+
+
 def _collect_target_gaps(targets: Iterable[Mapping[str, Any]]) -> list[dict[str, Any]]:
     """Return a list with every missing target and expected output."""
 
@@ -108,11 +135,16 @@ def scan_manifest(
 
     dataset_entries: list[dict[str, Any]] = []
     total_missing_components = 0
+    declared_actual_drift: list[dict[str, Any]] = []
 
     for dataset in manifest_data.get("datasets", []):
         components = dataset.get("components", [])
         missing_components = _collect_missing_components(components)
+        dataset_drift = _collect_declared_actual_drift(components)
         total_missing_components += len(missing_components)
+        declared_actual_drift.extend(
+            {"dataset_id": dataset.get("id"), **drift_entry} for drift_entry in dataset_drift
+        )
 
         observed_ratio = 0.0
         if components:
@@ -161,12 +193,14 @@ def scan_manifest(
             "documentation_gaps": len(doc_gaps),
             "sigillin_gaps": len(sigillin_gaps),
             "simulator_gaps": len(simulator_gaps),
+            "declared_actual_drift_count": len(declared_actual_drift),
         },
         "gaps": {
             "analysis": analysis_gaps,
             "documentation": doc_gaps,
             "sigillin": sigillin_gaps,
             "simulator": simulator_gaps,
+            "declared_actual_drift": declared_actual_drift,
         },
     }
 
