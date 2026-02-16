@@ -2,8 +2,8 @@
 
 > **Purpose:** Visual guide to the repository structure, information flows, and system interactions.
 
-**Version:** 1.0
-**Updated:** 2025-11-10
+**Version:** 2.0
+**Updated:** 2026-02-16
 **Audience:** Developers, contributors, architects
 
 ---
@@ -102,7 +102,9 @@ seed/
 
 **Synchronization Check:**
 ```bash
-python scripts/sigillin_sync.py report --roots seed/
+python scripts/sigillin_sync.py report --profile metaquest  # default: Metaquest roots
+python scripts/sigillin_sync.py report --profile full        # all Sigillin roots
+python scripts/sigillin_sync.py report --roots seed/         # custom roots
 # Output: gaps: 0 → ✅ Synchronized
 ```
 
@@ -218,11 +220,11 @@ python scripts/sigillin_sync.py report --roots seed/
 │                       ...                                    │
 │                        │                                     │
 │  ┌──────────────────────────────────────────────────────┐   │
-│  │  Entry pr-draft-0113 (latest as of 2025-11-10)      │   │
+│  │  Entry pr-draft-01XX (latest)                        │   │
 │  │  └─ ...                                              │   │
 │  └──────────────────────────────────────────────────────┘   │
 │                                                              │
-│  Total: 119 entries                                          │
+│  Total: 119+ entries (growing)                               │
 │  Function: Git log + Changelog + Project journal            │
 │  Enforced by: .github/workflows/codex-guard.yml             │
 └──────────────────────────────────────────────────────────────┘
@@ -265,16 +267,19 @@ Feldtheorie/
 │       ├── beta_estimates.csv
 │       └── domain_covariates.csv
 │
-├── tests/                 ← 290 pytest tests
+├── tests/                 ← 567+ pytest tests (100% pass rate)
 │   ├── test_membrane_solver.py
 │   ├── test_llm_beta_extractor.py
-│   ├── test_sigillin_sync.py (planned)
+│   ├── test_sigillin_sync.py
 │   └── ...
 │
 ├── scripts/               ← Automation & utilities
 │   ├── reproduce_beta.py               (Reproduce fits)
-│   ├── sigillin_sync.py                (Check trilayer sync)
+│   ├── sigillin_sync.py                (Check trilayer sync, --profile metaquest|full)
 │   ├── archive_sigillin.py             (Archive management)
+│   ├── update_version.py               (Version sync from VERSION.yaml)
+│   ├── update_badges.py                (README test badge automation)
+│   ├── doctor_json.py                  (Machine-readable health check)
 │   └── crep_parser.py                  (CREP validation)
 │
 ├── seed/                  ← Semantic memory
@@ -286,7 +291,9 @@ Feldtheorie/
 │
 ├── docs/                  ← Documentation
 │   ├── science/                     (Research, methods, guides)
-│   │   ├── utac_status_alignment_v1.2.md   (Status matrix)
+│   │   ├── utac_status_alignment_v1.2.md   (Status matrix — full inventory)
+│   │   ├── utac_status_snapshot.md         (Current state — start here)
+│   │   ├── utac_status_audit_log.md        (Chronological audit trail)
 │   │   ├── field_type_classification_v1.1.md
 │   │   └── ...
 │   └── narrative/                   (Roadmaps, Manifeste, Paritätsbriefe)
@@ -294,12 +301,15 @@ Feldtheorie/
 │       ├── utac_activation_backlog.md      (Activation backlog)
 │       └── ...
 │
-├── .github/workflows/     ← CI/CD
+├── .github/workflows/     ← CI/CD (16 workflows)
 │   ├── ci.yml                          (Main CI)
 │   ├── tests.yml                       (Test suite)
 │   ├── sigillin-health.yml             (Trilayer checks)
-│   └── codex-guard.yml                 (Codex enforcement)
+│   ├── codex-guard.yml                 (Codex enforcement)
+│   ├── doc-freshness-guard.yml         (Architecture + version freshness)
+│   └── ...                             (+ 11 more specialised guards)
 │
+├── VERSION.yaml           ← Single source of truth for version strings
 ├── QUICKSTART.md          ← 5-minute onboarding
 ├── AGENTS.md              ← AI agent charter (poetic)
 ├── AGENTS_PLAIN.md        ← AI agent charter (plain)
@@ -629,8 +639,8 @@ Sees codex ID → ✅ Both sides know same state
 │  │  .github/workflows/tests.yml (Enhanced Tests)              │ │
 │  │  ├─ Create venv                                            │ │
 │  │  ├─ Install requirements.txt                              │ │
-│  │  ├─ pytest tests/ -v --cov (290 tests)                    │ │
-│  │  └─ Check coverage threshold (≥29%)                       │ │
+│  │  ├─ pytest tests/ -v --cov (567+ tests)                   │ │
+│  │  └─ Check coverage threshold (≥23%, target 50%+)          │ │
 │  └────────────────────────────────────────────────────────────┘ │
 │           │                                                      │
 │           ▼                                                      │
@@ -790,11 +800,11 @@ Sees codex ID → ✅ Both sides know same state
 │  ├─ ζ(R) damped (automation reduces manual work)                │
 │  └─ Action: Release, DOI minting, publication                   │
 │                                                                  │
-│  Current State (2025-11-10):                                     │
-│  ├─ UTAC v1.1: σ ≈ 0.95 (near-complete, DOI ready)             │
-│  ├─ Documentation: σ ≈ 0.70 (improved, more needed)             │
-│  ├─ Automation: σ ≈ 0.60 (CI in place, coverage needs work)    │
-│  └─ Community: σ ≈ 0.20 (nascent, needs growth)                 │
+│  Current State (2026-02-16):                                     │
+│  ├─ UTAC v2.0: σ ≈ 0.97 (DOI minted, 78 systems validated)    │
+│  ├─ Documentation: σ ≈ 0.80 (UTAC split, version sync active)   │
+│  ├─ Automation: σ ≈ 0.75 (16 CI workflows, doctor-json, drift)  │
+│  └─ Community: σ ≈ 0.25 (growing, Zenodo DOI published)         │
 │                                                                  │
 └──────────────────────────────────────────────────────────────────┘
 ```
@@ -828,11 +838,14 @@ Every claim requires ΔAIC ≥ 10 vs null models:
 - **Documented:** In every analysis result JSON
 
 ### 5. **Automation with Guards**
-CI enforces quality gates:
-- **Tests:** 290 pytest tests must pass
-- **Trilayer:** sigillin_sync.py checks gaps
+CI enforces quality gates (16 workflows):
+- **Tests:** 567+ pytest tests must pass (100% pass rate)
+- **Trilayer:** sigillin_sync.py checks gaps (--profile metaquest|full)
 - **Codex:** codex-guard.yml checks updates
-- **Coverage:** Minimum 29% (target: 50%+)
+- **Version:** update_version.py ensures VERSION.yaml ↔ pyproject ↔ README consistency
+- **Freshness:** doc-freshness-guard.yml warns when ARCHITECTURE.md is stale
+- **Drift:** status-drift guard checks UTAC readiness alignment
+- **Coverage:** 23% (target: 50%+)
 
 ---
 
@@ -856,7 +869,7 @@ CI enforces quality gates:
 **Priority reads:**
 1. `AGENTS.md` or `AGENTS_PLAIN.md` — Your charter
 2. `seed/utf-living-glossary.md` — Vocabulary (poetisch ↔ technisch)
-3. `docs/utac_status_alignment_v1.2.md` — Current state
+3. `docs/science/utac_status_snapshot.md` — Current operational state
 4. `seed/codexfeedback.md` — Recent history (last 10 entries)
 
 **Working rules:**
@@ -1446,24 +1459,33 @@ For full glossary, see: `seed/utf-living-glossary.md`
    - Shadow alarm testing
    - Codex guard logic testing
 
-2. **Telemetry Dashboard**
-   - Aggregate metrics from all sources
-   - Real-time sync status
-   - HTML dashboard or JSON API
+2. **Statusboard (CLI/HTML)**
+   - `make doctor-json` now provides machine-readable diagnostics
+   - Next: consolidated dashboard for R, Θ, β, ζ, test trend, index parity, last Codex ID
+   - HTML rendering of `doctor_json.py` output
 
-3. **Automated Index Updates**
+3. **Release-Kanäle sauber trennen**
+   - "Research stream" (narrative v10.2 / v12) vs "Package stream" (SemVer 5.x)
+   - VERSION.yaml already captures both — next step: formal release contract
+
+4. **Evidence Registry**
+   - Automated Nullmodell-/ΔAIC-/CI-Artefakt links per Claimsatz
+   - Strengthens falsifiability net
+
+5. **Automated Index Updates**
    - CI hook: Update indices on file additions
    - Eliminate manual sync burden
 
-4. **Community Portal**
+6. **Community Portal**
    - GitHub Discussions activated
    - Contributor onboarding wizard
    - Interactive simulator public instance
 
 ---
 
-**Version:** 1.0
+**Version:** 2.0
 **Created:** 2025-11-10
+**Updated:** 2026-02-16
 **Maintainer:** Johann Römer + Community
 
 **Feedback?** → [GitHub Issues](https://github.com/GenesisAeon/Feldtheorie/issues)

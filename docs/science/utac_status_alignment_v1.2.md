@@ -1,5 +1,10 @@
 # 🌐 UTAC Status & Implementation Matrix v1.2-pre
 
+> **Navigation:**
+> - **[Current Snapshot](utac_status_snapshot.md)** — live operational state (start here)
+> - **[Audit Log](utac_status_audit_log.md)** — chronological audit trail (append-only)
+> - **This file** — full inventory, implementation map, and activation gaps
+
 > σ(β(R-Θ)) now hovers in the steep flank: the repository membrane is primed, but the next infusion of order and meaning has to be tuned so that ζ(R) keeps the resonance disciplined.
 
 ---

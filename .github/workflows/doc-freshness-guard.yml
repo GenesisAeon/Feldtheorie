@@ -1,0 +1,45 @@
+name: doc-freshness-guard
+
+on:
+  push:
+    paths:
+      - 'scripts/**'
+      - 'models/**'
+      - 'analysis/**'
+      - 'docs/science/**'
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'models/**'
+      - 'analysis/**'
+      - 'docs/science/**'
+
+jobs:
+  check-doc-freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Check ARCHITECTURE.md freshness
+        run: |
+          MAX_AGE_DAYS=90
+
+          # Get last modification date of ARCHITECTURE.md
+          ARCH_DATE=$(git log -1 --format="%at" -- ARCHITECTURE.md)
+          NOW=$(date +%s)
+          AGE_DAYS=$(( (NOW - ARCH_DATE) / 86400 ))
+
+          echo "ARCHITECTURE.md last modified: $AGE_DAYS days ago"
+
+          if [ "$AGE_DAYS" -gt "$MAX_AGE_DAYS" ]; then
+            echo "::warning::ARCHITECTURE.md is $AGE_DAYS days old (threshold: $MAX_AGE_DAYS). Consider updating."
+          else
+            echo "ARCHITECTURE.md is fresh ($AGE_DAYS days old, threshold: $MAX_AGE_DAYS)."
+          fi
+
+      - name: Check version consistency
+        run: |
+          pip install pyyaml
+          python scripts/update_version.py --check
