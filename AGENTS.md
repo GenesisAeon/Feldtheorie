@@ -112,7 +112,7 @@ seed/FraktaltagebuchV2/
 ## 4. Quickstart für neue Agenten
 
 1. **Lesen:**
-   - `docs/utac_status_alignment_v1.2.md`
+   - `docs/utac_status_alignment_v1.2.md` (Mirror für Lesen/Legacy-Links; **kanonische Änderungen nur in** `docs/science/utac_status_alignment_v1.2.md`)
    - `seed/Manuskriptfinalisierung und Kampagnenstart.pdf`
    - `seed/bedeutungssigillin/metaquest/metaquest_meaning_index.md`
    - `seed/shadow_sigillin/metaquest/metaquest_shadow_index.md`

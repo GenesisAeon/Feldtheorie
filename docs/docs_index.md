@@ -14,8 +14,10 @@ Nach der Konsens-Entscheidung für eine klare Trennung zwischen **Forschung**, *
 - `docs/xai_collab/` – AFET × xAI Pilotunterlagen, Spezifikationen und Wochenreports.
 - `docs/AFET/` – Rohimporte (PDF/TXT/DOCX/JPG) mit Intake-Register für repo-konforme Kuration.
 
-Insgesamt umfasst die aktuelle Navigationslaterne **49 kuratierte Markdown-Dokumente**
-(im Tri-Layer gespiegelt via `docs_index.{yaml,json,md}`).
+Insgesamt umfasst die aktuelle Navigationslaterne **46 kuratierte Markdown-Dokumente**;
+der Dateisystem-Bestand umfasst aktuell **174 Markdown-Dateien** (kuratiert + uncurated).
+Die Semantik wird im Tri-Layer über `curated_markdown_docs` vs. `filesystem_markdown_docs` gespiegelt
+(`docs_index.{yaml,json,md}`).
 
 ---
 
