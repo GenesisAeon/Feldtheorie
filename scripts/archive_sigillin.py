@@ -1003,6 +1003,23 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
             json.dump(summary, f, ensure_ascii=False, indent=2)
 
         print(f"\n✅ Recount summary written to {summary_path.relative_to(self.base_path)}")
+        return summary
+
+
+def has_index_parity_drift(summary: dict) -> bool:
+    """Return True when any recount target reports delta/missing/orphan drift."""
+
+    for item in summary.get("indices", []):
+        delta = item.get("delta")
+        missing = item.get("missing_files") or []
+        orphans = item.get("orphan_entries") or []
+
+        if isinstance(delta, int) and delta != 0:
+            return True
+        if missing or orphans:
+            return True
+
+    return False
 
 
 def main():
@@ -1051,6 +1068,11 @@ def main():
         action="store_true",
         help="Sync docs-index entries: add skeletons for missing files, remove orphans",
     )
+    parser.add_argument(
+        "--fail-on-delta",
+        action="store_true",
+        help="Exit with code 2 when recount detects index parity drift (delta/missing/orphans)",
+    )
 
     args = parser.parse_args()
 
@@ -1068,8 +1090,12 @@ def main():
         base_path=base_path,
     )
 
+    recount_summary = None
     if args.recount:
-        archiver.recount_indices(targets=args.recount_targets)
+        recount_summary = archiver.recount_indices(targets=args.recount_targets)
+        if args.fail_on_delta and recount_summary and has_index_parity_drift(recount_summary):
+            print("\n❌ Index parity drift detected (Δindex != 0 or missing/orphan entries present).")
+            sys.exit(2)
 
     if args.sync_entries:
         archiver.sync_docs_entries()

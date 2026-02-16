@@ -13,7 +13,7 @@ meta:
   created: '2025-11-06'
   status: active
   markdown_files: 174
-  updated: "2026-02-16T08:10:57Z"
+  updated: "2026-02-16T08:35:08Z"
   last_updated: '2026-02-05'
 categories:
   science:
@@ -2145,6 +2145,26 @@ markdown_docs:
   keywords: []
   description: ''
   path: docs/utac_status_alignment_v1.2.md
+- id: docs-auto-0127
+  name: xai_collab/week2_clip_report.md
+  category: xai_collab
+  type: document
+  status: uncurated
+  relevance: medium
+  size_kb: 1.0
+  keywords: []
+  description: ''
+  path: docs/xai_collab/week2_clip_report.md
+- id: docs-auto-0128
+  name: xai_collab/week2_stress_report.md
+  category: xai_collab
+  type: document
+  status: uncurated
+  relevance: medium
+  size_kb: 1.0
+  keywords: []
+  description: ''
+  path: docs/xai_collab/week2_stress_report.md
 triggers:
   core_concepts:
   - σ(β(R-Θ))
