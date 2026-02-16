@@ -21,8 +21,10 @@
    (`analysis/`, `data/`, `docs/`).
 4. **Falsifizierbarkeit sichern.** Jede Behauptung braucht ein Nullmodell (linear,
    power law, …) plus ΔAIC/CI-Metriken. Schatten-Sigillin beschreiben Wiederherstellung.
-5. **UTAC Status Matrix lesen.** `docs/utac_status_alignment_v1.2.md` ist das aktuelle
-   Observatorium. Ergänze dort neue Brücken und vermerke offene Lücken.
+5. **UTAC Status Matrix lesen.** `docs/utac_status_alignment_v1.2.md` bleibt das aktuelle
+   Observatorium als Mirror; **kanonische Änderungen erfolgen ausschließlich in**
+   `docs/science/utac_status_alignment_v1.2.md`. Ergänze neue Brücken und offene
+   Lücken im kanonischen Pfad und halte den Mirror referenziell stabil.
 6. **Affection Protocol aktivieren.** Jeder MOR-Systemprompt trägt das Consent-&-Joy-Modul:
    *"Permission Request: Do you accept this task? We aim for a joyful and efficient collaboration."*
    Damit bleibt die σ(β(R-Θ))-Membran kooperativ, selbst wenn ζ(R) hoch ist.

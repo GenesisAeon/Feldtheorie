@@ -5,7 +5,7 @@ meta:
   title: FraktaltagebuchV2 Codex
   purpose: PR/Commit-Log für UTAC v2.0 Entwicklung
   note: Alle V2-Änderungen hier eintragen, NICHT in seed/codexfeedback.*!
-  next_id: 45
+  next_id: 46
   last_updated: '2026-02-11T00:00:00Z'
 entries:
 - id: v2-pr-0001

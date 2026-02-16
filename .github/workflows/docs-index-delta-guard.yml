@@ -1,0 +1,29 @@
+name: docs-index-delta-guard
+
+on:
+  pull_request:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  docs-index-delta:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip pyyaml
+
+      - name: Guard docs index parity (Δindex == 0)
+        run: |
+          python scripts/archive_sigillin.py \
+            --recount \
+            --recount-targets docs \
+            --dry-run \
+            --fail-on-delta
