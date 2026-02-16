@@ -3,7 +3,7 @@
 .PHONY: install lint format test typecheck build batch planetary preset-guard release dist-zenodo clean \
         install-ocf ingest-icon ingest-radar test-pipelines clean-cache run-meta-regression run-sonification \
         validate aggregate plots reproduce validate-trilayer crep-guard crep-guard-strict analyze-aletheia-phase4 \
-        docs-index docs-index-sync test-v9 doctor
+        docs-index docs-index-sync test-v9 doctor status-drift
 
 install:
 	python -m pip install --upgrade pip
@@ -220,4 +220,10 @@ doctor:
 	@echo "9. Readiness declared/actual parity"
 	@python3 scripts/validation/check_readiness_declared_actual.py
 	@echo ""
+	@echo "10. Status drift score"
+	@python3 scripts/validation/check_status_drift_score.py --max-age-days 30
+	@echo ""
 	@echo "🩺 Doctor complete."
+
+status-drift:
+	@python3 scripts/validation/check_status_drift_score.py --max-age-days 30
