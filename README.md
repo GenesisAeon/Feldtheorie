@@ -1294,15 +1294,19 @@ See: [`docs/tooltip_api.md`](docs/science/tooltip_api.md)
      --out dist/wei_beta.json
    ```
 
-3. **Validate CI-equivalent checks:**
+3. **Bootstrap environment + first healthy run:**
    ```bash
-   make install  # Setup
-   make lint     # ruff + black
-   make test     # pytest
+   make bootstrap  # install + doctor baseline
+   ```
+
+4. **Validate CI-equivalent checks:**
+   ```bash
+   make lint      # ruff + black
+   make test      # pytest
    make typecheck # mypy
    ```
 
-4. **Regenerate manuscript assets:**
+5. **Regenerate manuscript assets:**
    ```bash
    make batch         # Run all UTAC fits
    make planetary     # Climate tipping elements

@@ -1,6 +1,6 @@
 # Logistic resonance build choreography
 
-.PHONY: install lint format test typecheck build batch planetary preset-guard release dist-zenodo clean \
+.PHONY: install bootstrap lint format test typecheck build batch planetary preset-guard release dist-zenodo clean \
         install-ocf ingest-icon ingest-radar test-pipelines clean-cache run-meta-regression run-sonification \
         validate aggregate plots reproduce validate-trilayer crep-guard crep-guard-strict analyze-aletheia-phase4 \
         docs-index docs-index-sync test-v9 doctor status-drift
@@ -8,6 +8,10 @@
 install:
 	python -m pip install --upgrade pip
 	python -m pip install -e .[dev]
+
+bootstrap: install
+	@echo "Running onboarding health pass (doctor)..."
+	@$(MAKE) doctor
 
 lint:
 	nox -s lint
@@ -33,7 +37,13 @@ planetary:
 	utf-planetary-summary --output analysis/results/planetary_tipping_elements.json
 
 preset-guard:
-	@command -v utf-preset-guard >/dev/null 2>&1 || { echo "⚠  utf-preset-guard not found. Run 'make install' first."; exit 1; }
+	@command -v utf-preset-guard >/dev/null 2>&1 || { \
+		echo "⚠  utf-preset-guard not found."; \
+		echo "   Expected after editable install: make install"; \
+		echo "   If install already ran, ensure your Python scripts directory is on PATH:"; \
+		echo "   python -m site --user-base"; \
+		exit 1; \
+	}
 	utf-preset-guard
 
 docs-index:
