@@ -53,13 +53,13 @@ comparisons.
 
 4. **Sigillin Ledger Hooks (Pending)**  
    Codex feedback entries must receive Safety-Delay metrics (delay duration,
-   control energy, β-shift) and thread them into `docs/resonance-bridge-map.md`.
+   control energy, β-shift) and thread them into `docs/science/resonance-bridge-map.md`.
    Requires updates after parameter sweeps stabilise.  
    → Update `seed/codexfeedback.*` alongside bridge-map refresh.
 
 5. **Simulator & Docs Integration (Resonant, awaiting telemetry)**
    Safety-Delay preset now lands in `simulator/` and this status brief narrates
-   the bridge. `docs/utac_applications.md` + `docs/resonance-bridge-map.md`
+   the bridge. `docs/utac_applications.md` + `docs/science/resonance-bridge-map.md`
    mirror the preset metrics, and `utf-preset-guard` logs ΔAIC parity for the UI
    configuration. Remaining work: capture hosted UI telemetry once the preset is
    deployed and elevate the guard into CI so drift alerts stay audible.
