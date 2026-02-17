@@ -1,11 +1,11 @@
 # Test Suite Report - V6
 
-**Datum:** 2026-02-16
+**Datum:** 2026-02-17
 **Branch:** main
 
 ## Zusammenfassung
 
-- ✅ **1275 Tests eingesammelt** (`pytest --collect-only -q`)
+- ✅ **1224 Tests eingesammelt** (`pytest --collect-only -q`)
 - ✅ **57 v9_alpha Tests eingesammelt** (`cd v9_alpha && pytest --collect-only -q`)
 - ✅ **Readiness declared/actual parity stabil** (0 Mismatches)
 - ✅ **Status-Drift-Gate erfüllt** (`status_drift_score=0`)

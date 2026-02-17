@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "generated_at": "2026-02-17T07:28:29.765744+00:00",
+    "generator": "scripts/generate_status_snapshot.py"
+  },
+  "versions": {
+    "package_version": "5.0.0",
+    "release_stream": "v10.2 Platinum",
+    "stable_version": "6.0.0",
+    "alpha_version": "9.0.0-alpha"
+  },
+  "tests": {
+    "main_collected": 1224,
+    "v9_alpha_collected": 57,
+    "total_collected": 1281
+  },
+  "trilayer": {
+    "total": 17,
+    "with_gaps": 0
+  }
+}
