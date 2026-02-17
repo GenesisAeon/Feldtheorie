@@ -4,7 +4,8 @@
         install-ocf ingest-icon ingest-radar test-pipelines clean-cache run-meta-regression run-sonification \
         validate aggregate plots reproduce validate-trilayer crep-guard crep-guard-strict analyze-aletheia-phase4 \
         docs-index docs-index-sync test-v9 doctor doctor-json status-drift \
-        health-contract check-claims
+        health-contract check-claims \
+        snapshot sync-docs validate-claims-live
 
 install:
 	python -m pip install --upgrade pip
@@ -255,3 +256,23 @@ check-claims:
 	@echo "Checking claim-to-evidence trace..."
 	@$(PYTHON) scripts/check_claim_evidence.py
 	@echo "Claim-to-evidence check complete."
+
+# ============================================================================
+# Status Snapshot & Doc Synchronisation (P0 Consistency Pipeline)
+# Single Source of Truth: status_snapshot.json
+# ============================================================================
+
+snapshot:
+	@echo "Generating status_snapshot.json (Single Source of Truth)..."
+	@$(PYTHON) scripts/generate_status_snapshot.py
+	@echo "Snapshot ready."
+
+sync-docs: snapshot
+	@echo "Syncing top-level docs from snapshot..."
+	@$(PYTHON) scripts/sync_docs_from_snapshot.py --apply
+	@echo "Doc sync complete."
+
+validate-claims-live:
+	@echo "Validating doc claims against live data..."
+	@$(PYTHON) scripts/validate_doc_claims.py
+	@echo "Claim validation complete."
