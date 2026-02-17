@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Feldtheorie Field Health Contract",
+  "description": "Defines the minimum criteria a release must satisfy. Validated by scripts/check_field_health.py against live repository state.",
+  "type": "object",
+  "required": [
+    "tests",
+    "trilayer_sync",
+    "version_sync",
+    "docs_freshness"
+  ],
+  "properties": {
+    "tests": {
+      "type": "object",
+      "description": "Test suite health",
+      "required": ["min_count", "pass_rate"],
+      "properties": {
+        "min_count": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Minimum number of collected tests"
+        },
+        "pass_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Required pass rate (1.0 = 100%)"
+        }
+      }
+    },
+    "trilayer_sync": {
+      "type": "object",
+      "description": "Trilayer YAML/JSON/MD parity",
+      "required": ["max_gaps"],
+      "properties": {
+        "max_gaps": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Maximum allowed trilayer gaps (0 = perfect parity)"
+        }
+      }
+    },
+    "version_sync": {
+      "type": "object",
+      "description": "VERSION.yaml ↔ pyproject.toml ↔ README consistency",
+      "required": ["must_match"],
+      "properties": {
+        "must_match": {
+          "type": "boolean",
+          "description": "All version references must agree"
+        }
+      }
+    },
+    "docs_freshness": {
+      "type": "object",
+      "description": "Core documentation staleness threshold",
+      "required": ["max_age_days", "tracked_files"],
+      "properties": {
+        "max_age_days": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Maximum days since last update"
+        },
+        "tracked_files": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Files subject to freshness check"
+        }
+      }
+    },
+    "claim_evidence": {
+      "type": "object",
+      "description": "Claim-to-evidence trace completeness",
+      "properties": {
+        "max_missing_artifacts": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Maximum claims without evidence artifacts"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
