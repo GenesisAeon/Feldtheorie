@@ -1,9 +1,8 @@
-name: Resonance CI
+name: Resonance CI (conda)
 
+# Manual-only: lint + test + typecheck now run via ci.yml (pip-based).
+# Keep this workflow for conda-specific validation when needed.
 on:
-  push:
-    branches: ["main"]
-  pull_request:
   workflow_dispatch:
 
 jobs:
