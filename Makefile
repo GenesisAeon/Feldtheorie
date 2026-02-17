@@ -3,7 +3,8 @@
 .PHONY: install bootstrap lint format test typecheck build batch planetary preset-guard release dist-zenodo clean \
         install-ocf ingest-icon ingest-radar test-pipelines clean-cache run-meta-regression run-sonification \
         validate aggregate plots reproduce validate-trilayer crep-guard crep-guard-strict analyze-aletheia-phase4 \
-        docs-index docs-index-sync test-v9 doctor doctor-json status-drift
+        docs-index docs-index-sync test-v9 doctor doctor-json status-drift \
+        health-contract check-claims
 
 install:
 	python -m pip install --upgrade pip
@@ -240,3 +241,17 @@ doctor-json:
 
 status-drift:
 	@python3 scripts/validation/check_status_drift_score.py --max-age-days 30
+
+# ============================================================================
+# Field Health Contract & Claim-to-Evidence Trace
+# ============================================================================
+
+health-contract:
+	@echo "Validating Field Health Contract..."
+	@$(PYTHON) scripts/check_field_health.py
+	@echo "Field Health Contract check complete."
+
+check-claims:
+	@echo "Checking claim-to-evidence trace..."
+	@$(PYTHON) scripts/check_claim_evidence.py
+	@echo "Claim-to-evidence check complete."

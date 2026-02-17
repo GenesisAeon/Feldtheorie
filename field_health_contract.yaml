@@ -1,0 +1,27 @@
+# Feldtheorie Field Health Contract
+#
+# Minimum criteria for release readiness.
+# Validated by: python scripts/check_field_health.py
+# Schema:       schemas/field_health_contract.schema.json
+#
+# The contract encodes the logistic membrane expectation:
+#   σ(β(R-Θ)) must be ≥ Θ for release, meaning R ≥ Θ across all checks.
+
+tests:
+  min_count: 500
+  pass_rate: 1.0
+
+trilayer_sync:
+  max_gaps: 0
+
+version_sync:
+  must_match: true
+
+docs_freshness:
+  max_age_days: 90
+  tracked_files:
+    - ARCHITECTURE.md
+    - README.md
+
+claim_evidence:
+  max_missing_artifacts: 0

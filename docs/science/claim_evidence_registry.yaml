@@ -1,0 +1,86 @@
+# Claim-to-Evidence Registry
+#
+# Maps each top-level scientific claim to the machine-checkable artifact(s)
+# that support it.  Validated by: python scripts/check_claim_evidence.py
+#
+# Structure:
+#   claim_id   — stable identifier (never reused)
+#   claim      — human-readable statement
+#   source     — file where the claim is made
+#   artifacts  — list of paths (relative to repo root) that constitute evidence
+#   status     — supported | pending | falsified
+#
+# Governance: every PR that adds or modifies a claim must add an entry here.
+# The CI workflow narrative-science-sync.yml verifies artifact existence.
+
+meta:
+  version: "1.0.0"
+  updated: "2026-02-17"
+  schema: "claim_id + claim + source + artifacts[] + status"
+
+claims:
+  - claim_id: H1-beta-universality
+    claim: "Emergent transitions cluster within beta in [3.6, 4.8] after normalisation."
+    source: docs/science/utac_falsifiability.md
+    artifacts:
+      - analysis/results/beta_meta_regression_v2_latest.json
+      - analysis/results/beta_meta_regression_summary.json
+    status: supported
+
+  - claim_id: H2-logistic-superiority
+    claim: "The logistic response outperforms smooth null models with ΔAIC >= 10."
+    source: docs/science/utac_falsifiability.md
+    artifacts:
+      - analysis/results/planetary_tipping_elements_validated.json
+      - analysis/results/beta_meta_regression_v2_latest.json
+    status: supported
+
+  - claim_id: H3-field-coupling
+    claim: "The coupling term M[psi,phi] produces measurable shifts in Theta or beta."
+    source: docs/science/utac_falsifiability.md
+    artifacts:
+      - analysis/results/adaptive_membrane_phase_scan.json
+      - analysis/results/adaptive_theta_plasticity.json
+    status: supported
+
+  - claim_id: C1-78-datasets
+    claim: "78 beta-values spanning 5 scientific domains."
+    source: README.md
+    artifacts:
+      - analysis/results/beta_meta_regression_v2_latest.json
+    status: supported
+
+  - claim_id: C2-anova-universality
+    claim: "ANOVA F(4,73)=185.3, p<1e-20, eta^2=0.91."
+    source: README.md
+    artifacts:
+      - analysis/results/beta_meta_regression_v2_latest.json
+    status: supported
+
+  - claim_id: C3-test-suite
+    claim: "All tests passing at 100% pass rate."
+    source: README.md
+    artifacts:
+      - analysis/reports/utac_v2_readiness.json
+    status: supported
+
+  - claim_id: C4-neuro-ai-bridge
+    claim: "Neuro-AI beta extraction shows field-consistent transition."
+    source: docs/science/utac_status_snapshot.md
+    artifacts:
+      - analysis/results/neuro_ai_beta.json
+    status: supported
+
+  - claim_id: C5-urban-heat-resonance
+    claim: "Urban Heat lantern is resonant with ΔAIC > 20."
+    source: docs/science/utac_status_snapshot.md
+    artifacts:
+      - data/socio_ecology/urban_heat/urban_heat_storage_profiles.metadata.json
+    status: supported
+
+  - claim_id: C6-v-rig-constant
+    claim: "v_RIG = c/(alpha^-1 * Phi) ~ 1352 km/s."
+    source: README.md
+    artifacts:
+      - docs/science/v_rig_validation_matrix.md
+    status: supported

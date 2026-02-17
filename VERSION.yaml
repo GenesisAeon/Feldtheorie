@@ -2,15 +2,21 @@
 # All version references (pyproject.toml, README badges, release metadata)
 # are derived from this file via scripts/update_version.py.
 #
-# Semantic convention:
-#   package_version  — Python package SemVer (pip / PyPI)
-#   release_stream   — Research narrative label (e.g. v10.2 Platinum)
-#   alpha_version    — Next experimental track
-#
 # After editing, run:  python scripts/update_version.py --check
 # or:                  python scripts/update_version.py --apply
+#
+# See docs/release_channels.md for the full channel convention.
 
+# ---------------------------------------------------------------------------
+# Package Channel  — Python package SemVer (pip / PyPI)
+# Governs: pyproject.toml, pip install, Zenodo archive
+# ---------------------------------------------------------------------------
 package_version: "5.0.0"
+
+# ---------------------------------------------------------------------------
+# Research Channel — Narrative release labels for the research programme
+# Governs: README badges, release notes, scientific publications
+# ---------------------------------------------------------------------------
 release_stream: "v10.2 Platinum"
 stable_version: "6.0.0"
 alpha_version: "9.0.0-alpha"
