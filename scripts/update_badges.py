@@ -55,15 +55,17 @@ _BADGE_RE = re.compile(
 )
 _PROSE_RE = re.compile(r"\b(\d+)/\1 tests passing\b")
 _PROSE_TOTAL_RE = re.compile(r"\b(\d+)/\1 passing\b")
+_PROSE_PLAIN_RE = re.compile(r"\b(\d+) passing tests\b")
 
 
 def _update_readme(text: str, count: int) -> str:
     badge_value = f"{count}%2F{count}%20passing"
     text = _BADGE_RE.sub(rf"\g<1>{badge_value}\3", text)
 
-    # Update prose like "567/567 tests passing" and "567/567 passing"
+    # Update prose like "567/567 tests passing", "567/567 passing", "567 passing tests"
     text = _PROSE_RE.sub(f"{count}/{count} tests passing", text)
     text = _PROSE_TOTAL_RE.sub(f"{count}/{count} passing", text)
+    text = _PROSE_PLAIN_RE.sub(f"{count} passing tests", text)
     return text
 
 

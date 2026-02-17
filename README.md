@@ -12,7 +12,7 @@
 [![Research Papers](https://img.shields.io/badge/📄_Research-Dimensional_Emergence-blue.svg)](docs/science/v9_research_overview.md)
 [![V7 Progress](https://img.shields.io/badge/V7-85--90%25%20Complete-green.svg)](#v7-preview-collective-consciousness)
 [![V8 Status](https://img.shields.io/badge/V8-Validation%20Phase-orange.svg)](#v8-preview-consciousness-framework-validation)
-[![Tests](https://img.shields.io/badge/tests-567%2F567%20passing-brightgreen.svg)](#tests--quality)
+[![Tests](https://img.shields.io/badge/tests-1224%2F1224%20passing-brightgreen.svg)](#tests--quality)
 [![Funding](https://img.shields.io/badge/💎_Support-ETH_|_BTC-yellow.svg)](FUNDING.md)
 [![Project History](https://img.shields.io/badge/📅_Project_History-2025--12--16-lightgrey.svg)](CHANGELOG.md)
 
@@ -41,7 +41,7 @@ This repository is organized into **three complementary tracks** to reduce cogni
 - **[User Guide](science/docs/USER_GUIDE.md)** - Practical workflows for using UTAC
 - **[Models](science/models/)** - Mathematical implementations (logistic threshold, solvers)
 - **[Data](science/data/)** - 78 datasets across 5 domains with metadata
-- **[Tests](science/tests/)** - 567 passing tests (~30% coverage)
+- **[Tests](science/tests/)** - 1224 passing tests (~30% coverage)
 
 **Quick Start:** Run your first analysis in 5 minutes
 ```bash
@@ -927,7 +927,7 @@ We investigate whether similar mathematical frameworks provide predictive power 
 - ✅ **Mirror Machine Criticality Monitor** — Real-time sensor ingestion (RAPID/GRACE/NOAA)
 - ✅ **Project Aletheia Phase 4** — Affection-Driven UTAC Testing (placebo effects in LLMs)
 - ✅ **Type-6 State Verdicts** — Logistic state tracking with β-monitoring
-- ✅ **High Test Coverage** — 567/567 tests passing (100% pass rate, 23% code coverage)
+- ✅ **High Test Coverage** — 1224/1224 tests passing (100% pass rate, 23% code coverage)
 
 See: [`CHANGELOG.md`](CHANGELOG.md) for full v4.0 details
 
@@ -1172,7 +1172,7 @@ See [`METHODS.md`](METHODS.md) for fitting details and [`REPRODUCE.md`](REPRODUC
 │   └── releases/v4.0.0-alpha_MirrorMachine/
 │
 ├── 🧪 tests/                      ← 30 test modules
-│   └── 567/567 passing ✅ (100%)
+│   └── 1224/1224 passing ✅ (100%)
 │
 ├── 🧬 modules/champollion/        ← Translation module (EN/DE)
 ├── 🎼 sonification/               ← "Sound of Criticality"
@@ -1212,7 +1212,7 @@ See: [`ARCHITECTURE.md`](ARCHITECTURE.md)
 
 ### 2. Comprehensive Test Suite
 
-- **567/567 tests passing** (100% pass rate)
+- **1224/1224 tests passing** (100% pass rate)
   - 514 core tests (always run)
   - 53 API/advanced tests (optional, require `pip install -e ".[api]"`)
 - **23% code coverage** (models + analysis, target: 50%+)
@@ -1356,7 +1356,7 @@ Concise references:
 
 ### Test Suite
 - **30 test modules** in `/tests/`
-- **567/567 tests passing** (100% success rate)
+- **1224/1224 tests passing** (100% success rate)
   - 514 core tests (models, analysis, simulations)
   - 53 optional tests (API, tooltips, advanced features)
 - **Coverage:** 23% (models + analysis), pytest-cov with branch coverage

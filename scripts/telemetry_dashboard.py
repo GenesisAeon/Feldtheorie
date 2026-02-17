@@ -37,7 +37,21 @@ from datetime import datetime, timezone
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 
+import yaml
+
 BASE_DIR = Path(__file__).resolve().parents[1]
+VERSION_FILE = BASE_DIR / "VERSION.yaml"
+
+
+def _read_package_version() -> str:
+    """Read package version from VERSION.yaml (single source of truth)."""
+    try:
+        with VERSION_FILE.open("r", encoding="utf-8") as fh:
+            data = yaml.safe_load(fh)
+        return data.get("package_version", "unknown")
+    except (OSError, yaml.YAMLError):
+        return "unknown"
+
 
 # Import sigillin_sync for trilayer health
 sys.path.insert(0, str(BASE_DIR))
@@ -197,7 +211,7 @@ def aggregate_telemetry() -> dict[str, object]:
         "meta": {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "repository": "Feldtheorie",
-            "version": "5.0.0",
+            "version": _read_package_version(),
         },
         "health_summary": {
             "overall_status": "healthy",  # Computed below
