@@ -7,10 +7,10 @@
     "version": "2.1.0",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 174,
-    "updated": "2026-02-16T09:51:52Z",
+    "markdown_files": 179,
+    "updated": "2026-02-17T08:05:02Z",
     "last_updated": "2026-02-05",
-    "filesystem_markdown_docs": 174,
+    "filesystem_markdown_docs": 179,
     "curated_markdown_docs": 46
   },
   "categories": {
@@ -2393,6 +2393,66 @@
       "keywords": [],
       "description": "",
       "path": "docs/xai_collab/week2_stress_report.md"
+    },
+    {
+      "id": "docs-auto-0129",
+      "name": "release_channels.md",
+      "category": "science",
+      "type": "document",
+      "status": "uncurated",
+      "relevance": "medium",
+      "size_kb": 3.4,
+      "keywords": [],
+      "description": "",
+      "path": "docs/release_channels.md"
+    },
+    {
+      "id": "docs-auto-0130",
+      "name": "science/utac_status_audit_log.md",
+      "category": "science",
+      "type": "document",
+      "status": "uncurated",
+      "relevance": "medium",
+      "size_kb": 4.0,
+      "keywords": [],
+      "description": "",
+      "path": "docs/science/utac_status_audit_log.md"
+    },
+    {
+      "id": "docs-auto-0131",
+      "name": "science/utac_status_snapshot.md",
+      "category": "science",
+      "type": "document",
+      "status": "uncurated",
+      "relevance": "medium",
+      "size_kb": 2.3,
+      "keywords": [],
+      "description": "",
+      "path": "docs/science/utac_status_snapshot.md"
+    },
+    {
+      "id": "docs-auto-0132",
+      "name": "utac_status_audit_log.md",
+      "category": "science",
+      "type": "document",
+      "status": "uncurated",
+      "relevance": "medium",
+      "size_kb": 4.0,
+      "keywords": [],
+      "description": "",
+      "path": "docs/utac_status_audit_log.md"
+    },
+    {
+      "id": "docs-auto-0133",
+      "name": "utac_status_snapshot.md",
+      "category": "science",
+      "type": "document",
+      "status": "uncurated",
+      "relevance": "medium",
+      "size_kb": 2.3,
+      "keywords": [],
+      "description": "",
+      "path": "docs/utac_status_snapshot.md"
     }
   ],
   "triggers": {

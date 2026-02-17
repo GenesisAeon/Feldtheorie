@@ -390,7 +390,10 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
     def _update_yaml_fields(self, path: Path, replacements: dict) -> dict:
         """Update specific key-value pairs in a YAML file via regex substitution.
 
-        Returns a dictionary with the previous values for reporting."""
+        Returns a dictionary with the previous values for reporting.
+        When ``self.dry_run`` is True the file is **not** written; previous
+        values are still collected so callers can report the delta.
+        """
 
         content = path.read_text(encoding="utf-8")
         previous = {}
@@ -416,7 +419,8 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
 
             content = pattern.sub(rf"\g<1>{replacement_value}", content, count=1)
 
-        path.write_text(content, encoding="utf-8")
+        if not self.dry_run:
+            path.write_text(content, encoding="utf-8")
         return previous
 
     def _collect_files(
@@ -543,8 +547,9 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
         json_data["meta"]["curated_markdown_docs"] = curated_count
         json_data["meta"]["updated"] = timestamp
 
-        with open(index_json, "w", encoding="utf-8") as f:
-            json.dump(json_data, f, ensure_ascii=False, indent=2)
+        if not self.dry_run:
+            with open(index_json, "w", encoding="utf-8") as f:
+                json.dump(json_data, f, ensure_ascii=False, indent=2)
 
         missing_files = sorted(files - listed_set)
         orphan_entries = sorted(listed_set - files)
@@ -734,8 +739,9 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
         json_data["meta"]["subdirectories"] = subdirectories
         json_data["meta"]["updated"] = timestamp
 
-        with open(index_json, "w", encoding="utf-8") as f:
-            json.dump(json_data, f, ensure_ascii=False, indent=2)
+        if not self.dry_run:
+            with open(index_json, "w", encoding="utf-8") as f:
+                json.dump(json_data, f, ensure_ascii=False, indent=2)
 
         missing_files = sorted(files - listed_set)
         orphan_entries = sorted(listed_set - files)
@@ -811,8 +817,9 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
         json_data.setdefault("meta", {})["python_files"] = python_file_count
         json_data["meta"]["updated"] = timestamp
 
-        with open(index_json, "w", encoding="utf-8") as f:
-            json.dump(json_data, f, ensure_ascii=False, indent=2)
+        if not self.dry_run:
+            with open(index_json, "w", encoding="utf-8") as f:
+                json.dump(json_data, f, ensure_ascii=False, indent=2)
 
         missing_files = sorted(files - listed_set)
         orphan_entries = sorted(listed_set - files)
@@ -879,8 +886,9 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
         json_data["meta"]["domains"] = len(domain_dirs)
         json_data["meta"]["updated"] = timestamp
 
-        with open(index_json, "w", encoding="utf-8") as f:
-            json.dump(json_data, f, ensure_ascii=False, indent=2)
+        if not self.dry_run:
+            with open(index_json, "w", encoding="utf-8") as f:
+                json.dump(json_data, f, ensure_ascii=False, indent=2)
 
         self._log_index_delta("data", filesystem_count, None, [], [])
 
@@ -938,8 +946,9 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
         json_data.setdefault("meta", {})["documents_total"] = filesystem_count
         json_data["meta"]["updated"] = timestamp
 
-        with open(index_json, "w", encoding="utf-8") as f:
-            json.dump(json_data, f, ensure_ascii=False, indent=2)
+        if not self.dry_run:
+            with open(index_json, "w", encoding="utf-8") as f:
+                json.dump(json_data, f, ensure_ascii=False, indent=2)
 
         self._log_index_delta("seed", filesystem_count, None, [], [])
 
@@ -990,7 +999,8 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
             raise ValueError(f"Unknown indices for recount: {', '.join(unknown)}")
 
         results_dir = self.base_path / "analysis" / "results"
-        results_dir.mkdir(parents=True, exist_ok=True)
+        if not self.dry_run:
+            results_dir.mkdir(parents=True, exist_ok=True)
 
         for target in requested:
             if target == "docs":
@@ -1008,13 +1018,16 @@ unzip -l archive/sigillin_name_YYYY-MM_archive.zip
 
             summary["indices"].append(info)
 
-        summary_path = (
-            results_dir / f"index_recount_{timestamp.replace(':', '').replace('-', '')}.json"
-        )
-        with open(summary_path, "w", encoding="utf-8") as f:
-            json.dump(summary, f, ensure_ascii=False, indent=2)
+        if not self.dry_run:
+            summary_path = (
+                results_dir / f"index_recount_{timestamp.replace(':', '').replace('-', '')}.json"
+            )
+            with open(summary_path, "w", encoding="utf-8") as f:
+                json.dump(summary, f, ensure_ascii=False, indent=2)
+            print(f"\n✅ Recount summary written to {summary_path.relative_to(self.base_path)}")
+        else:
+            print("\n🔍 [dry-run] Recount complete — no files modified.")
 
-        print(f"\n✅ Recount summary written to {summary_path.relative_to(self.base_path)}")
         return summary
 
 

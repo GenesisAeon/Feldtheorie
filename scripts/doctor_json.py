@@ -74,10 +74,27 @@ def version_sync() -> dict[str, object]:
 
 def docs_index_parity() -> dict[str, object]:
     result = _run(
-        [sys.executable, "scripts/archive_sigillin.py", "--recount", "--recount-targets", "docs", "--dry-run"]
+        [sys.executable, "scripts/archive_sigillin.py", "--recount", "--recount-targets", "docs", "--dry-run", "--fail-on-delta"]
     )
-    ok = "mismatch" not in result.stdout.lower()
-    return {"ok": ok, "details": result.stdout.strip()[:500]}
+    # returncode 2 signals parity drift (delta != 0 or missing/orphan entries)
+    ok = result.returncode == 0
+
+    # Extract concrete delta numbers from output for diagnostics
+    details = result.stdout.strip()[:500]
+    missing: list[str] = []
+    orphans: list[str] = []
+    for line in result.stdout.splitlines():
+        if "Missing in index:" in line:
+            missing = [s.strip() for s in line.split(":", 1)[1].split(",") if s.strip()]
+        elif "Orphan entries:" in line:
+            orphans = [s.strip() for s in line.split(":", 1)[1].split(",") if s.strip()]
+
+    return {
+        "ok": ok,
+        "details": details,
+        "missing_count": len(missing),
+        "orphan_count": len(orphans),
+    }
 
 
 def main() -> int:
