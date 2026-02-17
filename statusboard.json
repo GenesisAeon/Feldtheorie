@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "generated_at": "2026-02-17T16:30:24.259686+00:00",
+    "generator": "scripts/generate_statusboard.py"
+  },
+  "health": "yellow",
+  "versions": {
+    "package_version": "5.0.0",
+    "release_stream": "v10.2 Platinum",
+    "stable_version": "6.0.0",
+    "alpha_version": "9.0.0-alpha"
+  },
+  "membrane": {
+    "readiness": {
+      "R": 1.0,
+      "theta": 0.66,
+      "beta": 4.8,
+      "sigma": 0.8364434345496531
+    },
+    "manifest": {
+      "R": 0.5,
+      "theta": 0.66,
+      "beta": 4.8,
+      "sigma": 0.3169119051378149,
+      "datasets_pending": 4,
+      "components_missing": 10,
+      "scan_date": "2026-08-20T00:00:00Z"
+    }
+  },
+  "tests": {
+    "main_collected": 1224,
+    "v9_alpha_collected": 57,
+    "total_collected": 1281
+  },
+  "trilayer": {
+    "total": 17,
+    "with_gaps": 0
+  },
+  "codex": {
+    "latest_id": "pr-draft-0213",
+    "latest_title": "Experiments Todo Ledger & Index Refresh",
+    "latest_created": "2026-02-04T22:04:06Z",
+    "total_entries": 139
+  }
+}

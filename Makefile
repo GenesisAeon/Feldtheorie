@@ -5,7 +5,7 @@
         validate aggregate plots reproduce validate-trilayer crep-guard crep-guard-strict analyze-aletheia-phase4 \
         docs-index docs-index-sync test-v9 doctor doctor-json status-drift \
         health-contract check-claims \
-        snapshot sync-docs validate-claims-live
+        snapshot sync-docs statusboard validate-claims-live
 
 install:
 	python -m pip install --upgrade pip
@@ -271,6 +271,11 @@ sync-docs: snapshot
 	@echo "Syncing top-level docs from snapshot..."
 	@$(PYTHON) scripts/sync_docs_from_snapshot.py --apply
 	@echo "Doc sync complete."
+
+statusboard: snapshot
+	@echo "Generating statusboard.json (operational dashboard)..."
+	@$(PYTHON) scripts/generate_statusboard.py
+	@echo "Statusboard ready."
 
 validate-claims-live:
 	@echo "Validating doc claims against live data..."

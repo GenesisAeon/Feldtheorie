@@ -56,3 +56,32 @@ jobs:
         run: |
           pip install -e ".[dev]" -q
           python scripts/update_badges.py --check
+
+      - name: Generate statusboard
+        run: python scripts/generate_statusboard.py --output statusboard.json
+
+      - name: Check statusboard health
+        run: |
+          python -c "
+          import json, sys
+          board = json.loads(open('statusboard.json').read())
+          health = board['health']
+          manifest = board['membrane']['manifest']
+          print(f'Statusboard health: {health}')
+          print(f'  Datasets pending: {manifest[\"datasets_pending\"]}')
+          print(f'  Components missing: {manifest[\"components_missing\"]}')
+          print(f'  Trilayer gaps: {board[\"trilayer\"][\"with_gaps\"]}')
+          if health == 'red':
+              print('::error::Statusboard health is RED (trilayer gaps detected)')
+              sys.exit(1)
+          elif health == 'yellow':
+              print('::warning::Statusboard health is YELLOW (manifest gaps remain)')
+          "
+
+      - name: Upload statusboard artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: statusboard
+          path: statusboard.json
+          retention-days: 30
