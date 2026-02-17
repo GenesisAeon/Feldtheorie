@@ -51,9 +51,29 @@ def format(session: nox.Session) -> None:
 def tests(session: nox.Session) -> None:
     """Run the pytest suite so the resonance ledger stays trustworthy."""
 
+    # Known-risk register — tests explicitly excluded from the default run:
+    #
+    #   tests/test_aeon_api_bridge.py
+    #   science/tests/test_aeon_api_bridge.py
+    #     Risk: requires live AEON API endpoint; fails in offline CI.
+    #     Owner: api-bridge subsystem.  Review trigger: API contract change.
+    #
+    #   tests/test_neuro_profile_model.py
+    #     Risk: depends on optional LLM/model weights not bundled in the repo.
+    #     Owner: NeuroProfile track.  Review trigger: model artefacts added.
+    #
+    # Any new ignore MUST be added here with a matching rationale entry.
     _reuse_virtualenv(session)
     session.install(".", ".[dev,api]", "pytest-asyncio>=0.23,<1")
-    session.run("pytest", "tests", "--ignore=tests/test_aeon_api_bridge.py", "--ignore=science/tests/test_aeon_api_bridge.py", "--ignore=tests/test_neuro_profile_model.py", "--maxfail=1", "--disable-warnings")
+    session.run(
+        "pytest",
+        "tests",
+        "--ignore=tests/test_aeon_api_bridge.py",
+        "--ignore=science/tests/test_aeon_api_bridge.py",
+        "--ignore=tests/test_neuro_profile_model.py",
+        "--maxfail=1",
+        "--disable-warnings",
+    )
 
 
 @nox.session(python=DEFAULT_PYTHON)
@@ -81,6 +101,35 @@ def crep_guard(session: nox.Session) -> None:
         "0.7",
         "--tau-default",
         "0.1",
+    )
+
+
+@nox.session(python=DEFAULT_PYTHON)
+def drift_gate(session: nox.Session) -> None:
+    """Block release when declared readiness diverges from observed filesystem truth.
+
+    Runs scripts/validation/check_status_drift_score.py against the latest
+    utac_v2_readiness.json.  Exits non-zero (and therefore fails CI) when the
+    status_drift_score is non-zero, i.e. when any of the following is true:
+
+      - declared vs. actual component existence mismatches > 0
+      - doc-target artifacts listed in the readiness report are missing
+      - readiness report is older than 14 days (stale declared truth)
+      - TEST_REPORT.md is older than 30 days (stale observed truth)
+
+    This implements the "CI Truth Gate" from the P1 backlog:
+    statusboard.json (observed) must be reconcilable with utac_v2_readiness.json
+    (declared) before any release-gate passes.
+    """
+    _reuse_virtualenv(session)
+    session.run(
+        "python",
+        "scripts/validation/check_status_drift_score.py",
+        "--max-age-days",
+        "14",
+        "--max-test-report-age-days",
+        "30",
+        external=True,
     )
 
 

@@ -27,7 +27,7 @@ import argparse
 import csv
 import sys
 from collections.abc import Iterable
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -67,7 +67,7 @@ def append_telemetry_entry(
     notes: str = "",
 ) -> None:
     """Append a telemetry entry to metrics/beta_evolution.csv."""
-    timestamp = datetime.utcnow().isoformat() + "Z"
+    timestamp = datetime.now(timezone.utc).isoformat()
     tau_star = calculate_tau_star(R, theta)
     beta_drift = calculate_beta_drift(beta)
     drift_flag = "HIGH_DRIFT" if beta_drift > 0.1 else ""

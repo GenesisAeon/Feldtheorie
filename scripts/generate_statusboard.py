@@ -176,21 +176,40 @@ def generate_statusboard() -> dict:
     else:
         health = "red"
 
+    # truth_scope vocabulary (machine-readable):
+    #   declared  – self-asserted value from a readiness report; may diverge from filesystem
+    #   observed  – derived from a live filesystem or test-runner scan; ground truth
+    #   historical – archived entries; not indicative of current state
+    #   release-gate – composite verdict derived from declared + observed signals
     return {
         "meta": {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "generator": "scripts/generate_statusboard.py",
+            "truth_scope_vocabulary": {
+                "declared": "self-asserted, may diverge from filesystem",
+                "observed": "live filesystem or test-runner scan",
+                "historical": "archived entries, not current state",
+                "release-gate": "composite verdict derived from declared + observed",
+            },
         },
+        # release-gate: derived from both declared and observed signals below
         "health": health,
+        "health_truth_scope": "release-gate",
+        # declared: VERSION.yaml is edited by hand; not automatically verified
         "versions": versions,
+        "versions_truth_scope": "declared",
         "membrane": {
+            # declared: utac_v2_readiness.json is a self-reported readiness document
             "readiness": {
+                "truth_scope": "declared",
                 "R": readiness.get("R"),
                 "theta": readiness.get("theta"),
                 "beta": readiness.get("beta"),
                 "sigma": sigma_readiness,
             },
+            # observed: manifest gap scan walks the filesystem for actual artifacts
             "manifest": {
+                "truth_scope": "observed",
                 "R": manifest.get("R_manifest"),
                 "theta": manifest.get("theta"),
                 "beta": manifest.get("beta"),
@@ -200,12 +219,16 @@ def generate_statusboard() -> dict:
                 "scan_date": manifest.get("scan_date"),
             },
         },
-        "tests": tests,
+        # observed: collected by pytest dry-run in generate_status_snapshot.py
+        "tests": {**tests, "truth_scope": "observed"},
+        # observed: gaps detected by sigillin_sync check
         "trilayer": {
+            "truth_scope": "observed",
             "total": trilayer.get("total", 0),
             "with_gaps": trilayer_gaps,
         },
-        "codex": codex,
+        # historical: codex entries are appended over time; latest_id ≠ current state
+        "codex": {**codex, "truth_scope": "historical"},
     }
 
 

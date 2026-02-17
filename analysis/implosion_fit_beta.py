@@ -19,7 +19,7 @@ License: AGPL-3.0
 
 import argparse
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
@@ -216,7 +216,7 @@ def run_full_simulation(config: dict) -> dict:
         "metadata": {
             "model": "UTAC_v1.3phi",
             "field_type": "Type-6 Implosive",
-            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "config": config,
         },
         "phi": float(PHI),
