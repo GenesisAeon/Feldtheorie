@@ -34,7 +34,7 @@ import time
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Dict, List, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 class SimulationState(str, Enum):
@@ -57,7 +57,7 @@ class UniverseMetrics:
     particle_count: int = 0
     energy_level: float = 0.0
     complexity_score: float = 0.0
-    timestamp: str = field(default_factory=lambda: datetime.utcnow().isoformat())
+    timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
 
 @dataclass
@@ -133,7 +133,7 @@ class OuroborosEngine:
 
         await self._broadcast_event({
             "type": "simulation_started",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         })
 
     async def pause_simulation(self):

@@ -21,7 +21,7 @@ import json
 import re
 import sys
 from collections.abc import Iterable
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
@@ -87,7 +87,7 @@ def _append_log_entry(
 
     log_path.parent.mkdir(parents=True, exist_ok=True)
     entry = {
-        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "task_id": task_id,
         "crep_value": crep_value,
         "tau_star": tau_star,
