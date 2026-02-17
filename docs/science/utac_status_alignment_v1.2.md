@@ -21,8 +21,12 @@ parameters:
   sigma_readiness: 0.836
   sigma_manifest: 0.317
 status:
-  datasets_pending: 0
-  components_missing: 0
+  # Readiness audit (doc-targets): all met
+  readiness_datasets_pending: 0
+  readiness_components_missing: 0
+  # Manifest audit (actual data/artifacts): gaps remain
+  manifest_datasets_pending: 4
+  manifest_components_missing: 10
   trilayer_gaps: 0
 -->
 

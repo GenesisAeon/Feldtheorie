@@ -9,8 +9,8 @@
 ## 2026-02-16 — Audit Sync
 
 - **Readiness refresh** — `analysis/v2_readiness_audit.py` aktualisierte `analysis/reports/utac_v2_readiness.{json,yaml,md}` mit R̄=1.00, Θ=0.66, β=4.8 und `σ(β(R-Θ))≈0.836`; die Dokumentations-Targets zeigen jetzt auf `docs/science/UTAC_v2.0_Coherence_Formula.md` und `docs/science/resonance-bridge-map.md` statt veralteter Root-Pfade.
-- **Gap scan telemetry** — `analysis/utac_manifest_gap_scan.py --as-of 2026-02-16T00:00:00Z` emitierte `analysis/results/utac_v2_manifest_gap_scan_20260216T000000Z.json` mit `0 datasets pending` und `0 components missing`.
-- **Operational focus** — Bei β≈4.8 ist die Membran auf der Steilflanke aktiv; ζ(R) wird jetzt primär durch Status-Drift getrieben.
+- **Gap scan telemetry** — `analysis/utac_manifest_gap_scan.py --as-of 2026-02-16T00:00:00Z` emitierte `analysis/results/utac_v2_manifest_gap_scan_20260216T000000Z.json`. **Readiness measure:** 0 datasets pending, 0 components missing (doc-targets met). **Manifest measure:** 4 datasets pending, 10 components missing (actual data/artifact gaps remain — Amazon Hydro, AMOC, Neuro-AI, Energy/Finance).
+- **Operational focus** — Bei β≈4.8 ist die Membran auf der Steilflanke aktiv; ζ(R) wird jetzt primär durch Status-Drift getrieben. Die Differenz zwischen Readiness (R̄=1.00) und Manifest (R=0.50) zeigt, dass Dokumentations-Targets erfüllt sind, aber physische Daten/Artefakte noch ausstehen.
 
 ---
 
