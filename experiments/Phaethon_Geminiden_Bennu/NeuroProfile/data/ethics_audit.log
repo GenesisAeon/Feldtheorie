@@ -45,3 +45,5 @@
 [2026-02-16T08:08:44.507858+00:00] [v13.0.0] [40e7d3a920a4664d8f4c1c280a9326c806ca3c2ee4a92bf3b86e3d637f280ae4] [FRAME_DRIFT] Recalibration advised (CREP below threshold).
 [2026-02-16T08:08:47.661890+00:00] [v13.0.0] [58f31d50bb4ce48166c9a1ce88990c067ab1af63fc4e9291bda9fb50046446b6] [FRAME_DRIFT] Recalibration advised (CREP below threshold).
 [2026-02-16T08:08:54.459528+00:00] [v13.0.0] [2bcb542817fab0c04c6e816cc6f47143b8218dedd6668264378668009df32fd3] [FRAME_DRIFT] Recalibration advised (CREP below threshold).
+[2026-02-17T19:18:20.911624+00:00] [v13.0.0] [58f31d50bb4ce48166c9a1ce88990c067ab1af63fc4e9291bda9fb50046446b6] [FRAME_DRIFT] Recalibration advised (CREP below threshold).
+[2026-02-17T19:18:28.389265+00:00] [v13.0.0] [2bcb542817fab0c04c6e816cc6f47143b8218dedd6668264378668009df32fd3] [FRAME_DRIFT] Recalibration advised (CREP below threshold).
