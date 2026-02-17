@@ -3,7 +3,7 @@ name: docs-index-delta-guard
 on:
   pull_request:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, 'claude/**' ]
 
 jobs:
   docs-index-delta:

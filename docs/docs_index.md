@@ -15,7 +15,7 @@ Nach der Konsens-Entscheidung für eine klare Trennung zwischen **Forschung**, *
 - `docs/AFET/` – Rohimporte (PDF/TXT/DOCX/JPG) mit Intake-Register für repo-konforme Kuration.
 
 Insgesamt umfasst die aktuelle Navigationslaterne **46 kuratierte Markdown-Dokumente**;
-der Dateisystem-Bestand umfasst aktuell **174 Markdown-Dateien** (kuratiert + uncurated).
+der Dateisystem-Bestand umfasst aktuell **179 Markdown-Dateien** (kuratiert + uncurated).
 Die Semantik wird im Tri-Layer über `curated_markdown_docs` vs. `filesystem_markdown_docs` gespiegelt
 (`docs_index.{yaml,json,md}`).
 
