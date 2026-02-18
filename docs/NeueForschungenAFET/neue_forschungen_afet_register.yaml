@@ -1,20 +1,21 @@
 meta:
   id: neue-forschungen-afet-register
+  title: Neue Forschungen AFET Intake Register
   directory: docs/NeueForschungenAFET
   status: active
   created: '2026-02-18'
-  updated: '2026-02-18'
+  updated: '2026-02-18T13:00:53Z'
   maintainer_scope: docs
 logistic_snapshot:
-  R: 0.64
-  theta: 0.52
+  R: 0.74
+  theta: 0.53
   beta: 4.8
-  zeta_R: 0.14
-  sigma_beta_R_minus_theta: 0.64
-  resonance_state: primed
+  zeta_R: 0.11
+  sigma_beta_R_minus_theta: 0.72
+  resonance_state: active
 models:
   null_model: Lose Ablage ohne Register-/Hash-/Kopplungspfad
-  intervention_model: Tri-Layer-Intake mit Kuration, Verweisen und Evidenzpfad
+  intervention_model: Tri-Layer-Intake mit Hashes, Kurationsstatus und Evidenzpfad
   falsifiability_hooks:
   - delta_aic
   - confidence_intervals
@@ -24,15 +25,130 @@ coupling_paths:
 - docs/science/utac_falsifiability.md
 - analysis/
 - data/
+inventory:
+- filename: AFET Interpretation of Cosmological Anomalies Beyond ΛCDM.pdf
+  path: docs/NeueForschungenAFET/AFET Interpretation of Cosmological Anomalies Beyond
+    ΛCDM.pdf
+  extension: pdf
+  size_bytes: 430481
+  sha256: 5dfc9a92b36ca23b
+  status: raw-intake
+  role: source-artifact
+- filename: AFET vs. ΛCDM_ Kosmologische Anomalien.pdf
+  path: docs/NeueForschungenAFET/AFET vs. ΛCDM_ Kosmologische Anomalien.pdf
+  extension: pdf
+  size_bytes: 271854
+  sha256: f342175de8880f4e
+  status: raw-intake
+  role: source-artifact
+- filename: AFET_ Universal Theory Analysis.pdf
+  path: docs/NeueForschungenAFET/AFET_ Universal Theory Analysis.pdf
+  extension: pdf
+  size_bytes: 228362
+  sha256: 2d5f46cab1bf701d
+  status: raw-intake
+  role: source-artifact
+- filename: AFET_Cosmological_Anomalies_Analysis.md
+  path: docs/NeueForschungenAFET/AFET_Cosmological_Anomalies_Analysis.md
+  extension: md
+  size_bytes: 19004
+  sha256: c4dc51a2b0199396
+  status: curated
+  role: working-analysis
+- filename: AFET_UTAC_Zenodo_v39.pdf
+  path: docs/NeueForschungenAFET/AFET_UTAC_Zenodo_v39.pdf
+  extension: pdf
+  size_bytes: 349558
+  sha256: 4b7946cba895344c
+  status: raw-intake
+  role: source-artifact
+- filename: AFET_UTAC_Zenodo_v39.tex
+  path: docs/NeueForschungenAFET/AFET_UTAC_Zenodo_v39.tex
+  extension: tex
+  size_bytes: 31340
+  sha256: 7842529ebfdd9d8a
+  status: raw-intake
+  role: source-artifact
+- filename: Falsifizierung.txt
+  path: docs/NeueForschungenAFET/Falsifizierung.txt
+  extension: txt
+  size_bytes: 16757
+  sha256: 5e44035271e440f1
+  status: raw-intake
+  role: source-artifact
+- filename: Finalisierung.txt
+  path: docs/NeueForschungenAFET/Finalisierung.txt
+  extension: txt
+  size_bytes: 17295
+  sha256: c8d12ebc1dc7831f
+  status: raw-intake
+  role: source-artifact
+- filename: Kosmologische Anomalien jenseits des Standardmodells ΛCDM.pdf
+  path: docs/NeueForschungenAFET/Kosmologische Anomalien jenseits des Standardmodells
+    ΛCDM.pdf
+  extension: pdf
+  size_bytes: 113407
+  sha256: 4e0104aadf5b56a9
+  status: raw-intake
+  role: source-artifact
+- filename: NeueForschungenChat.txt
+  path: docs/NeueForschungenAFET/NeueForschungenChat.txt
+  extension: txt
+  size_bytes: 30713
+  sha256: 9ab364ab6ac0e3b1
+  status: raw-intake
+  role: source-artifact
+- filename: NeueForschungenChatGPTSuche.txt
+  path: docs/NeueForschungenAFET/NeueForschungenChatGPTSuche.txt
+  extension: txt
+  size_bytes: 17220
+  sha256: 4f365c38b5f517be
+  status: raw-intake
+  role: source-artifact
+- filename: NeueForschungenGeminiSuche2.txt
+  path: docs/NeueForschungenAFET/NeueForschungenGeminiSuche2.txt
+  extension: txt
+  size_bytes: 112060
+  sha256: a8aaacb962b91009
+  status: raw-intake
+  role: source-artifact
+- filename: NeueForschungenSucheChatGPT2.txt
+  path: docs/NeueForschungenAFET/NeueForschungenSucheChatGPT2.txt
+  extension: txt
+  size_bytes: 33592
+  sha256: 109987f9b731ebb5
+  status: raw-intake
+  role: source-artifact
+- filename: NeueForschungenSucheGemini.txt
+  path: docs/NeueForschungenAFET/NeueForschungenSucheGemini.txt
+  extension: txt
+  size_bytes: 50279
+  sha256: d5fc0c4166cc2698
+  status: raw-intake
+  role: source-artifact
+- filename: Theoretical Foundations From UTAC to AFET Cosmology.pdf
+  path: docs/NeueForschungenAFET/Theoretical Foundations From UTAC to AFET Cosmology.pdf
+  extension: pdf
+  size_bytes: 11955833
+  sha256: 2d15368f6adc940d
+  status: raw-intake
+  role: source-artifact
+- filename: Verbesserungen.txt
+  path: docs/NeueForschungenAFET/Verbesserungen.txt
+  extension: txt
+  size_bytes: 25556
+  sha256: 355c745cd74baa52
+  status: raw-intake
+  role: source-artifact
 intake_lanterns:
 - id: NFA-001
   title: Ordner-Initialisierung + Tri-Layer
   status: completed
   note: Register erstellt, Kopplung aktiviert
 - id: NFA-002
-  title: Erstes Forschungsartefakt importieren
-  status: pending
-  note: Datei + Metadaten + Hash ergänzen
+  title: Forschungsartefakte inventarisieren
+  status: completed
+  note: 16 Dateien mit Groesse + SHA-256 (kurz) erfasst
 - id: NFA-003
   title: Kurations-Migration nach docs/science
   status: pending

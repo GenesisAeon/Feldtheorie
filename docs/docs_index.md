@@ -1,6 +1,6 @@
 # 📚 Docs Index – Science, Narrative, xAI Collaboration & AFET Intake
 
-**Version:** 2.1.0 | **Datum:** 12. Feb 2026 | **Zuletzt aktualisiert:** 12. Feb 2026 | **Verzeichnis:** `docs/`
+**Version:** 2.1.1 | **Datum:** 18. Feb 2026 | **Zuletzt aktualisiert:** 18. Feb 2026 | **Verzeichnis:** `docs/`
 
 ---
 
@@ -55,7 +55,7 @@ Eingangsschicht für neue AFET-Artefakte:
 
 ### 🟡 Neue Forschungen AFET (`docs/NeueForschungenAFET/`)
 Neue Forschungszuflüsse als strukturierte Intake-Laternen:
-- `NeueForschungenAFET/neue_forschungen_afet_register.md` – Tri-Layer-Startregister mit logistic snapshot, Nullmodell und Kopplungspfaden.
+- `NeueForschungenAFET/neue_forschungen_afet_register.md` – Tri-Layer-Intake mit logistic snapshot, Nullmodell, Kopplungspfaden und Hash-Inventar (16 Artefakte).
 
 ## 🚀 Navigation & Werkzeuge
 
