@@ -13,9 +13,10 @@ Nach der Konsens-Entscheidung für eine klare Trennung zwischen **Forschung**, *
 - `docs/narrative/` – Manifeste, Roadmaps, Paritäts- und Release-Notizen.
 - `docs/xai_collab/` – AFET × xAI Pilotunterlagen, Spezifikationen und Wochenreports.
 - `docs/AFET/` – Rohimporte (PDF/TXT/DOCX/JPG) mit Intake-Register für repo-konforme Kuration.
+- `docs/NeueForschungenAFET/` – Neuer Intake-Raum für AFET-Forschungsartefakte mit Tri-Layer-Register.
 
 Insgesamt umfasst die aktuelle Navigationslaterne **46 kuratierte Markdown-Dokumente**;
-der Dateisystem-Bestand umfasst aktuell **179 Markdown-Dateien** (kuratiert + uncurated).
+der Dateisystem-Bestand umfasst aktuell **181 Markdown-Dateien** (kuratiert + uncurated).
 Die Semantik wird im Tri-Layer über `curated_markdown_docs` vs. `filesystem_markdown_docs` gespiegelt
 (`docs_index.{yaml,json,md}`).
 
@@ -51,6 +52,10 @@ Eingangsschicht für neue AFET-Artefakte:
 - Inhalte werden schrittweise in zitierfähige Markdown-Laternen nach `science/` und `xai_collab/` gespiegelt.
 
 ---
+
+### 🟡 Neue Forschungen AFET (`docs/NeueForschungenAFET/`)
+Neue Forschungszuflüsse als strukturierte Intake-Laternen:
+- `NeueForschungenAFET/neue_forschungen_afet_register.md` – Tri-Layer-Startregister mit logistic snapshot, Nullmodell und Kopplungspfaden.
 
 ## 🚀 Navigation & Werkzeuge
 
