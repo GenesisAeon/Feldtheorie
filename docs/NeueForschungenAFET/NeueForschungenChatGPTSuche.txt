@@ -1,0 +1,210 @@
+Rechercheaktivität
+Focusing on research recommendations
+
+For "Further Research Recommendations," I'll cover a range of concrete experiments, such as Cepheid calibration with Gaia and SN distances, LIGO/Virgo/KAGRA H0 methods, BAO, 21-cm timing experiments, and tests of modified gravity. I’ll gather up-to-date references through searches for each key phenomenon and source.
+Searching
+arxiv.orgarxiv.org
+www.aanda.orgwww.aanda.org
+escholarship.orgescholarship.org
+academic.oup.comacademic.oup.com
+Citing key studies and anomalies
+
+I’ll cite key papers like Planck for CMB anomalies and Bulbul et al. for the 3.5 keV line. For FRBs, a quick mention of discovery and recent observations will be included. Cosmic anisotropy proposals like the H0 dipole and lensing amplitude anomalies can be discussed with an emphasis on unresolved questions.
+Organizing research and citing sources
+
+I'll need to gather sources like Planck 2018, Riess 2021/2022, and Keck S8 from KiDS and DES Y3. I'll also search for early dark energy and cosmic anomalies. For specifics, I'll look into Hubble tension reviews and recent survey results from DES, HSC, Euclid, and JWST’s upcoming releases.
+Searching
+academic.oup.comacademic.oup.com
+www.aanda.orgwww.aanda.org
+arxiv.orgarxiv.org
+infoscience.epfl.chinfoscience.epfl.ch
+Searching for CMB anomalies and anisotropies
+
+I’ve gathered sources for DES Y3 cosmic shear S8 and H0LiCOW. Next, I’ll focus on searching for CMB anomalies and anisotropies, along with cosmic birefringence, to strengthen the analysis. Let’s dig into these topics.
+Searching
+www.researchgate.netwww.researchgate.net
+arxiv.orgarxiv.org
+indico.physik.uni-bielefeld.deindico.physik.uni-bielefeld.de
+journals.aps.orgjournals.aps.org
+Searching
+ui.adsabs.harvard.eduui.adsabs.harvard.edu
+arxiv.orgarxiv.org
+www.mdpi.comwww.mdpi.com
+academic.oup.comacademic.oup.com
+Looking into small-scale problems and modified gravity
+
+I have sources for Planck isotropy (Akrami 2019) and birefringence (Alvey 2021, ACT 2025), as well as a review on the cosmic dipole anomaly (Secrest 2025 RMP). Now, I'll focus on small-scale problems like MOND, dark matter issues, and modified gravity. Time to search for more details there.
+Searching for early dark energy and modified gravity models
+
+I have MOND’s original works, but I still need TeVeS by Bekenstein (2004), maybe from APS or ArXiv. I’ll also search for early dark energy models and alternative dark matter concepts. I’ll look up references like "Poulin early dark energy Hubble tension 2019" and "Kamionkowski review 2022." Time to search more.
+Searching
+link.aps.orglink.aps.org
+arxiv.orgarxiv.org
+www.aanda.orgwww.aanda.org
+scispace.comscispace.com
+Seeking sources for various cosmic anomalies and instruments
+
+I have early dark energy and constraints on the 3.5 keV line, but I still need sources like Bulbul 2014 and Boyarsky 2014. I also need to gather FRB sources like the CHIME catalog, Pioneer anomaly data, the UAP NASA report, and info on the lithium problem. Oh, and the instrument list too!
+Searching
+ui.adsabs.harvard.eduui.adsabs.harvard.edu
+arxiv.orgarxiv.org
+www.nature.comwww.nature.com
+www.science.orgwww.science.org
+Looking up Pioneer anomaly
+
+I need to gather the details on the Pioneer anomaly. This is a puzzling issue with the Pioneer spacecraft's trajectory, and it relates to unexplained deviations that need further sources and updates to clarify. I'll get the relevant articles and studies for this.
+Searching
+link.aps.orglink.aps.org
+arxiv.orgarxiv.org
+www.aanda.orgwww.aanda.org
+www.sciencedirect.comwww.sciencedirect.com
+Looking into UAP study by NASA
+
+Now, I’m focusing on the NASA study related to UAPs (unidentified aerial phenomena). This report might provide key insights or updates. I’ll gather the latest findings from NASA and related sources on these phenomena so that I can check for any new conclusions or evidence.
+Searching
+science.nasa.govscience.nasa.gov
+media.defense.govmedia.defense.gov
+www.esa.intwww.esa.int
+www.aaro.milwww.aaro.mil
+Reviewing UAP sources and cosmic anomalies
+
+I have the main UAP sources, including NASA and AARO reports, plus Euclid data release details. I also need to mention key instruments like Planck, HST, Gaia, JWST, CHIME, and ASKAP — citing their mission documents. I’ll discuss unexplained spectral lines like the 3.5 keV and 511 keV lines, plus the EDGES absorption feature. Also, I'll look into galactic rotation anomalies, dark matter anomalies, and void models that could affect H0. I'll include references and relevant findings in my sources.
+Searching for local void and cosmological tensions
+
+I need to find local void solutions to the Hubble tension, like "KBC void Hubble tension Keenan Barger Cowie 2013" or "Shanks local void 2019". I’ll also search for other cosmological anomalies, including tensions with H0, S8, and BAO from supernovae, as well as DESI data on evolving dark energy. Let's focus on finding these.
+Searching
+arxiv.orgarxiv.org
+inspirehep.netinspirehep.net
+ui.adsabs.harvard.eduui.adsabs.harvard.edu
+link.aps.orglink.aps.org
+Looking for Bulbul and Boyarsky 2014, plus other sources
+
+I need to search for Bulbul's detection and Boyarsky 2014, as well as EDGES. I also want to mention the "Hubble bubble" but without discussing its origin. There are instruments like Planck, Hubble, and Gaia, along with measurement systems like parallax and Cepheids. I’ll use Gaia's EDR3 or DR3 and look for sources. Gravitational wave standard sirens like GW170817 could provide an H0 of about 70, and later data could improve this. Let's search.
+Searching
+link.aps.orglink.aps.org
+www.nature.comwww.nature.com
+arxiv.orgarxiv.org
+ui.adsabs.harvard.eduui.adsabs.harvard.edu
+Gathering primary sources and mission data
+
+We have citations for gravitational wave measurements and Gaia calibrations. Now, it’s time to include instrumentation, citing mission docs like Planck, Hubble, Gaia, and Euclid. I'll gather mission sources from NASA/ESA and prioritize peer-reviewed papers. For some missions, such as Planck and DESI, I’ll focus on overview papers and key results like BAO measurements. Let’s search for the main BAO results paper from DESI DR1 and check for LSST as well.
+Searching
+arxiv.orgarxiv.org
+www.aanda.orgwww.aanda.org
+www.lsst.orgwww.lsst.org
+pure.rug.nlpure.rug.nl
+Incorporating spectral lines and dark energy results
+
+We have DESI BAO results, including H0 = 68.52 ± 0.62, and evidence for w0-wa deviations. Now we want to focus on "unexplained spectral lines," including the 3.5 keV line and references to EDGES absorption. The galactic center's gamma-ray excess could point to DM annihilation, though it's contested—let’s include references like Fermi-LAT 2015, 2017.
+Searching
+arxiv.orgarxiv.org
+link.aps.orglink.aps.org
+pos.sissa.itpos.sissa.it
+icecube.wisc.eduicecube.wisc.edu
+Mentioning rotational anomalies and radial acceleration relation
+
+We’ve got enough for the gamma-ray excess, though it’s more of a spectral line/particle anomaly, not central to cosmology. Now, for galaxy rotation anomalies, I’ll mention the "radial acceleration relation" (RAR) from MOND, citing McGaugh 2016. The user asked about rotational anomalies—I'll include this in the table.
+Searching
+link.aps.orglink.aps.org
+ui.adsabs.harvard.eduui.adsabs.harvard.edu
+adsabs.harvard.eduadsabs.harvard.edu
+arxiv.orgarxiv.org
+Classifying entities correctly and managing duplicates
+
+For entities, I'll classify them properly—such as the "Australian Square Kilometre Array Pathfinder" as a point_of_interest, and categorize organizations like LIGO, NASA, and ESA. For people, I'll limit the number mentioned, focusing on collaborations to avoid duplicates. I'll ensure each entity is wrapped appropriately.
+Searching
+ui.adsabs.harvard.eduui.adsabs.harvard.edu
+link.aps.orglink.aps.org
+arxiv.orgarxiv.org
+academic.oup.comacademic.oup.com
+Collecting Hubble constant and S8 values
+
+I’m compiling sources for Hubble constant measurements, including SH0ES, Planck, Freedman, DESI BAO, and standard sirens. For S8 tension, I’ll need values from Planck, KiDS, DES, and HSC. I’ll look up S8 values from the Heymans 2021 multiprobe paper and KiDS for the specific number.
+Finding KiDS S8 value
+
+I faced a 403 forbidden error from A&A and APS open. But no worries, I can try arXiv or other accessible sources. I’ll search for the KiDS 1000 S8 value, with a specific query like “KiDS-1000 S8 0.766 arXiv 2007” to check the number. Let’s give this a try.
+Searching
+arxiv.orgarxiv.org
+link.aps.orglink.aps.org
+ui.adsabs.harvard.eduui.adsabs.harvard.edu
+www.aanda.orgwww.aanda.org
+Searching
+arxiv.orgarxiv.org
+par.nsf.govpar.nsf.gov
+Extracting S8 values from sources
+
+We’ve found the KiDS cosmic shear constraints in arXiv 2007.15633 with S8=0.759 ± 0.024. This is useful. For HSC Year 3, we might use arXiv 2304.00701, but we should open it and check. I’ll also consider using the abstract from ADS or the 2023 PRD paper by X Li. Let’s go for it!
+Accessing HSC Year 3 S8 values
+
+I can mention HSC without the specific number or as "unspecified," but using the actual value would be preferred. I’ll open the HSC Year 3 results paper, probably through par.nsf.gov, and quickly check the abstract for the S8 value. If needed, I'll look up arXiv 2304.00701 for more details.
+Compiling dark matter anomalies and models
+
+Great, we've got the HSC Year 3 S8 in the abstract, and we can cite the KiDS arXiv. Now, for our report, I'll need to mention dark matter anomalies, like direct detection null results, possibly baryon-DM coupling, and alternative DM models such as warm, fuzzy, and self-interacting DM. I'll cite relevant reviews where needed, and I'll check Skordis & Zlosnik (2021) regarding MOND.
+Searching
+link.aps.orglink.aps.org
+arxiv.orgarxiv.org
+inspirehep.netinspirehep.net
+www.reddit.comwww.reddit.com
+Addressing dark matter and cosmological anomalies
+
+We could mention direct detection null results to contextualize dark matter, though they don't directly challenge cosmology. The JWST early galaxy claims are debated, so we'll cite both Gupta (2023) and McCaffrey (2023) to highlight the controversy. Also, we'll include cosmic anomalies like radio dipoles and EDGES absorption. We should ensure comparisons and recommendations are part of the report too.
+Addressing scientific anomalies and categorization
+
+We'll interpret "nicht durch das Standardbild des Kosmos erklärbar" under the context of ΛCDM and related models. We should categorize anomalies into: (a) persistent tensions, (b) debated anomalies, and (c) resolved ones, and evaluate each case. Also, I'll include a chart for H0 as requested.
+Compiling H0 values for chart
+
+I'll create a Mermaid xychart with various H0 measurements: - Planck 2018: H0 = 67.4 ± 0.5 - DESI BAO + BBN + CMB: H0 = 68.52 ± 0.62 - SH0ES 2021/2022: H0 = 73.04 ± 1.04 - TRGB Freedman: H0 = 69.8 - Time-delay lenses (H0LiCOW 2019): H0 = 73.3 ± 1.8 Let’s check the K. C. Wong paper for confirmation of time-delay lenses value.
+Searching
+arxiv.orgarxiv.org
+Compiling S8 values for chart
+
+For the S8 values, I'll include: - Planck derived S8: 0.834 - DES Y3 cosmic shear: 0.776 ± 0.017 - KiDS-1000 cosmic shear: 0.759 - HSC Y3: 0.776 For the chart, bars will represent each method, but we need to avoid including samples or uncertainties. I'll note the sources and cite Planck for the computed value.
+Addressing H0 tension, anomalies, and alternative explanations
+
+I'll highlight the H0 tension, possibly>5σ as noted by Riess (2021) and Mishra (2025), and mention alternative explanations like Cepheid calibration issues, cosmic variance, early Universe modifications, etc., with key sources. For anomalies, I’ll cite Addison et al. (2023), Minami & Komatsu (2020), and others like Bowman 2018 for EDGES.
+Searching
+www.nature.comwww.nature.com
+arxiv.orgarxiv.org
+link.aps.orglink.aps.org
+academic.oup.comacademic.oup.com
+Discussing anomalies and phenomenology
+
+I’ll focus on key anomalies like H0 tension, S8 tension, CMB anomalies, EDGES, and FRBs. Since there’s a word limit, I'll keep it concise with about 10 phenomena. I'll mention “schnelle Radioblitze” as an unknown origin and note MOND’s alternative explanation to dark matter. Plus, I'll touch on dark energy evolution and unexplained spectral lines.
+Proposing future experiments
+
+I’m proposing experiments for key anomalies: for H0 tension, I’ll suggest calibrations via Gaia DR4, JWST, and the Roman Space Telescope, along with enhanced standard sirens using LIGO. For S8 tension, I’ll recommend improved shear modeling and Stage IV surveys. For CMB and cosmic birefringence, I’ll also suggest tests with better polarization data. For the 3.5 keV line, future X-ray missions like XRISM should be considered, and I’ll make sure to check the latest mission statuses.
+Searching
+www.cosmos.esa.intwww.cosmos.esa.int
+www.the-athena-x-ray-observatory.euwww.the-athena-x-ray-observatory.eu
+www.skao.intwww.skao.int
+svs.gsfc.nasa.govsvs.gsfc.nasa.gov
+Final details for report sections
+
+We’ve got mission updates for XRISM (peer-reviewed), Athena, SKA, and HERA, which I’ll make sure to cite. I should also mention 3.5 keV spectral lines, EDGES, and fast radio bursts. We’ll design sections, include a graph for H0 and S8 by method, and a ranking for evidence strength. Additionally, I’ll touch on systematic and instrumental errors, citing sources like Gaia and Riess.
+Finalizing the report sections and citations
+
+For weak lensing, I'll cite systematics like intrinsic alignments and shear calibration (Troxel & Ishak 2015). For CMB anomalies, I'll include scan strategy and foregrounds (Addison et al. 2023). We'll cover the radio dipole with local sources (Oayda 2024) and EDGES critiques (Hills 2018) too. I need to keep the report concise, sticking to 7 subsections including tables within relevant sections. Also, I’ll ensure to craft the text in German, keep the length right, and avoid horizontal lines or arXiv references.
+Defining ΛCDM and evaluating anomalies
+
+The standard model is ΛCDM with 6 parameters (H0, Ωb, Ωc, etc.), supported by Planck 2018 results. I'll note that some anomalies are within 2-3 σ and not decisive. For H0 tension, early dark energy or additional relativistic species may be required, but they affect S8 too (citing Poulin 2019, Hill 2020, Goldstein 2023). I'll discuss CMB calibration systematics, mentioning ACT DR6 and H0 values consistent with Planck (Madhavacheril 2023, Qu 2024).
+Including methodical evaluation and citations
+
+I'll add a "methodical evaluation" section with cross-cutting comments. Also, UAPs will be briefly addressed, labeling them as "if relevant." I'll mention "schnelle Radioblitze" too. Citations need to be handled carefully – no bold/italics, and citation formatting must respect punctuation. After code blocks, citations follow the paragraph. Images will also be included, with an image group.
+Incorporating entities and image placement
+
+I'll place the image group in the "Messdaten und Instrumente" section, as it doesn't need citations. For clarity, I'll introduce major organizations and instruments only once within the text via entity wrappers, avoiding repetition. The goal is to make it easy for the user to reference these without redundancy.
+Clearing up disambiguation and organization wrapping
+
+I need to clarify terms like "ESA space telescope" and others. For groups like LIGO, Virgo, and KAGRA, I’ll include each with a wrap only once in the text. EDGES, FRBs, and ESA need similar wrapping, ensuring clarity without repeating. I’ll keep it concise yet clear.
+Optimizing entity mentions and wrapping
+
+I’m planning to mention NASA once in the instrument section and use plain references later. For UAP, I'll include "(website)" once, perhaps. For entities like Pioneer 10 and 11, ANITA, IceCube, and SKAO, I’ll use wrapped mentions only once in tables to avoid duplication. These should be concise and clear, particularly in tables where consistency matters.
+Managing entity wrapping across sections
+
+I’m deciding that entities should only be wrapped the first time they appear, which works well for avoiding redundancy. In the Exec summary, I’ll mention key entities like Planck and SH0ES. In later sections, I’ll wrap the new entities only when they first appear and track duplicates carefully.
+Building response structure
+
+I’ll start with the title: "# Kosmologische Anomalien jenseits des Standardmodells ΛCDM." In the Exec Summary, I’ll give a high-level overview, focusing on tensions between datasets rather than single observations. I’ll mention key tensions like Hubble and growth-of-structure tension, and mention unresolved anomalies like FRBs and EDGES, ensuring to include all necessary citations.
+Structuring the response sections
+
+I’ll cite sources like Mishra 2025 and other reviews. For the section "## Ausgangspunkt: ΛCDM und was als ’nicht erklärbar’ gilt," I’ll need to reference the Planck parameter paper. Next, for the "## Zentrale Phänomene und der Stand der Evidenz" section, we’ll present a table summarizing anomalies like Hubble tension, S8, and others while
