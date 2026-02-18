@@ -7,10 +7,10 @@
     "version": "2.1.0",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 179,
-    "updated": "2026-02-17T08:05:02Z",
+    "markdown_files": 181,
+    "updated": "2026-02-18T10:16:53Z",
     "last_updated": "2026-02-05",
-    "filesystem_markdown_docs": 179,
+    "filesystem_markdown_docs": 181,
     "curated_markdown_docs": 46
   },
   "categories": {
@@ -2453,6 +2453,30 @@
       "keywords": [],
       "description": "",
       "path": "docs/utac_status_snapshot.md"
+    },
+    {
+      "id": "docs-auto-0134",
+      "name": "NeueForschungenAFET/AFET_Cosmological_Anomalies_Analysis.md",
+      "category": "science",
+      "type": "document",
+      "status": "uncurated",
+      "relevance": "medium",
+      "size_kb": 18.6,
+      "keywords": [],
+      "description": "",
+      "path": "docs/NeueForschungenAFET/AFET_Cosmological_Anomalies_Analysis.md"
+    },
+    {
+      "id": "docs-auto-0135",
+      "name": "NeueForschungenAFET/neue_forschungen_afet_register.md",
+      "category": "science",
+      "type": "document",
+      "status": "uncurated",
+      "relevance": "medium",
+      "size_kb": 1.8,
+      "keywords": [],
+      "description": "",
+      "path": "docs/NeueForschungenAFET/neue_forschungen_afet_register.md"
     }
   ],
   "triggers": {
