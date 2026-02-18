@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "id": "neue-forschungen-afet-register",
+    "directory": "docs/NeueForschungenAFET",
+    "status": "active",
+    "created": "2026-02-18",
+    "updated": "2026-02-18",
+    "maintainer_scope": "docs"
+  },
+  "logistic_snapshot": {
+    "R": 0.64,
+    "theta": 0.52,
+    "beta": 4.8,
+    "zeta_R": 0.14,
+    "sigma_beta_R_minus_theta": 0.64,
+    "resonance_state": "primed"
+  },
+  "models": {
+    "null_model": "Lose Ablage ohne Register-/Hash-/Kopplungspfad",
+    "intervention_model": "Tri-Layer-Intake mit Kuration, Verweisen und Evidenzpfad",
+    "falsifiability_hooks": [
+      "delta_aic",
+      "confidence_intervals"
+    ]
+  },
+  "coupling_paths": [
+    "docs/docs_index.md",
+    "docs/AFET/afet_intake_register.md",
+    "docs/science/utac_falsifiability.md",
+    "analysis/",
+    "data/"
+  ],
+  "intake_lanterns": [
+    {
+      "id": "NFA-001",
+      "title": "Ordner-Initialisierung + Tri-Layer",
+      "status": "completed",
+      "note": "Register erstellt, Kopplung aktiviert"
+    },
+    {
+      "id": "NFA-002",
+      "title": "Erstes Forschungsartefakt importieren",
+      "status": "pending",
+      "note": "Datei + Metadaten + Hash ergänzen"
+    },
+    {
+      "id": "NFA-003",
+      "title": "Kurations-Migration nach docs/science",
+      "status": "pending",
+      "note": "Evidenzpfad inkl. ΔAIC/CI dokumentieren"
+    }
+  ]
+}
