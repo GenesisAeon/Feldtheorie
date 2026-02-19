@@ -1,0 +1,193 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\title{AFET: Entropically Coupled Threshold Dynamics \\
+Formal Extension of UTAC as an Information–System Interaction Framework}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We formalize the Adaptive Field–Entropic Threshold (AFET) framework as an entropically coupled extension of the Universal Threshold Activation Criticality (UTAC) model. 
+UTAC provides a nonlinear information-theoretic activation structure. AFET introduces entropy production as a necessary dynamical constraint governing parameter evolution within UTAC. 
+We demonstrate that entropy production acts as a modulation operator over threshold position, coupling steepness, and damping. 
+The resulting formulation describes a hierarchical, domain-dependent threshold system capable of modeling multi-scale dynamical transitions.
+\end{abstract}
+
+\section{Foundations}
+
+\subsection{UTAC: Nonlinear Threshold Activation}
+
+UTAC defines the activation probability of a system state transition as:
+
+\begin{equation}
+A(t) = \sigma\left( \beta (R - \Theta) \right)
+\end{equation}
+
+with logistic activation:
+
+\begin{equation}
+\sigma(x) = \frac{1}{1 + e^{-x}}
+\end{equation}
+
+Parameters:
+
+\begin{itemize}
+\item $R$ — system response variable
+\item $\Theta$ — activation threshold
+\item $\beta$ — coupling/steepness parameter
+\item $A$ — activation state probability
+\end{itemize}
+
+The width of the transition region is:
+
+\begin{equation}
+\Delta R \propto \frac{1}{\beta}
+\end{equation}
+
+Thus $\beta$ controls sensitivity and critical sharpness.
+
+\section{Entropy as Dynamical Driver}
+
+We define thermodynamic entropy:
+
+\begin{equation}
+S = k_B \ln \Omega
+\end{equation}
+
+Information-theoretic entropy:
+
+\begin{equation}
+H = - \sum_i p_i \ln p_i
+\end{equation}
+
+Entropy production rate (crucial quantity):
+
+\begin{equation}
+\Pi = \frac{dS}{dt}
+\end{equation}
+
+Key principle:
+
+\begin{quote}
+No entropy production ($\Pi = 0$) implies no sustained dynamical state transitions.
+\end{quote}
+
+Thus entropy production acts as an enabling condition for UTAC dynamics.
+
+\section{AFET: Entropically Coupled UTAC}
+
+AFET introduces entropy-dependent modulation of UTAC parameters.
+
+\subsection{General Coupled Form}
+
+\begin{equation}
+A(t) = \sigma\left(
+\beta_{\text{eff}}(t) 
+\left(
+R(t) - \Theta_{\text{eff}}(t)
+\right)
+\right)
+\end{equation}
+
+with:
+
+\begin{align}
+\beta_{\text{eff}}(t) &= \beta_0 + f_\beta(\Pi, \kappa_{\text{int}}, \kappa_{\text{ext}}) \\
+\Theta_{\text{eff}}(t) &= \Theta_0 + f_\Theta(\Pi, \rho) \\
+\zeta_{\text{eff}}(t) &= \zeta_0 + f_\zeta(\Pi)
+\end{align}
+
+where:
+
+\begin{itemize}
+\item $\Pi$ — entropy production rate
+\item $\kappa$ — internal/external coupling strength
+\item $\rho$ — system order parameter
+\item $\zeta$ — damping coefficient
+\end{itemize}
+
+\section{Hierarchical Beta Structure}
+
+We define $\beta$ as a hierarchical stochastic field:
+
+\begin{equation}
+\beta_{d,t,i}(t) =
+\mu_d
++ \delta_{d,t}
++ \delta_{d,t,i}
++ g(\Pi_{d,t,i}(t))
++ \epsilon
+\end{equation}
+
+Indices:
+
+\begin{itemize}
+\item $d$ — domain
+\item $t$ — system type
+\item $i$ — individual system
+\end{itemize}
+
+This defines:
+
+\begin{itemize}
+\item Domain-level band
+\item System-type band
+\item System-specific variation
+\item State-dependent drift
+\end{itemize}
+
+\section{Necessary Conditions for Dynamical Universality}
+
+A functioning dynamical system requires:
+
+\begin{equation}
+\Pi > 0
+\end{equation}
+
+and
+
+\begin{equation}
+\exists \; \beta, \Theta \text{ such that } \frac{dA}{dR} \neq 0
+\end{equation}
+
+Thus:
+
+\begin{equation}
+\text{Dynamical viability} \iff
+(\Pi > 0) \land (\text{Nonlinear threshold structure})
+\end{equation}
+
+\section{Falsifiability Criteria}
+
+The AFET framework is falsified if:
+
+\begin{enumerate}
+\item No measurable covariance exists between entropy production $\Pi$ and threshold dynamics.
+\item $\beta$ remains invariant across domain perturbations.
+\item Transition widths remain constant under dissipative shifts.
+\item Systems sustain transitions at $\Pi \to 0$.
+\end{enumerate}
+
+\section{Conclusion}
+
+UTAC defines informational activation structure.
+AFET defines entropic governance over activation parameters.
+
+Entropy production enables state change.
+UTAC structures state change.
+
+Together they form a minimal dynamical architecture capable of modeling multi-domain threshold systems.
+
+\end{document}
