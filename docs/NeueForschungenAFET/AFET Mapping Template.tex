@@ -1,0 +1,176 @@
+%========================================================
+% AFET Mapping Template (Formula Table + Band Mechanisms)
+%========================================================
+% Requires:
+% \usepackage{booktabs}
+% \usepackage{array}
+% \usepackage{longtable}
+% \usepackage{tabularx}
+% \usepackage{amsmath, amssymb}
+
+\section{AFET Mapping Matrix: Domains, System Types, and Band Mechanisms}
+
+\subsection{Purpose and Usage}
+This table operationalizes AFET as a \emph{mechanism framework} rather than a single closed-form law.
+For each domain $d$ and system type $t$, we register:
+(i) what is measured, (ii) how entropy production is proxied,
+(iii) where threshold dynamics appear, and (iv) which parameters are \emph{bands} (ranges/distributions) rather than constants.
+
+\paragraph{Core UTAC/AFET structure.}
+We use the baseline activation form:
+\begin{equation}
+A(t)=\sigma\!\left(\beta_{\mathrm{eff}}(t)\left(R(t)-\Theta_{\mathrm{eff}}(t)\right)\right),
+\quad
+\sigma(x)=\frac{1}{1+e^{-x}}.
+\end{equation}
+AFET asserts that entropy production (or a dissipation proxy) modulates the effective parameters:
+\begin{equation}
+(\beta_{\mathrm{eff}},\Theta_{\mathrm{eff}},\zeta_{\mathrm{eff}})=\mathcal{F}_{d,t}\!\left(\Pi_d, \nabla \Pi_d, J_d, \kappa_{\text{int}}, \kappa_{\text{ext}}, \ldots \right),
+\end{equation}
+where $\Pi_d$ is the domain-specific entropy production proxy, $J_d$ an energy/entropy flux proxy, and $\kappa$ coupling measures.
+
+\paragraph{Band-in-band principle.}
+Instead of constants, we treat parameters as hierarchical bands:
+\begin{equation}
+\beta_{d,t,i}(t)=\mu_d + \delta_{d,t} + \delta_{d,t,i} + g_{d,t}\!\left(\Pi_{d,t,i}(t)\right) + \varepsilon,
+\end{equation}
+and analogously for $\Theta$ and $\zeta$ where appropriate.
+
+\subsection{AFET Mapping Table (Longtable)}
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{4pt}
+
+\begin{longtable}{p{2.3cm} p{2.6cm} p{3.0cm} p{2.6cm} p{2.2cm} p{2.3cm} p{2.2cm} p{2.6cm} p{3.2cm}}
+\caption{AFET mapping matrix. Each row defines how UTAC-like threshold dynamics and entropy-production coupling are instantiated in a specific domain $d$ and system type $t$.} \\
+\toprule
+\textbf{Domain $d$} &
+\textbf{System type $t$} &
+\textbf{Entropy proxy $\Pi_d$ (definition + units)} &
+\textbf{Response variable $R$ (observable)} &
+\textbf{Threshold $\Theta$ (how defined)} &
+\textbf{$\beta$ band (range / distribution)} &
+\textbf{Damping $\zeta$ (if used)} &
+\textbf{Scale rule (coarse-graining / RG)} &
+\textbf{Falsification criterion (must-fail test)} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Domain $d$} &
+\textbf{System type $t$} &
+\textbf{Entropy proxy $\Pi_d$ (definition + units)} &
+\textbf{Response variable $R$ (observable)} &
+\textbf{Threshold $\Theta$ (how defined)} &
+\textbf{$\beta$ band (range / distribution)} &
+\textbf{Damping $\zeta$ (if used)} &
+\textbf{Scale rule (coarse-graining / RG)} &
+\textbf{Falsification criterion (must-fail test)} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{9}{r}{\emph{continued on next page}} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+%-------------------------
+% TEMPLATE ROWS (copy/paste)
+%-------------------------
+
+% Example row (replace with your content)
+\textbf{Vacuum / QFT} &
+Fluctuation-driven field sector &
+$\Pi_d := \partial_\mu S^\mu$ (EFT/CTP constraint) or proxy via FDT-violation spectrum &
+$R :=$ non-equilibrium order parameter / correlator asymmetry &
+$\Theta :=$ onset of non-equilibrium regime (model-defined) &
+$\beta \in [\beta_{\min},\beta_{\max}]$ (estimated per effective theory / scale) &
+$\zeta :=$ dissipative kernel / friction term &
+$\Pi(bL)=b^{\alpha}\Pi(L)$; note hidden $\Pi$ under coarse-graining &
+If equilibrium limit yields same transition behavior while $\Pi \to 0$, AFET coupling claim must be restricted/refined \\
+\\
+
+\textbf{Condensed matter} &
+Active matter / driven lattice &
+$\Pi_d :=$ entropy production rate from path probability ratio or Harada--Sasa relation &
+$R :=$ magnetization / density / activity &
+$\Theta :=$ critical point / control parameter value &
+$\beta :=$ band over drive strength / coupling topology &
+$\zeta :=$ mobility/friction (measured or inferred) &
+Critical scaling of $\Pi$ near transitions; coarse-graining monotonicity constraints &
+No covariance between $\Pi$ and transition sharpness (width $\Delta R \propto 1/\beta$) under controlled drive changes \\
+\\
+
+\textbf{Chemistry} &
+Reaction networks (NESS) &
+$\Pi_d := \sum_r J_r A_r / T$ (flux $\times$ affinity) &
+$R :=$ concentration order parameter / oscillation amplitude &
+$\Theta :=$ bifurcation threshold (Hopf / saddle-node) &
+$\beta :=$ band across network topology / inflow rate &
+$\zeta :=$ effective damping in reduced model &
+State-space coarse-graining; hidden dissipation under lumping &
+If changing dissipation proxy does not shift bifurcation sharpness or threshold within error bounds \\
+\\
+
+\textbf{Biology} &
+Metabolic / regulatory systems &
+$\Pi_d :=$ heat dissipation proxy / metabolic power density &
+$R :=$ physiological state marker (e.g., homeostatic deviation) &
+$\Theta :=$ failure / regime switch threshold &
+$\beta :=$ band across species / coupling regimes &
+$\zeta :=$ recovery rate / resilience metric &
+Scaling with body size / energy flux; multi-scale aggregation effects &
+If increased power dissipation does not modulate resilience/transition width where AFET predicts it must \\
+\\
+
+\textbf{Neuro} &
+Neural integration regimes &
+$\Pi_d :=$ metabolic consumption proxy + entropy-rate measures (signal) &
+$R :=$ synchrony / integration index / spectral marker &
+$\Theta :=$ seizure threshold / integration breakdown point &
+$\beta :=$ band across brain states / pharmacological modulation &
+$\zeta :=$ inhibitory gain / damping proxy &
+Multi-scale coarse-graining (micro $\to$ meso $\to$ macro); hidden dissipation &
+If $\Pi$ shifts substantially but neither $\Theta$ nor $\beta$ (transition width) respond across controlled manipulations \\
+\\
+
+\textbf{AI / Compute} &
+LLM-inference / training systems &
+$\Pi_d :=$ energy-per-token proxy; facility PUE-adjusted dissipation &
+$R :=$ performance slope / error rate / emergent capability marker &
+$\Theta :=$ phase-like onset (scaling law breakpoint) &
+$\beta :=$ band across architectures / optimization regimes &
+$\zeta :=$ regularization / stabilization term (effective) &
+Scaling laws; system-level aggregation hides node-level dissipation &
+If large shifts in dissipation cost do not change transition sharpness across comparable setups \\
+\\
+
+% Add as many rows as needed...
+
+\end{longtable}
+
+\subsection{Optional: Parameter Band Sheet (per domain/type)}
+For each domain/type entry above, maintain a band sheet:
+\begin{equation}
+\beta_{d,t} \sim \mathcal{D}_{d,t}(\mu_{d,t}, \sigma_{d,t}, \text{skew}, \text{kurt}),
+\quad
+\Theta_{d,t} \sim \mathcal{T}_{d,t}(\cdot),
+\quad
+\zeta_{d,t} \sim \mathcal{Z}_{d,t}(\cdot).
+\end{equation}
+Recommended metadata per band:
+\begin{itemize}
+\item Estimation method (fit / literature / bound / simulation)
+\item Measurement scale (micro/meso/macro)
+\item Coarse-graining notes (hidden $\Pi$, loss of time-reversal odd variables)
+\item Known counterexamples / boundary conditions
+\end{itemize}
+
+\subsection{Minimal Must-Fail Tests (to prevent over-flexibility)}
+To avoid an ``entropy explains everything'' failure mode, each row must include at least one must-fail test:
+\begin{enumerate}
+\item \textbf{Null coupling test:} vary $\Pi_d$ proxy while holding other controls fixed; if $\beta,\Theta,\zeta$ remain unchanged, AFET coupling for that domain/type is invalid.
+\item \textbf{Equilibrium boundary test:} if the domain has an equilibrium limit, verify AFET reduces to a statement about \emph{where it does not apply} (e.g., criticality at $\Pi=0$).
+\item \textbf{Coarse-graining test:} confirm observed $\Pi$ decreases under coarse-graining (or justify exceptions) and track hidden dissipation.
+\end{enumerate}

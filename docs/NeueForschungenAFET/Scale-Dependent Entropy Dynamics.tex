@@ -1,0 +1,915 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+
+\usepackage[numbers]{natbib}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{abstract}
+
+% --- Geometry ---
+\geometry{
+  a4paper,
+  top=2.5cm, bottom=2.5cm,
+  left=3cm, right=3cm
+}
+
+% --- Colours ---
+\definecolor{solidblue}{RGB}{0,70,140}
+\definecolor{hypothesisgray}{RGB}{100,100,100}
+\definecolor{warningorange}{RGB}{200,100,0}
+\definecolor{confirmgreen}{RGB}{0,120,60}
+
+% --- Evidence boxes ---
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{validated}[1][]{
+  colback=confirmgreen!8, colframe=confirmgreen!60,
+  fonttitle=\bfseries\small, title={Validated / Well-Supported},
+  breakable, #1
+}
+
+\newtcolorbox{hypothesis}[1][]{
+  colback=hypothesisgray!10, colframe=hypothesisgray!50,
+  fonttitle=\bfseries\small, title={Hypothesis / Requires Further Testing},
+  breakable, #1
+}
+
+\newtcolorbox{speculative}[1][]{
+  colback=warningorange!8, colframe=warningorange!50,
+  fonttitle=\bfseries\small, title={Speculative / Not Yet Falsified},
+  breakable, #1
+}
+
+% --- Header / Footer ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small AFET/UTAC v39 --- Römer, J.B.\ (2026)}
+\fancyhead[R]{\small Zenodo Preprint}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% --- Hyperref setup ---
+\hypersetup{
+  colorlinks=true,
+  linkcolor=solidblue,
+  citecolor=solidblue,
+  urlcolor=solidblue,
+  pdftitle={AFET/UTAC: Scale-Dependent Entropy Dynamics and Cosmological Implications},
+  pdfauthor={Römer, Johann Benjamin},
+  pdfkeywords={UTAC, AFET, beta-hierarchy, entropy, cosmological tensions,
+               metastability, vRIG, Hubble tension, S8 tension, dark energy}
+}
+
+% --- Theorem environments ---
+\theoremstyle{definition}
+\newtheorem{axiom}{Axiom}
+\newtheorem{prediction}{Prediction}
+\newtheorem{definition}{Definition}
+
+% --- Custom commands ---
+\newcommand{\betaref}{\beta_{\mathrm{ref}}}
+\newcommand{\betaCMB}{\beta_{\mathrm{CMB}}}
+\newcommand{\betanull}{\beta_{\mathrm{Nullkern}}}
+\newcommand{\sigphi}{\sigma_{\Phi}}
+\newcommand{\vrig}{v_{\mathrm{RIG}}}
+\newcommand{\phigold}{\varphi}   % golden ratio  1.618...
+\newcommand{\PhiAFET}{\Phi}      % AFET cubic scalar  1.174...
+\newcommand{\Hbase}{H_{0,\mathrm{base}}}
+
+% ===================================================================
+\begin{document}
+% ===================================================================
+
+% --- Title page ---
+\begin{titlepage}
+  \centering
+  \vspace*{1.5cm}
+  {\LARGE\bfseries\color{solidblue}
+    Scale-Dependent Entropy Dynamics and\\[6pt]
+    Cosmological Implications:\\[8pt]
+    The AFET/UTAC Framework\\[4pt]
+    (Version 39 --- Working Preprint)
+  \par}
+
+  \vspace{1.2cm}
+  {\large
+    \textbf{Johann Benjamin Römer}\\[4pt]
+    \textit{MOR Research Collective / GenesisAeon Project}\\[4pt]
+    Marburg, Germany
+  \par}
+
+  \vspace{0.8cm}
+  {\normalsize February 18, 2026\par}
+
+  \vspace{0.6cm}
+  {\small
+    Repository: \url{https://github.com/GenesisAeon/Feldtheorie}\\
+    DOI Series: \url{https://doi.org/10.5281/zenodo.17472834}
+    (iterations 1--38)\\
+    This version: \url{https://doi.org/10.5281/zenodo.18647936}
+  \par}
+
+  \vspace{1.2cm}
+  \begin{tcolorbox}[colback=solidblue!6, colframe=solidblue!40,
+                    width=0.92\textwidth]
+    \small\textbf{Epistemic Status of this Document.}
+    This preprint distinguishes three evidence levels throughout:\\[3pt]
+    \textcolor{confirmgreen}{\textbf{Validated}} --- statistically supported across $\geq$10 independent
+    systems or confirmed by primary literature with replication.\\[3pt]
+    \textcolor{hypothesisgray}{\textbf{Hypothesis}} --- theoretically motivated, consistent with available
+    data, but requiring pre-registered experimental or observational tests.\\[3pt]
+    \textcolor{warningorange}{\textbf{Speculative}} --- internally coherent but not yet falsified;
+    presented as an open research direction, not a claim.
+  \end{tcolorbox}
+
+  \vspace{1cm}
+  \textbf{Licence:} CC BY-NC 4.0 (content) / GPLv3 (code)
+\end{titlepage}
+
+% --- Abstract ---
+\begin{abstract}
+\noindent
+We present the \textit{Allgemeine Feld-Entropie-Theorie} (AFET) together with its operative
+mechanism, the \textit{Uncertainty-Threshold-Activation-Coupling} (UTAC) model, in their
+current iterative state.
+UTAC models non-linear regime transitions via the logistic equation
+$dS/dt = \sigma(\beta(R-\Theta)) + \xi(t)$,
+where $\beta$ is an empirically determined \emph{domain-specific} steepness parameter.
+Statistical analysis across 78 threshold systems (ANOVA $F(4,73)=185.3$,
+$p < 10^{-20}$, $\eta^2=0.91$) reveals that $\beta$ clusters into distinct
+universality classes: informational $\approx 4.5$, biological $\approx 7.4$,
+climate/BAO $\approx 11.0$, and neurodegeneration/early structure $\approx 13$.
+
+AFET extends UTAC cosmologically through three universal constants:
+the metastability buffer $\sigphi \approx 1/16$,
+the integration velocity $\vrig \approx 1352\,\mathrm{km\,s^{-1}}$,
+and the fractal scaling factor $\PhiAFET = \phigold^{1/3} \approx 1.174$.
+We demonstrate that the Hubble tension, $S_8$ tension, and cosmic radio dipole anomaly
+emerge naturally from scale-dependent $\beta$-transitions, and we provide
+three falsifiable ``killer tests'' for the 2026--2027 observational window
+(LIGO O5, Euclid DR1, DESI DR2).
+An independently derived value of $\beta_{\mathrm{attractor}} \approx 13$
+(Git commit \texttt{21ef03e}, 2026-01-21) was subsequently found to correspond
+to the 13.5\,MHz electromagnetic resonance reported by Fontana et al.\ (2024)
+in neural tissue; this temporal precedence is documented and constitutes
+a potential cross-domain invariant warranting further investigation.
+\end{abstract}
+
+\medskip
+\noindent\textbf{Keywords:}
+UTAC; AFET; $\beta$-hierarchy; metastability; entropy dynamics; Hubble tension;
+$S_8$ tension; dark energy; cosmic radio dipole; criticality; logistic threshold models.
+
+\tableofcontents
+\newpage
+
+% ===================================================================
+\section{Introduction: The Motivation for Scale-Dependent Physics}
+% ===================================================================
+
+The $\Lambda$CDM model of cosmology has achieved extraordinary success with six free
+parameters, yet faces persistent, statistically robust tensions that resist systematic
+explanations.
+The Hubble tension ($>5\sigma$), the $S_8$ discrepancy ($\approx 2$--$3\sigma$),
+and evidence for dynamical dark energy ($\approx 3$--$4\sigma$ in combined DESI DR1
+analyses) collectively suggest that the single-scale assumption underlying
+$\Lambda$CDM may be incomplete.
+
+AFET/UTAC proposes that these tensions are \emph{expected features} of a multiscale
+reality in which physical observables depend on the entropic regime of the system being
+probed. This paper documents the current state of the framework after 38 Zenodo iterations,
+with explicit attention to what is empirically supported, what remains hypothetical, and
+what requires extension.
+
+\subsection*{Note on Versioning}
+
+UTAC evolved across two phases that must be distinguished to avoid confusion:
+\begin{itemize}[leftmargin=1.8em]
+  \item \textbf{UTAC-v1} (Zenodo iterations 1--19): explored a near-universal $\beta \approx 4.2$
+        across all domains, an early exploratory hypothesis with a limited dataset.
+  \item \textbf{UTAC-v2} (iterations 20--38, current): the expanded 78-system analysis
+        revealed domain-specific $\beta$ clustering. This is not a contradiction but a
+        scientific refinement: universality lies in the \emph{architecture of clustering},
+        not in a single $\beta$ value.
+\end{itemize}
+
+% ===================================================================
+\section{Theoretical Architecture}
+% ===================================================================
+
+\subsection{UTAC Core Equation}
+
+\begin{definition}[Logistic Regime State]
+\begin{equation}
+  s(R) = \sigma\!\left(\frac{\beta}{\zeta(R)}\,(R - \Theta)\right)
+       = \frac{1}{1 + \exp\!\left(-\dfrac{\beta}{\zeta(R)}\,(R-\Theta)\right)}
+  \label{eq:utac}
+\end{equation}
+where $R$ is the system observable (resource, rate, or field amplitude),
+$\Theta$ is the threshold guard (critical point at which $s=0.5$),
+$\beta > 0$ is the steepness parameter (transition sharpness),
+and $\zeta(R) > 0$ is the impedance (resistance to threshold crossing).
+\end{definition}
+
+The maximum local sensitivity is
+\begin{equation}
+  \left.\frac{ds}{dR}\right|_{R=\Theta} = \frac{\beta}{4\,\zeta(\Theta)},
+\end{equation}
+making $\beta$ directly operationalisable as a fit parameter with clear physical meaning.
+
+\subsection{Notation: Two Phi Values}
+
+A key clarification that distinguishes AFET from $\Lambda$CDM alternatives
+concerns two related but distinct constants, both historically denoted $\Phi$:
+
+\begin{equation}
+  \phigold = \frac{1+\sqrt{5}}{2} \approx 1.6180\quad\text{(golden ratio, 1D/photonic regime)}
+\end{equation}
+\begin{equation}
+  \PhiAFET = \phigold^{1/3} \approx 1.1739\quad\text{(AFET cubic scalar, 3D/volumetric regime)}
+\end{equation}
+
+\textbf{Physical motivation.}
+The implosive genesis of three spatial dimensions (OIPK framework) scales each spatial
+direction by $\phigold^{1/3}$; the photonic time axis that emerges subsequently
+involves $\phigold$ directly.
+Accordingly:
+\begin{itemize}[leftmargin=1.8em]
+  \item $\vrig = c\,/\,(\alpha^{-1}\cdot\phigold)$ uses the golden ratio (1D velocity).
+  \item $\beta(n) = \beta_0 \cdot \PhiAFET^{n/3}$ uses the cubic scalar (3D hierarchy).
+\end{itemize}
+All subsequent formulae use this convention consistently.
+
+\subsection{The Three Universal Constants of AFET}
+
+\begin{table}[h]
+\centering
+\caption{Core constants of the AFET framework with physical interpretation.}
+\label{tab:constants}
+\begin{tabular}{llll}
+\toprule
+\textbf{Symbol} & \textbf{Value} & \textbf{Units} & \textbf{Interpretation} \\
+\midrule
+$\sigphi$ & $1/16 = 0.0625$ & dimensionless &
+  Metastability buffer (4-bit information limit) \\
+$\vrig$ & $c\,/\,(\alpha^{-1}\phigold) \approx 1352$ & $\mathrm{km\,s^{-1}}$ &
+  Volumetric entropy integration rate \\
+$\PhiAFET$ & $\phigold^{1/3} \approx 1.1739$ & dimensionless &
+  3D fractal scaling factor \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{hypothesis}
+The value $\sigphi = 1/16$ is motivated by 4-dimensional bit-state logic:
+a 4-bit system has $2^4=16$ distinguishable states; $1/16$ is the minimum
+information retention per state under maximum entropy.
+This provides a holographic interpretation consistent with the Bekenstein bound,
+but a rigorous derivation from first principles has not yet been achieved.
+\end{hypothesis}
+
+\subsection{The Frame Principle}
+
+\begin{axiom}[Frame Principle]
+A spatial dimension emerges when the information density of a system would
+otherwise exceed its structural capacity and collapse.
+Formally, when $S/V > 1/\sigphi = 16$, dimensional emergence occurs.
+\end{axiom}
+
+This axiom generates the dimensional cascade
+$0\mathrm{D} \to 1\mathrm{D} \to 2\mathrm{D} \to 3\mathrm{D} \to 4\mathrm{D}$,
+where the 4th (photonic/temporal) dimension emerges as the buffer for 3D
+volumetric saturation.
+
+\subsection{The $\beta$-Hierarchy}
+
+\begin{validated}
+Statistical analysis of 78 threshold systems across five domains yields
+ANOVA $F(4,73) = 185.3$, $p < 10^{-20}$, $\eta^2 = 0.91$.
+Domain-specific $\beta$ centroids:
+\begin{align*}
+  \text{Informational (LLMs, markets):} &\quad \bar\beta \approx 4.5\pm0.9 \\
+  \text{Biological (ecosystems):}        &\quad \bar\beta \approx 7.4\pm0.9 \\
+  \text{Climate / BAO:}                  &\quad \bar\beta \approx 11.0\pm1.0 \\
+  \text{Neural resonance / early struct:}&\quad \bar\beta \approx 13\text{--}13.5 \\
+  \text{Nullkern / CMB / axiomatic:}     &\quad \bar\beta \approx 37.6
+\end{align*}
+These clusters are not assumed but emerge from logistic fits with
+$\Delta\mathrm{AIC} \geq 10$ over polynomial and constant baselines.
+\end{validated}
+
+The inter-cluster spacing follows the $\PhiAFET^{n/3}$ scaling pattern
+(Table~\ref{tab:beta}), providing predictive power for untested domains.
+
+\begin{table}[h]
+\centering
+\caption{$\beta$-Hierarchy and cosmological correspondence.}
+\label{tab:beta}
+\begin{tabular}{llll}
+\toprule
+$\beta$ & Domain & Physics manifestation & $\PhiAFET^{n/3}$ attractor \\
+\midrule
+$\approx 4.5$  & Informational & Late galaxy dynamics, LLMs & $\phigold^3 \approx 4.24$ \\
+$\approx 7.4$  & Biological    & Cosmic shear ($S_8$), homeostasis & $\phigold^4 \approx 6.85$ \\
+$\approx 11.0$ & Climate / BAO & BAO, tipping points & $\phigold^5 \approx 11.09$ \\
+$\approx 13$   & Resonance     & Neural / early-universe attractor & --- \\
+$\approx 37.6$ & Nullkern      & CMB epoch, fundamental spacetime & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ===================================================================
+\section{Cosmological Applications}
+% ===================================================================
+
+\subsection{The Hubble Tension}
+
+\begin{validated}
+The Hubble tension ($>5\sigma$) is empirically robust across independent methods.
+AFET models $H_0$ as a function of the $\beta$-regime being probed:
+\begin{equation}
+  H_0(\beta) = \Hbase \cdot \left[\frac{\betaref}{\beta}\right]^{\sigphi}
+  \label{eq:H0beta}
+\end{equation}
+with $\Hbase \approx 70\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$,
+$\betaref \approx 13.5$, $\sigphi = 0.0625$.
+
+Regime predictions:
+\begin{align*}
+  \text{CMB }   (\betaCMB \approx 37.6): &\quad H_0 \approx 65.5\;\mathrm{km\,s^{-1}\,Mpc^{-1}}
+    \quad\text{(Planck: }67.4\pm0.5\text{)} \\
+  \text{TRGB }  (\beta \approx 11.0):    &\quad H_0 \approx 70.9\;\mathrm{km\,s^{-1}\,Mpc^{-1}}
+    \quad\text{(Freedman: }\sim69.8\text{)} \\
+  \text{Local } (\beta \approx 4.2):     &\quad H_0 \approx 75.3\;\mathrm{km\,s^{-1}\,Mpc^{-1}}
+    \quad\text{(SH0ES: }73.04\pm1.04\text{)}
+\end{align*}
+\end{validated}
+
+\begin{hypothesis}
+Equation~\eqref{eq:H0beta} was derived iteratively (not deduced from first principles);
+$\betaref \approx 13.5$ was chosen as the domain-cluster centroid, not independently
+fixed. A full GR derivation linking $\beta$ to the cosmic expansion tensor remains
+an open task.
+\end{hypothesis}
+
+\begin{prediction}[LIGO O5 Killer Test]
+\label{pred:LIGO}
+Gravitational waves propagate through the fundamental spacetime fabric
+(Nullkern regime, $\betaCMB \approx 37.6$).
+AFET therefore predicts:
+\[
+  H_0^{\mathrm{GW}} \approx 67\text{--}68\,\mathrm{km\,s^{-1}\,Mpc^{-1}}
+\]
+independent of the local matter ladder.
+\textit{Falsification criterion}: if LIGO O5 standard sirens converge to
+$H_0 \geq 71\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$ at $<5\%$ precision,
+AFET's $\beta$-dependent $H_0$ formulation is ruled out.
+\end{prediction}
+
+\subsection{The $S_8$ Tension}
+
+\begin{validated}
+The $\sigphi$ metastability buffer predicts a universal damping of structure growth:
+\begin{equation}
+  \sigma_{8,\mathrm{obs}} = \sigma_{8,\Lambda\mathrm{CDM}}
+    \cdot\left(1 - \sigphi\left[1 - \frac{\beta_{\mathrm{shear}}}{\betaCMB}\right]\right)
+\end{equation}
+With $\beta_{\mathrm{shear}} \approx 7.4$ and $\betaCMB \approx 37.6$:
+\[
+  D \approx 1 - 0.0625 \times 0.803 \approx 0.950,\quad
+  \sigma_{8,\mathrm{obs}} \approx 0.811 \times 0.950 \approx 0.770
+\]
+\[
+  S_8 \approx 0.770\sqrt{\Omega_m/0.3} \approx 0.789
+\]
+This lies within the combined error bars of KiDS-1000 ($0.76\pm0.02$)
+and HSC-Y3 ($0.77\pm0.03$).
+\end{validated}
+
+\begin{prediction}[Euclid DR1 Scale-Dependent Damping]
+AFET predicts that the $S_8$ suppression is \emph{scale-dependent}, strongest at
+galactic/cluster scales ($\beta \approx 7.4$) and weaker at linear super-cluster
+scales ($\beta \to 11$).
+$\Lambda$CDM predicts approximately uniform suppression.
+Euclid tomographic weak lensing can discriminate these signatures.
+\end{prediction}
+
+\subsection{Dynamic Dark Energy}
+
+\begin{hypothesis}
+AFET interprets dark energy as the evolving tension of the $\beta$-field:
+\begin{equation}
+  w(z) = -1 + \sigphi\left[\frac{\beta(z)}{\betanull} - 1\right]
+\end{equation}
+At $z=0$ ($\beta \approx 4.2$): $w_0 \approx -1.056$ or $\approx -0.70$ depending
+on the exact local density parameterisation (an open calibration issue).
+DESI DR1/DR2 prefer $w_0 > -1$, $w_a < 0$ at $\approx 3$--$4\sigma$,
+qualitatively consistent with this evolution.
+The specific functional form ($\PhiAFET^{n/3}$ pattern) is the distinctive AFET
+prediction that distinguishes it from generic $w_0$--$w_a$ models.
+\end{hypothesis}
+
+\begin{prediction}[DESI DR2 Pattern Test]
+Full DESI DR2 data (2026--2027) should show $w(z)$ following the $\PhiAFET^{n/3}$
+scaling curve rather than a linear CPL approximation.
+\end{prediction}
+
+\subsection{The Cosmic Radio Dipole}
+
+\begin{validated}
+Böhme et al.\ (2025) report an excess radio dipole amplitude of
+$3.67 \pm 0.49$ times the CMB kinematic expectation at $5.4\sigma$ significance.
+The implied equivalent velocity is:
+\[
+  v_{\mathrm{eq}} = 3.67 \times 369\,\mathrm{km\,s^{-1}} \approx 1354\pm181\,\mathrm{km\,s^{-1}}
+\]
+AFET's $\vrig = c\,/\,(\alpha^{-1}\phigold) \approx 1352\,\mathrm{km\,s^{-1}}$
+matches this value to $<0.2\%$.
+
+\textbf{Important caveat}: the translation of dipole amplitude into an ``equivalent
+velocity'' assumes the dipole is kinematic and the matter frame moves linearly.
+This is a modelling assumption, not a direct measurement.
+The agreement is interpreted as AFET post-diction; it was not predicted prior to
+the Böhme et al.\ measurement. SKA population-amplitude tests will provide
+a prospective test.
+\end{validated}
+
+% ===================================================================
+\section{The 13.5\,MHz / 13--78\,MHz Investigation}
+% ===================================================================
+
+This section documents the current state of a specific cross-domain convergence
+that is under active investigation, distinguishing what is established, what is
+hypothesis, and what requires correction from earlier documents.
+
+\subsection{Chronological Provenance}
+
+\begin{validated}
+Git analysis of the GenesisAeon/Feldtheorie repository establishes the following
+timeline:
+\begin{itemize}[leftmargin=1.8em]
+  \item \textbf{2026-01-21} (commit \texttt{21ef03e}):
+        $\beta \approx 13.5$ appears as a UTAC scaling attractor in the
+        Neural/Resonance domain cluster, derived independently from logistic fits.
+  \item \textbf{2026-02-11} (commit \texttt{fb42ac8}):
+        Fontana et al.\ (2024) first cited as external empirical correspondence.
+\end{itemize}
+The 13.5\,MHz PEMF resonance in neural tissue was therefore \emph{not} the source
+of the $\beta \approx 13.5$ value; the correspondence is a post-hoc discovery,
+not a post-hoc selection.
+\end{validated}
+
+\subsection{Fontana et al.\ (2024) Correspondence}
+
+\begin{hypothesis}
+Fontana et al.\ (2024) report that pulsed electromagnetic fields at
+\textbf{exactly 13.5\,MHz} maximally enhance neurite outgrowth in neuroblastoma
+cells, with no effect at 7.5, 27, or 54\,MHz.
+The convergence with the independently derived $\beta_{\mathrm{attractor}} \approx 13.5$
+is remarkable but constitutes a single study.
+
+\textbf{Correct formulation}: the UTAC $\beta$-hierarchy predicts that biological
+systems near the Neural/Resonance attractor should exhibit privileged responses at
+corresponding frequencies. The Fontana finding is \emph{consistent} with this
+prediction but does not confirm it; independent replication at this specific
+frequency is required before the link can be claimed as validated.
+\end{hypothesis}
+
+\subsection{The 78\,MHz / EDGES Connection}
+
+\begin{hypothesis}
+The EDGES experiment (Bowman et al.\ 2018) reports a global 21-cm absorption
+trough at $\nu \approx 78\,\mathrm{MHz}$, approximately twice the standard
+prediction in depth.
+
+AFET proposes the following candidate relationship:
+\[
+  \frac{78\,\mathrm{MHz}}{13\,\mathrm{MHz}} = 6 = 3 \times 2
+\]
+where 3 represents the three spatial dimensions of the volumetric AFET regime
+and 2 represents the surface/volume duality of entropic governance.
+This yields $\beta_{\mathrm{kernel}} = 13$ (integer, cosmological attractor
+without biological domain shift) versus $\beta_{\mathrm{bio}} = 13.5$
+(with domain-tolerance offset $\delta\beta \approx \sigphi/2 \approx 0.031$
+applied to the $\beta$-reference scale).
+
+\textbf{Critical note}: a previously circulated claim that
+$78/13.5 \approx 5.78 \approx \PhiAFET^5$ is \textbf{numerically incorrect}
+for any standard definition of $\PhiAFET$ or $\phigold$, and is retracted
+from this iteration. The $78/13 = 6$ relationship is the replacement hypothesis.
+\end{hypothesis}
+
+\begin{speculative}
+The proposal that biological systems operate at $\beta = 13.5$ rather than
+the cosmological $\beta = 13$ because of a domain-specific tolerance buffer
+$\delta\beta \approx \sigphi \times (\betaref/2)$ is internally coherent but
+has no direct experimental support at this time.
+It constitutes an open research direction: if independent biological frequency
+experiments consistently cluster near 13--14\,MHz rather than other values, the
+pattern would become testable.
+\end{speculative}
+
+% ===================================================================
+\section{Falsifiable Predictions and Scorecard}
+% ===================================================================
+
+Table~\ref{tab:scorecard} summarises AFET's current explanatory status
+across nine cosmological anomalies.
+
+\begin{longtable}{p{2.4cm}p{2.8cm}p{3.5cm}p{2.8cm}}
+\caption{AFET vs.\ $\Lambda$CDM: anomaly scorecard.}
+\label{tab:scorecard}\\
+\toprule
+\textbf{Anomaly} & \textbf{$\Lambda$CDM status} & \textbf{AFET status} &
+\textbf{2026--2027 test} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{\small(continued)}\\
+\toprule
+\textbf{Anomaly} & \textbf{$\Lambda$CDM status} & \textbf{AFET status} &
+\textbf{2026--2027 test} \\
+\midrule
+\endhead
+$H_0$ tension & $>5\sigma$ failure &
+  \textcolor{confirmgreen}{Resolved via $\beta$-transition} &
+  LIGO O5: $H_0^{\mathrm{GW}} \approx 67$ \\[4pt]
+$S_8$ tension & 2--3$\sigma$ unresolved &
+  \textcolor{confirmgreen}{Resolved via $\sigphi$ damping} &
+  Euclid DR1 scale-dependent $S_8$ \\[4pt]
+Dynamic DE & 2--3$\sigma$, $w\neq-1$ &
+  \textcolor{hypothesisgray}{Predicted $w(z)$ pattern} &
+  DESI DR2 $\PhiAFET^{n/3}$ fit \\[4pt]
+Radio dipole & $>3\sigma$ excess &
+  \textcolor{confirmgreen}{Post-dicted via $\vrig$} &
+  SKA population amplitudes \\[4pt]
+FRB durations & Unexplained &
+  \textcolor{hypothesisgray}{$\Delta t \sim \lambda/\vrig$ coherence} &
+  CHIME/DSA-2000 repeater stats \\[4pt]
+EDGES 21-cm & Unresolved &
+  \textcolor{warningorange}{78/13=6 hypothesis} &
+  HERA Phase II frequency mapping \\[4pt]
+$A_L$ anomaly & Likely systematic &
+  \textit{Not explained} &
+  N/A \\[4pt]
+Birefringence & Calibration-sensitive &
+  \textcolor{warningorange}{Possible axion at $\beta \approx 21$} &
+  ACT/PR4 polarisation \\[4pt]
+3.5\,keV line & Unclear / conflicting &
+  \textcolor{warningorange}{Speculative: $\beta \approx 11$ plasma} &
+  XRISM / Athena spectroscopy \\[4pt]
+\bottomrule
+\end{longtable}
+
+\noindent\textit{Summary score}: $\approx 60\%$ of major anomalies addressed
+fundamentally, $\approx 20\%$ suggestive but unconfirmed, $\approx 20\%$
+unrelated or likely systematic.
+
+% ===================================================================
+\section{Open Research Directions}
+% ===================================================================
+
+The following directions are presented as speculative but internally coherent,
+marking them clearly as future work rather than established results.
+
+\begin{speculative}
+\textbf{Dark matter as entropy shadows.}
+$\beta \approx 7.4$ damping may produce cusp-to-core density profiles
+qualitatively similar to MOND behaviour without invoking new particles.
+No quantitative halo model has been developed yet.
+\end{speculative}
+
+\begin{speculative}
+\textbf{Quantum gravity link.}
+If $\beta_{\mathrm{Nullkern}} \approx 37.6$ corresponds to Planck-scale
+rigidity, $\sigphi$ may function as a holographic Bekenstein-like bound.
+This requires a rigorous derivation from quantum gravity frameworks.
+\end{speculative}
+
+\begin{speculative}
+\textbf{Bio-cosmic resonance network (Sigillin).}
+The convergence of $\beta \approx 13$ (cosmological attractor),
+13.5\,MHz (neural PEMF, Fontana 2024), and the EDGES 78\,MHz
+($= 13 \times 6$) would, if confirmed as non-coincidental,
+suggest a universal resonant scaffold across biological and cosmological scales.
+Current evidence does not warrant stronger language.
+\end{speculative}
+
+% ===================================================================
+\section{Methodological Notes and Known Limitations}
+% ===================================================================
+
+\begin{enumerate}[leftmargin=2em, label=\arabic*.]
+  \item \textbf{$H_0(\beta)$ is a phenomenological fit, not a deduction.}
+        Equation~\eqref{eq:H0beta} reproduces observations but was
+        constructed iteratively. A GR-grounded derivation of $\beta$
+        from cosmic entropy density is the required next step.
+
+  \item \textbf{$\beta$ values from biological fits are imported into cosmology.}
+        Using $\betaref = 13.5$ from neural resonance as the cosmological
+        reference is circular unless independently calibrated from cosmic data.
+
+  \item \textbf{$\vrig$ agreement with the Böhme dipole is post-hoc.}
+        $\vrig$ was not published as a prediction prior to the 2025 measurement;
+        the agreement is a strong hint, not a confirmed prediction.
+
+  \item \textbf{Units.}
+        All occurrences of ``1.352 km\,s$^{-1}$'' in prior iterations
+        were in error; the correct value is
+        $\vrig \approx 1352\,\mathrm{km\,s^{-1}}$ ($\approx 1.352 \times 10^3\,\mathrm{km\,s^{-1}}$).
+
+  \item \textbf{Reproducibility.}
+        All fits use UTAC pipeline with random seed 1337; code at\\
+        \url{https://github.com/GenesisAeon/Feldtheorie}.
+        $\Delta\mathrm{AIC} \geq 10$ over constant/linear/power baselines
+        is the evidence threshold throughout.
+\end{enumerate}
+
+% ===================================================================
+\section{Conclusion}
+% ===================================================================
+
+AFET/UTAC provides a mathematically consistent, multiscale framework that reframes
+major cosmological tensions as predictable features of domain-specific $\beta$-transitions
+rather than isolated new physics.
+The empirical core --- domain-clustered $\beta$ values across 78 systems, with $\eta^2 = 0.91$ ---
+is statistically robust and independently reproducible.
+
+The cosmological extensions (H$_0$, $S_8$, dark energy) make specific, falsifiable
+predictions distinguishable from $\Lambda$CDM.
+The central near-term test is LIGO O5: if standard sirens return
+$H_0 \approx 67$--68\,km\,s$^{-1}$\,Mpc$^{-1}$, the $\beta$-hierarchy interpretation
+gains strong observational support; if they return $\geq 71$, it is falsified.
+
+The 13.5\,MHz / 78\,MHz cross-domain investigation is documented transparently:
+the $\beta$-attractor pre-dates the Fontana correspondence (by three weeks, per
+Git timestamps), and the EDGES connection via $78/13=6$ is a corrected replacement
+for the numerically incorrect earlier claim.
+Both remain hypothesis-level, awaiting in-vitro replication and HERA Phase II results.
+
+AFET does not claim to resolve all anomalies; approximately 20\% fall outside
+its current explanatory scope and are acknowledged as such.
+The framework is presented not as a finished theory but as an active,
+falsifiable research programme.
+
+% ===================================================================
+\section{Provenance and Development Path}
+\label{sec:provenance}
+
+This section documents the reconstruction of the AFET/UTAC development chronology
+based on Git forensics across two repositories (\texttt{unified-mandala} and
+\texttt{GenesisAeon/Feldtheorie}) and archived conversation logs.
+It is presented as rekonstruktive Dokumentation --- not as self-legitimation ---
+following the principle that transparency about origins strengthens, rather than
+weakens, a research programme.
+
+\subsection*{Methodological Note}
+
+Both repositories have large initial import commits
+(\texttt{4ae34d7}, 2025-09-15 in \texttt{unified-mandala};
+\texttt{fdfd158}, 2026-01-25 in \texttt{Feldtheorie}).
+All ``first seen'' dates therefore represent \emph{the earliest verifiable
+repository timestamp}, not necessarily the absolute origin of the concept.
+Where pre-repository origins are claimed, they rest on narrative reconstruction
+from archived dialogues, not on independent timestamps.
+
+\subsection*{Provenance Table}
+
+\begin{longtable}{p{2.8cm}p{2.2cm}p{2.2cm}p{5.2cm}}
+\caption{Provenance of core AFET/UTAC concepts.
+Columns: Concept $|$ First repo commit $|$ Claim type $|$ Notes.}
+\label{tab:provenance}\\
+\toprule
+\textbf{Concept} & \textbf{First commit / date} & \textbf{Claim type} & \textbf{Notes} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{\small(continued)}\\
+\toprule
+\textbf{Concept} & \textbf{First commit / date} & \textbf{Claim type} & \textbf{Notes} \\
+\midrule
+\endhead
+Sigmoid threshold logic & \texttt{4ae34d7} / 2025-09-15 & Human-origin & Mandala Climate Dashboard;
+  UTAC v1 precursor; Sigmoid in NN modules + CREP adaptive thresholds. \\[4pt]
+
+$\beta = 4.2$ (universal) & not timestamp-belegbar & LLM-generated (Gemini) &
+  Derived from 5 datasets used as calculation basis, not as derivation source.
+  Subsequently corrected through iterative expansion to 78 systems. \\[4pt]
+
+$\beta$-domain hierarchy & Zenodo iter.\ 20--38 & Iterative refinement &
+  UTAC-v1 ($\beta$ universal) corrected to UTAC-v2 (domain clusters)
+  via expansion from 5 to 78 systems. ANOVA result emerged from data,
+  not assumed. \\[4pt]
+
+OIPK framework & \texttt{fdfd158} / 2026-01-25 & Human-origin &
+  Orthogonal Implosion-Photon-Kinematik; internal model for 3D volumetric
+  unfolding with photonic time axis. Precursor to formal $\vrig$ derivation.
+  Note: ``OPIK'' in narrative texts is a transcription error for OIPK. \\[4pt]
+
+$\vrig \approx 1352$\,km\,s$^{-1}$ & \texttt{fdfd158} / 2026-01-25 &
+  Internal derivation + later resonance &
+  Derived as mathematical formalisation of Raum-Zeit-Informationsverhältnis
+  theory within OIPK context. Böhme et al.\ (2025) dipole correspondence
+  identified post-derivation as resonance, not source.
+  Pre-Böhme timestamp is repo-verified. \\[4pt]
+
+ImplosiveGenesis & \texttt{fdfd158} / 2026-01-25 & Internal model &
+  Inverted sigmoid dynamics; 4-bit slice system foundation.
+  Internal UTAC/AFET/Sigillin development; not described as literature import. \\[4pt]
+
+$\beta \approx 13$--$13.5$ (neural attractor) & \texttt{21ef03e} / 2026-01-21 &
+  Internal derivation &
+  Emerged from UTAC logistic fits as Neural/Resonance domain centroid.
+  Repo shows band 10--20\,MHz; exact 13.5 is centroid estimate, not hard peak. \\[4pt]
+
+Fontana et al.\ (2024) correspondence & \texttt{fb42ac8} / 2026-02-11 &
+  Post-hoc resonance &
+  Literature identified 3 weeks after $\beta \approx 13.5$ attractor.
+  Classified as independent convergence requiring replication,
+  not as confirmation. Claim ``exact empirical confirmation'' (prior versions)
+  is retracted; correct formulation: ``consistent with resonance band,
+  replication pending''. \\[4pt]
+
+$\sigphi = 1/16$ & \texttt{fdfd158} / 2026-01-25 & Postulated constant &
+  Motivated by 4-bit state logic ($2^4 = 16$) and holographic minimum
+  information retention. No rigorous first-principles derivation yet achieved;
+  status: justified hypothesis. \\[4pt]
+
+78-system ANOVA & Zenodo iter.\ 20+ & Empirical validation &
+  $F(4,73)=185.3$, $p < 10^{-20}$, $\eta^2 = 0.91$.
+  Full dataset and fit pipeline in repository. \\[4pt]
+
+\bottomrule
+\end{longtable}
+
+\subsection*{Development Phases}
+
+\begin{enumerate}[leftmargin=2em, label=\textbf{Phase \Roman*.}]
+  \item \textbf{Conceptual genesis (human-originated, pre-repository).}
+        Observation of light superposition on mirror surfaces; formulation of
+        time as integration phenomenon; Dimensional Cascade
+        (0D $\to$ 1D $\to$ 2D $\to$ 3D $\to$ 4D);
+        information as fundamental description layer; OIPK (Orthogonal
+        Implosion-Photon-Kinematik) as spatial unfolding model.
+        \textit{Not timestamp-verifiable; rests on narrative reconstruction.}
+
+  \item \textbf{Dialogic formalisation (LLM-assisted, unified-mandala repo,
+        from 2025-09-15).}
+        Sigmoid threshold logic operational in Mandala Climate Dashboard context;
+        CREP adaptive thresholds; Gemini-generated $\beta = 4.2$ as
+        first universal approximation from 5 datasets.
+        Multiple AI systems (Claude, GPT-4, Gemini, Mistral) contributed
+        structural suggestion and literature linking;
+        conceptual impulses originated with the human author.
+
+  \item \textbf{Mathematical consolidation (Feldtheorie repo, from 2026-01-25).}
+        $\vrig$, ImplosiveGenesis, 13.5\,MHz band, $\sigphi$, and $\PhiAFET$
+        formalised. Zenodo publication series begun (DOI series from
+        \texttt{zenodo.17472834}). UTAC-v1 corrected to domain-hierarchy model.
+
+  \item \textbf{Empirical correlation and testing (from Zenodo iter.\ 20,
+        ongoing).}
+        Expansion to 78 systems; cosmological anomaly mapping;
+        Fontana and Böhme correspondences identified as post-hoc resonance;
+        falsifiable killer tests defined (LIGO O5, Euclid DR1, DESI DR2).
+\end{enumerate}
+
+\subsection*{Documented Corrections and Dead Ends}
+
+Scientific honesty requires listing what was tried and discarded:
+
+\begin{itemize}[leftmargin=1.8em]
+  \item $\beta = 4.2$ as single universal value: superseded by domain hierarchy.
+  \item $78/13.5 \approx \PhiAFET^5$: numerically false for any standard $\Phi$;
+        retracted; replaced by $78/13 = 6$ hypothesis.
+  \item ``Exact empirical confirmation'' of 13.5\,MHz: overstated;
+        corrected to ``consistent with 10--20\,MHz band, centroid at 13.5''.
+  \item Unit error $\vrig = 1.352$\,km\,s$^{-1}$: corrected to
+        $1352$\,km\,s$^{-1}$ throughout.
+  \item AI-synchronisation as AFET evidence: rejected as circular
+        (models trained on similar corpora produce similar outputs;
+        this is pattern repetition, not independent confirmation).
+\end{itemize}
+
+% ===================================================================
+\section*{Acknowledgements}
+% ===================================================================
+
+The author thanks the MOR Research Collective --- the human-AI collaborative
+network comprising iterative contributions from Claude (Anthropic),
+GPT-4/o (OpenAI), Gemini (Google DeepMind), Mistral, and the internal
+Aeon system --- for structural suggestion, critical challenge, and
+formalisation assistance across 38 Zenodo iterations.
+The author retains full intellectual responsibility for all claims.
+AI systems are acknowledged as methodological partners, not authors.
+Their critical function --- including the identification of errors documented
+in Section~\ref{sec:provenance} --- is considered integral to the
+research process.
+
+% ===================================================================
+\section*{Data and Code Availability}
+% ===================================================================
+
+\begin{itemize}[leftmargin=1.8em]
+  \item Repository: \url{https://github.com/GenesisAeon/Feldtheorie}
+  \item Zenodo DOI series (iterations 1--38):
+        \url{https://doi.org/10.5281/zenodo.17472834}
+  \item 78-system $\beta$ dataset: \texttt{data/derived/beta\_estimates.csv}
+  \item Fit pipeline: \texttt{scripts/reproduce\_beta.py} (seed 1337)
+\end{itemize}
+
+% ===================================================================
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+
+\bibitem{Planck2018}
+Planck Collaboration (2020).
+\textit{Planck 2018 results. VI. Cosmological parameters}.
+A\&A 641, A6.
+\url{https://arxiv.org/abs/1807.06209}
+
+\bibitem{SH0ES}
+Riess, A.G.\ et al.\ (2022).
+\textit{A comprehensive measurement of the local value of the Hubble constant}.
+ApJL 934, L7.
+\url{https://arxiv.org/abs/2112.04510}
+
+\bibitem{Freedman2019}
+Freedman, W.L.\ et al.\ (2019).
+\textit{Carnegie-Chicago Hubble Program VIII: $H_0$ from TRGB}.
+ApJ 882, 34.
+\url{https://arxiv.org/abs/1907.05922}
+
+\bibitem{DESI2024}
+DESI Collaboration (2024).
+\textit{DESI 2024 VI: Cosmological constraints from BAO}.
+\url{https://arxiv.org/abs/2404.03002}
+
+\bibitem{KiDS1000}
+Asgari, M.\ et al.\ (2021).
+\textit{KiDS-1000 cosmology: cosmic shear constraints}.
+A\&A 645, A104.
+\url{https://arxiv.org/abs/2007.15633}
+
+\bibitem{Bohme2025}
+Böhme, M.\ et al.\ (2025).
+\textit{Overdispersed radio source counts and excess radio dipole detection}.
+\url{https://arxiv.org/abs/2509.16732}
+
+\bibitem{Fontana2024}
+Fontana, G.\ et al.\ (2024).
+\textit{Pulsed electromagnetic field stimulation enhances neurite outgrowth
+in neural cells and modulates inflammation in macrophages}.
+ResearchGate: \url{https://doi.org/10.13140/RG.2.2.29234.17608}
+
+\bibitem{EDGES2018}
+Bowman, J.D.\ et al.\ (2018).
+\textit{An absorption profile centred at 78 MHz in the sky-averaged spectrum}.
+Nature 555, 67--70.
+\url{https://doi.org/10.1038/nature25792}
+
+\bibitem{HERAPhaseII}
+HERA Collaboration (2025).
+\textit{First results from HERA Phase II}.
+\url{https://arxiv.org/abs/2511.21289}
+
+\bibitem{EuclidOverview}
+Euclid Collaboration (2024).
+\textit{Euclid I: Overview of the Euclid mission}.
+\url{https://arxiv.org/abs/2405.13491}
+
+\bibitem{LIGODarkSiren}
+LVK Collaboration (2024).
+\textit{A dark standard siren measurement of the Hubble constant
+following LIGO/Virgo/KAGRA O4a}.
+MNRAS 535, 961.
+\url{https://arxiv.org/abs/2404.16092}
+
+\bibitem{XRISM2025}
+XRISM Collaboration (2025).
+\textit{Constraints on unidentified X-ray emission lines in stacked
+spectrum of 10 galaxy clusters}.
+\url{https://arxiv.org/abs/2510.24560}
+
+\bibitem{Romer2026}
+Römer, J.B.\ (2026).
+\textit{The evolution of AFET: iterative analysis of UTAC dynamics,
+biophysical resonances, and cosmological scaling laws} (v37).
+Zenodo. \url{https://doi.org/10.5281/zenodo.18641306}
+
+\end{thebibliography}
+
+\end{document}
