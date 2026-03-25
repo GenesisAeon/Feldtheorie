@@ -131,3 +131,9 @@ branch = true
 [tool.coverage.report]
 show_missing = true
 skip_empty = true
+
+# === Diamond-Propagation: added project.urls & Zenodo ===
+[project.urls]
+Homepage = "https://github.com/GenesisAeon/Feldtheorie"
+Documentation = "https://genesisaeon.github.io/Feldtheorie"
+Zenodo = "https://doi.org/10.5281/zenodo.XXXXXXXX"  # <- enter your DOI
