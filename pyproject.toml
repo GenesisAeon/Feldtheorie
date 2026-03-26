@@ -1,4 +1,4 @@
-[build-system]
+﻿[build-system]
 requires = ["hatchling>=1.24"]
 build-backend = "hatchling.build"
 
@@ -137,3 +137,4 @@ skip_empty = true
 Homepage = "https://github.com/GenesisAeon/Feldtheorie"
 Documentation = "https://genesisaeon.github.io/Feldtheorie"
 Zenodo = "https://doi.org/10.5281/zenodo.XXXXXXXX"  # <- enter your DOI
+
