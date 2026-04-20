@@ -5,10 +5,10 @@
 # REST API & Web Server
 # =============================================================================
 # FastAPI framework for REST endpoints
-fastapi>=0.104.0,<0.129
+fastapi>=0.104.0,<0.137
 
 # ASGI server for running the API
-uvicorn[standard]>=0.24.0,<0.41
+uvicorn[standard]>=0.24.0,<0.45
 
 # HTTP client for testing FastAPI endpoints
 httpx>=0.25.0

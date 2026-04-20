@@ -22,26 +22,26 @@ dependencies = [
   "pyyaml>=6.0,<7",
   "jsonschema>=4.20,<5",
   "typer>=0.12,<1",
-  "rich>=13.7,<15",
+  "rich>=13.7,<16",
   "requests>=2.31,<3",
 ]
 
 [project.optional-dependencies]
 dev = [
   "black>=24.4,<27",
-  "mypy>=1.10,<1.20",
-  "nox>=2024.4.15,<2025.12",
+  "mypy>=1.10,<1.21",
+  "nox>=2024.4.15,<2026.5",
   "pytest>=8.2,<10",
   "pytest-cov>=4.1,<8",
-  "ruff>=0.5.0,<0.15",
+  "ruff>=0.5.0,<0.16",
 ]
 docs = [
   "myst-parser>=2.0,<5",
   "sphinx>=7.3,<9",
 ]
 api = [
-  "fastapi>=0.104,<0.129",
-  "uvicorn[standard]>=0.24,<0.41",
+  "fastapi>=0.104,<0.137",
+  "uvicorn[standard]>=0.24,<0.45",
   "httpx>=0.25",
   "websockets>=12.0,<17",
 ]
@@ -51,15 +51,15 @@ llm = [
 ]
 all = [
   "black>=24.4,<27",
-  "mypy>=1.10,<1.20",
-  "nox>=2024.4.15,<2025.12",
+  "mypy>=1.10,<1.21",
+  "nox>=2024.4.15,<2026.5",
   "pytest>=8.2,<10",
   "pytest-cov>=4.1,<8",
-  "ruff>=0.5.0,<0.15",
+  "ruff>=0.5.0,<0.16",
   "myst-parser>=2.0,<5",
   "sphinx>=7.3,<9",
-  "fastapi>=0.104,<0.129",
-  "uvicorn[standard]>=0.24,<0.41",
+  "fastapi>=0.104,<0.137",
+  "uvicorn[standard]>=0.24,<0.45",
   "httpx>=0.25",
   "websockets>=12.0,<17",
   "openai>=1.0,<3",
