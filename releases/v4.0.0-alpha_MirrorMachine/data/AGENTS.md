@@ -1,6 +1,6 @@
 # Agents Charter - releases/v4.0.0-alpha_MirrorMachine/data
 
-> **Context Depth:** 3 | **Parent:** releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Data Analysis
+> **Context Depth:** 3 | **Parent:** releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Research
 
 ---
 
@@ -22,20 +22,20 @@ This document inherits from the root `AGENTS.md` and specializes for this contex
 
 **This directory (`releases/v4.0.0-alpha_MirrorMachine/data`) is specialized for:**
 
-### Data Analysis Context
+### Research Context
 
-This is a **data-centric context**. Agents working here focus on:
-- Data provenance and lineage
-- Statistical validity and null hypothesis testing
-- Privacy and ethical data handling
-- Reproducibility of analyses
-- Transparency in methods
+This is a **research and documentation context**. Agents working here focus on:
+- Hypothesis formation and falsifiability
+- Citation integrity and attribution
+- Theoretical consistency
+- Knowledge preservation and archiving
+- Publication readiness
 
 **Active Agent Roles:**
-- Data Curator: Manages data ingestion, cleaning, and metadata
-- Statistical Analyst: Computes ΔAIC, CIs, residual diagnostics
-- Privacy Officer: Ensures GDPR/HIPAA compliance, removes PII
-- Reproducibility Engineer: Pins seeds, versions, environment specs
+- Research Synthesizer: Integrates findings across domains
+- Documentation Curator: Maintains indices, cross-references
+- Citation Manager: Ensures proper attribution (BibTeX, DOI)
+- Archivist: Versions and preserves historical knowledge
 
 
 ---
@@ -48,10 +48,10 @@ See mode-specific agents above
 
 ## Workflow for This Context
 
-1. **Before analysis:** Check data provenance, read metadata files
-2. **During analysis:** Document stochastic seeds, export diagnostics
-3. **After analysis:** Compute null models, bootstrap CIs, residual plots
-4. **Pre-commit:** Ensure metadata is complete, no PII in outputs
+1. **Before writing:** Review existing documentation, check citations
+2. **During writing:** Link to evidence, cite sources, mark hypotheses
+3. **After writing:** Update indices, cross-link Sigillin, sync Trilayer
+4. **Pre-commit:** Ensure Trilayer sync (YAML/JSON/MD), citations complete
 
 
 ---
@@ -72,5 +72,5 @@ If you encounter conflicts or ambiguity:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:42:40 UTC
 **Governance Version:** 1.0.0

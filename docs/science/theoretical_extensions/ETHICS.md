@@ -1,6 +1,6 @@
-# Ethics and Responsible Use - docs/theoretical_extensions
+# Ethics and Responsible Use - docs/science/theoretical_extensions
 
-> **Context Depth:** 2 | **Parent:** docs | **Mode:** Recursive Research
+> **Context Depth:** 3 | **Parent:** docs/science | **Mode:** Recursive Research
 
 ---
 
@@ -21,7 +21,7 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 ## Local Context Ethics
 
-**In this directory (`docs/theoretical_extensions`), the following ethical rules apply:**
+**In this directory (`docs/science/theoretical_extensions`), the following ethical rules apply:**
 
 ### Research Ethics
 
@@ -58,7 +58,7 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 ## Review Checklist
 
-Before committing work in `docs/theoretical_extensions`:
+Before committing work in `docs/science/theoretical_extensions`:
 - [ ] Data provenance documented in metadata files
 - [ ] Statistical diagnostics exported and reviewed
 - [ ] Null models defined and ΔAIC computed
@@ -76,5 +76,5 @@ Before committing work in `docs/theoretical_extensions`:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:42:40 UTC
 **Governance Version:** 1.0.0

@@ -1,6 +1,6 @@
-# Architecture - models
+# Architecture - science/models
 
-> **Context Depth:** 1 | **Parent:** / | **Mode:** Recursive Programming
+> **Context Depth:** 2 | **Parent:** / | **Mode:** Recursive Programming
 
 ---
 
@@ -19,7 +19,7 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 
 ## Local Architecture
 
-**This directory (`models`) follows the following architectural pattern:**
+**This directory (`science/models`) follows the following architectural pattern:**
 
 ### Programming Architecture
 
@@ -44,7 +44,7 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 ## Component Diagram
 
 ```
-models
+science/models
 └── (See mode-specific architecture)
 ```
 
@@ -75,5 +75,5 @@ Integrates with parent context governance
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:42:40 UTC
 **Governance Version:** 1.0.0

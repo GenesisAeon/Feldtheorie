@@ -310,10 +310,21 @@ class TestShadowFeedbackEthics:
 
 
 def _ensure_api_bridge_mock():
-    """Ensure aeon.api_bridge is mocked so hub.py can import."""
-    from unittest.mock import MagicMock
+    """Stub aeon.api_bridge only when the real module can't be imported (e.g. fastapi missing).
+
+    Unconditionally replacing sys.modules["aeon.api_bridge"] poisons the module
+    cache for the rest of the test session: other tests that do
+    importlib.import_module("aeon.api_bridge") would then get this MagicMock
+    instead of the real module, silently swallowing real behavior (e.g. the
+    ImportError that AeonBridge.__init__ raises when FastAPI is unavailable).
+    """
+    import importlib
     import sys as _sys
-    if "aeon.api_bridge" not in _sys.modules or isinstance(_sys.modules["aeon.api_bridge"], MagicMock):
+    from unittest.mock import MagicMock
+
+    try:
+        importlib.import_module("aeon.api_bridge")
+    except ImportError:
         mock = MagicMock()
         mock.AeonLanternAsyncBridge = MagicMock
         _sys.modules["aeon.api_bridge"] = mock

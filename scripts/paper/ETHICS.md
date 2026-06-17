@@ -1,6 +1,6 @@
 # Ethics and Responsible Use - scripts/paper
 
-> **Context Depth:** 2 | **Parent:** scripts | **Mode:** Recursive Research
+> **Context Depth:** 2 | **Parent:** scripts | **Mode:** Recursive Programming
 
 ---
 
@@ -23,23 +23,22 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 **In this directory (`scripts/paper`), the following ethical rules apply:**
 
-### Research Ethics
+### Code Ethics
 
-- **Citation Integrity**: Always credit original authors with DOI/URL
-- **Hypothesis Transparency**: Mark speculative claims clearly
-- **Falsifiability**: Provide criteria for disproving hypotheses
-- **Version Control**: Never delete history; archive old theories
-- **Conflict of Interest**: Disclose any competing interpretations
+- **No hardcoded secrets**: Use environment variables or secret managers
+- **Dependency hygiene**: Pin versions, audit for vulnerabilities
+- **Licensing compliance**: Respect open-source licenses (see LICENSE file)
+- **Accessibility**: Consider edge cases, error handling, and user feedback
+- **Attribution**: Credit external libraries and algorithms properly
 
 
 ---
 
 ## Data Governance for This Context
 
-- Cite all data sources used in manuscripts
-- Include BibTeX entries for every reference
-- Archive drafts with semantic versions (v1.0, v1.1, etc.)
-- Preserve rejected hypotheses in `archive/`
+- Configuration files must not contain PII or API keys
+- Test fixtures should use synthetic or anonymized data
+- Log outputs must redact sensitive information
 
 
 ---
@@ -48,10 +47,10 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 | Risk | Mitigation |
 |------|------------|
-| Plagiarism | Check all text through originality tools |
-| Cherry-picking citations | Include contradictory evidence |
-| Unfalsifiable claims | Define clear disconfirmation criteria |
-| Overclaiming universality | Specify scope and limitations explicitly |
+| Command injection | Sanitize all user inputs; use parameterized APIs |
+| XSS vulnerabilities | Escape HTML; use Content Security Policy |
+| SQL injection | Use ORMs or parameterized queries |
+| Insecure dependencies | Run `pip-audit` or `npm audit` regularly |
 
 
 ---
@@ -76,5 +75,5 @@ Before committing work in `scripts/paper`:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:42:40 UTC
 **Governance Version:** 1.0.0

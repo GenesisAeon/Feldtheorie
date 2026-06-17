@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "feldtheorie"
-version = "5.0.0"
+version = "6.0.0"
 description = "Reproducibility harness for the Universal Threshold Field programme."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -38,6 +38,9 @@ dev = [
 docs = [
   "myst-parser>=2.0,<5",
   "sphinx>=7.3,<9",
+  "mkdocs>=1.6,<2",
+  "mkdocs-material>=9.5,<10",
+  "pymdown-extensions>=10.7,<11",
 ]
 api = [
   "fastapi>=0.104,<0.129",

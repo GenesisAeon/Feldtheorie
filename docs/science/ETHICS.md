@@ -1,6 +1,6 @@
-# Ethics and Responsible Use - docs
+# Ethics and Responsible Use - docs/science
 
-> **Context Depth:** 1 | **Parent:** / | **Mode:** Recursive Research
+> **Context Depth:** 2 | **Parent:** docs | **Mode:** Recursive Research
 
 ---
 
@@ -21,7 +21,7 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 ## Local Context Ethics
 
-**In this directory (`docs`), the following ethical rules apply:**
+**In this directory (`docs/science`), the following ethical rules apply:**
 
 ### Research Ethics
 
@@ -58,7 +58,7 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 ## Review Checklist
 
-Before committing work in `docs`:
+Before committing work in `docs/science`:
 - [ ] Data provenance documented in metadata files
 - [ ] Statistical diagnostics exported and reviewed
 - [ ] Null models defined and ΔAIC computed
@@ -330,5 +330,5 @@ PROVENANCE BLOCK
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:42:40 UTC
 **Governance Version:** 1.0.0

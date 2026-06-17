@@ -510,4 +510,4 @@ UTAC zeigt **universelle Anwendbarkeit** über Domänen:
 
 *Für theoretischen Hintergrund siehe [`utac_theory_core.md`](utac_theory_core.md)*
 *Für Validierungsmethoden siehe [`utac_falsifiability.md`](utac_falsifiability.md)*
-*Für Reproduktion siehe [`../REPRODUCE.md`](../REPRODUCE.md)*
+*Für Reproduktion siehe [`REPRODUCE.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/REPRODUCE.md)*

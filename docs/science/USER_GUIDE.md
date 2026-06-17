@@ -574,7 +574,7 @@ See [CITATION.cff](../CITATION.cff):
 ### Documentation
 
 - **[SUMMARY.md](../SUMMARY.md)** - Scientific summary (no metaphors)
-- **[README.md](../README.md)** - Project overview
+- **[OVERVIEW.md](../OVERVIEW.md)** - Project overview
 - **[METHODS.md](../METHODS.md)** - Statistical methodology
 - **[QUICKSTART.md](../QUICKSTART.md)** - 5-minute tutorial
 - **[ARCHITECTURE.md](../ARCHITECTURE.md)** - System design
@@ -587,9 +587,9 @@ See [CITATION.cff](../CITATION.cff):
 
 ### Examples
 
-- **[notebooks/](../notebooks/)** - Jupyter notebooks (coming soon)
-- **[examples/](../examples/)** - Code examples
-- **[analysis/results/](../analysis/results/)** - Benchmark results
+- **[notebooks/](https://github.com/GenesisAeon/Feldtheorie/blob/main/notebooks)** - Jupyter notebooks (coming soon)
+- **[examples/](https://github.com/GenesisAeon/Feldtheorie/blob/main/examples)** - Code examples
+- **[analysis/results/](https://github.com/GenesisAeon/Feldtheorie/blob/main/analysis/results)** - Benchmark results
 
 ---
 

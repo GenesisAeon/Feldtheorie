@@ -1,6 +1,6 @@
-# Governance Policy - models
+# Governance Policy - science/models
 
-> **Context Depth:** 1 | **Parent:** / | **Mode:** Recursive Programming
+> **Context Depth:** 2 | **Parent:** / | **Mode:** Recursive Programming
 
 ---
 
@@ -20,7 +20,7 @@ This policy inherits from parent and root governance and adds context-specific r
 
 ## Scope
 
-This policy governs all work in `models` and its subdirectories.
+This policy governs all work in `science/models` and its subdirectories.
 
 **Mode:** Recursive Programming
 
@@ -67,7 +67,7 @@ Before committing changes in this context:
 
 If governance violations occur:
 
-1. **Document**: Create incident report in `models/.governance/incidents/`
+1. **Document**: Create incident report in `science/models/.governance/incidents/`
 2. **Escalate**: Notify in root `GOVERNANCE_REPORT.md`
 3. **Remediate**: Fix violation and update this policy
 4. **Review**: Parent context reviews and approves changes
@@ -83,7 +83,7 @@ This policy can be updated by:
 
 **Change Log:**
 
-- 2025-11-24 14:22:03 UTC: Initial governance deployment (v1.0.0)
+- 2026-06-17 06:42:40 UTC: Initial governance deployment (v1.0.0)
 
 ---
 
@@ -94,5 +94,5 @@ This policy can be updated by:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:42:40 UTC
 **Governance Version:** 1.0.0

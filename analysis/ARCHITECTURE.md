@@ -1,6 +1,6 @@
-# Architecture - analysis
+# Architecture - science/analysis
 
-> **Context Depth:** 1 | **Parent:** / | **Mode:** Recursive Data Analysis
+> **Context Depth:** 2 | **Parent:** / | **Mode:** Recursive Data Analysis
 
 ---
 
@@ -19,7 +19,7 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 
 ## Local Architecture
 
-**This directory (`analysis`) follows the following architectural pattern:**
+**This directory (`science/analysis`) follows the following architectural pattern:**
 
 ### Data Architecture
 
@@ -46,7 +46,7 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 ## Component Diagram
 
 ```
-analysis
+science/analysis
 └── (See mode-specific architecture)
 ```
 
@@ -77,5 +77,5 @@ Integrates with parent context governance
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:42:40 UTC
 **Governance Version:** 1.0.0

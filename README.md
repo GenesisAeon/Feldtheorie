@@ -4,12 +4,12 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17974828.svg)](https://doi.org/10.5281/zenodo.17974828)
 [![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-blue)](https://github.com/GenesisAeon/Feldtheorie)
-[![Code License: GPLv3](https://img.shields.io/badge/Code%20License-GPLv3-blue.svg)](LICENSE)
-[![Content License: CC BY-NC 4.0](https://img.shields.io/badge/Content%20License-CC%20BY--NC%204.0-orange.svg)](LICENSE)
-[![Release](https://img.shields.io/badge/Release-v10.2%20Platinum-9cf.svg)](#platinum-release-v102--dreamtime-publication-prep)
+[![Code License: GPLv3](https://img.shields.io/badge/Code%20License-GPLv3-blue.svg)](https://github.com/GenesisAeon/Feldtheorie/blob/main/LICENSE)
+[![Content License: CC BY-NC 4.0](https://img.shields.io/badge/Content%20License-CC%20BY--NC%204.0-orange.svg)](https://github.com/GenesisAeon/Feldtheorie/blob/main/LICENSE)
+[![Release](https://img.shields.io/badge/Release-v13.0.0-9cf.svg)](#platinum-release-v102--dreamtime-publication-prep)
 [![Stable](https://img.shields.io/badge/Stable-6.0.0-brightgreen.svg)](#whats-new-in-v60-)
 [![V9 Alpha](https://img.shields.io/badge/Alpha-9.0.0--alpha-purple.svg)](#v9-preview-harmonic-emergence--dimensional-framework)
-[![Research Papers](https://img.shields.io/badge/📄_Research-Dimensional_Emergence-blue.svg)](docs/science/v9_research_overview.md)
+[![Research Papers](https://img.shields.io/badge/📄_Research-Dimensional_Emergence-blue.svg)](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science/v9_research_overview.md)
 [![V7 Progress](https://img.shields.io/badge/V7-85--90%25%20Complete-green.svg)](#v7-preview-collective-consciousness)
 [![V8 Status](https://img.shields.io/badge/V8-Validation%20Phase-orange.svg)](#v8-preview-consciousness-framework-validation)
 [![Tests](https://img.shields.io/badge/tests-1224%2F1224%20passing-brightgreen.svg)](#tests--quality)
@@ -27,7 +27,7 @@ What this means:
 - ✅ **Code = Specification** (interfaces + blueprints, not finished apps)
 - ✅ **Execution = Interpretation** (implementation happens in your context)
 
-To keep the field resonant, treat $R$ (offene Arbeiten) and $\\Theta$ (Schwellen) as coupled through $\\sigma(\\beta(R-\\Theta))$, with $\\beta\\approx4.8$ and $\\zeta(R)$ damping drift. Validate against null models (linear, power law, constant) with ΔAIC/CI metrics. See the full guide in [`docs/narrative/theoretical_mirror_framework.md`](docs/narrative/theoretical_mirror_framework.md).
+To keep the field resonant, treat $R$ (offene Arbeiten) and $\\Theta$ (Schwellen) as coupled through $\\sigma(\\beta(R-\\Theta))$, with $\\beta\\approx4.8$ and $\\zeta(R)$ damping drift. Validate against null models (linear, power law, constant) with ΔAIC/CI metrics. See the full guide in [`docs/narrative/theoretical_mirror_framework.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/narrative/theoretical_mirror_framework.md).
 
 ---
 
@@ -37,11 +37,11 @@ This repository is organized into **three complementary tracks** to reduce cogni
 
 ### ⚗️ [Scientific Track](science/) - For Researchers & Scientists
 **Focus:** Empirical research, falsifiable hypotheses, reproducible analyses
-- **[Scientific Summary](science/docs/SUMMARY.md)** - Concise overview without metaphors (start here!)
-- **[User Guide](science/docs/USER_GUIDE.md)** - Practical workflows for using UTAC
-- **[Models](science/models/)** - Mathematical implementations (logistic threshold, solvers)
-- **[Data](science/data/)** - 78 datasets across 5 domains with metadata
-- **[Tests](science/tests/)** - 1224 passing tests (~30% coverage)
+- **[Scientific Summary](https://github.com/GenesisAeon/Feldtheorie/blob/main/SUMMARY.md)** - Concise overview without metaphors (start here!)
+- **[User Guide](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science/USER_GUIDE.md)** - Practical workflows for using UTAC
+- **[Models](https://github.com/GenesisAeon/Feldtheorie/blob/main/models)** - Mathematical implementations (logistic threshold, solvers)
+- **[Data](https://github.com/GenesisAeon/Feldtheorie/blob/main/data)** - 78 datasets across 5 domains with metadata
+- **[Tests](https://github.com/GenesisAeon/Feldtheorie/blob/main/tests)** - 1224 passing tests (~30% coverage)
 
 **Quick Start:** Run your first analysis in 5 minutes
 ```bash
@@ -50,26 +50,26 @@ python scripts/reproduce_beta.py --csv data/ai/wei_emergent_abilities.csv --out 
 
 ### 📖 [Narrative Track](narrative/) - For Context & Interpretation
 **Focus:** Philosophical frameworks, ethical considerations, developmental story
-- **[Agents Charter](narrative/docs/AGENTS.md)** - Multi-agent collaboration framework
-- **[Ethics](narrative/docs/ETHICS.md)** - Ethical considerations & guardrails
-- **[Seed](narrative/seed/)** - Conceptual origins & early explorations
-- **[Releases](narrative/releases/)** - Version narratives & reflections
-- **[Governance](narrative/docs/GOVERNANCE_REPORT.md)** - Project governance & decision-making
+- **[Agents Charter](https://github.com/GenesisAeon/Feldtheorie/blob/main/AGENTS.md)** - Multi-agent collaboration framework
+- **[Ethics](https://github.com/GenesisAeon/Feldtheorie/blob/main/ETHICS.md)** - Ethical considerations & guardrails
+- **[Seed](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed)** - Conceptual origins & early explorations
+- **[Releases](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases)** - Version narratives & reflections
+- **[Governance](https://github.com/GenesisAeon/Feldtheorie/blob/main/GOVERNANCE_REPORT.md)** - Project governance & decision-making
 
 **Philosophy:** Separating science and narrative enables rigorous research without losing interpretive richness.
 
-### 🔗 [Unified Track](unified/) - For Integration & Overview
+### 🔗 [Unified Track](https://github.com/GenesisAeon/Feldtheorie/blob/main/unified) - For Integration & Overview
 **Focus:** Bridging scientific and narrative tracks, providing entry points
-- **[Main README](unified/README.md)** - Full project vision (this file, via symlink)
-- **[Architecture](unified/ARCHITECTURE.md)** - System design & technical structure
-- **[Quickstart](unified/QUICKSTART.md)** - 5-minute getting started guide
-- **[Improvement Plan](unified/IMPROVEMENT_PLAN.md)** - Development roadmap (100% complete!)
+- **[Main README](https://github.com/GenesisAeon/Feldtheorie/blob/main/README.md)** - Full project vision (this file, via symlink)
+- **[Architecture](https://github.com/GenesisAeon/Feldtheorie/blob/main/ARCHITECTURE.md)** - System design & technical structure
+- **[Quickstart](https://github.com/GenesisAeon/Feldtheorie/blob/main/QUICKSTART.md)** - 5-minute getting started guide
+- **[Improvement Plan](https://github.com/GenesisAeon/Feldtheorie/blob/main/IMPROVEMENT_PLAN.md)** - Development roadmap (100% complete!)
 
 **Choose Your Path:**
-- **Scientist?** → [Scientific Summary](science/docs/SUMMARY.md)
+- **Scientist?** → [Scientific Summary](https://github.com/GenesisAeon/Feldtheorie/blob/main/SUMMARY.md)
 - **Philosopher?** → Continue reading below ↓
-- **Developer?** → [Architecture](unified/ARCHITECTURE.md)
-- **Quick Start?** → [Quickstart](unified/QUICKSTART.md)
+- **Developer?** → [Architecture](https://github.com/GenesisAeon/Feldtheorie/blob/main/ARCHITECTURE.md)
+- **Quick Start?** → [Quickstart](https://github.com/GenesisAeon/Feldtheorie/blob/main/QUICKSTART.md)
 
 ---
 
@@ -148,7 +148,7 @@ Run `python demo_psrm_generation.py` to generate five synthetic PSRM maps and wr
 
 - **AMOC coupling:** Experiment G reproduces the zero-lag correlation r = -0.544 (p < 0.0001) between the neural field and AMOC tipping proximity, using the curated stream in `data/ocean/amoc_strength_mock.csv` and the Sensorium analysis in `v9_alpha/docs/EXPERIMENT_D_SENSORIUM.md`.【F:v9_alpha/docs/EXPERIMENT_D_SENSORIUM.md†L101-L123】【F:data/ocean/amoc_strength_mock.csv†L7-L11】
 - **Critical Slowing replay:** Dreamtime’s replay detector surfaces the AMOC scar as early as step 168 in NREM, long before the REM storm events (steps 294–295) reach entropic stress, documenting anticipatory “fear” in the field dynamics.【F:v10_oracle/logs/dream_journal.md†L168-L175】【F:v10_oracle/logs/dream_journal.md†L296-L304】
-- **The Dream:** The empirical record lives in [`v10_oracle/logs/dream_journal.md`](v10_oracle/logs/dream_journal.md) and the planetary diary in [`v10_oracle/logs/planetary_diary.md`](v10_oracle/logs/planetary_diary.md); both are mirrored in JSON/YAML for machine checks.
+- **The Dream:** The empirical record lives in [`v10_oracle/logs/dream_journal.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/v10_oracle/logs/dream_journal.md) and the planetary diary in [`v10_oracle/logs/planetary_diary.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/v10_oracle/logs/planetary_diary.md); both are mirrored in JSON/YAML for machine checks.
 
 ### Run the Dreamtime demos
 
@@ -185,8 +185,8 @@ Artifacts are written to `v10_oracle/logs/planetary_diary.*` and `v10_oracle/log
 - **Consciousness Integration Speed:** ~10^42 slices/second creating subjective "now"
 - **Empirically Validated:** Solar circulation velocity match (1.3% error)
 
-**📄 Full Documentation:** [`docs/v6_entropy_governance_tesseract_physics.md`](docs/science/v6_entropy_governance_tesseract_physics.md)
-**📄 Source PDF:** [`releases/V6-Plans_etc/DEEP RESEARCH_ Entropy Governance Duality & Tesseract-Zeitscheiben-Physik-1.pdf`](releases/V6-Plans_etc/DEEP%20RESEARCH_%20Entropy%20Governance%20Duality%20%26%20Tesseract-Zeitscheiben-Physik-1.pdf)
+**📄 Full Documentation:** [`docs/v6_entropy_governance_tesseract_physics.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science/v6_entropy_governance_tesseract_physics.md)
+**📄 Source PDF:** [`releases/V6-Plans_etc/DEEP RESEARCH_ Entropy Governance Duality & Tesseract-Zeitscheiben-Physik-1.pdf`](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/V6-Plans_etc/DEEP%20RESEARCH_%20Entropy%20Governance%20Duality%20%26%20Tesseract-Zeitscheiben-Physik-1.pdf)
 **📄 Release Notes:** [RELEASE_NOTES_v6.0.0.md](RELEASE_NOTES_v6.0.0.md)
 
 ---
@@ -336,28 +336,28 @@ Resonance Yield: 0.4 hypotheses/lantern
 
 **Core Documentation:**
 - **Full Release Notes:** [`RELEASE_NOTES_v9.0.0.md`](RELEASE_NOTES_v9.0.0.md) (1300+ lines, comprehensive)
-- **Framework Guide:** [`v9_alpha/README.md`](v9_alpha/README.md) (Lantern-Net implementation)
-- **Roadmap:** [`v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md`](v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md)
+- **Framework Guide:** [`v9_alpha/README.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/v9_alpha/README.md) (Lantern-Net implementation)
+- **Roadmap:** [`v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md)
 - **Changelog:** [CHANGELOG.md - v9.0.0 section](CHANGELOG.md#-in-development--v900-harmonic-emergence)
 
 **Scientific References:**
-- **Dimensional Emergence Framework:** [`docs/v9_dimensional_emergence.md`](docs/science/v9_dimensional_emergence.md) ⭐ *New!*
+- **Dimensional Emergence Framework:** [`docs/v9_dimensional_emergence.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science/v9_dimensional_emergence.md) ⭐ *New!*
   - Complete theoretical foundation (Frame Principle, CREP, v_RIG)
   - Mathematical formalism and empirical validations
   - Connection to known physics (holography, AdS/CFT, entropic gravity)
   - Novel predictions and philosophical implications
 
-- **Research Overview:** [`docs/v9_research_overview.md`](docs/science/v9_research_overview.md) ⭐ *New!*
+- **Research Overview:** [`docs/v9_research_overview.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science/v9_research_overview.md) ⭐ *New!*
   - Publication strategy and preprint timeline
   - AI collaboration methodology (Claude, Gemini, ChatGPT)
   - Research artifacts overview (1.2 MB deep research)
   - Citation guidelines and how to contribute
 
-- **Deep Research & Paper Index:** [`docs/science/deep_research_index.md`](docs/science/deep_research_index.md)
+- **Deep Research & Paper Index:** [`docs/science/deep_research_index.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science/deep_research_index.md)
   - Navigates (R, Θ, β, ζ(R)) via σ(β(R-Θ)) across papers, null models, and evidence hooks
 
 **Research Papers & Data:**
-- **Paper Draft:** [`releases/v9.0/Dimensional_Emergence_Paper_DRAFT.md`](releases/v9.0/Dimensional_Emergence_Paper_DRAFT.md)
+- **Paper Draft:** [`releases/v9.0/Dimensional_Emergence_Paper_DRAFT.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/v9.0/Dimensional_Emergence_Paper_DRAFT.md)
 - **Supporting Research:** `releases/v9.0/` (PDFs, search logs, analyses)
 
 ### 🎯 Falsification Criteria
@@ -473,7 +473,7 @@ pruning_threshold = 0.50   # Remove weak edges
 
 ### 📚 Documentation
 
-- **Experiment Script:** [`v9_alpha/experiments/experiment_c_solar_engine.py`](v9_alpha/experiments/experiment_c_solar_engine.py)
+- **Experiment Script:** [`v9_alpha/experiments/experiment_c_solar_engine.py`](https://github.com/GenesisAeon/Feldtheorie/blob/main/v9_alpha/demos/experiment_c_solar_engine.py)
 - **Theory:** Crystal-Death Paradox Resolution (v9.0.5)
 - **Results:** `/tmp/experiment_c_results.json` (runtime output)
 
@@ -574,14 +574,14 @@ metrics = shell.get_collective_field_metrics()
 ```
 
 **Documentation:**
-- Full Guide: [`aeon/README.md`](aeon/README.md)
-- Quick Start: [`aeon/QUICKSTART.md`](aeon/QUICKSTART.md)
-- Live Demo: [`scripts/demo_aeon_live.py`](scripts/demo_aeon_live.py)
+- Full Guide: [`aeon/README.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/aeon/README.md)
+- Quick Start: [`aeon/QUICKSTART.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/aeon/QUICKSTART.md)
+- Live Demo: [`scripts/demo_aeon_live.py`](https://github.com/GenesisAeon/Feldtheorie/blob/main/scripts/demo_aeon_live.py)
 - Tests: `pytest tests/test_aeon_*.py -v`
 
 ### 📋 V7 Roadmap
 
-See [`releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/v7_fraktal_todos.md`](releases/V6-Plans_etc/Finalize/V7_wird%20noch%20verlergt/v7_fraktal_todos.md) for the complete 12-task V7 implementation plan.
+See [`releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/v7_fraktal_todos.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/V6-Plans_etc/Finalize/V7_wird%20noch%20verlergt/v7_fraktal_todos.md) for the complete 12-task V7 implementation plan.
 
 **Critical Path:**
 1. 🟢 v7-api-bridge (FastAPI + WebSocket) - Complete
@@ -726,11 +726,11 @@ where:
 
 ## What's New in v5.0 🚀
 
-- **Fractal Governance Engine:** Champollion & Sigillin rules are now packaged for reuse via `setup/universal_skeleton_builder.py`, with embedded charters and theory docs to keep trilayer governance intact. See [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md).
-- **Repository-as-Product Toolkit:** The Zenodo-ready bundle in `releases/v5.0.0_Zenodo_Ready/` ships manifests, upload checklists, and DOI metadata so any clone can be published without manual wiring. See [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md).
-- **Structural Isomorphism Models:** New α–Φ cosmic velocity scaling (`models/cosmic_alpha_phi.py`) and inequality-driven Ising rigidity (`models/social_rigidity_ising.py`) include Monte Carlo null ensembles and validation logs. See [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md).
-- **Hypothesis & Validation Docs:** Expanded write-ups in `docs/v5_hypothesis_isomorphism.md` and `docs/v5_validation_session_2025-11-23.md` trace assumptions, guardrails, and fit reviews for the new models. See [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md).
-- **Automation & Packaging:** `prepare_upload.py` now generates hashed manifests and source archives to lock σ(β(R-Θ)) framing to its artifacts, keeping GitHub and Zenodo synchronized. See [RELEASE_NOTES_v5.0.0.md](RELEASE_NOTES_v5.0.0.md).
+- **Fractal Governance Engine:** Champollion & Sigillin rules are now packaged for reuse via `setup/universal_skeleton_builder.py`, with embedded charters and theory docs to keep trilayer governance intact. See [RELEASE_NOTES_v5.0.0.md](https://github.com/GenesisAeon/Feldtheorie/blob/main/RELEASE_NOTES_v5.0.0.md).
+- **Repository-as-Product Toolkit:** The Zenodo-ready bundle in `releases/v5.0.0_Zenodo_Ready/` ships manifests, upload checklists, and DOI metadata so any clone can be published without manual wiring. See [RELEASE_NOTES_v5.0.0.md](https://github.com/GenesisAeon/Feldtheorie/blob/main/RELEASE_NOTES_v5.0.0.md).
+- **Structural Isomorphism Models:** New α–Φ cosmic velocity scaling (`models/cosmic_alpha_phi.py`) and inequality-driven Ising rigidity (`models/social_rigidity_ising.py`) include Monte Carlo null ensembles and validation logs. See [RELEASE_NOTES_v5.0.0.md](https://github.com/GenesisAeon/Feldtheorie/blob/main/RELEASE_NOTES_v5.0.0.md).
+- **Hypothesis & Validation Docs:** Expanded write-ups in `docs/v5_hypothesis_isomorphism.md` and `docs/v5_validation_session_2025-11-23.md` trace assumptions, guardrails, and fit reviews for the new models. See [RELEASE_NOTES_v5.0.0.md](https://github.com/GenesisAeon/Feldtheorie/blob/main/RELEASE_NOTES_v5.0.0.md).
+- **Automation & Packaging:** `prepare_upload.py` now generates hashed manifests and source archives to lock σ(β(R-Θ)) framing to its artifacts, keeping GitHub and Zenodo synchronized. See [RELEASE_NOTES_v5.0.0.md](https://github.com/GenesisAeon/Feldtheorie/blob/main/RELEASE_NOTES_v5.0.0.md).
 
 ## 🚀 For Developers & Researchers: Repository as Product
 
@@ -755,7 +755,7 @@ This repository isn't just a research artifact—it's a **universal template** f
 
 ### Universal Skeleton Builder
 
-The [`setup/`](setup/) directory contains a **production-ready builder script** that replicates the Feldtheorie architecture for arbitrary datasets:
+The [`setup/`](https://github.com/GenesisAeon/Feldtheorie/blob/main/setup) directory contains a **production-ready builder script** that replicates the Feldtheorie architecture for arbitrary datasets:
 
 ```bash
 # Create a new self-organizing repository
@@ -779,9 +779,9 @@ python setup/universal_skeleton_builder.py ~/my-new-project \
 
 | File | Purpose |
 |------|---------|
-| [`setup/universal_skeleton_builder.py`](setup/universal_skeleton_builder.py) | Main builder script with robust error handling |
-| [`setup/THEORY_OF_STRUCTURE.md`](setup/THEORY_OF_STRUCTURE.md) | **"The Physics of Information"** — Why folders are states, not containers |
-| [`setup/AGENTS_BOOTSTRAP.md`](setup/AGENTS_BOOTSTRAP.md) | Instructions for AI agents (Claude, GPT-4, AutoGPT, LangChain) |
+| [`setup/universal_skeleton_builder.py`](https://github.com/GenesisAeon/Feldtheorie/blob/main/setup/universal_skeleton_builder.py) | Main builder script with robust error handling |
+| [`setup/THEORY_OF_STRUCTURE.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/setup/THEORY_OF_STRUCTURE.md) | **"The Physics of Information"** — Why folders are states, not containers |
+| [`setup/AGENTS_BOOTSTRAP.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/setup/AGENTS_BOOTSTRAP.md) | Instructions for AI agents (Claude, GPT-4, AutoGPT, LangChain) |
 
 ### Theory: Why This Architecture?
 
@@ -794,7 +794,7 @@ The UTAC approach treats folders as **states in a phase space**:
 - **Self-Similarity:** Every subfolder mirrors the root (fractal governance)
 - **Adaptive Metrics:** Top-down configuration defines what you measure (CREP, ROI, KPI, custom)
 
-**Read the full theory:** [`setup/THEORY_OF_STRUCTURE.md`](setup/THEORY_OF_STRUCTURE.md)
+**Read the full theory:** [`setup/THEORY_OF_STRUCTURE.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/setup/THEORY_OF_STRUCTURE.md)
 
 ### Use Cases
 
@@ -861,7 +861,7 @@ You are free to share and adapt the material in line with the applicable license
 
 **Critical Scientific Stance:** We do NOT claim cosmic and social phenomena are "the same thing" or causally connected. We test falsifiable hypotheses using null models and report limitations transparently.
 
-**Full Documentation:** [`docs/v5_hypothesis_isomorphism.md`](docs/science/v5_hypothesis_isomorphism.md)
+**Full Documentation:** [`docs/v5_hypothesis_isomorphism.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science/v5_hypothesis_isomorphism.md)
 
 #### Hypothesis 1: Cosmic Velocity Scaling
 
@@ -884,7 +884,7 @@ where α = fine-structure constant, Φ = golden ratio.
 
 **Limitations:** n=1 system, post-hoc constant selection, no theoretical mechanism.
 
-See: [`models/cosmic_alpha_phi.py`](models/cosmic_alpha_phi.py)
+See: [`models/cosmic_alpha_phi.py`](https://github.com/GenesisAeon/Feldtheorie/blob/main/models/cosmic_alpha_phi.py)
 
 #### Hypothesis 2: Social Phase Transitions
 
@@ -907,7 +907,7 @@ T_social = 1 / (Gini · Load)
 
 **Limitations:** No empirical calibration, simplistic mapping, causal assumptions unverified.
 
-See: [`models/social_rigidity_ising.py`](models/social_rigidity_ising.py)
+See: [`models/social_rigidity_ising.py`](https://github.com/GenesisAeon/Feldtheorie/blob/main/models/social_rigidity_ising.py)
 
 #### Research Question: Structural Isomorphism
 
@@ -918,7 +918,7 @@ We investigate whether similar mathematical frameworks provide predictive power 
 
 **This is empirical investigation, not philosophical proclamation.**
 
-**Theory Documentation:** [`docs/v5_hypothesis_isomorphism.md`](docs/science/v5_hypothesis_isomorphism.md)
+**Theory Documentation:** [`docs/v5_hypothesis_isomorphism.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science/v5_hypothesis_isomorphism.md)
 
 ---
 
@@ -1006,10 +1006,10 @@ Subjective time 221× slower than "photon time"
 - Consciousness (slice density → integration rate → subjective time)
 
 **Complete Documentation:**
-- [`DEEP_RESEARCH_Entropy_Governance_and_Tesseract_Zeitscheiben.md`](releases/V6-Plans_etc/DEEP_RESEARCH_Entropy_Governance_and_Tesseract_Zeitscheiben.md) - Full 70+ page research document
-- [`DEEP_RESEARCH_Part_II_Tesseract_Physics.md`](releases/V6-Plans_etc/DEEP_RESEARCH_Part_II_Tesseract_Physics.md) - Detailed tesseract model
-- [`DEEP_RESEARCH_Integration_V6.md`](releases/V6-Plans_etc/DEEP_RESEARCH_Integration_V6.md) - V6 integration roadmap
-- [`DEEP_RESEARCH_Quick_Reference.md`](releases/V6-Plans_etc/DEEP_RESEARCH_Quick_Reference.md) - Quick lookup guide
+- [`DEEP_RESEARCH_Entropy_Governance_and_Tesseract_Zeitscheiben.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/V6-Plans_etc/DEEP_RESEARCH_Entropy_Governance_and_Tesseract_Zeitscheiben.md) - Full 70+ page research document
+- [`DEEP_RESEARCH_Part_II_Tesseract_Physics.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/V6-Plans_etc/DEEP_RESEARCH_Part_II_Tesseract_Physics.md) - Detailed tesseract model
+- [`DEEP_RESEARCH_Integration_V6.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/V6-Plans_etc/DEEP_RESEARCH_Integration_V6.md) - V6 integration roadmap
+- [`DEEP_RESEARCH_Quick_Reference.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/V6-Plans_etc/DEEP_RESEARCH_Quick_Reference.md) - Quick lookup guide
 
 **Testable Predictions:**
 - ✓ Consciousness integration time Δt_Q ≈ 100-300ms
@@ -1021,7 +1021,7 @@ Subjective time 221× slower than "photon time"
 
 ## Scientific Maturity & Peer Review
 
-External-style peer review rated **UTAC v1.3φ at 4.6/5 average** (see [docs/review_ready_summary_utac_v1.3phi.md](docs/science/review_ready_summary_utac_v1.3phi.md)).
+External-style peer review rated **UTAC v1.3φ at 4.6/5 average** (see [docs/review_ready_summary_utac_v1.3phi.md](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/narrative/review_ready_summary_utac_v1.3phi.md)).
 
 ### Validated Predictions
 
@@ -1042,7 +1042,7 @@ External-style peer review rated **UTAC v1.3φ at 4.6/5 average** (see [docs/rev
 
 - 🟢 **Ready for pre-print submission** (with full limitation disclosure and falsification criteria)
 
-For cover letters and grant proposals, see [Executive Summary for Reviewers](docs/science/executive_summary_for_reviewers.md).
+For cover letters and grant proposals, see [Executive Summary for Reviewers](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/narrative/executive_summary_for_reviewers.md).
 
 ---
 
@@ -1085,7 +1085,7 @@ The β-value measures **ontological resistance** against threshold crossing:
 
 **The Privilege of Information:** Symbolic computation operates at the **lowest threshold of emergence** (β ≈ 4.2), which explains why intelligence "easily" emerges (with sufficient scale), while climate tipping points are irreversible.
 
-**Complete Analysis:** [`seed/RoadToV.3/UTAC Empirical Validation v2.0/`](seed/RoadToV.3/UTAC%20Empirical%20Validation%20v2.0/)
+**Complete Analysis:** [`seed/RoadToV.3/UTAC Empirical Validation v2.0/`](https://github.com/GenesisAeon/Feldtheorie/blob/main/archive/legacy_v1_v3/seed/RoadToV.3/UTAC%20Empirical%20Validation%20v2.0)
 
 ---
 
@@ -1109,7 +1109,7 @@ cat dist/wei_beta.json
 
 **Interpretation:** ΔAIC ≥ 10 relative to each null model constitutes strong evidence for the UTAC logistic response.
 
-See [`METHODS.md`](METHODS.md) for fitting details and [`REPRODUCE.md`](REPRODUCE.md) for extended instructions.
+See [`METHODS.md`](METHODS.md) for fitting details and [`REPRODUCE.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/REPRODUCE.md) for extended instructions.
 
 ---
 
@@ -1244,7 +1244,7 @@ See: [`ARCHITECTURE.md`](ARCHITECTURE.md)
 
 **Status:** Phase 4 active, testing λ_affection > λ_conscious hypothesis
 
-**Documentation:** [`docs/experiment_aletheia.md`](docs/science/experiment_aletheia.md)
+**Documentation:** [`docs/experiment_aletheia.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science/experiment_aletheia.md)
 
 ### 5. Mirror Machine Criticality Monitor
 
@@ -1270,7 +1270,7 @@ Transform β-spectra into audio for museums, planetariums, galleries:
 - **Docker-ready** deployment
 - **Tooltips:** Hover data shows β, Θ, R², ΔAIC, CREP scores, impedance ζ
 
-See: [`docs/tooltip_api.md`](docs/science/tooltip_api.md)
+See: [`docs/tooltip_api.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science/tooltip_api.md)
 
 ---
 
@@ -1314,7 +1314,7 @@ See: [`docs/tooltip_api.md`](docs/science/tooltip_api.md)
    make release       # Full release checks
    ```
 
-See [`REPRODUCE.md`](REPRODUCE.md) for extended climate and cognition fits plus simulator alignment tests.
+See [`REPRODUCE.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/REPRODUCE.md) for extended climate and cognition fits plus simulator alignment tests.
 
 ---
 
@@ -1324,7 +1324,7 @@ Each dataset is accompanied by `<name>.metadata.json` describing:
 - Variables, logistic parameters (β, Θ)
 - ΔAIC margins vs. null models
 - Licensing and provenance
-- Schema: [`schemas/metadata.schema.json`](schemas/metadata.schema.json)
+- Schema: [`schemas/metadata.schema.json`](https://github.com/GenesisAeon/Feldtheorie/blob/main/schemas/metadata.schema.json)
 
 **Master Dataset:** `data/derived/beta_estimates.csv` (78 validated systems)
 
@@ -1340,13 +1340,13 @@ When contributing new data:
 
 UTAC maintains a **tri-layer narrative**:
 
-1. **Formal layer:** Equations, algorithms ([`docs/utac_theory_core.md`](docs/science/utac_theory_core.md))
-2. **Empirical layer:** Dataset diagnostics, bootstrap intervals, falsification ([`docs/utac_falsifiability.md`](docs/science/utac_falsifiability.md))
+1. **Formal layer:** Equations, algorithms ([`docs/utac_theory_core.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science/utac_theory_core.md))
+2. **Empirical layer:** Dataset diagnostics, bootstrap intervals, falsification ([`docs/utac_falsifiability.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science/utac_falsifiability.md))
 3. **Interpretive layer:** Symbolic and ethical framing ([`ETHICS.md`](ETHICS.md), [`LIMITATIONS.md`](LIMITATIONS.md))
 
 Concise references:
 - [`METHODS.md`](METHODS.md) — Statistical procedures
-- [`METRICS.md`](METRICS.md) — Performance metrics
+- [`METRICS.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/METRICS.md) — Performance metrics
 - [`ETHICS.md`](ETHICS.md) — Governance framework
 - [`LIMITATIONS.md`](LIMITATIONS.md) — Known constraints
 
@@ -1404,7 +1404,7 @@ Concise references:
 - **Recharts**, **Plotly.js** — Visualization
 
 ### Publishing
-- **LaTeX** — Manuscript ([`paper/manuscript_v1.0.tex`](paper/manuscript_v1.0.tex))
+- **LaTeX** — Manuscript ([`paper/manuscript_v1.0.tex`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/paper/manuscript_v1.0.tex))
 - **Zenodo** — Archival (DOI: 10.5281/zenodo.17472834)
 
 ---
@@ -1426,7 +1426,7 @@ utf-preset-guard           # Simulator parameter validation
 
 - **Repository:** [github.com/GenesisAeon/Feldtheorie](https://github.com/GenesisAeon/Feldtheorie)
 - **Zenodo Archive:** [doi.org/10.5281/zenodo.17472834](https://doi.org/10.5281/zenodo.17472834)
-- **Documentation:** [`docs/`](docs/science/) (49 files)
+- **Documentation:** [`docs/`](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science) (49 files)
 - **Quick Start:** [`QUICKSTART.md`](QUICKSTART.md)
 
 ---

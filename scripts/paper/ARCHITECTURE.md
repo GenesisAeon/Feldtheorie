@@ -1,6 +1,6 @@
 # Architecture - scripts/paper
 
-> **Context Depth:** 2 | **Parent:** scripts | **Mode:** Recursive Research
+> **Context Depth:** 2 | **Parent:** scripts | **Mode:** Recursive Programming
 
 ---
 
@@ -21,24 +21,22 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 
 **This directory (`scripts/paper`) follows the following architectural pattern:**
 
-### Research Architecture
+### Programming Architecture
 
 ```
 {{PATH}}
-├── manuscripts/         (Papers, preprints)
-├── references/          (BibTeX, PDFs)
-├── hypotheses/          (Testable claims)
-├── theories/            (Formal models)
-├── indices/             (Navigation, cross-links)
-└── README.md            (Knowledge map)
+├── __init__.py      (Module initialization)
+├── core/            (Core business logic)
+├── tests/           (Unit and integration tests)
+├── config/          (Configuration schemas)
+└── README.md        (Module documentation)
 ```
 
-**Documentation Flow:**
-1. Hypothesis → hypotheses/
-2. Evidence → data/, analysis/
-3. Synthesis → manuscripts/
-4. Review → releases/
-5. Archive → archive/
+**Design Principles:**
+- Separation of concerns
+- Dependency injection
+- Test-driven development
+- CI/CD integration
 
 
 ---
@@ -77,5 +75,5 @@ Integrates with parent context governance
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:42:40 UTC
 **Governance Version:** 1.0.0

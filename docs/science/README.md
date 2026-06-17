@@ -117,8 +117,8 @@ Die UTAC-Theorie wurde validiert in:
 
 ## 📊 Methodische Werkzeuge
 
-- **Statistische Metriken**: Siehe [`../METRICS.md`](../METRICS.md)
-- **Reproduktionsanleitung**: Siehe [`../REPRODUCE.md`](../REPRODUCE.md)
+- **Statistische Metriken**: Siehe [`../METRICS.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/METRICS.md)
+- **Reproduktionsanleitung**: Siehe [`REPRODUCE.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/REPRODUCE.md)
 - **Autorschaft und Ethik**: Siehe [`../AUTHORSHIP.md`](../AUTHORSHIP.md)
 
 ---
@@ -127,13 +127,13 @@ Die UTAC-Theorie wurde validiert in:
 
 - **GitHub Repository**: [GenesisAeon/Feldtheorie](https://github.com/GenesisAeon/Feldtheorie)
 - **Zenodo DOI**: [10.5281/zenodo.17508230](https://doi.org/10.5281/zenodo.17508230)
-- **Preprint**: [paper/universal-threshold-field-preprint.md](../paper/universal-threshold-field-preprint.md)
+- **Preprint**: [paper/universal-threshold-field-preprint.md](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/paper/universal-threshold-field-preprint.md)
 
 ---
 
 ## 📝 Dokumentationsphilosophie
 
-Diese `docs/` Struktur enthält **ausschließlich wissenschaftlich-tragfähige, zitierfähige Inhalte**. Für konzeptuelle, metaphorische oder poetische Reflexionen siehe das [`seed/`](../seed/) Verzeichnis.
+Diese `docs/` Struktur enthält **ausschließlich wissenschaftlich-tragfähige, zitierfähige Inhalte**. Für konzeptuelle, metaphorische oder poetische Reflexionen siehe das [`seed/`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed) Verzeichnis.
 
 **Trennung**:
 - **`docs/`**: Empirische Befunde, formale Modelle, reproduzierbare Analysen

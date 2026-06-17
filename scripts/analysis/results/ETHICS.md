@@ -1,6 +1,6 @@
 # Ethics and Responsible Use - scripts/analysis/results
 
-> **Context Depth:** 3 | **Parent:** scripts/analysis | **Mode:** Recursive Data Analysis
+> **Context Depth:** 3 | **Parent:** scripts/analysis | **Mode:** Recursive Programming
 
 ---
 
@@ -23,27 +23,22 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 **In this directory (`scripts/analysis/results`), the following ethical rules apply:**
 
-### Data Ethics
+### Code Ethics
 
-- **Open Data Only**: Use only openly licensed datasets (CC-BY, CC0, etc.)
-- **Provenance Required**: Every dataset must have a `.metadata.json` file
-- **Privacy First**: Remove PII before ingestion; anonymize if necessary
-- **Uncertainty Transparency**: Report confidence intervals, p-values, ΔAIC
-- **Null Models**: Always compare against baseline (linear, power law, etc.)
+- **No hardcoded secrets**: Use environment variables or secret managers
+- **Dependency hygiene**: Pin versions, audit for vulnerabilities
+- **Licensing compliance**: Respect open-source licenses (see LICENSE file)
+- **Accessibility**: Consider edge cases, error handling, and user feedback
+- **Attribution**: Credit external libraries and algorithms properly
 
 
 ---
 
 ## Data Governance for This Context
 
-- All datasets must include `*.metadata.json` with:
-  - Source URL and license
-  - Date of acquisition
-  - Preprocessing steps
-  - Known limitations
-- Raw data is immutable (store in `data/raw/`)
-- Processed data is versioned (store in `data/processed/vX.Y/`)
-- Personal identifiers are NEVER committed
+- Configuration files must not contain PII or API keys
+- Test fixtures should use synthetic or anonymized data
+- Log outputs must redact sensitive information
 
 
 ---
@@ -52,11 +47,10 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 | Risk | Mitigation |
 |------|------------|
-| P-hacking | Pre-register hypotheses; document all tests run |
-| Cherry-picking | Report all models tested, including null models |
-| Data leakage | Use strict train/test splits; never touch test data |
-| Overfitting | Cross-validate; report out-of-sample metrics |
-| License violations | Check and document licenses in metadata |
+| Command injection | Sanitize all user inputs; use parameterized APIs |
+| XSS vulnerabilities | Escape HTML; use Content Security Policy |
+| SQL injection | Use ORMs or parameterized queries |
+| Insecure dependencies | Run `pip-audit` or `npm audit` regularly |
 
 
 ---
@@ -81,5 +75,5 @@ Before committing work in `scripts/analysis/results`:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:42:40 UTC
 **Governance Version:** 1.0.0

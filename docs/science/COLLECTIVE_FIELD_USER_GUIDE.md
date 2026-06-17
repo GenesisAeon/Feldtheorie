@@ -559,7 +559,7 @@ def adaptive_learning_rate(agent: Agent, field: CollectiveField) -> float:
 
 ## 🚀 Next Steps
 
-- **WebSocket Integration:** Real-time field monitoring ([API docs](../api/README.md))
+- **WebSocket Integration:** Real-time field monitoring ([API docs](https://github.com/GenesisAeon/Feldtheorie/blob/main/api/README.md))
 - **Performance Benchmarking:** See `tests/test_collective_field_advanced.py`
 - **Production Deployment:** See `api/DEPLOYMENT.md`
 

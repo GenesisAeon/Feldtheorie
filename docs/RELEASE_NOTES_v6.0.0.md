@@ -1,0 +1,1 @@
+../RELEASE_NOTES_v6.0.0.md

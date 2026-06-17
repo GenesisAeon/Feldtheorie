@@ -1,6 +1,6 @@
-# Agents Charter - analysis/results
+# Agents Charter - science/analysis/results
 
-> **Context Depth:** 2 | **Parent:** analysis | **Mode:** Recursive Data Analysis
+> **Context Depth:** 3 | **Parent:** science/analysis | **Mode:** Recursive Data Analysis
 
 ---
 
@@ -20,7 +20,7 @@ This document inherits from the root `AGENTS.md` and specializes for this contex
 
 ## Local Context
 
-**This directory (`analysis/results`) is specialized for:**
+**This directory (`science/analysis/results`) is specialized for:**
 
 ### Data Analysis Context
 
@@ -59,7 +59,7 @@ See mode-specific agents above
 ## Escalation Rules
 
 If you encounter conflicts or ambiguity:
-1. Check the parent governance: `analysis/AGENTS.md`
+1. Check the parent governance: `science/analysis/AGENTS.md`
 2. Consult root governance: `/AGENTS.md`
 3. Document deviations in local `<!-- CUSTOM_RULES -->` blocks
 
@@ -72,5 +72,5 @@ If you encounter conflicts or ambiguity:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:42:40 UTC
 **Governance Version:** 1.0.0

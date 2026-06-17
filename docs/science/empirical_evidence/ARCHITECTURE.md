@@ -1,6 +1,6 @@
-# Architecture - docs/empirical_evidence
+# Architecture - docs/science/empirical_evidence
 
-> **Context Depth:** 2 | **Parent:** docs | **Mode:** Recursive Research
+> **Context Depth:** 3 | **Parent:** docs/science | **Mode:** Recursive Research
 
 ---
 
@@ -19,7 +19,7 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 
 ## Local Architecture
 
-**This directory (`docs/empirical_evidence`) follows the following architectural pattern:**
+**This directory (`docs/science/empirical_evidence`) follows the following architectural pattern:**
 
 ### Research Architecture
 
@@ -46,7 +46,7 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 ## Component Diagram
 
 ```
-docs/empirical_evidence
+docs/science/empirical_evidence
 └── (See mode-specific architecture)
 ```
 
@@ -77,5 +77,5 @@ Integrates with parent context governance
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:42:40 UTC
 **Governance Version:** 1.0.0

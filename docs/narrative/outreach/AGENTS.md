@@ -1,6 +1,6 @@
-# Agents Charter - docs/outreach
+# Agents Charter - docs/narrative/outreach
 
-> **Context Depth:** 2 | **Parent:** docs | **Mode:** Recursive Research
+> **Context Depth:** 3 | **Parent:** docs/narrative | **Mode:** Recursive Research
 
 ---
 
@@ -20,7 +20,7 @@ This document inherits from the root `AGENTS.md` and specializes for this contex
 
 ## Local Context
 
-**This directory (`docs/outreach`) is specialized for:**
+**This directory (`docs/narrative/outreach`) is specialized for:**
 
 ### Research Context
 
@@ -59,7 +59,7 @@ See mode-specific agents above
 ## Escalation Rules
 
 If you encounter conflicts or ambiguity:
-1. Check the parent governance: `docs/AGENTS.md`
+1. Check the parent governance: `docs/narrative/AGENTS.md`
 2. Consult root governance: `/AGENTS.md`
 3. Document deviations in local `<!-- CUSTOM_RULES -->` blocks
 
@@ -72,5 +72,5 @@ If you encounter conflicts or ambiguity:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:42:40 UTC
 **Governance Version:** 1.0.0

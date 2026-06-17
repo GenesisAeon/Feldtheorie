@@ -76,8 +76,9 @@ are derived from this file by `scripts/update_version.py`.
 
 | Research Label | Package Version | Status |
 |---------------|----------------|--------|
-| v12.0.0 AFET Consolidation | 5.0.0 | Development |
-| v10.2 Platinum | 5.0.0 | Current |
+| v13.0.0 | 6.0.0 | Current |
+| v12.0.0 AFET Consolidation | 5.0.0 | Superseded |
+| v10.2 Platinum | 5.0.0 | Superseded |
 | v9.0.0-alpha | 5.0.0 | Alpha |
 | v6.0.0 Entropy | 5.0.0 | Stable baseline |
 

@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v13.0.0] - Research Channel / [6.0.0] - Package Channel
+
+### Changed
+
+- Package SemVer bumped to `6.0.0` (Package Channel), research-label tag
+  bumped to `v13.0.0` (Research Channel), per `docs/release_channels.md`'s
+  dual-channel versioning scheme.
+- Added missing GitHub governance scaffolding: issue templates
+  (`bug_report.md`, `feature_request.md`), PR template, and
+  `RELEASE_GUIDE.md` pointing to the existing dual-channel release
+  process.
+
 ### Added
 
 - Continued refinement of LanternNet ecosystem and MOR-FIT compliance tracking
