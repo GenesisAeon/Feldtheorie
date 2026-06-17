@@ -75,5 +75,5 @@ Before committing work in `simulator/src/i18n`:
 
 ---
 
-**Last Updated:** 2026-06-17 06:32:02 UTC
+**Last Updated:** 2026-06-17 06:42:40 UTC
 **Governance Version:** 1.0.0
