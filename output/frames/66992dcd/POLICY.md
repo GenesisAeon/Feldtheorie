@@ -84,7 +84,11 @@ This policy can be updated by:
 
 **Change Log:**
 
+<<<<<<< HEAD
 - 2026-06-17 07:12:20 UTC: Initial governance deployment (v1.0.0)
+=======
+- 2026-06-17 07:00:00 UTC: Initial governance deployment (v1.0.0)
+>>>>>>> origin/main
 
 ---
 
@@ -95,5 +99,9 @@ This policy can be updated by:
 
 ---
 
+<<<<<<< HEAD
 **Last Updated:** 2026-06-17 07:12:20 UTC
+=======
+**Last Updated:** 2026-06-17 07:00:00 UTC
+>>>>>>> origin/main
 **Governance Version:** 1.0.0

@@ -84,7 +84,11 @@ This policy can be updated by:
 
 **Change Log:**
 
+<<<<<<< HEAD
 - 2026-06-17 07:12:20 UTC: Initial governance deployment (v1.0.0)
+=======
+- 2026-06-17 07:00:00 UTC: Initial governance deployment (v1.0.0)
+>>>>>>> origin/main
 
 ---
 
@@ -111,5 +115,9 @@ To keep the V6 logistic field stable (R → Θ with β≈4.8 even bei ζ<0), the
 
 ---
 
+<<<<<<< HEAD
 **Last Updated:** 2026-06-17 07:12:20 UTC
+=======
+**Last Updated:** 2026-06-17 07:00:00 UTC
+>>>>>>> origin/main
 **Governance Version:** 1.0.0
