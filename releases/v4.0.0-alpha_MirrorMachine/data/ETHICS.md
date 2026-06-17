@@ -1,6 +1,6 @@
 # Ethics and Responsible Use - releases/v4.0.0-alpha_MirrorMachine/data
 
-> **Context Depth:** 3 | **Parent:** releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Data Analysis
+> **Context Depth:** 3 | **Parent:** releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Research
 
 ---
 
@@ -23,27 +23,23 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 **In this directory (`releases/v4.0.0-alpha_MirrorMachine/data`), the following ethical rules apply:**
 
-### Data Ethics
+### Research Ethics
 
-- **Open Data Only**: Use only openly licensed datasets (CC-BY, CC0, etc.)
-- **Provenance Required**: Every dataset must have a `.metadata.json` file
-- **Privacy First**: Remove PII before ingestion; anonymize if necessary
-- **Uncertainty Transparency**: Report confidence intervals, p-values, ΔAIC
-- **Null Models**: Always compare against baseline (linear, power law, etc.)
+- **Citation Integrity**: Always credit original authors with DOI/URL
+- **Hypothesis Transparency**: Mark speculative claims clearly
+- **Falsifiability**: Provide criteria for disproving hypotheses
+- **Version Control**: Never delete history; archive old theories
+- **Conflict of Interest**: Disclose any competing interpretations
 
 
 ---
 
 ## Data Governance for This Context
 
-- All datasets must include `*.metadata.json` with:
-  - Source URL and license
-  - Date of acquisition
-  - Preprocessing steps
-  - Known limitations
-- Raw data is immutable (store in `data/raw/`)
-- Processed data is versioned (store in `data/processed/vX.Y/`)
-- Personal identifiers are NEVER committed
+- Cite all data sources used in manuscripts
+- Include BibTeX entries for every reference
+- Archive drafts with semantic versions (v1.0, v1.1, etc.)
+- Preserve rejected hypotheses in `archive/`
 
 
 ---
@@ -52,11 +48,10 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 | Risk | Mitigation |
 |------|------------|
-| P-hacking | Pre-register hypotheses; document all tests run |
-| Cherry-picking | Report all models tested, including null models |
-| Data leakage | Use strict train/test splits; never touch test data |
-| Overfitting | Cross-validate; report out-of-sample metrics |
-| License violations | Check and document licenses in metadata |
+| Plagiarism | Check all text through originality tools |
+| Cherry-picking citations | Include contradictory evidence |
+| Unfalsifiable claims | Define clear disconfirmation criteria |
+| Overclaiming universality | Specify scope and limitations explicitly |
 
 
 ---
@@ -81,5 +76,5 @@ Before committing work in `releases/v4.0.0-alpha_MirrorMachine/data`:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:32:02 UTC
 **Governance Version:** 1.0.0

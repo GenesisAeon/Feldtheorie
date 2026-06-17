@@ -1,6 +1,6 @@
-# Governance Policy - docs
+# Governance Policy - docs/science
 
-> **Context Depth:** 1 | **Parent:** / | **Mode:** Recursive Research
+> **Context Depth:** 2 | **Parent:** docs | **Mode:** Recursive Research
 
 ---
 
@@ -11,7 +11,7 @@ This policy inherits from parent and root governance and adds context-specific r
 ### Policy Hierarchy
 
 1. **Root Policies** (`/AGENTS.md`, `/ETHICS.md`, `/ARCHITECTURE.md`)
-2. **Parent Context** (`//POLICY.md`)
+2. **Parent Context** (`docs/POLICY.md`)
 3. **This Context** (this file)
 
 **Principle:** More specific policies override general ones, but must not contradict root ethics.
@@ -20,7 +20,7 @@ This policy inherits from parent and root governance and adds context-specific r
 
 ## Scope
 
-This policy governs all work in `docs` and its subdirectories.
+This policy governs all work in `docs/science` and its subdirectories.
 
 **Mode:** Recursive Research
 
@@ -50,11 +50,6 @@ Before committing changes in this context:
 - [ ] Indices updated (seed_index, docs_index, etc.)
 - [ ] Cross-references validated
 - [ ] No broken links
-- [ ] **Type-VI CREP/τ* Check** (if applicable):
-  - [ ] CREP ≥ 0.7 → Reviewer slot documented
-  - [ ] τ* = 0.1·|Θ−R| validated (or deviations justified)
-  - [ ] Provenance block complete (data sources, null models, dual-use check)
-  - [ ] See: `releases/V6-Plans_etc/type6_crep_tau_star_checklist.md`
 
 
 ---
@@ -73,7 +68,7 @@ Before committing changes in this context:
 
 If governance violations occur:
 
-1. **Document**: Create incident report in `docs/.governance/incidents/`
+1. **Document**: Create incident report in `docs/science/.governance/incidents/`
 2. **Escalate**: Notify in root `GOVERNANCE_REPORT.md`
 3. **Remediate**: Fix violation and update this policy
 4. **Review**: Parent context reviews and approves changes
@@ -89,7 +84,7 @@ This policy can be updated by:
 
 **Change Log:**
 
-- 2025-11-24 14:22:03 UTC: Initial governance deployment (v1.0.0)
+- 2026-06-17 06:32:02 UTC: Initial governance deployment (v1.0.0)
 
 ---
 
@@ -100,5 +95,5 @@ This policy can be updated by:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:32:02 UTC
 **Governance Version:** 1.0.0

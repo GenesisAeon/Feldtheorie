@@ -1,6 +1,6 @@
-# Ethics and Responsible Use - analysis/results
+# Ethics and Responsible Use - science/analysis/results
 
-> **Context Depth:** 2 | **Parent:** analysis | **Mode:** Recursive Data Analysis
+> **Context Depth:** 3 | **Parent:** science/analysis | **Mode:** Recursive Data Analysis
 
 ---
 
@@ -21,7 +21,7 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 ## Local Context Ethics
 
-**In this directory (`analysis/results`), the following ethical rules apply:**
+**In this directory (`science/analysis/results`), the following ethical rules apply:**
 
 ### Data Ethics
 
@@ -63,7 +63,7 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 ## Review Checklist
 
-Before committing work in `analysis/results`:
+Before committing work in `science/analysis/results`:
 - [ ] Data provenance documented in metadata files
 - [ ] Statistical diagnostics exported and reviewed
 - [ ] Null models defined and ΔAIC computed
@@ -81,5 +81,5 @@ Before committing work in `analysis/results`:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:32:02 UTC
 **Governance Version:** 1.0.0

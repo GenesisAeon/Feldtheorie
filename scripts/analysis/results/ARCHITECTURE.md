@@ -1,6 +1,6 @@
 # Architecture - scripts/analysis/results
 
-> **Context Depth:** 3 | **Parent:** scripts/analysis | **Mode:** Recursive Data Analysis
+> **Context Depth:** 3 | **Parent:** scripts/analysis | **Mode:** Recursive Programming
 
 ---
 
@@ -21,24 +21,22 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 
 **This directory (`scripts/analysis/results`) follows the following architectural pattern:**
 
-### Data Architecture
+### Programming Architecture
 
 ```
 {{PATH}}
-├── raw/                 (Immutable source data)
-├── processed/           (Cleaned, versioned data)
-├── interim/             (Intermediate transformations)
-├── external/            (Third-party data)
-├── metadata/            (Provenance and schemas)
-└── README.md            (Data dictionary)
+├── __init__.py      (Module initialization)
+├── core/            (Core business logic)
+├── tests/           (Unit and integration tests)
+├── config/          (Configuration schemas)
+└── README.md        (Module documentation)
 ```
 
-**Data Flow:**
-1. Ingest → raw/
-2. Clean → interim/
-3. Transform → processed/
-4. Analyze → results/
-5. Publish → docs/
+**Design Principles:**
+- Separation of concerns
+- Dependency injection
+- Test-driven development
+- CI/CD integration
 
 
 ---
@@ -77,5 +75,5 @@ Integrates with parent context governance
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:32:02 UTC
 **Governance Version:** 1.0.0

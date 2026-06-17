@@ -84,7 +84,7 @@ This policy can be updated by:
 
 **Change Log:**
 
-- 2025-11-24 14:22:03 UTC: Initial governance deployment (v1.0.0)
+- 2026-06-17 06:32:02 UTC: Initial governance deployment (v1.0.0)
 
 ---
 
@@ -95,5 +95,5 @@ This policy can be updated by:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:32:02 UTC
 **Governance Version:** 1.0.0

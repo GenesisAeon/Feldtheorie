@@ -1,6 +1,6 @@
-# Agents Charter - analysis
+# Agents Charter - science/analysis
 
-> **Context Depth:** 1 | **Parent:** / | **Mode:** Recursive Data Analysis
+> **Context Depth:** 2 | **Parent:** / | **Mode:** Recursive Data Analysis
 
 ---
 
@@ -20,7 +20,7 @@ This document inherits from the root `AGENTS.md` and specializes for this contex
 
 ## Local Context
 
-**This directory (`analysis`) is specialized for:**
+**This directory (`science/analysis`) is specialized for:**
 
 ### Data Analysis Context
 
@@ -72,5 +72,5 @@ If you encounter conflicts or ambiguity:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:32:02 UTC
 **Governance Version:** 1.0.0

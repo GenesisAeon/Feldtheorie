@@ -1,6 +1,6 @@
 # Architecture - archive/legacy_v1_v3/data
 
-> **Context Depth:** 3 | **Parent:** archive/legacy_v1_v3 | **Mode:** Recursive Data Analysis
+> **Context Depth:** 3 | **Parent:** archive/legacy_v1_v3 | **Mode:** Recursive Research
 
 ---
 
@@ -21,24 +21,24 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 
 **This directory (`archive/legacy_v1_v3/data`) follows the following architectural pattern:**
 
-### Data Architecture
+### Research Architecture
 
 ```
 {{PATH}}
-├── raw/                 (Immutable source data)
-├── processed/           (Cleaned, versioned data)
-├── interim/             (Intermediate transformations)
-├── external/            (Third-party data)
-├── metadata/            (Provenance and schemas)
-└── README.md            (Data dictionary)
+├── manuscripts/         (Papers, preprints)
+├── references/          (BibTeX, PDFs)
+├── hypotheses/          (Testable claims)
+├── theories/            (Formal models)
+├── indices/             (Navigation, cross-links)
+└── README.md            (Knowledge map)
 ```
 
-**Data Flow:**
-1. Ingest → raw/
-2. Clean → interim/
-3. Transform → processed/
-4. Analyze → results/
-5. Publish → docs/
+**Documentation Flow:**
+1. Hypothesis → hypotheses/
+2. Evidence → data/, analysis/
+3. Synthesis → manuscripts/
+4. Review → releases/
+5. Archive → archive/
 
 
 ---
@@ -77,5 +77,5 @@ Integrates with parent context governance
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:32:02 UTC
 **Governance Version:** 1.0.0

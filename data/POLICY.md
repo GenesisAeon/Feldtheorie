@@ -1,6 +1,6 @@
-# Governance Policy - data
+# Governance Policy - science/data
 
-> **Context Depth:** 1 | **Parent:** / | **Mode:** Recursive Data Analysis
+> **Context Depth:** 2 | **Parent:** / | **Mode:** Recursive Data Analysis
 
 ---
 
@@ -20,7 +20,7 @@ This policy inherits from parent and root governance and adds context-specific r
 
 ## Scope
 
-This policy governs all work in `data` and its subdirectories.
+This policy governs all work in `science/data` and its subdirectories.
 
 **Mode:** Recursive Data Analysis
 
@@ -68,7 +68,7 @@ Before committing changes in this context:
 
 If governance violations occur:
 
-1. **Document**: Create incident report in `data/.governance/incidents/`
+1. **Document**: Create incident report in `science/data/.governance/incidents/`
 2. **Escalate**: Notify in root `GOVERNANCE_REPORT.md`
 3. **Remediate**: Fix violation and update this policy
 4. **Review**: Parent context reviews and approves changes
@@ -84,7 +84,7 @@ This policy can be updated by:
 
 **Change Log:**
 
-- 2025-11-24 14:22:03 UTC: Initial governance deployment (v1.0.0)
+- 2026-06-17 06:32:02 UTC: Initial governance deployment (v1.0.0)
 
 ---
 
@@ -95,5 +95,5 @@ This policy can be updated by:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:32:02 UTC
 **Governance Version:** 1.0.0

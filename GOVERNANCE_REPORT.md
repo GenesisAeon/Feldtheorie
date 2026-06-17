@@ -1,23 +1,23 @@
 # Fractal Governance Report
 
-**Generated:** 2025-11-24 14:22:03 UTC
+**Generated:** 2026-06-17 06:32:03 UTC
 **Governance Version:** 1.0.0
 
 ---
 
 ## Summary
 
-- **Total Governed Contexts:** 184
+- **Total Governed Contexts:** 655
 - **Contexts by Mode:**
-  - code: 27
-  - data: 38
-  - research: 119
+  - code: 65
+  - data: 420
+  - research: 170
 
-- **Total Agents:** 184
+- **Total Agents:** 655
 - **Agents by Mode:**
-  - code: 27
-  - data: 38
-  - research: 119
+  - code: 65
+  - data: 420
+  - research: 170
 
 ---
 
@@ -240,29 +240,29 @@
 - `data/socio_ecology/urban_heat/ARCHITECTURE.md`
 - `data/socio_ecology/urban_heat/POLICY.md`
 - `docs/AGENTS.md`
-- `docs/ETHICS.md`
-- `docs/ARCHITECTURE.md`
-- `docs/POLICY.md`
-- `docs/appendices/AGENTS.md`
-- `docs/appendices/ETHICS.md`
-- `docs/appendices/ARCHITECTURE.md`
-- `docs/appendices/POLICY.md`
-- `docs/empirical_evidence/AGENTS.md`
-- `docs/empirical_evidence/ETHICS.md`
-- `docs/empirical_evidence/ARCHITECTURE.md`
-- `docs/empirical_evidence/POLICY.md`
-- `docs/outreach/AGENTS.md`
-- `docs/outreach/ETHICS.md`
-- `docs/outreach/ARCHITECTURE.md`
-- `docs/outreach/POLICY.md`
-- `docs/reviews/AGENTS.md`
-- `docs/reviews/ETHICS.md`
-- `docs/reviews/ARCHITECTURE.md`
-- `docs/reviews/POLICY.md`
-- `docs/theoretical_extensions/AGENTS.md`
-- `docs/theoretical_extensions/ETHICS.md`
-- `docs/theoretical_extensions/ARCHITECTURE.md`
-- `docs/theoretical_extensions/POLICY.md`
+- `docs/narrative/outreach/AGENTS.md`
+- `docs/narrative/outreach/ETHICS.md`
+- `docs/narrative/outreach/ARCHITECTURE.md`
+- `docs/narrative/outreach/POLICY.md`
+- `docs/narrative/reviews/AGENTS.md`
+- `docs/narrative/reviews/ETHICS.md`
+- `docs/narrative/reviews/ARCHITECTURE.md`
+- `docs/narrative/reviews/POLICY.md`
+- `docs/science/ETHICS.md`
+- `docs/science/ARCHITECTURE.md`
+- `docs/science/POLICY.md`
+- `docs/science/appendices/AGENTS.md`
+- `docs/science/appendices/ETHICS.md`
+- `docs/science/appendices/ARCHITECTURE.md`
+- `docs/science/appendices/POLICY.md`
+- `docs/science/empirical_evidence/AGENTS.md`
+- `docs/science/empirical_evidence/ETHICS.md`
+- `docs/science/empirical_evidence/ARCHITECTURE.md`
+- `docs/science/empirical_evidence/POLICY.md`
+- `docs/science/theoretical_extensions/AGENTS.md`
+- `docs/science/theoretical_extensions/ETHICS.md`
+- `docs/science/theoretical_extensions/ARCHITECTURE.md`
+- `docs/science/theoretical_extensions/POLICY.md`
 - `models/AGENTS.md`
 - `models/ETHICS.md`
 - `models/ARCHITECTURE.md`
@@ -271,6 +271,54 @@
 - `modules/ETHICS.md`
 - `modules/ARCHITECTURE.md`
 - `modules/POLICY.md`
+- `narrative/releases/AGENTS.md`
+- `narrative/releases/ETHICS.md`
+- `narrative/releases/ARCHITECTURE.md`
+- `narrative/releases/POLICY.md`
+- `narrative/releases/v4.0.0-alpha_MirrorMachine/data/AGENTS.md`
+- `narrative/releases/v4.0.0-alpha_MirrorMachine/data/ETHICS.md`
+- `narrative/releases/v4.0.0-alpha_MirrorMachine/data/ARCHITECTURE.md`
+- `narrative/releases/v4.0.0-alpha_MirrorMachine/data/POLICY.md`
+- `narrative/releases/v4.0.0-alpha_MirrorMachine/simulation/AGENTS.md`
+- `narrative/releases/v4.0.0-alpha_MirrorMachine/simulation/ETHICS.md`
+- `narrative/releases/v4.0.0-alpha_MirrorMachine/simulation/ARCHITECTURE.md`
+- `narrative/releases/v4.0.0-alpha_MirrorMachine/simulation/POLICY.md`
+- `narrative/releases/v4.0.0-alpha_MirrorMachine/theory/AGENTS.md`
+- `narrative/releases/v4.0.0-alpha_MirrorMachine/theory/ETHICS.md`
+- `narrative/releases/v4.0.0-alpha_MirrorMachine/theory/ARCHITECTURE.md`
+- `narrative/releases/v4.0.0-alpha_MirrorMachine/theory/POLICY.md`
+- `narrative/seed/AGENTS.md`
+- `narrative/seed/ETHICS.md`
+- `narrative/seed/ARCHITECTURE.md`
+- `narrative/seed/POLICY.md`
+- `narrative/seed/RoadToV.3/docs/AGENTS.md`
+- `narrative/seed/RoadToV.3/docs/ETHICS.md`
+- `narrative/seed/RoadToV.3/docs/ARCHITECTURE.md`
+- `narrative/seed/RoadToV.3/docs/POLICY.md`
+- `narrative/seed/paper/AGENTS.md`
+- `narrative/seed/paper/ETHICS.md`
+- `narrative/seed/paper/ARCHITECTURE.md`
+- `narrative/seed/paper/POLICY.md`
+- `narrative/seed/releases/AGENTS.md`
+- `narrative/seed/releases/ETHICS.md`
+- `narrative/seed/releases/ARCHITECTURE.md`
+- `narrative/seed/releases/POLICY.md`
+- `narrative/seed/releases/v4.0.0-alpha_MirrorMachine/data/AGENTS.md`
+- `narrative/seed/releases/v4.0.0-alpha_MirrorMachine/data/ETHICS.md`
+- `narrative/seed/releases/v4.0.0-alpha_MirrorMachine/data/ARCHITECTURE.md`
+- `narrative/seed/releases/v4.0.0-alpha_MirrorMachine/data/POLICY.md`
+- `narrative/seed/releases/v4.0.0-alpha_MirrorMachine/simulation/AGENTS.md`
+- `narrative/seed/releases/v4.0.0-alpha_MirrorMachine/simulation/ETHICS.md`
+- `narrative/seed/releases/v4.0.0-alpha_MirrorMachine/simulation/ARCHITECTURE.md`
+- `narrative/seed/releases/v4.0.0-alpha_MirrorMachine/simulation/POLICY.md`
+- `narrative/seed/releases/v4.0.0-alpha_MirrorMachine/theory/AGENTS.md`
+- `narrative/seed/releases/v4.0.0-alpha_MirrorMachine/theory/ETHICS.md`
+- `narrative/seed/releases/v4.0.0-alpha_MirrorMachine/theory/ARCHITECTURE.md`
+- `narrative/seed/releases/v4.0.0-alpha_MirrorMachine/theory/POLICY.md`
+- `narrative/seed/theory/AGENTS.md`
+- `narrative/seed/theory/ETHICS.md`
+- `narrative/seed/theory/ARCHITECTURE.md`
+- `narrative/seed/theory/POLICY.md`
 - `notebooks/AGENTS.md`
 - `notebooks/ETHICS.md`
 - `notebooks/ARCHITECTURE.md`
@@ -359,6 +407,46 @@
 - `results/ETHICS.md`
 - `results/ARCHITECTURE.md`
 - `results/POLICY.md`
+- `science/analysis/AGENTS.md`
+- `science/analysis/ETHICS.md`
+- `science/analysis/ARCHITECTURE.md`
+- `science/analysis/POLICY.md`
+- `science/analysis/results/AGENTS.md`
+- `science/analysis/results/ETHICS.md`
+- `science/analysis/results/ARCHITECTURE.md`
+- `science/analysis/results/POLICY.md`
+- `science/data/AGENTS.md`
+- `science/data/ETHICS.md`
+- `science/data/ARCHITECTURE.md`
+- `science/data/POLICY.md`
+- `science/models/AGENTS.md`
+- `science/models/ETHICS.md`
+- `science/models/ARCHITECTURE.md`
+- `science/models/POLICY.md`
+- `science/scripts/AGENTS.md`
+- `science/scripts/ETHICS.md`
+- `science/scripts/ARCHITECTURE.md`
+- `science/scripts/POLICY.md`
+- `science/scripts/analysis/AGENTS.md`
+- `science/scripts/analysis/ETHICS.md`
+- `science/scripts/analysis/ARCHITECTURE.md`
+- `science/scripts/analysis/POLICY.md`
+- `science/scripts/analysis/results/AGENTS.md`
+- `science/scripts/analysis/results/ETHICS.md`
+- `science/scripts/analysis/results/ARCHITECTURE.md`
+- `science/scripts/analysis/results/POLICY.md`
+- `science/scripts/paper/AGENTS.md`
+- `science/scripts/paper/ETHICS.md`
+- `science/scripts/paper/ARCHITECTURE.md`
+- `science/scripts/paper/POLICY.md`
+- `science/scripts/simulation/AGENTS.md`
+- `science/scripts/simulation/ETHICS.md`
+- `science/scripts/simulation/ARCHITECTURE.md`
+- `science/scripts/simulation/POLICY.md`
+- `science/tests/AGENTS.md`
+- `science/tests/ETHICS.md`
+- `science/tests/ARCHITECTURE.md`
+- `science/tests/POLICY.md`
 - `scripts/AGENTS.md`
 - `scripts/ETHICS.md`
 - `scripts/ARCHITECTURE.md`

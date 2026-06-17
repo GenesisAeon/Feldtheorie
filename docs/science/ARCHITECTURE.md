@@ -1,6 +1,6 @@
-# Architecture - docs
+# Architecture - docs/science
 
-> **Context Depth:** 1 | **Parent:** / | **Mode:** Recursive Research
+> **Context Depth:** 2 | **Parent:** docs | **Mode:** Recursive Research
 
 ---
 
@@ -19,7 +19,7 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 
 ## Local Architecture
 
-**This directory (`docs`) follows the following architectural pattern:**
+**This directory (`docs/science`) follows the following architectural pattern:**
 
 ### Research Architecture
 
@@ -46,7 +46,7 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 ## Component Diagram
 
 ```
-docs
+docs/science
 └── (See mode-specific architecture)
 ```
 
@@ -77,5 +77,5 @@ Integrates with parent context governance
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:32:02 UTC
 **Governance Version:** 1.0.0

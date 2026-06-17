@@ -1,6 +1,6 @@
-# Architecture - docs/reviews
+# Architecture - docs/narrative/reviews
 
-> **Context Depth:** 2 | **Parent:** docs | **Mode:** Recursive Research
+> **Context Depth:** 3 | **Parent:** docs/narrative | **Mode:** Recursive Research
 
 ---
 
@@ -19,7 +19,7 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 
 ## Local Architecture
 
-**This directory (`docs/reviews`) follows the following architectural pattern:**
+**This directory (`docs/narrative/reviews`) follows the following architectural pattern:**
 
 ### Research Architecture
 
@@ -46,7 +46,7 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 ## Component Diagram
 
 ```
-docs/reviews
+docs/narrative/reviews
 └── (See mode-specific architecture)
 ```
 
@@ -77,5 +77,5 @@ Integrates with parent context governance
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:32:02 UTC
 **Governance Version:** 1.0.0

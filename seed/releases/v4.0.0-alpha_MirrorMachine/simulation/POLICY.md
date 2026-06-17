@@ -1,6 +1,6 @@
 # Governance Policy - seed/releases/v4.0.0-alpha_MirrorMachine/simulation
 
-> **Context Depth:** 4 | **Parent:** seed/releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Research
+> **Context Depth:** 4 | **Parent:** seed/releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Programming
 
 ---
 
@@ -22,19 +22,19 @@ This policy inherits from parent and root governance and adds context-specific r
 
 This policy governs all work in `seed/releases/v4.0.0-alpha_MirrorMachine/simulation` and its subdirectories.
 
-**Mode:** Recursive Research
+**Mode:** Recursive Programming
 
 ---
 
 ## Operational Rules
 
-### Research Policy
+### Code Policy
 
-1. **Trilayer Sync**: All major docs exist in YAML/JSON/MD
-2. **Citation Required**: Every claim backed by reference or data
-3. **Hypothesis Registry**: Testable claims logged in `hypotheses/`
-4. **Peer Review**: Pre-publication review by independent agent
-5. **Archival**: Old versions preserved in `archive/` with timestamps
+1. **Test Coverage**: Minimum 80% for new code
+2. **Code Review**: All PRs require review by at least one other agent
+3. **Linting**: Code must pass `pylint`, `black`, `mypy` (Python) or equivalent
+4. **Documentation**: Public APIs must have docstrings with type hints
+5. **Commit Hygiene**: Use conventional commits (feat:, fix:, docs:, etc.)
 
 
 ---
@@ -43,23 +43,22 @@ This policy governs all work in `seed/releases/v4.0.0-alpha_MirrorMachine/simula
 
 Before committing changes in this context:
 
-- [ ] Citations complete (DOI/URL for every reference)
-- [ ] BibTeX entries formatted correctly
-- [ ] Hypotheses marked as testable/speculative
-- [ ] Trilayer documents synchronized
-- [ ] Indices updated (seed_index, docs_index, etc.)
-- [ ] Cross-references validated
-- [ ] No broken links
+- [ ] All tests pass (`pytest`, `unittest`, etc.)
+- [ ] Linters report no errors
+- [ ] Type hints added (Python 3.9+)
+- [ ] Docstrings complete for public functions
+- [ ] No hardcoded secrets or API keys
+- [ ] CHANGELOG updated
 
 
 ---
 
 ## Automation Hooks
 
-- **Pre-commit**: Check for broken links and missing citations
-- **CI Pipeline**: Validate Trilayer synchronization
-- **Weekly**: Re-index all documentation
-- **Release**: Generate DOI, archive with Zenodo
+- **Pre-commit**: Run linters and formatters
+- **CI Pipeline**: Execute full test suite on push
+- **Nightly**: Security audit of dependencies
+- **Release**: Automated version tagging and deployment
 
 
 ---
@@ -84,7 +83,7 @@ This policy can be updated by:
 
 **Change Log:**
 
-- 2025-11-24 14:22:03 UTC: Initial governance deployment (v1.0.0)
+- 2026-06-17 06:32:02 UTC: Initial governance deployment (v1.0.0)
 
 ---
 
@@ -95,5 +94,5 @@ This policy can be updated by:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:32:02 UTC
 **Governance Version:** 1.0.0

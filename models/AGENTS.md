@@ -1,6 +1,6 @@
-# Agents Charter - models
+# Agents Charter - science/models
 
-> **Context Depth:** 1 | **Parent:** / | **Mode:** Recursive Programming
+> **Context Depth:** 2 | **Parent:** / | **Mode:** Recursive Programming
 
 ---
 
@@ -20,7 +20,7 @@ This document inherits from the root `AGENTS.md` and specializes for this contex
 
 ## Local Context
 
-**This directory (`models`) is specialized for:**
+**This directory (`science/models`) is specialized for:**
 
 ### Programming Context
 
@@ -72,5 +72,5 @@ If you encounter conflicts or ambiguity:
 
 ---
 
-**Last Updated:** 2025-11-24 14:22:03 UTC
+**Last Updated:** 2026-06-17 06:32:02 UTC
 **Governance Version:** 1.0.0
