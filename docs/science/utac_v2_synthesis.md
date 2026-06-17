@@ -61,7 +61,7 @@ Die vollständige Analyse von **78 Schwellen-Systemen** bestätigt:
 
 **Gesamt:** 78 Datenpunkte, β-Range: 3.0 → 16.3
 
-> 📊 **Data:** [Beta Estimates](../data/derived/beta_estimates.csv) | [Domain Covariates](../data/derived/domain_covariates.csv)
+> 📊 **Data:** [Beta Estimates](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/derived/beta_estimates.csv) | [Domain Covariates](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/derived/domain_covariates.csv)
 
 ### Statistische Validierung
 
@@ -134,7 +134,7 @@ Dies liefert **tiefgreifende externe Validierung** für:
 - Context window: 8k-200k tokens
 - Parameter count: 10⁹-10¹²
 
-> 📊 **Data:** [AI Datasets](../data/ai/) | [Wei Emergent Abilities](../data/ai/wei_emergent_abilities.csv)
+> 📊 **Data:** [AI Datasets](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/ai) | [Wei Emergent Abilities](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/ai/wei_emergent_abilities.csv)
 
 #### Leben atmet mäßig (β ≈ 7.0)
 - **Mikrobiome, Ökosysteme**
@@ -142,7 +142,7 @@ Dies liefert **tiefgreifende externe Validierung** für:
 - Spatial constraints (biofilms, surfaces)
 - Multi-species competition (3-10 keystone species)
 
-> 📊 **Data:** [Biology Datasets](../data/biology/) | [Lenski Cit+](../data/biology/lenski_citplus.csv)
+> 📊 **Data:** [Biology Datasets](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/biology) | [Lenski Cit+](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/biology/lenski_citplus.csv)
 
 #### Klima atmet schwer (β ≈ 11.0)
 - **AMOC, Eisschilde**
@@ -151,7 +151,7 @@ Dies liefert **tiefgreifende externe Validierung** für:
 - High thermal inertia → Slow but steep
 - **Φ⁵ Attraktor** (Step 15)
 
-> 📊 **Data:** [Climate Datasets](../data/climate/) | [WAIS Mass Balance](../data/climate/wais_mass_balance_mock.csv) | [AMOC](../data/ocean/)
+> 📊 **Data:** [Climate Datasets](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/climate) | [WAIS Mass Balance](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/climate/wais_mass_balance_mock.csv) | [AMOC](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/ocean)
 
 #### Materie atmet extrem (β ≈ 13.0+)
 - **Neurodegeneration (HD, ALS)**
@@ -160,13 +160,13 @@ Dies liefert **tiefgreifende externe Validierung** für:
 - Protein phase separation (liquid → solid)
 - **Cubic-Root Jump** near R ≈ Θ
 
-> 📊 **Data:** [Socio-Ecology](../data/socio_ecology/) | [Geophysics](../data/geophysics/subduction_rupture_threshold.csv)
+> 📊 **Data:** [Socio-Ecology](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/socio_ecology) | [Geophysics](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/geophysics/subduction_rupture_threshold.csv)
 
 ---
 
 ## 📦 Daten-Manifest
 
-> 📋 **Full Index:** [Data Index](../data/data_index.md) | [JSON](../data/data_index.json) | [YAML](../data/data_index.yaml)
+> 📋 **Full Index:** [Data Index](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/data_index.md) | [JSON](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/data_index.json) | [YAML](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/data_index.yaml)
 
 ### Phase 1: Original 5 Datasets (48 points)
 
@@ -241,7 +241,7 @@ Dies liefert **tiefgreifende externe Validierung** für:
 - PCI (Consciousness Index): Predicted β ≈ 4.0
 - **Implication:** Consciousness emerges at **Informational Fixed Point**
 
-> 📊 **Data:** [Cognition Datasets](../data/cognition/)
+> 📊 **Data:** [Cognition Datasets](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/cognition)
 
 ### 4. Falsifikationskriterien
 
@@ -283,7 +283,7 @@ Dies liefert **tiefgreifende externe Validierung** für:
    - Superconductor-Insulator transition
    - **Test:** Does β differ from 4.2?
 
-> 📖 **Related:** [UTAC Dataset Expansion Strategy](utac_dataset_expansion_strategy.md) | [UTAC v2 Data Lanterns](utac_v2_data_lanterns.md)
+> 📖 **Related:** [UTAC Dataset Expansion Strategy](utac_dataset_expansion_strategy.md) | [UTAC v2 Data Lanterns](../narrative/utac_v2_data_lanterns.md)
 
 ### Publications (Q1-Q2 2026):
 
@@ -302,7 +302,7 @@ Dies liefert **tiefgreifende externe Validierung** für:
    - Target: **Science**
    - Status: Conceptual stage
 
-> 📖 **Related:** [Review Ready Summary v1.3phi](review_ready_summary_utac_v1.3phi.md) | [UTAC Review Considerations](utac_review_considerations.md)
+> 📖 **Related:** [Review Ready Summary v1.3phi](../narrative/review_ready_summary_utac_v1.3phi.md) | [UTAC Review Considerations](utac_review_considerations.md)
 
 ---
 
@@ -317,25 +317,25 @@ Dies liefert **tiefgreifende externe Validierung** für:
 - [RG Phase2 Microscopic Guide](rg_phase2_microscopic_guide.md) - Microscopic foundations
 
 ### Data & Analysis:
-- [Data Index](../data/data_index.md) - Complete data catalog
-- [Beta Estimates CSV](../data/derived/beta_estimates.csv) - All β-values
-- [Domain Covariates CSV](../data/derived/domain_covariates.csv) - Meta-regression data
+- [Data Index](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/data_index.md) - Complete data catalog
+- [Beta Estimates CSV](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/derived/beta_estimates.csv) - All β-values
+- [Domain Covariates CSV](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/derived/domain_covariates.csv) - Meta-regression data
 
 ### Validation & Falsifiability:
 - [UTAC Falsifiability](utac_falsifiability.md) - Falsification criteria
 - [UTAC Review Considerations](utac_review_considerations.md) - Peer review prep
-- [Review Ready Summary v1.3phi](review_ready_summary_utac_v1.3phi.md) - Publication-ready summary
+- [Review Ready Summary v1.3phi](../narrative/review_ready_summary_utac_v1.3phi.md) - Publication-ready summary
 
 ### Applications & Extensions:
 - [UTAC Applications](utac_applications.md) - Real-world applications
 - [UTAC Emergence Universal](utac_emergence_universal.md) - Universal emergence patterns
 - [UTAC Dataset Expansion Strategy](utac_dataset_expansion_strategy.md) - Future datasets
-- [UTAC v2 Data Lanterns](utac_v2_data_lanterns.md) - Active monitoring systems
+- [UTAC v2 Data Lanterns](../narrative/utac_v2_data_lanterns.md) - Active monitoring systems
 
 ### Planning & Tracking:
-- [UTAC v2 Activation Tracker](utac_v2_activation_tracker_2026-02.md) - Implementation timeline
-- [UTAC Activation Backlog](utac_activation_backlog.md) - Task backlog
-- [UTAC v2 Gap Synopsis](utac_v2_gap_synopsis_2026-03.md) - Research gaps
+- [UTAC v2 Activation Tracker](../narrative/utac_v2_activation_tracker_2026-02.md) - Implementation timeline
+- [UTAC Activation Backlog](../narrative/utac_activation_backlog.md) - Task backlog
+- [UTAC v2 Gap Synopsis](../narrative/utac_v2_gap_synopsis_2026-03.md) - Research gaps
 
 ### Original Synthesis Documents:
 - `seed/RoadToV.3/Vorerst_finale_Theorie.txt` - UTAC v2.0 Index

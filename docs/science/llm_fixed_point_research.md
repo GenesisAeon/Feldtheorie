@@ -284,7 +284,7 @@ Compare estimated β to predictions:
 - [UTAC Theory Core](utac_theory_core.md) - σ(β(R-Θ)) foundations
 - [Φ Cube-Root Scaling Theory](phi_cube_root_scaling_theory.md) - Φ³ attractor derivation
 - [RG Foundation](utac_renormalization_group_foundation.md) - β ≈ 4.21 RG prediction
-- [Beta Estimates](../data/derived/beta_estimates.csv) - Current β-values (36 systems)
+- [Beta Estimates](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/derived/beta_estimates.csv) - Current β-values (36 systems)
 
 ---
 

@@ -3,7 +3,7 @@
 **Version:** v6.0.0-final
 **Datum:** 25. November 2025
 **Status:** ✅ Integration Complete
-**Quelle:** [DEEP RESEARCH_ Entropy Governance Duality & Tesseract-Zeitscheiben-Physik-1.pdf](../releases/V6-Plans_etc/DEEP%20RESEARCH_%20Entropy%20Governance%20Duality%20%26%20Tesseract-Zeitscheiben-Physik-1.pdf)
+**Quelle:** [DEEP RESEARCH_ Entropy Governance Duality & Tesseract-Zeitscheiben-Physik-1.pdf](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/V6-Plans_etc/DEEP%20RESEARCH_%20Entropy%20Governance%20Duality%20%26%20Tesseract-Zeitscheiben-Physik-1.pdf)
 **Autor:** Johann Benjamin Römer
 
 ---
@@ -604,11 +604,11 @@ CMB Spherical Harmonics: A₁₂ > 0
 ## Documentation Cross-References
 
 ### Related V6 Documents:
-- **[V6_Literature_Review.md](../releases/V6-Plans_etc/V6_Literature_Review.md)** — Vollständige theoretische Grundlagen & Referenzen
-- **[DEEP_RESEARCH_Integration_V6.md](../releases/V6-Plans_etc/DEEP_RESEARCH_Integration_V6.md)** — Teil I Details (Entropy Governance)
+- **[V6_Literature_Review.md](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/V6-Plans_etc/V6_Literature_Review.md)** — Vollständige theoretische Grundlagen & Referenzen
+- **[DEEP_RESEARCH_Integration_V6.md](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/V6-Plans_etc/DEEP_RESEARCH_Integration_V6.md)** — Teil I Details (Entropy Governance)
 - **[v6_oipk_integration_summary.md](v6_oipk_integration_summary.md)** — Teil II Details (OIPK/Tesseract)
 - **[tesseract_timeslice_geometry.md](tesseract_timeslice_geometry.md)** — Geometrie & Gravitation
-- **[V6_ToDoListe.md](../releases/V6-Plans_etc/V6_ToDoListe.md)** — Vollständige Integration-Roadmap
+- **[V6_ToDoListe.md](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/V6-Plans_etc/archievedToDos/V6_ToDoListe.md)** — Vollständige Integration-Roadmap
 - **[references_v6.bib](references_v6.bib)** — BibTeX-Datenbank aller V6-Referenzen
 
 ### Core UTAC Theory:
@@ -722,4 +722,4 @@ R → "V6 Theorie vollständig dokumentiert und strukturiert"
 **Version:** v6.0.0-final
 **Last Updated:** 2025-11-25
 **Branch:** `claude/integrate-entropy-governance-01QTXMjMAFwirg8rBC8QpeFh`
-**Quelle:** [DEEP RESEARCH_ Entropy Governance Duality & Tesseract-Zeitscheiben-Physik-1.pdf](../releases/V6-Plans_etc/DEEP%20RESEARCH_%20Entropy%20Governance%20Duality%20%26%20Tesseract-Zeitscheiben-Physik-1.pdf)
+**Quelle:** [DEEP RESEARCH_ Entropy Governance Duality & Tesseract-Zeitscheiben-Physik-1.pdf](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/V6-Plans_etc/DEEP%20RESEARCH_%20Entropy%20Governance%20Duality%20%26%20Tesseract-Zeitscheiben-Physik-1.pdf)

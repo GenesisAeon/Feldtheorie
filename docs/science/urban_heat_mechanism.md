@@ -106,7 +106,7 @@ We simulated 5 urban canyon types with varying storage coefficients:
 
 ### β vs Storage Coefficient
 
-![β-Storage Correlation](../analysis/results/urban_heat_storage_mechanism.json)
+![β-Storage Correlation](https://github.com/GenesisAeon/Feldtheorie/blob/main/analysis/results/urban_heat_storage_mechanism.json)
 
 ```
 Linear Regression:

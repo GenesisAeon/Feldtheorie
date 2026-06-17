@@ -483,7 +483,7 @@ Falsification: If S(t+Δt) < S(t) → Unphysikalisch, Code-Bug
 9. LLM/Landauer (5 refs): Radford, Brown, Kaplan, Touvron, Landauer
 10. Holographie (2 refs): Susskind, Rovelli
 
-**Vollständige Datei:** [docs/references_v6.bib](../docs/references_v6.bib)
+**Vollständige Datei:** [docs/references_v6.bib](references_v6.bib)
 
 ---
 

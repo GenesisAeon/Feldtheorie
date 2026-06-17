@@ -905,11 +905,11 @@ ulimit -m 4194304  # 4GB
 ## Support
 
 - **Issues**: https://github.com/GenesisAeon/Feldtheorie/issues
-- **Documentation**: [docs/](docs/)
+- **Documentation**: [docs/](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs)
 - **Email**: [Your contact]
 
 ---
 
 ## License
 
-Code: GPLv3 | Content & Data: CC BY-NC 4.0 (non-commercial). Commercial use requires explicit permission. See [LICENSE](LICENSE).
+Code: GPLv3 | Content & Data: CC BY-NC 4.0 (non-commercial). Commercial use requires explicit permission. See [LICENSE](https://github.com/GenesisAeon/Feldtheorie/blob/main/LICENSE).

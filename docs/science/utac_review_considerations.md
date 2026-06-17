@@ -96,7 +96,7 @@ Feldtheorie/
 
 **Problem**: Fehlende Angaben zu Stichprobengrößen, Seeds, Preprocessing, Multiple-Testing-Korrektur.
 
-**Lösung**: [`METRICS.md`](../METRICS.md)
+**Lösung**: [`METRICS.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/METRICS.md)
 
 **Jetzt dokumentiert**:
 - ✅ **β-Schätzung**: Methodik (Nonlinear Least Squares, Bootstrap)
@@ -121,7 +121,7 @@ Feldtheorie/
 
 **Problem**: Unklar, ob Code vollständig ausführbar ist und Daten dokumentiert sind.
 
-**Lösung**: [`REPRODUCE.md`](../REPRODUCE.md)
+**Lösung**: [`REPRODUCE.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/REPRODUCE.md)
 
 **Jetzt verfügbar**:
 - ✅ **Schritt-für-Schritt-Anleitung**: Von `git clone` bis Validierung
@@ -340,6 +340,6 @@ pytest tests/ -v
 
 *Für Details siehe:*
 - *[`AUTHORSHIP.md`](../AUTHORSHIP.md) - AI-Rollen*
-- *[`METRICS.md`](../METRICS.md) - Statistik*
-- *[`REPRODUCE.md`](../REPRODUCE.md) - Reproduktion*
+- *[`METRICS.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/METRICS.md) - Statistik*
+- *[`REPRODUCE.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/REPRODUCE.md) - Reproduktion*
 - *[`utac_falsifiability.md`](utac_falsifiability.md) - Falsifikation*

@@ -982,9 +982,9 @@ CREP_crit = 0.84       # Critical frame stability
 ### Quick Links
 
 - **Main Release Notes:** [RELEASE_NOTES_v9.0.0.md](../RELEASE_NOTES_v9.0.0.md)
-- **Lantern-Net Guide:** [v9_alpha/README.md](../v9_alpha/README.md)
-- **Roadmap:** [v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md](../v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md)
-- **Paper Draft:** [releases/v9.0/Dimensional_Emergence_Paper_DRAFT.md](../releases/v9.0/Dimensional_Emergence_Paper_DRAFT.md)
+- **Lantern-Net Guide:** [v9_alpha/README.md](https://github.com/GenesisAeon/Feldtheorie/blob/main/v9_alpha/README.md)
+- **Roadmap:** [v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md](https://github.com/GenesisAeon/Feldtheorie/blob/main/v9_alpha/docs/ROADMAP_EM_CONSCIOUSNESS.md)
+- **Paper Draft:** [releases/v9.0/Dimensional_Emergence_Paper_DRAFT.md](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/v9.0/Dimensional_Emergence_Paper_DRAFT.md)
 - **Repository:** [https://github.com/GenesisAeon/Feldtheorie](https://github.com/GenesisAeon/Feldtheorie)
 
 ---

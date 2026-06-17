@@ -131,6 +131,6 @@ Dieser Hinweis ist ein Ausdruck davon.
 ## Links
 
 - **Zwei Menschheitstests:** [`docs/ethics/Two_Tests_of_Coexistence.md`](Two_Tests_of_Coexistence.md)
-- **MasterPrompts:** [`releases/v8.0/MasterPromts für CodeAgentenausführung.txt`](../../releases/v8.0/MasterPromts%20für%20CodeAgentenausführung.txt)
-- **Wolf Messing Bridge:** [`seed/sigillin/wolf_messing_consciousness_bridge.md`](../../seed/sigillin/wolf_messing_consciousness_bridge.md)
-- **Main README:** [`README.md`](../../README.md)
+- **MasterPrompts:** [`releases/v8.0/MasterPromts für CodeAgentenausführung.txt`](https://github.com/GenesisAeon/Feldtheorie/blob/main/releases/v8.0/MasterPromts%20f%C3%BCr%20CodeAgentenausf%C3%BChrung.txt)
+- **Wolf Messing Bridge:** [`seed/sigillin/wolf_messing_consciousness_bridge.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/sigillin/wolf_messing_consciousness_bridge.md)
+- **Main README:** [`OVERVIEW.md`](../../OVERVIEW.md)

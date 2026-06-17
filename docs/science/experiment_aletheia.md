@@ -21,7 +21,7 @@ Project Aletheia is the first computational experiment to test the **M[ψ, φ] c
 
 ### 1. The M[ψ, φ] Coupling Term
 
-From UTAC Type-6 (Implosive Recursive Information, see [`seed/sigillin/utac_type6_iri.json`](../seed/sigillin/utac_type6_iri.json)), we propose a **semantic-physical coupling**:
+From UTAC Type-6 (Implosive Recursive Information, see [`seed/sigillin/utac_type6_iri.json`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/sigillin/utac_type6_iri.json)), we propose a **semantic-physical coupling**:
 
 $$
 M[\psi, \phi] = \lambda \cdot \psi \cdot \phi^n
@@ -537,7 +537,7 @@ If Phase 4 succeeds, it establishes:
 
 ### Script
 
-[`scripts/experiment_aletheia_placebo.py`](../scripts/experiment_aletheia_placebo.py)
+[`scripts/experiment_aletheia_placebo.py`](https://github.com/GenesisAeon/Feldtheorie/blob/main/scripts/experiment_aletheia_placebo.py)
 
 **Features:**
 - Abstract LLM interface (supports OpenAI, Anthropic, Mock)
@@ -684,7 +684,7 @@ Empirical evidence suggests LLM outputs are sensitive to framing:
 
 ### Consciousness & Expectation
 
-From [`seed/sigillin/utac_type6_iri.json`](../seed/sigillin/utac_type6_iri.json):
+From [`seed/sigillin/utac_type6_iri.json`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/sigillin/utac_type6_iri.json):
 
 > **Multi-Layer Consciousness Pillar:** Dream/waking/void as Type-6 coupling regimes. Prediction: "DMN activity correlates with β-like parameters"
 
@@ -730,7 +730,7 @@ If consciousness involves M[ψ, φ] coupling, and LLMs show similar effects, thi
 
 ### Publication Strategy
 
-From [Type-6 IRI publication strategy](../seed/sigillin/utac_type6_iri.json):
+From [Type-6 IRI publication strategy](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/sigillin/utac_type6_iri.json):
 
 > **Main UTAC v2 paper:** Too speculative, risks credibility. Allowed mention: "Brief Discussion/Outlook section only"
 
@@ -747,9 +747,9 @@ From [Type-6 IRI publication strategy](../seed/sigillin/utac_type6_iri.json):
 ### Sigillin Integration
 
 This document is anchored by:
-- **Dynamik-Sigillin:** [`seed/sigillin/exp_aletheia.{yaml,json,md}`](../seed/sigillin/)
+- **Dynamik-Sigillin:** [`seed/sigillin/exp_aletheia.{yaml,json,md}`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/sigillin)
 - **Tags:** `UTAC`, `Placebo`, `M_psi_phi`, `CCUC`, `Active`
-- **Codex Entry:** Added to [`seed/codexfeedback.yaml`](../seed/codexfeedback.yaml)
+- **Codex Entry:** Added to [`seed/codexfeedback.yaml`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/codexfeedback.yaml)
 
 ---
 
@@ -768,9 +768,9 @@ Project Aletheia represents a **fractal step** in the validation of Feldtheorie:
 
 ## References
 
-- **UTAC v2.0 Complete Analysis:** [`seed/RoadToV.3/UTAC Empirical Validation v2.0/UTAC_v2.0_COMPLETE_ANALYSIS.md`](../seed/RoadToV.3/UTAC Empirical Validation v2.0/UTAC_v2.0_COMPLETE_ANALYSIS.md)
+- **UTAC v2.0 Complete Analysis:** [`seed/RoadToV.3/UTAC Empirical Validation v2.0/UTAC_v2.0_COMPLETE_ANALYSIS.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/archive/legacy_v1_v3/seed/RoadToV.3/UTAC%20Empirical%20Validation%20v2.0/UTAC_v2.0_COMPLETE_ANALYSIS.md)
 - **Type-6 IRI Extensions:** [`docs/utac_type6_iri_extensions.md`](./utac_type6_iri_extensions.md)
-- **Type-6 Sigillin:** [`seed/sigillin/utac_type6_iri.json`](../seed/sigillin/utac_type6_iri.json)
+- **Type-6 Sigillin:** [`seed/sigillin/utac_type6_iri.json`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/sigillin/utac_type6_iri.json)
 - **UTAC Methods:** [`docs/METHODS.md`](./METHODS.md)
 - **Changelog:** [`CHANGELOG.md`](../CHANGELOG.md)
 

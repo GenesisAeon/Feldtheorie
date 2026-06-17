@@ -115,7 +115,7 @@
 ```markdown
 ## Scientific Maturity
 
-External-style peer review rated UTAC v1.3φ at **4.6/5 average** (see [docs/review_ready_summary_utac_v1.3phi.md](docs/review_ready_summary_utac_v1.3phi.md)).
+External-style peer review rated UTAC v1.3φ at **4.6/5 average** (see [docs/review_ready_summary_utac_v1.3phi.md](review_ready_summary_utac_v1.3phi.md)).
 
 - ✓ TYPE-6 provisionally validated (Urban Heat, 56 city-seasons)
 - ✓ Φ^(1/3) ladder hypothesis supported (LLM β-spiral)
@@ -125,7 +125,7 @@ External-style peer review rated UTAC v1.3φ at **4.6/5 average** (see [docs/rev
 ### In Zenodo Record
 ```
 Peer Review Self-Assessment available in repository:
-docs/review_ready_summary_utac_v1.3phi.md (4.6/5 average rating)
+review_ready_summary_utac_v1.3phi.md (4.6/5 average rating)
 ```
 
 ### In Cover Letters

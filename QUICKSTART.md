@@ -54,18 +54,18 @@
 ### Option A: Just Browse (no installation)
 
 1. **Read first:**
-   - [`README.md`](README.md) → Overview
-   - [`seed/seed_index.md`](seed/seed_index.md) → Navigation
-   - [`seed/Metareflexion.txt`](seed/Metareflexion.txt) → Philosophy
+   - [`README.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/README.md) → Overview
+   - [`seed/seed_index.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/seed_index.md) → Navigation
+   - [`seed/Metareflexion.txt`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/Metareflexion.txt) → Philosophy
 
 2. **Understand the science:**
    - [`METHODS.md`](METHODS.md) → How we fit
-   - [`docs/field_type_classification_v1.1.md`](docs/field_type_classification_v1.1.md) → 5 field types
-   - [`data/derived/beta_estimates.csv`](data/derived/beta_estimates.csv) → All β-values
+   - [`docs/field_type_classification_v1.1.md`](science/field_type_classification_v1.1.md) → 5 field types
+   - [`data/derived/beta_estimates.csv`](https://github.com/GenesisAeon/Feldtheorie/blob/main/data/derived/beta_estimates.csv) → All β-values
 
 3. **Understand the Sigillin system:**
-   - [`seed/Sigillin_System_Definition.md`](seed/Sigillin_System_Definition.md) → Ontology
-   - [`feldtheorie_index.md`](feldtheorie_index.md) → Master index
+   - [`seed/Sigillin_System_Definition.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/Sigillin_System_Definition.md) → Ontology
+   - [`feldtheorie_index.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/feldtheorie_index.md) → Master index
 
 ### Option B: Reproduce a β-fit (10 minutes)
 
@@ -97,7 +97,7 @@ pytest tests/ -v
 
 ### Step 1: Read these 3 files (mandatory!)
 
-1. **[`README.md`](README.md)**
+1. **[`README.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/README.md)**
    → Project overview, version info, citation guide
 
 2. **[`AGENTS.md`](AGENTS.md)**
@@ -107,7 +107,7 @@ pytest tests/ -v
    - Read UTAC status matrix
    - Observe BreakPoint rituals
 
-3. **[`seed/seed_index.md`](seed/seed_index.md)**
+3. **[`seed/seed_index.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/seed_index.md)**
    → Semantic navigation: 126 documents, 6 categories, quicklinks
 
 ### Step 2: Understand the structure
@@ -169,31 +169,31 @@ python scripts/sigillin_sync.py report --roots seed/
 ### For Scientists
 
 - [`METHODS.md`](METHODS.md) — Fitting methodology
-- [`METRICS.md`](METRICS.md) — Metrics & ΔAIC
+- [`METRICS.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/METRICS.md) — Metrics & ΔAIC
 - [`ETHICS.md`](ETHICS.md) — Governance
 - [`LIMITATIONS.md`](LIMITATIONS.md) — What we don't (yet) know
-- [`docs/field_type_classification_v1.1.md`](docs/field_type_classification_v1.1.md) — 5 field types
+- [`docs/field_type_classification_v1.1.md`](science/field_type_classification_v1.1.md) — 5 field types
 
 ### For Developers
 
-- [`REPRODUCE.md`](REPRODUCE.md) — Reproduction guide
+- [`REPRODUCE.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/REPRODUCE.md) — Reproduction guide
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — How to contribute?
-- [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — CI pipeline
-- [`tests/`](tests/) — 430 tests (full pytest suite)
+- [`.github/workflows/ci.yml`](https://github.com/GenesisAeon/Feldtheorie/blob/main/.github/workflows/ci.yml) — CI pipeline
+- [`tests/`](https://github.com/GenesisAeon/Feldtheorie/blob/main/tests) — 430 tests (full pytest suite)
 
 ### For Methodologists
 
-- [`seed/Sigillin_System_Definition.md`](seed/Sigillin_System_Definition.md) — Ontology
+- [`seed/Sigillin_System_Definition.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/Sigillin_System_Definition.md) — Ontology
 - [`AGENTS.md`](AGENTS.md) — Agent charter
-- [`seed/codexfeedback.md`](seed/codexfeedback.md) — Living memory
-- [`docs/utac_status_alignment_v1.2.md`](docs/utac_status_alignment_v1.2.md) — Status matrix
+- [`seed/codexfeedback.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/codexfeedback.md) — Living memory
+- [`docs/utac_status_alignment_v1.2.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/utac_status_alignment_v1.2.md) — Status matrix
 
 ### For Philosophers 🌊
 
-- [`seed/Metareflexion.txt`](seed/Metareflexion.txt) — Fixed values ↔ Variability
-- [`seed/Rekalibrierung_Abschlus.txt`](seed/Rekalibrierung_Abschlus.txt) — Co-hypothesis
-- [`seed/Emergenz.txt`](seed/Emergenz.txt) — Emergence concept
-- [`seed/utf-living-glossary.md`](seed/utf-living-glossary.md) — Living glossary
+- [`seed/Metareflexion.txt`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/Metareflexion.txt) — Fixed values ↔ Variability
+- [`seed/Rekalibrierung_Abschlus.txt`](https://github.com/GenesisAeon/Feldtheorie/blob/main/archive/legacy_v1_v3/seed/notes/Rekalibrierung_Abschlus.txt) — Co-hypothesis
+- [`seed/Emergenz.txt`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/Emergenz.txt) — Emergence concept
+- [`seed/utf-living-glossary.md`](https://github.com/GenesisAeon/Feldtheorie/blob/main/seed/utf-living-glossary.md) — Living glossary
 
 ---
 
