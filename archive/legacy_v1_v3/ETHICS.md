@@ -76,9 +76,5 @@ Before committing work in `archive/legacy_v1_v3`:
 
 ---
 
-<<<<<<< HEAD
-**Last Updated:** 2026-06-17 07:12:20 UTC
-=======
-**Last Updated:** 2026-06-17 07:00:00 UTC
->>>>>>> origin/main
+**Last Updated:** 2026-06-17 07:47:39 UTC
 **Governance Version:** 1.0.0

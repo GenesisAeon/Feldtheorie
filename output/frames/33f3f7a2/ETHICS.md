@@ -81,9 +81,5 @@ Before committing work in `output/frames/33f3f7a2`:
 
 ---
 
-<<<<<<< HEAD
-**Last Updated:** 2026-06-17 07:12:20 UTC
-=======
-**Last Updated:** 2026-06-17 07:00:00 UTC
->>>>>>> origin/main
+**Last Updated:** 2026-06-17 07:47:39 UTC
 **Governance Version:** 1.0.0

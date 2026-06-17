@@ -1,10 +1,6 @@
 # Fractal Governance Report
 
-<<<<<<< HEAD
-**Generated:** 2026-06-17 07:12:21 UTC
-=======
-**Generated:** 2026-06-17 07:00:00 UTC
->>>>>>> origin/main
+**Generated:** 2026-06-17 07:47:40 UTC
 **Governance Version:** 1.0.0
 
 ---
