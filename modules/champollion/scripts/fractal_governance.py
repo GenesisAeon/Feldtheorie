@@ -221,7 +221,10 @@ def render_template(template_path: Path, context: Context, mode: ModeConfig, tim
         custom_block = context.custom_rules[filename]
         # Replace the empty custom rules block with the saved one
         pattern = re.escape(CUSTOM_RULES_START) + r".*?" + re.escape(CUSTOM_RULES_END)
-        rendered = re.sub(pattern, custom_block, rendered, flags=re.DOTALL)
+        # Use a lambda so backslashes in custom_block (e.g. "\z" in a path or
+        # regex snippet) are inserted literally instead of being parsed as
+        # re.sub backreferences (which raises "bad escape" for invalid ones).
+        rendered = re.sub(pattern, lambda _match: custom_block, rendered, flags=re.DOTALL)
 
     return rendered
 
