@@ -2,8 +2,8 @@
 
 import importlib
 
-import pytest
 import numpy as np
+import pytest
 
 
 def test_aeon_bridge_requires_fastapi(monkeypatch):

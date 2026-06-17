@@ -1,6 +1,7 @@
-import random
 import math
-from src.core.agent_kernel import UATCAgent, ExistenceScale
+import random
+
+from src.core.agent_kernel import ExistenceScale, UATCAgent
 
 
 class HydrogenAtom:

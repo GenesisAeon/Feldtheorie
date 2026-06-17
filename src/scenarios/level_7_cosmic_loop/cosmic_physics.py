@@ -13,9 +13,7 @@ Nur die stabilsten ECM-Kopplungen überleben und vererben sich weiter.
 """
 
 import random
-import time
 from dataclasses import dataclass
-from typing import Optional
 
 # Importiere unsere vorherigen Errungenschaften
 from src.scenarios.level_6_consciousness.brain_physics import HiveMind
@@ -32,7 +30,7 @@ class CosmicSeed:
     ancestor_ecm_score: float  # Das Erbe (Wie bewusst war der Vorgänger?)
     dna_mutation_rate: float   # Wie stark variieren die Naturkonstanten?
 
-    def try_germinate(self) -> Optional[dict]:
+    def try_germinate(self) -> dict | None:
         """
         Der Versuch, ein neues Universum zu starten.
 
@@ -110,7 +108,7 @@ class UniverseRunner:
             print("   ❌ FAILED. The seed is dormant/dead. Entropy won.")
             return False  # Universum existiert nicht
 
-        print(f"   ✨ SUCCESS! Big Bang initiated.")
+        print("   ✨ SUCCESS! Big Bang initiated.")
         print(f"   Physics: G={self.physics['G']:.3f}, α={self.physics['FINE_STRUCTURE']:.5f}")
         self.is_alive = True
 
@@ -158,7 +156,7 @@ class UniverseRunner:
 
         # Simuliere "Denkzyklen" (Evolution der Neurosynchronisation)
         thought_cycles = 10
-        for cycle in range(thought_cycles):
+        for _cycle in range(thought_cycles):
             # Zufälliger Stimulus (Sinneseindruck aus dem Universum)
             stim_x = random.randint(0, mind_size - 1)
             stim_y = random.randint(0, mind_size - 1)
@@ -167,7 +165,7 @@ class UniverseRunner:
         # Der finale ECM-Score ist die erreichte Kohärenz
         self.final_ecm = mind.coherence
 
-        print(f"   👁️  Observer State Reached!")
+        print("   👁️  Observer State Reached!")
         print(f"   Final ECM Score: {self.final_ecm:.4f}")
 
         # Bewusstseins-Klassifikation

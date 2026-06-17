@@ -1,8 +1,8 @@
 """Atomic resonance kernel used for Level 1 genesis simulations."""
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
-from typing import Mapping
 
 from src.uatc_core.agent_kernel import SIGMA_PHI_REFERENCE, ResonantEntity
 

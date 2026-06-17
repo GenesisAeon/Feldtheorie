@@ -6,11 +6,9 @@ import json
 
 import numpy as np
 import pytest
-
 from integration.grok_bridge.layer_monitor import GrokLayerMonitor, LayerReading
-from integration.grok_bridge.safety_hooks import GrokSafetyHooks, SafetyAlert, SafetyLevel
 from integration.grok_bridge.metrics_collector import GrokMetricsCollector
-
+from integration.grok_bridge.safety_hooks import GrokSafetyHooks, SafetyLevel
 
 # ===========================================================================
 # Layer Monitor
@@ -110,7 +108,7 @@ class TestGrokSafetyHooks:
     def test_check_stable_returns_none(self) -> None:
         safety = GrokSafetyHooks()
         monitor = GrokLayerMonitor()
-        reading = monitor.record_reading("layer.0", np.ones(100) * 16.0 + np.arange(100) * 0.001)
+        monitor.record_reading("layer.0", np.ones(100) * 16.0 + np.arange(100) * 0.001)
         # This has very low CV, so will be critical or warning
         # Use a reading that is stable
         reading_stable = LayerReading(

@@ -2,12 +2,10 @@
 
 from __future__ import annotations
 
-import numpy as np
-
 from aeon.modules.genesis_orchestrator import GenesisOrchestrator
 from aeon.modules.knowledge_system import KnowledgeSystem
 from aeon.nullkern.zero_point_kernel import Nullkern
-from aeon.shell.grammar import AeonShellParser, AeonShellGenerator
+from aeon.shell.grammar import AeonShellGenerator, AeonShellParser
 
 
 def test_aeonshell_parser_and_generator_roundtrip() -> None:

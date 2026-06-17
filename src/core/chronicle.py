@@ -1,8 +1,9 @@
 """Centralized Akasha Chronicle for tracking agent states and resources."""
 from __future__ import annotations
 
+from collections.abc import Mapping, MutableMapping
 from dataclasses import dataclass
-from typing import Any, ClassVar, Dict, List, Mapping, MutableMapping, Optional
+from typing import Any, ClassVar
 
 
 @dataclass(frozen=True)
@@ -10,8 +11,8 @@ class AgentLog:
     """Snapshot of an agent's terminal state preserved in the Chronicle."""
 
     agent_id: str
-    role_name: Optional[str]
-    lifespan: Optional[int]
+    role_name: str | None
+    lifespan: int | None
     resonance: float
     cause_of_death: str
     materials_released: Mapping[str, int]
@@ -32,9 +33,9 @@ class ResourceOrigin:
 class TheChronicle:
     """Singleton memory that conserves agent information and matter."""
 
-    _instance: ClassVar[Optional["TheChronicle"]] = None
+    _instance: ClassVar[TheChronicle | None] = None
 
-    def __new__(cls) -> "TheChronicle":
+    def __new__(cls) -> TheChronicle:
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance
@@ -42,8 +43,8 @@ class TheChronicle:
     def __init__(self) -> None:
         if getattr(self, "_initialized", False):
             return
-        self.graveyard: List[AgentLog] = []
-        self.resource_pool: Dict[str, int] = {
+        self.graveyard: list[AgentLog] = []
+        self.resource_pool: dict[str, int] = {
             "HYDROGEN": 1_000_000,
             "HELIUM": 0,
             "METALS": 0,
@@ -56,7 +57,7 @@ class TheChronicle:
             "BLACK_HOLE_SEED": 0,
         }
         self.elemental_pool = self.resource_pool
-        self.resource_lineage: Dict[str, List[ResourceOrigin]] = {}
+        self.resource_lineage: dict[str, list[ResourceOrigin]] = {}
         self.cycle: int = 0
         self.cycle_count: int = 0
         self._initialized = True
@@ -132,7 +133,7 @@ class TheChronicle:
             self.request_resources(element, amount)
         return True
 
-    def trace_resource(self, material: str) -> Optional[ResourceOrigin]:
+    def trace_resource(self, material: str) -> ResourceOrigin | None:
         entries = self.resource_lineage.get(material.upper())
         if not entries:
             return None
@@ -144,8 +145,8 @@ class TheChronicle:
     def report_pool(self) -> MutableMapping[str, int]:
         return dict(self.resource_pool)
 
-    def _normalize_materials(self, materials: Mapping[str, int]) -> Dict[str, int]:
-        normalized: Dict[str, int] = {}
+    def _normalize_materials(self, materials: Mapping[str, int]) -> dict[str, int]:
+        normalized: dict[str, int] = {}
         for key, value in materials.items():
             if value <= 0:
                 continue
@@ -170,12 +171,12 @@ class TheChronicle:
 
     def _agent_id(self, agent: object) -> str:
         if hasattr(agent, "agent_id"):
-            return str(getattr(agent, "agent_id"))
+            return str(agent.agent_id)
         if hasattr(agent, "id"):
-            return str(getattr(agent, "id"))
+            return str(agent.id)
         return f"agent_{len(self.graveyard) + 1:03d}"
 
-    def _agent_lifespan(self, agent: object) -> Optional[int]:
+    def _agent_lifespan(self, agent: object) -> int | None:
         for attr in ("lifespan", "lifetime", "age"):
             if hasattr(agent, attr):
                 value = getattr(agent, attr)
@@ -184,7 +185,7 @@ class TheChronicle:
                     return coerced
         return None
 
-    def _coerce_int(self, value: object | None) -> Optional[int]:
+    def _coerce_int(self, value: object | None) -> int | None:
         if value is None:
             return None
         if isinstance(value, bool):

@@ -121,11 +121,22 @@ target-version = ["py311"]
 [tool.ruff]
 line-length = 100
 src = ["analysis", "models", "tests"]
-select = ["E", "F", "I", "B", "UP", "S"]
-ignore = ["S101"]
 
-[tool.ruff.per-file-ignores]
-"tests/*" = ["S101"]
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S"]
+ignore = [
+    "S101",  # assert usage is expected in pytest
+    "S311",  # non-cryptographic random is intentional in physics simulations
+    "S605",  # os.system("cls"/"clear") screen-clear calls use hardcoded literals, no injection risk
+    "S105",  # "password"-like names (e.g. consent_token) are test/session ids, not credentials
+    "S106",  # same as S105, for keyword-argument form
+    "S107",  # same as S105, for default-argument form
+    "E501",  # line length is a formatting nit, not a correctness issue
+    "E402",  # late imports are deliberate (sys.path manipulation precedes them)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "S603"]  # S603: subprocess.run([sys.executable, ...]) with hardcoded args, no untrusted input
 
 [tool.coverage.run]
 source = ["analysis", "models"]

@@ -1,8 +1,6 @@
 """Tests for the Emergence Dynamics analysis module."""
 from __future__ import annotations
 
-import pytest
-
 from analysis.emergence_dynamics import (
     EmergenceParams,
     simulate_concept_spread,

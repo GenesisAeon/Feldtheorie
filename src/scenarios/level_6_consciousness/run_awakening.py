@@ -1,10 +1,11 @@
-import time
-import sys
 import os
 import random
+import sys
+import time
 
 sys.path.append(os.getcwd())
 from src.scenarios.level_6_consciousness.brain_physics import HiveMind
+
 
 def main():
     mind = HiveMind(width=8, height=4)

@@ -36,16 +36,13 @@ def _ensure_api_bridge_mock():
 
 _ensure_api_bridge_mock()
 
+from aeon.agents.semantic_agent import RecursiveCoupler, SemanticAgent  # noqa: E402
 from aeon.nullkern.zero_point_kernel import Nullkern  # noqa: E402
 from aeon.shell.containment import AeonShell  # noqa: E402
-from aeon.agents.semantic_agent import SemanticAgent, RecursiveCoupler  # noqa: E402
 from integration.aeon_lantern.hub import (  # noqa: E402
     AeonLanternHub,
-    MORGovernance,
-    FITValidator,
     SoulMergeOrchestrator,
 )
-
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -55,7 +52,7 @@ def _make_orchestrator(
     humility_damping: float = 0.1,
     zeta: float = 0.85,
     max_depth: int = 8,
-    consent_token: str = "test-soul-merge",
+    consent_token: str = "test-soul-merge",  # noqa: S107 - test fixture id, not a credential
 ) -> SoulMergeOrchestrator:
     """Build a full Soul-Merge stack with real Aeon components."""
     kernel = Nullkern(

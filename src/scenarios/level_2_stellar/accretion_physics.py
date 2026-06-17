@@ -1,13 +1,12 @@
 import random
-from typing import List
 
 from src.core.agent_kernel import ExistenceScale, UATCAgent
 
 
 class ProtostarNebula:
     def __init__(self, num_agents: int = 50):
-        self.agents: List[dict] = []  # {"agent": UATCAgent, "pos": (q, r)}
-        self.photons: List[dict] = []  # {"pos": (q, r), "dir": (dq, dr)}
+        self.agents: list[dict] = []  # {"agent": UATCAgent, "pos": (q, r)}
+        self.photons: list[dict] = []  # {"pos": (q, r), "dir": (dq, dr)}
         self.fused_count = 0
         self.radius = 15
 

@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import time
-from typing import Dict, Iterable, List
+from collections.abc import Iterable
 
 from src.interface.dialogue_bridge import MatterInterpreter
 from src.scenarios.level_0_vacuum import Fluctuation, VacuumSimulation
@@ -15,7 +15,7 @@ class VacuumDialogueBridge:
     def __init__(self, simulation: VacuumSimulation | None = None) -> None:
         self.simulation = simulation or VacuumSimulation()
         self.interpreter = MatterInterpreter()
-        self.registry: Dict[str, ResonantEntity] = {}
+        self.registry: dict[str, ResonantEntity] = {}
         self._reported_formations: set[int] = set()
 
     def _entity_id(self, entity: ResonantEntity) -> str:
@@ -33,7 +33,7 @@ class VacuumDialogueBridge:
             return f"Kein Agent mit ID {agent_id} im Vakuum registriert."
         return self.interpreter.interpret(agent)
 
-    def _yield_new_formations(self) -> Iterable[List[Fluctuation]]:
+    def _yield_new_formations(self) -> Iterable[list[Fluctuation]]:
         for formation in self.simulation.stable_formations:
             marker = id(formation)
             if marker in self._reported_formations:
@@ -41,7 +41,7 @@ class VacuumDialogueBridge:
             self._reported_formations.add(marker)
             yield formation
 
-    def _announce(self, formation: List[Fluctuation]) -> None:
+    def _announce(self, formation: list[Fluctuation]) -> None:
         time.sleep(0.05)
         for fluctuation in formation:
             message = self.interpreter.interpret(fluctuation.entity)

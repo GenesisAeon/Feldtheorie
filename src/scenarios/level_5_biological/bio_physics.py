@@ -1,8 +1,8 @@
 import random
-import uuid
-from typing import List, Optional
-from src.core.agent_kernel import UATCAgent, ExistenceScale
+
+from src.core.agent_kernel import ExistenceScale, UATCAgent
 from src.core.chronicle import TheChronicle
+
 
 class MolecularChain(UATCAgent):
     def __init__(self, sequence: str = ""):
@@ -66,7 +66,7 @@ class MolecularChain(UATCAgent):
 class PrimordialSoup:
     def __init__(self):
         self.chronicle = TheChronicle()
-        self.molecules: List[MolecularChain] = []
+        self.molecules: list[MolecularChain] = []
         self.free_monomers = 1000 # Der "Dreck" im Wasser (C, H, O, N)
         self.generation = 0
 

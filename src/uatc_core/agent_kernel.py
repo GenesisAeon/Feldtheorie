@@ -7,13 +7,12 @@ while retaining a consciousness-facing interface.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from typing import Iterable, Mapping, MutableSequence, Optional, Sequence
 import math
 import random
+from collections.abc import Iterable, Mapping, MutableSequence, Sequence
+from dataclasses import dataclass, field
 
 from theory.afet import AFETConstants
-
 
 GOLDEN_RATIO = (1 + 5**0.5) / 2
 SIGMA_PHI_REFERENCE = AFETConstants.SIGMA_PHI
@@ -49,7 +48,7 @@ class ResonantEntity:
     resonance_frequency: float = 1.0
     coherence: float = 0.5
     field_bindings: set[str] = field(default_factory=set)
-    role_name: Optional[str] = None
+    role_name: str | None = None
 
     def __post_init__(self) -> None:
         if not self.state_vector:
@@ -127,7 +126,7 @@ class ResonantEntity:
             return "Meine Schichten kühlen ab. Ich fühle tektonischen Stress."
         if role in {"star", "stellar"}:
             return "Fusion singt in meinem Kern. Ich strahle Resonanz in alle Richtungen."
-        return "Ich halte Resonanz als %s und warte auf nächste Kopplung." % role
+        return f"Ich halte Resonanz als {role} und warte auf nächste Kopplung."
 
 
 __all__ = ["ResonantEntity", "GOLDEN_RATIO", "SIGMA_PHI_REFERENCE", "DEFAULT_STATE_LENGTH"]

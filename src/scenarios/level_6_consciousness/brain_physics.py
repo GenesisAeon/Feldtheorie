@@ -1,7 +1,8 @@
-import random
 import math
-from typing import List, Tuple
-from src.core.agent_kernel import UATCAgent, ExistenceScale
+import random
+
+from src.core.agent_kernel import ExistenceScale, UATCAgent
+
 
 class NeuronAgent(UATCAgent):
     def __init__(self, x, y):
@@ -11,7 +12,7 @@ class NeuronAgent(UATCAgent):
         self.pos = (x, y)
         self.phase = random.uniform(0, 2 * math.pi) # Zufällige Phase
         self.activation = 0.0
-        self.connections: List['NeuronAgent'] = []
+        self.connections: list[NeuronAgent] = []
 
     def connect(self, other: 'NeuronAgent'):
         # Synapse bilden
@@ -41,9 +42,12 @@ class NeuronAgent(UATCAgent):
 
     def get_symbol(self):
         # Visualisierung: Helligkeit je nach Aktivierung
-        if self.activation > 0.8: return "█" # Feuert
-        if self.activation > 0.5: return "▓"
-        if self.activation > 0.2: return "▒"
+        if self.activation > 0.8:
+            return "█"  # Feuert
+        if self.activation > 0.5:
+            return "▓"
+        if self.activation > 0.2:
+            return "▒"
         return "░" # Ruhe
 
 class HiveMind:
@@ -68,7 +72,7 @@ class HiveMind:
 
         self.coherence = 0.0
 
-    def think(self, stimulus_pos: Tuple[int, int]):
+    def think(self, stimulus_pos: tuple[int, int]):
         # Stimulus einspeisen
         target = self.grid.get(stimulus_pos)
         if target:

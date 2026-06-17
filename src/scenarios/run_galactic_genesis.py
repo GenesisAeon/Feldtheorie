@@ -3,16 +3,16 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
-from typing import List
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 SRC_PATH = PROJECT_ROOT / "src"
 if str(SRC_PATH) not in sys.path:
     sys.path.insert(0, str(SRC_PATH))
 
-from core import TheChronicle
-from interface.history_talk import HistoryTalk
-from scenarios.level_2_stellar import StarAgent, StellarLifecycle
+from core import TheChronicle  # noqa: E402
+from interface.history_talk import HistoryTalk  # noqa: E402
+
+from scenarios.level_2_stellar import StarAgent, StellarLifecycle  # noqa: E402
 
 
 def act_one_initialize(chronicle: TheChronicle) -> None:
@@ -28,8 +28,8 @@ def act_one_initialize(chronicle: TheChronicle) -> None:
     print("🌌 UNIVERSUM INITIALISIERT. Pool: 100% H.")
 
 
-def _spawn_giants(lifecycle: StellarLifecycle, budget: int = 3) -> List[StarAgent]:
-    giants: List[StarAgent] = []
+def _spawn_giants(lifecycle: StellarLifecycle, budget: int = 3) -> list[StarAgent]:
+    giants: list[StarAgent] = []
     while len(giants) < budget:
         star = lifecycle.spawn_population_three()
         if star is None:
@@ -55,8 +55,8 @@ def act_two_giants(lifecycle: StellarLifecycle) -> None:
     _simulate_end_of_life(lifecycle)
 
 
-def _spawn_children(lifecycle: StellarLifecycle, budget: int = 2) -> List[StarAgent]:
-    children: List[StarAgent] = []
+def _spawn_children(lifecycle: StellarLifecycle, budget: int = 2) -> list[StarAgent]:
+    children: list[StarAgent] = []
     while len(children) < budget:
         star = lifecycle.spawn_population_two()
         if star is None:

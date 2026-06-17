@@ -6,16 +6,13 @@ import json
 
 import numpy as np
 import pytest
-
 from experiments.week2.clip_validation import (
-    CLIPSample,
-    CLIPValidationReport,
     WEEK1_BASELINE_SIGMA_PHI,
+    CLIPSample,
     run_clip_validation,
     run_clip_validation_experiment,
     sigma_phi_from_logits,
 )
-
 
 # ---------------------------------------------------------------------------
 # test_clip_loading (numpy fallback — validates pipeline works)
@@ -38,7 +35,7 @@ def test_sigma_phi_consistency_across_runs() -> None:
     """Same seed produces identical σ_Φ values."""
     s1, r1 = run_clip_validation(n_samples=50, force_numpy=True, seed=99)
     s2, r2 = run_clip_validation(n_samples=50, force_numpy=True, seed=99)
-    for a, b in zip(s1, s2):
+    for a, b in zip(s1, s2, strict=True):
         assert a.sigma_phi == b.sigma_phi
 
 
@@ -101,7 +98,7 @@ def test_sample_safety_states_valid() -> None:
 
 
 def test_experiment_writes_json(tmp_path) -> None:
-    payload = run_clip_validation_experiment(
+    run_clip_validation_experiment(
         output_dir=tmp_path,
         n_samples=20,
         force_numpy=True,

@@ -4,7 +4,6 @@ from __future__ import annotations
 import os
 import sys
 import time
-from typing import Dict
 
 sys.path.append(os.getcwd())
 
@@ -22,7 +21,7 @@ def run_stellar_cycle() -> None:
 
         # 1. Geburt (Incarnation Check)
         # Gen 1 braucht nur Wasserstoff. Gen 2 braucht Metalle.
-        cost: Dict[str, int] = {"HYDROGEN": 1000}
+        cost: dict[str, int] = {"HYDROGEN": 1000}
         if generation > 1:
             cost["METALS"] = 50  # Spätere Sterne brauchen "Schmutz" für Planeten
 

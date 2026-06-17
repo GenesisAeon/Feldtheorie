@@ -21,13 +21,12 @@ import pytest
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from models.collective_field import (
+from models.collective_field import (  # noqa: E402
     Agent,
     CollectiveField,
     calculate_semantic_distance_matrix,
     detect_consensus,
 )
-
 
 # ============================================================================
 # Agent Class Tests

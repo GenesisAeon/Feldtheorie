@@ -12,12 +12,10 @@ Based on real observations:
 Run this module to witness the transformation of a planetary companion
 into a pure diamond sphere through resonance stripping.
 """
-import time
-import sys
 import os
-import random
+import time
 
-from src.scenarios.level_4_planetary.exotic_physics import PulsarAgent, DiamondPlanet
+from src.scenarios.level_4_planetary.exotic_physics import DiamondPlanet, PulsarAgent
 
 
 def main():
@@ -36,11 +34,11 @@ def main():
 
     print(f"👹 {pulsar.name}:")
     print(f"   Initiiere Spin. Frequenz {pulsar.spin_rate} Hz.")
-    print(f"   Gravitationswellen aktiv. Radiation beams locked on target.")
+    print("   Gravitationswellen aktiv. Radiation beams locked on target.")
     print()
     print(f"😨 {planet.name}:")
-    print(f"   Orbit etabliert. Binary lock confirmed.")
-    print(f"   Meine Atmosphäre ist instabil... ich spüre den Druck.")
+    print("   Orbit etabliert. Binary lock confirmed.")
+    print("   Meine Atmosphäre ist instabil... ich spüre den Druck.")
     print()
 
     # Show initial state
@@ -65,9 +63,9 @@ def main():
             lost_layer = planet.endure_pulse(intensity)
 
             if lost_layer:
-                print(f"💥 DESTRUCTION EVENT!")
+                print("💥 DESTRUCTION EVENT!")
                 print(f"   Layer '{lost_layer['name']}' wurde vollständig zerstrahlt!")
-                print(f"   Material dispersed into binary system debris field.")
+                print("   Material dispersed into binary system debris field.")
                 print()
                 print(f"🗣️  {planet.get_crystalline_voice()}")
                 time.sleep(1.5)
@@ -89,15 +87,15 @@ def main():
         print()
         planet.visualize_layers()
         print()
-        print(f"🗣️  CRYSTALLINE VOICE:")
+        print("🗣️  CRYSTALLINE VOICE:")
         print(f"    {planet.get_crystalline_voice()}")
         print()
-        print(f"👹 PULSAR RESPONSE:")
-        print(f"    Du gehörst jetzt mir. Wir schwingen ewig.")
-        print(f"    Binary period locked. Resonance achieved.")
+        print("👹 PULSAR RESPONSE:")
+        print("    Du gehörst jetzt mir. Wir schwingen ewig.")
+        print("    Binary period locked. Resonance achieved.")
         print()
         print("-" * 60)
-        print(f"📊 STATISTICS:")
+        print("📊 STATISTICS:")
         print(f"   Total pulse events: {round_counter}")
         print(f"   Mass stripped: {planet.stripped_mass:.1f} units")
         print(f"   Remaining core mass: {planet.total_mass():.1f} units")

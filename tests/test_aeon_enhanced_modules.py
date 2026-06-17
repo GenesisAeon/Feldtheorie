@@ -2,20 +2,15 @@
 
 from __future__ import annotations
 
-import math
-
 import numpy as np
 import pytest
-
 from aeon.nullkern.zero_point_kernel import Nullkern
 from aeon.shell.grammar import (
+    EXAMPLE_CORPUS,
     AeonShellGenerator,
     AeonShellParser,
     AeonStatement,
-    BNF_GRAMMAR,
-    EXAMPLE_CORPUS,
 )
-
 
 # ============================================================================
 # M1: Enhanced Grammar Parser Tests

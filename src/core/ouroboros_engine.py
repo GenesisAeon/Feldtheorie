@@ -15,14 +15,11 @@ Key Features:
 
 import threading
 import time
-import random
-from typing import Dict, Any, Optional, List
-from dataclasses import asdict
 from enum import Enum
+from typing import Any
 
 # Import our Level 7 cosmic physics
 from src.scenarios.level_7_cosmic_loop.cosmic_physics import CosmicSeed, UniverseRunner
-from src.core.chronicle import TheChronicle
 
 
 class SimulationState(str, Enum):
@@ -49,7 +46,7 @@ class OuroborosEngine:
         if cls._instance is None:
             with cls._lock:
                 if cls._instance is None:
-                    cls._instance = super(OuroborosEngine, cls).__new__(cls)
+                    cls._instance = super().__new__(cls)
                     cls._instance._initialized = False
         return cls._instance
 
@@ -67,10 +64,10 @@ class OuroborosEngine:
             ancestor_ecm_score=0.1,
             dna_mutation_rate=0.1
         )
-        self.current_universe: Optional[UniverseRunner] = None
+        self.current_universe: UniverseRunner | None = None
 
         # Historical tracking
-        self.history: List[Dict[str, Any]] = []
+        self.history: list[dict[str, Any]] = []
         self.total_generations = 0
         self.successful_generations = 0
         self.failed_generations = 0
@@ -91,7 +88,7 @@ class OuroborosEngine:
 
         self._initialized = True
 
-    def start_simulation(self) -> Dict[str, str]:
+    def start_simulation(self) -> dict[str, str]:
         """Start or resume the eternal loop."""
         with self.lock:
             if self.state == SimulationState.RUNNING:
@@ -108,7 +105,7 @@ class OuroborosEngine:
 
             return {"status": "started", "message": "Eternal loop has begun"}
 
-    def pause_simulation(self) -> Dict[str, str]:
+    def pause_simulation(self) -> dict[str, str]:
         """Pause the simulation (can be resumed)."""
         with self.lock:
             if self.state != SimulationState.RUNNING:
@@ -119,7 +116,7 @@ class OuroborosEngine:
 
             return {"status": "paused", "message": "Time frozen"}
 
-    def resume_simulation(self) -> Dict[str, str]:
+    def resume_simulation(self) -> dict[str, str]:
         """Resume from paused state."""
         with self.lock:
             if self.state != SimulationState.PAUSED:
@@ -130,7 +127,7 @@ class OuroborosEngine:
 
             return {"status": "resumed", "message": "Time flows again"}
 
-    def stop_simulation(self) -> Dict[str, str]:
+    def stop_simulation(self) -> dict[str, str]:
         """Stop the simulation gracefully."""
         with self.lock:
             self.should_stop = True
@@ -139,7 +136,7 @@ class OuroborosEngine:
 
             return {"status": "stopped", "message": "Eternal loop interrupted"}
 
-    def reset_simulation(self) -> Dict[str, str]:
+    def reset_simulation(self) -> dict[str, str]:
         """Reset to generation 1, clearing all history."""
         with self.lock:
             self.should_stop = True
@@ -165,7 +162,7 @@ class OuroborosEngine:
 
             return {"status": "reset", "message": "Returned to the beginning"}
 
-    def intervene(self, intervention_type: str, value: float) -> Dict[str, str]:
+    def intervene(self, intervention_type: str, value: float) -> dict[str, str]:
         """
         God-Mode: Direct intervention in cosmic parameters.
 
@@ -231,7 +228,7 @@ class OuroborosEngine:
                     "message": f"Unknown intervention type: {intervention_type}"
                 }
 
-    def get_state(self) -> Dict[str, Any]:
+    def get_state(self) -> dict[str, Any]:
         """
         Get complete current state for API/Dashboard.
 
@@ -271,7 +268,7 @@ class OuroborosEngine:
                 "last_result": self.history[-1] if self.history else None
             }
 
-    def get_history_timeline(self) -> List[Dict[str, Any]]:
+    def get_history_timeline(self) -> list[dict[str, Any]]:
         """Get the complete timeline of all generations (Garden of Worlds)."""
         with self.lock:
             return list(self.history)
@@ -288,9 +285,6 @@ class OuroborosEngine:
                 if self.state != SimulationState.RUNNING:
                     time.sleep(0.5)
                     continue
-
-                current_gen = self.current_seed.generation
-                status_prefix = f"Gen {current_gen}"
 
             # Sleep with speed multiplier (for fast/slow-mo modes)
             time.sleep(1.0 / self.simulation_speed)

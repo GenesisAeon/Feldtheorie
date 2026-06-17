@@ -367,7 +367,6 @@ class TestIntegration:
 
         # Move away → stability increases
         choir.update_voice("Test", new_R=80.0)
-        recovered_stability = choir.voices["Test"].stability
 
         assert threshold_stability < initial_stability
         # Note: recovered might not be same due to rate_of_change effects

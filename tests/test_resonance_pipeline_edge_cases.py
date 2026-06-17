@@ -9,16 +9,15 @@ Focuses on:
 """
 
 import math
+
 import numpy as np
 import pytest
-
 from analysis.resonance_fit_pipeline import (
-    logit,
-    fit_threshold_parameters,
     evaluate_null_model,
     evaluate_power_law_null,
+    fit_threshold_parameters,
+    logit,
 )
-
 
 # ============================================================================
 # Tests for logit() function

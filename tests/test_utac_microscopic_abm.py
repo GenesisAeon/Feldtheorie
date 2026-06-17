@@ -270,7 +270,7 @@ class TestMicroscopicMapping:
         assert "climate_amoc" in mapping
         assert "urban_heat" in mapping
 
-        for system, config in mapping.items():
+        for _system, config in mapping.items():
             assert "J" in config
             assert "T" in config
             assert "beta_predicted" in config

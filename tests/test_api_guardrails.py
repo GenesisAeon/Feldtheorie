@@ -1,10 +1,9 @@
 import pytest
 
 pytest.importorskip("fastapi", reason="fastapi required: pip install feldtheorie[api]")
+from api.server import BETA_TARGET, KAPPA_BOUNDS, app
 from fastapi.testclient import TestClient
 from httpx import ASGITransport, AsyncClient
-
-from api.server import BETA_TARGET, KAPPA_BOUNDS, app
 
 
 @pytest.mark.asyncio

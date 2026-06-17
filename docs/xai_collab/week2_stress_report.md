@@ -10,7 +10,7 @@
 | σ_Φ cross (all scenarios) | 1.095977 |
 | Detection accuracy | 0.00% |
 | False positive rate | 0.00% |
-| Mean response time | 0.0260 ms |
+| Mean response time | 0.0266 ms |
 
 ## Per-Scenario σ_Φ
 

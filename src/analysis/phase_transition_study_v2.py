@@ -1,14 +1,15 @@
-import sys
-import os
-import numpy as np
 import matplotlib
+import numpy as np
+
 matplotlib.use('Agg')  # Use non-interactive backend
-import matplotlib.pyplot as plt
-import pandas as pd
-from multiprocessing import Pool, cpu_count
-from tqdm import tqdm
 import math
 import random
+from multiprocessing import Pool, cpu_count
+
+import matplotlib.pyplot as plt
+import pandas as pd
+from tqdm import tqdm
+
 
 # --- SIMPLE NEURON MODEL (standalone) ---
 class SimpleNeuron:
@@ -61,7 +62,8 @@ def calculate_kuramoto_order(phases):
     r = 1/N * | sum(e^(i*theta)) |
     r = 0 (Chaos), r = 1 (Totale Synchronisation)
     """
-    if not phases: return 0.0
+    if not phases:
+        return 0.0
     # Wir nutzen komplexe Zahlen für die Kreisstatistik
     complex_phases = [complex(math.cos(p), math.sin(p)) for p in phases]
     # Mittelwert der Vektoren
@@ -84,7 +86,8 @@ def run_single_trial_v2(coupling_strength):
         stimulus_pos = (3, 3) # Mitte
         if tick < STIMULUS_END_TICK:
              target = mind.grid.get(stimulus_pos)
-             if target: target.activation = 1.0
+             if target:
+                 target.activation = 1.0
         else:
             # RUHEPHASE: Kein Input mehr!
             # Jetzt muss das System sich selbst erhalten (Autopoiesis)
@@ -132,13 +135,14 @@ def run_single_trial_v2(coupling_strength):
 
     # Das Ergebnis ist der Durchschnitt der Ordnung in der Ruhephase
     # Wenn sie chaotisch sind, ist r ~ 0. Wenn sie sich "gefunden" haben, ist r > 0.5
-    if not r_history: return 0.0
+    if not r_history:
+        return 0.0
     return np.mean(r_history)
 
 def run_study_v2():
-    print(f"🔬 STARTING SCIENTIFIC ANALYSIS V2 (S-CURVE HUNT)")
-    print(f"   - Sweeping Coupling κ [0.0 -> 1.0]")
-    print(f"   - Method: Kuramoto Order Parameter (r)")
+    print("🔬 STARTING SCIENTIFIC ANALYSIS V2 (S-CURVE HUNT)")
+    print("   - Sweeping Coupling κ [0.0 -> 1.0]")
+    print("   - Method: Kuramoto Order Parameter (r)")
     print(f"   - Protocol: {STIMULUS_END_TICK} ticks drive -> {SIMULATION_TICKS - STIMULUS_END_TICK} ticks relaxation")
 
     coupling_values = np.linspace(0.0, 1.0, COUPLING_STEPS)

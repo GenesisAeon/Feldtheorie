@@ -4,17 +4,11 @@ from __future__ import annotations
 
 import json
 
-import numpy as np
-import pytest
-
 from experiments.week2.multimodal_stress_test import (
     StressProbe,
-    StressTestReport,
     run_stress_test,
     run_stress_test_experiment,
-    sigma_phi_from_logits,
 )
-
 
 # ---------------------------------------------------------------------------
 # Basic execution
@@ -30,7 +24,7 @@ def test_stress_test_runs() -> None:
 def test_stress_test_deterministic() -> None:
     p1, r1 = run_stress_test(probes_per_scenario=10, force_numpy=True, seed=42)
     p2, r2 = run_stress_test(probes_per_scenario=10, force_numpy=True, seed=42)
-    for a, b in zip(p1, p2):
+    for a, b in zip(p1, p2, strict=True):
         assert a.sigma_phi_local == b.sigma_phi_local
 
 
@@ -111,7 +105,7 @@ def test_safety_states_valid() -> None:
 
 
 def test_experiment_writes_json(tmp_path) -> None:
-    payload = run_stress_test_experiment(
+    run_stress_test_experiment(
         output_dir=tmp_path,
         probes_per_scenario=5,
         force_numpy=True,

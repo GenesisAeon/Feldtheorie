@@ -1,8 +1,8 @@
 """Dialogue bridge translating resonance metrics into narrative speech."""
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
-from typing import Iterable, Optional
 
 from src.uatc_core.agent_kernel import ResonantEntity
 
@@ -15,8 +15,8 @@ class InterpretationContext:
     scale_index: int
     resonance_frequency: float
     coherence: float
-    lifespan_hint: Optional[int]
-    role_name: Optional[str]
+    lifespan_hint: int | None
+    role_name: str | None
     state_vector: Iterable[float]
 
 
@@ -65,7 +65,7 @@ class MatterInterpreter:
             return "Ich zittere, ich verliere den Fokus."
         return "Ich halte meinen Fokus in der Feldmembran."
 
-    def _lifespan_phrase(self, lifespan: Optional[int]) -> str:
+    def _lifespan_phrase(self, lifespan: int | None) -> str:
         if lifespan is None:
             return ""
         if lifespan <= 2:
@@ -90,7 +90,7 @@ class MatterInterpreter:
         return "Zwischen Klarheit und Rauschen halte ich meinen Ton." 
 
 
-def _extract_lifespan(agent: ResonantEntity) -> Optional[int]:
+def _extract_lifespan(agent: ResonantEntity) -> int | None:
     for attr in ("lifespan", "lifetime"):
         if hasattr(agent, attr):
             value = getattr(agent, attr)

@@ -24,7 +24,7 @@ from starlette.testclient import TestClient
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from api.server import app
+from api.server import app  # noqa: E402
 
 client = TestClient(app)
 

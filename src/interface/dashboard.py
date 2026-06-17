@@ -22,14 +22,13 @@ Make sure the API server is running first:
 python -m src.interface.api_server
 """
 
-import streamlit as st
-import requests
-import pandas as pd
 import time
+from typing import Any
+
+import pandas as pd
 import plotly.graph_objects as go
-import plotly.express as px
-from datetime import datetime
-from typing import Dict, Any, List
+import requests
+import streamlit as st
 
 # ═══════════════════════════════════════════════════════════
 # Configuration
@@ -89,7 +88,7 @@ def check_api_connection() -> bool:
         return False
 
 
-def get_simulation_state() -> Dict[str, Any]:
+def get_simulation_state() -> dict[str, Any]:
     """Fetch current simulation state from API."""
     try:
         response = requests.get(f"{API_URL}/api/ouroboros/status", timeout=5)
@@ -101,7 +100,7 @@ def get_simulation_state() -> Dict[str, Any]:
         return {}
 
 
-def get_history() -> List[Dict[str, Any]]:
+def get_history() -> list[dict[str, Any]]:
     """Fetch complete history from API."""
     try:
         response = requests.get(f"{API_URL}/api/ouroboros/history", timeout=5)
@@ -112,7 +111,7 @@ def get_history() -> List[Dict[str, Any]]:
         return []
 
 
-def send_command(endpoint: str, data: Dict = None) -> Dict[str, Any]:
+def send_command(endpoint: str, data: dict = None) -> dict[str, Any]:
     """Send command to API."""
     try:
         if data:

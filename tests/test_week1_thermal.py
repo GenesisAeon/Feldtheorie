@@ -4,9 +4,7 @@ from __future__ import annotations
 
 import json
 
-import numpy as np
 import pytest
-
 from experiments.week1.thermal import (
     NOMINAL_SIGMA_PHI,
     NOMINAL_TEMP_C,
@@ -18,7 +16,6 @@ from experiments.week1.thermal import (
     sigma_phi_at_temperature,
     sweep_temperatures,
 )
-
 
 # ---------------------------------------------------------------------------
 # sigma_phi_at_temperature
@@ -114,7 +111,7 @@ def test_sweep_all_entries_are_thermal_samples() -> None:
 
 
 def test_simulation_writes_json(tmp_path) -> None:
-    result = run_thermal_simulation(output_dir=tmp_path, make_plot=False)
+    run_thermal_simulation(output_dir=tmp_path, make_plot=False)
     json_path = tmp_path / "week1_thermal.json"
     assert json_path.exists()
     data = json.loads(json_path.read_text())

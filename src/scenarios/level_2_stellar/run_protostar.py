@@ -13,9 +13,6 @@ def visualize(nebula: ProtostarNebula) -> None:
     print(f"🌟 LEVEL 2: PROTOSTAR IGNITION | Fused Steps: {nebula.fused_count}")
     print("-" * 50)
 
-    # Grid Map bauen
-    grid_map = {}
-
     # Agenten zählen pro Zelle (Dichte)
     density = {}
     for item in nebula.agents:

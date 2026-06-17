@@ -4,7 +4,7 @@ from .chronicle import AgentLog, ResourceOrigin, TheChronicle
 
 # Import agent_kernel only if numpy is available (for backwards compatibility)
 try:
-    from .agent_kernel import ExistenceScale, UATCAgent
+    from .agent_kernel import ExistenceScale, UATCAgent  # noqa: F401
     _HAS_AGENT_KERNEL = True
 except ImportError:
     _HAS_AGENT_KERNEL = False

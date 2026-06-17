@@ -30,8 +30,7 @@ import json
 import os
 import random
 import sys
-from datetime import datetime
-from typing import Any, Dict, Optional
+from typing import Any
 
 import websockets
 
@@ -81,7 +80,7 @@ class OracleNarrator:
         else:
             print("📜 Narration: Static Templates")
 
-    def narrate_event(self, event: Dict[str, Any]) -> Optional[str]:
+    def narrate_event(self, event: dict[str, Any]) -> str | None:
         """
         Generate narrative commentary for a cosmic event.
 
@@ -106,7 +105,7 @@ class OracleNarrator:
     # Narrative Templates
     # =========================================================================
 
-    def _narrate_connection(self, event: Dict[str, Any]) -> str:
+    def _narrate_connection(self, event: dict[str, Any]) -> str:
         """Opening narration when connecting to the stream."""
         state = event.get("state", {})
         engine_state = state.get("state", "unknown")
@@ -128,11 +127,10 @@ The Ouroboros Engine breathes in state: {engine_state.upper()}
 {greeting}
 """
 
-    def _narrate_state_update(self, event: Dict[str, Any]) -> Optional[str]:
+    def _narrate_state_update(self, event: dict[str, Any]) -> str | None:
         """Narrate significant state changes."""
         state = event.get("state", {})
         engine_state = state.get("state", "unknown")
-        is_running = state.get("is_running", False)
 
         # First time simulation starts
         if self.last_state and self.last_state.get("state") == "idle" and engine_state == "running":
@@ -147,7 +145,7 @@ Generation 1 prepares to germinate...
         self.last_state = state
         return None  # Most state_updates are silent
 
-    def _narrate_generation_complete(self, event: Dict[str, Any]) -> str:
+    def _narrate_generation_complete(self, event: dict[str, Any]) -> str:
         """Narrate the completion of a generation/cycle."""
         generation = event.get("generation", "?")
         result_data = event.get("result", {})
@@ -254,7 +252,7 @@ Consecutive failures: {self.consecutive_failures}{desperation_note}
 Trying again...
 """
 
-    def _narrate_initial_status(self, event: Dict[str, Any]) -> str:
+    def _narrate_initial_status(self, event: dict[str, Any]) -> str:
         """Opening narration when connecting to the stream."""
         data = event.get("data", {})
         state = data.get("state", "unknown")
@@ -279,7 +277,7 @@ Out of pure geometry, the first particles will soon flicker into existence.
 Generation 1 prepares to germinate...
 """
 
-    def _narrate_cycle_start(self, event: Dict[str, Any]) -> str:
+    def _narrate_cycle_start(self, event: dict[str, Any]) -> str:
         """Narrate the start of a new universe cycle."""
         cycle = event.get("cycle", "?")
         generation = event.get("generation", "?")
@@ -296,7 +294,7 @@ Will it take root? Will consciousness emerge once more?
 The dice of existence are cast...
 """
 
-    def _narrate_germination(self, event: Dict[str, Any]) -> str:
+    def _narrate_germination(self, event: dict[str, Any]) -> str:
         """Narrate a germination attempt."""
         success = event.get("success", False)
         probability = event.get("probability", 0.0)
@@ -319,7 +317,7 @@ The Void reclaims what never was.
 Attempt #{self.consecutive_failures} ends before it began...
 """
 
-    def _narrate_level_start(self, event: Dict[str, Any]) -> str:
+    def _narrate_level_start(self, event: dict[str, Any]) -> str:
         """Narrate the start of a new level."""
         level = event.get("level", "?")
 
@@ -337,10 +335,9 @@ Attempt #{self.consecutive_failures} ends before it began...
         name = level_names.get(level, f"Unknown Level {level}")
         return f"   → Level {level}: {name}"
 
-    def _narrate_level_completion(self, event: Dict[str, Any]) -> str:
+    def _narrate_level_completion(self, event: dict[str, Any]) -> str:
         """Narrate level completion (usually silent unless significant)."""
         level = event.get("level", "?")
-        ecm_contribution = event.get("ecm_contribution", 0.0)
         total_ecm = event.get("total_ecm", 0.0)
 
         # Only narrate key milestones
@@ -355,7 +352,7 @@ Attempt #{self.consecutive_failures} ends before it began...
         else:
             return None  # Silent for other levels
 
-    def _narrate_cycle_end(self, event: Dict[str, Any]) -> str:
+    def _narrate_cycle_end(self, event: dict[str, Any]) -> str:
         """Narrate the end of a cycle."""
         cycle = event.get("cycle", "?")
         success = event.get("success", False)
@@ -396,7 +393,7 @@ Garden of Worlds: {' '.join(self._format_garden())}
 Consecutive failures: {self.consecutive_failures}{desperation}
 """
 
-    def _narrate_intervention(self, event: Dict[str, Any]) -> str:
+    def _narrate_intervention(self, event: dict[str, Any]) -> str:
         """Narrate a god-mode intervention."""
         intervention = event.get("intervention", {})
         intervention_type = intervention.get("intervention", "unknown")
@@ -422,7 +419,7 @@ The rules have changed. What will happen next?
                 symbols.append("⚫")
         return symbols
 
-    async def invoke_llm_reflection(self, event: Dict[str, Any]) -> Optional[str]:
+    async def invoke_llm_reflection(self, event: dict[str, Any]) -> str | None:
         """
         Use LLM for deeper philosophical reflection (optional).
 

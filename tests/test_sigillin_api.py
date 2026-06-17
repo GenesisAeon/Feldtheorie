@@ -23,7 +23,7 @@ from starlette.testclient import TestClient
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from api.server import app
+from api.server import app  # noqa: E402
 
 client = TestClient(app)
 
@@ -300,7 +300,6 @@ def test_sigillin_endpoints_consistency():
         pytest.skip("Sigillin kernel not initialized")
 
     assert status_response.status_code == 200
-    status_data = status_response.json()
 
     # Then verify scan works
     scan_response = client.post(

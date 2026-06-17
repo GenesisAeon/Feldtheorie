@@ -1,11 +1,9 @@
 """Tests for the Attraktor-Mapping tool."""
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 import pytest
-
 from analysis.attraktor_mapping import (
     AFET_TERMS,
     build_cooccurrence_graph,

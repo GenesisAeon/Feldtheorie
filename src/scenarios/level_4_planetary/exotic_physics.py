@@ -9,8 +9,8 @@ materials with resonant stability (like diamond lattices) can withstand
 the extreme frequency bombardment from millisecond pulsars.
 """
 import random
-from typing import List, Dict, Optional
-from src.core.agent_kernel import UATCAgent, ExistenceScale
+
+from src.core.agent_kernel import ExistenceScale, UATCAgent
 from src.scenarios.level_4_planetary.geo_physics import PlanetaryBody
 
 
@@ -79,7 +79,7 @@ class DiamondPlanet(PlanetaryBody):
         ]
         self.stripped_mass = 0
 
-    def endure_pulse(self, intensity: float) -> Optional[Dict]:
+    def endure_pulse(self, intensity: float) -> dict | None:
         """Apply a single pulse event and calculate layer damage.
 
         UTAC Logic

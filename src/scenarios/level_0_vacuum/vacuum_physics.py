@@ -1,5 +1,4 @@
 import random
-from typing import Dict, List, Tuple
 
 from src.core.agent_kernel import ExistenceScale, UATCAgent
 
@@ -7,10 +6,10 @@ from src.core.agent_kernel import ExistenceScale, UATCAgent
 class HexGrid:
     def __init__(self, radius: int):
         self.radius = radius
-        self.cells: Dict[Tuple[int, int], UATCAgent] = {}
+        self.cells: dict[tuple[int, int], UATCAgent] = {}
         self.stable_clusters = 0
 
-    def get_neighbors(self, q, r) -> List[Tuple[int, int]]:
+    def get_neighbors(self, q, r) -> list[tuple[int, int]]:
         # Die 6 Nachbarn im Hex-Gitter
         directions = [
             (1, 0),

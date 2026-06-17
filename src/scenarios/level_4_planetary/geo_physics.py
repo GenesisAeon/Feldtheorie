@@ -5,8 +5,6 @@ that can interact with extreme astrophysical phenomena.
 """
 from __future__ import annotations
 
-from typing import List, Dict
-
 
 class PlanetaryBody:
     """Base class for celestial bodies with compositional layers.
@@ -24,7 +22,7 @@ class PlanetaryBody:
 
     def __init__(self, name: str = "Unnamed Body"):
         self.name = name
-        self.layers: List[Dict] = []
+        self.layers: list[dict] = []
         self.stripped_mass: float = 0.0
 
     def visualize_layers(self) -> None:

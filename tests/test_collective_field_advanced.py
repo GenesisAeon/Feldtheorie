@@ -18,8 +18,7 @@ import pytest
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from models.collective_field import Agent, CollectiveField
-
+from models.collective_field import Agent, CollectiveField  # noqa: E402
 
 # ============================================================================
 # Performance & Caching Tests
@@ -81,7 +80,7 @@ def test_cache_invalidation_on_position_update():
     field = CollectiveField(agents=agents, enable_caching=True)
 
     # Calculate and populate cache
-    kappa1 = field.calculate_kappa_field()
+    field.calculate_kappa_field()
     assert field.get_cache_info()["size"] > 0
 
     # Update agent position
@@ -115,7 +114,7 @@ def test_performance_stats_tracking():
     assert stats["v_collective"]["count"] > 0
 
     # Stats should have reasonable values
-    for operation, data in stats.items():
+    for _operation, data in stats.items():
         if data["count"] > 0:
             assert data["mean_ms"] >= 0
             assert data["min_ms"] >= 0
@@ -285,11 +284,11 @@ def test_multi_agent_conversation_simulation():
 
     # Initial state - agents should be divergent
     initial_kappa = field.calculate_kappa_field()
-    initial_beta_sync = field.calculate_beta_sync()
+    field.calculate_beta_sync()
     field.snapshot_state()
 
     # Simulate conversation rounds (agents converging toward shared understanding)
-    for round_num in range(15):
+    for _round_num in range(15):
         centroid = field._calculate_centroid()
 
         # Each agent moves toward centroid (learning from others)
@@ -305,7 +304,7 @@ def test_multi_agent_conversation_simulation():
     assert final_kappa > initial_kappa
 
     # Check convergence detection
-    convergence = field.detect_convergence(window=5, threshold=0.05)
+    field.detect_convergence(window=5, threshold=0.05)
     history = field.get_evolution_history()
 
     # Should have tracked evolution

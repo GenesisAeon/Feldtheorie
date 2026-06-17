@@ -8,6 +8,7 @@ Run:
     pytest tests/test_aeon_shell.py -v
 """
 
+import asyncio
 import sys
 from pathlib import Path
 
@@ -18,9 +19,8 @@ import pytest
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from aeon import AeonShell, Nullkern, SemanticAgent
-from aeon.shell.evolution import EvolutionTracker
-
+from aeon import AeonShell, Nullkern, SemanticAgent  # noqa: E402
+from aeon.shell.evolution import EvolutionTracker  # noqa: E402
 
 # ============================================================================
 # AeonShell Tests
@@ -249,8 +249,6 @@ def test_evolution_tracker_export():
     assert "phase_transitions" in data
     assert "critical_events" in data
     assert "statistics" in data
-
-import asyncio
 
 
 def test_shell_recursive_metastability_and_async_buffer():

@@ -2,6 +2,7 @@
 
 import math
 
+from models.consciousness_integration import calculate_impedance
 from models.impedance_solver import (
     BASELINE_BETA,
     falsification_gap,
@@ -9,7 +10,6 @@ from models.impedance_solver import (
     simulate_impedance_trajectory,
     solve_impedance_state,
 )
-from models.consciousness_integration import calculate_impedance
 
 
 def test_impedance_scaling_with_beta():
