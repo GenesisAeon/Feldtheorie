@@ -6,7 +6,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-Feldtheorie-blue)](https://github.com/GenesisAeon/Feldtheorie)
 [![Code License: GPLv3](https://img.shields.io/badge/Code%20License-GPLv3-blue.svg)](LICENSE)
 [![Content License: CC BY-NC 4.0](https://img.shields.io/badge/Content%20License-CC%20BY--NC%204.0-orange.svg)](LICENSE)
-[![Release](https://img.shields.io/badge/Release-v10.2%20Platinum-9cf.svg)](#platinum-release-v102--dreamtime-publication-prep)
+[![Release](https://img.shields.io/badge/Release-v13.0.0-9cf.svg)](#platinum-release-v102--dreamtime-publication-prep)
 [![Stable](https://img.shields.io/badge/Stable-6.0.0-brightgreen.svg)](#whats-new-in-v60-)
 [![V9 Alpha](https://img.shields.io/badge/Alpha-9.0.0--alpha-purple.svg)](#v9-preview-harmonic-emergence--dimensional-framework)
 [![Research Papers](https://img.shields.io/badge/📄_Research-Dimensional_Emergence-blue.svg)](docs/science/v9_research_overview.md)
