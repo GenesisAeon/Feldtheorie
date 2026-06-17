@@ -22,8 +22,7 @@ import pytest
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from aeon import Nullkern, AeonShell, SemanticAgent, RecursiveCoupler
-
+from aeon import AeonShell, Nullkern, RecursiveCoupler, SemanticAgent  # noqa: E402
 
 # ============================================================================
 # RecursiveCoupler Tests
@@ -331,7 +330,7 @@ def _ensure_api_bridge_mock():
 
 
 _ensure_api_bridge_mock()
-from integration.aeon_lantern.hub import AeonLanternHub, MORGovernance, FITValidator  # noqa: E402
+from integration.aeon_lantern.hub import AeonLanternHub, FITValidator, MORGovernance  # noqa: E402
 
 
 class TestIntegrationGovernance:

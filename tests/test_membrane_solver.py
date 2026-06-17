@@ -161,7 +161,6 @@ class TestSmoothImpedanceProfile:
         zeta_wide = smooth_impedance_profile(theta=0.5, switch_width=1.0)
 
         # Slightly below theta
-        r = 0.3
         # With narrow width, should be closer to resonant end
         # This is a qualitative test
         assert callable(zeta_narrow)

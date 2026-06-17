@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import pytest
-
 from analysis.afet_safety_monitor import AFETSafetyMonitor, SafetyDecision
 
 

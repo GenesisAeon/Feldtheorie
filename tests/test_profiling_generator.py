@@ -2,11 +2,9 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 import pytest
-
 from visuals.profiling import FieldMetrics, ProfilingGenerator, load_symbols
 
 
@@ -63,7 +61,7 @@ class TestLoadSymbols:
         assert "climate" in domains
         assert "neuro" in domains
         assert "axioms" in domains
-        for name, d in domains.items():
+        for _name, d in domains.items():
             assert "beta" in d
             assert "color" in d
 

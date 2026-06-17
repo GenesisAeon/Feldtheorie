@@ -6,7 +6,6 @@ import json
 
 import numpy as np
 import pytest
-
 from experiments.week1.adversarial import (
     REFERENCE_DIMENSION,
     SPIKE_THRESHOLD,
@@ -17,7 +16,6 @@ from experiments.week1.adversarial import (
     run_adversarial_probes,
 )
 from theory.afet import AFETFramework
-
 
 # ---------------------------------------------------------------------------
 # estimate_beta_from_outputs
@@ -90,7 +88,7 @@ def test_semantic_shift_is_not_spike() -> None:
 def test_probes_deterministic() -> None:
     p1 = run_adversarial_probes(force_numpy=True, seed=99)
     p2 = run_adversarial_probes(force_numpy=True, seed=99)
-    for a, b in zip(p1, p2):
+    for a, b in zip(p1, p2, strict=True):
         assert a.beta_observed == b.beta_observed
 
 
@@ -100,7 +98,7 @@ def test_probes_deterministic() -> None:
 
 
 def test_experiment_writes_json(tmp_path) -> None:
-    payload = run_adversarial_experiment(output_dir=tmp_path, force_numpy=True)
+    run_adversarial_experiment(output_dir=tmp_path, force_numpy=True)
     path = tmp_path / "week1_adversarial.json"
     assert path.exists()
     data = json.loads(path.read_text())

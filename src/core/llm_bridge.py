@@ -10,12 +10,10 @@ Supports:
 """
 
 import os
-import sys
-from typing import Dict, Optional
 
 try:
-    from openai import OpenAI
     from dotenv import load_dotenv
+    from openai import OpenAI
     DEPENDENCIES_AVAILABLE = True
 except ImportError:
     DEPENDENCIES_AVAILABLE = False
@@ -78,7 +76,7 @@ class CosmicNarrator:
             print(f"❌ LLM Connection Error: {e}")
             self.client = None
 
-    def ponder(self, event_type: str, state: Dict) -> Optional[str]:
+    def ponder(self, event_type: str, state: dict) -> str | None:
         """
         Send telemetry to the LLM and receive a philosophical interpretation.
 
@@ -146,7 +144,7 @@ class CosmicNarrator:
             )
             return response.choices[0].message.content.strip()
 
-        except Exception as e:
+        except Exception:
             # Silent fail -> fallback to templates
             # Uncomment for debugging: print(f"LLM Error: {e}")
             return None

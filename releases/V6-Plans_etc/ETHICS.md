@@ -218,5 +218,5 @@ Für jede neue Type-VI Analyse oder Simulation gilt zusätzlich:
 
 ---
 
-**Last Updated:** 2026-06-17 07:00:00 UTC
+**Last Updated:** 2026-06-17 07:53:10 UTC
 **Governance Version:** 1.0.0

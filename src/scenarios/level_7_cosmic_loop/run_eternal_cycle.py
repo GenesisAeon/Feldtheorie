@@ -13,10 +13,9 @@ Die UATC-Vision in Reinform:
 - Nur durch Selektion entsteht Komplexität
 """
 
-import time
-import sys
 import os
-import random
+import sys
+import time
 
 # Pfad-Fix für Imports
 sys.path.append(os.getcwd())
@@ -74,7 +73,7 @@ def print_statistics(successful_universes):
         return
 
     print("\n📊 SUCCESSFUL UNIVERSES:")
-    for i, (gen, ecm) in enumerate(successful_universes[-5:], 1):
+    for _i, (gen, ecm) in enumerate(successful_universes[-5:], 1):
         bar_length = int(ecm * 20)
         bar = "█" * bar_length + "░" * (20 - bar_length)
         print(f"   Gen {gen:3d}: {bar} ECM={ecm:.4f}")
@@ -128,7 +127,7 @@ def main():
             # ═══════════════════════════════════════════════════════════
             if existed and universe.is_alive and universe.final_ecm > 0:
                 # ✅ Ein erfolgreiches Universum!
-                print(f"\n   ✅ CYCLE COMPLETE. Information preserved.")
+                print("\n   ✅ CYCLE COMPLETE. Information preserved.")
 
                 history.append("SUCCESS")
                 successful_universes.append((current_seed.generation, universe.final_ecm))
@@ -153,14 +152,14 @@ def main():
                     dna_mutation_rate=new_mutation
                 )
 
-                print(f"\n   🌱 NEW SEED CREATED:")
+                print("\n   🌱 NEW SEED CREATED:")
                 print(f"      Generation: {next_gen}")
                 print(f"      Inherited ECM: {universe.final_ecm:.4f}")
                 print(f"      Mutation Rate: {new_mutation:.4f}")
 
             else:
                 # ❌ Fehlversuch (Totes Universum oder nicht gekeimt)
-                print(f"\n   💀 CYCLE FAILED. The seed is lost.")
+                print("\n   💀 CYCLE FAILED. The seed is lost.")
 
                 history.append("FAIL")
                 failed_attempts_in_row += 1

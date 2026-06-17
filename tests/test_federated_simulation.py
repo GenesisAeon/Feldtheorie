@@ -4,12 +4,8 @@ from __future__ import annotations
 
 import json
 
-import numpy as np
-import pytest
-
 from experiments.week3.federated_simulation import (
     CLIENT_PROFILES,
-    ClientState,
     FederatedReport,
     FederatedRound,
     detect_outliers,
@@ -17,7 +13,6 @@ from experiments.week3.federated_simulation import (
     simulate_federation,
     weighted_median,
 )
-
 
 # ===========================================================================
 # weighted_median
@@ -78,7 +73,7 @@ class TestSimulateFederation:
     def test_deterministic(self) -> None:
         r1, rep1 = simulate_federation(n_rounds=5, seed=42)
         r2, rep2 = simulate_federation(n_rounds=5, seed=42)
-        for a, b in zip(r1, r2):
+        for a, b in zip(r1, r2, strict=True):
             assert a.beta_consensus == b.beta_consensus
 
     def test_correct_client_count(self) -> None:
@@ -101,7 +96,7 @@ class TestSimulateFederation:
     def test_per_client_drift_present(self) -> None:
         _, report = simulate_federation(n_rounds=10)
         assert len(report.per_client_drift) == len(CLIENT_PROFILES)
-        for name, drift in report.per_client_drift.items():
+        for _name, drift in report.per_client_drift.items():
             assert drift >= 0.0
 
 
@@ -112,7 +107,7 @@ class TestSimulateFederation:
 
 class TestFederatedExperiment:
     def test_writes_json(self, tmp_path) -> None:
-        payload = run_federated_experiment(output_dir=tmp_path, n_rounds=5)
+        run_federated_experiment(output_dir=tmp_path, n_rounds=5)
         json_path = tmp_path / "federated.json"
         assert json_path.exists()
         data = json.loads(json_path.read_text())

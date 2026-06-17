@@ -10,19 +10,19 @@ Date: 2025-12-14
 """
 
 import math
-import pytest
 
+import pytest
 from models.consciousness_integration import (
     calculate_impedance,
     calculate_integration_velocity,
+    get_beta_domain_clustering,
+    run_full_validation_suite,
     validate_cosmic_dipole,
     validate_kleiber_scaling,
     validate_neural_frequency,
     validate_specious_present,
-    get_beta_domain_clustering,
-    run_full_validation_suite,
 )
-from models.unified_constants import ALPHA_INV, PHI, C_LIGHT_KM_S
+from models.unified_constants import ALPHA_INV, C_LIGHT_KM_S, PHI
 
 
 class TestImpedanceCalculations:

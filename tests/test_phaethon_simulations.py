@@ -15,7 +15,6 @@ Framework: GenesisAeon / UTAC Case Study
 import sys
 import unittest
 from pathlib import Path
-from unittest.mock import patch
 
 import numpy as np
 
@@ -366,7 +365,7 @@ class TestPhaethonSystem(unittest.TestCase):
     """Tests for the PhaethonSystem parameter set."""
 
     def test_computed_properties(self) -> None:
-        from integrated_asteroid_simulation import PhaethonSystem, CONSTANTS
+        from integrated_asteroid_simulation import CONSTANTS, PhaethonSystem
 
         p = PhaethonSystem()
         self.assertAlmostEqual(p.perihelion_m, 0.14 * CONSTANTS.AU)

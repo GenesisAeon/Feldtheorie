@@ -18,8 +18,7 @@ import pytest
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from aeon.agents import CollectiveInterface, SemanticAgent
-
+from aeon.agents import CollectiveInterface, SemanticAgent  # noqa: E402
 
 # ============================================================================
 # SemanticAgent Tests
@@ -187,10 +186,10 @@ def test_collective_consensus_detection():
 
     # Similar agents should have consensus (with appropriate threshold)
     # Use == instead of 'is' for numpy boolean comparison
-    assert interface_similar.detect_consensus(threshold=1.0) == True
+    assert interface_similar.detect_consensus(threshold=1.0)
 
     # Different agents should not have consensus (tight threshold)
-    assert interface_different.detect_consensus(threshold=0.5) == False
+    assert not interface_different.detect_consensus(threshold=0.5)
 
 
 def test_collective_field_metrics():

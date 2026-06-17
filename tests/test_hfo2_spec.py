@@ -4,8 +4,6 @@ from __future__ import annotations
 
 import json
 
-import pytest
-
 from hardware.neuromorphic.hfo2_detailed_spec import (
     BOM_ENTRIES,
     HfO2ChipSpec,
@@ -64,7 +62,7 @@ class TestSpecJSON:
     def test_json_output(self, tmp_path) -> None:
         spec = HfO2ChipSpec()
         path = tmp_path / "spec.json"
-        payload = generate_spec_json(spec, path)
+        generate_spec_json(spec, path)
         assert path.exists()
         data = json.loads(path.read_text())
         assert data["version"] == "1.0"

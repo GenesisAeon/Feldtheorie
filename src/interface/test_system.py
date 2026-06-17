@@ -9,8 +9,8 @@ Tests:
 - History tracking
 """
 
-import sys
 import os
+import sys
 import time
 
 # Add project root to path
@@ -27,7 +27,7 @@ print()
 print("Test 1: Engine Initialization")
 print("-" * 40)
 engine = get_engine()
-print(f"✅ Engine created")
+print("✅ Engine created")
 print(f"   Initial state: {engine.state.value}")
 print(f"   Initial generation: {engine.current_seed.generation}")
 print()
@@ -36,7 +36,7 @@ print()
 print("Test 2: Get State")
 print("-" * 40)
 state = engine.get_state()
-print(f"✅ State retrieved")
+print("✅ State retrieved")
 print(f"   State: {state['state']}")
 print(f"   Status: {state['status_message']}")
 print(f"   Generation: {state['generation']}")
@@ -98,7 +98,7 @@ time.sleep(5)
 engine.stop_simulation()
 
 state = engine.get_state()
-print(f"✅ Simulation completed")
+print("✅ Simulation completed")
 print(f"   Current generation: {state['generation']}")
 print(f"   Total generations attempted: {state['total_generations']}")
 print(f"   Successful: {state['successful_generations']}")

@@ -4,11 +4,8 @@ from __future__ import annotations
 
 import math
 
-import numpy as np
 import pytest
-
 from theory.quantum_afet import HBAR, K_BOLTZMANN, QuantumAFET, QuantumAFETResult
-
 
 # ===========================================================================
 # QuantumAFET — sigma_phi_quantum

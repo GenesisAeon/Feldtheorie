@@ -1,15 +1,13 @@
 """Chronicle dialogue interface for tracing cosmic ancestry."""
 from __future__ import annotations
 
-from typing import List, Optional
-
 from core import AgentLog, TheChronicle
 
 
 class HistoryTalk:
     """Provide narrative access to the Akasha Chronicle."""
 
-    def __init__(self, chronicle: Optional[TheChronicle] = None) -> None:
+    def __init__(self, chronicle: TheChronicle | None = None) -> None:
         self.chronicle = chronicle or TheChronicle()
 
     def respond(self, question: str) -> str:
@@ -41,14 +39,14 @@ class HistoryTalk:
     def graveyard_overview(self) -> str:
         if not self.chronicle.graveyard:
             return "Der Friedhof ist leer. Noch keine Ahnen eingetragen."
-        entries: List[str] = []
+        entries: list[str] = []
         for log in self.chronicle.graveyard[-5:]:
             entries.append(
                 f"{log.agent_id}: {log.cause_of_death} → Materialien {dict(log.materials_released)}"
             )
         return " | ".join(entries)
 
-    def _extract_material(self, prompt: str) -> Optional[str]:
+    def _extract_material(self, prompt: str) -> str | None:
         tokens = {"HYDROGEN", "HELIUM", "CARBON", "IRON", "GOLD", "HEAVY_METALS", "BLACK_HOLE_SEED"}
         prompt_upper = prompt.upper()
         for token in tokens:
@@ -56,7 +54,7 @@ class HistoryTalk:
                 return token
         return None
 
-    def _find_log(self, agent_id: str) -> Optional[AgentLog]:
+    def _find_log(self, agent_id: str) -> AgentLog | None:
         for log in reversed(self.chronicle.graveyard):
             if log.agent_id == agent_id:
                 return log

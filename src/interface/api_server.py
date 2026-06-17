@@ -26,20 +26,19 @@ Then access at http://localhost:8000
 API docs at http://localhost:8000/docs
 """
 
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
+import asyncio
+import os
+import sys
+
+import uvicorn
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
-from typing import List, Optional
-import asyncio
-import uvicorn
-import sys
-import os
 
 # Add project root to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
-from src.core.ouroboros_engine import OuroborosEngine, get_engine
-
+from src.core.ouroboros_engine import get_engine
 
 # ═══════════════════════════════════════════════════════════
 # Request/Response Models
@@ -121,7 +120,7 @@ class ConnectionManager:
     """Manages WebSocket connections for event streaming."""
 
     def __init__(self):
-        self.active_connections: List[WebSocket] = []
+        self.active_connections: list[WebSocket] = []
 
     async def connect(self, websocket: WebSocket):
         await websocket.accept()
@@ -135,8 +134,7 @@ class ConnectionManager:
         for connection in self.active_connections:
             try:
                 await connection.send_json(message)
-            except Exception:
-                # Connection might be dead, will be cleaned up
+            except Exception:  # noqa: S110 - dead connection cleanup, intentionally silent
                 pass
 
 
@@ -272,7 +270,7 @@ async def intervene(request: InterventionRequest):
     return MessageResponse(**result)
 
 
-@app.get("/api/ouroboros/history", response_model=List[dict])
+@app.get("/api/ouroboros/history", response_model=list[dict])
 async def get_history():
     """
     Get the complete timeline of all generations.
@@ -390,7 +388,7 @@ if __name__ == "__main__":
 
     uvicorn.run(
         app,
-        host="0.0.0.0",
+        host="0.0.0.0",  # noqa: S104 - local dev server, intentional
         port=8000,
         log_level="info"
     )

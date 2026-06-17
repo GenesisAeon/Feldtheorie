@@ -1,9 +1,8 @@
 """Stellar reincarnation loop connecting matter to the Chronicle."""
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Dict, List, Optional
 import random
+from dataclasses import dataclass
 
 from src.core import TheChronicle
 from src.uatc_core.agent_kernel import ResonantEntity
@@ -29,12 +28,12 @@ class StarAgent:
 class StellarLifecycle:
     """Manage stellar birth, evolution, and recycling into the Chronicle."""
 
-    def __init__(self, chronicle: Optional[TheChronicle] = None) -> None:
+    def __init__(self, chronicle: TheChronicle | None = None) -> None:
         self.chronicle = chronicle or TheChronicle()
-        self.population: List[StarAgent] = []
+        self.population: list[StarAgent] = []
         self._sequence = 0
 
-    def spawn_population_three(self, hydrogen_cost: int = 400) -> Optional[StarAgent]:
+    def spawn_population_three(self, hydrogen_cost: int = 400) -> StarAgent | None:
         """Spawn a primordial Pop III star if hydrogen is abundant."""
 
         if not self.chronicle.has_resources({"HYDROGEN": hydrogen_cost}):
@@ -56,7 +55,7 @@ class StellarLifecycle:
         self.population.append(star)
         return star
 
-    def spawn_population_two(self, hydrogen_cost: int = 300, metal_cost: int = 10) -> Optional[StarAgent]:
+    def spawn_population_two(self, hydrogen_cost: int = 300, metal_cost: int = 10) -> StarAgent | None:
         """Spawn a Pop II star when metals from older generations are present."""
 
         required = {"HYDROGEN": hydrogen_cost, "HEAVY_METALS": metal_cost}
@@ -80,10 +79,10 @@ class StellarLifecycle:
         self.population.append(star)
         return star
 
-    def step(self) -> List[StarAgent]:
+    def step(self) -> list[StarAgent]:
         """Advance all stars by one epoch, recycling those that collapse."""
 
-        ended: List[StarAgent] = []
+        ended: list[StarAgent] = []
         for star in list(self.population):
             if star.tick():
                 ended.append(star)
@@ -92,7 +91,7 @@ class StellarLifecycle:
         return ended
 
     def _collapse(self, star: StarAgent) -> None:
-        yields: Dict[str, int] = {"HELIUM": int(star.mass * 40)}
+        yields: dict[str, int] = {"HELIUM": int(star.mass * 40)}
         if star.generation == "Pop III":
             yields.update({
                 "BLACK_HOLE_SEED": 1,

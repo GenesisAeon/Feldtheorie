@@ -1,5 +1,4 @@
 import numpy as np
-
 from simulation.v4_stellar_forge import physics_engine
 from simulation.v4_stellar_forge.universe_dna import UniverseDNA
 

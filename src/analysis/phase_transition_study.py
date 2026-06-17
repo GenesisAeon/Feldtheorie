@@ -23,17 +23,16 @@ Output:
     - Publication-quality matplotlib figure showing phase transition
 """
 
-import sys
-import os
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-from multiprocessing import Pool, cpu_count
-from tqdm import tqdm
 import math
+import os
 import time
 from dataclasses import dataclass
-from typing import List, Tuple
+from multiprocessing import Pool, cpu_count
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from tqdm import tqdm
 
 # === CONFIGURATION ===
 TRIALS_PER_POINT = 50  # Number of universes per data point (increase for publication)
@@ -51,11 +50,11 @@ PLOT_FILE = f"{OUTPUT_DIR}/uatc_phase_transition_plot.png"
 @dataclass
 class Neuron:
     """Simple neuron for Kuramoto-like phase dynamics."""
-    pos: Tuple[int, int]
+    pos: tuple[int, int]
     phase: float
     frequency: float
     activation: float = 0.0
-    connections: List['Neuron'] = None
+    connections: list['Neuron'] = None
 
     def __post_init__(self):
         if self.connections is None:
@@ -112,7 +111,7 @@ def run_single_trial(coupling_strength):
     # Simulation loop
     coherence_history = []
 
-    for tick in range(MAX_TICKS):
+    for _tick in range(MAX_TICKS):
         # Random stimulus (external input)
         stimulus_pos = (np.random.randint(0, 6), np.random.randint(0, 6))
 
@@ -145,7 +144,6 @@ def run_single_trial(coupling_strength):
 
         # 4. Measure synchronization (order parameter)
         # Φ = 1 - variance(phases) normalized
-        avg_phase = np.mean(phases)
         variance = np.var(phases)
         coherence = 1.0 / (1.0 + variance)  # Maps [0, ∞] → [0, 1]
         coherence_history.append(coherence)
@@ -165,8 +163,8 @@ def run_study():
     print("=" * 70)
     print("🔬 UATC SCIENTIFIC VALIDATION - PHASE TRANSITION STUDY")
     print("=" * 70)
-    print(f"   Model:           Level 6 Neural Resonance (Kuramoto-like)")
-    print(f"   Parameter:       Coupling strength κ ∈ [0.0, 1.0]")
+    print("   Model:           Level 6 Neural Resonance (Kuramoto-like)")
+    print("   Parameter:       Coupling strength κ ∈ [0.0, 1.0]")
     print(f"   Trials/point:    {TRIALS_PER_POINT}")
     print(f"   Total sims:      {len(coupling_values) * TRIALS_PER_POINT}")
     print(f"   Parallel cores:  {cpu_count()}")

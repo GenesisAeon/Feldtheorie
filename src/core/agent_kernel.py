@@ -4,7 +4,6 @@ from __future__ import annotations
 import uuid
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Optional
 
 import numpy as np
 
@@ -35,7 +34,7 @@ class UATCAgent:
     mind_vector: np.ndarray = field(default_factory=_mind_vector)
     sigma_phi: float = 0.0
     frequency: float = 1.0
-    parent_id: Optional[str] = None
+    parent_id: str | None = None
     incarnation_count: int = 0
 
     def incarnate(self, target_scale: ExistenceScale, role_template: dict) -> None:

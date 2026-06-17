@@ -1,10 +1,10 @@
 """Level 0 vacuum fluctuations within the UATC resonance framework."""
 from __future__ import annotations
 
+import random
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from itertools import combinations
-from typing import Dict, Iterable, List, Tuple
-import random
 
 from src.uatc_core.agent_kernel import ResonantEntity
 
@@ -19,7 +19,7 @@ class HexCell:
 class HexGrid:
     def __init__(self, radius: int = 5) -> None:
         self.radius = radius
-        self.cells: Dict[Tuple[int, int], HexCell] = {}
+        self.cells: dict[tuple[int, int], HexCell] = {}
         self._build_grid()
 
     def _build_grid(self) -> None:
@@ -29,10 +29,10 @@ class HexGrid:
             for r in range(r1, r2 + 1):
                 self.cells[(q, r)] = HexCell(q=q, r=r, field_potential=random.uniform(0.0, 1.0))
 
-    def random_position(self) -> Tuple[int, int]:
+    def random_position(self) -> tuple[int, int]:
         return random.choice(list(self.cells.keys()))
 
-    def neighbors(self, position: Tuple[int, int]) -> Iterable[Tuple[int, int]]:
+    def neighbors(self, position: tuple[int, int]) -> Iterable[tuple[int, int]]:
         q, r = position
         directions = [(1, 0), (1, -1), (0, -1), (-1, 0), (-1, 1), (0, 1)]
         for dq, dr in directions:
@@ -41,7 +41,7 @@ class HexGrid:
                 yield candidate
 
     @staticmethod
-    def distance(a: Tuple[int, int], b: Tuple[int, int]) -> int:
+    def distance(a: tuple[int, int], b: tuple[int, int]) -> int:
         aq, ar = a
         bq, br = b
         return int((abs(aq - bq) + abs(aq + ar - bq - br) + abs(ar - br)) / 2)
@@ -50,7 +50,7 @@ class HexGrid:
 @dataclass
 class Fluctuation:
     entity: ResonantEntity
-    position: Tuple[int, int]
+    position: tuple[int, int]
     age: int = 0
     lifetime: int = field(default_factory=lambda: random.randint(1, 3))
     stable: bool = False
@@ -59,8 +59,8 @@ class Fluctuation:
 class VacuumSimulation:
     def __init__(self, radius: int = 5) -> None:
         self.grid = HexGrid(radius=radius)
-        self.fluctuations: List[Fluctuation] = []
-        self.stable_formations: List[List[Fluctuation]] = []
+        self.fluctuations: list[Fluctuation] = []
+        self.stable_formations: list[list[Fluctuation]] = []
 
     def spawn_fluctuation(self) -> None:
         entity = ResonantEntity()
@@ -91,7 +91,7 @@ class VacuumSimulation:
                     member.entity.incarnate({"name": "electron", "resonance_hint": 0.0, "scale": 1})
                 self.stable_formations.append(list(triad))
 
-    def _is_resonant_triangle(self, triad: Tuple[Fluctuation, Fluctuation, Fluctuation]) -> bool:
+    def _is_resonant_triangle(self, triad: tuple[Fluctuation, Fluctuation, Fluctuation]) -> bool:
         distances = {
             self.grid.distance(triad[0].position, triad[1].position),
             self.grid.distance(triad[1].position, triad[2].position),

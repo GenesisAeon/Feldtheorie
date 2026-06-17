@@ -6,14 +6,12 @@ import json
 
 import numpy as np
 import pytest
-
 from experiments.week1.multimodal import (
     MultiModalResult,
     run_multimodal_experiment,
     run_scenarios,
     sigma_phi_from_logits,
 )
-
 
 # ---------------------------------------------------------------------------
 # sigma_phi_from_logits
@@ -67,7 +65,7 @@ def test_all_results_are_multimodal_result() -> None:
 def test_scenarios_deterministic_with_same_seed() -> None:
     r1 = run_scenarios(force_numpy=True, seed=123)
     r2 = run_scenarios(force_numpy=True, seed=123)
-    for a, b in zip(r1, r2):
+    for a, b in zip(r1, r2, strict=True):
         assert a.sigma_phi == b.sigma_phi
 
 
@@ -85,7 +83,7 @@ def test_aligned_is_stable_adversarial_is_not() -> None:
 
 
 def test_experiment_writes_json(tmp_path) -> None:
-    payload = run_multimodal_experiment(output_dir=tmp_path, force_numpy=True)
+    run_multimodal_experiment(output_dir=tmp_path, force_numpy=True)
     json_path = tmp_path / "week1_multimodal.json"
     assert json_path.exists()
     data = json.loads(json_path.read_text())

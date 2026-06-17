@@ -1,10 +1,11 @@
-import time
-import sys
 import os
 import random
+import sys
+import time
 
 sys.path.append(os.getcwd())
 from src.scenarios.level_5_biological.bio_physics import PrimordialSoup
+
 
 def visualize(soup):
     os.system('cls' if os.name == 'nt' else 'clear')
