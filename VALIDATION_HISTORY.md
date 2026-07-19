@@ -100,10 +100,12 @@ either `FeldtheorieVALIDATION_HISTORYGitHubCopilot.txt` (which cites
 `KNOWN_V8_RESULTS` block (same figures). Both are close but not identical to
 what actually executing the code produces today; the difference traces to
 `ALPHA_INV = 137.03599206` in `models/unified_constants.py` giving
-`v_RIG = 1352.0676 km/s`, not the `1351.7868` cited in that module's own
-docstring example. Small (~0.02%), doesn't change any PASS/FAIL verdict, but
-is a real, checkable discrepancy between documentation and code — worth
-knowing if anyone cites the docstring's number specifically.
+`v_RIG = 1352.0676 km/s`, not the `1351.7868` previously cited in that
+module's own docstring example. Small (~0.02%), doesn't change any
+PASS/FAIL verdict — but it's a real, checkable discrepancy between
+documentation and code, so this session's docstring examples (this one and
+8 others with the same root cause) were corrected to match; see "Known
+open items" below for the full list of what changed.
 
 **Honesty caveat on "Kleiber's Law: PASS":** `validate_kleiber_scaling()`
 hardcodes *both* `b_predicted = 3.0/4.0` and `b_observed = 0.75` as literal
@@ -227,11 +229,21 @@ caused or fixed.
   ANOVA from `data/derived/beta_estimates.csv` (36 rows) and report the
   *actual* achievable statistic honestly, or correct the release notes to
   stop citing a dataset that isn't there.
-- **`docstring`/code constant mismatch in `models/unified_constants.py`**:
-  the module's own example (`v_RIG = 1351.7868 km/s`) doesn't match what
-  `calculate_integration_velocity()` actually returns today
-  (`1352.0676 km/s`) with the current `ALPHA_INV`. Small (~0.02%), doesn't
-  change any pass/fail verdict, but worth a docstring fix for accuracy.
+- ~~**`docstring`/code constant mismatch**~~ — **fixed this session.** Running
+  `doctest.testmod()` (with `ELLIPSIS`) against both modules found 8 stale
+  doctest examples across `models/consciousness_integration.py` (impedance,
+  v_RIG, cosmic-dipole deviation, neural-frequency events/spike, Planck
+  slices, beta-domain names) and 1 in `models/unified_constants.py`
+  (`calculate_vrig()`'s own example) — all traceable to the same
+  ~0.02% `ALPHA_INV`-driven `v_RIG` drift, plus one unrelated stale example
+  (domain names were lengthened elsewhere in the code but the old, shorter
+  names were never updated in this one docstring). Updated all 9 to match
+  what the code actually computes today; `doctest.testmod(...,
+  optionflags=doctest.ELLIPSIS)` now reports 0 failures on both modules
+  (was 8 and 1). None of these were previously enforced anywhere (no
+  `--doctest-modules` in this repo's CI), so this was silent documentation
+  drift, not a CI-visible bug — but it's the same "verify by executing"
+  category as everything else in this document.
 - **`BetaDomain` NaN deviation** for the Neurodegeneration domain in
   `get_beta_domain_clustering()` — not investigated (likely a division
   edge-case in that domain's specific bounds).

@@ -97,7 +97,7 @@ def calculate_vrig(
     Examples
     --------
     >>> calculate_vrig()
-    1351.7868...
+    1352.0676...
 
     >>> # Use custom values
     >>> calculate_vrig(alpha_inv=137.0, phi=1.618)

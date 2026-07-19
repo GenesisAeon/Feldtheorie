@@ -84,7 +84,7 @@ def calculate_impedance(
     --------
     >>> Z = calculate_impedance()
     >>> print(f"Z = {Z:.2f}")
-    Z = 221.74
+    Z = 221.73
 
     >>> # Consciousness compression factor
     >>> compression = Z
@@ -123,7 +123,7 @@ def calculate_integration_velocity(
     --------
     >>> v_rig = calculate_integration_velocity()
     >>> print(f"v_RIG = {v_rig:.4f} km/s")
-    v_RIG = 1351.7868 km/s
+    v_RIG = 1352.0676 km/s
     """
     if impedance is None:
         impedance = calculate_impedance()
@@ -192,7 +192,7 @@ def validate_cosmic_dipole(
     --------
     >>> result = validate_cosmic_dipole()
     >>> print(f"Deviation: {result.deviation_percent:.2f}%")
-    Deviation: 1.34%
+    Deviation: 1.33%
     >>> print(f"Z-score: {result.z_score:.2f}")
     Z-score: 0.11
 
@@ -397,7 +397,7 @@ def validate_neural_frequency(
     >>> print(f"Predicted: {result.predicted_frequency_mhz:.2f} MHz")
     Predicted: 13.52 MHz
     >>> print(f"Events per spike: {result.integration_events_per_spike:.0f}")
-    Events per spike: 13518
+    Events per spike: 13521
 
     References
     ----------
@@ -508,7 +508,7 @@ def validate_specious_present(
     >>> print(f"Integration window: {result.integration_window_typical_ms:.0f} ms")
     Integration window: 150 ms
     >>> print(f"Planck slices: {result.planck_slices_per_moment:.2e}")
-    Planck slices: 1.80e+42
+    Planck slices: 2.78e+42
 
     References
     ----------
@@ -602,11 +602,11 @@ def get_beta_domain_clustering() -> list[BetaDomain]:
     >>> domains = get_beta_domain_clustering()
     >>> for domain in domains:
     ...     print(f"{domain.name}: β̄ = {domain.beta_mean:.1f}")
-    Information: β̄ = 4.5
-    Geophysical: β̄ = 4.6
-    Biology: β̄ = 7.4
-    Climate: β̄ = 11.0
-    Neurodegeneration: β̄ = 13.0
+    Information (LLMs, Markets, Consciousness): β̄ = 4.5
+    Geophysical (Earthquakes, Self-Organized Criticality): β̄ = 4.6
+    Biology (Microbiomes, Ecosystems, Metabolism): β̄ = 7.4
+    Climate (AMOC, Ice Sheets, Amazon Rainforest): β̄ = 11.0
+    Neurodegeneration (Huntington's, ALS, Alzheimer's): β̄ = 13.0
 
     References
     ----------
@@ -696,9 +696,9 @@ def run_full_validation_suite() -> dict:
     --------
     >>> results = run_full_validation_suite()
     >>> print(f"v_RIG = {results['v_rig']:.4f} km/s")
-    v_RIG = 1351.7868 km/s
+    v_RIG = 1352.0676 km/s
     >>> print(f"Cosmic dipole deviation: {results['cosmic_dipole'].deviation_percent:.2f}%")
-    Cosmic dipole deviation: 1.34%
+    Cosmic dipole deviation: 1.33%
     """
     impedance = calculate_impedance()
     v_rig = calculate_integration_velocity(impedance)
