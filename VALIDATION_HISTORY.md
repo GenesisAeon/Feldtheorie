@@ -150,7 +150,7 @@ investigated further, flagged as a minor open item below.
 
 ---
 
-## The "78 β-values" claim — NOT REPRODUCIBLE from this repository
+## The "78 β-values" claim — UPDATE: origin document found (archaeology sprint, 2026-07-19)
 
 `RELEASE_NOTES_v6.0.0.md` states its own data source explicitly:
 ```
@@ -158,26 +158,79 @@ data/beta_estimates.csv    # 78 validated β-values across 5 domains
 ```
 This exact path **does not exist anywhere in the repository's current state or
 git history** (checked via `git log --all -- data/beta_estimates.csv`: no
-results). The only similarly-named file is `data/derived/beta_estimates.csv`
-— 36 rows (not 78), split across ~20 domain labels most of which have a
-single row (`n=1`), which cannot produce an ANOVA with `df=(4,73)` (that
-degrees-of-freedom signature requires exactly 78 observations across 5
-groups). A second file, `data/derived/beta_estimates_v3.csv`, is explicitly
-self-labelled in its own `data_status`/`notes` columns as
-`"mock-bootstrap"` / *"Bootstrap aus V3 Mock-Daten; echte Beobachtungen
-ersetzen pending"* ("bootstrapped from V3 mock data; real observations still
-pending").
+results). The only similarly-named file at that location is
+`data/derived/beta_estimates.csv` — 36 rows (not 78), incompatible with the
+cited `df=(4,73)` (requires exactly 78 observations across 5 groups). This
+part of the original finding (2026-07-19, first VALIDATION_HISTORY.md pass)
+stands.
 
-**What this means concretely:** the specific statistic `F(4,73) = 185.3,
-p < 10⁻²⁰, η² = 0.91` — repeated verbatim across the V6.0.0-beta, V6.0.0, and
-V8/V9 release notes as the framework's single strongest piece of statistical
-evidence — cannot be traced to an underlying dataset in this repository. It
-may exist in a location outside this repo (a private analysis notebook,
-a since-deleted file, an external collaborator's dataset), but that isn't
-something this session could confirm. This is reported as a documentation/
-data-provenance gap, not a claim that the analysis was fabricated — but it
-means the number should currently be treated as **unverified**, not as
-established fact, until the source data is either located or regenerated.
+**What's new:** a follow-up archaeology sprint through the repo's buried
+early-development history found the actual origin document:
+`archive/legacy_v1_v3/seed/RoadToV.3/UTAC Empirical Validation v2.0/
+UTAC_v2.0_COMPLETE_ANALYSIS.md` (2025-11-15, duplicated verbatim at
+`archive/legacy_v1_v3/seed/RoadToV.3/Action/` — same "seed mirrors a working
+copy" pattern already seen for `beta_estimates.csv` and
+`v4.0.0-alpha_MirrorMachine`). It states "Total Datasets: 8 (78 datapoints)"
+and contains the identical `F(4,73)=185.3, p<10⁻²⁰, η²=0.91` table — **and
+that table's own header reads "ANOVA Results (simulated from data)"**,
+verbatim, in the source document itself (not a later paraphrase or
+misquote). Every later release-notes generation (V6.0.0-beta, V6.0.0, V8,
+V9) dropped that qualifier when repeating the number.
+
+This changes the finding from "cannot be traced at all" to something more
+precise and, honestly, more interesting:
+
+- **The per-dataset β estimates are, at least in part, real and
+  literature-cited.** Found real backing CSVs for 5 of the document's 8
+  named datasets at `archive/legacy_v1_v3/seed/RoadToV.3/Claude-Datenpaket2/`
+  — `Vaginal_Microbiome_CST_Transitions.csv` (8 rows), `Huntingtons_Disease_
+  CAG_Threshold.csv` (10), `AMOC_Paleoclimate_Collapses.csv` (10, source:
+  NGRIP ice core, confirmed by reading the file), `ALS_TDP43_Phase_
+  Separation.csv` (10), `Oral_Microbiome_Periodontitis.csv` (10) — row
+  counts match the document's own per-dataset table exactly, each row cites
+  a specific real source (Patel et al. 2015 *Cell*, Gajer et al. 2012
+  *Science* DOI:10.1126/science.1217991, NGRIP, ENROLL-HD, Human Microbiome
+  Project). The remaining 3 named datasets (Neuronal Avalanches, Earthquake
+  Gutenberg-Richter, Measles Herd Immunity) were not found as exact matches;
+  a separate, differently-numbered 60-file "Claude-Datenpacket" has
+  thematically similar files with different row counts (7-8, not 10) —
+  likely a different data-gathering pass, not confirmed as the same source.
+- **The summary statistics wrapping those real numbers were not computed
+  from them.** "Simulated from data" is the document's own phrase — this
+  reads as an illustrative table written to show what the analysis *would*
+  look like, not actual `scipy.stats`/R output from the 5-8 real datasets
+  above. Re-running a real one-way ANOVA on however many of the 5 confirmed
+  real datasets can be assembled into comparable β-values would be a
+  legitimate, concrete follow-up (not attempted this session — time-boxed).
+- **V2's separately-cited `η²=0.735, p=0.0061` Field Type ANOVA** turned up
+  in a different, adjacent piece of buried history:
+  `archive/legacy_v1_v3/seed/FraktaltagebuchV2/` (an informal, dated,
+  budget-tracked development journal — entries literally note remaining
+  session budget in USD, e.g. "~2-3$ von 76$ remaining"). Multiple entries
+  there reference "η²=0.735" as "Meta-Regression v2", but one entry
+  explicitly qualifies it as **"conceptual validation"** rather than a
+  from-data computation — same self-admitted-informal pattern as the ANOVA
+  table above, not a dedicated, independently re-run computation. Not
+  traced further given the volume of that journal (dozens of dated,
+  narrative-style entries, each with its own set of self-graded ✅
+  checkmarks) — a full audit of it is a separate, larger task.
+- **V1's `β≈4.2±0.6` cross-domain claim** — still not traced to a specific
+  script/dataset producing that exact figure, though it's consistent with
+  the RG (renormalization-group) fixed-point framing used throughout the
+  same V2 analysis document (β≈4.21, Wilson-Kogut, cited as the
+  "Informational Systems" cluster center).
+
+**Bottom line, updated:** treat the `F(4,73)=185.3` statistic as **not
+computed from real data** (confirmed, by the source document's own words),
+while the *underlying per-domain β estimates* it's illustrating are, for at
+least 5 of 8 named datasets, real and traceable to cited literature. This is
+a more nuanced and more scientifically interesting finding than either
+"fabricated" or "just missing" — the early development process appears to
+have been genuinely rapid and exploratory (see the Fraktaltagebuch's
+per-session dollar-budget tracking), with narrative/illustrative tables
+written alongside real data-gathering, and the two got conflated in later,
+more polished release notes that dropped the original "simulated"
+qualifier.
 
 ---
 
@@ -185,11 +238,12 @@ established fact, until the source data is either located or regenerated.
 
 | Version | What it claims to validate | Concrete number cited? | Automated test found? | Status |
 |---|---|---|---|---|
-| **V1** (v1.0.1, v1.1.0) | Cross-domain UTF/UTAC logistic response — 6 domains (AI, climate, biology, neuroscience, socio-ecology, geophysics); β converges to ≈4.2±0.6 | Yes — per-domain β/Θ/ΔAIC/R² table | `simulation/threshold_sandbox.py` exists and is runnable; the cross-domain literature table itself is not a script output | DOCUMENTED |
-| **V2** | "β is diagnostic of system architecture", not a universal constant — Field Type ANOVA | η²=0.735, p=0.0061; cross-domain β-correlation ρ=0.68, p<0.01 | Not located this session | DOCUMENTED |
+| **V1** (v1.0.1, v1.1.0) | Cross-domain UTF/UTAC logistic response — 6 domains (AI, climate, biology, neuroscience, socio-ecology, geophysics); β converges to ≈4.2±0.6 | Yes — per-domain β/Θ/ΔAIC/R² table | `simulation/threshold_sandbox.py` exists and is runnable; the cross-domain literature table itself is not a script output. Archaeology sprint (2026-07-19) searched `archive/legacy_v1_v3/` specifically for this figure — not traced to a specific script/dataset producing exactly β≈4.2±0.6, though consistent with the RG (renormalization-group) fixed-point framing used throughout the buried V2 analysis doc (β≈4.21, Wilson-Kogut). | DOCUMENTED |
+| **V2** | "β is diagnostic of system architecture", not a universal constant — Field Type ANOVA | η²=0.735, p=0.0061; cross-domain β-correlation ρ=0.68, p<0.01 | Archaeology sprint (2026-07-19) found this referenced in `archive/legacy_v1_v3/seed/FraktaltagebuchV2/` — an informal, dated, per-session-dollar-budget-tracked development journal (e.g. "~2-3$ von 76$ remaining"). Multiple entries cite η²=0.735 as "Meta-Regression v2", but one entry explicitly qualifies it as **"conceptual validation"**, not a from-data computation — same self-admitted-informal pattern as V6's ANOVA table (see dedicated section above). Not traced to a dedicated, independently-rerunnable script; the journal itself is dozens of entries, a full audit is a separate task. | DOCUMENTED (traced to an informal source, not a computation) |
+| **V3** | Not a distinct empirical-law validation in its own right — mostly infrastructure (`v3/data-adapters/`: real fetcher classes for RAPID-MOCHA/AMOC, GRACE, NOAA, USGS data, 2565 lines, has its own `test_noaa_real_data.py`) | n/a | The NOAA/USGS adapters have no equivalent in the current `scripts/adapters/` (which only has RAPID/GRACE/OISST) — genuinely unique, not superseded. Not executed this session (time-boxed) but not stub code either — real, structured fetcher classes. See "Archaeology sprint" section below for the full reactivation-candidate list. | DOCUMENTED (real code, not run) |
 | **V4** | Mirror Machine criticality monitor (σ(β(R-Θ)) verdicts from live RAPID/GRACE/NOAA ingests); Aletheia relational-framing falsification | Qualitative (ΔAIC framework, no single headline number) | `scripts/monitoring/ews_pipeline.py`, `scripts/simulation/mirror_machine_auditorium.py` exist | DOCUMENTED |
 | **V5** | α–Φ cosmic velocity structural isomorphism; social rigidity as an Ising field | Monte-Carlo null ensembles (`docs/science/v5_hypothesis_isomorphism.md`) | `models/cosmic_alpha_phi.py --runs 10000` and `models/social_rigidity_ising.py --sweep` are directly runnable scripts — **not executed this session** (time-boxed; flagged as a good next step, see TODO) | DOCUMENTED |
-| **V6.0.0-beta / V6.0.0** | Ψ-wavefunction (tetrahedral symmetry, golden-ratio evolution); v_RIG Reality-Renderer; OIPK-Tesseract 4D simulation; "78 validated β-values" | F(4,73)=185.3, p<1e-20, η²=0.91; A₁₂<1e-5 falsification criterion for OIPK-Tesseract | Not located; **source dataset for the headline statistic does not exist in this repo — see dedicated section above** | **NOT REPRODUCIBLE** (headline stat only) |
+| **V6.0.0-beta / V6.0.0** | Ψ-wavefunction (tetrahedral symmetry, golden-ratio evolution); v_RIG Reality-Renderer; OIPK-Tesseract 4D simulation; "78 validated β-values" | F(4,73)=185.3, p<1e-20, η²=0.91; A₁₂<1e-5 falsification criterion for OIPK-Tesseract | Origin document found (archaeology sprint, 2026-07-19): the ANOVA table is self-labelled "simulated from data" in its own source; 5 of 8 named per-dataset β estimates ARE real and literature-cited — see dedicated section above for the full nuance | **PARTIALLY TRACED** (real per-dataset citations, simulated summary stats — see above; supersedes the original "NOT REPRODUCIBLE" verdict) |
 | **V7** | Aeon Architecture (β/κ drift monitoring), Collective Field module, Selfmeta guardrails | "747/747 tests", "33/33 assertions" (per `releases/v7.0/github_release_notes.md`) | Yes — `tests/test_collective_field.py`, `tests/test_aeon_*.py` etc. **are part of this session's real full-suite run** (see below): all pass except 1 confirmed-flaky test unrelated to any change here | **LIVE** (via full suite) |
 | **V8** | Cosmic dipole, Kleiber's Law, neural frequency, specious present (4 laws) | See dedicated section above | `tests/test_consciousness_integration.py` (22/22 pass) + `models/consciousness_integration.py` run directly | **LIVE** |
 | **V8.1** | Ouroboros Engine narrative test cases (LLM-narrated universe-simulation events: SUCCESS/FAIL/DESPERATION) | Qualitative test-case walkthroughs, not a statistical validation in the same sense as V8 | Not evaluated this session (different domain — narrative/LLM behaviour, not a physical-law fit) | DOCUMENTED |
@@ -245,8 +299,91 @@ caused or fixed.
 
 ---
 
+## Archaeology sprint (2026-07-19) — buried version directories, second real CI fix
+
+Follow-up sprint: map every buried, pre-V8 version snapshot in this repo
+(many versions were never merged into the current root-level `models/`/
+`tests/` structure — they sit as isolated subfolders from an earlier,
+less experienced phase of development), scan for syntax bugs the same
+class as the V8 CI fix, and identify anything worth reactivating.
+
+**Repo-wide syntax scan**: `ast.parse()` against all 595 `.py` files in
+the repo — **0 syntax errors**. The V8 CI bug (`v8-validation.yml`) was
+isolated, not a systemic pattern across old code. Also manually checked
+the 6 other workflows with inline `python -c` blocks
+(`doc-freshness-guard.yml`, `narrative-science-sync.yml`,
+`sigillin-health.yml`, `sigillin-loop.yml`,
+`sigillin-selfmeta-check.yml`, `utac-guards.yml`) for the same
+apostrophe/backslash-in-f-string class of bug — all clean, verified by
+actually extracting the exact `run:` block via PyYAML and executing it
+through bash (not just reading it: an initial pass mistakenly ran
+`ast.parse()` on the raw, still-bash-escaped YAML text and got a false
+positive on `doc-freshness-guard.yml` — running it through actual bash
+first, as bash itself un-escapes `\"` inside a double-quoted context,
+showed it was correct all along).
+
+**Second real CI fix found and confirmed**: `guard_digital_physics.yml`
+("Guard Digital Physics" / `verify-hex-resonance` job) had failed on
+every recorded run — found while investigating whether
+`v11_gardener/core/beta_hexadecimal.py` (below) was relevant to it. Root
+cause: the job has no Python/dependency setup at all, just checkout +
+run. `from models.unified_constants import HEX_RESONANCE_BETA` executes
+`models/__init__.py` first (accessing any submodule always runs the
+parent package's `__init__` first), which eagerly imports 9 other
+submodules, 5 of which import `numpy` directly — not part of the bare
+`ubuntu-latest` Python, every other workflow that needs it installs it
+explicitly. The resulting `ModuleNotFoundError` was being caught by the
+guard's own except-clause and reported as "Non-Resonant Physics
+Detected: unable to import HEX_RESONANCE_BETA (...)" — a misleading
+message for what was actually a missing-dependency CI misconfiguration,
+not a real constant drift. Fixed by adding the same Python
+setup + `pip install numpy` steps every other workflow already uses.
+**Confirmed in real GitHub Actions CI**: green for the first time on the
+very next push.
+
+**Buried directories surveyed** (the ones with actual `.py` content —
+several other `releases/vX.Y` snapshots have zero Python files, pure
+docs/data archives, and were only checked for any standout dataset, not
+deep-reviewed):
+
+| Directory | What's there | Verdict |
+|---|---|---|
+| `v3/data-adapters/` | Real fetcher classes: RAPID-MOCHA/AMOC, GRACE, **NOAA, USGS** (2565 lines, own `test_noaa_real_data.py`) | **Candidate.** NOAA/USGS adapters have no current equivalent (`scripts/adapters/` only has RAPID/GRACE/OISST) |
+| `v9_alpha/models/` (excl. the already-known 3 shims) | 9 real, substantial modules (~4000 lines total): `frequency_tuner.py` (1264 lines), `emergence_metrics.py` (708), `em_field_calculator.py` (572), `network_visualizer.py` (470), `gardener_agent.py` (322), `sensorium.py` (268), `phase_dynamics.py` (133), `solar_driver.py` (193), `early_warning.py` (69, critical-slowing-down/lag-1-autocorrelation detector) | **Strongest candidate cluster.** None exist at root `models/`; has its own 7-file test suite already |
+| `v11_gardener/core/beta_hexadecimal.py` | 350-line derivation/justification module for `HEX_RESONANCE_BETA` (three independent calculation methods, dated 2025-12-18) — the constant itself lives bare in current `models/unified_constants.py` with none of this derivation | **Candidate.** Directly relevant to the `HEX_RESONANCE_BETA` constant this sprint's second CI fix concerns |
+| `releases/V6-Plans_etc/` (3 `.py` files) | `sigillin_kernel.py`, `crep_guard.py` (both differ substantially — 395 and 226 lines of diff — from current `api/sigillin_kernel.py`/`tools/crep_guard.py`, likely superseded drafts), `consensus_tracer.py` (no current equivalent, not examined in depth) | Low priority, except `consensus_tracer.py` unexamined |
+| `releases/v4.0.0-alpha_MirrorMachine/` (+ identical `seed/releases/` copy — same "seed mirrors a working copy" pattern as `beta_estimates.csv`) | Adapters + monitoring + Mirror Machine sim | **Not a candidate** — `sensors/adapters/rapid_amoc_adapter.py` confirmed **byte-identical** (`diff`, 0 lines) to current `scripts/adapters/rapid_amoc_adapter.py`. Already fully migrated; contributes nothing new |
+| `archive/v3_ideas/utac_klimakluft_visualization.py` (301 lines) | Visualization for the "klimakluft" (climate-crack) concept | Partial overlap with current `models/klimakluft_amplifier.py`/`scripts/klimakluft_analysis.py` (both already exist and already plot something) — not diffed, not confirmed redundant |
+| `v10_oracle/` (`consciousness_kernel.py`, `semantic_bridge.py`, narrative/demo scripts, ~1764 lines) | Not evaluated in depth this session — more narrative/demo-flavored than V9's, lower priority | Not evaluated |
+
+**Ranked reactivation candidates** (per this sprint's own explicit instruction: list only, no reactivation without an explicit follow-up decision):
+1. `v9_alpha/models/{early_warning,phase_dynamics,em_field_calculator,emergence_metrics,frequency_tuner,gardener_agent,network_visualizer,sensorium,solar_driver}.py` — largest, most complete, most clearly non-duplicate; already has its own tests.
+2. `v11_gardener/core/beta_hexadecimal.py` — small, directly relevant to a constant this sprint already touched.
+3. `v3/data-adapters/src/{noaa_adapter,usgs_adapter}.py` — real external-data fetchers not covered by current adapters.
+4. `releases/V6-Plans_etc/.../consensus_tracer.py` — unique, not reviewed in depth.
+
+**Not reactivated, not moved, not renamed, nothing deleted** — per this
+sprint's own instructions. This is a candidate list for a future,
+explicit decision, not an action taken.
+
+---
+
 ## Known open items (not fixed this session — out of scope / flagged for follow-up)
 
+- **Re-run a real one-way ANOVA on the 5 confirmed-real per-dataset β
+  estimates** found in `archive/legacy_v1_v3/seed/RoadToV.3/
+  Claude-Datenpaket2/` (see the updated "78 β-values" section above) —
+  would either genuinely replicate something close to the "simulated"
+  `F(4,73)=185.3, η²=0.91` table, or show it doesn't hold up, either of
+  which is more scientifically honest than repeating an admittedly-
+  simulated number indefinitely. Needs assembling the 3 missing datasets
+  (Neuronal Avalanches, Gutenberg-Richter, Measles) first, or explicitly
+  reporting on the 5/8 subset.
+- **`FraktaltagebuchV2`** (`archive/legacy_v1_v3/seed/FraktaltagebuchV2/`)
+  is a large, informal, dated development journal with its own per-entry
+  self-graded ✅ checkmarks (including the V2 "η²=0.735" claim, see
+  above) — a full audit of what's real vs. narrative/conceptual in there
+  is a separate, larger task not attempted this session.
 - **`coverage-check` job (`v8-validation.yml`) still fails in real CI**,
   despite a locally-verified fix (`[tool.coverage.report].exclude_lines`
   in `pyproject.toml`, re-tested from a clean `.coverage` cache with the
