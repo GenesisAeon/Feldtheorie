@@ -76,5 +76,5 @@ Before committing work in `seed/releases/v4.0.0-alpha_MirrorMachine/data/derived
 
 ---
 
-**Last Updated:** 2026-06-17 07:58:56 UTC
+**Last Updated:** 2026-07-19 12:17:15 UTC
 **Governance Version:** 1.0.0

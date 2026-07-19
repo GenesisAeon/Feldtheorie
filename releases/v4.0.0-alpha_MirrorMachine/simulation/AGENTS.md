@@ -1,6 +1,6 @@
 # Agents Charter - releases/v4.0.0-alpha_MirrorMachine/simulation
 
-> **Context Depth:** 3 | **Parent:** releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Programming
+> **Context Depth:** 3 | **Parent:** releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Research
 
 ---
 
@@ -22,20 +22,20 @@ This document inherits from the root `AGENTS.md` and specializes for this contex
 
 **This directory (`releases/v4.0.0-alpha_MirrorMachine/simulation`) is specialized for:**
 
-### Programming Context
+### Research Context
 
-This is a **code-heavy context**. Agents working here focus on:
-- Code quality and maintainability
-- Test coverage and reproducibility
-- API security and stability
-- Performance optimization
-- Documentation in docstrings
+This is a **research and documentation context**. Agents working here focus on:
+- Hypothesis formation and falsifiability
+- Citation integrity and attribution
+- Theoretical consistency
+- Knowledge preservation and archiving
+- Publication readiness
 
 **Active Agent Roles:**
-- Code Architect: Designs modular, testable systems
-- Test Engineer: Ensures >80% coverage and CI integration
-- Security Auditor: Reviews for OWASP Top 10 vulnerabilities
-- Performance Engineer: Profiles and optimizes bottlenecks
+- Research Synthesizer: Integrates findings across domains
+- Documentation Curator: Maintains indices, cross-references
+- Citation Manager: Ensures proper attribution (BibTeX, DOI)
+- Archivist: Versions and preserves historical knowledge
 
 
 ---
@@ -48,10 +48,10 @@ See mode-specific agents above
 
 ## Workflow for This Context
 
-1. **Before coding:** Read existing code, check tests, review API contracts
-2. **During coding:** Write tests first (TDD), document as you go
-3. **After coding:** Run linters, execute test suite, update CHANGELOG
-4. **Pre-commit:** Ensure all tests pass, no security warnings
+1. **Before writing:** Review existing documentation, check citations
+2. **During writing:** Link to evidence, cite sources, mark hypotheses
+3. **After writing:** Update indices, cross-link Sigillin, sync Trilayer
+4. **Pre-commit:** Ensure Trilayer sync (YAML/JSON/MD), citations complete
 
 
 ---
@@ -72,5 +72,5 @@ If you encounter conflicts or ambiguity:
 
 ---
 
-**Last Updated:** 2026-06-17 07:58:56 UTC
+**Last Updated:** 2026-07-19 12:17:15 UTC
 **Governance Version:** 1.0.0
