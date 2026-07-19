@@ -56,7 +56,17 @@ interpretation):
 
 Verified locally end-to-end (see "V8" section below) by extracting the exact
 `run:` block YAML delivers to bash and executing it directly — exit 0, full
-output, `validation_status=passed` written to `$GITHUB_OUTPUT`.
+output, `validation_status=passed` written to `$GITHUB_OUTPUT`. **Confirmed
+in real GitHub Actions CI too**, not just locally: pushing this fix
+triggered an actual `V8 Consciousness Framework Validation` run (the
+`v8-validation.yml` path filter only matches changes to
+`models/*.py`/`tests/test_consciousness_integration.py`, so the fix commit
+itself — which only touched the workflow file — never triggered a real
+run; a follow-up commit fixing stale docstrings, below, did). Both the
+`V8.0 Empirical Validation Suite` job and the `β-Domain Clustering
+Analysis` job came back **green** for the first time in this workflow's
+history (both had failed on every prior recorded run, back to the
+earliest visible history on 2026-06-17).
 
 Two independently-drafted fixes were considered and rejected before writing
 this one:
@@ -71,13 +81,26 @@ this one:
   in that patch would itself have failed to parse. Confirmed via
   `ast.parse()` before rejecting it, not on inspection alone.
 
-A second, unrelated but also-broken CI job was found and fixed in the same
-pass: `coverage-check` required `--cov-fail-under=85` but only reached 59%,
+A second, unrelated but also-broken CI job was found in the same pass:
+`coverage-check` required `--cov-fail-under=85` but only reached 59%,
 because the `if __name__ == "__main__":` CLI-demo block (lines 722–805,
-correctly never exercised by unit tests) had no coverage exclusion.
-Added the standard `exclude_lines` entries to `[tool.coverage.report]` in
-`pyproject.toml` — 100% coverage on the relevant module afterward, no test
-logic touched.
+correctly never exercised by unit tests) had no coverage exclusion. Added
+the standard `exclude_lines` entries to `[tool.coverage.report]` in
+`pyproject.toml` — locally, this gives 100% coverage on the gated module
+and the exact CI command (`pytest tests/test_consciousness_integration.py
+--cov=... --cov-fail-under=85`) passes, re-verified from a clean
+`.coverage` cache. **However, the real CI run of this job still came back
+red** (`Test Coverage Check`, same job name it's always had — it also
+failed on every run before this fix). Could not diagnose why the local
+and CI results diverge: GitHub's job-logs API requires repo-admin auth
+this session doesn't have (`403: Must have admin rights to Repository`),
+and the public run/job-list endpoints only report pass/fail, not step
+output. Ruled out the obvious candidates (no `.coveragerc`/`setup.cfg`/
+`tox.ini` that could be shadowing `pyproject.toml`'s coverage section;
+same `pytest-cov`/`coverage` versions locally as would resolve fresh from
+PyPI). Reporting this honestly as **attempted, verified locally, not
+confirmed in real CI** rather than claiming it's fixed — see "Known open
+items" below.
 
 ---
 
@@ -224,6 +247,18 @@ caused or fixed.
 
 ## Known open items (not fixed this session — out of scope / flagged for follow-up)
 
+- **`coverage-check` job (`v8-validation.yml`) still fails in real CI**,
+  despite a locally-verified fix (`[tool.coverage.report].exclude_lines`
+  in `pyproject.toml`, re-tested from a clean `.coverage` cache with the
+  exact CI command — 100% coverage, passes `--cov-fail-under=85`). This
+  job has failed on every recorded run since before this session (not a
+  regression), and the primary target of this sprint — the `V8.0
+  Empirical Validation Suite` job — is now confirmed green in real CI, so
+  the sprint's main goal is met. But this secondary job's real-CI failure
+  couldn't be root-caused: GitHub's job-logs API requires repo-admin
+  auth this session doesn't have. Next session with `gh`/token access:
+  pull the actual `Test Coverage Check` step output and compare against
+  the local 100%-coverage result to find the actual divergence.
 - **The 78-β-values source dataset is missing** (see dedicated section
   above) — either locate it outside this repo, or regenerate/re-derive the
   ANOVA from `data/derived/beta_estimates.csv` (36 rows) and report the
