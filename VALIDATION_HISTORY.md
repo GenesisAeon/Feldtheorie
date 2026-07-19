@@ -1,0 +1,272 @@
+# VALIDATION_HISTORY.md
+
+**Generated:** 2026-07-19
+**GenesisAeon / Feldtheorie — Empirical Validation History**
+
+---
+
+## How to read this document
+
+Every entry below is labelled with exactly one status, and the label is a claim
+about *how this session verified it*, not about scientific merit:
+
+| Label | Meaning |
+|---|---|
+| **LIVE** | Actually executed this session, locally, with the exact command shown. Numbers are real output, not copied from any prior report. |
+| **DOCUMENTED** | Claimed in that version's own `RELEASE_NOTES_*.md`/`CHANGELOG.md`. Not independently re-derived or re-executed this session. May well be true — just not re-verified here. |
+| **NOT REPRODUCIBLE** | The release notes cite a specific number and a specific source file/dataset, and that exact source could not be found in the current repository, or the file that *was* found cannot produce the cited number (e.g. wrong row count for the stated statistical test). |
+| **STUB / PLANNED** | The version's own documentation says the data is staged, mocked, or pending — i.e. it says so itself, this isn't an accusation. |
+
+Nothing in this document adjusts a validation's own stated threshold to make it
+pass. Where a number could not be reproduced, that is reported as a fact about
+this session's ability to reproduce it — not a claim that the underlying
+science is wrong.
+
+---
+
+## Why this document exists (the CI bug)
+
+Every version of Feldtheorie ships its own validation scripts, but the V8 CI
+job (`.github/workflows/v8-validation.yml`, "Run Live Validation Suite") never
+actually completed a run: it embedded a large Python program inside a
+double-quoted `python -c "..."` shell string, and one line —
+`print(f'2. Kleiber'\''s Law...')` — used a bash single-quote-escaping idiom
+(`'\''`) that isn't valid Python syntax at all (it produces a stray
+backslash-apostrophe token outside any string literal). On top of that, a
+second, independent bug in the same block —
+`{\"✅ PASS\" if ... else \"❌ FAIL\"}` — put a backslash inside an f-string
+`{}` expression, which Python 3.11 (the version this workflow pins) rejects
+outright (relaxed only in 3.12+). Either bug alone would have crashed the
+step before it printed anything.
+
+**Fix applied:** rather than re-encode the same print statements a *third*
+time inline in the YAML (which is how the bug was introduced — the CI step
+duplicated logic that already existed, correctly, in
+`models/consciousness_integration.py`'s own `if __name__ == "__main__":`
+block), the step now does two much smaller things via a heredoc
+(`python - <<'PY' ... PY`, which bash passes through with zero
+interpretation):
+1. `runpy.run_module("models.consciousness_integration", run_name="__main__")`
+   — runs the already-correct, already-tested display code directly, with no
+   duplication.
+2. A short, separate falsification check (`sys.exit(1)` if any of the three
+   numeric deviations exceeds its stated threshold) — restoring the actual
+   functional purpose of this CI step, which the syntax error had always
+   prevented from ever running.
+
+Verified locally end-to-end (see "V8" section below) by extracting the exact
+`run:` block YAML delivers to bash and executing it directly — exit 0, full
+output, `validation_status=passed` written to `$GITHUB_OUTPUT`.
+
+Two independently-drafted fixes were considered and rejected before writing
+this one:
+- The task prompt's own suggested heredoc sketch was structurally correct
+  (a heredoc avoids the quoting problem) but used placeholder field names
+  that don't match this codebase's real dataclasses.
+- A fix proposed by GitHub Copilot (`FeldtheorieV8FixGitHubCopilot.txt`)
+  switched to a heredoc but **introduced a new, different syntax error**:
+  `print(\"2. Kleiber's Law...\")`. A backslash immediately after `(` is not
+  valid Python outside a string literal — heredocs need *no* escaping at all
+  for an apostrophe inside a plain double-quoted string, so every `\"..\"`
+  in that patch would itself have failed to parse. Confirmed via
+  `ast.parse()` before rejecting it, not on inspection alone.
+
+A second, unrelated but also-broken CI job was found and fixed in the same
+pass: `coverage-check` required `--cov-fail-under=85` but only reached 59%,
+because the `if __name__ == "__main__":` CLI-demo block (lines 722–805,
+correctly never exercised by unit tests) had no coverage exclusion.
+Added the standard `exclude_lines` entries to `[tool.coverage.report]` in
+`pyproject.toml` — 100% coverage on the relevant module afterward, no test
+logic touched.
+
+---
+
+## V8 (PyPI v6.0.0 / GitHub v13.0.0) — LIVE, executed this session
+
+```bash
+python -m models.consciousness_integration
+```
+
+| Empirical Law | Predicted | Observed | Deviation | Threshold | Status |
+|---|---|---|---|---|---|
+| Cosmic Matter-Dipole Alignment (Böhme et al., 2025) | v_RIG = 1352.0676 km/s | 1370.0 ± 170.0 km/s | 1.33% | < 10% | **PASS** |
+| Kleiber's Law (Metabolic Scaling) | b = 0.750000 | b = 0.750000 | 0.00% | < 5% | **PASS** — see caveat below |
+| Neural Integration Frequency (Sahu et al., 2013) | f = 13.5207 MHz | 13.50 MHz | 0.15% | < 5% | **PASS** |
+| Specious Present (Δt_Q) | 150 ms (typical) | 100–300 ms (literature range) | n/a | in-range | **PASS** (descriptive, not a deviation test) |
+
+These are the actual numbers this session's run produced — not the numbers in
+either `FeldtheorieVALIDATION_HISTORYGitHubCopilot.txt` (which cites
+1351.79 km/s / 1.35% deviation / 13.518 MHz / 0.13%) or the task prompt's
+`KNOWN_V8_RESULTS` block (same figures). Both are close but not identical to
+what actually executing the code produces today; the difference traces to
+`ALPHA_INV = 137.03599206` in `models/unified_constants.py` giving
+`v_RIG = 1352.0676 km/s`, not the `1351.7868` cited in that module's own
+docstring example. Small (~0.02%), doesn't change any PASS/FAIL verdict, but
+is a real, checkable discrepancy between documentation and code — worth
+knowing if anyone cites the docstring's number specifically.
+
+**Honesty caveat on "Kleiber's Law: PASS":** `validate_kleiber_scaling()`
+hardcodes *both* `b_predicted = 3.0/4.0` and `b_observed = 0.75` as literal
+constants in the same function — they are not independently measured or
+fetched from any dataset at runtime. A 0.00% deviation here is therefore
+tautological (two hardcoded numbers compared to each other), not evidence
+that the framework's prediction matches an external measurement it doesn't
+already contain. The *ANOVA statistics attached to this same result*
+(`F(4,73)=185.3, p<1e-20, η²=0.91`, describing a 78-system β-clustering
+analysis) are also literal constants in the function — not computed from any
+data file this session could locate. See "The 78-β-values claim" below.
+
+β-Domain Clustering (`get_beta_domain_clustering()`, also run live): 5
+domains (Information, Geophysical, Biology, Climate, Neurodegeneration),
+`phi_attractor` values match `Φ^(n/3)` for n=3,3,4,5,5 as documented; one
+domain (Neurodegeneration) has `deviation_percent = NaN` due to a
+zero/near-zero denominator in that domain's specific calculation — not
+investigated further, flagged as a minor open item below.
+
+---
+
+## The "78 β-values" claim — NOT REPRODUCIBLE from this repository
+
+`RELEASE_NOTES_v6.0.0.md` states its own data source explicitly:
+```
+data/beta_estimates.csv    # 78 validated β-values across 5 domains
+```
+This exact path **does not exist anywhere in the repository's current state or
+git history** (checked via `git log --all -- data/beta_estimates.csv`: no
+results). The only similarly-named file is `data/derived/beta_estimates.csv`
+— 36 rows (not 78), split across ~20 domain labels most of which have a
+single row (`n=1`), which cannot produce an ANOVA with `df=(4,73)` (that
+degrees-of-freedom signature requires exactly 78 observations across 5
+groups). A second file, `data/derived/beta_estimates_v3.csv`, is explicitly
+self-labelled in its own `data_status`/`notes` columns as
+`"mock-bootstrap"` / *"Bootstrap aus V3 Mock-Daten; echte Beobachtungen
+ersetzen pending"* ("bootstrapped from V3 mock data; real observations still
+pending").
+
+**What this means concretely:** the specific statistic `F(4,73) = 185.3,
+p < 10⁻²⁰, η² = 0.91` — repeated verbatim across the V6.0.0-beta, V6.0.0, and
+V8/V9 release notes as the framework's single strongest piece of statistical
+evidence — cannot be traced to an underlying dataset in this repository. It
+may exist in a location outside this repo (a private analysis notebook,
+a since-deleted file, an external collaborator's dataset), but that isn't
+something this session could confirm. This is reported as a documentation/
+data-provenance gap, not a claim that the analysis was fabricated — but it
+means the number should currently be treated as **unverified**, not as
+established fact, until the source data is either located or regenerated.
+
+---
+
+## Version-by-version summary (V1–V13)
+
+| Version | What it claims to validate | Concrete number cited? | Automated test found? | Status |
+|---|---|---|---|---|
+| **V1** (v1.0.1, v1.1.0) | Cross-domain UTF/UTAC logistic response — 6 domains (AI, climate, biology, neuroscience, socio-ecology, geophysics); β converges to ≈4.2±0.6 | Yes — per-domain β/Θ/ΔAIC/R² table | `simulation/threshold_sandbox.py` exists and is runnable; the cross-domain literature table itself is not a script output | DOCUMENTED |
+| **V2** | "β is diagnostic of system architecture", not a universal constant — Field Type ANOVA | η²=0.735, p=0.0061; cross-domain β-correlation ρ=0.68, p<0.01 | Not located this session | DOCUMENTED |
+| **V4** | Mirror Machine criticality monitor (σ(β(R-Θ)) verdicts from live RAPID/GRACE/NOAA ingests); Aletheia relational-framing falsification | Qualitative (ΔAIC framework, no single headline number) | `scripts/monitoring/ews_pipeline.py`, `scripts/simulation/mirror_machine_auditorium.py` exist | DOCUMENTED |
+| **V5** | α–Φ cosmic velocity structural isomorphism; social rigidity as an Ising field | Monte-Carlo null ensembles (`docs/science/v5_hypothesis_isomorphism.md`) | `models/cosmic_alpha_phi.py --runs 10000` and `models/social_rigidity_ising.py --sweep` are directly runnable scripts — **not executed this session** (time-boxed; flagged as a good next step, see TODO) | DOCUMENTED |
+| **V6.0.0-beta / V6.0.0** | Ψ-wavefunction (tetrahedral symmetry, golden-ratio evolution); v_RIG Reality-Renderer; OIPK-Tesseract 4D simulation; "78 validated β-values" | F(4,73)=185.3, p<1e-20, η²=0.91; A₁₂<1e-5 falsification criterion for OIPK-Tesseract | Not located; **source dataset for the headline statistic does not exist in this repo — see dedicated section above** | **NOT REPRODUCIBLE** (headline stat only) |
+| **V7** | Aeon Architecture (β/κ drift monitoring), Collective Field module, Selfmeta guardrails | "747/747 tests", "33/33 assertions" (per `releases/v7.0/github_release_notes.md`) | Yes — `tests/test_collective_field.py`, `tests/test_aeon_*.py` etc. **are part of this session's real full-suite run** (see below): all pass except 1 confirmed-flaky test unrelated to any change here | **LIVE** (via full suite) |
+| **V8** | Cosmic dipole, Kleiber's Law, neural frequency, specious present (4 laws) | See dedicated section above | `tests/test_consciousness_integration.py` (22/22 pass) + `models/consciousness_integration.py` run directly | **LIVE** |
+| **V8.1** | Ouroboros Engine narrative test cases (LLM-narrated universe-simulation events: SUCCESS/FAIL/DESPERATION) | Qualitative test-case walkthroughs, not a statistical validation in the same sense as V8 | Not evaluated this session (different domain — narrative/LLM behaviour, not a physical-law fit) | DOCUMENTED |
+| **V9** | "Harmonic Emergence" — framed as unifying V1–V8 | None new | `v9_alpha/models/consciousness_integration.py` is a 5-line re-export shim of the root V8 module (confirmed by reading the file) — **no new empirical test exists in V9** | DOCUMENTED (shim, confirmed) |
+| **V10** | Symbolic/governance "seed manifest" (σ_ϕ, entropy offset tolerance, "consciousness kernel") | None — no empirical law comparison in this version at all | None | DOCUMENTED (no empirical claim to test) |
+| **V11** | "Resonant-Return" — β-fits on velocity dispersion / σΦ proxies vs. Gaia/JWST data | R=0.46, Θ=0.72, β=4.8, ζ(R)=0.19 | Explicitly self-described as staged: *"Staged Gaia + JWST stubs under `data/raw/` and `data/processed/` to anchor the empirical bridge"* | **STUB / PLANNED** (says so itself) |
+| **V12** | Release-governance consolidation (AFET implementation, trilayer manifest parity) — not a new empirical-law validation | n/a | Automated release-consistency tests mentioned; not re-run separately (covered by the full suite run, which does not fail on anything V12-specific) | DOCUMENTED |
+| **V13** (current, PyPI 6.0.0) | LanternNet integration — registers existing `models/` computational models as "Lanterns" with test mappings; not new empirical-law content | n/a | Same underlying `tests/` suite as V7/V8 | **LIVE** (via full suite) |
+
+---
+
+## Broader test-suite health (this session, real execution)
+
+```bash
+python -m pytest tests/ -q
+```
+**1227 tests collected, 1226 passed, 1 flaky (confirmed unrelated, see below).**
+This is a much larger, real signal than the four V8 laws alone — the 86 files
+under `tests/` cover nearly every version's architecture claims (Aeon, AFET,
+collective field, RG flow, quantum AFET, climate β-pipeline, sigillin kernel,
+etc.), not organized into per-version subdirectories the way the original
+task prompt assumed (there is no `v1/`, `v2/` ... test layout; almost
+everything lives in one flat `tests/` directory and accumulates across
+versions in place).
+
+**4 real bugs found and fixed in this run** (all the same class: Windows
+console/file encoding defaulting to `cp1252` instead of UTF-8 — the identical
+pattern found and fixed across ~12 other GenesisAeon packages this same
+week; would not have affected the actual GitHub Actions CI, which runs on
+`ubuntu-latest` with a UTF-8 locale by default, but is a real portability bug
+regardless of platform):
+- `scripts/validation/check_readiness_declared_actual.py`,
+  `scripts/validation/check_status_drift_score.py` — printed `✅`/`❌`
+  without `sys.stdout.reconfigure(encoding="utf-8")`; added the guard.
+- `api/server.py` (2 call sites) — `open(path)` without `encoding="utf-8"`
+  when reading preset/analysis JSON files.
+- `tests/test_profiling_generator.py` — `Path.read_text()` without
+  `encoding="utf-8"` when reading back a generated HTML report.
+- Fixing the *scripts* above then exposed a **second**, related bug: the
+  *tests* that shell out to these scripts via `subprocess.run(...,
+  capture_output=True, text=True)` didn't pass `encoding="utf-8"` either —
+  once the child process correctly emitted UTF-8, the parent test process
+  tried to decode those bytes as `cp1252` and crashed the same way, just on
+  the other side of the pipe. Fixed all 5 `subprocess.run` call sites across
+  `tests/test_readiness_declared_actual_check.py` and
+  `tests/test_status_drift_score.py`.
+
+**1 flaky test, confirmed unrelated:** `tests/test_aeon_agents.py::
+test_collective_consensus_detection` failed once in the full 1227-test run
+but passed 3/3 times when run in isolation immediately after — pre-existing
+test-order/shared-state flakiness, not something this session's changes
+caused or fixed.
+
+---
+
+## Known open items (not fixed this session — out of scope / flagged for follow-up)
+
+- **The 78-β-values source dataset is missing** (see dedicated section
+  above) — either locate it outside this repo, or regenerate/re-derive the
+  ANOVA from `data/derived/beta_estimates.csv` (36 rows) and report the
+  *actual* achievable statistic honestly, or correct the release notes to
+  stop citing a dataset that isn't there.
+- **`docstring`/code constant mismatch in `models/unified_constants.py`**:
+  the module's own example (`v_RIG = 1351.7868 km/s`) doesn't match what
+  `calculate_integration_velocity()` actually returns today
+  (`1352.0676 km/s`) with the current `ALPHA_INV`. Small (~0.02%), doesn't
+  change any pass/fail verdict, but worth a docstring fix for accuracy.
+- **`BetaDomain` NaN deviation** for the Neurodegeneration domain in
+  `get_beta_domain_clustering()` — not investigated (likely a division
+  edge-case in that domain's specific bounds).
+- **V5's two runnable validation scripts** (`models/cosmic_alpha_phi.py`,
+  `models/social_rigidity_ising.py`) were not executed this session
+  (time-boxed) — both take CLI arguments (`--runs`, `--sweep`) suggesting
+  they're meant to be run on demand, not asserted in CI; a good next-session
+  target for the same "LIVE" treatment V8 got here.
+- **V1/V2's cross-domain literature tables** (β≈4.2 convergence, Field Type
+  η²=0.735) are literature-sourced comparisons, not scripts — nothing to
+  "run", but also nothing this session could independently check beyond
+  confirming the release notes say what they say.
+- `analysis/results/sandbox_beta_map.csv` (80 rows, synthetic
+  `C_eff`/`D_eff`/`SNR` sweep with `beta_true` vs `beta_est` — a recovery
+  simulation, not empirical data) was found while searching for the missing
+  78-value dataset; it is a different, legitimate artifact (validates the
+  β-estimation *method* against known-truth synthetic data) and should not
+  be confused with the missing empirical dataset.
+
+---
+
+## Direct response to the external criticism this sprint was framed against
+
+- **DeepSeek: "Concepts only within its own ecosystem"** — V8's four laws
+  (Böhme et al. 2025, Kleiber 1932/West et al. 1997, Sahu et al. 2013,
+  Wittmann 2011/Pöppel 2009) are genuinely external, independently-published
+  reference points, confirmed by reading the actual citations in
+  `models/consciousness_integration.py`. The comparison mechanism for one of
+  the four (Kleiber's Law) is tautological as currently coded (see caveat
+  above) — that's a real limitation, not addressed by this criticism being
+  otherwise answerable.
+- **Qwen: "Missing empirical validation"** — this document itself, plus the
+  now-unblocked CI job, is the direct answer; but it should be read together
+  with the "78 β-values... NOT REPRODUCIBLE" finding above, which is exactly
+  the kind of gap this criticism was pointing at.
+- **Gemini: "Validation gap"** — closed for V8 (CI runs now); explicitly
+  *not* closed for V1–V7, V9–V13's headline statistics, which remain
+  DOCUMENTED-not-reproduced or STUB per the table above.
