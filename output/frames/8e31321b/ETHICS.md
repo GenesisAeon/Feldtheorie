@@ -81,5 +81,5 @@ Before committing work in `output/frames/8e31321b`:
 
 ---
 
-**Last Updated:** 2026-07-19 20:49:15 UTC
+**Last Updated:** 2026-07-19 20:52:44 UTC
 **Governance Version:** 1.0.0
