@@ -70,68 +70,50 @@ jobs:
         echo "🔬 Running live v_RIG validation suite..."
         echo ""
 
-        # Run the consciousness_integration module directly
-        # This executes the __main__ block with formatted output
-        python -c "
+        # Print the already-correct, already-tested __main__ block of
+        # consciousness_integration.py directly (runpy.run_module), instead
+        # of re-encoding the same print statements a second time inline in
+        # this YAML file - that duplication is what caused the previous
+        # syntax bug (an apostrophe in "Kleiber's Law" broken by a bash-style
+        # quote-escape that isn't valid Python, plus a backslash inside an
+        # f-string expression, which Python 3.11 - the version pinned above -
+        # rejects outright). A heredoc (python - <<'PY') is used so bash
+        # performs no interpretation on the script at all.
+        python - <<'PY'
+        import runpy
         import sys
-        sys.path.insert(0, '.')
+
+        sys.path.insert(0, ".")
+        if hasattr(sys.stdout, "reconfigure"):
+            sys.stdout.reconfigure(encoding="utf-8")
+
+        runpy.run_module("models.consciousness_integration", run_name="__main__")
+
+        # Falsification check (exit nonzero if the framework's own empirical
+        # validations no longer hold) - the actual functional purpose of this
+        # step, which the previous syntax-broken version never reached.
         from models.consciousness_integration import run_full_validation_suite
-        from models.unified_constants import C_LIGHT_KM_S
 
         results = run_full_validation_suite()
+        cd = results["cosmic_dipole"]
+        kb = results["kleiber"]
+        nf = results["neural_frequency"]
 
-        print('═' * 80)
-        print('V8.0 Empirical Validation Results (CI/CD)')
-        print('═' * 80)
-        print()
-
-        # Cosmic Dipole
-        cd = results['cosmic_dipole']
-        print(f'1. Cosmic Matter-Dipole Alignment (Böhme et al., 2025)')
-        print(f'   Observed:    {cd.observed_velocity_km_s:.1f} ± {cd.observed_uncertainty_km_s:.1f} km/s')
-        print(f'   Predicted:   {cd.v_rig_prediction_km_s:.4f} km/s')
-        print(f'   Deviation:   {cd.deviation_percent:.2f}%')
-        print(f'   Status:      {\"✅ PASS\" if cd.deviation_percent < 10.0 else \"❌ FAIL\"}')
-        print()
-
-        # Kleiber
-        kb = results['kleiber']
-        print(f'2. Kleiber'\''s Law – Biological Metabolic Scaling')
-        print(f'   β (biological): {kb.beta_biological:.1f}')
-        print(f'   Predicted b:    {kb.scaling_exponent_predicted:.6f}')
-        print(f'   Observed b:     {kb.scaling_exponent_observed:.6f}')
-        print(f'   ANOVA p-value:  {kb.anova_p_value:.2e}')
-        print(f'   Status:         ✅ PASS')
-        print()
-
-        # Neural Frequency
-        nf = results['neural_frequency']
-        print(f'3. Neural Integration Frequency (~13.5 MHz)')
-        print(f'   Predicted f:    {nf.predicted_frequency_mhz:.2f} MHz')
-        print(f'   Observed f:     {nf.observed_frequency_mhz:.2f} MHz')
-        print(f'   Deviation:      {nf.deviation_percent:.2f}%')
-        print(f'   Status:         ✅ PASS')
-        print()
-
-        # Specious Present
-        sp = results['specious_present']
-        print(f'4. Specious Present (100-300 ms)')
-        print(f'   Δt_Q (typical): {sp.integration_window_typical_ms:.0f} ms')
-        print(f'   Impedance Z:    {sp.impedance_z:.2f}')
-        print(f'   Status:         ✅ PASS')
-        print()
-
-        print('═' * 80)
-        print('Summary: 4/4 Empirical Validations PASSED ✅')
-        print('═' * 80)
-
-        # Check falsification criteria
+        failures = []
         if cd.deviation_percent > 10.0:
-          print()
-          print('⚠️  WARNING: Cosmic dipole deviation exceeds 10% threshold!')
-          print('   Framework is FALSIFIED by cosmic observations.')
-          sys.exit(1)
-        "
+            failures.append(f"Cosmic dipole deviation {cd.deviation_percent:.2f}% > 10%")
+        if kb.deviation_percent > 5.0:
+            failures.append(f"Kleiber's Law deviation {kb.deviation_percent:.2f}% > 5%")
+        if nf.deviation_percent > 5.0:
+            failures.append(f"Neural frequency deviation {nf.deviation_percent:.2f}% > 5%")
+
+        if failures:
+            print()
+            print("⚠️  WARNING: falsification threshold(s) exceeded:")
+            for f in failures:
+                print(f"   - {f}")
+            sys.exit(1)
+        PY
 
         EXITCODE=$?
 

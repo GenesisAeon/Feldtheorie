@@ -15,6 +15,10 @@ from typing import Any
 
 import yaml
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+
 
 def _load_report(path: Path) -> dict[str, Any]:
     if not path.exists():

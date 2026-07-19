@@ -869,7 +869,7 @@ async def get_system(system_id: str):
             filepath = PROJECT_ROOT / "analysis" / "results" / system_files[system_id]
 
         # Load JSON
-        with open(filepath) as f:
+        with open(filepath, encoding="utf-8") as f:
             data = json.load(f)
 
         # Extract parameters
@@ -1211,7 +1211,7 @@ async def get_tooltip_data(preset_id: str):
 
     import json
 
-    with open(preset_path) as f:
+    with open(preset_path, encoding="utf-8") as f:
         preset = json.load(f)
 
     analysis = preset.get("analysis", {})

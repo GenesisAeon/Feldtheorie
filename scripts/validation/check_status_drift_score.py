@@ -15,6 +15,10 @@ import sys
 from pathlib import Path
 from typing import Any
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+
 
 def _load_json(path: Path) -> dict[str, Any]:
     if not path.exists():

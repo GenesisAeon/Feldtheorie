@@ -165,7 +165,7 @@ class TestProfilingGenerator:
             metrics=metrics, output_path=output_dir / "interactive_custom.html"
         )
         assert out.exists()
-        content = out.read_text()
+        content = out.read_text(encoding="utf-8")
         assert "plotly" in content.lower() or "Plotly" in content
 
     def test_generate_interactive_missing_plotly(self, generator: ProfilingGenerator, monkeypatch):

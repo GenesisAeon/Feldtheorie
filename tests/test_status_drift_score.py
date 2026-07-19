@@ -62,6 +62,7 @@ def test_status_drift_gate_passes_for_clean_report(tmp_path: Path) -> None:
         check=False,
         capture_output=True,
         text=True,
+        encoding="utf-8",
     )
 
     assert result.returncode == 0
@@ -91,6 +92,7 @@ def test_status_drift_gate_fails_for_mismatch(tmp_path: Path) -> None:
         check=False,
         capture_output=True,
         text=True,
+        encoding="utf-8",
     )
 
     assert result.returncode == 1
@@ -124,6 +126,7 @@ def test_status_drift_gate_fails_for_stale_report(tmp_path: Path) -> None:
         check=False,
         capture_output=True,
         text=True,
+        encoding="utf-8",
     )
 
     assert result.returncode == 1
@@ -157,6 +160,7 @@ def test_status_drift_gate_fails_for_stale_test_report(tmp_path: Path) -> None:
         check=False,
         capture_output=True,
         text=True,
+        encoding="utf-8",
     )
 
     assert result.returncode == 1

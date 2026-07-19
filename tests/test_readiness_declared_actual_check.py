@@ -67,6 +67,7 @@ def _run_check(json_path: Path, yaml_path: Path) -> subprocess.CompletedProcess[
         ],
         capture_output=True,
         text=True,
+        encoding="utf-8",
         check=False,
     )
 
