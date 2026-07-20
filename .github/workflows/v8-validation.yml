@@ -246,12 +246,32 @@ jobs:
         echo "📊 Checking test coverage for consciousness_integration.py..."
         echo ""
 
+        # Note: --cov=models.consciousness_integration (a dotted submodule
+        # path) triggers a real numpy/pytest-cov interaction bug -
+        # "ImportError: cannot load module more than once per process" -
+        # reproduced locally in a clean venv with only this job's own
+        # dependencies installed (pytest, pytest-cov, numpy, scipy, pandas,
+        # pyyaml). Passing the top-level package instead (--cov=models)
+        # avoids it; that traces more broadly than intended, so the actual
+        # 85% gate is enforced separately below, scoped back down to just
+        # consciousness_integration.py via `coverage report --include`.
         pytest tests/test_consciousness_integration.py \
-          --cov=models.consciousness_integration \
-          --cov-report=term-missing \
-          --cov-fail-under=85
+          --cov=models \
+          --cov-report=
+        PYTEST_EXIT=$?
 
-        EXITCODE=$?
+        coverage report \
+          --include='*/consciousness_integration.py' \
+          --fail-under=85
+        COVERAGE_EXIT=$?
+
+        if [ $PYTEST_EXIT -ne 0 ]; then
+          echo ""
+          echo "❌ Tests failed (exit $PYTEST_EXIT)"
+          EXITCODE=$PYTEST_EXIT
+        else
+          EXITCODE=$COVERAGE_EXIT
+        fi
 
         if [ $EXITCODE -eq 0 ]; then
           echo ""
