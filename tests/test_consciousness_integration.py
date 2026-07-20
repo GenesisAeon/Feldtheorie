@@ -7,6 +7,20 @@ criteria are met and β-domain clustering is correct.
 Version: v8.0.0-alpha
 Authors: Johann Benjamin Römer, MOR Framework
 Date: 2025-12-14
+
+Note for CI maintainers: this file is one of the two files (with
+models/unified_constants.py, data/v8_validation/**, releases/v8.0/**)
+that .github/workflows/v8-validation.yml's push trigger watches -
+editing only the workflow itself does not re-run it. Also: never
+invoke `--cov=models.consciousness_integration` (a dotted submodule
+path) against this test file - it triggers a real pytest-cov/numpy
+interaction bug ("ImportError: cannot load module more than once per
+process"), reproduced in a clean venv with just this repo's coverage-
+check job's own minimal dependencies. Use `--cov=models` (the top-level
+package) instead, then scope the report/gate back down with
+`coverage report --include='*/consciousness_integration.py'` if only
+this file's coverage matters - see the coverage-check job in
+v8-validation.yml for the working pattern.
 """
 
 import math
