@@ -450,25 +450,53 @@ case it resurfaces.
   `--cov=src` runs. Verified end-to-end locally (fresh venv, exact
   extracted `run:` block via bash) and **confirmed green in real GitHub
   Actions CI** on the next push.
-- **23 genuine mypy errors, now visible for the first time** (see above
-  — `mypy --explicit-package-bases src`), across 13 files under `src/`.
-  Not fixed this session (separate, real cleanup work). Worth
-  prioritizing by risk — a few look like genuine potential runtime bugs,
-  not just type-annotation nitpicks:
-  - `src/core/llm_bridge.py:145`: `Item "None" of "str | None" has no
-    attribute "strip"` — a real potential `AttributeError` if that code
-    path executes with `None`, not just a missing annotation.
-  - `src/scenarios/level_2_stellar/stellar_lifecycle.py:52,76`:
-    `"ResonantEntity" has no attribute "agent_id"` — worth checking
-    whether this is a real missing attribute or a stale reference to a
-    renamed/removed field.
-  - `src/interface/oracle_client.py:176,192,353`: three `str | None`
-    vs. `str` mismatches, one on a return value — same class of
-    "might actually crash" issue as the `llm_bridge.py` one above.
-  - The remaining ~15 (assignment type mismatches, a missing variable
-    annotation, `float`/`int` argument type issues in
-    `atom_kernel.py`) look more like genuine-but-lower-risk annotation
-    gaps.
+- ~~**23 genuine mypy errors, now visible for the first time**~~ —
+  **fixed via PR #779 (merged 2026-07-21, commit `df7d016f1`)**, a
+  separate Claude Code session (with PR/CI access this session doesn't
+  have) that picked this list up directly. Verified this session,
+  independently, against `origin/main` rather than trusting the PR
+  description: `Lint (ruff + mypy)` check-run on the merge commit is
+  genuinely `success` (confirmed via the GitHub Actions API). The
+  `level_0_vacuum.py` vs. `level_0_vacuum/` collision — which this
+  session had concluded was a mypy-only false positive, not a real bug,
+  since CPython resolves it fine at runtime — was independently resolved
+  by converting the module into a package (`level_0_vacuum/__init__.py`
+  now holds the full previous file contents, `__all__` unchanged);
+  reviewed the diff, it's a correct, faithful move, not a behavior
+  change. PR #779 also added a global `[tool.mypy]
+  ignore_missing_imports = true` in `pyproject.toml`, ahead of this
+  session's own scoped `[[tool.mypy.overrides]]` block for
+  pandas/tqdm/plotly/requests — the two don't conflict (different TOML
+  tables), but the scoped override is now redundant since the global
+  setting already covers it; harmless, just dead weight worth pruning
+  in a future pass.
+
+  **Correction to a claim relayed from that PR**: it was reported that
+  "all three CI checks (Lint, TriLayer, codex-sync) ran cleanly" after a
+  bot commit with thousands of stray sigillin files was dropped from
+  the branch history. Verified independently via the GitHub Actions
+  API — only the `Lint` part holds up:
+  - `TriLayer Drift Validator` (`v6-governance.yml`) is `failure` on
+    the merge commit. This is **not related to PR #779 at all** — it's
+    been failing on every single push to `main` since at least
+    2026-02-16 (checked the workflow's full run history), i.e. a
+    long-standing, pre-existing break. Reproduced locally
+    (`PYTHONUTF8=1 python scripts/validate_trilayer.py`): a real YAML
+    parse error in `releases/V6-Plans_etc/V6ToDorefresh.yaml` (block
+    mapping error around line 43) — a genuine, separate, unfixed
+    governance-doc drift issue, not touched by this session.
+  - `codex-sync-check` (`codex-guard.yml`) did run on an earlier state
+    of the PR's branch (before the bot-commit history rewrite) and
+    **failed** at its "Check Codex timestamp" step. It's a
+    `pull_request`-triggered check keyed to the PR branch's head SHA at
+    the time it ran, so it's unclear whether it was ever re-run clean
+    against the final, history-rewritten branch tip — no re-run for
+    the final state is visible via the API.
+
+  Net: the mypy cleanup itself (the actual point of PR #779) is real
+  and confirmed. The broader "all three checks clean" claim doesn't
+  hold — `TriLayer` was already broken before this PR and remains
+  broken, unrelated to anything either Claude session touched here.
 - **The 78-β-values source dataset is missing** (see dedicated section
   above) — either locate it outside this repo, or regenerate/re-derive the
   ANOVA from `data/derived/beta_estimates.csv` (36 rows) and report the
