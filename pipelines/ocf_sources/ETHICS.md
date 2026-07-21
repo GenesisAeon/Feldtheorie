@@ -75,5 +75,5 @@ Before committing work in `pipelines/ocf_sources`:
 
 ---
 
-**Last Updated:** 2026-07-21 21:38:35 UTC
+**Last Updated:** 2026-07-21 21:49:41 UTC
 **Governance Version:** 1.0.0
