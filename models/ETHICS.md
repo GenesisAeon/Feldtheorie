@@ -75,5 +75,5 @@ Before committing work in `science/models`:
 
 ---
 
-**Last Updated:** 2026-07-21 18:25:36 UTC
+**Last Updated:** 2026-07-21 18:28:20 UTC
 **Governance Version:** 1.0.0
