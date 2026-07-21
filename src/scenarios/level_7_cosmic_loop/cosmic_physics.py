@@ -84,7 +84,7 @@ class UniverseRunner:
 
     def __init__(self, seed: CosmicSeed):
         self.seed = seed
-        self.physics = None
+        self.physics: dict[str, float] | None = None
         self.is_alive = False
         self.final_ecm = 0.0
 

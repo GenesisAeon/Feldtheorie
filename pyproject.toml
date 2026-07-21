@@ -150,6 +150,11 @@ exclude_lines = [
     "if __name__ == .__main__.:",
 ]
 
+[tool.mypy]
+# Suppress missing-stub noise for optional extras (api, llm) and third-party
+# packages not installed in the default dev environment.
+ignore_missing_imports = true
+
 [[tool.mypy.overrides]]
 # Third-party libraries used under src/ with no bundled type stubs and no
 # stub packages installed in CI (ci.yml only installs .[dev], not

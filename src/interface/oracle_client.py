@@ -176,7 +176,7 @@ Generation 1 prepares to germinate...
                 narrative = self.cosmic_narrator.ponder("DESPERATION", {
                     "generation": generation,
                     "consecutive_failures": self.consecutive_failures
-                })
+                }) or ""
             if not narrative:
                 narrative = "⚠️  DESPERATION MODE: The Void is screaming. Increasing mutation rates."
 
@@ -189,7 +189,7 @@ Generation 1 prepares to germinate...
                 "success_rate": success_rate,
                 "consecutive_failures": self.consecutive_failures
             }
-            narrative = self.cosmic_narrator.ponder(event_type, state_summary)
+            narrative = self.cosmic_narrator.ponder(event_type, state_summary) or ""
 
         # 3. Fallback to static templates
         if not narrative:
@@ -335,7 +335,7 @@ Attempt #{self.consecutive_failures} ends before it began...
         name = level_names.get(level, f"Unknown Level {level}")
         return f"   → Level {level}: {name}"
 
-    def _narrate_level_completion(self, event: dict[str, Any]) -> str:
+    def _narrate_level_completion(self, event: dict[str, Any]) -> str | None:
         """Narrate level completion (usually silent unless significant)."""
         level = event.get("level", "?")
         total_ecm = event.get("total_ecm", 0.0)

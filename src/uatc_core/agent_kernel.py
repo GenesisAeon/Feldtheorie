@@ -81,8 +81,8 @@ class ResonantEntity:
             template = role_template
         role_name = role_name.lower()
 
-        resonance_hint = float(template.get("resonance_hint", 0.0)) if template else 0.0
-        scale_hint = int(template.get("scale", self.scale_index)) if template else self.scale_index
+        resonance_hint = float(template.get("resonance_hint", 0.0)) if template else 0.0  # type: ignore[arg-type]
+        scale_hint = int(template.get("scale", self.scale_index)) if template else self.scale_index  # type: ignore[call-overload]
 
         if role_name in {"electron", "fermion"}:
             return role_name, 24.0 + resonance_hint, max(scale_hint, 1)

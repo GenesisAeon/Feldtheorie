@@ -26,7 +26,7 @@ Output:
 import math
 import os
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from multiprocessing import Pool, cpu_count
 
 import matplotlib.pyplot as plt
@@ -54,11 +54,7 @@ class Neuron:
     phase: float
     frequency: float
     activation: float = 0.0
-    connections: list['Neuron'] = None
-
-    def __post_init__(self):
-        if self.connections is None:
-            self.connections = []
+    connections: list['Neuron'] = field(default_factory=list)
 
 
 class SimpleNeuralGrid:
