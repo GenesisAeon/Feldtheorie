@@ -2,7 +2,7 @@
 
 **Version:** v6-todo-refresh-1.0.0
 **Generiert:** 2025-11-26T15:30:00Z
-**Updated:** 2025-12-09T12:00:00Z
+**Updated:** 2026-03-01T12:00:00Z
 **Scope:** releases/V6-Plans_etc
 
 ## Logistic Frame

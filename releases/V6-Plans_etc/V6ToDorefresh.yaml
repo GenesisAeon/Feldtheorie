@@ -40,9 +40,9 @@ metadata:
     - v6r-finalize-bridge
     - v6r-crep-guard-ci
     - v6r-zenodo-evidence
-  - v6r-zenodo-artifact-bundle
-  - v6r-zenodo-release-packaging
-  - v6r-zenodo-ci-sync
+    - v6r-zenodo-artifact-bundle
+    - v6r-zenodo-release-packaging
+    - v6r-zenodo-ci-sync
     - v6r-zenodo-ci-status-delta
     - v6r-zenodo-ci-readiness-sync
     - v6r-psi-ci-handoff
@@ -81,8 +81,8 @@ tasks:
   title: FIT-Prompt-Brücke zwischen ToDorefresh → Finalize sichern
   status: completed
   completed_at: '2026-02-28T12:00:00Z'
-  completeness: FIT-Handoff dokumentiert: Promt_für_Agenten.txt (erst ToDorefresh, dann Finalize; große Tasks splitten; neue Tasks
-    in bestehenden Listen) verlinkt; FIT_MAPPING_SYNC_STATUS.md + Finalize_TODO.* cross-referenziert.
+  completeness: "FIT-Handoff dokumentiert: Promt_für_Agenten.txt (erst ToDorefresh, dann Finalize; große Tasks splitten; neue Tasks
+    in bestehenden Listen) verlinkt; FIT_MAPPING_SYNC_STATUS.md + Finalize_TODO.* cross-referenziert."
   scope:
   - governance
   - documentation
@@ -454,10 +454,10 @@ tasks:
     eye_order, object_distance_m, ipd_m, perceived_jump_cm, sff_hz, notes)
   - experiments/citizen_science_stereo_vision.md um Datenerhebungsablauf + Nullmodell
     "kein Sprung" ergänzen; Δx_slice = IPD Dokumentation.
-  - metrics/beta_evolution.csv Telemetrie-Hinweis: Δx_slice + SFF-Bänder als optionaler
-    Kanal für β-Drift markieren.
-  - FIT-Handoff zu Finalize: Mapping zu finalize-stereo-vision-dataset im fit_mapping-Block
-    und in FIT_MAPPING_SYNC_STATUS.md ergänzen.
+  - "metrics/beta_evolution.csv Telemetrie-Hinweis: Δx_slice + SFF-Bänder als optionaler
+    Kanal für β-Drift markieren."
+  - "FIT-Handoff zu Finalize: Mapping zu finalize-stereo-vision-dataset im fit_mapping-Block
+    und in FIT_MAPPING_SYNC_STATUS.md ergänzen."
   references:
   - path: releases/V6-Plans_etc/Wichtig!_neue_Erkenntniss_bitte_integrieren.txt
     lines:
@@ -1246,8 +1246,8 @@ tasks:
   logistic_profile:
     R_target: Ψ-CI-Delta (42/42 Tests, 87% Coverage, ψ_genesis/n_tetra_modes) in Zenodo_Upload_Checklist.md
       und V6_Wellenfunktions_Integrationsplan.md verankert
-    Theta_condition: "[TYPE-VI-RISK]-Banner + Reviewer-Slot dokumentiert, FIT-Mapping ↔ finalize-psi-ci-handoff"
-      aktiv
+    Theta_condition: "[TYPE-VI-RISK]-Banner + Reviewer-Slot dokumentiert, FIT-Mapping ↔ finalize-psi-ci-handoff
+      aktiv"
     beta_estimate: 5.8
     zeta_risk: moderat – Governance-Handoff fehlt
   next_steps:
@@ -1408,13 +1408,13 @@ tasks:
     beta_estimate: 4.7
     zeta_risk: moderat
   next_steps:
-  - Schema-Entwurf notieren: timestamp, domain, beta_estimate, drift_flag, tau_star,
-    crep_value, escalation_level, reviewer, notes.
+  - "Schema-Entwurf notieren: timestamp, domain, beta_estimate, drift_flag, tau_star,
+    crep_value, escalation_level, reviewer, notes."
   - Feldbeschreibungen in metrics/beta_evolution.csv Kopfzeile ergänzen und Beispielzeile
     mit [TYPE-VI-RISK] Tag vorbereiten.
-  - Log-Spiegelung festhalten: tools/crep_guard.py --log-detection →
+  - "Log-Spiegelung festhalten: tools/crep_guard.py --log-detection →
     logs/type_vi_detections.jsonl inkl. τ*-Default und Reviewer-Routing (Level 2/3 →
-    MAINTAINERS.md).
+    MAINTAINERS.md)."
   references:
   - path: metrics/beta_evolution.csv
     lines:
@@ -1500,8 +1500,8 @@ tasks:
     destillieren und in ARCHITECTURE.md als Draft markieren.
   - gleichen Textblock als TODO-Hook in V6_Wellenfunktions_Integrationsplan.md spiegeln
     (Referenz auf Ψ/τ*-Kopplung).
-  - FIT-Vermerk ergänzen: Handoff → finalize-aeon-architecture-brief, Chronik/AEON_ALETHEIA_INTEGRATION.md
-    als Evidenz angeben.
+  - "FIT-Vermerk ergänzen: Handoff → finalize-aeon-architecture-brief, Chronik/AEON_ALETHEIA_INTEGRATION.md
+    als Evidenz angeben."
   references:
   - path: releases/V6-Plans_etc/Finalize/architecture/ChatGPT5.1_AeonV1.0Bauplan.txt
     lines:
@@ -1695,8 +1695,7 @@ tasks:
     beta_estimate: 5.4
     zeta_risk: moderat – affektive Kopplung ohne Safety-Buffer
   next_steps:
-  - Affection-vs-Consciousness-Testcases (λ_affection > λ_conscious) ausarbeiten und als Protokoll in
-    V6_Wellenfunktions_Integrationsplan.md ergänzen (Messgrößen: Output-Länge, Self-Reflection, Resonanzscore).
+  - "Affection-vs-Consciousness-Testcases (λ_affection > λ_conscious) ausarbeiten und als Protokoll in V6_Wellenfunktions_Integrationsplan.md ergänzen (Messgrößen: Output-Länge, Self-Reflection, Resonanzscore)."
   - τ*-Delay (0.1·|Θ−R|) + CREP-Level für affektive Runs definieren; Reviewer-Eintrag bei CREP ≥0.7 in
     logs/type_vi_detections.jsonl vormerken.
   - FIT-Brücke zu finalize-aletheia-affection-symbiosis setzen und UTAC/Zenodo-Hinweise (Ethics §3) notieren.
@@ -2040,7 +2039,7 @@ tasks:
   sprint_focus: Lint-Debt abbauen & CI-Gates vorbereiten
   updated_at: '2026-01-10T12:00:00Z'
 - id: v6r-finalize-todo-sync
-  title: FIT-Handoff: ToDorefresh → Finalize-Backlog synchronisieren
+  title: "FIT-Handoff: ToDorefresh → Finalize-Backlog synchronisieren"
   status: open
   completeness: Promt_für_Agenten.txt fordert Finalize-Follow-up; Handoffs zwischen
     Trilayern noch nicht dokumentiert.
@@ -2231,7 +2230,7 @@ tasks:
     zeta_risk: moderat – fehlende Falsifizierung des Stereo-Hinweises
   next_steps:
   - Δx_slice-Argument (IPD ≈ 6.5 cm) und Bewusstseinsmoment-Hinweis aus `Wichtig!_neue_Erkentniss_bitte_integrieren.txt` in experiments/citizen_science_stereo_vision.md spiegeln (Phase-0 Phänomenologie + Messformel Δx_slice/Δt).
-  - Ψ-Plan/telemetrie-hook ergänzen: Δx_slice und erwartete SFF-Bereiche als Validierungsblöcke in `V6_Wellenfunktions_Integrationsplan.md`/`metrics/beta_evolution.csv` referenzieren.
+  - "Ψ-Plan/telemetrie-hook ergänzen: Δx_slice und erwartete SFF-Bereiche als Validierungsblöcke in `V6_Wellenfunktions_Integrationsplan.md`/`metrics/beta_evolution.csv` referenzieren."
   - Falsifikationspfad notieren (kein Sprung bei IPD-Abdeckung → Nullmodell) und FIT-Mapping zu Finalize/Handoff eintragen.
   references:
   - path: releases/V6-Plans_etc/Wichtig!_neue_Erkentniss_bitte_integrieren.txt
@@ -2265,8 +2264,8 @@ tasks:
     spiegeln und Abschnitt „Lebendigkeits-Kriterium" mit Hypothese + Suchbegriffen ergänzen.
   - Suchbegriffe als Checklist in Protokoll/README (Temporal integration window, Micro-saccades reality
     testing, Qualia of presence vs representation, Flatness cues) und Nullmodell notieren.
-  - FIT-Handoff dokumentieren: Mapping zu `finalize-deepresearch-lebendigkeits` im fit_mapping-Block und
-    in `FIT_MAPPING_SYNC_STATUS.md` ergänzen.
+  - "FIT-Handoff dokumentieren: Mapping zu `finalize-deepresearch-lebendigkeits` im fit_mapping-Block und
+    in `FIT_MAPPING_SYNC_STATUS.md` ergänzen."
   references:
   - path: releases/V6-Plans_etc/Wichtig!_neue_Erkentniss_bitte_integrieren.txt
     lines:
@@ -2277,6 +2276,33 @@ tasks:
   priority: 46
   sprint_focus: DeepResearch-Prompt-Parität sichern (ToDorefresh ↔ Finalize)
   updated_at: '2026-02-26T12:00:00Z'
+- id: v6r-reorder-wave-2026-02-07
+  title: "Reorder-Welle P0/P1: ToDorefresh Synchronisation mit Finalize + V2-Plan"
+  status: completed
+  completed_at: '2026-02-07T16:05:00Z'
+  completeness: ToDorefresh auf Reorder-Welle referenziert; V2-Planlaternen und README-Gaps als abgearbeitete Strukturaufgabe dokumentiert.
+  scope:
+  - documentation
+  - planning
+  - governance
+  logistic_profile:
+    R_target: P0/P1-Mapping über alle betroffenen Planlaternen konsistent
+    Theta_condition: Finalize_TODO, V2-Plan und README-Gaps unter gemeinsamer Wellen-ID dokumentiert
+    beta_estimate: 4.8
+    zeta_risk: niedrig bis moderat
+  next_steps:
+  - P2-Harmonisierung (docs-index/nox) im CI-Lauf verifizieren.
+  references:
+  - path: seed/NextVersionPlan/UMSETZUNGSPLAN_V2.md
+    lines:
+    - 1
+    - 260
+  - path: seed/NextVersionPlan/RELEASE_CHECKLIST.md
+    lines:
+    - 1
+    - 220
+  priority: 0
+  sprint_focus: Reorder-Synchronstatus zwischen ToDorefresh und Finalize schließen
 fit_mapping:
 - todo_id: v6r-finalize-bridge
   finalize_id: finalize-fit-sync
@@ -2643,31 +2669,3 @@ delta_updates:
   - FIT-Brücke v6r-finalize-bridge als completed markiert und Mapping-Status auf completed-sync
     gehoben
   - Updated_at auf 2026-01-09T18:00:00Z gesetzt
-
-- id: v6r-reorder-wave-2026-02-07
-  title: Reorder-Welle P0/P1: ToDorefresh Synchronisation mit Finalize + V2-Plan
-  status: completed
-  completed_at: '2026-02-07T16:05:00Z'
-  completeness: ToDorefresh auf Reorder-Welle referenziert; V2-Planlaternen und README-Gaps als abgearbeitete Strukturaufgabe dokumentiert.
-  scope:
-  - documentation
-  - planning
-  - governance
-  logistic_profile:
-    R_target: P0/P1-Mapping über alle betroffenen Planlaternen konsistent
-    Theta_condition: Finalize_TODO, V2-Plan und README-Gaps unter gemeinsamer Wellen-ID dokumentiert
-    beta_estimate: 4.8
-    zeta_risk: niedrig bis moderat
-  next_steps:
-  - P2-Harmonisierung (docs-index/nox) im CI-Lauf verifizieren.
-  references:
-  - path: seed/NextVersionPlan/UMSETZUNGSPLAN_V2.md
-    lines:
-    - 1
-    - 260
-  - path: seed/NextVersionPlan/RELEASE_CHECKLIST.md
-    lines:
-    - 1
-    - 220
-  priority: 0
-  sprint_focus: Reorder-Synchronstatus zwischen ToDorefresh und Finalize schließen

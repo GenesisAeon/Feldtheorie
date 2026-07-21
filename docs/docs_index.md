@@ -63,6 +63,7 @@ Neue Forschungszuflüsse als strukturierte Intake-Laternen:
 - **Release-Prep:** `narrative/zenodo_release_playbook.md`, `narrative/claude_code_handoff.md`.
 - **Tri-Layer prüfen:** `python scripts/sigillin_sync.py report --roots docs/ seed/`.
 - **Index-Parität prüfen:** `make docs-index`.
+- **V6 ToDo TriLayer prüfen:** `make validate-trilayer` (`scripts/validate_trilayer.py`) validiert `releases/V6-Plans_etc/V6_ToDoListe.{yaml,json,md}` und `V6ToDorefresh.{yaml,json,md}` gegeneinander.
 
 ---
 
