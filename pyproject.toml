@@ -150,6 +150,15 @@ exclude_lines = [
     "if __name__ == .__main__.:",
 ]
 
+[[tool.mypy.overrides]]
+# Third-party libraries used under src/ with no bundled type stubs and no
+# stub packages installed in CI (ci.yml only installs .[dev], not
+# pandas-stubs/types-tqdm/types-requests). Suppressing missing-import
+# noise for these specific packages, not disabling type-checking of our
+# own code that uses them.
+module = ["pandas", "pandas.*", "tqdm", "tqdm.*", "plotly", "plotly.*", "requests", "requests.*"]
+ignore_missing_imports = true
+
 # === Diamond-Propagation: added project.urls & Zenodo ===
 [project.urls]
 Homepage = "https://github.com/GenesisAeon/Feldtheorie"

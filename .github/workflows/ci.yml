@@ -24,7 +24,19 @@ jobs:
       - name: Run ruff
         run: ruff check src tests
       - name: Run mypy
-        run: mypy src
+        # --explicit-package-bases: without it, mypy computes module names
+        # relative to `src` itself (since src/ has no __init__.py but
+        # src/scenarios/ does), giving "scenarios.X". But the codebase's
+        # own imports consistently use the "src." prefix (e.g.
+        # src/scenarios/level_7_cosmic_loop/run_eternal_cycle.py imports
+        # `from src.scenarios.level_7_cosmic_loop.cosmic_physics import
+        # ...`) - mypy then finds the same file resolved under both names
+        # and refuses to check anything ("Source file found twice under
+        # different module names"), which has blocked this step from
+        # completing at all since before this repo's earliest recorded CI
+        # history. This flag makes mypy treat the repo root as the
+        # package base, matching how the code actually imports itself.
+        run: mypy --explicit-package-bases src
 
   test:
     name: Tests (Python ${{ matrix.python-version }})
