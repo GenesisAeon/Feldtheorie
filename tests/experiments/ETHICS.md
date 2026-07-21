@@ -75,5 +75,5 @@ Before committing work in `tests/experiments`:
 
 ---
 
-**Last Updated:** 2026-07-21 21:49:41 UTC
+**Last Updated:** 2026-07-21 21:50:59 UTC
 **Governance Version:** 1.0.0
