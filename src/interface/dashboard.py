@@ -111,7 +111,7 @@ def get_history() -> list[dict[str, Any]]:
         return []
 
 
-def send_command(endpoint: str, data: dict = None) -> dict[str, Any]:
+def send_command(endpoint: str, data: dict | None = None) -> dict[str, Any]:
     """Send command to API."""
     try:
         if data:

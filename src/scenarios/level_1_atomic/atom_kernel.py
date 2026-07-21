@@ -52,11 +52,11 @@ class AtomKernel(ResonantEntity):
                 return ELECTRON_MODE
             return PROTON_MODE
         name = str(mode.get("name", PROTON_MODE.name))
-        spin = float(mode.get("spin", PROTON_MODE.spin))
-        freq = float(mode.get("frequency", PROTON_MODE.frequency))
+        spin = float(mode.get("spin", PROTON_MODE.spin))  # type: ignore[arg-type]
+        freq = float(mode.get("frequency", PROTON_MODE.frequency))  # type: ignore[arg-type]
         mantra = str(mode.get("mantra", PROTON_MODE.mantra))
-        scale = int(mode.get("scale", PROTON_MODE.scale))
-        hint = float(mode.get("resonance_hint", 0.0))
+        scale = int(mode.get("scale", PROTON_MODE.scale))  # type: ignore[call-overload]
+        hint = float(mode.get("resonance_hint", 0.0))  # type: ignore[arg-type]
         return ResonanceMode(name=name, frequency=freq, spin=spin, mantra=mantra, scale=scale, resonance_hint=hint)
 
     def incarnate(self, mode: ResonanceMode | str | Mapping[str, object]) -> None:  # type: ignore[override]

@@ -49,7 +49,7 @@ class StellarLifecycle:
             generation="Pop III",
             mass=max(1.0, consumed / 120.0),
             metallicity=0.0,
-            agent_id=entity.agent_id,
+            agent_id=entity.agent_id,  # type: ignore[attr-defined]
             lifespan=random.randint(2, 4),
         )
         self.population.append(star)
@@ -73,7 +73,7 @@ class StellarLifecycle:
             generation="Pop II",
             mass=max(0.8, hydrogen_cost / 150.0),
             metallicity=0.15,
-            agent_id=entity.agent_id,
+            agent_id=entity.agent_id,  # type: ignore[attr-defined]
             lifespan=random.randint(3, 6),
         )
         self.population.append(star)

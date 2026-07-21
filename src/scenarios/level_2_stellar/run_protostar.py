@@ -14,7 +14,7 @@ def visualize(nebula: ProtostarNebula) -> None:
     print("-" * 50)
 
     # Agenten zählen pro Zelle (Dichte)
-    density = {}
+    density: dict[tuple[int, int], int] = {}
     for item in nebula.agents:
         pos = item["pos"]
         density[pos] = density.get(pos, 0) + 1
