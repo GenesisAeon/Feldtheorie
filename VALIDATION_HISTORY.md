@@ -414,6 +414,51 @@ case it resurfaces.
 
 ---
 
+## Fifth real CI fix (2026-07-21) — TriLayer Drift Validator
+
+Found while double-checking a claim that PR #779 made all CI checks pass
+cleanly (see the "Correction" note added above to the 23-mypy-errors
+entry): `TriLayer Drift Validator` (`v6-governance.yml`) had been
+failing on *every* push to `main` since at least 2026-02-16 — unrelated
+to that PR, and apparently a long-standing, never-investigated break in
+this repo (confirmed by the user's own recollection: "der Trylayer sehr
+problematisch"). Two layers of real bugs, both in
+`releases/V6-Plans_etc/V6ToDorefresh.*`:
+
+1. **`V6ToDorefresh.yaml` didn't even parse.** Several plain-scalar
+   values (German free-text task descriptions, e.g. "Log-Spiegelung
+   festhalten: tools/crep_guard.py --log-detection → ...") contained an
+   embedded `": "` — YAML reads that as the start of a nested mapping
+   key, which breaks the surrounding block. Wrote a small script
+   (`yaml.safe_load` in a loop, catching each `problem_mark`, locating
+   the enclosing "- " or "key:" span by indentation, and wrapping it in
+   double quotes) to converge on a fully parseable file rather than
+   fixing one error at a time by hand — took 8 iterations. No content
+   was changed, only quoting added. Also fixed one indentation slip (2
+   vs. 4 spaces) under `metadata.sprint_delta.priority_order` that had
+   silently pulled 3 list items out of the list.
+2. **Once it actually parsed, the validator's real drift checks found
+   genuine drift** that had been invisible behind the parse failure the
+   whole time:
+   - `v6r-reorder-wave-2026-02-07` existed in the file but was nested
+     under `delta_updates:` instead of `tasks:` — present in JSON (61
+     tasks) but invisible to YAML's task list (60). Moved it to the end
+     of `tasks:`.
+   - Top-level `metadata.updated_at` disagreed across all three files
+     (JSON `2026-02-07`, YAML `2026-03-01`, MD `2025-12-09`). Aligned
+     all three to `2026-03-01T12:00:00Z` — the latest value, and
+     consistent with per-task `updated_at`/`completed_at` entries as
+     recent as `2026-02-27`/`2026-02-28` already present in the file.
+   - `docs/docs_index.md` never referenced `validate-trilayer` or the
+     V6 ToDo trilayer at all (`feldtheorie_index.md` did) — added a
+     `Navigation & Werkzeuge` entry pointing at both.
+
+Verified locally (`python scripts/validate_trilayer.py`, all checks
+green) and **confirmed green in real GitHub Actions CI** on commit
+`a9de02514`.
+
+---
+
 ## Known open items (not fixed this session — out of scope / flagged for follow-up)
 
 - **Re-run a real one-way ANOVA on the 5 confirmed-real per-dataset β
