@@ -368,6 +368,52 @@ explicit decision, not an action taken.
 
 ---
 
+## Third and fourth real CI fixes (2026-07-21) — coverage-check and mypy
+
+Two more CI jobs, both chronically red since before this session's
+earliest visible history, root-caused and fixed this session:
+
+**`coverage-check`** (`v8-validation.yml`): see the updated entry in
+"Known open items" below — was previously flagged as "couldn't diagnose
+without log access"; the user pasted the actual CI log, which gave the
+real error (`ImportError: cannot load module more than once per
+process`, a genuine `pytest-cov`/numpy interaction bug triggered
+specifically by a dotted `--cov=` submodule path). Confirmed green in
+real CI.
+
+**`Lint (ruff + mypy)`** (`ci.yml`): had failed on *every* recorded run
+since 2026-06-17. Root cause: `mypy src` computes module names relative
+to `src` itself, but the codebase's own imports consistently use a
+"src." prefix (`from src.scenarios.X import Y`) — since `src/` has no
+`__init__.py`, mypy's implicit-namespace-package support lets the same
+file resolve under *two* different names, and mypy refuses to check
+anything at all once it detects this ("Source file found twice under
+different module names"), which is why this job had never gotten past
+3-5 files. Fixed with `mypy --explicit-package-bases src`, plus
+`ignore_missing_imports` for `pandas`/`tqdm`/`plotly`/`requests` (no
+stub packages installed by `.[dev]`, standard suppression already used
+elsewhere in the ecosystem). Verified locally: mypy now checks all 44
+source files (was stuck after 3-5) — **this still leaves the job red**,
+since 23 genuine type errors are now visible that were previously
+hidden behind the collection failure (real work, out of scope for this
+fix — see the open item below for the list). One "Module X has no
+attribute Y" cluster (`src/scenarios/level_0_vacuum.py` vs. the
+same-named directory `src/scenarios/level_0_vacuum/`, which has no
+`__init__.py`) was checked at runtime and confirmed to be a mypy-vs-
+CPython namespace-package resolution difference, not an actual bug —
+`import src.scenarios.level_0_vacuum` really does resolve to the `.py`
+file at runtime, `Fluctuation`/`VacuumSimulation` are genuinely
+accessible.
+
+Also: a separately-reported `openai` missing-stub error could not be
+reproduced locally (grepped the whole repo — only
+`scripts/experiment_aletheia_placebo.py` imports `openai`, and nothing
+under `src/` references that script, so `mypy src` shouldn't reach it).
+Not added a speculative override; flagged in the workflow-fix commit in
+case it resurfaces.
+
+---
+
 ## Known open items (not fixed this session — out of scope / flagged for follow-up)
 
 - **Re-run a real one-way ANOVA on the 5 confirmed-real per-dataset β
@@ -384,18 +430,45 @@ explicit decision, not an action taken.
   self-graded ✅ checkmarks (including the V2 "η²=0.735" claim, see
   above) — a full audit of what's real vs. narrative/conceptual in there
   is a separate, larger task not attempted this session.
-- **`coverage-check` job (`v8-validation.yml`) still fails in real CI**,
-  despite a locally-verified fix (`[tool.coverage.report].exclude_lines`
-  in `pyproject.toml`, re-tested from a clean `.coverage` cache with the
-  exact CI command — 100% coverage, passes `--cov-fail-under=85`). This
-  job has failed on every recorded run since before this session (not a
-  regression), and the primary target of this sprint — the `V8.0
-  Empirical Validation Suite` job — is now confirmed green in real CI, so
-  the sprint's main goal is met. But this secondary job's real-CI failure
-  couldn't be root-caused: GitHub's job-logs API requires repo-admin
-  auth this session doesn't have. Next session with `gh`/token access:
-  pull the actual `Test Coverage Check` step output and compare against
-  the local 100%-coverage result to find the actual divergence.
+- ~~**`coverage-check` job (`v8-validation.yml`) still fails in real CI**~~
+  — **root-caused and fixed (2026-07-21)**, once the user pasted the
+  actual CI log this session had no access to (no `gh`/token available;
+  GitHub's job-logs API requires repo-admin auth). Real cause:
+  `--cov=models.consciousness_integration` (a dotted submodule path)
+  triggers a genuine `pytest-cov`/numpy interaction bug —
+  `ImportError: cannot load module more than once per process` —
+  reproduced locally in a clean, minimal venv (`uv venv`, only this
+  job's own declared dependencies) via bisection: identical test run
+  without `--cov` succeeds; `--cov=models` (the top-level package, not
+  the dotted submodule) also succeeds; only the dotted-submodule form
+  crashes. Unrelated to the earlier `exclude_lines`/coverage-percentage
+  fix, which was necessary but not sufficient. Fixed by tracing via
+  `--cov=models` and enforcing the 85% gate in a separate
+  `coverage report --include='*/consciousness_integration.py'
+  --fail-under=85` step — no new config file, doesn't touch the shared
+  `pyproject.toml` coverage config used by `ci.yml`'s broader
+  `--cov=src` runs. Verified end-to-end locally (fresh venv, exact
+  extracted `run:` block via bash) and **confirmed green in real GitHub
+  Actions CI** on the next push.
+- **23 genuine mypy errors, now visible for the first time** (see above
+  — `mypy --explicit-package-bases src`), across 13 files under `src/`.
+  Not fixed this session (separate, real cleanup work). Worth
+  prioritizing by risk — a few look like genuine potential runtime bugs,
+  not just type-annotation nitpicks:
+  - `src/core/llm_bridge.py:145`: `Item "None" of "str | None" has no
+    attribute "strip"` — a real potential `AttributeError` if that code
+    path executes with `None`, not just a missing annotation.
+  - `src/scenarios/level_2_stellar/stellar_lifecycle.py:52,76`:
+    `"ResonantEntity" has no attribute "agent_id"` — worth checking
+    whether this is a real missing attribute or a stale reference to a
+    renamed/removed field.
+  - `src/interface/oracle_client.py:176,192,353`: three `str | None`
+    vs. `str` mismatches, one on a return value — same class of
+    "might actually crash" issue as the `llm_bridge.py` one above.
+  - The remaining ~15 (assignment type mismatches, a missing variable
+    annotation, `float`/`int` argument type issues in
+    `atom_kernel.py`) look more like genuine-but-lower-risk annotation
+    gaps.
 - **The 78-β-values source dataset is missing** (see dedicated section
   above) — either locate it outside this repo, or regenerate/re-derive the
   ANOVA from `data/derived/beta_estimates.csv` (36 rows) and report the
