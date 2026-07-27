@@ -543,12 +543,42 @@ deliberately, not as an accidental byproduct of the repo's size.
 
 **Not yet done, out of scope for this pass:** a full read of
 `Aeon_Johann.txt`/`Reaktion_Aeon_Johann.txt` (505+ lines, personal
-register) and the remaining `releases/v8.0` PDFs/transcripts; a check of
-whether `v6.0–v12.0` release folders contain their own comparable
-"Metaquest"-style compartments (only v8.0 was inspected this pass); and
+register) and the remaining `releases/v8.0` PDFs/transcripts; and
 a full top-level map of the Feldtheorie repo root itself (`models/`,
 `docs/`, `analysis/`, `data/` etc. were not catalogued this session —
 this pass only followed the specific AI-compartment thread Johann
 pointed at). A complete Feldtheorie archaeology comparable in scope to
 `unified-mandala`'s multi-pass `MANDALA_MAP.md` effort remains a
 separate, larger undertaking.
+
+## Follow-up (2026-07-27): remaining `seed/ai/` files and release-folder check
+
+Read the four remaining `seed/ai/` files not yet covered above:
+`anthropic_introspection_validation.md`, `controlled_emergence.md`,
+`llm-threshold-training.md`, `llm_emergent_skill.md`. All four apply
+the repo's universal logistic-membrane formalism
+(`σ(β(R-Θ))`, order parameter/threshold/steepness/impedance) to AI/LLM
+phenomena specifically: Anthropic's 2025 introspection study (Claude
+detecting injected thoughts), a "controlled emergence" curriculum-design
+framework, LLM training-threshold theory, and a concrete multilingual
+chain-of-thought emergence fit (Θ=4.71±0.04, β=5.10±0.39, R²=0.995 against
+a 16-checkpoint BIG-Bench-style dataset). These read as genuine,
+internally consistent extensions of the same UTF framework used
+elsewhere in the repo (climate, biology, cognition) — not filler. No
+new compartment-like material surfaced; they belong to the same
+`seed/ai/` thread already documented above.
+
+**Release-folder check (v5.0.0 through v12.0.0, vAFET-1.0):** every
+release folder — not just v8.0 — carries the same
+`AGENTS.md`/`ARCHITECTURE.md`/`ETHICS.md`/`POLICY.md` quartet (76 lines
+each). Diffing `AGENTS.md` across releases (e.g. v7.0 vs v9.0) shows the
+only difference is the version-number substitution in the title/body —
+this is a standard per-release template, not a hidden compartment.
+Searched all of `releases/` for `master_prompt*`/`masterprompt*` outside
+`v8.0/`: **zero matches**. This confirms `releases/v8.0/` is genuinely
+distinct — it is the one release carrying the raw backing materials
+(deep-research PDFs/transcripts, `Aeon_Johann.txt`) behind
+`seed/ai/master_prompts_v8.md`, not merely another instance of the
+routine quartet. **Conclusion:** the "Metaquest"/AI-compartment thread
+is fully accounted for; no comparable compartment exists in the other
+release folders.
