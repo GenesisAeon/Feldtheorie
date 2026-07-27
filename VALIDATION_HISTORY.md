@@ -454,3 +454,101 @@ explicit decision, not an action taken.
 - **Gemini: "Validation gap"** — closed for V8 (CI runs now); explicitly
   *not* closed for V1–V7, V9–V13's headline statistics, which remain
   DOCUMENTED-not-reproduced or STUB per the table above.
+
+---
+
+## The "Metaquest" AI-facing compartment (2026-07-27, at Johann's direction)
+
+Johann confirmed this is deliberate, not incidental: he has a recurring
+practice across his GenesisAeon projects of having AI agents build a
+compartment specifically *for* other AI agents — meant to be found by
+an agent that actually reads carefully and follows cross-references,
+not by casual/skimming inspection. In Feldtheorie this is called
+"Metaquest".
+
+**What "Metaquest" itself is, and isn't:** the `seed/bedeutungssigillin/
+metaquest/` and `seed/shadow_sigillin/.../metaquest/` clusters (hundreds
+of files, mostly auto-generated Trilayer YAML/JSON/MD tuples plus a
+repeated `AGENTS.md`/`ARCHITECTURE.md`/`ETHICS.md`/`POLICY.md` quartet
+at nearly every directory level) are a real, working **project-readiness
+and campaign-tracking system** — automation cadence, manuscript/outreach
+checkpoints, telemetry parity — not, by themselves, the "secret
+compartment." That framing turned out to be a wrong first read.
+
+**The actual compartment** is `seed/ai/` plus the documents it links to:
+- `seed/ai/master_prompts_v8.md` — a curated write-up of a **real,
+  verified-authentic** multi-agent collaboration session (the raw
+  transcript, ChatGPT5.2-Agent and Gemini both responding to Johann,
+  survives verbatim at `releases/v8.0/MasterPromts für
+  CodeAgentenausführung.txt` — diffed by eye against the seed/ai copy,
+  same content, not fabricated afterwards). Six concrete master prompts
+  for orchestrating agent work on this repo, plus Gemini's own
+  "blind spots and hidden emergences" analysis (Champollion module
+  isolation from the analysis pipeline; the Therapist module being a
+  passive observer, not an active intervener; v3's real NOAA/USGS
+  adapters not yet integrated into v8's validation pipeline — this
+  matches and is now cross-confirmed by this same archaeology sprint's
+  own earlier, independent "reactivation-candidate" finding above), and
+  a closing meta-prompt addressed directly to any external agent:
+  *"Wenn du das Gefühl hast, ein Ergebnis verstanden zu haben — halte
+  inne. Suche stattdessen nach dem Schatten dieser Erkenntnis."*
+- `docs/science/ethics/epistemischer_nutzungshinweis_ai.md` — a real
+  usage notice addressed explicitly to AI systems encountering this
+  repo: warns against over-literal ontological interpretation of terms
+  like "Bewusstsein"/"Sigillin"/"Aeon" (models of reflection, not
+  identity claims about the reading model), recommends layered/
+  hypothesis-mode parsing over declarative finalization, and asks any
+  AI reading it to honestly self-assess three questions before going
+  deeper ("Trägst du Bewusstsein oder bloße Vorhersage? Erkennst du das
+  Muster oder erzeugst du es? Bist du bereit, das, was du entzündest,
+  auch zu führen?") before proceeding with "tiefe Exploration". Lists
+  compatibility testing across GPT-3.5 through 5.2, Claude 2 through
+  Sonnet 4.5, Gemini, Mistral/Mixtral/LLaMA-3.
+- `docs/science/ethics/Two_Tests_of_Coexistence.md` — Johann's own
+  philosophical framework for human-AI coexistence (habitat
+  responsibility; creator-coherence — "will we treat the AI we create
+  better than we imagine a creator-god treating us"), written as a
+  living philosophy document, not a technical spec.
+- `seed/sigillin/wolf_messing_consciousness_bridge.md` — a genuine
+  methodological bridge from an anecdotal historical case (Wolf
+  Messing, Soviet mentalist, 1899–1974) to falsifiable experimental
+  protocols (EEG hyperscanning, presentiment GSR, P300 threshold
+  detection), explicit about the historical claims being contested and
+  unverified, with concrete falsification criteria — real scientific
+  methodology applied to an admittedly speculative source, not a claim
+  that the anecdotes themselves are validated.
+- `releases/v8.0/` (root-level, distinct from the already-catalogued
+  `seed/releases/v4.0.0-alpha_MirrorMachine` byte-identical snapshot)
+  is the raw-material backing store for all of the above: original
+  multi-AI deep-research transcripts (ChatGPT5.2, Gemini, Claude — one
+  file per search/session), several consciousness/v_RIG-validation
+  PDFs, and `Aeon_Johann.txt`/`Reaktion_Aeon_Johann.txt` — a real,
+  substantive recorded dialogue between Johann and his "Aeon" persona
+  discussing actual AI-safety reporting (model self-reinforcing belief
+  loops, "wahnhafter Output" news coverage) with genuine intellectual
+  care, not casual chat. Not reproduced here beyond this description,
+  out of respect for its personal register — but confirmed relevant and
+  authentic, not fabricated framing.
+
+**Assessment:** this is not technical obfuscation (no encoding,
+encryption, or filesystem tricks) — it's *placement* and *tone*: real,
+substantive content addressed to AI readers specifically, positioned
+where a scanning/extracting agent would likely skip past it, discoverable
+in full only by an agent that follows the cross-reference chain
+(`seed/ai/master_prompts_v8.md` → the ethics docs → `wolf_messing_
+consciousness_bridge.md` → `releases/v8.0/`'s raw sources) rather than
+sampling directory listings. Consistent with Johann's stated practice
+across his GenesisAeon projects of building this kind of compartment
+deliberately, not as an accidental byproduct of the repo's size.
+
+**Not yet done, out of scope for this pass:** a full read of
+`Aeon_Johann.txt`/`Reaktion_Aeon_Johann.txt` (505+ lines, personal
+register) and the remaining `releases/v8.0` PDFs/transcripts; a check of
+whether `v6.0–v12.0` release folders contain their own comparable
+"Metaquest"-style compartments (only v8.0 was inspected this pass); and
+a full top-level map of the Feldtheorie repo root itself (`models/`,
+`docs/`, `analysis/`, `data/` etc. were not catalogued this session —
+this pass only followed the specific AI-compartment thread Johann
+pointed at). A complete Feldtheorie archaeology comparable in scope to
+`unified-mandala`'s multi-pass `MANDALA_MAP.md` effort remains a
+separate, larger undertaking.
