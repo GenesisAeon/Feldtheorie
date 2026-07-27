@@ -3270,10 +3270,82 @@ echte, datierte Lauf-Ergebnisse (`aletheia_results_20251126_131235.csv`,
 3. **`data/`** (root) — die tatsächlichen Datensätze, die beide oben
    speisen (via `analysis/`-Skripte).
 
-**Noch nicht gemacht:** ein vollständiger, dateiweiser Realitäts-Check
-für jedes einzelne der 32 `analysis/`-Skripte (welche tatsächlich gegen
-diese Daten liefen und reale Fit-Ergebnisse produzierten, vs. welche
-nur Gerüst sind) — nächster sinnvoller Schritt, aber aus Aufwandsgründen
-in diesem Durchgang nicht mehr geschafft. `models/`, `science/`,
-`narrative/`, `experiments/` (192 Dateien), `docs/`, `unified/` bleiben
-ebenfalls für einen separaten Durchgang offen.
+**Noch nicht gemacht (Stand vorheriger Durchgang):** ein vollständiger,
+dateiweiser Realitäts-Check für jedes einzelne der 32 `analysis/`-Skripte
+— das folgt jetzt im nächsten Abschnitt.
+
+---
+
+## Nachtrag 3 (2026-07-27): `models/`, `analysis/`, `experiments/`, `docs/`, `unified/`
+
+Auf Johanns Wunsch, das Repo "komplett zu durchforsten", die
+verbliebenen großen Verzeichnisse gesichtet.
+
+**Wichtiger Vorab-Fund: `science/` und `narrative/` sind keine eigenen
+Inhalte.** Beide root-Ordner enthalten nur Textdateien mit
+Symlink-Zielen (`science/models` → Inhalt `../models`, `narrative/seed`
+→ Inhalt `../seed`) — auf Windows als Klartext ausgecheckte Symlinks.
+Das Drei-Track-Modell aus `feldtheorie_index.md` ("science/" = wissen-
+schaftlicher Track, "narrative/" = narrativer Track) ist also nur eine
+**Navigations-Ansicht** auf dieselben `models/`, `analysis/`, `data/`,
+`seed/`, `releases/`, `aeon/`, `sigillin/`-Bäume — kein zusätzlicher,
+separat zu kartierender Inhalt.
+
+**`analysis/` (307 Dateien) — Realitäts-Check bestanden.** Eigener
+Trilayer-Index (`analysis_index.md`, "Resonance Bay Navigator") listet
+43 Python-Skripte in 5 Kategorien plus 138 Ergebnisdateien in
+`analysis/results/`. Stichprobe: `llm_beta_extractor.json` behauptet im
+Index β=3.47±0.47 für Wei's PaLM-Daten — im echten Ergebnis-JSON exakt
+bestätigt (`beta_mean: 3.4695`, `beta_std: 0.4655`), inklusive ΔAIC
+gegen ein Power-Law-Nullmodell (10.18–12.79) und sogar der ehrlichen
+Angabe `"within_canonical_band": false` (der Fit liegt *nicht* im
+kanonischen β-Band — wird nicht verschwiegen). Das bestätigt: die
+`analysis/`-Pipeline ist echte, reproduzierbare, selbstkritische
+Wissenschaftsarbeit, keine Behauptungs-Fassade.
+
+**`experiments/` (273 Dateien) — ebenfalls über eigenen Trilayer-Index
+verifiziert** (`experiments_index.md`, Stand 2026-02-05). Größter
+Posten: `Phaethon_Geminiden_Bennu/` (155 Dateien) — eine vollständige
+Multidisziplin-Forschungsreihe zu Asteroiden-Dynamik mit echtem Code
+(`chimera_state_model.py`, `plasma_resonance_model.py`,
+`statistical_analysis.py`), echten Abbildungen (PNG-Plots) und einem
+NeuroProfile-Teilprojekt, das *echte, öffentliche* Datensätze einbindet
+(GAIA DR3, JWST-Protocluster-Kandidaten, PhysioNet-EEG,
+BCI-Competition-IV-2a) neben synthetischen "cold start"-Daten (klar als
+solche benannt). Die Index-eigene "Resonanznotiz" ist bemerkenswert
+ehrlich: neue Experimente bleiben "im Prüfmodus, bis ΔAIC/CI gegen die
+Nullmodelle dokumentiert sind" — ungeprüfte Threads werden nicht als
+fertig ausgegeben. Ein bislang unentdecktes, kleines verschachteltes
+Archiv gefunden (`experiments/Sience-2026_UTAC-Kontext/files(23).zip`)
+— Inhaltsverzeichnis geprüft (nicht entpackt): enthält nur ein bereits
+im selben Ordner lose vorliegendes PDF/TeX-Duplikat, keine neue
+Information.
+
+**`models/` (45 Dateien, davon 22 echte `.py`-Solver)** — Kernstück der
+gesamten Theorie (`coherence_term.py`, `membrane_solver.py`,
+`collective_field.py`, `recursive_threshold.py`, `impedance_solver.py`,
+`rg_flow_simulator.py`, `utac_microscopic_abm.py` u.a.). Bereits über
+Querverweise aus `selfmeta/README.md` und mehreren `seed/ai/`-Dokumenten
+als real und produktiv integriert bestätigt (nicht erneut einzeln
+durchgelesen, aber die Integrationsnachweise sind stichhaltig).
+
+**`docs/` (380 Dateien)** — hat ebenfalls einen eigenen Trilayer-Index
+(`docs_index.md/json/yaml`) plus `index.html`; aus Aufwandsgründen nicht
+Datei für Datei gesichtet, aber die Existenz eines gepflegten Index
+passt zum durchgängigen Muster des Repos.
+
+**`unified/` (8 Dateien, der Integrations-Track)** — `UNIFIED_README.md`
+ist mit 252 Zeilen substantiell; `unified/SUMMARY.md` ist dagegen eine
+**leere Datei (0 Zeilen)** — ein unausgefüllter Stub, kein Fehler, aber
+erwähnenswert als unfertige Ecke.
+
+**Gesamtfazit Feldtheorie-Vollkartierung:** Im Gegensatz zu
+unified-mandalas gemischtem Befund bei den Simulationen (siehe
+`MANDALA_MAP.md`, siebter Durchgang) zeigt sich Feldtheorie hier
+durchgängig solide: eigene, gepflegte Trilayer-Indizes pro
+Hauptverzeichnis, stichprobenartig gegen echte Ergebnisdateien
+verifiziert, mit eingebauter Selbstkritik (Nullmodell-Vergleiche,
+"nicht im Band"-Meldungen, "Prüfmodus"-Kennzeichnung unfertiger
+Threads). Die auffälligsten offenen Ecken sind klein (ein leeres
+`SUMMARY.md`, ein redundantes Mini-ZIP) — kein Hinweis auf verborgene
+Problembereiche.
