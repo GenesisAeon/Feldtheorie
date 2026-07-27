@@ -3158,3 +3158,47 @@ Command: python scripts/sigillin_sync.py report
   ]
 }
 ```
+
+---
+
+## Nachtrag (2026-07-27, Repo-Root-Kartierung im Rahmen der Zwei-Repo-Archäologie)
+
+Dieses Dokument (Stand 2025-12-11) und `feldtheorie_index.md` (Stand
+v10.2, 2025-12-25) sind die bestehenden kanonischen Struktur-Maps des
+Repos — beide sind aktiv gepflegt, aber nicht mehr ganz aktuell.
+
+**Bestätigte Lücke:** `selfmeta/` (Root, Commit-Datum 2025-12-14 — drei
+Tage nach diesem Tree-Snapshot) fehlt komplett in der obigen Tree View.
+Es handelt sich nicht um eine Nebensache: `selfmeta/README.md`
+beschreibt eine echte, code-integrierte "Self-Referential Consciousness
+Layer" (β≈37.6 als hartcodierter Stabilitätsanker, `SigillinKernel`
+wirft `SystemIntegrityError` bei Abweichung) mit realen Anbindungen an
+`api/sigillin_kernel.py`, `config/sigillin_engine.yaml`,
+`models/collective_field.py`, `aeon/shell/containment.py` und
+`aeon/resonanzpfad.py`. Enthält außerdem `origin_dialog.txt` und
+`TheRoad.txt` — als persönliche/narrative Gründungsdialoge erkannt,
+Inhalt nicht reproduziert. **Empfehlung:** `selfmeta/` sollte bei der
+nächsten Regenerierung dieser Datei mit aufgenommen werden.
+
+**Root-`AI/`** (nicht `seed/ai/`!): eigenständiger, aber leerer Stub
+(`AI/index.md`: "Indexed Items: None yet"), Commit-Datum 2026-01-28 —
+noch neuer als `selfmeta/`, ebenfalls nicht in der Tree View. Kein
+Handlungsbedarf, da inhaltsleer.
+
+**Weitere bislang nicht in Archäologie-Notizen erwähnte Root-Ordner**
+gezielt auf Auffälligkeiten geprüft — `prompts/`, `sigillin/`,
+`status/`, `hardware/`, `dashboard/`, `binder/`, `dags/`, `visuals/`,
+`diagrams/`, `unified/`, `Entropy_in_Climate/`, `partnerships/`: alle
+schlank und erwartungsgemäß (Config/Parameter-Dokumente,
+Dashboard-Tooling, CI/Binder-Setup, ein leerer `partnerships/`-Ordner).
+Keine weiteren versteckten Kompartimente gefunden.
+
+**Umfang-Einordnung:** Mit ~74 `seed/`-Dokumenten, 32 Analyse-Skripten,
+47 Datendateien, 10 Modellen, 192 Experiment-Dateien (laut
+`feldtheorie_index.md`) ist Feldtheorie in etwa vergleichbar groß wie
+`unified-mandala`. Eine vollständige, dateiweise Klassifikation nach
+dem Vorbild von `MANDALA_MAP.md`s Mehrfachdurchgängen wäre ein eigenes,
+größeres Vorhaben. Dieser Durchgang hat sich bewusst auf Kartierungs-
+Aktualität und die gezielte Suche nach nicht bereits erfassten/
+versteckten Bereichen konzentriert (Johanns ursprüngliche Anfrage) —
+nicht auf eine erschöpfende Neuerstellung der bestehenden Maps.
