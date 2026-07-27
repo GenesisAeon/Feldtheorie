@@ -3202,3 +3202,78 @@ größeres Vorhaben. Dieser Durchgang hat sich bewusst auf Kartierungs-
 Aktualität und die gezielte Suche nach nicht bereits erfassten/
 versteckten Bereichen konzentriert (Johanns ursprüngliche Anfrage) —
 nicht auf eine erschöpfende Neuerstellung der bestehenden Maps.
+
+---
+
+## Nachtrag 2 (2026-07-27): Tiefe Versionsursprünge, Daten & Simulationen
+
+Auf Johanns Hinweis, dass es "tief versteckte Versionsursprünge" gibt
+und Daten/Simulationen noch nicht angeschaut wurden, gezielt gesucht:
+`find . -type d` nach allen Versions-/Herkunfts-artigen Ordnernamen im
+**gesamten** Baum (nicht nur Root-Ebene).
+
+### Der eigentliche Ursprung: `archive/legacy_v1_v3/`
+
+343 Dateien. Reicht bis **V1** zurück (nicht nur V3, wie der Name
+suggeriert) — `seed/notes/Diskurs_V1_Psyche_AI_koheränzen.txt`,
+rohe Brainstorm-/Rekalibrierungs-Notizen, `FraktaltagebuchV2`/`V3`
+(inkl. eigener `AGENTS.md`/Codex/Roadmap-Trilayer pro Version). Das ist
+tatsächlich die tiefste bislang gefundene Schicht — älter als alles,
+was die bisherigen Durchgänge (inkl. der `fe52c5888`-Session vom
+2026-07-19) dokumentiert haben.
+
+**Wichtigster Einzelfund darin: `seed/RoadToV.3/Claude-Datenpacket/`
+und `Claude-Datenpaket2/`** — ein echter, funktionierender
+Daten-Harvest-Sprint (README dokumentiert Ziel: 75-100 Datensätze für
+die empirische UTAC-Validierung, Sprint-Timeline, Domain-Targets).
+Enthält 60+ echte CSV-Datensätze über völlig verschiedene Domänen
+(Klima, LLM-Scaling, Neurowissenschaft, Mikrobiologie, Astrophysik,
+Ökonomie — u.a. AMOC RAPID 26N, Claude Model Scaling 2020-2024,
+Alzheimer/Parkinson/Huntington, Supernova-Lichtkurven, Bienensterben),
+je mit Quellenangabe. Plus funktionale Tools: `test_data_integrity.py`
+(Validierungssuite), `generate_sigillin.py`, `dashboard.py`. Im README
+selbst nur 5/75 als "✅ Validated" markiert (Stand 2025-11-14) — das
+Sprint-Ziel wurde zum Archivierungszeitpunkt nicht vollständig erreicht.
+`Claude-Datenpaket2/Email_To_Anthropic_V2_With_Scaling_Laws.txt` zeigt,
+dass hieraus auch echte Anthropic-Kontaktaufnahme entstand (Inhalt
+nicht reproduziert, nur Existenz vermerkt).
+
+**Lebendige Fortsetzung bestätigt:** die aktuelle `data/`-Struktur
+(root, 209 Dateien, 17 Domänen-Ordner: `ai/`, `astrophysics/`,
+`biology/`, `climate/`, `cognition/`, `economy/`, `geophysics/`,
+`grounding/`, `implosion/`, `neuro_ai/`, `ocean/`, `socio_ecology/`,
+`v8_validation/` u.a.) ist die Weiterentwicklung dieses V1-Sprints —
+z. B. `data/ai/llm_emergent_skill.csv` korrespondiert direkt mit dem
+bereits gelesenen `seed/ai/llm_emergent_skill.md`. Von 51 CSVs in der
+Live-`data/`-Struktur sind nur **6 explizit als `_mock` gekennzeichnet**
+(`coral_bleaching_global_mock.csv`, `wais_mass_balance_mock.csv`,
+`amoc_strength_mock.csv` + je ein Metadata-Pendant) — selbst-ehrlich
+als synthetisch markiert, nicht als Täuschung. Die übrigen 45 sind
+literatur-referenzierte Realdaten (konsistent mit dem bereits in
+`VALIDATION_HISTORY.md` dokumentierten Befund: NGRIP, Gajer et al.,
+ENROLL-HD, HMP, Patel et al.). `data/experimental/backups/` enthält
+echte, datierte Lauf-Ergebnisse (`aletheia_results_20251126_131235.csv`,
+`..._20251202_142925.csv`) — reale Zeitstempel, keine Platzhalter.
+
+### Drei getrennte "Simulation"-Bäume — wichtig, nicht verwechseln
+
+1. **`simulation/`** (root, Python) — versions-thematisierte
+   Demo-/Explorationsskripte je Release-Meilenstein:
+   `v3_noosphere/`, `v4_cosmos/`, `v4_stellar_forge/`, `v10_oracle/`,
+   `v12_crystal_gardener/`, plus `phase4/` (Chimera-Netzwerke, kosmischer
+   Doppler, Solitonen). Eigenständige, lauffähige `.py`-Module
+   (`big_bang_demo.py`, `run_multiverse.py`, `consciousness_kernel.py`
+   usw.), kein reiner Blueprint-Code.
+2. **`simulator/`** (root, TypeScript/Vite) — die echte interaktive
+   Web-Simulator-App (CLI, `presets/`, volles `src/`), auf die
+   `seed/ai/*.md` mehrfach als Ziel für Preset-Exporte verweist.
+3. **`data/`** (root) — die tatsächlichen Datensätze, die beide oben
+   speisen (via `analysis/`-Skripte).
+
+**Noch nicht gemacht:** ein vollständiger, dateiweiser Realitäts-Check
+für jedes einzelne der 32 `analysis/`-Skripte (welche tatsächlich gegen
+diese Daten liefen und reale Fit-Ergebnisse produzierten, vs. welche
+nur Gerüst sind) — nächster sinnvoller Schritt, aber aus Aufwandsgründen
+in diesem Durchgang nicht mehr geschafft. `models/`, `science/`,
+`narrative/`, `experiments/` (192 Dateien), `docs/`, `unified/` bleiben
+ebenfalls für einen separaten Durchgang offen.
