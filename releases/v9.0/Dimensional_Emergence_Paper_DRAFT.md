@@ -111,7 +111,7 @@ where:
 - CREP ≈ 0.84: **Critical regime**—optimal for emergence (explained below)
 - CREP → 1: Buffer too rigid; no new emergence possible (frozen)
 
-The critical value CREP ≈ 0.84 derives from empirical observation that systems poised for emergence cluster around this stability index [see UTAC data in Römer 2024]. This matches Bak's self-organized criticality paradigm [Bak et al., 1987] but provides an information-theoretic interpretation.
+The critical value CREP ≈ 0.84 derives from empirical observation that systems poised for emergence cluster around this stability index [see UTAC data in Römer 2024]. This matches Bak's self-organized criticality paradigm [Bak et al., 1988] but provides an information-theoretic interpretation.
 
 ### 2.2 The Impedance Modulation Equation
 
@@ -731,7 +731,7 @@ Ambjørn, J., Jurkiewicz, J., & Loll, R. (2004). Emergence of a 4D world from ca
 
 Baars, B. J. (1988). *A cognitive theory of consciousness*. Cambridge University Press.
 
-Bak, P., Tang, C., & Wiesenfeld, K. (1987). Self-organized criticality. *Physical Review A*, 38(1), 364.
+Bak, P., Tang, C., & Wiesenfeld, K. (1988). Self-organized criticality. *Physical Review A*, 38(1), 364.
 
 Barbour, J. (2020). *The Janus Point: A New Theory of Time*. Basic Books.
 
