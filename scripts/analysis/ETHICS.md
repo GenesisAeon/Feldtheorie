@@ -1,6 +1,6 @@
 # Ethics and Responsible Use - scripts/analysis
 
-> **Context Depth:** 2 | **Parent:** scripts | **Mode:** Recursive Programming
+> **Context Depth:** 2 | **Parent:** scripts | **Mode:** Recursive Data Analysis
 
 ---
 
@@ -23,22 +23,27 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 **In this directory (`scripts/analysis`), the following ethical rules apply:**
 
-### Code Ethics
+### Data Ethics
 
-- **No hardcoded secrets**: Use environment variables or secret managers
-- **Dependency hygiene**: Pin versions, audit for vulnerabilities
-- **Licensing compliance**: Respect open-source licenses (see LICENSE file)
-- **Accessibility**: Consider edge cases, error handling, and user feedback
-- **Attribution**: Credit external libraries and algorithms properly
+- **Open Data Only**: Use only openly licensed datasets (CC-BY, CC0, etc.)
+- **Provenance Required**: Every dataset must have a `.metadata.json` file
+- **Privacy First**: Remove PII before ingestion; anonymize if necessary
+- **Uncertainty Transparency**: Report confidence intervals, p-values, ΔAIC
+- **Null Models**: Always compare against baseline (linear, power law, etc.)
 
 
 ---
 
 ## Data Governance for This Context
 
-- Configuration files must not contain PII or API keys
-- Test fixtures should use synthetic or anonymized data
-- Log outputs must redact sensitive information
+- All datasets must include `*.metadata.json` with:
+  - Source URL and license
+  - Date of acquisition
+  - Preprocessing steps
+  - Known limitations
+- Raw data is immutable (store in `data/raw/`)
+- Processed data is versioned (store in `data/processed/vX.Y/`)
+- Personal identifiers are NEVER committed
 
 
 ---
@@ -47,10 +52,11 @@ This document inherits ethical guidelines from the root `ETHICS.md` and speciali
 
 | Risk | Mitigation |
 |------|------------|
-| Command injection | Sanitize all user inputs; use parameterized APIs |
-| XSS vulnerabilities | Escape HTML; use Content Security Policy |
-| SQL injection | Use ORMs or parameterized queries |
-| Insecure dependencies | Run `pip-audit` or `npm audit` regularly |
+| P-hacking | Pre-register hypotheses; document all tests run |
+| Cherry-picking | Report all models tested, including null models |
+| Data leakage | Use strict train/test splits; never touch test data |
+| Overfitting | Cross-validate; report out-of-sample metrics |
+| License violations | Check and document licenses in metadata |
 
 
 ---
@@ -75,5 +81,5 @@ Before committing work in `scripts/analysis`:
 
 ---
 
-**Last Updated:** 2026-07-21 21:50:59 UTC
+**Last Updated:** 2026-07-31 17:55:14 UTC
 **Governance Version:** 1.0.0

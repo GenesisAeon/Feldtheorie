@@ -1,6 +1,6 @@
 # Governance Policy - seed/releases/v4.0.0-alpha_MirrorMachine/data
 
-> **Context Depth:** 4 | **Parent:** seed/releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Research
+> **Context Depth:** 4 | **Parent:** seed/releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Data Analysis
 
 ---
 
@@ -22,19 +22,19 @@ This policy inherits from parent and root governance and adds context-specific r
 
 This policy governs all work in `seed/releases/v4.0.0-alpha_MirrorMachine/data` and its subdirectories.
 
-**Mode:** Recursive Research
+**Mode:** Recursive Data Analysis
 
 ---
 
 ## Operational Rules
 
-### Research Policy
+### Data Policy
 
-1. **Trilayer Sync**: All major docs exist in YAML/JSON/MD
-2. **Citation Required**: Every claim backed by reference or data
-3. **Hypothesis Registry**: Testable claims logged in `hypotheses/`
-4. **Peer Review**: Pre-publication review by independent agent
-5. **Archival**: Old versions preserved in `archive/` with timestamps
+1. **Metadata Mandatory**: No data without `.metadata.json`
+2. **Immutable Raw Data**: Never modify files in `raw/`
+3. **Versioned Outputs**: Tag processed datasets with semantic versions
+4. **Statistical Rigor**: Always compute ΔAIC and bootstrap CIs
+5. **Privacy Compliance**: PII removal audited before commit
 
 
 ---
@@ -43,23 +43,23 @@ This policy governs all work in `seed/releases/v4.0.0-alpha_MirrorMachine/data` 
 
 Before committing changes in this context:
 
-- [ ] Citations complete (DOI/URL for every reference)
-- [ ] BibTeX entries formatted correctly
-- [ ] Hypotheses marked as testable/speculative
-- [ ] Trilayer documents synchronized
-- [ ] Indices updated (seed_index, docs_index, etc.)
-- [ ] Cross-references validated
-- [ ] No broken links
+- [ ] Metadata file exists and is complete
+- [ ] Data provenance documented (source, license, date)
+- [ ] No PII in committed files
+- [ ] Null models defined and tested
+- [ ] Statistical diagnostics exported (ΔAIC, R², residuals)
+- [ ] Stochastic seeds logged
+- [ ] Confidence intervals computed
 
 
 ---
 
 ## Automation Hooks
 
-- **Pre-commit**: Check for broken links and missing citations
-- **CI Pipeline**: Validate Trilayer synchronization
-- **Weekly**: Re-index all documentation
-- **Release**: Generate DOI, archive with Zenodo
+- **Pre-commit**: Scan for PII (email, SSN, names)
+- **CI Pipeline**: Validate metadata schemas
+- **Nightly**: Re-run key analyses with different seeds
+- **Release**: Archive datasets with DOI (Zenodo integration)
 
 
 ---
@@ -84,7 +84,7 @@ This policy can be updated by:
 
 **Change Log:**
 
-- 2026-07-21 21:50:59 UTC: Initial governance deployment (v1.0.0)
+- 2026-07-31 17:55:14 UTC: Initial governance deployment (v1.0.0)
 
 ---
 
@@ -95,5 +95,5 @@ This policy can be updated by:
 
 ---
 
-**Last Updated:** 2026-07-21 21:50:59 UTC
+**Last Updated:** 2026-07-31 17:55:14 UTC
 **Governance Version:** 1.0.0

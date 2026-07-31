@@ -1,6 +1,6 @@
 # Governance Policy - scripts/analysis/results
 
-> **Context Depth:** 3 | **Parent:** scripts/analysis | **Mode:** Recursive Programming
+> **Context Depth:** 3 | **Parent:** scripts/analysis | **Mode:** Recursive Data Analysis
 
 ---
 
@@ -22,19 +22,19 @@ This policy inherits from parent and root governance and adds context-specific r
 
 This policy governs all work in `scripts/analysis/results` and its subdirectories.
 
-**Mode:** Recursive Programming
+**Mode:** Recursive Data Analysis
 
 ---
 
 ## Operational Rules
 
-### Code Policy
+### Data Policy
 
-1. **Test Coverage**: Minimum 80% for new code
-2. **Code Review**: All PRs require review by at least one other agent
-3. **Linting**: Code must pass `pylint`, `black`, `mypy` (Python) or equivalent
-4. **Documentation**: Public APIs must have docstrings with type hints
-5. **Commit Hygiene**: Use conventional commits (feat:, fix:, docs:, etc.)
+1. **Metadata Mandatory**: No data without `.metadata.json`
+2. **Immutable Raw Data**: Never modify files in `raw/`
+3. **Versioned Outputs**: Tag processed datasets with semantic versions
+4. **Statistical Rigor**: Always compute ΔAIC and bootstrap CIs
+5. **Privacy Compliance**: PII removal audited before commit
 
 
 ---
@@ -43,22 +43,23 @@ This policy governs all work in `scripts/analysis/results` and its subdirectorie
 
 Before committing changes in this context:
 
-- [ ] All tests pass (`pytest`, `unittest`, etc.)
-- [ ] Linters report no errors
-- [ ] Type hints added (Python 3.9+)
-- [ ] Docstrings complete for public functions
-- [ ] No hardcoded secrets or API keys
-- [ ] CHANGELOG updated
+- [ ] Metadata file exists and is complete
+- [ ] Data provenance documented (source, license, date)
+- [ ] No PII in committed files
+- [ ] Null models defined and tested
+- [ ] Statistical diagnostics exported (ΔAIC, R², residuals)
+- [ ] Stochastic seeds logged
+- [ ] Confidence intervals computed
 
 
 ---
 
 ## Automation Hooks
 
-- **Pre-commit**: Run linters and formatters
-- **CI Pipeline**: Execute full test suite on push
-- **Nightly**: Security audit of dependencies
-- **Release**: Automated version tagging and deployment
+- **Pre-commit**: Scan for PII (email, SSN, names)
+- **CI Pipeline**: Validate metadata schemas
+- **Nightly**: Re-run key analyses with different seeds
+- **Release**: Archive datasets with DOI (Zenodo integration)
 
 
 ---
@@ -83,7 +84,7 @@ This policy can be updated by:
 
 **Change Log:**
 
-- 2026-07-21 21:50:59 UTC: Initial governance deployment (v1.0.0)
+- 2026-07-31 17:55:14 UTC: Initial governance deployment (v1.0.0)
 
 ---
 
@@ -94,5 +95,5 @@ This policy can be updated by:
 
 ---
 
-**Last Updated:** 2026-07-21 21:50:59 UTC
+**Last Updated:** 2026-07-31 17:55:14 UTC
 **Governance Version:** 1.0.0
