@@ -15,6 +15,7 @@
 [![Tests](https://img.shields.io/badge/tests-1224%2F1224%20passing-brightgreen.svg)](#tests--quality)
 [![Funding](https://img.shields.io/badge/💎_Support-ETH_|_BTC-yellow.svg)](FUNDING.md)
 [![Project History](https://img.shields.io/badge/📅_Project_History-2025--12--16-lightgrey.svg)](CHANGELOG.md)
+[![GenesisAeon Package](https://img.shields.io/badge/GenesisAeon-P70-blueviolet.svg)](https://github.com/GenesisAeon)
 
 ---
 

@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "feldtheorie"
 version = "6.0.0"
-description = "Reproducibility harness for the Universal Threshold Field programme."
+description = "P70: Reproducibility harness for the Universal Threshold Field programme."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
