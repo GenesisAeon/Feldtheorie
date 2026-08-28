@@ -202,10 +202,19 @@ UTAC evolved across two phases that must be distinguished to avoid confusion:
 \begin{itemize}[leftmargin=1.8em]
   \item \textbf{UTAC-v1} (Zenodo iterations 1--19): explored a near-universal $\beta \approx 4.2$
         across all domains, an early exploratory hypothesis with a limited dataset.
-  \item \textbf{UTAC-v2} (iterations 20--38, current): the expanded 78-system analysis
-        revealed domain-specific $\beta$ clustering. This is not a contradiction but a
-        scientific refinement: universality lies in the \emph{architecture of clustering},
-        not in a single $\beta$ value.
+  \item \textbf{UTAC-v2} (iterations 20--38, current): a proposed 78-system analysis
+        argued for domain-specific $\beta$ clustering. \textbf{Correction (2026-08-27,
+        superseding all prior iterations)}: the summary statistic long cited for this
+        analysis ($F(4,73)=185.3$, $p<10^{-20}$, $\eta^2=0.91$) traces to a source
+        document (2025-11-15) whose own ANOVA table is self-labelled ``simulated from
+        data,'' not computed from the named datasets. Independent archaeology confirms
+        5 of the 8 named per-dataset $\beta$ values are real and literature-cited
+        (real AMOC/NGRIP, Huntington's/ENROLL-HD, ALS/TDP43, and two microbiome
+        datasets), but the headline 78-system clustering statistic itself has not been
+        independently reproduced from verified real data. See
+        \texttt{VALIDATION\_HISTORY.md} and Section~\ref{sec:methodological-notes} for
+        the full account. Domain-specific clustering remains this framework's working
+        hypothesis, not an established statistical result.
 \end{itemize}
 
 % ===================================================================
@@ -525,6 +534,80 @@ pattern would become testable.
 \end{speculative}
 
 % ===================================================================
+\section{The Aletheia $\kappa$-Framing Experiment (P1)}
+\label{sec:aletheia-kappa}
+% ===================================================================
+
+This section documents a real, pre-registered empirical test conducted in this
+iteration, unrelated to the cosmological content above and \textbf{deliberately not
+bridged to AFET/UTAC/CREP or to any $\kappa$-value}. It is included here because it
+follows the same disclosure standard as the rest of this paper: real methodology,
+real results, explicit limits on interpretation.
+
+\subsection{Motivation and Pre-Registration}
+
+\begin{hypothesis}
+\textbf{P1 (from the $\kappa$-parameter guide, v2.2):} language models' output
+responds differently to a ``photonic/field-coupled'' system-prompt framing than to
+a ``discrete/symbolic'' framing.
+
+\textbf{Pre-registered before data collection:} three conditions (Control,
+Photonic-frame, Semantic-frame), matched in length and structure to avoid a
+valence confound. Falsification criteria fixed in advance: \emph{support} for H1
+requires $\geq 1$ of \{output\_length, vocab\_density, self\_reflection\} with
+$|d| \geq 0.2$ and $p < 0.05$; \emph{reject} if all three show $d < 0.2$ or
+$p > 0.10$.
+\end{hypothesis}
+
+\subsection{Method}
+
+Real API calls to a local Kimi K2 CLI provider (not mocked, not simulated) were
+collected in two stages: an $n=30$/condition pilot, followed by a confirmatory
+$n=120$/condition run. Because provider quota limits required collection across
+several days, an explicit optional-stopping guard withheld analysis until every
+condition reached the full pre-registered $n$, to avoid inflating false-positive
+risk from interim peeking. Full script: \texttt{scripts/experiment\_kappa\_framing.py}.
+
+\subsection{Results}
+
+\begin{validated}
+Confirmatory run, $n=120$ per condition (the authoritative result):
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Metric & Photonic mean & Semantic mean & $d$ & $p$ \\
+\midrule
+output\_length   & 473.65 & 351.18 & $+0.849$ & $<0.0001$ \\
+vocab\_density   & 0.596  & 0.666  & $-0.620$ & $<0.0001$ \\
+self\_reflection & 7.01   & 6.93   & $+0.074$ & $0.568$   \\
+\bottomrule
+\end{tabular}
+\end{center}
+2 of 3 pre-registered metrics meet the support threshold ($|d|\geq0.2$ and
+$p<0.05$) $\Rightarrow$ \textbf{supports H1} under the fixed pre-registration
+criteria. Both effects replicate in direction from an underpowered $n=30$ pilot
+($d=+0.486$, $p=0.066$ and $d=-0.251$, $p=0.336$ respectively), now reaching
+significance with adequate power. The pilot's weak self\_reflection signal
+($d=+0.455$, $p=0.083$) did not replicate at full power ($d=0.074$) --- consistent
+with pilot noise, not a real effect.
+\end{validated}
+
+\subsection{Interpretation Limits}
+
+\begin{speculative}
+This result demonstrates that an LLM's output is measurably sensitive to a
+photonic-vs-semantic system-prompt framing contrast --- a real, replicated,
+adequately-powered finding about language-model behaviour.
+\textbf{It is not evidence for $\kappa$, consciousness, or photonic coupling as a
+physical quantity.} The observed shifts in output length and lexical density are
+equally consistent with a purely stylistic or rhetorical priming effect driven by
+the prompt's own vocabulary and sentence structure. No attempt is made here, or
+anywhere in the $\kappa$-parameter guide, to connect this result to a computed
+$\kappa$-value. Full account, including two further literature-checked (not
+newly tested) predictions P2--P4: \texttt{docs/science/kappa\_parameter\_guide\_v2.md}.
+\end{speculative}
+
+% ===================================================================
 \section{Falsifiable Predictions and Scorecard}
 % ===================================================================
 
@@ -611,6 +694,7 @@ Current evidence does not warrant stronger language.
 
 % ===================================================================
 \section{Methodological Notes and Known Limitations}
+\label{sec:methodological-notes}
 % ===================================================================
 
 \begin{enumerate}[leftmargin=2em, label=\arabic*.]
@@ -626,6 +710,29 @@ Current evidence does not warrant stronger language.
   \item \textbf{$\vrig$ agreement with the Böhme dipole is post-hoc.}
         $\vrig$ was not published as a prediction prior to the 2025 measurement;
         the agreement is a strong hint, not a confirmed prediction.
+
+  \item \textbf{The ``78 systems, $\eta^2=0.91$'' statistic is not independently
+        reproducible from verified real data.}
+        Traced (archaeology sprint, 2026-07-19, and confirmed independently
+        2026-08-27) to \texttt{archive/legacy\_v1\_v3/seed/RoadToV.3/UTAC Empirical
+        Validation v2.0/UTAC\_v2.0\_COMPLETE\_ANALYSIS.md} (2025-11-15), whose own
+        ANOVA table header reads ``ANOVA Results (simulated from data)'' verbatim in
+        the source. Every later iteration of this paper (V6.0.0-beta through v38)
+        repeated the $F(4,73)=185.3$, $p<10^{-20}$, $\eta^2=0.91$ figures without that
+        qualifier. Of the document's 8 named per-dataset $\beta$ values, 5 are real,
+        literature-cited measurements with exact-matching row counts at
+        \texttt{archive/legacy\_v1\_v3/seed/RoadToV.3/Claude-Datenpaket2/}: AMOC
+        paleoclimate collapses (NGRIP ice core), Huntington's disease CAG threshold
+        (ENROLL-HD), ALS TDP-43 phase separation, vaginal microbiome CST transitions
+        (Gajer et al.\ 2012, \textit{Science}), and oral microbiome periodontitis
+        (Patel et al.\ 2015, \textit{Cell}). The remaining 3 named datasets were not
+        located as exact matches. Separately, \texttt{data/derived/beta\_estimates.csv}
+        --- previously cited in this paper's Data and Code Availability section as
+        ``the 78-system $\beta$ dataset'' --- contains 36 rows, not 78; that citation
+        was itself in error and has been corrected below. A genuine one-way ANOVA
+        re-run on the 5 confirmed real datasets, assembled into comparable
+        $\beta$-values, is a concrete open task (not attempted in this iteration).
+        Full account: \texttt{VALIDATION\_HISTORY.md}.
 
   \item \textbf{Units.}
         All occurrences of ``1.352 km\,s$^{-1}$'' in prior iterations
@@ -646,8 +753,17 @@ Current evidence does not warrant stronger language.
 AFET/UTAC provides a mathematically consistent, multiscale framework that reframes
 major cosmological tensions as predictable features of domain-specific $\beta$-transitions
 rather than isolated new physics.
-The empirical core --- domain-clustered $\beta$ values across 78 systems, with $\eta^2 = 0.91$ ---
-is statistically robust and independently reproducible.
+\textbf{Correction (2026-08-27):} the empirical core was previously described here as
+``domain-clustered $\beta$ values across 78 systems, with $\eta^2=0.91$ --- statistically
+robust and independently reproducible.'' That statement is retracted. The $\eta^2=0.91$
+figure originates from a 2025-11-15 source document whose own table header reads
+``simulated from data''; it has not been independently reproduced from verified real
+data (see Section~\ref{sec:methodological-notes}). What remains real and defensible:
+5 of the 8 named per-dataset $\beta$ values are genuine, literature-cited measurements,
+and re-running a real one-way ANOVA on the verified subset is a concrete, tractable
+open task, not yet completed. Domain-specific $\beta$ clustering is presented in this
+iteration as a working hypothesis motivated by those real per-dataset values, not as
+an established statistical result.
 
 The cosmological extensions (H$_0$, $S_8$, dark energy) make specific, falsifiable
 predictions distinguishable from $\Lambda$CDM.
@@ -684,8 +800,18 @@ AI systems contributed analytical tools and critical challenge, not authorship.
   \item Repository: \url{https://github.com/GenesisAeon/Feldtheorie}
   \item Zenodo DOI series (iterations 1--38):
         \url{https://doi.org/10.5281/zenodo.17472834}
-  \item 78-system $\beta$ dataset: \texttt{data/derived/beta\_estimates.csv}
-  \item Fit pipeline: \texttt{scripts/reproduce\_beta.py} (seed 1337)
+  \item \textbf{Corrected (2026-08-27):} \texttt{data/derived/beta\_estimates.csv}
+        contains 36 rows, not 78 as previously stated here --- see
+        Section~\ref{sec:methodological-notes} for the full provenance correction.
+        The originally-cited ``78-system'' dataset path
+        (\texttt{data/beta\_estimates.csv}) does not exist in the repository or its
+        git history.
+  \item Fit pipeline: \texttt{scripts/reproduce\_beta.py} (seed 1337) --- verified
+        present and runnable; operates on the 36-row dataset above, not a
+        78-system set.
+  \item Aletheia $\kappa$-framing experiment (P1, this iteration):
+        \texttt{scripts/experiment\_kappa\_framing.py};
+        data: \texttt{data/experimental/kappa\_framing\_results\_study2\_n120.csv}
 \end{itemize}
 
 % ===================================================================
