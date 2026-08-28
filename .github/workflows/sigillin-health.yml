@@ -13,6 +13,7 @@ on:
       - 'feldtheorie_index.*'
       - 'scripts/sigillin_sync.py'
       - 'scripts/archive_sigillin.py'
+      - 'docs/**'
   pull_request:
     branches: [ main ]
     paths:
@@ -20,6 +21,7 @@ on:
       - 'seed/shadow_sigillin/**'
       - 'seed/*_index.*'
       - 'feldtheorie_index.*'
+      - 'docs/**'
 
 jobs:
   sigillin-parity:
