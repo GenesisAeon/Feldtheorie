@@ -34,6 +34,7 @@ jobs:
       - name: Run validation for single seed
         env:
           RG_SIM_ENTRYPOINT: scripts.stubs.rg_sim_stub:simulate
+          PYTHONPATH: .
         run: |
           python scripts/validate_phase2.py --seeds ${{ matrix.seed }} --lattice 64 128 256 --noise gaussian laplace poisson --J_over_T 0.5 1.0 1.5 2.0 --tag "seed_${{ matrix.seed }}"
 
