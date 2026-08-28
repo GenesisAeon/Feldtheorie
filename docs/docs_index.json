@@ -7,10 +7,10 @@
     "version": "2.1.0",
     "created": "2025-11-06",
     "status": "active",
-    "markdown_files": 262,
-    "updated": "2026-06-17T07:51:14Z",
+    "markdown_files": 263,
+    "updated": "2026-08-28T20:12:35Z",
     "last_updated": "2026-02-05",
-    "filesystem_markdown_docs": 262,
+    "filesystem_markdown_docs": 263,
     "curated_markdown_docs": 46
   },
   "categories": {
@@ -3449,6 +3449,18 @@
       "keywords": [],
       "description": "",
       "path": "docs/xai_collab/POLICY.md"
+    },
+    {
+      "id": "docs-auto-0217",
+      "name": "science/kappa_parameter_guide_v2.md",
+      "category": "science",
+      "type": "document",
+      "status": "uncurated",
+      "relevance": "medium",
+      "size_kb": 20.9,
+      "keywords": [],
+      "description": "",
+      "path": "docs/science/kappa_parameter_guide_v2.md"
     }
   ],
   "triggers": {
