@@ -304,17 +304,46 @@ data. Investigated on request:
   enough that the mismatch got waved through rather than checked, and
   the number then kept propagating forward through later turns and
   documents.
-- **What was NOT found:** a literal textual passage showing "78" being
-  copied directly from a meditation/neuroimaging source (e.g. Fox et
-  al. 2016's real "78 functional neuroimaging studies") into a UTAC
-  dataset-count claim in the same visible conversation. The saved
-  Gemini/DeepResearch `.txt` logs searched here only show the number
-  already established and being repeated, not the moment it was first
-  produced. The meditation-literature-contamination hypothesis is
-  plausible and consistent with this project's general pattern of
-  cross-context number bleed (see `feedback_ai_dialogue_verification_pattern`
-  memory) and with Johann's own account, but is not confirmed by a
-  documented textual origin.
+- **What was NOT found (by this pass):** a literal textual passage
+  showing "78" being copied directly from a meditation/neuroimaging
+  source (e.g. Fox et al. 2016's real "78 functional neuroimaging
+  studies") into a UTAC dataset-count claim in the same visible
+  conversation. The saved Gemini/DeepResearch `.txt` logs searched here
+  only show the number already established and being repeated, not the
+  moment it was first produced. The meditation-literature-contamination
+  hypothesis remains plausible and consistent with this project's
+  general pattern of cross-context number bleed (see
+  `feedback_ai_dialogue_verification_pattern` memory) and with Johann's
+  own account, but is still not confirmed by a documented textual
+  origin.
+
+- **CORRECTION (2026-08-27): a prior session already found the real
+  origin, more precisely than the pass above.** `VALIDATION_HISTORY.md`
+  (archaeology sprint, 2026-07-19) traced the number to
+  `archive/legacy_v1_v3/seed/RoadToV.3/UTAC Empirical Validation v2.0/
+  UTAC_v2.0_COMPLETE_ANALYSIS.md` (2025-11-15) directly — and found
+  something more precise than "unverified, likely hallucinated": **that
+  document's own ANOVA table header literally reads "ANOVA Results
+  (simulated from data)"**, verbatim, in the 2025-11-15 source itself.
+  Every later release-notes generation (V6.0.0-beta, V6.0.0, V8, V9)
+  dropped that qualifier when repeating the number — so the honesty
+  label was present at the origin and lost in transmission, not absent
+  from the start. Additionally: 5 of the document's 8 named per-dataset
+  β estimates ARE real and literature-cited, with exact-matching row
+  counts, at `archive/legacy_v1_v3/seed/RoadToV.3/Claude-Datenpaket2/`
+  (note: **a different, separately-numbered folder from the
+  "Claude-Datenpacket" — no "2" — 60-file set checked earlier this
+  session** — comparing 78 against the wrong 60-file folder was this
+  pass's own error, now corrected): AMOC/NGRIP ice core, Huntington's/
+  ENROLL-HD, ALS/TDP43, vaginal microbiome/Gajer et al. 2012 *Science*,
+  oral microbiome/Patel et al. 2015 *Cell*. The remaining 3 named
+  datasets were not found as exact matches. Full detail:
+  `VALIDATION_HISTORY.md`, section "The '78 β-values' claim — UPDATE:
+  origin document found". This session's own finding above (Gemini/
+  DeepResearch logs treating "78" as unquestioned inherited fact) still
+  stands as real, additional context for HOW the number propagated
+  forward after that origin point — it just isn't the origin-tracing
+  finding itself, which predates this session.
 - **Practical upshot:** any downstream document citing "78
   datasets/datapoints" for UTAC/AFET validation should be treated as
   citing an unverified, likely-hallucinated count, not real data —
