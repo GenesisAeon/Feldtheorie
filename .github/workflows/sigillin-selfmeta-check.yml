@@ -41,7 +41,13 @@ jobs:
       id: parser
       run: |
         echo "🔍 Parsing Sigillin Selfmeta triplets..."
-        python scripts/sigillin_parser.py --root . --index docs/meta/sigillin_index.json > /tmp/parser_output.txt 2>&1 || true
+        # Scoped to the live trilayer location (docs/narrative/meta/), not
+        # the whole repo root: archive/ and releases/.../V7_wird_noch_verlergt/
+        # hold pre-schema legacy .sigil.json files (no sigil_id/title/version/
+        # status fields -- an older nested "sigillin"/"sigillin_node" format
+        # that predates this validator) which are not meant to pass strict
+        # trilayer validation.
+        python scripts/sigillin_parser.py --root docs/narrative/meta --index docs/meta/sigillin_index.json > /tmp/parser_output.txt 2>&1 || true
 
         cat /tmp/parser_output.txt
 
