@@ -268,6 +268,61 @@ forward, with the specific reason:
 
 ---
 
+## Provenance Note: the "78 datasets/datapoints" figure (2026-08-26)
+
+Not a κ-specific finding, but discovered while cross-checking P4's
+"78 functional-neuroimaging studies" (Fox et al. 2016, real, see
+above) — Johann noticed this number matched a "78" that has appeared,
+unexplained, across this project's broader UTAC/AFET validation
+claims for a long time and never matched the actually-counted real
+data. Investigated on request:
+
+- **"78 empirical datasets/datapoints" is real, in the sense that it
+  is genuinely repeated across many project documents** (`UTAC_v2.0_EXECUTIVE_SYNTHESE.md`,
+  `UTAC_v2.0_COMPLETE_ANALYSIS.md`, `UTAC_7Day_Action_Plan.md`,
+  `ZENODO_UPLOAD_README.md`, `AFET_Universal_Framework_Paper_final.md`,
+  and multiple Gemini/DeepResearch dialogue logs under
+  `docs/AFET/` and `releases/V6-Plans_etc/`) — this is not a one-off
+  typo, it was treated as an established fact for a long time.
+- **It does not match the actually-counted real data.** The real
+  Claude-Datenpacket (independently counted this session via `find`)
+  contains 60 CSV files, not 78.
+- **The Gemini/DeepResearch logs show the number being asserted and
+  then repeated as unquestioned ground truth across many consecutive
+  turns**, e.g. `docs/AFET/GeminiSucheDOIListe.txt` (5 near-identical
+  passages: "...gegen 78 empirische Datensätze prüfen..."),
+  `releases/V6-Plans_etc/Claude.txt` ("UTAC β-Clustering (empirisch
+  validiert: 78 Datenpunkte)"), `docs/AFET/AFET_ParameterSucheGemini.txt`
+  and `docs/AFET/SucheChatGPTDeepResearch.txt` (both refer to "unsere
+  78 Datensätze" as already-settled) — none of these passages
+  re-derive or recount the number; each treats it as inherited fact
+  from an earlier turn.
+- **Johann's account (2026-08-26):** he recalls repeatedly noticing
+  this "78" didn't match the project's real datasets during an
+  intensive period of Gemini DeepResearch use, but did not stop to
+  correct it at the time — Gemini's output quality felt exciting
+  enough that the mismatch got waved through rather than checked, and
+  the number then kept propagating forward through later turns and
+  documents.
+- **What was NOT found:** a literal textual passage showing "78" being
+  copied directly from a meditation/neuroimaging source (e.g. Fox et
+  al. 2016's real "78 functional neuroimaging studies") into a UTAC
+  dataset-count claim in the same visible conversation. The saved
+  Gemini/DeepResearch `.txt` logs searched here only show the number
+  already established and being repeated, not the moment it was first
+  produced. The meditation-literature-contamination hypothesis is
+  plausible and consistent with this project's general pattern of
+  cross-context number bleed (see `feedback_ai_dialogue_verification_pattern`
+  memory) and with Johann's own account, but is not confirmed by a
+  documented textual origin.
+- **Practical upshot:** any downstream document citing "78
+  datasets/datapoints" for UTAC/AFET validation should be treated as
+  citing an unverified, likely-hallucinated count, not real data —
+  the real, counted figure for the Claude-Datenpacket specifically is
+  60 CSV files.
+
+---
+
 ## See Also
 
 - `kappa_parameter_guide.md` (v1.0, 2025-12-12) — superseded by this
