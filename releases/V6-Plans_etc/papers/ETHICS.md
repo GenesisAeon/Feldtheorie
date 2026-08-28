@@ -76,5 +76,5 @@ Before committing work in `releases/V6-Plans_etc/papers`:
 
 ---
 
-**Last Updated:** 2026-08-28 21:25:51 UTC
+**Last Updated:** 2026-08-28 21:31:04 UTC
 **Governance Version:** 1.0.0
