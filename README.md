@@ -7,7 +7,7 @@
 [![Code License: GPLv3](https://img.shields.io/badge/Code%20License-GPLv3-blue.svg)](https://github.com/GenesisAeon/Feldtheorie/blob/main/LICENSE)
 [![Content License: CC BY-NC 4.0](https://img.shields.io/badge/Content%20License-CC%20BY--NC%204.0-orange.svg)](https://github.com/GenesisAeon/Feldtheorie/blob/main/LICENSE)
 [![Release](https://img.shields.io/badge/Release-v13.0.0-9cf.svg)](#platinum-release-v102--dreamtime-publication-prep)
-[![Stable](https://img.shields.io/badge/Stable-7.0.0-brightgreen.svg)](#whats-new-in-v60-)
+[![Stable](https://img.shields.io/badge/Stable-7.0.1-brightgreen.svg)](#whats-new-in-v60-)
 [![V9 Alpha](https://img.shields.io/badge/Alpha-9.0.0--alpha-purple.svg)](#v9-preview-harmonic-emergence--dimensional-framework)
 [![Research Papers](https://img.shields.io/badge/📄_Research-Dimensional_Emergence-blue.svg)](https://github.com/GenesisAeon/Feldtheorie/blob/main/docs/science/v9_research_overview.md)
 [![V7 Progress](https://img.shields.io/badge/V7-85--90%25%20Complete-green.svg)](#v7-preview-collective-consciousness)
