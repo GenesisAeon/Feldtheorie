@@ -65,7 +65,7 @@ jobs:
       - name: Merge CSVs
         run: |
           mkdir -p analysis/results
-          cat artifacts/*/rg_phase2_microscopic_validation.csv | awk 'FNR==1 && NR!=1{next;}{print}' > analysis/results/rg_phase2_microscopic_validation.csv
+          awk 'FNR==1 && NR!=1{next;}{print}' artifacts/*/rg_phase2_microscopic_validation.csv > analysis/results/rg_phase2_microscopic_validation.csv
 
       - name: Aggregate JSON
         run: |
