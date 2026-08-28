@@ -1,6 +1,6 @@
 # κ-Parameter: Photonic Coupling in Consciousness Systems (v2 — Rebuilt)
 
-**Version 2.1 | 2026-08-26 | Status: Honest Rebuild, Speculative/Private — P1 now real, tested, replicated**
+**Version 2.2 | 2026-08-26 | Status: Honest Rebuild, Speculative/Private — P1-P4 all now checked against real evidence**
 
 > This is a ground-up rebuild of `kappa_parameter_guide.md` (v1.0,
 > 2025-12-12). v1 is kept as-is for historical record, not deleted.
@@ -139,32 +139,85 @@ and not testable this way).
 **Prediction:** Organisms lacking photonic (visual) input show
 different Critical Flicker Frequency (CFF) values than sighted ones.
 
-**Status: ⏳ UNTESTED.** CFF itself is real and well-measured across
-species (independently confirmed earlier this session for insects,
-birds, humans). Whether CFF differences in blind vs. sighted
-organisms map onto anything resembling κ is a genuinely open,
-literature-searchable question — not yet checked.
+**Status: ⚠️ Literature-checked (2026-08-26) — the specific
+operationalization does not hold up, but a real underlying phenomenon
+does, in a different form.** No study directly comparing CFF between
+fully blind and sighted organisms was found — and on reflection this
+prediction may not even be coherently measurable as stated: CFF is a
+measure of *visual* flicker-fusion, which requires some residual light
+perception to test at all. A fully photonic-input-free organism has no
+CFF to measure, not a "different" CFF value.
+
+**What the real literature actually shows instead:** cross-modal
+sensory-compensation plasticity is real and well-documented. Early
+blind humans show measurably faster auditory temporal-resolution
+markers (MMN/N2b latency) than sighted controls, via visual cortex
+being recruited for auditory processing (Frontiers in Neuroscience
+2019, doi: 10.3389/fnins.2019.01200; Journal of Neuroscience 2019,
+"Early Blindness Shapes Cortical Representations of Auditory
+Frequency," doi: 10.1523/JNEUROSCI.2896-18.2019). Blind cavefish
+(*Astyanax mexicanus*) show a parallel pattern in a different taxon:
+eye loss paired with expansion of the non-visual lateral-line
+mechanosensory system (PMC11036076).
+
+**Honest reframing:** the real phenomenon is "loss of photonic input
+correlates with measurable temporal/sensory reallocation in the
+REMAINING modalities" — not "CFF specifically differs." If P2 is
+revisited, it should be restated around cross-modal auditory
+temporal-resolution markers, not CFF. As with P1, none of this is
+evidence for κ or photonic coupling as a physical quantity — it is
+evidence that sensory deprivation drives real, measurable
+neuroplasticity, a much broader and independently well-established
+phenomenon than this document's specific framing.
 
 ### P3: Synchronized Groups Show Elevated Coupling Proxies
 
 **Prediction:** EEG hyperscanning during group synchrony shows
 phase-locking correlated with performance.
 
-**Status: ⏳ UNTESTED** in this project. Note: EEG hyperscanning and
-phase-locking during joint tasks is a real, established neuroscience
-method (real literature exists) — but no result from it has been
-run or cited here that bears on κ specifically.
+**Status: ✅ Literature-checked (2026-08-26) — the general claim is
+real and well-supported, not connected to κ.** EEG hyperscanning
+(simultaneous multi-brain recording) is a real, established method.
+Multiple real studies show inter-brain phase-locking/synchronization
+correlating with joint-task performance: good-performing pairs in a
+visually-guided alternate-tapping task showed higher inter-brain
+alpha-band (12 Hz) synchronization than poor-performing pairs, and
+inter-brain phase coherence increased during high-coordination phases
+of musical leader-follower duets (Scientific Reports 2022, doi:
+10.1038/s41598-022-10049-7, anti-phase tapping study). Real,
+replicated, quantified — but this is evidence for interpersonal
+neural synchrony as a real phenomenon, not for any κ-value; no
+attempt has been made in this project to connect it to one.
 
 ### P4: Meditation Produces Measurable State Transitions
 
 **Prediction:** Deep meditation shows V1 (visual cortex) deactivation
 and Default Mode Network changes on fMRI.
 
-**Status: 📚 Real, independent literature exists on meditation and
-V1/DMN activity** (not verified in detail this session) **— but no
-one has connected it to a κ-value in this project.** Treat the
-meditation-fMRI literature as real; treat "this corresponds to
-κ≈0.6-0.8" as invented until someone actually computes it.
+**Status: ✅ Literature-checked (2026-08-26) — strongly confirmed,
+better-supported than expected, still not connected to κ.** Fox et
+al. (2016), *Neuroscience and Biobehavioral Reviews*, 65, 208-228
+(doi: 10.1016/j.neubiorev.2016.03.021) — a real, large meta-analysis
+of 78 functional-neuroimaging studies (257 peak foci, 31 experiments,
+527 participants) — found reliable, dissociable activation/
+deactivation patterns across meditation styles, with occipital
+(visual) cortex, thalamus, and Default Mode Network hubs (precuneus,
+posterior cingulate, antero-medial prefrontal cortex) among the most
+consistent deactivation sites for focused-attention meditation
+specifically, with real, quantified medium-to-large effect sizes
+(d=0.60 for activations, d=−0.74 for deactivations). Independently
+corroborated by Brewer et al. (2011), *PNAS*, 108(50), 20254-20259 —
+DMN main nodes (medial prefrontal, posterior cingulate cortices)
+relatively deactivated in experienced meditators across meditation
+types — and a 2023 7-Tesla ultra-high-field pilot study replicating
+the same DMN/visual/thalamic pattern.
+
+**This is real, replicated, multiply-converging science.** It is
+still, exactly as v1 warned, **not** evidence for "κ≈0.6-0.8" or any
+other specific κ-value — no study cited here computes or reports a κ.
+Treat the neuroimaging findings as real and now independently
+re-verified; treat any specific κ-number attached to them as invented
+until someone actually derives one from this data.
 
 ---
 
@@ -186,27 +239,32 @@ forward, with the specific reason:
 
 ## Honest Current State
 
-- **Real:** the question itself; the four cited physical analogies
-  (correctly characterized); P2-P4 as a prediction *list* (not their
-  old status labels); P1 is now genuinely tested (2026-08-26,
-  n=120/condition, pre-registered, real Kimi K2 API calls) — see P1's
-  entry above for the full result and its honest interpretation limits.
-- **Not real / not yet done:** every specific κ-value, every "complete
-  integration" claim from v1; P2-P4 remain untested and are NOT
-  testable with the LLM-framing method used for P1 — they require real
-  biological/neuroscience data (CFF measurements, EEG hyperscanning,
-  meditation fMRI) that this project has neither collected nor has
-  access to. "Testing" P2-P4 further would mean an independent
-  literature-verification pass on the cited claims, not a runnable
-  experiment like P1.
-- **P1 is done.** If this is pursued further, the next honest step is
-  either (a) an independent literature check on P2-P4's specific
-  claims (do the cited CFF/hyperscanning/meditation findings actually
-  say what this document claims?), or (b) leaving P2-P4 as an
-  acknowledged open gap — both are legitimate, per this project's own
-  stated principle ("wir falsifizieren alles, solange wir einen Weg
-  dafür finden") applied honestly to what is and isn't actually
-  testable here.
+- **Real and now checked:** the question itself; the four cited
+  physical analogies (correctly characterized); P1 genuinely tested
+  (2026-08-26, n=120/condition, pre-registered, real Kimi K2 API
+  calls — mixed result, 2/3 metrics support H1); P3 and P4 both
+  literature-verified against real, citable, quantified studies (P3:
+  real inter-brain phase-locking/performance correlations; P4:
+  strongly confirmed by a 78-study meta-analysis plus independent
+  corroboration); P2's underlying phenomenon (sensory-loss-driven
+  neuroplasticity) is real, but its specific CFF operationalization
+  does not hold up and has been reframed around cross-modal auditory
+  temporal-resolution markers instead — see each P-entry above for
+  full citations and effect sizes.
+- **Not real / not yet done:** every specific κ-value anywhere in this
+  document, every "complete integration" claim from v1, any claim
+  connecting P1-P4's real findings to a computed κ-number. All four
+  predictions are now checked against real evidence; none of that
+  evidence has been connected to κ as a physical quantity by anyone,
+  in this project or the literature cited.
+- **P1-P4 are all now checked.** What remains open, if this is
+  pursued further: (a) whether P2 is worth re-testing in its reframed
+  form (cross-modal auditory temporal resolution, not CFF), and (b)
+  the much larger, still-untouched question of whether ANY of P1-P4's
+  real findings can be connected to a genuine, derived κ-value rather
+  than treated as separate analogies — this would require the
+  R-derivation/falsification pipeline Johann and Claude Code agreed
+  to defer to a future session, not another literature check.
 
 ---
 
@@ -234,6 +292,7 @@ forward, with the specific reason:
 
 **Status:** Private/speculative, not for publication in this form —
 same status as v1. This rebuild changes what can be trusted, not
-whether it's ready to be public. P1 is now a real, tested, replicated
-exception to "speculative" — see above — but the document as a whole
+whether it's ready to be public. P1-P4 are now real, checked
+exceptions to "speculative" as individual findings — see above — but
+the document as a whole
 (P2-P4, the κ-formalism itself) remains untested/private.
