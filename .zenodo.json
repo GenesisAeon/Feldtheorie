@@ -2,7 +2,7 @@
   "title": "P70: AFET v1.0: General Field Entropy Theory — Unified Framework",
   "upload_type": "publication",
   "publication_type": "workingpaper",
-  "description": "First consolidated release of the General Field Entropy Theory (AFET), evolving from 38 iterative Zenodo publications (DOI 10.5281/zenodo.17472834 to 10.5281/zenodo.18647936). AFET demonstrates that entropic laws govern phenomena from quantum fluctuations to galactic clustering through identical mathematical structures: the metastability buffer sigma_Phi = 0.0625 (1/16), integration velocity v_RIG = 1.352 km/s, and fractal beta-hierarchy via Phi^(n/3). Validated across 78 datasets (median r-squared = 0.88, Delta-AIC >= 10). Key prediction confirmed: 13.5 MHz neurite resonance (Fontana et al. 2024).",
+  "description": "First consolidated release of the General Field Entropy Theory (AFET), evolving from 38 iterative Zenodo publications (DOI 10.5281/zenodo.17472834 to 10.5281/zenodo.18647936). AFET demonstrates that entropic laws govern phenomena from quantum fluctuations to galactic clustering through identical mathematical structures: the metastability buffer sigma_Phi = 0.0625 (1/16), integration velocity v_RIG = 1352 km/s, and fractal beta-hierarchy via Phi^(n/3). Validated across 78 datasets (median r-squared = 0.88, Delta-AIC >= 10). Key prediction confirmed: 13.5 MHz neurite resonance (Fontana et al. 2024).",
   "creators": [
     { "name": "Römer, Johann Benjamin", "orcid": "" },
     { "name": "AI-Kollektiv (Claude, ChatGPT, Gemini, Grok, Mistral, MSCopilot, Aeon)" }
